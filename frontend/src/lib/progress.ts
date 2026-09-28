@@ -10,6 +10,7 @@ import {
 	migrateLegacySermonState,
 	workKey,
 	workSlugKey,
+	baseEdition,
 	parseWorkSlugKey,
 	type WorkKind,
 	type ProgressRecord,
@@ -80,9 +81,12 @@ export function saveProgress(
 	const map = read();
 	const key = workSlugKey(kind, slug);
 	const prev = map[key];
+	// A paragraph index only means something in the text it was measured on:
+	// carry the old record's paragraph only when it was in this language, or an
+	// English place would open the Spanish edition at the same index.
 	const paragraph_index =
-		getScrollAnchor(slug, order, kind) ??
-		(prev && prev.order === order ? prev.paragraph_index : 0);
+		getScrollAnchor(slug, order, kind, language) ??
+		(prev && prev.order === order && prev.language === language ? prev.paragraph_index : 0);
 	// `at` is when the POSITION last changed, not when the book was last
 	// opened. A bare open of the same spot used to re-stamp it "now", which
 	// made this device's untouched place look newer than another device's real
@@ -281,13 +285,40 @@ export function fetchSyncedProgress(slug: string, kind: WorkKind = 'book'): Prom
 }
 
 /**
+ * Store the reader's by-words "% through the book" on the work's record, for
+ * the surfaces that can't compute it (see ProgressRecord.pct). Only while the
+ * record names this chapter, and never a push or a new `at`: it describes the
+ * place, it doesn't move it.
+ */
+export function saveProgressPercent(
+	slug: string,
+	order: number,
+	pct: number,
+	kind: WorkKind = 'book'
+): void {
+	if (!browser) return;
+	const map = read();
+	const rec = map[workSlugKey(kind, slug)];
+	const rounded = Math.round(pct);
+	if (!rec || rec.order !== order || rec.pct === rounded) return;
+	rec.pct = rounded;
+	write(map);
+}
+
+/**
  * In-chapter scroll position, anchored to a paragraph index rather than a pixel
  * offset so it survives font-size / measure changes. Keyed by `slug:order`
  * (books) / `sermon:slug:1` (sermons). The anchor for the *current* chapter is
  * also folded into the work's progress record so a resume lands on the exact
  * paragraph.
+ *
+ * Each anchor carries the language of the text it indexes (Modern English
+ * counts as English — its paragraphs match the original's), so a place saved
+ * in one edition is not applied to another. A bare number is an anchor saved
+ * before that, which still restores anywhere until it is next overwritten.
  */
-type AnchorMap = Record<string, number>;
+type Anchor = number | { p: number; lang: string };
+type AnchorMap = Record<string, Anchor>;
 
 function readAnchors(): AnchorMap {
 	if (!browser) return {};
@@ -299,26 +330,33 @@ function readAnchors(): AnchorMap {
 	}
 }
 
+/** The saved paragraph for a chapter — in `language`'s text when given. */
 export function getScrollAnchor(
 	slug: string,
 	order: number,
-	kind: WorkKind = 'book'
+	kind: WorkKind = 'book',
+	language?: string
 ): number | null {
-	return readAnchors()[workKey(kind, slug, order)] ?? null;
+	const a = readAnchors()[workKey(kind, slug, order)];
+	if (a === undefined) return null;
+	if (typeof a === 'number') return a;
+	return language === undefined || a.lang === baseEdition(language) ? a.p : null;
 }
 
 export function saveScrollAnchor(
 	slug: string,
 	order: number,
 	paragraphIndex: number,
-	kind: WorkKind = 'book'
+	kind: WorkKind = 'book',
+	language?: string
 ): void {
 	if (!browser) return;
 	const map = readAnchors();
 	if (paragraphIndex <= 0) {
 		delete map[workKey(kind, slug, order)];
 	} else {
-		map[workKey(kind, slug, order)] = paragraphIndex;
+		map[workKey(kind, slug, order)] =
+			language === undefined ? paragraphIndex : { p: paragraphIndex, lang: baseEdition(language) };
 	}
 	safeSet(ANCHOR_KEY, JSON.stringify(map));
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -493,7 +494,9 @@
 			</div>
 			<div class="read-card-cta">
 				<a
-					href={localizeHref(`/books/${cardBook.slug}/${resumeBook ? resumeBook.order : 1}`)}
+					href={localizeHref(
+						chapterPath(cardBook.slug, resumeBook ? resumeBook.order : 1, cardBook.has_modern_edition)
+					)}
 					class="btn btn-primary">{resumeBook ? t('book.continue') : t('book.beginReading')}</a
 				>
 			</div>

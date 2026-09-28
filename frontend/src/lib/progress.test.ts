@@ -9,7 +9,9 @@ import {
 	isFinished,
 	offerFinishUnopened,
 	removeWork,
-	restoreWork
+	restoreWork,
+	getScrollAnchor,
+	saveProgressPercent
 } from './progress';
 import { pendingAt } from './removals';
 import { undo } from './undo.svelte';
@@ -173,3 +175,45 @@ describe('bookProgressReader', () => {
 		expect(of('c')).toEqual({ started: false, finished: false });
 	});
 });
+
+describe('a place belongs to the language it was read in (review bug #18)', () => {
+	it('does not apply an English paragraph to the Spanish edition', () => {
+		saveScrollAnchor('humility', 3, 42, 'book', 'en');
+		saveProgress('humility', 3, 'en');
+		expect(getProgressRecord('humility')?.paragraph_index).toBe(42);
+		// The reader switches the site to Spanish and opens the same chapter.
+		saveProgress('humility', 3, 'es');
+		expect(getProgressRecord('humility')).toMatchObject({ language: 'es', paragraph_index: 0 });
+		expect(getScrollAnchor('humility', 3, 'book', 'es')).toBeNull();
+		expect(getScrollAnchor('humility', 3, 'book', 'en')).toBe(42);
+	});
+
+	it('carries a place across the Original / Modern English switch', () => {
+		saveScrollAnchor('humility', 3, 42, 'book', 'en-modern');
+		expect(getScrollAnchor('humility', 3, 'book', 'en')).toBe(42);
+	});
+
+	it('still restores an anchor saved before anchors were tagged', () => {
+		localStorage.setItem('ochorus:anchors', JSON.stringify({ 'humility:3': 17 }));
+		expect(getScrollAnchor('humility', 3, 'book', 'es')).toBe(17);
+	});
+});
+
+describe('the stored book percent (review bug #15)', () => {
+	it('is kept on the record while it names the same chapter', () => {
+		saveProgress('humility', 3, 'en');
+		saveProgressPercent('humility', 3, 41.6);
+		expect(getProgressRecord('humility')?.pct).toBe(42);
+		// A figure for another chapter describes nothing here.
+		saveProgressPercent('humility', 4, 60);
+		expect(getProgressRecord('humility')?.pct).toBe(42);
+	});
+
+	it('is dropped when the place moves to another chapter', () => {
+		saveProgress('humility', 3, 'en');
+		saveProgressPercent('humility', 3, 42);
+		saveProgress('humility', 4, 'en');
+		expect(getProgressRecord('humility')?.pct).toBeUndefined();
+	});
+});
+

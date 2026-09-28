@@ -68,6 +68,27 @@ class PlanTests(TestCase):
         self.assertEqual(res.data["days"][0]["book_title"], "Humility")
         self.assertEqual(res.data["days"][0]["word_count"], 100)
 
+    def test_detail_says_which_days_have_a_modern_edition(self):
+        # So a day's link can honour "Prefer Modern English" — only when the
+        # published edition exists (a missing one would read as the original).
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertFalse(res.data["days"][0]["has_modern_edition"])
+        author = Author.objects.get(slug="am")
+        modern = Book.objects.create(
+            author=author, slug="humility-2", language="en-modern", title="Humility", is_published=False
+        )
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertFalse(res.data["days"][0]["has_modern_edition"])
+        Book.objects.filter(pk=modern.pk).update(is_published=True)
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertTrue(res.data["days"][0]["has_modern_edition"])
+        # A plan in another language never links the English Modern edition.
+        sw = Plan.objects.create(slug="humility-12-days", language="sw", title="Unyenyekevu")
+        PlanDay.objects.create(plan=sw, day=1, book_slug="humility-2", chapter_order=1)
+        res = self.client.get("/api/library/plans/humility-12-days/?language=sw")
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["days"][0]["has_modern_edition"])
+
     def test_detail_lists_the_plan_authors(self):
         # Both days read the one book by "am" → one distinct author, linked.
         res = self.client.get("/api/library/plans/humility-12-days/?language=en")

@@ -75,6 +75,12 @@ export interface BookSummary {
 	 * build omits it, and the sitemap then omits the tag rather than guessing.
 	 */
 	updated_at?: string;
+	/**
+	 * A published Modern English edition exists — so a card's chapter link can
+	 * honour "Prefer Modern English" (`chapterPath`). Optional for the same
+	 * reasons as `series_position`: absent links the original.
+	 */
+	has_modern_edition?: boolean;
 }
 
 /**
@@ -101,7 +107,8 @@ export const COVER_BOOK_KEYS = [
 	'series_position',
 	'series',
 	'chapter_count',
-	'word_count'
+	'word_count',
+	'has_modern_edition'
 ] as const;
 export const COVER_BOOK_DROPS = ['topics', 'created_at', 'updated_at'] as const;
 export const COVER_AUTHOR_KEYS = ['slug', 'name', 'birth_year'] as const;
@@ -1063,6 +1070,10 @@ export interface PlanDay {
 	book_title: string;
 	chapter_title: string;
 	word_count: number;
+	/** The book has a published Modern English edition — so a day's link can
+	 *  honour "Prefer Modern English". Optional: a plan page prerendered before
+	 *  the API served it bakes it absent (and then links the original). */
+	has_modern_edition?: boolean;
 }
 
 export interface PlanDetail extends PlanSummary {

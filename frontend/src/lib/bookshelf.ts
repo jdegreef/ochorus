@@ -1,7 +1,8 @@
 import type { BookSummary } from './library-public';
+import { chapterPath } from './editionHref';
 import type { FavoriteEntry } from './favorites.svelte';
 import type { ProgressRecord, WorkKind } from './reading-schema';
-import { bookProgressPercent } from './reading';
+import { workPercent } from './reading';
 import { authorPath } from './originals';
 import { unslug } from './strings';
 
@@ -97,7 +98,7 @@ export function buildShelves(
 			saved: savedAt.has(p.slug),
 			order: p.order,
 			paragraph: p.paragraph_index,
-			pct: finished ? 100 : bookProgressPercent(p.order, book.chapter_count),
+			pct: workPercent(p, book.chapter_count),
 			at: (finished ? p.finished_at : p.at) ?? p.at,
 			paused,
 			lastRead: p.at
@@ -220,7 +221,7 @@ export function customShelfItems(
 			saved: saved.has(slug),
 			order: p ? p.order : null,
 			paragraph: p ? p.paragraph_index : 0,
-			pct: !p ? 0 : status === 'finished' ? 100 : bookProgressPercent(p.order, book.chapter_count),
+			pct: p ? workPercent(p, book.chapter_count) : 0,
 			at,
 			paused: status === 'reading' && !!p && isPaused(p.at, now),
 			lastRead: p?.at
@@ -258,8 +259,8 @@ export function sortShelf(items: ShelfBook[], mode: ShelfSort, locale = 'en'): S
  *  read, otherwise the book's own page (to begin, or to revisit). */
 export function shelfHref(item: ShelfBook): string {
 	if (item.status === 'reading' && item.order) {
-		const p = item.paragraph > 0 ? `?p=${item.paragraph}` : '';
-		return `/books/${item.book.slug}/${item.order}${p}`;
+		const p = item.paragraph > 0 ? `p=${item.paragraph}` : '';
+		return chapterPath(item.book.slug, item.order, item.book.has_modern_edition, p);
 	}
 	return `/books/${item.book.slug}`;
 }

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chapterPath } from '$lib/editionHref';
 	import type { PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
@@ -102,7 +103,11 @@
 
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
-		return d ? localizeHref(`/books/${d.book_slug}/${d.chapter_order}?plan=${plan.slug}&day=${day}`) : '#';
+		return d
+			? localizeHref(
+					chapterPath(d.book_slug, d.chapter_order, d.has_modern_edition, `plan=${plan.slug}&day=${day}`)
+				)
+			: '#';
 	};
 </script>
 

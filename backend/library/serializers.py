@@ -387,6 +387,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
     word_count = serializers.IntegerField(source="total_words", read_only=True)
     topics = serializers.SerializerMethodField()
     series = serializers.SerializerMethodField()
+    has_modern_edition = serializers.SerializerMethodField()
 
     class Meta:
         model = Book
@@ -409,6 +410,8 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "chapter_count",
             "word_count",
             "topics",
+            # So a card's chapter link can honour "Prefer Modern English".
+            "has_modern_edition",
             "created_at",
             # The sitemap's <lastmod>. `auto_now`, but seed_books diffs every
             # field and only calls save() when one really changed, so a deploy
@@ -439,6 +442,24 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             cached = book_topic_map(language)
             self._topic_map = (language, cached)
         return cached.get(obj.slug, [])
+
+    def get_has_modern_edition(self, obj):
+        """Same rule as the detail's, answered from ONE query per response (the
+        published Modern English slugs, shared through the context) rather than
+        one per card."""
+        if obj.language == MODERN_LANGUAGE:
+            return True
+        if obj.language != "en":
+            return False
+        modern = self.context.get("_modern_slugs")
+        if modern is None:
+            modern = set(
+                Book.objects.filter(language=MODERN_LANGUAGE, is_published=True).values_list(
+                    "slug", flat=True
+                )
+            )
+            self.context["_modern_slugs"] = modern
+        return obj.slug in modern
 
     def get_series(self, obj):
         """The card's series line, or None — read from a map built on the first
@@ -2108,12 +2129,15 @@ class PlanDaySerializer(serializers.ModelSerializer):
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
     word_count = serializers.IntegerField(read_only=True, default=0)
+    # A published Modern English edition of the day's book exists — so the
+    # reader's "Prefer Modern English" can be honoured on the day's link.
+    has_modern_edition = serializers.BooleanField(read_only=True, default=False)
 
     class Meta:
         model = PlanDay
         fields = [
             "day", "book_slug", "chapter_order", "book_title", "chapter_title",
-            "word_count",
+            "word_count", "has_modern_edition",
         ]
 
 
@@ -2152,11 +2176,25 @@ class PlanDetailSerializer(PlanListSerializer):
         # The same lookup the card fields need, so it is built once for the
         # whole response rather than a fourth time here.
         lookup = self._chapters(obj)
+        # Modern English is an English edition: a plan in any other language
+        # links its own translations, never it.
+        modern = (
+            set(
+                Book.objects.filter(
+                    slug__in={d.book_slug for d in days},
+                    language=MODERN_LANGUAGE,
+                    is_published=True,
+                ).values_list("slug", flat=True)
+            )
+            if obj.language == "en"
+            else set()
+        )
         for d in days:
             c = lookup.get((d.book_slug, d.chapter_order))
             d.book_title = c["book__title"] if c else ""
             d.chapter_title = c["title"] if c else ""
             d.word_count = c["word_count"] if c else 0
+            d.has_modern_edition = d.book_slug in modern
         return PlanDaySerializer(days, many=True).data
 
 

@@ -2,6 +2,7 @@ import { lang } from './lang.svelte';
 import { localizeHref } from './href';
 import { MODERN_EDITION, baseEdition } from './reading-schema';
 import { authorPath } from './originals';
+import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
 import type { WorkKind } from './reading-schema';
 
@@ -49,3 +50,27 @@ export function workPath(kind: WorkKind, slug: string, order?: number): string {
 export function sourceHref(s: EntrySource): string {
 	return editionHref(`${workPath(s.kind, s.slug, s.order)}?p=${s.p}`, s.edition);
 }
+
+/**
+ * A book chapter's path (unlocalized) that honours "Prefer Modern English":
+ * when the preference is on and the work HAS a Modern English edition, the link
+ * opens that edition. Every way into a chapter — the book page's contents, the
+ * resume cards, the Bookshelf, plan days — goes through this, so the choice
+ * isn't kept by one button and dropped by the rest. `hasModern` must come from
+ * the data: asked for a modern edition that doesn't exist, the reader shows the
+ * original under a Modern label. `query` is extra params, without the `?`.
+ */
+export function chapterPath(
+	slug: string,
+	order: number,
+	hasModern: boolean | undefined,
+	query = '',
+	/** Open the Modern edition whatever the preference — carrying on in it. */
+	stayModern = false
+): string {
+	const params = new URLSearchParams(query);
+	if (hasModern && (stayModern || readerPrefs.preferModern)) params.set('edition', 'modern');
+	const q = params.toString();
+	return `${workPath('book', slug, order)}${q ? `?${q}` : ''}`;
+}
+

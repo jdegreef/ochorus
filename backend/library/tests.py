@@ -1498,13 +1498,16 @@ class BookCardPayloadTests(TestCase):
         # per-article cost would multiply. An earlier draft of the field carried
         # a second `Book` query; it was measured to select nothing this one
         # missed and deleted (see articles_for_author).
+        # The 14th is the book cards' `has_modern_edition`: ONE read of the
+        # published Modern English slugs, shared through the serializer context
+        # so it stays one query however many books the author has.
         for i in range(6):
             Article.objects.create(
                 slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
                 description="d", body_html="<p>x</p>", is_published=True,
                 related=[{"type": "author", "slug": "murray"}],
             )
-        with self.assertNumQueries(13):
+        with self.assertNumQueries(14):
             self.client.get("/api/library/authors/murray/?language=en")
 
     def test_book_detail_query_count_is_the_same_in_every_language(self):

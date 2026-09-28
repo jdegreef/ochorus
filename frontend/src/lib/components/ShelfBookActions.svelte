@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chapterPath } from '$lib/editionHref';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { favorites } from '$lib/favorites.svelte';
@@ -55,7 +56,7 @@
 		if (item.status === 'reading')
 			return { href: shelfHref(item), label: `${t('reader.resume')} · ${t('continue.chapter')} ${item.order}` };
 		if (item.status === 'finished')
-			return { href: `/books/${book.slug}/1`, label: t('fav.readAgain') };
+			return { href: chapterPath(book.slug, 1, book.has_modern_edition), label: t('fav.readAgain') };
 		return { href: `/books/${book.slug}`, label: t('book.beginReading') };
 	});
 

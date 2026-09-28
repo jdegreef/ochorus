@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { onPageHidden } from './pageHidden';
 import { undo } from './undo.svelte';
 import { apiFetch } from './api';
 import { writeJSON } from './persisted';
@@ -177,17 +178,37 @@ class ReadingSync {
 	 *  online listener) so the whole cache isn't uploaded twice at once. */
 	#merging: Promise<void> | null = null;
 	#flushing = false;
+	/** Set while the page is being hidden: pushes sent then go out `keepalive`
+	 *  so they outlive a closing tab. */
+	#hiding = false;
 
 	constructor() {
 		// Back online: deliver what was written while the connection was down,
 		// instead of waiting for the next sign-in merge to carry it. A failed
 		// push of anything else is recovered by a merge, which uploads the whole
 		// cache (the account unions it).
-		if (browser)
+		if (browser) {
 			window.addEventListener('online', () => {
 				if (this.signedIn && this.#owed()) void this.mergeOnSignIn();
 				else void this.flushJournal();
 			});
+			// Hidden or unloading: send what is waiting on its debounce now, or a
+			// place saved in the last second before the phone locks never reaches
+			// the account and another device resumes behind it. (A reader saves
+			// its own pending place first and then calls flushQueued itself.)
+			onPageHidden(() => this.flushQueued());
+		}
+	}
+
+	/** Run every queued push now rather than on its timer. */
+	flushQueued() {
+		if (!this.signedIn || !this.#queue.size) return;
+		this.#hiding = true;
+		try {
+			for (const fn of this.#cancelAll()) this.#track(fn());
+		} finally {
+			this.#hiding = false;
+		}
 	}
 
 	/** Track a push until it settles. Every push goes through here. */
@@ -309,6 +330,8 @@ class ReadingSync {
 	#putProgress(kind: WorkKind, slug: string, rec: ProgressRecord, extra: object) {
 		return apiFetch(`/api/reading/progress/${slug}/${this.#kindQuery(kind)}`, {
 			method: 'PUT',
+			// A small body, so it may ride `keepalive` out of a closing page.
+			keepalive: this.#hiding,
 			body: JSON.stringify({
 				kind,
 				language: rec.language,
@@ -919,8 +942,15 @@ class ReadingSync {
 	#writeState(state: ServerState, sent: Record<string, Record<string, unknown>>) {
 		if (!browser) return;
 		const progress: ProgressMap = {};
+		const localProgress = readJson<ProgressMap>(PROGRESS_KEY, {});
 		for (const p of state.progress) {
-			progress[workSlugKey(p.kind ?? 'book', p.book_slug)] = {
+			const key = workSlugKey(p.kind ?? 'book', p.book_slug);
+			// The by-words percent is device-local (the account keeps none): keep
+			// it while the server's place is still the chapter it describes.
+			const pct =
+				localProgress[key]?.order === p.chapter_order ? localProgress[key].pct : undefined;
+			progress[key] = {
+				...(pct != null ? { pct } : {}),
 				order: p.chapter_order,
 				paragraph_index: p.paragraph_index,
 				language: p.language,

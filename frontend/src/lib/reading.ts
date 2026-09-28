@@ -69,6 +69,24 @@ export function bookProgressPercent(order: number, chapterCount: number): number
 }
 
 /**
+ * The one "% read" for a work's saved place, shared by every surface that
+ * shows it (home strip, /reading, the Bookshelf, the book page) so they all
+ * give the reader's own figure — the reader footer's by-words percent, stored
+ * on the record — and agree with each other. A finished work is 100. Without a
+ * stored figure (a place synced from another device, or saved before this),
+ * the chapter-count estimate stands in. Clamped to [1, 99] until finished, so
+ * the bar is always visibly started and never claims completion.
+ */
+export function workPercent(
+	rec: { order: number; pct?: number; finished_at?: number | null },
+	chapterCount: number
+): number {
+	if (rec.finished_at != null) return 100;
+	if (rec.pct == null) return bookProgressPercent(rec.order, chapterCount);
+	return Math.min(99, Math.max(1, Math.round(rec.pct)));
+}
+
+/**
  * Localized reading-time label, e.g. "12 min read" / "dakika 12 za kusoma".
  * The count is substituted into the locale's template so word order stays
  * correct per language (the number isn't always at the front).

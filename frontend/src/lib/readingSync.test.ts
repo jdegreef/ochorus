@@ -562,3 +562,30 @@ describe('readingSync — nothing lost at sign-out', () => {
 		expect(localStorage.getItem(SYNC_STASH_KEY)).toBeNull();
 	});
 });
+
+describe('a hidden page sends its queued place (review bug #13)', () => {
+	afterEach(() => {
+		vi.unstubAllGlobals();
+		readingSync.setSignedIn(false);
+	});
+
+	it('flushes a debounced progress push on hide, keepalive', async () => {
+		const fetchSpy = vi.fn(async () => new Response('{}', { status: 200 }));
+		vi.stubGlobal('fetch', fetchSpy);
+		readingSync.setSignedIn(true);
+		readingSync.pushProgress('book', 'humility', {
+			order: 3,
+			paragraph_index: 12,
+			language: 'en',
+			at: 1_750_000_000_000
+		});
+		expect(fetchSpy).not.toHaveBeenCalled(); // still waiting on its debounce
+		window.dispatchEvent(new Event('pagehide'));
+		expect(fetchSpy).toHaveBeenCalledTimes(1);
+		const [url, init] = fetchSpy.mock.calls[0] as unknown as [string, RequestInit];
+		expect(url).toContain('/api/reading/progress/humility/');
+		expect(init.keepalive).toBe(true);
+		expect(JSON.parse(String(init.body))).toMatchObject({ chapter_order: 3, paragraph_index: 12 });
+		await readingSync.settle();
+	});
+});
