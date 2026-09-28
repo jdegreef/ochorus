@@ -1,3 +1,14 @@
+pango/*.ttf (the share cards Pango draws at build — see cut-pango-fonts.py):
+	Fraunces — Copyright 2020 The Fraunces Project Authors
+	Hanken Grotesk — Copyright 2021 The Hanken Grotesk Project Authors
+	PT Serif — Copyright 2010 ParaType Ltd.; PT Sans — Copyright 2009 ParaType Ltd.
+	Amiri — Copyright 2010-2022 The Amiri Project Authors
+	Tiro Devanagari Hindi — Copyright 2020 The Indigo Project Authors
+	Noto Sans Arabic, Noto Sans Devanagari, Noto Serif Ethiopic, Noto Sans
+	Ethiopic — Copyright 2022 The Noto Project Authors
+	Script subsets of the app's own @fontsource faces, decompressed and, for the
+	variable ones, pinned at one instance. All SIL Open Font License 1.1, as below.
+
 Fraunces-Regular.ttf, Fraunces-Italic.ttf, HankenGrotesk-Medium.ttf:
 	Copyright 2020 The Fraunces Project Authors (github.com/undercasetype/Fraunces)
 	Copyright 2021 The Hanken Grotesk Project Authors (github.com/marcologous/hanken-grotesk)

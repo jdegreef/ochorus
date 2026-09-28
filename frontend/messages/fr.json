@@ -501,6 +501,8 @@
   "author_heading_books_sermons": "Livres et sermons de %name%",
   "author_heading_books": "Livres de %name%",
   "author_heading_sermons": "Sermons de %name%",
+  "author_share_read": "Lisez %title%",
+  "author_share_footer": "Vie, livres et paroles — à lire gratuitement",
   "book_meta_fallback": "%title% de %name% — en lecture gratuite sur Ochorus.",
   "book_title_tag": "%title% de %name% — à lire gratuitement en ligne — Ochorus",
   "chapter_title_tag": "%chapter% — %title% de %name% — Ochorus",
