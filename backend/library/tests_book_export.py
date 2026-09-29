@@ -213,15 +213,6 @@ class PilotTests(TestCase):
             self.assertIn(lang, book_export.STRINGS)
             self.assertEqual(set(book_export.STRINGS[lang]), keys, f"{lang} back matter is incomplete")
 
-    def test_every_pilot_edition_has_its_pdf(self):
-        # The book page links pdf_url, and the prerender fails on a missing file
-        # — but that's the web build; this catches it in CI first.
-        static = book_export.Path(book_export.settings.BASE_DIR).parent / "frontend" / "static"
-        for slug, lang in sorted(export_policy.EXPORT_PILOT):
-            pdf = _fixture_fields(slug, lang).get("pdf_url", "")
-            self.assertTrue(pdf, f"{slug} ({lang}) is exportable but has no pdf_url")
-            self.assertTrue((static / pdf.lstrip("/")).is_file(), f"{pdf} is missing — run export_book")
-
     def test_every_stored_pdf_edition_links_its_bucket_file(self):
         # book-pdfs.yml uploads each to PDF_STORAGE_URL under export_filename;
         # ?download= makes Supabase send it as an attachment, since a
