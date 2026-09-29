@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pagedSnapshot } from '$lib/paging.svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangFor } from '$lib/seo';
@@ -77,6 +78,9 @@
 		await tick();
 		document.getElementById('all-articles')?.scrollIntoView({ block: 'start' });
 	}
+
+	let shelf = $state<ArticleShelf>();
+	export const snapshot = pagedSnapshot(() => shelf?.pages);
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
@@ -191,7 +195,7 @@
 			{/if}
 		{/if}
 		<h2 id="all-articles" class="section-label">{t('home.allArticles')}</h2>
-		<ArticleShelf {articles} activeTopic="" {filters} heading="h3" />
+		<ArticleShelf bind:this={shelf} {articles} activeTopic="" {filters} heading="h3" />
 	{:else}
 		<EmptyState message={t('articles.emptyIndex')} />
 	{/if}

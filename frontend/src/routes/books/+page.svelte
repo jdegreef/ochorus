@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { pagedSnapshot } from '$lib/paging.svelte';
 	import type { BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
@@ -32,6 +33,9 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/books');
+
+	let shelf = $state<BooksShelf>();
+	export const snapshot = pagedSnapshot(() => shelf?.pages);
 </script>
 
 <Seo
@@ -43,4 +47,4 @@
 	structuredData={books.length ? [booksLd] : []}
 />
 
-<BooksShelf books={data.books} series={data.series} loadError={data.loadError} />
+<BooksShelf bind:this={shelf} books={data.books} series={data.series} loadError={data.loadError} />

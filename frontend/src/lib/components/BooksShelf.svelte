@@ -160,6 +160,7 @@
 		() => sorted,
 		() => `${filters.values.q}|${filters.values.source}|${filters.values.topic}|${sort}`
 	);
+	export const pages = flat; // for the route's snapshot ($lib/paging)
 
 	// "By series" is offered only when some book on the shelf is in a named
 	// series (never in a language with none, nor behind an API without the
