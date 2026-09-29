@@ -107,10 +107,10 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * Checked before `AUTHOR_LAYOUT`. The author table exists so one writer's
  * covers look alike; a series needs its volumes to look alike across writers,
  * and the two can disagree. The Key Teachings did: four companions sharing one
- * motif (a gilt tree on a dark ground, `curated_art.ORIGINAL_SVG_GROUND`) came
- * out in three layouts, and the paper box Simpson's and Baxter's authors wear
- * covered their tree entirely. Framed is the composition that shows the whole
- * ground, so it is the series look.
+ * motif (first a gilt tree, since 2026-09-29 each author's desk in lamplight)
+ * came out in three layouts, and the paper box Simpson's and Baxter's authors
+ * wear covered their picture entirely. Framed is the composition that shows the
+ * whole ground, so it is the series look.
  *
  * `coverLayouts.test.ts` fails when a Key Teachings book is missing here, so a
  * new volume cannot slip back into its author's layout.

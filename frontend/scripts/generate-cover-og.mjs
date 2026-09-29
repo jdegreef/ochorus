@@ -449,8 +449,8 @@ function inputs(book, ground) {
  */
 function coverPage(book, groundBytes) {
 	// A painting is an <img> so `object-fit` can crop it — typed by its file,
-	// since the `key-teachings-*` grounds under `covers/art/` are drawn SVGs, and
-	// one labelled a JPEG rendered as a broken image under the type. A plate is
+	// since a ground under `covers/art/` may be a drawn SVG (the ORIGINAL_SVG_GROUND
+	// tier), and one labelled a JPEG rendered as a broken image under the type. A plate is
 	// inlined, which is what lets its gradient and emblem paint at any size
 	// without a second file. Neither carries a word.
 	const ground = book.art

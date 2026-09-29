@@ -1001,6 +1001,31 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "1d0cc9e028c5bcfa40077a9c11e5a29fbe91ef882c5b053a68457c25d0c1e43a",
         "Growing Up: a girl walking the river path toward the light.",
     ),
+    # The Key Teachings companions (Simpson, Edwards, Baxter, Nee). One frame for
+    # the series: each man's desk, painted close and warm by the light of his own
+    # era, on one shared table against a wall in the book's colour. Chosen
+    # 2026-09-29 from sixteen mockups ("the study", warm and close), replacing
+    # the gilt-tree SVGs that were the series' first covers.
+    "key-teachings-of-a-b-simpson": Original(
+        "de5850753d4104a5274562c9978df590299ef3d8f701ccdfe8713be632233638",
+        "A brass oil lamp, an open hymnal on a book-rest, steel spectacles: the "
+        "hymn-writer of the Christian and Missionary Alliance.",
+    ),
+    "key-teachings-of-jonathan-edwards": Original(
+        "94c5325bac2b02e8b8f9ff6c4880f9c8db96d8d3caf4633dceddf687fd99187e",
+        "A candle in a brass chamberstick, a quill and inkwell, sewn sermon "
+        "booklets on a calf volume: the Northampton preacher's desk.",
+    ),
+    "key-teachings-of-richard-baxter": Original(
+        "15a71d6d8cd90dcf95de4c1b641a614319c0694ced8816977bc29fc971e45d11",
+        "A tallow candle, an hourglass, a heavy calf book and a goose quill: "
+        "the Kidderminster pastor's seventeenth century.",
+    ),
+    "key-teachings-of-watchman-nee": Original(
+        "c172ac7988c4ab041ea0008a6edc8669f37d3976f8df7bd27d9a73affd954ea9",
+        "A green-shaded desk lamp, a blue-and-white teacup, a black Bible and a "
+        "fountain pen on a notebook: a twentieth-century Chinese study.",
+    ),
 }
 
 
@@ -1008,34 +1033,12 @@ ORIGINAL_GROUND: dict[str, Original] = {
 # illustration made for the work, with no museum to re-fetch and no designed
 # cover to re-crop — for the files that are vector rather than raster. Kept
 # apart because every raster path (`art_url`, the webp variants, the scrim
-# measure) assumes `covers/art/<slug>.jpg`; these four are served as they are.
+# measure) assumes `covers/art/<slug>.jpg`; an SVG ground is served as it is.
 #
-# The Key Teachings share one motif: a single gilt tree on a dark ground in the
-# book's own colour, a different tree for each writer. That motif IS the series
-# look, which is why their type is also held to one series layout
-# (`coverLayouts.BOOK_LAYOUT`) rather than each author's own.
-ORIGINAL_SVG_GROUND: dict[str, Original] = {
-    "key-teachings-of-a-b-simpson": Original(
-        "620bcb654910fd3474e0541459f873737ad331b16f202e1050713a15475589d9",
-        "A palm on teal: the missionary reach of the Christian and Missionary "
-        "Alliance he founded.",
-    ),
-    "key-teachings-of-jonathan-edwards": Original(
-        "f266baacb08968960586aba2e405ef3bf268c21e26f6c48a56a190a1170c81af",
-        "A broad, full-crowned tree on forest green: New England, and the "
-        "beauty of holiness he wrote of.",
-    ),
-    "key-teachings-of-richard-baxter": Original(
-        "1a139874ce9b7005424df79a720bea10a4b0f6f9e4c46cb89763689f823c7a7a",
-        "A tiered tree on oxblood, rising in layers: the ordered, patient "
-        "pastoral life of The Reformed Pastor.",
-    ),
-    "key-teachings-of-watchman-nee": Original(
-        "c95c85ac19f4fe92ba4cc1ca9c7f3f64c34c5bbf22c7c66644283cadfea55cfa",
-        "A tree whose roots reach down into water, on night blue: abiding in "
-        "Christ as the life of the normal Christian life.",
-    ),
-}
+# Empty since 2026-09-29: the Key Teachings trees, its only members, were
+# replaced by raster grounds in ORIGINAL_GROUND. The tier and its gates stay for
+# the next vector Original.
+ORIGINAL_SVG_GROUND: dict[str, Original] = {}
 
 
 # slug -> the scrim each SVG Original needs, MEASURED — carried into
@@ -1045,13 +1048,8 @@ ORIGINAL_SVG_GROUND: dict[str, Original] = {
 # words' real positions: these covers set their type from the top
 # (`coverLayouts.TYPE_TOP`), so the tuner's centred INK_REGIONS would measure
 # rows no word crosses. Each ground was rasterised in Chromium at 600x800, the
-# text bands found on its og twin, and the strength walked up from 0.30. All
-# four clear at the floor. The digest in ORIGINAL_SVG_GROUND pins the input: a
+# text bands found on its og twin, and the strength walked up from 0.30. The
+# digest in ORIGINAL_SVG_GROUND pins the input: a
 # replaced tree fails that gate first, which is the cue to re-measure this.
-ORIGINAL_SVG_SCRIM: dict[str, float] = {
-    "key-teachings-of-a-b-simpson": 0.30,
-    "key-teachings-of-jonathan-edwards": 0.30,
-    "key-teachings-of-richard-baxter": 0.30,
-    "key-teachings-of-watchman-nee": 0.30,
-}
+ORIGINAL_SVG_SCRIM: dict[str, float] = {}
 
