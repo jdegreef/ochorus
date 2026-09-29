@@ -517,6 +517,25 @@ advertised-but-unbuilt, so built-but-unadvertised is fine.
   `"<name>" buried`) rather than only on the person, and record findings as
   "not found by these searches" rather than "not true".
 
+- **Correcting a fact in an EXISTING bio: the same error lives in up to five
+  places — sweep them all** (John Hyde, 2026-09-29, #4493/#4494/#4496/#4498).
+  (1) `bio` + `bio_html` in `authors.json` (fixture-wins, no migration);
+  (2) the same row's English `faq` (fixture-wins via `SYNCED_FIELDS`, and it
+  feeds FAQPage JSON-LD — easy to forget, and it had copied every error);
+  (3) every `migrations/data/author_bios_<lang>/<slug>.{short.txt,html,faq.json}`
+  (fan out one subagent per language with the English old→new pairs; they map
+  by meaning, keep the settled form); (4) any `AuthorTranslation` row marked
+  `reviewed` — the seed never rewrites it, so a small data migration writes the
+  corrected files over reviewed rows only and re-gates them (`reviewed=False`,
+  `source_stale=False`; model: `0168_correct_reviewed_hyde_translations`) —
+  merge it only AFTER the file PR, since it reads the files at run time;
+  (5) other works that retell the life — `git grep` the person's distinctive
+  claims across `fixtures/content/books/` (Originals like *Men Who Moved Heaven*
+  restate devotional legend as fact); a chapter fix there is fixture-only
+  (`seed_books` syncs chapters by order), re-deriving `body_text`/`word_count`.
+  Prefer "the devotional accounts say…" + the nearest documented figure over
+  deleting a famous story outright.
+
 - **Some of the best sources are egress-blocked.** `dacb.org` (Dictionary of
   African Christian Biography) and `en.wikipedia.org` both refuse `WebFetch`
   here. `WebSearch` still returns summaries of their content, which is how the
