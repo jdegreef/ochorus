@@ -27,9 +27,7 @@ GENERATES that fixture reproducibly; it is idempotent.
 
 from __future__ import annotations
 
-import json
 import re
-from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup, Tag
@@ -37,6 +35,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 
 from library import covers, english_audit
+from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.models import Author, Book, Chapter
@@ -223,21 +222,6 @@ def _chapters() -> list[tuple[str, str]]:
     return [(title, "".join(body)) for title, body in zip(TITLES, letters, strict=True)]
 
 
-def _next_sort_order() -> int:
-    """One past the highest ``sort_order`` among the OTHER committed books.
-
-    Read from the fixtures, not the dev DB: a fresh worktree's DB may hold
-    nothing but this book, and max+1 over it ships ``sort_order`` 1.
-    """
-    books = Path(__file__).resolve().parents[2] / "fixtures" / "content" / "books"
-    orders = [
-        json.loads(f.read_text())[0]["fields"].get("sort_order") or 0
-        for f in books.glob("*.json")
-        if not f.name.startswith(f"{SLUG}.")
-    ]
-    return max(orders, default=0) + 1
-
-
 class Command(BaseCommand):
     help = "Build Pascal's Provincial Letters (M'Crie) in the dev DB; then serialize the fixture."
 
@@ -259,7 +243,7 @@ class Command(BaseCommand):
             "cover_color": COVER_COLOR,
             "source_url": f"https://www.gutenberg.org/ebooks/{GUTENBERG_ID}",
         }
-        next_order = _next_sort_order()
+        next_order = book_sort_order(SLUG)
         book, created = Book.objects.update_or_create(
             slug=SLUG,
             language="en",

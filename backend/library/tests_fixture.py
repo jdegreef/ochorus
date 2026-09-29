@@ -3703,3 +3703,19 @@ class EditionSeriesRuleTests(SimpleTestCase):
     def test_two_forms_of_one_work_are_refused(self):
         bad = {"young": {"a-retrospect-teens", "a-retrospect-children"}}
         self.assertEqual(_series_with_two_forms(bad), ["young"])
+
+
+class BookSortOrderTests(SimpleTestCase):
+    """A build command's `sort_order` comes from the committed fixtures."""
+
+    def test_a_shipped_work_keeps_its_committed_value(self):
+        from .content_fixtures import book_editions, book_sort_order
+
+        _path, slug, _lang, fields = book_editions()[0]
+        self.assertEqual(book_sort_order(slug), fields.get("sort_order") or 0)
+
+    def test_a_new_work_goes_past_every_committed_value(self):
+        from .content_fixtures import book_editions, book_sort_order
+
+        highest = max((f.get("sort_order") or 0) for *_, f in book_editions())
+        self.assertEqual(book_sort_order("no-such-work-yet"), highest + 1)
