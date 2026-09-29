@@ -2784,6 +2784,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"john-hyde-a-life": {
+			"ground": "49499e4fe5ba45d69f5751397a0ca062d2c8913bd693337d50819ff8610e14a6",
+			"style": "house",
+			"volume": "2",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0
+		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
 			"style": "revival",

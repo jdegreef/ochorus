@@ -67,6 +67,7 @@ ART_SCRIM: dict[str, float] = {
     "humility-2": 0.95,
     "hurlbuts-life-of-christ": 0.70,
     "jesus-himself-2": 0.65,
+    "john-hyde-a-life": 0.30,
     "journal-of-an-expedition-up-the-niger": 0.70,
     "key-teachings-of-a-b-simpson": 0.35,
     "key-teachings-of-jonathan-edwards": 0.30,
