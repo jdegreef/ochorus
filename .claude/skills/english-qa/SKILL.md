@@ -598,10 +598,13 @@ Reported, not fixed
   `transcriber|printed in the united states|\b\d{1,2}mo\b` — and remember a
   note whose heading was dropped won't say "transcriber" (Brainerd's didn't).
   `import_gutenberg` now drops note boxes, "Transcriber's Note" sections and a
-  last-section colophon's tail (#3377). **Still shipped, not yet repaired:**
-  `separation-and-service` ch4 and `things-as-they-are` ch35 (a transcriber's
-  note, the latter after a "LONDON: MORGAN AND SCOTT" imprint), and the inline
-  MIDI note in `a-retrospect` ch12.
+  last-section colophon's tail (#3377). **Repaired since:**
+  `separation-and-service` ch4 (#3399) and `things-as-they-are` ch35 (#3400),
+  transcriber's notes, the latter after a "LONDON: MORGAN AND SCOTT" imprint;
+  and the MIDI note in `a-retrospect` ch12 (#3401). A note MID-chapter, like
+  that one (left where Gutenberg's score image was dropped), is not back
+  matter: a seam only cuts tails, so repair it with a markup-anchored
+  `replacements` pair per edition.
 - **A defect class the audit CANNOT see: the stored "English" is a modern AI
   PARAPHRASE, not the author's public-domain text** (2026-09-06). Some books
   stored `source_type=public_domain` were run through a modernization pass that
