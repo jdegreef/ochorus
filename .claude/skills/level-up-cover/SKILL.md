@@ -357,7 +357,8 @@ than 2×. Render the composed og twin and measure its text rows.
 title on the cover. The Amharic Rooted rows had none, so "ሥር የሰደደ – … – መጽሐፍ 4"
 ran up into the tree. The fix is the title's own first segment, as ar/hi do.
 Shipped so far on this tier: Brave for God 1–4 (#2877), growing-in-wisdom
-(#2905), Rooted 1–6 + A Hidden Fire + Tukutendereza (2026-09-28, "fires on the
+(#2905), Rooted 1–6 (first a soil cutaway, #4295; REPLACED 2026-09-28 by a watercolour
+growing tree chosen from 10 concepts) + A Hidden Fire + Tukutendereza ("fires on the
 hills"), Sons/Daughters of the King 1–3 (2026-09-28, "silhouettes done right",
 chosen from 7 concepts). With these, no published book wears a plate.
 
