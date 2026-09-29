@@ -121,6 +121,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 2
   },
+  "letters-and-minor-works": {
+   "space-before-punct": 1
+  },
   "life-experience-gospel-labours": {
    "space-before-punct": 1
   },

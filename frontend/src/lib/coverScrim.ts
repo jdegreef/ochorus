@@ -65,6 +65,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'key-teachings-of-jonathan-edwards': 0.30,
 	'key-teachings-of-richard-baxter': 0.30,
 	'key-teachings-of-watchman-nee': 0.30,
+	'letters-and-minor-works': 0.90,
 	'life-and-diary-of-david-brainerd': 0.70,
 	'life-experience-gospel-labours': 0.80,
 	'life-of-antony': 0.85,

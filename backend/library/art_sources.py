@@ -44,6 +44,7 @@ ART_SOURCES: dict[str, str] = {
     "how-to-succeed-in-the-christian-life": "met-437436@0.50",
     "hurlbuts-life-of-christ": "aic-16439@0.50",
     "journal-of-an-expedition-up-the-niger": "aic-57191@0.50",
+    "letters-and-minor-works": "met-437311@0.50",
     "life-and-diary-of-david-brainerd": "met-16875@0.50",
     "life-experience-gospel-labours": "cma-171296@0.50",
     "life-of-antony": "aic-16512@0.50",

@@ -2814,6 +2814,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"letters-and-minor-works": {
+			"ground": "9b5b8835822682b911e0ca03f75ec133af7844f9cd705f86f2730118a1df261d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0
+		},
 		"lg/all-of-grace": {
 			"ground": "4c372b2b25f5213e71c9deb1d11edaefdcc908be9847f18e0dfa638307783c7f",
 			"style": "revival",

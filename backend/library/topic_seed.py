@@ -155,6 +155,7 @@ TOPICS = [
             "a-serious-call",
             "pensees",
             "provincial-letters",
+            "letters-and-minor-works",
         ],
     ),
     (
