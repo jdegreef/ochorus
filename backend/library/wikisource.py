@@ -130,6 +130,9 @@ def blocks(html: str) -> list[Block]:
                     out.append(Block("p", html_))
             continue
         if el.name == "div":
+            # A centred block nested in another is read with its parent.
+            if el.find_parent("div", class_=["wst-center", "wst-right"]):
+                continue
             if classes & {"wst-center", "wst-right"}:
                 kind = "center" if "wst-center" in classes else "right"
                 for line in el.find_all("p") or [el]:
