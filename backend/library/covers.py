@@ -315,7 +315,9 @@ TYPE_TOP = frozenset({
 #: (2026-09-29). The title and subtitle strips run to the longest title's rows
 #: (Edwards sets four lines). Measuring these covers at the centred rows puts
 #: the subtitle and brandmark strips over the lit picture, where no word sits,
-#: and asks for twice the scrim the words need.
+#: and asks for twice the scrim the words need. These rows are the English
+#: titles': a translated edition whose title wraps longer can push its subtitle
+#: below y432, so re-measure its composed twin before trusting this table.
 TOP_INK_REGIONS = (
     ("byline", 102, 131, AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
     ("title", 173, 340, 1.0, TITLE_MIN),

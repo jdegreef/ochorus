@@ -128,11 +128,12 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
  *
  * The framed composition centres its title block between the byline and the
  * mark, which suits a painting whose subject is the whole canvas. The Key
- * Teachings' trees stand in the lower part of the ground, so a centred block
- * lands on the tree — and the longer the title, the lower its subtitle falls
- * (Edwards' four-line title put the subtitle across the crown). Set from the
- * top, the words keep the sky and the tree keeps the ground, on every volume
- * alike. Only meaningful framed: a layout places its own type.
+ * Teachings' pictures stand in the lower part of the ground, so a centred block
+ * lands on them — and the longer the title, the lower its subtitle falls
+ * (Edwards' four-line title reaches y432). Set from the top, the words keep the
+ * wall and the picture keeps the desk, on every volume alike. Only meaningful
+ * framed: a layout places its own type. `covers.TYPE_TOP` mirrors this set so
+ * the scrim is measured in these rows.
  */
 export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-a-b-simpson',

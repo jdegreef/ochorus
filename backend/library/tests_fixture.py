@@ -1564,6 +1564,15 @@ class CoverAssetTests(SimpleTestCase):
             sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(TYPE_TOP),
             "covers.TYPE_TOP and coverLayouts.TYPE_TOP disagree — change both",
         )
+        # `typeTopFor` is `!layout && TYPE_TOP.has(slug)`: a type-top work only
+        # sets its type from the top while no layout applies. Python cannot run
+        # the layout lookup, so hold every such work pinned to `null`.
+        for slug in TYPE_TOP:
+            self.assertIsNotNone(
+                re.search(rf"'{re.escape(slug)}':\s*null", ts),
+                f"{slug} is TYPE_TOP but not pinned to null in BOOK_LAYOUT — "
+                "under a layout its type is not set from the top",
+            )
 
     def test_original_svg_grounds_carry_their_measured_scrim(self):
         """Each SVG Original has a measured scrim, and the table ships it as-is.
