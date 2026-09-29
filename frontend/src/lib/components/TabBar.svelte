@@ -7,7 +7,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
 
 	/**
 	 * The phone app bar, in thumb reach; the layout decides where it shows.
@@ -22,9 +22,9 @@
 	let feedbackOpen = $state(false);
 
 	/** Every browse destination counts as "Library" — the tab is the shelf. */
-	const LIBRARY = [...PRIMARY_NAV, SERIES_DEST, ...ENGLISH_HUBS, ORIGINALS_DEST]
-		.map((d) => d.href)
-		.concat('/authors');
+	const LIBRARY = [...PRIMARY_NAV, SERIES_DEST, ...ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST].map(
+		(d) => d.href
+	);
 	const routeId = $derived($page.route.id ?? '');
 	const under = (prefixes: string[]) => prefixes.some((p) => routeId === p || routeId.startsWith(`${p}/`));
 

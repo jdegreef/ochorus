@@ -398,6 +398,16 @@ async function build(): Promise<SitemapData> {
 		});
 	}
 
+	// The library A–Z ($lib/authorIndex): every writer and their books in each
+	// locale. Slashed — it prerenders to authors/index.html. Dated by the books
+	// and the writers it lists.
+	pages.push({
+		byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, '/authors/'])),
+		lastmods: dated(ADVERTISED_LOCALES, (l) =>
+			newest([dates.get(l)?.index['/books'], dates.get(l)?.index['/biographies']])
+		)
+	});
+
 	// The quotes index is English-only, like the author quote pages it links to
 	// and for the same reason: the quotations are lifted from the English works.
 	// Trailing slash, because it prerenders as /quotes/index.html.

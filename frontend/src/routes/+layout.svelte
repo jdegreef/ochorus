@@ -34,7 +34,7 @@
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
-	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -388,6 +388,7 @@
 							<li><a href={localizeHref(d.href)}>{t(d.labelKey)}</a></li>
 						{/each}
 						<li><a href={pageHref(SERIES_DEST.href)}>{t(SERIES_DEST.labelKey)}</a></li>
+						<li><a href={pageHref(AZ_INDEX_DEST.href)}>{t(AZ_INDEX_DEST.labelKey)}</a></li>
 						<!-- Non-English readers have no Discover column, so the two links that
 						     serve every language — Originals (its books are translated) and
 						     RSS — ride in Explore for them. -->

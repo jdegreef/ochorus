@@ -324,3 +324,13 @@ describe('build() lastmod for pages without a date of their own', () => {
 		expect(await page('/settings')).toBeUndefined();
 	});
 });
+
+describe('build() the library A–Z', () => {
+	beforeEach(() => resetSitemapData());
+
+	it('advertises /authors/ in every advertised locale, dated by its books', async () => {
+		const az = (await sitemapData()).pages.find((e) => e.byLocale.get('en') === '/authors/');
+		expect([...az!.byLocale.keys()]).toEqual(['en', 'es', 'sw']);
+		expect(az!.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+	});
+});

@@ -111,8 +111,9 @@ const config = {
 					// client-side sort state (so no built page in any locale carried
 					// one), which left 49 sitemap URLs served as the SPA shell and
 					// reported by Search Console as "Excluded by 'noindex'".
-					// /authors carries the full link set; see its +page.svelte.
-					`/${l}/authors`,
+					// /authors/ — the library A–Z — carries the full link set; see
+					// $lib/authorIndex. Slashed: the route prerenders to authors/index.html.
+					`/${l}/authors/`,
 					`/${l}/sermons`,
 					`/${l}/plans`,
 					`/${l}/topics`,

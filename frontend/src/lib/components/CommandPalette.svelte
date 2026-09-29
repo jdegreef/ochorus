@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { search, scripturePageHref, type SearchHit } from '$lib/library-public';
 	import { authorPath } from '$lib/originals';
-	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -30,6 +30,7 @@
 		{ href: '/', label: t('nav.home') },
 		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey) })),
 		{ href: SERIES_DEST.href, label: t(SERIES_DEST.labelKey) },
+		{ href: AZ_INDEX_DEST.href, label: t(AZ_INDEX_DEST.labelKey) },
 		...(getLang() === 'en'
 			? ENGLISH_HUBS.map((d) => ({ href: d.href, label: t(d.labelKey) }))
 			: []),
