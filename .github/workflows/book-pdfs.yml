@@ -22,7 +22,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'backend/library/fixtures/content/books/*.en.json'
+      - 'backend/library/fixtures/content/books/*.json'
       - 'backend/library/fixtures/content/authors.json'
       - 'backend/library/book_export.py'
       - 'backend/library/export_policy.py'
@@ -69,7 +69,7 @@ jobs:
               - 'backend/library/management/commands/export_book.py'
               - '.github/workflows/book-pdfs.yml'
             books:
-              - 'backend/library/fixtures/content/books/*.en.json'
+              - 'backend/library/fixtures/content/books/*.json'
 
       # "" = every stored edition; otherwise slug:en for each changed fixture.
       # export_book skips any that aren't in STORED_PDF_EDITIONS.
@@ -81,11 +81,16 @@ jobs:
           else
             list=""
             for f in ${{ steps.changed.outputs.books_files }}; do
-              b=$(basename "$f" .json)          # <slug>.en
+              b=$(basename "$f" .json)          # <slug>.<lang>
               list="$list${list:+,}${b%.*}:${b##*.}"
             done
             echo "editions=$list" >> "$GITHUB_OUTPUT"
           fi
+
+      # Arabic and Devanagari have no glyphs in EB Garamond; the print CSS
+      # falls back to the system's fonts, and the runner has none for them.
+      - name: Fonts for Arabic and Hindi editions
+        run: sudo apt-get install -y --no-install-recommends fonts-noto-core >/dev/null
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
