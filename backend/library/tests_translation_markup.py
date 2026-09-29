@@ -42,6 +42,7 @@ import re
 from django.test import SimpleTestCase
 
 from library.content_fixtures import rows_by_file
+from library.originals import is_original
 
 # Translations whose markup does NOT match their English source.
 #   sermons: (language, slug)
@@ -91,7 +92,9 @@ def _corpus() -> tuple[dict, dict]:
     for rows in rows_by_file().values():
         for obj in rows:
             f, model = obj["fields"], obj["model"]
-            if model in ("library.book", "library.sermon") and is_original(f):
+            if model in ("library.book", "library.sermon") and is_original(
+                f.get("language", ""), f.get("source_type", "")
+            ):
                 # Not a translation of the English (Pascal's own French): its
                 # markup follows its own edition, so there is nothing to match.
                 originals.add((f["slug"], f["language"]))
@@ -109,14 +112,6 @@ def _corpus() -> tuple[dict, dict]:
                 sermons.setdefault(f["slug"], {})[f["language"]] = f.get("body_html") or ""
     return books, sermons
 
-
-def is_original(fields: dict) -> bool:
-    """A non-English edition that is the work's ORIGINAL text, not a translation.
-
-    `public_domain` is "Public domain (original language)"; every translation
-    ships `ai_unreviewed` and is approved to `ai_reviewed`.
-    """
-    return fields.get("language") != "en" and fields.get("source_type") == "public_domain"
 
 
 def sermon_divergences() -> dict[tuple[str, str], tuple[int, int]]:

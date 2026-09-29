@@ -14,10 +14,12 @@ they are ``public_domain`` — the source type the model defines as "Public doma
 * ``provincial-letters`` (fr) — *Les Provinciales* in Pierre de la Vallée's 1657
   collected edition, as transcribed on French Wikisource (letters 1–18 and the
   Provincial's reply, folded into letter 2 as in the English). That edition
-  predates the nineteenth letter, a fragment published after Pascal's death;
-  its text is taken from the 1875 Charpentier edition (Internet Archive
+  predates the nineteenth letter, a fragment published after Pascal's death,
+  and the transcription lacks the last scan page of letter 9; both are taken
+  from the 1875 Charpentier edition (Internet Archive
   ``lesprovincialesod00mpasc``), checked by hand and committed under
-  ``data/les-provinciales/``. Chapter titles are the lead clause of each
+  ``data/les-provinciales/``. The transcription's page ranges were checked
+  letter by letter against that complete text (see ``NEXT_HEADING_AT_END``). Chapter titles are the lead clause of each
   letter's printed argument (from the 1875 edition).
 * ``life-of-pascal`` (fr only) — Gilberte Périer's *Vie de Blaise Pascal*, from
   the 1871 Hachette *Œuvres complètes* on French Wikisource, in its period
@@ -87,6 +89,8 @@ _FRAGMENT = re.compile(r"(?:^|\]\s*)(\d+(?: bis| ter)?)\s*$")
 # between 53 and 55, and 10 is already set earlier in the section).
 PENSEES_RENUMBER = {("I", "*201] 10", 2): "54"}
 EXPECTED_PENSEES_FRAGMENTS = 983
+# A heading that labels an editor's note, not a fragment: "(1)", "(**2)".
+_NOTE_LABEL = re.compile(r"^\(\**\d+\)$")
 
 
 def _pensees() -> list[tuple[str, str]]:
@@ -102,7 +106,9 @@ def _pensees() -> list[tuple[str, str]]:
                         continue
                     m = _FRAGMENT.search(b.text)
                     if not m:
-                        continue  # an editor's note label, e.g. "(1)"
+                        if not _NOTE_LABEL.match(b.text):
+                            raise CommandError(f"Pensées {page}: unexpected heading {b.text!r}.")
+                        continue  # an editor's note label, not a fragment
                     seen[b.text] = seen.get(b.text, 0) + 1
                     number = PENSEES_RENUMBER.get((page, b.text, seen[b.text]), m.group(1))
                     parts.append(f"<h3>{number}</h3>")
@@ -144,7 +150,30 @@ PROVINCIALES_TITLES = [
 REPLY_TITLE = "Réponse du provincial aux deux premières lettres de son ami"
 # Letter 1 keeps the 1657 typography in its opening line, where the rest of the
 # transcription is modernised; the head is set like its siblings.
-PROVINCIALES_FIXES = [("M<strong>ONSIEVR</strong>, Nous eſtions", "Monsieur, Nous étions")]
+# (page, bad, good) — each must match on its page, so a corrected source fails
+# the build instead of drifting.
+PROVINCIALES_FIXES = [
+    ("1", "M<strong>ONSIEVR</strong>, Nous eſtions", "Monsieur, Nous étions"),
+    # The next letter's heading glued onto letter 5's closing line.
+    ("5", "Je suis, etc. Sixième lettre", "Je suis, etc."),
+]
+
+# Where the Vallée transcription's page ranges are off, measured against the
+# complete 1875 Charpentier text (``lesprovincialesod00mpasc``):
+#   * pages whose last block is the NEXT letter's heading, not text;
+NEXT_HEADING_AT_END = {
+    "2r": "Troisième lettre",
+    "3": "Quatrième lettre",
+    "4": "Cinquième lettre",
+    "6": "Septième lettre",
+    "7": "Huitième lettre",
+    "8": "Neuvième lettre",
+}
+#   * page 5 runs on into the first page of letter 6, which has its own page;
+ENDS_BEFORE = {"5": "De Paris, ce 10 avril 1656."}
+#   * page 9 stops mid-sentence, one scan page short: its last ~550 words are
+#     taken from the 1875 edition, checked by hand and committed.
+TAILS = {"9": ("par force, et", "lettre-09-fin.html")}
 
 _DATELINE = re.compile(r"^(?:(?:De Paris|Du|Le|Ce)\b[^.]{0,40}|\d{1,2}\S* \w+ )1[56]\d\d\b")
 _SALUTATION = re.compile(r"^(?:Monsieur|Mes Révérends Pères|Mon Révérend Père)\b", re.I)
@@ -154,8 +183,11 @@ def _letter(page: str) -> list[str]:
     """One Vallée page: its title lines dropped, its dateline kept in italics."""
     blocks = wikisource.blocks(wikisource.fetch(HOST, VALLEE + page))
     html = [b.html for b in blocks]
-    for bad, good in PROVINCIALES_FIXES:
-        html = [h.replace(bad, good) for h in html]
+    for fix_page, bad, good in PROVINCIALES_FIXES:
+        if fix_page == page:
+            if sum(h.count(bad) for h in html) != 1:
+                raise CommandError(f"Provinciales {page}: fix {bad!r} does not match exactly once.")
+            html = [h.replace(bad, good) for h in html]
     start = next(
         (i for i, h in enumerate(html) if _DATELINE.match(_text(h)) or _SALUTATION.match(_text(h))),
         None,
@@ -163,12 +195,28 @@ def _letter(page: str) -> list[str]:
     if start is None:
         raise CommandError(f"Provinciales {page}: no dateline or salutation found.")
     body = html[start:]
-    # A trailing heading of the NEXT letter ("Troisième lettre pour servir…").
-    if re.match(r"^\S+ lettre\b", _text(body[-1]), re.I) and not re.search(r"[.!?»]$", _text(body[-1])):
+    if page in ENDS_BEFORE:
+        cut = next((i for i, h in enumerate(body) if _text(h) == ENDS_BEFORE[page]), None)
+        if cut is None:
+            raise CommandError(f"Provinciales {page}: {ENDS_BEFORE[page]!r} not found.")
+        body = body[:cut]
+    if page in NEXT_HEADING_AT_END:
+        # The page ends on the heading of the NEXT letter ("Troisième lettre…").
+        if not _text(body[-1]).startswith(NEXT_HEADING_AT_END[page]):
+            raise CommandError(f"Provinciales {page}: expected trailing {NEXT_HEADING_AT_END[page]!r}.")
         body = body[:-1]
     out = []
-    for h in body:
-        out.append(f"<p><em>{_text(h)}</em></p>" if _DATELINE.match(_text(h)) else f"<p>{h}</p>")
+    for i, h in enumerate(body):
+        # Only a letter's opening lines are its dateline; prose later on can
+        # begin with a date too.
+        dated = i < 2 and _DATELINE.match(_text(h))
+        out.append(f"<p><em>{_text(h)}</em></p>" if dated else f"<p>{h}</p>")
+    if page in TAILS:
+        broken, name = TAILS[page]
+        if not out[-1].endswith(f"{broken}</p>"):
+            raise CommandError(f"Provinciales {page}: no longer ends on {broken!r}.")
+        # The tail file opens mid-paragraph and closes it.
+        out[-1] = out[-1].removesuffix("</p>") + " " + (DATA / name).read_text(encoding="utf-8").strip()
     return out
 
 
@@ -266,9 +314,10 @@ BOOKS = {
         ),
         "attribution": (
             "Domaine public — Blaise Pascal, Les Provinciales (1656-1657), dans l’édition "
-            "collective de Pierre de la Vallée (1657) transcrite sur Wikisource ; le "
-            "fragment de la dix-neuvième lettre, publié après la mort de Pascal, d’après "
-            "l’édition Charpentier (1875). La réponse du provincial suit la deuxième lettre."
+            "collective de Pierre de la Vallée (1657) transcrite sur Wikisource ; la fin "
+            "de la neuvième lettre, qui manque à cette transcription, et le fragment de la "
+            "dix-neuvième, publié après la mort de Pascal, d’après l’édition Charpentier "
+            "(1875). La réponse du provincial suit la deuxième lettre."
         ),
     },
     "life-of-pascal": {

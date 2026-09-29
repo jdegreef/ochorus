@@ -44,6 +44,7 @@ from collections.abc import Iterable
 from django.db import transaction
 
 from .models import Article, Book, Chapter, Sermon
+from .originals import ORIGINAL_SOURCE_TYPE, is_original
 
 KINDS = ("book", "sermon", "article")
 _MODEL = {"book": Book, "sermon": Sermon, "article": Article}
@@ -100,14 +101,11 @@ def _row_digests(kind: str) -> dict[int, str]:
     return {pk: _digest((t, body)) for pk, t, body in rows}
 
 
-# A non-English edition in its ORIGINAL language (Pascal's own French) is not a
-# copy of the English — the English is the translation — so it has no English
-# baseline and is never stale. Translations ship `ai_unreviewed`.
-ORIGINAL = Book.SourceType.PUBLIC_DOMAIN
-
-
 def _is_translation(row) -> bool:
-    return row.language != "en" and row.source_type != ORIGINAL
+    # An original-language edition (Pascal's own French) is not a copy of the
+    # English — the English is the translation — so it has no English baseline
+    # and is never stale. See `library.originals`.
+    return row.language != "en" and not is_original(row.language, row.source_type)
 
 
 def refresh(kind: str) -> dict[str, int]:
@@ -159,7 +157,7 @@ def stale_languages(kind: str) -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
     for slug, lang, baseline in (
         model.objects.exclude(language="en")
-        .exclude(source_type=ORIGINAL)
+        .exclude(source_type=ORIGINAL_SOURCE_TYPE)
         .exclude(english_digest="")
         .values_list("slug", "language", "english_digest")
     ):
