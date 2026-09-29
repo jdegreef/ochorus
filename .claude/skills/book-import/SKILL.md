@@ -1693,6 +1693,20 @@ Book directly, then finish like any new book. What bit this loop:
     (a no-op here — the source was already curly-double-quoted), `npm run
     og:covers`, `tests_fixture`. *(watchman-nee-a-life, 21ch from a .docx, 2026-09)*
 
+**An original book WE write (no .docx, no importer)** — e.g. `john-hyde-a-life`
+(#4501, 2026-09-29): draft each chapter as an HTML fragment in a git-excluded
+work dir, then one Django-shell script creates the Book + Chapters (body =
+`sanitize.clean_fragment(html)` so the stored form is settled; `save()` derives
+`body_text`/`word_count`) and serializes with the §"Write its fixture file
+yourself" snippet. Re-run the script after every edit — it deletes and recreates
+the row. Gotchas: **"Appendix A: …" fails `test_english_chapter_titles_are_title_cased`**
+("A" read as the article) — add the exact title to `titlecase.EXCLUDE` (precedent:
+the Müller appendix), don't lowercase it. A Scripture epigraph as
+`<blockquote><p>“…”</p><p>— Ref, ASV</p></blockquote>` survives the chapter
+profile, is styled by `.reading blockquote`, and its ref becomes a tappable
+`.scripture-ref`. Before shipping, have a subagent fact-check the chapters against
+the source files (summaries + line refs, not verbatim dumps) — it caught 36 slips.
+
 **A biography ABOUT a person is filed under that person as the author**, with
 the real author/description in the `subtitle` — NOT under `ochorus-originals`
 and NOT crediting the subject as if they wrote it. Precedent: `susanna-wesley-

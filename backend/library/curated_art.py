@@ -763,6 +763,17 @@ CURATED: dict[str, Artwork] = {
         "the weight of the air. Millet's bare volcanic hillside is that country.",
         focus=0.6,
     ),
+    # ── Batch 21 · Portraits of Courage, volume 2 ──────────────────────────
+    # Volume 1 wears the country Nee never left. No painting of the Punjab
+    # plains in the three collections is a landscape rather than a court or
+    # devotional scene, so Hyde's life wears its own image instead: the
+    # people called him "the man who never sleeps".
+    "john-hyde-a-life": Artwork(
+        "aic", 64754, "George Inness", "Moonrise", "1891",
+        "A lone man crossing a dark field as the moon comes up: the night "
+        "watches of the missionary the Punjab called \"the man who never "
+        "sleeps\", painted the year before he sailed.",
+    ),
 }
 
 
