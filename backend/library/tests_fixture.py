@@ -56,7 +56,6 @@ from library.content_fixtures import (
     work_filename,
 )
 from library.covers import (
-    _FRAME_INSET,
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
     RASTER_SUFFIXES,
@@ -1548,6 +1547,33 @@ class CoverAssetTests(SimpleTestCase):
             "curated_art.ORIGINAL_SVG_GROUND in the same commit",
         )
 
+    def test_type_top_mirrors_the_frontend(self):
+        """`covers.TYPE_TOP` is `coverLayouts.TYPE_TOP`, copied for the scrim.
+
+        The browser sets a type-top cover's words from the top; the tuner and
+        the contrast gate measure its scrim at those rows only for the works
+        Python believes are type-top. A work added on one side and not the
+        other is measured in rows its words don't use.
+        """
+        from library.covers import TYPE_TOP
+
+        ts = (STATIC_DIR.parent / "src" / "lib" / "coverLayouts.ts").read_text()
+        block = re.search(r"TYPE_TOP[^=]*=\s*new Set\(\[(.*?)\]\)", ts, re.S)
+        self.assertIsNotNone(block, "coverLayouts.TYPE_TOP not found")
+        self.assertEqual(
+            sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(TYPE_TOP),
+            "covers.TYPE_TOP and coverLayouts.TYPE_TOP disagree — change both",
+        )
+        # `typeTopFor` is `!layout && TYPE_TOP.has(slug)`: a type-top work only
+        # sets its type from the top while no layout applies. Python cannot run
+        # the layout lookup, so hold every such work pinned to `null`.
+        for slug in TYPE_TOP:
+            self.assertIsNotNone(
+                re.search(rf"'{re.escape(slug)}':\s*null", ts),
+                f"{slug} is TYPE_TOP but not pinned to null in BOOK_LAYOUT — "
+                "under a layout its type is not set from the top",
+            )
+
     def test_original_svg_grounds_carry_their_measured_scrim(self):
         """Each SVG Original has a measured scrim, and the table ships it as-is.
 
@@ -1847,7 +1873,7 @@ class CoverAssetTests(SimpleTestCase):
         from PIL import Image
 
         from library.art_scrim import ART_SCRIM
-        from library.covers import INK_REGIONS, scrimmed
+        from library.covers import ink_boxes, scrimmed
 
         def relative_luminance(channels):
             def channel(v):
@@ -1894,16 +1920,15 @@ class CoverAssetTests(SimpleTestCase):
             # band was also 8px short of the real byline, so five paintings were
             # failing in rows nothing looked at; the subtitle and the brandmark
             # were not measured at all, and 36 of 38 paintings were under 4.5:1
-            # under the subtitle. `INK_REGIONS` is shared with
+            # under the subtitle. `ink_boxes` is shared with
             # `scripts/tune_art_scrim.py` so the bar this gate holds and the bar
-            # that script tunes to cannot drift apart.
+            # that script tunes to cannot drift apart. `ink_boxes` answers per
+            # work, because a type-top cover carries its words in other rows.
             bad = []
-            for name, top, bottom, opacity, bar in INK_REGIONS:
+            for name, box, opacity, bar in ink_boxes(path.stem):
                 if name == "subtitle" and not has_sub:
                     continue
-                got = worst(
-                    plate.crop((_FRAME_INSET, top, W - _FRAME_INSET, bottom)), opacity
-                )
+                got = worst(plate.crop(box), opacity)
                 if got < bar:
                     bad.append(f"{name} {got:.2f}:1 (needs {bar})")
             if bad:

@@ -2795,17 +2795,17 @@
 			"bar": 0
 		},
 		"key-teachings-of-a-b-simpson": {
-			"ground": "2a995725b1bc1419811e0fbcade56c7eb902fa4296f175e359c55a518b3604bc",
+			"ground": "c5a075017fb9ae81c323c6d61dad0ff6734702026172cbd3423df853d7cc4de1",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.3,
+			"scrim": 0.35,
 			"layout": "framed-top",
 			"bar": 0
 		},
 		"key-teachings-of-jonathan-edwards": {
-			"ground": "f0fdd6d0cafe143b685132cd0bb8568a946cb13fbb5fe9c8508d5eccbe01c885",
+			"ground": "9e1b2a422d7ea975b3645288b869291d8020a9f6060c7e457fd62c135ea30e55",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2815,7 +2815,7 @@
 			"bar": 0
 		},
 		"key-teachings-of-richard-baxter": {
-			"ground": "27740ccf4a6a59104867647560f04f21b419ea4200129c5e4d75719acdb270c5",
+			"ground": "3d033b0c667e69a730aea0312dab8c8c8e3073dd6bf4ccd03a6624fbb9caee49",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2825,7 +2825,7 @@
 			"bar": 0
 		},
 		"key-teachings-of-watchman-nee": {
-			"ground": "e70c51c9ad64824a8fcd95bd66519c157c582412ef4c8f16ee943e2c903b0273",
+			"ground": "51d91ccc5caa8b59ba51afcfacf5879a5393c72b5f612f5e5b8c99f8ee9a31ab",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",

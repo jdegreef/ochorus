@@ -50,10 +50,9 @@ BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
 from library.covers import (  # noqa: E402
-    _FRAME_INSET,
-    INK_REGIONS,
     H,
     W,
+    ink_boxes,
     scrimmed,
 )
 
@@ -88,20 +87,18 @@ def _worst(band, opacity: float) -> float:
 
 
 
-def measure(image, strength: float, subtitle: bool) -> dict[str, float]:
+def measure(image, strength: float, subtitle: bool, slug: str) -> dict[str, float]:
     """Worst contrast per region for one painting at one strength."""
     plate = scrimmed(image, strength, subtitle)
     out = {}
-    for name, top, bottom, opacity, _bar in INK_REGIONS:
+    for name, box, opacity, _bar in ink_boxes(slug):
         if name == "subtitle" and not subtitle:
             continue
-        out[name] = _worst(
-            plate.crop((_FRAME_INSET, top, W - _FRAME_INSET, bottom)), opacity
-        )
+        out[name] = _worst(plate.crop(box), opacity)
     return out
 
 
-def needed(image, subtitle: bool) -> float | None:
+def needed(image, subtitle: bool, slug: str) -> float | None:
     """The least strength that clears every bar, or None if none does.
 
     ``subtitle`` says whether this work's covers draw one. It decides both
@@ -109,10 +106,10 @@ def needed(image, subtitle: bool) -> float | None:
     there to be measured against — the two go together, which is why one flag
     carries both.
     """
-    bars = {name: bar for name, _t, _b, _o, bar in INK_REGIONS}
+    bars = {name: bar for name, _box, _o, bar in ink_boxes(slug)}
     for step in range(30, 201, 5):
         strength = step / 100
-        got = measure(image, strength, subtitle)
+        got = measure(image, strength, subtitle, slug)
         if all(v >= bars[k] + MARGIN for k, v in got.items()):
             return strength
     return None
@@ -159,7 +156,7 @@ def main() -> int:
         paths = [ART / f"{s}.jpg" for s in sorted(set(opts.slugs))]
     for path in paths:
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-        strength = needed(image, path.stem in subtitled)
+        strength = needed(image, path.stem in subtitled, path.stem)
         if strength is None:
             unusable.append(path.stem)
             continue

@@ -300,6 +300,49 @@ INK_REGIONS = (
     ("mark", 664, 747, 0.95, 3.0),
 )
 
+#: The painted works whose type is set from the TOP of the cover rather than
+#: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
+#: in Python. A fixture gate holds the two sets equal.
+TYPE_TOP = frozenset({
+    "key-teachings-of-a-b-simpson",
+    "key-teachings-of-jonathan-edwards",
+    "key-teachings-of-richard-baxter",
+    "key-teachings-of-watchman-nee",
+})
+
+#: Where the ink sits on a TYPE_TOP cover, as (top, bottom, ink opacity, bar),
+#: measured the same way as `INK_REGIONS` on the composed Key Teachings covers
+#: (2026-09-29). The title and subtitle strips run to the longest title's rows
+#: (Edwards sets four lines). Measuring these covers at the centred rows puts
+#: the subtitle and brandmark strips over the lit picture, where no word sits,
+#: and asks for twice the scrim the words need. These rows are the English
+#: titles': a translated edition whose title wraps longer can push its subtitle
+#: below y432, so re-measure its composed twin before trusting this table.
+TOP_INK_REGIONS = (
+    ("byline", 102, 131, AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+    ("title", 173, 340, 1.0, TITLE_MIN),
+    ("subtitle", 348, 432, 0.90, AUTHOR_MIN_CONTRAST),
+    ("mark", 664, 747, 0.95, 3.0),
+)
+
+#: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
+#: cover is measured there rather than across the frame: its picture sits
+#: behind the mark, and the lit objects either side of it carry no ink.
+_MARK_X = (232, 368)
+
+
+def ink_boxes(slug: str):
+    """Each inked strip of `slug`'s cover as (name, box, ink opacity, bar).
+
+    ``box`` is a PIL crop box on the 600x800 plate. One answer for the scrim
+    tuner and the fixture gate, so the rows one tunes to are the rows the other
+    holds.
+    """
+    top = slug in TYPE_TOP
+    for name, y0, y1, opacity, bar in TOP_INK_REGIONS if top else INK_REGIONS:
+        x0, x1 = _MARK_X if top and name == "mark" else (_FRAME_INSET, W - _FRAME_INSET)
+        yield name, (x0, y0, x1, y1), opacity, bar
+
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.

@@ -107,10 +107,10 @@ export const AUTHOR_LAYOUT: Record<string, CoverLayout> = {
  * Checked before `AUTHOR_LAYOUT`. The author table exists so one writer's
  * covers look alike; a series needs its volumes to look alike across writers,
  * and the two can disagree. The Key Teachings did: four companions sharing one
- * motif (a gilt tree on a dark ground, `curated_art.ORIGINAL_SVG_GROUND`) came
- * out in three layouts, and the paper box Simpson's and Baxter's authors wear
- * covered their tree entirely. Framed is the composition that shows the whole
- * ground, so it is the series look.
+ * motif (first a gilt tree, since 2026-09-29 each author's desk in lamplight)
+ * came out in three layouts, and the paper box Simpson's and Baxter's authors
+ * wear covered their picture entirely. Framed is the composition that shows the
+ * whole ground, so it is the series look.
  *
  * `coverLayouts.test.ts` fails when a Key Teachings book is missing here, so a
  * new volume cannot slip back into its author's layout.
@@ -128,11 +128,12 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
  *
  * The framed composition centres its title block between the byline and the
  * mark, which suits a painting whose subject is the whole canvas. The Key
- * Teachings' trees stand in the lower part of the ground, so a centred block
- * lands on the tree — and the longer the title, the lower its subtitle falls
- * (Edwards' four-line title put the subtitle across the crown). Set from the
- * top, the words keep the sky and the tree keeps the ground, on every volume
- * alike. Only meaningful framed: a layout places its own type.
+ * Teachings' pictures stand in the lower part of the ground, so a centred block
+ * lands on them — and the longer the title, the lower its subtitle falls
+ * (Edwards' four-line title reaches y432). Set from the top, the words keep the
+ * wall and the picture keeps the desk, on every volume alike. Only meaningful
+ * framed: a layout places its own type. `covers.TYPE_TOP` mirrors this set so
+ * the scrim is measured in these rows.
  */
 export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-a-b-simpson',
