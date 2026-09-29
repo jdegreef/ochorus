@@ -6,7 +6,15 @@
  * caller, which already lower-cases once per keystroke rather than once per book.
  */
 
-export type BookSort = 'shelf' | 'title' | 'longest' | 'shortest';
+export const BOOK_SORTS = ['shelf', 'title', 'longest', 'shortest'] as const;
+export type BookSort = (typeof BOOK_SORTS)[number];
+/** Each sort's label key. */
+export const BOOK_SORT_LABEL: Record<BookSort, string> = {
+	shelf: 'common.sortShelf',
+	title: 'common.sortTitle',
+	longest: 'common.sortLongest',
+	shortest: 'common.sortShortest'
+};
 
 interface SortableBook {
 	title: string;

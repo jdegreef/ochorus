@@ -53,7 +53,7 @@ In this order, and nothing else at the top level:
    its bottom sheet); every other control goes in a `hidden sm:contents`
    wrapper and ALSO inside the sheet, as chip choices (`.sheet-label` +
    `.sheet-choices`). Write each control once as a snippet and render it in
-   both places — Sermons, Biographies, Articles are the models.
+   both places — Sermons, Biographies, Articles, Books are the models.
 6. **`<FilterSummary>`** — rendered **only while a filter is active**, with
    `onClear`. Never "Showing 35 of 35".
 7. **The list** — one card family per content type (§ Cards below). Grouped
@@ -610,8 +610,8 @@ relevant group.
   (Filters button + count badge + bottom sheet + "Show … (N)" footer, closes
   at sm) on Sermons, Biographies and Articles, with `common.filters`. The page
   keeps its controls as snippets rendered inline from sm and in the sheet
-  below it. Still open: Books (no phone sheet yet) and a shared pinned-bar
-  wrapper (Sermons/Biographies each measure their own height)._
+  below it. Books joined 2026-09-29. Still open: a shared pinned-bar wrapper
+  (Sermons/Biographies each measure their own height)._
 - [x] **B7** _(shipped #1519 — count badge)_ Count badges beside labels are styled six ways (`opacity-60`,
   `tabular-nums opacity-70`, `text-small font-normal text-muted`, an
   accent-soft pill, `text-muted/70`, `text-eyebrow`). → one `.count` recipe.

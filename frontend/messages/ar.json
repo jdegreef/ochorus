@@ -452,6 +452,7 @@
   "books_showing": "عرض %shown% من %total% كتابًا",
   "sermons_showing": "عرض %shown% من %total% عظةً",
   "sermons_show_results": "عرض العظات (%n%)",
+  "books_show_results": "عرض الكتب (%n%)",
   "articles_show_results": "عرض المقالات (%n%)",
   "common_clear_filters": "مسح عوامل التصفية",
   "common_remove_filter": "إزالة عامل التصفية",

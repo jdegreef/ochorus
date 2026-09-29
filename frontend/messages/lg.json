@@ -452,6 +452,7 @@
   "books_showing": "Tulaga %shown% ku %total% ebitabo",
   "sermons_showing": "Tulaga %shown% ku %total% okubuulira",
   "sermons_show_results": "Laga obubaka (%n%)",
+  "books_show_results": "Laga ebitabo (%n%)",
   "articles_show_results": "Laga ebiwandiiko (%n%)",
   "common_clear_filters": "Ggyawo ebisengejja",
   "common_remove_filter": "Ggyawo ekisengejja",

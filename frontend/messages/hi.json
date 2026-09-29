@@ -452,6 +452,7 @@
   "books_showing": "%total% में से %shown% पुस्तकें दिखाई जा रही हैं",
   "sermons_showing": "%total% में से %shown% उपदेश दिखाए जा रहे हैं",
   "sermons_show_results": "उपदेश दिखाएँ (%n%)",
+  "books_show_results": "पुस्तकें दिखाएँ (%n%)",
   "articles_show_results": "लेख दिखाएँ (%n%)",
   "common_clear_filters": "फ़िल्टर हटाएँ",
   "common_remove_filter": "यह फ़िल्टर हटाएँ",

@@ -452,6 +452,7 @@
   "books_showing": "ከ%total% መጻሕፍት %shown% በመታየት ላይ",
   "sermons_showing": "ከ%total% ስብከቶች %shown% በመታየት ላይ",
   "sermons_show_results": "ስብከቶችን አሳይ (%n%)",
+  "books_show_results": "መጻሕፍትን አሳይ (%n%)",
   "articles_show_results": "ጽሑፎችን አሳይ (%n%)",
   "common_clear_filters": "ማጣሪያዎችን ያጽዱ",
   "common_remove_filter": "ማጣሪያውን ያስወግዱ",
