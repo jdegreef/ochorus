@@ -164,6 +164,16 @@ prerendered pages reference it.
   `grep -n '<object id>' backend/library/curated_art.py`; searches return used works
   (the Met hands back replaced ones too). #1771 re-used `till-he-come`'s Achenbach on
   the same author's shelf and it stood for weeks until the gate (Spurgeon, 2026-09-26).
+- **"AIC is down/throttled" may be curl, not AIC.** The search URL's
+  `query[term][is_public_domain]=true` has square brackets, which curl treats as a
+  glob and silently mangles — the response is empty and `json.load` dies. Use
+  `curl -g` (or `--globoff`). Cost a whole sourcing detour (Praying Hyde, 2026-09-29).
+- **A new book needs no plate first.** `paint_covers <slug>` on a freshly written
+  fixture with `cover_url: ""` fetches, crops, repoints and draws the twin directly.
+- **A numbered SERIES spanning eras needs a `BOOK_STYLE` pin.** The face comes from
+  the author's birth-year era, so volume 2 of *Portraits of Courage* (Hyde, b.1865 →
+  `revival`) would not match volume 1 (Nee, b.1903 → `house`). Pin later volumes to
+  volume 1's face in `coverStyles.BOOK_STYLE` (#4501).
 - **The Met API 403s after a few dozen object fetches in a burst.** Throttle (~1/s) or
   switch to AIC (`api.artic.edu/api/v1/artworks/search?q=…&fields=id,title,
   artist_title,date_display,image_id,is_public_domain,classification_title`; IIIF image
