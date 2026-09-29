@@ -222,6 +222,18 @@ class PilotTests(TestCase):
             self.assertTrue(pdf, f"{slug} ({lang}) is exportable but has no pdf_url")
             self.assertTrue((static / pdf.lstrip("/")).is_file(), f"{pdf} is missing — run export_book")
 
+    def test_every_stored_pdf_edition_links_its_bucket_file(self):
+        # book-pdfs.yml uploads each to PDF_STORAGE_URL under export_filename;
+        # ?download= makes Supabase send it as an attachment, since a
+        # cross-origin <a download> is ignored.
+        for slug, lang in sorted(export_policy.STORED_PDF_EDITIONS):
+            name = book_export.export_filename(mock.Mock(slug=slug, language=lang), "pdf")
+            self.assertEqual(
+                _fixture_fields(slug, lang).get("pdf_url"),
+                f"{export_policy.PDF_STORAGE_URL}{name}?download={name}",
+                f"{slug} ({lang})",
+            )
+
     def test_english_classics_are_public_domain_texts(self):
         # Their back matter says "in the public domain", so each must be a
         # published, public-domain English row that Ochorus didn't write.

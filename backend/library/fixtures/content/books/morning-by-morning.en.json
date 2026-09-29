@@ -50,7 +50,7 @@
   "source_url": "https://ccel.org/ccel/spurgeon/morneve/",
   "attribution": "Text of C. H. Spurgeon's Morning and Evening (1866, 1868), transcribed by the Christian Classics Ethereal Library.",
   "cover_url": "/covers/art/morning-by-morning.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/morning-by-morning.pdf?download=morning-by-morning.pdf",
   "cover_color": "#b45309",
   "sort_order": 65,
   "is_published": true,

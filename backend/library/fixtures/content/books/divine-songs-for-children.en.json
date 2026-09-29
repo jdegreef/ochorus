@@ -50,7 +50,7 @@
   "source_url": "https://www.gutenberg.org/ebooks/13439",
   "attribution": "Public domain — Isaac Watts's Divine Songs (1715); text from Project Gutenberg (ebook 13439). The 28 Divine Songs are grouped into two reading chapters and joined by Watts's two original Moral Songs; the wording is unchanged.",
   "cover_url": "/covers/art/divine-songs-for-children.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/divine-songs-for-children.pdf?download=divine-songs-for-children.pdf",
   "cover_color": "#3a6ea5",
   "sort_order": 70,
   "is_published": true,
