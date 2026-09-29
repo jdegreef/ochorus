@@ -195,6 +195,21 @@ def book_editions() -> list[tuple[Path, str, str, dict]]:
     return editions
 
 
+def book_sort_order(slug: str) -> int:
+    """The ``sort_order`` a build command should give the work ``slug``.
+
+    Its committed value if any edition already ships, so a rebuild keeps it;
+    otherwise one past the highest committed value. Read from the fixtures,
+    never ``Max("sort_order")`` over the dev DB: a fresh worktree's DB may hold
+    nothing but the book being built, and max+1 over it ships ``sort_order`` 1
+    (the Pensées did).
+    """
+    orders = {s: f.get("sort_order") or 0 for _, s, _, f in book_editions()}
+    if slug in orders:
+        return orders[slug]
+    return max(orders.values(), default=0) + 1
+
+
 def persist_fields(path: Path, values: dict[str, str]) -> bool:
     """Rewrite string fields of a work fixture's Book/Sermon row in place,
     returning True if the file changed.
