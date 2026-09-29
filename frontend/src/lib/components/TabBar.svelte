@@ -36,7 +36,9 @@
 	const RIGHT = $derived<Tab[]>([
 		{
 			href: '/favorites',
-			label: t('fav.yourFavorites'),
+			// A tab-only word: the page's own title ("My bookshelf") ran to four
+			// words in several languages and truncated in a quarter of the bar.
+			label: t('nav.tabShelf'),
 			icon: 'bookmark',
 			active: under(['/favorites', '/notebook'])
 		}
