@@ -1,4 +1,6 @@
 <script lang="ts">
+	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -23,7 +25,7 @@
 	import FilterSummary from './FilterSummary.svelte';
 	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
-	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
+	import { BOOK_SORTS, BOOK_SORT_LABEL, matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 	import { pager } from '$lib/paging.svelte';
 	import ShowMore from '$lib/components/ShowMore.svelte';
 	import { groupBySeries, seriesAmong } from '$lib/series';
@@ -57,9 +59,14 @@
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
 	// localStorage — they describe the reader, not the shelf.
+	const SOURCES: [Source, string][] = [
+		['all', 'books.sourceAll'],
+		['public_domain', 'books.sourcePublic'],
+		['translated', 'books.sourceTranslated']
+	];
 	const filters = urlFilters({
 		defaults: { q: '', source: 'all' as Source, topic: '' },
-		allowed: { source: ['all', 'public_domain', 'translated'] },
+		allowed: { source: SOURCES.map(([v]) => v) },
 		url: () => $page.url
 	});
 	const clearFilters = () => filters.reset();
@@ -69,10 +76,7 @@
 	}
 	const setView = (v: View) => ((view = v), save());
 	const setGroup = (g: Group) => ((group = g), save());
-	function onSort(e: Event) {
-		sort = (e.currentTarget as HTMLSelectElement).value as Sort;
-		save();
-	}
+	const setSort = (v: Sort) => ((sort = v), save());
 
 	// --- Continue reading (device-local; hydrated after mount) ------------------
 	let continueBooks = $state<{ book: BookSummary; order: number }[]>([]);
@@ -256,6 +260,62 @@
 	{/if}
 {/snippet}
 
+<!-- Shared by the inline row (sm up) and the phone sheet. -->
+{#snippet sourceSeg(cls: string, btnCls: string)}
+	<div class="seg {cls}">
+		{#each SOURCES as [v, k] (v)}
+			<button
+				class={btnCls}
+				class:active={filters.values.source === v}
+				onclick={() => (filters.values.source = v)}
+				aria-pressed={filters.values.source === v}>{t(k)}</button
+			>
+		{/each}
+	</div>
+{/snippet}
+{#snippet groupSeg(cls: string, btnCls: string)}
+	<div class="seg {cls}">
+		<button
+			class={btnCls}
+			class:active={activeGroup === 'author'}
+			onclick={() => setGroup('author')}
+			aria-pressed={activeGroup === 'author'}>{t('books.groupAuthor')}</button
+		>
+		{#if hasSeries}
+			<button
+				class={btnCls}
+				class:active={activeGroup === 'series'}
+				onclick={() => setGroup('series')}
+				aria-pressed={activeGroup === 'series'}>{t('books.groupSeries')}</button
+			>
+		{/if}
+		<button
+			class={btnCls}
+			class:active={activeGroup === 'all'}
+			onclick={() => setGroup('all')}
+			aria-pressed={activeGroup === 'all'}>{t('books.groupAll')}</button
+		>
+	</div>
+{/snippet}
+{#snippet viewSeg(cls: string, btnCls: string)}
+	<div class="seg {cls}">
+		<button
+			class={btnCls}
+			class:active={view === 'grid'}
+			onclick={() => setView('grid')}
+			aria-label={t('books.viewGrid')}
+			aria-pressed={view === 'grid'}><Icon name="grid" /></button
+		>
+		<button
+			class={btnCls}
+			class:active={view === 'list'}
+			onclick={() => setView('list')}
+			aria-label={t('books.viewList')}
+			aria-pressed={view === 'list'}><Icon name="list" /></button
+		>
+	</div>
+{/snippet}
+
 <!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
 {#snippet clearFiltersAction()}
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
@@ -386,63 +446,38 @@
 				aria-label={t('books.filterPlaceholder')}
 			/>
 
-			{#if showSourceFilter}
-				<div class="seg">
-					{#each [['all', t('books.sourceAll')], ['public_domain', t('books.sourcePublic')], ['translated', t('books.sourceTranslated')]] as opt (opt[0])}
-						<button
-							class:active={filters.values.source === opt[0]}
-							onclick={() => (filters.values.source = opt[0] as Source)}
-							aria-pressed={filters.values.source === opt[0]}>{opt[1]}</button
-						>
-					{/each}
-				</div>
-			{/if}
-
-			<select
-				value={sort}
-				onchange={onSort}
-				class="filter-field"
-				aria-label={t('common.sort')}
+			<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+			<FilterSheet
+				count={filters.values.source !== 'all' ? 1 : 0}
+				shown={filtered.length}
+				showLabel={t('books.showResults')}
+				filtered={searching}
+				onClear={clearFilters}
 			>
-				<option value="shelf">{t('common.sortShelf')}</option>
-				<option value="title">{t('common.sortTitle')}</option>
-				<option value="longest">{t('common.sortLongest')}</option>
-				<option value="shortest">{t('common.sortShortest')}</option>
-			</select>
-
-			<div class="seg">
-				<button
-					class:active={activeGroup === 'author'}
-					onclick={() => setGroup('author')}
-					aria-pressed={activeGroup === 'author'}>{t('books.groupAuthor')}</button
-				>
-				{#if hasSeries}
-					<button
-						class:active={activeGroup === 'series'}
-						onclick={() => setGroup('series')}
-						aria-pressed={activeGroup === 'series'}>{t('books.groupSeries')}</button
-					>
+				{#if showSourceFilter}
+					{@render sourceSeg('w-full', 'flex-1')}
 				{/if}
-				<button
-					class:active={activeGroup === 'all'}
-					onclick={() => setGroup('all')}
-					aria-pressed={activeGroup === 'all'}>{t('books.groupAll')}</button
-				>
-			</div>
+				<SheetChoices
+					label={t('common.sort')}
+					options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
+					value={sort}
+					onselect={setSort}
+				/>
+				{@render groupSeg('w-full', 'flex-1')}
+				{@render viewSeg('w-full', 'flex-1')}
+			</FilterSheet>
 
-			<div class="seg">
-				<button
-					class:active={view === 'grid'}
-					onclick={() => setView('grid')}
-					aria-label={t('books.viewGrid')}
-					aria-pressed={view === 'grid'}><Icon name="grid" /></button
-				>
-				<button
-					class:active={view === 'list'}
-					onclick={() => setView('list')}
-					aria-label={t('books.viewList')}
-					aria-pressed={view === 'list'}><Icon name="list" /></button
-				>
+			<div class="hidden sm:contents">
+				{#if showSourceFilter}
+					{@render sourceSeg('', '')}
+				{/if}
+				<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+					{#each BOOK_SORTS as v (v)}
+						<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
+					{/each}
+				</select>
+				{@render groupSeg('', '')}
+				{@render viewSeg('', '')}
 			</div>
 		</div>
 

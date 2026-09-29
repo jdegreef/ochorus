@@ -30,7 +30,7 @@
 	import { portraitPosition } from '$lib/portraits';
 	import { groupBooksByAuthor } from '$lib/topicBookGroups';
 	import { topicSectionOrder, topicLeadsWithSeries } from '$lib/topicSections';
-	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
+	import { BOOK_SORTS, BOOK_SORT_LABEL, matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 
 	let { data } = $props();
 	const t = i18n.t;
@@ -316,10 +316,9 @@
 							aria-label={t('books.filterPlaceholder')}
 						/>
 						<select value={sort} onchange={onSort} class="filter-field" aria-label={t('common.sort')}>
-							<option value="shelf">{t('common.sortShelf')}</option>
-							<option value="title">{t('common.sortTitle')}</option>
-							<option value="longest">{t('common.sortLongest')}</option>
-							<option value="shortest">{t('common.sortShortest')}</option>
+							{#each BOOK_SORTS as v (v)}
+								<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
+							{/each}
 						</select>
 					{/if}
 					{#if bookGroups}

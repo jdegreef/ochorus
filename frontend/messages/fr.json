@@ -452,6 +452,7 @@
   "books_showing": "Affichage de %shown% livres sur %total%",
   "sermons_showing": "Affichage de %shown% sermons sur %total%",
   "sermons_show_results": "Voir les sermons (%n%)",
+  "books_show_results": "Voir les livres (%n%)",
   "articles_show_results": "Voir les articles (%n%)",
   "common_clear_filters": "Effacer les filtres",
   "common_remove_filter": "Retirer le filtre",

@@ -452,6 +452,7 @@
   "books_showing": "Inaonyesha %shown% kati ya %total% vitabu",
   "sermons_showing": "Inaonyesha %shown% kati ya %total% mahubiri",
   "sermons_show_results": "Onyesha mahubiri (%n%)",
+  "books_show_results": "Onyesha vitabu (%n%)",
   "articles_show_results": "Onyesha makala (%n%)",
   "common_clear_filters": "Futa vichujio",
   "common_remove_filter": "Ondoa kichujio",
