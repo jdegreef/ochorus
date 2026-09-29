@@ -1,0 +1,633 @@
+{
+ "kind": "sermon",
+ "slug": "christ-the-believers-wisdom",
+ "language": "fr",
+ "job_issue": 3287,
+ "references": [
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "why": "Whitefield quotes the verse without 'wisdom'."
+  },
+  {
+   "reference": "Psalm 89:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 89:4",
+   "status": "self_rendered",
+   "why": "Segond interposes « Voici ce que » before « j’ai juré » and ends on a colon; the KJV words are quoted as one complete statement (KJV Ps 89:3 = Segond 89:4)."
+  },
+  {
+   "reference": "Isaiah 53:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 17:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 25:34",
+   "status": "self_rendered",
+   "why": "Whitefield adds 'children' ('ye blessed children of my Father'); otherwise Segond's wording."
+  },
+  {
+   "reference": "Matthew 20:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Habakkuk 1:16",
+   "status": "self_rendered",
+   "why": "Allusion re-personed to the plural ('sacrifice to their own drag'); Segond « il sacrifie à son filet »."
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:31",
+   "status": "self_rendered",
+   "why": "Whitefield's paraphrase adds 'must' and 'only', on which his point about election rests."
+  },
+  {
+   "reference": "Luke 12:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 5:8",
+   "status": "self_rendered",
+   "why": "Allusion recast as an infinitive."
+  },
+  {
+   "reference": "Proverbs 23:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 12:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 49:11",
+   "status": "self_rendered",
+   "why": "Paraphrase ('rich men must also die'); Segond has « les sages meurent … Et ils laissent à d’autres leurs biens » (KJV Ps 49:10 = Segond 49:11)."
+  },
+  {
+   "reference": "Psalm 147:4",
+   "status": "self_rendered",
+   "why": "Recast as infinitives applied to the learned man."
+  },
+  {
+   "reference": "Romans 12:3",
+   "status": "self_rendered",
+   "why": "Re-personed and follows the KJV 'more highly … than he ought to think'."
+  },
+  {
+   "reference": "Ephesians 5:8",
+   "status": "self_rendered",
+   "why": "Re-personed to the third person."
+  },
+  {
+   "reference": "Ephesians 2:1",
+   "status": "self_rendered",
+   "why": "Re-personed to the third person."
+  },
+  {
+   "reference": "Ephesians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 64:5",
+   "status": "self_rendered",
+   "why": "Re-personed ('all their righteousnesses'); KJV Isa 64:6 = Segond 64:5."
+  },
+  {
+   "reference": "Revelation 3:17",
+   "status": "self_rendered",
+   "why": "Put in the plural and in Whitefield's order."
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 44:22",
+   "status": "self_rendered",
+   "why": "Re-personed; KJV 'as a thick cloud' (Segond « comme un nuage … comme une nuée »)."
+  },
+  {
+   "reference": "Hebrews 8:12",
+   "status": "self_rendered",
+   "why": "Re-personed to the present and third person."
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "why": "Re-personed; Whitefield writes 'in Christ Jesus' for 'in him'."
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Colossians 2:10",
+   "status": "self_rendered",
+   "why": "Re-personed ('they are complete in him')."
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "why": "Whitefield writes 'It is Christ that justifies'; Romans 8:33 reads 'It is God that justifieth' (« C’est Dieu qui justifie! »). Kept as preached, not corrected."
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 15:56",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 2:10",
+   "status": "self_rendered",
+   "why": "KJV 'Behold' kept and the verse abridged as Whitefield quotes it."
+  },
+  {
+   "reference": "Luke 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 23:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "self_rendered",
+   "why": "Re-personed to 'you' with 'henceforward' added."
+  },
+  {
+   "reference": "Romans 8:35",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:39",
+   "status": "self_rendered",
+   "why": "Whitefield re-persons 'us' to 'you'; otherwise Segond."
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 6:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "self_rendered",
+   "why": "Re-personed and blended ('their Redeemer, their Maker, is their husband')."
+  },
+  {
+   "reference": "Exodus 33:11",
+   "status": "self_rendered",
+   "why": "Whitefield adds 'and walketh'."
+  },
+  {
+   "reference": "Colossians 1:13",
+   "status": "self_rendered",
+   "why": "Paraphrase ('from the kingdom of Satan … God's dear Son')."
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "why": "Re-personed ('your hearts')."
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Chronicles 6:18",
+   "status": "self_rendered",
+   "why": "Loose quotation ('And will the Lord, indeed, dwell thus with men!'); Segond « Dieu habiterait-il véritablement avec l’homme sur la terre? »."
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 7:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 4:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 3:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 19:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 18:31",
+   "status": "self_rendered",
+   "why": "Whitefield blends Ps 18:30 KJV (Segond 18:31, 'Les voies de Dieu sont parfaites') with Dt 32:4 ('ses œuvres sont parfaites') into one phrase."
+  },
+  {
+   "reference": "Genesis 1:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "why": "Whitefield quotes the verse with 'wisdom' elided; Segond's line has 'sagesse, justice'."
+  },
+  {
+   "reference": "1 Corinthians 6:13",
+   "status": "self_rendered",
+   "why": "Whitefield adds 'also' ('the Lord is also for the body'); Segond 'le Seigneur pour le corps' has no verb."
+  },
+  {
+   "reference": "Job 19:26",
+   "status": "self_rendered",
+   "why": "Whitefield's argument (resurrection of the body) rests on the KJV 'in my flesh shall I see God'; Segond reads 'Quand je n'aurai plus de chair, je verrai Dieu', which would reverse his point. Also re-personed."
+  },
+  {
+   "reference": "2 Timothy 2:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 11:26",
+   "status": "self_rendered",
+   "why": "Re-cast as Whitefield's rhetorical question (Segond 'vous annoncez la mort du Seigneur, jusqu'à ce qu'il vienne')."
+  },
+  {
+   "reference": "1 Timothy 1:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 19:28",
+   "status": "self_rendered",
+   "why": "Whitefield's point turns on the KJV word 'regeneration'; Segond has 'au renouvellement de toutes choses'."
+  },
+  {
+   "reference": "Luke 24:39",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 15:20",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 15:22",
+   "status": "self_rendered",
+   "why": "Whitefield puts his own expanded paraphrase inside the quotation marks."
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 5:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 4:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 17:2",
+   "status": "self_rendered",
+   "why": "A free blend of the transfiguration accounts (Mt 17:2, Mk 9:3, Lk 9:29) with 'brighter than the sun'; no single Segond line matches."
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "self_rendered",
+   "why": "Whitefield follows the KJV order and 'grave' (sting first, 'O grave' second); Segond has 'O mort' twice with victory first."
+  },
+  {
+   "reference": "Revelation 4:1",
+   "status": "self_rendered",
+   "why": "Whitefield says 'Come up higher' (KJV 'hither'); Segond 'Monte ici' loses the 'higher' his image of ascending needs."
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "self_rendered",
+   "why": "Whitefield re-persons the verse to 'us'; Segond has 'Qui me délivrera du corps de cette mort?'"
+  },
+  {
+   "reference": "1 Peter 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 12:7",
+   "status": "self_rendered",
+   "why": "Re-applied to believers in the third person (Segond 'un ange de Satan pour me souffleter')."
+  },
+  {
+   "reference": "Ephesians 6:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 8:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Corinthians 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "self_rendered",
+   "why": "Whitefield's free sentence form; Segond agrees the participles with 'choses' ('vues', 'entendues')."
+  },
+  {
+   "reference": "1 Kings 10:7",
+   "status": "self_rendered",
+   "why": "Whitefield expands and re-persons the queen's words (Segond 'on ne m'en a pas dit la moitié')."
+  },
+  {
+   "reference": "1 Corinthians 13:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 13:12",
+   "status": "self_rendered",
+   "why": "Re-personed to 'we' (Segond 'je connaîtrai comme j'ai été connu')."
+  },
+  {
+   "reference": "1 Corinthians 15:28",
+   "status": "self_rendered",
+   "why": "Future indicative in Whitefield's sentence; Segond has the subjunctive 'afin que Dieu soit tout en tous'."
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "why": "Re-personed to address the scoffers (Segond 'ils ne savent ce qu'ils font')."
+  },
+  {
+   "reference": "Matthew 5:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 4:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "self_rendered",
+   "why": "Re-personed to the plural (Segond 'te rendre sage à salut')."
+  },
+  {
+   "reference": "Numbers 23:10",
+   "status": "self_rendered",
+   "why": "Re-personed to 'you' (Segond 'Que je meure de la mort des justes, Et que ma fin soit semblable à la leur!')."
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:14",
+   "status": "self_rendered",
+   "why": "Said of Christ ('il'); Segond's 'pleine' agrees with 'la parole'."
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 130:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 5:40",
+   "status": "self_rendered",
+   "why": "Recast as a question about Christ in the third person (Segond 'Et vous ne voulez pas venir à moi pour avoir la vie!')."
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "why": "Whitefield blends Is 55:1 with Rev 22:17 ('waters of life', 'freely')."
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 6:9-10",
+   "status": "self_rendered",
+   "why": "Whitefield's own selection and order from the Corinthian vice list."
+  },
+  {
+   "reference": "Genesis 27:38",
+   "status": "self_rendered",
+   "why": "Esau's words re-applied to Christ (Segond 'N'as-tu que cette seule bénédiction, mon père?')."
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "why": "Whitefield re-persons the text into a future promise to the hearer."
+  },
+  {
+   "reference": "Hebrews 3:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "why": "Re-personed with Christ in the third person (Segond 'Ce n'est pas vous qui m'avez choisi; mais moi, je vous ai choisis')."
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 22:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 2:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
