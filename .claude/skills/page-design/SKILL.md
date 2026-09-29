@@ -49,6 +49,11 @@ In this order, and nothing else at the top level:
    `<select>` · group `.seg` · then a `.chip` row underneath for taxonomy. No
    visible "Sort:" / "Length:" label — put it in `aria-label`. No "Clear"
    button in the row: clearing is `FilterSummary`'s job.
+   **On a phone** the row is search + `<FilterSheet>` (the Filters button and
+   its bottom sheet); every other control goes in a `hidden sm:contents`
+   wrapper and ALSO inside the sheet, as chip choices (`.sheet-label` +
+   `.sheet-choices`). Write each control once as a snippet and render it in
+   both places — Sermons, Biographies, Articles are the models.
 6. **`<FilterSummary>`** — rendered **only while a filter is active**, with
    `onClear`. Never "Showing 35 of 35".
 7. **The list** — one card family per content type (§ Cards below). Grouped
@@ -489,6 +494,21 @@ and expect a blank screenshot right after a JS scroll; read the footer with
   member PUBLIC_API_BASE_URL`) until you `cp` the main checkout's
   `frontend/.env` in; that one error is env-only, not your diff.
 
+## Phone traps (mobile review, 2026-09-28)
+
+- A component's scoped `display:` beats Tailwind's `hidden` / `sm:hidden` —
+  leave `display` out of the scoped rule, or switch it in the component's own
+  `@media`.
+- Anything made `inline-flex` (touch `.seg button`, `.chip`, `.tag`) drops the
+  space between a label and a child `<span class="count">` — give the count a
+  margin or the box a `gap`, never rely on the literal space.
+- Small text follows the phone type tokens (`--fs-micro` 12px, `--fs-eyebrow`
+  13px below sm). A width-bound label (the tab bar) should use micro, not
+  eyebrow; check truncation in fr/sw/lg/am/uk on an iPhone SE.
+- Measure, don't eyeball: a headless iPhone-13 pass listing visible text under
+  13px and controls under 40px tall finds the real offenders (book-cover
+  lettering scales with the cover — ignore it).
+
 ## Verify before merge
 
 Open the new page **and its two neighbours** (the shelf it hangs off, and a
@@ -568,7 +588,7 @@ relevant group.
 - [x] **B5** _(shipped #1519 — sort/label consistency)_ Sort is a `<select>` on three shelves and a labelled `.seg` on
   Search; visible `Length:` / `Sort:` labels exist only on Plans/Search. →
   `<select>` + `aria-label`.
-- [ ] **B6** Only Biographies pins its filter bar and collapses it on mobile;
+- [~] **B6** Only Biographies pins its filter bar and collapses it on mobile;
   Books has more controls and neither. Books/Sermons hard-code `scroll-mt-20`
   where Biographies/Search measure the bar. → a `FilterBar` component.
   _2026-09-27: Sermons now pins a one-line phone bar (search + Filters) and
@@ -576,6 +596,12 @@ relevant group.
   while Biographies still reveals them inline. The eventual `FilterBar`
   should pick one of the two for all three shelves, and give "Filters" a
   `common.*` key (Sermons borrows `bios.filters`)._
+  _2026-09-28: the phone half is one component now — `FilterSheet.svelte`
+  (Filters button + count badge + bottom sheet + "Show … (N)" footer, closes
+  at sm) on Sermons, Biographies and Articles, with `common.filters`. The page
+  keeps its controls as snippets rendered inline from sm and in the sheet
+  below it. Still open: Books (no phone sheet yet) and a shared pinned-bar
+  wrapper (Sermons/Biographies each measure their own height)._
 - [x] **B7** _(shipped #1519 — count badge)_ Count badges beside labels are styled six ways (`opacity-60`,
   `tabular-nums opacity-70`, `text-small font-normal text-muted`, an
   accent-soft pill, `text-muted/70`, `text-eyebrow`). → one `.count` recipe.
