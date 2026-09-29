@@ -14,20 +14,13 @@ WordPress filename is kept for provenance), set that book's `pdf_url` back to
 commit both together. `pdf_url` is an updatable seed field, so the next deploy
 picks it up.
 
-GENERATED PDFs (by `export_book`, one per exportable edition in
-`backend/library/export_policy.py`): `the-secret-of-guidance.pdf` and every edition
-of Gareth Evans' five books — `<slug>.pdf` for English, `<slug>.<lang>.pdf` for a
-translation. `soar-like-the-eagle.pdf` is the one surviving WordPress file; the
-English *Soar Like the Eagle* now links the generated `soar-like-the-eagle-3.pdf`
-instead, and the old file stays only so inbound links to it keep working.
-
-Only `soar-like-the-eagle.pdf` and `the-secret-of-guidance.pdf` were present before
-the Gareth Evans export.
-The second is not the WordPress file: it is GENERATED from the live chapters by
-`uv run python manage.py export_book the-secret-of-guidance --format pdf` (run with
-`PUBLIC_SITE_URL=https://ochorus.com` so the colophon links resolve) — the pilot for
-free EPUB/PDF downloads, see `backend/library/book_export.py`. Re-run the command
-after a text fix to that book, or the PDF drifts from what the reader serves.
+GENERATED PDFs no longer live here. Every exportable edition's PDF is built by
+`.github/workflows/book-pdfs.yml` and stored in the Supabase Storage bucket
+`book-pdfs` (`backend/library/export_policy.py`: `STORED_PDF_EDITIONS`,
+`PDF_STORAGE_URL`), rebuilt whenever its text changes; `pdf_url` points there.
+`render.yaml` 301s each old `/pdfs/<file>` to its bucket copy, so links shared
+before the move keep working. `soar-like-the-eagle.pdf` is the one surviving
+WordPress file, kept only so inbound links to it keep working.
 
 The original URLs below are not dead ends: `render.yaml` 301s each one to its book
 page, so an inbound link or a search result lands on the work itself rather than on
@@ -66,6 +59,6 @@ beside the rules, to be added when those books go live.
 | `the-masters-indwelling.pdf` | https://ochorus.com/wp-content/uploads/2025/08/THE-MASTERS-INDWELLING-ANDREW-MURRAY.pdf |
 | `the-normal-christian-life.pdf` | https://ochorus.com/wp-content/uploads/2025/08/The-Normal-Christian-Life-Watchman-Nee-2.pdf |
 | `the-person-and-work-of-the-holy-spirit.pdf` | https://ochorus.com/wp-content/uploads/2025/09/The-Person-and-Work-of-the-Holy-Spirit-BB.pdf |
-| `the-secret-of-guidance.pdf` ✅ generated | https://ochorus.com/wp-content/uploads/2025/08/The-secret-of-guidance-by-Frederick-Brotherton-Meyer-2.pdf |
+| `the-secret-of-guidance.pdf` (now in the bucket) | https://ochorus.com/wp-content/uploads/2025/08/The-secret-of-guidance-by-Frederick-Brotherton-Meyer-2.pdf |
 | `the-unselfishness-of-god.pdf` | https://ochorus.com/wp-content/uploads/2026/06/The-Unselfishness-of-God-by-Hannah-Whitall-Smith.pdf |
 | `women-who-moved-heaven-2.pdf` | https://ochorus.com/wp-content/uploads/2026/06/WOMEN-WHO-MOVED-HEAVEN-BY-OCHORUS-MINISTRIES.pdf |
