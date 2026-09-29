@@ -921,36 +921,34 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "pursuit of wisdom. Deep night-blue with one warm light; the drama is in "
         "the sky so the figure stays clear of the title.",
     ),
-    # Rooted 1–6 (ages 9–12). One frame for the series: a cutaway of a tree on
-    # the soil line, its roots reaching down through layered earth toward a
-    # stream (Psalm 1:3). Across the six the tree grows from sprout to laden
-    # tree and the roots go deeper until, in book 6, they reach the water; each
-    # volume changes only the sky and the soil's tint. White type sits on soil.
+    # Rooted 1–6 (ages 9–12). Loose watercolour on textured paper with a deckled
+    # edge: one tree that visibly grows book by book, each volume in its own
+    # landscape and palette under a shared painted frame. The founder chose this
+    # over nine other concepts (2026-09-28), replacing the first set, a cutaway of
+    # tree, soil and underground stream (#4295).
     "rooted-1": Original(
-        "619a84894ad1fd0da0a52b9772a30155050e7c2adab5ae277402afe4bb0083f9",
-        "Planted: a sprout at dawn, its first short roots in the dark soil.",
+        "0437dcb2576dddecfaedb8aeee1b063675a3e2e25a202065d526f50a3f18fa22",
+        "Planted: a two-leaf seedling breaking from its seed in a dawn meadow.",
     ),
     "rooted-2": Original(
-        "a810313bb79d34b2abdf11ac7d5ecc372f3501946d0f03d80e8e4239ffb03c73",
-        "Following Jesus: a seedling under a single star, roots going down.",
+        "b198da8e4cc6023ec769ae2cb391594423e0eba3128124e1b70c94dac331e1a1",
+        "Following Jesus: a young tree beside a path winding into the hills.",
     ),
     "rooted-3": Original(
-        "35f741e81b61d4d7d129ffa4964581cac24ce17dd85b634e0dac05f40e74fac5",
-        "Growing Fruit: a young tree at dusk bearing its first fruit.",
+        "89d001022985690f7ff356ace361c28edb7f950dda84ffde5679eb64381ea442",
+        "Growing Fruit: the tree's first fruit at an orchard's edge.",
     ),
     "rooted-4": Original(
-        "c5c9e39ae9957f4311824c6f08acf75eda7bcd45020c172bd1120e3496673a81",
-        "Strong in the Storm: lightning and rain above; below, the deepest roots "
-        "of the set holding fast.",
+        "6c8c74a011051ddc5ee068ef629266b8728e68868fcdf6106845331ba8555fd3",
+        "Strong in the Storm: the tree holding in wind and rain, the grass bent.",
     ),
     "rooted-5": Original(
-        "719b744b5ddf144954d72495210dbb614741dbbe4b4941e084e11bee90f186ac",
-        "Branching Out: a wide crown with birds in it — a life reaching others.",
+        "17dd6c9e11b7cf291eb09ed8a559c8c16fe3b4c10cc8076ac964807eeb12b94d",
+        "Branching Out: a wide crown over a river valley, birds in the air.",
     ),
     "rooted-6": Original(
-        "c25bcc190f1693b39260b7f8209c60ac5171217ea39563830d9d07e293b55440",
-        "Bearing Fruit: a laden tree in gold light, its roots at last in the "
-        "stream.",
+        "0571cd2ba638736649c0165c308d3a13a6b80523aeb8a5110d762222df6599a2",
+        "Bearing Fruit: a laden tree over a harvest field, windfalls at its foot.",
     ),
     # The two East African Revival Originals share one frame: the hills of
     # Buganda at night under a faint Milky Way, lit by fire. One fire becomes
