@@ -1326,6 +1326,9 @@ BODY_CORRECTIONS: dict[str, dict] = {
             # sw
             ('<p>Kwa kawaida tungeweza kudhani',
              '<blockquote><em>"Mtu ye yote akitaka kunifuata, na ajikane mwenyewe, ajitwike msalaba wake kila siku, anifuate.</em>--LUKA 9:23.</blockquote>'),
+            # fr
+            ("<p>Nous aurions pu tout naturellement penser",
+             "<blockquote><em>« Si quelqu’un veut venir après moi, qu’il renonce à lui-même, qu’il se charge chaque jour de sa croix, et qu’il me suive. »</em> — Luc 9:23.</blockquote>"),
         ],
     },
     "all-sufficiency": {
