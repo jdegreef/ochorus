@@ -50,7 +50,7 @@
   "source_url": "https://www.gutenberg.org/ebooks/7088",
   "attribution": "Public domain. Bunyan's Pilgrim's Progress retold in words of one syllable by “Mary Godolphin” (Lucy Aikin); text from Project Gutenberg (ebook 7088). Divided into chapters for reading; the wording is unchanged.",
   "cover_url": "/covers/art/pilgrims-progress-words-of-one-syllable.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/pilgrims-progress-words-of-one-syllable.pdf?download=pilgrims-progress-words-of-one-syllable.pdf",
   "cover_color": "#99661a",
   "sort_order": 69,
   "is_published": true,

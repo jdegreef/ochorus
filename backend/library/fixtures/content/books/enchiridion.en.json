@@ -50,7 +50,7 @@
   "source_url": "",
   "attribution": "Nicene and Post-Nicene Fathers, translated by J. F. Shaw (1887).",
   "cover_url": "/covers/art/enchiridion.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/enchiridion.pdf?download=enchiridion.pdf",
   "cover_color": "#4a5d4a",
   "sort_order": 44,
   "is_published": true,
