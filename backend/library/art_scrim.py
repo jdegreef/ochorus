@@ -76,6 +76,7 @@ ART_SCRIM: dict[str, float] = {
     "life-and-diary-of-david-brainerd": 0.70,
     "life-experience-gospel-labours": 0.80,
     "life-of-antony": 0.85,
+    "life-of-pascal": 0.75,
     "lord-teach-us-to-pray-2": 0.60,
     "men-and-women-who-gave-everything-2": 0.30,
     "men-of-prayer-2": 0.30,

@@ -756,6 +756,13 @@ CURATED: dict[str, Artwork] = {
         "earliest of these letters was written. Pissarro's old street climbs to "
         "the cathedral towers above a crowded market.",
     ),
+    "life-of-pascal": Artwork(
+        "aic", 81516, "Jean François Millet", "In the Auvergne", "c. 1866–69",
+        "Pascal was born at Clermont in Auvergne, and it was on the Puy de Dôme "
+        "above the town that his brother-in-law carried out his experiment on "
+        "the weight of the air. Millet's bare volcanic hillside is that country.",
+        focus=0.6,
+    ),
 }
 
 
