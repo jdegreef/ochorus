@@ -64,3 +64,9 @@ export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
  *  locale (the page lists only that language's books). Sits after the hubs, so
  *  English readers meet Articles · Scripture · Quotes · Originals · RSS. */
 export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.originals' };
+
+/** Authors & Books A–Z — the one page linking every writer and every book in
+ *  a language ($lib/authorIndex), so the whole library is two clicks from any
+ *  page. Every locale's footer Explore group and the palette offer it after
+ *  Book Series. The trailing slash comes from `localizeHref` (SLASHED_PAGES). */
+export const AZ_INDEX_DEST: HubDest = { href: '/authors', labelKey: 'nav.azIndex' };

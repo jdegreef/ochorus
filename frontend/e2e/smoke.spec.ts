@@ -337,7 +337,7 @@ test('a biography opens from the list and renders its prose', async ({ page }) =
 	// The third reading surface, and the odd one out: the prose is one band in a
 	// much wider page, with its own header offset and no sticky bar. It is the
 	// surface most likely to drift, and it had no browser coverage either.
-	await page.goto('/authors/');
+	await page.goto('/biographies');
 	await hydrated(page);
 
 	const first = page.locator('a[href*="/authors/"]').nth(1);

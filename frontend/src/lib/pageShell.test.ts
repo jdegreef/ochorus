@@ -27,6 +27,7 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 	{ label: 'plans', file: 'routes/plans/+page.svelte' },
 	{ label: 'sermons', file: 'routes/sermons/+page.svelte' },
 	{ label: 'biographies', file: 'routes/biographies/+page.svelte' },
+	{ label: 'authors a-z', file: 'routes/authors/+page.svelte' },
 	{ label: 'search', file: 'routes/search/+page.svelte' },
 	{ label: 'quotes', file: 'routes/quotes/+page.svelte' },
 	{ label: 'scripture index', file: 'routes/scripture/+page.svelte' },

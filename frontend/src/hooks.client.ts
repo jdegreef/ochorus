@@ -1,5 +1,17 @@
-import type { HandleClientError } from '@sveltejs/kit';
+import type { ClientInit, HandleClientError } from '@sveltejs/kit';
 import { env } from '$env/dynamic/public';
+import { canonicalRedirect } from '$lib/canonicalRedirect';
+import { SITE_URL } from '$lib/config';
+
+// A duplicate URL (no trailing slash, or the Render host) moves to the real one
+// before anything renders — see $lib/canonicalRedirect. The pending promise
+// holds hydration so the wrong page never flashes while the browser leaves.
+export const init: ClientInit = () => {
+	const to = canonicalRedirect(location, SITE_URL);
+	if (!to) return;
+	location.replace(to);
+	return new Promise<void>(() => {});
+};
 
 /**
  * Opt-in error monitoring: does nothing until PUBLIC_SENTRY_DSN is set, so local

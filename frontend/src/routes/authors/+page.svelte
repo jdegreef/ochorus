@@ -1,60 +1,121 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { formatLifespan } from '$lib/library-public';
+	import { SITE_URL } from '$lib/config';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
+	import { lang } from '$lib/lang.svelte';
+	import { hreflangAll, itemList } from '$lib/seo';
+	import { authorIndex } from '$lib/authorIndex';
+	import { ORIGINALS_SLUG } from '$lib/originals';
 	import type { PageData } from './$types';
+	import Seo from '$lib/components/Seo.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import EmptyState from '$lib/components/EmptyState.svelte';
 
-	// There is no standalone /authors listing — the author directory lives at
-	// /biographies. This page exists only as a PRERENDER ANCHOR, and it now
-	// carries the links to make that true.
-	//
-	// It used to link nothing but /biographies, on the belief (stated here in a
-	// comment) that "per-locale author detail pages are enumerated by
-	// authors/[slug]'s own entries generator". They are not, and cannot be: an
-	// entries generator returns route PARAMS, and the locale is not a route
-	// param — it is a URL prefix resolved by the reroute hook. So `entries()`
-	// only ever emits the canonical English URL, and every localized page
-	// depends on the prerenderer CRAWLING a link to it.
-	//
-	// Two link sets were missing, and both were invisible from the code:
-	//   * /biographies paginates client-side at PER_PAGE = 24, so the built HTML
-	//     linked 24 of 35 writers. The 11 past page one were reachable only via a
-	//     book page, and the 8 with no published works were reachable from
-	//     nowhere — their localized pages never prerendered, while sitemap.xml
-	//     advertised them in every locale. Google reported them as "Excluded by
-	//     noindex", which is what the 200.html shell serves.
-	//   * the era links sit inside `{:else if sort === 'era'}`, a client-side
-	//     sort state, so NO built page in ANY locale contained one.
-	//
-	// Hence the full, unpaginated, unconditional list below. It is `noindex,
-	// follow`: never indexed, always crawled — which is exactly what an anchor
-	// is for. `prerenderCoverage.test.ts` fails the build if this ever stops
-	// covering the sitemap.
-	const t = i18n.t;
+	// The library A–Z: every writer and, under each, every book of theirs in
+	// this language — see $lib/authorIndex for why this page exists. It used to
+	// be a hidden, noindexed crawl anchor that redirected to /biographies on
+	// mount; the same complete link set is now the page itself, visible and
+	// indexable. Deliberately NOT paginated: it must stay complete, for readers
+	// and for the prerender crawl (svelte.config.js seeds it per locale).
 	let { data }: { data: PageData } = $props();
+	const t = i18n.t;
 
-	onMount(() => goto(localizeHref('/biographies'), { replaceState: true }));
+	// The imprint is not a person and has no author page — /originals instead.
+	const groups = $derived(authorIndex(data.authors, data.books, lang.current, [ORIGINALS_SLUG]));
+	const writerCount = $derived(groups.reduce((n, g) => n + g.entries.length, 0));
+	const bookCount = $derived(groups.reduce((n, g) => n + g.entries.reduce((m, e) => m + e.books.length, 0), 0));
+
+	const title = $derived(t('nav.azIndex'));
+	const hreflang = hreflangAll('/authors/');
+	const canonical = `${SITE_URL}${localizeHref('/authors')}`;
+	const authorsLd = $derived(
+		itemList(
+			title,
+			groups.flatMap((g) =>
+				g.entries.map((e) => ({ name: e.author.name, url: localizeHref(`/authors/${e.author.slug}`) }))
+			)
+		)
+	);
 </script>
 
-<svelte:head>
-	<meta name="robots" content="noindex,follow" />
-</svelte:head>
+<Seo
+	title={`${title} — Ochorus`}
+	description={t('authors.indexTagline')}
+	{canonical}
+	{hreflang}
+	ogImage={`${SITE_URL}/og/biographies.png`}
+	structuredData={groups.length ? [authorsLd] : []}
+/>
 
-<p class="mx-auto max-w-xl px-5 py-24 text-center text-body text-muted">
-	<a href={localizeHref('/biographies')}>{t('nav.biographies')}</a>
-</p>
+<div class="page-col px-5 py-10">
+	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
+	{#snippet counts()}
+		{writerCount}
+		{writerCount === 1 ? t('common.authorOne') : t('common.authorMany')}
+		<span class="opacity-50">·</span>
+		{bookCount}
+		{bookCount === 1 ? t('common.bookOne') : t('common.bookMany')}
+	{/snippet}
 
-<!-- Crawl anchor. Hidden from readers (this page redirects on mount anyway) but
-     present in the static HTML, which is all the prerenderer reads. Links go
-     through $lib/href's localizeHref so they carry BOTH the locale prefix and
-     the trailing slash — both routes set `trailingSlash = 'always'`, and the
-     non-slash form is the one that falls through to the SPA shell. -->
-<nav hidden aria-hidden="true">
-	{#each data.slugs as slug (slug)}
-		<a href={localizeHref(`/authors/${slug}`)}>{slug}</a>
-	{/each}
-	{#each data.eras as era (era)}
-		<a href={localizeHref(`/biographies/era/${era}`)}>{era}</a>
-	{/each}
-</nav>
+	<!-- Empty only when the fetch failed (the build throws instead; see +page.ts). -->
+	{#if data.loadError || groups.length === 0}
+		<EmptyState message={t('common.loadError')} onRetry />
+	{:else}
+		<!-- Real anchors, not the Biographies rail's buttons: every group is in the
+		     HTML (no paging), so each #letter- target always exists. -->
+		<nav class="mb-6 flex flex-wrap gap-x-1 gap-y-0.5 text-small" aria-label={t('bios.jumpAz')}>
+			{#each groups as g (g.letter)}
+				<a
+					href="#letter-{g.letter === '#' ? 'other' : g.letter}"
+					class="rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft">{g.letter}</a
+				>
+			{/each}
+		</nav>
+
+		{#if data.eras.length}
+			<nav class="mb-10 flex flex-wrap items-center gap-2" aria-label={t('bios.sortEra')}>
+				<span class="eyebrow me-1">{t('bios.sortEra')}</span>
+				{#each data.eras as era (era.id)}
+					<a class="tag" href={localizeHref(`/biographies/era/${era.id}`)}>{t(era.k)}</a>
+				{/each}
+			</nav>
+		{/if}
+
+		{#each groups as g (g.letter)}
+			<section id="letter-{g.letter === '#' ? 'other' : g.letter}" class="az-group mb-10">
+				<GroupHeading name={g.letter} count={g.entries.length} />
+				<ul class="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+					{#each g.entries as { author, books: own } (author.slug)}
+						{@const life = formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}
+						<li>
+							<a class="font-semibold hover:text-accent" href={localizeHref(`/authors/${author.slug}`)}
+								>{author.name}</a
+							>
+							{#if life}<span class="text-small text-muted"> · {life}</span>{/if}
+							{#if own.length}
+								<ul class="mt-1 space-y-0.5 text-small">
+									{#each own as b (b.slug)}
+										<li>
+											<a class="text-muted hover:text-accent" href={localizeHref(`/books/${b.slug}`)}
+												>{b.title}</a
+											>
+										</li>
+									{/each}
+								</ul>
+							{/if}
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/each}
+	{/if}
+</div>
+
+<style>
+	/* The jump links land the letter heading below the sticky app nav. */
+	.az-group {
+		scroll-margin-top: calc(var(--appnav-h, 0px) + 1rem);
+	}
+</style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { initialOf } from '$lib/authorIndex';
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -143,8 +144,9 @@
 		const m = new Map<string, string>();
 		if (filters.values.sort !== 'name') return m;
 		for (const a of sorted) {
-			const c = a.name.trim()[0]?.toUpperCase() ?? '';
-			if (c >= 'A' && c <= 'Z' && !m.has(c)) m.set(c, a.slug);
+			// One filing rule with the library A–Z (accents folded).
+			const c = initialOf(a.name);
+			if (c !== '#' && !m.has(c)) m.set(c, a.slug);
 		}
 		return m;
 	});

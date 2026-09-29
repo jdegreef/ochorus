@@ -30,7 +30,7 @@ const DETAIL_SECTIONS = new Set(['books', 'authors', 'topics', 'sermons', 'plans
 /** Single-segment pages that also prerender to `<page>/index.html` (their
  * route exports `trailingSlash = 'always'`) and are localized, so their links
  * go through here too rather than relying on a Render rewrite per locale. */
-const SLASHED_PAGES = new Set(['originals', 'series']);
+const SLASHED_PAGES = new Set(['originals', 'series', 'authors']);
 
 /** Append the trailing slash to a detail-page path, preserving ?query and #hash. */
 export function withTrailingSlash(href: string): string {

@@ -47,6 +47,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
+	import { downloadFormats, titleWithFormats } from '$lib/bookSeo';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
@@ -185,8 +186,13 @@
 	// line. Composed from existing localized helpers, so no new catalogue string is
 	// introduced; the facts trail the sentence, so truncateMeta trims them first when
 	// a long title crowds the ~160-char budget.
+	//
+	// A downloadable edition LEADS with that fact ("Free PDF & EPUB download."),
+	// so it survives the truncation and matches the "<title> pdf" searches.
+	const formats = $derived(downloadFormats(book));
 	const description = $derived.by(() => {
-		if (book.description) return truncateMeta(book.description);
+		const lead = formats ? `${t('book.metaDownload').replace('%formats%', formats)} ` : '';
+		if (book.description) return truncateMeta(lead + book.description);
 		const base = t('book.metaFallback')
 			.replace('%title%', book.title)
 			.replace('%name%', book.author.name);
@@ -196,7 +202,7 @@
 				: '',
 			totalWords ? readingTime(totalWords) : ''
 		].filter(Boolean);
-		return truncateMeta(facts.length ? `${base} ${facts.join(' · ')}.` : base);
+		return truncateMeta(lead + (facts.length ? `${base} ${facts.join(' · ')}.` : base));
 	});
 	// The same work's other-language editions, reused from the hreflang set
 	// (already the intersection of available_languages with advertised locales,
@@ -224,8 +230,13 @@
 	// display budget — and the ordering is the answer to that: title, author,
 	// then the qualifier, then the brand, so what truncates is the least
 	// load-bearing part. A truncated title still counts for relevance.
+	//
+	// A downloadable edition names its formats too — see titleWithFormats.
 	const titleTag = $derived(
-		t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name)
+		titleWithFormats(
+			t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name),
+			formats
+		)
 	);
 	// Two pictures of one edition, for two readers.
 	//
