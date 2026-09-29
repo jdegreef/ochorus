@@ -147,3 +147,57 @@ class TranslationStalenessTests(TestCase):
         )
         books = {b["slug"]: b for b in client.get("/api/admin/coverage/").data["books"]}
         self.assertNotIn("stale", books["humility"])
+
+
+class ReviewedHydeTranslationMigrationTests(TestCase):
+    """0168: reviewed John Hyde translations take the corrected files, re-gated."""
+
+    def _run(self):
+        import importlib
+
+        from django.apps import apps as global_apps
+
+        mod = importlib.import_module("library.migrations.0168_correct_reviewed_hyde_translations")
+        mod.correct_reviewed(global_apps, None)
+        return mod
+
+    def setUp(self):
+        from .models import AuthorTranslation
+
+        self.AT = AuthorTranslation
+        self.hyde = Author.objects.create(slug="john-hyde", name="John Hyde")
+
+    def test_reviewed_row_takes_the_files_and_is_regated(self):
+        tr = self.AT.objects.create(
+            author=self.hyde, language="es", bio="viejo", bio_html="<p>Sialkot</p>",
+            faq=[{"q": "x", "a": "y"}], reviewed=True, source_stale=True,
+        )
+        mod = self._run()
+        tr.refresh_from_db()
+        want = mod.corrected_fields("es")
+        self.assertEqual(set(want), {"bio", "bio_html", "faq"})
+        for name, value in want.items():
+            self.assertEqual(getattr(tr, name), value)
+        self.assertFalse(tr.reviewed, "AI-written wording must be re-gated for review")
+        self.assertFalse(tr.source_stale)
+
+    def test_unreviewed_and_other_authors_are_left_to_the_seed(self):
+        other = Author.objects.create(slug="someone-else", name="Someone")
+        unreviewed = self.AT.objects.create(author=self.hyde, language="pt", bio="velho")
+        elsewhere = self.AT.objects.create(author=other, language="es", bio="otro", reviewed=True)
+        self._run()
+        unreviewed.refresh_from_db()
+        elsewhere.refresh_from_db()
+        self.assertEqual(unreviewed.bio, "velho")
+        self.assertEqual((elsewhere.bio, elsewhere.reviewed), ("otro", True))
+
+    def test_reviewed_row_already_matching_keeps_its_approval(self):
+        import importlib
+
+        mod = importlib.import_module("library.migrations.0168_correct_reviewed_hyde_translations")
+        tr = self.AT.objects.create(
+            author=self.hyde, language="sw", reviewed=True, **mod.corrected_fields("sw")
+        )
+        self._run()
+        tr.refresh_from_db()
+        self.assertTrue(tr.reviewed)
