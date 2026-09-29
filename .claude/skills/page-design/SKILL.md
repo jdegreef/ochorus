@@ -59,6 +59,12 @@ In this order, and nothing else at the top level:
 7. **The list** — one card family per content type (§ Cards below). Grouped
    shelves head each group with the **group heading** recipe (§ below), in a
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
+   A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
+   button (Books, Articles, Biographies), keyed to the filter/sort state so a
+   new filter starts over. A grouped view with a jump-nav can't page (its
+   targets must exist). Paging a hub drops links from its prerendered HTML:
+   run `npm run build` and confirm `ls -d build/<type>/*/ | wc -l` still equals
+   the API count (the prerender crawler must reach every item another way).
 8. **States** — three, all `<EmptyState>`:
    - *no rows in this language* → `message` + `action` = "Read the English library";
    - *filtered to nothing* → `message` + `action` = clear filters;
