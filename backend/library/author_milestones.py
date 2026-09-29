@@ -135,13 +135,6 @@ AUTHOR_MILESTONES: dict[str, list[dict]] = {
         {"year": 1888, "label": "London"},
         {"year": 1929, "label": "Died", "key": True},
     ],
-    "henry-blackaby": [
-        {"year": 1935, "label": "Born", "key": True},
-        {"year": 1960, "label": "Married"},
-        {"year": 1970, "label": "Saskatoon", "key": True},
-        {"year": 1990, "label": "Experiencing God", "key": True},
-        {"year": 2024, "label": "Died", "key": True},
-    ],
     "joe-church": [
         {"year": 1899, "label": "Born", "key": True},
         {"year": 1920, "label": "Conversion"},

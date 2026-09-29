@@ -78,7 +78,6 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
             ("charles-finney", "subject"),
             ("rees-howells", "subject"),
             ("billy-graham", "subject"),
-            ("henry-blackaby", "subject"),
             ("bill-bright", "subject"),
             ("loren-cunningham", "subject"),
             ("derek-prince", "subject"),
