@@ -1,0 +1,198 @@
+{
+ "kind": "sermon",
+ "slug": "the-impressions-of-natural-men",
+ "language": "fr",
+ "job_issue": 3289,
+ "references": [
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 6:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 6:5",
+   "status": "self_rendered",
+   "why": "Re-personed into reported speech (God's 'I' becomes 'he', future becomes past); Segond vocabulary kept."
+  },
+  {
+   "reference": "Hosea 6:5",
+   "status": "self_rendered",
+   "why": "Verse applied by the preacher to his hearers, re-personed."
+  },
+  {
+   "reference": "Genesis 19:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 18:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 10:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 24:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 26:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 7:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 9:12",
+   "status": "self_rendered",
+   "why": "Allusion re-cast in the infinitive and plural ('le peuple ne revient pas à celui qui le frappe')."
+  },
+  {
+   "reference": "1 Corinthians 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 50:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 50:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Song of Songs 3:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Malachi 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 12:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Peter 2:22",
+   "status": "self_rendered",
+   "why": "Proverb woven into the preacher's sentence and applied to the backslider; Segond vocabulary kept, syntax recast."
+  },
+  {
+   "reference": "Matthew 12:45",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 3:19",
+   "status": "self_rendered",
+   "why": "Allusion, negated and re-personed."
+  },
+  {
+   "reference": "Leviticus 13:45",
+   "status": "self_rendered",
+   "why": "Allusion re-cast in the negative plural; Segond's 'barbe' kept for KJV 'lip'."
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "self_rendered",
+   "why": "Re-personed from 'ils/moi' to the individual sinner."
+  },
+  {
+   "reference": "Song of Songs 3:2",
+   "status": "self_rendered",
+   "why": "Re-personed from first to third person."
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Job 39:37",
+   "status": "self_rendered",
+   "why": "KJV Job 40:4 'Behold, I am vile' (Segond 39:37). Segond reads 'trop peu de chose', but McCheyne's point is the vileness/filthiness of sin (as against being 'undone'), so the word 'vil' is kept."
+  },
+  {
+   "reference": "Jeremiah 32:40",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 1:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 3:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 10:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 5:4",
+   "status": "self_rendered",
+   "why": "Preacher's echo of Isaiah 5:4 / Hosea 6:4 in his own words, addressed to the hearer."
+  },
+  {
+   "reference": "Jeremiah 8:20",
+   "status": "self_rendered",
+   "why": "Re-personed from 'nous' to 'vous'; first two clauses are Segond verbatim."
+  },
+  {
+   "reference": "Romans 9:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 17:32",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 19:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 19:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

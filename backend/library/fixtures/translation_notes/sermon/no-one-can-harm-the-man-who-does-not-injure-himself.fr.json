@@ -1,0 +1,143 @@
+{
+ "kind": "sermon",
+ "slug": "no-one-can-harm-the-man-who-does-not-injure-himself",
+ "language": "fr",
+ "job_issue": 3292,
+ "references": [
+  {
+   "reference": "Job 11:6",
+   "status": "self_rendered",
+   "why": "Chrysostom's loose paraphrase of the friends' charge (Zophar, Job 11:6); Segond's wording differs, so rendered from the source."
+  },
+  {
+   "reference": "Job 1:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 6:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 6:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 6:22-23",
+   "status": "self_rendered",
+   "why": "Chrysostom blends Luke 6:23 (rejoice and leap for joy) with Luke 6:22 (cast out your name as evil); built from Segond's phrases but blended."
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "self_rendered",
+   "why": "Chrysostom's text reads 'the more … so much the more', a comparative Segond does not have; kept, with Segond's vocabulary."
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 5:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 27:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 81:17",
+   "status": "self_rendered",
+   "why": "Chrysostom quotes the Septuagint (Ps 80:17 LXX) as a past-tense narrative of the wilderness miracle, and his argument depends on it ('recounting the wonders'); Segond 81:17 is a first-person conditional ('je le rassasierais du miel du rocher'). Kept Segond's 'du miel du rocher'."
+  },
+  {
+   "reference": "Proverbs 27:7",
+   "status": "self_rendered",
+   "why": "Chrysostom's paraphrase/inversion of Prov 27:7b ('that wise man'); no Segond wording carries it. Attribution to 27:7 is inferred — the source gives no citation."
+  },
+  {
+   "reference": "John 12:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 16:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 105:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 105:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jonah 3:4",
+   "status": "self_rendered",
+   "why": "Chrysostom quotes the Septuagint (« three days »); Segond has « quarante jours ». Kept the preacher's three days, which his argument uses; « et Ninive est détruite » follows Segond."
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "self_rendered",
+   "why": "Septuagint-shaped wording (« every man », « converted to the Lord ») that Segond does not have."
+  },
+  {
+   "reference": "Jonah 1:2",
+   "status": "self_rendered",
+   "why": "Segond reads « jusqu’à moi »; Chrysostom's point is the height (« unto the heaven »), so his wording is kept."
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "self_rendered",
+   "why": "Singular « every one » as the preacher quotes it; Segond has the plural « ils revenaient de leur mauvaise voie »."
+  },
+  {
+   "reference": "Jonah 3:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 1:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 3:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 3:17",
+   "status": "self_rendered",
+   "why": "The preacher's text adds « in Heaven » (Theodotion); Segond has « notre Dieu que nous servons »."
+  },
+  {
+   "reference": "Daniel 3:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Daniel 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
