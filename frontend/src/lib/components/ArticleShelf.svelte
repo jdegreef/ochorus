@@ -147,6 +147,7 @@
 		() => shown,
 		() => `${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`
 	);
+	export const pages = paged; // for the route's snapshot ($lib/paging)
 </script>
 
 <!-- The Questions / Book guides switch — inline from sm, and in the phone

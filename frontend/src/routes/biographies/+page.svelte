@@ -15,6 +15,7 @@
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import { pager, pagedSnapshot } from '$lib/paging.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { queryChip, type FilterChip } from '$lib/filterChips';
@@ -130,8 +131,7 @@
 	function jumpTo(slug: string) {
 		const i = sorted.findIndex((a) => a.slug === slug);
 		if (i < 0) return;
-		const needed = Math.ceil((i + 1) / PER_PAGE);
-		if (needed > pageNum) pageNum = needed;
+		pages.reveal(i);
 		// The row may not exist yet this frame; wait for the render it triggered.
 		tick().then(() => jumpToSection(slug));
 	}
@@ -170,19 +170,13 @@
 	// already returns every writer (that is what the A–Z rail and the filters
 	// count against), so this is purely how many are PAINTED. The A–Z stays the
 	// fast path — jumping to a letter reveals whatever page holds it, below.
-	const PER_PAGE = 24;
-	let pageNum = $state(1);
-	const paged = $derived(sorted.slice(0, pageNum * PER_PAGE));
-	const remaining = $derived(sorted.length - paged.length);
-	// Narrowing the list must not strand you on page 3 of 1.
-	$effect(() => {
-		void filters.values.q;
-		void filters.values.filter;
-		void filters.values.full;
-		void filters.values.sort;
-		pageNum = 1;
-	});
-
+	// Keyed to the filters and sort, so narrowing never strands you on page 3
+	// of 1; the snapshot brings Back to where you were ($lib/paging).
+	const pages = pager(
+		() => sorted,
+		() => `${filters.values.q}|${filters.values.filter}|${filters.values.full}|${filters.values.sort}`
+	);
+	export const snapshot = pagedSnapshot(() => pages);
 
 	const SORT_LABEL: Record<Sort, string> = {
 		name: 'bios.sortName',
@@ -495,18 +489,18 @@
 		{/each}
 	{:else}
 		<div class="space-y-4">
-			{#each paged as author (author.slug)}
+			{#each pages.visible as author (author.slug)}
 				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
 			{/each}
 		</div>
-		{#if remaining > 0}
+		{#if pages.remaining > 0}
 			<div class="mt-8 flex flex-col items-center gap-2">
-				<button class="btn btn-ghost" onclick={() => (pageNum += 1)}>
-					{t('bios.showMore').replace('%n%', String(Math.min(PER_PAGE, remaining)))}
+				<button class="btn btn-ghost" onclick={pages.more}>
+					{t('bios.showMore').replace('%n%', String(pages.next))}
 				</button>
 				<p class="text-small text-muted">
 					{t('bios.showing')
-						.replace('%shown%', String(paged.length))
+						.replace('%shown%', String(pages.visible.length))
 						.replace('%total%', String(sorted.length))}
 				</p>
 			</div>

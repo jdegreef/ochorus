@@ -5,6 +5,7 @@
 	import { breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import type { PagerState } from '$lib/paging.svelte';
 	import ArticleShelf, { articleFilters } from '$lib/components/ArticleShelf.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import { articleTopicSeo, articleHasTopic, articleCollectionLd } from '$lib/articleTopics';
@@ -34,6 +35,13 @@
 
 	// The shelf's text query and kind live in the URL, as on the index.
 	const filters = articleFilters(() => $page.url);
+
+	// The inner shelf's pager, passed up for the route's snapshot ($lib/paging).
+	let shelf = $state<ArticleShelf>();
+	export const pages = {
+		capture: () => shelf?.pages.capture(),
+		restore: (s: PagerState | undefined) => shelf?.pages.restore(s)
+	};
 
 	const seo = $derived(articleTopicSeo(slug, title));
 	const shown = $derived(articles.filter((a) => articleHasTopic(a, slug)));
@@ -81,7 +89,7 @@
 			>Explore books, sermons and scripture on this topic <Arrow /></a
 		>
 	</header>
-	<ArticleShelf {articles} activeTopic={slug} {filters} />
+	<ArticleShelf bind:this={shelf} {articles} activeTopic={slug} {filters} />
 
 	<AccountCta />
 </div>

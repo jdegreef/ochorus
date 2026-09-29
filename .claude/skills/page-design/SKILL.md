@@ -61,7 +61,11 @@ In this order, and nothing else at the top level:
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
    A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
    button (Books, Articles, Biographies), keyed to the filter/sort state so a
-   new filter starts over. A grouped view with a jump-nav can't page (its
+   new filter starts over — use `pager()` from `$lib/paging.svelte`, and export
+   `snapshot = pagedSnapshot(() => shelf)` from the route so Back lands where
+   the reader was (SvelteKit restores a snapshot AFTER scroll on popstate, so a
+   plain snapshot comes back clamped to the page bottom — the helper re-applies
+   scrollY after the rows render). A grouped view with a jump-nav can't page (its
    targets must exist). Paging a hub drops links from its prerendered HTML:
    run `npm run build` and confirm `ls -d build/<type>/*/ | wc -l` still equals
    the API count (the prerender crawler must reach every item another way).
