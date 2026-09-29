@@ -338,12 +338,15 @@
 			// hreflang tells crawlers the URLs are alternates; this states the
 			// translation fact for the entity graph. English is treated as the
 			// original: it lists its translations, a translation points back at it.
+			// A non-English ORIGINAL (`public_domain`: Pascal's own French) is not
+			// a translation of the English, so it claims no translationOfWork; and
+			// an English AI translation of one lists no translations of its own.
 			translationOfWork:
-				book.language !== 'en' && enEdition
+				book.language !== 'en' && book.source_type !== 'public_domain' && enEdition
 					? { '@type': 'Book', inLanguage: 'en', url: enEdition.href }
 					: undefined,
 			workTranslation:
-				book.language === 'en' && siblingEditions.length
+				book.language === 'en' && book.source_type === 'public_domain' && siblingEditions.length
 					? siblingEditions.map((a) => ({ '@type': 'Book', inLanguage: a.loc, url: a.href }))
 					: undefined
 		})

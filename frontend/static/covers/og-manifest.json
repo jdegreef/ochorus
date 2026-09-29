@@ -3204,6 +3204,16 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"life-of-pascal": {
+			"ground": "a7c80aa068e841b291e11a02feed83b384f400758b7a9b70b4b6b28d110d082b",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",

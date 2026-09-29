@@ -1600,12 +1600,14 @@ for Pascal (`build_letters_and_minor_works`, `build_pascal_french`). Traps:
 not a translation.** Book/Sermon `source_type` `public_domain` means "Public
 domain (original language)"; every translation ships `ai_unreviewed`. So a
 non-English `public_domain` row wears no review badge, and
-`library.originals.is_original` (used by the markup gate and
-`translation_staleness`) skips it (its
+`library.originals` (consulted by the markup gate, `translation_staleness`
+and the translation-notes gate) skips it (its
 markup follows its own edition; the English is the translation). Keep the same
 chapter COUNT as the English so per-chapter URLs resolve in both, and add the
 edition to `originals.ORIGINAL_EDITIONS` — `public_domain` is the model default,
-so `tests_fixture` refuses any unlisted non-English `public_domain` row. **Do NOT set
+so `tests_fixture` refuses any unlisted non-English `public_domain` row. Run
+the FULL backend suite when adding one — gates that equate "not English" with
+"translation" are scattered (the notes gate was found only by CI). **Do NOT set
 the author's `original_language` to the work's language** — that field is the
 language of the BIO text (all 102 authors are `en`); flipping it hides the
 English bio. *(Pascal, 2026-09)*
