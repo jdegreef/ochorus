@@ -154,16 +154,19 @@ def translated_works() -> list[tuple[str, str, str]]:
     A translation is any book or sermon content file whose language is not
     ``en``. ``en-modern`` counts: a contemporized edition comes off the same
     translate-then-review pipeline and its careful pass can reword a quotation,
-    so its provenance is worth the same record.
+    so its provenance is worth the same record. An original-language edition
+    (``library.originals``: Pascal's own French) is not a translation — nothing
+    was rendered, so there is no provenance to record.
     """
     from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
+    from library.originals import ORIGINAL_EDITIONS
 
     works = [
         (kind, slug, language)
         for kind, directory in (("book", BOOKS_DIR), ("sermon", SERMONS_DIR))
         for path in directory.glob("*.json")
         for slug, _, language in [path.name[: -len(".json")].rpartition(".")]
-        if slug and language != "en"
+        if slug and language != "en" and (slug, language) not in ORIGINAL_EDITIONS
     ]
     return sorted(works)
 
