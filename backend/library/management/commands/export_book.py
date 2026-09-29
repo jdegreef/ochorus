@@ -2,7 +2,8 @@
 
     uv run python manage.py export_book the-secret-of-guidance --format pdf
     uv run python manage.py export_book the-secret-of-guidance --format epub --out /tmp/b.epub
-    uv run python manage.py export_book --all --out /tmp/epubs   # every exportable EPUB (CI's epubcheck)
+    uv run python manage.py export_book --all --format epub --out /tmp/epubs   # every exportable EPUB (CI's epubcheck)
+    uv run python manage.py export_book --all --format pdf --out /tmp/pdfs     # every stored PDF (book-pdfs.yml)
 
 PDF is printed by headless Chrome from the print HTML (see
 ``library/book_export.py`` for why it is built off-server). The default PDF
@@ -15,13 +16,14 @@ import os
 import shutil
 import subprocess
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 
 from library import book_export
-from library.export_policy import EXPORT_EDITIONS, is_exportable
+from library.export_policy import EXPORT_EDITIONS, STORED_PDF_EDITIONS, is_exportable
 from library.models import Book
 
 _CHROME_CANDIDATES = [
@@ -133,7 +135,12 @@ class Command(BaseCommand):
         parser.add_argument("slug", nargs="?")
         parser.add_argument(
             "--all", action="store_true",
-            help="Write the EPUB of every exportable edition into the --out folder.",
+            help="Write every exportable EPUB (--format epub) or every stored PDF "
+            "(--format pdf; export_policy.STORED_PDF_EDITIONS) into the --out folder.",
+        )
+        parser.add_argument(
+            "--editions", default="",
+            help="With --all: only these, as slug:lang,slug:lang (others in the list are skipped).",
         )
         parser.add_argument("--language", default="en")
         parser.add_argument("--format", choices=["epub", "html", "pdf"], default="pdf")
@@ -141,7 +148,9 @@ class Command(BaseCommand):
 
     def handle(self, slug, language, format, out, **options):
         if options["all"]:
-            self._all_epubs(Path(out or "epubs"))
+            if format == "html":
+                raise CommandError("--all writes epub or pdf.")
+            self._all(format, Path(out or f"{format}s"), options["editions"])
             return
         if not slug:
             raise CommandError("Give a slug, or --all.")
@@ -167,22 +176,32 @@ class Command(BaseCommand):
             _print_pdf(edition, path)
         self.stdout.write(self.style.SUCCESS(f"Wrote {path}"))
 
-    def _all_epubs(self, folder: Path) -> None:
-        """Every exportable edition's EPUB, as the API would serve it. A listed
+    def _all(self, format: str, folder: Path, only: str) -> None:
+        """Every listed edition's file, as the API would serve it. A listed
         edition missing from the database is an error: CI seeds the fixture, so
         it means the list names a book that isn't there."""
+        editions = EXPORT_EDITIONS if format == "epub" else STORED_PDF_EDITIONS
+        if only:
+            editions = editions & {tuple(e.split(":", 1)) for e in only.split(",") if e}
         folder.mkdir(parents=True, exist_ok=True)
         books = {
             (b.slug, b.language): b
             for b in Book.objects.select_related("author").filter(
-                slug__in={slug for slug, _ in EXPORT_EDITIONS}, is_published=True
+                slug__in={slug for slug, _ in editions}, is_published=True
             )
         }
-        missing = sorted(EXPORT_EDITIONS - books.keys())
+        missing = sorted(editions - books.keys())
         if missing:
             raise CommandError(f"Listed but not published: {missing}")
-        for key in sorted(EXPORT_EDITIONS):
-            book = books[key]
-            path = folder / book_export.export_filename(book, "epub")
-            path.write_bytes(book_export.render_epub(book_export.build_edition(book)))
-        self.stdout.write(self.style.SUCCESS(f"Wrote {len(EXPORT_EDITIONS)} EPUBs to {folder}"))
+        jobs = [
+            (book_export.build_edition(books[key]), folder / book_export.export_filename(books[key], format))
+            for key in sorted(editions)
+        ]
+        if format == "epub":
+            for edition, path in jobs:
+                path.write_bytes(book_export.render_epub(edition))
+        else:
+            # The work is Chrome's, in its own process: print a few at once.
+            with ThreadPoolExecutor(max_workers=os.cpu_count() or 2) as pool:
+                list(pool.map(lambda job: _print_pdf(*job), jobs))
+        self.stdout.write(self.style.SUCCESS(f"Wrote {len(editions)} {format.upper()}s to {folder}"))

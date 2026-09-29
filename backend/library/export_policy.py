@@ -176,6 +176,15 @@ HELD_ESV = frozenset({
 #: Every exportable (slug, language) edition.
 EXPORT_EDITIONS = EXPORT_PILOT | {(slug, "en") for slug in ENGLISH_CLASSICS}
 
+#: Editions whose PDF lives in Supabase Storage rather than frontend/static:
+#: a PDF is rebuilt whenever its text changes, and git would keep every old
+#: copy forever. ``.github/workflows/book-pdfs.yml`` builds and uploads them
+#: (``export_book --all --format pdf``) to the public bucket below, under
+#: ``book_export.export_filename`` — overwritten in place, so a URL never moves.
+STORED_PDF_EDITIONS = frozenset((slug, "en") for slug in ENGLISH_CLASSICS)
+PDF_BUCKET = "book-pdfs"
+PDF_STORAGE_URL = f"https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/{PDF_BUCKET}/"
+
 
 def is_exportable(book) -> bool:
     return book.is_published and (book.slug, book.language) in EXPORT_EDITIONS

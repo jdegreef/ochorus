@@ -452,7 +452,7 @@ jobs:
           uv sync --frozen
           uv run python manage.py migrate --noinput
           uv run python manage.py seed_if_empty
-          uv run python manage.py export_book --all --out "$RUNNER_TEMP/epubs"
+          uv run python manage.py export_book --all --format epub --out "$RUNNER_TEMP/epubs"
 
       # ubuntu-latest ships a JDK (epubcheck 5 needs 11+). One JVM per book,
       # run a core apiece; -q prints only what's wrong.
