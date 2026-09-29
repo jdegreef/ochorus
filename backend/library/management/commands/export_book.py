@@ -16,7 +16,6 @@ import os
 import shutil
 import subprocess
 import tempfile
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from django.conf import settings
@@ -85,15 +84,22 @@ def _write_print_html(edition, folder: Path, pages=None) -> Path:
 
 
 def _print_pdf(edition, path: Path) -> None:
-    """Two passes for the contents page numbers (see render_print_html): print,
-    read where each anchor landed from Chrome's named destinations, print again."""
+    """The contents page numbers need a print to know: print, read where each
+    anchor landed from Chrome's named destinations, print again with them.
+    Filling the numbers in can itself move a page (a long contents that tips
+    onto another page), so repeat until a print agrees with its numbers."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         _print(_write_print_html(edition, Path(tmp)), path)
         pages = _anchor_pages(path)
-        _print(_write_print_html(edition, Path(tmp), pages), path)
-    if _anchor_pages(path) != pages:
-        raise CommandError("Contents page numbers moved between passes.")
+        for _ in range(3):
+            _print(_write_print_html(edition, Path(tmp), pages), path)
+            landed = _anchor_pages(path)
+            if landed == pages:
+                break
+            pages = landed
+        else:
+            raise CommandError(f"{path.name}: contents page numbers never settled.")
     _repack(path)
 
 
@@ -201,7 +207,11 @@ class Command(BaseCommand):
             for edition, path in jobs:
                 path.write_bytes(book_export.render_epub(edition))
         else:
-            # The work is Chrome's, in its own process: print a few at once.
-            with ThreadPoolExecutor(max_workers=os.cpu_count() or 2) as pool:
-                list(pool.map(lambda job: _print_pdf(*job), jobs))
+            # One at a time. Parallel Chromes share the default profile and
+            # collide (exit 2, or a pass laid out differently); a private
+            # --user-data-dir fixes that on Linux but leaves macOS Chrome
+            # hanging after it prints. A book prints in ~5 s, so it's minutes.
+            for edition, path in jobs:
+                _print_pdf(edition, path)
+                self.stdout.write(f"  {path.name}")
         self.stdout.write(self.style.SUCCESS(f"Wrote {len(editions)} {format.upper()}s to {folder}"))

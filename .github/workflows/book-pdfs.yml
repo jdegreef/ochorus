@@ -111,12 +111,12 @@ jobs:
           AWS_REQUEST_CHECKSUM_CALCULATION: WHEN_REQUIRED
           AWS_RESPONSE_CHECKSUM_VALIDATION: WHEN_REQUIRED
         run: |
+          n=$(find "$RUNNER_TEMP/pdfs" -name '*.pdf' | wc -l)
+          if [ "$n" -eq 0 ]; then echo "Nothing to upload."; exit 0; fi
           if [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_DEFAULT_REGION" ]; then
             echo "::error::Supabase S3 credentials are not configured — see the header of this workflow."
             exit 1
           fi
-          n=$(find "$RUNNER_TEMP/pdfs" -name '*.pdf' | wc -l)
-          if [ "$n" -eq 0 ]; then echo "Nothing to upload."; exit 0; fi
           aws s3 cp "$RUNNER_TEMP/pdfs/" "s3://book-pdfs/" --recursive \
             --endpoint-url "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/s3" \
             --content-type application/pdf \
