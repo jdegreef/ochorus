@@ -42,6 +42,7 @@ import re
 from django.test import SimpleTestCase
 
 from library.content_fixtures import rows_by_file
+from library.originals import is_original
 
 # Translations whose markup does NOT match their English source.
 #   sermons: (language, slug)
@@ -87,19 +88,30 @@ def _corpus() -> tuple[dict, dict]:
     """({slug: {lang: {order: html}}}, {slug: {lang: html}}) from the fixtures."""
     books: dict[str, dict[str, dict[int, str]]] = {}
     sermons: dict[str, dict[str, str]] = {}
+    originals: set[tuple[str, str]] = set()
     for rows in rows_by_file().values():
         for obj in rows:
             f, model = obj["fields"], obj["model"]
+            if model in ("library.book", "library.sermon") and is_original(
+                f.get("language", ""), f.get("source_type", "")
+            ):
+                # Not a translation of the English (Pascal's own French): its
+                # markup follows its own edition, so there is nothing to match.
+                originals.add((f["slug"], f["language"]))
+                continue
             if model == "library.book":
                 books.setdefault(f["slug"], {}).setdefault(f["language"], {})
             elif model == "library.chapter":
                 slug, lang = f["book"]
+                if (slug, lang) in originals:
+                    continue
                 books.setdefault(slug, {}).setdefault(lang, {})[f["order"]] = (
                     f.get("body_html") or ""
                 )
             elif model == "library.sermon":
                 sermons.setdefault(f["slug"], {})[f["language"]] = f.get("body_html") or ""
     return books, sermons
+
 
 
 def sermon_divergences() -> dict[tuple[str, str], tuple[int, int]]:

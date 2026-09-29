@@ -37,6 +37,22 @@ class TranslationStalenessTests(TestCase):
         self.assertEqual(counts["rebaselined"], 1)
         self.assertEqual(ts.stale_languages("book"), {})
 
+    def test_an_original_language_edition_is_never_a_stale_translation(self):
+        # Pascal's own French beside Trotter's English: the English is the
+        # translation, so an English fix must not flag the French as stale.
+        fr = Book.objects.create(
+            author=self.en.author, slug="humility", language="fr", title="Humilité",
+            source_type=Book.SourceType.PUBLIC_DOMAIN,
+        )
+        Chapter.objects.create(book=fr, order=1, title="Un", body_html="<p>Orgueil</p>")
+        ts.refresh("book")
+        self._edit(self.en, "<p>Pride, corrected</p>")
+        counts = ts.refresh("book")
+        fr.refresh_from_db()
+        self.assertEqual(fr.english_digest, "")
+        self.assertEqual(counts["stale"], 1, "only the sw translation")
+        self.assertEqual(ts.stale_languages("book"), {"humility": ["sw"]})
+
     def test_refresh_is_idempotent(self):
         ts.refresh("book")
         self.assertEqual(ts.refresh("book"), {"updated": 0, "rebaselined": 0, "stale": 0})
@@ -91,8 +107,13 @@ class TranslationStalenessTests(TestCase):
     def test_sermons_and_articles(self):
         author = Author.objects.get(slug="am")
         for lang, body in (("en", "<p>Grace</p>"), ("es", "<p>Gracia</p>")):
-            Sermon.objects.create(author=author, slug="grace", language=lang, title="G", body_html=body)
-            Article.objects.create(slug="prayer", language=lang, h1="P", body_html=body)
+            # A translation ships ai_unreviewed; the model's default,
+            # public_domain, means an original-language edition.
+            kind = Book.SourceType.PUBLIC_DOMAIN if lang == "en" else Book.SourceType.AI_UNREVIEWED
+            Sermon.objects.create(
+                author=author, slug="grace", language=lang, title="G", body_html=body, source_type=kind
+            )
+            Article.objects.create(slug="prayer", language=lang, h1="P", body_html=body, source_type=kind)
         call_command("refresh_translation_digests", stdout=io.StringIO())
         Sermon.objects.filter(slug="grace", language="en").update(title="Grace abounding")
         Article.objects.filter(slug="prayer", language="en").update(body_html="<p>More</p>")

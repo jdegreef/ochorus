@@ -156,6 +156,7 @@ TOPICS = [
             "pensees",
             "provincial-letters",
             "letters-and-minor-works",
+            "life-of-pascal",
         ],
     ),
     (

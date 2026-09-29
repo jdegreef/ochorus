@@ -31,9 +31,9 @@ _ZERO_WIDTH = re.compile("[​‌‍﻿]")
 
 
 class Block(NamedTuple):
-    #: "p" — a paragraph; "center" — a centred line (a heading, a numeral, an
-    #: ornament: the caller decides); "right" — a right-set line (a dateline, a
-    #: signature).
+    #: "p" — a paragraph; "heading" — an <h2>–<h6>; "center" — a centred line
+    #: (a heading, a numeral, an ornament: the caller decides); "right" — a
+    #: right-set line (a dateline, a signature).
     kind: str
     #: Inline HTML: text with <em>/<strong> only.
     html: str
@@ -117,10 +117,15 @@ def blocks(html: str) -> list[Block]:
     _join_drop_initial(soup)
 
     out: list[Block] = []
-    for el in soup.find_all(["p", "table", "div"]):
+    for el in soup.find_all(["p", "table", "div", "h2", "h3", "h4", "h5", "h6"]):
         if el.find_parent(["p", "table"]):
             continue
         classes = set(el.get("class") or [])
+        if el.name[0] == "h" and el.name != "hr":
+            html_ = _inline(el)
+            if html_:
+                out.append(Block("heading", html_))
+            continue
         if el.name == "table":
             # A paragraph set in a table with dotted leaders: the text is the
             # first cell of each row; the rest are the leaders.

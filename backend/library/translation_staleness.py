@@ -44,6 +44,7 @@ from collections.abc import Iterable
 from django.db import transaction
 
 from .models import Article, Book, Chapter, Sermon
+from .originals import ORIGINAL_SOURCE_TYPE, is_original
 
 KINDS = ("book", "sermon", "article")
 _MODEL = {"book": Book, "sermon": Sermon, "article": Article}
@@ -100,12 +101,21 @@ def _row_digests(kind: str) -> dict[int, str]:
     return {pk: _digest((t, body)) for pk, t, body in rows}
 
 
+def _is_translation(row) -> bool:
+    # An original-language edition (Pascal's own French) is not a copy of the
+    # English — the English is the translation — so it has no English baseline
+    # and is never stale. See `library.originals`.
+    return row.language != "en" and not is_original(row.language, row.source_type)
+
+
 def refresh(kind: str) -> dict[str, int]:
     """Recompute every row's ``content_digest`` for one kind and (re)baseline the
     translations that need it. Returns counts for the deploy log."""
     model = _MODEL[kind]
     new = _row_digests(kind)
-    rows = list(model.objects.only("pk", "slug", "language", "content_digest", "english_digest"))
+    rows = list(
+        model.objects.only("pk", "slug", "language", "source_type", "content_digest", "english_digest")
+    )
     english = {r.slug: new[r.pk] for r in rows if r.language == "en"}
 
     touched = []
@@ -113,7 +123,7 @@ def refresh(kind: str) -> dict[str, int]:
     for r in rows:
         own_changed = r.content_digest != new[r.pk]
         r.content_digest = new[r.pk]
-        if r.language != "en":
+        if _is_translation(r):
             en = english.get(r.slug, "")
             if en and (not r.english_digest or own_changed) and r.english_digest != en:
                 r.english_digest = en
@@ -130,7 +140,7 @@ def refresh(kind: str) -> dict[str, int]:
     stale = sum(
         1
         for r in rows
-        if r.language != "en" and r.slug in english and r.english_digest != english[r.slug]
+        if _is_translation(r) and r.slug in english and r.english_digest != english[r.slug]
     )
     return {"updated": len(touched), "rebaselined": rebaselined, "stale": stale}
 
@@ -147,6 +157,7 @@ def stale_languages(kind: str) -> dict[str, list[str]]:
     out: dict[str, list[str]] = {}
     for slug, lang, baseline in (
         model.objects.exclude(language="en")
+        .exclude(source_type=ORIGINAL_SOURCE_TYPE)
         .exclude(english_digest="")
         .values_list("slug", "language", "english_digest")
     ):

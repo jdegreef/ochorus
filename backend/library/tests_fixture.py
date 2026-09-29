@@ -3719,3 +3719,27 @@ class BookSortOrderTests(SimpleTestCase):
 
         highest = max((f.get("sort_order") or 0) for *_, f in book_editions())
         self.assertEqual(book_sort_order("no-such-work-yet"), highest + 1)
+
+
+class OriginalEditionsTests(SimpleTestCase):
+    """A non-English `public_domain` row must be a listed original.
+
+    `public_domain` is the model default, so a translation created without a
+    source type would otherwise pass as an original and skip every
+    translation gate. See `library.originals`.
+    """
+
+    def test_every_non_english_public_domain_row_is_a_listed_original(self):
+        from .content_fixtures import iter_work_files
+        from .originals import ORIGINAL_EDITIONS, is_original
+
+        found = set()
+        for _path, rows in iter_work_files():
+            for row in rows:
+                f = row["fields"]
+                if row["model"] in ("library.book", "library.sermon", "library.article") and is_original(
+                    f.get("language", ""), f.get("source_type", "")
+                ):
+                    found.add((f["slug"], f["language"]))
+        self.assertEqual(found - ORIGINAL_EDITIONS, set(), "unlisted original-language rows")
+        self.assertEqual(ORIGINAL_EDITIONS - found, set(), "listed originals with no public_domain fixture")

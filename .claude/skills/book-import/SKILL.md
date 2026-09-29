@@ -1572,6 +1572,44 @@ the transcribed chapters against the work's own TOC before choosing it.
    rather than trusted from the manifest — so use the Met (or another source
    with a per-object licence flag), not a general image search.
 
+**Wikisource (en/fr/…) — scan-backed, proofread transcriptions** via
+`library.wikisource` (`fetch(host, title)` → `blocks(html)`: ordered
+`Block(kind, html)` of p / heading / center / right, furniture stripped). Built
+for Pascal (`build_letters_and_minor_works`, `build_pascal_french`). Traps:
+  - **Lift `div.prp-pages-output` BEFORE removing furniture.** On some pages the
+    header template is left unclosed and wraps the whole text, and it carries
+    `ws-noexport` — cleaning first deleted every letter (0 blocks, no error).
+  - **Adjacent works share a scan page**, so a page can end with the NEXT
+    work's opening (The Art of Persuasion ran into the Discourse on Love). Give
+    the piece a `stop` line and assert it is found.
+  - Drop initials arrive split (`W` + `E have`); `blocks` rejoins them. Page
+    breaks can swallow a word fragment ("afflicted and soled" for "con-soled"):
+    fix with a literal pair asserted to match exactly once.
+  - Check what is actually transcribed before choosing an edition: fr.wikisource's
+    1871 Hachette *Provinciales* had only letters 1–5; the Vallée 1657 edition
+    had 1–18 but not the posthumous 19th fragment (taken from an archive.org
+    OCR, hand-checked, committed under `commands/data/`).
+  - **Check every work's END against a complete edition** — a main-space
+    page's transcluded page range can be wrong in three ways, none of which
+    errors: it ends on the NEXT work's heading (Vallée 3/4/6/7/8), runs on
+    into the next work (5), or stops a scan page short mid-sentence (9). Match
+    each piece's last words in a full text and count what follows; list the
+    fixes per page and assert each one.
+
+**An ORIGINAL-LANGUAGE edition (e.g. Pascal's own French) is `public_domain`,
+not a translation.** Book/Sermon `source_type` `public_domain` means "Public
+domain (original language)"; every translation ships `ai_unreviewed`. So a
+non-English `public_domain` row wears no review badge, and
+`library.originals.is_original` (used by the markup gate and
+`translation_staleness`) skips it (its
+markup follows its own edition; the English is the translation). Keep the same
+chapter COUNT as the English so per-chapter URLs resolve in both, and add the
+edition to `originals.ORIGINAL_EDITIONS` — `public_domain` is the model default,
+so `tests_fixture` refuses any unlisted non-English `public_domain` row. **Do NOT set
+the author's `original_language` to the work's language** — that field is the
+language of the BIO text (all 102 authors are `en`); flipping it hides the
+English bio. *(Pascal, 2026-09)*
+
 **Documenting the American South** (`import_docsouth`, `source="docsouth"`,
 `source_ref` = the full `https://docsouth.unc.edu/...html` page URL) is the
 cleanest source for early African-American / Southern texts — human-KEYED, not
