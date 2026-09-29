@@ -1,0 +1,179 @@
+{
+ "kind": "sermon",
+ "slug": "burdens-and-gifts",
+ "language": "fr",
+ "job_issue": 3282,
+ "pull_request": 4485,
+ "references": [
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "self_rendered",
+   "why": "The preacher's next section turns on the word 'wait' (and says other versions read 'trust'/'hope'); Segond has 'se confient', so 's’attendent à' (Darby/Ostervald sense) is kept to carry his argument."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 40:31a",
+   "status": "self_rendered",
+   "why": "Sung/quoted as a chorus with 'wait' and 'the Lord'; Segond reads 'ceux qui se confient en l’Éternel'."
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "why": "Paraphrase re-personed into the third person plural, blended into Isaiah 40:31."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "why": "Segond's words in the future tense, applied by the preacher to those who abide / are yoked."
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:30",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Kings 4:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "self_rendered",
+   "why": "Paraphrase re-personed to 'you' and 'the Holy Spirit'; Segond: 'Si quelqu’un n’a pas l’Esprit de Christ, il ne lui appartient pas.'"
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "self_rendered",
+   "why": "Paraphrase; Segond: 'les distribuant à chacun en particulier comme il veut'."
+  },
+  {
+   "reference": "Ephesians 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 4:7",
+   "status": "self_rendered",
+   "why": "Tense shifted to direct speech; Segond narrates 'Dieu était venu dans le camp'."
+  },
+  {
+   "reference": "1 Samuel 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 4:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 4:21",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Judges 21:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 4:15",
+   "status": "self_rendered",
+   "why": "The preacher paraphrases the verse as a rule ('shall be those that bear the Ark'); Segond's 4:15 wording ('les fils de Kehath viendront… pour les porter') does not carry his sentence, so it is rendered from his words with Segond's name Kehath."
+  },
+  {
+   "reference": "John 17:5",
+   "status": "self_rendered",
+   "why": "Loose spoken paraphrase of the verse, not Segond's wording."
+  },
+  {
+   "reference": "John 17:6",
+   "status": "self_rendered",
+   "why": "Paraphrase blending 17:6/17:9 with an added 'I thank you'."
+  },
+  {
+   "reference": "John 17:15",
+   "status": "self_rendered",
+   "why": "The preacher's point hangs on 'keep' ('I'm so glad he's keeping me'); Segond has 'de les préserver du mal'."
+  },
+  {
+   "reference": "John 17:20",
+   "status": "self_rendered",
+   "why": "Spoken paraphrase, not Segond's wording."
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "why": "Paraphrase of 17:21-23 applied to Nanaimo by the preacher."
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "self_rendered",
+   "why": "Re-personed allusion inside a model prayer (Segond: 'le péché qui nous enveloppe si facilement')."
+  },
+  {
+   "reference": "1 John 1:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

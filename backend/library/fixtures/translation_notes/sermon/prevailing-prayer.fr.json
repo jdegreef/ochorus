@@ -1,0 +1,219 @@
+{
+ "kind": "sermon",
+ "slug": "prevailing-prayer",
+ "language": "fr",
+ "job_issue": 3290,
+ "pull_request": 4485,
+ "references": [
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 8:27b",
+   "status": "self_rendered",
+   "why": "Finney’s unquoted continuation reads “according to the will of God”, the point of his argument; Segond has only « selon Dieu »."
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Samuel 12:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Samuel 12:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Deuteronomy 9:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 32:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 106:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 22:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 36:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 11:33",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 53:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 12:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 9:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 119:53",
+   "status": "self_rendered",
+   "why": "Edwards quotes the KJV “Horror hath taken hold upon me” to show distress for sinners; Segond reads « Une colère ardente », which would change his point. Rest of the line is Segond."
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Jeremiah 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Esther 4:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "self_rendered",
+   "why": "Allusion re-personed to the hearer (Segond: « celui qui ne croit pas Dieu le fait menteur »)."
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "why": "Re-personed to the individual saint (Segond: « dans nos cœurs »)."
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "self_rendered",
+   "why": "Finney blends 'a nation born at once' and 'in one day' of the verse; Segond splits them into two questions."
+  },
+  {
+   "reference": "Isaiah 66:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 4:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Colossians 1:27",
+   "status": "self_rendered",
+   "why": "Finney appends 'the hope of glory' (Col 1:27) to his quotation of Gal 4:19; words are Segond's but blended into another verse."
+  },
+  {
+   "reference": "Hebrews 2:13",
+   "status": "self_rendered",
+   "why": "Re-personed as a prayer addressed to the Lord (Segond: « Me voici, moi et les enfants que Dieu m’a donnés »; cf. Isaiah 8:18)."
+  },
+  {
+   "reference": "Luke 4:25",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 18:44",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "self_rendered",
+   "why": "Finney uses the KJV image 'as a prince hast thou power with God'; Segond (« tu as lutté avec Dieu ») lacks 'prince' and 'power'."
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "why": "Finney's 'effectual fervent prayer that availeth much' adapted to his sentence (Segond: « La prière fervente du juste a une grande efficace »)."
+  },
+  {
+   "reference": "Ezekiel 36:37",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

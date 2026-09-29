@@ -1,0 +1,354 @@
+{
+ "kind": "sermon",
+ "slug": "caleb-a-different-spirit",
+ "language": "fr",
+ "job_issue": 2960,
+ "pull_request": 4485,
+ "references": [
+  {
+   "reference": "Philippians 2:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:2",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 14:13",
+   "status": "self_rendered",
+   "why": "Preacher's paraphrase: 'these taskmasters who've held you in bondage' replaces Segond's 'les Égyptiens que vous voyez aujourd’hui'."
+  },
+  {
+   "reference": "Numbers 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 14:23",
+   "status": "self_rendered",
+   "why": "Preacher's paraphrase of Numbers 14:23 (Segond: « ne verront point le pays »); 'do not trust me' is his gloss."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "why": "Blended with the paraphrase of 14:23 ('except for'); Segond wording kept for Caleb's clause."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Numbers 14:23",
+   "status": "self_rendered",
+   "why": "Preacher's paraphrase ('my promises, my promised land')."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "why": "Re-tensed paraphrase of Segond; 'animé d’un autre esprit' and 'pleinement suivi ma voie' kept."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "why": "Preacher's paraphrase blending 14:23-24; Segond wording kept for the Caleb clauses."
+  },
+  {
+   "reference": "Lamentations 3:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "self_rendered",
+   "why": "Heading echo of Joshua 14:12 without Segond's « donc »."
+  },
+  {
+   "reference": "Joshua 14:6",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:6",
+   "status": "self_rendered",
+   "why": "Preacher inserted 'forty years ago' into the reading."
+  },
+  {
+   "reference": "Joshua 14:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:11",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "self_rendered",
+   "why": "Reader added the vocative 'Joshua' and 'the giants were there'; Segond wording kept otherwise."
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:14",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Timothy 4:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "self_rendered",
+   "why": "Preacher's prayer echoing Caleb's request."
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "self_rendered",
+   "why": "Allusion re-personed to the plural; 'between men and women' is the preacher's own (probably a slip for 'between God and men'); translated as spoken."
+  },
+  {
+   "reference": "John 4:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:19",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Ephesians 5:20",
+   "status": "self_rendered",
+   "why": "Re-personed indirect paraphrase of the verse (preacher's summary)."
+  },
+  {
+   "reference": "Ephesians 5:21",
+   "status": "self_rendered",
+   "why": "Preacher says 'in the love of Christ' where the verse has 'fear' (Segond « crainte »); his wording kept."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "why": "Preacher's loose paraphrase in God's voice of 'il a pleinement suivi ma voie'."
+  },
+  {
+   "reference": "Numbers 14:24",
+   "status": "self_rendered",
+   "why": "Paraphrase ('look at my servant Caleb'); built on Segond's « animé d’un autre esprit »."
+  },
+  {
+   "reference": "Joshua 14:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:27",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 1:29",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Joshua 14:10",
+   "status": "self_rendered",
+   "why": "Spoken paraphrase of Caleb's words (Joshua 14:10-11)."
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "why": "Re-personed (nous for Segond's « te »); Segond's « rajeunir comme l’aigle » kept."
+  },
+  {
+   "reference": "Psalm 103:5",
+   "status": "self_rendered",
+   "why": "Re-personed as the preacher's life-text; Segond's « rajeunir comme l’aigle » kept."
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "self_rendered",
+   "why": "The preacher's next paragraph expounds the word 'wait'; Segond has « se confient », so « attendent » is needed; rest is Segond."
+  },
+  {
+   "reference": "John 15:4",
+   "status": "self_rendered",
+   "why": "Recast as a conditional by the preacher."
+  },
+  {
+   "reference": "Joshua 14:12",
+   "status": "self_rendered",
+   "why": "Preacher's paraphrase of « Donne-moi donc cette montagne »."
+  },
+  {
+   "reference": "Hebrews 3:19",
+   "status": "self_rendered",
+   "why": "Preacher says he is paraphrasing Hebrews 4."
+  },
+  {
+   "reference": "Hebrews 4:9",
+   "status": "self_rendered",
+   "why": "Paraphrase (preacher: 'there remains a rest')."
+  },
+  {
+   "reference": "Hebrews 4:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "self_rendered",
+   "why": "Section heading: Segond's wording minus « donc »."
+  },
+  {
+   "reference": "Hebrews 4:11",
+   "status": "self_rendered",
+   "why": "Re-personed to 'you' within the preacher's paraphrase."
+  },
+  {
+   "reference": "Matthew 16:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 2:2",
+   "status": "self_rendered",
+   "why": "Spoken paraphrase ('from all his labors')."
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "why": "Hymn line (Simpson) echoing the verse; verse translation, not Segond."
+  }
+ ]
+}

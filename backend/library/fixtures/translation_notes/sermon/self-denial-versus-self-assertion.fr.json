@@ -1,0 +1,34 @@
+{
+ "kind": "sermon",
+ "slug": "self-denial-versus-self-assertion",
+ "language": "fr",
+ "job_issue": 3286,
+ "pull_request": 4485,
+ "references": [
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 6:19",
+   "status": "self_rendered",
+   "why": "Taylor re-persons and expands 'ye are not your own' ('we are not our own in any sense'); Segond's 'vous ne vous appartenez point à vous-mêmes' adapted."
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "why": "Re-personed from Segond's 'vous avez été rachetés à un grand prix' (Taylor: 'we are bought with a price')."
+  },
+  {
+   "reference": "2 Corinthians 11:23",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 18:36",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

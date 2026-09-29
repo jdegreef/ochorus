@@ -685,6 +685,14 @@
 				"content": "7248c88acf109fd505e8dc44eb5e66d40ba427e72d2642f04dec83262623eda9",
 				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 			},
+			"burdens-and-gifts": {
+				"content": "3c1c9def8eb6e3436e96a3e2975ca09c68b4f8da2849846c99d46696b8ca57f4",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+			},
+			"caleb-a-different-spirit": {
+				"content": "09b2909c303928b41f54e6f7f6c4616ea34e4c85e43012e7b921f696fdd98dc6",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+			},
 			"catholic-spirit": {
 				"content": "526289548a29f42c5c58b4e1b8aba0d88b6e9336ff5c392b25b07bd5d3fa0b14",
 				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
@@ -696,6 +704,10 @@
 			"christ-precious-to-believers": {
 				"content": "4611167679ce3ac059ceb810d384a052ed7e0d90b38dcc8d102b9e54e4643cf0",
 				"art": "26eeae38d3bda240011785cb9319273055a615ae997878ae25cbe2e72eda04f2"
+			},
+			"christ-the-believers-wisdom": {
+				"content": "f730074534965e41216fd14654c8fac807856e293355aa56480cf80b20246d0b",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
 			"christs-boundless-compassion": {
 				"content": "95494b5c812dc55d2d52ceb42d50691cb4c028a9dd63d140eb55f375c64f83f8",
@@ -741,6 +753,10 @@
 				"content": "f7367b2d92a1cb8fc1c57ba6c261c395e1bdad1f2228a8aeae08e10fc47c90fd",
 				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 			},
+			"no-one-can-harm-the-man-who-does-not-injure-himself": {
+				"content": "c4d752975529f0095246fe9186d43ccadd636ac55d0c99b7bf194c135e92a850",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+			},
 			"order-and-argument-in-prayer": {
 				"content": "adc3641cb3ef5709855cdb6e587f8bc2cabe57d88c9809931ca264158965d7bf",
 				"art": "d585dead56066e45bf6ad50fd033a766a4c791e5ce428d0172a985fa5b759a3c"
@@ -749,9 +765,21 @@
 				"content": "20d188cb56fc1a2c2914c07a95eaa2326842bf7c02441271e0211511bfd1b1d7",
 				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
 			},
+			"prevailing-prayer": {
+				"content": "57184a8ec25ae09ed96cb3b82eb55629cae8e72bd7c98336a2c8b6b4edd854ce",
+				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+			},
+			"rest": {
+				"content": "ff085e642cbbe422dfdaf7c541618c8c2674c290719fd028207329183b3cc3a6",
+				"art": "1d723e0f5819f8b6ef9ddf525e1dd21964afcddd2ddff42a34e8ce895df48d51"
+			},
 			"salvation-by-faith": {
 				"content": "84b29ebf9755f10dbf1e173882b60af95531a60fc2bf2b399186df4893c1c056",
 				"art": "a16d3a6126a69f3c1ceb30bc409cb2bf72c3b9b85865b45f4d5c3031f865ab6e"
+			},
+			"self-denial-versus-self-assertion": {
+				"content": "7d1132299974bdf818b84e442a7c99f8bb83c96e3370864da140bada4fd1b681",
+				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
 			},
 			"sinners-in-the-hands-of-an-angry-god": {
 				"content": "f9a52308b44f8ef1c2896ac735f3ff614006bb67314bf90a48eda352a6ed09af",
@@ -761,6 +789,10 @@
 				"content": "083adedc23f15e2010281fe8a13a1133d246866f86b48ed180e7940157600ef3",
 				"art": "7ea30b19da60f7228ebda07308cf580e084cc44a1d8107857ce2de336b8de1a5"
 			},
+			"the-appearing-of-the-grace-of-god": {
+				"content": "7ab96cfec3ee1d48801f9ea74c495860adf7f26e2604f7e38818c861aabf0b56",
+				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
+			},
 			"the-circumcision-of-the-heart": {
 				"content": "5205396d6b3713c9ea18403490ebd31ffd2b2ca454af64ccc0e49c7166df22e2",
 				"art": "be373aa1b839802fd2d75da5a9f6df26796c1d22713d19ca199bc60bd982432c"
@@ -768,6 +800,10 @@
 			"the-dying-thief": {
 				"content": "f4fa351397b4699acb607410041673e9bb2a36a3877a3d71b0c2631ce640b796",
 				"art": "c362a82aa2a96d3b77460852bbe0941c8f4ae90b12c5c26eb9f3e46417b961ba"
+			},
+			"the-excellency-of-christ": {
+				"content": "51180c19d194829b9e28bfefe6b136dc31c158c7189f5de54c64d56cb33e0612",
+				"art": "050c66409b0ea927af0e0240dc3cda759b8938b470fbb175974360fdf2ad005c"
 			},
 			"the-golden-key-of-prayer": {
 				"content": "626a8c1b88bf038943e0e99a447025c54b6c89a057d531198e93d51ea2cadb14",
@@ -785,6 +821,10 @@
 				"content": "7421fb2ffafe39453c3166391e997b1a5d7411c8b409b9f2acba65fda15ee901",
 				"art": "c6b3ff2e470d7a842ee34e4eb31ae227e0f958b594bc763f0757f58f68c534af"
 			},
+			"the-impressions-of-natural-men": {
+				"content": "d64b22d5db6ca07f7ab12d2baf2797a771d8151a651ed0ab6691216aa58f70df",
+				"art": "479edf6d3d8df6ba8680d7ae61cd2df0eec96c9214c98d56377d82fd141ffcd6"
+			},
 			"the-joy-of-the-lord": {
 				"content": "b883f87dcc7b903bcf4346ef7fa19a15fd21f64bed0d276dee2671124fbbb654",
 				"art": "ba9904d62fa0dcf2760da255c1225089715c4948b42c1371b3d50119a6633a98"
@@ -800,6 +840,10 @@
 			"the-power-of-stillness": {
 				"content": "c19273c833c7d944cbe5fc7f3a9592e662e955a5faaad45d89ed551ebbff8bab",
 				"art": "75c125cec37af1c81f6c9c3603658309afba2fc879a952a2f4a6bd4002e76253"
+			},
+			"the-ravens-cry": {
+				"content": "85cc434365334b474e0f4b22b5d8e36f6d04f5d939346d63a275bddd8dd1cfcb",
+				"art": "ba717aed7ca98ed58c1a33bde7285915223b31709ae013cb7af8a60252f5c15f"
 			},
 			"the-resurrection-of-jesus": {
 				"content": "2f648f4c973e4ac82c458cfdce43fe4297900ef022d85d67a0efb1e44e234b63",

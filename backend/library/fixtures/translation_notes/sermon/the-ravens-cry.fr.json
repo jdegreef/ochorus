@@ -1,0 +1,239 @@
+{
+ "kind": "sermon",
+ "slug": "the-ravens-cry",
+ "language": "fr",
+ "job_issue": 3283,
+ "pull_request": 4485,
+ "references": [
+  {
+   "reference": "Psalm 147:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Titus 1:15",
+   "status": "self_rendered",
+   "why": "Spurgeon adapts the verse into his own aphorism (paired with 'to the wise nothing is trivial'); Segond's 'Tout est pur pour ceux qui sont purs' does not carry the 'nothing is unclean' form the parallel needs."
+  },
+  {
+   "reference": "Luke 12:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 77:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Esther 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Esther 4:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 1:26",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 102:18",
+   "status": "self_rendered",
+   "why": "Re-tensed and blended paraphrase (KJV Ps 102:17, 'regard the prayer of the destitute') with Spurgeon's 'cry of the humble'; Segond 102:18 = 'Il est attentif à la prière du misérable, Il ne dédaigne pas sa prière'."
+  },
+  {
+   "reference": "Proverbs 14:10",
+   "status": "self_rendered",
+   "why": "Re-personed ('your heart') and Spurgeon's 'bitterness' kept; Segond has 'Le cœur connaît ses propres chagrins'."
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 11:12",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 58:1",
+   "status": "self_rendered",
+   "why": "Re-personed to the plural hearers (Segond: 'Crie à plein gosier, ne te retiens pas')."
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 15:24",
+   "status": "self_rendered",
+   "why": "Reordered and re-personed as Spurgeon quotes it ('He was dead, but is alive again'); Segond: 'mon fils que voici était mort, et il est revenu à la vie'."
+  },
+  {
+   "reference": "Psalm 50:10",
+   "status": "self_rendered",
+   "why": "Allusion to KJV 'cattle upon a thousand hills'; Segond reads 'Toutes les bêtes des montagnes par milliers'."
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "why": "Re-personed: Hosea's 'reçois-nous favorablement' turned by Spurgeon into a promise to the hearer ('receive you graciously')."
+  },
+  {
+   "reference": "Hosea 14:4",
+   "status": "self_rendered",
+   "why": "Re-personed from Segond's 'J’aurai pour eux un amour sincère' ('love you freely')."
+  },
+  {
+   "reference": "Hosea 14:2",
+   "status": "self_rendered",
+   "why": "Re-personed from Segond's 'Nous t’offrirons ... l’hommage de nos lèvres' ('render to Him the calves of your lips')."
+  },
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 118:12",
+   "status": "self_rendered",
+   "why": "Segond 'Elles m’environnaient comme des abeilles' (feminine, the nations); Spurgeon applies it to the men around him and repeats it inverted, so re-gendered and expanded."
+  },
+  {
+   "reference": "Proverbs 15:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Proverbs 28:9",
+   "status": "self_rendered",
+   "why": "Segond's singular 'détourne l’oreille pour ne pas écouter la loi' put in the plural by Spurgeon's paraphrase."
+  },
+  {
+   "reference": "Proverbs 28:9",
+   "status": "self_rendered",
+   "why": "Segond's 'Sa prière même est une abomination' put in the plural in Spurgeon's paraphrase."
+  },
+  {
+   "reference": "Psalm 147:9",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "why": "Blended: Segond's 'Père, pardonne-leur' plus Spurgeon's own words for Christ's intercession."
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "why": "Condensed from Segond's 'Élie dit sept fois: Retourne' to match Spurgeon's 'Go again seven times'."
+  },
+  {
+   "reference": "Matthew 18:22",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 27:8",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Exodus 14:15",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 49:8",
+   "status": "self_rendered",
+   "why": "Spurgeon's free version ('in an acceptable hour ... in an acceptable time') differs from Segond's 'Au temps de la grâce je t’exaucerai, Et au jour du salut je te secourrai'."
+  },
+  {
+   "reference": "Isaiah 44:22",
+   "status": "self_rendered",
+   "why": "Spurgeon's past tense and 'sins ... iniquities' order differ from Segond's 'J’efface tes transgressions comme un nuage, Et tes péchés comme une nuée'."
+  },
+  {
+   "reference": "Isaiah 43:1",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 5:24",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:18",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 6:47",
+   "status": "self_rendered",
+   "why": "Spurgeon quotes the verse without 'on me'; Segond's 'celui qui croit en moi a la vie éternelle' shortened accordingly."
+  },
+  {
+   "reference": "1 John 5:10",
+   "status": "mined",
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
