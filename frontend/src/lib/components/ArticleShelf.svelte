@@ -24,6 +24,8 @@
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import ShowMore from '$lib/components/ShowMore.svelte';
+	import { pager } from '$lib/paging.svelte';
 	import {
 		ARTICLE_SORTS,
 		isGuide,
@@ -140,18 +142,11 @@
 		return c;
 	});
 
-	// --- Show more -----------------------------------------------------------
-	// A page at a time, so the index is not 130 rows deep on arrival. The count
-	// belongs to one filter state: change the filters and it starts over. Kept
-	// as (key, count) rather than reset in an effect — an $effect that writes
-	// state is a $derived in disguise (frontend/CLAUDE.md).
-	const PAGE = 24;
-	const viewKey = $derived(`${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`);
-	let expanded = $state({ key: '', count: PAGE });
-	const limit = $derived(expanded.key === viewKey ? expanded.count : PAGE);
-	const visible = $derived(shown.slice(0, limit));
-	const remaining = $derived(shown.length - visible.length);
-	const showMore = () => (expanded = { key: viewKey, count: limit + PAGE });
+	// A page at a time, so the index is not 130 rows deep on arrival.
+	const paged = pager(
+		() => shown,
+		() => `${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`
+	);
 </script>
 
 <!-- The Questions / Book guides switch — inline from sm, and in the phone
@@ -249,7 +244,7 @@
 	<EmptyState message={filters.active ? t('articles.noMatches') : t('articles.emptyTopic')} />
 {:else if asCovers}
 	<div class="book-grid">
-		{#each visible as a (a.slug)}
+		{#each paged.visible as a (a.slug)}
 			<a href="/articles/{a.slug}/" class="book-card card-lift group">
 				{#if a.lead_book}
 					<BookCover book={a.lead_book} />
@@ -277,16 +272,10 @@
 	</div>
 {:else}
 	<div class="flex flex-col gap-3">
-		{#each visible as a (a.slug)}
+		{#each paged.visible as a (a.slug)}
 			<ArticleCard article={a} {heading} />
 		{/each}
 	</div>
 {/if}
 
-{#if remaining > 0}
-	<div class="mt-8 flex justify-center">
-		<button class="btn btn-ghost" onclick={showMore}>
-			{t('bios.showMore').replace('%n%', String(Math.min(PAGE, remaining)))}
-		</button>
-	</div>
-{/if}
+<ShowMore pager={paged} />

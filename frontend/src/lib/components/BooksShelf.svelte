@@ -24,6 +24,8 @@
 	import TopicFilterRow from './TopicFilterRow.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
+	import { pager } from '$lib/paging.svelte';
+	import ShowMore from '$lib/components/ShowMore.svelte';
 	import { groupBySeries, seriesAmong } from '$lib/series';
 
 	let {
@@ -150,6 +152,14 @@
 	});
 
 	const sorted = $derived(sortBooks(filtered, sort)); // shelf order preserves the API's sort_order
+
+	// A page at a time, like Articles and Biographies: the whole library in one
+	// grid ran 40 phone screens. Only the flat view pages — by author and by
+	// series keep every book, since their quick-nav jumps to a book further down.
+	const flat = pager(
+		() => sorted,
+		() => `${filters.values.q}|${filters.values.source}|${filters.values.topic}|${sort}`
+	);
 
 	// "By series" is offered only when some book on the shelf is in a named
 	// series (never in a language with none, nor behind an API without the
@@ -514,7 +524,8 @@
 				</div>
 			{/if}
 		{:else}
-			{@render shelfBooks(sorted, true, true)}
+			{@render shelfBooks(flat.visible, true, true)}
+			<ShowMore pager={flat} />
 		{/if}
 	{/if}
 </div>

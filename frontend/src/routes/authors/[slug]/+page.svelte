@@ -347,6 +347,10 @@
 			showFaq ? { id: 'faq', label: 'Questions' } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
+	// Articles about this person: the first few, then "Show N more" (see markup).
+	const ARTICLES_SHOWN = 4;
+	let showAllArticles = $state(false);
+
 	// Below two targets there is nothing to jump between.
 	const showSubnav = $derived(navItems.length >= 2);
 
@@ -726,11 +730,29 @@
 				{author.name}
 				<span class="text-small font-normal count">({author.articles.length})</span>
 			</h2>
-			<ul class="mt-3 flex flex-col gap-3">
-				{#each author.articles as article (article.slug)}
-					<li><ArticleLinkCard {article} cta={t('author.readArticle')} /></li>
+			<!-- The first few, then "Show N more" (as on a topic page): 22 cards ran
+			     nine phone screens. The rest stay in the HTML (display:none) so the
+			     prerendered page still links every article. -->
+			<ul id="author-articles" class="mt-3 flex flex-col gap-3">
+				{#each author.articles as article, i (article.slug)}
+					<li class:hidden={!showAllArticles && i >= ARTICLES_SHOWN}>
+						<ArticleLinkCard {article} cta={t('author.readArticle')} />
+					</li>
 				{/each}
 			</ul>
+			{#if author.articles.length > ARTICLES_SHOWN}
+				<button
+					type="button"
+					class="btn btn-sm btn-ghost mt-3"
+					aria-controls="author-articles"
+					aria-expanded={showAllArticles}
+					onclick={() => (showAllArticles = !showAllArticles)}
+				>
+					{showAllArticles
+						? t('search.showLess')
+						: t('bios.showMore').replace('%n%', String(author.articles.length - ARTICLES_SHOWN))}
+				</button>
+			{/if}
 		</section>
 	{/if}
 
