@@ -14,7 +14,8 @@
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import TopicFilterRow from '$lib/components/TopicFilterRow.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
-	import DrawerShell from '$lib/components/DrawerShell.svelte';
+	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
@@ -165,21 +166,7 @@
 	let group = $state<Group>('preacher');
 	let sort = $state<Sort>('shelf');
 
-	// --- Phone: the controls live in a Filters sheet (see the markup) --------
-	let filtersOpen = $state(false);
-	// The sheet is a phone control: widen past sm (a tablet rotating) and the
-	// inline row takes over, so close it rather than leave it over the page.
-	$effect(() => {
-		const mq = window.matchMedia('(min-width: 640px)');
-		const close = () => {
-			if (mq.matches) filtersOpen = false;
-		};
-		mq.addEventListener('change', close);
-		return () => mq.removeEventListener('change', close);
-	});
-	/** What the sheet is narrowing by — on the button, so a closed sheet can't
-	 *  hide that the list is filtered. (Sort and grouping arrange; they don't
-	 *  narrow.) */
+	/** What the phone Filters sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived((filters.values.book ? 1 : 0) + (filters.values.len ? 1 : 0));
 	const SORTS: { v: Sort; k: string }[] = [
 		{ v: 'shelf', k: 'common.sortShelf' },
@@ -328,19 +315,38 @@
 				aria-label={t('sermons.filterPlaceholder')}
 				class="filter-field grow"
 			/>
-			<button
-				class="chip flex shrink-0 items-center gap-1.5 sm:hidden"
-				onclick={() => (filtersOpen = true)}
-				aria-haspopup="dialog"
-				aria-expanded={filtersOpen}
+			<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+			<FilterSheet
+				count={sheetCount}
+				shown={filtered.length}
+				showLabel={t('sermons.showResults')}
+				filtered={filtering}
+				onClear={clearFilters}
 			>
-				{t('bios.filters')}
-				{#if sheetCount}
-					<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent"
-						>{sheetCount}</span
-					>
-				{/if}
-			</button>
+				{@render bookSelect('w-full')}
+
+				<SheetChoices
+					label={t('sermons.allLengths')}
+					showLabel={false}
+					options={[
+						{ v: '', label: t('sermons.allLengths') },
+						...LENGTH_BUCKETS.filter((b) => lengthFacets[b]).map((b) => ({
+							v: b,
+							label: t(LENGTH_LABEL[b]),
+							count: lengthFacets[b]
+						}))
+					]}
+					value={filters.values.len}
+					onselect={(v) => (filters.values.len = v)}
+				/>
+				<SheetChoices
+					label={t('common.sort')}
+					options={SORTS.map((o) => ({ v: o.v, label: t(o.k) }))}
+					value={sort}
+					onselect={(v) => ((sort = v), save())}
+				/>
+				{@render groupSeg('w-full', 'flex-1')}
+			</FilterSheet>
 			<div class="hidden sm:contents">
 				{@render bookSelect('')}
 
@@ -440,76 +446,9 @@
 	{:else}
 		{@render sermonList(sorted)}
 	{/if}
-
-	<!-- The phone Filters sheet: the same controls as one-tap choices. The list
-	     updates behind it as they change; "Show sermons (N)" closes it. -->
-	<DrawerShell bind:open={filtersOpen} title={t('bios.filters')} placement="bottom">
-		{@render bookSelect('w-full')}
-
-		<div class="sheet-choices" role="group" aria-label={t('sermons.allLengths')}>
-			<button
-				class="chip"
-				class:active={!filters.values.len}
-				aria-pressed={!filters.values.len}
-				onclick={() => (filters.values.len = '')}>{t('sermons.allLengths')}</button
-			>
-			{#each LENGTH_BUCKETS as b (b)}
-				{#if lengthFacets[b]}
-					<button
-						class="chip"
-						class:active={filters.values.len === b}
-						aria-pressed={filters.values.len === b}
-						onclick={() => (filters.values.len = b)}
-						>{t(LENGTH_LABEL[b])} <span class="count">{lengthFacets[b]}</span></button
-					>
-				{/if}
-			{/each}
-		</div>
-
-		<p class="sheet-label">{t('common.sort')}</p>
-		<div class="sheet-choices" role="group" aria-label={t('common.sort')}>
-			{#each SORTS as o (o.v)}
-				<button
-					class="chip"
-					class:active={sort === o.v}
-					aria-pressed={sort === o.v}
-					onclick={() => ((sort = o.v), save())}>{t(o.k)}</button
-				>
-			{/each}
-		</div>
-
-		{@render groupSeg('mt-5 w-full', 'flex-1')}
-
-		<div class="mt-6 flex items-center gap-2">
-			{#if filtering}
-				<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
-			{/if}
-			<button class="btn btn-primary flex-1" onclick={() => (filtersOpen = false)}
-				>{t('sermons.showResults').replace('%n%', String(filtered.length))}</button
-			>
-		</div>
-	</DrawerShell>
 </div>
 
 <style>
-	/* The phone Filters sheet: choices wrap as chips, so a length or sort
-	   label never truncates (touch sizing comes from the global .chip rule). */
-	.sheet-label {
-		margin: 1.25rem 0 0.5rem;
-		font-size: var(--fs-small);
-		font-weight: 600;
-		color: var(--muted);
-	}
-	.sheet-choices {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-top: 1rem;
-	}
-	.sheet-label + .sheet-choices {
-		margin-top: 0;
-	}
-
 	/* The filter bar pins below sm (one line: search + Filters) and from md
 	   (the inline row fits a line or two); between sm and md the inline row
 	   wraps too tall to pin, so it scrolls away and the preacher anchors only

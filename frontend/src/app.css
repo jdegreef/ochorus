@@ -2488,6 +2488,11 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	.footer-lang {
 		padding-block: 0.7rem;
 	}
+	/* A segmented option is inline-flex on touch (the @layer above), which drops
+	   the literal space before its count ("All130"); desktop keeps the space. */
+	.seg button .count {
+		margin-inline-start: 0.3rem;
+	}
 	/* The footer's page links too (0.3rem gave 31px rows, the bottom About /
 	   Contact / Privacy row 21px), for the same reason. */
 	.footer-links a,

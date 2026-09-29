@@ -21,6 +21,8 @@
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import {
 		ARTICLE_SORTS,
@@ -152,6 +154,23 @@
 	const showMore = () => (expanded = { key: viewKey, count: limit + PAGE });
 </script>
 
+<!-- The Questions / Book guides switch — inline from sm, and in the phone
+     sheet below it. -->
+{#snippet kindSeg(cls: string, btnCls: string)}
+	<div class="seg {cls}">
+		{#each kindTabs as [k, label, n] (k)}
+			<button
+				class={btnCls}
+				class:active={filters.values.kind === k}
+				aria-pressed={filters.values.kind === k}
+				onclick={() => (filters.values.kind = k)}>{t(label)} <span class="count">{n}</span></button
+			>
+		{/each}
+	</div>
+{/snippet}
+
+<!-- Below sm: search + a Filters button whose sheet holds sort and kind (the
+     three controls stacked ~170px above the topic chips). From sm, inline. -->
 <div class="filter-row mb-4">
 	<input
 		bind:value={filters.values.q}
@@ -161,23 +180,33 @@
 		aria-label={t('articles.filterPlaceholder')}
 		class="filter-field grow"
 	/>
-	<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
-		{#each ARTICLE_SORTS as s (s)}
-			<option value={s}>{t(SORT_LABEL[s])}</option>
-		{/each}
-	</select>
-	{#if showKinds}
-		<div class="seg">
-			{#each kindTabs as [k, label, n] (k)}
-				<button
-					class:active={filters.values.kind === k}
-					aria-pressed={filters.values.kind === k}
-					onclick={() => (filters.values.kind = k)}
-					>{t(label)} <span class="count">{n}</span></button
-				>
+	<FilterSheet
+		count={filters.values.kind ? 1 : 0}
+		shown={filtered.length}
+		showLabel={t('articles.showResults')}
+		filtered={filters.active}
+		onClear={() => filters.reset()}
+	>
+		<SheetChoices
+			label={t('common.sort')}
+			options={ARTICLE_SORTS.map((v) => ({ v, label: t(SORT_LABEL[v]) }))}
+			value={sort}
+			onselect={(v) => ((sort = v), save())}
+		/>
+		{#if showKinds}
+			{@render kindSeg('w-full', 'flex-1')}
+		{/if}
+	</FilterSheet>
+	<div class="hidden sm:contents">
+		<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+			{#each ARTICLE_SORTS as s (s)}
+				<option value={s}>{t(SORT_LABEL[s])}</option>
 			{/each}
-		</div>
-	{/if}
+		</select>
+		{#if showKinds}
+			{@render kindSeg('', '')}
+		{/if}
+	</div>
 </div>
 
 {#if topicTabs.length > 1}

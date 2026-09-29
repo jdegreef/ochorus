@@ -14,6 +14,8 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { queryChip, type FilterChip } from '$lib/filterChips';
 	import { jumpToSection } from '$lib/scrollSpy.svelte';
@@ -92,17 +94,13 @@
 	});
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
-	// forever. On mobile the secondary controls now collapse behind a Filters
-	// toggle, leaving search (the thing you actually reach for) plus the toggle.
-	// `hidden` is conditional and `sm:` overrides it, so desktop is untouched
-	// and there is no duplicated markup.
+	// forever. On a phone it is search (the thing you actually reach for) plus a
+	// Filters button whose sheet holds the rest; from sm the controls sit inline.
 	/** Measured height of the pinned controls bar — the era headings pin below it. */
 	let controlsH = $state(0);
-	let filtersOpen = $state(false);
-	const activeCount = $derived(
-		(filters.values.q.trim() !== '' ? 1 : 0) +
-		(filters.values.filter !== 'all' ? 1 : 0) +
-		(showFullLife && filters.values.full ? 1 : 0)
+	/** What the sheet is narrowing by (FilterSheet's `count`). */
+	const sheetCount = $derived(
+		(filters.values.filter !== 'all' ? 1 : 0) + (showFullLife && filters.values.full ? 1 : 0)
 	);
 
 	// The filters currently narrowing the roster, each liftable on its own. The
@@ -186,6 +184,11 @@
 	});
 
 
+	const SORT_LABEL: Record<Sort, string> = {
+		name: 'bios.sortName',
+		era: 'bios.sortEra',
+		books: 'bios.sortBooks'
+	};
 	const FILTERS: { v: Filter; k: string }[] = [
 		{ v: 'all', k: 'bios.filterAll' },
 		{ v: 'library', k: 'bios.filterInLibrary' },
@@ -289,6 +292,32 @@
 	pins or scrolls into view below reads it, so there is one number to be right
 	rather than four hard-coded ones drifting apart.
 -->
+<!-- Shared by the inline row (sm up) and the phone sheet. -->
+{#snippet filterSeg(cls: string, btnCls: string)}
+	<div class="seg {cls}">
+		{#each FILTERS as opt (opt.v)}
+			<button
+				class={btnCls}
+				class:active={filters.values.filter === opt.v}
+				onclick={() => (filters.values.filter = opt.v)}
+				aria-pressed={filters.values.filter === opt.v}>{t(opt.k)}</button
+			>
+		{/each}
+	</div>
+{/snippet}
+<!-- Orthogonal to the library/bio segments: narrows to writers with a
+     full-length biography (the "Full life" badge). Shown only when it
+     actually splits the roster (see showFullLife) — in English almost every
+     writer has a full bio, so the chip would remove almost no one. -->
+{#snippet fullLifeChip()}
+	<button
+		class="chip"
+		class:active={filters.values.full === '1'}
+		onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
+		aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
+	>
+{/snippet}
+
 {#snippet clearFiltersAction()}
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
 {/snippet}
@@ -322,55 +351,37 @@
 			aria-label={t('bios.filterPlaceholder')}
 		/>
 
-		<!-- Mobile only: reveals the rest. Carries a count so a collapsed panel
-		     can never hide the fact that the list is being narrowed. -->
-		<button
-			class="chip flex shrink-0 items-center gap-1 sm:hidden"
-			onclick={() => (filtersOpen = !filtersOpen)}
-			aria-expanded={filtersOpen}
+		<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+		<FilterSheet
+			count={sheetCount}
+			shown={sorted.length}
+			showLabel={t('bios.showResults')}
+			filtered={isFiltered}
+			onClear={clearFilters}
 		>
-			{t('bios.filters')}
-			{#if activeCount}
-				<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent"
-					>{activeCount}</span
-				>
+			{@render filterSeg('w-full', 'flex-1')}
+			{#if showFullLife}
+				<div>{@render fullLifeChip()}</div>
 			{/if}
-		</button>
+			<SheetChoices
+				label={t('bios.sort')}
+				options={SORT_VALUES.map((v) => ({ v, label: t(SORT_LABEL[v]) }))}
+				value={filters.values.sort}
+				onselect={(v) => (filters.values.sort = v)}
+			/>
+		</FilterSheet>
 
-		<div class="seg sm:flex" class:hidden={!filtersOpen} class:flex={filtersOpen}>
-			{#each FILTERS as opt (opt.v)}
-				<button
-					class:active={filters.values.filter === opt.v}
-					onclick={() => (filters.values.filter = opt.v)}
-					aria-pressed={filters.values.filter === opt.v}>{t(opt.k)}</button
-				>
-			{/each}
+		<div class="hidden sm:contents">
+			{@render filterSeg('', '')}
+			{#if showFullLife}
+				{@render fullLifeChip()}
+			{/if}
+			<select bind:value={filters.values.sort} class="filter-field" aria-label={t('bios.sort')}>
+				{#each SORT_VALUES as v (v)}
+					<option value={v}>{t(SORT_LABEL[v])}</option>
+				{/each}
+			</select>
 		</div>
-
-		<!-- Orthogonal to the library/bio segments: narrows to writers with a
-		     full-length biography (the "Full life" badge). Shown only when it
-		     actually splits the roster (see showFullLife) — in English almost every
-		     writer has a full bio, so the chip would remove almost no one. -->
-		{#if showFullLife}
-			<button
-				class="chip sm:block"
-				class:hidden={!filtersOpen}
-				class:active={filters.values.full === '1'}
-				onclick={() => (filters.values.full = filters.values.full ? '' : '1')}
-				aria-pressed={filters.values.full === '1'}>{t('bios.fullLife')}</button
-			>
-		{/if}
-
-		<select
-			bind:value={filters.values.sort}
-			class="filter-field sm:block"
-			class:hidden={!filtersOpen}
-			aria-label={t('bios.sort')}
-		>
-			<option value="name">{t('bios.sortName')}</option>
-			<option value="era">{t('bios.sortEra')}</option>
-			<option value="books">{t('bios.sortBooks')}</option>
-		</select>
 	</div>
 
 	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list.
@@ -384,7 +395,7 @@
 			template={t('bios.showing')}
 			onClear={clearFilters}
 			chips={activeChips}
-			class="mt-1.5 {filtersOpen ? 'flex' : 'hidden'} sm:flex"
+			class="mt-1.5"
 		/>
 	{/if}
 
