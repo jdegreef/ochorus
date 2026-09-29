@@ -1,0 +1,64 @@
+name: IndexNow
+
+# Tell Bing and the other IndexNow engines which pages changed: every URL in the
+# live sitemap that is new or re-dated since the previous run. The previous run's
+# view of the sitemap is kept in the Actions cache; see
+# frontend/scripts/indexnow.mjs for what is sent and why.
+#
+# Scheduled rather than on push, for the reason prerender-audit.yml gives: main
+# auto-deploys, so a push-triggered run would read the sitemap before Render had
+# shipped the commit.
+on:
+  schedule:
+    - cron: '23 6 * * *'
+  workflow_dispatch:
+    inputs:
+      since:
+        description: 'With no saved state: submit URLs changed in the last N days'
+        required: false
+        default: '1'
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: frontend/.nvmrc
+
+      # The last run's URL -> lastmod map. A cache entry is immutable, so each
+      # run saves under its own key and restores the newest by prefix. Evicted
+      # (7 days unused) or never saved: the script falls back to --since.
+      - name: Restore last run's sitemap state
+        uses: actions/cache/restore@v6
+        with:
+          path: frontend/indexnow-state.json
+          key: indexnow-state-${{ github.run_id }}
+          restore-keys: indexnow-state-
+
+      # No `npm ci`: node builtins and global fetch only.
+      # The input reaches the script through env, never interpolated into the
+      # shell (see prerender-audit.yml).
+      - name: Submit changed URLs
+        working-directory: frontend
+        env:
+          SINCE: ${{ inputs.since || '1' }}
+        run: node scripts/indexnow.mjs --state indexnow-state.json --since "$SINCE"
+
+      # Only after a successful submit (the default `if: success()`): a failed
+      # run leaves the old state, so the next run retries what this one missed.
+      - name: Save sitemap state
+        uses: actions/cache/save@v6
+        with:
+          path: frontend/indexnow-state.json
+          key: indexnow-state-${{ github.run_id }}

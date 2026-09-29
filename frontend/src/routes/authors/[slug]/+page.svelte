@@ -20,6 +20,7 @@
 		breadcrumbLd,
 		faqPage,
 		hreflangAll,
+		hreflangExact,
 		stripHtml,
 		truncateMeta,
 		itemList,
@@ -177,15 +178,15 @@
 	// deindexes the translations). Mirrors the /biographies list page.
 	const path = $derived(`/authors/${author.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	// An author page exists in every locale — the person, their dates and their
-	// works are language-independent — so all locales are real hreflang
-	// alternates, unlike books/sermons which list only the locales they exist in.
-	// (The bio itself no longer falls back to English: an untranslated bio is
-	// absent, and the page renders the works without it.)
-	// LATER: a locale with nothing of the writer's own is now noindexed (`thin`)
-	// and the sitemap lists only the rest; narrowing this set to match needs the
-	// author's languages from the API, which the detail endpoint doesn't carry.
-	const hreflang = $derived(hreflangAll(path));
+	// Alternates only for the locales with something of the writer's own — the
+	// same rule that noindexes the rest (`thin` below) and that the sitemap's
+	// author entries apply — so an indexed page never names a noindexed sibling.
+	// An API running behind this build omits the field: every advertised locale.
+	const hreflang = $derived(
+		author.available_languages
+			? hreflangExact(path, author.available_languages)
+			: hreflangAll(path)
+	);
 	// Nothing of the writer's own in THIS language: kept out of the index.
 	const thin = $derived(!hasOwnContent(author));
 	// Localized, because the bio may legitimately be missing in this language and

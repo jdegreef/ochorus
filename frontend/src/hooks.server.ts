@@ -1,12 +1,14 @@
 import type { Handle, HandleFetch } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { createBuildFetch } from '$lib/buildFetch';
+import { markFallbackNoindex } from '$lib/fallbackShell';
 import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
 
 // Runs during prerendering: sets the request-scoped locale (from the URL) and
-// writes the correct <html lang="…" dir="…"> into each localized static page.
+// writes the correct <html lang="…" dir="…"> into each localized static page,
+// and marks the 200.html fallback shell noindex ($lib/fallbackShell).
 //
 // `dir` has to be baked in here, not only set on hydration. The root layout does
 // keep it in sync on client navigation, but this is a PRERENDERED site: without
@@ -19,9 +21,13 @@ export const handle: Handle = ({ event, resolve }) =>
 		event.request = request;
 		return resolve(event, {
 			transformPageChunk: ({ html }) =>
-				html
-					.replace('%paraglide.lang%', locale)
-					.replace('%paraglide.dir%', getTextDirection(locale))
+				markFallbackNoindex(
+					html
+						.replace('%paraglide.lang%', locale)
+						.replace('%paraglide.dir%', getTextDirection(locale)),
+					// The 200.html shell answers every unbuilt path — see fallbackShell.
+					event.url.pathname
+				)
 		});
 	});
 

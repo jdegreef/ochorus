@@ -1501,13 +1501,15 @@ class BookCardPayloadTests(TestCase):
         # The 14th is the book cards' `has_modern_edition`: ONE read of the
         # published Modern English slugs, shared through the serializer context
         # so it stays one query however many books the author has.
+        # The 15th is `available_languages` (the page's hreflang set): ONE
+        # UNION of the author's published book and sermon languages.
         for i in range(6):
             Article.objects.create(
                 slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
                 description="d", body_html="<p>x</p>", is_published=True,
                 related=[{"type": "author", "slug": "murray"}],
             )
-        with self.assertNumQueries(14):
+        with self.assertNumQueries(15):
             self.client.get("/api/library/authors/murray/?language=en")
 
     def test_book_detail_query_count_is_the_same_in_every_language(self):

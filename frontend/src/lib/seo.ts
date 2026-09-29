@@ -24,8 +24,8 @@ export interface Hreflang {
  * canonical `locales` order, not the API's. x-default is English when the work
  * exists in it, else the first available locale (mirrors sitemap.xml).
  *
- * (Authors and topics do NOT use this: they render in every locale via a
- * bio/name fallback, so their all-locale hreflang is correct.)
+ * (Authors use `hreflangExact` instead; topics render in every locale via a
+ * name fallback.)
  */
 export function hreflangFor(path: string, available: string[]): Hreflang {
 	const has = new Set(available);
@@ -41,6 +41,17 @@ export function hreflangFor(path: string, available: string[]): Hreflang {
 	}));
 	const def = emit.includes('en') ? 'en' : emit[0];
 	return { alternates, xDefault: `${SITE_URL}${localizeHref(path, { locale: def })}` };
+}
+
+/**
+ * hreflang alternates for exactly the advertised locales in `available` — or
+ * `null` when there are none. Unlike `hreflangFor`, an empty set is an answer,
+ * not "unknown": use it where `available` is authoritative and every locale
+ * outside it is noindexed (an author page), so that falling back to every
+ * locale would name nothing but noindexed pages.
+ */
+export function hreflangExact(path: string, available: string[]): Hreflang | null {
+	return ADVERTISED_LOCALES.some((l) => available.includes(l)) ? hreflangFor(path, available) : null;
 }
 
 /**

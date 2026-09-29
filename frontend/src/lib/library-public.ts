@@ -677,6 +677,13 @@ export interface AuthorDetail extends AuthorBio {
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
+	 * The locales where this page has something of the writer's own — a bio, a
+	 * book or a sermon: `hasOwnContent`'s rule, across languages. The page's
+	 * hreflang set, so no alternate names a noindexed page. Optional so an API
+	 * running behind this build falls back to every advertised locale.
+	 */
+	available_languages?: string[];
+	/**
 	 * A short question-and-answer set shown at the foot of the page and emitted as
 	 * schema.org `FAQPage` markup. Plain-text pairs, in the requested language only
 	 * (empty/absent when this locale has no translated set — the no-fallback rule
