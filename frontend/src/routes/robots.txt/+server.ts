@@ -1,4 +1,5 @@
 import { SITE_URL } from '$lib/config';
+import { appOnlyDisallows } from '$lib/robots';
 
 export const prerender = true;
 
@@ -6,17 +7,8 @@ export function GET() {
 	const body = [
 		'User-agent: *',
 		'Allow: /',
-		// Account/admin surfaces are blank SPA shells with nothing to index.
-		'Disallow: /admin',
-		'Disallow: /settings',
-		'Disallow: /login',
-		'Disallow: /account',
-		'Disallow: /notebook',
-		'Disallow: /favorites',
-		'Disallow: /reset-password',
-		// Internal search: thin, endlessly parameterised result pages (?q=…) with
-		// nothing to index — keep crawl budget on the chapter/quote pages instead.
-		'Disallow: /search',
+		// Account/admin shells and search results, in every locale — see $lib/robots.
+		...appOnlyDisallows(),
 		// NO blank line before the next block: a blank line TERMINATES a record
 		// in robots.txt, so anything after one belongs to no user-agent. The
 		// rules below have to stay inside the `User-agent: *` group above.

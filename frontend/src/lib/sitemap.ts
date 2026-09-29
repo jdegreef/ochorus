@@ -46,15 +46,51 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { APP_ONLY } from '$lib/robots';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
 	`${SITE_URL}${locale === 'en' ? '' : `/${locale}`}${path}`;
 
+/**
+ * The newest of `dates` (ISO strings sort chronologically), or undefined.
+ *
+ * The `<lastmod>` of a page that has no modification date of its own but LISTS
+ * works that do — an author, a topic, a series, a plan, an index. Such a page
+ * does change when one of its works does (the card's title, cover, blurb), so
+ * the newest member date is a true lower bound. It understates an edit to the
+ * page's own prose (a bio, a topic intro), which is the safe direction: a
+ * sitemap claiming a change that did not happen is what gets lastmod ignored.
+ */
+export const newest = (dates: Iterable<string | undefined | null>): string | undefined => {
+	let max: string | undefined;
+	for (const d of dates) if (d && (!max || d > max)) max = d;
+	return max;
+};
+
+/** Raise `m[k]` to `date` if it is newer. */
+function bump(m: Map<string, string>, k: string, date: string | undefined | null) {
+	const cur = m.get(k);
+	if (date && (!cur || date > cur)) m.set(k, date);
+}
+
+/** Locale → date for `locales`, leaving out the undated. */
+const dated = (locales: readonly string[], dateOf: (locale: string) => string | undefined) =>
+	new Map(
+		locales.flatMap((l) => {
+			const d = dateOf(l);
+			return d ? [[l, d] as [string, string]] : [];
+		})
+	);
+
 export interface Entry {
 	/** Locale → path, for every locale where this page really exists. */
 	byLocale: Map<string, string>;
+	/** The same date for every locale's row. */
 	lastmod?: string;
+	/** Locale → date, where each language's copy changes on its own (a book
+	 *  edition, a localized shelf). Wins over `lastmod` for its locale. */
+	lastmods?: Map<string, string>;
 	/** Locale → the absolute URL of the image that page is ABOUT: a book
 	 *  edition's cover, an author's portrait. Per locale because a translated
 	 *  edition's cover carries its own title. Absent where there is none. */
@@ -81,7 +117,6 @@ export function urlXml(entry: Entry, only?: string): string {
 	// the work exists in English, else the first available language.
 	const defLocale = entry.byLocale.has('en') ? 'en' : [...entry.byLocale.keys()][0];
 	const xDefault = `    <xhtml:link rel="alternate" hreflang="x-default" href="${loc(defLocale, entry.byLocale.get(defLocale)!)}"/>`;
-	const lastmod = entry.lastmod ? `    <lastmod>${entry.lastmod.slice(0, 10)}</lastmod>\n` : '';
 	// One <url> per language version, each carrying the full alternate set.
 	// An image rides on the row of the locale it belongs to, never on the others:
 	// the Swahili page is about the Swahili cover. `image:loc` alone — Google
@@ -89,6 +124,8 @@ export function urlXml(entry: Entry, only?: string): string {
 	return [...entry.byLocale.entries()]
 		.filter(([l]) => only === undefined || l === only)
 		.map(([l, p]) => {
+			const lm = entry.lastmods?.get(l) ?? entry.lastmod;
+			const lastmod = lm ? `    <lastmod>${lm.slice(0, 10)}</lastmod>\n` : '';
 			const img = entry.images?.get(l);
 			const image = img
 				? `\n    <image:image>\n      <image:loc>${xmlEscape(img)}</image:loc>\n    </image:image>`
@@ -287,7 +324,59 @@ async function build(): Promise<SitemapData> {
 		(ADVERTISED_LOCALES as readonly string[]).includes(x.locale)
 	);
 
+	type Slice = (typeof advertisedSlices)[number];
+
 	const pages: Entry[] = [];
+
+	// <lastmod> for pages with no modification date of their own: the newest
+	// `updated_at` among the works each one lists (see `newest`), per locale —
+	// a Swahili shelf changes when a Swahili book does, not an English one.
+	// One pass over each locale's works.
+	const datesOf = (x: Slice) => {
+		const author = new Map<string, string>();
+		const topic = new Map<string, string>();
+		const series = new Map<string, string>();
+		const book = new Map<string, string>();
+		for (const w of [...x.books, ...x.sermons]) {
+			bump(author, w.author.slug, w.updated_at);
+			for (const tc of w.topics ?? []) bump(topic, tc.slug, w.updated_at);
+		}
+		for (const b of x.books) {
+			bump(book, b.slug, b.updated_at);
+			if (b.series) bump(series, b.series.slug, b.updated_at);
+		}
+		// A plan lists its days' books; `covers` names (up to five of) them, so
+		// this can understate a change to a later book — never overstate one.
+		const plan = new Map(
+			x.plans.flatMap((p) => {
+				const d = newest((p.covers ?? []).map((c) => book.get(c.slug)));
+				return d ? [[p.slug, d] as [string, string]] : [];
+			})
+		);
+		const books = newest(book.values());
+		const sermons = newest(x.sermons.map((sr) => sr.updated_at));
+		return {
+			author,
+			topic,
+			series,
+			plan,
+			originals: author.get(ORIGINALS_SLUG),
+			seriesIndex: newest(series.values()),
+			// The static index pages, by what each lists. The home page shelves
+			// books and sermons alike; about/contact/legal list no works.
+			index: {
+				'/': newest([books, sermons]),
+				'/books': books,
+				'/sermons': sermons,
+				'/topics': newest(topic.values()),
+				'/plans': newest(plan.values()),
+				'/biographies': newest(author.values())
+			} as Record<string, string | undefined>
+		};
+	};
+	const dates = new Map<string, ReturnType<typeof datesOf>>(
+		advertisedSlices.map((x) => [x.locale, datesOf(x)])
+	);
 
 	// Static app pages exist in every locale (the UI chrome is fully translated).
 	for (const path of [
@@ -297,15 +386,16 @@ async function build(): Promise<SitemapData> {
 		'/topics',
 		'/plans',
 		'/biographies',
-		// The search page prerenders a real empty state (title, tagline, ways
-		// in) precisely so it can be advertised — search/+page.ts says as much.
-		// It just was never actually listed here.
-		'/search',
 		'/about',
 		'/contact',
 		'/legal'
-	]) {
-		pages.push({ byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, path])) });
+		// Never an app-only path (search, account, admin): those are noindexed or
+		// disallowed ($lib/robots), and advertising one is a Search Console error.
+	].filter((p) => !(APP_ONLY as readonly string[]).includes(p))) {
+		pages.push({
+			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, path])),
+			lastmods: dated(ADVERTISED_LOCALES, (l) => dates.get(l)?.index[path])
+		});
 	}
 
 	// The quotes index is English-only, like the author quote pages it links to
@@ -321,14 +411,26 @@ async function build(): Promise<SitemapData> {
 	const originalsIn = advertisedSlices
 		.filter((x) => x.books.some((b) => b.author.slug === ORIGINALS_SLUG))
 		.map((x) => [x.locale, `${ORIGINALS_PATH}/`] as [string, string]);
-	if (originalsIn.length) pages.push({ byLocale: new Map(originalsIn) });
+	if (originalsIn.length) {
+		const byLocale = new Map(originalsIn);
+		pages.push({
+			byLocale,
+			lastmods: dated([...byLocale.keys()], (l) => dates.get(l)?.originals)
+		});
+	}
 
 	// The Book Series index, in each advertised locale that has a series — the
 	// same set the page's own hreflang names (no English fallback).
 	const seriesIn = advertisedSlices
 		.filter((x) => x.series.length)
 		.map((x) => [x.locale, '/series/'] as [string, string]);
-	if (seriesIn.length) pages.push({ byLocale: new Map(seriesIn) });
+	if (seriesIn.length) {
+		const byLocale = new Map(seriesIn);
+		pages.push({
+			byLocale,
+			lastmods: dated([...byLocale.keys()], (l) => dates.get(l)?.seriesIndex)
+		});
+	}
 
 	// Articles: original English writing, no translations yet — the hub, each
 	// article, and each topic-filtered shelf. Its OWN sitemap child (see
@@ -337,7 +439,12 @@ async function build(): Promise<SitemapData> {
 	// trustworthy <lastmod> here (seed_articles diffs before saving, so auto_now
 	// doesn't re-stamp every row on every deploy), the same reasoning as books.
 	const articleEntries: Entry[] = [];
-	if (articles.length) articleEntries.push({ byLocale: new Map([['en', '/articles/']]) });
+	if (articles.length) {
+		articleEntries.push({
+			byLocale: new Map([['en', '/articles/']]),
+			lastmod: newest(articles.map((a) => a.updated_at))
+		});
+	}
 	for (const a of articles) {
 		articleEntries.push({
 			byLocale: new Map([['en', `/articles/${a.slug}/`]]),
@@ -348,10 +455,15 @@ async function build(): Promise<SitemapData> {
 	// article, prerendered by the [slug] entry generator, disambiguated in load.
 	// The set is the union of the topic chips on the articles, exactly what
 	// entries() emits, so advertised and built stay in step (prerenderCoverage).
-	const articleTopics = new Set<string>();
-	for (const a of articles) for (const tc of a.topics ?? []) articleTopics.add(tc.slug);
-	for (const slug of articleTopics) {
-		articleEntries.push({ byLocale: new Map([['en', `/articles/${slug}/`]]) });
+	// Keyed by the topic, valued by its newest article (possibly undefined).
+	const articleTopics = new Map<string, string | undefined>();
+	for (const a of articles) {
+		for (const tc of a.topics ?? []) {
+			articleTopics.set(tc.slug, newest([articleTopics.get(tc.slug), a.updated_at]));
+		}
+	}
+	for (const [slug, lastmod] of articleTopics) {
+		articleEntries.push({ byLocale: new Map([['en', `/articles/${slug}/`]]), lastmod });
 	}
 
 	// Author pages prerender for every locale but are advertised only where the
@@ -378,6 +490,7 @@ async function build(): Promise<SitemapData> {
 		const img = photo ? absUrl(photo) : null;
 		return {
 			byLocale: new Map(here.map((l) => [l, `/authors/${slug}/`])),
+			lastmods: dated(here, (l) => dates.get(l)?.author.get(slug)),
 			images: img ? new Map(here.map((l) => [l, img])) : undefined
 		};
 	});
@@ -400,11 +513,10 @@ async function build(): Promise<SitemapData> {
 	// Generic over the kind, so each callback is typed for the works it is
 	// actually handed — a books-only `imageOf` passed for sermons is a type
 	// error rather than an unchecked cast.
-	type Slice = (typeof advertisedSlices)[number];
 	const collect = <K extends 'books' | 'sermons' | 'topics' | 'plans' | 'series'>(
 		kind: K,
 		pathOf: (slug: string) => string,
-		lastmodOf?: (item: Slice[K][number]) => string | undefined,
+		lastmodOf?: (item: Slice[K][number], locale: string) => string | undefined,
 		imageOf?: (item: Slice[K][number]) => string | null
 	) => {
 		const byWork = new Map<string, Entry>();
@@ -413,8 +525,8 @@ async function build(): Promise<SitemapData> {
 				let e = byWork.get(item.slug);
 				if (!e) byWork.set(item.slug, (e = { byLocale: new Map() }));
 				e.byLocale.set(slice.locale, pathOf(item.slug));
-				const lm = lastmodOf?.(item);
-				if (lm && (!e.lastmod || lm > e.lastmod)) e.lastmod = lm;
+				const lm = lastmodOf?.(item, slice.locale);
+				if (lm) (e.lastmods ??= new Map()).set(slice.locale, lm);
 				const img = imageOf?.(item);
 				if (img) (e.images ??= new Map()).set(slice.locale, img);
 			}
@@ -426,9 +538,9 @@ async function build(): Promise<SitemapData> {
 	// last touched on its import day. Only Book and Sermon carry a trustworthy
 	// one — `seed_books`/`seed_sermons` diff before saving, so `auto_now` does
 	// not re-stamp every row on every deploy, which is what makes it honest
-	// enough to publish. Topics, plans and chapters have no such field and get
-	// NO lastmod: omitting it says "I don't know", which is true, where a
-	// substitute date would be a claim. It stays optional here so an API
+	// enough to publish. Topics, plans and series have no such field and borrow
+	// the newest date of the works they list (below; see `newest`) — a lower
+	// bound, never an invented date. It stays optional here so an API
 	// running behind this build (separate Render services, always a skew
 	// window) simply omits the tag rather than breaking the sitemap.
 	// The same raster the book page hands scrapers as its og:image, so a search
@@ -443,11 +555,13 @@ async function build(): Promise<SitemapData> {
 		}
 	);
 	const sermons = collect('sermons', (s) => `/sermons/${s}/`, (s) => s.updated_at);
-	pages.push(...collect('topics', (s) => `/topics/${s}/`));
-	pages.push(...collect('plans', (s) => `/plans/${s}/`));
+	pages.push(...collect('topics', (s) => `/topics/${s}/`, (t, l) => dates.get(l)?.topic.get(t.slug)));
+	pages.push(...collect('plans', (s) => `/plans/${s}/`, (p, l) => dates.get(l)?.plan.get(p.slug)));
 	// A series has a page only where it has a name and a book (no English
 	// fallback), which is exactly what each locale's list holds.
-	pages.push(...collect('series', (s) => `/series/${s}/`));
+	pages.push(
+		...collect('series', (s) => `/series/${s}/`, (sr, l) => dates.get(l)?.series.get(sr.slug))
+	);
 
 	// Scripture pages carry ONE locale, not the advertised set: citations parse
 	// only against English book names, so there is no localized version of these

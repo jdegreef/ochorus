@@ -2,7 +2,7 @@
 //
 // This was `prerender = false; ssr = false`, which meant /search served a 4KB
 // SPA stub: no <h1>, no description, nothing for a crawler. It is a top-level
-// destination in the nav AND listed in sitemap.xml, so it was the one browse
+// destination in the nav (once also listed in sitemap.xml), so it was the one browse
 // page we advertise to search engines with no content in it at all.
 //
 // Prerendering is safe because nothing depending on the query string runs

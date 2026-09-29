@@ -32,7 +32,9 @@
 		title: string;
 		description: string;
 		canonical: string;
-		hreflang: Hreflang;
+		/** Omit (null) when the page has no advertised alternates at all — see
+		 *  `hreflangExact`. */
+		hreflang: Hreflang | null;
 		/** Open Graph object type (book / article / website / profile). */
 		ogType?: string;
 		/** og:title — defaults to the page title when a route doesn't override it. */
@@ -65,10 +67,12 @@
 	<title>{title}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
-	{#each hreflang.alternates as a (a.loc)}
-		<link rel="alternate" hreflang={a.loc} href={a.href} />
-	{/each}
-	<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
+	{#if hreflang}
+		{#each hreflang.alternates as a (a.loc)}
+			<link rel="alternate" hreflang={a.loc} href={a.href} />
+		{/each}
+		<link rel="alternate" hreflang="x-default" href={hreflang.xDefault} />
+	{/if}
 	<!-- og:site_name names the publication behind the card, so a share renders
 	     "Ochorus" under the title instead of a bare hostname; stated once here for
 	     every prerendered page. -->

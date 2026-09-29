@@ -782,6 +782,14 @@
 	hreflang={hreflangAll('/search')}
 />
 
+<svelte:head>
+	<!-- Crawlable but never indexed: the empty state is a doorway, not a page,
+	     and results (`?q=`) are disallowed in robots.txt. `follow`, so its ways
+	     in still pass links. NOT a robots.txt Disallow of /search itself — that
+	     hides the directive and leaves the URL "Indexed, though blocked". -->
+	<meta name="robots" content="noindex,follow" />
+</svelte:head>
+
 <!-- Above lg the page uses the width it has: the facet chips leave the top bar
      and become a rail, so results get the full column and the filters stop
      wrapping onto three lines. Below lg nothing changes — the single column is

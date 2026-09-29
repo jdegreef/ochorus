@@ -42,14 +42,32 @@ vi.mock('$lib/library-public', () => {
 		listAuthors: async (l = 'en') =>
 			l === 'en' ? [author('andrew-murray'), author('e-m-bounds')] : [],
 		listBooks: async (l = 'en') =>
-			l === 'sw' ? [{ slug: 'humility', author: author('andrew-murray') }] : [],
-		listPlans: empty,
+			l === 'sw'
+				? [
+						{
+							slug: 'humility',
+							author: author('andrew-murray'),
+							updated_at: '2026-08-25T10:00:00Z',
+							topics: [{ slug: 'prayer', title: 'Maombi' }],
+							series: { slug: 'rooted', title: 'Rooted', position: 1, total: 2 }
+						},
+						{
+							slug: 'with-christ',
+							author: author('andrew-murray'),
+							updated_at: '2026-09-02T10:00:00Z',
+							topics: [],
+							series: null
+						}
+					]
+				: [],
+		listPlans: async (l = 'en') =>
+			l === 'sw' ? [{ slug: 'humility-in-12', covers: [{ slug: 'humility' }] }] : [],
 		listQuoteAuthors: empty,
 		listQuoteTopics: empty,
 		listQuoteTopicPages: empty,
-		listSeries: empty,
+		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }] : []),
 		listSermons: empty,
-		listTopics: empty,
+		listTopics: async (l = 'en') => (l === 'sw' ? [{ slug: 'prayer' }] : []),
 		listScripturePages: async () => [
 			{ book: 'romans', chapter: 8, verse: null, citing_count: 40 },
 			{ book: 'jude', chapter: 1, verse: null, citing_count: 3 },
@@ -259,5 +277,50 @@ describe('build() author entries', () => {
 	it('advertises an author only in the locales where they have a bio or a work', async () => {
 		expect([...(await find('andrew-murray'))!.byLocale.keys()]).toEqual(['en', 'sw']);
 		expect([...(await find('e-m-bounds'))!.byLocale.keys()]).toEqual(['en']);
+	});
+});
+
+describe('build() lastmod for pages without a date of their own', () => {
+	// Each borrows the newest `updated_at` among the works it lists, in its own
+	// locale — a lower bound, never an invented date (see `newest`).
+	beforeEach(() => resetSitemapData());
+
+	const page = async (path: string) =>
+		(await sitemapData()).pages.find((e) => [...e.byLocale.values()].includes(path));
+	const author = async (slug: string) =>
+		(await sitemapData()).authors.find((e) =>
+			[...e.byLocale.values()].includes(`/authors/${slug}/`)
+		);
+
+	it('dates a topic, a series and a plan by the works on them', async () => {
+		expect((await page('/topics/prayer/'))?.lastmods?.get('sw')).toBe('2026-08-25T10:00:00Z');
+		expect((await page('/series/rooted/'))?.lastmods?.get('sw')).toBe('2026-08-25T10:00:00Z');
+		expect((await page('/plans/humility-in-12/'))?.lastmods?.get('sw')).toBe(
+			'2026-08-25T10:00:00Z'
+		);
+	});
+
+	it('dates an author and the book index by their newest work', async () => {
+		expect((await author('andrew-murray'))?.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+		expect((await page('/books'))?.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+	});
+
+	it("never dates one language's page by another language's change", async () => {
+		// Every mocked work is Swahili: the English rows changed on no known date.
+		expect((await page('/books'))?.lastmods?.has('en')).toBe(false);
+		expect((await author('andrew-murray'))?.lastmods?.has('en')).toBe(false);
+		const xml = urlXml((await page('/books'))!);
+		expect(xml).toContain(`<loc>${loc('sw', '/books')}</loc>\n    <lastmod>2026-09-02</lastmod>`);
+		expect(xml).not.toContain(`<loc>${loc('en', '/books')}</loc>\n    <lastmod>`);
+	});
+
+	it('leaves undated what lists no works', async () => {
+		expect((await page('/about'))?.lastmods?.size).toBe(0);
+		expect((await author('e-m-bounds'))?.lastmods?.size ?? 0).toBe(0);
+	});
+
+	it('never advertises /search or any other app-only path', async () => {
+		expect(await page('/search')).toBeUndefined();
+		expect(await page('/settings')).toBeUndefined();
 	});
 });

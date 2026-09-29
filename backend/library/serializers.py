@@ -213,6 +213,20 @@ def book_series_map(language: str, series_ids) -> dict[int, dict]:
     return named
 
 
+def _published_languages(model, **filters):
+    """The distinct browsable languages of the published ``model`` rows matching
+    ``filters`` — a values queryset, so callers can combine it (a UNION) before
+    it runs. ``.order_by()`` clears the default ordering, which a UNION can't
+    carry and which would otherwise leak into the DISTINCT."""
+    return (
+        model.objects.filter(is_published=True, **filters)
+        .exclude(language=MODERN_LANGUAGE)
+        .order_by()
+        .values_list("language", flat=True)
+        .distinct()
+    )
+
+
 def _available_languages(model, slug: str) -> list[str]:
     """Sorted content locales this work is published in — for hreflang.
 
@@ -223,12 +237,7 @@ def _available_languages(model, slug: str) -> list[str]:
     Modern English edition (``en-modern``) is an in-page toggle, not a
     browsable locale, so it's excluded.
     """
-    return sorted(
-        model.objects.filter(slug=slug, is_published=True)
-        .exclude(language=MODERN_LANGUAGE)
-        .values_list("language", flat=True)
-        .distinct()
-    )
+    return sorted(_published_languages(model, slug=slug))
 
 
 def _topic_membership_map(
@@ -1284,11 +1293,17 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # are just the summary numbers.
     sermon_count = serializers.SerializerMethodField()
     has_long_bio = serializers.SerializerMethodField()
+    # The locales where this page has something of the writer's OWN — a bio, a
+    # published book or a published sermon — for the page's hreflang. The same
+    # rule as the frontend's ``hasOwnContent`` (which noindexes the rest) and the
+    # sitemap's author entries, so an alternate never names a noindexed page.
+    available_languages = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
         fields = [
             "slug", "name", "bio", "bio_html", "bio_source_type", "faq", "photo_url",
+            "available_languages",
             # Portrait credit — only the detail page renders it (a card shows the
             # thumbnail without a caption, which the CC licences allow because
             # every card links here, so the credit is one click from any
@@ -1358,6 +1373,26 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_has_long_bio(self, obj):
         return bool(obj.bio_html_for(self._language()).strip())
+
+    def get_available_languages(self, obj) -> list[str]:
+        langs: set[str] = set()
+        if not obj.is_imprint:
+            # A translation row in the source language is never served
+            # (`Author._localized` reads the source fields there), so it can't
+            # count; the source bio speaks for that language.
+            langs.update(
+                t.language
+                for t in obj.translations.all()
+                if (t.bio or t.bio_html) and t.language != obj.original_language
+            )
+            if obj.bio or obj.bio_html:
+                langs.add(obj.original_language)
+        # ONE query for both kinds: the page is walked once per author per
+        # locale on every prerender.
+        langs.update(
+            _published_languages(Book, author=obj).union(_published_languages(Sermon, author=obj))
+        )
+        return sorted(langs)
 
     def _cached(self, key, obj, build):
         """Run ``build`` once per (field, author, language) and reuse the list.

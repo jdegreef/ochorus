@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	hreflangExact,
 	absUrl,
 	jsonLd,
 	breadcrumb,
@@ -222,5 +223,20 @@ describe('faqPage', () => {
 		const out = faqPage([{ q: 'A <b>bold</b> question?', a: 'An <i>answer</i>.' }]);
 		expect(out).not.toMatch(/<b>|<i>/);
 		expect(parse(out).mainEntity[0].name).toBe('A <b>bold</b> question?');
+	});
+});
+
+describe('hreflangExact', () => {
+	it('names exactly the advertised locales it is given', () => {
+		const h = hreflangExact('/authors/x/', ['en', 'sw', 'not-a-locale'])!;
+		expect(h.alternates.map((a) => a.loc)).toEqual(['en', 'sw']);
+		expect(h.xDefault).toBe(`${SITE_URL}/authors/x/`);
+	});
+
+	it('is null, not every locale, when none of them is advertised', () => {
+		// hreflangFor treats an empty set as "unknown" and names every locale; for
+		// an author page every one of those would be a noindexed sibling.
+		expect(hreflangExact('/authors/x/', [])).toBeNull();
+		expect(hreflangExact('/authors/x/', ['not-a-locale'])).toBeNull();
 	});
 });
