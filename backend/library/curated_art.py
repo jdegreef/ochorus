@@ -750,6 +750,12 @@ CURATED: dict[str, Artwork] = {
         "by the Seine, recalls the nuns of Port-Royal whom Pascal defended.",
         focus=0.7,
     ),
+    "letters-and-minor-works": Artwork(
+        "met", 437311, "Camille Pissarro", "Rue de l'Epicerie, Rouen (Effect of Sunlight)", "1898",
+        "Rouen, where the Pascal family was converted in 1646 and where the "
+        "earliest of these letters was written. Pissarro's old street climbs to "
+        "the cathedral towers above a crowded market.",
+    ),
 }
 
 
