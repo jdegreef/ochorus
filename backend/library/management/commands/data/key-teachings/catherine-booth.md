@@ -1,0 +1,1312 @@
+---
+description: A concise, faithful guide to the heart of Catherine Booth’s message — that godliness is a real power and not a respectable form, that it must be had in the heart and carried to the people, and that God may send whom He will to carry it. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Catherine Booth’s own public-domain works, which readers are warmly encouraged to go to directly.
+about: |
+  This is not a book by Catherine Booth. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into eighteen short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force.
+  
+  Her one theme was reality. She had no patience with a religion of forms, creeds and pleasant feelings that left the heart unchanged and the streets unreached. She wanted the thing itself: a repentance that really let go of sin, a faith that really committed the whole person to Christ, a holiness that really cleansed, and a love that really went out after the lost, whatever it cost in comfort or reputation. This volume follows that thread through her life, her teaching on salvation and the Holy Spirit, her defence of women’s preaching, her counsel to parents, and her campaigns against the evils of her day. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.
+  
+  Catherine Booth’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she read through many times as a girl and preached from all her life, and it makes no claim to stand in for her own direct and searching words.
+---
+
+# Introduction
+
+> Having a form of godliness, but denying the power thereof: from such turn away. 2 TIMOTHY 3:5
+
+Catherine Booth is usually remembered as a wife. She was the wife of William Booth, the founder of The Salvation Army, and the mother of eight children, several of whom went on to lead that Army on three continents. All of that is true, but it leaves out the thing that most astonished the people who heard her. In an age when a respectable woman did not speak in public, and when many churches taught that Scripture forbade her to, Catherine Booth became one of the most compelling preachers in England. She wrote the most influential English defence of a woman’s right to preach the gospel. She shaped the doctrine of a movement that went round the world. And she did it while nursing babies, while chronically ill, and while being, by her own account, one of the most timid and bashful believers the Lord ever saved.
+
+## One thread
+
+Her teaching is easy to summarise because she said the same thing in every sermon, from every angle, for thirty years. She wanted reality. She believed that the church of her day had kept the form of godliness and lost the power of it. The verse at the head of this chapter was never far from her mind. Her book Godliness bears its key word in the title, and nearly everything she wrote is an argument about the difference between having the form and having the power.
+
+So she pressed, relentlessly, for the real thing at every point. A real repentance, which actually lets go of sin rather than merely feeling sorry about it. A real faith, which commits the whole person to Christ rather than agreeing with facts about Him. A real assurance, the witness of the Spirit to something that has actually happened. A real holiness, which saves from sin and not merely from its penalty. A real love, which goes after the lost where they are rather than waiting politely for them to come. And a real power, the Holy Spirit Himself, without whom all the rest is a well-made corpse.
+
+> For the kingdom of God is not in word, but in power. 1 CORINTHIANS 4:20
+
+That is the thread running through all eighteen chapters of this book, and it is the question to carry as you read: is my religion the form, or the power? Would anything be different in my life, this week, if none of it were true?
+
+## How this book is arranged
+
+After a chapter on her life, the book follows the order of her own preaching. It begins where she began with every enquirer: with godliness, repentance, saving faith and assurance. It moves on to the Holy Spirit, to what she called full salvation, and to prayer. Then it turns outward, as she always did — to the difference between true and counterfeit love, to the worldliness of what she called popular Christianity, to aggressive Christianity and the world’s need, to witnessing, and to her insistence that the church adapt its methods to reach the people it was losing. Three chapters deal with matters close to her own life: the right of women to preach, the training of children, and the cost of discipleship. One takes up her campaigns against drink and vice. The last teaching chapter follows her to her deathbed.
+
+Each chapter ends with application points and a prayer. She would have insisted on it. She thought that a sermon which left its hearers exactly as it found them had failed, however orthodox it was, and she said so to ministers’ faces. Read one chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
+
+## Where she must be read with care
+
+This is not a book of hero-worship, and there are places where Catherine Booth must be read with care. It is better to say so at the outset.
+
+First, the sacraments. In 1883, while she was alive and with her support, The Salvation Army ceased to observe baptism and the Lord’s Supper. The reasons given were partly practical and partly principled: the ordinances divided the churches, some converts from drink were endangered by communion wine, and she and William were convinced that many people trusted in the outward sign while knowing nothing of the inward grace. She herself taught that forms and ceremonies are nothing in themselves. The Army has kept to that position, and has always insisted that it does not forbid the sacraments to others. But the great majority of Christians, reading the plain commands of Christ, have judged that the answer to the abuse of an ordinance He appointed is its right use, not its disuse. The chapter on her adaptation of measures sets out what she taught and why, and where most readers will part company with her.
+
+Second, holiness. She taught, with the Methodist and holiness tradition she came from, that entire sanctification is a definite experience to be received by faith after conversion, a clean heart given in a moment. Many godly Christians read the same Scriptures and see a lifelong process of growth instead. This book presents her teaching as she gave it and notes where the disagreement lies.
+
+Third, her severity. She was a woman of extraordinary intensity, and it could run to harshness. She was quick to tell a congregation that most of them were not converted, and her counsel to mothers to conquer a baby’s will in its first year will make many readers wince. Fourth, her teetotalism, which she held as an absolute rule for every Christian rather than as a wise and often costly choice. Each of these is dealt with honestly where it arises.
+
+Why read her at all, then? Because on the central matter she was right, and because she lived what she taught at great cost. She preached through ill health for most of her adult life and gave her children to the work one by one. She stood against the drink trade and the traffic in young girls when it was dangerous to do so. And she died of cancer, slowly and in great pain, without once suggesting that God had failed her. So the counsel of this book is the counsel of Scripture: Prove all things; hold fast that which is good (1 Thessalonians 5:21). Weigh every chapter against the Word of God. Where she is faithful — and on the necessity of repentance, on the reality of the Spirit’s power, on the church’s duty to the lost and the poor, she is faithful indeed — receive it and act on it. Where she presses beyond what is written, mark it, set it aside, and lose nothing.
+
+> Not by might, nor by power, but by my spirit, saith the LORD of hosts. ZECHARIAH 4:6
+
+She preached to Victorian England. She is read now in places she never saw, by people whose churches owe more to her than they know. Her subject was not a culture but a question, and wherever this book is opened, the question will already be waiting.
+
+### FOR REFLECTION AND ACTION
+
+1. Write down, honestly, three things in your Christian life that are form rather than power — habits you keep up that no longer reach your heart. Do not abolish them; ask God to fill them.
+2. Ask the question the book will keep asking: if the gospel were not true, what would change in my life this week? If the answer is very little, say so to God.
+3. Decide now how you will read this book: one chapter at a time, with the application points actually attempted before you go on.
+4. Where you already suspect you will disagree with her, note it, and resolve to test her against Scripture rather than against your habits.
+5. Name one person you know who has the form of religion and not the power, and one who has the power. Pray for the first, and thank God for the second.
+
+### A PRAYER
+
+> Lord God, I have a form of godliness. I know the words, the habits and the hymns, and I am not always sure there is power in any of them.
+> Do not let me read about reality and remain unreal. Search me as this book goes on, and show me where I have settled for the shape of the thing instead of the thing itself.
+> Where Your servant was right, make me willing to obey. Where she went beyond Your Word, give me the wisdom to see it and the humility not to despise her.
+> Give me the power, and not only the form, for Jesus’ sake. Amen.
+
+# A Fool for Christ
+
+> But God hath chosen the foolish things of the world to confound the wise; and God hath chosen the weak things of the world to confound the things which are mighty. 1 CORINTHIANS 1:27
+
+A Methodist childhood. Catherine Mumford was born on the seventeenth of January, 1829, at Ashbourne in Derbyshire, the only daughter of John and Sarah Mumford. Her father was a coachbuilder and a lay Methodist preacher; her mother was a woman of strict and serious devotion who kept her daughter close and taught her to love the Bible. The family moved more than once, and Catherine grew up largely in Boston, in Lincolnshire, and later in London. She was a grave, bookish, tender-hearted child. She is said to have read the Bible through eight times before she was twelve, and whatever the exact count, the fruit of it was obvious for the rest of her life: she could quote it at length, and argue from it with anyone.
+
+The sickroom. She was never strong. In her early teens a curvature of the spine laid her up for long months, and other illnesses followed. The years that might have gone to school and society went instead to reading. She worked through theology, church history and the controversies of Methodism, and she thought for herself. It was in these years, too, that she became a convinced abstainer from alcohol, having seen what drink did to the families around her. She never had a formal education of any kind. What she had was a mind trained by Scripture, a pen, and an unusual habit of taking an argument all the way to its conclusion.
+
+I will know Him. The crisis of her faith came at about sixteen. She had been brought up as a Christian and had never known a time when she did not fear God, and that, she later said, was precisely the temptation: to settle for a lifelong half-Christianity and never be truly changed. She refused. She told the Lord she would never rest until she was as thoroughly converted, and knew it, as any thief. For some six weeks she sought God, often far into the night, and then one morning, reading a hymn, she came into the assurance she had been seeking. She never afterwards thought a Christian should be content without it, and much of her later preaching was an attempt to bring others to the same certainty.
+
+William. In 1852 she met William Booth, a young pawnbroker’s assistant from Nottingham turned Methodist preacher, as poor and as earnest as she was. They were engaged that year and married in London in 1855. Their long engagement survives in a great many letters, and from the first she was his counsellor as much as his companion. She was the better educated of the two and the clearer theologian, and she argued with him — about doctrine, about his ministry, and above all about women. William at first held the common view that a woman’s place was not the pulpit. She wrote to him plainly that she thought he was wrong, and gave her reasons, and in time he came round entirely. William entered the ministry of the Methodist New Connexion, and the couple moved from circuit to circuit, ending at Gateshead on Tyneside.
+
+The pamphlet. In 1859 an American holiness preacher, Phoebe Palmer, was holding meetings in the north of England, and a local minister attacked her in print for speaking in public. Catherine, who had never preached, answered him in a pamphlet. Female Ministry; or, Woman’s Right to Preach the Gospel went through the texts used to silence women one by one, and argued that they had been misread, and that the Spirit poured out at Pentecost on sons and daughters alike had not changed His mind. It was sharp, learned and unanswerable to many who read it. And its author still had not said a word in public herself.
+
+Whitsunday, 1860. The moment came the following year in William’s chapel at Gateshead. She has told the story herself, in the address printed as Witnessing for Christ. For ten years, she said, the Spirit had been urging her to speak, and for ten years she had failed for want of courage. Some months before, in a season of illness, she had promised God that if He would visit her again she would obey. At a service with around a thousand people present, sitting in the minister’s pew with her four-year-old son, she felt the Spirit come upon her, and heard the old accusation that she would look like a fool. It settled the matter. “I have never yet been willing to be a fool for Christ, now I will be one,” she answered, and walked to the front. Her startled husband could only announce, “My dear wife wants to say a word.” She confessed to the congregation that she had been living in disobedience, and there was, they told her, more weeping in the chapel that day than ever before. She never went back. Within months, with William ill, she was taking his appointments, preparing sermons in pencil while nursing the baby.
+
+Never! In 1861 the New Connexion Conference, meeting in Liverpool, would not release William from circuit work to be the travelling evangelist he believed God had called him to be. Catherine is remembered to have called out “Never!” from the gallery when a compromise was proposed, and the Booths walked out of their security with four small children and no income. For some years they moved from town to town as independent evangelists, in Cornwall, in the Midlands, in the north, often preaching separately. More and more, she drew her own congregations.
+
+East London. In 1865 William began preaching in a tent in Whitechapel, among the poorest people in the largest city in the world, and knew that he had found his life’s work. The East London Christian Mission grew out of it. The work was desperately poor, and much of what kept it alive came from Catherine. She preached to the comfortable in the West End of London and in the resort towns — in halls and in drawing rooms, to people who would never have entered a mission hut — and she spoke to them without softening anything. They came, and they gave, and some were converted. The Christian Mission was renamed The Salvation Army in 1878, and its military forms, its uniforms, its brass bands and its open-air marches shocked the respectable and drew the crowds. From the beginning, women preached, led and commanded in it. That was her doing more than anyone’s.
+
+Eight children. She bore eight children between 1856 and 1867 — Bramwell, Ballington, Catherine, Emma, Herbert, Marian, Evangeline and Lucy — and she trained them herself, keeping them out of boarding schools and teaching them the Bible on her knee. She gave them to the work one after another. Her daughter Catherine went to open the Army’s work in France in 1881; Bramwell became his father’s chief of staff and later his successor. It was a large, gifted, argumentative family, and not all of them stayed in the Army. But she lived to see most of them preaching.
+
+The Army Mother. In the 1880s the Army spread across Britain and overseas, and she became its chief interpreter to the educated public. Her sermons were printed as Aggressive Christianity, Godliness, Life and Death and Popular Christianity. She defended the Army against its critics in church and press, and she was its conscience as well as its apologist. In 1885 she threw herself into the campaign, led with W. T. Stead and others, against the traffic in young girls in London. She spoke at great public meetings and helped gather a petition of hundreds of thousands of signatures. That year Parliament raised the age of consent from thirteen to sixteen.
+
+The last battle. Early in 1888 she found a lump and went alone to a specialist, who told her it was cancer and that she had not long to live. Her own mother had died of the same disease, and she knew what was ahead. She preached her last public sermon that summer. The rest of her life was spent in great pain, much of it at Clacton-on-Sea on the Essex coast, where her family and a stream of Army officers came to her bedside. She dictated messages to the Army and to its soldiers until she could not. She died at Clacton on the fourth of October, 1890, aged sixty-one. Many thousands filed past her coffin in London, a vast crowd attended her funeral, and she was buried in Abney Park Cemetery. Those who had called her the Army Mother were not only the officers. They were also the poor.
+
+> I have fought a good fight, I have finished my course, I have kept the faith. 2 TIMOTHY 4:7
+
+### FOR REFLECTION AND ACTION
+
+1. For ten years she knew what God wanted and did not do it. Is there a known obedience you have been postponing? Name it to God today.
+2. Her turning point came when the fear of looking foolish was named for what it was. What does the fear of looking foolish keep you from doing for Christ?
+3. She argued with the man she loved and changed his mind. Is there a conviction you hold from Scripture that you have been too timid to speak about at home?
+4. She made her sickroom a school. What would it mean to use your present limitation, rather than simply endure it?
+5. Pick up one of her own sermons in the Ochorus library this week and read it straight through.
+
+### A PRAYER
+
+> Lord, You chose a timid, sickly girl and made her a preacher. You are not limited by my weakness, only by my unwillingness.
+> I have been afraid of looking foolish. I have waited for approval that never came, and called my waiting wisdom. Forgive me.
+> Give me her obedience at the moment it matters: to rise and speak when You say speak, and to be silent when You say be silent.
+> And when my own last battle comes, let me meet it as she did, with the war still going on and my eyes on You. Amen.
+
+# The Power of Godliness
+
+> For bodily exercise profiteth little: but godliness is profitable unto all things, having promise of the life that now is, and of that which is to come. 1 TIMOTHY 4:8
+
+One of Catherine Booth’s books bears the title Godliness, and the word suits her. It is not a word her age used much. People spoke of being religious, of being church members, of holding sound views, of being serious. She wanted a word that meant something harder to fake. Godliness, in her mouth, meant God-likeness: a life actually changed at the root by the God it professed to know. And she set it, again and again, against its great counterfeit, which was not irreligion but religion without power.
+
+## A well-made corpse
+
+Her favourite image for the church of her day was a body with the life gone out of it. In her address The Holy Ghost she described the professing Christianity around her as “like a very pretty corpse” — nothing obviously missing, every part in place, and yet no breath. In Adaptation of Measures she turned the image on individuals. The Pharisees had kept the forms of the law while losing its spirit, and she saw the same thing in the pews of Christian England: people with the creed of Christ and none of His character. They were, she said, “Pharisees with a Christian creed instead of a Jewish.”
+
+> Woe unto you, scribes and Pharisees, hypocrites! for ye are like unto whited sepulchres, which indeed appear beautiful outward, but are within full of dead men’s bones, and of all uncleanness. MATTHEW 23:27
+
+It is worth noticing what she did not mean by this. She did not despise creeds; she argued from Scripture with great care and held the doctrines of the gospel without apology. She did not despise churches; she spent much of her life in them. What she refused was the idea that holding the creed, or attending the church, was the same thing as knowing God. She had met too many people who had done both for years and were, in her phrase from another address, slaves of sin all the same. The form was not the enemy. The form mistaken for the power was.
+
+> They profess that they know God; but in works they deny him. TITUS 1:16
+
+## The standard pulled down
+
+What alarmed her most was not that Christians failed — everyone fails — but that they had lowered the standard to match their failure. In Aggressive Christianity she accused the devil of having persuaded the church to accept what she called an “Oh, wretched man that I am” religion: a Christianity that expected defeat, explained it, and even took a certain comfort in it. She did not mean that believers should pretend to be better than they are. She meant that the New Testament holds out victory over sin as a real possibility, and that a church which has stopped expecting it will soon stop seeking it.
+
+> Little children, let no man deceive you: he that doeth righteousness is righteous, even as he is righteous. He that committeth sin is of the devil. 1 JOHN 3:7–8
+
+She quoted that passage constantly. Her reasoning was simple. If Christ came to destroy the works of the devil, then a Christianity in which the works of the devil go on undisturbed is not the Christianity He came to bring. As she put it in one of her Exeter Hall addresses on holiness, He has not given us a religion we cannot practise.
+
+## What the world is watching
+
+The second reason she pressed for godliness was the world outside. She believed, and said bluntly, that inconsistent Christians did more damage to the gospel than any sceptic. Speaking of the half-hearted religion around her, she said: “I believe this kind of Christianity has made more infidels than all the infidel books ever written.” Thoughtful people, she thought, were not driven from Christ by arguments. They were driven from Him by Christians who professed everything and did nothing.
+
+> Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven. MATTHEW 5:16
+
+The remedy was not a better apologetic. It was a better life. “Show the world a real, living, self-sacrificing, hard-working, toiling, triumphing religion, and the world will be influenced by it,” she told her hearers. The world is not impressed by religion. It is impressed, sometimes against its will, by godliness.
+
+## How the power comes
+
+It would be easy to read all this as a call to try harder, and some of her hearers doubtless took it that way. That was not her meaning. Godliness, for her, was not the product of effort but of God: a new heart given by the Spirit, and then kept by Him. The form is what we can manage by ourselves; the power is what only He can give. That is why her preaching on godliness always ended in the same place — at the cross, in repentance and faith, and in the reception of the Holy Spirit, which the next several chapters will follow.
+
+> Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new. 2 CORINTHIANS 5:17
+
+She could be too quick to decide who had the power and who had only the form. There is a tenderness in the New Testament for the bruised reed and the smoking flax that her preaching did not always leave room for, and some of her hearers who were genuinely converted, but weak, must have gone home wondering whether they were saved at all. A reader of her books should take the searching without the despair. But the question she asked is the right one, and most of us would rather not be asked it. It is not whether we believe the right things, or attend the right church, or say the right words. It is whether anything is actually alive.
+
+> But godliness with contentment is great gain. 1 TIMOTHY 6:6
+
+### FOR REFLECTION AND ACTION
+
+1. Describe your religion as an outsider would see it this week — not what you believe, but what you do. Does it look like power or like form?
+2. Identify one area of habitual defeat that you have come to accept as simply the way things are. Bring it back to God as a thing He came to destroy.
+3. Ask someone who knows you well, and is not a Christian, what difference they think your faith makes. Listen without defending yourself.
+4. Keep one outward form this week — a prayer time, a Sunday service, a grace before meals — and ask God before it to fill it with His presence.
+5. If you are weak and afraid you are only a form, do not despair: bring the fear itself to Christ, who does not quench the smoking flax.
+
+### A PRAYER
+
+> Lord, I have learned the shape of religion very well. I can say the words and keep the hours, and I am not always sure anything in me is alive.
+> I have lowered the standard to fit my failures, and called it realism. Forgive me, and lift it again.
+> Give me the power and not only the form: a new heart, Your Spirit within, and a life that the world can see is Yours.
+> Let no one be driven from You by me. Let someone, somewhere, be drawn to You because of what You have done in me. Amen.
+
+# Repentance
+
+> But shewed first unto them of Damascus, and at Jerusalem, and throughout all the coasts of Judaea, and then to the Gentiles, that they should repent and turn to God, and do works meet for repentance. ACTS 26:20
+
+The first sermon in Catherine Booth’s book Godliness is on repentance, and the placing is deliberate. She believed that the greatest weakness of the evangelism of her day was not that it preached too little of Christ, but that it offered Christ to people who had not the slightest intention of giving up their sins. They were told to believe, and they believed, and nothing happened. She had spent years talking to such people after meetings, and she had come to a firm conclusion about what had gone wrong.
+
+## What repentance is not
+
+She began, characteristically, by clearing away counterfeits. Repentance, she said, is not merely conviction of sin. Multitudes have been convinced of sin — have known, clearly and painfully, that they were wrong — and have gone on exactly as before. Nor is it merely sorrow for sin. She had seen people weep bitterly and still hold on to the very thing that made them weep. Nor is it a promise to do better. Every drunkard, she observed, has promised his wife he will stop.
+
+> For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death. 2 CORINTHIANS 7:10
+
+All three — conviction, sorrow and resolution — belong to repentance. None of them is repentance itself. What, then, is it? Her answer in Godliness was plain: “Repentance is simply renouncing sin — turning round from darkness to light — from the power of Satan unto God.” It is a turning of the will. It is the moment when a person stops negotiating with God about the terms and lets the thing go.
+
+## The point of controversy
+
+The most searching part of her teaching was her insistence that repentance is usually about one thing. Most people who come to God are willing to give up a good deal. What they are not willing to give up is the one thing the Spirit has actually put His finger on. She compared it to a child who will do a hundred and fifty things his mother asks, and not the one she is asking now. He is still a rebel until he yields on that point.
+
+> Let the wicked forsake his way, and the unrighteous man his thoughts: and let him return unto the LORD, and he will have mercy upon him; and to our God, for he will abundantly pardon. ISAIAH 55:7
+
+She put it in a single line that her hearers did not forget: “It is your Isaac God wants.” Abraham might have given up everything else he owned, and it would have meant nothing if he had kept back Isaac. The rich young ruler had kept the commandments from his youth up and went away sorrowful, because the one thing asked of him was the one thing he would not do. For some it is a habit; for some a relationship; for some a way of earning money; for some a grudge. Whatever it is, the person usually knows exactly what it is, and it is often the very thing they have not mentioned to their minister.
+
+> He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy. PROVERBS 28:13
+
+## Why she would not say only believe
+
+This conviction shaped her whole method with enquirers, which she set out in the address Dealing with Anxious Souls. The worst thing a Christian worker could do, she thought, was to rush a half-awakened person into saying they believed, and send them home comforted while they still clung to their sins. She wrote of “God’s unalterable condition of pardon” as “the forsaking of evil,” and warned that there can be no conversion without conviction of sin. Much of the spurious Christianity she saw around her, she was sure, had been manufactured in precisely this way.
+
+> I tell you, Nay: but, except ye repent, ye shall all likewise perish. LUKE 13:3
+
+This was controversial even in her day. Critics accused her of preaching works, of putting a condition before grace. Her answer was that she was preaching nothing Paul had not preached: repentance toward God, and faith toward our Lord Jesus Christ. The penitent does not save himself by renouncing sin. He cannot even break its power. What he can do is stop wanting to keep it, and then Christ does the rest. She illustrated it with the man with the withered hand. Christ supplied the power; the man supplied the will. Stretch forth thine hand (Matthew 12:13) was a command he could not obey by himself, and could obey the moment he was willing.
+
+## A needed caution
+
+There is a danger in this teaching, and she saw it herself. A sensitive person can turn repentance into a new form of self-examination and never get past it — always wondering whether they have repented enough, or felt enough, or given up enough. Some of her letters came from exactly such people. Her answer to them was tender and clear. If you see sin, if you hate it, if you would be rid of it this moment if you could, that is repentance, and you need not wait for any particular feeling before you come to Christ. The feeling follows the surrender. It does not precede it.
+
+It is also worth saying, as she did not always say, that repentance is itself a gift. It is the Spirit who convicts, the Spirit who turns the will, and the goodness of God that leads us to repentance in the first place (Romans 2:4). Repentance and faith are two sides of one turning, not two stages to be completed in order.
+
+> Have I any pleasure at all that the wicked should die? saith the Lord GOD: and not that he should return from his ways, and live? EZEKIEL 18:23
+
+## Come for love
+
+For all her severity, the note on which she ended her sermon on repentance was not threat but love. She told of a rough, convicted man who stood at the back of a meeting where others were kneeling to be saved, and said he would not go forward for a hundred pounds. William Booth asked him quietly, “Will you go there for love?” After a moment he wiped his eyes and went. That is where repentance comes from in the end. Not from fear of hell, though she preached hell without apology, but from the discovery that the Father has been waiting all along.
+
+> I will arise and go to my father, and will say unto him, Father, I have sinned against heaven, and before thee. LUKE 15:18
+
+### FOR REFLECTION AND ACTION
+
+1. Ask God directly: what is my Isaac? Then be quiet long enough to hear an answer you may not like.
+2. Distinguish, in your own experience, between being sorry about a sin and having renounced it. Which describes your relationship to your most persistent failure?
+3. If there is something that needs to be put right — a debt, a lie, a wrong done to someone — take one concrete step to put it right this week.
+4. If you are prone to endless self-examination, stop asking whether you have repented enough. Ask only whether you are willing, and if you are, come to Christ now.
+5. When you next speak to someone about Christ, do not be afraid to speak of sin. Speak of it as she did: in order to speak of love.
+
+### A PRAYER
+
+> Father, I have been sorry for my sins many times, and I have kept them. I have wept over them and gone on with them. That is not repentance, and You know it.
+> Show me the thing I have been holding back. Give me the grace to lay it down, not because I am afraid, but because You have loved me.
+> I cannot break its power. I can only stop wanting to keep it. Take my willingness, small as it is, and do what I cannot.
+> Here I am, Lord. I have sinned against heaven and before You. Receive me for Jesus’ sake. Amen.
+
+# A True and a False Faith
+
+> For in Jesus Christ neither circumcision availeth any thing, nor uncircumcision; but faith which worketh by love. GALATIANS 5:6
+
+One evening, walking down the aisle of a large music hall after a service, Catherine Booth had her hand seized by a respectable woman who wanted to know what was wrong with her. She believed everything the preacher had said. She had believed it for years. She prayed, she strove, she believed — and she was, in her own words, “just as big a slave to my sins as anybody else.” Catherine later said that the woman’s question struck her like a light from heaven. Here was a sample of thousands. Somewhere between believing and being saved there was a missing link, and she set herself to find it. The result was the address she called A True and a False Faith, and the sermon on Saving Faith in Godliness.
+
+## Two kinds of believing
+
+Her first move was to insist that there are two quite different things called faith, and that only one of them saves. The first is simply the acceptance of facts. A young man, she said, believes that the earth goes round the sun, and it makes no difference whatever to the way he lives. He believes in William the Conqueror, and would defend the history if it were attacked, and it never touches his conduct. Many drunkards believe sincerely in sobriety. This kind of belief is real enough, and it is found in abundance in every Christian country. It is also, she said bluntly, the faith of devils.
+
+> Thou believest that there is one God; thou doest well: the devils also believe, and tremble. But wilt thou know, O vain man, that faith without works is dead? JAMES 2:19–20
+
+The devil, she pointed out, is one of the most orthodox beings in the universe. He knew exactly who Jesus was when the Pharisees were still arguing about it. His belief did not change his character in the slightest. “There is a faith that damns, as well as a faith that saves,” she told her congregation, and then asked the only question that mattered: which have you got?
+
+Nor is saving faith a feeling. People weep at a moving sermon about the cross and conclude that they must be Christians, or they would not feel so. She compared it to a man weeping over a novel, who lays down the book and goes his way unchanged. Feeling is not faith, any more than knowledge is.
+
+## Committal
+
+What, then, is saving faith? She found her answer in a small observation about the Greek of the New Testament. The word translated believe is in several places translated commit. Jesus did not commit Himself unto them, John says, because He knew all men (John 2:24). The same word that describes our trusting Christ describes Christ declining to entrust Himself to people He could not trust. Faith, then, is not agreement with a proposition. It is the handing over of oneself to a person.
+
+> For I know whom I have believed, and am persuaded that he is able to keep that which I have committed unto him against that day. 2 TIMOTHY 1:12
+
+She loved the word whom in that verse, and pointed out that Paul did not say what he had believed. Saving faith, she said in A True and a False Faith, is the soul giving itself up to God, risking “my all, for this life and for the next, on the truthfulness and the goodness of God,” and then daring to live as if what God has said were true. She used the image of a marriage. A suitor does not want a woman merely to believe everything he says about himself and his prospects. He wants her. And God, she said, does not want our creeds or our head-faith. He wants the heart.
+
+> For with the heart man believeth unto righteousness; and with the mouth confession is made unto salvation. ROMANS 10:10
+
+## Christ Himself
+
+In Dealing with Anxious Souls she drew out the practical consequence. The object of faith is not the testimony about Christ, but Christ Himself. Many enquirers, she found, believed everything the Bible said about Jesus — that He died for them, that He intercedes for them — and did not trust Him to do any of it for them now. She illustrated this with a sick man told of a wonderful physician. He may believe every word about the physician’s skill and still never put himself in his hands. There is the whole difference between a dead faith and a living one. The first, she wrote, ends with the intellect; the second purifies the heart.
+
+> All that the Father giveth me shall come to me; and him that cometh to me I will in no wise cast out. JOHN 6:37
+
+Her counsel to such people was wonderfully practical. She would ask them when Jesus received the people who came to Him in the days of His flesh. When they came, of course — not an hour before, not an hour after. Then she would press them: you are coming now, confessing and forsaking your sins; does He take you in, or cast you out? And she would not let them retreat into I hope so. To hope that Christ means what He says, she thought, was to insult Him. She would have them say it after her until the heart followed the tongue: Thou dost not cast me out; Thou takest me in.
+
+## A voluntary thing
+
+Perhaps her most liberating teaching on faith was for those tormented by intellectual doubt. She insisted that “faith is a voluntary thing.” We do not have absolute power over our intellects, she said, but we do have power over our wills. The honest doubter need not wait until every question is settled. He can say to God that he will take his stand on God’s word and follow the light as it comes, and she was confident that light would come. “God wants your heart,” she wrote. “Then He will enlighten your intellect.”
+
+> But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him. HEBREWS 11:6
+
+There is real wisdom here, and some danger. Her language of will and committal belongs to the Methodist tradition, and readers from a Reformed background will want to add, as she herself did in other places, that the power to believe is itself the gift of the Spirit. Faith is our act, but it is not our achievement. Her American editor, introducing Godliness, was careful to say that in her teaching the Holy Spirit enables the act of faith and bears witness to it. She would have agreed. What she would not allow was that anyone should use the doctrine of grace as a reason to sit still.
+
+> Come unto me, all ye that labour and are heavy laden, and I will give you rest. MATTHEW 11:28
+
+A true faith, then, is a faith that works by love. It is not less than believing the facts, but it is much more: a person given over to a Person, and living from then on as if He were real. The woman in the music hall had the facts. What she needed was Christ.
+
+### FOR REFLECTION AND ACTION
+
+1. List what you believe about Christ. Then ask, of each item, whether you are actually trusting Him to do it for you now.
+2. If you have believed the facts for years and remain enslaved to a sin, do not conclude that faith has failed. Consider whether you have ever committed yourself, rather than agreed.
+3. If you are troubled by intellectual doubts, try her counsel: tell God plainly that you will follow whatever light He gives, and then act on the light you have.
+4. Read John 6:37 aloud in the first person, slowly, three times. Stop hoping it is true and take Him at His word.
+5. Ask whether your faith works by love. Name one act of love this week that would not have happened if you did not believe.
+
+### A PRAYER
+
+> Lord Jesus, I have believed about You for a long time. I have known the facts and defended them, and I have kept myself in my own hands.
+> I do not want the faith that devils have. I want to trust You, not merely to agree with what is said of You.
+> Here I am. I commit myself to You — my past, my sins, my weakness, my future. You have said You will not cast out anyone who comes. I come.
+> Give me the faith that works by love, and let my life show that I am Yours. Amen.
+
+# Married to Another
+
+> Wherefore, my brethren, ye also are become dead to the law by the body of Christ; that ye should be married to another, even to him who is raised from the dead, that we should bring forth fruit unto God. ROMANS 7:4
+
+Catherine Booth could never be content with a Christianity that hoped for the best. She had been brought up in a devout home and had feared God from her earliest years, and at about sixteen she saw that this very fact was her danger. She tells the story in her address Assurance of Salvation. The temptation that came to her was a quiet one: that she had been half a Christian all her life, that she should not expect the kind of change she read of in books, and that she must be content with what she had. It frightened her. She resolved that she would never rest until she was “as thoroughly and truly changed, and know it, as any thief, or any great outward sinner.” For six weeks she sought God, often into the small hours. And she found Him. “I knew Him,” she said. “I can’t tell how, but I knew Him.”
+
+## A fact, and a witness to the fact
+
+Out of that experience came one of her most characteristic convictions: that a Christian may know that he is saved, and ought not to be content until he does. She defined assurance with precision. It is, she said, “the testimony of God’s Spirit to a fact which has transpired.” The Spirit does not testify to something that has not happened. If a person has no assurance, the first question is not whether his feelings are faulty, but whether the thing itself has taken place. “Get salvation, and you will get assurance.”
+
+> The Spirit itself beareth witness with our spirit, that we are the children of God. ROMANS 8:16
+
+She was careful to say that faith and assurance are not the same thing. Faith is the means; assurance is the result. The believer takes God at His word, commits himself to Christ, and then the Spirit bears His witness. She pointed to the First Epistle of John, which seems to have been written for the very purpose of letting believers know where they stand.
+
+> These things have I written unto you that believe on the name of the Son of God; that ye may know that ye have eternal life. 1 JOHN 5:13
+
+## Not the letter only
+
+Her warning was against resting in what she called the letter. Many people, she found, had been told that if they believed the verses they were saved, and they did believe the verses, and they were miserable. They had accepted the written record into their minds and stopped short of trusting the living Christ. To such people she gave a blunt piece of advice. If someone comes with a Bible and tells you that because you believe this and that you are saved, and your heart knows nothing of it, answer them with Job: “Miserable comforters are ye all: I will never be content until I know God.”
+
+> He that believeth on the Son of God hath the witness in himself. 1 JOHN 5:10
+
+She valued the Scriptures above almost anything, and said so. But she saw that knowledge alone has no power to change anyone. “Knowledge is as powerless as ignorance,” she said, and she had known ministers with their heads full of the Bible who confessed to her that they were slaves of some besetting sin. The power is not in knowing about Christ. It is in being joined to Him.
+
+## Union
+
+This was the real subject of the sermon, and it is why she took Romans 7:4 as her text. Paul pictures the believer as a woman once married to the law — a husband who could show her her sin but could give her no power over it — who is now, by the death of Christ, set free and married to another. Under the law, she said, you see that sin is sin, and struggle against it, and go down. United to Christ, you see it, and resist it, and stand. The difference is not in the effort. It is in the marriage.
+
+> I will even betroth thee unto me in faithfulness: and thou shalt know the LORD. HOSEA 2:20
+
+She could not explain the union, and did not try. She called it a mystery, like the wind that blows where it wills, and turned instead to the Lord’s own picture of the vine and the branches. A branch broken off may keep its shape and its greenness for a while. It may even be nailed up against the wall beside the vine, so close that no one but the gardener can tell the difference. But it bears no fruit, because no sap is flowing. That, she said, is the condition of many professing Christians: close to Christ, correct in form, and dead.
+
+> Abide in me, and I in you. As the branch cannot bear fruit of itself, except it abide in the vine; no more can ye, except ye abide in me. JOHN 15:4
+
+## A needed caution
+
+Her teaching on assurance was a gift to many who had lived for years in fog. But it needs one qualification, and the reader should hold it firmly. She sometimes spoke as though anyone without a conscious assurance ought to suspect that they were not saved at all. The wider church has usually been more careful. Many true believers, especially those of a melancholy temperament, or passing through illness or grief, walk for a time without the felt witness of the Spirit, and are no less His. Scripture speaks of those who fear the Lord and yet walk in darkness and have no light (Isaiah 50:10). She herself allowed, in the same sermon, that a pilgrim may lose his scroll for a while as Bunyan’s Christian did, provided he cannot rest until he finds it again. That is the balance to keep. Assurance is the normal inheritance of the children of God, and it is right to seek it. Its absence, for a season, is not proof that one is not a child.
+
+> Examine yourselves, whether ye be in the faith; prove your own selves. 2 CORINTHIANS 13:5
+
+What she was right to refuse was complacency: the settled contentment of those who have never known Christ, never sought to know Him, and see no reason why they should. For her, being married to Christ was not a figure of speech. It was the most real relationship of her life, and she wanted everyone she preached to to have it. When He comes, she told her congregation, you will not be ashamed of who knows it. You will have a husband worth being proud of.
+
+### FOR REFLECTION AND ACTION
+
+1. Can you say, not merely that you believe, but that you know Christ? If not, do not despair, and do not settle. Seek Him until you find Him.
+2. Ask whether your confidence rests on a verse you once agreed with, or on a living Christ you trust today.
+3. Name one sin under which you still go down. Bring it to Christ not as a problem to solve but as something your union with Him is meant to overcome.
+4. If you are passing through darkness and cannot feel the Spirit’s witness, keep walking in obedience and trust. Read Isaiah 50:10 and take it as written to you.
+5. Spend some time this week simply thanking Christ for joining you to Himself, without asking Him for anything.
+
+### A PRAYER
+
+> Lord Jesus, I do not want to be content with a half-Christianity. I want to know You, not only to know about You.
+> Where I have rested in the letter and missed the Person, forgive me. Where I have been close to You and not joined to You, graft me in.
+> Let Your Spirit bear witness with my spirit that I am Yours. And when I cannot feel it, keep me trusting what You have said.
+> You have married me to Yourself. Let my life bear fruit that shows whose I am. Amen.
+
+# The Holy Ghost
+
+> But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judaea, and in Samaria, and unto the uttermost part of the earth. ACTS 1:8
+
+Catherine Booth preached a whole series of sermons on the Holy Spirit, and then, because letters kept arriving from puzzled hearers, preached another to answer their difficulties. That last one is printed as The Holy Ghost, and it is one of the clearest statements of the conviction that drove her whole ministry. She began with a question that every honest minister of her day was asking in private. There was more preaching than ever before, more Bibles, more meetings, more societies and more money spent on religion. Why was so little happening?
+
+## The lack is not truth
+
+She had heard the question from ministers behind the scenes. One good man told her he had not seen a conversion in his church for two years. She did the arithmetic for her hearers. Take a congregation of a thousand, with two or three hundred members. What becomes of the other seven hundred, who come and go Sunday after Sunday like a door on its hinges? They hear the truth. They do not reject it. And they go on unchanged. “They get enough light to light them down to damnation,” she said, “but they do not get enough power to lift them into salvation.”
+
+> For our gospel came not unto you in word only, but also in power, and in the Holy Ghost, and in much assurance. 1 THESSALONIANS 1:5
+
+It was not, she insisted, that the truth was lacking. She loved the Bible as much as anyone in the room, and said so. But the facts ruled out that explanation. There had never been so much truth preached, and there had seldom been so little result. Thousands of sermons would be preached that very Sunday, perfectly orthodox, and would be perfect failures, and no one would know it better than the preachers. The want was something else, and she named it in a single word: power.
+
+## A definite gift
+
+Her second point was that this power is a distinct gift of God. It is not the same as the truth, and it is not the same as faith; the disciples had both before Pentecost, and were still told to wait. It is the Holy Spirit Himself, accompanying the word of a Spirit-filled witness and driving it into the conscience.
+
+> Tarry ye in the city of Jerusalem, until ye be endued with power from on high. LUKE 24:49
+
+And because it is a gift of God and not a quality of the speaker, it does not depend on education, eloquence or position. This was the point at which she became most vivid. She would rather, she said, have a Hallelujah Lass — one of the Army’s working-class girl preachers — “hardly able to put two sentences of the Queen’s English together,” with the power of the Holy Ghost, than the most learned divine in the kingdom without it. The church, she thought, had multiplied its buildings and its learning while forgetting where its strength lay, and the result was exactly what one would expect.
+
+> Not by might, nor by power, but by my spirit, saith the LORD of hosts. ZECHARIAH 4:6
+
+## For people like us
+
+Her third point was full of comfort. Could believers today expect the same power as the apostles? She answered that we need it for the same reasons they did. The agents are the same: the apostles were not heroes of intellect but frail, easily frightened men who forsook their Lord and fled. She loved the angel’s message after the resurrection, Go your way, tell his disciples and Peter (Mark 16:7), and the way it singled out the one man most likely to think himself excluded. Whatever you have done, she told her hearers, the Holy Ghost is equal to the emergency.
+
+And the work is the same. The great thing to be done, she said, is to subdue the rebellious human heart, and no human power can do it. You can educate a man, civilise him, reform his habits and make him a respectable citizen without the Spirit of God. You cannot make him a new creature. Every other kind of change, she was sure, would prove at the last to be wood, hay and stubble.
+
+> It is the spirit that quickeneth; the flesh profiteth nothing: the words that I speak unto you, they are spirit, and they are life. JOHN 6:63
+
+## The conditions
+
+How, then, is the power received? She set out the conditions plainly. Put away everything that hinders; cast aside every doubtful thing; make a whole-hearted surrender to Christ, embracing His will at whatever cost; and then wait for the gift, as the disciples waited in the upper room, until it comes. “Anybody can have it on these terms,” she said. She was not particular about the place or manner of waiting. In another address she told a hearer who was troubled about whether to leave his daily work to wait for the Spirit not to lose the substance in quibbling about the way. Wait in whatever manner suits your circumstances; only wait until you have it.
+
+> If ye then, being evil, know how to give good gifts unto your children: how much more shall your heavenly Father give the Holy Spirit to them that ask him? LUKE 11:13
+
+## Weighing it
+
+There is much here that the whole church needs to hear. Her diagnosis — that orthodoxy without the Spirit’s power produces congregations that are informed and unchanged — has lost none of its force. Her refusal to make education or status the qualification for Christian witness has been vindicated a thousand times over in the growth of the church among the poor of the world.
+
+Two cautions are worth adding. First, her language of a definite baptism of power, received on conditions, belongs to the holiness movement of her day, and Christians differ on how to describe the Spirit’s work after conversion. Many would say that every believer has the Spirit from the moment of new birth, and that what is needed is not a second gift but a fuller surrender to the One already given. Her practical counsel survives either way: put away what hinders, yield entirely, and ask. Second, the conditions can be heard as a ladder of attainment, so that the Spirit becomes a reward for sufficient consecration. That was not her meaning. She said repeatedly that it is not a question of human merit at all, but of submission, obedience and faith.
+
+She closed The Holy Ghost with her own story — of the feeble, trembling woman who had raised her voice for the first time twenty years before, and the hundreds of souls who had been given her since. Who can tell, she asked, what God can do by any man or woman, however timid, if only fully given up to Him?
+
+### FOR REFLECTION AND ACTION
+
+1. Look honestly at your church and your own life. Where is there truth without power? Name it rather than explain it.
+2. Is there something you know hinders the Spirit’s work in you — a doubtful habit, a withheld area, a grudge? Put it away this week.
+3. Stop measuring your usefulness by your education or ability. Ask God for the Spirit’s power in the one conversation you are most afraid of.
+4. Set aside a definite time this week to ask the Father for the Holy Spirit, taking Luke 11:13 as His promise.
+5. Think of someone you have written off as too far gone. Remember and Peter, and pray for them by name.
+
+### A PRAYER
+
+> Holy Spirit, I have had the truth for years, and too little power. I have spoken the right words and seen nothing happen.
+> I put away what hinders You. I give myself wholly to Christ, to go where He sends and do what He says.
+> I am not strong, or clever, or brave. Neither were the disciples. Come upon me as You came upon them, and make me a witness.
+> Do in me and through me what no human power can do: make dead hearts live, for Jesus’ sake. Amen.
+
+# Full Salvation
+
+> And the very God of peace sanctify you wholly; and I pray God your whole spirit and soul and body be preserved blameless unto the coming of our Lord Jesus Christ. 1 THESSALONIANS 5:23
+
+In the early 1880s Catherine Booth gave a series of addresses on holiness at Exeter Hall in the Strand, the great London meeting place of evangelical societies, alongside her husband. They are printed at the end of Godliness, together with shorter pieces on enthusiasm and on the hindrances to holiness, and they are the fullest statement of what the Army called full salvation. It was the doctrine closest to her heart. Everything else — repentance, faith, the Spirit’s power — was, in her mind, leading here.
+
+## Saved from sin
+
+Her first concern was to make clear what she was talking about. Holiness, she said, is “being saved from sin! — sin in act, in purpose, in thought!” Not saved from the penalty of sin only, but from its power and its presence in the heart. She had no patience with a gospel that promised forgiveness for yesterday and nothing for tomorrow. Pardon without power, she said in another sermon, would leave her in the mud again by the next night.
+
+> Who gave himself for us, that he might redeem us from all iniquity, and purify unto himself a peculiar people, zealous of good works. TITUS 2:14
+
+The central purpose of the gospel, she told the Exeter Hall crowds, is purity of heart. If that is not so, she said, she would give up the whole question and admit herself utterly deceived. She read the New Testament epistles and found them full of commands to be holy — not to count oneself holy, but to be it. A religion that could not do what it commanded, she thought, would be a mockery. If Christ cannot heal me, she said in the fourth address, He has left Himself no choice but to condemn me. “If He cannot restore me, He must condemn me.”
+
+## Infirmities are not sins
+
+She was careful to guard the doctrine from its caricatures. She did not teach that a holy person is free from mistakes, weakness, ignorance, illness or temptation. She spent part of one address answering those who insisted that every infirmity is a sin. Paul, she pointed out, gloried in his infirmities, which he could hardly have done if they were sins. An infirmity is a defect of mind or body, a limitation that grace can overrule; sin is a wilful choice against the known will of God. Temptation is not sin either. Christ was tempted in all points as we are, and was without sin, and she told troubled hearers that a strongly excited appetite, resisted, brings no condemnation at all.
+
+> My grace is sufficient for thee: for my strength is made perfect in weakness. 2 CORINTHIANS 12:9
+
+Nor did she teach that holiness is a human attainment. In her short address on the hindrances to holiness she defined the blessing, memorably, as “human weakness, leaning with all its weight upon Divine power.” Those who had grasped that, she said, had no temptation to think themselves better than others, for they knew themselves to be the weakest of all.
+
+## A definite blessing
+
+What made her teaching distinctive was her conviction that this cleansing is a definite experience, entered by faith at a particular moment, after conversion. She spoke of it in the language of the holiness movement: a second step, a higher level, the land of Canaan beyond the wilderness. Many Christians, she said, had come up to the border of that land again and again and turned back through unbelief. In Enthusiasm and Full Salvation she urged her hearers to see “that this holiness is a real, definite blessing,” a level on to which the mass of professing Christians had scarcely looked.
+
+> Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them. HEBREWS 7:25
+
+The conditions were the ones she always named: a full consecration of the whole self as a living sacrifice, the putting away of everything the Spirit convicts, a willingness not to be conformed to the world, and then faith to receive. And the hindrance, she found, was nearly always the same. Not doubt about the doctrine, but some one thing held back — money that ought to be given, a circle of friends that would have to be offended, a habit that would have to go.
+
+## The perfect heart
+
+In the sermon on The Perfect Heart she gave the doctrine a warmer and more biblical frame. The eyes of the Lord, the prophet told King Asa, run to and fro throughout the whole earth, to shew himself strong in the behalf of them whose heart is perfect toward him (2 Chronicles 16:9). What is a perfect heart? She gave the lowest interpretation she could, she said, to avoid controversy. It is a heart loyal to God whatever the consequences, like David’s. It is a heart obedient to all the light it has, which has stopped picking and choosing among the commandments. And, at the root of everything, it is a heart that trusts God, like Abraham’s.
+
+> Blessed are the pure in heart: for they shall see God. MATTHEW 5:8
+
+## Weighing it
+
+Here the reader must think carefully. Her teaching on entire sanctification as a distinct experience after conversion is held by the Wesleyan and holiness churches, and by many sincere believers. It is rejected by many others, equally sincere, who read the New Testament as describing holiness as a lifelong growth rather than a single crisis, and who find sin still present in the best of saints until the end. The disagreement is old and honest, and this book will not pretend to settle it. The danger on her side is that people claim a clean heart they do not have, or despair because the experience does not last. The danger on the other side is that people settle comfortably into defeat and call it humility.
+
+What should not be lost is the thing she was most anxious to say: that God means His people to be holy, that Christ is able to save to the uttermost, and that we should expect far more of His grace than most of us do. She said once that if she did not believe Christ strong enough to destroy the works of the devil and bring us back to God’s original pattern, she would throw the whole thing up. One does not need to share her doctrine of a second blessing to share that confidence.
+
+> But if we walk in the light, as he is in the light, we have fellowship one with another, and the blood of Jesus Christ his Son cleanseth us from all sin. 1 JOHN 1:7
+
+### FOR REFLECTION AND ACTION
+
+1. Ask honestly whether you expect Christ to save you from sin, or only from its penalty. What would change if you expected more?
+2. Distinguish in your own life between infirmities and sins. Stop condemning yourself for the first; stop excusing the second.
+3. Name the one thing that most often stands between you and a whole-hearted surrender. Pray over it until you can give it up, or until you know you are unwilling.
+4. Read Romans 12:1–2 and offer yourself, body and all, as a living sacrifice, in words of your own.
+5. Whatever your view of a second blessing, ask God today for a perfect heart: loyal, obedient and trusting.
+
+### A PRAYER
+
+> Holy God, You have called me to be holy, and I have made my peace with far less. I have expected forgiveness and not expected change.
+> I am weak, and I know it. Let me lean the whole weight of my weakness on Your power.
+> Take the thing I have held back. Cleanse my heart, and make it loyal, obedient and trusting toward You.
+> You are able to save to the uttermost. Do it in me, for Jesus’ sake. Amen.
+
+# The Conditions of Effectual Prayer
+
+> If ye abide in me, and my words abide in you, ye shall ask what ye will, and it shall be done unto you. JOHN 15:7
+
+Nothing, Catherine Booth said, was more constantly said to her by professing Christians than this: I have prayed a long time, and I get no answers. She was not inclined to be gentle about it. She thought it a deeply God-dishonouring state of affairs, and she said that if she never got answers to prayer she would probably give up praying. She remembered the years when revival was sweeping Ireland and America, and the churches of England held united prayer meetings all over the land for it to come, and it did not come; and the sceptics mocked in their newspapers. Her cheeks burned. She was sure the fault was not in God. Her sermon The Conditions of Effectual Prayer, in Godliness, was her answer.
+
+## The promises have conditions
+
+Her starting point was that the great promises about prayer are made to particular people. They are not blank cheques for anyone who happens to say a prayer. The promise of John 15 begins with an if. The promise of James is made to the righteous. If the conditions are ignored, she said, we may pray ourselves blue in the face, and God will not move to meet us.
+
+> The effectual fervent prayer of a righteous man availeth much. JAMES 5:16
+
+She set out the conditions as “a four-linked chain,” connecting the soul with the heart of God, and warned that if any one link was missing the chain would not hold.
+
+## The four links
+
+The first is fellowship with Christ. The promise is to those who abide in Him. It is not enough, she said, to have once been joined to Christ; many backsliders pray constantly and wonder why nothing happens, when they have long since let go of the union from which answered prayer flows.
+
+The second is obedience to the light. Walking in the light, she said, is like walking in the sun — not dodging behind a pillar here and a tree there to keep out of it. The one who wants his prayers answered must want to know God’s will, even if it condemns his habits, his companions or his business, and must do it when he knows it. She thought confidence and obedience could not be separated.
+
+> Beloved, if our heart condemn us not, then have we confidence toward God. And whatsoever we ask, we receive of him, because we keep his commandments. 1 JOHN 3:21–22
+
+The third is the intercession of the Spirit. We do not know what to pray for as we ought, and much of our praying, she said, is simply selfishness dressed in religious language. Here she was at her most searching. Mothers told her they had prayed for their children for years and not one had been converted. She asked what they had been praying for. Too often, she found, it was that the children would be respectable, safe and a comfort to their parents — religious enough to avoid disgrace, and not so devoted as to give everything to Christ. Wives prayed for their husbands’ conversion so that they would stay at home more and waste less money. God, she said, will not answer such prayers. We must see the person as His, with a soul to be saved and a life to be given to His kingdom, and pray on that ground.
+
+> Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered. ROMANS 8:26
+
+> Ye ask, and receive not, because ye ask amiss, that ye may consume it upon your lusts. JAMES 4:3
+
+The fourth link is faith. No one, she said, can exercise faith for something the Spirit has not led them to. But those who abide in Christ, walk in the light, and pray under the Spirit’s burden find faith comes naturally. They know they are asking according to God’s mind, and they can wrestle, if need be, like the Syrophenician woman, until the answer comes.
+
+> Therefore I say unto you, What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them. MARK 11:24
+
+## Faith for the impossible
+
+She was bold about what such faith could do. To those who said the age of miracles was past, she answered that the age of that kind of faith was past, and that miracles would return when it did. God, she said, would sooner set aside a law of nature than a law of grace. She was not naive about it. She knew God tests faith and does not always answer at once. But she had seen enough, in the Army’s early years, of rough halls quietened and hardened men broken, to believe that God does what He has promised for those who meet Him on His terms.
+
+## Agony of soul
+
+What prayer meant to her is clear from one of her descriptions. “Prayer is agony of soul — wrestling of the Spirit,” she wrote. It is what people do when they are in desperate earnest for something to happen. She told of rowdy crowds in the galleries of great halls, on the edge of open disturbance, and of a little woman stretching out her hands over them and saying, Now, let us pray, and the whole mass of rough men falling quiet. And she confessed, with evident pain, that one of the ways she had grieved the Spirit in her early years was that she would not let Him make her the woman of prayer He wanted her to be.
+
+In How to Work for God with Success she recalled a prominent Christian leader who stopped in the middle of a hymn about watching with Jesus and admitted that he did not think he had ever watched one consecutive hour with Jesus in his life. Her cheeks burned again. If these are the leaders, she thought, we need not wonder at the people.
+
+> What, could ye not watch with me one hour? MATTHEW 26:40
+
+## Weighing it
+
+There is a real danger in any teaching about conditions for answered prayer, and it should be named. It can become a machine: meet the conditions, and the answer must come; no answer, and the fault must be yours. Scripture does not allow that. Paul, who met every condition she named, asked three times for his thorn to be removed and was told no (2 Corinthians 12:8–9). The Lord Himself prayed in Gethsemane, Nevertheless not as I will, but as thou wilt (Matthew 26:39). A believer whose child remains unconverted, or whose illness is not healed, must not be told that it is certainly his fault. She did not always leave room for that mystery.
+
+But the substance of her teaching stands. God is not indifferent to the state of the one who prays. Unconfessed sin, disobedience to known light and selfish motives do hinder prayer, and Scripture says so plainly. The remedy she offered is the right one: not to pray less, but to come closer.
+
+> If I regard iniquity in my heart, the Lord will not hear me. PSALM 66:18
+
+### FOR REFLECTION AND ACTION
+
+1. Think of one long-unanswered prayer. Test it against her four links — fellowship, obedience, the Spirit’s leading, faith — and ask God to show you honestly if anything is missing.
+2. Examine your prayers for the people you love. Are you asking for their comfort and respectability, or for their souls and their surrender to Christ?
+3. Is there light you have received and not obeyed? You will find prayer hard until you do.
+4. Try to watch one consecutive hour with Christ this week, in whatever form you can manage.
+5. Where a prayer remains unanswered after you have searched your heart, rest in Gethsemane’s words: not as I will, but as Thou wilt.
+
+### A PRAYER
+
+> Lord, teach me to pray. I have asked much and received little, and I have blamed You when the fault may have been mine.
+> Keep me abiding in You. Make me willing to walk in all the light You give, and to obey it before I ask for anything more.
+> Take the selfishness out of my praying. Let Your Spirit lay on my heart the people and the things that are on Yours.
+> Give me faith to ask and wait, and grace to accept Your answer, whatever it is. Amen.
+
+# Love and Rebuke
+
+> And now abideth faith, hope, charity, these three; but the greatest of these is charity. 1 CORINTHIANS 13:13
+
+At the centre of Godliness are four sermons on love, all preached on the same text. They are not what a reader might expect. Catherine Booth did not preach on love to make her hearers feel warm. She preached on it because she was convinced that the devil had produced a counterfeit of it so skilful that most people could no longer tell the difference, and that the counterfeit was doing enormous harm in the churches. The more precious a thing is, she reasoned, the more effort goes into forging it. Nobody counterfeits pebbles. People counterfeit banknotes.
+
+## A love that must be given
+
+Her first point was that true love is divine in its origin. It is not natural affection, however generous. Everyone loves those who love them; even a tiger loves its cubs. Real Christian love is the love of God poured into the heart by the Holy Spirit, and it cannot be cultivated where it has not been planted. You may prune and water for ever, she said, and never grow what was never sown.
+
+> And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us. ROMANS 5:5
+
+This led her to a sharp distinction. A person may give away everything to feed the poor and still have no love, as Paul says, because the motive may be a cause, or a reputation, or simply a naturally generous temperament that enjoys giving. She once warned a generous friend not to credit all his giving to grace, since he plainly enjoyed it more than most people enjoy receiving. True love takes the trouble to ask where the gift will do the most good for God and for souls.
+
+## Body and soul
+
+Her test of love was whether it cared for the whole person, and above all for the soul. She was scornful of a charity that relieved every bodily need and never mentioned eternity. She was equally clear that this did not license neglect of the body. “I know that real Christianity cares for body and soul,” she said. “Bless God, it does; but, always mind that it sets the soul first.” The Lord fed the multitude, she observed, but only after they had been with Him three days hearing the word.
+
+> But whoso hath this world’s good, and seeth his brother have need, and shutteth up his bowels of compassion from him, how dwelleth the love of God in him? 1 JOHN 3:17
+
+The movement she helped to found would become one of the largest providers of social care in the world, and some have seen a tension between that and her insistence on the soul first. She would not have seen one. She simply refused to let the relief of the body become a substitute for the salvation of the person.
+
+## Love that rebukes
+
+Her second sermon made the point that gives this chapter its title. Divine love, she said, is not only consistent with rebuke; it often requires it. God Himself rebukes and chastens those He loves. Her great example was Paul at Antioch, withstanding Peter to his face because Peter had drawn back from eating with Gentile believers. Paul loved Peter. It must have cost him a great deal. He did it openly, before them all, because the truth of the gospel was at stake and because love is first pure.
+
+> As many as I love, I rebuke and chasten: be zealous therefore, and repent. REVELATION 3:19
+
+The counterfeit, she said, does the opposite. It flatters to the face and criticises behind the back. It praises a brother and then adds, but. It cries peace, peace, when there is no peace, and would rather cover evil up than have the discomfort of exposing it. She asked her congregation how many of them believed that their fellow members were living consistent Christian lives, and how many had ever gone privately, in love, to speak to one who was not. Almost everyone talks about a brother’s faults. Almost no one talks to him.
+
+> Thou shalt not hate thy brother in thine heart: thou shalt in any wise rebuke thy neighbour, and not suffer sin upon him. LEVITICUS 19:17
+
+> Faithful are the wounds of a friend; but the kisses of an enemy are deceitful. PROVERBS 27:6
+
+## Conflict and loneliness
+
+The third and fourth sermons followed the thread further. Love that will not compromise with evil will meet conflict, as Christ did. And love that follows new light will sometimes walk alone, as Peter did when God sent him to Cornelius and the church at Jerusalem called him to account. Much of this was plainly autobiographical. She had known the loneliness of walking ahead of her friends, and she urged those who felt God leading them into unfamiliar service to weigh their impressions carefully, and then, once sure, to go forward even if Christian friends objected. The counterfeit love, she said, always takes the side that looks like winning. True love stands with Christ when He is in the minority.
+
+> But the wisdom that is from above is first pure, then peaceable, gentle, and easy to be intreated, full of mercy and good fruits, without partiality, and without hypocrisy. JAMES 3:17
+
+## Weighing it
+
+This is some of the most needed teaching in her books, and some of the most easily abused. It is right that love tells the truth. It is also true that a great deal of cruelty has been done by people who were sure they were rebuking in love. Catherine Booth herself could be severe, and not every soul she rebuked was helped by it. Scripture adds the caution she did not always voice: Brethren, if a man be overtaken in a fault, ye which are spiritual, restore such an one in the spirit of meekness; considering thyself, lest thou also be tempted (Galatians 6:1). The test of a loving rebuke is not only whether it is true, but whether it is given privately where possible, humbly, with tears rather than relish, and for the other person’s good rather than the rebuker’s satisfaction.
+
+> But speaking the truth in love, may grow up into him in all things, which is the head, even Christ. EPHESIANS 4:15
+
+Held with that caution, her teaching is a searching mirror. Most of us are far more likely to fail in cowardice than in severity. We see the brother drifting, and say nothing to him and a great deal about him. She would call that the devil’s love. She was probably right.
+
+### FOR REFLECTION AND ACTION
+
+1. Examine your generosity. Which of your gifts come from the love of God, and which from temperament, habit or the wish to be thought well of?
+2. Is there someone whose faults you have discussed with others but never raised with them? Stop the first; pray about the second.
+3. If you must speak to a brother or sister about a sin, go privately, go humbly, go praying, and go ready to hear what they may say to you.
+4. Ask whether your church prefers peace to purity. Is there an evil being covered to avoid discomfort?
+5. Consider where love is calling you to walk ahead of your friends. Test it before God; then, if it is His call, go.
+
+### A PRAYER
+
+> Lord, I have mistaken niceness for love. I have flattered to faces and criticised behind backs, and I have called my silence charity.
+> Pour Your own love into my heart by Your Spirit. Let it be first pure, then peaceable.
+> Give me the courage to speak the truth to those I love, and the meekness to do it as one who might fall myself.
+> And when love leads me where others will not come, give me grace to follow You alone. Amen.
+
+# Popular Christianity
+
+> And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God. ROMANS 12:2
+
+In 1887 Catherine Booth gave a series of addresses in the West End of London that were published as Popular Christianity. The title was not a compliment. By popular Christianity she meant the religion that respectable Victorian society found comfortable: a Christianity that fitted neatly around dinner parties, careers, fashionable dress and social ambition, that asked very little and offended no one. She had preached for years to exactly the people who practised it, in drawing rooms and West End halls, and she did not spare them. The same concern runs through all her earlier books, and it is from those, in the Ochorus library, that this chapter mostly draws.
+
+## The world has not changed
+
+Her central argument was simple and uncomfortable. In Aggressive Christianity she observed that the church of her day provoked almost no opposition, and drew a sobering conclusion. “It is a bad sign for the Christianity of this day that it provokes so little opposition,” she said. “When the Church and the world can jog along comfortably together, you may be sure there is something wrong.” The world, she reasoned, is exactly what it was when it crucified Christ and stoned Stephen. If Christians lived as those early believers lived, the world would hate them as it hated them. “It is the Church that has altered, not the world.”
+
+> If ye were of the world, the world would love his own: but because ye are not of the world, but I have chosen you out of the world, therefore the world hateth you. JOHN 15:19
+
+> Woe unto you, when all men shall speak well of you! for so did their fathers to the false prophets. LUKE 6:26
+
+This was not a plea for Christians to go looking for trouble. It was a diagnosis. A Christianity that costs nothing and offends no one has probably stopped saying what Christ said.
+
+## Selfishness moved indoors
+
+Her deepest charge against popular Christianity was that it was simply selfishness in religious clothing. In The World’s Need she asked her hearers what they had done for Christ in the past week. They had read their Bibles more, they said, and prayed more, and asked God for great things — and all of it, she pointed out, was for themselves. “I am afraid a great deal of the religion is a mere transition of the selfishness of the human heart from the world to religion,” she said. The same person who once sought pleasure, comfort and advancement in the world now sought spiritual pleasure, comfort and advancement in the church, and had never actually stopped living for himself.
+
+> For all that is in the world, the lust of the flesh, and the lust of the eyes, and the pride of life, is not of the Father, but is of the world. 1 JOHN 2:16
+
+## Conformity
+
+In the second of her Exeter Hall addresses she took up Paul’s words about not being conformed to this world, and applied them without softening. She had spent hours after meetings counselling people who wept and prayed for a closer walk with God, and then found, at the dinner table afterwards, that they had no intention of changing anything. They would not give up their conformity, she said, even to the extent of a dinner party. They would not have their domestic arrangements disturbed, even if the salvation of their children and servants depended on it. They wanted Christ, but only if He would come into their houses and take things as He found them.
+
+> And the cares of this world, and the deceitfulness of riches, and the lusts of other things entering in, choke the word, and it becometh unfruitful. MARK 4:19
+
+She noticed, too, how respectable the things were that did the choking. The parable does not speak of shameful things, but of cares, riches and the desire for other things. Most people who lose their spiritual life, she thought, do not lose it to vice. They lose it to comfort.
+
+## Hot or cold
+
+Her remedy was a call to wholeheartedness. In How to Work for God with Success she reserved her strongest language for the lukewarm professor, whom she called a laughing-stock to hell. She told her hearers to be hot. They would burn the fingers of the Pharisees, and be called fools and fanatics, as Paul was. “God likes hot saints,” she said. Hot people are never a trouble to hot people; it is the cold who are troubled by them.
+
+> I know thy works, that thou art neither cold nor hot: I would thou wert cold or hot. REVELATION 3:15
+
+## Weighing it
+
+Her diagnosis has worn well; her particular rules have worn less well. She was a woman of the Victorian holiness movement, and she drew the lines where that movement drew them: against fashionable dress, card-playing, the theatre, dancing, wine and a good deal of polite society. Some of those lines were wise, and some had more to do with her culture than with Scripture. A reader in another century and another country should not take her list as God’s list. The principle is binding; the particular fences are not.
+
+There is also the danger that a call to separation from the world becomes a separation from people, and holiness turns inward and proud. That was not her own practice. She did not withdraw from worldly people; she went into their drawing rooms to preach to them. Her nonconformity was a freedom to be different among them, not a wall to keep them out.
+
+> Wherefore come out from among them, and be ye separate, saith the Lord, and touch not the unclean thing; and I will receive you. 2 CORINTHIANS 6:17
+
+What remains is the question she put to her own generation, and it has not lost its edge. Does your Christianity cost you anything? Does it offend anyone? If Christ were to come into your house this week and take charge of your timetable, your money, your friendships and your ambitions for your children, what would have to change? If the honest answer is nothing much, she would say, it is not because you have arrived. It is because you have not yet begun.
+
+### FOR REFLECTION AND ACTION
+
+1. List the three things in your life most likely to choke the word — not sins, but cares, riches and other desires. Which has grown fastest in the past year?
+2. Ask whether your prayers and Bible reading are for yourself alone. Give some of that time this week to the needs of others.
+3. Name one domestic arrangement you would not let God disturb. Offer it to Him.
+4. Examine one of your own rules for Christian living. Is it Scripture, or only the fence your circle builds around Scripture?
+5. Do one thing this week for Christ that might cost you some reputation among respectable people.
+
+### A PRAYER
+
+> Lord Jesus, I have made You comfortable, and I have made myself comfortable with You. I have followed You as far as it suited me.
+> Forgive me for moving my selfishness indoors and calling it devotion. Forgive me for loving the world while I sing about heaven.
+> Take charge of my house, my timetable, my money and my ambitions. Disturb whatever You need to disturb.
+> Make me hot, and not lukewarm. Let my life be a reproach to nobody but the devil. Amen.
+
+# Aggressive Christianity
+
+> Go ye into all the world, and preach the gospel to every creature. MARK 16:15
+
+The phrase that gave its name to her first book of sermons is the one most people associate with Catherine Booth, and it has worn oddly with time. Aggressive, to a modern ear, suggests rudeness or hostility. To her it meant something closer to active, forward, taking the initiative: the opposite of a Christianity that sits in its buildings and waits. She opened the address Aggressive Christianity with a thought experiment. Suppose you knew nothing of church history, and simply read the Acts of the Apostles and asked what the world would look like nineteen centuries later. Surely it would long since have been won. Instead, she said, look at Christian England: the great majority of the nation ignoring God entirely. Something had gone wrong, and she was not willing to blame God for it.
+
+## Two deceptions
+
+She believed the enemy had succeeded by deceiving God’s own people in two ways. The first, which an earlier chapter has followed, was about the standard of their own lives. The second was about their duty to the world. The church had come to think that its task was to build chapels, pay ministers, hold services, and invite people to come. If they would not come, that was their responsibility.
+
+She had met this attitude in person. After she preached in a town in the West of England, the gentleman she was staying with told her she had been rather hard on them. They built the chapels and paid the ministers, he said, and if the people would not be saved, they could not help it. She answered with a parable. Suppose a plague broke out in London, and the Board of Health opened hospitals and offered free treatment, and the people, besotted and blind, would not come. Would anyone say the Board had done its duty and the people deserved to die? No. If the people will not come to the physicians, the physicians must go to the people.
+
+## Go
+
+That, she said, is simply what the Great Commission means. Go ye. To whom? To every creature. And where are they to be found? “Where they are.” She pictured a servant sent into the city on his master’s business, who instead took an office and sent out circulars inviting the master’s clients to call on him at their convenience. Nobody would call that obedience.
+
+> And the lord said unto the servant, Go out into the highways and hedges, and compel them to come in, that my house may be filled. LUKE 14:23
+
+She took Paul’s commission from the risen Christ in the same way. The people are asleep: wake them. They cannot see their danger: open their eyes. They are preoccupied: turn them round by your earnestness.
+
+> To open their eyes, and to turn them from darkness to light, and from the power of Satan unto God. ACTS 26:18
+
+And she pointed out that the early church did not spread through apostles alone. When the believers at Jerusalem were scattered by persecution, it was ordinary converts — laymen and women, as she put it — who went everywhere preaching the word, and churches sprang up where no apostle had ever been.
+
+> Therefore they that were scattered abroad went every where preaching the word. ACTS 8:4
+
+## Only do it
+
+She knew the objections. You must be careful and judicious, people told her; you must not thrust religion down people’s throats. “Then, I say, you will never get it down,” she replied. Was she to wait until an unconverted man wanted to be saved before trying to save him? He would never want it until the death rattle was in his throat.
+
+But the aggression she meant was not a matter of volume. It was a matter of doing it at all. “Go as quietly and softly as the morning dew,” she said. Have meetings like the Quakers, if you like. Only do it. She told of a young woman who came to see her, whose proud and ungodly father had died after a sudden illness, having lost his reason before the end. For three years she had meant to speak to him about his soul and never found the courage. She said she had never smiled since, and thought she never would. Don’t be like that, Catherine urged. Do it quietly, if you like; privately, if you like; but do it, and do it as if you believed the soul in front of you was worth saving.
+
+> Knowing therefore the terror of the Lord, we persuade men. 2 CORINTHIANS 5:11
+
+She pictured the method as something almost domestic: taking a friend lovingly by the button-hole and saying that you had never spoken to him closely and prayerfully about his soul, and letting him see the tears in your eyes, or if you cannot weep, hear them in your voice.
+
+## The weeping behind it
+
+It is easy to hear the energy in this teaching and miss what drove it. She said more than once that the state of the world had so depressed her that she felt her heart would break, and she applied to herself the psalmist’s words.
+
+> Rivers of waters run down mine eyes, because they keep not thy law. PSALM 119:136
+
+Aggressive Christianity, in her sense, was not a strategy. It was grief with its sleeves rolled up.
+
+## Weighing it
+
+Her reading of compel them to come in needs one clarification, because the phrase has a dark history. Earlier centuries used it to justify forcing people into the church by law and violence. She meant nothing of the kind. Her compulsion was entirely moral: earnestness, persuasion, tears, persistence and the power of the Spirit. She said so explicitly. Nothing in her teaching warrants manipulation or disrespect for the freedom of the person being addressed.
+
+There is also a real danger of mistaking pushiness for zeal. Some who have imitated her tone without her tears have done more harm than good. Her own measure was love: to go as if you felt the value of the soul and meant to save it. Where that is present, even a clumsy word is often welcome. Where it is absent, no method will help.
+
+> And, lo, I am with you alway, even unto the end of the world. MATTHEW 28:20
+
+She noticed that the commission ended with that promise, and drew the obvious conclusion: He would not have promised His presence if the work were going to be easy.
+
+### FOR REFLECTION AND ACTION
+
+1. List the people you know who do not know Christ and will never come to a church service. How might you go to them, where they are?
+2. Is there someone you have meant to speak to about their soul for a long time? Decide when and how you will do it, quietly if you like, but soon.
+3. Look at your church’s activities. How many wait for people to come, and how many go out to them?
+4. Pray over Psalm 119:136 until you feel something of the grief behind her zeal. Ask God to give you a heart that weeps for the lost.
+5. Examine your own manner when you speak of Christ. Is there love in it, or only urgency?
+
+### A PRAYER
+
+> Lord Jesus, You came looking for me when I was not looking for You. And I have waited in comfort for others to come to me.
+> Forgive me for building walls and sending invitations, and calling that obedience.
+> Send me where they are. Give me the courage to speak, and the love that makes my words bearable. Let them hear the tears in my voice.
+> You have promised to be with me always. Go with me now. Amen.
+
+# The World’s Need
+
+> But when he saw the multitudes, he was moved with compassion on them, because they fainted, and were scattered abroad, as sheep having no shepherd. MATTHEW 9:36
+
+If aggressive Christianity was Catherine Booth’s method, the love of God for the lost was its engine. She said it herself, in the address printed as The World’s Need: “Real Christianity is, in its very nature and essence, aggressive.” She did not mean that Christians are by nature combative. She meant that God never gives His light and grace to anyone without holding them responsible for passing it on. Every talent in the parables is given for the good of others. A Christianity that keeps its light to itself is not a quieter kind of Christianity. It is a contradiction.
+
+## Called three ways
+
+She set out the call to work for souls under several heads, and they are worth following. We are called, first, by the Word — not only by the direct commands, but by the whole tenor of the New Testament. And the call, she said, is sobering, because “Jesus Christ has nobody else to represent Him here but us Christians.” The people of the world who are in darkness have no one else to show them the way.
+
+We are called, secondly, by the Spirit. Here she made one of her most perceptive observations. “The very first aspiration … of a newly-born soul is after some other soul,” she said. Ask any real convert what they did after they were saved, and they will tell you they could not sleep until they had written to a brother, or spoken to a friend. And the same longing is often the last thing to leave a dying saint, whose final prayer is not for money or family comfort but for some prodigal still outside. If Christians obeyed that prompting all their lives, she thought, it would never die. It dies because it is disobeyed. Backsliding, she found, very often began exactly there: in the small refusals to speak when the Spirit said speak.
+
+> The zeal of thine house hath eaten me up. PSALM 69:9
+
+Her counsel was blunt. Never mind the consequences; obey. Never mind if it chokes you. “I had better die in obedience than live in disobedience.”
+
+## What He has done for us
+
+We are called, thirdly, by what Christ has done for us, and here she told a story she had read somewhere. A nobleman, a backslider, stopped at a country inn and found over the mantelpiece a painting of the crucifixion, with words beneath it: “I suffered this for thee — what hast thou done for Me?” He went out to the stables to shake off the question and could not. At last it brought him to his knees. She turned the question on her hearers, especially the several hundred who had come forward in her meetings to give themselves afresh to Christ. What was it going to come to? Would it evaporate in sighs and wishes?
+
+> For the Son of man is come to seek and to save that which was lost. LUKE 19:10
+
+## The worth of a soul
+
+And we are called, lastly, by the wants of the world. Here her language rose. She marvelled that Christ shed His blood for every human soul, and that beneath all the vileness and ruin of the fall He saw a being made in God’s image and capable of eternal glory, and gave Himself for it. There was not one soul, she said, so mean or vile or base that it could not be rescued. She had no patience with anyone who talked lightly of whole generations being lost.
+
+> For what is a man profited, if he shall gain the whole world, and lose his own soul? or what shall a man give in exchange for his soul? MATTHEW 16:26
+
+When people came to her with fastidious objections to the Army’s methods, she said, her answer was always the same: “My friend, all I know is — souls are dying, dying.” If your own homes were being emptied by cholera, you would not be particular about the roughness of the measures used to stop it.
+
+> And he is the propitiation for our sins: and not for ours only, but also for the sins of the whole world. 1 JOHN 2:2
+
+## Begin at home
+
+She was practical about where to begin. Begin nearest home, she said; she had little faith in those who went abroad after others while their own were perishing at their firesides. “Begin at home, but do not end there.” And begin as you are. Never mind how you tremble; your trembling may do more good than bravery. Never mind the tears. “I wish Christians would weep the Gospel into people,” she said. Speak naturally, as you would to a friend about his health or his debts. Go to the closet until you are filled with the Spirit, and then go and let it out on people. She quoted Finney’s phrase for the same thing: letting his heart out on the people.
+
+> The Lord is not slack concerning his promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish, but that all should come to repentance. 2 PETER 3:9
+
+## Weighing it
+
+Two things should be said. First, her insistence that Christ died for every soul, and her impatience with those who seemed to limit His mercy, reflect the Wesleyan tradition she belonged to, and some of her remarks were aimed at Calvinists. Christians still differ over how to state the extent of the atonement. But on the point that mattered most to her — that the gospel is to be freely offered to every creature, and that no one is beyond the reach of grace — the great traditions of the church have agreed with her.
+
+Second, the language of responsibility can crush. A tender conscience that hears that souls are lost for want of its witness may be driven not to love but to anxious, exhausting guilt. She herself knew the answer. She reminded her hearers that they were only the instruments God had chosen, and that He would give the strength to push the plough if they would put their hand to it. The salvation of the world does not rest on our shoulders. But He has chosen to use our hands.
+
+### FOR REFLECTION AND ACTION
+
+1. Recall the first longings you had after your conversion for someone else to know Christ. Are they still alive? If not, when did you first disobey them?
+2. Take her nobleman’s question personally: He suffered this for you; what have you done for Him? Answer it honestly, without excuses.
+3. Choose one person near home and one beyond your usual circle, and begin to pray for them daily and look for a way to speak.
+4. The next time the Spirit prompts you to speak or write to someone about their soul, obey at once, even if it chokes you.
+5. If you are weighed down by guilt about the lost, bring that burden to Christ. Ask Him to replace anxiety with love.
+
+### A PRAYER
+
+> Lord Jesus, You saw the crowds and were moved with compassion. I see them and am moved to look away.
+> You suffered all this for me. What have I done for You? Forgive the years of silence and the promptings I refused.
+> Give me Your estimate of the worth of a soul. Let me see beneath the ruin the image You died to restore.
+> Begin with me at home, and do not let me end there. Send me to someone this week, and go with me. Amen.
+
+# Ye Are My Witnesses
+
+> Ye are my witnesses, saith the LORD, and my servant whom I have chosen: that ye may know and believe me, and understand that I am he. ISAIAH 43:10
+
+Catherine Booth preached to large and often sophisticated audiences, and she was a formidable reasoner. Yet she believed that the world would not be won chiefly by sermons, books or arguments. It would be won by witnesses. In the address Witnessing for Christ she set out why, and it is in that same address that she told, for once, the story of her own first public words at Gateshead. The two belonged together. She had become a preacher by becoming a witness.
+
+## A world in revolt
+
+Her starting point was that the world is in rebellion against God. It denies His existence, misunderstands His character and contradicts His testimony. If God is to keep any hold on it, He must be represented within it, as a sovereign must have loyal officers in a province in revolt. He has always had such witnesses, from Enoch and Noah onward, sometimes one solitary figure in a whole generation. Christ was the Faithful and True Witness above all. And when He went back to the Father, He left His people to take His place.
+
+> As thou hast sent me into the world, even so have I also sent them into the world. JOHN 17:18
+
+## Facts, not theories
+
+Her model was a witness in a court of law. If a witness begins to say what he thinks or has heard, the judge stops him: we want to know what you have seen. “Witnesses, you know, must deal with facts, not theories,” she said. God wants people who can stand up and say, I know. Not what they have read in books, not a fine-spun theory, but what they have seen, heard and handled of the truth of God.
+
+> That which we have seen and heard declare we unto you, that ye also may have fellowship with us. 1 JOHN 1:3
+
+She was sure this was what the world was starving for. She listed what it was not dying for: sermons, periodicals, religious stories, creeds — all of which it had in abundance. What was it dying for? “Downright, straightforward, honest, loving, earnest testimony about what God can do for souls.” Men in shops, on Oxford Street, in the theatres and music halls, were waiting, she said, for someone to tell them that God is God and that He can save them. One word like He has saved me, and He can save you, was worth more than a sermon.
+
+> For we cannot but speak the things which we have seen and heard. ACTS 4:20
+
+## Good witnesses
+
+She was just as insistent that witnesses must be good ones. A court will discount testimony if the witness’s character can be impeached, and the world does the same. A Christian who lives badly and professes loudly is, in effect, telling people that this is what the religion of Jesus Christ looks like. She thought such a person did more harm than a thousand open enemies. “A false witness on behalf of Jesus Christ is the most mischievous traitor on the face of the earth,” she said.
+
+Faithful witnesses must also tell the whole truth: the convicting truth as well as the healing truth, the knife as well as the oil. They must give it personally. A rich man might pay for a hundred and fifty evangelists, and ought to, she said; but he could not witness by proxy. And they must speak out. She had no patience with what people called an unobtrusive religion. There is no such thing, she said. David danced before the ark and called on the hills to clap their hands.
+
+> Let the redeemed of the LORD say so, whom he hath redeemed from the hand of the enemy. PSALM 107:2
+
+## Naturally
+
+How was this to be done? In How to Work for God with Success she gave her answer in a word. The greatest obstacle to the success of divine truth, she said, even from sincere people, was stiffness: the way people put on a different voice and manner the moment religion is mentioned. Speak to your friend about his soul as you would speak to him about a cough you feared was serious, or a debt he could not pay. Come straight to the point, with your hand on his arm. “We want sanctified humanity, not sanctimoniousness,” she said.
+
+> Go home to thy friends, and tell them how great things the Lord hath done for thee, and hath had compassion on thee. MARK 5:19
+
+## Her own witness
+
+Then she told her story, which the chapter on her life has already followed: the ten years of disobedience, the vow in the sickroom, the Sunday at Gateshead, the walk down the aisle to confess that she had not been obeying God. The effect of that confession, she said, did what twenty years of talk would never have done. And she ended with a word to the women in her audience who had written to her of their fear. “Never mind trembling. I trembled.” She had gone many times from her bed to the pulpit and back to her bed. It is not by might, she reminded them, but by My Spirit.
+
+> And they overcame him by the blood of the Lamb, and by the word of their testimony; and they loved not their lives unto the death. REVELATION 12:11
+
+## Weighing it
+
+Her emphasis on personal testimony has been one of her greatest gifts to the church. It freed countless ordinary believers, many of them poor and unlettered, to speak of Christ without waiting for a pulpit or a degree. The rapid spread of the church among the poor of the world owes much to exactly this conviction.
+
+It needs its balance, however. Testimony is not a substitute for teaching; the church needs those who can open the Scriptures carefully as well as those who can say what God has done for them. Her own preaching was full of careful argument from the Bible, whatever she said about sermons. And testimony can drift into exaggeration or self-display, or into making one’s own experience the pattern for everyone else’s. The safeguard is the one she gave: witnesses deal in facts. Say what Christ has actually done, no more and no less, and let Him do the rest.
+
+### FOR REFLECTION AND ACTION
+
+1. Write down, in plain words and in a few sentences, what Christ has actually done for you. Avoid religious jargon.
+2. Is there anything in your life that would impeach your testimony if a sceptic knew it? Deal with it.
+3. Notice when your voice and manner change around religious subjects. Practise speaking of Christ as naturally as you speak of anything else you care about.
+4. Tell one person this week, simply and without pressure, what God has done for you.
+5. If you are afraid, remember her words: never mind trembling. Ask for the Spirit, and speak anyway.
+
+### A PRAYER
+
+> Lord, You have chosen me to be Your witness, and I have often been a silent one, and sometimes a false one.
+> Make my life consistent with what I say, so that no one is turned away from You by me.
+> Take away my stiffness and my fear. Let me speak of You as naturally as I speak of the people I love.
+> I tremble, Lord. So did she. Give me Your Spirit, and let me say what I have seen and heard. Amen.
+
+# Adaptation of Measures
+
+> To the weak became I as weak, that I might gain the weak: I am made all things to all men, that I might by all means save some. 1 CORINTHIANS 9:22
+
+The Salvation Army scandalised Victorian England long before it had that name. Its preachers were costermongers, factory girls and converted prize-fighters. Its meetings were held in theatres, music halls and the open street. It used brass bands, popular tunes, uniforms, flags, military titles and posters on the walls, and its services were loud, spontaneous and, to many observers, indecent. Catherine Booth spent a good deal of her public life defending all this, and her fullest defence is the address she called Adaptation of Measures.
+
+## The message fixed, the methods free
+
+Her argument rested on a distinction she drew with great care. The gospel itself, she said, is above all adaptation. She would not alter its matter or even change its order; she would not take a dot off an i. Repentance, faith, the new birth, holiness, judgement — all of it must be preached exactly as the New Testament preaches it. But the modes and measures by which the gospel is brought to people are another matter entirely. There, she said, the New Testament lays down one law only. “The law of adaptation is the only law laid down in the New Testament with respect to modes and measures,” she said, and she challenged anyone to find another.
+
+Her evidence was the New Testament itself. It gives no fixed order of service and no single form of church government; if it did, she observed, the denominations would not have spent centuries quarrelling over which form it gives. Paul became a Jew to the Jews and weak to the weak. The only detailed glimpse we have of an apostolic meeting, in the fourteenth chapter of First Corinthians, is of something much livelier and less orderly than the typical Victorian service.
+
+> But if all prophesy, and there come in one that believeth not, or one unlearned, he is convinced of all, he is judged of all: and thus are the secrets of his heart made manifest; and so falling down on his face he will worship God, and report that God is in you of a truth. 1 CORINTHIANS 14:24–25
+
+She added, with some satisfaction, that people had said unkind things about the Army because people fell on their faces in its meetings. But this, she said, is apostolic.
+
+## Driven by necessity
+
+She was frank that the Army’s methods had not come from any love of novelty. She had been brought up as conventionally as anyone. God, she said, had driven her to them “as at the point of the bayonet,” as well as leading her by the pillar of cloud. The people in the slums would not come to the churches. They would not listen to learned divines. What was to be done? Jesus, she pointed out, had faced the same problem and solved it by calling fishermen rather than scribes: men of the people, who thought and spoke as the people did. If the masses will not have your polished preachers, she said, get hold of fishermen and costermongers and send them.
+
+> Preach the word; be instant in season, out of season; reprove, rebuke, exhort with all longsuffering and doctrine. 2 TIMOTHY 4:2
+
+> And of some have compassion, making a difference: and others save with fear, pulling them out of the fire. JUDE 22–23
+
+Her sharpest line was aimed at those who objected on grounds of dignity. “While we have been standing upon our dignity, whole generations have gone to hell!” — she added, if the Bible is true. The whole work of redemption, she said, is a work of humiliation. If Christ had stood on His dignity, He would never have died between two thieves.
+
+## Forms and ceremonies
+
+Beneath all this lay a principle that she applied more widely than many of her hearers realised. She held that “forms and ceremonies are nothing except as they embody and express real spiritual life and truth.” She took this from Paul’s words about circumcision.
+
+> For in Christ Jesus neither circumcision availeth any thing, nor uncircumcision, but a new creature. GALATIANS 6:15
+
+And in the same address she applied it, explicitly, to the sacraments. Under circumcision, she said, Paul embraces all outward forms: baptism is nothing, and being unbaptised is nothing; the Lord’s Supper is nothing, and abstaining from it is nothing, in itself, as a matter of form. What matters is keeping the commandments of God and the faith that works by love.
+
+## The sacraments: weighing it fairly
+
+This is where most readers must part company with her, and it should be done honestly. In 1883 The Salvation Army, with her support, ceased to observe baptism and the Lord’s Supper in its own meetings. The reasons were several. The churches were bitterly divided over the sacraments, and the Army did not want to be drawn into the quarrel. Communion wine was a real danger to converted drunkards. There was the question of whether its women officers could administer them. And she and William were deeply convinced, from long experience, that great numbers of people trusted in having been baptised or taking communion while knowing nothing of Christ. The Army has held the same position since, while insisting that it does not condemn others for observing them.
+
+Her concern was real. The sacraments can be, and often have been, treated as magic, and her warning against resting in the form without the grace is one every church needs. But her argument has a weakness that should be named plainly. Circumcision was not commanded of Gentile believers; baptism and the Lord’s Supper were commanded by Christ Himself, to be kept until He comes.
+
+> Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost. MATTHEW 28:19
+
+> For as often as ye eat this bread, and drink this cup, ye do shew the Lord’s death till he come. 1 CORINTHIANS 11:26
+
+Nothing in her own principle of adaptation — which she herself said applies to methods, not to the message — gives a church liberty to set aside ordinances the Lord appointed. The great majority of Christians have therefore judged that the right answer to the abuse of the sacraments is their right use, not their disuse. A reader can honour her concern, admire the Army’s evident fruit, and still believe that on this point she was mistaken.
+
+## What remains
+
+The rest of her teaching remains a powerful rebuke to a church that loves its habits more than its neighbours. Much of what she fought for is now taken for granted: services in ordinary halls, popular music in worship, lay preaching, women in leadership. She would have warned that those forms too can harden into a new traditionalism. Her principle was not that any particular method is sacred, but that none is. The message is fixed. Everything else is free, and must serve the saving of souls.
+
+### FOR REFLECTION AND ACTION
+
+1. List the habits of your church that exist mainly because they have always existed. Which of them actually help people outside to hear the gospel?
+2. Ask whether you have ever objected to a lawful method of reaching people because it offended your taste rather than your conscience.
+3. Name one group of people near you whom your church’s ordinary methods do not reach. What would it take to go to them?
+4. Examine your own attitude to baptism and the Lord’s Supper. Do you rest in the form, or receive the grace? Come to the Lord’s Table next time with deliberate faith.
+5. Guard the message as carefully as she did. Is there anything in the gospel you have softened to make it acceptable?
+
+### A PRAYER
+
+> Lord, You became a servant to reach us. Forgive me for standing on my dignity while others went without hearing of You.
+> Keep Your gospel pure in my mouth. Do not let me change a word of it to please anyone.
+> But set me free from the habits that serve my comfort and not Your kingdom. Make me willing to be all things to all people, that I may by all means save some.
+> Let every form I keep be full of Your life. Amen.
+
+# Woman’s Right to Preach
+
+> And it shall come to pass afterward, that I will pour out my spirit upon all flesh; and your sons and your daughters shall prophesy. JOEL 2:28
+
+Catherine Booth wrote in defence of women’s preaching before she had ever preached. The pamphlet appeared in 1859, when she was thirty, with a title that left no doubt about its argument: Female Ministry; or, Woman’s Right to Preach the Gospel. It was provoked by a minister in the north of England who had attacked the American evangelist Phoebe Palmer for addressing public meetings, and it was later revised and reprinted many times. It is short, closely argued and still worth reading. It is not in the Ochorus library, but its convictions run all through her sermons that are, and this chapter draws on both.
+
+## The objection from nature
+
+She began with the argument that women are naturally unfitted for public speaking. This, she said, was simply custom masquerading as nature. Women had never been given the education or the opportunity; it was hardly surprising that few had shown the ability. Nothing in a woman’s mind or voice unfitted her to tell others what God had done. It was the church, not nature, that had shut the door.
+
+## The Scriptures
+
+Her main argument was from the Bible, and she took it passage by passage. She pointed first to the women of the Old Testament who spoke for God: Miriam, Deborah the judge, Huldah the prophetess whom the king’s own officers consulted. Then to the New: Anna in the temple, speaking of Christ to all who looked for redemption; the women who were last at the cross and first at the tomb; Mary Magdalene sent by the risen Lord Himself to tell the apostles.
+
+> Mary Magdalene came and told the disciples that she had seen the Lord, and that he had spoken these things unto her. JOHN 20:18
+
+Then to Pentecost, which she regarded as decisive. Peter explained what the crowd was seeing by quoting Joel, and Joel’s prophecy explicitly includes daughters and handmaidens. If the Spirit was poured out on women to prophesy, she asked, by what authority does the church forbid them?
+
+> And on my servants and on my handmaidens I will pour out in those days of my Spirit; and they shall prophesy. ACTS 2:18
+
+She noted Philip’s four daughters, who prophesied; Phebe, whom Paul commended as a servant of the church; Priscilla, his helper in Christ Jesus; and the women who, he said, laboured with him in the gospel.
+
+> And the same man had four daughters, virgins, which did prophesy. ACTS 21:9
+
+## Let your women keep silence
+
+The great difficulty was Paul’s instruction that women should keep silence in the churches (1 Corinthians 14:34), and that he suffered not a woman to teach, nor to usurp authority over the man (1 Timothy 2:12). She did not avoid these texts. Her answer to the first was that Paul, only three chapters earlier, had given directions about how a woman should dress when she prays or prophesies in public — which he could hardly have done if she was never to speak. The silence of chapter fourteen, she argued, must therefore refer to something else: to the disorderly questioning and chatter that were disrupting the Corinthian meetings, not to prophesying under the Spirit.
+
+> But every woman that prayeth or prophesieth with her head uncovered dishonoureth her head. 1 CORINTHIANS 11:5
+
+The passage in Timothy she read as forbidding a woman to domineer or usurp authority, not forbidding her to proclaim the gospel. And she summed up her reading of the whole matter with the text that the Army would make its charter.
+
+> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
+
+In Adaptation of Measures she put it plainly: so far as the privileges, duties and obligations of Christ’s kingdom are concerned, there is neither nationality nor sex.
+
+## The fruit
+
+Her last argument was the one she felt most deeply. God had evidently blessed the preaching of women. Souls were being converted under Phoebe Palmer, and later under Catherine herself and hundreds of Army women after her. She could not believe that the Spirit would seal with His blessing a ministry His word forbade. The Word and the Spirit, she held, cannot contradict each other.
+
+The Holy Ghost, she told one congregation, would make them “all prophets and prophetesses, according to your measure.” And in The Training of Children she urged mothers to teach their daughters that each was “an independent, responsible being, whom God will call to as severe a reckoning for the use or abuse of her talents as that of her brother man.” That was the heart of it. God would hold women accountable for their gifts. The church had no right to bury them.
+
+## Her own fear
+
+It is worth remembering that this argument was not easy for her. She knew exactly what it would cost. The devil’s first temptation to her, she said in How to Work for God with Success, was that if she began to preach people would call her “an impudent woman,” and she felt it would almost be better to go to hell than to have that said. She battled with it for a long time. Her answer, when it came, was a surrender: “Lord, I don’t care what they call me — I give myself to Thee to win souls.”
+
+## Weighing it
+
+Her pamphlet changed minds, including her husband’s, and the movement she helped build gave women a place in preaching and leadership that almost no other church of the time allowed. Much of the modern church, across many traditions, has followed where she led.
+
+The reader should know, however, that faithful Christians still read these passages differently. Many who gladly affirm that women may pray, prophesy, witness and teach in many settings believe that Scripture reserves the office of elder or pastor to men, and they reach that view from the same texts, with the same reverence for Scripture, that she brought to them. This book will not settle the disagreement. What can be said is that her central convictions are hard to deny: that the Spirit has been poured out on daughters as well as sons, that women have been given gifts for which God will hold them accountable, and that the church has too often silenced voices God meant to use. On any reading, she was right to refuse to be one of them.
+
+### FOR REFLECTION AND ACTION
+
+1. Read 1 Corinthians 11 and 14 together, as she did, and ask what each passage assumes about women speaking.
+2. If you are a woman, ask what gifts God has given you and whether you have buried any of them out of fear of what people would say.
+3. If you are a man, ask whether you have discouraged a woman from using a gift God plainly gave her.
+4. Whatever your conviction on church office, identify one way your church could make more room for the gifts of its women.
+5. Pray her prayer of surrender: that you will not care what they call you, if only you may win souls.
+
+### A PRAYER
+
+> Lord of the harvest, You poured out Your Spirit on sons and daughters, and You still call whom You will.
+> Forgive us where we have silenced those You meant to speak, and where we have been silent when You called us.
+> Give us grace to read Your Word humbly, to disagree charitably, and to honour every gift You have given.
+> I do not care what they call me, Lord. I give myself to You to win souls. Amen.
+
+# The Training of Children
+
+> Train up a child in the way he should go: and when he is old, he will not depart from it. PROVERBS 22:6
+
+Catherine Booth once remarked that she had often listened to men lecturing women on the duties of motherhood and thought, it is all very good, but you don’t know much about it after all. When she spoke on The Training of Children, she spoke as the mother of eight, raised on little money while she preached and her husband travelled. It is one of the longest addresses among her works in the Ochorus library, and one of the most practical. It is also, in places, one of the hardest to read today.
+
+## Whose child is this
+
+Her first question was the one she thought settled everything else: to whom does this child belong? Christian parents, she said, had dedicated their children to God before they were born and again at their christening, and then promptly forgot it. “Settle it in your minds that your child belongs absolutely to God, and not to you,” she told the mothers, “that you are only stewards for God.” Every mistake in training, she thought, flowed from forgetting that. Parents who think the child is theirs will train it for their own comfort, pride or ambition. Parents who know the child is God’s will train it for Him.
+
+> And these words, which I command thee this day, shall be in thine heart: and thou shalt teach them diligently unto thy children. DEUTERONOMY 6:6–7
+
+She reminded them, too, of their power. A young child’s trust in its parents is almost unbounded; what mother says is the end of all controversy. That influence, wisely used, never wears out. Foolishly frittered away, it is gone by the teenage years.
+
+## Teaching is not training
+
+Her central distinction was between teaching and training. Many religious parents, she said, cram their children with catechism, Scripture and hymns, and never train them at all. She used the image of a vine. A vinedresser who went to the vine every morning and told it which way to grow, and then left it alone, would get a wild vine. He must nail the branch where it should go, and cut away what is not wanted. So with children. “You must not only teach,” she said, “you must be at the trouble to train.”
+
+She gave a small, vivid example. A mother is busy with some important work; her children are playing round her. The eldest snatches his brother’s toy, a fight breaks out, and the mother, without looking up, tells him he is naughty and complains that no one ever had such troublesome children. Only yesterday she had taught them a lesson on brotherly love. Now was the moment to train, and she let it go. What if it had cost half an hour? What work could have been more important?
+
+## Example
+
+She was unsparing about the example parents set. “No mother will succeed in begetting in her child a greater antipathy towards any sin than she feels for it herself,” she said. Children, she observed, are the quickest of all analysts; they judge not by what we say but by how we feel. A mother who teaches truthfulness and then gushes over a visitor she privately dislikes has given her child a better lesson in deceit than any lecture on honesty could undo. She gave homely examples: the mother who promises a pony every time she goes out and never brings one; the mother who smacks the naughty table the baby bumped into; the mother who pretends the medicine is sweet.
+
+> And, ye fathers, provoke not your children to wrath: but bring them up in the nurture and admonition of the Lord. EPHESIANS 6:4
+
+## Interest and early faith
+
+Two of her convictions were well ahead of her time. The first was that religion should be interesting. “The one great rule to be observed in all teaching is to make your lessons interesting,” she said. Children know by instinct when their parents’ hearts are not in what they are doing, and a dull, cold, dutiful religion drives many of them away for good. She described her own Sundays: Bible stories told to her eldest on her knee from the age of two, a Noah’s Ark kept for Sunday use, lively songs and short prayers the children repeated after her, and then the little ones going off to the nursery to hold the whole service again among themselves.
+
+The second was that children can be converted young. Many parents, she said, seemed to expect their children to live in sin until sixteen or so and then be dramatically converted like drunkards. Why? “Why may not the minds of children be renewed very early?” A child whose will is yielded to God can be renewed by the Spirit as truly as an adult. And Jesus said, Suffer the little children to come unto me (Mark 10:14).
+
+> And that from a child thou hast known the holy scriptures, which are able to make thee wise unto salvation through faith which is in Christ Jesus. 2 TIMOTHY 3:15
+
+## Weighing it: the will of the child
+
+Here the modern reader must pause. Her first rule of training was to secure obedience, and to secure it early. She told the mothers that she had conquered her own strong-willed children at six and ten months old, and described how a mother should hold a resisting six-month-old down in his cot until he gave in, however long it took. She warned that if the child won the first battle, the mother was undone.
+
+Much of what she meant is sound. Consistent, affectionate authority does give children security, and she was right that parents who never say no, or who say it without meaning it, do their children no kindness. But her language of conquest, and her readiness to see a battle of wills in an infant, will trouble many readers, and rightly. An infant’s crying is not rebellion, and a parent who treats it so may do harm. Scripture’s counsel to parents is not only to rule but also not to provoke or discourage.
+
+> Fathers, provoke not your children to anger, lest they be discouraged. COLOSSIANS 3:21
+
+A second caution concerns her warning that God does not bind Himself to save the children of negligent parents. She meant it as a spur. But parents whose children have wandered despite years of faithful love may hear it as condemnation. The father in the parable did not cause the prodigal to leave, and he did not stop watching the road. Faithful training is a means God uses, not a guarantee we can claim or a debt He owes.
+
+## Train them for God
+
+Her deepest counsel is also her simplest. A father once told her he must do something for his sons’ future. No, she said: you must train them for God, and leave God to do for them. She warned against ambition for position, the love of money, and sending children away to school before their characters were formed. What she wanted was children who knew they belonged to God and would give their lives to His purposes. She gave hers, one by one.
+
+> For I know him, that he will command his children and his household after him, and they shall keep the way of the LORD. GENESIS 18:19
+
+### FOR REFLECTION AND ACTION
+
+1. Say aloud, as a parent or guardian: this child belongs to God, and I am a steward. What changes if you really believe it?
+2. Identify one virtue you teach your children in words but undermine by your example. Begin with yourself.
+3. Look for the next ordinary moment to train rather than scold, and take the time it needs.
+4. Make one element of your family’s worship genuinely interesting this week.
+5. If a child of yours has wandered, bring your grief to God without self-condemnation, and keep watching the road.
+
+### A PRAYER
+
+> Father, these children are Yours, not mine. Forgive me for training them for my comfort and my pride.
+> Make my example match my words. Let them see in me a hatred of sin and a love for You that is real.
+> Give me patience, firmness and tenderness together, and keep me from provoking them to anger.
+> Draw them to Yourself while they are young. And for those who have wandered, hold them, and bring them home. Amen.
+
+# The Dignity of Love
+
+> But made himself of no reputation, and took upon him the form of a servant, and was made in the likeness of men: and being found in fashion as a man, he humbled himself, and became obedient unto death, even the death of the cross. PHILIPPIANS 2:7–8
+
+Near the end of her address Aggressive Christianity, Catherine Booth took up an objection she had heard many times. Her way of carrying the gospel into the streets, people said, would be undignified. It would bring the gospel into disrepute and the preacher into collision with respectable society. Her reply is one of the finest passages in all her sermons, and it gives this chapter its title.
+
+## What dignity is
+
+Everything, she said, depends on what we mean by dignity. Is it human dignity or divine? Earthly or heavenly? “It was a very undignified thing, looked at humanly, to die on a cross between two thieves.” And yet, looked at morally and spiritually, it was the grandest sight earth or heaven had ever seen: almighty strength allying itself with human weakness in order to raise it, eternal wisdom veiling itself in human ignorance in order to enlighten it, everlasting love baring its breast to suffer in the place of its rebellious creature. That, she said, was the dignity of love. “If I understand it, that is the dignity of the Gospel — the dignity of love.”
+
+> Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame. HEBREWS 12:2
+
+That dignity, she went on, will never suffer by any gentleman carrying the gospel into the back slums of his city. It will never suffer by any employer talking lovingly to his servant girl or errand boy and trying to bring his soul to Jesus. It will never suffer even if a person is dragged through the streets by a mob, as Christ was, for the sake of souls. She desired, she said, no other dignity than this.
+
+## The poor
+
+This was not a theory for her. She spent her life among the respectable and the destitute alike, and she refused to rank them. Her closing words in Adaptation of Measures were a prayer that the Lord would help her hearers to go down among the fishermen, the poor, the weak, the unlearned and the vulgar, quoting Paul’s command to condescend to men of low estate.
+
+> Mind not high things, but condescend to men of low estate. ROMANS 12:16
+
+She insisted that the poor were not objects of charity but people with souls, fully capable of the highest things. She saw the Army’s working-class converts put learned visitors to shame by their unction and their prayer. When cultivated visitors confessed that they felt they had nothing to say in such meetings, because the people were so far ahead of them, her counsel was that they should come down from their high-mightiness to the level of these people, and they would find what the people had found.
+
+> Hearken, my beloved brethren, Hath not God chosen the poor of this world rich in faith, and heirs of the kingdom which he hath promised to them that love him? JAMES 2:5
+
+## The cost
+
+The dignity of love is costly, and she was plain about the price. In How to Work for God with Success she listed what must be given up. First, reputation. She knew this from inside: her own sore spot, she said, had been the fear of being called an impudent woman and put in the newspapers. It is easy to wound an enemy, she observed; “it is the blood of your friends that is the test!” Then habits: the fashionable frivolities, the wine, the dress and the gossiping evenings that left no appetite for prayer. Then money.
+
+> And he said to them all, If any man will come after me, let him deny himself, and take up his cross daily, and follow me. LUKE 9:23
+
+On money she was as blunt as on anything. She had once heard an old saint say that the use of money was the surest test of a person’s character, and thought it extravagant; she had lived, she said, to agree with him. “God never uses anybody largely until they have given up their money.” She did not demand that everyone give away everything. If you think it right to keep some, she said, keep it to use for Him, and account for it as strictly as you would expect a clerk to account to you.
+
+Her advice for facing all this was characteristically brisk. “Make up your mind to be crucified at the start, and then it will be easy.” Count the cost once, fully, at the beginning, and it will not have to be counted again every time the bill arrives.
+
+## The reward
+
+And she did not leave it there. She was sure the cost is repaid. Blessed is he that considereth the poor, she quoted, and she loved the tender promise that follows.
+
+> The LORD will strengthen him upon the bed of languishing: thou wilt make all his bed in his sickness. PSALM 41:3
+
+But the reward she valued most was spiritual children. Everyone longs for children, she said, and no parent would sell them. What will it be to stand before the throne with the children God has given you through years of costly labour, and say, Here am I and the children whom Thou hast given me? “The children! the children! you shall have children! Won’t that be reward enough?” She knew many of hers were already waiting for her.
+
+## Weighing it
+
+Her call to costly discipleship is a needed corrective to a comfortable Christianity. But it came from a woman of extraordinary, almost relentless intensity, and it should be received with some wisdom. She drove herself hard through years of illness, and she sometimes drove her hearers as hard, with little room for weariness, limitation or rest. The same Lord who calls us to take up the cross also said to tired disciples, Come ye yourselves apart into a desert place, and rest a while (Mark 6:31). Self-denial is not the same as self-destruction, and giving everything to Christ includes giving Him our need for rest. It is also worth saying that a sacrifice made to earn God’s favour, or to be seen by others, is not what she meant. The whole point of the dignity of love is that it looks away from itself.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask where your sense of dignity keeps you from serving someone. Go and serve them.
+2. Think of one person of low estate in your circle whom you have treated as a project rather than a person. Change the way you speak to them.
+3. Examine your use of money this month as if it were the surest test of your character. What does it say?
+4. Name the reputation you most fear to lose. Offer it to Christ, as she did.
+5. If you are exhausted, take seriously His invitation to rest. Costly love must be sustained, not spent in a season.
+
+### A PRAYER
+
+> Lord Jesus, You made Yourself of no reputation for me. I have guarded mine as if it were worth more than You.
+> Teach me the dignity of love. Send me down among the poor and the despised, not as a benefactor but as a brother or sister.
+> I give You my reputation, my habits and my money. Show me what to keep and how to use it for You.
+> And give me children in the faith, so that on the last day I may say, Here am I, and the children whom You have given me. Amen.
+
+# Things by Their Right Names
+
+> Woe unto them that call evil good, and good evil; that put darkness for light, and light for darkness; that put bitter for sweet, and sweet for bitter! ISAIAH 5:20
+
+Catherine Booth believed from girlhood that a Christianity worth the name must change not only hearts but the conditions in which people lived. She grew up seeing what drink did to families, and she became a total abstainer while still a girl. She spent her married life among the poorest people of the largest city in the world, and she saw at close quarters the trades that lived on their misery. In her sermons on love in Godliness, she named the failure she saw in the churches: a false love that would not call things by their right names. It gave polite titles to trades that ruined bodies and souls, and it said, when challenged, that it had to think of its own interests. She thought that was the devil’s love.
+
+## The drink
+
+Her opposition to alcohol was absolute, and it ran through everything she wrote. She had watched it destroy homes, and she had seen converted drunkards fall again at the first taste. In The Training of Children she told parents that all Christian families ought to be trained in abstinence, and she warned against the parents who kept that rule until an important guest arrived who liked his wine, and then relaxed it just once. She told the story of a broken-hearted father who had brought up his son as an abstainer but let him mix with those who thought moderate drinking harmless. The son was now an outcast; his mother was dead of grief. The danger, she insisted, lay not in drunkenness only but in the thing itself: “Wine itself, not the abuse of it.”
+
+> Wine is a mocker, strong drink is raging: and whosoever is deceived thereby is not wise. PROVERBS 20:1
+
+In How to Work for God with Success she put it more sharply still to the comfortable Christians of the West End. There is drinking, she said; they will have a glass of wine. Very well, you can have it; but you shall not have the wine of the kingdom.
+
+## The streets
+
+In 1885 she took up a cause that cost the Army dearly in reputation. The journalist W. T. Stead, working with the Army and with the campaigner Josephine Butler, published a series of articles exposing the trade in young girls in London, many of them barely into their teens, and the laws that allowed it. The articles caused an uproar, and Stead was later imprisoned over the methods he had used to prove his case. Catherine Booth threw her full weight behind the campaign. She spoke at great public meetings and helped gather a petition of hundreds of thousands of signatures. That summer Parliament raised the age of consent for girls from thirteen to sixteen.
+
+> Open thy mouth for the dumb in the cause of all such as are appointed to destruction. Open thy mouth, judge righteously, and plead the cause of the poor and needy. PROVERBS 31:8–9
+
+It is worth noticing how she argued. She did not treat these as political questions separate from the gospel. They were questions of love. The love of God, she said in Godliness, cares for body and soul. It cannot look at children being bought and sold and say that it must not disturb the peace. It is first pure, then peaceable.
+
+> And have no fellowship with the unfruitful works of darkness, but rather reprove them. EPHESIANS 5:11
+
+## Reality
+
+In one of her Exeter Hall addresses she quoted Josephine Butler’s remark that France was waiting for reality, and added that so was England, and so was the world. That was the link between her campaigns and her preaching. A church that would sing about holiness and profit from the drink trade, or preach love and look away from the brothels, was precisely the form of godliness without the power. The world, she thought, was not waiting for more religious talk. It was waiting to see Christians who would do something.
+
+> Learn to do well; seek judgment, relieve the oppressed, judge the fatherless, plead for the widow. ISAIAH 1:17
+
+## Weighing it: the rule of abstinence
+
+Her courage in the purity campaign needs no defence; it was the right cause, fought at real cost, and it protected children. Her teetotalism is another matter, and here the reader must think carefully.
+
+There is much to be said for abstinence, and in her world the case for it was overwhelming. Drink was cheap, strong and everywhere, and it destroyed families on a scale that is hard now to imagine. Paul himself commends the choice to go without wine for a brother’s sake.
+
+> It is good neither to eat flesh, nor to drink wine, nor any thing whereby thy brother stumbleth, or is offended, or is made weak. ROMANS 14:21
+
+For many believers — those recovering from addiction, those who love them, those who live where drink does great harm — abstinence is wise and often necessary. The Army’s stand has saved countless lives.
+
+But she went further than Scripture. She taught that the danger was in wine itself, and she made total abstinence a rule for every Christian conscience. Scripture does not. It condemns drunkenness in the strongest terms, but it also speaks of wine that maketh glad the heart of man (Psalm 104:15); the Lord Himself made wine at Cana (John 2:1–11), and Paul told Timothy to take a little for his health (1 Timothy 5:23). To bind every conscience where God has not bound it is, in the end, to call a good thing evil — the very fault the text at the head of this chapter warns against. The same Paul who commends abstaining for a brother’s sake also warns against letting others judge us in meat or in drink (Colossians 2:16). Her abstinence can be admired and chosen. It should not be imposed.
+
+What should not be lost is her refusal to call evil good. Every age has its respectable trades that live on human weakness, and every age has Christians who invest in them and say nothing. She would ask where our money is made, and at whose expense. It is a fair question.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask where your money comes from, and where it goes. Does any of it profit from the ruin of others?
+2. Identify one evil in your community that respectable people, including Christians, prefer not to name. Pray about how to speak for those it harms.
+3. Consider whether abstinence from alcohol would be a loving choice for you, for someone else’s sake. If so, make it freely.
+4. If you already abstain, examine whether you have judged others who do not. Give them the liberty Scripture gives.
+5. Support one practical work this month that protects children or vulnerable people from exploitation.
+
+### A PRAYER
+
+> Lord God, You see what is done in secret to the weak and the young. You see the trades that grow rich on sorrow.
+> Forgive me where I have looked away, and where I have called evil by polite names to keep my comfort.
+> Give me courage to open my mouth for those who cannot speak, and wisdom not to bind consciences You have left free.
+> Make me real, Lord, in a world that is waiting for reality. Amen.
+
+# A Religion to Die With
+
+> For to me to live is Christ, and to die is gain. PHILIPPIANS 1:21
+
+Catherine Booth had a phrase she used as a final test of any religion. She used it in her address Assurance of Salvation, after describing the believer’s victory over temptation through union with Christ: this, she said, is the joy of salvation, this is the fight of faith, “this is the sort of religion that does to die with!” She used it again at Exeter Hall, speaking of the real transformation the gospel works in the heart: “this is the only thing that will do to die with.” It was not a morbid phrase. It was a practical one. Every religion, she thought, would be tested at the deathbed, and most of the religion she saw around her would fail the test.
+
+## The test of the deathbed
+
+She had sat by many dying people, and she had noticed things. In A True and a False Faith she spoke of the thousands who had believed the facts of Christianity all their lives and then, as death came near, wrung their hands, despaired and sent for someone to pray with them. If they had really believed, she asked, why the terror? A head-faith, she thought, is exposed at the end. It has nothing to hold on to.
+
+> It is appointed unto men once to die, but after this the judgment. HEBREWS 9:27
+
+She saw the opposite too. In The World’s Need she described the dying saint whose last concern was not money, family arrangements or even personal comfort, but some prodigal still outside the kingdom. When the light of eternity streams on the soul, she said, it sees the value of souls and nothing else. Such people go out of time praying, as their Redeemer did, for those they are leaving behind.
+
+## Sweeping through the gates
+
+And she expected the believer’s death to be a victory. In A True and a False Faith she promised those who would commit themselves to Christ that He would be their friend all through life, and with them when they were dying. “You shall not go trembling and shrinking out of time into eternity like a thief and a robber; but like a victorious warrior you shall go sweeping through the gates!”
+
+> O death, where is thy sting? O grave, where is thy victory? The sting of death is sin; and the strength of sin is the law. But thanks be to God, which giveth us the victory through our Lord Jesus Christ. 1 CORINTHIANS 15:55–57
+
+She loved the story of two martyrs led from prison to the stake, one rejoicing in the presence of God, the other in darkness though still faithful. They agreed that if the Lord came to the second on the way, he would give a sign. The Lord came, and the man could not keep to the sign. He threw up his arms and shouted, He’s come, He’s come. She told it to show that real religion cannot always be kept quiet. It also shows what she expected at the end.
+
+## When her own time came
+
+In 1888, as the chapter on her life has told, she learned that she had cancer. She had nursed her own mother through the same disease, and she knew what was coming. She did not hide it, and she did not treat it as a failure of faith. She had gone to a specialist to be told the truth, and once she knew it she went on working as long as she could, and preached her last public sermon that summer. Then came two years of illness, much of it in severe pain, at Clacton-on-Sea. Her family and Army officers came to her room, and she dictated messages to the Army and spoke of the work going on without her. She died there on the fourth of October, 1890, with her husband and children around her.
+
+> Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me. PSALM 23:4
+
+What is striking, reading her sermons in the light of that death, is how little she needed to change her message. She had always said that the only religion worth having was one that would do to die with, and when the test came she was living in it. The Christ she had preached to others was the Christ she leaned on.
+
+> For which cause we faint not; but though our outward man perish, yet the inward man is renewed day by day. 2 CORINTHIANS 4:16
+
+## Children at the gate
+
+One of her deepest comforts was the thought of those she had led to Christ who had gone before her. In How to Work for God with Success she spoke of passing through conflict and trial and encouraging herself by remembering those who had sent her word from their dying beds that they would watch for her, and be the first to hand her to the Saviour when she arrived. She had told her hearers they would have children in the faith; she believed hers were waiting.
+
+> Precious in the sight of the LORD is the death of his saints. PSALM 116:15
+
+## Weighing it
+
+Her confidence is a gift to anyone facing death. But one caution needs to be added, and it is pastorally important. She expected a victorious, even joyful, death for the believer, and many do die so. Not all do. Some of God’s truest servants have died in confusion, in fear, in darkness, or with their minds clouded by illness or medicine. That is not proof that their faith was false. The Lord Himself cried out on the cross, My God, my God, why hast thou forsaken me? (Matthew 27:46). The ground of our hope at death is not the quality of our feelings in the last hours, but the faithfulness of the One who has promised never to leave us. A dying believer who cannot sing is held as firmly as one who can.
+
+> I have fought a good fight, I have finished my course, I have kept the faith: henceforth there is laid up for me a crown of righteousness. 2 TIMOTHY 4:7–8
+
+That is the religion she meant, in the end: not one that guarantees a triumphant exit, but one that has joined the soul to a living Christ, so that neither death nor life can separate it from Him. She had it. She wanted everyone to have it. And she was right that it is the only kind worth having.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask her question directly: is my religion the sort that will do to die with? What in it would still hold if everything else were taken away?
+2. If you were told today that you had two years to live, what would you change? Change one of those things now.
+3. Think of someone you would want to be waiting for you on the other side. Pray for them, and if they are still here, speak to them.
+4. If you fear dying badly, bring the fear to Christ. Your hope rests on His faithfulness, not on your last hours.
+5. Visit or write to someone who is dying or grieving this week, and bring them Christ as simply as you can.
+
+### A PRAYER
+
+> Lord Jesus, You have tasted death for me and taken away its sting. I do not want a religion that will fail me at the end.
+> Join me so closely to Yourself that nothing can separate us — not illness, not pain, not the last enemy.
+> If You give me a joyful death, I will praise You for it. If my mind is clouded and my feelings fail, hold me anyway.
+> And let there be some, when I come, who were brought to You because I spoke. Amen.
+
+# Conclusion
+
+> For the kingdom of God is not in word, but in power. 1 CORINTHIANS 4:20
+
+Eighteen chapters can make it look as though Catherine Booth taught a great many things. She taught one thing, and everything else is that one thing applied. The one thing is this: that God means His religion to be real. Follow it through and the whole shape appears. Repentance must really let go of sin. Faith must really commit the person to Christ, and not merely agree with facts about Him. Assurance is the Spirit’s witness to something that has really happened. The Holy Ghost is real power, without which the truest preaching is a well-made corpse. Holiness is a real deliverance from sin, prayer a real wrestling with God, love a real love that will rebuke and suffer. And because it is all real, it cannot stay indoors. It goes out after the lost where they are, it uses whatever lawful means will reach them, it sends whoever God has filled — fisherman or factory girl, son or daughter — and it will not call evil by polite names. At the end it is the only kind of religion that will do to die with.
+
+## The danger of this book
+
+If you have read this far, you are in some danger, and she would have named it before anyone. The danger is that you admire her. It is very easy to be stirred by a fiery woman preaching to Victorian crowds, to enjoy her sharp sayings and her courage, and to close the book exactly as you opened it. She had a name for that. She called it the form without the power.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+So the plainest counsel this book can give is the one she would have given. Go back to the chapter that made you least comfortable — not the one you enjoyed most. Take its application points and actually do them. Then take the next.
+
+## Two things to carry
+
+First, ask for the power and not only the form. Not a better experience or a stronger feeling, but the Holy Spirit Himself, filling a heart that has put away what hinders Him. She was sure He is given to anyone who meets Him on His terms, and that no one is too timid, too weak or too ordinary to be used. She was, she said, one of the most timid believers the Lord ever saved.
+
+Second, go. The distinctive mark of her Christianity was that it never stayed in its own building. It went to the drawing rooms and the music halls, the slums and the West End, the drunkard and the duchess, and it spoke to all of them in the same plain, earnest way. If this book leaves you with nothing else, let it leave you with one name — someone near you who does not know Christ — and the resolve to go to them, quietly if you like, but soon.
+
+## A last word about her
+
+We have been honest about her failings. She set aside the sacraments Christ commanded, and in that most of the church has judged her mistaken. Her doctrine of entire sanctification is disputed by serious Christians who read the same Scriptures differently. She could be severe, with congregations and with infants, and some of her counsel about the will of a child should not be followed. She made her own abstinence a rule for every conscience. None of this has been raised to diminish her. It has been raised because her own teaching requires it. A woman who spent her life demanding reality from others cannot be honoured by a portrait that leaves out the shadows.
+
+> But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us. 2 CORINTHIANS 4:7
+
+And the light is very bright. She read her Bible through as a sick girl and made it her own. She argued a whole church into letting its daughters speak. She walked down the aisle at Gateshead with her heart pounding and never walked back. She preached through illness for thirty years, bore and trained eight children, gave them all to the work, and helped to build a movement that went round the world among the poorest of the poor. She fought for children no one else would fight for. And she died slowly and in great pain, as she had lived, leaning on Christ.
+
+She once asked, in her address on the Holy Ghost, who could tell what God might do by any man or woman, however timid, if only fully given up to Him. The answer, in her case, is written across the world. The question is still being asked, and now it is asked of you.
+
+### FOR REFLECTION AND ACTION
+
+1. Name the one chapter of this book that unsettled you most, and the one application point from it that you have not yet done. Do it this week.
+2. Ask God plainly for the power of the Holy Spirit, and put away whatever you know is hindering Him.
+3. Write down the name of one person you will go to with the gospel, and a date by which you will do it.
+4. Where you disagree with her, write down why, from Scripture. Where you agree, write down what it will cost you.
+5. Read one of her own addresses in full, slowly, as a conversation with a sister who would not let you off lightly.
+
+### A PRAYER
+
+> Lord God, I have read about a woman who wanted reality, and I am quite capable of admiring her and changing nothing.
+> Do not let me. Give me the power and not only the form. Put away in me what hinders Your Spirit, and fill me.
+> Send me to the one person You have laid on my heart, and give me her courage, her plainness and her tears.
+> And when my own course is finished, let it be said that I kept the faith, not in word only, but in power. Amen.
+
+# A Reader’s Guide to Catherine Booth
+
+> Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. 2 TIMOTHY 2:15
+
+Catherine Booth is easy to read and hard to read at the same time. Easy, because nearly everything she published was preached first, and keeps the directness of the spoken word. Hard, because she does not let the reader sit comfortably, and because the printed addresses keep the capitals, exclamations and repetitions of a speaker in full flight, which can tire a modern eye. Read her aloud, a little at a time, and she comes alive. Everything she wrote is in the public domain.
+
+## Begin here
+
+Godliness. Her most rounded book, and the one in the Ochorus library, gathering her sermons on repentance, saving faith, love, prayer and the perfect heart, and her Exeter Hall addresses on holiness. If you read only one book of hers, read this. The four sermons on love are the least known and among the best.
+
+Aggressive Christianity. Her first collection of addresses, published in 1880, and the one that made her name as a writer. Several of her addresses in the Ochorus library, among them the title address itself, first reached readers here. This is the place to meet her on the church’s duty to the world.
+
+The addresses in the Ochorus library. Ten of her sermons are available here individually. For a first evening, read Witnessing for Christ, which contains her own account of her first public words; then Dealing with Anxious Souls, which shows her method with enquirers; then The Training of Children.
+
+## On the church and the world
+
+Popular Christianity (1887). Addresses given in the West End of London against the comfortable religion of respectable society. Sharp and uncomfortable, and at times more severe than persuasive, but a searching mirror for any prosperous church.
+
+Life and Death. A further collection of her addresses, largely evangelistic, and a good companion to Aggressive Christianity for those who want to hear her pleading with the unconverted.
+
+Her sermons also circulated under other titles in her lifetime, including Papers on Practical Religion and Papers on Godliness. Readers who find these editions will recognise much of the same material.
+
+## On women
+
+Female Ministry; or, Woman’s Right to Preach the Gospel (1859, later revised). Short, closely argued, and historically important. Read it with the Scriptures open.
+
+## Approach with care
+
+Adaptation of Measures. Essential for understanding the Army’s methods, and full of wisdom about the difference between the gospel and its packaging. But it contains the principle by which she set aside the sacraments, and it should be read alongside Matthew 28:19 and 1 Corinthians 11:23–26.
+
+The Training of Children. Much of it is wise, practical and warm. Her counsel on conquering an infant’s will should be read with Colossians 3:21 beside it, and not followed as written.
+
+The holiness addresses. Read them for their hunger for purity and their confidence in Christ. Where they teach entire sanctification as a single crisis, weigh them against the wider witness of Scripture and the church.
+
+## About Catherine Booth
+
+F. de L. Booth-Tucker’s The Life of Catherine Booth, the Mother of The Salvation Army (1892), written by her son-in-law soon after her death, is the standard early life. It is long, admiring and full of her letters. W. T. Stead’s Mrs. Booth of the Salvation Army (1900) is a vivid short portrait by the journalist who fought beside her in 1885. Catherine Bramwell-Booth, her granddaughter, wrote Catherine Booth: The Story of Her Loves (1970), a warm family account. Roger J. Green’s Catherine Booth: A Biography of the Cofounder of The Salvation Army (1996) is the best modern life, and careful about her theology. Roy Hattersley’s Blood and Fire (1999), a life of both Booths by a secular admirer, is readable and more critical. Pamela J. Walker’s Pulling the Devil’s Kingdom Down (2001) is a scholarly study of the early Army, and illuminating on the women who preached in it.
+
+Read more than one. The early lives were written by people who loved her, and it shows in what they leave out; the modern ones sometimes miss what she cared about most.
+
+## Three counsels for reading her
+
+Read her with the Bible open. She argued from texts, constantly, and she would want them checked. Read her for the burden rather than the system. Where she presses a framework further than Scripture goes — on the sacraments, on a second blessing, on total abstinence — take the concern and leave the scaffolding. And read her slowly. An address a week, acted on, will do more than the whole shelf admired.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21

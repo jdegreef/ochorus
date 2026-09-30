@@ -192,7 +192,9 @@ describe('the rail', () => {
 		// The rail sets its title sideways in a 23cqw column, which holds two
 		// lines of it. A longer title wraps into a third that spills over the
 		// band onto the painting, so an author with one wants another layout.
+		// A book in BOOK_LAYOUT (a series look) never takes its author's rail.
 		const long = allBookRows()
+			.filter((b) => !(b.slug in BOOK_LAYOUT))
 			.filter((b) => AUTHOR_LAYOUT[b.author[0]]?.layout === 'rail' && isArtCover(b.cover_url))
 			.map((b) => b.title)
 			.filter((title) => title.length > 28);

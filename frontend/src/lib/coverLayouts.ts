@@ -119,7 +119,12 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-a-b-simpson': null,
 	'key-teachings-of-jonathan-edwards': null,
 	'key-teachings-of-richard-baxter': null,
-	'key-teachings-of-watchman-nee': null
+	'key-teachings-of-watchman-nee': null,
+	'key-teachings-of-charles-h-spurgeon': null,
+	'key-teachings-of-andrew-murray': null,
+	'key-teachings-of-hannah-whitall-smith': null,
+	'key-teachings-of-catherine-booth': null,
+	'key-teachings-of-augustine-of-hippo': null
 };
 
 /**
@@ -139,7 +144,12 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-a-b-simpson',
 	'key-teachings-of-jonathan-edwards',
 	'key-teachings-of-richard-baxter',
-	'key-teachings-of-watchman-nee'
+	'key-teachings-of-watchman-nee',
+	'key-teachings-of-charles-h-spurgeon',
+	'key-teachings-of-andrew-murray',
+	'key-teachings-of-hannah-whitall-smith',
+	'key-teachings-of-catherine-booth',
+	'key-teachings-of-augustine-of-hippo'
 ]);
 
 /** Is this painted book's type set from the top? Never under a layout. */

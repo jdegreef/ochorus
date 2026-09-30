@@ -71,6 +71,7 @@ TOPICS = [
             "watchman-nee-a-life",
             "key-teachings-of-watchman-nee",
             "key-teachings-of-a-b-simpson",
+            "key-teachings-of-hannah-whitall-smith",
         ],
     ),
     (
@@ -171,6 +172,7 @@ TOPICS = [
             "religious-affections",
             "key-teachings-of-jonathan-edwards",
             "ten-commandments",
+            "key-teachings-of-catherine-booth",
         ],
     ),
     (
@@ -188,6 +190,7 @@ TOPICS = [
             "key-teachings-of-richard-baxter",
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",
+            "key-teachings-of-charles-h-spurgeon",
         ],
     ),
     (
@@ -231,6 +234,7 @@ TOPICS = [
             "on-loving-god",
             "union-and-communion",
             "the-bruised-reed",
+            "key-teachings-of-andrew-murray",
         ],
     ),
     (
@@ -252,6 +256,8 @@ TOPICS = [
             "prayer-the-pulse-of-life",
             "clothed-with-strength-and-dignity",
             "women-who-moved-heaven-2",
+            "key-teachings-of-hannah-whitall-smith",
+            "key-teachings-of-catherine-booth",
         ],
     ),
     (
@@ -269,6 +275,7 @@ TOPICS = [
             "treatises-of-cyprian",
             "first-epistle-of-clement",
             "epistles-of-ignatius",
+            "key-teachings-of-augustine-of-hippo",
         ],
     ),
     (
@@ -421,6 +428,7 @@ TOPICS = [
             "grace-abounding",
             "the-way-to-god",
             "all-things-for-good",
+            "key-teachings-of-charles-h-spurgeon",
         ],
     ),
     (
