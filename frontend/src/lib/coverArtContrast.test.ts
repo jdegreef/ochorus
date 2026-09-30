@@ -13,8 +13,9 @@ import { describe, expect, it } from 'vitest';
  * covers: every painting was shown at 38.7% of its own brightness, which is why
  * a translated cover looked dark beside the hand-made English one.
  *
- * The scrim now follows the type instead — three overlapping bands with air
- * between — and the paintings read at 53.4%. THE GUARANTEE NARROWS WITH IT:
+ * The scrim now follows the type instead — peaks over the byline and the mark,
+ * and a band hung off the title block that moves with its words — and the
+ * paintings read at over 70%. THE GUARANTEE NARROWS WITH IT:
  * white type is safe over the paintings the library ships, not over any
  * painting anyone might add. So the real measurement moved to
  * `CoverAssetTests.test_every_painting_still_carries_white_type`, which
@@ -42,25 +43,21 @@ const COVERS_PY = readFileSync(
 	'utf-8'
 );
 
-/** The scrim curve, read out of `covers.py` — bands, floor, strength, ceiling. */
-function pythonCurve(subtitle = false) {
+/** The PLATE's scrim layer, read out of `covers.py` — bands, floor, strength,
+ *  ceiling. Two bands: the byline and the mark, which never move. */
+function pythonCurve() {
+	const bands = [...COVERS_PY.matchAll(/\((0\.\d+), (0\.\d+), (0\.\d+)\)/g)]
+		.map(([, c, h, p]) => [Number(c), Number(h), Number(p)] as [number, number, number]);
+	expect(bands.length, 'covers.py no longer declares the byline and mark scrim bands').toBe(2);
 	const num = (name: string) => {
 		const m = new RegExp(`^${name} = ([\\d.]+)`, 'm').exec(COVERS_PY);
 		expect(m, `covers.py no longer declares ${name}`).not.toBeNull();
 		return Number(m![1]);
 	};
-	// The first three tuples are `_SCRIM_BANDS`; the fourth is `_SUBTITLE_BAND`,
-	// which only a cover that draws a subtitle wears. Sliced explicitly rather
-	// than relying on order alone being obvious — it was `slice(0, 3)` with no
-	// fourth band to exclude, and a reader could not tell whether that was a
-	// bound or a leftover.
-	const bands = [...COVERS_PY.matchAll(/\((0\.\d+), (0\.\d+), (0\.\d+)\)/g)]
-		.map(([, c, h, p]) => [Number(c), Number(h), Number(p)] as [number, number, number]);
-	expect(bands.length, 'covers.py no longer declares four scrim bands').toBe(4);
 	const floor = num('_SCRIM_FLOOR'), strength = num('_SCRIM_STRENGTH'), ceiling = num('_SCRIM_CEILING');
 	return (f: number) => {
 		let a = floor;
-		for (const [centre, half, peak] of bands.slice(0, subtitle ? 4 : 3)) {
+		for (const [centre, half, peak] of bands) {
 			const d = Math.abs(f - centre) / half;
 			if (d < 1) a = Math.max(a, floor + (peak - floor) * (0.5 + 0.5 * Math.cos(Math.PI * d)));
 		}
@@ -69,16 +66,12 @@ function pythonCurve(subtitle = false) {
 }
 
 /** The scrim as the stylesheet spells it: sampled stops. */
-function cssStops(subtitle = false): Array<[number, number]> {
+function cssStops(): Array<[number, number]> {
 	// `::before`, because the scrim moved onto a pseudo-element so one painting's
 	// can be lighter than another's — `opacity: var(--scrim-strength)` scales the
 	// whole layer, which a gradient cannot do from a custom property.
-	const selector = subtitle
-		? /\.cover-plate\.over-art\.has-subtitle::before \{([\s\S]*?)\n\}/
-		: /\n\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/;
-	const block = selector.exec(COVER_CSS);
-	expect(block, `the ${subtitle ? 'has-subtitle ' : ''}scrim rule is gone from cover-type.css`)
-		.not.toBeNull();
+	const block = /\n\.cover-plate\.over-art::before \{([\s\S]*?)\n\}/.exec(COVER_CSS);
+	expect(block, 'the scrim rule is gone from cover-type.css').not.toBeNull();
 	const stops = [...block![1].matchAll(/rgb\(0 0 0 \/ ([\d.]+)\)\s+([\d.]+)%/g)].map(
 		([, alpha, pos]) => [Number(pos) / 100, Number(alpha)] as [number, number]
 	);
@@ -92,70 +85,53 @@ describe('the scrim over a painting', () => {
 		// the CSS still describe the curve the Python gate measures". Sampling
 		// every 2.5% keeps this under 0.02; a 5% sampling missed by 0.048, which
 		// is enough to cost a painting its contrast.
-		// BOTH SPELLINGS, because there are two gradients now: the three-band
-		// curve, and the four-band one a cover with a subtitle wears. The second
-		// is the one that was missing entirely — the subtitle sat far down the
-		// title band's cosine at alpha 0.29, and 36 of 38 paintings measured
-		// under 4.5:1 beneath it.
-		for (const subtitle of [false, true]) {
-			const curve = pythonCurve(subtitle);
-			let worst = 0, at = 0;
-			for (const [pos, alpha] of cssStops(subtitle)) {
-				const d = Math.abs(alpha - curve(pos));
-				if (d > worst) { worst = d; at = pos; }
-			}
-			expect(
-				worst,
-				`the stylesheet's ${subtitle ? 'has-subtitle ' : ''}scrim has drifted from ` +
-					`covers.py's curve by ${worst.toFixed(3)} alpha at ${(at * 100).toFixed(0)}% — ` +
-					`the fixture gate is measuring a scrim that is not the one shipping`
-			).toBeLessThan(0.02);
+		const curve = pythonCurve();
+		let worst = 0, at = 0;
+		for (const [pos, alpha] of cssStops()) {
+			const d = Math.abs(alpha - curve(pos));
+			if (d > worst) { worst = d; at = pos; }
 		}
-	});
-
-	it('darkens the subtitle strip only on covers that draw one', () => {
-		// The whole reason the fourth band is conditional: 18 of the 38 works
-		// have no subtitle, and darkening a strip of their photography to protect
-		// words that are not there is the even-wash thinking the shaped scrim
-		// replaced. Applied to all of them it also made three paintings
-		// unsatisfiable at any strength the curve can reach.
-		const near = (stops: Array<[number, number]>, f: number) =>
-			stops.reduce((b, s) => (Math.abs(s[0] - f) < Math.abs(b[0] - f) ? s : b))[1];
-		const plain = cssStops(false);
-		const withSub = cssStops(true);
 		expect(
-			near(withSub, 0.66),
-			'the has-subtitle scrim has no peak where the subtitle sits'
-		).toBeGreaterThan(near(plain, 0.66) + 0.15);
-		// And identical where the subtitle is not: same curve, one extra band.
-		for (const f of [0.13, 0.49, 0.91]) {
-			expect(
-				Math.abs(near(withSub, f) - near(plain, f)),
-				`the two scrims disagree at ${f * 100}%, where the subtitle band does not reach`
-			).toBeLessThan(0.02);
-		}
+			worst,
+			`the stylesheet's scrim has drifted from covers.py's curve by ${worst.toFixed(3)} ` +
+				`alpha at ${(at * 100).toFixed(0)}% — the fixture gate is measuring a scrim ` +
+				`that is not the one shipping`
+		).toBeLessThan(0.02);
 	});
 
-	it('keeps a peak over each of the three places type sits', () => {
-		// The shape IS the feature: byline near the top, title block in the
-		// middle, mark at the foot. Flatten it back into an even ramp and the
-		// paintings go dark again — which is the change this replaced.
+	it('paints the band under the words, scaled like the rest, and never under a layout', () => {
+		// The band hung off `.middle` is the title block's share of the scrim; its
+		// STOPS are held to `covers.middle_band_stops` by `tests_covers`, which can
+		// call the function. What only the stylesheet can say is where it paints:
+		// above the type it would dim the title it exists to protect; unscaled it
+		// would ignore the painting's measured strength; under a layout's paper it
+		// would darken a composition that sets dark ink and has no scrim.
+		const rule = /\n\.cover-plate\.over-art \.cover-type \.middle::after \{([\s\S]*?)\n\}/.exec(COVER_CSS)![1];
+		expect(rule).toMatch(/z-index: -1;/);
+		expect(rule).toMatch(/opacity: var\(--scrim-strength, 1\);/);
+		expect(COVER_CSS).toMatch(/\.cover-plate\.over-art:not\(\.has-layout, \.ink-dark\) \.cover-type \.middle \{[^}]*isolation: isolate;/);
+		expect(COVER_CSS).toMatch(/\.cover-plate\.over-art\.ink-dark \.cover-type \.middle::after \{\s*display: none;/);
+		expect(COVER_CSS).toMatch(/\.cover-plate\.over-art\.has-layout \.cover-type \.middle::after,/);
+	});
+
+	it('keeps a peak over the byline and the mark, and air between', () => {
+		// The plate's layer covers the two places type never moves from. The
+		// title block's darkness comes from the band above; flatten this back into
+		// an even ramp and the paintings go dark again.
 		const stops = cssStops();
 		const at = (f: number) => stops.reduce((b, s) => (Math.abs(s[0] - f) < Math.abs(b[0] - f) ? s : b))[1];
-		for (const [name, pos] of [['byline', 0.13], ['title', 0.49], ['mark', 0.91]] as const) {
+		for (const [name, pos] of [['byline', 0.13], ['mark', 0.91]] as const) {
 			expect(at(pos), `the scrim has no peak over the ${name}`).toBeGreaterThan(0.55);
 		}
-		// And air between them, or there is no brightening at all.
-		for (const gap of [0.29, 0.73]) {
-			expect(at(gap), `the scrim never lifts at ${gap * 100}%`).toBeLessThan(0.35);
+		for (const gap of [0.29, 0.49, 0.73]) {
+			expect(at(gap), `the plate's scrim never lifts at ${gap * 100}%`).toBeLessThan(0.35);
 		}
 	});
 
 	it('never lets the scrim reach opaque', () => {
 		// A stop at 1.0 would paint the photograph out entirely at that height.
-		for (const subtitle of [false, true])
-			for (const [pos, alpha] of cssStops(subtitle)) {
-				expect(alpha, `the scrim is opaque at ${pos * 100}%`).toBeLessThan(0.9);
-			}
+		for (const [pos, alpha] of cssStops()) {
+			expect(alpha, `the scrim is opaque at ${pos * 100}%`).toBeLessThan(0.9);
+		}
 	});
 });

@@ -528,14 +528,16 @@ async function assertTitleFace(page, book) {
 }
 
 /**
- * Where the white ink actually landed on this card: `{region: [[x0, y0, x1, y1],
- * ...]}`, one box per rendered LINE, in the 600x800 plate's pixels (right and
- * bottom exclusive, a PIL crop box). Rounded to the nearest pixel: a pixel is
- * the ink's if more than half of it is.
+ * Where the white ink actually landed on this card, as `rows`: `{region: [[x0,
+ * y0, x1, y1], ...]}`, one box per rendered LINE, in the 600x800 plate's pixels
+ * (right and bottom exclusive, a PIL crop box). Rounded to the nearest pixel: a
+ * pixel is the ink's if more than half of it is. And `middle`, the [top, bottom]
+ * of the block the scrim's band hangs off (`.middle::after`), so the Python
+ * model draws the band where this edition's words put it.
  *
  * WHY THE CARD IS ASKED. The scrim tuner and the contrast gate used to measure
  * only the English covers' fixed strips, while a translated title wraps longer
- * and lands lower (`covers.painting_ink_rows` has the Brave for God numbers).
+ * and lands lower (`covers.painting_editions` has the Brave for God numbers).
  * Only a layout pass knows where a line falls, and this is the one place every
  * edition already gets one.
  *
@@ -552,16 +554,20 @@ async function assertTitleFace(page, book) {
  * with no scrim under it, so where its words fall says nothing about white type
  * on the picture — and `coverLayouts.test.ts` already holds its colours.
  */
-async function measureInkRows(page) {
+async function measureInk(page) {
 	return page.evaluate(() => {
 		const rows = {};
 		const take = (name, selector, lines) => {
 			for (const el of document.querySelectorAll(selector)) {
-				let rects = [el.getBoundingClientRect()];
+				const own = el.getBoundingClientRect();
+				let rects = [own];
 				if (lines) {
 					const range = document.createRange();
 					range.selectNodeContents(el);
-					rects = [...range.getClientRects()];
+					// Only the lines that SHOW: the subtitle is clamped to two, and a
+					// clamped line still has a box, below the element, that no reader
+					// sees and no scrim needs to carry.
+					rects = [...range.getClientRects()].filter((r) => r.top < own.bottom - 1);
 				}
 				for (const r of rects) {
 					if (!r.width || !r.height) continue;
@@ -576,7 +582,10 @@ async function measureInkRows(page) {
 		take('title', '.cover-type .title', true);
 		take('subtitle', '.cover-type .subtitle', true);
 		take('mark', '.cover-type .brandmark svg', false);
-		return rows;
+		// And the block the scrim's band hangs off (`.middle::after`), so the
+		// Python model can put the band where this edition's words put it.
+		const m = document.querySelector('.cover-type .middle').getBoundingClientRect();
+		return { rows, middle: [Math.round(m.top), Math.round(m.bottom)] };
 	});
 }
 
@@ -756,9 +765,11 @@ async function main() {
 		// over a scrim is measured against them. A skipped card keeps the rows it
 		// was drawn with, which are the rows it still has.
 		// `layout` as the manifest keys it — the definition `coverOgManifest.test.ts` holds.
-		const framed = book.art && entry.layout.startsWith('framed');
-		if (unchanged && (!framed || cached.rows)) {
-			if (framed) entry.rows = cached.rows;
+		// A painting under the SCRIM: framed, centred or type-top. Not a layout
+		// (dark ink on paper), and not a dark-ink ground (`framed-light`).
+		const framed = book.art && ['framed', 'framed-top'].includes(entry.layout);
+		if (unchanged && (!framed || (cached.rows && cached.middle))) {
+			if (framed) Object.assign(entry, { rows: cached.rows, middle: cached.middle });
 			skipped++;
 			continue;
 		}
@@ -774,7 +785,7 @@ async function main() {
 		// serif, which is precisely the defect this script repairs.
 		await page.evaluate(() => document.fonts.ready);
 		await assertTitleFace(page, book);
-		if (framed) entry.rows = await measureInkRows(page);
+		if (framed) Object.assign(entry, await measureInk(page));
 		// An unchanged card that only lacked its rows is measured and NOT
 		// re-photographed: another machine's Chromium re-encodes the same pixels
 		// a shade differently, and a re-shot here would churn a file per card.
@@ -812,8 +823,9 @@ async function main() {
 					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
 					'`script`, `art`, `scrim`, `layout` and `fonts` are the rest of what a card is ' +
 					'made from, read back by the skip so a change to any of them redraws. ' +
-					'`rows` (framed paintings only) is where each edition\'s white ink landed, ' +
-					'measured in the browser; the scrim tuner and the contrast gate read it.',
+					'`rows` and `middle` (framed paintings only) are where each edition\'s white ink ' +
+					'landed and the block its scrim band hangs off, measured in the browser; ' +
+					'the scrim tuner and the contrast gate read them.',
 				// THE COMPOSITION, so a change to it cannot ship without a redraw.
 				// This file's header used to say nothing but running it could catch a
 				// change to the drawing — true while the Python gate was the only one,

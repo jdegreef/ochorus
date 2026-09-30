@@ -327,7 +327,11 @@ def main() -> int:
         # it had reproduced it one level up.
         if not args.dry_run:
             if preview:
-                scrimmed(ground or Image.open(dest)).save(preview / f"{slug}.png")
+                # A centred cover's title block (y284-543) at full strength: a
+                # preview of the ground, not of any one edition's layout.
+                scrimmed(ground or Image.open(dest), 1.0, (284, 543), False).save(
+                    preview / f"{slug}.png"
+                )
             if _ensure_twin(slug, source):
                 twins += 1
         print(

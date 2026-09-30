@@ -679,82 +679,172 @@ class CuratedCoversSurviveForceTests(TestCase):
 
 
 class EditionInkRowTests(SimpleTestCase):
-    """The contrast gate measures where each edition's words actually fall —
-    `covers.painting_ink_rows` says why. These plant the failure it exists to
-    catch: a pale ground under a translated subtitle below the English strip.
+    """The scrim follows each edition's words, and the gate measures them there.
+
+    A translated title wraps longer and lands lower: on Brave for God the
+    Luganda and Swahili subtitles sat at y539-595, 20 of 26 editions set white
+    type on pale art, and a gate measuring the English rows passed. So the band
+    over the title block hangs off `.middle` (`covers.middle_band_alpha`), and
+    each edition is measured at its own lines under its own band
+    (`covers.painting_contrast`). These plant the failure it exists to catch.
     """
 
-    # Swahili Brave for God 2's subtitle lines, as the generator measured them.
-    LOW_SUBTITLE = {(137, 539, 463, 567), (141, 567, 459, 595)}
+    # Swahili Brave for God 2 as the generator measured it: its subtitle lines,
+    # and the `.middle` block the band hangs off.
+    LOW_SUBTITLE = [(137, 539, 463, 567), (141, 567, 459, 595)]
+    LOW_MIDDLE = (200, 595)
 
     def _ground(self):
-        """A dark painting with one pale stripe, under the translated subtitle
+        """A dark painting with one WHITE stripe, under the translated subtitle
         and clear of every fixed strip (subtitle 519-543, mark 664-747)."""
         from PIL import Image, ImageDraw
 
         from library.covers import H, W
 
         image = Image.new("RGB", (W, H), (20, 24, 30))
-        ImageDraw.Draw(image).rectangle([0, 560, W, 600], fill=(236, 232, 214))
+        ImageDraw.Draw(image).rectangle([0, 560, W, 600], fill=(255, 255, 255))
         return image
 
+    def _edition(self, key="sw/planted"):
+        return {
+            "key": key,
+            "rows": {"subtitle": self.LOW_SUBTITLE},
+            "middle": self.LOW_MIDDLE,
+            "subtitle": True,
+        }
+
     def test_a_pale_ground_under_a_long_translated_subtitle_fails(self):
-        from library.covers import AUTHOR_MIN_CONTRAST, ink_contrast, scrimmed
+        from library.covers import painting_contrast
 
-        plate = scrimmed(self._ground(), 0.3, True)
-        # The English strips alone see nothing wrong — the defect as it shipped.
-        english = ink_contrast(plate, "planted", True)
-        self.assertGreaterEqual(english["subtitle"][0], AUTHOR_MIN_CONTRAST)
-        # With the translation's own lines, the stripe under them is found.
-        got, bar = ink_contrast(plate, "planted", True, {"subtitle": self.LOW_SUBTITLE})[
-            "subtitle"
-        ]
+        # An English edition, its subtitle in the old strip: nothing wrong there.
+        english = {
+            "key": "planted",
+            "rows": {"subtitle": [(93, 519, 507, 543)]},
+            "middle": (284, 543),
+            "subtitle": True,
+        }
+        got, bar, _ = painting_contrast(self._ground(), 0.3, "planted", [english])["subtitle"]
+        self.assertGreaterEqual(got, bar)
+        # The translation's own lines lie over the stripe, and it is found.
+        got, bar, key = painting_contrast(
+            self._ground(), 0.3, "planted", [english, self._edition()]
+        )["subtitle"]
         self.assertLess(got, bar)
+        self.assertEqual(key, "sw/planted")
 
-    def test_rows_are_unioned_across_every_edition_wearing_the_painting(self):
-        from library.covers import painting_ink_rows
+    def test_the_band_goes_where_the_block_goes(self):
+        from library.covers import _BAND_SUBTITLE, middle_band_alpha
+
+        # At y580 the English block has ended and the band is fading; the
+        # Swahili block ends at 595, so y580 is under its subtitle's darkest foot.
+        self.assertLess(middle_band_alpha(580, (284, 543), True), 0.5)
+        self.assertAlmostEqual(middle_band_alpha(580, self.LOW_MIDDLE, True), _BAND_SUBTITLE)
+        # And nothing outside its shoulders.
+        self.assertEqual(middle_band_alpha(40, self.LOW_MIDDLE, True), 0.0)
+        self.assertEqual(middle_band_alpha(790, self.LOW_MIDDLE, True), 0.0)
+
+    def test_a_short_block_clamps_its_stops_as_a_browser_does(self):
+        # A one-line block is shorter than the subtitle foot's ramp: those stops
+        # fall before the top shoulder's last one, and CSS clamps a stop to the
+        # one before it rather than reordering. The foot therefore starts where
+        # the shoulder ends — which is what `middle_band_alpha` must say too.
+        from library.covers import _BAND_SUBTITLE, middle_band_alpha
+
+        self.assertAlmostEqual(middle_band_alpha(410, (400, 420), True), _BAND_SUBTITLE)
+        self.assertEqual(middle_band_alpha(399 - 72, (400, 420), True), 0.0)
+
+    def test_every_framed_edition_is_its_own_plate(self):
+        from library.covers import painting_editions
 
         books = [
             {"slug": "planted", "language": "en", "cover_url": "/covers/art/planted.jpg"},
             {"slug": "planted", "language": "sw", "cover_url": "/covers/art/planted.jpg"},
-            # A laid-out edition records no rows; a plate is not a painting.
+            # A laid-out edition records nothing; a plate is not a painting.
             {"slug": "planted", "language": "ar", "cover_url": "/covers/art/planted.jpg"},
             {"slug": "plated", "language": "en", "cover_url": "/covers/plated.svg"},
         ]
         manifest = {
             "twins": {
-                "planted": {"rows": {"subtitle": [[93, 519, 507, 543]]}},
-                "sw/planted": {"rows": {"subtitle": [list(b) for b in self.LOW_SUBTITLE]}},
+                "planted": {"rows": {"title": [[118, 306, 482, 369]]}, "middle": [306, 369]},
+                "sw/planted": {
+                    "rows": {"subtitle": [list(b) for b in self.LOW_SUBTITLE]},
+                    "middle": list(self.LOW_MIDDLE),
+                },
                 "ar/planted": {},
-                "plated": {"rows": {"subtitle": [[0, 700, 600, 800]]}},
+                "plated": {"rows": {"title": [[0, 700, 600, 800]]}, "middle": [700, 800]},
             }
         }
-        rows = painting_ink_rows(books, manifest)
-        self.assertEqual(list(rows), ["planted"])
+        editions = painting_editions(books, manifest)
+        self.assertEqual(list(editions), ["planted"])
         self.assertEqual(
-            rows["planted"]["subtitle"], {(93, 519, 507, 543), *self.LOW_SUBTITLE}
+            [(e["key"], e["middle"], e["subtitle"]) for e in editions["planted"]],
+            [("planted", (306, 369), False), ("sw/planted", self.LOW_MIDDLE, True)],
         )
 
-    def test_lines_inside_the_fixed_strips_change_nothing(self):
-        # A centred English cover whose lines sit inside the strips must measure
-        # exactly as it did — including the byline, whose line box rounds to
-        # 131 against the strip's 130.
+    def test_a_measured_edition_is_measured_at_its_lines(self):
         from library.covers import ink_boxes
 
-        inside = {
-            "byline": {(114, 102, 486, 131)},
-            "title": {(118, 306, 482, 369)},
-            "subtitle": {(93, 519, 507, 543)},
-            "mark": {(232, 664, 368, 746)},
+        boxes = {
+            name: [box for n, box, _o, _b in ink_boxes("planted", self._edition()["rows"]) if n == name]
+            for name in ("byline", "title", "subtitle", "mark")
         }
-        self.assertEqual(list(ink_boxes("planted", inside)), list(ink_boxes("planted")))
+        # Title and subtitle at its own lines only — the English strips are
+        # nowhere in particular on this cover, and no band is over them.
+        self.assertEqual(boxes["subtitle"], self.LOW_SUBTITLE)
+        self.assertEqual(boxes["title"], [])
+        # The byline and the mark never move, so their strips always count.
+        self.assertEqual(boxes["byline"], [(26, 102, 574, 130)])
+        self.assertEqual(boxes["mark"], [(26, 664, 574, 747)])
 
-    def test_a_line_outside_its_strip_is_measured_over_its_own_extent(self):
-        from library.covers import ink_boxes
 
-        boxes = [
-            box
-            for name, box, _o, _bar in ink_boxes("planted", {"subtitle": self.LOW_SUBTITLE})
-            if name == "subtitle"
-        ]
-        self.assertEqual(boxes, [(26, 519, 574, 543), *sorted(self.LOW_SUBTITLE)])
+class MiddleBandCssTests(SimpleTestCase):
+    """The band in `cover-type.css` is the band `covers.scrimmed` measures.
+
+    It is anchored to a box whose height varies, so both sides state it as the
+    same STOPS, and `middle_band_alpha` evaluates them as a browser does. This
+    compares the stylesheet with `middle_band_stops()` itself — not with a copy
+    of its arithmetic — so changing either side without the other fails here:
+    the contrast gate would otherwise go on measuring a band nobody ships.
+    """
+
+    CSS = Path(__file__).resolve().parents[2] / "frontend" / "src" / "lib" / "components" / "cover-type.css"
+
+    def _rule(self, selector):
+        css = self.CSS.read_text()
+        match = re.search(r"\n" + re.escape(selector) + r" \{(.*?)\n\}", css, re.S)
+        self.assertIsNotNone(match, f"{selector} is gone from cover-type.css")
+        return match.group(1)
+
+    def _stops(self, rule):
+        out = []
+        for alpha, pos in re.findall(r"rgb\(0 0 0 / ([\d.]+)\) ([^,\n]+?),?\n", rule):
+            if pos == "0":
+                out.append(("top", 0.0, float(alpha)))
+            elif pos == "100%":
+                out.append(("bottom", 0.0, float(alpha)))
+            elif m := re.fullmatch(r"calc\(100% - ([\d.]+)cqw\)", pos):
+                out.append(("bottom", float(m.group(1)), float(alpha)))
+            else:
+                out.append(("top", float(pos.removesuffix("cqw")), float(alpha)))
+        return out
+
+    def test_the_stylesheet_draws_the_stops_the_gate_measures(self):
+        from library.covers import middle_band_stops
+
+        base = ".cover-plate.over-art .cover-type .middle::after"
+        sub = ".cover-plate.over-art.has-subtitle .cover-type .middle::after"
+        for selector, subtitle in ((base, False), (sub, True)):
+            want = [(a, float(c), float(al)) for a, c, al in middle_band_stops(subtitle)]
+            self.assertEqual(self._stops(self._rule(selector)), want, selector)
+
+    def test_the_band_reaches_its_shoulders_and_the_plate_edges(self):
+        from library.covers import _BAND_FEATHER
+
+        rule = self._rule(".cover-plate.over-art .cover-type .middle::after")
+        self.assertIn(f"inset: -{_BAND_FEATHER}cqw calc(-1 * var(--type-pad-x));", rule)
+
+    def test_the_band_is_never_opaque(self):
+        from library.covers import middle_band_stops
+
+        for subtitle in (False, True):
+            self.assertLess(max(a for _p, _c, a in middle_band_stops(subtitle)), 0.9)
