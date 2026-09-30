@@ -124,7 +124,12 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-andrew-murray': null,
 	'key-teachings-of-hannah-whitall-smith': null,
 	'key-teachings-of-catherine-booth': null,
-	'key-teachings-of-augustine-of-hippo': null
+	'key-teachings-of-augustine-of-hippo': null,
+	'key-teachings-of-amanda-berry-smith': null,
+	'key-teachings-of-hudson-taylor': null,
+	'key-teachings-of-athanasius-of-alexandria': null,
+	'key-teachings-of-julia-foote': null,
+	'key-teachings-of-jeanne-guyon': null
 };
 
 /**
@@ -149,8 +154,39 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-andrew-murray',
 	'key-teachings-of-hannah-whitall-smith',
 	'key-teachings-of-catherine-booth',
-	'key-teachings-of-augustine-of-hippo'
+	'key-teachings-of-augustine-of-hippo',
+	'key-teachings-of-amanda-berry-smith',
+	'key-teachings-of-hudson-taylor',
+	'key-teachings-of-athanasius-of-alexandria',
+	'key-teachings-of-julia-foote',
+	'key-teachings-of-jeanne-guyon'
 ]);
+
+/**
+ * Framed books whose ground is PALE, so their type is set in dark ink with no
+ * scrim rather than white over one.
+ *
+ * The framed composition darkens the painting under its white type, which
+ * suits a picture with depth and turns a light one muddy. A book listed here
+ * keeps the framed layout — the frame, the ring, the subtitle, the mark — with
+ * the ink inverted (`.ink-dark` in `cover-type.css`). Its ground must be light
+ * where the words land: `covers.INK_DARK` mirrors this set so the backend
+ * gate measures dark ink there. Only meaningful framed: a layout sets its own
+ * ink on its own paper.
+ */
+export const INK_DARK: ReadonlySet<string> = new Set([
+	'daughters-of-the-king-1',
+	'daughters-of-the-king-2',
+	'daughters-of-the-king-3',
+	'sons-of-the-king-1',
+	'sons-of-the-king-2',
+	'sons-of-the-king-3'
+]);
+
+/** Is this painted book set in dark ink? Never under a layout. */
+export function inkDarkFor(bookSlug: string, layout: CoverLayout | null): boolean {
+	return !layout && INK_DARK.has(bookSlug);
+}
 
 /** Is this painted book's type set from the top? Never under a layout. */
 export function typeTopFor(bookSlug: string, layout: CoverLayout | null): boolean {
@@ -184,8 +220,10 @@ export function coverLayoutFor(
 	return found;
 }
 
-/** How the share-card manifest records a layout: `framed` (or `framed-top`
- *  when its type is set from the top), or `<layout>/<hue>`. */
-export function layoutKey(layout: CoverLayout | null, top = false): string {
-	return layout ? `${layout.layout}/${layout.hue}` : top ? 'framed-top' : 'framed';
+/** How the share-card manifest records a layout: `framed` (`framed-top` when
+ *  its type is set from the top, `framed-light` when it is set in dark ink), or
+ *  `<layout>/<hue>`. */
+export function layoutKey(layout: CoverLayout | null, top = false, dark = false): string {
+	if (layout) return `${layout.layout}/${layout.hue}`;
+	return top ? 'framed-top' : dark ? 'framed-light' : 'framed';
 }

@@ -122,7 +122,7 @@ import {
 import { coverPlateMarkup } from '../src/lib/coverCardMarkup.ts';
 import { coverTitle } from '../src/lib/coverTitle.ts';
 import { scrimStrength } from '../src/lib/coverScrim.ts';
-import { coverLayoutFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
+import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from '../src/lib/coverLayouts.ts';
 import { groundBar } from '../src/lib/groundBars.ts';
 import { coverStyleFor, scriptOf, volumeNumeral } from '../src/lib/coverStyles.ts';
 import { eraOf } from '../src/lib/eras.ts';
@@ -242,6 +242,8 @@ function needTwins() {
 		.map((b) => ({ ...b, bar: b.layout ? groundBar(b.cover) : 0 }))
 		// Framed type set from the top (the Key Teachings) — the component's call.
 		.map((b) => ({ ...b, top: b.art && typeTopFor(b.slug, b.layout) }))
+		// Dark ink over a pale ground (Sons and Daughters of the King).
+		.map((b) => ({ ...b, dark: b.art && inkDarkFor(b.slug, b.layout) }))
 		.filter((b) => hasTwin(b.cover));
 }
 
@@ -481,7 +483,8 @@ html,body{margin:0}
 			art: book.art,
 			scrim: book.scrim,
 			layout: book.layout,
-			top: book.top
+			top: book.top,
+			dark: book.dark
 		},
 		LOCKUP
 	)}
@@ -577,7 +580,7 @@ function made(book, groundBytes) {
 		script: scriptKey(book.script),
 		art: book.art,
 		scrim: book.scrim,
-		layout: layoutKey(book.layout, book.top),
+		layout: layoutKey(book.layout, book.top, book.dark),
 		bar: book.bar
 	};
 }

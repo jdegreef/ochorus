@@ -311,6 +311,11 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'key-teachings-of-hannah-whitall-smith': 'originals',
 	'key-teachings-of-catherine-booth': 'originals',
 	'key-teachings-of-augustine-of-hippo': 'originals',
+	'key-teachings-of-amanda-berry-smith': 'originals',
+	'key-teachings-of-hudson-taylor': 'originals',
+	'key-teachings-of-athanasius-of-alexandria': 'originals',
+	'key-teachings-of-julia-foote': 'originals',
+	'key-teachings-of-jeanne-guyon': 'originals',
 	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wears the
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.

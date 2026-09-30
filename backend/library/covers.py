@@ -313,6 +313,11 @@ TYPE_TOP = frozenset({
     "key-teachings-of-hannah-whitall-smith",
     "key-teachings-of-catherine-booth",
     "key-teachings-of-augustine-of-hippo",
+    "key-teachings-of-amanda-berry-smith",
+    "key-teachings-of-hudson-taylor",
+    "key-teachings-of-athanasius-of-alexandria",
+    "key-teachings-of-julia-foote",
+    "key-teachings-of-jeanne-guyon",
 })
 
 #: Where the ink sits on a TYPE_TOP cover, as (top, bottom, ink opacity, bar),
@@ -348,6 +353,40 @@ def ink_boxes(slug: str):
         x0, x1 = _MARK_X if top and name == "mark" else (_FRAME_INSET, W - _FRAME_INSET)
         yield name, (x0, y0, x1, y1), opacity, bar
 
+
+#: Framed works whose PALE ground takes DARK ink and no scrim:
+#: `coverLayouts.INK_DARK`, mirrored here so the gate measures the right ink.
+#: The scrim tuner skips them (there is no white type to carry), and the
+#: fixture gate holds their dark ink to the same bars instead.
+INK_DARK = frozenset({
+    "daughters-of-the-king-1",
+    "daughters-of-the-king-2",
+    "daughters-of-the-king-3",
+    "sons-of-the-king-1",
+    "sons-of-the-king-2",
+    "sons-of-the-king-3",
+})
+
+#: `--cover-ink-dark` in `cover-type.css`.
+DARK_INK = (0x23, 0x1A, 0x24)
+
+#: Where the dark ink sits on an INK_DARK cover, as (name, box, ink opacity,
+#: bar): the text column (the widest line any edition sets) by the union of
+#: every edition's rows, measured on the composed covers. The flowers that
+#: frame these grounds live in the side margins, outside the column.
+DARK_INK_BOXES = (
+    # Glyphs span x85-515 (the English "Growing Up" subtitle); the column holds
+    # 25px either side. Rows are the union over Daughters (en, am) and Sons
+    # (en), measured 2026-09-30, with a few px of margin. A new dark-ink work,
+    # or a translation whose title wraps longer, must be re-measured on its
+    # composed twin before it is trusted to this table.
+    ("byline", (60, 100, 540, 133), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
+    # The ring and its numeral; the ring line is the faintest ink (0.72).
+    ("volume", (266, 228, 334, 332), 0.72, 3.0),
+    ("title", (60, 316, 540, 456), 1.0, TITLE_MIN),
+    ("subtitle", (60, 474, 540, 566), 0.90, AUTHOR_MIN_CONTRAST),
+    ("mark", (232, 662, 368, 748), 0.95, 3.0),
+)
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
 # drift from the artwork it measures.
