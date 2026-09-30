@@ -155,7 +155,7 @@
 	     needed" reassurance. Save and Share sit quietly beneath. -->
 	{#if next !== null}
 		<div class="read-card">
-			<div class="min-w-0 flex-1">
+			<div class="read-card-body">
 				{#if started}
 					<p class="text-small text-muted">{progressLine}</p>
 				{:else}

@@ -580,7 +580,7 @@
 			     is a quiet link: it discards the place, so it shouldn't look like a
 			     second main action. -->
 			<div class="read-card mt-4" bind:this={readCard}>
-				<div class="min-w-0 flex-1">
+				<div class="read-card-body">
 					{#if finishedAt != null}
 						<p class="text-small text-muted">
 							{t('fav.shelfFinished')} · {new Date(finishedAt).toLocaleDateString(getLang(), {
