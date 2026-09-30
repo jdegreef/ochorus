@@ -9,23 +9,40 @@
  *
  * This mirrors adapter-static on Render instead:
  *   * `/x/`      → build/x/index.html
- *   * `/x`       → build/x/index.html (redirect-free; the app canonicalises
- *                  to the trailing slash itself, and the host resolves both)
+ *   * `/x`       → build/x.html (render.yaml's index-page rewrites, which match
+ *                  either slash form) — but NOT build/x/index.html: Render
+ *                  doesn't resolve a no-slash URL to a directory index, so
+ *                  production answers that with the 404 shell until the edge
+ *                  301 (docs/seo-edge-rules.md) catches it first
  *   * a real file → served with its content type
- *   * anything else → build/200.html with status 200 (the SPA fallback, which is
- *     why a missing page is a 200 carrying the app's own not-found UI)
+ *   * a client-only app route ($lib/shellRoutes, every locale) → build/200.html
+ *     with status 200 — render.yaml's per-locale rewrites
+ *   * anything else → build/404.html with status 404 (Render's not-found page:
+ *     the same SPA shell, so the app still renders its own not-found UI, but
+ *     the status is honest — see scripts/build-404.mjs)
  *
  * No dependencies on purpose: one fewer thing to keep pinned, and the routing
  * contract above is the thing under test, so it should be explicit here.
  */
 import { createServer } from 'node:http';
-import { createReadStream } from 'node:fs';
+import { createReadStream, readFileSync } from 'node:fs';
 import { stat } from 'node:fs/promises';
 import { extname, join, normalize, resolve } from 'node:path';
+import { isShellPath } from '../src/lib/shellRoutes.ts';
 
 const ROOT = resolve(process.argv[2] || 'build');
 const PORT = Number(process.env.PORT || process.argv[3] || 4173);
-const FALLBACK = join(ROOT, '200.html');
+const SHELL = join(ROOT, '200.html');
+const NOT_FOUND = join(ROOT, '404.html');
+const LOCALES = JSON.parse(
+	readFileSync(new URL('../project.inlang/settings.json', import.meta.url), 'utf8')
+).locales;
+
+/** The path with any UI-locale prefix removed, the way render.yaml repeats rules. */
+const unprefixed = (pathname) => {
+	const [, first, rest] = /^\/([^/]+)(.*)$/.exec(pathname) ?? [];
+	return first && LOCALES.includes(first) && first !== 'en' ? rest || '/' : pathname;
+};
 
 const TYPES = {
 	'.html': 'text/html; charset=utf-8',
@@ -63,7 +80,7 @@ async function resolveFile(pathname) {
 
 	if (await isFile(target)) return target;
 	const asIndex = join(target, 'index.html');
-	if (await isFile(asIndex)) return asIndex;
+	if (pathname.endsWith('/') && (await isFile(asIndex))) return asIndex;
 	const asHtml = `${target}.html`;
 	if (await isFile(asHtml)) return asHtml;
 	return null;
@@ -71,16 +88,15 @@ async function resolveFile(pathname) {
 
 createServer(async (req, res) => {
 	const { pathname } = new URL(req.url, `http://localhost:${PORT}`);
-	const file = (await resolveFile(pathname)) ?? FALLBACK;
-	// Always 200 — including the fallback. That is what a static host does with
-	// adapter-static's `fallback`, and it's why a missing page is a 200 carrying
-	// the app's own not-found UI rather than an HTTP 404.
-	res.writeHead(200, {
+	const found = await resolveFile(pathname);
+	const shell = !found && isShellPath(unprefixed(pathname));
+	const file = found ?? (shell ? SHELL : NOT_FOUND);
+	res.writeHead(found || shell ? 200 : 404, {
 		'content-type': TYPES[extname(file)] ?? 'application/octet-stream',
 		// Never cache in tests: a stale asset would make a fresh build look green.
 		'cache-control': 'no-store'
 	});
 	createReadStream(file).pipe(res);
 }).listen(PORT, () => {
-	console.log(`serving ${ROOT} on http://localhost:${PORT} (SPA fallback: 200.html)`);
+	console.log(`serving ${ROOT} on http://localhost:${PORT} (app routes: 200.html, else 404.html)`);
 });

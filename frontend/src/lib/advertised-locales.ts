@@ -45,3 +45,20 @@ export const UNADVERTISED_LOCALES = (locales as readonly string[]).filter(
 
 export const isAdvertised = (locale: string): boolean =>
 	(ADVERTISED_LOCALES as readonly string[]).includes(locale);
+
+export const UNADVERTISED_ROBOTS = '<meta name="robots" content="noindex, follow" />';
+
+/**
+ * `noindex` for every prerendered page in a UI locale that is not advertised,
+ * baked in at build time (hooks.server). Keeping such a locale out of the
+ * sitemap and hreflang was only half the gate: its pages still prerendered
+ * with self-canonicals and no robots directive, so a crawler that found one by
+ * a link could index it anyway — English fallback prose at a /hi/ URL, the
+ * exact thin page the gate exists to keep out. `follow`, so the links into the
+ * advertised editions still count. Pressing "Go live" lifts it on the next
+ * build. A page that already states its own robots directive is left alone.
+ */
+export function markUnadvertisedNoindex(html: string, locale: string): string {
+	if (isAdvertised(locale) || html.includes('<meta name="robots"')) return html;
+	return html.replace('</head>', `\t${UNADVERTISED_ROBOTS}\n\t</head>`);
+}

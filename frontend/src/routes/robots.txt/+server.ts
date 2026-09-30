@@ -16,10 +16,10 @@ export function GET() {
 		// The domain ran a WordPress site before this app, and Googlebot is
 		// still working through its corpse: /wp-content/ PDFs, /wp-includes/
 		// scripts and ?p= post ids make up nearly all of "Crawled - currently
-		// not indexed". None of it exists any more, every one of them answers
-		// 200 with the SPA shell (the /* -> /200.html catch-all), and each
-		// fetch is crawl budget NOT spent on the 1,890 chapter pages that are
-		// the actual reason this site should rank.
+		// not indexed". None of it exists any more (it answered 200 with the SPA
+		// shell until render.yaml dropped its catch-all; now a 404), and each
+		// fetch is crawl budget NOT spent on the chapter pages that are the
+		// actual reason this site should rank.
 		'Disallow: /wp-content/',
 		'Disallow: /wp-includes/',
 		'Disallow: /wp-admin/',

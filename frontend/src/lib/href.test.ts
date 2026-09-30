@@ -58,8 +58,16 @@ describe('withTrailingSlash', () => {
 		expect(withTrailingSlash('#era-early')).toBe('#era-early');
 	});
 
-	it('ignores paths deeper than the known shapes', () => {
-		expect(withTrailingSlash('/books/a/b/c')).toBe('/books/a/b/c');
+	it('slashes every other trailingSlash=always route — series, eras, quotes, scripture', () => {
+		// The book page's series link and the biographies era links used to miss
+		// the slash and land crawlers on the noindex shell.
+		expect(withTrailingSlash('/series/the-school-of-prayer')).toBe('/series/the-school-of-prayer/');
+		expect(withTrailingSlash('/es/series/x')).toBe('/es/series/x/');
+		expect(withTrailingSlash('/biographies/era/reformation')).toBe('/biographies/era/reformation/');
+		expect(withTrailingSlash('/quotes/charles-spurgeon/prayer')).toBe('/quotes/charles-spurgeon/prayer/');
+		expect(withTrailingSlash('/scripture/john/3/16')).toBe('/scripture/john/3/16/');
+		expect(withTrailingSlash('/articles')).toBe('/articles/');
+		expect(withTrailingSlash('/biographies/era')).toBe('/biographies/era');
 	});
 });
 
@@ -96,8 +104,16 @@ const LOCALE_PREFIX = locales.filter((l) => l !== 'en').join('|');
 // The terminator matters as much as the class, and makes this STRICTER than
 // what it replaces: `/sermons/slug?p=1` is genuinely bare and the old pattern
 // missed it, because it only ever looked for a closing quote.
+//
+// Every slashed route shape, not just the five detail sections: series, eras,
+// articles, quotes and scripture pages (and the slashed index pages) link to a
+// 404 now that the host has no 200 catch-all, so a bare link to one is as much
+// a bug as a bare book link. Mirrors isSlashedPath ($lib/canonicalRedirect).
 const BARE_DETAIL = new RegExp(
-	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:books|authors|topics|sermons|plans)/[^"/.?#]+(?:/[^"/.?#]+)?["?#]`,
+	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:` +
+		`(?:books|authors|topics|sermons|plans|series|articles|quotes|scripture|biographies/era)/[^"/.?#]+(?:/[^"/.?#]+){0,2}` +
+		`|articles|authors|originals|quotes|scripture|series` +
+		`)["?#]`,
 	'g'
 );
 

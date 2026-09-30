@@ -17,6 +17,7 @@
 import { describe, expect, it } from 'vitest';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { SHELL_ROUTES } from './shellRoutes';
 
 const REPO = join(process.cwd(), '..');
 const STATIC = join(process.cwd(), 'static');
@@ -62,7 +63,7 @@ describe('render.yaml routing rules', () => {
 		// would pass vacuously against an empty list.
 		expect(all.length).toBeGreaterThan(60);
 		expect(all.some((r) => r.type === 'redirect')).toBe(true);
-		expect(all.at(-1)).toMatchObject({ source: '/*', destination: '/200.html' });
+		expect(all.some((r) => r.destination === '/200.html')).toBe(true);
 	});
 
 	it('has no rule that redirects a path to itself', () => {
@@ -169,9 +170,24 @@ describe('render.yaml routing rules', () => {
 		expect(broken).toEqual([]);
 	});
 
-	it('keeps the SPA catch-all last', () => {
-		// It matches everything. Any rule after it is unreachable.
-		const idx = all.findIndex((r) => r.source === '/*');
-		expect(idx).toBe(all.length - 1);
+	it('has no catch-all, so a missing page answers 404', () => {
+		// A wildcard or placeholder rewrite turns every miss under it into a 200 —
+		// the soft-404 pile this file used to create (`/* -> /200.html`). Misses
+		// belong to Render's /404.html (scripts/build-404.mjs). The only patterns,
+		// and the only rules onto the 200 shell, are the client-only app routes
+		// in each locale ($lib/shellRoutes), so anything else here is a leak.
+		const locales: string[] = JSON.parse(
+			readFileSync(join(process.cwd(), 'project.inlang', 'settings.json'), 'utf-8')
+		).locales;
+		const shell = new Set(
+			locales.flatMap((l) => SHELL_ROUTES.map((r) => `${l === 'en' ? '' : `/${l}`}${r}`))
+		);
+		const leaks = all.filter(
+			(r) =>
+				r.type === 'rewrite' &&
+				(/[*:]/.test(r.source) || r.destination === '/200.html') &&
+				!shell.has(r.source)
+		);
+		expect(leaks.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`)).toEqual([]);
 	});
 });

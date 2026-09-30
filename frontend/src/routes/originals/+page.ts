@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 
 export const prerender = true;
 // Prerenders to originals/index.html; `localizeHref` emits the slash form
-// (SLASHED_PAGES in $lib/href), so every locale's copy is served without a
+// (isSlashedPath in $lib/canonicalRedirect), so every locale's copy is served without a
 // Render rewrite. The crawler reaches /<locale>/originals/ from the footer.
 export const trailingSlash = 'always';
 
