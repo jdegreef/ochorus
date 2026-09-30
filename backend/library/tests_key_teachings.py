@@ -24,16 +24,10 @@ class BuildKeyTeachingsMatchesFixtureTests(SimpleTestCase):
                 path = BOOKS_DIR / f"{slug}.en.json"
                 book = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
                 self.assertEqual(book["cover_url"], work.cover_url)
-                # A Markdown work carries its copy in the manuscript's front
-                # matter; resolve it the way the command does.
-                meta = {}
-                if work.source.endswith(".md"):
-                    meta, _ = manuscript(
-                        (DATA_DIR / work.source).read_text(encoding="utf-8")
-                    )
-                for field in (
-                    "title", "subtitle", "description", "attribution",
-                    "about_html", "cover_color",
-                ):
-                    expected = getattr(work, field) or meta.get(field, "")
-                    self.assertEqual(book[field], expected, field)
+                # Every work carries its reader-visible copy in the manuscript's
+                # front matter; resolve it the way the command does.
+                meta, _ = manuscript((DATA_DIR / work.source).read_text(encoding="utf-8"))
+                for field in ("title", "subtitle", "attribution", "cover_color"):
+                    self.assertEqual(book[field], getattr(work, field), field)
+                for field in ("description", "about_html"):
+                    self.assertEqual(book[field], meta.get(field, ""), field)
