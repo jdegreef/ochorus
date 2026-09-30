@@ -473,8 +473,8 @@ AUTHOR_MILESTONES: dict[str, list[dict]] = {
     ],
     "julia-foote": [
         {"year": 1823, "label": "Born", "key": True},
-        {"year": 1836, "label": "Married"},
         {"year": 1878, "label": "Lodi meeting", "key": True},
+        {"year": 1879, "label": "Memoir"},
         {"year": 1900, "label": "Died", "key": True},
     ],
     "mary-slessor": [
