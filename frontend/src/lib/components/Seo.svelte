@@ -1,5 +1,6 @@
 <script lang="ts">
-	import type { Hreflang } from '$lib/seo';
+	import { OG_LOCALES, fitTitle, truncateMeta, type Hreflang } from '$lib/seo';
+	import { getLocale } from '$lib/paraglide/runtime';
 	import { SITE_URL } from '$lib/config';
 
 	// Site-wide social-card fallback. Pages with their own art (a book cover, a
@@ -61,11 +62,26 @@
 	const card = $derived(ogImage || DEFAULT_OG);
 	const cardWidth = $derived(ogImage ? ogImageWidth : 1200);
 	const cardHeight = $derived(ogImage ? ogImageHeight : 630);
+
+	// Every page's description, sized for the result: routes that hand over a
+	// raw blurb (a plan, a topic, a series, a quote theme) were shipping 300+
+	// characters that the result cut mid-word. Idempotent on text that fits.
+	const meta = $derived(truncateMeta(description));
+
+	// og:locale for this page's language, and og:locale:alternate for the other
+	// editions its hreflang names — the share-card twin of hreflang.
+	const ogLocale = $derived(OG_LOCALES[getLocale()]);
+	const ogAlternates = $derived(
+		(hreflang?.alternates ?? [])
+			.map((a) => OG_LOCALES[a.loc])
+			.filter((l) => l && l !== ogLocale)
+	);
 </script>
 
 <svelte:head>
-	<title>{title}</title>
-	<meta name="description" content={description} />
+	<!-- The brand gives way on a long title; og/twitter keep the full one. -->
+	<title>{fitTitle(title)}</title>
+	<meta name="description" content={meta} />
 	<link rel="canonical" href={canonical} />
 	{#if hreflang}
 		{#each hreflang.alternates as a (a.loc)}
@@ -79,7 +95,13 @@
 	<meta property="og:site_name" content="Ochorus" />
 	<meta property="og:type" content={ogType} />
 	<meta property="og:title" content={ogTitle} />
-	<meta property="og:description" content={description} />
+	<meta property="og:description" content={meta} />
+	{#if ogLocale}
+		<meta property="og:locale" content={ogLocale} />
+	{/if}
+	{#each ogAlternates as l (l)}
+		<meta property="og:locale:alternate" content={l} />
+	{/each}
 	<meta property="og:url" content={canonical} />
 	<meta property="og:image" content={card} />
 	{#if ogImageAlt}
@@ -95,7 +117,7 @@
 	     Explicit twitter:image rather than leaning on the og:image fallback:
 	     stated, it's the value some scrapers key on. -->
 	<meta name="twitter:title" content={ogTitle} />
-	<meta name="twitter:description" content={description} />
+	<meta name="twitter:description" content={meta} />
 	<meta name="twitter:image" content={card} />
 	{#if ogImageAlt}
 		<meta name="twitter:image:alt" content={ogImageAlt} />

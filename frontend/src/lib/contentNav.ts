@@ -56,7 +56,7 @@ export const ENGLISH_HUBS: HubDest[] = [
  *  slot (the Books page's rail and count link are its way in there), but every
  *  locale's footer Explore group and the palette offer it right after the
  *  primary five: a series is translated content, so each locale has its own
- *  index. The trailing slash is added by `localizeHref` (href.ts SLASHED_PAGES). */
+ *  index. The trailing slash is added by `localizeHref` ($lib/canonicalRedirect isSlashedPath). */
 export const SERIES_DEST: HubDest = { href: '/series', labelKey: 'nav.series' };
 
 /** Ochorus Originals — the house imprint's shelf. Not an English-only hub: its
@@ -68,5 +68,5 @@ export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.or
 /** Authors & Books A–Z — the one page linking every writer and every book in
  *  a language ($lib/authorIndex), so the whole library is two clicks from any
  *  page. Every locale's footer Explore group and the palette offer it after
- *  Book Series. The trailing slash comes from `localizeHref` (SLASHED_PAGES). */
+ *  Book Series. The trailing slash comes from `localizeHref` (isSlashedPath). */
 export const AZ_INDEX_DEST: HubDest = { href: '/authors', labelKey: 'nav.azIndex' };

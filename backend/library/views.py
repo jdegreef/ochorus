@@ -1378,22 +1378,27 @@ class QuoteTopicsView(APIView):
     """
 
     def get(self, request):
-        from django.db.models import Count, Q
+        from django.db.models import Count, Max, Q
 
         from .models import QuoteTopic
 
+        reviewed = Q(quotes__reviewed=True)
         rows = (
             QuoteTopic.objects.annotate(
-                n=Count("quotes", filter=Q(quotes__reviewed=True), distinct=True)
+                n=Count("quotes", filter=reviewed, distinct=True),
+                # The sitemap's <lastmod>: when the newest quotation on the page
+                # was added. A lower bound (an approval or re-tag has no date of
+                # its own), which is the direction a lastmod may safely err.
+                updated=Max("quotes__created_at", filter=reviewed),
             )
             .filter(n__gte=QUOTE_TOPIC_MIN)
             .order_by("sort_order", "title")
-            .values("slug", "title", "blurb", "n")
+            .values("slug", "title", "blurb", "n", "updated")
         )
         return Response(
             [
                 {"slug": r["slug"], "title": r["title"],
-                 "blurb": r["blurb"], "count": r["n"]}
+                 "blurb": r["blurb"], "count": r["n"], "updated_at": r["updated"]}
                 for r in rows
             ]
         )
@@ -1408,7 +1413,7 @@ class QuoteTopicPagesView(APIView):
     """
 
     def get(self, request):
-        from django.db.models import Count, Q
+        from django.db.models import Count, Max, Q
 
         from .models import Quote, QuoteTopic
 
@@ -1427,12 +1432,14 @@ class QuoteTopicPagesView(APIView):
         rows = (
             Quote.objects.filter(reviewed=True, topics__isnull=False)
             .values("author__slug", "topics__slug")
-            .annotate(n=Count("id"))
+            # `updated_at` — the newest quotation's date, as for QuoteTopicsView.
+            .annotate(n=Count("id"), updated=Max("created_at"))
             .filter(n__gte=QUOTE_AUTHOR_TOPIC_MIN)
         )
         return Response(
             [
-                {"author": r["author__slug"], "topic": r["topics__slug"]}
+                {"author": r["author__slug"], "topic": r["topics__slug"],
+                 "updated_at": r["updated"]}
                 for r in rows
                 if r["topics__slug"] in qualifying
             ]
@@ -1447,7 +1454,7 @@ class QuoteAuthorsView(APIView):
     """
 
     def get(self, request):
-        from django.db.models import Count, Q
+        from django.db.models import Count, Max, Q
 
         from .models import Author, Quote
 
@@ -1458,11 +1465,13 @@ class QuoteAuthorsView(APIView):
         # blank for authors with no free image; the card falls back to initials.
         rows = (
             Author.objects.annotate(
-                n=Count("quotes", filter=Q(quotes__reviewed=True))
+                n=Count("quotes", filter=Q(quotes__reviewed=True)),
+                # `updated_at` — the newest quotation's date, as for QuoteTopicsView.
+                updated=Max("quotes__created_at", filter=Q(quotes__reviewed=True)),
             )
             .filter(n__gt=0)
             .order_by("name")
-            .values("id", "slug", "name", "birth_year", "photo_url", "n")
+            .values("id", "slug", "name", "birth_year", "photo_url", "n", "updated")
         )
 
         # A teaser line and a "works" count per author, so the index card is
@@ -1492,7 +1501,8 @@ class QuoteAuthorsView(APIView):
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
                  "count": r["n"], "teaser": teaser.get(r["id"], ""),
-                 "work_count": len(works.get(r["id"], ()))}
+                 "work_count": len(works.get(r["id"], ())),
+                 "updated_at": r["updated"]}
                 for r in rows
             ]
         )

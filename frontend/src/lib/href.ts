@@ -1,13 +1,13 @@
-import { localizeHref as paraglideLocalizeHref, locales } from '$lib/paraglide/runtime';
+import { localizeHref as paraglideLocalizeHref } from '$lib/paraglide/runtime';
+import { isSlashedPath } from '$lib/canonicalRedirect';
 
 /**
  * Trailing-slash-correct link building.
  *
- * The site is a STATIC bundle (adapter-static, `fallback: '200.html'`), and the
- * six detail routes below export `trailingSlash = 'always'`, so each prerenders
- * to `<slug>/index.html`. Render serves that file for the slash URL, but the
- * NON-slash URL matches no file and falls through to the `/* -> /200.html` SPA
- * catch-all — an empty shell with no title, no content and no canonical.
+ * The site is a STATIC bundle (adapter-static), and the detail routes export
+ * `trailingSlash = 'always'`, so each prerenders to `<slug>/index.html`. Render
+ * serves that file for the slash URL, but the NON-slash URL matches no file and
+ * gets the SPA shell — no title, no content and no canonical.
  *
  * So the two forms of a detail URL serve completely different documents:
  *
@@ -18,47 +18,27 @@ import { localizeHref as paraglideLocalizeHref, locales } from '$lib/paraglide/r
  * the site's own links only ever saw shells. Routing link construction through
  * here fixes that at the source: links, hreflang alternates and JSON-LD URLs
  * all go through `localizeHref`, so they are corrected in one place and new
- * links get it right by default. A Render-level 301 (see render.yaml) is the
+ * links get it right by default. The edge 301 in docs/seo-edge-rules.md is the
  * safety net for URLs already in search indexes.
  *
- * Only these six shapes (plus the few `SLASHED_PAGES`) are touched. Index pages (`/books`) resolve either way
- * via explicit Render rewrites, and client-only routes (`/admin`, `/settings`)
- * are never crawled — widening the rule would churn them for no gain.
+ * Which paths get the slash is `isSlashedPath` — the same rule the canonical
+ * redirect uses, kept to "every route that exports `trailingSlash = 'always'`"
+ * and pinned to the route tree by `canonicalRedirect.test.ts`. This used to be
+ * its own narrower list, which missed `/series/<slug>` and
+ * `/biographies/era/<era>`: the book page's series link and the era links sent
+ * crawlers to the noindex shell. Index pages (`/books`) resolve via explicit
+ * Render rewrites and client-only routes (`/admin`) are not slashed routes, so
+ * both are left alone.
  */
-const DETAIL_SECTIONS = new Set(['books', 'authors', 'topics', 'sermons', 'plans']);
 
-/** Single-segment pages that also prerender to `<page>/index.html` (their
- * route exports `trailingSlash = 'always'`) and are localized, so their links
- * go through here too rather than relying on a Render rewrite per locale. */
-const SLASHED_PAGES = new Set(['originals', 'series', 'authors']);
-
-/** Append the trailing slash to a detail-page path, preserving ?query and #hash. */
+/** Append the trailing slash to a slashed-route path, preserving ?query and #hash. */
 export function withTrailingSlash(href: string): string {
 	// Only app-internal paths; leave external URLs, mailto:, and #anchors alone.
 	if (!href.startsWith('/')) return href;
 
 	const [, path, rest] = /^([^?#]*)([?#].*)?$/.exec(href) as RegExpExecArray;
 	if (!path || path.endsWith('/')) return href;
-
-	const segments = path.split('/').filter(Boolean);
-	// A localized link is prefixed with its locale (/es/books/...); ignore it
-	// when matching the shape, but keep it in the emitted path.
-	const body = locales.includes(segments[0] as (typeof locales)[number])
-		? segments.slice(1)
-		: segments;
-
-	if (body.length === 1 && SLASHED_PAGES.has(body[0])) return `${path}/${rest ?? ''}`;
-	// `/books/<slug>` and `/books/<slug>/<chapter>` — nothing shallower (that is
-	// an index page) and nothing deeper.
-	if (body.length < 2 || body.length > 3) return href;
-	if (!DETAIL_SECTIONS.has(body[0])) return href;
-	// A real file extension means an asset, not a page. Matching a genuine
-	// extension rather than any dot keeps a dotted slug working: slugs are
-	// SlugFields so one cannot occur today, but `includes('.')` would fail OPEN
-	// (silently emitting the shell URL) if that ever changed.
-	if (/\.[a-z0-9]{2,5}$/i.test(body[body.length - 1])) return href;
-
-	return `${path}/${rest ?? ''}`;
+	return isSlashedPath(path) ? `${path}/${rest ?? ''}` : href;
 }
 
 /**

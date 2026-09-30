@@ -230,7 +230,7 @@ def qualifying_pages() -> list[dict]:
     exactly how a sitemap ends up promising pages that render `noindex`.
     """
     by_verse, by_chapter = _tally()
-    pages: list[dict] = []
+    found: list[tuple[dict, set[int]]] = []
     for key, cids in by_chapter.items():
         if len(cids) < CHAPTER_FLOOR:
             continue
@@ -241,14 +241,32 @@ def qualifying_pages() -> list[dict]:
         # doesn't carry (the apocrypha) can be cited but cannot be rendered.
         if not verse_text(key * 1000 + 1):
             continue
-        pages.append({**page, "citing_count": len(cids)})
+        found.append((page, cids))
     for vid, cids in by_verse.items():
         if len(cids) < VERSE_FLOOR:
             continue
         page = _page(vid, verse=True)
         if page is None or not verse_text(vid):
             continue
-        pages.append({**page, "citing_count": len(cids)})
+        found.append((page, cids))
+    # `updated_at` — the sitemap's <lastmod>: the newest edit among the books
+    # whose chapters the page quotes. A page is its citing passages, so that is
+    # when it last changed in substance; a new citation of an unedited book is
+    # missed, which understates (the safe direction, as for topic shelves).
+    # One query for every citing chapter, never one per page.
+    stamps = dict(
+        Chapter.objects.filter(id__in=set().union(*(c for _, c in found))).values_list(
+            "id", "book__updated_at"
+        )
+    )
+    pages = [
+        {
+            **page,
+            "citing_count": len(cids),
+            "updated_at": max((stamps[c] for c in cids if c in stamps), default=None),
+        }
+        for page, cids in found
+    ]
     pages.sort(key=lambda p: (p["book_order"], p["chapter"], p["verse"] or 0))
     return pages
 

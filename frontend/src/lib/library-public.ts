@@ -217,6 +217,14 @@ export interface BookSeries {
 
 export interface BookDetail extends BookSummary {
 	description: string;
+	/** A hand-written search snippet (~90–125 chars), or "" when none has been
+	 *  written for this edition — the page then trims `description` instead.
+	 *  Optional: an API behind this build omits it. */
+	meta_description?: string;
+	/** Whether the page may mark this edition public domain in its JSON-LD —
+	 *  decided by the API from the rights note and the author's dates
+	 *  (library/rights). Optional: absent means no claim. */
+	public_domain?: boolean;
 	source_url: string;
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
@@ -345,6 +353,8 @@ export interface Chapter {
 	 * Optional: a chapter page prerendered before the API served the field
 	 * bakes it absent, and an absent value must read as "not translated". */
 	source_type?: SourceType;
+	/** The book's rights, as `BookDetail.public_domain`. */
+	public_domain?: boolean;
 	/** This chapter belongs to the Modern English edition. */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */
@@ -571,6 +581,9 @@ export interface Sermon extends SermonSummary {
 	author_name: string;
 	author_slug: string;
 	author_photo: string;
+	/** The preacher's entity identifiers (Wikidata, Wikipedia…) for JSON-LD
+	 *  `sameAs`. Optional: an API behind this build omits it. */
+	author_same_as?: string[];
 	/** Previous / next sermon by the same author (shelf order); null at the ends. */
 	prev: SermonNeighbour | null;
 	next: SermonNeighbour | null;
@@ -1289,6 +1302,9 @@ export interface ScripturePageEntry {
 	/** null for a whole-Bible-chapter page. */
 	verse: number | null;
 	citing_count: number;
+	/** Newest edit among the books the page quotes — the sitemap's <lastmod>.
+	 *  Optional: an API behind this build omits it. */
+	updated_at?: string | null;
 }
 
 /** A library passage that cites the reference this page is about. */
@@ -1456,6 +1472,9 @@ export interface QuoteAuthorSummary {
 	teaser: string;
 	/** Distinct works (books + sermons) the author is quoted from. */
 	work_count: number;
+	/** When the newest reviewed quotation was added — the sitemap's <lastmod>.
+	 *  Optional: an API behind this build omits it. */
+	updated_at?: string | null;
 }
 
 export const listQuoteAuthors = (f?: Fetch) =>
@@ -1549,6 +1568,8 @@ export interface QuoteTopicSummary {
 	title: string;
 	blurb: string;
 	count: number;
+	/** As `QuoteAuthorSummary.updated_at`. */
+	updated_at?: string | null;
 }
 
 /** The theme's own furniture — heading, blurb and Scripture epigraph. */
@@ -1592,7 +1613,9 @@ export const getQuoteTopicPage = (topic: string, f?: Fetch) =>
 
 /** Every (author, theme) pair deep enough to earn a page — the prerender list. */
 export const listQuoteTopicPages = () =>
-	apiFetch<{ author: string; topic: string }[]>('/api/library/quote-topics/pages/');
+	apiFetch<{ author: string; topic: string; updated_at?: string | null }[]>(
+		'/api/library/quote-topics/pages/'
+	);
 
 export const getQuoteAuthorTopicPage = (author: string, topic: string, f?: Fetch) =>
 	apiFetch<QuoteAuthorTopicPage>(`/api/library/quotes/${author}/${topic}/`, {}, f);

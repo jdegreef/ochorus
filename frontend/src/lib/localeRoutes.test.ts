@@ -68,6 +68,9 @@ describe('render.yaml locale routes', () => {
 		for (const l of LOCALES) {
 			const re = new RegExp(`source: /${l}(/[a-z-]+)?\\n\\s*destination: (/[^\\n]+)`, 'g');
 			for (const m of RENDER_YAML.matchAll(re)) {
+				// The client-only app routes share the one SPA shell; that only those
+				// rules point at it is pinned in renderRoutes.test.ts.
+				if (m[2] === '/200.html') continue;
 				expect(m[2], `source /${l}${m[1] ?? ''}`).toMatch(new RegExp(`^/${l}[./]`));
 			}
 		}

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { truncateMeta } from './seo';
+import { TITLE_BUDGET, fitTitle, truncateMeta } from './seo';
 
 describe('truncateMeta', () => {
 	it('returns short text unchanged', () => {
@@ -31,5 +31,22 @@ describe('truncateMeta', () => {
 		// The only '. ' is at index 3, far below max*0.6, so it must fall through
 		// to a word/ellipsis cut instead of collapsing to "One."
 		expect(truncateMeta(text, 160)).not.toBe('One.');
+	});
+});
+
+describe('fitTitle', () => {
+	it('keeps a title that fits, brand and all', () => {
+		expect(fitTitle('Humility by Andrew Murray — Ochorus')).toBe('Humility by Andrew Murray — Ochorus');
+	});
+
+	it('drops only the brand from a title past the budget', () => {
+		const long = 'The Secret of Adoration — Humility by Andrew Murray — Ochorus';
+		expect(long.length).toBeGreaterThan(TITLE_BUDGET);
+		expect(fitTitle(long)).toBe('The Secret of Adoration — Humility by Andrew Murray');
+	});
+
+	it('never cuts the words in front of the brand', () => {
+		const long = 'A Very Long Book Title That Runs On And On by Some Author — read free online';
+		expect(fitTitle(long)).toBe(long);
 	});
 });

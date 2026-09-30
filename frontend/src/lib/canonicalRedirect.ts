@@ -25,10 +25,12 @@ const SLASHED_SECTIONS = new Set([
 
 /**
  * Whether a path (locale prefix and all) belongs to a route that prerenders to
- * `<path>/index.html` — i.e. exports `trailingSlash = 'always'`. Kept to that
- * rule, not to `$lib/href`'s narrower link-builder list: any such route's
- * no-slash URL is a shell duplicate. `canonicalRedirect.test.ts` walks the
- * route tree so a new slashed route can't be missed.
+ * `<path>/index.html` — i.e. exports `trailingSlash = 'always'`. Any such
+ * route's no-slash URL has no file behind it. The one rule behind the link
+ * builder (`$lib/href`), this redirect and the Cloudflare 301
+ * (docs/seo-edge-rules.md, pinned by edgeRules.test.ts);
+ * `canonicalRedirect.test.ts` walks the route tree so a new slashed route
+ * can't be missed.
  */
 export function isSlashedPath(path: string): boolean {
 	const segments = path.split('/').filter(Boolean);
@@ -50,14 +52,18 @@ export function isSlashedPath(path: string): boolean {
  * no-slash rule would loop, and it cannot tell hosts apart):
  *
  *   * `/books/<slug>` — the no-slash twin of a prerendered page. It matches no
- *     file and gets the 200.html shell, which is `noindex`
- *     ($lib/fallbackShell). Links and old index entries still point at it.
+ *     file and gets the 404.html shell (`noindex`, $lib/fallbackShell) unless
+ *     the edge 301 in docs/seo-edge-rules.md catches it first. Old index
+ *     entries and backlinks still point at it.
  *   * `ochorus-web.onrender.com/...` — the production service's default host.
  *
  * Google treats a JavaScript `location.replace` as a redirect and consolidates
  * the signals onto the target, which a `noindex` alone does not do: the equity
- * of a link to the duplicate would otherwise be dropped with it. Run before
- * hydration (hooks.client `init`), so a reader only ever sees the real page.
+ * of a link to the duplicate would otherwise be dropped with it. A crawler
+ * does not render a 404, though, so for search engines the real fix is the
+ * edge 301; this remains the reader's path (and local/preview hosts'). Run
+ * before hydration (hooks.client `init`), so a reader only ever sees the real
+ * page.
  */
 export function canonicalRedirect(
 	loc: { hostname: string; pathname: string; search: string; hash: string },

@@ -1,9 +1,11 @@
 /**
  * `noindex` for the SPA fallback shell, baked in at build time.
  *
- * The static host answers every path with no prerendered file with `200.html`
- * (render.yaml's `/* -> /200.html` catch-all): typo'd slugs, dead WordPress
- * URLs, out-of-range chapters, the no-slash twin of every detail page. Every
+ * The static host answers the client-only app routes with `200.html`, and
+ * every other path with no prerendered file with a byte copy of it, `404.html`
+ * (scripts/build-404.mjs): typo'd slugs, dead WordPress URLs, out-of-range
+ * chapters, the no-slash twin of every detail page. That copy now carries a
+ * real 404 status; this directive is the belt to its braces. Every
  * page meant to be indexed is PRERENDERED to its own file and never loads this
  * shell, so nothing the shell serves is a page we want in the index — yet it
  * answered 200 with no robots directive in the HTML, and the only `noindex` was

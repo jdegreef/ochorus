@@ -5,7 +5,7 @@ import { ERAS, eraOf } from '$lib/eras';
 import type { PageLoad } from './$types';
 
 // Prerenders to authors/index.html, which the static host serves natively for
-// /authors/ — no Render rewrite needed ($lib/href SLASHED_PAGES).
+// /authors/ — no Render rewrite needed ($lib/canonicalRedirect isSlashedPath).
 export const trailingSlash = 'always';
 
 /**

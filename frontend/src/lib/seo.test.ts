@@ -240,3 +240,25 @@ describe('hreflangExact', () => {
 		expect(hreflangExact('/authors/x/', ['not-a-locale'])).toBeNull();
 	});
 });
+
+describe('site entity and locale helpers', () => {
+	it('names one publisher node, with a logo, by a stable @id', async () => {
+		const { publisherLd, ORG_ID } = await import('./seo');
+		const a = publisherLd();
+		expect(a['@id']).toBe(ORG_ID);
+		expect(a.logo.url).toMatch(/\/icons\/icon-512\.png$/);
+		expect(publisherLd()).toEqual(a);
+	});
+
+	it('has an og:locale for every UI locale', async () => {
+		const { OG_LOCALES } = await import('./seo');
+		const { locales } = await import('$lib/paraglide/runtime');
+		for (const l of locales) expect(OG_LOCALES[l], l).toMatch(/^[a-z]{2}_[A-Z]{2}$/);
+	});
+
+	it('derives book and person ids from the page URL', async () => {
+		const { bookId, personId } = await import('./seo');
+		expect(bookId('https://x/books/humility/')).toBe('https://x/books/humility/#book');
+		expect(personId('https://x/authors/andrew-murray/')).toBe('https://x/authors/andrew-murray/#person');
+	});
+});

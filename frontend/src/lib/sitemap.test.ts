@@ -99,6 +99,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	quotes: [],
 	articles: [],
 	chapters: [],
+	openings: [],
 	...over
 });
 
@@ -192,6 +193,15 @@ describe('sections', () => {
 		// per-type children below, so no `chapters-<locale>` child — for any
 		// locale — is enumerated, prerendered, or submitted to Google.
 		expect(sections().some((s) => s.startsWith('chapters-'))).toBe(false);
+	});
+
+	it('advertises only each edition’s opening chapter, in one chapters child', () => {
+		// The one chapter per book that came back (see sections()): not the full
+		// per-locale set, which stays unlisted.
+		expect(sections()).toContain('chapters');
+		const d = data({ chapters: [chapter, entry({ en: '/books/humility/2/' })], openings: [chapter] });
+		expect(sectionEntries(d, 'chapters')).toEqual([chapter]);
+		expect(sectionLocale('chapters')).toBeUndefined();
 	});
 
 	// The per-locale chapter machinery is kept INTACT so a restore is one line

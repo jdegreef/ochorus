@@ -4,7 +4,7 @@
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { localizeHref } from '$lib/href';
 	import { portraitSrcset } from '$lib/portraits';
-	import { absUrl, jsonLd, breadcrumbLd } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, publisherLd } from '$lib/seo';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 	import { shareCard, shareImage } from '$lib/coverArt';
@@ -144,8 +144,8 @@
 			dateModified: article.updated_at || undefined,
 			// There is no per-article author FK (see the backend model); the house
 			// name stands as the organizational author, mirroring the publisher.
-			author: { '@type': 'Organization', name: 'Ochorus' },
-			publisher: { '@type': 'Organization', name: 'Ochorus' }
+			author: publisherLd(),
+			publisher: publisherLd()
 		})
 	);
 	// One crumb trail feeds both the visible <Breadcrumb> and the JSON-LD, so the

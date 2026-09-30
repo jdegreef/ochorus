@@ -2,13 +2,15 @@ import type { Handle, HandleFetch } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { createBuildFetch } from '$lib/buildFetch';
 import { markFallbackNoindex } from '$lib/fallbackShell';
+import { markUnadvertisedNoindex } from '$lib/advertised-locales';
 import { API_BASE_URL } from '$lib/config';
 import { paraglideMiddleware } from '$lib/paraglide/server';
 import { getTextDirection } from '$lib/paraglide/runtime';
 
 // Runs during prerendering: sets the request-scoped locale (from the URL) and
 // writes the correct <html lang="…" dir="…"> into each localized static page,
-// and marks the 200.html fallback shell noindex ($lib/fallbackShell).
+// marks the 200.html fallback shell noindex ($lib/fallbackShell), and every
+// page of a locale that isn't live yet ($lib/advertised-locales).
 //
 // `dir` has to be baked in here, not only set on hydration. The root layout does
 // keep it in sync on client navigation, but this is a PRERENDERED site: without
@@ -21,12 +23,16 @@ export const handle: Handle = ({ event, resolve }) =>
 		event.request = request;
 		return resolve(event, {
 			transformPageChunk: ({ html }) =>
-				markFallbackNoindex(
-					html
-						.replace('%paraglide.lang%', locale)
-						.replace('%paraglide.dir%', getTextDirection(locale)),
-					// The 200.html shell answers every unbuilt path — see fallbackShell.
-					event.url.pathname
+				markUnadvertisedNoindex(
+					markFallbackNoindex(
+						html
+							.replace('%paraglide.lang%', locale)
+							.replace('%paraglide.dir%', getTextDirection(locale)),
+						// The 200/404 shell answers every unbuilt path — see fallbackShell.
+						event.url.pathname
+					),
+					// A locale not yet live is prerendered but kept out of the index.
+					locale
 				)
 		});
 	});

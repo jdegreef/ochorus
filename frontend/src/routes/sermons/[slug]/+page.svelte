@@ -27,17 +27,10 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import {
-		absUrl,
-		jsonLd,
-		breadcrumbLd,
-		truncateMeta,
-		stripHtml,
-		faqPage,
-		REVIEWED_UI_LOCALES
-	} from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
+	import { authorLdType, authorPath } from '$lib/originals';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { portraitPosition } from '$lib/portraits';
 	import Reader from '$lib/components/Reader.svelte';
@@ -292,10 +285,17 @@
 			'@context': 'https://schema.org',
 			'@type': 'Article',
 			headline: sermon.title,
+			// The page's own snippet — the same text as its meta description.
+			description: metaDescription,
+			// The preacher as the node their author page declares: that page's
+			// URL in THIS language (it was always the English one), its @id, and
+			// the identifiers that say which person this is.
 			author: {
-				'@type': 'Person',
+				'@type': authorLdType(sermon.author_slug),
+				'@id': personId(absUrl(localizeHref(authorPath(sermon.author_slug)))),
 				name: sermon.author_name,
-				url: absUrl(`/authors/${sermon.author_slug}`)
+				url: absUrl(localizeHref(authorPath(sermon.author_slug))),
+				sameAs: sermon.author_same_as?.length ? sermon.author_same_as : undefined
 			},
 			inLanguage: sermon.language,
 			url: canonical,
@@ -307,7 +307,7 @@
 			image: ogImage,
 			about: aboutRefs.length ? aboutRefs.map((ref) => ({ '@type': 'Thing', name: ref })) : undefined,
 			keywords: keywords.length ? keywords : undefined,
-			publisher: { '@type': 'Organization', name: 'Ochorus' }
+			publisher: publisherLd()
 		})
 	);
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (they had

@@ -16,14 +16,17 @@
 		readingTime,
 		workPercent
 	} from '$lib/reading';
-	import { SITE_URL } from '$lib/config';
 	import {
 		absUrl,
 		jsonLd,
 		breadcrumbLd,
 		pickQa,
 		truncateMeta,
-		topicThings
+		topicThings,
+		publisherLd,
+		PUBLIC_DOMAIN_MARK,
+		bookId,
+		personId
 	} from '$lib/seo';
 	import QandA from '$lib/components/QandA.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
@@ -192,6 +195,9 @@
 	const formats = $derived(downloadFormats(book));
 	const description = $derived.by(() => {
 		const lead = formats ? `${t('book.metaDownload').replace('%formats%', formats)} ` : '';
+		// A hand-written snippet first: the description is the page's blurb, and
+		// trimmed to 160 it ended mid-thought. The snippet is written to fit.
+		if (book.meta_description) return truncateMeta(lead + book.meta_description);
 		if (book.description) return truncateMeta(lead + book.description);
 		const base = t('book.metaFallback')
 			.replace('%title%', book.title)
@@ -272,6 +278,8 @@
 		jsonLd({
 			'@context': 'https://schema.org',
 			'@type': 'Book',
+			// One node per edition, which each chapter's isPartOf names too.
+			'@id': bookId(canonical),
 			name: book.title,
 			// The names this same work is published and searched under. A reader
 			// looking for "A Divine Cordial" or "De Incarnatione" is looking for a
@@ -280,6 +288,9 @@
 			author: {
 				// The imprint is a publisher, not a person (see $lib/originals).
 				'@type': authorLdType(book.author.slug),
+				// The same node the author page declares, so the two join by id
+				// rather than by a matching name.
+				'@id': personId(absUrl(localizeHref(authorPath(book.author.slug)))),
 				name: book.author.name,
 				url: absUrl(localizeHref(authorPath(book.author.slug))),
 				// The identifiers the author page asserts. Without them this Person
@@ -332,7 +343,13 @@
 				actionStatus: 'https://schema.org/PotentialActionStatus'
 			},
 			datePublished: book.publication_year ? String(book.publication_year) : undefined,
-			publisher: { '@type': 'Organization', name: 'Ochorus', url: SITE_URL },
+			// When this edition last changed — the same date the sitemap gives.
+			dateModified: book.updated_at || undefined,
+			// The rights, stated only where the API can support the claim: the
+			// Public Domain Mark for a public-domain work, and nothing otherwise
+			// (a © work, an Original, an author too recently dead).
+			license: book.public_domain ? PUBLIC_DOMAIN_MARK : undefined,
+			publisher: publisherLd(),
 			// The chapters as an explicit, ordered part-list — the book→chapter
 			// edges the page renders as a table of contents but never declared to a
 			// machine. Each is a resolvable URL with its own length.

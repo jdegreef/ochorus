@@ -2,7 +2,7 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import type { BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, hreflangFor, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, hreflangFor, absUrl, publisherLd } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
@@ -75,7 +75,7 @@
 			name: t('originals.eyebrow'),
 			description,
 			url: canonical,
-			publisher: { '@type': 'Organization', name: 'Ochorus', url: SITE_URL },
+			publisher: publisherLd(),
 			hasPart: shelf.books.map((b) => ({
 				'@type': 'Book',
 				name: b.title,

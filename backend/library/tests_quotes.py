@@ -457,7 +457,10 @@ class QuoteTopicApiTests(TestCase):
         self.assertNotIn("faith", by_slug)
 
     def test_pages_list_gives_author_topic_pairs_over_the_threshold(self):
-        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        pairs = [
+            {"author": r["author"], "topic": r["topic"]}
+            for r in self.client.get("/api/library/quote-topics/pages/").data
+        ]
         self.assertIn({"author": "andrew-murray", "topic": "prayer"}, pairs)
 
     def test_a_pair_below_the_threshold_is_not_a_page(self):
@@ -469,7 +472,10 @@ class QuoteTopicApiTests(TestCase):
                 chapter=self.ch, paragraph=i + 1, reviewed=True,
             )
             q.topics.add(self.faith)
-        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        pairs = [
+            {"author": r["author"], "topic": r["topic"]}
+            for r in self.client.get("/api/library/quote-topics/pages/").data
+        ]
         self.assertNotIn({"author": "charles-h-spurgeon", "topic": "faith"}, pairs)
         # But the page itself still serves if reached directly (>= 1).
         res = self.client.get("/api/library/quotes/charles-h-spurgeon/faith/")
@@ -491,7 +497,10 @@ class QuoteTopicApiTests(TestCase):
         self.assertNotIn(
             "faith", {r["slug"] for r in self.client.get("/api/library/quote-topics/").data}
         )
-        pairs = self.client.get("/api/library/quote-topics/pages/").data
+        pairs = [
+            {"author": r["author"], "topic": r["topic"]}
+            for r in self.client.get("/api/library/quote-topics/pages/").data
+        ]
         self.assertNotIn({"author": "charles-h-spurgeon", "topic": "faith"}, pairs)
 
     def test_unknown_topic_and_pair_are_404(self):
@@ -539,6 +548,8 @@ class QuotePageApiTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data["quotes"]), 1)
         listing = self.client.get("/api/library/quotes/").data
+        # The newest reviewed quotation's date — the page's sitemap <lastmod>.
+        self.assertEqual(listing[0].pop("updated_at"), self.quote.created_at)
         self.assertEqual(
             listing,
             [{"slug": "w", "name": "A Writer", "birth_year": None,

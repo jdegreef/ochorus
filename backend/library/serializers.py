@@ -11,6 +11,7 @@ from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
 from .localization import language_from_request
+from .meta_descriptions import meta_description
 from .models import (
     SERMON_CARD_DEFER,
     Article,
@@ -26,6 +27,7 @@ from .models import (
     TopicBook,
 )
 from .opening import opening_candidate_orders, opening_excerpt
+from .rights import is_public_domain
 from .scripture import book_of
 from .scripture_graph import treated_passages
 
@@ -580,6 +582,13 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     prev = serializers.SerializerMethodField()
     next = serializers.SerializerMethodField()
     difficulty = serializers.SerializerMethodField()
+    # The preacher's entity identifiers, for the sermon's JSON-LD author — the
+    # same list BookDetail carries as author_same_as, so a sermon's Person node
+    # names WHICH person it is, not just a matching name.
+    author_same_as = serializers.SerializerMethodField()
+
+    def get_author_same_as(self, obj):
+        return obj.author.same_as or []
 
     def get_difficulty(self, obj):
         from .readability import difficulty
@@ -702,6 +711,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "author_name",
             "author_slug",
             "author_photo",
+            "author_same_as",
             "prev",
             "next",
             "scripture_refs",
@@ -1573,6 +1583,8 @@ class BookDetailSerializer(BookListSerializer):
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     difficulty = serializers.SerializerMethodField()
+    meta_description = serializers.SerializerMethodField()
+    public_domain = serializers.SerializerMethodField()
     # A parallel "Modern English" edition (language en-modern) can exist for an
     # English work; these let the reader offer a per-book toggle to it.
     is_modern_edition = serializers.SerializerMethodField()
@@ -1719,8 +1731,18 @@ class BookDetailSerializer(BookListSerializer):
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
-            "epub_url",
+            "epub_url", "meta_description", "public_domain",
         ]
+
+    def get_public_domain(self, obj) -> bool:
+        """Whether the page may mark this edition public domain in its JSON-LD
+        (``library/rights``)."""
+        return is_public_domain(obj)
+
+    def get_meta_description(self, obj) -> str:
+        """The hand-written search snippet (``library/meta_descriptions``), or
+        ``""`` — the page then trims ``description`` as before."""
+        return meta_description(obj.slug, obj.language)
 
     def get_epub_url(self, obj) -> str:
         if not is_exportable(obj):
@@ -1908,6 +1930,17 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
 
     scripture_refs = serializers.SerializerMethodField()
 
+    # The book's rights, for the chapter's JSON-LD `license` (library/rights).
+    public_domain = serializers.SerializerMethodField()
+
+    def get_public_domain(self, obj) -> bool:
+        # One answer per book per request: a batch run serializes many chapters
+        # of the same edition, and the rule may query the English row.
+        memo = self.context.setdefault("_public_domain", {})
+        if obj.book_id not in memo:
+            memo[obj.book_id] = is_public_domain(obj.book)
+        return memo[obj.book_id]
+
     def get_scripture_refs(self, obj):
         """The passages this chapter treats, and where each one has a page.
 
@@ -1949,7 +1982,7 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "order", "title", "body_html", "word_count",
             "book_title", "book_slug", "author_name", "author_slug",
             "is_modern_edition", "has_modern_edition", "available_languages",
-            "source_type",
+            "source_type", "public_domain",
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",

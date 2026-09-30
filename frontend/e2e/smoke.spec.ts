@@ -372,21 +372,21 @@ test('turning to the next chapter stays in the same book and moves the prose', a
 		.not.toBe(firstOpening);
 });
 
-test('an unknown slug is served the SPA fallback and renders not-found', async ({ page }) => {
+test('an unknown slug is a real 404 that still renders not-found', async ({ page }) => {
 	const res = await page.goto('/books/this-book-does-not-exist/');
-	// adapter-static answers unknown paths with 200.html, so the status is 200 and
-	// the app renders its own not-found UI. A 404 here would mean the fallback is
-	// missing; a blank page would mean the shell failed to boot.
-	expect(res?.status()).toBe(200);
+	// The host answers unknown paths with 404.html — the SPA shell under an
+	// honest 404 status (scripts/build-404.mjs), so crawlers stop filing them as
+	// soft 404s while the app still renders its own not-found UI. A 200 here
+	// means a catch-all crept back; a blank page means the shell failed to boot.
+	expect(res?.status()).toBe(404);
 	await expect(page.getByRole('heading', { name: /not found/i })).toBeVisible();
 });
 
 test("a book's share card is built and served as an image", async ({ page, request }) => {
 	// The landscape card is not committed — `postbuild` composes it into the
 	// build (scripts/build-share-cards.mjs). This is the check that the step ran
-	// and that the page points at what it wrote. Content type, not status: an
-	// unknown path is answered 200 with the SPA fallback, so a missing card
-	// would pass a status check as an HTML page.
+	// and that the page points at what it wrote. Content type as well as
+	// status: a missing card must not pass as some HTML page.
 	await page.goto(`/books/${BOOK}/`);
 	const og = await page.locator('meta[property="og:image"]').getAttribute('content');
 	expect(og, 'the book page names no og:image').toBeTruthy();

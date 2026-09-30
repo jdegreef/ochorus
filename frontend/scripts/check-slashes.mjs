@@ -116,6 +116,9 @@ const brokenCanonical = slashRes.filter((r) => r.status !== 200 || isShell(r));
 const plainShells = plainRes.filter(isShell);
 const plainRedirects = plainRes.filter((r) => r.status === 301 || r.status === 308);
 const plainOk = plainRes.filter((r) => r.status === 200 && r.hasTitle);
+// No catch-all since the 404 shell (render.yaml): without the edge 301 a
+// no-slash URL now answers 404 — the state docs/seo-edge-rules.md exists to prevent.
+const plain404 = plainRes.filter((r) => r.status === 404);
 
 console.log('CANONICAL (with trailing slash)');
 console.log(`  200 with <title> : ${slashRes.filter((r) => r.status === 200 && r.hasTitle).length}/${slashRes.length}`);
@@ -125,10 +128,12 @@ if (brokenCanonical.length) {
 	brokenCanonical.slice(0, 8).forEach((r) => console.log(`     ${pad(r.status, 4)} ${pad(r.bytes + 'b', 9)} ${r.url}`));
 }
 
-console.log('\nNON-SLASH (informational — no 301 by design, see the header)');
+console.log('\nNON-SLASH (informational — should all be 301 once the edge rule is live)');
 console.log(`  301/308 redirect : ${plainRedirects.length}`);
 console.log(`  200 with <title> : ${plainOk.length}`);
-console.log(`  200 shell        : ${plainShells.length}   (expected; recanonicalizes via links + sitemap)`);
+console.log(`  200 shell        : ${plainShells.length}`);
+console.log(`  404              : ${plain404.length}${plain404.length ? '   !! the edge 301 is missing — docs/seo-edge-rules.md' : ''}`);
+plain404.slice(0, 8).forEach((r) => console.log(`     ${pad(r.status, 4)} ${pad(r.bytes + 'b', 9)} ${r.url}`));
 plainShells.slice(0, 8).forEach((r) => console.log(`     ${pad(r.status, 4)} ${pad(r.bytes + 'b', 9)} ${r.url}`));
 
 console.log('\nSAMPLE (both forms side by side)');

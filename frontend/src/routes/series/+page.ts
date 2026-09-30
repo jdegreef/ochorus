@@ -5,7 +5,7 @@ import type { PageLoad } from './$types';
 
 // The Book Series index — a browse shelf on the Topics model. Prerenders to
 // /series/index.html like /originals, so its links carry the slash (href.ts
-// SLASHED_PAGES) and the crawler reaches every localized copy from the footer.
+// isSlashedPath) and the crawler reaches every localized copy from the footer.
 export const prerender = true;
 export const trailingSlash = 'always';
 

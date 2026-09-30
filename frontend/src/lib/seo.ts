@@ -2,6 +2,60 @@ import { SITE_URL } from './config';
 import { localizeHref, withTrailingSlash } from '$lib/href';
 import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
 
+/**
+ * The publisher's node in every page's structured data. One `@id` for the one
+ * organisation, so the book, chapter, sermon and article that each name
+ * Ochorus as publisher resolve to the same entity (and the home page's
+ * WebSite points at it) instead of a dozen unlinked "Organization: Ochorus"
+ * strings. Carried in full wherever it is used, since an `@id` only resolves
+ * within a page. No `sameAs`: the organisation has no profiles elsewhere yet —
+ * add them here when it does, and every page gains them.
+ */
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+export const publisherLd = () => ({
+	'@type': 'Organization',
+	'@id': ORG_ID,
+	name: 'Ochorus',
+	url: `${SITE_URL}/`,
+	logo: {
+		'@type': 'ImageObject',
+		url: `${SITE_URL}/icons/icon-512.png`,
+		width: 512,
+		height: 512
+	}
+});
+
+/** The Public Domain Mark — a public-domain work's `license` in JSON-LD. The
+ *  API decides which editions may claim it (`public_domain`; library/rights). */
+export const PUBLIC_DOMAIN_MARK = 'https://creativecommons.org/publicdomain/mark/1.0/';
+
+/** The `@id` of the Person (or imprint) an author page is about, from that
+ *  page's absolute URL — so a book naming its author links to the same node. */
+export const personId = (authorUrl: string) => `${authorUrl}#person`;
+
+/** The `@id` of the Book an edition page is about, from its absolute URL. */
+export const bookId = (bookUrl: string) => `${bookUrl}#book`;
+
+/**
+ * Open Graph locale codes (language_TERRITORY — what Facebook accepts) for the
+ * UI locales. The territory is the edition's main readership, not a claim that
+ * the text is regional.
+ */
+export const OG_LOCALES: Record<string, string> = {
+	en: 'en_US',
+	es: 'es_ES',
+	sw: 'sw_KE',
+	lg: 'lg_UG',
+	pt: 'pt_PT',
+	ar: 'ar_AR',
+	hi: 'hi_IN',
+	uk: 'uk_UA',
+	fr: 'fr_FR',
+	am: 'am_ET'
+};
+
 export interface Hreflang {
 	/** One alternate per locale the work actually exists in. */
 	alternates: { loc: string; href: string }[];
@@ -126,6 +180,29 @@ export function truncateMeta(text: string, max = 160): string {
 	if (sentence >= max * 0.6) return slice.slice(0, sentence + 1).trim();
 	const word = slice.lastIndexOf(' ');
 	return (word > 0 ? slice.slice(0, word) : slice).trim() + '…';
+}
+
+/** Where a search result's title stops being shown (~600px of Arial). */
+export const TITLE_BUDGET = 60;
+
+const BRAND_SUFFIX = /\s+[—|-]\s+Ochorus$/;
+
+/**
+ * The `<title>` a page ships: its full title, minus the " — Ochorus" brand when
+ * the title runs past the display budget.
+ *
+ * A long title isn't a ranking penalty (Google reads every word of it), but
+ * past ~60 characters it is cut off in the result, and it is more likely to be
+ * rewritten from the page's headings. The brand is the one part worth giving
+ * up: Google prints the site name above every result anyway, and the words in
+ * front of it (book, chapter, author, "read free online") are the ones people
+ * type. So a short title keeps its brand and a long one drops it. Nothing else
+ * is cut: the words that make a title match a query are worth more than fitting
+ * the display.
+ */
+export function fitTitle(title: string, max = TITLE_BUDGET): string {
+	const clean = (title ?? '').replace(/\s+/g, ' ').trim();
+	return clean.length > max ? clean.replace(BRAND_SUFFIX, '') : clean;
 }
 
 /**
