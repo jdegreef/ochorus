@@ -11,6 +11,7 @@ from .contemporize import MODERN_LANGUAGE
 from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
+from .hubs import Hubs
 from .localization import language_from_request
 from .meta_descriptions import meta_description
 from .models import (
@@ -1301,6 +1302,10 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # locale with no translated article renders no section. Detail-only: it
     # scans the article table, nothing a shelf should pay.
     articles = serializers.SerializerMethodField()
+    # The biography hubs this writer belongs to that exist in this language
+    # (library/hubs.py) — the page links each as a chip. One query: the set of
+    # writers the language's Biographies page lists.
+    hubs = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -1325,7 +1330,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # an email digest) would have to carry the credit with it.
             "photo_attribution", "photo_source_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics", "appears_in", "articles",
+            "books", "sermons", "topics", "appears_in", "articles", "hubs",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -1384,6 +1389,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
+
+    def get_hubs(self, obj) -> list[dict]:
+        return Hubs().for_author(obj.slug, self._language())
 
     def get_has_long_bio(self, obj):
         return bool(obj.bio_html_for(self._language()).strip())

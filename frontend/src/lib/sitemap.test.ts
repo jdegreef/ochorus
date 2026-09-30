@@ -66,6 +66,11 @@ vi.mock('$lib/library-public', () => {
 						}
 					]
 				: [],
+		// A place hub in English and Swahili, none in Spanish.
+		listHubs: async (l = 'en') =>
+			l === 'en' || l === 'sw'
+				? [{ kind: 'place', slug: 'wales', region: null, members: ['andrew-murray'], name: 'Wales' }]
+				: [],
 		listPlans: async (l = 'en') =>
 			l === 'sw' ? [{ slug: 'humility-in-12', covers: [{ slug: 'humility' }] }] : [],
 		listQuoteAuthors: empty,
@@ -279,6 +284,19 @@ describe('build() scripture entries', () => {
 		// Three citing passages clears the API's build floor, so the page
 		// exists — it is just not promised.
 		expect(urls).not.toContain('/scripture/jude/1/');
+	});
+});
+
+describe('build() hub entries', () => {
+	beforeEach(() => resetSitemapData());
+
+	it('lists a hub only in the locales the API has it in, dated by its writers', async () => {
+		const { pages } = await sitemapData();
+		const hub = pages.find((e) => e.byLocale.get('en') === '/biographies/place/wales/');
+		expect([...(hub?.byLocale.keys() ?? [])]).toEqual(['en', 'sw']);
+		// Murray's newest Swahili book dates the Swahili page; English has none.
+		expect(hub?.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+		expect(hub?.lastmods?.has('en')).toBe(false);
 	});
 });
 

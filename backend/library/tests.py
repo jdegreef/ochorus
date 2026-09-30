@@ -1503,13 +1503,16 @@ class BookCardPayloadTests(TestCase):
         # so it stays one query however many books the author has.
         # The 15th is `available_languages` (the page's hreflang set): ONE
         # UNION of the author's published book and sermon languages.
+        # The 16th is `hubs` (the tradition/place chips): ONE read of which
+        # writers this language's Biographies page lists, to know which hubs
+        # have enough of them to exist here.
         for i in range(6):
             Article.objects.create(
                 slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
                 description="d", body_html="<p>x</p>", is_published=True,
                 related=[{"type": "author", "slug": "murray"}],
             )
-        with self.assertNumQueries(15):
+        with self.assertNumQueries(16):
             self.client.get("/api/library/authors/murray/?language=en")
 
     def test_book_detail_query_count_is_the_same_in_every_language(self):

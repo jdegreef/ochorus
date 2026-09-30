@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hubPath } from '$lib/hubs';
 	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
@@ -446,6 +447,14 @@
 				     compiler-trimmed ("1828–1917·12 books"). -->
 				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
 			</p>
+		{/if}
+		<!-- The writer's traditions and place, each a hub page of writers like them. -->
+		{#if author.hubs?.length}
+			<ul class="mt-3 flex flex-wrap gap-2">
+				{#each author.hubs as h (h.slug)}
+					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.name}</a></li>
+				{/each}
+			</ul>
 		{/if}
 		</div>
 	</header>

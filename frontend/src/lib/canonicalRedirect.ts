@@ -32,6 +32,9 @@ const SLASHED_SECTIONS = new Set([
  * `canonicalRedirect.test.ts` walks the route tree so a new slashed route
  * can't be missed.
  */
+/** `/biographies/<group>/<slug>/` — the era pages and the tradition/place hubs. */
+const BIOGRAPHY_GROUPS = new Set(['era', 'tradition', 'place']);
+
 export function isSlashedPath(path: string): boolean {
 	const segments = path.split('/').filter(Boolean);
 	const body = locales.includes(segments[0] as (typeof locales)[number])
@@ -41,7 +44,7 @@ export function isSlashedPath(path: string): boolean {
 	// A real file extension is an asset, not a page.
 	if (/\.[a-z0-9]{2,5}$/i.test(body[body.length - 1])) return false;
 	if (body.length === 1) return SLASHED_INDEXES.has(body[0]);
-	if (body[0] === 'biographies') return body[1] === 'era' && body.length === 3;
+	if (body[0] === 'biographies') return BIOGRAPHY_GROUPS.has(body[1]) && body.length === 3;
 	return SLASHED_SECTIONS.has(body[0]);
 }
 

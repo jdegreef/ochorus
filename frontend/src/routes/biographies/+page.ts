@@ -1,4 +1,4 @@
-import { listAuthors, listBooks, type BookSummary } from '$lib/library-public';
+import { listAuthors, listBooks, listHubs, type BookSummary, type Hub } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
@@ -30,7 +30,10 @@ export const load: PageLoad = async ({ fetch }) => {
 	} catch {
 		books = [];
 	}
-	return { authors, books, loadError };
+	// The tradition/place hubs this language has, for the browse rows. Decoration
+	// like the books: none if unavailable.
+	const hubs: Hub[] = await listHubs(lang, fetch).catch(() => []);
+	return { authors, books, hubs, loadError };
 };
 
 // Biographies book counts are locale-aware (server-side) and prerendered per

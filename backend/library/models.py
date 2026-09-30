@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from django.contrib.postgres.search import SearchVectorField
 from django.db import models
-from django.db.models import Subquery
+from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
@@ -61,6 +61,29 @@ class AuthorQuerySet(models.QuerySet):
         return self.annotate(
             num_books=published_count("Book", "author"),
             num_sermons=published_count("Sermon", "author"),
+        )
+
+    def listed_in_biographies(self, language: str):
+        """The writers the Biographies page lists in ``language``.
+
+        A real person (not an imprint) who hasn't been withheld from the shelf,
+        with a published work in ``language`` or a bio a reader of it can read —
+        the source-language bio, or a translation. The hub pages list the same
+        set, so a writer on a hub is one the biographies page shows too.
+
+        ``Exists()`` rather than a join to ``translations``: the join fanned the
+        query out and forced a ``.distinct()`` that de-duplicated over every
+        column, the bio HTML included.
+        """
+        translated_bio = Exists(
+            AuthorTranslation.objects.filter(author=OuterRef("pk"), language=language)
+            .exclude(bio="", bio_html="")
+        )
+        own_bio = Q(original_language=language) & (~Q(bio="") | ~Q(bio_html=""))
+        return (
+            self.filter(is_imprint=False, list_in_biographies=True)
+            .with_work_counts(language)
+            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
         )
 
 
