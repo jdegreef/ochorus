@@ -11,6 +11,7 @@ from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
 from .localization import language_from_request
+from .meta_descriptions import meta_description
 from .models import (
     SERMON_CARD_DEFER,
     Article,
@@ -1573,6 +1574,7 @@ class BookDetailSerializer(BookListSerializer):
     topics = serializers.SerializerMethodField()
     related = serializers.SerializerMethodField()
     difficulty = serializers.SerializerMethodField()
+    meta_description = serializers.SerializerMethodField()
     # A parallel "Modern English" edition (language en-modern) can exist for an
     # English work; these let the reader offer a per-book toggle to it.
     is_modern_edition = serializers.SerializerMethodField()
@@ -1719,8 +1721,13 @@ class BookDetailSerializer(BookListSerializer):
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
-            "epub_url",
+            "epub_url", "meta_description",
         ]
+
+    def get_meta_description(self, obj) -> str:
+        """The hand-written search snippet (``library/meta_descriptions``), or
+        ``""`` — the page then trims ``description`` as before."""
+        return meta_description(obj.slug, obj.language)
 
     def get_epub_url(self, obj) -> str:
         if not is_exportable(obj):

@@ -192,6 +192,9 @@
 	const formats = $derived(downloadFormats(book));
 	const description = $derived.by(() => {
 		const lead = formats ? `${t('book.metaDownload').replace('%formats%', formats)} ` : '';
+		// A hand-written snippet first: the description is the page's blurb, and
+		// trimmed to 160 it ended mid-thought. The snippet is written to fit.
+		if (book.meta_description) return truncateMeta(lead + book.meta_description);
 		if (book.description) return truncateMeta(lead + book.description);
 		const base = t('book.metaFallback')
 			.replace('%title%', book.title)

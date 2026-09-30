@@ -128,6 +128,29 @@ export function truncateMeta(text: string, max = 160): string {
 	return (word > 0 ? slice.slice(0, word) : slice).trim() + '…';
 }
 
+/** Where a search result's title stops being shown (~600px of Arial). */
+export const TITLE_BUDGET = 60;
+
+const BRAND_SUFFIX = /\s+[—|-]\s+Ochorus$/;
+
+/**
+ * The `<title>` a page ships: its full title, minus the " — Ochorus" brand when
+ * the title runs past the display budget.
+ *
+ * A long title isn't a ranking penalty (Google reads every word of it), but
+ * past ~60 characters it is cut off in the result, and it is more likely to be
+ * rewritten from the page's headings. The brand is the one part worth giving
+ * up: Google prints the site name above every result anyway, and the words in
+ * front of it (book, chapter, author, "read free online") are the ones people
+ * type. So a short title keeps its brand and a long one drops it. Nothing else
+ * is cut: the words that make a title match a query are worth more than fitting
+ * the display.
+ */
+export function fitTitle(title: string, max = TITLE_BUDGET): string {
+	const clean = (title ?? '').replace(/\s+/g, ' ').trim();
+	return clean.length > max ? clean.replace(BRAND_SUFFIX, '') : clean;
+}
+
 /**
  * The raw schema.org ItemList object for a shelf's works — the ordered roster of
  * {name, url} pairs, urls made absolute. The shared body of the standalone

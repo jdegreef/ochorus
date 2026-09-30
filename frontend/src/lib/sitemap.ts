@@ -15,6 +15,8 @@
  * reversible. The per-locale chapter machinery below is kept intact so a
  * restore is one line; it simply isn't linked from the index today. So the
  * remaining index is per-TYPE only, and much smaller than the figures above.
+ * (Only each edition's OPENING chapter is advertised again, in one `chapters`
+ * child — see `sections()`.)
  *
  * WHY THIS MODULE EXISTS. Every child route needs the same catalogue, and
  * `apiFetch` only dedupes requests that are IN FLIGHT AT ONCE (see its note).
@@ -168,6 +170,9 @@ export interface SitemapData {
 	sermons: Entry[];
 	/** Every chapter, all locales. The child routes slice this per locale. */
 	chapters: Entry[];
+	/** Each edition's OPENING chapter — the one chapter per book the sitemap
+	 *  advertises (the `chapters` section); see `sections()`. */
+	openings: Entry[];
 }
 
 /**
@@ -191,12 +196,24 @@ export interface SitemapData {
  * on purpose — `sectionEntries` and `sectionLocale` still resolve a
  * `chapters-<locale>` section, and `build()` still fills `data.chapters`.
  *
+ * ONE CHAPTER PER BOOK COMES BACK: the `chapters` section advertises each
+ * edition's opening chapter (`openings`), and only that — ~1 URL per book per
+ * advertised locale, not the ~20 of the full set. It is the one chapter a
+ * searcher who wants to START a book ("<title> chapter 1", "read <title>
+ * online") lands on, the highest-intent chapter URL there is, and a pile that
+ * size is one Google can actually get through. It also brings those pages
+ * back into IndexNow, which submits from the sitemap. Dated by the book's own
+ * `updated_at`, so a corrected edition asks for a recrawl of its first page.
+ * If Search Console shows these indexing well, widening the rule (chapter 2,
+ * the longest chapters) is a change to `openings` alone.
+ *
  * The remaining order is DELIBERATELY not the reader-facing nav order
  * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
  * does a reader meet these in", so it does not track nav/footer/palette (F2).
  */
 export const sections = (): string[] => [
 	'books',
+	'chapters',
 	'sermons',
 	'authors',
 	'scripture',
@@ -225,6 +242,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 		return data.chapters.filter((e) => e.byLocale.has(locale));
 	}
 	if (section === 'books') return data.books;
+	if (section === 'chapters') return data.openings;
 	if (section === 'sermons') return data.sermons;
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
@@ -411,10 +429,18 @@ async function build(): Promise<SitemapData> {
 	// The quotes index is English-only, like the author quote pages it links to
 	// and for the same reason: the quotations are lifted from the English works.
 	// Trailing slash, because it prerenders as /quotes/index.html.
-	if (quoteAuthors.length) pages.push({ byLocale: new Map([['en', '/quotes/']]) });
+	if (quoteAuthors.length)
+		pages.push({
+			byLocale: new Map([['en', '/quotes/']]),
+			lastmod: newest(quoteAuthors.map((a) => a.updated_at))
+		});
 	// The quotes-by-topic index, English-only for the same reason. Only when a
 	// theme has actually earned a page, so the hub is never advertised empty.
-	if (quoteTopics.length) pages.push({ byLocale: new Map([['en', '/quotes/topics/']]) });
+	if (quoteTopics.length)
+		pages.push({
+			byLocale: new Map([['en', '/quotes/topics/']]),
+			lastmod: newest(quoteTopics.map((tp) => tp.updated_at))
+		});
 
 	// The house imprint's shelf, in each advertised locale that has one of its
 	// books (no English fallback, so an empty locale has no page to list).
@@ -456,9 +482,13 @@ async function build(): Promise<SitemapData> {
 		});
 	}
 	for (const a of articles) {
+		// The lead book's cover, which the article sets beside its standfirst —
+		// the same raster that book's own sitemap row carries.
+		const cover = a.lead_book ? shareImage(a.lead_book) : null;
 		articleEntries.push({
 			byLocale: new Map([['en', `/articles/${a.slug}/`]]),
-			lastmod: a.updated_at
+			lastmod: a.updated_at,
+			images: cover ? new Map([['en', absUrl(cover.url)]]) : undefined
 		});
 	}
 	// A crawlable shelf per topic (`/articles/<topic>/`) — the same segment as an
@@ -508,11 +538,21 @@ async function build(): Promise<SitemapData> {
 	// Per-era biography landing pages — only eras that actually have writers
 	// (mirrors the route's entries()). Like author pages, they exist in every
 	// locale (bios fall back to English).
-	const presentEras = new Set(authors.map((a) => eraOf(a.birth_year)));
+	// Dated, like an author page, by the newest work of the writers it lists —
+	// in each locale, since a Swahili era page changes when a Swahili book does.
+	const eraAuthors = new Map<string, string[]>();
+	for (const a of authors) {
+		const id = eraOf(a.birth_year);
+		eraAuthors.set(id, [...(eraAuthors.get(id) ?? []), a.slug]);
+	}
 	for (const e of ERAS) {
-		if (!presentEras.has(e.id)) continue;
+		const slugs = eraAuthors.get(e.id);
+		if (!slugs) continue;
 		pages.push({
-			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/biographies/era/${e.id}/`]))
+			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/biographies/era/${e.id}/`])),
+			lastmods: dated(ADVERTISED_LOCALES, (l) =>
+				newest(slugs.map((s) => dates.get(l)?.author.get(s)))
+			)
 		});
 	}
 
@@ -564,7 +604,17 @@ async function build(): Promise<SitemapData> {
 			return img ? absUrl(img.url) : null;
 		}
 	);
-	const sermons = collect('sermons', (s) => `/sermons/${s}/`, (s) => s.updated_at);
+	// A sermon page shows its preacher's portrait by the byline — the one image
+	// on it that is about the page (the og card is drawn text, not shown there).
+	const sermons = collect(
+		'sermons',
+		(s) => `/sermons/${s}/`,
+		(s) => s.updated_at,
+		(s) => {
+			const photo = s.author.photo_url || portraits.get(s.author.slug);
+			return photo ? absUrl(photo) : null;
+		}
+	);
 	pages.push(...collect('topics', (s) => `/topics/${s}/`, (t, l) => dates.get(l)?.topic.get(t.slug)));
 	pages.push(...collect('plans', (s) => `/plans/${s}/`, (p, l) => dates.get(l)?.plan.get(p.slug)));
 	// A series has a page only where it has a name and a book (no English
@@ -601,31 +651,40 @@ async function build(): Promise<SitemapData> {
 	// SCRIPTURE_SITEMAP_FLOOR citing passages is the ASV chapter (text found on
 	// every Bible site) plus a handful of excerpts. They keep
 	// their URL, their links and their indexability; they are just not promised.
+	//
+	// Each is dated by the newest edit among the books it quotes (the API's
+	// `updated_at`), and the hub by the newest of those.
+	const advertisedScripture = scripturePages.filter(
+		(p) => p.verse === null && p.citing_count >= SCRIPTURE_SITEMAP_FLOOR
+	);
 	const scripture: Entry[] = [
-		{ byLocale: new Map([['en', '/scripture/']]) },
-		...scripturePages
-			.filter((p) => p.verse === null && p.citing_count >= SCRIPTURE_SITEMAP_FLOOR)
-			.map((p) => ({
-				byLocale: new Map([
-					['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]
-				])
-			}))
+		{
+			byLocale: new Map([['en', '/scripture/']]),
+			lastmod: newest(scripturePages.map((p) => p.updated_at))
+		},
+		...advertisedScripture.map((p) => ({
+			byLocale: new Map([['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]]),
+			lastmod: p.updated_at ?? undefined
+		}))
 	];
 
 	// Quote pages carry ONE locale, like the scripture graph and for the same
 	// reason: the quotations are lifted from the English works and every citation
-	// names an English chapter.
+	// names an English chapter. Each is dated by its newest reviewed quotation.
 	const quotes: Entry[] = [
 		...quoteAuthors.map((a) => ({
-			byLocale: new Map([['en', `/quotes/${a.slug}/`]] as [string, string][])
+			byLocale: new Map([['en', `/quotes/${a.slug}/`]] as [string, string][]),
+			lastmod: a.updated_at ?? undefined
 		})),
 		// "Quotes on X" — one per theme deep enough to have earned a page.
 		...quoteTopics.map((tp) => ({
-			byLocale: new Map([['en', `/quotes/topics/${tp.slug}/`]] as [string, string][])
+			byLocale: new Map([['en', `/quotes/topics/${tp.slug}/`]] as [string, string][]),
+			lastmod: tp.updated_at ?? undefined
 		})),
 		// "<Author> Quotes on X" — one per (author, theme) pair over the threshold.
 		...quoteTopicPages.map((p) => ({
-			byLocale: new Map([['en', `/quotes/${p.author}/${p.topic}/`]] as [string, string][])
+			byLocale: new Map([['en', `/quotes/${p.author}/${p.topic}/`]] as [string, string][]),
+			lastmod: p.updated_at ?? undefined
 		}))
 	];
 
@@ -643,6 +702,20 @@ async function build(): Promise<SitemapData> {
 		}
 	}
 
+	// The opening chapters — the one chapter per edition the sitemap advertises
+	// (see sections()). Like a book entry: only the locales whose edition has a
+	// chapter, each dated by its own edition.
+	const byOpening = new Map<string, Entry>();
+	for (const slice of advertisedSlices) {
+		for (const b of slice.books) {
+			if (b.chapter_count < 1) continue;
+			let e = byOpening.get(b.slug);
+			if (!e) byOpening.set(b.slug, (e = { byLocale: new Map() }));
+			e.byLocale.set(slice.locale, `/books/${b.slug}/1/`);
+			if (b.updated_at) (e.lastmods ??= new Map()).set(slice.locale, b.updated_at);
+		}
+	}
+
 	return {
 		pages,
 		authors: authorEntries,
@@ -651,7 +724,8 @@ async function build(): Promise<SitemapData> {
 		scripture,
 		quotes,
 		articles: articleEntries,
-		chapters: [...byChapter.values()]
+		chapters: [...byChapter.values()],
+		openings: [...byOpening.values()]
 	};
 }
 

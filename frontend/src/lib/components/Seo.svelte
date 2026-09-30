@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Hreflang } from '$lib/seo';
+	import { fitTitle, type Hreflang } from '$lib/seo';
 	import { SITE_URL } from '$lib/config';
 
 	// Site-wide social-card fallback. Pages with their own art (a book cover, a
@@ -64,7 +64,8 @@
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<!-- The brand gives way on a long title; og/twitter keep the full one. -->
+	<title>{fitTitle(title)}</title>
 	<meta name="description" content={description} />
 	<link rel="canonical" href={canonical} />
 	{#if hreflang}

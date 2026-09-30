@@ -61,6 +61,18 @@ class PageListTests(TestCase):
         self.assertEqual((page["book"], page["chapter"]), ("romans", 8))
         self.assertEqual(page["citing_count"], VERSE_FLOOR)
 
+    def test_a_page_is_dated_by_the_newest_book_it_quotes(self):
+        # `updated_at` is the sitemap's <lastmod>: the newest edit among the
+        # books whose chapters make up the page.
+        other = Book.objects.create(author=self.author, slug="v", language="en", title="Another")
+        for i in range(VERSE_FLOOR - 1):
+            cite(self.book, i + 1, "Romans 8:28")
+        cite(other, 1, "Romans 8:28")
+        self._index()
+        Book.objects.filter(pk=other.pk).update(updated_at=self.book.updated_at.replace(year=2099))
+        page = next(p for p in qualifying_pages() if p["verse"] == 28)
+        self.assertEqual(page["updated_at"].year, 2099)
+
     def test_one_chapter_citing_a_verse_many_times_is_still_one_voice(self):
         # The floor counts DISTINCT chapters. Repetition inside a single
         # chapter is one writer returning to a text, and letting it clear the
