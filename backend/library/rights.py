@@ -15,8 +15,15 @@ first:
 
 1. The imprint's own books and the Modern English editions: never.
 2. A rights note (``Book.attribution``) that reserves anything — ©, copyright,
-   permission — never, whatever else it says.
-3. A note that says "public domain": yes.
+   permission — or names the work as the house's ("by Ochorus": the Key
+   Teachings companions, filed under the author they are ABOUT): never,
+   whatever else it says.
+3. A note that DECLARES the work public domain — "Public domain — …",
+   "… (1876). Public domain.", "The epistles are public domain …": yes. Only as
+   the opening of the note or of a sentence, because the phrase also turns up
+   about something else ("Andrew Murray's own writings are in the public
+   domain", "the Berean Standard Bible, which is in the public domain"), and
+   a bare substring match read those as a claim about the book.
 4. No note at all, and an author who died more than 70 years ago (the life+70
    term most of the world has converged on): yes.
 5. Anything else — a note that is only a credit, an author with no death year,
@@ -40,8 +47,14 @@ PUBLIC_DOMAIN_MARK = "https://creativecommons.org/publicdomain/mark/1.0/"
 #: The house imprint's author row (see the reader's $lib/originals).
 ORIGINALS_SLUG = "ochorus-originals"
 
-#: Words in a rights note that reserve something.
-_RESERVED = re.compile(r"©|\bcopyright\b|\bpermission\b", re.IGNORECASE)
+#: Words in a rights note that reserve something, or name the house as author.
+_RESERVED = re.compile(r"©|\bcopyright\b|\bpermission\b|\bby ochorus\b", re.IGNORECASE)
+
+#: "public domain" as the note's own declaration about the work: at the start of
+#: the note or of a sentence, optionally after "The <noun> is/are".
+_DECLARES = re.compile(
+    r"(?:^|[.;!?]\s+)(?:the \w+(?: \w+)? (?:is|are) )?public domain\b", re.IGNORECASE
+)
 
 #: Years after the author's death before the work is treated as free.
 TERM_YEARS = 70
@@ -59,7 +72,7 @@ def is_public_domain(book) -> bool:
         note = english.attribution if english else note
     if _RESERVED.search(note):
         return False
-    if "public domain" in note.lower():
+    if _DECLARES.search(note.strip()):
         return True
     death = book.author.death_year
     return not note.strip() and death is not None and death < date.today().year - TERM_YEARS

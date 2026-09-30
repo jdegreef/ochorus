@@ -35,6 +35,25 @@ class PublicDomainRuleTests(TestCase):
             with self.subTest(note=note):
                 self.assertFalse(is_public_domain(self.book(self.old, slug=note[:8], attribution=note)))
 
+    def test_public_domain_about_something_else_is_no_claim(self):
+        # The Key Teachings companions are the house's writing, filed under the
+        # author they are about — whose OWN works are public domain.
+        for note in (
+            "An independent work of exposition by Ochorus. Andrew Murray's own "
+            "writings are in the public domain and freely available.",
+            "Scripture quotations are from the Berean Standard Bible (BSB), which is "
+            "in the public domain.",
+        ):
+            with self.subTest(note=note):
+                self.assertFalse(is_public_domain(self.book(self.recent, slug=note[:8], attribution=note)))
+
+    def test_the_declaration_forms_the_library_uses(self):
+        for note in ("Public domain — first published 1879.",
+                     "Translated by W. (London, 1884). Public domain.",
+                     "The epistles are public domain, in the translation of J. B. Lightfoot."):
+            with self.subTest(note=note):
+                self.assertTrue(is_public_domain(self.book(self.recent, slug=note[:8], attribution=note)))
+
     def test_a_credit_alone_makes_no_claim(self):
         self.assertFalse(is_public_domain(self.book(self.old, attribution="Transcribed by CCEL.")))
 
