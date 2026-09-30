@@ -252,6 +252,10 @@ services:
         - backend/library/meta_descriptions.py
         - backend/library/data/book_meta/**
         - backend/library/rights.py
+        # The biography hubs (/biographies/tradition|place/<slug>/): who is on
+        # each, and each hub's name, intro and Q&A per language.
+        - backend/library/hubs.py
+        - backend/library/data/hubs/**
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

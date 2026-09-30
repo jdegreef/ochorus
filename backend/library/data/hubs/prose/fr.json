@@ -1,0 +1,480 @@
+{
+  "_note": [
+    "French hub prose — AI translation (ai_unreviewed), pending native review. Glossary: church fathers under their French names (Augustin d’Hippone, Athanase d’Alexandrie, Cyprien de Carthage, Clément de Rome, Ignace d’Antioche, Jean Chrysostome, Grégoire le Grand, Thérèse d’Avila); Reformers as Jean Calvin, Martin Luther; Thomas à Kempis as in the site’s bio; book titles in « » using the site’s French titles where an edition exists (Le Voyage du pèlerin, Les Confessions, Pensées, Le secret d’une vie chrétienne heureuse) and the French bios’ titles otherwise (À la poursuite de Dieu, La Vie chrétienne normale, Le Roseau brisé); ‘revival’ = réveil, East African Revival = Réveil est-africain; Salvation Army = Armée du Salut; institution names kept in English where the bios keep them (Metropolitan Tabernacle, China Inland Mission, Church Missionary Society, Book of Common Prayer)."
+  ],
+  "early-church": {
+    "name": "Écrivains de l’Église ancienne",
+    "label": "Église ancienne",
+    "intro": "Évêques, prédicateurs et martyrs des premiers siècles après les apôtres. Leurs lettres, leurs sermons et leurs confessions furent écrits dans la persécution, la controverse et la prière, et ils ont façonné depuis lors la manière dont l’Église lit la Bible.",
+    "qa": [
+      {
+        "q": "Qui sont les Pères de l’Église ?",
+        "a": "Les Pères de l’Église sont les principaux docteurs et évêques des premiers siècles chrétiens, dont l’Église des siècles suivants a tenu les écrits pour des témoins fidèles de l’enseignement des apôtres. Clément de Rome et Ignace d’Antioche écrivirent dans la génération qui suivit les apôtres ; Athanase d’Alexandrie, Jean Chrysostome et Augustin d’Hippone appartiennent au grand âge des IVe et Ve siècles."
+      },
+      {
+        "q": "Par où commencer avec l’Église ancienne ?",
+        "a": "« Les Confessions » d’Augustin sont le livre le plus connu de la période et se lisent comme une prière adressée à Dieu. Les courtes lettres d’Ignace d’Antioche, écrites alors qu’on le menait au martyre, peuvent se lire en un après-midi."
+      },
+      {
+        "q": "Pourquoi les écrivains de l’Église ancienne comptent-ils encore ?",
+        "a": "Ils ont défendu la pleine divinité du Christ, fixé le langage des credo et montré aux croyants ordinaires comment prier, souffrir et servir. La plupart des traditions ultérieures, catholique, orthodoxe et protestante, les lisent encore comme des ancêtres communs."
+      }
+    ]
+  },
+  "monks-and-mystics": {
+    "name": "Moines, mystiques et contemplatifs",
+    "label": "Moines et mystiques",
+    "intro": "Des écrivains qui ont cherché Dieu dans le silence, la prière et l’abandon de la volonté. Des cloîtres de la France médiévale à la cellule de prison d’une noble française, leurs livres ont appris à prier à des générations de lecteurs.",
+    "qa": [
+      {
+        "q": "Qu’est-ce que la mystique chrétienne ?",
+        "a": "La mystique chrétienne est la tradition qui cherche une connaissance directe et aimante de Dieu par la prière, la contemplation et l’abandon. Ses écrivains décrivent le cheminement intérieur de l’âme vers l’union avec Dieu plutôt qu’ils n’exposent une doctrine."
+      },
+      {
+        "q": "Quel livre lire en premier ?",
+        "a": "« L’Imitation de Jésus-Christ » de Thomas à Kempis a été plus lue que presque aucun autre livre chrétien après la Bible. Ses courts chapitres sur l’humilité, la patience et la communion avec le Christ peuvent se lire un à un."
+      },
+      {
+        "q": "Ces écrivains étaient-ils catholiques ou protestants ?",
+        "a": "La plupart étaient des moines et des moniales catholiques, comme Bernard de Clairvaux et Thérèse d’Avila. William Law était un prêtre anglican, et des lecteurs protestants comme John Wesley ont été profondément formés par Jeanne Guyon et Thomas à Kempis."
+      }
+    ]
+  },
+  "puritans": {
+    "name": "Auteurs puritains",
+    "label": "Puritains",
+    "intro": "Des pasteurs anglais de la fin du XVIe et du XVIIe siècle qui voulaient une Église réformée par l’Écriture et une vie vécue devant la face de Dieu. Beaucoup furent chassés de leur chaire en 1662 et se mirent alors à écrire — des livres sur le péché et la grâce, la vocation du pasteur et le pèlerinage du chrétien, que l’on lit encore aujourd’hui.",
+    "qa": [
+      {
+        "q": "Qui étaient les puritains ?",
+        "a": "Les puritains étaient des protestants anglais qui militaient pour une Église et une vie quotidienne entièrement façonnées par l’Écriture. On se souvient de leurs pasteurs pour leur prédication pénétrante et pratique sur le cœur, la conversion et l’assurance du salut."
+      },
+      {
+        "q": "Quel livre puritain lire en premier ?",
+        "a": "« Le Voyage du pèlerin » de John Bunyan est le livre puritain le plus lu et la porte d’entrée la plus facile. « Le Roseau brisé » de Richard Sibbes est court et particulièrement tendre envers les croyants qui se sentent faibles."
+      },
+      {
+        "q": "Pourquoi tant de puritains furent-ils chassés en 1662 ?",
+        "a": "L’Acte d’uniformité de 1662 exigeait de tout ministre de l’Église d’Angleterre qu’il accepte l’intégralité du Book of Common Prayer et l’ordination épiscopale. Environ deux mille ministres, dont Richard Baxter et Thomas Watson, refusèrent de s’y conformer et perdirent leur charge."
+      }
+    ]
+  },
+  "methodists": {
+    "name": "Auteurs méthodistes et wesleyens",
+    "label": "Méthodistes",
+    "intro": "Le réveil né avec John et Charles Wesley dans l’Angleterre du XVIIIe siècle, et les Églises qui en sont issues des deux côtés de l’Atlantique. Ses écrivains prêchaient une foi qui réchauffe le cœur, une vie sainte et un Évangile pour les pauvres.",
+    "qa": [
+      {
+        "q": "Comment le méthodisme a-t-il commencé ?",
+        "a": "Le méthodisme commença comme un mouvement de sainteté disciplinée et pratique, conduit par John Wesley et son frère Charles au sein de l’Église d’Angleterre dans les années 1730 et 1740. Sa prédication en plein air et ses petites réunions de classe répandirent le réveil à travers la Grande-Bretagne et l’Amérique."
+      },
+      {
+        "q": "Qui a fondé l’Église épiscopale méthodiste africaine ?",
+        "a": "Richard Allen, prédicateur de Philadelphie autrefois esclave, conduisit des méthodistes noirs hors d’une congrégation ségréguée et fonda l’Église épiscopale méthodiste africaine en 1816. Jarena Lee et Julia Foote prêchèrent au sein de cette tradition."
+      },
+      {
+        "q": "Qu’entendaient les méthodistes par sainteté ?",
+        "a": "Wesley enseignait que la vie chrétienne est appelée à croître dans un amour parfait pour Dieu et pour le prochain, et pas seulement dans le pardon. Cet enseignement a façonné le mouvement de sainteté ultérieur et des auteurs comme Amanda Berry Smith."
+      }
+    ]
+  },
+  "baptists": {
+    "name": "Prédicateurs et auteurs baptistes",
+    "label": "Baptistes",
+    "intro": "Des prédicateurs et des missionnaires des Églises baptistes, qui baptisent les croyants sur leur profession de foi. Parmi eux, le « Prince des prédicateurs », le père des missions modernes et un jeune garçon de ferme gallois devenu le plus grand prédicateur de son pays.",
+    "qa": [
+      {
+        "q": "Que croient les baptistes au sujet du baptême ?",
+        "a": "Les baptistes baptisent ceux qui professent personnellement leur foi en Christ, généralement par immersion, plutôt que les nourrissons. Ils insistent aussi sur l’autorité de l’Écriture et la liberté de chaque assemblée locale."
+      },
+      {
+        "q": "Qui était le Prince des prédicateurs ?",
+        "a": "Charles Haddon Spurgeon, pasteur du Metropolitan Tabernacle à Londres, fut surnommé le Prince des prédicateurs. Ses sermons étaient imprimés chaque semaine et vendus dans le monde entier."
+      },
+      {
+        "q": "Pourquoi William Carey est-il appelé le père des missions modernes ?",
+        "a": "William Carey, cordonnier baptiste anglais, exhorta en 1792 les Églises à envoyer des missionnaires outre-mer, puis s’embarqua lui-même pour l’Inde. Son exemple donna naissance aux grandes sociétés missionnaires du XIXe siècle."
+      }
+    ]
+  },
+  "reformed-and-presbyterian": {
+    "name": "Auteurs réformés et presbytériens",
+    "label": "Réformés et presbytériens",
+    "intro": "Héritiers de la Réforme de Genève et d’Écosse, ils ont enseigné la souveraineté de la grâce de Dieu. De Jean Calvin à un médecin gallois devenu prédicateur, ils ont uni une théologie rigoureuse à une piété fervente.",
+    "qa": [
+      {
+        "q": "Que signifie « réformé » ?",
+        "a": "Les Églises réformées sont issues de la Réforme suisse conduite par Zwingli et Jean Calvin. Elles insistent sur la souveraineté de Dieu dans le salut, l’autorité de l’Écriture et une Église gouvernée par des anciens."
+      },
+      {
+        "q": "Presbytérien et réformé, est-ce la même chose ?",
+        "a": "Les Églises presbytériennes sont des Églises réformées gouvernées par des anciens (presbytres), un modèle qui s’est enraciné surtout en Écosse. Robert Murray M’Cheyne exerça son ministère dans l’Église d’Écosse ; Jonathan Edwards, bien que congrégationaliste, professait la même théologie réformée."
+      },
+      {
+        "q": "Lequel de ces auteurs lire en premier ?",
+        "a": "Jonathan Edwards est l’auteur réformé classique sur le réveil et les affections religieuses. Martyn Lloyd-Jones a porté la même tradition dans le Londres du XXe siècle par une prédication simple et directe."
+      }
+    ]
+  },
+  "evangelical-anglicans": {
+    "name": "Anglicans évangéliques",
+    "label": "Anglicans évangéliques",
+    "intro": "Des pasteurs et des évêques de l’Église d’Angleterre et de ses Églises sœurs, qui ont placé l’Évangile de la grâce au centre. On y trouve aussi bien un ancien capitaine de navire négrier converti que des archevêques de l’Église d’Ouganda.",
+    "qa": [
+      {
+        "q": "Qu’est-ce qu’un anglican évangélique ?",
+        "a": "Un anglican évangélique appartient à l’Église d’Angleterre ou à une Église de la Communion anglicane et met l’accent sur la conversion, l’autorité de la Bible et la croix du Christ. John Newton, J. C. Ryle et John Stott sont trois des voix les plus connues de cette tradition."
+      },
+      {
+        "q": "Comment l’Église anglicane s’est-elle développée en Afrique de l’Est ?",
+        "a": "Les missionnaires de la Church Missionary Society implantèrent l’Église anglicane en Ouganda à la fin du XIXe siècle. Au XXe siècle, des responsables africains comme Erica Sabiti, Festo Kivengere et Janani Luwum la conduisirent à travers le réveil et la persécution."
+      },
+      {
+        "q": "Qui a écrit Amazing Grace ?",
+        "a": "John Newton, ancien capitaine de navire négrier devenu pasteur anglican, écrivit le cantique « Amazing Grace » pour sa paroisse d’Olney."
+      }
+    ]
+  },
+  "evangelists": {
+    "name": "Évangélistes et prédicateurs de réveil",
+    "label": "Évangélistes",
+    "intro": "Des prédicateurs qui ont appelé les foules à la foi en Christ, dans les champs, sous les tentes, dans les tabernacles et les stades. Leurs vies vont des réveils du XVIIIe siècle aux grandes campagnes d’évangélisation du XXe siècle.",
+    "qa": [
+      {
+        "q": "Qu’est-ce qu’un réveil ?",
+        "a": "Un réveil est une période où beaucoup de gens se tournent vers Dieu en même temps et où l’Église est renouvelée dans la prière et la sainteté. Le Grand Réveil en Grande-Bretagne et en Amérique, ainsi que les campagnes de Moody et de Finney au XIXe siècle, en sont des exemples bien connus."
+      },
+      {
+        "q": "Qui a prêché devant les plus grandes foules ?",
+        "a": "Billy Graham a prêché en personne devant plus de gens qu’aucun prédicateur avant lui, lors de campagnes sur tous les continents. George Whitefield attira certaines des plus grandes foules du XVIIIe siècle en prêchant en plein air."
+      },
+      {
+        "q": "Pourquoi lire les évangélistes aujourd’hui ?",
+        "a": "Leurs sermons sont courts, directs et faits pour être compris de tous. Ils montrent l’Évangile prêché simplement, avec un appel pressant à y répondre."
+      }
+    ]
+  },
+  "holiness-and-keswick": {
+    "name": "Mouvement de sainteté et Keswick",
+    "label": "Sainteté et Keswick",
+    "intro": "Les enseignants de la « vie chrétienne supérieure » : un croyant peut marcher chaque jour dans la victoire en se confiant en Christ plutôt qu’en luttant. Leurs conventions à Keswick et en Amérique, ainsi que l’Armée du Salut, ont porté ce message dans le monde entier.",
+    "qa": [
+      {
+        "q": "Qu’était le mouvement de Keswick ?",
+        "a": "Keswick est une ville du Lake District, en Angleterre, où commença en 1875 une convention annuelle « pour la promotion de la sainteté pratique ». Des orateurs comme Andrew Murray et F. B. Meyer enseignaient que la sainteté se reçoit par la foi et l’abandon."
+      },
+      {
+        "q": "Qu’est-ce que le mouvement de sainteté ?",
+        "a": "Le mouvement de sainteté est né du méthodisme dans l’Amérique du XIXe siècle et enseignait une seconde œuvre de la grâce qui purifie le cœur et le remplit d’amour. Amanda Berry Smith et Julia Foote le prêchèrent, et Catherine et William Booth en firent l’Armée du Salut."
+      },
+      {
+        "q": "Quel livre lire en premier ?",
+        "a": "« Le secret d’une vie chrétienne heureuse » de Hannah Whitall Smith est l’exposé classique de la vie chrétienne supérieure, et il est encore largement lu."
+      }
+    ]
+  },
+  "pentecostal-pioneers": {
+    "name": "Pionniers pentecôtistes",
+    "label": "Pionniers pentecôtistes",
+    "intro": "Des prédicateurs du réveil pentecôtiste du début du XXe siècle, qui enseignaient le baptême dans le Saint-Esprit et priaient pour les malades. Leurs sermons débordent d’une foi hardie dans les promesses de Dieu.",
+    "qa": [
+      {
+        "q": "Quand le mouvement pentecôtiste a-t-il commencé ?",
+        "a": "Le mouvement pentecôtiste est issu des réveils des premières années du XXe siècle, dont le plus célèbre est celui des réunions d’Azusa Street, à Los Angeles, à partir de 1906. En quelques années, il s’étendit à la Grande-Bretagne, à l’Afrique du Sud et au-delà."
+      },
+      {
+        "q": "Qu’enseignaient les pionniers pentecôtistes sur la guérison ?",
+        "a": "Ils enseignaient que le Christ guérit encore les malades en réponse à la prière, comme dans les Évangiles. « Le Christ guérisseur » de F. F. Bosworth est l’un des livres les plus connus sur le sujet."
+      },
+      {
+        "q": "Qui était Smith Wigglesworth ?",
+        "a": "Smith Wigglesworth était un plombier du Yorkshire qui ne savait pas lire dans son enfance et qui devint l’un des prédicateurs pentecôtistes les plus connus au monde, voyageant beaucoup pour prêcher la foi et prier pour les malades."
+      }
+    ]
+  },
+  "missionaries": {
+    "name": "Missionnaires",
+    "label": "Missionnaires",
+    "intro": "Des hommes et des femmes qui ont quitté leur foyer pour porter l’Évangile à d’autres peuples — dans les forêts de l’Amérique coloniale, en Inde, en Chine, au Calabar, au Rwanda et en Équateur. Beaucoup de leurs vies sont racontées ici en entier, et certains ont écrit leurs propres livres.",
+    "qa": [
+      {
+        "q": "Quels sont les missionnaires chrétiens les plus célèbres ?",
+        "a": "Parmi les plus connus figurent William Carey en Inde, Hudson Taylor en Chine, David Livingstone en Afrique, Mary Slessor au Calabar, Amy Carmichael en Inde, ainsi que Jim et Elisabeth Elliot en Équateur."
+      },
+      {
+        "q": "Qu’était la China Inland Mission ?",
+        "a": "La China Inland Mission fut fondée par Hudson Taylor en 1865 pour porter l’Évangile dans les provinces intérieures de la Chine. Ses missionnaires portaient l’habit chinois et comptaient sur Dieu pour leur subsistance, sans faire appel aux dons."
+      },
+      {
+        "q": "Quelle histoire missionnaire lire en premier ?",
+        "a": "La vie de Mary Slessor, d’une filature de Dundee aux villages du Calabar, et le voyage de Gladys Aylward à travers la Sibérie jusqu’en Chine sont deux des récits les plus captivants."
+      }
+    ]
+  },
+  "east-african-revival": {
+    "name": "Le Réveil est-africain",
+    "label": "Réveil est-africain",
+    "intro": "Un réveil né au Rwanda et en Ouganda dans les années 1930, qui s’est répandu pendant des décennies à travers l’Afrique de l’Est. Ses « frères » marchaient ensemble dans la lumière, confessaient ouvertement leurs péchés et prêchaient Jésus à travers la persécution et le martyre.",
+    "qa": [
+      {
+        "q": "Qu’était le Réveil est-africain ?",
+        "a": "Le Réveil est-africain fut un mouvement de repentance et de renouveau au sein des Églises anglicanes du Rwanda, de l’Ouganda, du Kenya et de la Tanzanie, à partir du début des années 1930. On se souvient de lui pour la confession ouverte des péchés, la communion par-delà les tribus et les races, et le témoignage public joyeux."
+      },
+      {
+        "q": "Qui a lancé le Réveil est-africain ?",
+        "a": "On le fait généralement remonter à la communion fraternelle entre Simeon Nsibambi, agent de santé ougandais, et Joe Church, médecin missionnaire anglais, qui se rencontrèrent à Kampala en 1929. Yosiya Kinuka, de l’hôpital de Gahini au Rwanda, et Blasio Kigozi les rejoignirent bientôt."
+      },
+      {
+        "q": "Qui était Janani Luwum ?",
+        "a": "Janani Luwum, converti lors du réveil, était archevêque de l’Église d’Ouganda ; il fut tué sous le régime d’Idi Amin en 1977 après avoir protesté contre ses violences."
+      }
+    ]
+  },
+  "britain-and-ireland": {
+    "name": "Auteurs chrétiens de Grande-Bretagne et d’Irlande",
+    "label": "Grande-Bretagne et Irlande",
+    "intro": "Des pasteurs, des poètes, des missionnaires et des évangélistes d’Angleterre, d’Écosse, du pays de Galles et d’Irlande. Ensemble, ils ont écrit un grand nombre des livres et des cantiques chrétiens les plus aimés de la langue anglaise.",
+    "qa": [
+      {
+        "q": "Pourquoi tant de classiques chrétiens viennent-ils de Grande-Bretagne ?",
+        "a": "La Réforme anglaise, les puritains, le réveil évangélique et le mouvement missionnaire ont tous prospéré en Grande-Bretagne, et l’imprimerie a largement diffusé leurs sermons et leurs livres. Beaucoup de ces livres n’ont jamais cessé d’être lus."
+      },
+      {
+        "q": "Quel livre chrétien britannique est le plus lu ?",
+        "a": "« Le Voyage du pèlerin » de John Bunyan, écrit dans les années 1670, a été traduit en plus de langues que presque aucun autre livre après la Bible."
+      },
+      {
+        "q": "Les auteurs gallois et écossais sont-ils présentés à part ?",
+        "a": "Oui. L’Angleterre, l’Écosse et le pays de Galles ont chacun leur propre page, et celle-ci les rassemble tous avec les auteurs d’Irlande."
+      }
+    ]
+  },
+  "england": {
+    "name": "Auteurs chrétiens d’Angleterre",
+    "label": "Angleterre",
+    "intro": "Des pasteurs puritains aux prédicateurs victoriens et aux missionnaires du XXe siècle, l’Angleterre a donné à l’Église une longue lignée d’écrivains. Leurs livres remplissent encore les rayonnages des lecteurs chrétiens du monde entier.",
+    "qa": [
+      {
+        "q": "Quels sont les auteurs chrétiens anglais les plus connus ?",
+        "a": "Parmi les plus lus figurent John Bunyan, John Wesley, Charles Spurgeon, J. C. Ryle et John Stott, ainsi que des missionnaires comme Hudson Taylor et Gladys Aylward."
+      },
+      {
+        "q": "Qui fut le plus célèbre prédicateur anglais ?",
+        "a": "Charles Spurgeon, surnommé le Prince des prédicateurs, attirait chaque dimanche des milliers de personnes au Metropolitan Tabernacle de Londres au XIXe siècle, et ses sermons imprimés touchèrent des millions de lecteurs."
+      },
+      {
+        "q": "Quel livre chrétien anglais lire en premier ?",
+        "a": "« Le Voyage du pèlerin » de John Bunyan est le point de départ classique."
+      }
+    ]
+  },
+  "scotland": {
+    "name": "Auteurs chrétiens d’Écosse",
+    "label": "Écosse",
+    "intro": "Un jeune pasteur de Dundee, un explorateur ancien ouvrier de filature, un prédicateur né à Glasgow et une ouvrière de filature devenue missionnaire au Calabar. Les écrivains d’Écosse ont porté la foi de la Kirk dans des chaires et sur des champs de mission loin de chez eux.",
+    "qa": [
+      {
+        "q": "Quels sont les missionnaires écossais célèbres ?",
+        "a": "David Livingstone, le missionnaire explorateur de l’Afrique centrale, et Mary Slessor, qui servit près de quarante ans au Calabar, dans l’actuel Nigeria, sont les plus connus."
+      },
+      {
+        "q": "Qui était Robert Murray M’Cheyne ?",
+        "a": "Robert Murray M’Cheyne était le pasteur de St Peter’s, à Dundee, mort en 1843 à l’âge de vingt-neuf ans. On se souvient de lui pour sa vie sainte, ses lettres et son plan de lecture de la Bible."
+      },
+      {
+        "q": "Alexander Maclaren était-il écossais ?",
+        "a": "Oui. Alexander Maclaren naquit à Glasgow et devint prédicateur baptiste ; il servit l’Union Chapel de Manchester pendant plus de quarante ans."
+      }
+    ]
+  },
+  "wales": {
+    "name": "Auteurs chrétiens du pays de Galles",
+    "label": "Pays de Galles",
+    "intro": "Une terre de réveils et de grands prédicateurs. D’un poète-prêtre du XVIIe siècle à un mineur de charbon qui apprit à prier, ces croyants nés au pays de Galles ont laissé des paroles qui réchauffent encore le cœur.",
+    "qa": [
+      {
+        "q": "Qui furent les grands prédicateurs gallois ?",
+        "a": "Christmas Evans fut le prédicateur gallois le plus célèbre du début du XIXe siècle, et Martyn Lloyd-Jones, né à Cardiff, fut l’un des grands prédicateurs du XXe siècle."
+      },
+      {
+        "q": "Qu’était le Réveil gallois ?",
+        "a": "Le Réveil gallois de 1904-1905 déferla sur les chapelles du pays de Galles et amena des milliers de personnes à la foi. Rees Howells, alors jeune mineur de charbon, en fut profondément marqué."
+      },
+      {
+        "q": "George Herbert était-il gallois ?",
+        "a": "George Herbert naquit à Montgomery, au pays de Galles, en 1593, dans une famille noble des marches galloises, et devint poète et pasteur de campagne en Angleterre."
+      }
+    ]
+  },
+  "europe": {
+    "name": "Auteurs chrétiens d’Europe continentale",
+    "label": "Europe continentale",
+    "intro": "Des papes et des moines, des réformateurs et des mystiques, un mathématicien et une horlogère néerlandaise. Les écrivains de l’Europe continentale couvrent près de deux mille ans d’histoire de l’Église.",
+    "qa": [
+      {
+        "q": "Qui furent les grands écrivains chrétiens d’Europe ?",
+        "a": "On compte parmi eux Grégoire le Grand et Bernard de Clairvaux au Moyen Âge, Martin Luther et Jean Calvin à la Réforme, Blaise Pascal et Thérèse d’Avila, et Dietrich Bonhoeffer et Corrie ten Boom au XXe siècle."
+      },
+      {
+        "q": "Quel livre chrétien européen est le plus lu ?",
+        "a": "« L’Imitation de Jésus-Christ » de Thomas à Kempis, écrite au XVe siècle, compte parmi les livres chrétiens les plus lus au monde."
+      },
+      {
+        "q": "La France et l’Allemagne sont-elles présentées à part ?",
+        "a": "Oui. La France et l’Allemagne ont chacune leur propre page, et celle-ci les rassemble avec les auteurs d’Italie, d’Espagne, des Pays-Bas et d’ailleurs."
+      }
+    ]
+  },
+  "france": {
+    "name": "Auteurs chrétiens de France",
+    "label": "France",
+    "intro": "Un abbé cistercien, le réformateur de Genève, un mathématicien qui écrivit sur les raisons du cœur et une noble emprisonnée pour avoir enseigné la prière. Les écrivains chrétiens de France sont ici peu nombreux, mais leur influence est grande.",
+    "qa": [
+      {
+        "q": "Jean Calvin était-il français ?",
+        "a": "Oui. Jean Calvin naquit à Noyon, dans le nord de la France, en 1509, et accomplit l’essentiel de son œuvre de réformateur à Genève après avoir fui la France."
+      },
+      {
+        "q": "Qu’a écrit Blaise Pascal sur la foi ?",
+        "a": "Les « Pensées » de Pascal sont des notes en vue d’une apologie du christianisme, où figure sa célèbre remarque : « Le cœur a ses raisons que la raison ne connaît point. »"
+      },
+      {
+        "q": "Qui était Madame Guyon ?",
+        "a": "Jeanne Guyon était une mystique française du XVIIe siècle dont les courts livres sur la prière lui valurent d’être emprisonnée à la Bastille, et qui influença plus tard de nombreux lecteurs protestants."
+      }
+    ]
+  },
+  "germany": {
+    "name": "Auteurs chrétiens d’Allemagne",
+    "label": "Allemagne",
+    "intro": "D’un moine qui écrivit « L’Imitation de Jésus-Christ » au réformateur de Wittenberg, d’un fondateur d’orphelinats qui vivait de la prière à un pasteur qui résista à Hitler, les écrivains d’Allemagne ont façonné la piété chrétienne depuis cinq siècles.",
+    "qa": [
+      {
+        "q": "Qui était Martin Luther ?",
+        "a": "Martin Luther était un moine et professeur allemand dont l’enseignement de la justification par la foi seule déclencha la Réforme protestante en 1517."
+      },
+      {
+        "q": "George Müller était-il allemand ?",
+        "a": "George Müller naquit en Prusse, dans l’actuelle Allemagne, en 1805, et s’installa en Angleterre, où il prit soin de milliers d’orphelins à Bristol sans jamais demander d’argent à personne."
+      },
+      {
+        "q": "Pourquoi se souvient-on de Dietrich Bonhoeffer ?",
+        "a": "Dietrich Bonhoeffer était un pasteur luthérien allemand qui s’opposa à Hitler et fut exécuté en 1945. Ses livres sur l’appel à suivre le Christ et sur la vie communautaire chrétienne sont encore largement lus."
+      }
+    ]
+  },
+  "north-america": {
+    "name": "Auteurs chrétiens d’Amérique du Nord",
+    "label": "Amérique du Nord",
+    "intro": "Des prédicateurs du Grand Réveil, des fondateurs d’Églises noires, des évangélistes, des missionnaires et des pasteurs des États-Unis et du Canada. Leurs vies retracent l’histoire du christianisme américain, du Connecticut colonial au New York d’aujourd’hui.",
+    "qa": [
+      {
+        "q": "Quels sont les auteurs chrétiens américains les plus influents ?",
+        "a": "Jonathan Edwards, Charles Finney, Dwight L. Moody, A. W. Tozer et Billy Graham figurent parmi les plus lus, avec Richard Allen, fondateur de l’Église épiscopale méthodiste africaine."
+      },
+      {
+        "q": "Y a-t-il des auteurs canadiens ici ?",
+        "a": "Oui. A. B. Simpson, fondateur de l’Alliance chrétienne et missionnaire, et le prédicateur pentecôtiste John G. Lake sont tous deux nés au Canada."
+      },
+      {
+        "q": "Les États-Unis sont-ils présentés à part ?",
+        "a": "Oui. Les États-Unis ont leur propre page, et celle-ci rassemble leurs auteurs avec ceux du Canada."
+      }
+    ]
+  },
+  "united-states": {
+    "name": "Auteurs chrétiens des États-Unis",
+    "label": "États-Unis",
+    "intro": "De Jonathan Edwards et du Grand Réveil aux campagnes de Billy Graham, les États-Unis ont donné des prédicateurs, des missionnaires et des enseignants lus dans le monde entier. Leurs histoires parlent d’esclavage et de liberté, de réveil et de fondation de nouvelles Églises.",
+    "qa": [
+      {
+        "q": "Qui fut le plus grand théologien américain ?",
+        "a": "Jonathan Edwards, pasteur de Northampton, dans le Massachusetts, au XVIIIe siècle, est souvent considéré comme le plus grand théologien qu’ait produit l’Amérique. Ses écrits sur le réveil et les affections religieuses sont encore étudiés."
+      },
+      {
+        "q": "Qui furent les premiers prédicateurs afro-américains ?",
+        "a": "Lemuel Haynes fut le premier homme noir ordonné par une grande dénomination protestante en Amérique. Richard Allen fonda l’Église épiscopale méthodiste africaine, et Jarena Lee en devint la première prédicatrice autorisée."
+      },
+      {
+        "q": "Quel livre chrétien américain lire en premier ?",
+        "a": "« À la poursuite de Dieu » d’A. W. Tozer et les livres d’E. M. Bounds sur la prière sont courts, pénétrants et très aimés."
+      }
+    ]
+  },
+  "east-africa": {
+    "name": "Auteurs chrétiens d’Afrique de l’Est",
+    "label": "Afrique de l’Est",
+    "intro": "Les frères du Réveil est-africain, venus d’Ouganda et du Rwanda — agents de santé, maîtres d’école, employés d’hôpital, évangélistes et évêques. Plusieurs d’entre eux ont scellé leur témoignage de leur vie.",
+    "qa": [
+      {
+        "q": "Quels pays d’Afrique de l’Est sont représentés ici ?",
+        "a": "Les auteurs de cette page viennent d’Ouganda et du Rwanda, les deux pays où le Réveil est-africain a commencé."
+      },
+      {
+        "q": "Qui était Yona Kanamuzeyi ?",
+        "a": "Yona Kanamuzeyi était un diacre anglican rwandais du réveil, tué en 1964 ; les récits s’accordent à dire qu’il chantait tandis qu’on l’emmenait pour être fusillé."
+      },
+      {
+        "q": "L’Ouganda est-il présenté à part ?",
+        "a": "Oui. L’Ouganda a sa propre page, et celle-ci rassemble ses auteurs avec ceux du Rwanda."
+      }
+    ]
+  },
+  "uganda": {
+    "name": "Auteurs chrétiens d’Ouganda",
+    "label": "Ouganda",
+    "intro": "Des responsables du Réveil est-africain et de l’Église d’Ouganda : un évangéliste qui parcourut le monde, le premier archevêque africain d’Ouganda et un archevêque martyrisé sous Idi Amin. Leurs vies racontent l’histoire d’une Église éprouvée et renouvelée.",
+    "qa": [
+      {
+        "q": "Qui était Festo Kivengere ?",
+        "a": "Festo Kivengere était un évêque anglican et évangéliste ougandais du Réveil est-africain, connu dans le monde entier pour sa prédication du pardon après avoir fui le régime d’Idi Amin."
+      },
+      {
+        "q": "Qui fut le premier archevêque africain d’Ouganda ?",
+        "a": "Erica Sabiti devint en 1966 le premier archevêque africain de l’Église d’Ouganda."
+      },
+      {
+        "q": "Comment le christianisme est-il arrivé en Ouganda ?",
+        "a": "Des missionnaires anglicans et catholiques arrivèrent au Buganda à la fin des années 1870. La jeune Église connut la persécution, notamment le martyre de convertis ougandais en 1885-1887, et grandit rapidement dans les décennies qui suivirent."
+      }
+    ]
+  },
+  "north-africa": {
+    "name": "Auteurs chrétiens d’Afrique du Nord",
+    "label": "Afrique du Nord",
+    "intro": "Bien avant l’islam, l’Afrique du Nord fut l’un des cœurs de l’Église. Carthage, Hippone et Alexandrie ont donné à l’Église un évêque martyr, le défenseur de la divinité du Christ, et Augustin avec sa mère en prière.",
+    "qa": [
+      {
+        "q": "Augustin était-il africain ?",
+        "a": "Oui. Augustin d’Hippone naquit en 354 à Thagaste, en Afrique du Nord romaine (l’actuelle Algérie), et fut évêque d’Hippone, sur la même côte, pendant plus de trente ans."
+      },
+      {
+        "q": "Qui était Athanase d’Alexandrie ?",
+        "a": "Athanase fut évêque d’Alexandrie, en Égypte, pendant quarante-cinq ans au IVe siècle, et défendit la pleine divinité du Christ contre l’arianisme à travers cinq exils."
+      },
+      {
+        "q": "Qui était Cyprien de Carthage ?",
+        "a": "Cyprien fut évêque de Carthage au IIIe siècle ; auteur d’écrits sur l’unité de l’Église, il mourut martyr en 258."
+      }
+    ]
+  },
+  "asia-and-the-middle-east": {
+    "name": "Auteurs chrétiens d’Asie et du Moyen-Orient",
+    "label": "Asie et Moyen-Orient",
+    "intro": "D’Antioche, où les disciples furent pour la première fois appelés chrétiens, jusqu’à l’Inde et à la Chine. Ces écrivains couvrent l’Église ancienne de Syrie et les Églises modernes d’Asie.",
+    "qa": [
+      {
+        "q": "Qui était Watchman Nee ?",
+        "a": "Watchman Nee était un prédicateur et implanteur d’Églises chinois du XXe siècle, qui passa les vingt dernières années de sa vie en prison à cause de sa foi. Son livre « La Vie chrétienne normale » est largement lu."
+      },
+      {
+        "q": "Qui était Pandita Ramabai ?",
+        "a": "Pandita Ramabai était une érudite indienne en sanskrit et une réformatrice sociale qui devint chrétienne et fonda la Mukti Mission pour les veuves et les jeunes orphelines, près de Pune."
+      },
+      {
+        "q": "Pourquoi Antioche est-elle importante dans l’histoire de l’Église ?",
+        "a": "C’est à Antioche de Syrie que les disciples de Jésus furent pour la première fois appelés chrétiens (Actes 11.26). Ignace d’Antioche en fut l’évêque au début du IIe siècle, et Jean Chrysostome y prêcha avant de devenir archevêque de Constantinople."
+      }
+    ]
+  }
+}

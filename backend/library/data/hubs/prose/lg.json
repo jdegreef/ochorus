@@ -1,0 +1,480 @@
+{
+  "_note": [
+    "Luganda hub prose — AI translation (ai_unreviewed), pending native review. Glossary: church fathers = Bakitaffe b'Ekkanisa; early church = Ekkanisa ey'edda; revival = okuzuukuka (East African Revival = Okuzuukuka kw'Afrika ya Buvanjuba, Great Awakening = Okuzuukuka Okukulu); Reformation = Okuzza Obuggya; Methodist = Omumesodisiti; Baptist = Omubatisita; Puritan = Omupuritani; Anglican = Omwanglikani; Presbyterian = Omupresbiteri; Pentecostal = Ekipentekoote; Salvation Army = Eggye ery'Obulokozi; missionary = omuminsani; bishop/archbishop = omulabirizi/Ssaabalabirizi; Britain = Bulitaniya, England = Bungereza; United States = Amerika, North America = Amerika ey'Obukiikakkono. Person names follow the Luganda bios (mostly the English form, with 'X ow'e Y' for 'X of Y'). Book titles stay in English: no Luganda edition of the named works exists on the site."
+  ],
+  "early-church": {
+    "name": "Abawandiisi b'Ekkanisa ey'edda",
+    "label": "Ekkanisa ey'edda",
+    "intro": "Abalabirizi, ababuulizi n'abajulizi okuva mu byasa ebyasooka oluvannyuma lw'abatume. Ebbaluwa zaabwe, okubuulira kwabwe n'okwatula kwabwe byawandiikibwa mu buyigganyizibwa, mu mpaka ne mu kusaba, era byabumba engeri ekkanisa gy'esomamu Bayibuli okuva olwo.",
+    "qa": [
+      {
+        "q": "Bakitaffe b'Ekkanisa be baani?",
+        "a": "Bakitaffe b'Ekkanisa be basomesa n'abalabirizi abakulu ab'ebyasa ebyasooka eby'Obukristaayo, ebiwandiiko byabwe ekkanisa ey'oluvannyuma bye yatwala ng'obujulizi obwesigwa obw'enjigiriza y'abatume. Clement ow'e Rooma ne Ignatius ow'e Antiyokiya baawandiika mu mulembe ogwaddirira abatume; Athanasius, John Chrysostom ne Augustine ba mu mulembe omukulu ogw'ekyasa eky'okuna n'eky'okutaano."
+      },
+      {
+        "q": "Ntandikira wa ku Kkanisa ey'edda?",
+        "a": "Confessions ya Augustine kye kitabo ekisinga okumanyibwa eky'omulembe ogwo, era kisomebwa ng'okusaba okwolekera Katonda. Ebbaluwa ennyimpi eza Ignatius ow'e Antiyokiya, ze yawandiika ng'ali mu lugendo olw'okuttibwa olw'okukkiriza kwe, osobola okuzisoma mu kaseera ka olweggulo kamu."
+      },
+      {
+        "q": "Lwaki abawandiisi b'Ekkanisa ey'edda bakyali ba mugaso?",
+        "a": "Baalwanirira obwakatonda obujjuvu obwa Kristo, ne bateekawo ebigambo by'Enzikiriza, era ne balaga abakkiriza aba bulijjo engeri y'okusaba, okubonaabona n'okuweereza. Ennono ezisinga ez'oluvannyuma, ez'Abakatoliki, Abasodokisi n'Abaporotesitanti, zikyabasoma nga bajjajjaabwe bonna be bagabana."
+      }
+    ]
+  },
+  "monks-and-mystics": {
+    "name": "Abamonaki, ab'ekyama n'abeefumiitiriza",
+    "label": "Abamonaki n'ab'ekyama",
+    "intro": "Abawandiisi abaanoonya Katonda mu kasirise, mu kusaba ne mu kwewaayo okw'omutima. Okuva mu nnyumba z'abamonaki ez'omu Bufalansa ey'Emyaka egya Wakati okutuuka mu kaduukulu k'omukazi Omufalansa ow'olulyo olw'ekitiibwa, ebitabo byabwe biyigirizza emirembe n'emirembe gy'abasomi okusaba.",
+    "qa": [
+      {
+        "q": "Obukristaayo obw'ekyama kye ki?",
+        "a": "Obukristaayo obw'ekyama y'ennono ey'okunoonya okumanya Katonda mu ngeri ey'obutereevu era ey'okwagala, nga kuyita mu kusaba, okwefumiitiriza n'okwewaayo. Abawandiisi baayo bannyonnyola olugendo lw'emmeeme olw'omunda olugenda eri okwegatta ne Katonda, okusinga okunnyonnyola enjigiriza."
+      },
+      {
+        "q": "Kitabo ki kye nsaanidde okusooka okusoma?",
+        "a": "The Imitation of Christ ekya Thomas à Kempis kisomeddwa nnyo okusinga kumpi ekitabo kyonna Ekikristaayo okuggyako Bayibuli. Essuula zaakyo ennyimpi ku bwetoowaze, obugumiikiriza n'okussa ekimu ne Kristo osobola okuzisoma emu ku emu."
+      },
+      {
+        "q": "Abawandiisi bano baali Bakatoliki oba Baporotesitanti?",
+        "a": "Abasinga baali bamonaki n'ababikira Abakatoliki, nga Bernard of Clairvaux ne Teresa ow'e Ávila. William Law yali musaseredooti Omwanglikani, era abasomi Abaporotesitanti nga John Wesley baasanga nga Jeanne Guyon ne Thomas à Kempis babumba nnyo obulamu bwabwe obw'omwoyo."
+      }
+    ]
+  },
+  "puritans": {
+    "name": "Abawandiisi Abapuritani",
+    "label": "Abapuritani",
+    "intro": "Abasumba Abangereza ab'oku nkomerero y'emyaka gya 1500 n'ab'emyaka gya 1600, abaayagala ekkanisa ezzibwa obuggya n'Ebyawandiikibwa n'obulamu obutambulira mu maaso ga Katonda. Bangi ku bo baagobebwa ku bituuti byabwe mu 1662, ne bawandiika mu kifo ky'ekyo — ebitabo ku kibi n'ekisa, ku kuyitibwa kw'omusumba ne ku lugendo lw'Omukristaayo, ebikyasomebwa n'olwaleero.",
+    "qa": [
+      {
+        "q": "Abapuritani baali baani?",
+        "a": "Abapuritani baali Baporotesitanti Abangereza abaasindikiriza ekkanisa n'obulamu obwa buli lunaku okubumbibwa ddala n'Ebyawandiikibwa. Abasumba baabwe bajjukirwa olw'okubuulira okukebera omutima era okw'omugaso mu bulamu, ku mutima, ku kukyuka ne ku bukakafu bw'obulokozi."
+      },
+      {
+        "q": "Kitabo ki Ekipuritani kye nsaanidde okusooka okusoma?",
+        "a": "The Pilgrim's Progress ekya John Bunyan kye kitabo Ekipuritani ekisinga okusomebwa, era lye kkubo erisinga obwangu ery'okuyingiramu. The Bruised Reed ekya Richard Sibbes kimpi era kya kisa nnyo eri abakkiriza abawulira nga banafu."
+      },
+      {
+        "q": "Lwaki Abapuritani bangi baagobebwa mu 1662?",
+        "a": "Etteeka ly'Obumu (Act of Uniformity) erya 1662 lyalagira buli muweereza w'Ekkanisa ya Bungereza okukkiriza Ekitabo ky'Okusaba (Book of Common Prayer) kyonna n'okutuuzibwa abalabirizi. Abaweereza nga enkumi bbiri, nga mw'otwalidde Richard Baxter ne Thomas Watson, baagaana okugondera etteeka eryo ne bafiirwa ebifo byabwe eby'obusumba."
+      }
+    ]
+  },
+  "methodists": {
+    "name": "Abawandiisi Abamesodisiti n'aba Wesley",
+    "label": "Abamesodisiti",
+    "intro": "Okuzuukuka okwatandika ne John ne Charles Wesley mu Bungereza mu kyasa ekya 18, n'amakanisa agaakulira mu kwo ku njuyi zombi eza Atlantiki. Abawandiisi baakwo baabuulira okukkiriza okubugumya omutima, obulamu obutukuvu n'enjiri eri abaavu.",
+    "qa": [
+      {
+        "q": "Obumesodisiti bwatandika butya?",
+        "a": "Obumesodisiti bwatandika ng'ekibiina ky'obutukuvu obw'empisa enkakali era obw'omu bulamu obwa buli lunaku, nga kikulemberwa John Wesley ne muganda we Charles mu Kkanisa ya Bungereza mu myaka gya 1730 ne 1740. Okubuulira kwabwe mu bbanga ery'ebweru n'enkuŋŋaana zaabwe entono ez'ebibinja byasaasaanya okuzuukuka mu Bungereza yonna ne mu Amerika."
+      },
+      {
+        "q": "Ani yatandikawo African Methodist Episcopal Church?",
+        "a": "Richard Allen, omubuulizi eyali omuddu edda mu Philadelphia, yakulembera Abamesodisiti Abaddugavu okuva mu kibiina ekyali kyawula abantu olwa langi, n'atandikawo African Methodist Episcopal Church mu 1816. Jarena Lee ne Julia Foote baabuulira mu nnono eyo."
+      },
+      {
+        "q": "Abamesodisiti baategeeza ki bwe baayogeranga ku butukuvu?",
+        "a": "Wesley yayigiriza nti obulamu bw'Omukristaayo bugendereddwamu okukula mu kwagala okutuukiridde eri Katonda n'eri muliraanwa, so si mu kusonyiyibwa kwokka. Enjigiriza eyo yabumba ekibiina ky'obutukuvu eky'oluvannyuma n'abawandiisi nga Amanda Berry Smith."
+      }
+    ]
+  },
+  "baptists": {
+    "name": "Ababuulizi n'abawandiisi Ababatisita",
+    "label": "Ababatisita",
+    "intro": "Ababuulizi n'abaminsani b'amakanisa g'Ababatisita, agabatiza abakkiriza nga bamaze okwatula okukkiriza kwabwe. Mu bo mulimu \"Omulangira w'Ababuulizi\", kitaawe w'obuminsani obw'omulembe guno, n'omulenzi w'oku ffaamu mu Wales eyafuuka omubuulizi asinga mu nsi ye.",
+    "qa": [
+      {
+        "q": "Ababatisita bakkiririza ki ku kubatizibwa?",
+        "a": "Ababatisita babatiza abo abeeyatulira bo bennyini okukkiriza mu Kristo, emirundi mingi nga babannyika mu mazzi, so si baana bawere. Era bassa essira ku buyinza bw'Ebyawandiikibwa n'eddembe lya buli kibiina ky'ekkanisa eky'omu kitundu."
+      },
+      {
+        "q": "Omulangira w'Ababuulizi yali ani?",
+        "a": "Charles Haddon Spurgeon, omusumba wa Metropolitan Tabernacle e London, ye yayitibwa Omulangira w'Ababuulizi. Okubuulira kwe kwakubibwanga mu kyapa buli wiiki ne kutundibwa mu nsi yonna."
+      },
+      {
+        "q": "Lwaki William Carey ayitibwa kitaawe w'obuminsani obw'omulembe guno?",
+        "a": "William Carey, Omubatisita Omungereza eyali akola engatto, yakubiriza amakanisa mu 1792 okutuma abaminsani ebweru w'eggwanga, oluvannyuma ye yennyini n'asaabala okugenda e Buyindi. Ekyokulabirako kye kyatandikawo ebibiina ebinene eby'obuminsani eby'ekyasa ekya 19."
+      }
+    ]
+  },
+  "reformed-and-presbyterian": {
+    "name": "Abawandiisi ba Reformed n'Abapresbiteri",
+    "label": "Reformed n'Abapresbiteri",
+    "intro": "Abasika b'Okuzza Obuggya mu Geneva ne mu Scotland, abaayigiriza obufuzi bwa Katonda mu kisa kye. Okuva ku John Calvin okutuuka ku musawo ow'e Wales eyafuuka omubuulizi, baagatta ebya Katonda ebyekenneenyezeddwa obulungi n'okwewaayo okubuguma.",
+    "qa": [
+      {
+        "q": "Reformed kitegeeza ki?",
+        "a": "Amakanisa ga Reformed gava mu Kuzza Obuggya okw'omu Switzerland okwakulemberwa Zwingli ne John Calvin. Gassa essira ku bufuzi bwa Katonda mu bulokozi, ku buyinza bw'Ebyawandiikibwa, ne ku kkanisa efugibwa abakadde."
+      },
+      {
+        "q": "Abapresbiteri be bamu n'aba Reformed?",
+        "a": "Amakanisa g'Abapresbiteri ge makanisa ga Reformed agafugibwa abakadde (presbyters), enkola eyasimba emirandira naddala mu Scotland. Robert Murray M'Cheyne yaweereza mu Kkanisa ya Scotland; Jonathan Edwards, newakubadde yali Mukongirigganti, yalina enjigiriza y'ebya Katonda eya Reformed y'emu."
+      },
+      {
+        "q": "Ku bawandiisi bano, ani gwe nsaanidde okusooka okusoma?",
+        "a": "Jonathan Edwards ye muwandiisi wa Reformed ow'ennono ku kuzuukuka ne ku nneewulira ez'eddiini (religious affections). Martyn Lloyd-Jones yaleeta ennono y'emu mu London ey'ekyasa ekya 20 mu kubuulira okwangu era okw'obutereevu."
+      }
+    ]
+  },
+  "evangelical-anglicans": {
+    "name": "Abaanglikani ab'Enjiri",
+    "label": "Abaanglikani ab'Enjiri",
+    "intro": "Abaweereza b'eddiini n'abalabirizi b'Ekkanisa ya Bungereza n'amakanisa ganyinaayo, abaakuuma enjiri y'ekisa wakati. Mu bo mulimu omugoba w'emmeeri y'abaddu eyakyuka, okutuuka ku basaabalabirizi b'Ekkanisa ya Uganda.",
+    "qa": [
+      {
+        "q": "Omwanglikani ow'Enjiri y'ani?",
+        "a": "Omwanglikani ow'Enjiri y'oyo ali mu Kkanisa ya Bungereza oba mu kkanisa ya Anglican Communion, era assa essira ku kukyuka, ku buyinza bwa Bayibuli ne ku musaalaba gwa Kristo. John Newton, J. C. Ryle ne John Stott be basatu ku maloboozi g'ennono eno agasinga okumanyibwa."
+      },
+      {
+        "q": "Ekkanisa y'Abaanglikani yakula etya mu Afrika ya Buvanjuba?",
+        "a": "Abaminsani ba Church Missionary Society baasimba Ekkanisa y'Abaanglikani mu Uganda ku nkomerero y'ekyasa ekya 19. Mu kyasa ekya 20, abakulembeze Abafirika nga Erica Sabiti, Festo Kivengere ne Janani Luwum baagikulembera ng'eyita mu kuzuukuka ne mu buyigganyizibwa."
+      },
+      {
+        "q": "Ani yawandiika Amazing Grace?",
+        "a": "John Newton, eyali omugoba w'emmeeri y'abaddu eyafuuka omuweereza w'eddiini Omwanglikani, ye yawandiika oluyimba Amazing Grace ku lw'ekigo kye eky'e Olney."
+      }
+    ]
+  },
+  "evangelists": {
+    "name": "Ababuulizi b'enjiri n'ab'okuzuukuka",
+    "label": "Ababuulizi b'enjiri",
+    "intro": "Ababuulizi abaayita ebibiina by'abantu okukkiriza Kristo, mu nnimiro, mu weema, mu bizimbe ebinene ne mu bisaawe. Obulamu bwabwe butandikira ku kuzuukuka okw'ekyasa ekya 18 okutuuka ku nkuŋŋaana ennene ez'enjiri ez'ekyasa ekya 20.",
+    "qa": [
+      {
+        "q": "Okuzuukuka kye ki?",
+        "a": "Okuzuukuka kye kiseera abantu bangi lwe bakyukira Katonda omulundi gumu, ekkanisa n'ezzibwa obuggya mu kusaba ne mu butukuvu. Okuzuukuka Okukulu mu Bungereza ne mu Amerika, n'enkuŋŋaana za Moody ne Finney mu kyasa ekya 19, bye byokulabirako ebimanyiddwa."
+      },
+      {
+        "q": "Ani yabuulira ebibiina by'abantu ebisinga obunene?",
+        "a": "Billy Graham yabuulira abantu bangi nga bali mu maaso ge okusinga omubuulizi yenna eyamusooka, ng'ayita mu nkuŋŋaana ennene ez'enjiri ku buli ssemazinga. George Whitefield yasikiriza ebibiina ebimu ku bisinga obunene eby'ekyasa ekya 18 ng'abuulira mu bbanga ery'ebweru."
+      },
+      {
+        "q": "Lwaki tusaanidde okusoma ababuulizi b'enjiri leero?",
+        "a": "Okubuulira kwabwe kumpi, kwa butereevu era kugendereddwamu okutegeerwa buli muntu. Kulaga enjiri ng'ebuulirwa mu ngeri ennyangu, n'okuyita okw'amangu okugyanukula."
+      }
+    ]
+  },
+  "holiness-and-keswick": {
+    "name": "Abawandiisi b'Obutukuvu ne Keswick",
+    "label": "Obutukuvu ne Keswick",
+    "intro": "Abasomesa b'\"obulamu obw'Ekikristaayo obw'awaggulu\": nti omukkiriza asobola okutambula mu buwanguzi buli lunaku nga yeesiga Kristo so si ng'alwana. Enkuŋŋaana zaabwe e Keswick ne mu Amerika, awamu n'Eggye ery'Obulokozi (Salvation Army), byatwala obubaka buno mu nsi yonna.",
+    "qa": [
+      {
+        "q": "Ekibiina kya Keswick kyali ki?",
+        "a": "Keswick kabuga mu Lake District ey'e Bungereza, olukuŋŋaana olwa buli mwaka \"olw'okutumbula obutukuvu obw'omu bulamu obwa buli lunaku\" gye lwatandikira mu 1875. Aboogezi nga Andrew Murray ne F. B. Meyer baayigiriza nti obutukuvu bufunibwa lwa kukkiriza n'okwewaayo."
+      },
+      {
+        "q": "Ekibiina ky'obutukuvu kye ki?",
+        "a": "Ekibiina ky'obutukuvu kyava mu Bumesodisiti mu Amerika ey'ekyasa ekya 19, era kyayigiriza omulimu ogw'okubiri ogw'ekisa ogunaaza omutima ne gugujjuza okwagala. Amanda Berry Smith ne Julia Foote baabuulira enjigiriza eno, ate Catherine ne William Booth ne bagizimbiramu Eggye ery'Obulokozi."
+      },
+      {
+        "q": "Kitabo ki kye nsaanidde okusooka okusoma?",
+        "a": "The Christian's Secret of a Happy Life ekya Hannah Whitall Smith kye kitabo eky'ennono ekinnyonnyola obulamu obw'Ekikristaayo obw'awaggulu, era kikyasomebwa nnyo."
+      }
+    ]
+  },
+  "pentecostal-pioneers": {
+    "name": "Abatandisi b'Ekipentekoote",
+    "label": "Abatandisi b'Ekipentekoote",
+    "intro": "Ababuulizi b'okuzuukuka okw'Ekipentekoote okw'oku ntandikwa y'ekyasa ekya 20, abaayigiriza okubatizibwa mu Mwoyo Omutukuvu era ne basabira abalwadde. Okubuulira kwabwe kujjudde okukkiriza okw'obuvumu mu bisuubizo bya Katonda.",
+    "qa": [
+      {
+        "q": "Ekibiina ky'Ekipentekoote kyatandika ddi?",
+        "a": "Ekibiina ky'Ekipentekoote kyakula okuva mu kuzuukuka okw'emyaka egyasooka egy'ekyasa ekya 20, okusinga okumanyibwa enkuŋŋaana za Azusa Street mu Los Angeles okuva mu 1906. Mu myaka mitono kyasaasaana okutuuka mu Bungereza, mu Afirika ya Ddyo n'awalala."
+      },
+      {
+        "q": "Abatandisi b'Ekipentekoote baayigiriza ki ku kuwonya?",
+        "a": "Baayigiriza nti Kristo akyawonya abalwadde ng'addamu okusaba, nga bwe kiri mu Njiri. Christ the Healer ekya F. F. Bosworth kye kimu ku bitabo ebisinga okumanyibwa ku nsonga eno."
+      },
+      {
+        "q": "Smith Wigglesworth yali ani?",
+        "a": "Smith Wigglesworth yali mukozi wa payipu ow'e Yorkshire eyali tamanyi kusoma ng'akyali mulenzi, n'afuuka omu ku babuulizi b'Ekipentekoote abasinga okumanyibwa mu nsi, ng'atambula nnyo okubuulira okukkiriza n'okusabira abalwadde."
+      }
+    ]
+  },
+  "missionaries": {
+    "name": "Abaminsani",
+    "label": "Abaminsani",
+    "intro": "Abasajja n'abakazi abaaleka ewaabwe okutwala enjiri eri abantu abalala — mu bibira by'Amerika ey'omu biro by'amatwale, mu Buyindi, mu China, mu Calabar, mu Rwanda ne mu Ecuador. Obulamu bwa bangi ku bo bunnyonnyoddwa wano mu bujjuvu, era abamu baawandiika ebitabo byabwe bo bennyini.",
+    "qa": [
+      {
+        "q": "Abaminsani Abakristaayo abasinga okumanyibwa be baani?",
+        "a": "Mu basinga okumanyibwa mulimu William Carey mu Buyindi, Hudson Taylor mu China, David Livingstone mu Afirika, Mary Slessor mu Calabar, Amy Carmichael mu Buyindi, ne Jim ne Elisabeth Elliot mu Ecuador."
+      },
+      {
+        "q": "China Inland Mission yali ki?",
+        "a": "China Inland Mission yatandikibwawo Hudson Taylor mu 1865 okutwala enjiri mu masaza ag'omunda aga China. Abaminsani baayo baayambalanga engoye ez'Ekicayina era beesiganga Katonda okubawa bye beetaaga awatali kusaba ssente."
+      },
+      {
+        "q": "Lugero ki olw'omuminsani lwe nsaanidde okusooka okusoma?",
+        "a": "Obulamu bwa Mary Slessor, okuva mu kkolero ly'e Dundee okutuuka mu byalo bya Calabar, n'olugendo lwa Gladys Aylward okuyita mu Siberia okutuuka mu China, bye bibiri ku bisinga okukwata omutima."
+      }
+    ]
+  },
+  "east-african-revival": {
+    "name": "Okuzuukuka kw'Afrika ya Buvanjuba",
+    "label": "Okuzuukuka kw'Afrika ya Buvanjuba",
+    "intro": "Okuzuukuka okwatandika mu Rwanda ne mu Uganda mu myaka gya 1930 ne kusaasaana mu Afrika ya Buvanjuba yonna okumala amakumi g'emyaka. \"Ab'oluganda\" baakwo baatambulira wamu mu kitangaala, ne baatula ebibi byabwe mu lwatu, era ne babuulira Yesu wakati mu buyigganyizibwa n'okuttibwa olw'okukkiriza.",
+    "qa": [
+      {
+        "q": "Okuzuukuka kw'Afrika ya Buvanjuba kwali ki?",
+        "a": "Okuzuukuka kw'Afrika ya Buvanjuba kwali kibiina ky'okwenenya n'okuzzibwa obuggya mu makanisa g'Abaanglikani ag'omu Rwanda, Uganda, Kenya ne Tanzania, nga kwatandika ku ntandikwa y'emyaka gya 1930. Kujjukirwa olw'okwatula ebibi mu lwatu, okussa ekimu okusukka ebika n'amawanga, n'obujulizi obw'essanyu mu maaso g'abantu."
+      },
+      {
+        "q": "Ani yatandika Okuzuukuka kw'Afrika ya Buvanjuba?",
+        "a": "Emirundi mingi kutandikibwa ku kussa ekimu kwa Simeon Nsibambi, omukozi w'ebyobulamu Omuganda, ne Joe Church, omusawo omuminsani Omungereza, abaasisinkana e Kampala mu 1929. Yosiya Kinuka ow'eddwaliro ly'e Gahini mu Rwanda ne Blasio Kigozi mangu ddala ne beegatta ku bo."
+      },
+      {
+        "q": "Janani Luwum yali ani?",
+        "a": "Janani Luwum yali Ssaabalabirizi w'Ekkanisa ya Uganda, eyakyuka mu kuzuukuka, era eyattibwa wansi w'obufuzi bwa Idi Amin mu 1977 oluvannyuma lw'okuwakanya obukambwe bwabwo."
+      }
+    ]
+  },
+  "britain-and-ireland": {
+    "name": "Abawandiisi Abakristaayo ab'e Bulitaniya ne Ireland",
+    "label": "Bulitaniya ne Ireland",
+    "intro": "Abasumba, abawandiisi b'ebitontome, abaminsani n'ababuulizi b'enjiri okuva mu Bungereza, Scotland, Wales ne Ireland. Bonna awamu baawandiika bingi ku bitabo n'ennyimba Ebikristaayo ebisinga okwagalibwa mu lulimi Olungereza.",
+    "qa": [
+      {
+        "q": "Lwaki ebitabo Ebikristaayo eby'ennono bingi byava mu Bulitaniya?",
+        "a": "Okuzza Obuggya okw'omu Bungereza, Abapuritani, okuzuukuka okw'enjiri n'ekibiina ky'obuminsani byonna byakulaakulana mu Bulitaniya, era okukuba ebitabo mu kyapa kwasobozesa abantu bangi okufuna okubuulira kwabwe n'ebitabo byabwe. Bingi ku bitabo ebyo bisomeddwa okuva olwo."
+      },
+      {
+        "q": "Kitabo ki Ekikristaayo eky'e Bulitaniya ekisinga okusomebwa?",
+        "a": "The Pilgrim's Progress ekya John Bunyan, ekyawandiikibwa mu myaka gya 1670, kivvuunuddwa mu nnimi nnyingi okusinga kumpi ekitabo kyonna okuggyako Bayibuli."
+      },
+      {
+        "q": "Abawandiisi b'e Wales n'ab'e Scotland balina empapula zaabwe ez'enjawulo?",
+        "a": "Yee. Bungereza, Scotland ne Wales buli emu erina olupapula lwayo, era olupapula luno lubakuŋŋaanya bonna wamu n'abawandiisi okuva mu Ireland."
+      }
+    ]
+  },
+  "england": {
+    "name": "Abawandiisi Abakristaayo okuva mu Bungereza",
+    "label": "Bungereza",
+    "intro": "Okuva ku basumba Abapuritani okutuuka ku babuulizi ab'omu mulembe gwa Victoria n'abaminsani ab'ekyasa ekya 20, Bungereza ewadde ekkanisa olunyiriri oluwanvu olw'abawandiisi. Ebitabo byabwe bikyajjuza ebifo by'ebitabo eby'abasomi Abakristaayo mu nsi yonna.",
+    "qa": [
+      {
+        "q": "Abawandiisi Abakristaayo Abangereza abasinga okumanyibwa be baani?",
+        "a": "Mu basinga okusomebwa mulimu John Bunyan, John Wesley, Charles Spurgeon, J. C. Ryle ne John Stott, awamu n'abaminsani nga Hudson Taylor ne Gladys Aylward."
+      },
+      {
+        "q": "Omubuulizi Omungereza asinga okumanyibwa yali ani?",
+        "a": "Charles Spurgeon, eyayitibwa Omulangira w'Ababuulizi, yasikirizanga enkumi n'enkumi buli Ssande mu Metropolitan Tabernacle e London mu kyasa ekya 19, era okubuulira kwe okwakubibwa mu kyapa kwatuuka ku bantu obukadde n'obukadde."
+      },
+      {
+        "q": "Kitabo ki Ekikristaayo eky'e Bungereza kye nsaanidde okusooka okusoma?",
+        "a": "The Pilgrim's Progress ekya John Bunyan kye kifo eky'ennono eky'okutandikirako."
+      }
+    ]
+  },
+  "scotland": {
+    "name": "Abawandiisi Abakristaayo okuva mu Scotland",
+    "label": "Scotland",
+    "intro": "Omuweereza omuto ow'e Dundee, omunoonyereza eyali omulenzi w'omu kkolero, omubuulizi eyazaalibwa e Glasgow, n'omuwala w'omu kkolero eyafuuka omuminsani e Calabar. Abawandiisi ba Scotland baatwala okukkiriza kw'Ekkanisa ya Scotland (the Kirk) ku bituuti ne mu bifo by'obuminsani ewala nnyo n'ewaabwe.",
+    "qa": [
+      {
+        "q": "Abaminsani Abaskoti abamanyiddwa be baani?",
+        "a": "David Livingstone, omuminsani era omunoonyereza w'Afirika ey'omu makkati, ne Mary Slessor, eyaweereza okumala kumpi emyaka amakumi ana mu Calabar, mu kitundu ekiyitibwa Nigeria leero, be basinga okumanyibwa."
+      },
+      {
+        "q": "Robert Murray M'Cheyne yali ani?",
+        "a": "Robert Murray M'Cheyne yali muweereza wa St Peter's, Dundee, eyafa mu 1843 ng'aweza emyaka amakumi abiri mu mwenda. Ajjukirwa olw'obulamu bwe obutukuvu, ebbaluwa ze, n'akalanda ke ak'okusoma Bayibuli."
+      },
+      {
+        "q": "Alexander Maclaren yali Muskoti?",
+        "a": "Yee. Alexander Maclaren yazaalibwa e Glasgow n'afuuka omubuulizi Omubatisita, ng'aweereza Union Chapel e Manchester okumala emyaka egisukka amakumi ana."
+      }
+    ]
+  },
+  "wales": {
+    "name": "Abawandiisi Abakristaayo okuva mu Wales",
+    "label": "Wales",
+    "intro": "Ensi ey'okuzuukuka n'ababuulizi abakulu. Okuva ku kabona omuwandiisi w'ebitontome ow'ekyasa ekya 17 okutuuka ku musimi w'amanda eyayiga okusaba, abakkiriza bano abaazaalibwa mu Wales baaleka ebigambo ebikyabugumya omutima.",
+    "qa": [
+      {
+        "q": "Ababuulizi abakulu ab'e Wales baali baani?",
+        "a": "Christmas Evans ye yali omubuulizi ow'e Wales asinga okutenderezebwa ku ntandikwa y'ekyasa ekya 19, ate Martyn Lloyd-Jones, eyazaalibwa e Cardiff, yali omu ku babuulizi abakulu ab'ekyasa ekya 20."
+      },
+      {
+        "q": "Okuzuukuka kw'e Wales kwali ki?",
+        "a": "Okuzuukuka kw'e Wales okwa 1904–1905 kwayita mu makanisa ga Wales gonna, ne kuleeta enkumi n'enkumi z'abantu mu kukkiriza. Rees Howells, eyali omusimi w'amanda omuto mu kiseera ekyo, yabumbibwa nnyo nakwo."
+      },
+      {
+        "q": "George Herbert yali wa Wales?",
+        "a": "George Herbert yazaalibwa e Montgomery, mu Wales, mu 1593, mu maka ag'olulyo olw'ekitiibwa ku nsalo ya Wales, n'afuuka omuwandiisi w'ebitontome era omusumba w'ekyalo mu Bungereza."
+      }
+    ]
+  },
+  "europe": {
+    "name": "Abawandiisi Abakristaayo ab'oku lukalu lwa Bulaaya",
+    "label": "Olukalu lwa Bulaaya",
+    "intro": "Bapaapa n'abamonaki, Abazzi b'obuggya n'ab'ekyama, omukugu mu kubala n'omukozi w'essaawa Omudaaki. Abawandiisi b'oku lukalu lwa Bulaaya bakwata kumpi emyaka enkumi bbiri egy'ebyafaayo by'ekkanisa.",
+    "qa": [
+      {
+        "q": "Abawandiisi Abakristaayo abakulu ab'e Bulaaya be baani?",
+        "a": "Mu bo mulimu Gregory Omukulu ne Bernard of Clairvaux mu Myaka egya Wakati, Martin Luther ne John Calvin mu kiseera ky'Okuzza Obuggya, Blaise Pascal ne Teresa ow'e Ávila, ne Dietrich Bonhoeffer ne Corrie ten Boom mu kyasa ekya 20."
+      },
+      {
+        "q": "Kitabo ki Ekikristaayo eky'e Bulaaya ekisinga okusomebwa?",
+        "a": "The Imitation of Christ ekya Thomas à Kempis, ekyawandiikibwa mu kyasa ekya 15, kibadde kimu ku bitabo Ebikristaayo ebisinga okusomebwa mu nsi yonna."
+      },
+      {
+        "q": "Bufalansa ne Bugirimaani birina empapula zaabyo ez'enjawulo?",
+        "a": "Yee. Bufalansa ne Bugirimaani buli emu erina olupapula lwayo, era olupapula luno lubikuŋŋaanya wamu n'abawandiisi okuva mu Yitale, Sipeyini, Budaaki n'awalala."
+      }
+    ]
+  },
+  "france": {
+    "name": "Abawandiisi Abakristaayo okuva mu Bufalansa",
+    "label": "Bufalansa",
+    "intro": "Omukulu w'abamonaki Omusisitaasiya, Omuzzi w'obuggya ow'e Geneva, omukugu mu kubala eyawandiika ku nsonga z'omutima, n'omukazi ow'olulyo olw'ekitiibwa eyasibibwa olw'okuyigiriza okusaba. Abawandiisi Abakristaayo ab'e Bufalansa batono wano mu muwendo naye banene mu buyinza.",
+    "qa": [
+      {
+        "q": "John Calvin yali Mufalansa?",
+        "a": "Yee. John Calvin yazaalibwa e Noyon mu bukiikakkono bwa Bufalansa mu 1509, era emirimu gye egisinga ng'Omuzzi w'obuggya yagikolera e Geneva oluvannyuma lw'okudduka Bufalansa."
+      },
+      {
+        "q": "Blaise Pascal yawandiika ki ku kukkiriza?",
+        "a": "Pensées za Pascal bye biwandiiko bye yategeka okulwanirira Obukristaayo, nga mw'otwalidde ekigambo kye ekimanyiddwa nti omutima gulina ensonga zaagwo amagezi ze gatamanyi."
+      },
+      {
+        "q": "Madame Guyon yali ani?",
+        "a": "Jeanne Guyon yali Mufalansa ow'ekyama ow'ekyasa ekya 17, obutabo bwe obumpi ku kusaba bwamuviirako okusibibwa mu Bastille, era oluvannyuma bwakwata ku basomi bangi Abaporotesitanti."
+      }
+    ]
+  },
+  "germany": {
+    "name": "Abawandiisi Abakristaayo okuva mu Bugirimaani",
+    "label": "Bugirimaani",
+    "intro": "Okuva ku mumonaki eyawandiika The Imitation of Christ okutuuka ku Muzzi w'obuggya ow'e Wittenberg, omutandisi w'ennyumba y'abaana abatalina bazadde eyabeeranga ku kusaba, n'omusumba eyawakanya Hitler. Abawandiisi ab'e Bugirimaani babumbye okwewaayo okw'Ekikristaayo okumala ebyasa bitaano.",
+    "qa": [
+      {
+        "q": "Martin Luther yali ani?",
+        "a": "Martin Luther yali mumonaki era omukenkufu Omugirimaani, enjigiriza ye ey'okuweebwa obutuukirivu olw'okukkiriza kwokka yatandika Okuzza Obuggya kw'Abaporotesitanti mu 1517."
+      },
+      {
+        "q": "George Müller yali Mugirimaani?",
+        "a": "George Müller yazaalibwa mu Prussia, mu kitundu kya Bugirimaani eya leero, mu 1805, n'agenda mu Bungereza, gye yalabirira enkumi n'enkumi z'abaana abatalina bazadde e Bristol nga tasabangako muntu yenna ssente."
+      },
+      {
+        "q": "Lwaki Dietrich Bonhoeffer ajjukirwa?",
+        "a": "Dietrich Bonhoeffer yali musumba Omulutheri Omugirimaani eyawakanya Hitler era n'attibwa mu 1945. Ebitabo bye ku buyigirizwa n'okubeera awamu kw'Abakristaayo bikyasomebwa nnyo."
+      }
+    ]
+  },
+  "north-america": {
+    "name": "Abawandiisi Abakristaayo okuva mu Amerika ey'Obukiikakkono",
+    "label": "Amerika ey'Obukiikakkono",
+    "intro": "Ababuulizi b'Okuzuukuka Okukulu, abatandisi b'amakanisa g'Abaddugavu, ababuulizi b'enjiri, abaminsani n'abasumba okuva mu Amerika ne Kanada. Obulamu bwabwe bulaga ebyafaayo by'Obukristaayo mu Amerika okuva ku Connecticut ey'omu biro by'amatwale okutuuka ku New York ey'omulembe guno.",
+    "qa": [
+      {
+        "q": "Abawandiisi Abakristaayo Abamerika abasinga okuba n'obuyinza be baani?",
+        "a": "Jonathan Edwards, Charles Finney, Dwight L. Moody, A. W. Tozer ne Billy Graham be bamu ku basinga okusomebwa, awamu ne Richard Allen, omutandisi wa African Methodist Episcopal Church."
+      },
+      {
+        "q": "Wano waliwo abawandiisi okuva mu Kanada?",
+        "a": "Yee. A. B. Simpson, omutandisi wa Christian and Missionary Alliance, n'omubuulizi w'Ekipentekoote John G. Lake bombi baazaalibwa mu Kanada."
+      },
+      {
+        "q": "Amerika erina olupapula lwayo olw'enjawulo?",
+        "a": "Yee. Amerika (United States) erina olupapula lwayo, era olupapula luno lukuŋŋaanya abawandiisi baayo wamu n'abo abava mu Kanada."
+      }
+    ]
+  },
+  "united-states": {
+    "name": "Abawandiisi Abakristaayo okuva mu Amerika",
+    "label": "Amerika",
+    "intro": "Okuva ku Jonathan Edwards n'Okuzuukuka Okukulu okutuuka ku nkuŋŋaana ennene ez'enjiri eza Billy Graham, Amerika ezadde ababuulizi, abaminsani n'abasomesa abasomebwa mu nsi yonna. Ebyafaayo byabwe mulimu obuddu n'eddembe, okuzuukuka, n'okutandikibwawo kw'amakanisa amaggya.",
+    "qa": [
+      {
+        "q": "Omutegeeza wa Katonda Omumerika asinga yali ani?",
+        "a": "Jonathan Edwards, omusumba w'e Northampton, Massachusetts, mu kyasa ekya 18, atera okuyitibwa omutegeeza wa Katonda asinga Amerika gw'ezadde. Ebiwandiiko bye ku kuzuukuka ne ku nneewulira ez'eddiini bikyayigibwa."
+      },
+      {
+        "q": "Ababuulizi Abamerika Abaddugavu abaasooka be baani?",
+        "a": "Lemuel Haynes ye yali omusajja Omuddugavu eyasooka okutuuzibwa ekibiina ky'Abaporotesitanti ekikulu mu Amerika. Richard Allen yatandikawo African Methodist Episcopal Church, ate Jarena Lee n'afuuka omukazi omubuulizi eyasooka okukkirizibwa mu yo."
+      },
+      {
+        "q": "Kitabo ki Ekikristaayo eky'e Amerika kye nsaanidde okusooka okusoma?",
+        "a": "The Pursuit of God ekya A. W. Tozer n'ebitabo bya E. M. Bounds ku kusaba bimpi, bikebera omutima, era byagalwa nnyo."
+      }
+    ]
+  },
+  "east-africa": {
+    "name": "Abawandiisi Abakristaayo okuva mu Afrika ya Buvanjuba",
+    "label": "Afrika ya Buvanjuba",
+    "intro": "Ab'oluganda ab'Okuzuukuka kw'Afrika ya Buvanjuba okuva mu Uganda ne Rwanda — abakozi b'ebyobulamu, abasomesa, abakozi b'amalwaliro, ababuulizi b'enjiri n'abalabirizi. Abamu ku bo baakakasa obujulizi bwabwe n'obulamu bwabwe.",
+    "qa": [
+      {
+        "q": "Mawanga ki ag'Afrika ya Buvanjuba agali ku lupapula luno?",
+        "a": "Abawandiisi ku lupapula luno bava mu Uganda ne Rwanda, amawanga abiri Okuzuukuka kw'Afrika ya Buvanjuba gye kwatandikira."
+      },
+      {
+        "q": "Yona Kanamuzeyi yali ani?",
+        "a": "Yona Kanamuzeyi yali mudyankoni Omwanglikani Omunyarwanda ow'okuzuukuka, eyattibwa mu 1964; ebyafaayo bikkiriziganya nti yali ayimba nga bamutwala okukubwa amasasi."
+      },
+      {
+        "q": "Uganda erina olupapula lwayo olw'enjawulo?",
+        "a": "Yee. Uganda erina olupapula lwayo, era olupapula luno lukuŋŋaanya abawandiisi baayo wamu n'abo abava mu Rwanda."
+      }
+    ]
+  },
+  "uganda": {
+    "name": "Abawandiisi Abakristaayo okuva mu Uganda",
+    "label": "Uganda",
+    "intro": "Abakulembeze b'Okuzuukuka kw'Afrika ya Buvanjuba n'ab'Ekkanisa ya Uganda: omubuulizi w'enjiri eyatambula ensi yonna, Ssaabalabirizi wa Uganda eyasooka Omufirika, ne ssaabalabirizi eyattibwa olw'okukkiriza wansi wa Idi Amin. Obulamu bwabwe bunnyonnyola ebyafaayo by'ekkanisa eyagezesebwa n'ezzibwa obuggya.",
+    "qa": [
+      {
+        "q": "Festo Kivengere yali ani?",
+        "a": "Festo Kivengere yali mulabirizi Omwanglikani Munnayuganda era omubuulizi w'enjiri ow'Okuzuukuka kw'Afrika ya Buvanjuba, eyamanyibwa mu nsi yonna olw'okubuulira kwe ku kusonyiwa oluvannyuma lw'okudduka obufuzi bwa Idi Amin."
+      },
+      {
+        "q": "Ssaabalabirizi wa Uganda eyasooka Omufirika yali ani?",
+        "a": "Erica Sabiti ye yafuuka Ssaabalabirizi w'Ekkanisa ya Uganda eyasooka Omufirika mu 1966."
+      },
+      {
+        "q": "Obukristaayo bwatuuka butya mu Uganda?",
+        "a": "Abaminsani Abaanglikani n'Abakatoliki baatuuka mu Buganda ku nkomerero y'emyaka gya 1870. Ekkanisa ento yayolekagana n'okuyigganyizibwa, nga mw'otwalidde okuttibwa kw'abakkiriza abaggya ab'omu Uganda olw'okukkiriza kwabwe mu 1885–1887, era n'ekula mangu mu makumi g'emyaka agaddirira."
+      }
+    ]
+  },
+  "north-africa": {
+    "name": "Abawandiisi Abakristaayo ab'Afirika ey'Obukiikakkono",
+    "label": "Afirika ey'Obukiikakkono",
+    "intro": "Obusiraamu nga tebunnatuuka, Afirika ey'Obukiikakkono yali emu ku bifo ebikulu eby'ekkanisa. Carthage, Hippo ne Alexandria byawa ekkanisa omulabirizi omujulizi, omulwanirizi w'obwakatonda bwa Kristo, ne Augustine awamu ne nnyina eyasabanga.",
+    "qa": [
+      {
+        "q": "Augustine yali Mufirika?",
+        "a": "Yee. Augustine yazaalibwa mu 354 e Thagaste, mu Afirika ey'Obukiikakkono ey'Abaruumi (Algeria ey'olwaleero), era yali mulabirizi w'e Hippo, ku lubalama lw'ennyanja olwo lwe lumu, okumala emyaka egisukka amakumi asatu."
+      },
+      {
+        "q": "Athanasius ow'e Alexandria yali ani?",
+        "a": "Athanasius yali mulabirizi w'e Alexandria mu Misiri okumala emyaka amakumi ana mu etaano mu kyasa eky'okuna, era n'alwanirira obwakatonda obujjuvu obwa Kristo ng'awakanya enjigiriza ya Arius (Arianism), ng'ayita mu buwaŋŋanguse butaano."
+      },
+      {
+        "q": "Cyprian ow'e Carthage yali ani?",
+        "a": "Cyprian yali mulabirizi w'e Carthage mu kyasa eky'okusatu, omuwandiisi ku bumu bw'ekkanisa, eyattibwa olw'okukkiriza kwe mu 258."
+      }
+    ]
+  },
+  "asia-and-the-middle-east": {
+    "name": "Abawandiisi Abakristaayo okuva mu Asiya n'Obuvanjuba obwa Wakati",
+    "label": "Asiya n'Obuvanjuba obwa Wakati",
+    "intro": "Okuva e Antiyokiya, abayigirizwa gye baasooka okuyitibwa Abakristaayo, okutuuka e Buyindi ne China. Abawandiisi bano bakwata ku kkanisa ey'edda ey'e Siriya n'amakanisa ag'omulembe guno ag'omu Asiya.",
+    "qa": [
+      {
+        "q": "Watchman Nee yali ani?",
+        "a": "Watchman Nee yali mubuulizi Omucayina era omutandisi w'amakanisa ow'ekyasa ekya 20, eyamala emyaka amakumi abiri egyasembayo egy'obulamu bwe mu kkomera olw'okukkiriza kwe. Ekitabo kye The Normal Christian Life kisomebwa nnyo."
+      },
+      {
+        "q": "Pandita Ramabai yali ani?",
+        "a": "Pandita Ramabai yali mukugu Omuyindi mu lulimi Olusanskriti era omukyusa w'embeera z'abantu, eyafuuka Omukristaayo n'atandikawo Mukti Mission eya bannamwandu n'abawala abatalina bazadde okumpi ne Pune."
+      },
+      {
+        "q": "Lwaki Antiyokiya kikulu mu byafaayo by'ekkanisa?",
+        "a": "Antiyokiya ekiri mu Siriya kye kifo abagoberezi ba Yesu gye baasooka okuyitibwa Abakristaayo (Ebikolwa by'Abatume 11:26). Ignatius ye yali omulabirizi waakyo ku ntandikwa y'ekyasa eky'okubiri, era John Chrysostom yabuuliranga eyo nga tannafuuka ssaabalabirizi w'e Constantinople."
+      }
+    ]
+  }
+}

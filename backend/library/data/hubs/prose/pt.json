@@ -1,0 +1,480 @@
+{
+  "_note": [
+    "Portuguese hub prose — AI translation (ai_unreviewed), pending native review. Brazilian register. Names follow the site's pt bios (Agostinho de Hipona, Inácio de Antioquia, Clemente de Roma, Atanásio de Alexandria, João Crisóstomo, Cipriano de Cartago, Bernardo de Claraval, Teresa d'Ávila, Tomás de Kempis, João Calvino, Martinho Lutero, Simeoni Nsibambi); English-named Protestant writers keep their English names (John Wesley, Charles Spurgeon, John Bunyan…). Book titles from the pt fixtures where they exist (O Peregrino, A Cana Esmagada), else the pt bios (A Busca de Deus, A Imitação de Cristo, Confissões, A Vida Cristã Normal), else conventional Brazilian titles (O Segredo Cristão de uma Vida Feliz, Cristo, o que Cura, Pensamentos). 'Revival' = avivamento; 'Great Awakening' = Grande Despertamento; 'holiness movement' = movimento de santidade."
+  ],
+  "early-church": {
+    "name": "Escritores da igreja primitiva",
+    "label": "Igreja primitiva",
+    "intro": "Bispos, pregadores e mártires dos primeiros séculos após os apóstolos. Suas cartas, sermões e confissões foram escritos sob perseguição, em meio a controvérsias e em oração, e moldaram a forma como a igreja lê a Bíblia desde então.",
+    "qa": [
+      {
+        "q": "Quem são os pais da igreja?",
+        "a": "Os pais da igreja são os principais mestres e bispos dos primeiros séculos cristãos, cujos escritos a igreja posterior considerou testemunhas fiéis do ensino dos apóstolos. Clemente de Roma e Inácio de Antioquia escreveram na geração seguinte à dos apóstolos; Atanásio, João Crisóstomo e Agostinho pertencem à grande era dos séculos IV e V."
+      },
+      {
+        "q": "Por onde devo começar a ler a igreja primitiva?",
+        "a": "As Confissões de Agostinho são o livro mais conhecido do período e se leem como uma oração dirigida a Deus. As breves cartas de Inácio de Antioquia, escritas a caminho do martírio, podem ser lidas em uma tarde."
+      },
+      {
+        "q": "Por que os escritores da igreja primitiva ainda importam?",
+        "a": "Eles defenderam a plena divindade de Cristo, fixaram a linguagem dos credos e mostraram aos crentes comuns como orar, sofrer e servir. A maioria das tradições posteriores — católica, ortodoxa e protestante — ainda os lê como ancestrais comuns."
+      }
+    ]
+  },
+  "monks-and-mystics": {
+    "name": "Monges, místicos e contemplativos",
+    "label": "Monges e místicos",
+    "intro": "Escritores que buscaram a Deus no silêncio, na oração e numa vontade rendida. Dos claustros da França medieval à cela de prisão de uma nobre francesa, seus livros ensinaram gerações de leitores a orar.",
+    "qa": [
+      {
+        "q": "O que é o misticismo cristão?",
+        "a": "O misticismo cristão é a tradição de buscar um conhecimento direto e amoroso de Deus por meio da oração, da contemplação e da entrega. Seus escritores descrevem a jornada interior da alma rumo à união com Deus, em vez de expor doutrina."
+      },
+      {
+        "q": "Qual livro devo ler primeiro?",
+        "a": "A Imitação de Cristo, de Tomás de Kempis, foi mais lida do que quase qualquer outro livro cristão além da Bíblia. Seus capítulos curtos sobre humildade, paciência e comunhão com Cristo podem ser lidos um de cada vez."
+      },
+      {
+        "q": "Esses escritores eram católicos ou protestantes?",
+        "a": "A maioria era de monges e freiras católicos, como Bernardo de Claraval e Teresa d'Ávila. William Law era um sacerdote anglicano, e leitores protestantes como John Wesley encontraram em Jeanne Guyon e Tomás de Kempis uma influência profundamente formadora."
+      }
+    ]
+  },
+  "puritans": {
+    "name": "Escritores puritanos",
+    "label": "Puritanos",
+    "intro": "Pastores ingleses do fim do século XVI e do século XVII que desejavam uma igreja reformada pelas Escrituras e uma vida vivida diante da face de Deus. Muitos foram expulsos de seus púlpitos em 1662 e passaram a escrever — livros sobre o pecado e a graça, a vocação do pastor e a peregrinação do cristão que ainda são lidos hoje.",
+    "qa": [
+      {
+        "q": "Quem foram os puritanos?",
+        "a": "Os puritanos foram protestantes ingleses que lutaram por uma igreja e uma vida diária moldadas inteiramente pelas Escrituras. Seus pastores são lembrados por uma pregação penetrante e prática sobre o coração, a conversão e a segurança da salvação."
+      },
+      {
+        "q": "Qual livro puritano devo ler primeiro?",
+        "a": "O Peregrino, de John Bunyan, é o livro puritano mais lido e a porta de entrada mais fácil. A Cana Esmagada, de Richard Sibbes, é curto e especialmente terno com os crentes que se sentem fracos."
+      },
+      {
+        "q": "Por que tantos puritanos foram expulsos em 1662?",
+        "a": "O Ato de Uniformidade de 1662 exigia que todo ministro da Igreja da Inglaterra aceitasse integralmente o Livro de Oração Comum e a ordenação episcopal. Cerca de dois mil ministros, entre eles Richard Baxter e Thomas Watson, recusaram-se a se conformar e perderam seus benefícios."
+      }
+    ]
+  },
+  "methodists": {
+    "name": "Escritores metodistas e wesleyanos",
+    "label": "Metodistas",
+    "intro": "O avivamento que começou com John e Charles Wesley na Inglaterra do século XVIII, e as igrejas que nasceram dele dos dois lados do Atlântico. Seus escritores pregaram uma fé que aquece o coração, uma vida santa e um evangelho para os pobres.",
+    "qa": [
+      {
+        "q": "Como começou o metodismo?",
+        "a": "O metodismo começou como um movimento de santidade disciplinada e prática liderado por John Wesley e seu irmão Charles, dentro da Igreja da Inglaterra, nas décadas de 1730 e 1740. Sua pregação ao ar livre e suas pequenas reuniões de classe espalharam o avivamento pela Grã-Bretanha e pela América."
+      },
+      {
+        "q": "Quem fundou a Igreja Episcopal Metodista Africana?",
+        "a": "Richard Allen, um pregador da Filadélfia que havia sido escravizado, conduziu metodistas negros para fora de uma congregação segregada e fundou a Igreja Episcopal Metodista Africana em 1816. Jarena Lee e Julia Foote pregaram dentro dessa tradição."
+      },
+      {
+        "q": "O que os metodistas queriam dizer com santidade?",
+        "a": "Wesley ensinava que a vida cristã deve crescer em perfeito amor a Deus e ao próximo, e não apenas no perdão. Esse ensino moldou o posterior movimento de santidade e escritoras como Amanda Berry Smith."
+      }
+    ]
+  },
+  "baptists": {
+    "name": "Pregadores e escritores batistas",
+    "label": "Batistas",
+    "intro": "Pregadores e missionários das igrejas batistas, que batizam os crentes mediante sua profissão de fé. Entre eles estão o \"Príncipe dos Pregadores\", o pai das missões modernas e um menino de fazenda galês que se tornou o maior pregador de seu país.",
+    "qa": [
+      {
+        "q": "O que os batistas creem sobre o batismo?",
+        "a": "Os batistas batizam aqueles que professam pessoalmente a fé em Cristo, geralmente por imersão, e não crianças pequenas. Também enfatizam a autoridade das Escrituras e a liberdade de cada congregação local."
+      },
+      {
+        "q": "Quem foi o Príncipe dos Pregadores?",
+        "a": "Charles Haddon Spurgeon, pastor do Metropolitan Tabernacle, em Londres, era chamado de Príncipe dos Pregadores. Seus sermões eram impressos toda semana e vendidos no mundo inteiro."
+      },
+      {
+        "q": "Por que William Carey é chamado de pai das missões modernas?",
+        "a": "William Carey, um sapateiro batista inglês, exortou as igrejas em 1792 a enviar missionários ao exterior e depois partiu ele mesmo para a Índia. Seu exemplo deu início às grandes sociedades missionárias do século XIX."
+      }
+    ]
+  },
+  "reformed-and-presbyterian": {
+    "name": "Escritores reformados e presbiterianos",
+    "label": "Reformados e presbiterianos",
+    "intro": "Herdeiros da Reforma em Genebra e na Escócia, que ensinaram a soberania da graça de Deus. De João Calvino a um médico galês que se tornou pregador, eles uniram teologia cuidadosa a uma devoção calorosa.",
+    "qa": [
+      {
+        "q": "O que significa reformado?",
+        "a": "As igrejas reformadas descendem da Reforma suíça liderada por Zuínglio e João Calvino. Elas enfatizam a soberania de Deus na salvação, a autoridade das Escrituras e uma igreja governada por presbíteros."
+      },
+      {
+        "q": "Presbiteriano é o mesmo que reformado?",
+        "a": "As igrejas presbiterianas são igrejas reformadas governadas por presbíteros, um modelo que se enraizou especialmente na Escócia. Robert Murray M'Cheyne ministrou na Igreja da Escócia; Jonathan Edwards, embora congregacionalista, sustentava a mesma teologia reformada."
+      },
+      {
+        "q": "Qual desses escritores devo ler primeiro?",
+        "a": "Jonathan Edwards é o escritor reformado clássico sobre o avivamento e as afeições religiosas. Martyn Lloyd-Jones levou a mesma tradição à Londres do século XX, numa pregação simples e direta."
+      }
+    ]
+  },
+  "evangelical-anglicans": {
+    "name": "Anglicanos evangélicos",
+    "label": "Anglicanos evangélicos",
+    "intro": "Clérigos e bispos da Igreja da Inglaterra e de suas igrejas irmãs que mantiveram o evangelho da graça no centro. Vão de um capitão de navio negreiro convertido a arcebispos da Igreja de Uganda.",
+    "qa": [
+      {
+        "q": "O que é um anglicano evangélico?",
+        "a": "Um anglicano evangélico pertence à Igreja da Inglaterra ou a uma igreja da Comunhão Anglicana e enfatiza a conversão, a autoridade da Bíblia e a cruz de Cristo. John Newton, J. C. Ryle e John Stott são três das vozes mais conhecidas dessa tradição."
+      },
+      {
+        "q": "Como a igreja anglicana cresceu na África Oriental?",
+        "a": "Missionários da Church Missionary Society implantaram a igreja anglicana em Uganda no fim do século XIX. No século XX, líderes africanos como Erica Sabiti, Festo Kivengere e Janani Luwum a conduziram em meio ao avivamento e à perseguição."
+      },
+      {
+        "q": "Quem escreveu Amazing Grace?",
+        "a": "John Newton, ex-capitão de navio negreiro que se tornou clérigo anglicano, escreveu o hino Amazing Grace para sua paróquia em Olney."
+      }
+    ]
+  },
+  "evangelists": {
+    "name": "Evangelistas e pregadores de avivamento",
+    "label": "Evangelistas",
+    "intro": "Pregadores que chamaram multidões à fé em Cristo — em campos, tendas, tabernáculos e estádios. Suas vidas vão dos despertamentos do século XVIII às grandes cruzadas do século XX.",
+    "qa": [
+      {
+        "q": "O que é um avivamento?",
+        "a": "Um avivamento é um período em que muitas pessoas se voltam para Deus ao mesmo tempo e a igreja é renovada em oração e santidade. O Grande Despertamento na Grã-Bretanha e na América e as campanhas de Moody e Finney no século XIX são exemplos bem conhecidos."
+      },
+      {
+        "q": "Quem pregou para as maiores multidões?",
+        "a": "Billy Graham pregou pessoalmente para mais pessoas do que qualquer pregador antes dele, por meio de cruzadas em todos os continentes. George Whitefield atraiu algumas das maiores multidões do século XVIII pregando ao ar livre."
+      },
+      {
+        "q": "Por que ler evangelistas hoje?",
+        "a": "Seus sermões são curtos, diretos e feitos para serem entendidos por qualquer pessoa. Eles mostram o evangelho pregado com simplicidade, com um chamado urgente à resposta."
+      }
+    ]
+  },
+  "holiness-and-keswick": {
+    "name": "Escritores da santidade e de Keswick",
+    "label": "Santidade e Keswick",
+    "intro": "Mestres da \"vida cristã mais elevada\": a ideia de que o crente pode andar em vitória diária confiando em Cristo, e não lutando por conta própria. Suas convenções em Keswick e na América, e o Exército de Salvação, levaram a mensagem ao mundo inteiro.",
+    "qa": [
+      {
+        "q": "O que foi o movimento de Keswick?",
+        "a": "Keswick é uma cidade do Lake District, na Inglaterra, onde começou em 1875 uma convenção anual \"para a promoção da santidade prática\". Pregadores como Andrew Murray e F. B. Meyer ensinavam que a santidade é recebida pela fé e pela entrega."
+      },
+      {
+        "q": "O que é o movimento de santidade?",
+        "a": "O movimento de santidade nasceu do metodismo nos Estados Unidos do século XIX e ensinava uma segunda obra da graça que purifica o coração e o enche de amor. Amanda Berry Smith e Julia Foote o pregaram, e Catherine e William Booth o incorporaram ao Exército de Salvação."
+      },
+      {
+        "q": "Qual livro devo ler primeiro?",
+        "a": "O Segredo Cristão de uma Vida Feliz, de Hannah Whitall Smith, é a expressão clássica da vida cristã mais elevada e ainda é muito lido."
+      }
+    ]
+  },
+  "pentecostal-pioneers": {
+    "name": "Pioneiros pentecostais",
+    "label": "Pioneiros pentecostais",
+    "intro": "Pregadores do avivamento pentecostal do início do século XX, que ensinaram o batismo no Espírito Santo e oraram pelos enfermos. Seus sermões estão cheios de fé ousada nas promessas de Deus.",
+    "qa": [
+      {
+        "q": "Quando começou o movimento pentecostal?",
+        "a": "O movimento pentecostal nasceu de avivamentos nos primeiros anos do século XX, sobretudo das reuniões da Rua Azusa, em Los Angeles, a partir de 1906. Em poucos anos espalhou-se para a Grã-Bretanha, a África do Sul e além."
+      },
+      {
+        "q": "O que os pioneiros pentecostais ensinavam sobre cura?",
+        "a": "Ensinavam que Cristo ainda cura os enfermos em resposta à oração, como nos Evangelhos. Cristo, o que Cura, de F. F. Bosworth, é um dos livros mais conhecidos sobre o assunto."
+      },
+      {
+        "q": "Quem foi Smith Wigglesworth?",
+        "a": "Smith Wigglesworth foi um encanador de Yorkshire que não sabia ler quando menino e se tornou um dos pregadores pentecostais mais conhecidos do mundo, viajando muito para pregar a fé e orar pelos enfermos."
+      }
+    ]
+  },
+  "missionaries": {
+    "name": "Missionários",
+    "label": "Missionários",
+    "intro": "Homens e mulheres que deixaram seus lares para levar o evangelho a outros povos — às florestas da América colonial, à Índia, à China, a Calabar, a Ruanda e ao Equador. Muitas de suas vidas são contadas aqui por inteiro, e alguns escreveram livros próprios.",
+    "qa": [
+      {
+        "q": "Quem são os missionários cristãos mais famosos?",
+        "a": "Entre os mais conhecidos estão William Carey na Índia, Hudson Taylor na China, David Livingstone na África, Mary Slessor em Calabar, Amy Carmichael na Índia e Jim e Elisabeth Elliot no Equador."
+      },
+      {
+        "q": "O que foi a Missão para o Interior da China?",
+        "a": "A Missão para o Interior da China foi fundada por Hudson Taylor em 1865 para levar o evangelho às províncias do interior da China. Seus missionários usavam roupas chinesas e confiavam em Deus para seu sustento, sem fazer apelos por dinheiro."
+      },
+      {
+        "q": "Qual história missionária devo ler primeiro?",
+        "a": "A vida de Mary Slessor, de uma fábrica de Dundee às aldeias de Calabar, e a viagem de Gladys Aylward através da Sibéria até a China estão entre as mais emocionantes."
+      }
+    ]
+  },
+  "east-african-revival": {
+    "name": "O Avivamento da África Oriental",
+    "label": "Avivamento da África Oriental",
+    "intro": "Um avivamento que começou em Ruanda e Uganda na década de 1930 e se espalhou pela África Oriental durante décadas. Seus \"irmãos\" andavam na luz uns com os outros, confessavam abertamente seus pecados e pregaram Jesus em meio à perseguição e ao martírio.",
+    "qa": [
+      {
+        "q": "O que foi o Avivamento da África Oriental?",
+        "a": "O Avivamento da África Oriental foi um movimento de arrependimento e renovação dentro das igrejas anglicanas de Ruanda, Uganda, Quênia e Tanzânia, iniciado no começo da década de 1930. É lembrado pela confissão aberta do pecado, pela comunhão entre tribos e raças e pelo testemunho público cheio de alegria."
+      },
+      {
+        "q": "Quem deu início ao Avivamento da África Oriental?",
+        "a": "Suas origens costumam ser atribuídas à comunhão entre Simeoni Nsibambi, um agente de saúde ugandense, e Joe Church, um médico missionário inglês, que se encontraram em Kampala em 1929. Yosiya Kinuka, do hospital de Gahini, em Ruanda, e Blasio Kigozi logo se juntaram a eles."
+      },
+      {
+        "q": "Quem foi Janani Luwum?",
+        "a": "Janani Luwum foi arcebispo da Igreja de Uganda, convertido no avivamento, morto sob o regime de Idi Amin em 1977 depois de protestar contra a violência desse regime."
+      }
+    ]
+  },
+  "britain-and-ireland": {
+    "name": "Escritores cristãos da Grã-Bretanha e da Irlanda",
+    "label": "Grã-Bretanha e Irlanda",
+    "intro": "Pastores, poetas, missionários e evangelistas da Inglaterra, da Escócia, do País de Gales e da Irlanda. Juntos, escreveram muitos dos livros e hinos cristãos mais amados da língua inglesa.",
+    "qa": [
+      {
+        "q": "Por que tantos livros cristãos clássicos vieram da Grã-Bretanha?",
+        "a": "A Reforma inglesa, os puritanos, o avivamento evangélico e o movimento missionário floresceram na Grã-Bretanha, e a imprensa tornou seus sermões e livros amplamente acessíveis. Muitos desses livros são lidos desde então."
+      },
+      {
+        "q": "Qual livro cristão britânico é o mais lido?",
+        "a": "O Peregrino, de John Bunyan, escrito na década de 1670, foi traduzido para mais idiomas do que quase qualquer outro livro além da Bíblia."
+      },
+      {
+        "q": "Os escritores galeses e escoceses aparecem separadamente?",
+        "a": "Sim. Inglaterra, Escócia e País de Gales têm, cada um, sua própria página, e esta página reúne todos eles junto com escritores da Irlanda."
+      }
+    ]
+  },
+  "england": {
+    "name": "Escritores cristãos da Inglaterra",
+    "label": "Inglaterra",
+    "intro": "De pastores puritanos a pregadores vitorianos e missionários do século XX, a Inglaterra deu à igreja uma longa linhagem de escritores. Seus livros ainda enchem as estantes de leitores cristãos no mundo inteiro.",
+    "qa": [
+      {
+        "q": "Quem são os escritores cristãos ingleses mais conhecidos?",
+        "a": "Entre os mais lidos estão John Bunyan, John Wesley, Charles Spurgeon, J. C. Ryle e John Stott, além de missionários como Hudson Taylor e Gladys Aylward."
+      },
+      {
+        "q": "Quem foi o pregador inglês mais famoso?",
+        "a": "Charles Spurgeon, chamado de Príncipe dos Pregadores, atraía milhares de pessoas todos os domingos ao Metropolitan Tabernacle, em Londres, no século XIX, e seus sermões impressos alcançaram milhões."
+      },
+      {
+        "q": "Qual livro cristão inglês devo ler primeiro?",
+        "a": "O Peregrino, de John Bunyan, é o ponto de partida clássico."
+      }
+    ]
+  },
+  "scotland": {
+    "name": "Escritores cristãos da Escócia",
+    "label": "Escócia",
+    "intro": "Um jovem ministro de Dundee, um menino de fábrica que virou explorador, um pregador nascido em Glasgow e uma operária de fábrica que se tornou missionária em Calabar. Os escritores da Escócia levaram a fé da Kirk a púlpitos e campos missionários muito longe de casa.",
+    "qa": [
+      {
+        "q": "Quem são os missionários escoceses famosos?",
+        "a": "David Livingstone, o missionário explorador da África central, e Mary Slessor, que serviu por quase quarenta anos em Calabar, na atual Nigéria, são os mais conhecidos."
+      },
+      {
+        "q": "Quem foi Robert Murray M'Cheyne?",
+        "a": "Robert Murray M'Cheyne foi o ministro de St Peter's, em Dundee, e morreu em 1843, aos vinte e nove anos. É lembrado por sua vida santa, por suas cartas e por seu plano de leitura bíblica."
+      },
+      {
+        "q": "Alexander Maclaren era escocês?",
+        "a": "Sim. Alexander Maclaren nasceu em Glasgow e tornou-se pregador batista, servindo a Union Chapel, em Manchester, por mais de quarenta anos."
+      }
+    ]
+  },
+  "wales": {
+    "name": "Escritores cristãos do País de Gales",
+    "label": "País de Gales",
+    "intro": "Uma terra de avivamentos e de grandes pregadores. De um poeta-sacerdote do século XVII a um mineiro de carvão que aprendeu a orar, esses crentes nascidos no País de Gales deixaram palavras que ainda aquecem o coração.",
+    "qa": [
+      {
+        "q": "Quem foram os grandes pregadores galeses?",
+        "a": "Christmas Evans foi o pregador galês mais célebre do início do século XIX, e Martyn Lloyd-Jones, nascido em Cardiff, foi um dos grandes pregadores do século XX."
+      },
+      {
+        "q": "O que foi o Avivamento Galês?",
+        "a": "O Avivamento Galês de 1904–1905 varreu as capelas do País de Gales, levando muitos milhares à fé. Rees Howells, então um jovem mineiro de carvão, foi profundamente marcado por ele."
+      },
+      {
+        "q": "George Herbert era galês?",
+        "a": "George Herbert nasceu em Montgomery, no País de Gales, em 1593, numa família nobre da fronteira galesa, e tornou-se poeta e pároco do campo na Inglaterra."
+      }
+    ]
+  },
+  "europe": {
+    "name": "Escritores cristãos da Europa continental",
+    "label": "Europa continental",
+    "intro": "Papas e monges, reformadores e místicos, um matemático e uma relojoeira holandesa. Os escritores da Europa continental abrangem quase dois mil anos da história da igreja.",
+    "qa": [
+      {
+        "q": "Quem foram os grandes escritores cristãos da Europa?",
+        "a": "Entre eles estão Gregório Magno e Bernardo de Claraval na Idade Média, Martinho Lutero e João Calvino na Reforma, Blaise Pascal e Teresa d'Ávila, e Dietrich Bonhoeffer e Corrie ten Boom no século XX."
+      },
+      {
+        "q": "Qual livro cristão europeu é o mais lido?",
+        "a": "A Imitação de Cristo, de Tomás de Kempis, escrita no século XV, tem sido um dos livros cristãos mais lidos do mundo."
+      },
+      {
+        "q": "França e Alemanha aparecem separadamente?",
+        "a": "Sim. França e Alemanha têm, cada uma, sua própria página, e esta página as reúne junto com escritores da Itália, da Espanha, dos Países Baixos e de outros lugares."
+      }
+    ]
+  },
+  "france": {
+    "name": "Escritores cristãos da França",
+    "label": "França",
+    "intro": "Um abade cisterciense, o reformador de Genebra, um matemático que escreveu sobre as razões do coração e uma nobre presa por ensinar a oração. Os escritores cristãos da França são poucos aqui, mas grandes em influência.",
+    "qa": [
+      {
+        "q": "João Calvino era francês?",
+        "a": "Sim. João Calvino nasceu em Noyon, no norte da França, em 1509, e realizou a maior parte de sua obra como reformador em Genebra, depois de fugir da França."
+      },
+      {
+        "q": "O que Blaise Pascal escreveu sobre a fé?",
+        "a": "Os Pensamentos de Pascal são anotações para uma defesa do cristianismo, incluindo sua famosa observação de que o coração tem razões que a própria razão desconhece."
+      },
+      {
+        "q": "Quem foi Madame Guyon?",
+        "a": "Jeanne Guyon foi uma mística francesa do século XVII cujos pequenos livros sobre a oração lhe valeram a prisão na Bastilha e, mais tarde, influenciaram muitos leitores protestantes."
+      }
+    ]
+  },
+  "germany": {
+    "name": "Escritores cristãos da Alemanha",
+    "label": "Alemanha",
+    "intro": "De um monge que escreveu A Imitação de Cristo ao reformador de Wittenberg, de um fundador de orfanatos que vivia pela oração a um pastor que resistiu a Hitler. Os escritores da Alemanha moldaram a devoção cristã por cinco séculos.",
+    "qa": [
+      {
+        "q": "Quem foi Martinho Lutero?",
+        "a": "Martinho Lutero foi um monge e professor alemão cujo ensino da justificação somente pela fé deu início à Reforma Protestante em 1517."
+      },
+      {
+        "q": "George Müller era alemão?",
+        "a": "George Müller nasceu na Prússia, na atual Alemanha, em 1805, e mudou-se para a Inglaterra, onde cuidou de milhares de órfãos em Bristol sem jamais pedir dinheiro a ninguém."
+      },
+      {
+        "q": "Por que Dietrich Bonhoeffer é lembrado?",
+        "a": "Dietrich Bonhoeffer foi um pastor luterano alemão que se opôs a Hitler e foi executado em 1945. Seus livros sobre o discipulado e a comunidade cristã ainda são muito lidos."
+      }
+    ]
+  },
+  "north-america": {
+    "name": "Escritores cristãos da América do Norte",
+    "label": "América do Norte",
+    "intro": "Pregadores do Grande Despertamento, fundadores de igrejas negras, evangelistas, missionários e pastores dos Estados Unidos e do Canadá. Suas vidas traçam a história do cristianismo americano, do Connecticut colonial à Nova York moderna.",
+    "qa": [
+      {
+        "q": "Quem são os escritores cristãos americanos mais influentes?",
+        "a": "Jonathan Edwards, Charles Finney, Dwight L. Moody, A. W. Tozer e Billy Graham estão entre os mais lidos, junto com Richard Allen, fundador da Igreja Episcopal Metodista Africana."
+      },
+      {
+        "q": "Há escritores canadenses aqui?",
+        "a": "Sim. A. B. Simpson, fundador da Aliança Cristã e Missionária, e o pregador pentecostal John G. Lake nasceram ambos no Canadá."
+      },
+      {
+        "q": "Os Estados Unidos aparecem separadamente?",
+        "a": "Sim. Os Estados Unidos têm sua própria página, e esta página reúne esses escritores junto com os do Canadá."
+      }
+    ]
+  },
+  "united-states": {
+    "name": "Escritores cristãos dos Estados Unidos",
+    "label": "Estados Unidos",
+    "intro": "De Jonathan Edwards e o Grande Despertamento às cruzadas de Billy Graham, os Estados Unidos produziram pregadores, missionários e mestres lidos no mundo inteiro. Suas histórias incluem escravidão e liberdade, avivamento e a fundação de novas igrejas.",
+    "qa": [
+      {
+        "q": "Quem foi o maior teólogo americano?",
+        "a": "Jonathan Edwards, pastor de Northampton, Massachusetts, no século XVIII, é frequentemente chamado de o maior teólogo que a América já produziu. Seus escritos sobre o avivamento e as afeições religiosas ainda são estudados."
+      },
+      {
+        "q": "Quem foram os primeiros pregadores afro-americanos?",
+        "a": "Lemuel Haynes foi o primeiro homem negro ordenado por uma denominação protestante tradicional nos Estados Unidos. Richard Allen fundou a Igreja Episcopal Metodista Africana, e Jarena Lee tornou-se sua primeira pregadora autorizada."
+      },
+      {
+        "q": "Qual livro cristão americano devo ler primeiro?",
+        "a": "A Busca de Deus, de A. W. Tozer, e os livros de E. M. Bounds sobre a oração são curtos, penetrantes e muito amados."
+      }
+    ]
+  },
+  "east-africa": {
+    "name": "Escritores cristãos da África Oriental",
+    "label": "África Oriental",
+    "intro": "Os irmãos do Avivamento da África Oriental, de Uganda e Ruanda — agentes de saúde, mestres-escola, funcionários de hospital, evangelistas e bispos. Vários deles selaram seu testemunho com a própria vida.",
+    "qa": [
+      {
+        "q": "Quais países fazem parte da África Oriental aqui?",
+        "a": "Os escritores desta página vêm de Uganda e Ruanda, os dois países onde começou o Avivamento da África Oriental."
+      },
+      {
+        "q": "Quem foi Yona Kanamuzeyi?",
+        "a": "Yona Kanamuzeyi foi um diácono anglicano ruandês do avivamento, morto em 1964; os relatos concordam que ele cantava enquanto era levado para ser fuzilado."
+      },
+      {
+        "q": "Uganda aparece separadamente?",
+        "a": "Sim. Uganda tem sua própria página, e esta página reúne seus escritores junto com os de Ruanda."
+      }
+    ]
+  },
+  "uganda": {
+    "name": "Escritores cristãos de Uganda",
+    "label": "Uganda",
+    "intro": "Líderes do Avivamento da África Oriental e da Igreja de Uganda: um evangelista que percorreu o mundo, o primeiro arcebispo africano de Uganda e um arcebispo martirizado sob Idi Amin. Suas vidas contam a história de uma igreja provada e renovada.",
+    "qa": [
+      {
+        "q": "Quem foi Festo Kivengere?",
+        "a": "Festo Kivengere foi um bispo anglicano ugandense e evangelista do Avivamento da África Oriental, conhecido no mundo inteiro por sua pregação do perdão depois de fugir do regime de Idi Amin."
+      },
+      {
+        "q": "Quem foi o primeiro arcebispo africano de Uganda?",
+        "a": "Erica Sabiti tornou-se o primeiro arcebispo africano da Igreja de Uganda em 1966."
+      },
+      {
+        "q": "Como o cristianismo chegou a Uganda?",
+        "a": "Missionários anglicanos e católicos chegaram a Buganda no fim da década de 1870. A jovem igreja enfrentou perseguição, incluindo o martírio de convertidos ugandenses em 1885–1887, e cresceu rapidamente nas décadas seguintes."
+      }
+    ]
+  },
+  "north-africa": {
+    "name": "Escritores cristãos do Norte da África",
+    "label": "Norte da África",
+    "intro": "Muito antes do Islã, o Norte da África foi um dos centros vitais da igreja. Cartago, Hipona e Alexandria deram à igreja um bispo mártir, o defensor da divindade de Cristo e Agostinho, com sua mãe que orava por ele.",
+    "qa": [
+      {
+        "q": "Agostinho era africano?",
+        "a": "Sim. Agostinho nasceu em 354 em Tagaste, no Norte da África romano (atual Argélia), e foi bispo de Hipona, no mesmo litoral, por mais de trinta anos."
+      },
+      {
+        "q": "Quem foi Atanásio de Alexandria?",
+        "a": "Atanásio foi bispo de Alexandria, no Egito, por quarenta e cinco anos no século IV, e defendeu a plena divindade de Cristo contra o arianismo ao longo de cinco exílios."
+      },
+      {
+        "q": "Quem foi Cipriano de Cartago?",
+        "a": "Cipriano foi bispo de Cartago no século III, escritor sobre a unidade da igreja, e foi martirizado em 258."
+      }
+    ]
+  },
+  "asia-and-the-middle-east": {
+    "name": "Escritores cristãos da Ásia e do Oriente Médio",
+    "label": "Ásia e Oriente Médio",
+    "intro": "De Antioquia, onde os discípulos foram chamados cristãos pela primeira vez, à Índia e à China. Esses escritores abrangem desde a antiga igreja da Síria até as igrejas modernas da Ásia.",
+    "qa": [
+      {
+        "q": "Quem foi Watchman Nee?",
+        "a": "Watchman Nee foi um pregador e plantador de igrejas chinês do século XX que passou os últimos vinte anos de sua vida na prisão por causa da fé. Seu livro A Vida Cristã Normal é muito lido."
+      },
+      {
+        "q": "Quem foi Pandita Ramabai?",
+        "a": "Pandita Ramabai foi uma estudiosa indiana do sânscrito e reformadora social que se tornou cristã e fundou a Missão Mukti para viúvas e meninas órfãs perto de Pune."
+      },
+      {
+        "q": "Por que Antioquia é importante na história da igreja?",
+        "a": "Foi em Antioquia da Síria que os seguidores de Jesus foram chamados cristãos pela primeira vez (Atos 11:26). Inácio foi seu bispo no início do século II, e João Crisóstomo pregou ali antes de se tornar arcebispo de Constantinopla."
+      }
+    ]
+  }
+}
