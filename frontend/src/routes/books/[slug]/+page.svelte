@@ -274,6 +274,18 @@
 			(n) => n.toLowerCase() !== (book.subtitle ?? '').trim().toLowerCase()
 		)
 	);
+	// What the work is ABOUT: its topical shelves, and the people it gives its
+	// pages to (subject role) as the same Person nodes their author pages declare.
+	const ldAbout = $derived([
+		...(topicThings(book.topics ?? []) ?? []),
+		...(book.featured_people ?? [])
+			.filter((p) => p.role === 'subject')
+			.map((p) => ({
+				'@type': 'Person',
+				'@id': personId(absUrl(localizeHref(authorPath(p.slug)))),
+				name: p.name
+			}))
+	]);
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -317,7 +329,10 @@
 			// shelves it belongs to, which the page has always rendered as chips
 			// and never told a machine. Shared topicThings shape, same as a Person's
 			// `knowsAbout`.
-			about: topicThings(book.topics ?? []),
+			// The people it is about join them: a Portraits of Courage life or a
+			// Key Teachings companion is BY the imprint, so this is now the only
+			// place the page ties itself to its subject's Person node.
+			about: ldAbout.length ? ldAbout : undefined,
 			// The same shelves as a flat keyword string. `about` gives the topic
 			// entities (with URLs); `keywords` is the plain-text form some engines
 			// still read for topical relevance, drawn from the one source so the two
