@@ -4757,7 +4757,23 @@
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed-top",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[162, 225, 438, 288],
+					[145, 280, 455, 343]
+				],
+				"subtitle": [
+					[55, 404, 545, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			}
 		},
 		"key-teachings-of-andrew-murray": {
 			"ground": "efcd6eba4b4806027ea9eed406393b53ddd7dd7ab377e1c11152b4178a9f4b1c",
@@ -4792,7 +4808,23 @@
 			"art": true,
 			"scrim": 0.35,
 			"layout": "framed-top",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[43, 102, 557, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[125, 225, 475, 288],
+					[129, 280, 471, 343]
+				],
+				"subtitle": [
+					[57, 404, 543, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			}
 		},
 		"key-teachings-of-augustine-of-hippo": {
 			"ground": "cefb3ecb3b6b46ceac532671c2fe68927e670f72af0d80ccde137a8fb4d6cd61",
@@ -4905,7 +4937,22 @@
 			"art": true,
 			"scrim": 0.35,
 			"layout": "framed-top",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[154, 102, 446, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[80, 225, 520, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			}
 		},
 		"key-teachings-of-jeanne-guyon": {
 			"ground": "e33a63ee733310eae5919c9384bec378fbd60bb7d81434199b377b7473aaf750",
@@ -4915,7 +4962,22 @@
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed-top",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[167, 102, 433, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[90, 225, 510, 288]
+				],
+				"subtitle": [
+					[55, 348, 545, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			}
 		},
 		"key-teachings-of-jonathan-edwards": {
 			"ground": "9e1b2a422d7ea975b3645288b869291d8020a9f6060c7e457fd62c135ea30e55",
@@ -4951,7 +5013,22 @@
 			"art": true,
 			"scrim": 0.3,
 			"layout": "framed-top",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[142, 102, 458, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[72, 225, 528, 288]
+				],
+				"subtitle": [
+					[55, 348, 545, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			}
 		},
 		"key-teachings-of-richard-baxter": {
 			"ground": "3d033b0c667e69a730aea0312dab8c8c8e3073dd6bf4ccd03a6624fbb9caee49",
