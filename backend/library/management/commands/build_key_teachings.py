@@ -552,18 +552,22 @@ _POINT = re.compile(r"^\d+\.\s")
 
 def _front_matter(text: str) -> tuple[dict[str, str], str]:
     """Split ``text`` into its (tiny, two-key) front matter and the body."""
+    text = text.replace("\r\n", "\n")
     m = _FRONT.match(text)
     if not m:
         return {}, text
     meta: dict[str, str] = {}
-    key = None
+    key, block = None, False
     for line in m.group(1).splitlines():
         head = re.match(r"^(\w+):\s*(.*)$", line)
         if head and not line.startswith(" "):
             key, value = head.groups()
-            meta[key] = "" if value == "|" else value.strip()
-        elif key:
-            meta[key] += line.strip() + "\n" if line.strip() else "\n"
+            block = value == "|"
+            meta[key] = "" if block else value.strip()
+        elif key and block:  # `|` keeps line breaks: they split paragraphs
+            meta[key] += line.strip() + "\n"
+        elif key and line.strip():  # a wrapped one-line value folds
+            meta[key] = f"{meta[key]} {line.strip()}".strip()
     return meta, text[m.end():]
 
 
@@ -589,6 +593,8 @@ def manuscript(text: str) -> tuple[dict[str, str], list[tuple[str, str]]]:
 
     def flush_chapter() -> None:
         flush_para()
+        if title is None and parts:
+            raise CommandError("manuscript: text before the first `# ` chapter heading")
         if title is not None:
             chapters.append((
                 recase_title(title),
@@ -603,6 +609,8 @@ def manuscript(text: str) -> tuple[dict[str, str], list[tuple[str, str]]]:
             title = line[2:].strip()
         elif not line:
             flush_para()
+        elif line.startswith("#") and not line.startswith(("## ", "### ")):
+            raise CommandError(f"manuscript: malformed heading {line[:40]!r}")
         elif line.startswith("## "):
             flush_para()
             parts.append(("h2", line[3:].strip()))
