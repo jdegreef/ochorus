@@ -300,12 +300,17 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'daughters-of-the-king-3': 'young',
 	'sons-of-the-king-3': 'young',
 	// A series, not an audience: the Key Teachings are Ochorus' own companions,
-	// so all four wear the imprint's face rather than each writer's century
+	// so every volume wears the imprint's face rather than its writer's century
 	// (see coverLayouts.BOOK_LAYOUT for the other half of the series look).
 	'key-teachings-of-a-b-simpson': 'originals',
 	'key-teachings-of-jonathan-edwards': 'originals',
 	'key-teachings-of-richard-baxter': 'originals',
 	'key-teachings-of-watchman-nee': 'originals',
+	'key-teachings-of-charles-h-spurgeon': 'originals',
+	'key-teachings-of-andrew-murray': 'originals',
+	'key-teachings-of-hannah-whitall-smith': 'originals',
+	'key-teachings-of-catherine-booth': 'originals',
+	'key-teachings-of-augustine-of-hippo': 'originals',
 	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wears the
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.

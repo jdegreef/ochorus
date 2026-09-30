@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { coverLayoutFor, layoutKey, typeTopFor } from './coverLayouts';
+import { coverLayoutFor, inkDarkFor, layoutKey, typeTopFor } from './coverLayouts';
 import { coverStyleFor, scriptOf, volumeNumeral } from './coverStyles';
 import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
@@ -130,7 +130,11 @@ const needTwins = once(() => {
 				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
 				layout: (() => {
 					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug) : null;
-					return layoutKey(layout, art && typeTopFor(f.slug, layout));
+					return layoutKey(
+						layout,
+						art && typeTopFor(f.slug, layout),
+						art && inkDarkFor(f.slug, layout)
+					);
 				})()
 			};
 		});

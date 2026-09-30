@@ -104,7 +104,11 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    dockerCommand: "uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts"
+    # Wrapped in `sh -c` because Render runs dockerCommand WITHOUT a shell, so a
+    # bare `&&` is passed as arguments to the first command instead of chaining
+    # (the crash: "unrecognized arguments: && uv run …"). The Dockerfile's own CMD
+    # wraps in `sh -c` for the same reason.
+    dockerCommand: "sh -c 'uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts'"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
@@ -385,126 +389,15 @@ services:
       # --- Book PDFs moved to Supabase Storage (2026-09-29) --------------
       # Generated PDFs used to ship as /pdfs/<file>; they now live in the
       # book-pdfs bucket (library/export_policy.PDF_STORAGE_URL), rebuilt by
-      # .github/workflows/book-pdfs.yml. These keep links shared before the
-      # move working. While a file still sits in frontend/static/pdfs, Render
-      # serves the file and this rule doesn't fire; once it's deleted, it does.
+      # .github/workflows/book-pdfs.yml. One wildcard keeps every link shared
+      # before the move working (it was 39 per-file rules, and the Blueprint
+      # sync that carried them failed). Render serves a file that exists before
+      # any rule, so what still sits in frontend/static/pdfs (the WordPress-era
+      # soar-like-the-eagle.pdf, SOURCES.md) is untouched; everything else
+      # under /pdfs/ goes to the bucket.
       - type: redirect
-        source: /pdfs/feasting-at-the-table.fr.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/feasting-at-the-table.fr.pdf
-      - type: redirect
-        source: /pdfs/feasting-at-the-table.lg.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/feasting-at-the-table.lg.pdf
-      - type: redirect
-        source: /pdfs/feasting-at-the-table.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/feasting-at-the-table.pdf
-      - type: redirect
-        source: /pdfs/feasting-at-the-table.sw.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/feasting-at-the-table.sw.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.ar.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.ar.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.es.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.es.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.fr.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.fr.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.hi.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.hi.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.lg.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.lg.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.pt.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.pt.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.sw.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.sw.pdf
-      - type: redirect
-        source: /pdfs/he-holds-my-tomorrows.uk.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/he-holds-my-tomorrows.uk.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.es.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.es.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.fr.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.fr.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.hi.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.hi.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.lg.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.lg.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.pt.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.pt.pdf
-      - type: redirect
-        source: /pdfs/soar-like-the-eagle-3.sw.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/soar-like-the-eagle-3.sw.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.ar.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.ar.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.es.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.es.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.fr.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.fr.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.hi.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.hi.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.lg.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.lg.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.pt.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.pt.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.sw.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.sw.pdf
-      - type: redirect
-        source: /pdfs/stepping-stones-2.uk.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/stepping-stones-2.uk.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.ar.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.ar.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.es.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.es.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.fr.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.fr.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.hi.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.hi.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.lg.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.lg.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.pt.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.pt.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.sw.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.sw.pdf
-      - type: redirect
-        source: /pdfs/the-key-in-my-hand.uk.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-key-in-my-hand.uk.pdf
-      - type: redirect
-        source: /pdfs/the-secret-of-guidance.pdf
-        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/the-secret-of-guidance.pdf
+        source: /pdfs/*
+        destination: https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/*
       # --- Retired WordPress media -------------------------------------
       # The old site hotlinked book PDFs and covers from /wp-content/uploads/.
       # Those files are gone, but the URLs are still in search results and in

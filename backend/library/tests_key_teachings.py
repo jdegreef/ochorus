@@ -10,7 +10,11 @@ import json
 from django.test import SimpleTestCase
 
 from library.content_fixtures import BOOKS_DIR
-from library.management.commands.build_key_teachings import WORKS
+from library.management.commands.build_key_teachings import (
+    DATA_DIR,
+    WORKS,
+    manuscript,
+)
 
 
 class BuildKeyTeachingsMatchesFixtureTests(SimpleTestCase):
@@ -20,8 +24,16 @@ class BuildKeyTeachingsMatchesFixtureTests(SimpleTestCase):
                 path = BOOKS_DIR / f"{slug}.en.json"
                 book = json.loads(path.read_text(encoding="utf-8"))[0]["fields"]
                 self.assertEqual(book["cover_url"], work.cover_url)
+                # A Markdown work carries its copy in the manuscript's front
+                # matter; resolve it the way the command does.
+                meta = {}
+                if work.source.endswith(".md"):
+                    meta, _ = manuscript(
+                        (DATA_DIR / work.source).read_text(encoding="utf-8")
+                    )
                 for field in (
                     "title", "subtitle", "description", "attribution",
                     "about_html", "cover_color",
                 ):
-                    self.assertEqual(book[field], getattr(work, field), field)
+                    expected = getattr(work, field) or meta.get(field, "")
+                    self.assertEqual(book[field], expected, field)

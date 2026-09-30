@@ -1049,6 +1049,33 @@ rgb(0 0 0 / 0.26) 0%,
 	opacity: 0.95;
 }
 
+/* ═══ DARK INK (`coverLayouts.INK_DARK`) ═══════════════════════════════════════
+   The framed composition over a PALE ground: the same frame, ring, rule,
+   subtitle and mark, in dark ink, with no scrim. The scrim exists to darken a
+   picture under white type, and over a light one it only turns it muddy.
+   Everything above paints with white or `currentColor`; flipping the colour
+   and the three white literals (frame, ring, young rule) is the whole change.
+   The ground must be light where the words land — the backend gate measures
+   this ink there. */
+.cover-plate.over-art.ink-dark::before {
+	display: none;
+}
+.cover-plate.over-art.ink-dark .cover-type {
+	--cover-ink-dark: #231a24;
+	color: var(--cover-ink-dark);
+	--hairline: linear-gradient(rgb(35 26 36 / 0.4) 0 0);
+}
+.cover-plate.over-art.ink-dark .cover-type::before {
+	border-color: rgb(35 26 36 / 0.34);
+}
+.cover-plate.over-art.ink-dark .cover-type .volume {
+	border-color: rgb(35 26 36 / 0.72);
+}
+.cover-plate.over-art.ink-dark .cover-type.style-young .rule {
+	background: radial-gradient(circle, rgb(35 26 36 / 0.75) 0 0.8cqw, transparent 0.9cqw) 0 50% /
+		3cqw 1.8cqw repeat-x;
+}
+
 /* ═══ LAYOUTS ═════════════════════════════════════════════════════════════════
    A painting's cover in something other than the framed composition above.
    WHICH layout, and which hue, is `coverLayouts.ts`; this is how each looks.
