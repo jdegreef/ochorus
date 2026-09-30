@@ -626,6 +626,18 @@ Reported, not fixed
   and `the-inner-chamber`). Confirmed altered: secret-of-guidance (damaged),
   god-of-all-comfort, humility-2, the-inner-chamber; full catalog is a backlog
   (see memory `modernized-scripture-in-pd-classics`).
+- **A quotation labelled KJV that isn't KJV** (2026-09-29, #4513). The Key
+  Teachings companions claim the Authorised Version throughout, and 6 of their
+  564 set-apart quotes had drifted. One read 1 Tim 3:3's "greedy of filthy lucre"
+  where 1 Pet 5:2 has "not for", one was Ps 42:5's "in me" cited as 42:11, and
+  one was an EXTRACTOR hyphen ("feeble-minded"; KJV "feebleminded"). To sweep:
+  parse each blockquote's trailing `BOOK c:v` citation and fetch
+  `https://bible-api.com/<ref>?translation=kjv`. It 429s, so space calls ~2.2s
+  and back off; 560 refs take ~25 min. Pass a quote whose normalised words sit
+  contiguously in the verse; a partial quote is fine. Before "fixing" a
+  mismatch, rule out edition spellings ("unmoveable", "Jehovahjireh") and the
+  API's own typos ("havethem", Mark 11:24). Repair with blockquote-anchored
+  `BODY_CORRECTIONS` pairs. If the extractor caused it, fix the extractor.
 - **An audit that calls a book clean can be describing its own blind spots.**
   `the-bruised-reed` (re-imported from Pickering's 1838 scan, #1943) passed
   `english_audit` at every stage while shipping ~180 stray opening quote marks
