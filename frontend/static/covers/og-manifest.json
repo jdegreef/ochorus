@@ -1737,12 +1737,12 @@
 			"bar": 0
 		},
 		"corrie-ten-boom-a-life": {
-			"ground": "6a04662098f91e0f6ad0ebdbcb298b74377069dc1a32d4a0d60c5c901b424b7e",
+			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
 			"style": "house",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
