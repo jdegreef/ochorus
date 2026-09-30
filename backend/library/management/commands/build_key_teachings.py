@@ -122,6 +122,12 @@ class Work:
     cover_color: str
     about_html: str  # reader-visible "About this work" — carries the rights note
 
+    @property
+    def cover_url(self) -> str:
+        # The painted "study" ground (#4500), which replaced the series' first
+        # gilt-tree SVGs; wordless, so BookCover sets the title over it.
+        return f"/covers/art/{self.slug}.jpg"
+
 
 WORKS: dict[str, Work] = {
     "key-teachings-of-a-b-simpson": Work(
@@ -494,7 +500,7 @@ class Command(BaseCommand):
             "cover_color": work.cover_color,
             # A collection, not a reading order: no volume numeral.
             "series": Series.objects.get(slug="key-teachings"),
-            "cover_url": f"/covers/art/{work.slug}.svg",  # wordless tree ground
+            "cover_url": work.cover_url,
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
         book, was_created = Book.objects.update_or_create(
