@@ -1828,7 +1828,7 @@ boundary. Confirm it's environmental by loading an existing book (it 500s too),
 then verify via the API JSON (`/api/library/books/<slug>/`) + the backend gates
 instead of chasing a screenshot. *(growing-in-wisdom, 2026-09-16)*
 
-**The "Key Teachings of …" study-companion series (`build_key_teachings`).** These
+**The "Key Teachings of …" study-companion series (`build_key_teachings`).** (HISTORY: the first four were built from PDFs until 2026-09-30; every volume is now a Markdown manuscript — see below.) These
 are Ochorus's OWN house-written expositions ABOUT a classic teacher — not the
 author's text — one shared 89-page digital-PDF template: title page, disclaimer,
 Introduction, a titled biographical narrative, eighteen `CHAPTER N` chapters (each
@@ -1959,8 +1959,14 @@ point at `(book_slug, chapter_order, paragraph_index)`. Have the editor write an
 old→new chapter map; `0170_reshape_key_teachings` (+ `migrations/data/
 key_teachings_reshape.json`) rebuilds from the fixture while the live book still
 has its old shape and moves every reader row, re-finding each paragraph by exact
-text (rewritten ones fall to the nearest surviving paragraph). Leave volumes with
-a reading plan (the first four, "Four Teachers") alone unless the plan moves too.
+text (rewritten ones fall to the nearest surviving paragraph). A volume inside a
+curated reading plan needs the plan moved too: `seed_plans` never re-syncs an
+existing plan's days, and `PlanProgress.done` holds day NUMBERS —
+`0171_reshape_first_key_teachings` rebuilds the plan's days and renumbers done
+days (merged → done only if all its old days were; a new chapter → done if read
+past on both sides). All 32 volumes are now Markdown manuscripts; the first
+four's PDFs were converted text-for-text (their Scripture corrections baked in
+and removed from corrections.py) and the PDF reader deleted.
 
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the

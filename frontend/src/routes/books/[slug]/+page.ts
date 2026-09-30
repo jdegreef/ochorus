@@ -1,3 +1,5 @@
+// Rebuild marker 2026-09-30: the first four Key Teachings volumes reshaped (migration 0171)
+// and the Four Teachers plan moved to 86 days; prerendered contents and plan days follow.
 // Rebuild marker 2026-09-30: nine Key Teachings volumes reshaped to 18-25
 // chapters (migration 0170); their prerendered contents lists must follow.
 // Rebuild marker 2026-09-23: #3237 made seed_books sync existing books'
