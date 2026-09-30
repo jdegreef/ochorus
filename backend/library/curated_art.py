@@ -990,35 +990,34 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "Fires on hill after hill into the distance, a circle gathered at the "
         "nearest, the first dawn on the rim — the revival's fellowship spreading.",
     ),
-    # Sons of the King 1–3 and Daughters of the King 1–3: sibling series. One
-    # frame for both, a starry night sky over a low band of dawn with one young
-    # figure drawn in motion against the light (the founder chose this over six
-    # other concepts, 2026-09-28). Sons wear cool colours and Daughters warm, so
-    # each set keeps one colour family on the shelf; the figure stays below the
-    # subtitle so the type sits on sky.
+    # Sons of the King 1–3 and Daughters of the King 1–3: sibling series in
+    # dark ink (`covers.INK_DARK`). Loose watercolour plants frame a pale cream
+    # page, kept to the side margins so the words sit on paper (the founder chose
+    # this from ten concepts, 2026-09-30, replacing night-sky silhouettes that
+    # read too dark). Daughters take warm plants, Sons cool ones, one per volume.
     "sons-of-the-king-1": Original(
-        "885f979175992dd0f66f2c1f6114781625f2c23e5b2a29abb325ba96f536809e",
-        "Strong: a boy climbing a boulder ridge toward the mountains at dawn.",
+        "41cd07c644ab65d224aca74f36037718e60909e05ddcc83d3a82ddddfcd6e64d",
+        "Strong: slate-blue pine with cones framing a cream page.",
     ),
     "sons-of-the-king-2": Original(
-        "d46023762dc1a562a2851407124af95e4c452f635e4fac0de2b1486ca968d17f",
-        "Faithful: a boy at the summit, a boot on the rock, over a pine valley.",
+        "b6839633ad5576b225264c00bb04fcc208c9328511a0e0577a1675b47611890c",
+        "Faithful: deep-teal cedar sprays (Psalm 92:12) framing a cream page.",
     ),
     "sons-of-the-king-3": Original(
-        "f377d9ded5c6333004b36321304b325a68495c972fc7525f54b26326ab1a9879",
-        "Growing Up: a boy walking the road out toward the light.",
+        "b5cb90e5b414d3460604e7c9396b94931726c8fedba0c8be9a2b7fb16b8c5ff3",
+        "Growing Up: sage ferns with unfurling fiddleheads.",
     ),
     "daughters-of-the-king-1": Original(
-        "5806ca1044ce32dadeafac1037bb48d5126c2c6ab2dd1ee817631e37b7aec354",
-        "Beloved: a girl on a sea cliff by a lighthouse at first light.",
+        "dfbc04c44e0ee7fe3c1997f37735ad0ffb0303b40ca2c24146a415ae93f3dd80",
+        "Beloved: pink watercolour lilies framing a cream page.",
     ),
     "daughters-of-the-king-2": Original(
-        "eb63da9b0f4ef86b05950f5230e6b983da285f61458e2b730d9066b1323bacf2",
-        "Brave: a girl running up a hill toward the dawn.",
+        "70338ad2830db824e6b62e59176ce4ce99599945689c9b8ab521ed756bc3316b",
+        "Brave: oak with acorns and fruiting olive sprigs framing a cream page.",
     ),
     "daughters-of-the-king-3": Original(
-        "1d0cc9e028c5bcfa40077a9c11e5a29fbe91ef882c5b053a68457c25d0c1e43a",
-        "Growing Up: a girl walking the river path toward the light.",
+        "6d744ac8bc5a63b942d6f03bc1dcafa37a64c0dd146d3046631dad2cf8cc1592",
+        "Growing Up: a morning-glory vine climbing the page, buds at its tip.",
     ),
     # The Key Teachings companions (Simpson, Edwards, Baxter, Nee). One frame for
     # the series: each man's desk, painted close and warm by the light of his own

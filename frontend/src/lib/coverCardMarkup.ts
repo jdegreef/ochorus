@@ -57,6 +57,9 @@ export interface CoverCardBook {
 	layout?: { layout: string; hue: string } | null;
 	/** Framed type set from the top, from `coverLayouts.typeTopFor`. Painting only. */
 	top?: boolean;
+	/** Framed type in dark ink over a pale ground, from `coverLayouts.inkDarkFor`.
+	 *  Painting only. */
+	dark?: boolean;
 }
 
 /**
@@ -154,6 +157,9 @@ export function coverPlateMarkup(book: CoverCardBook, lockup: string): string {
 	// `.cover-plate.over-art::before`, and a pseudo-element cannot be selected
 	// from a descendant.
 	if (book.subtitle) classes.push('has-subtitle');
+	// Dark ink and no scrim over a pale ground: on the wrapper for the same
+	// reason as the scrim band above — the scrim it removes is its pseudo-element.
+	if (book.art && book.dark && !book.layout) classes.push('ink-dark');
 	// A layout repaints the plate — paper, band, the ink — so it is a class here,
 	// where the scrim it replaces is drawn, and not on the type block below.
 	if (book.art && book.layout) {

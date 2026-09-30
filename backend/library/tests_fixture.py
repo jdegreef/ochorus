@@ -1547,6 +1547,68 @@ class CoverAssetTests(SimpleTestCase):
             "curated_art.ORIGINAL_SVG_GROUND in the same commit",
         )
 
+    def test_ink_dark_mirrors_the_frontend(self):
+        """`covers.INK_DARK` is `coverLayouts.INK_DARK`, copied for the gates.
+
+        The browser sets these works in dark ink with no scrim; the backend
+        skips their scrim and measures their dark ink only for the works Python
+        believes are dark. A work on one side and not the other is either
+        measured for the wrong ink or not measured at all.
+        """
+        from library.covers import INK_DARK
+
+        ts = (STATIC_DIR.parent / "src" / "lib" / "coverLayouts.ts").read_text()
+        block = re.search(r"INK_DARK[^=]*=\s*new Set\(\[(.*?)\]\)", ts, re.S)
+        self.assertIsNotNone(block, "coverLayouts.INK_DARK not found")
+        self.assertEqual(
+            sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(INK_DARK),
+            "covers.INK_DARK and coverLayouts.INK_DARK disagree — change both",
+        )
+
+    def test_dark_ink_grounds_carry_their_type(self):
+        """A pale ground set in dark ink clears the same bars white type does.
+
+        The white-type gate skips these works: there is no scrim and no white
+        ink. What they carry instead is `--cover-ink-dark` at each element's
+        opacity, straight over the picture, so the picture must be LIGHT where
+        the words land. Measured over the text column by the union of every
+        edition's rows (`covers.DARK_INK_BOXES`), so a longer translated title
+        is held too.
+        """
+        from PIL import Image
+
+        from library.covers import DARK_INK, DARK_INK_BOXES, INK_DARK
+
+        self.assertTrue(DARK_INK_BOXES, "covers.DARK_INK_BOXES is empty")
+
+        def lum(c):
+            def ch(v):
+                v /= 255
+                return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
+
+            r, g, b = (ch(x) for x in c)
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+        art_dir = STATIC_DIR / "covers" / "art"
+        thin = []
+        for slug in sorted(INK_DARK):
+            path = art_dir / f"{slug}.jpg"
+            self.assertTrue(path.exists(), f"{slug}: no ground at covers/art/")
+            plate = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
+            for name, box, opacity, bar in DARK_INK_BOXES:
+                worst = 1e9
+                for px in plate.crop(box).getdata():
+                    ink = tuple(round(d * opacity + c * (1 - opacity)) for d, c in zip(DARK_INK, px, strict=True))
+                    a, b = lum(ink) + 0.05, lum(px) + 0.05
+                    worst = min(worst, max(a, b) / min(a, b))
+                if worst < bar:
+                    thin.append(f"{slug}: {name} {worst:.2f}:1 (needs {bar})")
+        self.assertEqual(
+            thin, [],
+            "a dark-ink ground too dark where its words land — lighten the art "
+            "in those rows, or move the dark detail into the margins",
+        )
+
     def test_type_top_mirrors_the_frontend(self):
         """`covers.TYPE_TOP` is `coverLayouts.TYPE_TOP`, copied for the scrim.
 
@@ -1873,7 +1935,7 @@ class CoverAssetTests(SimpleTestCase):
         from PIL import Image
 
         from library.art_scrim import ART_SCRIM
-        from library.covers import ink_boxes, scrimmed
+        from library.covers import INK_DARK, ink_boxes, scrimmed
 
         def relative_luminance(channels):
             def channel(v):
@@ -1902,6 +1964,10 @@ class CoverAssetTests(SimpleTestCase):
         }
         thin, untuned = [], []
         for path in sorted(art_dir.glob("*.jpg")):
+            # A dark-ink ground carries no white type and has no scrim; its own
+            # gate below measures the ink it does carry.
+            if path.stem in INK_DARK:
+                continue
             # AT ITS OWN STRENGTH, which is the thing being checked. A painting
             # with no entry falls back to the full scrim — the safe end, and what
             # every painting carried before the table existed — but it is still
