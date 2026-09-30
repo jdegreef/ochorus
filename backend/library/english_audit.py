@@ -202,7 +202,7 @@ FUSION_HEADS = frozenset({
 #: lost space.
 FUSION_EXEMPT = frozenset({
     "anothers", "nomad", "nomen", "nosing", "noway", "noways", "solet",
-    "sounder", "washer",
+    "solos", "sounder", "washer",
 })
 #: A tail must reach this many uses across the English library to count as a word.
 COMMON_MIN = 20

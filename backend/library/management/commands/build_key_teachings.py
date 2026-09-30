@@ -478,6 +478,308 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#3a2a22",
     ),
+    "key-teachings-of-r-a-torrey": Work(
+        slug="key-teachings-of-r-a-torrey",
+        title="The Key Teachings of R. A. Torrey",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="r-a-torrey",
+        source="r-a-torrey.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. R. A. Torrey's own writings are in the public domain and "
+            "freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#1a3ab0",
+    ),
+    "key-teachings-of-dwight-l-moody": Work(
+        slug="key-teachings-of-dwight-l-moody",
+        title="The Key Teachings of Dwight L. Moody",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="dwight-l-moody",
+        source="dwight-l-moody.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Not published by, affiliated with, or endorsed by the "
+            "Moody Bible Institute or Moody Church. Dwight L. Moody's own "
+            "writings are in the public domain and freely available; readers "
+            "are encouraged to go to them directly. Scripture quotations are "
+            "from the Authorised (King James) Version."
+        ),
+        cover_color="#1f7f1f",
+    ),
+    "key-teachings-of-john-bunyan": Work(
+        slug="key-teachings-of-john-bunyan",
+        title="The Key Teachings of John Bunyan",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="john-bunyan",
+        source="john-bunyan.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. John Bunyan's own writings are in the public domain and "
+            "freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#0a3a1a",
+    ),
+    "key-teachings-of-john-wesley": Work(
+        slug="key-teachings-of-john-wesley",
+        title="The Key Teachings of John Wesley",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="john-wesley",
+        source="john-wesley.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Not published by, affiliated with, or endorsed by any "
+            "Methodist church or body. John Wesley's own writings are in the "
+            "public domain and freely available; readers are encouraged to go "
+            "to them directly. Scripture quotations are from the Authorised "
+            "(King James) Version."
+        ),
+        cover_color="#8a0a1a",
+    ),
+    "key-teachings-of-charles-finney": Work(
+        slug="key-teachings-of-charles-finney",
+        title="The Key Teachings of Charles G. Finney",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="charles-finney",
+        source="charles-finney.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Charles G. Finney's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King "
+            "James) Version."
+        ),
+        cover_color="#990f82",
+    ),
+    "key-teachings-of-john-owen": Work(
+        slug="key-teachings-of-john-owen",
+        title="The Key Teachings of John Owen",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="john-owen",
+        source="john-owen.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. His seventeenth-century English has been rendered into "
+            "modern prose except where briefly quoted. John Owen's own writings "
+            "are in the public domain and freely available; readers are "
+            "encouraged to go to them directly. Scripture quotations are from "
+            "the Authorised (King James) Version."
+        ),
+        cover_color="#7f1f4f",
+    ),
+    "key-teachings-of-e-m-bounds": Work(
+        slug="key-teachings-of-e-m-bounds",
+        title="The Key Teachings of E. M. Bounds",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="e-m-bounds",
+        source="e-m-bounds.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. E. M. Bounds's own writings are in the public domain and "
+            "freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#0a0a2a",
+    ),
+    "key-teachings-of-frederick-brotherton-meyer": Work(
+        slug="key-teachings-of-frederick-brotherton-meyer",
+        title="The Key Teachings of F. B. Meyer",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="frederick-brotherton-meyer",
+        source="frederick-brotherton-meyer.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. F. B. Meyer's own writings are in the public domain and "
+            "freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#30102a",
+    ),
+    "key-teachings-of-george-whitefield": Work(
+        slug="key-teachings-of-george-whitefield",
+        title="The Key Teachings of George Whitefield",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="george-whitefield",
+        source="george-whitefield.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. George Whitefield's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King "
+            "James) Version."
+        ),
+        cover_color="#4a6a00",
+    ),
+    "key-teachings-of-ignatius-of-antioch": Work(
+        slug="key-teachings-of-ignatius-of-antioch",
+        title="The Key Teachings of Ignatius of Antioch",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="ignatius-of-antioch",
+        source="ignatius-of-antioch.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Ignatius wrote in Greek; where his words are quoted, it "
+            "is in a public-domain English translation. Ignatius's own writings "
+            "are in the public domain and freely available; readers are "
+            "encouraged to go to them directly. Scripture quotations are from "
+            "the Authorised (King James) Version."
+        ),
+        cover_color="#856818",
+    ),
+    "key-teachings-of-john-calvin": Work(
+        slug="key-teachings-of-john-calvin",
+        title="The Key Teachings of John Calvin",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="john-calvin",
+        source="john-calvin.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Calvin wrote in Latin and French; where his words are "
+            "quoted, it is in public-domain English translations. John Calvin's "
+            "own writings are in the public domain and freely available; "
+            "readers are encouraged to go to them directly. Scripture "
+            "quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#002db7",
+    ),
+    "key-teachings-of-martin-luther": Work(
+        slug="key-teachings-of-martin-luther",
+        title="The Key Teachings of Martin Luther",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="martin-luther",
+        source="martin-luther.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Luther wrote in German and Latin; where his words are "
+            "quoted, it is in public-domain English translations. Martin "
+            "Luther's own writings are in the public domain and freely "
+            "available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#1f1f7f",
+    ),
+    # A. W. Tozer's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-a-w-tozer": Work(
+        slug="key-teachings-of-a-w-tozer",
+        title="The Key Teachings of A. W. Tozer",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="a-w-tozer",
+        source="a-w-tozer.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of A. W. Tozer. "
+            "All descriptions of his teaching are the present author's own "
+            "summaries; his books and spoken ministry are named for further "
+            "study, and readers are warmly encouraged to obtain those works "
+            "from their rightful publishers. Scripture quotations are from the "
+            "Authorised (King James) Version."
+        ),
+        cover_color="#3a1a4a",
+    ),
+    # Martyn Lloyd-Jones's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-martyn-lloyd-jones": Work(
+        slug="key-teachings-of-martyn-lloyd-jones",
+        title="The Key Teachings of Martyn Lloyd-Jones",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="martyn-lloyd-jones",
+        source="martyn-lloyd-jones.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Martyn Lloyd- "
+            "Jones. All descriptions of his teaching are the present author's "
+            "own summaries; his books and spoken ministry are named for further "
+            "study, and readers are warmly encouraged to obtain those works "
+            "from their rightful publishers. Scripture quotations are from the "
+            "Authorised (King James) Version."
+        ),
+        cover_color="#007689",
+    ),
+    # Corrie ten Boom's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-corrie-ten-boom": Work(
+        slug="key-teachings-of-corrie-ten-boom",
+        title="The Key Teachings of Corrie ten Boom",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="corrie-ten-boom",
+        source="corrie-ten-boom.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Corrie ten "
+            "Boom. All descriptions of her teaching are the present author's "
+            "own summaries; her books and spoken ministry are named for further "
+            "study, and readers are warmly encouraged to obtain those works "
+            "from their rightful publishers. Scripture quotations are from the "
+            "Authorised (King James) Version."
+        ),
+        cover_color="#b02a2a",
+    ),
+    # Derek Prince's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-derek-prince": Work(
+        slug="key-teachings-of-derek-prince",
+        title="The Key Teachings of Derek Prince",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="derek-prince",
+        source="derek-prince.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Derek Prince. "
+            "All descriptions of his teaching are the present author's own "
+            "summaries; his books and spoken ministry are named for further "
+            "study, and readers are warmly encouraged to obtain those works "
+            "from their rightful publishers. Scripture quotations are from the "
+            "Authorised (King James) Version."
+        ),
+        cover_color="#1f7f4f",
+    ),
+    # Dietrich Bonhoeffer's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-dietrich-bonhoeffer": Work(
+        slug="key-teachings-of-dietrich-bonhoeffer",
+        title="The Key Teachings of Dietrich Bonhoeffer",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="dietrich-bonhoeffer",
+        source="dietrich-bonhoeffer.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Dietrich "
+            "Bonhoeffer. All descriptions of his teaching are the present "
+            "author's own summaries; his books and spoken ministry are named "
+            "for further study, and readers are warmly encouraged to obtain "
+            "those works from their rightful publishers. Scripture quotations "
+            "are from the Authorised (King James) Version."
+        ),
+        cover_color="#5a1aa0",
+    ),
+    # Gareth Evans's own works are NOT public domain — this companion quotes only the
+    # KJV and paraphrases; the disavowal is essential and must ship.
+    "key-teachings-of-gareth-evans": Work(
+        slug="key-teachings-of-gareth-evans",
+        title="The Key Teachings of Gareth Evans",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="gareth-evans",
+        source="gareth-evans.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Gareth Evans. "
+            "All descriptions of his teaching are the present author's own "
+            "summaries; his books and spoken ministry are named for further "
+            "study, and readers are warmly encouraged to obtain those works "
+            "from their rightful publishers. Scripture quotations are from the "
+            "Authorised (King James) Version."
+        ),
+        cover_color="#7a0a5a",
+    ),
 }
 
 

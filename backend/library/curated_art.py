@@ -1120,6 +1120,97 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A silver candlestick, a red morocco prayer book, a folded letter "
         "under a red wax seal with a quill: seventeenth-century France.",
     ),
+    "key-teachings-of-r-a-torrey": Original(
+        "2142aec4cbdeb1d54341210e9bbcf98cd023e300f0444fc2857d26260198c03c",
+        "A brass student lamp, a black Bible with ribbon markers and a "
+        "fountain pen, a stack of ruled index cards: the Bible teacher's "
+        "desk.",
+    ),
+    "key-teachings-of-dwight-l-moody": Original(
+        "dcc2eb60a31c9b28b403c4af281ecfc9bfcc5143fd0c449737b1bb60f07faf91",
+        "A pewter lamp with a glass font, a worn brown Bible and a small "
+        "cloth Sankey hymnbook: the Northfield evangelist.",
+    ),
+    "key-teachings-of-john-bunyan": Original(
+        "d913c4dc76a110d91100919982167f73d85154ad1f272f406196de7aa7df392e",
+        "A candle in an iron socket, a leather Bible and a copper tinker's "
+        "kettle: the tinker of Elstow.",
+    ),
+    "key-teachings-of-john-wesley": Original(
+        "72b01daad903cfab069efc084e8372473e95d63e44796f7040ef35572e2ca274",
+        "A brass candlestick, a pocket Bible on a leather saddlebag, a "
+        "journal and quill: the itinerant's desk.",
+    ),
+    "key-teachings-of-charles-finney": Original(
+        "858b22fc6ab5c9f3cde1a7f5dfcff4b2a65fc883554289d9d83f783f51c3b3cd",
+        "A brass oil lamp, calf law books with a Bible on top, an inkpot and "
+        "quill: the lawyer turned revivalist.",
+    ),
+    "key-teachings-of-john-owen": Original(
+        "1b0c0ee5cf2123906b8176bbe53c013787f9ae934ba6827bc46bc37fcc6c0b4e",
+        "A pewter candlestick, a great calf folio with clasps, sealing wax "
+        "and a quill: the Puritan divine.",
+    ),
+    "key-teachings-of-e-m-bounds": Original(
+        "65918f89135761820286e6387bae8585acdacca016c9fa6a945d7bb1d958533f",
+        "A tin oil lamp in the cool before dawn, an open Bible and a gold "
+        "pocket watch: the early hour of prayer.",
+    ),
+    "key-teachings-of-frederick-brotherton-meyer": Original(
+        "c6ebc5669a4560afa3c3641e9643773d4ade7be07ff1d072708e6df36d51a6a6",
+        "A brass lamp with a cranberry-glass font, a small devotional book "
+        "with a letter, a gilt-rimmed cup: the Victorian pastor.",
+    ),
+    "key-teachings-of-george-whitefield": Original(
+        "249909ebaea3a7c91a234acea5a33fca6739ae81a44cc178ea93cebbed350f87",
+        "A brass candlestick, a leather travelling valise, a tied sermon "
+        "manuscript and a quill: the field preacher.",
+    ),
+    "key-teachings-of-ignatius-of-antioch": Original(
+        "508f76f1d92a0a2d2814b5d42e1a1604ae922800c6eb1d0540e2ebfdbe5bec18",
+        "A bronze lamp hanging from a stand, papyrus letters under a seal, "
+        "three iron chain links: the bishop on the road to Rome.",
+    ),
+    "key-teachings-of-john-calvin": Original(
+        "b995d3b471c403ecce9c3f262bbafd6dee2f5f39f61e4786afd05a9ca950be8d",
+        "A plain iron candlestick, a clasped Geneva book, a pewter inkstand "
+        "and quill: the Reformer of Geneva.",
+    ),
+    "key-teachings-of-martin-luther": Original(
+        "509efdc45554398a9fe30b50c69985aa40e2d9a4c5ac558d9d8f743885cc4529",
+        "A tin chamberstick, a great Bible with brass bosses and a lute "
+        "leaning on it: the Wittenberg Reformer.",
+    ),
+    "key-teachings-of-a-w-tozer": Original(
+        "5ac9dffd163d449a07ddb4f80905649fac7a4adfd4392e05f475353e44213ed7",
+        "A 1940s gooseneck lamp, an open old book of the mystics, a black "
+        "Bible and a notebook: the Chicago pastor's study.",
+    ),
+    "key-teachings-of-martyn-lloyd-jones": Original(
+        "2a1025900a2ddac96dec2c3281df0de2191edb09010ea78c65849e3e633cd325",
+        "A cream anglepoise lamp, a black Bible, a coiled stethoscope and "
+        "sermon notes: the doctor turned preacher.",
+    ),
+    "key-teachings-of-corrie-ten-boom": Original(
+        "596ba9b9691089f22e56e04b56a9c9efe646405a1936da4fe0d03e8663bb0b18",
+        "A watchmaker's lamp, a small Bible with a loupe, an open watch and "
+        "an embroidered cloth: the Haarlem watch shop.",
+    ),
+    "key-teachings-of-derek-prince": Original(
+        "c8cbfb5bab7b1588992525ee25a22bd4e2ceba6d23ebdaac66c7ba2b112515d6",
+        "A drum-shade lamp, a Bible with a Greek New Testament, an olive-wood "
+        "bowl of olives: the teacher in Jerusalem.",
+    ),
+    "key-teachings-of-dietrich-bonhoeffer": Original(
+        "11423ee7f679323acf2d7c673e1ff5f9413e0df885834b6cf0774a22b1e34ecb",
+        "A candle stub on an enamel dish, a thin grey book, handwritten "
+        "letters and a pencil: letters from a cell.",
+    ),
+    "key-teachings-of-gareth-evans": Original(
+        "bb28022b3975fb39a0704adce0b101a04bf596ee3d71266f5ea90eea578da47f",
+        "A slim desk lamp, an open Bible, a blue ceramic mug and a notebook "
+        "with a pen: a present-day study.",
+    ),
 }
 
 

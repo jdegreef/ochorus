@@ -5174,6 +5174,35 @@
 				376
 			]
 		},
+		"key-teachings-of-a-w-tozer": {
+			"ground": "919dddfd448e8a31898656e4b400584d429414dcade625bc6bb9018e745af230",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[126, 225, 474, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-amanda-berry-smith": {
 			"ground": "97ac4d01bf7b6231e04389f630c2897c14b2eb9dfa63a2203339970aecddc69f",
 			"style": "originals",
@@ -5322,6 +5351,35 @@
 				376
 			]
 		},
+		"key-teachings-of-charles-finney": {
+			"ground": "f731ffab8e3d038ab59e08c4e8ff129fac42b2897e33b865c596343430ef28ca",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[126, 102, 474, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[47, 225, 553, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-charles-h-spurgeon": {
 			"ground": "c5d7d01b37aa188e516c121a437d33ecc113215edd3dd034b75f59ab2059e67b",
 			"style": "originals",
@@ -5339,6 +5397,240 @@
 					[62, 169, 538, 232],
 					[171, 225, 429, 288],
 					[142, 280, 458, 343]
+				],
+				"subtitle": [
+					[57, 404, 543, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
+		"key-teachings-of-corrie-ten-boom": {
+			"ground": "59012f38fc67947dec3e6c935265e05b6566ce80df6af50c2dc33746a9f3df1a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[61, 225, 539, 288]
+				],
+				"subtitle": [
+					[55, 348, 545, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-derek-prince": {
+			"ground": "e6f236258560bda5afbbeb90af60106de7eaa518f317a023c5fb0298be1f892d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[171, 102, 429, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[102, 225, 498, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-dietrich-bonhoeffer": {
+			"ground": "73b225db4e8294823e1497caed8d2a1cb6b97c6c97aceccba6722783be59f936",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[93, 102, 507, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[164, 225, 436, 288],
+					[155, 280, 445, 343]
+				],
+				"subtitle": [
+					[57, 404, 543, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
+		"key-teachings-of-dwight-l-moody": {
+			"ground": "46496a291d91ca1e9d2879b492b04f58f5ba5efec1db7d0085ff70b7bb1f7345",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[55, 225, 545, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-e-m-bounds": {
+			"ground": "66ad506c908792d5c628271bcb863e102c648b2c28d24d13bc81755e718512e9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[181, 102, 419, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[105, 225, 495, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-frederick-brotherton-meyer": {
+			"ground": "a83efdc05ac91f8365e9d9c0b7dc58c5fda7b258d509eebd4117ba42b0eca441",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[130, 225, 470, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-gareth-evans": {
+			"ground": "1bcb47a1a9299f9c2e05200e8ffca8ea88e5f9d9955bfe50ea33bd1d8007d734",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[99, 225, 501, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-george-whitefield": {
+			"ground": "6ccbb3ee8bba30fcf0fc428c8e15e0d75dd1ba6c9cd46057a94df5d83062ab0f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[196, 169, 404, 232],
+					[139, 225, 461, 288],
+					[69, 280, 531, 343]
 				],
 				"subtitle": [
 					[57, 404, 543, 432]
@@ -5411,6 +5703,36 @@
 				376
 			]
 		},
+		"key-teachings-of-ignatius-of-antioch": {
+			"ground": "0691b8b5fe16333da02e84aeaa8b5a6ff947cbc57358f756929c2d4a1c63c44e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[163, 225, 437, 288],
+					[168, 280, 432, 343]
+				],
+				"subtitle": [
+					[57, 404, 543, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
 		"key-teachings-of-jeanne-guyon": {
 			"ground": "e33a63ee733310eae5919c9384bec378fbd60bb7d81434199b377b7473aaf750",
 			"style": "originals",
@@ -5430,6 +5752,122 @@
 				],
 				"subtitle": [
 					[55, 348, 545, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-john-bunyan": {
+			"ground": "1935a42e4e501c2982698dacdc8842ffcb77b530f0aac696b61795699d627e2f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[177, 102, 423, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[102, 225, 498, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-john-calvin": {
+			"ground": "6c4ee3ef2066f69e7b7fab38d133c03aee1da6de1b384588c48b2f7e3e8fcd0a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[183, 102, 417, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[120, 225, 480, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-john-owen": {
+			"ground": "2981692350e31c2ba196925694f992ad8d335f4d64f643b1de4218e72357229b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[128, 225, 472, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-john-wesley": {
+			"ground": "36f47544c9a45731542e73ea7019ff285b256bef41cc87915d1abc6c096e99a1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[179, 102, 421, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[110, 225, 490, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -5489,6 +5927,94 @@
 				],
 				"subtitle": [
 					[55, 348, 545, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-martin-luther": {
+			"ground": "c39651704b6e8a5bba538116b106a5bb2129ed07f2b6191b60c563674977f586",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[89, 225, 511, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"key-teachings-of-martyn-lloyd-jones": {
+			"ground": "71de645c7658992ec40bb7c8f3685b6fe60f9fef5a5d8d98af97249b16b48128",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[175, 225, 425, 288],
+					[146, 280, 454, 343]
+				],
+				"subtitle": [
+					[57, 404, 543, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
+		"key-teachings-of-r-a-torrey": {
+			"ground": "454780cb8dd9ef562a0ea15f94c45d4b1831c87ac8983ded5c26645acd3fb28b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[184, 102, 416, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[117, 225, 483, 288]
+				],
+				"subtitle": [
+					[57, 348, 543, 376]
 				],
 				"mark": [
 					[232, 664, 368, 746]
