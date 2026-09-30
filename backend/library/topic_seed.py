@@ -43,6 +43,7 @@ TOPICS = [
             "possibilities-of-prayer",
             "prayer-the-pulse-of-life",
             "cheque-book",
+            "key-teachings-of-e-m-bounds",
         ],
     ),
     (
@@ -55,6 +56,8 @@ TOPICS = [
             "the-person-and-work-of-the-holy-spirit",
             "the-masters-indwelling",
             "jesus-himself-2",
+            "key-teachings-of-r-a-torrey",
+            "key-teachings-of-derek-prince",
         ],
     ),
     (
@@ -72,6 +75,8 @@ TOPICS = [
             "key-teachings-of-watchman-nee",
             "key-teachings-of-a-b-simpson",
             "key-teachings-of-hannah-whitall-smith",
+            "key-teachings-of-frederick-brotherton-meyer",
+            "key-teachings-of-a-w-tozer",
         ],
     ),
     (
@@ -86,6 +91,8 @@ TOPICS = [
             "he-holds-my-tomorrows",
             "the-way-to-god",
             "all-things-for-good",
+            "key-teachings-of-martyn-lloyd-jones",
+            "key-teachings-of-corrie-ten-boom",
         ],
     ),
     (
@@ -105,6 +112,8 @@ TOPICS = [
             "union-and-communion",
             "men-who-moved-heaven",
             "evangelization-of-the-world",
+            "key-teachings-of-dwight-l-moody",
+            "key-teachings-of-charles-finney",
         ],
     ),
     (
@@ -124,6 +133,7 @@ TOPICS = [
             "soar-like-the-eagle-3",
             "waiting-on-god",
             "christ-the-healer",
+            "key-teachings-of-frederick-brotherton-meyer",
         ],
     ),
     (
@@ -137,6 +147,7 @@ TOPICS = [
             "around-the-wicket-gate",
             "grace-abounding",
             "how-to-bring-men-to-christ",
+            "key-teachings-of-dwight-l-moody",
         ],
     ),
     (
@@ -173,6 +184,7 @@ TOPICS = [
             "key-teachings-of-jonathan-edwards",
             "ten-commandments",
             "key-teachings-of-catherine-booth",
+            "key-teachings-of-john-wesley",
         ],
     ),
     (
@@ -191,6 +203,8 @@ TOPICS = [
             "men-who-tended-the-flock-2",
             "the-fundamental-doctrines-of-the-christian-faith",
             "key-teachings-of-charles-h-spurgeon",
+            "key-teachings-of-george-whitefield",
+            "key-teachings-of-martyn-lloyd-jones",
         ],
     ),
     (
@@ -218,6 +232,8 @@ TOPICS = [
             "religious-affections",
             "freedom-of-the-will",
             "selected-sermons-edwards",
+            "key-teachings-of-john-bunyan",
+            "key-teachings-of-john-owen",
         ],
     ),
     (
@@ -262,6 +278,7 @@ TOPICS = [
             "key-teachings-of-amanda-berry-smith",
             "key-teachings-of-julia-foote",
             "key-teachings-of-jeanne-guyon",
+            "key-teachings-of-corrie-ten-boom",
         ],
     ),
     (
@@ -281,6 +298,7 @@ TOPICS = [
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",
             "key-teachings-of-athanasius-of-alexandria",
+            "key-teachings-of-ignatius-of-antioch",
         ],
     ),
     (
@@ -324,6 +342,8 @@ TOPICS = [
             "soar-like-the-eagle-3",
             "he-holds-my-tomorrows",
             "prayer-the-pulse-of-life",
+            "key-teachings-of-derek-prince",
+            "key-teachings-of-gareth-evans",
         ],
     ),
     (
@@ -339,6 +359,7 @@ TOPICS = [
             "confessions",
             "the-inner-chamber",
             "key-teachings-of-jeanne-guyon",
+            "key-teachings-of-a-w-tozer",
         ],
     ),
     (
@@ -355,6 +376,7 @@ TOPICS = [
             "plain-account-christian-perfection",
             "freedom-of-the-will",
             "religious-affections",
+            "key-teachings-of-george-whitefield",
         ],
     ),
     (
@@ -367,6 +389,7 @@ TOPICS = [
             "the-reformed-pastor",
             "first-epistle-of-clement",
             "separation-and-service",
+            "key-teachings-of-dietrich-bonhoeffer",
         ],
     ),
     (
@@ -395,6 +418,7 @@ TOPICS = [
             "selected-sermons-whitefield",
             "godliness",
             "purity-of-heart",
+            "key-teachings-of-john-wesley",
         ],
     ),
     (
@@ -409,6 +433,9 @@ TOPICS = [
             "freedom-of-the-will",
             "ten-commandments",
             "key-teachings-of-athanasius-of-alexandria",
+            "key-teachings-of-r-a-torrey",
+            "key-teachings-of-john-calvin",
+            "key-teachings-of-martin-luther",
         ],
     ),
     (
@@ -438,6 +465,9 @@ TOPICS = [
             "the-way-to-god",
             "all-things-for-good",
             "key-teachings-of-charles-h-spurgeon",
+            "key-teachings-of-john-bunyan",
+            "key-teachings-of-john-calvin",
+            "key-teachings-of-martin-luther",
         ],
     ),
     (
@@ -452,6 +482,7 @@ TOPICS = [
             "plain-account-christian-perfection",
             "holy-in-christ",
             "way-into-holiest",
+            "key-teachings-of-john-owen",
         ],
     ),
     (

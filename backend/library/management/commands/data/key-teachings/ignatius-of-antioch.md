@@ -1,0 +1,989 @@
+---
+description: A concise, faithful guide to the heart of Ignatius of Antioch’s teaching — Christ truly born, crucified and risen, the Lord’s Supper as the medicine of immortality, one church gathered around one table, faith as the beginning and love as the end, and a disciple’s courage on the road to death. Eleven short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Ignatius’s own public-domain letters, which readers are warmly encouraged to go to directly.
+about: |
+  This is not a book by Ignatius of Antioch. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eleven short chapters for the ordinary reader. It is a shorter volume than others in this series, and deliberately so: everything Ignatius left us is seven brief letters, written in a few weeks, probably between 107 and 110, while he was taken under guard from Antioch to die at Rome. Very little else is known of his life, and this book does not pretend otherwise.
+
+  Ignatius’s one great conviction was that Jesus Christ is real — truly born, truly crucified, truly raised in the flesh — and that the Christian life must therefore be real too. From that conviction came his defence of Christ’s humanity against those who said He only seemed to suffer, his reverence for the Lord’s table, his passion for the unity of the church, his gentleness, his prayer for the whole world, and his courage in the face of death. This volume follows that thread, and it is honest about where he must be read with care: his longing for martyrdom, his strong language about bishops, and his sharp words against Judaizing.
+
+  Ignatius’s letters are in the public domain and freely available; the seven genuine letters are in the Ochorus library in J. B. Lightfoot’s translation, and every quotation from Ignatius here is taken from that edition. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the urgent, burning pages of the letters themselves.
+---
+
+# Introduction
+
+> For to me to live is Christ, and to die is gain. PHILIPPIANS 1:21
+
+Some time early in the second century, probably between the years 107 and 110, a Christian bishop was taken out of the city of Antioch in Syria under military guard. He had been condemned to die in the arena at Rome. The journey was long, overland across what is now Turkey and then by sea, and on the way he was allowed to see the Christians who came out to meet him. In a few snatched days at two of the halts, Smyrna and Troas, he wrote seven letters. Then he went on to Rome and died there. His name was Ignatius.
+
+That is nearly all we know about him, and it needs saying at the very start. We do not know where or when he was born, how he came to faith, how long he had been bishop, or on what charge he was arrested. We have no sermon of his, no treatise, no record of his trial and no reliable account of his death. We have seven short letters, written in haste by a man with weeks to live, and a few lines about him in later writers. Everything in this book is built on those letters. Where they are silent, it is silent too.
+
+## Why so short a book
+
+This is therefore a shorter volume than others in the series. Ignatius’s whole surviving work runs to about twelve thousand words in English — a little shorter than the Gospel of Mark. It would be wrong to stretch it. So there are eleven teaching chapters here rather than the usual eighteen, and each of them stays close to his own pages. The reader who finishes this book will be able to read every word Ignatius left in an evening, and should.
+
+## Why he still matters
+
+Yet those seven letters are among the most precious documents the early church has left us. They were written within a generation or so of the last of the apostles, by the leader of the church in Antioch where the disciples were first called Christians. And they were written under sentence of death, which strips a man’s writing of everything but what he believes most.
+
+What did he believe most? He believed that Jesus Christ was really born, really suffered, really died and really rose, in real flesh, and he would not let anyone make that less. He believed that the church must be one, gathered around one table and one Lord, and he could not bear the thought of it splintering. He believed that faith and love are the beginning and the end of the Christian life. And he believed that to die for Christ was not the end of his discipleship but its beginning.
+
+> And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth. JOHN 1:14
+
+## The one thread
+
+If there is a single thread through everything Ignatius wrote, it is this: Christ is real, and so the Christian life must be real. He uses one word again and again. Christ was truly born, truly persecuted, truly crucified, truly raised. The false teachers said He only seemed to suffer; Ignatius answered that in that case his own chains only seemed to bind him, and he was dying for nothing. From that one conviction everything else follows. Because the flesh of Christ is real, the bread of the church’s table matters. Because Christ is one, His people must be one. Because Christ really died and really rose, a man may walk towards the beasts in hope. And because Christianity is a matter of being and not only of saying, Ignatius was impatient with every religion of words. “It is better to keep silence and to be, than to talk and not to be,” he told the Ephesians.
+
+## How this book is arranged
+
+The second chapter tells his life, or as much of it as can honestly be told. The eleven that follow each take one of his key teachings, from the reality of Christ’s flesh and the Lord’s Supper, through the order and unity of the church, martyrdom, faith and love, and the silence of God, to humility, prayer for all and his counsel to the younger bishop Polycarp. A conclusion draws the thread together, and a reader’s guide points you to the letters themselves.
+
+Each chapter ends with application points and a prayer. Ignatius would have understood why. He wrote so that people would stand firm, love one another and hold on to Christ. So read a chapter, stop at the questions, and pray.
+
+## Reading him with care
+
+This is not a book of hero-worship, and Ignatius needs reading with care at three points in particular.
+
+First, his longing for martyrdom. He begged the Christians at Rome not to try to save him, and wrote of the beasts in words that can make a modern reader flinch. We must remember that he was already condemned and already on the road; he did not go looking for arrest. The early church itself, within fifty years, was warning believers not to hand themselves over to death unbidden. His eagerness is the eagerness of a man making sense of an end he could not escape. It is not a pattern for seeking death.
+
+Second, his teaching on the bishop. Ignatius presses obedience to the bishop harder than any other early writer, and many later Christians have read his words as if he were describing the diocesan bishop of the fourth century or the sixteenth. He was not. He was speaking of the pastor of a single city’s church, and his reasons were practical and urgent. Christians who are not episcopalian can learn much from him, but they should not be told that they must read him as a later age did, and episcopalians should not claim more from him than he says.
+
+Third, his language about Judaism. Ignatius wrote sharply against Christians who wanted to keep up Jewish practices, and one of his sentences is among the bluntest in early Christian writing. His target was a party inside the church, not the Jewish people; but the tone of such words, and the use that later ages made of them, must be read with sorrow and not repeated.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21
+
+None of this is said to diminish him. It is said so that you can trust the rest. On the reality of Christ, on the unity of His people, on the life of faith and love, and on the courage to be a Christian and not merely to be called one, Ignatius speaks with a clarity that nineteen centuries have not dimmed.
+
+### FOR REFLECTION AND ACTION
+
+1. Set aside an evening this month to read all seven of Ignatius’s letters straight through, as their first hearers would have heard them.
+2. Ask yourself honestly whether your faith is more a matter of talking than of being. Name one place where your words run ahead of your life.
+3. Write down in a sentence what you believe about the real body of Jesus: born, crucified, risen. Then ask what difference it makes to your week.
+4. Think of a Christian of another tradition whom you find hard to understand. Pray for them by name, as Ignatius prayed for churches he had never seen.
+5. Resolve to read this book a chapter at a time, and not to move on until you have prayed its prayer.
+
+### A PRAYER
+
+> Lord Jesus Christ, You were truly born, You truly suffered, You truly rose, and You are truly with Your people now.
+> Thank You for Your servant Ignatius, who held to You on the road to death and wrote to strengthen churches he had never seen.
+> Where he was faithful to Your Word, teach me through him; where he was carried too far, give me the grace to see it and to hold fast what is good.
+> Make me a Christian in deed and not in name only, and keep me in Your one church until I see You. Amen.
+
+# From Syria Even unto Rome
+
+> I have fought a good fight, I have finished my course, I have kept the faith. 2 TIMOTHY 4:7
+
+A bishop of Antioch. Ignatius was bishop of the church in Antioch, in Syria, in the years around the turn of the first century into the second. Antioch was one of the three or four greatest cities of the Roman world, a crowded, many-languaged place on the Orontes river. It had heard the gospel very early. Men scattered by the persecution after Stephen’s death had preached there, first to Jews and then to Greeks; Barnabas and Saul had taught there a whole year; and it was from Antioch that Paul and Barnabas were sent out on their first journey. It was there, Luke tells us, that the disciples were first called Christians. Ignatius was the pastor of that church, and he never forgot it. In every letter he asks prayer for “the church which is in Syria”.
+
+> And the disciples were called Christians first in Antioch. ACTS 11:26
+
+What we do not know. Nearly everything else about his earlier life is hidden. Eusebius, the church historian writing some two hundred years later, names him as bishop of Antioch after Evodius, the first bishop there after the apostles. Later tradition made him a hearer of the apostle John, and a still later story made him the child whom Jesus set in the midst of the disciples. The first may hold something true; no one can now say. The second is a legend. We do not know his birthplace, his family, his age, or how long he had led the church. In his letters he calls himself Ignatius, “who is also Theophorus” — the God-bearer — but whether that was a second name he had always borne or a title he took, we cannot tell.
+
+Arrest and sentence. At some point in the reign of the emperor Trajan, who ruled from 98 to 117, Ignatius was arrested and condemned to die by the beasts. The traditional date is around 107 or 108; most who accept the tradition would say between 107 and 110. The letters themselves give no year, and a few scholars have argued for a later date, so it is honest to hold the number loosely. We do not know the charge, or who brought it, or whether other Christians in Antioch suffered with him. His letters speak of trouble in the church he left behind, and near the end of his journey he heard that the church there had peace again. More than that the letters do not say.
+
+Why he was sent to Rome is not certain either. Condemned men were sometimes sent from the provinces to the capital to die in the public games, and that seems to be what happened to him. So his punishment became a journey, and the journey gave us the letters.
+
+The road. He travelled in chains under a military guard, and he did not pretend his guards were kind. “From Syria even unto Rome I fight with wild beasts,” he wrote to the Romans, “by land and sea, by night and by day, being bound amidst ten leopards, even a company of soldiers, who only wax worse when they are kindly treated.” The route took him through the cities of Asia Minor, and at each halt, as word went ahead of him, Christians came out to meet him. He was not travelling alone. Two men, Philo, a deacon from Cilicia, and Rhaius Agathopus from Syria, followed after him to serve him, and he speaks warmly of both.
+
+Smyrna. The first long halt of which we know was at Smyrna, on the Aegean coast. There he was received by the church and by its young bishop, Polycarp, who would himself die a martyr some fifty years later. To Smyrna came delegations from three churches further inland: from Ephesus, led by its bishop Onesimus; from Magnesia, led by its young bishop Damas with two presbyters and a deacon; and from Tralles, led by its bishop Polybius. Ignatius wrote to each of their churches, thanking them, warning them against false teachers and pleading for unity. From Smyrna too he wrote a fourth letter, to the church at Rome, which he dated to the ninth day before the Kalends of September — the twenty-fourth of August. It is the only date in all his letters.
+
+Troas. From Smyrna he was taken on to Troas, the port near ancient Troy from which Paul had once crossed into Europe. There he wrote three more letters: to the church at Philadelphia, which he had passed through on the road, and to the church at Smyrna, which had just cared for him — both, he says, by the hand of Burrhus, a deacon whom the Ephesians and Smyrnaeans had sent to go with him — and a personal letter to Polycarp. At Troas he heard the news that the church at Antioch had peace, and he asked the churches to send messengers to Syria to rejoice with it. He meant to write to other churches too, but, as he told Polycarp, he was made to sail suddenly from Troas to Neapolis, and he asked Polycarp to write for him.
+
+> I have planted, Apollos watered; but God gave the increase. 1 CORINTHIANS 3:6
+
+Philippi and after. From Neapolis the road ran through Philippi. We know he passed that way because the Philippians afterwards wrote to Polycarp, and Polycarp’s reply survives. In it he speaks of Ignatius among those who had suffered, asks for any sure news of him, and says he is sending the Philippians the letters of Ignatius that he has. That short notice, written by a man who had met him, is the best outside witness we have that Ignatius lived, travelled and wrote as the letters say.
+
+Rome. After Philippi the letters fall silent. Ignatius reached Rome, and the church has always held that he died there in the arena, as he had been sentenced and as he had expected. Irenaeus, writing later in the second century, quotes without naming him the saying about being God’s wheat, as the words of one of our own who was condemned to the beasts. Later accounts of his martyrdom exist, full of detail, but they were written long after and cannot be trusted for the facts. We do not know the day he died, or who watched, or what he said. It is better to say so than to invent it.
+
+> Precious in the sight of the LORD is the death of his saints. PSALM 116:15
+
+The letters after him. The seven letters were copied and treasured, and in time other writings gathered around them. By the fourth century someone had expanded the seven, padding them with additions, and had added six more letters that Ignatius never wrote. For centuries that longer collection was the only one most Western readers knew. In the seventeenth century the Anglican scholar James Ussher and then others recovered the shorter, genuine form of the seven letters, and in the nineteenth century the careful work of J. B. Lightfoot and Theodor Zahn persuaded most scholars that these seven are really his. A short Syriac version of three of the letters, found in the nineteenth century, was argued for a while to be the original, but that view has not held. Most scholars today accept the seven letters as genuine, though a minority still question them.
+
+The man in the letters. What kind of man do the letters show? An intense one: his sentences tumble over each other. A humble one, too, in a way that surprises: he calls himself “the very last” of the faithful in Syria, “an untimely birth”, a convict writing to free men, and he refuses to give orders “as though I were an Apostle”. A pastor to the end: nearly every letter is about someone else’s welfare. And a man in whom love for Christ had become the whole of life. He was on his way to die, and he wrote as one already looking past the arena to the face of his Lord.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Acts 11:19–30 and 13:1–3, and thank God for the church in Antioch from which the gospel went out to the nations.
+2. Ignatius spent his last weeks writing to strengthen others. Write a letter or message this week to encourage a church or a Christian who is struggling.
+3. Notice how carefully this chapter separates what is known from what is told. Practise the same honesty when you speak about Christians of the past.
+4. Remember a Christian in prison for their faith today. Find out their name if you can, and pray for them by it.
+5. Consider who, like Burrhus, Philo and Agathopus, might need you to walk some part of a hard road with them.
+
+### A PRAYER
+
+> Lord God, You were with Your servant Ignatius on every mile of his road, among the soldiers and in the cities where Your people came out to meet him.
+> Thank You for the churches that cared for him, for the friends who followed him, and for Polycarp, who kept his letters for us.
+> Teach me to be honest about what I know and humble about what I do not, and to make the most of whatever time You give me.
+> When my own road grows hard, let me spend it, as he did, in strengthening others, until I finish my course and see Your face. Amen.
+
+# Truly Born, Truly Crucified, Truly Raised
+
+> Hereby know ye the Spirit of God: Every spirit that confesseth that Jesus Christ is come in the flesh is of God. 1 JOHN 4:2
+
+If you read Ignatius’s letters one after another, one word begins to ring like a bell. Truly. Christ was truly born. He truly ate and drank. He was truly persecuted, truly crucified, truly died, truly raised. Ignatius does not use the word decoratively. He uses it as a man uses a hammer, driving the same nail again and again, because he was fighting a teaching that would have taken the nail out altogether.
+
+## The teaching he opposed
+
+In the churches of Asia Minor there were teachers who said that Christ had not really come in the flesh. He had only seemed to. The Son of God, they reasoned, could not be touched by birth and hunger and pain and death; such things were beneath the divine. So the body the disciples saw was an appearance, and the suffering on the cross was a kind of show. Later writers called this teaching Docetism, from the Greek word for seeming. Ignatius has no technical name for it. He simply says, again and again, that these men claim Christ “suffered only in semblance”, and then adds, with a flash of bitterness, that they are themselves “mere semblance”.
+
+The error was not new. The apostle John had already met something like it, and had drawn the line without hesitation.
+
+> For many deceivers are entered into the world, who confess not that Jesus Christ is come in the flesh. This is a deceiver and an antichrist. 2 JOHN 1:7
+
+What made it dangerous was that it sounded reverent. It seemed to protect God’s greatness. It spared Christ the shame of the cross. It could even appeal to a certain kind of spirituality that thinks the body does not really matter. Ignatius saw straight through it. A Christ who only seemed to suffer only seemed to save.
+
+## The creed in his letters
+
+Against this teaching Ignatius sets out, in letter after letter, what amounts to a short creed. To the Trallians he wrote that they should be deaf when anyone spoke to them apart from Jesus Christ, “who was of the race of David, who was the Son of Mary, who was truly born and ate and drank, was truly persecuted under Pontius Pilate, was truly crucified and died”. To the Smyrnaeans he wrote that Christ was “truly born of a virgin and baptized by John”, and “truly nailed up in the flesh for our sakes under Pontius Pilate and Herod the tetrarch”.
+
+Notice what these lines hold. They name His mother and His ancestor. They name the Roman governor and the Jewish king. They anchor the gospel in history, in a real family and a real province in a real year. The faith Ignatius confessed was not a myth or a parable of the spiritual life. It was news about something that happened. Luke had done the same when he set the coming of John the Baptist in the fifteenth year of Tiberius, and Paul when he gave the Corinthians the list of witnesses who had seen the risen Lord.
+
+> For I delivered unto you first of all that which I also received, how that Christ died for our sins according to the scriptures; and that he was buried, and that he rose again the third day according to the scriptures. 1 CORINTHIANS 15:3–4
+
+The same holds for the resurrection. It was not enough for Ignatius that Christ’s spirit lived on. He insisted, writing to Smyrna, “I know and believe that He was in the flesh even after the resurrection.” He recalls that the risen Lord told Peter and his company to take hold of Him and handle Him, and see that He was not a bodiless spirit, and that He ate and drank with them afterwards. The wording he gives is not quite the wording of any of our Gospels, but the scene is the one Luke tells.
+
+> Behold my hands and my feet, that it is I myself: handle me, and see; for a spirit hath not flesh and bones, as ye see me have. LUKE 24:39
+
+## Why it mattered to him
+
+Why did Ignatius care so fiercely? Partly because he loved the truth. But he also gives a reason that could only have come from a man in his position. If Christ only seemed to suffer, he asks the Trallians, “why am I in bonds? And why also do I desire to fight with wild beasts? So I die in vain.” He makes the same point to Smyrna: if these things were done in semblance, then he is a prisoner in semblance too.
+
+It is a startling argument, and a deeply moving one. Ignatius’s chains were real. The beasts waiting in Rome were real. If Christ had not really suffered in the flesh, then a real man was about to be torn apart for a phantom. His own body, on its way to death, was bound up with the body of Christ. The reality of the one gave meaning to the other.
+
+> If in this life only we have hope in Christ, we are of all men most miserable. 1 CORINTHIANS 15:19
+
+There is a pastoral reason too. Ignatius noticed that the people who denied Christ’s flesh also neglected human flesh. Writing to Smyrna he says that they “have no care for love, none for the widow, none for the orphan, none for the afflicted, none for the prisoner, none for the hungry or thirsty.” Whether he means this as a strict description or a general charge, the connection is sound. A faith that despises the body will sooner or later despise hungry bodies. A Saviour who took flesh sends His people to feed and clothe and visit.
+
+## One physician
+
+The fullest statement of his faith about Christ comes in the letter to Ephesus, in a line that reads almost like a hymn: “There is one only physician, of flesh and of spirit, generate and in-generate, God in man, true Life in death, Son of Mary and Son of God, first passible and then impassible, Jesus Christ our Lord.”
+
+Every pair in that sentence holds together what the false teachers wanted to pull apart. Flesh and spirit. Born and unborn. God and man. Life and death. Mary’s son and God’s Son. Able to suffer, and then beyond all suffering. Ignatius did not have the careful language of the later creeds, and some of his phrases would be framed differently two or three centuries on. But he had grasped the heart of what the councils would later defend: that Jesus Christ is one person, truly God and truly man, and that both halves of that confession must be held with equal firmness. He can even write, with a boldness that startles, of “the blood of God”.
+
+> Take heed therefore unto yourselves, and to all the flock, over the which the Holy Ghost hath made you overseers, to feed the church of God, which he hath purchased with his own blood. ACTS 20:28
+
+To Polycarp he put the same wonder in a string of opposites: the Eternal, the Invisible, “who became visible for our sake”, the Impalpable, the Impassible, “who suffered for our sake”.
+
+## Holding it today
+
+The Docetists of Ignatius’s day have long gone, but the temptation they gave in to has not. It returns whenever Christians treat Jesus as an idea rather than a person, a symbol of love rather than a man who was nailed up under Pontius Pilate. It returns whenever the resurrection is reduced to a feeling in the hearts of the disciples. It returns, more quietly, whenever we live as if our bodies were outside the reach of the gospel, or as if the hungry and the imprisoned were none of our concern.
+
+> Forasmuch then as the children are partakers of flesh and blood, he also himself likewise took part of the same; that through death he might destroy him that had the power of death, that is, the devil. HEBREWS 2:14
+
+Ignatius’s answer is still the right one. Hold to the plain facts. He was born. He suffered. He died. He rose, in the body, and He lives. Everything else in the Christian faith hangs on those facts, and a man may walk into the arena on the strength of them.
+
+### FOR REFLECTION AND ACTION
+
+1. Read the Apostles’ Creed aloud and underline every phrase that ties the faith to history — a name, a place, an event. Thank God for each.
+2. Ask yourself whether you think of Jesus more as an idea or as a person. Spend ten minutes today reading one of the resurrection chapters in the Gospels, and picture it as it happened.
+3. Ignatius linked a denial of Christ’s flesh with neglect of the hungry and the prisoner. Choose one practical act of care for someone in bodily need this week.
+4. If you are suffering in your body, bring it to the Christ who truly suffered in His. Tell Him plainly what it is like.
+5. Learn by heart 1 John 4:2 and use it as a test of any teaching about Christ you meet.
+
+### A PRAYER
+
+> Lord Jesus Christ, Son of Mary and Son of God, You were truly born, You truly suffered, You truly died and You truly rose.
+> Thank You that You did not save us from a distance or in appearance, but came in real flesh and bore real wounds for us.
+> Keep me from every teaching that would make You less than You are, and from every habit of heart that forgets the bodies You made and loved.
+> Let my faith rest on what You have done, and let my life show that You are alive. Amen.
+
+# The Medicine of Immortality
+
+> I am the living bread which came down from heaven: if any man eat of this bread, he shall live for ever: and the bread that I will give is my flesh, which I will give for the life of the world. JOHN 6:51
+
+Near the end of his letter to the Ephesians, Ignatius urges them to come together often, in one faith and in one Jesus Christ, “breaking one bread, which is the medicine of immortality and the antidote that we should not die but live for ever in Jesus Christ.” It is one of the most quoted phrases in all early Christian writing. It is also one that Christians of different traditions have read in different ways, and it deserves to be handled fairly.
+
+## What he actually says
+
+Let us begin with the words themselves. Ignatius speaks of the church breaking one bread. He calls that bread a medicine, and the medicine’s effect is immortality: it is an antidote against death, so that believers may live for ever in Christ. The language is the language of healing. Ignatius had already called Christ the “one only physician” earlier in the same letter. Here the physician’s medicine is given at His table.
+
+He says more in two other letters. To the Philadelphians he writes that they should be careful to observe one eucharist, “for there is one flesh of our Lord Jesus Christ and one cup unto union in His blood; there is one altar, as there is one bishop”. And to the Smyrnaeans he writes of the false teachers that they stay away from the eucharist and from prayer, “because they allow not that the eucharist is the flesh of our Savior Jesus Christ, which flesh suffered for our sins, and which the Father of His goodness raised up.”
+
+Those are the key texts. They are short, and Ignatius does not stop to explain them. He is not writing a treatise on the sacrament. He is warning churches, in haste, against division and against a particular false teaching.
+
+> The cup of blessing which we bless, is it not the communion of the blood of Christ? The bread which we break, is it not the communion of the body of Christ? 1 CORINTHIANS 10:16
+
+## The setting of the words
+
+Read in their setting, the texts hang together around one concern. The Docetists denied that Christ had real flesh. So, Ignatius says, they cannot confess that the eucharist is His flesh, and they keep away from it. For Ignatius the reality of the Lord’s Supper and the reality of the incarnation stand or fall together. The flesh that is given at the table is the flesh that “suffered for our sins” and was raised. The false teachers’ absence from the table was of a piece with their denial of the cross.
+
+The Philadelphian text adds the second concern: unity. One flesh, one cup, one altar, one bishop. The table is where the church is one, and those who set up a rival table divide the body. So the eucharist in Ignatius is never a private devotion. It is the gathering of the whole church around the one Christ.
+
+> For we being many are one bread, and one body: for we are all partakers of that one bread. 1 CORINTHIANS 10:17
+
+## How Catholic and Orthodox readers hear him
+
+Catholic and Orthodox Christians have always read these lines as an early witness to their own faith that the bread and wine of the eucharist truly become, or truly are, the body and blood of Christ. They point out that Ignatius does not say the eucharist is a sign of the flesh of Christ, or a reminder of it, but that it is His flesh. They note that he speaks of an altar, and that he calls the bread a medicine that gives immortality, which is more than a memorial could do. There is real force in this reading. Ignatius plainly held a strong and realistic view of the sacrament, and no one should pretend otherwise.
+
+## How Protestant readers hear him
+
+Protestant Christians have read the same lines differently, and they too have reasons. They point out that Ignatius was not addressing the questions of the sixteenth century — how Christ is present, whether the substance of the bread changes, whether the Supper is a sacrifice offered for the living and the dead — and that it is unfair to make him answer them. Lutheran readers find in him a confession of the real presence close to their own. Reformed readers note that Calvin, too, taught that believers truly feed on the flesh and blood of Christ at the table, by the Spirit and through faith, and they hear Ignatius in that sense. Others note that he can speak in the same breath of faith as “the flesh of the Lord” and love as “the blood of Jesus Christ”, as he does to the Trallians, which suggests that his flesh-and-blood language could be pictorial as well as literal.
+
+> It is the spirit that quickeneth; the flesh profiteth nothing: the words that I speak unto you, they are spirit, and they are life. JOHN 6:63
+
+What all readers should grant is this. Ignatius took the Lord’s Supper with great seriousness. He did not treat it as an optional extra or a mere symbol that could be neglected. He saw it as bound up with the reality of Christ’s body, the unity of the church and the hope of eternal life. Whatever account a Christian gives of the sacrament, it should be at least that serious.
+
+## A medicine, not a charm
+
+It matters that Ignatius calls the bread a medicine and not a charm. Medicine heals from within, over time, and it is taken by the sick. Nothing in Ignatius suggests that eating the bread works apart from faith and love; on the contrary, faith and love are, as we shall see, the beginning and end of everything for him. The bread is the medicine of immortality because it is the table of the Physician, who is Himself “true Life in death”.
+
+> Whoso eateth my flesh, and drinketh my blood, hath eternal life; and I will raise him up at the last day. JOHN 6:54
+
+And the medicine is given to a gathered people. Ignatius’s phrase comes at the end of a sentence urging the Ephesians to assemble “in common, every one of you severally, man by man, in grace, in one faith”. The immortality he speaks of is not a private escape from death but a shared life in Christ, received together. Christians who come to the table divided, or who come as isolated consumers of a religious service, have missed his point whatever their doctrine of the sacrament.
+
+## Coming to the table
+
+For Ignatius, then, the Lord’s Supper was the place where the real Christ met His real people, and where death began to be undone. We may disagree about the manner of Christ’s presence. We should not disagree that He meets us there, that we should come often, and that we should come together.
+
+> For as often as ye eat this bread, and drink this cup, ye do shew the Lord’s death till he come. 1 CORINTHIANS 11:26
+
+Ignatius himself, writing to Rome, reached for this language when he spoke of his own longing: he wanted, he said, “the bread of God, which is the flesh of Christ”, and for a draught “His blood, which is love incorruptible.” On his way to die, the table of the Lord had become to him a picture of the heavenly feast he was hastening towards.
+
+### FOR REFLECTION AND ACTION
+
+1. Before you next come to the Lord’s Supper, read John 6:47–58 and 1 Corinthians 11:23–29 slowly, and prepare your heart.
+2. If you belong to a tradition that seldom celebrates the Supper, ask yourself honestly whether you have come to treat it lightly. If your tradition celebrates it often, ask whether familiarity has dulled it.
+3. Find out what a Christian of another tradition believes about the Lord’s Supper, and listen to their reasons without arguing.
+4. Is there anyone you would find it hard to share the table with? Take one step towards reconciliation before you next receive it.
+5. Thank God today that Christ is the physician of both body and soul, and bring Him one sickness of your own.
+
+### A PRAYER
+
+> Lord Jesus, true Physician, You gave Your flesh for the life of the world and You feed Your people at Your table.
+> Forgive me for the times I have come carelessly, or divided from my brothers and sisters, or not at all.
+> Meet me when I break the bread and drink the cup; heal what is sick in me, and strengthen my hope of the life that has no end.
+> Make Your church one around Your table, until we eat and drink with You in Your kingdom. Amen.
+
+# Do Nothing Without the Bishop
+
+> Obey them that have the rule over you, and submit yourselves: for they watch for your souls, as they that must give account, that they may do it with joy, and not with grief. HEBREWS 13:17
+
+No theme in Ignatius’s letters is pressed harder than obedience to the bishop, and none has been argued over more. He returns to it in six of the seven letters. “Do nothing without the bishop,” he tells the Philadelphians, and says the words came to him from the Spirit. “Let no man do aught of things pertaining to the Church apart from the bishop,” he tells the Smyrnaeans. To the Ephesians he goes further still: “we ought to regard the bishop as the Lord Himself.” For many modern readers, especially those outside episcopal churches, this is the hardest part of him to take. It needs to be understood before it is either embraced or set aside.
+
+## What he describes
+
+Ignatius describes a church with three kinds of ministers. In each city there is one bishop, who presides; a group of presbyters, or elders, who form his council; and deacons, who serve. He likes to set them in a picture. The bishop presides “after the likeness of God”, the presbyters “after the likeness of the council of the Apostles”, and the deacons are entrusted with the service of Jesus Christ. To the Trallians he says that without these three “there is not even the name of a church.”
+
+This is the earliest clear description we have of a church led by a single bishop with elders and deacons under him. In the New Testament the words bishop and elder seem to be used of the same people, and churches appear to have been led by a group of elders together.
+
+> For this cause left I thee in Crete, that thou shouldest set in order the things that are wanting, and ordain elders in every city, as I had appointed thee. TITUS 1:5
+
+Somewhere between the apostles and Ignatius, in at least some churches, one of the elders had come to preside over the rest and to bear the title of bishop. Ignatius takes this arrangement for granted in the churches of Asia Minor he writes to. It is worth noticing that in his letter to Rome he does not mention a bishop at all, which has led many historians to think the Roman church had not yet come to the same pattern.
+
+## Why he pressed it so hard
+
+To understand why Ignatius cared so much about this, we must remember what he was afraid of. The churches he wrote to were being visited by teachers who denied Christ’s flesh and by others who wanted to bring back Jewish practices. These teachers held their own meetings and their own services. They drew people away from the gathered church into rival groups. Ignatius saw that the unity of the church, and with it the truth of the gospel, was at risk.
+
+His answer was simple and practical: stay with your bishop. The bishop, with his elders and deacons, was the visible sign of the one church in that city, gathered around the one table. The teachers who went around him were dividing the body. So he tells the Smyrnaeans that a valid eucharist is the one held under the bishop or someone he has appointed, and that it is not lawful to baptise or hold a love-feast apart from him. And he tells the Philadelphians that “as many as are of God and of Jesus Christ, they are with the bishop.”
+
+> Now I beseech you, brethren, mark them which cause divisions and offences contrary to the doctrine which ye have learned; and avoid them. ROMANS 16:17
+
+## The bishop he had in mind
+
+It is important to picture the kind of bishop Ignatius meant. He was the pastor of one congregation in one city, or perhaps of a few house-churches in the same town. He knew his people. He presided at their worship. He could be young, as Damas of Magnesia was, and Ignatius had to tell the Magnesians not to take advantage of their bishop’s youth. He could be quiet, and Ignatius had to tell the Ephesians that a silent bishop should be honoured all the more. He was not a prince or an administrator over hundreds of parishes. He was much nearer to what most Protestants would call the senior pastor of a local church.
+
+The bishops he praises are praised for their character, not their rank. Onesimus of Ephesus has a love that “passeth utterance”. Polybius of Tralles shows a demeanour that is “a great lesson, while his gentleness is power”. The bishop of Philadelphia is commended because he holds his ministry “not of himself or through men, nor yet for vain glory, but in the love of God the Father and the Lord Jesus Christ”, and because his silence is more powerful than other men’s speech. This is the portrait of a shepherd.
+
+> Feed the flock of God which is among you, taking the oversight thereof, not by constraint, but willingly; not for filthy lucre, but of a ready mind; neither as being lords over God’s heritage, but being ensamples to the flock. 1 PETER 5:2–3
+
+## Reading him across the traditions
+
+How should Christians of different traditions read him? Episcopal churches, Orthodox, Catholic and Anglican, rightly see in Ignatius an early and strong witness to their order. The threefold ministry of bishop, presbyter and deacon was there, at least in Asia Minor, within living memory of the apostles. That is a real fact of history, and it deserves respect.
+
+Christians of other traditions will notice other things. Ignatius never says that the bishop has succeeded the apostles, or that his authority rests on a line of ordinations going back to them. He likens the presbyters, not the bishop, to the apostles. He never speaks of a bishop ruling other bishops, and he does not appeal to the bishop of Rome. His language about regarding the bishop as the Lord is the language of honour and loyalty in a time of crisis, not a theory of church government; the same letters tell the Magnesians to be subject “to the bishop and to one another”. And he never places the bishop above the gospel. When the Philadelphians’ opponents demanded proof from the old writings, he answered that his charter was Jesus Christ.
+
+> For other foundation can no man lay than that is laid, which is Jesus Christ. 1 CORINTHIANS 3:11
+
+There is also a caution for all readers. Ignatius’s words about obedience were written to churches whose bishops he knew to be faithful. They were not written to protect a bishop who taught falsely or abused his flock. The same Scriptures that call us to honour our leaders call leaders to serve, and call all of us to test what we are taught.
+
+> Beloved, believe not every spirit, but try the spirits whether they are of God: because many false prophets are gone out into the world. 1 JOHN 4:1
+
+## What we can all learn
+
+Whatever our church order, Ignatius has something to say to us. He tells us that the church is not a loose crowd of individuals, each following their own spiritual path. It is a body with a shape, and that shape includes those who are called to lead. He tells us that despising our leaders, or going around them to gather our own followers, is not a small thing. And he tells us, by his portraits of Onesimus and Polybius and the quiet bishop of Philadelphia, what kind of leaders deserve to be followed.
+
+> And we beseech you, brethren, to know them which labour among you, and are over you in the Lord, and admonish you; and to esteem them very highly in love for their work’s sake. And be at peace among yourselves. 1 THESSALONIANS 5:12–13
+
+### FOR REFLECTION AND ACTION
+
+1. Think honestly about your attitude to those who lead your church. Is it marked by love and respect, or by criticism and suspicion? Name one thing to change.
+2. Write a note of thanks to a pastor, elder or deacon this week, naming something specific in their service.
+3. If you are a leader, read Ignatius’s portraits of the bishops of Ephesus, Tralles and Philadelphia, and ask which of their qualities you most lack.
+4. If you belong to a tradition that does not have bishops, try to state fairly why Christians who do have them value them.
+5. Pray for the leaders of churches in your town other than your own, by name if you can.
+
+### A PRAYER
+
+> Lord Jesus, Chief Shepherd of the sheep, You have given Your church pastors and elders and servants to care for Your flock.
+> Thank You for those who have watched over my soul. Forgive me where I have despised them, and help me to honour them in love.
+> Give them gentleness, humility and faithfulness to Your Word, and keep them from pride and from lording it over Your people.
+> Hold Your church together in one faith and one love, that the world may see that You are one with the Father. Amen.
+
+# God’s Wheat
+
+> Verily, verily, I say unto you, Except a corn of wheat fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit. JOHN 12:24
+
+The letter Ignatius sent ahead of him to Rome is unlike the other six. It says almost nothing about bishops or false teachers. It is one long plea, and the plea is astonishing: do not save me. Ignatius feared that the Christians of Rome, out of love for him, would use their influence to have his sentence lifted. “I dread your very love,” he wrote, “lest it do me an injury.” And then came the words for which he is best remembered: “Let me be given to the wild beasts, for through them I can attain unto God. I am God’s wheat, and I am ground by the teeth of wild beasts that I may be found pure bread.”
+
+## Becoming a disciple
+
+To understand these words we must see what Ignatius meant by being a disciple. He had been a Christian for many years and a bishop for some of them. Yet over and over in his letters he says that he is not yet a disciple, or only now beginning to be one. “Now am I beginning to be a disciple,” he writes to the Ephesians, and again to the Romans. To the Trallians he says that for all his knowledge of heavenly things he is “not yet by reason of this a disciple.”
+
+For Ignatius, to be a disciple meant to follow Jesus all the way: to share His sufferings and come at last to where He is. He wanted to be, as he told the Romans, “an imitator of the passion of my God.” Knowledge could not make a man a disciple. Office could not. Only the long obedience of following Christ to the end could do that, and for Ignatius the end was now in sight.
+
+> If any man will come after me, let him deny himself, and take up his cross, and follow me. MATTHEW 16:24
+
+This is why he could say something so strange as that he was only now beginning. He was not belittling his years of service. He was saying that everything before had been the approach, and the road to Rome was the real thing. The disciple is the one who follows the Master into His death.
+
+## The wheat and the bread
+
+The image of wheat and bread is carefully chosen. Wheat is not bread. To become bread it must be ground, and the grinding destroys the grain as grain. Ignatius saw the teeth of the beasts as the millstones that would turn him into something offered to God, pure and whole. The picture takes up the Lord’s own saying about the corn of wheat that must fall into the ground and die. It also echoes, surely on purpose, the language of the eucharist. Ignatius, who called the bread of the Lord’s table the medicine of immortality, saw his own death as a kind of offering of himself.
+
+He uses the same kind of language elsewhere in the letter. He asks the Romans to grant him nothing more than “that I be poured out a libation to God, while there is still an altar ready.” The phrase recalls Paul, writing near his own death.
+
+> For I am now ready to be offered, and the time of my departure is at hand. 2 TIMOTHY 4:6
+
+And like Paul he could see death as gain because Christ was his life. “It is good for me to die for Jesus Christ rather than to reign over the farthest bounds of the earth,” he wrote. “Him I seek, who died on our behalf; Him I desire, who rose again.”
+
+## The new birth
+
+One of the most beautiful lines in the letter to Rome speaks of his coming death as a birth. “The pangs of a new birth are upon me,” he says. “Do not hinder me from living; do not desire my death.” By a bold reversal he calls his execution life, and his rescue death. “When I am come thither,” he adds, “then shall I be a man.”
+
+This is the heart of his view of martyrdom. It was not a longing for death as such. It was a longing for Christ, for the full humanity that is found only in Him, and death was the door. In another line he describes the voice he heard within him: “only water living and speaking in me, saying within me, Come to the Father.”
+
+> For to me to live is Christ, and to die is gain. But if I live in the flesh, this is the fruit of my labour: yet what I shall choose I wot not. PHILIPPIANS 1:21–22
+
+## Reading him with care
+
+Here more than anywhere in his letters, Ignatius must be read with care, and the reader should not be hurried past the difficulty.
+
+Parts of the letter to Rome are hard to read. He says he will coax the beasts to devour him quickly, and if they are unwilling he will force them. He calls out for fire and cross and the crushing of his whole body. A modern Christian may well find these words disturbing, and it is right to be disturbed by them. There is an intensity here that can look like a desire for death for its own sake.
+
+Several things should be said. First, Ignatius did not seek martyrdom. He was already arrested, condemned and on the road. What he asked was that his friends not try to use influence to rescue him. He was making sense of an end that had already been decided, and choosing to meet it with faith rather than terror.
+
+Second, he knew his own heart was not wholly steady. “Though I desire to suffer, yet I know not whether I am worthy,” he told the Trallians. His vehemence was partly a way of bracing himself.
+
+Third, the church did not make his eagerness a rule. Within fifty years the church of Smyrna, telling the story of its own bishop Polycarp’s death, recorded a man who had given himself up to the authorities unasked and who then lost his nerve and denied the faith; and it said plainly that it did not praise those who hand themselves over, because the gospel does not teach this. Polycarp himself withdrew from the city when the hunt began, and was taken only when he could not escape. That is the wiser pattern, and it is the Lord’s own.
+
+> But when they persecute you in this city, flee ye into another. MATTHEW 10:23
+
+No Christian is called to seek death. Every Christian is called to be ready to lose everything, even life, rather than deny Christ. That readiness is what we should take from Ignatius, not the fierceness of his words about the beasts.
+
+## The disciple’s road for us
+
+Few who read these pages will face the arena. Some will, for in many parts of the world today Christians still die for their faith, and they have found strength in Ignatius’s words. For the rest of us, his teaching still speaks. To be a disciple is to follow Christ to the end, and the end always involves some dying: to our pride, to our comfort, to our own way. Ignatius said, “Now I am learning in my bonds to put away every desire.” Every Christian who has been through suffering will know something of that school.
+
+> For whosoever will save his life shall lose it: and whosoever will lose his life for my sake shall find it. MATTHEW 16:25
+
+And his fundamental conviction is one we should share: that the Christian life does not end at death but only truly begins.
+
+> Blessed are the dead which die in the Lord from henceforth: Yea, saith the Spirit, that they may rest from their labours; and their works do follow them. REVELATION 14:13
+
+### FOR REFLECTION AND ACTION
+
+1. Ignatius said he was only beginning to be a disciple. Ask yourself honestly what following Jesus to the end would mean for you in the coming year.
+2. Name one thing in your life that must be ground like wheat — a pride, a comfort, a habit — before you can be offered to God.
+3. Pray today for Christians who are in prison or under threat of death for their faith. Learn the name and story of at least one.
+4. If you are facing suffering you cannot escape, ask God to help you meet it with faith rather than terror, as Ignatius did.
+5. Guard against any spirituality that seeks suffering for its own sake. Read Matthew 10:16–23 and note the Lord’s wisdom as well as His call to courage.
+
+### A PRAYER
+
+> Lord Jesus, You fell into the ground and died, that You might bring forth much fruit, and You call me to follow You.
+> Thank You for Your servant Ignatius, who met his death with faith and counted it the beginning of life.
+> I do not ask for suffering, and I do not seek it; but if it comes, make me ready, and let me not deny You.
+> Grind away what is not of You in me, and make me pure bread, offered to the Father through You. Amen.
+
+# Faith the Beginning, Love the End
+
+> And now abideth faith, hope, charity, these three; but the greatest of these is charity. 1 CORINTHIANS 13:13
+
+Ignatius was not a systematic thinker, but there is one short passage in his letter to the Ephesians where he comes as close as he ever does to summing up the Christian life in a sentence. Speaking of faith and love towards Jesus Christ, he writes: “these are the beginning and end of life — faith is the beginning and love is the end — and the two being found in unity are God, while all things else follow in their train unto true nobility.” Almost every letter he wrote returns to this pair. He greets churches in faith and love, praises them for faith and love, and urges them to be perfected in faith and love. If the reality of Christ is the foundation of his teaching, faith and love are the life that is built on it.
+
+## Where the life begins
+
+Faith is the beginning. Ignatius does not stop to define it, but the way he uses the word is clear. Faith is trust in Jesus Christ, and above all in His passion and resurrection. To the Philadelphians he calls his charter “His cross and His death and His resurrection, and faith through Him”. To the Magnesians he speaks of the Lord’s death as “a mystery whereby we attained unto belief”. Faith is the hand that takes hold of what Christ has done.
+
+> For by grace are ye saved through faith; and that not of yourselves: it is the gift of God. EPHESIANS 2:8
+
+It is striking that a writer so often read as a champion of church order should put faith at the very start of the Christian life. Ignatius knew nothing of the later debates about faith and works, and he should not be drafted into either side of them. But he knew that the life of God in the soul begins with trust in Christ crucified and risen.
+
+## Where the life is going
+
+Love is the end — not in the sense that it brings the Christian life to a close, but in the sense that it is its goal and completion. Faith is the root; love is the fruit. Everything in the Christian life is moving towards love, and will be found at last to have been about love.
+
+> Now the end of the commandment is charity out of a pure heart, and of a good conscience, and of faith unfeigned. 1 TIMOTHY 1:5
+
+This is why Ignatius can say to the Smyrnaeans, in a passage about office and rank, “Let not office puff up any man; for faith and love are all in all, and nothing is preferred before them.” It is a remarkable sentence from the pen of a man who pressed the bishop’s authority so hard. The bishop matters, the order of the church matters, but faith and love matter more. No position in the church is worth anything without them.
+
+## Faith and love together
+
+The two must be held together. Ignatius says that when they are “found in unity” they are God — a bold phrase, which seems to mean that where faith and love are joined, there God Himself is present and at work. He will not let faith be a cold holding of correct beliefs, nor love a warm feeling cut loose from the truth. The false teachers he opposed had, he said, “no care for love”; their errors about Christ had made them loveless. Real faith produces love, and real love is rooted in faith.
+
+> For in Jesus Christ neither circumcision availeth any thing, nor uncircumcision; but faith which worketh by love. GALATIANS 5:6
+
+In one of his pictures he joins the two to the Lord Himself. He tells the Trallians to renew themselves “in faith which is the flesh of the Lord, and in love which is the blood of Jesus Christ.” Faith and love are as closely bound together as flesh and blood in a living body, and both come from Christ.
+
+## Seen in the life
+
+Ignatius insists that faith and love are known by their fruit. Immediately after his great sentence to the Ephesians, he adds: “No man professing faith sinneth, and no man possessing love hateth. The tree is manifest from its fruit; so they that profess to be Christ’s shall be seen through their actions.” He is echoing the Lord, who said that a tree is known by its fruit.
+
+> Wherefore by their fruits ye shall know them. MATTHEW 7:20
+
+This leads to one of Ignatius’s favourite thoughts: that a Christian must not only be called one but be one. “It is therefore meet that we not only be called Christians, but also be such,” he told the Magnesians. And writing to the Romans about his own coming death, he asked their prayers “that I may not only be called a Christian, but also be found one.” For Ignatius, the name without the reality was worse than useless. He was impatient with people who have the bishop’s name on their lips but do everything apart from him, and with people who talk about Jesus Christ while loving the world.
+
+> My little children, let us not love in word, neither in tongue; but in deed and in truth. 1 JOHN 3:18
+
+## Faith to the end
+
+One more phrase in the same passage deserves attention. Ignatius says that the Christian work “is not a thing of profession now, but is seen then when one is found in the power of faith unto the end.” Faith is the beginning, but it must last. A Christian is not someone who began once, long ago, but someone who is found still believing, still loving, at the finish. That was the test Ignatius himself was facing as he wrote. He did not rest on his years as bishop. He wanted to be found faithful at the end.
+
+> But he that shall endure unto the end, the same shall be saved. MATTHEW 24:13
+
+## Living between the two
+
+What would it look like to live by Ignatius’s sentence? It would mean beginning every day with faith: trusting again in Christ crucified and risen, and not in our own goodness or success. It would mean aiming every day at love: asking not only what is right but what is loving, and measuring our lives by how we have treated others. And it would mean refusing to be satisfied with the name of Christian while the reality is thin. Ignatius was on his way to die, and he had no time for pretence. He wanted a faith that was real and a love that could be seen.
+
+### FOR REFLECTION AND ACTION
+
+1. Begin each day this week with a short act of faith: tell Christ that you trust Him, and name what you are trusting Him for.
+2. End each day with a short review of love: where did you love well today, and where did you fail? Confess the failures and give thanks for the rest.
+3. Ignatius said that office and position are nothing without faith and love. If you hold any responsibility in church or elsewhere, ask whether it has made you prouder or more loving.
+4. Where are you called a Christian but not living as one? Name one area and take one concrete step.
+5. Pray for grace to be found faithful at the end, and not only to have made a good beginning.
+
+### A PRAYER
+
+> Lord Jesus Christ, You are the beginning and the end of my life, and in You faith and love are joined.
+> Give me faith that rests on Your cross and resurrection, and love that grows from that faith and reaches out to others.
+> Forgive me for the times I have been content with the name of Christian while my life said something else.
+> Keep me believing and loving to the end, that I may be found in You when my course is finished. Amen.
+
+# Wrought in the Silence of God
+
+> But the LORD is in his holy temple: let all the earth keep silence before him. HABAKKUK 2:20
+
+Ignatius was a man of many words, poured out in haste. Yet one of the most arresting themes in his letters is silence. He speaks of the silence of God, out of which the Word came. He speaks of the silence of Jesus, which is as full of meaning as His speech. He praises bishops for their silence. And he tells the Ephesians that it is better to be silent and to be a Christian than to talk and not be one. It is a theme easily missed, and it is one of the most searching things he left us.
+
+## Three mysteries in silence
+
+In the letter to the Ephesians, after speaking of Christ’s birth from Mary, Ignatius writes a passage unlike anything else in his letters. “Hidden from the prince of this world were the virginity of Mary and her child-bearing and likewise also the death of the Lord — three mysteries to be cried aloud — the which were wrought in the silence of God.”
+
+The thought is that God worked the great acts of salvation quietly, without announcement, so that even the devil did not understand what was happening. A girl in Nazareth conceived. A child was born in obscurity. A man died on a cross outside a city wall. None of it looked like the defeat of evil. Yet in these hidden acts God was doing His greatest work. Paul says something close to this.
+
+> But we speak the wisdom of God in a mystery, even the hidden wisdom, which God ordained before the world unto our glory: which none of the princes of this world knew: for had they known it, they would not have crucified the Lord of glory. 1 CORINTHIANS 2:7–8
+
+What was wrought in silence was then to be “cried aloud”. The hidden things become the gospel proclaimed to the nations. Ignatius goes on in a burst of wonder to describe a star shining above all the stars, and the old powers of sorcery and wickedness crumbling, “when God appeared in the likeness of man unto newness of everlasting life.” The silence of God ends in the loudest announcement the world has ever heard.
+
+## The Word from silence
+
+To the Magnesians Ignatius put the same thought in another form. He speaks of “one God who manifested Himself through Jesus Christ His Son, who is His Word that proceeded from silence.” The phrase is a meditation on the opening of John’s Gospel. Before creation, before anything was spoken, there was God. And out of the depth of God came the Word, the Son, who makes the Father known.
+
+> In the beginning was the Word, and the Word was with God, and the Word was God. JOHN 1:1
+
+Ignatius does not work this out as a theologian would; he gives it to us as a flash of vision. But it tells us something true. The Word of God is not chatter. He comes from the deep, unspoken life of God, and He speaks what He has heard. To know Christ as the Word is to be brought, through Him, into the presence of a God whose depths no words can exhaust.
+
+> No man hath seen God at any time; the only begotten Son, which is in the bosom of the Father, he hath declared him. JOHN 1:18
+
+## Hearing the silence of Jesus
+
+The most searching lines come a little earlier in the letter to the Ephesians. “It is better to keep silence and to be, than to talk and not to be,” Ignatius writes. “It is a fine thing to teach, if the speaker practice.” He then says that there is one Teacher, “who spake and it came to pass”, and that “even the things which He hath done in silence are worthy of the Father.” And then this: “He that truly possesseth the word of Jesus is able also to hearken unto His silence, that he may be perfect.”
+
+What might it mean to listen to the silence of Jesus? Ignatius does not explain, but the Gospels show us. Jesus was silent before His accusers, and His silence spoke more than any defence.
+
+> He was oppressed, and he was afflicted, yet he opened not his mouth: he is brought as a lamb to the slaughter, and as a sheep before her shearers is dumb, so he openeth not his mouth. ISAIAH 53:7
+
+He was silent through the thirty hidden years at Nazareth. He withdrew to silent places to pray. He stooped and wrote on the ground while the accusers of a woman waited. A Christian who knows only the words of Jesus, and not His silences, knows Him only in part. To hear His silence is to learn His humility, His patience, His prayer and His trust in the Father, which often said more than any sermon.
+
+## The silent bishop
+
+This helps to explain one of Ignatius’s odder remarks. He tells the Ephesians that “in proportion as a man seeth that his bishop is silent, let him fear him the more.” He says of the bishop of Philadelphia that his “silence is more powerful than others speech.” It seems that some in these churches thought little of bishops who were not eloquent, and preferred the confident talkers who came through the churches with new teaching. Ignatius will not have it. The quiet man who lives what he believes is worth more than the fluent man who does not.
+
+> Seest thou a man that is hasty in his words? there is more hope of a fool than of him. PROVERBS 29:20
+
+## Being rather than talking
+
+Ignatius’s theme of silence is finally about the difference between saying and being. He himself, writing to Rome, said that if the Romans would be silent and let him go, “I am a word of God; but if ye desire my flesh, then shall I be again a mere cry.” His death would speak more than all his letters. His life, offered to God, would be a word.
+
+We live in a world full of words, and many of them are Christian words. Churches produce talks, books, songs and posts in abundance. Ignatius’s counsel is not to stop speaking; the three mysteries are to be “cried aloud”. But our words must come out of a life that is real, and a silence that has listened to God. Otherwise we are only talking.
+
+> Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth. PSALM 46:10
+
+### FOR REFLECTION AND ACTION
+
+1. Set aside ten minutes of silence before God each day this week, without asking or saying anything, simply to be in His presence.
+2. Read the accounts of Jesus before Pilate and Herod (Matthew 27:11–14; Luke 23:8–9). What does His silence say to you?
+3. Ask yourself where your words run ahead of your life. Choose one subject on which you will speak less until your life has caught up.
+4. Think of a quiet Christian whose faithfulness you have undervalued because they are not eloquent. Thank God for them, and tell them.
+5. Meditate on the birth, hidden life and death of Christ as works done in the silence of God, and thank Him for the quiet ways He is at work in your own life.
+
+### A PRAYER
+
+> Eternal God, before any word was spoken You were, and out of Your silence came Your Word, Jesus Christ our Lord.
+> Thank You for the mysteries You wrought in silence — His birth, His hidden life, His death — and for making them known to the world.
+> Quiet the noise of my heart, that I may hear not only the words of Jesus but His silence, and learn from it.
+> Let me be a Christian and not only speak like one, and let my life be a word that speaks of You. Amen.
+
+# Where Jesus Is, There Is the Universal Church
+
+> There is one body, and one Spirit, even as ye are called in one hope of your calling; one Lord, one faith, one baptism, one God and Father of all, who is above all, and through all, and in you all. EPHESIANS 4:4–6
+
+In his letter to the Smyrnaeans Ignatius wrote a sentence that has become a small landmark in the history of the church: “Wheresoever the bishop shall appear, there let the people be; even as where Jesus may be, there is the universal Church.” The word translated “universal” is the Greek katholikos, from which our word catholic comes. This is the earliest surviving Christian writing in which the church is called catholic. The sentence therefore needs to be read carefully, both for what it says and for what it does not.
+
+## What the word meant
+
+The Greek word meant whole, general, universal — the whole of something as opposed to a part. When Ignatius spoke of the catholic church, he did not mean a particular denomination, still less one party against another. There were no denominations. He meant the whole church, everywhere, as distinct from the local congregation gathered in any one city. Lightfoot, whose translation is the one in the Ochorus library, rendered it simply “the universal Church”, and that is the plainest way to hear it.
+
+Later the word gained other meanings. By the fourth century, to call a church catholic was also to say that it held the true faith, as against heretical groups. Later still, after the division of Western Christianity in the sixteenth century, the word came to be used by the Roman Catholic Church as its own name, while Protestants continued to confess “the holy catholic church” in the Apostles’ Creed in the older sense. None of these later meanings should be read back into Ignatius. He was the first, so far as we know, to use the word of the church, and he used it in its simplest sense.
+
+## The local and the universal
+
+The sentence draws a comparison. As the people of a city should gather where their bishop is, so the universal church is wherever Jesus Christ is. The local church has its centre in its bishop; the whole church has its centre in Christ. Ignatius is not saying that the bishop is the head of the universal church. He is saying that just as a congregation gathers around its pastor, the whole people of God everywhere gathers around Christ.
+
+This means that for Ignatius the church is not first of all an organisation. It is the people gathered around Jesus. Wherever He is, there His church is.
+
+> For where two or three are gathered together in my name, there am I in the midst of them. MATTHEW 18:20
+
+It also means that no local church stands alone. The church in Smyrna, the church in Ephesus and the church in Antioch are all parts of one whole. Ignatius lived this truth. He wrote to churches he had never seen as though they were his own. He asked each of them to pray for the church in Syria. When peace returned to Antioch, he urged church after church to send messengers to rejoice with it. He tells the Romans that churches not even on his route had sent people to meet him from city to city. The universal church was not an idea to him. It was a web of love, prayer and hospitality that stretched across the empire.
+
+> And whether one member suffer, all the members suffer with it; or one member be honoured, all the members rejoice with it. 1 CORINTHIANS 12:26
+
+## One body, Jews and Gentiles
+
+The theme of the one church runs through the letters in other ways too. To the Smyrnaeans Ignatius speaks of Christ setting up “an ensign unto all the ages through His resurrection, for His saints and faithful people, whether among Jews or among Gentiles, in one body of His Church.” The cross and resurrection gather people from every nation into one body. The church is universal not only because it is spread through the world but because it draws in every kind of person.
+
+> For he is our peace, who hath made both one, and hath broken down the middle wall of partition between us. EPHESIANS 2:14
+
+He uses a lovely picture for this to the Ephesians. The believers are stones prepared for the temple of God the Father, “hoisted up to the heights through the engine of Jesus Christ, which is the Cross, and using for a rope the Holy Spirit; while your faith is your windlass, and love is the way that leadeth up to God.” The whole people of God is one building, raised by one cross.
+
+## The danger of division
+
+Because the church is one, Ignatius hated division. “Shun divisions, as the beginning of evils,” he told the Smyrnaeans. To the Philadelphians he wrote that “where there is division and anger, there God abideth not.” He saw the rival meetings of the false teachers as tearing the body of Christ. And he believed that the one church was held together by one faith: the faith in the real Christ, truly born, crucified and risen.
+
+> Now I beseech you, brethren, by the name of our Lord Jesus Christ, that ye all speak the same thing, and that there be no divisions among you. 1 CORINTHIANS 1:10
+
+## Reading him today
+
+The church today is divided in ways Ignatius could never have imagined, and this makes his teaching both painful and precious. It is painful because every tradition must confess that the visible unity he longed for has been broken. It is precious because his central conviction still holds: the universal church is where Jesus Christ is. Wherever people truly confess the Christ who came in the flesh, died and rose again, and gather around Him in faith and love, there His church is found.
+
+This should not make us careless about the divisions between Christians, as if they did not matter. Ignatius would never have said that. But it should make us humble, and it should make us generous. The Christian in another tradition who loves the same Lord, confesses the same creed and prays the same prayer is part of the same universal church. We can learn from Ignatius to pray for churches we have never seen, to rejoice with them in their peace, and to grieve with them in their trouble.
+
+> Neither pray I for these alone, but for them also which shall believe on me through their word; that they all may be one; as thou, Father, art in me, and I in thee, that they also may be one in us: that the world may believe that thou hast sent me. JOHN 17:20–21
+
+### FOR REFLECTION AND ACTION
+
+1. When you next say “I believe in the holy catholic church” or a similar phrase, pause and think of the whole church throughout the world gathered around Christ.
+2. Choose a church in another country, perhaps one under pressure, and pray for it by name each week this month.
+3. Is there a local church of another tradition near you? Find a way to express friendship or to join with them in prayer.
+4. Examine your own heart for a spirit of division — contempt for other Christians, or pleasure in their failings. Confess it.
+5. Read Ephesians 4:1–16 and ask how you can keep “the unity of the Spirit in the bond of peace” where you are.
+
+### A PRAYER
+
+> Lord Jesus Christ, wherever You are, there is Your church, gathered from every nation into one body by Your cross.
+> Thank You for the whole company of Your people across the world and across the ages, and for making me part of it.
+> Forgive the divisions among us, and forgive my part in them; heal what we have broken, and keep us in one faith and one love.
+> Teach me to pray for churches I have never seen, to rejoice in their joy and grieve in their sorrow, until we are one before You. Amen.
+
+# My Charter Is Jesus Christ
+
+> For Christ is the end of the law for righteousness to every one that believeth. ROMANS 10:4
+
+Two dangers troubled Ignatius on his road. One was the teaching that denied Christ’s real flesh. The other, which he met in Magnesia and Philadelphia, was a pull back towards the practices of Judaism: the keeping of the Sabbath and, it seems, other observances of the law, urged on Gentile Christians as though they were necessary. His answer to both was the same. Everything must be measured by Jesus Christ. This chapter looks at what he said, why he said it, and how it should be read with care.
+
+## The problem in Magnesia and Philadelphia
+
+We do not know exactly who the teachers were. Some may have been Jewish Christians; Ignatius’s remark that it is better to hear Christianity from a circumcised man than Judaism from an uncircumcised one suggests that some of them were Gentiles who had taken up Jewish customs. What they seem to have had in common was the conviction that faith in Christ was not enough, and that believers needed to live by the old observances as well.
+
+This was not a new struggle. It was the struggle of Paul’s letter to the Galatians, fought again a generation later in a different province.
+
+> Stand fast therefore in the liberty wherewith Christ hath made us free, and be not entangled again with the yoke of bondage. GALATIANS 5:1
+
+## What he said
+
+Ignatius’s words to the Magnesians are sharp. “Be not seduced by strange doctrines nor by antiquated fables, which are profitless. For if even unto this day we live after the manner of Judaism, we avow that we have not received grace.” And a little later comes the sentence that is the bluntest in all his letters: “It is monstrous to talk of Jesus Christ and to practice Judaism.”
+
+It is worth noting that this passage contains the earliest known use of the word Christianity, which Ignatius sets over against Judaism. He says that “Christianity did not believe in Judaism, but Judaism in Christianity, wherein every tongue believed and was gathered together unto God.” His point is that the faith of Israel pointed forward to Christ and was fulfilled in Him, so that to go back to the old forms is to go backwards.
+
+He puts this in terms of the Lord’s day. Those who had once lived in the old ways, he says, had come to a new hope, “no longer observing Sabbaths but fashioning their lives after the Lord’s day, on which our life also arose through Him and through His death.” For Ignatius the first day of the week, the day of resurrection, had become the centre of Christian time.
+
+> Upon the first day of the week, when the disciples came together to break bread, Paul preached unto them. ACTS 20:7
+
+## The prophets were His disciples
+
+It would be wrong, though, to think that Ignatius despised the Old Testament or the faith of Israel. The opposite is true. He honoured the prophets deeply. “The divine prophets lived after Christ Jesus,” he told the Magnesians, meaning that they lived in His way and by His grace, and were persecuted for it. They were, he says, His disciples in the Spirit, waiting for Him as their teacher; and when He came, He raised them from the dead.
+
+To the Philadelphians he wrote with real warmth: “we love the prophets also, because they too pointed to the Gospel in their preaching and set their hope on Him and awaited Him; in whom also having faith they were saved in the unity of Jesus Christ.” The patriarchs and prophets are inside the church, not outside it. Christ is “the door of the Father, through which Abraham and Isaac and Jacob enter in, and the Prophets and the Apostles and the whole Church.”
+
+> Your father Abraham rejoiced to see my day: and he saw it, and was glad. JOHN 8:56
+
+His quarrel, then, was not with Israel’s Scriptures but with any use of them that led away from Christ.
+
+## The charter
+
+This brings us to one of the most remarkable passages in the letters. At Philadelphia, Ignatius tells us, he met people who said, “If I find it not in the charters, I believe it not in the Gospel.” By the charters they meant the ancient Scriptures, what we call the Old Testament. When he answered, “It is written,” they replied, “That is the question” — in other words, they disputed his reading of the texts.
+
+Ignatius’s reply is magnificent: “But as for me, my charter is Jesus Christ, the inviolable charter is His cross and His death and His resurrection, and faith through Him.”
+
+He does not mean that the Scriptures do not matter. He was ready to argue from them. He means that Christ is the key to them, and that the cross and resurrection are the fixed point from which everything else is read. The argument about texts could go on for ever; the fact of Christ could not be moved. That is how Jesus Himself taught His disciples to read the Scriptures.
+
+> And beginning at Moses and all the prophets, he expounded unto them in all the scriptures the things concerning himself. LUKE 24:27
+
+And he adds: “the Gospel is the completion of immortality.” The old covenant was good, the priests were good, but better is the High Priest, Christ Himself, to whom the hidden things of God are committed.
+
+## Reading him with care
+
+Here, as the Introduction warned, the modern reader must be careful. Ignatius was writing about a controversy inside the church, over what Gentile Christians should practise. He was not writing about the Jewish people as a people, and nothing in his letters calls for hostility towards them. But his sharpest phrase — that it is “monstrous” to practise Judaism — sounds very differently in the ears of those who know what later centuries of Christian contempt for Jews produced. Later writers took the tone of such sentences much further, and the church has much to repent of. Christians today should not borrow his words to speak of Jewish people or their faith.
+
+It is also worth remembering what Paul, who fought the same battle over the law more fiercely than anyone, said about his own people.
+
+> Brethren, my heart’s desire and prayer to God for Israel is, that they might be saved. ROMANS 10:1
+
+And Paul reminded Gentile believers that they were branches grafted into Israel’s olive tree, with no room for boasting.
+
+> Boast not against the branches. But if thou boast, thou bearest not the root, but the root thee. ROMANS 11:18
+
+The true lesson of Ignatius here is not a lesson about Judaism. It is a lesson about Christ. Any teaching that adds something to Christ as necessary for salvation, whether it comes from the old law or from modern religion, must be tested by the charter of His cross, death and resurrection.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Galatians 5:1–6 and ask whether you are relying on anything other than Christ for your standing with God.
+2. Take one passage of the Old Testament you know well and ask how it points to Christ, as Ignatius said the prophets did.
+3. Make the Lord’s day a true day of resurrection this week: begin it by remembering that Christ is risen.
+4. Examine the way you speak about Jewish people. Put away any trace of contempt, and pray for them as Paul did.
+5. Write down Ignatius’s sentence, “my charter is Jesus Christ”, and use it as a test the next time you are drawn into an argument about religion.
+
+### A PRAYER
+
+> Lord Jesus Christ, You are the end of the law for righteousness to all who believe, and the charter of our faith.
+> Thank You for the prophets who looked for You, and for the patriarchs who rejoiced to see Your day.
+> Keep me from adding anything to Your cross as though it were not enough, and keep me from contempt for any people You have made.
+> Let Your cross, Your death and Your resurrection be the fixed point of my life, and let all my reading of Your Word lead me to You. Amen.
+
+# His Gentleness Is Power
+
+> Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls. MATTHEW 11:29
+
+A man on his way to martyrdom might be forgiven for thinking rather highly of himself. Christians came out from city after city to see him. Bishops travelled to greet him. His chains were honoured like jewels. Ignatius knew the danger. Some of the most searching passages in his letters are about humility and gentleness, and they are all the more striking because of the pressure he was under to forget them.
+
+## A convict writing to free men
+
+Ignatius’s humility shows first in the way he speaks about himself. He does not write as a great bishop issuing commands. “I do not command you, as though I were somewhat,” he tells the Ephesians. “For even though I am in bonds for the Name’s sake, I am not yet perfected in Jesus Christ.” He speaks to them “as to my school-fellows”, and says he ought to be trained by them. To the Trallians he says he did not think himself competent, “being a convict”, to order them “as though I were an Apostle.” To the Romans he draws the contrast plainly: Peter and Paul “were Apostles, I am a convict; they were free, but I am a slave to this very hour.”
+
+He calls himself “the very last” of the faithful in Syria, not worthy to be called a member of the church he had led, and “an untimely birth” — the very phrase Paul used of himself.
+
+> For I am the least of the apostles, that am not meet to be called an apostle, because I persecuted the church of God. 1 CORINTHIANS 15:9
+
+Some modern readers have wondered whether this is only a conventional modesty. It does not read that way. It reads like the humility of a man who knows how far he still has to go, and who is honestly afraid of failing at the last.
+
+## The danger of praise
+
+Ignatius was acutely aware that praise was dangerous to him. In the letter to the Trallians he writes: “I have many deep thoughts in God: but I take the measure of myself, lest I perish in my boasting.” He must not give heed to those who would puff him up, he goes on, “for they that say these things to me are a scourge to me.”
+
+It is a remarkable confession. The people who praised him were, he said, a whip to him. He felt the pull of their admiration and knew it could ruin him. He even feared that his own desire for martyrdom might be tainted: “though I desire to suffer, yet I know not whether I am worthy.”
+
+> Let another man praise thee, and not thine own mouth; a stranger, and not thine own lips. PROVERBS 27:2
+
+Every Christian who has been given any kind of prominence, in the church or elsewhere, knows something of this danger. Ignatius’s remedy was to take the measure of himself — to see himself honestly before God, and to be afraid of the flattery that would inflate him.
+
+## Gentleness defeats the devil
+
+The next sentence in the same passage is one of the most striking things Ignatius wrote. “So then I crave gentleness, whereby the prince of this world is brought to nought.” We might expect a man at war with the devil to ask for strength, or courage, or zeal. Ignatius asks for gentleness. He believed that meekness, not force, is what overthrows the enemy.
+
+This is the logic of the cross. Christ did not defeat the powers of evil by overpowering them but by suffering meekly at their hands. And the same weapon is given to His people.
+
+> Blessed are the meek: for they shall inherit the earth. MATTHEW 5:5
+
+The same thought appears in his praise of the bishop of Tralles, Polybius, whose “very demeanor is a great lesson, while his gentleness is power”. And he tells the Trallians, when they are threatened by false teachers, to “arm yourselves with gentleness”. Gentleness is armour. Gentleness is power.
+
+## Meek towards those outside
+
+Ignatius applied this to the way Christians should treat people who were hostile to them. In the letter to the Ephesians he wrote a passage of great beauty: “Against their outbursts of wrath be ye meek; against their proud words be ye humble; against their railings set ye your prayers; against their errors be ye steadfast in the faith; against their fierceness be ye gentle.”
+
+Each clause takes a form of hostility and answers it with its opposite. It is the Sermon on the Mount put into practice, and it was written by a man who had every reason to be bitter.
+
+> But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you. MATTHEW 5:44
+
+He goes on to urge them to show themselves the brothers of their persecutors “by our forbearance”, and to be imitators of the Lord, “vying with each other who shall suffer the greater wrong, who shall be defrauded, who shall be set at nought.” It is an upside-down competition, and Ignatius means it.
+
+## Gentleness in the pastor
+
+Ignatius’s counsel to Polycarp carries the same note. He tells the younger bishop that it is no great thing to love the good disciples: “Rather bring the more pestilent to submission by gentleness.” And he ends with a charge to the whole church: “Be ye therefore long-suffering one with another in gentleness, as God is with you.”
+
+That last phrase is the root of all Christian gentleness. We are to be gentle with others because God is gentle with us. We have been borne with, forgiven and patiently led; we must bear with, forgive and patiently lead.
+
+> And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you. EPHESIANS 4:32
+
+## A caution and an encouragement
+
+It must be admitted that Ignatius did not always practise what he preached. Some of his language about the false teachers — “mad dogs”, “wild beasts in human form” — is anything but gentle. He was a man under terrible strain, fighting for the life of the churches, and his words sometimes run hot. We should not copy that. But the ideal he set out, of humility before God and gentleness towards others, is the ideal of Christ Himself, and he knew it. He even warned the Ephesians not to be zealous to imitate their opponents by returning like for like.
+
+The encouragement is that Ignatius knew his own weakness and was not ashamed to say so. That is the beginning of humility. The man who has taken the measure of himself before God has no need to be harsh with others, and no reason to be proud.
+
+> Humble yourselves in the sight of the Lord, and he shall lift you up. JAMES 4:10
+
+### FOR REFLECTION AND ACTION
+
+1. Take the measure of yourself before God today. Where are you tempted to think more highly of yourself than you ought?
+2. Is there someone whose praise you have come to depend on? Ask God to free you from needing it.
+3. Choose one person who has been hostile to you, and answer their hostility this week with its opposite — meekness, humility, prayer or gentleness.
+4. Think of the most difficult person in your church or family. Pray for grace to treat them with the gentleness God has shown you.
+5. Read Matthew 5:38–48 and ask how Christ’s gentleness might overcome evil in one situation you face.
+
+### A PRAYER
+
+> Lord Jesus, You are meek and lowly in heart, and by Your gentleness You overcame the prince of this world.
+> Forgive me for my pride, my love of praise and my harshness towards others; show me the true measure of myself.
+> Make me gentle with those who oppose me, patient with those who try me, and humble before You.
+> Bear with me as You always have, and teach me to bear with others as You bear with me. Amen.
+
+# Pray for the Rest of Mankind
+
+> I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men. 1 TIMOTHY 2:1
+
+Ignatius’s letters are full of prayer. He asks for it in every one of them: prayer for himself, that he might reach his goal; prayer for the church he had left in Syria; prayer for one another. He urges the churches to pray together often. And, most strikingly, he urges them to pray for their enemies and for the whole world outside the church. For a man in chains, surrounded by soldiers and on his way to a public death, this is a remarkable breadth of heart.
+
+## Praying for those outside
+
+In the letter to the Ephesians, just before the passage about answering wrath with meekness, Ignatius writes: “And pray ye also without ceasing for the rest of mankind (for there is in them a hope of repentance), that they may find God. Therefore permit them to take lessons at least from your works.”
+
+Notice the reason he gives. There is hope of repentance in them. The world outside the church was not, for Ignatius, a lost cause to be written off. The people who mocked and persecuted Christians might yet find God. So the church must pray for them without ceasing, and live in such a way that, even if they will not listen to Christian words, they can learn from Christian deeds.
+
+> Having your conversation honest among the Gentiles: that, whereas they speak against you as evildoers, they may by your good works, which they shall behold, glorify God in the day of visitation. 1 PETER 2:12
+
+This is the same Ignatius who writes so fiercely about false teachers. Yet even for them he asks prayer. Of the Docetists in Smyrna, whom he would not have the church receive, he says: “only pray ye for them, if haply they may repent. This indeed is difficult, but Jesus Christ, our true life, hath power over it.” He admits that it is hard. He does not pretend that such people will easily change. But he believes that Christ has power even over this, and so he prays.
+
+> The Lord is not slack concerning his promise, as some men count slackness; but is longsuffering to us-ward, not willing that any should perish, but that all should come to repentance. 2 PETER 3:9
+
+## The church for which he prayed
+
+The prayer that runs through all seven letters is for the church in Syria. Ignatius had been taken from it by force, and he did not know what would become of it. Again and again he asks the churches to remember it. “Pray for the church which is in Syria,” he tells the Ephesians; he asks the Magnesians to remember it so that it might be refreshed “by the dew of your fervent supplication”. To the Romans he writes, with great tenderness, that the church in Syria now “hath God for its shepherd in my stead. Jesus Christ alone shall be its bishop — He and your love.”
+
+That sentence says a great deal about Ignatius. He had pressed obedience to the bishop more than anyone. But when he was taken from his own flock, he did not despair, because he knew who the true Shepherd was. He committed his church to Christ, and asked others to pray.
+
+> I am the good shepherd, and know my sheep, and am known of mine. JOHN 10:14
+
+## Prayer answered
+
+Then, somewhere between Smyrna and Troas, the news came. The church in Antioch had peace. Ignatius did not doubt why. He told the Philadelphians that it had come “in answer to your prayer and to the tender sympathy which ye have in Christ Jesus.” He told the Smyrnaeans that the church had been reaching a haven “through your prayers”. And he asked each church to send a messenger to Antioch to rejoice with it.
+
+Here is a lesson in how to receive answered prayer. Ignatius did not simply feel relief. He gave thanks, he gave the credit to God and to the prayers of the churches, and he turned the answer into fresh fellowship between the churches. Answered prayer is meant to lead to rejoicing together.
+
+> Rejoice with them that do rejoice, and weep with them that weep. ROMANS 12:15
+
+## Praying together
+
+Ignatius also urged the churches to pray together, and often. “Do your diligence therefore to meet together more frequently for thanksgiving to God and for His glory,” he told the Ephesians. “For when ye meet together frequently, the powers of Satan are cast down; and his mischief cometh to nought in the concord of your faith.” To the Magnesians he wrote that there should be “one prayer in common, one supplication, one mind, one hope”. And he asked a pointed question: if the prayer of one or two has such power, “how much more that of the bishop and of the whole Church.”
+
+> Again I say unto you, That if two of you shall agree on earth as touching any thing that they shall ask, it shall be done for them of my Father which is in heaven. MATTHEW 18:19
+
+He believed that a praying church is a church the devil cannot easily overcome. Where Christians gather in one mind before God, the enemy’s schemes come to nothing. This is not a matter of numbers but of unity; it is the concord of faith that defeats him.
+
+## Asking for prayer
+
+Finally, Ignatius was not too proud to ask for prayer himself. Nearly every letter ends with a request. He asks the Romans to “supplicate the Lord for me”, that he might be found a sacrifice to God. He asks the Trallians to pray that he might not be found reprobate. He asks the Philadelphians’ prayer to make him perfect. A bishop, honoured by all the churches of Asia, openly confessed his need of their prayers.
+
+> Brethren, pray for us. 1 THESSALONIANS 5:25
+
+There is a lesson here for any Christian, and especially for those who lead. It is humbling to ask for prayer. It means admitting that we are weak and that we need others. Ignatius did it without embarrassment, and it was one of the ways the churches were bound together in love around him.
+
+## A wider heart
+
+To read Ignatius on prayer is to be rebuked for the narrowness of our own. Our prayers are often small, bounded by our own needs and those of our family and friends. His reached to churches he had never seen, to a city he had been dragged away from, to enemies of the faith and to the whole of mankind. He was a prisoner, but his prayers were free.
+
+### FOR REFLECTION AND ACTION
+
+1. Make a list of three people outside the church whom you will pray for daily this month, trusting that there is in them a hope of repentance.
+2. Think of someone who has opposed or hurt you because of your faith. Pray for them by name, as Ignatius asked the Smyrnaeans to pray for the false teachers.
+3. Choose a church in a difficult place and commit to praying for it every week, as the churches prayed for Antioch.
+4. When God answers a prayer, tell someone who prayed with you, and give thanks together.
+5. Ask someone to pray for you this week about a real need, without embarrassment.
+
+### A PRAYER
+
+> Father in heaven, You are not willing that any should perish, and You have commanded us to pray for all people.
+> Enlarge my heart to pray for those outside Your church, for those who oppose You, and for the whole of mankind, that they may find You.
+> Thank You for every prayer You have answered, and for the brothers and sisters who have prayed for me.
+> Make Your church a praying people, one in mind and heart, so that the schemes of the enemy come to nothing and Your name is glorified. Amen.
+
+# Stand Firm as an Anvil
+
+> Thou therefore endure hardness, as a good soldier of Jesus Christ. 2 TIMOTHY 2:3
+
+Six of Ignatius’s letters are addressed to churches. The seventh is written to one man: Polycarp, the young bishop of Smyrna, who had welcomed him and cared for him. It is the shortest of the letters and the most personal. In it an older pastor, about to die, gives counsel to a younger one who had many years of ministry ahead of him. Polycarp would lead the church at Smyrna for some forty years or more and die a martyr himself, an old man, around the middle of the century. The letter is a kind of pastoral charge, and it has much to say to anyone who has the care of others.
+
+## Pressing forward
+
+Ignatius begins by praising Polycarp’s mind, “grounded as it were on an immovable rock”. Then, at once, he urges him on: “I exhort thee in the grace wherewith thou art clothed to press forward in thy course and to exhort all men that they may be saved.” There is no room for resting on a good start. The grace that has been given must be used, and the goal of all ministry is that people may be saved.
+
+He continues with a string of short, sharp commands, almost like proverbs. “Have a care for union, than which there is nothing better. Bear all men, as the Lord also beareth thee.” And again: “Give thyself to unceasing prayers. Ask for larger wisdom than thou hast. Be watchful, and keep thy spirit from slumbering.”
+
+> Watch ye, stand fast in the faith, quit you like men, be strong. Let all your things be done with charity. 1 CORINTHIANS 16:13–14
+
+Every line is worth pondering. Bear all men, as the Lord bears you: the pastor’s patience is rooted in the patience of God. Ask for larger wisdom than you have: even a good bishop must never think he knows enough. Keep your spirit from slumbering: the great danger of long ministry is not rebellion but drowsiness.
+
+## Not the same salve for every wound
+
+Then Ignatius turns to the hard cases. “If thou lovest good scholars, this is not thankworthy in thee. Rather bring the more pestilent to submission by gentleness. All wounds are not healed by the same salve.”
+
+It is a wise and humane piece of advice. Any pastor can love the easy people, the eager and the teachable. The test of a shepherd is how he treats the difficult ones. And he must not treat them all alike. Different wounds need different remedies. Some need a sharp word, some a gentle one; some need time, some need to be left alone for a while. The good pastor, like the good physician, attends to the particular case. Ignatius tells Polycarp to “speak to each man severally after the manner of God.”
+
+> And of some have compassion, making a difference: and others save with fear, pulling them out of the fire. JUDE 1:22–23
+
+He adds that Polycarp should be “prudent as the serpent in all things and guileless always as the dove” — the Lord’s own counsel to His disciples, applied to the work of a pastor.
+
+## The anvil and the athlete
+
+The most memorable image in the letter comes when Ignatius speaks of the false teachers who were troubling the churches. “Let not those that seem to be plausible and yet teach strange doctrine dismay thee. Stand thou firm, as an anvil when it is smitten. It is the part of a great athlete to receive blows and be victorious.”
+
+An anvil does not strike back. It simply stays where it is, and the hammer rings on it. The strength of the anvil is its steadiness. That is what Ignatius wanted for Polycarp: not the strength of a brawler who returns every blow, but the strength of one who cannot be moved. He calls him “God’s athlete” too, and tells him that the prize is “incorruption and life eternal”.
+
+> Wherefore take unto you the whole armour of God, that ye may be able to withstand in the evil day, and having done all, to stand. EPHESIANS 6:13
+
+He ends this section with a thought that goes to the heart of Christian endurance: “But especially must we for God’s sake endure all things, that He also may endure us.”
+
+## The widows, the slaves and the families
+
+The letter then turns to the ordinary care of a congregation. “Let not widows be neglected. After the Lord be thou their protector.” “Let meetings be held more frequently. Seek out all men by name.” That last phrase is lovely. The pastor is not to deal only with a crowd. He is to know his people one by one, and to go after them.
+
+> To him the porter openeth; and the sheep hear his voice: and he calleth his own sheep by name, and leadeth them out. JOHN 10:3
+
+Ignatius also says: “Despise not slaves, whether men or women.” In his world that was a real instruction; slaves were despised as a matter of course. But here the reader must be honest. Ignatius goes on to say that slaves should not be puffed up, and should not desire to be set free at the church’s expense. He was not an opponent of slavery; almost no one in his world was. His concern seems to have been that the church’s common funds not be drawn on for this purpose, and that slaves not seek freedom for the wrong reasons. But modern readers will rightly feel that his counsel falls short of what the gospel would later be seen to require. We can honour his call not to despise slaves while recognising that it was not the whole truth.
+
+> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
+
+He gives counsel about marriage too: wives are to love the Lord and be content with their husbands, husbands to love their wives “as the Lord loved the Church.” And he warns that anyone who chooses to live unmarried in honour of the Lord should do so “without boasting”.
+
+## A Christian is not his own
+
+Towards the end of the letter Ignatius turns from Polycarp to the whole church at Smyrna, and gives them a picture of the Christian life as military service. “Let your baptism abide with you as your shield; your faith as your helmet; your love as your spear; your patience as your body armor.” It is a picture drawn from Paul, and from the soldiers who had surrounded him every day of his journey.
+
+> Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. EPHESIANS 6:11
+
+And he gives them one sentence that sums up the whole of his own life: “A Christian hath no authority over himself, but giveth his time to God.” Ignatius had lived that. His time was nearly gone, and he had given all of it.
+
+### FOR REFLECTION AND ACTION
+
+1. Read the letter to Polycarp in full — it will take you ten minutes — and underline the counsel that most speaks to you.
+2. Think of the most difficult person you are responsible for, at home, at church or at work. Ask what particular “salve” their wound needs, rather than treating them like everyone else.
+3. When you are criticised or opposed this week, practise being an anvil: stand firm, do not strike back, and let the blow ring out.
+4. Learn the names of three people in your church whom you do not know, and seek them out.
+5. Ask yourself whether your time is really given to God. Choose one way to hand more of it over to Him.
+
+### A PRAYER
+
+> Lord Jesus, Great Shepherd of the sheep, You know Your own by name, and You bear with each of us in patience and love.
+> Give to all who care for others the wisdom to treat each one as You would, the patience to bear the difficult, and the strength to stand firm when they are struck.
+> Keep my spirit from slumbering, and give me larger wisdom than I have.
+> My time is not my own; take it, and use it for Your glory, until my course is finished. Amen.
+
+# Conclusion
+
+> Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
+
+Eleven chapters may seem a great deal to draw from seven short letters, and in one sense they are. Ignatius did not set out to teach a system. He wrote in haste, to particular churches, about particular dangers, with the soldiers waiting. Yet out of those hurried pages a whole vision of the Christian life emerges, and it holds together around one centre.
+
+That centre is the reality of Jesus Christ. He was truly born of Mary, truly crucified under Pontius Pilate, truly raised in the flesh. Everything Ignatius taught follows from this. Because Christ’s flesh is real, the bread of His table is the medicine of immortality, and those who deny His flesh keep away from it. Because Christ is one, His people must be one, gathered in each city around one table and one bishop, and throughout the world around Christ Himself, where the universal church is found. Because Christ is the charter of the faith, no old law or new teaching can be added to Him. Because the Word came out of the silence of God, His people must be before they speak. Because Christ was meek, gentleness is power. Because He died for all, we pray for all. Because He truly rose, a man can walk to the beasts calling it the beginning of life. And through it all, faith is the beginning and love is the end.
+
+## What must be read with care
+
+This book has tried to be honest about the places where Ignatius needs careful reading, and they should be named once more.
+
+His longing for martyrdom, especially in the letter to Rome, is intense and at times disturbing. It was the longing of a man already condemned, not a pattern for seeking death, and the church soon said so plainly. What we should take from him is readiness, not eagerness.
+
+His teaching on the bishop is the strongest in the early church, and it has often been read as if he were describing the bishops of a much later age. He was speaking of the pastor of a city church, in a time of crisis, and his words should be neither dismissed nor stretched.
+
+His language against those who wanted to keep Jewish practices is sharp, and one of his sentences is among the bluntest in early Christian writing. His quarrel was with a party inside the church, but his tone must not be repeated, and later centuries’ contempt for the Jewish people must be repented of, not excused.
+
+And like every Christian writer, he spoke within the limits of his own world — on slavery, for instance — and does not always say the whole truth.
+
+> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
+
+None of this is said to diminish him. Ignatius himself would not have wanted to be read uncritically. He told the Ephesians he was not yet perfected, and he told the Trallians that praise was a whip to him.
+
+## What to carry away
+
+If you carry nothing else from this book, carry three things.
+
+First, carry his insistence on the reality of Christ. The gospel is not an idea or a feeling but news of what happened: a birth in a real family, a death under a named governor, a body raised from a real tomb. Hold to the facts, and let everything else rest on them.
+
+> That which was from the beginning, which we have heard, which we have seen with our eyes, which we have looked upon, and our hands have handled, of the Word of life. 1 JOHN 1:1
+
+Second, carry his love for the whole church. He wrote to churches he had never seen, prayed for them, and asked them to pray for his. He could not bear division. In a church divided far beyond anything he could have imagined, his longing for unity around the one Christ is still a rebuke and a call.
+
+Third, carry his refusal to be a Christian in name only. “It is better to keep silence and to be, than to talk and not to be.” He wanted to be found a Christian, not only called one, and he was.
+
+## A last word about the man
+
+We do not know how Ignatius died, except that he died in Rome, as he had been sentenced, for the name of Christ. We do not know what he said at the end, or who stood by him. We have only what he wrote on the way, and what his friend Polycarp did afterwards: he gathered the letters, copied them, and sent them on to the church at Philippi, which had asked for them. That is how they came to us.
+
+It is a fitting end to the story. Ignatius spent his last weeks strengthening churches, and a friend made sure his words went on strengthening them after he was gone. Nineteen centuries later they are still doing so. The man who called himself the God-bearer carried Christ across an empire, and his letters carry Him still.
+
+> Be thou faithful unto death, and I will give thee a crown of life. REVELATION 2:10
+
+### FOR REFLECTION AND ACTION
+
+1. Return to the chapter of this book that unsettled you most, not the one you enjoyed most, and work through its application points again.
+2. Read all seven of Ignatius’s letters this month, one a day for a week.
+3. Write down one truth about Christ you are resolved never to let go of, and one area where you are resolved to be a Christian in deed and not only in name.
+4. Choose one practice from this book — prayer for the world, gentleness towards opponents, regular coming to the Lord’s table, honour for your leaders — and keep it faithfully for a month.
+5. Read Polycarp’s own short letter to the Philippians, and see the friendship that preserved Ignatius’s letters for us.
+
+### A PRAYER
+
+> Lord Jesus Christ, You were truly born, You truly died and You truly rose, and You are with Your church to the end.
+> Thank You for Your servant Ignatius, who carried You across the world and held to You to the last, and for the friends who kept his words.
+> Forgive us where we follow him too far, and keep us where he followed You: in faith and love, in unity and gentleness, in prayer for all.
+> Make us Christians in deed and not in name only, and bring us at last, with him and all Your saints, to the Father. Amen.
+
+# A Reader’s Guide to Ignatius of Antioch
+
+> Search the scriptures; for in them ye think ye have eternal life: and they are they which testify of me. JOHN 5:39
+
+Ignatius left no books, only seven letters, and they can all be read in an evening. The first counsel to anyone who wants to know him is simply: read them. What follows is a short map.
+
+## The text and its translation
+
+The letters that survive under Ignatius’s name come down to us in three forms. The longest, made in the fourth century, expands the seven genuine letters with additions and adds six more letters that he never wrote. The shortest is a Syriac abridgement of three of the letters, found in the nineteenth century and for a time argued to be the original. Between them is the Greek text of the seven letters, usually called the middle recension. Since the work of J. B. Lightfoot and Theodor Zahn in the nineteenth century, most scholars have accepted this middle form as the genuine Ignatius, though a minority still question the letters’ date or authorship.
+
+The letters in the Ochorus library are the seven of the middle recension, in Lightfoot’s translation. The Ochorus edition describes them as the shorter recension, meaning shorter than the long, interpolated version, and every quotation from Ignatius in this book is taken from that translation.
+
+## Begin here
+
+The Epistles of Ignatius and His Life’s Story. In the Ochorus library, with five short introductory chapters on his life written by Ochorus and then the seven letters. Read the letters in order, and read them more than once.
+
+The Letter to the Romans. If you read only one, read this. It is the most personal and the most intense, and it contains the words about God’s wheat. Read it with the cautions of this book in mind.
+
+The Letter to the Smyrnaeans. The clearest statement of his faith in the real flesh of Christ, his words on the eucharist, and the sentence about the universal church.
+
+The Letter to Polycarp. The shortest and most practical: an older pastor’s counsel to a younger one.
+
+Then read Ephesians, the longest, for faith and love, silence and the medicine of immortality; Magnesians and Philadelphians for his warnings against Judaizing; and Trallians for his fullest short creed.
+
+## Other translations
+
+Lightfoot’s translation is found in The Apostolic Fathers, the one-volume edition he prepared and J. R. Harmer completed (1891). Kirsopp Lake’s translation in the Loeb Classical Library (1912–13) prints the Greek beside the English. Among modern versions, Michael W. Holmes’s The Apostolic Fathers, with Greek and English on facing pages, and Maxwell Staniforth’s Early Christian Writings in the Penguin Classics are both reliable and easy to find. The first volume of the Ante-Nicene Fathers prints the middle and long forms side by side, which lets a reader see how the letters were later expanded.
+
+## The texts around him
+
+Polycarp’s Letter to the Philippians. Short, plain and warm, by the friend who gathered Ignatius’s letters. It is the best outside witness to Ignatius.
+
+The Martyrdom of Polycarp. The account of Polycarp’s death, written by the church of Smyrna. Read it beside the letter to Rome; it shows a church that honoured martyrdom but warned against seeking it.
+
+Eusebius, Church History, Book Three. The fourth-century historian’s account of Ignatius, with his place in the list of Antioch’s bishops.
+
+## About Ignatius
+
+There is no biography of Ignatius in the full sense, because there is too little to write one from. Lightfoot’s great study, The Apostolic Fathers, Part II: S. Ignatius, S. Polycarp (1885), is the foundation of all later work, though it is for the determined reader. William R. Schoedel’s commentary, Ignatius of Antioch (1985), is the standard modern commentary on the letters.
+
+## Approach with care
+
+The long recension and the spurious letters, including a Latin exchange with the Virgin Mary, are not by Ignatius and should not be quoted as his. Later accounts of his martyrdom, with their detailed trial scenes, were written long after his death and cannot be trusted for the facts.
+
+## Three counsels for reading him
+
+Read him whole. The letters are short, and a single line lifted out of its letter can mislead. His words about the bishop and about martyrdom especially need their setting.
+
+Read him with the New Testament open. He knew Paul’s letters and echoes the Gospels, and he is best understood as a man trying to hold his churches to the apostles’ faith.
+
+Read him as a man on his way to die. Every line was written under guard. Let that urgency reach you, and ask what you would write if you had only weeks left.
+
+> For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord. ROMANS 8:38–39

@@ -1,0 +1,1098 @@
+---
+description: A concise, faithful guide to the heart of Derek Prince’s ministry — the authority of the written Word, the six foundations of Hebrews 6, the divine exchange at the cross, faith that comes by hearing, and prayer and fasting that shape history — weighed honestly where he must be read with care. Twelve short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Prince’s ministry, naming his books for the reader’s own further study.
+about: |
+  This is a companion to Derek Prince, not a book by him. Written by Ochorus, it sets out in twelve short chapters the teaching for which Prince is chiefly remembered — the Bible as a true and living book, the six foundation doctrines of Hebrews 6:1–2, the exchange that took place at the cross, faith, the baptism in the Holy Spirit, prayer and fasting, blessing and curse, spiritual warfare, Israel, rejection and acceptance, fatherhood and the return of Christ — with a chapter on his life, a conclusion and a guide to his books.
+
+  It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Derek Prince. All descriptions of his teaching are the present author’s own summaries; his books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Prince’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what he taught.
+
+  Prince came to the Bible as a sceptic and spent sixty years urging ordinary believers to build on it and nothing else. This volume follows that thread, and it is candid where he must be weighed rather than simply received — above all on the Shepherding Movement he helped lead and later repudiated, on deliverance ministry, on inherited curses, and on Israel. He would have wanted every word of it checked against the Book he loved.
+---
+
+# Introduction
+
+> For ever, O LORD, thy word is settled in heaven. PSALM 119:89
+
+Derek Prince did not come to the Bible as a child comes to a bedtime story. He came to it as a professional sceptic. He was a Fellow of King’s College, Cambridge, a philosopher steeped in Plato, trained to take a text apart and find where its argument failed. He began reading the Scriptures in an army camp in the Second World War as he would have read any old book — to master it. Within a year the book had mastered him. For the rest of a long life, on four continents and through a radio ministry carried in many languages, he gave himself to one task: persuading ordinary Christians that the Bible could bear the whole weight of their lives.
+
+## The one thread
+
+That is the thread through everything he taught, and it is worth naming at the start. Prince was a man of the text. He was not a mystic, not a storyteller, not a revivalist who worked on the feelings of a crowd. He was reserved, logical and plain. His method was always the same: take a subject, find what Scripture says about it, define the terms, lay the passages side by side, and draw the conclusions the passages require. Then — and this is what made him more than a lecturer — act on them. He believed that God’s Word is not merely true but active; that it does what it says; that a believer who hears it and stands on it will find it working in him.
+
+> So shall my word be that goeth forth out of my mouth: it shall not return unto me void, but it shall accomplish that which I please. ISAIAH 55:11
+
+Everything else follows from this. His teaching on the foundations of the faith is an attempt to show what the Bible itself calls elementary. His teaching on the cross is a reading of what Scripture says was exchanged there. His teaching on faith is that it comes by hearing the Word. His teaching on prayer and fasting is that believers who pray God’s promises back to Him can move history. Even his most disputed teaching — on curses and on demons — was offered as the plain reading of texts he believed the church had been too embarrassed to take seriously.
+
+## Why he still matters
+
+Prince is worth knowing for at least three reasons. The first is that he trained people to read. Many popular teachers leave their hearers dependent on the teacher. Prince, at his best, did the opposite. He wanted believers who could open their own Bibles, find the verses, and test what they were told.
+
+The second is that he took the whole of Scripture seriously, including the parts that make comfortable Western Christians uneasy — fasting, the laying on of hands, the gifts of the Spirit, the reality of evil powers, the unfinished purposes of God for Israel, the judgement to come. He did not always handle those subjects well. But he refused to pretend they were not in the book.
+
+The third reason is his own life. He was a man who learned, late and publicly, that he had been wrong about something that mattered, and who said so. That is rarer among Christian leaders than it should be, and it gives his teaching a certain credibility.
+
+## How this book is arranged
+
+After a chapter on his life, twelve short chapters set out his teaching. They begin where he began, with the authority of the Word, and move to the six foundation doctrines of Hebrews 6:1–2. Then come the cross as a divine exchange, faith, the baptism in the Holy Spirit, and prayer and fasting. Four chapters follow on the subjects that made him most controversial — blessing and curse, spiritual warfare and deliverance, and Israel — and on the wound of rejection. The last two turn to the family and to the return of Christ.
+
+Each chapter ends with application points and a prayer. Prince would have wanted it so. He distrusted teaching that stayed in the head. He thought a truth had not been received until it had been acted upon. Read a chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
+
+A word about the limits of this book. Derek Prince’s writings are under copyright and belong to their rightful publishers. Nothing of his own text is reproduced here. Every description of his teaching is Ochorus’s own summary, and his books are named throughout so that the reader may go to them directly. A short guide to them is given at the end.
+
+## Where he must be read with care
+
+This is not a book of hero-worship, and it is better to say plainly at the outset where Prince must be weighed rather than simply received.
+
+First, in the early 1970s he was one of the leaders of what became known as the Shepherding, or Discipleship, Movement, which taught that every believer should submit to a personal shepherd. In practice it produced serious and well-documented harm: people who needed a leader’s approval for marriage, money, work and moves, and leaders who abused that power. Prince was the first of its leaders to withdraw and publicly to repudiate it, and he did so in the language of repentance. That is to his lasting credit. But the harm was real, and it is named in these pages, not smoothed away.
+
+Second, he was among the best-known teachers of deliverance ministry in the twentieth century, and he held that a Christian could need to be set free from evil spirits. Many careful believers reject that view. Even those who accept something like it have seen the damage done where every struggle is blamed on a demon and ordinary repentance, discipline, medicine and counsel are set aside. Chapter ten presents what he taught and the strong cautions it requires.
+
+Third, his teaching that curses may pass down family lines is disputed, and it has sometimes bred fear rather than faith. Chapter nine weighs it against the plain words of Ezekiel 18.
+
+Fourth, his love for Israel was deep and lifelong, and his reading of prophecy placed the modern State of Israel at the centre of God’s purposes. Many Christians share that view; many others, equally committed to Scripture, do not. Chapter eleven tries to present both fairly.
+
+None of this is said to diminish him. It is said because he would have insisted on it. The whole burden of his ministry was that the Bible stands above every teacher, including himself. So the counsel of this book is the counsel of Scripture: Prove all things; hold fast that which is good (1 Thessalonians 5:21).
+
+> Search the scriptures; for in them ye think ye have eternal life: and they are they which testify of me. JOHN 5:39
+
+### FOR REFLECTION AND ACTION
+
+1. Before you read further, write down honestly what the Bible is to you at present: a book you respect, a book you consult, or the book you build your life on.
+2. Choose one subject you have believed for years without checking. This week, find every passage you can on it and read them side by side.
+3. Ask yourself which Christian teacher you trust most. Then ask whether you would still believe what you believe if that teacher were proved wrong.
+4. Decide now how you will read this book: one chapter a day, or one a week. Put it in your diary.
+5. Pray for grace to receive what is true in these pages and to set aside what is not, without fear either way.
+
+### A PRAYER
+
+> Father, You have magnified Your word, and I have often treated it as one book among many. Forgive me.
+> Give me a teachable heart and a testing mind. Let me receive gladly what is true, and let me have the courage to set aside what is not, even when it comes from someone I admire.
+> Make Your Word living to me again. Let it read me as I read it. And let it be the ground I stand on, not the ornament of a life built elsewhere. In the name of Jesus Christ, Amen.
+# The Philosopher in the Barrack Room
+
+> Did not our heart burn within us, while he talked with us by the way, and while he opened to us the scriptures? LUKE 24:32
+
+A child of the Empire. He was born Peter Derek Vaughan Prince on the fourteenth of August, 1915, in Bangalore, in British India, into a British military family. It was a world of order, service and reserve, and something of all three stayed with him for life. His gifts showed early. He won a scholarship to Eton College at around fourteen and read Greek and Latin there, and from Eton he went up to King’s College, Cambridge. He did brilliantly. He was elected to a fellowship in philosophy, and he gave his mind above all to Plato. He also studied Hebrew and Greek, a competence that would later give his Bible teaching its careful, text-first grain.
+
+A mind that doubted. None of this made him a believer. He had been raised in the conventional Anglicanism of his class, and he had left it behind as something a thinking man outgrows. He was, by his own later account, a sceptic — not hostile so much as unpersuaded, a man for whom the Bible was one ancient document among many, to be weighed and filed. He was also, by the same account, restless. Philosophy had given him tools of great precision and no conclusions worth living for. He could dismantle an argument. He could not find one that would hold his weight.
+
+War. When war came he enlisted, in 1940, and served as a non-combatant in the Royal Army Medical Corps — a hospital orderly, a medic. It was a strange place for a Cambridge don. He took a Bible with him, and he began, as a philosophical exercise, to read it through, intending to understand it the way he understood Plato. By his own testimony the reading went on for some nine months. He found it baffling, and he found he could not put it down.
+
+The barrack room. Then, in the summer of 1941, in a barrack room in Yorkshire — the ministry he later founded places it at Scarborough — the analysis broke open into an encounter. He did not describe it as the winning of an argument. He described it as meeting a Person. He came out of that night convinced of two things, and he would say them for the next sixty years: that Jesus Christ is alive, and that the Bible is true, relevant and up to date. Soon afterwards he had an experience he understood as the baptism in the Holy Spirit, and the Pentecostal convictions it gave him never left. The sceptic had become a believer, and the philosopher had found the book he would spend the rest of his life expounding.
+
+The desert. He was posted to North Africa and served for roughly three years through the desert campaign, still as a medic. He read the Bible constantly, prayed, and began to learn in hard conditions what it meant to trust God for health, for safety and for guidance. When his service ended he was discharged, not in England, but in Jerusalem. It was the decisive accident of his life. He arrived in the land in the last years of the British Mandate, and a burden settled on him there that never lifted: a sense of responsibility towards the Jewish people and the purposes of God for them.
+
+Lydia and the girls. In Jerusalem he met Lydia Christensen, a Danish woman who had given up a career as a teacher to follow a call to the Holy Land, and who ran a home for children there. She had taken in girl after girl whom no one else would take — Jewish, Arab and others — and was raising them as her own daughters. Lydia was considerably older than Derek. They married in the mid-1940s, and the young Cambridge philosopher became, at a stroke, the father of a houseful of adopted daughters. Lydia’s own story of her call, and of the family in Jerusalem, was later told in the book Appointment in Jerusalem. The family lived through the violence that surrounded the founding of the State of Israel in 1948. Prince was to regard those events for the rest of his life as a fulfilment of Scripture happening before his eyes.
+
+London and Kenya. The family moved to London, where for some years he pastored a congregation and preached in the open air. In the late 1950s they went to Kenya, where he worked as an educator and administrator, training teachers in the years before independence. It was there, by his own account, that he saw both revival and the reality of spiritual conflict at close quarters, and there that his convictions about the power of prayer to shape a nation’s course took firmer form.
+
+America. In the early 1960s the Princes moved to the United States. He pastored and taught in Seattle, in Minneapolis and in Chicago, and in time settled in Fort Lauderdale, in Florida. These were the years of the charismatic renewal, when the experience of the Spirit that Pentecostals had long known began to spread into the older churches, and Prince — a Cambridge man with a Pentecostal testimony and a gift for plain exposition — found himself much in demand. His teaching on the foundations of the faith, first given as a series of booklets and later gathered into one volume, became a standard text of the renewal. A publishing work grew up around his teaching, and in time it became Derek Prince Ministries.
+
+The Shepherding years. In the early 1970s he joined with four other Bible teachers — Bob Mumford, Charles Simpson, Don Basham and Ern Baxter — in what outsiders came to call the Fort Lauderdale Five. Out of their association grew the Shepherding, or Discipleship, Movement. Its intentions were serious: to bring accountability and maturity to a renewal movement that was often chaotic. Its teaching was that every believer should be personally submitted to a shepherd over his life. In practice it spread quickly and went badly wrong. Followers were widely reported to need a shepherd’s approval for the major decisions of their lives, and critics charged the movement with authoritarian control. Much pain was done in its name.
+
+Prince was the first of the five to leave, and the first publicly to repudiate the teaching, in 1983. He did so not with excuses but in the language of repentance, confessing that what had begun in the Spirit had turned into something of the flesh, as the Galatians had been warned. He continued for years afterwards to warn against manipulative spiritual authority. No honest account of him can omit this chapter. None should omit the way he ended it.
+
+Loss and a second marriage. Lydia died in 1975. In 1978 he married Ruth Baker, an American, and the two of them carried the work on together for twenty years. His radio teaching was carried daily around the world and translated into many languages, and he wrote dozens of books — on faith, on prayer and fasting, on the cross, on deliverance, on rejection, on marriage and fatherhood, on Israel and the last days. In 1981 he moved his home back to Jerusalem, and from there he travelled and taught almost to the end. Ruth died in Jerusalem in 1998.
+
+The end in Jerusalem. Derek Prince died at his home in Jerusalem on the twenty-fourth of September, 2003, in his sleep, aged eighty-eight. He was buried in the city he had carried in prayer for more than half a century.
+
+The shape of a life. He leaves an unusual example. Most of the teachers in this series came to Scripture in simplicity and never left it. Prince came to it as a critic, was overcome by it, and spent sixty years persuading others that the book he had once doubted was strong enough to rest a life upon. He was reserved rather than warm, precise rather than eloquent, and he disliked hype. He got some important things wrong, and in the most public case he said so. But the two convictions he carried out of that barrack room he never let go of: that Jesus Christ is alive, and that the Bible is a true book, for now.
+
+> Heaven and earth shall pass away, but my words shall not pass away. MATTHEW 24:35
+
+### FOR REFLECTION AND ACTION
+
+1. Prince came to faith by reading the Bible through for months. Set yourself to read one whole book of Scripture this month, straight through, asking only what it says.
+2. Think of the circumstance you least expected to shape your life — a posting, a move, a loss. Ask what God may have been doing through it.
+3. Lydia took in children no one else would take. Is there a person or a need near you that everyone else is passing by?
+4. Prince repudiated publicly what he had helped to build. Is there a position you have held, or taught, that you now believe was wrong? Consider what honesty would require.
+5. Write down the two or three convictions you would still be saying at eighty-eight. Pray over whether they are the right ones.
+
+### A PRAYER
+
+> Lord Jesus, You met a doubting scholar in a barrack room and opened the Scriptures to him. Open them to me.
+> Where I have read Your Word as a critic, or as a spectator, or not at all, forgive me. Let my heart burn again as You speak.
+> Guide my steps as You guided his, through places I did not choose. And where I have been wrong, give me the humility to say so, plainly and soon.
+> Let me finish, as he did, still believing that You are alive and that Your Word is true. Amen.
+# A True and Living Book
+
+> For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart. HEBREWS 4:12
+
+Every teacher has a starting point, and Derek Prince’s was never in doubt. Before he taught on faith, prayer, the Spirit or the cross, he taught on the Bible itself: what it is, what it claims, and what it does to those who receive it. In his Foundation Series, later gathered into a single volume as Foundations for Christian Living, the Word is given pride of place, and the emphasis falls not on experience but on authority. The Christian life, he argued, stands or falls on one question: has God spoken, and has He spoken here?
+
+## Settled in heaven
+
+Prince’s answer was yes, without reservation. He held that the Scriptures are given by the inspiration of God, not merely in their broad ideas but in their words, and that they carry the authority of the God who breathed them. He liked to point out that Jesus Himself treated the Old Testament in exactly this way. When He was tempted in the wilderness He did not argue, reason, or appeal to His own experience. He quoted Deuteronomy three times, and the devil left.
+
+> But he answered and said, It is written, Man shall not live by bread alone, but by every word that proceedeth out of the mouth of God. MATTHEW 4:4
+
+Prince drew from this a lesson he pressed throughout his ministry. If the Son of God, full of the Spirit, chose to meet Satan with the written Word, then no believer is too spiritual to need it, and no believer has a better weapon. The Bible is not the starting point of the Christian life which we leave behind as we mature. It is the ground under our feet all the way through.
+
+> All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness: That the man of God may be perfect, throughly furnished unto all good works. 2 TIMOTHY 3:16–17
+
+He was fond of the phrase in the psalm that heads the introduction to this book: the Word is settled in heaven. It is not settled by the vote of a council, by the consensus of scholars, or by the feelings of the reader. It is settled, and our task is to come into agreement with it.
+
+## A word that works
+
+The former philosopher insisted that the Bible is not only true but active. It does not merely describe reality; it acts upon it. This conviction ran through all his teaching and gave it much of its energy. The Word of God, he taught, does for the believer what it says it will do. It gives new birth. It cleanses. It feeds. It heals. It illuminates. It sanctifies. It gives victory over the enemy.
+
+> Sanctify them through thy truth: thy word is truth. JOHN 17:17
+
+> He sent his word, and healed them, and delivered them from their destructions. PSALM 107:20
+
+Prince liked to gather such passages into lists — the effects of God’s Word upon the one who receives it — and to show how much of the Christian life is simply the Word doing its work. A believer who wants to grow does not need a technique. He needs to feed. A believer who is being defeated by temptation does not need more resolve. He needs the sword of the Spirit, which is the Word of God. A believer who is uncertain of his way does not need a sign. He needs a lamp.
+
+> Thy word is a lamp unto my feet, and a light unto my path. PSALM 119:105
+
+There is a caution to raise here, and it is one Prince himself would have accepted. To say that the Word does what it says is not to say that any verse may be lifted from its setting and applied to any circumstance as a guaranteed formula. The promise that God’s Word will not return void is a promise about His purposes, not about ours. Prince was usually careful about this; some who learned from him were not. The Word works, but it works as God intends it to work, and part of reading it rightly is learning, patiently, what He intends.
+
+## Hearing, receiving, doing
+
+Prince distinguished between hearing the Word and receiving it. A congregation may hear a sermon every week for forty years and receive almost nothing. The difference, he taught, lies in the attitude of the hearer: humility, a readiness to be corrected, a willingness to obey. He often turned to the parable of the sower for this. The seed is always good. What varies is the soil.
+
+That led him to the plainest of his counsels. Read the Bible regularly, systematically and obediently. Read it through, not only in favourite places. Read it with a notebook, looking for what it actually says rather than what you expected it to say. And do what it tells you, because the truth that is not acted upon hardens the heart that hears it.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+## The book above the teacher
+
+There is one further implication of Prince’s teaching on the Word, and his own story makes it sharper than he may have intended. If the Bible is the final authority, then no teacher is. No pastor, no apostle, no shepherd, no movement stands above the written Word, and every one of them must be tested by it.
+
+Prince learned the cost of forgetting this. The Shepherding Movement, which he helped to lead in the 1970s, placed great weight on submission to human leaders, and in many places the authority of the shepherd came in practice to eclipse both the conscience of the believer and the plain sense of Scripture. When Prince withdrew from it and repudiated its teaching, he did so on scriptural grounds: what had begun in the Spirit had been carried on in the flesh. His own doctrine of the Word was the thing that judged his own error.
+
+> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
+
+That is perhaps the best way to read Derek Prince himself. He asked his hearers to check everything by the Bible. The right response is to do exactly that — with his teaching as with everyone else’s. A teacher who points us to the Book and then submits to it has done us the greatest service a teacher can.
+
+## Loving the Word
+
+It would be wrong to leave the impression that Prince’s relationship with Scripture was merely a matter of authority and method. He loved the Bible. He had come to Christ through it. He had read it in the desert, in hospital wards and in a Jerusalem at war. It had been, for a lonely scholar, the voice of a Friend. And the psalms he quoted most were the psalms of a man who loved it too.
+
+> O how love I thy law! it is my meditation all the day. PSALM 119:97
+
+A believer who treats the Bible only as a rulebook, or only as a weapon, has not yet understood it. It is first of all the place where God speaks, and where Christ is found.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask yourself honestly what the final authority in your life is when Scripture and your preferences disagree. Name a recent example.
+2. Choose one area of struggle and find three passages of Scripture that speak directly to it. Memorise one this week.
+3. Begin, or return to, a plan to read the whole Bible through. Start small if you must, but start today.
+4. The next time you hear a sermon or read a Christian book, check at least one of its claims against the Bible for yourself.
+5. Think of a Christian leader whose word you have tended to treat as final. Pray for them — and resolve to test what they say by Scripture.
+6. Read Psalm 119 slowly over a week, a few sections a day, and note what the psalmist says the Word does.
+
+### A PRAYER
+
+> Lord God, You have spoken, and Your word is settled in heaven. Forgive me for treating it as unsettled on earth — as advice, as opinion, as something I may take or leave.
+> Give me a hunger for it. Let me feed on it daily, not as a duty but as bread.
+> Make me a doer and not a hearer only. And guard me from ever setting any teacher, any movement, any leader, above what You have written.
+> Let Your Word do in me all that You sent it to do. In Jesus’ name, Amen.
+# Laying the Foundation
+
+> Therefore leaving the principles of the doctrine of Christ, let us go on unto perfection; not laying again the foundation of repentance from dead works, and of faith toward God, Of the doctrine of baptisms, and of laying on of hands, and of resurrection of the dead, and of eternal judgment. HEBREWS 6:1–2
+
+Many Christians could not say, if asked, what the foundations of their faith are. They could name doctrines they believe, and practices they follow, but they could not say which of these the New Testament itself treats as the ground on which everything else is built. Derek Prince believed he had found the answer in two verses of the letter to the Hebrews, and a large part of his early teaching ministry was spent unfolding them. The result was the Foundation Series, first issued as a set of booklets and later gathered into a single volume under titles that included Foundations for Christian Living. For many believers in the charismatic renewal it was the first systematic Bible teaching they had ever received.
+
+## Six stones in order
+
+Prince noticed that the writer to the Hebrews, rebuking his readers for staying immature, lists what he calls the principles of the doctrine of Christ. There are six of them: repentance from dead works, faith toward God, the doctrine of baptisms, the laying on of hands, the resurrection of the dead, and eternal judgement. The writer does not want his readers to stay among these things for ever. He wants them to go on. But he plainly assumes that they have been laid first, and laid properly.
+
+> For when for the time ye ought to be teachers, ye have need that one teach you again which be the first principles of the oracles of God; and are become such as have need of milk, and not of strong meat. HEBREWS 5:12
+
+Prince drew the obvious conclusion, and pressed it on a generation that was hungry for experience and impatient with doctrine. You cannot build the upper storeys of the Christian life on a foundation that was never laid. Many of the collapses he saw in believers and in churches, he argued, were not failures at the top of the building. They were failures at the bottom.
+
+> For other foundation can no man lay than that is laid, which is Jesus Christ. 1 CORINTHIANS 3:11
+
+He was careful to add that the six doctrines are not a second foundation alongside Christ. They are the way the one foundation, Christ Himself, is laid in a believer’s life. Every one of them points to Him.
+
+## Repentance and faith
+
+The first two stones belong together, and Prince taught that they must come in this order. Repentance comes before faith. It is not a feeling of regret, nor a promise to do better, but a decision: a change of mind that issues in a turning round. The word, he pointed out, describes a man walking one way who turns and walks the other. Repentance from dead works means turning away from every attempt, religious or irreligious, to live independently of God — including the respectable attempt to earn His favour by good behaviour.
+
+> Testifying both to the Jews, and also to the Greeks, repentance toward God, and faith toward our Lord Jesus Christ. ACTS 20:21
+
+He believed much modern evangelism had skipped this step. People were invited to believe without being called to repent, and the result was a great many professions that did not last. Faith without repentance, he argued, is faith in a Saviour one has not needed. Faith toward God, the second stone, is then the trusting of oneself wholly to Christ and to what God has said about Him. Chapter six of this book is given to his teaching on faith.
+
+## Baptisms and the laying on of hands
+
+The third stone is plural: the doctrine of baptisms. Prince took this to include Christian baptism in water, which he taught should be by immersion and follow repentance and faith, and the baptism in the Holy Spirit, which he held to be a distinct experience promised to every believer. He also discussed John’s baptism, as a preparatory baptism of repentance, to show how the New Testament distinguishes them. Chapter seven of this book returns to the baptism in the Spirit.
+
+> Therefore we are buried with him by baptism into death: that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life. ROMANS 6:4
+
+The fourth stone surprises most modern readers. Why, among the elements of the faith, should the laying on of hands appear at all? Prince answered by showing how often it occurs in the New Testament: for healing, for the imparting of the Spirit, for commissioning to service, for the recognition of gifts.
+
+> Neglect not the gift that is in thee, which was given thee by prophecy, with the laying on of the hands of the presbytery. 1 TIMOTHY 4:14
+
+He saw it as a means by which God transmits blessing and authority through members of the Body. It is a reminder that the Christian life is not purely private. God works through people. That is a point well taken. It also needs a caution, and Prince’s own story supplies it. Wherever a practice conveys authority from one person to another, it can be abused, and the Shepherding Movement showed how quickly a proper respect for spiritual oversight can turn into control. Scripture itself counsels restraint: Lay hands suddenly on no man (1 Timothy 5:22).
+
+## Resurrection and judgement
+
+The last two stones look forward, and Prince insisted they belong to the foundation, not to the attic. A Christian who does not believe in the resurrection of the body and the judgement of God does not have an incomplete faith; he has a different faith. The resurrection of Christ is the pledge of ours.
+
+> But now is Christ risen from the dead, and become the firstfruits of them that slept. 1 CORINTHIANS 15:20
+
+And judgement is certain. Prince distinguished between the judgement of believers, which concerns not their salvation but their reward, and the final judgement of all mankind. He did not soften either.
+
+> For we must all appear before the judgment seat of Christ; that every one may receive the things done in his body, according to that he hath done, whether it be good or bad. 2 CORINTHIANS 5:10
+
+He argued that these doctrines are foundational because they give weight to everything else. A believer who knows he will stand before Christ lives differently from one who does not. The resurrection turns suffering into seed. Judgement turns every day into something that counts.
+
+## Why it still matters
+
+Some of Prince’s particular conclusions under these headings will not be shared by every reader. Christians who baptise infants will read his treatment of baptism differently. Those who do not hold a distinct baptism in the Spirit will weigh chapter seven with care. That is proper. But his central point stands, and many churches need it. The foundations of the faith are not things to be assumed. They are things to be taught — plainly, deliberately and early.
+
+> Therefore whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man, which built his house upon a rock. MATTHEW 7:24
+
+The storms come to every house. The only question is what the house is standing on.
+
+### FOR REFLECTION AND ACTION
+
+1. Write down the six foundations of Hebrews 6:1–2. Beside each, write one sentence saying what you believe about it and why.
+2. Which of the six have you never been taught? Find the passages on it and study them this month.
+3. Examine your own conversion. Did it include a real turning from the old direction of your life? If not, repent now, specifically.
+4. If you are responsible for new believers, ask what they are being taught in their first year, and whether it includes these foundations.
+5. Spend time this week meditating on the judgement seat of Christ. Ask what in your present life you would wish different in its light.
+
+### A PRAYER
+
+> Lord Jesus, You are the only foundation, and I want my life built on You and on nothing else.
+> Where I have built quickly and carelessly, show me. Where I have skipped repentance, bring me to it. Where my faith has rested on feelings instead of on Your Word, settle it on the rock.
+> Teach me the first things, so that I may go on to maturity without fear of collapse.
+> And let me live every day in the light of the resurrection and of the day when I shall stand before You. Amen.
+# The Divine Exchange
+
+> For he hath made him to be sin for us, who knew no sin; that we might be made the righteousness of God in him. 2 CORINTHIANS 5:21
+
+If Derek Prince’s teaching has a centre, it is here. Late in his ministry he summed up what he had come to believe about the cross in a short book called The Divine Exchange, and he regarded it as the key to everything else he taught. The idea is simple, and he stated it again and again in different forms. At the cross, God arranged an exchange. All the evil that was due to us came upon Jesus, so that all the good that was due to Jesus might be offered to us.
+
+## One sacrifice, many sides
+
+Prince built the teaching chiefly on the fifty-third chapter of Isaiah, which he read, as the New Testament does, as a portrait of the suffering Messiah. He noticed how many different words the prophet uses for what the Servant bore — griefs, sorrows, transgressions, iniquities — and how many different benefits flow from it — peace, healing, justification.
+
+> Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him stricken, smitten of God, and afflicted. But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed. ISAIAH 53:4–5
+
+From this and from the New Testament he drew up a list of exchanges. Jesus was punished that we might be forgiven. He was wounded that we might be healed. He was made sin that we might be made righteous. He died our death that we might share His life. He became poor that we might be rich. He bore our shame that we might share His glory. He endured rejection that we might be accepted. He was made a curse that we might receive the blessing. Each one he anchored in a text.
+
+> For ye know the grace of our Lord Jesus Christ, that, though he was rich, yet for your sakes he became poor, that ye through his poverty might be rich. 2 CORINTHIANS 8:9
+
+> Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree: That the blessing of Abraham might come on the Gentiles through Jesus Christ. GALATIANS 3:13–14
+
+The great strength of this teaching is that it keeps everything tied to the cross. Prince would not let his hearers look for blessing anywhere else. Forgiveness, healing, acceptance, freedom — none of it was to be sought as a separate spiritual achievement. All of it had been purchased in one act, at one place, by one Person. The believer’s part was not to earn any of it but to receive it by faith.
+
+## Grace, not merit
+
+Prince insisted that the exchange is wholly of grace. It rests on nothing we have done. We do not qualify for it by our goodness, and we are not disqualified by our failure. The only condition is to come in faith, acknowledging our need.
+
+> Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed. 1 PETER 2:24
+
+This has great pastoral force. Many Christians live under a vague sense that God tolerates them but does not quite welcome them, and that the good things of the gospel are reserved for the more spiritual. Prince cut through that. What Jesus received, He received for you. What He offers, He offers to you. The cross is not a reward for the worthy. It is a gift to the needy.
+
+## Where care is needed
+
+This is also the point at which Prince’s teaching needs the most careful handling, because two parts of it have been pressed further than Scripture allows.
+
+The first concerns healing. Prince taught that physical healing is included in the atonement, citing Isaiah 53 and 1 Peter 2:24. Many sound teachers have held something like this, and it rightly reminds us that the salvation Christ won reaches the whole person and will one day include the resurrection of the body. But it does not follow that every believer may claim immediate healing now, or that continuing illness shows a lack of faith. The New Testament records Paul leaving Trophimus sick at Miletum (2 Timothy 4:20), and Paul himself was refused the removal of his thorn. The full harvest of the exchange awaits the resurrection. To tell a sick believer otherwise is to add a burden the cross was meant to lift.
+
+The second concerns prosperity. Prince taught that Christ became poor that we might be rich, and he meant it to include God’s provision for our needs, with enough to give to others. He was not a prosperity preacher in the crude sense, and he lived modestly. But the verse has been used by others as a promise of wealth, and some of Prince’s hearers heard it that way. In context Paul is speaking of the grace of Christ and urging the Corinthians to give generously. The riches are first of all the riches of grace. Contentment, not accumulation, is the apostolic pattern (Philippians 4:11–12).
+
+With those qualifications, the core of the teaching is gloriously scriptural, and it is the core that matters.
+
+## The forsaken Son
+
+Prince would not let his hearers think of the exchange as a transaction without cost. It was paid for in agony. The one who knew no sin was made sin, and the Son who had known the Father’s face from eternity cried out that He had been forsaken.
+
+> And about the ninth hour Jesus cried with a loud voice, saying, Eli, Eli, lama sabachthani? that is to say, My God, my God, why hast thou forsaken me? MATTHEW 27:46
+
+That cry, he taught, is the measure of what was exchanged. Jesus was rejected by the Father that we might be accepted by Him. The distance between that cry and our welcome is the whole distance of the gospel.
+
+> Yet it pleased the LORD to bruise him; he hath put him to grief: when thou shalt make his soul an offering for sin, he shall see his seed. ISAIAH 53:10
+
+## Receiving the exchange
+
+How is it received? Prince’s answer was characteristically practical. Know what was done; believe it; and thank God for it specifically. He encouraged believers to learn the exchanges, to speak them back to God, and to take their stand upon them when doubt or accusation came. Not because words are magic, but because faith grows by hearing and confessing what God has said.
+
+> But we see Jesus, who was made a little lower than the angels for the suffering of death, crowned with glory and honour; that he by the grace of God should taste death for every man. HEBREWS 2:9
+
+The best of Prince is here: a man who had once weighed every argument and found none to live by, standing at last before the cross and finding everything there.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Isaiah 53 slowly, aloud if you can. Underline every word for what the Servant bore, and every word for what we receive.
+2. Write out the exchanges listed in this chapter. Beside each, write the verse. Keep the list where you will see it.
+3. Which of the exchanges do you find hardest to believe is for you? Bring that one to God in prayer every day this week.
+4. If you are ill, or love someone who is, ask God for healing boldly — and refuse the lie that continued illness means you have too little faith.
+5. Ask whether you have received the riches of grace as a reason to give. Make one generous gift this month in thanks for the cross.
+
+### A PRAYER
+
+> Lord Jesus, You took what was mine so that I might have what is Yours. I cannot take it in, and I do not deserve it.
+> You were wounded for my transgressions, made sin for me, made a curse for me, forsaken for me. I bow before a love that paid so much.
+> Teach me to receive what You bought, without pride and without fear. Where I am still waiting for what You have promised, give me patience, and keep my eyes on the day when all will be complete.
+> I thank You, and I will go on thanking You. Amen.
+# Faith Cometh by Hearing
+
+> So then faith cometh by hearing, and hearing by the word of God. ROMANS 10:17
+
+Derek Prince spoke about faith so often that it would be easy to mistake him for one more voice in the chorus of twentieth-century teachers who made faith into a technique. He was not quite that, and the difference is worth drawing out. His fullest treatment of the subject is Faith to Live By, and its burden is not how to get things from God but how to live in dependence on Him. Faith, for Prince, was not a force. It was a relationship with a God who has spoken.
+
+## Faith and hope are not the same
+
+One of Prince’s most characteristic distinctions was between faith and hope. Both are Christian virtues, both are necessary, and they are easily confused. Hope, he taught, looks to the future; it is an eager expectation of good things to come. Faith lives in the present; it takes hold of what God has said now. The writer to the Hebrews calls faith the substance of things hoped for — the present ground under the future expectation.
+
+> Now faith is the substance of things hoped for, the evidence of things not seen. HEBREWS 11:1
+
+Prince thought many believers lived on hope and called it faith. They expected that God would one day do something, and they waited, vaguely and anxiously, for it to happen. What they lacked was the settled confidence, here and now, that what God has said is true and that He is acting on it. That confidence, he insisted, is not produced by trying harder to believe. It is produced by hearing.
+
+## Where faith comes from
+
+Here the whole of Prince’s teaching on the Word comes into play. Faith does not rise from within the human heart. It comes from outside, as a response to God speaking. Paul says so plainly: faith comes by hearing, and hearing by the word of God. Prince made much of the fact that Paul does not say faith comes by having heard, as though a single past encounter were enough. Faith is sustained as it is received, by continuing to listen.
+
+He also taught that there is a difference between the Bible as a closed book and the Bible as God speaking to me. The words are the same, but there are times when a passage that has been read a hundred times becomes, by the Spirit, a living word addressed to the reader in his present situation. That, he said, is where faith is born. The practical consequence was simple: if you want faith, do not look inward for it. Open the Scriptures, and listen until God speaks.
+
+> Through faith we understand that the worlds were framed by the word of God, so that things which are seen were not made of things which do appear. HEBREWS 11:3
+
+## The faith of Abraham
+
+Prince found his model of faith, as Paul did, in Abraham. God gave Abraham a promise that contradicted every fact of his circumstances. He was old; Sarah was barren; the thing was impossible. Abraham did not deny the facts. He considered them, and then he chose to believe God rather than the facts.
+
+> He staggered not at the promise of God through unbelief; but was strong in faith, giving glory to God; And being fully persuaded that, what he had promised, he was able also to perform. ROMANS 4:20–21
+
+Prince taught that this is the pattern for every believer. Faith is not pretending that the problem is not there. It is not a denial of reality. It is a judgement that God’s word is more real than the problem. That distinction guards against one of the more foolish errors of popular faith teaching, which tells the sick they are not sick and the poor that they are not poor. Abraham knew his body was as good as dead. He believed anyway.
+
+## Faith that speaks
+
+Prince also taught that faith, when it is real, will speak. Paul quotes the psalmist: I believed, and therefore have I spoken. Prince encouraged believers to say aloud what God has said — to confess the promises, to declare the exchange of the cross, to answer the accuser with Scripture as Jesus did.
+
+> We having the same spirit of faith, according as it is written, I believed, and therefore have I spoken; we also believe, and therefore speak. 2 CORINTHIANS 4:13
+
+There is something true and healthy in this. Believers who never say what they believe tend to lose track of it. Speaking God’s Word aloud is an old Christian practice, and the Psalms are full of it.
+
+But this is also where the teaching needs a guard, because in the hands of others it became something quite different. The so-called positive confession movement taught, in effect, that words have creative power in themselves, and that the believer can bring into being whatever he declares with enough conviction. Prince’s own emphasis was on confessing what God has already said, not on manufacturing outcomes by speech. The difference is everything. The first submits to God’s will; the second tries to bend it. Scripture never gives any believer a lever by which to move God.
+
+## When faith is not answered as we hoped
+
+Any honest teaching on faith must face the question of unanswered prayer. Prince did not pretend it away. He taught that faith rests on God’s revealed will, and that we are not free to believe for anything we like simply because we want it. And the eleventh chapter of Hebrews, the great chapter on faith, ends not with triumphs but with men and women who were tortured, sawn asunder and left destitute, and of whom it is said that they obtained a good report through faith and did not receive the promise.
+
+> And these all, having obtained a good report through faith, received not the promise. HEBREWS 11:39
+
+The three young men in Babylon stated the balance perfectly. Our God is able to deliver us, and He will deliver us. But if not, we will still not bow.
+
+> If it be so, our God whom we serve is able to deliver us from the burning fiery furnace, and he will deliver us out of thine hand, O king. But if not, be it known unto thee, O king, that we will not serve thy gods. DANIEL 3:17–18
+
+That is faith at its purest: bold in expectation, and unshaken by disappointment, because it rests not on the outcome but on God.
+
+## Living by faith
+
+Prince’s book is called Faith to Live By, and the title is well chosen. For him faith was not chiefly the means of obtaining particular blessings. It was the way the whole Christian life is lived.
+
+> The just shall live by his faith. HABAKKUK 2:4
+
+The believer lives by faith as he lives by breathing — continuously, quietly, without making a performance of it. He trusts God for the day’s bread, for the next step, for grace in the next trial. He reads the Word and lets it strengthen his confidence. And when he cannot see, he goes on anyway, because the One who has spoken can be trusted.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask yourself whether what you call faith is really hope — a general expectation that things will work out. What would it look like to rest on a specific word of God?
+2. Choose one promise of Scripture that speaks to your present situation. Read it aloud each morning this week, and thank God for it.
+3. Read Romans 4 and note every fact Abraham faced honestly and every reason he had to believe God anyway.
+4. If you have been told, or have told others, that unanswered prayer means a lack of faith, bring that belief to Hebrews 11:36–39 and let Scripture correct it.
+5. Where are you waiting to see before you will trust? Take one step of obedience this week before the way is clear.
+
+### A PRAYER
+
+> Father, I confess that my faith has often rested on my feelings, on my circumstances, or on what I wanted. Teach me to rest it on You.
+> Speak to me through Your Word. I will listen until I hear, and I will believe what You say even when everything around me says otherwise.
+> Keep me from treating faith as a lever to move You. Let it be the trust of a child in a Father who knows best.
+> And if the answer I long for does not come, let me still say, You are able — and if not, I will still not bow. In Jesus’ name, Amen.
+# The Promise of the Father
+
+> And, being assembled together with them, commanded them that they should not depart from Jerusalem, but wait for the promise of the Father, which, saith he, ye have heard of me. For John truly baptized with water; but ye shall be baptized with the Holy Ghost not many days hence. ACTS 1:4–5
+
+Derek Prince was converted in a barrack room and, soon afterwards, received what he understood as the baptism in the Holy Spirit. He never doubted either experience, and he spent the rest of his life teaching both. In the years of the charismatic renewal, when Christians in many older denominations were seeking a fuller experience of the Spirit, Prince was one of the teachers they most trusted, precisely because he was not excitable. He came at the subject as he came at every subject: with a Bible, a notebook and a series of careful questions.
+
+## A promise for every believer
+
+Prince began where Jesus began. Before His ascension the Lord told His disciples not to leave Jerusalem but to wait for the promise of the Father. They had already believed; they had already seen the risen Christ; they had, in John’s account, already received the breath of the Spirit. Yet they were told to wait for something more — for power to be His witnesses.
+
+> But ye shall receive power, after that the Holy Ghost is come upon you: and ye shall be witnesses unto me both in Jerusalem, and in all Judæa, and in Samaria, and unto the uttermost part of the earth. ACTS 1:8
+
+Prince argued from this and from the rest of Acts that the baptism in the Spirit is an experience distinct from conversion, available to every believer, and intended to equip the church for its mission. He pointed to the Samaritans, who believed under Philip’s preaching and then received the Spirit when the apostles came and laid hands on them; and to the disciples at Ephesus, whom Paul asked whether they had received the Holy Ghost since they believed.
+
+> He said unto them, Have ye received the Holy Ghost since ye believed? And they said unto him, We have not so much as heard whether there be any Holy Ghost. ACTS 19:2
+
+He insisted that this promise was not confined to the apostles or to the first century. Peter, on the day of Pentecost, made it as wide as the call of God itself.
+
+> For the promise is unto you, and to your children, and to all that are afar off, even as many as the Lord our God shall call. ACTS 2:39
+
+## The sign that accompanies it
+
+Prince held, with the Pentecostal tradition from which his own experience came, that speaking in tongues is the normal sign that accompanies the baptism in the Spirit. He noticed that on the day of Pentecost, in the house of Cornelius and at Ephesus, the outpouring was marked by the disciples speaking with other tongues, and he concluded that this was the pattern the New Testament intends.
+
+> And they were all filled with the Holy Ghost, and began to speak with other tongues, as the Spirit gave them utterance. ACTS 2:4
+
+He valued tongues not as a badge of spiritual rank but as a gift for the believer’s own edification and prayer, and he taught that it should be used with order and restraint in public worship, as Paul directs.
+
+## Where careful readers differ
+
+Here, more than at most points, the reader must weigh what Prince taught against the full witness of Scripture, because sincere and godly Christians have read these passages differently.
+
+Many hold that every believer is baptised in the Spirit at conversion, citing Paul’s words that by one Spirit we are all baptised into one body. They read the events in Acts as unique moments in the widening of the gospel — to Jews, to Samaritans, to Gentiles — rather than as a pattern for every believer. They also note that Paul asks, expecting the answer no, whether all speak with tongues.
+
+> For by one Spirit are we all baptized into one body, whether we be Jews or Gentiles, whether we be bond or free; and have been all made to drink into one Spirit. 1 CORINTHIANS 12:13
+
+> Have all the gifts of healing? do all speak with tongues? do all interpret? 1 CORINTHIANS 12:30
+
+This book does not attempt to settle the debate. But three things may be said. First, whatever one’s view of the doctrine, the New Testament plainly calls believers to be filled with the Spirit, continually and not once only (Ephesians 5:18). Second, no teaching on the Spirit should be allowed to divide the church into first-class and second-class Christians; the Spirit dwells in every believer, or he is none of Christ’s (Romans 8:9). Third, the test of the Spirit’s work is not first a gift but a character.
+
+> But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, Meekness, temperance: against such there is no law. GALATIANS 5:22–23
+
+Prince would not have disagreed with any of that. He knew that gifts without love are noise.
+
+## Power for a purpose
+
+What is most valuable in Prince’s teaching on the Spirit is its purpose. He did not present the baptism in the Spirit as a spiritual luxury or as an end in itself. He presented it as power to witness, to serve, to pray and to overcome. The disciples who waited in the upper room did not stay there. They went out into the streets and preached, and three thousand were added to the church in a day.
+
+> And when they had prayed, the place was shaken where they were assembled together; and they were all filled with the Holy Ghost, and they spake the word of God with boldness. ACTS 4:31
+
+Notice that the same disciples who were filled at Pentecost were filled again in Acts 4, when they prayed under threat. Whatever we believe about a first experience, the need is continual. The church does not live on an old filling.
+
+## Asking and receiving
+
+Finally, Prince taught that the Spirit is received as every gift of God is received: by asking in faith. He loved the Lord’s words about the Father who gives good gifts.
+
+> If ye then, being evil, know how to give good gifts unto your children: how much more shall your heavenly Father give the Holy Spirit to them that ask him? LUKE 11:13
+
+That is a promise on which every Christian, whatever his tradition, may stand. Ask. The Father is not reluctant. And the Spirit He gives will not draw attention to Himself, nor to the believer who receives Him, but to Christ.
+
+> He shall glorify me: for he shall receive of mine, and shall shew it unto you. JOHN 16:14
+
+### FOR REFLECTION AND ACTION
+
+1. Read the accounts of the Spirit’s coming in Acts 2, 8, 10 and 19. Write down what they have in common and where they differ.
+2. Whatever your tradition, ask yourself honestly whether you are living in the power of the Spirit or in your own strength. Where is the evidence?
+3. Ask the Father, simply and specifically, for the fullness of His Spirit, trusting Luke 11:13. Ask again tomorrow.
+4. If you have tended to look down on believers whose experience of the Spirit differs from yours, confess it and seek out one of them for fellowship.
+5. Examine your life by Galatians 5:22–23 rather than by any gift. Which fruit is most lacking? Pray for it by name.
+
+### A PRAYER
+
+> Father, You promised Your Spirit to all who ask, and I ask. I do not want to live the Christian life in my own strength any longer.
+> Fill me, and fill me again. Give me power to witness, boldness to speak, and love to make every gift sweet.
+> Keep me from pride in any experience, and from despising any brother whose path has differed from mine.
+> Let Your Spirit glorify Jesus in me, and let the fruit of His presence be seen in my home and in my work. Amen.
+# Shaping History Through Prayer and Fasting
+
+> In the first year of his reign I Daniel understood by books the number of the years, whereof the word of the LORD came to Jeremiah the prophet, that he would accomplish seventy years in the desolations of Jerusalem. And I set my face unto the Lord God, to seek by prayer and supplications, with fasting, and sackcloth, and ashes. DANIEL 9:2–3
+
+If one book of Derek Prince’s deserves to be remembered above the rest, it is probably Shaping History Through Prayer and Fasting, first published in 1973. Its claim is bold. Ordinary believers — not only statesmen, generals and prophets — have been given authority by God to influence the course of nations through prayer. When they humble themselves, fast, and pray on the basis of God’s promises, history moves. Prince did not offer this as a theory. He had watched it, he believed, in his own lifetime, and it was the steady conviction of his old age.
+
+## A kingdom of priests
+
+Prince grounded the teaching in the calling of the church. Peter calls believers a royal priesthood; John says Christ has made us kings and priests unto God. A priest stands between God and men, bringing the needs of the people before Him. A king exercises rule. Prince took both words seriously. The church, he argued, has a priestly and a governing office in the world, and it exercises that office chiefly in prayer.
+
+> But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people; that ye should shew forth the praises of him who hath called you out of darkness into his marvellous light. 1 PETER 2:9
+
+From this he drew a practical priority. When Paul instructs Timothy about the worship of the church, the first thing he urges is prayer — and prayer specifically for rulers.
+
+> I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men; For kings, and for all that are in authority; that we may lead a quiet and peaceable life in all godliness and honesty. 1 TIMOTHY 2:1–2
+
+Prince noticed the words first of all. Before evangelism, before teaching, before any programme, the church is to pray for those who govern. He thought many congregations had inverted this order. They complained about their governments and prayed for them rarely, if at all. He believed that the condition of a nation was, in some measure, the responsibility of the Christians in it, and that they would give account for whether they had prayed.
+
+## Daniel, the pattern
+
+The figure who stood behind the whole book was Daniel. As an old man in exile, Daniel read in the prophet Jeremiah that the captivity of Jerusalem would last seventy years. He did not conclude that, since God had promised it, he need do nothing. He concluded the opposite. Because God had promised it, he set his face to pray it into being, with fasting, sackcloth and confession of his people’s sin.
+
+Prince saw in this the relationship between God’s promises and our prayers. God’s purposes are sure, but He has chosen to accomplish them through the prayers of His people. The promise is not a reason for passivity; it is the ground of intercession. Daniel prayed because he had read.
+
+> Then said he unto me, Fear not, Daniel: for from the first day that thou didst set thine heart to understand, and to chasten thyself before thy God, thy words were heard, and I am come for thy words. DANIEL 10:12
+
+## Fasting
+
+Prince gave fasting a place in Christian life that most Protestants in his day had quietly abandoned. He noted that Jesus said when ye fast, not if; that He said His disciples would fast after He was taken from them; and that the early church fasted when seeking guidance and when sending out workers.
+
+> As they ministered to the Lord, and fasted, the Holy Ghost said, Separate me Barnabas and Saul for the work whereunto I have called them. And when they had fasted and prayed, and laid their hands on them, they sent them away. ACTS 13:2–3
+
+He taught that fasting is a way of humbling oneself before God — not a hunger strike to force His hand, nor a means of earning His attention, but a deliberate setting aside of appetite so that the soul may be quieted and the spirit may seek Him. He gave a good deal of practical counsel on how to fast safely and wisely, and those who knew him said the teaching came out of his own practice.
+
+> Moreover when ye fast, be not, as the hypocrites, of a sad countenance: for they disfigure their faces, that they may appear unto men to fast. MATTHEW 6:16
+
+He also stressed, following Isaiah 58, that fasting without justice is empty. The fast God chooses is one that looses bands of wickedness and lets the oppressed go free.
+
+## Reading history by faith
+
+Prince illustrated his thesis from events he had lived near: the desert campaign in North Africa, in which he had served; the founding of Israel, which he had witnessed; the end of the Stalin era; the coming of independence in Kenya. He read each of these, in faith, as something the prayers of God’s people had helped to shape.
+
+Here a caution is proper. It is one thing to believe that prayer changes history, which Scripture plainly teaches. It is another to know which particular events were changed by which particular prayers. Prince offered his readings as testimonies, and they may be received as such. But the believer should hold them humbly. God is sovereign over nations; He removes kings and sets up kings. We are invited to pray, and assured that He hears. We are not always told what our prayers accomplished, and we need not be. Christians of equal faith have sometimes prayed with equal fervour for opposite outcomes, and a prayer movement that becomes the servant of one political party has forgotten whom it serves.
+
+> The king’s heart is in the hand of the LORD, as the rivers of water: he turneth it whithersoever he will. PROVERBS 21:1
+
+## Standing in the gap
+
+With that caution, the heart of this teaching is a summons every church needs. God looks for intercessors.
+
+> And I sought for a man among them, that should make up the hedge, and stand in the gap before me for the land, that I should not destroy it: but I found none. EZEKIEL 22:30
+
+Prince believed that God is still looking, and that the most consequential thing an ordinary believer can do for his nation may be done on his knees, in secret, with an empty stomach and an open Bible. He was influential in the founding of Intercessors for America, whose work drew on this book, and many prayer movements since have owed something to it. Whatever else is said about him, he called a generation to pray, and many answered.
+
+> If my people, which are called by my name, shall humble themselves, and pray, and seek my face, and turn from their wicked ways; then will I hear from heaven, and will forgive their sin, and will heal their land. 2 CHRONICLES 7:14
+
+### FOR REFLECTION AND ACTION
+
+1. When did you last pray by name for the leaders of your nation and your town? Begin this week, and include those you did not vote for.
+2. Read Daniel 9 and notice how much of Daniel’s prayer is confession — not of other people’s sins but of the sins of his own people, himself included. Pray for your nation in the same way.
+3. If you have never fasted, plan a simple fast of one meal this week, given to prayer. If you have health concerns, take medical advice first.
+4. Find one promise of God concerning His purposes in the world, and pray it back to Him daily for a month.
+5. Examine whether your prayers for your country are shaped more by Scripture or by the news and your political loyalties.
+6. Consider joining or starting a small group that meets to pray for your nation.
+
+### A PRAYER
+
+> Lord God, You change the times and the seasons, You remove kings and set up kings. I confess that I have complained about my nation more than I have prayed for it.
+> Make me one who stands in the gap. Teach me to humble myself, to fast without display, and to pray Your promises back to You as Daniel did.
+> Keep my prayers free from the spirit of party. Let me seek Your kingdom and not my own preferences.
+> Hear the prayers of Your people, forgive our sin, and heal our land. For the glory of Jesus Christ, Amen.
+# Blessing or Curse
+
+> I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live. DEUTERONOMY 30:19
+
+Of all Derek Prince’s books, Blessing or Curse: You Can Choose has probably done the most good and caused the most unease. It has been read by great numbers of people who felt that something invisible was holding them back, and many testify that it helped them. It has also been criticised, by careful believers, for opening a door to fear and superstition. Both reactions are understandable. This chapter tries to set out what Prince taught, what is solidly scriptural in it, and where the reader should go more slowly than he did.
+
+## Two words the Bible takes seriously
+
+Prince began with a simple observation. Blessing and curse are everywhere in Scripture. God blesses Adam and Eve; He curses the serpent and the ground. He promises to bless Abraham and all the families of the earth through him. The law of Moses ends with long lists of blessings for obedience and curses for disobedience, set before the people as a choice between life and death.
+
+> And all these blessings shall come on thee, and overtake thee, if thou shalt hearken unto the voice of the LORD thy God. DEUTERONOMY 28:2
+
+Modern Western Christians, Prince argued, have largely stopped thinking in these categories. We talk of luck, of genes, of circumstances. But the Bible speaks of blessing and curse as real, spiritual realities that affect people and families. He wanted his readers to recover that seriousness — and above all to recover the good news that in Christ the curse has been dealt with and the blessing opened to all who believe.
+
+## The curse borne at the cross
+
+That is the centre of the book, and it connects directly to the divine exchange of chapter five. Christ was made a curse for us, that the blessing of Abraham might come on us.
+
+> Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree. GALATIANS 3:13
+
+Here Prince stands on the firmest ground. Whatever curse lay upon us because of our sin — and Paul says that all who rely on the works of the law are under one — has been borne by Jesus on the tree. The believer is not under condemnation. He has been blessed with every spiritual blessing in the heavenly places in Christ.
+
+> Blessed be the God and Father of our Lord Jesus Christ, who hath blessed us with all spiritual blessings in heavenly places in Christ. EPHESIANS 1:3
+
+## Where curses come from
+
+Prince went further. He taught that curses may come upon people from several sources: from God, as the consequence of disobedience; from involvement in the occult and idolatry; from words spoken against a person by others; from careless or bitter words people speak over themselves; and from the sins of previous generations. He offered a list of recurring troubles in a person’s life or family — patterns of breakdown, chronic illness, barrenness, poverty, accidents and the like — which he suggested might indicate that a curse was at work. And he taught a pathway of release: acknowledging Christ’s work on the cross, confessing any known sin, forgiving others, renouncing contact with the occult, and asking God specifically to release one from any curse.
+
+Much of that pathway is simply good Christian practice. Confession, forgiveness and the renunciation of the occult are plainly commanded, and many people have been helped by doing them seriously for the first time.
+
+## Where to go more slowly
+
+But three parts of the teaching need careful weighing.
+
+The first is the teaching on generational curses. Prince drew on the second commandment, where God visits the iniquity of the fathers on the children to the third and fourth generation of them that hate Him. But Scripture itself seems to guard against the way this verse can be misused. In the time of the exile the people had a proverb blaming their troubles on their fathers, and God through Ezekiel forbade them to use it.
+
+> The soul that sinneth, it shall die. The son shall not bear the iniquity of the father, neither shall the father bear the iniquity of the son. EZEKIEL 18:20
+
+Families do pass on patterns — of behaviour, of wounds, of sin — and it is wise to recognise them. But the believer is a new creation in Christ. He is not condemned for his ancestors’ sins, and he should not live in fear that some unknown forebear has left him under a spiritual sentence.
+
+> Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new. 2 CORINTHIANS 5:17
+
+The second is the list of symptoms. Chronic illness, financial trouble, marital breakdown and accidents have many causes: the fallenness of the world, our own choices, the choices of others, and the mysterious providence of God. When the disciples assumed that a man born blind must be suffering for someone’s sin, Jesus corrected them.
+
+> Neither hath this man sinned, nor his parents: but that the works of God should be made manifest in him. JOHN 9:3
+
+To read every trouble as a sign of a curse is to lay a heavy and often false burden on suffering people. It can also turn Christians away from ordinary means — medicine, counsel, wise financial help — that God gives.
+
+The third is fear. Some who have followed this teaching have become preoccupied with curses, anxious about words spoken against them, and suspicious of their own families. That is the opposite of the gospel. The proverb says a curse without cause shall not come, and the believer in Christ lives under the hand of a God who keeps him.
+
+> As the bird by wandering, as the swallow by flying, so the curse causeless shall not come. PROVERBS 26:2
+
+## Choosing blessing
+
+The title of Prince’s book makes the right emphasis: You Can Choose. The last word of the law is not the curse but the call to choose life. And the New Testament turns the whole matter outward. We are not only to receive blessing; we are to give it — even to those who curse us.
+
+> Not rendering evil for evil, or railing for railing: but contrariwise blessing; knowing that ye are thereunto called, that ye should inherit a blessing. 1 PETER 3:9
+
+Prince taught that words matter, and he was right. Parents who speak over their children, husbands and wives who speak over one another, believers who speak about their churches — all are either blessing or cursing. The simplest application of this chapter may be the most searching: stop cursing, and start blessing.
+
+> The LORD bless thee, and keep thee: The LORD make his face shine upon thee, and be gracious unto thee: The LORD lift up his countenance upon thee, and give thee peace. NUMBERS 6:24–26
+
+### FOR REFLECTION AND ACTION
+
+1. Read Galatians 3:13–14 until you can say it from memory. Thank God specifically that Christ bore the curse for you.
+2. If you have ever been involved in occult practices, confess and renounce them before God, and destroy any objects connected with them.
+3. Listen to your own speech this week — about yourself, your family, your church. Note where you curse rather than bless, and change one habit.
+4. If you have been living in fear of curses, read Ezekiel 18 and Romans 8:1 slowly, and let them settle you.
+5. Speak a blessing, in words, over someone in your family this week. If you are a parent, begin to do this regularly.
+6. If a pattern of trouble runs through your family, seek wise help — pastoral, medical or practical — as well as praying about it.
+
+### A PRAYER
+
+> Lord Jesus, You were made a curse for me, and I thank You. Whatever stood against me, You have taken on Yourself.
+> I renounce every dealing with darkness, known and unknown. I forgive those who have spoken against me. I choose life, and I choose blessing.
+> Deliver me from fear. Let me not see curses where You have not sent them, nor look for enemies where there are only sorrows to be carried.
+> Teach my tongue to bless — my family, my church, even my enemies. Make me a channel of the blessing of Abraham. Amen.
+# Warfare and Deliverance
+
+> For this purpose the Son of God was manifested, that he might destroy the works of the devil. 1 JOHN 3:8
+
+This is the chapter in which Derek Prince most needs to be read with care, and it is also a chapter that cannot honestly be left out. Prince was one of the best-known teachers of deliverance ministry in the twentieth century. He taught it for decades, practised it, and set out his mature view in They Shall Expel Demons. Many Christians will disagree with much of it. Some will have been hurt by practices that claimed his authority. The aim here is to describe what he taught fairly, to draw out what is plainly scriptural, and to set strong and fair cautions around the rest.
+
+## What the Gospels show
+
+Prince began with the ministry of Jesus, and here no Christian can quarrel with him. The Gospels present the casting out of evil spirits not as an occasional oddity but as a regular part of the Lord’s work. Mark sums up His Galilean ministry in two phrases: He preached, and He cast out devils. Peter, preaching to Cornelius, sums up the whole ministry of Jesus in the same terms.
+
+> How God anointed Jesus of Nazareth with the Holy Ghost and with power: who went about doing good, and healing all that were oppressed of the devil; for God was with him. ACTS 10:38
+
+Jesus treated this as a sign of the kingdom’s arrival, and He gave the same authority to His disciples.
+
+> But if I cast out devils by the Spirit of God, then the kingdom of God is come unto you. MATTHEW 12:28
+
+Prince argued that Western Christianity, shaped by a rationalist worldview, had largely quietly edited this part of the Gospels out. We read the accounts and translate them into categories we are more comfortable with. He believed the result was a church that did not recognise, and so could not resist, a real enemy. On that basic point — that the powers of darkness are real and that Christ has defeated them — he stands with the whole of historic Christianity.
+
+> And having spoiled principalities and powers, he made a shew of them openly, triumphing over them in it. COLOSSIANS 2:15
+
+## Where he went further
+
+Prince went further than many, however, in two respects.
+
+First, he taught that Christians themselves can be troubled by evil spirits and may need deliverance. He was careful with his terms. He did not say that a believer can be possessed, in the sense of owned. He preferred a word that described being under demonic influence in some area of life, and he argued that the Greek of the New Testament supported such a distinction. Many serious believers reject the idea entirely, holding that a Christian indwelt by the Holy Spirit cannot also be inhabited by an unclean spirit; they point to texts such as the promise that the wicked one toucheth him not.
+
+> We know that whosoever is born of God sinneth not; but he that is begotten of God keepeth himself, and that wicked one toucheth him not. 1 JOHN 5:18
+
+This is not a small disagreement, and it is sincere on both sides. This book does not settle it. But the reader should know that Prince’s view is contested by a thoughtful part of the church, and should not receive it as though it were settled doctrine.
+
+Second, he described a range of symptoms and patterns — compulsions, persistent fears, certain kinds of torment — that he thought might indicate demonic influence, and practical methods for ministering deliverance. Here the need for caution is greatest.
+
+## Strong and fair cautions
+
+The history of deliverance ministry, including ministry done in Prince’s name, contains real harm. It is right to say so plainly.
+
+First, the danger of seeing demons everywhere. When every temptation, mood and weakness is attributed to an evil spirit, the ordinary means of Christian growth are neglected. Paul’s letters give long instructions about sin, anger, lust and bitterness, and in almost every case the remedy he prescribes is not exorcism but repentance, putting off the old man, and walking in the Spirit. The flesh is real too, and a Christian who blames a demon for what his own heart has chosen will never grow.
+
+Second, the danger to the sick and the troubled. Depression, anxiety disorders, psychosis, epilepsy and many other conditions have physical and psychological dimensions, and Christians who have treated them only as spiritual problems have done great damage — sometimes by persuading people to abandon medicine, sometimes by piling guilt on those who were not delivered. Wise ministry works alongside doctors and counsellors, not against them.
+
+Third, the danger of spectacle and of power. Deliverance sessions can become dramatic, prolonged, and centred on the minister. Vulnerable people can be manipulated. Anyone who offers such ministry must be accountable, humble, gentle and restrained.
+
+> Notwithstanding in this rejoice not, that the spirits are subject unto you; but rather rejoice, because your names are written in heaven. LUKE 10:20
+
+It is worth noticing that Jesus Himself steered His disciples’ joy away from their authority over spirits and towards their salvation. That is the right order.
+
+## The armour of God
+
+What remains when these cautions are applied? A great deal, and all of it is plainly scriptural. The believer is in a real conflict. He is to be sober and vigilant. He is to resist the devil, standing firm in faith, and the devil will flee.
+
+> Submit yourselves therefore to God. Resist the devil, and he will flee from you. JAMES 4:7
+
+Notice the order: submit first, then resist. Most of the Christian’s warfare is fought not in dramatic confrontation but in ordinary obedience, putting on the whole armour of God — truth, righteousness, the gospel of peace, faith, salvation, and the sword of the Spirit, which is the Word of God.
+
+> Finally, my brethren, be strong in the Lord, and in the power of his might. Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. EPHESIANS 6:10–11
+
+And above all the believer is to remember who has already won.
+
+> Ye are of God, little children, and have overcome them: because greater is he that is in you, than he that is in the world. 1 JOHN 4:4
+
+Prince at his best would have put the emphasis exactly there. Christ is the victor. The believer stands in His victory. Deliverance, where it is truly needed, is simply the application of what He finished on the cross — and the man who was once bound ends up sitting at the feet of Jesus, clothed, and in his right mind.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Ephesians 6:10–18 slowly. Take each piece of the armour in turn and ask what it would mean to put it on today.
+2. Is there an area of your life where you have blamed the devil for what is really your own choice? Confess it as sin and take practical steps of obedience.
+3. If you have been involved in the occult in any form, renounce it before God and seek pastoral help if you need it.
+4. If you are struggling with a persistent mental or emotional difficulty, seek wise help — medical, pastoral and prayerful together — and refuse the idea that you must choose between them.
+5. If you are in any kind of ministry to the troubled, ask whether you are accountable to others, and whether your practice is gentle, restrained and centred on Christ.
+
+### A PRAYER
+
+> Lord Jesus, You came to destroy the works of the devil, and You triumphed over every power on the cross. I rest in Your victory.
+> Teach me to submit to You and to resist the enemy — not with noise, but with truth, righteousness, faith and Your Word.
+> Keep me from fear of darkness and from fascination with it. Keep me from blaming spirits for the sins of my own heart.
+> Where anyone near me is truly bound, give Your church wisdom, gentleness and power to set them free, and let them end at Your feet, clothed and in their right mind. Amen.
+# Pray for the Peace of Jerusalem
+
+> Pray for the peace of Jerusalem: they shall prosper that love thee. PSALM 122:6
+
+Derek Prince was discharged from the army in Jerusalem, married in Jerusalem, raised his first family in Jerusalem, and died in Jerusalem. The city and its people were not one theme among many in his teaching. They were a burden he carried for nearly sixty years. He urged Christians everywhere to accept a responsibility to pray for Israel and for the Jewish people, and he believed that the wider church had largely forgotten a debt it owed. This chapter sets out what he taught, the ground on which almost all Christians can join him, and the places where equally faithful believers part company.
+
+## The debt of the Gentiles
+
+Prince began with a truth no Christian can deny. The gospel came to the nations through Israel. The patriarchs, the prophets, the Scriptures, the covenants and the Messiah Himself are all Jewish. Jesus said to a Samaritan woman that salvation is of the Jews.
+
+> Who are Israelites; to whom pertaineth the adoption, and the glory, and the covenants, and the giving of the law, and the service of God, and the promises. ROMANS 9:4
+
+Paul, writing to Gentile believers in Rome, warns them against arrogance towards the Jewish people. The Gentiles have been grafted into an olive tree that was not originally theirs. They are supported by the root, not the root by them.
+
+> Boast not against the branches. But if thou boast, thou bearest not the root, but the root thee. ROMANS 11:18
+
+Prince pressed this with great seriousness, and in the light of the history of Christian anti-Semitism he was right to. For centuries churches taught contempt for the Jews, and the fruit of that teaching was persecution and, in the century of Prince’s own life, genocide. A Christian who has read Romans 9 to 11 cannot hate or despise the Jewish people. He must love them, and pray for them, as Paul did.
+
+> Brethren, my heart’s desire and prayer to God for Israel is, that they might be saved. ROMANS 10:1
+
+## God has not cast away His people
+
+Prince also taught, with Paul, that God’s calling of Israel has not been revoked. The apostle asks directly whether God has cast away His people, and answers with the strongest negative he knows.
+
+> I say then, Hath God cast away his people? God forbid. ROMANS 11:1
+
+> As concerning the gospel, they are enemies for your sakes: but as touching the election, they are beloved for the fathers’ sakes. For the gifts and calling of God are without repentance. ROMANS 11:28–29
+
+Here too, a great many Christians of many traditions would agree. Whatever the future holds, Paul expects a turning of the Jewish people to their Messiah, and he calls the Gentile church to live in the light of that hope with humility and love.
+
+## The land and the State
+
+Prince went further, and here Christians divide. He believed that the return of Jewish people to the land of Israel in the twentieth century, and the founding of the State of Israel in 1948, were a fulfilment of Old Testament prophecy — of promises such as Ezekiel’s that God would gather His people from all countries and bring them into their own land. He had watched those events at close quarters, and he read them as the hand of God.
+
+> For I will take you from among the heathen, and gather you out of all countries, and will bring you into your own land. EZEKIEL 36:24
+
+He therefore encouraged Christians to support Israel, to stand with the Jewish people, and to understand themselves as having a part in God’s purposes for the nation. This view — often called Christian Zionism — is held by very many evangelical and charismatic believers, and Prince was one of its most thoughtful teachers.
+
+It is fair to set beside it the view of many other Christians, equally committed to Scripture. They hold that the promises of land to Israel find their fulfilment in Christ and in the new creation; that in Him all believers, Jew and Gentile, are Abraham’s seed and heirs of the promise; and that the modern State of Israel, like every other state, is to be judged by the standards of justice God applies to all nations, without special exemption.
+
+> And if ye be Christ’s, then are ye Abraham’s seed, and heirs according to the promise. GALATIANS 3:29
+
+They also point out, with real pain, that uncritical support for any government can blind Christians to the suffering of others in the same land — including Arab and Palestinian Christians, whose communities are among the oldest churches in the world.
+
+This book does not settle the question. It asks only that readers on each side hold their view with humility and charity, knowing that believers they respect hold the other.
+
+## Common ground
+
+What can every Christian take from Prince here? A great deal. The command to pray for the peace of Jerusalem stands in Scripture. The debt of the Gentiles to Israel is real. Love for the Jewish people and grief over their long history of suffering at Christian hands are Christian duties. And the desire that Israel should come to know her Messiah was Paul’s own.
+
+Prince’s own family offers a quiet picture of what that love can look like. The household Lydia had gathered in Jerusalem, into which he married, included girls of more than one background. Love for Israel does not require hatred of her neighbours. Jesus wept over the city, and He weeps over all who suffer in it.
+
+> And when he was come near, he beheld the city, and wept over it, Saying, If thou hadst known, even thou, at least in this thy day, the things which belong unto thy peace! LUKE 19:41–42
+
+The peace of Jerusalem is finally the peace that Christ gives — to Jew and Gentile alike, who are made one in Him.
+
+> For he is our peace, who hath made both one, and hath broken down the middle wall of partition between us. EPHESIANS 2:14
+
+### FOR REFLECTION AND ACTION
+
+1. Read Romans 9 to 11 through at one sitting. Note what Paul feels, what he warns against, and what he hopes for.
+2. Examine your heart for any trace of contempt towards the Jewish people. Confess it, and learn something this month of the history of Christian anti-Semitism.
+3. Pray this week for the peace of Jerusalem and for the salvation of Jewish people, as Paul did.
+4. Pray also for the Arab and Palestinian Christians of the Holy Land by name, and learn something of their churches.
+5. If you hold strong views on Israel and prophecy, read a careful presentation of the opposite view by a believer who loves Scripture. Ask what you can learn from it.
+
+### A PRAYER
+
+> God of Abraham, Isaac and Jacob, I thank You that through Israel You gave the Scriptures and the Saviour to the world. I owe a debt I cannot repay.
+> Forgive the church for every contempt it has shown to the Jewish people. Root out of my own heart any pride against the natural branches.
+> I pray for the peace of Jerusalem, and for all who live in the land, Jew and Arab, believer and unbeliever. Let the Prince of Peace be known there.
+> Give me love without partisanship, conviction without contempt, and a heart that weeps where Jesus wept. Amen.
+# Accepted in the Beloved
+
+> To the praise of the glory of his grace, wherein he hath made us accepted in the beloved. EPHESIANS 1:6
+
+Derek Prince spent much of his ministry among people in pain, and he came to believe that one of the deepest and most widespread wounds in the human heart is rejection. His short book God’s Remedy for Rejection grew out of years of counselling and prayer with men and women who, whatever their outward success, carried a settled conviction that they were unwanted. It is one of his gentlest books, and one of the most widely helpful.
+
+## The wound beneath the wounds
+
+Prince observed that rejection often begins early — in a child who was unwanted, in a home where love was withheld, in a family where one parent left, in a school where a child was mocked or excluded. It can come later too: through divorce, betrayal, or the slow discovery that one does not belong. He noticed that it frequently lay underneath other struggles that seemed to have nothing to do with it — anger, perfectionism, an inability to receive love, a craving for approval, a tendency to reject others before they could reject oneself.
+
+He also noticed that rejected people often find it hardest of all to believe that God accepts them. They can believe He exists. They can believe He forgives. But they cannot believe He wants them. They transfer to God the face of the father who was absent or cold.
+
+> When my father and my mother forsake me, then the LORD will take me up. PSALM 27:10
+
+## The rejected Saviour
+
+Prince’s remedy was, characteristically, the cross. He saw in the sufferings of Jesus not only the bearing of sin but the bearing of rejection. The Lord was rejected by His own people, deserted by His friends, and at the last cut off from the Father’s presence.
+
+> He is despised and rejected of men; a man of sorrows, and acquainted with grief: and we hid as it were our faces from him; he was despised, and we esteemed him not. ISAIAH 53:3
+
+> And at the ninth hour Jesus cried with a loud voice, saying, Eloi, Eloi, lama sabachthani? which is, being interpreted, My God, my God, why hast thou forsaken me? MARK 15:34
+
+Here the divine exchange of chapter five reaches its tenderest point. Jesus endured the rejection of the Father, so that we might be received as sons and daughters. He was cast out, so that we might be brought in. Paul’s phrase in Ephesians — accepted in the beloved — was for Prince the key. We are not accepted because we have finally become acceptable. We are accepted in Christ, the Beloved Son, and we share in the welcome the Father gives to Him.
+
+> Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God. 1 JOHN 3:1
+
+## Steps towards healing
+
+Prince did not present healing from rejection as a single moment, though he believed it could begin in one. He described a series of steps, and they are among the most practical things he wrote.
+
+First, recognise the problem. Many people have never named what has shaped them. To see that one has been living out of rejection is itself a beginning.
+
+Second, forgive those who rejected you. Prince was uncompromising here. Forgiveness is not a feeling but a decision; it is not saying that what was done did not matter, but releasing the person to God. He believed that unforgiveness keeps the wound open and poisons the one who holds it.
+
+> Let all bitterness, and wrath, and anger, and clamour, and evil speaking, be put away from you, with all malice: And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you. EPHESIANS 4:31–32
+
+Third, lay down resentment and rebellion, including resentment against God for the circumstances of one’s life.
+
+Fourth, believe and receive God’s acceptance — not as a feeling to be waited for, but as a fact declared in His Word, to be thanked for until the feelings follow.
+
+Fifth, accept yourself, as God has accepted you. Prince did not mean that a believer should approve of his sin. He meant that he should stop rejecting the person God has made and redeemed.
+
+Finally, move on into fellowship. The rejected person tends to withdraw. But God heals in the family of His people, and part of the cure is learning to receive and give love among them.
+
+> Wherefore receive ye one another, as Christ also received us to the glory of God. ROMANS 15:7
+
+## A word of caution
+
+Prince sometimes connected the deeper forms of rejection with the deliverance ministry discussed in chapter ten, speaking of spirits that might attach themselves to a wounded person. Readers who have weighed that chapter will apply the same cautions here. A wound is not a demon, and a hurting person should not be made to feel that he is inhabited by something evil because he was unloved as a child. Most of the healing Prince describes needs nothing more than the gospel, forgiveness, time, patient friendship, and — where it is needed — skilled help.
+
+It is also worth saying that self-acceptance is not the heart of the gospel. The heart of the gospel is that God accepts sinners in Christ. Self-acceptance, rightly understood, is simply agreeing with God about that. Prince would have said the same.
+
+## The Father who runs
+
+The great picture of this teaching is the father in the parable, who sees his son a great way off and runs.
+
+> And he arose, and came to his father. But when he was yet a great way off, his father saw him, and had compassion, and ran, and fell on his neck, and kissed him. LUKE 15:20
+
+The son had rehearsed a speech about being made a hired servant. He never finished it. The father interrupted him with a robe, a ring and a feast. That is the welcome waiting for every rejected soul who comes home.
+
+> All that the Father giveth me shall come to me; and him that cometh to me I will in no wise cast out. JOHN 6:37
+
+### FOR REFLECTION AND ACTION
+
+1. Ask God quietly to show you whether rejection has shaped your life, and where it began. Write down what comes to mind.
+2. Name one person whose rejection has wounded you. Choose, before God, to forgive them. Say so aloud in prayer, and repeat it whenever the old bitterness returns.
+3. Read Ephesians 1:3–6 each morning this week, and thank God for each thing He says He has done for you in Christ.
+4. Consider whether you have been rejecting others to protect yourself. Take one step of openness towards someone this week.
+5. If your wound is deep, seek a wise, mature Christian or a trained counsellor to walk with you. Healing in fellowship is part of God’s design.
+
+### A PRAYER
+
+> Father, I have believed You exist and I have believed You forgive, but I have found it hard to believe You want me. Forgive my unbelief, and heal my heart.
+> Thank You that Jesus was rejected so that I might be accepted, and that in Him I am received as a child of Your house.
+> I choose to forgive those who rejected me. I lay down my resentment against them, and against You. I accept the person You have made and redeemed.
+> Run to meet me, Father, as You promised. And make me one who runs to meet others. Amen.
+# Husbands and Fathers
+
+> For this cause I bow my knees unto the Father of our Lord Jesus Christ, Of whom the whole family in heaven and earth is named. EPHESIANS 3:14–15
+
+Derek Prince became a husband and a father in one day. When he married Lydia Christensen in Jerusalem he took on not only a wife considerably older than himself but a household of adopted daughters who had known no father at all. It was a strange apprenticeship for a Cambridge philosopher, and it gave his later teaching on the family an unusual seriousness. His book Husbands and Fathers is addressed to men, and its concern is simple: that men should take up the responsibility God has given them in their homes, and that they should do it in the likeness of the Father from whom all fatherhood is named.
+
+## Fatherhood begins in God
+
+Prince began not with the human family but with God. Paul says that every family in heaven and earth takes its name from the Father. Fatherhood, then, is not a human arrangement projected onto God. It is something in God first, which human fathers are meant to reflect.
+
+> Like as a father pitieth his children, so the LORD pitieth them that fear him. PSALM 103:13
+
+This cuts two ways. It lifts the calling of every father: he is meant to show his children something of what God is like. It also exposes the failure of many fathers, whose children grow up with a picture of God shaped by absence, harshness or indifference. Prince, who spent years ministering to the rejected, knew how much damage a failed father can do. He also knew that God is a father of the fatherless, and that He can make up what earthly fathers withheld.
+
+> A father of the fatherless, and a judge of the widows, is God in his holy habitation. God setteth the solitary in families. PSALM 68:5–6
+
+## Prophet, priest and king
+
+The best-known part of Prince’s teaching on the family is his description of a man’s threefold role in his home, drawn from the three great offices of Christ. As a priest, the father stands before God on behalf of his family: he prays for them, intercedes for them, and brings them to God. Prince liked the example of Job, who rose early to offer sacrifices for his children in case they had sinned.
+
+> And it was so, when the days of their feasting were gone about, that Job sent and sanctified them, and rose up early in the morning, and offered burnt offerings according to the number of them all. JOB 1:5
+
+As a prophet, the father represents God to his family: he teaches them the Scriptures, speaks truth, and shows by his own life what obedience looks like.
+
+> And these words, which I command thee this day, shall be in thine heart: And thou shalt teach them diligently unto thy children. DEUTERONOMY 6:6–7
+
+As a king, the father governs his home — not as a tyrant, but as one responsible for its order, protection and direction.
+
+There is much that is good in this. Many Christian homes lack exactly what Prince describes: a man who prays for his wife and children by name, who opens the Bible with them, and who takes responsibility rather than leaving it all to his wife.
+
+## Headship as service
+
+Yet this teaching, too, needs to be handled with care, and Prince’s own history shows why. The Shepherding Movement laid heavy emphasis on authority and submission, including within the home, and in many places the result was not servant leadership but control. Wives were silenced; children were governed by fear; men used the language of headship to excuse selfishness. Prince repudiated the movement, and the lesson carries over. Any teaching about a husband’s authority that does not begin and end with Christ’s self-giving love has gone wrong.
+
+> Husbands, love your wives, even as Christ also loved the church, and gave himself for it. EPHESIANS 5:25
+
+Paul’s instruction to husbands follows directly on his call for all believers to submit to one another in the fear of God. And Jesus explicitly contrasts authority among His people with the domineering authority of the world.
+
+> But Jesus called them unto him, and said, Ye know that the princes of the Gentiles exercise dominion over them, and they that are great exercise authority upon them. But it shall not be so among you: but whosoever will be great among you, let him be your minister. MATTHEW 20:25–26
+
+Peter adds that a husband who does not honour his wife as a joint heir of the grace of life will find his prayers hindered (1 Peter 3:7). Christian readers differ over what headship means in practice. They should not differ on this: the husband’s authority, whatever it is, is the authority to lay down his life.
+
+## Fathers who do not provoke
+
+Paul gives fathers one negative instruction, and it is surprisingly specific. They are not to provoke their children.
+
+> And, ye fathers, provoke not your children to wrath: but bring them up in the nurture and admonition of the Lord. EPHESIANS 6:4
+
+Colossians adds the reason: lest they be discouraged. The father is to nurture, not to crush. His discipline is to be consistent, fair and warm. His children should know that they are loved before they know that they are corrected. Prince, the reserved Englishman who found himself raising a houseful of girls, knew that tenderness does not come naturally to every man. He also knew it could be learned, and that it must be.
+
+## Turning hearts
+
+The Old Testament ends with a promise that God will turn the hearts of the fathers to the children, and the hearts of the children to their fathers. Prince saw the breakdown of fatherhood as one of the deepest wounds of modern society, and the restoration of fathers as part of God’s healing.
+
+> And he shall turn the heart of the fathers to the children, and the heart of the children to their fathers. MALACHI 4:6
+
+That promise is a hope for every family — including those where the father has failed, is absent, or has died. Where earthly fathers fall short, the heavenly Father does not.
+
+### FOR REFLECTION AND ACTION
+
+1. If you are a husband or father, pray for your wife and each of your children by name every day this week. Ask them what they would like you to pray for.
+2. Open the Bible with your family, however briefly, at least once this week.
+3. Ask your wife honestly whether she experiences your leadership as service or as control. Listen without defending yourself.
+4. Think of one way you may have provoked or discouraged your children. Apologise to them specifically.
+5. If your own father failed you, bring that wound to your heavenly Father, and forgive your earthly one.
+6. Look around your church for a child or young person without a father at home. Ask how you might show them something of God’s fatherhood.
+
+### A PRAYER
+
+> Father, from You every family is named. Thank You that You are the Father my heart has always needed.
+> Where I have failed those You have placed in my care — by absence, by harshness, by neglect — forgive me, and give me grace to begin again.
+> Teach me to pray for my family, to teach them Your Word, and to lead them as Jesus led: by laying down my life.
+> Turn the hearts of fathers to their children in my home, in my church, and in my land. And be a Father to the fatherless. Amen.
+# The Return of the King
+
+> Which also said, Ye men of Galilee, why stand ye gazing up into heaven? this same Jesus, which is taken up from you into heaven, shall so come in like manner as ye have seen him go into heaven. ACTS 1:11
+
+Derek Prince lived most of his life with his eyes on the horizon. He believed, with the whole of historic Christianity, that Jesus Christ will return in person, in glory, to raise the dead, judge the world and establish His kingdom. He believed, more particularly, that the events of his own century — above all the return of the Jewish people to their land — showed that the return was drawing near. He taught on the subject often, and he treated it not as a puzzle for the curious but as a summons to readiness and to work. This chapter sets out that summons, and the humility the subject requires.
+
+## The blessed hope
+
+Prince began, as always, with what Scripture plainly says. The angels at the ascension promised that the same Jesus who went into heaven would come again in like manner. Paul describes the Lord descending with a shout, the dead in Christ rising, and the living caught up to meet Him.
+
+> For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first: Then we which are alive and remain shall be caught up together with them in the clouds, to meet the Lord in the air: and so shall we ever be with the Lord. 1 THESSALONIANS 4:16–17
+
+This is not a peripheral doctrine. The resurrection of the dead and eternal judgement, as chapter four noted, belong among the foundations of the faith. Prince believed that a church which has stopped expecting its Lord has lost something essential — not only a doctrine but a posture. Paul calls it the blessed hope.
+
+> Looking for that blessed hope, and the glorious appearing of the great God and our Saviour Jesus Christ. TITUS 2:13
+
+## Hope that purifies
+
+Prince was not interested in the return of Christ as a subject for speculation. He was interested in what it does to those who wait for it. John says plainly that every one who has this hope purifies himself.
+
+> Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is. And every man that hath this hope in him purifieth himself, even as he is pure. 1 JOHN 3:2–3
+
+A believer who truly expects to see Christ will not be careless about his life. He will not hold on to hidden sin, nurse old grudges, or live for possessions that will not survive the fire. Peter draws the same conclusion.
+
+> Seeing then that all these things shall be dissolved, what manner of persons ought ye to be in all holy conversation and godliness, Looking for and hasting unto the coming of the day of God. 2 PETER 3:11–12
+
+## Work to be finished
+
+Prince laid particular emphasis on one verse, and it gave his eschatology a practical edge. Jesus said that the gospel of the kingdom must be preached in all the world for a witness to all nations, and then the end would come.
+
+> And this gospel of the kingdom shall be preached in all the world for a witness unto all nations; and then shall the end come. MATTHEW 24:14
+
+Prince took this to mean that the church has a part to play in the timing of the Lord’s return. Its task is not to sit and wait, but to finish the work. That is why his own long ministry in old age was so busy: teaching, broadcasting, translating, travelling. He believed that every language into which the gospel was carried brought the day nearer. Whatever one makes of the precise theology, the practical conclusion is sound. The servant whom the master finds working when he returns is the one who is blessed.
+
+> Blessed is that servant, whom his lord when he cometh shall find so doing. LUKE 12:43
+
+## Israel and the signs
+
+Prince also believed that the regathering of the Jewish people to their land was one of the clearest signs that the return of Christ was near. Chapter eleven set out that view and the different view held by many other Christians. It is enough here to say that believers on both sides share the hope of Christ’s coming; they differ on how to read the signs.
+
+## Humility about times and seasons
+
+And that is where caution is needed, because no subject in Christian history has produced more embarrassment than prophetic speculation. Date-setters have come and gone in every generation. Confident identifications of the Antichrist, of the beast, of the final war, have been made and quietly forgotten. Some believers have sold their property; others have abandoned the ordinary duties of life; many have been disillusioned. Jesus Himself closed the door on this.
+
+> But of that day and hour knoweth no man, no, not the angels of heaven, but my Father only. MATTHEW 24:36
+
+When the disciples asked Him whether He would now restore the kingdom to Israel, He answered that it was not for them to know the times or the seasons, and turned them instead to their task of witness. Prince, for all his interest in prophecy, generally kept to this discipline; he did not set dates. His readers should do the same. Paul warned the Thessalonians not to be shaken in mind by reports that the day had already come. Excitement about prophecy is not the same as readiness for Christ.
+
+## Even so, come
+
+The end of the story is not a chart of events but a Person, and a world made new.
+
+> And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away. REVELATION 21:4
+
+Prince died in Jerusalem, in his sleep, still expecting the King. That is how every believer should live and die: not anxious, not speculating, but ready, and working, and longing.
+
+> He which testifieth these things saith, Surely I come quickly. Amen. Even so, come, Lord Jesus. REVELATION 22:20
+
+### FOR REFLECTION AND ACTION
+
+1. Ask yourself honestly whether you expect to see Jesus. How would your week look different if you did?
+2. Read 1 John 3:1–3 and identify one thing in your life you would not want to be doing when He comes. Deal with it now.
+3. Give time, prayer or money this month to the work of carrying the gospel to a people who have not yet heard it.
+4. If you have been caught up in prophetic speculation, set it aside for a season and give the time to prayer and service instead.
+5. Pray the last prayer of the Bible — Even so, come, Lord Jesus — every day this week, and notice what it does to your desires.
+
+### A PRAYER
+
+> Lord Jesus, You are coming again. I believe it, but I confess that I have often lived as though You were not.
+> Purify me by this hope. Take out of my life whatever I would be ashamed of in Your presence, and make me ready.
+> Give me a share in the work of carrying Your gospel to every nation, and keep me faithful at my post until You come.
+> Guard me from idle speculation and from fear. Fill me instead with longing. Even so, come, Lord Jesus. Amen.
+# Conclusion
+
+> The entrance of thy words giveth light; it giveth understanding unto the simple. PSALM 119:130
+
+We have covered a good deal of ground in twelve short chapters, from the foundations of the faith to the return of Christ, and some of it has been contested ground. It would be easy to close this book with the impression that Derek Prince taught a great many separate things. In truth he taught one thing from many angles for sixty years. The one thing is this: God has spoken, His Word can be trusted, and the believer who takes it seriously and acts on it will find it true.
+
+## One thread, many chapters
+
+Look back and the thread is plain. The six foundations are what the Word calls elementary. The divine exchange is what the Word says happened at the cross. Faith comes by hearing the Word. The baptism in the Spirit is the promise of the Father recorded in the Word. Prayer and fasting are God’s people praying His Word back to Him. Blessing and curse, warfare and deliverance, Israel and the last days — all of these were, for Prince, attempts to take seriously parts of the Word the church had preferred to ignore. Even his teaching on rejection and fatherhood was an application of what Scripture says about the Father’s heart.
+
+That is his great gift to the church: a stubborn, logical, lifelong insistence that the Bible means what it says and that ordinary Christians can read it for themselves.
+
+## The test he gave us
+
+It is also the test by which he must be weighed, and this book has tried to weigh him by it. Where Prince built plainly on Scripture — on the authority of the Word, the foundations of the faith, the sufficiency of the cross, the call to pray and fast, the promise of the Spirit, the Father’s welcome to the rejected, the blessed hope — he is a sure and faithful guide. Where he pressed particular conclusions further than Scripture clearly goes — on curses passing down family lines, on the demonisation of believers, on the reading of current events as fulfilled prophecy — the reader should go more slowly, test more carefully, and hold his own conclusions with more humility. Prince asked for no less.
+
+> These were more noble than those in Thessalonica, in that they received the word with all readiness of mind, and searched the scriptures daily, whether those things were so. ACTS 17:11
+
+## A last word about the man
+
+No part of Prince’s story teaches more than the one he would most have liked to forget. He helped to lead a movement that did real harm, and when he saw it he left, first of the five, and said publicly that it had been wrong. He explained the error from Scripture: what had begun in the Spirit had been continued in the flesh.
+
+> Are ye so foolish? having begun in the Spirit, are ye now made perfect by the flesh? GALATIANS 3:3
+
+That is a hard thing for any leader to do, and a rare one. It does not undo the harm. But it shows what his doctrine of the Word looked like in practice. He had taught for years that Scripture stands above every teacher. When it stood above him, he submitted. There may be no better example in his life for the reader to take away.
+
+It also carries a warning. If a teacher as able and as sincere as Derek Prince could go so badly wrong for a time, so can any of us. Gifts, learning and good intentions are no protection. Only a humble submission to the Word, and to one another in the fear of God, will keep us.
+
+## What to do with it
+
+So the plainest counsel this book can give is his own. Open the Bible. Read it through. Read it with a pen and a notebook, looking for what it says rather than what you expect it to say. Pray what you read. Act on what you understand. And check everything — including this book, and including him.
+
+Go back to the chapter that most unsettled you. Not the one you found most interesting, but the one that touched something you would rather not look at. Take its application points, and do them, one at a time, over the coming months. Then take the next.
+
+> As ye have therefore received Christ Jesus the Lord, so walk ye in him: Rooted and built up in him, and stablished in the faith, as ye have been taught, abounding therein with thanksgiving. COLOSSIANS 2:6–7
+
+A philosopher once sat in a barrack room with a book he had meant to master, and found that it had mastered him. The same book is open before you now. It has not lost its power.
+
+### FOR REFLECTION AND ACTION
+
+1. Of all the chapters in this book, which one unsettled you most? Go back to it this week and do one of its application points.
+2. Write down in a sentence or two what you now believe about the authority of the Bible in your life, and what you intend to do about it.
+3. Choose one of the cautions raised in this book and study the relevant passages for yourself, until you have a settled and humble view.
+4. Ask whether there is anything you have taught, led or encouraged that you now believe was wrong. Consider, before God, what repentance would look like.
+5. Commit to a plan of reading the whole Bible, and ask someone to hold you to it.
+
+### A PRAYER
+
+> Lord God, You have spoken, and Your Word gives light. Thank You for every teacher who has pointed me to it, and above all for the One of whom it speaks.
+> Keep me from building on any man, however gifted. Let me build on Christ alone, and test every teaching by Your Word.
+> Where I have begun in the Spirit and gone on in the flesh, show me, and give me the humility to turn back.
+> Let Your Word dwell in me richly, and let me walk in it until the day I see You face to face. Amen.
+# A Reader’s Guide to Derek Prince
+
+> Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. 2 TIMOTHY 2:15
+
+Derek Prince wrote dozens of books, and a great deal of his teaching also exists as recorded messages and radio broadcasts, many of them later edited into print. His writings remain under copyright and are published by the ministry he founded and by other publishers; none of them is in the Ochorus library. What follows is a short guide for further reading, arranged for usefulness rather than chronology. Readers are warmly encouraged to obtain these works from their rightful publishers.
+
+## Begin here
+
+The Divine Exchange. A short book, and the best single doorway into his thought. It sets out the exchange at the cross described in chapter five of this volume, and it is the book to give a new believer or a discouraged one.
+
+Faith to Live By. His fullest treatment of faith, and the source of much of chapter six. Clear, orderly and practical, with the distinction between faith and hope that runs through all his teaching.
+
+## For systematic study
+
+The Foundation Series, on Hebrews 6:1–2, first issued as a set of booklets and later gathered into a single volume, published under titles including Foundations for Christian Living. The work that made his name in the charismatic renewal, and the material behind chapters three and four here. Read it with an open Bible; its method is as valuable as its conclusions. Readers from traditions that baptise infants, or that do not hold a distinct baptism in the Spirit, will want to weigh those sections with care.
+
+## On prayer
+
+Shaping History Through Prayer and Fasting, first published in 1973. Probably his most important book, and the one most likely to change the way a reader prays. Take its summons wholeheartedly; hold its readings of particular historical events more loosely.
+
+## On healing the heart and the home
+
+God’s Remedy for Rejection. Short, gentle and widely helpful. The source of chapter twelve.
+
+Husbands and Fathers. Addressed to men, on the father as priest, prophet and king in his home. Read it alongside Ephesians 5:21–33 and Matthew 20:25–28, and with chapter thirteen of this volume in mind.
+
+## Approach with care
+
+Blessing or Curse: You Can Choose. Its central message — that Christ bore the curse at the cross — is gloriously true. Its teaching on generational curses and its lists of symptoms should be weighed against Ezekiel 18 and John 9:1–3, as chapter nine suggests. Do not read it if it makes you afraid.
+
+They Shall Expel Demons. His mature statement on deliverance ministry, and a standard text of that movement. Many sincere Christians reject its central claim that believers can need deliverance from evil spirits. Read it, if at all, with the cautions of chapter ten, in fellowship with wise and accountable believers, and never as a substitute for medical or pastoral care.
+
+His writings on Israel and prophecy should be read alongside a careful presentation of the other view held by many Bible-believing Christians, as chapter eleven suggests.
+
+## About Derek Prince
+
+Appointment in Jerusalem, the story of Lydia Prince’s call to the Holy Land and of the children she took in, told with Derek Prince. It is the best account of the Jerusalem years and of the family he married into.
+
+Stephen Mansfield, Derek Prince: A Biography, is a full-length account of his life by an admirer. For the Shepherding Movement, S. David Moore, The Shepherding Movement: Controversy and Charismatic Ecclesiology, is a scholarly history that treats Prince’s part in it, and his withdrawal, with care. Reading more than one account is wise; no single one is disinterested. The Ochorus author page carries a shorter biography.
+
+## Three counsels for reading him
+
+Read him with the Bible open. That is what he asked of everyone who heard him, and his whole method invites it. Check every verse.
+
+Read him for the burden rather than the scheme. Where he presses a framework beyond what Scripture plainly states, take the pastoral concern and leave the scaffolding.
+
+And read him in fellowship. His hardest lesson was that no teacher should stand alone and unaccountable. Neither should any reader. Talk about what you read with wise believers, and let the church help you weigh it.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21

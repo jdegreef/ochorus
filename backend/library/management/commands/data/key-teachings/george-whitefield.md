@@ -1,0 +1,1148 @@
+---
+description: A concise, faithful guide to the heart of George Whitefield’s preaching — the new birth, the method of grace, Christ our righteousness, the indwelling Spirit, the almost Christian, the open field and the free offer of Christ to all — and to the single conviction beneath it: that religion is a work of God in the heart. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Whitefield’s own public-domain sermons, which readers are warmly encouraged to go to directly.
+about: |
+  This is not a book by George Whitefield. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his preaching into fourteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his writings and the best books about him.
+
+  Whitefield preached one thing in a thousand places: that true religion is not an outward form but an inward change, wrought by the Spirit of God, which joins a sinner to Christ and clothes him in Christ’s righteousness. You must be born again. From that single conviction came everything else — his warnings against the almost Christian and the unconverted minister, his walk into the open fields, his offer of Christ to colliers and slaves and gentry alike, his counsel on prayer, Scripture and family worship, and his friendship with a man he could not agree with. This volume follows that thread through his own sermons, and it says plainly where he must not be followed, above all in his campaign for slavery in Georgia and his ownership of enslaved people at Bethesda.
+
+  Whitefield’s own writings are in the public domain and freely available, and every chapter here names the sermons it draws on so the reader can go to the source; his Selected Sermons, fifty-nine in all, are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the voice that once reached twenty thousand people in a field.
+---
+
+# Introduction
+
+> Marvel not that I said unto thee, Ye must be born again. JOHN 3:7
+
+George Whitefield was the most famous preacher of the eighteenth century, and perhaps the most heard man of his age. He preached in the parish churches of England until they closed their doors to him, and then in the fields, the market squares, the courthouse steps and the colliers’ commons of two continents. He crossed the Atlantic thirteen times. Crowds of many thousands stood in the open air to hear him, in Bristol and London, in Glasgow and at Cambuslang, in Philadelphia and Boston, and the scattered stirrings of revival in the American colonies fused behind him into what is now called the Great Awakening. When he died, in 1770, there were few people in the English-speaking world who had not heard his name.
+
+And yet he left no great treatise, no system of theology, no shelf of books to rival those of Jonathan Edwards or John Wesley. What he left was sermons, and a memory of the voice that preached them.
+
+## One conviction beneath all the others
+
+The reason he mattered is that he had grasped one thing and would not let it go. The thing is this: true religion is a work of God in the heart.
+
+Whitefield lived in a church that was, on the whole, content with outward things. A man was a Christian if he had been baptised, attended his parish church, received the sacrament at Easter, paid his debts and did no open harm. Whitefield had tried that religion, and more than that religion, and it had nearly killed him. When at last he found peace, it came not from anything he had done but from something that had been done in him. He never got over it. From that day he preached one message in a thousand places: that the outward forms, good as they are, cannot save; that a sinner must be changed within by the Spirit of God, joined to Christ by faith and clothed in Christ’s righteousness; that, in the words Christ spoke to a teacher of Israel, you must be born again.
+
+In his sermon On Regeneration he calls the new birth “the very hinge on which the salvation of each of us turns.” Everything else in this book hangs on that hinge. The method of grace is the way God brings a sinner to it. Christ our righteousness is its ground. The indwelling Spirit is its life. The almost Christian is the man who has everything but it. The unconverted minister is the preacher who does not know it. The open field is where Whitefield took it when the churches would not have it. Prayer, Scripture and family worship are the means by which the life it begins is kept and fed.
+
+> Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new. 2 CORINTHIANS 5:17
+
+That is the thread running through every chapter, and it is the question to keep asking as you read: has God done a work in my heart, or have I only the outward form?
+
+## Why he still matters
+
+Whitefield is worth reading for at least three reasons.
+
+The first is that he would not let religion be a matter of reputation. He preached to respectable congregations as if they were in danger, because he believed many of them were, and he preached to colliers and servants and slaves as if heaven were open to them, because he believed it was.
+
+The second is his joy. For all the thunder in his sermons, the man himself was glad. He preached Christ as a friend, a husband, a physician, a rest for the weary, and he could hardly speak of Him without tears. It is hard to read him for long and remain cold.
+
+The third is his catholic spirit. He was a convinced Calvinist and a lifelong clergyman of the Church of England, and he preached in the meeting-houses of Presbyterians, Baptists and Congregationalists, embraced Quakers and Moravians, and loved a man, John Wesley, with whom he disagreed publicly and to the end. He cared much more whether a person loved Christ than which party he belonged to.
+
+## How this book is arranged
+
+After a chapter on his life, fourteen short chapters set out his teaching. They begin with the new birth, the method of grace, Christ our righteousness and the indwelling of the Spirit; move through the almost Christian, the unconverted ministry, the open field and the offer of Christ to all; turn to the ordinary means of the Christian life — walking with God, searching the Scriptures, intercession and family religion; and end with two chapters on his life among others: his friendship with Wesley, and the orphan house at Bethesda and its shadow.
+
+Each chapter ends with application points and a prayer. Whitefield would have wanted that. Every one of his sermons ends in what the Puritans called the application, the moment when the preacher stops explaining and turns to his hearers and says, Now, what of you? Read a chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
+
+## Where he must be read with care
+
+This is not a book of hero-worship, and it is better to say plainly at the start where Whitefield must be weighed rather than simply received.
+
+First, and gravest: Whitefield campaigned for the introduction of slavery into Georgia, where its founders had forbidden it, and he owned enslaved men, women and children to support his orphan house at Bethesda. He did this knowing the trade to be wrong, and he held them until his death. There is no softening this, and chapter sixteen does not try. It is the darkest thing in his life, and it must be named as such.
+
+Second, in his early years he censured other ministers harshly and in print, judging whole bodies of clergy to be unconverted on slender acquaintance. There was truth in his alarm, but there was pride and rashness in the way he voiced it, and he later admitted as much. Chapter eight treats this.
+
+Third, he was a man of the theatre by gift and by temperament. His preaching was dramatic, his emotions near the surface, and his hearers were sometimes carried away by the performance as much as by the message. He knew the danger himself. But readers today should not mistake intensity for holiness, nor tears for the new birth.
+
+Why read him, then? Because on the central matter he was right. For the kingdom of God is not in word, but in power (1 Corinthians 4:20). The counsel of this book is the counsel of Scripture: Prove all things; hold fast that which is good (1 Thessalonians 5:21). Where Whitefield is faithful — on the new birth, on the righteousness of Christ, on the free offer of the gospel — receive it gladly and act on it. Where he failed, let his failure warn you, for the same heart is in us all.
+
+### FOR REFLECTION AND ACTION
+
+1. Before going further, ask honestly whether your religion is chiefly outward — attendance, habits, reputation — or whether God has done a work in your heart.
+2. Choose a pace for this book, a chapter a day or a chapter a week, and decide now when you will read it.
+3. Read one of Whitefield’s own sermons alongside this book, perhaps The Method of Grace or On Regeneration, and notice how he ends it.
+4. Resolve to test everything in these pages against Scripture, keeping what is true and setting aside what is not.
+5. Ask God to use this book to send you not to Whitefield but to Christ.
+
+### A PRAYER
+
+> Lord Jesus, You told a teacher of Israel that he must be born again, and You say the same to me. Do not let me rest in the outward form of religion.
+> Teach me what Your servant George Whitefield learned: that true religion is Your work in the heart, and that Your righteousness alone can clothe a sinner.
+> Keep me from admiring a preacher and missing his Master. Where he was faithful, let me receive it; where he sinned, let me be warned and humbled.
+> And let every page I read bring me nearer to You. Amen.
+
+# From the Bell Inn to the Open Field
+
+> He raiseth up the poor out of the dust, and lifteth up the beggar from the dunghill, to set them among princes. 1 SAMUEL 2:8
+
+A boy at an inn. George Whitefield was born in December 1714 at the Bell Inn in Gloucester, where his parents kept the house. His father died when he was two. His mother struggled to keep the business going, and the boy’s schooling was broken off while he was still in his teens so that he could help in the inn. He later described himself in those years as a common drawer, carrying drink and cleaning rooms. He was quick, restless, fond of the stage, and by his own account no stranger to the sins of a lively boy. But there were already signs of something else: he read his Bible at odd hours, and he tried his hand at writing sermons.
+
+A servitor at Oxford. In 1732, through the help of friends, he went up to Pembroke College, Oxford, as a servitor — the lowest rank of undergraduate, who paid for his education by waiting on wealthier students. At Oxford he met Charles Wesley, and through him the small, mocked society of earnest young men that the university called the Holy Club, led by Charles’s brother John. They fasted, prayed by rule, received the sacrament weekly and visited the prisons. Whitefield threw himself into all of it and more.
+
+The long road to peace. Charles Wesley lent him a book by the Scottish divine Henry Scougal, The Life of God in the Soul of Man, and it undid him. Scougal taught that true religion is not a round of outward duties but the life of God within, union with Him in the soul. Whitefield saw at once that he did not have it, and set out to get it the only way he knew — by effort. He fasted until he was weak, prayed for hours in the cold, gave away what little he had and denied himself every comfort. His health broke. And then, in 1735, at the end of his own strength, he cast himself on Christ, and peace came. He always spoke of it afterwards as the day his burden fell away, and every sermon he preached for the rest of his life was, in a sense, an attempt to hand that day to someone else.
+
+Ordination and fame. In June 1736 Bishop Martin Benson ordained him deacon in Gloucester Cathedral. He was twenty-one. His first sermon, in the church where he had been baptised, was on the necessity of religious society, and it caused a stir. Within a year he was the most talked-about young preacher in England. Crowds filled the London churches to hear him, and his sermon on the new birth was printed and passed from hand to hand. He sailed for the new colony of Georgia in 1738, stayed some months, and returned to be ordained priest in January 1739.
+
+Into the fields. By then many pulpits were closed to him. His insistence that baptised churchgoers must be born again, and his pointed words about clergy who did not preach it, had made him unwelcome. In February 1739, near Bristol, he went out to Kingswood, where the colliers lived — men whom the churches had largely left alone — and preached to them in the open air. Within weeks the crowds numbered thousands. He urged John Wesley to come and take up the work in Bristol, and Wesley, after some hesitation, did. The Evangelical Revival had found its method.
+
+The Great Awakening. In 1739 and 1740 Whitefield travelled through the American colonies from Georgia to New England, preaching almost daily. In Philadelphia the printer Benjamin Franklin heard him and became his friend and publisher. Franklin, who never shared his faith, recorded in his Autobiography how he once went to hear him resolved to give nothing to the orphan house, and came away having emptied his pocket into the collection. In New England Whitefield preached in Boston and visited Jonathan Edwards at Northampton. Everywhere he went, the revivals that had begun here and there were joined together. He was, perhaps, the first person known by name to the whole of colonial America.
+
+Bethesda. In March 1740 he began building an orphan house near Savannah, which he called Bethesda, the house of mercy. For thirty years he raised money for it on both sides of the ocean. Its story, which includes the gravest failure of his life, belongs to chapter sixteen.
+
+Friends and division. His friendship with John Wesley suffered a serious breach in 1740 and 1741 over predestination; Wesley preached against it and Whitefield, a convinced Calvinist, answered him. For a time the Methodist movement divided. But the two men were reconciled in heart, preached for one another again, and remained friends to the end. Whitefield never founded a denomination of his own. In England he preached at his Tabernacle in Moorfields and later at a chapel in Tottenham Court Road, and he served for many years as chaplain to Selina, Countess of Huntingdon, whose drawing room became another kind of pulpit.
+
+Marriage and loss. In 1741 he married Elizabeth James, a widow, in Wales. Their only child, a son, died in infancy in 1744. It was not, by most accounts, an easy marriage, for Whitefield was almost never at home, and he did not pretend to be anything but a travelling evangelist. His wife died in 1768.
+
+Scotland and the long years. He visited Scotland many times, preaching in Glasgow, Edinburgh and at the great communion gatherings at Cambuslang in 1742. He crossed and recrossed the Atlantic, seven journeys to America in all. His friend Henry Venn said that for many years he preached forty hours a week and more. He grew heavy and asthmatic, and friends begged him to rest. He would not.
+
+The last crossing. In August 1769 he preached a farewell sermon in London before sailing to America for the last time; in it he remarked that it was his thirteenth crossing of the ocean. A year later, on 29 September 1770, weary and ill, he preached in the open air at Exeter, in New Hampshire, for nearly two hours. That evening he rode on to Newburyport, in Massachusetts, and early on the morning of 30 September he died there, in the parsonage of the Presbyterian church. He was fifty-five. At his own wish he was buried beneath its pulpit.
+
+A funeral sermon from a friend. When the news reached London, John Wesley preached a memorial sermon for him in the Tottenham Court Road chapel, as Whitefield had long before asked that he should. The two men had differed on election for thirty years. They had never ceased to love one another.
+
+A life to be read whole. Whitefield’s life is not a simple story of triumph. He was vain at times and rash in judgement. He was at home everywhere except at home. And he took part, with open eyes, in the great evil of his century. But the servitor from the Bell Inn was also a man whom God used to bring countless people to Christ, who never stopped wondering that grace had found him, and who spent himself to the last breath in telling others that it could find them too.
+
+> For ye see your calling, brethren, how that not many wise men after the flesh, not many mighty, not many noble, are called. 1 CORINTHIANS 1:26
+
+### FOR REFLECTION AND ACTION
+
+1. Whitefield tried for years to earn peace with God by effort before he received it as a gift. Ask whether you are still trying to earn what God freely gives.
+2. Consider the people in your own town whom the churches have largely left alone, as the colliers of Kingswood were left. What would it mean to go to them?
+3. Whitefield served God with tireless energy and neglected his own home. Ask honestly whether your zeal in one place is costing faithfulness in another.
+4. Think of a Christian you have differed with sharply. Is there a word of reconciliation you could speak this week?
+5. Read Whitefield’s farewell sermon, The Good Shepherd, in the Ochorus library, and notice what he chose to say when he thought he might not return.
+
+### A PRAYER
+
+> Lord God, You raise up the poor from the dust and set them among princes. You found a boy at an inn and made him a preacher of Your gospel.
+> Thank You that Your grace is not earned by fasting or effort, but given freely to those who come to the end of themselves.
+> Give me a heart like his for those whom no one else will reach, and keep me from the blindness that marred his life.
+> Let me spend my days, as he spent his, in making Christ known, until You call me home. Amen.
+
+# Ye Must Be Born Again
+
+> Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God. JOHN 3:3
+
+If you had heard George Whitefield preach only once, the chances are that you heard him preach on the new birth. It was the subject of his first printed sermon to cause a sensation, and it was still his subject thirty years later in the fields of New England. Other preachers had taught it; the Church of England’s own prayer book assumed it. What was new was that Whitefield preached it as though it were urgent — as though the man in the pew, baptised, confirmed and respectable, might not have it, and would be lost without it.
+
+## Not a name but a nature
+
+His fullest statement of the doctrine is the sermon On Regeneration, preached on the words of Paul: If any man be in Christ, he is a new creature. He begins by observing that a man may be said to be in Christ in two ways. The first is by outward profession: every baptised member of the church is, in that sense, in Christ. But this cannot be all the apostle meant, says Whitefield, for then every baptised person would be a new creature, and plainly they are not. Many, as he puts it, are born of water who were never born of the Spirit.
+
+> For he is not a Jew, which is one outwardly; neither is that circumcision, which is outward in the flesh: but he is a Jew, which is one inwardly; and circumcision is that of the heart, in the spirit, and not in the letter; whose praise is not of men, but of God. ROMANS 2:28–29
+
+The second and deeper sense is to be in Christ by a living faith, joined to Him as a branch to the vine, and so to receive His life. That, says Whitefield, is what regeneration is: not a physical change, not a second entry into the womb, as Nicodemus foolishly supposed, but a change of nature wrought by the Spirit of God, so that a person who was carnal becomes spiritual, and one who loved sin comes to love God.
+
+It is worth noticing what he is not saying. He is not despising baptism, or the sacrament, or the church’s prayers. He loved them all, and he says in the same sermon that they are means of grace. But he insists that they are only means. They are part of religion, not the whole of it. The Pharisee fasted twice a week and was not justified.
+
+## Why it must be so
+
+Whitefield gives several reasons why no one can be saved without the new birth, and they are still worth pondering.
+
+The first is simply that God has said so. The psalmist prayed for a clean heart and a right spirit. The prophets called for a new heart. Christ told Nicodemus that a man must be born again. The apostles speak of putting off the old man and putting on the new.
+
+> A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh. EZEKIEL 36:26
+
+The second is the holiness of God and the corruption of man. A holy God and an unholy creature cannot dwell together in peace. Something must change, and it will not be God.
+
+The third, and to many the most striking, is the nature of heaven itself. Heaven is not a place of physical pleasures but the enjoyment of God. A person whose heart has not been changed would be miserable there, as a man who hates music would be miserable at a concert. Whitefield points out that Christ did not say that unless a man be born again he shall not enter the kingdom, as though by a decree, but that he cannot — it is in the nature of things.
+
+> Follow peace with all men, and holiness, without which no man shall see the Lord. HEBREWS 12:14
+
+The fourth is that Christ’s work would be incomplete without it. Christ came not only to take away the guilt of sin but its power. A pardon alone, says Whitefield, would do as little for us as a pardon would do for a condemned criminal who is dying of a mortal disease. We need to be healed as well as forgiven.
+
+## Morality is not enough
+
+The most searching part of the sermon is its application, where Whitefield turns to three kinds of people who think they are Christians and may not be.
+
+There are those who rest in outward duties: church, prayers, the sacrament, fasting. There are those who rest in moral virtues: honest in business, temperate at table, harmful to no one. And there are those who rest in a partial amendment: once openly wicked, now respectable, but with some secret sin they will not give up.
+
+To the moralists he says something that deserves to be remembered. “Christianity includes morality, as grace does reason.” He is not against morality; a Christian will be moral. But morality without a changed heart is not Christianity, just as reason without grace is not faith. The heathens were often virtuous. Paul, before his conversion, lived in all good conscience. It was not enough.
+
+> Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost. TITUS 3:5
+
+In his sermon Marks of a True Conversion, preached on the words of Christ about becoming as little children, Whitefield presses the same point from another side. He speaks with dread of how many would go to hell “even by the very gates of heaven” — people who came near, who knocked, and were told at the last that the Lord never knew them. And then, with great tenderness, he describes the marks of the converted: they know themselves weak, they know themselves ignorant, they are teachable, guileless and dependent, and they run to their Father as a child runs to a parent when anything hurts.
+
+## Where care is needed
+
+Whitefield preached for crisis and expected his hearers to be able, as a rule, to point to a time and a struggle through which they had passed. In his farewell sermon he said that he believed those who could not tell when they were converted were very few. Many sincere believers, brought up in Christian homes, cannot name such a day, and have been troubled by preaching like his. Scripture does not require it. The wind blows where it will; we hear its sound but cannot tell whence it comes. The test of the new birth is not the memory of a moment but the presence of a life — faith in Christ, love for God and His people, hatred of sin, a changed direction.
+
+> The wind bloweth where it listeth, and thou hearest the sound thereof, but canst not tell whence it cometh, and whither it goeth: so is every one that is born of the Spirit. JOHN 3:8
+
+It must be said too that Whitefield’s bluntness could frighten tender consciences. He wanted to wake the sleeping, and sometimes he woke the wrong people. The best of his preaching, though, always ended with an open door.
+
+## The hinge
+
+For Whitefield, then, the new birth was not one doctrine among many. It was “the very hinge on which the salvation of each of us turns.” Every other truth he preached either led a sinner to it or described the life that flows from it. And the call it gives is not first to effort but to Christ. The new birth is God’s work, not ours. We cannot give ourselves a new heart. But we can go to the One who gives it, and ask.
+
+> But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name: which were born, not of blood, nor of the will of the flesh, nor of the will of man, but of God. JOHN 1:12–13
+
+### FOR REFLECTION AND ACTION
+
+1. Write down honestly what you are resting on for your acceptance with God. Is any of it outward form, moral respectability or partial reform?
+2. Consider whether there is a secret sin, a “beloved Delilah” as Whitefield calls it, that you have excused because you are better than you were.
+3. Look for the marks of the new birth in your life — not a remembered moment but present faith, love, repentance and teachability — and thank God for what you find.
+4. If you cannot find them, do not despair and do not try harder. Go to Christ and ask Him for a new heart.
+5. Read On Regeneration in Whitefield’s Selected Sermons, in the Ochorus library, and mark the three kinds of false rest he describes.
+
+### A PRAYER
+
+> Lord Jesus, You said that except a man be born again he cannot see the kingdom of God. I cannot make myself new; only Your Spirit can.
+> Search me. If I am resting on outward religion or on my own decency, show it to me, and do not let me be at peace until I rest on You.
+> Give me a new heart and a right spirit. Make me like a little child — teachable, dependent and glad to run to my Father.
+> And where You have begun this work, carry it on until the day of Your coming. Amen.
+
+# The Method of Grace
+
+> They have healed also the hurt of the daughter of my people slightly, saying, Peace, peace; when there is no peace. JEREMIAH 6:14
+
+Of all Whitefield’s sermons, The Method of Grace is the one most often reprinted, and it is the best single place to hear him. He preached it in the open air in Scotland, in a churchyard, to people who had been baptised, catechised and brought up in a Reformed church. His text is the complaint of Jeremiah against the false prophets of his day, who told a sinful people that all was well. Whitefield’s question is simple and alarming: how does a sinner come to true peace with God, and how can he tell it from a false one?
+
+## Religion is an inward thing
+
+He begins with a caution. He takes it for granted, he says, that his hearers believe religion to be an inward thing, a work in the heart wrought by the Spirit of God. If they do not, they will not understand a word he is about to say. The kingdom of God is within. He is a Jew who is one inwardly. And so, before he describes the way to peace, he warns that there is a false peace, spoken by false physicians, which heals the wound slightly and leaves the poison inside.
+
+> There is a way which seemeth right unto a man, but the end thereof are the ways of death. PROVERBS 14:12
+
+Then, like a surgeon, he lays out what must happen before a sinner can speak peace to his own heart. He names five things.
+
+## Four convictions
+
+First, a person must be brought to see and feel and mourn over his actual sins — the particular transgressions of his life, in thought, word and deed. The law requires perfect obedience, and a single failure brings its curse.
+
+Second, conviction must go deeper, to the root: original sin, the corruption of nature that every child of Adam brings into the world. Whitefield argues for it with a characteristic flash of the imagination. Look at the world, he says, and ask whether this is the paradise in which God placed man. Everything is out of order. Even the wolf and the tiger rising against us, he suggests, are a kind of witness that we have sinned against their Master.
+
+> Behold, I was shapen in iniquity; and in sin did my mother conceive me. PSALM 51:5
+
+Third — and here he goes further than most preachers — a sinner must be troubled not only for his sins but for his best duties and performances. When a soul is first awakened, he says, it runs straight back to the covenant of works. Like Adam and Eve sewing fig leaves, the sinner flies to his prayers and reforms and patches up a righteousness of his own. Whitefield will have none of it. A sinner must be brought to see that “God may damn you for the best prayer you ever put up.” It is a startling sentence, and he means it to startle. He is not saying prayer is worthless. He is saying that nothing we do can be offered to God as a reason for Him to accept us. Our righteousnesses are as filthy rags.
+
+> But we are all as an unclean thing, and all our righteousnesses are as filthy rags; and we all do fade as a leaf; and our iniquities, like the wind, have taken us away. ISAIAH 64:6
+
+Fourth, there is one sin that must trouble us above all, which few think they are guilty of. He calls it “the reigning, the damning sin of the Christian world”: the sin of unbelief. His hearers, he knows, will be offended. Are they not born in Scotland, in a Reformed country? Do they not go to church and keep up family prayer? But a historical faith, a belief that the Bible is true and Christ is the Son of God, is not saving faith. “I am persuaded the devil believes more of the Bible than most of us do,” he says. The devil believes and trembles.
+
+## Closing with Christ
+
+Only after all this does Whitefield reach the fifth and last thing: a sinner must be enabled to lay hold by faith on the perfect righteousness of Jesus Christ. Then, and only then, he shall have peace. The invitation of Christ is to the weary and heavy laden, and it is received by coming and believing.
+
+> Therefore being justified by faith, we have peace with God through our Lord Jesus Christ. ROMANS 5:1
+
+He asks his hearers whether they have ever been married to Christ, whether Christ has ever given Himself to them, whether peace has ever flowed into their hearts like a river. And then he turns to the different groups before him. To those who have found peace he says, All hail! Nothing can now happen to them but what is the effect of God’s love. But even to them he adds a caution worth keeping: “beware of resting on your first conversion.” Young believers should be looking for fresh discoveries of Christ every moment.
+
+To the rest he pleads. They are sleeping in a false peace; he comes to them, he says, as the angel came to Lot, to take them by the hand. Come away, he cries, and “fly, fly, fly for your lives to Jesus Christ.” Beg God to convince you of sin; beg Him to give you faith.
+
+## Where care is needed
+
+The Method of Grace is a great sermon, but it can be misread. Whitefield describes a sequence — actual sin, original sin, the sin of our duties, unbelief, then faith — and some readers have taken it as a ladder that must be climbed rung by rung before anyone may come to Christ. That would turn grace into a new kind of work: the work of being sufficiently convicted. Whitefield himself did not intend it so. The invitation of Christ is to all who are weary, and conviction and faith often come together, not in neat order. No one needs to feel their sin enough before they are allowed to trust the Saviour.
+
+> Him that cometh to me I will in no wise cast out. JOHN 6:37
+
+Some of his language, too — that God may damn us for our best prayer, that his hearers are children of the devil — is deliberately harsh. It was the language of an age of plain speaking, and it was meant to wake the complacent. Read it in the spirit in which it was spoken: not as contempt but, as he says himself, out of love to their souls.
+
+## The physician’s question
+
+The deepest point of The Method of Grace is that there is such a thing as false peace, and it is very common. It sounds like religion. It goes to church. It says, I have always believed. Whitefield’s question to his Scottish hearers is the same question he would ask us: has God spoken peace to you, or have you only spoken it to yourself?
+
+> The Spirit itself beareth witness with our spirit, that we are the children of God. ROMANS 8:16
+
+### FOR REFLECTION AND ACTION
+
+1. Ask where your peace with God comes from. Can you name the ground of it, or is it simply a feeling that all is well?
+2. Think about your best religious duties. Are you, in any way, offering them to God as a reason to accept you? Confess it and rest on Christ alone.
+3. Distinguish in your own heart between believing facts about Christ and trusting Him. Which describes you?
+4. If you have peace with God, heed Whitefield’s caution and do not live on your first conversion. Seek a fresh sight of Christ this week.
+5. Read The Method of Grace in the Ochorus library, slowly, aloud if you can.
+
+### A PRAYER
+
+> Lord God, do not let me be healed slightly. If my peace is false, break it; if it is true, deepen it.
+> Show me my sins, my corrupted nature and the pride that hides in my best duties. Forgive the unbelief that takes Your word as fact and never trusts it.
+> Clothe me in the righteousness of Jesus Christ, and speak peace to my heart Yourself.
+> Keep me from resting on what You did in me long ago, and give me fresh sight of my Saviour every day. Amen.
+
+# The Lord Our Righteousness
+
+> In his days Judah shall be saved, and Israel shall dwell safely: and this is his name whereby he shall be called, THE LORD OUR RIGHTEOUSNESS. JEREMIAH 23:6
+
+If the new birth was the doctrine Whitefield preached most often, the righteousness of Christ was the one he defended most fiercely. He preached on it again and again — in The Lord Our Righteousness, The Righteousness of Christ an Everlasting Righteousness, Of Justification by Christ, and Christ the Believer’s Wisdom, Righteousness, Sanctification and Redemption. For him the two belonged together. The new birth changes the sinner; the righteousness of Christ covers him. Without the first he cannot enjoy God. Without the second he cannot stand before Him.
+
+## The last idol
+
+The sermon The Lord Our Righteousness opens with a sentence that every preacher should memorise: “self-righteousness is the last idol that is rooted out of the heart.” We are born under a covenant of works, says Whitefield, and so it is natural for all of us to go back to a covenant of works for our salvation. Pride runs so deep that we want, if not wholly, at least in part, to be the cause of our own acceptance.
+
+> For they being ignorant of God’s righteousness, and going about to establish their own righteousness, have not submitted themselves unto the righteousness of God. ROMANS 10:3
+
+He then says something that must have startled his Protestant hearers. We all cry out against popery, he says, and rightly; but by nature we are all papists at heart, because we all want to add something of our own to what Christ has done. He did not mean that everyone was a Roman Catholic. He meant that the instinct to mix our works with Christ’s is universal, and that it lurks in the most Protestant of hearts.
+
+## What righteousness means
+
+Whitefield explains the doctrine carefully. God made man upright and entered into a covenant with him: perfect obedience, and life would follow. Adam broke it, and all his children fell with him. Christ, the second Adam, came to do what the first failed to do. And the word that describes how His work becomes ours is, in Whitefield’s phrase, one word: imputation.
+
+> For as by one man’s disobedience many were made sinners, so by the obedience of one shall many be made righteous. ROMANS 5:19
+
+Here he makes a point often neglected. When we speak of the merits of Christ, he says, we usually mean His death. But His life of obedience is just as necessary. “Christ not only died, but lived, not only suffered, but obeyed for, or instead of, poor sinners.” His death pays the penalty of our disobedience; His life supplies the obedience we never gave. Both together make up the complete righteousness that is reckoned to the believer, as Adam’s disobedience was reckoned to us.
+
+> For he hath made him to be sin for us, who knew no sin; that we might be made the righteousness of God in him. 2 CORINTHIANS 5:21
+
+## The objections answered
+
+Whitefield knew the objections, and he met them head on.
+
+The first was that imputed righteousness destroys good works: if Christ has obeyed for me, why should I obey? He answers that the doctrine cuts off the occasion for boasting, not for holiness. Those who have truly received Christ’s righteousness are the very ones who love His law. Paul himself raised this objection in Romans and answered it: shall we continue in sin, that grace may abound? God forbid.
+
+The second was that Christ in the Sermon on the Mount taught only morality. Whitefield points out that the Sermon begins not with works but with poverty of spirit, mourning, meekness and hunger and thirst after righteousness — the marks of those who have nothing and must receive everything.
+
+The third came from the rich young ruler, to whom Christ spoke of the commandments. Whitefield replies that Christ was showing the young man the law to expose his self-righteousness, not to teach him to be saved by it. Had he known himself, he would have said not all these have I kept, but all these have I broken.
+
+The fourth, and the most plausible, came from the judgement scene in Matthew 25, where the righteous are rewarded for feeding the hungry and clothing the naked. Whitefield answers with the Church of England’s own articles: good works do not justify, but they follow justification as its fruit, and God graciously rewards them, of grace and not of debt.
+
+> For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: not of works, lest any man should boast. For we are his workmanship, created in Christ Jesus unto good works. EPHESIANS 2:8–10
+
+## A rock to stand on
+
+The sermon ends in pleading. Whitefield recommends a book by Solomon Stoddard of Northampton, which he calls The Safety of Appearing in the Righteousness of Christ, and then asks, “why should I lean upon a broken reed, when I can have the rock of ages to stand upon, that never can be moved?” He speaks in turn to the old, the young, the busy merchant and the servant. Can you say, the Lord our righteousness? Without it, he says, the fig leaves of our own righteousness will not cover us on the day when God calls us to stand before Him.
+
+## Where care is needed
+
+Whitefield was a controversialist, and in this sermon he is sometimes unfair. He speaks of those who reject imputed righteousness as men of corrupt minds and profane moralists, and links Arminians with papists and infidels. Many who disagreed with him on the precise shape of the doctrine, John Wesley among them, loved Christ and preached justification by faith. The doctrine is precious; the polemic around it is not always so. Readers should hold fast to the first and let the second go.
+
+It is also worth saying that Whitefield did not think the doctrine made holiness unnecessary. His sermon On Regeneration insists that whom Christ justifies He also sanctifies. The robe of righteousness and the new heart are given together.
+
+> I will greatly rejoice in the LORD, my soul shall be joyful in my God; for he hath clothed me with the garments of salvation, he hath covered me with the robe of righteousness. ISAIAH 61:10
+
+## The wedding garment
+
+The heart of this teaching is freedom. The believer does not stand before God in his own righteousness, which is never enough, but in Christ’s, which is perfect and everlasting. That is why Whitefield could preach so boldly to the vilest sinners and so searchingly to the most respectable. Neither could bring anything. Both could receive everything. The only question is whether we will come without our fig leaves.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask where the idol of self-righteousness is still standing in your heart. On what good qualities do you secretly rely before God?
+2. Meditate on the fact that Christ not only died for you but lived for you. Thank Him this week for His obedience as well as His sacrifice.
+3. If you have ever used grace as an excuse for careless living, confess it, and ask God to make His righteousness the root of a holy life.
+4. Be generous to Christians who explain justification differently from you but trust Christ alone. Hold the doctrine firmly and the quarrel lightly.
+5. Read The Lord Our Righteousness in the Ochorus library and note how Whitefield answers each objection.
+
+### A PRAYER
+
+> Lord Jesus, You are the Lord our righteousness. I have nothing of my own to bring, and I confess that I still want to bring something.
+> Root out the last idol of self-righteousness from my heart. Let me stand before God in Your obedience and Your sacrifice alone.
+> Thank You that You lived for me as well as died for me, and that Your righteousness is everlasting.
+> Let the robe You have given me be the ground of a new and grateful life. Amen.
+
+# The Indwelling of the Spirit
+
+> If any man thirst, let him come unto me, and drink. He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. JOHN 7:37–38
+
+Nothing brought Whitefield more abuse than his teaching on the Holy Spirit. Bishops wrote pastoral letters against him. Pamphleteers called him an enthusiast, which in the eighteenth century meant something close to a fanatic — a man who claimed private revelations and mistook his own excitement for the voice of God. The charge stung, and it was not entirely unfair of some of his followers. But Whitefield believed that what was being attacked under that name was not fanaticism. It was the plain teaching of Scripture and of the Church of England’s own prayer book: that every true Christian must receive the Holy Ghost.
+
+## Not for the apostles only
+
+His sermon The Indwelling of the Spirit, the Common Privilege of All Believers was preached at Whitsun on the words of Christ at the Feast of Tabernacles. He begins by naming the error he means to overturn. Many people, he says, read the gospel as though it were meant only for the first disciples, as they might read an ancient history — interesting, but not addressed to them. And so when anyone speaks of receiving the Holy Ghost today, he is looked upon as a madman.
+
+Against this he sets out his thesis: that “the Holy Spirit is the common privilege and portion of all believers in all ages,” and that we, as well as the first Christians, must receive Him before we can be truly called the children of God.
+
+> For the promise is unto you, and to your children, and to all that are afar off, even as many as the LORD our God shall call. ACTS 2:39
+
+## Graces, not wonders
+
+Whitefield was careful to say what he did not mean. He did not mean that believers should expect to work miracles, speak with tongues or receive new revelations. Those gifts, he thought, belonged to the founding of the church. “I cannot but suspect the spirit of those who insist upon a repetition of such miracles at this time,” he says. What every Christian must have is not the Spirit’s extraordinary gifts but His sanctifying graces — the life of God in the soul.
+
+Indeed he goes further. Even if a man could move mountains and speak with the tongues of angels, it would profit him nothing without the Spirit’s holiness. Saul had a spirit of government for a while and was cast away. Many who cast out devils in Christ’s name will be disowned by Him at the last.
+
+> Though I speak with the tongues of men and of angels, and have not charity, I am become as sounding brass, or a tinkling cymbal. 1 CORINTHIANS 13:1
+
+Having made that distinction, he turns the charge of enthusiasm on its head. If the word means one who is inspired of God, who has God dwelling in him by His Spirit, then “every Christian, in the proper sense of the word, must be an enthusiast.” Peter speaks of our being made partakers of the divine nature. Christ prays that His people may be one with Him as He is one with the Father. The church’s own communion service speaks of Christ dwelling in us and we in Him.
+
+## Why we must receive Him
+
+The reason, Whitefield argues, is the fall. God made man in His image, and Adam lost it. We are all born naked and void of God, as Adam was when he hid among the trees. And until the Spirit restores that image, we are unfit to dwell with God and would flee from Him as Adam did. The great work of sanctification, of making us holy, belongs particularly to the Holy Ghost.
+
+> But if the Spirit of him that raised up Jesus from the dead dwell in you, he that raised up Christ from the dead shall also quicken your mortal bodies by his Spirit that dwelleth in you. ROMANS 8:11
+
+He anticipates his hearers’ dismay. Is this not driving people to despair? Yes, he says, it is — but to a despair of living with God without the Holy Ghost, not a despair of mercy. He compares himself to a surgeon who must probe a wound to the bottom before it can be healed. And then he brings the remedy: believe on Jesus Christ, and you shall receive the Spirit. Come poor, miserable, blind and naked as you are, and God will receive you.
+
+## The marks of the Spirit
+
+In a companion sermon, Marks of Having Received the Holy Ghost, Whitefield describes how a person may know that the Spirit dwells in him. The marks are plain and practical. The first is a spirit of prayer: the true believer, he says, can no more live without prayer than without food. The second is not committing sin — by which he means not a sinless life, for David and Peter fell, but a heart that no longer lives in sin and that rises quickly and weeps when it falls. The third is overcoming the world, setting the affections on things above even while working diligently in this life. The fourth is love for the brethren, a love he describes as impartial and catholic, that embraces God’s image wherever it sees it.
+
+> But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law. GALATIANS 5:22–23
+
+## Where care is needed
+
+Whitefield insisted that the Spirit’s work is felt. He was scornful of preachers who said we may have God’s Spirit without feeling it, which he thought amounted to denying the thing itself. There is truth in this: the Spirit is not an abstraction, and the love of God is shed abroad in our hearts. But the emphasis on feeling has done harm. Some believers pass through long seasons of dryness in which they feel little, and Whitefield himself admitted in Marks of Having Received the Holy Ghost that the spirit of prayer may for a time be sensibly lost even in true Christians. The Spirit’s presence is known by His fruit more surely than by our feelings.
+
+And the charge of enthusiasm was not always unjust. Whitefield in his early years sometimes spoke of impressions and impulses as though they were divine guidance, and he later acknowledged that he had been mistaken in some of them. His own sermon on searching the Scriptures warns that the Spirit guides by the Word, not apart from it. That is the safer road.
+
+## Rivers of living water
+
+The heart of this teaching is a promise, and it is addressed to anyone who is thirsty. The Spirit is not a prize for spiritual athletes; He is the common portion of all believers. Christ stood on the last day of the feast and cried out. He still does.
+
+> And the Spirit and the bride say, Come. And let him that heareth say, Come. And let him that is athirst come. And whosoever will, let him take the water of life freely. REVELATION 22:17
+
+### FOR REFLECTION AND ACTION
+
+1. Ask whether you have treated the promise of the Spirit as belonging only to the first Christians. What would change if you believed it was for you?
+2. Examine yourself by Whitefield’s four marks: a spirit of prayer, a heart that does not live in sin, a life set on things above, and love for all who bear Christ’s image.
+3. If you are in a dry season, do not conclude that the Spirit has left you. Look for His fruit, keep to the means of grace, and wait.
+4. Test any inward impression you think is guidance against the plain teaching of Scripture before acting on it.
+5. Read The Indwelling of the Spirit in the Ochorus library, and pray its closing invitation for yourself.
+
+### A PRAYER
+
+> Lord Jesus, You stood and cried, If any man thirst, let him come unto me. I am thirsty, and I come.
+> Give me Your Holy Spirit, not for wonders but for holiness. Restore Your image in me, and make me fit to dwell with You.
+> Teach me to pray, to hate sin, to set my heart on things above, and to love all who bear Your likeness.
+> And when I cannot feel Your presence, keep me trusting Your promise, until rivers of living water flow again. Amen.
+
+# The Almost Christian
+
+> Then Agrippa said unto Paul, Almost thou persuadest me to be a Christian. ACTS 26:28
+
+King Agrippa sat in state and listened to a prisoner in chains tell how Christ had met him on the road to Damascus. At the end he said, half in jest and half in earnest, Almost thou persuadest me to be a Christian. Paul answered that he wished Agrippa, and all who heard him, were not only almost but altogether such as he was, except for the chains. Whitefield took that exchange as the text of one of his best-known sermons, The Almost Christian, and in it he drew a portrait so exact that his hearers could hardly help recognising themselves.
+
+## A portrait
+
+The almost Christian, says Whitefield, is one who halts between two opinions, who wavers between Christ and the world, and who would reconcile God and Mammon. He has an inclination to religion, but he is careful not to go too far. His false heart keeps whispering, Spare thyself.
+
+> How long halt ye between two opinions? if the LORD be God, follow him: but if Baal, then follow him. 1 KINGS 18:21
+
+Toward his neighbour he is strictly honest — but not out of love for God or man. He is honest because dishonesty would spoil his reputation and hinder his business. He depends much on being negatively good, content that he has done no one any harm, forgetting that the unprofitable servant was cast out and the fig tree cursed not for bad fruit but for no fruit. He gives to public charities, when they are not asked for too often, but knows nothing of visiting the sick and imprisoned in private. He is sober, but because excess would harm his health or his standing. His religion, in a word, is self-love wearing decent clothes.
+
+Whitefield ends the portrait with a gentle but deadly remark: he cannot claim to have described the almost Christian fully, but he fears that some of his hearers may see features in the picture that resemble their own.
+
+## Five reasons
+
+Why are so many only almost Christians? Whitefield gives five reasons, and they have not aged.
+
+The first is false notions of religion. Some place it in belonging to a particular church, more in morality, most in a round of duties, and very few acknowledge it to be what it really is: “a thorough inward change of nature, a divine life, a vital participation of Jesus Christ, an union of the soul with God.”
+
+The second is the fear of man. Many have been awakened and have tasted the powers of the world to come, but out of fear of being thought singular they let the impression wear off. Like Nicodemus they would come to Jesus only by night.
+
+The third is the love of money, as with the rich young ruler who went away sorrowful because he had great possessions. The fourth is the love of pleasure: they would follow Christ gladly if it cost them nothing but money, but not if it touches their appetites. The fifth is fickleness — those who take up religion as a novelty and lay it down when their curiosity is satisfied.
+
+> No man, having put his hand to the plough, and looking back, is fit for the kingdom of God. LUKE 9:62
+
+## Almost is not enough
+
+Then Whitefield shows the folly of stopping short. His first argument is the simplest and the sharpest: “almost to hit the mark, is really to miss it.” God requires the whole heart. He illustrates it with the story of Solomon’s judgement between the two women. The devil, like the false mother, is content to divide the child; “God, like the true mother, will have all or none.”
+
+> My son, give me thine heart, and let thine eyes observe my ways. PROVERBS 23:26
+
+His second argument is that the almost Christian does great harm to others. He persuades people that the way to heaven is broader than it is. He hangs out false lights, Whitefield says, and shipwrecks souls. Such people are greater enemies to the cross than open infidels, because they make half-heartedness look like faith.
+
+> I know thy works, that thou art neither cold nor hot: I would thou wert cold or hot. So then because thou art lukewarm, and neither cold nor hot, I will spue thee out of my mouth. REVELATION 3:15–16
+
+His third argument is ingratitude. Christ shed His blood to purchase our hearts. Shall we give Him only half?
+
+## Where care is needed
+
+The Almost Christian is one of Whitefield’s early sermons, and its closing exhortation leans heavily on effort: always watching, always praying, always aspiring after further purity. That is not wrong, but it can leave a tender conscience asking whether it has done enough to be altogether a Christian. The answer of the gospel, which Whitefield himself preached more clearly in later sermons like The Method of Grace, is that no one becomes altogether a Christian by trying harder. We become so by coming to Christ with nothing and receiving everything. The whole heart He asks for is a heart He Himself renews.
+
+It is also worth noticing that the sermon compares the half-hearted believer to a purchased slave who gives his master only half his service. It is a vivid image of what Christ has paid for us, and Whitefield meant it so. But it is hard to read today without remembering that the preacher would later buy human beings himself. The metaphor was taken from a world whose cruelty he did not see clearly enough; chapter sixteen returns to that.
+
+## Altogether
+
+The almost Christian is not a villain. He is respectable, generous in public, honest in business and kind to his family. That is exactly why the sermon is so searching. Whitefield’s point is not that such a person is worse than others but that he is near and not in, and that near is not enough. The call is not to more religion but to Christ, wholly.
+
+> And thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind, and with all thy strength. MARK 12:30
+
+### FOR REFLECTION AND ACTION
+
+1. Read Whitefield’s portrait of the almost Christian again. Which features resemble your own?
+2. Ask why you do the good things you do. If the honest answer is reputation, comfort or habit, bring that to God.
+3. Name the one thing — fear of others, money, pleasure or fickleness — most likely to keep you at almost.
+4. Look for a private act of mercy you can do this week that no one will see or praise.
+5. Read The Almost Christian in the Ochorus library, and then pray not for more effort but for a heart wholly given to Christ.
+
+### A PRAYER
+
+> Lord Jesus, I have been almost persuaded too often. I have wanted You and the world, Your approval and the approval of others.
+> You ask for my whole heart, and I cannot give it by trying harder. Take it, and make it new.
+> Deliver me from the fear of man, the love of money, the love of pleasure and a fickle spirit.
+> Make me not almost but altogether Yours, for You gave Yourself altogether for me. Amen.
+
+# The Danger of an Unconverted Ministry
+
+> Take heed unto thyself, and unto the doctrine; continue in them: for in doing this thou shalt both save thyself, and them that hear thee. 1 TIMOTHY 4:16
+
+The title of this chapter is not Whitefield’s. It belongs to a sermon preached in 1740 in Pennsylvania by his friend and fellow-labourer Gilbert Tennent, a Presbyterian revivalist, and it became one of the most controversial sermons of the Great Awakening. But the conviction behind it was one that Whitefield shared and voiced over and over again: that a minister who has not himself been born again is a danger to his people, and that there were a great many such ministers in the churches of his day.
+
+It is one of the places where Whitefield was both most right and most wrong, and it deserves an honest chapter.
+
+## The greatest curse
+
+The Method of Grace opens with this theme. As God can send a people no greater blessing than faithful ministers, says Whitefield, so “the greatest curse that God can possibly send upon a people in this world” is to give them over to “blind, unregenerate, carnal, lukewarm, and unskilled guides.” Jeremiah’s false prophets healed the wound of the people slightly, crying Peace, peace, when there was no peace. Whitefield believed the same thing was happening in the parishes of England and the meeting-houses of America.
+
+> Woe be to the shepherds of Israel that do feed themselves! should not the shepherds feed the flocks? EZEKIEL 34:2
+
+His reasoning was straightforward. If religion is an inward work of the Spirit, a man who has never known that work cannot describe it. He will preach morality instead, because morality is all he knows. In The Indwelling of the Spirit Whitefield complains of preachers who feed their people with “the dry husks of dead morality” instead of the doctrines of grace, and who subscribe to the church’s articles as a key to preferment while contradicting them in the pulpit. In The Great Duty of Charity Recommended he rebukes clergy who chase one benefice after another and forget the poor. And throughout his sermons he calls them, with scorn, the letter-learned — men who know the words of Scripture and not their power.
+
+## What was right in it
+
+There was real truth in Whitefield’s alarm. Many clergy of his day were, by their own admission, more interested in their livings than their flocks. Some preached little but prudential morality, and some openly scorned the doctrines of their own church. Whitefield was not the only one to say so; serious churchmen across the century said the same. And the principle is surely right. A physician who has never been healed may still prescribe, but a minister who has never met Christ is in a strange and perilous position.
+
+> Can the blind lead the blind? shall they not both fall into the ditch? LUKE 6:39
+
+Whitefield also held himself to the standard he urged on others. At the close of his sermon Walking with God he turns to the ministers present with a heart, he says, almost too full to speak, and urges them to be like Enoch, who walked with God in a wicked generation.
+
+## What was wrong in it
+
+But in his early years Whitefield did not stop at principles. In his published Journals he passed sharp judgements on particular men and places — on respected divines of the previous generation, on the clergy of whole towns, on the colleges of New England — often after the briefest acquaintance. He wrote as though he could see into hearts he had barely met. The effect, in some places, was to split congregations, to set people against their pastors, and to encourage a spirit of censoriousness among his followers that did the revival lasting harm. In 1744 the faculty of Harvard College published a formal testimony against him, and they were not wrong to object to some of what he had said.
+
+Whitefield came to see this. In later years he admitted, publicly and in print, that he had been too rash and hasty in judging persons and places, that he had mixed wild fire with his zeal, and he revised his Journals to remove some of their harsher passages. It is to his credit that he did. It would have been better still had he learned it sooner.
+
+> Judge not, that ye be not judged. MATTHEW 7:1
+
+Indeed, his own sermon Directions How to Hear Sermons gives the corrective. He warns his hearers not to be prejudiced against their ministers, reminding them that the clergy are men of like passions with themselves. Even if a preacher teaches others what he has not learned himself, he says, “that is no sufficient reason for rejecting his doctrine.” And he warns just as strongly against the opposite fault: preferring one preacher to another and running after favourites, which he calls earthly, sensual and devilish.
+
+## The minister’s own soul
+
+The lesson for today is double. To ministers, Whitefield’s question still stands: have you yourself been born again? It is possible to preach Christ for years and not know Him. No office and no learning can substitute for the Spirit’s work in the heart.
+
+> Lest that by any means, when I have preached to others, I myself should be a castaway. 1 CORINTHIANS 9:27
+
+To everyone else, the lesson is caution. It is easy to judge a preacher, and very hard to see a heart. The spirit that sets itself up to pronounce who is and is not converted is rarely the Spirit of Christ. Pray for your ministers, as Whitefield begged his hearers to pray for him. Test what they teach by Scripture. And leave the judging of hearts to God.
+
+> Therefore judge nothing before the time, until the Lord come, who both will bring to light the hidden things of darkness, and will make manifest the counsels of the hearts. 1 CORINTHIANS 4:5
+
+### FOR REFLECTION AND ACTION
+
+1. If you teach or lead in any way, ask yourself Whitefield’s question plainly: do I know the Christ I speak about?
+2. Pray by name this week for those who preach or teach you, and ask God to give them a living knowledge of Christ.
+3. Recall a time when you judged another Christian’s heart on slight evidence. Confess it to God, and if needed, to them.
+4. Test the teaching you receive against Scripture, but resist the urge to reject a true word because of the messenger.
+5. Guard against running after favourite preachers. Receive God’s word from the ministers He has given you.
+
+### A PRAYER
+
+> Lord Jesus, great Shepherd of the sheep, give Your church shepherds who know You and feed Your flock with Your truth.
+> Search my own heart. If I speak of You without knowing You, bring me to new birth before I lead others astray.
+> Forgive me for the pride that judges hearts I cannot see. Make me zealous for truth and gentle towards persons.
+> Bless those who preach to me. Hold up their hands, and let Your word through them be sharper than any two-edged sword. Amen.
+
+# Into the Open Fields
+
+> Go out quickly into the streets and lanes of the city, and bring in hither the poor, and the maimed, and the halt, and the blind. LUKE 14:21
+
+On a February afternoon in 1739, on a rise of ground at Kingswood near Bristol, a young clergyman of the Church of England stood up without a pulpit, a church or a licence to preach there, and began to speak to a crowd of coal miners. There were about two hundred of them. Within weeks the crowds at Kingswood numbered thousands. Whitefield had not invented open-air preaching — John the Baptist, Christ Himself and generations of dissenters had done it before him — but for a priest of the established church in the eighteenth century it was a startling thing, and it changed the course of the revival.
+
+## Why he went
+
+Whitefield went into the fields because the churches were closed to him. He did not set out to defy the church; he loved the Church of England all his life and never left it. But his preaching of the new birth had made him unwelcome in many pulpits, and he could not keep silent. He had also seen, in Bristol and London, how many people never came near a church at all. The colliers of Kingswood had no church of their own, and were thought to be beyond reach. If they would not come to the gospel, the gospel would go to them.
+
+> And the lord said unto the servant, Go out into the highways and hedges, and compel them to come in, that my house may be filled. LUKE 14:23
+
+He found in Scripture ample warrant for what he did. Preaching on the parable of the great supper, in his sermon The Gospel Supper, he remarks that the master’s command to go out into the highways and hedges “gives a sanction, methinks, to preaching in the fields,” and to places other than the synagogues. In another sermon he answers critics who thought it disorderly: to think “that Jesus could not preach in a field as well as on consecrated ground; this is judaism, this is bigotry.” Christ preached on a mountain, from a boat, by a well. The apostles preached in the market place and by the river side.
+
+## What the fields meant
+
+The open air changed more than the setting. In a parish church the congregation was sorted by rank, the gentry in their pews and the poor at the back. In the field there were no pews. The collier stood beside the merchant, and both heard that they must be born again. Whitefield preached the same gospel to both, and he noticed that those who had no reputation for righteousness to protect were often the quickest to receive it.
+
+> The Spirit of the Lord is upon me, because he hath anointed me to preach the gospel to the poor. LUKE 4:18
+
+It changed Whitefield too. He learned to speak to a crowd that could walk away. He learned to use plain words, vivid pictures and direct appeal. His voice, by all accounts, was extraordinary; Benjamin Franklin, standing in a Philadelphia street, tried to calculate how far it carried and concluded that he might be heard by many thousands at once. For thirty years, in Britain and America, the fields were Whitefield’s parish. He was preaching in the open air the day before he died.
+
+And he did not despise the hearing that followed. In his sermon Directions How to Hear Sermons he urges his hearers to come not out of curiosity but with a sincere desire to know and do their duty, to give diligent heed, to apply what they hear to their own hearts, and to pray before, during and after the sermon.
+
+## The cost
+
+Field preaching was not romantic. Whitefield preached in rain and cold and heat. He was pelted with stones, dirt and worse; at Moorfields in London he preached amid the noise of a fair, with drummers and showmen trying to drown him out. He was mocked in the press, satirised on the stage, and denounced by bishops. His health was ruined by it. He did it anyway, year after year, and when his friends urged him to rest he would not.
+
+> I am made all things to all men, that I might by all means save some. 1 CORINTHIANS 9:22
+
+His farewell sermon of 1769 contains a remark that explains his attitude. If it were fashionable to be a Methodist at court, he says, the church would not thrive the better for it, for “religion never thrives under too much sun-shine.” He expected opposition, and he thought it did the church more good than harm.
+
+## Where care is needed
+
+The fields also exposed Whitefield’s weaknesses. He was an actor by gift, and a crowd brought out the actor in him. He wept freely, dramatised the stories of Scripture with great vividness, and could hold an audience spellbound. Many who came to hear him came for the performance; some who were moved went away unchanged. Critics then and since have said that his preaching owed as much to the theatre as to the pulpit, and there is some truth in it.
+
+He knew the danger himself. In Directions How to Hear Sermons he warns that “popularity and applause cannot but be exceedingly dangerous,” even to a well-informed mind, and should fill any thinking man with a holy jealousy lest he take to himself the honour due only to God. The lesson is plain. A preacher’s gifts are God’s gifts, and they are meant to point beyond him. Crowds are not proof of the Spirit’s work, and tears are not the new birth.
+
+> For we preach not ourselves, but Christ Jesus the Lord; and ourselves your servants for Jesus’ sake. 2 CORINTHIANS 4:5
+
+## Where are the fields now
+
+Few of us will preach to thousands on a hillside. But Whitefield’s walk to Kingswood still asks a question of every church: who are the people no one has troubled to reach, and what would it take to go to them? The gospel does not belong in buildings. It belongs wherever there are sinners, and that is everywhere.
+
+### FOR REFLECTION AND ACTION
+
+1. Think of a group of people near you whom the churches have largely left alone. Pray for them by name this week.
+2. Ask whether your church’s habits make it easier for some kinds of people to hear the gospel than others. What might change?
+3. If you speak about Christ to others, examine whether you want them to admire you or Him.
+4. When you hear a sermon, follow Whitefield’s directions: come prepared, listen closely, apply it to yourself and pray.
+5. Read The Gospel Supper in the Ochorus library and consider where the highways and hedges are in your own town.
+
+### A PRAYER
+
+> Lord Jesus, You preached on mountains and by the sea, and You sent Your servants into the highways and hedges. Send Your gospel out again.
+> Give Your church hearts for those whom no one else will reach, and courage to go to them.
+> Keep every preacher, and keep me, from loving applause. Let the crowd see You, not us.
+> Fill Your house, Lord, from the streets and lanes and fields, until every place has heard Your name. Amen.
+
+# I Offer Jesus Christ to All
+
+> Come unto me, all ye that labour and are heavy laden, and I will give you rest. MATTHEW 11:28
+
+There is a sentence in Whitefield’s sermon Christ the Best Husband that could stand over his whole ministry. He is preaching to a society of young women in London, and after describing the beauty and faithfulness of Christ as a bridegroom he says simply, “I offer Jesus Christ to all of you.” He goes on: however notorious for sin they may have been, even if they had been as great a sinner as Mary Magdalene, once they are joined to Christ they shall be forgiven. That offer — made freely, urgently and to everyone — is the warm centre of Whitefield’s preaching, and it is what drew the crowds.
+
+## Christ for the weary
+
+In Christ the Only Rest for the Weary and Heavy-Laden, Whitefield explains who the invitation is for. It is not for the self-satisfied: the Pharisees who think they do well enough, and those who can laugh away their sins at balls and horse races. They are not weary, and so they do not come. But those whose sins are grievous to them, who cry out under the burden and do not know where to turn, are exactly the people Christ calls. They have tried their own works and found no rest. Now they are invited to come without them.
+
+> Ho, every one that thirsteth, come ye to the waters, and he that hath no money; come ye, buy, and eat; yea, come, buy wine and milk without money and without price. ISAIAH 55:1
+
+“Let me, my brethren, beseech you to take Jesus without anything of your own righteousness,” he pleads in that sermon. Go to Christ, he says, tell Him you are lost and undone, and you shall find rest before you come away. Do not let anything short of Christ be your rest.
+
+## No sinner too far gone
+
+Whitefield never tired of saying that the greatness of a person’s sin is no bar to coming. In What Think Ye of Christ? he answers the one who says, I am the chief of sinners: that, he says, will be no hindrance, if you lay hold on Christ by faith. Look at how kindly Jesus treated the disciples who had fled and denied Him. His first message after the resurrection was, Go tell my brethren.
+
+> This is a faithful saying, and worthy of all acceptation, that Christ Jesus came into the world to save sinners; of whom I am chief. 1 TIMOTHY 1:15
+
+The same note sounds in The Indwelling of the Spirit, where Whitefield bids his hearers not to delay until they have made themselves fit. Joseph, when called out of prison, stopped to change his clothes before he went to Pharaoh. Not so here: come poor, miserable, blind and naked as you are, says Whitefield, and God the Father will receive you with open arms.
+
+## To every kind of hearer
+
+Whitefield’s offer crossed every boundary his society drew. He preached it to the colliers of Kingswood and the aristocrats in the Countess of Huntingdon’s drawing room, to servants and merchants, to Scottish Presbyterians and New England Congregationalists, to young women and old men. At the end of The Lord Our Righteousness, after addressing old and young and busy merchants, he turns to the enslaved Africans in his congregation. He does not mention them last because he despises their souls, he says; “Jesus Christ had died for them, as well as for others.” He reminds them of the Ethiopian eunuch, who believed and was baptised, and tells them that in Christ there is neither bond nor free.
+
+> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
+
+That word was true, and it was powerful. Many enslaved people heard the gospel through Whitefield and his successors, and the churches that grew among them in the following generations drew deeply on the evangelical preaching he helped to spread. But it must be said that the man who preached it was, at that very time, arguing for slavery in Georgia. He offered Christ freely to people whose freedom he did not defend. Chapter sixteen will not let that pass.
+
+## Election and the open door
+
+Whitefield was a convinced Calvinist. He believed that God had chosen His people from eternity and that all whom the Father had given to Christ would come to Him. In The Gospel Supper he says that every soul for whom Christ shed His blood shall finally be saved. Some have thought this sits awkwardly with his passionate appeals to everyone to come. Whitefield did not think so. He did not know who the elect were, and he did not need to. His task was to hold out Christ to all, and to trust God to draw His own. The doctrine of election, for him, did not narrow the invitation; it guaranteed that the invitation would not be in vain.
+
+> All that the Father giveth me shall come to me; and him that cometh to me I will in no wise cast out. JOHN 6:37
+
+## Where care is needed
+
+Whitefield’s appeals were sometimes intensely emotional, and he sometimes pressed for an immediate response in ways that could confuse feeling moved with coming to Christ. He also leaned hard on the terrors of hell to drive people to the Saviour. There is a place for warning, and Christ Himself warned. But the freeness of the offer should never be buried under its threats. The weary come to Christ because He is gentle and lowly in heart, not only because they are afraid.
+
+## Come
+
+What makes Whitefield’s offer so moving is that he believed it himself. In What Think Ye of Christ? he speaks of the sweetness of Christ’s presence and tells his enemies that all the harm he wishes them is that they might feel the same. He was not offering a doctrine. He was offering a Person, and he could not bear that anyone should go away without Him.
+
+> And the Spirit and the bride say, Come. And let him that heareth say, Come. And let him that is athirst come. And whosoever will, let him take the water of life freely. REVELATION 22:17
+
+### FOR REFLECTION AND ACTION
+
+1. Are you weary and heavy laden? Then the invitation is for you. Go to Christ today and tell Him plainly what burdens you.
+2. If you have been waiting until you are better before coming to Christ, stop waiting. Come as you are.
+3. Think of someone you have privately judged too far gone for the gospel. Pray for them by name, and look for a way to offer them Christ.
+4. Ask whether any boundary — of class, race, background or church — narrows the offer of Christ in your own practice.
+5. Read Christ the Only Rest for the Weary and Heavy-Laden in the Ochorus library and notice how often Whitefield simply says, Come.
+
+### A PRAYER
+
+> Lord Jesus, You said, Come unto me, all ye that labour and are heavy laden. I come, not with my own righteousness but with my burden.
+> Thank You that no sinner is too far gone for You, and that You cast out none who come.
+> Make my heart as wide as Your invitation. Forgive me where I have narrowed it by pride, prejudice or fear.
+> Let me hold You out to others as freely as You have been offered to me. Amen.
+
+# Walking with God
+
+> And Enoch walked with God: and he was not; for God took him. GENESIS 5:24
+
+Whitefield is remembered as a preacher of beginnings — of conviction, conversion and the new birth. But he cared just as much about what came after. A new birth is the start of a life, and a life must be lived. His sermon Walking with God, preached on the brief and mysterious record of Enoch, is his fullest account of that life, and it is one of the gentlest and most practical things he wrote.
+
+## What it means to walk with God
+
+Whitefield begins by answering an objection: that God’s commands are impractical, contrary to flesh and blood. The life of Enoch, he says, is proof that they are not. Here was a man in a wicked generation who walked with God for three hundred years. What did that walking involve? Whitefield names four things.
+
+First, it implies that the enmity of the heart against God has been taken away by the Spirit. By nature the carnal mind is not merely an enemy to God but enmity itself. Two cannot walk together while one hates the other.
+
+Second, it implies that a person is actually reconciled to God through the righteousness and atonement of Christ.
+
+> Can two walk together, except they be agreed? AMOS 3:3
+
+Third, it implies a settled, abiding communion with God — the Holy Spirit dwelling in the heart not like a traveller who stays for a night but as a resident who makes His home there.
+
+Fourth, it implies progress. Walking, says Whitefield, supposes forward motion. A person who walks may move slowly, but he goes forward. So those who walk with God go from strength to strength and are changed into Christ’s image from glory to glory.
+
+> But we all, with open face beholding as in a glass the glory of the Lord, are changed into the same image from glory to glory, even as by the Spirit of the Lord. 2 CORINTHIANS 3:18
+
+## Seven means
+
+The heart of the sermon is Whitefield’s account of the means by which believers keep up their walk with God. There are seven, and they make a sensible rule of life.
+
+The first is reading God’s word. The second is secret prayer, which he calls “the very breath of the new creature,” the fan that keeps the spark of holy fire alive and raises it into a flame. The neglect of secret prayer, he warns, has been the door to many spiritual diseases.
+
+The third is meditation. Whitefield quotes Luther’s saying that prayer, reading, temptation and meditation make a minister, and adds that they make a Christian too. “Meditation to the soul, is the same as digestion to the body.” Reading without reflection leaves the word unabsorbed.
+
+> This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night. JOSHUA 1:8
+
+The fourth is watching the ways of God’s providence. If the hairs of our head are numbered, nothing happens by accident. “Every cross has a call in it,” says Whitefield, and every providence carries a lesson for those who attend to it.
+
+The fifth is watching the motions of the Spirit within, and giving oneself to be led by Him as a little child gives its hand to a parent.
+
+The sixth is keeping to God’s ordinances — public worship, the sacrament, the preaching of the word — which he calls conduit pipes through which God conveys His grace.
+
+The seventh is keeping company with those who walk with God. The first Christians kept their first love by continuing in fellowship with one another. Those who would walk with God should choose their companions accordingly.
+
+> He that walketh with wise men shall be wise: but a companion of fools shall be destroyed. PROVERBS 13:20
+
+## Why it is worth it
+
+Whitefield then gives three motives. Walking with God is honourable: if we would think it a great honour to be admitted to an earthly king’s council, how much more to walk with the King of kings. It is pleasant: he quotes the dying words of Matthew Henry, that a life spent in communion with God is the pleasantest life in the world. And it ends in heaven. He quotes Bishop Beveridge: though the way is narrow, it is not long, and though the gate is strait, it opens into everlasting life.
+
+He answers the objection that those who walk with God are often mocked and afflicted. Yes, he says, but the world’s scorn is no measure of honour, and there are inward joys the world knows nothing of.
+
+## Where care is needed
+
+Whitefield’s seven means are wise and time-tested, but they can be turned into a checklist, and a checklist can become a new covenant of works. Whitefield himself, before his conversion, had kept a far stricter rule than this and found no peace in it. The means are not the walk. They are the ways by which a person who has already been reconciled to God keeps company with Him. Their value lies in the Person they lead to.
+
+It is fair to add that Whitefield did not always keep his own counsel well. His relentless travelling left little room for the stillness and meditation he recommends, and his friends worried that he gave himself too little rest. A walk is a pace that can be kept for a lifetime. Some believers need to hear that as much as they need to hear the call to diligence.
+
+## A long walk home
+
+The phrase that sums up Enoch’s life is also the phrase that sums up his death: he was not, for God took him. After three hundred years of walking with God, the walk simply continued out of this world into the next. That, says Whitefield, is the end of every walker with God. The daily pace, the ordinary means, the steady company, all lead home.
+
+> Blessed are the undefiled in the way, who walk in the law of the LORD. PSALM 119:1
+
+### FOR REFLECTION AND ACTION
+
+1. Of Whitefield’s seven means — Scripture, secret prayer, meditation, attention to providence, attention to the Spirit, the ordinances, and godly company — which is weakest in your life? Choose one to strengthen this month.
+2. Set aside a fixed time for secret prayer each day this week, and guard it.
+3. After reading Scripture, spend five minutes turning one verse over in your mind. Let meditation do its digesting work.
+4. Think of a recent trouble. Ask what call God may be sounding in it.
+5. Consider your closest companions. Do they help you walk with God? Seek out one person who does.
+
+### A PRAYER
+
+> Lord God, Enoch walked with You, and You took him home. I want to walk with You too.
+> Thank You that through Christ the enmity is gone and I am reconciled to You. Now let me keep company with You day by day.
+> Teach me to read, to pray, to meditate and to watch for Your hand in all that happens. Give me companions who walk with You.
+> Keep me moving forward, however slowly, until my walk ends in Your presence. Amen.
+
+# Searching the Scriptures
+
+> Search the scriptures; for in them ye think ye have eternal life: and they are they which testify of me. JOHN 5:39
+
+Whitefield was not a scholar. He read Greek, as every Oxford man did, but he never wrote a commentary and seldom argued fine points of interpretation. What he did was read the Bible constantly, prayerfully and on his knees. As a young man, by his own account, he would read the Scriptures with Matthew Henry’s commentary open beside him, praying over the text line by line. His sermons are soaked in Scripture; hardly a sentence passes without a phrase from it. His short sermon The Duty of Searching the Scriptures sets out how he thought the Bible should be read, and it remains one of the best practical guides to Bible reading in the evangelical tradition.
+
+## What the Scriptures are for
+
+Whitefield begins with a diagnosis. When the Sadducees came to Christ with their riddle about the woman with seven husbands, He told them they erred, not knowing the Scriptures. If we asked where all the errors in the church came from, says Whitefield, we would find that most of them flowed from the same fountain: ignorance of the word of God.
+
+He then asks what the Bible is for. Its sum and substance, he answers, is two great truths: our fall in Adam and our recovery in Christ. The threats and promises, the precepts and the sacrifices, the histories and the prophecies, all either suppose that we are fallen or point to the Mediator who has come to restore us. The Scriptures are, in his phrase, the grand charter of our salvation.
+
+> And that from a child thou hast known the holy scriptures, which are able to make thee wise unto salvation through faith which is in Christ Jesus. 2 TIMOTHY 3:15
+
+## Seven directions
+
+Then he gives seven directions for reading the Bible with profit.
+
+First, always keep in view the end for which it was written — to show the way of salvation by Jesus Christ. “Look, therefore, always for Christ in the scripture.” He is the treasure hidden in the field of both Testaments: in the Old under prophecies, types and shadows, in the New manifested in the flesh. Keep Christ in view, says Whitefield, and He will be like the star in the east, leading you through every obscure passage.
+
+> And beginning at Moses and all the prophets, he expounded unto them in all the scriptures the things concerning himself. LUKE 24:27
+
+Second, read with a humble, teachable spirit. God hides the meaning of His word from those who are wise in their own eyes and reveals it to babes. Imagine yourself, he says, sitting with Mary at the feet of Jesus, ready to learn, and say with Samuel, Speak, Lord, for thy servant heareth.
+
+Third, read with a sincere desire to put into practice what you learn. “A desire to do the will of God is the only way to know it.” Christ promised that whoever is willing to do His will shall know whether His doctrine is from God.
+
+> If any man will do his will, he shall know of the doctrine, whether it be of God, or whether I speak of myself. JOHN 7:17
+
+Fourth, apply everything you read to your own heart. What was written aforetime was written for our learning. Paul says Christ loved me and gave Himself for me; so must every reader make the word personal.
+
+Fifth, labour for the Spirit by whom the Scriptures were written. The natural man cannot receive the things of the Spirit of God; they are spiritually discerned. Nicodemus, a teacher of Israel, could not understand the new birth because he lacked the Spirit who alone could explain it.
+
+Sixth, pray before, during and after reading. Whitefield’s counsel is intensely practical: ask Christ to send His Spirit before you open the book; send up short prayers as you read; “pray over every word and verse, if possible”; and when you close the book, ask God to engraft what you have read into your heart.
+
+> Open thou mine eyes, that I may behold wondrous things out of thy law. PSALM 119:18
+
+Seventh, read constantly. The word search, he says, alludes to those who dig in mines. We must take as much pains over the Bible as miners take for gold and silver. Read it not only devoutly but daily.
+
+## Word and Spirit together
+
+Whitefield was accused of enthusiasm, and he knew that some who shared his experience claimed to be led by the Spirit apart from Scripture. In this sermon he opposes them directly. Christ Himself, who had the Spirit without measure, answered every temptation with It is written. That alone, says Whitefield, confutes those who say the Spirit only, and not the Spirit by the word, is our rule. God now reveals Himself not by making new revelations but by applying what is already revealed. The Spirit and the word belong together: the Spirit to open the word, and the word to test every spirit.
+
+> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
+
+## Where care is needed
+
+Whitefield’s remark that God will direct the diligent reader in every particular case, as plainly as by the Urim and Thummim, needs some care. God does guide His people through His word, but He does not promise that every decision will be settled by a verse leaping off the page. Whitefield in his early years sometimes treated texts that struck him as direct guidance for particular choices, and was not always right. The Bible gives wisdom for decisions more often than it gives answers to them.
+
+He also wrote dismissively of plays, romances and polite literature, calling a taste for them vitiated. Many Christians since have found much that is good in good books. His underlying point stands, though: a heart that has no appetite for God’s word should ask why.
+
+## Dig
+
+The simplest lesson of the sermon is the hardest to keep: read the Bible, and read it every day, looking for Christ. Everything else Whitefield says is commentary on that. The Scriptures testify of Him, and those who search them with prayer will find Him there.
+
+> How sweet are thy words unto my taste! yea, sweeter than honey to my mouth! PSALM 119:103
+
+### FOR REFLECTION AND ACTION
+
+1. Set a daily time and place for reading Scripture, and keep it for the next thirty days.
+2. Before you read, pray briefly for the Spirit’s help. As you read, pray over what strikes you. When you finish, ask God to engraft it into your heart.
+3. In whatever passage you read this week, ask where Christ is — in promise, type, shadow or person.
+4. Choose one thing you have read and do it. Test Whitefield’s claim that the desire to do God’s will is the way to know it.
+5. Read The Duty of Searching the Scriptures in the Ochorus library and copy his seven directions into the front of your Bible.
+
+### A PRAYER
+
+> Lord Jesus, the Scriptures testify of You. Open my eyes to see You in every page.
+> Give me a humble and teachable heart, and a will ready to do what I learn.
+> Send Your Spirit, who wrote the word, to open it to me, and keep me from seeking any guidance that contradicts it.
+> Make Your word sweeter to me than honey, and let me dig in it daily as for hidden treasure. Amen.
+
+# Intercession Every Christian’s Duty
+
+> Brethren, pray for us. 1 THESSALONIANS 5:25
+
+Whitefield preached Intercession Every Christian’s Duty as a farewell, on the eve of leaving a congregation he did not expect to see again. His text is the shortest verse in Paul’s first letter to the Thessalonians: Brethren, pray for us. He could have preached it simply as a request for their prayers, and at the end he does make that request. But he takes the text much further, and turns it into a plea for a whole way of praying — one that looks outward from the self to the world.
+
+## Why love grows cold
+
+He begins with a question. Why is there so little love among Christians? Why is the very mark by which the world should know Christ’s disciples almost banished from the church? His answer is surprising. It is owing, in large part, he says, to the neglect of intercession — of praying for others.
+
+Some neglect it because they seldom pray even for themselves. But even those who pray faithfully are often so taken up with their own needs that they forget their brethren. Whitefield does not despise praying for oneself. A true Christian, he says, cannot help it: “you might as reasonably expect to find a living man without breath, as a true Christian without the spirit of prayer and supplication.” The sense of our own weakness and Christ’s fullness drives us to our knees. But it should not keep us there alone.
+
+> Bear ye one another’s burdens, and so fulfil the law of Christ. GALATIANS 6:2
+
+He points to Christ Himself. In His great prayer in John 17, on the night before He suffered, Christ asked little for Himself and much for His disciples. And in the prayer He taught us, every petition is in the plural: Our Father, give us, forgive us, lead us.
+
+## For whom to pray
+
+Whitefield then sets out, in order, those for whom we should intercede.
+
+First, all men. As God’s mercy is over all His works, and Christ died to redeem a people from every nation, so we should pray that all men may come to the knowledge of the truth.
+
+> I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men; for kings, and for all that are in authority; that we may lead a quiet and peaceable life in all godliness and honesty. 1 TIMOTHY 2:1–2
+
+Second, rulers — kings and all in authority. The burden of government is heavy, and the welfare of a whole people depends much on those who govern.
+
+Third, and with special insistence, ministers. Whitefield presses this hard. Much good is withheld from congregations, he suspects, because they do not pray for their pastors. People complain of the want of faithful ministers; but how can they expect them if they never ask God for them? It is ingratitude, he says, to receive the labour of a minister and never pray for him in return. And if a congregation prayed while its minister preached, it would see more fruit from his preaching and more love between pastor and people.
+
+Fourth, friends — and not in vague terms, but according to their particular circumstances. Moses prayed, Lord, heal her. The nobleman said, My little daughter lieth at the point of death. Abraham’s servant prayed in precise detail for a wife for Isaac, and was answered precisely. Such particular prayer, Whitefield admits, may oblige people to break away from set forms; but a deep sense of what we ask will give even the unlettered the words they need.
+
+Fifth, enemies. Christ commanded it and did it, praying for His murderers from the cross.
+
+Sixth, all who are afflicted in mind, body or estate, all who ask for our prayers, and all who do not pray for themselves.
+
+## What intercession does
+
+Whitefield then gives his reasons for making intercession a daily practice.
+
+It fills the heart with love. A person who prays daily for all mankind cannot long harbour envy, malice or revenge. Whitefield offers a piece of advice worth practising: when you hear of your neighbour’s faults, instead of repeating them to others, lay them before God in secret and ask Him to amend them. When you hear of a notorious sinner, instead of being angry, ask Christ to make him a monument of His grace.
+
+It is powerful. Scripture records intercession stopping plagues, opening and shutting heaven, and turning away God’s anger from His people. Abraham pleaded for Sodom; Moses stood in the gap for Israel; Elijah prayed and the rain came.
+
+> The effectual fervent prayer of a righteous man availeth much. JAMES 5:16
+
+And it joins us to the work of Christ. This is the most beautiful thing in the sermon. The risen Christ sits at the right hand of God and ever lives to make intercession for His people. So, says Whitefield, “he who is constantly employed in interceding for others, is doing that on earth, which the eternal Son of God is always doing in heaven.”
+
+> Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them. HEBREWS 7:25
+
+## Where care is needed
+
+In one place Whitefield speculates that the saints in glory may also intercede for the church on earth. He offers it tentatively, and it is a speculation Scripture does not settle; it is certainly no ground for praying to them, which he would have abhorred. It is also worth saying that he uses the word omnipotency of intercession, adding that he could almost say it. The qualification matters. Prayer is powerful because God is, and God remains free to answer as He wills.
+
+## A farewell request
+
+The sermon ends with Whitefield asking his hearers to pray for him, that nothing may move him from his duty, and that his eye may become more single. He admits he has been accused of selfish motives, and he does not claim to be above them; he asks for prayer that he may be purer still. It is a humble ending to a sermon about looking beyond oneself.
+
+> Praying always with all prayer and supplication in the Spirit, and watching thereunto with all perseverance and supplication for all saints. EPHESIANS 6:18
+
+### FOR REFLECTION AND ACTION
+
+1. Begin a written list of people to pray for, following Whitefield’s order: the world, those in authority, your ministers, your friends, your enemies and the afflicted.
+2. Pray for your pastor by name every day this week, and tell him or her that you are doing so.
+3. When you next hear of someone’s fault, do not repeat it. Take it to God instead.
+4. Choose one person who has wronged you and pray for their good each day for a month.
+5. Read Intercession Every Christian’s Duty in the Ochorus library, and set apart a fixed time each day for praying for others.
+
+### A PRAYER
+
+> Lord Jesus, You ever live to make intercession for Your people. Teach me to join You in that work.
+> Enlarge my prayers beyond myself. Let me pray for the world, for those who govern, for those who teach me, for my friends and for my enemies.
+> When I hear of others’ faults, turn my tongue to prayer instead of gossip, and fill my heart with Your love.
+> Hear my prayers for others, not because they are strong but because You are, and You delight to answer. Amen.
+
+# The Great Duty of Family Religion
+
+> And if it seem evil unto you to serve the LORD, choose you this day whom ye will serve; whether the gods which your fathers served that were on the other side of the flood, or the gods of the Amorites, in whose land ye dwell: but as for me and my house, we will serve the LORD. JOSHUA 24:15
+
+Whitefield spent his life in public — in pulpits, fields and crowded halls. It is striking, then, that one of his most careful sermons is about the most private of places: the home. The Great Duty of Family Religion, preached on Joshua’s famous resolution, argues that the church’s health depends on what happens in ordinary households when no preacher is present. A congregation is only as strong as its homes.
+
+## A little parish
+
+Whitefield begins with a lament. Visit the churches, he says, and you may still see something of the form of godliness; but it is scarcely to be found in private houses. Were the angels to come and look at our homes, as they once visited Abraham’s tent, would they find the fear of God there? The early Christians did not think religion was confined to public worship. Paul speaks of the church in their house.
+
+> Likewise greet the church that is in their house. ROMANS 16:5
+
+The head of a household, Whitefield argues, must act in three capacities: “as a prophet, to instruct: as a priest, to pray for and with; as a king, to govern, direct, and provide for them.” Most are diligent enough in the third, he observes drily; they provide for their families well and are, if anything, too anxious about it. It is the first two they neglect.
+
+He presses the point with an image that stays in the mind: “every house is as it were a little parish.” We are quick to blame the minister who neglects his flock. But a parent who takes no thought for the souls in his care is guilty of the same fault on a smaller scale. Would we not think a pastor who said he had enough to do minding his own salvation without troubling about his people’s a strange kind of shepherd? And yet that is how many heads of households live.
+
+## Three means
+
+Whitefield names three ways in which a household should serve the Lord together.
+
+The first is reading the word of God. Moses commanded Israel to teach God’s words diligently to their children, to talk of them when sitting in the house and walking by the way. Children and servants, says Whitefield, are often ignorant of God’s law; who is more fitted to teach them than those they live with every day?
+
+> And these words, which I command thee this day, shall be in thine heart: and thou shalt teach them diligently unto thy children, and shalt talk of them when thou sittest in thine house, and when thou walkest by the way, and when thou liest down, and when thou risest up. DEUTERONOMY 6:6–7
+
+The second is family prayer. Reading prepares for prayer, and prayer makes reading effectual. Every family has common blessings to give thanks for, common troubles to pray against and common sins to confess; how can this be done without praying together? Christ prayed with His disciples, His little family, and promised His presence where two or three are gathered in His name. Whitefield concludes sharply that those who live without family prayer may well be living without God in the world.
+
+The third is catechising — patiently instructing children and others in the household in the principles of the faith. God said of Abraham that He knew he would command his children and his household after him to keep the way of the Lord.
+
+> Train up a child in the way he should go: and when he is old, he will not depart from it. PROVERBS 22:6
+
+## The objection of busyness
+
+Whitefield knew the objection that would be raised: this will take too much time from business. His answer is that Abraham, David and Joshua were busier than any of his hearers, and yet they found time. Abraham ruled a great household; David ruled a kingdom; Joshua led a nation into its land. If they could lead their homes in the worship of God, so can a tradesman.
+
+## Five motives
+
+He ends with five motives. Gratitude: God has given you a household, and you owe it to Him to lead it in His service. Love for your children: parents seldom forget their children’s bodies, but how rarely do they remember their souls? Justice: those who serve in your house give you their time and strength; you owe them care for their souls in return. Self-interest: godly children and honest servants are the fruit of a godly home. And the judgement to come, when every head of a household will give account of the souls entrusted to him.
+
+> One that ruleth well his own house, having his children in subjection with all gravity. 1 TIMOTHY 3:4
+
+## Where care is needed
+
+Whitefield’s sermon assumes the household of his time, with a father as its governor and servants living under his roof. The principle transfers readily to homes of every shape: whoever leads a household, mother or father, single parent or grandparent, carries the same charge to teach, to pray and to guide.
+
+But a harder word is needed. The servants of his day, above all in the American colonies, included enslaved people, and Whitefield speaks of the justice owed to servants who give their strength to their masters — while defending a system that took that strength by force. His counsel that masters should care for the souls of those who serve them is right as far as it goes, but it did not go nearly far enough. Care for a person’s soul that ignores his chains is not the love Christ commands. Chapter sixteen takes this up.
+
+There is also a personal irony. Whitefield, who wrote so well about family religion, was rarely at home. His marriage was not a close one, and his only child died in infancy. He gave himself to the world and had little left for his own house. His sermon is sounder than his example, and it is fair to take the sermon and learn from the example too.
+
+## As for me and my house
+
+Joshua made his resolution publicly, before the whole nation, whatever others chose. Whitefield’s plea is that every Christian household should do the same. It does not require eloquence, only faithfulness: an open Bible, a shared prayer, a patient answer to a child’s question. These small things, repeated for years, are how faith passes from one generation to the next.
+
+> For I know him, that he will command his children and his household after him, and they shall keep the way of the LORD, to do justice and judgment. GENESIS 18:19
+
+### FOR REFLECTION AND ACTION
+
+1. If you lead a household, ask honestly which of Whitefield’s three roles — to instruct, to pray, to provide — you neglect most.
+2. Begin, or renew, a simple practice of reading Scripture and praying together at home, even if only for a few minutes a day.
+3. Ask whether you care as much for the souls of those in your house as for their comfort and success.
+4. If you do not lead a household, pray for a family you know, and ask whether you could encourage them in this.
+5. Guard against Whitefield’s own failure: do not let public service crowd out faithfulness at home.
+
+### A PRAYER
+
+> Lord God, as for me and my house, we will serve You. Make that resolution true in my home.
+> Teach me to read Your word with those I love, to pray with them and for them, and to guide them gently in Your ways.
+> Forgive me where I have cared for their bodies and neglected their souls, or served others and forgotten my own.
+> Let our home be a little church, where Your name is honoured and Your presence known. Amen.
+
+# Friends Who Differed
+
+> Endeavouring to keep the unity of the Spirit in the bond of peace. EPHESIANS 4:3
+
+The two most famous preachers of the eighteenth-century revival in England were friends. George Whitefield and John Wesley had prayed together in the Holy Club at Oxford. It was Whitefield who first went into the fields and then drew the reluctant Wesley after him; it was Wesley who took up the work in Bristol while Whitefield sailed for America. And within two years of that first open-air sermon at Kingswood they were publicly divided over one of the deepest questions in theology. How they handled that division is one of the most instructive things in Whitefield’s life, and one of the most honourable.
+
+## The quarrel
+
+The question was predestination. Whitefield, from his early reading and his own experience of grace, had come to hold the Reformed doctrine that God chooses His people freely and that those whom He calls will persevere to the end. Wesley rejected it, believing that it made God the author of the damnation of the lost and undercut both holiness and evangelism. In 1739 Wesley preached a sermon called Free Grace attacking the doctrine, and in 1740 he published it, against Whitefield’s earnest request that he should not. Whitefield, then in America, answered with a long public letter at the end of 1740.
+
+The letter was sharp, and so were the months that followed. Followers on both sides took up the quarrel, and some of them were far less charitable than their leaders. The societies divided. For a time the two men were estranged, and Whitefield felt it deeply.
+
+> But if ye bite and devour one another, take heed that ye be not consumed one of another. GALATIANS 5:15
+
+## The reconciliation
+
+What is remarkable is not that they quarrelled but that they did not let the quarrel become enmity. Within a few years they were reconciled in heart. They never came to agree on election, and neither pretended otherwise. But they preached in each other’s chapels, corresponded affectionately and spoke of one another with respect. Whitefield refused to build a rival movement. When he might have gathered a large Calvinistic party of his own, he declined to lead it, and he is remembered as saying that he was content for his own name to perish so long as Christ was glorified.
+
+By the end of his life the friendship was settled. Whitefield asked that Wesley should preach his funeral sermon, and in his will he left mourning rings to both John and Charles Wesley as a token of the union of heart that remained between them, notwithstanding their difference on some points of doctrine. When the news of Whitefield’s death reached London in 1770, Wesley did preach for him, before a vast congregation, and spoke warmly of his friend’s love, his generosity and his gospel.
+
+## The image of the Master
+
+This was not merely a personal kindness. It grew out of what Whitefield taught about the church. In his sermon The Folly and Danger of Being Not Righteous Enough he puts it plainly: the Spirit of God is the centre of unity, and “wherever I see the image of my Master, I never inquire of them their opinions; I ask them not what they are, so they love Jesus Christ in sincerity and truth,” but embrace them as brother and sister. Those who leave the room when a Christian of another opinion enters, he adds, show the spirit of the devil.
+
+> By this shall all men know that ye are my disciples, if ye have love one to another. JOHN 13:35
+
+In Marks of Having Received the Holy Ghost he describes one sign of the Spirit’s work as the gradual breaking down of “the partition wall of bigotry and party zeal,” so that the nearer a person comes to heaven, the wider his heart grows. And in his farewell sermon of 1769, The Good Shepherd, he reminds his London congregation that Scripture does not divide people into Baptists and Independents, Methodists and Presbyterians: “Jesus Christ divides the whole world into but two classes, sheep and goats.” In the same sermon he says, “Witness against me, if I ever set up a party for myself,” and at its close, “I do not care what shepherds keep you, so as you are kept near the great Shepherd and Bishop of souls.”
+
+> For as the body is one, and hath many members, and all the members of that one body, being many, are one body: so also is Christ. 1 CORINTHIANS 12:12
+
+## Truth and love together
+
+It would be a mistake to think Whitefield did not care about the doctrine. He cared very much. He believed election was taught in Scripture and was a great comfort to believers, and he said so publicly, even to his dearest friend. He did not think unity required silence about truth.
+
+But he learned to distinguish between the doctrines that make a person a Christian and those on which Christians may differ. Wesley and he both preached the new birth, justification by faith and the necessity of holiness. They disagreed on how grace works in the choosing of the saved. Whitefield came to see that this, grave as it was, did not put Wesley outside the circle of Christ’s sheep.
+
+> Him that is weak in the faith receive ye, but not to doubtful disputations. ROMANS 14:1
+
+## Where care is needed
+
+Whitefield’s catholic spirit was real but not unlimited. He could be scornful of Arminians in print, as his sermon The Lord Our Righteousness shows, linking them with papists and infidels in a way that did not match his warmth toward Wesley in person. He was also harsher toward Roman Catholics than a reader today would be comfortable with, as were nearly all Protestants of his day. And his public letter of 1740, though sincere, included personal remarks about Wesley that he later regretted. His practice of charity grew with the years; it did not arrive fully formed.
+
+There is also a warning here for those who admire his breadth. Unity in the gospel is not the same as indifference to it. Whitefield embraced those who loved Christ in sincerity; he did not embrace every opinion that called itself Christian. The breadth he modelled has a centre, and the centre is Christ.
+
+## The last word
+
+The finest proof of what Whitefield believed about friendship across disagreement is the picture of Wesley, the man who had preached against his doctrine, standing in Whitefield’s own chapel to preach his funeral sermon. They had argued for thirty years. They were buried as brothers. Whichever of them was right about election, both were right about this.
+
+> Behold, how good and how pleasant it is for brethren to dwell together in unity! PSALM 133:1
+
+### FOR REFLECTION AND ACTION
+
+1. Think of a Christian with whom you differ on a serious point of doctrine. Can you see in them the image of the Master? Thank God for it.
+2. Distinguish in your own mind between the truths that make a person a Christian and those on which Christians may differ. Write them down.
+3. If there is a broken friendship in your life over a disagreement, take one step toward reconciliation this month, without pretending the disagreement does not exist.
+4. Examine how you speak about Christians of other traditions when they are not present. Would you say it to their face?
+5. Read The Good Shepherd in the Ochorus library, and notice how Whitefield speaks of other ministers in his farewell.
+
+### A PRAYER
+
+> Lord Jesus, You prayed that Your people might be one. Forgive me for the pride and party spirit that divide Your body.
+> Give me courage to hold Your truth firmly, and grace to love those who see it differently.
+> Break down the partition wall of bigotry in my heart. Let me embrace Your image wherever I see it.
+> Keep me, and all Your sheep, near to You, the great Shepherd, until we are gathered into one fold. Amen.
+
+# Bethesda and Its Shadow
+
+> Pure religion and undefiled before God and the Father is this, To visit the fatherless and widows in their affliction, and to keep himself unspotted from the world. JAMES 1:27
+
+For thirty years one earthly work held George Whitefield’s heart more than any other: an orphan house in Georgia. He called it Bethesda, after the pool in Jerusalem where the sick waited for healing — the house of mercy. He begged for it in the fields of England and Scotland and the streets of Philadelphia and Boston. He poured his own money into it. On his deathbed at Newburyport he prayed for it. And it was for Bethesda that he did the thing that most darkens his memory: he campaigned for slavery in Georgia and became an owner of enslaved human beings. This chapter must hold both together, because they cannot honestly be separated.
+
+## The house of mercy
+
+When Whitefield first came to Georgia in 1738, the colony was young and struggling, and he found many children left orphaned by the hardships of settlement, scattered in a forlorn condition. He resolved to build them a home. The first brick was laid in March 1740, some miles outside Savannah. For the rest of his life Whitefield raised money for it wherever he preached, and Bethesda became a byword for his generosity. Benjamin Franklin, who thought the house should have been built in Philadelphia and went to hear Whitefield determined to give nothing, recorded in his Autobiography that by the end of the sermon he had emptied his pockets into the collection.
+
+Whitefield’s teaching on charity was consistent with the work. In The Great Duty of Charity Recommended he pleads with the rich to consider the poor, rebukes those who spend at horse races and masquerades what could relieve the hungry, and says bluntly, “if we have not charity, we are not Christians.” He insists that he is not asking for himself, and he was scrupulous about the accounts: Bethesda’s books were examined, and he was shown never to have taken a penny of its funds for his own use.
+
+> He that hath pity upon the poor lendeth unto the LORD; and that which he hath given will he pay him again. PROVERBS 19:17
+
+In January 1770, months before his death, he preached at Bethesda before the governor and assembly of Georgia, a sermon now in his Selected Sermons. He traced the providence of God in the house’s history, gave thanks for those who had helped, and declared his wish that “Bethesda shall be always on a broad bottom,” open to all denominations, as all denominations had given to it. He hoped to see it grow into a college.
+
+## The shadow
+
+Georgia had been founded with a ban on slavery. Its trustees had forbidden it for reasons both moral and practical, wanting a colony of free, industrious smallholders. Whitefield came to believe that the colony, and his orphan house with it, could not prosper without enslaved labour. In letters to the trustees he argued that the ban should be lifted, and he pressed the point for years.
+
+He did not wait for the law to change. In 1747 he used money given to him to buy a plantation in South Carolina, where slavery was legal, and enslaved people to work it, so that its income might support Bethesda. When Georgia’s ban was repealed at the start of the 1750s — a change he had campaigned for and welcomed — enslaved people were brought to work at Bethesda itself. Whitefield owned enslaved men, women and children for the rest of his life. When he died, his will left the orphan house, with the people enslaved there, to the Countess of Huntingdon.
+
+> And he that stealeth a man, and selleth him, or if he be found in his hand, he shall surely be put to death. EXODUS 21:16
+
+It cannot be said that he did not know better. In 1740 he had published an open letter rebuking the planters of the southern colonies for their cruelty to those they held, and warning them of God’s judgement. In his letters he admitted that the manner in which Africans had been brought from their homeland was wrong and the trade not to be approved. But he reasoned that since slavery would continue in any case, he might use it for a charitable end, and treat those he owned more kindly than others did, and teach them the gospel. It was the reasoning of a man who wanted the good he could do more than he feared the evil he was doing.
+
+> Woe unto him that buildeth his house by unrighteousness, and his chambers by wrong; that useth his neighbour’s service without wages, and giveth him not for his work. JEREMIAH 22:13
+
+## What must be said
+
+There is no way to soften this, and no Christian should try. Whitefield preached that Christ had died for enslaved Africans as well as for others, and that in Christ there is neither bond nor free. He told them they might be the children of God. He then bought and held them as property to fund an orphanage. The same man who saw that a collier had a soul, and that a slave had a soul, looked at the system that bound them and chose to profit by it.
+
+Some defend him by saying he was a man of his time. That is true, and it explains much, but it does not excuse him. Others in his time saw more clearly. Quakers such as John Woolman were already bearing witness against slavery, and within a generation evangelicals shaped by the revival Whitefield helped to lead, John Wesley and John Newton among them, would condemn it outright. The light was available. Whitefield did not walk in it.
+
+> He hath shewed thee, O man, what is good; and what doth the LORD require of thee, but to do justly, and to love mercy, and to walk humbly with thy God? MICAH 6:8
+
+## What we may learn
+
+The first lesson is humility. If a man so used by God, so earnest in prayer, so free with his money, so eager for the salvation of the poor, could be so blind, then none of us may assume we are not. The sins most dangerous to us are often the ones our society approves and our own good causes seem to require.
+
+The second is that good ends do not sanctify evil means. Bethesda was a work of mercy. It was built in part on injustice. The orphans were fed, and other children were enslaved to feed them. God does not need our sin to accomplish His purposes.
+
+The third is that the gospel Whitefield preached was greater than his practice. The truth that Christ died for all, that every soul is precious, that in Him there is neither bond nor free, carried within it the end of slavery, and later generations of believers drew that conclusion even when he would not.
+
+> Not now as a servant, but above a servant, a brother beloved. PHILEMON 1:16
+
+## Reading him honestly
+
+Readers of Whitefield should not look away from this chapter of his life, and they should not let it cancel everything else. Both things are true: he was a faithful preacher of Christ, and he did a great wrong. The proper response is neither to excuse him nor to dismiss him, but to learn, to repent of our own blind spots, and to love justice and mercy together.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask God to show you any injustice that you, your community or your church accepts because it is normal or convenient.
+2. Examine a good cause you care about. Is any part of it built on means that wrong others?
+3. Read Galatians 3:28 and Philemon 1:16 slowly, and ask what they require of you in how you treat people who serve you or work for you.
+4. Learn something this month about the history of slavery and the church in your own country, and pray about what you learn.
+5. Give generously and privately to a work of mercy for children, as Whitefield taught, and make sure it is a work done justly.
+
+### A PRAYER
+
+> Lord God, You are the Father of the fatherless and the defender of the oppressed. You see what we will not see.
+> I confess that Your servants have done great wrong in Your name, and that my heart is no less capable of blindness than theirs.
+> Open my eyes to injustice I have excused. Keep me from doing evil that good may come.
+> Teach Your church to do justly, to love mercy and to walk humbly with You, and let no one we serve be wronged by our hands. Amen.
+
+# Conclusion
+
+> I have fought a good fight, I have finished my course, I have kept the faith. 2 TIMOTHY 4:7
+
+Fourteen chapters can make it look as though George Whitefield preached a great many things. He preached one thing, and everything else was that one thing applied. The one thing is this: true religion is a work of God in the heart, by which a sinner is born again, joined to Christ and clothed in His righteousness.
+
+Follow it through and the whole shape appears. The new birth is that work begun. The method of grace is the way God brings a sinner to it, stripping away every false peace. Christ our righteousness is its ground, the robe that covers us before God. The indwelling Spirit is its life. The almost Christian is the man who has everything but it; the unconverted minister is the preacher who has never known it. The open field is where Whitefield carried it when the churches would not have it, and the offer of Christ to all is its open door. Walking with God, searching the Scriptures, intercession and family religion are the ordinary means by which the life it begins is kept and fed. And friendship across disagreement is what it looks like when two people who have received it look at one another.
+
+## The danger of this book
+
+If you have read this far, you are in some danger, and Whitefield would have named it first. It is possible to admire the new birth without being born again. It is possible to learn the method of grace and never have peace spoken to your heart. It is possible to read a whole book about an evangelist and remain, in his own terrible phrase, an almost Christian.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+So the plainest counsel this book can give is this. Do not close it with a vague sense of having been stirred. Ask Whitefield’s question of yourself: has God done a work in my heart? If you are not sure, go to Christ, as Whitefield urged thousands to go, without anything of your own. If you are sure, then go back to the chapter that made you least comfortable, and take its application points slowly over the coming months.
+
+## Two things to carry
+
+First, carry the question of the new birth. Not as a source of anxiety but as a matter of first importance. You do not need to remember the day it happened. You do need to know whether Christ lives in you — whether you trust Him, love Him and are being changed by Him. Everything else can wait for that.
+
+> Examine yourselves, whether ye be in the faith; prove your own selves. Know ye not your own selves, how that Jesus Christ is in you, except ye be reprobates? 2 CORINTHIANS 13:5
+
+Second, carry the open door. Whitefield’s gospel was for colliers and countesses, for the respectable and the notorious, for the young women of Fetter Lane and the enslaved of the southern colonies. There is no one to whom you may not offer Christ, and no one to whom He will not come. The weariest are the most welcome.
+
+## A last word about the man
+
+We have been honest about his failures. He censured other ministers harshly and rashly in his early years, and he admitted it. He was an actor by gift, and the drama of his preaching sometimes carried his hearers further than the Spirit did; he knew that too. He neglected his home. And above all, he campaigned for slavery in Georgia and owned enslaved people to support his orphan house, knowing the trade to be wrong. That last failure is not a blemish on an otherwise spotless life. It is a grave sin, and his admirers should grieve over it rather than explain it away.
+
+None of this has been said to diminish the good he did. It has been said because his own gospel requires it. A man whose whole message was that our best duties are filthy rags before God, that self-righteousness is the last idol, and that only Christ’s righteousness can stand, cannot be honoured by pretending he had a righteousness of his own. He would have been the first to say that whatever was good in him was grace.
+
+> Not unto us, O LORD, not unto us, but unto thy name give glory, for thy mercy, and for thy truth’s sake. PSALM 115:1
+
+On the last day of his life, weary and ill, he preached for nearly two hours in the open air. Before he went out, he is remembered as praying that, though he was weary in his Lord’s work, he was not weary of it, and asking to speak for Him once more in the fields. Early the next morning he died, and was buried, as he had asked, beneath a pulpit. It is a fitting resting place. For thirty-four years the servitor from the Bell Inn had stood up wherever he could find a place to stand and told whoever would listen that they must be born again, and that Christ was offered to them freely. The message outlived the voice. It is offered to you.
+
+### FOR REFLECTION AND ACTION
+
+1. Answer Whitefield’s question honestly before God: has He done a work in my heart? Write down your answer and why.
+2. Return to the chapter of this book that made you least comfortable, and choose one application point to work on for a month.
+3. Think of one person you have never told about Christ. Pray for an opportunity, and take it when it comes.
+4. Ask God to show you any blind spot, like Whitefield’s, that your society or your good causes have hidden from you.
+5. Choose one of Whitefield’s sermons from the Reader’s Guide that follows, and read it this week.
+
+### A PRAYER
+
+> Lord Jesus, I have read about the new birth, the righteousness You give and the Spirit You send. Do not let me be only a reader.
+> If I am not born again, bring me to new birth; if I am, carry on the work You have begun.
+> Give me a heart as open as Your invitation, and eyes clearer than Your servant’s were to the wrongs around me.
+> And as You gave George Whitefield strength to preach You to the last, give me grace to follow You to the end. Amen.
+
+# A Reader’s Guide to George Whitefield
+
+> These were more noble than those in Thessalonica, in that they received the word with all readiness of mind, and searched the scriptures daily, whether those things were so. ACTS 17:11
+
+Whitefield is easy to read and hard to capture. He was a preacher, not an author, and print could never hold what hearers described. Some of his later sermons were taken down in shorthand as he spoke, and they keep the rush and repetition of speech. Read them aloud if you can. What he left is chiefly sermons, journals and letters, and the guide below is arranged to help the reader find the best of them.
+
+## Begin here
+
+The Method of Grace. The best single sermon to start with: the way to true peace with God, and the difference between it and false peace. In the Ochorus library, both on its own and in the Selected Sermons.
+
+The Lord Our Righteousness. His fullest statement of imputed righteousness and the gospel of free grace. In the Ochorus library.
+
+Walking with God. The gentlest and most practical of his sermons, on the means of keeping up communion with God. In the Ochorus library.
+
+## The Selected Sermons
+
+The Ochorus library holds fifty-nine of Whitefield’s sermons in one volume, Selected Sermons of George Whitefield. Among those used in this book are On Regeneration and Marks of a True Conversion on the new birth; The Almost Christian; The Indwelling of the Spirit, the Common Privilege of All Believers and Marks of Having Received the Holy Ghost; Christ the Only Rest for the Weary and Heavy-Laden and Christ the Best Husband on the offer of Christ; The Duty of Searching the Scriptures; Directions How to Hear Sermons; Intercession Every Christian’s Duty; The Great Duty of Family Religion; The Great Duty of Charity Recommended; the sermon preached at Bethesda before the governor and assembly of Georgia in 1770; and his last London sermon, The Good Shepherd. Several of these, including Marks of a True Conversion, Intercession Every Christian’s Duty and Christ the Believer’s Wisdom, Righteousness, Sanctification and Redemption, are also in the Ochorus library as separate sermons.
+
+## His own story
+
+A Short Account of God’s Dealings with the Reverend Mr. George Whitefield (1740) tells the story of his early life and conversion, and a Further Account continues it. His Journals, published in parts from 1738 onward, record his early voyages and preaching tours. They are vivid and immediate, and they contain the rash judgements of other ministers discussed in chapter eight; read them with that in mind. Neither is yet in the Ochorus library.
+
+His letters, gathered after his death in the collected Works edited by John Gillies, show him at his warmest and most human. They also contain his correspondence about Bethesda and slavery, which should be read by anyone who wants the whole man.
+
+## About Whitefield
+
+John Gillies, Memoirs of the Life of the Reverend George Whitefield (1772), is the first biography, by a Scottish minister who knew him. Luke Tyerman, The Life of the Rev. George Whitefield (two volumes, 1876–77), is a detailed Victorian life drawing heavily on letters and newspapers. Arnold Dallimore, George Whitefield: The Life and Times of the Great Evangelist of the Eighteenth-Century Revival (two volumes, 1970 and 1980), is the fullest modern life, warm and admiring. Harry S. Stout, The Divine Dramatist (1991), is a critical study of Whitefield as a performer and a pioneer of publicity; it is sharper than many evangelicals find comfortable, and it is worth reading for that reason. Thomas S. Kidd, George Whitefield: America’s Spiritual Founding Father (2014), is a balanced recent biography that treats his faith seriously and his slaveholding honestly. J. C. Ryle’s chapter on him in The Christian Leaders of the Last Century (1869), later reissued as Christian Leaders of the Eighteenth Century, is a short and affectionate introduction. The Ochorus author page carries a shorter biography.
+
+## Approach with care
+
+His writings on Georgia and slavery, in his letters and published appeals, should be read as a warning and not a model. His early Journals should be read alongside his later admission that he had judged too hastily. And his polemical passages against Arminians and Roman Catholics belong to the controversies of his age; take the gospel and leave the heat.
+
+## Three counsels for reading him
+
+Read him with the Bible open. Whitefield’s sermons are threaded with Scripture, often quoted from memory; check the texts, and let them lead you further than he does.
+
+Read him for the heart rather than the style. The rhetoric of the eighteenth century can seem overblown today. Look past it to the man who could not bear that anyone should go away without Christ.
+
+And read him honestly. Do not make him a saint without shadow, nor a villain without grace. He was a sinner who preached a Saviour, and the Saviour is the point.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21

@@ -1,0 +1,1350 @@
+---
+description: A concise, faithful guide to the heart of Corrie ten Boom’s witness — that the love of God is deeper than the deepest darkness, that forgiveness is an act of obedience which God Himself makes real, and that Jesus is Victor. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Corrie ten Boom’s ministry, naming her books for the reader’s own further study.
+about: |
+  This is a companion to Corrie ten Boom, not a book by her. Written by Ochorus, it sets out in sixteen short chapters the teaching for which the Dutch watchmaker of Haarlem is chiefly remembered — God’s care in the small things, the love of God that reaches deeper than any pit, thanksgiving in everything, the forgiveness of enemies as an act of the will that God answers with His own love, the casting of every care upon Him, the fullness of the Holy Spirit, and the sure hope of Christ’s return. It opens with an account of her life and closes with a conclusion and a guide to her books.
+  
+  It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Corrie ten Boom. All descriptions of her teaching are the present author’s own summaries; her books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Corrie ten Boom’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what she taught.
+  
+  Corrie ten Boom never claimed to be a theologian. She called herself a witness, and she spent more than thirty years pointing away from her own courage to the faithfulness of God in the darkest place she had known. This volume tries to honour that by doing the same: telling what she taught plainly, marking honestly where later retellings differ from her earliest account, and sending the reader on to Christ.
+---
+
+# Introduction
+
+> Thou art my hiding place and my shield: I hope in thy word. PSALM 119:114
+
+Corrie ten Boom is one of the few people in the Ochorus library who is remembered less for what she wrote than for what happened to her. For most of her life she was a watchmaker in Haarlem, an unmarried woman who lived above the family shop with her father and her elder sister, went to church, ran clubs for girls and mended clocks. She was nearly fifty when the war reached her door. Within four years she had hidden Jews in her own bedroom, been betrayed and arrested, lost her father in prison and her sister in Ravensbrück, and walked out of that camp alone. She spent the rest of her long life telling the world what she had learned there.
+
+What she had learned was not complicated, and she never pretended it was. She said it in a hundred ways, to audiences in more than sixty countries, in accented English, with a handkerchief, a piece of embroidery or a torch in her hand to make the point. God’s love is deeper than the deepest darkness. Forgiveness is possible, not because we can produce it, but because God gives the love He commands. Worry is to be cast on the Lord and left there. The Christian is to be filled with the Holy Spirit and to live as a light in a dark world. And over all of it, Jesus is Victor — the old cry that had hung on a wooden plaque in the ten Boom house on the morning the police came.
+
+## The one thread
+
+If there is one thread running through everything she taught, it is this: the God who was present in Ravensbrück is present everywhere. She did not discover Him there. She had known Him, she said, since she was a small child. But the camp tested what she knew, and she came out with the conviction that there is no place so dark, no loss so great and no heart so bitter that God cannot reach into it. Her sister Betsie, dying, had pressed that conviction upon her, and Corrie carried it for the next forty years as a charge from the dead.
+
+> If I ascend up into heaven, thou art there: if I make my bed in hell, behold, thou art there. PSALM 139:8
+
+Every chapter of this book is a variation on that theme. Her teaching on God’s care in small things is that truth applied to ordinary days in a watch shop. Her teaching on thanksgiving is that truth applied to the barracks. Her teaching on forgiveness is that truth applied to the enemy standing in front of you with his hand out. Her teaching on worry is that truth applied to tomorrow. And her hope of Christ’s return is that truth carried to the end of history.
+
+## How this book is arranged
+
+A chapter on her life comes first. Then sixteen short chapters set out her teaching. The first group follows her from the watch shop into the war: God’s providence in the small things, the family’s love for the Jewish people, the Bible carried into the camp, thanksgiving in everything, Betsie’s faith that no pit is deeper than God’s love, and the presence of Christ in suffering. The second group gathers her teaching on forgiveness, which was the heart of her public ministry: the confession of hatred, the famous encounter with a former guard, and the humbler, daily work of forgiving friends. The last group follows the themes of her travelling years: worry and trust, the hidden pattern of providence, surrender, the fullness of the Spirit, prayer and the promises of God, obedience, and the return of Christ. A conclusion and a reader’s guide close the book.
+
+Each chapter ends with application points and a prayer. She would have wanted that. She was a practical woman who distrusted religion that stayed in the head, and nearly every talk she gave ended with an invitation to do something — to receive Christ, to confess a sin, to forgive someone, to hand over a burden. Read a chapter at a time. Stop at the application points. Pray the prayer, or better, pray your own.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+## What this book is not
+
+A word must be said plainly about the limits of this companion. Corrie ten Boom’s books remain in copyright, and this volume reproduces none of her words. Where it describes her teaching, it does so in its own language, and it names the book or recorded address in which the reader may find her own telling. Ochorus hosts several of her recorded addresses — How to Forgive, Power in Prayer, The Greatest of These Is Love, The Love of Christ, Total Surrender and Tribulation — and these, together with the Ochorus biography Portraits of Courage – Corrie ten Boom, are the ground on which this summary chiefly stands. The reader who wants her voice should go to her books.
+
+## Where to read her with care
+
+This is not a book of hero-worship, and she would have been the first to object if it were. Three cautions should be carried through these pages.
+
+The first concerns her stories. Corrie told her life many times over nearly forty years, and a story told thousands of times does not stay exactly the same. Her first account of the camps was written in 1945, within months of her release. The Hiding Place, the book through which most people know her, was written with John and Elizabeth Sherrill and published in 1971, a quarter of a century later, and some of its best-loved scenes — the fleas in the barracks, her release described as a clerical error, the meeting with the guard in Munich, Betsie’s saying about the pit — do not appear in the earlier book, or appear there in a different form. None of this makes her dishonest. It is what happens to memory, especially the memory of a preacher. But it means that the careful reader should know which telling is which, and this book will say so where it matters. The vivid dialogue of The Hiding Place is the Sherrills’ craft as well as her memory, and should not be treated as a transcript.
+
+The second concerns her sayings. A great many pithy lines circulate online under her name. Some are hers. Some were borrowed by her from others, and she often said so. Some she never said at all. A reader who wants to quote Corrie ten Boom should find the line in one of her books first.
+
+The third concerns her later emphases. In her travelling years she moved in wide circles, and some of her teaching on demons, on spiritual gifts and on the events of the last days will not persuade every reader. She used Scripture as a preacher rather than a scholar, and she cheerfully admitted it. Where she is plainly faithful to the Word — on the love of God, the cross, forgiveness, prayer and trust — receive her gladly. Where she presses beyond what is written, weigh it, and lose nothing by setting it aside.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21
+
+She would have agreed. She was not asking anyone to believe in Corrie ten Boom. She was asking them to believe in the God who had kept her.
+
+### FOR REFLECTION AND ACTION
+
+1. Before reading further, write down the darkest place your own life has taken you so far. Keep the page. Return to it at the end of this book.
+2. Ask yourself honestly whether you believe that God was present there. Tell Him plainly what you believe and what you do not.
+3. If you have read The Hiding Place or seen the film, note which scenes you remember most. Hold them lightly as you read what follows.
+4. Choose one of the recorded addresses named above and listen to it or read it this week, before going further.
+5. Pray for one person you know who is in a dark place now, and ask God to show you whether you are meant to do more than pray.
+
+### A PRAYER
+
+> Lord God, You were in the watch shop and in the prison, in the barracks and in the long years of travel that followed. I believe You are here too.
+> As I read of one woman’s witness, do not let me admire her and remain unchanged. Turn my eyes from her courage to Your faithfulness.
+> Show me the darkness in my own heart that I would rather not bring into Your light, and meet me there.
+> Teach me to trust You, to forgive as You have forgiven me, and to believe that Jesus is Victor. Amen.
+
+# The Watchmaker of Haarlem
+
+> He that is faithful in that which is least is faithful also in much: and he that is unjust in the least is unjust also in much. LUKE 16:10
+
+A house of clocks. Cornelia ten Boom was born in Amsterdam on 15 April 1892, the youngest of five children, and brought as a baby to Haarlem, where her father kept a watch shop in a narrow old house on the Barteljorisstraat. The family called the house the Beje, after the street. Her grandfather Willem had opened the shop in 1837; her father, Casper, had learned the trade at the same bench and would work there almost all his life. The household was Dutch Reformed, devout and warm, crowded with aunts, and ordered around the reading of the Bible at meals. Everyone called the youngest daughter Corrie, and the name stayed on the covers of her books.
+
+A child’s prayer. She told audiences all her life that she had asked the Lord Jesus into her heart when she was five years old, and that He had never left her. Her mother, as Corrie remembered it, noticed at once that the little girl began to pray for other people — among them the drinkers in a street behind the house. It is a small, domestic beginning, and it is typical of her. Nothing in her story begins with a trumpet.
+
+A sister and a father. Of her siblings, the one who mattered most to her was the eldest, Elisabeth, always called Betsie, born in 1885 — quiet, orderly, never strong, and possessed of a faith that Corrie admired all her life and sometimes found unsettling. Their brother Willem became a minister of the Dutch Reformed Church and a student of the roots of modern antisemitism. Their sister Nollie married and became a teacher. Their mother died in 1921 after a long decline through a series of strokes. And their father, Casper, was the fixed point of the house: gentle, humorous, prayerful, better at talking to customers about God than at sending them bills, and possessed of a settled love for the Jewish people drawn straight from the Scriptures he read aloud every day.
+
+A disappointment in love. Corrie never married. In The Hiding Place she tells of a young man she hoped would marry her, and who instead married a woman his family thought more suitable. She remembered her father coming up to her room afterwards and counselling her not to kill the love she felt but to give it to God and let Him direct it elsewhere. The story rests on her own account alone, but she believed it had shaped her life, and the love she might have given to a family went instead to a very great many other people.
+
+The first woman watchmaker. In the early 1920s Corrie moved from the kitchen to the shop, and learned her father’s trade in earnest, including a period of training in Switzerland. In the 1920s — 1924, by the museum’s record, though other sources give 1921 or 1922 — she became the first woman licensed as a watchmaker in the Netherlands. For twenty years she worked at the bench beside her father, repairing mechanisms so small that a grain of dust could stop them. It is a detail her later fame has overshadowed, and it deserves remembering. Before she was a rescuer or a prisoner or a preacher, she was a skilled professional woman, faithful in very small things.
+
+The least of these. Alongside the shop she ran clubs for girls and young women, with camps, music and Bible study, and from about 1921 she taught the Christian faith to people with intellectual disabilities, whom most of the churches of her day overlooked entirely. The family also took in foster children. None of this made the newspapers. All of it, looking back, was preparation.
+
+> Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me. MATTHEW 25:40
+
+The hiding place. Germany invaded the Netherlands in May 1940. As the persecution of Dutch Jews tightened, the ten Booms were drawn into the underground, and the old house, full of odd corners and with a constant stream of customers to cover the traffic, became a link in a chain that moved Jews and resistance workers to safety. A secret room was built behind a false wall in Corrie’s own bedroom on the top floor. Guests were drilled until they could vanish into it in about a minute. Corrie, by then in her fifties, found herself organising ration cards, safe addresses and couriers. The museum that keeps the house today estimates that the family and the wider network of which it was part helped save some eight hundred people — most of them sheltered not in the Beje but at safe addresses elsewhere. It is an estimate for the whole network, not a count of those who passed through the house.
+
+The raid. On 28 February 1944 the family was betrayed. The house was raided and two or three dozen people were arrested, Corrie, Betsie and their father among them. The police never found the secret room. The six people hidden behind the wall — four Jews and two resistance workers — stood there in silence for some two and a half days before they could be brought out. Not all of them survived the war. Mary van Itallie was arrested again within days at a new address and died at Auschwitz on 1 May 1944. Meijer Mossel, the cantor the household called Eusie, lived to see the liberation. Casper ten Boom, eighty-four years old, died in prison in The Hague about ten days after his arrest. He had told friends who warned him of the danger that he would count it an honour to give his life for God’s ancient people.
+
+Scheveningen, Vught, Ravensbrück. Corrie spent months in solitary confinement in the prison at Scheveningen, then was held with Betsie at the camp at Vught in the Netherlands, and in September 1944 the sisters were taken east to Ravensbrück, the great women’s concentration camp north of Berlin. Corrie had managed to bring a small Bible with her through the search. In an overcrowded, vermin-ridden barracks the two sisters held Bible readings for the women around them, sometimes more than once a day, in several languages. Betsie, growing weaker, met the place with a faith that Corrie said unsettled everyone around her, including herself. She died in the camp on 16 December 1944, aged fifty-nine.
+
+Released. At the very end of December 1944 Corrie was discharged. Years later she was told it had been a clerical error, and in The Hiding Place she tells it that way; her 1945 account suggests the sisters had expected a fixed term to run out, and no document confirms a mistake. Whatever the cause, the danger she escaped was real: within weeks the camp began gassing the sick and the old. She came home to Haarlem in the Hunger Winter, alone. Her nephew Kik would die in Bergen-Belsen; her brother Willem died of an illness contracted in prison in 1946.
+
+A tramp for the Lord. What she did next is the reason this book exists. By June 1945 her first account of the camps was in print. That same month she wrote to the man she understood to have betrayed the family and told him she forgave him. She opened a home near Haarlem for people coming back from the camps, and later one in Darmstadt, in Germany, for refugees and displaced people. From 1946, when she first crossed the Atlantic with almost no money, she travelled for more than thirty years, in more than sixty countries, including behind the Iron Curtain, with no settled home, preaching the love of God and the forgiveness of enemies. She called herself a tramp for the Lord, and made it the title of a book.
+
+The telling. In 1967 Yad Vashem recognised her as one of the Righteous Among the Nations. In 1971 she told the whole story in The Hiding Place, written with John and Elizabeth Sherrill; a film followed in 1975. The book made a Dutch watchmaker and her dead sister known all over the world.
+
+The silent years. In 1977 she settled at last in Placentia, California. A stroke in 1978 took most of her speech, and further strokes left her bedridden. For five years the woman who had spoken to audiences on every continent could say almost nothing, and she was nursed by companions who later wrote of the love that still came through her silence. She died on 15 April 1983, her ninety-first birthday.
+
+> Even to your old age I am he; and even to hoar hairs will I carry you. ISAIAH 46:4
+
+She would not have wanted her life remembered as a story of courage. She would have wanted it remembered as a story of God’s faithfulness to an ordinary household that opened its door, and to a frightened woman who found Him in the darkest place human beings have made.
+
+### FOR REFLECTION AND ACTION
+
+1. Corrie was nearly fifty before the events for which she is remembered. Name one quiet faithfulness in your present life that you have been treating as a waiting room.
+2. Consider who are the least in your own community — the people most churches overlook. Take one concrete step toward one of them this month.
+3. Casper ten Boom’s convictions were settled long before they were tested. Write down one conviction you hold that has never yet cost you anything.
+4. Read the account of the raid in The Hiding Place or in the Ochorus biography, and pray for those in your own day who hide the hunted at risk to themselves.
+5. If you are in a season of loss or of silence, ask God to show you how He might still use you there.
+
+### A PRAYER
+
+> Father, You were in the narrow house in Haarlem, in the prison cell and in the barracks, and You carried Your servant to the end.
+> Make me faithful in small things, in the work no one praises, so that I may be found faithful if greater things are asked of me.
+> Give me a heart that opens its door to the stranger and the hunted, and a love for Your ancient people that does not wait until it is safe.
+> And when my own strength fails, carry me, as You promised, even to old age. Amen.
+
+# Faithful in That Which Is Least
+
+> Who hath despised the day of small things? ZECHARIAH 4:10
+
+The story of Corrie ten Boom is usually told as though it began in 1942, when the first Jewish refugee knocked at the door of the Beje. It did not. It began half a century earlier, at a watchmaker’s bench, in a household where God was expected to be interested in very small things. Before she taught anyone about Ravensbrück, she had spent twenty years learning that a mechanism keeps good time only if every hidden part does its work. It is not fanciful to think that the lesson went deep. Her whole teaching about God’s care rests on it.
+
+## God’s name on the shop
+
+Corrie liked to tell audiences about her father’s attitude to the business. In the recorded address Total Surrender, now in the Ochorus library, she recalls that Casper ten Boom used to say, in effect, that his own name was painted over the watch shop but that God’s name really belonged there. The shop was not a secular compartment of a religious life. It was the place where the religion was lived. He prayed over it, talked to customers about God in it, and ran it with a generosity that made it a poor business and a rich household.
+
+> And whatsoever ye do, do it heartily, as to the Lord, and not unto men. COLOSSIANS 3:23
+
+This is the first mark of her teaching on providence, and it is worth noticing how unlike a theory it is. She did not argue that God governs the details of life; she took it for granted, because she had grown up in a house that took it for granted. Every meal began with the Bible. Every week the family prayed for the peace of Jerusalem, as the household had done for generations. A customer’s watch, a neighbour’s trouble, a child’s bedtime prayer were all matters for God. When the great tests came, they came to people who already expected Him to be present in small rooms.
+
+## Sent back to the maker
+
+She had a way of turning her trade into parables. In Power in Prayer she remembers that when new watches arrived at the shop that did not keep time, she did not try to repair them herself. She sent them back to the manufacturer, who knew how they were made. She told her hearers that she did the same with her faith. When it would not run, she did not tinker with it; she sent it back to Jesus, whom Scripture calls its author and finisher.
+
+> Looking unto Jesus the author and finisher of our faith. HEBREWS 12:2
+
+The point is a good one, and it is the heart of what she meant by trusting God in small things. Most anxious Christians try to repair their own faith. They examine it, measure it, worry that it is too small, and try harder to believe. Corrie’s counsel, drawn from the workbench, was to stop looking at the mechanism and look at the Maker. In the same address she borrows a saying of Hudson Taylor’s — that what we need is not great faith but faith in a great God — and she adds the Lord’s own word about the mustard seed. The size of faith was never the point. Its object was.
+
+> If ye have faith as a grain of mustard seed, ye shall say unto this mountain, Remove hence to yonder place; and it shall remove. MATTHEW 17:20
+
+## Nothing too small
+
+In the same address she puts her whole doctrine of providence into a single contrast: nothing is too small for God’s love, and nothing is too great for His power. The first half of that sentence is the harder one to believe. Most of us will readily agree that God rules nations and galaxies. We are less sure He cares about a lost key, a sick cat, a difficult colleague or a watch that runs five minutes slow. We feel that such things are beneath Him, and so we carry them ourselves.
+
+Jesus corrected exactly that feeling.
+
+> Are not two sparrows sold for a farthing? and one of them shall not fall on the ground without your Father. But the very hairs of your head are all numbered. MATTHEW 10:29–30
+
+A sparrow was the cheapest thing in the market. A hair is the most trivial thing about a person. The Lord chose both deliberately. If God attends to sparrows and counts hairs, then there is no detail of your life too small to bring to Him, and none too small for Him to use.
+
+## A prayer of seventy-five years
+
+Corrie’s favourite illustration of this was a story from her own life, told in Power in Prayer. As a very small child she had prayed, day after day, for the people of a rough street behind the family house. It was the kind of prayer adults smile at: a five-year-old asking God to save a whole street. Seventy-five years later, after she had spoken on Dutch television, she received a letter from a woman whose husband had lived in that very street for many years and had been moved by what he heard. She took it as an answer to a child’s prayer, and she told the story to encourage people who had prayed for years and seen nothing.
+
+> The steps of a good man are ordered by the LORD: and he delighteth in his way. PSALM 37:23
+
+The lesson she drew was simple. No prayer is lost. God’s answers are often slow, but they are sure, and some of the joys of heaven, she thought, would be the discovery of answers we never saw on earth. Keep praying for the son, the husband, the neighbour, the street.
+
+## Faithful in little
+
+There is a second side to her teaching on small things, and it concerns not God’s faithfulness but ours. The years at the watchmaker’s bench, the girls’ clubs and the classes for disabled people were not glamorous. No one praised them. Yet when the underground needed people who could keep many threads in their hands, organise ration cards, remember addresses, drill guests with a stopwatch and do the same careful thing correctly every day, the ten Booms were ready, because they had been practising faithfulness in little for decades.
+
+> Moreover it is required in stewards, that a man be found faithful. 1 CORINTHIANS 4:2
+
+That is a word for anyone who thinks their real life has not yet started. The quiet years are not a waiting room. They are a workshop. God forms in them the habits He will need later — patience, precision, reliability, the instinct to make room for others. Corrie did not know, at forty, what she was being prepared for. Neither do we.
+
+## A caution about signs
+
+It must be said, in fairness, that a doctrine of providence in small things can go wrong. Some Christians begin to read every coincidence as a message and every small event as a sign, and end by making decisions on the strength of a parking space. Corrie told many stories of striking answers to prayer, and she told them with delight. She did not, however, teach people to live by omens. Her confidence was in God’s character, not in her own ability to decode His ways, and she was quite willing to say that much of His working is hidden from us until the end. We will return to that theme when we come to the underside of the embroidery.
+
+The balance is the one the Lord Himself gave. The Father feeds the birds; therefore do not be anxious. That is a reason for trust, not a system for guidance. We are to bring everything to Him, expect His care in everything, and leave the interpretation to Him.
+
+> Casting all your care upon him; for he careth for you. 1 PETER 5:7
+
+### FOR REFLECTION AND ACTION
+
+1. Name one area of your daily work that you have treated as outside God’s interest. Pray over it tomorrow before you begin.
+2. Is your faith in need of repair? Instead of examining it again, spend ten minutes this week simply looking at Christ in one of the Gospels.
+3. Bring one small, even trivial, worry to God today in plain words, and leave it with Him.
+4. Think of someone you have prayed for over many years without visible answer. Renew that prayer now, and resolve not to stop.
+5. Do one unnoticed task this week with the same care you would give it if it were going to be praised.
+
+### A PRAYER
+
+> Father, You number the hairs of my head and see the sparrow fall. Forgive me for thinking any part of my life too small for You.
+> I bring You my work, my home and the little tasks no one sees. Let Your name be over them.
+> When my faith will not run true, I send it back to You, its Author and Finisher. Mend what I cannot mend.
+> Keep me faithful in little, and prepare me now for whatever You will ask of me later. Amen.
+
+# God’s Ancient People
+
+> Pray for the peace of Jerusalem: they shall prosper that love thee. PSALM 122:6
+
+The ten Booms did not decide to hide Jews in 1942. In a sense they had decided it long before, over a century of family prayers. When the persecution came, what they did was not a sudden heroism but the natural outworking of something they had believed all their lives: that the Jewish people were beloved of God, and that a Christian who loved God could not stand by while they were hunted. This chapter is about that conviction, where it came from, and what it asks of the church.
+
+## A household that prayed for Jerusalem
+
+Casper ten Boom read the Bible aloud to his family every day, and he read it as a book about Israel as well as about the church. God had chosen Abraham and his seed. He had given them the covenants, the law and the prophets. Through them the Messiah had come. And God, as Paul insisted, had not cast them off.
+
+> Who are Israelites; to whom pertaineth the adoption, and the glory, and the covenants, and the giving of the law, and the service of God, and the promises; whose are the fathers, and of whom as concerning the flesh Christ came. ROMANS 9:4–5
+
+The Ochorus biography records that the family prayed regularly for the peace of Jerusalem, and that in the Amsterdam years of his marriage Casper had Jewish neighbours and friends whom he honoured. His phrase for the Jewish people, which his daughter remembered all her life, was God’s ancient people. It is not a sentimental phrase. It is a theological one. It says that the Jews are not a distant religious category or a problem to be managed, but the people to whom God first bound Himself, and to whom He remains bound.
+
+> I say then, Hath God cast away his people? God forbid. ROMANS 11:1
+
+## The star he meant to wear
+
+When the German authorities ordered every Jew in the Netherlands to wear a yellow star in 1942, Casper, then in his eighties, intended to collect one and wear it himself. His family talked him out of it; the gesture would have achieved nothing but his own arrest. But the instinct tells us who he was. The suffering of his Jewish neighbours was not their problem. It was his.
+
+He paid for that conviction with his life. Friends warned him that if he went on sheltering so many Jews he would end up in prison, and in his frail state would not survive it. He answered, as Corrie recorded in her earliest account, that he would count it an honour to give his life for God’s ancient people. Ten days after the raid on the Beje he was dead.
+
+## A child tucked into bed
+
+Corrie’s own turning point, as she described it in 1945, was undramatic. She was visiting a Jewish doctor one evening when his small child called down to remind him that he had not come up to say goodnight. She heard the father playing with his children upstairs, and as she waited she realised what could happen to that family on any night. Out of that ordinary moment came a resolve to help the Jews wherever she could.
+
+There is something important in the smallness of it. Most of the great refusals in history begin not with a vision but with a face. Corrie did not first form a policy on the persecution of the Jews and then act on it. She saw a father and his children and could not look away.
+
+> If thou forbear to deliver them that are drawn unto death, and those that are ready to be slain; if thou sayest, Behold, we knew it not; doth not he that pondereth the heart consider it? PROVERBS 24:11–12
+
+## Such a time as this
+
+It must be said honestly that most Dutch Christians did not do what the ten Booms did. The churches did protest against the deportations, and thousands of ordinary Dutch people hid Jews at mortal risk. But the great majority kept their heads down and hoped the storm would pass. That was understandable. The penalties were severe and the occupation long. Most of us, if we are honest, would probably have done the same.
+
+That is exactly why the ten Booms matter. They were not powerful. They were an old watchmaker and two middle-aged daughters with no weapons, no influence and very little money. What set them apart was a settled conviction that the lives of their Jewish neighbours were their responsibility before God. The words of Mordecai to Esther could have been written for them.
+
+> For if thou altogether holdest thy peace at this time, then shall there enlargement and deliverance arise to the Jews from another place; but thou and thy father’s house shall be destroyed: and who knoweth whether thou art come to the kingdom for such a time as this? ESTHER 4:14
+
+God did not need the ten Booms in order to preserve His people. But He had placed them in Haarlem, in that house, at that moment, with that century of prayer behind them, and they would answer for what they did with the position He had given them. So will we.
+
+## A Christian love, and an unconditional one
+
+The ten Booms’ love for the Jewish people was a Christian love, and it should be described honestly. Corrie’s brother Willem worked for a Dutch society that combined care for Jewish people with Christian mission among them, and the family longed for Jews to know Jesus as their Messiah. Paul’s longing was theirs.
+
+> Brethren, my heart’s desire and prayer to God for Israel is, that they might be saved. ROMANS 10:1
+
+Some modern readers find that combination uncomfortable. But what is striking is that in the years that mattered most, the ten Booms’ love did not wait for anyone to agree with them. They sheltered Jews as Jews, because they were people in mortal danger and because they were God’s ancient people. They asked nothing in return. A love that makes its help conditional on a hearing for the gospel is not the love of Christ. The ten Booms kept the two things in their right order: first the life, and then, where it was welcome, the witness.
+
+## What the church owes
+
+Corrie drew from all this a lesson for the church that she pressed on audiences for the rest of her life, though never in the form of a political programme. God’s promise to Abraham still stands.
+
+> And I will bless them that bless thee, and curse him that curseth thee: and in thee shall all families of the earth be blessed. GENESIS 12:3
+
+That verse should be handled with care. It is not a charter for any particular state policy, and those who use it to settle modern political questions should remember that the ten Booms applied it to a frightened family at the back door. But its core is plain. The church that despises the Jewish people despises the people from whom its Saviour came, and cuts at the root that bears it. The long history of Christian contempt for the Jews, which made the murders of the twentieth century thinkable, is a sin for which the church must repent, not an embarrassment it can forget.
+
+> For the gifts and calling of God are without repentance. ROMANS 11:29
+
+In 1967 Yad Vashem recognised Corrie as one of the Righteous Among the Nations; forty years later it honoured her father and Betsie too. A tree was planted for her in Jerusalem. The family that had prayed for the peace of that city for a hundred years was remembered there. It is the kind of answer to prayer she loved.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Romans chapters nine to eleven at one sitting, and note what Paul says about God’s faithfulness to Israel.
+2. Examine your own speech and your church’s habits for any contempt, however casual, toward the Jewish people. Confess it and put it away.
+3. Pray this week for the peace of Jerusalem, and for Jewish neighbours and communities near you by name.
+4. Ask yourself which group of people in your own society is most vulnerable today. What would it mean to see one face among them, as Corrie saw the doctor’s child?
+5. Learn the story of one rescuer or one family of Jews from your own country during the war, and tell it to someone younger than you.
+
+### A PRAYER
+
+> God of Abraham, Isaac and Jacob, You have not cast away Your people, and Your gifts and calling are without repentance.
+> Forgive Your church for every contempt it has shown to the people of whom, as concerning the flesh, Christ came.
+> Give me a love that does not wait until it is safe, and that sees the face in front of me rather than the danger behind it.
+> I pray for the peace of Jerusalem, and for all who are drawn unto death in my own day. Show me what You would have me do. Amen.
+
+# The Bible in the Barracks
+
+> Unless thy law had been my delights, I should then have perished in mine affliction. PSALM 119:92
+
+If you had asked Corrie ten Boom what kept her alive in Ravensbrück, she would not have said courage, or luck, or even her sister, though she loved Betsie more than anyone. She would have said the Word of God. A small Bible, carried against every rule into one of the worst places in Europe, sits at the centre of her story, and the lesson she drew from it runs through all her later teaching. When everything else is taken away, what you have hidden in your heart remains.
+
+## One page each
+
+In the recorded address Tribulation, now in the Ochorus library, Corrie tells of the days after the arrest in February 1944. Members of the family had each managed to keep a single page of Scripture hidden somewhere about them. She asked one what she had, and heard that it was the first chapter of Ephesians; another had the eighth chapter of Romans. For a time that was all they had. It sounds a small thing. To a prisoner it was an inheritance.
+
+She tells too of her months in solitary confinement at Scheveningen. Every morning she sang a hymn aloud, and heard it taken up from a cell further along the corridor. Every text she knew by heart she said aloud so that others could hear. There was one thing, she said, that no one could take from her, and that was what she had learned by heart.
+
+> Thy word have I hid in mine heart, that I might not sin against thee. PSALM 119:11
+
+That is the first and most practical point of this chapter. Corrie urged every audience she addressed to write down the promises of Scripture and learn them by heart while they still had Bibles, against the day when they might not. It sounded alarmist in comfortable Western churches. It did not sound alarmist to believers behind the Iron Curtain, or to her.
+
+## Past the search
+
+When the sisters were processed at Ravensbrück in September 1944, everything the prisoners carried was taken from them. Corrie had a small Bible, printed for the underground, and she was determined to keep it. By her account she hid it with a little warm underwear, put them on again beneath her thin prison dress, and walked through a line of guards who were searching every woman. The woman in front of her was searched. The woman behind her was searched. She was not.
+
+She believed all her life that God had hidden her, and in her addresses she says she had prayed for His angels to surround her. Her earliest account of the camps, written in 1945, already speaks of angels at the processing building; the story is not a late embellishment. Readers will judge it according to what they believe about God’s dealings with His people.
+
+> Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation? HEBREWS 1:14
+
+One does not have to share every detail of her interpretation to be moved by the result. Two middle-aged Dutch women entered Ravensbrück carrying a Bible, and it would be read aloud, day after day, to hundreds of women.
+
+## Readings in Barracks 28
+
+The barracks in which the sisters lived had been built for a few hundred prisoners and held, by the end, well over a thousand. It was filthy, crowded and crawling with vermin. There, with their hidden Bible, they held readings every day, sometimes twice. Corrie read and preached; Betsie prayed and comforted. As the Ochorus biography records from her earliest account, the women listening were Dutch and Belgian, French, Polish and Russian, Protestant and Catholic together. Where they had no language in common, the sisters would say the name of Jesus, and faces would change. Corrie reflected that there would be no separate Protestant and Catholic quarters in heaven, so there was no reason for them in Ravensbrück.
+
+> Let the word of Christ dwell in you richly in all wisdom; teaching and admonishing one another in psalms and hymns and spiritual songs, singing with grace in your hearts to the Lord. COLOSSIANS 3:16
+
+It is worth pausing on what this meant. In a place designed to reduce women to numbers, the reading of Scripture restored them to persons addressed by God. The camp said they were nothing. The Book said they were loved, bought with a price and awaited in their Father’s house. Many of the women who heard those readings died in the camp. Corrie said afterwards that many of them died with the name of Jesus on their lips, and that this alone made the sisters’ imprisonment worthwhile.
+
+> Wherein I suffer trouble, as an evil doer, even unto bonds; but the word of God is not bound. 2 TIMOTHY 2:9
+
+## A red suitcase in Moscow
+
+The Bible in the barracks became, in her travelling years, a Bible in the suitcase. Corrie took Scripture into Communist countries wherever she could. In Power in Prayer and in The Greatest of These Is Love she tells of arriving in Moscow with a suitcase full of Russian Bibles and watching a customs officer ransack every bag in the line. She prayed, with her hand on a verse in Jeremiah, that God would watch over His word. She says she saw, for the only time in her life, bright figures around her case. When the officer reached her, he waved her through and carried the heavy suitcase to her car himself.
+
+> Then said the LORD unto me, Thou hast well seen: for I will hasten my word to perform it. JEREMIAH 1:12
+
+She was candid, and rather funny, about the use she had made of the verse. She knew perfectly well that Jeremiah was not speaking about Bibles in luggage, and she said so to her audiences: God does not first ask for a sound exegesis before He hears a frightened woman’s prayer. That is true, and it is also a caution. Praying a promise is one thing; building doctrine on a verse torn from its setting is another. Corrie did the first freely and seldom the second. Her readers should keep the distinction she kept.
+
+## A famine of the Word
+
+Behind all this lay a conviction she took from others as well as from her own experience. In Tribulation she recalls a missionary bishop who had worked for many years in China and who told her, after his expulsion, what he most regretted. He had not taught ordinary believers to study and teach the Bible for themselves, and he had not taught them how to be strong in persecution. When the missionaries and the clergy were gone, the church had only what its members carried inside them.
+
+> Behold, the days come, saith the Lord GOD, that I will send a famine in the land, not a famine of bread, nor a thirst for water, but of hearing the words of the LORD. AMOS 8:11
+
+Most readers of this book own several Bibles and read none of them as often as they read the news. Corrie’s witness is a rebuke to that. The Word she was willing to risk her life to carry is lying unopened on our shelves.
+
+> The grass withereth, the flower fadeth: but the word of our God shall stand for ever. ISAIAH 40:8
+
+### FOR REFLECTION AND ACTION
+
+1. Choose one chapter of Scripture — Romans 8, Ephesians 1 or Psalm 91 are good places to start — and begin to learn it by heart this month.
+2. If you were allowed to keep only one page of the Bible, which would it be? Read it again today, slowly.
+3. Keep a notebook of promises for hard times, as Corrie urged, adding one each week.
+4. Pray for believers today who have no Bible, or who risk their freedom to own one, and consider supporting those who supply them.
+5. Examine how much time you give to Scripture compared with the news and your phone. Make one specific change this week.
+
+### A PRAYER
+
+> Lord, Your word is not bound. It went into the prison and the barracks when nothing else could, and it did not return to You empty.
+> Forgive me for leaving it unopened while I have it freely. Give me an appetite for it, as for bread.
+> Help me to hide it in my heart now, so that no one can take it from me later.
+> And strengthen all who carry Your word into dangerous places, and all who wait for it in the dark. Amen.
+
+# In Every Thing Give Thanks
+
+> In every thing give thanks: for this is the will of God in Christ Jesus concerning you. 1 THESSALONIANS 5:18
+
+Of all the stories Corrie ten Boom told, the one most often retold by others is the story of the fleas. It is short, it is surprising, and it has the shape of a parable. It is also a story that needs to be told carefully, because the way it reached print tells us something about how her testimony grew, and because the lesson inside it is harder than the charm of the telling suggests.
+
+## The story as The Hiding Place tells it
+
+In The Hiding Place, published in 1971, Corrie recounts that when she and Betsie were moved into their permanent barracks at Ravensbrück, they found it overcrowded, filthy and infested with fleas. Corrie was near despair. Betsie reminded her of Paul’s command to the Thessalonians and insisted that they give thanks for everything in their new home, the fleas included. Corrie thought this absurd, and said so. She gave thanks anyway, because her sister asked her to. Only weeks later did they discover why the guards never came into the part of the barracks where the Bible readings were held. The supervisors would not enter because of the fleas. The very thing Corrie had resented had protected the one work that made their imprisonment bearable.
+
+It is a wonderful story, and the lesson is plain. God can use what we hate. Thanksgiving is not a reward for understanding; it comes first, and understanding, if it comes at all, comes later.
+
+## What the earlier account says
+
+The careful reader should know where the story first appears. As the Ochorus biography sets out, the fleas and Betsie’s thanksgiving for them are not in Corrie’s first account of the camps, written in 1945. That book speaks instead of lice, says that women from other barracks were reluctant to visit because of them, and says that as the camp grew more crowded, supervision grew slack and the Bible readings could continue undisturbed. In her recorded addresses on Ochorus, such as The Greatest of These Is Love, Corrie herself tells a version in which it is the lice that kept the guards away, and she sums it up by saying that God had used both angels and lice.
+
+None of this makes the story false. Corrie may well have remembered Betsie’s thanksgiving clearly and simply not included it in 1945. The insect may have changed in the telling while the substance did not. What is certain is that the lesson was Betsie’s. Her whole life in the camp, as the earliest account describes it, was an exercise in giving thanks in everything.
+
+## In, and for
+
+Paul’s command is stronger than we usually allow.
+
+> Rejoice evermore. Pray without ceasing. In every thing give thanks: for this is the will of God in Christ Jesus concerning you. 1 THESSALONIANS 5:16–18
+
+Elsewhere he goes further still.
+
+> Giving thanks always for all things unto God and the Father in the name of our Lord Jesus Christ. EPHESIANS 5:20
+
+How can a Christian give thanks for fleas, for a concentration camp, for a sister starving to death? The answer is not that evil is secretly good. Betsie never called Ravensbrück good; she called it hell. The answer is that God is sovereign over evil and will not let it have the last word. We give thanks not because the thing is good, but because God is present in it and will bring good out of it. The thanks are directed to Him, not to the circumstance.
+
+> But as for you, ye thought evil against me; but God meant it unto good, to bring to pass, as it is this day, to save much people alive. GENESIS 50:20
+
+Joseph did not thank his brothers. He thanked God who had overruled them. That is the shape of Christian thanksgiving in suffering.
+
+## Appealing higher
+
+Betsie’s habit of thanksgiving was part of a larger way of seeing. The Ochorus biography records from the 1945 account an incident in the quarantine barracks, when the women were being driven out to roll call again and again until they could barely stand. Someone proposed complaining to the camp commander. Betsie said it would do no good; they must appeal higher, to the One who rules the world. The women learned later that the commander was a brutal man and that complaint would have been dangerous. Betsie was not being pious. She was being realistic about where help actually lay.
+
+In Power in Prayer Corrie remembers a day of particular horror in the barracks, a day on which a fellow prisoner was beaten to death. That evening Betsie, who had spent her day comforting a sleepless Polish woman with whom she shared no language, turned to Corrie and remarked on what a joyful day it had been. Corrie was astonished. But she came to understand that the worst that can befall a child of God still leaves the best untouched — that the presence of Christ is not cancelled by the cruelty of men.
+
+> Although the fig tree shall not blossom, neither shall fruit be in the vines; the labour of the olive shall fail, and the fields shall yield no meat; the flock shall be cut off from the fold, and there shall be no herd in the stalls: yet I will rejoice in the LORD, I will joy in the God of my salvation. HABAKKUK 3:17–18
+
+## The sacrifice of praise
+
+Thanksgiving in such places is not natural. Scripture calls it a sacrifice.
+
+> By him therefore let us offer the sacrifice of praise to God continually, that is, the fruit of our lips giving thanks to his name. HEBREWS 13:15
+
+A sacrifice costs something. Corrie did not feel thankful for the fleas. She offered thanks because it was commanded and because her sister asked, and she did it through gritted teeth. That is worth saying to anyone who thinks thanksgiving must be sincere in the sense of spontaneous before it counts. The thanks that God asks of us in the dark are an act of the will before they are a feeling of the heart. We will meet exactly the same principle when we come to forgiveness.
+
+> And at midnight Paul and Silas prayed, and sang praises unto God: and the prisoners heard them. ACTS 16:25
+
+Notice the last clause. The prisoners heard them. Thanksgiving in suffering is never a private exercise. The women of Barracks 28 heard two sisters give thanks in hell, and some of them came to Christ because of it.
+
+## When the reason never comes
+
+One honest word must be added. In the fleas story the reason for thanksgiving arrives within weeks. In most of life it does not. Corrie gave thanks for Betsie’s faith, and Betsie died. She gave thanks in Ravensbrück, and never learned on earth why many of the women she loved were killed. Thanksgiving that depends on seeing the reason will fail at the moment it is most needed.
+
+> And we know that all things work together for good to them that love God, to them who are the called according to his purpose. ROMANS 8:28
+
+Paul says we know this. He does not say we see it. The thanks we give in the dark rest on the character of God, not on our ability to trace His purposes. Sometimes, as with the fleas, He lets us glimpse them. Often He does not. Corrie would later use the image of the underside of an embroidery for exactly this, and we will come to it. For now it is enough to say: give thanks in every thing, and leave the explanation to Him.
+
+### FOR REFLECTION AND ACTION
+
+1. Name the flea in your present circumstances — the thing you most resent. Give thanks to God in it today, aloud, even if you do not feel it.
+2. Keep a list for one week of things you thanked God for that you did not feel thankful for. Review it at the end of the week.
+3. Before you complain to anyone about a difficulty this week, take it first to God, appealing higher.
+4. Think of someone near you in a dark place. Could your thanksgiving, like Paul and Silas’s, be heard by them?
+5. Read Habakkuk chapter three and make its last verses your own prayer.
+
+### A PRAYER
+
+> Father, You are Lord over the barracks and the fleas, over what I resent and what I cannot understand.
+> I do not feel thankful for all that has come to me, but I choose to give You thanks in it, because You are present and You are good.
+> Where You show me the reason, let me rejoice. Where You do not, let me trust You still.
+> Make my thanksgiving a sacrifice You accept, and let others hear it and turn to You. Amen.
+
+# No Pit So Deep
+
+> Out of the depths have I cried unto thee, O LORD. PSALM 130:1
+
+The sentence most closely associated with the ten Boom sisters was not Corrie’s. It was Betsie’s. As Corrie recounts it in The Hiding Place, her sister, dying in Ravensbrück, told her that they must go out afterwards and tell people what they had learned there: that there is no pit so deep that God’s love is not deeper still. Corrie carried that charge for the next forty years. If her whole ministry could be reduced to a single claim, it would be this one. This chapter is about what it means, what it does not mean, and why it can be believed.
+
+## Betsie
+
+Elisabeth ten Boom was never strong. She suffered from anaemia most of her life, kept house for her father and sister, and was by every account gentle, orderly and humorous, with a deep and quiet faith. In the camp she was physically the weaker of the two by far. Yet Corrie came to see her as the stronger. The Ochorus biography gathers from Corrie’s accounts the moments when horrors that overwhelmed Corrie seemed not to reach Betsie. On one terrible day, when a woman in their barracks was beaten to death, Corrie turned to her sister in anguish and found her face at peace. Corrie thought of Satan’s complaint about Job, that God had set a hedge about him. There was a hedge about Betsie too.
+
+It was not indifference. Betsie pitied the men who beat her. She once went to invite a brutal barracks supervisor to the Bible readings. She sat through the night with women who could not sleep. Her compassion was intense. But the evil of the camp did not seem to get inside her. She lived, as Paul puts it, looking at things not seen.
+
+> For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory; while we look not at the things which are seen, but at the things which are not seen: for the things which are seen are temporal; but the things which are not seen are eternal. 2 CORINTHIANS 4:17–18
+
+## The saying and its setting
+
+The careful reader should know the history of the famous words. They are recorded in The Hiding Place, written a quarter of a century after Betsie’s death. Corrie’s first account of the camps, written in 1945, does not contain them in that form. It contains a closely related thought, and in Corrie’s own mouth. Speaking at a memorial in the barracks for women who had died, she told her fellow prisoners, as the Ochorus biography summarises it, that for those who belong to Christ, death is not a pit into which they fall but a tunnel through which they pass into the light.
+
+The two sayings belong together. Betsie may well have said the words the later book gives her, and Corrie may have remembered them exactly. Or the faith the sisters shared may have found its sharpest form in years of retelling. Either way, the faith was tested in Ravensbrück, and it held. The reader who meets the saying online in a dozen slightly different wordings, attached sometimes to Corrie and sometimes to no one, should know that it comes to us as Betsie’s words reported by her sister, and should attribute it that way.
+
+## Deeper than the pit
+
+What does the saying claim? It does not claim that God keeps His children out of pits. Betsie was in one, and she died there. It does not claim that God explains the pit, or that the pit is secretly good. It claims that God’s love reaches lower than any depth into which a human being can fall. Scripture says the same thing again and again.
+
+> The eternal God is thy refuge, and underneath are the everlasting arms. DEUTERONOMY 33:27
+
+Underneath. However far you fall, the arms are still beneath you. Corrie loved this verse and used it often in her addresses; in The Greatest of These Is Love she tells Russian believers under persecution that she had found by experience that you cannot sink so deep that the everlasting arms are not deeper.
+
+> For I am persuaded, that neither death, nor life, nor angels, nor principalities, nor powers, nor things present, nor things to come, nor height, nor depth, nor any other creature, shall be able to separate us from the love of God, which is in Christ Jesus our Lord. ROMANS 8:38–39
+
+Paul lists depth among the things that cannot separate. He had been in some himself — shipwrecked, beaten, left for dead. He does not say depth cannot reach us. He says it cannot separate us.
+
+## The skylark at roll call
+
+Corrie had her own small illustration of this, and she told it in several of the addresses now on Ochorus. Standing at roll call in Ravensbrück while a guard displayed her cruelty in front of the prisoners, she heard a skylark begin to sing overhead, and every woman in the ranks looked up. Looking up at the sky, she remembered the psalm that measures God’s mercy by the height of heaven above the earth. She says the bird returned at roll call for some weeks, and that she took it as God turning their eyes from the cruelty of men to the vastness of His love.
+
+> For as the heaven is high above the earth, so great is his mercy toward them that fear him. PSALM 103:11
+
+The height of heaven and the depth of the pit are the same measurement taken from different ends. God’s love is higher than the sky over Ravensbrück and deeper than the pit of it.
+
+## Betsie’s death
+
+Betsie died in the camp hospital on 16 December 1944. Corrie found her body in a washroom among the dead, and saw, she said, that her sister’s face looked young and at peace. Her first feeling was desolation; then, to her own surprise, peace came, and words from Job with it.
+
+> The LORD gave, and the LORD hath taken away; blessed be the name of the LORD. JOB 1:21
+
+It would be dishonest to make this sound easy. Corrie grieved Betsie for the rest of her life. But the saying about the pit is not a platitude spoken by a comfortable person to a suffering one. It was spoken by a starving woman to her sister, in the place where she was about to die. That is why it has authority. Those who have been in the pit may say it. The rest of us should mostly listen.
+
+> Precious in the sight of the LORD is the death of his saints. PSALM 116:15
+
+## A charge to tell
+
+Betsie did not only believe the love of God was deeper than the pit. She insisted that the sisters had been brought there in order to be able to say so. In The Greatest of These Is Love Corrie recalls her sister telling her that once they were free they must travel the world and tell people, from their own experience, that the light of Christ is stronger than the deepest darkness. Betsie died a week or so later. Corrie was released soon after, and went.
+
+There is a word here for anyone who has been through a pit and come out. The comfort you received was not only for you.
+
+> Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God. 2 CORINTHIANS 1:4
+
+### FOR REFLECTION AND ACTION
+
+1. Return to the page you wrote at the start of this book about the darkest place your life has taken you. Read Deuteronomy 33:27 over it.
+2. If you are in a pit now, tell God plainly how deep it is. Then ask Him to show you the arms beneath.
+3. When you next quote a famous saying, check its source first. Practise attributing Betsie’s words to Betsie.
+4. Look up at the sky once each day this week and remember Psalm 103:11.
+5. Think of one person going through something you have already been through. Offer them the comfort you received.
+
+### A PRAYER
+
+> Lord, out of the depths I cry to You. You know how deep they go, and You are deeper still.
+> I do not ask You to explain the pit. I ask You to hold me in it, with arms that are always underneath.
+> Thank You for Betsie’s faith, and for every saint who has said in the dark what I could hardly believe in the light.
+> Let nothing separate me from Your love, and make me able to comfort others with the comfort You have given me. Amen.
+
+# The Man of Sorrows in Ravensbrück
+
+> In all their affliction he was afflicted, and the angel of his presence saved them. ISAIAH 63:9
+
+Corrie ten Boom did not teach a theology of suffering in the way a scholar might. She had no theory of why God permits evil, and she was suspicious of people who seemed to have one. What she had instead was an experience, repeated in many forms, of finding Christ present at the very point where suffering was worst. She told these experiences over and over, and together they make a teaching: the Christian who suffers is not abandoned, because the Lord has been there first.
+
+## Stripped
+
+In three of the recorded addresses now on Ochorus — How to Forgive, Total Surrender and Tribulation — Corrie returns to the same memory. At Ravensbrück the prisoners were made, again and again, to strip and stand naked for inspection, sometimes for hours. She says the first time was the worst. She had never felt so cold, so ashamed or so miserable, and she told Betsie she could not bear it. Then, she says, it was as though she saw Jesus on the cross, and remembered that the soldiers had taken His garments and that He had hung there naked, for her.
+
+> Then the soldiers, when they had crucified Jesus, took his garments, and made four parts, to every soldier a part. JOHN 19:23
+
+By her own suffering, she says, she understood a fraction of His. And the thought did not deepen her misery. It lifted it. She was so moved by the love that had endured such shame for her that she found she could bear her own. She liked to finish the story by recalling the words of an old hymn about love so amazing that it demands the whole of a life.
+
+> Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
+
+It is worth noticing what she did not say. She did not say that her shame was redemptive, or that she was suffering as Christ suffered. His sufferings were for sin, once for all; hers were not. What she said was that His sufferings made hers bearable, because they showed her that the Lord of glory had gone lower than she was going, and had gone there out of love.
+
+## Not burden-bearers
+
+In Total Surrender she tells of another morning in the camp, when a great crowd of new prisoners arrived and she could hardly bear to think of what awaited them. She opened her Bible and read the fifty-third chapter of Isaiah.
+
+> He is despised and rejected of men; a man of sorrows, and acquainted with grief: and we hid as it were our faces from him; he was despised, and we esteemed him not. Surely he hath borne our griefs, and carried our sorrows. ISAIAH 53:3–4
+
+She saw, she says, that at the cross Christ had carried not only our sins but our sorrows. The lesson she drew from it became one of her sayings: that Christians are not called to be bearers of burdens, but bearers of light and of the cross — casting the burdens on the Lord and leaving them there. We will return to that when we come to worry. Here the point is simpler. The sorrows of Ravensbrück were not outside the reach of the cross. He had carried them too.
+
+> For we have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin. HEBREWS 4:15
+
+## The fellowship of His sufferings
+
+Corrie took seriously what Paul says about sharing in the sufferings of Christ, and she was unusually aware of the persecuted church. In How to Forgive she tells of standing in a church in Burundi, in the days when believers there were being killed, and being given a passage from Peter to read to a frightened congregation. She says a joy came into the room as they heard it, and that one man began to sing of heaven. Later she learned that many of those she had spoken to had been murdered. A woman from that church, seeing her grief, told her they had simply gone on ahead.
+
+> Beloved, think it not strange concerning the fiery trial which is to try you, as though some strange thing happened unto you: but rejoice, inasmuch as ye are partakers of Christ’s sufferings; that, when his glory shall be revealed, ye may be glad also with exceeding joy. 1 PETER 4:12–13
+
+She added a line from Paul’s letter to the Philippians, which she read in Tribulation from a modern paraphrase: that Paul, writing in chains, counted everything loss compared with knowing Christ. And she added her own witness. She had always believed, she said, but in Ravensbrück she learned to know Jesus better than ever before, while her sister starved in front of her.
+
+> That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death. PHILIPPIANS 3:10
+
+## Presence, not explanation
+
+The Ochorus biography records a moment from the camp that shows how this presence came to her. Walking back through the fog after being turned away from Betsie’s sickbed, Corrie felt rebellion rise in her. Why did God leave them there? Why must Betsie suffer? Then, she said, she heard three words in French, filled with tenderness, and there was no one near her. She took it as God speaking to her, not in rebuke but in love, and she was ashamed and comforted at once.
+
+Readers will weigh that experience as they weigh such things. But notice its shape. Her question was why. The answer she received was not a reason. It was a presence. That is the pattern of Scripture too. Job asked why and was answered with God Himself. The disciples in the storm asked whether the Lord cared, and He stood up in the boat. The promise God gives His suffering people is almost never an explanation. It is almost always Himself.
+
+> Let your conversation be without covetousness; and be content with such things as ye have: for he hath said, I will never leave thee, nor forsake thee. HEBREWS 13:5
+
+On one of the worst mornings at roll call, the biography records, Betsie whispered to Corrie that this was hell, and Corrie whispered back that very promise.
+
+## A caution
+
+It would be easy to take the wrong lesson from all this. Corrie never taught that suffering is to be sought, or that the more a Christian suffers the holier he is, or that pain is good in itself. She fought to keep Betsie alive, carried her to the sick roll call, and shared out her little bottle of vitamins, drop by drop, among the women around her. She did not despise the relief of suffering; she practised it. What she taught was that when suffering comes, as it will, the Christian is not alone in it, and that the cross is the proof.
+
+> For even hereunto were ye called: because Christ also suffered for us, leaving us an example, that ye should follow his steps. 1 PETER 2:21
+
+The steps are His. We follow; we do not lead. And He is not only ahead of us on the road. He walks beside us on it.
+
+### FOR REFLECTION AND ACTION
+
+1. Read the account of the crucifixion in John 19 slowly, and note every detail of the shame the Lord endured.
+2. Name one suffering you are carrying now. Bring it to the cross in prayer and tell Christ that He has carried it too.
+3. Learn Hebrews 13:5 by heart and say it to yourself each morning this week.
+4. Find out about one part of the world where Christians are suffering for their faith today. Pray for them by name.
+5. Ask yourself whether you are relieving any suffering near you, or only admiring those who endure it. Do one concrete thing.
+
+### A PRAYER
+
+> Lord Jesus, Man of sorrows, You were stripped and shamed and hung upon the cross for me.
+> When I suffer, let me see You there before me, and let Your love make my pain bearable.
+> I do not ask You to explain what I cannot understand. I ask You not to leave me, as You have promised.
+> Strengthen Your suffering people everywhere, and let me know You better in the fellowship of Your sufferings. Amen.
+
+# Cast into the Depths of the Sea
+
+> He will turn again, he will have compassion upon us; he will subdue our iniquities; and thou wilt cast all their sins into the depths of the sea. MICAH 7:19
+
+Corrie ten Boom is remembered as a teacher of forgiveness, and the next three chapters are given to that theme. But her teaching on forgiving others always began somewhere else: with the discovery of her own need to be forgiven. She did not approach the people who had wronged her as an innocent party. She approached them as a sinner who had been caught hating, had confessed it, and had been washed. That order matters, and it is the subject of this chapter.
+
+## Hatred is murder
+
+In The Greatest of These Is Love and The Love of Christ, two of her recorded addresses now on Ochorus, Corrie tells how she learned in the camp the name of the man she believed had betrayed her family. A prisoner from Haarlem told her. Corrie had given him money herself, she says, on the morning of the raid, believing his story that it would free his wife. Hatred rose in her. She was honest enough to call it by its name.
+
+> Whosoever hateth his brother is a murderer: and ye know that no murderer hath eternal life abiding in him. 1 JOHN 3:15
+
+She knew from Scripture, she says, that hatred is murder in God’s sight. But she also knew what Scripture tells a murderer to do. She confessed it, repented of it, and asked for cleansing.
+
+> If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. 1 JOHN 1:9
+
+This is where her teaching on forgiveness always started. Before she could forgive the betrayer, she had to be forgiven for hating him. The bitterness in her own heart was a sin of her own, not merely a wound someone else had caused. That is an uncomfortable truth for anyone who has been badly wronged, and she did not soften it. The injury was his. The hatred was hers.
+
+## No fishing
+
+When she described what God does with confessed sin, Corrie loved the verse from Micah at the head of this chapter. God casts our sins into the depths of the sea. She liked to add, with a smile, that the Bible does not say so, but she believed God then puts up a notice forbidding fishing. It is one of the best-remembered touches of her preaching, and it makes a serious point with a light hand. What God has forgiven, we are not to drag back up — not our own sins, and, as she would later insist, not other people’s either.
+
+> As far as the east is from the west, so far hath he removed our transgressions from us. PSALM 103:12
+
+## Papers in the stove
+
+She had a picture of this from her own imprisonment, told in the same addresses. At Scheveningen she was questioned by a German officer in whose hands her life lay. She says he showed her papers found in the house — names, addresses and details that could have cost many lives. She could not explain them. Then he opened the stove and burned them in front of her. As she watched the flames, she says, she understood as never before what Paul meant about the record of our debts being taken away and nailed to the cross.
+
+> Blotting out the handwriting of ordinances that was against us, which was contrary to us, and took it out of the way, nailing it to his cross. COLOSSIANS 2:14
+
+The officer, by her account, had been moved by what she told him of Christ, and Betsie had prayed with him during her own questioning. The story rests on Corrie’s telling; her earliest account already speaks of a kindly interrogating officer. Its lesson is clear. There is a record against every one of us, and it is fatal. At the cross God burned it.
+
+## A letter in June 1945
+
+Having been forgiven, she forgave. On 19 June 1945, barely six months after Betsie’s death and only weeks after the liberation of the Netherlands, Corrie wrote to the man she had been told was the informer. The letter was published thirty years later among her prison letters. The Ochorus biography summarises it: she told him plainly that her father and sister had died because of what he had done, and that she herself had suffered; she told him she forgave him everything; she told him she was praying for him and sending him a New Testament, because Christ had borne his sins too.
+
+> But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you. MATTHEW 5:44
+
+The date matters more than the details. She did not wait until her feelings had healed, or until justice had been done, or until he had asked. She wrote while the grief was raw. It is the earliest evidence we have that she believed what she would later teach everywhere: that forgiveness is first a decision, and the feelings follow.
+
+## What we do not know
+
+Honesty requires a caution here. In her addresses, Corrie says that the man was sentenced to death, that he wrote back telling her that her forgiveness had brought him to Christ, and that he was executed soon after, reconciled to God. As the Ochorus biography sets out, the records do not confirm this. The later books name him, a local historian gives a different form of the name, and no one of that name appears among those executed under Dutch postwar justice; many death sentences were commuted. We do not know what became of him, whether the letter reached him, or how he answered. The story of his conversion may be true, or may have drifted in from another. What we have with certainty is her letter, and its date.
+
+This should not trouble the reader. The value of her forgiveness never depended on its result. She forgave because she had been forgiven, not because it worked.
+
+## Forgiveness is not the end of justice
+
+One more point needs making, because her teaching is sometimes misread. Forgiving the betrayer did not mean pretending he had done nothing. Her letter named the harm. Nor did it mean asking the courts to release him. Scripture distinguishes the believer’s surrender of personal vengeance from the magistrate’s duty to punish wrong.
+
+> Dearly beloved, avenge not yourselves, but rather give place unto wrath: for it is written, Vengeance is mine; I will repay, saith the Lord. ROMANS 12:19
+
+What Corrie gave up was her own claim to repayment. She handed the debt to God, and wished the man well, which for her meant wishing that he would come to know Christ.
+
+> And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you. EPHESIANS 4:32
+
+Even as. The measure of our forgiving is the forgiveness we have received. Those who have not grasped how much they have been forgiven will find it very hard to forgive much.
+
+### FOR REFLECTION AND ACTION
+
+1. Is there someone you hate, or have hated? Call it by its biblical name, confess it to God, and ask for cleansing today.
+2. Read Micah 7:18–19 aloud. Is there a forgiven sin of your own you keep fishing for? Leave it in the sea.
+3. Consider whether there is someone to whom you should write, as Corrie wrote in 1945. Draft the letter, even if you do not yet send it.
+4. Distinguish, in one situation you face, between giving up personal revenge and abandoning justice. Which have you confused?
+5. Spend time this week thanking God specifically for the record of your debts that He has nailed to the cross.
+
+### A PRAYER
+
+> Father, I have hated, and You call it murder. I confess it now, and I ask You to cleanse me by the blood of Christ.
+> Thank You for casting my sins into the depths of the sea. Keep me from fishing for them, and from fishing for the sins of others.
+> I give up my claim to repay those who have wronged me. I hand the debt to You, who judge justly.
+> Teach me to forgive as I have been forgiven, and to pray for my enemies until I can wish them well. Amen.
+
+# The Hand Held Out
+
+> And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us. ROMANS 5:5
+
+Of all the stories Corrie ten Boom told, none has travelled further than the one about a handshake. It has been retold in sermons on every continent, and it has helped a great many people who could not forgive. It carries the teaching for which she is most remembered: that forgiveness is an act of the will, which God answers with His own love. Because it matters so much, it deserves to be told briefly, carefully and with an honest word about the sources.
+
+## The story as she told it in print
+
+In The Hiding Place and again in Tramp for the Lord, Corrie recounts that in 1947, in a church in Munich, she had just spoken about God’s forgiveness when a man came forward with his hand out. She recognised him as a former guard from Ravensbrück — one of the men in the room where the women had been processed and humiliated. He did not recognise her. He told her he had since become a Christian and knew God had forgiven him, but he wanted to hear it from one of the women who had suffered there. Would she forgive him?
+
+She could not lift her hand. She, who had been preaching forgiveness across Europe, felt nothing but the memory of Betsie and that room. So she prayed silently, telling Jesus she could not forgive the man and asking Him to give her His forgiveness. Then, woodenly, as an act of obedience rather than of feeling, she put out her hand. As their hands met, she says, a current of love flowed through her that she knew was not her own, and she was able to tell him from her heart that she forgave him.
+
+The lesson she drew, and repeated for the rest of her life, is that forgiveness is not a feeling we wait for but an act of the will, and that the will can obey however cold the heart may feel. When we obey, God supplies the love.
+
+## What the sources show
+
+The careful reader should know that this story rests entirely on Corrie’s own later account. The man is never named, and no one else present has told it. It first appears in print in 1971, some twenty-four years after the event. Her book Amazing Love, published in 1953 and much closer to the time, does not tell it; it tells instead of her preaching to former women guards held in an internment camp. And in the recorded addresses now on Ochorus — How to Forgive and The Greatest of These Is Love — she tells a closely related story set in Berlin, of a man who had been one of the cruellest guards at Ravensbrück, who had prayed for the chance to ask one of his victims for forgiveness. In that telling she does not pray the prayer of the printed version. She thanks God for Romans 5:5 — for the love of God poured into her heart by the Holy Spirit — and thanks the Father that His love is stronger than her bitterness. Then she takes the man’s hand and feels God’s love flow through her arm.
+
+Whether these are one encounter remembered differently or two separate meetings, we cannot now say. None of this makes the story less true in the sense that matters. Corrie told it as her own experience to people who knew her. And its heart is the same in every version: she could not forgive by her own strength; she obeyed anyway; God supplied the love.
+
+## The love that is poured in
+
+The verse she held on to in the spoken versions is the key to the whole teaching.
+
+> And hope maketh not ashamed; because the love of God is shed abroad in our hearts by the Holy Ghost which is given unto us. ROMANS 5:5
+
+Paul does not say we are to produce love for our enemies. He says the love of God has been poured into us. And in the very next verses he tells us what kind of love it is.
+
+> But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us. ROMANS 5:8
+
+It is love for enemies. What Corrie felt in that church, in her understanding, was God’s love for the guard passing through her because she could not supply it herself. In her addresses she puts it with blunt simplicity: she could not forgive, and her hearers could not either, but He can.
+
+## An act of the will
+
+This is the most practical thing she taught, and it is deeply scriptural. The Lord’s commands to forgive are commands, not suggestions.
+
+> Then came Peter to him, and said, Lord, how oft shall my brother sin against me, and I forgive him? till seven times? Jesus saith unto him, I say not unto thee, Until seven times: but, Until seventy times seven. MATTHEW 18:21–22
+
+Commands are addressed to the will. God does not command feelings directly, because feelings are not directly under our control. He commands what we can do — forgive, bless, pray, do good — and He promises to work in us what we cannot.
+
+> For it is God which worketh in you both to will and to do of his good pleasure. PHILIPPIANS 2:13
+
+Many Christians wait for years to feel forgiving before they will forgive. Corrie’s teaching turns that round. Forgive first, in the will, with a cold heart if need be. Say it to God. Say it, where it is right to do so, to the person. Hold out the hand. The warmth, she found, comes afterwards, and it comes from Him.
+
+## A prisoner in Africa
+
+She told one more story that shows the teaching at work in another life. In The Greatest of These Is Love she recalls visiting a young political prisoner in Africa who was under sentence of death. He knew Christ had died for him, but he hated the men who had betrayed him and told her he could not forgive them. She read him the Lord’s words about forgiveness, and told him she understood that he could not. Then she told him what God had done in her. She says he later sent a message to his wife telling her not to hate, but to love the people who had brought him there — adding that neither of them was able, but Jesus in them was.
+
+> For if ye forgive men their trespasses, your heavenly Father will also forgive you: but if ye forgive not men their trespasses, neither will your Father forgive your trespasses. MATTHEW 6:14–15
+
+She took those words with great seriousness. In How to Forgive she says that when she found she could not forgive the guard, she realised with horror that she herself was not ready to meet her Lord.
+
+## A caution
+
+Her teaching is sometimes stretched further than she stretched it. To forgive is to give up the claim to repayment and to wish the other person well before God. It is not the same as trusting someone who remains dangerous, or returning to a situation of abuse, or pretending the wrong did not happen. The guard in her story was a man who had repented and come asking forgiveness; she was not being asked to put herself back in his power. Forgiveness can be given in a moment. Trust, where it is wise to restore it at all, is rebuilt slowly.
+
+> And when ye stand praying, forgive, if ye have ought against any. MARK 11:25
+
+### FOR REFLECTION AND ACTION
+
+1. Name the person you find it hardest to forgive. Tell God honestly that you cannot, and ask Him for His forgiveness for them.
+2. Now make the decision in your will, whatever your feelings. Write down the date on which you did so.
+3. Read Romans 5:1–11 and thank God that His love has been poured into you by the Holy Spirit.
+4. Is there a hand you have refused to take? Ask God whether the right next step is a word, a letter or simply prayer.
+5. Distinguish forgiveness from trust in one relationship you are wrestling with. Seek wise counsel if you are unsure.
+
+### A PRAYER
+
+> Lord Jesus, You forgave those who crucified You while they were still driving the nails.
+> I cannot forgive as You forgive. I have no love of my own for this person. Give me Yours.
+> I choose now, with my will, to forgive, and I give up my claim against them. I hold out my hand.
+> Pour Your love into my heart by Your Spirit, and let the feeling follow the obedience, in Your time. Amen.
+
+# Burning the Black and White
+
+> Forbearing one another, and forgiving one another, if any man have a quarrel against any: even as Christ forgave you, so also do ye. COLOSSIANS 3:13
+
+It would be easy to leave Corrie ten Boom’s teaching on forgiveness at the dramatic moments — the letter to the informer, the hand held out to a guard. But she did not leave it there, and it is one of the most endearing things about her that she did not. She told audiences, again and again, that she had found it harder to forgive some Christian friends for a comparatively small injury than to forgive the men who had murdered her family. This chapter is about that humbler, daily, unglamorous forgiveness, which is the kind most of us actually need.
+
+## Two o’clock in the morning
+
+In The Greatest of These Is Love and The Love of Christ, Corrie tells of a time when some Christian friends did something she felt was mean and unjust. She had difficulty forgiving them. She reasoned with the Lord that if He could give her grace to forgive the murderers of her family, He could certainly give her grace for this. It took some time, but she forgave them, and was glad.
+
+Then she woke at two in the morning and found herself going over it all again — what she had done for these friends, and what they had done to her. The resentment was back. She asked the Lord to take it away, and He did, and she slept. The next night at two o’clock it came again. And the next. By the third night, she says, she was disgusted with herself.
+
+Anyone who has tried to forgive will recognise the pattern. We decide to forgive, and we mean it. And then the injury replays itself in the small hours, with all our old arguments, and we wonder whether we forgave at all.
+
+## The bell that keeps ringing
+
+The help came, she says, from an old German minister. He reminded her that when a church bell is rung by hand, the ringer can let go of the rope, but the bell does not stop at once. It swings on, a few more strokes, fainter and fainter, and then it is still. Those last strokes, he told her, do not belong to the ringing; they are only the momentum of it. Her resentment at two in the morning was like that. She had let go of the rope when she forgave. What she was hearing was the old swing dying away. She need not be alarmed by it. She need only tell the Lord that this stroke did not belong to the ringing, and let it fade.
+
+> Brethren, I count not myself to have apprehended: but this one thing I do, forgetting those things which are behind, and reaching forth unto those things which are before, I press toward the mark for the prize of the high calling of God in Christ Jesus. PHILIPPIANS 3:13–14
+
+The picture is a mercy to anxious consciences. The return of an old feeling does not mean the forgiveness was false. Forgiveness is a decision of the will; feelings have momentum of their own. The Christian who has forgiven and then feels the sting again should not start over in despair. He should recognise the echo, bring it to the Lord, and let it go.
+
+## Black and white
+
+But the story did not end there, and the second part is sharper. Corrie tells how, while she was working with John Sherrill on The Hiding Place, he asked her about these friends. She told him the matter was forgiven and forgotten. He asked what the friends themselves thought, and she admitted that they simply denied having done it. But, she added, she had it all in black and white, in letters they had written.
+
+Sherrill’s reply, as she tells it, stopped her. Where were her own sins? Had she not told audiences everywhere that God casts them into the depths of the sea and forbids fishing? Then why was she keeping the evidence of other people’s sins in a drawer? She went home and burned the letters.
+
+> Doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil. 1 CORINTHIANS 13:5
+
+Love, says Paul, keeps no record of wrongs; the Authorised Version puts it that charity thinketh no evil. That is exactly what the letters were: a record, kept in case it should be needed. Corrie had forgiven her friends in principle and preserved the case against them in practice. She urged her hearers not to go to sleep until they had burned their own black and white — or, as she said with a smile to American audiences, torn it up so small that no one could ever read it.
+
+## God who forgets
+
+The model for this is God Himself.
+
+> I, even I, am he that blotteth out thy transgressions for mine own sake, and will not remember thy sins. ISAIAH 43:25
+
+God does not lose His memory. He chooses not to bring our sins up again, not to hold them against us, not to keep the file open. That is what it means for Him to remember them no more.
+
+> And their sins and iniquities will I remember no more. HEBREWS 10:17
+
+We are to forgive even as He forgave us. That means not only releasing the debt but closing the file. It does not mean pretending nothing happened, or never speaking of it where speaking is necessary for truth or safety. But it does mean giving up the private archive of grievances that we keep against the day we might need it.
+
+> He that covereth a transgression seeketh love; but he that repeateth a matter separateth very friends. PROVERBS 17:9
+
+## Why the small ones are harder
+
+Why should it be harder to forgive friends than enemies? Corrie did not analyse it, but her story suggests an answer. We expect nothing from enemies, so their wrongs, however terrible, do not surprise us. We expect loyalty from friends, and their small betrayals wound our pride as well as our hearts. And the great wrongs drive us to God because we know we cannot handle them. The small ones we think we can manage ourselves, and so we never quite bring them to Him.
+
+> And above all things have fervent charity among yourselves: for charity shall cover the multitude of sins. 1 PETER 4:8
+
+Most of the forgiving any of us will ever be asked to do is of this second kind: a colleague’s slight, a relative’s thoughtlessness, a church member’s unkindness, a friend’s broken promise. Corrie’s honesty about her own struggles here is part of what makes her teaching believable. She never claimed to have mastered forgiveness. She claimed only that God had helped her when she could not help herself, and that He had to do so again and again.
+
+### FOR REFLECTION AND ACTION
+
+1. Name a small, old grievance against a friend or fellow Christian that still replays in your mind. Forgive it again today, in your will.
+2. When the feeling returns this week, recognise it as the bell swinging on. Tell the Lord it does not belong, and let it fade.
+3. Do you keep black and white — letters, messages, screenshots, a mental list — of other people’s wrongs? Destroy what you can, unless it is genuinely needed for safety or justice.
+4. Read 1 Corinthians 13 slowly and note each phrase that describes how love treats the wrongs of others.
+5. Ask God whether there is someone you have forgiven in principle but not yet in practice, and what one step would close the file.
+
+### A PRAYER
+
+> Lord, You have blotted out my transgressions and will not remember my sins. I keep far better records than You do.
+> Forgive me for the files I have kept against my friends, and for the case I have been quietly preparing.
+> When the old resentment rings again in the night, let me know it for an echo, and give it to You.
+> Teach me the love that thinketh no evil, and make me as ready to forget as You have been to forget me. Amen.
+
+# Don’t Wrestle, Just Nestle
+
+> Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. And the peace of God, which passeth all understanding, shall keep your hearts and minds through Christ Jesus. PHILIPPIANS 4:6–7
+
+Corrie ten Boom wrote a little booklet with the title Don’t Wrestle, Just Nestle. It went out of print, and in one of her recorded addresses she mentions hoping to see it reprinted. The title sums up her teaching on worry better than any summary could. Most of us wrestle with our anxieties — argue with them, try to reason them away, lie awake rehearsing them. She urged her hearers to stop wrestling and nestle instead: to bring every care to God and leave it with Him, as a child rests in a parent’s arms.
+
+## The bag of burdens
+
+Her most vivid teaching on worry comes from Ravensbrück, and she tells it in both Power in Prayer and Total Surrender. One morning a great crowd of new prisoners arrived, and her heart felt so heavy she could hardly breathe. She opened her hidden Bible at the fourth chapter of Philippians, and resolved to do exactly what it said.
+
+So she began to tell God every detail of what was weighing on her. She brought Him the newcomers and the suffering that awaited them. She brought Betsie, far too weak to be a prisoner. She brought her friends in Holland, and the queen in exile, and the people of the German cities being bombed night after night. She brought her own hatred, which had risen that morning, and confessed it. She went on and on until she had nothing left to bring. Then she said Amen.
+
+To illustrate this on the platform, she would hold up a handbag. Before the prayer it was heavy; after it, empty. That, she said, was good. That was praying. But what she did next, she confessed, was not good. She took all the burdens back again. Her heart was heavier after her prayer than before it.
+
+> Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved. PSALM 55:22
+
+Her point was simple and searching. Prayer is not only the handing over of burdens; it is the leaving of them. Many Christians pray faithfully about their anxieties and then carry them out of the room again. That is not trust. It is a religious form of worry.
+
+## Worry as a sin
+
+Corrie took a stronger line on worry than many modern Christians would. In Total Surrender she borrows the words of a teacher she names only as Trumbull, who called worry a sin that defies God and rejects Christ, and she adds that we will never be rid of it unless we treat it as sin. We know what to do with sin: confess it, and be cleansed.
+
+She was not harsh about it. In the same breath she admits, to laughter, that she had not yet graduated in the science of not worrying, and expected to need a postgraduate course. But she insisted that the command not to worry is a real command, meant seriously, and not merely good advice.
+
+> Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof. MATTHEW 6:34
+
+In the same address she gives the substance of a well-known passage from her booklet. Worry, she says, is carrying tomorrow’s load with today’s strength. It does not take the sorrow out of tomorrow; it only takes the strength out of today. It does not help us escape trouble; it leaves us less able to meet it when it comes.
+
+> Which of you by taking thought can add one cubit unto his stature? MATTHEW 6:27
+
+## The tightrope and the escalator
+
+She had other pictures, too. In Total Surrender she compares anxious Christians to tightrope walkers, carrying in one hand a sack of the undigested past and in the other a sack of the anticipated future, always balancing between hope and fear. The surrendered Christian, by contrast, is like someone standing on an escalator: relaxed, and carried steadily upward. A surrendered life, she says, is a relaxed life.
+
+And in Tribulation she uses a saying she did not claim as her own, but loved: look around and be distressed, look within and be depressed, look at Jesus and be at rest.
+
+> Thou wilt keep him in perfect peace, whose mind is stayed on thee: because he trusteth in thee. ISAIAH 26:3
+
+All her pictures come to the same place. Worry is a matter of where we are looking. The anxious Christian is looking at the circumstances or at himself. The peaceful Christian is looking at Christ.
+
+## A caution about anxiety
+
+A pastoral word needs adding, because Corrie’s strong language about worry as sin can wound people she never meant to wound. There is a difference between the ordinary, chosen habit of fretting — which Scripture does command us to lay down — and the kind of anxiety that is an illness, rooted in the body or in trauma, which no amount of resolve will simply switch off. A Christian suffering from an anxiety disorder is not thereby a worse Christian, and should not be told that more faith would cure it. The command to cast our cares on God still applies, but for such a person it may include accepting help from doctors and counsellors, which is one of the ways God carries His people.
+
+What Corrie was attacking was something else: the settled habit of rehearsing tomorrow’s troubles, of carrying burdens God has offered to carry, of taking back what we have handed over. Most of us know that habit well.
+
+## My times are in Thy hand
+
+Behind her teaching on worry lay a large conviction about God, which we will explore in the next chapter. God has no panic. He is working out a plan, and our times are in His hand.
+
+> My times are in thy hand: deliver me from the hand of mine enemies, and from them that persecute me. PSALM 31:15
+
+A woman who had stood at roll call in Ravensbrück had every reason to worry. That she could teach the laying down of worry, and laugh at her own failures in it, is a witness in itself. The peace she spoke of was not the peace of someone who had never had cause for fear.
+
+> God is our refuge and strength, a very present help in trouble. Therefore will not we fear, though the earth be removed, and though the mountains be carried into the midst of the sea. PSALM 46:1–2
+
+### FOR REFLECTION AND ACTION
+
+1. Take an empty bag or box. Write each of your present worries on a slip of paper, pray over each, and put it in. Then leave the bag where you cannot easily reach it.
+2. When you catch yourself taking a burden back this week, confess it simply and hand it over again.
+3. Learn Philippians 4:6–7 by heart. Notice the words with thanksgiving, and include thanks in every prayer about your worries.
+4. Ask yourself where you are looking most of the time: around, within, or at Jesus. Choose one habit that will turn your eyes to Him.
+5. If your anxiety feels beyond your control, speak to a pastor, a trusted friend or a doctor this month. Accepting help is not a failure of faith.
+
+### A PRAYER
+
+> Father, I have wrestled with my worries long enough. Teach me to nestle in Your care.
+> Here are my burdens, one by one: I name them to You and I lay them down. Help me not to pick them up again.
+> Forgive me for carrying tomorrow with today’s strength. Give me strength for today, and trust for tomorrow.
+> My times are in Your hand. Keep my mind stayed on You, and guard my heart with Your peace. Amen.
+
+# The Underside of the Embroidery
+
+> Jesus answered and said unto him, What I do thou knowest not now; but thou shalt know hereafter. JOHN 13:7
+
+Audiences who heard Corrie ten Boom speak in her later years often remembered one thing above all: a piece of embroidery. She would hold it up with the back towards them — a mess of knots, loose ends and tangled threads, with no pattern to be seen. That, she would say, is how our lives and the history of the world look from where we stand. Then she would turn it round, and there was a crown, or a picture, worked in bright colours. That is how it looks from God’s side. It was the simplest of illustrations, and it carried the whole of her teaching on providence.
+
+## From Vught to the platform
+
+It is worth knowing that the image is an early one. As the Ochorus biography records, the picture of the embroidery already appears in her first account of the camps, written in 1945, in connection with the camp at Vught. It was not a platform device invented for American audiences. It was something she reached for in the middle of the darkness, and kept for the rest of her life.
+
+In the recorded addresses on Ochorus she uses it repeatedly. In How to Forgive she holds up the tangled side and says it is like the television news. In Tribulation she says it is like the world history of her own day, and like our own lives when we cannot understand what is happening. Then she points to God’s side, and to the plan He is working out.
+
+> For my thoughts are not your thoughts, neither are your ways my ways, saith the LORD. For as the heavens are higher than the earth, so are my ways higher than your ways, and my thoughts than your thoughts. ISAIAH 55:8–9
+
+## Plans, not problems
+
+With the embroidery she paired a saying that she was careful to credit. In Tribulation she attributes it to a teacher she calls Major Thomas: that God has no problems, only plans, and that there is never panic in heaven. It has since been attached to her own name so often that the source is usually forgotten. It is a good example of the caution raised in the introduction. She borrowed freely and credited honestly; the internet has not always been so careful.
+
+The saying is a plain statement of Scripture’s teaching about God’s sovereignty.
+
+> Declaring the end from the beginning, and from ancient times the things that are not yet done, saying, My counsel shall stand, and I will do all my pleasure. ISAIAH 46:10
+
+God is not surprised. He is not scrambling to repair a plan that has gone wrong. What looks from below like chaos is, from above, a pattern being worked with great care.
+
+## The poem she did not write
+
+In Tribulation she also recites a poem she says she had learned in America, about life as a weaving between God and the soul, in which the weaver sees the upper side and we the under. Many versions of this poem now circulate online with her name attached. She did not write it, and she said so; she introduced it as something she had learned. Readers who quote it should not attribute it to her.
+
+## The no that made sense later
+
+Her most personal illustration of the hidden pattern concerns an unanswered prayer. In Total Surrender she tells how, during her months in solitary confinement at Scheveningen, she prayed every day that she would never be taken to a concentration camp in Germany. God, she says, gave the answer no. She and Betsie were taken to Ravensbrück.
+
+At first she could not understand it. But in the camp she saw how God used the two sisters to bring the gospel to women who would never have heard it otherwise, many of whom died there with the name of Jesus on their lips. Then, she says, she understood why her prayer had not been answered as she asked.
+
+> But he knoweth the way that I take: when he hath tried me, I shall come forth as gold. JOB 23:10
+
+She told a smaller story to the same effect in Tribulation. She had longed to visit believers in Siberia, but illness kept her at home, and her doctor forbade the journey. She was disappointed. Weeks later a Russian pastor wrote to tell her that her books had been smuggled into Siberia and translated, and had reached more people than she could ever have reached by going. She saw the pattern, she says, and thanked God.
+
+## When we do not see the other side
+
+A caution is needed here, and it is one Corrie’s own life supplies. In the stories she told most often, the right side of the embroidery was turned round in her lifetime. She saw why she had been sent to Ravensbrück. She saw why she had not gone to Siberia. But there was much she never saw. She never learned on earth why Betsie died when she lived, or why so many of the women she read the Bible to were murdered. The embroidery image does not promise that we will see the pattern here. It promises that there is one.
+
+> For now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known. 1 CORINTHIANS 13:12
+
+That distinction matters pastorally. The image can be misused as a quick explanation offered to a grieving person — as though the death of a child were a knot that will look pretty later. Corrie did not use it that way. She used it to encourage trust when understanding was absent, not to supply understanding where God has withheld it. Some things belong to Him alone.
+
+> The secret things belong unto the LORD our God: but those things which are revealed belong unto us and to our children for ever. DEUTERONOMY 29:29
+
+## Curiously wrought
+
+There is a lovely echo of her image in the Psalms. David speaks of being made in secret and curiously wrought — the word suggests embroidery or weaving — in the lowest parts of the earth, with every day of his life written in God’s book before one of them came to be.
+
+> My substance was not hid from thee, when I was made in secret, and curiously wrought in the lowest parts of the earth. PSALM 139:15
+
+The God who embroidered each of us in secret is embroidering our lives still. We see the underside. He sees the whole.
+
+> O the depth of the riches both of the wisdom and knowledge of God! how unsearchable are his judgments, and his ways past finding out! ROMANS 11:33
+
+### FOR REFLECTION AND ACTION
+
+1. Name one tangled area of your life where you cannot see the pattern. Tell God honestly that you do not understand it, and that you choose to trust Him.
+2. Recall one prayer God answered with no that you now understand. Give thanks for it.
+3. Recall one you still do not understand. Leave it with Him, under Deuteronomy 29:29.
+4. Before you next offer a grieving friend an explanation, ask whether presence would serve them better.
+5. When you quote a saying, credit its source, as Corrie did. Check one you often use.
+
+### A PRAYER
+
+> Lord, I see the knots and the loose ends. You see the pattern. Help me to trust Your side when I can see only mine.
+> Thank You for the prayers You answered with no, and for the ones whose reasons I have not yet been shown.
+> Keep me from offering easy explanations to those in pain. Make me a comfort rather than a commentator.
+> You have no panic, only plans. Work out Your purpose in me, and let me see it face to face at last. Amen.
+
+# All on the Altar
+
+> I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service. ROMANS 12:1
+
+Corrie ten Boom’s recorded address Total Surrender, now in the Ochorus library, is one of the fullest statements of what she believed the Christian life required. It is funny, practical and searching, and it circles around a single conviction. We have been bought at a very high price, and so we have no choice but to give ourselves wholly to the One who bought us. She did not present surrender as a special experience for advanced believers. She presented it as the ordinary, reasonable response of anyone who has understood the cross.
+
+## The empty altar
+
+She opens the address with a story she says she also told in her book Amazing Love. At a meeting she attended, the Canadian preacher Oswald Smith asked his hearers whether they had laid everything on the altar, and then answered for himself. He placed a book on a table for each thing he had surrendered: his time, his money, his family, his house. Then, one by one, he took the books back. His time was given to God — except the holiday he had booked for himself. His money was given — except what that holiday would cost. His family was given — except the daughter he needed at home. His house was dedicated — except that he could not have his sister’s unruly boys making it dirty. At the end the altar was empty.
+
+Corrie says she could not bear it. She left the meeting, asked her heavenly Father whether her own altar was empty, and heard that it was. So she laid everything on it again.
+
+> For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God’s. 1 CORINTHIANS 6:20
+
+## Not once for all
+
+The word again matters. Corrie insisted that surrender is not a single transaction completed at a meeting. Borrowing from the Keswick speaker Charles Inwood, she describes it as a moment-by-moment matter: moment by moment confessing sin, being cleansed, yielding, and being filled with the Spirit. We take things back. We must give them again.
+
+She had a picture for the inner reality. There is a cross and a throne in every heart. If Jesus is on the throne, self is on the cross. If self is on the throne, Jesus is on the cross. There is no third arrangement.
+
+> I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me. GALATIANS 2:20
+
+## What to surrender
+
+What makes this address so useful is that she did not leave surrender abstract. She named the things that most Christians forget to hand over.
+
+Surrender your blunders. She confessed that after making a foolish mistake she would berate herself for being so stupid. She told of a weaving school where a student explained that when a pupil made a mistake, the master was such an artist that he wove the error into the pattern and made it more beautiful. She told of mistaking a non-Christian professor in Tokyo for a seminary director and asking him to pray — and of the conversation that followed, in which he came to Christ.
+
+> And the vessel that he made of clay was marred in the hand of the potter: so he made it again another vessel, as seemed good to the potter to make it. JEREMIAH 18:4
+
+Surrender your limitations. She called feelings of inferiority a form of pride — a refusal to accept being the person God made, with the gifts He chose to give.
+
+Surrender your if-onlys. Here she became personal. She spoke of the young man she had loved and hoped to marry, who had married another. After he brought his fiancée to meet her, she went to her room and told the Lord that she belonged to Him entirely, and surrendered to Him the wounded part of her life — her longing for marriage and children. She says she never had the joy of bringing a child to birth, but often had the joy of bringing someone to new birth, and that God kept her from becoming bitter.
+
+> God setteth the solitary in families. PSALM 68:6
+
+Surrender your business. She remembered her father saying that God’s name, not his, belonged over the watch shop. Surrender your past, your present and your future.
+
+## Money’s worth
+
+She drove the point home with a picture from her trade. Suppose, she said, she had sold a customer a watch with a gold bracelet, taken the full price, and then quietly removed the bracelet before wrapping it. The customer would tell everyone not to buy from Corrie ten Boom. Then she asked her hearers whether they were giving the Lord His money’s worth, when He had paid for them with His own blood.
+
+> What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? 1 CORINTHIANS 6:19
+
+## The cup turned upward
+
+She ended the address with a cup. Held upside down, she said, it receives nothing and gives nothing — like a heart turned toward the world. Held half and half, it still neither fills nor overflows. Only when it is turned wholly upward does the water come in and run over on every side. She applied a verse from Chronicles: the eyes of the Lord run to and fro through the whole earth to show Himself strong for those whose heart is wholly His.
+
+> For the eyes of the LORD run to and fro throughout the whole earth, to shew himself strong in the behalf of them whose heart is perfect toward him. 2 CHRONICLES 16:9
+
+## A caution
+
+Two cautions are worth carrying. The first is that the language of one hundred per cent can crush a tender conscience. A believer who examines himself and finds, as every honest believer will, that his surrender is not total may conclude that God cannot use him at all. Corrie did not mean that. Her own story of laying everything on the altar again shows that she knew the altar is often found empty, and that the remedy is not despair but a fresh surrender. Our acceptance rests on Christ’s perfect offering, not on ours.
+
+The second is that surrender is not a technique for obtaining blessing. Corrie told her hearers not to fear losing their holidays, because God might give them a better hotel than the one they had booked. She meant it lightly. But the reason to surrender is not that God will repay us in kind. It is that we are His already, bought with a price. Some who surrender everything are given very little in this world, as Betsie was. They are not less blessed.
+
+> For whosoever will save his life shall lose it: but whosoever will lose his life for my sake, the same shall save it. LUKE 9:24
+
+### FOR REFLECTION AND ACTION
+
+1. Take five sheets of paper and write on each one area of your life: time, money, family, home, work. Lay them before God and ask which you have taken back.
+2. Name one blunder you keep berating yourself for. Surrender it to God, and ask Him to weave it into His pattern.
+3. Name your chief if-only. Tell God honestly how it hurts, and hand it to Him.
+4. Ask yourself who sits on the throne of your heart today. Pray Galatians 2:20 as your own.
+5. Where you find the altar empty, do not despair. Lay everything on it again, and thank God that Christ’s offering was complete.
+
+### A PRAYER
+
+> Lord Jesus, You bought me with Your own blood. I am not my own.
+> I lay on Your altar my time, my money, my family, my home and my work. I lay there my blunders, my limitations and my if-onlys.
+> You know how often I take them back. When I find the altar empty, do not let me despair; let me give them to You again.
+> Sit on the throne of my heart, and let self stay on the cross. Turn my heart wholly toward You, that Your life may run over. Amen.
+
+# Rags in the Torch
+
+> And be not drunk with wine, wherein is excess; but be filled with the Spirit. EPHESIANS 5:18
+
+Corrie ten Boom was a great user of props. Among the most memorable was a torch — a flashlight, to her American audiences — which she would hold up and switch on. Nothing happened. It was not broken, she explained. It had only one battery in it, and it needed two. She could not put the second battery in, because the torch was stuffed with rags. Then, one by one, she would pull the rags out and name them. The illustration appears in several of her recorded addresses on Ochorus, including How to Forgive, The Greatest of These Is Love and The Love of Christ, and it carries her whole teaching on the Holy Spirit.
+
+## Two batteries
+
+The first battery, she said, stands for the moment when a person first says a real yes to Jesus — sees that he is a sinner, sees that Jesus is his Saviour, and asks Him into his heart. That is the new birth, and it is the beginning of everything. But it is not everything. The second battery is the fullness of the Holy Spirit, and it is this, she insisted, that makes a Christian a light in the world.
+
+> Ye are the light of the world. A city that is set on an hill cannot be hid. MATTHEW 5:14
+
+She pointed out, with typical directness, that the Bible does not merely suggest that Christians be filled with the Spirit. It commands it. And she called it one of the most joyful commands in Scripture.
+
+## Naming the rags
+
+Why are so many believers not filled? Because the heart is full of rags, and the rags are unconfessed sins. Here she became very specific, and the specificity is what made the illustration bite. She named bad temper, and read the warning of Hebrews about a root of bitterness that defiles many. She named pride. She named feelings of inferiority, and startled her hearers by calling them pride too — a refusal to accept one’s God-given limits. She named worry, jealousy and criticism of other Christians, which she thought one of the commonest rags in the church. She named forgotten promises, unforgiveness, stubbornness, lying, lust and disobedience. In some tellings she added occult practices.
+
+> Search me, O God, and know my heart: try me, and know my thoughts: and see if there be any wicked way in me, and lead me in the way everlasting. PSALM 139:23–24
+
+She liked to speak of decent sinners and decent sins — the respectable faults that do not shock anyone but still block the light. A little self-pity. A small untruth. She would pull out what looked like one last rag and find it was a banknote. That, she said, was not a sin; it was only in the wrong place. Money belongs in the purse, not in the heart. But it too can keep the Spirit out.
+
+## Out with the rags
+
+What is to be done with the rags? Her answer was the gospel. Confess them, forsake them, and be cleansed.
+
+> He that covereth his sins shall not prosper: but whoso confesseth and forsaketh them shall have mercy. PROVERBS 28:13
+
+She insisted that confession must be honest. We must not excuse our sins, she said, because God forgives sins, not excuses. We must say, yes, Lord, I have lied, I have been proud, forgive me. And confession must be joined to repentance — a real turning away. She told of a pickpocket who, on being converted, announced that he now stole only a few watches a week instead of dozens. That, she said, is not repentance.
+
+When the heart is cleansed, she taught, it becomes a dwelling for the fullness of the Spirit. And the evidence of that fullness is not first a feeling or a gift, but fruit.
+
+> But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law. GALATIANS 5:22–23
+
+## The glove and the hand
+
+She had another prop for the same truth. She would hold up an empty glove and point out that it could do nothing. Put a hand in it, and it could cook, write and work. It is not the glove that does it, she said, but the hand in the glove. We are gloves; the Holy Spirit is the hand. And a hand only partly in the glove cannot use it. Every finger must be filled.
+
+> Not by might, nor by power, but by my spirit, saith the LORD of hosts. ZECHARIAH 4:6
+
+The same conviction lay behind a contrast she drew often: the Christian life rests on trusting rather than straining, and on what Christ has already done rather than on what we manage to do. She did not mean passivity; she was the least passive of women. She meant that the power for the Christian life is not our effort but the Spirit’s life in us.
+
+> He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. (But this spake he of the Spirit, which they that believe on him should receive.) JOHN 7:38–39
+
+## Where to read with care
+
+Corrie moved, in her later years, in circles that valued the gifts of the Spirit highly, and she was welcomed in charismatic and Pentecostal settings. She spoke about the Holy Spirit at the Lausanne Congress in 1974. In Tribulation she welcomes the spread of spiritual gifts, including tongues, across the churches, and tells a story she had heard of a missionary under brainwashing in China who was set free when he began to speak in tongues. She also taught, in a booklet called Defeated Enemies and elsewhere, that occult practices open the door to demonic oppression, and that believers can cast out demons in the name of Jesus.
+
+Christians differ on these matters, and some of her readers will not follow her in all of them. The story of the missionary, told at second hand, cannot be tested. The wise course is to hold to what is plain and central in her teaching — that every believer is commanded to be filled with the Spirit, that unconfessed sin quenches Him, and that His fullness is shown in love and holiness — and to weigh her particular claims about gifts and demons against the whole of Scripture.
+
+> But all these worketh that one and the selfsame Spirit, dividing to every man severally as he will. 1 CORINTHIANS 12:11
+
+As He will. The Spirit is not a force we operate but a Person we obey. Corrie, at her best, knew that well.
+
+### FOR REFLECTION AND ACTION
+
+1. Pray Psalm 139:23–24 slowly, and write down whatever rags the Lord brings to mind.
+2. Take the list and confess each one specifically, without excuses. Then tear it up.
+3. Ask whether money, or anxiety about money, has found its way into your heart. Put it back in the purse.
+4. Ask God, simply and on the basis of His command, to fill you with His Spirit today. Expect the evidence in fruit rather than feelings.
+5. If you hold strong views on spiritual gifts, for or against, read 1 Corinthians 12–14 at one sitting and ask whether your views are as balanced as Paul’s.
+
+### A PRAYER
+
+> Holy Spirit, You have been grieved by the rags I have kept in my heart. I name them now, and I confess them without excuse.
+> Cleanse me by the blood of Jesus, and make my heart a fit dwelling for You.
+> Fill me, as You have commanded. I am only a glove; be the hand in every part of me.
+> Let Your fruit grow in me — love, joy and peace — and make me a light in a dark place. Amen.
+
+# Cashing the Cheques
+
+> For all the promises of God in him are yea, and in him Amen, unto the glory of God by us. 2 CORINTHIANS 1:20
+
+Corrie ten Boom had a favourite way of describing the promises of the Bible. They are cheques, she said, written out in our name, signed by Jesus, and drawn on the bank of heaven, whose account is never frozen. The trouble with most Christians is not that they lack promises. It is that they never cash them. They live like beggars, she liked to say, when they are the children of a King. This chapter gathers her teaching on prayer, which rests on that picture.
+
+## Promises for sinners
+
+In The Greatest of These Is Love she makes a point that surprised her hearers. Some people, she said, think the promises of the Bible belong to especially good Christians — to the lady in the front row, the earnest young man, the mature believer. But the promises, she told them, are for sinners only. The moment a person is born into the family of God, all the promises are theirs. They do not have to wait until they are mature or learned. They may begin to cash the cheques at once.
+
+> Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not. JEREMIAH 33:3
+
+This is a fine corrective to a common timidity. Many believers approach God as though they had to earn a hearing. Corrie approached Him as a child approaches a father who has already promised.
+
+## Praying with an open Bible
+
+She liked to pray, she said in Power in Prayer, with an open Bible, putting her finger on a promise and telling God, in effect, You have said it; now please do it. God likes that, she said, because He means every promise He has made, and He is pleased when His children take Him at His word.
+
+We have already seen, in the chapter on the Bible in the barracks, how freely she applied this — praying a verse from Jeremiah over a suitcase of Bibles at Moscow customs, and admitting cheerfully that it was not what Jeremiah meant. That candour is part of her teaching. She did not claim to be an exegete. She claimed only that God hears the prayer of a child who trusts His word, and does not demand perfect interpretation first.
+
+There is a real truth here, and a real danger. The truth is that prayer grounded in Scripture is strong prayer, and that God delights to be trusted. The danger is the habit of seizing a verse out of its setting and treating it as a guarantee of whatever we want. Corrie was protected from that by her humility and by her obedience; she did not use promises to get her own way, but to do God’s work. Readers who pray her way should keep her spirit.
+
+## In the name of Jesus
+
+In the same address she stresses praying in the name of Jesus. She tells of an African friend whose small son wanted to write his father a letter while he was away. The child could not write; his letter was scribbles. But his mother wrote on it that it was from their son, and when the father received it he was overjoyed. He showed it to his friends. His son had written to him. So it is, she said, with our prayers. They are never good enough for a holy God, however beautiful or halting. But when they come in the name of Jesus, the Father receives them with delight, because they come through His Son.
+
+> And whatsoever ye shall ask in my name, that will I do, that the Father may be glorified in the Son. If ye shall ask any thing in my name, I will do it. JOHN 14:13–14
+
+## Praying for others
+
+Much of Power in Prayer is about intercession. She urged her hearers to pray faithfully for missionaries, many of whom, she said, are prayed for eagerly when they leave and forgotten a few months later. She urged them to pray for rulers and governments.
+
+> I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men; for kings, and for all that are in authority; that we may lead a quiet and peaceable life in all godliness and honesty. 1 TIMOTHY 2:1–2
+
+And she urged them, again and again, to pray for the persecuted church. She quoted, in several addresses, a saying she attributed to Watchman Nee: that when his feet were whipped, his hands felt the pain. The body of Christ is one. Believers in freedom may not be indifferent to believers in chains.
+
+## Prayers kept in heaven
+
+The heart of her teaching on prayer is perseverance. In Power in Prayer she tells a string of stories from one television interview late in her life. After it, she received letters from people she had prayed for decades before: news of a man who had lived in the street behind her childhood home, a woman from her school days, a man she had pleaded with in Canada who now wanted to receive Christ, a former resident of her home for ex-prisoners who had found the Lord. She counted the years: seventy-five, sixty-five, forty, twenty-five. Not one prayer, she concluded, is lost.
+
+> And the smoke of the incense, which came with the prayers of the saints, ascended up before God out of the angel’s hand. REVELATION 8:4
+
+She told her hearers that the devil would say to them, you have prayed long enough; stop. And she told them he was a liar. God’s answers go slowly, she said, but surely. Go on praying for that son, that husband, that neighbour.
+
+> And he spake a parable unto them to this end, that men ought always to pray, and not to faint. LUKE 18:1
+
+## Betsie prays
+
+She also told what prayer could do in the worst of places. In How to Forgive and Power in Prayer she recalls a fight breaking out among the hundreds of starving women packed into their barracks — a dangerous thing, because the guards punished such disorder. Betsie began to pray aloud, asking God to take away the spirit of quarrelling, and the room grew quiet, Corrie says, as though a storm had been stilled. A frail, starving woman had prayed, and the danger passed.
+
+> The effectual fervent prayer of a righteous man availeth much. JAMES 5:16
+
+Corrie drew the lesson for her comfortable hearers. They too were called to pray in a dark world. If they did not know how, she said, they should go into training.
+
+### FOR REFLECTION AND ACTION
+
+1. Choose one promise of Scripture that fits a need you have now. Open your Bible at it and pray it back to God.
+2. Check that the promise you chose really means what you are asking. If not, find one that does.
+3. Make a list of missionaries and persecuted believers you will pray for regularly, and put it where you will see it.
+4. Think of the person you have prayed for longest without visible answer. Tell the devil he is a liar, and pray again.
+5. Pray this week for your national leaders by name, whether or not you agree with them.
+
+### A PRAYER
+
+> Father, You have written promises in my name and signed them with the blood of Your Son. Forgive me for living like a beggar.
+> Teach me to pray with an open Bible, to take You at Your word, and to ask for what You have promised rather than for what I merely want.
+> Receive my poor prayers in the name of Jesus, and hear them for His sake.
+> Keep me praying for those I love, for those who suffer for Your name, and for those who rule, and do not let me faint. Amen.
+
+# A Tramp for the Lord
+
+> Also I heard the voice of the Lord, saying, Whom shall I send, and who will go for us? Then said I, Here am I; send me. ISAIAH 6:8
+
+Corrie ten Boom came out of Ravensbrück at the end of 1944 with no father, no sister, a ruined business and a charge. Betsie had told her that when they were free they must go and tell the world what they had learned. For more than thirty years afterwards, from her fifties into her eighties, she did exactly that. She had almost no money, no organisation behind her and for most of those years no settled home. She called herself a tramp for the Lord, and the phrase became the title of one of her books. This chapter is about the obedience that sent her, and what it teaches those of us who will never travel as she did.
+
+## Obedience without a plan
+
+She did not set out with a strategy. In 1946 she crossed the Atlantic for the first time and spent months in the United States and Canada, speaking wherever she was invited — churches, colleges, prisons, homes — and moving from one invitation to the next. That journey fulfilled one of the plans the sisters had made in their bunk in Barracks 28. From there the travels widened until she had spoken in more than sixty countries, including many behind the Iron Curtain.
+
+> By faith Abraham, when he was called to go out into a place which he should after receive for an inheritance, obeyed; and he went out, not knowing whither he went. HEBREWS 11:8
+
+What sent her was not ambition but obedience. She did not think of herself as gifted. Her English was accented, her stories simple, her repetitions many. In Power in Prayer she asks her hearers to pray that they would forget the channel and see only the Lord, and that she herself would be hidden behind the cross. That was the spirit of the whole enterprise.
+
+## The gospel first
+
+It would be easy to assume that her message was chiefly about the war. It was not. She told her story, but the story was always a vehicle for the gospel. Almost every recorded address on Ochorus ends with an invitation to receive Christ. She had a horror of people who assumed they were Christians because they went to church or had believing parents. In The Greatest of These Is Love and Power in Prayer she uses two old sayings to make the point: that a mouse born in a biscuit tin is not thereby a biscuit, and that God has no grandchildren. Every person must be born again for himself.
+
+> Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God. JOHN 3:3
+
+In the same addresses she tells of a young man in her underground group who told her that saving lives was the most important work in the world. She told him there was something more important still, and that was saving souls. He smiled and said that was his pastor’s business. Months later he was arrested and sentenced to death, and, as she tells it, he wrote to the group before he was shot to say that he had told the men in his cell about Christ, and now understood that winning souls for eternity was the greatest work of all. She passed on his message to young people wherever she went: do not wait for the last week of your life.
+
+> And they that be wise shall shine as the brightness of the firmament; and they that turn many to righteousness as the stars for ever and ever. DANIEL 12:3
+
+## To the enemy’s country
+
+Her obedience took her to the places she might most have wished to avoid. Within a few years of her release she was running a home for refugees and displaced people in Darmstadt, in Germany. In her book Amazing Love, published in 1953, she tells of going into an internment camp to preach to former women guards from the concentration camps, whom she had feared and despised. Readers who want the story should read it there.
+
+> How then shall they call on him in whom they have not believed? and how shall they believe in him of whom they have not heard? and how shall they hear without a preacher? ROMANS 10:14
+
+Later she carried the gospel into Communist Europe. In The Greatest of These Is Love she tells, with obvious delight, of discovering the hidden microphone in a hotel room behind the Iron Curtain, and deciding that God had given her a congregation of Communist officials. Every day after that she preached into it.
+
+## A woman preaching
+
+Honesty requires a note. In the strict Reformed circles of her own country, some objected on principle to a woman preaching, and Christians still differ on that question. Corrie did not argue the point at length. She went where she was invited and spoke of Christ. Even those who disagreed with her tended to speak of her with respect. Readers will weigh the matter by their own convictions, but none should doubt the obedience that drove her.
+
+## Your own sending
+
+Most readers of this book will never travel to sixty countries, and should not try. The lesson of her life is not that every Christian should become a travelling speaker. It is that every Christian is sent somewhere. She told audiences that every believer is called to be the light of the world, not only the pastor. The place may be a kitchen, an office, a school or a hospital ward. The call is the same.
+
+> Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost: teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. MATTHEW 28:19–20
+
+And the obedience is the same. She began as a watchmaker who opened her door. The travels came later. Faithfulness in the first place is the only preparation for any other.
+
+> But none of these things move me, neither count I my life dear unto myself, so that I might finish my course with joy. ACTS 20:24
+
+### FOR REFLECTION AND ACTION
+
+1. Ask God plainly where you are sent — not in the future, but this week. Write down the names of three people there.
+2. Consider whether you are relying on church attendance or family faith instead of a personal new birth. Settle it before God today.
+3. Think of the place or people you would least like to be sent to. Pray for them.
+4. Tell one person this week, simply and without pressure, what Christ means to you.
+5. Pray that when you speak of God, others would see Him and not you.
+
+### A PRAYER
+
+> Lord, You sent a grieving woman out of a prison camp into all the world. Here am I; send me where You will.
+> Hide me behind the cross, so that those I speak to see You and not me.
+> Give me a burden for souls, and courage to speak of Christ in my own kitchen and office and street.
+> Make me faithful where I am, and ready to go wherever You call. Amen.
+
+# The Best Is Yet to Be
+
+> For our conversation is in heaven; from whence also we look for the Saviour, the Lord Jesus Christ. PHILIPPIANS 3:20
+
+Casper ten Boom had a saying that his daughter recorded in her first book, in 1945. The best, he used to say, was yet to come. He said it often, and he meant it about heaven. When he died in prison ten days after his arrest, a niece wrote to Betsie telling her not to grieve: for Grandfather, the best had now come. Corrie carried her father’s conviction for the rest of her life, and in her later years it grew into a confident, urgent teaching about the return of Christ. This chapter gathers that teaching, together with the counsel she gave for facing hard times before the end.
+
+## Citizens of heaven
+
+In How to Forgive and Tribulation, both now in the Ochorus library, Corrie returns again and again to Paul’s words to the Philippians. Christians are citizens of heaven. Their outlook goes beyond this world, to the coming of Jesus Christ. That outlook, she insisted, is what allows a Christian to be realistic about the world without despair.
+
+She told of a pastor who admitted that when he read a sad book he always turned to the last page first, to see how it ended. She urged her hearers to do the same with the news. Read the last page. Jesus is coming, and He makes all things new.
+
+> And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away. And he that sat upon the throne said, Behold, I make all things new. REVELATION 21:4–5
+
+She loved the prophets’ vision of a world filled with the knowledge of God, and she quoted it constantly.
+
+> For the earth shall be filled with the knowledge of the glory of the LORD, as the waters cover the sea. HABAKKUK 2:14
+
+## The train ticket
+
+Her most beloved teaching about hard times comes from her childhood, and she tells it in both How to Forgive and Tribulation. As a little girl she told her father she was afraid she would never be strong enough to suffer for Jesus. He asked her when, if she was going on a train journey, he gave her the ticket. Weeks before? No, she said, on the day she travelled. That, he told her, is what God does. He does not give us today the strength for a trial that has not yet come. When the time comes, He gives us all we need. She says she was comforted and went back to her dolls.
+
+> Thy shoes shall be iron and brass; and as thy days, so shall thy strength be. DEUTERONOMY 33:25
+
+It is one of the wisest things she ever passed on. Much of our fear is the attempt to feel, today, the strength for a suffering we only imagine. God does not give it, because we do not yet need it. The Christian who is afraid of some future trial should not conclude that he will fail. He should conclude that the ticket has not yet been handed out.
+
+## Ready for tribulation
+
+Corrie was deeply aware of the suffering church, and she believed that hard times were coming for believers everywhere. In Tribulation she tells her hearers that persecution is not a strange thing reserved for other countries, and that they should prepare for it now — by learning Scripture by heart, by learning to pray, and by being filled with the Spirit. She rejected the comfortable assumption that Christians will always be spared.
+
+> Yea, and all that will live godly in Christ Jesus shall suffer persecution. 2 TIMOTHY 3:12
+
+> These things I have spoken unto you, that in me ye might have peace. In the world ye shall have tribulation: but be of good cheer; I have overcome the world. JOHN 16:33
+
+In the same address she says plainly that she did not accept the teaching that Christians will be taken out of the world before any tribulation comes; she read the Lord’s words as a call to pray for strength to stand. Christians hold different views on the order of the last things, and readers will weigh hers accordingly. But a caution is needed about one document in particular. A letter warning against the pre-tribulation rapture, said to date from 1974, circulates widely under her name and is quoted in several books. As the Ochorus biography notes, its origin has never been verified, and it should not be quoted as hers. What can be said with confidence is what she said in her recorded addresses: be ready, whatever comes.
+
+> Watch ye therefore, and pray always, that ye may be accounted worthy to escape all these things that shall come to pass, and to stand before the Son of man. LUKE 21:36
+
+## A caution about newspapers
+
+She sometimes drew on the news to illustrate prophecy, and in Tribulation she tells of a passage in Ezekiel she had hung on a hook, so to speak, because she could not see how it would be fulfilled, until she read something in the paper that seemed to explain it. She was careful to say she did not understand all the prophecies and did not need to. That humility is the right lesson. The history of the church is littered with confident identifications of prophecy with the headlines of the day, and most of them have been wrong. We are told to be ready, not to be clever.
+
+## Ready now
+
+For Corrie, readiness was chiefly moral and spiritual. In How to Forgive she quotes Peter: because we look for such things, we should be diligent to be found at peace, spotless and blameless. And she asked her hearers directly whether they were right with God and right with others, if Jesus should come that very morning. That, rather than a timetable, was the point.
+
+> Wherefore, beloved, seeing that ye look for such things, be diligent that ye may be found of him in peace, without spot, and blameless. 2 PETER 3:14
+
+She had long before told her fellow prisoners that for those who belong to Christ, death is not a pit but a tunnel into the light. She watched her father and her sister go through it. On 15 April 1983, on her ninety-first birthday, she followed them.
+
+> For the Lord himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ shall rise first: then we which are alive and remain shall be caught up together with them in the clouds, to meet the Lord in the air: and so shall we ever be with the Lord. 1 THESSALONIANS 4:16–17
+
+### FOR REFLECTION AND ACTION
+
+1. Name one future trial you fear. Tell God you do not yet have the strength for it, and thank Him that He will give the ticket on the day.
+2. Read Revelation 21 and 22 slowly. Let the last page shape how you read today’s news.
+3. Ask yourself Corrie’s question: if Jesus came this morning, would you be at peace with God and with others? Put right one thing today.
+4. Before sharing any quotation about the end times attributed to a famous Christian, check its source.
+5. Prepare for hard times as she urged: learn one passage of Scripture, keep one hour of prayer, and ask to be filled with the Spirit.
+
+### A PRAYER
+
+> Lord Jesus, You are coming again, and You will make all things new. Let me live today as a citizen of heaven.
+> I am afraid of trials I cannot yet bear. Thank You that You give the strength on the day, and not before.
+> Make me ready — at peace with You and with others, clean and blameless in Your sight.
+> Keep Your suffering people strong until You come. The best is yet to be. Even so, come, Lord Jesus. Amen.
+
+# Conclusion
+
+> I have set the LORD always before me: because he is at my right hand, I shall not be moved. PSALM 16:8
+
+We have covered a good deal of ground in sixteen short chapters, and it would be easy to come away thinking that Corrie ten Boom taught many things. In truth she taught one thing, from many angles, for nearly forty years. God is present, and His love is deeper than the deepest darkness. Everything else is that truth applied. Providence in small things is that truth applied to the watch shop. Thanksgiving in everything is that truth applied to the barracks. Forgiveness is that truth applied to the enemy with his hand out, and to the friend whose letters we keep in a drawer. The casting of care is that truth applied to tomorrow. The fullness of the Spirit is that truth applied to the inside of a believer. And the return of Christ is that truth carried to the end of the world.
+
+## A witness, not a theologian
+
+She never claimed to be a theologian, and it would be unfair to judge her as one. She used Scripture as a preacher uses it, sometimes loosely; her stories changed shape over years of retelling; and some of her later emphases will not persuade every reader. We have tried to be honest about all of that.
+
+But none of it touches the heart of her witness. The core of her story — the hiding place, the raid, the prisons, the deaths, the release and the forty years of travel — is confirmed by independent records. And the core of her teaching is confirmed by something older: by the Scriptures she carried into the camp and read aloud in the dark.
+
+> If I ascend up into heaven, thou art there: if I make my bed in hell, behold, thou art there. PSALM 139:8
+
+## What to do with it
+
+If you have read this far, the danger is that you will admire her and change nothing. She would have hated that. So here is the plainest counsel this book can offer. Go back to the chapter that made you uncomfortable. Not the one you enjoyed — the one you would rather not read again. That is probably where God is working. Take its application points and do them, slowly, one at a time.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+For many readers that chapter will be one of the three on forgiveness. There is almost certainly a hand you have not taken, a letter you have not written, a record of wrongs you have not burned. Corrie’s whole life says that you do not need to feel forgiving first. You need to decide, and ask God for His love, and obey. The feeling will follow, in His time.
+
+## Two things to carry
+
+Carry away, first, the train ticket. Much of what frightens us is the future, and we try to find today the strength for trials that have not come. God does not give it, because we do not yet need it. When the day comes, He will. She had tested it at roll call in Ravensbrück.
+
+Carry away, second, Betsie’s charge. The comfort God gives in the pit is never only for the one who receives it. If He has brought you through something, He has made you able to tell someone else that His love was deeper. That is what Corrie did with the rest of her life. It is what she would want you to do with yours.
+
+> Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God. 2 CORINTHIANS 1:4
+
+## A last word about the woman
+
+She would not want to be remembered as a heroine. She played down her courage all her life, and she was honest about her fears, her resentments and her failures. She said that she had never graduated in the science of not worrying, and that she found some small injuries harder to forgive than great ones. The real woman who emerges from her own recorded words is more encouraging than any legend: often afraid, sometimes petty by her own admission, and always dependent on God.
+
+That is exactly why her witness can be trusted. She did not survive because she was strong. She survived, and went on, because she had found a hiding place that the Gestapo could not raid.
+
+> Thou art my hiding place and my shield: I hope in thy word. PSALM 119:114
+
+The plaque on the wall of the Beje on the morning of the raid said that Jesus is Victor. She believed it then, and she believed it at the end. So may we.
+
+### FOR REFLECTION AND ACTION
+
+1. Look back at the page you wrote at the start of this book. Write beneath it one thing you now believe about God’s presence there that you did not believe before.
+2. Choose the chapter you would least like to read again. Reread it this week and do its application points.
+3. If there is a hand you have not taken, decide today what your next step will be, and take it.
+4. Tell one person the story of how God has been faithful to you in a dark place.
+5. Read one of her books for yourself, beginning with The Hiding Place, and let her speak in her own voice.
+
+### A PRAYER
+
+> Lord God, You were with a watchmaker in her shop and in her cell, in the barracks and on the long road afterwards. You have been with me too.
+> Do not let me admire Your servant and remain unchanged. Take the truth I have seen and press it into my life until it costs me something.
+> Give me Your love for those I cannot forgive, Your peace for the tomorrow I fear, and Your Spirit to make me a light.
+> Be my hiding place. Make me a comfort to others. And keep me believing, to the end, that Jesus is Victor. Amen.
+
+# A Reader’s Guide to Corrie ten Boom
+
+> Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. 2 TIMOTHY 2:15
+
+Corrie ten Boom wrote a great many books, most of them short, all drawing on the same store of stories and convictions, and all still in copyright. What follows is a guide to hearing her for yourself, arranged for usefulness rather than completeness. Obtain her books from their rightful publishers.
+
+## Begin here
+
+The Hiding Place (1971), written with John and Elizabeth Sherrill. The book through which most of the world knows her, and the natural place to start. It tells her childhood, the family and the shop, the underground years, the raid, the prisons, Ravensbrück and Betsie. It is beautifully written, and some of its dialogue owes as much to the Sherrills’ craft as to her memory; read it as a mature testimony rather than a transcript. The 1975 film of the same name, made by World Wide Pictures, is a faithful companion to it.
+
+Tramp for the Lord (1974). The sequel, telling stories from her decades of travel, and one of the two places where she tells of the encounter with the former guard. Episodic and warm.
+
+## Her earliest account
+
+A Prisoner and Yet, first published in Dutch in 1945 and in English in 1947. Written within months of her release, before she was famous and before any collaborator shaped it. Short, raw and sometimes unpolished, it is the closest record we have to the events in her own words, and the best check on the later retellings.
+
+## Her teaching and devotional books
+
+Amazing Love (1953). An early collection of stories from her first years of travel, including her preaching to former camp guards. Not Good If Detached (1957). More stories and teaching from the travelling years. In My Father’s House (1976). Her memories of the years before the war — the family, the shop, the aunts, and the faith that was formed there; the best companion to the early chapters of this volume. Corrie ten Boom’s Prison Letters (1975). Letters from Scheveningen, Vught and Ravensbrück, with the letter to the informer. Each New Day. A book of short daily readings, and a good gift. Clippings from My Notebook. A late collection of the sayings, poems and quotations she had gathered over the years, many of them from other writers — a useful reminder that not every line now attributed to her began with her.
+
+## In the Ochorus library
+
+Six of her recorded addresses are in the Ochorus library: How to Forgive, Power in Prayer, The Greatest of These Is Love, The Love of Christ, Total Surrender and Tribulation. Transcribed from talks in her later years, they give her voice more directly than any summary can. How to Forgive and Total Surrender are the best places to begin. Portraits of Courage – Corrie ten Boom, also in the Ochorus library, is a careful biography that compares her earliest account with her later books and sets out what the independent records confirm.
+
+## Approach with care
+
+Defeated Enemies (1962) and her other writing on spiritual warfare and deliverance reflect her later charismatic associations, and not all readers will be persuaded. Her booklets on the last days, such as Marching Orders for the End Battle, should be read alongside Scripture and with the cautions of chapter eighteen of this volume. And beware of her online reputation. Many sayings, poems and letters circulate under her name that she did not write — the weaving poem she learned in America, a line about God having no panic that she credited to another, and an unverified letter on the rapture among them. If you want to quote her, find the words in one of her books.
+
+## About her
+
+Pamela Rosewell Moore, who travelled with her and nursed her through her last years, wrote The Five Silent Years of Corrie ten Boom, a tender account of the time after her strokes. Hans Poley, one of the young men hidden in the Beje, published Return to the Hiding Place (1993), a memoir based on his wartime diaries, which gives an independent view of the household. Carole C. Carlson’s Corrie ten Boom: Her Life, Her Faith is a sympathetic popular biography. The museum that keeps the house in Haarlem, opened in 1988, preserves the family’s papers and its own careful chronology. Read more than one account.
+
+## Three counsels for reading her
+
+Read the earliest and the latest together. The 1945 account keeps The Hiding Place honest; The Hiding Place fills out what the 1945 account leaves bare.
+
+Read with the Bible open. She claimed no authority of her own and argued constantly from Scripture, sometimes loosely. Check her texts in their setting, and keep what is plainly true.
+
+And read her to be changed. She told her stories to get people to do something — to receive Christ, to forgive, to lay down a burden. One chapter obeyed will do more than the whole shelf enjoyed.
+
+> Thou art my hiding place; thou shalt preserve me from trouble; thou shalt compass me about with songs of deliverance. PSALM 32:7

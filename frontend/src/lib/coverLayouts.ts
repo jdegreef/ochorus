@@ -129,7 +129,25 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-hudson-taylor': null,
 	'key-teachings-of-athanasius-of-alexandria': null,
 	'key-teachings-of-julia-foote': null,
-	'key-teachings-of-jeanne-guyon': null
+	'key-teachings-of-jeanne-guyon': null,
+	'key-teachings-of-r-a-torrey': null,
+	'key-teachings-of-dwight-l-moody': null,
+	'key-teachings-of-john-bunyan': null,
+	'key-teachings-of-john-wesley': null,
+	'key-teachings-of-charles-finney': null,
+	'key-teachings-of-john-owen': null,
+	'key-teachings-of-e-m-bounds': null,
+	'key-teachings-of-frederick-brotherton-meyer': null,
+	'key-teachings-of-george-whitefield': null,
+	'key-teachings-of-ignatius-of-antioch': null,
+	'key-teachings-of-john-calvin': null,
+	'key-teachings-of-martin-luther': null,
+	'key-teachings-of-a-w-tozer': null,
+	'key-teachings-of-martyn-lloyd-jones': null,
+	'key-teachings-of-corrie-ten-boom': null,
+	'key-teachings-of-derek-prince': null,
+	'key-teachings-of-dietrich-bonhoeffer': null,
+	'key-teachings-of-gareth-evans': null
 };
 
 /**
@@ -159,7 +177,25 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-hudson-taylor',
 	'key-teachings-of-athanasius-of-alexandria',
 	'key-teachings-of-julia-foote',
-	'key-teachings-of-jeanne-guyon'
+	'key-teachings-of-jeanne-guyon',
+	'key-teachings-of-r-a-torrey',
+	'key-teachings-of-dwight-l-moody',
+	'key-teachings-of-john-bunyan',
+	'key-teachings-of-john-wesley',
+	'key-teachings-of-charles-finney',
+	'key-teachings-of-john-owen',
+	'key-teachings-of-e-m-bounds',
+	'key-teachings-of-frederick-brotherton-meyer',
+	'key-teachings-of-george-whitefield',
+	'key-teachings-of-ignatius-of-antioch',
+	'key-teachings-of-john-calvin',
+	'key-teachings-of-martin-luther',
+	'key-teachings-of-a-w-tozer',
+	'key-teachings-of-martyn-lloyd-jones',
+	'key-teachings-of-corrie-ten-boom',
+	'key-teachings-of-derek-prince',
+	'key-teachings-of-dietrich-bonhoeffer',
+	'key-teachings-of-gareth-evans'
 ]);
 
 /**
