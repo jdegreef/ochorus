@@ -55,9 +55,9 @@ export const relatedPlaces = (hub: Hub, hubs: Hub[]): Hub[] => {
 };
 
 /**
- * The index rows. Places are grouped under their region, and a region with no
- * page here still heads its places (by the place list alone) so nothing drops
- * out; a place with no region stands in a group of its own.
+ * The index rows: each region with its places. A place whose region has no
+ * page in this language (or that has no region) is not dropped: all such
+ * places share one trailing group with no region heading ("Elsewhere").
  */
 export type PlaceGroup = { region: Hub | null; places: Hub[] };
 
@@ -75,10 +75,11 @@ export const placeGroups = (hubs: Hub[]): PlaceGroup[] => {
 };
 
 /**
- * The shared loader of the two hub routes. The hub list is the page itself, so
- * a failed fetch or a hub this language doesn't have is a 404, not an empty
- * page; the writers are the primary list (`loadShelf` reports a failure), and
- * the books only feed the cover strips, so they degrade to none.
+ * The shared loader of the two hub routes. A hub this language doesn't have is
+ * a 404; a failed hub fetch propagates (the error page, not a false 404), as
+ * the topic pages do. The writers are the primary list (`loadShelf` reports a
+ * failure) and the books only feed the cover strips, so they degrade to none.
+ * All three are requested together; only the hub list gates the page.
  */
 export async function loadHub(
 	route: 'tradition' | 'place',
@@ -86,11 +87,12 @@ export async function loadHub(
 	lang: string,
 	fetch: typeof globalThis.fetch
 ) {
-	const hubs = await listHubs(lang, fetch).catch(() => [] as Hub[]);
+	const shelf = loadShelf(listAuthors(lang, fetch));
+	const booksP = listBooks(lang, fetch).catch(() => [] as BookSummary[]);
+	const hubs = await listHubs(lang, fetch);
 	const hub = findHub(hubs, slug, route);
 	if (!hub) throw error(404, 'Unknown hub');
-	const { items: authors, loadError } = await loadShelf(listAuthors(lang, fetch));
-	const books = await listBooks(lang, fetch).catch(() => [] as BookSummary[]);
+	const [{ items: authors, loadError }, books] = await Promise.all([shelf, booksP]);
 	return { hub, hubs, authors, books, loadError };
 }
 

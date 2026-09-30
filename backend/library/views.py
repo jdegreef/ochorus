@@ -136,6 +136,7 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         # pages list the same writers.
         return (
             Author.objects.listed_in_biographies(_language(self.request))
+            .with_work_counts(_language(self.request))
             .prefetch_related("translations")
             .order_by("name")
         )

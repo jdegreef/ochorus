@@ -23,6 +23,9 @@ const SLASHED_SECTIONS = new Set([
 	'topics'
 ]);
 
+/** `/biographies/<group>/<slug>/` — the era pages and the tradition/place hubs. */
+const BIOGRAPHY_GROUPS = new Set(['era', 'tradition', 'place']);
+
 /**
  * Whether a path (locale prefix and all) belongs to a route that prerenders to
  * `<path>/index.html` — i.e. exports `trailingSlash = 'always'`. Any such
@@ -32,9 +35,6 @@ const SLASHED_SECTIONS = new Set([
  * `canonicalRedirect.test.ts` walks the route tree so a new slashed route
  * can't be missed.
  */
-/** `/biographies/<group>/<slug>/` — the era pages and the tradition/place hubs. */
-const BIOGRAPHY_GROUPS = new Set(['era', 'tradition', 'place']);
-
 export function isSlashedPath(path: string): boolean {
 	const segments = path.split('/').filter(Boolean);
 	const body = locales.includes(segments[0] as (typeof locales)[number])

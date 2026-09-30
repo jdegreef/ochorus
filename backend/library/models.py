@@ -67,23 +67,31 @@ class AuthorQuerySet(models.QuerySet):
         """The writers the Biographies page lists in ``language``.
 
         A real person (not an imprint) who hasn't been withheld from the shelf,
-        with a published work in ``language`` or a bio a reader of it can read —
-        the source-language bio, or a translation. The hub pages list the same
-        set, so a writer on a hub is one the biographies page shows too.
+        with a published book or sermon in ``language`` or a bio a reader of it
+        can read — the source-language bio, or a translation. The hub pages list
+        the same set, so a writer on a hub is one the biographies page shows too.
 
-        ``Exists()`` rather than a join to ``translations``: the join fanned the
-        query out and forced a ``.distinct()`` that de-duplicated over every
-        column, the bio HTML included.
+        Every test is an ``Exists()``: no join fans the rows out (the join to
+        ``translations`` once forced a ``.distinct()`` over every column, the
+        bio HTML included), and nothing is counted — a caller that shows the
+        counts adds ``with_work_counts``.
         """
+        from django.apps import apps
+
+        def published(model_name: str):
+            return Exists(
+                apps.get_model("library", model_name).objects.filter(
+                    author=OuterRef("pk"), is_published=True, language=language
+                )
+            )
+
         translated_bio = Exists(
             AuthorTranslation.objects.filter(author=OuterRef("pk"), language=language)
             .exclude(bio="", bio_html="")
         )
         own_bio = Q(original_language=language) & (~Q(bio="") | ~Q(bio_html=""))
-        return (
-            self.filter(is_imprint=False, list_in_biographies=True)
-            .with_work_counts(language)
-            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
+        return self.filter(is_imprint=False, list_in_biographies=True).filter(
+            published("Book") | published("Sermon") | own_bio | translated_bio
         )
 
 

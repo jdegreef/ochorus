@@ -19,6 +19,9 @@ import type { PageLoad } from './$types';
 // instead of the initials avatar.
 export const load: PageLoad = async ({ fetch }) => {
 	const lang = getLang();
+	// The tradition/place hubs this language has, for the browse rows. Decoration
+	// like the books: none if unavailable. Requested up front, alongside the rest.
+	const hubsP: Promise<Hub[]> = listHubs(lang, fetch).catch(() => []);
 	// The authors are the shelf: a failed fetch is REPORTED so the page can
 	// offer Try again, rather than crashing to the 500 route (it was unguarded).
 	const { items: authors, loadError } = await loadShelf(listAuthors(lang, fetch));
@@ -30,10 +33,7 @@ export const load: PageLoad = async ({ fetch }) => {
 	} catch {
 		books = [];
 	}
-	// The tradition/place hubs this language has, for the browse rows. Decoration
-	// like the books: none if unavailable.
-	const hubs: Hub[] = await listHubs(lang, fetch).catch(() => []);
-	return { authors, books, hubs, loadError };
+	return { authors, books, hubs: await hubsP, loadError };
 };
 
 // Biographies book counts are locale-aware (server-side) and prerendered per
