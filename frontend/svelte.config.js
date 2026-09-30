@@ -146,6 +146,11 @@ const config = {
 					// (or when the web build lags the backend deploy that adds it) —
 					// same case as /sermons/[slug]. The index still prerenders.
 					'/articles/[slug]',
+					// Biography hubs exist only once the hubs API serves them (and a
+					// hub needs enough listed writers), so a build against an API that
+					// lags this deploy, or a fresh seed, can legitimately reach none.
+					'/biographies/tradition/[slug]',
+					'/biographies/place/[slug]',
 					'/scripture/[book]/[chapter]',
 					'/scripture/[book]/[chapter]/[verse]',
 					// Quote pages exist only for an author whose quotations a

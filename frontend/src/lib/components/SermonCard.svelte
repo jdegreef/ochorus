@@ -4,8 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
-	import Emblem from '$lib/components/Emblem.svelte';
-	import { emblemForSermon } from '$lib/emblemNames';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import { hueForBirthYear } from '$lib/eras';
 
 	/**
@@ -27,7 +26,7 @@
 	 *
 	 *   - `card` — compact, for a grid beside other content (a topic's sermons,
 	 *     an author's sermons).
-	 *   - `row` — full width, with the era rail, the era-tinted emblem and the
+	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and the
 	 *     brief, for the sermons index where sermons ARE the content.
 	 *
 	 * `.sermon-row*` is styled globally in app.css; only `card` carries scoped
@@ -78,12 +77,10 @@
 		onclick={onRowClick}
 		style="--row-hue: {hueForBirthYear(sermon.author.birth_year)}"
 	>
-		<!-- Every sermon wears its own illustrated emblem, themed to the text it
-		     expounds — the raven with bread, the bruised reed, the golden key — so
-		     a shelf of prose rows gets a scannable visual anchor. -->
-		<div class="sermon-row-emblem emblem-chip">
-			<Emblem name={emblemForSermon(sermon.slug)} />
-		</div>
+		<!-- Every sermon opens with its passage as a monogram (MAT over 11), in
+		     the era tint. It replaced illustrated emblems, which repeated: most
+		     sermons drew theirs from a small hashed fallback pool. -->
+		<SermonMonogram class="sermon-row-monogram" scriptureRef={sermon.scripture_ref} title={sermon.title} />
 		<div class="min-w-0 flex-1">
 			<!-- One table-of-contents line: the title is the link to the sermon (a
 			     real, crawlable anchor per row); the passage, a dotted leader and the
@@ -134,7 +131,7 @@
 		class="sermon-card card-tint rounded-card border border-border bg-surface"
 		href={localizeHref(`/sermons/${sermon.slug}`)}
 	>
-		<span class="emblem emblem-chip"><Emblem name={emblemForSermon(sermon.slug)} /></span>
+		<SermonMonogram class="monogram" scriptureRef={sermon.scripture_ref} title={sermon.title} />
 		<span class="min-w-0 flex-1">
 			<span class="eyebrow sermon-label">{t('sermons.label')}</span>
 			<span class="title">{sermon.title}</span>
@@ -161,9 +158,9 @@
 		gap: 0.75rem;
 		padding: 0.85rem 1rem;
 	}
-	/* The sermon's emblem chip (recipe in app.css) — only size and hue here. */
-	.emblem {
-		--chip-size: 2.75rem;
+	/* The sermon's monogram chip (recipe in app.css) — only size and hue here. */
+	.sermon-card :global(.monogram) {
+		--chip-size: 3rem;
 		--chip-hue: var(--color-accent);
 	}
 	.sermon-label {

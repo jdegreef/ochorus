@@ -1,0 +1,481 @@
+{
+  "_note": [
+    "English prose for the biography hubs. `name` is the page's h1 and title; `label` is the short form on chips (the index, author pages, \"Also browse\"); `intro` is two or three sentences under it and the page's meta description; `qa` renders as Questions & answers with FAQPage markup.",
+    "Answers stay general and factual about the tradition or place, and point into the writers on the page. Never name the site in an answer, and never call the section an FAQ."
+  ],
+  "early-church": {
+    "name": "Writers of the early church",
+    "label": "Early church",
+    "intro": "Bishops, preachers and martyrs from the first centuries after the apostles. Their letters, sermons and confessions were written under persecution, in controversy and in prayer, and they shaped how the church has read the Bible ever since.",
+    "qa": [
+      {
+        "q": "Who are the church fathers?",
+        "a": "The church fathers are the leading teachers and bishops of the first Christian centuries, whose writings the later church treated as faithful witnesses to the apostles' teaching. Clement of Rome and Ignatius of Antioch wrote in the generation after the apostles; Athanasius, John Chrysostom and Augustine belong to the great age of the fourth and fifth centuries."
+      },
+      {
+        "q": "Where should I start with the early church?",
+        "a": "Augustine's Confessions is the best-known book of the period and reads as a prayer addressed to God. The short letters of Ignatius of Antioch, written on his way to martyrdom, can be read in an afternoon."
+      },
+      {
+        "q": "Why do the early church writers still matter?",
+        "a": "They defended the full deity of Christ, fixed the language of the creeds and showed ordinary believers how to pray, suffer and serve. Most later traditions, Catholic, Orthodox and Protestant, still read them as common ancestors."
+      }
+    ]
+  },
+  "monks-and-mystics": {
+    "name": "Monks, mystics and contemplatives",
+    "label": "Monks and mystics",
+    "intro": "Writers who sought God in silence, prayer and a surrendered will. From the cloisters of medieval France to a French noblewoman's prison cell, their books have taught generations of readers to pray.",
+    "qa": [
+      {
+        "q": "What is Christian mysticism?",
+        "a": "Christian mysticism is the tradition of seeking a direct, loving knowledge of God through prayer, contemplation and surrender. Its writers describe the soul's inward journey toward union with God rather than setting out doctrine."
+      },
+      {
+        "q": "Which book should I read first?",
+        "a": "The Imitation of Christ by Thomas à Kempis has been read more widely than almost any Christian book besides the Bible. Its short chapters on humility, patience and communion with Christ can be read one at a time."
+      },
+      {
+        "q": "Were these writers Catholic or Protestant?",
+        "a": "Most were Catholic monks and nuns, like Bernard of Clairvaux and Teresa of Ávila. William Law was an Anglican priest, and Protestant readers such as John Wesley found Jeanne Guyon and Thomas à Kempis deeply formative."
+      }
+    ]
+  },
+  "puritans": {
+    "name": "Puritan writers",
+    "label": "Puritans",
+    "intro": "English pastors of the late 1500s and 1600s who wanted a church reformed by Scripture and a life lived before God's face. Many were ejected from their pulpits in 1662, and wrote instead — books on sin and grace, the pastor's calling and the Christian's pilgrimage that are still read today.",
+    "qa": [
+      {
+        "q": "Who were the Puritans?",
+        "a": "The Puritans were English Protestants who pressed for a church and a daily life shaped wholly by Scripture. Their pastors are remembered for searching, practical preaching on the heart, conversion and assurance."
+      },
+      {
+        "q": "Which Puritan book should I read first?",
+        "a": "John Bunyan's The Pilgrim's Progress is the most-read Puritan book and the easiest way in. Richard Sibbes' The Bruised Reed is short and especially tender towards believers who feel weak."
+      },
+      {
+        "q": "Why were so many Puritans ejected in 1662?",
+        "a": "The Act of Uniformity of 1662 required every minister of the Church of England to accept the whole Book of Common Prayer and episcopal ordination. Around two thousand ministers, Richard Baxter and Thomas Watson among them, would not conform and lost their livings."
+      }
+    ]
+  },
+  "methodists": {
+    "name": "Methodist and Wesleyan writers",
+    "label": "Methodists",
+    "intro": "The revival that began with John and Charles Wesley in eighteenth-century England, and the churches that grew from it on both sides of the Atlantic. Its writers preached a heart-warming faith, a holy life and a gospel for the poor.",
+    "qa": [
+      {
+        "q": "How did Methodism begin?",
+        "a": "Methodism began as a movement for disciplined, practical holiness led by John Wesley and his brother Charles in the Church of England in the 1730s and 1740s. Its open-air preaching and small class meetings spread the revival across Britain and America."
+      },
+      {
+        "q": "Who founded the African Methodist Episcopal Church?",
+        "a": "Richard Allen, a formerly enslaved preacher in Philadelphia, led Black Methodists out of a segregated congregation and founded the African Methodist Episcopal Church in 1816. Jarena Lee and Julia Foote preached within that tradition."
+      },
+      {
+        "q": "What did the Methodists mean by holiness?",
+        "a": "Wesley taught that the Christian life is meant to grow in perfect love for God and neighbour, not merely in forgiveness. That teaching shaped the later holiness movement and writers such as Amanda Berry Smith."
+      }
+    ]
+  },
+  "baptists": {
+    "name": "Baptist preachers and writers",
+    "label": "Baptists",
+    "intro": "Preachers and missionaries of the Baptist churches, which baptise believers on their profession of faith. They include the \"Prince of Preachers\", the father of modern missions and a Welsh farm boy who became his country's greatest preacher.",
+    "qa": [
+      {
+        "q": "What do Baptists believe about baptism?",
+        "a": "Baptists baptise those who personally profess faith in Christ, usually by immersion, rather than infants. They also stress the authority of Scripture and the freedom of each local congregation."
+      },
+      {
+        "q": "Who was the Prince of Preachers?",
+        "a": "Charles Haddon Spurgeon, pastor of the Metropolitan Tabernacle in London, was called the Prince of Preachers. His sermons were printed every week and sold around the world."
+      },
+      {
+        "q": "Why is William Carey called the father of modern missions?",
+        "a": "William Carey, an English Baptist shoemaker, urged the churches in 1792 to send missionaries overseas and then sailed to India himself. His example began the great missionary societies of the nineteenth century."
+      }
+    ]
+  },
+  "reformed-and-presbyterian": {
+    "name": "Reformed and Presbyterian writers",
+    "label": "Reformed and Presbyterian",
+    "intro": "Heirs of the Reformation in Geneva and Scotland, who taught the sovereignty of God's grace. From John Calvin to a Welsh physician turned preacher, they joined careful theology to warm devotion.",
+    "qa": [
+      {
+        "q": "What does Reformed mean?",
+        "a": "Reformed churches descend from the Swiss Reformation led by Zwingli and John Calvin. They emphasise the sovereignty of God in salvation, the authority of Scripture and a church governed by elders."
+      },
+      {
+        "q": "Is Presbyterian the same as Reformed?",
+        "a": "Presbyterian churches are Reformed churches governed by elders (presbyters), a pattern that took root especially in Scotland. Robert Murray M'Cheyne ministered in the Church of Scotland; Jonathan Edwards, though a Congregationalist, held the same Reformed theology."
+      },
+      {
+        "q": "Which of these writers should I read first?",
+        "a": "Jonathan Edwards is the classic Reformed writer on revival and the religious affections. Martyn Lloyd-Jones brought the same tradition to twentieth-century London in plain, direct preaching."
+      }
+    ]
+  },
+  "evangelical-anglicans": {
+    "name": "Evangelical Anglicans",
+    "label": "Evangelical Anglicans",
+    "intro": "Clergy and bishops of the Church of England and its sister churches who held the gospel of grace at the centre. They range from a converted slave-ship captain to archbishops of the Church of Uganda.",
+    "qa": [
+      {
+        "q": "What is an evangelical Anglican?",
+        "a": "An evangelical Anglican belongs to the Church of England or a church of the Anglican Communion and stresses conversion, the authority of the Bible and the cross of Christ. John Newton, J. C. Ryle and John Stott are three of the tradition's best-known voices."
+      },
+      {
+        "q": "How did the Anglican church grow in East Africa?",
+        "a": "Missionaries of the Church Missionary Society planted the Anglican church in Uganda in the late nineteenth century. In the twentieth century African leaders such as Erica Sabiti, Festo Kivengere and Janani Luwum led it through revival and persecution."
+      },
+      {
+        "q": "Who wrote Amazing Grace?",
+        "a": "John Newton, a former slave-ship captain who became an Anglican clergyman, wrote the hymn Amazing Grace for his parish at Olney."
+      }
+    ]
+  },
+  "evangelists": {
+    "name": "Evangelists and revival preachers",
+    "label": "Evangelists",
+    "intro": "Preachers who called crowds to faith in Christ, in fields, tents, tabernacles and stadiums. Their lives run from the eighteenth-century awakenings to the great crusades of the twentieth century.",
+    "qa": [
+      {
+        "q": "What is a revival?",
+        "a": "A revival is a season when many people turn to God at once and the church is renewed in prayer and holiness. The Great Awakening in Britain and America and the campaigns of Moody and Finney in the nineteenth century are well-known examples."
+      },
+      {
+        "q": "Who preached to the largest crowds?",
+        "a": "Billy Graham preached in person to more people than any preacher before him, through crusades on every continent. George Whitefield drew some of the largest crowds of the eighteenth century by preaching in the open air."
+      },
+      {
+        "q": "Why read evangelists today?",
+        "a": "Their sermons are short, direct and meant to be understood by anyone. They show the gospel preached plainly, with an urgent call to respond."
+      }
+    ]
+  },
+  "holiness-and-keswick": {
+    "name": "Holiness and Keswick writers",
+    "label": "Holiness and Keswick",
+    "intro": "Teachers of the \"higher Christian life\": that a believer can walk in daily victory by trusting Christ rather than by struggling. Their conventions at Keswick and in America, and the Salvation Army, carried the message around the world.",
+    "qa": [
+      {
+        "q": "What was the Keswick movement?",
+        "a": "Keswick is a town in England's Lake District where an annual convention for \"the promotion of practical holiness\" began in 1875. Speakers such as Andrew Murray and F. B. Meyer taught that holiness is received by faith and surrender."
+      },
+      {
+        "q": "What is the holiness movement?",
+        "a": "The holiness movement grew out of Methodism in nineteenth-century America and taught a second work of grace that cleanses the heart and fills it with love. Amanda Berry Smith and Julia Foote preached it, and Catherine and William Booth built it into the Salvation Army."
+      },
+      {
+        "q": "Which book should I read first?",
+        "a": "Hannah Whitall Smith's The Christian's Secret of a Happy Life is the classic statement of the higher Christian life and still widely read."
+      }
+    ]
+  },
+  "pentecostal-pioneers": {
+    "name": "Pentecostal pioneers",
+    "label": "Pentecostal pioneers",
+    "intro": "Preachers of the early twentieth-century Pentecostal revival, who taught the baptism in the Holy Spirit and prayed for the sick. Their sermons are full of bold faith in the promises of God.",
+    "qa": [
+      {
+        "q": "When did the Pentecostal movement begin?",
+        "a": "The Pentecostal movement grew from revivals in the first years of the twentieth century, most famously the Azusa Street meetings in Los Angeles from 1906. It spread within a few years to Britain, South Africa and beyond."
+      },
+      {
+        "q": "What did the Pentecostal pioneers teach about healing?",
+        "a": "They taught that Christ still heals the sick in answer to prayer, as in the Gospels. F. F. Bosworth's Christ the Healer is one of the best-known books on the subject."
+      },
+      {
+        "q": "Who was Smith Wigglesworth?",
+        "a": "Smith Wigglesworth was a Yorkshire plumber who could not read as a boy and became one of the best-known Pentecostal preachers in the world, travelling widely to preach faith and pray for the sick."
+      }
+    ]
+  },
+  "missionaries": {
+    "name": "Missionaries",
+    "label": "Missionaries",
+    "intro": "Men and women who left home to take the gospel to other peoples — to the forests of colonial America, India, China, Calabar, Rwanda and Ecuador. Many of their lives are told here in full, and some wrote books of their own.",
+    "qa": [
+      {
+        "q": "Who are the most famous Christian missionaries?",
+        "a": "Among the best-known are William Carey in India, Hudson Taylor in China, David Livingstone in Africa, Mary Slessor in Calabar, Amy Carmichael in India, and Jim and Elisabeth Elliot in Ecuador."
+      },
+      {
+        "q": "What was the China Inland Mission?",
+        "a": "The China Inland Mission was founded by Hudson Taylor in 1865 to take the gospel into China's interior provinces. Its missionaries wore Chinese dress and trusted God for their support without appeals for money."
+      },
+      {
+        "q": "Which missionary story should I read first?",
+        "a": "Mary Slessor's life, from a Dundee mill to the villages of Calabar, and Gladys Aylward's journey across Siberia to China are two of the most gripping."
+      }
+    ]
+  },
+  "east-african-revival": {
+    "name": "The East African Revival",
+    "label": "East African Revival",
+    "intro": "A revival that began in Rwanda and Uganda in the 1930s and spread across East Africa for decades. Its \"brethren\" walked in the light with one another, confessed their sins openly and preached Jesus through persecution and martyrdom.",
+    "qa": [
+      {
+        "q": "What was the East African Revival?",
+        "a": "The East African Revival was a movement of repentance and renewal within the Anglican churches of Rwanda, Uganda, Kenya and Tanzania, beginning in the early 1930s. It is remembered for open confession of sin, fellowship across tribes and races, and joyful public testimony."
+      },
+      {
+        "q": "Who began the East African Revival?",
+        "a": "It is usually traced to the fellowship of Simeon Nsibambi, a Ugandan health officer, and Joe Church, an English missionary doctor, who met at Kampala in 1929. Yosiya Kinuka at Gahini hospital in Rwanda and Blasio Kigozi soon joined them."
+      },
+      {
+        "q": "Who was Janani Luwum?",
+        "a": "Janani Luwum was Archbishop of the Church of Uganda, converted in the revival, who was killed under Idi Amin's regime in 1977 after protesting its violence."
+      }
+    ]
+  },
+  "britain-and-ireland": {
+    "name": "Christian writers from Britain and Ireland",
+    "label": "Britain and Ireland",
+    "intro": "Pastors, poets, missionaries and evangelists from England, Scotland, Wales and Ireland. Between them they wrote many of the best-loved Christian books and hymns in the English language.",
+    "qa": [
+      {
+        "q": "Why did so many classic Christian books come from Britain?",
+        "a": "The English Reformation, the Puritans, the evangelical revival and the missionary movement all flourished in Britain, and printing made their sermons and books widely available. Many of those books have been read ever since."
+      },
+      {
+        "q": "Which British Christian book is most widely read?",
+        "a": "John Bunyan's The Pilgrim's Progress, written in the 1670s, has been translated into more languages than almost any book besides the Bible."
+      },
+      {
+        "q": "Are Welsh and Scottish writers listed separately?",
+        "a": "Yes. England, Scotland and Wales each have a page of their own, and this page gathers them all together with writers from Ireland."
+      }
+    ]
+  },
+  "england": {
+    "name": "Christian writers from England",
+    "label": "England",
+    "intro": "From Puritan pastors to Victorian preachers and twentieth-century missionaries, England has given the church a long line of writers. Their books still fill the shelves of Christian readers around the world.",
+    "qa": [
+      {
+        "q": "Who are the best-known English Christian writers?",
+        "a": "Among the most widely read are John Bunyan, John Wesley, Charles Spurgeon, J. C. Ryle and John Stott, along with missionaries such as Hudson Taylor and Gladys Aylward."
+      },
+      {
+        "q": "Who was the most famous English preacher?",
+        "a": "Charles Spurgeon, called the Prince of Preachers, drew thousands every Sunday to the Metropolitan Tabernacle in London in the nineteenth century, and his printed sermons reached millions."
+      },
+      {
+        "q": "Which English Christian book should I read first?",
+        "a": "The Pilgrim's Progress by John Bunyan is the classic place to begin."
+      }
+    ]
+  },
+  "scotland": {
+    "name": "Christian writers from Scotland",
+    "label": "Scotland",
+    "intro": "A young Dundee minister, a mill-boy explorer, a Glasgow-born preacher and a mill girl who became a missionary to Calabar. Scotland's writers carried the faith of the Kirk to pulpits and mission fields far from home.",
+    "qa": [
+      {
+        "q": "Who are famous Scottish missionaries?",
+        "a": "David Livingstone, the missionary explorer of central Africa, and Mary Slessor, who served for almost forty years in Calabar in what is now Nigeria, are the best known."
+      },
+      {
+        "q": "Who was Robert Murray M'Cheyne?",
+        "a": "Robert Murray M'Cheyne was the minister of St Peter's, Dundee, who died in 1843 at the age of twenty-nine. He is remembered for his holy life, his letters and his Bible reading plan."
+      },
+      {
+        "q": "Was Alexander Maclaren Scottish?",
+        "a": "Yes. Alexander Maclaren was born in Glasgow and became a Baptist preacher, serving Union Chapel in Manchester for over forty years."
+      }
+    ]
+  },
+  "wales": {
+    "name": "Christian writers from Wales",
+    "label": "Wales",
+    "intro": "A land of revivals and great preachers. From a poet-priest of the 1600s to a coal miner who learned to pray, these Welsh-born believers left words that still warm the heart.",
+    "qa": [
+      {
+        "q": "Who were the great Welsh preachers?",
+        "a": "Christmas Evans was the most celebrated Welsh preacher of the early nineteenth century, and Martyn Lloyd-Jones, born in Cardiff, was one of the great preachers of the twentieth."
+      },
+      {
+        "q": "What was the Welsh Revival?",
+        "a": "The Welsh Revival of 1904–1905 swept through the chapels of Wales, bringing many thousands to faith. Rees Howells, a young coal miner at the time, was deeply shaped by it."
+      },
+      {
+        "q": "Was George Herbert Welsh?",
+        "a": "George Herbert was born in Montgomery, Wales, in 1593, into a noble Welsh-border family, and became a poet and country parson in England."
+      }
+    ]
+  },
+  "europe": {
+    "name": "Christian writers from continental Europe",
+    "label": "Continental Europe",
+    "intro": "Popes and monks, Reformers and mystics, a mathematician and a Dutch watchmaker. The writers of continental Europe span nearly two thousand years of the church's history.",
+    "qa": [
+      {
+        "q": "Who were the great Christian writers of Europe?",
+        "a": "They include Gregory the Great and Bernard of Clairvaux in the Middle Ages, Martin Luther and John Calvin at the Reformation, Blaise Pascal and Teresa of Ávila, and Dietrich Bonhoeffer and Corrie ten Boom in the twentieth century."
+      },
+      {
+        "q": "Which European Christian book is most widely read?",
+        "a": "The Imitation of Christ by Thomas à Kempis, written in the fifteenth century, has been one of the most widely read Christian books in the world."
+      },
+      {
+        "q": "Are France and Germany listed separately?",
+        "a": "Yes. France and Germany each have a page of their own, and this page gathers them together with writers from Italy, Spain, the Netherlands and elsewhere."
+      }
+    ]
+  },
+  "france": {
+    "name": "Christian writers from France",
+    "label": "France",
+    "intro": "A Cistercian abbot, the Reformer of Geneva, a mathematician who wrote of the heart's reasons, and a noblewoman imprisoned for teaching prayer. France's Christian writers are few in number here and large in influence.",
+    "qa": [
+      {
+        "q": "Was John Calvin French?",
+        "a": "Yes. John Calvin was born in Noyon in northern France in 1509 and did most of his work as a Reformer in Geneva after fleeing France."
+      },
+      {
+        "q": "What did Blaise Pascal write about faith?",
+        "a": "Pascal's Pensées are notes for a defence of Christianity, including his famous remark that the heart has its reasons which reason does not know."
+      },
+      {
+        "q": "Who was Madame Guyon?",
+        "a": "Jeanne Guyon was a French mystic of the seventeenth century whose short books on prayer brought her imprisonment in the Bastille, and later influenced many Protestant readers."
+      }
+    ]
+  },
+  "germany": {
+    "name": "Christian writers from Germany",
+    "label": "Germany",
+    "intro": "From a monk who wrote The Imitation of Christ to the Reformer of Wittenberg, an orphan-house founder who lived by prayer and a pastor who resisted Hitler. Germany's writers have shaped Christian devotion for five centuries.",
+    "qa": [
+      {
+        "q": "Who was Martin Luther?",
+        "a": "Martin Luther was a German monk and professor whose teaching of justification by faith alone began the Protestant Reformation in 1517."
+      },
+      {
+        "q": "Was George Müller German?",
+        "a": "George Müller was born in Prussia, in present-day Germany, in 1805, and moved to England, where he cared for thousands of orphans in Bristol without ever asking anyone for money."
+      },
+      {
+        "q": "Why is Dietrich Bonhoeffer remembered?",
+        "a": "Dietrich Bonhoeffer was a German Lutheran pastor who opposed Hitler and was executed in 1945. His books on discipleship and Christian community are still widely read."
+      }
+    ]
+  },
+  "north-america": {
+    "name": "Christian writers from North America",
+    "label": "North America",
+    "intro": "Preachers of the Great Awakening, founders of Black churches, evangelists, missionaries and pastors from the United States and Canada. Their lives trace the story of American Christianity from colonial Connecticut to modern New York.",
+    "qa": [
+      {
+        "q": "Who are the most influential American Christian writers?",
+        "a": "Jonathan Edwards, Charles Finney, Dwight L. Moody, A. W. Tozer and Billy Graham are among the most widely read, together with Richard Allen, founder of the African Methodist Episcopal Church."
+      },
+      {
+        "q": "Are there Canadian writers here?",
+        "a": "Yes. A. B. Simpson, founder of the Christian and Missionary Alliance, and the Pentecostal preacher John G. Lake were both born in Canada."
+      },
+      {
+        "q": "Is the United States listed separately?",
+        "a": "Yes. The United States has a page of its own, and this page gathers those writers together with those from Canada."
+      }
+    ]
+  },
+  "united-states": {
+    "name": "Christian writers from the United States",
+    "label": "United States",
+    "intro": "From Jonathan Edwards and the Great Awakening to Billy Graham's crusades, the United States has produced preachers, missionaries and teachers read across the world. Their stories include slavery and freedom, revival and the founding of new churches.",
+    "qa": [
+      {
+        "q": "Who was the greatest American theologian?",
+        "a": "Jonathan Edwards, the eighteenth-century pastor of Northampton, Massachusetts, is often called the greatest theologian America has produced. His writings on revival and the religious affections are still studied."
+      },
+      {
+        "q": "Who were the first African American preachers?",
+        "a": "Lemuel Haynes was the first Black man ordained by a mainstream Protestant denomination in America. Richard Allen founded the African Methodist Episcopal Church, and Jarena Lee became its first authorised woman preacher."
+      },
+      {
+        "q": "Which American Christian book should I read first?",
+        "a": "A. W. Tozer's The Pursuit of God and E. M. Bounds' books on prayer are short, searching and widely loved."
+      }
+    ]
+  },
+  "east-africa": {
+    "name": "Christian writers from East Africa",
+    "label": "East Africa",
+    "intro": "The brethren of the East African Revival from Uganda and Rwanda — health officers, schoolmasters, hospital workers, evangelists and bishops. Several of them sealed their testimony with their lives.",
+    "qa": [
+      {
+        "q": "Which countries are part of East Africa here?",
+        "a": "The writers on this page come from Uganda and Rwanda, the two countries where the East African Revival began."
+      },
+      {
+        "q": "Who was Yona Kanamuzeyi?",
+        "a": "Yona Kanamuzeyi was a Rwandan Anglican deacon of the revival who was killed in 1964; the accounts agree that he sang as he was led out to be shot."
+      },
+      {
+        "q": "Is Uganda listed separately?",
+        "a": "Yes. Uganda has a page of its own, and this page gathers its writers together with those from Rwanda."
+      }
+    ]
+  },
+  "uganda": {
+    "name": "Christian writers from Uganda",
+    "label": "Uganda",
+    "intro": "Leaders of the East African Revival and of the Church of Uganda: an evangelist who travelled the world, the first African archbishop of Uganda, and an archbishop martyred under Idi Amin. Their lives tell the story of a church tested and renewed.",
+    "qa": [
+      {
+        "q": "Who was Festo Kivengere?",
+        "a": "Festo Kivengere was a Ugandan Anglican bishop and evangelist of the East African Revival, known around the world for his preaching of forgiveness after he fled Idi Amin's regime."
+      },
+      {
+        "q": "Who was the first African Archbishop of Uganda?",
+        "a": "Erica Sabiti became the first African Archbishop of the Church of Uganda in 1966."
+      },
+      {
+        "q": "How did Christianity come to Uganda?",
+        "a": "Anglican and Catholic missionaries arrived in Buganda in the late 1870s. The young church faced persecution, including the martyrdom of Ugandan converts in 1885–1887, and grew rapidly in the decades that followed."
+      }
+    ]
+  },
+  "north-africa": {
+    "name": "Christian writers of North Africa",
+    "label": "North Africa",
+    "intro": "Long before Islam, North Africa was one of the heartlands of the church. Carthage, Hippo and Alexandria gave the church a martyr bishop, the defender of Christ's deity, and Augustine with his praying mother.",
+    "qa": [
+      {
+        "q": "Was Augustine African?",
+        "a": "Yes. Augustine was born in 354 at Thagaste, in Roman North Africa (present-day Algeria), and was bishop of Hippo, on the same coast, for over thirty years."
+      },
+      {
+        "q": "Who was Athanasius of Alexandria?",
+        "a": "Athanasius was bishop of Alexandria in Egypt for forty-five years in the fourth century, and defended the full deity of Christ against Arianism through five exiles."
+      },
+      {
+        "q": "Who was Cyprian of Carthage?",
+        "a": "Cyprian was bishop of Carthage in the third century, a writer on the unity of the church, who was martyred in 258."
+      }
+    ]
+  },
+  "asia-and-the-middle-east": {
+    "name": "Christian writers from Asia and the Middle East",
+    "label": "Asia and the Middle East",
+    "intro": "From Antioch, where the disciples were first called Christians, to India and China. These writers span the ancient church of Syria and the modern churches of Asia.",
+    "qa": [
+      {
+        "q": "Who was Watchman Nee?",
+        "a": "Watchman Nee was a Chinese preacher and church planter of the twentieth century who spent the last twenty years of his life in prison for his faith. His book The Normal Christian Life is widely read."
+      },
+      {
+        "q": "Who was Pandita Ramabai?",
+        "a": "Pandita Ramabai was an Indian Sanskrit scholar and social reformer who became a Christian and founded the Mukti Mission for widows and orphaned girls near Pune."
+      },
+      {
+        "q": "Why is Antioch important in church history?",
+        "a": "Antioch in Syria is where the followers of Jesus were first called Christians (Acts 11:26). Ignatius was its bishop in the early second century, and John Chrysostom preached there before becoming archbishop of Constantinople."
+      }
+    ]
+  }
+}

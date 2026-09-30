@@ -252,6 +252,10 @@ services:
         - backend/library/meta_descriptions.py
         - backend/library/data/book_meta/**
         - backend/library/rights.py
+        # The biography hubs (/biographies/tradition|place/<slug>/): who is on
+        # each, and each hub's name, intro and Q&A per language.
+        - backend/library/hubs.py
+        - backend/library/data/hubs/**
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
@@ -366,6 +370,14 @@ services:
       - type: redirect
         source: /home/
         destination: /
+      # A reading plan that moved slug (migration 0172 reshaped its books and
+      # renumbered its days; the new slug fences devices' old day numbers).
+      - type: redirect
+        source: /plans/the-key-teachings-four-teachers
+        destination: /plans/key-teachings-four-teachers/
+      - type: redirect
+        source: /plans/the-key-teachings-four-teachers/
+        destination: /plans/key-teachings-four-teachers/
       # Books that no longer exist. All are indexed and one is still being
       # served in results (/books/a-king-in-a-manger-2/, 5 impressions), and
       # like everything else with no file behind it they answer 200 with the
