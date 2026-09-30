@@ -64,7 +64,13 @@ function once<T>(read: () => T): () => T {
 const STATIC = resolve(process.cwd(), 'static');
 const CONTENT = resolve(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content');
 
-type Twin = { ground: string; style: string; volume?: string | null; layout?: string };
+type Twin = {
+	ground: string;
+	style: string;
+	volume?: string | null;
+	layout?: string;
+	rows?: Record<string, number[][]>;
+};
 
 const manifestText = once(() => readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
 const manifestFile = once(() => JSON.parse(manifestText()));
@@ -112,19 +118,22 @@ const needTwins = once(() => {
 				}
 		)
 		.filter((f) => isArtCover(f.cover_url) || isPlateCover(f.cover_url))
-		.map((f) => ({
-			// The manifest is keyed by the twin's path without its extension, which
-			// `twinUrl` owns — restating it here would be the drift this whole file
-			// exists to catch, one directory up.
-			key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
-			style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
-			volume: volumeNumeral(f.series_position, baseEdition(f.language)),
-			layout: (() => {
-				const art = isArtCover(f.cover_url);
-				const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug) : null;
-				return layoutKey(layout, art && typeTopFor(f.slug, layout));
-			})()
-		}));
+		.map((f) => {
+			const art = isArtCover(f.cover_url);
+			return {
+				// The manifest is keyed by the twin's path without its extension, which
+				// `twinUrl` owns — restating it here would be the drift this whole file
+				// exists to catch, one directory up.
+				key: twinUrl(f.slug, f.language).replace('/covers/', '').replace(/\.png$/, ''),
+				art,
+				style: coverStyleFor(eraOf(birth.get(f.author[0]) ?? null), f.author[0], f.slug),
+				volume: volumeNumeral(f.series_position, baseEdition(f.language)),
+				layout: (() => {
+					const layout = art ? coverLayoutFor(f.author[0], scriptOf(f.language || 'en'), f.slug) : null;
+					return layoutKey(layout, art && typeTopFor(f.slug, layout));
+				})()
+			};
+		});
 });
 
 describe('the og twins were drawn with the composition that ships now', () => {
@@ -270,5 +279,29 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(stale, 'a series changed but its share cards did not — run `npm run og:covers`').toEqual(
 			[]
 		);
+	});
+
+	it('records where the ink landed on every framed painting, and nowhere else', () => {
+		// `rows` is what the scrim tuner and `CoverAssetTests`' contrast gate
+		// measure a painting at (`covers.painting_ink_rows` says why). Both are
+		// Python and cannot tell a framed card from a laid-out one, so a framed
+		// painting with no rows would quietly fall back to the English strips.
+		// FRESH by construction: rows ride in the entry whose `ground`, `style`,
+		// `layout` and `volume` the gates above hold, and a redraw re-measures.
+		const recorded = manifest();
+		const box = (b: unknown) =>
+			Array.isArray(b) && b.length === 4 && b.every(Number.isInteger) && b[0] < b[2] && b[1] < b[3];
+		const wrong = needTwins()
+			.filter((b) => recorded[b.key])
+			.flatMap((b) => {
+				const rows = recorded[b.key].rows;
+				const framed = b.art && b.layout.startsWith('framed');
+				if (!framed) return rows ? [`${b.key}: rows on a ${b.art ? b.layout : 'plate'} card`] : [];
+				if (!rows) return [`${b.key}: no rows`];
+				return ['byline', 'title', 'mark']
+					.filter((name) => !rows[name]?.length || !rows[name].every(box))
+					.map((name) => `${b.key}: no usable ${name} row`);
+			});
+		expect(wrong, 'run `cd frontend && npm run og:covers`').toEqual([]);
 	});
 });

@@ -48,7 +48,7 @@ from __future__ import annotations
 import json
 import math
 import re
-from functools import lru_cache
+from functools import cache, lru_cache
 from pathlib import Path
 
 # The three cover-tier registries, for the two predicates below. Both are plain
@@ -222,8 +222,11 @@ def scrimmed(ground, strength: float = 1.0, subtitle: bool = False):
     """A painting as a reader sees it: the artwork under the scrim above.
 
     ``subtitle`` picks the four-band curve, for a cover that draws one — the
-    same switch `BookCover` makes with its `has-subtitle` class.
+    same switch `BookCover` makes with its `has-subtitle` class. ``strength``
+    is clamped at `SCRIM_MAX`, as the page's `opacity` is: measuring a darker
+    plate than any reader sees would pass a painting the page leaves pale.
     """
+    strength = min(strength, SCRIM_MAX)
     from PIL import Image
 
     column = Image.new("L", (1, H))
@@ -263,6 +266,22 @@ def twin_path(slug: str, language: str) -> tuple[str, str]:
     return f"/covers/{language}/{slug}.png", f"{language}/{slug}.png"
 
 
+def twin_key(slug: str, language: str) -> str:
+    """How `og-manifest.json` names one edition's twin: its path, no extension."""
+    return twin_path(slug, language)[1].removesuffix(".png")
+
+
+def subtitled_works(books) -> set[str]:
+    """Slugs whose Book ``fields`` carry a subtitle in ANY language.
+
+    Any language, because a painting is one file for every edition: a Spanish
+    subtitle needs the scrim's subtitle band as much as an English one. The
+    tuner and the contrast gate must agree on this — it picks the scrim curve —
+    so both ask here.
+    """
+    return {f["slug"] for f in books if (f.get("subtitle") or "").strip()}
+
+
 # The ink is white at these opacities. The byline is set at 3.9cqw — 23px on the
 # 600-wide plate this module's geometry describes — which is NOT "large text"
 # under WCAG 1.4.3, so AA asks 4.5:1 of it. The title runs 7.6-10.45cqw and asks
@@ -300,6 +319,30 @@ INK_REGIONS = (
     ("mark", 664, 747, 0.95, 3.0),
 )
 
+#: The most scrim the stylesheet can draw. `--scrim-strength` is the scrim
+#: layer's CSS `opacity`, which clamps at 1 — so a table value above this is a
+#: scrim no reader ever sees, and a model that scales past it (``scrim_alpha``
+#: does) would pass a painting the page leaves pale.
+SCRIM_MAX = 1.0
+
+#: Paintings that NO drawable scrim carries at every edition's real lines, with
+#: the line that failed at `SCRIM_MAX` WHEN LISTED (a note, not a check — only
+#: membership is gated). Found 2026-09-29, the day the gate began
+#: measuring each edition's own lines rather than the English strips; they were
+#: pale under those lines all along. Each is a judgement for the founder —
+#: recrop the art, replace it, or give the failing editions a layout — so they
+#: are held at 1.00x and listed rather than silently passed. Keyed by REGION:
+#: the contrast gate tolerates exactly these regions of these paintings — any
+#: other region failing still fails — and fails when one is fixed so it goes.
+THIN_AT_FULL_SCRIM = {
+    "life-experience-gospel-labours": {"title": "es 2.77:1 (needs 3.0)"},
+    "religious-experience-and-journal": {"title": "en first line, above y284, 2.63:1"},
+    "soar-like-the-eagle-3": {"subtitle": "fr 4.05:1 (needs 4.5)"},
+    "the-god-of-all-comfort": {"title": "lg 2.58:1 (needs 3.0)"},
+    "the-key-in-my-hand": {"title": "lg 2.24:1", "subtitle": "es/sw/pt 4.27:1"},
+    "way-into-holiest": {"title": "sw 2.56:1 (needs 3.0)"},
+}
+
 #: The painted works whose type is set from the TOP of the cover rather than
 #: centred: `coverLayouts.TYPE_TOP`, mirrored here because the scrim is measured
 #: in Python. A fixture gate holds the two sets equal.
@@ -316,8 +359,8 @@ TYPE_TOP = frozenset({
 #: (Edwards sets four lines). Measuring these covers at the centred rows puts
 #: the subtitle and brandmark strips over the lit picture, where no word sits,
 #: and asks for twice the scrim the words need. These rows are the English
-#: titles': a translated edition whose title wraps longer can push its subtitle
-#: below y432, so re-measure its composed twin before trusting this table.
+#: titles'; a translated edition whose title wraps longer is measured at its own
+#: lines as well (`painting_ink_rows`), as on the centred covers.
 TOP_INK_REGIONS = (
     ("byline", 102, 131, AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
     ("title", 173, 340, 1.0, TITLE_MIN),
@@ -331,17 +374,152 @@ TOP_INK_REGIONS = (
 _MARK_X = (232, 368)
 
 
-def ink_boxes(slug: str):
+#: How far a measured line may overhang a fixed strip and still BE that strip.
+#: The strips above were measured in the browser to the pixel; the lines in the
+#: og manifest are rounded to the nearest one, and every byline's comes back
+#: ending at 131 against the strip's 130. Without this each would add a row of
+#: line leading no glyph reaches, and an unchanged English cover would stop
+#: measuring exactly as it did.
+_ROW_SLACK = 1
+
+
+def _inside(box, outer, slack: int = 0) -> bool:
+    """Whether crop box ``box`` lies within ``outer``, give or take ``slack`` rows."""
+    return (
+        box[0] >= outer[0]
+        and box[2] <= outer[2]
+        and box[1] >= outer[1] - slack
+        and box[3] <= outer[3] + slack
+    )
+
+
+def ink_boxes(slug: str, rows: dict | None = None):
     """Each inked strip of `slug`'s cover as (name, box, ink opacity, bar).
 
     ``box`` is a PIL crop box on the 600x800 plate. One answer for the scrim
     tuner and the fixture gate, so the rows one tunes to are the rows the other
     holds.
+
+    ``rows`` is what `painting_ink_rows` measured for this painting: region ->
+    the box of every LINE an edition wearing it sets there. The fixed strip is
+    always measured, so a painting with no measurement — or whose every line
+    sits inside the strip — is measured exactly as before. A line that lands
+    outside it (a translated title wrapping longer and pushing its subtitle
+    down) is measured too, over its own extent, so a region may come back as
+    several boxes.
     """
     top = slug in TYPE_TOP
+    rows = rows or {}
     for name, y0, y1, opacity, bar in TOP_INK_REGIONS if top else INK_REGIONS:
         x0, x1 = _MARK_X if top and name == "mark" else (_FRAME_INSET, W - _FRAME_INSET)
-        yield name, (x0, y0, x1, y1), opacity, bar
+        strip = (x0, y0, x1, y1)
+        yield name, strip, opacity, bar
+        lines = {
+            (max(0, a), max(0, b), min(W, c), min(H, d))
+            for a, b, c, d in rows.get(name, ())
+        }
+        outside = [box for box in lines if not _inside(box, strip, _ROW_SLACK)]
+        for box in sorted(outside):
+            # One inside another is the same pixels asked twice.
+            if not any(other != box and _inside(box, other) for other in outside):
+                yield name, box, opacity, bar
+
+
+#: Where `npm run og:covers` records, per edition, the rows its type landed in.
+OG_MANIFEST = (
+    Path(__file__).resolve().parents[2] / "frontend" / "static" / "covers" / "og-manifest.json"
+)
+
+
+def painting_ink_rows(books, manifest: dict | None = None) -> dict[str, dict[str, set]]:
+    """Painting stem -> region -> the box of every line of white ink set over it.
+
+    WHY PER EDITION. `INK_REGIONS` are the English covers' rows. A translated
+    title wraps longer, the centred block grows, and the subtitle lands lower:
+    on Brave for God the Luganda and Swahili subtitles reached y595, and 20 of
+    26 editions set white type on pale art while this gate and the tuner, both
+    measuring y519-543, passed. The og twin generator lays out every edition in
+    the browser anyway, so it records where each one's lines fell
+    (`generate-cover-og.mjs`'s ``measureInkRows``), and this unions them across
+    every edition whose ``cover_url`` is the painting.
+
+    ``books`` is an iterable of Book fixture ``fields``. Only framed paintings
+    carry rows — a layout sets dark ink on paper, with no scrim to tune — so a
+    painting only laid out, or not yet measured, is simply absent and
+    `ink_boxes` falls back to the fixed strips.
+    """
+    if manifest is None:
+        manifest = json.loads(OG_MANIFEST.read_text())
+    twins = manifest["twins"]
+    out: dict[str, dict[str, set]] = {}
+    for fields in books:
+        cover = fields.get("cover_url") or ""
+        if not cover.startswith("/covers/art/"):
+            continue
+        key = twin_key(fields["slug"], fields["language"])
+        for name, lines in twins.get(key, {}).get("rows", {}).items():
+            out.setdefault(Path(cover).stem, {}).setdefault(name, set()).update(
+                tuple(box) for box in lines
+            )
+    return out
+
+
+#: sRGB channel -> linear light, for every 8-bit value. The contrast sweep
+#: reads hundreds of thousands of pixels per painting; `_relative_luminance`
+#: reads it too, so the plate check and the painting check share one curve.
+_LINEAR = tuple(
+    c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4
+    for c in (v / 255 for v in range(256))
+)
+
+
+def _ink_luminance(channels) -> float:
+    """WCAG 2.x relative luminance of an 8-bit RGB triple."""
+    r, g, b = channels
+    return 0.2126 * _LINEAR[r] + 0.7152 * _LINEAR[g] + 0.0722 * _LINEAR[b]
+
+
+@cache
+def _inked(opacity: float) -> tuple[float, ...]:
+    """Channel value -> linear light once white ink at ``opacity`` is laid over it."""
+    return tuple(_LINEAR[round(255 * opacity + c * (1 - opacity))] for c in range(256))
+
+
+def worst_ink_contrast(band, opacity: float) -> float:
+    """Least white-on-artwork contrast anywhere in a band of pixels.
+
+    Over the band's distinct colours: the answer is a minimum over pixels, so a
+    colour repeated a thousand times is the same question asked a thousand times.
+    White ink only ever lightens what is under it, so the ink is the lighter of
+    the two and the ratio needs no max/min.
+    """
+    ink, lin = _inked(opacity), _LINEAR
+    out = 1e9
+    for _count, (r, g, b) in band.getcolors(band.width * band.height):
+        ratio = (0.2126 * ink[r] + 0.7152 * ink[g] + 0.0722 * ink[b] + 0.05) / (
+            0.2126 * lin[r] + 0.7152 * lin[g] + 0.0722 * lin[b] + 0.05
+        )
+        if ratio < out:
+            out = ratio
+    return out
+
+
+def ink_contrast(plate, slug: str, subtitle: bool, rows: dict | None = None) -> dict:
+    """Region -> (worst white-ink contrast, its bar) on a scrimmed plate.
+
+    The ONE measurement the scrim tuner tunes to and the fixture gate holds, so
+    the two cannot drift apart. The subtitle strip is skipped on a work that
+    draws none: there is no ink there, and no scrim band either.
+    """
+    out: dict[str, tuple[float, float]] = {}
+    for name, box, opacity, bar in ink_boxes(slug, rows):
+        if name == "subtitle" and not subtitle:
+            continue
+        got = worst_ink_contrast(plate.crop(box), opacity)
+        if name in out:
+            got = min(got, out[name][0])
+        out[name] = (got, bar)
+    return out
 
 # The plate gradient's far stop, as a fraction of the base colour.
 # `build_ground` paints from this same constant, so the contrast model cannot
@@ -387,12 +565,7 @@ def _hex(channels) -> str:
 
 def _relative_luminance(hex_color: str) -> float:
     """WCAG 2.x relative luminance of a colour."""
-    channels = []
-    for value in _channels(hex_color):
-        c = value / 255
-        channels.append(c / 12.92 if c <= 0.03928 else ((c + 0.055) / 1.055) ** 2.4)
-    r, g, b = channels
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    return _ink_luminance(_channels(hex_color))
 
 
 def _author_plate_color(hex_color: str) -> str:

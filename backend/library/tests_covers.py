@@ -657,3 +657,85 @@ class CuratedCoversSurviveForceTests(TestCase):
         out = StringIO()
         call_command("generate_covers", "--force", "--dry-run", stdout=out)
         self.assertIn(f"{slug}.svg", out.getvalue())
+
+
+class EditionInkRowTests(SimpleTestCase):
+    """The contrast gate measures where each edition's words actually fall —
+    `covers.painting_ink_rows` says why. These plant the failure it exists to
+    catch: a pale ground under a translated subtitle below the English strip.
+    """
+
+    # Swahili Brave for God 2's subtitle lines, as the generator measured them.
+    LOW_SUBTITLE = {(137, 539, 463, 567), (141, 567, 459, 595)}
+
+    def _ground(self):
+        """A dark painting with one pale stripe, under the translated subtitle
+        and clear of every fixed strip (subtitle 519-543, mark 664-747)."""
+        from PIL import Image, ImageDraw
+
+        from library.covers import H, W
+
+        image = Image.new("RGB", (W, H), (20, 24, 30))
+        ImageDraw.Draw(image).rectangle([0, 560, W, 600], fill=(236, 232, 214))
+        return image
+
+    def test_a_pale_ground_under_a_long_translated_subtitle_fails(self):
+        from library.covers import AUTHOR_MIN_CONTRAST, ink_contrast, scrimmed
+
+        plate = scrimmed(self._ground(), 0.3, True)
+        # The English strips alone see nothing wrong — the defect as it shipped.
+        english = ink_contrast(plate, "planted", True)
+        self.assertGreaterEqual(english["subtitle"][0], AUTHOR_MIN_CONTRAST)
+        # With the translation's own lines, the stripe under them is found.
+        got, bar = ink_contrast(plate, "planted", True, {"subtitle": self.LOW_SUBTITLE})[
+            "subtitle"
+        ]
+        self.assertLess(got, bar)
+
+    def test_rows_are_unioned_across_every_edition_wearing_the_painting(self):
+        from library.covers import painting_ink_rows
+
+        books = [
+            {"slug": "planted", "language": "en", "cover_url": "/covers/art/planted.jpg"},
+            {"slug": "planted", "language": "sw", "cover_url": "/covers/art/planted.jpg"},
+            # A laid-out edition records no rows; a plate is not a painting.
+            {"slug": "planted", "language": "ar", "cover_url": "/covers/art/planted.jpg"},
+            {"slug": "plated", "language": "en", "cover_url": "/covers/plated.svg"},
+        ]
+        manifest = {
+            "twins": {
+                "planted": {"rows": {"subtitle": [[93, 519, 507, 543]]}},
+                "sw/planted": {"rows": {"subtitle": [list(b) for b in self.LOW_SUBTITLE]}},
+                "ar/planted": {},
+                "plated": {"rows": {"subtitle": [[0, 700, 600, 800]]}},
+            }
+        }
+        rows = painting_ink_rows(books, manifest)
+        self.assertEqual(list(rows), ["planted"])
+        self.assertEqual(
+            rows["planted"]["subtitle"], {(93, 519, 507, 543), *self.LOW_SUBTITLE}
+        )
+
+    def test_lines_inside_the_fixed_strips_change_nothing(self):
+        # A centred English cover whose lines sit inside the strips must measure
+        # exactly as it did — including the byline, whose line box rounds to
+        # 131 against the strip's 130.
+        from library.covers import ink_boxes
+
+        inside = {
+            "byline": {(114, 102, 486, 131)},
+            "title": {(118, 306, 482, 369)},
+            "subtitle": {(93, 519, 507, 543)},
+            "mark": {(232, 664, 368, 746)},
+        }
+        self.assertEqual(list(ink_boxes("planted", inside)), list(ink_boxes("planted")))
+
+    def test_a_line_outside_its_strip_is_measured_over_its_own_extent(self):
+        from library.covers import ink_boxes
+
+        boxes = [
+            box
+            for name, box, _o, _bar in ink_boxes("planted", {"subtitle": self.LOW_SUBTITLE})
+            if name == "subtitle"
+        ]
+        self.assertEqual(boxes, [(26, 519, 574, 543), *sorted(self.LOW_SUBTITLE)])
