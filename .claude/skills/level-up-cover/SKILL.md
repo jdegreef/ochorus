@@ -314,7 +314,8 @@ NOT put it in `CURATED` — that would make the museum-provenance table lie
 **Ship steps** (per slug, after the ground jpg is drawn): register it in
 `ORIGINAL_GROUND` with its `shasum -a 256` → delete plate svgs
 (`find covers -regex '.*/<slug>\.svg' -delete`, incl `lg/ sw/`) → `build_cover_assets.py`
-(repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py`. Same
+(repoints EVERY lang row + webp) → `npm run og:covers` → `tune_art_scrim.py` →
+`npm run og:covers` again (redraws the cards whose scrim moved). Same
 tail as steps 2–3. `growing-in-wisdom` + teen flagships are next, same tier, no new
 machinery.
 
@@ -325,7 +326,14 @@ y284–463 (the vertical MIDDLE)**, subtitle y519–543, mark y664–747 — so 
 or a big centred sun in the title band kills legibility. Draw a **deep/twilight sky
 with the sun-or-moon glow LOW at the horizon (~y470)**; keep the mark zone over dark
 foreground. `tune_art_scrim` measures the WORST pixel per band, floors at 0.30× and
-caps at 2.0× (a too-pale ground fails as "unusable" — recrop/darken). Brave landed
+caps at 1.00× — CSS `opacity` clamps there, so the old 2.0× cap tuned scrims no page
+drew (a too-pale ground fails as "unusable" — recrop/darken). Since 2026-09-29 the
+bands are these fixed strips PLUS every framed edition's real line boxes, which
+`og:covers` records as `rows` in `og-manifest.json` — so a translation whose title
+wraps longer (Brave for God lg/sw subtitles at y539–595) is measured where it lands;
+that is why `og:covers` must run BEFORE the tuner. Six known-thin paintings wait on
+the founder in `covers.THIN_AT_FULL_SCRIM` (a ratchet: the gate fails if one is fixed
+and not removed). Brave landed
 0.65–0.80×. Verify by reading the composed og twin `covers/<slug>.png` (the real
 render), or composite `covers.scrimmed(ground, strength, subtitle=True)` + white text
 at the ink bands for a faithful preview before shipping.

@@ -527,6 +527,59 @@ async function assertTitleFace(page, book) {
 	}
 }
 
+/**
+ * Where the white ink actually landed on this card: `{region: [[x0, y0, x1, y1],
+ * ...]}`, one box per rendered LINE, in the 600x800 plate's pixels (right and
+ * bottom exclusive, a PIL crop box). Rounded to the nearest pixel: a pixel is
+ * the ink's if more than half of it is.
+ *
+ * WHY THE CARD IS ASKED. The scrim tuner and the contrast gate used to measure
+ * only the English covers' fixed strips, while a translated title wraps longer
+ * and lands lower (`covers.painting_ink_rows` has the Brave for God numbers).
+ * Only a layout pass knows where a line falls, and this is the one place every
+ * edition already gets one.
+ *
+ * LINES, NOT ELEMENTS. An element's box is its line leading at the full width
+ * of the frame; measured that way the strip under a one-word title reads the
+ * bright fruit on the tree beside it, where no glyph is. A line's box
+ * (`Range.getClientRects`) is the words' own extent. The volume numeral is its
+ * digits' line too, folded into the title (the same white ink, directly over
+ * it); the hairline ring round it is decoration at 60% white, and measured as
+ * its box it read a pale cloud the digits never touch. The brandmark is a
+ * drawn shape, so it is measured whole.
+ *
+ * FRAMED PAINTINGS ONLY (see `framed` below). A layout sets dark ink on paper
+ * with no scrim under it, so where its words fall says nothing about white type
+ * on the picture — and `coverLayouts.test.ts` already holds its colours.
+ */
+async function measureInkRows(page) {
+	return page.evaluate(() => {
+		const rows = {};
+		const take = (name, selector, lines) => {
+			for (const el of document.querySelectorAll(selector)) {
+				let rects = [el.getBoundingClientRect()];
+				if (lines) {
+					const range = document.createRange();
+					range.selectNodeContents(el);
+					rects = [...range.getClientRects()];
+				}
+				for (const r of rects) {
+					if (!r.width || !r.height) continue;
+					const box = [r.left, r.top, r.right, r.bottom].map(Math.round);
+					const seen = (rows[name] ??= []);
+					if (!seen.some((b) => b.every((v, i) => v === box[i]))) seen.push(box);
+				}
+			}
+		};
+		take('byline', '.cover-type .byline', true);
+		take('title', '.cover-type .volume', true);
+		take('title', '.cover-type .title', true);
+		take('subtitle', '.cover-type .subtitle', true);
+		take('mark', '.cover-type .brandmark svg', false);
+		return rows;
+	});
+}
+
 // ── The run ─────────────────────────────────────────────────────────────────
 
 const digest = (buf) => createHash('sha256').update(buf).digest('hex');
@@ -684,17 +737,28 @@ async function main() {
 	const wrote = [];
 	const manifest = {};
 	let skipped = 0;
+	let measured = 0;
 	for (const book of books) {
 		// Read once, for the digest and for the page.
 		const groundBytes = readFileSync(resolve(STATIC, book.cover.replace(/^\//, '')));
 		const entry = made(book, groundBytes);
 		manifest[book.twin.key] = entry;
 		const dest = resolve(COVERS, book.twin.file);
+		const cached = known[book.twin.key];
 		// Same inputs, same composition, and the file is still there: nothing a
 		// render could produce differs from what is on disk. The file check is
 		// not belt-and-braces — a twin deleted by hand leaves the manifest
 		// claiming it, and skipping on the digest alone would never write it back.
-		if (drawnFrom(known[book.twin.key], entry) && existsSync(dest)) {
+		// Asked BEFORE `rows` joins the entry: it is an output of the layout, not
+		// an input, so it has no business in the comparison.
+		const unchanged = drawnFrom(cached, entry) && existsSync(dest);
+		// A framed painting's ink rows travel with its entry — only white type
+		// over a scrim is measured against them. A skipped card keeps the rows it
+		// was drawn with, which are the rows it still has.
+		// `layout` as the manifest keys it — the definition `coverOgManifest.test.ts` holds.
+		const framed = book.art && entry.layout.startsWith('framed');
+		if (unchanged && (!framed || cached.rows)) {
+			if (framed) entry.rows = cached.rows;
 			skipped++;
 			continue;
 		}
@@ -710,6 +774,14 @@ async function main() {
 		// serif, which is precisely the defect this script repairs.
 		await page.evaluate(() => document.fonts.ready);
 		await assertTitleFace(page, book);
+		if (framed) entry.rows = await measureInkRows(page);
+		// An unchanged card that only lacked its rows is measured and NOT
+		// re-photographed: another machine's Chromium re-encodes the same pixels
+		// a shade differently, and a re-shot here would churn a file per card.
+		if (unchanged) {
+			measured++;
+			continue;
+		}
 		// `dither` defaults to 1.0, which speckles a smooth gradient; the plates
 		// are mostly one, so it is turned down rather than off — off bands the
 		// gradient instead, and a band is more visible than a grain.
@@ -739,7 +811,9 @@ async function main() {
 					'names the house style it was set in, and `css` digests the composition ' +
 					'they were drawn with (both checked by coverOgManifest.test.ts). ' +
 					'`script`, `art`, `scrim`, `layout` and `fonts` are the rest of what a card is ' +
-					'made from, read back by the skip so a change to any of them redraws.',
+					'made from, read back by the skip so a change to any of them redraws. ' +
+					'`rows` (framed paintings only) is where each edition\'s white ink landed, ' +
+					'measured in the browser; the scrim tuner and the contrast gate read it.',
 				// THE COMPOSITION, so a change to it cannot ship without a redraw.
 				// This file's header used to say nothing but running it could catch a
 				// change to the drawing — true while the Python gate was the only one,
@@ -772,12 +846,17 @@ async function main() {
 			},
 			null,
 			'\t'
-		) + '\n'
+		)
+			// One ink box per line of the file, not one coordinate: ~250 painted
+			// editions carry several boxes each, and at four lines a number the
+			// manifest's diff would be mostly brackets.
+			.replace(/\[\s+(-?\d+),\s+(-?\d+),\s+(-?\d+),\s+(-?\d+)\s+\]/g, '[$1, $2, $3, $4]') + '\n'
 	);
 
 	console.log(
 		`wrote ${wrote.length} of ${books.length} twins` +
-			(skipped ? ` (${skipped} unchanged, skipped — \`--force\` redraws them)` : '')
+			(skipped ? ` (${skipped} unchanged, skipped — \`--force\` redraws them)` : '') +
+			(measured ? ` (${measured} unchanged, ink rows measured)` : '')
 	);
 	for (const line of wrote) console.log(`    ${line}`);
 }

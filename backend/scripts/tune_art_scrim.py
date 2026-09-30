@@ -7,7 +7,9 @@
 
 With slugs, the other entries are carried over from the committed table rather
 than re-measured. That changes nothing in the output — each value depends only
-on its own painting and whether its work has a subtitle — and it is the whole
+on its own painting, whether its work has a subtitle, and where its editions'
+lines fall (read from `og-manifest.json`, so run `npm run og:covers` first after
+a new or retitled translation) — and it is the whole
 cost of painting one cover otherwise: every painting in the library, ~2 s each.
 Run it bare to re-measure everything (a crop change touching many works, or to
 drop entries for paintings that are gone).
@@ -32,8 +34,11 @@ rather than a bisection: the predicate is contrast after an 8-bit composite, so
 it is very slightly non-monotone, and a bisection that "agreed on every sample"
 is not a guarantee. It costs seconds, offline.
 
-RE-RUN THIS WHEN ARTWORK CHANGES. A recropped or replaced painting is a
-different picture and may need a different scrim;
+RE-RUN THIS WHEN ARTWORK CHANGES — or when an edition's words do. A recropped
+or replaced painting is a different picture and may need a different scrim; a
+new translation, or a retitled one, puts its lines somewhere else. The lines are
+read from `og-manifest.json`, so run `cd frontend && npm run og:covers` first,
+this, then `og:covers` again to redraw the cards whose scrim moved.
 `CoverAssetTests.test_every_painting_still_carries_white_type` fails the build
 until the table matches what is on disk, and names the file.
 
@@ -49,12 +54,17 @@ from pathlib import Path
 BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
+from library.content_fixtures import book_editions  # noqa: E402
 from library.covers import (  # noqa: E402
     INK_DARK,
+    SCRIM_MAX,
+    THIN_AT_FULL_SCRIM,
     H,
     W,
-    ink_boxes,
+    ink_contrast,
+    painting_ink_rows,
     scrimmed,
+    subtitled_works,
 )
 
 ART = BACKEND.parent / "frontend" / "static" / "covers" / "art"
@@ -67,72 +77,33 @@ TS_TABLE = BACKEND.parent / "frontend" / "src" / "lib" / "coverScrim.ts"
 MARGIN = 0.1
 
 
-def _relative_luminance(channels) -> float:
-    def channel(v: float) -> float:
-        v /= 255
-        return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
-
-    r, g, b = (channel(c) for c in channels)
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b
-
-
-def _worst(band, opacity: float) -> float:
-    """Least white-on-artwork contrast anywhere in a band of pixels."""
-    out = 1e9
-    for px in band.getdata():
-        ink = tuple(round(255 * opacity + c * (1 - opacity)) for c in px)
-        a, b = _relative_luminance(ink) + 0.05, _relative_luminance(px) + 0.05
-        out = min(out, max(a, b) / min(a, b))
-    return out
-
-
-
-
-def measure(image, strength: float, subtitle: bool, slug: str) -> dict[str, float]:
-    """Worst contrast per region for one painting at one strength."""
-    plate = scrimmed(image, strength, subtitle)
-    out = {}
-    for name, box, opacity, _bar in ink_boxes(slug):
-        if name == "subtitle" and not subtitle:
-            continue
-        out[name] = _worst(plate.crop(box), opacity)
-    return out
-
-
-def needed(image, subtitle: bool, slug: str) -> float | None:
+def needed(image, subtitle: bool, slug: str, rows: dict | None = None) -> float | None:
     """The least strength that clears every bar, or None if none does.
 
     ``subtitle`` says whether this work's covers draw one. It decides both
     whether the subtitle strip is measured AND whether the fourth scrim band is
     there to be measured against — the two go together, which is why one flag
     carries both.
+
+    ``rows`` is where each edition's ink actually landed (`painting_ink_rows`):
+    a translation whose subtitle wraps below the English strip is measured
+    there, not at the English rows.
+
+    The walk stops at `SCRIM_MAX`, the most the stylesheet can draw; it used to
+    run to 2.00x, answering with strengths no page renders. At the ceiling the
+    bar itself is enough — MARGIN is headroom to spend, and there is none left.
     """
-    bars = {name: bar for name, _box, _o, bar in ink_boxes(slug)}
-    for step in range(30, 201, 5):
-        strength = step / 100
-        got = measure(image, strength, subtitle, slug)
-        if all(v >= bars[k] + MARGIN for k, v in got.items()):
-            return strength
-    return None
 
+    def worst_over_bar(strength: float) -> float:
+        got = ink_contrast(scrimmed(image, strength, subtitle), slug, subtitle, rows)
+        return min(worst - bar for worst, bar in got.values())
 
-def works_with_a_subtitle() -> set[str]:
-    """Slugs whose fixture carries a subtitle in any language.
-
-    ANY language, not English: the scrim is one file per work and a Spanish
-    subtitle needs the band as much as an English one. A work that gains a
-    subtitle in a translation therefore wants this re-run — which the fixture
-    gate says, because it measures the same way.
-    """
-    import json
-
-    books = BACKEND / "library" / "fixtures" / "content" / "books"
-    return {
-        row["fields"]["slug"]
-        for path in books.glob("*.json")
-        for row in json.loads(path.read_text())
-        if row["model"] == "library.book" and (row["fields"].get("subtitle") or "").strip()
-    }
+    for step in range(30, round(SCRIM_MAX * 100) + 1, 5):
+        over = worst_over_bar(step / 100)
+        if over >= MARGIN:
+            return step / 100
+    # The last step WAS the ceiling: its measurement answers the bar-only test.
+    return SCRIM_MAX if over >= 0 else None
 
 
 def main() -> int:
@@ -143,7 +114,11 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     opts = parser.parse_args()
 
-    subtitled = works_with_a_subtitle()
+    books = [fields for _path, _slug, _lang, fields in book_editions()]
+    subtitled = subtitled_works(books)
+    # Where every edition's type landed, from the og twin generator — run
+    # `npm run og:covers` first if a title or subtitle changed.
+    rows = painting_ink_rows(books)
     table, unusable = {}, []
     paths = sorted(ART.glob("*.jpg"))
     if opts.slugs:
@@ -161,9 +136,15 @@ def main() -> int:
         if path.stem in INK_DARK:
             continue
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-        strength = needed(image, path.stem in subtitled, path.stem)
+        strength = needed(image, path.stem in subtitled, path.stem, rows.get(path.stem))
         if strength is None:
-            unusable.append(path.stem)
+            if path.stem not in THIN_AT_FULL_SCRIM:
+                unusable.append(path.stem)
+                continue
+            # Known, and the founder's call — see `covers.THIN_AT_FULL_SCRIM`.
+            thin = "; ".join(f"{k} {v}" for k, v in THIN_AT_FULL_SCRIM[path.stem].items())
+            print(f"  {path.stem:44} {SCRIM_MAX:.2f}x  (thin: {thin})")
+            table[path.stem] = SCRIM_MAX
             continue
         table[path.stem] = strength
         mark = " +subtitle" if path.stem in subtitled else ""
@@ -171,7 +152,7 @@ def main() -> int:
 
     if unusable:
         print(
-            f"\nno strength up to 2.00x carries white type over: {', '.join(unusable)}\n"
+            f"\nno strength up to {SCRIM_MAX:.2f}x carries white type over: {', '.join(unusable)}\n"
             "That is a painting too pale for this composition, not a tuning problem "
             "— recrop it, or give the work a darker artwork.",
             file=sys.stderr,

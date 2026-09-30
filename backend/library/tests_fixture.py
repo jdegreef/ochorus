@@ -58,12 +58,14 @@ from library.content_fixtures import (
 from library.covers import (
     AUTHOR_MIN_CONTRAST,
     COVER_WIDTHS,
+    OG_MANIFEST,
     RASTER_SUFFIXES,
     H,
     W,
     art_url,
     author_ink_contrast,
     shares_a_ground,
+    twin_key,
     twin_path,
     variant_url,
 )
@@ -1353,7 +1355,7 @@ class CoverAssetTests(SimpleTestCase):
         `coverOgManifest.test.ts` checks it from the side that owns it. Each
         half is checked where it can actually be derived.
         """
-        manifest_file = STATIC_DIR / "covers" / "og-manifest.json"
+        manifest_file = OG_MANIFEST
         self.assertTrue(
             manifest_file.is_file(),
             "frontend/static/covers/og-manifest.json is missing — run "
@@ -1373,7 +1375,7 @@ class CoverAssetTests(SimpleTestCase):
         names = authors_by_slug()
         stale, unrecorded = [], []
         for (slug, language), fields in sorted(editions.items()):
-            key = twin_path(slug, language)[1].removesuffix(".png")
+            key = twin_key(slug, language)
             cover = _cover(fields)
             art = cover.startswith("/covers/art/")
             # Under `/covers/` on BOTH arms, which is what `needTwins` in the
@@ -1949,34 +1951,22 @@ class CoverAssetTests(SimpleTestCase):
         from PIL import Image
 
         from library.art_scrim import ART_SCRIM
-        from library.covers import INK_DARK, ink_boxes, scrimmed
-
-        def relative_luminance(channels):
-            def channel(v):
-                v /= 255
-                return v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4
-
-            r, g, b = (channel(c) for c in channels)
-            return 0.2126 * r + 0.7152 * g + 0.0722 * b
-
-        def worst(band, opacity):
-            """Least white-on-artwork contrast anywhere in a band."""
-            out = 1e9
-            for px in band.getdata():
-                ink = tuple(round(255 * opacity + c * (1 - opacity)) for c in px)
-                a, b = relative_luminance(ink) + 0.05, relative_luminance(px) + 0.05
-                out = min(out, max(a, b) / min(a, b))
-            return out
+        from library.covers import (
+            INK_DARK,
+            THIN_AT_FULL_SCRIM,
+            ink_contrast,
+            painting_ink_rows,
+            scrimmed,
+            subtitled_works,
+        )
 
         art_dir = STATIC_DIR / "covers" / "art"
-        # WHICH WORKS DRAW A SUBTITLE, because that decides both the scrim curve
-        # and whether there is a subtitle strip to measure. Any language: the
-        # painting is one file for every edition, so a Spanish subtitle needs the
-        # band as much as an English one.
-        subtitled = {
-            f["slug"] for f in self.books if (f.get("subtitle") or "").strip()
-        }
-        thin, untuned = [], []
+        # Which works draw a subtitle (it picks the scrim curve), and where every
+        # edition's ink landed — each translation's own lines, not only the
+        # English strips (see `covers.painting_ink_rows` for why).
+        subtitled = subtitled_works(self.books)
+        rows = painting_ink_rows(self.books)
+        thin, untuned, mended = [], [], []
         for path in sorted(art_dir.glob("*.jpg")):
             # A dark-ink ground carries no white type and has no scrim; its own
             # gate below measures the ink it does carry.
@@ -1995,29 +1985,39 @@ class CoverAssetTests(SimpleTestCase):
                 ART_SCRIM.get(path.stem, 1.0),
                 has_sub,
             )
-            # EVERY STRIP THAT CARRIES INK, from the one table the tuner reads.
-            # This used to measure the byline and the title and stop. The byline
-            # band was also 8px short of the real byline, so five paintings were
-            # failing in rows nothing looked at; the subtitle and the brandmark
-            # were not measured at all, and 36 of 38 paintings were under 4.5:1
-            # under the subtitle. `ink_boxes` is shared with
-            # `scripts/tune_art_scrim.py` so the bar this gate holds and the bar
-            # that script tunes to cannot drift apart. `ink_boxes` answers per
-            # work, because a type-top cover carries its words in other rows.
-            bad = []
-            for name, box, opacity, bar in ink_boxes(path.stem):
-                if name == "subtitle" and not has_sub:
-                    continue
-                got = worst(plate.crop(box), opacity)
-                if got < bar:
-                    bad.append(f"{name} {got:.2f}:1 (needs {bar})")
+            # EVERY STRIP THAT CARRIES INK, measured by the one function the
+            # tuner tunes with (`covers.ink_contrast`). This used to measure the
+            # byline and the title and stop. The byline band was also 8px short
+            # of the real byline, so five paintings were failing in rows nothing
+            # looked at; the subtitle and the brandmark were not measured at all,
+            # and 36 of 38 paintings were under 4.5:1 under the subtitle.
+            failing = {
+                name: f"{name} {got:.2f}:1 (needs {bar})"
+                for name, (got, bar) in ink_contrast(
+                    plate, path.stem, has_sub, rows.get(path.stem)
+                ).items()
+                if got < bar
+            }
+            # THE KNOWN FEW, which no drawable scrim carries and which wait on the
+            # founder (`covers.THIN_AT_FULL_SCRIM`). Tolerated by painting AND
+            # region, and only while they still fail: any other region failing
+            # still fails, and a mended one must leave the list.
+            known = THIN_AT_FULL_SCRIM.get(path.stem, {})
+            mended += [f"{path.stem}: {name}" for name in known if name not in failing]
+            bad = [line for name, line in failing.items() if name not in known]
             if bad:
                 thin.append(f"{path.stem}: {', '.join(bad)}")
+
         self.assertEqual(
             thin, [],
             "a painting too pale for the ink it carries under the scrim it is "
             "given — re-run `cd backend && uv run python scripts/tune_art_scrim.py`, "
             "or recrop the artwork if no strength carries it",
+        )
+        self.assertEqual(
+            mended, [],
+            "listed in covers.THIN_AT_FULL_SCRIM but carries its type now — "
+            "remove the entry and re-run `cd backend && uv run python scripts/tune_art_scrim.py`",
         )
         self.assertEqual(
             untuned, [],
