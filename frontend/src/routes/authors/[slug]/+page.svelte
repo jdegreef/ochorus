@@ -451,7 +451,7 @@
 	     prerender — where to start, with the total reading time. -->
 	{#if cardBook}
 		<div class="read-card mx-auto mt-6 max-w-[40rem]">
-			<div class="flex min-w-0 flex-1 items-center gap-3">
+			<div class="read-card-body flex items-center gap-3">
 				<div class="w-12 shrink-0"><BookCover book={cardBook} rounded="rounded-[3px]" /></div>
 				<div class="min-w-0 flex-1">
 					{#if resumeBook}
