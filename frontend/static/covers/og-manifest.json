@@ -2824,8 +2824,28 @@
 			"layout": "framed-top",
 			"bar": 0
 		},
+		"key-teachings-of-amanda-berry-smith": {
+			"ground": "97ac4d01bf7b6231e04389f630c2897c14b2eb9dfa63a2203339970aecddc69f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0
+		},
 		"key-teachings-of-andrew-murray": {
 			"ground": "efcd6eba4b4806027ea9eed406393b53ddd7dd7ab377e1c11152b4178a9f4b1c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-athanasius-of-alexandria": {
+			"ground": "17db60ad296e61efce9bf374088e712940aec8d653da80437caf11ed509fd186",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -2874,8 +2894,38 @@
 			"layout": "framed-top",
 			"bar": 0
 		},
+		"key-teachings-of-hudson-taylor": {
+			"ground": "17ce3e76ac4261a914d2ac016661d1d021830f3d5f3501d35f5de35807110ff8",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-jeanne-guyon": {
+			"ground": "e33a63ee733310eae5919c9384bec378fbd60bb7d81434199b377b7473aaf750",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0
+		},
 		"key-teachings-of-jonathan-edwards": {
 			"ground": "9e1b2a422d7ea975b3645288b869291d8020a9f6060c7e457fd62c135ea30e55",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-julia-foote": {
+			"ground": "f1e8600365764bdaee00281bb5841aac5b6a1220e1bcfb9494f588e0c268cd7f",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",

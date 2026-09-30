@@ -1,0 +1,1462 @@
+---
+description: A concise, faithful guide to the heart of Madame Guyon’s message — that prayer is the simple turning of the heart to God, open to every believer, and that the soul which gives itself wholly to Him will find Him within. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Jeanne Guyon’s own public-domain works, which readers are warmly encouraged to go to directly.
+about: |
+  This is not a book by Jeanne Guyon. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into eighteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.
+  
+  Her teaching has a single thread. Prayer, she insisted, is not a skill for the learned but the application of the heart to God, and every believer, however simple, can learn it; and the heart that turns to God and keeps turning will be drawn, through abandonment, suffering and the fire of love, into a deep and quiet union with Him. That message made her one of the most widely read spiritual writers of her century and one of the most suspected. This volume follows the thread, weighs honestly the Quietist controversy and the places where she must be read with care, and ends each chapter with a few questions and a prayer.
+  
+  Jeanne Guyon’s own writings are in the public domain and freely available, and every chapter here names the work it draws on so that the reader can go to the source; her A Short and Easy Method of Prayer is in the Ochorus library. This companion is offered only to open the door to her. Scripture is quoted from the Authorised (King James) Version, and nothing here claims to stand in for her own ardent, simple and searching pages.
+---
+# Introduction
+
+> My son, give me thine heart, and let thine eyes observe my ways. PROVERBS 23:26
+
+Few writers on prayer have been so loved and so distrusted at the same time as Jeanne Guyon. In her own lifetime her little book on prayer was read in convents, drawing rooms and country parishes, and then burned, forbidden and argued over by the most powerful churchmen in France. She spent the best part of eight years in confinement, much of it in the Bastille, not for any crime but for the way she taught people to pray. Yet the book that caused the trouble has never gone away. Protestants who would have been horrified by her Catholic world have printed it, abridged it and pressed it on one another for three centuries. Quakers and Methodists, German Pietists and Chinese house-church believers have all found in it something they needed.
+
+She was not a scholar or a nun. She was a wife married against her wishes at fifteen, a mother who buried children, a widow at twenty-eight with money and freedom, and then a travelling teacher of prayer with no office in the church at all. That is part of why she was feared. It is also part of why she was loved. She wrote for people who had been told, or had quietly concluded, that real prayer belonged to someone else.
+
+## The one thread
+
+Her teaching can be summed up in the sentence that opens A Short and Easy Method of Prayer: “Prayer is nothing else but the application of the heart to God, and the interior exercise of love.” Everything else she wrote is that sentence worked out.
+
+If prayer is the application of the heart, then it is not first a matter of words, techniques or learning, and it is open to everyone who has a heart — the ploughman as well as the bishop, the child as well as the theologian. If God is to be found by turning the heart towards Him, then He is near, not far; the kingdom of God is within, and the soul must learn to turn from the noise without to the presence within. If the heart is to be given, it must be given wholly: that is her abandonment. And if it is given wholly, God will take it at its word, purify it by the cross and the fire of His love, and draw it at last into a quiet and settled union with Himself.
+
+> Draw nigh to God, and he will draw nigh to you. JAMES 4:8
+
+That is the question to carry through these pages. Not, how much do I know about prayer? but, have I given God my heart, and am I learning to keep it turned towards Him?
+
+## How this book is arranged
+
+After a chapter on her life, eighteen short chapters set out her teaching. The first group follows A Short and Easy Method of Prayer as a beginner would: what prayer is, praying the Scripture, how to begin, the prayer of simplicity, and what to do with distraction and dryness. The second group takes up the inward life that grows from it: abandonment, the kingdom within, silence, the death of self-will, the cross, the purifying fire, the right understanding of the Spirit’s action and our own, pure love and union with God. The last group turns outward: guidance, prayer and the reform of life, peace under persecution, and the long reach of her books beyond the walls of her prison. A conclusion and a reader’s guide close the book.
+
+Each chapter ends with application points and a prayer. She would have wanted that. Her own book was written, she said, for a few Christians who wanted to love God with the whole heart, and she urged its readers not to argue about it but to make trial of it. Read a chapter at a time. Stop at the application points. Pray the prayer, or better, pray your own.
+
+## Where she must be read with care
+
+This is not a book of hero-worship, and Madame Guyon must be read with more care than most writers in this series. It is kinder to say so at the start.
+
+First, her teaching was examined and censured by the church of her day, and the movement now called Quietism was condemned. Miguel de Molinos, the Spanish priest whose teaching gave the movement its name, was condemned at Rome in 1687; the conferences at Issy in 1694 and 1695 produced articles on the spiritual life, drawn up with her teaching in view, which Fénelon himself signed; and in 1699 the Pope censured her friend Fénelon’s defence of pure love. Some of the condemnation was political and some of it unjust. But not all of it was, and we will not pretend otherwise.
+
+Second, her language of passivity, stillness and the ceasing of our own action can be misread — and has been — as permission to neglect Scripture, the ordinary means of grace, the fellowship of the church and plain obedience. She denied that she meant this, and her book says so more than once. But a teacher is responsible for the likely effect of her words as well as her intention, and we will mark the places where the balance tips.
+
+Third, her doctrine of pure love, pressed to its limit, came near to saying that a soul should be indifferent even to its own salvation. Scripture never asks that of us. It commands us to seek, to hope and to lay hold of eternal life.
+
+Fourth, much of what she wrote rests on her own experience — states of soul, inward impressions, a certainty that God was leading her in ways others could not see. Some of it is precious. Some of it cannot be tested, and she did not always welcome being tested.
+
+Fifth, she was a devout Roman Catholic, and she lived and died one. Protestant readers who love her should not tidy her into an evangelical; Catholic readers should not forget that her own church condemned her. She deserves to be read as she was, fairly and whole.
+
+So the counsel of this book is the counsel of Scripture:
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21
+
+Where she is faithful — on the nearness of God, on prayer as the heart’s turning to Him, on reading slowly, on the uselessness of fighting distractions head on, on the cross as God’s workman, on loving God for Himself — receive it gladly and practise it. Where she presses beyond what is written, mark it and set it aside. You will lose nothing. She herself submitted what she wrote to the judgement of persons of experience and learning; she would not have asked you to swallow her whole.
+
+A last word. She was not a heretic to be dismissed, nor a saint to be followed without thinking. She was a woman who loved God fiercely and suffered for it, and who said some of the most helpful things ever written about prayer alongside some that need correcting. If this companion does anything, it should send you back to her own small book, and through it to the God who, as she never tired of saying, is nearer to us than we are to ourselves.
+
+### FOR REFLECTION AND ACTION
+
+1. Write down, honestly, what prayer is for you at present — a duty, a list, a habit, a delight, a struggle. Keep the page; you will return to it.
+2. Ask yourself whether you have ever assumed that real prayer belongs to other, more spiritual people.
+3. Decide now how you will read: one chapter a day or a week, with a Bible open beside it.
+4. Get hold of A Short and Easy Method of Prayer, in the Ochorus library or elsewhere, and read it alongside this book.
+5. Resolve to test what you read by Scripture, keeping what is good and setting aside what is not.
+
+### A PRAYER
+
+> Lord, You have asked for my heart, and I have offered You almost everything else.
+> I have said prayers without praying, and read about You without seeking You.
+> Teach me, through these pages and above all through Your Word, what it is to turn my heart to You and keep it there.
+> Keep me from swallowing any teacher whole, and keep me from refusing any truth that comes from You. Amen.
+# From Montargis to the Bastille
+
+> Many are the afflictions of the righteous: but the LORD delivereth him out of them all. PSALM 34:19
+
+A devout and restless childhood. Jeanne-Marie Bouvier de la Mothe was born on the thirteenth of April, 1648, at Montargis, a small town south of Paris, into a prosperous Catholic family. Her father was a royal official of good standing. She was a delicate child, often ill, passed between her parents’ house and the schools of several religious communities, and her own account of those years in her Life is a mixture of genuine piety and frank vanity. She read the writings of Francis de Sales and the life of Jane Frances de Chantal and longed to become a nun; she also, by her own admission, liked to be admired. Both inclinations would be tested hard.
+
+A marriage she did not choose. In 1664, at fifteen, she was married to Jacques Guyon, a wealthy man some twenty-two years older than she. The match was made for her, not by her, and it brought her into a household ruled by a mother-in-law who, on her own telling, treated her harshly, and a husband who was by turns affectionate and irritable, and often unwell. She had been a clever girl in a cultivated home; now she was expected to be silent and useful. Her Life records the misery of these years at length, and some readers have thought she dwelt on it too much. But it is plain that the marriage taught her early what it is to have no will of one’s own, and that lesson, turned towards God, became the centre of her teaching.
+
+The word that opened her heart. For several years she prayed as she had been taught, by effort and method, and found little in it. The turning point came in 1668, when she was nineteen or twenty. A Franciscan friar, recently returned from solitude, told her in effect that she had been seeking outside herself what she already had within: let her seek God in her heart, and she would find Him there. She describes the effect as immediate. Prayer, which had been labour, became a simple and loving attention to a God who was present. Everything she later taught about the prayer of the heart goes back to that conversation.
+
+Sorrow upon sorrow. The following years were heavy. In 1670 smallpox marked the face that had been so admired, and she took the loss, after a struggle, as God’s deliverance from her vanity. She bore five children and lost some of them young. Her father died, and her husband’s health failed. She passed, too, through a long inward darkness, which she describes in her Life as a kind of death: the sweetness of her early prayer withdrawn, a sense of being abandoned by God, a conviction of her own wretchedness. It lasted for years, and she later understood it as the fire in which God was purifying her love.
+
+Widowhood and a new calling. Jacques Guyon died in 1676, leaving her at twenty-eight a rich widow with young children. She could have remarried, or retired into comfortable piety. Instead, after some years of uncertainty, and with the inward darkness lifting around 1680, she became convinced that God was calling her to serve Him abroad. In 1681 she left Paris for Gex, near Geneva, in the diocese of the Catholic bishop of Geneva, taking her small daughter with her and leaving her sons in the care of family. It was a costly decision, and critics then and since have questioned it.
+
+Savoy and Grenoble. The next five years were spent in the region of Savoy and beyond: at Gex, at Thonon on Lake Geneva, at Turin, and at Grenoble. Her spiritual director through much of this time was a Barnabite priest, François La Combe. She taught prayer to anyone who came — nuns, servants, working people, clergy — and many found in her counsel a new life of prayer. But her independence, her influence and her closeness to La Combe unsettled the authorities, and she was asked more than once to move on. At Grenoble in 1685 a friend arranged for the printing of the little manual she had written for those she taught, A Short and Easy Method of Prayer. Around the same years she wrote Spiritual Torrents and began her long commentaries on the books of Scripture, including the Song of Songs.
+
+Paris and suspicion. She returned to Paris in 1686. The climate had changed. In 1687 Miguel de Molinos was condemned at Rome for teachings on passive prayer, and in France anything that sounded like his quietness was suspect. La Combe was arrested that year and spent the rest of his life in confinement. Early in 1688 she herself was shut up for some months in a Paris convent, and her writings were examined. She was released through the intervention of Madame de Maintenon, the King’s wife in all but public title, who for a time admired her.
+
+Fénelon. In 1688 she met François de Salignac de la Mothe-Fénelon, a gifted young priest who would become tutor to the King’s grandson and Archbishop of Cambrai. The friendship that followed was one of the most consequential in the history of French religion. Fénelon found in her conversation and letters a living example of the pure love of God he had read of in the old spiritual writers, and he became her defender. For a few years her teaching spread among the devout of the court and at Saint-Cyr, Madame de Maintenon’s school for girls.
+
+Issy and the storm. The favour did not last. Complaints multiplied, Madame de Maintenon turned against her, and Madame Guyon herself asked that her writings be judged. Jacques-Bénigne Bossuet, Bishop of Meaux and the most formidable churchman in France, examined them. At Issy, near Paris, in 1694 and 1695, Bossuet and two other churchmen, later joined by Fénelon, drew up articles setting out sound teaching on prayer and the spiritual life. She submitted, signed what was asked of her, and for a time lived under Bossuet’s oversight. But the dispute had become a quarrel between Bossuet and Fénelon, and she was its occasion. At the end of 1695 she was arrested.
+
+Vincennes and the Bastille. She was held first at Vincennes, then in a house at Vaugirard, and in 1698 she was taken to the Bastille, where she remained until 1703. She was questioned repeatedly. Her enemies spread rumours of impropriety with La Combe that no inquiry ever proved. Meanwhile, in 1697, Fénelon published his Maxims of the Saints, defending a doctrine of disinterested love, and Bossuet answered with a public account of her life and errors. In 1699 Pope Innocent XII censured a number of propositions from Fénelon’s book. Fénelon submitted at once and publicly, and never saw her again. Through it all she prayed, and wrote verse, and by every account she bore her confinement with remarkable peace.
+
+Blois. Released in 1703, broken in health, she was sent to live under supervision near Blois with her son. She spent her last years there quietly, writing letters, receiving visitors — among them Protestants from abroad who had read her books — and completing her Life. She died at Blois on the ninth of June, 1717, aged sixty-nine, in communion with the church that had imprisoned her. Her Protestant admirer Pierre Poiret had already begun to publish her writings in Holland, and within a few years of her death they filled many volumes. The long second life of her books had begun.
+
+She left no order, no institution and no school of disciples she could call her own. She left a small book on prayer that the authorities of her day tried hard to bury, and that has outlived them all.
+
+### FOR REFLECTION AND ACTION
+
+1. She spent years praying by effort before learning to seek God within. Where have you been looking for Him outside yourself — in methods, moods or places?
+2. Her marriage taught her the loss of her own will before God did. What circumstance you did not choose might God be using to teach you surrender?
+3. Consider a loss or disfigurement, of body or reputation, that you have resented. Can you bring it to God as she learned to do?
+4. Pray for believers imprisoned today for their faith, that they may know the peace she knew.
+5. Read the Author’s Preface to A Short and Easy Method of Prayer, and notice the spirit in which she offers her book.
+
+### A PRAYER
+
+> Lord, You met a young wife in an unhappy house and taught her to find You in her heart.
+> You are as near to me as You were to her, and I have looked for You everywhere but within.
+> In the circumstances I did not choose, teach me to give up my own will and to find Your will good.
+> And when trouble comes, whether sorrow, slander or loss, keep my heart turned towards You in peace. Amen.
+# The Application of the Heart
+
+> Pray without ceasing. 1 THESSALONIANS 5:17
+
+A Short and Easy Method of Prayer begins without preamble. There is no history of prayer, no survey of the authorities, no warning about the difficulty of the subject. There is a definition, and then an invitation. The definition is this: “Prayer is nothing else but the application of the heart to God, and the interior exercise of love.” The invitation is to everyone.
+
+It is worth pausing on the definition, because most of us carry another one around without knowing it. We tend to think of prayer as a kind of speech: words addressed to God, arranged well or badly, long or short, sincere or distracted. Madame Guyon does not deny that prayer uses words. But she puts the words in their place. Prayer is first the heart turned towards God, attending to Him and loving Him. The words are the heart’s servants. Where the heart is absent, the finest words are not yet prayer; where the heart is present, a sigh is.
+
+> But the hour cometh, and now is, when the true worshippers shall worship the Father in spirit and in truth: for the Father seeketh such to worship him. JOHN 4:23
+
+## The heart, not the head
+
+She makes the distinction sharply. The prayer she has in mind, she says, “is not mental, but of the heart.” By mental prayer she means the elaborate meditation taught in the manuals of her day: taking a subject, imagining its scene, reasoning upon it, drawing out resolutions. She does not despise meditation, and she will use it later as a doorway. But she observes, with some humour, that not everyone is fit for it. The mind of man, she says, is so limited that while it is occupied with one thing it cannot be thinking of another. A labourer at his work, a mother with a feverish child, a clerk at his accounts cannot meditate and work at the same time.
+
+The heart is different. The heart can be turned towards God while the hands are busy and the mind is occupied with other things, as a person in love carries the beloved with them all day without thinking of anything in particular. That is why, for her, the command to pray without ceasing is not an impossible ideal. It would be impossible if prayer meant continual thinking about God. It is not impossible if prayer means a heart continually turned towards Him.
+
+> I sleep, but my heart waketh: it is the voice of my beloved that knocketh. SONG OF SOLOMON 5:2
+
+Nothing, she adds, can interrupt the prayer of the heart but unruly affections. That is a searching sentence. What stops us praying without ceasing is not our busyness; it is our loves. The heart that is fixed on something else — money, reputation, a grudge, a secret sin — cannot at the same time be applied to God. The trouble with our prayer is usually a trouble with our desires.
+
+## Come, all without exception
+
+The second thing that strikes a reader of her opening chapter is its breadth. She quotes our Lord’s word to His disciples to watch and pray, and then His addition: what I say unto you I say unto all.
+
+> And what I say unto you I say unto all, Watch. MARK 13:37
+
+All, then, are capable of prayer, she argues, and it is the duty of all to engage in it. Then she breaks into a long, warm invitation, almost a sermon, calling in turn the thirsty, the hungry, the afflicted, the sick, the children, the wandering sheep and the sinners. Its climax is her most famous sentence: “Come, ignorant and foolish ones, who believe yourselves incapable of prayer; it is you who are the most fitted for it.”
+
+> Ho, every one that thirsteth, come ye to the waters, and he that hath no money; come ye, buy, and eat; yea, come, buy wine and milk without money and without price. ISAIAH 55:1
+
+She means it. The prayer she describes, she says, can be offered alike by princes and kings, by prelates and magistrates, by soldiers and children, by artisans and labourers, by women and the sick. In a church where the life of prayer was widely assumed to belong to monasteries and convents, and where women and the uneducated were expected to leave spiritual things to their betters, this was bold. It was one of the reasons she was feared. It is one of the reasons she has been loved.
+
+Only one person is excluded: the one who has no heart. We must have a heart in order to love, she says. And then, gently: who is indeed without a heart? Come and give it to God, and learn in the place of prayer how to do it.
+
+## As easy as breathing
+
+Her boldest claim is that this prayer is easy. God, she says, is more truly in us than we are in ourselves, and more anxious to give Himself to us than we are to possess Him. “Nothing is easier than to have God and to live upon Him.” The way to seek Him is so natural, she writes, that breathing itself is not more so.
+
+> For in him we live, and move, and have our being. ACTS 17:28
+
+Is this true? In one sense, plainly not: many earnest Christians have found prayer the hardest thing they ever attempted. Madame Guyon herself spent years in labour and dryness. But she is not describing how prayer feels; she is describing where God is. If God were far off, prayer would be a long climb. If He is near, prayer is a turning. The difficulty is not in the distance but in our unwillingness to turn — and that, she insists, grace can overcome.
+
+> The LORD is nigh unto all them that call upon him, to all that call upon him in truth. PSALM 145:18
+
+Here the reader needs a word of care. When she says God is more truly in us than we are in ourselves, she is speaking the language of devotion, not defining doctrine, and she means a believer indwelt by the Spirit of Christ. She is not saying that every human heart is already united to God, or that turning inward is itself salvation. Elsewhere in the same book she speaks plainly of sin, of turning from it, and of the grace that must come from God. The nearness she celebrates is the nearness of the Saviour who has come to live in those who trust Him.
+
+> If a man love me, he will keep my words: and my Father will love him, and we will come unto him, and make our abode with him. JOHN 14:23
+
+## What this asks of us
+
+The application of the heart to God is simple, but it is not cheap. It asks us to stop treating prayer as a performance to be judged by its fluency, and to treat it as the turning of the whole self towards a Person. It asks us to deal with the unruly affections that pull the heart away. And it asks us to believe that God wants to be found — that He is not a reluctant official to be persuaded, but a Father who has been waiting.
+
+> Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you. MATTHEW 7:7
+
+That is why she begins with invitation rather than instruction. Before she tells us how to pray, she wants us to believe that we can.
+
+### FOR REFLECTION AND ACTION
+
+1. Write your own definition of prayer before reading hers again. How does it differ from “the application of the heart to God”?
+2. Name the unruly affection that most often pulls your heart away from God. Bring it to Him by name.
+3. Choose one ordinary task this week — washing up, driving, walking — and practise turning your heart to God while you do it.
+4. If you have ever thought prayer was for other, more spiritual people, tell God so, and accept His invitation.
+5. Think of someone who believes they cannot pray. Encourage them with the simplest words you can find.
+
+### A PRAYER
+
+> Lord, I have made prayer a matter of words and methods, and left my heart elsewhere.
+> Here is my heart. It is divided and distracted, but it is the only one I have.
+> Turn it towards You, and keep it turned, in my work and my rest, in company and alone.
+> You have called the ignorant and the weak; I come as one of them, and I trust You to teach me. Amen.
+# Praying the Scripture
+
+> How sweet are thy words unto my taste! yea, sweeter than honey to my mouth! PSALM 119:103
+
+If Madame Guyon had left us only one practical counsel, it would be this one, and it would have been enough to earn her a place among the teachers of prayer. She called it meditative reading. Her readers have since given it a plainer name: praying the Scripture. It is the first door she opens for beginners, and for many who have never gone further it has remained the most useful room in the house.
+
+## Two or three lines at a time
+
+Her instructions in A Short and Easy Method of Prayer are brief and concrete. Take some truth, she says, and read two or three lines, seeking to enter into the full meaning of the words. Go no further so long as you find satisfaction in them. Leave the place only when it becomes insipid. Then take another passage and do the same, not reading more than half a page at once.
+
+That is all. It could be written on a card. But it reverses the way most of us read the Bible. We read to cover ground: a chapter a day, the whole book in a year, the passage for Sunday. There is nothing wrong with reading widely, and a Christian who never reads the Bible through will have a lopsided knowledge of it. But she is pointing to something else. There is a reading that informs and a reading that feeds, and the second requires that we stop.
+
+> Thy words were found, and I did eat them; and thy word was unto me the joy and rejoicing of mine heart. JEREMIAH 15:16
+
+Her image for it is one of the best in the book. “The bees can only draw the juice from the flowers by resting on them, not by flying round them.” Those who get through a great deal, she says, do not profit from it. It is not so much the amount read as the manner of reading.
+
+## Tasting and swallowing
+
+She presses the image of eating further. When the heart has been touched by what it has read, she says, it must be allowed to rest in it — to swallow what it has tasted. A person who only chewed an excellent meal and never swallowed it would taste it but not be nourished. So it is with the soul. If, when our affection has been stirred by a phrase of Scripture, we immediately hurry on to stir it again with the next, we put out the fire we have just lit. We must, she says, swallow by a loving repose what we have tasted.
+
+> O taste and see that the LORD is good: blessed is the man that trusteth in him. PSALM 34:8
+
+This is the heart of the matter. Praying the Scripture is not reading followed by praying, as though the two were separate exercises. It is reading that becomes prayer. A phrase is read — the Lord is my shepherd — and the reader stops. The words are turned over. They become a thanksgiving, a confession, a longing, a quiet trust. When the sense of them fades, the reader goes on to the next phrase: I shall not want. And so on, slowly, for as long as the time allows.
+
+She worked this out on the Lord’s Prayer, and her example is worth following exactly. We say Our Father, and think that God is indeed our Father, and pause a few moments in silence. We ask that His kingdom come, and yield Him the right He has over us. We ask that His will be done, and give Him our heart and liberty. If at any point we feel drawn to peace and silence, we do not hurry on, but remain there as long as it lasts. It is the Lord’s Prayer prayed, not recited.
+
+> After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name. MATTHEW 6:9
+
+## Why this helps
+
+Three things happen when we read like this, and all three are worth having.
+
+First, the Word gets inside us. Hurried reading leaves the text on the surface of the mind; slow reading lets it sink. The psalmist did not say he had read God’s word, but that he had hid it in his heart.
+
+> Thy word have I hid in mine heart, that I might not sin against thee. PSALM 119:11
+
+Second, prayer gets its matter from God rather than from us. Many people give up on prayer because they run out of things to say, or find themselves saying the same few things every day. Praying the Scripture gives the heart something to answer. God speaks first, in His Word, and we reply. That is the right order.
+
+Third, distraction is reduced. She observes that the reading fixes the attention. The mind that wanders when left to itself will often settle when given a single phrase to rest upon.
+
+## A caution and a correction
+
+Two cautions belong here, and she would not resent either.
+
+The first is that she speaks of reading truths, doctrinal or practical, and of reading spiritual books in this way; she does not confine it to the Bible. In her own practice she read the Scriptures constantly, and her long commentaries on them show it. But the method is only as good as what is read. Slow reading of a poor book will feed us poorly. The Protestant readers who loved her were right to apply her counsel first and chiefly to the Scriptures, which alone are given by inspiration of God.
+
+> All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness. 2 TIMOTHY 3:16
+
+The second is that meditative reading does not replace the study of Scripture. We must also read whole books, follow arguments, compare passage with passage, and learn what the words meant to those who first received them. Otherwise we will taste phrases torn from their setting and make them mean what we please. Her way of reading is a way of praying, not a way of interpreting. The two belong together: study that we may understand, and pray that what we understand may become our own. The Bereans are praised for searching the Scriptures, and searching is not the same as savouring.
+
+> These were more noble than those in Thessalonica, in that they received the word with all readiness of mind, and searched the scriptures daily, whether those things were so. ACTS 17:11
+
+With those cautions, her counsel stands. There are Christians who have read the Bible for decades and have never once stopped long enough to be fed by it. For them this chapter of her book is a gift.
+
+## Beginning tomorrow
+
+The method is so simple that it is easy to agree with and never try. So choose a passage now: a psalm, a few verses of the Gospel of John, the Sermon on the Mount. Give it ten minutes. Read a line and stop. Turn it into prayer. Go on only when the line has nothing more to give you that morning. If you reach the end of ten minutes having read three verses, you have not failed; you may have prayed for the first time in weeks.
+
+### FOR REFLECTION AND ACTION
+
+1. Be honest about how you usually read the Bible: to cover ground, to find something to say, or to be fed?
+2. Tomorrow, take Psalm 23 and pray it phrase by phrase for ten minutes, going on only when a phrase is spent.
+3. Pray the Lord’s Prayer slowly once this week, pausing after each petition as she suggests.
+4. Keep a separate time for studying Scripture — a book read through, with its context — so that savouring rests on understanding.
+5. Choose one verse that fed you this week and carry it through the day, returning to it whenever you remember.
+
+### A PRAYER
+
+> Lord, I have flown round Your Word like a hurried bee and wondered why I came away empty.
+> Teach me to rest on it, to taste it, and to let it sink into my heart.
+> Speak to me in Your Scriptures, and give me grace to answer You with my whole heart.
+> Guard me from twisting Your words to my own liking, and feed me with the truth as it is in Jesus. Amen.
+# Blow the Fire Softly
+
+> But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly. MATTHEW 6:6
+
+Madame Guyon called her book a method, and then, in her preface, laughed at the word. She hoped her readers would find God, she said, by following “this little unmethodical method.” She did not want to add one more system to the many that already burdened devout people. But she did want to help beginners, and for that she gave plain, practical counsel. This chapter gathers it together.
+
+## Begin with an act of faith
+
+Everything starts, she says, with bringing ourselves into the presence of God by a definite act of faith. We do not wait to feel that God is present. We believe it, because He has said it, and we turn towards Him on that ground.
+
+> But without faith it is impossible to please him: for he that cometh to God must believe that he is, and that he is a rewarder of them that diligently seek him. HEBREWS 11:6
+
+This is more important than it looks. Many people approach prayer as though its success depended on the atmosphere they could create — the right mood, the right music, the right degree of fervour. She sets all that aside. The presence of God is a fact before it is a feeling. The beginner who kneels down cold and distracted, and says in effect, Lord, I believe You are here, has begun rightly, whatever he feels.
+
+She adds a wise caution. We can form no image of God, she says; a lively faith in His presence is enough. We may think of Christ as He is shown in the Gospels, on the cross or in His life among men. But we are not to manufacture pictures of God and then pray to our own imaginings.
+
+## Gather the scattered senses
+
+Next comes what she and the older writers called recollection: the gathering of the mind and heart from their scattering among outward things. Faith in God’s presence, she says, must lead us to enter within ourselves, collecting our thoughts and keeping them from wandering. She is realistic about this. It is not easily done at first, she admits, because of the habits natural to us of being taken up with the outside. But when we are a little accustomed to it, it becomes easy, both because we have formed the habit and because God sends grace to help us.
+
+> Be still, and know that I am God: I will be exalted among the heathen, I will be exalted in the earth. PSALM 46:10
+
+Practically, this means a time and a place. She insists later that outward silence is extremely necessary for inward silence. It is no use hoping to find God in the heart while the radio is on, the phone is buzzing and the list of the day’s tasks is spread out in front of us. The Lord’s instruction to enter the closet and shut the door is not a metaphor only.
+
+## Read, pause, and wait
+
+Then she gives the pattern described in the last chapter: read a little, pause, let the heart respond, rest in what it has received, go on. She adds that the beginner should not run from one truth to another, but keep to one as long as there is savour in it. And she makes a point that every experienced pray-er will recognise. Mingle the speaking with silence, she says, gradually lengthening the silence and shortening the spoken prayer, until at length, as we yield to God’s working, He gains the upper hand.
+
+Her image for this is homely and exact. “The fire must be blown softly, and as soon as it is lighted, cease to blow it, or you will put it out.” When some small warmth of love for God is kindled in prayer, the beginner is tempted to seize it and work at it, to stir himself up to more. She says: leave it alone. Blow gently when the fire is low. When it catches, stop blowing and let it burn.
+
+> The fire shall ever be burning upon the altar; it shall never go out. LEVITICUS 6:13
+
+## Bring everything
+
+It would be easy to think that this kind of prayer leaves no room for asking. She does not think so. At times, she says, we come to Christ as sheep to the Shepherd, asking for our food. At times we come as to a Physician, bringing our diseases that He may heal them. We may bring our family concerns too, she adds, so long as we do so remembering the presence of God. Prayer of the heart is not a refusal to ask; it is asking from inside a relationship, rather than from outside it.
+
+> Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. PHILIPPIANS 4:6
+
+## Persevere
+
+Last, she asks for perseverance. We only need, she says in her preface, a little courage and perseverance, and we have plenty of both for our worldly concerns and none for the one thing needful. The beginner who tries her counsel for three days, finds it hard and gives up has not tried it. Habits of the heart are formed as any habit is formed: by repetition, by returning, by not being discouraged at failure.
+
+> And he spake a parable unto them to this end, that men ought always to pray, and not to faint. LUKE 18:1
+
+## Where the beginner needs care
+
+Her counsel is good, but three cautions will keep it healthy.
+
+First, she writes as though this method would advance a soul more in a short time than any other would in several years. That is the enthusiasm of a teacher who has found something precious. It may be true for some; it will not be true for all, and the reader who finds progress slow should not conclude that something is wrong.
+
+Second, her counsel is for private prayer. It does not replace the gathered worship of the church, the preaching of the Word, the Lord’s Supper, or praying with others. She herself lived in a church where all of these were assumed. Some of her later readers, taking her book without its setting, made private inward prayer the whole of religion. That is not her fault, but it is a danger worth naming.
+
+> Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching. HEBREWS 10:25
+
+Third, method must never become a new bondage. She hated to see simple souls burdened with rules, and it would be a sad irony to turn her advice into a checklist to be anxiously kept. It is a way into the presence of God, not a test to be passed.
+
+With those cautions, the beginner has everything needed: a quiet place, an open Bible, an act of faith, a little patience, and the promise that God is more anxious to be found than we are to find Him.
+
+### FOR REFLECTION AND ACTION
+
+1. Fix a time and a place for private prayer this week, and guard it from noise and interruption.
+2. Begin each time with a deliberate act of faith: tell God that you believe He is present, whatever you feel.
+3. Practise blowing the fire softly: when some warmth comes, stop striving and rest in it.
+4. Bring one concrete need to God as to a Physician or a Shepherd, and leave it with Him.
+5. Commit to trying this for a month before judging it, and make sure it sits alongside, not instead of, worship with your church.
+
+### A PRAYER
+
+> Lord, I believe that You are here, though I do not feel it and cannot picture You.
+> Gather my scattered thoughts, quiet the noise within me, and turn my heart to You.
+> When You kindle a little love in me, keep me from smothering it with my own striving.
+> Give me courage and perseverance in prayer, as much as I have for lesser things, and more. Amen.
+# The Prayer of Simplicity
+
+> One thing have I desired of the LORD, that will I seek after; that I may dwell in the house of the LORD all the days of my life, to behold the beauty of the LORD, and to enquire in his temple. PSALM 27:4
+
+There comes a point in any friendship when words matter less. Two old friends can sit together for an hour on a bench and say very little, and it is not an awkward silence but a full one. Madame Guyon believed that prayer, rightly practised, tends in the same direction. After a time of reading, pausing and responding, the soul finds that it needs fewer words. It is content simply to be in the presence of God and to look to Him. She called this the second degree of prayer, and she chose for it a modest name: the prayer of simplicity.
+
+## What it is and is not
+
+She notes in A Short and Easy Method of Prayer that others had called this degree contemplation, or the prayer of silence, or of rest. She preferred simplicity, because contemplation suggested something more advanced than she meant. That modesty is worth noticing. She was not describing ecstasies, visions or extraordinary states. She was describing a plain and quiet way of praying that she believed many ordinary Christians would come to, if they persevered.
+
+Its sign, she says, is that the soul becomes aware of a certain ease in recognising the presence of God. It gathers itself more readily; prayer becomes natural and pleasant. When that happens, the soul should change its way of praying. Instead of beginning with reading and reflection, it should come into God’s presence by faith and remain for a while in respectful silence. If it is given some sense of God’s presence, it should stay there quietly, without troubling itself about any subject, for as long as that sense remains. If it fades, the soul should stir itself gently with some simple act of love, and when peace returns, rest again.
+
+> But Mary kept all these things, and pondered them in her heart. LUKE 2:19
+
+The older Christian writers sometimes called this the prayer of simple regard: simply looking at God with love. It is what the psalmist longed for when he asked to behold the beauty of the Lord, and what Mary of Bethany chose when she sat at the Lord’s feet and heard His word.
+
+> And she had a sister called Mary, which also sat at Jesus’ feet, and heard his word. LUKE 10:39
+
+## Beholding and becoming
+
+Why should a Christian want to pray like this? Madame Guyon’s answer is that God is to be enjoyed, not only used. “The end for which we were created is to enjoy God in this life, and men do not believe it!” Most of our praying is a matter of business: telling God what we need, asking Him to act. That is right and good, and she never forbade it. But a relationship made up only of requests is a thin relationship. The prayer of simplicity is the part of prayer that wants nothing except God Himself.
+
+And beholding changes the beholder. Paul says so directly.
+
+> But we all, with open face beholding as in a glass the glory of the Lord, are changed into the same image from glory to glory, even as by the Spirit of the Lord. 2 CORINTHIANS 3:18
+
+We become like what we look at. A Christian who spends time quietly attending to the Lord is being made like Him, often without noticing. Madame Guyon insisted that this is the surest way to real goodness. Virtue that grows from within, she says, is true and lasting; virtue put on from outside is a mask that can be taken off. That is a strong claim, and it needs qualifying — we will come back to it. But its core is sound. The disciples were changed less by rules than by being with Jesus.
+
+> Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus. ACTS 4:13
+
+## Not idleness but fullness
+
+The critics of her day said that this sort of prayer was mere idleness: the soul doing nothing, staring at a blank. She answered with an image. As the sun rises, she says, it absorbs the light of the stars, which were clearly visible before it appeared. It is not the lack of light but the excess of light that hides them. So, in this prayer, the soul may no longer see its own small acts distinctly, not because it is doing nothing but because God’s working has become stronger and more abundant. The failure of our own activity, she concludes, springs not from scarcity but from abundance.
+
+> For with thee is the fountain of life: in thy light shall we see light. PSALM 36:9
+
+Whether or not one accepts every step of that argument, the pastoral point is right. Silence before God is not emptiness if it is filled with attention to Him. Two people who love each other are not idle when they sit together without speaking.
+
+## Guarding the gift
+
+Three cautions will keep this teaching sound.
+
+First, the prayer of simplicity has an object. It is not a technique for emptying the mind, and it has nothing in common with methods that seek a blank consciousness for its own sake. The soul looks at God, and specifically at God as He has made Himself known in Christ and in the Scriptures. Take away that object and the silence is no longer Christian prayer at all.
+
+Second, it is not a ladder to be climbed so as to leave the lower rungs behind. Madame Guyon sometimes writes as though the soul, once it has come to this degree, should cease vocal prayer and definite requests. But the psalms are full of both, and the apostles never outgrew them. Our Lord Himself, whose communion with the Father was perfect, prayed aloud, prayed with others and asked for particular things. Quiet beholding and plain asking belong together all our lives.
+
+> Hitherto have ye asked nothing in my name: ask, and ye shall receive, that your joy may be full. JOHN 16:24
+
+Third, it is not an achievement. She herself says that the soul must go to God not so much to obtain something from Him as to please Him and do His will. If we seek quiet prayer for the sweetness of it, we will be dismayed when the sweetness goes, as it will. We must seek God, not an experience of God.
+
+With those cautions, this is one of her best gifts. Many believers have spent years talking at God and never simply looked at Him. She invites them to try.
+
+### FOR REFLECTION AND ACTION
+
+1. At the end of your next time of prayer, remain for five minutes in quiet attention to the Lord, without asking anything.
+2. Choose a scene from the Gospels, read it, and then simply look at Christ in it, letting your love answer His.
+3. Notice whether your praying is almost entirely requests. What does that say about your relationship with God?
+4. When quiet prayer is sweet, thank God; when it is dry, keep coming anyway, for His sake and not your own.
+5. Keep asking plainly for what you need, and do not let quiet prayer crowd out intercession for others.
+
+### A PRAYER
+
+> Lord, I have talked to You as though You were a busy official, and hardly ever simply looked at You.
+> Let me sit at Your feet as Mary did, and hear Your word, and behold Your beauty.
+> Change me as I look, from glory to glory, into the likeness of Your Son.
+> And keep me seeking You and not my own sweetness, in the dry days as in the full ones. Amen.
+# When the Beloved Hides
+
+> By night on my bed I sought him whom my soul loveth: I sought him, but I found him not. SONG OF SOLOMON 3:1
+
+Anyone who begins to pray seriously meets two enemies within the first week. The first is distraction: the mind that will not stay still, that wanders to the shopping, the quarrel, the unpaid bill, the song that will not leave. The second, which comes a little later, is dryness: the sense that God is absent, that prayer is empty, that nothing is happening and perhaps never did. Madame Guyon knew both intimately, and some of the most practical pages of A Short and Easy Method of Prayer are about them.
+
+## Do not fight the distractions
+
+Her counsel on distraction is surprising, and it works. Most of us, when we notice that our mind has wandered in prayer, try to fight the stray thought directly. We tell ourselves sternly not to think about it. We grit our teeth. The thought, of course, grows stronger for the attention.
+
+She says: do not fight it. Those who try to oppose distractions directly, she observes, only irritate and increase them. Instead, turn away from them and turn again to God. By losing ourselves in the thought of a present God, she says, we combat distractions indirectly, without thinking of them, but effectively.
+
+Her picture for this is a child. A little child who sees a fierce animal coming towards it does not stay to fight it, or even look at it; it runs to its mother’s arms, where it is safe. So the soul troubled by distraction or temptation should not stand and argue, but simply run to God.
+
+> Surely I have behaved and quieted myself, as a child that is weaned of his mother: my soul is even as a weaned child. PSALM 131:2
+
+This is not a trick of concentration. It is an expression of the whole shape of her teaching: the heart is healed by looking at God, not by looking at itself. The practical effect is great. A person who has wandered fifty times in twenty minutes and returned fifty times has not failed to pray; they have prayed fifty times.
+
+## Do not be troubled at your faults
+
+She applies the same counsel to failure in the Christian life more generally. When we fall into a fault, she says, we must turn back to God at once. And we must not be anxious about it, because the anxiety springs from a secret pride and a love of our own excellence. “We are troubled at feeling what we are.”
+
+That sentence repays a long look. Much of what passes for sorrow over sin is really wounded vanity. We are upset not because we have grieved God but because we had thought better of ourselves. A truly humble soul, she says, does not marvel at its weakness; the more it sees its wretchedness, the more it abandons itself to God and stays near Him.
+
+> For he knoweth our frame; he remembereth that we are dust. PSALM 103:14
+
+Here, however, she needs a word of qualification. She goes on to say that reflection upon our faults produces a vexation which is worse than the sin itself. As pastoral counsel to the anxious and scrupulous, that is often exactly right; brooding over sin can become its own kind of self-absorption. But as a general principle it goes too far. Sin is an offence against God and often an injury to others, and it calls for real repentance, confession and, where needed, restitution. The remedy for morbid brooding is not to take sin lightly but to take the cross seriously: to confess plainly and believe the promise.
+
+> If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. 1 JOHN 1:9
+
+## When God seems absent
+
+Dryness is harder. Distraction is our wandering from God; dryness feels like God’s wandering from us. The sweetness goes out of prayer. The words seem to fall on an empty room. The psalmists knew it well.
+
+> How long wilt thou forget me, O LORD? for ever? how long wilt thou hide thy face from me? PSALM 13:1
+
+Madame Guyon’s explanation is tender. God, she says, often hides Himself in order to arouse the soul and draw it to seek Him with love and faithfulness. He withdraws the feeling of His presence not because He has gone but to deepen our love, as a mother might step out of sight for a moment to teach a child to call for her. The Song of Songs, which she loved and expounded, is full of this seeking and finding.
+
+What should the soul do? Not strain after the lost sweetness, she says, as if effort could bring it back. With loving patience, with humility, with a deep and restful affection and a respectful silence, it should wait for the return of the Beloved. By doing so, she says, “You will thus show Him that it is Himself alone that you love, and His good pleasure, and not the pleasure that you find in loving Him.”
+
+> Who is among you that feareth the LORD, that obeyeth the voice of his servant, that walketh in darkness, and hath no light? let him trust in the name of the LORD, and stay upon his God. ISAIAH 50:10
+
+That is the test dryness brings. Do I love God, or do I love the way loving God makes me feel? The answer is shown not by what we feel but by whether we keep coming. She goes so far as to say: be patient in prayer, even if you should do nothing all your life but wait with a humble heart for the return of your Beloved.
+
+> It is good that a man should both hope and quietly wait for the salvation of the LORD. LAMENTATIONS 3:26
+
+## When dryness is something else
+
+A word of care belongs here too. Not every dryness is God hiding Himself to draw us on. Sometimes it is the result of sin we have not dealt with. Sometimes it is exhaustion, illness or grief, and needs rest, food and friends more than spiritual interpretation. Sometimes it is depression, which deserves care and, often, help from others. Madame Guyon, who read every inward state as part of God’s purifying work, did not always make these distinctions, and her readers should. The loving patience she commends is right in every case; the explanation may differ.
+
+> Why art thou cast down, O my soul? and why art thou disquieted in me? hope thou in God: for I shall yet praise him for the help of his countenance. PSALM 42:5
+
+With that said, her counsel stands. Do not fight distraction; turn to God. Do not brood over failure; confess it and return. Do not strain after lost sweetness; wait for the Lord, and keep coming.
+
+### FOR REFLECTION AND ACTION
+
+1. In your next time of prayer, each time you notice your mind has wandered, turn back to God without scolding yourself. Count the returns as prayers.
+2. Think of a recent failure that still troubles you. Is your trouble grief for God, or wounded pride? Confess it plainly and receive forgiveness.
+3. If prayer is dry at present, keep your usual time anyway this week, telling God that you come for His sake.
+4. Ask whether your dryness has a plain cause — unconfessed sin, exhaustion, grief — and deal with that cause.
+5. Read Psalms 42 and 43 slowly as your own prayer.
+
+### A PRAYER
+
+> Lord, my mind wanders from You a hundred times an hour, and I am tired of fighting it.
+> Teach me simply to turn back to You, as a child runs to its mother, without anger at myself.
+> When You seem far away, keep me from leaving You. Let me wait for You patiently and love You for Yourself.
+> And if my dryness comes from sin, show it to me, and forgive me, and bring me home. Amen.
+# Abandonment
+
+> Commit thy way unto the LORD; trust also in him; and he shall bring it to pass. PSALM 37:5
+
+If one word belongs to Madame Guyon more than any other, it is abandonment. She used it constantly, and it has become attached to her name. For some readers it is the most liberating word in her vocabulary; for others it is the most alarming. Both reactions have their reasons, and this chapter tries to do justice to each.
+
+## The key to the inner life
+
+In A Short and Easy Method of Prayer she introduces abandonment as the point where the life of prayer must become a life given to God. “Abandonment is the key to the inner life: he who is thoroughly abandoned will soon be perfect.” She defines it simply as the casting off of all care of ourselves, to leave ourselves to be guided entirely by God.
+
+It begins, she says, with a conviction: that all which happens to us moment by moment is the will of God, and therefore what we need. That conviction makes us content with everything, and lets us see even the commonest events as coming from God rather than from the creature. And it continues with a resolve: not to take ourselves back once we are given. A thing once given away, she reminds her readers, is no longer at our disposal.
+
+> I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service. ROMANS 12:1
+
+She insists that this is not a special vocation for a few. All Christians, she says, are exhorted to abandonment, and she quotes the Lord’s words about taking no thought for the morrow and the proverb about acknowledging God in all our ways.
+
+> Trust in the LORD with all thine heart; and lean not unto thine own understanding. In all thy ways acknowledge him, and he shall direct thy paths. PROVERBS 3:5–6
+
+## The past, the future and the present
+
+Her most memorable summary of what abandonment looks like in practice is a single phrase: “leaving the past in forgetfulness, the future to providence, and giving the present to God.”
+
+That is wise counsel for anxious people, and most of us are anxious people. The past is a great burden to some: old sins, old wounds, old regrets turned over endlessly. The future is a great burden to others: what will happen to the children, the money, the health, the church. Her counsel is to hand both to God — the past to His mercy, the future to His providence — and to live in the one place where we can actually meet Him, the present moment.
+
+> Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof. MATTHEW 6:34
+
+She adds a phrase that is easy to miss and important. We are to see all things as coming from God’s hand, she says, “with the exception only of our own sin.” Abandonment does not mean treating our sins as God’s will. It means receiving what God sends and refusing what He forbids.
+
+## The pattern of the Lord and His mother
+
+The deepest pattern of abandonment is in the Gospels. When the angel came to Mary with news that would upend her life, her answer was a simple giving of herself.
+
+> And Mary said, Behold the handmaid of the Lord; be it unto me according to thy word. LUKE 1:38
+
+And in Gethsemane the Lord Himself, facing the cross, prayed the prayer that every act of Christian abandonment echoes.
+
+> Saying, Father, if thou be willing, remove this cup from me: nevertheless not my will, but thine, be done. LUKE 22:42
+
+Notice what He did not do. He did not pretend not to feel the horror of the cup. He asked for it to be removed. And then He gave Himself. Abandonment is not the absence of desire; it is desire surrendered to a greater love.
+
+## Where abandonment needs guarding
+
+So far, so good. But her language sometimes goes further than Scripture, and readers who take her seriously must notice where.
+
+First, she says we should hold firmly to our abandonment without listening to reason or to reflection. She means that we should not keep reopening the question of whether to trust God every time trouble comes, and that is sound. But taken strictly it could suggest that the Christian must stop thinking. Scripture never asks that. Our abandonment to God is itself our reasonable service, and He gave us minds to use in His service.
+
+Second, she says we should be indifferent to all things, whether temporal or spiritual, for the body or the soul. Again, she means that we should not cling to anything above God, and should accept His will whatever it brings. But indifference is a dangerous word. Scripture commands us to care for our families, to seek justice for the oppressed, to strive for holiness and to lay hold of eternal life. A Christian who is indifferent to these is not abandoned to God; he is disobedient to Him.
+
+Third, the conviction that everything that happens is the will of God can, if misapplied, become a kind of fatalism. God rules over all things, and works them for good to those who love Him.
+
+> And we know that all things work together for good to them that love God, to them who are the called according to his purpose. ROMANS 8:28
+
+But the same God commands us to use means: to work, to take medicine, to flee persecution when we can, to resist injustice by lawful means, to plan wisely. Joseph could say that God meant his brothers’ evil for good; he did not therefore say that their evil was good, and he still stored grain against the famine.
+
+> But as for you, ye thought evil against me; but God meant it unto good, to bring to pass, as it is this day, to save much people alive. GENESIS 50:20
+
+These criticisms are not a reason to set the word aside. They are a reason to hold it as she, at her best, meant it: a heart handed over to God, content with His will, freed from anxious care — and still thinking, still working, still obeying.
+
+## Not taking ourselves back
+
+The hardest part of abandonment is not the first gift but the keeping of it. Most Christians have at some point given themselves to God. Most have taken themselves back many times since, usually without noticing, when a trouble came that they did not like. Her plea is simple: do not do it. When you are tempted to reclaim your life, remember that you have given it away, and leave it where it is.
+
+### FOR REFLECTION AND ACTION
+
+1. Name one regret from the past that you keep turning over. Give it, in plain words, to God’s mercy.
+2. Name one fear about the future. Give it, in plain words, to God’s providence.
+3. Ask what God is giving you in this present day, and receive it from His hand.
+4. Consider where you have taken yourself back from God since you first gave yourself to Him. Give yourself again.
+5. Guard the balance: identify one duty — of work, care or justice — that abandonment must not be allowed to excuse you from.
+
+### A PRAYER
+
+> Father, I gave myself to You, and then I took myself back whenever the road grew hard.
+> I give myself again now, the whole of me, to be guided by You.
+> I leave my past with Your mercy, my future with Your providence, and I give You this present day.
+> Keep me from mistaking indifference for trust, and let my abandonment make me more obedient, not less. Amen.
+# The Kingdom Within
+
+> Neither shall they say, Lo here! or, lo there! for, behold, the kingdom of God is within you. LUKE 17:21
+
+The Franciscan friar who changed Madame Guyon’s life told her one thing: that she was seeking outside herself what she already had within. She spent the rest of her life saying the same thing to others. God is not only above us and around us; for the believer, He is within, and the soul must learn to turn inward to find Him. This is the teaching of the inward kingdom, and it runs under everything she wrote.
+
+## A turning from without to within
+
+In A Short and Easy Method of Prayer she gives it a surprising name: perfect conversion. “Conversion is nothing else but a turning from the creature to God.” Most of us think of conversion as a single event, the turning from sin to grace. She agrees that this turning is necessary for salvation. But it is not, she says, complete. To be complete, conversion must also be a turning from without to within.
+
+> Turn ye unto him from whom the children of Israel have deeply revolted. ISAIAH 31:6
+
+What does she mean? She means that many Christians who have truly turned from sin still live almost entirely on the surface of themselves. Their religion is a matter of outward acts, outward observances and outward thoughts. They have never learned to find God in the depths of the heart, where He has come to live. Her call is not to leave the outward life behind, but to discover its hidden centre.
+
+> Know ye not that ye are the temple of God, and that the Spirit of God dwelleth in you? 1 CORINTHIANS 3:16
+
+## The pull of the centre
+
+She explains this turning with two pictures from the natural world, which her century loved.
+
+The first is the sun drawing up a heavy mist. Without any effort on the part of the vapour except that of letting itself be drawn, the sun, by bringing it near, refines and purifies it. So, she says, God has an attracting power that draws the soul to Himself, and in drawing it, purifies it. The difference is that the vapour is drawn without choosing, while the soul follows freely.
+
+The second is a falling stone. Every object, she says, tends towards its centre; a stone let go in the air falls to the earth by its own weight. So the soul, once turned towards God as its centre, is drawn to Him by the weight of love. The more it rests and lets itself be drawn, the faster it moves.
+
+> Draw me, we will run after thee: the king hath brought me into his chambers: we will be glad and rejoice in thee, we will remember thy love more than wine: the upright love thee. SONG OF SOLOMON 1:4
+
+Whatever one makes of the physics, the spiritual point is precious. The Christian life is not first a matter of our climbing up to God by effort. It is a matter of God drawing us, and of our consenting to be drawn. The effort we must make is the effort to turn and to remain turned. The drawing is His.
+
+## Not a fortress but a kingdom
+
+Out of this comes one of her loveliest sentences. “The heart is not a fortified place, which must be taken by cannonading and violence: it is a kingdom of peace, which is possessed by love.”
+
+She is thinking of the way many devout people of her day approached the spiritual life: as a siege. The soul was to be conquered by relentless exercises, stern resolutions and constant self-examination. She did not think that was God’s way. God comes into the heart as a King comes into his own city, received with love, and He rules there in peace.
+
+> For the kingdom of God is not meat and drink; but righteousness, and peace, and joy in the Holy Ghost. ROMANS 14:17
+
+She reads the Lord’s words about the kingdom within in two ways. First, the kingdom is set up when God is so completely master of us that nothing resists Him. Second, by possessing God, who is the sovereign Lord, we possess the kingdom, which is our highest happiness. As an old saying has it, to serve God is to reign.
+
+> That he would grant you, according to the riches of his glory, to be strengthened with might by his Spirit in the inner man; That Christ may dwell in your hearts by faith. EPHESIANS 3:16–17
+
+## Guarding the inward way
+
+There is great truth here, and there is also danger, and a faithful reader should see both.
+
+First, the Greek words translated within you can also be rendered among you, and many interpreters think our Lord meant that the kingdom was present in Himself, standing among the Pharisees who asked about it. Either way, Scripture’s teaching on the kingdom is far wider than the inward life. The kingdom is also outward, visible in the church and in lives of justice and mercy, and it is also future, waiting for the King’s return. An inward kingdom that forgets the King’s coming, or the needs of the neighbour, has shrunk the gospel.
+
+Second, turning inward is only safe because of who is there. For the believer, the One within is Christ by His Spirit. But the human heart, left to itself, is not a sanctuary; it is a tangle.
+
+> The heart is deceitful above all things, and desperately wicked: who can know it? JEREMIAH 17:9
+
+The inward way must never become a search for the divine in the self, as if our own depths were God. Madame Guyon did not mean that, but some of her language about the centre of the soul has been read that way, then and since. We find God within because He has come in from outside, through the gospel, by faith.
+
+> To whom God would make known what is the riches of the glory of this mystery among the Gentiles; which is Christ in you, the hope of glory. COLOSSIANS 1:27
+
+Third, inwardness can become introspection. She herself warns against it, as we shall see: the soul is to look at God within, not at itself. A Christian who turns inward and finds only his own moods has turned the wrong way.
+
+With these guards in place, her teaching is a great gift to an outward age. We are more distracted than she could have imagined, surrounded by noise and flattered by screens. Her call to turn from without to within, and to find there a King who reigns in peace, is more needed now than when she wrote it.
+
+### FOR REFLECTION AND ACTION
+
+1. Consider whether your faith lives mostly on the surface — in outward acts and observances — or has a hidden centre with God.
+2. Several times tomorrow, stop for a moment and turn your heart inward to Christ, who dwells there by faith.
+3. When you find yourself trying to take your own heart by siege, stop, and ask the King to come in and reign in peace.
+4. Guard against introspection: when you turn inward, look at Christ, not at your own feelings.
+5. Let the inward kingdom send you outward: do one act of justice or mercy this week in the King’s name.
+
+### A PRAYER
+
+> Lord Jesus, You have come to live in me by Your Spirit, and I have lived as though You were far away.
+> Turn me from without to within, and let me find You there, reigning in peace.
+> Draw me, and I will run after You; take my heart not by siege but by love.
+> And let Your kingdom within me show itself outwardly, in righteousness and peace and joy, until You come. Amen.
+# Silence Before God
+
+> But the LORD is in his holy temple: let all the earth keep silence before him. HABAKKUK 2:20
+
+Our age is afraid of silence. We fill every gap with sound — music in the car, voices in our ears, a screen in every idle moment. Even our worship is often afraid of a pause. Madame Guyon lived in a quieter world, and she still thought it far too noisy. Silence, for her, was not an optional extra for contemplatives. It was the soil in which prayer grows, and she wrote about it with an urgency that may help us more than it helped her first readers.
+
+## Silent from fullness
+
+In A Short and Easy Method of Prayer she distinguishes two kinds of silence with a sentence worth remembering. “Two classes of persons are silent: the one because they have nothing to say, the other because they have too much.” The silence she commends is the second kind. It is not the silence of a blank mind or a dull heart. It is the silence of a heart so full of God that words fall short.
+
+> Truly my soul waiteth upon God: from him cometh my salvation. PSALM 62:1
+
+She adds a vivid comparison. Two people may die of water, she says: one of thirst, the other by drowning. One dies of lack, the other of abundance. So in prayer, when the soul falls silent, the cause may be not poverty but plenty. When grace begins to flow, the soul should be still and receive it, rather than rushing about with words that interrupt the gift.
+
+This is a corrective to much of our praying. We tend to think the value of prayer lies in what we say. Scripture warns us otherwise.
+
+> Be not rash with thy mouth, and let not thine heart be hasty to utter any thing before God: for God is in heaven, and thou upon earth: therefore let thy words be few. ECCLESIASTES 5:2
+
+## Listening to the Word
+
+Her deepest reason for silence is a theological one, and it is beautiful. Christ, she says, is the eternal Word. If the Word is to be received into the soul, the soul must be disposed to receive a word — and to receive a word, one must listen. Hearing, she observes, is a receiving sense rather than a giving one. So the soul must be attentive to the Word who speaks within it.
+
+> And the LORD came, and stood, and called as at other times, Samuel, Samuel. Then Samuel answered, Speak; for thy servant heareth. 1 SAMUEL 3:10
+
+That is why, she says, Scripture so often calls us to hearken and give ear. She quotes the prophets and the psalm in which the bride is told to hearken and incline her ear. And she quotes a verse from Hosea that she loved, in which God promises to lead His people into the wilderness and speak to their heart.
+
+> Therefore, behold, I will allure her, and bring her into the wilderness, and speak comfortably unto her. HOSEA 2:14
+
+Silence, then, is not the absence of communication. It is the posture of a listener. We are quiet so that Another may speak.
+
+## Outward silence and inward silence
+
+She is practical about this, as she usually is. Outward silence, she says, is extremely necessary for cultivating inward silence, and it is impossible to acquire inward silence without a love for silence and solitude. Then comes a blunt sentence: “To be inwardly occupied with God, and outwardly occupied with countless trifles, this is impossible.”
+
+Notice the word trifles. She does not say that we cannot be occupied with God while doing our duties; she has already insisted that the prayer of the heart can go on through a day’s work. Her target is the clutter of things that do not matter — the idle chatter, the restless curiosity, the needless busyness that fills a life and leaves no room for God. We cannot be full of trifles and full of God at the same time.
+
+> For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not. ISAIAH 30:15
+
+And she warns that a half hour of prayer is a small matter if we do not keep its spirit through the rest of the day. Silence in the closet must spread outward into a quieter life.
+
+## Guarding the silence
+
+Two cautions keep this teaching true.
+
+First, the Word who speaks within is the same Word who has spoken in Scripture. Madame Guyon wrote of attending to Christ speaking in the soul, and she meant something real. But the Christian must be careful here. Many voices can be heard in a quiet heart, and not all of them are God’s. Some are our own desires, some our fears, and some worse. The inward word is to be tested by the written Word, which does not change.
+
+> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
+
+The surest way to hear Christ in silence is to fill the silence first with Scripture. Read, then be still. What we hear will then be shaped by what He has already said.
+
+Second, silence is not the whole of prayer. Scripture is full of loud prayer: cries, laments, shouts of praise, long intercessions. Hannah poured out her soul; the psalmists cried aloud; the church in Acts lifted up its voice together. Silence is one room in the house of prayer, not the whole house. Madame Guyon sometimes wrote as though, for the advanced, words should almost cease. The Bible does not teach that, and those who love silence most should keep praying aloud too.
+
+Yet silence has its place, and Scripture honours it. When the voice of God came to Elijah on the mountain, it came after the wind, the earthquake and the fire had passed.
+
+> And after the earthquake a fire; but the LORD was not in the fire: and after the fire a still small voice. 1 KINGS 19:12
+
+## Beginning in a noisy world
+
+For most of us, the first step is not a mystical one. It is to turn things off. To leave the phone in another room. To drive without the radio. To sit for ten minutes after reading the Bible without doing anything else. The first minutes of such silence are usually uncomfortable; the mind rushes to fill them. But, as she would say, make trial of it. The God who waited for Elijah in the stillness is waiting still.
+
+### FOR REFLECTION AND ACTION
+
+1. Count the sources of noise in an ordinary day of yours. Choose one to turn off for a week.
+2. After your next Bible reading, sit in silence for ten minutes, listening rather than speaking.
+3. Identify one trifle that crowds God out of your life, and cut it back.
+4. Test anything you seem to hear in silence against Scripture before acting on it.
+5. Take the spirit of your morning prayer into the day: at noon and evening, pause for one minute of quiet before God.
+
+### A PRAYER
+
+> Lord, I have filled my life with noise and wondered why I cannot hear You.
+> Quiet me. Still the chatter of my mind and the clutter of my days.
+> Speak, Lord, for Your servant hears — and let what I hear be tested and shaped by Your written Word.
+> Let me be silent not from emptiness but from fullness, full of You. Amen.
+# The All and the Nothing
+
+> He must increase, but I must decrease. JOHN 3:30
+
+Every serious Christian teacher has had to say something about self-denial, because our Lord made it the condition of following Him. Madame Guyon said a great deal about it, in language that is sometimes breathtaking and sometimes troubling. She spoke of self-will, of appropriation, of the soul being emptied, even of the soul being annihilated before God. This chapter tries to hear what she meant, and to hold her strong words up to the light of Scripture.
+
+> And he said to them all, If any man will come after me, let him deny himself, and take up his cross daily, and follow me. LUKE 9:23
+
+## Two truths
+
+Near the end of her chapter on prayer and sacrifice in A Short and Easy Method of Prayer, she sums up the whole matter in a startling sentence. Prayer, she says, leads the soul into the truth of the ALL of God and the NOTHING of the creature. “There are but these two truths, the ALL and the NOTHING. All the rest is untruth.”
+
+It is easy to hear that as extravagant, and there is extravagance in it. But first hear what is true. God is the source of everything; we are creatures who have nothing that we did not receive. Our existence, our gifts, our breath, our righteousness, our salvation — all come from Him. Paul asks the Corinthians the question that underlies her whole teaching.
+
+> For who maketh thee to differ from another? and what hast thou that thou didst not receive? now if thou didst receive it, why dost thou glory, as if thou hadst not received it? 1 CORINTHIANS 4:7
+
+The root of sin, as she sees it, is the refusal of that truth: the creature’s claim to be something in itself, to own what it was only lent. She has a word for it — appropriation. In her closing chapter on divine union she says that nothing is opposed to God but appropriation, and that all the malignity of man lies in it. We take God’s gifts and treat them as ours. We take even our religion, our prayers and our virtues, and make them possessions to admire. That, she says, is what must die.
+
+## Emptied to be filled
+
+She is not interested in emptiness for its own sake. The point of being emptied is to be filled. We can only honour the ALL of God by our nothingness, she writes, and “we have no sooner become nothing, than God, who will not suffer us to be empty, fills us with Himself.” How can we be filled with God? Only by being emptied of self.
+
+> I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me. GALATIANS 2:20
+
+This is Paul’s own pattern: I am crucified, nevertheless I live. The death is real, and so is the life. The old self-ruling, self-admiring life is nailed to the cross; a new life, which is Christ living in the believer, takes its place. She is right that the Christian life is not self-improvement. It is an exchange.
+
+> Verily, verily, I say unto you, Except a corn of wheat fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit. JOHN 12:24
+
+## The death of self-will
+
+In her chapter on abandonment she gives self-denial its practical shape. It should be, she says, a continual loss of our own will in the will of God, and a renunciation of all natural inclinations, however good they may appear, so that we may choose only as God chooses.
+
+The heart of this is surely right. What must die is not our humanity but our self-will: the stubborn insistence on our own way, our own glory, our own comfort, even against God. That is the self our Lord told us to deny. Every Christian knows it, because every Christian meets it daily — in the flash of resentment when we are overlooked, the refusal to forgive, the quiet determination to have our own way while calling it God’s.
+
+## Where the language needs correcting
+
+Here, though, careful readers must slow down, because her words sometimes say more than Scripture says.
+
+First, she speaks of the soul being destroyed and annihilated by the force of love, and says that we must cease to be. She means this as the language of love and humility, and she draws on a long tradition that used such words. But taken literally, it is not Christian teaching. God does not destroy the persons He has made and redeemed; He renews them. We are not to cease to be; we are to be made new.
+
+> Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new. 2 CORINTHIANS 5:17
+
+Second, she says that as souls grow in love, the more they love God, the more they hate themselves. There is a sense in which that is true: our Lord spoke of hating one’s own life in comparison with Him. But she sometimes writes as if our natural inclinations as such, however good they may appear, must be renounced. Scripture does not treat our nature as the enemy. God made us, and made us well; sin has disfigured His work, not replaced it. The desire for food, friendship, beauty, meaningful work and love are gifts to be received with thanksgiving and ordered under God, not destroyed.
+
+> I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well. PSALM 139:14
+
+Third, this kind of language can be dangerous to certain temperaments. A believer already crushed by self-contempt, or taught from childhood that they are worthless, does not need to hear that they must become nothing. They need to hear that God loves them, that Christ died for them, and that their true self is being restored in Him. The nothingness Scripture teaches is not self-hatred but dependence: without me, the Lord says, ye can do nothing.
+
+> I am the vine, ye are the branches: He that abideth in me, and I in him, the same bringeth forth much fruit: for without me ye can do nothing. JOHN 15:5
+
+## Hearing her rightly
+
+Read with these corrections, her teaching remains a sharp and needed word. Most of us are not in danger of thinking too little of ourselves before God; we are in danger of quietly owning what He only lent. We take credit for gifts, treat our spiritual progress as an achievement and our prayers as a performance. Her ALL and NOTHING is a knife to that. God is everything; I have nothing I did not receive; let Him increase and me decrease — and let me find, as she did, that the one who decreases is not destroyed, but filled.
+
+### FOR REFLECTION AND ACTION
+
+1. List three gifts — abilities, possessions, spiritual privileges — that you have treated as your own. Thank God for each as His.
+2. Identify one place where your self-will is resisting God at present. Name it and yield it.
+3. Watch this week for moments of resentment when you are overlooked. Let each one become a small death to self.
+4. If you tend to self-contempt, read Galatians 2:20 aloud and notice both halves: crucified, and loved.
+5. Receive one natural good this week — a meal, a friendship, a beautiful place — with deliberate thanks to God.
+
+### A PRAYER
+
+> Lord, You are all, and I have nothing I did not receive from You.
+> Forgive me for treating Your gifts as my own, and even my prayers as my achievements.
+> Put to death my stubborn self-will, and let Christ live in me.
+> Empty me of myself, not to destroy me, but to fill me with You and make me new. Amen.
+# Calvary as Well as Tabor
+
+> That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death. PHILIPPIANS 3:10
+
+Madame Guyon did not write about suffering from a comfortable distance. She had been married against her will into an unhappy home, lost her beauty to smallpox, buried children, passed through years of inward darkness, been slandered, shut up in a convent, and at last imprisoned for years in fortresses of the state. When she wrote that the cross is God’s instrument for making us His, she was not repeating a commonplace. She was describing her life.
+
+## Two mountains
+
+Her teaching on the cross in A Short and Easy Method of Prayer turns on two mountains. On Tabor, the mountain of the transfiguration, the disciples saw the Lord’s glory and wanted to stay. On Calvary they saw Him crucified and fled.
+
+> And was transfigured before them: and his face did shine as the sun, and his raiment was white as the light. MATTHEW 17:2
+
+If you love God purely, she says, you will be as willing to follow Him to Calvary as to Tabor. Then she adds a sentence that goes to the heart of the gospel: “He must be loved as much on Calvary as on Tabor, since it is there that He makes the greatest manifestation of His love.”
+
+That is exactly right. The greatest revelation of God’s love is not the shining face on the mountain but the broken body on the cross. A love for God that is present only in the times of glory and absent in the times of suffering has not yet understood where His love was most clearly shown.
+
+She describes people who give themselves to God at one time and take themselves back at another. They give themselves, she says, to be caressed, and take themselves back when they are crucified. Most of us will recognise ourselves. We are eager disciples on the mountaintop and reluctant ones in the valley.
+
+## The cross gives God
+
+Her boldest phrase comes a little later. “The cross gives God, and God gives the cross.” It is a compressed way of saying two things at once. First, suffering accepted in faith draws us nearer to God than almost anything else; it strips away our false supports and throws us upon Him. Second, the cross is not an accident in the lives of God’s children. It is one of His gifts, one of His chosen workmen for shaping us into the likeness of His Son.
+
+> For they verily for a few days chastened us after their own pleasure; but he for our profit, that we might be partakers of his holiness. Now no chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness unto them which are exercised thereby. HEBREWS 12:10–11
+
+Her practical counsel follows. When something presents itself to you as suffering, she says, abandon yourself to God at once for that very thing, and offer yourself as a sacrifice. You will find that when the cross comes, it has lost much of its weight, because you have already accepted it.
+
+> And not only so, but we glory in tribulations also: knowing that tribulation worketh patience; And patience, experience; and experience, hope. ROMANS 5:3–4
+
+## Feeling the weight
+
+One of the most humane things she says is easily overlooked. Accepting the cross, she writes, will not prevent our feeling its weight. Some people imagine it is not true suffering if they feel the cross — as if a truly spiritual person should float above pain. She will have none of it. “The feeling of suffering is one of the principal parts of suffering itself.” And she adds that Jesus Himself was willing to suffer it in its full intensity.
+
+> And saith unto them, My soul is exceeding sorrowful unto death: tarry ye here, and watch. MARK 14:34
+
+That is a great mercy to sufferers. Accepting God’s will does not mean pretending not to hurt. The Lord in Gethsemane was sorrowful unto death, and asked for His friends to watch with Him. A Christian in pain may weep, may cry out, may ask for the cup to pass, and still be wholly abandoned to God.
+
+## Conformed to Christ
+
+She takes the teaching one step further. In the state of abandonment, she says, Christ impresses Himself upon the soul and imparts to it His own condition. To bear the conditions of Christ, she writes, is far greater than merely to think about them. She points to Paul.
+
+> From henceforth let no man trouble me: for I bear in my body the marks of the Lord Jesus. GALATIANS 6:17
+
+Paul did not only reflect on the sufferings of Christ; he shared them, and was changed by them. This is her deepest conviction about suffering: it is not merely something to be endured until it passes, but a fellowship with Christ in which we are made like Him.
+
+## Where care is needed
+
+Her teaching on the cross is among her best, but it can be bent in unhealthy directions, and she sometimes bends it herself.
+
+First, she speaks of loving souls being hungry after suffering, and of a heart as hungry for the cross as it is for God. There is a noble meaning in that: a readiness to follow Christ wherever He leads. But Christians are not called to seek out suffering or to invent it. The cross we are to take up is the one God lays on us in the path of obedience, not one we manufacture to prove our devotion. The history of the church contains many sad examples of self-inflicted austerity that did the soul no good.
+
+Second, acceptance of suffering in our own lives must never become indifference to the suffering of others. The same faith that bows to God’s will in our own pain must weep with those who weep, relieve the sick, feed the hungry and resist injustice. Madame Guyon was known in her years at Montargis for her care of the poor and the sick; she did not treat other people’s suffering as merely their cross to bear.
+
+> Rejoice with them that do rejoice, and weep with them that weep. ROMANS 12:15
+
+Third, there is a difference between suffering for Christ and suffering because of our own folly, or because others have wronged us in ways we could lawfully escape. Accepting God’s sovereignty over our circumstances does not mean remaining in abuse or refusing medical help.
+
+With those cautions, her counsel is precious. Our faith was born at a cross. It should not surprise us that it grows there too.
+
+> For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory. 2 CORINTHIANS 4:17
+
+### FOR REFLECTION AND ACTION
+
+1. Where are you glad to follow Christ on Tabor but reluctant on Calvary? Name the difference honestly.
+2. Think of a trouble you see coming. Give yourself to God for that very thing now, before it arrives.
+3. If you are suffering, do not be ashamed of feeling it. Tell God plainly how much it hurts, as the Lord did in Gethsemane.
+4. Ask how your present trial might be conforming you to Christ, and what He may be teaching you through it.
+5. Do one concrete thing this week to relieve someone else’s suffering.
+
+### A PRAYER
+
+> Lord Jesus, I have loved You on the mountain and fled from You at the cross.
+> Teach me to love You as much on Calvary as on Tabor, since it is there You loved me most.
+> When the cross comes, let me feel its weight without resentment, and let it bring me nearer to You.
+> Make me like You in Your sufferings, and make me quick to relieve the sufferings of others. Amen.
+# The Refiner’s Fire
+
+> And he shall sit as a refiner and purifier of silver: and he shall purify the sons of Levi, and purge them as gold and silver, that they may offer unto the LORD an offering in righteousness. MALACHI 3:3
+
+Madame Guyon’s writings are full of fire. Prayer, she says, is the heat of love. The presence of God melts the hard heart. Divine Wisdom is sent before God like a fire to consume what is impure. The image was not original to her; it runs through the prophets, the Psalms and the letters of the New Testament. But she made it her own, because she believed that God’s love does not leave us as it finds us. It burns.
+
+## The heat of love
+
+In her chapter on prayer and sacrifice in A Short and Easy Method of Prayer, she describes prayer as incense rising to God, and then goes deeper. “Prayer is the heat of love, which melts and dissolves the soul, and carries it to God.” As the soul melts, she says, it gives out its fragrance, and that fragrance comes from the love that burns it. She finds the picture in the Song of Songs, where the bride’s spikenard sends forth its smell while the King sits at His table — and the table, she says, is the heart.
+
+> Set me as a seal upon thine heart, as a seal upon thine arm: for love is strong as death; jealousy is cruel as the grave: the coals thereof are coals of fire, which hath a most vehement flame. SONG OF SOLOMON 8:6
+
+This is a way of saying that the presence of God is not merely comforting. It is transforming. We do not come near to a holy God and remain unchanged, any more than wax can come near a flame and keep its shape.
+
+> For our God is a consuming fire. HEBREWS 12:29
+
+## Gold in the furnace
+
+Her fullest treatment of the fire comes in the last chapter of the book, on the way to divine union. There she asks how two things so unlike as the purity of God and the impurity of the creature can ever be joined. Her answer is that God Himself must do it, and He does it by fire. He sends His Wisdom before Him, she says, as fire is sent upon the earth to consume all that is impure.
+
+She works this out with the goldsmith’s craft. Gold can be purified only by fire, which gradually consumes all that is earthly and foreign. It is put into the fire again and again until its impurity is gone, and only then is it fit for the finest work. She notes, too, that refined gold and unrefined gold cannot be worked together; the lesser must be purified to match the greater. So the soul must be purified before it can be united to God.
+
+> But he knoweth the way that I take: when he hath tried me, I shall come forth as gold. JOB 23:10
+
+And she makes a point that anyone who has passed through a hard season will recognise. At first, she says, the fire seems to tarnish the gold. So God’s purifying work can seem, while it is happening, to spoil the soul rather than cleanse it. The believer feels worse, not better; more aware of sin, less sure of God, stripped of the consolations that once seemed so certain. It is only afterwards that the purpose appears.
+
+> That the trial of your faith, being much more precious than of gold that perisheth, though it be tried with fire, might be found unto praise and honour and glory at the appearing of Jesus Christ. 1 PETER 1:7
+
+## What the fire burns
+
+What, exactly, is being burned away? Her answer is the same word we met in an earlier chapter: appropriation. The fire consumes the soul’s claim to own itself and its goods, even its spiritual goods. She applies Paul’s words about the fire that tries every man’s work: even works that are good and that God receives must pass through the fire, she says, so that all that was merely ours may be taken from them.
+
+> Every man’s work shall be made manifest: for the day shall declare it, because it shall be revealed by fire; and the fire shall try every man’s work of what sort it is. 1 CORINTHIANS 3:13
+
+She then asks whether this means God acts without our consent. Her answer is careful. At the beginning, she says, the soul gave itself to God to do with it as He wills; that was an active and general consent to all that follows. Later, when God burns and purifies, the soul does not always understand and would not always choose it. What it gives then is what she calls a passive consent: it endures the work as best it can, neither able nor willing to prevent it. That is a wise account of how believers actually experience God’s discipline. We said yes once, with open eyes; we go on saying yes, often with our eyes shut.
+
+## Guarding the doctrine
+
+Two cautions help us hear her rightly.
+
+First, the fire purifies; it does not justify. Our acceptance with God does not depend on how far the purifying has gone. It rests wholly on Christ. She herself cites Paul here, that by the deeds of the law no flesh is justified, but by the righteousness of God which is by faith. Protestant readers especially should hold on to that. The refiner’s fire is the work of a Father on a child already His, not the work of a judge on a prisoner still on trial.
+
+> Being justified freely by his grace through the redemption that is in Christ Jesus. ROMANS 3:24
+
+Second, her own purification was long, dark and extreme, and her writings, especially Spiritual Torrents, describe it in vivid detail as though it were the normal road. It is not necessarily so. The preface to the Victorian English edition in the Ochorus library saw this clearly, noting that “it does not follow that this inward death must always be as lingering as in the case of Madame Guyon.” God deals with each of His children as He wills. Some pass through long nights; others are refined more quietly, in the ordinary trials of work, family and illness. No one should conclude that because their path is not hers, God is not at work.
+
+> Behold, I have refined thee, but not with silver; I have chosen thee in the furnace of affliction. ISAIAH 48:10
+
+With those cautions, her teaching is a great comfort. The believer in the furnace is not forgotten. The Refiner sits by the fire, watching, and He does not leave the gold there a moment longer than it needs.
+
+> When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee. ISAIAH 43:2
+
+### FOR REFLECTION AND ACTION
+
+1. Is there a present trial that seems to be tarnishing rather than refining you? Ask God to show you what He is burning away.
+2. Identify one good work of yours in which you have taken secret pride. Offer it to God and let Him have the credit.
+3. Renew the consent you first gave to God: tell Him that He may do as He wills with you and in you.
+4. Remind yourself that your acceptance with God rests on Christ alone, not on how far you have been purified.
+5. If you are in a long night, do not measure yourself by her road or anyone else’s. Trust the Refiner who sits by the fire.
+
+### A PRAYER
+
+> Lord, You are a consuming fire, and I have wanted Your warmth without Your burning.
+> I gave myself to You once; I give myself again, to be refined as You will.
+> When the fire seems to spoil rather than cleanse me, keep me from pulling away from Your hand.
+> Burn away all that is merely mine, and bring me out as gold, accepted in Christ and made like Him. Amen.
+# Spread the Sails
+
+> For as many as are led by the Spirit of God, they are the sons of God. ROMANS 8:14
+
+No part of Madame Guyon’s teaching caused more alarm than her language of passivity. She spoke of the soul ceasing its own action, of letting God act alone, of a passive consent and a passive state. To her critics this sounded like the teaching of Miguel de Molinos, condemned at Rome in 1687, which was widely understood to encourage a lazy, careless inwardness that despised effort, prayer for particular things and even the struggle against sin. The question matters, because it goes to the heart of what the Christian life is. Does God do everything and we nothing? Or do we do our part and God His? Or is there a better answer than either?
+
+## Not idleness but dependence
+
+The first thing to say is that she saw the objection coming and answered it directly. Her chapter in A Short and Easy Method of Prayer on prayer as noble action begins by naming it: some people, hearing of the prayer of silence, have wrongly imagined that the soul remains inactive, lifeless and without movement. Not so, she replies. Its action is more noble than ever, because it is moved by God’s Spirit. “I do not say that there must be no action, but that we must act in dependence upon the divine movement.”
+
+She returns to the point in the next chapter, even more plainly. If we believe that we must do nothing, she says, we are mistaken, for we are always acting; each one must act according to his degree. Beginners must act with effort and distinctly; those further on act in a quieter, steadier way, but they act. It is incorrect, she concludes, to say that no actions are done.
+
+> If we live in the Spirit, let us also walk in the Spirit. GALATIANS 5:25
+
+So whatever her critics feared, her own claim was not that the soul does nothing. It was that the soul’s action should flow from God’s Spirit rather than from its own restless energy.
+
+## The wheels and the wind
+
+Her illustrations make this vivid. She points to Ezekiel’s vision of the living creatures and the wheels, which went wherever the spirit went, because the spirit of life was in them.
+
+> Whithersoever the spirit was to go, they went, thither was their spirit to go; and the wheels were lifted up over against them: for the spirit of the living creature was in the wheels. EZEKIEL 1:20
+
+A wheel turning slowly, she adds, can be seen clearly; a wheel turning fast is a blur. So the soul moved by God may not be able to see its own action, not because it is still but because it is moving so fast.
+
+Her finest picture is a ship. When a vessel is in harbour, she says, the sailors must work hard to bring it out into the open sea; the ropes must be loosed and the oars pulled. So the soul in sin needs strong effort to be drawn out. But once the ship is at sea and the wind is fair, the pilot does not keep rowing. He spreads the sails and sits at the helm. “Spreading the sails is simply laying ourselves before God, to be moved by His Spirit.” Sitting at the helm is keeping the heart from leaving the right way, and steering gently as the Spirit moves. The sailors rest from rowing, she says, and go further in an hour than they could in much longer by their own effort.
+
+> The wind bloweth where it listeth, and thou hearest the sound thereof, but canst not tell whence it cometh, and whither it goeth: so is every one that is born of the Spirit. JOHN 3:8
+
+And when the wind is contrary and the storm violent? Then, she says, the anchor must be dropped. “This anchor is trust in God and hope in His goodness,” waiting patiently for the storm to pass.
+
+> Which hope we have as an anchor of the soul, both sure and stedfast, and which entereth into that within the veil. HEBREWS 6:19
+
+## Martha and Mary
+
+She draws, as many before her had, on the story of Martha and Mary. Martha did good things, she says, but because she did them in her own restless spirit, Christ reproved her. Mary chose the good part: stillness at the Lord’s feet.
+
+> And Jesus answered and said unto her, Martha, Martha, thou art careful and troubled about many things: But one thing is needful: and Mary hath chosen that good part, which shall not be taken away from her. LUKE 10:41–42
+
+The lesson is sound so long as we notice what the Lord actually reproved. He did not rebuke Martha for serving; He rebuked her for being careful and troubled. The problem was not her work but her anxiety, and her resentment of her sister. Service done in quiet dependence is not Martha’s fault but Mary’s spirit at work.
+
+## Where the balance tipped
+
+Even so, honest readers must admit that her language sometimes tips too far. She says that every movement of our own hinders the Heavenly Sculptor, as a statue that moved would spoil the sculptor’s work. She speaks of the soul ceasing its own action so that God may act alone. Pressed hard, such words can suggest that Christian effort is itself the problem. That is where Quietism, in its condemned forms, went wrong, and where some of her readers went with it: neglecting Scripture reading, prayer for particular needs, the sacraments, discipline, and the plain struggle against temptation, all in the name of passivity.
+
+Scripture does not set God’s working against ours. It sets them together.
+
+> Wherefore, my beloved, as ye have always obeyed, not as in my presence only, but now much more in my absence, work out your own salvation with fear and trembling. For it is God which worketh in you both to will and to do of his good pleasure. PHILIPPIANS 2:12–13
+
+Paul does not tell the Philippians to be still because God is working. He tells them to work because God is working. Peter tells his readers to give all diligence to add virtue to faith. The early church did not float on a mystical wind; it continued steadfastly in the apostles’ teaching, in fellowship, in the breaking of bread and in prayers.
+
+> And they continued stedfastly in the apostles’ doctrine and fellowship, and in breaking of bread, and in prayers. ACTS 2:42
+
+The truth her ship picture captures is real: the Christian life is powered by the Spirit, not by straining. But the sailor who spreads the sails still keeps watch, trims the canvas, holds the helm and mends the ropes. Dependence on the wind is not the same as doing nothing.
+
+## The better answer
+
+So the answer to our opening question is neither that God does everything and we nothing, nor that we do our part and He His, as if we were partners on equal terms. It is that God works, and therefore we work; that His Spirit moves us, and we move. At her best, that is what Madame Guyon meant. Our part is to spread the sails and hold the helm; the wind is His.
+
+### FOR REFLECTION AND ACTION
+
+1. Are you more inclined to strain in your own strength or to drift, calling it trust? Name your tendency honestly.
+2. Before your next task, pause and ask the Spirit to move you in it; then do it diligently.
+3. If you are in a storm, drop the anchor of trust: wait on God, and do not make rash decisions.
+4. Check whether any habit of grace — Bible reading, prayer for others, fellowship, the Lord’s Supper — has lapsed in the name of spirituality. Take it up again.
+5. Read Philippians 2:12–13 slowly and ask how both halves apply to you this week.
+
+### A PRAYER
+
+> Holy Spirit, I have rowed hard in my own strength, and I have drifted and called it faith.
+> Teach me to spread the sails and hold the helm, depending on You and working because You work.
+> When the wind is contrary, let me cast the anchor of trust and wait for You.
+> Keep me faithful in the means You have given, and let all my doing be Your doing in me. Amen.
+# Pure Love
+
+> Whom have I in heaven but thee? and there is none upon earth that I desire beside thee. PSALM 73:25
+
+In the book of Job, the accuser asks God a question that has haunted believers ever since.
+
+> Then Satan answered the LORD, and said, Doth Job fear God for nought? JOB 1:9
+
+Does anyone love God for His own sake? Or is all our religion, in the end, a bargain — obedience in exchange for blessing, worship in exchange for heaven? Madame Guyon spent her life insisting that God can and should be loved for Himself alone. Her name for this was pure love, or disinterested love. It is the most beautiful thing she taught, and also the point at which the storm broke over her and her friend Fénelon.
+
+## Loving God for Himself
+
+The theme runs all through A Short and Easy Method of Prayer. In describing the prayer of simplicity she says that we should go to God not so much to obtain something from Him as to please Him and to do His will, and she adds a hard sentence: “for a servant who only serves his master in proportion to the recompense he receives, is unworthy of any remuneration.” We should go to prayer, she says, not only to enjoy God but to be as He wills, and this will keep us steady in times of barrenness as in times of abundance.
+
+In the last chapter she presses the same point from the other side. Our blessedness, she says, is the enjoyment of God Himself, not of His gifts, which can never fully satisfy the soul. The richest gifts of God cannot content a heart made for God.
+
+> Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore. PSALM 16:11
+
+This is a deep and searching truth. Much of our religion is, if we are honest, a trade. We pray for what we want. We obey because we fear the consequences of not obeying. We love God when life goes well and grow cold when it does not. Pure love asks us to love God because He is God — good, beautiful, holy, worthy of all love — whether or not He gives us anything else.
+
+> Although the fig tree shall not blossom, neither shall fruit be in the vines; the labour of the olive shall fail, and the fields shall yield no meat; the flock shall be cut off from the fold, and there shall be no herd in the stalls: Yet I will rejoice in the LORD, I will joy in the God of my salvation. HABAKKUK 3:17–18
+
+Habakkuk’s prayer is pure love in the Old Testament. It is not that the prophet does not care about the harvest. It is that God matters more than the harvest.
+
+## Love, and do what you will
+
+Out of this love, she believed, all real goodness grows. She quotes Augustine’s famous saying: love, and do as you please. When we love perfectly, she explains, we will not wish to do anything displeasing to the Beloved. The command to love God with all the heart is not one command among many; it is the root of the rest.
+
+> Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. MATTHEW 22:37
+
+And this love cannot be taught as a technique. In her word to preachers she says it plainly: “we cannot learn to love God better than by loving Him.” The way to love God is to love Him — to turn to Him, again and again, until love becomes the habit of the heart.
+
+## Where pure love went too far
+
+So far, she is on solid ground. But the doctrine of pure love, pressed to its limit, went further, and the church’s censure fell there.
+
+In the circles around her, and in some of her own writings, pure love was described as so detached from self that it would love God even with no hope of reward — even, on what was called the impossible supposition, if God were to condemn the soul for ever. Some spoke of a state in which the soul was indifferent to its own salvation, content with whatever God willed, even its own loss. When Fénelon set out to defend a careful version of this teaching in his Maxims of the Saints in 1697, Bossuet attacked it fiercely, and in 1699 the Pope censured a number of its propositions. Fénelon submitted.
+
+We need not side with every argument Bossuet made, nor with the politics of the affair, to see that there was a real danger. Scripture never asks us to be indifferent to our own salvation. It commands us to seek it, to hope for it, to lay hold on it.
+
+> Fight the good fight of faith, lay hold on eternal life, whereunto thou art also called, and hast professed a good profession before many witnesses. 1 TIMOTHY 6:12
+
+Our Lord Himself, whose love for the Father was perfectly pure, endured the cross for the joy that was set before Him. Desire for joy in God is not a flaw in love; it is part of it.
+
+> Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
+
+The mistake, if we may put it simply, was to treat our own happiness and God’s glory as rivals. They are not. God has made us so that our deepest happiness is found in Him. To seek Him is to seek our joy; to seek our true joy is to seek Him. What pure love rightly refuses is not the desire for God’s gifts, but the desire for the gifts instead of Him.
+
+It is only fair to add that the little book on prayer is more balanced than the later controversy. In her preface she tells her readers, “Seek nothing but the love of God; have a sincere desire for your salvation, and you will assuredly find it.” There, at least, pure love and the desire for salvation sit side by side.
+
+## Love that answers love
+
+One more thing needs saying. The New Testament never asks us to love God as if from nowhere, by a heroic effort of disinterested will. It tells us where love comes from.
+
+> We love him, because he first loved us. 1 JOHN 4:19
+
+Pure love is not a height we climb by despising ourselves. It is a response to the love God has shown us in Christ. The more clearly we see that love, the less we will love Him for His gifts, and the more we will love Him for Himself — and the more gladly we will receive His gifts, too, because they come from His hand.
+
+That is the right answer to the accuser’s question. Does anyone serve God for nothing? No one serves Him for nothing; we serve Him for Himself. And He is not nothing. He is everything.
+
+### FOR REFLECTION AND ACTION
+
+1. Review your recent prayers. How much of your relationship with God is a trade, and how much is love for Him?
+2. Pray Habakkuk 3:17–18, naming the particular fig tree that has not blossomed in your life.
+3. Spend one time of prayer this week asking for nothing, only thanking and adoring God for who He is.
+4. Do not be ashamed of longing for heaven. Thank God that your joy and His glory are not rivals.
+5. Read 1 John 4:7–19 slowly, and let His love for you be the ground of your love for Him.
+
+### A PRAYER
+
+> Lord, I have loved Your gifts more than You, and served You for what You give.
+> Forgive my bargaining, and teach me to love You for Yourself, because You are worthy of all love.
+> Yet thank You that You have made my joy to be found in You, and that I need not choose between Your glory and my good.
+> I love You because You first loved me. Deepen that love until You are all my desire. Amen.
+# Union with God
+
+> But he that is joined unto the Lord is one spirit. 1 CORINTHIANS 6:17
+
+All of Madame Guyon’s teaching points in one direction. Prayer as the turning of the heart, abandonment, silence, the death of self-will, the cross, the refining fire — all of it, for her, was the road. The destination was union with God. She wrote about it in the closing pages of A Short and Easy Method of Prayer, in her Spiritual Torrents, in the little treatise called Union with God, and throughout her commentaries on Scripture, above all on the Song of Songs. It is the goal she lived for, and the part of her teaching that most needs careful reading.
+
+## A river to the sea
+
+Her favourite picture of the soul’s journey was a river. In A Short and Easy Method of Prayer she writes: “Do you wish to get to the sea? Embark upon a river, and insensibly and without effort you will be taken to it.” So, she says, the soul that takes God’s quiet way will be carried to Him in a manner that will surprise it.
+
+Spiritual Torrents develops the image at length. There she describes souls as streams of different kinds: some slow and sluggish, some broad and steady, and some rushing torrents that tumble down the mountainside, broken and at times lost from sight, until they reach the sea and are lost in its fullness. The torrent was her own soul, and the book is in large part the story of her own purifications told as a general map. The sea is God, and the losing of the river in the sea is her picture of union.
+
+> There is a river, the streams whereof shall make glad the city of God, the holy place of the tabernacles of the most High. PSALM 46:4
+
+## Beginning, continuing, completing
+
+In the Short Method she sets out the stages of union simply. “Union has its beginning, its continuation, its completion, and its consummation.” It begins with an inclination towards God: the soul turned to Him as its centre. Then it adheres, drawing nearer. Then it is united. Finally it becomes one spirit with Him, and the spirit that came from God returns to Him as its end.
+
+She quotes the psalmist: it is good for me to draw near to God. What is this drawing near, she asks? It is the beginning of union.
+
+> But it is good for me to draw near to God: I have put my trust in the Lord GOD, that I may declare all thy works. PSALM 73:28
+
+This way of describing the Christian life has great value. It reminds us that salvation is not merely a transaction — sins forgiven, a verdict passed — but a relationship that grows. Our Lord Himself prayed for His disciples to share in the union He had with the Father.
+
+> I in them, and thou in me, that they may be made perfect in one; and that the world may know that thou hast sent me, and hast loved them, as thou hast loved me. JOHN 17:23
+
+And Paul speaks of the believer as joined to the Lord, one spirit with Him. Peter goes so far as to say we are made partakers of the divine nature. These are staggering words, and many Christians have never taken them seriously. Madame Guyon took them with all seriousness.
+
+> Whereby are given unto us exceeding great and precious promises: that by these ye might be partakers of the divine nature, having escaped the corruption that is in the world through lust. 2 PETER 1:4
+
+## The Bride and the Bridegroom
+
+Her other great picture of union is marriage. Like Bernard of Clairvaux and many before her, she read the Song of Songs as a picture of Christ and the soul, and in her commentary on it she traces the bride’s journey from first longing, through seeking and losing, to settled union with the Bridegroom. The Short Method is full of the Song’s language: draw me, we will run; my spikenard sendeth forth the smell thereof; who is this that cometh out of the wilderness?
+
+> My beloved is mine, and I am his: he feedeth among the lilies. SONG OF SOLOMON 2:16
+
+Paul himself says that the union of husband and wife is a great mystery concerning Christ and the church. There is warrant, then, for her bridal language, and it has helped countless believers to see that God desires not merely their obedience but their love.
+
+> This is a great mystery: but I speak concerning Christ and the church. EPHESIANS 5:32
+
+## Guarding the mystery
+
+Yet this is also where the most careful reading is needed.
+
+First, union with God is never the merging of the creature into the Creator. The river-and-sea picture, if pressed, suggests that the soul simply disappears into God as a drop into the ocean. Scripture does not teach that. Even in the fullest union, God remains God and we remain His creatures, known and loved as persons. The bride is united to the Bridegroom; she does not become Him. Madame Guyon, at her best, did not mean otherwise, but her images sometimes say more than she meant, and some readers have taken them further than she did.
+
+Second, union with Christ is first a gift received by faith, not a height reached by experience. Every believer is already joined to Christ by His Spirit. What grows is our awareness of it, our yielding to it and the fruit of it. To treat union as the reward of an elite who have passed through extraordinary states risks dividing Christians into ranks and discouraging the ordinary believer who has never had them.
+
+> At that day ye shall know that I am in my Father, and ye in me, and I in you. JOHN 14:20
+
+Third, she says of those who claim to have reached this state that it cannot be feigned, any more than a starving man can long pretend to be full. That is too confident. People can and do deceive themselves about their spiritual states, and some who claimed great heights in her circles fell badly. The test of union is not the intensity of the experience but the fruit of the life: humility, love, obedience, patience.
+
+> Wherefore by their fruits ye shall know them. MATTHEW 7:20
+
+Fourth, the full union she longed for belongs in its completeness to the life to come. Here we see through a glass, darkly. The hope of face-to-face communion should draw us on, not make us claim we have already arrived.
+
+> Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is. 1 JOHN 3:2
+
+With these guards, her teaching on union is a summons to take the New Testament at its word. Christ did not die merely to get us out of trouble. He died to bring us to God, and to bring God to us, in a union closer than any marriage.
+
+### FOR REFLECTION AND ACTION
+
+1. Read John 17 slowly and notice every phrase about union. Which one surprises you most?
+2. Thank God that, if you are in Christ, you are already joined to Him — not by your experience but by His Spirit.
+3. Ask where you are on the road she describes: inclining, adhering, united. What would the next step be?
+4. Examine the fruit of your spiritual life rather than its feelings: is there more humility, love and patience than a year ago?
+5. Let the hope of seeing Christ face to face draw you on this week in one concrete act of obedience.
+
+### A PRAYER
+
+> Lord Jesus, You prayed that I might be one with You as You are one with the Father.
+> I believe that You have joined me to Yourself by Your Spirit, though I hardly understand it.
+> Draw me nearer; let me incline to You, cleave to You, and live as one spirit with You.
+> Keep me humble, fruitful and honest about my soul, until I see You as You are. Amen.
+# The Heart and the Head
+
+> I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye. PSALM 32:8
+
+Madame Guyon was suspicious of the head. She was a highly intelligent woman, widely read and able to argue with bishops, but she believed that the proud intellect was one of the chief obstacles to God. Again and again she set the simple heart against the reasoning mind, and the little ones against the learned. This chapter looks at what she taught about how God guides and teaches the soul, why she trusted the heart so much, and where that trust needs a guard.
+
+## Hidden from the wise
+
+Her favourite text on the subject was our Lord’s prayer of thanks.
+
+> At that time Jesus answered and said, I thank thee, O Father, Lord of heaven and earth, because thou hast hid these things from the wise and prudent, and hast revealed them unto babes. MATTHEW 11:25
+
+She quotes it more than once in A Short and Easy Method of Prayer, and it closes the book. The simple, she says in her word to preachers, are the most suited to the inward life, because they are more teachable, more humble and more innocent; and since they do not reason, they are not so attached to their own light. The learned, by contrast, are often blind in their own sufficiency and resist God’s inspiration. Her last lament is for the majority who pride themselves on their learning and talent.
+
+There is real truth here, and Scripture confirms it. The knowledge of God is not a reward for cleverness. Many simple believers know God far better than many theologians. And a certain kind of intellectual pride — the habit of holding everything at arm’s length, analysing rather than receiving — really does keep people from God. Paul says as much.
+
+> For after that in the wisdom of God the world by wisdom knew not God, it pleased God by the foolishness of preaching to save them that believe. 1 CORINTHIANS 1:21
+
+## God’s light on the soul
+
+The clearest example of her teaching on the heart and the head is what she says about self-examination. She does not dismiss it; she says it should always precede confession. But she warns against doing it by our own effort. “When we examine ourselves with an effort, we easily make mistakes.” We call evil good and good evil, she says, and self-esteem easily deceives us.
+
+Her alternative is to expose ourselves to God’s gaze and let Him show us our faults. When we remain exposed to the searching light of God, she says, that Divine Sun brings to light even the smallest specks. The soul that stays near God finds that He is not slow to reveal what is wrong.
+
+> Search me, O God, and know my heart: try me, and know my thoughts: And see if there be any wicked way in me, and lead me in the way everlasting. PSALM 139:23–24
+
+This is wise and freeing counsel, especially for the anxious and the scrupulous, who can spend hours cataloguing their faults and end more confused than they began. The psalmist does not search himself; he asks God to search him. God’s light is more accurate than our introspection, and kinder.
+
+She applies the same principle to guidance in general. The soul abandoned to God, she believed, would be led by Him, often without being able to explain how. She quotes the promise that God will guide us with His eye — the kind of guidance a servant receives by watching his master’s face, rather than by reading a rulebook.
+
+## Where the heart needs the head
+
+And yet the history of her own life, and of the movement associated with her name, shows why this teaching must be held with care.
+
+First, the heart is not an infallible guide. Madame Guyon made several major decisions — leaving Paris, travelling in Savoy, the arrangements for her children, her dependence on one director — on the strength of inward conviction that God was leading her. Some of those decisions may have been right. Others were questioned by wise and godly people, then and since. An inward sense of being led is not self-authenticating.
+
+> There is a way which seemeth right unto a man, but the end thereof are the ways of death. PROVERBS 14:12
+
+Second, God guides first through His Word, and the Word must be understood with the mind. The Bible is not a collection of impressions; it is a book with grammar and argument and history, and it must be read, studied and thought about. The same Paul who warned against the wisdom of this world told believers to be transformed by the renewing of their minds.
+
+> And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God. ROMANS 12:2
+
+Third, God guides through the counsel of others. The heart left alone will almost always confirm its own desires. Scripture prizes the multitude of counsellors, and the testing of spirits.
+
+> Beloved, believe not every spirit, but try the spirits whether they are of God: because many false prophets are gone out into the world. 1 JOHN 4:1
+
+It is to her credit that, at least in the preface to her little book, she acknowledged this. She wrote that she submitted “all that I have written to the censure of persons of experience and learning.” She did not always find that submission easy in practice, and her conflicts with church authorities were painful on both sides. But the principle she stated was right.
+
+## Heart and head together
+
+So we should not choose between heart and head. The heart without the head becomes credulous, led by every impression. The head without the heart becomes proud and cold, knowing about God without knowing Him. Madame Guyon’s warning against the proud intellect is needed in every generation, and especially among those whose work is thinking. But the remedy for proud thinking is humble thinking, not no thinking at all.
+
+> If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him. JAMES 1:5
+
+Ask God for wisdom. Stay near Him and let His light search you. Read His Word with your whole mind. Seek counsel. And then, having done all that, trust Him to guide you with His eye.
+
+### FOR REFLECTION AND ACTION
+
+1. Are you more inclined to trust your feelings or your reasoning in making decisions? What has that cost you?
+2. Instead of anxiously examining yourself, pray Psalm 139:23–24 and wait for God to show you what needs to change.
+3. Before your next significant decision, test your inward sense of leading against Scripture and against the counsel of two wise believers.
+4. If you are a thinking person, ask whether your learning has made you more humble before God, or less.
+5. If you are a simple believer who thinks theology is not for you, take up one good book about the faith and read it slowly.
+
+### A PRAYER
+
+> Lord, You have hidden Your secrets from the proud and shown them to little children.
+> Humble my mind, and make it a servant of my love for You, not its master.
+> Search me by Your light, and guide me by Your eye and by Your Word.
+> Keep me from trusting every impression of my heart, and give me wisdom and wise counsellors, for Your name’s sake. Amen.
+# The Key of the Interior
+
+> Keep thy heart with all diligence; for out of it are the issues of life. PROVERBS 4:23
+
+It would be easy to read Madame Guyon as a teacher of private spirituality only: a guide for souls who want to be alone with God and leave the world to its business. That is not how she saw herself. Near the end of A Short and Easy Method of Prayer she turns from the individual to the church, and addresses preachers, pastors and all who have the care of souls. Her claim is bold. If people were taught to pray from the heart, she says, the life of whole communities would be reformed. Prayer is not an escape from the reform of life; it is its root.
+
+## Winning the heart
+
+Her argument is simple. Most attempts to make people better, she says, address only the outside. Preachers give their hearers a thousand precepts for outward observance, and see little fruit, and that fruit does not last. But if they sought to win people by the heart, leading them first to prayer and the inner life, they would see many and lasting conversions. “When once the heart is won, other defects are easily corrected.”
+
+> Thou blind Pharisee, cleanse first that which is within the cup and platter, that the outside of them may be clean also. MATTHEW 23:26
+
+She has the Lord’s own logic on her side. The Pharisees polished the outside of the cup and left the inside full of greed. Our Lord did not tell them to stop caring about the outside. He told them to begin with the inside, so that the outside might be clean also. That is her whole point. Reform that begins with rules produces, at best, respectable behaviour laid over an unchanged heart. Reform that begins with the heart produces behaviour that grows naturally from within.
+
+She makes the same argument about virtue earlier in the book. Virtue that is not given inwardly, she says, is a mask, like a garment that can be taken off and will wear out. Virtue that grows from union with God is real and lasting. And she cries out: if all could learn this simple way of prayer, how easily the whole church would be reformed!
+
+> A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh. And I will put my spirit within you, and cause you to walk in my statutes, and ye shall keep my judgments, and do them. EZEKIEL 36:26–27
+
+## The key given to all
+
+She pleads with pastors not to keep this key from ordinary people. The excuse, she says, is that there is danger in this way, or that ignorant people are incapable of spiritual things. She rejects both. What danger can there be in walking in the only true way, which is Jesus Christ, in giving ourselves to Him and looking to Him continually? And the simple, far from being incapable, are the most suited to it.
+
+> But Jesus called them unto him, and said, Suffer little children to come unto me, and forbid them not: for of such is the kingdom of God. LUKE 18:16
+
+Then comes one of the tenderest passages she ever wrote. We have tried, she says, to make studied prayers, and by arranging them too much we have made them impossible. We have estranged children from the best of Fathers by trying to teach them a polished language. “Go, poor children, and speak to your Heavenly Father in your natural language.” However rough it is, it is not rough to Him. A father loves best the speech that is broken by love and respect, because it comes from the heart.
+
+Anyone who has ever felt that their prayers were not good enough — not fluent enough, not theological enough, not like the prayers of the minister — should read that passage and take heart.
+
+## Error and prayer
+
+She adds a striking claim: “Error only takes possession of the soul in the absence of faith and prayer.” If people could be taught to believe simply and to pray, she says, instead of disputing among themselves, they would be gently led to Christ.
+
+That sentence, written by a woman who would soon be accused of error herself, deserves reflection. She is not saying that doctrine does not matter. She is saying that doctrine alone, held as a matter of argument, does not keep a soul safe. People drift into error when their faith has gone dry and their prayer has stopped, and they argue about truths they no longer live. The best defence of the faith is a church that prays.
+
+## What must be added
+
+Her plea is powerful, and much of it is right. But it needs two additions.
+
+First, the outside matters too. She sometimes speaks as though outward precepts were almost useless and inward prayer would reform everything else at once, with a natural ease. That is too optimistic. Our Lord commanded His apostles to teach disciples to observe all that He had commanded, and the letters of the New Testament are full of concrete instruction about speech, money, marriage, work and worship.
+
+> Teaching them to observe all things whatsoever I have commanded you: and, lo, I am with you alway, even unto the end of the world. Amen. MATTHEW 28:20
+
+A converted heart still needs to be taught. Good habits need forming; old ones need putting to death. The Spirit works through instruction and discipline as well as through prayer.
+
+> For if ye live after the flesh, ye shall die: but if ye through the Spirit do mortify the deeds of the body, ye shall live. ROMANS 8:13
+
+Second, reform of life is not only personal. The Scriptures call God’s people to justice, mercy and care for the poor, and the prophets did not wait for everyone to learn inward prayer before denouncing oppression. Prayer is the root of a reformed life, but the fruit must include love of neighbour in all its practical forms.
+
+> For the grace of God that bringeth salvation hath appeared to all men, Teaching us that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly, in this present world. TITUS 2:11–12
+
+With those additions, her word to preachers stands as a rebuke to every church that has tried to reform people from the outside in. Give them first the key of the interior, she says. Teach them to seek God in their hearts, to return to Him when they wander, and to do and suffer everything to please Him. That is not a substitute for teaching. It is the soil in which teaching grows.
+
+### FOR REFLECTION AND ACTION
+
+1. Where in your life have you tried to change your behaviour without dealing with your heart? What happened?
+2. If you teach, lead or parent, ask whether you give more rules than you give the key of the interior. Teach one person this week how to pray simply.
+3. Pray today in your own natural language, without trying to sound spiritual.
+4. Think of a doctrinal argument you care about. Pray for the people on the other side of it before you argue again.
+5. Choose one concrete act of justice or mercy to do this week as the fruit of prayer.
+
+### A PRAYER
+
+> Lord, I have tried to reform myself from the outside and found that nothing lasts.
+> Win my heart, and let everything else be corrected from there.
+> Teach me to pray to You in my own plain words, as a child to a father.
+> Make Your church a praying church, and let prayer bear fruit in holiness, justice and love. Amen.
+# Songs in the Prison
+
+> And at midnight Paul and Silas prayed, and sang praises unto God: and the prisoners heard them. ACTS 16:25
+
+Teaching is tested by trouble. It is one thing to write about abandonment to God in a comfortable house in Grenoble; it is another to live it in a cell in the Bastille. Madame Guyon wrote A Short and Easy Method of Prayer before her imprisonment. Within a few years she had the opportunity, which no one would choose, to find out whether it was true. By every account that has come down to us, she found that it was.
+
+## What she endured
+
+The facts are sobering. From the end of 1695 she was held in confinement for most of the next seven years: at Vincennes, then in a house at Vaugirard, and from 1698 in the Bastille itself. She was questioned repeatedly by officials hostile to her. Her private life was picked over, and her enemies circulated charges of impropriety that were never proved. Her friend Fénelon was disgraced and sent away from court. And the churchman who led the case against her, Bossuet, published an account of her life designed to discredit her before all France. When she was finally released in 1703, she was in poor health and was sent to live under restriction for the rest of her days.
+
+> Blessed are ye, when men shall revile you, and persecute you, and shall say all manner of evil against you falsely, for my sake. Rejoice, and be exceeding glad: for great is your reward in heaven: for so persecuted they the prophets which were before you. MATTHEW 5:11–12
+
+## The peace that survived
+
+What those who knew her remembered, and what her own later writings show, is not bitterness but peace. She prayed in prison. She wrote verse in which the soul is content wherever God has placed it, because God is there. A poem long attributed to her, much loved in English, pictures the soul as a little bird shut in a cage, singing to the One who put it there. Whatever the exact history of that poem, it captures what her friends saw in her: a heart at rest in God in circumstances designed to break it.
+
+Where did such peace come from? From exactly the teaching we have traced through this book. She had long believed that all that happens to us, except our own sin, comes to us from God’s hand. She had taught her readers to see even the commonest events in God and not in the creature. So when the creature — the jailer, the interrogator, the powerful bishop — did its worst, she looked past it to the hand that permitted it.
+
+> Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid. JOHN 14:27
+
+She had written, too, that consolation is found only in the love of the cross and in complete abandonment. That had been a principle; now it became a practice. And she had written of God’s tender care for each soul, quoting the promise that though a mother might forget her nursing child, God would not forget His own. Her comment on that promise reads differently in the light of the Bastille: “Ah, words full of consolation! Who on hearing them can fear to abandon himself utterly to the guidance of God?”
+
+> Can a woman forget her sucking child, that she should not have compassion on the son of her womb? yea, they may forget, yet will I not forget thee. ISAIAH 49:15
+
+## Not despair, not destroyed
+
+Her peace was not the absence of suffering. She felt her confinement, her illness and the injustice of it. But she was, in Paul’s words, troubled but not distressed, persecuted but not forsaken.
+
+> We are troubled on every side, yet not distressed; we are perplexed, but not in despair; Persecuted, but not forsaken; cast down, but not destroyed. 2 CORINTHIANS 4:8–9
+
+Nor did she hate her enemies. The New Testament pattern is the Lord Himself, who when He was reviled did not revile again, but committed Himself to the One who judges righteously. That was her way, as far as we can tell: not to curse, but to commit.
+
+> Who, when he was reviled, reviled not again; when he suffered, he threatened not; but committed himself to him that judgeth righteously. 1 PETER 2:23
+
+## Peace is not passivity
+
+A careful reader will notice something else, and it guards her teaching from a misunderstanding. Peace under persecution did not mean silence about the truth. Before her arrest she had asked for her writings to be judged, and she assembled a long collection of passages from earlier spiritual writers to show that her teaching stood in an old tradition. She defended herself, sometimes at length. Paul, too, when unjustly accused, appealed to Caesar. Christians may seek justice, answer false charges and use lawful means to protect themselves and others, and still be abandoned to God.
+
+It needs saying, too, that seeing God’s hand behind persecution never makes persecution right. Her jailers were not excused because God brought good out of what they did. Those of us who are free are commanded to remember those who are not.
+
+> Remember them that are in bonds, as bound with them; and them which suffer adversity, as being yourselves also in the body. HEBREWS 13:3
+
+## The test of a teaching
+
+It is worth ending here with a simple observation. Madame Guyon’s teaching has been criticised on many grounds, some fair and some not. But it cannot be said that it failed her when it mattered. The woman who taught that God is found in the heart found Him there in a prison cell. The woman who taught abandonment was abandoned by almost everyone, and was not abandoned by God. Her little book asks what risk there can be in trusting God and abandoning ourselves to Him. Her life gives an answer.
+
+> Who shall separate us from the love of Christ? shall tribulation, or distress, or persecution, or famine, or nakedness, or peril, or sword? ROMANS 8:35
+
+### FOR REFLECTION AND ACTION
+
+1. Think of the hardest circumstance you are in now. Try to see it, as she did, as permitted by God’s hand, while still naming any wrong in it as wrong.
+2. Is there someone who has wronged you whom you are cursing in your heart? Commit them, and yourself, to Him who judges righteously.
+3. Learn one hymn or psalm by heart this week, so that you have a song ready for the night.
+4. Pray by name for a Christian imprisoned for their faith today, and find one practical way to support persecuted believers.
+5. If you are being unjustly treated, consider what lawful means you might rightly use, and use them without bitterness.
+
+### A PRAYER
+
+> Lord, You were with Paul and Silas in the prison at midnight, and with Your servant in the Bastille.
+> Be with me in the places I did not choose, and give me a song there.
+> Keep me from bitterness against those who wrong me; let me commit myself to You who judge righteously.
+> Remember those in chains for Your name today, and let nothing separate them or me from Your love. Amen.
+# Streams Beyond the Walls
+
+> Wherein I suffer trouble, as an evil doer, even unto bonds; but the word of God is not bound. 2 TIMOTHY 2:9
+
+When Madame Guyon was taken to the Bastille, her enemies might reasonably have supposed that her influence was finished. Her teaching had been examined and censured, her great defender had been disgraced, and her books were suspect throughout Catholic France. Three centuries later, A Short and Easy Method of Prayer is still in print in many languages, and her name is known in places she could not have imagined. The story of how that happened is a strange one, and it has lessons of its own.
+
+> But I would ye should understand, brethren, that the things which happened unto me have fallen out rather unto the furtherance of the gospel. PHILIPPIANS 1:12
+
+## Fénelon
+
+The first stream ran through her friend. François Fénelon, Archbishop of Cambrai, submitted to the Pope’s censure of his Maxims of the Saints in 1699 and never again defended the book in public. But he spent the rest of his life as a spiritual director, and his letters of counsel, full of the themes he had learned in part from her — the simple turning of the heart to God, the quieting of self-will, love for God rather than for His gifts — were collected and published after his death. They have been read ever since, by Catholics and Protestants alike, and many who have never opened a book by Madame Guyon have met her teaching, softened and steadied, through him.
+
+## The Protestants
+
+The second stream is the most surprising. Her books were preserved and spread above all by Protestants. Pierre Poiret, a French Protestant minister living in Holland, published her works in many volumes in the years around her death, including her Life. Through his editions her writings reached the Pietist circles of Germany and the Low Countries. Gerhard Tersteegen, the Reformed hymn writer and spiritual guide of the Rhineland, translated some of her writings into German and was deeply shaped by them. The Moravian movement around Count Zinzendorf grew in the same Pietist soil, and is commonly counted among those in her debt.
+
+In England, John Wesley published an abridgement of her Life in 1776 for his Methodist people. He admired her devotion greatly, and he also warned plainly against what he judged her errors, above all her readiness to be guided by inward impressions. That double verdict — deep respect and frank correction — is probably the wisest ever given on her, and this book has tried to follow it. The poet William Cowper translated a selection of her poems into English verse; they were published after his death and have been loved by readers who knew nothing of the controversies behind them.
+
+Quakers, too, found in her something close to their own practice of silent waiting upon God, and her books circulated among Friends on both sides of the Atlantic. In America, Thomas Upham’s long Life of Madame Guyon, published in 1847, brought her to a wide evangelical audience, and she became a favourite of the holiness and deeper-life movements. The Victorian English translation of her little book in the Ochorus library carries a preface frankly explaining why a Protestant would bring a Catholic author before Protestant readers: because the doctrine and experience she described seemed to its writer essentially Protestant — though, as he noted, her own church had persecuted her for them.
+
+## Beyond the West
+
+The streams did not stop at the edge of Europe and America. In the twentieth century, Watchman Nee counted her among the older writers who shaped him most, and her little book on prayer was among those he worked to put into the hands of Chinese believers. Through Nee and others, a French Catholic woman of the seventeenth century became a teacher of prayer to Christians in China, many of whom would, like her, know prison for their faith.
+
+> He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. JOHN 7:38
+
+## What the streams carried
+
+It is worth asking what, exactly, all these readers took from her. For the most part, it was not her mystical theology of union, or her doctrine of pure love at its most extreme, or the account of her own purifications. It was the plain core of the little book on prayer: that prayer is the heart turned to God; that every believer, however simple, can pray; that Scripture should be read slowly until it feeds the heart; that distractions are best met by turning to God rather than fighting them; that the soul should be given wholly to God and not taken back. These are not Catholic or Protestant teachings. They belong to the whole church.
+
+> There is one body, and one Spirit, even as ye are called in one hope of your calling; One Lord, one faith, one baptism, One God and Father of all, who is above all, and through all, and in you all. EPHESIANS 4:4–6
+
+## Reading her across the divide
+
+That raises a question Protestant readers should face honestly. Is it fair to take a devout Catholic, condemned by her own church, and adopt her as a kind of honorary Protestant? The answer is: only with care. She was not a Protestant. She never questioned the Mass, the sacraments of her church, the authority of its bishops in principle, or the devotion to the saints that appears in her writings. She submitted, as far as she believed she could, to the judgements made against her, and she died in communion with Rome. Those who love her should not remake her in their own image.
+
+Equally, Catholic readers should remember that her church’s verdict on Quietism, while it addressed real dangers, was also bound up with court politics, personal rivalries and the power of a few men. Modern scholars of every tradition have been kinder to her than Bossuet was. Neither side owns her, and neither side is obliged to accept everything she wrote.
+
+The wisest course is Wesley’s: honour what is true, correct what is mistaken, and receive gratefully the grace of God wherever it appears.
+
+> I have planted, Apollos watered; but God gave the increase. So then neither is he that planteth any thing, neither he that watereth; but God that giveth the increase. 1 CORINTHIANS 3:6–7
+
+## A word that was not bound
+
+There is a final lesson. The powers of her day tried hard to stop her teaching. They failed, not because her books were flawless, but because the heart of what she said was true, and truth has a way of escaping prisons. A little book written for a few friends in Grenoble has been read by millions. God does not need the approval of the powerful to carry a word where He wills.
+
+> So shall my word be that goeth forth out of my mouth: it shall not return unto me void, but it shall accomplish that which I please, and it shall prosper in the thing whereto I sent it. ISAIAH 55:11
+
+### FOR REFLECTION AND ACTION
+
+1. Consider which Christian writers from other traditions have helped you. Thank God for them by name.
+2. Practise Wesley’s double verdict on one teacher you admire: name one thing to honour and one to correct.
+3. If you are a Protestant, ask whether you have ever adopted a Catholic writer without respecting who they really were; if you are a Catholic, ask the same about Protestant writers.
+4. Pray for Christians in China and elsewhere who are learning to pray under pressure, as she did.
+5. Give a copy of a good book on prayer to someone who might never find it otherwise.
+
+### A PRAYER
+
+> Lord, You carried the words of a prisoner far beyond her prison walls.
+> Thank You for every teacher, in every tradition, through whom You have taught me to pray.
+> Give me grace to honour what is true in them and to correct what is mistaken, without pride.
+> And let Your word, which is not bound, run freely in my heart and through my life to others. Amen.
+# Conclusion
+
+> Draw nigh to God, and he will draw nigh to you. JAMES 4:8
+
+Eighteen chapters can make it look as though Madame Guyon taught a great many things. She taught one thing, and she taught it all her life: give God your heart. Prayer is the heart applied to Him. Praying the Scripture is the heart fed by His Word. The prayer of simplicity is the heart resting in His presence. Abandonment is the heart handed over and not taken back. The inward kingdom is the heart where He reigns. Silence is the heart listening. The death of self-will, the cross and the refining fire are God’s ways of making the heart wholly His. Pure love is the heart loving Him for Himself, and union is the heart one spirit with Him. Everything else in her writings — the images of rivers and ships, of gold and fire, of the bride and the Bridegroom — is that single appeal worked out.
+
+It is an old appeal. Wisdom said it long before she did.
+
+> My son, give me thine heart, and let thine eyes observe my ways. PROVERBS 23:26
+
+## The danger of this book
+
+A book about prayer carries a particular risk. The reader may enjoy reading about prayer and never pray. She saw this danger clearly. Again and again in her little book she breaks off her argument to say, in effect: stop reading and try it. Make trial of it, she urges; those who experience it will be the most certain of its truth.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+So the plainest counsel is the one given in the other volumes of this series. Go back to the chapter that made you least comfortable, not the one you liked best. Take its application points and live with them for a month. Then take another. Above all, pray. Choose a time and a place. Open the Bible. Read slowly. Stop when a word touches you. Turn to God when your mind wanders. Keep coming when it is dry.
+
+## Two things to carry
+
+First, turn your heart to God, and keep turning it. You will wander a thousand times. That does not matter nearly as much as returning a thousand and one. She said that as repeated acts form a habit, the soul learns to be turned to God as its settled condition. Begin with the acts. The habit will follow.
+
+Second, give yourself to God wholly, and do not take yourself back. You have probably given yourself to Him before. Do it again, and when the next trouble comes, remember that you are no longer your own.
+
+> What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? 1 CORINTHIANS 6:19
+
+## A last word about her
+
+We have been honest about the places where she must be read with care. Her language of passivity can be — and was — taken to excuse the neglect of Scripture, of the church’s worship and of plain obedience; the New Testament joins God’s working and ours, and never sets them against each other. Her doctrine of pure love, pressed to its limit, spoke of indifference even to one’s own salvation; Scripture calls us to seek it and lay hold of it with joy. Her claims about spiritual states rested heavily on her own experience, which cannot always be tested, and she trusted inward impressions further than is safe. Some of her language about the soul’s annihilation and union says more than Scripture says. And she was a devout Catholic whom Protestants must not remake in their own image, and whom Catholics must not forget their church once condemned.
+
+The church of her day condemned Quietism, and not without reason: Molinos in 1687, the articles of Issy in 1695, the censure of Fénelon’s book in 1699 all addressed real dangers. But the same proceedings were bound up with jealousy, politics and cruelty, and she paid for them with years of her life. She was not a heretic to be dismissed. Nor was she a saint to be followed without thinking. She was a woman who loved God with a rare intensity, who taught ordinary people to pray when few would, and who was faithful in prison.
+
+> But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us. 2 CORINTHIANS 4:7
+
+None of these cautions has been raised to diminish her. They have been raised because her own teaching requires it. A message whose whole point is that God is all and we are nothing cannot be commended by pretending its messenger was without fault. She submitted her writings to the judgement of others. We have tried to do that, as fairly as we can.
+
+What remains, when all the cautions are made, is a small book that has taught millions to pray. That is not a small thing. It may be that, as you close this companion and open her own pages, it will teach you too.
+
+### FOR REFLECTION AND ACTION
+
+1. Return to the page you wrote at the start of this book about what prayer is for you. What would you write now?
+2. Choose the one chapter that made you least comfortable, and work its application points for a month.
+3. Set a daily time of prayer for the next forty days, and keep it whether it is sweet or dry.
+4. Give yourself to God again, in plain words, and write the date somewhere you will see it.
+5. Read A Short and Easy Method of Prayer through slowly, with the Bible open, weighing what she says.
+
+### A PRAYER
+
+> Lord, I have read about prayer, and I am capable of making even that a substitute for praying.
+> Keep me from it. I do not want to know about You; I want to know You.
+> Here is my heart. Take it, turn it to You, and keep it turned, in dryness and in sweetness, in freedom and in trouble.
+> Draw me, and I will run after You, until at last I see You face to face. Amen.
+# A Reader’s Guide to Jeanne Guyon
+
+> Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. 2 TIMOTHY 2:15
+
+Madame Guyon wrote a great deal — the collected edition that Pierre Poiret began runs to many volumes — but most readers need only a few of her books, and one of them matters far more than the rest. Her works are in the public domain and widely available in older English translations. The difficulty is not access but judgement: her best book is short and plain, while some of her longer works are intense, personal and easily misread.
+
+## Begin here
+
+A Short and Easy Method of Prayer (1685), in the Ochorus library. The source of most of this volume, and the book that made her name. Read it first, slowly, and put it into practice as you go. The chapters on the first degree of prayer, on distractions, on abandonment and the word to preachers are the most useful. Its last chapters, on the soul’s passivity and the way to divine union, are where most of the controversy lay; read them with the cautions of this volume in mind.
+
+## Going further
+
+Union with God. A short treatise, often printed with the Short Method in English, on the way the soul is brought to union. It says more concisely what her longer books say at length, and it needs the same care.
+
+Spiritual Torrents. Her picture of souls as streams flowing to the sea of God, and in large part an account of her own long purification presented as a general map. Moving and memorable, but the preface to the Victorian English edition rightly warns that her road is not the only road, nor the usual one.
+
+Her commentaries on Scripture, especially on the Song of Songs. She read the Song as the story of the soul and its Bridegroom. The commentary shows her devotion to the Bible and her gift for tender, searching application; it also shows how far an allegorical reading can wander from the text.
+
+## Her own story
+
+Her Life, the autobiography she wrote in parts over many years and which Poiret published after her death. It is candid, vivid and sometimes exhausting. It gives the fullest account of her marriage, her conversion to inward prayer, her travels and her sufferings. Read it for understanding, not as a pattern: she interprets nearly everything that happened to her as a special work of God, and she is not always a reliable judge of herself or of others. John Wesley’s abridgement of 1776 is a useful shorter version, with his own frank preface.
+
+Her poems. William Cowper translated a selection into English verse, published after his death. They are the gentlest way into her spirit.
+
+## About her
+
+Thomas C. Upham’s Life and Religious Opinions and Experience of Madame de la Mothe Guyon (1847) is a long, admiring Protestant biography that did much to make her known in America. It is warm and detailed, but it smooths away most of the difficulties. Ronald Knox’s Enthusiasm (1950), a study of religious excess by a Catholic writer, contains chapters on Quietism that are learned, witty and far less sympathetic. Michael de la Bedoyere’s The Archbishop and the Lady (1956) tells the story of her friendship with Fénelon. Read more than one: the admirers and the critics each see things the other misses.
+
+## Approach with care
+
+The most intense passages of her Life and of Spiritual Torrents — on inward death, spiritual states and her own sense of special calling — should be read to understand her, not as a guide for your own soul. The same is true of her more extreme statements of pure love. And bear in mind that much of what was written about her in her own lifetime, by friends and enemies alike, was written in the heat of controversy.
+
+## Three counsels for reading her
+
+Read the little book first, and let it be the lens for everything else. What the whole church has received from her is there; the rest is commentary.
+
+Read with the Bible open. She quotes Scripture on nearly every page, sometimes profoundly, sometimes by pressing a phrase further than its context allows. Check her texts, and let the Word judge her rather than the other way round.
+
+And read her on your knees, or at least with a heart turned towards God. She did not write to be admired or analysed. She wrote so that people who thought they could not pray would begin. Do what she asks, and you will have understood her better than many of her critics.
+
+> The entrance of thy words giveth light; it giveth understanding unto the simple. PSALM 119:130

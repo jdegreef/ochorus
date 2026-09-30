@@ -400,6 +400,84 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#7b5a2c",
     ),
+    "key-teachings-of-amanda-berry-smith": Work(
+        slug="key-teachings-of-amanda-berry-smith",
+        title="The Key Teachings of Amanda Berry Smith",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="amanda-berry-smith",
+        source="amanda-berry-smith.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Amanda Berry Smith's own writings are in the public "
+            "domain and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King James) "
+            "Version."
+        ),
+        cover_color="#5a1a6a",
+    ),
+    "key-teachings-of-hudson-taylor": Work(
+        slug="key-teachings-of-hudson-taylor",
+        title="The Key Teachings of Hudson Taylor",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="hudson-taylor",
+        source="hudson-taylor.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. "
+            "Not published by, affiliated with, or endorsed by OMF International. Hudson Taylor's own writings are in the public "
+            "domain and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King James) "
+            "Version."
+        ),
+        cover_color="#1f6a5a",
+    ),
+    "key-teachings-of-athanasius-of-alexandria": Work(
+        slug="key-teachings-of-athanasius-of-alexandria",
+        title="The Key Teachings of Athanasius of Alexandria",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="athanasius-of-alexandria",
+        source="athanasius-of-alexandria.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. "
+            "Athanasius wrote in Greek; where his words are quoted, it is in public-domain English translations. Athanasius's own writings are in the public "
+            "domain and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King James) "
+            "Version."
+        ),
+        cover_color="#1f4a9a",
+    ),
+    "key-teachings-of-julia-foote": Work(
+        slug="key-teachings-of-julia-foote",
+        title="The Key Teachings of Julia A. J. Foote",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="julia-foote",
+        source="julia-foote.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Julia A. J. Foote's own writings are in the public "
+            "domain and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King James) "
+            "Version."
+        ),
+        cover_color="#9a4a1a",
+    ),
+    "key-teachings-of-jeanne-guyon": Work(
+        slug="key-teachings-of-jeanne-guyon",
+        title="The Key Teachings of Jeanne Guyon",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="jeanne-guyon",
+        source="jeanne-guyon.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. "
+            "Madame Guyon wrote in French; where her words are quoted, it is in a public-domain English translation. Jeanne Guyon's own writings are in the public "
+            "domain and freely available; readers are encouraged to go to them "
+            "directly. Scripture quotations are from the Authorised (King James) "
+            "Version."
+        ),
+        cover_color="#3a2a22",
+    ),
 }
 
 

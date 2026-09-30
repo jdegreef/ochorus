@@ -1081,6 +1081,32 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A terracotta lamp on a bronze stand, papyrus scrolls, a wax tablet "
         "and stylus, a clay cup: a bishop's table in Roman Africa.",
     ),
+    "key-teachings-of-amanda-berry-smith": Original(
+        "79598d3106675be9f655e1282909d8c7ef6432952eb1521d6ac1809ab5610fd2",
+        "A plain tin oil lamp, a worn Bible on a japanned travel trunk and a "
+        "cast-iron sad iron: the washerwoman evangelist who crossed three "
+        "continents.",
+    ),
+    "key-teachings-of-hudson-taylor": Original(
+        "c86a2f01873b90093fbaae9571a7ca7e3ae34545293f14b25c8637844618da23",
+        "A red paper lantern, blue thread-bound volumes, a celadon rice bowl "
+        "with chopsticks, an inkstone and brush: the China Inland Mission.",
+    ),
+    "key-teachings-of-athanasius-of-alexandria": Original(
+        "6cf846ed7d86770123daf3fe16b5e190a093c44e1eb611ecc60088a9bfa568ac",
+        "A bronze lamp on a low stand, a codex in boards with brass clasps, a "
+        "reed pen in a black inkpot: the bishop of Alexandria.",
+    ),
+    "key-teachings-of-julia-foote": Original(
+        "f662f89b034b48595a2d7854e650d1d8f64b187fc34f41f3518c1f65fa3d91d6",
+        "A glass finger lamp, a small black Bible on a green hymnbook, a "
+        "folded letter with a bonnet ribbon: the AME Zion evangelist.",
+    ),
+    "key-teachings-of-jeanne-guyon": Original(
+        "99b75afc5624a0c487ec8709ae46678c663bdebdd56a5c872282ec8ecc99a746",
+        "A silver candlestick, a red morocco prayer book, a folded letter "
+        "under a red wax seal with a quill: seventeenth-century France.",
+    ),
 }
 
 
