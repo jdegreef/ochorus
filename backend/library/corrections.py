@@ -9760,3 +9760,36 @@ BODY_CORRECTIONS["ever-increasing-faith"]["paragraph_breaks"] = [
     # p. 115: a margin mark hid this paragraph's first-line indent.
     ("beyond a “Thus saith the Lord.”", "There is another side to this."),
 ]
+
+
+# --- Key Teachings series: set-apart Scripture restored to the KJV ---
+# The companions (build_key_teachings) state that every Scripture quotation is
+# the Authorised (King James) Version, but a handful of the blockquotes in the
+# source PDFs drifted from it. Each pair below was checked against the KJV text
+# (a partial quote stays partial — only the words it does use must be exact and
+# in order; Edwards's Isaiah 62:6–7 passed on that basis and is untouched). Each
+# `old` spells the set-apart quotation itself, so the pair can match nothing
+# else in the book — and not a translation, which would not carry this English.
+BODY_CORRECTIONS.setdefault("key-teachings-of-a-b-simpson", {}).setdefault("replacements", []).extend([
+    # ch "Christ Our Saviour", Exodus 15:2 — KJV "and he is become my salvation".
+    ("my strength and song, and is become my salvation.",
+     "my strength and song, and he is become my salvation."),
+])
+BODY_CORRECTIONS.setdefault("key-teachings-of-richard-baxter", {}).setdefault("replacements", []).extend([
+    # ch "Take Heed to Yourselves", 1 Peter 5:2–3 — "not greedy of filthy lucre"
+    # is 1 Timothy 3:3; Peter's KJV is "not for filthy lucre".
+    ("<blockquote>Not greedy of filthy lucre, but of a ready mind;",
+     "<blockquote>Not for filthy lucre, but of a ready mind;"),
+    # ch "Take Heed to All the Flock", Ezekiel 34:4 — the KJV's inverted order.
+    ("<blockquote>Ye have not strengthened the diseased, neither",
+     "<blockquote>The diseased have ye not strengthened, neither"),
+    # ch "Counsel for the Melancholy", Psalm 42:11 — "within me" (it is 42:5,
+    # the first time of the refrain, that reads "in me"). The cited verse wins.
+    ("and why art thou disquieted in me? hope thou in God. PSALM 42:11",
+     "and why art thou disquieted within me? hope thou in God. PSALM 42:11"),
+])
+BODY_CORRECTIONS.setdefault("key-teachings-of-watchman-nee", {}).setdefault("replacements", []).extend([
+    # ch "The Church in the Place", Acts 8:4 — KJV opens "Therefore".
+    ("<blockquote>And they that were scattered abroad went every where",
+     "<blockquote>Therefore they that were scattered abroad went every where"),
+])
