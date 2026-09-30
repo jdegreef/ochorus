@@ -1,26 +1,42 @@
 [
   {
     "q": "¿Quién fue Jesse Lyman Hurlbut?",
-    "a": "Un ministro metodista estadounidense (1843–1930) y líder de los movimientos de la escuela dominical y de Chautauqua, conocido sobre todo por volver a contar la Biblia para los jóvenes lectores en un lenguaje claro y vívido."
+    "a": "Jesse Lyman Hurlbut (1843–1930) fue un ministro estadounidense de la Iglesia Metodista Episcopal que dedicó más de medio siglo a enseñar a la gente a enseñar la Biblia. Fue pastor en distintas localidades del norte de Nueva Jersey, ayudó a John Heyl Vincent a levantar el movimiento Chautauqua, editó la literatura metodista de escuela dominical y, ya en sus últimos años, escribió la Historia de la Biblia de Hurlbut (1904) y la Vida de Cristo de Hurlbut (1915), que volvían a contar la Escritura con sencillez para niños y adultos por igual."
   },
   {
-    "q": "¿Por qué es más conocido Hurlbut?",
-    "a": "Por su Historia de la Biblia (1904), que volvió a contar la Escritura entera como una narración continua en ciento sesenta y ocho relatos breves y se vendió por millones, y por su vida de Cristo para los jóvenes, que la acompaña."
+    "q": "¿Dónde nació Hurlbut y dónde se educó?",
+    "a": "Nació en la ciudad de Nueva York en 1843 y se graduó en 1864 en la Universidad Wesleyana, el colegio metodista de Middletown, Connecticut, cuando todavía se libraba la guerra de Secesión. Ese mismo año enseñó idiomas en el Seminario de Pennington, una escuela metodista de Nueva Jersey, antes de ingresar en la Conferencia de Newark de la Iglesia Metodista Episcopal. Poco más se sabe de sus primeros años, y en las fuentes disponibles no se conserva ningún relato de su conversión."
   },
   {
-    "q": "¿Qué fue el movimiento Chautauqua, y qué papel desempeñó en él?",
-    "a": "Chautauqua fue un movimiento de educación popular de adultos del siglo XIX que se extendió por toda Norteamérica desde un lago en Nueva York. Hurlbut fue su superintendente de instrucción y dio forma a un plan de estudios que llegó a un número inmenso de alumnos comunes."
+    "q": "¿Dónde sirvió Hurlbut como pastor?",
+    "a": "Tras ingresar en la Conferencia de Newark, su primer destino fue Roseville, Nueva Jersey, en 1865–66. Sus pastorados posteriores parecen un mapa del norte de Nueva Jersey: Newark, Montclair, Paterson, Plainfield, Hoboken, Morristown, Orange y Bloomfield. Hacia el final de su ministerio activo, desde 1909 hasta su jubilación en 1914, fue superintendente del Distrito de Newark y supervisó las iglesias de la región donde había comenzado medio siglo antes."
   },
   {
-    "q": "¿Son sus relatos bíblicos fieles a la Escritura?",
-    "a": "Sí. Hurlbut guardó una regla estricta de no añadir nada, ni escenas ni conversaciones inventadas, y siguió de cerca el relato bíblico para que un joven lector fuera conducido hacia la Biblia misma y no lejos de ella."
+    "q": "¿Qué papel tuvo Hurlbut en el movimiento Chautauqua?",
+    "a": "Chautauqua comenzó en agosto de 1874 como una Asamblea Nacional de Escuelas Dominicales a orillas del lago Chautauqua, en Nueva York, fundada por John Heyl Vincent y Lewis Miller para formar maestros de la Biblia. Hurlbut llegó en 1875, su segundo verano, y se convirtió en uno de los colaboradores más cercanos de Vincent: supervisó los exigentes Cursos Normales para maestros, dio una clase bíblica para adultos los domingos por la tarde, pronunció conferencias en el Parque de Palestina y ayudó a dirigir el Círculo Literario y Científico de Chautauqua, fundado en 1878."
   },
   {
-    "q": "¿Para quién están escritos sus libros?",
-    "a": "Escribió para un niño de unos diez años, con la sencillez suficiente para seguirse sin ayuda, pero con la honestidad y la sobriedad necesarias para que también los padres y maestros que los leyeran a su lado los encontraran valiosos."
+    "q": "¿Qué hizo Hurlbut por la escuela dominical y la Liga Epworth?",
+    "a": "Desde 1879 trabajó en la obra de escuelas dominicales y de tratados de la Iglesia Metodista Episcopal, y después de que Vincent fuera nombrado obispo en 1888 asumió la edición de la literatura de escuela dominical de la denominación, preparando notas sobre las Lecciones Internacionales de la Escuela Dominical. Cuando se formó en Cleveland, en 1889, la Liga Epworth, una sociedad para los jóvenes de la iglesia, fue su secretario general hasta 1892."
   },
   {
-    "q": "¿Por qué leer a Hurlbut hoy?",
-    "a": "Porque pocos escritores han contado la historia de la Biblia a los jóvenes con más claridad o reverencia. Sus páginas siguen siendo una puerta de entrada cálida y fiel a las Escrituras para los niños, y un modelo para cualquiera que las enseñe."
+    "q": "¿Qué es la Historia de la Biblia de Hurlbut?",
+    "a": "Publicada en 1904, vuelve a contar toda la Escritura, desde el Génesis hasta el Apocalipsis, en ciento sesenta y ocho relatos, cada uno completo en sí mismo y que juntos forman una narración continua. Hurlbut se mantuvo cerca del lenguaje de la Biblia para que el libro condujera a los jóvenes lectores hacia la Escritura y no lejos de ella. En su prefacio escribió: «Dichosos los que en la niñez aprenden la Historia de la Biblia, porque nunca la olvidarán». Se han contado en circulación más de cuatro millones de ejemplares."
+  },
+  {
+    "q": "¿En qué se diferencia la Vida de Cristo de Hurlbut de otras vidas de Jesús para niños?",
+    "a": "Hurlbut se impuso una regla estricta: ni escenas imaginarias ni conversaciones inventadas, para que el libro condujera a los lectores directamente hacia la Biblia. En su prefacio de 1915 escribió: «El propósito ha sido escribir la biografía de Jesús, no una novela fundada sobre su vida». Su primer capítulo expone, como un maestro ante su clase, las razones por las que todos deberían conocer la historia de Jesús, y termina con el perdón de los pecados."
+  },
+  {
+    "q": "¿Qué enseñó Hurlbut a los niños acerca de la oración?",
+    "a": "En su Vida de Cristo dijo a los jóvenes lectores que Dios es el Padre de todos en el mundo entero, y que cualquier niño puede acudir a él para pedir lo que necesite. Escribió que, si Jesús no hubiera hecho por nosotros más que enseñarnos el Padrenuestro, que comienza «Padre nuestro, que estás en los cielos», habría hecho lo suficiente para que lo amáramos. Despidió el libro con su propia oración: «¡Que ayude a muchos, jóvenes y mayores, a conocer mejor a Jesús, a amarlo más y a seguirlo más de cerca!»."
+  },
+  {
+    "q": "¿Qué otros libros escribió Jesse Lyman Hurlbut?",
+    "a": "Además de sus relatos bíblicos, escribió un Manual de geografía bíblica (1882), conocido más tarde como su atlas bíblico; manuales prácticos de escuela dominical, como Cómo organizar y edificar la escuela dominical (1910); The Story of the Christian Church (1918), que todavía hoy se estudia en español con el título Historia de la Iglesia Cristiana; y La historia de Chautauqua (1921), una historia del movimiento dedicada a sus fundadores, Lewis Miller y John Heyl Vincent."
+  },
+  {
+    "q": "¿Cuándo murió Hurlbut y cómo se le recuerda?",
+    "a": "Murió en Nueva Jersey en 1930, a los ochenta y siete años. En 1924, pasados ya los ochenta, había pronunciado un discurso titulado «Recuerdos de los primeros días» en el quincuagésimo aniversario de Chautauqua. Al año siguiente de su muerte se inauguró en los terrenos de Chautauqua la Iglesia Memorial Hurlbut en su memoria. Se le recuerda como un maestro de maestros cuyos relatos sencillos y fieles llevaron a generaciones de niños a la Biblia misma."
   }
 ]
