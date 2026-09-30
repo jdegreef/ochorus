@@ -8241,6 +8241,37 @@
 				534
 			]
 		},
+		"samuel-ajayi-crowther-a-life": {
+			"ground": "1e03ec5a425e140f8121eae334a8047f950ecf5dce1654debf8c6a460486bd0a",
+			"style": "house",
+			"volume": "5",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[72, 102, 528, 131]
+				],
+				"title": [
+					[289, 273, 311, 317],
+					[120, 353, 480, 424],
+					[168, 418, 432, 489]
+				],
+				"subtitle": [
+					[80, 508, 520, 536],
+					[74, 536, 526, 564]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				230,
+				564
+			]
+		},
 		"school-of-prayer": {
 			"ground": "e9955f64f362dc3296da1cb3b3229f6aeab7813174b351455a9d29a00f569eb2",
 			"style": "devotional",
