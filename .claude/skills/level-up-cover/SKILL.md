@@ -155,7 +155,12 @@ prerendered pages reference it.
 - **A `cover-type.css`/font change makes `npm run og:covers` redraw EVERY twin**
   (the manifest's global `css`/`fonts` digests move) — ~350 PNGs of sub-1-level
   re-encode noise. Keep the manifest + your slugs' twins and `git checkout` the
-  rest. A new `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
+  rest. It is NOT always sub-1-level: a script with no fontsource subset (Amharic's
+  Ethiopic) falls back to the MACHINE's face, and a redraw on another Mac swapped every
+  Amharic layout card's face (18k pixels each, 2026-09-29). When the CSS change only
+  touches framed paintings (the scrim), restore every layout + plate twin with a
+  one-liner over `og-manifest.json` (`layout` not `framed*`, or `art` false). A new
+  `COVER_STYLE_IDS` recipe also needs a non-`.title` rule OUTSIDE the
   container gate (`coverComposition.test.ts`) and must not give the subtitle a face.
 
 - **The `fonts` digest also moves with local `node_modules`** (a fontsource version
@@ -276,15 +281,15 @@ prerendered pages reference it.
   lands second refreshes the copies.
 
 - **A LIGHT ground must pass every EDITION, not just English** (Brave for God
-  poster, 2026-09-28). The tuner and the contrast gate measure fixed English-position
-  bands (`INK_REGIONS`, subtitle y519–543). Translated titles and subtitles wrap
-  longer: on Brave for God, lg/sw subtitles reached y595, and 20 of 26 editions put
-  white text on pale snow, sand or sea (Swahili book 4 was unreadable) while every
-  gate stayed green. The old dark grounds hid this. Before shipping a light ground,
-  compose EVERY `<slug>.<lang>` edition (real `cover_title || title`, subtitle,
-  script fonts) and measure its real rows at the tuner's scrim. Then keep the band
-  where any edition's words can land a rich mid-tone, and put the bright elements
-  above the title or below the lowest subtitle, clear of the mark box.
+  poster, 2026-09-28). Translated titles and subtitles wrap longer: on Brave for God,
+  lg/sw subtitles reached y595, and 20 of 26 editions put white text on pale snow,
+  sand or sea while a gate measuring English rows stayed green. **Now automatic**
+  (2026-09-29): the scrim's title band follows each edition's `.middle`, and the
+  tuner + `CoverAssetTests` measure every framed edition at its own lines from the
+  `rows`/`middle` that `npm run og:covers` records — so run `og:covers` BEFORE the
+  tuner. Still design for it: keep the region where any edition's words land a rich
+  mid-tone, bright elements above the title or below the lowest subtitle, clear of
+  the mark box.
 
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
@@ -328,15 +333,16 @@ with the sun-or-moon glow LOW at the horizon (~y470)**; keep the mark zone over 
 foreground. `tune_art_scrim` measures the WORST pixel per band, floors at 0.30× and
 caps at 1.00× — CSS `opacity` clamps there, so the old 2.0× cap tuned scrims no page
 drew (a too-pale ground fails as "unusable" — recrop/darken). Since 2026-09-29 the
-bands are these fixed strips PLUS every framed edition's real line boxes, which
-`og:covers` records as `rows` in `og-manifest.json` — so a translation whose title
-wraps longer (Brave for God lg/sw subtitles at y539–595) is measured where it lands;
-that is why `og:covers` must run BEFORE the tuner. Six known-thin paintings wait on
-the founder in `covers.THIN_AT_FULL_SCRIM` (a ratchet: the gate fails if one is fixed
-and not removed). Brave landed
-0.65–0.80×. Verify by reading the composed og twin `covers/<slug>.png` (the real
-render), or composite `covers.scrimmed(ground, strength, subtitle=True)` + white text
-at the ink bands for a faithful preview before shipping.
+title/subtitle scrim is a band hung off `.middle` that MOVES WITH THE WORDS, and each
+framed edition is measured at its own lines under its own band: `og:covers` records
+`rows` + `middle` per edition in `og-manifest.json`, which is why it must run BEFORE
+the tuner (and after, to redraw). The byline (y102–130) and mark (y664–747) never
+move; the title block does — so "keep the title band dark" means dark wherever ANY
+edition's title/subtitle lands (translations wrap longer and sit lower). Verify by
+reading the composed og twins `covers/<lang>/<slug>.png` (the real render), or
+`covers.scrimmed(ground, strength, middle=(top, bottom), subtitle=True)` for a
+faithful preview (an edition's `middle` is in `og-manifest.json`). A painting worn
+only by laid-out editions has no scrim and no `ART_SCRIM` entry.
 
 **COMPOSITION RULES the ink bands impose (both bit growing-in-wisdom twice):**
 (a) A foreground SUBJECT (hero, figure, tree) must sit ENTIRELY BELOW the title band —

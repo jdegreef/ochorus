@@ -70,6 +70,7 @@ type Twin = {
 	volume?: string | null;
 	layout?: string;
 	rows?: Record<string, number[][]>;
+	middle?: number[];
 };
 
 const manifestText = once(() => readFileSync(join(STATIC, 'covers', 'og-manifest.json'), 'utf8'));
@@ -285,9 +286,9 @@ describe('the og twins were drawn in the style the table names now', () => {
 		);
 	});
 
-	it('records where the ink landed on every framed painting, and nowhere else', () => {
+	it('records where the ink and the scrim band landed on every framed painting, and nowhere else', () => {
 		// `rows` is what the scrim tuner and `CoverAssetTests`' contrast gate
-		// measure a painting at (`covers.painting_ink_rows` says why). Both are
+		// measure a painting at (`covers.painting_editions` says why). Both are
 		// Python and cannot tell a framed card from a laid-out one, so a framed
 		// painting with no rows would quietly fall back to the English strips.
 		// FRESH by construction: rows ride in the entry whose `ground`, `style`,
@@ -299,9 +300,16 @@ describe('the og twins were drawn in the style the table names now', () => {
 			.filter((b) => recorded[b.key])
 			.flatMap((b) => {
 				const rows = recorded[b.key].rows;
-				const framed = b.art && b.layout.startsWith('framed');
-				if (!framed) return rows ? [`${b.key}: rows on a ${b.art ? b.layout : 'plate'} card`] : [];
+				// Under the scrim: not a layout, and not a dark-ink ground.
+				const framed = b.art && ['framed', 'framed-top'].includes(b.layout);
+				if (!framed)
+					return rows || recorded[b.key].middle
+						? [`${b.key}: ink rows or a band recorded on a ${b.art ? b.layout : 'plate'} card`]
+						: [];
 				if (!rows) return [`${b.key}: no rows`];
+				const middle = recorded[b.key].middle;
+				if (!(Array.isArray(middle) && middle.length === 2 && middle[0] < middle[1]))
+					return [`${b.key}: no middle for the scrim band`];
 				return ['byline', 'title', 'mark']
 					.filter((name) => !rows[name]?.length || !rows[name].every(box))
 					.map((name) => `${b.key}: no usable ${name} row`);

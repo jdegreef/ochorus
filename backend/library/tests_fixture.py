@@ -1939,38 +1939,34 @@ class CoverAssetTests(SimpleTestCase):
         21%, because a single even wash had to serve the brightest artwork in
         the library.
 
-        The scrim now follows the type — three overlapping bands, air between —
-        and the paintings read at 53.4%. The guarantee narrows with it: white
+        The scrim now follows the type — peaks over the byline and the mark, and
+        a band hung off the title block that moves with its words — and the
+        paintings read at over 70%. The guarantee narrows with it: white
         type is safe over THESE paintings, not over any painting. So the
         measurement has to be real, and this is it. Add a pale painting and this
         fails with its name before a reader finds it.
 
         Pillow is a dev-group dependency, like the rest of `CoverAssetTests`'
-        image work; the whole sweep is well under a second.
+        image work; the whole sweep takes a few seconds.
         """
         from PIL import Image
 
         from library.art_scrim import ART_SCRIM
-        from library.covers import (
-            INK_DARK,
-            THIN_AT_FULL_SCRIM,
-            ink_contrast,
-            painting_ink_rows,
-            scrimmed,
-            subtitled_works,
-        )
+        from library.covers import painting_contrast, painting_editions
 
         art_dir = STATIC_DIR / "covers" / "art"
-        # Which works draw a subtitle (it picks the scrim curve), and where every
-        # edition's ink landed — each translation's own lines, not only the
-        # English strips (see `covers.painting_ink_rows` for why).
-        subtitled = subtitled_works(self.books)
-        rows = painting_ink_rows(self.books)
-        thin, untuned, mended = [], [], []
+        # EVERY FRAMED EDITION as it was laid out: its own lines, and its own
+        # `.middle` for the scrim's band to follow. This measured the English
+        # covers' strips alone while a translated title wraps longer and lands
+        # lower — Brave for God's Luganda and Swahili subtitles sat at y539-595,
+        # and 20 of its 26 editions set white type on pale art with this green.
+        # A painting only laid-out editions wear carries no scrim, so is absent.
+        editions = painting_editions(self.books)
+        thin, untuned = [], []
         for path in sorted(art_dir.glob("*.jpg")):
-            # A dark-ink ground carries no white type and has no scrim; its own
-            # gate below measures the ink it does carry.
-            if path.stem in INK_DARK:
+            # No edition wears it under a scrim (laid out, or a dark-ink ground —
+            # `test_dark_ink_grounds_carry_their_type` measures that ink).
+            if path.stem not in editions:
                 continue
             # AT ITS OWN STRENGTH, which is the thing being checked. A painting
             # with no entry falls back to the full scrim — the safe end, and what
@@ -1979,32 +1975,21 @@ class CoverAssetTests(SimpleTestCase):
             # palest artwork in the library needs.
             if path.stem not in ART_SCRIM:
                 untuned.append(path.stem)
-            has_sub = path.stem in subtitled
-            plate = scrimmed(
-                Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
-                ART_SCRIM.get(path.stem, 1.0),
-                has_sub,
-            )
-            # EVERY STRIP THAT CARRIES INK, measured by the one function the
-            # tuner tunes with (`covers.ink_contrast`). This used to measure the
-            # byline and the title and stop. The byline band was also 8px short
-            # of the real byline, so five paintings were failing in rows nothing
-            # looked at; the subtitle and the brandmark were not measured at all,
-            # and 36 of 38 paintings were under 4.5:1 under the subtitle.
-            failing = {
-                name: f"{name} {got:.2f}:1 (needs {bar})"
-                for name, (got, bar) in ink_contrast(
-                    plate, path.stem, has_sub, rows.get(path.stem)
+            # EVERY STRIP THAT CARRIES INK on every edition, measured by the one
+            # function the tuner tunes with (`covers.painting_contrast`). This
+            # used to measure the byline and the title and stop; the subtitle
+            # and the brandmark were not measured at all, and 36 of 38 paintings
+            # were under 4.5:1 under the subtitle.
+            bad = [
+                f"{name} {got:.2f}:1 on {key} (needs {bar})"
+                for name, (got, bar, key) in painting_contrast(
+                    Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS),
+                    ART_SCRIM.get(path.stem, 1.0),
+                    path.stem,
+                    editions[path.stem],
                 ).items()
                 if got < bar
-            }
-            # THE KNOWN FEW, which no drawable scrim carries and which wait on the
-            # founder (`covers.THIN_AT_FULL_SCRIM`). Tolerated by painting AND
-            # region, and only while they still fail: any other region failing
-            # still fails, and a mended one must leave the list.
-            known = THIN_AT_FULL_SCRIM.get(path.stem, {})
-            mended += [f"{path.stem}: {name}" for name in known if name not in failing]
-            bad = [line for name, line in failing.items() if name not in known]
+            ]
             if bad:
                 thin.append(f"{path.stem}: {', '.join(bad)}")
 
@@ -2013,11 +1998,6 @@ class CoverAssetTests(SimpleTestCase):
             "a painting too pale for the ink it carries under the scrim it is "
             "given — re-run `cd backend && uv run python scripts/tune_art_scrim.py`, "
             "or recrop the artwork if no strength carries it",
-        )
-        self.assertEqual(
-            mended, [],
-            "listed in covers.THIN_AT_FULL_SCRIM but carries its type now — "
-            "remove the entry and re-run `cd backend && uv run python scripts/tune_art_scrim.py`",
         )
         self.assertEqual(
             untuned, [],

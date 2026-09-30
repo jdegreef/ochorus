@@ -16,8 +16,8 @@ drop entries for paintings that are gone).
 
 WHAT THIS IS FOR
 `.cover-plate.over-art` darkens a painting so white type can sit on it, and its
-SHAPE is shared — three bands following the byline, the title and the mark,
-which are in the same place on every cover. How much of that a picture needs is
+SHAPE is shared — bands over the byline and the mark, and one that follows the
+title block wherever an edition's words put it. How much of that a picture needs is
 not shared at all: measured across the library the span is more than threefold.
 
 One strength for all of them therefore has to be the maximum, and that is what
@@ -56,15 +56,11 @@ sys.path.insert(0, str(BACKEND))
 
 from library.content_fixtures import book_editions  # noqa: E402
 from library.covers import (  # noqa: E402
-    INK_DARK,
     SCRIM_MAX,
-    THIN_AT_FULL_SCRIM,
     H,
     W,
-    ink_contrast,
-    painting_ink_rows,
-    scrimmed,
-    subtitled_works,
+    painting_contrast,
+    painting_editions,
 )
 
 ART = BACKEND.parent / "frontend" / "static" / "covers" / "art"
@@ -77,33 +73,26 @@ TS_TABLE = BACKEND.parent / "frontend" / "src" / "lib" / "coverScrim.ts"
 MARGIN = 0.1
 
 
-def needed(image, subtitle: bool, slug: str, rows: dict | None = None) -> float | None:
-    """The least strength that clears every bar, or None if none does.
+def needed(image, slug: str, editions) -> tuple[float | None, dict]:
+    """The least strength that clears every bar on every edition, or None if
+    none does — and, either way, the measurement it stopped at.
 
-    ``subtitle`` says whether this work's covers draw one. It decides both
-    whether the subtitle strip is measured AND whether the fourth scrim band is
-    there to be measured against — the two go together, which is why one flag
-    carries both.
-
-    ``rows`` is where each edition's ink actually landed (`painting_ink_rows`):
-    a translation whose subtitle wraps below the English strip is measured
-    there, not at the English rows.
+    ``editions`` is the painting's entry in `painting_editions`: each framed
+    edition as laid out, with its own lines and its own `.middle` for the band
+    to follow. One strength per painting, so it is the one its hardest edition
+    needs.
 
     The walk stops at `SCRIM_MAX`, the most the stylesheet can draw; it used to
     run to 2.00x, answering with strengths no page renders. At the ceiling the
     bar itself is enough — MARGIN is headroom to spend, and there is none left.
     """
-
-    def worst_over_bar(strength: float) -> float:
-        got = ink_contrast(scrimmed(image, strength, subtitle), slug, subtitle, rows)
-        return min(worst - bar for worst, bar in got.values())
-
     for step in range(30, round(SCRIM_MAX * 100) + 1, 5):
-        over = worst_over_bar(step / 100)
+        got = painting_contrast(image, step / 100, slug, editions)
+        over = min(worst - bar for worst, bar, _key in got.values())
         if over >= MARGIN:
-            return step / 100
+            return step / 100, got
     # The last step WAS the ceiling: its measurement answers the bar-only test.
-    return SCRIM_MAX if over >= 0 else None
+    return (SCRIM_MAX if over >= 0 else None), got
 
 
 def main() -> int:
@@ -115,10 +104,9 @@ def main() -> int:
     opts = parser.parse_args()
 
     books = [fields for _path, _slug, _lang, fields in book_editions()]
-    subtitled = subtitled_works(books)
     # Where every edition's type landed, from the og twin generator — run
     # `npm run og:covers` first if a title or subtitle changed.
-    rows = painting_ink_rows(books)
+    editions = painting_editions(books)
     table, unusable = {}, []
     paths = sorted(ART.glob("*.jpg"))
     if opts.slugs:
@@ -131,38 +119,34 @@ def main() -> int:
             return 1
         paths = [ART / f"{s}.jpg" for s in sorted(set(opts.slugs))]
     for path in paths:
-        # A dark-ink ground carries no white type and no scrim; the fixture gate
-        # measures its ink instead (`covers.INK_DARK`).
-        if path.stem in INK_DARK:
+        # A painting no edition wears UNDER A SCRIM has nothing to tune and no
+        # entry: laid-out editions set dark ink on paper, and a dark-ink ground
+        # (`covers.INK_DARK`) carries dark type straight over the picture — its
+        # own gate measures that ink. The page's fallback strength goes unused.
+        if path.stem not in editions:
+            table.pop(path.stem, None)
             continue
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
-        strength = needed(image, path.stem in subtitled, path.stem, rows.get(path.stem))
+        strength, got = needed(image, path.stem, editions[path.stem])
         if strength is None:
-            if path.stem not in THIN_AT_FULL_SCRIM:
-                unusable.append(path.stem)
-                continue
-            # Known, and the founder's call — see `covers.THIN_AT_FULL_SCRIM`.
-            thin = "; ".join(f"{k} {v}" for k, v in THIN_AT_FULL_SCRIM[path.stem].items())
-            print(f"  {path.stem:44} {SCRIM_MAX:.2f}x  (thin: {thin})")
-            table[path.stem] = SCRIM_MAX
+            short = "; ".join(
+                f"{name} {worst:.2f}:1 on {key}" for name, (worst, bar, key) in got.items() if worst < bar
+            )
+            unusable.append(f"{path.stem} ({short})")
             continue
         table[path.stem] = strength
-        mark = " +subtitle" if path.stem in subtitled else ""
-        print(f"  {path.stem:44} {strength:.2f}x{mark}")
+        print(f"  {path.stem:44} {strength:.2f}x")
 
     if unusable:
         print(
-            f"\nno strength up to {SCRIM_MAX:.2f}x carries white type over: {', '.join(unusable)}\n"
+            f"\nno strength up to {SCRIM_MAX:.2f}x carries white type over:\n  "
+            + "\n  ".join(unusable)
+            + "\n"
             "That is a painting too pale for this composition, not a tuning problem "
             "— recrop it, or give the work a darker artwork.",
             file=sys.stderr,
         )
         return 1
-
-    # A re-run for named slugs starts from the old table; drop any dark-ink
-    # ground it still carries, so the table holds only works with a scrim.
-    for slug in INK_DARK:
-        table.pop(slug, None)
 
     # The SVG Originals are measured outside this script (it reads rasters) and
     # carried in on every run, bare or not, so re-tuning never drops them. See
@@ -180,9 +164,9 @@ def main() -> int:
     TABLE.write_text(
         '"""How much scrim each painting needs — GENERATED by '
         "scripts/tune_art_scrim.py.\n\n"
-        "The scrim's SHAPE is shared and lives in `covers.scrim_alpha`: three bands\n"
-        "following the byline, the title and the mark, which sit in the same place on\n"
-        "every cover. How much of it a picture needs is a property of the picture, and\n"
+        "The scrim's SHAPE is shared and lives in `covers.scrimmed`: bands over the\n"
+        "byline and the mark, and one that follows each edition's title block. How\n"
+        "much of it a picture needs is a property of the picture, and\n"
         f"the span here is {span[0]:.2f}x to {span[-1]:.2f}x — so one strength for all of\n"
         "them has to be the maximum, and every other painting pays for the palest.\n\n"
         "Measured, not chosen: each value is the least strength at which white type\n"
@@ -203,7 +187,7 @@ def main() -> int:
         "// GENERATED by backend/scripts/tune_art_scrim.py — do not edit by hand.\n"
         "//\n"
         "// How much scrim each painting needs. The scrim's SHAPE lives in\n"
-        "// `cover-type.css` and in `covers.scrim_alpha`; this is how far it is\n"
+        "// `cover-type.css` and in `covers.scrimmed`; this is how far it is\n"
         "// scaled for one picture, measured as the least that still carries white\n"
         "// type over it. A painting with no entry takes 1, which is the strength\n"
         "// every painting carried before this table existed.\n"

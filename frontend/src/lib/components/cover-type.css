@@ -94,26 +94,25 @@
  *
  * The type does not cover the plate, so the scrim need not either. Type sits in
  * three places — the byline near the top, the title block in the middle, the
- * mark at the foot — and this is a curve with a peak at each and air between.
- * The same paintings now read at 53.4 per cent, and every one still clears AA
- * where type falls: measured through THIS rule in Chromium, per pixel, worst
- * byline 6.13:1 against a 4.5 bar and worst title 3.34:1 against 3.0.
+ * mark at the foot. The byline and the mark never move, so THIS layer peaks at
+ * each with air between; the title block moves with its words, so its share is
+ * the band hung off `.middle` below (it was a third peak here, fixed at the
+ * English rows, until translations landed under its fade).
+ * Readers now see over 70 per cent of each painting's brightness (38.7 under
+ * the even wash), and every framed edition still clears AA at its own lines —
+ * `CoverAssetTests` measures each one through this layer and the band.
  *
- * BANDS THAT OVERLAP, and a floor that is never zero. Three separate peaks with
- * clear air between them read as STRIPES across a smooth sky — visibly worse
- * than the even wash they replace. Wide cosine shoulders and a floor make one
- * continuous curve instead, with no edge anywhere on the photograph.
+ * BANDS THAT OVERLAP, and a floor that is never zero. Separate peaks with clear
+ * air between them read as STRIPES across a smooth sky — visibly worse than the
+ * even wash they replace. Wide cosine shoulders and a floor make one continuous
+ * curve instead, with no edge anywhere on the photograph.
  *
  * Sampled every 2.5 per cent because CSS has no cosine. The deviation from the
  * true curve is under 0.02 alpha; a coarser 5 per cent sampling missed by
  * 0.048, which is enough to cost a painting its contrast.
  *
- * ONE STRENGTH FOR EVERY PAINTING, which is the compromise here and worth
- * naming. What each one needs spans 0.60x to 1.10x — `godliness` clears AA at
- * 11.95:1 under a light scrim and carries the same weight as the brightest
- * artwork in the library. Tuning per painting measured at 67.7 per cent
- * retained rather than 53.4, and needs a per-work table the frontend can read:
- * worth doing, as its own change. */
+ * HOW MUCH is per painting (`coverScrim.ts`, measured by the tuner): the
+ * shape follows the type, the strength is the picture's. */
 .cover-plate.over-art::before {
 	/* ON A PSEUDO-ELEMENT so one painting's scrim can be lighter than another's.
 	   The SHAPE below is shared — it follows where type sits, which is the same
@@ -148,24 +147,24 @@
 			rgb(0 0 0 / 0.41) 22.5%,
 			rgb(0 0 0 / 0.30) 25%,
 			rgb(0 0 0 / 0.21) 27.5%,
-			rgb(0 0 0 / 0.27) 30%,
-			rgb(0 0 0 / 0.33) 32.5%,
-			rgb(0 0 0 / 0.40) 35%,
-			rgb(0 0 0 / 0.47) 37.5%,
-			rgb(0 0 0 / 0.53) 40%,
-			rgb(0 0 0 / 0.58) 42.5%,
-			rgb(0 0 0 / 0.62) 45%,
-			rgb(0 0 0 / 0.63) 47.5%,
-			rgb(0 0 0 / 0.64) 50%,
-			rgb(0 0 0 / 0.62) 52.5%,
-			rgb(0 0 0 / 0.59) 55%,
-			rgb(0 0 0 / 0.54) 57.5%,
-			rgb(0 0 0 / 0.48) 60%,
-			rgb(0 0 0 / 0.42) 62.5%,
-			rgb(0 0 0 / 0.35) 65%,
-			rgb(0 0 0 / 0.28) 67.5%,
-			rgb(0 0 0 / 0.22) 70%,
-			rgb(0 0 0 / 0.17) 72.5%,
+			rgb(0 0 0 / 0.14) 30%,
+			rgb(0 0 0 / 0.11) 32.5%,
+			rgb(0 0 0 / 0.11) 35%,
+			rgb(0 0 0 / 0.11) 37.5%,
+			rgb(0 0 0 / 0.11) 40%,
+			rgb(0 0 0 / 0.11) 42.5%,
+			rgb(0 0 0 / 0.11) 45%,
+			rgb(0 0 0 / 0.11) 47.5%,
+			rgb(0 0 0 / 0.11) 50%,
+			rgb(0 0 0 / 0.11) 52.5%,
+			rgb(0 0 0 / 0.11) 55%,
+			rgb(0 0 0 / 0.11) 57.5%,
+			rgb(0 0 0 / 0.11) 60%,
+			rgb(0 0 0 / 0.11) 62.5%,
+			rgb(0 0 0 / 0.11) 65%,
+			rgb(0 0 0 / 0.11) 67.5%,
+			rgb(0 0 0 / 0.11) 70%,
+			rgb(0 0 0 / 0.12) 72.5%,
 			rgb(0 0 0 / 0.16) 75%,
 			rgb(0 0 0 / 0.24) 77.5%,
 			rgb(0 0 0 / 0.34) 80%,
@@ -180,66 +179,91 @@
 	);
 }
 
-/* THE SAME CURVE PLUS ITS FOURTH BAND, for a cover that draws a subtitle.
-   A whole second gradient rather than a second layer stacked on the first:
-   `scrim_alpha` takes the MAX of its bands, and two stacked translucent blacks
-   composite as 1-(1-a)(1-b), which is not that. One rule overriding the other
-   is the only spelling that stays faithful to the Python.
+/* THE BAND THAT FOLLOWS THE TYPE — the title and subtitle's share of the scrim.
 
-   The subtitle sits at 0.649-0.677 of the plate and was getting alpha 0.29
-   where the title gets 0.58 — half the scrim, under smaller type at lower ink
-   opacity than the byline. 36 of 38 paintings measured under 4.5:1 there and
-   nothing looked: the tuner and the fixture gate both stopped at the title.
+   It used to be two more bands in the plate's curve above, at fixed heights:
+   the English covers' title and subtitle rows. A translated title wraps longer
+   and `.middle` (centred between byline and mark) grows, so its words land
+   elsewhere — on Brave for God the Luganda and Swahili subtitles sat at y595,
+   under the fade of a band centred on y528, and 20 of 26 editions set white type
+   on pale art. So the band hangs off `.middle` itself and goes wherever the
+   words do, in both renderers, with no measuring at runtime.
 
-   Only on covers that HAVE a subtitle, because 18 of the 38 works do not, and
-   darkening a strip of their photography to protect words that are not there
-   is the even-wash thinking the shaped scrim replaced. Sampled from
-   `covers.scrim_alpha(f, 1.0, subtitle=True)` every 2.5%, like its sibling;
-   `coverArtContrast.test.ts` holds the two spellings together. */
-.cover-plate.over-art.has-subtitle::before {
+   A plateau across the block with cosine shoulders 12cqw beyond it, wide
+   enough to merge into the plate's layer rather than read as a stripe. A cover
+   with a subtitle gets a darker foot: the subtitle is small type at a lower ink
+   opacity, and it is always the last thing in the block.
+
+   A SEPARATE LAYER, so it composites over the plate's (1 - (1-a)(1-b)) rather
+   than taking the max — `covers.scrimmed` models exactly that, and scales both
+   by `--scrim-strength` as the `opacity` here does. The stops are
+   `covers.middle_band_stops`, written out; `tests_covers.MiddleBandCssTests`
+   holds the two equal. Painted UNDER the words: `isolation` makes `.middle` the stacking
+   context and `z-index: -1` sends the band beneath its type but above the
+   plate's layer and the painting. */
+/* Scrimmed covers only: a layout owns `.middle`'s geometry, and neither it nor a
+   dark-ink ground (`.ink-dark`) has a scrim for the band to be part of. */
+.cover-plate.over-art:not(.has-layout, .ink-dark) .cover-type .middle {
+	position: relative;
+	isolation: isolate;
+}
+.cover-plate.over-art .cover-type .middle::after {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	/* The shoulders, and the plate's full width: out through `.cover-type`'s side
+	   padding, named there so the two cannot come apart. */
+	inset: -12cqw calc(-1 * var(--type-pad-x));
+	pointer-events: none;
+	opacity: var(--scrim-strength, 1);
 	background: linear-gradient(
 		180deg,
-rgb(0 0 0 / 0.26) 0%,
-			rgb(0 0 0 / 0.36) 2.5%,
-			rgb(0 0 0 / 0.47) 5%,
-			rgb(0 0 0 / 0.56) 7.5%,
-			rgb(0 0 0 / 0.63) 10%,
-			rgb(0 0 0 / 0.66) 12.5%,
-			rgb(0 0 0 / 0.65) 15%,
-			rgb(0 0 0 / 0.59) 17.5%,
-			rgb(0 0 0 / 0.51) 20%,
-			rgb(0 0 0 / 0.41) 22.5%,
-			rgb(0 0 0 / 0.30) 25%,
-			rgb(0 0 0 / 0.21) 27.5%,
-			rgb(0 0 0 / 0.27) 30%,
-			rgb(0 0 0 / 0.33) 32.5%,
-			rgb(0 0 0 / 0.40) 35%,
-			rgb(0 0 0 / 0.47) 37.5%,
-			rgb(0 0 0 / 0.53) 40%,
-			rgb(0 0 0 / 0.58) 42.5%,
-			rgb(0 0 0 / 0.62) 45%,
-			rgb(0 0 0 / 0.63) 47.5%,
-			rgb(0 0 0 / 0.64) 50%,
-			rgb(0 0 0 / 0.62) 52.5%,
-			rgb(0 0 0 / 0.59) 55%,
-			rgb(0 0 0 / 0.54) 57.5%,
-			rgb(0 0 0 / 0.54) 60%,
-			rgb(0 0 0 / 0.69) 62.5%,
-			rgb(0 0 0 / 0.76) 65%,
-			rgb(0 0 0 / 0.75) 67.5%,
-			rgb(0 0 0 / 0.66) 70%,
-			rgb(0 0 0 / 0.51) 72.5%,
-			rgb(0 0 0 / 0.34) 75%,
-			rgb(0 0 0 / 0.24) 77.5%,
-			rgb(0 0 0 / 0.34) 80%,
-			rgb(0 0 0 / 0.45) 82.5%,
-			rgb(0 0 0 / 0.55) 85%,
-			rgb(0 0 0 / 0.62) 87.5%,
-			rgb(0 0 0 / 0.66) 90%,
-			rgb(0 0 0 / 0.65) 92.5%,
-			rgb(0 0 0 / 0.61) 95%,
-			rgb(0 0 0 / 0.53) 97.5%,
-			rgb(0 0 0 / 0.43) 100%
+		rgb(0 0 0 / 0) 0,
+		rgb(0 0 0 / 0.015) 1.5cqw,
+		rgb(0 0 0 / 0.059) 3cqw,
+		rgb(0 0 0 / 0.123) 4.5cqw,
+		rgb(0 0 0 / 0.2) 6cqw,
+		rgb(0 0 0 / 0.277) 7.5cqw,
+		rgb(0 0 0 / 0.341) 9cqw,
+		rgb(0 0 0 / 0.385) 10.5cqw,
+		rgb(0 0 0 / 0.4) 12cqw,
+		rgb(0 0 0 / 0.4) calc(100% - 12cqw),
+		rgb(0 0 0 / 0.385) calc(100% - 10.5cqw),
+		rgb(0 0 0 / 0.341) calc(100% - 9cqw),
+		rgb(0 0 0 / 0.277) calc(100% - 7.5cqw),
+		rgb(0 0 0 / 0.2) calc(100% - 6cqw),
+		rgb(0 0 0 / 0.123) calc(100% - 4.5cqw),
+		rgb(0 0 0 / 0.059) calc(100% - 3cqw),
+		rgb(0 0 0 / 0.015) calc(100% - 1.5cqw),
+		rgb(0 0 0 / 0) 100%
+	);
+}
+.cover-plate.over-art.has-subtitle .cover-type .middle::after {
+	background: linear-gradient(
+		180deg,
+		rgb(0 0 0 / 0) 0,
+		rgb(0 0 0 / 0.015) 1.5cqw,
+		rgb(0 0 0 / 0.059) 3cqw,
+		rgb(0 0 0 / 0.123) 4.5cqw,
+		rgb(0 0 0 / 0.2) 6cqw,
+		rgb(0 0 0 / 0.277) 7.5cqw,
+		rgb(0 0 0 / 0.341) 9cqw,
+		rgb(0 0 0 / 0.385) 10.5cqw,
+		rgb(0 0 0 / 0.4) 12cqw,
+		rgb(0 0 0 / 0.4) calc(100% - 27.5cqw),
+		rgb(0 0 0 / 0.437) calc(100% - 26.5cqw),
+		rgb(0 0 0 / 0.525) calc(100% - 25.5cqw),
+		rgb(0 0 0 / 0.613) calc(100% - 24.5cqw),
+		rgb(0 0 0 / 0.65) calc(100% - 23.5cqw),
+		rgb(0 0 0 / 0.65) calc(100% - 12cqw),
+		rgb(0 0 0 / 0.625) calc(100% - 10.5cqw),
+		rgb(0 0 0 / 0.555) calc(100% - 9cqw),
+		rgb(0 0 0 / 0.449) calc(100% - 7.5cqw),
+		rgb(0 0 0 / 0.325) calc(100% - 6cqw),
+		rgb(0 0 0 / 0.201) calc(100% - 4.5cqw),
+		rgb(0 0 0 / 0.095) calc(100% - 3cqw),
+		rgb(0 0 0 / 0.025) calc(100% - 1.5cqw),
+		rgb(0 0 0 / 0) 100%
 	);
 }
 
@@ -255,7 +279,7 @@ rgb(0 0 0 / 0.26) 0%,
 	   the contrast AT that height, so a byline sitting higher up the gradient
 	   than the generator's would sit on a lighter tone than the floor was
 	   computed against. */
-	padding: var(--byline-top) 7cqw 9cqw;
+	padding: var(--byline-top) var(--type-pad-x) 9cqw;
 	color: #fff;
 	text-align: center;
 	/* The frame's distance from the plate edge, named because the press corner
@@ -267,6 +291,9 @@ rgb(0 0 0 / 0.26) 0%,
 	   imprint band is drawn behind the byline from these, and a second copy of
 	   the numbers would let the byline move out of its band. */
 	--byline-top: 17cqw;
+	/* The type's side margin — and how far the title block's scrim band reaches
+	   back out to the plate's edges (`.middle::after`). */
+	--type-pad-x: 7cqw;
 	--byline-size: 3.9cqw;
 	/* ONE HAIRLINE INK for every short rule an ornament flanks itself with:
 	   both period marks and the press corners draw the same 1px white at the
@@ -1057,7 +1084,8 @@ rgb(0 0 0 / 0.26) 0%,
    and the three white literals (frame, ring, young rule) is the whole change.
    The ground must be light where the words land — the backend gate measures
    this ink there. */
-.cover-plate.over-art.ink-dark::before {
+.cover-plate.over-art.ink-dark::before,
+.cover-plate.over-art.ink-dark .cover-type .middle::after {
 	display: none;
 }
 .cover-plate.over-art.ink-dark .cover-type {
@@ -1117,6 +1145,7 @@ rgb(0 0 0 / 0.26) 0%,
 .cover-plate.over-art.has-layout .cover-type::before,
 .cover-plate.over-art.has-layout .cover-type::after,
 .cover-plate.over-art.has-layout .cover-type .middle::before,
+.cover-plate.over-art.has-layout .cover-type .middle::after,
 .cover-plate.over-art.has-layout .cover-type .subtitle {
 	display: none;
 }
