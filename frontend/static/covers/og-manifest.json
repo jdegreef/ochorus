@@ -5197,7 +5197,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-amanda-berry-smith": {
 			"ground": "97ac4d01bf7b6231e04389f630c2897c14b2eb9dfa63a2203339970aecddc69f",
@@ -5370,7 +5374,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-charles-h-spurgeon": {
 			"ground": "c5d7d01b37aa188e516c121a437d33ecc113215edd3dd034b75f59ab2059e67b",
@@ -5425,7 +5433,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-derek-prince": {
 			"ground": "e6f236258560bda5afbbeb90af60106de7eaa518f317a023c5fb0298be1f892d",
@@ -5433,7 +5445,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.35,
 			"layout": "framed-top",
 			"bar": 0,
 			"rows": {
@@ -5450,7 +5462,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-dietrich-bonhoeffer": {
 			"ground": "73b225db4e8294823e1497caed8d2a1cb6b97c6c97aceccba6722783be59f936",
@@ -5476,7 +5492,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				432
+			]
 		},
 		"key-teachings-of-dwight-l-moody": {
 			"ground": "46496a291d91ca1e9d2879b492b04f58f5ba5efec1db7d0085ff70b7bb1f7345",
@@ -5484,7 +5504,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.4,
+			"scrim": 0.35,
 			"layout": "framed-top",
 			"bar": 0,
 			"rows": {
@@ -5501,7 +5521,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-e-m-bounds": {
 			"ground": "66ad506c908792d5c628271bcb863e102c648b2c28d24d13bc81755e718512e9",
@@ -5526,7 +5550,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-frederick-brotherton-meyer": {
 			"ground": "a83efdc05ac91f8365e9d9c0b7dc58c5fda7b258d509eebd4117ba42b0eca441",
@@ -5551,7 +5579,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-gareth-evans": {
 			"ground": "1bcb47a1a9299f9c2e05200e8ffca8ea88e5f9d9955bfe50ea33bd1d8007d734",
@@ -5576,7 +5608,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-george-whitefield": {
 			"ground": "6ccbb3ee8bba30fcf0fc428c8e15e0d75dd1ba6c9cd46057a94df5d83062ab0f",
@@ -5584,7 +5620,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.3,
 			"layout": "framed-top",
 			"bar": 0,
 			"rows": {
@@ -5602,7 +5638,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				432
+			]
 		},
 		"key-teachings-of-hannah-whitall-smith": {
 			"ground": "89f6e5c0a50bb40f7ad43655f007099ea800523d9e4b9f9503d939bfd8683337",
@@ -5687,7 +5727,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				432
+			]
 		},
 		"key-teachings-of-jeanne-guyon": {
 			"ground": "e33a63ee733310eae5919c9384bec378fbd60bb7d81434199b377b7473aaf750",
@@ -5741,7 +5785,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-john-calvin": {
 			"ground": "6c4ee3ef2066f69e7b7fab38d133c03aee1da6de1b384588c48b2f7e3e8fcd0a",
@@ -5766,7 +5814,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-john-owen": {
 			"ground": "2981692350e31c2ba196925694f992ad8d335f4d64f643b1de4218e72357229b",
@@ -5791,7 +5843,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-john-wesley": {
 			"ground": "36f47544c9a45731542e73ea7019ff285b256bef41cc87915d1abc6c096e99a1",
@@ -5816,7 +5872,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-jonathan-edwards": {
 			"ground": "9e1b2a422d7ea975b3645288b869291d8020a9f6060c7e457fd62c135ea30e55",
@@ -5900,7 +5960,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-martyn-lloyd-jones": {
 			"ground": "71de645c7658992ec40bb7c8f3685b6fe60f9fef5a5d8d98af97249b16b48128",
@@ -5926,7 +5990,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				432
+			]
 		},
 		"key-teachings-of-r-a-torrey": {
 			"ground": "454780cb8dd9ef562a0ea15f94c45d4b1831c87ac8983ded5c26645acd3fb28b",
@@ -5951,7 +6019,11 @@
 				"mark": [
 					[232, 664, 368, 746]
 				]
-			}
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"key-teachings-of-richard-baxter": {
 			"ground": "3d033b0c667e69a730aea0312dab8c8c8e3073dd6bf4ccd03a6624fbb9caee49",
