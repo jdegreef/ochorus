@@ -14,8 +14,8 @@
 
 	const t = i18n.t;
 
-	// Site-level structured data: a WebSite with the sitelinks-searchbox action
-	// (the hero search posts to /search) and the publishing Organization.
+	// Site-level structured data: the WebSite and the publishing Organization,
+	// linked by @id.
 	const siteLd = jsonLd([
 		{
 			'@context': 'https://schema.org',
@@ -25,15 +25,10 @@
 			url: `${SITE_URL}/`,
 			// The same organisation every book, chapter and sermon names as
 			// publisher — one entity, linked by @id ($lib/seo publisherLd).
-			publisher: publisherLd(),
-			potentialAction: {
-				'@type': 'SearchAction',
-				target: {
-					'@type': 'EntryPoint',
-					urlTemplate: `${SITE_URL}/search?q={search_term_string}`
-				},
-				'query-input': 'required name=search_term_string'
-			}
+			publisher: publisherLd()
+			// No SearchAction: Google retired the sitelinks search box it fed
+			// (Nov 2024), and its target, /search?q=, is disallowed in robots.txt
+			// — markup promising a URL the site tells crawlers not to fetch.
 		},
 		{
 			'@context': 'https://schema.org',

@@ -582,6 +582,13 @@ class SermonDetailSerializer(serializers.ModelSerializer):
     prev = serializers.SerializerMethodField()
     next = serializers.SerializerMethodField()
     difficulty = serializers.SerializerMethodField()
+    # The preacher's entity identifiers, for the sermon's JSON-LD author — the
+    # same list BookDetail carries as author_same_as, so a sermon's Person node
+    # names WHICH person it is, not just a matching name.
+    author_same_as = serializers.SerializerMethodField()
+
+    def get_author_same_as(self, obj):
+        return obj.author.same_as or []
 
     def get_difficulty(self, obj):
         from .readability import difficulty
@@ -704,6 +711,7 @@ class SermonDetailSerializer(serializers.ModelSerializer):
             "author_name",
             "author_slug",
             "author_photo",
+            "author_same_as",
             "prev",
             "next",
             "scripture_refs",

@@ -581,6 +581,9 @@ export interface Sermon extends SermonSummary {
 	author_name: string;
 	author_slug: string;
 	author_photo: string;
+	/** The preacher's entity identifiers (Wikidata, Wikipedia…) for JSON-LD
+	 *  `sameAs`. Optional: an API behind this build omits it. */
+	author_same_as?: string[];
 	/** Previous / next sermon by the same author (shelf order); null at the ends. */
 	prev: SermonNeighbour | null;
 	next: SermonNeighbour | null;
