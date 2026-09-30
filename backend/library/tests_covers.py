@@ -403,6 +403,10 @@ class CuratedArtTests(TestCase):
                 # nothing anywhere would have failed.
                 self.assertGreaterEqual(art.focus, 0.0, "focus is a fraction of the overflow")
                 self.assertLessEqual(art.focus, 1.0, "focus is a fraction of the overflow")
+                # A trim is for a mount, not a zoom: past a fifth a side it is
+                # choosing a different picture, and at a half there is none.
+                self.assertGreaterEqual(art.trim, 0.0, "trim is a fraction of each side")
+                self.assertLessEqual(art.trim, 0.2, "trim is a fraction of each side")
 
     def test_focus_moves_the_crop_window_along_the_overflowing_axis(self):
         """`focus` has to change PIXELS, not just be stored.

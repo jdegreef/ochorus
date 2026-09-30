@@ -104,6 +104,11 @@ class Artwork(NamedTuple):
     #: painting's recipe (object and focus, `crop_recipe`) is recorded in
     #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
+    #: How much of EACH edge to cut away before cropping, as a fraction of that
+    #: side (0–0.2). For a scan that photographs the black mount around the
+    #: canvas: `focus` only slides the window, so a border along the axis that
+    #: doesn't overflow survives every crop and ships as a dark bar. Default 0.
+    trim: float = 0.0
 
 
 def crop_recipe(art: Artwork) -> str:
@@ -115,7 +120,10 @@ def crop_recipe(art: Artwork) -> str:
     to a different artwork, or moving its ``focus``, redraws it rather than
     leaving the old picture under the new credit.
     """
-    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    recipe = f"{art.source}-{art.object_id}@{art.focus:.2f}"
+    # Only a trimmed work names its trim, so every recipe committed before it
+    # existed still reads the same.
+    return f"{recipe}~{art.trim:.2f}" if art.trim else recipe
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -775,11 +783,14 @@ CURATED: dict[str, Artwork] = {
         "sleeps\", painted the year before he sailed.",
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
+    # The Met's scan includes the black mount on every side (~4.5%); `trim`
+    # cuts it away rather than letting it frame the cover in dark bars.
     "corrie-ten-boom-a-life": Artwork(
         "met", 912940, "Job Adriaensz Berckheyde", "Interior of the Sint-Bavokerk, Haarlem", "ca. 1676",
         "The Grote Kerk of Haarlem, a few steps from the Beje: the church where "
         "Corrie sat in her own pew at the first service after liberation, and "
         "whose \"hundred shades of grey\" she walked through in her mind at Vught.",
+        trim=0.06,
     ),
 }
 
