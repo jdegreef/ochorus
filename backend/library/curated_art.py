@@ -74,6 +74,12 @@ SOURCES: dict[str, Source] = {
         "The Art Institute of Chicago, CC0",
         "https://www.artic.edu/artworks/{}",
     ),
+    # A painting none of the three museums hold, catalogued on Wikidata (the id
+    # is the number after the Q) and photographed on Wikimedia Commons.
+    "wikidata": Source(
+        "Wikimedia Commons, public domain",
+        "https://www.wikidata.org/wiki/Q{}",
+    ),
 }
 
 
@@ -775,11 +781,16 @@ CURATED: dict[str, Artwork] = {
         "sleeps\", painted the year before he sailed.",
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-29). Haarlem from the dunes,
+    # the Grote Kerk on the skyline: Corrie's city, whole. The Mauritshuis
+    # painting, through Wikidata — none of the three museums above hold a view
+    # of Haarlem that isn't already another book's.
     "corrie-ten-boom-a-life": Artwork(
-        "met", 912940, "Job Adriaensz Berckheyde", "Interior of the Sint-Bavokerk, Haarlem", "ca. 1676",
-        "The Grote Kerk of Haarlem, a few steps from the Beje: the church where "
-        "Corrie sat in her own pew at the first service after liberation, and "
-        "whose \"hundred shades of grey\" she walked through in her mind at Vught.",
+        "wikidata", 17275831, "Jacob van Ruisdael", "View of bleaching fields and Haarlem", "1670",
+        "Haarlem seen from the dunes, the Grote Kerk rising over the town: the "
+        "city where the ten Booms kept their watch shop for a century and hid "
+        "Jews from the Nazis in the Beje, a few streets from that church.",
+        focus=0.3,
     ),
 }
 
@@ -1020,7 +1031,7 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "1d0cc9e028c5bcfa40077a9c11e5a29fbe91ef882c5b053a68457c25d0c1e43a",
         "Growing Up: a girl walking the river path toward the light.",
     ),
-    # The Key Teachings companions (Simpson, Edwards, Baxter, Nee). One frame for
+    # The Key Teachings companions (Simpson, Edwards, Baxter, Nee, …). One frame for
     # the series: each man's desk, painted close and warm by the light of his own
     # era, on one shared table against a wall in the book's colour. Chosen
     # 2026-09-29 from sixteen mockups ("the study", warm and close), replacing
@@ -1044,6 +1055,32 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "c172ac7988c4ab041ea0008a6edc8669f37d3976f8df7bd27d9a73affd954ea9",
         "A green-shaded desk lamp, a blue-and-white teacup, a black Bible and a "
         "fountain pen on a notebook: a twentieth-century Chinese study.",
+    ),
+    # Five more (2026-09-29), painted by the same renderer and light.
+    "key-teachings-of-charles-h-spurgeon": Original(
+        "ca1653b4fcedca27f0695e5bab27f3a3654cd8a83216d532303dfe8ecff4e2a0",
+        "A brass parlour lamp under an opal globe, a thick black Bible, folded "
+        "sermon notes and pince-nez: the Victorian preacher's desk.",
+    ),
+    "key-teachings-of-andrew-murray": Original(
+        "ec2cd771a3430ce5f6453a52b0a832c9bf0970d2f0be2222350bb3207414a7ef",
+        "A tin hurricane lantern, a worn brown Bible and a chipped enamel "
+        "coffee mug: the South African pastor on the road.",
+    ),
+    "key-teachings-of-hannah-whitall-smith": Original(
+        "0a299d3bcebd317610ad3d7de26fa5bb829879978d24cfb0b8caa9898415c54f",
+        "A milk-glass oil lamp, an embroidery hoop, a grey cloth book with a "
+        "thimble, a plain white cup and saucer: a Quaker woman's table.",
+    ),
+    "key-teachings-of-catherine-booth": Original(
+        "99d4c0dcab78da89ffbdddf65e38bdbbff00490afe570278f76610e84555f0b2",
+        "A brass lamp with a glass font, a Bible under a crimson hymn book, "
+        "handwritten pages and a dip pen: the Army mother's desk.",
+    ),
+    "key-teachings-of-augustine-of-hippo": Original(
+        "c55f903d40fec3a8d27bec4ae7086201bf84c73ddc88a862dd7b3f08c169505d",
+        "A terracotta lamp on a bronze stand, papyrus scrolls, a wax tablet "
+        "and stylus, a clay cup: a bishop's table in Roman Africa.",
     ),
 }
 

@@ -16,7 +16,13 @@ person (``susanna-wesley-clarke``, ``watchman-nee-a-life``), never crediting the
 subject as if they wrote it. It is not filed under ``ochorus-originals`` (that is
 for multi-subject collections).
 
-Why a bespoke command rather than ``import_pdf``: these are typographically rich
+The first four volumes came as PDFs set in one shared template; later volumes
+(Spurgeon, Murray, Hannah Whitall Smith, Catherine Booth, Augustine) are written
+directly as Markdown manuscripts (``data/key-teachings/<author>.md``, grammar at
+``manuscript``) that state the same structure the PDF reader infers — the
+description and "About this work" ride in the manuscript's front matter.
+
+Why a bespoke command rather than ``import_pdf`` for the PDFs: these are typographically rich
 digital PDFs (one shared template) that the generic PDF importer mishandles in
 three ways — the small-caps running header ("N THE KEY TEACHINGS OF …") leaks
 into every chapter body, the bold in-chapter subheadings fuse into the following
@@ -116,11 +122,19 @@ class Work:
     title: str
     subtitle: str
     author_slug: str
-    pdf: str
-    description: str
+    source: str  # under DATA_DIR: a template PDF, or a Markdown manuscript
     attribution: str
     cover_color: str
-    about_html: str  # reader-visible "About this work" — carries the rights note
+    # Reader-visible copy. A Markdown manuscript carries both in its front
+    # matter, so the prose lives in one file; a PDF work states them here.
+    description: str = ""
+    about_html: str = ""  # "About this work" — carries the rights note
+
+    @property
+    def cover_url(self) -> str:
+        # The painted "study" ground (#4500), which replaced the series' first
+        # gilt-tree SVGs; wordless, so BookCover sets the title over it.
+        return f"/covers/art/{self.slug}.jpg"
 
 
 WORKS: dict[str, Work] = {
@@ -129,7 +143,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of A. B. Simpson",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="a-b-simpson",
-        pdf="a-b-simpson.pdf",
+        source="a-b-simpson.pdf",
         description=(
             "A concise, faithful guide to the heart of A. B. Simpson's message — "
             "the Fourfold Gospel of Christ our Saviour, Sanctifier, Healer, and "
@@ -176,7 +190,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Jonathan Edwards",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="jonathan-edwards",
-        pdf="jonathan-edwards.pdf",
+        source="jonathan-edwards.pdf",
         description=(
             "A concise, faithful guide to the mind and heart of Jonathan Edwards "
             "— the sovereignty and the beauty of God, true religion as holy "
@@ -222,7 +236,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Richard Baxter",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="richard-baxter",
-        pdf="richard-baxter.pdf",
+        source="richard-baxter.pdf",
         description=(
             "A concise, faithful guide to the pastoral heart of Richard Baxter — "
             "the saints' everlasting rest, the call to the unconverted, and the "
@@ -268,7 +282,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Watchman Nee",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="watchman-nee",
-        pdf="watchman-nee.pdf",
+        source="watchman-nee.pdf",
         description=(
             "A concise, faithful guide to the heart of Watchman Nee's ministry — "
             "the normal Christian life as Christ living in the believer, the "
@@ -312,6 +326,79 @@ WORKS: dict[str, Work] = {
             "admiration but obedience — not to him, but to the Lord he spent his "
             "life trying to describe.</p>"
         ),
+    ),
+    "key-teachings-of-charles-h-spurgeon": Work(
+        slug="key-teachings-of-charles-h-spurgeon",
+        title="The Key Teachings of Charles H. Spurgeon",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="charles-h-spurgeon",
+        source="charles-h-spurgeon.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Not published by, affiliated with, or endorsed by the Metropolitan "
+            "Tabernacle or Spurgeon's College. Charles H. Spurgeon's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#43305a",
+    ),
+    "key-teachings-of-andrew-murray": Work(
+        slug="key-teachings-of-andrew-murray",
+        title="The Key Teachings of Andrew Murray",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="andrew-murray",
+        source="andrew-murray.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Andrew Murray's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#4a5a2a",
+    ),
+    "key-teachings-of-hannah-whitall-smith": Work(
+        slug="key-teachings-of-hannah-whitall-smith",
+        title="The Key Teachings of Hannah Whitall Smith",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="hannah-whitall-smith",
+        source="hannah-whitall-smith.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Hannah Whitall Smith's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#4a5a6c",
+    ),
+    "key-teachings-of-catherine-booth": Work(
+        slug="key-teachings-of-catherine-booth",
+        title="The Key Teachings of Catherine Booth",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="catherine-booth",
+        source="catherine-booth.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Not published by, affiliated with, or endorsed by The Salvation "
+            "Army. Catherine Booth's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#7c2436",
+    ),
+    "key-teachings-of-augustine-of-hippo": Work(
+        slug="key-teachings-of-augustine-of-hippo",
+        title="The Key Teachings of Augustine of Hippo",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="augustine-of-hippo",
+        source="augustine-of-hippo.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. Augustine wrote in Latin; where his words are quoted, it is in "
+            "public-domain English translations. Augustine's own writings are in the public domain "
+            "and freely available; readers are encouraged to go to them directly. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#7b5a2c",
     ),
 }
 
@@ -442,6 +529,107 @@ def _segment_html(seg: list[tuple[str, float, bool]], body: float) -> str:
     return "".join(f"<{tag}>{html.escape(t)}</{tag}>" for tag, t in parts)
 
 
+# A Markdown manuscript — the source for volumes written after the PDF template
+# (Spurgeon onward). Its grammar is the PDF's structure, stated rather than
+# inferred from font sizes:
+#
+#     ---                         front matter: `description: <one line>` and
+#     description: …              `about: |` then indented paragraphs, blank-
+#     about: |                    line separated (-> the `about_html` <p>s)
+#       First paragraph …
+#     ---
+#     # Chapter Title             -> a chapter boundary
+#     ## A subheading             -> <h2>
+#     ### A PRAYER                -> <blockquote>A PRAYER</blockquote>, the
+#                                    set-apart label the PDF volumes carry
+#     > Words. PSALM 73:25        -> one <blockquote> per line (Scripture, or a
+#                                    line of the closing prayer)
+#     1. An application point     -> its own <p>
+#     prose lines                 -> <p>, paragraphs split on a blank line
+_FRONT = re.compile(r"\A---\n(.*?)\n---\n", re.S)
+_POINT = re.compile(r"^\d+\.\s")
+
+
+def _front_matter(text: str) -> tuple[dict[str, str], str]:
+    """Split ``text`` into its (tiny, two-key) front matter and the body."""
+    text = text.replace("\r\n", "\n")
+    m = _FRONT.match(text)
+    if not m:
+        return {}, text
+    meta: dict[str, str] = {}
+    key, block = None, False
+    for line in m.group(1).splitlines():
+        head = re.match(r"^(\w+):\s*(.*)$", line)
+        if head and not line.startswith(" "):
+            key, value = head.groups()
+            block = value == "|"
+            meta[key] = "" if block else value.strip()
+        elif key and block:  # `|` keeps line breaks: they split paragraphs
+            meta[key] += line.strip() + "\n"
+        elif key and line.strip():  # a wrapped one-line value folds
+            meta[key] = f"{meta[key]} {line.strip()}".strip()
+    return meta, text[m.end():]
+
+
+def _paras_html(block: str) -> str:
+    paras = [" ".join(p.split()) for p in re.split(r"\n\s*\n", block) if p.strip()]
+    return "".join(f"<p>{html.escape(p, quote=False)}</p>" for p in paras)
+
+
+def manuscript(text: str) -> tuple[dict[str, str], list[tuple[str, str]]]:
+    """Parse a Markdown manuscript into (meta, [(title, body_html), …])."""
+    meta, body = _front_matter(text)
+    if "about" in meta:
+        meta["about_html"] = _paras_html(meta.pop("about"))
+    chapters: list[tuple[str, str]] = []
+    title: str | None = None
+    parts: list[tuple[str, str]] = []
+    para: list[str] = []
+
+    def flush_para() -> None:
+        if para:
+            parts.append(("p", " ".join(para)))
+            para.clear()
+
+    def flush_chapter() -> None:
+        flush_para()
+        if title is None and parts:
+            raise CommandError("manuscript: text before the first `# ` chapter heading")
+        if title is not None:
+            chapters.append((
+                recase_title(title),
+                "".join(f"<{t}>{html.escape(x, quote=False)}</{t}>" for t, x in parts),
+            ))
+        parts.clear()
+
+    for raw in body.splitlines():
+        line = raw.strip()
+        if line.startswith("# "):
+            flush_chapter()
+            title = line[2:].strip()
+        elif not line:
+            flush_para()
+        elif line.startswith("#") and not line.startswith(("## ", "### ")):
+            raise CommandError(f"manuscript: malformed heading {line[:40]!r}")
+        elif line.startswith("## "):
+            flush_para()
+            parts.append(("h2", line[3:].strip()))
+        elif line.startswith("### "):
+            flush_para()
+            parts.append(("blockquote", line[4:].strip().upper()))
+        elif line.startswith(">"):
+            flush_para()
+            if line[1:].strip():
+                parts.append(("blockquote", line[1:].strip()))
+        elif _POINT.match(line):
+            flush_para()
+            parts.append(("p", line))
+        else:
+            para.append(line)
+    flush_chapter()
+    return meta, chapters
+
+
 def chapters_from_pdf(pdf_bytes: bytes) -> list[tuple[str, str]]:
     """Split the PDF into (title, body_html) chapters, front matter dropped."""
     blocks, body = blocks_with_bold(pdf_bytes)
@@ -476,11 +664,18 @@ class Command(BaseCommand):
     @transaction.atomic
     def _build(self, work: Work) -> None:
         self.stdout.write(f"→ {work.title}")
-        pdf_path = DATA_DIR / work.pdf
-        if not pdf_path.exists():
-            raise CommandError(f"missing PDF: {pdf_path}")
+        path = DATA_DIR / work.source
+        if not path.exists():
+            raise CommandError(f"missing source: {path}")
         author = Author.objects.get(slug=work.author_slug)  # exists in authors.json
-        chapters = chapters_from_pdf(pdf_path.read_bytes())
+        if path.suffix == ".md":
+            meta, chapters = manuscript(path.read_text(encoding="utf-8"))
+        else:
+            meta, chapters = {}, chapters_from_pdf(path.read_bytes())
+        description = work.description or meta.get("description", "")
+        about_html = work.about_html or meta.get("about_html", "")
+        if not (description and about_html):
+            raise CommandError(f"{work.slug}: no description / about — aborted.")
         if len(chapters) < 3:
             raise CommandError(f"{work.slug}: only {len(chapters)} chapters — aborted.")
 
@@ -488,13 +683,13 @@ class Command(BaseCommand):
             "author": author,
             "title": work.title,
             "subtitle": work.subtitle,
-            "description": work.description,
+            "description": description,
             "attribution": work.attribution,
-            "about_html": work.about_html,
+            "about_html": about_html,
             "cover_color": work.cover_color,
             # A collection, not a reading order: no volume numeral.
             "series": Series.objects.get(slug="key-teachings"),
-            "cover_url": f"/covers/art/{work.slug}.svg",  # wordless tree ground
+            "cover_url": work.cover_url,
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
         book, was_created = Book.objects.update_or_create(

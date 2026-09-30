@@ -955,12 +955,12 @@
 			"bar": 0
 		},
 		"corrie-ten-boom-a-life": {
-			"ground": "6a04662098f91e0f6ad0ebdbcb298b74377069dc1a32d4a0d60c5c901b424b7e",
+			"ground": "c1e02879863a1488f4e32c44279e90a6c4886a8262d287710515164e391ea4a0",
 			"style": "house",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.35,
+			"scrim": 0.85,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2816,6 +2816,56 @@
 		},
 		"key-teachings-of-a-b-simpson": {
 			"ground": "c5a075017fb9ae81c323c6d61dad0ff6734702026172cbd3423df853d7cc4de1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-andrew-murray": {
+			"ground": "efcd6eba4b4806027ea9eed406393b53ddd7dd7ab377e1c11152b4178a9f4b1c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-augustine-of-hippo": {
+			"ground": "cefb3ecb3b6b46ceac532671c2fe68927e670f72af0d80ccde137a8fb4d6cd61",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-catherine-booth": {
+			"ground": "88bac2aa566c00a51ea776c4c2b9aa4ab0271844b437524793a1922629334da1",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-charles-h-spurgeon": {
+			"ground": "c5d7d01b37aa188e516c121a437d33ecc113215edd3dd034b75f59ab2059e67b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0
+		},
+		"key-teachings-of-hannah-whitall-smith": {
+			"ground": "89f6e5c0a50bb40f7ad43655f007099ea800523d9e4b9f9503d939bfd8683337",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",

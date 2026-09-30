@@ -1907,6 +1907,34 @@ rewrite is a STALE-BASE artifact, not a permanent condition.
 *(build_key_teachings: Simpson/Edwards/Baxter/Nee, 2026-09; one `WORKS` entry +
 a committed PDF each; fixture-driven, no migration.)*
 
+**Writing a NEW Key Teachings volume (no PDF) — Markdown manuscript.** Since
+2026-09-29 (Spurgeon, Murray, Hannah Whitall Smith, Catherine Booth, Augustine)
+a volume is written directly as `data/key-teachings/<author>.md` — grammar in
+`build_key_teachings.manuscript` (front matter `description:` + `about: |`;
+`# ` chapter, `## ` h2, `### A PRAYER` label, one `> ` line per blockquote,
+`1. ` point) — and a `WORKS` entry with `source="<author>.md"`. Recipe that
+worked: one writer agent per volume in parallel, given a brief (22 chapters:
+Introduction, a titled biography, 18 teaching chapters, Conclusion, "A
+Reader’s Guide to X"; ~28k words; British spelling; KJV only). Two mechanical
+gates catch what a writer invents: (1) a KJV checker — fetch a PD KJV JSON
+(`raw.githubusercontent.com/thiagobodruk/bible/master/json/en_kjv.json`, books
+by index) and match every `> … BOOK C:V` line, ellipsis-aware, normalising
+hyphens and æ; it also found real misquotes in the four PDF volumes;
+(2) every author quote in “ ” must be found verbatim in that author's own
+fixtures (books + sermons) — writers may otherwise only paraphrase. Build, then
+serialize the book + chapters with natural keys, dropping `content_digest`,
+`english_digest` and a blank `cover_title` (deploy-stamped / defaulted) so the
+file matches its siblings. **Covers**: the "study" desks are procedural — a
+ray-marched Node renderer (concept 7b, `c7v_render.mjs`, per-author scenes in
+`p5_scene.mjs`); new desks = new scene keys. Keep every lit object (lamp
+glass, cups, paper, lamp's table pool) OUT of the brandmark box x232–368,
+y664–747: that strip alone drove the scrim to 0.55–0.80 until the scenes were
+re-laid (series target 0.30–0.35). Then JPEG q84 progressive (~32KB) →
+`ORIGINAL_GROUND` digest → `build_cover_assets.py` → `tune_art_scrim.py
+<slugs>` (zsh: pass slugs literally, an unquoted `$S` doesn't word-split) →
+`npm run og:covers`; add the slug to `coverLayouts.BOOK_LAYOUT`/`TYPE_TOP`,
+`coverStyles.BOOK_STYLE`, `covers.TYPE_TOP`, plus topic shelves.
+
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the
 anthology/manuscript builds but with nothing fetched. File it under the existing

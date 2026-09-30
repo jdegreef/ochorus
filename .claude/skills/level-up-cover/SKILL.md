@@ -56,6 +56,15 @@ the picture:
   primaryImage`. Still fine when you know the subject noun; weak for "find me a
   good landscape". See memory `met-api-pd-art-sourcing`.
 
+- **Wikidata** (`wikidata`, added 2026-09-29 for Corrie ten Boom's Ruisdael *View
+  of Haarlem*) — the escape hatch for a painting none of the three hold (the Dutch
+  Golden Age is mostly in Amsterdam/The Hague/Haarlem, whose APIs key by strings).
+  `object_id` = the number after the item's Q. The fetcher requires P6216 = public
+  domain on the item AND a PD/CC0 file on Commons, and credits the item's English
+  label, P170 creator label and P571 year — copy those verbatim (a label like "View
+  of bleaching fields and Haarlem" is what the credit says, not the museum title).
+  Find the item from the Commons file page's "Edit this at Wikidata" link.
+
 **LOOK before you pick.** Both search APIs return junk mixed with gems, so
 download the small images, montage them into a contact sheet, and Read it — then
 mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
