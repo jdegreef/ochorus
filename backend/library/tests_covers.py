@@ -455,6 +455,25 @@ class CuratedArtTests(TestCase):
             with self.subTest(slug=slug):
                 self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
 
+    def test_wikidata_inception_reads_as_a_credit_year(self):
+        """Wikidata dates are structured; the credit is the collection's words.
+        `_verify` compares the two exactly, so the translation has to be exact."""
+        from library.management.commands.build_curated_covers import _wd_year
+
+        def inception(precision, circa=False):
+            claim = {"mainsnak": {"snaktype": "value", "datavalue": {"value": {
+                "time": "+1670-00-00T00:00:00Z", "precision": precision}}}}
+            if circa:
+                claim["qualifiers"] = {"P1480": [{"snaktype": "value", "datavalue": {
+                    "value": {"id": "Q5727902"}}}]}
+            return {"P571": [claim]}
+
+        self.assertEqual(_wd_year(inception(9)), "1670")
+        self.assertEqual(_wd_year(inception(8)), "1670s")
+        self.assertEqual(_wd_year(inception(9, circa=True)), "c. 1670")
+        self.assertEqual(_wd_year(inception(7)), "", "a century is not a year")
+        self.assertEqual(_wd_year({}), "")
+
     def test_no_painting_is_given_to_two_works(self):
         """One museum object, one work. A painting is chosen for what it says
         about ONE book, and two books wearing it read as the same book on a

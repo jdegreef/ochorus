@@ -10,7 +10,6 @@ export const GROUND_BARS: Record<string, number> = {
 	'answers-to-prayer': 0.105,
 	'baptism-with-the-holy-spirit': 0.085,
 	'christ-the-healer': 0.030,
-	'corrie-ten-boom-a-life': 0.050,
 	'divine-healing': 0.050,
 	'divine-songs-for-children': 0.055,
 	'essentials-of-prayer': 0.040,

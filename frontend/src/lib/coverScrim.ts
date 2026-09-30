@@ -31,7 +31,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'christ-the-healer': 0.70,
 	'clothed-with-strength-and-dignity': 0.30,
 	'confessions': 1.00,
-	'corrie-ten-boom-a-life': 0.35,
+	'corrie-ten-boom-a-life': 0.85,
 	'days-of-heaven-upon-earth': 0.70,
 	'divine-healing': 0.45,
 	'divine-songs-for-children': 0.65,
