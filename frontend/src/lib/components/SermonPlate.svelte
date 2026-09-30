@@ -2,13 +2,14 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
 	import { sermonArt } from '$lib/sermonArt';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 
 	/**
 	 * A sermon's plate: the hue-washed band it wears at the head of its own page
 	 * and in the Sermon of the week panel. The sermon's words sit in the band and
-	 * its emblem anchors the far end — the same composition as its share card
-	 * (`scripts/generate-sermon-og.mjs`), so a reader arriving from a forwarded
-	 * link recognises where they landed.
+	 * its passage monogram (MAT over 11, as on every sermon shelf) anchors the
+	 * far end. Its share card (`scripts/generate-sermon-og.mjs`) keeps the same
+	 * composition and hue, with the illustrated emblem in the chip.
 	 *
 	 * The design rules it follows — why a sermon gets a landscape band and not a
 	 * 3:4 cover, and why a shelf tints by the shelf's sort while an item standing
@@ -16,24 +17,25 @@
 	 *
 	 * Two things worth knowing at the call site:
 	 *
-	 *   - The emblem and hue come from `sermonArt`, shared with the topic fan.
-	 *     The DRAWING is imported dynamically: between the precomputed hue map
-	 *     and the lazy import, 51 emblems' worth of SVG (10.6 KB gzip, measured)
-	 *     stays off the critical path of the home page and every sermon page,
-	 *     which is what a static `Emblem` import cost. The band paints from the
-	 *     map immediately; the art arrives after hydration, and it is
-	 *     decorative, so nobody waits on it.
+	 *   - The hue comes from `sermonArt`, shared with the topic fan and the
+	 *     share card, so a sermon keeps one colour everywhere. No drawing is
+	 *     loaded: the monogram is text, so it paints with the band.
 	 *   - It renders a band, not a link. One of its two callers wraps it in an
 	 *     anchor and owns the hover state, since heading a page is the commoner
 	 *     job and a plate should not assume it is clickable.
 	 */
 	let {
 		slug,
+		scriptureRef,
+		title,
 		compact = false,
 		portrait = null,
 		children
 	}: {
 		slug: string;
+		/** The passage and title the monogram is drawn from. */
+		scriptureRef: string | null | undefined;
+		title: string;
 		/**
 		 * Smaller chip and tighter band, for the Sermon of the week panel — it
 		 * sits inside a page column rather than heading one.
@@ -46,9 +48,9 @@
 		 */
 		compact?: boolean;
 		/**
-		 * An author portrait to stand in the chip in place of the sermon emblem,
+		 * An author portrait to stand in the chip in place of the monogram,
 		 * so the preacher has a face — used by the Sermon of the week panel. Left
-		 * null (the sermon's own page) keeps the emblem, so this is purely
+		 * null (the sermon's own page) keeps the monogram, so this is purely
 		 * additive and the page header is unchanged. `pos` is the `object-position`
 		 * from `$lib/portraits`, which lands the crop on the face; the chip keeps
 		 * its tinted ring, so the photo still wears the band's hue.
@@ -68,25 +70,22 @@
 >
 	<div class="min-w-0 flex-1">{@render children()}</div>
 	<!-- Decorative: every caller names the sermon in the band beside it, so
-	     labelling the emblem — or the portrait that stands in for it — would have
-	     a screen reader say it twice. Emblem hides itself when given no `label`,
-	     as at every other chip call site; the portrait carries an empty alt for
-	     the same reason. The chip keeps its size and tint while the art loads, so
-	     nothing reflows when it arrives. -->
-	<span class="emblem-chip" class:portrait-chip={portrait}>
-		{#if portrait}
+	     labelling the monogram — or the portrait that stands in for it — would
+	     have a screen reader say it twice. SermonMonogram is aria-hidden; the
+	     portrait carries an empty alt for the same reason. -->
+	{#if portrait}
+		<span class="emblem-chip portrait-chip">
 			<img src={portrait.src} use:hydrateSrc={{ src: portrait.src }} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
-		{:else}
-			{#await import('$lib/components/Emblem.svelte') then Loaded}
-				<Loaded.default name={art.emblem} />
-			{/await}
-		{/if}
-	</span>
+		</span>
+	{:else}
+		<SermonMonogram {scriptureRef} {title} />
+	{/if}
 </div>
 
 <style>
 	.sermon-plate {
 		--chip-size: 4.5rem;
+		--monogram-size: var(--fs-h2);
 		display: flex;
 		align-items: center;
 		gap: 1.25rem;
@@ -99,11 +98,11 @@
 	}
 	.sermon-plate.compact {
 		--chip-size: 3.5rem;
+		--monogram-size: var(--fs-h3);
 		gap: 1rem;
 		padding: 1rem 1.15rem;
 	}
-	/* The portrait fills the chip the emblem otherwise centres a 66%-sized SVG
-	   in; grayscale matches AuthorTile so the same face reads the same way
+	/* The portrait fills the chip the monogram otherwise sits in; grayscale matches AuthorTile so the same face reads the same way
 	   wherever it appears. The chip's tinted ring and hue background (`.emblem-chip`
 	   in app.css) still show at the rim, so the photo sits in the band's colour. */
 	.portrait-chip img {
@@ -124,6 +123,7 @@
 		.sermon-plate,
 		.sermon-plate.compact {
 			--chip-size: 3rem;
+			--monogram-size: var(--fs-h3);
 			gap: 0.9rem;
 			padding: 1rem 1.05rem;
 		}

@@ -305,6 +305,8 @@ class TopicTests(TestCase):
             [("sermon", "come-in"), ("sermon", "free-grace")],
             "a shelf with only sermons in this language must still carry tiles",
         )
+        # ShelfCard draws a sermon tile as its passage monogram.
+        self.assertIn("scripture_ref", card["covers"][0])
         # The rule that actually broke: the listing rule and the drawing rule
         # live in different files and neither mentions the other. Anything the
         # endpoint returns has to have something to draw.
