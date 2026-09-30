@@ -199,3 +199,29 @@ class PlanMoveTests(TestCase):
         partial.refresh_from_db()
         # old day 3 was not done, so the merged day 2 is not either
         self.assertEqual(partial.done, [1])
+
+    def test_a_renamed_plan_takes_its_readers_to_the_new_slug(self):
+        from django.utils import timezone
+
+        from library.models import Plan, PlanDay
+        from reading.models import PlanProgress
+
+        mod = importlib.import_module("library.migrations.0171_reshape_first_key_teachings")
+        old, new = next(iter(mod.RENAMES.items()))
+        author = Author.objects.create(slug="a", name="A")
+        a = Book.objects.create(slug="book-a", language="en", title="A", author=author)
+        Chapter.objects.create(book=a, order=1, title="A1", body_html="<p>x</p>")
+        plan = Plan.objects.create(slug=old, title="P")
+        for day in (1, 2):
+            PlanDay.objects.create(plan=plan, day=day, book_slug="book-a", chapter_order=day)
+        user = get_user_model().objects.create(username="00000000-0000-0000-0000-0000000000ae")
+        profile = UserProfile.objects.create(user=user, supabase_uid=user.username, email="r@example.com")
+        PlanProgress.objects.create(profile=profile, plan_slug=old, started_at=timezone.now(), done=[1, 2])
+
+        mod.move_plans(django_apps, {"book-a": {1: 1, 2: 1}})
+
+        plan.refresh_from_db()
+        self.assertEqual(plan.slug, new)
+        self.assertEqual(plan.days.count(), 1)
+        self.assertFalse(PlanProgress.objects.filter(plan_slug=old).exists())
+        self.assertEqual(PlanProgress.objects.get(plan_slug=new).done, [1])

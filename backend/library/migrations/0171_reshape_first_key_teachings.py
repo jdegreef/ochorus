@@ -17,6 +17,13 @@ the plan:
   chapter map. A new day made of several old ones is done only if all of them
   were; a brand-new chapter's day is done when the reader has already done the
   days either side of it in that book (they read past it).
+* **A new slug.** Completed days UNION across devices (`_upsert_plan_progress`)
+  and each device re-sends its whole cached list, so a device still holding
+  the old numbering would tick the wrong days the moment it synced. The plan
+  therefore moves to a new slug (`RENAMES`), carrying the renumbered progress;
+  a stale device's old numbers land on the retired slug, which no plan reads.
+  The reader's own cache is moved the same way on the device
+  (`frontend/src/lib/planMoves.ts`), and render.yaml redirects the old URL.
 """
 
 from __future__ import annotations
@@ -28,6 +35,7 @@ from pathlib import Path
 from django.db import migrations
 
 DATA = Path(__file__).resolve().parent / "data" / "key_teachings_reshape_first_four.json"
+RENAMES = {"the-key-teachings-four-teachers": "key-teachings-four-teachers"}
 
 # The chapter rebuild and the reader move are 0170's, unchanged.
 _0170 = importlib.import_module("library.migrations.0170_reshape_key_teachings")
@@ -117,7 +125,11 @@ def move_plans(apps, reshaped: dict[str, dict[int, int]]):
             to_new[day] = index[spot]
             sources.setdefault(index[spot], []).append(day)
 
+        new_slug = RENAMES.get(plan_slug, plan_slug)
         for plan in rows:
+            if new_slug != plan_slug:
+                plan.slug = new_slug
+                plan.save(update_fields=["slug", "updated_at"])
             plan.days.all().delete()
             PlanDay.objects.bulk_create([
                 PlanDay(plan=plan, day=i + 1, book_slug=b, chapter_order=o)
@@ -136,7 +148,8 @@ def move_plans(apps, reshaped: dict[str, dict[int, int]]):
                 if before and after:
                     new_done.add(n)
             progress.done = sorted(new_done)
-            progress.save(update_fields=["done", "updated_at"])
+            progress.plan_slug = new_slug
+            progress.save(update_fields=["plan_slug", "done", "updated_at"])
 
 
 def noop(apps, schema_editor):
