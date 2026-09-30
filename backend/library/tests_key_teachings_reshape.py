@@ -128,3 +128,26 @@ class ReshapeTests(TestCase):
         # Still 22 chapters here, so only the title check stops a second move.
         self._run()
         self.assertEqual(list(self.book.chapters.values_list("order", "title")), before)
+
+    def test_fresh_install_is_untouched(self):
+        self.book.delete()
+        self._run()  # no book row: nothing to reshape, and no error
+
+
+class PositionTests(TestCase):
+    """The paragraph matcher on its own."""
+
+    def test_a_merge_searches_on_from_the_first_chapter(self):
+        old = {
+            1: ["Shared line", "A", "FOR REFLECTION AND ACTION", "A1"],
+            2: ["B intro", "Shared line", "B", "FOR REFLECTION AND ACTION", "B1"],
+        }
+        # The merge keeps one closing set, at the end.
+        new = {1: ["Shared line", "A", "B intro", "Shared line", "B", "FOR REFLECTION AND ACTION", "AB1"]}
+        table = MIGRATION._positions(old, new, {1: 1, 2: 1})
+        # The second chapter's copy of a shared line is its own, not the first's.
+        self.assertEqual(table[(2, 1)], (1, 3))
+        # The first chapter's closing label stays with its own text rather than
+        # jumping past the second chapter to the merged chapter's end.
+        self.assertEqual(table[(1, 2)], (1, 1))
+        self.assertEqual(table[(1, 3)], (1, 1))

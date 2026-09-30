@@ -40,36 +40,44 @@ DATA = Path(__file__).resolve().parent / "data" / "key_teachings_reshape.json"
 OLD_COUNT = 22
 
 
+# The stock set-apart labels every chapter carries. A merge keeps one set, at
+# its end, so matching the first chapter's labels there would carry its whole
+# closing run past the second chapter's text; they are left to the fallback.
+_LABELS = {"FOR REFLECTION AND ACTION", "A PRAYER"}
+
+
 def _positions(old_blocks: dict[int, list[str]], new_blocks: dict[int, list[str]], old_to_new):
     """(old_order, p) -> (new_order, p) for every paragraph of the old book."""
     table: dict[tuple[int, int], tuple[int, int]] = {}
-    for old, blocks in old_blocks.items():
-        new = old_to_new[old]
-        target = new_blocks.get(new, [])
+    groups: dict[int, list[int]] = {}
+    for old in sorted(old_blocks):
+        groups.setdefault(old_to_new[old], []).append(old)
+    for new, olds in groups.items():
         index: dict[str, list[int]] = {}
-        for i, text in enumerate(target):
+        for i, text in enumerate(new_blocks.get(new, [])):
             index.setdefault(" ".join(text.split()), []).append(i)
-        found: list[int | None] = []
+        # One cursor across a merge group, so the second chapter's paragraphs are
+        # found after the first's — a line both share cannot pull it back.
         last = 0
-        for text in blocks:
-            hits = index.get(" ".join(text.split()), [])
-            # The first matching paragraph at or after the last one placed, so a
-            # repeated line ("A PRAYER") follows the reading order.
-            hit = next((i for i in hits if i >= last), hits[0] if hits else None)
-            if hit is not None:
-                last = hit
-            found.append(hit)
-        # A rewritten paragraph lands on the nearest surviving one before it in
-        # its own old chapter — or, when it opened that chapter, on the next one
-        # (a merged-in chapter's opening belongs with its own text, not the end
-        # of the chapter it joined).
-        for p in range(len(blocks)):
-            spot = found[p]
-            if spot is None:
-                before = [f for f in found[:p] if f is not None]
-                after = [f for f in found[p + 1:] if f is not None]
-                spot = before[-1] if before else (after[0] if after else 0)
-            table[(old, p)] = (new, spot)
+        for old in olds:
+            found: list[int | None] = []
+            for text in old_blocks[old]:
+                key = " ".join(text.split())
+                hits = [] if key in _LABELS else index.get(key, [])
+                hit = next((i for i in hits if i >= last), None)
+                if hit is not None:
+                    last = hit
+                found.append(hit)
+            # A rewritten paragraph lands on the nearest surviving one before it
+            # in its own old chapter — or, when it opened that chapter, on the
+            # next one (a merged-in chapter's opening belongs with its own text,
+            # not the end of the chapter it joined).
+            for p, spot in enumerate(found):
+                if spot is None:
+                    before = [f for f in found[:p] if f is not None]
+                    after = [f for f in found[p + 1:] if f is not None]
+                    spot = before[-1] if before else (after[0] if after else last)
+                table[(old, p)] = (new, spot)
     return table
 
 
@@ -111,21 +119,21 @@ def reshape(apps, schema_editor):
                 search_vector=None,
             )
         table = _positions(old_blocks, new_blocks, old_to_new)
-        tails = {old: (new, len(new_blocks.get(new, [])) - 1) for old, new in old_to_new.items()}
+        # A spot saved past an old chapter's last paragraph goes where that
+        # paragraph went — not to the end of a merged chapter.
+        ends = {old: table.get((old, len(b) - 1), (old_to_new[old], 0)) for old, b in old_blocks.items()}
 
-        def remap(order: int, p: int, table=table, tails=tails, old_to_new=old_to_new):
+        def remap(order: int, p: int, table=table, ends=ends):
             if (order, p) in table:
                 return table[(order, p)]
-            if order in tails:  # saved past the old chapter's last paragraph
-                new, last = tails[order]
-                return new, max(min(p, last), 0)
-            return order, p
+            return ends.get(order, (order, p))
 
         move_readers(apps, slug, remap, old_titles)
 
 
 def move_readers(apps, slug, remap, old_titles):
-    """0165's reader move, for one book and a one-to-one chapter map."""
+    """0165's reader move (kept in step with it), for one book and a
+    one-to-one chapter map."""
     from django.utils import timezone
 
     ReadingProgress = apps.get_model("reading", "ReadingProgress")
@@ -143,7 +151,8 @@ def move_readers(apps, slug, remap, old_titles):
 
     # `furthest_order` is a chapter, so it follows its chapter's move; `pct` is a
     # share of the whole work's words, which a reshape barely shifts, so it stays.
-    for row in ReadingProgress.objects.filter(kind="book", book_slug=slug):
+    # English only: the chapters rebuilt above are the English edition's.
+    for row in ReadingProgress.objects.filter(kind="book", book_slug=slug, language="en"):
         moved = remap(row.chapter_order, row.paragraph_index)
         furthest = remap(row.furthest_order, 0)[0] if row.furthest_order else 0
         if moved == (row.chapter_order, row.paragraph_index) and furthest == row.furthest_order:
@@ -198,7 +207,7 @@ def move_readers(apps, slug, remap, old_titles):
             defaults={"removed_at": now},
         )
 
-    rows = list(ChapterMarks.objects.filter(kind="book", book_slug=slug))
+    rows = list(ChapterMarks.objects.filter(kind="book", book_slug=slug, language="en"))
     ChapterMarks.objects.filter(pk__in=[r.pk for r in rows]).delete()
     merged: dict[tuple, dict] = {}
 
