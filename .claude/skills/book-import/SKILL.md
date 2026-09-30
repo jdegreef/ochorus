@@ -1707,6 +1707,15 @@ profile, is styled by `.reading blockquote`, and its ref becomes a tappable
 `.scripture-ref`. Before shipping, have a subagent fact-check the chapters against
 the source files (summaries + line refs, not verbatim dumps) — it caught 36 slips.
 
+**An original biography whose SUBJECT's own writings are in copyright**
+(Corrie ten Boom, 2026-09-29): tell the life in our own prose, quote the subject
+only in phrases of a few words, and build on independent records (war-graves /
+memorial registers, Yad Vashem, museum chronologies). Find the subject's
+EARLIEST account (for Corrie, her June 1945 book on archive.org) and compare it
+with the famous later one — what is already there vs what first appears decades
+later is the honest spine of the book, and it catches legends the live bio
+repeats (spin a bio-fix task when it does).
+
 **A biography ABOUT a person is filed under that person as the author**, with
 the real author/description in the `subtitle` — NOT under `ochorus-originals`
 and NOT crediting the subject as if they wrote it. Precedent: `susanna-wesley-

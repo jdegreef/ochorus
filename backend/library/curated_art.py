@@ -774,6 +774,13 @@ CURATED: dict[str, Artwork] = {
         "watches of the missionary the Punjab called \"the man who never "
         "sleeps\", painted the year before he sailed.",
     ),
+    # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
+    "corrie-ten-boom-a-life": Artwork(
+        "met", 912940, "Job Adriaensz Berckheyde", "Interior of the Sint-Bavokerk, Haarlem", "ca. 1676",
+        "The Grote Kerk of Haarlem, a few steps from the Beje: the church where "
+        "Corrie sat in her own pew at the first service after liberation, and "
+        "whose \"hundred shades of grey\" she walked through in her mind at Vught.",
+    ),
 }
 
 
