@@ -1255,7 +1255,10 @@ export interface Hub {
 	slug: string;
 	/** For a place: the region it sits in, when it has one. */
 	region: string | null;
+	/** The page title ("Christian writers from Wales"). */
 	name: string;
+	/** Its short form, for chips and link rows ("Wales"). */
+	label: string;
 	intro: string;
 	qa: { q: string; a: string }[];
 	members: string[];
@@ -1265,7 +1268,7 @@ export interface Hub {
 
 export type HubKind = 'tradition' | 'region' | 'place';
 
-export type HubChip = Pick<Hub, 'kind' | 'slug' | 'name'>;
+export type HubChip = Pick<Hub, 'kind' | 'slug' | 'label'>;
 
 export const listHubs = (language = 'en', f?: Fetch) =>
 	apiFetch<Hub[]>(`/api/library/hubs/?language=${language}`, {}, f);

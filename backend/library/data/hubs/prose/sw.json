@@ -1,0 +1,480 @@
+{
+  "_note": [
+    "Swahili hub prose — AI translation (ai_unreviewed), pending native review. Glossary: Puritans = Wapuritani; Reformed = Kireformed; Reformation = Matengenezo ya Kanisa; revival = uamsho (East African Revival = Uamsho wa Afrika Mashariki, its brethren = Walokole); holiness movement = vuguvugu la utakatifu; Salvation Army = Jeshi la Wokovu; Church of England = Kanisa la Uingereza; England and Britain both = Uingereza (context disambiguates); United States = Marekani, America = Amerika. Book titles use the site's Swahili titles where a sw edition exists (Maungamo, Safari ya Msafiri, Siri ya Mkristo ya Maisha ya Furaha); otherwise the English title with a Swahili gloss in parentheses. Person names follow the sw author bios (Augustine, Yohana Chrysostom, Clement wa Roma, Athanasius wa Aleksandria, Kipriano wa Kathage)."
+  ],
+  "early-church": {
+    "name": "Waandishi wa kanisa la kwanza",
+    "label": "Kanisa la kwanza",
+    "intro": "Maaskofu, wahubiri na mashahidi wa imani wa karne za kwanza baada ya mitume. Barua, mahubiri na maungamo yao yaliandikwa katikati ya mateso, mabishano na maombi, nayo yameathiri jinsi kanisa linavyoisoma Biblia tangu wakati huo.",
+    "qa": [
+      {
+        "q": "Mababa wa kanisa ni akina nani?",
+        "a": "Mababa wa kanisa ni walimu na maaskofu wakuu wa karne za kwanza za Ukristo, ambao maandiko yao kanisa la baadaye liliyahesabu kuwa mashahidi waaminifu wa mafundisho ya mitume. Clement wa Roma na Ignatius wa Antiokia waliandika katika kizazi kilichofuata baada ya mitume; Athanasius, Yohana Chrysostom na Augustine ni wa kipindi kikuu cha karne ya nne na ya tano."
+      },
+      {
+        "q": "Nianzie wapi kusoma kuhusu kanisa la kwanza?",
+        "a": "Maungamo ya Augustine ndicho kitabu kinachojulikana zaidi cha kipindi hicho, nacho kinasomeka kama sala iliyoelekezwa kwa Mungu. Barua fupi za Ignatius wa Antiokia, alizoziandika akiwa njiani kwenda kuuawa kwa ajili ya imani, zinaweza kusomwa kwa mchana mmoja."
+      },
+      {
+        "q": "Kwa nini waandishi wa kanisa la kwanza bado ni muhimu?",
+        "a": "Walitetea uungu kamili wa Kristo, wakaweka lugha ya kanuni za imani, na wakawaonyesha waumini wa kawaida jinsi ya kuomba, kuteseka na kutumika. Mapokeo mengi ya baadaye, ya Kikatoliki, ya Kiorthodoksi na ya Kiprotestanti, bado yanawasoma kama mababu wa pamoja."
+      }
+    ]
+  },
+  "monks-and-mystics": {
+    "name": "Watawa, wanafumbo na watafakari",
+    "label": "Watawa na wanafumbo",
+    "intro": "Waandishi waliomtafuta Mungu katika ukimya, maombi na nia iliyojisalimisha. Kuanzia nyumba za watawa za Ufaransa ya Zama za Kati hadi chumba cha gereza cha mwanamke mtukufu Mfaransa, vitabu vyao vimefundisha vizazi vya wasomaji kuomba.",
+    "qa": [
+      {
+        "q": "Fumbo la Kikristo ni nini?",
+        "a": "Fumbo la Kikristo ni mapokeo ya kutafuta kumjua Mungu moja kwa moja kwa upendo, kupitia maombi, tafakari na kujisalimisha. Waandishi wake wanaeleza safari ya ndani ya nafsi kuelekea kuungana na Mungu, badala ya kupanga mafundisho ya imani."
+      },
+      {
+        "q": "Nisome kitabu kipi kwanza?",
+        "a": "Kumfuata Kristo (The Imitation of Christ) cha Thomas à Kempis kimesomwa kwa upana kuliko karibu kitabu kingine chochote cha Kikristo isipokuwa Biblia. Sura zake fupi kuhusu unyenyekevu, subira na ushirika na Kristo zinaweza kusomwa moja baada ya nyingine."
+      },
+      {
+        "q": "Je, waandishi hawa walikuwa Wakatoliki au Waprotestanti?",
+        "a": "Wengi wao walikuwa watawa wa Kikatoliki, wanaume na wanawake, kama Bernard wa Clairvaux na Teresa wa Ávila. William Law alikuwa kasisi wa Kianglikana, na wasomaji wa Kiprotestanti kama John Wesley waliona Jeanne Guyon na Thomas à Kempis wakiwajenga kwa kina."
+      }
+    ]
+  },
+  "puritans": {
+    "name": "Waandishi wa Kipuritani",
+    "label": "Wapuritani",
+    "intro": "Wachungaji wa Kiingereza wa mwishoni mwa miaka ya 1500 na ya 1600 waliotaka kanisa lililorekebishwa na Maandiko na maisha yanayoishiwa mbele za uso wa Mungu. Wengi wao walifukuzwa katika mimbari zao mwaka 1662, nao wakaandika badala yake — vitabu kuhusu dhambi na neema, wito wa mchungaji na safari ya Mkristo ambavyo bado vinasomwa leo.",
+    "qa": [
+      {
+        "q": "Wapuritani walikuwa akina nani?",
+        "a": "Wapuritani walikuwa Waprotestanti wa Uingereza waliosisitiza kanisa na maisha ya kila siku yaliyoundwa kikamilifu na Maandiko. Wachungaji wao wanakumbukwa kwa mahubiri yao ya kuchunguza moyo na ya vitendo kuhusu moyo, kuongoka na uhakika wa wokovu."
+      },
+      {
+        "q": "Nisome kitabu kipi cha Kipuritani kwanza?",
+        "a": "Safari ya Msafiri cha John Bunyan ndicho kitabu cha Kipuritani kinachosomwa zaidi na njia rahisi zaidi ya kuanzia. The Bruised Reed (Mwanzi Uliopondeka) cha Richard Sibbes ni kifupi na chenye upole wa pekee kwa waumini wanaojiona dhaifu."
+      },
+      {
+        "q": "Kwa nini Wapuritani wengi walifukuzwa mwaka 1662?",
+        "a": "Sheria ya Umoja (Act of Uniformity) ya 1662 ilimtaka kila mhudumu wa Kanisa la Uingereza akubali Kitabu kizima cha Sala za Pamoja (Book of Common Prayer) na kuwekwa wakfu na askofu. Wahudumu wapatao elfu mbili, wakiwemo Richard Baxter na Thomas Watson, walikataa kufuata, wakapoteza nafasi zao za huduma."
+      }
+    ]
+  },
+  "methodists": {
+    "name": "Waandishi wa Kimethodisti na Kiwesley",
+    "label": "Wamethodisti",
+    "intro": "Uamsho ulioanza na John na Charles Wesley katika Uingereza ya karne ya kumi na nane, na makanisa yaliyokua kutoka kwake pande zote mbili za Bahari ya Atlantiki. Waandishi wake walihubiri imani inayoupa moyo joto, maisha matakatifu na injili kwa maskini.",
+    "qa": [
+      {
+        "q": "Umethodisti ulianzaje?",
+        "a": "Umethodisti ulianza kama vuguvugu la utakatifu wenye nidhamu na wa vitendo, likiongozwa na John Wesley na ndugu yake Charles ndani ya Kanisa la Uingereza katika miaka ya 1730 na 1740. Mahubiri yake ya hadharani na mikutano yake midogo ya vikundi yalieneza uamsho kote Uingereza na Amerika."
+      },
+      {
+        "q": "Nani alianzisha Kanisa la African Methodist Episcopal?",
+        "a": "Richard Allen, mhubiri aliyekuwa mtumwa zamani huko Philadelphia, aliwaongoza Wamethodisti Weusi kutoka katika kusanyiko lililowabagua na akaanzisha Kanisa la African Methodist Episcopal mwaka 1816. Jarena Lee na Julia Foote walihubiri ndani ya mapokeo hayo."
+      },
+      {
+        "q": "Wamethodisti walimaanisha nini kwa utakatifu?",
+        "a": "Wesley alifundisha kwamba maisha ya Kikristo yamekusudiwa kukua katika upendo mkamilifu kwa Mungu na kwa jirani, si katika msamaha peke yake. Fundisho hilo liliunda vuguvugu la utakatifu la baadaye na waandishi kama Amanda Berry Smith."
+      }
+    ]
+  },
+  "baptists": {
+    "name": "Wahubiri na waandishi wa Kibaptisti",
+    "label": "Wabaptisti",
+    "intro": "Wahubiri na wamisionari wa makanisa ya Kibaptisti, yanayowabatiza waumini baada ya wao kukiri imani yao. Miongoni mwao yuko \"Mfalme wa Wahubiri\", baba wa misheni za kisasa na kijana wa shambani wa Wales aliyekuwa mhubiri mkuu kuliko wote wa nchi yake.",
+    "qa": [
+      {
+        "q": "Wabaptisti wanaamini nini kuhusu ubatizo?",
+        "a": "Wabaptisti huwabatiza wale wanaokiri wenyewe imani katika Kristo, kwa kawaida kwa kuzamishwa majini, badala ya watoto wachanga. Pia wanasisitiza mamlaka ya Maandiko na uhuru wa kila kusanyiko la mahali."
+      },
+      {
+        "q": "Mfalme wa Wahubiri alikuwa nani?",
+        "a": "Charles Haddon Spurgeon, mchungaji wa Metropolitan Tabernacle huko London, aliitwa Mfalme wa Wahubiri. Mahubiri yake yalichapishwa kila wiki na kuuzwa duniani kote."
+      },
+      {
+        "q": "Kwa nini William Carey anaitwa baba wa misheni za kisasa?",
+        "a": "William Carey, fundi viatu Mbaptisti wa Uingereza, aliyahimiza makanisa mwaka 1792 yatume wamisionari ng'ambo, kisha yeye mwenyewe akasafiri kwa meli hadi India. Mfano wake ulianzisha vyama vikuu vya kimisionari vya karne ya kumi na tisa."
+      }
+    ]
+  },
+  "reformed-and-presbyterian": {
+    "name": "Waandishi wa Kireformed na Kipresbiteri",
+    "label": "Kireformed na Kipresbiteri",
+    "intro": "Warithi wa Matengenezo ya Kanisa huko Geneva na Scotland, waliofundisha ukuu wa neema ya Mungu. Kuanzia John Calvin hadi daktari wa Wales aliyegeuka kuwa mhubiri, waliunganisha theolojia makini na ibada yenye joto.",
+    "qa": [
+      {
+        "q": "Reformed maana yake nini?",
+        "a": "Makanisa ya Kireformed yanatokana na Matengenezo ya Kanisa ya Uswisi yaliyoongozwa na Zwingli na John Calvin. Yanasisitiza ukuu wa Mungu katika wokovu, mamlaka ya Maandiko na kanisa linaloongozwa na wazee."
+      },
+      {
+        "q": "Je, Kipresbiteri ni sawa na Kireformed?",
+        "a": "Makanisa ya Kipresbiteri ni makanisa ya Kireformed yanayoongozwa na wazee (presbiteri), mfumo uliostawi hasa huko Scotland. Robert Murray M’Cheyne alihudumu katika Kanisa la Scotland; Jonathan Edwards, ingawa alikuwa Mkongregationalisti, alishika theolojia ileile ya Kireformed."
+      },
+      {
+        "q": "Nimsome yupi kati ya waandishi hawa kwanza?",
+        "a": "Jonathan Edwards ndiye mwandishi wa kawaida wa Kireformed kuhusu uamsho na hisia za kidini. Martyn Lloyd-Jones aliyaleta mapokeo hayohayo katika London ya karne ya ishirini kwa mahubiri rahisi na ya moja kwa moja."
+      }
+    ]
+  },
+  "evangelical-anglicans": {
+    "name": "Waanglikana wa Kiinjili",
+    "label": "Waanglikana wa Kiinjili",
+    "intro": "Makasisi na maaskofu wa Kanisa la Uingereza na makanisa yaliyo dada zake waliofanya injili ya neema kuwa kitovu. Wanaanzia nahodha wa meli ya watumwa aliyeongoka hadi maaskofu wakuu wa Kanisa la Uganda.",
+    "qa": [
+      {
+        "q": "Mwanglikana wa kiinjili ni nani?",
+        "a": "Mwanglikana wa kiinjili ni mshiriki wa Kanisa la Uingereza au wa kanisa la Ushirika wa Kianglikana anayesisitiza kuongoka, mamlaka ya Biblia na msalaba wa Kristo. John Newton, J. C. Ryle na John Stott ni sauti tatu zinazojulikana zaidi za mapokeo hayo."
+      },
+      {
+        "q": "Kanisa la Kianglikana lilikuaje Afrika Mashariki?",
+        "a": "Wamisionari wa Church Missionary Society walipanda kanisa la Kianglikana nchini Uganda mwishoni mwa karne ya kumi na tisa. Katika karne ya ishirini viongozi wa Kiafrika kama Erica Sabiti, Festo Kivengere na Janani Luwum walilipitisha katika uamsho na mateso."
+      },
+      {
+        "q": "Nani aliandika Amazing Grace?",
+        "a": "John Newton, aliyekuwa nahodha wa meli ya watumwa kisha akawa kasisi wa Kianglikana, aliandika wimbo Amazing Grace (Neema ya Ajabu) kwa ajili ya parokia yake huko Olney."
+      }
+    ]
+  },
+  "evangelists": {
+    "name": "Wainjilisti na wahubiri wa uamsho",
+    "label": "Wainjilisti",
+    "intro": "Wahubiri walioita makundi makubwa ya watu kwenye imani katika Kristo, mashambani, katika mahema, katika maskani na viwanjani. Maisha yao yanaanzia maamsho ya karne ya kumi na nane hadi mikutano mikuu ya injili ya karne ya ishirini.",
+    "qa": [
+      {
+        "q": "Uamsho ni nini?",
+        "a": "Uamsho ni kipindi ambapo watu wengi wanamgeukia Mungu kwa wakati mmoja na kanisa linafanywa upya katika maombi na utakatifu. Uamsho Mkuu huko Uingereza na Amerika, na kampeni za Moody na Finney katika karne ya kumi na tisa, ni mifano inayojulikana."
+      },
+      {
+        "q": "Nani aliwahubiria umati mkubwa zaidi?",
+        "a": "Billy Graham aliwahubiria ana kwa ana watu wengi kuliko mhubiri yeyote kabla yake, kupitia mikutano ya injili katika kila bara. George Whitefield alivuta baadhi ya umati mkubwa zaidi wa karne ya kumi na nane kwa kuhubiri hadharani."
+      },
+      {
+        "q": "Kwa nini tuwasome wainjilisti leo?",
+        "a": "Mahubiri yao ni mafupi, ya moja kwa moja na yamekusudiwa kueleweka na mtu yeyote. Yanaonyesha injili ikihubiriwa waziwazi, pamoja na mwito wa haraka wa kuitikia."
+      }
+    ]
+  },
+  "holiness-and-keswick": {
+    "name": "Waandishi wa Utakatifu na wa Keswick",
+    "label": "Utakatifu na Keswick",
+    "intro": "Walimu wa \"maisha ya juu ya Kikristo\": kwamba muumini anaweza kutembea katika ushindi wa kila siku kwa kumtumaini Kristo badala ya kwa kujitahidi. Makongamano yao huko Keswick na Amerika, pamoja na Jeshi la Wokovu, yalipeleka ujumbe huo duniani kote.",
+    "qa": [
+      {
+        "q": "Vuguvugu la Keswick lilikuwa nini?",
+        "a": "Keswick ni mji katika eneo la Maziwa (Lake District) la Uingereza ambapo kongamano la kila mwaka la \"kukuza utakatifu wa vitendo\" lilianza mwaka 1875. Wazungumzaji kama Andrew Murray na F. B. Meyer walifundisha kwamba utakatifu hupokelewa kwa imani na kujisalimisha."
+      },
+      {
+        "q": "Vuguvugu la utakatifu ni nini?",
+        "a": "Vuguvugu la utakatifu lilitokana na Umethodisti katika Amerika ya karne ya kumi na tisa, nalo lilifundisha kazi ya pili ya neema inayosafisha moyo na kuujaza upendo. Amanda Berry Smith na Julia Foote walilihubiri, na Catherine na William Booth wakalijenga ndani ya Jeshi la Wokovu."
+      },
+      {
+        "q": "Nisome kitabu kipi kwanza?",
+        "a": "Siri ya Mkristo ya Maisha ya Furaha cha Hannah Whitall Smith ndiyo maelezo ya kawaida ya maisha ya juu ya Kikristo, na bado kinasomwa kwa upana."
+      }
+    ]
+  },
+  "pentecostal-pioneers": {
+    "name": "Waanzilishi wa Kipentekoste",
+    "label": "Waanzilishi wa Kipentekoste",
+    "intro": "Wahubiri wa uamsho wa Kipentekoste wa mwanzoni mwa karne ya ishirini, waliofundisha ubatizo katika Roho Mtakatifu na kuwaombea wagonjwa. Mahubiri yao yamejaa imani thabiti katika ahadi za Mungu.",
+    "qa": [
+      {
+        "q": "Vuguvugu la Kipentekoste lilianza lini?",
+        "a": "Vuguvugu la Kipentekoste lilitokana na maamsho ya miaka ya kwanza ya karne ya ishirini, maarufu zaidi yakiwa mikutano ya Azusa Street huko Los Angeles kuanzia mwaka 1906. Ndani ya miaka michache lilienea hadi Uingereza, Afrika Kusini na kwingineko."
+      },
+      {
+        "q": "Waanzilishi wa Kipentekoste walifundisha nini kuhusu uponyaji?",
+        "a": "Walifundisha kwamba Kristo bado huwaponya wagonjwa kwa kujibu maombi, kama katika Injili. Christ the Healer (Kristo Mponyaji) cha F. F. Bosworth ni mojawapo ya vitabu vinavyojulikana zaidi juu ya somo hilo."
+      },
+      {
+        "q": "Smith Wigglesworth alikuwa nani?",
+        "a": "Smith Wigglesworth alikuwa fundi bomba wa Yorkshire ambaye hakujua kusoma alipokuwa mvulana, akawa mmoja wa wahubiri wa Kipentekoste wanaojulikana zaidi duniani, akisafiri sana kuhubiri imani na kuwaombea wagonjwa."
+      }
+    ]
+  },
+  "missionaries": {
+    "name": "Wamisionari",
+    "label": "Wamisionari",
+    "intro": "Wanaume na wanawake walioacha nyumbani ili kuwapelekea watu wengine injili — katika misitu ya Amerika ya kikoloni, India, China, Calabar, Rwanda na Ecuador. Maisha ya wengi wao yamesimuliwa hapa kwa ukamilifu, na baadhi yao waliandika vitabu vyao wenyewe.",
+    "qa": [
+      {
+        "q": "Wamisionari Wakristo maarufu zaidi ni akina nani?",
+        "a": "Miongoni mwa wanaojulikana zaidi ni William Carey nchini India, Hudson Taylor nchini China, David Livingstone barani Afrika, Mary Slessor huko Calabar, Amy Carmichael nchini India, na Jim na Elisabeth Elliot nchini Ecuador."
+      },
+      {
+        "q": "China Inland Mission ilikuwa nini?",
+        "a": "China Inland Mission ilianzishwa na Hudson Taylor mwaka 1865 ili kupeleka injili katika majimbo ya ndani ya China. Wamisionari wake walivaa mavazi ya Kichina na walimtumaini Mungu kwa mahitaji yao bila kuomba fedha."
+      },
+      {
+        "q": "Nisome hadithi ya mmisionari yupi kwanza?",
+        "a": "Maisha ya Mary Slessor, kutoka kiwanda cha nguo cha Dundee hadi vijiji vya Calabar, na safari ya Gladys Aylward kuvuka Siberia hadi China ni mbili kati ya hadithi zinazosisimua zaidi."
+      }
+    ]
+  },
+  "east-african-revival": {
+    "name": "Uamsho wa Afrika Mashariki",
+    "label": "Uamsho wa Afrika Mashariki",
+    "intro": "Uamsho ulioanza Rwanda na Uganda katika miaka ya 1930 na kuenea kote Afrika Mashariki kwa miongo mingi. \"Walokole\" wake walitembea nuruni pamoja wao kwa wao, waliungama dhambi zao waziwazi na kumhubiri Yesu katikati ya mateso na kuuawa kwa ajili ya imani.",
+    "qa": [
+      {
+        "q": "Uamsho wa Afrika Mashariki ulikuwa nini?",
+        "a": "Uamsho wa Afrika Mashariki ulikuwa vuguvugu la toba na kufanywa upya ndani ya makanisa ya Kianglikana ya Rwanda, Uganda, Kenya na Tanzania, lililoanza mwanzoni mwa miaka ya 1930. Unakumbukwa kwa kuungama dhambi waziwazi, ushirika unaovuka makabila na rangi, na ushuhuda wa hadharani wenye furaha."
+      },
+      {
+        "q": "Nani alianzisha Uamsho wa Afrika Mashariki?",
+        "a": "Kwa kawaida chanzo chake kinahusishwa na ushirika wa Simeon Nsibambi, afisa wa afya wa Uganda, na Joe Church, daktari mmisionari wa Uingereza, waliokutana Kampala mwaka 1929. Yosiya Kinuka wa hospitali ya Gahini nchini Rwanda na Blasio Kigozi waliungana nao punde."
+      },
+      {
+        "q": "Janani Luwum alikuwa nani?",
+        "a": "Janani Luwum alikuwa Askofu Mkuu wa Kanisa la Uganda, aliyeokoka katika uamsho, ambaye aliuawa chini ya utawala wa Idi Amin mwaka 1977 baada ya kupinga ukatili wake."
+      }
+    ]
+  },
+  "britain-and-ireland": {
+    "name": "Waandishi Wakristo wa Uingereza na Ireland",
+    "label": "Uingereza na Ireland",
+    "intro": "Wachungaji, washairi, wamisionari na wainjilisti kutoka Uingereza, Scotland, Wales na Ireland. Kwa pamoja waliandika vitabu vingi vya Kikristo na nyimbo zinazopendwa zaidi katika lugha ya Kiingereza.",
+    "qa": [
+      {
+        "q": "Kwa nini vitabu vingi vya kale vya Kikristo vilitoka Uingereza?",
+        "a": "Matengenezo ya Kanisa ya Kiingereza, Wapuritani, uamsho wa kiinjili na vuguvugu la kimisionari vyote vilistawi nchini Uingereza, na uchapishaji ulifanya mahubiri na vitabu vyao vipatikane kwa wingi. Vingi kati ya vitabu hivyo vimesomwa tangu wakati huo."
+      },
+      {
+        "q": "Ni kitabu kipi cha Kikristo cha Uingereza kinachosomwa zaidi?",
+        "a": "Safari ya Msafiri cha John Bunyan, kilichoandikwa katika miaka ya 1670, kimetafsiriwa katika lugha nyingi kuliko karibu kitabu kingine chochote isipokuwa Biblia."
+      },
+      {
+        "q": "Je, waandishi wa Wales na Scotland wameorodheshwa peke yao?",
+        "a": "Ndiyo. Uingereza, Scotland na Wales kila moja ina ukurasa wake, na ukurasa huu unawakusanya wote pamoja na waandishi kutoka Ireland."
+      }
+    ]
+  },
+  "england": {
+    "name": "Waandishi Wakristo wa Uingereza",
+    "label": "Uingereza",
+    "intro": "Kuanzia wachungaji wa Kipuritani hadi wahubiri wa enzi ya Victoria na wamisionari wa karne ya ishirini, Uingereza imelipa kanisa mfululizo mrefu wa waandishi. Vitabu vyao bado vinajaza rafu za wasomaji Wakristo duniani kote.",
+    "qa": [
+      {
+        "q": "Waandishi Wakristo wa Uingereza wanaojulikana zaidi ni akina nani?",
+        "a": "Miongoni mwa wanaosomwa kwa upana zaidi ni John Bunyan, John Wesley, Charles Spurgeon, J. C. Ryle na John Stott, pamoja na wamisionari kama Hudson Taylor na Gladys Aylward."
+      },
+      {
+        "q": "Mhubiri maarufu zaidi wa Uingereza alikuwa nani?",
+        "a": "Charles Spurgeon, aliyeitwa Mfalme wa Wahubiri, aliwavuta maelfu kila Jumapili kwenye Metropolitan Tabernacle huko London katika karne ya kumi na tisa, na mahubiri yake yaliyochapishwa yaliwafikia mamilioni."
+      },
+      {
+        "q": "Nisome kitabu kipi cha Kikristo cha Uingereza kwanza?",
+        "a": "Safari ya Msafiri cha John Bunyan ndipo mahali pa kawaida pa kuanzia."
+      }
+    ]
+  },
+  "scotland": {
+    "name": "Waandishi Wakristo wa Scotland",
+    "label": "Scotland",
+    "intro": "Mhudumu kijana wa Dundee, mvumbuzi aliyeanzia kazi kiwandani akiwa mvulana, mhubiri aliyezaliwa Glasgow na msichana wa kiwandani aliyekuwa mmisionari huko Calabar. Waandishi wa Scotland walipeleka imani ya Kanisa la Scotland kwenye mimbari na maeneo ya misheni mbali na nyumbani.",
+    "qa": [
+      {
+        "q": "Wamisionari maarufu wa Scotland ni akina nani?",
+        "a": "David Livingstone, mmisionari mvumbuzi wa Afrika ya Kati, na Mary Slessor, aliyehudumu kwa karibu miaka arobaini huko Calabar katika eneo ambalo sasa ni Nigeria, ndio wanaojulikana zaidi."
+      },
+      {
+        "q": "Robert Murray M’Cheyne alikuwa nani?",
+        "a": "Robert Murray M’Cheyne alikuwa mhudumu wa St Peter’s, Dundee, aliyefariki mwaka 1843 akiwa na umri wa miaka ishirini na tisa. Anakumbukwa kwa maisha yake matakatifu, barua zake na mpango wake wa kusoma Biblia."
+      },
+      {
+        "q": "Je, Alexander Maclaren alikuwa Mskoti?",
+        "a": "Ndiyo. Alexander Maclaren alizaliwa Glasgow na akawa mhubiri Mbaptisti, akihudumu Union Chapel huko Manchester kwa zaidi ya miaka arobaini."
+      }
+    ]
+  },
+  "wales": {
+    "name": "Waandishi Wakristo wa Wales",
+    "label": "Wales",
+    "intro": "Nchi ya maamsho na wahubiri wakuu. Kuanzia kasisi mshairi wa miaka ya 1600 hadi mchimba makaa ya mawe aliyejifunza kuomba, waumini hawa waliozaliwa Wales waliacha maneno ambayo bado yanaupa moyo joto.",
+    "qa": [
+      {
+        "q": "Wahubiri wakuu wa Wales walikuwa akina nani?",
+        "a": "Christmas Evans alikuwa mhubiri wa Wales aliyesifika zaidi mwanzoni mwa karne ya kumi na tisa, na Martyn Lloyd-Jones, aliyezaliwa Cardiff, alikuwa mmoja wa wahubiri wakuu wa karne ya ishirini."
+      },
+      {
+        "q": "Uamsho wa Wales ulikuwa nini?",
+        "a": "Uamsho wa Wales wa 1904–1905 ulienea katika makanisa ya Wales, ukiwaleta maelfu mengi kwenye imani. Rees Howells, aliyekuwa wakati huo kijana mchimba makaa ya mawe, aliundwa kwa kina nao."
+      },
+      {
+        "q": "Je, George Herbert alikuwa Mwelsh?",
+        "a": "George Herbert alizaliwa Montgomery, Wales, mwaka 1593, katika familia ya kitukufu ya mpakani mwa Wales, akawa mshairi na kasisi wa kijijini huko Uingereza."
+      }
+    ]
+  },
+  "europe": {
+    "name": "Waandishi Wakristo wa bara la Ulaya",
+    "label": "Bara la Ulaya",
+    "intro": "Mapapa na watawa, Wanamatengenezo na wanafumbo, mwanahisabati na mtengenezaji saa Mholanzi. Waandishi wa bara la Ulaya wanachukua karibu miaka elfu mbili ya historia ya kanisa.",
+    "qa": [
+      {
+        "q": "Waandishi wakuu Wakristo wa Ulaya walikuwa akina nani?",
+        "a": "Wanajumuisha Gregory the Great na Bernard wa Clairvaux katika Zama za Kati, Martin Luther na John Calvin wakati wa Matengenezo ya Kanisa, Blaise Pascal na Teresa wa Ávila, na Dietrich Bonhoeffer na Corrie ten Boom katika karne ya ishirini."
+      },
+      {
+        "q": "Ni kitabu kipi cha Kikristo cha Ulaya kinachosomwa zaidi?",
+        "a": "Kumfuata Kristo (The Imitation of Christ) cha Thomas à Kempis, kilichoandikwa katika karne ya kumi na tano, kimekuwa mojawapo ya vitabu vya Kikristo vinavyosomwa zaidi duniani."
+      },
+      {
+        "q": "Je, Ufaransa na Ujerumani zimeorodheshwa peke yake?",
+        "a": "Ndiyo. Ufaransa na Ujerumani kila moja ina ukurasa wake, na ukurasa huu unaziweka pamoja na waandishi kutoka Italia, Hispania, Uholanzi na kwingineko."
+      }
+    ]
+  },
+  "france": {
+    "name": "Waandishi Wakristo wa Ufaransa",
+    "label": "Ufaransa",
+    "intro": "Aboti wa Kisistersia, Mwanamatengenezo wa Geneva, mwanahisabati aliyeandika juu ya sababu za moyo, na mwanamke mtukufu aliyefungwa gerezani kwa kufundisha maombi. Waandishi Wakristo wa Ufaransa ni wachache hapa kwa idadi lakini wakubwa kwa ushawishi.",
+    "qa": [
+      {
+        "q": "Je, John Calvin alikuwa Mfaransa?",
+        "a": "Ndiyo. John Calvin alizaliwa Noyon kaskazini mwa Ufaransa mwaka 1509, na alifanya sehemu kubwa ya kazi yake kama Mwanamatengenezo huko Geneva baada ya kukimbia Ufaransa."
+      },
+      {
+        "q": "Blaise Pascal aliandika nini kuhusu imani?",
+        "a": "Pensées za Pascal ni maandishi ya maandalizi ya utetezi wa Ukristo, yakiwemo maneno yake maarufu kwamba moyo una sababu zake ambazo akili haizijui."
+      },
+      {
+        "q": "Madame Guyon alikuwa nani?",
+        "a": "Jeanne Guyon alikuwa mwanafumbo Mfaransa wa karne ya kumi na saba ambaye vitabu vyake vifupi kuhusu maombi vilimletea kifungo katika gereza la Bastille, na baadaye viliwaathiri wasomaji wengi wa Kiprotestanti."
+      }
+    ]
+  },
+  "germany": {
+    "name": "Waandishi Wakristo wa Ujerumani",
+    "label": "Ujerumani",
+    "intro": "Kuanzia mtawa aliyeandika Kumfuata Kristo hadi Mwanamatengenezo wa Wittenberg, mwanzilishi wa nyumba za yatima aliyeishi kwa maombi na mchungaji aliyempinga Hitler. Waandishi wa Ujerumani wameunda ibada ya Kikristo kwa karne tano.",
+    "qa": [
+      {
+        "q": "Martin Luther alikuwa nani?",
+        "a": "Martin Luther alikuwa mtawa na profesa Mjerumani ambaye fundisho lake la kuhesabiwa haki kwa imani peke yake lilianzisha Matengenezo ya Kiprotestanti mwaka 1517."
+      },
+      {
+        "q": "Je, George Müller alikuwa Mjerumani?",
+        "a": "George Müller alizaliwa Prussia, katika eneo ambalo sasa ni Ujerumani, mwaka 1805, akahamia Uingereza, ambako aliwatunza maelfu ya yatima huko Bristol bila kamwe kumwomba mtu yeyote fedha."
+      },
+      {
+        "q": "Kwa nini Dietrich Bonhoeffer anakumbukwa?",
+        "a": "Dietrich Bonhoeffer alikuwa mchungaji Mlutheri Mjerumani aliyempinga Hitler na akauawa mwaka 1945. Vitabu vyake kuhusu ufuasi na jumuiya ya Kikristo bado vinasomwa kwa upana."
+      }
+    ]
+  },
+  "north-america": {
+    "name": "Waandishi Wakristo wa Amerika Kaskazini",
+    "label": "Amerika Kaskazini",
+    "intro": "Wahubiri wa Uamsho Mkuu, waanzilishi wa makanisa ya Weusi, wainjilisti, wamisionari na wachungaji kutoka Marekani na Kanada. Maisha yao yanafuatilia hadithi ya Ukristo wa Amerika kuanzia Connecticut ya kikoloni hadi New York ya kisasa.",
+    "qa": [
+      {
+        "q": "Waandishi Wakristo wa Amerika wenye ushawishi mkubwa zaidi ni akina nani?",
+        "a": "Jonathan Edwards, Charles Finney, Dwight L. Moody, A. W. Tozer na Billy Graham ni miongoni mwa wanaosomwa kwa upana zaidi, pamoja na Richard Allen, mwanzilishi wa Kanisa la African Methodist Episcopal."
+      },
+      {
+        "q": "Je, kuna waandishi wa Kanada hapa?",
+        "a": "Ndiyo. A. B. Simpson, mwanzilishi wa Christian and Missionary Alliance, na mhubiri wa Kipentekoste John G. Lake wote wawili walizaliwa Kanada."
+      },
+      {
+        "q": "Je, Marekani imeorodheshwa peke yake?",
+        "a": "Ndiyo. Marekani ina ukurasa wake, na ukurasa huu unawakusanya waandishi hao pamoja na wale kutoka Kanada."
+      }
+    ]
+  },
+  "united-states": {
+    "name": "Waandishi Wakristo wa Marekani",
+    "label": "Marekani",
+    "intro": "Kuanzia Jonathan Edwards na Uamsho Mkuu hadi mikutano ya injili ya Billy Graham, Marekani imetoa wahubiri, wamisionari na walimu wanaosomwa duniani kote. Hadithi zao zinahusu utumwa na uhuru, uamsho na kuanzishwa kwa makanisa mapya.",
+    "qa": [
+      {
+        "q": "Mwanatheolojia mkuu zaidi wa Amerika alikuwa nani?",
+        "a": "Jonathan Edwards, mchungaji wa karne ya kumi na nane wa Northampton, Massachusetts, mara nyingi huitwa mwanatheolojia mkuu zaidi ambaye Amerika imewahi kumtoa. Maandiko yake kuhusu uamsho na hisia za kidini bado yanachunguzwa."
+      },
+      {
+        "q": "Wahubiri wa kwanza Waamerika Weusi walikuwa akina nani?",
+        "a": "Lemuel Haynes alikuwa mtu Mweusi wa kwanza kuwekwa wakfu na dhehebu kuu la Kiprotestanti nchini Amerika. Richard Allen alianzisha Kanisa la African Methodist Episcopal, na Jarena Lee akawa mhubiri wake wa kwanza mwanamke aliyeidhinishwa."
+      },
+      {
+        "q": "Nisome kitabu kipi cha Kikristo cha Amerika kwanza?",
+        "a": "The Pursuit of God (Kumtafuta Mungu) cha A. W. Tozer na vitabu vya E. M. Bounds kuhusu maombi ni vifupi, vinachunguza moyo na vinapendwa na wengi."
+      }
+    ]
+  },
+  "east-africa": {
+    "name": "Waandishi Wakristo wa Afrika Mashariki",
+    "label": "Afrika Mashariki",
+    "intro": "Walokole wa Uamsho wa Afrika Mashariki kutoka Uganda na Rwanda — maafisa wa afya, walimu wa shule, wafanyakazi wa hospitali, wainjilisti na maaskofu. Kadhaa kati yao walitia muhuri ushuhuda wao kwa maisha yao.",
+    "qa": [
+      {
+        "q": "Ni nchi zipi za Afrika Mashariki zilizomo hapa?",
+        "a": "Waandishi walio kwenye ukurasa huu wanatoka Uganda na Rwanda, nchi mbili ambazo Uamsho wa Afrika Mashariki ulianzia."
+      },
+      {
+        "q": "Yona Kanamuzeyi alikuwa nani?",
+        "a": "Yona Kanamuzeyi alikuwa shemasi wa Kianglikana wa Rwanda wa uamsho ambaye aliuawa mwaka 1964; masimulizi yanakubaliana kwamba aliimba alipokuwa akipelekwa nje ili apigwe risasi."
+      },
+      {
+        "q": "Je, Uganda imeorodheshwa peke yake?",
+        "a": "Ndiyo. Uganda ina ukurasa wake, na ukurasa huu unawakusanya waandishi wake pamoja na wale kutoka Rwanda."
+      }
+    ]
+  },
+  "uganda": {
+    "name": "Waandishi Wakristo wa Uganda",
+    "label": "Uganda",
+    "intro": "Viongozi wa Uamsho wa Afrika Mashariki na wa Kanisa la Uganda: mwinjilisti aliyesafiri duniani kote, askofu mkuu wa kwanza Mwafrika wa Uganda, na askofu mkuu aliyeuawa chini ya Idi Amin. Maisha yao yanasimulia hadithi ya kanisa lililojaribiwa na kufanywa upya.",
+    "qa": [
+      {
+        "q": "Festo Kivengere alikuwa nani?",
+        "a": "Festo Kivengere alikuwa askofu na mwinjilisti wa Kianglikana wa Uganda wa Uamsho wa Afrika Mashariki, aliyejulikana duniani kote kwa mahubiri yake kuhusu msamaha baada ya kukimbia utawala wa Idi Amin."
+      },
+      {
+        "q": "Askofu Mkuu wa kwanza Mwafrika wa Uganda alikuwa nani?",
+        "a": "Erica Sabiti alikuwa Askofu Mkuu wa kwanza Mwafrika wa Kanisa la Uganda mwaka 1966."
+      },
+      {
+        "q": "Ukristo uliingiaje Uganda?",
+        "a": "Wamisionari wa Kianglikana na wa Kikatoliki walifika Buganda mwishoni mwa miaka ya 1870. Kanisa changa lilikabili mateso, yakiwemo kuuawa kwa waongofu wa Uganda kwa ajili ya imani mwaka 1885–1887, na likakua kwa kasi katika miongo iliyofuata."
+      }
+    ]
+  },
+  "north-africa": {
+    "name": "Waandishi Wakristo wa Afrika Kaskazini",
+    "label": "Afrika Kaskazini",
+    "intro": "Muda mrefu kabla ya Uislamu, Afrika Kaskazini ilikuwa mojawapo ya ngome kuu za kanisa. Carthage, Hippo na Aleksandria zililipa kanisa askofu shahidi wa imani, mtetezi wa uungu wa Kristo, na Augustine pamoja na mama yake aliyekuwa mwombaji.",
+    "qa": [
+      {
+        "q": "Je, Augustine alikuwa Mwafrika?",
+        "a": "Ndiyo. Augustine alizaliwa mwaka 354 huko Thagaste, katika Afrika Kaskazini ya Kirumi (Algeria ya leo), na alikuwa askofu wa Hippo, kwenye pwani ileile, kwa zaidi ya miaka thelathini."
+      },
+      {
+        "q": "Athanasius wa Aleksandria alikuwa nani?",
+        "a": "Athanasius alikuwa askofu wa Aleksandria nchini Misri kwa miaka arobaini na mitano katika karne ya nne, na aliutetea uungu kamili wa Kristo dhidi ya Uariano katika kipindi cha kuhamishwa mara tano."
+      },
+      {
+        "q": "Kipriano wa Kathage alikuwa nani?",
+        "a": "Kipriano alikuwa askofu wa Kathage katika karne ya tatu, mwandishi kuhusu umoja wa kanisa, aliyeuawa kwa ajili ya imani mwaka 258."
+      }
+    ]
+  },
+  "asia-and-the-middle-east": {
+    "name": "Waandishi Wakristo wa Asia na Mashariki ya Kati",
+    "label": "Asia na Mashariki ya Kati",
+    "intro": "Kuanzia Antiokia, ambako wanafunzi waliitwa Wakristo kwa mara ya kwanza, hadi India na China. Waandishi hawa wanahusisha kanisa la kale la Siria na makanisa ya kisasa ya Asia.",
+    "qa": [
+      {
+        "q": "Watchman Nee alikuwa nani?",
+        "a": "Watchman Nee alikuwa mhubiri na mpandaji wa makanisa Mchina wa karne ya ishirini ambaye alitumia miaka ishirini ya mwisho ya maisha yake gerezani kwa sababu ya imani yake. Kitabu chake The Normal Christian Life (Maisha ya Kawaida ya Kikristo) kinasomwa kwa upana."
+      },
+      {
+        "q": "Pandita Ramabai alikuwa nani?",
+        "a": "Pandita Ramabai alikuwa msomi wa Kisanskriti na mwanamageuzi wa kijamii wa India aliyekuwa Mkristo na akaanzisha Mukti Mission kwa ajili ya wajane na wasichana yatima karibu na Pune."
+      },
+      {
+        "q": "Kwa nini Antiokia ni muhimu katika historia ya kanisa?",
+        "a": "Antiokia ya Siria ndiko wafuasi wa Yesu waliitwa Wakristo kwa mara ya kwanza (Matendo 11:26). Ignatius alikuwa askofu wake mwanzoni mwa karne ya pili, na Yohana Chrysostom alihubiri huko kabla ya kuwa askofu mkuu wa Konstantinopoli."
+      }
+    ]
+  }
+}

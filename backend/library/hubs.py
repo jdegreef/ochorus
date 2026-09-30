@@ -9,7 +9,8 @@ is curated data, kept in two kinds of file under ``data/hubs/``:
   may name the region it belongs to; a region's members are its own list plus
   the members of every place under it, so a writer tagged "Wales" is on the
   "Britain & Ireland" page without being listed twice.
-- ``prose/<language>.json`` — ``{slug: {name, intro, qa}}``. There is no English
+- ``prose/<language>.json`` — ``{slug: {name, label, intro, qa}}``: the page
+  title, its short form for chips, the intro and the Q&A. There is no English
   fallback, as with topic shelves: a hub a language has no prose for does not
   exist in that language.
 
@@ -111,6 +112,7 @@ class Hubs:
                     "slug": h["slug"],
                     "region": h.get("region") or None,
                     "name": prose["name"],
+                    "label": prose["label"],
                     "intro": prose["intro"],
                     "qa": prose.get("qa", []),
                     "members": self.listed_members(h["slug"], language),
@@ -131,7 +133,7 @@ class Hubs:
         for h in self.hubs:
             if author_slug not in self.members[h["slug"]] or not self.exists(h["slug"], language):
                 continue
-            chip = {"kind": h["kind"], "slug": h["slug"], "name": self.prose[language][h["slug"]]["name"]}
+            chip = {"kind": h["kind"], "slug": h["slug"], "label": self.prose[language][h["slug"]]["label"]}
             (chips if h["kind"] == "tradition" else places).append((h, chip))
         # A place outranks its region; a region stands only when none of its
         # places carries this writer here.

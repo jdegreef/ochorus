@@ -452,7 +452,7 @@
 		{#if author.hubs?.length}
 			<ul class="mt-3 flex flex-wrap gap-2">
 				{#each author.hubs as h (h.slug)}
-					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.name}</a></li>
+					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
 				{/each}
 			</ul>
 		{/if}

@@ -71,6 +71,8 @@ class HubDataTests(SimpleTestCase):
             for slug, e in entries.items():
                 with self.subTest(lang=lang, hub=slug):
                     self.assertTrue(e["name"].strip())
+                    self.assertTrue(e["label"].strip())
+                    self.assertLessEqual(len(e["label"]), len(e["name"]), "a label is the SHORT form")
                     self.assertGreater(len(e["intro"]), 60)
                     self.assertEqual(
                         len(e["qa"]), len(self.prose["en"][slug]["qa"]), "Q&A count differs from English"
@@ -99,7 +101,7 @@ class HubApiTests(TestCase):
     def setUp(self):
         for s in "abcdef":
             _writer(s)
-        entry = lambda name: {"name": name, "intro": f"About {name}.", "qa": [{"q": "Q?", "a": "A."}]}  # noqa: E731
+        entry = lambda name: {"name": f"{name} writers", "label": name, "intro": f"About {name}.", "qa": [{"q": "Q?", "a": "A."}]}  # noqa: E731
         self.prose = {
             "en": {s: entry(s.title()) for s in ("puritans", "britain", "wales", "scotland")},
             # Swahili has prose for two hubs and bios for only three writers.
@@ -125,7 +127,8 @@ class HubApiTests(TestCase):
         self.assertEqual(set(got), {"puritans", "britain", "wales"})  # scotland has 1 writer
         self.assertEqual(got["britain"]["members"], ["e", "a", "b", "c", "d", "f"])
         self.assertEqual(got["wales"]["region"], "britain")
-        self.assertEqual(got["puritans"]["name"], "Puritans")
+        self.assertEqual(got["puritans"]["name"], "Puritans writers")
+        self.assertEqual(got["puritans"]["label"], "Puritans")
         self.assertEqual(got["puritans"]["qa"], [{"q": "Q?", "a": "A."}])
 
     def test_a_language_needs_prose_and_enough_listed_writers(self):
@@ -134,7 +137,7 @@ class HubApiTests(TestCase):
         got = self._hubs("sw")
         # Prose for two hubs, and Britain has none in Swahili: no fallback.
         self.assertEqual(set(got), {"puritans", "wales"})
-        self.assertEqual(got["puritans"]["name"], "Wapuriti")
+        self.assertEqual(got["puritans"]["label"], "Wapuriti")
         self.assertEqual(got["puritans"]["available_languages"], ["en", "sw"])
         self.assertEqual(self._hubs()["britain"]["available_languages"], ["en"])
 
@@ -153,13 +156,13 @@ class HubApiTests(TestCase):
         self.assertEqual(
             res["hubs"],
             [
-                {"kind": "tradition", "slug": "puritans", "name": "Puritans"},
-                {"kind": "place", "slug": "wales", "name": "Wales"},
+                {"kind": "tradition", "slug": "puritans", "label": "Puritans"},
+                {"kind": "place", "slug": "wales", "label": "Wales"},
             ],
         )
         # Scotland is too thin for a page, so its writer links to the region.
         res = self.client.get("/api/library/authors/f/?language=en").json()
-        self.assertEqual(res["hubs"], [{"kind": "region", "slug": "britain", "name": "Britain"}])
+        self.assertEqual(res["hubs"], [{"kind": "region", "slug": "britain", "label": "Britain"}])
         # And nothing in a language where the hubs don't exist.
         res = self.client.get("/api/library/authors/a/?language=sw").json()
         self.assertEqual(res["hubs"], [])

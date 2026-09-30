@@ -69,7 +69,7 @@ vi.mock('$lib/library-public', () => {
 		// A place hub in English and Swahili, none in Spanish.
 		listHubs: async (l = 'en') =>
 			l === 'en' || l === 'sw'
-				? [{ kind: 'place', slug: 'wales', region: null, members: ['andrew-murray'], name: 'Wales' }]
+				? [{ kind: 'place', slug: 'wales', region: null, members: ['andrew-murray'], name: 'Wales', label: 'Wales' }]
 				: [],
 		listPlans: async (l = 'en') =>
 			l === 'sw' ? [{ slug: 'humility-in-12', covers: [{ slug: 'humility' }] }] : [],

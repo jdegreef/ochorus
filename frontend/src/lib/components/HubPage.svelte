@@ -165,7 +165,7 @@
 			<h2 id="hub-related" class="section-label mb-3">{t('hubs.alsoBrowse')}</h2>
 			<ul class="flex flex-wrap gap-2">
 				{#each related as h (h.slug)}
-					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.name}</a></li>
+					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
 				{/each}
 			</ul>
 		</section>

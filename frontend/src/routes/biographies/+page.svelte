@@ -339,7 +339,7 @@
 					<h2 class="section-label mb-2.5">{t('hubs.byTradition')}</h2>
 					<ul class="flex flex-wrap gap-2">
 						{#each traditions as h (h.slug)}
-							<li><a class="tag" href={localizeHref(hubPath(h))}>{h.name}</a></li>
+							<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
 						{/each}
 					</ul>
 				</div>
@@ -351,12 +351,12 @@
 						{#each places as g (g.region?.slug ?? '')}
 							<li class="flex flex-wrap items-center gap-2">
 								{#if g.region}
-									<a class="tag font-semibold" href={localizeHref(hubPath(g.region))}>{g.region.name}</a>
+									<a class="tag font-semibold" href={localizeHref(hubPath(g.region))}>{g.region.label}</a>
 								{:else}
 									<span class="text-small text-muted">{t('hubs.elsewhere')}</span>
 								{/if}
 								{#each g.places as h (h.slug)}
-									<a class="tag" href={localizeHref(hubPath(h))}>{h.name}</a>
+									<a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a>
 								{/each}
 							</li>
 						{/each}

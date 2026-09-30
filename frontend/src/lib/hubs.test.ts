@@ -7,6 +7,7 @@ const hub = (kind: Hub['kind'], slug: string, extra: Partial<Hub> = {}): Hub => 
 	slug,
 	region: null,
 	name: slug,
+	label: slug,
 	intro: '',
 	qa: [],
 	members: [],
