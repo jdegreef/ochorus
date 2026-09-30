@@ -14,9 +14,8 @@ import { SERMON_OG_LOCALES } from './sermonOgLocales';
  * stops there, because the emblem catalogue and the drawing code are both
  * TypeScript/JS. So reassigning a sermon's emblem (its hue), changing the
  * monogram parser, moving the catalogue's saturation floor, or restyling the
- * card itself would leave
- * cards stale with the Python gate green — and a share card is only ever seen
- * by someone who is not us.
+ * card itself would leave cards stale with the Python gate green — and a share
+ * card is only ever seen by someone who is not us.
  *
  * The line the digests draw is INPUTS, not output: nothing here re-derives a
  * PNG, so a change in satori or resvg is still invisible. A floor, not a proof.
