@@ -104,11 +104,12 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # Wrapped in `sh -c` because Render runs dockerCommand WITHOUT a shell, so a
-    # bare `&&` is passed as arguments to the first command instead of chaining
-    # (the crash: "unrecognized arguments: && uv run …"). The Dockerfile's own CMD
-    # wraps in `sh -c` for the same reason.
-    dockerCommand: "sh -c 'uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts'"
+    # A SINGLE management command that runs both steps in-process. Render runs a
+    # cron dockerCommand argv-style (no shell) AND keeps literal quotes, so both a
+    # bare `&&` ("unrecognized arguments: &&") and an `sh -c '…'` wrapper (status
+    # 127: the quoted string treated as one command name) fail. No operators, no
+    # quotes here — send_email_cron chains the two steps in Python.
+    dockerCommand: "uv run python manage.py send_email_cron"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
