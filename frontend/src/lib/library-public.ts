@@ -47,6 +47,9 @@ export interface BookSummary {
 	/** The short title a cover sets in place of `title`; read through
 	 *  `coverTitle`. Optional for the same reason as `series_position`. */
 	cover_title?: string;
+	/** The name a cover sets as its byline when it is not the author's — the
+	 *  person a house-written life or companion is about. Blank = the author. */
+	cover_byline?: string;
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
@@ -101,6 +104,7 @@ export const COVER_BOOK_KEYS = [
 	'title',
 	'subtitle',
 	'cover_title',
+	'cover_byline',
 	'source_type',
 	'cover_color',
 	'cover_url',
@@ -140,6 +144,7 @@ export const COVER_FACE_KEYS = [
 	'title',
 	'subtitle',
 	'cover_title',
+	'cover_byline',
 	'cover_color',
 	'cover_url',
 	'series_position'
@@ -661,6 +666,9 @@ export const fullLifeDiscriminates = (authors: AuthorBio[]): boolean => {
 /** A book this person is found IN but did not write, with the role they play. */
 export interface AppearsInBook extends BookSummary {
 	role: PersonRole;
+	/** Their lone subject: a book ABOUT them (a life, a Key Teachings
+	 *  companion), shelved under its own heading rather than "Also appears in". */
+	about?: boolean;
 }
 
 export interface AuthorDetail extends AuthorBio {

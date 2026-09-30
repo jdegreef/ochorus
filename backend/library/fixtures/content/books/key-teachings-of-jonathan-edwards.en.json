@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "jonathan-edwards"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-jonathan-edwards",
   "language": "en",
   "title": "The Key Teachings of Jonathan Edwards",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Jonathan Edwards",
   "description": "A concise, faithful guide to the mind and heart of Jonathan Edwards — the sovereignty and the beauty of God, true religion as holy affections, and the end for which God created the world: His own glory, delighted in by His creatures. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Edwards's own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is a companion to Jonathan Edwards, not a book by him. Written by Ochorus, it distils the thought of America's greatest theologian into eighteen short chapters an ordinary reader can carry.</p><p>Edwards saw further into the greatness and beauty of God than almost anyone who has written in English, and he bent the whole force of a formidable mind to a single end: that God might be seen as supremely glorious and enjoyed as supremely good. This volume traces that vision through his most important works — the sovereignty of God, the beauty of holiness, true religion as holy affections, the end for which God created the world — and through the sterner texts, like the sermon on sinners in the hands of an angry God, that people remember and misremember. Each chapter closes in questions and a prayer, because Edwards held that truth unfelt and unobeyed has not yet been truly known.</p><p>Edwards's own writings are in the public domain and freely available, and this companion names them throughout so the reader may go to the source. It quotes Scripture from the Authorised (King James) Version, the Bible Edwards preached from, and is offered only to open the door to the man's own pages.</p>",
   "qa": [],

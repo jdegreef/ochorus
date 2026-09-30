@@ -3,13 +3,14 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "watchman-nee"
+   "ochorus-originals"
   ],
   "slug": "watchman-nee-a-life",
   "language": "sw",
   "title": "Taswira za Ujasiri – Watchman Nee",
   "subtitle": "Maisha, Mateso, na Maono ya Kiroho ya Mtumishi wa Kristo wa Kichina",
   "cover_title": "Watchman Nee",
+  "cover_byline": "Watchman Nee",
   "description": "Wasifu wa Kikristo wa Watchman Nee (1903–1972), kiongozi wa kanisa la Kichina na mwalimu wa maisha ya kiroho aliyeandika vitabu The Normal Christian Life na Sit, Walk, Stand. Waweka mafundisho yake ndani ya maisha yake — wongofu wake, lile kundi dogo, kuvunjwa kwa mtu wa nje, na miaka ishirini gerezani chini ya utawala wa Kikomunisti — ukipima ufahamu wake na mabishano yake kwa mizani ya Maandiko. Umeandikwa kwa shukrani lakini si kwa kumtukuza kupita kiasi; Maandiko yote yatoka katika tafsiri ya ASV (1901) iliyo katika uhuru wa umma.",
   "about_html": "",
   "publication_year": 2026,

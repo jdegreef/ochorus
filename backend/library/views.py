@@ -727,7 +727,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
             .select_related("author")
             # The tile's cover_face fields (and the author it names), no more.
             .only(
-                "slug", "language", "title", "subtitle", "cover_title", "cover_url",
+                "slug", "language", "title", "subtitle", "cover_title", "cover_byline",
+                "cover_url",
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
             )

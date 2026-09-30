@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "charles-h-spurgeon"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-charles-h-spurgeon",
   "language": "en",
   "title": "The Key Teachings of Charles H. Spurgeon",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Charles H. Spurgeon",
   "description": "A concise, faithful guide to the heart of Charles H. Spurgeon’s message — that salvation is all of grace, from first to last, and is received by a single look of faith at Jesus Christ crucified. Twenty-one short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Spurgeon’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Charles H. Spurgeon. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of the Prince of Preachers’ teaching into twenty-one short chapters for the ordinary reader, with a chapter on his life before them and a guide to his books after.</p><p>Spurgeon’s one message was the one that saved him as a boy of fifteen in a Colchester chapel: Look unto me, and be ye saved. Everything he preached for forty years — free grace and the free offer of the gospel, the substitution of Christ, simple faith and the repentance that goes with it, the unchanging God, the promises, prayer, the war with sin, the happiness of religion, songs in the night, communion at the Lord’s Table, the winning of souls, the care of the orphan, and the contending for truth that darkened his last years — is that one look applied. This volume follows the thread, is honest about his combativeness and the limits of his system, and ends each chapter where he would have ended it: in a few searching questions and a prayer.</p><p>Spurgeon’s own writings are in the public domain and freely available, and many are in the Ochorus library; every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible Spurgeon preached from, and makes no claim to stand in for his own vivid, Christ-filled pages.</p>",
   "qa": [],

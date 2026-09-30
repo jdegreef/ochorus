@@ -3,13 +3,14 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "john-hyde"
+   "ochorus-originals"
   ],
   "slug": "john-hyde-a-life",
   "language": "en",
   "title": "Portraits of Courage – Praying Hyde",
   "subtitle": "The Life, Prayers, and Hidden Courage of a Missionary to the Punjab",
   "cover_title": "Praying Hyde",
+  "cover_byline": "John Hyde",
   "description": "A Christian biography of John “Praying” Hyde (1865–1912), the American Presbyterian missionary to the Punjab remembered above all as a man of prayer. It follows him from an Illinois parsonage through slow, misunderstood years in India to the Sialkot Conventions, the soul-a-day years, and his death — keeping what the records show apart from the legend, and weighing his example under Scripture. Written with gratitude but not hagiography; all Scripture from the public-domain ASV (1901).",
   "about_html": "",
   "qa": [

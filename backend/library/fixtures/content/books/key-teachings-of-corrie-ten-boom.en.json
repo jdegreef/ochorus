@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "corrie-ten-boom"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-corrie-ten-boom",
   "language": "en",
   "title": "The Key Teachings of Corrie ten Boom",
   "subtitle": "An Ochorus companion to her life and teaching",
+  "cover_byline": "Corrie ten Boom",
   "description": "A concise, faithful guide to the heart of Corrie ten Boom’s witness — that the love of God is deeper than the deepest darkness, that forgiveness is an act of obedience which God Himself makes real, and that Jesus is Victor. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Corrie ten Boom’s ministry, naming her books for the reader’s own further study.",
   "about_html": "<p>This is a companion to Corrie ten Boom, not a book by her. Written by Ochorus, it sets out in sixteen short chapters the teaching for which the Dutch watchmaker of Haarlem is chiefly remembered — God’s care in the small things, the love of God that reaches deeper than any pit, thanksgiving in everything, the forgiveness of enemies as an act of the will that God answers with His own love, the casting of every care upon Him, the fullness of the Holy Spirit, and the sure hope of Christ’s return. It opens with an account of her life and closes with a conclusion and a guide to her books.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Corrie ten Boom. All descriptions of her teaching are the present author’s own summaries; her books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Corrie ten Boom’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what she taught.</p><p>Corrie ten Boom never claimed to be a theologian. She called herself a witness, and she spent more than thirty years pointing away from her own courage to the faithfulness of God in the darkest place she had known. This volume tries to honour that by doing the same: telling what she taught plainly, marking honestly where later retellings differ from her earliest account, and sending the reader on to Christ.</p>",
   "qa": [],

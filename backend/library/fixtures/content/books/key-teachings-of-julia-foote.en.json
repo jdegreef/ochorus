@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "julia-foote"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-julia-foote",
   "language": "en",
   "title": "The Key Teachings of Julia A. J. Foote",
   "subtitle": "An Ochorus companion to her life and teaching",
+  "cover_byline": "Julia A. J. Foote",
   "description": "A concise, faithful guide to the heart of Julia A. J. Foote’s message — that Christ saves not only from the guilt of sin but from its power, that this full salvation is received by faith and shows itself as love, and that the Spirit who cleanses a heart may send whom He will to preach. Ten short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Julia Foote’s own public-domain memoir, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Julia A. J. Foote. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into ten short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force. It is shorter than other volumes in this series, and deliberately so. Her own written legacy is one small book, A Brand Plucked from the Fire, published in 1879, together with a few fragments of her words recorded by others, and a companion ought not to be longer than it can honestly be.</p><p>Her one theme was full salvation. She believed that the blood of Christ does not only pardon the sinner but cleanses the believer, that this cleansing is received by faith and not earned by years of struggle, and that it shows itself as love. She believed that the same Spirit who makes a heart clean may fill any mouth He chooses, a Black woman’s as readily as a bishop’s, and she paid for that belief with her church membership. This volume follows that thread through her conversion, her sanctification, her call, her expulsion, her defence of women in the gospel, her witness against slavery and prejudice, her warnings against drink and worldliness, and her long years of travel and illness. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Julia Foote’s own writing is in the public domain and freely available, and this companion quotes it and names it throughout so that the reader can go straight to the source. It is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she learned to read by firelight as a girl, and it makes no claim to stand in for her own plain, fervent and searching words.</p>",
   "qa": [],

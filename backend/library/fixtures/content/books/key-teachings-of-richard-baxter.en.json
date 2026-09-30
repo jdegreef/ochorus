@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "richard-baxter"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-richard-baxter",
   "language": "en",
   "title": "The Key Teachings of Richard Baxter",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Richard Baxter",
   "description": "A concise, faithful guide to the pastoral heart of Richard Baxter — the saints' everlasting rest, the call to the unconverted, and the minister's charge to take heed to himself and to all the flock. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Baxter's own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is a companion to Richard Baxter, not a book by him. Written by Ochorus, it renders the pastoral wisdom of the great Puritan of Kidderminster into eighteen short chapters in plain modern English.</p><p>Baxter wrote, by his own account, as a dying man to dying men, and the urgency never left him. Out of a lifetime of sickness and labour came books the church has never let go of: The Saints' Everlasting Rest, on the heaven the weary are travelling toward; A Call to the Unconverted, pressed on the careless with tears; and The Reformed Pastor, still the most searching book a minister can read about his own soul. This volume follows those themes and more — conversion, family religion, the crucifying of the world, counsel for the melancholy, peace among Christians — and ends each chapter, as Baxter would, in self-examination and prayer.</p><p>Baxter's own writings are in the public domain and freely available. Because his seventeenth-century English can be heavy going, this companion renders his thought into modern prose rather than quoting it, and names his works throughout so the reader may go to the source. Scripture is quoted from the Authorised (King James) Version.</p>",
   "qa": [],

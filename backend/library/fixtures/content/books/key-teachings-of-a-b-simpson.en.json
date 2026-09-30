@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "a-b-simpson"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-a-b-simpson",
   "language": "en",
   "title": "The Key Teachings of A. B. Simpson",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "A. B. Simpson",
   "description": "A concise, faithful guide to the heart of A. B. Simpson's message — the Fourfold Gospel of Christ our Saviour, Sanctifier, Healer, and Coming King, and the single theme beneath it all: not the blessing but the Blesser, Christ Himself. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Simpson's own public-domain works — which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by A. B. Simpson. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader.</p><p>Simpson's one theme was Christ Himself. Behind the Fourfold Gospel — Christ our Saviour, Sanctifier, Healer and Coming King — lay a single discovery he never tired of pressing: that the Christian life is not the pursuit of a blessing, an experience or a gift, but the possession of a Person. Once it was the blessing, he sang, now it is the Lord. This volume follows that thread through his life, his deeper-life teaching, and his understanding of faith, prayer and mission, and it ends each chapter where he would have wanted it to end: in a few questions and a prayer.</p><p>Simpson's own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible Simpson preached from, and makes no claim to stand in for the man's own unhurried, Christ-filled pages.</p>",
   "qa": [],

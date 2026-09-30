@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "watchman-nee"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-watchman-nee",
   "language": "en",
   "title": "The Key Teachings of Watchman Nee",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Watchman Nee",
   "description": "A concise, faithful guide to the heart of Watchman Nee's ministry — the normal Christian life as Christ living in the believer, the finished work of the cross, and the way of the overcomers. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Nee's ministry, naming his books for the reader's own further study.",
   "about_html": "<p>This is a companion to Watchman Nee, not a book by him. Written by Ochorus, it sets out in eighteen short chapters the teaching for which Nee is chiefly remembered — the normal Christian life as Christ living in the believer, the finished work of the cross, the release of the spirit through the breaking of the outer man, and the way of the overcomers.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Watchman Nee. All descriptions of his teaching are the present author's own summaries; his books and spoken ministry are named only for the reader's further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Nee's own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus's account of what he taught.</p><p>Nee taught, more insistently than almost anyone, that no servant of God is to be looked at. The right response to his ministry is not admiration but obedience — not to him, but to the Lord he spent his life trying to describe.</p>",
   "qa": [],

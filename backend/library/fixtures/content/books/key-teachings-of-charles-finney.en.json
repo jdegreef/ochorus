@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "charles-finney"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-charles-finney",
   "language": "en",
   "title": "The Key Teachings of Charles G. Finney",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Charles G. Finney",
   "description": "A concise, faithful guide to Charles G. Finney’s message — revival as a new beginning of obedience, prevailing prayer, the fulness of the Spirit, the sinner’s duty to make a new heart, plain preaching for a verdict, holiness and the church’s obligation to reform — weighed honestly against his departures from historic teaching on sin and the atonement. Nineteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Finney’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Charles G. Finney. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into nineteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Finney’s one great insistence was that the gospel is to be obeyed, now. A lawyer converted in the woods above Adams, New York, he spent fifty years pressing on churches and sinners alike that religion is something to do and not something to wait for: that a revival is a church returning to obedience, that prayer must be definite and believing, that the Spirit is given to those who ask, and that no sinner may shelter behind his inability. This volume follows that thread through his Lectures on Revivals of Religion, his Memoirs and his best-known sermons. It also says plainly where he must be read with great care — above all in his denial of inherited sin, his governmental view of the atonement, his account of human ability and his confidence in measures — because those departures have shaped the church, for good and ill, ever since.</p><p>Finney’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; his Lectures on Revivals of Religion, his Memoirs and seven of his sermons are in the Ochorus library. This companion is offered only to open the door and to help the reader weigh what is found there. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own urgent, argumentative, unforgettable pages.</p>",
   "qa": [],

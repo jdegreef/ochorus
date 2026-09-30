@@ -17,7 +17,7 @@ COVER_AUTHOR_FIELDS = ("slug", "name", "birth_year")
 
 # Everything else a cover reads (the frontend's ``COVER_FACE_KEYS``).
 COVER_FACE_FIELDS = (
-    "slug", "language", "title", "subtitle", "cover_title",
+    "slug", "language", "title", "subtitle", "cover_title", "cover_byline",
     "cover_url", "cover_color", "series_position",
 )
 

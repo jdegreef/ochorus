@@ -28,6 +28,7 @@
 	let { data } = $props();
 	const t = i18n.t;
 	const series = $derived(data.series as SeriesDetail);
+	const manyAuthors = $derived(new Set(series.books.map((b) => b.author.slug)).size > 1);
 	const lang = $derived(contentLang(getLang()));
 
 	// Where the reader is, read after mount: progress lives in localStorage, and
@@ -143,10 +144,12 @@
 	<section class="mt-10">
 		<h2 class="section-label mb-4">{t('nav.books')}</h2>
 		<!-- The cover grid the shelves use. Each cover already carries its volume
-		     numeral; the author rides the card because a collection spans authors. -->
+		     numeral; the author rides the card only when the books have more than
+		     one — The Key Teachings is a collection, but every volume is by Ochorus
+		     Originals, and thirty cards saying so would be noise. -->
 		<div class="book-grid">
 			{#each series.books as book (book.slug)}
-				<BookCard {book} showAuthor={!series.ordered} showSeries={false} />
+				<BookCard {book} showAuthor={manyAuthors} showSeries={false} />
 			{/each}
 		</div>
 	</section>

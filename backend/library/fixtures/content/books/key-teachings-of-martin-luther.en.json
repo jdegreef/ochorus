@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "martin-luther"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-martin-luther",
   "language": "en",
   "title": "The Key Teachings of Martin Luther",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Martin Luther",
   "description": "A concise, faithful guide to the heart of Martin Luther’s teaching — the righteousness of God given as a gift, faith alone, the theology of the cross, law and gospel, the freedom of a Christian, the Word, vocation, prayer and comfort for the dying — told honestly, with his grave faults named. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Luther’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Martin Luther. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into twenty short chapters for the ordinary reader, with an account of his life, a conclusion, and a guide to his writings. It draws its quotations only from the six of his sermons that sit in the Ochorus library; his treatises, catechisms and commentaries are described in the present author’s own words.</p><p>Luther’s teaching has one thread. The righteousness God requires is the righteousness God gives, freely, in Christ, and it is received by faith alone; and everything he wrote about the cross, the law, the will, the Word, the sacraments, prayer, work, marriage and death is that discovery followed out into the whole of life. This volume follows the thread, and it is plain about the places where Luther must be read with sorrow as well as gratitude — above all his late writings against the Jews, his savage words in the Peasants’ War, and the coarseness of his polemic.</p><p>Luther’s own writings are in the public domain and freely available in older English translations, and every chapter here names the work it draws on so that the reader can go to the source. This companion is offered only to open the door. Scripture is quoted from the Authorised (King James) Version, and nothing here claims to stand in for the man’s own vigorous, earthy and consoling pages.</p>",
   "qa": [],

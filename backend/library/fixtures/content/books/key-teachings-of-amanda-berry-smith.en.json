@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "amanda-berry-smith"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-amanda-berry-smith",
   "language": "en",
   "title": "The Key Teachings of Amanda Berry Smith",
   "subtitle": "An Ochorus companion to her life and teaching",
+  "cover_byline": "Amanda Berry Smith",
   "description": "A concise, faithful guide to the heart of Amanda Berry Smith’s message — that the God who saves a sinner can fill a heart with His own presence, deliver it from fear, and keep it in daily trust at the wash-tub, in the pulpit and on the far side of the world. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Amanda Smith’s own public-domain Autobiography, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Amanda Berry Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers what she taught and testified into seventeen short chapters for the ordinary reader, and tells the story of the life that gave her words their weight. She was born enslaved in Maryland, earned her bread for years at the wash-tub, and became one of the best-known holiness preachers of her century on four continents.</p><p>She wrote no treatise, but she was a theologian all the same: a theologian of lived holiness. Her one theme was God in you — a Saviour who does not only forgive, but comes to dwell in the heart, rule it, and set it free from sin, from fear and from self-will. This volume follows that thread through her conversion and her sanctification, her deliverance from the fear of man, her honest witness about race and the church, her life of prayer for rent and bread, her call to preach without ordination, and her work in India and West Africa. It weighs her fairly where she leaned too hard on impressions or pressed a rule too far, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Amanda Smith’s Autobiography of 1893 is in the public domain and freely available, and every chapter here names the part of it that it draws on, so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she read by lamplight and preached from on three continents, and it makes no claim to stand in for her own plain, vivid and searching words.</p>",
   "qa": [],
