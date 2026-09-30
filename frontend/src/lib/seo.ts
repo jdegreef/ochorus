@@ -2,6 +2,60 @@ import { SITE_URL } from './config';
 import { localizeHref, withTrailingSlash } from '$lib/href';
 import { ADVERTISED_LOCALES } from '$lib/advertised-locales';
 
+/**
+ * The publisher's node in every page's structured data. One `@id` for the one
+ * organisation, so the book, chapter, sermon and article that each name
+ * Ochorus as publisher resolve to the same entity (and the home page's
+ * WebSite points at it) instead of a dozen unlinked "Organization: Ochorus"
+ * strings. Carried in full wherever it is used, since an `@id` only resolves
+ * within a page. No `sameAs`: the organisation has no profiles elsewhere yet —
+ * add them here when it does, and every page gains them.
+ */
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const WEBSITE_ID = `${SITE_URL}/#website`;
+
+export const publisherLd = () => ({
+	'@type': 'Organization',
+	'@id': ORG_ID,
+	name: 'Ochorus',
+	url: `${SITE_URL}/`,
+	logo: {
+		'@type': 'ImageObject',
+		url: `${SITE_URL}/icons/icon-512.png`,
+		width: 512,
+		height: 512
+	}
+});
+
+/** The Public Domain Mark — a public-domain work's `license` in JSON-LD. The
+ *  API decides which editions may claim it (`public_domain`; library/rights). */
+export const PUBLIC_DOMAIN_MARK = 'https://creativecommons.org/publicdomain/mark/1.0/';
+
+/** The `@id` of the Person (or imprint) an author page is about, from that
+ *  page's absolute URL — so a book naming its author links to the same node. */
+export const personId = (authorUrl: string) => `${authorUrl}#person`;
+
+/** The `@id` of the Book an edition page is about, from its absolute URL. */
+export const bookId = (bookUrl: string) => `${bookUrl}#book`;
+
+/**
+ * Open Graph locale codes (language_TERRITORY — what Facebook accepts) for the
+ * UI locales. The territory is the edition's main readership, not a claim that
+ * the text is regional.
+ */
+export const OG_LOCALES: Record<string, string> = {
+	en: 'en_US',
+	es: 'es_ES',
+	sw: 'sw_KE',
+	lg: 'lg_UG',
+	pt: 'pt_PT',
+	ar: 'ar_AR',
+	hi: 'hi_IN',
+	uk: 'uk_UA',
+	fr: 'fr_FR',
+	am: 'am_ET'
+};
+
 export interface Hreflang {
 	/** One alternate per locale the work actually exists in. */
 	alternates: { loc: string; href: string }[];

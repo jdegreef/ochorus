@@ -221,6 +221,10 @@ export interface BookDetail extends BookSummary {
 	 *  written for this edition — the page then trims `description` instead.
 	 *  Optional: an API behind this build omits it. */
 	meta_description?: string;
+	/** Whether the page may mark this edition public domain in its JSON-LD —
+	 *  decided by the API from the rights note and the author's dates
+	 *  (library/rights). Optional: absent means no claim. */
+	public_domain?: boolean;
 	source_url: string;
 	/** A static PDF under /pdfs/ ("" = none). See library/book_export.py. */
 	pdf_url: string;
@@ -349,6 +353,8 @@ export interface Chapter {
 	 * Optional: a chapter page prerendered before the API served the field
 	 * bakes it absent, and an absent value must read as "not translated". */
 	source_type?: SourceType;
+	/** The book's rights, as `BookDetail.public_domain`. */
+	public_domain?: boolean;
 	/** This chapter belongs to the Modern English edition. */
 	is_modern_edition: boolean;
 	/** A Modern English edition of this work exists (offer the toggle). */

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { SITE_URL } from '$lib/config';
-	import { jsonLd, hreflangAll } from '$lib/seo';
+	import { OG_LOCALES, WEBSITE_ID, jsonLd, hreflangAll, publisherLd } from '$lib/seo';
+	import { getLocale } from '$lib/paraglide/runtime';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import { lang } from '$lib/lang.svelte';
@@ -19,8 +20,12 @@
 		{
 			'@context': 'https://schema.org',
 			'@type': 'WebSite',
+			'@id': WEBSITE_ID,
 			name: 'Ochorus',
 			url: `${SITE_URL}/`,
+			// The same organisation every book, chapter and sermon names as
+			// publisher — one entity, linked by @id ($lib/seo publisherLd).
+			publisher: publisherLd(),
 			potentialAction: {
 				'@type': 'SearchAction',
 				target: {
@@ -32,9 +37,7 @@
 		},
 		{
 			'@context': 'https://schema.org',
-			'@type': 'Organization',
-			name: 'Ochorus',
-			url: `${SITE_URL}/`,
+			...publisherLd(),
 			description: t('home.metaDescription')
 		}
 	]);
@@ -46,6 +49,11 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/');
+	// og:locale and its alternates, as Seo.svelte sets them on every other page.
+	const ogLocale = OG_LOCALES[getLocale()];
+	const ogAlternates = hreflang.alternates
+		.map((a) => OG_LOCALES[a.loc])
+		.filter((l) => l && l !== ogLocale);
 
 	// One card per interface locale — homeShareCard.test holds every locale to
 	// having its file.
@@ -80,6 +88,16 @@
 	<meta property="og:title" content="Ochorus — {t('home.heroTitle')}" />
 	<meta property="og:description" content={t('home.metaDescription')} />
 	<meta property="og:url" content="{SITE_URL}{localizeHref('/')}" />
+	{#if ogLocale}
+		<meta property="og:locale" content={ogLocale} />
+	{/if}
+	{#each ogAlternates as l (l)}
+		<meta property="og:locale:alternate" content={l} />
+	{/each}
+	<!-- Title and description stated for X too, as Seo.svelte does elsewhere:
+	     left to the og fallback, some scrapers guess them from the page. -->
+	<meta name="twitter:title" content="Ochorus — {t('home.heroTitle')}" />
+	<meta name="twitter:description" content={t('home.metaDescription')} />
 	<!-- The site's most-linked page shows the library itself: this language's
 	     own covers on a shelf, under copy in this language — drawn per locale
 	     by scripts/generate-home-og.mjs. This page hand-rolls its head rather

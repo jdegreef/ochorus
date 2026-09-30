@@ -60,7 +60,7 @@
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta, absUrl } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
 	import { baseEdition } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
@@ -148,10 +148,18 @@
 			'@type': 'Chapter',
 			name: chapterName(chapter.order, chapter.title),
 			position: chapter.order,
+			// The book by its @id — the node the book page declares — and its author
+			// typed as the author is (the Originals imprint is an Organization,
+			// not a Person).
 			isPartOf: {
 				'@type': 'Book',
+				'@id': bookId(`${SITE_URL}${localizeHref(`/books/${slug}/`)}`),
 				name: chapter.book_title,
-				author: { '@type': 'Person', name: chapter.author_name },
+				author: {
+					'@type': authorLdType(chapter.author_slug),
+					'@id': personId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`),
+					name: chapter.author_name
+				},
 				url: `${SITE_URL}${localizeHref(`/books/${slug}/`)}`
 			},
 			url: canonical,
@@ -163,10 +171,15 @@
 			wordCount: chapter.word_count || undefined,
 			author: {
 				'@type': authorLdType(chapter.author_slug),
+				'@id': personId(`${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`),
 				name: chapter.author_name,
 				url: `${SITE_URL}${localizeHref(authorPath(chapter.author_slug))}`
 			},
-			publisher: { '@type': 'Organization', name: 'Ochorus' }
+			publisher: publisherLd(),
+			// The book's card — the same picture the page hands link previews.
+			image: ogImage,
+			// The book's rights, as its own page states them (library/rights).
+			license: chapter.public_domain ? PUBLIC_DOMAIN_MARK : undefined
 		})
 	);
 

@@ -27,15 +27,7 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import {
-		absUrl,
-		jsonLd,
-		breadcrumbLd,
-		truncateMeta,
-		stripHtml,
-		faqPage,
-		REVIEWED_UI_LOCALES
-	} from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, REVIEWED_UI_LOCALES, publisherLd } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -307,7 +299,7 @@
 			image: ogImage,
 			about: aboutRefs.length ? aboutRefs.map((ref) => ({ '@type': 'Thing', name: ref })) : undefined,
 			keywords: keywords.length ? keywords : undefined,
-			publisher: { '@type': 'Organization', name: 'Ochorus' }
+			publisher: publisherLd()
 		})
 	);
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (they had

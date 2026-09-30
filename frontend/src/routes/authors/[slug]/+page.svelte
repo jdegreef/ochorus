@@ -14,18 +14,7 @@
 	} from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
-	import {
-		absUrl,
-		jsonLd,
-		breadcrumbLd,
-		faqPage,
-		hreflangAll,
-		hreflangExact,
-		stripHtml,
-		truncateMeta,
-		itemList,
-		topicThings
-	} from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
@@ -217,6 +206,8 @@
 		jsonLd({
 			'@context': 'https://schema.org',
 			'@type': 'Person',
+			// The node every book and chapter by this writer names as author.
+			'@id': personId(canonical),
 			name: author.name,
 			description: author.bio || undefined,
 			// The PERSON's image: a portrait or nothing. The share card falls
