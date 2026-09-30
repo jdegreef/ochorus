@@ -719,3 +719,16 @@ class BroadcastAdminTests(TestCase):
             content_type="application/json",
         )
         self.assertEqual(res.status_code, 409)
+
+
+from django.core.management import call_command  # noqa: E402
+
+
+class EmailCronCommandTests(TestCase):
+    def test_send_email_cron_runs_both_steps(self):
+        # With no due readers/broadcasts and sending off, it completes cleanly —
+        # the point is that the single command exists and chains the two steps.
+        _make_profile()
+        with mock.patch("emails.broadcasts.send_broadcast") as bcast:
+            call_command("send_email_cron")
+            bcast.assert_not_called()  # nothing scheduled
