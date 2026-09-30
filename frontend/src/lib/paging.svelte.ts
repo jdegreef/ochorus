@@ -13,9 +13,12 @@ import type { Snapshot } from '@sveltejs/kit';
  */
 export type PagerState = { key: string; count: number };
 
-export function pager<T>(items: () => T[], key: () => string, page = 24) {
-	let expanded = $state({ key: '', count: page });
-	const limit = $derived(expanded.key === key() ? expanded.count : page);
+export function pager<T>(items: () => T[], key: () => string, page: number | (() => number) = 24) {
+	// A getter keeps a prop-driven page size reactive (and stays a plain number
+	// for every existing caller).
+	const size = () => (typeof page === 'function' ? page() : page);
+	let expanded = $state({ key: '', count: size() });
+	const limit = $derived(expanded.key === key() ? expanded.count : size());
 	const visible = $derived(items().slice(0, limit));
 	const remaining = $derived(items().length - visible.length);
 	return {
@@ -27,14 +30,14 @@ export function pager<T>(items: () => T[], key: () => string, page = 24) {
 		},
 		/** How many the next tap adds — the button's number. */
 		get next() {
-			return Math.min(page, remaining);
+			return Math.min(size(), remaining);
 		},
 		more() {
-			expanded = { key: key(), count: limit + page };
+			expanded = { key: key(), count: limit + size() };
 		},
 		/** Show at least through `index` (a jump to an item not painted yet). */
 		reveal(index: number) {
-			const need = Math.ceil((index + 1) / page) * page;
+			const need = Math.ceil((index + 1) / size()) * size();
 			if (need > limit) expanded = { key: key(), count: need };
 		},
 		capture(): PagerState {

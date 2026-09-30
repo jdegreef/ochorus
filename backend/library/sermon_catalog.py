@@ -1178,4 +1178,95 @@ SERMONS: list[SermonEntry] = [
         _SI + "catherine-booth/how-to-work-for-god-with-success/",
         scripture_ref="Matthew 21:28",
     ),
+    # --- 2026-09-29 batch: thin authors topped up ------------------------------
+    # Finney — three more of the Lectures on Revivals (1835), joining Prevailing
+    # Prayer and The Spirit of Prayer from the same book (which is also on the
+    # book shelf; these three are his most-preached lectures).
+    SermonEntry(
+        "what-a-revival-of-religion-is", "What a Revival of Religion Is",
+        "charles-finney", "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.i.html",
+        scripture_ref="Habakkuk 3:2",
+    ),
+    SermonEntry(
+        "breaking-up-the-fallow-ground", "Breaking Up the Fallow Ground",
+        "charles-finney", "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.iii.html",
+        scripture_ref="Hosea 10:12",
+    ),
+    SermonEntry(
+        "be-filled-with-the-spirit", "Be Filled with the Spirit",
+        "charles-finney", "ccel",
+        "https://ccel.org/ccel/finney/revivals/revivals.iii.vii.html",
+        scripture_ref="Ephesians 5:18",
+    ),
+    # Luther — the three great feasts from the Lenker Church Postil. Christmas
+    # and Easter are on sermons.martinluther.us like his other Postil sermons;
+    # the site stops after Easter, so Pentecost (John 14:23-31) ships as a
+    # hand-extracted fixture from the Lenker project's PDF, with no entry here.
+    SermonEntry(
+        "the-story-of-the-birth-of-jesus", "The Story of the Birth of Jesus",
+        "martin-luther", "web", "https://sermons.martinluther.us/sermon13.html",
+        scripture_ref="Luke 2:1-14",
+        body_starts="1. It is written in Haggai",
+    ),
+    SermonEntry(
+        "of-christs-resurrection", "Of Christ's Resurrection",
+        "martin-luther", "web", "https://sermons.martinluther.us/sermons46.html",
+        scripture_ref="Mark 16:1-8",
+        body_starts="1. In the first place we shall briefly examine",
+    ),
+    # Wesley — three of the Standard Sermons: the doctrine of salvation, money,
+    # and assurance (Discourse I of his two on Romans 8:16).
+    SermonEntry(
+        "the-scripture-way-of-salvation", "The Scripture Way of Salvation",
+        "john-wesley", "ccel", _WESLEY + "sermons.v.xliii.html",
+        scripture_ref="Ephesians 2:8",
+    ),
+    SermonEntry(
+        "the-use-of-money", "The Use of Money", "john-wesley", "ccel",
+        _WESLEY + "sermons.v.l.html", scripture_ref="Luke 16:9",
+    ),
+    SermonEntry(
+        "the-witness-of-the-spirit", "The Witness of the Spirit", "john-wesley",
+        "ccel", _WESLEY + "sermons.v.x.html", scripture_ref="Romans 8:16",
+    ),
+    # Edwards — Pressing into the Kingdom of God (CCEL sets its text inside an
+    # <h4> with the reference, which the parser drops, so the verse is restored
+    # by hand), The Christian Pilgrim and Christian Charity (split across several
+    # CCEL leaves in Works vol. 2) all ship as hand-built fixtures, no entries.
+    # Newton — three more Messiah discourses, on the oratorio's Christmas,
+    # Passion and Easter texts.
+    SermonEntry(
+        "unto-us-a-child-is-born", "Unto Us a Child Is Born", "john-newton",
+        "ccel", _NEWTON + "messiah1.xi.html", scripture_ref="Isaiah 9:6",
+    ),
+    SermonEntry(
+        "he-was-despised", "He Was Despised", "john-newton", "ccel",
+        _NEWTON + "messiah1.xix.html", scripture_ref="Isaiah 53:3",
+    ),
+    SermonEntry(
+        "i-know-that-my-redeemer-liveth", "I Know That My Redeemer Liveth",
+        "john-newton", "ccel", _NEWTON + "messiah2.xv.html",
+        scripture_ref="Job 19:25-26",
+    ),
+    # Chrysostom — three of the NPNF vol. 9 homilies preached at Antioch. Only
+    # Homily II on the Statues opens with a masthead the CCEL parser reads; the
+    # Paralytic and Lowliness of Mind leaves have no epigraph, so the parser
+    # takes their first paragraph for one and drops it — those two ship as
+    # hand-extracted fixtures (footnotes stripped) with no entry here.
+    SermonEntry(
+        "homily-ii-on-the-statues", "Homily II on the Statues",
+        "john-chrysostom", "ccel",
+        "https://ccel.org/ccel/schaff/npnf109.xix.iv.html",
+        scripture_ref="1 Timothy 6:17",
+    ),
+    # M'Cheyne — mcheyne.info's two remaining printed sermons (A Castaway, Our
+    # Duty to Israel) ship as hand-extracted fixtures like his first four; the
+    # third comes from SermonIndex's transcription of the Additional Remains.
+    SermonEntry(
+        "electing-love", "Electing Love", "robert-murray-mcheyne", "sermonindex",
+        _SI + "robert-murray-mcheyne/electing-love/",
+        scripture_ref="John 15:16",
+    ),
 ]

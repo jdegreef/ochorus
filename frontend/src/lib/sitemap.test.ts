@@ -35,7 +35,13 @@ vi.mock('$lib/library-public', () => {
 	const empty = async () => [];
 	const author = (slug: string) => ({ slug, name: slug, photo_url: '', birth_year: null });
 	return {
-		listArticles: empty,
+		// One article in English and Swahili, none in Spanish.
+		listArticles: async (l = 'en') =>
+			l === 'en'
+				? [{ slug: 'how-to-pray', updated_at: '2026-09-01T00:00:00Z', topics: [{ slug: 'prayer', title: 'Prayer' }] }]
+				: l === 'sw'
+					? [{ slug: 'how-to-pray', updated_at: '2026-09-15T00:00:00Z', topics: [] }]
+					: [],
 		// A writer on the English shelf only, and one whose sole Swahili presence
 		// is a book (no bio there) — enough to tell "every locale" from "where
 		// they have something".
@@ -342,5 +348,34 @@ describe('build() the library A–Z', () => {
 		const az = (await sitemapData()).pages.find((e) => e.byLocale.get('en') === '/authors/');
 		expect([...az!.byLocale.keys()]).toEqual(['en', 'es', 'sw']);
 		expect(az!.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+	});
+});
+
+describe('build() translated articles', () => {
+	beforeEach(() => resetSitemapData());
+
+	const find = async (path: string) =>
+		(await sitemapData()).articles.find((e) => [...e.byLocale.values()].includes(path));
+
+	it('lists the hub only in the locales that have articles', async () => {
+		const hub = await find('/articles/');
+		expect([...hub!.byLocale.keys()]).toEqual(['en', 'sw']);
+		expect(hub!.lastmods?.get('sw')).toBe('2026-09-15T00:00:00Z');
+	});
+
+	it('lists each article in every locale that has it, dated per edition', async () => {
+		const a = await find('/articles/how-to-pray/');
+		expect([...a!.byLocale.keys()]).toEqual(['en', 'sw']);
+		expect(a!.lastmods?.get('en')).toBe('2026-09-01T00:00:00Z');
+		expect(a!.lastmods?.get('sw')).toBe('2026-09-15T00:00:00Z');
+		const xml = urlXml(a!);
+		expect(xml).toContain(`<loc>${loc('sw', '/articles/how-to-pray/')}</loc>`);
+		expect(xml).toContain('hreflang="sw"');
+		expect(xml).not.toContain('hreflang="es"');
+	});
+
+	it('keeps topic shelves English-only', async () => {
+		const shelf = await find('/articles/prayer/');
+		expect([...shelf!.byLocale.keys()]).toEqual(['en']);
 	});
 });

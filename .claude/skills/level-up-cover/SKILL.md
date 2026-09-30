@@ -266,6 +266,17 @@ prerendered pages reference it.
   does exactly that). A cover PR racing an export PR hits the same test: whichever
   lands second refreshes the copies.
 
+- **A LIGHT ground must pass every EDITION, not just English** (Brave for God
+  poster, 2026-09-28). The tuner and the contrast gate measure fixed English-position
+  bands (`INK_REGIONS`, subtitle y519–543). Translated titles and subtitles wrap
+  longer: on Brave for God, lg/sw subtitles reached y595, and 20 of 26 editions put
+  white text on pale snow, sand or sea (Swahili book 4 was unreadable) while every
+  gate stayed green. The old dark grounds hid this. Before shipping a light ground,
+  compose EVERY `<slug>.<lang>` edition (real `cover_title || title`, subtitle,
+  script fonts) and measure its real rows at the tuner's scrim. Then keep the band
+  where any edition's words can land a rich mid-tone, and put the bright elements
+  above the title or below the lowest subtitle, clear of the mark box.
+
 ## Original illustrated grounds (Ochorus Originals — kids/teens) — SHIPPED tier
 
 PD-painting sourcing (steps 1–2 above) does NOT apply to **Ochorus Originals**

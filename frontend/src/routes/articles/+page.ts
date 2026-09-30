@@ -1,16 +1,19 @@
 import { listArticles } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
+import { getLang } from '$lib/lang.svelte';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
 export const trailingSlash = 'always';
 
-// English-only for now — articles are original site writing, not yet
-// translated. The list comes from the same endpoint the [slug] entry generator
-// and the sitemap read, so all three advertise exactly the same set. A lagging
-// API is REPORTED (loadShelf) so the page can offer Try again, rather than
-// baking a false "no articles yet".
+// The Articles hub in the reader's language: each locale lists its OWN articles
+// (per-language rows, no English fallback — a language with none shows the
+// empty state and is noindexed). The build seeds `/<l>/articles/` for every
+// locale (svelte.config.js), and a translated hub lists every one of its
+// articles unpaged, so it is the crawl's guaranteed way to each translated
+// article — the [slug] entry generator only emits English params. The sitemap
+// advertises the same per-locale set.
 export const load: PageLoad = async ({ fetch }) => {
-	const { items, loadError } = await loadShelf(listArticles('en', fetch));
+	const { items, loadError } = await loadShelf(listArticles(getLang(), fetch));
 	return { articles: items, loadError };
 };

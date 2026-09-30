@@ -16,6 +16,7 @@
 </script>
 
 <script lang="ts">
+	import { localizeHref } from '$lib/href';
 	import { onMount } from 'svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
@@ -52,8 +53,10 @@
 	 * The topic chips are real links, not a client-side filter: each topic view
 	 * is its own crawlable URL (`/articles/<slug>/`) with its own H1 and
 	 * canonical, which is the whole point of the clean path — a `?topic=` query
-	 * gave one indexable page for the lot. "All" is the bare index. Articles are
-	 * English-only, so the hrefs are plain (no locale prefix).
+	 * gave one indexable page for the lot. "All" is the bare index. Topic shelves
+	 * are English-only (curated English SEO copy), so their chips are plain hrefs
+	 * and a translated hub passes `topicLinks={false}`; the articles themselves
+	 * are per-language, so their links are localized.
 	 *
 	 * The text query and the kind DO live in the query string, through the
 	 * page's `articleFilters()` (above; passed in, so the page can hide its
@@ -64,8 +67,14 @@
 		articles,
 		activeTopic = '',
 		filters,
-		heading = 'h2'
+		heading = 'h2',
+		topicLinks = true,
+		pageSize = 24
 	}: {
+		/** Offer the topic chips (English only — see above). */
+		topicLinks?: boolean;
+		/** Rows per page; Infinity renders the whole shelf (a crawl anchor). */
+		pageSize?: number;
 		/** The full shelf — tabs and their counts are derived from it. */
 		articles: ArticleSummary[];
 		/** The topic slug this view is filtered to; '' is the unfiltered index. */
@@ -145,7 +154,8 @@
 	// A page at a time, so the index is not 130 rows deep on arrival.
 	const paged = pager(
 		() => shown,
-		() => `${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`
+		() => `${activeTopic}|${filters.values.kind}|${filters.values.q}|${sort}`,
+		() => pageSize
 	);
 	export const pages = paged; // for the route's snapshot ($lib/paging)
 </script>
@@ -205,7 +215,7 @@
 	</div>
 </div>
 
-{#if topicTabs.length > 1}
+{#if topicLinks && topicTabs.length > 1}
 	<nav class="chip-scroller mb-6" aria-label={t('articles.filterByTopic')}>
 		<a
 			class="chip"
@@ -246,7 +256,7 @@
 {:else if asCovers}
 	<div class="book-grid">
 		{#each paged.visible as a (a.slug)}
-			<a href="/articles/{a.slug}/" class="book-card card-lift group">
+			<a href={localizeHref(`/articles/${a.slug}/`)} class="book-card card-lift group">
 				{#if a.lead_book}
 					<BookCover book={a.lead_book} />
 				{:else}

@@ -1361,7 +1361,11 @@ all of which this command already does. The steps:
   + a matching `og-manifest.json` entry. A sermon with no curated emblem in
   `SERMON_EMBLEMS` (`frontend/src/lib/emblemNames.ts`) draws a fallback-pool
   emblem automatically — fine, no catalogue edit required.
-- **macOS font gotcha for `og:sermons`.** `scripts/og-card.mjs` hardcodes Linux
+- **SUPERSEDED (2026-09-29): the Liberation fonts are now vendored in
+  `frontend/scripts/fonts/`, so `npm run og:sermons` runs as-is on macOS** (in a
+  worktree, just symlink the main checkout's `frontend/node_modules`). The
+  font-gotcha notes here and in the "og:image twin" bullet above are history.
+- **macOS font gotcha for `og:sermons` (historical).** `scripts/og-card.mjs` hardcoded Linux
   Liberation paths (`/usr/share/fonts/truetype/liberation/Liberation{Serif-Bold,
   Sans-Regular}.ttf`); SIP blocks creating that dir on a Mac. Fetch the real
   Liberation TTFs (SIL OFL, the `liberationfonts` GitHub release — the copies at
@@ -1430,6 +1434,44 @@ all of which this command already does. The steps:
   `<p class="footerPoem">` (about Baxter, identical on every page — drop). It
   sets a closing `”` in opener position after `—`/`-`. Only six sermons exist
   there (one an abridgement); no catalog entry — fixtures authoritative.
+  More M'Cheyne: SermonIndex speaker `robert-murray-mcheyne` (use `www.`; the
+  `m%27cheyne` slug has no transcript div) carries ~16 full Remains sermons.
+- **Sources and traps from the 2026-09-29 twelve-author batch** (38 sermons):
+  - **Check the slug against EVERY sermon fixture before any local import.**
+    `import_sermons` and a hand upsert both `update_or_create(slug, "en")`, so a
+    colliding slug silently OVERWRITES another author's row (Maclaren's "The
+    Dying Thief" / "The Joy of the Lord" hit Moody's and Simpson's). Grep
+    `git ls-tree origin/main …/sermons/` first; re-run `seed_sermons` to repair.
+  - **NPNF homily leaves with no epigraph** (Chrysostom's Paralytic,
+    Lowliness of Mind) lose their FIRST paragraph to `extract()` — it treats
+    the block before the first `scripRef` as masthead. Hand-extract
+    `div.book-content > p` from "1." on, dropping `sup.Note`/`span.mnote`/
+    `span.pb`. Homily II on the Statues (italic argument) imports fine.
+  - **Multi-leaf CCEL sermons** (Edwards's Christian Pilgrim, Christian
+    Charity in `works2.vi.*`): parent leaf = title + verse, children = `SECT.
+    n` + a `p.Centered` subtitle → join by hand, subtitles as `<h3>`.
+  - **Newton Messiah leaves** need BODY_CORRECTIONS: ref-only blockquote +
+    verse `<p>`s → one verse blockquote, split drop cap ("S uch"), split
+    small caps ("L ORD"), trailing `<p> —— O —— </p>`.
+  - **Finney CCEL lectures** keep "Text.—…—Hab. iii. 2." inside the epigraph →
+    two per-slug replacements.
+  - **OCR-only works** (Maclaren's *Sermons Preached in Manchester*, Calvin's
+    PD 1830 *Selection of the Most Celebrated Sermons*, Ryle's 1851 tracts):
+    archive.org usually has 2+ independent scans (search advancedsearch by
+    title+creator; e.g. `sermonspreachedi0000alex_q5n3` is the clean Maclaren
+    s.1) — one cleanup subagent per sermon, cross-checking scans, listing
+    every judged fix; spot-check any "from context" guess against the other
+    scan yourself. A subagent that RETYPES a long PD text can be cut off by the
+    output filter — have it write a script of (old, new) replacements instead.
+  - **Ryle "updated" editions are NOT PD**: biblebb/gracegems copies headed
+    "Copyright 2002 by Tony Capoccia" quote the NIV. Use tracts.ukgo.com, the-
+    highway.com, the biblebb *unupdated* files, or archive.org 1850s OCR.
+  - **Booth beyond SermonIndex**: gospeltruth.net `booth/boothsoldiery.htm`
+    (*Salvation Soldiery*, 1889, 19 addresses on ONE page split by `NAME=n`
+    anchors) — 403s plain curl; send a browser `-A` user-agent.
+  - **Luther's Lenker Gospel Postil after Easter** isn't on
+    sermons.martinluther.us; lenker.webdesign-ontario.com has PDFs (Pentecost
+    = `[17]Pentecost_ John 14-23-31.pdf`), paragraphs split on `^\[?\d+\]?\. `.
 - **A green local suite does not prove CI's `makemigrations --check`.** The
   test runner only runs `migrate`, which tolerates multiple leaf migrations; CI
   runs `--check` as well, and it runs it on the PR's synthetic merge with
@@ -1706,6 +1748,15 @@ the Müller appendix), don't lowercase it. A Scripture epigraph as
 profile, is styled by `.reading blockquote`, and its ref becomes a tappable
 `.scripture-ref`. Before shipping, have a subagent fact-check the chapters against
 the source files (summaries + line refs, not verbatim dumps) — it caught 36 slips.
+
+**An original biography whose SUBJECT's own writings are in copyright**
+(Corrie ten Boom, 2026-09-29): tell the life in our own prose, quote the subject
+only in phrases of a few words, and build on independent records (war-graves /
+memorial registers, Yad Vashem, museum chronologies). Find the subject's
+EARLIEST account (for Corrie, her June 1945 book on archive.org) and compare it
+with the famous later one — what is already there vs what first appears decades
+later is the honest spine of the book, and it catches legends the live bio
+repeats (spin a bio-fix task when it does).
 
 **A biography ABOUT a person is filed under that person as the author**, with
 the real author/description in the `subtitle` — NOT under `ochorus-originals`
