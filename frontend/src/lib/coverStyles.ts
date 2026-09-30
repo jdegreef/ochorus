@@ -342,7 +342,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'watchman-nee-a-life': 'house',
 	'john-hyde-a-life': 'house',
 	'corrie-ten-boom-a-life': 'house',
-	'mary-slessor-a-life': 'house'
+	'mary-slessor-a-life': 'house',
+	'samuel-ajayi-crowther-a-life': 'house'
 };
 
 /**
