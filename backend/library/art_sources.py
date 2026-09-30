@@ -23,7 +23,7 @@ ART_SOURCES: dict[str, str] = {
     "cheque-book": "met-439844@0.50",
     "christ-the-healer": "aic-146701@0.50",
     "confessions": "met-436455@0.50",
-    "corrie-ten-boom-a-life": "met-912940@0.50",
+    "corrie-ten-boom-a-life": "wikidata-17275831@0.30",
     "days-of-heaven-upon-earth": "cma-141639@0.40",
     "divine-healing": "met-437518@0.50",
     "divine-songs-for-children": "aic-181702@0.50",

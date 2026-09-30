@@ -74,6 +74,12 @@ SOURCES: dict[str, Source] = {
         "The Art Institute of Chicago, CC0",
         "https://www.artic.edu/artworks/{}",
     ),
+    # A painting none of the three museums hold, catalogued on Wikidata (the id
+    # is the number after the Q) and photographed on Wikimedia Commons.
+    "wikidata": Source(
+        "Wikimedia Commons, public domain",
+        "https://www.wikidata.org/wiki/Q{}",
+    ),
 }
 
 
@@ -775,11 +781,16 @@ CURATED: dict[str, Artwork] = {
         "sleeps\", painted the year before he sailed.",
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-29). Haarlem from the dunes,
+    # the Grote Kerk on the skyline: Corrie's city, whole. The Mauritshuis
+    # painting, through Wikidata — none of the three museums above hold a view
+    # of Haarlem that isn't already another book's.
     "corrie-ten-boom-a-life": Artwork(
-        "met", 912940, "Job Adriaensz Berckheyde", "Interior of the Sint-Bavokerk, Haarlem", "ca. 1676",
-        "The Grote Kerk of Haarlem, a few steps from the Beje: the church where "
-        "Corrie sat in her own pew at the first service after liberation, and "
-        "whose \"hundred shades of grey\" she walked through in her mind at Vught.",
+        "wikidata", 17275831, "Jacob van Ruisdael", "View of bleaching fields and Haarlem", "1670",
+        "Haarlem seen from the dunes, the Grote Kerk rising over the town: the "
+        "city where the ten Booms kept their watch shop for a century and hid "
+        "Jews from the Nazis in the Beje, a few streets from that church.",
+        focus=0.3,
     ),
 }
 
