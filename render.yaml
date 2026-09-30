@@ -241,6 +241,12 @@ services:
         # EXPORT_PILOT at serialize time, so widening the pilot adds a button
         # to pages already on disk while touching no fixture or frontend.
         - backend/library/export_policy.py
+        # A book's hand-written search snippet (its <meta description>) and the
+        # public-domain rule behind its JSON-LD `license` — both baked into the
+        # prerendered book and chapter pages.
+        - backend/library/meta_descriptions.py
+        - backend/library/data/book_meta/**
+        - backend/library/rights.py
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer

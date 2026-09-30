@@ -1,4 +1,4 @@
-"""The hand-written search snippets in ``data/book_meta_descriptions.json``.
+"""The hand-written search snippets in ``data/book_meta/<language>.json``.
 
 The file is keyed by slug, not joined to a row, so nothing in the schema stops
 it pointing at a book that was renamed or withdrawn, or growing a snippet past
@@ -12,7 +12,7 @@ from pathlib import Path
 
 from django.test import SimpleTestCase, TestCase
 
-from library.meta_descriptions import MAX_LENGTH, PATH, meta_description
+from library.meta_descriptions import MAX_LENGTH, meta_description, table
 from library.models import Author, Book
 
 BOOKS = Path(__file__).parent / "fixtures" / "content" / "books"
@@ -28,7 +28,7 @@ def _published(slug: str, language: str) -> bool:
 
 class MetaDescriptionFileTests(SimpleTestCase):
     def setUp(self):
-        self.table = json.loads(PATH.read_text(encoding="utf-8"))
+        self.table = table()
 
     def test_every_snippet_names_a_published_edition(self):
         stray = [
@@ -63,7 +63,7 @@ class MetaDescriptionFileTests(SimpleTestCase):
 
 class MetaDescriptionApiTests(TestCase):
     def test_the_book_detail_carries_the_snippet_or_nothing(self):
-        slug, text = next(iter(json.loads(PATH.read_text(encoding="utf-8"))["en"].items()))
+        slug, text = next(iter(table()["en"].items()))
         author = Author.objects.create(slug="a", name="A Writer")
         Book.objects.create(author=author, slug=slug, language="en", title="T", is_published=True)
         Book.objects.create(author=author, slug="unwritten", language="en", title="U", is_published=True)
