@@ -68,7 +68,9 @@ DATA_DIR = Path(__file__).resolve().parent / "data" / "key-teachings"
 # wrongly keep "Simp-son's" etc.). For this closed 4-book corpus the answer is:
 # DROP by default, and enumerate the few real compounds that occur — the `self-*`
 # forms (all genuine here, so keep the hyphen unless the joined word is a known
-# CLOSED self-word), number-word compounds ("twenty-five"), and one stray pair.
+# CLOSED self-word) and number-word compounds ("twenty-five"). ("feeble-/minded"
+# once kept its hyphen here too, but it only occurs in 1 Thessalonians 5:14,
+# where the KJV reads "feebleminded".)
 _NUM_WORDS = {
     "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
     "eleven", "twelve", "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
@@ -78,7 +80,6 @@ _NUM_WORDS = {
 # break, so drop the hyphen ("self-ish" → "selfish"). Every other "self-" split
 # in this corpus is a real compound and keeps it.
 _SELF_CLOSED = {"selfish", "selfless", "selfsame", "selfhood"}
-_KEEP_PAIRS = {("feeble", "minded")}
 
 
 def _dehyphenate(left: str, right: str) -> str:
@@ -92,7 +93,6 @@ def _dehyphenate(left: str, right: str) -> str:
         keep = (
             (f1.lower() == "self" and (f1 + f2).lower() not in _SELF_CLOSED)
             or f1.lower() in _NUM_WORDS
-            or (f1.lower(), f2.lower()) in _KEEP_PAIRS
         )
         if keep:
             return left + right  # the hyphen is already at the end of `left`
