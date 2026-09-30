@@ -344,6 +344,8 @@ reading the composed og twins `covers/<lang>/<slug>.png` (the real render), or
 faithful preview (an edition's `middle` is in `og-manifest.json`). A painting worn
 only by laid-out editions has no scrim and no `ART_SCRIM` entry.
 
+**Re-tune on the LATEST main before judging a painting too pale** (Slessor, 2026-09-30): Church's *La Magdalena* (pale sunset) failed the per-edition-rows gate (#4521) at every crop and at 1.00× (subtitle 3.82:1); after rebasing onto #4529 (the title/subtitle scrim follows the type) it passed at 0.90× with no exemption. The scrim model is moving — fetch, rebase, re-run `tune_art_scrim <slug>` first. Fast crop sweep without the gates: edit `focus`, then `paint_covers.py <slug> --no-check --recrop` + `tune_art_scrim.py <slug> --dry-run`. Shortening the subtitle and `TYPE_TOP` did not help. Gate-check mockups before the founder picks.
+
 **COMPOSITION RULES the ink bands impose (both bit growing-in-wisdom twice):**
 (a) A foreground SUBJECT (hero, figure, tree) must sit ENTIRELY BELOW the title band —
 keep its top at ≥ ~y470 (title bottom is 463), or the title text collides with it. So a

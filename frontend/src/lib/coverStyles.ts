@@ -320,7 +320,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.
 	'john-hyde-a-life': 'house',
-	'corrie-ten-boom-a-life': 'house'
+	'corrie-ten-boom-a-life': 'house',
+	'mary-slessor-a-life': 'house'
 };
 
 /**

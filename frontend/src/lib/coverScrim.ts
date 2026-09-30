@@ -55,6 +55,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'life-and-diary-of-david-brainerd': 0.70,
 	'life-experience-gospel-labours': 0.80,
 	'life-of-pascal': 0.75,
+	'mary-slessor-a-life': 0.90,
 	'men-and-women-who-gave-everything-2': 0.30,
 	'men-of-prayer-2': 0.30,
 	'men-who-tended-the-flock-2': 0.30,
