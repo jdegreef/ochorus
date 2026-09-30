@@ -104,7 +104,11 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    dockerCommand: "uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts"
+    # Wrapped in `sh -c` because Render runs dockerCommand WITHOUT a shell, so a
+    # bare `&&` is passed as arguments to the first command instead of chaining
+    # (the crash: "unrecognized arguments: && uv run …"). The Dockerfile's own CMD
+    # wraps in `sh -c` for the same reason.
+    dockerCommand: "sh -c 'uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts'"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
