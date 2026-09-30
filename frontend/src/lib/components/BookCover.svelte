@@ -2,7 +2,7 @@
 	import { coverGradient, coverSrcset, isArtCover, isPlateCover } from '$lib/coverArt';
 	import { isLongTitle } from '$lib/coverCardMarkup';
 	import { coverTitle } from '$lib/coverTitle';
-	import { coverLayoutFor, typeTopFor } from '$lib/coverLayouts';
+	import { coverLayoutFor, inkDarkFor, typeTopFor } from '$lib/coverLayouts';
 	import { groundBar } from '$lib/groundBars';
 	import { scrimStrength } from '$lib/coverScrim';
 	import { coverStyleFor, scriptOf, volumeNumeral } from '$lib/coverStyles';
@@ -309,6 +309,7 @@
 					'cover-plate over-file',
 					isArt && 'over-art',
 					book.subtitle && 'has-subtitle',
+					isArt && inkDarkFor(book.slug, layout) && 'ink-dark',
 					layout && ['has-layout', `cover-layout-${layout.layout}`, `cover-hue-${layout.hue}`]
 				]}
 				style={isArt ? `--scrim-strength: ${scrimStrength(book.slug)}` : undefined}

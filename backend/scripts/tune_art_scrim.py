@@ -50,6 +50,7 @@ BACKEND = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND))
 
 from library.covers import (  # noqa: E402
+    INK_DARK,
     H,
     W,
     ink_boxes,
@@ -155,6 +156,10 @@ def main() -> int:
             return 1
         paths = [ART / f"{s}.jpg" for s in sorted(set(opts.slugs))]
     for path in paths:
+        # A dark-ink ground carries no white type and no scrim; the fixture gate
+        # measures its ink instead (`covers.INK_DARK`).
+        if path.stem in INK_DARK:
+            continue
         image = Image.open(path).convert("RGB").resize((W, H), Image.LANCZOS)
         strength = needed(image, path.stem in subtitled, path.stem)
         if strength is None:
@@ -172,6 +177,11 @@ def main() -> int:
             file=sys.stderr,
         )
         return 1
+
+    # A re-run for named slugs starts from the old table; drop any dark-ink
+    # ground it still carries, so the table holds only works with a scrim.
+    for slug in INK_DARK:
+        table.pop(slug, None)
 
     # The SVG Originals are measured outside this script (it reads rasters) and
     # carried in on every run, bare or not, so re-tuning never drops them. See
