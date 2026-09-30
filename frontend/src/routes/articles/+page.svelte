@@ -2,7 +2,10 @@
 	import { pagedSnapshot } from '$lib/paging.svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { breadcrumbLd, hreflangFor } from '$lib/seo';
+	import { breadcrumbLd, hreflangExact } from '$lib/seo';
+	import { ARTICLE_LOCALES } from '$lib/live-locales.generated';
+	import { localizeHref } from '$lib/href';
+	import { lang } from '$lib/lang.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -17,10 +20,13 @@
 	import { goto } from '$app/navigation';
 	import { tick } from 'svelte';
 
-	// English literals, as on /quotes and /scripture: this index is not localized
-	// because what it lists is not (articles are English-only for now). Chrome
-	// goes through t() all the same (page-design F3).
+	// Each locale's hub lists that language's own articles (+page.ts). The
+	// English hub keeps its tuned, English-literal title and description; the
+	// others take the catalogue's. Topic shelves (`/articles/<topic>/`) are
+	// English-only — their SEO copy is curated English — so a translated hub
+	// shows its topics without linking them.
 	let { data } = $props();
+	const isEn = $derived(lang.current === 'en');
 	const articles = $derived<ArticleSummary[]>(data.articles);
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
@@ -34,6 +40,11 @@
 	$effect(() => {
 		const wanted = $page.url.searchParams.get('topic');
 		if (!wanted) return;
+		// Topic shelves are English-only: a translated hub just drops the query.
+		if (!isEn) {
+			goto(localizeHref(path), { replaceState: true });
+			return;
+		}
 		const known = articles.some((a) => articleHasTopic(a, wanted));
 		goto(known ? `/articles/${wanted}/` : '/articles/', { replaceState: true });
 	});
@@ -53,14 +64,21 @@
 	);
 
 	const path = '/articles/';
-	const canonical = `${SITE_URL}${path}`;
-	const hreflang = hreflangFor(path, ['en']);
+	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const hreflang = hreflangExact(path, [...ARTICLE_LOCALES]);
 
-	const title = 'Articles on prayer, faith & the Christian life — Ochorus';
-	const description =
-		'Short, plain-spoken readings on prayer, faith, grace and the life with God — ' +
-		'each one pointing you to a classic Christian book, sermon or life worth reading in full, ' +
-		'free.';
+	const title = $derived(
+		isEn
+			? 'Articles on prayer, faith & the Christian life — Ochorus'
+			: `${t('nav.articles')} — Ochorus`
+	);
+	const description = $derived(
+		isEn
+			? 'Short, plain-spoken readings on prayer, faith, grace and the life with God — ' +
+					'each one pointing you to a classic Christian book, sermon or life worth reading in full, ' +
+					'free.'
+			: t('articles.tagline')
+	);
 
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
@@ -69,7 +87,11 @@
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	// A CollectionPage listing each article, so the set reads as one entity to a
 	// crawler rather than a handful of unrelated URLs.
-	const listLd = $derived(articleCollectionLd('Articles', description, canonical, articles));
+	const listLd = $derived(
+		articleCollectionLd(t('nav.articles'), description, canonical, articles, (s) =>
+			localizeHref(`/articles/${s}/`)
+		)
+	);
 
 	async function showGuides() {
 		filters.values.kind = 'guides';
@@ -84,6 +106,11 @@
 </script>
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, listLd]} />
+
+<svelte:head>
+	<!-- No articles in this language (no English fallback): nothing to index. -->
+	{#if !loadError && !articles.length}<meta name="robots" content="noindex" />{/if}
+</svelte:head>
 
 <div class="page-col px-5 py-10">
 	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
@@ -119,7 +146,7 @@
 					<div class="grid gap-4 md:grid-cols-3">
 						{#each featured as a (a.slug)}
 							<a
-								href="/articles/{a.slug}/"
+								href={localizeHref(`/articles/${a.slug}/`)}
 								class="card-lift flex gap-4 rounded-card border border-border bg-surface p-5 text-inherit hover:no-underline"
 							>
 								{#if a.lead_book}
@@ -151,21 +178,27 @@
 						{#each groups as g (g.slug)}
 							<div class="flex flex-col gap-2 rounded-card border border-border bg-surface p-4 sm:p-5">
 								<h3 class="flex flex-col gap-1 text-h3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-									<a href="/articles/{g.slug}/" class="text-text hover:text-accent">{g.title}</a>
+									{#if isEn}
+										<a href="/articles/{g.slug}/" class="text-text hover:text-accent">{g.title}</a>
+									{:else}
+										<span class="text-text">{g.title}</span>
+									{/if}
 									<span class="count text-small font-normal">{g.count}</span>
 								</h3>
 								<!-- The previews need a column's width; on a phone the card is the
 								     topic's name and size, a door rather than a list. -->
 								<ul class="hidden flex-col gap-1.5 sm:flex">
 									{#each g.items as a (a.slug)}
-										<li><a href="/articles/{a.slug}/" class="text-body">{a.h1}</a></li>
+										<li><a href={localizeHref(`/articles/${a.slug}/`)} class="text-body">{a.h1}</a></li>
 									{/each}
 								</ul>
-								<a
-									href="/articles/{g.slug}/"
-									class="mt-auto hidden pt-1 text-small font-semibold text-muted hover:text-accent sm:block"
-									>{t('articles.seeAll').replace('%n%', String(g.count))}</a
-								>
+								{#if isEn}
+									<a
+										href="/articles/{g.slug}/"
+										class="mt-auto hidden pt-1 text-small font-semibold text-muted hover:text-accent sm:block"
+										>{t('articles.seeAll').replace('%n%', String(g.count))}</a
+									>
+								{/if}
 							</div>
 						{/each}
 					</div>
@@ -182,7 +215,7 @@
 					</div>
 					<div class="cover-rail flex gap-4 pb-1">
 						{#each guideRail as g (g.slug)}
-							<a href="/articles/{g.slug}/" class="w-20 shrink-0 hover:no-underline sm:w-24">
+							<a href={localizeHref(`/articles/${g.slug}/`)} class="w-20 shrink-0 hover:no-underline sm:w-24">
 								<BookCover book={g.book} />
 								<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
 									{g.book.title}
@@ -195,7 +228,17 @@
 			{/if}
 		{/if}
 		<h2 id="all-articles" class="section-label">{t('home.allArticles')}</h2>
-		<ArticleShelf bind:this={shelf} {articles} activeTopic="" {filters} heading="h3" />
+		<!-- A translated hub is unpaged: it is the crawl's one guaranteed link to
+		     each of its articles (see +page.ts), and the largest is ~120 rows. -->
+		<ArticleShelf
+			bind:this={shelf}
+			{articles}
+			activeTopic=""
+			{filters}
+			heading="h3"
+			topicLinks={isEn}
+			pageSize={isEn ? 24 : Infinity}
+		/>
 	{:else}
 		<EmptyState message={t('articles.emptyIndex')} />
 	{/if}

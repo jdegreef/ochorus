@@ -158,8 +158,8 @@ export interface SitemapData {
 	scripture: Entry[];
 	/** Quote pages. English only, and only where a person approved them. */
 	quotes: Entry[];
-	/** The Articles hub, each article, and each topic-filtered shelf. English
-	 *  only (original site writing, no translations yet). Its OWN child rather
+	/** The Articles hub, each article (in every advertised locale that has it),
+	 *  and each topic-filtered shelf (English only). Its OWN child rather
 	 *  than folded into `pages` so Search Console reports article indexing on its
 	 *  own line — the whole reason the index is split per type. */
 	articles: Entry[];
@@ -253,6 +253,11 @@ async function build(): Promise<SitemapData> {
 			topics: await listTopics(l).catch(() => []),
 			plans: await listPlans(l).catch(() => []),
 			series: await listSeries(l).catch(() => []),
+			// Per-language rows, no English fallback — like books. Advertised
+			// locales only: nothing else lists them.
+			articles: (ADVERTISED_LOCALES as readonly string[]).includes(l)
+				? await listArticles(l).catch(() => [])
+				: [],
 			// The Biographies shelf for this locale (a bio or a work here). Only
 			// the advertised locales read it — see the author entries below.
 			authors: (ADVERTISED_LOCALES as readonly string[]).includes(l)
@@ -267,9 +272,9 @@ async function build(): Promise<SitemapData> {
 	);
 	// English is always advertised, so its shelf is already fetched above.
 	const authors = perLocale.find((x) => x.locale === 'en')?.authors ?? [];
-	// Articles: original English writing, no translations yet (like the quotes
-	// hub). The same list the /articles route entry generator reads.
-	const articles = await listArticles('en').catch(() => []);
+	// English articles: the list the /articles route entry generator reads (the
+	// topic shelves are built from it). The other locales' ride in `perLocale`.
+	const articles = perLocale.find((x) => x.locale === 'en')?.articles ?? [];
 	// The SAME list the /scripture route entry generators build from. Reading it
 	// here rather than re-deriving the floor is what keeps "advertised" and
 	// "built" from drifting apart — the failure prerenderCoverage.test.ts exists
@@ -442,25 +447,39 @@ async function build(): Promise<SitemapData> {
 		});
 	}
 
-	// Articles: original English writing, no translations yet — the hub, each
-	// article, and each topic-filtered shelf. Its OWN sitemap child (see
-	// `articleEntries` below and the `articles` section), not folded into `pages`,
-	// so Search Console reports article indexing separately. `updated_at` is a
+	// Articles — the hub, each article, and each topic-filtered shelf. Its OWN
+	// sitemap child (see the `articles` section), not folded into `pages`, so
+	// Search Console reports article indexing separately. `updated_at` is a
 	// trustworthy <lastmod> here (seed_articles diffs before saving, so auto_now
 	// doesn't re-stamp every row on every deploy), the same reasoning as books.
+	//
+	// The hub and each article are listed in every advertised locale that has
+	// them (a locale's hub only where it has any article — an empty one is
+	// noindexed), with the alternates between editions; topic shelves stay
+	// English-only (their SEO copy is curated English).
 	const articleEntries: Entry[] = [];
-	if (articles.length) {
+	const hubIn = advertisedSlices.filter((x) => x.articles.length);
+	if (hubIn.length) {
 		articleEntries.push({
-			byLocale: new Map([['en', '/articles/']]),
-			lastmod: newest(articles.map((a) => a.updated_at))
+			byLocale: new Map(hubIn.map((x) => [x.locale, '/articles/'])),
+			lastmods: new Map(
+				hubIn.flatMap((x) => {
+					const d = newest(x.articles.map((a) => a.updated_at));
+					return d ? [[x.locale, d] as [string, string]] : [];
+				})
+			)
 		});
 	}
-	for (const a of articles) {
-		articleEntries.push({
-			byLocale: new Map([['en', `/articles/${a.slug}/`]]),
-			lastmod: a.updated_at
-		});
+	const bySlug = new Map<string, Entry>();
+	for (const x of advertisedSlices) {
+		for (const a of x.articles) {
+			let e = bySlug.get(a.slug);
+			if (!e) bySlug.set(a.slug, (e = { byLocale: new Map(), lastmods: new Map() }));
+			e.byLocale.set(x.locale, `/articles/${a.slug}/`);
+			if (a.updated_at) e.lastmods!.set(x.locale, a.updated_at);
+		}
 	}
+	articleEntries.push(...bySlug.values());
 	// A crawlable shelf per topic (`/articles/<topic>/`) — the same segment as an
 	// article, prerendered by the [slug] entry generator, disambiguated in load.
 	// The set is the union of the topic chips on the articles, exactly what
