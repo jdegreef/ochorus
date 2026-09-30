@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "martyn-lloyd-jones"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-martyn-lloyd-jones",
   "language": "en",
   "title": "The Key Teachings of Martyn Lloyd-Jones",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Martyn Lloyd-Jones",
   "description": "A concise, faithful guide to the heart of Martyn Lloyd-Jones’s ministry — the doctor’s diagnosis of the human condition, the sovereign grace of God, justification and union with Christ, the Christian character of the Sermon on the Mount, the cure of spiritual depression, preaching as logic on fire, and the longing for revival. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Lloyd-Jones’s ministry, naming his books for the reader’s own further study.",
   "about_html": "<p>This is a companion to Martyn Lloyd-Jones, not a book by him. Written by Ochorus, it sets out in seventeen short chapters the teaching for which the Welsh physician who became the minister of Westminster Chapel is chiefly remembered — the diagnosis of man’s true condition, the sovereign mercy of God, justification by faith and union with Christ, the Christian character of the Sermon on the Mount, the cure of spiritual depression, the recovery of preaching, the work of the Holy Spirit and the longing for revival — together with a chapter on his life, a conclusion and a guide to his books.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Martyn Lloyd-Jones. All descriptions of his teaching are the present author’s own summaries; his books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Lloyd-Jones’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what he taught.</p><p>Lloyd-Jones spent his life turning attention away from the preacher and towards the Word and the Spirit. The right response to his ministry is therefore not admiration of the Doctor but submission to the diagnosis, and flight to the only cure he ever trusted. This volume weighs honestly the places where he was disputed, and ends each chapter where every true sermon should end: with the hearer before God.</p>",
   "qa": [],

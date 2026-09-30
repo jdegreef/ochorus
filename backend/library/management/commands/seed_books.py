@@ -54,6 +54,7 @@ BOOK_FIELDS = (
     "title",
     "subtitle",
     "cover_title",
+    "cover_byline",
     "description",
     "about_html",
     "qa",

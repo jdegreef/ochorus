@@ -459,6 +459,14 @@ class Book(models.Model):
     # Per-language like every other row field; `translate_book` leaves it blank,
     # so a translation sets its own full title until someone gives it a short one.
     cover_title = models.CharField(max_length=120, blank=True)
+    # The name a cover sets as its BYLINE when that is not the author's: a book
+    # the house wrote ABOUT one person (a Key Teachings companion, a Portraits of
+    # Courage life) is by Ochorus Originals, yet its cover names the person it is
+    # about, as it always has. Blank = the author's name. Cover-only, like
+    # ``cover_title``: the card's author line, the book page and the schema.org
+    # author all keep ``author``. Names are one row for every language (``Author``
+    # has none per language), so ``translate_book`` copies it.
+    cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
     # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html

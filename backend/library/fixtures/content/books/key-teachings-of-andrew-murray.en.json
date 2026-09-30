@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "andrew-murray"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-andrew-murray",
   "language": "en",
   "title": "The Key Teachings of Andrew Murray",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Andrew Murray",
   "description": "A concise, faithful guide to the heart of Andrew Murray’s message — abiding in Christ, humility as the root of every grace, absolute surrender, waiting on God and the school of prayer — and the single truth beneath it all: that a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Murray’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Andrew Murray. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into sixteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Murray’s one theme was dependence. A branch has no life of its own; it receives everything from the vine. From that single picture, taken from the lips of Christ in John 15, came all his teaching: humility as the creature taking its true place, surrender as consenting to be held, waiting on God as dependence made into a habit, and prayer and intercession as dependence speaking for ourselves and for the world. This volume follows that thread from the vineyards of the Cape to the inner chamber, weighs honestly the places where he must be read with care — above all his teaching on divine healing — and ends each chapter where he ended nearly all of his: in a few questions and a prayer.</p><p>Murray’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; twelve of them are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own unhurried, prayerful pages.</p>",
   "qa": [],

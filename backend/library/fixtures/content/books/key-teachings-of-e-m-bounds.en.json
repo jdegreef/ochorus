@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "e-m-bounds"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-e-m-bounds",
   "language": "en",
   "title": "The Key Teachings of E. M. Bounds",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "E. M. Bounds",
   "description": "A concise, faithful guide to the heart of E. M. Bounds’s teaching on prayer — that men, not methods, are God’s instrument; that the real sermon is made in the closet; that faith, importunity, holiness and the Word belong together; and that the praying Church shares in the intercession of the risen Christ. Thirteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Bounds’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by E. M. Bounds. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into thirteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Bounds wrote about one subject, and he wrote about it as a man who did it every morning before the town was awake. His conviction was that God does His work through people who pray, and that no organisation, eloquence or money can stand in for them. This volume follows that single thread through its many strands — the preacher’s closet, faith and the Word, importunity and the early hour, holiness, trouble, revival and missions, the praying men of Scripture and history, and the intercession of Christ Himself — and it says plainly where his intensity overreaches, where his generalisations belong to his own age, and how much of what we read was shaped by the friends who edited his manuscripts after his death.</p><p>Bounds’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; seven of his books on prayer are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own urgent, repetitive and searching pages.</p>",
   "qa": [],

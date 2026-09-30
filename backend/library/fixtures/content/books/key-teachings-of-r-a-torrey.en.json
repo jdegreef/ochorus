@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "r-a-torrey"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-r-a-torrey",
   "language": "en",
   "title": "The Key Teachings of R. A. Torrey",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "R. A. Torrey",
   "description": "A concise, faithful guide to the heart of R. A. Torrey’s message — the Holy Spirit as a Person to be known, the baptism with the Spirit as power for service, prayer, Bible study, personal soul-winning and the fundamentals of the faith — and the single conviction beneath it all: that God means exactly what He says. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Torrey’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by R. A. Torrey. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Torrey’s one conviction was that God has spoken plainly and means what He says. The doubter who had once taken the Bible apart at Yale spent fifty years taking it at its word: on the Holy Spirit, who is a Person and not an influence; on the power for service that the Father promises to those who ask; on prayer, on the Scriptures, on the deity and atonement of Christ, on assurance, on the winning of souls, and on the solemn realities of judgement and the Lord’s return. This volume follows that thread, weighs honestly where he must be read with care — above all his teaching on the baptism with the Spirit as a distinct experience after conversion, and the blunt certainty of his manner — and ends each chapter as he would have wished, with something to do and a prayer.</p><p>Torrey’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; several of his books and sermons are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the man’s own plain, direct and urgent pages.</p>",
   "qa": [],

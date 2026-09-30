@@ -87,6 +87,7 @@ DEFAULTED_OK = {
     ("library.book", "series_position"),
     # Blank for every book whose full title fits its cover.
     ("library.book", "cover_title"),
+    ("library.book", "cover_byline"),
     ("library.chapter", "body_text"),
     ("library.sermon", "source_type"),
     ("library.sermon", "body_text"),

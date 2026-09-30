@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "john-bunyan"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-john-bunyan",
   "language": "en",
   "title": "The Key Teachings of John Bunyan",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "John Bunyan",
   "description": "A concise, faithful guide to the heart of John Bunyan’s message — the burden and the cross, the Slough of Despond, Doubting Castle and the key called Promise, the river and the Celestial City — and the discovery that set him free: that a believer’s righteousness is not in his own heart but in heaven, in Jesus Christ Himself. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Bunyan’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by John Bunyan. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that follows the pilgrim’s road of The Pilgrim’s Progress and the soul-history of Grace Abounding through twenty short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.</p><p>Bunyan’s one theme was the journey of a sinner to God, and the one Person who makes it possible. The road runs from the City of Destruction by the wicket gate and the cross, up the Hill Difficulty and down into the valleys, through Vanity Fair and out of Doubting Castle, to the river and the city beyond; and everything on it depends on Christ, whose righteousness, as the tinker of Elstow discovered in a field outside Bedford, is kept safe in heaven whatever the pilgrim feels. This volume walks that road, weighs honestly the places where Bunyan must be read with care — the allegory is not Scripture, his own extreme religious anxiety calls for gentle handling, and the Second Part reflects its century’s view of women — and ends each chapter in a few questions and a prayer.</p><p>Bunyan’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source; The Pilgrim’s Progress and Grace Abounding to the Chief of Sinners are both in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the plain, searching pages of the man himself.</p>",
   "qa": [],

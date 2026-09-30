@@ -1758,14 +1758,26 @@ with the famous later one — what is already there vs what first appears decade
 later is the honest spine of the book, and it catches legends the live bio
 repeats (spin a bio-fix task when it does).
 
-**A biography ABOUT a person is filed under that person as the author**, with
-the real author/description in the `subtitle` — NOT under `ochorus-originals`
-and NOT crediting the subject as if they wrote it. Precedent: `susanna-wesley-
-clarke` (Eliza Clarke's life of Susanna Wesley) sits on the `susanna-wesley`
-author page, subtitle "A Biography by Eliza Clarke". So "make this a book for
-X" → author `X`, subtitle carries the descriptive line. (Contrast the
-`ochorus-originals` bio *collections* — many subjects in one volume — which are
-their own author with per-chapter subject links.) *(watchman-nee-a-life, 2026-09)*
+**A book the HOUSE wrote about ONE person is BY `ochorus-originals`, and ABOUT
+them** — a Portraits of Courage life, a Key Teachings companion, any future
+single-subject Original. Three pieces, all required (`tests_originals_series.py`
+fails a volume missing any):
+  - `author` = `["ochorus-originals"]` — the subject did not write it. (Until
+    2026-09-30 these were filed under the subject, which credited Nee with his
+    own biography in the byline, the author page and schema.org.)
+  - `cover_byline` = the subject's name (e.g. `"Watchman Nee"`) on EVERY
+    language row — the cover still names who it is about across the top; blank
+    would print "Ochorus Originals" there. `translate_book` copies it.
+  - a `book_people_seed.BOOK_PEOPLE` entry making them the book's LONE
+    `"subject"` — that is what files it under "Books about X" on their author
+    page (a book with several subjects stays under "Also appears in"). The seed
+    SKIPS a subject with no `Author` row on prod — and a book by the imprint no
+    longer creates one — so a subject with no work or bio of their own yet needs
+    one first (write-biography skill).
+A PUBLIC-DOMAIN biography by a third party with no author row of their own
+(`susanna-wesley-clarke`, Eliza Clarke's life of Susanna Wesley) is the one case
+still filed under its subject, with the real author in the `subtitle`.
+*(watchman-nee-a-life 2026-09; moved to the imprint 2026-09-30)*
 
 **An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
 filed under the `ochorus-originals` imprint with NO schema change.** The shelf is
@@ -1825,8 +1837,9 @@ design is the point: quoting only the KJV and naming (never reproducing) the
 author's works lets the series safely cover a STILL-COPYRIGHTED author (Watchman
 Nee) as well as PD ones (Simpson, Edwards, Baxter) — QA every chapter to confirm
 no in-copyright prose is quoted before shipping a copyrighted-author volume.
-Filed under the SUBJECT as author with the Ochorus line in `subtitle`
-(per the rule above); `source_type` has no house value so it ships `public_domain`
+Filed BY `ochorus-originals` with the subject in `cover_byline` and
+`BOOK_PEOPLE` (per the rule above — `build_key_teachings` sets the first two from
+`Work.author_slug`; add the `BOOK_PEOPLE` line by hand); `source_type` has no house value so it ships `public_domain`
 with the rights note in `attribution`. Committed source PDFs live in
 `data/key-teachings/` (Ochorus's own prose, unfetchable). Why NOT `import_pdf`:
 the generic PDF path mishandles this typographically rich source three ways, so

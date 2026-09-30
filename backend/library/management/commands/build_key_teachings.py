@@ -9,12 +9,14 @@ books are still in copyright (Watchman Nee) as safely as it covers the
 public-domain ones (Simpson, Edwards, Baxter): nothing of the author's own prose
 is reproduced — only Ochorus's summaries and KJV Scripture.
 
-A companion is filed **under the author it is about** (author FK = that person,
-e.g. ``a-b-simpson``), with the Ochorus attribution carried in the ``subtitle``
-and the rights note in ``attribution`` — the same pattern as a biography ABOUT a
-person (``susanna-wesley-clarke``, ``watchman-nee-a-life``), never crediting the
-subject as if they wrote it. It is not filed under ``ochorus-originals`` (that is
-for multi-subject collections).
+A companion is BY the house: its author is ``ochorus-originals``, because the
+person it is about did not write it (an earlier build filed it under that
+person, which put "The Key Teachings of A. B. Simpson" on Simpson's shelf, and
+into his schema.org authorship, as if he had). The person is kept in two places:
+``cover_byline`` sets their name across the top of the cover, as it always was,
+and ``book_people_seed.BOOK_PEOPLE`` makes them the book's lone subject, which
+files it under "Books about" on their author page. ``Work.author_slug`` names
+that person. ``tests_originals_series.py`` holds all three together.
 
 The first four volumes came as PDFs set in one shared template; later volumes
 (Spurgeon, Murray, Hannah Whitall Smith, Catherine Booth, Augustine) are written
@@ -121,7 +123,7 @@ class Work:
     slug: str
     title: str
     subtitle: str
-    author_slug: str
+    author_slug: str  # the person it is ABOUT — its subject, not its author
     source: str  # under DATA_DIR: a template PDF, or a Markdown manuscript
     attribution: str
     cover_color: str
@@ -1047,7 +1049,7 @@ class Command(BaseCommand):
         path = DATA_DIR / work.source
         if not path.exists():
             raise CommandError(f"missing source: {path}")
-        author = Author.objects.get(slug=work.author_slug)  # exists in authors.json
+        subject = Author.objects.get(slug=work.author_slug)  # exists in authors.json
         if path.suffix == ".md":
             meta, chapters = manuscript(path.read_text(encoding="utf-8"))
         else:
@@ -1060,7 +1062,8 @@ class Command(BaseCommand):
             raise CommandError(f"{work.slug}: only {len(chapters)} chapters — aborted.")
 
         content = {
-            "author": author,
+            "author": Author.objects.get(slug="ochorus-originals"),
+            "cover_byline": subject.name,
             "title": work.title,
             "subtitle": work.subtitle,
             "description": description,

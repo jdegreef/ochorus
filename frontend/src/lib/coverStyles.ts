@@ -334,9 +334,12 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'key-teachings-of-derek-prince': 'originals',
 	'key-teachings-of-dietrich-bonhoeffer': 'originals',
 	'key-teachings-of-gareth-evans': 'originals',
-	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wears the
+	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wore the
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.
+	// Nee's own volume is pinned as well, now that the series is by the imprint
+	// (whose `originals` face it would otherwise take).
+	'watchman-nee-a-life': 'house',
 	'john-hyde-a-life': 'house',
 	'corrie-ten-boom-a-life': 'house',
 	'mary-slessor-a-life': 'house'

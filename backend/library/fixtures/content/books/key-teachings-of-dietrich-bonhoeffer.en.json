@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "dietrich-bonhoeffer"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-dietrich-bonhoeffer",
   "language": "en",
   "title": "The Key Teachings of Dietrich Bonhoeffer",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Dietrich Bonhoeffer",
   "description": "A concise, faithful guide to the heart of Dietrich Bonhoeffer’s teaching — the costly grace that calls a person to follow Jesus, the Sermon on the Mount lived out in a visible community, life together as God’s gift rather than our ideal, the Psalms as the prayer of Christ, and a church that exists for others. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Bonhoeffer’s ministry, naming his books for the reader’s own further study.",
   "about_html": "<p>This is a companion to Dietrich Bonhoeffer, not a book by him. Written by Ochorus, it sets out in sixteen short chapters the teaching for which the German pastor is chiefly remembered — costly grace and the call to follow Jesus, the Sermon on the Mount taken at its word, the church as Christ present among his people, the daily disciplines of life together, the Psalms as the prayer book of the Bible, and the hard questions of responsibility, guilt and suffering that he faced in the last years of his life. It tells his life plainly, and it is honest about where readers differ from him and where his words have been bent to serve causes he never spoke for.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any publisher or estate holding rights in the writings of Dietrich Bonhoeffer or their translations. All descriptions of his teaching are the present author’s own summaries; his books, lectures and letters are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Bonhoeffer’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what he taught.</p><p>Bonhoeffer spent his short life asking one question: who Jesus Christ really is for us, here and now, and what it means to follow him. The right response to his witness is not to admire the man who asked it, but to ask it ourselves, with the Bible open and the cost counted.</p>",
   "qa": [],

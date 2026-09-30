@@ -1399,7 +1399,11 @@ class CoverAssetTests(SimpleTestCase):
             # The type is drawn over the ground at render time — for BOTH tiers
             # now, since a plate carries no words either — so the strings are
             # part of what the card was made from.
-            author = names.get(fields["author"][0], {}).get("name", fields["author"][0])
+            # The byline the cover SETS: `cover_byline` when the book names the
+            # person it is about, else its author (what `BookCover` draws).
+            author = fields.get("cover_byline") or names.get(
+                fields["author"][0], {}
+            ).get("name", fields["author"][0])
             blob = source.read_bytes() + "\0{}\0{}\0{}".format(
                 _cover_title(fields), fields.get("subtitle") or "", author
             ).encode()

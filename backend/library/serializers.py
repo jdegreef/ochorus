@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 from django.db.models import Count, QuerySet, Sum
 from django.urls import reverse
@@ -19,6 +20,7 @@ from .models import (
     Book,
     BookPerson,
     Chapter,
+    PersonRole,
     Plan,
     PlanDay,
     Series,
@@ -408,6 +410,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "title",
             "subtitle",
             "cover_title",
+            "cover_byline",
             "author",
             "source_type",
             "cover_color",
@@ -906,6 +909,7 @@ class CoverBookSerializer(BookListSerializer):
             "title",
             "subtitle",
             "cover_title",
+            "cover_byline",
             "author",
             "source_type",
             "cover_color",
@@ -1561,8 +1565,19 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         # "appears in" cards is a fair price for not doubling that query.
         ctx = {**self.context, "book_topics": {}}
         data = BookListSerializer(books, many=True, context=ctx).data
+        # A book whose ONLY subject is this person is a book ABOUT them (a life,
+        # a Key Teachings companion) — the page gives those their own heading
+        # above the anthologies they merely appear in. Asked only of the books
+        # that name them as a subject, so a bio with none pays no query.
+        subject = PersonRole.SUBJECT.value
+        subject_books = [slug for slug, role in roles.items() if role == subject]
+        subjects_in = Counter(
+            BookPerson.objects.filter(book_slug__in=subject_books, role=subject)
+            .values_list("book_slug", flat=True)
+        ) if subject_books else Counter()
         for card in data:
             card["role"] = roles.get(card["slug"])
+            card["about"] = card["role"] == subject and subjects_in[card["slug"]] == 1
         data.sort(key=lambda c: order.get(c["slug"], 0))
         return data
 
