@@ -114,6 +114,9 @@ const config = {
 					// /authors/ — the library A–Z — carries the full link set; see
 					// $lib/authorIndex. Slashed: the route prerenders to authors/index.html.
 					`/${l}/authors/`,
+					// Each locale's Articles hub lists that language's own articles —
+					// the crawl's way to the translated ones (routes/articles/+page.ts).
+					`/${l}/articles/`,
 					`/${l}/sermons`,
 					`/${l}/plans`,
 					`/${l}/topics`,

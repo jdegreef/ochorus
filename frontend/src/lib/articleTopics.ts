@@ -44,7 +44,9 @@ export const articleCollectionLd = (
 	name: string,
 	description: string,
 	url: string,
-	articles: ArticleSummary[]
+	articles: ArticleSummary[],
+	/** Each article's path — localized on a translated hub. */
+	pathOf: (slug: string) => string = (s) => `/articles/${s}/`
 ) =>
 	jsonLd({
 		'@context': 'https://schema.org',
@@ -55,7 +57,7 @@ export const articleCollectionLd = (
 		hasPart: articles.map((a) => ({
 			'@type': 'Article',
 			headline: a.h1,
-			url: `${SITE_URL}/articles/${a.slug}/`
+			url: `${SITE_URL}${pathOf(a.slug)}`
 		}))
 	});
 

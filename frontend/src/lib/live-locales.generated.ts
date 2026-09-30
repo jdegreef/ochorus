@@ -17,3 +17,7 @@ export const LIVE_LOCALES = ["en","es","sw","lg","pt"] as const;
 // prefers these over the hand-maintained map in lang.svelte.ts, so
 // correcting a name in the admin reaches the picker on the next build.
 export const LIVE_LOCALE_NAMES: Record<string, string> = {"en":"English","es":"Español","sw":"Kiswahili","lg":"Luganda","pt":"Português"};
+
+// The live languages with at least one published article — the Articles
+// hub's hreflang set (routes/articles).
+export const ARTICLE_LOCALES: readonly string[] = ["en","es","sw","lg","pt"];
