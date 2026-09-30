@@ -1964,7 +1964,11 @@ curated reading plan needs the plan moved too: `seed_plans` never re-syncs an
 existing plan's days, and `PlanProgress.done` holds day NUMBERS —
 `0171_reshape_first_key_teachings` rebuilds the plan's days and renumbers done
 days (merged → done only if all its old days were; a new chapter → done if read
-past on both sides). All 32 volumes are now Markdown manuscripts; the first
+past on both sides). Renumbering plan days IN PLACE is unsafe: `done` unions
+across devices and each device re-sends its whole cached list, so a stale device
+re-ticks old numbers under the new ones. Move the plan to a NEW slug (0171
+`RENAMES`), migrate the device cache (`frontend/src/lib/planMoves.ts`) and 301
+the old URL in render.yaml. All 32 volumes are now Markdown manuscripts; the first
 four's PDFs were converted text-for-text (their Scripture corrections baked in
 and removed from corrections.py) and the PDF reader deleted.
 
