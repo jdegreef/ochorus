@@ -307,9 +307,10 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'key-teachings-of-richard-baxter': 'originals',
 	'key-teachings-of-watchman-nee': 'originals',
 	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wears the
-	// house face by era, so volume 2 is held to it rather than dressed in the
-	// `revival` display face Hyde's 1865 birth would give it.
-	'john-hyde-a-life': 'house'
+	// house face by era, so the later volumes are held to it rather than dressed
+	// in the `revival` display face their subjects' 19th-century births would give.
+	'john-hyde-a-life': 'house',
+	'corrie-ten-boom-a-life': 'house'
 };
 
 /**

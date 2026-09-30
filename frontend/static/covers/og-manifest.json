@@ -954,6 +954,16 @@
 			"layout": "rail/rust",
 			"bar": 0
 		},
+		"corrie-ten-boom-a-life": {
+			"ground": "6a04662098f91e0f6ad0ebdbcb298b74377069dc1a32d4a0d60c5c901b424b7e",
+			"style": "house",
+			"volume": "3",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0
+		},
 		"daughters-of-the-king-1": {
 			"ground": "f29086f9912bb0b49c1bacc554ab2bf719c48f20d63822a2e38ec91b43da2a21",
 			"style": "young",
