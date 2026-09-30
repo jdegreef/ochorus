@@ -124,7 +124,12 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-andrew-murray': null,
 	'key-teachings-of-hannah-whitall-smith': null,
 	'key-teachings-of-catherine-booth': null,
-	'key-teachings-of-augustine-of-hippo': null
+	'key-teachings-of-augustine-of-hippo': null,
+	'key-teachings-of-amanda-berry-smith': null,
+	'key-teachings-of-hudson-taylor': null,
+	'key-teachings-of-athanasius-of-alexandria': null,
+	'key-teachings-of-julia-foote': null,
+	'key-teachings-of-jeanne-guyon': null
 };
 
 /**
@@ -149,7 +154,12 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-andrew-murray',
 	'key-teachings-of-hannah-whitall-smith',
 	'key-teachings-of-catherine-booth',
-	'key-teachings-of-augustine-of-hippo'
+	'key-teachings-of-augustine-of-hippo',
+	'key-teachings-of-amanda-berry-smith',
+	'key-teachings-of-hudson-taylor',
+	'key-teachings-of-athanasius-of-alexandria',
+	'key-teachings-of-julia-foote',
+	'key-teachings-of-jeanne-guyon'
 ]);
 
 /**

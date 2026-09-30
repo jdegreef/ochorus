@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-30: the last five Key Teachings companions on their shelves — Amanda Berry
+// Smith + Julia Foote → saints-of-the-african-diaspora + women-of-faith, Hudson Taylor → to-the-ends-of-the-earth +
+// abiding-in-christ, Athanasius → voices-of-the-early-church + foundations-of-the-faith, Guyon → the-inner-life + women-of-faith.
 // prerender refresh 2026-09-29: five more Key Teachings companions on their shelves — Spurgeon →
 // the-preached-word + the-grace-of-god, Murray → abiding-in-christ, Hannah Whitall Smith → deeper-life +
 // women-of-faith, Catherine Booth → women-of-faith + the-way-of-holiness, Augustine → voices-of-the-early-church.

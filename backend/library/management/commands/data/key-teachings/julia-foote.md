@@ -1,0 +1,808 @@
+---
+description: A concise, faithful guide to the heart of Julia A. J. Foote’s message — that Christ saves not only from the guilt of sin but from its power, that this full salvation is received by faith and shows itself as love, and that the Spirit who cleanses a heart may send whom He will to preach. Ten short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Julia Foote’s own public-domain memoir, which readers are warmly encouraged to go to directly.
+about: |
+  This is not a book by Julia A. J. Foote. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into ten short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force. It is shorter than other volumes in this series, and deliberately so. Her own written legacy is one small book, A Brand Plucked from the Fire, published in 1879, together with a few fragments of her words recorded by others, and a companion ought not to be longer than it can honestly be.
+  
+  Her one theme was full salvation. She believed that the blood of Christ does not only pardon the sinner but cleanses the believer, that this cleansing is received by faith and not earned by years of struggle, and that it shows itself as love. She believed that the same Spirit who makes a heart clean may fill any mouth He chooses, a Black woman’s as readily as a bishop’s, and she paid for that belief with her church membership. This volume follows that thread through her conversion, her sanctification, her call, her expulsion, her defence of women in the gospel, her witness against slavery and prejudice, her warnings against drink and worldliness, and her long years of travel and illness. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.
+  
+  Julia Foote’s own writing is in the public domain and freely available, and this companion quotes it and names it throughout so that the reader can go straight to the source. It is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she learned to read by firelight as a girl, and it makes no claim to stand in for her own plain, fervent and searching words.
+---
+
+# Introduction
+
+> Is not this a brand plucked out of the fire? ZECHARIAH 3:2
+
+Julia Foote left the world one small book. It tells the story of a Black girl born in upstate New York in 1823 to parents who had been enslaved; of her conversion at fifteen; of her hunger for a clean heart and her finding of it; of a call to preach that she fought for weeks and could not escape; of the minister who had her put out of his church for obeying it; and of the long years afterwards, when she travelled the northern states and beyond as an evangelist with no salary, no denomination behind her, and very often no welcome at the door. She called the book A Brand Plucked from the Fire, after the prophet’s picture of a stick snatched out of the flames just before it was consumed. She meant herself. She never stopped being astonished that God had bothered to reach in.
+
+## Why so short a companion
+
+Other volumes in this series set out a teacher’s thought across eighteen chapters, because their subjects left whole shelves of sermons and treatises behind them. Julia Foote did not. She preached for half a century, but almost none of it was written down. What remains is her memoir and a few fragments of her words recorded by others. So this companion is shorter than the others, with ten short teaching chapters instead of eighteen. It will not invent sermons she did not leave. What she did leave is enough.
+
+## One thread
+
+Her teaching is easy to summarise, because she said one thing and said it everywhere. She called it full salvation. By it she meant that Jesus Christ does not only forgive the guilty but cleanses the believer, not only at death but now, and not only in theory but in the heart. She had been told that a Christian must fight her inward sins until she died. She called that a delusion.
+
+> Then will I sprinkle clean water upon you, and ye shall be clean: from all your filthiness, and from all your idols, will I cleanse you. EZEKIEL 36:25
+
+Everything else she taught grows out of that root. If Christ really cleanses, then holiness is not the preserve of the old and dying but the birthright of the young believer. If the Spirit really fills a cleansed heart, He may send that heart wherever He likes, and the rules of men cannot bind Him. If the blood really makes one family, a church that seats its Black members in a corner of the gallery has denied its gospel. And if God is really keeping His servant, then sickness, loneliness and contempt are not proofs of His absence but the fire in which He walks with her.
+
+That is the thread through these ten chapters, and it is the question to carry as you read: do I believe that Christ can do anything more for me than He has done? Or have I, like the people who counselled the young Julia, settled for a lifelong defeat and called it humility?
+
+## How this book is arranged
+
+After a chapter on her life, the book follows the order of her own story. It begins with her conversion and the troubles that followed it, and then with the full salvation she found and what she meant, and did not mean, by Christian perfection. It turns to her call to preach, her defence of women in the gospel, and the opposition of her own church. Then it follows her outward, as she was driven outward, to her witness against slavery and prejudice and against drink and worldliness. The last teaching chapter takes up the long years of illness and trial, and how she learned to trust God in the fire rather than out of it.
+
+Each chapter ends with application points and a prayer. She would have insisted on it. Her book keeps stopping to ask the reader, point-blank, whether you have this salvation yourself. Read one chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
+
+## Where she must be read with care
+
+This is not a book of hero-worship, and it is better to say at the outset where Julia Foote must be read with care.
+
+First, holiness. She taught, with the Methodist holiness tradition of her day, that entire sanctification is a second, distinct work of grace received by faith in a moment, in which the root of sin is destroyed. She went so far as to write that if you are sanctified, sin does not exist in you. Many godly Christians find in the same Scriptures a lifelong growth in grace, with sin fought but not uprooted until glory. This book sets out her teaching as she gave it, honours the hunger behind it, and notes where the disagreement lies.
+
+Second, her reading of Scripture. She read her Bible hungrily and quoted it constantly, but not always carefully. A verse in Isaiah becomes a promise that Satan cannot swim. Her arguments for women preaching are generally strong and sometimes loose. It is no discredit to a woman who had very little schooling in her life, but it means the reader should check her texts rather than borrow them.
+
+Third, dreams, visions and impressions. Her call came through an angel with a scroll and a night-long vision of the Father, the Son and the Holy Spirit beneath a great tree. But Scripture tells believers to try the spirits, and the chapter on her call asks what is safe to learn from her experience and what is not. Fourth, her strictness about dancing, dress and even, for a time, doctors, and a sharpness towards her opponents that she did not always restrain.
+
+Why read her, then? Because on the central matter she was right: Christ came to save His people from their sins, and not merely from the consequences of them. Because she lived it at a cost few readers will ever pay, and answered wrong with love. So the counsel of this book is the counsel of Scripture: Prove all things; hold fast that which is good (1 Thessalonians 5:21). Where she is faithful, receive it. Where she presses beyond what is written, mark it and set it aside.
+
+> Faithful is he that calleth you, who also will do it. 1 THESSALONIANS 5:24
+
+### FOR REFLECTION AND ACTION
+
+1. Write down one sin that you have quietly decided you will carry to the grave. Do not argue yet about doctrine. Simply bring it to Christ and ask whether He has more for you than you have been expecting.
+2. Think of a Christian you have been slow to hear because of who they are rather than what they say. Resolve to listen to them this month.
+3. Decide how you will read this short book: one chapter at a time, with the application points actually attempted before you go on.
+4. Where you already suspect you will disagree with her, note it, and resolve to test her against Scripture rather than against your habits.
+5. Read the opening chapters of her own memoir alongside this one. It is short enough to finish within the week.
+
+### A PRAYER
+
+> Lord Jesus, You reached into the fire for a poor girl in Schenectady, and You have reached in for me.
+> Forgive me for settling for less than You have promised. I have called my defeats humility and my low expectations wisdom.
+> As I read of Your servant, show me what You still mean to do in me. Where she was faithful, make me willing to follow. Where she went beyond Your Word, give me wisdom, and keep me from despising her.
+> Save me to the uttermost, for Your name’s sake. Amen.
+
+# Plucked from the Burning
+
+> I have overthrown some of you, as God overthrew Sodom and Gomorrah, and ye were as a firebrand plucked out of the burning. AMOS 4:11
+
+A hard inheritance. Julia Foote was born in 1823 in Schenectady, New York, her mother’s fourth child. Her father had been born free but was stolen as a child and enslaved; her mother was born a slave in the State of New York, and the first pages of the memoir record, without softening, a whipping her mother received from a master for refusing to submit herself to him. Her father in time bought his own freedom, then his wife’s, then their first child’s. When her parents joined the Methodist Episcopal church they were made to sit in a corner of the gallery and wait to take communion until the last white communicant had left the table. She grew up knowing the church could humiliate as well as bless, and she never left it.
+
+The black bottle. Her parents kept drink in the house. At five years old she found the chest unlocked, drained the bottle, and was so ill that her life was despaired of. It was the first time, she says, that she was a brand plucked from the burning. It would not be the last.
+
+Learning the alphabet. There were no schools where Black children were allowed, and her father could only spell out a little of the New Testament. When she asked him to teach her the letters he told her he hardly knew them himself, and then taught her anyway. She could say the whole alphabet at nine. At ten she was sent to work for a childless family named Prime in the country, who were kind to her and sent her to a country school. There she was learning to read when her schoolteacher shot a woman dead in a rage and was publicly hanged; the child saw the execution and was haunted by it for many nights. Not long after, Mrs Prime accused her of stealing cakes she had not taken and whipped her with a rawhide. She cut the rawhide to pieces with an axe and walked home through the woods before dawn.
+
+The new song. Her family moved to Albany and joined an African Methodist church there, and for the first time she began to understand what religion was. She resolved to serve God, broke the resolution, and drifted into parties and dances. At fifteen, at a Sunday evening quarterly meeting, a sermon on the new song of the redeemed in the book of Revelation broke her. She fell to the floor, lay insensible for many hours in an agony of conviction, cried to God for mercy, and rose singing. A week later, doubting because she had not been converted at the altar in the usual way, she was steadied by her minister, who told her that it is faith in Christ that saves, not the altar or the preacher.
+
+Inward foes. Six months later a younger brother accidentally struck her in the eye, and she lost the sight of it. The anger and pride that rose in her frightened her. Her minister, her class-leader and her parents told her this was the common lot of Christians until death. She could not believe it. When an elderly couple came to the church testifying that the blood of Jesus had cleansed them wholly, she knew what she needed. Forbidden by her mother to visit them, she went anyway, the first time she had deliberately disobeyed her. A few days later the old woman came to her with her Bible and marked passage after passage. Two days after that, alone and waiting on the Lord, she received what she had been seeking. She called it sanctification, and she never afterwards preached anything else for long.
+
+Boston. While still very young she married George Foote, a sailor, who had professed faith in Christ in the same church. They went to Boston, where he found work, and where she joined the African Methodist Episcopal Zion congregation. At her first class-meeting she testified to her conversion and to sanctification as a second, distinct work of the Holy Ghost. Her husband, who had once been sympathetic, grew hostile, told her she was getting more crazy every day, and went to sea.
+
+The call. For months she had been exhorting and praying from house to house. Then came the summons she had been dreading: to preach. She had always spoken against women preaching. For about two months she resisted and fell ill, and was brought, through what she describes as a series of visions, to say that she would go. Her minister, Jehiel C. Beman, told her coldly that she would soon find out her mistake. When she began holding meetings in a brother’s home and then in her own, he sent committees, demanded that she submit to the rules, and had her put out of the church. She took a letter to the Conference asking for a fair hearing. It was, she says, slightingly noticed and thrown under the table.
+
+On the road. She went anyway. With a few sisters she hired a hall in Philadelphia and held meetings for eleven nights. She preached across New York State and on into Pennsylvania, New Jersey, Ohio, Baltimore, Washington, Detroit and Canada, often with her companion Ann M. Johnson. Her memoir records Baltimore, where she and Sister Johnson were examined for marks in case they were runaway slaves; a canal boat where a man called her a racial slur and demanded her berth; a night on a steamboat deck in the cold because her colour barred her from the cabin; and a white church in Zanesville, Ohio, opened to Black hearers for the first time because of her meetings. News came that her husband had died at sea. Her father died in May 1849, and his last words to her were that she should be faithful to her heavenly calling and fear not to preach full salvation. The memoir’s chronology in these years is hard to follow, and this chapter does not force it.
+
+Cleveland. In the early 1850s she settled in Cleveland, Ohio, which remained her home. There a throat affliction silenced her for several years; Sister Johnson died in 1856, and in time her mother too. Later she was healed, and a great wave of holiness revival in Ohio sent her out again, she wrote, like a ship with chart and compass. In 1879 she published her memoir.
+
+At the last. She went on preaching for another twenty years. In 1894 the African Methodist Episcopal Zion Church, the communion whose Boston minister had expelled her half a century before, ordained her a deacon, the first woman it had ordained to that office. Shortly before her death she was ordained an elder, the second woman in that church to receive it. She died in 1900. The church that had cast her out received her, at the end, as one of its own ministers.
+
+> I have fought a good fight, I have finished my course, I have kept the faith. 2 TIMOTHY 4:7
+
+### FOR REFLECTION AND ACTION
+
+1. She was humiliated in church from her parents’ generation onward and never left it. Is there a church wound you have allowed to become a reason to stay away? Bring it to God honestly this week.
+2. Her father taught her the alphabet he hardly knew himself. Whom could you teach something you only partly know — to read, to pray, to open the Bible?
+3. She went to the old couple her mother had forbidden. Is there anyone who might lead you into deeper things whom you have been avoiding out of fear of what others will say?
+4. Her call cost her membership, marriage peace and security. Name one thing that obedience to God is likely to cost you, and count the cost with Him in prayer.
+5. Read her own chapters on her childhood and conversion in the Ochorus library this week.
+
+### A PRAYER
+
+> Lord, You snatched Julia Foote out of the fire again and again, as a child, as a girl, as a woman thrust out of her church, and You never let her go.
+> You have snatched me out of the fire too, though I have often forgotten it. Give me her gratitude.
+> Where the church has hurt me, keep me from bitterness. Where I have hurt others in Your name, show me, and make me put it right.
+> Keep me to the end, and let me finish my course as she finished hers, with my eyes on You. Amen.
+
+# The New Song
+
+> And they sung as it were a new song before the throne, and before the four beasts, and the elders: and no man could learn that song but the hundred and forty and four thousand, which were redeemed from the earth. REVELATION 14:3
+
+Julia Foote’s conversion begins with a song she could not sing. The text of the sermon at that quarterly meeting in Albany was the verse above, and as the minister dwelt on it she saw, she says, her lost condition as she never had before. A voice inside her kept repeating one sentence: “Such a sinner as you are can never sing that new song.” She fell to the floor and was carried home, and for many hours the same voice followed her in the dark.
+
+It is worth pausing on what she was not. She was not a hardened criminal but a fifteen-year-old from a churchgoing family who had been to a few parties and dances. But the new song belongs to the redeemed, and she knew she was not redeemed. That is the first thing her conversion teaches: that the gap between a respectable young person and the kingdom of God is not a matter of degree. It is the difference between singing the song and being unable to learn it.
+
+## A cry and an answer
+
+What broke the darkness was not a long prayer or a clever thought. It was a cry. In great terror she said, “Lord, have mercy on me, a poor sinner!” and at once, she tells us, the accusing voice stopped, a light grew brighter, and she caught the words of distant singing: this is the new song, redeemed, redeemed. She sprang up from the bed where she had lain for twenty hours without food or drink and began to sing it herself.
+
+> God be merciful to me a sinner. LUKE 18:13
+
+Not every conversion is so dramatic, but the shape of it is the shape of every true one. The sinner is brought to the end of herself, she calls on God for mercy with nothing in her hands, and God answers with a gift she could not have made for herself. The song is given, not learned. That is why no man could learn it: it is not a matter of study but of redemption.
+
+> And he hath put a new song in my mouth, even praise unto our God: many shall see it, and fear, and shall trust in the LORD. PSALM 40:3
+
+## The word that came to her
+
+The first thing she did was reach for the Bible. She wanted to read about the new song. What her eye fell on instead was the forty-third chapter of Isaiah, and she quotes it in full in her memoir: the Lord who created Jacob and formed Israel telling him not to fear, for He has redeemed him and called him by name.
+
+> But now thus saith the LORD that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine. ISAIAH 43:1
+
+> When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee. ISAIAH 43:2
+
+She would pass through many waters and fires. The promise she read on the morning of her conversion was not that there would be no fire, but that the flame would not kindle upon her. She came back to that idea years later, as we shall see, and made it one of the pillars of her teaching.
+
+## Not the altar nor the minister
+
+Then came the doubt. A week after her conversion she was tempted, she says, by the thought that she had been deceived, because people did not get religion lying on a bed at home; they went to the altar and were prayed for by the minister. It seemed very reasonable. Her minister came in within the hour, heard her out, and gave her the answer she never forgot: “My child, it is not the altar nor the minister that saves souls, but faith in the Lord Jesus Christ, who died for all men.” Then he opened the Bible and read her the second chapter of Ephesians.
+
+> For by grace are ye saved through faith; and that not of yourselves: it is the gift of God. EPHESIANS 2:8
+
+This is a small scene, but it matters more than it looks. Julia Foote would later be accused of being carried away by feelings, visions and excitements, and there is something in the charge. But at the foundation of her faith lay not a feeling but a fact: that Christ died for all, and that the one who trusts Him is saved, whatever the circumstances, whoever is or is not present. When she said she believed with all her heart that her sins were forgiven and the Saviour loved her, then, and not before, the joy came.
+
+> Therefore being justified by faith, we have peace with God through our Lord Jesus Christ. ROMANS 5:1
+
+## Telling others
+
+The other mark of her conversion is that she could not keep it to herself. She went from house to house, telling her young friends what a Saviour she had found and that He had taught her the new song. Some of them laughed and said they had seen her serious before, and it had not lasted. Her reply was simple and unanswerable: she had been serious before, but she had never been able to sing the new song until now.
+
+There is a seriousness that comes before conversion — a resolution, a fit of good behaviour. Julia had had several, and they had all broken, because they were made in her own strength. Conversion is not another resolution. It is a new heart and a new song, and those who have it cannot help singing.
+
+A reader should hold her story with some care. God does not bring every sinner to the floor for twenty hours, and it would be cruel to tell a quiet enquirer that she cannot be saved without a vision of light or a sound of singing. Julia herself learned the lesson in that first week: it is faith in Christ, not the manner of coming, that saves. But her story does ask whether we have ever come to the end of ourselves at all. A religion that has never cried for mercy has very rarely sung the new song.
+
+### FOR REFLECTION AND ACTION
+
+1. Can you name the point, dramatic or quiet, at which you came to Christ with nothing in your hands? If you cannot, do not despair; come now, with the prayer of the publican.
+2. Read Isaiah 43:1–7 slowly, putting your own name in place of Jacob’s. Mark which promise you most need this week.
+3. If you are troubled because your conversion did not look like someone else’s, hear her minister’s answer: it is faith in Christ that saves, not the altar or the preacher.
+4. Tell one person this week, simply and without argument, what Christ has done for you.
+5. Distinguish, in your own life, between seasons of seriousness and the new song. Ask God for the second if you have only known the first.
+
+### A PRAYER
+
+> Lord, have mercy on me, a sinner. I bring You nothing but my need.
+> Thank You that the new song is given and not earned, and that You call Your people by name.
+> When I doubt, take me back to the cross and not to my feelings. When I am tempted to keep quiet, open my mouth.
+> Walk with me through whatever waters and fires are ahead, and let no flame kindle upon me, for I am Yours. Amen.
+
+# Inward Foes
+
+> I find then a law, that, when I would do good, evil is present with me. ROMANS 7:21
+
+For six months after her conversion Julia Foote had, she says, uninterrupted peace and joy. Then her little brother, playing with the other children, struck her in the eye by accident. The pain was intense and the sight of that eye was lost. What frightened her most, though, was not the injury. It was what rose up in her in response to it: anger, pride, impatience, and a whole brood of feelings she had not known were there. She calls them signs of carnality, and she was honest enough to call them by that name.
+
+Every Christian knows some version of this: the first joy is real, and then an injury or insult shows that the old self is alive and well. The question is what to do about it.
+
+## The counsel she was given
+
+She did what a young believer should. She went to God with her trouble and felt relieved for a while, and then the trouble came back, and she went again. She knew what was right and tried to do it, but when she would do good, she says, borrowing Paul’s words, evil was present with her. And she asked the people set over her what was the matter.
+
+Her preacher, her class-leader and her parents all gave her the same answer. All Christians, they said, had these inward troubles, and were never free of them until death. This was her work on earth. She must keep on fighting, and when she died God would give her a bright crown. She wrote down her verdict on that counsel in two words: “What delusion!” But at the time she believed them, because she thought her minister too good and too wise to be wrong. So she went on struggling, she says, “hoping all the time I should soon die and be at rest.”
+
+> O wretched man that I am! who shall deliver me from the body of this death? ROMANS 7:24
+
+It is a desolate picture: a girl of sixteen longing to die so that she could stop sinning. Later, when she found older Christians who testified that they had been cleansed, and asked her minister and her parents about it, they told her that sanctification was for the aged and for those about to die, and not for one like her.
+
+## Preaching without power
+
+Her memoir is unusually sharp at this point. She had heard the doctrine of holiness preached, she says, but in a way that gave her no light and no strength to seek it. And she drew a lesson that goes well beyond her own case: “How frivolous and fruitless is that preaching which describes the mere history of the work and has not the power of the Holy Ghost.” She thought of the shepherds of Israel in Ezekiel, who fed themselves and not the flock.
+
+> Woe be to the shepherds of Israel that do feed themselves! should not the shepherds feed the flocks? EZEKIEL 34:2
+
+It is a hard word, and it is aimed at those who teach. A minister can describe the Christian life accurately and still leave his hearers exactly where they were, because he has described it as history, as something that happened to other people, rather than as a present offer from a living Christ. What she needed, she said, was a Philip.
+
+> Understandest thou what thou readest? And he said, How can I, except some man should guide me? ACTS 8:30–31
+
+That is a lovely touch. The Ethiopian in Acts had the book of Isaiah open on his lap and could not understand it until someone sat down beside him. Julia had the verses about cleansing in her own Bible, and had read them, but, she says, she had never understood what she read. Then an old couple came to the church and told, in meeting, the plain story of how they had once struggled with temper and pride and had taken it all to Jesus. Her Philip turned out to be an elderly woman whose name she does not even give, who came to her house one May morning and marked her Bible.
+
+## What to take from this
+
+The question underneath this chapter is one of the oldest in the Christian church. Is the Christian doomed to lifelong defeat by inward sin, or can Christ deliver? Julia Foote’s answer was that He can, and the next chapter will set out how she understood that deliverance. But it is worth separating her diagnosis from her remedy, because a reader may agree with the first while hesitating over the second.
+
+Her diagnosis was that the church around her expected nothing, and so received nothing. It had taken the seventh chapter of Romans as the permanent Christian condition and forgotten the eighth. That diagnosis is, in the main, right, and still applies to many churches.
+
+> For the law of the Spirit of life in Christ Jesus hath made me free from the law of sin and death. ROMANS 8:2
+
+> For sin shall not have dominion over you: for ye are not under the law, but under grace. ROMANS 6:14
+
+Christians have long disagreed about what the wretched man of Romans 7 represents, and many careful readers see there the honest cry of a mature believer. They are not wrong to say that the fight with sin continues in some form until glory. But even they must reckon with what the next chapter of Romans says, and with the plain promise that sin shall not have dominion. The fault Julia Foote exposed was not a mistaken exegesis so much as a mistaken mood: a church that had made peace with sin and called it realism, and that counselled despair in the language of patience.
+
+And her own later experience keeps the question honest. She wrote, years afterward, that she had sometimes lost what she called the clear witness of perfect love through disobedience, and had to weep because the blessed experience was not always constant with her. Whatever deliverance means, it did not mean for her that the fight was over. It meant that the fight was no longer hopeless.
+
+> Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them. HEBREWS 7:25
+
+### FOR REFLECTION AND ACTION
+
+1. Name the inward foe that most often defeats you — anger, pride, envy, impatience, lust, fear. Write it down plainly, as she did, and call it by its right name.
+2. Ask yourself honestly whether you have made peace with it. Have you begun to expect defeat and to call your expectation humility?
+3. Read Romans 6, 7 and 8 in one sitting this week, and notice where the chapters go, not only where they begin.
+4. If you teach or lead others, ask whether you describe the Christian life as history or offer it as a present gift. Change one thing in how you speak next time.
+5. Look for your Philip: an older Christian whose life shows the power of Christ over sin. Ask to spend an hour with them and their Bible.
+
+### A PRAYER
+
+> Lord, I know the struggle she describes. When I would do good, evil is present with me, and I am tired of it.
+> Forgive me for making peace with what You died to destroy, and for calling my low expectations wisdom.
+> Send me someone who will open the Scriptures to me, and open my own understanding when I read them.
+> Deliver me, Lord Jesus, not only at the end, but now, by the Spirit of life who sets me free. Amen.
+
+# Full Salvation Now
+
+> And the very God of peace sanctify you wholly; and I pray God your whole spirit and soul and body be preserved blameless unto the coming of our Lord Jesus Christ. 1 THESSALONIANS 5:23
+
+The phrase that runs through Julia Foote’s memoir more than any other is full salvation. It named what she had missed in her months of struggle, and what she preached for the rest of her life. When her father lay dying, she records, the charge he laid on her was to fear not to preach full salvation. Her last chapter is a plain answer to a plain question: how is sanctification to be obtained?
+
+## Two works of grace
+
+She believed, with the Methodist holiness tradition that shaped her, that God does two distinct things for a believer. The first is conversion: the forgiveness of sins and the new birth, which she received at fifteen. The second is sanctification: the cleansing of the heart from the inward sin that remained after conversion, which she received some two years later. In Boston she testified to her sanctification as a second, distinct work of the Holy Ghost.
+
+When her pastor came to see her about what he called her new religion, she read him the thirty-second Psalm and felt the glory of God fill her. “Glory to Jesus!” she cried. He had freed her from the guilt of sin, and sin no longer had dominion over her; and then came a sentence that sums up her whole message: “Christ makes me holy as well as happy.”
+
+> Blessed is he whose transgression is forgiven, whose sin is covered. PSALM 32:1
+
+Then she read him the promise in Ezekiel. She quotes it in full in her memoir, and it may be the nearest thing to a text for her whole ministry.
+
+> A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh. And I will put my spirit within you, and cause you to walk in my statutes. EZEKIEL 36:26–27
+
+She asked him to explain it. He told her that the verses were all very well, but that she was too young to dictate to her elders, and that many in the church were dissatisfied with the way she was talking. He could not deny the text, so he changed the subject to her age.
+
+## The texts she was taught
+
+The old woman who led her into the experience did so, she says, by reading and explaining many passages of Scripture and carefully marking them in her Bible. Julia lists some of them: the seventeenth chapter of John, two verses from First Thessalonians, a passage from First Corinthians, and the second chapter of Hebrews.
+
+> For this is the will of God, even your sanctification. 1 THESSALONIANS 4:3
+
+> For both he that sanctifieth and they who are sanctified are all of one: for which cause he is not ashamed to call them brethren. HEBREWS 2:11
+
+All this, she says, had been a sealed book to her until then. The old saint’s method was sensible: she did not ask the girl to have an experience, but took her to the promises of Scripture and left them marked. Two days later, while Julia was waiting on the Lord, her large desire, as she puts it, was granted through faith in her precious Saviour. She had not climbed up to it. She had received it.
+
+## By faith, and now
+
+The last chapter of her book is the closest thing she wrote to a doctrinal statement, and it is striking how short and simple it is. How is sanctification to be obtained? Her answer: “Faith is the only condition of sanctification.” She did not mean a thin assent. She meant a faith that dies to the world and every form of sin, that gives up the sin of the heart, and that believes God is able to do what He has promised and will do it now.
+
+That word now is everywhere in her writing. She could not bear the idea that holiness was reserved for the aged and dying. The old woman had told her that it was for the young believer as well as the old, and she spent her life telling others the same. So her book ends not with an argument but with an invitation: “Why not yield, believe, and be sanctified now — now, while reading?”
+
+> Behold, now is the accepted time; behold, now is the day of salvation. 2 CORINTHIANS 6:2
+
+Just before that invitation she prints a hymn which catches, better than any argument, the experience she was trying to rescue people from. It describes a believer tossed to and fro: sometimes in the valley and sometimes on eagle’s wings, sometimes finding a blessing in the Bible and sometimes finding it a sealed book, sometimes praying with joy and sometimes finding it almost a task. And it asks why. Its answer is that the blood of Jesus has not yet washed the heart white as snow. She wanted such readers to know it need not be the last word.
+
+## How to hold her teaching
+
+Here the reader must be careful, and fair. Julia Foote’s doctrine of sanctification as a second, instantaneous work of grace, in which the root of sin is destroyed, is not shared by most Christians, and she knew it. Many who love holiness as much as she did believe that sanctification begins at the new birth and goes on by degrees until glory, and that Scripture’s commands to put off the old man and put on the new describe a daily work rather than a single crisis. They would point to Paul, who wrote that he had not yet attained, and to John’s warning that if we say we have no sin we deceive ourselves.
+
+> Not as though I had already attained, either were already perfect: but I follow after, if that I may apprehend that for which also I am apprehended of Christ Jesus. PHILIPPIANS 3:12
+
+She went further than some in her own tradition when she wrote that in the sanctified, sin does not exist. That claim has led sincere people either into despair or into calling their sins by softer names. But the heart of what she taught can be held by Christians on either side of the debate. God wills our sanctification. It is His work, received by faith and not achieved by striving. He means to do far more in us than we expect, and He means to begin now. Whether He does it in a moment or over a lifetime, a Christian who is not seeking it has missed the point of being saved.
+
+### FOR REFLECTION AND ACTION
+
+1. Read Ezekiel 36:25–27 aloud, slowly, as a promise addressed to you. Which part of it do you most need God to do?
+2. Look up the passages the old saint marked in Julia’s Bible (John 17, 1 Thessalonians 4:3 and 5:23, Hebrews 2:11) and mark them in yours.
+3. Ask whether you have treated holiness as something for later — for the old, the dying, the specially devout. Confess it, and ask for it now.
+4. If you recognise yourself in the hymn of the believer tossed to and fro, tell God so plainly, and ask Him to settle you.
+5. Whatever your view of a second blessing, name one concrete way in which you will yield yourself to God today, and do it.
+
+### A PRAYER
+
+> Holy Father, You have said that this is Your will, even my sanctification. I believe it, and I ask You to do it.
+> I am tired of being tossed to and fro. Give me a new heart, and put Your Spirit within me, and cause me to walk in Your ways.
+> I give up the sin of my heart. I do not ask for later. I ask for now.
+> Faithful is He that calleth me, who also will do it. Amen.
+
+# Every Temper Contrary to Love
+
+> There is no fear in love; but perfect love casteth out fear: because fear hath torment. 1 JOHN 4:18
+
+The word perfection frightens people, and not without reason. It sounds like a claim to be beyond improvement, above correction, free of fault. Julia Foote knew how it sounded, and in the second-to-last chapter of her book she stopped to say plainly what she did and did not mean. It is the most important paragraph she wrote about holiness, and it is short enough to learn by heart.
+
+She was not, she said, teaching absolute perfection, “for that belongs to God alone.” Nor did she mean the perfection of angels, or of Adam before the fall. She meant Christian perfection, and she defined it in one phrase: “an extinction of every temper contrary to love.”
+
+## Holiness is love
+
+That definition changes the whole conversation. Holiness, for Julia Foote, was not first a list of things avoided, though she had such a list and we shall come to it. It was a heart so filled with the love of God that there was no room left in it for spite, envy, resentment or contempt. Perfection meant perfect love: not a love that never makes mistakes, but a love with no rival.
+
+> And above all these things put on charity, which is the bond of perfectness. COLOSSIANS 3:14
+
+This was the old Methodist teaching. What makes her testimony worth hearing is where she tested it: as a woman whose minister, she believed, had lied about her, whose church had thrown her out, and who could not ride a stagecoach or sleep in a cabin because of her colour.
+
+## Love tested
+
+The clearest example comes just after her expulsion. She had taken her case to the Conference of ministers, asking only for a fair hearing, and her letter had been set aside. It would have been natural to leave the Conference bitter. Instead, she says, God filled her heart with His love, so that as she passed one minister after another, her heart went out to each of them “as though he had been my father.” She thought of the words of Peter about the trial of faith being more precious than gold.
+
+> That the trial of your faith, being much more precious than of gold that perisheth, though it be tried with fire, might be found unto praise and honour and glory at the appearing of Jesus Christ. 1 PETER 1:7
+
+She did not pretend that the wound did not hurt. If the opposition had come from the world, she wrote, it would have seemed as nothing; but coming from those who had once been blessed with her, it touched a tender spot. That is the honest voice of perfect love. It does not mean feeling no pain. It means that the pain does not turn into hatred.
+
+> Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you. MATTHEW 5:44
+
+The same principle ran into her preaching. When she preached her sermon on threshing from Micah, a stern text about beating the nations like corn, she was careful to say that the Gospel flail “should be lifted up in a kind and loving spirit.”
+
+## The counterfeit
+
+Julia Foote knew the counterfeit of holiness as well as she knew the real thing, because she had been on the receiving end of it all her life. Her memoir opens with her mother in the Methodist Episcopal church, waiting for the last white communicant to leave the Lord’s table, and being pulled back by a white woman when she moved too soon. Julia drew the lesson at once. How many, she asked, profess great spirituality and even holiness, and yet say to the poor and the coloured among them, “Stand back a little — I am holier than thou.”
+
+> Which say, Stand by thyself, come not near to me; for I am holier than thou. These are a smoke in my nose, a fire that burneth all the day. ISAIAH 65:5
+
+This is why her definition matters so much. A holiness that consists chiefly of separation — from sinners, from the poor, from those of another colour — is not the holiness of Christ. It is the holiness of the Pharisee, and Scripture calls it smoke in God’s nose. She had also seen the opposite failure: the professing Christians who, as she put it, fought holiness with more zeal and vigour than they did sin. Neither the proud saint nor the scoffer at holiness knew anything of perfect love.
+
+## An honest word
+
+It must be said, since she would want it said, that Julia Foote did not always live up to her own definition, and her book shows it. In Boston she admits that she had spoken to and about some people in rather an incautious manner, and she resolved to order all her words as in the immediate presence of God. Later in the book she calls one opponent, in the heat of the telling, almost a fiend in human shape, and when her minister’s committee dismissed her she turned at the door and shook off the dust of her feet as a witness against them. There may be a place for such words; Jesus Himself told His disciples to shake off the dust. But they sit uneasily beside a heart that went out to her opponents as to fathers.
+
+That tension is not a reason to dismiss her. It is a reason to hold her definition more firmly than her claims. If Christian perfection means the extinction of every temper contrary to love, then any Christian, however advanced, can test herself by it every day, and every day find cause for humility. The definition does not make the saint proud. It keeps her on her knees.
+
+> Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up. 1 CORINTHIANS 13:4
+
+> By this shall all men know that ye are my disciples, if ye have love one to another. JOHN 13:35
+
+### FOR REFLECTION AND ACTION
+
+1. Write out her definition — an extinction of every temper contrary to love — and keep it where you will see it. Use it this week as a test for your words and reactions.
+2. Name one person who has wronged you in the name of God or the church. Pray for them by name, as a daughter would pray for a father.
+3. Ask whether your holiness keeps anyone at a distance: the poor, the unfashionable, those of another race or class. Go and sit beside one of them this week.
+4. Before any hard word you must speak, ask whether it is being lifted up in a kind and loving spirit. If not, wait.
+5. Read 1 Corinthians 13 slowly, putting your own name in place of charity. Stop where it becomes untrue, and pray there.
+
+### A PRAYER
+
+> Lord, I do not ask to be perfect as You are perfect. I ask that every temper in me contrary to love be put out.
+> Where I have been hurt, keep the pain from turning into hatred. Where I have hurt others, even in Your name, forgive me and make me put it right.
+> Save me from the holiness that says, Stand back, I am holier than thou. Give me the holiness of Jesus, who sat with sinners and was not ashamed to call them brethren.
+> Fill my heart with Your love, until there is no room left for anything else. Amen.
+
+# Thee Have I Chosen
+
+> Then said I, Ah, Lord GOD! behold, I cannot speak: for I am a child. JEREMIAH 1:6
+
+Nobody pushed Julia Foote into the pulpit. The most striking thing about her call to preach is how hard she fought it. She had always been opposed to women preaching, she tells us, and had spoken against it herself. When the call came, her first answer was the answer of Moses, Jeremiah and Jonah: “No, Lord, not me.”
+
+## The shape of a call
+
+It did not come out of nowhere. For months before, she had been praying and exhorting in the homes she visited, and in meetings her whole soul, she says, seemed drawn out for the salvation of souls. Some of her friends told her she was too forward. She paid them no attention, because the work itself was food to her. A call often begins like that: with a love that cannot keep quiet, exercised in small places.
+
+Then came the particular occasion when she knew God was calling her to a definite work, and she shrank. “I thought it could not be that I was called to preach — I, so weak and ignorant.” She knew all things were possible with God, even confounding the wise by the foolish things of the world. But knowing it did not make her willing.
+
+> But God hath chosen the foolish things of the world to confound the wise; and God hath chosen the weak things of the world to confound the things which are mighty. 1 CORINTHIANS 1:27
+
+> But the LORD said unto me, Say not, I am a child: for thou shalt go to all that I shall send thee, and whatsoever I command thee thou shalt speak. JEREMIAH 1:7
+
+## Two months of refusal
+
+What followed was, by her account, the darkest stretch of her Christian life. She lost her appetite and could not sleep. She fell ill, and a physician could do nothing for her. Her husband and friends feared she would die or lose her mind. She shared her trouble with a band of sisters, and one of them understood at once and told her to do as God had bidden her, or she would never be happy. She still could not. The difficulties women preachers met, from churchgoers and outsiders alike, rose before her like a mountain, and she cried, “Lord, I cannot go!”
+
+> But his word was in mine heart as a burning fire shut up in my bones, and I was weary with forbearing, and I could not stay. JEREMIAH 20:9
+
+After nearly two months she told God she would do anything or go anywhere for Him, if He made it plain. She believed He did, and she said, “I will go, Lord.” Peace came at once. And then, within the hour, she began to reason with herself: she had no qualifications, her parents and friends would turn against her, and she regretted the promise. The peace left as quickly as it had come. It is one of the most honest moments in her book. Obedience is not settled once. It has to be settled again an hour later, when the arguments return.
+
+> For though I preach the gospel, I have nothing to glory of: for necessity is laid upon me; yea, woe is unto me, if I preach not the gospel! 1 CORINTHIANS 9:16
+
+## Visions, and how to weigh them
+
+At this point the reader meets the part of her story that is hardest for many modern Christians. Julia Foote says that her call came through an angel, who appeared with a scroll bearing the words that God had chosen her to preach His gospel without delay; that the angel came again with a warning; and that on a memorable Sabbath evening she was taken in a vision to a great tree where the Father, the Son and the Holy Spirit sat, was washed by Christ in water like silver, clothed in a white robe, fed with fruit from the tree, and given a written commission on golden paper to carry in her bosom.
+
+What is a reader to do with this? Two errors are possible: to dismiss it with a smile, as if God could never speak to a poor Black woman in a way a learned minister would not approve; or to take it as a pattern, and wait for angels before obeying what Scripture already says. The Bible does promise that in the last days God will pour out His Spirit, that sons and daughters will prophesy, and that His people will see visions and dream dreams. It also tells believers to test what they receive.
+
+> Beloved, believe not every spirit, but try the spirits whether they are of God: because many false prophets are gone out into the world. 1 JOHN 4:1
+
+So it is worth noticing how her call was in fact tested. It came after months of fruitful exhorting, not out of idleness. It was confirmed by a sister in Christ who understood it at once. It sent her to do nothing Scripture forbids — to preach repentance and holiness — and, as the next chapter will show, she searched the Scriptures carefully to be sure of that. And it bore fruit for fifty years. The vision did not stand alone. It is the whole pattern that is persuasive, not the vision by itself, and a reader who has had no vision at all has lost nothing that matters.
+
+## The letter in the heart
+
+The best part of the story comes the next day. As she talked with friends, she kept reaching into her bosom, without thinking, to show them her letter of authority. She found, as her friends told her, “it was in my heart, and was to be shown in my life, instead of in my hand.”
+
+> Ye are our epistle written in our hearts, known and read of all men. 2 CORINTHIANS 3:2
+
+That is the lesson every Christian can take from her call, with or without visions. A commission from God is not a paper to wave at critics. It is proved by a changed life and a faithful ministry. When her minister, Jehiel Beman, came to see her and told her coldly that she would find out her mistake within a few months, she did not produce credentials. She answered: “My gifts are very small, I know, but I can no longer be shaken by what you or any one else may think or say.”
+
+She could not have said that two months before. Having said yes to God, she no longer needed anyone else’s yes.
+
+### FOR REFLECTION AND ACTION
+
+1. What does your soul seem drawn out towards? Notice the small places where love already will not keep quiet. They may be the beginning of a call.
+2. Is there something God has plainly asked of you that you have answered with “No, Lord, not me”? Name it, and name the mountain that stands in the way.
+3. If you once said yes and then argued yourself out of it, say yes again today, and tell one trusted Christian that you have.
+4. Test any strong impression you have received by Scripture, by the counsel of mature believers, and by its fruit. Do not wait for a vision to obey what the Bible already says.
+5. Ask whether your commission, whatever it is, is being shown in your life rather than in your hand.
+
+### A PRAYER
+
+> Lord, like Jeremiah I have said, I cannot speak, I am only a child. Like Julia Foote I have said, No, Lord, not me.
+> Forgive me for arguing with You after I had promised. Settle my obedience again today.
+> Teach me to test what I think I hear, and to trust what You have plainly said.
+> Write Your commission in my heart, and let it be read in my life. Amen.
+
+# Women in the Gospel
+
+> And it shall come to pass afterward, that I will pour out my spirit upon all flesh; and your sons and your daughters shall prophesy. JOEL 2:28
+
+Julia Foote did not set out to be a controversialist. She set out to obey. But once her minister had put her out of his church for preaching, and the Conference had thrown her letter under the table, she had to be sure of her ground. So she did what she always did. She went to the Bible. The chapter of her memoir called Women in the Gospel is only a few pages long, but it is one of the clearest short defences of women’s preaching written in nineteenth-century America, and it is worth reading slowly.
+
+## Pentecost
+
+She began where the church began. On the day of Pentecost, she wrote, the Scripture in Joel was fulfilled; and it would not be denied that women as well as men were filled with the Holy Ghost that day, because Luke expressly says that women were among those who continued in prayer and supplication waiting for the promise.
+
+> These all continued with one accord in prayer and supplication, with the women, and Mary the mother of Jesus, and with his brethren. ACTS 1:14
+
+From this she drew an argument that her opponents found very hard to answer. Some said that the gift of prophecy to women was a temporary thing, a short-lived and spasmodic impulse that had passed away. Very well, she replied: women and men are classed together in the promise, “and if the power to preach the Gospel is short-lived and spasmodic in the case of women, it must be equally so in that of men.” The same outpouring fell on both. Whatever has ceased for one has ceased for the other.
+
+## Credentials
+
+Her second argument was aimed at a particular demand. She had been told that if a woman claimed a divine call to preach, she would be believed when she produced credentials from heaven, which meant when she worked a miracle. Her answer was dry. If a miracle is needed to prove one’s right to preach the gospel, she wrote, “I ask of my brethren to show me their credentials, or I can not believe in the propriety of their ministry.”
+
+It is a fair point: a test no male minister is expected to pass cannot honestly be set for women alone.
+
+## The women Paul named
+
+Then she went through the New Testament. There is neither male nor female in Christ Jesus. Philip had four daughters who prophesied. Paul called Priscilla as well as Aquila his helpers, a word she noted could be rendered fellow-labourer. Phebe is called a servant of the church, where the same word is translated minister when it is used of Tychicus. And when Paul asked his true yokefellow to help the women who laboured with him in the gospel, he certainly meant, she wrote with a flash of humour, “that they did more than to pour out tea.”
+
+> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
+
+> I commend unto you Phebe our sister, which is a servant of the church which is at Cenchrea. ROMANS 16:1
+
+> Help those women which laboured with me in the gospel, with Clement also, and with other my fellowlabourers. PHILIPPIANS 4:3
+
+Last, she pointed to the eleventh chapter of First Corinthians, where Paul gives directions to both men and women about how they should appear when they pray or prophesy in the assembly, and to Paul’s own definition of prophesying as speaking to edification, exhortation and comfort. If women might do that in the church, she reasoned, then Paul was not forbidding every woman’s voice.
+
+> But he that prophesieth speaketh unto men to edification, and exhortation, and comfort. 1 CORINTHIANS 14:3
+
+## Where she is strong, and where brief
+
+A fair reader will see that her strongest arguments are her first ones. The promise of Joel, fulfilled at Pentecost on sons and daughters alike; the women prophets and fellow-workers of the New Testament; the plain fact that Paul regulated how women prayed and prophesied in public rather than forbidding it: these are serious arguments, and many careful students of Scripture have been persuaded by them.
+
+She is briefer on the texts that trouble many Christians most. In her word to her Christian sisters she tells them not to be kept in bondage by those who say, “We suffer not a woman to teach,” quoting Paul’s words but not rightly applying them. She does not stop to show at length what the right application is.
+
+> But I suffer not a woman to teach, nor to usurp authority over the man, but to be in silence. 1 TIMOTHY 2:12
+
+> Let your women keep silence in the churches: for it is not permitted unto them to speak. 1 CORINTHIANS 14:34
+
+Christians who read those verses as a lasting limit on women’s public ministry are not simply prejudiced, and they deserve a fuller answer than she gave. Her equation of prophesying with preaching is also disputed. A reader who takes her side should do the work she did not have room for; a reader who does not should still reckon honestly with Joel, Pentecost, Philip’s daughters and the women who laboured with Paul. What cannot be done, on either side, is what her Boston minister did: refuse to discuss the Scriptures at all, and simply shut the door.
+
+## Courage for sisters
+
+She did not write this chapter as an academic exercise. She wrote it for women who had been silenced. In Philadelphia she met three sisters who believed they were called to public work, but had been so opposed, mostly by ministers, that they had shrunk back. She organised meetings with them for eleven nights, and one of them left after a day or two for fear of being disowned by her church.
+
+And yet she could write, looking back over thirty years, that things were better, that the lion and the lamb were lying down together compared with what had been. She lived to see the church that had excommunicated her ordain her deacon and elder. Her counsel to her sisters was simple: “How much easier to bear the reproach of men than to live at a distance from God.”
+
+### FOR REFLECTION AND ACTION
+
+1. Read Acts 1:12–2:21 in one sitting, and note every place where women are present or included.
+2. Whatever your view of women preaching, write down honestly what you think 1 Corinthians 11:5 and 1 Timothy 2:12 each mean, and why. Test your reasons against the whole of Scripture.
+3. Ask whether you have set tests for some Christians that you do not set for others. Put that double standard away.
+4. If you are a woman who has been discouraged from using the gifts God has given you, bring it to God and to a wise Christian this week, and ask what faithfulness looks like for you.
+5. If you are in a position to open or shut doors for others, ask whether you have ever refused to discuss the Scriptures and simply shut the door.
+
+### A PRAYER
+
+> Lord of the harvest, You poured out Your Spirit on sons and daughters, servants and handmaidens, at Pentecost.
+> Keep me from quenching the Spirit in anyone You have called. Where I have spoken carelessly or refused to listen, forgive me.
+> Give Your church wisdom to read Your Word rightly, humility to hear one another, and courage to obey.
+> And give me grace to bear the reproach of men rather than live at a distance from You. Amen.
+
+# I Fear God More than Man
+
+> Then Peter and the other apostles answered and said, We ought to obey God rather than men. ACTS 5:29
+
+The hardest opposition Julia Foote met came from her own minister and her own church. The story of her expulsion is told with a lawyer’s care, and it raises a hard question: what do you do when the church tells you to stop doing what you believe God has told you to do?
+
+## What happened
+
+Many in her Boston congregation wanted to hear her preach in the hall where they met. Two of the trustees persuaded some of the older women to ask the minister, Jehiel Beman, to allow it. His reply, as they reported it, was: “No; she can’t preach her holiness stuff here.” When a brother opened his house to her, the minister sent a committee to warn him that he would be excommunicated if he allowed it again. Julia, who happened to be present, told them that her business was with the Lord, and that wherever she found a door opened she intended to go in and work for her Master.
+
+When she began to hold meetings in her own house, the minister told the members that he would deal with any who attended. He sent a committee to ask whether she still considered herself a member of his church; she said she did, until she had done something worthy of losing her membership. Then he summoned her to meet him. He asked whether she was willing to comply with the rules of the discipline. Her answer is the title of this chapter: “Not if the discipline prohibits me from doing what God has bidden me to do; I fear God more than man.” The next evening she was told she was no longer a member.
+
+> Whether it be right in the sight of God to hearken unto you more than unto God, judge ye. For we cannot but speak the things which we have seen and heard. ACTS 4:19–20
+
+## How she answered it
+
+What is impressive is not only her courage but her restraint. She did not start a rival church, and when people asked what had happened, she did not say much. She heard that the minister was telling people she had demanded his pulpit and set her meetings against his, and she states plainly that this was false: she had told him that any corner of the hall would do. But she made her complaint in the proper way, by a letter to the Conference, delivered in person. She said her only offence was trying to preach the gospel of Christ, and that she cherished no ill feelings toward Mr Beman or anyone else. She asked only for an impartial hearing and a written statement of their judgement.
+
+She did not get it. The letter was slightingly noticed and thrown under the table. “It was only the grievance of a woman,” she wrote, “and there was no justice meted out to women in those days.”
+
+> They shall put you out of the synagogues: yea, the time cometh, that whosoever killeth you will think that he doeth God service. JOHN 16:2
+
+## Every man’s hand
+
+She did not pretend it was easy. It is no little thing, she wrote, “to feel that every man’s hand is against us.” Yet in that trial she had constant access to God and a clear sense that He heard her. She learned two things, and they belong together. First, that the best men are liable to err, and that the only safe way was to fall on Christ, whatever censure followed. Second, that her own judgement was fallible too. Writing about these years, she said that every step she had taken had been for the glory of God and the good of souls, and then added at once: “However much I may have erred in judgment, it has been the fault of my head and not of my heart.”
+
+> Let us go forth therefore unto him without the camp, bearing his reproach. HEBREWS 13:13
+
+That second sentence matters as much as the first. A Christian who says “I fear God more than man” and never admits she might be wrong is a danger to herself and to the church. Julia Foote held her conviction firmly and her judgement humbly. She appealed to the Conference and wanted its verdict; she claimed only that no church may forbid what God commands.
+
+## Weapons not carnal
+
+The same spirit marked her later conflicts. In Geneva, New York, a Baptist minister refused to let her preach in a union church, and some of her supporters talked of having the building for her if they had to shed blood. He came to ask whether she wanted a fight of that kind. She told him that the weapons with which she fought were not carnal. When he said he would sit in the pulpit and not leave it though they broke his head, she replied that God could take him from the pulpit without breaking his head. That evening the church was in uproar, and she saw at once that God could not be glorified in such confusion, so she simply withdrew and preached in a private house the next night.
+
+> For the weapons of our warfare are not carnal, but mighty through God to the pulling down of strong holds. 2 CORINTHIANS 10:4
+
+Opposition sometimes melted. Even her own mother, when Julia came home after six years away, greeted her with the words that she had once said she would rather hear her daughter was dead than a preacher, and then, weeping, told her it was all past now, because she had heard what the Lord had done.
+
+## Weighing her stand
+
+A reader should not turn this chapter into a charter for every Christian who is crossed by a pastor. Most church conflicts are not about a clear divine command. The New Testament calls believers to submit to those who watch over their souls, and a wise Christian will suspect her own motives first. Julia Foote’s case was different in kind: she was being forbidden to preach the gospel at all, anywhere in the city, by a minister who, on her account, would not discuss the Scriptures with her.
+
+But for those rare cases, she shows the way. Be sure from Scripture. Keep your character clean. Use the proper channels. Say little in public. Refuse the carnal weapon. Admit that you may err in judgement. Bear no ill will. And then, if the door is still shut, go through the next one God opens, and leave your vindication with Him. She waited nearly fifty years for hers.
+
+> Who, when he was reviled, reviled not again; when he suffered, he threatened not; but committed himself to him that judgeth righteously. 1 PETER 2:23
+
+### FOR REFLECTION AND ACTION
+
+1. Is there anything God has plainly commanded in Scripture that you have stopped doing because others disapproved? Name it, and resume it.
+2. Before you appeal to conscience against those over you, ask honestly whether this is a clear command of God or your own preference. Write down the Scripture.
+3. If you have been wronged by a church, have you kept your complaint to the proper people? Resolve to say less in public and more in prayer.
+4. Name a conflict in which you have been tempted to use carnal weapons — manipulation, gossip, force. Lay them down today.
+5. Say her sentence about yourself and mean it: however much I may have erred in judgement, let it be the fault of my head and not of my heart. Ask God to show you where you have erred.
+
+### A PRAYER
+
+> Lord, You were cast out by the religious leaders of Your day, and You did not revile them. Teach me Your way.
+> Give me the courage to obey You rather than men when You have plainly spoken, and the humility to suspect myself when You have not.
+> Where I have been shut out, keep me from bitterness. Where I have shut others out, show me and forgive me.
+> I commit my cause to You, who judge righteously. Amen.
+
+# O Prejudice
+
+> And hath made of one blood all nations of men for to dwell on all the face of the earth. ACTS 17:26
+
+Julia Foote did not write a book about slavery. She wrote a book about holiness. But she was born to parents who had been enslaved, she lived her whole life in a nation that permitted it or had only just stopped, and she travelled through places where a Black woman could be stopped in the street and examined for the marks of a runaway. So slavery and its offspring, which she called prejudice, run through her memoir like a dark thread. She rarely argues about them. She tells what happened, and names it before God.
+
+## At the Lord’s table
+
+The first scene is the most searching, because it happens in church. Her parents, having given up dancing after a near-drowning on the way home from one, joined the Methodist Episcopal church. They were not, she says, treated as Christian believers but as poor lepers. They sat in a corner of the gallery, and dared not come down to take communion until the last white communicant had left the table. One day her mother and another Black woman went forward when they thought all the white people had been served, just as two poorer white members rose to go. An older white woman caught her mother’s dress and asked if she did not know better than to go to the table when white folks were there.
+
+Julia calls this one of the fruits of slavery, and then asks the question that matters most. They professed to love the same God, belonged to the same church, and expected the same heaven. Were they led by the Holy Spirit? Her answer is that the Spirit of truth can never be mistaken and can never inspire anything unholy.
+
+> My brethren, have not the faith of our Lord Jesus Christ, the Lord of glory, with respect of persons. JAMES 2:1
+
+> But if ye have respect to persons, ye commit sin, and are convinced of the law as transgressors. JAMES 2:9
+
+This is the heart of her witness against prejudice. It was, first, a theological argument. A church that divides the Lord’s table by colour has not merely been unkind. It has sinned, and it has shown that whatever it professes, it is not being led by the Holy Spirit. Her own doctrine of holiness gave her the measure: holiness is love, and a love that tells a sister to stand back is not holy.
+
+## On the road
+
+The rest of her testimony comes from her travels, and she tells it without self-pity. A passenger on a stagecoach worried aloud at every stop that the public would take him for an abolitionist for riding with her. On a canal boat, a man demanded her berth in the ladies’ cabin with a racial slur, and she stayed put, thinking it best not to leave the bed except by force. Coming home to Boston by steamboat, she caught a severe cold sitting all night on deck, “prejudice not permitting one of my color to enter the cabin except in the capacity of a servant.”
+
+In Baltimore, a slave state, she and her companion were closely questioned about their freedom and examined for marks by which they might be identified as runaways. While they were there, a daughter of the woman they boarded with escaped from the man who claimed to own her, and he and others broke in at midnight, night after night, holding lights to Julia’s face in bed to see whether the girl was with her. In Washington a slaveholder searched the house where she and a number of ministers were dining. She wrote simply: “We realized more and more what a terrible thing it was for one human being to have absolute control over another.”
+
+> I have surely seen the affliction of my people which are in Egypt, and have heard their cry by reason of their taskmasters; for I know their sorrows. EXODUS 3:7
+
+## A door refused
+
+Her witness was not only in what she endured but in what she refused. In Chillicothe, Ohio, the white Methodists invited her to speak, but did not want the Black people of the town to attend. She would not agree, and so she did not speak for them. Prejudice, she wrote, had closed the door of their sanctuary against the coloured people of the place, virtually saying that the gospel should not be free to all. Her Master had said the opposite: go and preach to all.
+
+> The Spirit of the Lord is upon me, because he hath anointed me to preach the gospel to the poor; he hath sent me to heal the brokenhearted, to preach deliverance to the captives. LUKE 4:18
+
+It cost her a pulpit, and it was right. Soon after, in Zanesville, the white Methodists opened their house to Black hearers for the first time, and hundreds were turned away for lack of room.
+
+## Holiness on the bells of the horses
+
+On that cold night on the steamboat deck, she broke out into a cry against prejudice, calling it a cruel monster and asking whether it would ever cease to exist. Then she answered herself: not until all shall know the Lord, and holiness shall be written upon the bells of the horses, upon all things in earth as well as in heaven. She was thinking of the last chapter of Zechariah.
+
+> In that day shall there be upon the bells of the horses, HOLINESS UNTO THE LORD. ZECHARIAH 14:20
+
+That is her deepest word on the subject. She believed that the cure for prejudice is the same as the cure for every other sin: a holiness that reaches into everything, the common things as well as the sacred ones, the stagecoach and the steamboat as well as the communion table. She expected it of the church, and grieved when the church fell short.
+
+Writing in 1879, she thanked God that such indignities as she had met in Baltimore no longer had to be suffered, and then added a warning that still stands: “the monster, Slavery, is not yet dead in all its forms.” A reader today may wish she had said more, and planned more. She was an evangelist and not a reformer, and she named the evil and trusted God with it more than she organised against it. But she never once suggested that it was not the church’s business. It was, for her, the test of whether the church’s holiness was real.
+
+> Of a truth I perceive that God is no respecter of persons. ACTS 10:34
+
+### FOR REFLECTION AND ACTION
+
+1. Ask where the Lord’s table is divided in your own church or community — by race, class, age or respectability — and what part you play in it.
+2. Read James 2:1–9 and name, honestly, one person you have treated with respect of persons. Put it right this week.
+3. Is there an invitation you have accepted that required you to leave someone out? Consider whether you should refuse it, as she did at Chillicothe.
+4. Learn something this month about how slavery and its aftermath shaped the churches of your own nation, and pray over what you learn.
+5. Pray for holiness to be written on the ordinary things of your life — your work, your travel, your welcome — and not only on the sacred ones.
+
+### A PRAYER
+
+> Lord, You made of one blood all nations of men, and You are no respecter of persons.
+> Forgive Your church for every time it has pushed anyone back from Your table. Forgive me for the ways I still do it, in my heart if not in my hands.
+> Give me the courage to refuse a welcome that leaves others outside.
+> Write holiness on the bells of the horses: on my ordinary days, my journeys and my doorstep, until all know You. Amen.
+
+# Love Not the World
+
+> Love not the world, neither the things that are in the world. If any man love the world, the love of the Father is not in him. 1 JOHN 2:15
+
+One chapter of Julia Foote’s memoir bears the title Love not the World, and it opens with the verse above. It is the least fashionable part of her teaching. She wrote against drink, dancing, the theatre, fine clothes and the worldly ways of professing Christians, and some of what she wrote will sound stern. But behind the rules was a conviction that deserves a hearing: that a heart made clean will show it, and that the world is quick to notice when it does not.
+
+## The accursed cup
+
+Her warnings against drink were not theory. She grew up in a world where liquor was passed round at weddings and funerals alike, where, she says, the pall-bearers could sometimes scarcely carry out the coffin, and where the officiating clergyman drank as freely as anyone. Her parents kept liquor in the house, made a sweetened drink of it every morning, and gave the children the bottom of the cup. At five she drained a bottle she found in an unlocked chest, and very nearly died.
+
+> Woe unto him that giveth his neighbour drink, that puttest thy bottle to him, and makest him drunken also. HABAKKUK 2:15
+
+So when she turned to her readers, she turned first to parents. Do not give your children, she pleaded, the cup that will send them down to misery and death. Listen to the woes of the drunkard and the wailing of poor women and children, “and touch not the accursed cup.” She looked beyond the home, too, and called on Christian men to vote as they prayed, that the legal traffic in spirits might be abolished. (In the same breath she asked God to banish capital punishment, having watched her own schoolteacher hanged; she believed the gospel of Him who prayed for His murderers had outrun the law of a life for a life. Christians have differed on both questions, and a reader need not follow her into every conclusion to feel the force of what she saw.)
+
+> Wine is a mocker, strong drink is raging: and whosoever is deceived thereby is not wise. PROVERBS 20:1
+
+Like many in the holiness and temperance movements of her century, she treated total abstinence as the plain duty of every Christian. Scripture condemns drunkenness in the strongest terms, but it does not forbid wine as such, and many faithful believers have judged moderation to be lawful. Where she is surely right is in her refusal to treat drink as harmless in a culture that was being destroyed by it, and in her insistence that the strong should think first of the weak.
+
+> It is good neither to eat flesh, nor to drink wine, nor any thing whereby thy brother stumbleth, or is offended, or is made weak. ROMANS 14:21
+
+## The dance and the whole heart
+
+Dancing she had reason to fear, as she tells it, because of what happened to her at one. Mocked as a little Methodist fool for stopping, she tried again and felt, she says, a heavy hand on her arm and heard a voice saying repent; the dance broke up in silence. She goes so far as to say that if she had persisted, she believes God would have struck her dead. A reader should take that as the conviction of a frightened girl rather than as a rule for others. But the argument she built on it is worth hearing. People told her that David danced. So he did, she answered, and Miriam too, but as worship. What she objected to was the pleasure that dulls the appetite for God. And she put the matter in a single line: “Put away your idols, and give God the whole heart.”
+
+That is the key to all her strictness. She was not interested in a list of forbidden pleasures for its own sake. She was interested in the heart, and she believed that the pursuits a person loves reveal where the heart is.
+
+## If the mind be renewed
+
+On dress, her argument was short and sharp. Paul tells believers not to be conformed to the world but transformed by the renewing of their minds. Some say this refers to the mind and not to the clothing. Her reply: “if the mind be renewed, it must affect the clothing.” She quoted Paul and Peter on modest apparel, and then added a principle that reaches far beyond clothes: “It is by the Word of God we are to be judged, not by our opinion of the Word.”
+
+> And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God. ROMANS 12:2
+
+> In like manner also, that women adorn themselves in modest apparel, with shamefacedness and sobriety; not with broided hair, or gold, or pearls, or costly array; But (which becometh women professing godliness) with good works. 1 TIMOTHY 2:9–10
+
+It would be easy to mock this, or to turn it into a new legalism. Her point was that the inward and outward life cannot be kept in separate rooms. She saw professing Christians, even some who claimed to be sanctified, conformed to all the maxims and fashions of the world, and asked whether the low state of religion in the churches was not the result.
+
+## The witness of a plain life
+
+The deepest reason for all this is found back in the chapter on her call, when she reached for her letter of authority and found that it was in her heart and was to be shown in her life. That is what she meant by separation from the world. Not a code of dress, finally, but a life so plainly given to God that anyone could read it.
+
+> Let your light so shine before men, that they may see your good works, and glorify your Father which is in heaven. MATTHEW 5:16
+
+Readers will draw their lines in different places from hers. But few Christians today are in danger of being too unworldly. Most are in danger of being unable to say, if asked, what difference their faith makes to how they spend their money, their evenings and their pleasures. Julia Foote could have answered that question in a sentence. The challenge of this chapter is to be able to answer it too.
+
+### FOR REFLECTION AND ACTION
+
+1. List the three pleasures you would find it hardest to give up. Ask of each, honestly, whether it has become an idol, and give God the whole heart.
+2. If drink has any hold on you or on anyone in your home, take one concrete step this week — tell someone, seek help, or put it away.
+3. Think of one weaker brother or sister in your circle. Is there any liberty you enjoy that makes their path harder? Consider laying it down for their sake.
+4. Ask whether your renewed mind has affected your clothing, your spending and your entertainment. Change one thing that it has not.
+5. Test your views on worldliness by the Word of God, not by your opinion of the Word, and not by hers.
+
+### A PRAYER
+
+> Father, You have told me not to love the world, and I confess that I often do.
+> Search my pleasures and my habits, my cupboard and my wardrobe. Show me any idol I have not seen, and give me grace to put it away.
+> Make me mindful of the weak, the tempted and the children, and keep me from being a stumbling block to any of them.
+> Renew my mind, and let the renewal show, until my life is a letter anyone can read. Amen.
+
+# Help in the Fires
+
+> Beloved, think it not strange concerning the fiery trial which is to try you, as though some strange thing happened unto you: But rejoice, inasmuch as ye are partakers of Christ’s sufferings. 1 PETER 4:12–13
+
+Julia Foote’s life was not a triumphal procession. She lost the sight of an eye as a girl. Her husband grew cold to her faith and died at sea while she was far from home. Her companion of many years died, and her mother and father. She lay for three weeks with a fever in Pittsburgh while her friends despaired of her life. In Cleveland an affliction of the throat silenced her for years. She was poor, often unwelcome, and frequently alone. And yet her memoir is full of praise. How did she hold the two together?
+
+## In the fire, not out of it
+
+The key sentence comes just after her expulsion. Fiery trials, she wrote, are not strange things to the Lord’s anointed, and the rejoicing in them is born only of the Holy Spirit. Then she added: “He has promised us help and safety in the fires, and not escape from them.”
+
+> Lo, I see four men loose, walking in the midst of the fire, and they have no hurt; and the form of the fourth is like the Son of God. DANIEL 3:25
+
+That one sentence would save many Christians much confusion. Some expect faith to keep them out of trouble, and conclude when it comes that God has failed them. Julia Foote had read the promise she was given on the morning of her conversion — when thou walkest through the fire, thou shalt not be burned — and she took it at its word. It promises company in the fire, not a way round it. She put the same thought in a lovely image: each wave of trial bears the Galilean Pilot on its crest.
+
+When news of her husband’s death reached her, she says it almost caused her to sink beneath the blow. She answered it with the words of Job.
+
+> Though he slay me, yet will I trust in him. JOB 13:15
+
+## Why God permits it
+
+In her chapter on her Cleveland years she stopped to consider why God allows His people to suffer. Her answer is careful and scriptural. Sometimes, she wrote, it is for the trial of their faith and the exercise of their patience; sometimes to draw them off from all human dependence and teach them to trust in Him alone; sometimes God lets the wicked go a great way, to prove His people’s steadfastness and show His power in upholding them. And then she applied it to herself with disarming honesty: “I had trusted too much in human wisdom.”
+
+She also drew a distinction that many troubled believers need. Temptation, she wrote, is common to the holiest people; some temptations rise from our corrupt nature, some from the infirmity of our nature, some directly from the enemy, and these last her Lord Himself endured. “I think all temptation has a tendency to sin, but all temptation is not sin.” A believer who feels the pull of evil has not therefore sinned, and need not accept the devil’s suggestion that she has lost everything.
+
+> Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life, which the Lord hath promised to them that love him. JAMES 1:12
+
+And over it all she wrote a sentence of astonishing gratitude: “I shall praise God through all eternity for sending me to Cleveland, even though I have been called to suffer.”
+
+## Prayer and the Spirit’s leading
+
+Her memoir is, from beginning to end, a book of prayer. As a girl she prayed in a secret place behind the chimney in the garret. When her husband went to sea and left her among strangers, she opened her Bible and found the words that thy Maker is thine husband, and read the fifty-fourth chapter of Isaiah over and over. God gave her another text for that season too.
+
+> Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. PHILIPPIANS 4:6
+
+She believed the Spirit led her day by day. She says she was directed by the Spirit to visit the Marine Hospital, where she found her long-lost brother dying. In her years of illness God taught her, she says, to sit patiently and wait to hear her Shepherd’s voice, resolved to follow no stranger.
+
+> And a stranger will they not follow, but will flee from him: for they know not the voice of strangers. JOHN 10:5
+
+## Where to be careful
+
+Two cautions belong here. The first concerns her throat. She wrote that she had sought a cure from earthly physicians instead of the Great Physician, that her joy was checked because of it, and that when she ceased trying to join the iron and the clay — the truth of God with the advice of men — and cried for the blood of Jesus to be applied to her throat, deliverance came. We may be glad with her that she was healed. But Scripture nowhere forbids a sick believer to seek a doctor, Luke himself was a physician, and her own words should not be used to lay guilt on the sick or to keep anyone from medicine. What can be learned is her prayer, not her suspicion of doctors.
+
+The second concerns impressions. Her sense of being led was real and often fruitful, but it came with a humility we should keep: she tested it by Scripture and by its fruit, and she admitted that she sometimes erred in judgement. She also wrote, of her dark seasons, that she did not believe God ever withdraws Himself from a soul that does not first withdraw itself from Him. That is a searching word, and often a true one. But the sufferings of Job, and the cry of Christ on the cross which she herself quotes, warn us not to assume that every darkness is our fault.
+
+> My God, my God, why hast thou forsaken me? MATTHEW 27:46
+
+She came through it all, as she put it, with the Bible as her chart and compass, and said that when she dropped anchor again it would be in heaven’s broad bay. That is what help in the fire looks like. Not a life without storms, but a pilot in every one of them.
+
+### FOR REFLECTION AND ACTION
+
+1. Name the fire you are walking through now. Ask God, not for a way round it, but for the company of the fourth man in it.
+2. Ask which of her reasons for affliction may apply to you: the trial of faith, the exercise of patience, weaning from human dependence, or the showing of God’s power. Pray about the one that fits.
+3. If you are troubled by temptation, write down her distinction — all temptation is not sin — and bring the temptation to Christ, who was tempted in all points.
+4. Find a secret place of prayer, as she did behind the chimney, and keep an appointment there daily this week.
+5. If you are ill, pray for healing and use the means God gives, without guilt for either.
+
+### A PRAYER
+
+> Lord Jesus, You walked in the fire with Your servants and they were not burned. Walk with me in mine.
+> I do not ask to escape every trial. I ask for help and safety in it, and for grace to rejoice that I share Your sufferings.
+> Wean me from trusting too much in human wisdom. Teach me to wait for my Shepherd’s voice and to follow no stranger.
+> And when my voyage is over, bring me safe into heaven’s harbour, with the Bible still my chart. Amen.
+
+# Conclusion
+
+> Is not this a brand plucked out of the fire? ZECHARIAH 3:2
+
+Ten chapters can make it look as though Julia Foote taught a number of things. She taught one thing, and everything else is that one thing lived out. The one thing is this: that Jesus Christ saves to the uttermost. He does not only pardon; He cleanses. He does not only save at death; He saves now. Conversion is a new song given, not learned. The inward foes that remain are not to be accepted as a life sentence. Sanctification is received by faith, and its mark is a heart in which every temper contrary to love has been put out. The Spirit who cleanses may send whom He will, and no discipline of men can countermand Him. A church divided at the Lord’s table has not been cleansed. A life given to the world has not been renewed. And the fire of trial is not the absence of God but the place where He walks with His people.
+
+## The danger of this book
+
+If you have read this far, you are in some danger, and she would have named it before anyone. The danger is that you admire her. It is easy to be moved by the story of a poor Black woman who outlasted her critics and was ordained by the church that had cast her out. And it is easy to close the book exactly as you opened it.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+She ended her own book not with a summary but with a question and an invitation: why not yield, believe, and be sanctified now, while reading? That is the proper end of this book too. Go back to the chapter that made you least comfortable, not the one you liked best. Take its application points and do them.
+
+## Two things to carry
+
+First, expect more of God. Whatever you conclude about a second blessing, do not conclude that the Christian life is a long defeat to be endured until death. That was the counsel given to a hungry girl in Albany, and she was right to call it a delusion. Christ came to save His people from their sins. Ask Him to do it.
+
+> And she shall bring forth a son, and thou shalt call his name JESUS: for he shall save his people from their sins. MATTHEW 1:21
+
+Second, let it show in love. Her definition of perfection was love with no rival, and she tested it where it is hardest to test: in the face of a minister she believed had lied about her, a church that expelled her, and a nation that refused her a seat. If holiness does not make you gentler towards those who wrong you, and braver towards those who are wronged, it is not the holiness she meant.
+
+## A last word about her
+
+We have been honest about her limits. Her teaching that sin is destroyed at the root in the sanctified goes beyond what many careful readers find in Scripture. She read some texts loosely. She took visions and impressions as God’s voice more readily than the Bible warrants, and for a time she treated the seeking of medical help as a failure of faith. She was strict about pleasures where Scripture leaves liberty, and she was not always gentle with her opponents. None of this is said to diminish her; she would have wanted her readers to test everything by the Word of God.
+
+> But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us. 2 CORINTHIANS 4:7
+
+And the light is very bright. She learned her letters from a father who hardly knew them, and read her Bible by a dying fire. She preached for half a century with no salary, through fever and silence and grief, in churches and houses and camp meetings, to Black congregations and white. She would not speak where her own people were barred. She loved her opponents as fathers. And she lived to see the door that had been shut in her face opened by the same church, and to be called, at the last, an elder.
+
+She wrote her book, she said, praying that it might promote the cause of holiness in the church. It still can. The question it asks is not whether she was remarkable. It is whether you believe that the Christ who reached into the fire for her can do for you all that He has promised.
+
+### FOR REFLECTION AND ACTION
+
+1. Name the chapter of this book that unsettled you most, and the one application point from it you have not yet done. Do it this week.
+2. Ask God plainly to save you from one particular sin, not only from its guilt but from its power, and to begin now.
+3. Choose one person who has wronged you and one person who is being wronged. Pray for the first, and do something practical for the second.
+4. Where you disagree with her, write down why, from Scripture. Where you agree, write down what it will cost you.
+5. Read her memoir through from the first page to the last, slowly, as the testimony of a sister in Christ.
+
+### A PRAYER
+
+> Lord Jesus, You saved Julia Foote to the uttermost, and You have not changed.
+> Keep me from admiring her and changing nothing. Save me from my sins and not only from their penalty, and begin today.
+> Fill me with a love that has no rival, gentle to those who wrong me and brave for those who are wronged.
+> And when my course is finished, let me too be found a brand plucked from the fire, to the praise of Your grace. Amen.
+
+# A Reader’s Guide to Julia A. J. Foote
+
+> Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. 2 TIMOTHY 2:15
+
+Julia Foote is the easiest author in this series to read in full. She left one small book, and a reader can finish it in two or three evenings. It is written plainly, in short chapters, and it keeps breaking off from the story to turn to the reader with an exhortation, a warning or a hymn. Some readers find that tiring; it is better to hear it as a preacher’s habit, carried onto the page. Her book is in the public domain.
+
+## Begin here
+
+A Brand Plucked from the Fire: An Autobiographical Sketch (1879). Her only book, and in the Ochorus library. Read it straight through. If time is short, read these chapters first: My Conversion; Disobedience, but Happy Results, for her sanctification; A Call to Preach the Gospel and Heavenly Visitations Again; Public Effort — Excommunication; Women in the Gospel; and the three closing chapters, A Word to My Christian Sisters, Love not the World, and How to Obtain Sanctification, which are the nearest thing she left to written teaching.
+
+A word on the text. The Ochorus edition was taken from a scan of an old printing, and here and there a word is broken or a Scripture reference misprinted. The chronology of her middle years is also hard to follow, and one or two dates seem not to fit. Read for the testimony rather than for the timetable.
+
+## Other words of hers
+
+Beyond the memoir, very little of her own writing survives: a few short pieces and reported words, mostly from the church press of her later years. Readers who want to set her in the company of other Black women preachers of her century will find Bettye Collier-Thomas’s Daughters of Thunder: Black Women Preachers and Their Sermons, 1850–1979 (1998) a valuable collection.
+
+## About Julia Foote
+
+No full life of her has yet been widely published, and a reader should be wary of confident details that go beyond her own book. The best starting place is William L. Andrews’s edition, Sisters of the Spirit: Three Black Women’s Autobiographies of the Nineteenth Century (1986), which reprints her memoir alongside those of Jarena Lee and Zilpha Elaw, with a careful introduction. The facts of her later ordination in the African Methodist Episcopal Zion Church are recorded in the histories of that church and in reference works on women in American religion.
+
+## Companions to her
+
+Jarena Lee’s Religious Experience and Journal (1849) and Zilpha Elaw’s Memoirs (1846) tell the stories of two earlier Black women preachers in the Methodist tradition, and read beside hers they show how much she shared with them. Amanda Berry Smith’s An Autobiography (1893), in the Ochorus library, is the fullest life of a Black holiness evangelist of the next generation, and wider in its travels. John Wesley’s A Plain Account of Christian Perfection, also in the Ochorus library, sets out the doctrine she inherited, in more careful terms than she had room for. Catherine Booth’s Female Ministry (1859) is a close contemporary defence of women preaching from the other side of the Atlantic.
+
+## Approach with care
+
+Her chapters on sanctification. Read them for their hunger for holiness and their confidence in Christ. Where they teach that sin is destroyed at the root in a single moment, weigh them against the whole witness of Scripture, beginning with Philippians 3:12 and 1 John 1:8.
+
+Heavenly Visitations Again. Her account of her call through visions. Read it with respect, and with 1 John 4:1 beside it, and do not make it a pattern for your own guidance.
+
+A Word to My Christian Sisters. Precious for its courage, but read what she says about physicians with care, and do not let it keep anyone from medical help.
+
+## Three counsels for reading her
+
+Read her with the Bible open. She quotes it on nearly every page, sometimes by memory and not always exactly, and she would want it checked. Read her for the burden rather than the system: where she presses a framework further than Scripture goes, take the hunger for holiness and leave the scaffolding. And read her as a sister, not a specimen. It is possible to study her as an important historical document, which she is, and miss that she wrote to bring you to Christ.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21

@@ -235,6 +235,7 @@ TOPICS = [
             "union-and-communion",
             "the-bruised-reed",
             "key-teachings-of-andrew-murray",
+            "key-teachings-of-hudson-taylor",
         ],
     ),
     (
@@ -258,6 +259,9 @@ TOPICS = [
             "women-who-moved-heaven-2",
             "key-teachings-of-hannah-whitall-smith",
             "key-teachings-of-catherine-booth",
+            "key-teachings-of-amanda-berry-smith",
+            "key-teachings-of-julia-foote",
+            "key-teachings-of-jeanne-guyon",
         ],
     ),
     (
@@ -276,6 +280,7 @@ TOPICS = [
             "first-epistle-of-clement",
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",
+            "key-teachings-of-athanasius-of-alexandria",
         ],
     ),
     (
@@ -333,6 +338,7 @@ TOPICS = [
             "on-loving-god",
             "confessions",
             "the-inner-chamber",
+            "key-teachings-of-jeanne-guyon",
         ],
     ),
     (
@@ -402,6 +408,7 @@ TOPICS = [
             "on-the-incarnation",
             "freedom-of-the-will",
             "ten-commandments",
+            "key-teachings-of-athanasius-of-alexandria",
         ],
     ),
     (
@@ -416,6 +423,8 @@ TOPICS = [
             "a-brand-plucked-from-the-fire",
             "amanda-smith-autobiography",
             "journal-of-an-expedition-up-the-niger",
+            "key-teachings-of-amanda-berry-smith",
+            "key-teachings-of-julia-foote",
         ],
     ),
     (
@@ -459,6 +468,7 @@ TOPICS = [
             "journal-of-an-expedition-up-the-niger",
             "amanda-smith-autobiography",
             "men-and-women-who-gave-everything-2",
+            "key-teachings-of-hudson-taylor",
         ],
     ),
     (
@@ -796,6 +806,7 @@ TOPIC_ARTICLES = {
         "the-fourfold-gospel-guide",
         "jesus-himself-2-guide",
         "the-masters-indwelling-guide",
+        "feasting-at-the-table-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -815,6 +826,7 @@ TOPIC_ARTICLES = {
         "the-unselfishness-of-god-guide",
         "the-god-of-all-comfort-guide",
         "gleanings-among-the-sheaves-guide",
+        "the-key-in-my-hand-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -848,6 +860,7 @@ TOPIC_ARTICLES = {
         "divine-healing-guide",
         "the-secret-of-guidance-guide",
         "the-fundamental-doctrines-of-the-christian-faith-guide",
+        "he-holds-my-tomorrows-guide",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -981,6 +994,12 @@ TOPIC_ARTICLES = {
         "how-to-be-content",
         "how-to-trust-god-in-suffering",
         "soar-like-the-eagle-guide",
+    ],
+    "contemporary-voices": [
+        "soar-like-the-eagle-guide",
+        "the-key-in-my-hand-guide",
+        "he-holds-my-tomorrows-guide",
+        "feasting-at-the-table-guide",
     ],
     "for-teens": [
         "can-i-be-a-christian-and-have-doubts",

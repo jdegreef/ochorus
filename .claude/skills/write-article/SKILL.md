@@ -195,7 +195,13 @@ don't hand-wrap refs in the fixture.
 - **Book guides have a home topic: `enduring-classics`.** Its blurb already names
   Augustine, Bunyan and à Kempis. Tag guides there AND to their doctrinal topic.
   Append new slugs at the END of each `TOPIC_ARTICLES` list — order is display
-  order on the topic page.
+  order on the topic page. **Guides to a living author's book (Gareth Evans et
+  al.) go under `contemporary-voices` instead** — the book shelf of that name
+  holds them; it is not a "classic". Check a work's book-topic memberships in
+  `topic_seed.py` to find its natural article shelf.
+- **Verify every Scripture citation a writer attaches to a quoted phrase.** A
+  writer tagged “in an unworthy manner” as 1 Corinthians 11:30 because the book
+  cites 11:30 on the NEXT sentence; grep the fixture around each quoted phrase.
 - **`cd` inside a compound Bash command moves the shell for the rest of the
   session.** Run builders and `manage.py` with absolute paths or a leading
   `cd /abs/path/backend &&` every time; the "No module named django" that follows
