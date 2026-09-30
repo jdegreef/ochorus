@@ -805,6 +805,16 @@ CURATED: dict[str, Artwork] = {
         "the light are hers.",
         focus=0.62,
     ),
+    # ── Batch 25 · Portraits of Courage, volume 6 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-30). Ravi Varma's girl at a
+    # doorway giving to a starving beggar: the Mukti of "I am a sweeper".
+    "pandita-ramabai-a-life": Artwork(
+        "wikidata", 112062313, "Raja Ravi Varma", "Charity", "",
+        "A girl in a white sari at her doorway, putting food into a starving "
+        "old man's bowl: Ravi Varma, the great Indian painter of her day, "
+        "painted the plain mercy Ramabai made a life's work at Mukti.",
+        focus=0.5,
+    ),
 }
 
 

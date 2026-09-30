@@ -7045,6 +7045,36 @@
 				488
 			]
 		},
+		"pandita-ramabai-a-life": {
+			"ground": "f529b736015efebaa85f936f36c7aeb29630bc99117bec96a20159d3335bf589",
+			"style": "house",
+			"volume": "6",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[289, 306, 311, 350],
+					[63, 386, 537, 457]
+				],
+				"subtitle": [
+					[95, 476, 505, 504],
+					[83, 504, 517, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
 			"style": "press",

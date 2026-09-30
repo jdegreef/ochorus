@@ -1779,6 +1779,12 @@ A PUBLIC-DOMAIN biography by a third party with no author row of their own
 still filed under its subject, with the real author in the `subtitle`.
 *(watchman-nee-a-life 2026-09; moved to the imprint 2026-09-30)*
 
+**Every new published ENGLISH book ships with its search snippet** in
+`backend/library/data/book_meta/en.json` (keys sorted; 40–125 chars, no
+padding). `tests_meta_descriptions` fails CI on a published `.en.json` with no
+entry — it is not caught by `tests_fixture`/`tests_covers`, so run it before
+pushing. *(Crowther #4541 went red on it, 2026-09-30)*
+
 **An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
 filed under the `ochorus-originals` imprint with NO schema change.** The shelf is
 otherwise public-domain, and `SourceType` has no `original` value — do NOT add
