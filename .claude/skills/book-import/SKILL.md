@@ -1937,7 +1937,17 @@ re-laid (series target 0.30–0.35). Then JPEG q84 progressive (~32KB) →
 small memoir) gets a shorter volume — 14 chapters, ten teaching — that says so in
 its Introduction and About, rather than 18 padded ones. `tune_art_scrim` measures
 type-top rows only for slugs already in `covers.TYPE_TOP` — add them FIRST, or it
-reports a false subtitle fail.
+reports a false subtitle fail. **Vary the length** — 22 chapters every time
+reads as a template; the series runs 14–25 (N−4 teaching chapters; say the count
+as a word in description/about/Introduction/Conclusion). **Reshaping a LIVE
+volume** (merge/add chapters) is not a fixture-only edit: `seed_books` syncs by
+`order` and never deletes, and reader progress/bookmarks/marks/notebook rows
+point at `(book_slug, chapter_order, paragraph_index)`. Have the editor write an
+old→new chapter map; `0170_reshape_key_teachings` (+ `migrations/data/
+key_teachings_reshape.json`) rebuilds from the fixture while the live book still
+has its old shape and moves every reader row, re-finding each paragraph by exact
+text (rewritten ones fall to the nearest surviving paragraph). Leave volumes with
+a reading plan (the first four, "Four Teachers") alone unless the plan moves too.
 
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the

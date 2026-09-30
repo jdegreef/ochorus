@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Athanasius of Alexandria’s teaching — the Word made flesh to remake what He had made, the image of God restored, death undone at the cross, the Son of one substance with the Father, and the desert wisdom of his friend Antony. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Athanasius’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Athanasius of Alexandria’s teaching — the Word made flesh to remake what He had made, the image of God restored, death undone at the cross, the Son of one substance with the Father, and the desert wisdom of his friend Antony. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Athanasius’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Athanasius of Alexandria. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop, an Egyptian who spent forty-five years as bishop of Alexandria and seventeen of them in exile, and it draws throughout on the two of his books that sit in the Ochorus library, On the Incarnation and The Life of Antony.
+  This is not a book by Athanasius of Alexandria. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into sixteen short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop, an Egyptian who spent forty-five years as bishop of Alexandria and seventeen of them in exile, and it draws throughout on the two of his books that sit in the Ochorus library, On the Incarnation and The Life of Antony.
 
   Athanasius had one great theme: God Himself has come the whole way down to us. The Word who made the world took a real body, died a real death and rose again, so that a ruined creation might be remade by the same hand that first made it. Everything he fought for, and everything he suffered, followed from refusing to let that truth be made smaller. This volume follows the thread through creation, the cross, the resurrection, the long battle over the Son’s full divinity, the Holy Spirit, the Scriptures and the desert, and it is honest about where he must be read with care. Each chapter ends in a few questions and a prayer.
 
@@ -31,7 +31,7 @@ Every part of his teaching is that thread followed out. Creation is good because
 
 ## How this book is arranged
 
-The second chapter tells his life. The eighteen that follow each take one of his key teachings. Seven follow the argument of On the Incarnation, from the Word made flesh to the great saying about being made God. Two take up the doctrines he defended for fifty years, the full divinity of the Son and of the Spirit. Two more give his answer to the pagan world. Five draw on The Life of Antony, and the last two turn to the Scriptures and to the cost of standing for the truth.
+The second chapter tells his life. The sixteen that follow each take one of his key teachings. Six follow the argument of On the Incarnation, from the Word made flesh through the cross and the resurrection to the great saying about being made God. Two take up the doctrines he defended for fifty years, the full divinity of the Son and of the Spirit. Two more give his answer to the pagan world. Four draw on The Life of Antony, and the last two turn to the Scriptures and to the cost of standing for the truth.
 
 Each chapter ends with application points and a prayer. Athanasius would have approved. He closed On the Incarnation by telling his reader that no one can understand the things of God without a pure life, and that the searching of the Scriptures needs a soul made clean. Doctrine, for him, was never an idle matter. So read a chapter, stop at the questions, and pray.
 
@@ -371,11 +371,13 @@ We live in an age that talks a great deal about identity, and very often we are 
 > I have let it be stained and darkened, and I have looked downwards when I should have looked to You.
 > Thank You that You did not throw me away, but came to renew the outline on the same wood.
 > Sit with me, work on me, and do not stop until Your likeness is clear in me. Amen.
-# The Death of All in the Lord’s Body
+# Death Trampled Underfoot
 
 > But we see Jesus, who was made a little lower than the angels for the suffering of death, crowned with glory and honour; that he by the grace of God should taste death for every man. HEBREWS 2:9
 
 When Athanasius comes to the cross in On the Incarnation, he says that it is “the sum of our faith”. Everything he has written so far leads here. The Word took a body for one great purpose: that in it He might die, and by dying undo the death that had taken hold of the human race. He does not treat the cross as a tragic accident or a noble example. He treats it as the centre of God’s saving work, and he asks, with the frankness of a man who expects hard questions, why it had to happen the way it did.
+
+He wrote in a church that still carried the wounds of the fiercest persecution in its history. Men and women he knew, or whose names he had heard from childhood, had gone to their deaths rather than deny Christ; among them was Peter, bishop of Alexandria. So when Athanasius argues that Christ truly died and truly defeated death, he holds two things together that belong together: the cross, where the death of all was accomplished, and the martyrs, who showed that death had lost its sting.
 
 ## In the stead of all
 
@@ -384,8 +386,6 @@ The heart of his teaching is simple. The human race lay under the sentence of de
 > Surely he hath borne our griefs, and carried our sorrows: yet we did esteem him stricken, smitten of God, and afflicted. But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed. ISAIAH 53:4–5
 
 Notice the words: in the stead of all. Athanasius uses them again and again. The debt owing from all was paid; the death of all was accomplished in the Lord’s body. He does not use the technical vocabulary later centuries would develop, and he is more interested in death and corruption than in guilt and wrath. But the substance is plain. Christ died in our place, and because He died, the law of death has spent its power.
-
-> For the love of Christ constraineth us; because we thus judge, that if one died for all, then were all dead. 2 CORINTHIANS 5:14
 
 He gives a homely illustration. When a great king enters a large city and takes up residence in one of its houses, the whole city is honoured and protected; no bandit dares attack it, because the king lives there. So it is, he says, with the Monarch of all. Now that He has come to our realm and dwelt in one body among His peers, the whole conspiracy of the enemy against mankind is checked.
 
@@ -399,9 +399,7 @@ Why, then, did He not choose some glorious death for Himself? Here Athanasius us
 
 ## Why the cross
 
-For believers who ask, not to argue but to learn, why He suffered on a cross rather than any other way, Athanasius offers three reasons, each drawn from Scripture.
-
-First, the curse. If Christ came to bear the curse that lay on us, how else could He become a curse than by the death that the law called accursed?
+For believers who ask, not to argue but to learn, why He suffered on a cross rather than any other way, Athanasius offers three reasons. First, the curse. If Christ came to bear the curse that lay on us, how else could He become a curse than by the death that the law called accursed?
 
 > Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree. GALATIANS 3:13
 
@@ -409,99 +407,62 @@ Second, the outstretched hands. This is one of the most moving passages in the b
 
 > And I, if I be lifted up from the earth, will draw all men unto me. JOHN 12:32
 
-> For he is our peace, who hath made both one, and hath broken down the middle wall of partition between us. EPHESIANS 2:14
+Third, the air. The devil, Athanasius believed, ruled in the lower air as the prince of the power of the air, and by dying lifted up the Lord cleared the way and opened a road into heaven for us. Modern readers may find this third reason the least persuasive; it depends on ideas of the heavens that belong to his age. But the first two are deeply scriptural, and the picture of the Saviour’s arms spread wide to gather Jew and Gentile together is one the church has never forgotten.
 
-Third, the air. The devil, Athanasius believed, ruled in the lower air as the prince of the power of the air. By dying lifted up, in the air, the Lord cleared the way and opened a road up into heaven for us. Modern readers may find this third reason the least persuasive; it depends on ideas of the heavens that belong to his age. But the first two are deeply scriptural, and the picture of the Saviour’s arms spread wide to gather Jew and Gentile together is one the church has never forgotten.
-
-## He saw not corruption
-
-Athanasius insists that the Lord’s body, though truly dead, did not see corruption. He rose on the third day — not sooner, lest anyone say He had not really died; not later, lest His body be thought another, or His disciples be left too long in suspense, or the witnesses of His death be scattered. Everything about the timing was fitted to make His death undeniable and His resurrection believable.
+The body that died there did not see corruption. He rose on the third day — not sooner, lest anyone say He had not really died; not later, lest His body be thought another, or the witnesses of His death be scattered. Everything about the timing was fitted to make His death undeniable and His resurrection believable.
 
 > For thou wilt not leave my soul in hell; neither wilt thou suffer thine Holy One to see corruption. PSALM 16:10
 
-## Why it matters now
+## The tyrant bound
 
-There is a tendency in every age to soften the cross — to make it an example of self-giving, a demonstration of love, a noble protest against injustice. It is all of those things, but it is more. Athanasius reminds us that something was done there that could not be done any other way. A sentence was carried out; a debt was paid; death met the Life and was destroyed. When we look at the cross, we are not only seeing how much God loves us. We are seeing the place where our death died.
-
-### FOR REFLECTION AND ACTION
-
-1. Read the account of the crucifixion in one Gospel this week, and at each stage say quietly, This was in my stead.
-2. Picture the outstretched arms of Christ on the cross gathering both Jew and Gentile. Is there someone you have kept outside your embrace whom He has gathered in?
-3. Consider where you have treated the cross as only an example to follow. Thank God that it is first a work done for you.
-4. The Lord let His enemies choose the manner of His death. Ask how He might want you to face a hardship you did not choose.
-5. Read sections 20 to 25 of On the Incarnation and write down the reason for the cross that moves you most.
-
-### A PRAYER
-
-> Lord Jesus, You tasted death for every man, and You bore in Your own body the death that was mine.
-> Thank You for the cross that men meant for Your disgrace and You made a monument of victory.
-> Thank You for Your arms spread wide, drawing near and far into one.
-> Let me never make light of what You did there, and never doubt that it was done for me. Amen.
-# Death Trampled Underfoot
-
-> O death, where is thy sting? O grave, where is thy victory? 1 CORINTHIANS 15:55
-
-Athanasius wrote On the Incarnation in a church that still carried the wounds of the fiercest persecution in its history. Men and women he knew, or whose names he had heard from childhood, had gone to their deaths rather than deny Christ. Among them was Peter, bishop of Alexandria. And when Athanasius came to argue that Christ had truly risen and truly defeated death, he did not begin with philosophy. He pointed to the martyrs.
-
-## Before and after
-
-His argument is simple and bold. Before the Saviour came, he says, death was terrible even to the saints. Everyone wept for the dead as though they had perished. But now that the Saviour has raised His body, death is no longer terrible. Those who believe in Christ tread him underfoot as nothing, and choose rather to die than to deny their faith. They know that when they die they are not destroyed, but begin to live.
+What did that death and rising achieve? Athanasius answers by pointing to the martyrs. Before the Saviour came, he says, death was terrible even to the saints; everyone wept for the dead as though they had perished. But now that the Saviour has raised His body, those who believe in Christ tread death underfoot as nothing, and choose rather to die than to deny their faith. Man is by nature afraid of death. Yet he had seen young people, men and women, even children, face torture with a courage that astonished their persecutors. Something had happened to death itself.
 
 > Forasmuch then as the children are partakers of flesh and blood, he also himself likewise took part of the same; that through death he might destroy him that had the power of death, that is, the devil; and deliver them who through fear of death were all their lifetime subject to bondage. HEBREWS 2:14–15
-
-He had seen it. Young people, men and women, even children, had faced torture and death with a courage that astonished their persecutors. Athanasius asks what could account for such a change in human nature. Man is by nature afraid of death. Yet here were ordinary people, weak by nature, going to meet death without fear. Something had happened to death itself.
-
-## The tyrant bound
 
 He gives one of his most vivid pictures. When a tyrant has been defeated by a true king and bound hand and foot, the people who once trembled at him pass by and mock him, no longer afraid of his fury, because of the king who conquered him. So it is with death. Death has been conquered and exposed by the Saviour on the cross, bound hand and foot, and now “all they who are in Christ, as they pass by, trample on him”, scoffing at him and saying what was written of old: O death, where is thy victory? O grave, where is thy sting?
 
 > Death is swallowed up in victory. 1 CORINTHIANS 15:54
 
-He piles up images. If you see a serpent trodden underfoot, you know it has lost its strength. If you see a lion made sport of by children, you know it is either dead or powerless. If you see the sun rise and the darkness flee, you do not doubt that the sun has done it. So, he says, when you see death despised by believers in Christ, do not doubt that Christ has brought it to nothing.
+He piles up images. If you see a serpent trodden underfoot, you know it has lost its strength. If you see a lion made sport of by children, you know it is either dead or powerless. So, he says, when you see death despised by believers in Christ, do not doubt that Christ has brought it to nothing.
 
 ## Come and see
 
-Then he makes an invitation that is both an argument and an appeal. Some people, he admits, will still doubt. Very well. Let them test it. He uses the example of asbestos, a substance which was said not to burn. If someone doubts that fire has no power over it, let him put it on and touch the fire, and he will know. In the same way, he says, “let him who is incredulous about the victory over death receive the faith of Christ, and pass over to His teaching, and he shall see the weakness of death, and the triumph over it.”
+Then he makes an invitation that is both an argument and an appeal. Some, he admits, will still doubt. Very well; let them test it. A man who doubts that fire has no power over asbestos, a substance said not to burn, should put it to the flame and know. In the same way, “let him who is incredulous about the victory over death receive the faith of Christ, and pass over to His teaching, and he shall see the weakness of death, and the triumph over it.”
 
 > O taste and see that the LORD is good: blessed is the man that trusteth in him. PSALM 34:8
 
-This is a remarkable piece of Christian reasoning. Athanasius does not ask his readers to believe in a vacuum. He points to evidence they can see, and then he invites them to step inside and find out for themselves. The proof of the resurrection is not only in the empty tomb, long ago and far away. It is in the lives of those who have been set free from the fear of death.
-
-## The living Christ at work
-
-Athanasius goes further. A dead man, he says, can do nothing; his influence ends at the grave. But Christ is working every day. He is persuading multitudes from every nation to turn from idols. He is making the adulterer chaste and the murderer peaceful, the profane reverent and the coward brave. How could a dead man do that? “But this work is not that of one dead, but of one that lives.”
+And he goes further. A dead man can do nothing; his influence ends at the grave. But Christ is working every day, persuading multitudes from every nation to turn from idols, making the adulterer chaste and the murderer peaceful, the coward brave. How could a dead man do that? “But this work is not that of one dead, but of one that lives.”
 
 > I am he that liveth, and was dead; and, behold, I am alive for evermore, Amen; and have the keys of hell and of death. REVELATION 1:18
 
-It is a striking argument, and it still holds. The best evidence that Jesus is alive is not a museum exhibit. It is a changed life. When a person who was enslaved to a sin is set free, when a frightened person is made brave, when a dying believer faces the end with peace, the risen Christ is showing Himself to be alive.
+The argument still holds. The best evidence that Jesus is alive is not a museum exhibit. It is a changed life. When a person enslaved to a sin is set free, when a frightened person is made brave, when a dying believer faces the end with peace, the risen Christ is showing Himself to be alive.
 
 ## Sown, not lost
 
-For those who believe, Athanasius says, death has changed its nature. We still die, since our bodies are mortal. But we no longer die as condemned. We are like seeds sown in the earth; we do not perish in the ground but will rise again.
+For those who believe, death has changed its nature. We still die, since our bodies are mortal. But we no longer die as condemned. We are like seeds sown in the earth; we do not perish in the ground but will rise again.
 
 > It is sown in corruption; it is raised in incorruption: it is sown in dishonour; it is raised in glory: it is sown in weakness; it is raised in power. 1 CORINTHIANS 15:42–43
 
-This is the hope that carried the martyrs, and it is the hope that carried Athanasius through five exiles. The worst the emperors could do was to kill him. And death had already been trampled underfoot.
+This is the hope that carried the martyrs, and it carried Athanasius through five exiles. The worst the emperors could do was to kill him, and death had already been trampled underfoot.
 
-## A caution and a comfort
+A word of care is needed. Athanasius, like many in his age, admired the eagerness with which some Christians rushed towards martyrdom, and his language can suggest that seeking death is itself a mark of faith. The wiser tradition of the church, and indeed the Life of Antony itself, where Antony ministers to the martyrs but will not hand himself over, teaches that we should not throw our lives away. Courage in the face of death is one thing; courting it is another.
 
-A word of care is needed here. Athanasius, like many in his age, admired the eagerness with which some Christians rushed towards martyrdom, and his language can suggest that seeking death is itself a mark of faith. The wiser tradition of the church, and indeed the Life of Antony itself, where Antony ministers to the martyrs but will not hand himself over, teaches that we should not throw our lives away. Courage in the face of death is one thing; courting it is another.
-
-But the comfort stands. If you are afraid of dying — and most of us are — Athanasius does not scold you. He points you to the One who has bound the tyrant. You do not have to master your fear by your own strength. You have to look at what Christ has done.
+But the comfort stands, and so does the warning against a softer cross. Every age is tempted to make the cross only an example of self-giving or a protest against injustice. It is those things, but it is more. Something was done there that could not be done any other way. A sentence was carried out; a debt was paid; death met the Life and was destroyed. If you are afraid of dying — and most of us are — Athanasius does not scold you. He points you to the place where your death died, and to the One who has bound the tyrant.
 
 ### FOR REFLECTION AND ACTION
 
-1. Name honestly the fear of death or of loss that you carry. Bring it to Christ and ask Him to show you the tyrant bound.
-2. Read the story of one martyr, ancient or modern, this week, and thank God for the courage He gave them.
-3. Athanasius said the living Christ changes lives. Write down one change Christ has made in you that you could not have made yourself.
-4. If someone you know is facing death, go and see them this week, and bring them the hope of 1 Corinthians 15.
-5. Read sections 27 to 32 of On the Incarnation and mark each image Athanasius uses for death defeated.
+1. Read the account of the crucifixion in one Gospel this week, and at each stage say quietly, This was in my stead.
+2. Picture the outstretched arms of Christ on the cross gathering both Jew and Gentile. Is there someone you have kept outside your embrace whom He has gathered in?
+3. Name honestly the fear of death or of loss that you carry. Bring it to Christ and ask Him to show you the tyrant bound.
+4. Athanasius said the living Christ changes lives. Write down one change Christ has made in you that you could not have made yourself.
+5. If someone you know is facing death, go and see them this week, and bring them the hope of 1 Corinthians 15.
+6. Read sections 20 to 32 of On the Incarnation and write down the reason for the cross, and the image of death defeated, that moves you most.
 
 ### A PRAYER
 
-> Risen Lord, You met death in Your own body and bound him hand and foot.
-> Thank You for the martyrs who trod him underfoot for Your sake, and for every believer who has died in peace because of You.
-> Where I am still afraid, show me Your victory; where I am still enslaved, show me that You are alive and at work.
+> Lord Jesus, You tasted death for every man, and You bore in Your own body the death that was mine.
+> Thank You for the cross that men meant for Your disgrace and You made a monument of victory, and for Your arms spread wide, drawing near and far into one.
+> Thank You for the martyrs who trod death underfoot for Your sake; where I am still afraid, show me Your victory, and where I am still enslaved, show me that You are alive and at work.
 > When my time comes, let me go as a seed sown in the earth, in sure and certain hope of rising with You. Amen.
 # That We Might Be Made God
 
@@ -885,7 +846,7 @@ And yet the challenge of Antony cannot be dismissed so easily. Most of us are no
 
 > Put on the whole armour of God, that ye may be able to stand against the wiles of the devil. EPHESIANS 6:11
 
-No one can read The Life of Antony without noticing the demons. They are everywhere. They whisper thoughts, take the shapes of women and wild beasts, beat Antony until he lies senseless, fill his cell with noise, pretend to be angels, and knock at his door. For many modern readers this is the hardest part of the book. It seems to belong to another world. And yet Athanasius believed that it described something real, and so did the New Testament he loved. The question is not whether there is a spiritual battle, but how to fight it well.
+No one can read The Life of Antony without noticing the demons. They are everywhere. They whisper thoughts, take the shapes of women and wild beasts, beat Antony until he lies senseless, fill his cell with noise, pretend to be angels, and knock at his door. For many modern readers this is the hardest part of the book. And yet Athanasius believed that it described something real, and so did the New Testament he loved. The question is not whether there is a spiritual battle, but how to fight it well — and, just as important, how to tell the voice of God from the voices that only imitate it. Of all the gifts Athanasius praises in Antony, the one he returns to most often is discernment, and in Antony’s long address to the monks the two lessons run together.
 
 ## The battle begins in the mind
 
@@ -893,9 +854,7 @@ It is worth noticing where Antony’s battle began. Not with apparitions, but wi
 
 > Casting down imaginations, and every high thing that exalteth itself against the knowledge of God, and bringing into captivity every thought to the obedience of Christ. 2 CORINTHIANS 10:5
 
-That is where most of our battles are fought too. Few of us will ever see a demon. All of us know the voice that says, Think of what you are giving up; think how hard this is; think how long it will take. Antony’s first victory was simply that he kept going.
-
-And Athanasius is clear whose victory it was. This, he says, “was the Saviour’s work in Antony”. The Lord who took flesh for our sake gave the body victory over the devil, so that everyone who truly fights can say, with Paul, not I, but the grace of God which was with me.
+That is where most of our battles are fought too. Few of us will ever see a demon. All of us know the voice that says, Think of what you are giving up; think how hard this is; think how long it will take. Antony’s first victory was simply that he kept going. And Athanasius is clear whose victory it was. This, he says, “was the Saviour’s work in Antony”. The Lord who took flesh for our sake gave the body victory over the devil, so that everyone who truly fights can say, with Paul, not I, but the grace of God which was with me.
 
 ## In the tombs
 
@@ -903,79 +862,41 @@ The most famous scene comes when Antony shuts himself in a tomb some distance fr
 
 > Nay, in all these things we are more than conquerors through him that loved us. ROMANS 8:37
 
-Then, Athanasius says, a ray of light came down, the demons vanished and the pain ceased. Antony asked the Lord where He had been. The answer came: “Antony, I was here, but I waited to see thy fight.” It is one of the most moving lines in the book. Whatever we make of the details, the truth in it is one every tried believer needs to hear. The Lord is present in the struggle even when He seems absent, and He is watching over the fight.
+Then, Athanasius says, a ray of light came down, the demons vanished and the pain ceased. Antony asked the Lord where He had been. The answer came: “Antony, I was here, but I waited to see thy fight.” Whatever we make of the details, the truth in it is one every tried believer needs to hear. The Lord is present in the struggle even when He seems absent, and He is watching over the fight.
 
 ## The weakness of the enemy
 
-The long address that Antony gives to the monks, which Athanasius sets at the centre of the Life, has one great theme: the enemy is weak. Since the Lord came, Antony says, “the enemy is fallen and his powers weakened.” The demons make noise, take terrifying shapes and threaten, but their very displays prove their weakness. If they had real power, one would be enough; they would not need crowds and costumes. They are, he says, like actors on a stage frightening children.
+Antony’s address has one great theme: the enemy is weak. Since the Lord came, he says, “the enemy is fallen and his powers weakened.” The demons make noise, take terrifying shapes and threaten, but their very displays prove their weakness. If they had real power, one would be enough; they would not need crowds and costumes. They are, he says, like actors on a stage frightening children. The devil could not touch Job’s cattle without God’s permission; he could not even enter the swine without asking the Lord. Their apparitions, Antony tells the monks, “are nothing and quickly disappear”, especially when met with faith and the sign of the cross.
 
 > Submit yourselves therefore to God. Resist the devil, and he will flee from you. JAMES 4:7
-
-He points to Job. The devil could not touch Job’s cattle without God’s permission; he could not even enter the swine without asking the Lord. How much less power has he over men made in the image of God? So Antony tells the monks not to fear. Their apparitions, he says, “are nothing and quickly disappear”, especially when met with faith and the sign of the cross.
-
-> Behold, I give unto you power to tread on serpents and scorpions, and over all the power of the enemy: and nothing shall by any means hurt you. LUKE 10:19
-
-## The weapons of the fight
 
 What, then, are the weapons? Antony’s answer is not exotic. Prayer. Fasting. The Psalms, which he sang against every attack. The name of Christ. Watchfulness over the heart. And above all a holy life: “a good life and faith in God is a great weapon.” The demons, he says, fear the fasting, the prayers, the meekness, the quietness, the contempt of money and vainglory, the humility, the love of the poor, and chief of all, piety towards Christ.
 
 > Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour: whom resist stedfast in the faith. 1 PETER 5:8–9
 
-This is deeply practical. The best defence against the enemy is not an obsession with him but a life full of Christ. Antony warns that the demons adapt their attacks to the state of mind in which they find us. If they find us fearful and faint-hearted, they increase our fear. If they find us rejoicing in the Lord and mindful of Him, they are turned back.
-
-## Reading the demons with discernment
-
-A careful reader must hold two things together. On the one hand, the Life of Antony is full of stories that should be read with discernment rather than simple credulity: visions of beasts, voices, souls hindered in the air, and a demon with the legs of an ass. Some of these may be the honest reports of a man worn by solitude and fasting; some may have grown in the telling before Athanasius wrote them down. One image, in which the spirit of lust appears as a black boy, reflects a symbolism of darkness that later ages turned to ugly and cruel uses, and it should be left behind. We are not bound to believe every detail, and we should not model our own spiritual lives on a hunt for apparitions.
-
-On the other hand, we should not be so modern that we dismiss what Scripture plainly teaches. There is an enemy. He does tempt, accuse and deceive. And Christ has defeated him. Antony’s great message is not that demons are everywhere, but that Christ is stronger, and that a believer who clings to Him need not be afraid.
-
-### FOR REFLECTION AND ACTION
-
-1. Identify the great dust of debate the enemy raises in your mind when you try to follow Christ. Answer it with a Scripture you can say aloud.
-2. When you feel God is absent in a struggle, remember the words, I was here, and I waited to see thy fight. Keep going.
-3. Choose one psalm to pray whenever you are tempted this week, as Antony sang the Psalms against his attackers.
-4. Examine whether you are more fascinated by the enemy than focused on Christ. Turn your attention back to Him.
-5. Read Ephesians 6:10–18 and name each piece of armour. Which one do you most neglect?
-
-### A PRAYER
-
-> Lord Jesus, You came into the world and broke the power of the enemy; he is fallen, and his strength is gone.
-> When I am tempted, bring Your Word to my mind; when I am afraid, show me how weak he is and how strong You are.
-> Keep me from fascination with darkness and from carelessness about it, and fill my life with You.
-> Whatever the fight, let me say with Your servant, nothing shall separate me from Your love. Amen.
-# The Discerning of Spirits
-
-> Beloved, believe not every spirit, but try the spirits whether they are of God: because many false prophets are gone out into the world. 1 JOHN 4:1
-
-Of all the gifts Athanasius praises in Antony, the one he returns to most often is discernment. He speaks of the old man’s gift for discerning spirits, of how the monks marvelled at it, of how people came to him troubled and went away with quiet minds. And in Antony’s long address to the monks, the most carefully argued section is about telling the difference between what comes from God and what does not. It is one of the most useful parts of the book, even for readers who will never live in a desert.
+This is deeply practical. The best defence against the enemy is not an obsession with him but a life full of Christ. The demons, Antony warns, adapt their attacks to the state of mind in which they find us. If they find us fearful and faint-hearted, they increase our fear. If they find us rejoicing in the Lord and mindful of Him, they are turned back.
 
 ## Not every voice is God’s
 
-Antony’s first lesson is that the enemy does not always come looking like an enemy. Sometimes, he says, the demons take the appearance of monks and speak like holy men. They quote Scripture, repeat the words of the readings like an echo, wake the brethren for prayer, and urge them to fast. They even praise a monk’s discipline and call him blessed.
+But the enemy does not always come looking like an enemy. Sometimes, Antony says, the demons take the appearance of monks and speak like holy men. They quote Scripture, repeat the words of the readings like an echo, wake the brethren for prayer, and urge them to fast. They even praise a monk’s discipline and call him blessed.
+
+> Beloved, believe not every spirit, but try the spirits whether they are of God: because many false prophets are gone out into the world. 1 JOHN 4:1
 
 Why would the enemy urge a man to pray and fast? Antony’s answer is shrewd. Not for the sake of piety or truth, but to drive the simple to excess and then to despair — to make the life of discipline seem an intolerable burden, so that they give it up altogether. He tells of a time when he was fasting and a figure dressed as a monk came to him with loaves and said, Eat, and cease from your labours; you are a man and may fall sick. Antony saw through it and rose to pray.
 
 > And no marvel; for Satan himself is transformed into an angel of light. 2 CORINTHIANS 11:14
 
-This is a searching lesson. We tend to assume that anything which sounds religious must come from God. Antony knew better. A voice that pushes us towards spiritual pride, or towards excess that ends in collapse, or towards trusting our own experiences more than the Word of God, is not to be trusted merely because it uses holy words. Even when the demons spoke truly, he points out, the Lord silenced them, so that we might learn never to take our teaching from them.
+We tend to assume that anything which sounds religious must come from God. Antony knew better. A voice that pushes us towards spiritual pride, or towards excess that ends in collapse, or towards trusting our own experiences more than the Word of God, is not to be trusted merely because it uses holy words. Even when the demons spoke truly, he points out, the Lord silenced them, so that we might learn never to take our teaching from them.
 
 ## The mark of the holy
 
-How then can the difference be told? Antony gives a simple and memorable test. When a holy presence comes, he says, it comes quietly and gently. “The vision of the holy ones is not fraught with distraction.” Joy, gladness and courage rise in the soul; the thoughts remain calm and undisturbed. And if there is fear at first, it is soon taken away, as the angel said to Zacharias, to Mary, to the shepherds and to the women at the tomb: Fear not.
-
-> But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith. GALATIANS 5:22
-
-The coming of evil, by contrast, is full of confusion, noise and disturbance, like the uproar of rough youths or robbers. From it come fear, tumult of thought, dejection, hatred of those who live godly lives, sloth, grief, fear of death, and at last the desire of evil things. So Antony gives the monks a rule: “joy and a settled state of soul show the holiness of him who is present.” And the reverse: “whenever the soul remains fearful there is a presence of the enemies.”
+How then can the difference be told? When a holy presence comes, Antony says, it comes quietly and gently. “The vision of the holy ones is not fraught with distraction.” Joy, gladness and courage rise in the soul; the thoughts remain calm. And if there is fear at first, it is soon taken away, as the angel said to Zacharias, to Mary, to the shepherds and to the women at the tomb: Fear not. The coming of evil, by contrast, is full of confusion, noise and disturbance, and from it come fear, dejection, sloth, grief and at last the desire of evil things. So Antony gives the monks a rule: “joy and a settled state of soul show the holiness of him who is present.” And the reverse: “whenever the soul remains fearful there is a presence of the enemies.”
 
 > For God is not the author of confusion, but of peace, as in all churches of the saints. 1 CORINTHIANS 14:33
 
-There is real wisdom here. Much that disturbs us is not from God. The voice that accuses without hope, that fills us with panic, that drives us into frantic activity or paralysed despair, is not the voice of the Good Shepherd. His voice may convict us deeply, but it always leads towards peace.
+There is real wisdom here. The voice that accuses without hope, that fills us with panic, that drives us into frantic activity or paralysed despair, is not the voice of the Good Shepherd. His voice may convict us deeply, but it always leads towards peace.
 
-## Ask who it is
-
-Antony adds a piece of plain advice. When anything appears or presses upon you, he says, do not collapse in fear, but “first boldly ask, Who art thou? And from whence comest thou?” If it is from God, you will be reassured. If it is not, it will weaken before a calm and steady mind. Merely to ask, he says, is a proof of coolness.
-
-For us the application is not usually about apparitions. It is about the thoughts, impulses, impressions and teachings that come to us. Before we act on a strong feeling, or follow a persuasive voice, or accept a new teaching, we should stop and ask: Where does this come from? Where is it leading? Does it agree with the Word of God?
+Antony adds a piece of plain advice. When anything appears or presses upon you, do not collapse in fear, but “first boldly ask, Who art thou? And from whence comest thou?” For us the application is seldom about apparitions. It is about the thoughts, impulses and teachings that come to us. Before we act on a strong feeling, or follow a persuasive voice, or accept a new teaching, we should stop and ask: Where does this come from? Where is it leading? Does it agree with the Word of God?
 
 > To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
 
@@ -987,26 +908,31 @@ Antony also warns against a fascination with the future. The demons, he says, so
 
 Many believers today are drawn to the promise of hidden knowledge — predictions, special revelations, secret keys to Scripture. Antony’s counsel still stands. Do not pray to know the future. Pray to be faithful in the present.
 
-## A caution
+## Reading the demons with discernment
 
-Antony’s test of peace and joy is wise, but it cannot stand alone. Feelings can mislead; a person may feel great calm about a sinful decision and great distress about a right one. The New Testament’s first test of spirits is doctrinal: does this confess that Jesus Christ is come in the flesh? Antony would have agreed — he fought the Arians because their teaching denied the Son — but readers should hold his emotional tests under the rule of Scripture, not above it.
+A careful reader must hold several things together. The Life of Antony is full of stories that should be read with discernment rather than simple credulity: visions of beasts, voices, souls hindered in the air, and a demon with the legs of an ass. Some of these may be the honest reports of a man worn by solitude and fasting; some may have grown in the telling before Athanasius wrote them down. One image, in which the spirit of lust appears as a black boy, reflects a symbolism of darkness that later ages turned to ugly and cruel uses, and it should be left behind. We are not bound to believe every detail, and we should not model our spiritual lives on a hunt for apparitions.
+
+Nor can Antony’s test of peace and joy stand alone. Feelings can mislead; a person may feel great calm about a sinful decision and great distress about a right one. The New Testament’s first test of spirits is doctrinal. Antony would have agreed — he fought the Arians because their teaching denied the Son — but his emotional tests belong under the rule of Scripture, not above it.
 
 > Hereby know ye the Spirit of God: Every spirit that confesseth that Jesus Christ is come in the flesh is of God. 1 JOHN 4:2
 
+Yet we should not be so modern that we dismiss what Scripture plainly teaches. There is an enemy. He does tempt, accuse and deceive. And Christ has defeated him. Antony’s great message is not that demons are everywhere, but that Christ is stronger, and that a believer who clings to Him and stays under His Word need not be afraid.
+
 ### FOR REFLECTION AND ACTION
 
-1. Think of a religious impulse you have felt recently. Ask of it: Who art thou? Where does it lead — towards humility and peace, or towards pride, excess or despair?
-2. Notice this week when fear, confusion or accusation rise in you. Stop and ask whether this is the voice of the Good Shepherd.
-3. If you have been drawn to predictions or secret knowledge, lay that curiosity down and pray instead for faithfulness today.
-4. Test one teaching you have heard recently against Scripture, especially against what it says about Jesus Christ.
-5. Read sections 35 to 43 of The Life of Antony and note every test of spirits Antony gives.
+1. Identify the great dust of debate the enemy raises in your mind when you try to follow Christ. Answer it with a Scripture you can say aloud.
+2. When you feel God is absent in a struggle, remember the words, I was here, and I waited to see thy fight. Keep going.
+3. Choose one psalm to pray whenever you are tempted this week, as Antony sang the Psalms against his attackers.
+4. Think of a religious impulse you have felt recently. Ask of it: Who art thou? Where does it lead — towards humility and peace, or towards pride, excess or despair?
+5. If you have been drawn to predictions or secret knowledge, lay that curiosity down and pray instead for faithfulness today.
+6. Read sections 5 to 10 and 16 to 43 of The Life of Antony and note every weapon, and every test of spirits, that Antony gives.
 
 ### A PRAYER
 
-> Lord, many voices speak to me, and not all of them are Yours, even when they use Your words.
-> Give me the gift of discernment: to know Your voice by its peace, and the enemy’s by its confusion.
-> Keep me under Your Word, so that I do not trust my feelings above Your truth.
-> Make me faithful in what You have revealed, and content to leave the secret things with You. Amen.
+> Lord Jesus, You came into the world and broke the power of the enemy; he is fallen, and his strength is gone.
+> When I am tempted, bring Your Word to my mind; when I am afraid, show me how weak he is and how strong You are.
+> Many voices speak to me, and not all of them are Yours, even when they use Your words; give me the gift of discernment, and keep me under Your Word, so that I do not trust my feelings above Your truth.
+> Whatever the fight, let me say with Your servant, nothing shall separate me from Your love. Amen.
 # Live as Though Dying Daily
 
 > So teach us to number our days, that we may apply our hearts unto wisdom. PSALM 90:12
@@ -1255,7 +1181,7 @@ We must also say again what was said at the beginning. Athanasius’s enemies ac
 
 > Great is the LORD, and greatly to be praised; and his greatness is unsearchable. PSALM 145:3
 
-Eighteen chapters may give the impression that Athanasius taught many different things. In one sense he did; he wrote on creation and salvation, on the Son and the Spirit, on the Scriptures and the desert. But at the centre of it all is one conviction, and it is the conviction of his first book. God has come the whole way down. The Word who made the world has taken a real body, died a real death and risen again, so that what He made might be remade.
+Sixteen chapters may give the impression that Athanasius taught many different things. In one sense he did; he wrote on creation and salvation, on the Son and the Spirit, on the Scriptures and the desert. But at the centre of it all is one conviction, and it is the conviction of his first book. God has come the whole way down. The Word who made the world has taken a real body, died a real death and risen again, so that what He made might be remade.
 
 Follow that thread, and the whole shape of his teaching appears. The world was made out of nothing by a good God who grudges existence to none. Man was made in God’s image, sharing His Word, and when he turned away he began to slide back towards nothing. God could neither break His word nor abandon His work, and repentance alone could not heal a corrupted nature. So the Word Himself came, the original to restore the portrait on the same wood. In His body the death of all was accomplished, and death was trampled underfoot; the martyrs and the changed lives of ordinary believers were the proof. He was made man so that we might share His life. And because only God can give the life of God, the Son must be of one substance with the Father, and the Spirit who joins us to Him must be God as well. In the desert, Antony showed what that victory looks like in one human life: renunciation, spiritual warfare, discernment, daily prayer and work, humility. And through it all, the Scriptures were the fountains from which every believer must drink, and the truth was worth standing for, even against the world.
 

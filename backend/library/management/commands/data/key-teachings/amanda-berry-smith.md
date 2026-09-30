@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Amanda Berry Smith’s message — that the God who saves a sinner can fill a heart with His own presence, deliver it from fear, and keep it in daily trust at the wash-tub, in the pulpit and on the far side of the world. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Amanda Smith’s own public-domain Autobiography, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Amanda Berry Smith’s message — that the God who saves a sinner can fill a heart with His own presence, deliver it from fear, and keep it in daily trust at the wash-tub, in the pulpit and on the far side of the world. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Amanda Smith’s own public-domain Autobiography, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Amanda Berry Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers what she taught and testified into eighteen short chapters for the ordinary reader, and tells the story of the life that gave her words their weight. She was born enslaved in Maryland, earned her bread for years at the wash-tub, and became one of the best-known holiness preachers of her century on four continents.
+  This is not a book by Amanda Berry Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers what she taught and testified into seventeen short chapters for the ordinary reader, and tells the story of the life that gave her words their weight. She was born enslaved in Maryland, earned her bread for years at the wash-tub, and became one of the best-known holiness preachers of her century on four continents.
   
   She wrote no treatise, but she was a theologian all the same: a theologian of lived holiness. Her one theme was God in you — a Saviour who does not only forgive, but comes to dwell in the heart, rule it, and set it free from sin, from fear and from self-will. This volume follows that thread through her conversion and her sanctification, her deliverance from the fear of man, her honest witness about race and the church, her life of prayer for rent and bread, her call to preach without ordination, and her work in India and West Africa. It weighs her fairly where she leaned too hard on impressions or pressed a rule too far, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.
   
@@ -28,7 +28,7 @@ So the question to carry through this book is her question: is God in me, or onl
 
 ## How this book is arranged
 
-After a chapter on her life, the book follows the order of her own experience: conversion, the witness of the Spirit, and the blessing she called sanctification. Then it follows that grace into a hard marriage and daily work, into her deliverance from the fear of man, and into her honest witness about colour and the church. Next come the inner lessons she learned the hard way — dark seasons, guidance, obedience, prayer for daily bread, bereavement and sickness. The rest follow her outward: her call to preach, her fellowship in the holiness movement, her work in India and Africa, temperance, children, and her plain and simple life.
+After a chapter on her life, the book follows the order of her own experience: conversion, the witness of the Spirit, and the blessing she called sanctification. Then it follows that grace into a hard marriage and daily work, into her deliverance from the fear of man and the honest witness about colour and the church that it set free. Next come the inner lessons she learned the hard way — dark seasons, guidance, obedience, prayer for daily bread, bereavement and sickness. The rest follow her outward: her call to preach, her fellowship in the holiness movement, her work in India and Africa, temperance, children, and her plain and simple life.
 
 Each chapter ends with application points and a prayer. She never told a story for its own sake; every account in her book ends in a lesson, a hymn, or a Hallelujah. Read one chapter at a time. Stop at the application points and actually attempt them. Pray the prayer, or better, pray your own.
 
@@ -368,11 +368,13 @@ There is a caution here too. Her counsel to endure was counsel for trials, not f
 > Give me my manna fresh this morning, and keep me from thinking I can live on yesterday’s.
 > Where I have been wronged, give me the grace to return good for evil, and to leave my cause in Your hands. Amen.
 
-# Perfect Love Casteth Out Fear
+# Neither Bond nor Free
 
-> There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love. 1 JOHN 4:18
+> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
 
 On the morning Amanda Smith was sanctified, the thing that nearly stopped her was fear. Three times the Spirit came upon her in the Green Street church and she longed to shout Glory to Jesus, and three times she held it in. The voice at her side said: “Look, look at the white people, mind, they will put you out.” She was the only Black person in the building. She had been taught a keen sense of propriety. So she put her hands up to her mouth and kept still, and felt the Spirit leave her.
+
+This chapter follows two things that were bound together in her life and cannot well be pulled apart: the fear that colour had trained into her, and the honest, unbitter witness she bore about colour and the church once that fear had lost its rule. Both begin with the text above.
 
 ## A fear because they were white
 
@@ -382,74 +384,45 @@ Anyone who has been made to feel small in a room full of people with more money,
 
 > The fear of man bringeth a snare: but whoso putteth his trust in the LORD shall be safe. PROVERBS 29:25
 
-At the end of the service, as they sang of the blood that cleanses from all sin, she stood up trembling and shouted at last, and John Inskip answered from the pulpit, “Amen, Glory to God.” And as she stood there, she heard words that seemed to come slowly and clearly from one corner of the church: There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female, for ye are all one in Christ Jesus. She had never understood that text before. Now, she said, the Holy Ghost had made it clear. As she looked at the white people she had always been afraid of, “now they looked so small. The great mountain had become a mole-hill.”
+At the end of the service, as they sang of the blood that cleanses from all sin, she stood up trembling and shouted at last, and John Inskip answered from the pulpit, “Amen, Glory to God.” And as she stood there, she heard the words of Galatians come slowly and clearly, as if from one corner of the church. She had never understood that text before. Now, she said, the Holy Ghost had made it clear. As she looked at the white people she had always been afraid of, “now they looked so small. The great mountain had become a mole-hill.”
 
-> There is neither Jew nor Greek, there is neither bond nor free, there is neither male nor female: for ye are all one in Christ Jesus. GALATIANS 3:28
-
-## Not contempt, but freedom
-
-It is important to see what happened and what did not. She did not come to despise white people, nor did she pretend that prejudice had disappeared; she met it for the rest of her life and named it plainly. What happened was inside her. The congregation had not changed; her place before God had become clear. She was one in Christ Jesus with every believer in that room. The mountain had become a molehill not because the people were smaller, but because God was larger.
+It is important to see what happened and what did not. She did not come to despise white people, nor did she pretend that prejudice had disappeared; she met it for the rest of her life and named it plainly. What happened was inside her. The congregation had not changed; her place before God had become clear. The mountain had become a molehill not because the people were smaller, but because God was larger.
 
 ## The man-fearing spirit
 
-The deliverance was real, but it was not the end of the matter. Months later, in her own church, a new pastor opposed the doctrine of holiness from the pulpit and mocked the plain-dressed sanctified sisters, so that every eye turned to her and the congregation giggled. Kind friends advised her not to say anything more about sanctification. She began to be vague in her testimony, choosing words people would like. And a darkness settled on her that she could not explain.
+The deliverance was real, but it was not the end of the matter. Months later, in her own church, a new pastor opposed the doctrine of holiness from the pulpit and mocked the plain-dressed sanctified sisters, so that every eye turned to her and the congregation giggled. Kind friends advised her to say nothing more about sanctification. She began to be vague in her testimony, choosing words people would like. And a darkness settled on her that she could not explain.
 
-She set apart a Friday to fast and pray about it, and in the afternoon the Spirit seemed to say, Read, and her Bible opened at the words of 1 John: perfect love casteth out fear. She saw at once what was wrong. It was fear — fear of her pastor and of the people. Her prayer is one of the most useful in her book: “Oh! Lord, take all the man-fearing spirit out of me. I thank Thee for what Thou hast done for me, but deliver me from fear. Take all the woman-fearing spirit out of me, and give me complete victory over this fear.”
+She set apart a Friday to fast and pray about it, and in the afternoon the Spirit seemed to say, Read, and her Bible opened at the words of 1 John.
+
+> There is no fear in love; but perfect love casteth out fear: because fear hath torment. He that feareth is not made perfect in love. 1 JOHN 4:18
+
+She saw at once what was wrong. It was fear — fear of her pastor and of the people. Her prayer is one of the most useful in her book: “Oh! Lord, take all the man-fearing spirit out of me. I thank Thee for what Thou hast done for me, but deliver me from fear. Take all the woman-fearing spirit out of me, and give me complete victory over this fear.”
+
+There was no special manifestation, she says, but a deep consciousness that God had done it. Then came the test: a Sunday love feast uptown at a church where not one member believed in holiness. She went with her knees trembling, sat through the pointed remarks, and prayed the noisy meeting into silence. Then she stood, quoted the Scriptures on holiness and told what God had done. The ministers who had looked so critical when she came in ended by shouting for God to bless that sister.
 
 > The LORD is on my side; I will not fear: what can man do unto me? PSALM 118:6
-
-There was no special manifestation, she says, but a deep consciousness that God had done it. And then came the test. Would she go on Sunday to a church uptown where not one member believed in holiness, and testify there definitely? She went to the six o’clock love feast with her knees trembling, sat through the pointed remarks, and prayed the noisy meeting into silence. Then she stood and quoted the Scriptures on holiness and told what God had done. The ministers who had looked so critical when she came in ended by shouting for God to bless that sister.
 
 ## Lifting a black hand
 
 One small story shows how deep the fear ran and how simply it was overcome. In a New York Methodist church one Easter Sunday, during the sermon, the Spirit prompted her to raise her right hand. The tempter answered at once: “Yes, you look nice lifting up your black hand before all the people.” She drew back. Then she remembered that she had told the Lord she would do whatever He told her. She asked for another chance, and when the prompting came again she lifted her hand — and, she says, the power of the Spirit fell on the whole congregation. He had not told her to shout, only to lift her hand, and the people did the shouting.
 
+Fear rarely asks us to do something wicked. It asks us to do nothing: to keep our hands down, our mouths shut, our testimony vague, our place small. And the cost of such nothing is often borne by others, who might have been blessed if we had obeyed.
+
+She did not teach that believers would never feel afraid again. She trembled on platforms for the rest of her life, and was terrified of the ocean. What she taught was that fear must not rule. The cure was not self-confidence, which she never had, but love — the perfect love of God filling the heart until there is no room for fear to govern.
+
 > For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind. 2 TIMOTHY 1:7
-
-The lesson she drew is the lesson of the whole chapter. Fear rarely asks us to do something wicked. It asks us to do nothing: to keep our hands down, our mouths shut, our testimony vague, our place small. And the cost of such nothing is often borne by others, who might have been blessed if we had obeyed.
-
-## How the fear goes
-
-She did not teach that believers would never feel afraid again. She trembled on platforms for the rest of her life. She was terrified of the ocean and had to be dealt with by God before she would sail to England. What she taught was that fear must not rule. The cure was not self-confidence, which she never had, but love — the perfect love of God filling the heart until there is no room for fear to govern.
-
-> Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee. ISAIAH 41:10
-
-### FOR REFLECTION AND ACTION
-
-1. Where do you feel, as she did, that you are here and they are there — that you take up too much room? Bring that feeling to Galatians 3:28.
-2. Pray her prayer in your own words: Lord, take all the man-fearing and woman-fearing spirit out of me. Name the particular people you fear.
-3. Is your testimony vaguer than it used to be because someone disapproved? Tell one person plainly this week what God has done for you.
-4. Think of a moment when fear told you to do nothing. What would obedience have looked like? Ask for another chance, and take it when it comes.
-5. If you are in a position of power, ask who in your church or workplace feels the fear she describes, and what you could do to make them welcome.
-
-### A PRAYER
-
-> Lord, I have been afraid of people — of their looks, their laughter, their power over me. I have kept my hand down and my mouth shut.
-> Take all the man-fearing and woman-fearing spirit out of me. Fill me with Your perfect love until there is no room left for fear to rule.
-> Show me that I am one with all Your people in Christ Jesus, and let the mountains in my mind become molehills.
-> And when You prompt me to stand, to speak or to lift my hand, give me grace to obey at once. Amen.
-
-# The Royal Black
-
-> God that made the world and all things therein … hath made of one blood all nations of men for to dwell on all the face of the earth. ACTS 17:24–26
-
-Amanda Smith wrote about race and the church more honestly than almost any Christian writer of her century, white or Black. She did it without bitterness and without flattery. She named what was done to her, she named who did it — including her own people — and she refused to let any of it define her.
 
 ## Just turn black
 
-People sometimes told her how nicely she got on, and how kindly everyone treated her. “But if you want to know and understand properly what Amanda Smith has to contend with,” she said, “just turn black and go about as I do, and you will come to a different conclusion.” And she added, with a sharpness that still stings, that some people would understand the quintessence of sanctifying grace if they could be black for about twenty-four hours.
+Freed from that fear, she could afford to be honest, and she wrote about race and the church more honestly than almost any Christian writer of her century, white or Black. People sometimes told her how nicely she got on, and how kindly everyone treated her. “But if you want to know and understand properly what Amanda Smith has to contend with,” she said, “just turn black and go about as I do, and you will come to a different conclusion.” And she added, with a sharpness that still stings, that some people would understand the quintessence of sanctifying grace if they could be black for about twenty-four hours.
 
 > Remember them that are in bonds, as bound with them; and them which suffer adversity, as being yourselves also in the body. HEBREWS 13:3
 
-Her Autobiography supplies the evidence. As a girl in service she was led last at class meeting, week after week, whatever seat she took. When she arrived to preach at Salem, she had to ride on the roof of the omnibus, because Black passengers were not allowed inside, and was carried round for three-quarters of an hour until every white passenger had been set down. She spent a night in a railway waiting room in Texas because no hotel would take a Black woman. At a Bible reading in a New York church she was ordered out by a woman who waved her to the door. At a famous series of meetings in Philadelphia she was told, kindly, that the meeting that day was for wealthy ladies and she had better come another time; she stood at the door and received a blessing there. 
+Her Autobiography supplies the evidence. Arriving to preach at Salem, she had to ride on the roof of the omnibus, because Black passengers were not allowed inside, and was carried round for three-quarters of an hour until every white passenger had been set down. She spent a night in a railway waiting room in Texas because no hotel would take a Black woman. At a Bible reading in a New York church she was waved to the door. At a famous series of meetings in Philadelphia she was told, kindly, that the meeting that day was for wealthy ladies and she had better come another time; she stood at the door and received a blessing there.
 
-## The same in black and white
-
-What makes her witness so trustworthy is that she spared no one. She saw prejudice in white churches, and she saw vanity, snobbery and hostility to holiness in Black ones. Human nature, she wrote, “is the same in black and white folks.” Her own pastor mocked her from the pulpit, and she was hurt as much by her own people as by anyone.
+What makes her witness so trustworthy is that she spared no one. She saw prejudice in white churches, and she saw vanity, snobbery and hostility to holiness in Black ones; the pastor who mocked her from the pulpit was one of her own. Human nature, she wrote, “is the same in black and white folks.” Nor was she taken in by smiles. At a meeting in New York a lady fidgeted and fanned and fussed at having to sit beside her, until Amanda spoke and the Lord blessed the people; then the lady turned to her all smiles and said she felt highly honoured to have sat by Amanda Smith. Amanda pitied her, and felt sick. “From all hollowness and sham,” she prayed in her heart, “Good Lord deliver us!”
 
 > My brethren, have not the faith of our Lord Jesus Christ, the Lord of glory, with respect of persons. JAMES 2:1
-
-She was not naive about the smiles, either. At a meeting in New York a lady fidgeted and fanned and fussed at having to sit beside her, until Amanda spoke and the Lord blessed the people; then the lady turned to her all smiles and said she felt highly honoured to have sat by Amanda Smith. Amanda looked at her, pitied her, and felt sick. “From all hollowness and sham,” she prayed in her heart, “Good Lord deliver us!”
 
 ## Common sense on the colour line
 
@@ -459,11 +432,11 @@ Against all this she set the kindness she received, recorded just as carefully �
 
 ## Royal stock
 
-When a lady at Ocean Grove asked her, only half in jest, whether she would not rather be white than black if she could, she answered: “No, no,” and then, “as the Lord lives, I would rather be black and fully saved than to be white and not saved.” She said she was glad she had no choice in her colour, because as a girl she was passionately fond of pea-green and would probably have chosen that. God’s colour, she decided, was the best and most substantial. And she added the line that sums up her theology of race: it is the blood that makes whiteness — the blood of Christ, which cleanses black and white alike.
+When a lady at Ocean Grove asked her, only half in jest, whether she would not rather be white than black if she could, she answered: “No, no,” and then, “as the Lord lives, I would rather be black and fully saved than to be white and not saved.” She said she was glad she had no choice in her colour, because as a girl she was passionately fond of pea-green and would probably have chosen that. And she added the line that sums up her theology of race: it is the blood that makes whiteness — the blood of Christ, which cleanses black and white alike.
 
 > Come now, and let us reason together, saith the LORD: though your sins be as scarlet, they shall be as white as snow. ISAIAH 1:18
 
-She did not pretend that colour made no difference in this world. After listing the humiliations of travel, she wrote one of her finest sentences: “Now, to say that being black did not make it inconvenient for us often, would not be true; but belonging to royal stock, as we do, we propose braving this inconvenience for the present.” She would pass on, she said, into the great big future, where all these little things would be lost because of their absolute smallness, and she prayed that the Lord would send that future to meet her. She belonged, she said elsewhere, to royalty, and was well acquainted with the King of kings.
+She did not pretend that colour made no difference in this world. After listing the humiliations of travel, she wrote one of her finest sentences: “Now, to say that being black did not make it inconvenient for us often, would not be true; but belonging to royal stock, as we do, we propose braving this inconvenience for the present.” She would pass on, she said, into the great big future, where all these little things would be lost because of their absolute smallness. She belonged, she said elsewhere, to royalty, and was well acquainted with the King of kings. That is the Green Street molehill again, seen from the other side: the woman who once looked at the white people and trembled now looked at their slights and saw how small they were beside her King.
 
 > But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people. 1 PETER 2:9
 
@@ -471,26 +444,25 @@ She did not pretend that colour made no difference in this world. After listing 
 
 In Liberia she once heard a party of newly arrived emigrants from America give speeches that did little but rake over the hard things white people had done to them. She felt sorry for it — not because the grievances were unreal, but because of the spirit. “It is wrong in those who have caused these grievances,” she wrote, “but it does not help us any to forever keep looking at the wrongs, and never see any of the good, which has always gone along side by side with the wrong.”
 
-That must not be misheard. She never excused injustice or told the wronged to be silent; her own book is a record of wrongs, named. What she refused was to let the wrongs become the whole story. She held together the plain truth about prejudice and the larger truth of a God who had made her royal.
+That must not be misheard. She never excused injustice or told the wronged to be silent; her own book is a record of wrongs, named. What she refused was to let the wrongs become the whole story.
 
-A reader today will want to go further than she did in some directions. She lived under a system of legal and social exclusion that the church too often blessed, and her patience was sometimes the patience of someone who had no other option. Christians now have more power to change such things than she did, and more duty. But no one should read her and think that honesty about injustice requires bitterness, or that love requires silence. She had both honesty and love, and she kept both.
-
-> For ye are all the children of God by faith in Christ Jesus. GALATIANS 3:26
+A reader today will want to go further than she did in some directions. She lived under a system of legal and social exclusion that the church too often blessed, and her patience was sometimes the patience of someone who had no other option. Christians now have more power to change such things than she did, and more duty. But no one should read her and think that honesty about injustice requires bitterness, or that love requires silence. Perfect love had cast out her fear; it did not cast out her honesty. She had both, and she kept both.
 
 ### FOR REFLECTION AND ACTION
 
-1. Take her challenge seriously: imagine going through one ordinary week as someone your church or town looks down on. What would be different? Write it down.
-2. Is there anyone in your church who is, in effect, led last? Do something this week to change that.
-3. Examine yourself for hollowness and sham: for kindness that depends on someone’s reputation. Pray her prayer against it.
-4. If you have suffered prejudice, name it honestly to God. Then ask Him to show you the good that has gone alongside it, without denying the wrong.
-5. Practise her common sense: invite someone of a different background from yours to share a meal, and treat it as the most natural thing in the world.
+1. Where do you feel, as she did, that you are here and they are there — that you take up too much room? Bring that feeling to Galatians 3:28.
+2. Pray her prayer in your own words: Lord, take all the man-fearing and woman-fearing spirit out of me. Name the particular people you fear.
+3. Is your testimony vaguer than it used to be because someone disapproved? Tell one person plainly this week what God has done for you.
+4. Take her challenge seriously: imagine one ordinary week as someone your church looks down on. Is anyone among you, in effect, led last? Do something this week to change that.
+5. If you have suffered prejudice, name it honestly to God. Then ask Him to show you the good that has gone alongside it, without denying the wrong.
+6. Practise her common sense: invite someone of a different background from yours to share a meal, and treat it as the most natural thing in the world.
 
 ### A PRAYER
 
-> Lord, You have made of one blood all nations of men, and in Christ You have made us one.
-> Forgive the church, and forgive me, for every time we have led some of Your children last and sent them to the gallery.
+> Lord, I have been afraid of people — of their looks, their laughter, their power over me. Take all the man-fearing and woman-fearing spirit out of me, and fill me with Your perfect love until there is no room left for fear to rule.
+> You have made of one blood all nations of men, and in Christ You have made us one. Forgive the church, and forgive me, for every time we have led some of Your children last and sent them to the gallery.
 > Deliver me from all hollowness and sham. Give me real, practical, downright common sense in love.
-> And where I have been wronged, keep me honest and keep me free from bitterness, until the great big future comes to meet us. Amen.
+> And when You prompt me to stand, to speak or to lift my hand, give me grace to obey at once; and where I have been wronged, keep me honest and free from bitterness, until the great big future comes to meet us. Amen.
 
 # I Belong to Jesus
 
@@ -1222,7 +1194,7 @@ That is a balance worth recovering. Simplicity of life is a real Christian grace
 
 > Follow peace with all men, and holiness, without which no man shall see the Lord. HEBREWS 12:14
 
-Eighteen chapters can make it look as though Amanda Smith taught a great many things. She taught one thing, and everything else is that one thing lived out. The one thing is this: God in you. Follow it through and the whole shape appears. Conversion is the moment a proud and weary soul stops arranging its own salvation and says, Lord, I will believe Thee. Assurance is the Spirit within bearing witness that it is so. Holiness is God filling the house He has entered, ruling every ambition and desire, living Himself. And because He lives there, the rest follows: enduring grace at the wash-tub, love that casts out fear, a Father who speaks and must be obeyed, bread and rent from His hand, a will that can bend over a dying child, courage to preach without a title, a heart wide enough for every nation, and a life simple enough to care more for a soul than a bonnet.
+Seventeen chapters can make it look as though Amanda Smith taught a great many things. She taught one thing, and everything else is that one thing lived out. The one thing is this: God in you. Follow it through and the whole shape appears. Conversion is the moment a proud and weary soul stops arranging its own salvation and says, Lord, I will believe Thee. Assurance is the Spirit within bearing witness that it is so. Holiness is God filling the house He has entered, ruling every ambition and desire, living Himself. And because He lives there, the rest follows: enduring grace at the wash-tub, love that casts out fear, a Father who speaks and must be obeyed, bread and rent from His hand, a will that can bend over a dying child, courage to preach without a title, a heart wide enough for every nation, and a life simple enough to care more for a soul than a bonnet.
 
 ## The danger of this book
 

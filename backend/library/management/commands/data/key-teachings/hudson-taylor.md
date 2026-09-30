@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Hudson Taylor’s message — the finished work of Christ, moving man through God by prayer alone, the exchanged life, union and communion with Christ, separation and service, and the burden for China’s inland millions — and the single truth beneath it all: that God is faithful and can be trusted absolutely. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Taylor’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Hudson Taylor’s message — the finished work of Christ, moving man through God by prayer alone, the exchanged life, union and communion with Christ, separation and service, and the burden for China’s inland millions — and the single truth beneath it all: that God is faithful and can be trusted absolutely. Seventeen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Taylor’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Hudson Taylor. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books and to the best lives of him.
+  This is not a book by Hudson Taylor. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into seventeen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books and to the best lives of him.
 
   Taylor’s one theme was the faithfulness of God. He learned it as a boy converted by a tract about a work already finished, tested it as a medical student with his last half-crown, staked a mission on it on the sands at Brighton, and came to rest in it in 1869 when he saw that he was to lean not on his own faith but on the Faithful One. From that single conviction came everything else he taught: prayer as transacting business with God, finance without debt or appeal, abiding in Christ as a branch in the vine, the union and communion of the Song of Solomon, Nazarite separation and glad service, and a burden for inland China that cost him dearly. This volume follows that thread, weighs honestly the places where he must be read with care, and ends each chapter in a few questions and a prayer.
 
@@ -38,7 +38,7 @@ He is worth reading, third, because he brings the Great Commission down out of t
 
 ## How this book is arranged
 
-After a chapter on his life, eighteen short chapters set out his teaching. The first five follow the lessons he learned before he sailed: the finished work, consecration, prayer, the faithfulness of God, and money. The next six come from his great inner discovery and from Union and Communion: the exchanged life, the living water, the unsatisfied life, communion broken and restored, what we are before what we do, and the morning watch. Three come from Separation and Service and A Ribband of Blue. The last four take up his outward calling: self-denial, the burden for China’s millions, guidance, and suffering.
+After a chapter on his life, seventeen short chapters set out his teaching. The first five follow the lessons he learned before he sailed: the finished work, consecration, prayer, the faithfulness of God, and money. The next five come from his great inner discovery and from Union and Communion: the exchanged life and the living water, the unsatisfied life, communion broken and restored, what we are before what we do, and the morning watch. Three come from Separation and Service and A Ribband of Blue. The last four take up his outward calling: self-denial, the burden for China’s millions, guidance, and suffering.
 
 Each chapter ends with application points and a prayer. Taylor’s own addresses often end with a searching question put to the hearer; he did not think a truth understood until it was obeyed. Read a chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
 
@@ -52,7 +52,7 @@ Second, his calling laid heavy costs on others. His wife Maria and several of th
 
 Third, he worked in an age of unequal treaties forced on China by Western guns, and of an opium trade that Britain protected by force. Taylor opposed that trade and grieved over it. But the treaties opened the interior to missionaries as well as merchants, and the mission he founded could not wholly escape the shadow they cast.
 
-Fourth, his reading of the Song of Solomon is allegorical throughout, and in places he builds more on details of the poem than they will bear. His warm doctrine of union with Christ does not depend on those details, and chapters ten to twelve try to keep the one while holding the other loosely.
+Fourth, his reading of the Song of Solomon is allegorical throughout, and in places he builds more on details of the poem than they will bear. His warm doctrine of union with Christ does not depend on those details, and chapters nine to eleven try to keep the one while holding the other loosely.
 
 Fifth, his principle of never appealing for money has blessed many and burdened some. It can harden into a test of spirituality that condemns faithful people who work differently, or into a quiet boast. Chapter seven takes this up.
 
@@ -452,15 +452,35 @@ By the summer of 1869 it was fifteen years since Hudson Taylor had first landed 
 
 What happened next became, in the hands of his biographers, the most famous episode of his inner life. They called it the exchanged life, and the phrase has stuck.
 
+## Two tellings of one discovery
+
+Taylor’s crisis has come down to us in two forms. In the account most people know, the turning point came in September 1869 at Zhenjiang, through a letter from a younger colleague, John McCarthy, who had himself been seeking holiness and had found rest. The burden of his letter, as Taylor’s biographers record it, was that the way to growth in faith was not striving after faith but resting on the Faithful One. The details of that afternoon come from later accounts, not from Taylor’s own books in the Ochorus library, and they should be held with that in mind.
+
+In his own address Unfailing Springs, Taylor tells it through a different text. Alone in inland China, he came one afternoon in his ordinary reading to the fourth chapter of John. It had always been, he says, ancient history to him. That afternoon, for the first time, it became a present message to his soul.
+
+> Whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life. JOHN 4:14
+
+The two tellings do not compete. They describe the same discovery from different sides: that Christ Himself is the life of the believer, received freely and continually. The vine speaks of union; the well speaks of supply. Taylor lived on both, and this chapter follows both.
+
 ## Resting on the Faithful One
 
-The turning point came, as far as the story is securely known, in September 1869 at Zhenjiang, through a letter from a younger colleague, John McCarthy. McCarthy had himself been seeking holiness and had found rest. The burden of his letter, as Taylor’s biographers record it, was that the way to growth in faith was not striving after faith but resting on the Faithful One. We have no need to strain for a union with Christ that already exists. We are to abide in Him, as branches in a vine, and let His life do what our efforts cannot.
+Taylor had been trying to make himself a branch, to draw strength out of Christ by effort, as if the vine and the branch were two separate things that had to be joined afresh each day. He came to see that he was already joined. We have no need to strain for a union with Christ that already exists. The branch does not make itself a branch. It is one, by the act of the vinedresser. Its whole business is to remain where it has been placed, and to receive.
 
 > Abide in me, and I in you. As the branch cannot bear fruit of itself, except it abide in the vine; no more can ye, except ye abide in me. JOHN 15:4
 
-Taylor read it and saw it, and later said that God had made him a new man. The details of that afternoon come from later accounts, not from his own books in the Ochorus library, and they should be held with that in mind. But the substance of the discovery is written all over his own pages, and it is not hard to state.
+This is the hinge of all his later teaching. The weight of the Christian life does not rest on the strength of our faith, or on the constancy of our feelings, but on the One in whom we have been placed. Faith is only the hand that takes hold. It is the Faithful One who holds.
 
-He had been trying to make himself a branch, to draw strength out of Christ by effort, as if the vine and the branch were two separate things that had to be joined afresh each day. He came to see that he was already joined. The branch does not make itself a branch. It is one, by the act of the vinedresser. Its whole business is to remain where it has been placed, and to receive.
+## Shall means shall
+
+What struck him in John 4 was the plainness of the promise. In Separation and Service he recalls the same moment, and describes how he came to see that Christ literally meant what He said: that shall meant shall, and never meant never, and thirst meant thirst. He had sat down thirsty, he says, and sprang up praising the Lord that the thirsting days were past for ever.
+
+In Unfailing Springs he explains what thirst means: any unsatisfied need, any longing left faint and unrefreshed. And he tells how he took the promise: “believing from His own Word that my thirsty days were all passed, not from any present feeling, but because of His promise.”
+
+He did not feel any different at first. That evening he took his usual Bible-reading with the Chinese and spoke freely, but without any special sense of power. The next morning he learned that one of his hearers had been so convicted of sin that he could not sleep. From that time, he says, his ministry was owned of God as it had not been for some while. The promise was taken on the word of Christ, and the evidence followed, not the other way round.
+
+He stops, too, over the tense of the verb. Jesus does not say whosoever has drunk, as if a single draught settled everything. He says whosoever drinketh, and the word describes a habit, a continuing action. The living water is not a deposit made once, but a spring that keeps flowing to the one who keeps drinking.
+
+> He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. JOHN 7:38
 
 ## Fruit, not work
 
@@ -468,71 +488,11 @@ This conviction shapes nearly everything Taylor wrote afterwards. In Blessed Pro
 
 > But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, Meekness, temperance: against such there is no law. GALATIANS 5:22–23
 
-He goes on to notice that Paul speaks of the fruit of the Spirit, singular, not fruits, as though we might pick the graces we prefer. It is one rich cluster. And if he were asked to put that fruit in a single word, he says, it would be Christliness.
+He notices that Paul speaks of the fruit of the Spirit, singular, not fruits, as though we might pick the graces we prefer. It is one rich cluster. And if he were asked to put that fruit in a single word, he says, it would be Christliness. A workman has to find his materials and tools, and set himself to his task with painful perseverance. Fruit is the glad, free outcome of the life within, and it ripens in its season.
 
-A workman has to find his materials and tools, and set himself to his task with painful perseverance. Fruit is the glad, free outcome of the life within, and it ripens in its season. The Christian life, Taylor had discovered, is not a job to be done for Christ but a life to be lived from Him.
-
-## The tender shoot
-
-In his New Year’s address Under the Shepherd’s Care, Taylor puts the same truth in a homely picture. A heavy bunch of grapes on a tender shoot would break it. But if the shoot abides in the vine, it grows stronger as the fruit develops, and the life left to its own healthy growth comes in time to perfection.
+In his New Year’s address Under the Shepherd’s Care, Taylor puts the same truth in a homely picture. A heavy bunch of grapes on a tender shoot would break it. But if the shoot abides in the vine, it grows stronger as the fruit develops. Many earnest Christians load themselves with the fruit they think they ought to bear, and the load breaks them. Taylor had nearly broken under it. The remedy is not less fruit but a different source.
 
 > Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ. PHILIPPIANS 1:6
-
-Many earnest Christians load themselves with the fruit they think they ought to bear, and the load breaks them. Taylor had nearly broken under it. The remedy is not less fruit but a different source. We are not to fret and fume, he says in the same address, about how the divine life shall show itself, but to look to our Saviour and let the life work through us.
-
-He quotes with approval a saying he once heard from Professor Charteris in Edinburgh: that the true Christian life begins where the life of Christ ended, at the cross, and grows back towards the cradle, until the child of God can rest like a child in the arms of infinite wisdom and love. That is the exchanged life: our striving laid down at the cross, and Christ’s life received in its place.
-
-## Resting and working
-
-Taylor’s discovery did not make him passive. The years after 1869 were the busiest of his life. He travelled, organised, wrote, prayed for seventy and then a hundred new workers, and bore burdens that would have crushed most men. What changed was not the amount of work but its source. He had stopped trying to supply the life himself.
-
-> For it is God which worketh in you both to will and to do of his good pleasure. PHILIPPIANS 2:13
-
-The exchanged life is not a technique for feeling better, or a second blessing that removes all struggle. Taylor struggled again, grieved again, and knew seasons of darkness to the end. Nor was the discovery itself new truth. It is plain New Testament teaching, taught by the Puritans and by many others before him. What was new was that Taylor, having taught it, came to live on it.
-
-A reader who hears of a sudden transformation may be tempted to seek the same kind of moment, and miss the point. The discovery was not an experience to be chased but a fact to be believed: that the believer is already in Christ, and Christ in him. Some come to see it in a single afternoon, as Taylor did; others grow into it over years. The branch is joined either way.
-
-> As ye have therefore received Christ Jesus the Lord, so walk ye in him. COLOSSIANS 2:6
-
-### FOR REFLECTION AND ACTION
-
-1. Ask yourself whether you are living as a branch or as a workman: are you drawing life from Christ, or trying to supply it yourself?
-2. Name the fruit you have been straining to produce by effort. Bring it to Christ and ask Him to produce it in you.
-3. Read John 15:1–11 each day this week, paying attention to what the branch does and does not do.
-4. If you are exhausted in Christian service, consider whether the problem is the amount of work or its source.
-5. Resist the temptation to chase an experience. Thank God instead for the plain fact that you are in Christ.
-
-### A PRAYER
-
-> Lord Jesus, You are the Vine and I am a branch. I have tried to make myself fruitful, and the effort has worn me out.
-> I stop striving after faith and rest on You, the Faithful One. I am in You, not because I have joined myself to You, but because You have joined me.
-> Let Your life flow through me, and let the fruit be Yours: love, joy, peace, and all Your likeness.
-> And when I am busy for You, let it be from You, so that my labour may be fruit and not merely work. Amen.
-# Shall Never Thirst
-
-> Whosoever drinketh of the water that I shall give him shall never thirst; but the water that I shall give him shall be in him a well of water springing up into everlasting life. JOHN 4:14
-
-Hudson Taylor told the story of his spiritual crisis more than once, and not always in the same way. In the account most people know, the key was a letter about abiding in the vine. In his own address Unfailing Springs, which is in the Ochorus library, he tells it through a different text. Alone in inland China, painfully aware of his failures and wondering whether to give up missionary work, he came one afternoon in his ordinary reading to the fourth chapter of John. It had always been, he says, ancient history to him. That afternoon, for the first time, it became a present message to his soul.
-
-The two accounts do not compete. They describe the same discovery from different sides: that Christ Himself is the life of the believer, received freely and continually. The vine speaks of union; the well speaks of supply. Taylor lived on both.
-
-## Shall means shall
-
-What struck him in John 4 was the plainness of the promise. In Separation and Service he recalls the same moment, and describes how he came to see that Christ literally meant what He said: that shall meant shall, and never meant never, and thirst meant thirst. He had sat down thirsty, he says, and sprang up praising the Lord that the thirsting days were past for ever.
-
-> In the last day, that great day of the feast, Jesus stood and cried, saying, If any man thirst, let him come unto me, and drink. JOHN 7:37
-
-In Unfailing Springs he explains what thirst means: any unsatisfied need, any longing left faint and unrefreshed. And he tells how he took the promise: “believing from His own Word that my thirsty days were all passed, not from any present feeling, but because of His promise.”
-
-Taylor did not feel any different at first. That evening he took his usual Bible-reading with the Chinese and spoke freely, but without any special sense of power. The next morning he learned that one of his hearers had been so convicted of sin that he could not sleep. From that time, he says, his ministry was owned of God as it had not been for some while. The promise was taken on the word of Christ, and the evidence followed, not the other way round.
-
-## Drinketh, not drank
-
-In both places where he writes about it, he stops over the tense of the verb. Jesus does not say whosoever has drunk, as if a single draught settled everything. He says whosoever drinketh, and the word describes a habit, a continuing action. The living water is not a deposit made once, but a spring that keeps flowing to the one who keeps drinking.
-
-> He that believeth on me, as the scripture hath said, out of his belly shall flow rivers of living water. JOHN 7:38
-
-It would be easy to hear the story of his crisis and conclude that a single decisive experience lifts the believer above all further need. Taylor did not teach that. What he found was not a one-time filling but a well: a source always available, to be drawn on moment by moment.
 
 ## Whatever the size of the vessel
 
@@ -546,7 +506,7 @@ The Samaritan woman had no training, no standing and a bad reputation, yet she a
 
 ## The test of 1870
 
-Taylor’s testimony does not end there, and what follows is hard to read. Some months later, he says, came a time of great trial: the death of a beloved child, the sending home of three others, and the most trying time the mission had ever known. In Tianjin the Sisters of Mercy, French priests and the consul were massacred, and every inland station was in excitement and peril. Letters came almost daily from workers asking whether to stay or leave. Then his wife Maria fell ill; a baby was born and lived only a fortnight; and the morning after the baby’s funeral, Maria herself died.
+Taylor’s testimony does not end in the afternoon of discovery, and what follows is hard to read. Some months later, he says, came a time of great trial: the death of a beloved child, the sending home of three others, and the most trying time the mission had ever known. In Tianjin the Sisters of Mercy, French priests and the consul were massacred, and every inland station was in excitement and peril. Then his wife Maria fell ill; a baby was born and lived only a fortnight; and the morning after the baby’s funeral, Maria herself died.
 
 > For the Lamb which is in the midst of the throne shall feed them, and shall lead them unto living fountains of waters: and God shall wipe away all tears from their eyes. REVELATION 7:17
 
@@ -554,28 +514,34 @@ Then, he writes, he understood why the Lord had made John 4 so real to him. In t
 
 The promise did not mean that Taylor stopped grieving. He grieved deeply, and he says so. It meant that in his grief he had somewhere to go, twenty times a day if necessary, and that he was never turned away. The living water did not prevent the heart-thirst from coming back. It answered it every time it came.
 
-## Coming to the spring
+## Resting and working
 
-Taylor ends Unfailing Springs with a question. Are we among the thirsty, or among those who have come to the one great Source and are drinking, believing and receiving, for their own need and for the blessing of others?
+Taylor’s discovery did not make him passive. The years after 1869 were the busiest of his life. He travelled, organised, wrote, prayed for seventy and then a hundred new workers, and bore burdens that would have crushed most men. What changed was not the amount of work but its source. He had stopped trying to supply the life himself.
 
-The invitation is not to the spiritually advanced. It is to whosoever. The only qualification for drinking is thirst.
+> For it is God which worketh in you both to will and to do of his good pleasure. PHILIPPIANS 2:13
+
+The exchanged life is not a technique for feeling better, or a second blessing that removes all struggle. Taylor struggled again, grieved again, and knew seasons of darkness to the end. Nor was the discovery itself new truth. It is plain New Testament teaching, taught by the Puritans and by many others before him. What was new was that Taylor, having taught it, came to live on it.
+
+A reader who hears of a sudden transformation may be tempted to seek the same kind of moment, and miss the point. The discovery was not an experience to be chased but a fact to be believed: that the believer is already in Christ, and Christ in him. Some come to see it in a single afternoon, as Taylor did; others grow into it over years. The branch is joined either way, and the invitation to the spring is not to the spiritually advanced. It is to whosoever. The only qualification for drinking is thirst.
 
 > And the Spirit and the bride say, Come. And let him that heareth say, Come. And let him that is athirst come. And whosoever will, let him take the water of life freely. REVELATION 22:17
 
 ### FOR REFLECTION AND ACTION
 
-1. Name the thirst that nothing else has satisfied, and bring it to Christ in plain words today.
-2. Take one promise of Christ this week and believe it on His word, before you feel anything.
-3. When the old thirst returns, as it will, go back to Him at once. Keep count, if it helps, and do not be ashamed of the number.
-4. If you feel too small or too unqualified to be of use, remember the Samaritan woman, and bring your vessel to be filled.
-5. If you are grieving, read Taylor’s testimony in Unfailing Springs, and ask God to meet you in your loss as He met him.
+1. Ask yourself whether you are living as a branch or as a workman: are you drawing life from Christ, or trying to supply it yourself?
+2. Name the fruit you have been straining to produce by effort, and the thirst that nothing else has satisfied. Bring both to Christ in plain words today.
+3. Take one promise of Christ this week and believe it on His word, before you feel anything.
+4. When the old thirst returns, as it will, go back to Him at once. Keep count, if it helps, and do not be ashamed of the number.
+5. If you are exhausted in Christian service, consider whether the problem is the amount of work or its source.
+6. Read John 15:1–11 and John 4:1–42 this week, paying attention to what the branch and the thirsty woman do and do not do.
 
 ### A PRAYER
 
-> Lord Jesus, You stood and cried, If any man thirst, let him come unto Me, and drink. I am thirsty, and I come.
-> Let Your word be enough for me, before I feel anything. Let shall mean shall, and never mean never.
+> Lord Jesus, You are the Vine and I am a branch. I have tried to make myself fruitful, and the effort has worn me out.
+> I stop striving after faith and rest on You, the Faithful One. I am in You, not because I have joined myself to You, but because You have joined me.
+> You stood and cried, If any man thirst, let him come unto Me, and drink. I am thirsty, and I come. Let shall mean shall, and never mean never.
 > When the heart-thirst comes back in the lonely hours, let me come back to You as often as I need, and find You more than enough.
-> Fill my small vessel until it overflows, for the blessing of others who are thirsty too. Amen.
+> Fill my small vessel until it overflows, and let my labour be fruit and not merely work, for the blessing of others who are thirsty too. Amen.
 # The Unsatisfied Life
 
 > Let him kiss me with the kisses of his mouth: for thy love is better than wine. SONG OF SOLOMON 1:2
@@ -938,7 +904,7 @@ The soul that is fully consecrated, he says, always receives the blessing of God
 
 > And they shall put my name upon the children of Israel; and I will bless them. NUMBERS 6:27
 
-This needs care. Taylor does not mean that consecrated people never suffer; his own life disproves it, and chapter twenty of this book takes up his teaching on adversity. He means that God’s heart is always moving towards those who are wholly His, and that a lack of peace often has a cause we can find and deal with. But it would be cruel to tell every troubled believer that his consecration must be defective. Sometimes the cloud has another source, and Taylor himself knew seasons of darkness he did not attribute to sin.
+This needs care. Taylor does not mean that consecrated people never suffer; his own life disproves it, and chapter nineteen of this book takes up his teaching on adversity. He means that God’s heart is always moving towards those who are wholly His, and that a lack of peace often has a cause we can find and deal with. But it would be cruel to tell every troubled believer that his consecration must be defective. Sometimes the cloud has another source, and Taylor himself knew seasons of darkness he did not attribute to sin.
 
 ## The longest chapter
 
@@ -1318,7 +1284,7 @@ His teaching is therefore not that the Christian should feel no pain, but that p
 
 > Faithful is he that calleth you, who also will do it. 1 THESSALONIANS 5:24
 
-Eighteen chapters can make it seem that Hudson Taylor taught a great many things. He taught one thing, and lived it in a great many places. The one thing is that God is faithful and can be trusted absolutely. Follow it through and the whole shape of his life appears. The finished work: God has done what we could not. Consecration: we are not our own, and are safe in His hands. Prayer: business with a God who keeps His word. Money: He is not poor, and will supply what He wants done. The exchanged life: we rest on the Faithful One, not on our faith. The living water: He satisfies every time we come. Union and communion: the Bridegroom never withdraws, and receives the wanderer back without reproach. Separation and service: His blessing is sure, and His delight in our gifts is real. Self-denial: we can lay down our rights because He will vindicate us. The unreached millions: He has commanded us to go, and He goes with us. Guidance and suffering: He is the One Great Circumstance, and nothing reaches us except through His hands.
+Seventeen chapters can make it seem that Hudson Taylor taught a great many things. He taught one thing, and lived it in a great many places. The one thing is that God is faithful and can be trusted absolutely. Follow it through and the whole shape of his life appears. The finished work: God has done what we could not. Consecration: we are not our own, and are safe in His hands. Prayer: business with a God who keeps His word. Money: He is not poor, and will supply what He wants done. The exchanged life: we rest on the Faithful One, not on our faith. The living water: He satisfies every time we come. Union and communion: the Bridegroom never withdraws, and receives the wanderer back without reproach. Separation and service: His blessing is sure, and His delight in our gifts is real. Self-denial: we can lay down our rights because He will vindicate us. The unreached millions: He has commanded us to go, and He goes with us. Guidance and suffering: He is the One Great Circumstance, and nothing reaches us except through His hands.
 
 ## The danger of this book
 
@@ -1372,11 +1338,11 @@ Taylor is easy to read and easy to finish. He wrote little, and nearly all of it
 
 A Retrospect. Taylor’s own account of his conversion, his training in Hull and London, his early years in China and the founding of the China Inland Mission, first gathered as a book in 1894. It is the best single entry point. In the Ochorus library, where it is also retold for teens and for children.
 
-Union and Communion. His meditations on the Song of Solomon, the fruit of the inner life he found after 1869. Short, tender and searching; the basis of chapters ten to twelve of this volume. Read it slowly. In the Ochorus library.
+Union and Communion. His meditations on the Song of Solomon, the fruit of the inner life he found after 1869. Short, tender and searching; the basis of chapters nine to eleven of this volume. Read it slowly. In the Ochorus library.
 
 ## On consecration and service
 
-Separation and Service. Meditations on Numbers 6 and 7: the Nazarite, the priestly blessing and the princes’ offerings. Less known than it deserves, and full of homely illustrations. The basis of chapters fourteen and fifteen. In the Ochorus library.
+Separation and Service. Meditations on Numbers 6 and 7: the Nazarite, the priestly blessing and the princes’ offerings. Less known than it deserves, and full of homely illustrations. The basis of chapters thirteen and fourteen. In the Ochorus library.
 
 China’s Spiritual Need and Claims. The little book he wrote with Maria’s help in 1865 to lay the needs of inland China before British Christians. It is a window into the burden behind the mission. Not yet in the Ochorus library.
 

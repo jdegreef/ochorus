@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Hannah Whitall Smith’s message — that the believer’s part is to trust and God’s part is to work, and that such trust rests on the plain goodness of God, who is the God of all comfort and is enough. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Hannah Whitall Smith’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Hannah Whitall Smith’s message — that the believer’s part is to trust and God’s part is to work, and that such trust rests on the plain goodness of God, who is the God of all comfort and is enough. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Hannah Whitall Smith’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Hannah Whitall Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into eighteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.
+  This is not a book by Hannah Whitall Smith. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into fourteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.
   
   Her teaching has a single thread. The Christian life, she insisted, is not a struggle to manage ourselves into holiness but a handing over of ourselves to God, who alone can do the work; and that handing over is only as sound as the God we hand ourselves to. So her early writing on consecration, faith and the will leads, in her later books, to the character of God Himself: the Shepherd, the Father with a mother’s heart, the God of all comfort, the God who is enough. This volume follows that thread, weighs honestly the places where she must be read with care, and ends each chapter with a few questions and a prayer.
   
@@ -29,7 +29,7 @@ That is the question to carry through these pages. Not, how do I feel about God 
 
 ## How this book is arranged
 
-After a chapter on her life, eighteen short chapters set out her teaching. The first group follows The Christian’s Secret of a Happy Life: the life hid with Christ in God, God’s side and man’s side, consecration, faith, the will, and the difference between facts and feelings. The second group takes up the difficulties she was famous for addressing — whether God is in everything, trials as chariots, guidance, temptation and failure, doubt, growth, obedience and oneness with Christ. The last group follows her later books into the character of God: the Shepherd, the God of all comfort, the unselfishness of God, and the God who is enough. A conclusion and a reader’s guide close the book.
+After a chapter on her life, fourteen short chapters set out her teaching. The first group follows The Christian’s Secret of a Happy Life: the life hid with Christ in God, God’s side and man’s side, consecration and faith, and the will set above the feelings. The second group takes up the difficulties she was famous for addressing — whether God is in everything, trials as chariots, guidance, temptation, failure and doubt, growth, obedience and oneness with Christ. The last group follows her later books into the character of God: the Shepherd and the God of all comfort, the unselfishness of God, and the God who is enough. A conclusion and a reader’s guide close the book.
 
 Each chapter ends with application points and a prayer. She would have wanted that. She had little patience with religion that stayed in the head, and she measured every truth by whether it made an actual person in an actual kitchen more restful, more loving and more obedient. Read a chapter at a time. Stop at the application points. Pray the prayer, or better, pray your own.
 
@@ -39,7 +39,7 @@ This is not a book of hero-worship, and there are places where Hannah Whitall Sm
 
 First, the movement she and her husband led was badly wounded in 1875, when Robert Pearsall Smith withdrew from public ministry amid accusations of improper conduct, and in later years he lost his faith altogether. None of this touches her own integrity, but it is a sober warning about a teaching of rapid victory that can run ahead of character, and chapter two tells the story without either sensation or evasion.
 
-Second, in The Unselfishness of God she describes her conviction that God will at last restore every human being — what she called the restitution of all things. Many readers, reading the same Scriptures, will not share that hope, and the historic churches have not taught it. Chapter nineteen sets out what she believed and why, and where it outruns what is written.
+Second, in The Unselfishness of God she describes her conviction that God will at last restore every human being — what she called the restitution of all things. Many readers, reading the same Scriptures, will not share that hope, and the historic churches have not taught it. Chapter fifteen sets out what she believed and why, and where it outruns what is written.
 
 Third, her own temperament was steady, cheerful and, by her own account, not naturally emotional. She sometimes wrote as though feelings could simply be set aside, and as though every doubt and discouragement came straight from the devil. That counsel has freed thousands. It has also, pressed too hard, made grieving or depressed believers feel that their pain is a sin. We will honour what she got right and say plainly where she is too brisk.
 
@@ -253,21 +253,19 @@ That is the balance: I laboured — yet not I. The reader who hears only the sec
 > When Your ways surprise me, when the wheel turns in a kitchen and not a pulpit, keep me from taking myself back out of Your hands.
 > Work in me to will and to do, and let me labour gladly, knowing it is not I but Your grace. Amen.
 
-# Entire Consecration
+# Consecration and Faith
 
 > I beseech you therefore, brethren, by the mercies of God, that ye present your bodies a living sacrifice, holy, acceptable unto God, which is your reasonable service. ROMANS 12:1
 
-When Hannah Whitall Smith describes how to enter the life of faith, she makes a surprising move before she says anything about effort. She insists that this life is not something we reach but something we receive. In her words, we must not look upon it “as an attainment but as an obtainment.” It is a gift of God in Christ, and the only thing to do with a gift is to take it and thank the giver. Then she names the two conditions on which the gift is received. The first is consecration. The second is faith. This chapter is about the first.
+When Hannah Whitall Smith describes how to enter the life of faith, she makes a surprising move before she says anything about effort. She insists that this life is not something we reach but something we receive. In her words, we must not look upon it “as an attainment but as an obtainment.” It is a gift of God in Christ, and the only thing to do with a gift is to take it and thank the giver. Then she names the two conditions on which the gift is received. The first is consecration. The second is faith. They belong together as the two hands of one act — the hand that lets go and the hand that takes hold — and this chapter follows her through both.
 
-## Why the whole case
+## The whole case
 
 Consecration, she says, is not a price we pay. It is simply the removal of the obstacle. A potter cannot make a vessel of clay he is not allowed to hold. So the soul that wants God to work in it must put itself wholly into His hands.
 
 She tells of trying to explain this to a doctor who could not see the point. At last she asked him what he would do with a patient who begged to be cured but would not tell him all his symptoms, and who proposed to follow some of his directions and ignore the rest. The doctor answered indignantly that he would leave such a man to his own devices; a patient must obey implicitly or he could do nothing for him. That, she said, is consecration. “God must have the whole case, without reserves.” The doctor saw it at once, and said God should have His way with him from then on.
 
 > My son, give me thine heart, and let thine eyes observe my ways. PROVERBS 23:26
-
-She was aware that the word consecration can sound grim — a religious name for giving up everything we love. So she set out to show what she called the privilege side of it.
 
 ## The lovely will of God
 
@@ -277,96 +275,47 @@ Her answer was a story. A mother who feared to say Thy will be done was asked to
 
 > Saying, Father, if thou be willing, remove this cup from me: nevertheless not my will, but thine, be done. LUKE 22:42
 
-The reader should notice that the prayer of Gethsemane is not a small thing. Our Lord prayed it in agony. Hannah does not pretend that surrender never costs; she insists that it never costs what we fear. Near the end of her life, in The Unselfishness of God, she went further still: once she had seen how good God is, consecration seemed to her not a lofty achievement for a devout few but a privilege that any sensible soul would seize. If a guide offered to lead you out of a trackless wilderness, would it feel like a sacrifice to say, lead on?
+The prayer of Gethsemane is not a small thing. Our Lord prayed it in agony. Hannah does not pretend that surrender never costs; she insists that it never costs what we fear. Near the end of her life, in The Unselfishness of God, she went further: once she had seen how good God is, consecration seemed to her not a lofty achievement for a devout few but a privilege any sensible soul would seize. If a guide offered to lead you out of a trackless wilderness, would it feel like a sacrifice to say, lead on?
 
-> I delight to do thy will, O my God: yea, thy law is within my heart. PSALM 40:8
+## Laid on the altar
 
-## When nothing seems to happen
+Having urged surrender, Hannah turned at once to the difficulty that follows it. A believer consecrates himself, as honestly as he knows how, and feels no different. So he wonders whether he has really done it, and does it again the next day, and the next, for months.
 
-Having urged surrender, Hannah turned at once to the difficulty that follows it. A believer consecrates himself, as honestly as he knows how, and feels no different. Nothing seems changed. So he wonders whether he has really done it, and does it again the next day, and the next, for months.
-
-Her diagnosis was blunt. The temptation at this point is always to wait for a feeling. But God’s rule, she wrote, is “faith first, feelings second, in all things.” She asked her readers to imagine giving an estate to a friend and then, because they felt no different the next morning, giving it again, and again the day after, for months. The friend would begin to doubt they had ever meant it, and the giver would no longer know whose the estate was. That, she said, is exactly how many Christians treat God.
-
-> Notwithstanding no devoted thing, that a man shall devote unto the LORD of all that he hath, both of man and beast, and of the field of his possession, shall be sold or redeemed: every devoted thing is most holy unto the LORD. LEVITICUS 27:28
-
-Under the old law, a thing once laid on the altar belonged to the Lord. It was not the giver’s sincerity that made the offering holy but the altar.
+Her diagnosis was blunt. The temptation at this point is always to wait for a feeling. But God’s rule, she wrote, is “faith first, feelings second, in all things.” Imagine giving an estate to a friend and then, because you felt no different the next morning, giving it again, and again the day after. The friend would begin to doubt you had ever meant it, and you would no longer know whose the estate was. That, she said, is exactly how many Christians treat God. Under the old law, a thing once laid on the altar belonged to the Lord, and it was not the giver’s sincerity that made the offering holy but the altar.
 
 > Ye fools and blind: for whether is greater, the gift, or the altar that sanctifieth the gift? MATTHEW 23:19
 
-So, she counselled, surrender yourself as fully as you know how. Ask the Holy Spirit to show you anything held back, and yield it when He shows it. Then count the transaction done. Do not reopen it every morning. Believe that God has taken what you gave, because He asked you to give it, and He does not ask for what He will not receive.
-
-## A caution and a comfort
-
-One of her rules needs care. She advised that if, on asking, the Spirit showed you nothing held back, you should conclude there was nothing. That can be a great mercy to a scrupulous conscience that invents new sins every hour. But it can also make us too quickly satisfied. Hannah’s own chapter on failure tells of a sealed cask left for years in her cellar that turned out to be breeding moths through the whole house. Consecration covers what we can see; God will show us more as we are able to bear it, and the handing over will be required again on new ground. That is not a failure of the first surrender. It is the Potter continuing His work.
-
-> Neither yield ye your members as instruments of unrighteousness unto sin: but yield yourselves unto God, as those that are alive from the dead, and your members as instruments of righteousness unto God. ROMANS 6:13
-
-And here is the comfort. The soul that has once given itself to God does not belong to itself any longer. That is not a demand; it is a relief.
+So, she counselled, surrender yourself as fully as you know how. Ask the Holy Spirit to show you anything held back, and yield it when He shows it. Then count the transaction done. One caution belongs here: her advice that if the Spirit shows you nothing held back you may conclude there is nothing can be a mercy to a scrupulous conscience, but it can also make us too quickly satisfied. Consecration covers what we can see; God will show us more as we are able to bear it, and the handing over will be asked again on new ground. That is not a failure of the first surrender. It is the Potter continuing His work.
 
 > What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price: therefore glorify God in your body, and in your spirit, which are God’s. 1 CORINTHIANS 6:19–20
 
-### FOR REFLECTION AND ACTION
-
-1. What do you secretly fear God would do with you if you gave Him the whole case? Write it down and look at it in the light of the mother and her boy.
-2. Make a definite surrender, in words, and date it. Then refuse to reopen it tomorrow morning.
-3. Ask the Spirit plainly: is anything held back? Yield what He shows you at once.
-4. When feelings do not follow, say aloud, I am the Lord’s, because I gave myself and He has taken me.
-5. Think of one concrete thing — a plan, a relationship, a possession — and say Thy will be done over it today.
-
-### A PRAYER
-
-> Lord, I have feared Your will as though You were waiting to make me miserable.
-> Forgive me for thinking myself more loving than You. I give You the whole case, without reserves: body, soul and spirit, and all that belongs to me.
-> I lay myself on Your altar, and I will not keep taking myself back because I do not feel different.
-> Show me, as I am able to bear it, what I have still kept back, and give me grace to yield it gladly. Amen.
-
-# Faith Is Only Believing
-
-> He staggered not at the promise of God through unbelief; but was strong in faith, giving glory to God; And being fully persuaded that, what he had promised, he was able also to perform. ROMANS 4:20–21
-
-After consecration, Hannah Whitall Smith says, comes faith. And here the earnest seeker often gets stuck in a peculiar way. Every teacher tells him that the life of trust is received by faith, and he agrees; but that is exactly his difficulty. He has no faith, he says. He does not know what it is or how to get it. He has prayed for it for years, and nothing has come.
-
 ## Faith is not a thing
 
-Hannah’s answer, in The Christian’s Secret of a Happy Life, is one of her most liberating. The trouble, she says, is that we imagine faith to be a kind of substance — a religious feeling or a gracious disposition, something we could look inside and find, and then offer to God like a coin. We pray for this thing, and when we cannot find it inside us, we conclude we have none.
+Here the earnest seeker often gets stuck in a peculiar way. Every teacher tells him that this life is received by faith, and he agrees; but that is exactly his difficulty. He has no faith, he says. He has prayed for it for years, and nothing has come.
 
-But faith is not that sort of thing at all. “It is simply believing God, and, like sight, it is nothing apart from its object.” You might as well shut your eyes and look inside to see whether you have sight. You know you can see because you see something. You know you believe because you believe something. And then comes the sentence that has set many anxious souls free: “The virtue does not lie in your believing, but in the thing you believe.”
+Hannah’s answer, in The Christian’s Secret of a Happy Life, is one of her most liberating. The trouble, she says, is that we imagine faith to be a kind of substance — a religious feeling or a gracious disposition, something we could look inside and find, and then offer to God like a coin. But faith is not that sort of thing at all. “It is simply believing God, and, like sight, it is nothing apart from its object.” You might as well shut your eyes and look inside to see whether you have sight. You know you can see because you see something. And then comes the sentence that has set many anxious souls free: “The virtue does not lie in your believing, but in the thing you believe.”
 
 > Abraham believed God, and it was counted unto him for righteousness. ROMANS 4:3
 
-Faith, then, is only the link. It is not the Saviour; it joins us to the Saviour. A weak faith in a strong Christ is worth more than a strong faith in anything else. The question to ask is never, how strong is my faith? but, how trustworthy is the one I am trusting?
+Faith, then, is only the link. It is not the Saviour; it joins us to the Saviour. A weak faith in a strong Christ is worth more than a strong faith in anything else.
 
-## We trust all day long
-
-She makes the point with gentle ridicule. We trust other people constantly and never think it remarkable. We eat what the cook has prepared without suspecting poison. We board a train and trust our lives to a driver we have never met. We read the newspaper and believe there is such a place as Ireland, though we have never been. Imagine a day, she says, in which we refused to trust anyone because we had no faith. We would starve at breakfast, walk everywhere, insult our friends, and end the day ridiculous and exhausted.
+She makes the point with gentle ridicule. We trust other people constantly and never think it remarkable. We eat what the cook has prepared without suspecting poison. We board a train and trust our lives to a driver we have never met. If we can trust our fellow creatures, who may fail us at any moment, how is it that we say without embarrassment that we cannot trust God? She asked her readers, whenever they said I have no faith, to finish the sentence honestly: I have no faith in God. Said plainly, it sounds as terrible as it is.
 
 > If we receive the witness of men, the witness of God is greater: for this is the witness of God which he hath testified of his Son. 1 JOHN 5:9
 
-Then she turns it round. If we can trust our fellow creatures, who may fail us at any moment, how is it that we say without embarrassment that we cannot trust God? She asked her readers, whenever they said I have no faith, to finish the sentence honestly: I have no faith in God. Said plainly, it sounds as terrible as it is.
-
-> He that believeth on the Son of God hath the witness in himself: he that believeth not God hath made him a liar; because he believeth not the record that God gave of his Son. 1 JOHN 5:10
-
 ## The fact, the faith, the feeling
 
-Her most memorable illustration came from the recent history of her own country. Emancipation had been proclaimed; the enslaved were free in law. But she told of a woman in a remote place who, years after the war, had never been sure of it. She had heard she was free, and asked her master, who said she was not; she had asked an officer, who told her to stay. So she lived between hope and fear. When at last someone told her plainly that it was true, and explained how it had come about, she believed it — and walked out free.
+Her most memorable illustration came from the recent history of her own country. Emancipation had been proclaimed; the enslaved were free in law. But she told of a woman in a remote place who, years after the war, had never been sure of it. She had heard she was free, and asked her master, who said she was not; so she lived between hope and fear. When at last someone told her plainly that it was true, and explained how it had come about, she believed it — and walked out free.
 
-Nothing in her circumstances had changed. What changed was that she believed the proclamation. From this Hannah drew her famous order: first the fact, then the faith, then the feeling. Human nature, she said, reverses it and waits to feel free before believing it. But the fact came first; faith took hold of it; feeling followed.
-
-> For unto us was the gospel preached, as well as unto them: but the word preached did not profit them, not being mixed with faith in them that heard it. HEBREWS 4:2
-
-God has proclaimed our freedom. He has told us that sin shall not have dominion over us, that Christ is able to keep us, that we are His. Faith is simply taking Him at His word, and acting as though it were true, because it is.
+Nothing in her circumstances had changed. What changed was that she believed the proclamation. From this Hannah drew her famous order: first the fact, then the faith, then the feeling. Human nature reverses it and waits to feel free before believing it. God has proclaimed our freedom; faith is simply taking Him at His word, and acting as though it were true, because it is.
 
 > If the Son therefore shall make you free, ye shall be free indeed. JOHN 8:36
 
-## Trust and worry
+## Trust, worry and the struggling heart
 
-Hannah added a test that is uncomfortably practical. “And remember, trust and worry are more incompatible than oil and water.” If we give a matter to a friend and then lie awake all night wondering whether he will manage it, we have not really trusted him. If we give our soul to the Lord and then spend our days anxious about it, the anxiety is the proof that we have not handed it over. By this rule, she said, there is very little real trust in the church.
+Hannah added a test that is uncomfortably practical. “And remember, trust and worry are more incompatible than oil and water.” If we give our soul to the Lord and then spend our days anxious about it, the anxiety is the proof that we have not handed it over.
 
-> Nevertheless when the Son of man cometh, shall he find faith on the earth? LUKE 18:8
-
-## A word for those who struggle
-
-It must be said that Hannah can make faith sound easier than many people find it. She calls it the simplest thing in the world, and in one sense it is. But the man who cried out to Jesus for his son did not find it simple.
+It must be said that she can make faith sound easier than many people find it. She calls it the simplest thing in the world, and in one sense it is. But the man who cried out to Jesus for his son did not find it simple.
 
 > And straightway the father of the child cried out, and said with tears, Lord, I believe; help thou mine unbelief. MARK 9:24
 
@@ -374,32 +323,31 @@ Jesus did not rebuke him for the tears or the mixture. He healed the boy. There 
 
 > Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;) HEBREWS 10:23
 
-Notice where the writer to the Hebrews puts the weight: not on the firmness of our holding but on the faithfulness of the one who promised.
-
 ### FOR REFLECTION AND ACTION
 
-1. Stop asking whether you have enough faith. Ask instead whether God is trustworthy, and answer from Scripture.
-2. Finish the sentence honestly the next time you say I have no faith: I have no faith in God. Then take it back.
-3. Choose one promise and act on it this week as a fact, before you feel it.
-4. Use the worry test: what are you still lying awake over that you claim to have given to God?
-5. If believing is hard for you just now, pray the father’s prayer and leave the rest to Christ.
+1. What do you secretly fear God would do with you if you gave Him the whole case? Look at it in the light of the mother and her boy.
+2. Make a definite surrender, in words, and date it. Then refuse to reopen it tomorrow morning because you feel no different.
+3. Ask the Spirit plainly: is anything held back? Yield what He shows you at once.
+4. Stop asking whether you have enough faith. Ask instead whether God is trustworthy, and answer from Scripture.
+5. Choose one promise and act on it this week as a fact, before you feel it.
+6. Use the worry test: what are you still lying awake over that you claim to have given to God?
 
 ### A PRAYER
 
-> Lord, I have been looking inside myself for faith as though it were a coin I could offer You.
+> Lord, I have feared Your will as though You were waiting to make me miserable. Forgive me for thinking myself more loving than You.
+> I give You the whole case, without reserves, and I lay myself on Your altar. I will not keep taking myself back because I do not feel different.
 > Turn my eyes from my believing to You, the one I believe. You have proclaimed my freedom; let me walk out free.
-> Where I trust other people more readily than I trust You, forgive me, and teach me to take You at Your word.
-> I believe; help Thou mine unbelief. Amen.
+> Where my grip is weak, hold me; I believe; help Thou mine unbelief. Amen.
 
 # The Will Is the King
 
 > Choose you this day whom ye will serve … but as for me and my house, we will serve the LORD. JOSHUA 24:15
 
-There is a difficulty, Hannah Whitall Smith observed, that comes to many people soon after they have given themselves to God. The first glow fades. They go on saying that they belong to the Lord, but it all feels unreal. Their surrender seems a matter of words; their faith seems shallow; they begin to fear that they are hypocrites, claiming what their hearts do not feel. In The Christian’s Secret of a Happy Life she devotes a whole chapter to this, and her answer is one of the pillars of her teaching.
+There is a difficulty, Hannah Whitall Smith observed, that comes to many people soon after they have given themselves to God. The first glow fades. They go on saying that they belong to the Lord, but it all feels unreal. Their surrender seems a matter of words; they begin to fear that they are hypocrites, claiming what their hearts do not feel. She knew the difficulty from the inside. She had spent ten miserable years trying to feel her way to God, and she spent the rest of her life trying to spare others the same mistake. Her answer has two halves: the will, not the feelings, is the centre of the self; and the facts, not the feelings, are the ground of faith.
 
 ## Not in the emotions
 
-The mistake, she says, is to think that the life hid with Christ is lived in the feelings. “Now, the truth is, this life is not to be lived in emotions. It is to be lived in the will.” She cites Fénelon, the French archbishop whose writings her father had given her as a girl, to the effect that pure religion resides in the will. By the will she does not mean a passing wish but the deciding power in us — the part that chooses, and to which everything else must finally submit. It is, she says, the man himself, the I that we recognise as our real self behind all our moods.
+The mistake, she says in The Christian’s Secret of a Happy Life, is to think that the life hid with Christ is lived in the feelings. “Now, the truth is, this life is not to be lived in emotions. It is to be lived in the will.” She cites Fénelon, the French archbishop whose writings her father had given her as a girl, to the effect that pure religion resides in the will. By the will she does not mean a passing wish but the deciding power in us — the part that chooses, and to which everything else must finally submit. It is, she says, the man himself, the I that we recognise as our real self behind all our moods.
 
 Our emotions belong to us, and we enjoy and suffer them, but they are not the self. They rise and fall with health, weather and circumstance. If God is to possess us, He must possess the centre, and the centre is the will. As the will is, so is the man.
 
@@ -413,76 +361,33 @@ She tells of a young man, a slave to doubting, to whom nothing in religion ever 
 
 > If any man will do his will, he shall know of the doctrine, whether it be of God, or whether I speak of myself. JOHN 7:17
 
-## Choosing against our own feelings
-
-Two further stories show how this works under pressure. A woman met a great trial against which every feeling rebelled. Instead of waiting to feel submissive, she met each rebellious thought with the words Thy will be done, repeated as an act of choice, and before long even her feelings came round. Another woman had a besetting sin which, as she put it, she loved in her emotions and hated in her will. She knelt and told the Lord just that: with one part of me I love this, with my true self I hate it, and I put my will on Your side. She found herself delivered, not by an outward rule but by an inward power.
-
-> Know ye not, that to whom ye yield yourselves servants to obey, his servants ye are to whom ye obey; whether of sin unto death, or of obedience unto righteousness? ROMANS 6:16
+Another woman had a besetting sin which, as she put it, she loved in her emotions and hated in her will. She knelt and told the Lord just that: with one part of me I love this, with my true self I hate it, and I put my will on Your side. She found herself delivered, not by an outward rule but by an inward power.
 
 The great relief of this teaching is that it puts the Christian life within reach. Nobody can command his feelings, and a religion that required the right feelings would drive sensitive people to despair. But anyone can choose. The transaction with God, Hannah says, is as real when only the will acts as when every emotion agrees. It does not seem as real to us, but in God’s sight it is.
 
-At the end of the chapter she printed a letter from a Presbyterian minister, written years before, who had covenanted to walk by faith and not by feelings, and found that God kept him in steady victory whether his feelings were high or low. The line has helped many people since.
+At the end of her chapter on the will she printed a letter from a Presbyterian minister, written years before, who had covenanted to walk by faith and not by feelings, and found that God kept him in steady victory whether his feelings were high or low. The line has helped many people since.
 
 > My heart is fixed, O God, my heart is fixed: I will sing and give praise. PSALM 57:7
 
-## Where she needs balance
-
-This chapter is Hannah at her most useful, and it also shows her most characteristic weakness. She says that throughout the Bible the heart means the will rather than the emotions. That is only partly right. The heart in Scripture is the whole inner person — thinking, choosing, desiring and feeling — and God asks for all of it.
-
-> Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. MATTHEW 22:37
-
-Feelings are not the governor, but neither are they mere noise. The psalms are full of feeling brought honestly before God: fear, longing, grief, delight. Sometimes our feelings tell us true things — that we are exhausted, that we are grieving, that something is wrong and needs attention. The psalmist does not ignore his downcast soul; he speaks to it.
-
-> Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God. PSALM 42:11
-
-That is the right use of Hannah’s teaching. The will does not pretend the feelings are absent. It hears them, names them, and then turns them toward God and chooses His way anyway. Held like that, her counsel is a lifeline for anyone who has thought that unreal feelings meant an unreal faith.
-
-> Keep thy heart with all diligence; for out of it are the issues of life. PROVERBS 4:23
-
-### FOR REFLECTION AND ACTION
-
-1. Where have you mistaken a lack of feeling for a lack of faith or surrender?
-2. Put your will on God’s side in one matter today, in words: I choose Thy will in this, whatever I feel.
-3. Name a sin you love in your emotions and hate in your will, and tell God so honestly.
-4. When a feeling protests this week, speak to it as the psalmist did, rather than obeying it or pretending it is not there.
-5. Write down the minister’s covenant — to walk by faith and not by feelings — and keep it where you will see it.
-
-### A PRAYER
-
-> Lord, my feelings are loud and changeable, and I have let them rule me.
-> I give You the centre of myself, my will, and I choose You. I choose to believe, and I choose to obey.
-> Where my emotions protest, let me hear them honestly and bring them to You, but not let them govern.
-> Take the self You have made and, in Your time, bring every feeling into harmony with Your good will. Amen.
-
-# Facts, Not Feelings
-
-> For we walk by faith, not by sight. 2 CORINTHIANS 5:7
-
-If one conviction runs through every book Hannah Whitall Smith wrote, it is this: the facts of the Christian faith matter more than our feelings about them. She learned it the hard way, over ten miserable years, and she spent the rest of her life trying to spare others the same mistake.
+> Know ye not, that to whom ye yield yourselves servants to obey, his servants ye are to whom ye obey; whether of sin unto death, or of obedience unto righteousness? ROMANS 6:16
 
 ## A religion of trying to feel
 
-In The Unselfishness of God she describes the religion of her youth as nothing but a religion of trying to feel. She had been taught to look within for the light of God, and so she watched her emotions constantly, trying to work them up into what she supposed God required. She never succeeded. Her question every day was not what God had said, but how she felt. She compared herself to a prisoner before a judge who spent all his energy examining his own feelings about the judge, instead of trying to learn what the judge felt about him. Or to a traveller who boarded the first train he saw and then shut his eyes to try to feel whether it was the right one.
+The will needs something to stand on, and here the second half of her answer comes in. In The Unselfishness of God she describes the religion of her youth as nothing but a religion of trying to feel. She had been taught to look within for the light of God, and so she watched her emotions constantly, trying to work them up into what she supposed God required. Her question every day was not what God had said, but how she felt. She compared herself to a prisoner before a judge who spent all his energy examining his own feelings about the judge, instead of trying to learn what the judge felt about him.
 
-The change came when she discovered that there were facts to be found out — that God had spoken, and that what He had said was true whether she felt it or not. Her own summary is worth quoting at length.
+The change came when she discovered that there were facts to be found out — that God had spoken, and that what He had said was true whether she felt it or not. “You may feel good or you may feel bad, but neither the good feeling nor the bad feeling affects the real thing.” If God loves you, she went on, it makes no difference to the fact whether you feel it; it only affects your comfort. And once she had learned that, she found that the very feelings she had failed to manufacture came of their own accord.
 
-“You may feel good or you may feel bad, but neither the good feeling nor the bad feeling affects the real thing.” If God loves you, she went on, it makes no difference to the fact whether you feel it; it only affects your comfort. And after she had learned that the facts of religion were far more important than her feelings about them, she found she was always happy in her religious life, and that the very feelings she had failed to manufacture came of their own accord.
-
-> But these are written, that ye might believe that Jesus is the Christ, the Son of God; and that believing ye might have life through his name. JOHN 20:31
+> For we walk by faith, not by sight. 2 CORINTHIANS 5:7
 
 She loved to tell how Luther, when the devil asked whether he felt himself a child of God, answered that he did not feel it at all, but knew it.
 
 ## The map and the country
 
-In The God of All Comfort she put the same point with a child’s joke. A boy who had been learning about Columbus told his father that he would not have gone to all that trouble; he would simply have looked on the map and found America. The boy had not understood that maps describe countries that already exist. America was not real because it was on the map; it was on the map because it was real. So with the Bible. Things are not true because they are in the Bible; they are in the Bible because they are true. When it says God loves us, it is describing a fact as solid as a coastline.
+In The God of All Comfort she put the same point with a child’s joke. A boy who had been learning about Columbus told his father that he would not have gone to all that trouble; he would simply have looked on the map and found America. America was not real because it was on the map; it was on the map because it was real. So with the Bible. Things are not true because they are in the Bible; they are in the Bible because they are true. When it says God loves us, it is describing a fact as solid as a coastline.
 
 > Jesus saith unto him, Thomas, because thou hast seen me, thou hast believed: blessed are they that have not seen, and yet have believed. JOHN 20:29
 
-A fact once seen becomes a conviction, and a conviction, she said, is sturdier than any experience. Once you know that two and two make four, no illness or bad weather can shake it.
-
-## Conviction and emotion
-
-Her time among the holiness camp meetings sharpened this. She went forward to the altar again and again seeking the overwhelming blessing others described, and it never came. “I am not naturally emotional,” she wrote. Her husband, of a warmer temperament, received the blessing in floods of joy. She was jealous at first. Then she came to see that the difference was not in God’s favour but in the two natures receiving the same truth, and she noticed that the emotional experiences of her friends were often less lasting than her plainer convictions. When trouble came, their feelings failed, and some were glad at last to stand on the ground of conviction they had once thought barren.
+Her time among the holiness camp meetings sharpened this. She went forward again and again seeking the overwhelming blessing others described, and it never came. “I am not naturally emotional,” she wrote. Her husband, of a warmer temperament, received the blessing in floods of joy. She came to see that the difference was not in God’s favour but in the two natures receiving the same truth, and she noticed that when trouble came, the emotional experiences of her friends often failed, and some were glad at last to stand on the ground of conviction they had once thought barren.
 
 > For if our heart condemn us, God is greater than our heart, and knoweth all things. 1 JOHN 3:20
 
@@ -490,36 +395,35 @@ This is sound and freeing teaching, and it has rescued many. The Christian whose
 
 > Who is among you that feareth the LORD, that obeyeth the voice of his servant, that walketh in darkness, and hath no light? let him trust in the name of the LORD, and stay upon his God. ISAIAH 50:10
 
-## Where her temperament shows
+## Weather and ground
 
-Yet here more than anywhere the reader should notice her own temperament speaking. She once wrote that if she had her way, the whole subject of feelings in the religious life would be absolutely ignored. That is too much. A cheerful, steady nature can easily treat feelings as a nuisance to be stepped over; a person who has buried a child, or lives with depression, cannot simply ignore what he feels, and should not be made to think he ought to.
+This is Hannah at her most useful, and it also shows her most characteristic weakness. She says that throughout the Bible the heart means the will rather than the emotions. That is only partly right. The heart in Scripture is the whole inner person — thinking, choosing, desiring and feeling — and God asks for all of it.
 
-Scripture does not ignore feelings. It gives them a voice.
+> Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. MATTHEW 22:37
 
-> How long wilt thou forget me, O LORD? for ever? how long wilt thou hide thy face from me? How long shall I take counsel in my soul, having sorrow in my heart daily? how long shall mine enemy be exalted over me? PSALM 13:1–2
+She once wrote that if she had her way, the whole subject of feelings in the religious life would be absolutely ignored. That is too much, and it is her own temperament speaking. A cheerful, steady nature can easily treat feelings as a nuisance to be stepped over; a person who has buried a child, or lives with depression, cannot simply ignore what he feels, and should not be made to think he ought to. Scripture does not ignore feelings. It gives them a voice, and the psalmist does not ignore his downcast soul; he speaks to it.
 
-The psalmist does not hide his sorrow, and God does not rebuke him for it. Our Lord Himself wept at a grave. What the psalm does — and this is Hannah’s truth rightly held — is bring the feeling to God and then stand on the fact.
+> Why art thou cast down, O my soul? and why art thou disquieted within me? hope thou in God: for I shall yet praise him, who is the health of my countenance, and my God. PSALM 42:11
 
-> But I have trusted in thy mercy; my heart shall rejoice in thy salvation. PSALM 13:5
-
-So the right lesson is not that feelings are unimportant, but that they are not the foundation. They are weather; the facts are the ground. The weather is real, and a wise person dresses for it. But no one decides whether the ground is there by looking at the sky.
+So the right lesson is not that feelings are unimportant, but that they are not the foundation and not the governor. They are weather; the facts are the ground. The weather is real, and a wise person dresses for it. But no one decides whether the ground is there by looking at the sky. The will hears the feelings, names them, brings them to God — and then chooses His way and stands on what He has said. Held like that, her counsel is a lifeline for anyone who has thought that unreal feelings meant an unreal faith.
 
 > We have not an high priest which cannot be touched with the feeling of our infirmities; but was in all points tempted like as we are, yet without sin. HEBREWS 4:15
 
 ### FOR REFLECTION AND ACTION
 
-1. Where do you still ask, how do I feel? before you ask, what has God said?
-2. Pick one fact of the gospel you find hard to feel — that God loves you, that you are forgiven — and write out the Scripture that states it.
-3. If you are in a dark season, pray one of the lament psalms aloud, holding nothing back, and end where the psalm ends.
-4. Consider your own temperament. Are you more likely to be ruled by feelings, or to dismiss them in others? Adjust accordingly.
-5. Be gentle with a grieving or depressed friend this week; do not tell them to ignore what they feel. Remind them of what is true.
+1. Where have you mistaken a lack of feeling for a lack of faith or surrender?
+2. Put your will on God’s side in one matter today, in words: I choose Thy will in this, whatever I feel.
+3. Name a sin you love in your emotions and hate in your will, and tell God so honestly.
+4. Pick one fact of the gospel you find hard to feel — that God loves you, that you are forgiven — and write out the Scripture that states it.
+5. When a feeling protests this week, speak to it as the psalmist did, rather than obeying it or pretending it is not there.
+6. Be gentle with a grieving or depressed friend; do not tell them to ignore what they feel. Remind them of what is true.
 
 ### A PRAYER
 
 > Lord, I have lived by the weather of my feelings and wondered why my faith was so unsteady.
+> I give You the centre of myself, my will, and I choose You. I choose to believe, and I choose to obey.
 > Thank You that Your love is a fact, written down and sealed in Your Son, and that it does not rise and fall with my moods.
-> When my heart condemns me, You are greater than my heart. When I walk in darkness, let me stay myself upon You.
-> Let me neither despise my feelings nor obey them, but bring them honestly to You and stand on what You have said. Amen.
+> Let me neither despise my feelings nor obey them, but bring them honestly to You, and in Your time bring every one of them into harmony with Your good will. Amen.
 
 # Is God in Everything?
 
@@ -732,19 +636,19 @@ Hannah’s own movement was later troubled by exactly the dangers she describes 
 > Speak to me through Your Word, through the mind You have given me, through the circumstances You arrange, and in the quiet of my heart.
 > Where the way is clear, make me quick to obey; where it is not, make me willing to wait. Amen.
 
-# Temptation and Failure
+# Temptation, Failure and Doubt
 
 > There hath no temptation taken you but such as is common to man: but God is faithful, who will not suffer you to be tempted above that ye are able; but will with the temptation also make a way to escape, that ye may be able to bear it. 1 CORINTHIANS 10:13
 
-Every teaching about victory over sin has to face two awkward facts. Christians who have given themselves wholly to God are still tempted, and sometimes they still fall. Hannah Whitall Smith faced both squarely in The Christian’s Secret of a Happy Life, in two chapters that have probably helped more people than anything else she wrote, because they meet us exactly where the brighter chapters leave off.
+Every teaching about victory over sin has to face some awkward facts. Christians who have given themselves wholly to God are still tempted, sometimes they still fall, and very often they doubt. Hannah Whitall Smith faced all three squarely in The Christian’s Secret of a Happy Life, in chapters that have probably helped more people than anything else she wrote, because they meet us exactly where the brighter chapters leave off.
 
 ## Temptation is not sin
 
-The first mistake, she says, is to expect that after we have entered the rest of faith, temptation will stop. When it comes back — often stronger than before — the soul concludes that it must have been mistaken, and that this cannot be the promised land after all. But Israel met far more enemies inside Canaan than in the wilderness: walled cities, giants and thirty-one kings. Strong temptations, she says, are more often a sign of great grace than of little.
+The first mistake, she says, is to expect that after we have entered the rest of faith, temptation will stop. When it comes back — often stronger than before — the soul concludes that this cannot be the promised land after all. But Israel met far more enemies inside Canaan than in the wilderness: walled cities, giants and thirty-one kings. Strong temptations, she says, are more often a sign of great grace than of little.
 
 The second mistake is worse: to think that being tempted is itself a sin. The enemy whispers some evil thought, and then accuses us of it — how wicked you must be to think such a thing! — like a burglar who, when the owner resists him, shouts that the owner is the thief. So the soul feels condemned, grows discouraged, and a discouraged soul falls easily.
 
-Her answer was plain. “It is no more a sin to hear evil whispers in our souls than to hear the swearing of bad men as we pass along the street.” The sin comes only when we stop, listen and join in. She told of a sheltered woman who was horrified by the dreadful thoughts that rushed in whenever she knelt to pray, and concluded she could never have been born again. When she learned to recognise them as the enemy’s and not her own, she turned her back on them, told him to take them to the Lord, and was set free.
+Her answer was plain. “It is no more a sin to hear evil whispers in our souls than to hear the swearing of bad men as we pass along the street.” The sin comes only when we stop, listen and join in. She told of a sheltered woman who was horrified by the dreadful thoughts that rushed in whenever she knelt to pray; when she learned to recognise them as the enemy’s and not her own, she turned her back on them and was set free.
 
 > Blessed is the man that endureth temptation: for when he is tried, he shall receive the crown of life, which the Lord hath promised to them that love him. JAMES 1:12
 
@@ -754,7 +658,7 @@ Her answer was plain. “It is no more a sin to hear evil whispers in our souls 
 
 Then she turned to failure. She did not pretend that trusting Christians never sin. “We are not preaching a state, but a walk.” Holiness is not a place we reach and then own for ever; it is a road we walk day by day, and we may step off it. What matters is what we do next.
 
-A believer who falls is tempted to one of two responses: to give up, concluding that the whole thing was a delusion; or to hide the sin, calling it an infirmity to protect his doctrine. Both are fatal. The only way is honesty and an instant return. “Our sin is no reason for ceasing to trust, but only an unanswerable argument why we must trust more fully than ever.”
+A believer who falls is tempted either to give up, concluding that the whole thing was a delusion, or to hide the sin, calling it an infirmity to protect his doctrine. Both are fatal. The only way is honesty and an instant return. “Our sin is no reason for ceasing to trust, but only an unanswerable argument why we must trust more fully than ever.”
 
 > If we confess our sins, he is faithful and just to forgive us our sins, and to cleanse us from all unrighteousness. 1 JOHN 1:9
 
@@ -762,13 +666,7 @@ When Israel was defeated at Ai, Joshua lay on his face in despair until evening.
 
 > And the LORD said unto Joshua, Get thee up; wherefore liest thou thus upon thy face? JOSHUA 7:10
 
-Hannah’s gloss is memorable: “Up, sanctify the people,” is always God’s command; “Lie down and be discouraged” is always the enemy’s temptation.
-
-## Three years and five minutes
-
-She told two stories side by side. A man who had known a time of real victory was overcome by a temptation to treat a brother unkindly. He concluded he had never truly trusted, then that he had never been born again, and spent three years in misery, drifting from sin to sin. At last a woman asked him whether he had confessed it. He had done nothing but confess it for three years. Had he ever believed God forgave him? No, he had never felt that He did. She read him First John, and in a few minutes he saw that God had said it all along.
-
-The other was a woman, two weeks into her new life, who was suddenly overtaken by a violent fit of anger. She ran to her room still boiling, knelt and confessed it — I am sinning even now, I hate it and cannot get rid of it — and said aloud that she believed God did forgive and cleanse. Deliverance came as she spoke. The sin and its cure had taken five minutes.
+She told two stories side by side. A man overcome by a temptation to treat a brother unkindly concluded he had never been born again, and spent three years in misery. He had done nothing but confess the sin for three years; he had never believed God forgave him, because he had never felt that He did. The other was a woman, two weeks into her new life, overtaken by a violent fit of anger. She ran to her room still boiling, confessed it, and said aloud that she believed God did forgive and cleanse. The sin and its cure had taken five minutes.
 
 > Rejoice not against me, O mine enemy: when I fall, I shall arise; when I sit in darkness, the LORD shall be a light unto me. MICAH 7:8
 
@@ -778,99 +676,55 @@ But she also pressed the reader to ask why a failure happened. Israel fell at Ai
 
 > Search me, O God, and know my heart: try me, and know my thoughts: And see if there be any wicked way in me, and lead me in the way everlasting. PSALM 139:23–24
 
-## Where she needs filling out
+## The luxury of doubting
 
-Two cautions. First, she repeats an old saying that all discouragement is from the devil. As a weapon against morbid self-accusation, it is useful. As a rule, it is too sweeping. Some discouragement is simple tiredness, and some is the right grief of a conscience that has done wrong.
+It is strange, Hannah remarked, that people whose very name is believers should have to confess to so much doubting. Her chapter on it is the most vigorous thing in the book. She did not console doubters. She told them to stop.
 
-> For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death. 2 CORINTHIANS 7:10
+It matters which doubts she had in view. She was not writing about honest intellectual questions; she had passed through years of scepticism herself. Her target was the settled habit of doubting God’s love and faithfulness toward oneself — the Christian who says, yes, I believe my sins are forgiven, but then; and after the but comes a doubt about every promise God has made. Her most searching claim was this: “I am convinced that, for many, doubting is a luxury.” Try giving your doubts up, she said, and see. Do they not come like sympathetic friends, and is it not a luxury to sit with them and listen to their condolences?
 
-Second, instant forgiveness from God does not cancel what we owe to people. If the sin wronged someone, returning to God includes making it right with them. Her stories are true to experience, but they are not a formula; Peter’s restoration after his fall took more than five minutes, and the Lord prayed for him through it.
-
-> Now unto him that is able to keep you from falling, and to present you faultless before the presence of his glory with exceeding joy, JUDE 1:24
-
-### FOR REFLECTION AND ACTION
-
-1. Distinguish this week between the thought that comes and the thought you entertain. Refuse to feel guilty for the first; turn away from it at once.
-2. Watch for discouragement after temptation, and treat it as a second temptation.
-3. Next time you fail, confess immediately — within the minute — and believe you are forgiven because God says so.
-4. Open your cask: name one small indulgence your conscience has twinged about for years, and bring it into the light.
-5. If your failure hurt someone, go and put it right before you consider the matter closed.
-
-### A PRAYER
-
-> Lord, I have mistaken the enemy’s whispers for my own heart and let him discourage me.
-> When I am tempted, let me turn at once to You. When I fall, keep me from lying on my face, and from hiding my sin.
-> I confess it now, and I believe that You are faithful and just to forgive me and to cleanse me.
-> Search me and show me whatever I have left unopened, and give me the courage to bring it out before You. Amen.
-
-# The Luxury of Doubting
-
-> Let not your heart be troubled: ye believe in God, believe also in me. JOHN 14:1
-
-It is strange, Hannah Whitall Smith remarked, that people whose very name is believers should have to confess to so much doubting. The habit is so common that if the church were renamed by its most obvious characteristic, doubters might be the fitting word. In The Christian’s Secret of a Happy Life she gave a whole chapter to doubt, and it is the most vigorous thing in the book. She did not console doubters. She told them to stop.
-
-## The kind of doubt she meant
-
-It matters which doubts she had in view. She was not writing about honest intellectual questions; she had passed through years of scepticism herself and wrote about them with sympathy in The Unselfishness of God. Her target was something else: the settled habit of doubting God’s love and faithfulness toward oneself. It is the Christian who says, yes, I believe my sins are forgiven — but then; and after the but comes a doubt about every promise God has made. These believers, she says, see themselves as interesting cases of rare spiritual conflict. She thought a truer name would be spiritual rebellion.
-
-> And immediately Jesus stretched forth his hand, and caught him, and said unto him, O thou of little faith, wherefore didst thou doubt? MATTHEW 14:31
-
-## A luxury, not a trial
-
-Her most searching claim was this: “I am convinced that, for many, doubting is a luxury.” Most of us would protest that our doubts are a misery, not an indulgence. But try giving them up, she said, and see. Do our doubts not come to us like sympathetic friends who understand our troubles? Is it not a luxury to sit with them and listen to their condolences? She compared it to brooding over an injury someone has done us — making us wretched, and yet a wretchedness we find strangely hard to give up.
-
-And the most subtle doubts wear the costume of humility. We do not accuse God of injustice; we simply feel that we are too wicked for Him to care, or too complicated for Him to manage. But this, she says, is still a hard thought about the Lord. He came to save sinners. Our unworthiness is not a bar to His love; it is our claim on it.
+And the most subtle doubts wear the costume of humility. We do not accuse God of injustice; we simply feel that we are too wicked for Him to care. But He came to save sinners. Our unworthiness is not a bar to His love; it is our claim on it.
 
 > But when Jesus heard that, he said unto them, They that be whole need not a physician, but they that are sick. MATTHEW 9:12
 
 > What man of you, having an hundred sheep, if he lose one of them, doth not leave the ninety and nine in the wilderness, and go after that which is lost, until he find it? And when he hath found it, he layeth it on his shoulders, rejoicing. LUKE 15:4–5
 
-## A mother’s indignation
-
-She told of a mother who left two little girls at Hannah’s house while she did errands. One played happily all afternoon. The other sat in a corner and worked herself into a frenzy, sure that her mother would forget her, or would be glad to be rid of so naughty a child. When the mother returned and heard it, Hannah watched grief, wounded love, pity and indignation fight for her face — and indignation won. That scene, Hannah said, had come back to her a hundred times, and it taught her to refuse the doubts that knocked at the door of her own heart.
-
-> Yea, they spake against God; they said, Can God furnish a table in the wilderness? PSALM 78:19
+She told of a mother who left two little girls at Hannah’s house while she did errands. One played happily all afternoon. The other sat in a corner and worked herself into a frenzy, sure that her mother would forget her. When the mother returned and heard it, Hannah watched grief, wounded love and indignation fight for her face — and indignation won. That scene taught her to refuse the doubts that knocked at the door of her own heart.
 
 ## Taking the pledge
 
-How, then, is one delivered? The same way as from any sin, she said: by handing it to the Lord. And because the stronghold is in the will, she advised something like a temperance pledge. Many people say, I hope I shall not doubt any more. Few say, I will not. But no surrender is effectual until it reaches the point of I will not. The liberty to doubt must be given up for ever.
-
-Then, when the first doubt comes, do not argue with it or try to disprove it. Lift the shield of faith at once, and say something true. Her own formula was three words, repeated as often as needed: Jesus saves me. She said she had tried it more times than she could count and had never known it to fail.
+How, then, is one delivered? By handing the doubting to the Lord like any other sin, and — because the stronghold is in the will — by something like a temperance pledge. Many people say, I hope I shall not doubt any more. Few say, I will not. Then, when the first doubt comes, do not argue with it. Lift the shield of faith at once and say something true. Her own formula was three words, repeated as often as needed: Jesus saves me.
 
 > Above all, taking the shield of faith, wherewith ye shall be able to quench all the fiery darts of the wicked. EPHESIANS 6:16
 
-The best illustration in the chapter is her own little daughter, now with the Lord, who announced one night at bedtime that she had had her first doubt: Satan had told her the Bible was not true, and she had told him she would believe it anyway. The next night he told her she was too naughty for Jesus to love. What did she say this time? “Satan, shut your mouth!” — and he could not make her unhappy one bit. A grander battle, said her mother, no soul ever fought.
+The best illustration is her own little daughter, now with the Lord, who announced one night at bedtime that she had had her first doubt: Satan had told her the Bible was not true, and she had told him she would believe it anyway. The next night he told her she was too naughty for Jesus to love. What did she say? “Satan, shut your mouth!” — and he could not make her unhappy one bit. A grander battle, said her mother, no soul ever fought.
 
-> When the enemy shall come in like a flood, the Spirit of the LORD shall lift up a standard against him. ISAIAH 59:19
+## Where she needs filling out
 
-## Where to be gentle
+Some cautions. She repeats an old saying that all discouragement is from the devil, and she wrote that doubts are all from the devil and always untrue. As a weapon against morbid self-accusation and a comfortable habit, that is strong and useful medicine. As a rule, it is too sweeping. Some discouragement is the right grief of a conscience that has done wrong. Some doubts are honest questions; the Lord did not rebuke Thomas for wanting evidence, but offered it, and then called him to believe. And some doubting comes from depression or long grief, where a pledge alone will not mend it.
 
-The reader should take Hannah’s vigour for what it is: strong medicine for a habit, not a verdict on everyone who struggles. She wrote that doubts are all from the devil and always untrue, and that is too strong. Some doubts are honest questions that deserve honest answers. The Lord did not rebuke Thomas for wanting evidence; He offered it, and then called him to believe.
-
-> Then saith he to Thomas, Reach hither thy finger, and behold my hands; and reach hither thy hand, and thrust it into my side: and be not faithless, but believing. JOHN 20:27
-
-And some doubting comes from depression, trauma or long grief, where the will is not the only thing at work and a pledge alone will not mend it. Scripture tells us to deal differently with different people.
+> For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death. 2 CORINTHIANS 7:10
 
 > And of some have compassion, making a difference: JUDE 1:22
 
-But with those cautions, her central point stands. Many Christians have made a home for doubts that deserve eviction. They are not a sign of depth. They grieve a Father who has given every proof of His love, and they rob His children of the peace He means them to have.
+Again, instant forgiveness from God does not cancel what we owe to people. If the sin wronged someone, returning to God includes making it right with them. Her stories are true to experience, but they are not a formula; Peter’s restoration after his fall took more than five minutes, and the Lord prayed for him through it. Yet with those cautions her central point stands: many Christians have made a home for failures and doubts that deserve eviction, and the way out is always the same — back to the faithful God, at once.
 
-> Peace I leave with you, my peace I give unto you: not as the world giveth, give I unto you. Let not your heart be troubled, neither let it be afraid. JOHN 14:27
+> Now unto him that is able to keep you from falling, and to present you faultless before the presence of his glory with exceeding joy, JUDE 1:24
 
 ### FOR REFLECTION AND ACTION
 
-1. Name the doubt you return to most often about God’s love for you. Is it an honest question or a comfortable habit?
-2. Try going one week without entertaining it, and notice whether giving it up feels like a loss.
-3. If you are ready, write out a pledge: I will not doubt my Father’s love. Sign it before God.
-4. Choose a short true sentence to say whenever doubt knocks — Jesus saves me, or a verse — and use it without arguing.
-5. If you are struggling with honest questions or with depression, tell a wise Christian friend rather than fighting alone.
+1. Distinguish this week between the thought that comes and the thought you entertain. Refuse to feel guilty for the first; turn from it at once.
+2. Next time you fail, confess immediately — within the minute — and believe you are forgiven because God says so.
+3. Open your cask: name one small indulgence your conscience has twinged about for years, and bring it into the light.
+4. Name the doubt you return to most often about God’s love for you. Is it an honest question or a comfortable habit?
+5. Choose a short true sentence to say whenever doubt knocks — Jesus saves me, or a verse — and use it without arguing.
+6. If your failure hurt someone, go and put it right; if you are struggling with depression or honest questions, tell a wise Christian friend rather than fighting alone.
 
 ### A PRAYER
 
-> Father, I have entertained doubts about Your love and called them humility.
-> Forgive me for grieving You like a child in the corner who thinks her mother will forget her.
+> Lord, I have mistaken the enemy’s whispers for my own heart, and entertained doubts about Your love and called them humility.
+> When I am tempted, let me turn at once to You. When I fall, keep me from lying on my face, and from hiding my sin.
 > I give You my liberty to doubt. When the first doubt comes, let me lift the shield of faith and look at You.
-> Where my questions are honest, answer them; where my heart is weary, carry me; and let me rest in the love You have proved. Amen.
+> Search me and show me whatever I have left unopened; where my questions are honest, answer them; where my heart is weary, carry me. Amen.
 
 # Consider the Lilies
 
@@ -1069,76 +923,13 @@ One qualification. Her phrase Christ only, and not I at all expresses a real tru
 > Do not let me be content with warm feelings about You while I remain unlike You.
 > Live Your life in me, so that I am gentle when others are cross, patient when I am wronged, and glad to take the lowest place. Amen.
 
-# The Lord Is My Shepherd
-
-> The LORD is my shepherd; I shall not want. PSALM 23:1
-
-With The God of All Comfort, published in 1906 when she was in her seventies, Hannah Whitall Smith turned from man’s side of the life of faith to God’s. The early book had asked, how do I trust? The later book asks, what is He like, that I may trust Him? And one of its first answers is the oldest and plainest: He is a shepherd.
-
-## The common text
-
-She tells how the Twenty-third Psalm, familiar to her from the nursery, came alive. At a critical moment of her life she badly needed comfort and could not lay her hands on a Bible. She searched her memory for a text, and the only one that came was The Lord is my shepherd; I shall not want. She turned from it almost with scorn: such a common text could hardly do her any good. She tried to think of something more unusual, but nothing else would come. So, reduced to the one verse, she began repeating it to herself — and suddenly it was lit from within, and such floods of comfort poured over her that she felt she could never have a trouble again.
-
-When she could reach a Bible, she built what she called a pyramid of promises about the Lord as Shepherd, until she was convinced beyond doubt that in taking the name He had taken on the duties that go with it.
-
-> I am the good shepherd: the good shepherd giveth his life for the sheep. JOHN 10:11
-
-## Whose fault is the thin flock
-
-Her argument then becomes very simple. Imagine two flocks meeting after a hard winter, one healthy and strong, the other starved and sickly. If the healthy sheep could speak, would they boast of their own cleverness? No — they would praise their shepherd, who fed and sheltered and guarded them. And the wretched flock would not blame themselves; they would say their shepherd had failed them.
-
-We see this at once when we speak of sheep. But in our spiritual lives we reverse it. When we are thin and anxious and unfed, we say the fault is ours — we are too weak, too foolish, too unworthy. Yet weakness and foolishness are exactly what sheep are. That is why they need a shepherd. Their safety has never depended on their strength.
-
-> I will seek that which was lost, and bring again that which was driven away, and will bind up that which was broken, and will strengthen that which was sick: EZEKIEL 34:16
-
-The Lord, through Ezekiel, condemned the bad shepherds of Israel for failing to strengthen the weak, heal the sick and seek the lost — and then promised to do all of it Himself. So, Hannah argues, if a sheep of Christ is starving, there are only two explanations. Either the Shepherd is unfaithful, or the sheep has not trusted Him. No Christian would dare to say the first.
-
-## As though I were the shepherd
-
-She quotes a friend who confessed that for years she had said the Lord was her shepherd and lived as though she were the shepherd and He the sheep — anxious that if she did not keep a tight hold on Him, He would wander off. When dark days came, she never expected Him to stand by her. Then everything changed. She was no stronger, she said; she had simply discovered that she had a good Shepherd, and that was enough.
-
-> My sheep hear my voice, and I know them, and they follow me: And I give unto them eternal life; and they shall never perish, neither shall any man pluck them out of my hand. JOHN 10:27–28
-
-## He is, He is
-
-Her practical counsel is characteristically plain. First face what a good shepherd must be and do. Then face the fact that the Lord is such a shepherd in the highest sense. Then say to yourself with all the determination you can gather: “The Lord is my Shepherd. He is. He is. No matter what I feel, He says He is, and He is.” And then, she suggests, repeat the sentence again and again with the stress on a different word each time — the Lord; is; my; Shepherd — until every word has yielded its meaning.
-
-> He shall feed his flock like a shepherd: he shall gather the lambs with his arm, and carry them in his bosom, and shall gently lead those that are with young. ISAIAH 40:11
-
-She was clear that this does not mean outward troubles vanish. The Shepherd may lead through a desert. But He knows which pastures are best for His sheep, and He can make a desert green. The valley of the shadow is in the same psalm as the still waters.
-
-> Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me. PSALM 23:4
-
-## A caution about appearances
-
-In this chapter Hannah also argues that our misery dishonours the Shepherd, since the world judges a shepherd by the look of his flock. There is truth in it: a church full of anxious, joyless people does commend its Lord poorly. But the argument can be turned into a burden, as though Christians must look contented at all costs for the sake of the reputation of God. That is not what the psalm teaches. The sheep in Psalm 23 walks through the dark valley with its fear honestly named and conquered, not hidden. The best testimony to the Shepherd is not a performance of happiness but a real trust that holds in the dark.
-
-> Know ye that the LORD he is God: it is he that hath made us, and not we ourselves; we are his people, and the sheep of his pasture. PSALM 100:3
-
-Held that way, her chapter does just what she hoped. It takes the most familiar sentence in the Bible and makes it, as she says, enough.
-
-> Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever. PSALM 23:6
-
-### FOR REFLECTION AND ACTION
-
-1. Say Psalm 23:1 slowly four times, stressing a different word each time. Which word do you most need?
-2. Where have you been acting as the shepherd and treating the Lord as the sheep you must keep hold of?
-3. When you feel thin and unfed, stop blaming yourself for being a sheep, and ask the Shepherd to feed you.
-4. Build your own small pyramid: write out five Scriptures about the Lord as Shepherd and keep them together.
-5. If you are in a dark valley, do not pretend otherwise. Tell the Shepherd plainly, and then say, thou art with me.
-
-### A PRAYER
-
-> Lord, You are my Shepherd. You are. No matter what I feel, You say You are, and You are.
-> I have tried to be my own shepherd and to keep hold of You as though You might wander off. Forgive me.
-> I am weak and foolish, as sheep are. Feed me, lead me, bind up what is broken in me, and carry me when I cannot walk.
-> Through the valley and beside still waters, let goodness and mercy follow me, until I dwell in Your house for ever. Amen.
-
 # The God of All Comfort
 
 > Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort; Who comforteth us in all our tribulation, that we may be able to comfort them which are in any trouble, by the comfort wherewith we ourselves are comforted of God. 2 CORINTHIANS 1:3–4
 
-The God of All Comfort begins with a rebuke Hannah Whitall Smith never forgot. An agnostic she was trying to win told her politely that if Christians wanted unbelievers to take their religion seriously, they had better look more comfortable in it themselves. The Christians he met seemed to carry their religion as a man carries a headache: he does not want to lose his head, but it is very uncomfortable to have it. She admitted, after some years, that he was largely right, and she wrote the book to find out why.
+With The God of All Comfort, published in 1906 when she was in her seventies, Hannah Whitall Smith turned from man’s side of the life of faith to God’s. The early book had asked, how do I trust? The later book asks, what is He like, that I may trust Him?
+
+It begins with a rebuke she never forgot. An agnostic she was trying to win told her politely that if Christians wanted unbelievers to take their religion seriously, they had better look more comfortable in it themselves. The Christians he met seemed to carry their religion as a man carries a headache: he does not want to lose his head, but it is very uncomfortable to have it. She admitted, after some years, that he was largely right, and she wrote the book to find out why.
 
 ## Under-believed
 
@@ -1148,13 +939,33 @@ So the book sets out to show what God is, not in theological definitions but in 
 
 > Comfort ye, comfort ye my people, saith your God. ISAIAH 40:1
 
+## The Lord is my shepherd
+
+One of her first answers is the oldest and plainest: He is a shepherd. She tells how the Twenty-third Psalm, familiar to her from the nursery, came alive. At a critical moment of her life she badly needed comfort and could not lay her hands on a Bible. The only text that came to mind was The Lord is my shepherd; I shall not want. She turned from it almost with scorn: such a common text could hardly do her any good. But nothing else would come. So she began repeating it to herself — and suddenly it was lit from within, and such floods of comfort poured over her that she felt she could never have a trouble again. When she could reach a Bible, she built what she called a pyramid of promises about the Lord as Shepherd, until she was convinced that in taking the name He had taken on the duties that go with it.
+
+> I am the good shepherd: the good shepherd giveth his life for the sheep. JOHN 10:11
+
+Her argument then becomes very simple. Imagine two flocks meeting after a hard winter, one healthy, the other starved and sickly. The healthy sheep would not boast of their own cleverness; they would praise their shepherd. And the wretched flock would not blame themselves; they would say their shepherd had failed them. Yet in our spiritual lives we reverse it. When we are thin and anxious and unfed, we say the fault is ours — we are too weak, too foolish. But weakness and foolishness are exactly what sheep are. That is why they need a shepherd. Their safety has never depended on their strength.
+
+> I will seek that which was lost, and bring again that which was driven away, and will bind up that which was broken, and will strengthen that which was sick: EZEKIEL 34:16
+
+The Lord, through Ezekiel, condemned the bad shepherds of Israel for failing to strengthen the weak, heal the sick and seek the lost — and then promised to do all of it Himself. So, Hannah argues, if a sheep of Christ is starving, there are only two explanations. Either the Shepherd is unfaithful, or the sheep has not trusted Him. No Christian would dare to say the first.
+
+She quotes a friend who confessed that for years she had said the Lord was her shepherd and lived as though she were the shepherd and He the sheep — anxious that if she did not keep a tight hold on Him, He would wander off. Hannah’s counsel was characteristically plain: face what a good shepherd must be and do, face the fact that the Lord is such a shepherd, and then say with all the determination you can gather: “The Lord is my Shepherd. He is. He is. No matter what I feel, He says He is, and He is.” Say it again with the stress on each word in turn until every word has yielded its meaning.
+
+> He shall feed his flock like a shepherd: he shall gather the lambs with his arm, and carry them in his bosom, and shall gently lead those that are with young. ISAIAH 40:11
+
+This does not mean that outward troubles vanish. The Shepherd may lead through a desert, and the valley of the shadow is in the same psalm as the still waters.
+
+> Yea, though I walk through the valley of the shadow of death, I will fear no evil: for thou art with me; thy rod and thy staff they comfort me. PSALM 23:4
+
 ## A Father with a mother’s heart
 
-Christ, she says, revealed God above all as Father, and taught His disciples to pray to Him by that name. But she insists that the name must be understood as our best instincts understand it. A harsh or neglectful father is not a good father at all, and God, being good, must be the best of fathers. Even the other titles of God — Judge, King, Lawgiver — are held within the Fatherhood: He is a Father-Judge, a Father-King.
+Christ, she says, revealed God above all as Father. But she insists that the name must be understood as our best instincts understand it. A harsh or neglectful father is not a good father at all, and God, being good, must be the best of fathers. Even His other titles — Judge, King, Lawgiver — are held within the Fatherhood: He is a Father-Judge, a Father-King.
 
 > Like as a father pitieth his children, so the LORD pitieth them that fear him. For he knoweth our frame; he remembereth that we are dust. PSALM 103:13–14
 
-And she went further. God, she says, is also pictured in Scripture with a mother’s tenderness, and the God who made mothers cannot be less loving than they are. To understand Him, gather together the best of every father and mother you have known, and know that it is only a faint shadow of Him.
+And she went further. God is also pictured in Scripture with a mother’s tenderness, and the God who made mothers cannot be less loving than they are. To understand Him, gather together the best of every father and mother you have known, and know that it is only a faint shadow of Him.
 
 > As one whom his mother comforteth, so will I comfort you; and ye shall be comforted in Jerusalem. ISAIAH 66:13
 
@@ -1164,7 +975,7 @@ She knew what she was saying. She had been a mother seven times and had buried f
 
 ## The Lord is good
 
-Another chapter tells of the hour she first saw that God was really good — not religiously good, in some pious sense she could not understand, but good in the plain sense in which He commands us to be good. “I shall never forget the hour when I first discovered that God was really good.” To be good is to do the best one knows. God knows everything; therefore He always does what is truly best. From then on, whenever appearances were against Him, she was stopped by the words the Lord is good, and saw that the bad things she had imagined of Him were simply impossible.
+Another chapter tells of the hour she first saw that God was really good — not religiously good, in some pious sense she could not understand, but good in the plain sense in which He commands us to be good. “I shall never forget the hour when I first discovered that God was really good.” To be good is to do the best one knows. God knows everything; therefore He always does what is truly best.
 
 > If ye then, being evil, know how to give good gifts unto your children, how much more shall your Father which is in heaven give good things to them that ask him? MATTHEW 7:11
 
@@ -1174,31 +985,36 @@ She applied it with a housekeeping picture. When a friend known to be a good hou
 
 ## Looking away from self
 
-One reason Christians are uncomfortable, she believed, is that they spend their lives examining themselves: am I earnest enough, have I repented enough, do I feel what I should? She pointed out that Scripture calls us to look at Christ, and that “we see what we look at, and cannot see what we look away from.” She took as a motto a line from Adelaide Procter: “For every one look at self, take ten looks at Christ.” Later she thought it better to take no looks at self at all.
+One reason Christians are uncomfortable, she believed, is that they spend their lives examining themselves: am I earnest enough, have I repented enough, do I feel what I should? Scripture calls us to look at Christ, and “we see what we look at, and cannot see what we look away from.” She took as a motto a line from Adelaide Procter: “For every one look at self, take ten looks at Christ.” Later she thought it better to take no looks at self at all.
 
 > Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
+
+## Two cautions
 
 Here she overstates. She claims only two texts in the Bible speak of self-examination; there are others, and honest self-searching before God is part of repentance.
 
 > Let us search and try our ways, and turn again to the LORD. LAMENTATIONS 3:40
 
-But notice the direction of that verse: search, and turn to the Lord. What Hannah rightly attacked was examination that never turns — the morbid, endless inspection of our own feelings that makes self the centre of religion. The cure for that is not more introspection but a longer look at God.
+But notice the direction of that verse: search, and turn to the Lord. What Hannah rightly attacked was examination that never turns — the morbid, endless inspection of our own feelings that makes self the centre of religion.
 
-> Look unto me, and be ye saved, all the ends of the earth: for I am God, and there is none else. ISAIAH 45:22
+She also argues that our misery dishonours the Shepherd, since the world judges a shepherd by the look of his flock. There is truth in it, as her agnostic saw. But the argument can be turned into a burden, as though Christians must look contented at all costs for the sake of the reputation of God. The sheep in Psalm 23 walks through the dark valley with its fear honestly named and conquered, not hidden. The best testimony to the Shepherd is not a performance of happiness but a real trust that holds in the dark — and a comfort received that is passed on to others in their trouble.
+
+> Surely goodness and mercy shall follow me all the days of my life: and I will dwell in the house of the LORD for ever. PSALM 23:6
 
 ### FOR REFLECTION AND ACTION
 
 1. Would an unbeliever who watched your life conclude that your faith comforts you or burdens you?
-2. Gather the best qualities of the fathers and mothers you have known. Now say: God is better than this.
-3. When the world or your own life looks wrecked this week, say: it is not my housekeeping, but the Lord’s.
-4. Count your looks: for one day, notice how often you look at yourself and how often at Christ.
-5. Comfort someone this week with the comfort God has given you.
+2. Say Psalm 23:1 slowly four times, stressing a different word each time. Which word do you most need?
+3. Where have you been acting as the shepherd and treating the Lord as the sheep you must keep hold of?
+4. Gather the best qualities of the fathers and mothers you have known. Now say: God is better than this.
+5. When the world or your own life looks wrecked this week, say: it is not my housekeeping, but the Lord’s.
+6. Comfort someone this week with the comfort God has given you.
 
 ### A PRAYER
 
 > God of all comfort, I have carried my religion like a headache, and I am sorry.
-> Thank You that You are a Father who pities His children and a Comforter who, like a mother, cannot forget.
-> You are good — really good, better than the best I know. Where Your housekeeping looks like ruin to me, let me trust the Housekeeper.
+> You are my Shepherd. You are. No matter what I feel, You say You are, and You are. I am weak and foolish, as sheep are; feed me, lead me, and carry me when I cannot walk.
+> Thank You that You are a Father who pities His children and, like a mother, cannot forget. Where Your housekeeping looks like ruin to me, let me trust the Housekeeper.
 > Turn my eyes from myself to You, and make me a comfort to others in their trouble. Amen.
 
 # The Unselfishness of God
@@ -1333,7 +1149,7 @@ Two things should be said so that her phrase is not misheard. First, the bare Go
 
 > Casting all your care upon him; for he careth for you. 1 PETER 5:7
 
-Eighteen chapters can make it look as though Hannah Whitall Smith taught a great many things. She taught one thing twice: once from our side and once from God’s. From our side, the Christian life is a handing over. We give God the whole case — ourselves first, then everything else — and we believe He has taken it, and we keep our will on His side whatever our feelings are doing. From God’s side, the handing over is safe because of who He is. He is the Potter who knows His work, the Shepherd who does not lose His sheep, the Father with a mother’s heart, the good Housekeeper of a world that looks like a wreck, the God whose love is unselfish, and in the end simply the God who is enough. Man’s part is to trust; God’s part is to work; and He can be trusted to work because He is good.
+Fourteen chapters can make it look as though Hannah Whitall Smith taught a great many things. She taught one thing twice: once from our side and once from God’s. From our side, the Christian life is a handing over. We give God the whole case — ourselves first, then everything else — and we believe He has taken it, and we keep our will on His side whatever our feelings are doing. From God’s side, the handing over is safe because of who He is. He is the Potter who knows His work, the Shepherd who does not lose His sheep, the Father with a mother’s heart, the good Housekeeper of a world that looks like a wreck, the God whose love is unselfish, and in the end simply the God who is enough. Man’s part is to trust; God’s part is to work; and He can be trusted to work because He is good.
 
 She called her discovery a secret only because it had so long been hidden from her. It was not hidden by God. It was an open secret, lying on every page of Scripture, waiting for someone to believe it.
 
@@ -1386,7 +1202,7 @@ Hannah Whitall Smith is one of the easiest devotional writers to read. She wrote
 
 ## Begin here
 
-The Christian’s Secret of a Happy Life (1875), in the Ochorus library. Her classic, and the source of most of chapters three to sixteen of this volume. Read the opening chapter on God’s side and man’s side first; it is the key to the rest. The chapters on the will, on doubts, on failures and on guidance are the most practically useful. Remember that it is an early book, written in the first flush of discovery.
+The Christian’s Secret of a Happy Life (1875), in the Ochorus library. Her classic, and the source of most of chapters three to thirteen of this volume. Read the opening chapter on God’s side and man’s side first; it is the key to the rest. The chapters on the will, on doubts, on failures and on guidance are the most practically useful. Remember that it is an early book, written in the first flush of discovery.
 
 The God of All Comfort (1906), in the Ochorus library. Her ripest work, written in old age, and the best counterweight to the Secret. Where the earlier book concentrates on our trusting, this one concentrates on the God who is trusted. The chapters on the Shepherd, on the Father, on the goodness of God and on God being enough are the heart of it.
 
@@ -1400,7 +1216,7 @@ Every-Day Religion. A later collection of plain Bible teaching for daily life, i
 
 ## Approach with care
 
-The chapters of The Unselfishness of God on what she called the restitution of all things set out her universalist hope. Read them to understand her, not as a guide to Scripture; chapter nineteen of this volume explains why. Her collected notes on religious fanaticism, published after her death in 1928 and edited by her granddaughter Ray Strachey, record the excesses she witnessed in holiness circles. They show how seriously she took the dangers she warned against, but they are written with a sharpness that some readers will find unsettling.
+The chapters of The Unselfishness of God on what she called the restitution of all things set out her universalist hope. Read them to understand her, not as a guide to Scripture; chapter fifteen of this volume explains why. Her collected notes on religious fanaticism, published after her death in 1928 and edited by her granddaughter Ray Strachey, record the excesses she witnessed in holiness circles. They show how seriously she took the dangers she warned against, but they are written with a sharpness that some readers will find unsettling.
 
 ## About her
 

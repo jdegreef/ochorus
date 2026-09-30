@@ -1,3 +1,5 @@
+// Rebuild marker 2026-09-30: nine Key Teachings volumes reshaped to 18-25
+// chapters (migration 0170); their prerendered contents lists must follow.
 // Rebuild marker 2026-09-23: #3237 made seed_books sync existing books'
 // chapters to the fixture, and its first deploy carried ~380 fixture-only
 // chapter fixes (quote marks, OCR slips, the Tukutendereza ch5 title) to the
