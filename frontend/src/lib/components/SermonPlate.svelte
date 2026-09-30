@@ -102,8 +102,9 @@
 		gap: 1rem;
 		padding: 1rem 1.15rem;
 	}
-	/* The portrait fills the chip the monogram otherwise sits in; grayscale matches AuthorTile so the same face reads the same way
-	   wherever it appears. The chip's tinted ring and hue background (`.emblem-chip`
+	/* The portrait fills the chip the monogram otherwise sits in; grayscale
+	   matches AuthorTile so the same face reads the same way wherever it
+	   appears. The chip's tinted ring and hue background (`.emblem-chip`
 	   in app.css) still show at the rim, so the photo sits in the band's colour. */
 	.portrait-chip img {
 		width: 100%;
