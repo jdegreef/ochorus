@@ -115,42 +115,42 @@
 			"bar": 0.085
 		},
 		"am/brave-for-god": {
-			"ground": "20c0f370ee4b51e829146b3e7d038864a963a1a9d0b7990412c955ef04585e19",
+			"ground": "85cb518d0b4113340323f5c43fcaacc133217511c26a936858d30e4e411150bd",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"am/brave-for-god-2": {
-			"ground": "b6d1b353806e7db62dd69f06af2e8bf1573231202fd83098b12acdb4133a833f",
+			"ground": "b8ae523b5a88b5820994cb8bc8f7236b08b81e2916003b7d77a6ac3daa911b93",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"am/brave-for-god-3": {
-			"ground": "5a0f46b4041a38267864bb8743839c7493c08de08410952a9e47cefd038aec4b",
+			"ground": "303b121bdcc0b785659c43e7cfa9f9d9795d99bd2f48866ecafd17f81cca51b4",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.7,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"am/brave-for-god-4": {
-			"ground": "ab4037ad279b56c380c348607a1c5066c04f29c98ba3c56cbf805d180a0e5cbe",
+			"ground": "02816e7f623f328bb10d159a2c72dcc413b4546c7ccc390a1c3ec002bb878776",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -455,42 +455,42 @@
 			"bar": 0.085
 		},
 		"ar/brave-for-god": {
-			"ground": "2c835c0afcaf41d9ed649176e41e44deef42f24424b076e2b79cbe92e551a46c",
+			"ground": "b74cd1ded8ef1247bac6536debdabb15bae8eb46a37d282b502a9601da1b5201",
 			"style": "young",
 			"volume": "1",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"ar/brave-for-god-2": {
-			"ground": "ba5a1f2c0262538dd7f0dcb159221c56bbec58421a9098bae7f1b034db86a279",
+			"ground": "b775a526b8b0cd357f4032ba6e126aa18cde963c0fed70246119bbf743509091",
 			"style": "young",
 			"volume": "2",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"ar/brave-for-god-3": {
-			"ground": "2f72c983a4a2583700e826bde577401ed1ce7e9a14710fd9296ad2d397991490",
+			"ground": "76d264d5d064e6f5bf980e5d6d0a15ec3d89a8fab11f7f4330f185d83c1659d6",
 			"style": "young",
 			"volume": "3",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.7,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"ar/brave-for-god-4": {
-			"ground": "ddd842f99c3263e6b658def6f3413dfe556c61d90aef020787c99ffcadd6ecdc",
+			"ground": "e0dee67aec523b420b3a8395f72dd3cabaec001f895e5907788ada08159789c9",
 			"style": "young",
 			"volume": "4",
 			"script": "arabic",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -885,42 +885,42 @@
 			"bar": 0
 		},
 		"brave-for-god": {
-			"ground": "b0c63c0a373f3c4dcebeec3fc4cbe40058d2b154f5a98022314c54d352010eca",
+			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"brave-for-god-2": {
-			"ground": "3ad162c36fb441c21dbd3848e6d89a662eed6ddaa8e36bd29432442bfd38ed37",
+			"ground": "ddba7d92a5712d8974e59c88ad496de3a05d4e86ed3b92b85e1bc5c7b3af4862",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"brave-for-god-3": {
-			"ground": "a20102dc43324934f91d9790d268ca427fb8bb631afdab26f8510233aefe9d89",
+			"ground": "1a6a4c922eb594181d398c37a4ac2fb21dd3a88789c455503f44cb1accc03558",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.7,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"brave-for-god-4": {
-			"ground": "e7c8db7b710663c0bb427ed6cc4cfacdbe1da4ef87eba0d53c5cf3e702f82772",
+			"ground": "7b79117b26e8bc0f7a72320b2e1f382819ac9775f3e6576d01663c809ee5a6ed",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1135,12 +1135,12 @@
 			"bar": 0.085
 		},
 		"es/brave-for-god": {
-			"ground": "fb65fec7f99367ab71782342cda8ca28a8b3c56b4fb438a6400d93ba634a8df2",
+			"ground": "043cdc5f0e114aee57437a2ffc88a36392a7f54475825260b1ff649f7b035767",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -1725,22 +1725,22 @@
 			"bar": 0.085
 		},
 		"fr/brave-for-god": {
-			"ground": "90bc7cf058e4c088bcf84f6c2da4c5abf66e9e13d5506326454b2f5fb007b3da",
+			"ground": "5701475292caf7d756514f7798dc662531edeb9691f2a296e0d267b19f7ef7d0",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"fr/brave-for-god-2": {
-			"ground": "3e8937d4843fd0820e092a42734cddfd3b43bf840c739377597cf8116d0976da",
+			"ground": "43324915b1f9c9cd9594675f22b6633e072315289574a22ca94b43401efe6178",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2315,22 +2315,22 @@
 			"bar": 0.085
 		},
 		"hi/brave-for-god": {
-			"ground": "52a02a15ff168c72781171579afcf0fa84018a1d83dd5e95fada16d48ab3937c",
+			"ground": "7636f891806fa3e7fc764c6d73788056175a7141659e6780c70edb66d7f7acd0",
 			"style": "young",
 			"volume": "1",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"hi/brave-for-god-2": {
-			"ground": "59c90637afee331749b06af5b2cf9c6d1f28c7ad99eaf56220146662ecd95320",
+			"ground": "c7a2dd18bc27a1ad45dad4a893ae0cec2f7f4398f32d2c13bf4631a31dbc1537",
 			"style": "young",
 			"volume": "2",
 			"script": "devanagari",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -2895,42 +2895,42 @@
 			"bar": 0.085
 		},
 		"lg/brave-for-god": {
-			"ground": "94bc629cd9e6ac21c04f2ffe412987978ffb9877047056d77d975e908a4b4877",
+			"ground": "1c141e54a669c9b824a6e9595863004f5b315e38ddf1b66eedcaa12a5df5db74",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"lg/brave-for-god-2": {
-			"ground": "2230f0428645c71c4003c00c0a46e77d9c1878c2a3fc6dfdd31ff040fe38e3c0",
+			"ground": "7db91c0200520a83886bc729fac4d67a5b746ff906d87ca26f6af279d48af0ba",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"lg/brave-for-god-3": {
-			"ground": "15554594be57489502eab9dffddb829e5733b95cb0b36e18aec6ea1f9566fe68",
+			"ground": "cf6ad0b045933a1ed4501632187619229d634245c24222d68fd72c6cea15ee97",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.7,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"lg/brave-for-god-4": {
-			"ground": "3638b90d6bded60d30d8bd4ef9e184f51ad99d30dea25ee380d542ab19e5ae2a",
+			"ground": "56b7a62307d7a03a5c861d02d670c2762218efd003ea5f922a1bf2ea37c86d2c",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -3465,12 +3465,12 @@
 			"bar": 0.085
 		},
 		"pt/brave-for-god": {
-			"ground": "df8d14e628626548ad8fa57182d50f00e4a61af6b04b736afce6da159adbcb2c",
+			"ground": "b521f73314b9076dad4e52d388be010c0ffa547839a621563e997ee60e67fdf2",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -4175,42 +4175,42 @@
 			"bar": 0.085
 		},
 		"sw/brave-for-god": {
-			"ground": "b4cd36e562bb4f654337271d321b68b83a8c216f77e783fded5b9d43a6070b49",
+			"ground": "7e37332eee57056f6a4db750235a9c8e2ab123375fb9f25485a815b51163ffcc",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"sw/brave-for-god-2": {
-			"ground": "8af2166aa7a99ec63d9506eb2a4817dcf6d8e3f8aef1e2ec842d4a74a6cc4e96",
+			"ground": "e71631a6378fac698e0c83f2c447bebe4603938ee1900313dca80192bc7a7d25",
 			"style": "young",
 			"volume": "2",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.75,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"sw/brave-for-god-3": {
-			"ground": "2202e4d87047e232e55e7d183441373e11e19811afa10cf123b3e88612f4820c",
+			"ground": "9a52067a0179024865693da7a3271a4610946c48f92903ecbb54642ea541b4cc",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.7,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
 		"sw/brave-for-god-4": {
-			"ground": "cd4ed2202942c618d60c3cf5c7322cd03747273ed4946d6861361df6d17dfeba",
+			"ground": "45b112dac8c684e57856f529d1b0e432ffc5b0e62a4f3e30916d55864adb747f",
 			"style": "young",
 			"volume": "4",
 			"script": "latin",
 			"art": true,
-			"scrim": 0.8,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},
@@ -4965,12 +4965,12 @@
 			"bar": 0.085
 		},
 		"uk/brave-for-god": {
-			"ground": "dcf239e1c758a7620ad70aa475796529245f4b210fbae323d5f461b365631f07",
+			"ground": "ac7903f0cde48f1efaad2ff98e740997213649110f5c4fdb6f54d603430fcd57",
 			"style": "young",
 			"volume": "1",
 			"script": "cyrillic",
 			"art": true,
-			"scrim": 0.65,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0
 		},

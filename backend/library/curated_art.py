@@ -918,26 +918,27 @@ class Original(NamedTuple):
 
 # slug -> the ground we drew. Slugs match Book.slug (shared across languages).
 ORIGINAL_GROUND: dict[str, Original] = {
+    # Brave for God 1–4 (young readers). A mid-century travel poster, one per
+    # volume: flat sun-ray skies, a big pale sun, and a young traveller with a
+    # scarf facing a new part of the wide world. Chosen 2026-09-29 from ten
+    # lighter concepts, replacing the first set (a child on a lit trail at night).
     "brave-for-god": Original(
-        "919c1e481e5e5aef9f9d5460bb1cb8491c37443a9a6dc728173b45d76395b713",
-        "A child sets out at first light down a trail toward the horizon — the "
-        "series' shared frame. Book 1 of the storybook set: deep dawn over "
-        "rolling country. Every book holds the frame and changes the sky.",
+        "699635594792348fe4eb6f3aa0f3dd13c8cbf018768d2c71154e11847f5482e9",
+        "A sea voyage: a traveller on a red headland by a lighthouse, a steamer "
+        "on the turquoise sea under a sun-ray sky. Every bright element sits below "
+        "y602, under the lowest subtitle any edition sets (lg/sw wrap to y595).",
     ),
     "brave-for-god-2": Original(
-        "4e54f05e22beff434205d4c308aa33b75313792a3bd9ea64d22be48ab48ed352",
-        "The same child, the same trail — now a moonlit coast, a small boat on "
-        "the water beyond. Book 2 carries the voyage into “the wide world”.",
+        "507568a8f1e09fbd2e023a2737ee3a3cb67f5bfd2d937f6404120749f0d3ff43",
+        "A jungle river under an orange sky: palms, a winding river and a canoe.",
     ),
     "brave-for-god-3": Original(
-        "0eb8b877adce7e100667c5279644b2d7f3079b787dddb7b1bade43d24d0c6c54",
-        "Dusk over a mountain range, a snow-lit peak at centre. Book 3 — the "
-        "journey climbs.",
+        "1b0e419349813afa1a8a05cdc3258d850516bf6df8c786478a86f2647619955d",
+        "A desert under a magenta sky: terracotta dunes, a camel caravan, an oasis.",
     ),
     "brave-for-god-4": Original(
-        "83d91d80e6349d938d30432ab7f1a5ae2fee7f233736f881d77df1494ea151eb",
-        "Forest twilight, a line of firs along the horizon. Book 4 closes the "
-        "set where the wide world grows deepest.",
+        "a5c690a89c4784a4e108cf74d6cc6d857a2fffe7a855582d746777728d92c343",
+        "Snowy mountains under cobalt: pines, a snowfield and a small red cabin.",
     ),
     "growing-in-wisdom": Original(
         "fe3a7ee388b67085b7aaceab5be296a9a50e20502cb234e5c8f6fc590f34c3b6",
