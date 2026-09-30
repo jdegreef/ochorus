@@ -38,7 +38,7 @@ ART_SCRIM: dict[str, float] = {
     "christ-the-healer": 0.70,
     "clothed-with-strength-and-dignity": 0.30,
     "confessions": 1.00,
-    "corrie-ten-boom-a-life": 0.40,
+    "corrie-ten-boom-a-life": 0.85,
     "daughters-of-the-king-1": 0.40,
     "daughters-of-the-king-2": 0.75,
     "daughters-of-the-king-3": 0.75,

@@ -282,8 +282,108 @@ def _aic_image_url(art: Artwork) -> str:
     return f"https://www.artic.edu/iiif/2/{image_id}/full/{width},/0/default.jpg"
 
 
+#: Wikidata's item for "public domain", the value of a work's copyright status (P6216).
+_WD_PUBLIC_DOMAIN = "Q19652"
+#: Wikidata's "circa", as a date's sourcing-circumstances qualifier (P1480).
+_WD_CIRCA = "Q5727902"
+
+
+def _wd_ids(claims: dict, prop: str) -> list[str]:
+    """The item ids a Wikidata statement points at, in order."""
+    return [
+        c["mainsnak"]["datavalue"]["value"]["id"]
+        for c in claims.get(prop, [])
+        if c["mainsnak"].get("snaktype") == "value"
+    ]
+
+
+def _wd_year(claims: dict) -> str:
+    """A work's inception (P571) as a credit year: `1670`, `1670s`, `c. 1670`."""
+    for c in claims.get("P571", []):
+        if c["mainsnak"].get("snaktype") != "value":
+            continue
+        v = c["mainsnak"]["datavalue"]["value"]
+        year = v["time"][1:5]
+        if v["precision"] == 8:
+            year = year[:3] + "0s"
+        elif v["precision"] < 8:
+            continue
+        circa = any(
+            q["datavalue"]["value"]["id"] == _WD_CIRCA
+            for q in c.get("qualifiers", {}).get("P1480", [])
+            if q.get("snaktype") == "value"
+        )
+        return f"c. {year}" if circa else year
+    return ""
+
+
+def _wikidata_image_url(art: Artwork) -> str:
+    """Wikimedia Commons' pixels for a painting, checked against its Wikidata item.
+
+    For a painting none of the three museums above hold — the Dutch Golden Age
+    hangs in Amsterdam, The Hague and Haarlem, whose own APIs key objects by
+    strings, not the integer ids a manifest carries. A Wikidata item (``object_id``
+    is the number after its Q) is the catalogue record here: structured artist,
+    date, genre and copyright status, where a Commons file page offers only
+    wiki-HTML. The item's image statement (P18) names the Commons file(s).
+
+    The licence is checked twice, because two things are claimed: the WORK's
+    copyright status on the item must be public domain, and the FILE on Commons
+    must be unrestricted too — a photograph of a PD painting can be licensed
+    separately, and Commons records which. When the item names several files,
+    the largest is taken: they are scans of the one painting, and the biggest is
+    the museum's own.
+    """
+    qid = f"Q{art.object_id}"
+    item = _json(f"https://www.wikidata.org/wiki/Special:EntityData/{qid}.json")["entities"][qid]
+    claims = item.get("claims", {})
+    if _WD_PUBLIC_DOMAIN not in _wd_ids(claims, "P6216"):
+        raise CommandError(f"Wikidata {qid} is NOT recorded as public domain (P6216) — refusing.")
+    refs = _wd_ids(claims, "P170") + _wd_ids(claims, "P136") + _wd_ids(claims, "P180")
+    labels = {}
+    if refs:
+        found = _json(
+            "https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=labels"
+            f"&languages=en&ids={'|'.join(dict.fromkeys(refs))}"
+        )["entities"]
+        labels = {k: v.get("labels", {}).get("en", {}).get("value", "") for k, v in found.items()}
+    artists = _wd_ids(claims, "P170")
+    # Genre (P136) and depicts (P180) are its subject terms: a portrait is
+    # "portrait" in the one or a named person in the other.
+    _verify(art, labels.get(artists[0], "") if artists else "",
+            item.get("labels", {}).get("en", {}).get("value", ""), _wd_year(claims),
+            [labels.get(q, "") for q in _wd_ids(claims, "P136") + _wd_ids(claims, "P180")])
+    files = [c["mainsnak"]["datavalue"]["value"] for c in claims.get("P18", [])
+             if c["mainsnak"].get("snaktype") == "value"]
+    if not files:
+        raise CommandError(f"Wikidata {qid} has no image (P18).")
+    pages = _json(
+        "https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo"
+        "&iiprop=url|size|extmetadata&iiextmetadatafilter=LicenseShortName|Copyrighted"
+        "&iiurlwidth=2000&titles=" + urllib.parse.quote("|".join(f"File:{f}" for f in files))
+    )["query"]["pages"].values()
+    usable = []
+    for page in pages:
+        info = (page.get("imageinfo") or [{}])[0]
+        meta = info.get("extmetadata", {})
+        licence = meta.get("LicenseShortName", {}).get("value", "")
+        if meta.get("Copyrighted", {}).get("value") == "False" or licence in ("Public domain", "CC0"):
+            usable.append(info)
+    if not usable:
+        raise CommandError(f"Wikidata {qid}: no Commons file of it is public domain or CC0 — refusing.")
+    best = max(usable, key=lambda i: i["width"] * i["height"])
+    if best["width"] < W:
+        raise CommandError(f"Wikidata {qid}'s largest file is only {best['width']}px wide — too small.")
+    return best.get("thumburl") or best["url"]
+
+
 #: Manifest ``source`` → the function that licence-checks it and returns a URL.
-FETCHERS = {"met": _met_image_url, "cma": _cma_image_url, "aic": _aic_image_url}
+FETCHERS = {
+    "met": _met_image_url,
+    "cma": _cma_image_url,
+    "aic": _aic_image_url,
+    "wikidata": _wikidata_image_url,
+}
 
 
 def _cache_key(art: Artwork) -> str:
@@ -319,7 +419,7 @@ def _artwork_image(art: Artwork) -> Path:
     return raw
 
 
-def _crop_3x4(src: Path, key: str, focus: float = 0.5, trim: float = 0.0) -> Path:
+def _crop_3x4(src: Path, key: str, focus: float = 0.5) -> Path:
     """Scale the artwork to COVER the 3:4 plate, then crop the overflow away.
 
     WHERE the crop is taken from is the artwork's own to say: `Artwork.focus`
@@ -348,18 +448,13 @@ def _crop_3x4(src: Path, key: str, focus: float = 0.5, trim: float = 0.0) -> Pat
     # `focus` is IN THE CACHE KEY. It changes the pixels, and the cache is
     # consulted before anything is drawn — leave it out and re-running after
     # adjusting a crop hands back the old one, silently, forever.
-    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}{f'~{trim:.2f}' if trim else ''}.jpg"
+    out = CACHE / f"{key}.{W}x{H}@{focus:.2f}.jpg"
     if out.exists():
         return out
     with Image.open(src) as im:
         # RGB explicitly: the collections serve the odd CMYK TIFF-derived JPEG
         # and a palettised PNG, and neither can be written as a JPEG as-is.
         im = im.convert("RGB")
-        # `trim` first: a mount photographed around the canvas is cut away
-        # before the plate is fitted, so no crop can leave it on an edge.
-        if trim:
-            dx, dy = round(im.width * trim), round(im.height * trim)
-            im = im.crop((dx, dy, im.width - dx, im.height - dy))
         scale = max(W / im.width, H / im.height)
         im = im.resize(
             (max(W, round(im.width * scale)), max(H, round(im.height * scale))),
@@ -392,7 +487,7 @@ def write_art_sources(table: dict[str, str]) -> None:
     SOURCES_FILE.write_text(
         '"""What each committed painting was cut from — GENERATED by\n'
         "``manage.py build_curated_covers``; do not edit by hand.\n\n"
-        "slug -> ``curated_art.crop_recipe`` (``<source>-<object id>@<focus>[~<trim>]``) of the\n"
+        "slug -> ``curated_art.crop_recipe`` (``<source>-<object id>@<focus>``) of the\n"
         "entry the painting under ``covers/art/`` was drawn from. The command keeps a\n"
         "committed painting only while its entry still has this recipe, and\n"
         "``CoverAssetTests`` fails a painting whose entry has moved on without it —\n"
@@ -441,7 +536,7 @@ class Command(BaseCommand):
             dest = COVERS_DIR / rel
             recipe = crop_recipe(art)
             keep = dest.exists() and not opts["force"] and ART_SOURCES.get(slug) == recipe
-            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus, art.trim)
+            jpeg = dest if keep else _crop_3x4(image, _cache_key(art), art.focus)
 
             # ONE painting per work, with no type in it. Every language points at
             # this file and BookCover draws the title over it, so the reader

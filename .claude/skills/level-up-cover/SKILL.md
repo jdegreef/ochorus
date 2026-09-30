@@ -56,6 +56,15 @@ the picture:
   primaryImage`. Still fine when you know the subject noun; weak for "find me a
   good landscape". See memory `met-api-pd-art-sourcing`.
 
+- **Wikidata** (`wikidata`, added 2026-09-29 for Corrie ten Boom's Ruisdael *View
+  of Haarlem*) — the escape hatch for a painting none of the three hold (the Dutch
+  Golden Age is mostly in Amsterdam/The Hague/Haarlem, whose APIs key by strings).
+  `object_id` = the number after the item's Q. The fetcher requires P6216 = public
+  domain on the item AND a PD/CC0 file on Commons, and credits the item's English
+  label, P170 creator label and P571 year — copy those verbatim (a label like "View
+  of bleaching fields and Haarlem" is what the credit says, not the museum title).
+  Find the item from the Commons file page's "Edit this at Wikidata" link.
+
 **LOOK before you pick.** Both search APIs return junk mixed with gems, so
 download the small images, montage them into a contact sheet, and Read it — then
 mock the actual cover (3:4 crop + scrim + white title) so you judge the COVER,
@@ -66,14 +75,9 @@ Verify every finalist's PD flag before building. **Grep the object id before bui
 (`grep -n '<object_id>' backend/library/curated_art.py`): 128+ paintings are
 taken, and `test_no_painting_is_given_to_two_works` only fires at the END of
 `paint_covers`, after the plate is deleted and the twins redrawn (Heade's *Point
-Judith* for Pensées was already Amanda Smith's, 2026-09-28). **Check the scan's edges
-for a baked-in frame or mount.** `focus` only slides the window, so a border along the
-axis that doesn't overflow survives every crop. Set `trim=` on the entry (fraction cut
-off EACH side before cropping, ≤0.2) — the Met's St Bavo interior for Corrie ten Boom
-carried ~4.5% of black mount on all four sides and shipped framed in dark bars until
-`trim=0.06` (2026-09-29). Measure it on the original (first column/row brighter than
-~50), then re-run `npm run covers:bars`. Otherwise reject (Met Frère *Jerusalem*'s gilt
-strip, 2026-09-28): `covers:bars` only measures DARK bars.
+Judith* for Pensées was already Amanda Smith's, 2026-09-28). **Reject a scan with its
+frame baked in** (a gilt strip along an edge — Met Frère *Jerusalem*, 2026-09-28):
+nothing crops it and `covers:bars` only measures DARK bars, so it ships on the cover.
 **Copy the artist and year strings verbatim from the collection** —
 `build_curated_covers` refuses a mismatch ("the manifest's year is not the
 collection's": `c. 1643–45` ≠ `c. 1643–c. 1645`; `Joos de Momper II` ≠ `…, II`).

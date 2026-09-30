@@ -74,6 +74,12 @@ SOURCES: dict[str, Source] = {
         "The Art Institute of Chicago, CC0",
         "https://www.artic.edu/artworks/{}",
     ),
+    # A painting none of the three museums hold, catalogued on Wikidata (the id
+    # is the number after the Q) and photographed on Wikimedia Commons.
+    "wikidata": Source(
+        "Wikimedia Commons, public domain",
+        "https://www.wikidata.org/wiki/Q{}",
+    ),
 }
 
 
@@ -104,11 +110,6 @@ class Artwork(NamedTuple):
     #: painting's recipe (object and focus, `crop_recipe`) is recorded in
     #: `art_sources.py`, and a gate fails a painting whose recipe has moved.
     focus: float = 0.5
-    #: How much of EACH edge to cut away before cropping, as a fraction of that
-    #: side (0–0.2). For a scan that photographs the black mount around the
-    #: canvas: `focus` only slides the window, so a border along the axis that
-    #: doesn't overflow survives every crop and ships as a dark bar. Default 0.
-    trim: float = 0.0
 
 
 def crop_recipe(art: Artwork) -> str:
@@ -120,10 +121,7 @@ def crop_recipe(art: Artwork) -> str:
     to a different artwork, or moving its ``focus``, redraws it rather than
     leaving the old picture under the new credit.
     """
-    recipe = f"{art.source}-{art.object_id}@{art.focus:.2f}"
-    # Only a trimmed work names its trim, so every recipe committed before it
-    # existed still reads the same.
-    return f"{recipe}~{art.trim:.2f}" if art.trim else recipe
+    return f"{art.source}-{art.object_id}@{art.focus:.2f}"
 
 
 # slug -> artwork. Slugs match Book.slug (shared across languages).
@@ -783,14 +781,16 @@ CURATED: dict[str, Artwork] = {
         "sleeps\", painted the year before he sailed.",
     ),
     # ── Batch 22 · Portraits of Courage, volume 3 ──────────────────────────
-    # The Met's scan includes the black mount on every side (~4.5%); `trim`
-    # cuts it away rather than letting it frame the cover in dark bars.
+    # The founder's pick of five mockups (2026-09-29). Haarlem from the dunes,
+    # the Grote Kerk on the skyline: Corrie's city, whole. The Mauritshuis
+    # painting, through Wikidata — none of the three museums above hold a view
+    # of Haarlem that isn't already another book's.
     "corrie-ten-boom-a-life": Artwork(
-        "met", 912940, "Job Adriaensz Berckheyde", "Interior of the Sint-Bavokerk, Haarlem", "ca. 1676",
-        "The Grote Kerk of Haarlem, a few steps from the Beje: the church where "
-        "Corrie sat in her own pew at the first service after liberation, and "
-        "whose \"hundred shades of grey\" she walked through in her mind at Vught.",
-        trim=0.06,
+        "wikidata", 17275831, "Jacob van Ruisdael", "View of bleaching fields and Haarlem", "1670",
+        "Haarlem seen from the dunes, the Grote Kerk rising over the town: the "
+        "city where the ten Booms kept their watch shop for a century and hid "
+        "Jews from the Nazis in the Beje, a few streets from that church.",
+        focus=0.3,
     ),
 }
 

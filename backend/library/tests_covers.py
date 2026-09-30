@@ -403,10 +403,6 @@ class CuratedArtTests(TestCase):
                 # nothing anywhere would have failed.
                 self.assertGreaterEqual(art.focus, 0.0, "focus is a fraction of the overflow")
                 self.assertLessEqual(art.focus, 1.0, "focus is a fraction of the overflow")
-                # A trim is for a mount, not a zoom: past a fifth a side it is
-                # choosing a different picture, and at a half there is none.
-                self.assertGreaterEqual(art.trim, 0.0, "trim is a fraction of each side")
-                self.assertLessEqual(art.trim, 0.2, "trim is a fraction of each side")
 
     def test_focus_moves_the_crop_window_along_the_overflowing_axis(self):
         """`focus` has to change PIXELS, not just be stored.
@@ -458,6 +454,25 @@ class CuratedArtTests(TestCase):
         for slug, art in {**CURATED, **CURATED_GROUND}.items():
             with self.subTest(slug=slug):
                 self.assertIn(art.source, FETCHERS, f"no fetcher for {art.source!r}")
+
+    def test_wikidata_inception_reads_as_a_credit_year(self):
+        """Wikidata dates are structured; the credit is the collection's words.
+        `_verify` compares the two exactly, so the translation has to be exact."""
+        from library.management.commands.build_curated_covers import _wd_year
+
+        def inception(precision, circa=False):
+            claim = {"mainsnak": {"snaktype": "value", "datavalue": {"value": {
+                "time": "+1670-00-00T00:00:00Z", "precision": precision}}}}
+            if circa:
+                claim["qualifiers"] = {"P1480": [{"snaktype": "value", "datavalue": {
+                    "value": {"id": "Q5727902"}}}]}
+            return {"P571": [claim]}
+
+        self.assertEqual(_wd_year(inception(9)), "1670")
+        self.assertEqual(_wd_year(inception(8)), "1670s")
+        self.assertEqual(_wd_year(inception(9, circa=True)), "c. 1670")
+        self.assertEqual(_wd_year(inception(7)), "", "a century is not a year")
+        self.assertEqual(_wd_year({}), "")
 
     def test_no_painting_is_given_to_two_works(self):
         """One museum object, one work. A painting is chosen for what it says
