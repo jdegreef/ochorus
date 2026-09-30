@@ -6335,6 +6335,36 @@
 				513
 			]
 		},
+		"mary-slessor-a-life": {
+			"ground": "c39a49528400944d85f9ba9fa8dbb997c32bbd7a338b153f09e1f03cb5e1cd23",
+			"style": "house",
+			"volume": "4",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[170, 102, 430, 131]
+				],
+				"title": [
+					[289, 306, 311, 350],
+					[121, 386, 479, 457]
+				],
+				"subtitle": [
+					[109, 476, 491, 504],
+					[101, 504, 499, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",

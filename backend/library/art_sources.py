@@ -51,6 +51,7 @@ ART_SOURCES: dict[str, str] = {
     "life-experience-gospel-labours": "cma-171296@0.50",
     "life-of-antony": "aic-16512@0.50",
     "life-of-pascal": "aic-81516@0.60",
+    "mary-slessor-a-life": "wikidata-20201742@0.62",
     "ministry-of-intercession": "met-438490@0.40",
     "morning-by-morning": "aic-110561@0.50",
     "mortification-of-sin": "cma-166506@0.50",

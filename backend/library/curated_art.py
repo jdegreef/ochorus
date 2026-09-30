@@ -792,6 +792,19 @@ CURATED: dict[str, Artwork] = {
         "Jews from the Nazis in the Beje, a few streets from that church.",
         focus=0.3,
     ),
+    # ── Batch 23 · Portraits of Courage, volume 4 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-29). A tropical river at
+    # sunset for the woman who travelled the Cross River and the Enyong Creek
+    # by canoe for forty years. It is Colombia's Magdalena, not the Cross —
+    # the rationale says "evokes", never "depicts".
+    "mary-slessor-a-life": Artwork(
+        "wikidata", 20201742, "Frederic Edwin Church", "La Magdalena", "1854",
+        "A tropical river at sunset, palms and forest down to the water: it "
+        "evokes the Cross River country she travelled by canoe for forty years. "
+        "Church painted the Magdalena in Colombia, but the river, the heat and "
+        "the light are hers.",
+        focus=0.62,
+    ),
 }
 
 
