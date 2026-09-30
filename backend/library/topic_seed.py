@@ -235,6 +235,7 @@ TOPICS = [
             "union-and-communion",
             "the-bruised-reed",
             "key-teachings-of-andrew-murray",
+            "key-teachings-of-hudson-taylor",
         ],
     ),
     (
@@ -258,6 +259,9 @@ TOPICS = [
             "women-who-moved-heaven-2",
             "key-teachings-of-hannah-whitall-smith",
             "key-teachings-of-catherine-booth",
+            "key-teachings-of-amanda-berry-smith",
+            "key-teachings-of-julia-foote",
+            "key-teachings-of-jeanne-guyon",
         ],
     ),
     (
@@ -276,6 +280,7 @@ TOPICS = [
             "first-epistle-of-clement",
             "epistles-of-ignatius",
             "key-teachings-of-augustine-of-hippo",
+            "key-teachings-of-athanasius-of-alexandria",
         ],
     ),
     (
@@ -333,6 +338,7 @@ TOPICS = [
             "on-loving-god",
             "confessions",
             "the-inner-chamber",
+            "key-teachings-of-jeanne-guyon",
         ],
     ),
     (
@@ -402,6 +408,7 @@ TOPICS = [
             "on-the-incarnation",
             "freedom-of-the-will",
             "ten-commandments",
+            "key-teachings-of-athanasius-of-alexandria",
         ],
     ),
     (
@@ -416,6 +423,8 @@ TOPICS = [
             "a-brand-plucked-from-the-fire",
             "amanda-smith-autobiography",
             "journal-of-an-expedition-up-the-niger",
+            "key-teachings-of-amanda-berry-smith",
+            "key-teachings-of-julia-foote",
         ],
     ),
     (
@@ -459,6 +468,7 @@ TOPICS = [
             "journal-of-an-expedition-up-the-niger",
             "amanda-smith-autobiography",
             "men-and-women-who-gave-everything-2",
+            "key-teachings-of-hudson-taylor",
         ],
     ),
     (

@@ -313,6 +313,11 @@ TYPE_TOP = frozenset({
     "key-teachings-of-hannah-whitall-smith",
     "key-teachings-of-catherine-booth",
     "key-teachings-of-augustine-of-hippo",
+    "key-teachings-of-amanda-berry-smith",
+    "key-teachings-of-hudson-taylor",
+    "key-teachings-of-athanasius-of-alexandria",
+    "key-teachings-of-julia-foote",
+    "key-teachings-of-jeanne-guyon",
 })
 
 #: Where the ink sits on a TYPE_TOP cover, as (top, bottom, ink opacity, bar),

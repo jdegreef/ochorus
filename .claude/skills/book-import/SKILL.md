@@ -1933,7 +1933,11 @@ re-laid (series target 0.30–0.35). Then JPEG q84 progressive (~32KB) →
 `ORIGINAL_GROUND` digest → `build_cover_assets.py` → `tune_art_scrim.py
 <slugs>` (zsh: pass slugs literally, an unquoted `$S` doesn't word-split) →
 `npm run og:covers`; add the slug to `coverLayouts.BOOK_LAYOUT`/`TYPE_TOP`,
-`coverStyles.BOOK_STYLE`, `covers.TYPE_TOP`, plus topic shelves.
+`coverStyles.BOOK_STYLE`, `covers.TYPE_TOP`, plus topic shelves. A THIN corpus (Julia Foote: one
+small memoir) gets a shorter volume — 14 chapters, ten teaching — that says so in
+its Introduction and About, rather than 18 padded ones. `tune_art_scrim` measures
+type-top rows only for slugs already in `covers.TYPE_TOP` — add them FIRST, or it
+reports a false subtitle fail.
 
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the
