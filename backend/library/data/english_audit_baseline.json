@@ -5,6 +5,12 @@
    "orphan-close-quote": 3,
    "space-before-punct": 2
   },
+  "a-castaway": {
+   "space-before-punct": 2
+  },
+  "a-pattern-of-prayer": {
+   "space-before-punct": 2
+  },
   "a-retrospect": {
    "space-before-punct": 10
   },
@@ -17,6 +23,9 @@
   "all-things-for-good": {
    "orphan-close-quote": 2,
    "space-before-punct": 2
+  },
+  "are-you-forgiven": {
+   "orphan-close-quote": 2
   },
   "baptism-with-the-holy-spirit": {
    "orphan-close-quote": 1,
@@ -34,11 +43,18 @@
   "christ-the-healer": {
    "orphan-close-quote": 3
   },
+  "christian-charity": {
+   "orphan-close-quote": 1
+  },
   "come-thou-into-the-ark": {
    "space-before-punct": 2
   },
   "comfort-for-the-desponding": {
    "orphan-close-quote": 2
+  },
+  "concerning-lowliness-of-mind": {
+   "lost-paragraphing": 1,
+   "orphan-close-quote": 1
   },
   "divine-healing": {
    "orphan-close-quote": 3,
@@ -89,6 +105,9 @@
   },
   "himself": {
    "space-before-punct": 1
+  },
+  "homily-on-the-paralytic": {
+   "lost-paragraphing": 1
   },
   "how-to-bring-men-to-christ": {
    "lost-paragraphing": 2
@@ -167,6 +186,9 @@
    "orphan-close-quote": 8,
    "space-before-punct": 7,
    "word-fusion": 2
+  },
+  "our-duty-to-israel": {
+   "orphan-close-quote": 1
   },
   "pauls-first-prayer": {
    "orphan-close-quote": 1
@@ -251,6 +273,9 @@
    "run-together": 1,
    "space-before-punct": 2
   },
+  "the-christian-pilgrim": {
+   "orphan-close-quote": 2
+  },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23
   },
@@ -304,6 +329,9 @@
   "the-power-of-stillness": {
    "space-before-punct": 1
   },
+  "the-scripture-way-of-salvation": {
+   "space-before-punct": 1
+  },
   "the-secret-of-guidance": {
    "space-before-punct": 12,
    "word-fusion": 1
@@ -314,8 +342,16 @@
   "the-sinners-friend": {
    "space-before-punct": 2
   },
+  "the-use-of-money": {
+   "orphan-close-quote": 2,
+   "space-before-punct": 2
+  },
   "the-way-to-god": {
    "space-before-punct": 12
+  },
+  "the-witness-of-the-spirit": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 1
   },
   "till-he-come": {
    "orphan-close-quote": 4,
@@ -331,6 +367,9 @@
   "union-and-communion": {
    "orphan-close-quote": 1,
    "space-before-punct": 9
+  },
+  "what-a-revival-of-religion-is": {
+   "space-before-punct": 1
   },
   "women-who-moved-heaven-2": {
    "space-before-punct": 1

@@ -9793,3 +9793,54 @@ BODY_CORRECTIONS.setdefault("key-teachings-of-watchman-nee", {}).setdefault("rep
     ("<blockquote>And they that were scattered abroad went every where",
      "<blockquote>Therefore they that were scattered abroad went every where"),
 ])
+
+# --- 2026-09-29 sermon batch: CCEL mastheads the parser half-reads ---
+# Finney's Lectures set the text as "Text.—verse—Hab. iii. 2." in one <p>;
+# the verse is the epigraph, the prefix and citation tail are furniture (the
+# reference lives in scripture_ref).
+BODY_CORRECTIONS.setdefault("what-a-revival-of-religion-is", {}).setdefault("replacements", []).extend([
+    ("<blockquote>Text.—O Lord", "<blockquote>O Lord"),
+    ("remember mercy.—Hab. iii. 2. </blockquote>", "remember mercy.</blockquote>"),
+])
+BODY_CORRECTIONS.setdefault("breaking-up-the-fallow-ground", {}).setdefault("replacements", []).extend([
+    ("<blockquote>Text.—Break up", "<blockquote>Break up"),
+    ("righteousness upon you.—Hosea x. 12. </blockquote>", "righteousness upon you.</blockquote>"),
+])
+BODY_CORRECTIONS.setdefault("be-filled-with-the-spirit", {}).setdefault("replacements", []).extend([
+    ("<blockquote>Text.—Be filled with the Spirit.—Eph. v. 18. </blockquote>",
+     "<blockquote>Be filled with the Spirit.</blockquote>"),
+])
+# Newton's Messiah leaves: the reference sits where the verse belongs, the verse
+# follows as plain lines, the drop cap is split from its word ("S uch"), and
+# a "—— O ——" ornament closes each discourse.
+BODY_CORRECTIONS.setdefault("unto-us-a-child-is-born", {}).setdefault("replacements", []).extend([
+    ("<blockquote> Isaiah 9:6 </blockquote><p> For unto us a child is born, unto us a son is given: </p><p> and the government shall be upon his shoulder: </p><p> and his name shall be called Wonderful, Counsellor, </p><p> The mighty God, The everlasting Father, The Prince of Peace. </p>",
+     "<blockquote>For unto us a child is born, unto us a son is given: and the government shall be upon his shoulder: and his name shall be called Wonderful, Counsellor, The mighty God, The everlasting Father, The Prince of Peace.</blockquote>"),
+    ("<p> S uch was", "<p>Such was"),
+    ("<p> —— O —— </p>", ""),
+])
+BODY_CORRECTIONS.setdefault("he-was-despised", {}).setdefault("replacements", []).extend([
+    ("<blockquote> Isaiah 53:3 </blockquote><p> He is despised and rejected of men; a man of sorrow, and acquainted with grief. </p>",
+     "<blockquote>He is despised and rejected of men; a man of sorrow, and acquainted with grief.</blockquote>"),
+    ("<p> T he heathen", "<p>The heathen"),
+    ("<p> —— O —— </p>", ""),
+])
+BODY_CORRECTIONS.setdefault("i-know-that-my-redeemer-liveth", {}).setdefault("replacements", []).extend([
+    ("<blockquote> Job 19:25, 26 </blockquote><p> I know that my Redeemer liveth, and that He shall stand in the latter day upon the earth. And though after my skin worms destroy this body, yet in my flesh shall I see God. </p>",
+     "<blockquote>I know that my Redeemer liveth, and that He shall stand in the latter day upon the earth. And though after my skin worms destroy this body, yet in my flesh shall I see God.</blockquote>"),
+    ("<p> C hristianity", "<p>Christianity"),
+    ("<p> —— O —— </p>", ""),
+])
+# NPNF's italic argument splits around its reference anchor.
+BODY_CORRECTIONS.setdefault("homily-ii-on-the-statues", {}).setdefault("replacements", []).extend([
+    ("high-minded,” </i><i>1 Timothy vi. 17</i><i>. And against", "high-minded” (1 Timothy vi. 17). And against"),
+])
+# Newton's CCEL leaf splits the small-caps LORD like its drop caps.
+BODY_CORRECTIONS["i-know-that-my-redeemer-liveth"]["replacements"].append(("L ORD", "LORD"))
+# SermonIndex's transcription: spaced double hyphens for dashes, and the
+# printed small-caps opening typed as capitals.
+BODY_CORRECTIONS.setdefault("electing-love", {}).setdefault("replacements", []).extend([
+    ("THIS IS A VERY HUMBLING, and", "THIS is a very humbling, and"),
+    (" -- ", "—"),
+    ("believed--'Ye", "believed—'Ye"),
+])
