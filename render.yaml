@@ -91,6 +91,12 @@ services:
       # after it, so a first run never blasts the back catalogue.
       - key: EMAIL_WELCOME_START
         sync: false
+      # Review-mode safety net: comma-separated addresses (or "@domain"). When
+      # SET, ONLY these receive mail — every reader is skipped — so you can turn
+      # sending on and review test emails to yourself with zero risk. Clear to go
+      # fully live.
+      - key: EMAIL_ALLOWLIST
+        sync: false
 
   # --- Lifecycle email cron (Phase 1) --------------------------------------
   # Runs the drip sweep on a timer, reusing the API's Docker image (no new
@@ -151,6 +157,12 @@ services:
           name: ochorus-api
           type: web
           envVarKey: EMAIL_WELCOME_START
+      # Same review-mode allowlist as the API, so the cron's drip is gated too.
+      - key: EMAIL_ALLOWLIST
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: EMAIL_ALLOWLIST
       - key: PUBLIC_SITE_URL
         fromService:
           name: ochorus-api
