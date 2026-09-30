@@ -1,3 +1,6 @@
+// prerender refresh 2026-09-29: five more Key Teachings companions on their shelves — Spurgeon →
+// the-preached-word + the-grace-of-god, Murray → abiding-in-christ, Hannah Whitall Smith → deeper-life +
+// women-of-faith, Catherine Booth → women-of-faith + the-way-of-holiness, Augustine → voices-of-the-early-church.
 // prerender refresh 2026-09-18: added the Key Teachings companion books to their topic shelves —
 // Simpson + Nee → deeper-life, Edwards → the-way-of-holiness, Baxter → the-preached-word. These are
 // Ochorus's own works, currently is_published=False, so they stay hidden until the founder publishes
