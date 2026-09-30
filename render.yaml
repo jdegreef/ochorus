@@ -365,7 +365,7 @@ services:
       - type: redirect
         source: /home/
         destination: /
-      # A reading plan that moved slug (migration 0171 reshaped its books and
+      # A reading plan that moved slug (migration 0172 reshaped its books and
       # renumbered its days; the new slug fences devices' old day numbers).
       - type: redirect
         source: /plans/the-key-teachings-four-teachers

@@ -154,7 +154,7 @@ class PositionTests(TestCase):
 
 
 class PlanMoveTests(TestCase):
-    """Migration 0171: a plan through reshaped books keeps its readers' days."""
+    """Migration 0172: a plan through reshaped books keeps its readers' days."""
 
     def test_days_follow_the_chapters_and_progress_follows_the_days(self):
         from django.utils import timezone
@@ -162,7 +162,7 @@ class PlanMoveTests(TestCase):
         from library.models import Plan, PlanDay
         from reading.models import PlanProgress
 
-        mod = importlib.import_module("library.migrations.0171_reshape_first_key_teachings")
+        mod = importlib.import_module("library.migrations.0172_reshape_first_key_teachings")
         author = Author.objects.create(slug="a", name="A")
         a = Book.objects.create(slug="book-a", language="en", title="A", author=author)
         Book.objects.create(slug="book-b", language="en", title="B", author=author)
@@ -206,7 +206,7 @@ class PlanMoveTests(TestCase):
         from library.models import Plan, PlanDay
         from reading.models import PlanProgress
 
-        mod = importlib.import_module("library.migrations.0171_reshape_first_key_teachings")
+        mod = importlib.import_module("library.migrations.0172_reshape_first_key_teachings")
         old, new = next(iter(mod.RENAMES.items()))
         author = Author.objects.create(slug="a", name="A")
         a = Book.objects.create(slug="book-a", language="en", title="A", author=author)

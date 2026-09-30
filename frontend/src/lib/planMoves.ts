@@ -5,7 +5,7 @@
  * into the account on every sync, so renumbering a plan in place would let a
  * device's old numbers tick the wrong days. Instead the plan takes a new slug
  * (the server moves the account's progress in the same migration — backend
- * `library/migrations/0171_reshape_first_key_teachings.py`) and this moves the
+ * `library/migrations/0172_reshape_first_key_teachings.py`) and this moves the
  * device's own cache across, once, by the same rule:
  *
  * - a new day made of several old days is done only if all of them were;
@@ -21,7 +21,7 @@ export interface PlanMove {
 	books: number[];
 }
 
-// 0171: the four Key Teachings volumes the plan reads were reshaped (88 → 86 days).
+// 0172: the four Key Teachings volumes the plan reads were reshaped (88 → 86 days).
 export const PLAN_MOVES: Record<string, PlanMove> = {
 	'the-key-teachings-four-teachers': {
 		to: 'key-teachings-four-teachers',

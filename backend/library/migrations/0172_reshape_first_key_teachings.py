@@ -158,7 +158,7 @@ def noop(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0170_reshape_key_teachings"),
+        ("library", "0171_book_cover_byline"),
         ("reading", "0031_progress_furthest_and_pct"),
     ]
 

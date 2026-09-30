@@ -416,7 +416,7 @@ CURATED_PLANS = [
         ],
     ),
     (
-        # Was "the-key-teachings-four-teachers" until migration 0171 reshaped its books
+        # Was "the-key-teachings-four-teachers" until migration 0172 reshaped its books
         # and moved the plan (a new slug fences stale devices' old day numbers).
         "key-teachings-four-teachers",
         "The Key Teachings: Four Teachers",
