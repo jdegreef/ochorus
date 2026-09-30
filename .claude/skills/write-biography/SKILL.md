@@ -535,6 +535,13 @@ advertised-but-unbuilt, so built-but-unadvertised is fine.
   (`seed_books` syncs chapters by order), re-deriving `body_text`/`word_count`.
   Prefer "the devotional accounts say…" + the nearest documented figure over
   deleting a famous story outright.
+  **If the English fix adds or removes ANY tag** (e.g. `<em>` round a newly
+  cited title), (1) and (3) must ship in ONE PR: `tests_bio_markup` demands every
+  translation carry the English tag sequence, so the English-only PR goes red
+  and the translations-only PR is red against main (Corrie ten Boom: #4508 could
+  never merge alone; #4510 carried both). Count tags before splitting the PRs.
+  Also re-diff the English branch tip before the translations go out — a
+  follow-up commit to the English (#4508's guard fix) is easy to miss.
 
 - **Some of the best sources are egress-blocked.** `dacb.org` (Dictionary of
   African Christian Biography) and `en.wikipedia.org` both refuse `WebFetch`
