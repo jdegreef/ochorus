@@ -1564,6 +1564,20 @@ class CoverAssetTests(SimpleTestCase):
             sorted(re.findall(r"'([^']+)'", block.group(1))), sorted(INK_DARK),
             "covers.INK_DARK and coverLayouts.INK_DARK disagree — change both",
         )
+        # The dark-ink boxes assume centred framed rows; a type-top work sets
+        # its words elsewhere, and the white gate would skip it. Neither gate
+        # measures such a work correctly, so hold the sets apart.
+        from library.covers import DARK_INK, TYPE_TOP
+
+        self.assertEqual(sorted(INK_DARK & TYPE_TOP), [], "a work is both INK_DARK and TYPE_TOP")
+        # The ink the gate measures is the ink the stylesheet sets.
+        css = (STATIC_DIR.parent / "src" / "lib" / "components" / "cover-type.css").read_text()
+        ink = re.search(r"--cover-ink-dark:\s*#([0-9a-fA-F]{6})", css)
+        self.assertIsNotNone(ink, "--cover-ink-dark not found in cover-type.css")
+        self.assertEqual(
+            tuple(int(ink.group(1)[i : i + 2], 16) for i in (0, 2, 4)), DARK_INK,
+            "covers.DARK_INK and cover-type.css --cover-ink-dark disagree — change both",
+        )
 
     def test_dark_ink_grounds_carry_their_type(self):
         """A pale ground set in dark ink clears the same bars white type does.

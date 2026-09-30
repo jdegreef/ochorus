@@ -367,7 +367,9 @@ DARK_INK = (0x23, 0x1A, 0x24)
 DARK_INK_BOXES = (
     # Glyphs span x85-515 (the English "Growing Up" subtitle); the column holds
     # 25px either side. Rows are the union over Daughters (en, am) and Sons
-    # (en), measured 2026-09-30, with a few px of margin.
+    # (en), measured 2026-09-30, with a few px of margin. A new dark-ink work,
+    # or a translation whose title wraps longer, must be re-measured on its
+    # composed twin before it is trusted to this table.
     ("byline", (60, 100, 540, 133), AUTHOR_INK_OPACITY, AUTHOR_MIN_CONTRAST),
     # The ring and its numeral; the ring line is the faintest ink (0.72).
     ("volume", (266, 228, 334, 332), 0.72, 3.0),
