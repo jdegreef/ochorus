@@ -1,9 +1,9 @@
 ---
-description: A concise, faithful guide to the heart of Charles H. Spurgeon’s message — that salvation is all of grace, from first to last, and is received by a single look of faith at Jesus Christ crucified. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Spurgeon’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Charles H. Spurgeon’s message — that salvation is all of grace, from first to last, and is received by a single look of faith at Jesus Christ crucified. Twenty-one short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Spurgeon’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Charles H. Spurgeon. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of the Prince of Preachers’ teaching into eighteen short chapters for the ordinary reader, with a chapter on his life before them and a guide to his books after.
+  This is not a book by Charles H. Spurgeon. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of the Prince of Preachers’ teaching into twenty-one short chapters for the ordinary reader, with a chapter on his life before them and a guide to his books after.
 
-  Spurgeon’s one message was the one that saved him as a boy of fifteen in a Colchester chapel: Look unto me, and be ye saved. Everything he preached for forty years — free grace and the free offer of the gospel, the substitution of Christ, simple faith, the promises, prayer, the war with sin, songs in the night, communion at the Lord’s Table, the winning of souls, the care of the orphan, and the contending for truth that darkened his last years — is that one look applied. This volume follows the thread, is honest about his combativeness and the limits of his system, and ends each chapter where he would have ended it: in a few searching questions and a prayer.
+  Spurgeon’s one message was the one that saved him as a boy of fifteen in a Colchester chapel: Look unto me, and be ye saved. Everything he preached for forty years — free grace and the free offer of the gospel, the substitution of Christ, simple faith and the repentance that goes with it, the unchanging God, the promises, prayer, the war with sin, the happiness of religion, songs in the night, communion at the Lord’s Table, the winning of souls, the care of the orphan, and the contending for truth that darkened his last years — is that one look applied. This volume follows the thread, is honest about his combativeness and the limits of his system, and ends each chapter where he would have ended it: in a few searching questions and a prayer.
 
   Spurgeon’s own writings are in the public domain and freely available, and many are in the Ochorus library; every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible Spurgeon preached from, and makes no claim to stand in for his own vivid, Christ-filled pages.
 ---
@@ -28,7 +28,7 @@ Everything else he taught flows from that fountain. The cross is the object at w
 
 ## How this book is arranged
 
-After a chapter on his life, eighteen short chapters set out his teaching. They begin with his conversion and the gospel it gave him: the look of faith, justification of the ungodly, the substitution of Christ, and his conviction that every sermon must lead to the cross. They go on to the two great truths he held together, free grace and the free offer, and then to faith, the promises, prayer, the Word and the Spirit. They move from there into the life of the believer: the warfare with sin, the perseverance of the saints, the dark night of affliction, and communion with Christ at His table. The last follow him out to the lost and the poor, into the controversy of his final years, and home to heaven.
+After a chapter on his life, twenty-one short chapters set out his teaching. They begin with his conversion and the gospel it gave him: the look of faith, justification of the ungodly, the substitution of Christ, and his conviction that every sermon must lead to the cross. They go on to the two great truths he held together, free grace and the free offer, and then to faith and repentance, the unchanging God on whom faith rests, the promises, prayer, the Word and the Spirit. They move from there into the life of the believer: the warfare with sin, the perseverance of the saints, the gladness of the Christian life and the dark night of affliction, and communion with Christ at His table. The last follow him out to the lost and the poor, into the controversy of his final years, and home to heaven.
 
 Each chapter ends with application points and a prayer. Spurgeon would have wanted it so. He preached for verdicts, and almost every sermon he ever delivered turns, near the end, to face the hearer with a direct question. Read one chapter a day, or one a week. Linger over the application points. Pray the prayer, or better, pray your own.
 
@@ -38,7 +38,7 @@ This is not a book of hero-worship, and there are places where Spurgeon must be 
 
 First, his Calvinism. Spurgeon believed the doctrines of grace were simply the gospel, and he could say so in terms that will jar readers who belong to other traditions. Many sincere Christians who love Christ read the passages on election differently, and they are not enemies of grace. This book presents his convictions as he held them, but it tries to show that the heart of what he taught — that salvation is God’s gift and not our achievement — is common ground for every believer who has ever sung of amazing grace.
 
-Second, his combativeness. Spurgeon was a controversialist by temperament as well as conviction. His sermon on baptismal regeneration in 1864 and the Down-Grade controversy of 1887 were both fought with a sharpness that wounded friends as well as opponents. Chapter nineteen weighs that honestly.
+Second, his combativeness. Spurgeon was a controversialist by temperament as well as conviction. His sermon on baptismal regeneration in 1864 and the Down-Grade controversy of 1887 were both fought with a sharpness that wounded friends as well as opponents. Chapter twenty-two weighs that honestly.
 
 Third, his temperament. He was a man of high spirits and deep glooms, of sparkling humour and sudden depression. His rhetoric belongs to the Victorian pulpit, with its long periods, its thunder and its tears, and it does not always travel well.
 
@@ -272,7 +272,7 @@ This is why the cross was, for Spurgeon, not only the ground of salvation but th
 
 ## A doctrine under attack
 
-Spurgeon knew in his own lifetime that substitution was being questioned. Some thinkers of his day called it immoral for one to suffer in the place of another; others treated the language of sacrifice as a figure of speech for God’s general kindness. In The Sin-Bearer he answers them sharply. If we lose the cross, he says, and if we miss the substitutionary sacrifice, “we have lost all.” This conviction lay behind the Down-Grade controversy of his last years, which chapter nineteen describes.
+Spurgeon knew in his own lifetime that substitution was being questioned. Some thinkers of his day called it immoral for one to suffer in the place of another; others treated the language of sacrifice as a figure of speech for God’s general kindness. In The Sin-Bearer he answers them sharply. If we lose the cross, he says, and if we miss the substitutionary sacrifice, “we have lost all.” This conviction lay behind the Down-Grade controversy of his last years, which chapter twenty-two describes.
 
 It is fair to add that Christians have always found many riches in the cross — Christ’s victory over the powers, His example of love, His reconciling of enemies — and that Scripture itself uses many pictures. Spurgeon did not deny any of them. He simply held that they all rest on the substitution, as rooms rest on a foundation. It is also fair to note that he held what is called particular redemption: that Christ died with the definite intention of saving His people. Many Christians believe instead that Christ died for all in the same way. Yet Spurgeon never allowed that doctrine to keep him from telling every hearer, without exception, that there was life in a look at the crucified One. The Sin-Bearer was offered to all.
 
@@ -404,7 +404,7 @@ For Spurgeon, sovereign grace was also the ground of the believer’s security. 
 
 > For I am the Lord, I change not; therefore ye sons of Jacob are not consumed. MALACHI 3:6
 
-This is why he thought the doctrines of grace were comforting rather than cold. A salvation that began in God’s eternal love, was purchased by Christ’s blood and applied by the Spirit’s power cannot be lost through the believer’s weakness. Chapter fourteen returns to this.
+This is why he thought the doctrines of grace were comforting rather than cold. A salvation that began in God’s eternal love, was purchased by Christ’s blood and applied by the Spirit’s power cannot be lost through the believer’s weakness. Chapter sixteen returns to this.
 
 ## Grace that sends the preacher out
 
@@ -563,6 +563,140 @@ He also warned against the opposite error: making faith so complicated, so hedge
 > I lean my whole weight on You now. I have nothing to add and nothing to pay. I take what You give.
 > When my hand trembles, let me look at what it holds, and not at the hand. Lord, I believe; help Thou mine unbelief. Amen.
 
+# Repentance Must Go with Forgiveness
+
+> Him hath God exalted with his right hand to be a Prince and a Saviour, for to give repentance to Israel, and forgiveness of sins. ACTS 5:31
+
+A preacher who says as often as Spurgeon did that salvation is simply a look will be asked, sooner or later, what has become of repentance. Spurgeon heard the question all his life, and took it seriously. In the later chapters of All of Grace, having spent chapter after chapter pressing the free offer on the reader, he stops to give two chapters to it, under the plain title Repentance Must Go with Forgiveness. His answer is not a condition added to grace. It is another gift of the same grace, from the same pierced hand.
+
+## Riveted together
+
+He begins from his text in Acts. The risen Christ is exalted to give two things, repentance and forgiveness, and Spurgeon will not allow them to be separated. “Repentance and forgiveness are riveted together by the eternal purpose of God.” What God has joined, he says, let no man put asunder.
+
+> And that repentance and remission of sins should be preached in his name among all nations, beginning at Jerusalem. LUKE 24:47
+
+He gives two reasons why it must be so. The first is the holiness of God. A pardon offered to someone who loves his sin and means to go on in it would be a licence for iniquity. No rebel can expect the King to pardon his treason while he remains in open revolt. The second reason is less obvious and more beautiful: the completeness of mercy. A mercy that forgave the sin and left the sinner in it would be, as he puts it, lame on one foot and withered in one hand. What use is it to bring a man out of the grave if you leave him dead? To be pronounced clean and still have the leprosy on one’s brow would be a mockery of mercy.
+
+Would you, he asks the reader, be content to be forgiven and left as worldly as before? The quickened soul is more afraid of sin itself than of its punishment.
+
+## Two handles of one plough
+
+The heart of the chapter is his account of how repentance and faith belong together. They are not stages, one finished before the other begins. “Repentance is the inseparable companion of faith.” All the while we walk by faith, he says, “the tear of repentance glitters in the eye of faith.” Faith that has no sorrow for sin in it is not true faith, and sorrow for sin that does not look to Jesus is not true repentance.
+
+> For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death. 2 CORINTHIANS 7:10
+
+He has a string of pictures for the bond. They are the Jachin and Boaz of a saving experience, the two pillars at the door of Solomon’s temple, and nobody comes to God aright except between them. “Faith and repentance are but two spokes in the same wheel, two handles of the same plough.” He quotes a description he admired, that repentance is a heart broken for sin, and from sin — grieved over what it has done, and turned away from doing it.
+
+This has a practical edge. Repentance, Spurgeon insists, is not a thing of days and weeks, a penance to be got through as quickly as possible and then left behind. It is “the grace of a lifetime, like faith itself.” The young Christian repents and so does the old one, and the older one often repents more deeply, because he has seen more of the love he has sinned against.
+
+> The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise. PSALM 51:17
+
+## Pardon melts the heart
+
+Here Spurgeon makes a move that many readers find surprising. We tend to assume that repentance comes first and earns forgiveness: we grieve, and so God pardons. He will not have it. “Do not regard your repentance as the cause of your remission, but as the companion of it.” Indeed, he says, forgiveness leads to repentance as much as the reverse. He quotes a verse of Joseph Hart’s hymn to the effect that law and terrors only harden, while a sense of blood-bought pardon dissolves a heart of stone.
+
+> Or despisest thou the riches of his goodness and forbearance and longsuffering; not knowing that the goodness of God leadeth thee to repentance? ROMANS 2:4
+
+It follows that the surest way to repent is not to stare into your own heart but to look at the cross. “Do not sit down and try to pump up repentance from the dry well of corrupt nature,” he writes. Nobody can force his soul into a penitent frame. The more you try to produce the right emotions, the more you will be disappointed. But if you think of Jesus dying for you, sorrow for sin will come of itself. He points to Peter in the high priest’s courtyard. The Lord turned and looked on him, and that look did what no argument could.
+
+> And the Lord turned, and looked upon Peter. And Peter remembered the word of the Lord … And Peter went out, and wept bitterly. LUKE 22:61–62
+
+We repent ourselves; nobody can do it for us. But behind our turning, Spurgeon says, is the Spirit, who shows us what sin is and makes it loathsome. And the exalted Christ uses everything else as well — conscience, Scripture, preaching, the prayers of friends and the hard providences of life. “The Lord’s mercy often rides to the door of our hearts on the black horse of affliction.”
+
+## Hope for the hardest
+
+Spurgeon lingers with evident delight on one word of his text: Christ is exalted to give repentance to Israel — to the very people who had cried out for His crucifixion. If He could give repentance to them, there is no heart He cannot soften. The Lord, Spurgeon says, can turn lions into lambs and ravens into doves.
+
+> The Lord is … longsuffering to us-ward, not willing that any should perish, but that all should come to repentance. 2 PETER 3:9
+
+That is the note on which he ends, and it is a gospel note. The reader who feels he cannot repent is not told to try harder. He is told to ask. Repentance is as much a gift of grace as the atonement itself, and the risen Christ is ready to give it now.
+
+## A word of care
+
+Two cautions are worth adding. The first is that Spurgeon’s insistence that repentance is lifelong can, in a tender conscience, curdle into a habit of endless self-examination that never rests in pardon. The bitterness of repentance and the sweetness of pardon, he says, blend in every gracious life and make up an incomparable happiness. Repentance that never tastes the pardon has gone wrong.
+
+The second is that Christians have long differed over the order of these things, and some traditions speak of repentance as preparing the way for faith. Spurgeon was not greatly interested in drawing a timetable. His point is simpler and almost every believer can own it: repentance is not a price paid to God but a gift received from Christ, and it grows, like faith, by looking at Him.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask whether you have wanted forgiveness without wanting to be free of the sin itself. Tell God honestly which one you have been asking for.
+2. If you feel unable to repent, stop trying to manufacture feeling. Read the account of the crucifixion in Luke 23 slowly, and let Christ look at you.
+3. Name one sin you have confessed many times but never turned from. Decide on one concrete step away from it this week.
+4. Notice whether your repentance ever reaches rest in pardon. If it does not, read 1 John 1:9 aloud and believe it.
+5. Think of someone you have written off as too hard to change. Pray for them by name, remembering that Christ gave repentance to those who crucified Him.
+
+### A PRAYER
+
+> Lord Jesus, exalted Prince and Saviour, You give repentance and forgiveness, and I need both.
+> I have wanted to be pardoned more than I have wanted to be made holy. Break my heart for sin, and from sin.
+> I cannot pump repentance out of a dry well. Look on me as You looked on Peter, and let me weep and be healed.
+> Keep the tear of repentance and the light of pardon together in my eyes, all my life long. Amen.
+
+# I Change Not
+
+> For I am the Lord, I change not; therefore ye sons of Jacob are not consumed. MALACHI 3:6
+
+Spurgeon was twenty when he preached The Immutability of God, one of the first sermons of his London ministry and the one that opens the long series of his printed sermons. It is a young man’s sermon, full of energy and not without overstatement. But it shows where his confidence came from. Before he spoke of promises to be pleaded or of saints who would persevere, he wanted his hearers to look at God Himself — and in particular at the fact that He does not change.
+
+## The proper study of a Christian
+
+He begins by adapting a famous line of Alexander Pope. It has been said that the proper study of mankind is man. Spurgeon does not quarrel with it, but he sets another beside it: “the proper study of a Christian is the Godhead.” No other subject, he says, so humbles the mind, because our plumb-line cannot sound its depth. No other so enlarges it. And no other so comforts it. “Would you lose your sorrows? Would you drown your cares? Then go, plunge yourself in the Godhead’s deepest sea.”
+
+> Thus saith the Lord, Let not the wise man glory in his wisdom … But let him that glorieth glory in this, that he understandeth and knoweth me. JEREMIAH 9:23–24
+
+That is worth pausing over, because it is not how most of us look for comfort. When we are troubled we tend to think about the trouble, or about ourselves. Spurgeon’s counsel is to think about God — not as an escape from the trouble, but because the character of God is the one fixed point from which the trouble can be measured.
+
+## Semper idem
+
+The body of the sermon sets out what it means for God not to change. He does not change in His essence. Everything created is in flux: mountains shed their snow, the sea is drawn up into the clouds, the atoms of our bodies are replaced year by year. But God is spirit, and “there are no furrows on his eternal brow.” Even the incarnation, Spurgeon notes carefully, did not alter the divine nature; the Godhead was the same in the manger as when it stretched out the heavens.
+
+> They shall perish, but thou shalt endure: yea, all of them shall wax old like a garment; as a vesture shalt thou change them, and they shall be changed: but thou art the same, and thy years shall have no end. PSALM 102:26–27
+
+Nor does He change in His attributes. His power, wisdom, justice and truth are what they always were, and so is His love, which, Spurgeon says, “stands like a granite rock, unmoved by the hurricanes of our iniquity.” “Take any one attribute of God,” he says, “and I will write semper idem on it” — always the same.
+
+> Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning. JAMES 1:17
+
+He does not change in His plans either. A man may begin to build and find he cannot finish. God has boundless resources, perfect wisdom and endless life; He has no reason to alter His purpose and nothing that could force Him to. Spurgeon draws the personal conclusion with characteristic directness: if God has told me that His plan is to save me, then I am safe.
+
+## The bank that never fails
+
+The most useful part of the sermon, for ordinary believers, is what he says about the promises. If any promise of God could be altered, he says, we would do better not to talk of them at all. “If I thought that the notes of the bank of England could not be cashed next week, I should decline to take them.” It is the same picture he would use thirty years later in The Cheque Book of the Bank of Faith, and it rests on the same foundation. The promises are worth pleading only because the One who made them does not change.
+
+> That by two immutable things, in which it was impossible for God to lie, we might have a strong consolation, who have fled for refuge to lay hold upon the hope set before us. HEBREWS 6:18
+
+He then deals tenderly with a common experience. A promise that was sweet yesterday tastes of nothing today, and the believer wonders whether it has failed. Not at all, Spurgeon says: “You changed; that is where the matter lies.” The honey is still in the comb. And when a believer feels his house of hope blown down, it was only the little hut of wood, hay and stubble he had built for himself. “You have been shaken on the rock, not the rock under you.”
+
+## Not consumed
+
+The last part of the sermon turns to the second half of the text. Why are the sons of Jacob not consumed? Not because they are good. Spurgeon is frank that God’s family is the most troublesome family in the world — unbelieving, ungrateful, forgetful and stiffnecked — and that any earthly father would long ago have given up. They survive because God’s love to them never rested on anything in them. “Since their good works did not win his affection, bad works cannot sever that affection.”
+
+> It is of the Lord’s mercies that we are not consumed, because his compassions fail not. They are new every morning: great is thy faithfulness. LAMENTATIONS 3:22–23
+
+He speaks, too, of times in his own life when temptation had dragged him to the edge of some great sin and a strong arm had pulled him back. He was still standing, he says, only because the Lord does not change. And he closes with a sentence that sums up the whole sermon: “Remember God is the same, whatever is removed.” Friends may cool, ministers may be taken away, health and property may go. There is one heart that never alters.
+
+> Jesus Christ the same yesterday, and to day, and for ever. HEBREWS 13:8
+
+## Where he needs care
+
+This early sermon has faults the older Spurgeon would have recognised. His treatment of the unchanging threatenings of God is fierce, and the lurid lines about the lost reading their sentence in letters of fire for a million ages are harder than the text requires. The warning is real — Scripture is plain that he that believeth not shall be damned (Mark 16:16) — but it is better spoken with tears than with relish.
+
+His handling of Hezekiah also needs a word. To show that God did not change His mind when He added fifteen years to the king’s life, Spurgeon suggests that Isaiah had simply not finished his sentence before he left the room. That is an ingenious guess, not what the text says. Scripture does speak of God relenting when people turn (Jonah 3:10), and the better answer is that an unchanging God has always purposed to answer prayer and to show mercy to the penitent. His constancy is not the stillness of a stone but the faithfulness of a Person. Spurgeon’s own life of prayer shows that he believed exactly this.
+
+### FOR REFLECTION AND ACTION
+
+1. The next time you are anxious, spend five minutes thinking not about the problem but about one attribute of God. Write semper idem beside it.
+2. Recall a promise that once meant much to you and now feels flat. Ask whether the promise has changed, or you have.
+3. List the things in your life that you fear losing. Beside the list, write Malachi 3:6.
+4. Read Lamentations 3:19–26, and thank God specifically for one mercy that was new this morning.
+5. If you have been presuming on God’s patience with a known sin, remember that His warnings are as unchanging as His promises, and turn today.
+
+### A PRAYER
+
+> Unchanging God, everything I lean on moves: my health, my friends, my feelings, even my faith.
+> But You are the same, and Your years have no end. There are no furrows on Your brow and no shadow of turning in Your heart.
+> When Your promises taste of nothing, teach me that it is I who have changed, and bring me back to the rock.
+> I am not consumed only because Your compassions fail not. Great is Your faithfulness, through Jesus Christ, who is the same for ever. Amen.
+
 # The Cheque Book of the Bank of Faith
 
 > Whereby are given unto us exceeding great and precious promises: that by these ye might be partakers of the divine nature. 2 PETER 1:4
@@ -593,7 +727,7 @@ For Spurgeon the promises were chiefly material for prayer. On one page of the C
 
 > And now, O Lord God, the word that thou hast spoken concerning thy servant … establish it for ever, and do as thou hast said. 2 SAMUEL 7:25
 
-This gives prayer a solid floor. Much praying is vague: we tell God what we would like and hope He agrees. Praying the promises is different. We come with His own words in our hand and ask Him to do what He has said. That is not presumption; it is taking Him seriously. Chapter eleven follows this further.
+This gives prayer a solid floor. Much praying is vague: we tell God what we would like and hope He agrees. Praying the promises is different. We come with His own words in our hand and ask Him to do what He has said. That is not presumption; it is taking Him seriously. Chapter thirteen follows this further.
 
 ## Rich beyond telling
 
@@ -705,7 +839,7 @@ Spurgeon held the Bible to be the inspired Word of God, true in all it affirms a
 
 In a passage gathered in Gleanings Among the Sheaves he notes how the apostles loved to quote the old Scriptures, even though as inspired men they might have used fresh words. They preferred the old words on which the seal of God had already been set. He urges believers to do the same. The words of ministers may be sweet, he says, but the words of God are sweeter, and they will not be found wanting on the day they are needed.
 
-This conviction lay at the root of the Down-Grade controversy, which chapter nineteen describes. When Spurgeon saw ministers treating Scripture as a merely human book to be corrected by modern thought, he believed the foundation of everything was being removed.
+This conviction lay at the root of the Down-Grade controversy, which chapter twenty-two describes. When Spurgeon saw ministers treating Scripture as a merely human book to be corrected by modern thought, he believed the foundation of everything was being removed.
 
 ## A Book that must be lit
 
@@ -882,6 +1016,75 @@ Many devout Christians in the Wesleyan and other traditions believe that a true 
 > Keep me from careless presumption and from anxious self-reliance. Let me rest my whole hope, first to last, on You.
 > You began this good work. Finish it, and present me faultless before Your glory with exceeding joy. Amen.
 
+# The Happiness of Religion
+
+> Neither be ye sorry; for the joy of the Lord is your strength. NEHEMIAH 8:10
+
+People who know Spurgeon only from his controversies, or from the darkness described in the next chapter, are sometimes surprised to learn how much he laughed. He was a man of quick wit and hearty humour, and he saw no reason to leave either at the vestry door. In Talks to the Farmer he describes a harvest-home supper at which, when the cheerful meal was ended, he turned one of the tables into a pulpit and preached the gospel in the barn. “My heart was merry in harmony with the occasion,” he says. That merriment was not a lapse from his religion. He believed it was part of it.
+
+## A happy Creator, a happy Redeemer
+
+In the passages gathered in Gleanings Among the Sheaves under the heading The Joy of the Christian Life, he states the principle bluntly. “That religion which teaches misery to be a duty is false upon the very face of it.” His argument is from creation. God did not give us only what we need to survive. He gave us flowers in the hedgerow and stars in the sky, beauty that is not strictly useful, because He wished His creatures to be glad.
+
+From this he draws a conclusion that is both simple and profound: “it is not likely that the God who made a happy world would send a miserable salvation.” He who is a happy Creator, he says, will be a happy Redeemer. The gospel is not a grim remedy to be swallowed for the good of our souls. It is good news, and it was meant to make people glad.
+
+> Her ways are ways of pleasantness, and all her paths are peace. PROVERBS 3:17
+
+It is worth noticing how often Scripture commands joy. Paul does not merely permit the Philippians to rejoice; he tells them to do it, and then tells them again. Spurgeon took such words as seriously as any other command.
+
+> Rejoice in the Lord alway: and again I say, Rejoice. PHILIPPIANS 4:4
+
+## Seek Christ first
+
+Yet Spurgeon was no preacher of a cheerful religion for its own sake. He knew that happiness sought directly has a way of slipping through the fingers. His counsel, in the same collection, is precise: “Seek not happiness first; seek Christ first; and happiness shall come after.”
+
+> But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you. MATTHEW 6:33
+
+That order matters. A great deal of modern religion promises happiness as its product, and people come to Christ for the sake of the feelings He gives. When the feelings fade, so does their faith. Spurgeon’s joy was of a different kind. It was the by-product of looking at Christ, and so it could survive the loss of almost everything else. In a moving passage he appeals to the poor, the sick, the hard-pressed man of business and the rich, and asks whether their religion had not been a candle in their darkness and a rest in their toil. And he makes a bold claim from long pastoral experience: “Never, never did we know a Christian who repented of his Christianity.” He had seen believers poor, suffering and full of doubts; he had never heard one of them say that he regretted giving himself to Christ.
+
+## Where the joy comes from
+
+Spurgeon’s joy was not temperament dressed up as doctrine. He was, as we have seen, a man of deep glooms as well as high spirits. What he rejoiced in were things that did not depend on his mood.
+
+He rejoiced first in pardon. To hear God say, as it were, Son, thy sins are forgiven thee — to wear the best robe and the ring and to hear the music with which the prodigal is welcomed home — was to him a joy that all the pleasures of the world could not match.
+
+> Blessed is he whose transgression is forgiven, whose sin is covered. PSALM 32:1
+
+He rejoiced next in the settled purposes of God. Commenting on Peter’s words to believers who were in heaviness through manifold temptations, he uses a picture taken from the sea. Mariners, he says, speak of places where a current runs one way on the surface while another runs the opposite way in the depths. “On the surface there is a stream of heaviness rolling in dark waves, but down in the depths there is a strong under-current of great rejoicing.” The Christian can be sad and glad at once, because the deepest things in him — that he is chosen, redeemed and kept for an inheritance that fades not away — are not touched by the weather on the surface.
+
+> Wherein ye greatly rejoice, though now for a season, if need be, ye are in heaviness through manifold temptations. 1 PETER 1:6
+
+And he rejoiced in praise itself. In a passage on the opening of Psalm 103 he calls on his memory, his judgement and his understanding each to find matter for the song, to go back to cradle-mercies and to the hour when he first knew the Lord. All creation praises God, he says. “If I were silent I should be an exception to the universe.”
+
+> Bless the Lord, O my soul: and all that is within me, bless his holy name. PSALM 103:1
+
+## Joy that works
+
+Spurgeon was not interested in a joy that simply sat and enjoyed itself. He noticed that gladness is the best fuel for labour. “It is when the mind is happy that it can be laborious.” A man who serves God grudgingly will soon tire; a man who serves Him gladly will be surprised at how much he can do. The vast web of work that grew around the Tabernacle — the college, the orphanage, the almshouses — was not, in his own understanding, driven by duty alone. It was the overflow of a glad heart.
+
+He had a word, too, for believers who live below their privileges. “Many a believer lives in the cottage of doubt when he might live in the mansion of faith.” The joy is available. It is written in the promises and purchased by the blood. Many Christians simply never move in.
+
+## A word of care
+
+There is one sentence in this part of Spurgeon’s teaching that needs handling gently. He writes that a Christian who yields to a mournful, desponding spirit under his trials does dishonour to the noble principles of Christianity. As an encouragement to the fretful, that may be bracing. As a verdict on the clinically depressed, it would be cruel, and Spurgeon, who knew depression from the inside, would not have meant it so. His own life shows that heaviness on the surface is no proof that the undercurrent has stopped. The command to rejoice is not a command to feel cheerful on demand. It is a command to rejoice in the Lord, whose goodness does not rise and fall with our spirits.
+
+Held that way, his teaching is a great gift. The Christian life is not a long face worn for God’s sake. It is the happiest life there is, and the happiness is Christ.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask honestly whether your faith looks, to those who live with you, like good news. What would make it look more so?
+2. Take Spurgeon’s counsel literally this week: stop seeking happiness, and seek Christ first in one concrete way each day.
+3. Read Psalm 103:1–5 and make your own list of benefits under each heading — forgiveness, healing, redemption, mercy, provision.
+4. If you are in heaviness now, name one thing beneath the surface that has not changed: that you are pardoned, chosen, kept. Rejoice in that.
+5. Notice where you serve God grudgingly. Ask Him for gladness in that work rather than simply more effort.
+
+### A PRAYER
+
+> Happy Creator and happy Redeemer, You made a world full of gladness and sent a Saviour to make me glad.
+> Forgive me for wearing a long face and calling it godliness, and for seeking happiness instead of seeking You.
+> When the surface of my life is heavy, let the deep current of Your love run on beneath it, strong and unbroken.
+> Make me glad in Your pardon, glad in Your purposes, glad in Your praise, and let the joy of the Lord be my strength. Amen.
+
 # Songs in the Night
 
 > But none saith, Where is God my maker, who giveth songs in the night. JOB 35:10
@@ -1036,7 +1239,7 @@ This is uncomfortable for modern readers, and it should be. Many Christians say 
 
 ## Motive and manner
 
-Spurgeon’s soul-winning was never mechanical. He had no single method, and he distrusted anything that looked like a technique for producing conversions. He believed that only the Spirit could give life, as chapter twelve has shown, and that the soul-winner’s part was to be faithful, loving and persistent, and to leave the results with God. He was glad to see others winning souls by methods different from his own, and in Talks to the Farmer he warns against the spirit of the disciples who forbade a man casting out demons because he did not follow with them.
+Spurgeon’s soul-winning was never mechanical. He had no single method, and he distrusted anything that looked like a technique for producing conversions. He believed that only the Spirit could give life, as chapter fourteen has shown, and that the soul-winner’s part was to be faithful, loving and persistent, and to leave the results with God. He was glad to see others winning souls by methods different from his own, and in Talks to the Farmer he warns against the spirit of the disciples who forbade a man casting out demons because he did not follow with them.
 
 > He that goeth forth and weepeth, bearing precious seed, shall doubtless come again with rejoicing, bringing his sheaves with him. PSALM 126:6
 
@@ -1258,7 +1461,7 @@ Spurgeon died at Menton at the end of January 1892. His hope did not fail him, a
 
 > Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
 
-Eighteen chapters can make it seem that Charles Spurgeon taught a great many things. He taught one thing, and everything else is that one thing applied. Salvation is all of grace, and grace is received by looking to Jesus Christ crucified. Follow it through and the whole structure appears. God justifies the ungodly, because Christ bore their sins in His own body. That is why every sermon must end at the cross. Grace is sovereign, so nobody can boast; grace is free, so anybody may come. Faith is simply the hand that takes it. The promises are cheques drawn on grace; prayer presents them. The Word reveals Christ and the Spirit applies Him. The war with sin is fought by those whom grace has made new, and they persevere because God perseveres. In the night, grace gives a song. At the Table, grace sets Christ before the eye again. And grace sends the church out to the lost and the poor, makes it contend for the gospel that saved it, and brings it home at last to see the One it has been looking at all along.
+Twenty-one chapters can make it seem that Charles Spurgeon taught a great many things. He taught one thing, and everything else is that one thing applied. Salvation is all of grace, and grace is received by looking to Jesus Christ crucified. Follow it through and the whole structure appears. God justifies the ungodly, because Christ bore their sins in His own body. That is why every sermon must end at the cross. Grace is sovereign, so nobody can boast; grace is free, so anybody may come. Faith is simply the hand that takes it, and repentance is its companion, given by the same exalted Christ. The God who gives it does not change, so the promises are cheques drawn on grace; prayer presents them. The Word reveals Christ and the Spirit applies Him. The war with sin is fought by those whom grace has made new, and they persevere because God perseveres. Grace makes them glad, and in the night, grace gives a song. At the Table, grace sets Christ before the eye again. And grace sends the church out to the lost and the poor, makes it contend for the gospel that saved it, and brings it home at last to see the One it has been looking at all along.
 
 ## The danger of this book
 
@@ -1307,7 +1510,7 @@ Spurgeon is the easiest of the great preachers to read and the hardest to read w
 
 ## Begin here
 
-All of Grace. Written for seekers late in his life; the best single door into his teaching. In the Ochorus library. Around the Wicket Gate. A companion to All of Grace for those who are anxious and hesitating, full of plain illustrations. In the Ochorus library. The sermons. Rather than attempting the collected volumes, begin with a handful of the best-loved: Compel Them to Come In, Christ Crucified, Free Grace, Songs in the Night and The Sinner’s Friend are all in the Ochorus library, among eighteen of his sermons there.
+All of Grace. Written for seekers late in his life; the best single door into his teaching. In the Ochorus library. Around the Wicket Gate. A companion to All of Grace for those who are anxious and hesitating, full of plain illustrations. In the Ochorus library. The sermons. Rather than attempting the collected volumes, begin with a handful of the best-loved: Compel Them to Come In, Christ Crucified, Free Grace, The Immutability of God, Songs in the Night and The Sinner’s Friend are all in the Ochorus library, among eighteen of his sermons there.
 
 ## For daily reading
 
@@ -1327,7 +1530,7 @@ Lectures to My Students. His Friday afternoon addresses to the men of the Pastor
 
 ## Approach with care
 
-The collected sermons. The New Park Street Pulpit and The Metropolitan Tabernacle Pulpit run to more than sixty volumes. Some of the finest preaching in the language, and much repetition. Read by topic or text, not from volume one. The Down-Grade papers. Worth reading to understand chapter nineteen, but best read alongside a balanced account of the controversy, since they give only his side. The addresses on the Song of Solomon. Rich in devotion, but his interpretation runs further than the text and should be held loosely.
+The collected sermons. The New Park Street Pulpit and The Metropolitan Tabernacle Pulpit run to more than sixty volumes. Some of the finest preaching in the language, and much repetition. Read by topic or text, not from volume one. The Down-Grade papers. Worth reading to understand chapter twenty-two, but best read alongside a balanced account of the controversy, since they give only his side. The addresses on the Song of Solomon. Rich in devotion, but his interpretation runs further than the text and should be held loosely.
 
 ## About Spurgeon
 

@@ -1,9 +1,9 @@
 ---
-description: A concise, faithful guide to the heart of Augustine of Hippo’s teaching — the restless heart made for God, the grace that goes before the will, Christ the humble Mediator, the two loves that build two cities, and the love that is the end of every commandment. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Augustine’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Augustine of Hippo’s teaching — the restless heart made for God, the grace that goes before the will, Christ the humble Mediator, the two loves that build two cities, and the love that is the end of every commandment. Twenty short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Augustine’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Augustine of Hippo. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop in a Roman province, and it draws throughout on the two of his books that sit in the Ochorus library, the Confessions and the Enchiridion.
+  This is not a book by Augustine of Hippo. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into twenty short chapters for the ordinary reader. It tells his life plainly, as the life of an African bishop in a Roman province, and it draws throughout on the two of his books that sit in the Ochorus library, the Confessions and the Enchiridion.
 
-  Augustine’s one theme was the heart and its loves. We were made for God, and we cannot rest anywhere else; the tragedy of sin is love turned the wrong way, and the wonder of grace is that God Himself turns it back, going before the will He means to heal. This volume follows that thread through his conversion and his mother’s prayers, his teaching on evil, memory, time and the Trinity, his vision of the two cities and of the Sabbath rest, and it is honest about where he pressed too hard. Each chapter ends in a few questions and a prayer.
+  Augustine’s one theme was the heart and its loves. We were made for God, and we cannot rest anywhere else; the tragedy of sin is love turned the wrong way, and the wonder of grace is that God Himself turns it back, going before the will He means to heal. This volume follows that thread through his conversion and his mother’s prayers, his teaching on evil, memory, time and the Trinity, his vision of the two cities, the forgiveness of sins, the resurrection of the body and the Sabbath rest, and it is honest about where he pressed too hard. Each chapter ends in a few questions and a prayer.
 
   Augustine’s own writings are in the public domain and freely available in older English translations, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the man’s own searching, praying pages.
 ---
@@ -30,7 +30,7 @@ If you look for the single thread that runs through all his teaching, you find i
 
 ## How this book is arranged
 
-The second chapter tells his life. The eighteen chapters that follow each take one of his key teachings, beginning with the restless heart and ending with the vision of God. Wherever possible they are grounded in the two of his books that sit in the Ochorus library: the Confessions, in the nineteenth-century translation of Edward Pusey, and the Enchiridion, the little handbook on faith, hope and love he wrote for a friend. His other great works — The City of God, On Christian Doctrine, On the Trinity, his sermons and his writings against Pelagius — are named where they belong, and a guide to them is given at the end.
+The second chapter tells his life. The twenty chapters that follow each take one of his key teachings, beginning with the restless heart and ending with the vision of God. The last four follow the closing articles of the Creed, as the Enchiridion does — the church, the forgiveness of sins, the resurrection of the body and the life everlasting. Wherever possible they are grounded in the two of his books that sit in the Ochorus library: the Confessions, in the nineteenth-century translation of Edward Pusey, and the Enchiridion, the little handbook on faith, hope and love he wrote for a friend. His other great works — The City of God, On Christian Doctrine, On the Trinity, his sermons and his writings against Pelagius — are named where they belong, and a guide to them is given at the end.
 
 Each chapter ends with application points and a prayer. Augustine would have wanted it so. The Confessions is itself one long prayer; he wrote it not to inform God, who knew it all, but, as he says in Book XI, to stir up his own and his readers’ devotion. So read a chapter, stop at the questions, and pray — his prayer if it helps, your own if it is truer.
 
@@ -1185,6 +1185,146 @@ Take away what must be taken away, and a great deal remains. Augustine loved the
 > Forgive the church where it has tried to build Your kingdom with force, and keep me from that spirit.
 > Make us one bread and one body, washed and fed by You, until You present us to Yourself without spot or wrinkle. Amen.
 
+# Forgive Us Our Debts
+
+> And forgive us our debts, as we forgive our debtors. MATTHEW 6:12
+
+When Augustine came, in the Enchiridion, to the article of the Creed that follows the holy church, he paused over the order of the words. After the church comes the forgiveness of sins, and he did not think the order was an accident. “For it is by this that the Church on earth stands,” he writes. The church is not a society of people who have stopped needing mercy. It is the company of the forgiven, who go on being forgiven, and who can only live together because they do. The church at Hippo was not held up by the holiness of its members. It was held up by pardon.
+
+## Not free from sin
+
+Augustine begins with baptism, in which, he taught, all guilt is washed away. But he will not let anyone think that the need for forgiveness ends at the font. The rest of our life, he says, gives constant occasion for the forgiveness of sins, however far we advance in righteousness.
+
+He draws a careful line here. “For although every crime is a sin, every sin is not a crime.” A believer’s life may, by grace, be kept free of the gross offences that scandalise the church and cut a man off from the body of Christ. It will not be kept free of sin. The word spoken in irritation, the duty left undone, the daily coldness of love — these stay with us to the end.
+
+> If we say that we have no sin, we deceive ourselves, and the truth is not in us. 1 JOHN 1:8
+
+There is a realism here that is a mercy to anxious consciences. Expect to need forgiveness every day, Augustine says in effect, and come for it every day.
+
+## The daily prayer
+
+The place where he comes for it is the Lord’s Prayer. The daily prayer of the believer, he says, takes away the small sins of daily life. Forgive us our debts is a petition no Christian outgrows; there is, he remarks drily, no want of debts to be forgiven.
+
+But the petition has a condition, and Augustine presses it hard. We ask to be forgiven as we forgive. He calls forgiveness a kind of almsgiving — “to forgive a man who asks for pardon, is really to give alms” — and then he goes further. Of all the alms we can give, none is greater than to forgive from the heart a sin that has been committed against us. To love the one who wishes us ill, and do him good when we can, is the mark of the mature children of God.
+
+> But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you. MATTHEW 5:44
+
+He knows that few reach that height. The least the petition asks, he says, is that when someone who has wronged us begs our pardon, we forgive him from the heart. But he will not soften the Lord’s own warning, which follows the prayer in Matthew’s Gospel.
+
+> For if ye forgive men their trespasses, your heavenly Father will also forgive you: but if ye forgive not men their trespasses, neither will your Father forgive your trespasses. MATTHEW 6:14–15
+
+“The man whom the thunder of this warning does not awaken is not asleep, but dead,” Augustine writes; and then, with the hope that never quite leaves him, he adds that the voice is so powerful it can awaken even the dead.
+
+## Sins we grow used to
+
+One of the most searching passages in the Enchiridion concerns sins that come to seem small. Some sins, however great, look trivial simply because we are used to them. They are no longer hidden; they are boasted of. He tells how, expounding Galatians some years before, he had been driven to cry out: “Woe to the sins of men! for it is only when we are not accustomed to them that we shrink from them.”
+
+> Woe unto them that call evil good, and good evil; that put darkness for light, and light for darkness. ISAIAH 5:20
+
+Every age has its accustomed sins, and Augustine admits that in his own day some were practised so openly that the church dared not discipline even its clergy for them. The first step towards being forgiven is to see that there is something to forgive. A conscience dulled by custom has to be woken before it can be washed.
+
+## Mercy that makes us repent
+
+Where does such a waking come from? Not from ourselves, Augustine says. Even repentance needs grace. Shame holds us back from humbling ourselves, because the good opinion of others gives us more pleasure than righteousness does; and so the mercy of God is needed not only when a man repents, but to bring him to repentance at all. His proof is Peter in the high priest’s courtyard.
+
+> And the Lord turned, and looked upon Peter. And Peter remembered the word of the Lord, how he had said unto him, Before the cock crow, thou shalt deny me thrice. And Peter went out, and wept bitterly. LUKE 22:61–62
+
+Peter did not turn first. The Lord turned, and looked. Every true repentance begins with that look. And because it begins with God, no one who truly repents need ever despair. However great the sin, Augustine says, the mercy of God is never to be despaired of by those who truly repent; and in weighing repentance we should look less at the length of time than at the depth of sorrow, for a broken and contrite heart God does not despise.
+
+> The sacrifices of God are a broken spirit: a broken and a contrite heart, O God, thou wilt not despise. PSALM 51:17
+
+The one sin that cannot be forgiven, on his reading, is the refusal of forgiveness itself: to despise God’s mercy, not believing that sins are forgiven, and to persist in that hardness to the last day of one’s life. The unpardonable sin is not a slip that a tender conscience falls into unawares. It is a settled no to pardon.
+
+## Where to read with care
+
+Protestant readers will find some things here to question. Augustine speaks of alms as making satisfaction for sins, of times of penance fixed by the church, and of sins being forgiven only within the church. The Reformers, reading Scripture, insisted that the one satisfaction for sin is Christ’s own sacrifice, and that works of mercy are the fruit of forgiveness, never its price. Augustine himself, it should be said, was fierce against anyone who thought alms could buy leave to go on sinning; the life must be changed, he says, and God has given no man licence to sin. What no reader should miss is the heart of it: the church lives by pardon, pardon is daily, and those who receive it must give it.
+
+> And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ’s sake hath forgiven you. EPHESIANS 4:32
+
+### FOR REFLECTION AND ACTION
+
+1. Pray the Lord’s Prayer slowly each day this week, and at the words forgive us our debts, name before God the sins of that day.
+2. Is there someone who has asked your pardon and not truly received it? Forgive them from the heart, and tell them so.
+3. Name one sin that has come to seem small to you because you, or those around you, are used to it. Ask God to let you see it as He does.
+4. If you have despaired of being forgiven, read Luke 22:54–62 and notice who turned first.
+5. Examine whether you have treated any good work — giving, serving, praying — as a payment for sin. Thank God that Christ has paid, and give freely.
+
+### A PRAYER
+
+> Father, I come to You as one who needs forgiving every day, and I thank You that there is forgiveness with You.
+> Forgive me my debts, the ones I see and the ones I have grown used to, and give me a heart that forgives as freely as I am forgiven.
+> When I will not turn, turn and look on me, as You looked on Peter, and lead me to repent.
+> Keep Your church standing on Your pardon, not on our goodness, for the sake of Jesus Christ, who has paid what we could never pay. Amen.
+
+# The Resurrection of the Flesh
+
+> Jesus said unto her, I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live. JOHN 11:25
+
+The Enchiridion follows the Creed, and after the forgiveness of sins comes the resurrection of the body. Augustine admits that he cannot treat it briefly and still answer every question people ask. But on the main point he is not in the least uncertain. He does not mean a resurrection like that of Lazarus, who came back to life for a time and died again, but a resurrection to eternal life, as the body of Christ Himself rose. And that the bodies of all people, those who have died and those who will die, shall be raised, “no Christian ought to have the shadow of a doubt.”
+
+## Death is an enemy
+
+This was not a small thing for Augustine to say. He had been formed by the Platonists, for whom the body was at best a lodging and at worst a prison, and death a release of the soul into its proper freedom. Who would want the prison back? Augustine learned a different account from the Scriptures. The body is God’s good work. Death, the tearing of soul from body, is not a natural release but a penalty. Neither the first death, he says, when the soul is forced to leave the body, nor the second death, would ever have been inflicted if no one had sinned.
+
+> For since by man came death, by man came also the resurrection of the dead. For as in Adam all die, even so in Christ shall all be made alive. 1 CORINTHIANS 15:21–22
+
+So death may be named honestly as an enemy. The Christian need not pretend it is beautiful. It is the last enemy, and it will be destroyed.
+
+> The last enemy that shall be destroyed is death. 1 CORINTHIANS 15:26
+
+## Nothing is far to God
+
+Augustine had seen this faith lived out in his mother. Monica had long planned to be buried in Africa beside her husband. But at Ostia, in her last days, her friends asked whether she was not afraid to leave her body so far from her own city. Her answer is one of the quiet glories of the Confessions: “Nothing is far to God; nor was it to be feared lest at the end of the world, He should not recognise whence He were to raise me up.” She no longer cared where she lay, because she knew who would raise her.
+
+When she died, his friend Euodius took up the Psalter, and the whole house sang, I will sing of mercy and judgments to Thee, O Lord. Years later, writing of the resurrection in the Enchiridion, Augustine returned to that verse: only on that day, he says, shall the saints see fully what it means.
+
+> I will sing of mercy and judgment: unto thee, O LORD, will I sing. PSALM 101:1
+
+## The great Artist
+
+Augustine’s people asked what people still ask. What of a body burned, or lost at sea, or turned to dust and scattered? He answers with an illustration. If a statue of some metal were melted, or broken into dust, a sculptor could make it again from the same metal, and it would not matter which particle went into which part, so long as the whole was restored. So, he says, “God, the Artificer of marvellous and unspeakable power,” will restore our bodies, and nothing of them will be lost to Him. The great Artist, he says, will see that nothing is unbecoming or out of place.
+
+> Who shall change our vile body, that it may be fashioned like unto his glorious body, according to the working whereby he is able even to subdue all things unto himself. PHILIPPIANS 3:21
+
+Some of this is speculation. But under it lie two convictions that are pure comfort. The first is that we shall be ourselves. He thinks it likely that each will keep his own features and a recognisable likeness to his former self, and that whatever differences remain will be like “the voices that make up a full harmony.” The second is that what is broken will be mended. Whatever time has marred, he says, will be renewed, and whatever time never had the chance to complete will be completed. Of children who died before birth he will not affirm more than he knows; but he cannot see, he says, why anyone who has once lived should be denied a share in the resurrection.
+
+## A body, not a ghost
+
+Paul calls it a spiritual body, and Augustine guards the phrase. The bodies of the saints will be free from every defect and corruption, from all heaviness and hindrance; they will be called spiritual, he says, “though undoubtedly they shall be bodies and not spirits.” A spiritual body is not a body made of spirit, but one wholly at the service of the spirit. Even after the resurrection, he reminds us, the body of Christ was called flesh.
+
+> It is sown in corruption; it is raised in incorruption: it is sown in dishonour; it is raised in glory: it is sown in weakness; it is raised in power: it is sown a natural body; it is raised a spiritual body. 1 CORINTHIANS 15:42–44
+
+> Behold my hands and my feet, that it is I myself: handle me, and see; for a spirit hath not flesh and bones, as ye see me have. LUKE 24:39
+
+Augustine is often blamed, with some reason, for a suspicion of the body that has troubled the church. Here he is at his most biblical. The body is not the enemy. It is to be raised, glorified and brought into perfect harmony with the spirit, so that the war he knew so well will be over. The gospel does not promise to free us from our bodies. It promises to give them back, made new.
+
+## Mercy and judgment
+
+Augustine does not hide the other side. The lost, too, will rise, each with his own body, to what Scripture calls the second death.
+
+> Marvel not at this: for the hour is coming, in the which all that are in the graves shall hear his voice, and shall come forth; they that have done good, unto the resurrection of life; and they that have done evil, unto the resurrection of damnation. JOHN 5:28–29
+
+In the following pages he presses on into the mysteries of election, where the reader will need the care urged in the chapter on grace. But his summary of what the saints will understand on that day is one no believer should quarrel with: “it is only of unmerited mercy that any is redeemed, and only in well-merited judgment that any is condemned.” No one in the resurrection of life will think that he earned his place there.
+
+What should this hope do to us now? Paul’s answer is not speculation but work.
+
+> Therefore, my beloved brethren, be ye stedfast, unmoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord. 1 CORINTHIANS 15:58
+
+### FOR REFLECTION AND ACTION
+
+1. Read 1 Corinthians 15 in one sitting this week, and mark every phrase that speaks of the body.
+2. Ask yourself whether you have thought of heaven as an escape from the body rather than the raising of it. How would the resurrection change the way you treat your body now?
+3. If you have buried someone who died in Christ, give thanks by name for the day God will raise them, and let Monica’s words, nothing is far to God, comfort you.
+4. If you live with a body that is broken or in pain, bring it to God in prayer as a body He has promised to renew.
+5. Choose one task in the work of the Lord that you have let go slack, and take it up again this week, knowing that your labour is not in vain.
+
+### A PRAYER
+
+> Lord Jesus, You are the resurrection and the life, and You were raised in the body that was nailed to the cross.
+> Thank You that nothing is far from You, and that not one of those who sleep in You is lost to Your sight.
+> Teach me to honour this body You have made and will raise, and to name death honestly as the enemy You have conquered.
+> Keep me stedfast in Your work until the day You change this lowly body to be like Your glorious body, and I sing of mercy and judgment to You for ever. Amen.
+
 # The Sabbath Which Hath No Evening
 
 > And on the seventh day God ended his work which he had made; and he rested on the seventh day from all his work which he had made. GENESIS 2:2
@@ -1250,9 +1390,9 @@ The hope of this rest is not an escape from present duty. Augustine worked harde
 
 > For of him, and through him, and to him, are all things: to whom be glory for ever. Amen. ROMANS 11:36
 
-Eighteen chapters may give the impression that Augustine taught many things. In one sense he did; he wrote more than any other writer of the ancient church, on more subjects. But at the centre of it all is one simple, searching claim, and it is the claim of his first paragraph. We were made for God, and our hearts are restless until they rest in Him. Everything else in his teaching is that sentence followed out.
+Twenty chapters may give the impression that Augustine taught many things. In one sense he did; he wrote more than any other writer of the ancient church, on more subjects. But at the centre of it all is one simple, searching claim, and it is the claim of his first paragraph. We were made for God, and our hearts are restless until they rest in Him. Everything else in his teaching is that sentence followed out.
 
-Follow the thread and the whole shape appears. We are lovers, carried by our loves as a stone is carried by its weight. Sin is love turned the wrong way — the pear-thief loving his own fault, the creature loving itself in place of its Creator. Evil is not a rival power but the absence of good, a falling away from the God who made all things well. Left to ourselves, we cannot turn back; the will that turned away destroyed its own freedom. So grace must go before, making the unwilling willing, giving what it commands. It comes to us in Christ, the humble Mediator, who cured our pride by His humility and won the victory by becoming the victim. It meets us in the Scriptures, whose whole aim is love, and in the church, a mixed field that Christ is making holy. It reorders our loves, until we love God first and everything else in Him. It builds a city out of that love, running through all of history beside the city of self-love, and it will bring that city at last to the Sabbath which has no evening. Faith begins; hope prays; love is the end; and sight is the home.
+Follow the thread and the whole shape appears. We are lovers, carried by our loves as a stone is carried by its weight. Sin is love turned the wrong way — the pear-thief loving his own fault, the creature loving itself in place of its Creator. Evil is not a rival power but the absence of good, a falling away from the God who made all things well. Left to ourselves, we cannot turn back; the will that turned away destroyed its own freedom. So grace must go before, making the unwilling willing, giving what it commands. It comes to us in Christ, the humble Mediator, who cured our pride by His humility and won the victory by becoming the victim. It meets us in the Scriptures, whose whole aim is love, and in the church, a mixed field that Christ is making holy, which stands by the daily forgiveness of sins. It reorders our loves, until we love God first and everything else in Him. It builds a city out of that love, running through all of history beside the city of self-love, and it will raise that city, body and soul, and bring it at last to the Sabbath which has no evening. Faith begins; hope prays; love is the end; and sight is the home.
 
 ## What he got wrong
 

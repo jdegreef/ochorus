@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Andrew Murray’s message — abiding in Christ, humility as the root of every grace, absolute surrender, waiting on God and the school of prayer — and the single truth beneath it all: that a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Murray’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Andrew Murray’s message — abiding in Christ, humility as the root of every grace, absolute surrender, waiting on God and the school of prayer — and the single truth beneath it all: that a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment. Sixteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Murray’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Andrew Murray. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eighteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.
+  This is not a book by Andrew Murray. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into sixteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his books.
 
   Murray’s one theme was dependence. A branch has no life of its own; it receives everything from the vine. From that single picture, taken from the lips of Christ in John 15, came all his teaching: humility as the creature taking its true place, surrender as consenting to be held, waiting on God as dependence made into a habit, and prayer and intercession as dependence speaking for ourselves and for the world. This volume follows that thread from the vineyards of the Cape to the inner chamber, weighs honestly the places where he must be read with care — above all his teaching on divine healing — and ends each chapter where he ended nearly all of his: in a few questions and a prayer.
 
@@ -34,7 +34,7 @@ The third is that he is profoundly Christ-centred. For all his talk of surrender
 
 ## How this book is arranged
 
-After a chapter on his life, eighteen short chapters set out his teaching. They begin with abiding in Christ and the vine, move through dependence, humility, surrender, the Spirit, holiness, obedience, love and healing, and end with the six themes nearest his heart: waiting on God, the inner chamber, the school of prayer, believing prayer, the sin of prayerlessness, and intercession for the world.
+After a chapter on his life, sixteen short chapters set out his teaching. They begin with abiding in Christ, the true Vine, move through dependence, humility, surrender, the Spirit, holiness, obedience, love and healing, and end with the five themes nearest his heart: waiting on God, the inner chamber and the school of prayer, believing prayer, the sin of prayerlessness, and intercession for the world.
 
 Each chapter ends with application points and a prayer. Murray would have wanted it so. Nearly every chapter he ever wrote ends in a prayer, and during the years when he could not speak he dictated his meditations and prayed their closing lines aloud before they were written down. He did not think truth had done its work until it had driven the reader to his knees. Read a chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
 
@@ -42,7 +42,7 @@ Each chapter ends with application points and a prayer. Murray would have wanted
 
 This is not a book of hero-worship, and it is better to say plainly at the start where Murray must be weighed rather than simply received.
 
-His book Divine Healing, which grew out of his own recovery in 1882, teaches that healing belongs to the redemption Christ purchased and presents healing without medical means as the higher way of faith. The same book gives thanks for doctors and allows that God often blesses remedies, and Murray never used his teaching as a stick to beat the sick. But parts of it go further than Scripture warrants, and chapter fourteen sets out what he taught and where it must be qualified. Please read that chapter with its cautions rather than without them.
+His book Divine Healing, which grew out of his own recovery in 1882, teaches that healing belongs to the redemption Christ purchased and presents healing without medical means as the higher way of faith. The same book gives thanks for doctors and allows that God often blesses remedies, and Murray never used his teaching as a stick to beat the sick. But parts of it go further than Scripture warrants, and chapter thirteen sets out what he taught and where it must be qualified. Please read that chapter with its cautions rather than without them.
 
 Second, Murray preached for decisive surrender, and some of his addresses call for a single crisis in which everything is given up and a new kind of life begins. For many people that call has been the doorway to real freedom. For others — often the most conscientious — it has become a burden: an endless inspection of whether the surrender was absolute enough. His framework of carnal and spiritual Christians is also disputed by careful readers of the same passages. This book presents these teachings as he gave them, draws out what is true in them, and says where they need a gentler hand.
 
@@ -110,7 +110,7 @@ The last years. He retired from the Wellington pulpit in 1906 but did not stop w
 
 > Abide in me, and I in you. As the branch cannot bear fruit of itself, except it abide in the vine; no more can ye, except ye abide in me. JOHN 15:4
 
-If you asked Andrew Murray to put the Christian life into two words, he would give you the two words Jesus used on the night before He died: Abide in me. His first famous book was called Abide in Christ, and he wrote it for young believers after the Worcester revival who had begun well and did not know how to go on. He returned to the theme in The True Vine, in Absolute Surrender, in The Master’s Indwelling, and in nearly everything else. It is the root of all his teaching, and the best place to begin.
+If you asked Andrew Murray to put the Christian life into two words, he would give you the two words Jesus used on the night before He died: Abide in me. His first famous book was called Abide in Christ, and he wrote it for young believers after the Worcester revival who had begun well and did not know how to go on. Years later he came back to the same chapter of John in The True Vine, one of his shortest books and one of his best: a series of brief daily readings that walk slowly through the first sixteen verses of John 15, one phrase at a time. He lived in wine country, and as he wrote he could look out of his window on large vineyards. The parable was not a figure of speech to him. It was the landscape. It is the root of all his teaching, and the best place to begin.
 
 ## Begun well, and then what
 
@@ -140,8 +140,6 @@ Murray was realistic about why believers do not experience this. Many long for t
 
 And yet he insisted that abiding is not a strenuous achievement. The branch does not hold on to the vine by clenching. It is held. The union is Christ’s work, and our part is to consent, to trust, and to stay.
 
-> Now unto him that is able to keep you from falling, and to present you faultless before the presence of his glory with exceeding joy. JUDE 1:24
-
 ## Every moment
 
 The most distinctive thing in Murray’s teaching on abiding is the word moment. He did not think of abiding as a feeling to be recovered on Sundays or at conventions. The sap does not flow from the vine to the branch for a while and then stop. It flows continuously. So Christ’s life is available to the believer not in occasional supplies but moment by moment, in the ordinary hours of an ordinary day.
@@ -150,46 +148,13 @@ The most distinctive thing in Murray’s teaching on abiding is the word moment.
 
 This is liberating when it is understood. It means you do not have to keep up a spiritual temperature. You do not have to feel close to Christ in order to be close to Him. You are asked to do the next thing in dependence on Him, trusting that His life is flowing even when you are not conscious of it. When you fail, you do not have to climb back up to where you were. You simply return, confess, and abide again.
 
-## Where care is needed
-
-Murray sometimes wrote as if a single act of faith could settle the matter once and for all, so that from that day the believer would abide without interruption. Some readers have taken this to mean that any lapse proves they never truly entered the abiding life, and have exhausted themselves trying to enter it again. That is not the best of Murray, and it is not the teaching of John 15, which is addressed to disciples who would fail that very night. Abiding is a relationship, not a technique, and relationships have their bad days. Christ’s command to abide carries within it His promise to keep, and the one who stumbles is still a branch.
-
-> My little children, these things write I unto you, that ye sin not. And if any man sin, we have an advocate with the Father, Jesus Christ the righteous. 1 JOHN 2:1
-
-The heart of what Murray taught is simple, and it does not need the scaffolding. You are joined to Christ. His life is in you. Stay close. Keep coming. Let His life, not your effort, be the source of whatever fruit your life bears.
-
-> He that saith he abideth in him ought himself also so to walk, even as he walked. 1 JOHN 2:6
-
-### FOR REFLECTION AND ACTION
-
-1. Ask whether you are trying to live the Christian life in the same way you began it — by trusting Christ — or by effort and management.
-2. Identify the work, even good work, that most often comes between you and Christ. Bring it to Him deliberately this week before you begin it.
-3. Several times a day, stop for a moment and say inwardly: I am a branch; Your life is in me. Notice what changes.
-4. When you fail, resist the urge to prove yourself before returning. Confess at once and abide again.
-5. Read one chapter of The True Vine in the Ochorus library slowly, with its closing prayer.
-
-### A PRAYER
-
-> Lord Jesus, You are the Vine and I am a branch. I have tried to bear fruit by my own effort, and I am tired.
-> Teach me to abide: to trust You, to keep coming, to stay where You have placed me.
-> Let Your life flow into me moment by moment, in the ordinary hours as well as the holy ones.
-> And when I wander, draw me back quickly, for You hold me more firmly than I hold You. Amen.
-
-# The True Vine
-
-> I am the true vine, and my Father is the husbandman. JOHN 15:1
-
-The True Vine is one of his shortest books and one of his best: a series of brief daily readings that walk slowly through the first sixteen verses of John 15, one phrase at a time. He wrote it, he says in the preface, for young Christians, as a help to take up the position in which the Christian life must be a success. He lived in wine country, and as he wrote he could look out of his window on large vineyards. The parable was not a figure of speech to him. It was the landscape.
-
-The previous chapter looked at abiding. This one looks at the other words of the parable: the Husbandman, the fruit, and the knife.
-
 ## The Husbandman
 
-Before Jesus says anything about branches, He says, My Father is the husbandman. Murray thought this order mattered. Before we think about our fruitfulness we must look up and see who is caring for the vine. The Father planted it, tends it, waters it and prunes it. He is not a distant owner who expects a crop and punishes failure. He is the one who does the work.
+The parable begins, though, not with the branch but with the Father. Before Jesus says anything about branches, He says, I am the true vine, and my Father is the husbandman (John 15:1). Murray thought this order mattered. Before we think about our fruitfulness we must look up and see who is caring for the vine. The Father planted it, tends it, waters it and prunes it. He is not a distant owner who expects a crop and punishes failure. He is the one who does the work.
 
 > For we are labourers together with God: ye are God’s husbandry, ye are God’s building. 1 CORINTHIANS 3:9
 
-Murray noticed that many Christians who have learned to trust Christ still leave the Father out of their thoughts, as though Christ had to protect them from Him. In The True Vine he puts it bluntly: “The great lack of the Christian life is that, even where we trust Christ, we leave God out of the count.” The Father who cared for the Vine with such delight cares in the same way for every branch. Your growth is not finally in your hands. It is in His.
+Many Christians who have learned to trust Christ, Murray noticed, still leave the Father out of their thoughts, as though Christ had to protect them from Him. In The True Vine he puts it bluntly: “The great lack of the Christian life is that, even where we trust Christ, we leave God out of the count.” The Father who cared for the Vine with such delight cares in the same way for every branch. Your growth is not finally in your hands. It is in His.
 
 ## Fruit is the one thing
 
@@ -199,46 +164,47 @@ What is the branch for? Murray’s answer is uncompromising: fruit is the one th
 
 This led him to one of his sharpest warnings. Many Christians, he observed, arrange their priorities in a fixed order: first their own salvation, then their livelihood and families, and then whatever time and interest is left over for the kingdom and the saving of others. No wonder so little is left. Murray insisted that bearing fruit for others is not an optional extra to the Christian life but the reason for it. The Vine exists to carry God’s saving love to men, and so does every branch.
 
-What is the fruit? Murray was clear that it is not simply activity. It is the character of Christ reproduced in us — love, joy, peace and the rest — and it is the blessing of others through that life. Both go together. A life that is busy but loveless has not borne the fruit of the Vine; a life that is pious but blesses no one has not either.
+Nor is the fruit simply activity. It is the character of Christ reproduced in us — love, joy, peace and the rest — and it is the blessing of others through that life. A life that is busy but loveless has not borne the fruit of the Vine; a life that is pious but blesses no one has not either.
 
 > But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith, meekness, temperance: against such there is no law. GALATIANS 5:22–23
 
 ## The pruning knife
 
-Every branch that beareth fruit, he purgeth it, that it may bring forth more fruit (John 15:2). Murray knew the vine as a plant that runs quickly to wild wood and needs the hardest pruning of any. Some trees can do without it. The vine cannot. Looking out on the vineyards, he wrote that the chief care of the vinedresser is the pruning.
-
-Most Christians assume that the Father’s pruning knife is affliction. Murray disagreed, or at least he would not let affliction take first place. In The True Vine he argues that the knife is the Word of God, and he points to the next verse, where Jesus says that the disciples are already clean through the word which He has spoken to them.
+Every branch that beareth fruit, he purgeth it, that it may bring forth more fruit (John 15:2). Murray knew the vine as a plant that runs quickly to wild wood and needs the hardest pruning of any. Most Christians assume that the Father’s knife is affliction. Murray would not let affliction take first place. In The True Vine he argues that the knife is the Word of God, and he points to the next verse, where Jesus says that the disciples are already clean through the word which He has spoken to them.
 
 > Now ye are clean through the word which I have spoken unto you. JOHN 15:3
 
-> For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart. HEBREWS 4:12
+Affliction, Murray says, becomes a blessing only when it drives us to the discipline of the Word; without that, suffering is often wasted. This is a wise and pastoral insight. It means that the believer who is spared great suffering is not spared pruning, and the believer who is suffering is not being pruned by the suffering alone. The knife is what God says.
 
-Affliction, Murray says, becomes a blessing only when it drives us to the discipline of the Word; without that, suffering is often wasted. Even Paul’s thorn did him good only when Christ’s word about strength made perfect in weakness had shown him his danger. This is a wise and pastoral insight. It means that the believer who is spared great suffering is not spared pruning, and the believer who is suffering is not being pruned by the suffering alone. The knife is what God says. The question in every season is whether we are letting His Word cut away what is of self.
+And the vinedresser cuts back healthy growth too — shoots that are vigorous and green and would produce leaves instead of grapes. That is the hardest part. God may cut away good things in us — interests, ambitions, even forms of service — not because they are sinful but because they draw off life that should go into fruit.
 
-What does pruning remove? Not the bad wood only. The vinedresser cuts back healthy growth too — shoots that are vigorous and green and would produce leaves instead of grapes. That is the hardest part. God may cut away good things in us — interests, ambitions, even forms of service — not because they are sinful but because they draw off life that should go into fruit.
+## Where care is needed
 
-## Much fruit
+Murray sometimes wrote as if a single act of faith could settle the matter once and for all, so that from that day the believer would abide without interruption. Some readers have taken this to mean that any lapse proves they never truly entered the abiding life, and have exhausted themselves trying to enter it again. That is not the best of Murray, and it is not the teaching of John 15, which is addressed to disciples who would fail that very night. Abiding is a relationship, not a technique, and relationships have their bad days. Christ’s command to abide carries within it His promise to keep, and the one who stumbles is still a branch.
 
-The parable moves from fruit, to more fruit, to much fruit. Murray loved that progression. He believed God intends far more for His people than they expect, and that the reason for our barrenness is not that the Vine is poor but that the branch is not abiding.
+> My little children, these things write I unto you, that ye sin not. And if any man sin, we have an advocate with the Father, Jesus Christ the righteous. 1 JOHN 2:1
+
+In the same way, the parable moves from fruit, to more fruit, to much fruit, and Murray loved that progression; he sometimes wrote as if the fruit of an abiding life will always be visible and abundant. Scripture is more reticent. Some of the most faithful servants of God have seen very little of the fruit of their labour in their own lifetimes, and some fruit — patience, gentleness, faith — is hidden even from the one who bears it. Much fruit is a promise, but its measure and its timing belong to the Husbandman.
 
 > Ye have not chosen me, but I have chosen you, and ordained you, that ye should go and bring forth fruit, and that your fruit should remain. JOHN 15:16
 
-Here a gentle qualification is needed. Murray sometimes writes as if the fruit of an abiding life will always be visible and abundant. Scripture is more reticent. Some of the most faithful servants of God have seen very little of the fruit of their labour in their own lifetimes, and some fruit — patience, gentleness, faith — is hidden even from the one who bears it. Much fruit is a promise, but its measure and its timing belong to the Husbandman. A believer should not conclude from a small harvest that he is not abiding. He should simply keep abiding, and leave the counting to God.
+The heart of what Murray taught is simple, and it does not need the scaffolding. You are joined to Christ. His life is in you. The Father tends you. Stay close. Keep coming. Let His life, not your effort, be the source of whatever fruit your life bears, and leave the counting to God.
 
 ### FOR REFLECTION AND ACTION
 
-1. Consider whether you trust Christ but quietly fear the Father. Read John 15:1 and 15:9 together, and let the Father’s care reach you.
-2. Be honest about your priorities. Does bearing fruit for others come first, or does it get what is left over?
-3. When you read Scripture this week, ask the Father to use it as a pruning knife. Write down one thing it exposes.
-4. Name one good thing in your life that may be drawing off strength from what matters most. Ask God whether it should be cut back.
-5. If you see little fruit in your life, refuse discouragement. Abide, and leave the harvest to the Husbandman.
+1. Ask whether you are trying to live the Christian life in the same way you began it — by trusting Christ — or by effort and management.
+2. Identify the work, even good work, that most often comes between you and Christ. Bring it to Him deliberately this week before you begin it.
+3. Several times a day, stop for a moment and say inwardly: I am a branch; Your life is in me. Notice what changes.
+4. Consider whether you trust Christ but quietly fear the Father. Read John 15:1 and 15:9 together, and let the Father’s care reach you.
+5. When you read Scripture this week, ask the Father to use it as a pruning knife. Write down one thing it exposes, even if it is something good.
+6. When you fail, or see little fruit, resist the urge to prove yourself. Confess at once, abide again, and leave the harvest to the Husbandman.
 
 ### A PRAYER
 
-> Father, You are the Husbandman, and I am in Your hands. Forgive me for trusting Your Son and forgetting Your care.
-> Prune me by Your Word. Cut away what is of self, even the good things that keep me from bearing fruit.
-> Let the life of the Vine flow through me, not for my own sake, but for Your glory and the blessing of others.
-> Give me fruit that remains, and let me be content to leave its measure to You. Amen.
+> Lord Jesus, You are the Vine and I am a branch. I have tried to bear fruit by my own effort, and I am tired.
+> Teach me to abide: to trust You, to keep coming, to stay where You have placed me. Let Your life flow into me moment by moment, in the ordinary hours as well as the holy ones.
+> Father, You are the Husbandman, and I am in Your hands. Prune me by Your Word, and cut away whatever keeps me from bearing fruit.
+> Give me fruit that remains, and let me be content to leave its measure to You. And when I wander, draw me back quickly, for You hold me more firmly than I hold You. Amen.
 
 # The Glory of the Creature
 
@@ -989,94 +955,49 @@ Waiting on God can be misunderstood as passivity, and some readers of Murray hav
 > Thank You that You wait to be gracious. Let my waiting be the answer of my heart to Your love.
 > Renew my strength, that I may walk and not faint. Be my only expectation. Amen.
 
-# The Inner Chamber
+# With Christ in the School of Prayer
+
+> And it came to pass, that, as he was praying in a certain place, when he ceased, one of his disciples said unto him, Lord, teach us to pray. LUKE 11:1
+
+If Andrew Murray is remembered for one book, it is With Christ in the School of Prayer, published in 1885. It is arranged as thirty-one lessons, one for each day of a month, and each takes a saying of Jesus about prayer and presses it home. The first lessons were also issued separately as a small book, Lord, Teach Us To Pray, and both are in the Ochorus library. Twenty years later he gave the school its schoolroom in a book of its own, The Inner Chamber. Read together, the two show what Murray meant by prayer: a pupil, a Teacher, and a shut door. Everything he taught about abiding, humility and waiting on God comes to a point here.
+
+## The only Teacher
+
+The School of Prayer opens with the disciples’ request. They had watched Jesus pray. They had begun to see the connection between His astonishing public life and His hidden life with the Father. And so they asked, not for a lecture on prayer, but to be taught to do it.
+
+Murray invites his readers to enrol in the same school. Christ, he says, is the only Teacher. Books, methods and examples may help, but only He can teach us to pray, and He does it by His Spirit, as we practise. The book is not a manual to be read through once. It is a set of lessons to be learned slowly, on our knees.
+
+> Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered. ROMANS 8:26
+
+In the first lesson Murray gives one of his most quoted descriptions of prayer. “Though in its beginnings prayer is so simple that the feeblest child can pray,” he writes, “yet it is at the same time the highest and holiest work to which man can rise.” That double truth rescues prayer from two opposite errors. Some think prayer is too simple to need learning — you just talk to God. Others think it is too lofty for ordinary believers, a speciality of saints and mystics. Murray says it is both simple and high, and that is exactly why we need a Teacher. A child can begin; no one ever finishes.
+
+## The schoolroom
+
+Murray’s phrase for the place of secret prayer was the inner chamber, taken from the older rendering of Jesus’ words in the Sermon on the Mount, and in the School of Prayer he calls it Jesus’ schoolroom: the place where the pupil puts himself daily in the Master’s presence. The first thing the Lord teaches His disciples about prayer, he says, is that they must have a secret place — some solitary spot where each one can be alone with God.
 
 > But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly. MATTHEW 6:6
 
-Murray’s phrase for the place of secret prayer was the inner chamber, taken from the older rendering of Jesus’ words in the Sermon on the Mount. He gave the phrase to a book in 1905, The Inner Chamber, and it runs through his writing on prayer from the beginning. In With Christ in the School of Prayer he calls the inner chamber Jesus’ schoolroom: the place where the pupil puts himself daily in the Master’s presence. Everything he taught about abiding, humility and waiting on God comes to a point here. It is in the shut room, alone with the Father, that the life is either sustained or lost.
-
-## A place, and a time
-
-Murray was practical. The first thing the Lord teaches His disciples about prayer, he says in the School of Prayer, is that they must have a secret place — some solitary spot where each one can be alone with God. Christ had already taught at Samaria that true worship is not tied to places. And yet He wants each disciple to choose a fixed spot where He can meet him daily. That spot may be anywhere, and it may change as our circumstances change, but there must be one, with a quiet time in which we place ourselves before the Master.
+Christ had already taught at Samaria that true worship is not tied to places. And yet, Murray says, He wants each disciple to choose a fixed spot where He can meet him daily. That spot may be anywhere, and it may change as our circumstances change, but there must be one, with a quiet time in which we place ourselves before the Master.
 
 > And in the morning, rising up a great while before day, he went out, and departed into a solitary place, and there prayed. MARK 1:35
 
-The Inner Chamber begins with a reading called The Morning Hour. Murray notes that believers of every generation have regarded the beginning of the day as the fitting time to seek God, whether they called it the morning watch, the quiet hour or the quiet time. He did not lay down a fixed length. What mattered was not the minutes but the purpose.
-
-> My voice shalt thou hear in the morning, O LORD; in the morning will I direct my prayer unto thee, and will look up. PSALM 5:3
+The Inner Chamber begins with a reading called The Morning Hour. Believers of every generation, Murray notes, have regarded the beginning of the day as the fitting time to seek God, whether they called it the morning watch, the quiet hour or the quiet time. He did not lay down a fixed length. What mattered was not the minutes but the purpose.
 
 ## Not an end in itself
 
 That purpose is the most important thing Murray says about the inner chamber. “The morning watch must not be regarded as an end in itself,” he writes. It is not sufficient that it gives a pleasant time of prayer and Bible study and a measure of refreshment. It is a means to an end. “And that end is to secure the presence of Christ for the whole day.”
 
-This transforms the morning hour. It is no longer a devotional duty to be completed and ticked off. It is the time in which the believer, in Murray’s image, fastens the link for the day between himself and Christ. What happens in the room determines what happens outside it. If the link is made firm in the morning, the day can be lived in His presence. If it is not, the day is lived without Him, however busy with religious activity it may be.
+This transforms the morning hour. It is no longer a devotional duty to be completed and ticked off. It is the time in which the believer, in Murray’s image, fastens the link for the day between himself and Christ. If the link is made firm in the morning, the day can be lived in His presence. If it is not, the day is lived without Him, however busy with religious activity it may be. Murray pictured it as a handing over: not only an asking for comfort, light or strength, but the giving away of life for one day into the keeping of a mighty and faithful God.
 
 > I have set the LORD always before me: because he is at my right hand, I shall not be moved. PSALM 16:8
 
-## A terrible danger
-
-In the reading titled The Door Shut — Alone with God, Murray names a danger that every earnest Christian should hear. You are in danger, he says, “of substituting Prayer and Bible Study for living fellowship with God.” We can be so absorbed in our requests, or so interested in our Bible study, that the Word of God itself becomes a substitute for God Himself. We go out into the day having read and prayed, but without having met Him.
-
-The one essential thing, Murray insists, is fellowship with God. Of more importance than all our requests, however urgent, and than all our earnestness to pray aright, is the childlike assurance that the Father sees us, that we have met Him, and that with His eye on us and ours on Him we are enjoying real communion.
+He also named a danger that every earnest Christian should hear. You are in danger, he says in The Inner Chamber, “of substituting Prayer and Bible Study for living fellowship with God.” We can be so absorbed in our requests, or so interested in our Bible study, that the Word of God itself becomes a substitute for God Himself. We go out into the day having read and prayed, but without having met Him. Of more importance than all our requests, Murray insists, is the childlike assurance that the Father sees us, that we have met Him, and that with His eye on us and ours on Him we are enjoying real communion.
 
 > Draw nigh to God, and he will draw nigh to you. JAMES 4:8
 
-This is why Jesus names the Father three times in those few verses of Matthew 6. The inner chamber is not a study or an office. It is the place where a child meets his Father.
-
-## The day given away
-
-Murray pictured the morning prayer as a kind of handing over. He wrote of the nobility that would come into life if secret prayer were not only an asking for comfort, light or strength, but the giving away of life for one day into the keeping of a mighty and faithful God. That is a beautiful way to begin a day: not with a list of demands, but with an offering. Here is this day, Lord. It is Yours. Go with me.
-
-> Commit thy way unto the LORD; trust also in him; and he shall bring it to pass. PSALM 37:5
-
-## The open reward
-
-The next reading in the book is titled The Open Door — The Open Reward, from the last clause of Jesus’ saying. What is done in secret, Murray says, is rewarded openly. Where secret fellowship with the Father is maintained, the public life will carry the reward. He did not mean public recognition. He meant that the life lived before others will bear the marks of the hour spent before God — in peace, in patience, in power, in love.
-
-> They that sow in tears shall reap in joy. PSALM 126:5
-
-## Where care is needed
-
-The morning watch was a strong emphasis of the student and holiness movements of Murray’s day, and some of the language surrounding it could make it sound like a condition of blessing that must be kept at all costs. For many people — parents of small children, shift workers, carers, the chronically ill — a fixed early hour is simply not possible, and they can be made to feel second-class. Murray’s own principle answers this. He said the spot may change, and the length is not fixed; what matters is the purpose. The inner chamber is wherever and whenever a believer shuts the door, even briefly, to meet the Father. God is not measuring the minutes. He is looking for the child.
-
-### FOR REFLECTION AND ACTION
-
-1. Identify your inner chamber: a place and time where you can be alone with God. If you do not have one, choose one today.
-2. Tomorrow, before asking for anything, spend a moment making sure you have actually met the Father.
-3. Ask whether your Bible reading has become a substitute for fellowship with God. If so, read less and linger more.
-4. End your morning prayer by giving the day away: This day is Yours; go with me.
-5. If your circumstances make a fixed hour impossible, find the moment you can have, and refuse the guilt of the one you cannot.
-
-### A PRAYER
-
-> Father, You see in secret, and You wait for me behind the shut door. I have too often hurried past You.
-> Teach me to keep the inner chamber, not as a duty but as a meeting. Let me know that You see me, and let my eyes be on You.
-> Keep me from putting prayer or study in the place of Yourself.
-> I give You this day. Go with me, keep me, and let the hour spent with You be seen in the hours spent with others. Amen.
-
-# With Christ in the School of Prayer
-
-> And it came to pass, that, as he was praying in a certain place, when he ceased, one of his disciples said unto him, Lord, teach us to pray. LUKE 11:1
-
-If Andrew Murray is remembered for one book, it is With Christ in the School of Prayer, published in 1885. It is arranged as thirty-one lessons, one for each day of a month, and each takes a saying of Jesus about prayer and presses it home. The first lessons were also issued separately as a small book, Lord, Teach Us To Pray, and both are in the Ochorus library. The book has been in print ever since it first appeared, and it has taught a great many Christians, in many languages, to pray.
-
-## The only Teacher
-
-The book opens with the disciples’ request. They had watched Jesus pray. They had begun to see the connection between His astonishing public life and His hidden life with the Father. And so they asked, not for a lecture on prayer, but to be taught to do it.
-
-Murray invites his readers to enrol in the same school. Christ, he says, is the only Teacher. Books, methods and examples may help, but only He can teach us to pray, and He does it by His Spirit, in the inner chamber, as we practise. The book is not a manual to be read through once. It is a set of lessons to be learned slowly, on our knees.
-
-> Likewise the Spirit also helpeth our infirmities: for we know not what we should pray for as we ought: but the Spirit itself maketh intercession for us with groanings which cannot be uttered. ROMANS 8:26
-
-## So simple, and so high
-
-In the first lesson Murray gives one of his most quoted descriptions of prayer. “Though in its beginnings prayer is so simple that the feeblest child can pray,” he writes, “yet it is at the same time the highest and holiest work to which man can rise.” It is fellowship with the unseen and most holy God. The powers of the eternal world are placed at its disposal. It is the channel of all blessing.
-
-That double truth rescues prayer from two opposite errors. Some think prayer is too simple to need learning — you just talk to God. Others think it is too lofty for ordinary believers, a speciality of saints and mystics. Murray says it is both simple and high, and that is exactly why we need a Teacher. A child can begin; no one ever finishes.
-
 ## Our Father
 
-The lessons on the Lord’s Prayer and on the Father’s giving are among the warmest in the book. Murray notes that in the Old Testament the saints had scarcely ever ventured to address God as their own Father. Jesus puts the word on the lips of His disciples from the first.
+This is why Jesus names the Father three times in those few verses of Matthew 6. The inner chamber is not a study or an office. It is the place where a child meets his Father, and the lessons in the School of Prayer on the Lord’s Prayer and on the Father’s giving are among the warmest in the book. Murray notes that in the Old Testament the saints had scarcely ever ventured to address God as their own Father. Jesus puts the word on the lips of His disciples from the first.
 
 > After this manner therefore pray ye: Our Father which art in heaven, Hallowed be thy name. MATTHEW 6:9
 
@@ -1084,44 +1005,43 @@ In the lesson titled The Infinite Fatherliness of God, Murray takes Jesus’ arg
 
 > If ye then, being evil, know how to give good gifts unto your children, how much more shall your Father which is in heaven give good things to them that ask him? MATTHEW 7:11
 
-Prayer, in other words, is not a technique detached from life. It flows out of a relationship, and its power depends on living in that relationship — in the Father’s house, in His love, in His will.
+Prayer, in other words, is not a technique detached from life. It flows out of a relationship, and its power depends on living in that relationship — in the Father’s house, in His love, in His will. What is done in secret, Murray adds in The Inner Chamber, is rewarded openly: the life lived before others will bear the marks of the hour spent before God, in peace, in patience, in power, in love.
 
 ## God means prayer to have an answer
 
-The book’s preface contains the conviction that drives it. Murray writes that we have grown so used to limiting the promises of God that we cannot read the plainest words of Jesus without adding qualifying clauses. If there is one thing the church needs to learn, he says, “it is that God means prayer to have an answer.”
+The preface to the School of Prayer contains the conviction that drives it. Murray writes that we have grown so used to limiting the promises of God that we cannot read the plainest words of Jesus without adding qualifying clauses. If there is one thing the church needs to learn, he says, “it is that God means prayer to have an answer.”
 
 > Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you. MATTHEW 7:7
 
 This was not naïve. Murray’s lessons deal carefully with the conditions attached to Jesus’ promises: praying in His name, abiding in Him, obedience, love, faith, perseverance. But he refused to let the conditions swallow the promises. God hears. God answers. The believer who prays expecting nothing has not understood the Teacher.
 
-## Christ the Intercessor
-
-The later lessons rise from the disciple’s prayer to Christ’s own. Murray has lessons on Christ the Intercessor, Christ the High Priest and Christ the Sacrifice. Our praying, he says, is taken up into His. The One who taught the disciples to pray now ever lives to make intercession for them, and our prayers are heard because they are joined to His.
+And the later lessons rise from the disciple’s prayer to Christ’s own, with lessons on Christ the Intercessor, Christ the High Priest and Christ the Sacrifice. Our praying, Murray says, is taken up into His. Our prayers are weak, distracted and often confused. But they do not rise alone. The great High Priest carries them.
 
 > Wherefore he is able also to save them to the uttermost that come unto God by him, seeing he ever liveth to make intercession for them. HEBREWS 7:25
 
-This is the deepest comfort in the book. Our prayers are weak, distracted and often confused. But they do not rise alone. The great High Priest carries them.
-
 ## Where care is needed
 
-Murray urged his readers to take Jesus’ promises about prayer simply and literally, and his impatience with qualifying clauses is a healthy rebuke to unbelief. But Scripture itself supplies some qualifications, and they are not unbelief. John writes that we are heard when we ask according to God’s will. Paul asked three times and was refused. Jesus Himself prayed, not as I will, but as thou wilt. A reader who takes Murray’s boldness without Scripture’s balance may conclude, when a prayer is not answered as he hoped, that his faith has failed. Murray’s whole book points the other way: to the Father’s love and wisdom, which gives good things — sometimes the thing asked, sometimes something better.
+Two cautions belong here. The first concerns the morning watch. It was a strong emphasis of the student and holiness movements of Murray’s day, and some of the language surrounding it could make it sound like a condition of blessing that must be kept at all costs. For many people — parents of small children, shift workers, carers, the chronically ill — a fixed early hour is simply not possible, and they can be made to feel second-class. Murray’s own principle answers this. The spot may change, and the length is not fixed; what matters is the purpose. The inner chamber is wherever and whenever a believer shuts the door, even briefly, to meet the Father. God is not measuring the minutes. He is looking for the child.
+
+The second concerns the promises. Murray urged his readers to take them simply and literally, and his impatience with qualifying clauses is a healthy rebuke to unbelief. But Scripture itself supplies some qualifications, and they are not unbelief. John writes that we are heard when we ask according to God’s will. Paul asked three times and was refused. Jesus Himself prayed, not as I will, but as thou wilt. A reader who takes Murray’s boldness without Scripture’s balance may conclude, when a prayer is not answered as he hoped, that his faith has failed. Murray’s whole book points the other way: to the Father’s love and wisdom, which gives good things — sometimes the thing asked, sometimes something better.
 
 > And this is the confidence that we have in him, that, if we ask any thing according to his will, he heareth us. 1 JOHN 5:14
 
 ### FOR REFLECTION AND ACTION
 
-1. Ask Christ, in your own words, to enrol you afresh in His school of prayer.
-2. Read one lesson of With Christ in the School of Prayer each day for a month, and pray its closing prayer.
-3. Pray the Lord’s Prayer slowly once this week, stopping at each phrase to make it your own.
-4. Ask whether you pray expecting an answer. Choose one specific request and pray it expectantly.
-5. When you feel your prayers are weak, remember that Christ ever lives to intercede. Thank Him for carrying them.
+1. Ask Christ, in your own words, to enrol you afresh in His school of prayer, and read one lesson of With Christ in the School of Prayer each day for a month.
+2. Identify your inner chamber: a place and time where you can be alone with God. If you do not have one, choose one today; if a fixed hour is impossible, find the moment you can have and refuse the guilt of the one you cannot.
+3. Tomorrow, before asking for anything, spend a moment making sure you have actually met the Father.
+4. Ask whether your Bible reading has become a substitute for fellowship with God. If so, read less and linger more.
+5. End your morning prayer by giving the day away: This day is Yours; go with me.
+6. Ask whether you pray expecting an answer. Choose one specific request and pray it expectantly, remembering that Christ ever lives to intercede.
 
 ### A PRAYER
 
-> Lord Jesus, as Your disciples asked, so I ask: Lord, teach me to pray.
-> I have treated prayer as too simple to learn and too high to attempt. Take me into Your school, and teach me as a child.
-> Let me live as a child of the Father, so that I may pray as a child and be heard.
-> Take up my weak prayers into Your own intercession, and teach me to expect the answer You mean to give. Amen.
+> Lord Jesus, as Your disciples asked, so I ask: Lord, teach me to pray. I have treated prayer as too simple to learn and too high to attempt. Take me into Your school.
+> Father, You see in secret, and You wait for me behind the shut door. Teach me to keep the inner chamber, not as a duty but as a meeting, and keep me from putting prayer or study in the place of Yourself.
+> Let me live as Your child, so that I may pray as a child and be heard.
+> I give You this day. Take up my weak prayers into the intercession of Your Son, and teach me to expect the answer You mean to give. Amen.
 
 # The Faith That Takes
 
@@ -1324,7 +1244,7 @@ It should also be said that Murray’s missionary vision grew up in a colonial a
 
 > For of him, and through him, and to him, are all things: to whom be glory for ever. Amen. ROMANS 11:36
 
-Eighteen chapters can make it look as though Andrew Murray taught a great many things. He taught one thing, and everything else is that one thing applied. The one thing is this: a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment through faith.
+Sixteen chapters can make it look as though Andrew Murray taught a great many things. He taught one thing, and everything else is that one thing applied. The one thing is this: a creature lives by receiving, and the Christian life is Christ’s own life received moment by moment through faith.
 
 Follow it through and the whole shape appears. Abiding is the branch receiving the life of the Vine. The Husbandman’s pruning makes room for more of that life. Humility is the creature consenting to its true place, and pride is the refusal of it. Surrender is giving up to God what already belongs to Him, and trusting Him to work what we cannot. The impossible becomes possible because God does it. The Spirit is Christ’s life within us; holiness is the presence of the Holy One; obedience is the path by which His love is enjoyed; love is the first fruit of it all. Waiting on God is dependence made into a habit. The inner chamber is where the link for the day is fastened. Prayer is dependence speaking, and intercession is dependence reaching out for others. One idea, one Person, one life.
 
@@ -1348,7 +1268,7 @@ Second, pray. Murray would not be satisfied with any reader who finished this bo
 
 ## A last word about the man
 
-We have been honest about his limits. His book on divine healing goes beyond what Scripture warrants in treating healing without medical means as the higher way and in its handling of sickness and the will of God, and it must be read with the corrections set out in chapter fourteen. His call to absolute surrender, and his scheme of carnal and spiritual Christians, have freed many and burdened some, and the conscientious need to hear the grace that he himself preached alongside them. His boldest words about prayer need Scripture’s own balance. And he was a minister of a settler church in a colonial society, who did not rise above all the assumptions of his time and place.
+We have been honest about his limits. His book on divine healing goes beyond what Scripture warrants in treating healing without medical means as the higher way and in its handling of sickness and the will of God, and it must be read with the corrections set out in chapter thirteen. His call to absolute surrender, and his scheme of carnal and spiritual Christians, have freed many and burdened some, and the conscientious need to hear the grace that he himself preached alongside them. His boldest words about prayer need Scripture’s own balance. And he was a minister of a settler church in a colonial society, who did not rise above all the assumptions of his time and place.
 
 None of this has been said to diminish him. It has been said because his own teaching requires it. A man whose whole message was that the creature has nothing in itself and everything in God cannot be honoured by pretending that he was an exception. He would have been the first to say that whatever was good in him was received.
 
@@ -1387,11 +1307,11 @@ Abide in Christ. His first famous book, thirty-one short readings for young beli
 
 ## On the deeper life
 
-The True Vine. Short daily meditations on John 15:1–16, and the basis of chapter four of this volume. In the Ochorus library.
+The True Vine. Short daily meditations on John 15:1–16, and the basis, with Abide in Christ, of chapter three of this volume. In the Ochorus library.
 
 Absolute Surrender. Addresses given on his travels in the 1890s, including the title address, The Fruit of the Spirit is Love, and Impossible with Man, Possible with God. In the Ochorus library.
 
-The Master’s Indwelling. Addresses on the carnal and spiritual life, the self-life, and Christ as our life. Read chapter nine of this volume alongside it. In the Ochorus library.
+The Master’s Indwelling. Addresses on the carnal and spiritual life, the self-life, and Christ as our life. Read chapter eight of this volume alongside it. In the Ochorus library.
 
 Holy in Christ. Thirty-one meditations tracing holiness through Scripture. Slower going, and rewarding. In the Ochorus library.
 
@@ -1403,7 +1323,7 @@ Waiting on God. Daily readings for a month on the word wait in Scripture; the ge
 
 The Inner Chamber. Readings on the morning hour, secret prayer and Bible study, published in 1905. In the Ochorus library.
 
-The Ministry of Intercession. A plea for more prayer, addressed chiefly to ministers and workers, and the source of chapters nineteen and twenty of this volume. In the Ochorus library.
+The Ministry of Intercession. A plea for more prayer, addressed chiefly to ministers and workers, and the source of chapters seventeen and eighteen of this volume. In the Ochorus library.
 
 The Prayer Life. A late and searching book on prayerlessness as sin, written after his retirement. Not yet in the Ochorus library.
 
@@ -1413,7 +1333,7 @@ The Spirit of Christ, his fullest treatment of the Holy Spirit; The Two Covenant
 
 ## Approach with care
 
-Divine Healing. The fullest statement of the teaching treated in chapter fourteen of this book, and the one that most needs the cautions set out there. It gives thanks for doctors, but it treats healing without medical means as the higher way and discourages praying if it be Thy will. Read it alongside 2 Corinthians 12:7–10, 2 Timothy 4:20 and Matthew 26:39, and do not follow it in setting aside medical care. In the Ochorus library.
+Divine Healing. The fullest statement of the teaching treated in chapter thirteen of this book, and the one that most needs the cautions set out there. It gives thanks for doctors, but it treats healing without medical means as the higher way and discourages praying if it be Thy will. Read it alongside 2 Corinthians 12:7–10, 2 Timothy 4:20 and Matthew 26:39, and do not follow it in setting aside medical care. In the Ochorus library.
 
 Murray admired William Law, and quotes him in the notes to Humility and Waiting on God. Law’s later writings drew on mystical sources many evangelicals would not share; take what is helpful.
 

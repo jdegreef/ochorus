@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Catherine Booth’s message — that godliness is a real power and not a respectable form, that it must be had in the heart and carried to the people, and that God may send whom He will to carry it. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Catherine Booth’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Catherine Booth’s message — that godliness is a real power and not a respectable form, that it must be had in the heart and carried to the people, and that God may send whom He will to carry it. Nineteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Catherine Booth’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Catherine Booth. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into eighteen short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force.
+  This is not a book by Catherine Booth. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into nineteen short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force.
   
   Her one theme was reality. She had no patience with a religion of forms, creeds and pleasant feelings that left the heart unchanged and the streets unreached. She wanted the thing itself: a repentance that really let go of sin, a faith that really committed the whole person to Christ, a holiness that really cleansed, and a love that really went out after the lost, whatever it cost in comfort or reputation. This volume follows that thread through her life, her teaching on salvation and the Holy Spirit, her defence of women’s preaching, her counsel to parents, and her campaigns against the evils of her day. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.
   
@@ -22,11 +22,11 @@ So she pressed, relentlessly, for the real thing at every point. A real repentan
 
 > For the kingdom of God is not in word, but in power. 1 CORINTHIANS 4:20
 
-That is the thread running through all eighteen chapters of this book, and it is the question to carry as you read: is my religion the form, or the power? Would anything be different in my life, this week, if none of it were true?
+That is the thread running through all nineteen chapters of this book, and it is the question to carry as you read: is my religion the form, or the power? Would anything be different in my life, this week, if none of it were true?
 
 ## How this book is arranged
 
-After a chapter on her life, the book follows the order of her own preaching. It begins where she began with every enquirer: with godliness, repentance, saving faith and assurance. It moves on to the Holy Spirit, to what she called full salvation, and to prayer. Then it turns outward, as she always did — to the difference between true and counterfeit love, to the worldliness of what she called popular Christianity, to aggressive Christianity and the world’s need, to witnessing, and to her insistence that the church adapt its methods to reach the people it was losing. Three chapters deal with matters close to her own life: the right of women to preach, the training of children, and the cost of discipleship. One takes up her campaigns against drink and vice. The last teaching chapter follows her to her deathbed.
+After a chapter on her life, the book follows the order of her own preaching. It begins where she began with every enquirer: with godliness, repentance, saving faith and assurance. It moves on to the Holy Spirit, to what she called full salvation, and to prayer. Then it turns outward, as she always did — to the difference between true and counterfeit love, to the worldliness of what she called popular Christianity, to aggressive Christianity and the world’s need, to witnessing, to what she taught about getting the truth home to the heart, and to her insistence that the church adapt its methods to reach the people it was losing. Three chapters deal with matters close to her own life: the right of women to preach, the training of children, and the cost of discipleship. One takes up her campaigns against drink and vice. The last teaching chapter follows her to her deathbed.
 
 Each chapter ends with application points and a prayer. She would have insisted on it. She thought that a sermon which left its hearers exactly as it found them had failed, however orthodox it was, and she said so to ministers’ faces. Read one chapter a day, or one a week. Stop at the application points. Pray the prayer, or better, pray your own.
 
@@ -842,6 +842,77 @@ It needs its balance, however. Testimony is not a substitute for teaching; the c
 > Take away my stiffness and my fear. Let me speak of You as naturally as I speak of the people I love.
 > I tremble, Lord. So did she. Give me Your Spirit, and let me say what I have seen and heard. Amen.
 
+# Getting the Truth Home
+
+> The fruit of the righteous is a tree of life; and he that winneth souls is wise. PROVERBS 11:30
+
+Catherine Booth had no patience with the idea that working for God needs no thought. In the address How to Work for God with Success, which stands in her book Godliness and among her sermons, she set out what she called the needful qualifications for successful labour. Some of it has already appeared in these pages: her plea for naturalness, her scorn for the lukewarm, her counting of the cost. But the heart of the address is about the worker before the work. She wanted to know why so much Christian effort produced so little.
+
+## The laws of the harvest
+
+She began with a farmer. It would be useless, she said, to scatter seed on unbroken ground. You must plough and harrow, sow carefully and at the right time, and then water and weed and wait. The kingdom of grace, she was sure, has its laws as certainly as the kingdom of nature, and the worker who will not learn them should not be surprised at an empty barn.
+
+> Behold, the husbandman waiteth for the precious fruit of the earth, and hath long patience for it, until he receive the early and latter rain. JAMES 5:7
+
+What struck her was the contrast with ordinary life. People give years of labour and thought to learning an earthly profession, she said, and yet expect to do God’s work without any trouble at all — without planning, without experiment, without wrestling with God for wisdom. Soldiers study stratagems to take the enemy by surprise, and yet, she said, it is “far harder work to take souls than it is to take cities.”
+
+Her counsel was not to wait until one felt competent. Begin at once, she said, but begin in the right way: by praying much for God to show you how, and in “a humble, submissive, teachable spirit.”
+
+> If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him. JAMES 1:5
+
+## Not delivered, but driven home
+
+The second qualification was the one she pressed hardest. She disliked the common phrase about a preacher delivering his message. She wished the word had never been coined in connection with Christian work. Our business, she said, is “not deliver it; but drive it home.” God has made us responsible not for saying the truth but for getting it in, “fixing it in the conscience as a red-hot iron.” She mocked the genteel manner that asks a congregation, if it pleases, to consider being converted.
+
+> For the word of God is quick, and powerful, and sharper than any twoedged sword, piercing even to the dividing asunder of soul and spirit, and of the joints and marrow, and is a discerner of the thoughts and intents of the heart. HEBREWS 4:12
+
+Her model was Paul, and she noticed how he did it. He did not lay the truth before people and walk away. He carried them on his heart. For three years at Ephesus he warned them night and day with tears. “He wept it in, as well as drove it in,” she said — with logic and eloquence, but with tears and the power of the Holy Ghost as well.
+
+> Therefore watch, and remember, that by the space of three years I ceased not to warn every one night and day with tears. ACTS 20:31
+
+There are two kinds of ministry, she said, public or private. One is burdened and will not rest until the word has gone in. The other rolls it out like a lesson and goes home, holding itself in no way answerable for what follows. The first is what happened at Pentecost.
+
+> Now when they heard this, they were pricked in their heart, and said unto Peter and to the rest of the apostles, Men and brethren, what shall we do? ACTS 2:37
+
+## You cannot give what you have not got
+
+Here she reached the root. How is such power to be had? Not by raising the voice. She laid down a principle that every preacher, teacher and parent ought to ponder: “you will never make any other soul realise the verities of eternal things any further than you realise them yourself.” A dreamy, comfortable, half-asleep Christian will produce dreamy, comfortable, half-asleep converts. The hearer receives exactly the degree of reality the worker has, and no more.
+
+This, she thought, explained much of what she saw around her: what she called “a sickly crop of sentimental converts,” born of a religion with no depth of earth and no grasp on the soul. The cure was not a better technique. It was to go to God. If you want to pour out living waters on others, she said, you must “drink largely at the fountain yourself.” If you have not enough of the Holy Ghost to make your words felt, go to your closet until you have, for this kind, she reminded them, comes forth by nothing but prayer and fasting (Mark 9:29).
+
+## No holding back the sword
+
+Her last qualification was surrender, and she used a startling text to make it. The prophet pronounced a curse on the man who did the Lord’s work half-heartedly, and she applied it to the Christian worker who is afraid to wound.
+
+> Cursed be he that doeth the work of the LORD deceitfully, and cursed be he that keepeth back his sword from blood. JEREMIAH 48:10
+
+The soldiers of this age, she complained, will thrust the sword a little way in, but not to the heart. “They dare not touch a man to the quick,” because they are thinking of what people will say of them rather than what God will say. The hardest test, she knew, is not an enemy but a friend whose good opinion we want. Success needs complete abandonment, like the soldier who does not stop to count what the battle will cost him. Paul had it.
+
+> But none of these things move me, neither count I my life dear unto myself, so that I might finish my course with joy. ACTS 20:24
+
+## Weighing it
+
+There is much gold here, and some danger. The talk of laws and success can be heard as though a right method will guarantee results, as it seemed to in some revival teaching of her century. Scripture puts it otherwise. The farmer sows and waters, but the increase is God’s, and it grows he knows not how (Mark 4:27).
+
+> I have planted, Apollos watered; but God gave the increase. 1 CORINTHIANS 3:6
+
+She knew this herself; she told her hearers that God would give the success if they would do the work. But her emphasis on responsibility, heard by an anxious conscience, can turn service into strain. Her language of the sword, too, needs the love that she put under it. Driving truth home is not the same as browbeating, and a wound given without tears seldom heals. Read with those cautions, her address is one of the most useful things she wrote: a plain call to think, to pray, to be real before God, and then to mean what we say.
+
+### FOR REFLECTION AND ACTION
+
+1. Think of one area of Christian service you are involved in. When did you last give an hour’s consecutive thought and prayer to how it might be done better?
+2. Ask whether you deliver the truth or get it home. After your next conversation about Christ, ask what you actually expected to happen.
+3. Take her principle personally: others will not realise eternal things further than you do. Set aside time this week simply to be with God before you try to speak for Him.
+4. Is there a friend you have never been honest with about his soul because you value his good opinion? Pray for the love and courage to speak.
+5. If you have laboured long and seen little, read 1 Corinthians 3:6–7 and leave the increase with God.
+
+### A PRAYER
+
+> Lord of the harvest, I have worked for You carelessly, without thought and without prayer, and then wondered why so little came of it.
+> Make me teachable. Show me how to sow, and when, and give me patience to wait for the rain.
+> Let me not merely say Your truth, but carry it on my heart, and weep it in where I cannot drive it in. Fill me first, that I may have something to give.
+> Take away my fear of what people will say. The increase is Yours; make me faithful in the sowing. Amen.
+
 # Adaptation of Measures
 
 > To the weak became I as weak, that I might gain the weak: I am made all things to all men, that I might by all means save some. 1 CORINTHIANS 9:22
@@ -1224,7 +1295,7 @@ That is the religion she meant, in the end: not one that guarantees a triumphant
 
 > For the kingdom of God is not in word, but in power. 1 CORINTHIANS 4:20
 
-Eighteen chapters can make it look as though Catherine Booth taught a great many things. She taught one thing, and everything else is that one thing applied. The one thing is this: that God means His religion to be real. Follow it through and the whole shape appears. Repentance must really let go of sin. Faith must really commit the person to Christ, and not merely agree with facts about Him. Assurance is the Spirit’s witness to something that has really happened. The Holy Ghost is real power, without which the truest preaching is a well-made corpse. Holiness is a real deliverance from sin, prayer a real wrestling with God, love a real love that will rebuke and suffer. And because it is all real, it cannot stay indoors. It goes out after the lost where they are, it uses whatever lawful means will reach them, it sends whoever God has filled — fisherman or factory girl, son or daughter — and it will not call evil by polite names. At the end it is the only kind of religion that will do to die with.
+Nineteen chapters can make it look as though Catherine Booth taught a great many things. She taught one thing, and everything else is that one thing applied. The one thing is this: that God means His religion to be real. Follow it through and the whole shape appears. Repentance must really let go of sin. Faith must really commit the person to Christ, and not merely agree with facts about Him. Assurance is the Spirit’s witness to something that has really happened. The Holy Ghost is real power, without which the truest preaching is a well-made corpse. Holiness is a real deliverance from sin, prayer a real wrestling with God, love a real love that will rebuke and suffer. And because it is all real, it cannot stay indoors. It goes out after the lost where they are, it uses whatever lawful means will reach them, it sends whoever God has filled — fisherman or factory girl, son or daughter — and it will not call evil by polite names. At the end it is the only kind of religion that will do to die with.
 
 ## The danger of this book
 

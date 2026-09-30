@@ -1,7 +1,7 @@
 ---
-description: A concise, faithful guide to the heart of Madame Guyon’s message — that prayer is the simple turning of the heart to God, open to every believer, and that the soul which gives itself wholly to Him will find Him within. Eighteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Jeanne Guyon’s own public-domain works, which readers are warmly encouraged to go to directly.
+description: A concise, faithful guide to the heart of Madame Guyon’s message — that prayer is the simple turning of the heart to God, open to every believer, and that the soul which gives itself wholly to Him will find Him within. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Jeanne Guyon’s own public-domain works, which readers are warmly encouraged to go to directly.
 about: |
-  This is not a book by Jeanne Guyon. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into eighteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.
+  This is not a book by Jeanne Guyon. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into fifteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.
   
   Her teaching has a single thread. Prayer, she insisted, is not a skill for the learned but the application of the heart to God, and every believer, however simple, can learn it; and the heart that turns to God and keeps turning will be drawn, through abandonment, suffering and the fire of love, into a deep and quiet union with Him. That message made her one of the most widely read spiritual writers of her century and one of the most suspected. This volume follows the thread, weighs honestly the Quietist controversy and the places where she must be read with care, and ends each chapter with a few questions and a prayer.
   
@@ -27,7 +27,7 @@ That is the question to carry through these pages. Not, how much do I know about
 
 ## How this book is arranged
 
-After a chapter on her life, eighteen short chapters set out her teaching. The first group follows A Short and Easy Method of Prayer as a beginner would: what prayer is, praying the Scripture, how to begin, the prayer of simplicity, and what to do with distraction and dryness. The second group takes up the inward life that grows from it: abandonment, the kingdom within, silence, the death of self-will, the cross, the purifying fire, the right understanding of the Spirit’s action and our own, pure love and union with God. The last group turns outward: guidance, prayer and the reform of life, peace under persecution, and the long reach of her books beyond the walls of her prison. A conclusion and a reader’s guide close the book.
+After a chapter on her life, fifteen short chapters set out her teaching. The first group follows A Short and Easy Method of Prayer as a beginner would: what prayer is, praying the Scripture, how to begin, the prayer of simplicity and the silence in which it grows, and what to do with distraction and dryness. The second group takes up the inward life that grows from it: abandonment, the kingdom within, the death of self-will, the cross and the purifying fire, the right understanding of the Spirit’s action and our own, and pure love and union with God. The last group turns outward: guidance, prayer and the reform of life, peace under persecution, and the long reach of her books beyond the walls of her prison. A conclusion and a reader’s guide close the book.
 
 Each chapter ends with application points and a prayer. She would have wanted that. Her own book was written, she said, for a few Christians who wanted to love God with the whole heart, and she urged its readers not to argue about it but to make trial of it. Read a chapter at a time. Stop at the application points. Pray the prayer, or better, pray your own.
 
@@ -327,7 +327,9 @@ With those cautions, the beginner has everything needed: a quiet place, an open 
 
 > One thing have I desired of the LORD, that will I seek after; that I may dwell in the house of the LORD all the days of my life, to behold the beauty of the LORD, and to enquire in his temple. PSALM 27:4
 
-There comes a point in any friendship when words matter less. Two old friends can sit together for an hour on a bench and say very little, and it is not an awkward silence but a full one. Madame Guyon believed that prayer, rightly practised, tends in the same direction. After a time of reading, pausing and responding, the soul finds that it needs fewer words. It is content simply to be in the presence of God and to look to Him. She called this the second degree of prayer, and she chose for it a modest name: the prayer of simplicity.
+There comes a point in any friendship when words matter less. Two old friends can sit together for an hour on a bench and say very little, and it is not an awkward silence but a full one. Madame Guyon believed that prayer, rightly practised, tends in the same direction. After a time of reading, pausing and responding, the soul finds that it needs fewer words. It is content simply to be in the presence of God, to look to Him and to listen. She called this the second degree of prayer, and she chose for it a modest name: the prayer of simplicity.
+
+Our age will find this harder than hers did. We are afraid of silence. We fill every gap with sound — music in the car, voices in our ears, a screen in every idle moment. Even our worship is often afraid of a pause. Madame Guyon lived in a quieter world, and she still thought it far too noisy. Silence, for her, was not an optional extra for contemplatives. It was the soil in which prayer grows.
 
 ## What it is and is not
 
@@ -349,45 +351,77 @@ And beholding changes the beholder. Paul says so directly.
 
 > But we all, with open face beholding as in a glass the glory of the Lord, are changed into the same image from glory to glory, even as by the Spirit of the Lord. 2 CORINTHIANS 3:18
 
-We become like what we look at. A Christian who spends time quietly attending to the Lord is being made like Him, often without noticing. Madame Guyon insisted that this is the surest way to real goodness. Virtue that grows from within, she says, is true and lasting; virtue put on from outside is a mask that can be taken off. That is a strong claim, and it needs qualifying — we will come back to it. But its core is sound. The disciples were changed less by rules than by being with Jesus.
+We become like what we look at. A Christian who spends time quietly attending to the Lord is being made like Him, often without noticing. Madame Guyon insisted that this is the surest way to real goodness: virtue that grows from within, she says, is true and lasting; virtue put on from outside is a mask that can be taken off. That is a strong claim, and it needs the ordinary disciplines of obedience beside it. But its core is sound. The disciples were changed less by rules than by being with Jesus.
 
 > Now when they saw the boldness of Peter and John, and perceived that they were unlearned and ignorant men, they marvelled; and they took knowledge of them, that they had been with Jesus. ACTS 4:13
 
-## Not idleness but fullness
+## Silent from fullness
 
-The critics of her day said that this sort of prayer was mere idleness: the soul doing nothing, staring at a blank. She answered with an image. As the sun rises, she says, it absorbs the light of the stars, which were clearly visible before it appeared. It is not the lack of light but the excess of light that hides them. So, in this prayer, the soul may no longer see its own small acts distinctly, not because it is doing nothing but because God’s working has become stronger and more abundant. The failure of our own activity, she concludes, springs not from scarcity but from abundance.
+The critics of her day said that this sort of prayer was mere idleness: the soul doing nothing, staring at a blank. She answered them in two ways.
+
+The first was a distinction worth remembering. “Two classes of persons are silent: the one because they have nothing to say, the other because they have too much.” The silence she commends is the second kind. It is not the silence of a blank mind or a dull heart. It is the silence of a heart so full of God that words fall short. Two people may die of water, she adds: one of thirst, the other by drowning. When grace begins to flow, the soul should be still and receive it, rather than rushing about with words that interrupt the gift.
+
+The second was an image. As the sun rises, she says, it absorbs the light of the stars, which were clearly visible before it appeared. It is not the lack of light but the excess of light that hides them. So in this prayer the soul may no longer see its own small acts distinctly, not because it is doing nothing but because God’s working has become stronger. The failure of our own activity, she concludes, springs not from scarcity but from abundance.
 
 > For with thee is the fountain of life: in thy light shall we see light. PSALM 36:9
 
-Whether or not one accepts every step of that argument, the pastoral point is right. Silence before God is not emptiness if it is filled with attention to Him. Two people who love each other are not idle when they sit together without speaking.
+Whether or not one accepts every step of that argument, the pastoral point is right, and Scripture makes it too. We tend to think the value of prayer lies in what we say.
+
+> Be not rash with thy mouth, and let not thine heart be hasty to utter any thing before God: for God is in heaven, and thou upon earth: therefore let thy words be few. ECCLESIASTES 5:2
+
+## Listening to the Word
+
+Her deepest reason for silence is a theological one, and it is beautiful. Christ, she says, is the eternal Word. If the Word is to be received into the soul, the soul must be disposed to receive a word — and to receive a word, one must listen. Hearing, she observes, is a receiving sense rather than a giving one.
+
+> And the LORD came, and stood, and called as at other times, Samuel, Samuel. Then Samuel answered, Speak; for thy servant heareth. 1 SAMUEL 3:10
+
+That is why, she says, Scripture so often calls us to hearken and give ear, and she loved the verse in Hosea in which God promises to lead His people into the wilderness and speak to their heart.
+
+> Therefore, behold, I will allure her, and bring her into the wilderness, and speak comfortably unto her. HOSEA 2:14
+
+Silence, then, is not the absence of communication. It is the posture of a listener. We are quiet so that Another may speak.
+
+She is practical about how such listening is learned. Outward silence, she says, is extremely necessary for cultivating inward silence. Then comes a blunt sentence: “To be inwardly occupied with God, and outwardly occupied with countless trifles, this is impossible.” Notice the word trifles. She does not say we cannot be occupied with God while doing our duties. Her target is the clutter of things that do not matter — the idle chatter, the restless curiosity, the needless busyness that fills a life and leaves no room for God. And she warns that a half hour of prayer is a small matter if we do not keep its spirit through the rest of the day.
+
+> For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not. ISAIAH 30:15
 
 ## Guarding the gift
 
-Three cautions will keep this teaching sound.
+Four cautions will keep this teaching sound.
 
-First, the prayer of simplicity has an object. It is not a technique for emptying the mind, and it has nothing in common with methods that seek a blank consciousness for its own sake. The soul looks at God, and specifically at God as He has made Himself known in Christ and in the Scriptures. Take away that object and the silence is no longer Christian prayer at all.
+First, the prayer of simplicity has an object. It is not a technique for emptying the mind, and it has nothing in common with methods that seek a blank consciousness for its own sake. The soul looks at God as He has made Himself known in Christ and in the Scriptures. Take away that object and the silence is no longer Christian prayer at all.
 
-Second, it is not a ladder to be climbed so as to leave the lower rungs behind. Madame Guyon sometimes writes as though the soul, once it has come to this degree, should cease vocal prayer and definite requests. But the psalms are full of both, and the apostles never outgrew them. Our Lord Himself, whose communion with the Father was perfect, prayed aloud, prayed with others and asked for particular things. Quiet beholding and plain asking belong together all our lives.
+Second, the Word who speaks within is the same Word who has spoken in Scripture. Many voices can be heard in a quiet heart, and not all of them are God’s. Some are our own desires, some our fears, and some worse. The inward word is to be tested by the written Word, which does not change.
+
+> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
+
+The surest way to hear Christ in silence is to fill the silence first with Scripture. Read, then be still.
+
+Third, quiet is not a ladder to be climbed so as to leave the lower rungs behind. Madame Guyon sometimes writes as though the soul, once it has come to this degree, should cease vocal prayer and definite requests. But Scripture is full of loud prayer: cries, laments, shouts of praise, long intercessions. Hannah poured out her soul; the psalmists cried aloud; the church in Acts lifted up its voice together. Our Lord Himself prayed aloud and asked for particular things. Silence is one room in the house of prayer, not the whole house.
 
 > Hitherto have ye asked nothing in my name: ask, and ye shall receive, that your joy may be full. JOHN 16:24
 
-Third, it is not an achievement. She herself says that the soul must go to God not so much to obtain something from Him as to please Him and do His will. If we seek quiet prayer for the sweetness of it, we will be dismayed when the sweetness goes, as it will. We must seek God, not an experience of God.
+Fourth, it is not an achievement. She herself says that the soul must go to God not so much to obtain something from Him as to please Him and do His will. If we seek quiet prayer for the sweetness of it, we will be dismayed when the sweetness goes, as it will. We must seek God, not an experience of God.
 
-With those cautions, this is one of her best gifts. Many believers have spent years talking at God and never simply looked at Him. She invites them to try.
+For most of us the first step is not a mystical one. It is to turn things off: to leave the phone in another room, to sit for ten minutes after reading the Bible without doing anything else. The first minutes are usually uncomfortable. But, as she would say, make trial of it. The God who came to Elijah after the wind, the earthquake and the fire is waiting still.
+
+> And after the earthquake a fire; but the LORD was not in the fire: and after the fire a still small voice. 1 KINGS 19:12
 
 ### FOR REFLECTION AND ACTION
 
 1. At the end of your next time of prayer, remain for five minutes in quiet attention to the Lord, without asking anything.
 2. Choose a scene from the Gospels, read it, and then simply look at Christ in it, letting your love answer His.
-3. Notice whether your praying is almost entirely requests. What does that say about your relationship with God?
-4. When quiet prayer is sweet, thank God; when it is dry, keep coming anyway, for His sake and not your own.
+3. Count the sources of noise in an ordinary day of yours. Choose one to turn off for a week, and cut back one trifle that crowds God out.
+4. Test anything you seem to hear in silence against Scripture before acting on it.
 5. Keep asking plainly for what you need, and do not let quiet prayer crowd out intercession for others.
+6. When quiet prayer is sweet, thank God; when it is dry, keep coming anyway, for His sake and not your own.
 
 ### A PRAYER
 
-> Lord, I have talked to You as though You were a busy official, and hardly ever simply looked at You.
+> Lord, I have talked to You as though You were a busy official, and filled my life with noise, and wondered why I cannot hear You.
 > Let me sit at Your feet as Mary did, and hear Your word, and behold Your beauty.
-> Change me as I look, from glory to glory, into the likeness of Your Son.
+> Speak, Lord, for Your servant hears — and let what I hear be tested and shaped by Your written Word.
+> Change me as I look, from glory to glory, and let me be silent not from emptiness but from fullness.
 > And keep me seeking You and not my own sweetness, in the dry days as in the full ones. Amen.
 # When the Beloved Hides
 
@@ -605,80 +639,6 @@ With these guards in place, her teaching is a great gift to an outward age. We a
 > Turn me from without to within, and let me find You there, reigning in peace.
 > Draw me, and I will run after You; take my heart not by siege but by love.
 > And let Your kingdom within me show itself outwardly, in righteousness and peace and joy, until You come. Amen.
-# Silence Before God
-
-> But the LORD is in his holy temple: let all the earth keep silence before him. HABAKKUK 2:20
-
-Our age is afraid of silence. We fill every gap with sound — music in the car, voices in our ears, a screen in every idle moment. Even our worship is often afraid of a pause. Madame Guyon lived in a quieter world, and she still thought it far too noisy. Silence, for her, was not an optional extra for contemplatives. It was the soil in which prayer grows, and she wrote about it with an urgency that may help us more than it helped her first readers.
-
-## Silent from fullness
-
-In A Short and Easy Method of Prayer she distinguishes two kinds of silence with a sentence worth remembering. “Two classes of persons are silent: the one because they have nothing to say, the other because they have too much.” The silence she commends is the second kind. It is not the silence of a blank mind or a dull heart. It is the silence of a heart so full of God that words fall short.
-
-> Truly my soul waiteth upon God: from him cometh my salvation. PSALM 62:1
-
-She adds a vivid comparison. Two people may die of water, she says: one of thirst, the other by drowning. One dies of lack, the other of abundance. So in prayer, when the soul falls silent, the cause may be not poverty but plenty. When grace begins to flow, the soul should be still and receive it, rather than rushing about with words that interrupt the gift.
-
-This is a corrective to much of our praying. We tend to think the value of prayer lies in what we say. Scripture warns us otherwise.
-
-> Be not rash with thy mouth, and let not thine heart be hasty to utter any thing before God: for God is in heaven, and thou upon earth: therefore let thy words be few. ECCLESIASTES 5:2
-
-## Listening to the Word
-
-Her deepest reason for silence is a theological one, and it is beautiful. Christ, she says, is the eternal Word. If the Word is to be received into the soul, the soul must be disposed to receive a word — and to receive a word, one must listen. Hearing, she observes, is a receiving sense rather than a giving one. So the soul must be attentive to the Word who speaks within it.
-
-> And the LORD came, and stood, and called as at other times, Samuel, Samuel. Then Samuel answered, Speak; for thy servant heareth. 1 SAMUEL 3:10
-
-That is why, she says, Scripture so often calls us to hearken and give ear. She quotes the prophets and the psalm in which the bride is told to hearken and incline her ear. And she quotes a verse from Hosea that she loved, in which God promises to lead His people into the wilderness and speak to their heart.
-
-> Therefore, behold, I will allure her, and bring her into the wilderness, and speak comfortably unto her. HOSEA 2:14
-
-Silence, then, is not the absence of communication. It is the posture of a listener. We are quiet so that Another may speak.
-
-## Outward silence and inward silence
-
-She is practical about this, as she usually is. Outward silence, she says, is extremely necessary for cultivating inward silence, and it is impossible to acquire inward silence without a love for silence and solitude. Then comes a blunt sentence: “To be inwardly occupied with God, and outwardly occupied with countless trifles, this is impossible.”
-
-Notice the word trifles. She does not say that we cannot be occupied with God while doing our duties; she has already insisted that the prayer of the heart can go on through a day’s work. Her target is the clutter of things that do not matter — the idle chatter, the restless curiosity, the needless busyness that fills a life and leaves no room for God. We cannot be full of trifles and full of God at the same time.
-
-> For thus saith the Lord GOD, the Holy One of Israel; In returning and rest shall ye be saved; in quietness and in confidence shall be your strength: and ye would not. ISAIAH 30:15
-
-And she warns that a half hour of prayer is a small matter if we do not keep its spirit through the rest of the day. Silence in the closet must spread outward into a quieter life.
-
-## Guarding the silence
-
-Two cautions keep this teaching true.
-
-First, the Word who speaks within is the same Word who has spoken in Scripture. Madame Guyon wrote of attending to Christ speaking in the soul, and she meant something real. But the Christian must be careful here. Many voices can be heard in a quiet heart, and not all of them are God’s. Some are our own desires, some our fears, and some worse. The inward word is to be tested by the written Word, which does not change.
-
-> To the law and to the testimony: if they speak not according to this word, it is because there is no light in them. ISAIAH 8:20
-
-The surest way to hear Christ in silence is to fill the silence first with Scripture. Read, then be still. What we hear will then be shaped by what He has already said.
-
-Second, silence is not the whole of prayer. Scripture is full of loud prayer: cries, laments, shouts of praise, long intercessions. Hannah poured out her soul; the psalmists cried aloud; the church in Acts lifted up its voice together. Silence is one room in the house of prayer, not the whole house. Madame Guyon sometimes wrote as though, for the advanced, words should almost cease. The Bible does not teach that, and those who love silence most should keep praying aloud too.
-
-Yet silence has its place, and Scripture honours it. When the voice of God came to Elijah on the mountain, it came after the wind, the earthquake and the fire had passed.
-
-> And after the earthquake a fire; but the LORD was not in the fire: and after the fire a still small voice. 1 KINGS 19:12
-
-## Beginning in a noisy world
-
-For most of us, the first step is not a mystical one. It is to turn things off. To leave the phone in another room. To drive without the radio. To sit for ten minutes after reading the Bible without doing anything else. The first minutes of such silence are usually uncomfortable; the mind rushes to fill them. But, as she would say, make trial of it. The God who waited for Elijah in the stillness is waiting still.
-
-### FOR REFLECTION AND ACTION
-
-1. Count the sources of noise in an ordinary day of yours. Choose one to turn off for a week.
-2. After your next Bible reading, sit in silence for ten minutes, listening rather than speaking.
-3. Identify one trifle that crowds God out of your life, and cut it back.
-4. Test anything you seem to hear in silence against Scripture before acting on it.
-5. Take the spirit of your morning prayer into the day: at noon and evening, pause for one minute of quiet before God.
-
-### A PRAYER
-
-> Lord, I have filled my life with noise and wondered why I cannot hear You.
-> Quiet me. Still the chatter of my mind and the clutter of my days.
-> Speak, Lord, for Your servant hears — and let what I hear be tested and shaped by Your written Word.
-> Let me be silent not from emptiness but from fullness, full of You. Amen.
 # The All and the Nothing
 
 > He must increase, but I must decrease. JOHN 3:30
@@ -747,11 +707,13 @@ Read with these corrections, her teaching remains a sharp and needed word. Most 
 > Forgive me for treating Your gifts as my own, and even my prayers as my achievements.
 > Put to death my stubborn self-will, and let Christ live in me.
 > Empty me of myself, not to destroy me, but to fill me with You and make me new. Amen.
-# Calvary as Well as Tabor
+# The Cross and the Refiner’s Fire
 
-> That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death. PHILIPPIANS 3:10
+> Beloved, think it not strange concerning the fiery trial which is to try you, as though some strange thing happened unto you: But rejoice, inasmuch as ye are partakers of Christ’s sufferings. 1 PETER 4:12–13
 
 Madame Guyon did not write about suffering from a comfortable distance. She had been married against her will into an unhappy home, lost her beauty to smallpox, buried children, passed through years of inward darkness, been slandered, shut up in a convent, and at last imprisoned for years in fortresses of the state. When she wrote that the cross is God’s instrument for making us His, she was not repeating a commonplace. She was describing her life.
+
+She had two great pictures for it. One was a pair of mountains; the other was a furnace. Both say that God’s love does not leave us as it finds us.
 
 ## Two mountains
 
@@ -761,131 +723,81 @@ Her teaching on the cross in A Short and Easy Method of Prayer turns on two moun
 
 If you love God purely, she says, you will be as willing to follow Him to Calvary as to Tabor. Then she adds a sentence that goes to the heart of the gospel: “He must be loved as much on Calvary as on Tabor, since it is there that He makes the greatest manifestation of His love.”
 
-That is exactly right. The greatest revelation of God’s love is not the shining face on the mountain but the broken body on the cross. A love for God that is present only in the times of glory and absent in the times of suffering has not yet understood where His love was most clearly shown.
-
-She describes people who give themselves to God at one time and take themselves back at another. They give themselves, she says, to be caressed, and take themselves back when they are crucified. Most of us will recognise ourselves. We are eager disciples on the mountaintop and reluctant ones in the valley.
+That is exactly right. The greatest revelation of God’s love is not the shining face on the mountain but the broken body on the cross. She describes people who give themselves to God at one time and take themselves back at another. They give themselves, she says, to be caressed, and take themselves back when they are crucified. Most of us will recognise ourselves. We are eager disciples on the mountaintop and reluctant ones in the valley.
 
 ## The cross gives God
 
-Her boldest phrase comes a little later. “The cross gives God, and God gives the cross.” It is a compressed way of saying two things at once. First, suffering accepted in faith draws us nearer to God than almost anything else; it strips away our false supports and throws us upon Him. Second, the cross is not an accident in the lives of God’s children. It is one of His gifts, one of His chosen workmen for shaping us into the likeness of His Son.
+Her boldest phrase comes a little later. “The cross gives God, and God gives the cross.” It is a compressed way of saying two things at once. Suffering accepted in faith draws us nearer to God than almost anything else; it strips away our false supports and throws us upon Him. And the cross is not an accident in the lives of God’s children. It is one of His gifts, one of His chosen workmen for shaping us into the likeness of His Son.
 
 > For they verily for a few days chastened us after their own pleasure; but he for our profit, that we might be partakers of his holiness. Now no chastening for the present seemeth to be joyous, but grievous: nevertheless afterward it yieldeth the peaceable fruit of righteousness unto them which are exercised thereby. HEBREWS 12:10–11
 
 Her practical counsel follows. When something presents itself to you as suffering, she says, abandon yourself to God at once for that very thing, and offer yourself as a sacrifice. You will find that when the cross comes, it has lost much of its weight, because you have already accepted it.
 
-> And not only so, but we glory in tribulations also: knowing that tribulation worketh patience; And patience, experience; and experience, hope. ROMANS 5:3–4
-
-## Feeling the weight
-
-One of the most humane things she says is easily overlooked. Accepting the cross, she writes, will not prevent our feeling its weight. Some people imagine it is not true suffering if they feel the cross — as if a truly spiritual person should float above pain. She will have none of it. “The feeling of suffering is one of the principal parts of suffering itself.” And she adds that Jesus Himself was willing to suffer it in its full intensity.
+Yet accepting the cross, she writes, will not prevent our feeling its weight. Some people imagine it is not true suffering if they feel it — as if a truly spiritual person should float above pain. She will have none of it. “The feeling of suffering is one of the principal parts of suffering itself.” And she adds that Jesus Himself was willing to suffer it in its full intensity.
 
 > And saith unto them, My soul is exceeding sorrowful unto death: tarry ye here, and watch. MARK 14:34
 
-That is a great mercy to sufferers. Accepting God’s will does not mean pretending not to hurt. The Lord in Gethsemane was sorrowful unto death, and asked for His friends to watch with Him. A Christian in pain may weep, may cry out, may ask for the cup to pass, and still be wholly abandoned to God.
+That is a great mercy to sufferers. A Christian in pain may weep, may cry out, may ask for the cup to pass, and still be wholly abandoned to God. And the suffering is not merely something to be endured until it passes. In the state of abandonment, she says, Christ impresses Himself upon the soul and imparts to it His own condition, as Paul bore in his body the marks of the Lord Jesus. Suffering becomes a fellowship with Christ in which we are made like Him.
 
-## Conformed to Christ
+> That I may know him, and the power of his resurrection, and the fellowship of his sufferings, being made conformable unto his death. PHILIPPIANS 3:10
 
-She takes the teaching one step further. In the state of abandonment, she says, Christ impresses Himself upon the soul and imparts to it His own condition. To bear the conditions of Christ, she writes, is far greater than merely to think about them. She points to Paul.
+## Gold in the furnace
 
-> From henceforth let no man trouble me: for I bear in my body the marks of the Lord Jesus. GALATIANS 6:17
+Her second picture is fire, and her writings are full of it. Prayer, she says in her chapter on prayer and sacrifice, is itself a kind of burning: “Prayer is the heat of love, which melts and dissolves the soul, and carries it to God.” We do not come near to a holy God and remain unchanged, any more than wax can come near a flame and keep its shape.
 
-Paul did not only reflect on the sufferings of Christ; he shared them, and was changed by them. This is her deepest conviction about suffering: it is not merely something to be endured until it passes, but a fellowship with Christ in which we are made like Him.
+> For our God is a consuming fire. HEBREWS 12:29
+
+Her fullest treatment comes in the last chapter of the book, on the way to divine union. There she asks how two things so unlike as the purity of God and the impurity of the creature can ever be joined. Her answer is that God Himself must do it, and He does it by fire. She works this out with the goldsmith’s craft. Gold can be purified only by fire, which gradually consumes all that is earthly and foreign. It is put into the fire again and again until its impurity is gone, and only then is it fit for the finest work.
+
+> And he shall sit as a refiner and purifier of silver: and he shall purify the sons of Levi, and purge them as gold and silver, that they may offer unto the LORD an offering in righteousness. MALACHI 3:3
+
+And she makes a point that anyone who has passed through a hard season will recognise. At first, she says, the fire seems to tarnish the gold. So God’s purifying work can seem, while it is happening, to spoil the soul rather than cleanse it. The believer feels worse, not better; more aware of sin, less sure of God, stripped of the consolations that once seemed so certain. It is only afterwards that the purpose appears.
+
+> But he knoweth the way that I take: when he hath tried me, I shall come forth as gold. JOB 23:10
+
+## What the fire burns
+
+What, exactly, is being burned away? Her answer is the word we met in the chapter on the All and the Nothing: appropriation. The fire consumes the soul’s claim to own itself and its goods, even its spiritual goods. Even works that are good and that God receives, she says, must pass through the fire, so that all that was merely ours may be taken from them.
+
+> Every man’s work shall be made manifest: for the day shall declare it, because it shall be revealed by fire; and the fire shall try every man’s work of what sort it is. 1 CORINTHIANS 3:13
+
+Does this mean God acts without our consent? Her answer is careful. At the beginning, she says, the soul gave itself to God to do with it as He wills; that was an active and general consent to all that follows. Later, when God burns and purifies, the soul does not always understand and would not always choose it. What it gives then is what she calls a passive consent: it endures the work as best it can, neither able nor willing to prevent it. That is a wise account of how believers actually experience God’s discipline. We said yes once, with open eyes; we go on saying yes, often with our eyes shut.
 
 ## Where care is needed
 
-Her teaching on the cross is among her best, but it can be bent in unhealthy directions, and she sometimes bends it herself.
+Her teaching on the cross and the fire is among her best, but it can be bent in unhealthy directions, and she sometimes bends it herself.
 
-First, she speaks of loving souls being hungry after suffering, and of a heart as hungry for the cross as it is for God. There is a noble meaning in that: a readiness to follow Christ wherever He leads. But Christians are not called to seek out suffering or to invent it. The cross we are to take up is the one God lays on us in the path of obedience, not one we manufacture to prove our devotion. The history of the church contains many sad examples of self-inflicted austerity that did the soul no good.
+First, she speaks of loving souls being hungry after suffering. There is a noble meaning in that: a readiness to follow Christ wherever He leads. But Christians are not called to seek out suffering or to invent it. The cross we are to take up is the one God lays on us in the path of obedience, not one we manufacture to prove our devotion. Nor does accepting God’s sovereignty mean remaining in abuse we could lawfully escape, or refusing medical help.
 
-Second, acceptance of suffering in our own lives must never become indifference to the suffering of others. The same faith that bows to God’s will in our own pain must weep with those who weep, relieve the sick, feed the hungry and resist injustice. Madame Guyon was known in her years at Montargis for her care of the poor and the sick; she did not treat other people’s suffering as merely their cross to bear.
+Second, acceptance of suffering in our own lives must never become indifference to the suffering of others. Madame Guyon was known in her years at Montargis for her care of the poor and the sick; she did not treat other people’s suffering as merely their cross to bear.
 
 > Rejoice with them that do rejoice, and weep with them that weep. ROMANS 12:15
 
-Third, there is a difference between suffering for Christ and suffering because of our own folly, or because others have wronged us in ways we could lawfully escape. Accepting God’s sovereignty over our circumstances does not mean remaining in abuse or refusing medical help.
+Third, the fire purifies; it does not justify. Our acceptance with God does not depend on how far the purifying has gone. It rests wholly on Christ. The refiner’s fire is the work of a Father on a child already His, not the work of a judge on a prisoner still on trial.
 
-With those cautions, her counsel is precious. Our faith was born at a cross. It should not surprise us that it grows there too.
+> Being justified freely by his grace through the redemption that is in Christ Jesus. ROMANS 3:24
 
-> For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory. 2 CORINTHIANS 4:17
+Fourth, her own purification was long, dark and extreme, and her writings, especially Spiritual Torrents, describe it as though it were the normal road. It is not necessarily so. The preface to the Victorian English edition in the Ochorus library saw this clearly, noting that “it does not follow that this inward death must always be as lingering as in the case of Madame Guyon.” Some pass through long nights; others are refined more quietly, in the ordinary trials of work, family and illness.
+
+With those cautions, her teaching is a great comfort. Our faith was born at a cross; it should not surprise us that it grows there too. And the believer in the furnace is not forgotten. The Refiner sits by the fire, watching, and He does not leave the gold there a moment longer than it needs.
+
+> When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee. ISAIAH 43:2
 
 ### FOR REFLECTION AND ACTION
 
 1. Where are you glad to follow Christ on Tabor but reluctant on Calvary? Name the difference honestly.
 2. Think of a trouble you see coming. Give yourself to God for that very thing now, before it arrives.
 3. If you are suffering, do not be ashamed of feeling it. Tell God plainly how much it hurts, as the Lord did in Gethsemane.
-4. Ask how your present trial might be conforming you to Christ, and what He may be teaching you through it.
-5. Do one concrete thing this week to relieve someone else’s suffering.
+4. Identify one good work of yours in which you have taken secret pride. Offer it to God and let Him have the credit.
+5. Remind yourself that your acceptance with God rests on Christ alone, not on how far you have been purified.
+6. Do one concrete thing this week to relieve someone else’s suffering.
 
 ### A PRAYER
 
 > Lord Jesus, I have loved You on the mountain and fled from You at the cross.
 > Teach me to love You as much on Calvary as on Tabor, since it is there You loved me most.
-> When the cross comes, let me feel its weight without resentment, and let it bring me nearer to You.
-> Make me like You in Your sufferings, and make me quick to relieve the sufferings of others. Amen.
-# The Refiner’s Fire
-
-> And he shall sit as a refiner and purifier of silver: and he shall purify the sons of Levi, and purge them as gold and silver, that they may offer unto the LORD an offering in righteousness. MALACHI 3:3
-
-Madame Guyon’s writings are full of fire. Prayer, she says, is the heat of love. The presence of God melts the hard heart. Divine Wisdom is sent before God like a fire to consume what is impure. The image was not original to her; it runs through the prophets, the Psalms and the letters of the New Testament. But she made it her own, because she believed that God’s love does not leave us as it finds us. It burns.
-
-## The heat of love
-
-In her chapter on prayer and sacrifice in A Short and Easy Method of Prayer, she describes prayer as incense rising to God, and then goes deeper. “Prayer is the heat of love, which melts and dissolves the soul, and carries it to God.” As the soul melts, she says, it gives out its fragrance, and that fragrance comes from the love that burns it. She finds the picture in the Song of Songs, where the bride’s spikenard sends forth its smell while the King sits at His table — and the table, she says, is the heart.
-
-> Set me as a seal upon thine heart, as a seal upon thine arm: for love is strong as death; jealousy is cruel as the grave: the coals thereof are coals of fire, which hath a most vehement flame. SONG OF SOLOMON 8:6
-
-This is a way of saying that the presence of God is not merely comforting. It is transforming. We do not come near to a holy God and remain unchanged, any more than wax can come near a flame and keep its shape.
-
-> For our God is a consuming fire. HEBREWS 12:29
-
-## Gold in the furnace
-
-Her fullest treatment of the fire comes in the last chapter of the book, on the way to divine union. There she asks how two things so unlike as the purity of God and the impurity of the creature can ever be joined. Her answer is that God Himself must do it, and He does it by fire. He sends His Wisdom before Him, she says, as fire is sent upon the earth to consume all that is impure.
-
-She works this out with the goldsmith’s craft. Gold can be purified only by fire, which gradually consumes all that is earthly and foreign. It is put into the fire again and again until its impurity is gone, and only then is it fit for the finest work. She notes, too, that refined gold and unrefined gold cannot be worked together; the lesser must be purified to match the greater. So the soul must be purified before it can be united to God.
-
-> But he knoweth the way that I take: when he hath tried me, I shall come forth as gold. JOB 23:10
-
-And she makes a point that anyone who has passed through a hard season will recognise. At first, she says, the fire seems to tarnish the gold. So God’s purifying work can seem, while it is happening, to spoil the soul rather than cleanse it. The believer feels worse, not better; more aware of sin, less sure of God, stripped of the consolations that once seemed so certain. It is only afterwards that the purpose appears.
-
-> That the trial of your faith, being much more precious than of gold that perisheth, though it be tried with fire, might be found unto praise and honour and glory at the appearing of Jesus Christ. 1 PETER 1:7
-
-## What the fire burns
-
-What, exactly, is being burned away? Her answer is the same word we met in an earlier chapter: appropriation. The fire consumes the soul’s claim to own itself and its goods, even its spiritual goods. She applies Paul’s words about the fire that tries every man’s work: even works that are good and that God receives must pass through the fire, she says, so that all that was merely ours may be taken from them.
-
-> Every man’s work shall be made manifest: for the day shall declare it, because it shall be revealed by fire; and the fire shall try every man’s work of what sort it is. 1 CORINTHIANS 3:13
-
-She then asks whether this means God acts without our consent. Her answer is careful. At the beginning, she says, the soul gave itself to God to do with it as He wills; that was an active and general consent to all that follows. Later, when God burns and purifies, the soul does not always understand and would not always choose it. What it gives then is what she calls a passive consent: it endures the work as best it can, neither able nor willing to prevent it. That is a wise account of how believers actually experience God’s discipline. We said yes once, with open eyes; we go on saying yes, often with our eyes shut.
-
-## Guarding the doctrine
-
-Two cautions help us hear her rightly.
-
-First, the fire purifies; it does not justify. Our acceptance with God does not depend on how far the purifying has gone. It rests wholly on Christ. She herself cites Paul here, that by the deeds of the law no flesh is justified, but by the righteousness of God which is by faith. Protestant readers especially should hold on to that. The refiner’s fire is the work of a Father on a child already His, not the work of a judge on a prisoner still on trial.
-
-> Being justified freely by his grace through the redemption that is in Christ Jesus. ROMANS 3:24
-
-Second, her own purification was long, dark and extreme, and her writings, especially Spiritual Torrents, describe it in vivid detail as though it were the normal road. It is not necessarily so. The preface to the Victorian English edition in the Ochorus library saw this clearly, noting that “it does not follow that this inward death must always be as lingering as in the case of Madame Guyon.” God deals with each of His children as He wills. Some pass through long nights; others are refined more quietly, in the ordinary trials of work, family and illness. No one should conclude that because their path is not hers, God is not at work.
-
-> Behold, I have refined thee, but not with silver; I have chosen thee in the furnace of affliction. ISAIAH 48:10
-
-With those cautions, her teaching is a great comfort. The believer in the furnace is not forgotten. The Refiner sits by the fire, watching, and He does not leave the gold there a moment longer than it needs.
-
-> When thou passest through the waters, I will be with thee; and through the rivers, they shall not overflow thee: when thou walkest through the fire, thou shalt not be burned; neither shall the flame kindle upon thee. ISAIAH 43:2
-
-### FOR REFLECTION AND ACTION
-
-1. Is there a present trial that seems to be tarnishing rather than refining you? Ask God to show you what He is burning away.
-2. Identify one good work of yours in which you have taken secret pride. Offer it to God and let Him have the credit.
-3. Renew the consent you first gave to God: tell Him that He may do as He wills with you and in you.
-4. Remind yourself that your acceptance with God rests on Christ alone, not on how far you have been purified.
-5. If you are in a long night, do not measure yourself by her road or anyone else’s. Trust the Refiner who sits by the fire.
-
-### A PRAYER
-
-> Lord, You are a consuming fire, and I have wanted Your warmth without Your burning.
-> I gave myself to You once; I give myself again, to be refined as You will.
-> When the fire seems to spoil rather than cleanse me, keep me from pulling away from Your hand.
+> You are a consuming fire, and I have wanted Your warmth without Your burning. I give myself to You again, to be refined as You will.
+> When the fire seems to spoil rather than cleanse me, keep me from pulling away from Your hand, and make me quick to relieve the sufferings of others.
 > Burn away all that is merely mine, and bring me out as gold, accepted in Christ and made like Him. Amen.
 # Spread the Sails
 
@@ -959,7 +871,7 @@ So the answer to our opening question is neither that God does everything and we
 > Teach me to spread the sails and hold the helm, depending on You and working because You work.
 > When the wind is contrary, let me cast the anchor of trust and wait for You.
 > Keep me faithful in the means You have given, and let all my doing be Your doing in me. Amen.
-# Pure Love
+# Pure Love and Union with God
 
 > Whom have I in heaven but thee? and there is none upon earth that I desire beside thee. PSALM 73:25
 
@@ -967,13 +879,11 @@ In the book of Job, the accuser asks God a question that has haunted believers e
 
 > Then Satan answered the LORD, and said, Doth Job fear God for nought? JOB 1:9
 
-Does anyone love God for His own sake? Or is all our religion, in the end, a bargain — obedience in exchange for blessing, worship in exchange for heaven? Madame Guyon spent her life insisting that God can and should be loved for Himself alone. Her name for this was pure love, or disinterested love. It is the most beautiful thing she taught, and also the point at which the storm broke over her and her friend Fénelon.
+Does anyone love God for His own sake? Or is all our religion, in the end, a bargain — obedience in exchange for blessing, worship in exchange for heaven? Madame Guyon spent her life insisting that God can and should be loved for Himself alone, and that the soul which loves Him so will be drawn at last into union with Him. Her name for the first was pure love; her name for the second was divine union. Together they are the goal of everything she taught — prayer, abandonment, silence, the cross and the fire were all, for her, the road. They are also the most beautiful part of her teaching, and the part that most needs careful reading, for it was here that the storm broke over her and her friend Fénelon.
 
 ## Loving God for Himself
 
-The theme runs all through A Short and Easy Method of Prayer. In describing the prayer of simplicity she says that we should go to God not so much to obtain something from Him as to please Him and to do His will, and she adds a hard sentence: “for a servant who only serves his master in proportion to the recompense he receives, is unworthy of any remuneration.” We should go to prayer, she says, not only to enjoy God but to be as He wills, and this will keep us steady in times of barrenness as in times of abundance.
-
-In the last chapter she presses the same point from the other side. Our blessedness, she says, is the enjoyment of God Himself, not of His gifts, which can never fully satisfy the soul. The richest gifts of God cannot content a heart made for God.
+The theme runs all through A Short and Easy Method of Prayer. In describing the prayer of simplicity she says that we should go to God not so much to obtain something from Him as to please Him and to do His will, and she adds a hard sentence: “for a servant who only serves his master in proportion to the recompense he receives, is unworthy of any remuneration.” In the last chapter she presses the same point from the other side. Our blessedness, she says, is the enjoyment of God Himself, not of His gifts, which can never fully satisfy the soul.
 
 > Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore. PSALM 16:11
 
@@ -981,131 +891,74 @@ This is a deep and searching truth. Much of our religion is, if we are honest, a
 
 > Although the fig tree shall not blossom, neither shall fruit be in the vines; the labour of the olive shall fail, and the fields shall yield no meat; the flock shall be cut off from the fold, and there shall be no herd in the stalls: Yet I will rejoice in the LORD, I will joy in the God of my salvation. HABAKKUK 3:17–18
 
-Habakkuk’s prayer is pure love in the Old Testament. It is not that the prophet does not care about the harvest. It is that God matters more than the harvest.
-
-## Love, and do what you will
-
-Out of this love, she believed, all real goodness grows. She quotes Augustine’s famous saying: love, and do as you please. When we love perfectly, she explains, we will not wish to do anything displeasing to the Beloved. The command to love God with all the heart is not one command among many; it is the root of the rest.
-
-> Jesus said unto him, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy mind. MATTHEW 22:37
-
-And this love cannot be taught as a technique. In her word to preachers she says it plainly: “we cannot learn to love God better than by loving Him.” The way to love God is to love Him — to turn to Him, again and again, until love becomes the habit of the heart.
+It is not that the prophet does not care about the harvest. It is that God matters more than the harvest. Out of such love, she believed, all real goodness grows; she quotes Augustine’s famous saying, love, and do as you please. And this love cannot be taught as a technique. In her word to preachers she says it plainly: “we cannot learn to love God better than by loving Him.”
 
 ## Where pure love went too far
 
 So far, she is on solid ground. But the doctrine of pure love, pressed to its limit, went further, and the church’s censure fell there.
 
-In the circles around her, and in some of her own writings, pure love was described as so detached from self that it would love God even with no hope of reward — even, on what was called the impossible supposition, if God were to condemn the soul for ever. Some spoke of a state in which the soul was indifferent to its own salvation, content with whatever God willed, even its own loss. When Fénelon set out to defend a careful version of this teaching in his Maxims of the Saints in 1697, Bossuet attacked it fiercely, and in 1699 the Pope censured a number of its propositions. Fénelon submitted.
+In the circles around her, and in some of her own writings, pure love was described as so detached from self that it would love God even with no hope of reward — even, on what was called the impossible supposition, if God were to condemn the soul for ever. Some spoke of a state in which the soul was indifferent to its own salvation. When Fénelon set out to defend a careful version of this teaching in his Maxims of the Saints in 1697, Bossuet attacked it fiercely, and in 1699 the Pope censured a number of its propositions. Fénelon submitted.
 
-We need not side with every argument Bossuet made, nor with the politics of the affair, to see that there was a real danger. Scripture never asks us to be indifferent to our own salvation. It commands us to seek it, to hope for it, to lay hold on it.
-
-> Fight the good fight of faith, lay hold on eternal life, whereunto thou art also called, and hast professed a good profession before many witnesses. 1 TIMOTHY 6:12
-
-Our Lord Himself, whose love for the Father was perfectly pure, endured the cross for the joy that was set before Him. Desire for joy in God is not a flaw in love; it is part of it.
+We need not side with every argument Bossuet made, nor with the politics of the affair, to see that there was a real danger. Scripture never asks us to be indifferent to our own salvation. It commands us to seek it, to hope for it, to lay hold on it. Our Lord Himself, whose love for the Father was perfectly pure, endured the cross for the joy that was set before Him.
 
 > Looking unto Jesus the author and finisher of our faith; who for the joy that was set before him endured the cross, despising the shame, and is set down at the right hand of the throne of God. HEBREWS 12:2
 
-The mistake, if we may put it simply, was to treat our own happiness and God’s glory as rivals. They are not. God has made us so that our deepest happiness is found in Him. To seek Him is to seek our joy; to seek our true joy is to seek Him. What pure love rightly refuses is not the desire for God’s gifts, but the desire for the gifts instead of Him.
+The mistake was to treat our own happiness and God’s glory as rivals. They are not. God has made us so that our deepest happiness is found in Him. What pure love rightly refuses is not the desire for God’s gifts, but the desire for the gifts instead of Him. And it is only fair to add that the little book on prayer is more balanced than the later controversy. In her preface she tells her readers, “Seek nothing but the love of God; have a sincere desire for your salvation, and you will assuredly find it.”
 
-It is only fair to add that the little book on prayer is more balanced than the later controversy. In her preface she tells her readers, “Seek nothing but the love of God; have a sincere desire for your salvation, and you will assuredly find it.” There, at least, pure love and the desire for salvation sit side by side.
+## A river to the sea
+
+Where does such love lead? Her favourite picture of the soul’s journey was a river. “Do you wish to get to the sea? Embark upon a river, and insensibly and without effort you will be taken to it.” Spiritual Torrents develops the image at length: souls are streams of different kinds, some slow and sluggish, some broad and steady, and some rushing torrents that tumble down the mountainside, broken and at times lost from sight, until they reach the sea. The torrent was her own soul; the sea is God.
+
+> There is a river, the streams whereof shall make glad the city of God, the holy place of the tabernacles of the most High. PSALM 46:4
+
+In the Short Method she sets out the stages simply. “Union has its beginning, its continuation, its completion, and its consummation.” It begins with an inclination towards God: the soul turned to Him as its centre. Then it adheres, drawing nearer. Then it is united. Finally it becomes one spirit with Him.
+
+> But he that is joined unto the Lord is one spirit. 1 CORINTHIANS 6:17
+
+This has great value. It reminds us that salvation is not merely a transaction — sins forgiven, a verdict passed — but a relationship that grows. Our Lord prayed for His disciples to share in the union He had with the Father, and Peter goes so far as to say we are made partakers of the divine nature. These are staggering words, and many Christians have never taken them seriously. Madame Guyon took them with all seriousness.
+
+> I in them, and thou in me, that they may be made perfect in one; and that the world may know that thou hast sent me, and hast loved them, as thou hast loved me. JOHN 17:23
+
+Her other great picture of union is marriage. Like Bernard of Clairvaux and many before her, she read the Song of Songs as a picture of Christ and the soul, and in her commentary on it she traces the bride’s journey from first longing, through seeking and losing, to settled union with the Bridegroom. Paul himself calls marriage a great mystery concerning Christ and the church, so there is warrant for her bridal language. It has helped countless believers to see that God desires not merely their obedience but their love.
+
+> My beloved is mine, and I am his: he feedeth among the lilies. SONG OF SOLOMON 2:16
+
+## Guarding the mystery
+
+Yet here the most careful reading is needed.
+
+First, union with God is never the merging of the creature into the Creator. The river-and-sea picture, if pressed, suggests that the soul simply disappears into God as a drop into the ocean. Scripture does not teach that. Even in the fullest union, God remains God and we remain His creatures, known and loved as persons. The bride is united to the Bridegroom; she does not become Him.
+
+Second, union with Christ is first a gift received by faith, not a height reached by experience. Every believer is already joined to Christ by His Spirit. What grows is our awareness of it, our yielding to it and the fruit of it. To treat union as the reward of an elite who have passed through extraordinary states risks dividing Christians into ranks.
+
+> At that day ye shall know that I am in my Father, and ye in me, and I in you. JOHN 14:20
+
+Third, the test of union is not the intensity of an experience but the fruit of the life: humility, love, obedience, patience. People can and do deceive themselves about their spiritual states, and some who claimed great heights in her circles fell badly. And the full union she longed for belongs in its completeness to the life to come.
+
+> Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is. 1 JOHN 3:2
 
 ## Love that answers love
 
-One more thing needs saying. The New Testament never asks us to love God as if from nowhere, by a heroic effort of disinterested will. It tells us where love comes from.
+One more thing needs saying. The New Testament never asks us to love God as if from nowhere, by a heroic effort of disinterested will, nor to climb to union by our own striving. It tells us where love comes from.
 
 > We love him, because he first loved us. 1 JOHN 4:19
 
-Pure love is not a height we climb by despising ourselves. It is a response to the love God has shown us in Christ. The more clearly we see that love, the less we will love Him for His gifts, and the more we will love Him for Himself — and the more gladly we will receive His gifts, too, because they come from His hand.
-
-That is the right answer to the accuser’s question. Does anyone serve God for nothing? No one serves Him for nothing; we serve Him for Himself. And He is not nothing. He is everything.
+Pure love is not a height we climb by despising ourselves. It is a response to the love God has shown us in Christ, who did not die merely to get us out of trouble but to bring us to God in a union closer than any marriage. That is the right answer to the accuser’s question. Does anyone serve God for nothing? No one serves Him for nothing; we serve Him for Himself. And He is not nothing. He is everything.
 
 ### FOR REFLECTION AND ACTION
 
 1. Review your recent prayers. How much of your relationship with God is a trade, and how much is love for Him?
 2. Pray Habakkuk 3:17–18, naming the particular fig tree that has not blossomed in your life.
-3. Spend one time of prayer this week asking for nothing, only thanking and adoring God for who He is.
-4. Do not be ashamed of longing for heaven. Thank God that your joy and His glory are not rivals.
-5. Read 1 John 4:7–19 slowly, and let His love for you be the ground of your love for Him.
+3. Do not be ashamed of longing for heaven. Thank God that your joy and His glory are not rivals.
+4. Read John 17 slowly and notice every phrase about union. Thank God that, if you are in Christ, you are already joined to Him by His Spirit.
+5. Examine the fruit of your spiritual life rather than its feelings: is there more humility, love and patience than a year ago?
 
 ### A PRAYER
 
 > Lord, I have loved Your gifts more than You, and served You for what You give.
 > Forgive my bargaining, and teach me to love You for Yourself, because You are worthy of all love.
 > Yet thank You that You have made my joy to be found in You, and that I need not choose between Your glory and my good.
-> I love You because You first loved me. Deepen that love until You are all my desire. Amen.
-# Union with God
-
-> But he that is joined unto the Lord is one spirit. 1 CORINTHIANS 6:17
-
-All of Madame Guyon’s teaching points in one direction. Prayer as the turning of the heart, abandonment, silence, the death of self-will, the cross, the refining fire — all of it, for her, was the road. The destination was union with God. She wrote about it in the closing pages of A Short and Easy Method of Prayer, in her Spiritual Torrents, in the little treatise called Union with God, and throughout her commentaries on Scripture, above all on the Song of Songs. It is the goal she lived for, and the part of her teaching that most needs careful reading.
-
-## A river to the sea
-
-Her favourite picture of the soul’s journey was a river. In A Short and Easy Method of Prayer she writes: “Do you wish to get to the sea? Embark upon a river, and insensibly and without effort you will be taken to it.” So, she says, the soul that takes God’s quiet way will be carried to Him in a manner that will surprise it.
-
-Spiritual Torrents develops the image at length. There she describes souls as streams of different kinds: some slow and sluggish, some broad and steady, and some rushing torrents that tumble down the mountainside, broken and at times lost from sight, until they reach the sea and are lost in its fullness. The torrent was her own soul, and the book is in large part the story of her own purifications told as a general map. The sea is God, and the losing of the river in the sea is her picture of union.
-
-> There is a river, the streams whereof shall make glad the city of God, the holy place of the tabernacles of the most High. PSALM 46:4
-
-## Beginning, continuing, completing
-
-In the Short Method she sets out the stages of union simply. “Union has its beginning, its continuation, its completion, and its consummation.” It begins with an inclination towards God: the soul turned to Him as its centre. Then it adheres, drawing nearer. Then it is united. Finally it becomes one spirit with Him, and the spirit that came from God returns to Him as its end.
-
-She quotes the psalmist: it is good for me to draw near to God. What is this drawing near, she asks? It is the beginning of union.
-
-> But it is good for me to draw near to God: I have put my trust in the Lord GOD, that I may declare all thy works. PSALM 73:28
-
-This way of describing the Christian life has great value. It reminds us that salvation is not merely a transaction — sins forgiven, a verdict passed — but a relationship that grows. Our Lord Himself prayed for His disciples to share in the union He had with the Father.
-
-> I in them, and thou in me, that they may be made perfect in one; and that the world may know that thou hast sent me, and hast loved them, as thou hast loved me. JOHN 17:23
-
-And Paul speaks of the believer as joined to the Lord, one spirit with Him. Peter goes so far as to say we are made partakers of the divine nature. These are staggering words, and many Christians have never taken them seriously. Madame Guyon took them with all seriousness.
-
-> Whereby are given unto us exceeding great and precious promises: that by these ye might be partakers of the divine nature, having escaped the corruption that is in the world through lust. 2 PETER 1:4
-
-## The Bride and the Bridegroom
-
-Her other great picture of union is marriage. Like Bernard of Clairvaux and many before her, she read the Song of Songs as a picture of Christ and the soul, and in her commentary on it she traces the bride’s journey from first longing, through seeking and losing, to settled union with the Bridegroom. The Short Method is full of the Song’s language: draw me, we will run; my spikenard sendeth forth the smell thereof; who is this that cometh out of the wilderness?
-
-> My beloved is mine, and I am his: he feedeth among the lilies. SONG OF SOLOMON 2:16
-
-Paul himself says that the union of husband and wife is a great mystery concerning Christ and the church. There is warrant, then, for her bridal language, and it has helped countless believers to see that God desires not merely their obedience but their love.
-
-> This is a great mystery: but I speak concerning Christ and the church. EPHESIANS 5:32
-
-## Guarding the mystery
-
-Yet this is also where the most careful reading is needed.
-
-First, union with God is never the merging of the creature into the Creator. The river-and-sea picture, if pressed, suggests that the soul simply disappears into God as a drop into the ocean. Scripture does not teach that. Even in the fullest union, God remains God and we remain His creatures, known and loved as persons. The bride is united to the Bridegroom; she does not become Him. Madame Guyon, at her best, did not mean otherwise, but her images sometimes say more than she meant, and some readers have taken them further than she did.
-
-Second, union with Christ is first a gift received by faith, not a height reached by experience. Every believer is already joined to Christ by His Spirit. What grows is our awareness of it, our yielding to it and the fruit of it. To treat union as the reward of an elite who have passed through extraordinary states risks dividing Christians into ranks and discouraging the ordinary believer who has never had them.
-
-> At that day ye shall know that I am in my Father, and ye in me, and I in you. JOHN 14:20
-
-Third, she says of those who claim to have reached this state that it cannot be feigned, any more than a starving man can long pretend to be full. That is too confident. People can and do deceive themselves about their spiritual states, and some who claimed great heights in her circles fell badly. The test of union is not the intensity of the experience but the fruit of the life: humility, love, obedience, patience.
-
-> Wherefore by their fruits ye shall know them. MATTHEW 7:20
-
-Fourth, the full union she longed for belongs in its completeness to the life to come. Here we see through a glass, darkly. The hope of face-to-face communion should draw us on, not make us claim we have already arrived.
-
-> Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is. 1 JOHN 3:2
-
-With these guards, her teaching on union is a summons to take the New Testament at its word. Christ did not die merely to get us out of trouble. He died to bring us to God, and to bring God to us, in a union closer than any marriage.
-
-### FOR REFLECTION AND ACTION
-
-1. Read John 17 slowly and notice every phrase about union. Which one surprises you most?
-2. Thank God that, if you are in Christ, you are already joined to Him — not by your experience but by His Spirit.
-3. Ask where you are on the road she describes: inclining, adhering, united. What would the next step be?
-4. Examine the fruit of your spiritual life rather than its feelings: is there more humility, love and patience than a year ago?
-5. Let the hope of seeing Christ face to face draw you on this week in one concrete act of obedience.
-
-### A PRAYER
-
-> Lord Jesus, You prayed that I might be one with You as You are one with the Father.
-> I believe that You have joined me to Yourself by Your Spirit, though I hardly understand it.
-> Draw me nearer; let me incline to You, cleave to You, and live as one spirit with You.
+> You prayed that I might be one with You as You are one with the Father. Draw me nearer; let me incline to You, cleave to You, and live as one spirit with You.
 > Keep me humble, fruitful and honest about my soul, until I see You as You are. Amen.
 # The Heart and the Head
 
@@ -1371,7 +1224,7 @@ There is a final lesson. The powers of her day tried hard to stop her teaching. 
 
 > Draw nigh to God, and he will draw nigh to you. JAMES 4:8
 
-Eighteen chapters can make it look as though Madame Guyon taught a great many things. She taught one thing, and she taught it all her life: give God your heart. Prayer is the heart applied to Him. Praying the Scripture is the heart fed by His Word. The prayer of simplicity is the heart resting in His presence. Abandonment is the heart handed over and not taken back. The inward kingdom is the heart where He reigns. Silence is the heart listening. The death of self-will, the cross and the refining fire are God’s ways of making the heart wholly His. Pure love is the heart loving Him for Himself, and union is the heart one spirit with Him. Everything else in her writings — the images of rivers and ships, of gold and fire, of the bride and the Bridegroom — is that single appeal worked out.
+Fifteen chapters can make it look as though Madame Guyon taught a great many things. She taught one thing, and she taught it all her life: give God your heart. Prayer is the heart applied to Him. Praying the Scripture is the heart fed by His Word. The prayer of simplicity is the heart resting in His presence. Abandonment is the heart handed over and not taken back. The inward kingdom is the heart where He reigns. Silence is the heart listening. The death of self-will, the cross and the refining fire are God’s ways of making the heart wholly His. Pure love is the heart loving Him for Himself, and union is the heart one spirit with Him. Everything else in her writings — the images of rivers and ships, of gold and fire, of the bride and the Bridegroom — is that single appeal worked out.
 
 It is an old appeal. Wisdom said it long before she did.
 
