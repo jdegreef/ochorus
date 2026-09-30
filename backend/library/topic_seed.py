@@ -796,6 +796,7 @@ TOPIC_ARTICLES = {
         "the-fourfold-gospel-guide",
         "jesus-himself-2-guide",
         "the-masters-indwelling-guide",
+        "feasting-at-the-table-guide",
     ],
     "grace-and-comfort": [
         "how-to-trust-god-in-suffering",
@@ -815,6 +816,7 @@ TOPIC_ARTICLES = {
         "the-unselfishness-of-god-guide",
         "the-god-of-all-comfort-guide",
         "gleanings-among-the-sheaves-guide",
+        "the-key-in-my-hand-guide",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -848,6 +850,7 @@ TOPIC_ARTICLES = {
         "divine-healing-guide",
         "the-secret-of-guidance-guide",
         "the-fundamental-doctrines-of-the-christian-faith-guide",
+        "he-holds-my-tomorrows-guide",
     ],
     "the-gospel-call": [
         "how-to-be-born-again",
@@ -981,6 +984,12 @@ TOPIC_ARTICLES = {
         "how-to-be-content",
         "how-to-trust-god-in-suffering",
         "soar-like-the-eagle-guide",
+    ],
+    "contemporary-voices": [
+        "soar-like-the-eagle-guide",
+        "the-key-in-my-hand-guide",
+        "he-holds-my-tomorrows-guide",
+        "feasting-at-the-table-guide",
     ],
     "for-teens": [
         "can-i-be-a-christian-and-have-doubts",
