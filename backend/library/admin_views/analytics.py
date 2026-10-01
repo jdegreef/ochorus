@@ -795,32 +795,45 @@ class AdminSearchView(APIView):
         now = timezone.now()
         window = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=30))
 
-        def overview(days, offset=0):
-            # The `days` days ending `offset` days ago, so the same function
-            # yields both a period and the one before it — the baseline the
-            # page's period-over-period deltas divide by.
-            span = {
-                "created_at__gte": now - timedelta(days=days + offset),
-                "created_at__lt": now - timedelta(days=offset),
+        # Each period and the one before it (the baseline the page's deltas
+        # divide by), as conditional counts over ONE scan per log: the four
+        # windows overlap inside the last 60 days.
+        windows = {"7d": (7, 0), "30d": (30, 0), "7d_prev": (7, 7), "30d_prev": (30, 30)}
+
+        def span(key):
+            # The current windows stay open-ended, like the lists on this page,
+            # so a row logged mid-request can't land in one section but not
+            # another.
+            days, offset = windows[key]
+            q = Q(created_at__gte=now - timedelta(days=days + offset))
+            return q & Q(created_at__lt=now - timedelta(days=offset)) if offset else q
+
+        recent = Q(created_at__gte=now - timedelta(days=60))
+        counts = SearchQueryLog.objects.filter(recent).aggregate(
+            **{
+                f"{k}_{name}": Count(expr, filter=span(k) & extra, distinct=distinct)
+                for k in windows
+                for name, expr, extra, distinct in (
+                    ("searches", "id", Q(), False),
+                    ("zero", "id", Q(result_count=0), False),
+                    ("distinct", Lower("query"), Q(), True),
+                )
             }
-            qs = SearchQueryLog.objects.filter(**span)
-            counts = qs.aggregate(
-                searches=Count("id"), zero=Count("id", filter=Q(result_count=0))
-            )
+        )
+        # Opened results in each window. Rows, not readers (the logs are
+        # anonymous), so a rate built on it is a trend, not "x% of people".
+        clicks = SearchClickLog.objects.filter(recent).aggregate(
+            **{k: Count("id", filter=span(k)) for k in windows}
+        )
+
+        def overview(k):
+            searches, zero = counts[f"{k}_searches"], counts[f"{k}_zero"]
             return {
-                "searches": counts["searches"],
-                # Opened results in the same span. Rows, not readers (the logs
-                # are anonymous), so a rate built on it is a trend, not "x% of
-                # people".
-                "clicks": SearchClickLog.objects.filter(**span).count(),
-                "distinct_queries": qs.annotate(q=Lower("query"))
-                .values("q")
-                .distinct()
-                .count(),
-                "zero_results": counts["zero"],
-                "zero_rate": round(counts["zero"] / counts["searches"], 3)
-                if counts["searches"]
-                else 0.0,
+                "searches": searches,
+                "clicks": clicks[k],
+                "distinct_queries": counts[f"{k}_distinct"],
+                "zero_results": zero,
+                "zero_rate": round(zero / searches, 3) if searches else 0.0,
             }
 
         def top(qs, limit=20):
@@ -934,16 +947,7 @@ class AdminSearchView(APIView):
 
         return Response(
             {
-                "overview": {
-                    "7d": overview(7),
-                    "30d": overview(30),
-                    "7d_prev": overview(7, offset=7),
-                    "30d_prev": overview(30, offset=30),
-                    # Whether search is answering at all, in one number. Rows,
-                    # not readers — the logs are anonymous — so read it as a
-                    # trend, not as "x% of people".
-                    "clicks_30d": sum(clicked.values()),
-                },
+                "overview": {k: overview(k) for k in windows},
                 "unopened_queries": unopened,
                 "top_queries": answered,
                 "zero_result_queries": top(window.filter(result_count=0)),

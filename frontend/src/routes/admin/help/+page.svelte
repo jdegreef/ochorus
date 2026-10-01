@@ -25,6 +25,18 @@
 	const roleLabel = (code: string) => roles.find((r) => r.code === code)?.label ?? humanize(code);
 	const roleLine = $derived(myRoles.map(roleLabel).join(', '));
 
+	// The access ladder, lowest first — each step includes the ones below it.
+	const LADDER = [
+		{ verb: 'View', what: 'See the reports and queues in an area.' },
+		{ verb: 'Suggest', what: 'File a job. Nothing goes live from it.' },
+		{ verb: 'Act', what: 'Make the change: record a review, publish an edition.' },
+		{ verb: 'Approve', what: 'Confirm other people’s work; use the high-stakes controls.' }
+	];
+
+	// Where the Activity log tip links, when the viewer can open the log at all.
+	const activity = ADMIN_SECTIONS.find((s) => s.href === '/admin/activity')!;
+	const canSeeActivity = $derived(opensSection(activity, auth));
+
 	// A verb's chip, darker the higher it sits on the ladder.
 	const VERB_CHIP: Record<string, string> = {
 		view: 'bg-surface-2 text-muted',
@@ -41,8 +53,8 @@
 
 	<header class="mb-8 mt-3">
 		<p class="eyebrow mb-2 text-accent">Admin · Help</p>
-		<h1 class="text-display">How the admin works</h1>
-		<p class="mt-2 text-body text-muted">Ochorus keeps a living library of public-domain Christian classics across many languages. This is the room where the library is built, reviewed, and taken live. What you can see and do depends on the access you've been granted.</p>
+		<h1 class="text-display">Help &amp; roles</h1>
+		<p class="mt-2 text-body text-muted">What your access lets you do, and how work moves from a filed job to the live site.</p>
 	</header>
 
 	<!-- Your access: what you can do, with where you do it -->
@@ -85,15 +97,24 @@
 	<section class="mb-8">
 		<h2 class="mb-3 text-h3">What "access" means</h2>
 		<p class="text-body text-muted">Access has two parts: <strong>which area</strong> (a capability, like reviewing or publishing), and <strong>how far you can go</strong> in it (a verb). Each grant is also scoped to one or more <strong>languages</strong>.</p>
-		<div class="mt-4 flex flex-col gap-2">
-			{#each [['View', 'See the reports and queues in an area.'], ['Suggest', 'Propose work — file a job — but apply nothing live yourself.'], ['Act', 'Make the change (record a review decision, publish an edition…).'], ['Approve', 'Confirm other people’s work, and use the high-stakes controls.']] as [verb, what] (verb)}
-				<div class="flex gap-3 rounded-card border border-border bg-surface px-4 py-2.5">
-					<span class="mono w-20 shrink-0 font-semibold text-accent">{verb}</span>
-					<span class="text-small text-text">{what}</span>
-				</div>
+		<!-- A staircase: each step is taller than the one below it, so "the higher
+		     level includes the lower ones" is the picture, not a footnote. -->
+		<ol class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:items-end">
+			{#each LADDER as step, i (step.verb)}
+				<li
+					class="flex flex-col justify-end rounded-card bg-accent-soft p-3 {[
+						'sm:min-h-24',
+						'sm:min-h-32',
+						'sm:min-h-40',
+						'sm:min-h-48'
+					][i]}"
+				>
+					<span class="font-semibold text-accent">{step.verb}</span>
+					<span class="mt-1 text-micro text-text">{step.what}</span>
+				</li>
 			{/each}
-		</div>
-		<p class="mt-2 text-small text-muted">Verbs stack: someone who can <em>act</em> can also <em>view</em> and <em>suggest</em>.</p>
+		</ol>
+		<p class="mt-2 text-small text-muted">Each level includes the ones below it: someone who can <em>act</em> can also <em>view</em> and <em>suggest</em>.</p>
 	</section>
 
 	<!-- Roles: the summaries, then the exact grid from the backend presets -->
@@ -158,7 +179,7 @@
 
 	<!-- Where things live: every admin section and the access that opens it -->
 	<section class="mb-8">
-		<h2 class="mb-2 text-h3">Where things live</h2>
+		<h2 id="where-things-live" class="mb-2 scroll-mt-24 text-h3">Where things live</h2>
 		<p class="mb-3 text-body text-muted">Every admin section, and the access it needs. If a section is missing from your sidebar, this says why.</p>
 		<ul class="overflow-hidden rounded-card border border-border bg-surface">
 			{#each ADMIN_SECTIONS as sec (sec.href)}
@@ -184,19 +205,58 @@
 		<p class="text-body text-muted">On the review queue, a <strong>reviewer</strong> reads a translation and records a decision. If you hold <em>review</em> at the <em>act</em> level, your approval is <strong>provisional</strong> — it's saved and flagged "awaiting confirmation," but nothing changes until someone with <em>approve</em> (or a super admin) confirms it. That's why your button says "Submit for approval" rather than "Approve." An approver sees your submission and clicks "Confirm."</p>
 	</section>
 
-	<!-- How changes reach readers -->
+	<!-- How changes reach readers: the two lanes a change can take -->
 	<section class="mb-8">
 		<h2 class="mb-2 text-h3">How changes reach readers</h2>
-		<p class="text-body text-muted">The public site is built ahead of time from the project's source files, not edited live. So most content changes — a new translation, a fixed chapter title, a biography — aren't instant database edits; you <strong>file a job</strong>, and it ships as a reviewed change on the next build. That's by design: it keeps every change reviewable. A few things <em>are</em> immediate — taking an edition offline (publish/unpublish), and recording review decisions — and those are the ones gated most tightly.</p>
+		<p class="text-body text-muted">The public site is built ahead of time from the project's source files, so most changes reach readers on the next build. A few take effect at once, and those are the most tightly controlled.</p>
+		<div class="mt-4 overflow-hidden rounded-card border border-border bg-surface">
+			<div class="flex flex-col gap-2 border-b border-border px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
+				<span class="w-28 shrink-0 text-micro font-semibold uppercase tracking-wide text-danger">Instant</span>
+				<ul class="flex flex-wrap gap-2">
+					{#each ['Publish or unpublish an edition', 'Record a review decision'] as change (change)}
+						<li class="rounded-full border border-border px-2.5 py-0.5 text-micro font-semibold text-text">{change}</li>
+					{/each}
+				</ul>
+			</div>
+			<div class="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
+				<span class="w-28 shrink-0 text-micro font-semibold uppercase tracking-wide text-accent">Next build</span>
+				<ol class="flex flex-wrap items-center gap-x-1.5 gap-y-2 text-small">
+					{#each ['File a job', 'Change made as a pull request', 'Reviewed and merged', 'Live after the build'] as stage, i (stage)}
+						{#if i}<li aria-hidden="true" class="text-muted">→</li>{/if}
+						<li class="rounded-sm px-2 py-1 {i === 3 ? 'bg-accent-soft font-semibold text-accent' : 'bg-surface-2 text-text'}">{stage}</li>
+					{/each}
+				</ol>
+			</div>
+		</div>
+		<p class="mt-2 text-small text-muted">Next-build changes include new translations, fixed titles, biographies and covers. Every one is reviewed before it ships.</p>
 	</section>
 
 	<!-- Good to know -->
 	<section>
 		<h2 class="mb-3 text-h3">Good to know</h2>
-		<ul class="flex flex-col gap-2">
-			{#each ['Everything you do here is recorded in the Activity log — who did what, when.', 'Readers never see review state. "Awaiting review" and AI-translation flags are for this room only, never shown on the public site.', 'You only see the sections your access opens. If something seems missing, that’s your scope, not a bug — ask a super admin.', 'Filing a job changes nothing on its own; it queues work for a person to carry out.'] as tip (tip)}
-				<li class="flex gap-2 text-small text-text"><span class="text-accent">·</span>{tip}</li>
-			{/each}
+		<ul class="flex flex-col gap-2 text-small text-text">
+			<li class="flex gap-2">
+				<span class="text-accent" aria-hidden="true">·</span>
+				<span>
+					Everything you do here is recorded in the Activity log: who did what, and when.
+					{#if canSeeActivity}<a href={activity.href} class="font-semibold text-accent hover:underline">Open the log →</a>{/if}
+				</span>
+			</li>
+			<li class="flex gap-2">
+				<span class="text-accent" aria-hidden="true">·</span>
+				<span>Readers never see review state. "Awaiting review" and AI-translation flags are for the admin only, never shown on the public site.</span>
+			</li>
+			<li class="flex gap-2">
+				<span class="text-accent" aria-hidden="true">·</span>
+				<span>
+					You only see the sections your access opens. If something seems missing, that's your access, not a bug.
+					<a href="#where-things-live" class="font-semibold text-accent hover:underline">See what each section needs →</a>
+				</span>
+			</li>
+			<li class="flex gap-2">
+				<span class="text-accent" aria-hidden="true">·</span>
+				<span>Filing a job changes nothing on its own; it queues work for a person to carry out.</span>
+			</li>
 		</ul>
 	</section>
 </div>

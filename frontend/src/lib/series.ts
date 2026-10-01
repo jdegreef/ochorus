@@ -82,10 +82,10 @@ export interface BookProgress {
  * jumped to volume 3 is going back to volume 3, not being sent to volume 1 —
  * then the first unfinished one in order. Null once every book is finished.
  */
-export function nextInSeries(
-	books: BookSummary[],
+export function nextInSeries<B extends Pick<BookSummary, 'slug'>>(
+	books: B[],
 	progressOf: (slug: string) => BookProgress
-): { book: BookSummary; resume: boolean } | null {
+): { book: B; resume: boolean } | null {
 	const reading = books.find((b) => {
 		const p = progressOf(b.slug);
 		return p.started && !p.finished;
@@ -154,6 +154,41 @@ export function seriesProgress(
 		started: stages.some((s) => s !== 'unread'),
 		stages
 	};
+}
+
+/** One row of the index's "Continue your series": the book to open next. */
+export interface SeriesToContinue<S> {
+	series: S;
+	slug: string;
+	stages: BookStage[];
+}
+
+/**
+ * The series a reader is partway through — a book begun, not every book
+ * finished — each with the book to open next (`nextInSeries`), most recently
+ * read first, at most `limit`. `lastRead` is a book's last-read time (0 for
+ * never), so the series touched last leads.
+ */
+export function seriesToContinue<S extends Pick<SeriesSummary, 'books'>>(
+	series: S[],
+	progressOf: (slug: string) => BookProgress,
+	lastRead: (slug: string) => number,
+	limit = 3
+): SeriesToContinue<S>[] {
+	const rows: (SeriesToContinue<S> & { at: number })[] = [];
+	for (const s of series) {
+		const slugs = s.books ?? [];
+		const { started, stages } = seriesProgress(slugs, progressOf);
+		if (!started) continue;
+		const next = nextInSeries(slugs.map((slug) => ({ slug })), progressOf);
+		if (!next) continue;
+		const at = Math.max(...slugs.map(lastRead));
+		rows.push({ series: s, slug: next.book.slug, stages, at });
+	}
+	return rows
+		.sort((a, b) => b.at - a.at)
+		.slice(0, limit)
+		.map(({ at: _at, ...row }) => row);
 }
 
 /**

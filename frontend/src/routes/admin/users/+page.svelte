@@ -4,6 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import { relativeTime } from '$lib/relativeTime';
 	import {
 		adminUserDirectoryCsvUrl,
@@ -12,7 +13,6 @@
 		getAdminUsers,
 		maskEmail,
 		periodTrend,
-		SMALL_BASE,
 		type AdminUserSort,
 		type Trend
 	} from '$lib/library-admin';
@@ -84,22 +84,19 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
-	// A small-base trend reads as an absolute change ("+29"), which means
-	// nothing without the number it's relative to — so name it.
-	const prevSub = (prev: number, days: number) =>
-		prev < SMALL_BASE ? `prev ${days} days: ${fmt(prev)}` : `vs prev ${days} days`;
-
 	// "3 days ago" for the recent list, where recency is the point; the full date
 	// stays in the title.
 	const ago = (iso: string | null) => (iso ? relativeTime(Date.parse(iso), 'en', 'just now') : '—');
 
 	// The weekly series is zero-filled back a fixed number of weeks, so before
 	// the first account existed it's a run of empty bars squeezing the real ones.
-	// Start at the first week with a sign-up (all of it, if there are none).
+	// Only when every account is inside the series are its leading zeros known to
+	// be pre-launch; otherwise they're real quiet weeks and stay.
 	const signupWeeks = $derived.by(() => {
 		const weeks = data?.weekly_signups ?? [];
+		const inSeries = weeks.reduce((n, w) => n + w.count, 0);
 		const first = weeks.findIndex((w) => w.count > 0);
-		return first > 0 ? weeks.slice(first) : weeks;
+		return first > 0 && inSeries === data?.total ? weeks.slice(first) : weeks;
 	});
 
 	type Card = { label: string; value: number; sub: string; trend: Trend };
@@ -109,8 +106,8 @@
 					{ label: 'Registered users', value: data.total, sub: 'total accounts', trend: null },
 					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read`, trend: null },
 					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet', trend: null },
-					{ label: 'New · 7d', value: data.signups_7d, sub: prevSub(data.signups_prev_7d, 7), trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
-					{ label: 'New · 30d', value: data.signups_30d, sub: prevSub(data.signups_prev_30d, 30), trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
+					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
+					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
 				]
 			: []
 	);
@@ -124,7 +121,6 @@
 	// Drop the "Continent/" prefix for a compact label; the city carries the info.
 	const tzLabel = (tz: string) => (tz === 'Other' ? tz : tz.split('/').pop()!.replace(/_/g, ' '));
 
-	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 	const variantMax = $derived(
@@ -227,22 +223,14 @@
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
-					<div class="flex items-end gap-1.5" style="height: 8rem">
-						{#each signupWeeks as w (w.week)}
-							<div class="flex h-full flex-1 flex-col items-center gap-1" title="Week of {weekLabel(w.week)} · {fmt(w.count)} sign-up{w.count === 1 ? '' : 's'}">
-								<div class="text-small tabular-nums text-muted">{w.count}</div>
-								<!-- A slot with a definite height for the bar's percentage to
-								     resolve against (the search page's daily chart does the same). -->
-								<div class="flex w-full flex-1 flex-col justify-end">
-									<div
-										class="w-full rounded-t-sm border border-b-0 border-accent-soft-border bg-accent-soft"
-										style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
-									></div>
-								</div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={signupWeeks.map((w) => ({
+							key: w.week,
+							label: weekLabel(w.week),
+							value: w.count,
+							title: `Week of ${weekLabel(w.week)} · ${fmt(w.count)} sign-up${w.count === 1 ? '' : 's'}`
+						}))}
+					/>
 				</section>
 
 				<!-- By sign-in method + Recent sign-ups -->
@@ -293,8 +281,8 @@
 											<th class="py-2 text-start font-semibold">Reader</th>
 											<th class="py-2 text-start font-semibold">Sign-in</th>
 											<th class="hidden py-2 text-start font-semibold sm:table-cell">Lang</th>
-											<th class="hidden py-2 text-end font-semibold sm:table-cell">Joined</th>
-											<th class="py-2 text-end font-semibold">Seen</th>
+											<th class="py-2 text-end font-semibold">Joined</th>
+											<th class="hidden py-2 text-end font-semibold sm:table-cell">Seen</th>
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-border">
@@ -303,6 +291,7 @@
 												<td class="w-1/2 max-w-0 py-2 pe-3">
 													<a
 														href="/admin/users/{u.uid}"
+														aria-label="View {u.display_name || u.email || 'this reader'}'s profile"
 														class="block truncate font-semibold {u.display_name ? 'text-text' : 'text-muted'} hover:text-accent hover:underline"
 														>{u.display_name || 'Unnamed'}</a
 													>
@@ -310,8 +299,8 @@
 												</td>
 												<td class="py-2 pe-3 text-muted">{u.providers.map((p) => p.label).join(', ') || '—'}</td>
 												<td class="hidden py-2 pe-3 text-muted sm:table-cell">{u.locale || '—'}</td>
-												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted sm:table-cell" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
-												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
+												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
+												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text sm:table-cell" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
 											</tr>
 										{/each}
 									</tbody>
