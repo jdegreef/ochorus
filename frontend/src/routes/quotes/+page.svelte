@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import type { QuoteAuthorSummary } from '$lib/library-public';
+	import type { QuoteAuthorSummary, QuoteTopicSummary } from '$lib/library-public';
+	import { quoteTopicHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { initials, portraitPosition } from '$lib/portraits';
@@ -10,6 +11,9 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
+	import QuoteText from '$lib/components/QuoteText.svelte';
+	import TopicPill from '$lib/components/TopicPill.svelte';
+	import { chapterSuffix } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -17,6 +21,11 @@
 	let { data } = $props();
 	const authors = $derived<QuoteAuthorSummary[]>(data.authors);
 	const loadError = $derived<boolean>(data.loadError);
+	// The first ten themes, in the API's curated order: all twenty stack eight
+	// rows deep on a phone, pushing the writers off the first screen. The rest
+	// sit one tap away behind "Browse quotes by topic".
+	const TOPIC_CHIPS = 10;
+	const topics = $derived<QuoteTopicSummary[]>(data.topics.slice(0, TOPIC_CHIPS));
 	const t = i18n.t;
 
 	const path = '/quotes/';
@@ -73,10 +82,20 @@
 		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
 
-	<!-- The other way in: by theme rather than by writer. -->
-	<p class="mb-6">
+	<!-- The other way in: by theme rather than by writer. A failed topics
+	     fetch drops the chips and keeps the link. -->
+	<nav class="mb-6" aria-label={t('quotes.byTopic')}>
+		{#if topics.length}
+			<ul class="mb-3 flex flex-wrap gap-2">
+				{#each topics as tp (tp.slug)}
+					<li>
+						<TopicPill href={quoteTopicHref(tp.slug)} title={tp.title} count={tp.count} />
+					</li>
+				{/each}
+			</ul>
+		{/if}
 		<a class="browse" href="/quotes/topics/">{t('quotes.browseByTopic')}</a>
-	</p>
+	</nav>
 
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
@@ -91,7 +110,7 @@
 			<li>
 				<a
 					href={`/quotes/${a.slug}/`}
-					class="card-tint flex items-center gap-4 rounded-card border border-border bg-surface p-4"
+					class="card-tint flex h-full items-center gap-4 rounded-card border border-border bg-surface p-4"
 					style={`--hue: ${hueForBirthYear(a.birth_year)}`}
 				>
 					<span class="era-bar" aria-hidden="true"></span>
@@ -129,12 +148,20 @@
 							<!-- A representative line — the author's shortest quote — turns
 							     the directory into something to browse. It is the quotation
 							     text itself (English, as on the author pages), so it is
-							     printed as content, not a localized string. Clamped to two
-							     lines so every card keeps the same height. -->
-							<span
-								class="font-display text-small mt-1.5 line-clamp-2 italic text-muted"
-								>{`“${a.teaser}”`}</span
+							     printed as content, not a localized string; QuoteText repairs
+							     the dashes and small caps the extraction flattened. Clamped to
+							     two lines; the card's h-full keeps a row's two cards level. -->
+							<span class="font-display text-small mt-1.5 line-clamp-2 italic text-muted"
+								>“<QuoteText text={a.teaser} />”</span
 							>
+							{#if a.teaser_source}
+								<!-- The teaser's citation — the promise the tagline makes. -->
+								<span class="mt-0.5 block text-eyebrow text-muted"
+									>— <cite class="italic">{a.teaser_source.work}</cite>{chapterSuffix(
+										a.teaser_source.order
+									)}</span
+								>
+							{/if}
 						{/if}
 					</span>
 					<span class="text-muted"><Arrow /></span>

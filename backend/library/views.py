@@ -1482,21 +1482,38 @@ class QuoteAuthorsView(APIView):
         # sourced from exactly one of chapter/sermon, so the (book, sermon) id
         # pair — one side always null — is itself the work's distinct identity,
         # and a set of those pairs counts the distinct works.
-        teaser: dict[int, str] = {}
+        # The teaser keeps its citation (`teaser_source`), shaped as QuoteSource:
+        # a sermon is its own work, with no chapter order.
+        teaser: dict[int, tuple[tuple[int, str], dict]] = {}
         works: dict[int, set] = {}
-        for author_id, text, book_id, sermon_id in Quote.objects.filter(
+        for (author_id, text, book_id, sermon_id,
+             book_title, chapter_order, sermon_title) in Quote.objects.filter(
             reviewed=True
-        ).values_list("author_id", "text", "chapter__book_id", "sermon_id"):
-            best = teaser.get(author_id)
-            if best is None or (len(text), text) < (len(best), best):
-                teaser[author_id] = text
+        ).values_list(
+            "author_id", "text", "chapter__book_id", "sermon_id",
+            "chapter__book__title", "chapter__order", "sermon__title",
+        ):
+            key = (len(text), text)
+            if author_id not in teaser or key < teaser[author_id][0]:
+                source = (
+                    {"work": sermon_title, "order": None}
+                    if sermon_id is not None
+                    else {"work": book_title, "order": chapter_order}
+                )
+                teaser[author_id] = (key, source)
             works.setdefault(author_id, set()).add((book_id, sermon_id))
+
+        def teaser_fields(author_id: int) -> dict:
+            if author_id not in teaser:
+                return {"teaser": "", "teaser_source": None}
+            (_, text), source = teaser[author_id]
+            return {"teaser": text, "teaser_source": source}
 
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
-                 "count": r["n"], "teaser": teaser.get(r["id"], ""),
+                 "count": r["n"], **teaser_fields(r["id"]),
                  "work_count": len(works.get(r["id"], ())),
                  "updated_at": r["updated"]}
                 for r in rows

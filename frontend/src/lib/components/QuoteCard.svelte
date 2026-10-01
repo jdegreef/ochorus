@@ -3,6 +3,9 @@
 	import { quoteHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
+	import QuoteText from '$lib/components/QuoteText.svelte';
+	import { plainQuote } from '$lib/quoteText';
+	import { sourceProse } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -19,25 +22,13 @@
 		cite
 	}: { quote: Quote; authorName: string; cite: string } = $props();
 
-	// "Work" or "Work, chapter N" — the source line as prose. Shared by the copy
-	// text and the shareable card so the two attributions never drift, the same
-	// reason the card component itself is shared (see header). A plain function,
-	// not `$derived`: it is only ever read inside a click handler, never in the
-	// template, so there is nothing to react to. `clipChapter` already carries
-	// its own leading ", ".
-	const sourceLine = () =>
-		quote.source.work +
-		(quote.source.order === null
-			? ''
-			: t('quotes.clipChapter').replace('%n%', String(quote.source.order)));
-
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
 	async function copy() {
 		// Copy the quotation WITH its citation. The attribution travelling with
 		// the text is the whole point — stripping it is how the aggregators ended
 		// up publishing these words under nobody's name.
-		const cited = `"${quote.text}"\n— ${authorName}, ${sourceLine()}\n${SITE_URL}${quoteHref(quote)}`;
+		const cited = `"${plainQuote(quote.text)}"\n— ${authorName}, ${sourceProse(quote.source)}\n${SITE_URL}${quoteHref(quote)}`;
 		try {
 			await navigator.clipboard.writeText(cited);
 			copied = true;
@@ -63,9 +54,9 @@
 		try {
 			const { shareQuoteCard } = await import('$lib/quoteCard');
 			await shareQuoteCard({
-				quote: quote.text,
+				quote: plainQuote(quote.text),
 				author: authorName,
-				source: sourceLine(),
+				source: sourceProse(quote.source),
 				site: 'ochorus.com'
 			});
 		} catch {
@@ -78,7 +69,7 @@
 </script>
 
 <li class="quote">
-	<blockquote>{quote.text}</blockquote>
+	<blockquote><QuoteText text={quote.text} /></blockquote>
 	<div class="foot">
 		<!-- The citation IS the product: an unsourced card is what the aggregators
 		     already publish. It links to the paragraph, not just the chapter,
