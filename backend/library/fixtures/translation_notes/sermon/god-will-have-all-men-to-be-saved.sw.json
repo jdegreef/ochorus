@@ -1,0 +1,60 @@
+{
+ "kind": "sermon",
+ "slug": "god-will-have-all-men-to-be-saved",
+ "language": "sw",
+ "job_issue": 4634,
+ "references": [
+  {
+   "reference": "1 Timothy 2:3-5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 6:44",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Ezekiel 18:23",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "dealing-with-anxious-souls.sw.json"
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Ezekiel 11:19b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Deuteronomy 29:4",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 9:6b-7a",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Amos 4:7",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Romans 1:16b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Romans 8:7",
+   "status": "mined",
+   "block_index": 36,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  }
+ ]
+}

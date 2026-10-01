@@ -1,0 +1,230 @@
+{
+ "kind": "sermon",
+ "slug": "a-castaway",
+ "language": "sw",
+ "job_issue": 4619,
+ "references": [
+  {
+   "reference": "1 Corinthians 9:26-27",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 9:26",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:24b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 9:27a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 9:25a",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 9:27b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-circumcision-of-the-heart.sw.json"
+  },
+  {
+   "reference": "Matthew 25:41a",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "2 Thessalonians 1:9",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Revelation 3:20",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 10:21",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "eight-i-wills-of-christ.sw.json"
+  },
+  {
+   "reference": "Luke 23:43",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 5:8",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Thessalonians 4:17b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Revelation 22:3-4",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 22:13",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 139:8b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Job 26:6",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 30:33b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Genesis 15:1",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Psalms 73:26b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalms 30:5",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 10:31",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Genesis 6:3a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Acts 7:51b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Jeremiah 2:19",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Proverbs 13:15b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Mark 9:44",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Revelation 22:11a",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 13:17",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalms 119:136a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Matthew 10:6",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Corinthians 9:22b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Jeremiah 6:30",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Revelation 14:10b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "sinners-in-the-hands-of-an-angry-god.sw.json"
+  },
+  {
+   "reference": "Revelation 14:11a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Revelation 9:6",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 16:28a",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Matthew 7:11",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Psalms 90:11a",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "all-of-grace.sw.json"
+  }
+ ]
+}

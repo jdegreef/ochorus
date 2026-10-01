@@ -1,0 +1,32 @@
+{
+ "kind": "sermon",
+ "slug": "breaking-up-the-fallow-ground",
+ "language": "sw",
+ "job_issue": 4627,
+ "references": [
+  {
+   "reference": "Hosea 10:12",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Luke 11:13b",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Luke 6:31a",
+   "status": "mined",
+   "block_index": 40,
+   "source_file": "revival-lectures.sw.json"
+  }
+ ]
+}

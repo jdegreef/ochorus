@@ -1,0 +1,262 @@
+{
+ "kind": "sermon",
+ "slug": "christ-is-all",
+ "language": "sw",
+ "job_issue": 4629,
+ "references": [
+  {
+   "reference": "Colossians 3:11b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Philippians 1:21a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 1:1",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 17:24",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 17:5",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbs 8:23",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Peter 1:20",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Ephesians 1:4",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 1:3",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Colossians 1:16",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 1:10",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Proverbs 8:27-30",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 5:22",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Matthew 25:31-32",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "where-will-you-spend-eternity.sw.json"
+  },
+  {
+   "reference": "John 5:23",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Jude 14-15",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Genesis 49:10",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Galatians 3:24",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 6:27",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Colossians 1:19",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Ephesians 3:12",
+   "status": "self_rendered",
+   "block_index": 46
+  },
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Revelation 7:14",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "John 15:5",
+   "status": "self_rendered",
+   "block_index": 61
+  },
+  {
+   "reference": "Colossians 2:6-7",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Song of Solomon 8:5",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Philippians 2:1",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Psalm 22:14",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Lamentations 3:57",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "Psalm 94:19",
+   "status": "mined",
+   "block_index": 71,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Psalm 124:5",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "Titus 2:13",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Psalm 62:5",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Revelation 5:6",
+   "status": "mined",
+   "block_index": 84,
+   "source_file": "worthy-is-the-lamb.sw.json"
+  },
+  {
+   "reference": "Revelation 21:23",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Revelation 5:12a",
+   "status": "mined",
+   "block_index": 85,
+   "source_file": "worthy-is-the-lamb.sw.json"
+  },
+  {
+   "reference": "Revelation 5:13",
+   "status": "self_rendered",
+   "block_index": 85
+  },
+  {
+   "reference": "Revelation 7:15",
+   "status": "self_rendered",
+   "block_index": 86
+  },
+  {
+   "reference": "Revelation 22:4",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Ecclesiastes 6:9",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Luke 23:42",
+   "status": "mined",
+   "block_index": 112,
+   "source_file": "the-dying-thief.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "mined",
+   "block_index": 122,
+   "source_file": "purity-of-heart.sw.json"
+  }
+ ]
+}

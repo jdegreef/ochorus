@@ -1,0 +1,345 @@
+{
+ "kind": "sermon",
+ "slug": "are-you-forgiven",
+ "language": "sw",
+ "job_issue": 4625,
+ "references": [
+  {
+   "reference": "1 John 2:12a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Ecclesiastes 7:20",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "James 3:2a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Psalm 14:3b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 6:3a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Habakkuk 1:13a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 4:18b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Job 25:5",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Job 15:15b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Genesis 18:27b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Job 40:4a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Isaiah 64:6a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "fall-and-recovery-of-man.sw.json"
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:13b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Job 13:23b",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 17:10",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Acts 10:43",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Acts 13:38-39",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Colossians 1:14",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 3:16b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "John 1:29a",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "stepping-stones-2.sw.json"
+  },
+  {
+   "reference": "Acts 16:31a",
+   "status": "mined",
+   "block_index": 44,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Galatians 6:14a",
+   "status": "self_rendered",
+   "block_index": 45
+  },
+  {
+   "reference": "John 20:13b",
+   "status": "mined",
+   "block_index": 47,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Genesis 22:7b",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Mark 3:28",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Isaiah 1:18b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "1 Corinthians 6:11a",
+   "status": "self_rendered",
+   "block_index": 52
+  },
+  {
+   "reference": "Song of Solomon 4:7",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "1 Kings 1:52a",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Isaiah 55:1b",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Revelation 22:17b",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Proverbs 8:4",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Isaiah 55:1a",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "salvation-by-faith.sw.json"
+  },
+  {
+   "reference": "John 7:37b",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Psalm 86:5a",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Ezekiel 33:11",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Luke 19:9a",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "2 Samuel 12:13",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "John 3:18a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "John 3:36a",
+   "status": "mined",
+   "block_index": 58,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Psalm 32:1",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Hebrews 2:3a",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "1 Corinthians 15:9",
+   "status": "self_rendered",
+   "block_index": 71
+  },
+  {
+   "reference": "John 5:23b",
+   "status": "mined",
+   "block_index": 72,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 16:22a",
+   "status": "self_rendered",
+   "block_index": 72
+  },
+  {
+   "reference": "Genesis 32:10a",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Isaiah 38:15b",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Ephesians 3:8a",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "1 Timothy 1:15b",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Luke 19:8b",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "2 Peter 1:9b",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Jeremiah 6:14b",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 14:8",
+   "status": "self_rendered",
+   "block_index": 79
+  },
+  {
+   "reference": "Hosea 14:2a",
+   "status": "mined",
+   "block_index": 96,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "1 John 1:9b",
+   "status": "self_rendered",
+   "block_index": 96
+  },
+  {
+   "reference": "Ephesians 3:19a",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Numbers 10:29b",
+   "status": "self_rendered",
+   "block_index": 100
+  },
+  {
+   "reference": "Proverbs 11:25b",
+   "status": "mined",
+   "block_index": 100,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Jude 24",
+   "status": "self_rendered",
+   "block_index": 103
+  }
+ ]
+}
