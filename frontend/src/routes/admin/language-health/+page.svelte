@@ -12,6 +12,7 @@
 		BAND_FAIR,
 		BAND_STRONG,
 		HEALTH_KEYS,
+		blockers,
 		healthBand,
 		nextActions,
 		plural,
@@ -45,7 +46,7 @@
 	function countLine(key: HealthScoreKey, l: AdminLanguageHealth, sourceBooks: number): string {
 		switch (key) {
 			case 'readiness':
-				return l.readiness.ready ? 'all checks met' : `${l.readiness.blocking.length} blocking`;
+				return l.readiness.ready ? 'all checks met' : `${fmt(l.readiness.blocking.length)} blocking`;
 			case 'coverage':
 				return `${fmt(l.content.published_books)} of ${fmt(sourceBooks)} books`;
 			case 'review': {
@@ -132,7 +133,7 @@
 										<span class="rounded-full border border-accent-soft-border px-2 py-0.5 text-micro text-accent">Live</span>
 									{:else if l.is_live}
 										<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning"
-											>Live · failing: {l.readiness.blocking.map((c) => c.label).join(', ')}</span
+											>Live · failing: {blockers(l).map((c) => c.label).join(', ')}</span
 										>
 									{:else if l.readiness.ready}
 										<a
@@ -142,7 +143,7 @@
 										>
 									{:else}
 										<span class="rounded-full border border-border px-2 py-0.5 text-micro text-muted">Not live</span>
-										{#each l.readiness.blocking as c (c.key)}
+										{#each blockers(l) as c (c.key)}
 											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning"
 												>{c.label}</span
 											>

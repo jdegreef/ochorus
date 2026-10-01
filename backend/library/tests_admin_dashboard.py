@@ -1954,7 +1954,10 @@ class AdminLanguageHealthTests(TestCase):
 
     def test_blockers_carry_the_checks_own_label(self):
         # The page shows these as-is, so each must name itself.
-        for r in self._get()["languages"]:
+        languages = self._get()["languages"]
+        es = next(r for r in languages if r["code"] == "es")
+        self.assertTrue(es["readiness"]["blocking"])  # not vacuous
+        for r in languages:
             for b in r["readiness"]["blocking"]:
                 self.assertEqual(set(b), {"key", "label"})
                 self.assertTrue(b["label"])

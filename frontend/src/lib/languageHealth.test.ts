@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { healthBand, nextActions, pointsBreakdown } from './languageHealth';
+import { blockers, healthBand, nextActions, plural, pointsBreakdown } from './languageHealth';
 import type { AdminLanguageHealth, HealthWeights } from './library-admin';
 
 const WEIGHTS: HealthWeights = { readiness: 0.35, coverage: 0.3, review: 0.2, engagement: 0.15 };
@@ -83,5 +83,19 @@ describe('nextActions', () => {
 
 	it('has nothing to say about the source language', () => {
 		expect(nextActions(french({ is_source: true }), 179, WEIGHTS)).toEqual([]);
+	});
+});
+
+describe('plural', () => {
+	it('formats the count', () => {
+		expect(plural(1, 'reader')).toBe('1 reader');
+		expect(plural(12345, 'reader')).toBe('12,345 readers');
+	});
+});
+
+describe('blockers', () => {
+	it('reads a bare key from an older API as its own label', () => {
+		const l = french({ readiness: { ready: false, blocking: ['ui'] as never } });
+		expect(blockers(l)).toEqual([{ key: 'ui', label: 'ui' }]);
 	});
 });

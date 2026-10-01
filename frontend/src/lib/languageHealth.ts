@@ -22,8 +22,10 @@ export function pointsBreakdown(
 	weights: HealthWeights
 ): SignalPoints[] {
 	return HEALTH_KEYS.map((key) => {
-		const max = weights[key] * 100;
-		const earned = max * Math.min(1, Math.max(0, scores[key]));
+		// `?? 0`: a key the API renamed or dropped degrades to an empty track
+		// rather than a NaN that breaks the bar, its label and the grid.
+		const max = (weights[key] ?? 0) * 100;
+		const earned = max * Math.min(1, Math.max(0, scores[key] ?? 0));
 		return { key, max, earned, lost: max - earned };
 	});
 }
@@ -54,7 +56,23 @@ export interface NextAction {
 /** Below this many points a lever isn't worth recommending. */
 const MIN_GAIN = 0.5;
 
-export const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+const nf = new Intl.NumberFormat('en');
+
+/** "1 reader" / "12,345 readers", formatted like every other count on the page. */
+export const plural = (n: number, one: string, many = `${one}s`) =>
+	`${nf.format(n)} ${n === 1 ? one : many}`;
+
+export type Blocker = { key: string; label: string };
+
+/**
+ * The language's blocking checks, labelled. The API sends `{key, label}`; an
+ * API deployed before this page sent bare keys, and the web build and the API
+ * ship separately, so a bare key is read as its own label rather than breaking.
+ */
+export const blockers = (l: AdminLanguageHealth): Blocker[] =>
+	(l.readiness.blocking as (Blocker | string)[]).map((c) =>
+		typeof c === 'string' ? { key: c, label: c } : c
+	);
 
 /**
  * The levers an admin can pull, best first. Engagement is left out on purpose:
@@ -71,7 +89,7 @@ export function nextActions(
 	const code = encodeURIComponent(l.code);
 	const out: NextAction[] = [];
 
-	const blocking = l.readiness.blocking;
+	const blocking = blockers(l);
 	out.push({
 		key: 'readiness',
 		gain: pts.readiness.lost,
