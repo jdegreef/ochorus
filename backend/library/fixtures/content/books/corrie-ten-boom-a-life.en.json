@@ -3,13 +3,14 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "corrie-ten-boom"
+   "ochorus-originals"
   ],
   "slug": "corrie-ten-boom-a-life",
   "language": "en",
   "title": "Portraits of Courage – Corrie ten Boom",
   "subtitle": "A Hiding Place in Haarlem, a Sister in Ravensbrück, and the Long Work of Forgiveness",
   "cover_title": "Corrie ten Boom",
+  "cover_byline": "Corrie ten Boom",
   "description": "A Christian biography of Corrie ten Boom (1892–1983), the Haarlem watchmaker whose family hid Jews from the Nazis, whose father and sister died after their arrest, and who spent forty years preaching God’s forgiveness. It follows her from the Beje through Scheveningen, Vught, and Ravensbrück to Munich and sixty countries — comparing her earliest 1945 account with The Hiding Place and the independent record. Told in its own words, with gratitude but not hagiography; all Scripture from the public-domain ASV (1901).",
   "about_html": "",
   "qa": [

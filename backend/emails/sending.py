@@ -41,6 +41,23 @@ def emails_enabled() -> bool:
     return True
 
 
+def address_allowed(to_email: str) -> bool:
+    """Whether ``to_email`` may be mailed under the review-mode allowlist.
+
+    When ``EMAIL_ALLOWLIST`` is empty (normal operation) everyone is allowed.
+    When it's set, ONLY listed addresses receive mail — a review-period safety
+    net so sending can be on for tests without any reader getting an email. An
+    entry beginning with ``@`` matches a whole domain.
+    """
+    allow = settings.EMAIL_ALLOWLIST
+    if not allow:
+        return True
+    addr = (to_email or "").strip().lower()
+    if addr in allow:
+        return True
+    return any(entry.startswith("@") and addr.endswith(entry) for entry in allow)
+
+
 def unsubscribe_headers(subscription) -> dict:
     """RFC 8058 one-click unsubscribe headers — the inbox's native button."""
     url = links.unsubscribe_url(subscription.unsubscribe_token)
@@ -88,6 +105,12 @@ def deliver(
     if not emails_enabled():
         message.status = SendStatus.SKIPPED
         message.error = "email sending disabled"
+        message.save(update_fields=["status", "error"])
+        return message
+
+    if not address_allowed(to_email):
+        message.status = SendStatus.SKIPPED
+        message.error = "recipient not on EMAIL_ALLOWLIST (review mode)"
         message.save(update_fields=["status", "error"])
         return message
 

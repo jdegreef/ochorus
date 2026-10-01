@@ -207,7 +207,10 @@
 		     edition (`Author` has no per-language name), so it is Latin on an
 		     Arabic cover too, and claiming otherwise would tell a screen reader
 		     to pronounce "Andrew Murray" as Arabic. -->
-		<div class="byline" dir="auto">{book.author.name}</div>
+		<!-- `cover_byline` when the book is ABOUT someone its author is not: a
+		     Portraits of Courage life is by Ochorus Originals, yet its cover
+		     names the person across the top. -->
+		<div class="byline" dir="auto">{book.cover_byline || book.author.name}</div>
 		<!-- Title, rule and subtitle move as one block so the auto margins centre
 		     THEM between the byline and the mark. Left as three siblings, the
 		     leftover space split three ways and the title rode up the plate. -->

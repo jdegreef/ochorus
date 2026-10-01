@@ -91,6 +91,12 @@ services:
       # after it, so a first run never blasts the back catalogue.
       - key: EMAIL_WELCOME_START
         sync: false
+      # Review-mode safety net: comma-separated addresses (or "@domain"). When
+      # SET, ONLY these receive mail — every reader is skipped — so you can turn
+      # sending on and review test emails to yourself with zero risk. Clear to go
+      # fully live.
+      - key: EMAIL_ALLOWLIST
+        sync: false
 
   # --- Lifecycle email cron (Phase 1) --------------------------------------
   # Runs the drip sweep on a timer, reusing the API's Docker image (no new
@@ -104,11 +110,12 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
-    # Wrapped in `sh -c` because Render runs dockerCommand WITHOUT a shell, so a
-    # bare `&&` is passed as arguments to the first command instead of chaining
-    # (the crash: "unrecognized arguments: && uv run …"). The Dockerfile's own CMD
-    # wraps in `sh -c` for the same reason.
-    dockerCommand: "sh -c 'uv run python manage.py send_lifecycle_emails && uv run python manage.py send_due_broadcasts'"
+    # A SINGLE management command that runs both steps in-process. Render runs a
+    # cron dockerCommand argv-style (no shell) AND keeps literal quotes, so both a
+    # bare `&&` ("unrecognized arguments: &&") and an `sh -c '…'` wrapper (status
+    # 127: the quoted string treated as one command name) fail. No operators, no
+    # quotes here — send_email_cron chains the two steps in Python.
+    dockerCommand: "uv run python manage.py send_email_cron"
     envVars:
       - key: DJANGO_DEBUG
         value: "false"
@@ -150,6 +157,12 @@ services:
           name: ochorus-api
           type: web
           envVarKey: EMAIL_WELCOME_START
+      # Same review-mode allowlist as the API, so the cron's drip is gated too.
+      - key: EMAIL_ALLOWLIST
+        fromService:
+          name: ochorus-api
+          type: web
+          envVarKey: EMAIL_ALLOWLIST
       - key: PUBLIC_SITE_URL
         fromService:
           name: ochorus-api
@@ -251,6 +264,10 @@ services:
         - backend/library/meta_descriptions.py
         - backend/library/data/book_meta/**
         - backend/library/rights.py
+        # The biography hubs (/biographies/tradition|place/<slug>/): who is on
+        # each, and each hub's name, intro and Q&A per language.
+        - backend/library/hubs.py
+        - backend/library/data/hubs/**
     # --- Security headers ---------------------------------------------------
     # The reader had none. That matters more here than on a typical static site:
     # the Supabase access token lives in localStorage and is attached as a Bearer
@@ -365,6 +382,14 @@ services:
       - type: redirect
         source: /home/
         destination: /
+      # A reading plan that moved slug (migration 0172 reshaped its books and
+      # renumbered its days; the new slug fences devices' old day numbers).
+      - type: redirect
+        source: /plans/the-key-teachings-four-teachers
+        destination: /plans/key-teachings-four-teachers/
+      - type: redirect
+        source: /plans/the-key-teachings-four-teachers/
+        destination: /plans/key-teachings-four-teachers/
       # Books that no longer exist. All are indexed and one is still being
       # served in results (/books/a-king-in-a-manger-2/, 5 impressions), and
       # like everything else with no file behind it they answer 200 with the

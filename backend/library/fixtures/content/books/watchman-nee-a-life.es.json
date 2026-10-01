@@ -3,13 +3,14 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "watchman-nee"
+   "ochorus-originals"
   ],
   "slug": "watchman-nee-a-life",
   "language": "es",
   "title": "Retratos de coraje – Watchman Nee",
   "subtitle": "La vida, el sufrimiento y la visión espiritual de un siervo chino de Cristo",
   "cover_title": "Watchman Nee",
+  "cover_byline": "Watchman Nee",
   "description": "Una biografía cristiana de Watchman Nee (1903–1972), el líder de la iglesia china y maestro devocional que está detrás de La vida cristiana normal y Sentaos, andad, estad firmes. Sitúa su enseñanza dentro de su vida —la conversión, la «pequeña grey», el quebrantamiento del hombre exterior y veinte años en una prisión comunista—, entretejida con las Escrituras que él expuso y por las que vivió.",
   "publication_year": 2026,
   "source_type": "ai_unreviewed",

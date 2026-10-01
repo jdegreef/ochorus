@@ -1,0 +1,357 @@
+{
+  "_note": [
+    "Biography hubs — see library/hubs.py. Each hub is a browse page of writers.",
+    "A tradition is a church family or movement the writer is commonly placed in; a place is where they came from (nationality, not where they served — a missionary to China from England is under England).",
+    "A region's page lists its own members plus every place under it, so a writer is tagged once, at the most specific place that has a hub. A writer whose country is too small for a hub of its own goes straight on the region (Amy Carmichael, from Ireland, on Britain & Ireland).",
+    "Hubs are shown only where the language has prose for them and at least MIN_MEMBERS listed writers. Members are ordered as the page shows them after sorting by birth year; the order here is for review."
+  ],
+  "hubs": [
+    {
+      "kind": "tradition",
+      "slug": "early-church",
+      "members": [
+        "clement-of-rome",
+        "ignatius-of-antioch",
+        "cyprian-of-carthage",
+        "athanasius-of-alexandria",
+        "monica-of-hippo",
+        "john-chrysostom",
+        "augustine-of-hippo",
+        "john-cassian",
+        "gregory-the-great"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "monks-and-mystics",
+      "members": [
+        "anselm-of-canterbury",
+        "bernard-of-clairvaux",
+        "thomas-a-kempis",
+        "teresa-of-avila",
+        "jeanne-guyon",
+        "william-law"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "puritans",
+      "members": [
+        "richard-sibbes",
+        "richard-baxter",
+        "john-owen",
+        "thomas-watson",
+        "john-bunyan"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "methodists",
+      "members": [
+        "susanna-wesley",
+        "john-wesley",
+        "george-whitefield",
+        "richard-allen",
+        "jarena-lee",
+        "julia-foote",
+        "e-m-bounds",
+        "amanda-berry-smith",
+        "jesse-lyman-hurlbut",
+        "john-r-mott"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "baptists",
+      "members": [
+        "william-carey",
+        "christmas-evans",
+        "alexander-maclaren",
+        "charles-h-spurgeon",
+        "lottie-moon",
+        "billy-graham"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "reformed-and-presbyterian",
+      "members": [
+        "john-calvin",
+        "jonathan-edwards",
+        "robert-murray-mcheyne",
+        "arthur-t-pierson",
+        "john-hyde",
+        "martyn-lloyd-jones",
+        "timothy-keller"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "evangelical-anglicans",
+      "members": [
+        "john-newton",
+        "j-c-ryle",
+        "erica-sabiti",
+        "festo-kivengere",
+        "john-stott",
+        "janani-luwum"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "evangelists",
+      "members": [
+        "george-whitefield",
+        "christmas-evans",
+        "charles-finney",
+        "dwight-l-moody",
+        "r-a-torrey",
+        "billy-sunday",
+        "billy-graham"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "holiness-and-keswick",
+      "members": [
+        "andrew-murray",
+        "julia-foote",
+        "william-booth",
+        "catherine-booth",
+        "hannah-whitall-smith",
+        "amanda-berry-smith",
+        "a-b-simpson",
+        "frederick-brotherton-meyer"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "pentecostal-pioneers",
+      "members": [
+        "smith-wigglesworth",
+        "john-g-lake",
+        "f-f-bosworth",
+        "charles-s-price"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "missionaries",
+      "members": [
+        "david-brainerd",
+        "william-carey",
+        "samuel-ajayi-crowther",
+        "david-livingstone",
+        "hudson-taylor",
+        "lottie-moon",
+        "mary-slessor",
+        "c-t-studd",
+        "john-hyde",
+        "amy-carmichael",
+        "joe-church",
+        "gladys-aylward",
+        "lawrence-barham",
+        "helen-roseveare",
+        "elisabeth-elliot",
+        "jim-elliot"
+      ]
+    },
+    {
+      "kind": "tradition",
+      "slug": "east-african-revival",
+      "members": [
+        "simeon-nsibambi",
+        "joe-church",
+        "yosiya-kinuka",
+        "blasio-kigozi",
+        "william-nagenda",
+        "lawrence-barham",
+        "festo-kivengere",
+        "erica-sabiti",
+        "yona-kanamuzeyi",
+        "janani-luwum"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "britain-and-ireland",
+      "members": [
+        "amy-carmichael",
+        "lawrence-barham"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "england",
+      "region": "britain-and-ireland",
+      "members": [
+        "john-foxe",
+        "richard-sibbes",
+        "richard-baxter",
+        "john-owen",
+        "thomas-watson",
+        "john-bunyan",
+        "susanna-wesley",
+        "isaac-watts",
+        "william-law",
+        "john-wesley",
+        "george-whitefield",
+        "john-newton",
+        "william-carey",
+        "j-c-ryle",
+        "charles-h-spurgeon",
+        "william-booth",
+        "catherine-booth",
+        "hudson-taylor",
+        "frederick-brotherton-meyer",
+        "smith-wigglesworth",
+        "c-t-studd",
+        "charles-s-price",
+        "joe-church",
+        "gladys-aylward",
+        "john-stott",
+        "helen-roseveare"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "scotland",
+      "region": "britain-and-ireland",
+      "members": [
+        "robert-murray-mcheyne",
+        "david-livingstone",
+        "alexander-maclaren",
+        "mary-slessor"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "wales",
+      "region": "britain-and-ireland",
+      "members": [
+        "george-herbert",
+        "christmas-evans",
+        "rees-howells",
+        "martyn-lloyd-jones",
+        "gareth-evans"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "europe",
+      "members": [
+        "clement-of-rome",
+        "john-cassian",
+        "gregory-the-great",
+        "anselm-of-canterbury",
+        "teresa-of-avila",
+        "corrie-ten-boom"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "france",
+      "region": "europe",
+      "members": [
+        "bernard-of-clairvaux",
+        "john-calvin",
+        "blaise-pascal",
+        "jeanne-guyon"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "germany",
+      "region": "europe",
+      "members": [
+        "thomas-a-kempis",
+        "martin-luther",
+        "george-muller",
+        "dietrich-bonhoeffer"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "north-america",
+      "members": [
+        "a-b-simpson",
+        "john-g-lake"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "united-states",
+      "region": "north-america",
+      "members": [
+        "jonathan-edwards",
+        "david-brainerd",
+        "lemuel-haynes",
+        "richard-allen",
+        "jarena-lee",
+        "charles-finney",
+        "julia-foote",
+        "hannah-whitall-smith",
+        "amanda-berry-smith",
+        "dwight-l-moody",
+        "e-m-bounds",
+        "arthur-t-pierson",
+        "jesse-lyman-hurlbut",
+        "lottie-moon",
+        "r-a-torrey",
+        "billy-sunday",
+        "john-r-mott",
+        "john-hyde",
+        "f-f-bosworth",
+        "a-w-tozer",
+        "billy-graham",
+        "bill-bright",
+        "evelyn-christenson",
+        "elisabeth-elliot",
+        "jim-elliot",
+        "loren-cunningham",
+        "timothy-keller"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "east-africa",
+      "members": [
+        "yosiya-kinuka",
+        "yona-kanamuzeyi"
+      ]
+    },
+    {
+      "kind": "place",
+      "slug": "uganda",
+      "region": "east-africa",
+      "members": [
+        "simeon-nsibambi",
+        "blasio-kigozi",
+        "william-nagenda",
+        "festo-kivengere",
+        "erica-sabiti",
+        "janani-luwum"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "north-africa",
+      "members": [
+        "cyprian-of-carthage",
+        "athanasius-of-alexandria",
+        "monica-of-hippo",
+        "augustine-of-hippo"
+      ]
+    },
+    {
+      "kind": "region",
+      "slug": "asia-and-the-middle-east",
+      "members": [
+        "ignatius-of-antioch",
+        "john-chrysostom",
+        "pandita-ramabai",
+        "watchman-nee"
+      ]
+    }
+  ]
+}

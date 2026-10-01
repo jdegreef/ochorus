@@ -719,3 +719,69 @@ class BroadcastAdminTests(TestCase):
             content_type="application/json",
         )
         self.assertEqual(res.status_code, 409)
+
+
+from django.core.management import call_command  # noqa: E402
+
+
+class EmailCronCommandTests(TestCase):
+    def test_send_email_cron_runs_both_steps(self):
+        # With no due readers/broadcasts and sending off, it completes cleanly —
+        # the point is that the single command exists and chains the two steps.
+        _make_profile()
+        with mock.patch("emails.broadcasts.send_broadcast") as bcast:
+            call_command("send_email_cron")
+            bcast.assert_not_called()  # nothing scheduled
+
+
+@override_settings(
+    EMAIL_ENABLED=True,
+    RESEND_API_KEY="test-key",
+    API_PUBLIC_URL="https://api.test",
+    PUBLIC_SITE_URL="https://ochorus.test",
+    SUPABASE_URL="",
+    SUPABASE_SERVICE_ROLE_KEY="",
+    EMAIL_ALLOWLIST={"me@example.com", "@staff.test"},
+)
+class AllowlistReviewModeTests(TestCase):
+    """When EMAIL_ALLOWLIST is set, only listed addresses (or domains) send."""
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_reader_not_on_allowlist_is_skipped(self, send):
+        profile = _make_profile(email="reader@example.com")
+        message = send_welcome(profile)
+        send.assert_not_called()
+        self.assertEqual(message.status, SendStatus.SKIPPED)
+        self.assertIn("ALLOWLIST", message.error)
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_exact_allowlisted_address_sends(self, send):
+        profile = _make_profile(email="me@example.com")
+        message = send_welcome(profile)
+        send.assert_called_once()
+        self.assertEqual(message.status, SendStatus.SENT)
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_domain_entry_matches(self, send):
+        profile = _make_profile(email="anyone@staff.test")
+        message = send_welcome(profile)
+        send.assert_called_once()
+        self.assertEqual(message.status, SendStatus.SENT)
+
+
+class AllowlistEmptyMeansEveryoneTests(TestCase):
+    @override_settings(
+        EMAIL_ENABLED=True,
+        RESEND_API_KEY="test-key",
+        API_PUBLIC_URL="https://api.test",
+        PUBLIC_SITE_URL="https://ochorus.test",
+        SUPABASE_URL="",
+        SUPABASE_SERVICE_ROLE_KEY="",
+        EMAIL_ALLOWLIST=set(),
+    )
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_empty_allowlist_sends_to_anyone(self, send):
+        profile = _make_profile(email="reader@example.com")
+        message = send_welcome(profile)
+        send.assert_called_once()
+        self.assertEqual(message.status, SendStatus.SENT)

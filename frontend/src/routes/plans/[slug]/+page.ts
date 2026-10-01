@@ -1,3 +1,5 @@
+// Rebuild marker 2026-09-30: the first four Key Teachings volumes reshaped (migration 0171)
+// and the Four Teachers plan moved to 86 days; prerendered contents and plan days follow.
 import { getPlan, listPlans } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';

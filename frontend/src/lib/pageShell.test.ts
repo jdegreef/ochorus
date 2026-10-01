@@ -52,6 +52,8 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'book', file: 'routes/books/[slug]/+page.svelte' },
 	{ label: 'author', file: 'routes/authors/[slug]/+page.svelte' },
 	{ label: 'era', file: 'routes/biographies/era/[era]/+page.svelte' },
+	// Both hub routes are thin wrappers; the shell lives in the component.
+	{ label: 'hub', file: 'lib/components/HubPage.svelte' },
 	{ label: 'topic', file: 'routes/topics/[slug]/+page.svelte' },
 	{ label: 'plan', file: 'routes/plans/[slug]/+page.svelte' },
 	{ label: 'series', file: 'routes/series/[slug]/+page.svelte' },

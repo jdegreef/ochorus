@@ -47,6 +47,9 @@ export interface BookSummary {
 	/** The short title a cover sets in place of `title`; read through
 	 *  `coverTitle`. Optional for the same reason as `series_position`. */
 	cover_title?: string;
+	/** The name a cover sets as its byline when it is not the author's — the
+	 *  person a house-written life or companion is about. Blank = the author. */
+	cover_byline?: string;
 	author: Author;
 	source_type: SourceType;
 	cover_color: string;
@@ -101,6 +104,7 @@ export const COVER_BOOK_KEYS = [
 	'title',
 	'subtitle',
 	'cover_title',
+	'cover_byline',
 	'source_type',
 	'cover_color',
 	'cover_url',
@@ -140,6 +144,7 @@ export const COVER_FACE_KEYS = [
 	'title',
 	'subtitle',
 	'cover_title',
+	'cover_byline',
 	'cover_color',
 	'cover_url',
 	'series_position'
@@ -661,6 +666,9 @@ export const fullLifeDiscriminates = (authors: AuthorBio[]): boolean => {
 /** A book this person is found IN but did not write, with the role they play. */
 export interface AppearsInBook extends BookSummary {
 	role: PersonRole;
+	/** Their lone subject: a book ABOUT them (a life, a Key Teachings
+	 *  companion), shelved under its own heading rather than "Also appears in". */
+	about?: boolean;
 }
 
 export interface AuthorDetail extends AuthorBio {
@@ -687,6 +695,12 @@ export interface AuthorDetail extends AuthorBio {
 	 * API running behind this build omits it cleanly.
 	 */
 	articles?: ArticleLink[];
+	/**
+	 * The biography hubs this writer is on that exist in this language — their
+	 * traditions, then their place (see `Hub`). Optional so an API running
+	 * behind this build renders no chips.
+	 */
+	hubs?: HubChip[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
@@ -1230,6 +1244,36 @@ export interface TopicDetail extends TopicSummary {
 	/** Sibling shelves that share books, most-shared first — the lateral "see also". */
 	related_topics?: TopicChip[];
 }
+
+/**
+ * A biography hub: a browse page of writers grouped by tradition ("Puritan
+ * writers") or by place ("Christian writers from Wales"). A region's members
+ * include those of the places under it. The API lists only the hubs that
+ * exist in the requested language — prose there and enough listed writers —
+ * and `members` only the writers that language's Biographies page lists.
+ */
+export interface Hub {
+	kind: HubKind;
+	slug: string;
+	/** For a place: the region it sits in, when it has one. */
+	region: string | null;
+	/** The page title ("Christian writers from Wales"). */
+	name: string;
+	/** Its short form, for chips and link rows ("Wales"). */
+	label: string;
+	intro: string;
+	qa: { q: string; a: string }[];
+	members: string[];
+	/** Every language the hub exists in — its hreflang set. */
+	available_languages: string[];
+}
+
+export type HubKind = 'tradition' | 'region' | 'place';
+
+export type HubChip = Pick<Hub, 'kind' | 'slug' | 'label'>;
+
+export const listHubs = (language = 'en', f?: Fetch) =>
+	apiFetch<Hub[]>(`/api/library/hubs/?language=${language}`, {}, f);
 
 export const listTopics = (language = 'en', f?: Fetch) =>
 	apiFetch<TopicSummary[]>(`/api/library/topics/?language=${language}`, {}, f);

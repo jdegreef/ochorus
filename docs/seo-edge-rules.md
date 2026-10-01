@@ -31,6 +31,8 @@ sync the Blueprint, or old no-slash backlinks will 404 for crawlers until you do
    or http.request.uri.path wildcard "/sermons/*" or http.request.uri.path wildcard "/*/sermons/*"
    or http.request.uri.path wildcard "/topics/*" or http.request.uri.path wildcard "/*/topics/*"
    or http.request.uri.path wildcard "/biographies/era/*" or http.request.uri.path wildcard "/*/biographies/era/*"
+   or http.request.uri.path wildcard "/biographies/tradition/*" or http.request.uri.path wildcard "/*/biographies/tradition/*"
+   or http.request.uri.path wildcard "/biographies/place/*" or http.request.uri.path wildcard "/*/biographies/place/*"
  ))
 ```
 

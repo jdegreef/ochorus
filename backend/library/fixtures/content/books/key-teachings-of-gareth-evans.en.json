@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "gareth-evans"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-gareth-evans",
   "language": "en",
   "title": "The Key Teachings of Gareth Evans",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Gareth Evans",
   "description": "A concise, faithful guide to the heart of Gareth Evans’s teaching — faith as God’s work answered by obedience, hope as certain expectation, abiding in Christ, the covenant of the Upper Room, healing through forgiveness and release, every believer released to soar, and the longing for God’s manifest presence. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Gareth Evans’s ministry, naming his books for the reader’s own further study.",
   "about_html": "<p>This is a companion to Gareth Evans, not a book by him. Written by Ochorus, it sets out in fourteen short chapters the teaching of a Welsh physics teacher turned pastor, ship’s chaplain and travelling Bible teacher, with a chapter on his life, a conclusion and a guide to his books. Its single thread is his conviction that in every part of the Christian life God moves first, and the believer’s part is to take His hand and walk with Him, and it weighs gently the few places where a thoughtful reader may want to read him with care.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not written, reviewed or endorsed by Gareth Evans, and it is not published by, affiliated with, or endorsed by any organisation that holds rights in his writings. All descriptions of his teaching are the present author’s own summaries; his books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to read those works themselves. Nothing of Gareth Evans’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what he taught.</p><p>His five books are his own copyright and are shared free in the Ochorus library with his permission, and eleven of his sermons, transcribed from his recorded audio, appear there by his permission as well. They are the best place to meet him.</p>",
   "qa": [],

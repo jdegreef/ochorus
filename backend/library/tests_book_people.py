@@ -86,6 +86,29 @@ class BookPeopleAPITests(TestCase):
         self.assertEqual(appears[0]["slug"], "men-who-moved-heaven")
         self.assertEqual(appears[0]["role"], "subject")
 
+    def test_a_lone_subject_marks_a_book_about_them(self):
+        # Whitefield is one subject among the anthology's people — he appears
+        # in it. A life written about him alone is a book ABOUT him, which the
+        # page shelves under its own heading.
+        edwards = Author.objects.create(slug="jonathan-edwards", name="Jonathan Edwards", bio="x")
+        BookPerson.objects.create(
+            book_slug="men-who-moved-heaven", person=edwards, role="subject", sort_order=3,
+        )
+        life = Book.objects.create(
+            author=self.imprint, slug="whitefield-a-life", language="en",
+            title="Portraits – George Whitefield", cover_byline="George Whitefield",
+        )
+        Chapter.objects.create(book=life, order=1, title="One", body_html=body_of(50))
+        BookPerson.objects.create(
+            book_slug="whitefield-a-life", person=self.whitefield, role="subject",
+        )
+        res = self.client.get("/api/library/authors/george-whitefield/?language=en")
+        about = {b["slug"]: b["about"] for b in res.data["appears_in"]}
+        self.assertEqual(about, {"men-who-moved-heaven": False, "whitefield-a-life": True})
+        # A lone MENTION is not a book about them.
+        res = self.client.get("/api/library/authors/john-wesley/?language=en")
+        self.assertEqual([b["about"] for b in res.data["appears_in"]], [False])
+
     def test_appears_in_language_gated(self):
         # A person with content of their OWN in Swahili (so their page exists
         # there) who is featured in an English-only book: the featured book has
