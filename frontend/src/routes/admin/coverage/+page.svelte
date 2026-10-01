@@ -408,16 +408,16 @@
 		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
 		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
 	} as const;
-	// A state the API adds before this page knows it shows as itself, neutrally,
-	// rather than passing for one of the states above.
 	// The summary tiles' colours: the border/fill when its filter is on, the
 	// hover border when it's off, and the number's ink when it's non-zero.
 	const TONE = {
-		accent: { active: 'border-accent-soft-border bg-accent-soft', hover: 'hover:border-accent-soft-border', ink: '' },
+		accent: { active: 'border-accent-soft-border bg-accent-soft', hover: 'enabled:hover:border-accent-soft-border', ink: '' },
 		warning: { active: 'border-warning bg-warning/10', hover: 'enabled:hover:border-warning', ink: 'text-warning' },
 		danger: { active: 'border-danger bg-danger/10', hover: 'enabled:hover:border-danger', ink: 'text-danger' },
 		none: { active: '', hover: '', ink: '' }
 	} as const;
+	// A state the API adds before this page knows it shows as itself, neutrally,
+	// rather than passing for one of the states above.
 	const cellMeta = (v: string) =>
 		CELL[v as keyof typeof CELL] ?? { label: '?', cls: 'border border-border text-muted' };
 
@@ -489,31 +489,46 @@
 
 	// --- Today's view: the tab's backlog in four numbers, and its gaps ranked.
 	// Both read the whole tab (not the filtered rows) — they answer "what's
-	// waiting?", and each tile is itself the filter for its answer.
+	// waiting?". The review and out-of-date tiles count WORKS, the unit of the
+	// filter they toggle, so a tile's number is the rows it shows; "Open gaps"
+	// counts cells and toggles the Priority order.
 	const summary = $derived.by(() => {
-		let gaps = 0, unreviewed = 0, stale = 0;
-		for (const r of rows)
-			for (const l of langs) {
-				if (isGap(l, r)) gaps++;
-				else if (isUnreviewed(r, l.code)) unreviewed++;
-				if (isStale(r, l.code)) stale++;
-			}
+		let gaps = 0;
+		for (const r of rows) for (const l of langs) if (isGap(l, r)) gaps++;
+		const unreviewed = rows.filter(hasUnreviewed).length;
+		const stale = rows.filter((r) => r.stale?.length).length;
 		const tabJobs = jobs.filter((j) => j.type === jobType && langs.some((l) => l.code === j.language));
 		const translating = tabJobs.filter((j) => j.state === 'in_progress').length;
 		return { gaps, unreviewed, stale, inFlight: tabJobs.length, translating };
 	});
 	// "Translate next": every open gap, scored like the Priority sort scores a
 	// row — the work's readers × how much that language searches in vain — so
-	// the top of the list is the translation most likely to be read.
+	// the top of the list is the translation most likely to be read. Readers are
+	// unbounded and the language weight is only 1–2×, so one popular work would
+	// take every slot: each work gets at most NEXT_PER_WORK. Ties keep the
+	// tab's own (curated) order. Empty until the job list has loaded — before
+	// that a queued gap still looks open.
 	const NEXT_COUNT = 10;
+	const NEXT_PER_WORK = 2;
 	const nextGaps = $derived.by(() => {
-		const out: { r: AdminCoverageRow; l: AdminCoverageLanguage; score: number }[] = [];
+		if (jobsConfigured !== true) return [];
+		const scored: { r: AdminCoverageRow; l: AdminCoverageLanguage; score: number }[] = [];
 		for (const r of rows)
 			for (const l of langs) {
 				const score = gapScore(r, l);
-				if (score) out.push({ r, l, score });
+				if (score) scored.push({ r, l, score });
 			}
-		return out.sort((a, b) => b.score - a.score).slice(0, NEXT_COUNT);
+		scored.sort((a, b) => b.score - a.score);
+		const perWork = new Map<string, number>();
+		const out: typeof scored = [];
+		for (const g of scored) {
+			const n = perWork.get(g.r.slug) ?? 0;
+			if (n >= NEXT_PER_WORK) continue;
+			perWork.set(g.r.slug, n + 1);
+			out.push(g);
+			if (out.length === NEXT_COUNT) break;
+		}
+		return out;
 	});
 	const queueNext = () =>
 		stageBulk(
@@ -599,6 +614,7 @@
 		anchor = { slug: r.slug, lang: l.code };
 	}
 	function queueSelection() {
+		if (!selectedTargets.length) return;
 		stageBulk(
 			`the ${selectedTargets.length} selected gap${selectedTargets.length === 1 ? '' : 's'}`,
 			selectedTargets
@@ -667,8 +683,8 @@
 				{/each}
 			</div>
 
-			<!-- What's waiting, before the detail. Each tile but "In flight" toggles the
-			     filter that shows it. -->
+			<!-- What's waiting, before the detail. "Open gaps" toggles the Priority
+			     order; the review and out-of-date tiles toggle their filters. -->
 			{@const reviewKind = REVIEW_KIND[tab]}
 			{#snippet tile(
 				label: string,
@@ -710,7 +726,7 @@
 					'Order the works by readers × open gaps'
 				)}
 				{@render tile(
-					'Awaiting review',
+					'Works awaiting review',
 					summary.unreviewed,
 					unreviewedOnly ? 'Showing only these' : 'Show only these',
 					'warning',
@@ -719,7 +735,7 @@
 					'Show only works with an AI translation awaiting review'
 				)}
 				{@render tile(
-					'Out of date',
+					'Works out of date',
 					summary.stale,
 					staleOnly ? 'Showing only these' : 'Show only these',
 					'danger',
@@ -741,20 +757,14 @@
 			{/if}
 
 			{#if queueOn && nextGaps.length}
-				<details class="mb-4 rounded-card border border-border bg-surface" open>
-					<summary class="flex cursor-pointer list-none items-center gap-3 px-4 py-2.5">
-						<span class="font-semibold">Translate next</span>
+				<section class="mb-4 rounded-card border border-border bg-surface" aria-labelledby="translate-next">
+					<div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5">
+						<h2 id="translate-next" class="font-sans text-body font-semibold">Translate next</h2>
 						<span class="text-small text-muted">open gaps ranked by readers × searches with no result</span>
-						<button
-							type="button"
-							class="btn btn-sm btn-primary ml-auto"
-							disabled={busy}
-							onclick={(e) => {
-								e.preventDefault(); // a button in a summary would also toggle it
-								queueNext();
-							}}>Queue top {nextGaps.length}</button
+						<button type="button" class="btn btn-sm btn-primary ml-auto" disabled={busy} onclick={queueNext}
+							>Queue top {nextGaps.length}</button
 						>
-					</summary>
+					</div>
 					<ol class="border-t border-border text-small">
 						{#each nextGaps as { r, l } (`${r.slug}:${l.code}`)}
 							<li class="flex items-center gap-3 border-b border-border px-4 py-1.5 last:border-0">
@@ -764,7 +774,7 @@
 									<span class="font-semibold">{l.name}</span>
 								</span>
 								{#if r.readers}<span class="shrink-0 tabular-nums text-muted">{r.readers} reader{r.readers === 1 ? '' : 's'}</span>{/if}
-								{#if l.unmet_searches}<span class="shrink-0 tabular-nums text-warning" title={`${l.unmet_searches} ${l.name} searches found nothing (30d)`}>⌕{l.unmet_searches}</span>{/if}
+								{#if l.unmet_searches}<span class="shrink-0 tabular-nums text-warning" title={`${l.unmet_searches} ${l.name} search${l.unmet_searches === 1 ? '' : 'es'} found nothing (30d)`}>⌕{l.unmet_searches}</span>{/if}
 								<button
 									type="button"
 									class="shrink-0 font-semibold text-accent hover:underline disabled:opacity-40 disabled:no-underline"
@@ -774,7 +784,7 @@
 							</li>
 						{/each}
 					</ol>
-				</details>
+				</section>
 			{/if}
 
 			<!-- Planner controls: filter, order and narrow to the review backlog. -->
