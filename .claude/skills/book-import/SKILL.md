@@ -319,6 +319,17 @@ dropped; chapters under 120 words are dropped as stubs.
   limited to the trailing ~5 sections. Regression-check any change here by
   scanning the whole corpus for head-imprints (expect 0) and re-importing a
   couple of Gutenberg books to confirm counts hold. *(the-life-of-trust, 2026-08)*
+- **Poems whose verse lines are indent SPANS, not divs, imported as a bare
+  `<i>` run outside any block.** Gutenberg #25141 (*The Pursuit of God*) sets
+  each poem as `<div class="poem"><div class="stanza"><i><span class="i0">line<br>`
+  — and the sibling path of `split_by_heading` only converted poems in its
+  fallback walk, so `clean_fragment` unwrapped the divs and left `</p> <i> line<br/>
+  … </i> <p>` loose between paragraphs. `poem_blockquote` (shared by both paths)
+  now also reads `span.i<N>` lines; the sibling path converts ONLY that span-line
+  shape (`_span_line_poem`), because widening it to div-line poems re-flowed 8
+  shipped Gutenberg books. Regression method that proved it: run the old and new
+  `extract_chapters` over every catalog Gutenberg id's cached HTML and diff —
+  only #25141 changed. *(the-pursuit-of-god, 2026-10)*
 - **A stray page-number divider heading ("[364]")** — one chapter's Gutenberg
   chapter-divider heading was a bracketed page number, not the title, and the
   real title sat in an `<h3>` at the top of the body. Heuristics can't infer the

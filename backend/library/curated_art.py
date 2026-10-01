@@ -817,6 +817,17 @@ CURATED: dict[str, Artwork] = {
         "his ship, but his deliverance.",
         focus=0.45,
     ),
+    # ── A. W. Tozer ─────────────────────────────────────────────────────────
+    # His first book on the shelf. The Pursuit of God is about the Presence
+    # that is already here and the soul that turns to see it, so the ground is
+    # light breaking into an ordinary valley, not a distant summit.
+    "the-pursuit-of-god": Artwork(
+        "aic", 68388, "George Inness", "Catskill Mountains", "1870",
+        "Tozer's book is a call to the God who is already present and waiting "
+        "to be seen. Inness lets the light break through the cloud onto a "
+        "plain farm valley — glory falling on the ordinary ground of life.",
+        focus=0.38,
+    ),
 }
 
 

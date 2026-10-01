@@ -45,6 +45,7 @@ _TINY_SECTION_WORDS = 300
 # The outermost verse container, for the fallback walk. Not `ingest._VERSE_CLASS`:
 # that also matches a stanza, which is a poem's part, not a poem.
 _POEM = re.compile(r"poem|poetry|lg-container")
+_VERSE_LINE = re.compile(r"^i\d+$")
 # A transcriber's-note box, matched as a whole class TOKEN: `*=tnote` is inside
 # every `footnote`, and footnotes are the author's. In the library's 27
 # Gutenberg sources these three spellings mark 11 boxes, all transcriber's notes.
@@ -177,6 +178,44 @@ def resolve_title(heading):
     return title, None
 
 
+def _span_line_poem(el) -> bool:
+    """A poem div whose verse lines are indent spans, not child divs.
+
+    Only this shape is converted on the sibling path: the div-line shape there
+    already reads acceptably once `clean_fragment` unwraps it, and converting
+    it would silently re-flow books already shipped from that output.
+    """
+    return bool(
+        _POEM.search(" ".join(el.get("class", [])))
+        and el.find("span", class_=_VERSE_LINE)
+        and not el.select("[class*=stanza] > div, div.group > div")
+    )
+
+
+def poem_blockquote(el) -> str:
+    """A poem div as a blockquote: one `<br/>` per verse line, a blank line
+    between stanzas.
+
+    Read a copy with the furniture gone, as the sanitizer would: PG 65066 sets
+    every correction twice (an `htmlonly` and an `epubonly` copy), which read
+    "SENSUAL mind; mind;". And join a line's text as written — a separator puts
+    a space inside "<span>ALL</span>." wherever markup meets a stop. A verse
+    line is a child div or, in other editions, an indent span (`span.i0`,
+    `span.i2`, …) — The Pursuit of God sets its lines that way inside an `<i>`.
+    """
+    poem = soup(str(el)).find("div")
+    drop_furniture(poem)
+    stanzas = []
+    for st in poem.select("[class*=stanza], div.group") or [poem]:
+        nodes = st.find_all("div", recursive=False) or st.find_all(
+            "span", class_=_VERSE_LINE)
+        lines = [
+            escape(" ".join(d.get_text().split()), quote=False) for d in nodes
+        ] or [escape(" ".join(st.get_text().split()), quote=False)]
+        stanzas.append("<br/>".join(line for line in lines if line))
+    return "<blockquote>" + "<br/><br/>".join(s for s in stanzas if s) + "</blockquote>"
+
+
 def split_by_heading(root, tag) -> list[tuple[str, str]]:
     """Split into chapters at each `tag` heading, in document order.
 
@@ -200,6 +239,9 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
             # A centred display line would reach clean_fragment as a bare div
             # and be unwrapped to loose text; give it its block. Wrappers and
             # furniture pass through as before.
+            if getattr(sib, "name", None) == "div" and _span_line_poem(sib):
+                parts.append(poem_blockquote(sib))
+                continue
             line = display_line(sib) if getattr(sib, "name", None) == "div" else ""
             parts.append(line or str(sib))
         out.append((title, clean_fragment("".join(parts))))
@@ -227,34 +269,16 @@ def split_by_heading(root, tag) -> list[tuple[str, str]]:
                     # breaks (stanzas separated by a blank line).
                     classes = " ".join(el.get("class", []))
                     if _POEM.search(classes) and el.find_parent(class_=_POEM) is None:
-                        # Read a copy with the furniture gone, as the sanitizer
-                        # would: PG 65066 sets every correction twice (an
-                        # `htmlonly` and an `epubonly` copy), which read
-                        # "SENSUAL mind; mind;". And join a line's text as
-                        # written — a separator puts a space inside
-                        # "<span>ALL</span>." wherever markup meets a stop.
-                        poem = soup(str(el)).find("div")
-                        drop_furniture(poem)
-                        stanzas = []
-                        for st in poem.select("[class*=stanza], div.group") or [poem]:
-                            lines = [
-                                escape(" ".join(d.get_text().split()), quote=False)
-                                for d in st.find_all("div", recursive=False)
-                            ] or [escape(" ".join(st.get_text().split()), quote=False)]
-                            stanzas.append("<br/>".join(line for line in lines if line))
-                        parts.append(
-                            "<blockquote>"
-                            + "<br/><br/>".join(s for s in stanzas if s)
-                            + "</blockquote>"
-                        )
+                        parts.append(poem_blockquote(el))
                     # Any other div is a container (its blocks arrive on their
                     # own) or a centred display line, kept as its block — unless
                     # something already collected carries it.
                     elif el is not consumed and el.find_parent(
                         ["blockquote", "ul", "ol", "table"]
-                    ) is None and el.find_parent(class_=_POEM) is None:
-                        if line := display_line(el):
-                            parts.append(line)
+                    ) is None and el.find_parent(class_=_POEM) is None and (
+                        line := display_line(el)
+                    ):
+                        parts.append(line)
                     continue
                 if el is consumed or el.find_parent("blockquote") is not None:
                     continue

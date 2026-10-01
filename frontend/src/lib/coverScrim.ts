@@ -105,6 +105,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'the-imitation-of-christ': 0.75,
 	'the-key-in-my-hand': 0.90,
 	'the-normal-christian-life': 0.55,
+	'the-pursuit-of-god': 0.95,
 	'the-secret-of-guidance': 0.60,
 	'the-unselfishness-of-god': 0.95,
 	'things-as-they-are': 0.65,
