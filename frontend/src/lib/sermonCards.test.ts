@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-import { EMBLEM_ART, emblemHue } from './emblems';
+import { emblemHue } from './emblems';
 import { emblemForSermon } from './emblemNames';
 import { SERMON_OG_LOCALES } from './sermonOgLocales';
 
@@ -12,10 +12,10 @@ import { SERMON_OG_LOCALES } from './sermonOgLocales';
  *
  * `SermonShareCardTests` in Python recomputes the strings off the fixture and
  * stops there, because the emblem catalogue and the drawing code are both
- * TypeScript/JS. So reassigning a sermon's emblem, editing a drawing, moving
- * the catalogue's saturation floor, or restyling the card itself would leave
- * cards stale with the Python gate green — and a share card is only ever seen
- * by someone who is not us.
+ * TypeScript/JS. So reassigning a sermon's emblem (its hue), changing the
+ * monogram parser, moving the catalogue's saturation floor, or restyling the
+ * card itself would leave cards stale with the Python gate green — and a share
+ * card is only ever seen by someone who is not us.
  *
  * The line the digests draw is INPUTS, not output: nothing here re-derives a
  * PNG, so a change in satori or resvg is still invisible. A floor, not a proof.
@@ -54,12 +54,12 @@ describe('sermon share cards', () => {
 		const stale = Object.keys(manifest.cards).filter((slug) => {
 			const emblem = emblemForSermon(slug);
 			// Mirrors `artDigest` in generate-sermon-og.mjs.
-			const blob = [emblem, EMBLEM_ART[emblem], emblemHue(emblem)].join('\0');
+			const blob = [emblem, emblemHue(emblem)].join('\0');
 			return sha(blob) !== manifest.cards[slug].art;
 		});
 		expect(
 			stale,
-			`the emblem, its drawing or its hue changed but the card did not — ${RERUN}`
+			`the emblem assignment or its hue changed but the card did not — ${RERUN}`
 		).toEqual([]);
 	});
 
@@ -67,8 +67,12 @@ describe('sermon share cards', () => {
 		// The failure this whole gate exists for was a DESIGN change nobody
 		// redrew for: editing the palette in og-card.mjs restyles all 29 cards
 		// while every content digest still agrees.
-		const blob = ['generate-sermon-og.mjs', 'og-card.mjs']
-			.map((f) => readFileSync(join(SCRIPTS, f), 'utf-8'))
+		const blob = [
+			join(SCRIPTS, 'generate-sermon-og.mjs'),
+			join(SCRIPTS, 'og-card.mjs'),
+			join(process.cwd(), 'src', 'lib', 'sermonMonogram.ts')
+		]
+			.map((f) => readFileSync(f, 'utf-8'))
 			.join('\0');
 		expect(
 			sha(blob),
@@ -96,7 +100,7 @@ describe('localized sermon share cards', () => {
 		it(`${lang} cards were drawn from the art each slug resolves to today`, () => {
 			const stale = Object.keys(localized[lang] ?? {}).filter((slug) => {
 				const emblem = emblemForSermon(slug);
-				const blob = [emblem, EMBLEM_ART[emblem], emblemHue(emblem)].join('\0');
+				const blob = [emblem, emblemHue(emblem)].join('\0');
 				return sha(blob) !== localized[lang][slug].art;
 			});
 			expect(stale, `${lang} card art drifted — ${RERUN}`).toEqual([]);

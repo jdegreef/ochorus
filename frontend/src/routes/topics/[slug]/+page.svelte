@@ -21,6 +21,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -222,7 +223,15 @@
 	     while the Scripture epigraph sits beside them, so the shelf clears the fold
 	     sooner. The verse column wraps under the main one on narrow screens. -->
 	<header class="hero mb-8 mt-4">
-		<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
+		<!-- The shelf's epigraph passage as a monogram (MAT over 11), the mark
+		     every sermon wears. Many locales have no translated epigraph yet
+		     (ar/sw entirely, most of hi); those keep the illustrated emblem
+		     rather than a bare title initial ("ف" for "في الصلاة"). -->
+		{#if topic.scripture_ref}
+			<SermonMonogram class="badge" scriptureRef={topic.scripture_ref} title={topic.title} />
+		{:else}
+			<span class="badge emblem-chip"><Emblem name={meta.emblem} /></span>
+		{/if}
 		<div class="hero-body">
 			<div class="hero-main min-w-0">
 				<h1 class="text-h1 mb-2">{topic.title}</h1>
@@ -527,8 +536,9 @@
 		max-width: 26rem;
 		margin: 0;
 	}
-	/* The hero's emblem chip (recipe in app.css) — only size and hue here. */
-	.badge {
+	/* The hero's chip, monogram or emblem (recipe in app.css) — only size and
+	   hue here. :global because the monogram is a child component's root. */
+	.hero :global(.badge) {
 		--chip-size: 3.9rem;
 		--chip-hue: var(--topic);
 	}
