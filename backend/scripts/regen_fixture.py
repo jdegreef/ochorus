@@ -103,6 +103,8 @@ DEFAULTED_OK = {
     ("library.sermon", "attribution"),
     ("library.sermon", "study_questions"),
     ("library.article", "source_type"),
+    # Blank on every book-chapter plan day (migration 0173 added article days).
+    ("library.planday", "article_slug"),
 }
 
 # (model, field) pairs that dumpdata materializes but whose default is NOT

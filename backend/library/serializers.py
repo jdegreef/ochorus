@@ -2115,14 +2115,34 @@ class PlanListSerializer(serializers.ModelSerializer):
             self.context["plan_books"] = index
         return index
 
+    def _articles(self, obj):
+        index = self.context.get("plan_articles")
+        if index is None:
+            index = plan_article_index([obj], obj.language)
+            self.context["plan_articles"] = index
+        return index
+
+    def _reading(self, obj, day):
+        """A day's ``{title, book_title, word_count}``, or None if unresolved."""
+        return _plan_reading(day, self._chapters(obj), self._articles(obj))
+
     def get_total_words(self, obj):
-        return _plan_total_words(obj, self._chapters(obj))
+        return sum(
+            (self._reading(obj, d) or {}).get("word_count", 0) for d in obj.days.all()
+        )
 
     def get_covers(self, obj):
         return _plan_covers(obj, self._books(obj))
 
     def get_day_one(self, obj):
-        return _plan_day_one(obj, self._chapters(obj))
+        """Day 1's book + chapter titles, so a card can say where the plan
+        starts. An article day has no book: its title stands as the chapter.
+        Days are prefetched and ordered by day, so the first is day one."""
+        first = next(iter(obj.days.all()), None)
+        reading = first and self._reading(obj, first)
+        if not reading:
+            return None
+        return {"book_title": reading["book_title"], "chapter_title": reading["title"]}
 
 
 def plan_chapter_index(plans, language):
@@ -2136,7 +2156,12 @@ def plan_chapter_index(plans, language):
     Carries every column any of those four needs, so they read a dict instead of
     the database. Same shape ``get_days`` already built for itself.
     """
-    pairs = {(d.book_slug, d.chapter_order) for plan in plans for d in plan.days.all()}
+    pairs = {
+        (d.book_slug, d.chapter_order)
+        for plan in plans
+        for d in plan.days.all()
+        if d.book_slug
+    }
     if not pairs:
         return {}
     slugs = {slug for slug, _ in pairs}
@@ -2150,7 +2175,7 @@ def plan_chapter_index(plans, language):
 
 def plan_book_index(plans, language):
     """``{slug: Book}`` for every book any of these plans draws from — one query."""
-    slugs = {d.book_slug for plan in plans for d in plan.days.all()}
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.book_slug}
     if not slugs:
         return {}
     # select_related the author so a plan can name the writers it reads through
@@ -2164,27 +2189,38 @@ def plan_book_index(plans, language):
     }
 
 
-def _plan_total_words(plan, chapters):
-    """Sum the word counts of every day's chapter, from a prebuilt index."""
-    return sum(
-        (chapters.get((d.book_slug, d.chapter_order)) or {}).get("word_count", 0)
-        for d in plan.days.all()
-    )
+def plan_article_index(plans, language):
+    """``{slug: {"h1", "word_count"}}`` for every article day — one query.
 
-
-def _plan_day_one(plan, chapters):
-    """Day 1's book + chapter titles, so a card can say where the plan starts.
-
-    Days are prefetched and ordered by day, so ``days.all()[0]`` is day one.
+    The article companion of ``plan_chapter_index``: a plan day may read an
+    article instead of a chapter. Published rows in the plan's language only,
+    the same rule the seed used to decide the plan could exist there.
     """
-    days = list(plan.days.all())
-    if not days:
-        return None
-    first = days[0]
-    chapter = chapters.get((first.book_slug, first.chapter_order))
-    if chapter is None:
-        return None
-    return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
+    slugs = {d.article_slug for plan in plans for d in plan.days.all() if d.article_slug}
+    if not slugs:
+        return {}
+    return {
+        a["slug"]: a
+        for a in Article.objects.filter(
+            slug__in=slugs, language=language, is_published=True
+        ).values("slug", "h1", "word_count")
+    }
+
+
+def _plan_reading(day, chapters, articles):
+    """What one plan day reads — ``{title, book_title, word_count}`` — from the
+    prebuilt indexes, or None when it doesn't resolve in this language. The one
+    place that knows a day is a chapter or an article, so the card fields and
+    the day list cannot disagree about it."""
+    if day.article_slug:
+        a = articles.get(day.article_slug)
+        return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
+    c = chapters.get((day.book_slug, day.chapter_order))
+    return c and {
+        "title": c["title"],
+        "book_title": c["book__title"],
+        "word_count": c["word_count"],
+    }
 
 
 def _book_cover(book):
@@ -2200,7 +2236,7 @@ def _plan_covers(plan, books, limit=5):
     cover descriptors — mirrors a topic's covers strip. Reads a prebuilt index."""
     order = []
     for d in plan.days.all():
-        if d.book_slug not in order:
+        if d.book_slug and d.book_slug not in order:
             order.append(d.book_slug)
     if not order:
         return []
@@ -2215,7 +2251,9 @@ def _plan_covers(plan, books, limit=5):
 
 
 class PlanDaySerializer(serializers.ModelSerializer):
-    """One day's reading, enriched with display titles for the linked chapter."""
+    """One day's reading, enriched with display titles for the linked chapter —
+    or, on an article day (``article_slug`` set, ``book_slug`` empty and
+    ``chapter_order`` null), the article's headline as ``chapter_title``."""
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
@@ -2227,8 +2265,8 @@ class PlanDaySerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanDay
         fields = [
-            "day", "book_slug", "chapter_order", "book_title", "chapter_title",
-            "word_count", "has_modern_edition",
+            "day", "book_slug", "chapter_order", "article_slug", "book_title",
+            "chapter_title", "word_count", "has_modern_edition",
         ]
 
 
@@ -2264,15 +2302,14 @@ class PlanDetailSerializer(PlanListSerializer):
 
     def get_days(self, obj):
         days = list(obj.days.all())
-        # The same lookup the card fields need, so it is built once for the
-        # whole response rather than a fourth time here.
-        lookup = self._chapters(obj)
+        # Titles and lengths come from the same page-wide indexes the card
+        # fields read (``_reading``), so nothing is fetched a fourth time here.
         # Modern English is an English edition: a plan in any other language
         # links its own translations, never it.
         modern = (
             set(
                 Book.objects.filter(
-                    slug__in={d.book_slug for d in days},
+                    slug__in={d.book_slug for d in days if d.book_slug},
                     language=MODERN_LANGUAGE,
                     is_published=True,
                 ).values_list("slug", flat=True)
@@ -2281,11 +2318,11 @@ class PlanDetailSerializer(PlanListSerializer):
             else set()
         )
         for d in days:
-            c = lookup.get((d.book_slug, d.chapter_order))
-            d.book_title = c["book__title"] if c else ""
-            d.chapter_title = c["title"] if c else ""
-            d.word_count = c["word_count"] if c else 0
-            d.has_modern_edition = d.book_slug in modern
+            r = self._reading(obj, d) or {}
+            d.book_title = r.get("book_title", "")
+            d.chapter_title = r.get("title", "")
+            d.word_count = r.get("word_count", 0)
+            d.has_modern_edition = bool(d.book_slug) and d.book_slug in modern
         return PlanDaySerializer(days, many=True).data
 
 

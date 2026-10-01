@@ -351,13 +351,13 @@
 							{#each a.integrity.broken_plan_days.items as d (d.plan + ':' + d.language + ':' + d.day)}
 								<li class="py-1.5 text-body">
 									<a href={editionHref(`/plans/${d.plan}`, d.language)} class="text-text hover:text-accent">{d.plan}</a>
-									<span class="text-small text-muted">day {d.day} → {d.book}/{d.order} ({d.language})</span>
+									<span class="text-small text-muted">day {d.day} → {d.article ? `article ${d.article}` : `${d.book}/${d.order}`} ({d.language})</span>
 								</li>
 							{/each}
 						</ul>
 						{@render moreLine(a.integrity.broken_plan_days.items.length, a.integrity.broken_plan_days.total)}
 					{/snippet}
-					{@render check('Broken plan days', 'A plan day points at a missing chapter', a.integrity.broken_plan_days.total, a.integrity.broken_plan_days.total > 0, planDays)}
+					{@render check('Broken plan days', 'A plan day points at a missing chapter or article', a.integrity.broken_plan_days.total, a.integrity.broken_plan_days.total > 0, planDays)}
 
 					{#snippet emptyBooks()}
 						<ul class="mt-1">

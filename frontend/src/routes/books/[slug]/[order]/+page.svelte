@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onPageHidden } from '$lib/pageHidden';
 	import { readingSync } from '$lib/readingSync';
-	import { chapterPath } from '$lib/editionHref';
+	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -1212,7 +1212,10 @@
 	/** The plan day covering a chapter of THIS book, when following a plan. */
 	function planDayFor(order: number): number | null {
 		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
-		return d?.day ?? null;
+		// Only the neighbouring day: a plan can put an article between two
+		// chapters, and the book's own Next must not jump past it.
+		if (!d || (planDay && d.day !== planDay && Math.abs(d.day - planDay) !== 1)) return null;
+		return d.day;
 	}
 
 	/**
@@ -1434,18 +1437,8 @@
 		const next = planProgress.nextDay(plan.slug, plan.day_count);
 		const nextEntry = next && plan.days.find((d) => d.day === next);
 		if (nextEntry) {
-			goto(
-				localizeHref(
-					chapterPath(
-						nextEntry.book_slug,
-						nextEntry.chapter_order,
-						nextEntry.has_modern_edition,
-						`plan=${plan.slug}&day=${nextEntry.day}`,
-						// A plan followed in Modern English carries on in it.
-						edition === 'modern'
-					)
-				)
-			);
+			// A plan followed in Modern English carries on in it.
+			goto(localizeHref(planDayPath(plan.slug, nextEntry, edition === 'modern')));
 		} else {
 			goto(localizeHref(`/plans/${plan.slug}`));
 		}

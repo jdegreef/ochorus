@@ -44,11 +44,11 @@
 
 	// Reading pulse — the headline figures, each with a plain-English sub and,
 	// where there's a prior window to divide by, a week-over-week trend chip. The
-	// active tile also carries the weekly sparkline (`spark`).
+	// active tile also carries the weekly sparkline (`spark`). Readers sits beside
+	// Registered users so the accounts that never opened a chapter read as a gap.
 	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; spark?: boolean }[]>(
 		data
 			? [
-					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
 					{
 						label: 'Active · 7d',
 						value: data.overview.active_7d,
@@ -68,8 +68,9 @@
 						sub: `${fmt(data.overview.hearts_7d)} this week`,
 						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev)
 					},
-					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
-					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
+					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
+					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null },
+					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
 				]
 			: []
 	);
@@ -146,7 +147,9 @@
 			{:else}
 				<!-- Reading pulse -->
 				<p class="section-label">Reading pulse</p>
-				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+				<!-- Three across at most: at six the tiles were too narrow for a label and
+				     its chip on one line, so "Active · 7d" broke at the dot. -->
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-start justify-between gap-2">
@@ -158,7 +161,7 @@
 								{/if}
 							</div>
 							<div class="mt-2 flex items-center gap-2">
-								<span class="text-small font-semibold text-text">{c.label}</span>
+								<span class="whitespace-nowrap text-small font-semibold text-text">{c.label}</span>
 								<TrendChip trend={c.trend} />
 							</div>
 							<div class="text-small text-muted">{c.sub}</div>
@@ -186,7 +189,7 @@
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers` },
 								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
 							] as c (c.label)}
-								<div class="rounded-card border border-border bg-surface-2 p-4">
+								<div class="rounded-card bg-surface-2 p-4">
 									<div class="stat-number">{c.text}</div>
 									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 									<div class="text-small text-muted">{c.sub}</div>
@@ -200,17 +203,24 @@
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
 					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.weekly_active as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
+						{#each d.weekly_active as w, i (w.week)}
+							{@const current = i === d.weekly_active.length - 1}
+							<div class="flex h-full flex-1 flex-col items-center gap-1">
 								<div class="text-small tabular-nums text-muted">{w.readers || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
-								></div>
+								<!-- The slot takes the column's leftover height, so the bar's
+								     percentage has a definite height to resolve against (as on the
+								     users and search charts); without it every bar fell to 3px. -->
+								<div class="flex w-full flex-1 flex-col justify-end">
+									<div
+										class="w-full rounded-t-sm {current ? 'week-current' : 'bg-accent-soft'}"
+										style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
+									></div>
+								</div>
 								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
 							</div>
 						{/each}
 					</div>
+					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->
@@ -455,6 +465,13 @@
 		height: 7px;
 		border-radius: 999px;
 		background: var(--accent);
+	}
+
+	/* The week still in progress: outlined, so a partial count doesn't read as
+	   a drop against the full weeks beside it. */
+	.week-current {
+		border: 1px dashed var(--accent);
+		border-bottom: 0;
 	}
 
 	/* Reading-pulse sparkline — the 8-week active line behind the number. */

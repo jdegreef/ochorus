@@ -2,10 +2,9 @@
 	import { onMount } from 'svelte';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
-	import { seriesProgress, seriesProgressLabel } from '$lib/series';
+	import { seriesCardProgressLabel, seriesProgress, splitSeriesTitle } from '$lib/series';
 	import { contentLang } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
-	import ProgressBar from './ProgressBar.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
@@ -36,28 +35,30 @@
 
 	// The reader's progress through the series, read after mount: it lives in
 	// localStorage, and the prerendered card must not bake one visitor's place
-	// into every page. Drawn only once a book of the series is begun.
+	// into every page. Drawn only once a book of the series is begun, as one
+	// segment per book — an empty bar over "0 of 4 read" told a reader halfway
+	// through book one that they had done nothing.
 	let mounted = $state(false);
 	onMount(() => (mounted = true));
 	const progress = $derived(
 		mounted && series.books ? seriesProgress(series.books, bookProgressReader()) : null
 	);
 	const progressLabel = $derived(
-		progress ? seriesProgressLabel(progress.done, progress.total, contentLang(getLang())) : ''
+		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
+	// "Rooted – 30 Days with God for Youth" as a name over a subtitle, so the
+	// title stays short enough to sit level with the count beside it.
+	const heading = $derived(splitSeriesTitle(series.title));
 </script>
 
 <ShelfCard
 	href={localizeHref(`/series/${series.slug}/`)}
 	hue={meta.accent}
 	emblem={meta.emblem}
-	mark={{
-		top: series.book_count === 1 ? t('common.bookOne') : t('common.bookMany'),
-		value: String(series.book_count)
-	}}
 	covers={series.covers}
-	title={series.title}
+	title={heading.name}
+	subtitle={heading.subtitle}
 	{headingLevel}
 >
 	{#snippet aside()}
@@ -65,17 +66,60 @@
 		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
 	{#if ages}
-		<p class="mt-0.5 text-small font-medium text-accent">{ages}</p>
+		<!-- Ink, not accent: the whole card is one link, and an indigo line
+		     inside it read as a second one that went nowhere. -->
+		<p class="mt-0.5 text-small font-medium text-text">{ages}</p>
 	{/if}
 	{#if !compact && series.description}
-		<p class="shelf-card-desc mt-1.5 text-small text-muted" dir="auto">{series.description}</p>
+		<p class="shelf-card-desc series-desc mt-1.5 text-small text-muted" dir="auto">
+			{series.description}
+		</p>
 	{/if}
 	{#if progress?.started}
 		<!-- mt-auto: with the body's flex:1 this sits on the card's floor, so a
 		     row of cards keeps its meters level. -->
 		<div class="mt-auto flex flex-col gap-1.5 pt-3">
-			<ProgressBar percent={(progress.done / progress.total) * 100} label={progressLabel} />
+			<div
+				class="segments"
+				role="progressbar"
+				aria-label={progressLabel}
+				aria-valuenow={progress.done}
+				aria-valuemin={0}
+				aria-valuemax={progress.total}
+			>
+				{#each progress.stages as stage, i (i)}
+					<span class="segment {stage}"></span>
+				{/each}
+			</div>
 			<span class="text-small text-muted">{progressLabel}</span>
 		</div>
 	{/if}
 </ShelfCard>
+
+<style>
+	/* Five lines, not the shelf's three: series blurbs run to ~210 characters
+	   in English (longer in translation), and at three a three-up grid cut
+	   Sons of the King off mid-word. Still a clamp, so no blurb sets a row. */
+	.series-desc {
+		-webkit-line-clamp: 5;
+		line-clamp: 5;
+	}
+	.segments {
+		display: flex;
+		gap: 0.25rem;
+	}
+	.segment {
+		flex: 1;
+		height: 0.3rem;
+		border-radius: 9999px;
+		/* ProgressBar's track: a tint of the text colour shows on the card's
+		   surface in every theme, where surface-2 all but vanished. */
+		background: color-mix(in srgb, var(--text) 14%, transparent);
+	}
+	.segment.done {
+		background: var(--accent);
+	}
+	.segment.reading {
+		background: var(--gold);
+	}
+</style>

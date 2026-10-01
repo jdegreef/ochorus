@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { chapterPath } from '$lib/editionHref';
+	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import { listPlans, getPlan, type PlanSummary } from '$lib/library-public';
@@ -61,12 +61,7 @@
 				isStarted: next !== null && planProgress.isStarted(pick.slug),
 				chapterTitle: entry.chapter_title,
 				bookTitle: entry.book_title,
-				href: chapterPath(
-					entry.book_slug,
-					entry.chapter_order,
-					entry.has_modern_edition,
-					`plan=${pick.slug}&day=${entry.day}`
-				)
+				href: planDayPath(pick.slug, entry)
 			};
 		} catch {
 			/* plans are a bonus block — never break the homepage */
