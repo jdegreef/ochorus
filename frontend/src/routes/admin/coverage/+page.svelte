@@ -188,10 +188,12 @@
 
 	// --- View: density and grouping. Compact is a per-viewer preference, so it
 	// persists in this browser; grouping is a question you ask, so it doesn't.
+	// Compact is the default — a matrix is for comparing rows, and the roomy
+	// layout fits ~4 books on a screen — so only an explicit '0' opts out.
 	const COMPACT_KEY = 'ochorus:admin-coverage-compact';
-	let compact = $state(false);
+	let compact = $state(true);
 	try {
-		compact = browser && localStorage.getItem(COMPACT_KEY) === '1';
+		compact = !browser || localStorage.getItem(COMPACT_KEY) !== '0';
 	} catch {
 		// storage blocked — default density
 	}
@@ -374,20 +376,23 @@
 		})
 	);
 
-	function cellMeta(v: string | undefined) {
-		switch (v) {
-			case 'public_domain':
-				return { label: 'PD', cls: 'border border-border text-text' };
-			case 'ai_reviewed':
-				return { label: 'AI✓', cls: 'border border-accent-soft-border bg-accent-soft text-accent' };
-			case 'ai_unreviewed':
-				return { label: 'AI·', cls: 'border border-warning/40 text-warning' };
-			case 'present':
-				return { label: '●', cls: 'text-accent' };
-			default:
-				return { label: '·', cls: 'text-muted' };
-		}
-	}
+	// Every cell is the same fixed tile, and each state differs in FILL and
+	// border, not just a glyph — so "everything awaiting review in sw" reads as a
+	// run of gold down a column, and the states survive greyscale. The legend
+	// draws its swatches from these same classes.
+	const TILE =
+		'relative inline-flex h-6 min-w-[2.2rem] items-center align-middle justify-center rounded-md px-1.5 text-micro font-semibold leading-none';
+	const CELL = {
+		public_domain: { label: 'PD', cls: 'bg-surface-2 text-muted' },
+		present: { label: '●', cls: 'bg-surface-2 text-text' },
+		ai_reviewed: { label: 'AI✓', cls: 'bg-accent text-accent-contrast' },
+		ai_unreviewed: { label: 'AI', cls: 'border border-warning bg-warning/10 text-warning' },
+		queued: { label: '◷', cls: 'border border-accent-soft-border bg-accent-soft text-accent' },
+		translating: { label: '◐', cls: 'border border-accent bg-surface text-accent' },
+		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
+		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
+	} as const;
+	const cellMeta = (v: string) => CELL[v as keyof typeof CELL] ?? CELL.present;
 
 	// --- Translation queue -----------------------------------------------------
 	// Each missing cell (a work not yet in a language) becomes a click target that
@@ -416,6 +421,9 @@
 	} | null>(null);
 	// Live progress while a confirmed bulk runs (jobs are filed one at a time).
 	let bulkProgress = $state<{ done: number; total: number } | null>(null);
+	// Stop asks the run to finish the job in flight and file no more.
+	let bulkStopping = $state(false);
+	let bulkNote = $state<string | null>(null);
 	// Any queue POST in flight — disables every enqueue control so two runs can't
 	// overlap and trip the API's per-caller throttle.
 	const busy = $derived(queueing !== null || bulkProgress !== null);
@@ -544,10 +552,13 @@
 		const { targets, type } = pendingBulk; // type pinned at stage time
 		pendingBulk = null;
 		queueError = null;
+		bulkNote = null;
+		bulkStopping = false;
 		bulkProgress = { done: 0, total: targets.length };
 		let failed = 0;
 		let firstErr: string | null = null;
 		for (const t of targets) {
+			if (bulkStopping) break;
 			const err = await enqueueOne(type, t.slug, t.lang);
 			if (err) {
 				failed++;
@@ -555,11 +566,17 @@
 			}
 			bulkProgress = { done: bulkProgress.done + 1, total: targets.length };
 		}
+		const done = bulkProgress.done;
+		const stopped = bulkStopping;
 		bulkProgress = null;
+		bulkStopping = false;
+		if (stopped && done < targets.length) {
+			bulkNote = `Stopped — filed ${done - failed} of ${targets.length}; the rest were not queued.`;
+		}
 		if (failed) {
 			// Don't surface the generic 'failed' sentinel — only a real backend detail.
 			const detail = firstErr && firstErr !== 'failed' ? ` — ${firstErr}` : '';
-			queueError = `Queued ${targets.length - failed} of ${targets.length}; ${failed} failed${detail}.`;
+			queueError = `Queued ${done - failed} of ${targets.length}; ${failed} failed${detail}.`;
 		}
 	}
 </script>
@@ -686,31 +703,33 @@
 			</div>
 
 			<!-- Legend -->
-			<div class="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-small text-muted">
+			{#snippet swatch(k: keyof typeof CELL, text: string)}
+				<span class="flex items-center gap-1.5"><span class="{TILE} {CELL[k].cls}">{CELL[k].label}</span>{text}</span>
+			{/snippet}
+			<div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-small text-muted">
 				{#if tab === 'books'}
-					<span><span class="text-text">PD</span> public domain</span>
+					{@render swatch('public_domain', 'public domain')}
 				{/if}
 				{#if tab !== 'plans'}
-					<span><span class="text-accent">AI✓</span> reviewed</span>
-					<span>
-						<span class="text-warning">AI·</span> unreviewed{#if tab !== 'articles'}
-							— click to review{/if}
-					</span>
+					{@render swatch('ai_reviewed', 'reviewed')}
+					{@render swatch('ai_unreviewed', tab !== 'articles' ? 'unreviewed — click to review' : 'unreviewed')}
 				{/if}
 				{#if tab !== 'books'}
-					<span><span class="text-accent">●</span> present</span>
+					{@render swatch('present', 'present')}
 				{/if}
-				<span><span class="text-muted">·</span> missing</span>
+				{@render swatch('missing', 'missing')}
 				{#if tabHasStale}
-					<span><span class="text-warning">↻</span> English changed since translated</span>
+					<span class="flex items-center gap-1.5"
+						><span class="{TILE} {CELL.ai_unreviewed.cls}">AI{@render staleDot()}</span>English changed since translated</span
+					>
 				{/if}
 				{#if rows.some((r) => r.blocked)}
-					<span><span class="text-muted">⊘</span> under copyright — not translatable</span>
+					{@render swatch('blocked', 'under copyright — not translatable')}
 				{/if}
 				<span><span class="text-warning">⌕N</span> unmet searches · 30d</span>
 				{#if jobsConfigured !== false}
-					<span><span class="text-accent">◷</span> queued</span>
-					<span><span class="text-warning">◐</span> translating</span>
+					{@render swatch('queued', 'queued')}
+					{@render swatch('translating', 'translating')}
 					{#if canQueue}
 						<span class="text-muted">— click a gap, or a row / column “+N”, to queue; ⇧-click gaps to select a range</span>
 					{/if}
@@ -740,8 +759,21 @@
 					</span>
 				</div>
 			{:else if bulkProgress}
+				<div class="mb-3 flex items-center gap-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
+					<span class="shrink-0 tabular-nums">
+						{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
+					</span>
+					<span class="h-1.5 flex-1 overflow-hidden rounded-full bg-border" aria-hidden="true">
+						<span
+							class="block h-full rounded-full bg-accent transition-[width]"
+							style:width="{(bulkProgress.done / bulkProgress.total) * 100}%"
+						></span>
+					</span>
+					<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
+				</div>
+			{:else if bulkNote}
 				<div class="mb-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
-					Queueing… {bulkProgress.done}/{bulkProgress.total}
+					{bulkNote}
 				</div>
 			{/if}
 
@@ -868,6 +900,10 @@
 
 {#snippet workRow(r: AdminCoverageRow)}
 	{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
+	<!-- A blank title (an import or edit that lost it) would leave the row reading
+	     as just its author while still offering to queue jobs — so name it by
+	     slug and say what's wrong; the work's page is where it gets fixed. -->
+	{@const title = r.title?.trim() ?? ''}
 	<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 		<!-- Titles wrap to two lines (one in Compact) — articles run long ("A Retrospect by Hudson
 		     Taylor: …"); the full title + author ride on the tooltip. -->
@@ -879,8 +915,15 @@
 			<a
 				href={rowHref(r.slug)}
 				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
-				title={r.author ? `${r.title} — ${r.author}` : r.title}
-			>{r.title}</a>
+				title={r.author ? `${title || r.slug} — ${r.author}` : title || r.slug}
+			>{#if title}{title}{:else}<span class="font-mono text-small">{r.slug}</span>{/if}</a>
+			{#if !title}
+				<span
+					class="mt-0.5 inline-block rounded-full border border-danger/40 px-1.5 text-micro text-danger"
+					title="This work has no title — open it to fix the title before queueing translations"
+					>⚠ no title</span
+				>
+			{/if}
 			{#if r.blocked}
 				<span
 					class="mt-0.5 inline-block rounded-full border border-border px-1.5 text-micro text-muted"
@@ -913,70 +956,58 @@
 				{#if v}
 					{@const m = cellMeta(v)}
 					{@const review = v === 'ai_unreviewed' && !r.blocked ? reviewHref(r.slug, l.code) : null}
-					{#if review}
-						<a
-							href={review}
-							class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-warning/10 hover:no-underline {m.cls}"
-							title={`Review ${r.title} → ${l.name}`}
-							aria-label={`Review the ${l.name} translation of ${r.title}`}
-						>{m.label}</a>
-					{:else}
-						<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
-					{/if}
-					{#if isStale(r, l.code)}
-						{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
-							<button
-								type="button"
-								class="ml-0.5 align-super text-micro text-warning hover:text-accent disabled:opacity-50"
-								disabled={markingCurrent !== null}
-								title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
-								aria-label={`${l.name} translation of ${r.title} predates an English change — mark it still current`}
-								onclick={() => markCurrent(r, l)}>↻</button
-							>
+					{@const stale = isStale(r, l.code)}
+					<!-- The stale mark is the tile's sibling (a button can't nest in the
+					     review link), pinned to its corner by this wrapper. -->
+					<span class="relative inline-flex align-middle">
+						{#if review}
+							<a
+								href={review}
+								class="{TILE} {m.cls} transition-colors hover:bg-warning/20 hover:no-underline"
+								title={`Review ${r.title} → ${l.name}`}
+								aria-label={`Review the ${l.name} translation of ${r.title}`}
+							>{m.label}</a>
 						{:else}
-							<span
-								class="ml-0.5 align-super text-micro text-warning"
-								title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
-								aria-label="English changed since translated">↻</span
-							>
+							<span class="{TILE} {m.cls}">{m.label}</span>
 						{/if}
-					{/if}
+						{#if stale}{@render staleMark(r, l)}{/if}
+					</span>
 				{:else if job}
+					{@const m = job.state === 'in_progress' ? CELL.translating : CELL.queued}
 					<a
 						href={job.url}
 						target="_blank"
 						rel="noopener"
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small hover:no-underline {job.state === 'in_progress' ? 'text-warning' : 'text-accent'}"
+						class="{TILE} {m.cls} hover:no-underline"
 						title={job.state === 'in_progress'
 							? `Translating ${r.title} → ${l.name}… (open issue)`
 							: `Queued: ${r.title} → ${l.name} (open issue)`}
-					>
-						{job.state === 'in_progress' ? '◐' : '◷'}
-					</a>
+					>{m.label}</a>
 				{:else if r.blocked}
 					<span
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted opacity-60"
+						class="{TILE} {CELL.blocked.cls}"
 						title={`${r.title} is under copyright — no ${l.name} edition may be made`}
-						aria-label="Under copyright — not translatable">⊘</span
+						aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
 					>
 				{:else if jobsConfigured === false || !l.queueable || !canQueue}
 					<span
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
+						class="{TILE} {CELL.missing.cls}"
 						title={jobsConfigured === false
 							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 							: !canQueue
 								? `Missing: ${r.title} → ${l.name}`
 								: `${l.name} isn't a translation target — nothing to queue`}
-					>·</span>
+						aria-label="Missing"
+					></span>
 				{:else}
 					{@const spot = queueing === jobKey(r.slug, l.code)}
 					{@const picked = !!selected[cellKey(r.slug, l.code)]}
 					<button
 						type="button"
 						aria-pressed={picked}
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted {picked
-							? 'bg-accent-soft text-accent ring-1 ring-accent-soft-border'
-							: 'text-muted'}"
+						class="{TILE} transition-colors hover:border-solid hover:border-accent-soft-border hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent {picked
+							? 'border border-accent bg-accent-soft text-accent'
+							: `${CELL.missing.cls} text-muted`}"
 						disabled={busy}
 						title={`Queue a ${l.name} translation of ${r.title}`}
 						aria-label={`Queue a ${l.name} translation of ${r.title}`}
@@ -986,7 +1017,6 @@
 						{#if spot}
 							<span>…</span>
 						{:else}
-							<span class={picked ? 'hidden' : 'group-hover:hidden'}>·</span>
 							<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
 						{/if}
 					</button>
@@ -994,4 +1024,33 @@
 			</td>
 		{/each}
 	</tr>
+{/snippet}
+
+<!-- The stale mark sits ON the tile's corner, absolutely positioned, so a stale
+     cell stays centred in its column instead of being shoved aside by a glyph.
+     staleDot is the legend's inert copy. -->
+{#snippet staleDot()}
+	<span
+		class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg"
+		aria-hidden="true">↻</span
+	>
+{/snippet}
+
+{#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage)}
+	{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
+		<button
+			type="button"
+			class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg hover:bg-accent disabled:opacity-50"
+			disabled={markingCurrent !== null}
+			title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
+			aria-label={`${l.name} translation of ${r.title} predates an English change — mark it still current`}
+			onclick={() => markCurrent(r, l)}>↻</button
+		>
+	{:else}
+		<span
+			class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg"
+			title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
+			aria-label="English changed since translated">↻</span
+		>
+	{/if}
 {/snippet}
