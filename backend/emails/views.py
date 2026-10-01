@@ -21,6 +21,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from library.languages import entry as language_entry
+from library.languages import live_codes
+
 from .models import (
     SUPPRESSING_EVENTS,
     EmailEvent,
@@ -29,6 +32,7 @@ from .models import (
     EventType,
 )
 from .resend_client import verify_webhook
+from .streams import STREAM_KEYS, STREAMS
 
 logger = logging.getLogger(__name__)
 
@@ -163,6 +167,104 @@ class UnsubscribeView(View):
             return False
         subscription.unsubscribe()
         return True
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+class EmailPreferencesView(View):
+    """The reader-facing preference center, keyed by the unsubscribe token.
+
+    No login: the 256-bit token in the link is the credential (same as
+    :class:`UnsubscribeView`), so a reader manages their email from any device.
+    GET returns the current state as JSON; POST saves per-stream choices, a
+    language override, and the master off switch. CSRF-exempt because the token
+    is the credential and the SvelteKit page (a different origin) calls it with
+    JSON. An unknown token is a neutral 404 — it neither confirms nor denies the
+    token existed.
+
+    This is a plain Django view (not DRF) on purpose: like unsubscribe it is a
+    public, token-gated write, and staying off the DRF ``APIView`` path keeps it
+    out of the admin-gate authz walk without needing an exemption.
+    """
+
+    def get(self, request, token: str):
+        subscription = self._find(token)
+        if subscription is None:
+            return JsonResponse({"detail": "unknown token"}, status=404)
+        return JsonResponse(self._state(subscription, live_codes()))
+
+    def post(self, request, token: str):
+        subscription = self._find(token)
+        if subscription is None:
+            return JsonResponse({"detail": "unknown token"}, status=404)
+        try:
+            payload = json.loads(request.body.decode("utf-8") or "{}")
+        except (ValueError, UnicodeDecodeError):
+            return JsonResponse({"detail": "bad payload"}, status=400)
+        if not isinstance(payload, dict):
+            return JsonResponse({"detail": "bad payload"}, status=400)
+
+        # One registry read per request: both the locale check and the echoed
+        # state use the same live-language list.
+        live = live_codes()
+        self._apply(subscription, payload, live)
+        return JsonResponse(self._state(subscription, live))
+
+    @staticmethod
+    def _find(token: str) -> EmailSubscription | None:
+        return EmailSubscription.objects.filter(unsubscribe_token=token).first()
+
+    def _apply(
+        self, subscription: EmailSubscription, payload: dict, live: list[str]
+    ) -> None:
+        fields: list[str] = []
+
+        streams = payload.get("streams")
+        if isinstance(streams, dict):
+            prefs = dict(subscription.stream_prefs or {})
+            for key, value in streams.items():
+                if key in STREAM_KEYS:
+                    prefs[key] = bool(value)
+            subscription.stream_prefs = prefs
+            fields.append("stream_prefs")
+
+        if "email_locale" in payload:
+            locale = str(payload.get("email_locale") or "").strip()
+            # Empty clears the override; any other value must be a live language.
+            if locale == "" or locale in live:
+                subscription.email_locale = locale
+                fields.append("email_locale")
+
+        if "unsubscribed_all" in payload:
+            subscription.unsubscribed_all = bool(payload.get("unsubscribed_all"))
+            fields.append("unsubscribed_all")
+
+        if fields:
+            subscription.save(update_fields=[*fields, "updated_at"])
+
+    @staticmethod
+    def _state(subscription: EmailSubscription, live: list[str]) -> dict:
+        streams = [
+            {
+                "key": s["key"],
+                "label": s["label"],
+                "description": s["description"],
+                "enabled": subscription.stream_prefs.get(
+                    s["key"], subscription.stream_default(s["key"])
+                ),
+            }
+            for s in STREAMS
+        ]
+        locales = [
+            {"code": code, "name": language_entry(code).get("native_name", code)}
+            for code in live
+        ]
+        return {
+            "streams": streams,
+            "locales": locales,
+            "email_locale": subscription.email_locale,
+            "unsubscribed_all": subscription.unsubscribed_all,
+            "suppressed": subscription.is_suppressed,
+        }
 
 
 def _page(body: str) -> str:
