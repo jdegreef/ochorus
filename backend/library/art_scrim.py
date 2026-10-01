@@ -91,6 +91,7 @@ ART_SCRIM: dict[str, float] = {
     "on-loving-god": 0.65,
     "on-the-priesthood": 0.65,
     "our-daily-walk": 0.95,
+    "pandita-ramabai-a-life": 0.80,
     "pensees": 0.35,
     "prayer-the-pulse-of-life": 0.95,
     "provincial-letters": 0.75,

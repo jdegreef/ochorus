@@ -60,6 +60,7 @@ ART_SOURCES: dict[str, str] = {
     "on-the-incarnation": "aic-57163@0.50",
     "on-the-priesthood": "cma-147938@0.40",
     "our-daily-walk": "aic-890@0.50",
+    "pandita-ramabai-a-life": "wikidata-112062313@0.50",
     "pensees": "aic-56905@0.20",
     "pilgrims-progress": "met-459103@0.50",
     "pilgrims-progress-words-of-one-syllable": "aic-16340@0.50",

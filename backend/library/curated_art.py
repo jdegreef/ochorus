@@ -817,6 +817,16 @@ CURATED: dict[str, Artwork] = {
         "his ship, but his deliverance.",
         focus=0.45,
     ),
+    # ── Batch 25 · Portraits of Courage, volume 6 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-30). Ravi Varma's girl at a
+    # doorway giving to a starving beggar: the Mukti of "I am a sweeper".
+    "pandita-ramabai-a-life": Artwork(
+        "wikidata", 112062313, "Raja Ravi Varma", "Charity", "",
+        "A girl in a white sari at her doorway, putting food into a starving "
+        "old man's bowl: Ravi Varma, the great Indian painter of her day, "
+        "painted the plain mercy Ramabai made a life's work at Mukti.",
+        focus=0.5,
+    ),
     # ── A. W. Tozer ─────────────────────────────────────────────────────────
     # His first book on the shelf. The Pursuit of God is about the Presence
     # that is already here and the soul that turns to see it, so the ground is
