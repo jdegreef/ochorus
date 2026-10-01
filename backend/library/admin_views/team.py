@@ -14,7 +14,15 @@ from django.conf import settings
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.admin_roles import ROLE_NAMES, apply_grant, revoke_grant
+from accounts.admin_roles import (
+    ROLE_GRANTS,
+    ROLE_INFO,
+    ROLE_NAMES,
+    apply_grant,
+    restore_grants,
+    revoke_grant,
+    role_drift,
+)
 from accounts.models import (
     ALL_LANGUAGES,
     AdminCapability,
@@ -22,10 +30,10 @@ from accounts.models import (
     AdminVerb,
     split_providers,
 )
-from accounts.permissions import IsAdminEmail
+from accounts.permissions import HasAnyAdminAccess, IsAdminEmail
 
 from ..audit import AdminAudited
-from ..languages import known_codes
+from ..languages import known_codes, language_map
 from ..models import AdminAction
 
 
@@ -48,6 +56,11 @@ class AdminTeamView(AdminAudited, APIView):
         if request.method != "DELETE":
             detail["role"] = request.data.get("role") or ""
             detail["languages"] = request.data.get("languages") or ALL_LANGUAGES
+            if request.data.get("restore") is not None:
+                detail["restore"] = request.data["restore"]
+            # A role grant drops the previous role's other rows — record them,
+            # so the log shows when that access went.
+            detail["removed"] = (getattr(response, "data", None) or {}).get("removed", [])
         return (f"user:{email}", detail)
 
     def get(self, request):
@@ -62,6 +75,7 @@ class AdminTeamView(AdminAudited, APIView):
                     "email": email,
                     "scopes": scopes,
                     "roles": sorted({s["role"] for s in scopes if s["role"]}),
+                    "outdated": role_drift(scopes),
                 }
             )
         return Response(
@@ -76,27 +90,34 @@ class AdminTeamView(AdminAudited, APIView):
         )
 
     def post(self, request):
-        """Grant a role (or a single capability+verb) to an email."""
+        """Grant a role (or a single capability+verb) to an email, or restore
+        a revoked member's exact rows (``restore``)."""
         email = (request.data.get("email") or "").strip().lower()
         if email in settings.ADMIN_EMAILS:
             return Response(
                 {"detail": f"{email} is already a super admin — grants add nothing."},
                 status=409,
             )
+        before = {s["capability"] for s in AdminGrant.scopes_for(email)}
+        granted_by = getattr(request.user, "email", "") or ""
         try:
-            apply_grant(
-                email,
-                role=request.data.get("role"),
-                capability=request.data.get("capability"),
-                verb=request.data.get("verb"),
-                languages=self._languages(request.data.get("languages")),
-                granted_by=getattr(request.user, "email", "") or "",
-            )
+            if request.data.get("restore") is not None:
+                # Undo of a revoke: put back the exact rows, not the roles.
+                restore_grants(email, request.data["restore"], granted_by=granted_by)
+            else:
+                apply_grant(
+                    email,
+                    role=request.data.get("role"),
+                    capability=request.data.get("capability"),
+                    verb=request.data.get("verb"),
+                    languages=self._languages(request.data.get("languages")),
+                    granted_by=granted_by,
+                )
         except ValueError as exc:
             return Response({"detail": str(exc)}, status=400)
-        return Response(
-            {"email": email, "scopes": AdminGrant.scopes_for(email)}, status=201
-        )
+        scopes = AdminGrant.scopes_for(email)
+        removed = sorted(before - {s["capability"] for s in scopes})
+        return Response({"email": email, "scopes": scopes, "removed": removed}, status=201)
 
     def delete(self, request):
         """Revoke a grantee's access — all of it, or just one capability."""
@@ -122,3 +143,29 @@ class AdminTeamView(AdminAudited, APIView):
         if not codes:
             raise ValueError("choose at least one language, or select all languages")
         return ",".join(codes)
+
+
+class AdminRolesView(APIView):
+    """The access model as data, for the Help & roles page: every capability
+    with its label, each role's label, summary and grants, and language names.
+
+    Read straight from ``PRESETS`` / ``ROLE_INFO`` so the help page cannot drift
+    from the roles it explains. Open to anyone with any admin access — the Help
+    page is in everyone's rail, including a holder of one raw grant — and it
+    names no people, so there is nothing here a grantee shouldn't see."""
+
+    permission_classes = [HasAnyAdminAccess]
+
+    def get(self, request):
+        return Response(
+            {
+                "capabilities": [
+                    {"code": c, "label": label} for c, label in AdminCapability.choices
+                ],
+                "roles": [
+                    {"code": code, "label": label, "summary": summary, "grants": ROLE_GRANTS[code]}
+                    for code, (label, summary) in ROLE_INFO.items()
+                ],
+                "languages": {code: e["name"] for code, e in language_map().items()},
+            }
+        )

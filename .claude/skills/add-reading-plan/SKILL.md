@@ -11,8 +11,15 @@ data — no new content, no migration. Two kinds live in
 `backend/library/plan_seed.py`:
 
 - **`LAUNCH_PLANS`** — one book, split over N days: `(slug, book_slug, title, description)`.
-- **`CURATED_PLANS`** — several books read in full, in order:
-  `(slug, title, description, [ordered book slugs])`.
+- **`CURATED_PLANS`** — several works, in order:
+  `(slug, title, description, [ordered items])`. An item is a book slug (the
+  whole book), `chapters(slug, first, last)` (a span of one book, a day per
+  chapter) or `article(slug)` (one day reading an `/articles` page) — so a plan
+  can interleave articles between chapters (`new-to-the-faith` is the model).
+  A plan day is then a chapter OR an article (`PlanDay.article_slug`, held by a
+  DB check constraint), and the plan exists only where every book AND article
+  is published — `plan_sources(items)` is that list, read by the seed and the
+  coverage test alike.
 
 Adding a plan is appending one tuple. The work is in getting the two gotchas
 below right, then verifying.

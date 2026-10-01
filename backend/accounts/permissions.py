@@ -95,6 +95,25 @@ def has_capability(request, capability, verb, language=None) -> bool:
     return AdminGrant.allows(email, capability, verb, language)
 
 
+class HasAnyAdminAccess(permissions.BasePermission):
+    """Allow any admin at all: a super admin, or anyone holding a grant of any
+    kind. Only for READ-ONLY surfaces that explain the console itself (the Help
+    page's access model) — never for an action; ``library.tests_admin_access``
+    fails the build if a view gated on it has a write method."""
+
+    message = "Admin access is required for this endpoint."
+
+    def has_permission(self, request, view) -> bool:
+        if is_admin_user(request.user, request):
+            return True
+        email = _verified_email(request.user, request)
+        if email is None:
+            return False
+        from .models import AdminGrant
+
+        return AdminGrant.objects.filter(email=email).exists()
+
+
 def allowed_languages(request, capability, verb):
     """The languages this request may act on for ``capability`` at ``verb``.
 

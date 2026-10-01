@@ -147,6 +147,12 @@ export function bookProgressReader(): (slug: string) => { started: boolean; fini
 	};
 }
 
+/** When each book was last read (ms; 0 for never), from one parse of the map. */
+export function bookReadTimes(): (slug: string) => number {
+	const map = read();
+	return (slug) => map[workSlugKey('book', slug)]?.at ?? 0;
+}
+
 export function isFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	return getProgressRecord(slug, kind)?.finished_at != null;
 }

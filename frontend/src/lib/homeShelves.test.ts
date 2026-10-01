@@ -14,7 +14,7 @@ const books = Array.from({ length: 20 }, (_, i) => book(`b${i}`, `a${i % 10}`));
 const lists = (over: Partial<Parameters<typeof deriveHomeShelves>[0]> = {}) => ({
 	books,
 	authors: Array.from({ length: 12 }, (_, i) => author(`a${i}`, i)),
-	topics: Array.from({ length: 12 }, (_, i) => topic(`t${i}`, i)),
+	topics: Array.from({ length: 16 }, (_, i) => topic(`t${i}`, i)),
 	sermons: [1, 2, 3],
 	...over
 });
@@ -35,10 +35,11 @@ describe('deriveHomeShelves', () => {
 		expect(new Set(featured.map((b) => b.author.slug)).size).toBe(featured.length);
 	});
 
-	it('shows the eight most-published authors with a book, and the eight richest topics', () => {
+	it('shows the eight most-published authors with a book, and the thirteen richest topics', () => {
 		const { authors, topics } = deriveHomeShelves(lists(), 20000);
 		expect(authors.map((a) => a.slug)).toEqual(['a11', 'a10', 'a9', 'a8', 'a7', 'a6', 'a5', 'a4']);
-		expect(topics.map((t) => t.title)).toEqual(['t11', 't10', 't9', 't8', 't7', 't6', 't5', 't4']);
+		// Thirteen: two full chip lines at the default page width (7 + 6).
+		expect(topics.map((t) => t.title)).toEqual(Array.from({ length: 13 }, (_, i) => `t${15 - i}`));
 	});
 
 	it('carries only the fields the home page draws', () => {

@@ -78,6 +78,7 @@ from .serializers import (
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
+    plan_article_index,
     plan_book_index,
     plan_chapter_index,
     sermon_topic_map,
@@ -555,6 +556,7 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
         language = _language(self.request)
         ctx["plan_chapters"] = plan_chapter_index(plans, language)
         ctx["plan_books"] = plan_book_index(plans, language)
+        ctx["plan_articles"] = plan_article_index(plans, language)
         return ctx
 
 
@@ -581,6 +583,7 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         plan = self.get_object()
         ctx["plan_chapters"] = plan_chapter_index([plan], plan.language)
         ctx["plan_books"] = plan_book_index([plan], plan.language)
+        ctx["plan_articles"] = plan_article_index([plan], plan.language)
         return ctx
 
 
