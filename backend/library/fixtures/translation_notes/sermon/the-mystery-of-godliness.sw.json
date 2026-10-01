@@ -1,0 +1,78 @@
+{
+ "kind": "sermon",
+ "slug": "the-mystery-of-godliness",
+ "language": "sw",
+ "job_issue": 4713,
+ "pull_request": 4870,
+ "references": [
+  {
+   "reference": "1 Timothy 3:16",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Timothy 3:16b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "comfort-ye-my-people.sw.json"
+  },
+  {
+   "reference": "Jeremiah 9:24a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Jeremiah 17:5",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 9:26b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Romans 5:18",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Ephesians 2:6b",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Hebrews 2:16",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Hebrews 2:17",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalms 36:9",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}

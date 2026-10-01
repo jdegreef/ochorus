@@ -1,0 +1,96 @@
+{
+ "kind": "sermon",
+ "slug": "homily-ii-on-the-statues",
+ "language": "sw",
+ "job_issue": 4637,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "1 Timothy 6:17a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Timothy 6:17b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 1:30",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Amos 8:9",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Jeremiah 9:17",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 9:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Thessalonians 5:11",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Psalm 49:6",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 39:6b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 19:20",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Proverbs 27:7a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Proverbs 27:7b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 81:16",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Ecclesiastes 5:12",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Thessalonians 3:8",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

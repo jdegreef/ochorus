@@ -38,10 +38,12 @@ describe('SPA shell routes', () => {
 		expect(missing, 'client-only routes that would answer 404').toEqual([]);
 	});
 
-	it('rewrites each shell route to 200.html in every locale', () => {
+	it('rewrites each shell route to 200.html, bare and under /:lang', () => {
+		// One `/:lang` rule stands for every non-English locale (a copy per locale
+		// took the service past Render's route cap — see render.yaml).
+		expect(LOCALES.length, 'no locales configured?').toBeGreaterThan(1);
 		const missing: string[] = [];
-		for (const l of LOCALES) {
-			const prefix = l === 'en' ? '' : `/${l}`;
+		for (const prefix of ['', '/:lang']) {
 			for (const r of SHELL_ROUTES) {
 				const rule = `source: ${prefix}${r}\n        destination: /200.html\n`;
 				if (!RENDER_YAML.includes(rule)) missing.push(`${prefix}${r}`);

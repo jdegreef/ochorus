@@ -2299,13 +2299,28 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     book_count = serializers.SerializerMethodField()
     sermon_count = serializers.SerializerMethodField()
     covers = serializers.SerializerMethodField()
+    # The epigraph passage: the card's badge wears it as a monogram (MAT over 11).
+    # On the list, not just the detail, so /topics can draw it without a fetch
+    # per card. Reads the same prefetched translations as the title.
+    scripture_ref = serializers.SerializerMethodField()
 
     class Meta:
         model = Topic
-        fields = ["slug", "title", "description", "book_count", "sermon_count", "covers"]
+        fields = [
+            "slug",
+            "title",
+            "description",
+            "book_count",
+            "sermon_count",
+            "covers",
+            "scripture_ref",
+        ]
 
     def get_title(self, obj):
         return obj.title_for(self._language())
+
+    def get_scripture_ref(self, obj):
+        return obj.scripture_ref_for(self._language())
 
     def get_description(self, obj):
         return obj.description_for(self._language())
@@ -2413,7 +2428,6 @@ class TopicDetailSerializer(TopicListSerializer):
     articles = serializers.SerializerMethodField()
     authors = serializers.SerializerMethodField()
     related_topics = serializers.SerializerMethodField()
-    scripture_ref = serializers.SerializerMethodField()
     scripture_text = serializers.SerializerMethodField()
     seo_title = serializers.SerializerMethodField()
     meta_description = serializers.SerializerMethodField()
@@ -2422,7 +2436,6 @@ class TopicDetailSerializer(TopicListSerializer):
 
     class Meta(TopicListSerializer.Meta):
         fields = TopicListSerializer.Meta.fields + [
-            "scripture_ref",
             "scripture_text",
             "seo_title",
             "meta_description",
@@ -2447,9 +2460,6 @@ class TopicDetailSerializer(TopicListSerializer):
             t.language for t in obj.translations.all() if t.title.strip() and t.language != "en"
         )
         return langs
-
-    def get_scripture_ref(self, obj):
-        return obj.scripture_ref_for(self._language())
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())

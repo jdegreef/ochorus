@@ -170,23 +170,31 @@ describe('render.yaml routing rules', () => {
 		expect(broken).toEqual([]);
 	});
 
+	it('stays well under the route count Render will apply', () => {
+		// Render documents no limit, but a Blueprint sync with 204 rules here failed
+		// on "Update web service ochorus-web routes" (as did every sync at 255),
+		// while 166 applied. The failure is silent: the old rules keep serving and
+		// every later render.yaml route change quietly never ships. Add a locale or
+		// a page with a `:lang` rule, never a copy per locale.
+		expect(all.length).toBeLessThanOrEqual(150);
+	});
+
 	it('has no catch-all, so a missing page answers 404', () => {
 		// A wildcard or placeholder rewrite turns every miss under it into a 200 —
 		// the soft-404 pile this file used to create (`/* -> /200.html`). Misses
-		// belong to Render's /404.html (scripts/build-404.mjs). The only patterns,
-		// and the only rules onto the 200 shell, are the client-only app routes
-		// in each locale ($lib/shellRoutes), so anything else here is a leak.
-		const locales: string[] = JSON.parse(
-			readFileSync(join(process.cwd(), 'project.inlang', 'settings.json'), 'utf-8')
-		).locales;
-		const shell = new Set(
-			locales.flatMap((l) => SHELL_ROUTES.map((r) => `${l === 'en' ? '' : `/${l}`}${r}`))
-		);
+		// belong to Render's /404.html (scripts/build-404.mjs). The only rules onto
+		// the 200 shell are the client-only app routes ($lib/shellRoutes), bare and
+		// under `/:lang`; the only other pattern is `/:lang/<page>` onto that
+		// locale's own index file. Anything else here is a leak.
+		const shell = new Set(SHELL_ROUTES.flatMap((r) => [r, `/:lang${r}`]));
+		const localeIndex = (r: Rule) =>
+			/^\/:lang\/[a-z-]+$/.test(r.source) && r.destination === `${r.source}.html`;
 		const leaks = all.filter(
 			(r) =>
 				r.type === 'rewrite' &&
 				(/[*:]/.test(r.source) || r.destination === '/200.html') &&
-				!shell.has(r.source)
+				!shell.has(r.source) &&
+				!localeIndex(r)
 		);
 		expect(leaks.map((r) => `${r.source} -> ${r.destination} (line ${r.line})`)).toEqual([]);
 	});

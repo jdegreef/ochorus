@@ -1,9 +1,16 @@
 {
+  "_note": [
+    "Shelf verses are WHOLE verses fetched verbatim from Take Root (swhonen) on 2026-10-01, at the English shelf's chapter:verse; only the book name is localized, as that Bible prints it."
+  ],
   "abiding-in-christ": {
     "title": "Kukaa ndani ya Kristo",
     "description": "Tawi ndani ya Mzabibu — muungano na ushirika na Bwana Yesu, na uzima utokao kwake peke yake kwa kukaa karibu naye.",
     "seo_title": "Vitabu kuhusu Kukaa ndani ya Kristo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Kukaa ndani ya Kristo, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Kukaa ndani ya Kristo, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Yohana 15:4",
+      "text": "Kaeni ndani yangu, nami nikae ndani yenu. Kama vile tawi lisivyoweza kuzaa matunda lisipokaa ndani ya mzabibu, vivyo hivyo ninyi msipokaa ndani yangu hamwezi kuzaa matunda."
+    }
   },
   "christ-and-the-cross": {
     "title": "Kristo na msalaba",
@@ -15,186 +22,310 @@
     "title": "Sauti za Kisasa",
     "description": "Njia ya kale ina waelekezi walio hai — walimu wa siku hizi wakiandikia Afrika Mashariki na kwingineko, wakikutana na mwanafunzi maswali yalipo sasa.",
     "seo_title": "Vitabu kuhusu Sauti za Kisasa — Ochorus",
-    "meta_description": "Vitabu vya Kikristo kuhusu Sauti za Kisasa, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo kuhusu Sauti za Kisasa, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Zaburi 145:4",
+      "text": "Kizazi kimoja kitasifia kazi zako kwa kizazi kingine, watasimulia matendo yako makuu."
+    }
   },
   "day-by-day": {
     "title": "Siku kwa Siku",
     "description": "Somo la asubuhi na la jioni — mkate wa kila siku wa kuilisha nafsi, kutoka vitabu vipendwavyo vya Spurgeon hadi vitabu vya saa ya utulivu.",
     "seo_title": "Vitabu kuhusu Siku kwa Siku — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Siku kwa Siku, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Siku kwa Siku, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Maombolezo 3:22–23",
+      "text": "Kwa sababu ya upendo mkuu wa Bwana, hatuangamii, kwa kuwa huruma zake hazikomi kamwe. Ni mpya kila asubuhi, uaminifu wako ni mkuu."
+    }
   },
   "deeper-life": {
     "title": "Maisha ya Ndani Zaidi",
     "description": "Utakatifu, kujisalimisha, na maisha tele yaliyofichwa pamoja na Kristo — vitabu vya kwenda ndani zaidi.",
     "seo_title": "Vitabu kuhusu Maisha ya Ndani Zaidi — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani Zaidi, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani Zaidi, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Wakolosai 3:3",
+      "text": "Kwa maana ninyi mlikufa, nao uhai wenu sasa umefichwa pamoja na Kristo katika Mungu."
+    }
   },
   "enduring-classics": {
     "title": "Vitabu vya Kale Vidumuvyo",
     "description": "Vitabu vilivyofuatana na wasafiri kwa karne nyingi — ungamo la Agustino, ndoto ya Bunyan, shauri la Kempis — njia za zamani, ambazo bado ni njema.",
     "seo_title": "Vitabu kuhusu Vitabu vya Kale Vidumuvyo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Vitabu vya Kale Vidumuvyo, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Vitabu vya Kale Vidumuvyo, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Yeremia 6:16",
+      "text": "Hivi ndivyo asemavyo Bwana: “Simama kwenye njia panda utazame, ulizia mapito ya zamani, ulizia wapi ilipo njia nzuri, uifuate hiyo, nanyi mtapata raha nafsini mwenu. Lakini ninyi mlisema, ‘Hatutaipita hiyo.’"
+    }
   },
   "faith-and-guidance": {
     "title": "Imani na Uongozi",
     "description": "Kumtumaini Mungu kwa riziki ya kila siku, mwelekeo, na kila ahadi — kuenenda kwa imani, si kwa kuona.",
     "seo_title": "Vitabu kuhusu Imani na Uongozi — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani na Uongozi, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani na Uongozi, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Mithali 3:6",
+      "text": "katika njia zako zote mkiri yeye, naye atayanyoosha mapito yako."
+    }
   },
   "faith-for-the-impossible": {
     "title": "Imani kwa Yasiyowezekana",
     "description": "Kumwamini Mungu kwa neno lake — yatima wa Müller waliolishwa kwa maombi peke yake, neema ya kumngoja, na benki ya imani isiyofilisika kamwe.",
     "seo_title": "Vitabu kuhusu Imani kwa Yasiyowezekana — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani kwa Yasiyowezekana, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Imani kwa Yasiyowezekana, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Marko 9:23",
+      "text": "Yesu akamwambia, “Kama ukiweza kuamini, yote yawezekana kwake yeye aaminiye.”"
+    }
   },
   "for-teens": {
     "title": "Kwa Vijana Balehe",
     "description": "Imani kwa miaka ya ujana — kumjia Kristo, kuwa miongoni mwa watu wake, na ujasiri wa kumfuata. Vitabu vifupi, sahili na vya kweli, na hadithi za kweli za maisha yaliyotolewa kwa ajili yake, vilivyoandikwa kwa ajili ya wasomaji vijana au vilivyo katika kufikiwa kwao.",
     "seo_title": "Vitabu vya Kikristo kwa Vijana Balehe — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kwa vijana balehe, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kwa vijana balehe, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "1 Timotheo 4:12",
+      "text": "Mtu yeyote asikudharau kwa kuwa wewe ni kijana, bali uwe kielelezo kizuri kwa waumini katika usemi, mwenendo, upendo, imani na usafi."
+    }
   },
   "for-those-who-lead": {
     "title": "Kwa Wale Wanaoongoza",
     "description": "Agizo kwa wachungaji na wavuvi wa roho — utunzaji wa mchungaji, nguvu ya mhubiri katika maombi, na jinsi ya kuwaleta watu kwa Kristo.",
     "seo_title": "Vitabu kuhusu Uongozi wa Kikristo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu uongozi wa Kikristo na uchungaji, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu uongozi wa Kikristo na uchungaji, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "1 Petro 5:2",
+      "text": "lichungeni kundi la Mungu mlilokabidhiwa, mkitumika kama waangalizi, si kwa kulazimishwa bali kwa hiari, kama Mungu anavyowataka mwe; si kwa tamaa ya fedha, bali mlio na bidii katika kutumika."
+    }
   },
   "for-young-readers": {
     "title": "Kwa Wasomaji Wachanga",
     "description": "Imani, ikisimuliwa kwa urahisi, kwa watoto na wale wasomao pamoja nao — hadithi kuu ya safari ya kurudi nyumbani, kwa lugha ambayo mtoto anaweza kuifuata. Rafu inayokua kadiri mengi yanavyosimuliwa na kuandikwa kwa ajili ya wachanga.",
     "seo_title": "Vitabu vya Kikristo kwa Wasomaji Wachanga — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kwa wasomaji wachanga na watoto, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kwa wasomaji wachanga na watoto, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Mathayo 19:14",
+      "text": "Yesu akasema, “Waacheni watoto wadogo waje kwangu, wala msiwazuie, kwa maana Ufalme wa Mbinguni ni wa wale walio kama hawa.”"
+    }
   },
   "foundations-of-the-faith": {
     "title": "Misingi ya Imani",
     "description": "Mafundisho ya kale, yakishikiliwa kwa unyofu — kufanyika mwili, neema na mapenzi ya Mungu, amri, na misingi iliyokabidhiwa mara moja kwa watakatifu.",
     "seo_title": "Vitabu kuhusu Misingi ya Imani — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Misingi ya Imani, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Misingi ya Imani, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Yuda 3",
+      "text": "Wapendwa, ingawa nilikuwa ninatamani sana kuwaandikia kuhusu wokovu ambao tunaushiriki sisi sote, niliona imenipasa kuwaandikia na kuwasihi kwamba mwitetee imani iliyokabidhiwa watakatifu kwa nafasi moja itoshayo."
+    }
   },
   "grace-and-comfort": {
     "title": "Neema na Faraja",
     "description": "Neema ya Mungu isiyokoma na faraja yake katika kila jaribu — habari njema kwa waliochoka.",
     "seo_title": "Vitabu kuhusu Neema na Faraja — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema na Faraja, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema na Faraja, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "2 Wakorintho 12:9",
+      "text": "Lakini aliniambia, “Neema yangu inakutosha, kwa kuwa uweza wangu hukamilika katika udhaifu.” Kwa hiyo nitajisifu kwa furaha zaidi kuhusu udhaifu wangu, ili uweza wa Kristo ukae juu yangu."
+    }
   },
   "holy-spirit": {
     "title": "Roho Mtakatifu",
     "description": "Ubatizo wa Roho, kukaa kwake ndani yetu, na kazi yake — nguvu iliyoahidiwa kwa maisha ya Kikristo.",
     "seo_title": "Vitabu kuhusu Roho Mtakatifu — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Roho Mtakatifu, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Roho Mtakatifu, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Zekaria 4:6",
+      "text": "Kisha akaniambia, “Hili ni neno la Bwana kwa Zerubabeli: ‘Si kwa uwezo, wala si kwa nguvu, bali ni kwa Roho yangu,’ asema Bwana Mwenye Nguvu Zote."
+    }
   },
   "men-of-valour": {
     "title": "Wanaume wa Ushujaa",
     "description": "Wito kwa wanaume — kuomba, kuongoza, kutoa kila kitu na kulichunga kundi — maisha ya ujasiri kwa wana wa Mungu.",
     "seo_title": "Vitabu vya Kikristo kwa Wanaume — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kwa wanaume, wito wa ushujaa na imani, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kwa wanaume, wito wa ushujaa na imani, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "1 Wakorintho 16:13",
+      "text": "Kesheni, simameni imara katika imani, fanyeni kiume, kuweni mashujaa kuweni hodari."
+    }
   },
   "prayer": {
     "title": "Kuhusu Maombi",
     "description": "Kujifunza kuomba — na kuendelea kuomba. Vitabu vya kale kuhusu maisha ya ndani ya maombi, kutoka mahali pa faragha hadi maombezi yenye kudumu.",
     "seo_title": "Vitabu kuhusu Maombi — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maombi, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maombi, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Yeremia 33:3",
+      "text": "‘Niite nami nitakuitika na kukuambia mambo makuu na yasiyochunguzika, usiyoyajua.’"
+    }
   },
   "revival-and-missions": {
     "title": "Uamsho na Umisheni",
     "description": "Maisha yaliyomwagwa kwa ajili ya injili, na majira ya uamsho — kuni kwa moyo unaowaka.",
     "seo_title": "Vitabu kuhusu Uamsho na Umisheni — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho na Umisheni, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho na Umisheni, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Habakuki 3:2",
+      "text": "Bwana, nimezisikia sifa zako; nami naogopa kwa matendo yako, Ee Bwana. Fufua kazi yako katikati ya miaka, katikati ya miaka tangaza habari yako; katika ghadhabu kumbuka rehema."
+    }
   },
   "saints-of-the-african-diaspora": {
     "title": "Watakatifu wa Diaspora ya Kiafrika",
     "description": "Injili iliyochukuliwa kwa sauti za Weusi — Richard Allen na wahubiri waliozaliwa huru, wanawake wa utakatifu wasiotaka kunyamazishwa, na Crowther katika Mto Niger.",
     "seo_title": "Vitabu kuhusu Watakatifu wa Diaspora ya Kiafrika — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Watakatifu wa Diaspora ya Kiafrika, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Watakatifu wa Diaspora ya Kiafrika, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Zaburi 68:31",
+      "text": "Wajumbe watakuja kutoka Misri, Kushi atajisalimisha kwa Mungu."
+    }
   },
   "soar-like-the-eagle": {
     "title": "Paa Kama Tai",
     "description": "Wamngojao Bwana hupata nguvu mpya — vitabu vya kale kuhusu kupata nguvu kutoka kwa Mungu wakati nguvu zako zimeisha. Vitabu kwa waliochoka: kungoja, kupumzika, na kupaa tena kwa mbawa kama tai.",
     "seo_title": "Paa Kama Tai: Vitabu kwa Waliochoka — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kwa waliochoka, upate nguvu mpya na kupaa kama tai, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kwa waliochoka, upate nguvu mpya na kupaa kama tai, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Isaya 40:31",
+      "text": "bali wale wamtumainio Bwana atafanya upya nguvu zao. Watapaa juu kwa mbawa kama tai; watapiga mbio wala hawatachoka, watatembea kwa miguu wala hawatazimia."
+    }
   },
   "the-body-of-christ": {
     "title": "Mwili wa Kristo",
     "description": "Kanisa kama kiumbe kimoja hai — viungo vya mmoja na mwenzake, vilivyounganishwa na Kichwa, na huduma na uchungaji vitokavyo humo.",
     "seo_title": "Vitabu kuhusu Mwili wa Kristo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Mwili wa Kristo, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Mwili wa Kristo, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "1 Wakorintho 12:27",
+      "text": "Sasa ninyi ni mwili wa Kristo na kila mmoja wenu ni sehemu ya huo mwili."
+    }
   },
   "the-east-african-revival": {
     "title": "Uamsho wa Afrika Mashariki",
     "description": "Tukutendereza Yesu — uamsho uliotoka kilimani Kampala na kuenea katika nchi sita kwa karibu karne nzima, na kuenenda nuruni ulikofundisha.",
     "seo_title": "Vitabu kuhusu Uamsho wa Afrika Mashariki — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho wa Afrika Mashariki, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho wa Afrika Mashariki, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "1 Yohana 1:7",
+      "text": "Lakini tukienenda nuruni, kama yeye alivyo nuruni, twashirikiana sisi kwa sisi na damu yake Yesu, Mwana wake, yatusafisha dhambi yote."
+    }
   },
   "the-gospel-call": {
     "title": "Wito wa Injili",
     "description": "Mwaliko wa kale kuliko yote — njoo, tubu, amini. Wahubiri wakiwasihi wasioongoka, na ushuhuda wa neema aliyoipata mkuu wa wenye dhambi.",
     "seo_title": "Vitabu kuhusu Wito wa Injili — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wito wa Injili, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wito wa Injili, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "2 Wakorintho 5:20",
+      "text": "Kwa hiyo sisi ni mabalozi wa Kristo, kana kwamba Mungu anawasihi kupitia kwa vinywa vyetu. Nasi twawaomba sana ninyi kwa niaba ya Kristo, mpatanishwe na Mungu."
+    }
   },
   "the-grace-of-god": {
     "title": "Neema ya Mungu",
     "description": "Neema tangu mwanzo hadi mwisho — ya bure, kuu na yenye kutosha, ikizidi kwa mkuu wa wenye dhambi na ikimshika mtakatifu aliye dhaifu kuliko wote.",
     "seo_title": "Vitabu kuhusu Neema ya Mungu — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema ya Mungu, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neema ya Mungu, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Waefeso 2:8",
+      "text": "Kwa maana mmeokolewa kwa neema, kwa njia ya imani, wala si kwa matendo yenu mema. Hii ni zawadi kutoka kwa Mungu,"
+    }
   },
   "the-great-awakening": {
     "title": "Uamsho Mkuu",
     "description": "Mahubiri yaliyotikisa mabara mawili — Whitefield na Wesley uwanjani, Edwards kati ya watu wake, Finney kuhusu uamsho — na mafundisho yaliyo chini ya moto.",
     "seo_title": "Vitabu kuhusu Uamsho Mkuu — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho Mkuu, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Uamsho Mkuu, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Zaburi 85:6",
+      "text": "Je, hutatuhuisha tena, ili watu wako wakufurahie?"
+    }
   },
   "the-inner-life": {
     "title": "Maisha ya Ndani",
     "description": "Njia igeukiayo ndani — Kempis, Law na Guyon, upendo wa Mungu na mlango uliofungwa wa mahali pa faragha, nafsi ikiwa peke yake naye.",
     "seo_title": "Vitabu kuhusu Maisha ya Ndani — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Maisha ya Ndani, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Mathayo 6:6",
+      "text": "Lakini wewe unaposali, ingia chumbani mwako, funga mlango na umwombe Baba yako aliye sirini. Naye Baba yako aonaye sirini atakupa thawabu yako."
+    }
   },
   "the-preached-word": {
     "title": "Neno Lihubiriwalo",
     "description": "Mahubiri makuu katika kurasa — Whitefield na Wesley kwa sauti kamili, Spurgeon kati ya wakulima wake — na agizo la Baxter kwa kila mchungaji wa roho.",
     "seo_title": "Vitabu kuhusu Neno Lihubiriwalo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neno Lihubiriwalo, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Neno Lihubiriwalo, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Warumi 10:14",
+      "text": "Lakini watamwitaje yeye ambaye hawajamwamini? Nao watawezaje kumwamini yeye ambaye hawajamsikia? Tena watamsikiaje bila mtu kuwahubiria?"
+    }
   },
   "the-puritans": {
     "title": "Wapuritani",
     "description": "Teolojia sahili na yenye kuchunguza ya Wapuritani — msafiri wa Bunyan, Owen kuhusu dhambi iliyo ndani, uchangamfu wa Watson na moto wa Edwards — mafundisho yakisisitizwa moyoni.",
     "seo_title": "Vitabu kuhusu Wapuritani — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wapuritani, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wapuritani, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Waebrania 4:12",
+      "text": "Kwa maana Neno la Mungu li hai tena lina nguvu. Lina makali kuliko upanga wowote wenye makali kuwili, hivyo linachoma hata kuzigawanya nafsi na roho, viungo na mafuta yaliyo ndani yake; tena li jepesi kuyatambua mawazo na makusudi ya moyo."
+    }
   },
   "the-way-of-holiness": {
     "title": "Njia ya Utakatifu",
     "description": "Kutengwa kwa ajili ya Mungu — amri zikichunguzwa, ukamilifu ukifuatwa kwa unyofu, na shauku za moyo zikijaribiwa na kuonekana kweli.",
     "seo_title": "Vitabu kuhusu Njia ya Utakatifu — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Njia ya Utakatifu, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Njia ya Utakatifu, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Waebrania 12:14",
+      "text": "Tafuteni kwa bidii kuwa na amani na watu wote na huo utakatifu, ambao bila kuwa nao hakuna mtu atakayemwona Bwana."
+    }
   },
   "the-wesleys-and-early-methodism": {
     "title": "Akina Wesley na Umethodisti wa Mwanzo",
     "description": "Uamsho uliokuwa harakati — mahubiri ya John Wesley na maelezo yake sahili, mama aliyemuunda, na ari iliyofuata.",
     "seo_title": "Vitabu kuhusu Akina Wesley na Umethodisti wa Mwanzo — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu akina Wesley na Umethodisti wa mwanzo, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu akina Wesley na Umethodisti wa mwanzo, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Luka 24:32",
+      "text": "Wakaulizana wao kwa wao, “Je, mioyo yetu haikuwakawaka kwa furaha ndani yetu alipokuwa anazungumza nasi njiani na kutufafanulia Maandiko?”"
+    }
   },
   "to-the-ends-of-the-earth": {
     "title": "Hata Miisho ya Dunia",
     "description": "Shajara za wamisionari — Brainerd misituni, Taylor Uchina, Carmichael India, Crowther katika Mto Niger — injili iliyochukuliwa kwa gharama yoyote.",
     "seo_title": "Vitabu kuhusu Hata Miisho ya Dunia — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Hata Miisho ya Dunia, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Hata Miisho ya Dunia, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Matendo 1:8",
+      "text": "Lakini mtapokea nguvu akiisha kuwajilia juu yenu Roho Mtakatifu, nanyi mtakuwa mashahidi wangu katika Yerusalemu, Uyahudi kote na Samaria, hadi miisho ya dunia.”"
+    }
   },
   "victory-over-sin": {
     "title": "Ushindi Juu ya Dhambi",
     "description": "Vita vya ndani kwa ajili ya utakatifu — kuiua dhambi, usafi wa moyo, shauku zikipangwa vyema, na njia ya kuingia patakatifu pa patakatifu.",
     "seo_title": "Vitabu kuhusu Ushindi Juu ya Dhambi — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Ushindi Juu ya Dhambi, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Ushindi Juu ya Dhambi, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Warumi 6:14",
+      "text": "Kwa maana dhambi haitakuwa na mamlaka juu yenu, kwa sababu hampo chini ya sheria, bali chini ya neema."
+    }
   },
   "voices-of-the-early-church": {
     "title": "Sauti za Kanisa la Kwanza",
     "description": "Imani ya karne za kwanza kwa maneno yake yenyewe — moyo wa Agustino uliofunuliwa, Athanasio kuhusu Neno lililofanyika mwili, na barua za mashahidi na wachungaji.",
     "seo_title": "Vitabu kuhusu Sauti za Kanisa la Kwanza — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Sauti za Kanisa la Kwanza, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Sauti za Kanisa la Kwanza, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Waebrania 12:1",
+      "text": "Kwa sababu hii, kwa kuwa tumezungukwa na wingu kubwa namna hii la mashahidi, basi na tuweke kando kila kitu kinachotuzuia na ile dhambi inayotuzinga kwa urahisi, nasi tupige mbio kwa saburi katika yale mashindano yaliyowekwa kwa ajili yetu."
+    }
   },
   "women-of-faith": {
     "title": "Wanawake wa Imani",
     "description": "Mama, wamisionari na wenye kutafakari — imani ya wanawake walioomba, walioteseka na kuthubutu, kutoka chumba cha Guyon hadi mimbari ya mtumwa aliyewekwa huru.",
     "seo_title": "Vitabu kuhusu Wanawake wa Imani — Ochorus",
-    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wanawake wa Imani, soma bila malipo katika Ochorus."
+    "meta_description": "Vitabu vya Kikristo vya kale kuhusu Wanawake wa Imani, soma bila malipo katika Ochorus.",
+    "scripture": {
+      "reference": "Mithali 31:30",
+      "text": "Kujipamba ili kuvutia ni udanganyifu na uzuri unapita upesi, bali mwanamke anayemcha Bwana atasifiwa."
+    }
   }
 }

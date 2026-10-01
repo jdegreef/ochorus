@@ -317,6 +317,28 @@ class TopicTests(TestCase):
                 f"{other['sermon_count']} sermons, but nothing to draw",
             )
 
+    def test_list_carries_the_localized_epigraph_ref(self):
+        """The /topics card badge wears the epigraph as a monogram, so the LIST
+        sends `scripture_ref` — localized, with no English fallback: a locale
+        with no translated epigraph gets "" and the card keeps its emblem."""
+        author = Author.objects.get(slug="am")
+        shelf = Topic.objects.create(
+            slug="the-call", title="The Call", sort_order=3, scripture_ref="Matthew 11:28"
+        )
+        Sermon.objects.create(
+            author=author, slug="come-in", language="sw", title="x", body_html="<p>x</p>"
+        )
+        TopicSermon.objects.create(topic=shelf, sermon_slug="come-in", sort_order=0)
+        TopicBook.objects.create(topic=shelf, book_slug="prayer")
+        TopicTranslation.objects.create(topic=shelf, language="sw", title="Mwito")
+
+        def ref(language):
+            res = self.client.get(f"/api/library/topics/?language={language}")
+            return next(t for t in res.data if t["slug"] == "the-call")["scripture_ref"]
+
+        self.assertEqual(ref("en"), "Matthew 11:28")
+        self.assertEqual(ref("sw"), "")
+
     def test_covers_put_books_first_and_cap_the_fan(self):
         """Books fill the fan, sermons take what is left, four tiles at most.
 

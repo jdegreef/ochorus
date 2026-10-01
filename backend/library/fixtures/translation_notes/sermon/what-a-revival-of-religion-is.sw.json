@@ -1,0 +1,38 @@
+{
+ "kind": "sermon",
+ "slug": "what-a-revival-of-religion-is",
+ "language": "sw",
+ "job_issue": 4722,
+ "pull_request": 4870,
+ "references": [
+  {
+   "reference": "Habakkuk 3:2b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Proverbs 22:6a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Mark 8:24b",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "power-through-prayer.sw.json"
+  },
+  {
+   "reference": "Psalms 29:2",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "holy-in-christ.sw.json"
+  }
+ ]
+}

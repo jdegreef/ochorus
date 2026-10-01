@@ -178,6 +178,7 @@
 				href={localizeHref(`/plans/${plan.slug}`)}
 				hue={meta.accent}
 				emblem={meta.emblem}
+				mark={{ top: t('plans.days'), value: String(plan.day_count) }}
 				covers={plan.covers}
 				title={plan.title}
 			>

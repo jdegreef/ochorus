@@ -1,0 +1,74 @@
+{
+ "kind": "sermon",
+ "slug": "all-scripture-is-given-by-inspiration",
+ "language": "sw",
+ "job_issue": 4623,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "2 Timothy 3:16",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Timothy 3:16a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Timothy 3:16b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Timothy 3:16b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Timothy 3:16b",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "2 Timothy 3:16b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Titus 2:12b",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Peter 4:11a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Corinthians 14:24",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "1 Corinthians 14:25a",
+   "status": "self_rendered",
+   "block_index": 21
+  }
+ ]
+}
