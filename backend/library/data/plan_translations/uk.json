@@ -8,11 +8,11 @@
   },
   "school-of-prayer": {
     "title": "Основи молитви",
-    "description": "Чотири тижні в школі молитви з трьома провідниками: Ендрю Мюррей — про те, як сам Господь навчає нас молитися, Д. Л. Муді — про переможну молитву, і Ганна Буїнза — про молитву як щоденний пульс християнського життя.",
+    "description": "Чотири тижні закладання основ молитви з трьома провідниками: Ендрю Мюррей — про те, як сам Господь навчає нас молитися, Д. Л. Муді — про переможну молитву, і Ганна Буїнза — про молитву як щоденний пульс християнського життя.",
     "note": [
       "Job #791. Names follow the shipped uk corpus: Мюррей (17×), Муді (44×). Hannah Buyinza has no uk precedent; transliterated Ганна Буїнза.",
       "The row appears only once all three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) exist in uk — none do yet.",
-      "2026-10-01: retitled from «Школа молитви» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description keeps its school-of-prayer wording, as the English one does."
+      "2026-10-01: retitled from «Школа молитви» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description's opening «Чотири тижні в школі молитви» became «Чотири тижні закладання основ молитви» to match."
     ]
   },
   "humility-12-days": {
