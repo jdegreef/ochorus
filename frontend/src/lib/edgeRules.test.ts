@@ -10,6 +10,8 @@ import { isSlashedPath } from './canonicalRedirect';
  * this test keeps it honest. A new locale or a new `trailingSlash = 'always'`
  * route fails here until the doc's expression is updated (and then the rule
  * in Cloudflare with it). Otherwise that route's no-slash URLs answer 404.
+ * NOTE (2026-09-30): ochorus.com has no Cloudflare zone of ours yet, so the
+ * rule is not applied; this keeps it ready for when one exists.
  */
 const FRONTEND = resolve(process.cwd());
 const DOC = readFileSync(join(FRONTEND, '..', 'docs', 'seo-edge-rules.md'), 'utf8');
