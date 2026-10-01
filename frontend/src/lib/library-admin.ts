@@ -919,14 +919,39 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 
 // A period-over-period change for a dashboard stat, or null when there's no
 // prior baseline to divide by — a brand-new metric reads "new" rather than a
-// fake +100%. Shared by the engagement and users pages so their trend chips
-// stay identical (render one with <TrendChip>).
-export type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+// fake +100%. Shared by the admin stat pages so their trend chips stay
+// identical (render one with <TrendChip>).
+//
+// `bad` marks a change that is a regression whatever its direction (a rising
+// zero-result rate); left unset, the chip reads up as good and down as bad.
+export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean } | null;
+
+// Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
+// true and useless. Small bases report the absolute change ("+29") instead.
+export const SMALL_BASE = 20;
+
+const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
+const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: signed(cur - prev) };
 	const d = Math.round(((cur - prev) / prev) * 100);
-	if (d === 0) return { dir: 'flat', text: '0%' };
-	return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
+	return { dir: dirOf(d), text: `${signed(d)}%` };
+};
+
+/** The change between two RATES (0–1), in percentage points — a rate moving
+ *  from 40% to 44% is "+4 pts", not "+10%". Null without a prior period to
+ *  compare against. `lowerIsBetter` flips which direction reads as bad. */
+export const pointsTrend = (
+	cur: number,
+	prev: number | null,
+	{ lowerIsBetter = false }: { lowerIsBetter?: boolean } = {}
+): Trend => {
+	if (prev === null) return null;
+	const d = Math.round((cur - prev) * 100);
+	const dir = dirOf(d);
+	return { dir, text: `${signed(d)} pts`, bad: dir !== 'flat' && (lowerIsBetter ? d > 0 : d < 0) };
 };
 
 // Reading-engagement analytics (aggregate-only).
@@ -1109,7 +1134,7 @@ export interface AdminEmailMetrics {
 	by_broadcast: EmailBroadcastRow[];
 	subscribers: {
 		total: number;
-		newsletter_opt_in: number;
+		announcements: number;
 		unsubscribed: number;
 		suppressed: number;
 	};
@@ -1602,6 +1627,9 @@ export interface SearchStatsWindow {
 	distinct_queries: number;
 	zero_results: number;
 	zero_rate: number;
+	/** Results opened in the same span. Rows, not readers — one search can lead
+	 *  to several opens — so a rate built on it is a trend, not "x% of people". */
+	clicks?: number;
 }
 
 export interface SearchTopQuery {
@@ -1616,6 +1644,9 @@ export interface AdminSearchStats {
 	overview: {
 		'7d': SearchStatsWindow;
 		'30d': SearchStatsWindow;
+		/** The window before each — the baseline for the period-over-period deltas. */
+		'7d_prev'?: SearchStatsWindow;
+		'30d_prev'?: SearchStatsWindow;
 		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
 		clicks_30d?: number;
 	};

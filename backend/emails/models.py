@@ -150,6 +150,24 @@ class EmailSubscription(models.Model):
         resolved to the stream that kind belongs to."""
         return self.wants_stream(stream_for(kind))
 
+    @staticmethod
+    def wants_stream_q(stream: str) -> models.Q:
+        """A ``Q`` selecting the rows ``wants_stream(stream)`` is true for.
+
+        The ORM mirror of :meth:`wants_stream` — kept beside it so the per-stream
+        choice, its legacy-boolean fallback, and the suppression/off-switch
+        blockers stay defined once. Use it to count or filter a subscription
+        queryset by stream consent (e.g. admin metrics)."""
+        from .streams import LEGACY_FIELD
+
+        explicit_on = models.Q(**{f"stream_prefs__{stream}": True})
+        no_choice = ~models.Q(stream_prefs__has_key=stream)
+        legacy = LEGACY_FIELD.get(stream)
+        default_on = no_choice & models.Q(**{legacy: True}) if legacy else no_choice
+        return (explicit_on | default_on) & models.Q(
+            unsubscribed_all=False, suppressed_at__isnull=True
+        )
+
     def suppress(self, reason: str) -> None:
         self.suppressed_at = timezone.now()
         self.suppression_reason = (reason or "")[:40]

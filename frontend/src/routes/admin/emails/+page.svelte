@@ -43,7 +43,7 @@
 	const subTiles = $derived(
 		data
 			? [
-					{ label: 'Subscribers', value: fmt(data.subscribers.newsletter_opt_in), sub: `of ${fmt(data.subscribers.total)} with an account` },
+					{ label: 'Subscribers', value: fmt(data.subscribers.announcements), sub: `of ${fmt(data.subscribers.total)} with an account` },
 					{ label: 'Unsubscribed', value: fmt(data.subscribers.unsubscribed), sub: 'opted out of everything' },
 					{ label: 'Suppressed', value: fmt(data.subscribers.suppressed), sub: 'bounced or complained' }
 				]
