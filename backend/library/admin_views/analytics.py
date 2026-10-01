@@ -795,12 +795,24 @@ class AdminSearchView(APIView):
         now = timezone.now()
         window = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=30))
 
-        def overview(qs):
+        def overview(days, offset=0):
+            # The `days` days ending `offset` days ago, so the same function
+            # yields both a period and the one before it — the baseline the
+            # page's period-over-period deltas divide by.
+            span = {
+                "created_at__gte": now - timedelta(days=days + offset),
+                "created_at__lt": now - timedelta(days=offset),
+            }
+            qs = SearchQueryLog.objects.filter(**span)
             counts = qs.aggregate(
                 searches=Count("id"), zero=Count("id", filter=Q(result_count=0))
             )
             return {
                 "searches": counts["searches"],
+                # Opened results in the same span. Rows, not readers (the logs
+                # are anonymous), so a rate built on it is a trend, not "x% of
+                # people".
+                "clicks": SearchClickLog.objects.filter(**span).count(),
                 "distinct_queries": qs.annotate(q=Lower("query"))
                 .values("q")
                 .distinct()
@@ -923,10 +935,10 @@ class AdminSearchView(APIView):
         return Response(
             {
                 "overview": {
-                    "7d": overview(
-                        window.filter(created_at__gte=now - timedelta(days=7))
-                    ),
-                    "30d": overview(window),
+                    "7d": overview(7),
+                    "30d": overview(30),
+                    "7d_prev": overview(7, offset=7),
+                    "30d_prev": overview(30, offset=30),
                     # Whether search is answering at all, in one number. Rows,
                     # not readers — the logs are anonymous — so read it as a
                     # trend, not as "x% of people".
