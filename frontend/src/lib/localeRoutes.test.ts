@@ -5,8 +5,10 @@ import { describe, expect, it } from 'vitest';
 /**
  * Every configured UI locale must have its index-page rewrites in render.yaml.
  *
- * Render's route matcher has no wildcard for the locale segment, so each locale
- * repeats the same block. That list is hand-maintained and drifted twice: /pt
+ * Each locale has its own landing-page rule (`/es` -> `/es.html`); the index
+ * pages are ONE `/:lang/<page>` -> `/:lang/<page>.html` rule each, since a copy
+ * per locale took the service past Render's route cap (see render.yaml). When
+ * every locale DID repeat the block, the list drifted twice: /pt
  * and /ar were both wired as full locales — message catalogs, locale registry,
  * sitemap entries — while render.yaml still only knew es/sw/lg. The pages were
  * built and sitemapped, and every one of them served the 4 KB SPA shell to
@@ -27,7 +29,7 @@ const LOCALES: string[] = JSON.parse(
 	readFileSync(join(FRONTEND, 'project.inlang/settings.json'), 'utf8')
 ).locales.filter((l: string) => l !== 'en');
 
-/** Prerendered index pages that need an explicit rewrite per locale. */
+/** Prerendered index pages that need a rewrite, base path and `/:lang`. */
 const INDEX_PAGES = [
 	'books',
 	'biographies',
@@ -58,22 +60,25 @@ describe('render.yaml locale routes', () => {
 	});
 
 	for (const page of INDEX_PAGES) {
-		it(`covers /<locale>/${page} for every locale`, () => {
-			const missing = LOCALES.filter((l) => !RENDER_YAML.includes(`source: /${l}/${page}\n`));
-			expect(missing, `locales missing /${page}`).toEqual([]);
+		it(`covers /<locale>/${page} for every locale, with one :lang rule`, () => {
+			const rule = `source: /:lang/${page}\n        destination: /:lang/${page}.html\n`;
+			expect(RENDER_YAML.includes(rule), `no /:lang/${page} rewrite`).toBe(true);
 		});
 	}
 
-	it('rewrites every locale to its own .html, never another locale’s', () => {
+	it('rewrites each landing page to its own .html, never another locale’s', () => {
 		for (const l of LOCALES) {
-			const re = new RegExp(`source: /${l}(/[a-z-]+)?\\n\\s*destination: (/[^\\n]+)`, 'g');
-			for (const m of RENDER_YAML.matchAll(re)) {
-				// The client-only app routes share the one SPA shell; that only those
-				// rules point at it is pinned in renderRoutes.test.ts.
-				if (m[2] === '/200.html') continue;
-				expect(m[2], `source /${l}${m[1] ?? ''}`).toMatch(new RegExp(`^/${l}[./]`));
-			}
+			const rule = `source: /${l}\n        destination: /${l}.html\n`;
+			expect(RENDER_YAML.includes(rule), `/${l}`).toBe(true);
 		}
+	});
+
+	it('repeats no rule per locale — the `:lang` rules cover them', () => {
+		// A per-locale copy is what pushed the service past Render's route cap.
+		const copies = LOCALES.flatMap((l) =>
+			[...RENDER_YAML.matchAll(new RegExp(`source: (/${l}/[^\\n]*)\\n`, 'g'))].map((m) => m[1])
+		);
+		expect(copies).toEqual([]);
 	});
 });
 
