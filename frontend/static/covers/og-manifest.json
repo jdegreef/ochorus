@@ -200,23 +200,23 @@
 			]
 		},
 		"am/a-retrospect-children": {
-			"ground": "a58295ea4ccc84db96e621f94a10bac80e099c8d8fa2265180e3dd2f1e0620b1",
+			"ground": "7fcb4177a864a141ce153542f723314c938b4f623e4b5802d292a3aa0e64066d",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "rail/teal",
 			"bar": 0
 		},
 		"am/a-retrospect-teens": {
-			"ground": "b4498e40ad7d566c12d49bd7f444c3e4098baa3886ac7569944adb1021b2adaf",
+			"ground": "34cdc978bdc4fa4f3af6d954f3622c6739a4953148b56845b9a2af9c2c08aad1",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "rail/teal",
 			"bar": 0
 		},
 		"am/absolute-surrender": {
@@ -230,24 +230,57 @@
 			"bar": 0
 		},
 		"am/amanda-smith-autobiography-children": {
-			"ground": "3bdd5f25414e0f297149c2a297d53ea589c235b95da5f15ce4ef59bc6f64ff47",
+			"ground": "c939c7980985ee774d953fd7da54804d312bb55c9b207931f1fd891149fb6339",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[135, 326, 466, 402],
+					[45, 391, 556, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
 		},
 		"am/amanda-smith-autobiography-teens": {
-			"ground": "308c2a79c908698dbb4fdf53101d33df95647aa963dd8408d92280d14e71cfaf",
+			"ground": "41cab1b01c491dcbb25b7ee14b3f9be20ecb815be2ebec2a90c31cc60c93536b",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
-			"scrim": 1,
+			"art": true,
+			"scrim": 0.3,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[135, 293, 466, 369],
+					[145, 359, 456, 435],
+					[184, 424, 417, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
 		},
 		"am/baptism-with-the-holy-spirit": {
 			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
@@ -583,23 +616,23 @@
 			"bar": 0
 		},
 		"am/pilgrims-progress-children": {
-			"ground": "a4841f58293438f0cd2cba260acbbac70fc32a94082ae131eacc04fab1be7ef3",
+			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"am/pilgrims-progress-teens": {
-			"ground": "8727889f2fd013c78647831ad3c5056b9256167e52eef77989fda981a87e69e2",
+			"ground": "e751a2cc60f15531d74ce862b550003a156f280232fea80c458ce91066bb589e",
 			"style": "press",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/teal",
 			"bar": 0
 		},
 		"am/prayer-the-pulse-of-life": {
@@ -819,13 +852,13 @@
 			"bar": 0.04
 		},
 		"am/talks-to-the-farmer-children": {
-			"ground": "1b60a01d1d5b469fc2173fc11740a41370246b90cde819862c1b12a6fcead777",
+			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"am/the-inner-chamber": {
@@ -865,23 +898,23 @@
 			]
 		},
 		"am/the-life-of-trust-children": {
-			"ground": "8f1592fd83f1faf9df929dc6ad5595ff85ef747a8d7cf3c58d8aa12fdee9d61b",
+			"ground": "161a5b516a528edf9e020af6fc2e7e75c0feb7f37b2b7e3ee3ae15f22b13cd12",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "split/oxblood",
 			"bar": 0
 		},
 		"am/the-life-of-trust-teens": {
-			"ground": "80986a4cc55fed5404945d7d47e8d4e8d5ad709949b15d41d212ddfb0d995e47",
+			"ground": "cc3af72751649ad81ff10e567dbab95fb246f15549735f95b8b382840f485527",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "split/oxblood",
 			"bar": 0
 		},
 		"am/the-unselfishness-of-god": {
