@@ -171,6 +171,54 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"am/a-hidden-fire": {
+			"ground": "e32ae790fff9f06c2040701935b8e855f4e6706a6a87de96d98dd0774d4e3624",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[147, 314, 453, 390]
+				],
+				"subtitle": [
+					[178, 448, 423, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
+		"am/a-retrospect-children": {
+			"ground": "a58295ea4ccc84db96e621f94a10bac80e099c8d8fa2265180e3dd2f1e0620b1",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/a-retrospect-teens": {
+			"ground": "b4498e40ad7d566c12d49bd7f444c3e4098baa3886ac7569944adb1021b2adaf",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/absolute-surrender": {
 			"ground": "2a0f32685685d7df4d90c87b0edda285679aaae65118ebe638abb6fdeca59638",
 			"style": "devotional",
@@ -179,6 +227,26 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"am/amanda-smith-autobiography-children": {
+			"ground": "3bdd5f25414e0f297149c2a297d53ea589c235b95da5f15ce4ef59bc6f64ff47",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/amanda-smith-autobiography-teens": {
+			"ground": "308c2a79c908698dbb4fdf53101d33df95647aa963dd8408d92280d14e71cfaf",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"am/baptism-with-the-holy-spirit": {
@@ -383,6 +451,35 @@
 			"layout": "wash/sage",
 			"bar": 0.05
 		},
+		"am/divine-songs-for-children": {
+			"ground": "20f43b228546719a97d8c37c65661e1956e8678fe6c61986e951c989c172f1fa",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[182, 102, 418, 131]
+				],
+				"title": [
+					[150, 285, 450, 360],
+					[79, 346, 521, 421]
+				],
+				"subtitle": [
+					[76, 475, 524, 503]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				292,
+				503
+			]
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
@@ -465,6 +562,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/lord-teach-us-to-pray-2": {
+			"ground": "ce3f44ec7bd4efef11808a3bf0469f0578b5f74d814ee0631a04453cafb846ea",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0.11
+		},
 		"am/ministry-of-intercession": {
 			"ground": "b70587fb53d7a63885c0fee427df77a462ae3b18f949c656bc7c517e07c7bbf6",
 			"style": "devotional",
@@ -473,6 +580,26 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"am/pilgrims-progress-children": {
+			"ground": "a4841f58293438f0cd2cba260acbbac70fc32a94082ae131eacc04fab1be7ef3",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/pilgrims-progress-teens": {
+			"ground": "8727889f2fd013c78647831ad3c5056b9256167e52eef77989fda981a87e69e2",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"am/prayer-the-pulse-of-life": {
@@ -691,6 +818,16 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"am/talks-to-the-farmer-children": {
+			"ground": "1b60a01d1d5b469fc2173fc11740a41370246b90cde819862c1b12a6fcead777",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
 			"style": "devotional",
@@ -726,6 +863,26 @@
 				313,
 				481
 			]
+		},
+		"am/the-life-of-trust-children": {
+			"ground": "8f1592fd83f1faf9df929dc6ad5595ff85ef747a8d7cf3c58d8aa12fdee9d61b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"am/the-life-of-trust-teens": {
+			"ground": "80986a4cc55fed5404945d7d47e8d4e8d5ad709949b15d41d212ddfb0d995e47",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"am/the-unselfishness-of-god": {
 			"ground": "08dcc7f118edbc6f069f0f3d5132f838b0b7037d572fa6f044cb917aea5e7019",

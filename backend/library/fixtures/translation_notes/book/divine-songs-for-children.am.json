@@ -1,0 +1,199 @@
+{
+ "kind": "book",
+ "slug": "divine-songs-for-children",
+ "language": "am",
+ "job_issue": 3788,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 139:7-10",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Genesis 3:6",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 116:12",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Matthew 12:41-42",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 1:2",
+   "status": "self_rendered",
+   "block_index": 50,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Ecclesiastes 11:3",
+   "status": "self_rendered",
+   "block_index": 73,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 2:42-51",
+   "status": "self_rendered",
+   "block_index": 96,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Matthew 21:15-16",
+   "status": "self_rendered",
+   "block_index": 97,
+   "chapter_order": 1
+  },
+  {
+   "reference": "1 Samuel 1:24",
+   "status": "self_rendered",
+   "block_index": 98,
+   "chapter_order": 1
+  },
+  {
+   "reference": "2 Timothy 3:15",
+   "status": "self_rendered",
+   "block_index": 98,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Acts 5:1-5",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Acts 5:7-10",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Revelation 21:8",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 4:8",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 5:22",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Kings 2:23",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 2
+  },
+  {
+   "reference": "2 Kings 2:24",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Luke 16:24",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 13:20",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Peter 3:3-4",
+   "status": "self_rendered",
+   "block_index": 50,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 30:17",
+   "status": "self_rendered",
+   "block_index": 57,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Exodus 20:3-17",
+   "status": "self_rendered",
+   "block_index": 86,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 22:37-39",
+   "status": "self_rendered",
+   "block_index": 89,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 92,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Mark 12:30-31",
+   "status": "self_rendered",
+   "block_index": 94,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 21:9",
+   "status": "self_rendered",
+   "block_index": 99,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 26:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbs 24:30-31",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbs 26:18-19",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 3
+  }
+ ]
+}
