@@ -180,6 +180,12 @@ class Command(BaseCommand):
                     continue  # a source isn't published in this language
                 days = self._curated_days(items, by_slug)
                 if not days:
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"Plan {slug} ({lang}): a chapter span does not resolve "
+                            "in this edition; no plan row created."
+                        )
+                    )
                     continue
                 with transaction.atomic():
                     plan = Plan.objects.create(
@@ -204,7 +210,11 @@ class Command(BaseCommand):
     @staticmethod
     def _curated_days(items, by_slug) -> list[dict]:
         """Every item's days in order, as PlanDay field dicts: a whole book or a
-        span of one is a day per chapter, an article is one day."""
+        span of one is a day per chapter, an article is one day.
+
+        Empty when a ``chapters(slug, first, last)`` span is not all there — an
+        edition numbered differently would otherwise yield a plan with holes
+        whose day count no longer matches its prose."""
         days: list[dict] = []
         for item in plan_items(items):
             if item[0] == "article":
@@ -214,8 +224,8 @@ class Command(BaseCommand):
             chapters = by_slug[bslug].chapters.order_by("order")
             if first is not None:
                 chapters = chapters.filter(order__range=(first, last))
-            days += [
-                {"book_slug": bslug, "chapter_order": order}
-                for order in chapters.values_list("order", flat=True)
-            ]
+            orders = list(chapters.values_list("order", flat=True))
+            if first is not None and orders != list(range(first, last + 1)):
+                return []
+            days += [{"book_slug": bslug, "chapter_order": o} for o in orders]
         return days

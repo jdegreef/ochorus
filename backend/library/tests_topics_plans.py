@@ -312,6 +312,17 @@ class PlanArticleDayTests(TestCase):
         self._seed(prose)
         self.assertEqual(Plan.objects.get(slug="mixed", language="de").days.count(), 4)
 
+    def test_seed_skips_an_edition_whose_span_does_not_resolve(self):
+        # German numbers the book differently (no chapter 3): the span would
+        # leave a hole, so the language gets no plan rather than a short one.
+        Article.objects.create(
+            slug="what-is-faith", language="de", h1="Was ist Glaube?", body_html=body_of(50)
+        )
+        Chapter.objects.filter(book__language="de", order=3).delete()
+        self._seed({"de": {"mixed": {"title": "Gemischt", "description": "x"}}})
+        self.assertFalse(Plan.objects.filter(slug="mixed", language="de").exists())
+        self.assertTrue(Plan.objects.filter(slug="mixed", language="en").exists())
+
     def test_api_resolves_article_days(self):
         self._seed()
         res = self.client.get("/api/library/plans/mixed/?language=en")

@@ -340,7 +340,11 @@ class FixtureIntegrityTests(SimpleTestCase):
         # translated plan shipping ahead of its books).
         book_slugs = {r["fields"]["slug"] for r in self.by_model.get("library.book", [])}
         stray = sorted(
-            {r["fields"]["book_slug"] for r in self.by_model.get("library.planday", [])}
+            {
+                r["fields"]["book_slug"]
+                for r in self.by_model.get("library.planday", [])
+                if not r["fields"].get("article_slug")
+            }
             - book_slugs
         )
         self.assertEqual(
@@ -386,7 +390,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             "library.chapter": ("book", "order", "body_html"),
             "library.sermon": ("slug", "title", "author", "body_html"),
             "library.plan": ("slug", "title"),
-            "library.planday": ("plan", "day", "book_slug", "chapter_order"),
+            "library.planday": ("plan", "day"),
             "library.series": ("slug", "title"),
             "library.seriestranslation": ("series", "language", "title"),
         }.items():

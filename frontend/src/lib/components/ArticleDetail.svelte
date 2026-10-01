@@ -83,7 +83,7 @@
 	// the next day. Fetched only when the params are present (plan progress is
 	// client-only, so the prerendered page never carries it).
 	const planSlug = $derived($page.url.searchParams.get('plan'));
-	const planDay = $derived(Number($page.url.searchParams.get('day')) || 0);
+	const dayParam = $derived(Number($page.url.searchParams.get('day')) || 0);
 	let plan = $state<PlanDetail | null>(null);
 	$effect(() => {
 		const s = planSlug;
@@ -92,10 +92,19 @@
 			return;
 		}
 		if (plan?.slug === s) return;
+		let cancelled = false; // a late answer must not restore a plan we left
 		getPlan(s, getLang())
-			.then((p) => (plan = p))
-			.catch(() => (plan = null));
+			.then((p) => !cancelled && (plan = p))
+			.catch(() => !cancelled && (plan = null));
+		return () => {
+			cancelled = true;
+		};
 	});
+	// Only a day of this plan that reads THIS article: a stale or edited link
+	// must not tick off a day that isn't there.
+	const planDay = $derived(
+		plan?.days.some((d) => d.day === dayParam && d.article_slug === article.slug) ? dayParam : 0
+	);
 
 	/** Mark today done, then continue: the next day's reading, or the plan page. */
 	function completePlanDay() {

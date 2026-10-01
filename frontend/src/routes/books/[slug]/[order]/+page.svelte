@@ -1212,7 +1212,10 @@
 	/** The plan day covering a chapter of THIS book, when following a plan. */
 	function planDayFor(order: number): number | null {
 		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
-		return d?.day ?? null;
+		// Only the neighbouring day: a plan can put an article between two
+		// chapters, and the book's own Next must not jump past it.
+		if (!d || (planDay && d.day !== planDay && Math.abs(d.day - planDay) !== 1)) return null;
+		return d.day;
 	}
 
 	/**

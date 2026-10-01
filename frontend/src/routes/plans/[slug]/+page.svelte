@@ -56,10 +56,12 @@
 	const articleDays = $derived(plan.days.filter((d) => d.article_slug).length);
 	/** The line under a day's title: its book, or "Article" on an article day. */
 	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
-	const dayRange = (b: { first: number; last: number }) =>
+	const dayRange = (b: { first: number; last: number; days: number }) =>
 		b.first === b.last
 			? `${t('plans.day')} ${b.first}`
-			: `${t('plans.daysLabel')} ${b.first}–${b.last}`;
+			: b.days === b.last - b.first + 1
+				? `${t('plans.daysLabel')} ${b.first}–${b.last}`
+				: `${b.days} ${t('plans.days')}`; // read around articles: not one span
 	const planLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
