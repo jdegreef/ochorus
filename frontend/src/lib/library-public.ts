@@ -1088,19 +1088,28 @@ export interface PlanSummary {
 	total_words: number;
 	/**
 	 * Distinct book covers the plan draws from (first-appearance order).
-	 * Books only, and the type says so: a plan's days reference `book_slug`
-	 * (`PlanDay`), so no sermon can reach this strip.
+	 * Books only, and the type says so: a plan's days reference a book chapter
+	 * or an article (`PlanDay`), so no sermon can reach this strip, and an
+	 * article day adds no tile.
 	 */
 	covers: BookTile[];
 	/** Where the plan starts, for a "begin here" teaser. Null if day 1's
-	 * chapter can't be resolved (e.g. an untranslated book in this locale). */
+	 * chapter can't be resolved (e.g. an untranslated book in this locale).
+	 * An article day 1 has an empty `book_title` and its headline as the chapter. */
 	day_one: { book_title: string; chapter_title: string } | null;
 }
 
+/**
+ * One plan day: a book chapter, or — when `article_slug` is set — an article
+ * (then `book_slug` and `book_title` are empty, `chapter_order` is null, and
+ * `chapter_title` is the article's headline). Link to it with `planDayPath`.
+ */
 export interface PlanDay {
 	day: number;
 	book_slug: string;
-	chapter_order: number;
+	chapter_order: number | null;
+	/** Optional: an API predating article days omits it (rolling-deploy skew). */
+	article_slug?: string;
 	book_title: string;
 	chapter_title: string;
 	word_count: number;

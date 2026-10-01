@@ -2375,37 +2375,48 @@ class PlanTranslationCoverageTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.published: dict[str, set[str]] = {}
+        # language -> {("book" | "article", slug)}: a curated plan can also
+        # need articles, and is created only where those are published too.
+        cls.published: dict[str, set[tuple[str, str]]] = {}
+        kinds = {"library.book": "book", "library.article": "article"}
         for row in all_rows():
-            if row["model"] != "library.book":
+            kind = kinds.get(row["model"])
+            if kind is None:
                 continue
             f = row["fields"]
             if f.get("is_published", True):
-                cls.published.setdefault(f.get("language", "en"), set()).add(f["slug"])
+                cls.published.setdefault(f.get("language", "en"), set()).add(
+                    (kind, f["slug"])
+                )
 
     def test_every_creatable_plan_row_has_its_own_prose(self):
         from library.management.commands.seed_plans import (
             CURATED_PLANS,
             LAUNCH_PLANS,
         )
+        from library.plan_seed import plan_sources
         from library.plan_translations import plan_translations
 
-        # (plan slug, the books it needs) for both plan kinds.
-        needs = [(p[0], [p[1]]) for p in LAUNCH_PLANS]
-        needs += [(p[0], list(p[3])) for p in CURATED_PLANS]
+        # (plan slug, the works it needs) for both plan kinds.
+        needs = [(p[0], [("book", p[1])]) for p in LAUNCH_PLANS]
+        for p in CURATED_PLANS:
+            books, articles = plan_sources(p[3])
+            needs.append(
+                (p[0], [("book", b) for b in books] + [("article", a) for a in articles])
+            )
 
         missing = sorted(
             f"{language}/{slug}"
-            for slug, books in needs
+            for slug, works in needs
             for language, have in self.published.items()
             if language != "en"
-            and all(b in have for b in books)
+            and all(w in have for w in works)
             and slug not in plan_translations().get(language, {})
         )
         self.assertEqual(
             missing,
             [],
-            "Every source book of these plans is published in these languages, "
+            "Every source of these plans is published in these languages, "
             "so the plan belongs there — but data/plan_translations/<language>.json "
             "has no entry, so "
             "seed_plans will skip it and the language gets no plan at all. Add "

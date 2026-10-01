@@ -852,7 +852,15 @@ export interface AdminAudit {
 		empty_books: Capped<{ book: string; language: string; title: string; author: string }>;
 		empty_chapters: Capped<AuditChapterFinding>;
 		order_gaps: Capped<{ book: string; language: string; missing: number[]; count: number }>;
-		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
+		broken_plan_days: Capped<{
+			plan: string;
+			language: string;
+			day: number;
+			book: string;
+			order: number | null;
+			/** Set on an article day (then `book` is empty and `order` null). */
+			article?: string;
+		}>;
 	};
 	/** Content languages that have any finding — computed over the unfiltered
 	 *  result, so the picker is stable whatever `language` is selected. */
