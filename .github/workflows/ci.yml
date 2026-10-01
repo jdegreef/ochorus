@@ -130,7 +130,11 @@ jobs:
     # ~24.5 min (1,456-1,465 s) on its own, so the old 25-minute ceiling was
     # cancelling runs seconds after the last test finished (#3966, #3989,
     # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
-    timeout-minutes: 40
+    # By 2026-10-01 it had outgrown 40 the same way: a green run took 37.5 min
+    # and same-day runs were cancelled at the ceiling on main and on PRs
+    # (#4879, #4880, #4883). 60 restores the headroom; splitting the suite
+    # into parallel jobs is the lasting fix.
+    timeout-minutes: 60
     env:
       DJANGO_DEBUG: 'true'
     # The suite runs ONCE, on Postgres — the production database. Postgres is a
