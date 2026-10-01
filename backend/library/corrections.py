@@ -9830,3 +9830,91 @@ BODY_CORRECTIONS.setdefault("electing-love", {}).setdefault("replacements", []).
     (" -- ", "—"),
     ("believed--'Ye", "believed—'Ye"),
 ])
+
+# The SermonIndex transcript of Tozer's "How to Cultivate the Holy Spirit's
+# Companionship" ends with the cassette producer's note, not Tozer: drop it.
+BODY_CORRECTIONS.setdefault(
+    "how-to-cultivate-the-holy-spirits-companionship", {}
+).setdefault("replacements", []).append((
+    " The next Sunday sermon referred to on this cassette is unfortunately "
+    "unavailable.</p><p>However, Dr. Tozer has done a complete series on the "
+    "Holy Spirit.</p>",
+    "</p>",
+))
+
+# Tozer, "I Am Crucified with Christ" (SermonIndex speech-to-text): three
+# mishearings, each forced by its context — the farce Christianity becomes
+# without experience, the Roman emperors Caligula and Nero beside Hitler, and
+# Johannes Tauler, "the great German preacher before Luther".
+BODY_CORRECTIONS.setdefault("i-am-crucified-with-christ", {}).setdefault(
+    "replacements", []).extend([
+    ("or else Christianity's a fuck.", "or else Christianity's a farce."),
+    ("how ugly was Caligula, a Negro.", "how ugly was Caligula, a Nero."),
+    ("I'm not a Caligula, I'm not a Negro,", "I'm not a Caligula, I'm not a Nero,"),
+    ("John Fowler, Johannes Fowler, the great German preacher",
+     "John Tauler, Johannes Tauler, the great German preacher"),
+])
+
+# Tozer, "He Must Increase": after the closing appeal the transcript starts the
+# sermon over from its opening reading and runs on to the end of the tape. The
+# restart sits mid-paragraph, so the replacement closes the paragraph on Tozer's
+# last words (eating the restart's first words), and the back-matter seam then
+# cuts everything after that close. Both halves leave their applied form in the
+# fixture, which is what keeps them visible to the dead-pair hygiene test.
+BODY_CORRECTIONS.setdefault("he-must-increase", {}).setdefault(
+    "replacements", []).append((
+    "say, will you? In the book of John, that is gospel according",
+    "say, will you?</p>",
+))
+BODY_CORRECTIONS["he-must-increase"]["back_matter"] = [
+    ("say, will you?</p>", " to Saint John, third chapter, beginning with verse 22"),
+]
+
+# Tozer, "God's Best Is Himself": midway through the communion close, the
+# transcript runs straight on into a different message (on discouragement).
+# Same two-step cut as "He Must Increase" above.
+BODY_CORRECTIONS.setdefault("gods-best-is-himself", {}).setdefault(
+    "replacements", []).append((
+    "himself forever and ever and ever. And the result was, you know,",
+    "himself forever and ever and ever.</p>",
+))
+BODY_CORRECTIONS["gods-best-is-himself"]["back_matter"] = [
+    ("himself forever and ever and ever.</p>",
+     " there'll be always, if you build a new church"),
+]
+
+# Tozer, "The Praying Church": the transcript closes with the radio host's
+# apology for the lost last minutes and his paraphrase of them — not Tozer.
+BODY_CORRECTIONS.setdefault("praying-church", {})["back_matter"] = [
+    ("one you mark prayer.</p>", "<p>You've just listened to the second portion"),
+]
+
+# Simpson, "Wholly Sanctified": two dropped negatives, each forced by its
+# sentence — "did not annihilate … but He separated", and "divine holiness, not
+# human self-improvement" (answering "not the attainment of works" before it).
+BODY_CORRECTIONS.setdefault("wholly-sanctified", {}).setdefault(
+    "replacements", []).extend([
+    ("He did annihilate the darkness, but He separated",
+     "He did not annihilate the darkness, but He separated"),
+    ("It is divine holiness, and human self-improvement",
+     "It is divine holiness, not human self-improvement"),
+])
+
+# Speech-to-text slips in Tozer transcripts. "God Made Man to Worship" carries a
+# two-word non-sentence the recogniser invented (no recoverable word — drop it);
+# "Causes of Backsliding" heard its own subject as "sex-lighting"; and "How to
+# Cultivate the Holy Spirit's Companionship" quotes Job 11:12's "wild ass's
+# colt" as "coat".
+BODY_CORRECTIONS.setdefault("god-made-man-to-worship", {}).setdefault(
+    "replacements", []).append((
+    "That's seeking after God naturally. That's asshole. Well,",
+    "That's seeking after God naturally. Well,",
+))
+BODY_CORRECTIONS.setdefault("causes-of-backsliding", {}).setdefault(
+    "replacements", []).append((
+    "the fertile soil where sex-lighting grows.",
+    "the fertile soil where backsliding grows.",
+))
+BODY_CORRECTIONS.setdefault(
+    "how-to-cultivate-the-holy-spirits-companionship", {}
+).setdefault("replacements", []).append(("wild ass's coat", "wild ass's colt"))

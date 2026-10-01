@@ -664,10 +664,15 @@ TOPIC_SERMONS = {
         "intercession-every-christians-duty",
         "prevailing-prayer",
         "the-spirit-of-prayer",
+        "in-everything-by-prayer",
+        "praying-church",
+        "practical-prayer",
+        "the-spirit-of-prayer-simpson",
     ],
     "holy-spirit": [
         "filled-with-the-spirit",
         "the-holy-ghost",
+        "how-to-cultivate-the-holy-spirits-companionship",
     ],
     "deeper-life": [
         "himself",
@@ -679,6 +684,11 @@ TOPIC_SERMONS = {
         "the-power-of-stillness",
         "walking-with-god",
         "catholic-spirit",
+        "gods-best-is-himself",
+        "he-must-increase",
+        "i-am-crucified-with-christ",
+        "how-to-grow-in-grace",
+        "the-great-secret",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -703,6 +713,8 @@ TOPIC_SERMONS = {
         "enduring-persecution-for-christ",
         "god-glorified-in-mans-dependence",
         "the-greatest-sentence-ever-written",
+        "the-boundless-sufficiency",
+        "the-school-of-faith",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -711,6 +723,8 @@ TOPIC_SERMONS = {
         "the-worlds-need",
         "witnessing-for-christ",
         "why-is-god-a-stranger-in-the-land",
+        "how-to-have-a-personal-revival",
+        "the-logic-of-missions",
     ],
     "faith-and-guidance": [
         "the-possibilities-of-faith",
@@ -722,6 +736,7 @@ TOPIC_SERMONS = {
         "faith",
         "the-power-of-feeble-faith",
         "the-secret-of-tranquillity",
+        "the-cloud-of-witnesses",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -755,6 +770,8 @@ TOPIC_SERMONS = {
         "a-ribband-of-blue",
         "the-circumcision-of-the-heart",
         "what-have-i-to-do-any-more-with-idols",
+        "wholly-sanctified",
+        "seraphims-worship",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",

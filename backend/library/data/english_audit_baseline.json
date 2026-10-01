@@ -199,6 +199,9 @@
    "space-before-punct": 2,
    "word-fusion": 1
   },
+  "practical-prayer": {
+   "space-before-punct": 6
+  },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
    "space-before-punct": 4
@@ -230,6 +233,9 @@
    "orphan-close-quote": 17,
    "space-before-punct": 15,
    "welded-footnote": 5
+  },
+  "seraphims-worship": {
+   "word-fusion": 1
   },
   "sermons-on-several-occasions": {
    "orphan-close-quote": 47,
@@ -267,6 +273,9 @@
    "run-together": 1,
    "space-before-punct": 2
   },
+  "the-boundless-sufficiency": {
+   "space-before-punct": 2
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
   },
@@ -275,6 +284,9 @@
   },
   "the-circumcision-of-the-heart": {
    "space-before-punct": 1
+  },
+  "the-cloud-of-witnesses": {
+   "space-before-punct": 12
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -322,6 +334,12 @@
   },
   "the-power-of-stillness": {
    "space-before-punct": 1
+  },
+  "the-practical-hope-of-the-lords-coming": {
+   "space-before-punct": 2
+  },
+  "the-school-of-faith": {
+   "space-before-punct": 4
   },
   "the-scripture-way-of-salvation": {
    "space-before-punct": 1
