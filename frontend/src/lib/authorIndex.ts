@@ -46,9 +46,9 @@ export function initialOf(name: string): string {
 }
 
 const GENERATIONAL = /^(?:jr|sr|ii|iii|iv)\.?,?$/i;
-// "Augustine of Hippo", "Gregory the Great", "Thomas à Kempis": known by the
-// given name, and filed under it, as library catalogues do.
-const EPITHET = new Set(['of', 'the', 'à']);
+// "Augustine of Hippo", "Gregory the Great", "Thomas à Kempis" (or "a Kempis"):
+// known by the given name, and filed under it, as library catalogues do.
+const EPITHET = new Set(['of', 'the', 'à', 'a']);
 
 /**
  * The name a writer is FILED under: "Tozer, A. W.", the way a library index
@@ -63,13 +63,21 @@ const EPITHET = new Set(['of', 'the', 'à']);
  */
 export function filingName(name: string): string {
 	const words = name.trim().split(/\s+/);
-	if (words.length < 2 || words.some((w) => EPITHET.has(w))) return name.trim();
+	if (words.length < 2 || words.slice(1).some((w) => EPITHET.has(w.toLowerCase()))) return name.trim();
 	const parts = words.filter((w) => !GENERATIONAL.test(w));
 	let i = parts.length - 1;
 	while (i > 1 && /^\p{Ll}/u.test(parts[i - 1])) i--;
 	if (i < 1) return name.trim();
 	return `${parts.slice(i).join(' ')}, ${parts.slice(0, i).join(' ')}`;
 }
+
+/**
+ * `filingName` as a sort key: apostrophes dropped so "M’Cheyne" files with the
+ * Mac/Mc names, as indexes do. Only apostrophes — a collator told to ignore ALL
+ * punctuation also ignores the ", " and spaces, and "Smith, Zoe" would sort
+ * after "Smithers, Al".
+ */
+export const filingKey = (name: string): string => filingName(name).replace(/[’'ʼ]/g, '');
 
 /**
  * Writers grouped by the initial of their filing name (`filingName`) and
@@ -87,7 +95,7 @@ export function authorIndex<A extends IndexAuthor, B extends IndexBook<IndexAuth
 	locale = 'en',
 	skip: string[] = []
 ): IndexGroup<A | B['author'], B>[] {
-	const collator = new Intl.Collator(locale, { sensitivity: 'base', ignorePunctuation: true });
+	const collator = new Intl.Collator(locale, { sensitivity: 'base' });
 	const byAuthor = new Map<string, B[]>();
 	for (const b of books) {
 		const list = byAuthor.get(b.author.slug) ?? [];
@@ -97,10 +105,12 @@ export function authorIndex<A extends IndexAuthor, B extends IndexBook<IndexAuth
 	const writers = new Map<string, A | B['author']>(authors.map((a) => [a.slug, a]));
 	for (const b of books) if (!writers.has(b.author.slug)) writers.set(b.author.slug, b.author);
 	const groups = new Map<string, IndexEntry<A | B['author'], B>[]>();
-	const key = new Map([...writers.values()].map((a) => [a.slug, filingName(a.name)]));
-	for (const a of [...writers.values()].sort((x, y) => collator.compare(key.get(x.slug)!, key.get(y.slug)!))) {
-		if (skip.includes(a.slug)) continue;
-		const letter = initialOf(key.get(a.slug)!);
+	const filed = [...writers.values()]
+		.filter((a) => !skip.includes(a.slug))
+		.map((a) => ({ a, key: filingKey(a.name) }))
+		.sort((x, y) => collator.compare(x.key, y.key));
+	for (const { a, key } of filed) {
+		const letter = initialOf(key);
 		const own = (byAuthor.get(a.slug) ?? []).sort((x, y) => collator.compare(x.title, y.title));
 		const list = groups.get(letter) ?? [];
 		list.push({ author: a, books: own });

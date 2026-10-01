@@ -270,7 +270,7 @@
 							     looked broken). The biography only for a writer with nothing
 							     else listed: almost everyone has one, and on every entry the
 							     link would be noise — the name already leads there. -->
-							{#if w?.sermons || (w?.longBio && !rows.length)}
+							{#if w?.sermons || (w?.bio && !rows.length)}
 								<div class="mt-1 flex flex-wrap gap-x-3 text-small">
 									{#if w.sermons}
 										<a

@@ -19,9 +19,11 @@ export const trailingSlash = 'always';
  *   * the BOOKS in this locale — no English fallback, so each writer lists
  *     exactly the editions a reader of this language can open.
  *   * the writers in THIS locale too, for what else each one has here: the
- *     list's sermon count and full-biography flag are per-language, so the
- *     English list's would promise a Swahili reader English sermons. Off
- *     English it is a third request; in English it is the first list again.
+ *     list's sermon count and biography are per-language, so the English
+ *     list's would promise a Swahili reader English sermons. It also adds
+ *     anyone listed only here (a writer with Luganda sermons and nothing in
+ *     English). Off English it is a third request; in English it is the
+ *     first list again.
  *
  * A failure THROWS during the build, deliberately — the home page's `shelf()`
  * stance, not `loadShelf`'s. This page is the prerender's only seed for every
@@ -42,10 +44,13 @@ export const load: PageLoad = async ({ fetch }) => {
 		// `entries()` — linking an empty era would bake a page the sitemap never
 		// advertises.
 		const present = new Set(authors.map((a) => eraOf(a.birth_year)));
+		const english = new Set(authors.map((a) => a.slug));
+		const roster = local ? [...authors, ...local.filter((a) => !english.has(a.slug))] : authors;
+		// `bio`: the author page renders its #bio section for a short bio too.
 		const works = Object.fromEntries(
-			(local ?? authors).map((a) => [a.slug, { sermons: a.sermon_count, longBio: a.has_long_bio }])
+			(local ?? authors).map((a) => [a.slug, { sermons: a.sermon_count, bio: a.has_long_bio || !!a.bio.trim() }])
 		);
-		return { authors, books, works, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
+		return { authors: roster, books, works, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
 	} catch (e) {
 		if (building) throw e;
 		return { authors: [], books: [], works: {}, eras: [], loadError: true };

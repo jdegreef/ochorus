@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { authorIndex, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
+import { authorIndex, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
 
 const author = (slug: string, name: string) => ({
 	slug,
@@ -38,7 +38,19 @@ describe('filingName', () => {
 		expect(filingName('Augustine of Hippo')).toBe('Augustine of Hippo');
 		expect(filingName('Gregory the Great')).toBe('Gregory the Great');
 		expect(filingName('Thomas à Kempis')).toBe('Thomas à Kempis');
+		expect(filingName('Thomas a Kempis')).toBe('Thomas a Kempis');
+		expect(filingName('John Of God')).toBe('John Of God');
 		expect(filingName('Athanasius')).toBe('Athanasius');
+	});
+});
+
+describe('filingKey', () => {
+	it('drops apostrophes but keeps the surname boundary', () => {
+		expect(filingKey('Robert Murray M’Cheyne')).toBe('MCheyne, Robert Murray');
+		const order = ['Zoe Smith', 'Al Smithers', 'William Law', 'Brother Lawrence'].sort((a, b) =>
+			filingKey(a).localeCompare(filingKey(b), 'en', { sensitivity: 'base' })
+		);
+		expect(order).toEqual(['William Law', 'Brother Lawrence', 'Zoe Smith', 'Al Smithers']);
 	});
 });
 

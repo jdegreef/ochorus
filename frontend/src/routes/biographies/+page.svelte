@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { initialOf } from '$lib/authorIndex';
+	import { filingKey, initialOf } from '$lib/authorIndex';
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -148,8 +148,8 @@
 		const m = new Map<string, string>();
 		if (filters.values.sort !== 'name') return m;
 		for (const a of sorted) {
-			// One filing rule with the library A–Z (accents folded).
-			const c = initialOf(a.name);
+			// One filing rule with the library A–Z: by surname, accents folded.
+			const c = initialOf(filingKey(a.name));
 			if (c !== '#' && !m.has(c)) m.set(c, a.slug);
 		}
 		return m;
@@ -167,7 +167,8 @@
 				// Ranks by everything readable, matching the filter above.
 				return arr.sort((a, b) => worksCount(b) - worksCount(a) || a.name.localeCompare(b.name));
 			default:
-				return arr.sort((a, b) => a.name.localeCompare(b.name));
+				// Filed by surname, like the library A–Z (Tozer under T).
+				return arr.sort((a, b) => filingKey(a.name).localeCompare(filingKey(b.name)));
 		}
 	});
 
