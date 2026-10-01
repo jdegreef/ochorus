@@ -17,16 +17,16 @@
 	});
 </script>
 
-<div class="space-y-2">
-	{#each rows as r (r.label)}
-		<div class="flex items-center gap-3">
-			<span class="w-28 shrink-0 text-small text-text sm:w-44">{r.label}</span>
-			<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
-				<div class="h-full rounded-full bg-accent-soft" style="width: {r.pct}%"></div>
-			</div>
-			<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
-				<span class="font-semibold text-text">{nf.format(r.count)}</span>{r.note}
-			</span>
+<!-- One grid for every row, so the label column is as wide as the longest
+     label on THIS funnel and the bars line up beneath each other. -->
+<div class="grid grid-cols-[max-content_1fr_auto] items-center gap-x-3 gap-y-2">
+	{#each rows as r, i (i)}
+		<span class="text-small text-text">{r.label}</span>
+		<div class="h-4 overflow-hidden rounded-full bg-surface-2">
+			<div class="h-full rounded-full bg-accent-soft" style="width: {r.pct}%"></div>
 		</div>
+		<span class="text-end text-small tabular-nums text-muted">
+			<span class="font-semibold text-text">{nf.format(r.count)}</span>{r.note}
+		</span>
 	{/each}
 </div>

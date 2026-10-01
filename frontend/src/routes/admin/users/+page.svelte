@@ -113,7 +113,7 @@
 		finished: 'Finished something'
 	};
 	const activationSteps = $derived(
-		(data?.activation ?? []).map((a) => ({ label: activationLabels[a.step], count: a.count }))
+		(data?.activation ?? []).map((a) => ({ label: activationLabels[a.step] ?? a.step, count: a.count }))
 	);
 
 	type Card = { label: string; value: number; sub: string; trend: Trend };
@@ -239,13 +239,17 @@
 				</p>
 
 				<!-- Sign-up to habit -->
-				{#if activationSteps.length}
+				{#if activationSteps[0]?.count}
 					<section class="mb-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">From sign-up to habit</h2>
 							<span class="text-small text-muted">Each step counts only accounts that reached the one before. Percentages are of registered users.</span>
 						</div>
 						<FunnelBars steps={activationSteps} />
+						<p class="mt-3 text-micro text-muted">
+							A day is a calendar day in the reader's own time zone, from the reading-streak log. Because the steps nest, a
+							reader who finished something in a single day stops at Activated.
+						</p>
 					</section>
 				{/if}
 

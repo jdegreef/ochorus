@@ -552,35 +552,41 @@ def _activation_counts() -> dict[str, int]:
 
     * signed_up — every account;
     * started — has any reading progress (the Users page's "Activated");
-    * returned — read on two or more days (``ReadingDay``: the reader's local
-      dates, the same log the streak counts);
+    * returned — read on two or more days, from ``ReadingDay`` (the streak log:
+      one row per reader per LOCAL date). A sitting that runs past midnight
+      counts as two days, and readers from before that log existed, or on a
+      client that never sent it, can read as not having come back;
     * finished — of those, finished a book, sermon, biography or article (the
-      stored ``finished_at`` stamp). Nesting means a reader who finished in a
-      single sitting is not counted here.
+      stored ``finished_at`` stamp). Because steps nest, a reader who finished
+      in a single day stops at "started", so this is lower than the
+      engagement page's finisher counts.
 
-    One aggregate over accounts: each step is a condition ANDed onto the one
-    before, so the nesting happens in SQL and no id lists come back.
+    Each account's three facts are annotated once and then counted, so every
+    subquery runs once per account rather than once per step.
     """
-    from django.db.models import Exists, OuterRef
+    from django.db.models import Exists, OuterRef, Subquery
+    from django.db.models.functions import Coalesce
 
     from accounts.models import UserProfile
     from reading.models import ReadingDay, ReadingProgress
 
     progress = ReadingProgress.objects.filter(profile=OuterRef("pk"))
-    started = Q(Exists(progress))
-    # ReadingDay is unique per (profile, day), so two rows are two days.
-    returned = started & Q(
-        pk__in=ReadingDay.objects.values("profile")
-        .annotate(days=Count("day"))
-        .filter(days__gte=2)
+    days = (
+        ReadingDay.objects.filter(profile=OuterRef("pk"))
         .values("profile")
+        .annotate(n=Count("pk"))
+        .values("n")
     )
-    finished = returned & Q(Exists(progress.filter(finished_at__isnull=False)))
-    return UserProfile.objects.aggregate(
+    started, returned = Q(has_progress=True), Q(has_progress=True, days__gte=2)
+    return UserProfile.objects.annotate(
+        has_progress=Exists(progress),
+        days=Coalesce(Subquery(days), 0),
+        has_finished=Exists(progress.filter(finished_at__isnull=False)),
+    ).aggregate(
         signed_up=Count("pk"),
         started=Count("pk", filter=started),
         returned=Count("pk", filter=returned),
-        finished=Count("pk", filter=finished),
+        finished=Count("pk", filter=returned & Q(has_finished=True)),
     )
 
 
@@ -588,8 +594,9 @@ def _activation_counts() -> dict[str, int]:
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
-    Mostly aggregate over ``accounts.UserProfile`` (+ a distinct-reader count
-    from ReadingProgress for activation). The ``recent`` list is the exception:
+    Mostly aggregate over ``accounts.UserProfile``. ``total``, ``with_activity``
+    and the ``activation`` funnel all come from ``_activation_counts``, so the
+    tiles and the funnel always agree. The ``recent`` list is the exception:
     it names individual accounts (display name, email, sign-in method) so the
     founder can see who is actually signing up — admin-only, behind
     ``IsAdminEmail``, and served to no one else.
