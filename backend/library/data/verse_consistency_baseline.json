@@ -1,7 +1,9 @@
 {
  "_comment": "Shrink-only ratchet for library/tests_verse_consistency.py. Maps a reference to HOW MANY distinct ways its language renders it; a count may fall or a reference may leave, neither may grow. Regenerate with `manage.py audit_verse_consistency --update-baseline` and say in the commit message which renderings you reconciled. That command REFUSES a re-pin that would loosen the ratchet — absorbing a new or widened conflict needs --absorb said out loud, because a silent re-pin is how this file went from 110 conflicts to 322 with CI green throughout.",
  "conflicts": {
+  "am\tሉቃስ 11:1": 2,
   "am\tማርቆስ 9:24": 2,
+  "am\tማቴዎስ 6:6": 4,
   "am\tኢሳይያስ 53:5": 2,
   "am\tዮሐንስ 5:44": 2,
   "am\tፊልጵስዩስ 2:8": 2,
