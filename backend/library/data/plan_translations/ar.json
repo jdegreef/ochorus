@@ -101,10 +101,11 @@
     ]
   },
   "school-of-prayer": {
-    "title": "مدرسة الصلاة",
+    "title": "أسس الصلاة",
     "description": "أربعة أسابيع في مدرسة الصلاة مع ثلاثة معلّمين: أندرو موراي في كيف يعلّمنا الربّ نفسه أن نصلّي، ود. ل. مودي في الصلاة الغالبة، وحنّة بوينزا في الصلاة بوصفها نبض الحياة المسيحيّة اليوميّ.",
     "note": [
-      "The three guides are named with the exact Arabic titles their books ship under, so the plan and the library agree."
+      "The three guides are named with the exact Arabic titles their books ship under, so the plan and the library agree.",
+      "2026-10-01: retitled from «مدرسة الصلاة» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description keeps its school-of-prayer wording, as the English one does."
     ]
   },
   "school-of-prayer-31-days": {

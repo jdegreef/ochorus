@@ -15,11 +15,12 @@
   ]
  },
  "school-of-prayer": {
-  "title": "የጸሎት ትምህርት ቤት",
+  "title": "የጸሎት መሠረቶች",
   "description": "ከሦስት መሪዎች ጋር በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
   "note": [
    "Queue job #3575. AI-drafted; awaiting native review. None of the three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has an am edition yet, so seed_plans creates no am row until they all do; whoever ships them should make the card quote their titles.",
-   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition."
+   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition.",
+   "2026-10-01: retitled from «የጸሎት ትምህርት ቤት» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description keeps its school-of-prayer wording, as the English one does."
   ]
  },
  "brave-for-god-24-true-stories": {

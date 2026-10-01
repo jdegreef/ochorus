@@ -39,8 +39,11 @@
     "description": "Wiki nne pamoja na R. A. Torrey kuhusu maisha yaliyojaa Roho: kwanza ubatizo wa Roho Mtakatifu na nguvu unazoleta kwa ajili ya huduma, kisha uchunguzi kamili zaidi wa Nafsi na kazi ya Roho anayekaa ndani ya kila mwamini."
   },
   "school-of-prayer": {
-    "title": "Shule ya Maombi",
-    "description": "Wiki nne katika shule ya maombi pamoja na waelekezi watatu: Andrew Murray kuhusu jinsi Bwana mwenyewe anavyotufundisha kuomba, D. L. Moody kuhusu maombi yenye kushinda, na Hannah Buyinza kuhusu maombi kama mapigo ya kila siku ya maisha ya Mkristo."
+    "title": "Misingi ya Maombi",
+    "description": "Wiki nne katika shule ya maombi pamoja na waelekezi watatu: Andrew Murray kuhusu jinsi Bwana mwenyewe anavyotufundisha kuomba, D. L. Moody kuhusu maombi yenye kushinda, na Hannah Buyinza kuhusu maombi kama mapigo ya kila siku ya maisha ya Mkristo.",
+    "note": [
+      "2026-10-01: retitled from «Shule ya Maombi» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description keeps its school-of-prayer wording, as the English one does."
+    ]
   },
   "the-inner-chamber-month": {
     "title": "Mwezi katika Chumba cha Ndani",

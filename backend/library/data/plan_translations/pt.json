@@ -101,7 +101,10 @@
  },
  "school-of-prayer": {
   "description": "Quatro semanas na escola da oração com três guias: Andrew Murray sobre como o próprio Senhor nos ensina a orar, D. L. Moody sobre a oração perseverante e Hannah Buyinza sobre a oração como o pulso diário da vida cristã.",
-  "title": "Uma Escola de Oração"
+  "title": "Fundamentos da Oração",
+  "note": [
+   "2026-10-01: retitled from «Uma Escola de Oração» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description keeps its school-of-prayer wording, as the English one does."
+  ]
  },
  "school-of-prayer-31-days": {
   "description": "Um mês com Andrew Murray aos pés do único Mestre. Cada dia abre com uma das próprias palavras de Jesus sobre a oração, de “Senhor, ensina-nos a orar” até as promessas da última noite, e termina numa oração própria. Uma lição por dia, cerca de dez minutos, rumo à intercessão e a uma vida de oração.",
