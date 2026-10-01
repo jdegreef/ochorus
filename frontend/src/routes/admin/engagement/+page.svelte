@@ -45,11 +45,11 @@
 
 	// Reading pulse — the headline figures, each with a plain-English sub and,
 	// where there's a prior window to divide by, a week-over-week trend chip. The
-	// active tile also carries the weekly sparkline (`spark`).
+	// active tile also carries the weekly sparkline (`spark`). Readers sits beside
+	// Registered users so the accounts that never opened a chapter read as a gap.
 	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; spark?: boolean }[]>(
 		data
 			? [
-					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
 					{
 						label: 'Active · 7d',
 						value: data.overview.active_7d,
@@ -69,8 +69,9 @@
 						sub: `${fmt(data.overview.hearts_7d)} this week`,
 						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev)
 					},
-					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
-					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
+					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
+					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null },
+					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
 				]
 			: []
 	);
@@ -147,7 +148,9 @@
 			{:else}
 				<!-- Reading pulse -->
 				<p class="section-label">Reading pulse</p>
-				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+				<!-- Three across at most: at six the tiles were too narrow for a label and
+				     its chip on one line, so "Active · 7d" broke at the dot. -->
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-start justify-between gap-2">
@@ -159,7 +162,7 @@
 								{/if}
 							</div>
 							<div class="mt-2 flex items-center gap-2">
-								<span class="text-small font-semibold text-text">{c.label}</span>
+								<span class="whitespace-nowrap text-small font-semibold text-text">{c.label}</span>
 								<TrendChip trend={c.trend} />
 							</div>
 							<div class="text-small text-muted">{c.sub}</div>
@@ -187,7 +190,7 @@
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers` },
 								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
 							] as c (c.label)}
-								<div class="rounded-card border border-border bg-surface-2 p-4">
+								<div class="rounded-card bg-surface-2 p-4">
 									<div class="stat-number">{c.text}</div>
 									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 									<div class="text-small text-muted">{c.sub}</div>
@@ -201,13 +204,15 @@
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
 					<ColumnChart
-						columns={d.weekly_active.map((w) => ({
+						columns={d.weekly_active.map((w, i) => ({
 							key: w.week,
 							label: weekLabel(w.week),
 							value: w.readers,
+							current: i === d.weekly_active.length - 1,
 							title: `Week of ${weekLabel(w.week)} · ${fmt(w.readers)} reader${w.readers === 1 ? '' : 's'}`
 						}))}
 					/>
+					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->

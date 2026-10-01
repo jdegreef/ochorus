@@ -496,6 +496,7 @@
   "book_series_member": "Частина серії «{series}»",
   "book_series_next": "Наступна в серії",
   "series_progress": "Прочитано {done} з {total}",
+  "series_in_progress": "У процесі",
   "series_all_read": "Ви прочитали всі книги цієї серії",
   "series_meta_default": "{series}: усі книги серії — безкоштовно на Ochorus.",
   "series_tagline": "Книги, написані, щоб читати їх разом: одні по черзі, інші як збірку.",

@@ -496,6 +496,7 @@
   "book_series_member": "Fait partie de {series}",
   "book_series_next": "Suivant dans la série",
   "series_progress": "{done} sur {total} lus",
+  "series_in_progress": "En cours",
   "series_all_read": "Vous avez lu tous les livres de cette série",
   "series_meta_default": "{series} : tous les livres de la série, à lire gratuitement sur Ochorus.",
   "series_tagline": "Des livres écrits pour être lus ensemble — certains dans l’ordre, d’autres comme un ensemble.",

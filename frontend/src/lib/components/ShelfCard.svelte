@@ -36,6 +36,7 @@
 		portrait = '',
 		covers = [],
 		title,
+		subtitle = '',
 		headingLevel = 2,
 		aside,
 		children
@@ -47,8 +48,7 @@
 		emblem?: EmblemName;
 		/**
 		 * A monogram for the badge — label over value: a topic's epigraph
-		 * ("JER" over 33), a plan's length ("DAYS" over 21), a series' size
-		 * ("BOOKS" over 4). Null keeps the emblem (e.g. a topic with no
+		 * ("JER" over 33) or a plan's length ("DAYS" over 21). Null keeps the emblem (e.g. a topic with no
 		 * epigraph translated into this language).
 		 */
 		mark?: { top: string; value: string } | null;
@@ -57,6 +57,9 @@
 		
 		covers?: TopicCover[];
 		title: string;
+		/** A second, smaller line inside the heading — a series' "30 Days with
+		 *  God for Girls" — so the heading still carries the whole name. */
+		subtitle?: string;
 		/** 2 when the card sits directly under the page's <h1> (Topics, Plans); 3
 		 *  when it sits in a section under its own <h2> (the Books page's rail). */
 		headingLevel?: 2 | 3;
@@ -124,7 +127,12 @@
 	</div>
 	<div class="shelf-card-body">
 		<div class="flex items-baseline justify-between gap-3">
-			<svelte:element this={`h${headingLevel}`} class="shelf-card-title">{title}</svelte:element>
+			<svelte:element this={`h${headingLevel}`} class="shelf-card-title"
+				>{title}{#if subtitle}<span class="sr-only"> – </span><span
+						class="shelf-card-subtitle"
+						dir="auto">{subtitle}</span
+					>{/if}</svelte:element
+			>
 			{#if aside}
 				<span class="shrink-0 text-small text-muted">{@render aside()}</span>
 			{/if}
