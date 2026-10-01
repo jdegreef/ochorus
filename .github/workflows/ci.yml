@@ -86,6 +86,15 @@ jobs:
   # is covered by backend-tests, which content triggers), so it must not drag in
   # the Docker build. A `.py` seed module (quote_seed, corrections, …) is code
   # and does trip `backend` — over-running the image build, which is the safe side.
+  #
+  # `predicate-quantifier: every` — a file trips a filter only if it matches
+  # EVERY line in it. That is what makes the `!fixtures` exclusion an AND. Under
+  # the default (`some`, any one line), "not under fixtures" matched every file
+  # in the repo, so `backend` was true on EVERY PR and a frontend-only change
+  # paid for the ~40-minute backend suite and the image build (and could time
+  # out on them). With `every`, alternatives must share ONE line as a brace
+  # glob — hence `{a,b}` below rather than two lines.
+  # `.gitattributes` rides with backend: tests_fixture reads it.
   changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -106,17 +115,17 @@ jobs:
         id: filter
         if: github.event_name == 'pull_request'
         with:
+          predicate-quantifier: every
           filters: |
             backend:
-              - 'backend/**'
+              - '{backend/**,.gitattributes}'
               - '!backend/library/fixtures/**'
             content:
               - 'backend/library/fixtures/**'
             frontend:
               - 'frontend/**'
             ci:
-              - '.github/workflows/**'
-              - 'render.yaml'
+              - '{.github/workflows/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
