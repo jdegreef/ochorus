@@ -11,7 +11,7 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from library.models import Book, Plan, PlanDay
-from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS
+from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, RETIRED_PLANS
 from library.plan_translations import plan_translations
 
 
@@ -93,7 +93,29 @@ class Command(BaseCommand):
             self.stdout.write(f"Updated plan {slug} ({lang}) prose.")
         return True
 
+    def _retire(self) -> None:
+        """Delete every row of a plan in ``RETIRED_PLANS``, in every language.
+
+        The rest of this command only creates and reconciles, so a plan dropped
+        from the lists would otherwise stay live forever. Deleting rather than
+        unpublishing because a Plan row is wholly derived from the seed data:
+        nothing points at it by FK but its own days, which go with it, and
+        readers' progress is slug-keyed and carried to the successor elsewhere
+        (see ``RETIRED_PLANS``). An unpublished row would still count as a
+        "present" plan in the admin coverage grid and per-language totals.
+        """
+        for slug in RETIRED_PLANS:
+            rows = Plan.objects.filter(slug=slug)
+            langs = sorted(rows.values_list("language", flat=True))
+            if not langs:
+                continue
+            rows.delete()
+            self.stdout.write(
+                self.style.WARNING(f"Retired plan {slug} ({', '.join(langs)}).")
+            )
+
     def handle(self, *args, **opts):
+        self._retire()
         created = 0
         for slug, book_slug, title, description, *rest in LAUNCH_PLANS:
             span = rest[0] if rest else None  # (first, last) chapter order

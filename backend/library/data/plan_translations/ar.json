@@ -51,53 +51,18 @@
     "title": "قوّة من الأعالي: الروح القدس",
     "description": "أربعة أسابيع مع ر. أ. توري في الحياة المملوءة بالروح: أوّلًا المعمودية بالروح القدس والقوّة التي تمنحها للخدمة، ثمّ الدرس الأوفى في أقنوم الروح الساكن في كلّ مؤمنٍ وعمله."
   },
-  "rooted-book-1-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 1",
-    "description": "ثلاثون يومًا لتمدّ جذورك عميقًا، للقرّاء من سنّ التاسعة إلى الثانية عشرة: مَن هو الله، والخبر السار عن يسوع، ومَن أنت في المسيح، وكيف تصلّي، وكيف تنمو. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+  "rooted-three-months-books-1-3": {
+    "title": "متأصّلون: ثلاثة أشهر مع الله — الكتب 1–3",
+    "description": "ثلاثة أشهر مع الله للقرّاء من سنّ التاسعة إلى الثانية عشرة: الكتب الثلاثة الأولى من «متأصّلون» — «مغروسون» و«اتّباع يسوع» و«ثمر ينمو» — تأمّل قصير كل يوم عن مَن هو الله والخبر السار عن يسوع، والسير معه من المذود إلى القبر الفارغ، ونموّ ثمر الروح.",
     "note": [
-      "Single-book plan backed by the ar edition of rooted-1 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 1»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-1 -> ar job (#3587), which makes this LAUNCH plan creatable in ar."
+      "AI-drafted; awaiting native review. Three-book plan backed by the ar editions of rooted-1 … rooted-3; replaces the per-book rooted-book-1/2/3-30-days cards and the first half of rooted-six-months-with-god. Book names are the ar subtitles' lead words (مغروسون / اتّباع يسوع / ثمر ينمو); «تأمّل قصير كل يوم» as in the six-month card it replaces."
     ]
   },
-  "rooted-book-2-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 2",
-    "description": "ثلاثون يومًا تسير فيها مع يسوع، للقرّاء من سنّ التاسعة إلى الثانية عشرة: من المذود في بيت لحم، مرورًا بمعجزاته وأمثاله، إلى الصليب والقبر الفارغ. كل يوم قراءة قصيرة واحدة: مقطع من الأناجيل، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
+  "rooted-three-months-books-4-6": {
+    "title": "متأصّلون: ثلاثة أشهر مع الله — الكتب 4–6",
+    "description": "ثلاثة أشهر أخرى مع الله للقرّاء من سنّ التاسعة إلى الثانية عشرة: الكتب الثلاثة الأخيرة من «متأصّلون» — «أقوياء في العاصفة» و«أغصان ممتدّة» و«حاملون ثمرًا» — تأمّل قصير كل يوم عن الثبات حين تصعب الحياة، ومحبة مَن حولك، وقصد الله لحياتك.",
     "note": [
-      "Single-book plan backed by the ar edition of rooted-2 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 2»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-2 -> ar job (#3601), which makes this LAUNCH plan creatable in ar."
-    ]
-  },
-  "rooted-book-3-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 3",
-    "description": "ثلاثون يومًا لإنماء الثمر، للقرّاء من سنّ التاسعة إلى الثانية عشرة: المحبة والفرح والسلام والصبر واللطف وبقية ثمر الروح، والكلام الذي نقوله، وعادات القلب. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
-    "note": [
-      "Single-book plan backed by the ar edition of rooted-3 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 3»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-3 -> ar job (#4048), which makes this LAUNCH plan creatable in ar."
-    ]
-  },
-  "rooted-book-4-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 4",
-    "description": "ثلاثون يومًا للثبات في عواصف الحياة، للقرّاء من سنّ التاسعة إلى الثانية عشرة: حين تخاف أو تقلق أو تحزن، وحين تُجرَّب، وحين تبدو الحياة غير عادلة. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
-    "note": [
-      "Single-book plan backed by the ar edition of rooted-4 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 4»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-4 -> ar job (#4049), which makes this LAUNCH plan creatable in ar."
-    ]
-  },
-  "rooted-book-5-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 5",
-    "description": "ثلاثون يومًا لتمتدّ أغصانك بالمحبة، للقرّاء من سنّ التاسعة إلى الثانية عشرة: العائلة، والأصدقاء، والغفران، وعائلة الله في الكنيسة، والعالم كله. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
-    "note": [
-      "Single-book plan backed by the ar edition of rooted-5 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 5»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-5 -> ar job (#4050), which makes this LAUNCH plan creatable in ar."
-    ]
-  },
-  "rooted-book-6-30-days": {
-    "title": "متأصّلون: 30 يومًا مع الله — الكتاب 6",
-    "description": "ثلاثون يومًا عن قصد الله لحياتك، للقرّاء من سنّ التاسعة إلى الثانية عشرة: مختارون ومخلوقون لأعمال صالحة، واستخدام مواهبك ووقتك لله، والخدمة والدفاع عن الحق، والتطلّع إلى مجيء يسوع. كل يوم قراءة قصيرة واحدة: آية من الكتاب المقدس، وسؤال للتفكير، وأمر للتجربة، وصلاة.",
-    "note": [
-      "Single-book plan backed by the ar edition of rooted-6 (book title «متأصّلون – 30 يومًا مع الله للناشئين – الكتاب 6»); card wording follows the shipped book's settled terms and the ar 'rooted' series row (متأصّلون). Added by the book:rooted-6 -> ar job (#4051), which makes this LAUNCH plan creatable in ar."
-    ]
-  },
-  "rooted-six-months-with-god": {
-    "title": "متأصّلون: ستة أشهر مع الله",
-    "description": "نصف سنة مع الله للقرّاء من سنّ التاسعة إلى الثانية عشرة: الكتب الستة من «متأصّلون»، من «مغروسون» إلى «حاملون ثمرًا»، تأمّل قصير كل يوم — آية، وما تعنيه، وأمر للتفكير، وأمر للتجربة، وصلاة.",
-    "note": [
-      "Six-book plan backed by the ar editions of rooted-1 … rooted-6 (series row «متأصّلون – 30 يومًا مع الله للناشئين»); book names are the ar subtitles of Book 1 (مغروسون) and Book 6 (حاملون ثمرًا). Added by the book:rooted-5/-6 -> ar jobs (#4050, #4051), which complete the set."
+      "AI-drafted; awaiting native review. Three-book plan backed by the ar editions of rooted-4 … rooted-6; replaces the per-book rooted-book-4/5/6-30-days cards and the second half of rooted-six-months-with-god. Book names are the ar subtitles' lead words (أقوياء في العاصفة / أغصان ممتدّة / حاملون ثمرًا); wording mirrors rooted-three-months-books-1-3."
     ]
   },
   "school-of-prayer": {

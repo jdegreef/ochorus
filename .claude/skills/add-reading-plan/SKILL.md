@@ -110,3 +110,16 @@ below right, then verifying.
   real invariant without a DB.
 - **Books can appear in more than one plan.** `around-the-wicket-gate` backs
   both `the-pilgrims-way` and `first-steps-for-teens` — reuse is fine.
+- **Removing a plan means retiring it, not deleting its tuple.** `seed_plans`
+  only creates and reconciles, so a dropped tuple leaves its rows live in prod.
+  Add the slug to `RETIRED_PLANS` in `plan_seed.py` (with its successor plans);
+  the seed then deletes its rows in every language, and a test keeps the slug
+  from coming back. Reader progress is keyed by slug + day number, so if
+  readers should land on a successor, move it twice: a `reading` data
+  migration for the account (see `0032_move_series_plan_progress`) and
+  `frontend/src/lib/planMoves.ts` for the device cache. Drop the slug's
+  entries from every `plan_translations/<lang>.json` (the dead-slug test fails
+  otherwise).
+- **Never renumber a live plan's days in place** — devices re-send their old
+  day numbers on every sync. A different day structure is a new slug plus a
+  retirement (above).
