@@ -1104,6 +1104,9 @@ export interface AdminEngagement {
 	rising: EngagementRisingRow[];
 	highlight_heatmap: EngagementHeatmap | null;
 	plan_funnel: EngagementPlanFunnel;
+	/** Sign-up to habit, each step a subset of the one before:
+	 *  signed_up → started → returned (sittings on 2+ dates) → finished. */
+	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];

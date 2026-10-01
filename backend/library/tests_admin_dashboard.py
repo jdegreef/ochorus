@@ -1075,6 +1075,42 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(hm["peak_chapter"], 1)
         self.assertEqual(hm["peak_readers"], 1)
 
+    @override_settings(DEBUG=True)
+    def test_activation_steps_each_narrow_the_one_before(self):
+        """p1 read on two dates and finished a book; p2 read on one date only;
+        p3 signed up and never read. p2 also finished a sermon, but one sitting
+        is not a habit, so the finish step must not count p2."""
+        import uuid
+        from datetime import timedelta
+
+        from django.contrib.auth import get_user_model
+
+        from accounts.models import UserProfile
+        from reading.models import ReadingProgress, ReadingSession, WorkKind
+
+        User = get_user_model()
+        UserProfile.objects.create(
+            user=User.objects.create(username=str(uuid.uuid4())), supabase_uid=uuid.uuid4()
+        )
+        # Fixed noon timestamps, so p2's two sittings an hour apart can never
+        # straddle midnight and count as two dates.
+        noon = timezone.now().replace(hour=12, minute=0, second=0, microsecond=0)
+        for i, (profile, start) in enumerate(
+            [(self.p1, noon), (self.p1, noon - timedelta(days=3)), (self.p2, noon),
+             (self.p2, noon - timedelta(hours=1))]
+        ):
+            ReadingSession.objects.create(
+                profile=profile, client_id=f"s{i}", started_at=start, last_seen_at=start, seconds=60
+            )
+        ReadingProgress.objects.create(
+            profile=self.p2, kind=WorkKind.SERMON, book_slug="humility", language="en",
+            finished_at=noon,
+        )
+
+        res = self.client.get("/api/admin/engagement/")
+        steps = {s["step"]: s["count"] for s in res.data["activation"]}
+        self.assertEqual(steps, {"signed_up": 3, "started": 2, "returned": 1, "finished": 1})
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.get("/api/admin/engagement/")

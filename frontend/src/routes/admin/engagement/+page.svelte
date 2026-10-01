@@ -103,19 +103,56 @@
 
 	// Plan funnel steps, each as a share of "started" so the drop-off reads down
 	// the bars. Started is the 100% baseline; the rest narrow from it.
+	// A funnel's steps as bar rows: each bar and note is a share of the FIRST
+	// step, so the drop-off reads down the bars. Shared by the activation and
+	// reading-plan funnels so the two read the same way.
+	const funnelRows = (steps: { label: string; count: number }[]) => {
+		const base = steps[0]?.count ?? 0;
+		if (!base) return [];
+		return steps.map((st, i) => {
+			const pct = Math.round((st.count / base) * 100);
+			return { ...st, pct, note: i ? `${pct}%` : '' };
+		});
+	};
+
 	const planSteps = $derived.by(() => {
 		const f = data?.plan_funnel;
-		if (!f || !f.started) return [];
-		const share = (n: number) => Math.round((n / f.started) * 100);
-		return [
-			{ label: 'Started', count: f.started, pct: 100, note: '' },
-			{ label: 'Came back', count: f.returned, pct: share(f.returned), note: `${share(f.returned)}%` },
-			{ label: 'Completed', count: f.completed, pct: share(f.completed), note: `${share(f.completed)}%` }
-		];
+		if (!f) return [];
+		return funnelRows([
+			{ label: 'Started', count: f.started },
+			{ label: 'Came back', count: f.returned },
+			{ label: 'Completed', count: f.completed }
+		]);
 	});
+
+	// Sign-up to habit. Each step is a subset of the one before (see
+	// AdminEngagementView._activation), so every drop is real.
+	const activationLabels: Record<string, string> = {
+		signed_up: 'Signed up',
+		started: 'Started reading',
+		returned: 'Came back another day',
+		finished: 'Finished something'
+	};
+	const activationSteps = $derived(
+		funnelRows((data?.activation ?? []).map((a) => ({ label: activationLabels[a.step] ?? a.step, count: a.count })))
+	);
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
+
+{#snippet funnelBars(rows: { label: string; count: number; pct: number; note: string }[])}
+	{#each rows as r (r.label)}
+		<div class="flex items-center gap-3">
+			<span class="w-28 shrink-0 text-small text-text sm:w-44">{r.label}</span>
+			<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
+				<div class="h-full rounded-full bg-accent-soft" style="width: {r.pct}%"></div>
+			</div>
+			<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
+				<span class="font-semibold text-text">{fmt(r.count)}</span>{#if r.note}{` · ${r.note}`}{/if}
+			</span>
+		</div>
+	{/each}
+{/snippet}
 
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
@@ -173,6 +210,22 @@
 					<p class="mt-3 text-micro text-muted">
 						Early data — only {fmt(d.overview.readers)} reader{d.overview.readers === 1 ? '' : 's'} so far. Read the charts below as directional, not statistically firm.
 					</p>
+				{/if}
+
+				<!-- Sign-up to habit -->
+				{#if activationSteps.length}
+					<section class="mt-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">From sign-up to habit</h2>
+							<span class="text-small text-muted">Each step counts only accounts that reached the one before. Percentages are of sign-ups.</span>
+						</div>
+						<div class="space-y-2">
+							{@render funnelBars(activationSteps)}
+						</div>
+						<p class="mt-3 text-micro text-muted">
+							"Came back" counts reading sittings on two or more dates, recorded since reading-time tracking began.
+						</p>
+					</section>
 				{/if}
 
 				<!-- Reading time (from sittings) -->
@@ -388,17 +441,7 @@
 							<span class="text-small text-muted">Plans live or die on retention — where readers drop off.</span>
 						</div>
 						<div class="space-y-2">
-							{#each planSteps as s (s.label)}
-								<div class="flex items-center gap-3">
-									<span class="w-24 shrink-0 text-small text-text">{s.label}</span>
-									<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
-										<div class="h-full rounded-full bg-accent-soft" style="width: {s.pct}%"></div>
-									</div>
-									<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
-										<span class="font-semibold text-text">{fmt(s.count)}</span>{#if s.note} · {s.note}{/if}
-									</span>
-								</div>
-							{/each}
+							{@render funnelBars(planSteps)}
 						</div>
 						{#if d.plan_funnel.by_plan.length}
 							<div class="mt-5 overflow-x-auto">

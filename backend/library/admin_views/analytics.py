@@ -96,6 +96,7 @@ class AdminEngagementView(APIView):
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
+                "activation": self._activation(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
             }
@@ -375,6 +376,45 @@ class AdminEngagementView(APIView):
             "peak_chapter": peak["chapter"] if peak and peak["readers"] else None,
             "peak_readers": peak["readers"] if peak else 0,
         }
+
+    def _activation(self) -> list[dict]:
+        """Sign-up to habit: how many accounts reach each step, where every step
+        is a subset of the one before it, so the drop between two steps is real.
+
+        * signed up — every account;
+        * started reading — has any reading progress;
+        * came back another day — reading sittings on two or more dates. Sittings
+          are recorded only since reading-time tracking began, so a reader who
+          last came back before that is not counted here;
+        * finished something — a book, sermon, biography or article marked
+          finished (the stored ``finished_at`` stamp).
+
+        Built from profile-id sets in Python: the population is accounts, not
+        content, and nesting the steps in SQL would need one subquery per step.
+        """
+        from django.db.models.functions import TruncDate
+
+        from accounts.models import UserProfile
+        from reading.models import ReadingProgress, ReadingSession
+
+        def ids(qs):
+            return set(qs.values_list("profile", flat=True).distinct())
+
+        signed_up = UserProfile.objects.count()
+        started = ids(ReadingProgress.objects.all())
+        returned = started & set(
+            ReadingSession.objects.values("profile")
+            .annotate(days=Count(TruncDate("started_at"), distinct=True))
+            .filter(days__gte=2)
+            .values_list("profile", flat=True)
+        )
+        finished = returned & ids(ReadingProgress.objects.filter(finished_at__isnull=False))
+        return [
+            {"step": "signed_up", "count": signed_up},
+            {"step": "started", "count": len(started)},
+            {"step": "returned", "count": len(returned)},
+            {"step": "finished", "count": len(finished)},
+        ]
 
     def _plan_funnel(self) -> dict:
         """Reading-plan engagement: the started → came-back → completed funnel,
