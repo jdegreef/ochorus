@@ -9838,27 +9838,31 @@ BODY_CORRECTIONS.setdefault("i-am-crucified-with-christ", {}).setdefault(
 ])
 
 # Tozer, "He Must Increase": after the closing appeal the transcript starts the
-# sermon over from its opening reading and runs on to the end of the tape. Split
-# the paragraph at the restart, then cut the repeat as back matter.
+# sermon over from its opening reading and runs on to the end of the tape. The
+# restart sits mid-paragraph, so the replacement closes the paragraph on Tozer's
+# last words (eating the restart's first words), and the back-matter seam then
+# cuts everything after that close. Both halves leave their applied form in the
+# fixture, which is what keeps them visible to the dead-pair hygiene test.
 BODY_CORRECTIONS.setdefault("he-must-increase", {}).setdefault(
     "replacements", []).append((
     "say, will you? In the book of John, that is gospel according",
-    "say, will you?</p><p>In the book of John, that is gospel according",
+    "say, will you?</p>",
 ))
 BODY_CORRECTIONS["he-must-increase"]["back_matter"] = [
-    ("say, will you?</p>", "<p>In the book of John, that is gospel according"),
+    ("say, will you?</p>", " to Saint John, third chapter, beginning with verse 22"),
 ]
 
 # Tozer, "God's Best Is Himself": midway through the communion close, the
 # transcript runs straight on into a different message (on discouragement).
-# Split at the seam and cut what follows.
+# Same two-step cut as "He Must Increase" above.
 BODY_CORRECTIONS.setdefault("gods-best-is-himself", {}).setdefault(
     "replacements", []).append((
     "himself forever and ever and ever. And the result was, you know,",
-    "himself forever and ever and ever.</p><p>And the result was, you know,",
+    "himself forever and ever and ever.</p>",
 ))
 BODY_CORRECTIONS["gods-best-is-himself"]["back_matter"] = [
-    ("himself forever and ever and ever.</p>", "<p>And the result was, you know,"),
+    ("himself forever and ever and ever.</p>",
+     " there'll be always, if you build a new church"),
 ]
 
 # Tozer, "The Praying Church": the transcript closes with the radio host's
