@@ -6,6 +6,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
+	import { passageMark } from '$lib/sermonMonogram';
 	import { topicMeta } from '$lib/emblemNames';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -58,7 +59,7 @@
 					href={localizeHref(`/topics/${topic.slug}`)}
 					hue={meta.accent}
 					emblem={meta.emblem}
-					scriptureRef={topic.scripture_ref}
+					mark={passageMark(topic.scripture_ref)}
 					covers={topic.covers}
 					title={topic.title}
 				>

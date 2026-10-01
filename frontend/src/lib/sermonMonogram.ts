@@ -44,3 +44,13 @@ function parseRef(ref: string): SermonMonogram | null {
 export function sermonMonogram(ref: string | null | undefined, title: string): SermonMonogram {
 	return parseRef(ref ?? '') ?? { book: '', chapter: graphemes(title.trim())[0] ?? '' };
 }
+
+/**
+ * A passage as a `Monogram` mark ({ top: "JER", value: "33" }), or null when
+ * there is no parseable passage — for badges that keep their emblem then
+ * (a topic whose epigraph is not translated into this language).
+ */
+export function passageMark(ref: string | null | undefined): { top: string; value: string } | null {
+	const m = parseRef(ref ?? '');
+	return m ? { top: m.book, value: m.chapter } : null;
+}
