@@ -1075,10 +1075,6 @@ export interface AdminEngagement {
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
-	/** The small-group floor. When `applied`, breakdown rows covering fewer
-	 *  than `min_group` readers were withheld (`hidden` of them); a super-admin
-	 *  gets exact figures and `applied: false`. */
-	privacy: { min_group: number; applied: boolean; hidden: number };
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');

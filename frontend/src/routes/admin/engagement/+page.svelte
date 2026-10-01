@@ -90,12 +90,6 @@
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
 	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
-	// The smallest group shown when the privacy floor is applied, else null. With
-	// it on, an empty list may mean "only small groups", not "nothing", so the
-	// empty states say which. `?.` on privacy: a frontend deployed ahead of the
-	// API sees a payload without it, and must not crash the page.
-	const floor = $derived(data?.privacy?.applied ? data.privacy.min_group : null);
-	const floorNote = $derived(floor ? ` with ${floor} or more readers` : '');
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
 
@@ -134,9 +128,7 @@
 			</p>
 			<span class="privacy-badge mt-3 inline-flex items-center gap-2 text-small text-muted">
 				<span class="privacy-dot" aria-hidden="true"></span>
-				{floor
-					? `Aggregate only · groups under ${floor} readers hidden`
-					: 'Aggregate only · no individual readers'}
+				Aggregate only · no individual readers
 			</span>
 		</div>
 		{#if data}
@@ -293,7 +285,7 @@
 							</table>
 						</div>
 					{:else}
-						<p class="mt-3 text-body text-muted">No {topTabLabel.toLowerCase()}{floorNote} yet.</p>
+						<p class="mt-3 text-body text-muted">No {topTabLabel.toLowerCase()} activity yet.</p>
 					{/if}
 				</section>
 
@@ -352,7 +344,7 @@
 									{/each}
 								</ul>
 							{:else}
-								<p class="text-body text-muted">No readable works hearted{floorNote} yet.</p>
+								<p class="text-body text-muted">No hearts on readable works yet.</p>
 							{/if}
 						</section>
 
@@ -439,9 +431,6 @@
 							</li>
 						{/each}
 					</ul>
-					{#if !d.by_language.length}
-						<p class="text-body text-muted">No language{floorNote} yet.</p>
-					{/if}
 				</section>
 			{/if}
 		{/snippet}

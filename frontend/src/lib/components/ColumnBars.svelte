@@ -1,3 +1,14 @@
+<script lang="ts" module>
+	export type ColumnBar = {
+		key: string;
+		label: string;
+		value: number;
+		/** A highlighted share of the bar, drawn stacked at its foot. */
+		part?: number;
+		title?: string;
+	};
+</script>
+
 <script lang="ts">
 	// A small column chart for the admin dashboards: one bar per period, its
 	// count above it and its label below. Shared so the three copies on the
@@ -7,15 +18,6 @@
 	// three copies once sized the bar as a % of a content-sized column, which
 	// resolves to auto, so every bar fell to its 3px min-height whatever the
 	// count.
-	export type ColumnBar = {
-		key: string;
-		label: string;
-		value: number;
-		/** A highlighted share of the bar, drawn stacked at its foot. */
-		part?: number;
-		title?: string;
-	};
-
 	let { bars, current = false }: { bars: ColumnBar[]; current?: boolean } = $props();
 
 	const max = $derived(Math.max(1, ...bars.map((b) => b.value)));

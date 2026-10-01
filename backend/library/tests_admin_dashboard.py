@@ -1080,58 +1080,6 @@ class AdminEngagementTests(TestCase):
         res = self.client.get("/api/admin/engagement/")
         self.assertIn(res.status_code, (401, 403))
 
-    @override_settings(DEBUG=True)
-    def test_a_super_admin_sees_exact_small_groups(self):
-        res = self.client.get("/api/admin/engagement/")
-        self.assertEqual(res.data["privacy"], {"min_group": 5, "applied": False, "hidden": 0})
-        self.assertTrue(res.data["top_content"]["book"])
-
-    @override_settings(DEBUG=True)
-    def test_a_delegated_viewer_never_sees_a_group_under_five(self):
-        """Every breakdown here covers one or two readers, so a viewer without
-        the super-admin's access gets none of them back, and is told so."""
-        from .admin_views.analytics import AdminEngagementView
-
-        payload = self.client.get("/api/admin/engagement/").data
-        privacy = AdminEngagementView._apply_privacy_floor(payload, exact=False)
-
-        self.assertTrue(privacy["applied"])
-        self.assertGreater(privacy["hidden"], 0)
-        self.assertEqual(payload["top_content"]["book"], [])
-        self.assertEqual(payload["most_loved"], [])
-        self.assertEqual(payload["by_language"], [])
-        self.assertEqual(payload["plan_funnel"]["by_plan"], [])
-        self.assertIsNone(payload["highlight_heatmap"])
-        # Site-wide totals describe everyone, so they stay exact.
-        self.assertEqual(payload["overview"]["readers"], 2)
-        self.assertEqual(payload["plan_funnel"]["started"], 2)
-
-    @override_settings(DEBUG=True)
-    def test_every_engagement_key_has_chosen_whether_it_is_floored(self):
-        from .admin_views.analytics import FLOORED_KEYS, UNFLOORED_KEYS
-
-        keys = set(self.client.get("/api/admin/engagement/").data)
-        self.assertEqual(keys - FLOORED_KEYS - set(UNFLOORED_KEYS), set())
-        self.assertFalse(FLOORED_KEYS & set(UNFLOORED_KEYS))
-
-    def test_the_floor_keeps_a_group_of_five(self):
-        from .admin_views.analytics import AdminEngagementView
-
-        chapters = [{"chapter": 1, "readers": 5}, {"chapter": 2, "readers": 4}]
-        payload = {
-            "top_content": {"book": [{"readers": 5}, {"readers": 4}]},
-            "rising": [],
-            "most_loved": [],
-            "by_language": [{"readers": 9}],
-            "plan_funnel": {"by_plan": []},
-            "highlight_heatmap": {"peak_readers": 5, "chapters": chapters},
-        }
-        privacy = AdminEngagementView._apply_privacy_floor(payload, exact=False)
-        self.assertEqual(payload["top_content"]["book"], [{"readers": 5}])
-        self.assertEqual(payload["by_language"], [{"readers": 9}])
-        self.assertEqual([c["readers"] for c in chapters], [5, 0])
-        self.assertEqual(privacy["hidden"], 2)
-
 
 class AdminUsersTests(TestCase):
     def setUp(self):
