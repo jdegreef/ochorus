@@ -1529,6 +1529,35 @@ all of which this command already does. The steps:
     "blockquote the first paragraph if it opens with a quote" would swallow a
     prose paragraph here — render only `<p>` and `div.c1`, and never skip a
     `<p>` merely for having a div ancestor.
+- **SermonIndex batch gotchas** *(Tozer + Simpson batch 2, #4871, 2026-10)*:
+  - **Some SermonIndex Simpson texts are a MODERNIZED edition** ("my eye sees
+    You" for KJV "mine eye seeth thee") — not his wording, possibly copyrighted
+    editing. Screen every candidate: count `thee/thou/thy` and `-eth` words vs a
+    mid-sentence capital `You`; take only texts with archaic forms and zero
+    `You`. Same trap as the modernized-scripture memory note.
+  - **Audio transcripts hide whole-sermon defects the audit can't see:** a page
+    whose transcript is a DIFFERENT sermon (the "Five Spiritual Vows" page),
+    a second message spliced in midway, the opening reading restarted at the
+    tail, and cassette/radio-host notes. Have a reader (agent) read each one in
+    full before shipping, and grep for profanity/slur mishearings ("a Negro" was
+    "a Nero", a vulgarity was "a farce") — two had already shipped live.
+  - **Cutting from mid-paragraph to the end:** a replacement that splits the
+    paragraph + a `back_matter` seam on the new block reds
+    `test_no_replacement_pair_is_dead` (after the cut neither side survives).
+    Make the replacement's NEW string the kept close (`"…will you?</p>"`, eating
+    the restart's first words) and seam `back_matter` on the words after it.
+  - **A sermon slug that already exists** (`the-spirit-of-prayer` = Finney)
+    makes `import_sermons <slug>` import BOTH catalog entries — the second
+    overwrites the first's dev row. `ls fixtures/content/sermons/<slug>.*`
+    before naming; suffix the author (`-simpson`) on a clash, and restore the
+    clobbered row with `seed_sermons`.
+  - **Serializing an existing sermon** adds blank `content_digest` /
+    `english_digest` keys and bumps `updated_at` — strip the keys and restore
+    `updated_at`/`created_at`/`sort_order` from `git show HEAD:` so the diff
+    is the body only.
+  - **A new BOOK also needs a search snippet** in
+    `library/data/book_meta/en.json` (≤125 chars) or
+    `tests_meta_descriptions` reds.
 - **A sermon may have no scripture text** (Luther's Good Friday Passion
   meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
   invent an anchor. Cards and pages render with the passage line empty.
