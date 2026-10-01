@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import type { QuoteAuthorSummary } from '$lib/library-public';
+	import type { QuoteAuthorSummary, QuoteTopicSummary } from '$lib/library-public';
+	import { quoteTopicHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
 	import { initials, portraitPosition } from '$lib/portraits';
@@ -10,6 +11,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
+	import QuoteText from '$lib/components/QuoteText.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -17,12 +19,23 @@
 	let { data } = $props();
 	const authors = $derived<QuoteAuthorSummary[]>(data.authors);
 	const loadError = $derived<boolean>(data.loadError);
+	// The first ten themes, in the API's curated order: all twenty stack eight
+	// rows deep on a phone, pushing the writers off the first screen. The rest
+	// sit one tap away behind "Browse quotes by topic".
+	const TOPIC_CHIPS = 10;
+	const topics = $derived<QuoteTopicSummary[]>(data.topics.slice(0, TOPIC_CHIPS));
 	const t = i18n.t;
 
 	const path = '/quotes/';
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
 	const total = $derived(authors.reduce((n, a) => n + a.count, 0));
+
+	// The ", chapter N" after a teaser's work — none for a sermon. The same prose
+	// the quote card's copy text uses (`quotes.clipChapter`), so a line is cited
+	// one way across the site.
+	const chapterSuffix = (order: number | null): string =>
+		order === null ? '' : t('quotes.clipChapter').replace('%n%', String(order));
 
 	const title = 'Christian quotes, with their sources — Ochorus';
 	const description =
@@ -73,10 +86,29 @@
 		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
 
-	<!-- The other way in: by theme rather than by writer. -->
-	<p class="mb-6">
+	<!-- The other way in: by theme rather than by writer. Most readers arrive
+	     with a need ("prayer", "suffering"), not a name, so the themes are
+	     chips up top rather than one small link — the same pill as the home
+	     page's topic row (TopicChips), in the API's curated order. A failed
+	     topics fetch drops the chips and keeps the link. -->
+	<nav class="mb-6" aria-label={t('quotes.byTopic')}>
+		{#if topics.length}
+			<ul class="mb-3 flex flex-wrap gap-2">
+				{#each topics as tp (tp.slug)}
+					<li>
+						<a
+							href={quoteTopicHref(tp.slug)}
+							class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
+						>
+							{tp.title}
+							<span class="text-eyebrow font-normal text-muted">{tp.count}</span>
+						</a>
+					</li>
+				{/each}
+			</ul>
+		{/if}
 		<a class="browse" href="/quotes/topics/">{t('quotes.browseByTopic')}</a>
-	</p>
+	</nav>
 
 	<!-- A card per author. The accent bar wears the author's era hue, the same
 	     colour their row carries on the Biographies shelf and their quote page's
@@ -91,7 +123,7 @@
 			<li>
 				<a
 					href={`/quotes/${a.slug}/`}
-					class="card-tint flex items-center gap-4 rounded-card border border-border bg-surface p-4"
+					class="card-tint flex h-full items-center gap-4 rounded-card border border-border bg-surface p-4"
 					style={`--hue: ${hueForBirthYear(a.birth_year)}`}
 				>
 					<span class="era-bar" aria-hidden="true"></span>
@@ -129,12 +161,22 @@
 							<!-- A representative line — the author's shortest quote — turns
 							     the directory into something to browse. It is the quotation
 							     text itself (English, as on the author pages), so it is
-							     printed as content, not a localized string. Clamped to two
-							     lines so every card keeps the same height. -->
-							<span
-								class="font-display text-small mt-1.5 line-clamp-2 italic text-muted"
-								>{`“${a.teaser}”`}</span
+							     printed as content, not a localized string; QuoteText repairs
+							     the dashes and small caps the extraction flattened. Clamped to
+							     two lines; the card's h-full keeps a row's two cards level. -->
+							<span class="font-display text-small mt-1.5 line-clamp-2 italic text-muted"
+								>“<QuoteText text={a.teaser} />”</span
 							>
+							{#if a.teaser_source}
+								<!-- Its source. The page promises the citation, so the card
+								     shows one before the click — the aggregators' format is the
+								     line with nothing under it. -->
+								<span class="mt-0.5 block text-eyebrow text-muted"
+									>— <cite class="italic">{a.teaser_source.work}</cite>{chapterSuffix(
+										a.teaser_source.order
+									)}</span
+								>
+							{/if}
 						{/if}
 					</span>
 					<span class="text-muted"><Arrow /></span>

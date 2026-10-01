@@ -1,4 +1,4 @@
-import { listQuoteAuthors } from '$lib/library-public';
+import { listQuoteAuthors, listQuoteTopics } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import type { PageLoad } from './$types';
 
@@ -9,7 +9,13 @@ export const trailingSlash = 'always';
 // lifted from the English works, so there is no translated index to serve. The
 // list comes from the same endpoint the author-page entry generator and the
 // sitemap read, so all three advertise exactly the reviewed set.
+//
+// The quote themes ride along for the topic chips — the page's second way in.
+// A failed topic fetch only hides the chips; the authors decide the error state.
 export const load: PageLoad = async ({ fetch }) => {
-	const { items, loadError } = await loadShelf(listQuoteAuthors(fetch));
-	return { authors: items, loadError };
+	const [authors, topics] = await Promise.all([
+		loadShelf(listQuoteAuthors(fetch)),
+		loadShelf(listQuoteTopics(fetch))
+	]);
+	return { authors: authors.items, loadError: authors.loadError, topics: topics.items };
 };

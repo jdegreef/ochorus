@@ -1479,21 +1479,37 @@ class QuoteAuthorsView(APIView):
         # sourced from exactly one of chapter/sermon, so the (book, sermon) id
         # pair — one side always null — is itself the work's distinct identity,
         # and a set of those pairs counts the distinct works.
-        teaser: dict[int, str] = {}
+        #
+        # The teaser travels WITH its source (`teaser_source`: the work's title,
+        # and the chapter's order — null for a sermon, as `QuoteSource.order`),
+        # because the index is the page that promises the citation: a line on
+        # the card with no work under it is the aggregators' format.
+        teaser: dict[int, tuple[str, dict]] = {}
         works: dict[int, set] = {}
-        for author_id, text, book_id, sermon_id in Quote.objects.filter(
+        for (author_id, text, book_id, sermon_id,
+             book_title, chapter_order, sermon_title) in Quote.objects.filter(
             reviewed=True
-        ).values_list("author_id", "text", "chapter__book_id", "sermon_id"):
+        ).values_list(
+            "author_id", "text", "chapter__book_id", "sermon_id",
+            "chapter__book__title", "chapter__order", "sermon__title",
+        ):
             best = teaser.get(author_id)
-            if best is None or (len(text), text) < (len(best), best):
-                teaser[author_id] = text
+            if best is None or (len(text), text) < (len(best[0]), best[0]):
+                source = (
+                    {"work": sermon_title, "order": None}
+                    if sermon_id is not None
+                    else {"work": book_title, "order": chapter_order}
+                )
+                teaser[author_id] = (text, source)
             works.setdefault(author_id, set()).add((book_id, sermon_id))
 
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
-                 "count": r["n"], "teaser": teaser.get(r["id"], ""),
+                 "count": r["n"],
+                 "teaser": teaser.get(r["id"], ("", None))[0],
+                 "teaser_source": teaser.get(r["id"], ("", None))[1],
                  "work_count": len(works.get(r["id"], ())),
                  "updated_at": r["updated"]}
                 for r in rows

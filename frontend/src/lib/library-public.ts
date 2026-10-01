@@ -1522,6 +1522,10 @@ export interface QuoteAuthorSummary {
 	count: number;
 	/** The author's shortest reviewed quote — the card's teaser line. "" if none. */
 	teaser: string;
+	/** Where the teaser comes from, for the card's citation line: the work's
+	 *  title and the chapter's order (null for a sermon, as `QuoteSource.order`).
+	 *  Null with no teaser; optional because an API behind this build omits it. */
+	teaser_source?: { work: string; order: number | null } | null;
 	/** Distinct works (books + sermons) the author is quoted from. */
 	work_count: number;
 	/** When the newest reviewed quotation was added — the sitemap's <lastmod>.

@@ -554,7 +554,8 @@ class QuotePageApiTests(TestCase):
             listing,
             [{"slug": "w", "name": "A Writer", "birth_year": None,
               "photo_url": "", "count": 1,
-              "teaser": "A memorable sentence about grace.", "work_count": 1}],
+              "teaser": "A memorable sentence about grace.",
+              "teaser_source": {"work": "A Work", "order": 3}, "work_count": 1}],
         )
 
     def test_the_index_work_count_is_distinct_books_and_sermons(self):
@@ -610,6 +611,23 @@ class QuotePageApiTests(TestCase):
         )
         row = self.client.get("/api/library/quotes/").data[0]
         self.assertEqual(row["teaser"], "Short and sweet.")
+        # Its citation is the shortest line's own, not the first quote's.
+        self.assertEqual(row["teaser_source"], {"work": "A Work", "order": 3})
+
+    def test_a_sermon_teaser_cites_the_sermon_with_no_chapter(self):
+        # A sermon has no chapters, so its citation is the sermon's title alone —
+        # `order` null, as in `QuoteSource`, which the card reads to drop ", chapter N".
+        sermon = Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="A Sermon",
+            body_html="<p>x</p>",
+        )
+        Quote.objects.create(
+            slug="w-serm", author=self.author, text="Brief.",
+            sermon=sermon, paragraph=1, reviewed=True,
+        )
+        row = self.client.get("/api/library/quotes/").data[0]
+        self.assertEqual(row["teaser"], "Brief.")
+        self.assertEqual(row["teaser_source"], {"work": "A Sermon", "order": None})
 
     def test_the_payload_carries_the_citation(self):
         self.quote.reviewed = True
