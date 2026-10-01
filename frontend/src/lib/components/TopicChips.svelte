@@ -3,6 +3,7 @@
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
+	import TopicPill from '$lib/components/TopicPill.svelte';
 
 	/**
 	 * The "Browse by topic" pill row, shared by the logged-out home and the
@@ -24,17 +25,13 @@
 		/>
 		<div class="flex flex-wrap gap-2.5">
 			{#each topics as topic (topic.slug)}
-				<a
+				<!-- Members, not books: a shelf carried by its sermons showed a bare
+				     "0" here, which reads as an empty shelf rather than a full one. -->
+				<TopicPill
 					href={localizeHref(`/topics/${topic.slug}`)}
-					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
-				>
-					{topic.title}
-					<!-- Members, not books: a shelf carried by its sermons showed a bare
-					     "0" here, which reads as an empty shelf rather than a full one. -->
-					<span class="text-eyebrow font-normal text-muted"
-						>{topic.book_count + topic.sermon_count}</span
-					>
-				</a>
+					title={topic.title}
+					count={topic.book_count + topic.sermon_count}
+				/>
 			{/each}
 		</div>
 	</section>

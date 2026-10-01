@@ -4,7 +4,7 @@
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
-	import { plainQuote } from '$lib/quoteText';
+	import { plainQuote, sourceProse } from '$lib/quoteText';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -21,17 +21,9 @@
 		cite
 	}: { quote: Quote; authorName: string; cite: string } = $props();
 
-	// "Work" or "Work, chapter N" — the source line as prose. Shared by the copy
-	// text and the shareable card so the two attributions never drift, the same
-	// reason the card component itself is shared (see header). A plain function,
-	// not `$derived`: it is only ever read inside a click handler, never in the
-	// template, so there is nothing to react to. `clipChapter` already carries
-	// its own leading ", ".
-	const sourceLine = () =>
-		quote.source.work +
-		(quote.source.order === null
-			? ''
-			: t('quotes.clipChapter').replace('%n%', String(quote.source.order)));
+	// The source line as prose, for the copy text and the shareable card. A
+	// plain function, not `$derived`: it is only read inside click handlers.
+	const sourceLine = () => sourceProse(quote.source);
 
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;

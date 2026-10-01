@@ -12,6 +12,8 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
+	import TopicPill from '$lib/components/TopicPill.svelte';
+	import { sourceProse } from '$lib/quoteText';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -30,12 +32,6 @@
 	const canonical = `${SITE_URL}${path}`;
 	const hreflang = hreflangFor(path, ['en']);
 	const total = $derived(authors.reduce((n, a) => n + a.count, 0));
-
-	// The ", chapter N" after a teaser's work — none for a sermon. The same prose
-	// the quote card's copy text uses (`quotes.clipChapter`), so a line is cited
-	// one way across the site.
-	const chapterSuffix = (order: number | null): string =>
-		order === null ? '' : t('quotes.clipChapter').replace('%n%', String(order));
 
 	const title = 'Christian quotes, with their sources — Ochorus';
 	const description =
@@ -86,23 +82,14 @@
 		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
 
-	<!-- The other way in: by theme rather than by writer. Most readers arrive
-	     with a need ("prayer", "suffering"), not a name, so the themes are
-	     chips up top rather than one small link — the same pill as the home
-	     page's topic row (TopicChips), in the API's curated order. A failed
-	     topics fetch drops the chips and keeps the link. -->
+	<!-- The other way in: by theme rather than by writer. A failed topics
+	     fetch drops the chips and keeps the link. -->
 	<nav class="mb-6" aria-label={t('quotes.byTopic')}>
 		{#if topics.length}
 			<ul class="mb-3 flex flex-wrap gap-2">
 				{#each topics as tp (tp.slug)}
 					<li>
-						<a
-							href={quoteTopicHref(tp.slug)}
-							class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-3.5 py-1.5 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
-						>
-							{tp.title}
-							<span class="text-eyebrow font-normal text-muted">{tp.count}</span>
-						</a>
+						<TopicPill href={quoteTopicHref(tp.slug)} title={tp.title} count={tp.count} />
 					</li>
 				{/each}
 			</ul>
@@ -168,13 +155,9 @@
 								>“<QuoteText text={a.teaser} />”</span
 							>
 							{#if a.teaser_source}
-								<!-- Its source. The page promises the citation, so the card
-								     shows one before the click — the aggregators' format is the
-								     line with nothing under it. -->
+								<!-- The teaser's citation — the promise the tagline makes. -->
 								<span class="mt-0.5 block text-eyebrow text-muted"
-									>— <cite class="italic">{a.teaser_source.work}</cite>{chapterSuffix(
-										a.teaser_source.order
-									)}</span
+									>— {sourceProse(a.teaser_source)}</span
 								>
 							{/if}
 						{/if}
