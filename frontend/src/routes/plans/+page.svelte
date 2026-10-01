@@ -200,7 +200,7 @@
 					{:else if plan.day_one}
 						<p class="text-small text-muted">
 							<span class="font-medium text-text">{t('plans.day')} 1</span>
-							<span class="opacity-60"> · </span>{plan.day_one.book_title}
+							<span class="opacity-60"> · </span>{plan.day_one.book_title || plan.day_one.chapter_title}
 						</p>
 					{/if}
 				</div>

@@ -60,7 +60,8 @@ In this order, and nothing else at the top level:
    shelves head each group with the **group heading** recipe (§ below), in a
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
    A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
-   button (Books, Articles, Biographies), keyed to the filter/sort state so a
+   button (Articles, Biographies; Books opens on 56 and adds 48, sized for its
+   seven-across `.book-grid--library` — `pager()`'s `first` argument), keyed to the filter/sort state so a
    new filter starts over — use `pager()` from `$lib/paging.svelte`, and export
    `snapshot = pagedSnapshot(() => shelf)` from the route so Back lands where
    the reader was (SvelteKit restores a snapshot AFTER scroll on popstate, so a

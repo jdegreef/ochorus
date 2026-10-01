@@ -14,7 +14,13 @@ from django.conf import settings
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.admin_roles import ROLE_NAMES, apply_grant, revoke_grant
+from accounts.admin_roles import (
+    ROLE_GRANTS,
+    ROLE_INFO,
+    ROLE_NAMES,
+    apply_grant,
+    revoke_grant,
+)
 from accounts.models import (
     ALL_LANGUAGES,
     AdminCapability,
@@ -22,10 +28,10 @@ from accounts.models import (
     AdminVerb,
     split_providers,
 )
-from accounts.permissions import IsAdminEmail
+from accounts.permissions import HasAnyAdminAccess, IsAdminEmail
 
 from ..audit import AdminAudited
-from ..languages import known_codes
+from ..languages import known_codes, language_map
 from ..models import AdminAction
 
 
@@ -122,3 +128,29 @@ class AdminTeamView(AdminAudited, APIView):
         if not codes:
             raise ValueError("choose at least one language, or select all languages")
         return ",".join(codes)
+
+
+class AdminRolesView(APIView):
+    """The access model as data, for the Help & roles page: every capability
+    with its label, each role's label, summary and grants, and language names.
+
+    Read straight from ``PRESETS`` / ``ROLE_INFO`` so the help page cannot drift
+    from the roles it explains. Open to anyone with any admin access — the Help
+    page is in everyone's rail, including a holder of one raw grant — and it
+    names no people, so there is nothing here a grantee shouldn't see."""
+
+    permission_classes = [HasAnyAdminAccess]
+
+    def get(self, request):
+        return Response(
+            {
+                "capabilities": [
+                    {"code": c, "label": label} for c, label in AdminCapability.choices
+                ],
+                "roles": [
+                    {"code": code, "label": label, "summary": summary, "grants": ROLE_GRANTS[code]}
+                    for code, (label, summary) in ROLE_INFO.items()
+                ],
+                "languages": {code: e["name"] for code, e in language_map().items()},
+            }
+        )

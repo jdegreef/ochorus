@@ -4,6 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
+	import { relativeTime } from '$lib/relativeTime';
 	import {
 		adminUserDirectoryCsvUrl,
 		formatDuration,
@@ -11,6 +12,7 @@
 		getAdminUsers,
 		maskEmail,
 		periodTrend,
+		SMALL_BASE,
 		type AdminUserSort,
 		type Trend
 	} from '$lib/library-admin';
@@ -82,6 +84,24 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
+	// A small-base trend reads as an absolute change ("+29"), which means
+	// nothing without the number it's relative to — so name it.
+	const prevSub = (prev: number, days: number) =>
+		prev < SMALL_BASE ? `prev ${days} days: ${fmt(prev)}` : `vs prev ${days} days`;
+
+	// "3 days ago" for the recent list, where recency is the point; the full date
+	// stays in the title.
+	const ago = (iso: string | null) => (iso ? relativeTime(Date.parse(iso), 'en', 'just now') : '—');
+
+	// The weekly series is zero-filled back a fixed number of weeks, so before
+	// the first account existed it's a run of empty bars squeezing the real ones.
+	// Start at the first week with a sign-up (all of it, if there are none).
+	const signupWeeks = $derived.by(() => {
+		const weeks = data?.weekly_signups ?? [];
+		const first = weeks.findIndex((w) => w.count > 0);
+		return first > 0 ? weeks.slice(first) : weeks;
+	});
+
 	type Card = { label: string; value: number; sub: string; trend: Trend };
 	const cards = $derived<Card[]>(
 		data
@@ -89,8 +109,8 @@
 					{ label: 'Registered users', value: data.total, sub: 'total accounts', trend: null },
 					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read`, trend: null },
 					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet', trend: null },
-					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
-					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
+					{ label: 'New · 7d', value: data.signups_7d, sub: prevSub(data.signups_prev_7d, 7), trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
+					{ label: 'New · 30d', value: data.signups_30d, sub: prevSub(data.signups_prev_30d, 30), trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
 				]
 			: []
 	);
@@ -208,13 +228,17 @@
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
 					<div class="flex items-end gap-1.5" style="height: 8rem">
-						{#each d.weekly_signups as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
-								<div class="text-small tabular-nums text-muted">{w.count || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
-								></div>
+						{#each signupWeeks as w (w.week)}
+							<div class="flex h-full flex-1 flex-col items-center gap-1" title="Week of {weekLabel(w.week)} · {fmt(w.count)} sign-up{w.count === 1 ? '' : 's'}">
+								<div class="text-small tabular-nums text-muted">{w.count}</div>
+								<!-- A slot with a definite height for the bar's percentage to
+								     resolve against (the search page's daily chart does the same). -->
+								<div class="flex w-full flex-1 flex-col justify-end">
+									<div
+										class="w-full rounded-t-sm border border-b-0 border-accent-soft-border bg-accent-soft"
+										style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
+									></div>
+								</div>
 								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
 							</div>
 						{/each}
@@ -260,40 +284,39 @@
 							{/if}
 						</div>
 						{#if d.recent.length}
-							<ul class="divide-y divide-border">
-								{#each d.recent as u, i (u.uid)}
-										<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5">
-											<div class="min-w-0">
-												{#if u.display_name}
-													<a href="/admin/users/{u.uid}" class="block truncate font-semibold text-text hover:text-accent hover:underline">{u.display_name}</a>
-													{@render emailCell(u.email, i, 'text-small text-muted')}
-												{:else}
-													<!-- No name: the row is reached via the "View" link; email stays a reveal button. -->
-													<a href="/admin/users/{u.uid}" class="text-small text-accent hover:underline">View profile →</a>
-													{@render emailCell(u.email, i, 'font-semibold text-text')}
-												{/if}
-											</div>
-											<div class="flex items-baseline gap-4 text-small text-muted">
-												<span class="text-text">
-													{#if u.providers.length}
-														{u.providers.map((p) => p.label).join(', ')}
-													{:else}
-														<span class="text-muted">—</span>
-													{/if}
-												</span>
-												<span class="whitespace-nowrap tabular-nums" title="Joined">{dayFmt(u.joined_at)}</span>
-												<span class="hidden whitespace-nowrap tabular-nums sm:inline" title="Last seen"
-													>seen {dayFmt(u.last_seen_at)}</span
-												>
-												<a
-													href="/admin/users/{u.uid}"
-													class="whitespace-nowrap text-accent hover:underline"
-													aria-label="View {u.display_name || u.email || 'this reader'}'s profile">View →</a
-												>
-											</div>
-										</li>
-									{/each}
-							</ul>
+							<!-- One row per account, one link per row: the name (or "Unnamed")
+							     opens the profile, the email under it is the reveal toggle. -->
+							<div class="overflow-x-auto">
+								<table class="w-full text-start text-small">
+									<thead class="text-micro uppercase text-muted">
+										<tr class="border-b border-border">
+											<th class="py-2 text-start font-semibold">Reader</th>
+											<th class="py-2 text-start font-semibold">Sign-in</th>
+											<th class="hidden py-2 text-start font-semibold sm:table-cell">Lang</th>
+											<th class="hidden py-2 text-end font-semibold sm:table-cell">Joined</th>
+											<th class="py-2 text-end font-semibold">Seen</th>
+										</tr>
+									</thead>
+									<tbody class="divide-y divide-border">
+										{#each d.recent as u, i (u.uid)}
+											<tr class="hover:bg-surface-2">
+												<td class="w-1/2 max-w-0 py-2 pe-3">
+													<a
+														href="/admin/users/{u.uid}"
+														class="block truncate font-semibold {u.display_name ? 'text-text' : 'text-muted'} hover:text-accent hover:underline"
+														>{u.display_name || 'Unnamed'}</a
+													>
+													{@render emailCell(u.email, i, 'text-micro text-muted')}
+												</td>
+												<td class="py-2 pe-3 text-muted">{u.providers.map((p) => p.label).join(', ') || '—'}</td>
+												<td class="hidden py-2 pe-3 text-muted sm:table-cell">{u.locale || '—'}</td>
+												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted sm:table-cell" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
+												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
+											</tr>
+										{/each}
+									</tbody>
+								</table>
+							</div>
 						{:else}
 							<p class="text-body text-muted">No sign-ups yet.</p>
 						{/if}

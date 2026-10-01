@@ -118,6 +118,16 @@ export interface AdminTeam {
 }
 export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
 
+// The access model as data — every capability with its label, and each role's
+// label, summary and grants (backend PRESETS verbatim, plus the super admin).
+// Readable by any admin; the Help & roles page renders it so it can't drift from the presets.
+export interface AdminRoles {
+	capabilities: { code: string; label: string }[];
+	roles: { code: string; label: string; summary: string; grants: Record<string, string> }[];
+	languages: Record<string, string>;
+}
+export const getAdminRoles = () => apiFetch<AdminRoles>('/api/admin/roles/');
+
 /**
  * Fetch the Admin Manual PDF (super-admin only) as an object URL. The endpoint is
  * bearer-gated, so a plain `<a href>` can't reach it — we fetch the blob with the
@@ -852,7 +862,15 @@ export interface AdminAudit {
 		empty_books: Capped<{ book: string; language: string; title: string; author: string }>;
 		empty_chapters: Capped<AuditChapterFinding>;
 		order_gaps: Capped<{ book: string; language: string; missing: number[]; count: number }>;
-		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
+		broken_plan_days: Capped<{
+			plan: string;
+			language: string;
+			day: number;
+			book: string;
+			order: number | null;
+			/** Set on an article day (then `book` is empty and `order` null). */
+			article?: string;
+		}>;
 	};
 	/** Content languages that have any finding — computed over the unfiltered
 	 *  result, so the picker is stable whatever `language` is selected. */
@@ -909,14 +927,39 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 
 // A period-over-period change for a dashboard stat, or null when there's no
 // prior baseline to divide by — a brand-new metric reads "new" rather than a
-// fake +100%. Shared by the engagement and users pages so their trend chips
-// stay identical (render one with <TrendChip>).
-export type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+// fake +100%. Shared by the admin stat pages so their trend chips stay
+// identical (render one with <TrendChip>).
+//
+// `bad` marks a change that is a regression whatever its direction (a rising
+// zero-result rate); left unset, the chip reads up as good and down as bad.
+export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean } | null;
+
+// Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
+// true and useless. Small bases report the absolute change ("+29") instead.
+export const SMALL_BASE = 20;
+
+const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
+const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: signed(cur - prev) };
 	const d = Math.round(((cur - prev) / prev) * 100);
-	if (d === 0) return { dir: 'flat', text: '0%' };
-	return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
+	return { dir: dirOf(d), text: `${signed(d)}%` };
+};
+
+/** The change between two RATES (0–1), in percentage points — a rate moving
+ *  from 40% to 44% is "+4 pts", not "+10%". Null without a prior period to
+ *  compare against. `lowerIsBetter` flips which direction reads as bad. */
+export const pointsTrend = (
+	cur: number,
+	prev: number | null,
+	{ lowerIsBetter = false }: { lowerIsBetter?: boolean } = {}
+): Trend => {
+	if (prev === null) return null;
+	const d = Math.round((cur - prev) * 100);
+	const dir = dirOf(d);
+	return { dir, text: `${signed(d)} pts`, bad: dir !== 'flat' && (lowerIsBetter ? d > 0 : d < 0) };
 };
 
 // Reading-engagement analytics (aggregate-only).
@@ -1592,6 +1635,9 @@ export interface SearchStatsWindow {
 	distinct_queries: number;
 	zero_results: number;
 	zero_rate: number;
+	/** Results opened in the same span. Rows, not readers — one search can lead
+	 *  to several opens — so a rate built on it is a trend, not "x% of people". */
+	clicks?: number;
 }
 
 export interface SearchTopQuery {
@@ -1606,6 +1652,9 @@ export interface AdminSearchStats {
 	overview: {
 		'7d': SearchStatsWindow;
 		'30d': SearchStatsWindow;
+		/** The window before each — the baseline for the period-over-period deltas. */
+		'7d_prev'?: SearchStatsWindow;
+		'30d_prev'?: SearchStatsWindow;
 		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
 		clicks_30d?: number;
 	};
@@ -1667,25 +1716,72 @@ export interface AdminActionRow {
 	at: string;
 }
 
+/** The header cards and chip counts — counted over the whole log, first page only. */
+export interface AdminActivitySummary {
+	/** Every row in scope (the whole log, or one `target`), unfiltered. */
+	all: number;
+	/** Per category, over the current search + admin filter (not the category). */
+	by_category: Record<string, number>;
+	today: number;
+	today_reader_facing: number;
+	/** The last seven days, today included. */
+	week: number;
+	/** Admins in scope, busiest first — masked for a non-super caller. */
+	actors: { actor: string; count: number }[];
+	last_go_live: AdminActionRow | null;
+	last_publish: AdminActionRow | null;
+}
+
 export interface AdminActivity {
-	/** The full count — a first-page figure; null on a `before` (load-older) page. */
+	/** Rows matching the filters — a first-page figure; null on a `before` page. */
 	total: number | null;
+	/** First-page only, like `total`. */
+	summary: AdminActivitySummary | null;
 	limit: number;
 	/** The id to pass as `before` for the next older page, or null when at the end. */
 	next_cursor: number | null;
 	actions: AdminActionRow[];
 }
 
-/**
- * A page of admin actions, newest first. `target` narrows to one object's whole
- * history; `before` is a `next_cursor` from a prior page, to load older rows.
- */
-export const getAdminActivity = (opts: { before?: number | null; target?: string } = {}) => {
+/** The filters the log runs server-side, over every row rather than a page. */
+export interface AdminActivityFilters {
+	target?: string;
+	q?: string;
+	category?: string;
+	actor?: string;
+}
+
+function activityParams(f: AdminActivityFilters): URLSearchParams {
 	const params = new URLSearchParams();
+	for (const k of ['target', 'q', 'category', 'actor'] as const) {
+		const v = f[k]?.trim();
+		if (v) params.set(k, v);
+	}
+	return params;
+}
+
+/**
+ * A page of admin actions, newest first, filtered over the whole log. `before`
+ * is a `next_cursor` from a prior page, to load older rows; `dayStart` is the
+ * caller's local midnight, so the summary's "today" is their day.
+ */
+export const getAdminActivity = (
+	opts: AdminActivityFilters & { before?: number | null; dayStart?: Date } = {}
+) => {
+	const params = activityParams(opts);
 	if (opts.before != null) params.set('before', String(opts.before));
-	if (opts.target) params.set('target', opts.target);
+	if (opts.dayStart) params.set('day_start', opts.dayStart.toISOString());
 	const qs = params.toString();
 	return apiFetch<AdminActivity>(`/api/admin/activity/${qs ? `?${qs}` : ''}`);
+};
+
+/** Every row matching the filters, unpaged — for the CSV export. */
+export const exportAdminActivity = (filters: AdminActivityFilters) => {
+	const params = activityParams(filters);
+	params.set('export', '1');
+	return apiFetch<{ truncated: boolean; actions: AdminActionRow[] }>(
+		`/api/admin/activity/?${params}`
+	);
 };
 
 // --- Reader feedback queue ---------------------------------------------------

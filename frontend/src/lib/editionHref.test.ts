@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { chapterPath, sourceHref, workPath } from './editionHref';
+import { chapterPath, planDayPath, sourceHref, workPath } from './editionHref';
 import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
 
@@ -48,6 +48,22 @@ describe('chapterPath (review bug #17)', () => {
 			'/books/humility/2?plan=p&day=3&edition=modern'
 		);
 		readerPrefs.preferModern = false;
+	});
+});
+
+describe('planDayPath', () => {
+	const chapterDay = { day: 3, book_slug: 'humility', chapter_order: 2, has_modern_edition: true };
+	it('links a chapter day through chapterPath, with the plan context', () => {
+		readerPrefs.preferModern = false;
+		expect(planDayPath('p', chapterDay)).toBe('/books/humility/2?plan=p&day=3');
+		// Carrying on in Modern English, as the reader's "Mark day done" does.
+		expect(planDayPath('p', chapterDay, true)).toBe('/books/humility/2?plan=p&day=3&edition=modern');
+	});
+	it('links an article day to the article, with the plan context', () => {
+		const articleDay = { day: 4, book_slug: '', chapter_order: null, article_slug: 'what-is-grace' };
+		expect(planDayPath('new-to-the-faith', articleDay)).toBe(
+			'/articles/what-is-grace/?plan=new-to-the-faith&day=4'
+		);
 	});
 });
 

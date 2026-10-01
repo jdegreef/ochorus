@@ -67,8 +67,13 @@ const AUTHOR_LIMIT = 8;
  * header's link already points. Richest shelves first (members = books +
  * sermons, title breaking ties so the cap is stable across builds), so the
  * few that show are the most useful ones.
+ *
+ * Thirteen is two FULL lines at the default page width (76rem: 7 + 6 chips
+ * with today's English titles); eight left a lone chip on a second line.
+ * Phones and tablets show a prefix of the same list (`TopicChips` hides the
+ * tail below `sm` / `lg`), so the row stays a teaser there, not a wall.
  */
-const HOME_TOPIC_LIMIT = 8;
+const HOME_TOPIC_LIMIT = 13;
 
 /**
  * Tolerate a failed shelf at RUNTIME, never while building.

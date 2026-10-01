@@ -720,6 +720,40 @@ class SearchLogTests(TestCase):
         self.assertEqual(res.data["daily"][-1]["searches"], 5)
         self.assertEqual(res.data["daily"][0]["searches"], 0)
 
+    @override_settings(DEBUG=True)
+    def test_admin_search_stats_carries_the_previous_period(self):
+        # The page's deltas divide by the period BEFORE the current one, so each
+        # window needs its own baseline, and a row lands in exactly one of them.
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        def log(days_ago, result_count):
+            row = SearchQueryLog.objects.create(
+                query="grace", language="en", result_count=result_count
+            )
+            SearchQueryLog.objects.filter(pk=row.pk).update(
+                created_at=timezone.now() - timedelta(days=days_ago)
+            )
+
+        log(1, 4)
+        log(1, 0)
+        log(10, 0)  # previous 7d, and inside the current 30d
+        log(45, 3)  # previous 30d only
+        click = SearchClickLog.objects.create(
+            query="grace", language="en", result_type="book", position=1
+        )
+        SearchClickLog.objects.filter(pk=click.pk).update(
+            created_at=timezone.now() - timedelta(days=45)
+        )
+
+        ov = self.client.get("/api/admin/search-stats/").data["overview"]
+        self.assertEqual((ov["7d"]["searches"], ov["7d"]["zero_results"]), (2, 1))
+        self.assertEqual((ov["7d_prev"]["searches"], ov["7d_prev"]["zero_results"]), (1, 1))
+        self.assertEqual(ov["30d"]["searches"], 3)
+        self.assertEqual(ov["30d_prev"]["searches"], 1)
+        self.assertEqual((ov["30d"]["clicks"], ov["30d_prev"]["clicks"]), (0, 1))
+
     def test_language_param_truncated_to_field_length(self):
         # Postgres raises DataError past varchar(10); SQLite wouldn't catch it.
         self.search("humility", language="en-Latn-US-x-nonsense")
