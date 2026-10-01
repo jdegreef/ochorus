@@ -74,22 +74,24 @@ describe('foldEditions', () => {
 			b('amanda-smith-autobiography-children', 'The Story of Amanda Smith (For Children)')
 		]);
 		expect(rows.map((r) => r.book.slug)).toEqual(['amanda-smith-autobiography']);
-		expect(rows[0].editions.map((e) => e.slug)).toEqual([
-			'amanda-smith-autobiography-teens',
-			'amanda-smith-autobiography-children'
+		expect(rows[0].editions.map((e) => [e.book.slug, e.audience])).toEqual([
+			['amanda-smith-autobiography-teens', 'For Teens'],
+			['amanda-smith-autobiography-children', 'For Children']
 		]);
 	});
 
-	it('keeps an edition whose full text is not in the list as its own line', () => {
+	it('keeps an edition whose full text is not in the list as its own line, and one with no "(For …)" to label a chip', () => {
 		const rows = foldEditions([
 			b('the-body-of-christ-a-reality', 'The Body of Christ: A Reality'),
 			b('the-body-of-christ-teens', 'The Body of Christ (For Teens)'),
-			b('divine-songs-for-children', 'Divine Songs for Children')
+			b('divine-songs-for-children', 'Divine Songs for Children'),
+			b('the-body-of-christ-a-reality-children', 'The Body of Christ Retold')
 		]);
 		expect(rows.map((r) => r.book.slug)).toEqual([
 			'the-body-of-christ-a-reality',
 			'the-body-of-christ-teens',
-			'divine-songs-for-children'
+			'divine-songs-for-children',
+			'the-body-of-christ-a-reality-children'
 		]);
 		expect(rows.every((r) => r.editions.length === 0)).toBe(true);
 	});
@@ -112,6 +114,11 @@ describe('filterIndex', () => {
 
 	it('returns everything for a blank query', () => {
 		expect(filterIndex(groups, '  ')).toBe(groups);
+	});
+
+	it('matches a typed apostrophe against a curly one', () => {
+		const g = indexRows(authorIndex([], [book('pp', 'The Pilgrim’s Progress', 'bunyan')]));
+		expect(filterIndex(g, "pilgrim's")).toHaveLength(1);
 	});
 
 	it('keeps every book of a writer whose name matches, accents folded', () => {

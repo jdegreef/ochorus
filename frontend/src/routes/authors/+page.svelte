@@ -6,9 +6,8 @@
 	import { lang } from '$lib/lang.svelte';
 	import { hreflangAll, itemList } from '$lib/seo';
 	import { authorIndex, filterIndex, indexRows } from '$lib/authorIndex';
-	import { splitEdition } from '$lib/edition';
-	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { SvelteSet } from 'svelte/reactivity';
+	import { tick } from 'svelte';
 	import { ORIGINALS_SLUG } from '$lib/originals';
 	import type { PageData } from './$types';
 	import Seo from '$lib/components/Seo.svelte';
@@ -45,10 +44,16 @@
 	// linked from the prerendered page.
 	const ROWS_SHOWN = 5;
 	const expanded = new SvelteSet<string>();
-	const collapses = (slug: string, rows: number) => !filtering && rows > ROWS_SHOWN + 1 && !expanded.has(slug);
-	function toggle(slug: string) {
+	const collapsible = (rows: number) => !filtering && rows > ROWS_SHOWN + 1;
+	const collapses = (slug: string, rows: number) => collapsible(rows) && !expanded.has(slug);
+	// Collapsing a long list pulls the button up by the height of the rows it
+	// hid; scroll by the same amount so it stays under the reader's pointer.
+	async function toggle(slug: string, button: HTMLElement) {
+		const before = button.getBoundingClientRect().top;
 		if (expanded.has(slug)) expanded.delete(slug);
 		else expanded.add(slug);
+		await tick();
+		window.scrollBy({ top: button.getBoundingClientRect().top - before, behavior: 'instant' });
 	}
 
 	// The A–Z rail is the full alphabet, so its shape doesn't change with the
@@ -57,13 +62,52 @@
 	const anchor = (letter: string) => `letter-${letter === '#' ? 'other' : letter}`;
 	const present = $derived(new Set(shownGroups.map((g) => g.letter)));
 	const rail = $derived(present.has('#') ? [...AZ, '#'] : AZ);
-	// A thin band just under the pinned bar (~15–20% down), not scrollSpy's
-	// mid-screen default: a short letter (M: four names) that a jump lands at
-	// the top would otherwise never reach the middle, and the rail lit the next.
-	const spy = scrollSpy(() => shownGroups.map((g) => anchor(g.letter)), { rootMargin: '-22% 0px -77% 0px' });
+	// Joined so the effect below re-binds only when the SET of letters changes,
+	// not on every keystroke that rebuilds `shownGroups`.
+	const letterIds = $derived(shownGroups.map((g) => anchor(g.letter)).join(' '));
 
 	/** Measured height of the pinned controls bar — jumps land below it. */
 	let controlsH = $state(0);
+	let controlsEl = $state<HTMLElement>();
+	let railEl = $state<HTMLElement>();
+
+	// The lit letter: the last section whose top has scrolled up to the pinned
+	// bar's bottom edge — the same line a jump lands a heading on (the
+	// --pinned-offset scroll-margin). Measured from the bar itself, not a
+	// viewport percentage (scrollSpy's band), because the bar's height varies
+	// with the wrap and the filter summary, and a short letter (M: four names)
+	// landed under a fixed band lit the one before it.
+	let active = $state('');
+	$effect(() => {
+		const ids = letterIds.split(' ').filter(Boolean);
+		let frame = 0;
+		const measure = () => {
+			frame = 0;
+			const line = (controlsEl?.getBoundingClientRect().bottom ?? 0) + 24;
+			let current = ids[0] ?? '';
+			for (const id of ids) {
+				const top = document.getElementById(id)?.getBoundingClientRect().top;
+				if (top !== undefined && top <= line) current = id;
+			}
+			active = current;
+		};
+		const onScroll = () => (frame ||= requestAnimationFrame(measure));
+		measure();
+		window.addEventListener('scroll', onScroll, { passive: true });
+		return () => {
+			window.removeEventListener('scroll', onScroll);
+			cancelAnimationFrame(frame);
+		};
+	});
+	// On a phone the rail is one row that scrolls sideways — keep the lit
+	// letter in it on screen as you scroll down the page.
+	$effect(() => {
+		const link = active && railEl?.querySelector<HTMLElement>(`a[href="#${active}"]`);
+		if (!railEl || !link || railEl.scrollWidth <= railEl.clientWidth) return;
+		const left = link.offsetLeft - railEl.offsetLeft;
+		if (left < railEl.scrollLeft || left + link.offsetWidth > railEl.scrollLeft + railEl.clientWidth)
+			railEl.scrollTo({ left: left - railEl.clientWidth / 2, behavior: 'instant' });
+	});
 
 	const title = $derived(t('nav.azIndex'));
 	const hreflang = hreflangAll('/authors/');
@@ -120,6 +164,7 @@
 		     and --pinned-offset above lands every jump below it. -->
 		<div
 			bind:clientHeight={controlsH}
+			bind:this={controlsEl}
 			class="sticky z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
 			style="top: var(--appnav-h, 0px)"
 		>
@@ -145,6 +190,7 @@
 			     the HTML (no paging), so each #letter- target always exists. On a
 			     phone one row that swipes sideways; from sm up it wraps. -->
 			<nav
+				bind:this={railEl}
 				class="mt-1.5 flex gap-x-1 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:flex-wrap sm:overflow-visible"
 				aria-label={t('bios.jumpAz')}
 			>
@@ -153,9 +199,8 @@
 						<a
 							href="#{anchor(letter)}"
 							class="shrink-0 rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
-							class:az-current={spy.active === anchor(letter)}
-							aria-current={spy.active === anchor(letter) ? 'location' : undefined}
-							onclick={() => spy.set(anchor(letter))}>{letter}</a
+							class:az-current={active === anchor(letter)}
+							aria-current={active === anchor(letter) ? 'location' : undefined}>{letter}</a
 						>
 					{:else}
 						<span class="shrink-0 px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
@@ -193,24 +238,24 @@
 											<!-- Young-reader editions ride their full text as chips. The
 											     chip reads the audience from the edition's own (already
 											     translated) title, so no UI string is needed. -->
-											{#each editions as ed (ed.slug)}
+											{#each editions as { book: ed, audience } (ed.slug)}
 												<a
-													class="edition-chip ms-1.5"
+													class="tag tag-sm ms-1.5"
 													href={localizeHref(`/books/${ed.slug}`)}
 													aria-label={ed.title}
-													title={ed.title}>{splitEdition(ed.slug, ed.title)?.audience ?? ed.title}</a
+													title={ed.title}>{audience}</a
 												>
 											{/each}
 										</li>
 									{/each}
 								</ul>
-								{#if rows.length > ROWS_SHOWN + 1 && !filtering}
+								{#if collapsible(rows.length)}
 									<button
 										type="button"
 										class="mt-1 text-small font-semibold text-accent hover:underline"
 										aria-expanded={!collapsed}
 										aria-controls="books-{author.slug}"
-										onclick={() => toggle(author.slug)}
+										onclick={(e) => toggle(author.slug, e.currentTarget)}
 									>
 										{collapsed
 											? t('bios.showMore').replace('%n%', String(rows.length - ROWS_SHOWN))
@@ -235,20 +280,5 @@
 	.az-current {
 		background: var(--accent);
 		color: var(--accent-contrast);
-	}
-	.edition-chip {
-		display: inline-block;
-		border: 1px solid var(--accent-soft-border);
-		border-radius: 9999px;
-		background: var(--accent-soft);
-		padding: 0 0.45rem;
-		font-size: var(--fs-micro);
-		font-weight: 600;
-		line-height: 1.5;
-		color: var(--accent);
-		white-space: nowrap;
-	}
-	.edition-chip:hover {
-		border-color: var(--accent);
 	}
 </style>
