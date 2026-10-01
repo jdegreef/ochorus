@@ -1676,6 +1676,14 @@ nav.appnav .navsearch:hover {
 	color: var(--text);
 	transition: color var(--duration-fast);
 }
+.shelf-card-subtitle {
+	display: block;
+	margin-top: 0.125rem;
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: 400;
+	color: var(--muted);
+}
 .shelf-card:hover .shelf-card-title {
 	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
 }
