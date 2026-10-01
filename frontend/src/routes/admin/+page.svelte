@@ -80,7 +80,7 @@
 		if (att.empty_books)
 			rows.push({ tier: 'critical', value: fmt(att.empty_books), big: true, label: 'Books with no chapters', why: 'A published book that opens to nothing.', href: '/admin/audit' });
 		if (att.unreviewed_translations)
-			rows.push({ tier: 'backlog', value: fmt(att.unreviewed_translations), big: true, label: 'AI translations awaiting review', why: 'Readers see an “awaiting review” badge until a native speaker checks these.', href: '/admin/review' });
+			rows.push({ tier: 'backlog', value: fmt(att.unreviewed_translations), big: true, label: 'AI translations awaiting review', why: 'AI translations a native speaker has not yet checked. Readers never see this state.', href: '/admin/review' });
 		if (att.searches.zero_30d)
 			rows.push({ tier: 'demand', value: fmt(att.searches.zero_30d), big: true, label: 'Searches that found nothing · 30d', why: `Readers asked; the library had no answer — ${Math.round(att.searches.zero_rate * 100)}% of searches.`, href: '/admin/search' });
 		for (const l of att.languages_missing_books)

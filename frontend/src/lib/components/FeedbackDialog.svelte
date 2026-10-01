@@ -75,7 +75,12 @@
 				category,
 				body: body.trim(),
 				source,
-				page_url: typeof window === 'undefined' ? '' : window.location.href,
+				// Never the fragment: straight after a magic-link sign-in it holds
+				// the live session (#access_token=…). The server scrubs too.
+				page_url:
+					typeof window === 'undefined'
+						? ''
+						: window.location.origin + window.location.pathname + window.location.search,
 				content_language: selection?.contentLanguage || getLang(),
 				ui_locale: getLang(),
 				...context,

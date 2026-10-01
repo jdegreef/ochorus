@@ -9,7 +9,8 @@ queue.
 
 from __future__ import annotations
 
-from urllib.parse import urlsplit
+import re
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -83,10 +84,29 @@ def _anchor_block(value) -> int | None:
     return value
 
 
+#: Query keys that can carry a credential. Supabase's implicit flow puts the
+#: session in the fragment (``#access_token=…&refresh_token=…``) and its PKCE flow
+#: puts an exchange ``code`` in the query; a reader who opens feedback straight
+#: after a magic-link sign-in would otherwise file their live session with it.
+_SECRET_KEY = re.compile(r"token|code|secret|password|key|auth|session", re.IGNORECASE)
+
+
+def _scrub_url(url: str) -> str:
+    """Drop the fragment and any credential-shaped query parameter. The fragment
+    goes whole: the reader app never routes on it, so it is only ever a sign-in
+    leftover or a scroll anchor, and an anchor isn't worth the risk."""
+    parts = urlsplit(url)
+    pairs = parse_qsl(parts.query, keep_blank_values=True)
+    query = urlencode([(k, v) for k, v in pairs if not _SECRET_KEY.search(k)])
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
+
+
 def _clip_url(value, limit: int) -> str:
     """Like _clip, but only keep an http(s) URL — the admin queue renders this as
-    a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS."""
-    url = _clip(value, limit)
+    a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS —
+    and scrub any credential out of it first (see :func:`_scrub_url`)."""
+    url = _scrub_url(str(value or "").strip())
+    url = _clip(url, limit)
     return url if urlsplit(url).scheme in ("http", "https") else ""
 
 

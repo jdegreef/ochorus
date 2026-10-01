@@ -352,9 +352,9 @@
 		<p class="eyebrow mb-2 text-accent">Admin</p>
 		<h1 class="text-display">Review queue</h1>
 		<p class="text-body mt-2 text-muted">
-			AI translations awaiting a native-speaker check. Approving clears the “awaiting review” badge in
-			the reader — so read the text first. The checks on each row say only that the machine found
-			nothing, never that the prose is good.
+			AI translations awaiting a native-speaker check. Approving marks the text reviewed in the
+			coverage and readiness reports; readers never see this state, so read the text first. The
+			checks on each row say only that the machine found nothing, never that the prose is good.
 		</p>
 	</header>
 
