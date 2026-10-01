@@ -520,7 +520,7 @@ and expect a blank screenshot right after a JS scroll; read the footer with
   the scroller unless an ancestor is positioned: it resolves against the page,
   so the last card's label (~965px across) widened the phone's LAYOUT viewport —
   `innerWidth` 970 at a 375 emulation, page zoomed out, fixed tab bar 970 wide.
-  Give the scroller's items `position: relative`. Check: at 375, `innerWidth`
+  Make the SCROLLER `position: relative` (it then contains every absolute child). Check: at 375, `innerWidth`
   and `documentElement.scrollWidth` must both be 375 (biographies era band, 2026-10-01).
 - Measure, don't eyeball: a headless iPhone-13 pass listing visible text under
   13px and controls under 40px tall finds the real offenders (book-cover
