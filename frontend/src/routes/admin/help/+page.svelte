@@ -1,12 +1,48 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
+	import { adminResource } from '$lib/adminResource.svelte';
+	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
+	import {
+		ABILITIES,
+		ROLE_NAMES,
+		ROLE_SUMMARIES,
+		hasAbility,
+		humanize,
+		languageNames
+	} from '$lib/adminHelp';
+	import { getAdminRoles } from '$lib/library-admin';
 
-	// The viewer's own access, from the already-loaded profile (no API call).
+	// The viewer's own access comes from the already-loaded profile; the access
+	// model (capability labels, what each role grants) from /api/admin/roles/,
+	// which reads the backend presets — so the matrix can't drift from them.
+	const model = adminResource(getAdminRoles, 'Something went wrong loading the roles.');
+
 	const isSuper = $derived(auth.isAdmin); // is_admin is the super-admin flag
 	const scopes = $derived(auth.scopes === 'all' ? [] : auth.scopes);
-	const roles = $derived(
-		auth.scopes === 'all' ? ['super admin'] : [...new Set(scopes.map((s) => s.role).filter(Boolean))]
+	const myRoles = $derived(
+		isSuper ? ['super_admin'] : [...new Set(scopes.map((s) => s.role).filter(Boolean))]
 	);
+	const langNames = $derived(model.data?.languages ?? {});
+	const capLabel = (code: string) =>
+		model.data?.capabilities.find((c) => c.code === code)?.label ?? humanize(code);
+	const myLanguages = $derived(
+		isSuper ? ['All languages'] : languageNames([...new Set(scopes.flatMap((s) => s.languages))], langNames)
+	);
+	const roleLine = $derived(myRoles.map((r) => ROLE_NAMES[r] ?? humanize(r)).join(', '));
+
+	// The matrix columns: each preset, then the super admin (who holds everything).
+	const columns = $derived([
+		...(model.data?.roles ?? []).map((r) => ({ code: r.code, grants: r.grants as Record<string, string> | null })),
+		{ code: 'super_admin', grants: null }
+	]);
+
+	// A verb's chip, darker the higher it sits on the ladder.
+	const VERB_CHIP: Record<string, string> = {
+		view: 'bg-surface-2 text-muted',
+		suggest: 'border border-border-strong text-text',
+		act: 'bg-accent-soft text-accent',
+		approve: 'bg-accent text-accent-contrast'
+	};
 </script>
 
 <svelte:head><title>Admin · Help &amp; roles — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -20,18 +56,37 @@
 		<p class="mt-2 text-body text-muted">Ochorus keeps a living library of public-domain Christian classics across many languages. This is the room where the library is built, reviewed, and taken live. What you can see and do depends on the access you've been granted.</p>
 	</header>
 
-	<!-- Your access -->
+	<!-- Your access: what you can do, with where you do it -->
 	<section class="mb-8 rounded-card border border-border bg-surface p-5">
-		<h2 class="text-h3">Your access</h2>
-		{#if isSuper}
-			<p class="mt-2 text-body text-text">You're a <strong>super admin</strong> — full access, including granting access to others on the Team page.</p>
-		{:else if scopes.length}
-			<p class="mt-2 text-body text-text">You hold {roles.length ? `the ${roles.join(', ')} role` : 'these grants'}:</p>
-			<ul class="mt-2 flex flex-col gap-1">
-				{#each scopes as s (s.capability)}
-					<li class="text-small text-muted"><code class="text-text">{s.capability}</code> · {s.verb} · {s.languages.join(', ')}</li>
+		<div class="flex flex-wrap items-baseline justify-between gap-2">
+			<h2 class="text-h3">Your access</h2>
+			{#if isSuper || scopes.length}
+				<span class="rounded-full bg-accent-soft px-2.5 py-0.5 text-micro font-semibold text-accent">
+					{roleLine || 'Custom grants'} · {myLanguages.join(', ')}
+				</span>
+			{/if}
+		</div>
+		{#if isSuper || scopes.length}
+			<ul class="mt-3 flex flex-col gap-1.5">
+				{#each ABILITIES as a (a.label)}
+					{@const ok = hasAbility(a, auth.scopes, isSuper)}
+					<li class="flex flex-wrap items-baseline justify-between gap-x-3 text-small {ok ? 'text-text' : 'text-muted'}">
+						<span>
+							<span aria-hidden="true" class={ok ? 'text-accent' : ''}>{ok ? '✓' : '✕'}</span>
+							<span class="sr-only">{ok ? 'You can:' : 'You can’t:'}</span>
+							{a.label}
+						</span>
+						{#if ok && a.href}
+							<a href={a.href} class="text-small font-semibold text-accent hover:underline">Open →</a>
+						{:else if !ok}
+							<span class="text-micro">needs {a.superOnly ? 'super admin' : `${capLabel(a.capability)} · ${a.verb}`}</span>
+						{/if}
+					</li>
 				{/each}
 			</ul>
+			{#if !isSuper}
+				<p class="mt-3 text-micro text-muted">Need something you don't have? Ask a super admin to add it on the Team page.</p>
+			{/if}
 		{:else}
 			<p class="mt-2 text-body text-muted">You don't currently hold any admin grants. If you should, ask a super admin to add you on the Team page.</p>
 		{/if}
@@ -52,25 +107,90 @@
 		<p class="mt-2 text-small text-muted">Verbs stack: someone who can <em>act</em> can also <em>view</em> and <em>suggest</em>.</p>
 	</section>
 
-	<!-- Roles -->
+	<!-- Roles: the summaries, then the exact grid from the backend presets -->
 	<section class="mb-8">
 		<h2 class="mb-3 text-h3">The roles</h2>
-		<div class="overflow-x-auto rounded-card border border-border">
-			<table class="w-full text-small">
-				<thead>
-					<tr class="bg-surface-2 text-left text-muted">
-						<th class="px-3 py-2 font-semibold">Role</th>
-						<th class="px-3 py-2 font-semibold">Can</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="border-t border-border"><td class="px-3 py-2 font-semibold text-text">Contributor</td><td class="px-3 py-2 text-muted">View the library and queues; suggest work (file translation / content-fix jobs). Applies nothing live.</td></tr>
-					<tr class="border-t border-border"><td class="px-3 py-2 font-semibold text-text">Reviewer</td><td class="px-3 py-2 text-muted">Everything a contributor can, plus record review decisions on their language(s) — see "Reviewing" below.</td></tr>
-					<tr class="border-t border-border"><td class="px-3 py-2 font-semibold text-text">Language admin</td><td class="px-3 py-2 text-muted">Act &amp; approve within their language(s) — publish, confirm reviews.</td></tr>
-					<tr class="border-t border-border"><td class="px-3 py-2 font-semibold text-text">Super admin</td><td class="px-3 py-2 text-muted">Everything, including granting access and taking a language live.</td></tr>
-				</tbody>
-			</table>
-		</div>
+		<ul class="flex flex-col gap-2">
+			{#each Object.keys(ROLE_SUMMARIES) as code (code)}
+				{@const mine = myRoles.includes(code)}
+				<li
+					class="flex flex-col gap-0.5 rounded-card border px-4 py-2.5 sm:flex-row sm:gap-3 {mine
+						? 'border-accent bg-accent-soft'
+						: 'border-border bg-surface'}"
+				>
+					<span class="w-32 shrink-0 text-small font-semibold {mine ? 'text-accent' : 'text-text'}">
+						{ROLE_NAMES[code]}{#if mine}<span class="ml-1.5 text-micro font-normal">· you</span>{/if}
+					</span>
+					<span class="text-small {mine ? 'text-text' : 'text-muted'}">{ROLE_SUMMARIES[code]}</span>
+				</li>
+			{/each}
+		</ul>
+
+		<h3 class="mb-2 mt-6 text-small font-semibold text-text">Exactly what each role can do</h3>
+		{#if model.data}
+			<div class="overflow-x-auto rounded-card border border-border">
+				<table class="w-full text-small">
+					<thead>
+						<tr class="bg-surface-2 text-left text-muted">
+							<th class="px-3 py-2 font-semibold">Area</th>
+							{#each columns as col (col.code)}
+								<th class="whitespace-nowrap px-3 py-2 text-center font-semibold {myRoles.includes(col.code) ? 'bg-accent-soft text-accent' : ''}">
+									{ROLE_NAMES[col.code] ?? humanize(col.code)}{myRoles.includes(col.code) ? ' · you' : ''}
+								</th>
+							{/each}
+						</tr>
+					</thead>
+					<tbody>
+						{#each model.data.capabilities as cap (cap.code)}
+							<tr class="border-t border-border">
+								<td class="px-3 py-2 text-text">{cap.label}</td>
+								{#each columns as col (col.code)}
+									{@const verb = col.grants ? col.grants[cap.code] : 'all'}
+									<td class="px-3 py-2 text-center {myRoles.includes(col.code) ? 'bg-accent-soft' : ''}">
+										{#if verb}
+											<span class="inline-block min-w-16 rounded-sm px-1.5 py-0.5 text-micro font-semibold uppercase {VERB_CHIP[verb] ?? VERB_CHIP.approve}">{verb}</span>
+										{:else}
+											<span class="text-muted" aria-label="no access">—</span>
+										{/if}
+									</td>
+								{/each}
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
+			<p class="mt-2 text-micro text-muted">Each role's languages are chosen when it's granted. The super admin holds every area in every language.</p>
+		{:else if model.error}
+			<p class="text-small text-muted">Couldn't load the role details. <button class="font-semibold text-accent hover:underline" onclick={model.load}>Try again</button></p>
+		{:else}
+			<p class="text-small text-muted">Loading…</p>
+		{/if}
+	</section>
+
+	<!-- Where things live: every admin section and the access that opens it -->
+	<section class="mb-8">
+		<h2 class="mb-2 text-h3">Where things live</h2>
+		<p class="mb-3 text-body text-muted">Every admin section, and the access it needs. If a section is missing from your sidebar, this says why.</p>
+		<ul class="overflow-hidden rounded-card border border-border bg-surface">
+			{#each ADMIN_SECTIONS as sec (sec.href)}
+				{@const ok = opensSection(sec, auth)}
+				<li class="flex flex-wrap items-baseline justify-between gap-x-3 border-t border-border px-4 py-2 text-small first:border-t-0">
+					{#if ok}
+						<a href={sec.href} class="font-semibold text-text hover:text-accent">{sec.label}</a>
+						<span class="text-micro font-semibold text-accent">You have this</span>
+					{:else}
+						<span class="text-muted">{sec.label}</span>
+						<span class="text-micro text-muted">
+							{sec.superOnly
+								? 'Super admin only'
+								: sec.capability
+									? `Needs ${capLabel(sec.capability)}`
+									: 'Needs any admin access'}
+						</span>
+					{/if}
+				</li>
+			{/each}
+		</ul>
 	</section>
 
 	<!-- Reviewing -->

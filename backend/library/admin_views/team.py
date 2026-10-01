@@ -14,7 +14,7 @@ from django.conf import settings
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.admin_roles import ROLE_NAMES, apply_grant, revoke_grant
+from accounts.admin_roles import PRESETS, ROLE_NAMES, apply_grant, revoke_grant
 from accounts.models import (
     ALL_LANGUAGES,
     AdminCapability,
@@ -22,10 +22,10 @@ from accounts.models import (
     AdminVerb,
     split_providers,
 )
-from accounts.permissions import IsAdminEmail
+from accounts.permissions import IsAdminEmail, requires
 
 from ..audit import AdminAudited
-from ..languages import known_codes
+from ..languages import known_codes, language_map
 from ..models import AdminAction
 
 
@@ -122,3 +122,27 @@ class AdminTeamView(AdminAudited, APIView):
         if not codes:
             raise ValueError("choose at least one language, or select all languages")
         return ",".join(codes)
+
+
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
+class AdminRolesView(APIView):
+    """The access model as data, for the Help & roles page: every capability
+    and verb with its label, what each named role grants, and language names.
+
+    Read straight from ``PRESETS`` so the help page cannot drift from the roles
+    it explains. Gated like the language manual — on ``REPORTING/view``, which
+    every role carries — because it explains the console to anyone in it; it
+    names no people and holds nothing a grantee can't already see."""
+
+    def get(self, request):
+        return Response(
+            {
+                "capabilities": [{"code": c, "label": label} for c, label in AdminCapability.choices],
+                "verbs": [c for c, _ in AdminVerb.choices],
+                "roles": [
+                    {"code": name, "grants": dict(pairs)}
+                    for name, pairs in PRESETS.items()
+                ],
+                "languages": {code: e["name"] for code, e in sorted(language_map().items())},
+            }
+        )

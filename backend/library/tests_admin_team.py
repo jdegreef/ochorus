@@ -108,3 +108,38 @@ class AdminTeamTests(TestCase):
             self.client.post("/api/admin/team/", {"email": "x@y.com", "role": "reviewer"}, format="json").status_code,
             (401, 403),
         )
+
+
+class AdminRolesTests(TestCase):
+    """/api/admin/roles/ — the access model the Help & roles page renders."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    @override_settings(DEBUG=True)
+    def test_serves_the_presets_and_labels(self):
+        from accounts.admin_roles import PRESETS
+
+        res = self.client.get("/api/admin/roles/")
+        self.assertEqual(res.status_code, 200)
+        # The roles are PRESETS verbatim, so the help page can't drift from them.
+        self.assertEqual(
+            {r["code"]: r["grants"] for r in res.data["roles"]},
+            {name: dict(pairs) for name, pairs in PRESETS.items()},
+        )
+        self.assertEqual({c["code"] for c in res.data["capabilities"]}, set(AdminCapability.values))
+        self.assertEqual(res.data["verbs"], ["view", "suggest", "act", "approve"])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+    def test_any_role_can_read_it_and_outsiders_cannot(self):
+        user = User.objects.create(
+            username="77777777-7777-7777-7777-777777777777", email="c@ochorus.com"
+        )
+        self.client.force_authenticate(user=user, token=VERIFIED)
+        self.assertIn(self.client.get("/api/admin/roles/").status_code, (401, 403))
+
+        # The weakest preset (contributor) carries reporting:view, so it gets in.
+        AdminGrant.objects.create(
+            email="c@ochorus.com", capability=AdminCapability.REPORTING, verb=AdminVerb.VIEW
+        )
+        self.assertEqual(self.client.get("/api/admin/roles/").status_code, 200)
