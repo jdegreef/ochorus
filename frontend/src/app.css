@@ -1590,6 +1590,39 @@ nav.appnav .navsearch:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
 }
+/* A shelf card with its own action link (ShelfCard `action`): the box is the
+   card, its band + body are one link, and the action sits in a foot below. */
+.shelf-card-main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	color: inherit;
+	text-decoration: none;
+}
+.shelf-card-main:hover {
+	text-decoration: none;
+}
+/* The link fills the clipped box (overflow: hidden), so its focus ring goes
+   inside it — drawn outside, it was cut off on every edge. */
+.shelf-card-main:focus-visible {
+	outline-offset: -2px;
+}
+/* Hovering the foot's own link must not light the card as if the card link
+   were the target: the box rests while the pointer is on the action. */
+.shelf-card--action:has(.shelf-card-foot:hover) {
+	border-color: var(--border);
+	box-shadow: none;
+	transform: none;
+}
+.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
+	color: var(--text);
+}
+.shelf-card--action .shelf-card-body {
+	padding-bottom: 0.75rem;
+}
+.shelf-card-foot {
+	padding: 0 1.1rem 1.15rem;
+}
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
    the top-inline-start corner over a barely-tinted surface, with a hairline at
