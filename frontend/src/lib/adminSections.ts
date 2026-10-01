@@ -71,3 +71,14 @@ export const opensSection = (section: AdminSection, viewer: SectionViewer): bool
 		: section.superOnly
 			? viewer.isAdmin
 			: viewer.can(section.capability!);
+
+/** What opening `section` needs, in words — the same ladder as `opensSection`. */
+export const sectionRequirement = (
+	section: AdminSection,
+	capabilityLabel: (code: string) => string
+): string =>
+	section.anyAccess
+		? 'Needs any admin access'
+		: section.superOnly
+			? 'Super admin only'
+			: `Needs ${capabilityLabel(section.capability!)}`;

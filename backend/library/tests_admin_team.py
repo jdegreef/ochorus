@@ -118,28 +118,30 @@ class AdminRolesTests(TestCase):
 
     @override_settings(DEBUG=True)
     def test_serves_the_presets_and_labels(self):
-        from accounts.admin_roles import PRESETS
+        from accounts.admin_roles import PRESETS, ROLE_INFO
 
         res = self.client.get("/api/admin/roles/")
         self.assertEqual(res.status_code, 200)
-        # The roles are PRESETS verbatim, so the help page can't drift from them.
-        self.assertEqual(
-            {r["code"]: r["grants"] for r in res.data["roles"]},
-            {name: dict(pairs) for name, pairs in PRESETS.items()},
-        )
+        roles = {r["code"]: r for r in res.data["roles"]}
+        # The presets verbatim, so the help page can't drift from them…
+        for name, pairs in PRESETS.items():
+            self.assertEqual(roles[name]["grants"], dict(pairs))
+        # …every preset has a label and summary, and the super admin holds all.
+        self.assertEqual(set(ROLE_INFO), {*PRESETS, "super_admin"})
+        self.assertEqual(set(roles["super_admin"]["grants"]), set(AdminCapability.values))
         self.assertEqual({c["code"] for c in res.data["capabilities"]}, set(AdminCapability.values))
-        self.assertEqual(res.data["verbs"], ["view", "suggest", "act", "approve"])
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
-    def test_any_role_can_read_it_and_outsiders_cannot(self):
+    def test_any_grant_can_read_it_and_outsiders_cannot(self):
         user = User.objects.create(
             username="77777777-7777-7777-7777-777777777777", email="c@ochorus.com"
         )
         self.client.force_authenticate(user=user, token=VERIFIED)
         self.assertIn(self.client.get("/api/admin/roles/").status_code, (401, 403))
 
-        # The weakest preset (contributor) carries reporting:view, so it gets in.
+        # A single raw grant that isn't reporting still opens Help, so it must
+        # open the model the page renders.
         AdminGrant.objects.create(
-            email="c@ochorus.com", capability=AdminCapability.REPORTING, verb=AdminVerb.VIEW
+            email="c@ochorus.com", capability=AdminCapability.FEEDBACK, verb=AdminVerb.ACT
         )
         self.assertEqual(self.client.get("/api/admin/roles/").status_code, 200)

@@ -13,7 +13,7 @@ from django.test import SimpleTestCase
 from django.urls import get_resolver
 
 from accounts.models import AdminCapability, AdminVerb
-from accounts.permissions import IsAdminEmail, RequireCapability
+from accounts.permissions import HasAnyAdminAccess, IsAdminEmail, RequireCapability
 
 _VALID_CAPS = set(AdminCapability.values)
 _VALID_VERBS = set(AdminVerb.values)
@@ -52,6 +52,14 @@ class AdminAccessCoverageTests(SimpleTestCase):
             # declaration: it's how deliberately-undelegated actions like the
             # team/access console are locked to the owner.
             if IsAdminEmail in gate:
+                continue
+            # Any-admin is a valid gate only for a READ-ONLY view (the Help
+            # page's access model): it admits a holder of any single grant, so
+            # it must never guard a write.
+            if HasAnyAdminAccess in gate:
+                writes = sorted(m for m in _WRITE_METHODS if hasattr(cls, m.lower()))
+                if writes:
+                    problems.append(f"{route} ({cls.__name__}): HasAnyAdminAccess on a write view {writes}")
                 continue
             if RequireCapability not in gate:
                 problems.append(f"{route} ({cls.__name__}): not gated by RequireCapability or IsAdminEmail")

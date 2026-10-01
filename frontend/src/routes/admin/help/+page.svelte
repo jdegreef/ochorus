@@ -1,15 +1,8 @@
 <script lang="ts">
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
-	import { ADMIN_SECTIONS, opensSection } from '$lib/adminSections';
-	import {
-		ABILITIES,
-		ROLE_NAMES,
-		ROLE_SUMMARIES,
-		hasAbility,
-		humanize,
-		languageNames
-	} from '$lib/adminHelp';
+	import { ADMIN_SECTIONS, opensSection, sectionRequirement } from '$lib/adminSections';
+	import { ABILITIES, hasAbility, humanize, languageNames } from '$lib/adminHelp';
 	import { getAdminRoles } from '$lib/library-admin';
 
 	// The viewer's own access comes from the already-loaded profile; the access
@@ -28,13 +21,9 @@
 	const myLanguages = $derived(
 		isSuper ? ['All languages'] : languageNames([...new Set(scopes.flatMap((s) => s.languages))], langNames)
 	);
-	const roleLine = $derived(myRoles.map((r) => ROLE_NAMES[r] ?? humanize(r)).join(', '));
-
-	// The matrix columns: each preset, then the super admin (who holds everything).
-	const columns = $derived([
-		...(model.data?.roles ?? []).map((r) => ({ code: r.code, grants: r.grants as Record<string, string> | null })),
-		{ code: 'super_admin', grants: null }
-	]);
+	const roles = $derived(model.data?.roles ?? []);
+	const roleLabel = (code: string) => roles.find((r) => r.code === code)?.label ?? humanize(code);
+	const roleLine = $derived(myRoles.map(roleLabel).join(', '));
 
 	// A verb's chip, darker the higher it sits on the ladder.
 	const VERB_CHIP: Record<string, string> = {
@@ -111,17 +100,17 @@
 	<section class="mb-8">
 		<h2 class="mb-3 text-h3">The roles</h2>
 		<ul class="flex flex-col gap-2">
-			{#each Object.keys(ROLE_SUMMARIES) as code (code)}
-				{@const mine = myRoles.includes(code)}
+			{#each roles as role (role.code)}
+				{@const mine = myRoles.includes(role.code)}
 				<li
 					class="flex flex-col gap-0.5 rounded-card border px-4 py-2.5 sm:flex-row sm:gap-3 {mine
 						? 'border-accent bg-accent-soft'
 						: 'border-border bg-surface'}"
 				>
 					<span class="w-32 shrink-0 text-small font-semibold {mine ? 'text-accent' : 'text-text'}">
-						{ROLE_NAMES[code]}{#if mine}<span class="ml-1.5 text-micro font-normal">· you</span>{/if}
+						{role.label}{#if mine}<span class="ml-1.5 text-micro font-normal">· you</span>{/if}
 					</span>
-					<span class="text-small {mine ? 'text-text' : 'text-muted'}">{ROLE_SUMMARIES[code]}</span>
+					<span class="text-small {mine ? 'text-text' : 'text-muted'}">{role.summary}</span>
 				</li>
 			{/each}
 		</ul>
@@ -133,9 +122,9 @@
 					<thead>
 						<tr class="bg-surface-2 text-left text-muted">
 							<th class="px-3 py-2 font-semibold">Area</th>
-							{#each columns as col (col.code)}
+							{#each roles as col (col.code)}
 								<th class="whitespace-nowrap px-3 py-2 text-center font-semibold {myRoles.includes(col.code) ? 'bg-accent-soft text-accent' : ''}">
-									{ROLE_NAMES[col.code] ?? humanize(col.code)}{myRoles.includes(col.code) ? ' · you' : ''}
+									{col.label}{myRoles.includes(col.code) ? ' · you' : ''}
 								</th>
 							{/each}
 						</tr>
@@ -144,11 +133,11 @@
 						{#each model.data.capabilities as cap (cap.code)}
 							<tr class="border-t border-border">
 								<td class="px-3 py-2 text-text">{cap.label}</td>
-								{#each columns as col (col.code)}
-									{@const verb = col.grants ? col.grants[cap.code] : 'all'}
+								{#each roles as col (col.code)}
+									{@const verb = col.grants[cap.code]}
 									<td class="px-3 py-2 text-center {myRoles.includes(col.code) ? 'bg-accent-soft' : ''}">
 										{#if verb}
-											<span class="inline-block min-w-16 rounded-sm px-1.5 py-0.5 text-micro font-semibold uppercase {VERB_CHIP[verb] ?? VERB_CHIP.approve}">{verb}</span>
+											<span class="inline-block min-w-16 rounded-sm px-1.5 py-0.5 text-micro font-semibold uppercase {VERB_CHIP[verb]}">{verb}</span>
 										{:else}
 											<span class="text-muted" aria-label="no access">—</span>
 										{/if}
@@ -181,11 +170,7 @@
 					{:else}
 						<span class="text-muted">{sec.label}</span>
 						<span class="text-micro text-muted">
-							{sec.superOnly
-								? 'Super admin only'
-								: sec.capability
-									? `Needs ${capLabel(sec.capability)}`
-									: 'Needs any admin access'}
+							{sectionRequirement(sec, capLabel)}
 						</span>
 					{/if}
 				</li>

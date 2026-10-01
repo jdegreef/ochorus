@@ -14,7 +14,13 @@ from django.conf import settings
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from accounts.admin_roles import PRESETS, ROLE_NAMES, apply_grant, revoke_grant
+from accounts.admin_roles import (
+    PRESETS,
+    ROLE_INFO,
+    ROLE_NAMES,
+    apply_grant,
+    revoke_grant,
+)
 from accounts.models import (
     ALL_LANGUAGES,
     AdminCapability,
@@ -22,7 +28,7 @@ from accounts.models import (
     AdminVerb,
     split_providers,
 )
-from accounts.permissions import IsAdminEmail, requires
+from accounts.permissions import HasAnyAdminAccess, IsAdminEmail
 
 from ..audit import AdminAudited
 from ..languages import known_codes, language_map
@@ -124,25 +130,29 @@ class AdminTeamView(AdminAudited, APIView):
         return ",".join(codes)
 
 
-@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminRolesView(APIView):
     """The access model as data, for the Help & roles page: every capability
-    and verb with its label, what each named role grants, and language names.
+    with its label, each role's label, summary and grants, and language names.
 
-    Read straight from ``PRESETS`` so the help page cannot drift from the roles
-    it explains. Gated like the language manual — on ``REPORTING/view``, which
-    every role carries — because it explains the console to anyone in it; it
-    names no people and holds nothing a grantee can't already see."""
+    Read straight from ``PRESETS`` / ``ROLE_INFO`` so the help page cannot drift
+    from the roles it explains. Open to anyone with any admin access — the Help
+    page is in everyone's rail, including a holder of one raw grant — and it
+    names no people, so there is nothing here a grantee shouldn't see."""
+
+    permission_classes = [HasAnyAdminAccess]
 
     def get(self, request):
+        every_area = dict.fromkeys(AdminCapability.values, AdminVerb.APPROVE)
+        grants = {**PRESETS, "super_admin": every_area.items()}
         return Response(
             {
-                "capabilities": [{"code": c, "label": label} for c, label in AdminCapability.choices],
-                "verbs": [c for c, _ in AdminVerb.choices],
-                "roles": [
-                    {"code": name, "grants": dict(pairs)}
-                    for name, pairs in PRESETS.items()
+                "capabilities": [
+                    {"code": c, "label": label} for c, label in AdminCapability.choices
                 ],
-                "languages": {code: e["name"] for code, e in sorted(language_map().items())},
+                "roles": [
+                    {"code": code, "label": label, "summary": summary, "grants": dict(grants[code])}
+                    for code, (label, summary) in ROLE_INFO.items()
+                ],
+                "languages": {code: e["name"] for code, e in language_map().items()},
             }
         )

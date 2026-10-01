@@ -118,13 +118,12 @@ export interface AdminTeam {
 }
 export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
 
-// The access model as data — every capability with its label, the verb ladder,
-// and what each named role grants (backend PRESETS verbatim). Readable by any
-// admin; the Help & roles page renders it so it can't drift from the presets.
+// The access model as data — every capability with its label, and each role's
+// label, summary and grants (backend PRESETS verbatim, plus the super admin).
+// Readable by any admin; the Help & roles page renders it so it can't drift from the presets.
 export interface AdminRoles {
 	capabilities: { code: string; label: string }[];
-	verbs: string[];
-	roles: { code: string; grants: Record<string, string> }[];
+	roles: { code: string; label: string; summary: string; grants: Record<string, string> }[];
 	languages: Record<string, string>;
 }
 export const getAdminRoles = () => apiFetch<AdminRoles>('/api/admin/roles/');

@@ -80,30 +80,9 @@ export const ABILITIES: Ability[] = [
 export const hasAbility = (ability: Ability, scopes: Scopes, isSuper: boolean): boolean =>
 	ability.superOnly ? isSuper : can(scopes, ability.capability, ability.verb);
 
-/** The verb ladder, lowest first — mirrors accounts.models.VERB_RANK. */
-export const VERBS = ['view', 'suggest', 'act', 'approve'] as const;
-
 /** "content_edit" → "Content edit"; the fallback when a label hasn't loaded. */
 export const humanize = (code: string): string =>
 	(code.charAt(0).toUpperCase() + code.slice(1)).replace(/_/g, ' ');
-
-/** Role codes as people say them. */
-export const ROLE_NAMES: Record<string, string> = {
-	contributor: 'Contributor',
-	reviewer: 'Reviewer',
-	language_admin: 'Language admin',
-	super_admin: 'Super admin'
-};
-
-/** One-line summaries shown beside each role. */
-export const ROLE_SUMMARIES: Record<string, string> = {
-	contributor:
-		'Views the library and its queues; files translation and title-fix jobs. Applies nothing live.',
-	reviewer: 'Everything a contributor can, plus records review decisions in their languages.',
-	language_admin: 'Runs their languages: publishes, confirms reviews, triages feedback.',
-	super_admin:
-		'Everything, including granting access, user analytics, email and taking a language live.'
-};
 
 /** The grant's language list as names: `*` → "All languages". */
 export const languageNames = (codes: string[], names: Record<string, string>): string[] =>
