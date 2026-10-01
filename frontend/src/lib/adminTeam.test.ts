@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { emailProblem, memberLanguages } from './adminTeam';
+import { emailProblem, memberLanguages, sharedLanguages } from './adminTeam';
 import type { TeamMember } from './library-admin';
 
 const member = (scopes: TeamMember['scopes']): TeamMember => ({
@@ -39,5 +39,15 @@ describe('memberLanguages', () => {
 		expect(memberLanguages(m)).toEqual(['en', 'lg']);
 		expect(memberLanguages(m, true)).toEqual(['en', 'lg']);
 		expect(memberLanguages({ ...m, scopes: m.scopes.slice(1) }, true)).toEqual([]);
+	});
+});
+
+describe('sharedLanguages', () => {
+	it('names the scope once when every grant agrees, else null', () => {
+		const a = { capability: 'audit', verb: 'act', languages: ['lg', 'en'], role: 'reviewer' };
+		const b = { capability: 'review', verb: 'act', languages: ['en', 'lg'], role: 'reviewer' };
+		expect(sharedLanguages(member([a, b]))).toEqual(['en', 'lg']);
+		expect(sharedLanguages(member([a, { ...b, languages: ['*'] }]))).toBeNull();
+		expect(sharedLanguages(member([]))).toBeNull();
 	});
 });

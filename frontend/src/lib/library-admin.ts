@@ -119,6 +119,10 @@ export interface AdminTeam {
 	capabilities: [string, string][];
 	verbs: [string, string][];
 	languages: string[];
+	/** Each role's plain name and one-line summary, in `roles` order. */
+	role_info: { code: string; label: string; summary: string }[];
+	/** Language code → English name, for the language chips. */
+	language_names: Record<string, string>;
 }
 export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
 

@@ -27,6 +27,10 @@ class AdminTeamTests(TestCase):
         res = self.client.get("/api/admin/team/")
         self.assertEqual(res.status_code, 200)
         self.assertIn("reviewer", res.data["roles"])
+        self.assertEqual(
+            [r["code"] for r in res.data["role_info"]], list(res.data["roles"])
+        )
+        self.assertTrue(all(r["label"] and r["summary"] for r in res.data["role_info"]))
         self.assertEqual(res.data["members"], [])
 
         # Grant the reviewer preset scoped to Spanish.

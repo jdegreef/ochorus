@@ -33,8 +33,17 @@ from accounts.models import (
 from accounts.permissions import HasAnyAdminAccess, IsAdminEmail
 
 from ..audit import AdminAudited
-from ..languages import known_codes, language_map
+from ..languages import entry, known_codes, language_map
 from ..models import AdminAction
+
+
+def role_summaries() -> list[dict]:
+    """Every role's code, plain name and one-line summary — one projection of
+    ``ROLE_INFO`` for both the team console and the Help page."""
+    return [
+        {"code": code, "label": label, "summary": summary}
+        for code, (label, summary) in ROLE_INFO.items()
+    ]
 
 
 class AdminTeamView(AdminAudited, APIView):
@@ -78,6 +87,7 @@ class AdminTeamView(AdminAudited, APIView):
                     "outdated": role_drift(scopes),
                 }
             )
+        codes = known_codes()
         return Response(
             {
                 "members": members,
@@ -85,7 +95,13 @@ class AdminTeamView(AdminAudited, APIView):
                 "roles": list(ROLE_NAMES),
                 "capabilities": AdminCapability.choices,
                 "verbs": AdminVerb.choices,
-                "languages": sorted(known_codes()),
+                "languages": sorted(codes),
+                # Plain names for the form's role cards and language chips —
+                # the same source the Help page reads, so the two agree.
+                "role_info": [r for r in role_summaries() if r["code"] in ROLE_NAMES],
+                # entry() refreshes on a miss, so a language another worker just
+                # created is named, not shown as a bare code.
+                "language_names": {code: entry(code)["name"] for code in codes},
             }
         )
 
@@ -163,8 +179,7 @@ class AdminRolesView(APIView):
                     {"code": c, "label": label} for c, label in AdminCapability.choices
                 ],
                 "roles": [
-                    {"code": code, "label": label, "summary": summary, "grants": ROLE_GRANTS[code]}
-                    for code, (label, summary) in ROLE_INFO.items()
+                    {**r, "grants": ROLE_GRANTS[r["code"]]} for r in role_summaries()
                 ],
                 "languages": {code: e["name"] for code, e in language_map().items()},
             }

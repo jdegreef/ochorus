@@ -118,7 +118,7 @@
 	</section>
 
 	<!-- Roles: the summaries, then the exact grid from the backend presets -->
-	<section class="mb-8">
+	<section id="roles" class="mb-8 scroll-mt-6">
 		<h2 class="mb-3 text-h3">The roles</h2>
 		{#if model.data}
 			<ul class="flex flex-col gap-2">
