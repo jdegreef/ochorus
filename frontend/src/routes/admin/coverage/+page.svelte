@@ -472,6 +472,40 @@
 		langs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
 	);
 
+	// --- Today's view: the tab's backlog in four numbers, and its gaps ranked.
+	// Both read the whole tab (not the filtered rows) — they answer "what's
+	// waiting?", and each tile is itself the filter for its answer.
+	const summary = $derived.by(() => {
+		let gaps = 0, unreviewed = 0, stale = 0;
+		for (const r of rows)
+			for (const l of langs) {
+				if (isGap(l, r)) gaps++;
+				else if (r.cells[l.code] === 'ai_unreviewed' && !r.blocked) unreviewed++;
+				if (isStale(r, l.code)) stale++;
+			}
+		const tabJobs = jobs.filter((j) => j.type === jobType && langs.some((l) => l.code === j.language));
+		const translating = tabJobs.filter((j) => j.state === 'in_progress').length;
+		return { gaps, unreviewed, stale, queued: tabJobs.length - translating, translating };
+	});
+	// "Translate next": every open gap, scored like the Priority sort scores a
+	// row — the work's readers × how much that language searches in vain — so
+	// the top of the list is the translation most likely to be read.
+	const NEXT_COUNT = 10;
+	const nextGaps = $derived.by(() => {
+		const out: { r: AdminCoverageRow; l: AdminCoverageLanguage; score: number }[] = [];
+		for (const r of rows)
+			for (const l of langs) if (isGap(l, r)) out.push({ r, l, score: (1 + (r.readers ?? 0)) * gapWeight(l) });
+		return out.sort((a, b) => b.score - a.score).slice(0, NEXT_COUNT);
+	});
+	function queueNext() {
+		if (!nextGaps.length) return;
+		pendingBulk = {
+			label: `the ${nextGaps.length} most-wanted gap${nextGaps.length === 1 ? '' : 's'}`,
+			type: jobType,
+			targets: nextGaps.map(({ r, l }) => ({ slug: r.slug, lang: l.code }))
+		};
+	}
+
 	// File one job; returns null on success or a message to show. Type is passed in
 	// (not read from jobType) so a bulk run is unaffected by a mid-run tab switch.
 	async function enqueueOne(type: TranslationJobType, slug: string, lang: string): Promise<string | null> {
@@ -616,6 +650,92 @@
 					</button>
 				{/each}
 			</div>
+
+			<!-- What's waiting, before the detail. Each tile filters the matrix to it. -->
+			{@const reviewKind = REVIEW_KIND[tab]}
+			<div class="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+				<button
+					type="button"
+					class="flex flex-col items-start rounded-card border border-border bg-surface px-4 py-3 text-left transition-colors hover:border-accent-soft-border {sortMode === 'priority' ? 'border-accent-soft-border bg-accent-soft' : ''}"
+					onclick={() => (sortMode = sortMode === 'priority' ? 'default' : 'priority')}
+					aria-pressed={sortMode === 'priority'}
+					title="Order the works by readers × open gaps"
+				>
+					<span class="block text-micro text-muted">Open gaps</span>
+					<span class="font-display text-h3 tabular-nums">{summary.gaps}</span>
+					<span class="block text-micro text-muted">{sortMode === 'priority' ? 'Ordered by priority' : 'Order by priority'}</span>
+				</button>
+				<button
+					type="button"
+					class="flex flex-col items-start rounded-card border bg-surface px-4 py-3 text-left transition-colors {unreviewedOnly ? 'border-warning bg-warning/10' : 'border-border hover:border-warning'}"
+					onclick={() => (unreviewedOnly = !unreviewedOnly)}
+					aria-pressed={unreviewedOnly}
+					title="Show only works with an AI translation awaiting review"
+				>
+					<span class="block text-micro text-muted">Awaiting review</span>
+					<span class="font-display text-h3 tabular-nums {summary.unreviewed ? 'text-warning' : ''}">{summary.unreviewed}</span>
+					<span class="block text-micro text-muted">{unreviewedOnly ? 'Showing only these' : 'Show only these'}</span>
+				</button>
+				<button
+					type="button"
+					class="flex flex-col items-start rounded-card border bg-surface px-4 py-3 text-left transition-colors disabled:cursor-default {staleOnly ? 'border-danger bg-danger/10' : 'border-border enabled:hover:border-danger'}"
+					onclick={() => (staleOnly = !staleOnly)}
+					disabled={!summary.stale && !staleOnly}
+					aria-pressed={staleOnly}
+					title="Show only works whose English changed after they were translated"
+				>
+					<span class="block text-micro text-muted">Out of date</span>
+					<span class="font-display text-h3 tabular-nums {summary.stale ? 'text-danger' : ''}">{summary.stale}</span>
+					<span class="block text-micro text-muted">{staleOnly ? 'Showing only these' : 'Show only these'}</span>
+				</button>
+				<div class="flex flex-col items-start rounded-card border border-border bg-surface px-4 py-3">
+					<span class="block text-micro text-muted">In flight</span>
+					<span class="font-display text-h3 tabular-nums">{summary.queued + summary.translating}</span>
+					<span class="block text-micro text-muted">{summary.queued} queued · {summary.translating} translating</span>
+				</div>
+			</div>
+			{#if reviewKind && summary.unreviewed}
+				<p class="-mt-2 mb-4 text-small">
+					<a href="/admin/review?{new URLSearchParams({ kind: reviewKind })}">Open the review queue →</a>
+				</p>
+			{/if}
+
+			{#if canQueue && jobsConfigured !== false && nextGaps.length}
+				<details class="mb-4 rounded-card border border-border bg-surface" open>
+					<summary class="flex cursor-pointer list-none items-center gap-3 px-4 py-2.5">
+						<span class="font-semibold">Translate next</span>
+						<span class="text-small text-muted">open gaps ranked by readers × searches with no result</span>
+						<button
+							type="button"
+							class="btn btn-sm btn-primary ml-auto"
+							disabled={busy}
+							onclick={(e) => {
+								e.preventDefault(); // a button in a summary would also toggle it
+								queueNext();
+							}}>Queue top {nextGaps.length}</button
+						>
+					</summary>
+					<ol class="border-t border-border text-small">
+						{#each nextGaps as { r, l } (`${r.slug}:${l.code}`)}
+							<li class="flex items-center gap-3 border-b border-border px-4 py-1.5 last:border-0">
+								<span class="min-w-0 flex-1 truncate">
+									<a href={rowHref(r.slug)} class="text-text hover:text-accent">{workName(r)}</a>
+									<span class="text-muted">→</span>
+									<span class="font-semibold">{l.name}</span>
+								</span>
+								{#if r.readers}<span class="shrink-0 tabular-nums text-muted">{r.readers} reader{r.readers === 1 ? '' : 's'}</span>{/if}
+								{#if l.unmet_searches}<span class="shrink-0 tabular-nums text-warning" title={`${l.unmet_searches} ${l.name} searches found nothing (30d)`}>⌕{l.unmet_searches}</span>{/if}
+								<button
+									type="button"
+									class="shrink-0 font-semibold text-accent hover:underline disabled:opacity-40 disabled:no-underline"
+									disabled={busy}
+									onclick={() => queue(r.slug, l.code)}
+								>{queueing === jobKey(r.slug, l.code) ? '…' : 'Queue'}</button>
+							</li>
+						{/each}
+					</ol>
+				</details>
+			{/if}
 
 			<!-- Planner controls: filter, order and narrow to the review backlog. -->
 			<div class="mb-3 flex flex-wrap items-center gap-2">
