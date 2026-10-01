@@ -1050,11 +1050,20 @@ class PlanDayManager(models.Manager):
 
 
 class PlanDay(models.Model):
+    """One day's reading: a book chapter OR an article, never both.
+
+    Both are soft references in the plan's own language (see ``Plan``). A book
+    day sets ``book_slug`` + ``chapter_order``; an article day sets
+    ``article_slug`` and leaves the other two empty. The check constraint holds
+    that shape in the DB, so nothing downstream has to guess which kind a day is.
+    """
+
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
     # 1-based day within the plan.
     day = models.PositiveIntegerField()
-    book_slug = models.SlugField(max_length=160)
-    chapter_order = models.PositiveIntegerField()
+    book_slug = models.SlugField(max_length=160, blank=True, default="")
+    chapter_order = models.PositiveIntegerField(null=True, blank=True)
+    article_slug = models.SlugField(max_length=180, blank=True, default="")
 
     objects = PlanDayManager()
 
@@ -1062,6 +1071,19 @@ class PlanDay(models.Model):
         ordering = ["day"]
         constraints = [
             models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
+            models.CheckConstraint(
+                condition=(
+                    (
+                        models.Q(article_slug="", chapter_order__isnull=False)
+                        & ~models.Q(book_slug="")
+                    )
+                    | (
+                        models.Q(book_slug="", chapter_order__isnull=True)
+                        & ~models.Q(article_slug="")
+                    )
+                ),
+                name="planday_chapter_xor_article",
+            ),
         ]
 
     def natural_key(self):
@@ -1070,7 +1092,8 @@ class PlanDay(models.Model):
     natural_key.dependencies = ["library.plan"]
 
     def __str__(self) -> str:
-        return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"
+        target = self.article_slug or f"{self.book_slug}/{self.chapter_order}"
+        return f"{self.plan_id} day {self.day} → {target}"
 
 
 class Quote(models.Model):

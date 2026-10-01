@@ -80,5 +80,12 @@
     "note": [
       "Queue job #3145. El libro fuente school-of-prayer ahora tiene edición en español, así que seed_plans crea una fila en español para este plan de un solo libro; esta prosa evita que se publique con título en inglés. El título y la descripción reflejan la edición española «Con Cristo en la escuela de oración»."
     ]
+  },
+  "new-to-the-faith": {
+    "title": "Nuevo en la fe",
+    "description": "Cinco semanas y media para quien acaba de empezar con Cristo. Charles Spurgeon te sale al encuentro en «Junto a la puerta estrecha» con la ayuda más sencilla que existe para confiar en Jesús; luego R. A. Torrey, que escribía para nuevos creyentes, muestra en «Cómo triunfar en la vida cristiana» cómo empezar bien: la seguridad de la salvación, el Espíritu Santo, la iglesia, la Biblia, la oración y el testimonio. Por el camino, artículos breves responden las preguntas que todo nuevo cristiano se hace: qué es el evangelio, por qué murió Jesús, qué significan el bautismo y la Cena del Señor, y cómo seguir creciendo.",
+    "note": [
+      "AI-drafted alongside the plan itself (not a queue job); awaiting native review. The two books are named by their shipped Spanish titles verbatim (around-the-wicket-gate.es «Junto a la puerta estrecha», how-to-succeed-in-the-christian-life.es «Cómo triunfar en la vida cristiana»), so the card and the books it opens agree. Uses «tú», the register of the Spanish articles the plan reads."
+    ]
   }
 }

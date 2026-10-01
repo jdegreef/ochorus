@@ -17,6 +17,7 @@ from rest_framework.test import APIClient
 from common.testing import body_of
 
 from .models import (
+    Article,
     Author,
     Book,
     Chapter,
@@ -28,6 +29,7 @@ from .models import (
     TopicSermon,
     TopicTranslation,
 )
+from .plan_seed import article, chapters
 
 
 class PlanTests(TestCase):
@@ -236,6 +238,127 @@ class PlanTests(TestCase):
 
         legacy.refresh_from_db()
         self.assertEqual(legacy.title, "Humility in 12 Days")
+
+
+class PlanArticleDayTests(TestCase):
+    """A curated plan can read articles between its book chapters."""
+
+    MIXED = [
+        (
+            "mixed",
+            "Mixed",
+            "Books and articles.",
+            [
+                article("what-is-grace"),
+                chapters("humility-2", 2, 3),
+                article("what-is-faith"),
+            ],
+        )
+    ]
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        for lang in ("en", "de"):
+            book = Book.objects.create(
+                author=author, slug="humility-2", language=lang, title=f"Humility {lang}"
+            )
+            for i in (1, 2, 3):
+                Chapter.objects.create(
+                    book=book, order=i, title=f"Ch {i}", body_html=body_of(100)
+                )
+        for slug in ("what-is-grace", "what-is-faith"):
+            Article.objects.create(
+                slug=slug, language="en", h1=slug.replace("-", " "), body_html=body_of(50)
+            )
+        # German has the book and only ONE of the two articles.
+        Article.objects.create(
+            slug="what-is-grace", language="de", h1="Was ist Gnade?", body_html=body_of(50)
+        )
+
+    def _seed(self, translations=None):
+        with (
+            patch("library.management.commands.seed_plans.LAUNCH_PLANS", []),
+            patch("library.management.commands.seed_plans.CURATED_PLANS", self.MIXED),
+            patch(
+                "library.management.commands.seed_plans.plan_translations",
+                lambda: translations or {},
+            ),
+        ):
+            call_command("seed_plans", verbosity=0)
+
+    def test_seed_interleaves_articles_with_a_chapter_span(self):
+        self._seed()
+        days = Plan.objects.get(slug="mixed", language="en").days.all()
+        self.assertEqual(
+            [(d.day, d.book_slug, d.chapter_order, d.article_slug) for d in days],
+            [
+                (1, "", None, "what-is-grace"),
+                (2, "humility-2", 2, ""),
+                (3, "humility-2", 3, ""),
+                (4, "", None, "what-is-faith"),
+            ],
+        )
+
+    def test_seed_skips_a_language_missing_an_article(self):
+        # No English fallback: German has the book and prose, but not every
+        # article, so it gets no plan rather than a hole in the middle of one.
+        prose = {"de": {"mixed": {"title": "Gemischt", "description": "x"}}}
+        self._seed(prose)
+        self.assertFalse(Plan.objects.filter(slug="mixed", language="de").exists())
+        Article.objects.create(
+            slug="what-is-faith", language="de", h1="Was ist Glaube?", body_html=body_of(50)
+        )
+        self._seed(prose)
+        self.assertEqual(Plan.objects.get(slug="mixed", language="de").days.count(), 4)
+
+    def test_seed_skips_an_edition_whose_span_does_not_resolve(self):
+        # German numbers the book differently (no chapter 3): the span would
+        # leave a hole, so the language gets no plan rather than a short one.
+        Article.objects.create(
+            slug="what-is-faith", language="de", h1="Was ist Glaube?", body_html=body_of(50)
+        )
+        Chapter.objects.filter(book__language="de", order=3).delete()
+        self._seed({"de": {"mixed": {"title": "Gemischt", "description": "x"}}})
+        self.assertFalse(Plan.objects.filter(slug="mixed", language="de").exists())
+        self.assertTrue(Plan.objects.filter(slug="mixed", language="en").exists())
+
+    def test_api_resolves_article_days(self):
+        self._seed()
+        res = self.client.get("/api/library/plans/mixed/?language=en")
+        self.assertEqual(res.status_code, 200)
+        first, second = res.data["days"][:2]
+        self.assertEqual(first["article_slug"], "what-is-grace")
+        self.assertIsNone(first["chapter_order"])
+        self.assertEqual(first["chapter_title"], "what is grace")
+        self.assertEqual(first["book_title"], "")
+        self.assertEqual(first["word_count"], 50)
+        self.assertFalse(first["has_modern_edition"])
+        self.assertEqual(second["article_slug"], "")
+        self.assertEqual(second["chapter_title"], "Ch 2")
+        # Minutes count the articles too; covers and authors are the books only.
+        self.assertEqual(res.data["total_words"], 300)
+        self.assertEqual([c["slug"] for c in res.data["covers"]], ["humility-2"])
+        self.assertEqual([a["slug"] for a in res.data["authors"]], ["am"])
+        lst = self.client.get("/api/library/plans/?language=en")
+        self.assertEqual(
+            lst.data[0]["day_one"], {"book_title": "", "chapter_title": "what is grace"}
+        )
+
+    def test_a_day_is_exactly_one_of_a_chapter_or_an_article(self):
+        from django.db import IntegrityError, transaction
+
+        plan = Plan.objects.create(slug="p", language="en", title="P")
+        bad = [
+            {"book_slug": "humility-2", "chapter_order": 1, "article_slug": "what-is-grace"},
+            {},
+            {"book_slug": "humility-2"},
+            {"article_slug": "what-is-grace", "chapter_order": 1},
+        ]
+        for i, fields in enumerate(bad, start=1):
+            with self.subTest(fields=fields), self.assertRaises(IntegrityError):
+                with transaction.atomic():
+                    PlanDay.objects.create(plan=plan, day=i, **fields)
 
 
 class TopicTests(TestCase):

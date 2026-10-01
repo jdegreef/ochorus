@@ -41,8 +41,6 @@ class Command(BaseCommand):
         # their chapters; changed book fields are updated — chapters are not).
         self.stdout.write("→ seed_books")
         call_command("seed_books")
-        self.stdout.write("→ seed_plans")
-        call_command("seed_plans")
         # Upsert fixture sermons into an already-seeded DB (new/updated ones).
         self.stdout.write("→ seed_sermons")
         call_command("seed_sermons")
@@ -50,6 +48,11 @@ class Command(BaseCommand):
         # chapters, no derived columns; a plain per-language content row).
         self.stdout.write("→ seed_articles")
         call_command("seed_articles")
+        # After books AND articles: a curated plan may read both, and is created
+        # only where every source exists — before seed_articles, a plan shipped
+        # with a new article would wait a whole deploy, silently.
+        self.stdout.write("→ seed_plans")
+        call_command("seed_plans")
         # Fingerprint the text just settled, and flag translations whose English
         # has moved on since they were made (admin coverage matrix ↻). After
         # every content seed, so it sees what the site now serves.

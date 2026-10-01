@@ -2,9 +2,11 @@ import { tick } from 'svelte';
 import type { Snapshot } from '@sveltejs/kit';
 
 /**
- * "Show more" paging for a flat shelf: the first `page` items, then another
- * page per tap. The count belongs to one view — `key()` names it (the filters
- * and sort, spelled out) — so a new filter starts over at one page. Kept as
+ * "Show more" paging for a flat shelf: the first `first` items (default: one
+ * `page`), then another `page` per tap. A separate first size lets a grid open
+ * on a full row when the batch isn't a multiple of its column count. The count
+ * belongs to one view — `key()` names it (the filters and sort, spelled out) —
+ * so a new filter starts over at the first page. Kept as
  * (key, count) rather than reset in an effect: an $effect that writes state is
  * a $derived in disguise (frontend/CLAUDE.md). Call during component setup.
  *
@@ -13,12 +15,18 @@ import type { Snapshot } from '@sveltejs/kit';
  */
 export type PagerState = { key: string; count: number };
 
-export function pager<T>(items: () => T[], key: () => string, page: number | (() => number) = 24) {
+export function pager<T>(
+	items: () => T[],
+	key: () => string,
+	page: number | (() => number) = 24,
+	first?: number
+) {
 	// A getter keeps a prop-driven page size reactive (and stays a plain number
 	// for every existing caller).
 	const size = () => (typeof page === 'function' ? page() : page);
-	let expanded = $state({ key: '', count: size() });
-	const limit = $derived(expanded.key === key() ? expanded.count : size());
+	const start = () => first ?? size();
+	let expanded = $state({ key: '', count: start() });
+	const limit = $derived(expanded.key === key() ? expanded.count : start());
 	const visible = $derived(items().slice(0, limit));
 	const remaining = $derived(items().length - visible.length);
 	return {
@@ -37,7 +45,8 @@ export function pager<T>(items: () => T[], key: () => string, page: number | (()
 		},
 		/** Show at least through `index` (a jump to an item not painted yet). */
 		reveal(index: number) {
-			const need = Math.ceil((index + 1) / size()) * size();
+			const n = start();
+			const need = index < n ? n : n + Math.ceil((index + 1 - n) / size()) * size();
 			if (need > limit) expanded = { key: key(), count: need };
 		},
 		capture(): PagerState {

@@ -160,9 +160,17 @@
 	// A page at a time, like Articles and Biographies: the whole library in one
 	// grid ran 40 phone screens. Only the flat view pages — by author and by
 	// series keep every book, since their quick-nav jumps to a book further down.
+	// Larger pages than the other shelves, since a wide desktop shows seven
+	// across (.book-grid--library). The first page is 56 so it ends on a full
+	// row at 2, 4 and 7 columns (phone, tablet, wide desktop); each "Show 48
+	// more" adds a multiple of 2 and 4, so phone and tablet rows stay full.
+	const FIRST_PAGE = 56;
+	const MORE_PAGE = 48;
 	const flat = pager(
 		() => sorted,
-		() => `${filters.values.q}|${filters.values.source}|${filters.values.topic}|${sort}`
+		() => `${filters.values.q}|${filters.values.source}|${filters.values.topic}|${sort}`,
+		MORE_PAGE,
+		FIRST_PAGE
 	);
 	export const pages = flat; // for the route's snapshot ($lib/paging)
 
@@ -246,9 +254,9 @@
      `showSeries` is off under a series heading, which already names it. -->
 {#snippet shelfBooks(list: BookSummary[], eager: boolean, showSeries: boolean)}
 	{#if view === 'grid'}
-		<div class="book-grid">
+		<div class="book-grid book-grid--library">
 			{#each list as book, i (book.slug)}
-				<BookCard {book} showAuthor {showSeries} priority={eager && i < 6} />
+				<BookCard {book} showAuthor {showSeries} priority={eager && i < 7} />
 			{/each}
 		</div>
 	{:else}
@@ -514,54 +522,57 @@
 			</nav>
 		{/if}
 
-		<!-- Results -->
-		{#if sorted.length === 0}
-			<!-- Books exist in this language but the filters removed them all — a
-			     filtered-to-nothing state, so offer to clear (not the bare <p> that
-			     made Books the odd shelf out; C2). -->
-			<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
-		{:else if seriesGroups}
-			<!-- By series: one section per series (group-heading recipe, the name
-			     linking to the series page), then the books in no series. The
-			     cards drop their series line — the heading already says it. -->
-			{#each seriesGroups.named as g, gi (g.slug)}
-				<section class="mb-10">
-					<GroupHeading
-						name={g.title}
-						href={localizeHref(`/series/${g.slug}/`)}
-						count={g.books.length}
-					/>
-					{@render shelfBooks(g.books, gi === 0, false)}
-				</section>
-			{/each}
-			{#if seriesGroups.standalone.length}
-				<section>
-					<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
-					{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
-				</section>
-			{/if}
-		{:else if groups}
-			<!-- By author: one flat shelf, books ordered so each author's works sit
-			     together and the author rides every card. A <section> per author
-			     turned a library of mostly one-book authors into a tall column of
-			     near-empty rows; a single grid fills left-to-right, and the
-			     quick-nav above still lands on each author's first book. -->
-			{#if view === 'grid'}
-				<div class="book-grid">
-					{#each authorFlat as book, i (book.slug)}
-						<BookCard {book} showAuthor priority={i < 6} anchor={authorAnchor.get(book.slug)} />
-					{/each}
-				</div>
+		<!-- Results — in a size container, so the library grid steps to seven
+		     across by the shelf's own width (.book-shelf-room in app.css). -->
+		<div class="book-shelf-room">
+			{#if sorted.length === 0}
+				<!-- Books exist in this language but the filters removed them all — a
+				     filtered-to-nothing state, so offer to clear (not the bare <p> that
+				     made Books the odd shelf out; C2). -->
+				<EmptyState message={t('books.noResults')} action={clearFiltersAction} />
+			{:else if seriesGroups}
+				<!-- By series: one section per series (group-heading recipe, the name
+				     linking to the series page), then the books in no series. The
+				     cards drop their series line — the heading already says it. -->
+				{#each seriesGroups.named as g, gi (g.slug)}
+					<section class="mb-10">
+						<GroupHeading
+							name={g.title}
+							href={localizeHref(`/series/${g.slug}/`)}
+							count={g.books.length}
+						/>
+						{@render shelfBooks(g.books, gi === 0, false)}
+					</section>
+				{/each}
+				{#if seriesGroups.standalone.length}
+					<section>
+						<GroupHeading name={t('books.standalone')} count={seriesGroups.standalone.length} />
+						{@render shelfBooks(seriesGroups.standalone, !seriesGroups.named.length, false)}
+					</section>
+				{/if}
+			{:else if groups}
+				<!-- By author: one flat shelf, books ordered so each author's works sit
+				     together and the author rides every card. A <section> per author
+				     turned a library of mostly one-book authors into a tall column of
+				     near-empty rows; a single grid fills left-to-right, and the
+				     quick-nav above still lands on each author's first book. -->
+				{#if view === 'grid'}
+					<div class="book-grid book-grid--library">
+						{#each authorFlat as book, i (book.slug)}
+							<BookCard {book} showAuthor priority={i < 7} anchor={authorAnchor.get(book.slug)} />
+						{/each}
+					</div>
+				{:else}
+					<div class="flex flex-col gap-1">
+						{#each authorFlat as book (book.slug)}
+							<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
+						{/each}
+					</div>
+				{/if}
 			{:else}
-				<div class="flex flex-col gap-1">
-					{#each authorFlat as book (book.slug)}
-						<BookListRow {book} anchor={authorAnchor.get(book.slug)} />
-					{/each}
-				</div>
+				{@render shelfBooks(flat.visible, true, true)}
+				<ShowMore pager={flat} />
 			{/if}
-		{:else}
-			{@render shelfBooks(flat.visible, true, true)}
-			<ShowMore pager={flat} />
-		{/if}
+		</div>
 	{/if}
 </div>

@@ -187,11 +187,44 @@ LAUNCH_PLANS = [
     ),
 ]
 
-# Curated plans that walk through SEVERAL books in order (each book read in
-# full, chapter by chapter). Days are numbered sequentially across the books.
-# A plan is created only in a language where EVERY source book is present and
-# published (so a partially-translated set is skipped, not shipped half-empty).
-#   (plan slug, title, description, [ordered source book slugs])
+
+def article(slug: str) -> tuple:
+    """A curated-plan item: one day reading this article."""
+    return ("article", slug)
+
+
+def chapters(book_slug: str, first: int, last: int) -> tuple:
+    """A curated-plan item: this book's chapters ``first``..``last``, a day each."""
+    return ("book", book_slug, first, last)
+
+
+def plan_items(items) -> list[tuple]:
+    """A curated plan's items in one shape: ``("article", slug)`` or
+    ``("book", slug, first, last)``, where a bare book slug (the whole book)
+    has ``first``/``last`` of None. The one place that reads the item forms."""
+    return [("book", i, None, None) if isinstance(i, str) else i for i in items]
+
+
+def plan_sources(items) -> tuple[list[str], list[str]]:
+    """The (book slugs, article slugs) a curated plan's items need, in order.
+
+    A plan exists in a language only where every one of them is published —
+    the seed and the prose-coverage test both ask this, so it is said once.
+    """
+    sources: dict[str, list[str]] = {"book": [], "article": []}
+    for kind, slug, *_ in plan_items(items):
+        if slug not in sources[kind]:
+            sources[kind].append(slug)
+    return sources["book"], sources["article"]
+
+
+# Curated plans that walk through SEVERAL works in order. An item is a book
+# slug (the whole book, chapter by chapter), ``chapters(slug, first, last)``
+# (a span of one book) or ``article(slug)`` (one day reading that article).
+# Days are numbered sequentially across the items. A plan is created only in a
+# language where EVERY source book and article is present and published (so a
+# partially-translated set is skipped, not shipped half-empty).
+#   (plan slug, title, description, [ordered items])
 CURATED_PLANS = [
     (
         "school-of-prayer",
@@ -385,6 +418,43 @@ CURATED_PLANS = [
             "first-epistle-of-clement",
             "epistles-of-ignatius",
             "on-the-incarnation",
+        ],
+    ),
+    (
+        "new-to-the-faith",
+        "New to the Faith",
+        "Five and a half weeks for anyone just beginning with Christ. Charles "
+        "Spurgeon meets you at the wicket gate with the plainest help there is "
+        "for trusting Jesus; then R. A. Torrey, writing for new believers, shows "
+        "how to begin right — assurance, the Holy Spirit, the church, the Bible, "
+        "prayer and witness. Short articles along the way answer the questions "
+        "every new Christian asks: what the gospel is, why Jesus died, what "
+        "baptism and the Lord\u2019s Supper mean, and how to keep growing.",
+        [
+            article("what-is-the-gospel"),
+            chapters("around-the-wicket-gate", 1, 2),  # Awakening; Jesus only
+            article("why-did-jesus-die"),
+            chapters("around-the-wicket-gate", 3, 4),  # faith in Him; faith very simple
+            article("what-is-grace"),
+            chapters("around-the-wicket-gate", 5, 8),  # fears, difficulties, hindrances
+            article("what-is-repentance"),
+            chapters("around-the-wicket-gate", 9, 11),  # … to those who have believed
+            chapters("how-to-succeed-in-the-christian-life", 1, 2),  # confessing Christ
+            article("what-is-baptism"),
+            chapters("how-to-succeed-in-the-christian-life", 3, 4),  # assurance; the Spirit
+            article("who-is-the-holy-spirit"),
+            chapters("how-to-succeed-in-the-christian-life", 5, 6),  # church membership
+            article("what-is-the-church"),
+            article("what-is-the-lords-supper"),
+            article("how-to-read-the-bible-for-beginners"),
+            chapters("how-to-succeed-in-the-christian-life", 7, 9),  # Bible study; prayer
+            article("the-morning-watch"),
+            chapters("how-to-succeed-in-the-christian-life", 10, 10),  # working for Christ
+            article("how-to-share-your-faith"),
+            chapters("how-to-succeed-in-the-christian-life", 11, 13),  # missions … amusements
+            article("how-to-overcome-sin-and-temptation"),
+            chapters("how-to-succeed-in-the-christian-life", 14, 15),  # persecution; guidance
+            article("how-to-grow-in-your-faith"),
         ],
     ),
     (

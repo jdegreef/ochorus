@@ -130,7 +130,11 @@ jobs:
     # ~24.5 min (1,456-1,465 s) on its own, so the old 25-minute ceiling was
     # cancelling runs seconds after the last test finished (#3966, #3989,
     # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
-    timeout-minutes: 40
+    # By 2026-10-01 it ran 28-37 min and 40 was cancelling healthy runs again
+    # (#4884, #4887-#4889, #4892, #4893 — one slow test,
+    # test_no_replacement_pair_is_dead, took ~36 min of it; #4890 speeds it
+    # up). 60 restores the headroom; it is still a hang-reaper, not a budget.
+    timeout-minutes: 60
     env:
       DJANGO_DEBUG: 'true'
     # The suite runs ONCE, on Postgres — the production database. Postgres is a
