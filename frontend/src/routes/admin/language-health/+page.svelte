@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { getAdminLanguageHealth, type AdminLanguageHealth, type HealthScoreKey } from '$lib/library-admin';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import {
+		getAdminLanguageHealth,
+		type AdminLanguageHealth,
+		type HealthScoreKey,
+		type HealthWeights
+	} from '$lib/library-admin';
 	import {
 		BAND_FAIR,
 		BAND_STRONG,
 		HEALTH_KEYS,
 		healthBand,
 		nextActions,
-		pointsBreakdown,
-		type HealthWeights
+		plural,
+		pointsBreakdown
 	} from '$lib/languageHealth';
 
 	const res = adminResource(getAdminLanguageHealth, 'Something went wrong loading language health.');
@@ -27,20 +33,6 @@
 		review: { label: 'Review', hint: 'share of translations a human has confirmed' },
 		engagement: { label: 'Engagement', hint: 'readers, against the busiest language' }
 	};
-
-	// Readiness check keys → a human label for the blocking chips.
-	const CHECK_LABEL: Record<string, string> = {
-		bible: 'Bible',
-		attribution: 'Attribution',
-		glossary: 'Glossary',
-		ui: 'Interface',
-		books: 'Books',
-		sermons: 'Sermons',
-		bios: 'Biographies',
-		plans: 'Reading plans',
-		topics: 'Topic shelves'
-	};
-	const checkLabel = (k: string) => CHECK_LABEL[k] ?? k;
 
 	const BAND_INK = { accent: 'text-accent', text: 'text-text', warning: 'text-warning' } as const;
 	const BAND_CHIP = {
@@ -61,13 +53,18 @@
 				return total ? `${fmt(total - l.content.unreviewed_books)} of ${fmt(total)} reviewed` : 'nothing to review';
 			}
 			case 'engagement':
-				return `${fmt(l.readers)} reader${l.readers === 1 ? '' : 's'}`;
+				return plural(l.readers, 'reader');
 		}
 	}
 
 	const formula = (w: HealthWeights) =>
 		HEALTH_KEYS.map((k) => `${Math.round(w[k] * 100)} × ${COMPONENTS[k].label.toLowerCase()}`).join(' + ');
 </script>
+
+{#snippet contentLine(l: AdminLanguageHealth)}
+	{fmt(l.content.published_books)} books · {fmt(l.content.sermons)} sermons · {fmt(l.content.bios)} bios ·
+	{fmt(l.content.plans)} plans · {plural(l.readers, 'reader')}
+{/snippet}
 
 <svelte:head><title>Admin · Language health — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
@@ -110,10 +107,7 @@
 				<div class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-card bg-surface-2 px-4 py-3">
 					<span class="rounded-full bg-accent-soft px-2 py-0.5 text-micro text-accent">source</span>
 					<a href="/admin/languages/{s.code}" class="font-semibold text-text hover:text-accent">{s.name}</a>
-					<span class="text-small tabular-nums text-muted">
-						{fmt(s.content.published_books)} books · {fmt(s.content.sermons)} sermons · {fmt(s.content.bios)} bios ·
-						{fmt(s.content.plans)} plans · {fmt(s.readers)} reader{s.readers === 1 ? '' : 's'}
-					</span>
+					<span class="text-small tabular-nums text-muted">{@render contentLine(s)}</span>
 					{#if s.content.unreviewed_books}
 						<span class="text-small text-warning">{fmt(s.content.unreviewed_books)} awaiting review</span>
 					{/if}
@@ -124,7 +118,7 @@
 				{#each ranked as l, i (l.code)}
 					{@const b = healthBand(l.health)}
 					{@const breakdown = pointsBreakdown(l.scores, data.weights)}
-					{@const actions = nextActions(l, data.source_published_books, data.weights, checkLabel)}
+					{@const actions = nextActions(l, data.source_published_books, data.weights)}
 					<li class="rounded-card border border-border bg-surface p-4">
 						<div class="flex items-start justify-between gap-4">
 							<div class="min-w-0">
@@ -138,7 +132,7 @@
 										<span class="rounded-full border border-accent-soft-border px-2 py-0.5 text-micro text-accent">Live</span>
 									{:else if l.is_live}
 										<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning"
-											>Live · failing: {l.readiness.blocking.map(checkLabel).join(', ')}</span
+											>Live · failing: {l.readiness.blocking.map((c) => c.label).join(', ')}</span
 										>
 									{:else if l.readiness.ready}
 										<a
@@ -148,17 +142,14 @@
 										>
 									{:else}
 										<span class="rounded-full border border-border px-2 py-0.5 text-micro text-muted">Not live</span>
-										{#each l.readiness.blocking as key (key)}
+										{#each l.readiness.blocking as c (c.key)}
 											<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning"
-												>{checkLabel(key)}</span
+												>{c.label}</span
 											>
 										{/each}
 									{/if}
 								</div>
-								<p class="mt-1 text-small text-muted">
-									{fmt(l.content.published_books)} books · {fmt(l.content.sermons)} sermons · {fmt(l.content.bios)} bios ·
-									{fmt(l.content.plans)} plans · {fmt(l.readers)} reader{l.readers === 1 ? '' : 's'}
-								</p>
+								<p class="mt-1 text-small text-muted">{@render contentLine(l)}</p>
 							</div>
 							<div class="shrink-0 text-end">
 								<span class="text-h2 tabular-nums {BAND_INK[b.tone]}">{l.health}</span>
@@ -177,21 +168,18 @@
 							style="--weighted: {breakdown.map((p) => `${p.max}fr`).join(' ')}"
 						>
 							{#each breakdown as p (p.key)}
+								{@const line = countLine(p.key, l, data.source_published_books)}
 								<div class="min-w-0">
-									<span
-										class="block h-2 overflow-hidden rounded-full bg-surface-2"
-										role="img"
-										aria-label="{COMPONENTS[p.key].label}: {pts(p.earned)} of {pts(p.max)} points"
-									>
-										<span class="block h-full rounded-full bg-accent" style="width: {(p.earned / p.max) * 100}%"></span>
-									</span>
+									<ProgressBar
+										percent={p.max ? (p.earned / p.max) * 100 : 0}
+										label="{COMPONENTS[p.key].label}: {pts(p.earned)} of {pts(p.max)} points"
+										size="md"
+									/>
 									<p class="mt-1 truncate text-micro text-text" title={COMPONENTS[p.key].label}>
 										{COMPONENTS[p.key].label}
 										<span class="tabular-nums text-muted">{pts(p.earned)}/{pts(p.max)}</span>
 									</p>
-									<p class="truncate text-micro tabular-nums text-muted" title={countLine(p.key, l, data.source_published_books)}>
-										{countLine(p.key, l, data.source_published_books)}
-									</p>
+									<p class="truncate text-micro tabular-nums text-muted" title={line}>{line}</p>
 								</div>
 							{/each}
 						</div>

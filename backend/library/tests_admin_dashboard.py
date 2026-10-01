@@ -1952,6 +1952,13 @@ class AdminLanguageHealthTests(TestCase):
             composed = 100 * sum(r["scores"][k] * w for k, w in weights.items())
             self.assertLessEqual(abs(composed - r["health"]), 0.5 + 1e-6)
 
+    def test_blockers_carry_the_checks_own_label(self):
+        # The page shows these as-is, so each must name itself.
+        for r in self._get()["languages"]:
+            for b in r["readiness"]["blocking"]:
+                self.assertEqual(set(b), {"key", "label"})
+                self.assertTrue(b["label"])
+
     def test_engagement_normalises_to_the_busiest_language(self):
         # No reading data → engagement is zero for everyone (not a crash).
         for r in self._get()["languages"]:

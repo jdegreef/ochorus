@@ -3,9 +3,7 @@
  * lost, which band a score sits in, and the one piece of work worth the most
  * points next. Pure, so it is tested beside this file; the page only renders.
  */
-import type { AdminLanguageHealth, HealthScoreKey } from './library-admin';
-
-export type HealthWeights = Record<HealthScoreKey, number>;
+import type { AdminLanguageHealth, HealthScoreKey, HealthWeights } from './library-admin';
 
 /** The composite's ingredients, in the order the backend weights them. */
 export const HEALTH_KEYS: HealthScoreKey[] = ['readiness', 'coverage', 'review', 'engagement'];
@@ -24,8 +22,8 @@ export function pointsBreakdown(
 	weights: HealthWeights
 ): SignalPoints[] {
 	return HEALTH_KEYS.map((key) => {
-		const max = (weights[key] ?? 0) * 100;
-		const earned = max * Math.min(1, Math.max(0, scores[key] ?? 0));
+		const max = weights[key] * 100;
+		const earned = max * Math.min(1, Math.max(0, scores[key]));
 		return { key, max, earned, lost: max - earned };
 	});
 }
@@ -56,7 +54,7 @@ export interface NextAction {
 /** Below this many points a lever isn't worth recommending. */
 const MIN_GAIN = 0.5;
 
-const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
+export const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
 
 /**
  * The levers an admin can pull, best first. Engagement is left out on purpose:
@@ -66,8 +64,7 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? o
 export function nextActions(
 	l: AdminLanguageHealth,
 	sourceBooks: number,
-	weights: HealthWeights,
-	checkLabel: (key: string) => string = (k) => k
+	weights: HealthWeights
 ): NextAction[] {
 	if (l.is_source) return [];
 	const pts = Object.fromEntries(pointsBreakdown(l.scores, weights).map((p) => [p.key, p]));
@@ -79,7 +76,7 @@ export function nextActions(
 		key: 'readiness',
 		gain: pts.readiness.lost,
 		label: blocking.length
-			? `Clear the go-live ${blocking.length === 1 ? 'blocker' : 'blockers'}: ${blocking.map(checkLabel).join(', ')}`
+			? `Clear the go-live ${blocking.length === 1 ? 'blocker' : 'blockers'}: ${blocking.map((c) => c.label).join(', ')}`
 			: 'Close the remaining go-live gaps',
 		perUnit: null,
 		href: `/admin/languages/${code}#sec-readiness`,

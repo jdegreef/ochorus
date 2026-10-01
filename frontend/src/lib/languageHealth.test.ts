@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { healthBand, nextActions, pointsBreakdown, type HealthWeights } from './languageHealth';
-import type { AdminLanguageHealth } from './library-admin';
+import { healthBand, nextActions, pointsBreakdown } from './languageHealth';
+import type { AdminLanguageHealth, HealthWeights } from './library-admin';
 
 const WEIGHTS: HealthWeights = { readiness: 0.35, coverage: 0.3, review: 0.2, engagement: 0.15 };
 
@@ -67,11 +67,17 @@ describe('nextActions', () => {
 		const l = french({
 			scores: { readiness: 0.5, coverage: 0.9, review: 1, engagement: 0 },
 			content: { ...french().content, unreviewed_books: 0 },
-			readiness: { ready: false, blocking: ['glossary', 'ui'] }
+			readiness: {
+				ready: false,
+				blocking: [
+					{ key: 'glossary', label: 'Glossary' },
+					{ key: 'ui', label: 'Interface strings' }
+				]
+			}
 		});
-		const [top] = nextActions(l, 179, WEIGHTS, (k) => ({ glossary: 'Glossary', ui: 'Interface' })[k] ?? k);
+		const [top] = nextActions(l, 179, WEIGHTS);
 		expect(top.key).toBe('readiness');
-		expect(top.label).toBe('Clear the go-live blockers: Glossary, Interface');
+		expect(top.label).toBe('Clear the go-live blockers: Glossary, Interface strings');
 		expect(top.href).toBe('/admin/languages/fr#sec-readiness');
 	});
 

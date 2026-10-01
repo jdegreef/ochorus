@@ -104,7 +104,11 @@ class AdminLanguageHealthView(APIView):
                     },
                     "readiness": {
                         "ready": report.ready,
-                        "blocking": [c.key for c in report.blockers],
+                        # The check's own label, so the page never keeps a
+                        # second (drifting) copy of what each key is called.
+                        "blocking": [
+                            {"key": c.key, "label": c.label} for c in report.blockers
+                        ],
                     },
                     "readers": n_readers,
                 }
