@@ -1797,6 +1797,31 @@ nav.appnav .navsearch:hover {
 	}
 }
 
+/* The library's own shelf (/books) runs one step further: seven across on a
+   wide desktop, where the column has the room. Keyed off the SHELF's width, not
+   the viewport — the page-col is capped by the reader's page-width setting, so
+   at the default 76rem a 1920px screen still gives a ~1176px shelf, and a
+   viewport query would put seven columns into a narrowed column too.
+
+   Same 154px card bar as the ramp above: seven 154px cards and six 1rem gaps
+   need ~1174px, so 7-up starts at a 73rem (1168px) shelf — which the default
+   page width reaches from a ~1250px viewport — and 6-up at 68rem (1088px,
+   ~168px cards) fills the step between that and the lg 5-up. Below these, the
+   media ramp above applies unchanged; other shelves keep six. */
+.book-shelf-room {
+	container: book-shelf / inline-size;
+}
+@container book-shelf (min-width: 68rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+@container book-shelf (min-width: 73rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(7, minmax(0, 1fr));
+	}
+}
+
 /* The fan of covers in the band. Overlapped and slightly rotated so a shelf
    reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
