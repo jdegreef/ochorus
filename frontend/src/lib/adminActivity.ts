@@ -11,6 +11,7 @@
  * deliberately left out: the code→autonym map is `localeName`, and resolving it
  * here would drag a `.svelte.ts` rune module into a plain unit.
  */
+import { splitEdition } from './edition';
 import { initials as nameInitials, unslug } from './strings';
 import type { AdminActionRow } from './library-admin';
 
@@ -110,6 +111,9 @@ export function parseTarget(target: string): ParsedTarget {
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/books/${slug}` };
 	if (kind === 'sermon' && slug)
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/sermons/${slug}` };
+	// Articles and plans are per-language editions too, without an admin page.
+	if ((kind === 'article' || kind === 'plan') && slug)
+		return { kind: 'document', slug, lang: lang || undefined, href: null };
 	return { kind: 'other', slug: target ?? '', href: null };
 }
 
@@ -284,28 +288,17 @@ export function toCsv(rows: AdminActionRow[]): string {
 	return [header.join(','), ...body].join('\n');
 }
 
-/** A young-reader edition, read off the slug convention (see CLAUDE.md). */
-export type Edition = 'For Children' | 'For Teens';
-
-const EDITION_SUFFIX: [string, Edition][] = [
-	['-children', 'For Children'],
-	['-teens', 'For Teens']
-];
-
 /**
  * A row's display name and its young-reader edition, if any. The server sends
- * the work's real title; the edition rides as a chip, so it's trimmed from the
- * title's tail rather than shown twice. Without a title (an unknown slug, a
- * deleted work) the slug is unslugged as before, minus the edition suffix.
+ * the work's real title; `splitEdition` lifts a "(For Children)" audience (in
+ * the title's own language) into a chip only when the slug agrees, so a work
+ * titled that way on its own keeps its name. Without a title (an unknown or
+ * deleted work) the slug is unslugged, as before.
  */
-export function titleParts(slug: string, title?: string): { name: string; edition: Edition | null } {
-	const hit = EDITION_SUFFIX.find(([suffix]) => slug.endsWith(suffix));
-	const edition = hit ? hit[1] : null;
-	if (title) {
-		const name = edition ? title.replace(new RegExp(`\\s*\\(${edition}\\)\\s*$`, 'i'), '') : title;
-		return { name, edition };
-	}
-	return { name: unslug(hit ? slug.slice(0, -hit[0].length) : slug), edition };
+export function titleParts(slug: string, title?: string): { name: string; edition: string | null } {
+	if (!title) return { name: unslug(slug), edition: null };
+	const split = splitEdition(slug, title);
+	return split ? { name: split.base, edition: split.audience } : { name: title, edition: null };
 }
 
 /** One rendered line of a day: a single row, or a burst folded into one. */
@@ -316,14 +309,21 @@ export const BURST_GAP_MS = 10 * 60_000;
 /** Fewer than this stay as separate rows: two of a thing isn't a burst. */
 export const BURST_MIN = 3;
 
-const burstKey = (r: AdminActionRow) => {
-	const t = parseTarget(r.target);
-	return `${r.actor}|${r.action}|${t.kind}|${t.lang ?? ''}`;
+/**
+ * What makes rows "the same thing again": admin, action, the target's own kind
+ * (`book`, not the display bucket a sermon shares) and language, and a review's
+ * verdict — a rejection never hides among approvals. A row with a reason says
+ * something of its own, so it never joins.
+ */
+const burstKey = (r: AdminActionRow): string | null => {
+	if (r.detail?.reason) return null;
+	const [kind, , lang] = r.target.split(':');
+	return [r.actor, r.action, kind, lang ?? '', String(r.detail?.outcome ?? '')].join('|');
 };
 
 /**
- * Consecutive rows of the same action by the same admin on the same kind of
- * target in the same language, each within {@link BURST_GAP_MS} of the next,
+ * Consecutive rows that are the same thing again (see `burstKey`), each within
+ * {@link BURST_GAP_MS} of the next,
  * folded into one item. One click on "Translate all to Spanish" files a
  * hundred jobs, and as a hundred rows it pushed everything else that day off
  * the page. Order is kept; nothing is dropped — the view expands a burst.
@@ -338,9 +338,11 @@ export function groupBursts(rows: AdminActionRow[]): DayItem[] {
 	};
 	for (const row of rows) {
 		const prev = run[run.length - 1];
+		const key = burstKey(row);
 		const joins =
 			prev &&
-			burstKey(prev) === burstKey(row) &&
+			key !== null &&
+			burstKey(prev) === key &&
 			Math.abs(Date.parse(prev.at) - Date.parse(row.at)) <= BURST_GAP_MS;
 		if (!joins) flush();
 		run.push(row);

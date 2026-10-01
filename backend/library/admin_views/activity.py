@@ -90,15 +90,16 @@ def _titles(rows) -> dict[str, str]:
             k, _, rest = row.target.partition(":")
             if k != kind:
                 continue
-            slug, _, lang = rest.partition(":")
+            # `kind:slug:lang`, or `kind:slug:lang:reference` for a review row.
+            slug, lang = (rest.split(":") + [""])[:2]
             titles = by_slug.get(slug)
             if titles:
                 out[row.target] = titles.get(lang) or titles.get("en") or next(iter(titles.values()))
     return out
 
 
-def _serialize_page(rows, *, reveal: bool) -> list[dict]:
-    titles = _titles(rows)
+def _serialize_page(rows, *, reveal: bool, titled: bool = True) -> list[dict]:
+    titles = _titles(rows) if titled else {}
     return [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
 
 
@@ -232,7 +233,10 @@ class AdminActivityView(APIView):
             return Response(
                 {
                     "truncated": len(rows) > self.EXPORT_LIMIT,
-                    "actions": _serialize_page(rows[: self.EXPORT_LIMIT], reveal=reveal),
+                    # The CSV has no title column: skip resolving 20k of them.
+                    "actions": _serialize_page(
+                        rows[: self.EXPORT_LIMIT], reveal=reveal, titled=False
+                    ),
                 }
             )
 
@@ -304,9 +308,16 @@ class AdminActivityView(APIView):
             key = row["actor"] if reveal else mask_email(row["actor"])
             actors[key] = actors.get(key, 0) + row["n"]
 
-        def latest(action):
-            row = scope.filter(action=action).order_by("-id").first()
-            return _serialize_page([row], reveal=reveal)[0] if row else None
+        # Both "last" rows in one title lookup.
+        latest = [
+            scope.filter(action=action).order_by("-id").first()
+            for action in (
+                AdminAction.Action.LANGUAGE_GO_LIVE,
+                AdminAction.Action.CONTENT_PUBLISH,
+            )
+        ]
+        found = iter(_serialize_page([r for r in latest if r], reveal=reveal))
+        go_live, publish = (next(found) if r else None for r in latest)
 
         return {
             "all": scope.count(),
@@ -318,6 +329,6 @@ class AdminActivityView(APIView):
                 {"actor": a, "count": n}
                 for a, n in sorted(actors.items(), key=lambda kv: (-kv[1], kv[0]))
             ],
-            "last_go_live": latest(AdminAction.Action.LANGUAGE_GO_LIVE),
-            "last_publish": latest(AdminAction.Action.CONTENT_PUBLISH),
+            "last_go_live": go_live,
+            "last_publish": publish,
         }

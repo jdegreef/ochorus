@@ -216,18 +216,22 @@ describe('summariseDetail: created', () => {
 });
 
 describe('titleParts', () => {
-	it('uses the real title and lifts the edition into a chip', () => {
-		expect(titleParts('amanda-smith-autobiography-children', 'The Story of Amanda Smith (For Children)')).toEqual({
-			name: 'The Story of Amanda Smith',
-			edition: 'For Children'
+	it('lifts the edition, in the title\'s own language, into a chip', () => {
+		expect(
+			titleParts('amanda-smith-autobiography-children', 'The Story of Amanda Smith (For Children)')
+		).toEqual({ name: 'The Story of Amanda Smith', edition: 'For Children' });
+		expect(titleParts('a-retrospect-children', 'Una retrospectiva (Para niños)')).toEqual({
+			name: 'Una retrospectiva',
+			edition: 'Para niños'
 		});
-		expect(titleParts('george-muller-of-bristol', 'George Müller of Bristol')).toEqual({
-			name: 'George Müller of Bristol',
+	});
+	it('leaves a work whose own title ends that way alone', () => {
+		expect(titleParts('divine-songs-for-children', 'Divine Songs for Children')).toEqual({
+			name: 'Divine Songs for Children',
 			edition: null
 		});
 	});
-	it('falls back to the slug without its edition suffix', () => {
-		expect(titleParts('a-retrospect-teens')).toEqual({ name: 'A Retrospect', edition: 'For Teens' });
+	it('falls back to the slug without a title', () => {
 		expect(titleParts('grace-abounding', '')).toEqual({ name: 'Grace Abounding', edition: null });
 	});
 });
@@ -263,6 +267,12 @@ describe('groupBursts', () => {
 			job('c', '2026-10-01T07:05:00Z')
 		];
 		expect(groupBursts(mixed).every((i) => i.kind === 'row')).toBe(true);
+		const kinds = [
+			job('a', '2026-10-01T07:07:00Z'),
+			job('b', '2026-10-01T07:06:00Z', { target: 'sermon:b:es' }),
+			job('c', '2026-10-01T07:05:00Z')
+		];
+		expect(groupBursts(kinds).every((i) => i.kind === 'row')).toBe(true);
 		const gappy = [job('a', '2026-10-01T09:00:00Z'), job('b', '2026-10-01T08:00:00Z'), job('c', '2026-10-01T07:00:00Z')];
 		expect(groupBursts(gappy).every((i) => i.kind === 'row')).toBe(true);
 	});
@@ -274,5 +284,20 @@ describe('issueRange', () => {
 		expect(issueRange([r(4821), r(4722), r(4800)])).toBe('#4722–#4821');
 		expect(issueRange([r(7)])).toBe('#7');
 		expect(issueRange([row({ detail: {} })])).toBe('');
+	});
+});
+
+describe('groupBursts: reviews', () => {
+	const review = (outcome: string, at: string, reason?: string) =>
+		row({ action: 'review.decide', at, detail: reason ? { outcome, reason } : { outcome } });
+	it('keeps a rejection, or a row with a reason, out of a run of approvals', () => {
+		const items = groupBursts([
+			review('approved', '2026-10-01T07:05:00Z'),
+			review('approved', '2026-10-01T07:04:00Z'),
+			review('approved', '2026-10-01T07:03:00Z'),
+			review('rejected', '2026-10-01T07:02:00Z'),
+			review('approved', '2026-10-01T07:01:00Z', 'fine')
+		]);
+		expect(items.map((i) => i.kind)).toEqual(['burst', 'row', 'row']);
 	});
 });

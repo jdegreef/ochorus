@@ -27,7 +27,6 @@
 		titleParts,
 		toCsv,
 		type Category,
-		type Edition,
 		type IconName
 	} from '$lib/adminActivity';
 
@@ -109,10 +108,10 @@
 	// A row's display name. The server sends the work's real title; a
 	// language's name is localeName's job; anything else falls back to its slug.
 	type Named = { target: string; title?: string };
-	function nameParts(row: Named): { name: string; edition: Edition | null } {
+	function nameParts(row: Named): { name: string; edition: string | null } {
 		const t = parseTarget(row.target);
 		if (t.kind === 'language') return { name: localeName(t.slug), edition: null };
-		if (t.kind === 'other') return { name: t.slug || '—', edition: null };
+		if (t.kind === 'other') return { name: row.title || t.slug || '—', edition: null };
 		if (t.kind === 'document') return titleParts(t.slug, row.title);
 		return { name: row.title || unslug(t.slug), edition: null };
 	}
@@ -510,6 +509,11 @@
 															<span class="grid h-5 w-5 place-items-center rounded-full text-micro font-bold {first.actor ? 'bg-accent text-accent-contrast' : 'border border-border bg-surface-2 text-muted'}">{initials(first.actor)}</span>
 															{actorName(first.actor)}
 														</span>
+														{#if first.detail?.outcome}
+															<!-- A review burst is all one verdict (see burstKey). -->
+															<span class="text-border-strong" aria-hidden="true">·</span>
+															<span class="font-semibold text-text">all {first.detail.outcome}</span>
+														{/if}
 														{#if issues}
 															<span class="text-border-strong" aria-hidden="true">·</span>
 															<span class="tabular-nums">{issues}</span>
