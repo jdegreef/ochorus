@@ -13,7 +13,7 @@
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
 	import TopicPill from '$lib/components/TopicPill.svelte';
-	import { sourceProse } from '$lib/quoteText';
+	import { chapterSuffix } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English literals, as on the author pages and /scripture: this index is not
@@ -157,7 +157,9 @@
 							{#if a.teaser_source}
 								<!-- The teaser's citation — the promise the tagline makes. -->
 								<span class="mt-0.5 block text-eyebrow text-muted"
-									>— {sourceProse(a.teaser_source)}</span
+									>— <cite class="italic">{a.teaser_source.work}</cite>{chapterSuffix(
+										a.teaser_source.order
+									)}</span
 								>
 							{/if}
 						{/if}

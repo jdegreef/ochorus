@@ -1479,10 +1479,9 @@ class QuoteAuthorsView(APIView):
         # sourced from exactly one of chapter/sermon, so the (book, sermon) id
         # pair — one side always null — is itself the work's distinct identity,
         # and a set of those pairs counts the distinct works.
-        # The winner is kept with its source fields; its citation
-        # (`teaser_source`) is shaped once, below. Compared on (length, text)
-        # only — the trailing fields hold None and must never be ordered.
-        teaser: dict[int, tuple] = {}
+        # The teaser keeps its citation (`teaser_source`), shaped as QuoteSource:
+        # a sermon is its own work, with no chapter order.
+        teaser: dict[int, tuple[tuple[int, str], dict]] = {}
         works: dict[int, set] = {}
         for (author_id, text, book_id, sermon_id,
              book_title, chapter_order, sermon_title) in Quote.objects.filter(
@@ -1491,21 +1490,20 @@ class QuoteAuthorsView(APIView):
             "author_id", "text", "chapter__book_id", "sermon_id",
             "chapter__book__title", "chapter__order", "sermon__title",
         ):
-            cand = (len(text), text, sermon_id, book_title, chapter_order, sermon_title)
-            if author_id not in teaser or cand[:2] < teaser[author_id][:2]:
-                teaser[author_id] = cand
+            key = (len(text), text)
+            if author_id not in teaser or key < teaser[author_id][0]:
+                source = (
+                    {"work": sermon_title, "order": None}
+                    if sermon_id is not None
+                    else {"work": book_title, "order": chapter_order}
+                )
+                teaser[author_id] = (key, source)
             works.setdefault(author_id, set()).add((book_id, sermon_id))
 
         def teaser_fields(author_id: int) -> dict:
             if author_id not in teaser:
                 return {"teaser": "", "teaser_source": None}
-            _, text, sermon_id, book_title, chapter_order, sermon_title = teaser[author_id]
-            # As QuoteSource: a sermon is its own work, with no chapter order.
-            source = (
-                {"work": sermon_title, "order": None}
-                if sermon_id is not None
-                else {"work": book_title, "order": chapter_order}
-            )
+            (_, text), source = teaser[author_id]
             return {"teaser": text, "teaser_source": source}
 
         return Response(

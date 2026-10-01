@@ -16,17 +16,6 @@
  *   author's own emphasis, and that is theirs to keep.
  */
 
-import { i18n } from '$lib/i18n.svelte';
-
-/**
- * A quote's source as prose — "Work, chapter N", or a sermon's title alone.
- * Shared by the quote card (copy text, share card) and the /quotes index so a
- * line is cited one way everywhere. `clipChapter` carries its own leading ", ".
- */
-export const sourceProse = (src: { work: string; order: number | null }): string =>
-	src.work +
-	(src.order === null ? '' : i18n.t('quotes.clipChapter').replace('%n%', String(src.order)));
-
 /** A stretch of quotation text, and whether it is drawn in small capitals. */
 export type QuoteRun = { text: string; smallCaps: boolean };
 

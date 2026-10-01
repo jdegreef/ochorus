@@ -4,7 +4,8 @@
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
-	import { plainQuote, sourceProse } from '$lib/quoteText';
+	import { plainQuote } from '$lib/quoteText';
+	import { sourceProse } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -21,17 +22,13 @@
 		cite
 	}: { quote: Quote; authorName: string; cite: string } = $props();
 
-	// The source line as prose, for the copy text and the shareable card. A
-	// plain function, not `$derived`: it is only read inside click handlers.
-	const sourceLine = () => sourceProse(quote.source);
-
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
 	async function copy() {
 		// Copy the quotation WITH its citation. The attribution travelling with
 		// the text is the whole point — stripping it is how the aggregators ended
 		// up publishing these words under nobody's name.
-		const cited = `"${plainQuote(quote.text)}"\n— ${authorName}, ${sourceLine()}\n${SITE_URL}${quoteHref(quote)}`;
+		const cited = `"${plainQuote(quote.text)}"\n— ${authorName}, ${sourceProse(quote.source)}\n${SITE_URL}${quoteHref(quote)}`;
 		try {
 			await navigator.clipboard.writeText(cited);
 			copied = true;
@@ -59,7 +56,7 @@
 			await shareQuoteCard({
 				quote: plainQuote(quote.text),
 				author: authorName,
-				source: sourceLine(),
+				source: sourceProse(quote.source),
 				site: 'ochorus.com'
 			});
 		} catch {
