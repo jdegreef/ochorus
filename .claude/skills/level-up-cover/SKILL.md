@@ -64,6 +64,13 @@ the picture:
   label, P170 creator label and P571 year — copy those verbatim (a label like "View
   of bleaching fields and Haarlem" is what the credit says, not the museum title).
   Find the item from the Commons file page's "Edit this at Wikidata" link.
+  The year must match the fetcher's rendering of P571 exactly: `"c. 1884"`,
+  `"1880s"` (decade precision), or `""` when the item has no P571 — the error
+  message prints the expected string, so paste it. *(Ramabai, 2026-09-30)*
+  **Founder mockups through the real pipeline:** loop candidates by rewriting one
+  CURATED entry, running `paint_covers.py <slug> --no-check --recrop` +
+  `tune_art_scrim.py <slug> --dry-run`, and copying `static/covers/<slug>.png`
+  aside each time — real type, real scrim value per candidate, one montage.
 
 **LOOK before you pick.** Both search APIs return junk mixed with gems, so
 download the small images, montage them into a contact sheet, and Read it — then

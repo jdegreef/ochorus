@@ -71,6 +71,16 @@ class EventType(models.TextChoices):
 SUPPRESSING_EVENTS = frozenset({EventType.BOUNCED, EventType.COMPLAINED})
 
 
+def stream_for(kind: str) -> str:
+    """Which preference-center stream an email belongs to. Broadcasts are
+    announcements; every lifecycle email is onboarding for now. When a finer
+    lifecycle stream ships (e.g. plan reminders), give this the step it needs to
+    route on then — not before, so the seam and its first user land together."""
+    if kind == EmailKind.BROADCAST:
+        return "announcements"
+    return "onboarding"
+
+
 class EmailSubscription(models.Model):
     """A reader's email consent and suppression state — one row per profile.
 
@@ -86,9 +96,17 @@ class EmailSubscription(models.Model):
         on_delete=models.CASCADE,
         related_name="email_subscription",
     )
-    # Opt-out defaults: subscribed until the reader says otherwise.
+    # Opt-out defaults: subscribed until the reader says otherwise. These two are
+    # the coarse legacy switches; per-stream choices live in ``stream_prefs`` and
+    # default to them (see emails/streams.py).
     lifecycle_opt_in = models.BooleanField(default=True)
     newsletter_opt_in = models.BooleanField(default=True)
+    # Per-stream opt-in, {stream_key: bool}. Absent key ⇒ the stream's default
+    # (its legacy boolean, or True). Set from the preference center.
+    stream_prefs = models.JSONField(default=dict, blank=True)
+    # Preferred language for email, overriding the reader's reading locale when
+    # set (also from the preference center). Blank ⇒ use UserProfile.locale.
+    email_locale = models.CharField(max_length=10, blank=True)
     # The master off switch (the footer's one-click unsubscribe): stops
     # everything, lifecycle included.
     unsubscribed_all = models.BooleanField(default=False)
@@ -110,18 +128,45 @@ class EmailSubscription(models.Model):
     def is_suppressed(self) -> bool:
         return self.suppressed_at is not None
 
-    def wants(self, kind: str) -> bool:
-        """Whether the reader will receive an email of ``kind`` right now.
+    def stream_default(self, stream: str) -> bool:
+        """A stream's default opt-in — its legacy boolean, or True."""
+        from .streams import LEGACY_FIELD
+
+        field = LEGACY_FIELD.get(stream)
+        return getattr(self, field) if field else True
+
+    def wants_stream(self, stream: str) -> bool:
+        """Whether the reader will receive mail of ``stream`` right now.
 
         Suppression and the master off switch block everything; otherwise the
-        per-class opt-in applies. Broadcasts obey ``newsletter_opt_in``; every
-        lifecycle email obeys ``lifecycle_opt_in``.
-        """
+        reader's per-stream choice applies, defaulting to the stream's default
+        (opt-out posture)."""
         if self.is_suppressed or self.unsubscribed_all:
             return False
-        if kind == EmailKind.BROADCAST:
-            return self.newsletter_opt_in
-        return self.lifecycle_opt_in
+        return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
+
+    def wants(self, kind: str) -> bool:
+        """Whether the reader will receive an email of ``kind`` right now —
+        resolved to the stream that kind belongs to."""
+        return self.wants_stream(stream_for(kind))
+
+    @staticmethod
+    def wants_stream_q(stream: str) -> models.Q:
+        """A ``Q`` selecting the rows ``wants_stream(stream)`` is true for.
+
+        The ORM mirror of :meth:`wants_stream` — kept beside it so the per-stream
+        choice, its legacy-boolean fallback, and the suppression/off-switch
+        blockers stay defined once. Use it to count or filter a subscription
+        queryset by stream consent (e.g. admin metrics)."""
+        from .streams import LEGACY_FIELD
+
+        explicit_on = models.Q(**{f"stream_prefs__{stream}": True})
+        no_choice = ~models.Q(stream_prefs__has_key=stream)
+        legacy = LEGACY_FIELD.get(stream)
+        default_on = no_choice & models.Q(**{legacy: True}) if legacy else no_choice
+        return (explicit_on | default_on) & models.Q(
+            unsubscribed_all=False, suppressed_at__isnull=True
+        )
 
     def suppress(self, reason: str) -> None:
         self.suppressed_at = timezone.now()

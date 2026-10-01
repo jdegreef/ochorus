@@ -1753,3 +1753,47 @@ export const submitFeedback = (body: FeedbackSubmission) =>
 		method: 'POST',
 		body: JSON.stringify(body)
 	});
+
+// --- Email preference center (token-gated, no login) --------------------------
+
+export interface EmailStreamPref {
+	key: string;
+	label: string;
+	description: string;
+	enabled: boolean;
+}
+
+export interface EmailLocaleOption {
+	code: string;
+	name: string;
+}
+
+export interface EmailPreferences {
+	streams: EmailStreamPref[];
+	locales: EmailLocaleOption[];
+	email_locale: string;
+	unsubscribed_all: boolean;
+	suppressed: boolean;
+}
+
+/** What the reader may change — any subset is honored server-side. */
+export interface EmailPreferencesUpdate {
+	streams?: Record<string, boolean>;
+	email_locale?: string;
+	unsubscribed_all?: boolean;
+}
+
+/**
+ * The preference center is keyed by the unguessable unsubscribe token in the
+ * email footer, so it needs no sign-in (a reader manages email from any device).
+ * Both calls go through apiFetch; a Bearer token, if the reader happens to be
+ * signed in, is ignored by the endpoint.
+ */
+export const getEmailPreferences = (token: string, f?: Fetch) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {}, f);
+
+export const saveEmailPreferences = (token: string, update: EmailPreferencesUpdate) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {
+		method: 'POST',
+		body: JSON.stringify(update)
+	});

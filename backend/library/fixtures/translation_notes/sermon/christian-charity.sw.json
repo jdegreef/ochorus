@@ -1,0 +1,427 @@
+{
+ "kind": "sermon",
+ "slug": "christian-charity",
+ "language": "sw",
+ "job_issue": 4630,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Deuteronomy 15:7",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 15:8",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 15:9",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 15:10",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 15:11",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Leviticus 25:35",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Leviticus 25:38b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 6:35",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 6:35",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 26:11a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 9:5",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Micah 6:8",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-good-way-of-coming-before-the-lord.sw.json"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Matthew 23:23",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hosea 6:6a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Philippians 2:4",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Galatians 6:2",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Ezekiel 16:49",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 Corinthians 6:19b-20",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Peter 4:9-10",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Proverbs 19:17a",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "union-and-communion.sw.json"
+  },
+  {
+   "reference": "Matthew 25:45",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Luke 8:2-3",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 5:7",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalms 18:25a",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "James 2:13-16",
+   "status": "self_rendered",
+   "block_index": 37
+  },
+  {
+   "reference": "Psalms 37:21b",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Psalms 37:26",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalms 112:5a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Psalms 112:9a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Proverbs 14:31b",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "Isaiah 57:1a",
+   "status": "self_rendered",
+   "block_index": 38
+  },
+  {
+   "reference": "1 John 3:17-19",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "2 Corinthians 8:8b",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Acts 20:35",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Proverbs 14:21b",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ecclesiastes 11:1",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 11:2",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Ecclesiastes 11:1b",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Luke 6:38a",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Luke 6:38a",
+   "status": "mined",
+   "block_index": 43,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Isaiah 32:8",
+   "status": "self_rendered",
+   "block_index": 44
+  },
+  {
+   "reference": "Matthew 10:42",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Luke 12:33",
+   "status": "mined",
+   "block_index": 46,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Luke 14:13-15",
+   "status": "self_rendered",
+   "block_index": 47
+  },
+  {
+   "reference": "Proverbs 11:24",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Proverbs 11:25a",
+   "status": "mined",
+   "block_index": 48,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Proverbs 11:25b",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Proverbs 28:27",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Ecclesiastes 11:6",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "2 Corinthians 9:6",
+   "status": "mined",
+   "block_index": 51,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Proverbs 22:9a",
+   "status": "self_rendered",
+   "block_index": 53
+  },
+  {
+   "reference": "Ecclesiastes 11:3a",
+   "status": "mined",
+   "block_index": 59,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 11:3b",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Ecclesiastes 7:13",
+   "status": "self_rendered",
+   "block_index": 59
+  },
+  {
+   "reference": "Psalms 37:25",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalms 41:1",
+   "status": "mined",
+   "block_index": 65,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalms 41:2-3",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Proverbs 21:13",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Daniel 4:27",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "Ecclesiastes 11:4",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "block_index": 84,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Peter 3:8",
+   "status": "self_rendered",
+   "block_index": 87
+  },
+  {
+   "reference": "Galatians 5:13b",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Romans 12:15",
+   "status": "mined",
+   "block_index": 88,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Luke 10:27",
+   "status": "self_rendered",
+   "block_index": 94
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "block_index": 97,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 15:12",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Matthew 5:45b",
+   "status": "self_rendered",
+   "block_index": 99
+  },
+  {
+   "reference": "Luke 3:11",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "2 Corinthians 8:1-2",
+   "status": "self_rendered",
+   "block_index": 104
+  },
+  {
+   "reference": "1 Samuel 25:10-11",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "1 Samuel 25:3",
+   "status": "self_rendered",
+   "block_index": 108
+  },
+  {
+   "reference": "Hebrews 13:2",
+   "status": "mined",
+   "block_index": 110,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  }
+ ]
+}

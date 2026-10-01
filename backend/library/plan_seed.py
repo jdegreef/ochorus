@@ -196,10 +196,10 @@ CURATED_PLANS = [
     (
         "school-of-prayer",
         "Foundations in Prayer",
-        "Four weeks in the school of prayer with three guides: Andrew Murray on "
-        "how the Lord himself teaches us to pray, D. L. Moody on prevailing "
-        "prayer, and Hannah Buyinza on prayer as the daily pulse of the "
-        "Christian life.",
+        "Four weeks laying the foundations of prayer with three guides: Andrew "
+        "Murray on how the Lord himself teaches us to pray, D. L. Moody on "
+        "prevailing prayer, and Hannah Buyinza on prayer as the daily pulse of "
+        "the Christian life.",
         [
             "lord-teach-us-to-pray-2",
             "prevailing-prayer",

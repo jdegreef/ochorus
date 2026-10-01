@@ -1,0 +1,188 @@
+{
+ "kind": "sermon",
+ "slug": "the-demoniac-of-gadara",
+ "language": "sw",
+ "job_issue": 4711,
+ "pull_request": 4870,
+ "references": [
+  {
+   "reference": "Luke 8:27",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 8:29a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 8:28",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "James 2:19b",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "a-true-and-a-false-faith.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:2",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 11:15b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 27:22b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 27:25b",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Luke 8:29a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 8:32b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Luke 8:37b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Luke 8:38a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 8:39",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Mark 5:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 136:23",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Psalm 103:4a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Lamentations 1:12",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Luke 2:10b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Jeremiah 31:3b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Galatians 3:13a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 21:13b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Song of Solomon 5:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Song of Solomon 5:10b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 1:30b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Hebrews 1:3a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Colossians 2:9",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Revelation 1:5b-6",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Zechariah 3:2b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 40:2a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Psalm 40:2b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Psalm 40:3a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 2:14a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 67:3b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  }
+ ]
+}

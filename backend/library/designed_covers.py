@@ -295,6 +295,48 @@ class Ground(NamedTuple):
 #: above: the lockup's quill reaches up to ~0.83, and it prints white on a dark
 #: photograph and grey on a pale one.
 DERIVED_GROUND: dict[str, Ground] = {
+    # THE YOUNG-READER EDITIONS (`-children` / `-teens`) are set over their
+    # parent work's curated painting, darkened by the design — so their lifts
+    # are heavier than a photograph's. The picture runs from under the title to
+    # above the OCHORUS wordmark, with the rule and the "FOR CHILDREN" / "FOR
+    # TEENS" line painted out of it (light type over a painting: thin strokes
+    # the eraser takes cleanly). Where each subject lands follows the author's
+    # layout (`coverLayouts.AUTHOR_LAYOUT`), not the framed composition.
+    #
+    # Chen Hongshou's autumn river — the crane and the Daoist on the bank. Hudson
+    # Taylor's `rail` shows the ground whole and unshaded beside the title, so
+    # the inset is the widest that still keeps the figure (x ~0.78-0.84), the
+    # band stops where the scroll's own dark border begins (~0.895), and a small
+    # foot lifts the bank off the bottom edge.
+    "a-retrospect-children": Ground(0.502, 0.89, 0.14, 1.35, foot=0.10, erase=(
+        Erase(0.20, 0.555, 0.80, 0.575, "light"),
+        Erase(0.10, 0.598, 0.90, 0.638, "light"),
+    ),
+        source="df182354203c95fb652f66605aca61511ebf76b1c2f3a4f1dc4930249cfde4c7",
+    ),
+    "a-retrospect-teens": Ground(0.502, 0.89, 0.14, 1.35, foot=0.10, erase=(
+        Erase(0.20, 0.555, 0.80, 0.575, "light"),
+        Erase(0.17, 0.598, 0.83, 0.638, "light"),
+    ),
+        source="4b6813f19ad8ca22775338f4ed812187306dd7e3b9a9f497a36f27aa6ea0f444",
+    ),
+    # A night sea: the breaking wave and the moon's track on the water, from
+    # under "Smith" to above the wordmark. Framed, so the 0.20 inset crops IN
+    # (the edges are near-black sea) and the wave sits below the centred title;
+    # a small foot keeps the rocks out from under the mark. Nearly black as
+    # designed, so the heaviest lift of these.
+    "amanda-smith-autobiography-children": Ground(0.567, 0.92, 0.20, 1.80, foot=0.08, erase=(
+        Erase(0.20, 0.598, 0.80, 0.618, "light"),
+        Erase(0.10, 0.640, 0.90, 0.680, "light"),
+    ),
+        source="8a499dcd89376c202a5eaf63356f33b66b350eff6555b59f7992585a94ded811",
+    ),
+    "amanda-smith-autobiography-teens": Ground(0.567, 0.92, 0.20, 1.80, foot=0.08, erase=(
+        Erase(0.20, 0.598, 0.80, 0.618, "light"),
+        Erase(0.17, 0.640, 0.83, 0.680, "light"),
+    ),
+        source="e8edd6cb79044d4d6ee9d5552e641256c0b4f75a35c6e6c7488b43cb475cb5fc",
+    ),
     "baptism-with-the-holy-spirit": Ground(0.41, 0.84, 0.11, 1.15, foot=0.40,
         source="d7a50b3b4aef331a353c928d60f5a0a4db8328429a9e024e80dab6f11a8d9667",
     ),
@@ -371,6 +413,32 @@ DERIVED_GROUND: dict[str, Ground] = {
                Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False)),
         source="3be5d85a8b6ab71b7b8d0d7d88a43e10d1d39dddbe52382c57eea5fa25db4ac1",
     ),
+    # Hands open in prayer over a Bible on a dark table, from under the "10
+    # Mighty Christian Men of Prayer" subtitle (~0.558) to the frame's foot
+    # (~0.94); the 0.09 inset crops inside the white hairline frame (x ~0.08 /
+    # ~0.92). The Ochorus lockup sits on the Bible's edge and the lower hands,
+    # painted out. Near-black above the hands, so a heavier lift than the
+    # series' other covers.
+    "men-who-moved-heaven": Ground(0.57, 0.935, 0.09, 1.30, foot=0.05,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
+        source="46b871cd0fe570bf38f6f6fe628064d7643d5d5baee2f77777331c347fd4ab99",
+    ),
+    # The stream, the path and the pilgrim resting on the bank, from under
+    # "Progress" to above the wordmark, the rule and subtitle painted off the
+    # white water. Bunyan's `band` shows only the middle ~44% of the ground, so
+    # the foot is what centres the sharp band in that window.
+    "pilgrims-progress-children": Ground(0.563, 0.92, 0.05, 1.80, foot=0.30, erase=(
+        Erase(0.20, 0.578, 0.80, 0.598, "light"),
+        Erase(0.10, 0.620, 0.90, 0.660, "light"),
+    ),
+        source="9250c3a997cdeff08f92539bc745ab5ee7adb483788d16e610c2b924125c98fe",
+    ),
+    "pilgrims-progress-teens": Ground(0.563, 0.92, 0.05, 1.80, foot=0.30, erase=(
+        Erase(0.20, 0.578, 0.80, 0.598, "light"),
+        Erase(0.17, 0.620, 0.83, 0.660, "light"),
+    ),
+        source="5e38bc71fc780ffdba0c2c3ee3df4276c2f47e5f6f6d9323667005641a3df66a",
+    ),
     "purity-of-heart": Ground(0.54, 0.93, 0.09, 2.00,
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="f3659ad885cb95c3bf8f0d954d45c078c709674407fd560fcc4cf96d1bd60554",
@@ -396,6 +464,18 @@ DERIVED_GROUND: dict[str, Ground] = {
     "talks-to-the-farmer": Ground(0.48, 0.93, 0.09, 1.45,
         erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
         source="120ca61d19bce6c692bc1bc8c9eecc38543224945496fbb427f0c1ecdbf6ed48",
+    ),
+    # Green seedling leaves rising out of a dark ground, from under the subtitle
+    # to above the wordmark; 0.10 clears the hairline frame (~0.03) and crops in
+    # far enough that the leaves fill Spurgeon's `band` window, which the foot
+    # centres them in.
+    "talks-to-the-farmer-children": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
+        source="bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
+    ),
+    # The teens cover is pixel-identical to the children's below ~0.60 (only
+    # the "FOR TEENS" line above the band differs), so the same crop.
+    "talks-to-the-farmer-teens": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
+        source="476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     ),
     # A golden sunset with an eagle. The bird flies between the lines of the
     # title, so the old crop settled for the sky below the subtitle — and the
@@ -424,6 +504,23 @@ DERIVED_GROUND: dict[str, Ground] = {
     "the-key-in-my-hand": Ground(0.22, 0.915, 0.02, 1.05, foot=0.11, peak=240,
         erase=(Erase(0.25, 0.72, 0.80, 0.80),),
         source="3e1a5e8c26072334f96a3a1039808ab24d0e749aad148613c23948c987fb1b62",
+    ),
+    # A wooded river at dusk, from under "of Trust" to above the wordmark, the
+    # subtitle (and on teens its rule) painted out of the trees. Müller's
+    # `split` shows only the middle half of the ground, unshaded and full
+    # height, so the 0.22 inset crops IN — a taller sharp band and less blur in
+    # that panel, at the cost of the figures on the right bank, which fall
+    # outside the panel at any inset. Very dark as designed: a heavy lift.
+    "the-life-of-trust-children": Ground(0.567, 0.925, 0.22, 2.20, foot=0.10, erase=(
+        Erase(0.08, 0.607, 0.92, 0.650, "light"),
+    ),
+        source="71984f6a7041ad1bd19388512f88044e57e62efc49823a2f38bc2c2c7e834ba1",
+    ),
+    "the-life-of-trust-teens": Ground(0.57, 0.922, 0.22, 2.20, foot=0.10, erase=(
+        Erase(0.20, 0.605, 0.80, 0.625, "light"),
+        Erase(0.17, 0.646, 0.83, 0.687, "light"),
+    ),
+        source="65c2b20e3fa9bdd79b0ae99354579b4a81ade87f573cba9e7d9db495bbe892cf",
     ),
     # A dusk seascape: the band between the lower title rule (~0.57) and the
     # Ochorus wordmark on the water (~0.88) is pure sunset over sea — sky

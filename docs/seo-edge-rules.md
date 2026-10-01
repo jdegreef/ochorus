@@ -1,16 +1,31 @@
 # SEO edge rules — the redirects the static host can't do
 
-Two duplicates of every page need a real HTTP 301, and neither can be written
-in `render.yaml` (it explains why at the end of its `routes:` list). Today the
-app forwards both with JavaScript (`frontend/src/lib/canonicalRedirect.ts`),
+Two duplicates of every page would ideally get a real HTTP 301, and neither can
+be written in `render.yaml` (it explains why at the end of its `routes:` list).
+The app forwards both with JavaScript (`frontend/src/lib/canonicalRedirect.ts`),
 which a crawler only follows if it renders the page, and doesn't on a 404.
 
-**Order matters.** `render.yaml` no longer has the `/* -> /200.html` catch-all,
-so once its Blueprint is synced a no-slash detail URL (`/books/humility`)
-answers **404** instead of the noindex 200 shell. Add rule 1 **first**, then
-sync the Blueprint, or old no-slash backlinks will 404 for crawlers until you do.
+**There is no Cloudflare zone for `ochorus.com` today (checked 2026-09-30).**
+DNS is at GoDaddy (`ns21/ns22.domaincontrol.com`). The `server: cloudflare`
+response header comes from Render's own CDN, which we can't configure. So rule 1
+below can't be applied. It is kept, and `edgeRules.test.ts` keeps it matched to
+`isSlashedPath`, for the day the domain moves onto a Cloudflare zone of our own.
 
-## 1. No-slash → slash 301 (Cloudflare, `ochorus.com` zone)
+**What ships instead (decided 2026-09-30):** `render.yaml` has no
+`/* -> /200.html` catch-all, so after a Blueprint Sync a no-slash detail URL
+(`/books/humility`) answers **404** with the app shell. A human reader is still
+forwarded to `/books/humility/` by the shell's JavaScript. Crawlers see the 404.
+Every link we emit (pages, sitemaps, canonicals, hreflang) is already slashed,
+so this costs only old external backlinks to no-slash URLs. That trade bought
+honest 404s for typo'd slugs, dead URLs and untranslated editions.
+
+**Render keeps a removed route after a sync.** Deleting a rule from `render.yaml`
+doesn't delete it from the live service. The old `/* -> /200.html` catch-all
+survived the 2026-10-01 sync, so unknown and no-slash paths still answered 200.
+Delete it by hand: **Dashboard → ochorus-web → Redirect/Rewrite Rules → delete `/*`**.
+Check: `curl -s -o /dev/null -w '%{http_code}' https://ochorus.com/books/no-such-book/` → `404`.
+
+## 1. No-slash → slash 301 (Cloudflare — NOT APPLIED: needs an `ochorus.com` zone we don't have)
 
 **Rules → Redirect Rules → Create rule → Custom filter expression**
 

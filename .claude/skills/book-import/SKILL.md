@@ -319,6 +319,17 @@ dropped; chapters under 120 words are dropped as stubs.
   limited to the trailing ~5 sections. Regression-check any change here by
   scanning the whole corpus for head-imprints (expect 0) and re-importing a
   couple of Gutenberg books to confirm counts hold. *(the-life-of-trust, 2026-08)*
+- **Poems whose verse lines are indent SPANS, not divs, imported as a bare
+  `<i>` run outside any block.** Gutenberg #25141 (*The Pursuit of God*) sets
+  each poem as `<div class="poem"><div class="stanza"><i><span class="i0">line<br>`
+  — and the sibling path of `split_by_heading` only converted poems in its
+  fallback walk, so `clean_fragment` unwrapped the divs and left `</p> <i> line<br/>
+  … </i> <p>` loose between paragraphs. `poem_blockquote` (shared by both paths)
+  now also reads `span.i<N>` lines; the sibling path converts ONLY that span-line
+  shape (`_span_line_poem`), because widening it to div-line poems re-flowed 8
+  shipped Gutenberg books. Regression method that proved it: run the old and new
+  `extract_chapters` over every catalog Gutenberg id's cached HTML and diff —
+  only #25141 changed. *(the-pursuit-of-god, 2026-10)*
 - **A stray page-number divider heading ("[364]")** — one chapter's Gutenberg
   chapter-divider heading was a bracketed page number, not the title, and the
   real title sat in an `<h3>` at the top of the body. Heuristics can't infer the
@@ -1529,6 +1540,35 @@ all of which this command already does. The steps:
     "blockquote the first paragraph if it opens with a quote" would swallow a
     prose paragraph here — render only `<p>` and `div.c1`, and never skip a
     `<p>` merely for having a div ancestor.
+- **SermonIndex batch gotchas** *(Tozer + Simpson batch 2, #4871, 2026-10)*:
+  - **Some SermonIndex Simpson texts are a MODERNIZED edition** ("my eye sees
+    You" for KJV "mine eye seeth thee") — not his wording, possibly copyrighted
+    editing. Screen every candidate: count `thee/thou/thy` and `-eth` words vs a
+    mid-sentence capital `You`; take only texts with archaic forms and zero
+    `You`. Same trap as the modernized-scripture memory note.
+  - **Audio transcripts hide whole-sermon defects the audit can't see:** a page
+    whose transcript is a DIFFERENT sermon (the "Five Spiritual Vows" page),
+    a second message spliced in midway, the opening reading restarted at the
+    tail, and cassette/radio-host notes. Have a reader (agent) read each one in
+    full before shipping, and grep for profanity/slur mishearings ("a Negro" was
+    "a Nero", a vulgarity was "a farce") — two had already shipped live.
+  - **Cutting from mid-paragraph to the end:** a replacement that splits the
+    paragraph + a `back_matter` seam on the new block reds
+    `test_no_replacement_pair_is_dead` (after the cut neither side survives).
+    Make the replacement's NEW string the kept close (`"…will you?</p>"`, eating
+    the restart's first words) and seam `back_matter` on the words after it.
+  - **A sermon slug that already exists** (`the-spirit-of-prayer` = Finney)
+    makes `import_sermons <slug>` import BOTH catalog entries — the second
+    overwrites the first's dev row. `ls fixtures/content/sermons/<slug>.*`
+    before naming; suffix the author (`-simpson`) on a clash, and restore the
+    clobbered row with `seed_sermons`.
+  - **Serializing an existing sermon** adds blank `content_digest` /
+    `english_digest` keys and bumps `updated_at` — strip the keys and restore
+    `updated_at`/`created_at`/`sort_order` from `git show HEAD:` so the diff
+    is the body only.
+  - **A new BOOK also needs a search snippet** in
+    `library/data/book_meta/en.json` (≤125 chars) or
+    `tests_meta_descriptions` reds.
 - **A sermon may have no scripture text** (Luther's Good Friday Passion
   meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
   invent an anchor. Cards and pages render with the passage line empty.
@@ -1778,6 +1818,12 @@ A PUBLIC-DOMAIN biography by a third party with no author row of their own
 (`susanna-wesley-clarke`, Eliza Clarke's life of Susanna Wesley) is the one case
 still filed under its subject, with the real author in the `subtitle`.
 *(watchman-nee-a-life 2026-09; moved to the imprint 2026-09-30)*
+
+**Every new published ENGLISH book ships with its search snippet** in
+`backend/library/data/book_meta/en.json` (keys sorted; 40–125 chars, no
+padding). `tests_meta_descriptions` fails CI on a published `.en.json` with no
+entry — it is not caught by `tests_fixture`/`tests_covers`, so run it before
+pushing. *(Crowther #4541 went red on it, 2026-09-30)*
 
 **An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
 filed under the `ochorus-originals` imprint with NO schema change.** The shelf is

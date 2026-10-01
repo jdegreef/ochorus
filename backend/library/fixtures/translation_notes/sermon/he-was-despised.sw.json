@@ -1,0 +1,177 @@
+{
+ "kind": "sermon",
+ "slug": "he-was-despised",
+ "language": "sw",
+ "job_issue": 4636,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:3b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:12b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 1:11",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "John 7:46",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "2 Corinthians 8:9",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 13:55",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "the-key-in-my-hand.sw.json"
+  },
+  {
+   "reference": "John 8:53",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "John 7:48",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Matthew 23:27",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Matthew 23:16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 12:23",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Isaiah 30:10",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts 28:22",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 11:6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "2 Timothy 2:19",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 18:7",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Philippians 3:18",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "why-is-god-a-stranger-in-the-land.sw.json"
+  },
+  {
+   "reference": "2 Peter 2:2",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 97:10",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Psalm 35:25",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Timothy 6:3",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Leviticus 19:14",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Galatians 3:13",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 119:158",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Psalm 119:136",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "block_index": 30,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Philippians 3:8",
+   "status": "self_rendered",
+   "block_index": 30
+  }
+ ]
+}

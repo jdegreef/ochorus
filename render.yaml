@@ -681,6 +681,9 @@ services:
       - type: rewrite
         source: /reset-password
         destination: /200.html
+      - type: rewrite
+        source: /email/preferences/*
+        destination: /200.html
       # Every other UI locale: ONE `:lang` placeholder rule per route, never a
       # copy per locale. The copies took this service to 255 rules and Render
       # stopped applying them: every Blueprint sync from #4512 on failed on
@@ -712,6 +715,9 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/reset-password
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/email/preferences/*
         destination: /200.html
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.

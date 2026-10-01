@@ -164,10 +164,13 @@ class AdminEmailMetricsView(APIView):
 
     @staticmethod
     def _subscribers() -> dict:
+        # Count readers who want the "announcements" stream from the new source of
+        # truth (``stream_prefs``, set by the preference center), not the legacy
+        # ``newsletter_opt_in`` boolean the preference center never writes.
         return {
             "total": EmailSubscription.objects.count(),
-            "newsletter_opt_in": EmailSubscription.objects.filter(
-                newsletter_opt_in=True, unsubscribed_all=False, suppressed_at__isnull=True
+            "announcements": EmailSubscription.objects.filter(
+                EmailSubscription.wants_stream_q("announcements")
             ).count(),
             "unsubscribed": EmailSubscription.objects.filter(unsubscribed_all=True).count(),
             "suppressed": EmailSubscription.objects.filter(

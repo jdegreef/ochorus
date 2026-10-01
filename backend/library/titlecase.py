@@ -48,6 +48,7 @@ EXCLUDE = frozenset({
     "Appendix A: Lessons from the Life of Corrie ten Boom",
     "Appendix A: Lessons from the Life of Mary Slessor",
     "Appendix A: Lessons from the Life of Samuel Ajayi Crowther",
+    "Appendix A: Lessons from the Life of Pandita Ramabai",
 })
 
 

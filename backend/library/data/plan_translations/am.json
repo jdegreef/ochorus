@@ -15,11 +15,12 @@
   ]
  },
  "school-of-prayer": {
-  "title": "የጸሎት ትምህርት ቤት",
-  "description": "ከሦስት መሪዎች ጋር በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
+  "title": "የጸሎት መሠረቶች",
+  "description": "ከሦስት መሪዎች ጋር የጸሎትን መሠረት የምትጥልበት አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
   "note": [
    "Queue job #3575. AI-drafted; awaiting native review. None of the three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has an am edition yet, so seed_plans creates no am row until they all do; whoever ships them should make the card quote their titles.",
-   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition."
+   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition.",
+   "2026-10-01: retitled from «የጸሎት ትምህርት ቤት» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description's opening «በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት» became «የጸሎትን መሠረት የምትጥልበት አራት ሳምንት» to match."
   ]
  },
  "brave-for-god-24-true-stories": {
@@ -154,6 +155,13 @@
   "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች ስለ ማደግ የሚናገሩ ሠላሳ ቀናት፦ ስሜቶችን መያዝ፣ የጉርምስና ለውጦችን እንደ እግዚአብሔር መልካም ንድፍ መረዳት፣ ጥበበኛ ምርጫዎች፣ ጥሪህን ማወቅ፣ እንዲሁም ከእግዚአብሔር ጋር ከሚመላለሱ በዕድሜ የሚበልጡ ወንዶች መማር። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
   "note": [
    "Queue job #4189. AI-drafted; awaiting native review. sons-of-the-king-3 has no am edition yet, so no am row is created until it does. Mirrors sons-of-the-king-book-1-30-days; «የጉርምስና ለውጦች» matches the am Daughters Book 3 wording."
+  ]
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "በ18 ቀናት በጥበብ ማደግ",
+  "description": "ለተማሪዎች የተዘጋጀ መመሪያ — ለአሥራ ስምንት ቀናት በየቀኑ አንድ አጭር ንባብ። ጥሪህን ከማወቅ ጀምሮ ለወደፊት ራእይ እስከ መገንባት ድረስ፣ እያንዳንዱ ቀን ተግባራዊ ምክርን ከመጽሐፍ ቅዱስ ቃል፣ ከማሰላሰያ ጥያቄና ከጸሎት ጋር ያጣምራል።",
+  "note": [
+   "AI-drafted; awaiting native review. Ships with growing-in-wisdom.am (job #3792), whose am edition is what creates this plan row. Book title «በጥበብ ማደግ» as on the am book page."
   ]
  }
 }

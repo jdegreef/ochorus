@@ -2,7 +2,6 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
-	import ColumnBars from '$lib/components/ColumnBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
@@ -203,10 +202,25 @@
 				<!-- Weekly active -->
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
-					<ColumnBars
-						current
-						bars={d.weekly_active.map((w) => ({ key: w.week, label: weekLabel(w.week), value: w.readers }))}
-					/>
+					<div class="flex items-end gap-2" style="height: 8rem">
+						{#each d.weekly_active as w, i (w.week)}
+							{@const current = i === d.weekly_active.length - 1}
+							<div class="flex h-full flex-1 flex-col items-center gap-1">
+								<div class="text-small tabular-nums text-muted">{w.readers || ''}</div>
+								<!-- The slot takes the column's leftover height, so the bar's
+								     percentage has a definite height to resolve against (as on the
+								     users and search charts); without it every bar fell to 3px. -->
+								<div class="flex w-full flex-1 flex-col justify-end">
+									<div
+										class="w-full rounded-t-sm {current ? 'week-current' : 'bg-accent-soft'}"
+										style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
+									></div>
+								</div>
+								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
+							</div>
+						{/each}
+					</div>
+					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->
@@ -451,6 +465,13 @@
 		height: 7px;
 		border-radius: 999px;
 		background: var(--accent);
+	}
+
+	/* The week still in progress: outlined, so a partial count doesn't read as
+	   a drop against the full weeks beside it. */
+	.week-current {
+		border: 1px dashed var(--accent);
+		border-bottom: 0;
 	}
 
 	/* Reading-pulse sparkline — the 8-week active line behind the number. */
