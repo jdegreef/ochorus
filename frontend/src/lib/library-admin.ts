@@ -229,9 +229,12 @@ export interface AdminLanguageHealth {
 }
 
 export const getAdminLanguageHealth = () =>
-	apiFetch<{ source_published_books: number; languages: AdminLanguageHealth[] }>(
-		'/api/admin/language-health/'
-	);
+	apiFetch<{
+		source_published_books: number;
+		/** What each component weighs in the composite (sums to 1). */
+		weights: Record<HealthScoreKey, number>;
+		languages: AdminLanguageHealth[];
+	}>('/api/admin/language-health/');
 
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.

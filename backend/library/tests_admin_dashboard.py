@@ -1944,6 +1944,14 @@ class AdminLanguageHealthTests(TestCase):
         codes = [r["health"] for r in self._get()["languages"]]
         self.assertEqual(codes, sorted(codes, reverse=True))
 
+    def test_returns_the_weights_and_they_compose_the_score(self):
+        data = self._get()
+        weights = data["weights"]
+        self.assertAlmostEqual(sum(weights.values()), 1.0)
+        for r in data["languages"]:
+            composed = 100 * sum(r["scores"][k] * w for k, w in weights.items())
+            self.assertLessEqual(abs(composed - r["health"]), 0.5 + 1e-6)
+
     def test_engagement_normalises_to_the_busiest_language(self):
         # No reading data → engagement is zero for everyone (not a crash).
         for r in self._get()["languages"]:
