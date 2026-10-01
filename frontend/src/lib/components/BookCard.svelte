@@ -82,9 +82,15 @@
 		{/if}
 		<!-- mt-auto pins the meta to the card's bottom, so a one-line title and a
 		     two-line title still bottom out level across a grid row. -->
+		<!-- Two unbreakable halves with a real break between them: on a narrow
+		     card (the library's seven-across) the meta wraps after the dot, not
+		     as "3 hr 15 min / read". The separator is an expression so its
+		     spaces survive — as literal text they were collapsed, leaving no
+		     break opportunity after the dot at all. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			{chapters}{#if book.word_count}
-				<span class="opacity-50"> · </span>{readingTime(book.word_count)}{/if}
+			<span class="whitespace-nowrap">{chapters}</span>{#if book.word_count}<span
+					class="opacity-50">{' · '}</span
+				><span class="whitespace-nowrap">{readingTime(book.word_count)}</span>{/if}
 		</div>
 	</div>
 </a>

@@ -10,8 +10,14 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
-from library.models import Book, Plan, PlanDay
-from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, RETIRED_PLANS
+from library.models import Article, Book, Plan, PlanDay
+from library.plan_seed import (
+    CURATED_PLANS,
+    LAUNCH_PLANS,
+    RETIRED_PLANS,
+    plan_items,
+    plan_sources,
+)
 from library.plan_translations import plan_translations
 
 
@@ -166,26 +172,28 @@ class Command(BaseCommand):
             self.stdout.write("Plans already seeded (or source books missing).")
 
     def _seed_curated(self, sort_base):
-        """Create multi-book curated plans, once per language that has them all."""
+        """Create curated plans — several books, and articles — once per
+        language that has every one of their sources published."""
         created = 0
-        for slug, title, description, book_slugs in CURATED_PLANS:
-            wanted = set(book_slugs)
-            langs = set(
-                Book.objects.filter(slug__in=book_slugs, is_published=True)
-                .values_list("language", flat=True)
+        for slug, title, description, items in CURATED_PLANS:
+            book_slugs, article_slugs = plan_sources(items)
+            books = Book.objects.filter(slug__in=book_slugs, is_published=True)
+            articles = Article.objects.filter(slug__in=article_slugs, is_published=True)
+            langs = set(books.values_list("language", flat=True)) | set(
+                articles.values_list("language", flat=True)
             )
             for lang in sorted(langs):
-                by_slug = {
-                    b.slug: b
-                    for b in Book.objects.filter(
-                        slug__in=book_slugs, language=lang, is_published=True
-                    )
-                }
+                by_slug = {b.slug: b for b in books.filter(language=lang)}
+                have_articles = set(
+                    articles.filter(language=lang).values_list("slug", flat=True)
+                )
                 # Whether this language could have this plan at all. A curated
-                # plan needs EVERY source book, so most languages here can never
-                # get most plans — and telling someone to write prose for a plan
+                # plan needs EVERY source, so most languages here can never get
+                # most plans — and telling someone to write prose for a plan
                 # that cannot exist is noise that trains them to skim the log.
-                complete = set(by_slug) == wanted
+                complete = set(by_slug) == set(book_slugs) and have_articles == set(
+                    article_slugs
+                )
                 prose = _prose(slug, lang, title, description)
                 if prose is None:
                     if complete:
@@ -195,15 +203,15 @@ class Command(BaseCommand):
                 if self._reconcile_existing(slug, lang, t, d):
                     continue
                 if not complete:
-                    continue  # not every source book exists (published) in this language
-                days = [
-                    (bslug, order)
-                    for bslug in book_slugs
-                    for order in by_slug[bslug]
-                    .chapters.order_by("order")
-                    .values_list("order", flat=True)
-                ]
+                    continue  # a source isn't published in this language
+                days = self._curated_days(items, by_slug)
                 if not days:
+                    self.stdout.write(
+                        self.style.WARNING(
+                            f"Plan {slug} ({lang}): a chapter span does not resolve "
+                            "in this edition; no plan row created."
+                        )
+                    )
                     continue
                 with transaction.atomic():
                     plan = Plan.objects.create(
@@ -214,21 +222,36 @@ class Command(BaseCommand):
                         sort_order=sort_base + created,
                     )
                     PlanDay.objects.bulk_create(
-                        [
-                            PlanDay(
-                                plan=plan,
-                                day=i + 1,
-                                book_slug=bslug,
-                                chapter_order=order,
-                            )
-                            for i, (bslug, order) in enumerate(days)
-                        ]
+                        [PlanDay(plan=plan, day=i + 1, **day) for i, day in enumerate(days)]
                     )
                 created += 1
                 self.stdout.write(
                     self.style.SUCCESS(
                         f"Created curated plan {slug} ({lang}) with {len(days)} days "
-                        f"across {len(book_slugs)} books."
+                        f"across {len(book_slugs)} books and {len(article_slugs)} articles."
                     )
                 )
         return created
+
+    @staticmethod
+    def _curated_days(items, by_slug) -> list[dict]:
+        """Every item's days in order, as PlanDay field dicts: a whole book or a
+        span of one is a day per chapter, an article is one day.
+
+        Empty when a ``chapters(slug, first, last)`` span is not all there — an
+        edition numbered differently would otherwise yield a plan with holes
+        whose day count no longer matches its prose."""
+        days: list[dict] = []
+        for item in plan_items(items):
+            if item[0] == "article":
+                days.append({"article_slug": item[1]})
+                continue
+            _, bslug, first, last = item
+            chapters = by_slug[bslug].chapters.order_by("order")
+            if first is not None:
+                chapters = chapters.filter(order__range=(first, last))
+            orders = list(chapters.values_list("order", flat=True))
+            if first is not None and orders != list(range(first, last + 1)):
+                return []
+            days += [{"book_slug": bslug, "chapter_order": o} for o in orders]
+        return days

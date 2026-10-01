@@ -47,6 +47,17 @@ class QaReportTests(TestCase):
         last = [ch("Only", "<p>ends without a period</p>", words=200)]
         self.assertNotIn("mid_sentence_split", self.checks(last))
 
+    def test_non_latin_sentence_marks_end_a_chapter(self):
+        # Hindi danda, Amharic full stop / question mark and the Arabic
+        # question mark are sentence ends; a chapter ending in one isn't split.
+        for end in ("जाता है।", "प्रार्थना॥", "ጸሎት ነው።", "ምን ይሆናል፧", "ماذا نفعل؟"):
+            with self.subTest(end=end):
+                chapters = [ch("One", f"<p>{end}</p>", words=200), ch("Two", f"<p>{GOOD}</p>", words=200)]
+                self.assertNotIn("mid_sentence_split", self.checks(chapters))
+        # A Hindi chapter that really stops mid-sentence is still flagged.
+        chapters = [ch("One", "<p>और फिर उसने कहा कि</p>", words=200), ch("Two", f"<p>{GOOD}</p>", words=200)]
+        self.assertIn("mid_sentence_split", self.checks(chapters))
+
     def test_tiny_and_giant(self):
         tiny = [ch("Short", "<p>five words go here now</p>", words=5)]
         self.assertIn("tiny_chapter", self.checks(tiny))

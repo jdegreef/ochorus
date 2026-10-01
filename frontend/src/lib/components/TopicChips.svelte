@@ -13,6 +13,13 @@
 	let { topics, lastBlock = false }: { topics: TopicCount[]; lastBlock?: boolean } = $props();
 
 	const t = i18n.t;
+
+	// The home row carries 13 chips — two full lines at the default desktop
+	// width (see HOME_TOPIC_LIMIT). Narrower screens show a prefix of the same
+	// list so the teaser stays short and ends on a whole line: a phone (two
+	// chips a line) keeps the first 8, a tablet (four a line) the first 12.
+	const PHONE_CAP = 8;
+	const TABLET_CAP = 12;
 </script>
 
 {#if topics.length}
@@ -23,10 +30,14 @@
 			linkText={t('home.allTopics')}
 		/>
 		<div class="flex flex-wrap gap-2.5">
-			{#each topics as topic (topic.slug)}
+			{#each topics as topic, i (topic.slug)}
 				<a
 					href={localizeHref(`/topics/${topic.slug}`)}
-					class="inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline"
+					class={[
+						'inline-flex items-baseline gap-1.5 rounded-full border border-border bg-surface px-4 py-2 text-small font-medium text-text hover:border-accent hover:text-accent hover:no-underline',
+						i >= PHONE_CAP && 'max-sm:hidden',
+						i >= TABLET_CAP && 'max-lg:hidden'
+					]}
 				>
 					{topic.title}
 					<!-- Members, not books: a shelf carried by its sermons showed a bare

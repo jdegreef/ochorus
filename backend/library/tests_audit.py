@@ -13,7 +13,7 @@ from django.test import TestCase, override_settings
 from django.urls import get_resolver
 from rest_framework.test import APIClient
 
-from accounts.permissions import IsAdminEmail, RequireCapability
+from accounts.permissions import HasAnyAdminAccess, IsAdminEmail, RequireCapability
 
 from .audit import WRITE_METHODS, AdminAudited, AdminNotAudited
 from .models import AdminAction, Author, Book, Language, ReviewOutcome
@@ -36,8 +36,9 @@ def _admin_write_views() -> list[tuple[str, type]]:
             if cls is None:
                 continue
             gate = getattr(cls, "permission_classes", None) or []
-            # Admin-gated = the flat allowlist OR the scoped capability gate.
-            if IsAdminEmail not in gate and RequireCapability not in gate:
+            # Admin-gated = the flat allowlist, the scoped capability gate, or
+            # the any-admin gate.
+            if not {IsAdminEmail, RequireCapability, HasAnyAdminAccess} & set(gate):
                 continue
             if not any(hasattr(cls, m.lower()) for m in WRITE_METHODS):
                 continue

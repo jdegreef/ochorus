@@ -61,6 +61,37 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
 
 ROLE_NAMES = tuple(PRESETS)
 
+#: role → (display label, one-line summary), for the Help & roles page. Keyed
+#: like ``PRESETS`` plus the super admin (a role people hold, though not a
+#: preset); adding a preset means adding its entry here — ``tests_admin_team``
+#: fails until the two agree.
+ROLE_INFO: dict[str, tuple[str, str]] = {
+    "contributor": (
+        "Contributor",
+        "Views the library and its queues; files translation and title-fix jobs. Applies nothing live.",
+    ),
+    "reviewer": (
+        "Reviewer",
+        "Everything a contributor can, plus records review decisions in their languages.",
+    ),
+    "language_admin": (
+        "Language admin",
+        "Runs their languages: publishes, confirms reviews, triages feedback.",
+    ),
+    "super_admin": (
+        "Super admin",
+        "Everything, including granting access, user analytics, email and taking a language live.",
+    ),
+}
+
+
+#: role → {capability: verb}, every role the Help page shows. The super admin
+#: holds every area at the top of the ladder (their power is the allowlist).
+ROLE_GRANTS: dict[str, dict[str, str]] = {
+    **{name: dict(pairs) for name, pairs in PRESETS.items()},
+    "super_admin": dict.fromkeys(C.values, V.APPROVE),
+}
+
 
 def apply_grant(email, *, role=None, capability=None, verb=None, languages=ALL_LANGUAGES, granted_by=""):
     """Create/replace the grant rows for ``email`` — from a preset ``role`` OR a

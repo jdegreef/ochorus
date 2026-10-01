@@ -754,13 +754,36 @@ class CorrectionsHygieneTests(SimpleTestCase):
         # straight quotes `things-as-they-are` uses throughout — matched nothing
         # and was reported dead. A false positive on a test whose whole job is
         # to notice a pair that protects nothing.
-        corpus = "\n".join(
-            value
-            for path in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
-            for row in json.loads(path.read_text(encoding="utf-8"))
-            for value in (row.get("fields") or {}).values()
-            if isinstance(value, str)
-        )
+        paths = list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+
+        def text_of(files):
+            return "\n".join(
+                value
+                for path in files
+                for row in json.loads(path.read_text(encoding="utf-8"))
+                for value in (row.get("fields") or {}).values()
+                if isinstance(value, str)
+            )
+
+        # Each pair is looked for in its own work's files first (`<slug>.<lang>.json`),
+        # and only on a miss in the whole fixture. Scanning the full ~380 MB
+        # corpus once per pair is what made this one test take over half an
+        # hour; the fallback keeps the verdict exactly the same — "somewhere".
+        by_slug: dict[str, list] = {}
+        for path in paths:
+            by_slug.setdefault(path.name.split(".", 1)[0], []).append(path)
+        own_text: dict[str, str] = {}
+        whole: list[str] = []
+
+        def found(slug, *texts):
+            if slug not in own_text:
+                own_text[slug] = text_of(by_slug.get(slug, ()))
+            if any(t in own_text[slug] for t in texts):
+                return True
+            if not whole:
+                whole.append(text_of(paths))
+            return any(t in whole[0] for t in texts)
+
         dead = [
             (slug, old)
             for slug, entry in BODY_CORRECTIONS.items()
@@ -787,7 +810,7 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # ending it cuts after (applied). Dead means both are gone.
                 *entry.get("back_matter", ()),
             )
-            if old not in corpus and new not in corpus
+            if not found(slug, old, new)
         ]
         self.assertEqual(dead, [], "BODY_CORRECTIONS entries matching nothing in the fixture")
 
