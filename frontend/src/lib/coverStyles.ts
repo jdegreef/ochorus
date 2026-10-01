@@ -343,6 +343,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'john-hyde-a-life': 'house',
 	'corrie-ten-boom-a-life': 'house',
 	'mary-slessor-a-life': 'house',
+	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house'
 };
 

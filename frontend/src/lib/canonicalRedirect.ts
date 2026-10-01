@@ -23,6 +23,9 @@ const SLASHED_SECTIONS = new Set([
 	'topics'
 ]);
 
+/** `/biographies/<group>/<slug>/` — the era pages and the tradition/place hubs. */
+const BIOGRAPHY_GROUPS = new Set(['era', 'tradition', 'place']);
+
 /**
  * Whether a path (locale prefix and all) belongs to a route that prerenders to
  * `<path>/index.html` — i.e. exports `trailingSlash = 'always'`. Any such
@@ -41,7 +44,7 @@ export function isSlashedPath(path: string): boolean {
 	// A real file extension is an asset, not a page.
 	if (/\.[a-z0-9]{2,5}$/i.test(body[body.length - 1])) return false;
 	if (body.length === 1) return SLASHED_INDEXES.has(body[0]);
-	if (body[0] === 'biographies') return body[1] === 'era' && body.length === 3;
+	if (body[0] === 'biographies') return BIOGRAPHY_GROUPS.has(body[1]) && body.length === 3;
 	return SLASHED_SECTIONS.has(body[0]);
 }
 

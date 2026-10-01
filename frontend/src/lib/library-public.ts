@@ -695,6 +695,12 @@ export interface AuthorDetail extends AuthorBio {
 	 * API running behind this build omits it cleanly.
 	 */
 	articles?: ArticleLink[];
+	/**
+	 * The biography hubs this writer is on that exist in this language — their
+	 * traditions, then their place (see `Hub`). Optional so an API running
+	 * behind this build renders no chips.
+	 */
+	hubs?: HubChip[];
 	/** How many REVIEWED quotations this author has; 0 means no quote page. */
 	quote_count?: number;
 	/**
@@ -1161,13 +1167,15 @@ export const toBookTile = (b: CoverFace): BookTile => ({
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
- * drawn as one: `ShelfCard` renders the round emblem chip a sermon wears
- * everywhere else, resolved from the slug through the frontend art catalogue.
+ * drawn as one: `ShelfCard` renders the round passage monogram a sermon wears
+ * everywhere else, tinted from the slug through the frontend art catalogue.
  */
 export interface SermonTile {
 	kind: 'sermon';
 	slug: string;
 	title: string;
+	/** Absent from payloads that predate the monogram — the tile then wears the title's initial. */
+	scripture_ref?: string;
 }
 
 /** A tile in a strip. Topics hold both kinds; plans hold only `BookTile`. */
@@ -1236,6 +1244,36 @@ export interface TopicDetail extends TopicSummary {
 	/** Sibling shelves that share books, most-shared first — the lateral "see also". */
 	related_topics?: TopicChip[];
 }
+
+/**
+ * A biography hub: a browse page of writers grouped by tradition ("Puritan
+ * writers") or by place ("Christian writers from Wales"). A region's members
+ * include those of the places under it. The API lists only the hubs that
+ * exist in the requested language — prose there and enough listed writers —
+ * and `members` only the writers that language's Biographies page lists.
+ */
+export interface Hub {
+	kind: HubKind;
+	slug: string;
+	/** For a place: the region it sits in, when it has one. */
+	region: string | null;
+	/** The page title ("Christian writers from Wales"). */
+	name: string;
+	/** Its short form, for chips and link rows ("Wales"). */
+	label: string;
+	intro: string;
+	qa: { q: string; a: string }[];
+	members: string[];
+	/** Every language the hub exists in — its hreflang set. */
+	available_languages: string[];
+}
+
+export type HubKind = 'tradition' | 'region' | 'place';
+
+export type HubChip = Pick<Hub, 'kind' | 'slug' | 'label'>;
+
+export const listHubs = (language = 'en', f?: Fetch) =>
+	apiFetch<Hub[]>(`/api/library/hubs/?language=${language}`, {}, f);
 
 export const listTopics = (language = 'en', f?: Fetch) =>
 	apiFetch<TopicSummary[]>(`/api/library/topics/?language=${language}`, {}, f);

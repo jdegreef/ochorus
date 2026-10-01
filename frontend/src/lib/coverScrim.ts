@@ -95,6 +95,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'rooted-4': 0.30,
 	'rooted-5': 0.30,
 	'rooted-6': 0.35,
+	'samuel-ajayi-crowther-a-life': 0.95,
 	'selected-sermons-whitefield': 0.55,
 	'soar-like-the-eagle-3': 0.90,
 	'stepping-stones-2': 0.90,

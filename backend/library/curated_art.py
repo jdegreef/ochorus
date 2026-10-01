@@ -805,6 +805,18 @@ CURATED: dict[str, Artwork] = {
         "the light are hers.",
         focus=0.62,
     ),
+    # ── Batch 24 · Portraits of Courage, volume 5 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-29). The West Africa Squadron
+    # running down a slaver — the rescue that set the boy Ajayi free in 1822.
+    # A like capture two decades later, not his own: the rationale says so.
+    "samuel-ajayi-crowther-a-life": Artwork(
+        "wikidata", 50868900, "Nicholas Matthews Condy",
+        "The Capture of the slaver Gabriel by HMS Acorn, 6 July 1841", "1841",
+        "A Royal Navy brig running down a slave ship off West Africa, as HMS "
+        "Myrmidon ran down the ship that carried the boy Ajayi in 1822: not "
+        "his ship, but his deliverance.",
+        focus=0.45,
+    ),
     # ── Batch 25 · Portraits of Courage, volume 6 ──────────────────────────
     # The founder's pick of five mockups (2026-09-30). Ravi Varma's girl at a
     # doorway giving to a starving beggar: the Mukti of "I am a sweeper".

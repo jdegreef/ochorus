@@ -76,6 +76,7 @@ ART_SOURCES: dict[str, str] = {
     "religious-affections": "met-435907@0.50",
     "religious-experience-and-journal": "cma-117715@0.50",
     "revival-lectures": "cma-93014@0.50",
+    "samuel-ajayi-crowther-a-life": "wikidata-50868900@0.45",
     "school-of-prayer": "met-436329@0.55",
     "selected-sermons-edwards": "cma-125058@0.50",
     "selected-sermons-whitefield": "met-436558@0.50",

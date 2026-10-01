@@ -32,6 +32,7 @@ import {
 	listArticles,
 	listAuthors,
 	listBooks,
+	listHubs,
 	listPlans,
 	listQuoteAuthors,
 	listQuoteTopics,
@@ -39,8 +40,10 @@ import {
 	listScripturePages,
 	listSeries,
 	listSermons,
-	listTopics
+	listTopics,
+	type Hub
 } from '$lib/library-public';
+import { hubPath } from '$lib/hubs';
 import { locales } from '$lib/paraglide/runtime';
 import { ADVERTISED_LOCALES, UNADVERTISED_LOCALES } from '$lib/advertised-locales';
 import { ERAS, eraOf } from '$lib/eras';
@@ -275,6 +278,10 @@ async function build(): Promise<SitemapData> {
 			// locales only: nothing else lists them.
 			articles: (ADVERTISED_LOCALES as readonly string[]).includes(l)
 				? await listArticles(l).catch(() => [])
+				: [],
+			// The tradition/place hubs this locale has (prose and enough writers).
+			hubs: (ADVERTISED_LOCALES as readonly string[]).includes(l)
+				? await listHubs(l).catch(() => [])
 				: [],
 			// The Biographies shelf for this locale (a bio or a work here). Only
 			// the advertised locales read it — see the author entries below.
@@ -571,6 +578,28 @@ async function build(): Promise<SitemapData> {
 			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/biographies/era/${e.id}/`])),
 			lastmods: dated(ADVERTISED_LOCALES, (l) =>
 				newest(slugs.map((s) => dates.get(l)?.author.get(s)))
+			)
+		});
+	}
+
+	// Tradition and place hubs — per locale, only where the API lists the hub
+	// (it exists there: prose and enough listed writers), so no URL is
+	// advertised that the locale's crawl never reaches. Dated like an era page,
+	// by the newest work of the writers it lists in that locale.
+	const hubsBySlug = new Map<string, Map<string, Hub>>();
+	for (const { locale, hubs } of perLocale)
+		for (const h of hubs) {
+			if (!hubsBySlug.has(h.slug)) hubsBySlug.set(h.slug, new Map());
+			hubsBySlug.get(h.slug)!.set(locale, h);
+		}
+	for (const byLang of hubsBySlug.values()) {
+		const here = ADVERTISED_LOCALES.filter((l) => byLang.has(l));
+		if (!here.length) continue;
+		const path = `${hubPath(byLang.get(here[0])!)}/`;
+		pages.push({
+			byLocale: new Map(here.map((l) => [l, path])),
+			lastmods: dated(here, (l) =>
+				newest(byLang.get(l)!.members.map((s) => dates.get(l)?.author.get(s)))
 			)
 		});
 	}
