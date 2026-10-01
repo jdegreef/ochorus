@@ -4,15 +4,12 @@ import {
 	actionMeta,
 	actorName,
 	absoluteTime,
-	busiestActor,
-	categoryCounts,
 	CATEGORIES,
 	dayLabel,
 	groupByDay,
 	initials,
 	parseTarget,
 	summariseDetail,
-	todayStats,
 	toCsv
 } from './adminActivity';
 
@@ -174,46 +171,6 @@ describe('dayLabel / groupByDay', () => {
 		expect(groups.map((g) => g.label)).toEqual(['Today', 'Yesterday']);
 		expect(groups[0].rows).toHaveLength(2);
 		expect(groups[1].rows).toHaveLength(1);
-	});
-});
-
-describe('categoryCounts', () => {
-	it('tallies rows into their families, zero where none', () => {
-		const counts = categoryCounts([
-			row({ action: 'language.go_live' }),
-			row({ action: 'language.create' }),
-			row({ action: 'content.publish' })
-		]);
-		expect(counts.language).toBe(2);
-		expect(counts.content).toBe(1);
-		expect(counts.review).toBe(0);
-	});
-});
-
-describe('busiestActor', () => {
-	it('names the actor with the most rows in the window', () => {
-		const { actor, count } = busiestActor([
-			row({ actor: 'a@x.com' }),
-			row({ actor: 'a@x.com' }),
-			row({ actor: 'b@x.com' })
-		]);
-		expect(actor).toBe('a@x.com');
-		expect(count).toBe(2);
-	});
-});
-
-describe('todayStats', () => {
-	const now = new Date('2026-09-06T12:00:00');
-	it('counts today and its reader-facing share', () => {
-		const stats = todayStats(
-			[
-				row({ action: 'language.go_live', at: '2026-09-06T10:00:00' }),
-				row({ action: 'review.decide', at: '2026-09-06T09:00:00' }),
-				row({ action: 'content.publish', at: '2026-09-05T10:00:00' })
-			],
-			now
-		);
-		expect(stats).toEqual({ count: 2, readerFacing: 1 });
 	});
 });
 

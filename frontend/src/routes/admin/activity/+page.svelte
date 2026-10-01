@@ -4,21 +4,23 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { downloadFile } from '$lib/dataExport';
 	import { localeName } from '$lib/lang.svelte';
-	import { getAdminActivity, type AdminActionRow } from '$lib/library-admin';
+	import {
+		exportAdminActivity,
+		getAdminActivity,
+		type AdminActionRow,
+		type AdminActivityFilters
+	} from '$lib/library-admin';
 	import { relativeTime } from '$lib/relativeTime';
 	import { unslug } from '$lib/strings';
 	import {
 		actionMeta,
 		actorName,
 		absoluteTime,
-		busiestActor,
-		categoryCounts,
 		CATEGORIES,
 		groupByDay,
 		initials,
 		parseTarget,
 		summariseDetail,
-		todayStats,
 		toCsv,
 		type Category,
 		type IconName,
@@ -28,20 +30,45 @@
 	// One object's history when ?target= is present; the whole log otherwise.
 	const target = $derived($page.url.searchParams.get('target') ?? '');
 
+	// ---- filter state ----
+	// Every filter runs on the server, over the whole log: filtering the loaded
+	// page answered "nothing matches" for anything older than its newest 100.
+	let query = $state('');
+	// The search as sent — trails the input by a beat, so typing a word is one
+	// request rather than one per keystroke.
+	let sentQuery = $state('');
+	let activeCat = $state<Category | 'all'>('all');
+	let activeActor = $state('');
+	let searchEl = $state<HTMLInputElement | null>(null);
+
+	$effect(() => {
+		const q = query.trim();
+		const t = setTimeout(() => (sentQuery = q), 300);
+		return () => clearTimeout(t);
+	});
+
+	const filters = $derived<AdminActivityFilters>({
+		target: target || undefined,
+		q: sentQuery || undefined,
+		category: activeCat === 'all' ? undefined : activeCat,
+		actor: activeActor || undefined
+	});
+	const filterKey = $derived(JSON.stringify(filters));
+
 	// The rows on screen and the cursor for the next older page. Seeded from each
-	// fresh base load (a Refresh, or a change of target) and then grown in place
-	// by "Load older". The resource's onLoad is the reset point — it runs after
-	// the resource's own supersession check, so a stale load can't wipe the rows
-	// a newer page accumulated.
+	// fresh base load (a Refresh, a change of target or filters) and then grown
+	// in place by "Load older". The resource's onLoad is the reset point — it
+	// runs after the resource's own supersession check, so a stale load can't
+	// wipe the rows a newer page accumulated.
 	let rows = $state<AdminActionRow[]>([]);
 	let cursor = $state<number | null>(null);
 	let loadingOlder = $state(false);
 	let olderError = $state<string | null>(null);
 
 	const activity = adminResource(
-		() => getAdminActivity({ target: target || undefined }),
+		() => getAdminActivity({ ...filters, dayStart: startOfToday() }),
 		'Something went wrong loading activity.',
-		() => target,
+		() => filterKey,
 		(result) => {
 			rows = result.actions;
 			cursor = result.next_cursor;
@@ -49,6 +76,12 @@
 		}
 	);
 	const data = $derived(activity.data);
+	const summary = $derived(data?.summary ?? null);
+
+	function startOfToday(): Date {
+		const d = new Date();
+		return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+	}
 
 	// One reference instant per render — every "ago" on the page agrees, and the
 	// tests can pin it. A ticking clock buys nothing on an audit log.
@@ -78,72 +111,62 @@
 	}
 	const targetName = (target: string) => displayName(parseTarget(target));
 
-	// ---- filter state (all client-side over the loaded window) ----
-	let query = $state('');
-	let activeCat = $state<Category | 'all'>('all');
-	let activeActor = $state('');
-	let searchEl = $state<HTMLInputElement | null>(null);
-
 	async function loadOlder() {
 		if (cursor == null || loadingOlder) return;
 		loadingOlder = true;
 		olderError = null;
-		// The scope this page belongs to. A base reload (a Refresh, or navigating
-		// to another target) reseeds rows/cursor while this is in flight; if that
+		// The query this page belongs to. A base reload (a Refresh, a new target
+		// or filter) reseeds rows/cursor while this is in flight; if that
 		// happened, drop this page rather than append it to a different query's.
-		const scope = target;
+		const scope = filterKey;
 		try {
-			const res = await getAdminActivity({ before: cursor, target: scope || undefined });
-			if (scope !== target) return;
+			const res = await getAdminActivity({ ...filters, before: cursor });
+			if (scope !== filterKey) return;
 			rows = [...rows, ...res.actions];
 			cursor = res.next_cursor;
 		} catch (e) {
-			if (scope !== target) return;
+			if (scope !== filterKey) return;
 			olderError = e instanceof Error ? e.message : 'Could not load older activity.';
 		} finally {
 			loadingOlder = false;
 		}
 	}
 
-	// Blank actors (only a DEBUG tokenless request) are dropped: their empty value
-	// would collide with the "All admins" sentinel and can't be filtered on anyway.
-	const actors = $derived([...new Set(rows.map((r) => r.actor))].filter(Boolean));
-	const catCounts = $derived(categoryCounts(rows));
+	// The admin picker and chip counts come from the server's summary, so they
+	// cover the whole log rather than whoever happens to be on the loaded page.
+	const actors = $derived(summary?.actors ?? []);
+	const catCounts = $derived(summary?.by_category ?? {});
+	const catTotal = $derived(Object.values(catCounts).reduce((a, b) => a + b, 0));
 
-	function matches(r: AdminActionRow): boolean {
-		if (activeCat !== 'all' && actionMeta(r.action).category !== activeCat) return false;
-		if (activeActor && r.actor !== activeActor) return false;
-		const q = query.trim().toLowerCase();
-		if (q) {
-			const hay = `${r.target} ${r.actor} ${r.label} ${JSON.stringify(r.detail)}`.toLowerCase();
-			if (!hay.includes(q)) return false;
-		}
-		return true;
-	}
+	const groups = $derived(groupByDay(rows, now));
+	const isFiltered = $derived(activeCat !== 'all' || !!activeActor || sentQuery !== '');
 
-	const filtered = $derived(rows.filter(matches));
-	const groups = $derived(groupByDay(filtered, now));
-	const isFiltered = $derived(activeCat !== 'all' || !!activeActor || query.trim() !== '');
-
-	// ---- the header figures: computed from the loaded window ----
-	const today = $derived(todayStats(rows, now));
-	const busiest = $derived(busiestActor(rows));
-	const lastGoLive = $derived(rows.find((r) => r.action === 'language.go_live'));
-	const lastPublish = $derived(rows.find((r) => r.action === 'content.publish'));
-	const cards = $derived([
-		{ value: String(today.count), label: 'Actions today', sub: `${today.readerFacing} reader-facing` },
-		{ value: actorName(busiest.actor), label: 'Most active', sub: `${busiest.count} of ${rows.length} shown` },
-		{
-			value: lastGoLive ? targetName(lastGoLive.target) : '—',
-			label: 'Last go-live',
-			sub: lastGoLive ? rel(new Date(lastGoLive.at)) : 'none in this window'
-		},
-		{
-			value: lastPublish ? targetName(lastPublish.target) : '—',
-			label: 'Last publish',
-			sub: lastPublish ? rel(new Date(lastPublish.at)) : 'none in this window'
-		}
-	]);
+	// ---- the header figures: counted server-side over the whole log ----
+	const cards = $derived.by(() => {
+		if (!summary) return [];
+		const { last_go_live: goLive, last_publish: publish } = summary;
+		// With one admin, "most active" is always them — a card that never
+		// changes. Show the week instead until there is a team to compare.
+		const busiest = summary.actors[0];
+		const second =
+			summary.actors.length > 1
+				? { value: actorName(busiest.actor), label: 'Most active', sub: `${busiest.count} of ${summary.all}` }
+				: { value: String(summary.week), label: 'This week', sub: 'actions in the last 7 days' };
+		return [
+			{ value: String(summary.today), label: 'Actions today', sub: `${summary.today_reader_facing} reader-facing` },
+			second,
+			{
+				value: goLive ? targetName(goLive.target) : '—',
+				label: 'Last go-live',
+				sub: goLive ? rel(new Date(goLive.at)) : 'never'
+			},
+			{
+				value: publish ? targetName(publish.target) : '—',
+				label: 'Last publish',
+				sub: publish ? rel(new Date(publish.at)) : 'never'
+			}
+		];
+	});
 
 	function onKey(e: KeyboardEvent) {
 		if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -152,12 +175,28 @@
 		}
 	}
 
-	function exportCsv() {
-		downloadFile(
-			`ochorus-activity-${now.toISOString().slice(0, 10)}.csv`,
-			'text/csv;charset=utf-8',
-			toCsv(filtered)
-		);
+	// The file holds every row matching the filters, fetched for the purpose —
+	// exporting the loaded page silently dropped everything older.
+	let exporting = $state(false);
+	let exportError = $state<string | null>(null);
+	async function exportCsv() {
+		if (exporting) return;
+		exporting = true;
+		exportError = null;
+		try {
+			const res = await exportAdminActivity(filters);
+			downloadFile(
+				`ochorus-activity-${new Date().toISOString().slice(0, 10)}.csv`,
+				'text/csv;charset=utf-8',
+				toCsv(res.actions)
+			);
+			if (res.truncated)
+				exportError = `Exported the newest ${res.actions.length.toLocaleString('en')} rows — narrow the filters for the rest.`;
+		} catch (e) {
+			exportError = e instanceof Error ? e.message : 'Could not export activity.';
+		} finally {
+			exporting = false;
+		}
 	}
 
 	// Loud (reader-facing) rows wear the accent tint the old page reserved for
@@ -182,9 +221,13 @@
 				Every change made from this dashboard — who, what and when. Append-only.
 			</p>
 		</div>
-		{#if data && data.actions.length > 0}
+		{#if summary && summary.all > 0}
 			<div class="flex items-center gap-2">
-				<button class="btn btn-ghost" onclick={exportCsv}>Export CSV</button>
+				<button class="btn btn-ghost" onclick={exportCsv} disabled={exporting || data?.total === 0}
+					>{exporting
+						? 'Exporting…'
+						: `Export CSV${data?.total != null ? ` · ${data.total.toLocaleString('en')}` : ''}`}</button
+				>
 				<button class="btn btn-ghost" onclick={activity.load} disabled={activity.loading}
 					>{activity.loading ? 'Refreshing…' : 'Refresh'}</button
 				>
@@ -204,7 +247,7 @@
 
 	<AdminGate resource={activity} errorTitle="Couldn't load activity">
 		{#snippet children(d)}
-			{#if d.actions.length === 0}
+			{#if !d.summary || d.summary.all === 0}
 				<div class="rounded-card border border-border bg-surface p-8 text-center">
 					<p class="text-h3">{target ? 'No history for this target' : 'Nothing recorded yet'}</p>
 					<p class="mt-1 text-body text-muted">
@@ -248,7 +291,7 @@
 								: 'border-border text-muted hover:text-text'}"
 							onclick={() => (activeCat = 'all')}
 						>
-							All <span class="tabular-nums opacity-70">{rows.length}</span>
+							All <span class="tabular-nums opacity-70">{catTotal}</span>
 						</button>
 						{#each CATEGORIES as cat (cat)}
 							<button
@@ -258,33 +301,34 @@
 								onclick={() => (activeCat = cat)}
 							>
 								{unslug(cat)}
-								<span class="tabular-nums opacity-70">{catCounts[cat]}</span>
+								<span class="tabular-nums opacity-70">{catCounts[cat] ?? 0}</span>
 							</button>
 						{/each}
 					</div>
-					{#if actors.length > 1}
+					{#if actors.length > 1 || activeActor}
 						<select
 							bind:value={activeActor}
 							aria-label="Filter by admin"
 							class="rounded-full border border-border bg-surface px-3 py-1.5 text-small font-semibold text-text"
 						>
 							<option value="">All admins</option>
-							{#each actors as a (a)}
-								<option value={a}>{actorName(a)}</option>
+							{#each actors as a (a.actor)}
+								<option value={a.actor}>{actorName(a.actor)}</option>
 							{/each}
 						</select>
 					{/if}
 				</div>
 
-				<p class="mb-3 text-small text-muted">
+				{#if exportError}<p class="mb-3 text-small text-danger">{exportError}</p>{/if}
+				<p class="mb-3 text-small text-muted" aria-live="polite">
 					{#if isFiltered}
-						{filtered.length} matching · {rows.length} loaded of {d.total}
+						{(d.total ?? 0).toLocaleString('en')} matching across all {d.summary.all.toLocaleString('en')} actions{#if rows.length < (d.total ?? 0)}&nbsp;· {rows.length} loaded{/if}
 					{:else}
-						Showing {rows.length} of {d.total} action{d.total === 1 ? '' : 's'}.
+						Showing {rows.length} of {(d.total ?? 0).toLocaleString('en')} action{d.total === 1 ? '' : 's'}.
 					{/if}
 				</p>
 
-				{#if filtered.length === 0}
+				{#if rows.length === 0}
 					<div class="rounded-card border border-dashed border-border bg-surface p-8 text-center">
 						<p class="text-h3">Nothing matches</p>
 						<p class="mt-1 text-body text-muted">
@@ -292,11 +336,14 @@
 						</p>
 					</div>
 				{:else}
-					{#each groups as g (g.label)}
+					{#each groups as g, gi (g.label)}
 						<section class="mb-4">
 							<div class="sticky top-0 z-10 flex items-baseline gap-3 bg-bg py-2">
 								<h2 class="text-small font-semibold text-text">{g.label}</h2>
-								<span class="text-small tabular-nums text-muted">{g.rows.length}</span>
+								<!-- The oldest loaded day may continue past the page: say so rather than undercount it. -->
+								<span class="text-small tabular-nums text-muted"
+									>{g.rows.length}{gi === groups.length - 1 && cursor != null ? '+' : ''}</span
+								>
 								<span class="h-px flex-1 bg-border"></span>
 							</div>
 							<ul class="overflow-hidden rounded-card border border-border bg-surface">

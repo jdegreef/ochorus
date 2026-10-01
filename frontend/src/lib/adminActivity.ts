@@ -2,7 +2,8 @@
  * Pure shaping for the admin Activity log — everything the page derives from a
  * row that has no reason to live inside a `.svelte` file: which family an action
  * belongs to, what its target points at, how its detail reads, how the flat
- * newest-first list breaks into days, and the few figures the header shows.
+ * newest-first list breaks into days. (The header figures and chip counts are
+ * counted server-side, over the whole log — see `AdminActivityView`.)
  *
  * Kept here (and covered by `adminActivity.test.ts`) so the component is markup
  * over already-shaped data, and so a new action or target kind is a change with
@@ -54,7 +55,11 @@ const META: Record<string, ActionMeta> = {
 	'role.revoke': { category: 'access', icon: 'sliders', loud: true }
 };
 
-/** The categories, in the order the filter offers them. */
+/**
+ * The categories, in the order the filter offers them. The filter runs on the
+ * server, so `category_of` in `backend/library/admin_views/activity.py` files
+ * an action by the same prefix rule as `actionMeta` below — change both.
+ */
 export const CATEGORIES: readonly Category[] = [
 	'language',
 	'content',
@@ -248,46 +253,9 @@ export function groupByDay(rows: AdminActionRow[], now: Date = new Date()): DayG
 	return groups;
 }
 
-/** How many rows fall in each category (for the filter chips' counts). */
-export function categoryCounts(rows: AdminActionRow[]): Record<Category, number> {
-	const counts = Object.fromEntries(CATEGORIES.map((c) => [c, 0])) as Record<Category, number>;
-	for (const r of rows) counts[actionMeta(r.action).category] += 1;
-	return counts;
-}
-
-/** The most active actor in the window, and how many of the rows are theirs. */
-export function busiestActor(rows: AdminActionRow[]): { actor: string; count: number } {
-	const tally = new Map<string, number>();
-	for (const r of rows) tally.set(r.actor, (tally.get(r.actor) ?? 0) + 1);
-	let actor = '';
-	let count = 0;
-	for (const [a, n] of tally) {
-		if (n > count) {
-			count = n;
-			actor = a;
-		}
-	}
-	return { actor, count };
-}
-
-/** Today's tally: all actions, and the reader-facing (loud) share of them. */
-export function todayStats(
-	rows: AdminActionRow[],
-	now: Date = new Date()
-): { count: number; readerFacing: number } {
-	let count = 0;
-	let readerFacing = 0;
-	for (const r of rows) {
-		if (dayLabel(r.at, now) !== 'Today') continue;
-		count += 1;
-		if (actionMeta(r.action).loud) readerFacing += 1;
-	}
-	return { count, readerFacing };
-}
-
 /**
- * The filtered rows as CSV — the visible/filtered set, so an export matches what
- * the admin is looking at. Detail is kept as JSON in one column rather than
+ * Rows as CSV — the export fetches every row matching the page's filters from
+ * the server first, so the file matches the filters, not just the loaded page. Detail is kept as JSON in one column rather than
  * spread, so the columns are stable whatever an action recorded.
  */
 export function toCsv(rows: AdminActionRow[]): string {
