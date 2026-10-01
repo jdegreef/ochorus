@@ -19,6 +19,7 @@ export const GROUND_BARS: Record<string, number> = {
 	'hurlbuts-life-of-christ': 0.060,
 	'lord-teach-us-to-pray-2': 0.110,
 	'men-and-women-who-gave-everything-2': 0.110,
+	'men-who-moved-heaven': 0.110,
 	'necessity-of-prayer': 0.050,
 	'power-through-prayer': 0.040,
 	'religious-affections': 0.035,
