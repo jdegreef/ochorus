@@ -158,9 +158,9 @@ describe('seriesToContinue', () => {
 
 	it('lists begun, unfinished series, most recently read first', () => {
 		const rows = seriesToContinue([rooted, brave, done, fresh], of, lastRead);
-		expect(rows.map((r) => [r.series.slug, r.slug, r.resume])).toEqual([
-			['brave', 'b-1', true],
-			['rooted', 'r-2', true]
+		expect(rows.map((r) => [r.series.slug, r.slug])).toEqual([
+			['brave', 'b-1'],
+			['rooted', 'r-2']
 		]);
 		expect(rows[1].stages).toEqual(['done', 'reading', 'unread']);
 	});

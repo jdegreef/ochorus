@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import type { SeriesSummary } from '$lib/library-public';
-	import { allProgress, bookProgressReader } from '$lib/progress';
+	import { bookProgressReader, bookReadTimes } from '$lib/progress';
 	import {
 		seriesCardProgressLabel,
 		seriesToContinue,
-		splitSeriesTitle,
-		type SeriesToContinue
+		splitSeriesTitle
 	} from '$lib/series';
 	import { contentLang } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
@@ -21,20 +20,22 @@
 	 * is partway through, most recently read first, each one tap from the book
 	 * to open next. Read after mount — progress lives in localStorage, and the
 	 * prerendered index must not bake one visitor's place into every page — so
-	 * a first-time reader never sees the section at all.
+	 * a first-time reader never sees the section at all — and again on
+	 * `ochorus:sync`, when an account's progress lands after the page did.
 	 */
 	let { series }: { series: SeriesSummary[] } = $props();
 	const t = i18n.t;
 
-	let rows = $state<SeriesToContinue<SeriesSummary>[]>([]);
+	let ticks = $state(0);
 	onMount(() => {
-		const at = new Map(
-			allProgress()
-				.filter((r) => r.kind === 'book')
-				.map((r) => [r.slug, r.at])
-		);
-		rows = seriesToContinue(series, bookProgressReader(), (slug) => at.get(slug) ?? 0);
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
 	});
+	const rows = $derived(
+		ticks ? seriesToContinue(series, bookProgressReader(), bookReadTimes()) : []
+	);
 	const lang = $derived(contentLang(getLang()));
 </script>
 

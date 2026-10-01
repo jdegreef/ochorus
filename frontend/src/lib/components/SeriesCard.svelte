@@ -41,13 +41,21 @@
 
 	// The reader's progress through the series, read after mount: it lives in
 	// localStorage, and the prerendered card must not bake one visitor's place
-	// into every page. Drawn only once a book of the series is begun, as one
-	// segment per book — an empty bar over "0 of 4 read" told a reader halfway
-	// through book one that they had done nothing.
-	let mounted = $state(false);
-	onMount(() => (mounted = true));
+	// into every page. Read again on `ochorus:sync`, when an account's progress
+	// lands after the page did. Drawn only once a book of the series is begun,
+	// as one segment per book — an empty bar over "0 of 4 read" told a reader
+	// halfway through book one that they had done nothing.
+	let ticks = $state(0);
+	onMount(() => {
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+	// One parse of the progress map per read, shared by the meter and the button.
+	const progressOf = $derived(ticks ? bookProgressReader() : null);
 	const progress = $derived(
-		mounted && series.books ? seriesProgress(series.books, bookProgressReader()) : null
+		progressOf && series.books ? seriesProgress(series.books, progressOf) : null
 	);
 	const progressLabel = $derived(
 		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
@@ -55,15 +63,20 @@
 	const ages = $derived(seriesAges(series));
 	// The card's own way in (the full card only; the rail stays compact): the
 	// book to open next, as the series page's button picks it — the first book
-	// until mount, then the book in progress or the first unfinished. Nothing
-	// once every book is read. Its title comes from the fan's tiles, which cover
-	// the first four books; past those the verb stands alone.
+	// until mount, then the book in progress or the first unfinished — or, once
+	// every book is read, a line saying so (the foot stays, so the card keeps
+	// one shape from prerender to mount). Its title comes from the fan's tiles,
+	// which cover the first four books; past those the verb stands alone.
+	const slugs = $derived(series.books ?? []);
+	const hasAction = $derived(!compact && slugs.length > 0);
 	const next = $derived.by(() => {
-		const slugs = series.books ?? [];
-		if (compact || !slugs.length) return null;
+		if (!hasAction) return null;
 		const books = slugs.map((slug) => ({ slug }));
-		return mounted ? nextInSeries(books, bookProgressReader()) : { book: books[0], resume: false };
+		return progressOf ? nextInSeries(books, progressOf) : { book: books[0], resume: false };
 	});
+	// "Continue" for any book past the first: a reader sent to volume 5 is
+	// carrying on with the series, not beginning it.
+	const continuing = $derived(!!next && (next.resume || next.book.slug !== slugs[0]));
 	const nextTitle = $derived(
 		next ? (series.covers.find((c) => c.slug === next.book.slug)?.title ?? '') : ''
 	);
@@ -80,7 +93,7 @@
 	title={heading.name}
 	subtitle={heading.subtitle}
 	{headingLevel}
-	action={next ? nextAction : undefined}
+	action={hasAction ? nextAction : undefined}
 >
 	{#snippet aside()}
 		{series.book_count}
@@ -109,7 +122,7 @@
 {#snippet nextAction()}
 	{#if next}
 		<a class="btn btn-sm btn-ghost max-w-full" href={localizeHref(`/books/${next.book.slug}`)}>
-			{#if next.resume}
+			{#if continuing}
 				{t('plans.continue')}
 			{:else if nextTitle}
 				{t('author.startWith')}
@@ -118,6 +131,8 @@
 			{/if}
 			{#if nextTitle}<span class="truncate" dir="auto">{nextTitle}</span>{/if}
 		</a>
+	{:else}
+		<p class="text-small text-muted">{t('series.allRead')}</p>
 	{/if}
 {/snippet}
 

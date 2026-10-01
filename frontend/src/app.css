@@ -1602,6 +1602,21 @@ nav.appnav .navsearch:hover {
 .shelf-card-main:hover {
 	text-decoration: none;
 }
+/* The link fills the clipped box (overflow: hidden), so its focus ring goes
+   inside it — drawn outside, it was cut off on every edge. */
+.shelf-card-main:focus-visible {
+	outline-offset: -2px;
+}
+/* Hovering the foot's own link must not light the card as if the card link
+   were the target: the box rests while the pointer is on the action. */
+.shelf-card--action:has(.shelf-card-foot:hover) {
+	border-color: var(--border);
+	box-shadow: none;
+	transform: none;
+}
+.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
+	color: var(--text);
+}
 .shelf-card--action .shelf-card-body {
 	padding-bottom: 0.75rem;
 }

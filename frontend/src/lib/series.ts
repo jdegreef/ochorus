@@ -160,7 +160,6 @@ export function seriesProgress(
 export interface SeriesToContinue<S> {
 	series: S;
 	slug: string;
-	resume: boolean;
 	stages: BookStage[];
 }
 
@@ -184,7 +183,7 @@ export function seriesToContinue<S extends Pick<SeriesSummary, 'books'>>(
 		const next = nextInSeries(slugs.map((slug) => ({ slug })), progressOf);
 		if (!next) continue;
 		const at = Math.max(...slugs.map(lastRead));
-		rows.push({ series: s, slug: next.book.slug, resume: next.resume, stages, at });
+		rows.push({ series: s, slug: next.book.slug, stages, at });
 	}
 	return rows
 		.sort((a, b) => b.at - a.at)
