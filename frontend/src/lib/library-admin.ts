@@ -911,9 +911,19 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 // prior baseline to divide by — a brand-new metric reads "new" rather than a
 // fake +100%. Shared by the engagement and users pages so their trend chips
 // stay identical (render one with <TrendChip>).
-export type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+//
+// Below SMALL_BASE the change is shown as a count, not a percentage: 2 → 25
+// readers is "+23", where "+1150%" reads like a surge. `title` then carries the
+// previous figure, so the chip's tooltip says what it was measured against.
+export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; title?: string } | null;
+const SMALL_BASE = 10;
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	const dir = cur > prev ? 'up' : cur < prev ? 'down' : 'flat';
+	if (prev < SMALL_BASE) {
+		const d = cur - prev;
+		return { dir, text: d ? `${d > 0 ? '+' : ''}${d}` : '0', title: `Was ${prev} in the previous period` };
+	}
 	const d = Math.round(((cur - prev) / prev) * 100);
 	if (d === 0) return { dir: 'flat', text: '0%' };
 	return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
@@ -1065,6 +1075,10 @@ export interface AdminEngagement {
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
+	/** The small-group floor. When `applied`, breakdown rows covering fewer
+	 *  than `min_group` readers were withheld (`hidden` of them); a super-admin
+	 *  gets exact figures and `applied: false`. */
+	privacy: { min_group: number; applied: boolean; hidden: number };
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');

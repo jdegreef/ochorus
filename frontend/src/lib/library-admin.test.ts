@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { countJobsByLanguageType, type AdminTranslationJob } from './library-admin';
+import { countJobsByLanguageType, periodTrend, type AdminTranslationJob } from './library-admin';
 
 // Feeds the dashboard's "+N queued" overlay. The counts come from GitHub-backed
 // issues and are grouped client-side, so this guards the grouping against the
@@ -49,5 +49,23 @@ describe('countJobsByLanguageType', () => {
 		const counts = countJobsByLanguageType([]);
 		expect(counts).toEqual({});
 		expect(counts.es?.book ?? 0).toBe(0);
+	});
+});
+
+describe('periodTrend', () => {
+	it('shows a change on a small base as a count, with the old figure in the tooltip', () => {
+		expect(periodTrend(25, 2)).toEqual({ dir: 'up', text: '+23', title: 'Was 2 in the previous period' });
+		expect(periodTrend(3, 8)).toEqual({ dir: 'down', text: '-5', title: 'Was 8 in the previous period' });
+		expect(periodTrend(4, 4)).toEqual({ dir: 'flat', text: '0', title: 'Was 4 in the previous period' });
+	});
+
+	it('switches to a percentage once the base is big enough to mean something', () => {
+		expect(periodTrend(15, 10)).toEqual({ dir: 'up', text: '+50%' });
+		expect(periodTrend(10, 10)).toEqual({ dir: 'flat', text: '0%' });
+	});
+
+	it('reads a metric with no baseline as new, and nothing at all as nothing', () => {
+		expect(periodTrend(3, 0)).toEqual({ dir: 'up', text: 'new' });
+		expect(periodTrend(0, 0)).toBeNull();
 	});
 });

@@ -16,6 +16,13 @@ from ..models import Article, Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
 
+# The smallest group a delegated viewer sees counted on the engagement page. A
+# breakdown row covering fewer readers than this ("2 readers finished X", "1
+# reader in Korean") can point at a person, which breaks the page's "aggregate
+# only" promise; see ``AdminEngagementView._apply_privacy_floor``.
+MIN_GROUP_SIZE = 5
+
+
 def _prefer_en(rows, value_of):
     """``slug`` → value, keeping the English row where a slug has several
     language editions (else first-seen). The one place the "prefer en" rule
@@ -86,20 +93,68 @@ class AdminEngagementView(APIView):
             "hearts_7d_prev": hearts(7, 7),
             "total_users": self._total_users(),
         }
-        return Response(
-            {
-                "overview": overview,
-                "time": self._reading_time(now),
-                "top_content": self._top_content(),
-                "rising": self._rising(now),
-                "highlight_heatmap": self._highlight_heatmap(),
-                "most_loved": self._most_loved(),
-                "hearts_by_kind": self._hearts_by_kind(),
-                "plan_funnel": self._plan_funnel(),
-                "by_language": self._by_language(),
-                "weekly_active": self._weekly_active(now),
-            }
-        )
+        payload = {
+            "overview": overview,
+            "time": self._reading_time(now),
+            "top_content": self._top_content(),
+            "rising": self._rising(now),
+            "highlight_heatmap": self._highlight_heatmap(),
+            "most_loved": self._most_loved(),
+            "hearts_by_kind": self._hearts_by_kind(),
+            "plan_funnel": self._plan_funnel(),
+            "by_language": self._by_language(),
+            "weekly_active": self._weekly_active(now),
+        }
+        # A super-admin can already see individual accounts on the Users page,
+        # so flooring their view hides nothing; everyone else holding only the
+        # REPORTING grant gets small groups withheld.
+        exact = is_admin_user(request.user, request)
+        payload["privacy"] = self._apply_privacy_floor(payload, exact=exact)
+        return Response(payload)
+
+    @staticmethod
+    def _apply_privacy_floor(payload: dict, *, exact: bool) -> dict:
+        """Withhold breakdown rows that describe fewer than ``MIN_GROUP_SIZE``
+        readers, in place, and report what was withheld.
+
+        Only the breakdowns are floored: a row per work, plan, language or
+        chapter is where a small count singles someone out. The site-wide totals
+        (readers, actives, hearts) describe everyone and stay exact. A row is
+        dropped rather than blurred so every number left on the page is true.
+        """
+        k = MIN_GROUP_SIZE
+        if exact:
+            return {"min_group": k, "applied": False, "hidden": 0}
+        hidden = 0
+
+        def keep(rows, size_of):
+            nonlocal hidden
+            kept = [r for r in rows if size_of(r) >= k]
+            hidden += len(rows) - len(kept)
+            return kept
+
+        payload["top_content"] = {
+            kind: keep(rows, lambda r: r["readers"])
+            for kind, rows in payload["top_content"].items()
+        }
+        payload["rising"] = keep(payload["rising"], lambda r: r["this_week"])
+        payload["most_loved"] = keep(payload["most_loved"], lambda r: r["hearts"])
+        payload["by_language"] = keep(payload["by_language"], lambda r: r["readers"])
+        funnel = payload["plan_funnel"]
+        funnel["by_plan"] = keep(funnel["by_plan"], lambda r: r["started"])
+
+        heatmap = payload["highlight_heatmap"]
+        if heatmap:
+            if heatmap["peak_readers"] < k:
+                payload["highlight_heatmap"] = None
+                hidden += 1
+            else:
+                # Keep the strip's length; a small chapter reads as unmarked.
+                for c in heatmap["chapters"]:
+                    if 0 < c["readers"] < k:
+                        c["readers"] = 0
+                        hidden += 1
+        return {"min_group": k, "applied": True, "hidden": hidden}
 
     def _reading_time(self, now):
         """Time-on-site rollup from ReadingSession (see reading.models).

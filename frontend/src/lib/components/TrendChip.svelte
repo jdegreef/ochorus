@@ -16,7 +16,7 @@
 			: trend.dir === 'down'
 				? 'text-danger'
 				: 'text-muted'}"
-		{title}
+		title={trend.title ?? title}
 	>
 		{trend.dir === 'up' ? '↑' : trend.dir === 'down' ? '↓' : ''}{trend.text}
 	</span>
