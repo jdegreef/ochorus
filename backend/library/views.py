@@ -960,11 +960,8 @@ class SearchView(APIView):
         if scope:
             return Response(payload)
         try:
-            SearchQueryLog.objects.create(
-                query=q[:200],
-                language=language[:10],
-                result_count=len(results),
-                suggested="suggestion" in payload,
+            SearchQueryLog.record(
+                q, language, result_count=len(results), suggested="suggestion" in payload
             )
         except Exception:
             logger.warning("search query logging failed", exc_info=True)

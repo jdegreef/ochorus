@@ -777,10 +777,12 @@ class AdminSearchView(APIView):
     tolerance we don't have yet. Top lists skip fragments under 3 characters
     (search-as-you-type prefixes) and fold case.
 
-    Overview counts are searches SERVED, so type-ahead prefixes inflate them
-    relative to typed intent (deliberate: 2-char queries are real searches in
-    e.g. Chinese, and the engine did the work either way). Compare trends, not
-    absolutes.
+    Counts are searches readers finished typing: the type-ahead fragments a
+    longer search extended ("pra" on the way to "prayer") are hidden by
+    SearchQueryLog's default manager, so they inflate neither the volume nor
+    the zero-result rate. A 2-char query that WASN'T extended still counts
+    (they're real searches in e.g. Chinese). Rows, not readers: compare
+    trends, not absolutes.
     """
 
 
