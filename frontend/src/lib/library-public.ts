@@ -1167,13 +1167,15 @@ export const toBookTile = (b: CoverFace): BookTile => ({
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
- * drawn as one: `ShelfCard` renders the round emblem chip a sermon wears
- * everywhere else, resolved from the slug through the frontend art catalogue.
+ * drawn as one: `ShelfCard` renders the round passage monogram a sermon wears
+ * everywhere else, tinted from the slug through the frontend art catalogue.
  */
 export interface SermonTile {
 	kind: 'sermon';
 	slug: string;
 	title: string;
+	/** Absent from payloads that predate the monogram — the tile then wears the title's initial. */
+	scripture_ref?: string;
 }
 
 /** A tile in a strip. Topics hold both kinds; plans hold only `BookTile`. */

@@ -2325,13 +2325,13 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
         empty band. Books first, so a shelf that can fill the fan with covers
         still looks exactly as it did.
 
-        A sermon tile is not a cover — `ShelfCard` draws it as the round emblem
-        chip a sermon wears elsewhere. It carries the SLUG and nothing about the
-        art: which emblem, and the hue derived from it, live in the frontend
-        catalogue the API cannot see.
+        A sermon tile is not a cover — `ShelfCard` draws it as the round
+        passage monogram (MAT over 11) a sermon wears elsewhere, so it carries
+        the passage it is read from. Its hue lives in the frontend catalogue
+        the API cannot see, keyed by the SLUG.
         """
         tiles = [_book_cover(b) for b in self._books(obj)] + [
-            {"kind": "sermon", "slug": s.slug, "title": s.title}
+            {"kind": "sermon", "slug": s.slug, "title": s.title, "scripture_ref": s.scripture_ref}
             for s in self._sermons(obj)
         ]
         # Four is what `.cover-fan` lays out before it overflows its band.

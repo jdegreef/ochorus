@@ -5,6 +5,7 @@
 	import { isSermonTile, tileFace, type TopicCover } from '$lib/library-public';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
 
@@ -72,11 +73,14 @@
 					{#if isSermonTile(cover)}
 						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
 						     volume" at a glance, which is the whole reason sermons were
-						     never given covers. -->
-						{@const art = sermonArt(cover.slug)}
-						<span class="sermon-tile emblem-chip" style="--chip-hue: {art.hue}">
-							<Emblem name={art.emblem} />
-						</span>
+						     never given covers. It wears its passage monogram, as on
+						     every sermon shelf. -->
+						<SermonMonogram
+							class="sermon-tile"
+							hue={sermonArt(cover.slug).hue}
+							scriptureRef={cover.scripture_ref}
+							title={cover.title}
+						/>
 					{:else}
 						{@const face = tileFace(cover)}
 						<div class="cover">
