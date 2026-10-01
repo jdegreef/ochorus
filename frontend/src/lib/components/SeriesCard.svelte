@@ -52,6 +52,10 @@
 	href={localizeHref(`/series/${series.slug}/`)}
 	hue={meta.accent}
 	emblem={meta.emblem}
+	mark={{
+		top: series.book_count === 1 ? t('common.bookOne') : t('common.bookMany'),
+		value: String(series.book_count)
+	}}
 	covers={series.covers}
 	title={series.title}
 	{headingLevel}

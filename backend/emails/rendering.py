@@ -47,6 +47,7 @@ def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
         "greeting": greeting,
         "cta_url": links.site_url(str(text.get("cta_path", ""))) if text.get("cta_label") else "",
         "unsubscribe_url": links.unsubscribe_url(subscription.unsubscribe_token),
+        "preferences_url": links.preferences_url(subscription.unsubscribe_token),
         "lang": lang,
         "dir": "rtl" if language_entry(lang).get("rtl") else "ltr",
     }
@@ -54,9 +55,16 @@ def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
     return RenderedEmail(subject=str(text["subject"]), html=html)
 
 
+def _email_lang(profile, subscription) -> str:
+    """The language to render in: the reader's email-locale preference when set,
+    else their reading locale, else English."""
+    override = (getattr(subscription, "email_locale", "") or "").strip()
+    return copy_mod.base_lang(override or getattr(profile, "locale", "") or "en")
+
+
 def render_step(step: str, profile, subscription) -> RenderedEmail:
     """Render lifecycle ``step`` for ``profile`` in their language."""
-    lang = copy_mod.base_lang(getattr(profile, "locale", "") or "en")
+    lang = _email_lang(profile, subscription)
     text = copy_mod.step_copy(step, lang)
     return _render(text, profile, subscription, lang)
 
@@ -69,7 +77,7 @@ def render_welcome(profile, subscription) -> RenderedEmail:
 def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""
-    lang = copy_mod.base_lang(getattr(profile, "locale", "") or "en")
+    lang = _email_lang(profile, subscription)
     resolved = resolve_broadcast_locale(broadcast, lang)
     if resolved is None:
         return None

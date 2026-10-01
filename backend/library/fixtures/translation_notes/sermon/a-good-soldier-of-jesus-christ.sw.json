@@ -1,0 +1,24 @@
+{
+ "kind": "sermon",
+ "slug": "a-good-soldier-of-jesus-christ",
+ "language": "sw",
+ "job_issue": 4620,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Luke 4:6-7",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 8:37b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Micah 7:18b",
+   "status": "self_rendered",
+   "block_index": 17
+  }
+ ]
+}

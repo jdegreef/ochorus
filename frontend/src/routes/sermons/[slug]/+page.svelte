@@ -546,7 +546,7 @@
 		{#if readerUi.focus}
 			{@render head()}
 		{:else}
-			<SermonPlate slug={sermon.slug}>{@render head()}</SermonPlate>
+			<SermonPlate slug={sermon.slug} scriptureRef={sermon.scripture_ref} title={sermon.title}>{@render head()}</SermonPlate>
 		{/if}
 	</div>
 

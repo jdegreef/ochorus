@@ -1167,13 +1167,15 @@ export const toBookTile = (b: CoverFace): BookTile => ({
 
 /**
  * A sermon in a topic's strip. It carries no cover fields because it is not
- * drawn as one: `ShelfCard` renders the round emblem chip a sermon wears
- * everywhere else, resolved from the slug through the frontend art catalogue.
+ * drawn as one: `ShelfCard` renders the round passage monogram a sermon wears
+ * everywhere else, tinted from the slug through the frontend art catalogue.
  */
 export interface SermonTile {
 	kind: 'sermon';
 	slug: string;
 	title: string;
+	/** Absent from payloads that predate the monogram — the tile then wears the title's initial. */
+	scripture_ref?: string;
 }
 
 /** A tile in a strip. Topics hold both kinds; plans hold only `BookTile`. */
@@ -1196,6 +1198,12 @@ export interface TopicSummary {
 	book_count: number;
 	sermon_count: number;
 	covers: TopicCover[];
+	/**
+	 * The shelf's epigraph passage in this language, worn by the card badge as a
+	 * monogram; "" when untranslated. Optional: an API predating it on the list
+	 * (rolling deploy) leaves it undefined and the card keeps its emblem.
+	 */
+	scripture_ref?: string;
 }
 
 /** What a topic chip draws — see `AuthorTileData`. */
@@ -1744,4 +1752,48 @@ export const submitFeedback = (body: FeedbackSubmission) =>
 	apiFetch<{ id: number; ok: boolean }>('/api/feedback/', {
 		method: 'POST',
 		body: JSON.stringify(body)
+	});
+
+// --- Email preference center (token-gated, no login) --------------------------
+
+export interface EmailStreamPref {
+	key: string;
+	label: string;
+	description: string;
+	enabled: boolean;
+}
+
+export interface EmailLocaleOption {
+	code: string;
+	name: string;
+}
+
+export interface EmailPreferences {
+	streams: EmailStreamPref[];
+	locales: EmailLocaleOption[];
+	email_locale: string;
+	unsubscribed_all: boolean;
+	suppressed: boolean;
+}
+
+/** What the reader may change — any subset is honored server-side. */
+export interface EmailPreferencesUpdate {
+	streams?: Record<string, boolean>;
+	email_locale?: string;
+	unsubscribed_all?: boolean;
+}
+
+/**
+ * The preference center is keyed by the unguessable unsubscribe token in the
+ * email footer, so it needs no sign-in (a reader manages email from any device).
+ * Both calls go through apiFetch; a Bearer token, if the reader happens to be
+ * signed in, is ignored by the endpoint.
+ */
+export const getEmailPreferences = (token: string, f?: Fetch) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {}, f);
+
+export const saveEmailPreferences = (token: string, update: EmailPreferencesUpdate) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {
+		method: 'POST',
+		body: JSON.stringify(update)
 	});

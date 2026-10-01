@@ -16,7 +16,7 @@
  *                  301 (docs/seo-edge-rules.md) catches it first
  *   * a real file → served with its content type
  *   * a client-only app route ($lib/shellRoutes, every locale) → build/200.html
- *     with status 200 — render.yaml's per-locale rewrites
+ *     with status 200 — render.yaml's bare and `/:lang` rewrites
  *   * anything else → build/404.html with status 404 (Render's not-found page:
  *     the same SPA shell, so the app still renders its own not-found UI, but
  *     the status is honest — see scripts/build-404.mjs)
@@ -38,7 +38,7 @@ const LOCALES = JSON.parse(
 	readFileSync(new URL('../project.inlang/settings.json', import.meta.url), 'utf8')
 ).locales;
 
-/** The path with any UI-locale prefix removed, the way render.yaml repeats rules. */
+/** The path with any UI-locale prefix removed, as render.yaml's `/:lang` rules match. */
 const unprefixed = (pathname) => {
 	const [, first, rest] = /^\/([^/]+)(.*)$/.exec(pathname) ?? [];
 	return first && LOCALES.includes(first) && first !== 'en' ? rest || '/' : pathname;

@@ -19,6 +19,12 @@ Every link we emit (pages, sitemaps, canonicals, hreflang) is already slashed,
 so this costs only old external backlinks to no-slash URLs. That trade bought
 honest 404s for typo'd slugs, dead URLs and untranslated editions.
 
+**Render keeps a removed route after a sync.** Deleting a rule from `render.yaml`
+doesn't delete it from the live service. The old `/* -> /200.html` catch-all
+survived the 2026-10-01 sync, so unknown and no-slash paths still answered 200.
+Delete it by hand: **Dashboard → ochorus-web → Redirect/Rewrite Rules → delete `/*`**.
+Check: `curl -s -o /dev/null -w '%{http_code}' https://ochorus.com/books/no-such-book/` → `404`.
+
 ## 1. No-slash → slash 301 (Cloudflare — NOT APPLIED: needs an `ochorus.com` zone we don't have)
 
 **Rules → Redirect Rules → Create rule → Custom filter expression**

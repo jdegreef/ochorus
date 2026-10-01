@@ -27,12 +27,14 @@
  *
  *   - `content` — the strings off the fixture: title, passage, preacher, year.
  *     Recomputed by `SermonShareCardTests` in Python.
- *   - `art` — what the catalogue says this slug wears: the emblem, its drawing,
- *     and the hue derived from them. Recomputed by `sermonCards.test.ts`, the
- *     side that can read a TypeScript catalogue. The hue is in because the rule
- *     that produces it (`MIN_ACCENT_SATURATION`) lives in the catalogue: moving
- *     it repaints the passage line on cards whose art never changed.
- *   - `composition` — the bytes of this script and `og-card.mjs`. The book
+ *   - `art` — the hue the catalogue gives this slug: its emblem assignment and
+ *     the hue derived from it (the chip no longer draws the emblem, only wears
+ *     its colour). Recomputed by `sermonCards.test.ts`, the side that can read
+ *     a TypeScript catalogue. The hue is in because the rule that produces it
+ *     (`MIN_ACCENT_SATURATION`) lives in the catalogue: moving it repaints the
+ *     card on sermons whose text never changed.
+ *   - `composition` — the bytes of this script, `og-card.mjs` and
+ *     `src/lib/sermonMonogram.ts` (which draws the chip's monogram). The book
  *     twins' gate stops short of this and says so; theirs is the very failure
  *     it declines to catch. Editing `GOLD` while working on `og:pages` restyles
  *     all 29 sermon cards, and without this every gate stays green.
@@ -41,7 +43,7 @@
  * in satori or resvg is still invisible. A floor, not a proof.
  *
  * Needs a Node that strips TypeScript types unprompted (>= 22.18), because it
- * reads the emblem catalogue straight out of `src/lib/emblems.ts`.
+ * reads the emblem catalogue and the monogram parser straight out of `src/lib`.
  *
  * WHY THIS EXISTS
  * A sermon page's og:image used to be the AUTHOR PORTRAIT, so all thirteen
@@ -55,7 +57,7 @@
  * volume, and giving it the same silhouette would mis-sell its length and blur
  * the one instant cue that tells the two apart on a mixed shelf. So a sermon
  * gets a landscape card in the shared OG ground (scripts/og-card.mjs), wearing
- * the emblem it already wears everywhere else in the app.
+ * the passage monogram (MAT over 11) it wears everywhere else in the app.
  *
  * ENGLISH BY DEFAULT, WITH NAMED EXCEPTIONS
  * The default and its reasoning are `generate-og.mjs`'s, inherited rather than
@@ -81,10 +83,11 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 import { channels } from '../src/lib/coverArt.ts';
-// Two doors, and the split is load-bearing rather than cosmetic — see the
-// header of emblems.ts. The art here, the slug->emblem assignment there.
+// The slug->emblem assignment picks the card's HUE; the chip itself wears the
+// same passage monogram as the app's sermon rows, drawn by the same parser.
 import { emblemForSermon } from '../src/lib/emblemNames.ts';
-import { EMBLEM_ART, emblemHue } from '../src/lib/emblems.ts';
+import { emblemHue } from '../src/lib/emblems.ts';
+import { sermonMonogram } from '../src/lib/sermonMonogram.ts';
 // The locales that ship their OWN sermon cards instead of the English one — the
 // single source of truth the reader page reads too, so the two cannot drift.
 import { SERMON_OG_LOCALES } from '../src/lib/sermonOgLocales.ts';
@@ -132,13 +135,6 @@ function sermonsFor(lang) {
 
 // ── The card ────────────────────────────────────────────────────────────────
 
-/** The emblem, wrapped as a standalone SVG document satori can place as an image. */
-function emblemUri(name) {
-	const svg =
-		`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">${EMBLEM_ART[name]}</svg>`;
-	return `data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}`;
-}
-
 /** `#rrggbb` at `alpha` — satori has no color-mix, so the tint is mixed here. */
 function alpha(hex, a) {
 	return `rgba(${channels(hex).join(', ')}, ${a})`;
@@ -168,7 +164,11 @@ const digest = (s) => createHash('sha256').update(s).digest('hex');
  */
 const compositionDigest = () =>
 	digest(
-		[resolve(HERE, 'generate-sermon-og.mjs'), resolve(HERE, 'og-card.mjs')]
+		[
+			resolve(HERE, 'generate-sermon-og.mjs'),
+			resolve(HERE, 'og-card.mjs'),
+			resolve(HERE, '../src/lib/sermonMonogram.ts')
+		]
 			.map((f) => readFileSync(f, 'utf8'))
 			.join('\0')
 	);
@@ -178,16 +178,17 @@ const contentDigest = (s) =>
 	digest([s.title, s.scripture, s.author, s.year].join('\0'));
 
 /**
- * What the catalogue says this slug wears. Vitest recomputes this one.
+ * The hue the catalogue gives this slug. Vitest recomputes this one.
  *
  * `emblemHue` and not the final accent: the hue is the catalogue's answer, so a
  * change to its saturation floor belongs here, while `liftToContrast` is this
  * card's treatment and belongs in `composition` with the rest of the drawing.
  */
-const artDigest = (emblem) => digest([emblem, EMBLEM_ART[emblem], emblemHue(emblem)].join('\0'));
+const artDigest = (emblem) => digest([emblem, emblemHue(emblem)].join('\0'));
 
-function card({ title, scripture, author, year, emblem, accent }) {
+function card({ title, scripture, author, year, accent }) {
 	const byline = year ? `${author} · ${year}` : author;
+	const mark = sermonMonogram(scripture, title);
 	return {
 		type: 'div',
 		props: {
@@ -216,7 +217,7 @@ function card({ title, scripture, author, year, emblem, accent }) {
 				// with only two children that left a third of the card empty above the
 				// scripture line and the whole composition sitting on the bottom edge.
 				box({ display: 'flex', flex: 1, alignItems: 'center', gap: '56px' }, [
-					// The words carry the card; the emblem is the anchor beside them.
+					// The words carry the card; the monogram is the anchor beside them.
 					box({ display: 'flex', flexDirection: 'column', flex: 1, gap: '18px' }, [
 						box({ fontSize: 30, letterSpacing: 2, color: accent }, scripture),
 						box(
@@ -239,13 +240,33 @@ function card({ title, scripture, author, year, emblem, accent }) {
 							width: '290px',
 							height: '290px',
 							borderRadius: '999px',
-							// The app's emblem chip recipe (app.css `.emblem-chip`): a wash of
-							// the hue with a ring of it, art at 66%. Heavier here than on a
-							// light surface, where 14% already reads.
+							flexDirection: 'column',
+							gap: '6px',
+							// The app's chip recipe (app.css `.emblem-chip`): a wash of the
+							// hue with a ring of it. Heavier here than on a light surface,
+							// where 14% already reads.
 							background: alpha(accent, 0.16),
-							border: `2px solid ${alpha(accent, 0.4)}`
+							border: `3px solid ${alpha(accent, 0.45)}`,
+							color: accent
 						},
-						{ type: 'img', props: { src: emblemUri(emblem), width: 215, height: 215 } }
+						[
+							// SermonMonogram's proportions: the book at ~0.45 of the chapter,
+							// tracked only in cased scripts. Absent on a sermon with no
+							// passage, which wears its title's initial as the chapter.
+							mark.book
+								? box(
+										{
+											fontSize: 50,
+											letterSpacing: mark.book !== mark.book.toLowerCase() ? 7 : 0,
+											lineHeight: 1
+										},
+										mark.book
+									)
+								: null,
+							mark.chapter
+								? box({ fontFamily: 'serif', fontSize: 116, lineHeight: 1 }, mark.chapter)
+								: null
+						].filter(Boolean)
 					)
 				])
 			]
@@ -263,7 +284,7 @@ async function render(sermon, out, label) {
 	// Emblem hues are chosen for the app's light surfaces; on this near-black
 	// ground the darker ones need brightening before they carry type at all.
 	const accent = liftToContrast(emblemHue(emblem));
-	const png = await drawCard(card({ ...sermon, emblem, accent }));
+	const png = await drawCard(card({ ...sermon, accent }));
 	if (!(existsSync(out) && readFileSync(out).equals(png))) {
 		writeFileSync(out, png);
 		wrote += 1;

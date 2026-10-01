@@ -1,0 +1,110 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography-children",
+ "language": "am",
+ "job_issue": 3723,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbs 4:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "rooted-4.am.json"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Colossians 3:15",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 91:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 91:11",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 18:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 18:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 12
+  }
+ ]
+}

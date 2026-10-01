@@ -55,6 +55,8 @@
 		<a href={localizeHref(`/sermons/${pick.slug}`)} class="plate-link block hover:no-underline">
 			<SermonPlate
 				slug={pick.slug}
+				scriptureRef={pick.scripture_ref}
+				title={pick.title}
 				compact
 				portrait={pick.author.photo_url
 					? { src: pick.author.photo_url, pos: portraitPosition(pick.author.slug) }

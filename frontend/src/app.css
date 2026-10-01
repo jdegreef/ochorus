@@ -1846,7 +1846,8 @@ nav.appnav .navsearch:hover {
 	align-self: center;
 	box-shadow:
 		var(--shadow-card),
-		inset 0 0 0 1px color-mix(in srgb, var(--chip-hue) 33%, transparent);
+		inset 0 0 0 var(--chip-ring, 1px)
+			color-mix(in srgb, var(--chip-hue) var(--chip-ring-mix, 33%), transparent);
 }
 .cover-fan .sermon-tile:first-child {
 	margin-inline-start: 0;

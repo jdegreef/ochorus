@@ -16,7 +16,8 @@
  * catch-all). Pointing them at their own .html is possible but needs every
  * locale's copy to exist: a rewrite to a missing file is a blank 200.
  *
- * render.yaml repeats each of these for every UI locale; `shellRoutes.test.ts`
+ * render.yaml lists each of these bare and once under `/:lang` (every other UI
+ * locale; a copy per locale exceeded Render's route cap); `shellRoutes.test.ts`
  * holds the two in step and walks the route tree so a new client-only route
  * can't silently answer 404.
  *
@@ -32,7 +33,8 @@ export const SHELL_ROUTES = [
 	'/notebook/*',
 	'/reading',
 	'/login',
-	'/reset-password'
+	'/reset-password',
+	'/email/preferences/*'
 ] as const;
 
 /** Whether `pathname` (locale prefix stripped) matches a SHELL_ROUTES pattern. */

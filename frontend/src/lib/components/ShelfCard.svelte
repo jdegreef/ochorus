@@ -5,6 +5,8 @@
 	import { isSermonTile, tileFace, type TopicCover } from '$lib/library-public';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import Monogram from '$lib/components/Monogram.svelte';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
 
@@ -30,6 +32,7 @@
 		href,
 		hue,
 		emblem,
+		mark = null,
 		portrait = '',
 		covers = [],
 		title,
@@ -40,8 +43,15 @@
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
 		hue: string;
-		/** Illustrated emblem for the badge. Ignored when `portrait` is set. */
+		/** Illustrated emblem for the badge. Ignored when `portrait` or `mark` is set. */
 		emblem?: EmblemName;
+		/**
+		 * A monogram for the badge — label over value: a topic's epigraph
+		 * ("JER" over 33), a plan's length ("DAYS" over 21), a series' size
+		 * ("BOOKS" over 4). Null keeps the emblem (e.g. a topic with no
+		 * epigraph translated into this language).
+		 */
+		mark?: { top: string; value: string } | null;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
 		
@@ -59,24 +69,31 @@
 
 <a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band hue-band">
-		<span class="shelf-card-badge emblem-chip">
-			{#if portrait}
-				<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
-			{:else if emblem}
-				<Emblem name={emblem} />
-			{/if}
-		</span>
+		{#if mark && !portrait}
+			<Monogram class="shelf-card-badge" top={mark.top} value={mark.value} />
+		{:else}
+			<span class="shelf-card-badge emblem-chip">
+				{#if portrait}
+					<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
+				{:else if emblem}
+					<Emblem name={emblem} />
+				{/if}
+			</span>
+		{/if}
 		{#if covers.length}
 			<div class="cover-fan" aria-hidden="true">
 				{#each covers.slice(0, 4) as cover (`${cover.kind ?? 'book'}:${cover.slug ?? cover.title}`)}
 					{#if isSermonTile(cover)}
 						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
 						     volume" at a glance, which is the whole reason sermons were
-						     never given covers. -->
-						{@const art = sermonArt(cover.slug)}
-						<span class="sermon-tile emblem-chip" style="--chip-hue: {art.hue}">
-							<Emblem name={art.emblem} />
-						</span>
+						     never given covers. It wears its passage monogram, as on
+						     every sermon shelf. -->
+						<SermonMonogram
+							class="sermon-tile"
+							hue={sermonArt(cover.slug).hue}
+							scriptureRef={cover.scripture_ref}
+							title={cover.title}
+						/>
 					{:else}
 						{@const face = tileFace(cover)}
 						<div class="cover">
