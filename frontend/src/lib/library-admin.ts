@@ -1104,9 +1104,6 @@ export interface AdminEngagement {
 	rising: EngagementRisingRow[];
 	highlight_heatmap: EngagementHeatmap | null;
 	plan_funnel: EngagementPlanFunnel;
-	/** Sign-up to habit, each step a subset of the one before:
-	 *  signed_up → started → returned (sittings on 2+ dates) → finished. */
-	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
@@ -1307,6 +1304,9 @@ export interface AdminUsers {
 	total: number;
 	with_activity: number;
 	dormant: number;
+	/** Sign-up to habit, each step a subset of the one before; the first two
+	 *  are `total` and `with_activity`. See analytics._activation_counts. */
+	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	signups_7d: number;
 	signups_30d: number;
 	/** The immediately preceding window, for a trend delta on the cards. */

@@ -96,7 +96,6 @@ class AdminEngagementView(APIView):
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
-                "activation": self._activation(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
             }
@@ -377,45 +376,6 @@ class AdminEngagementView(APIView):
             "peak_readers": peak["readers"] if peak else 0,
         }
 
-    def _activation(self) -> list[dict]:
-        """Sign-up to habit: how many accounts reach each step, where every step
-        is a subset of the one before it, so the drop between two steps is real.
-
-        * signed up — every account;
-        * started reading — has any reading progress;
-        * came back another day — reading sittings on two or more dates. Sittings
-          are recorded only since reading-time tracking began, so a reader who
-          last came back before that is not counted here;
-        * finished something — a book, sermon, biography or article marked
-          finished (the stored ``finished_at`` stamp).
-
-        Built from profile-id sets in Python: the population is accounts, not
-        content, and nesting the steps in SQL would need one subquery per step.
-        """
-        from django.db.models.functions import TruncDate
-
-        from accounts.models import UserProfile
-        from reading.models import ReadingProgress, ReadingSession
-
-        def ids(qs):
-            return set(qs.values_list("profile", flat=True).distinct())
-
-        signed_up = UserProfile.objects.count()
-        started = ids(ReadingProgress.objects.all())
-        returned = started & set(
-            ReadingSession.objects.values("profile")
-            .annotate(days=Count(TruncDate("started_at"), distinct=True))
-            .filter(days__gte=2)
-            .values_list("profile", flat=True)
-        )
-        finished = returned & ids(ReadingProgress.objects.filter(finished_at__isnull=False))
-        return [
-            {"step": "signed_up", "count": signed_up},
-            {"step": "started", "count": len(started)},
-            {"step": "returned", "count": len(returned)},
-            {"step": "finished", "count": len(finished)},
-        ]
-
     def _plan_funnel(self) -> dict:
         """Reading-plan engagement: the started → came-back → completed funnel,
         overall and per plan.
@@ -586,6 +546,44 @@ def _profile_summary(p, *, reveal: bool) -> dict:
 RECENT_SIGNUPS_LIMIT = 25
 
 
+def _activation_counts() -> dict[str, int]:
+    """Sign-up to habit: how many accounts reach each step, where every step
+    is a subset of the one before it, so the drop between two steps is real.
+
+    * signed_up — every account;
+    * started — has any reading progress (the Users page's "Activated");
+    * returned — read on two or more days (``ReadingDay``: the reader's local
+      dates, the same log the streak counts);
+    * finished — of those, finished a book, sermon, biography or article (the
+      stored ``finished_at`` stamp). Nesting means a reader who finished in a
+      single sitting is not counted here.
+
+    One aggregate over accounts: each step is a condition ANDed onto the one
+    before, so the nesting happens in SQL and no id lists come back.
+    """
+    from django.db.models import Exists, OuterRef
+
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay, ReadingProgress
+
+    progress = ReadingProgress.objects.filter(profile=OuterRef("pk"))
+    started = Q(Exists(progress))
+    # ReadingDay is unique per (profile, day), so two rows are two days.
+    returned = started & Q(
+        pk__in=ReadingDay.objects.values("profile")
+        .annotate(days=Count("day"))
+        .filter(days__gte=2)
+        .values("profile")
+    )
+    finished = returned & Q(Exists(progress.filter(finished_at__isnull=False)))
+    return UserProfile.objects.aggregate(
+        signed_up=Count("pk"),
+        started=Count("pk", filter=started),
+        returned=Count("pk", filter=returned),
+        finished=Count("pk", filter=finished),
+    )
+
+
 @requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
@@ -605,11 +603,13 @@ class AdminUsersView(APIView):
         from django.utils import timezone
 
         from accounts.models import UserProfile
-        from reading.models import ReadingProgress
 
         now = timezone.now()
-        total = UserProfile.objects.count()
-        with_activity = ReadingProgress.objects.values("profile").distinct().count()
+        # Total and activated come from the same counts as the funnel, so the
+        # tiles and the funnel's first two steps can never disagree.
+        activation = _activation_counts()
+        total = activation["signed_up"]
+        with_activity = activation["started"]
 
         def signups_between(start_days, end_days=0):
             qs = UserProfile.objects.filter(created_at__gte=now - timedelta(days=start_days))
@@ -622,6 +622,7 @@ class AdminUsersView(APIView):
                 "total": total,
                 "with_activity": with_activity,
                 "dormant": max(0, total - with_activity),
+                "activation": [{"step": k, "count": n} for k, n in activation.items()],
                 "signups_7d": signups_between(7),
                 "signups_30d": signups_between(30),
                 # The immediately preceding window, so the UI can show a trend

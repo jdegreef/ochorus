@@ -3,6 +3,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import { relativeTime } from '$lib/relativeTime';
 	import {
@@ -13,6 +14,7 @@
 		maskEmail,
 		periodTrend,
 		SMALL_BASE,
+		type AdminUsers,
 		type AdminUserSort,
 		type Trend
 	} from '$lib/library-admin';
@@ -101,6 +103,18 @@
 		const first = weeks.findIndex((w) => w.count > 0);
 		return first > 0 ? weeks.slice(first) : weeks;
 	});
+
+	// Sign-up to habit; the first two steps are the Registered and Activated
+	// tiles above it (the server derives both from the same counts).
+	const activationLabels: Record<AdminUsers['activation'][number]['step'], string> = {
+		signed_up: 'Registered',
+		started: 'Activated',
+		returned: 'Came back another day',
+		finished: 'Finished something'
+	};
+	const activationSteps = $derived(
+		(data?.activation ?? []).map((a) => ({ label: activationLabels[a.step], count: a.count }))
+	);
 
 	type Card = { label: string; value: number; sub: string; trend: Trend };
 	const cards = $derived<Card[]>(
@@ -223,6 +237,17 @@
 				<p class="mb-8 -mt-4 text-micro text-muted">
 					Activated = has opened at least one book. Dormant = registered but hasn't started reading.
 				</p>
+
+				<!-- Sign-up to habit -->
+				{#if activationSteps.length}
+					<section class="mb-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">From sign-up to habit</h2>
+							<span class="text-small text-muted">Each step counts only accounts that reached the one before. Percentages are of registered users.</span>
+						</div>
+						<FunnelBars steps={activationSteps} />
+					</section>
+				{/if}
 
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
