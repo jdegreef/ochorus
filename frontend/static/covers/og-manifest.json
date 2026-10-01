@@ -513,6 +513,92 @@
 				503
 			]
 		},
+		"am/epistles-of-ignatius": {
+			"ground": "a109f788e357e05024a25f4b2371668835d880bdc77b41509c227757bc708636",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.5,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[101, 102, 499, 131]
+				],
+				"title": [
+					[67, 304, 533, 366],
+					[158, 349, 442, 411]
+				],
+				"subtitle": [
+					[159, 440, 441, 461],
+					[185, 461, 415, 482]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"am/feasting-at-the-table": {
+			"ground": "2320144dca36ff8ca0519020b57ffc252176582b96a1fd30080983531126abb2",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[122, 302, 478, 408],
+					[172, 386, 428, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
+			]
+		},
+		"am/first-epistle-of-clement": {
+			"ground": "e8c8dd34a786fd8060d274265cda69c0a48573e35dc5c929b6a23e02d87752cc",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[116, 292, 484, 354],
+					[83, 337, 517, 399],
+					[101, 383, 499, 445]
+				],
+				"subtitle": [
+					[112, 473, 488, 494]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				301,
+				494
+			]
+		},
 		"am/gleanings-among-the-sheaves": {
 			"ground": "cfafa5fc46542ce19b864735e56443c918ecf220c3cb57b9286416e5bb66132d",
 			"style": "revival",
@@ -547,6 +633,34 @@
 			"middle": [
 				275,
 				519
+			]
+		},
+		"am/growing-in-wisdom": {
+			"ground": "8ef595657257815f9b131f0cbe319b4e1b224cbdb4a46b40651a0b9f6151735d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[150, 314, 450, 390]
+				],
+				"subtitle": [
+					[92, 448, 509, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
 			]
 		},
 		"am/he-holds-my-tomorrows": {
@@ -605,6 +719,83 @@
 			"layout": "wash/sage",
 			"bar": 0.11
 		},
+		"am/men-and-women-who-gave-everything-2": {
+			"ground": "3bd09e03cba32562f430632c86e44e326a5a83cb78af780739be41bc7fc4f6ea",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[172, 308, 428, 384],
+					[134, 374, 466, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"am/men-who-moved-heaven": {
+			"ground": "dab576e1b454bfe93dffb739cbf650c4c2939bfd98c13930e7053fc8a4506b8b",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[219, 308, 381, 384],
+					[118, 374, 482, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
+		},
+		"am/men-who-tended-the-flock-2": {
+			"ground": "90e2e627a83f10c558736a849cb82125931da974e694ae0348dfe0a4a2a7aebd",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[44, 341, 556, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"am/ministry-of-intercession": {
 			"ground": "b70587fb53d7a63885c0fee427df77a462ae3b18f949c656bc7c517e07c7bbf6",
 			"style": "devotional",
@@ -614,6 +805,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/on-loving-god": {
+			"ground": "9d036bf187c22adc50974c0bf2c85efee0f12735930087ddc37af912a0240f61",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[85, 102, 515, 131]
+				],
+				"title": [
+					[167, 314, 433, 376],
+					[182, 360, 418, 422]
+				],
+				"subtitle": [
+					[186, 451, 414, 472]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				323,
+				472
+			]
 		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
@@ -659,6 +879,31 @@
 			"middle": [
 				316,
 				478
+			]
+		},
+		"am/purity-of-heart": {
+			"ground": "89ef771f4a61a7409bd59d77590037ebd1b208e52b835b1889a79dda10b4ce4e",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[156, 102, 444, 131]
+				],
+				"title": [
+					[164, 359, 436, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
 			]
 		},
 		"am/rooted-1": {
@@ -861,6 +1106,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"am/talks-to-the-farmer-teens": {
+			"ground": "1037d0b5a13b37f556612057efeb1ebd8f6dc75186e5fe1bfeb21c93bca2b703",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
 			"style": "devotional",
@@ -953,6 +1208,34 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/tukutendereza": {
+			"ground": "f332fd73562c604884d4760145adf4ce6da1079b980f27d08792118ce57825e8",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[170, 314, 430, 390]
+				],
+				"subtitle": [
+					[118, 448, 482, 476]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				319,
+				476
+			]
+		},
 		"am/waiting-on-god": {
 			"ground": "fc2b11f3486f4fc708781c4e223efea60f11c68d461817c130d84cb859b8d4d6",
 			"style": "devotional",
@@ -962,6 +1245,32 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/women-who-moved-heaven-2": {
+			"ground": "8e40c6f9e6b91d4e578f37bb7d003df06e80b0e681754c63ef2235015e63efa9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[219, 308, 381, 384],
+					[115, 374, 485, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"amanda-smith-autobiography": {
 			"ground": "aa4cc11c5427d667a4a86ff334ec4bc11d306a55e8dd70f6631e589785737d50",
