@@ -19,7 +19,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import AdminAction
+from ..models import AdminAction, Article, Author, Book, Plan, Sermon
 from .analytics import mask_email
 
 #: Team-grant rows target the grantee as ``user:<email>`` (see ``team.py``).
@@ -52,7 +52,57 @@ def actions_in(category: str) -> list[str]:
     return [a for a in AdminAction.Action.values if category_of(a) == category]
 
 
-def _serialize(row: AdminAction, *, reveal: bool) -> dict:
+#: Target kinds whose rows are per-language ``(slug, language)`` editions, and
+#: the field each one is displayed by.
+_TITLED = {
+    "book": (Book, "title"),
+    "sermon": (Sermon, "title"),
+    "article": (Article, "h1"),
+    "plan": (Plan, "title"),
+}
+
+
+def _titles(rows) -> dict[str, str]:
+    """Each row's display title, by target — one query per kind for the page.
+
+    The log stores slugs, so the page showed ``unslug`` guesses ("George Muller
+    Of Bristol"). The target's own language edition wins; failing that (a
+    translation job targets an edition that doesn't exist yet) the English row,
+    then any edition — the work's name either way, and better than its slug.
+    """
+    wanted: dict[str, set[str]] = {}
+    for row in rows:
+        kind, _, rest = row.target.partition(":")
+        if kind in _TITLED or kind == "author":
+            wanted.setdefault(kind, set()).add(rest.split(":", 1)[0])
+    out: dict[str, str] = {}
+    if slugs := wanted.pop("author", None):
+        for slug, name in Author.objects.filter(slug__in=slugs).values_list("slug", "name"):
+            out[f"author:{slug}"] = name
+    for kind, slugs in wanted.items():
+        model, field = _TITLED[kind]
+        by_slug: dict[str, dict[str, str]] = {}
+        for slug, lang, title in model.objects.filter(slug__in=slugs).values_list(
+            "slug", "language", field
+        ):
+            by_slug.setdefault(slug, {})[lang] = title
+        for row in rows:
+            k, _, rest = row.target.partition(":")
+            if k != kind:
+                continue
+            slug, _, lang = rest.partition(":")
+            titles = by_slug.get(slug)
+            if titles:
+                out[row.target] = titles.get(lang) or titles.get("en") or next(iter(titles.values()))
+    return out
+
+
+def _serialize_page(rows, *, reveal: bool) -> list[dict]:
+    titles = _titles(rows)
+    return [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
+
+
+def _serialize(row: AdminAction, *, reveal: bool, title: str = "") -> dict:
     """One log row. ``reveal`` is whether the caller is a super admin; for anyone
     else the actor and any ``user:<email>`` target are masked — every role holds
     ``reporting:view``, and an unmasked log would hand the lowest of them the
@@ -69,6 +119,9 @@ def _serialize(row: AdminAction, *, reveal: bool) -> dict:
         "label": AdminAction.Action(row.action).label,
         "actor": actor,
         "target": target,
+        # The work's real name for a book/sermon/article/plan/author target, ""
+        # when there's none to find — the client falls back to the slug.
+        "title": title,
         "detail": row.detail,
         "at": row.at.isoformat(),
     }
@@ -179,7 +232,7 @@ class AdminActivityView(APIView):
             return Response(
                 {
                     "truncated": len(rows) > self.EXPORT_LIMIT,
-                    "actions": [_serialize(r, reveal=reveal) for r in rows[: self.EXPORT_LIMIT]],
+                    "actions": _serialize_page(rows[: self.EXPORT_LIMIT], reveal=reveal),
                 }
             )
 
@@ -204,7 +257,7 @@ class AdminActivityView(APIView):
                 "summary": self._summary(scope, searched, params, reveal=reveal) if first else None,
                 "limit": self.LIMIT,
                 "next_cursor": rows[-1].id if has_more else None,
-                "actions": [_serialize(r, reveal=reveal) for r in rows],
+                "actions": _serialize_page(rows, reveal=reveal),
             }
         )
 
@@ -253,7 +306,7 @@ class AdminActivityView(APIView):
 
         def latest(action):
             row = scope.filter(action=action).order_by("-id").first()
-            return _serialize(row, reveal=reveal) if row else None
+            return _serialize_page([row], reveal=reveal)[0] if row else None
 
         return {
             "all": scope.count(),

@@ -134,6 +134,8 @@ export type DetailPart =
 	| { kind: 'quote'; text: string }
 	/** A URL-valued field (e.g. a filed translation issue), shown as a link chip. */
 	| { kind: 'link'; text: string; href: string }
+	/** Something that didn't go the usual way — e.g. a job that was already open. */
+	| { kind: 'warn'; text: string }
 	/** Anything else, `label: value`. */
 	| { kind: 'text'; text: string };
 
@@ -200,6 +202,12 @@ export function summariseDetail(detail: Record<string, unknown>): DetailPart[] {
 	// Everything else: a reason as a quote, the rest as labelled values.
 	for (const [k, v] of entries) {
 		if (consumed.has(k)) continue;
+		// A filed job records `created`. True is every row's normal case and only
+		// noise; false is the one worth seeing — the click filed nothing.
+		if (k === 'created') {
+			if (v === false) parts.push({ kind: 'warn', text: 'Already open — nothing filed' });
+			continue;
+		}
 		if (k === 'reason') {
 			parts.push({ kind: 'quote', text: String(v) });
 			continue;
@@ -274,4 +282,81 @@ export function toCsv(rows: AdminActionRow[]): string {
 			.join(',')
 	);
 	return [header.join(','), ...body].join('\n');
+}
+
+/** A young-reader edition, read off the slug convention (see CLAUDE.md). */
+export type Edition = 'For Children' | 'For Teens';
+
+const EDITION_SUFFIX: [string, Edition][] = [
+	['-children', 'For Children'],
+	['-teens', 'For Teens']
+];
+
+/**
+ * A row's display name and its young-reader edition, if any. The server sends
+ * the work's real title; the edition rides as a chip, so it's trimmed from the
+ * title's tail rather than shown twice. Without a title (an unknown slug, a
+ * deleted work) the slug is unslugged as before, minus the edition suffix.
+ */
+export function titleParts(slug: string, title?: string): { name: string; edition: Edition | null } {
+	const hit = EDITION_SUFFIX.find(([suffix]) => slug.endsWith(suffix));
+	const edition = hit ? hit[1] : null;
+	if (title) {
+		const name = edition ? title.replace(new RegExp(`\\s*\\(${edition}\\)\\s*$`, 'i'), '') : title;
+		return { name, edition };
+	}
+	return { name: unslug(hit ? slug.slice(0, -hit[0].length) : slug), edition };
+}
+
+/** One rendered line of a day: a single row, or a burst folded into one. */
+export type DayItem = { kind: 'row'; row: AdminActionRow } | { kind: 'burst'; rows: AdminActionRow[] };
+
+/** The gap that still counts as the same sitting — a bulk queue is seconds apart. */
+export const BURST_GAP_MS = 10 * 60_000;
+/** Fewer than this stay as separate rows: two of a thing isn't a burst. */
+export const BURST_MIN = 3;
+
+const burstKey = (r: AdminActionRow) => {
+	const t = parseTarget(r.target);
+	return `${r.actor}|${r.action}|${t.kind}|${t.lang ?? ''}`;
+};
+
+/**
+ * Consecutive rows of the same action by the same admin on the same kind of
+ * target in the same language, each within {@link BURST_GAP_MS} of the next,
+ * folded into one item. One click on "Translate all to Spanish" files a
+ * hundred jobs, and as a hundred rows it pushed everything else that day off
+ * the page. Order is kept; nothing is dropped — the view expands a burst.
+ */
+export function groupBursts(rows: AdminActionRow[]): DayItem[] {
+	const items: DayItem[] = [];
+	let run: AdminActionRow[] = [];
+	const flush = () => {
+		if (run.length >= BURST_MIN) items.push({ kind: 'burst', rows: run });
+		else for (const row of run) items.push({ kind: 'row', row });
+		run = [];
+	};
+	for (const row of rows) {
+		const prev = run[run.length - 1];
+		const joins =
+			prev &&
+			burstKey(prev) === burstKey(row) &&
+			Math.abs(Date.parse(prev.at) - Date.parse(row.at)) <= BURST_GAP_MS;
+		if (!joins) flush();
+		run.push(row);
+	}
+	flush();
+	return items;
+}
+
+/** `#4722–#4821` for a burst's filed issues, or '' when they carry none. */
+export function issueRange(rows: AdminActionRow[]): string {
+	const nums = rows
+		.map((r) => (typeof r.detail?.issue === 'string' ? r.detail.issue : ''))
+		.map((u) => Number(u.match(/\/(?:issues|pull)\/(\d+)\b/)?.[1]))
+		.filter((n) => Number.isFinite(n) && n > 0);
+	if (nums.length === 0) return '';
+	const lo = Math.min(...nums);
+	const hi = Math.max(...nums);
+	return lo === hi ? `#${lo}` : `#${lo}–#${hi}`;
 }
