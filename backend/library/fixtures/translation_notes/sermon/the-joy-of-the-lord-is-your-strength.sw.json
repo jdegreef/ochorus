@@ -1,0 +1,131 @@
+{
+ "kind": "sermon",
+ "slug": "the-joy-of-the-lord-is-your-strength",
+ "language": "sw",
+ "job_issue": 4712,
+ "references": [
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Nehemiah 8:9a",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Nehemiah 8:9b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Nehemiah 8:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Nehemiah 8:10b",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 6:10a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Romans 7:13b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Mark 7:34b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Psalm 45:7b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-worlds-need.sw.json"
+  },
+  {
+   "reference": "Romans 7:23a",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "John 4:32b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 4:4",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 7:10a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "Hebrews 6:5b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Jeremiah 23:6b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 15:13a",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "gleanings-among-the-sheaves.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:12b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Hebrews 6:11",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 John 3:2a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Ephesians 6:16b",
+   "status": "self_rendered",
+   "block_index": 16
+  }
+ ]
+}

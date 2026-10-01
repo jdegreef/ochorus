@@ -1,0 +1,283 @@
+{
+ "kind": "sermon",
+ "slug": "the-office-of-the-holy-spirit",
+ "language": "sw",
+ "job_issue": 4714,
+ "references": [
+  {
+   "reference": "Acts 2:1",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Acts 2:2",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 2:4",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "prayer-the-pulse-of-life.sw.json"
+  },
+  {
+   "reference": "Acts 2:5",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:7",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:8",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:9",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:10",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:11",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:12",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:13",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:14",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:15",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:16",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:17",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Acts 2:18",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Acts 2:19",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:20",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:21",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:22",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Acts 2:23",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Acts 2:24",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Acts 2:25",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:26",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:27",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:28",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:29",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:30",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:31",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:32",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:34",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:35",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:38",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:39",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:40",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:41",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Acts 2:42",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "John 15:26",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 14:23a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 14:24a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 14:25",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 14:26",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 14:27a",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "John 14:27b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Philippians 4:7a",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "John 14:28",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 14:29",
+   "status": "self_rendered",
+   "block_index": 29
+  }
+ ]
+}

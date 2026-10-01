@@ -1,0 +1,30 @@
+{
+ "kind": "sermon",
+ "slug": "the-baptism-of-fire",
+ "language": "sw",
+ "job_issue": 4708,
+ "references": [
+  {
+   "reference": "Luke 18:27b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "absolute-surrender.sw.json"
+  },
+  {
+   "reference": "1 John 3:14a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Acts 10:34b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 16:9a",
+   "status": "self_rendered",
+   "block_index": 37
+  }
+ ]
+}

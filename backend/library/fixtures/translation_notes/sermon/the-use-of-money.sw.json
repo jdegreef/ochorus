@@ -1,0 +1,208 @@
+{
+ "kind": "sermon",
+ "slug": "the-use-of-money",
+ "language": "sw",
+ "job_issue": 4719,
+ "references": [
+  {
+   "reference": "Luke 16:9",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Luke 16:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 16:1",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 16:2",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 16:8a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Luke 16:8b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Corinthians 4:6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Timothy 6:10a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 4:32",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 4:35",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Matthew 6:25",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 3:8",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Luke 16:19",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalm 9:6",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Matthew 22:39",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 7:12",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ezekiel 3:18",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Ecclesiastes 9:10",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 8:22",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 21:22",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 21:22",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 49:18",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "John 5:44",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalm 53:5",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Mark 9:44",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Mark 9:43",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "John 6:60",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Galatians 6:10b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Galatians 6:10a",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Matthew 22:21b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Luke 14:14",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "confessions.sw.json"
+  },
+  {
+   "reference": "Matthew 16:27b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Ephesians 5:2",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Matthew 17:5",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Hebrews 3:13",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Luke 1:17",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "1 Timothy 6:19",
+   "status": "self_rendered",
+   "block_index": 35
+  }
+ ]
+}
