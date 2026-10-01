@@ -37,3 +37,10 @@ export function memberLanguages(m: TeamMember, rolesOnly = false): string[] {
 	const scopes = rolesOnly ? m.scopes.filter((s) => s.role) : m.scopes;
 	return [...new Set(scopes.flatMap((s) => s.languages))].sort();
 }
+
+/** The languages every one of a member's grants shares, or null when they
+ *  differ — so a row can name the scope once instead of on every permission. */
+export function sharedLanguages(m: TeamMember): string[] | null {
+	const keys = new Set(m.scopes.map((s) => [...s.languages].sort().join(',')));
+	return keys.size === 1 ? [...m.scopes[0].languages].sort() : null;
+}
