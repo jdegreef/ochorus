@@ -195,7 +195,7 @@ LAUNCH_PLANS = [
 CURATED_PLANS = [
     (
         "school-of-prayer",
-        "A School of Prayer",
+        "Foundations in Prayer",
         "Four weeks in the school of prayer with three guides: Andrew Murray on "
         "how the Lord himself teaches us to pray, D. L. Moody on prevailing "
         "prayer, and Hannah Buyinza on prayer as the daily pulse of the "
