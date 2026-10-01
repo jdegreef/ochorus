@@ -50,7 +50,10 @@
 		}
 	}
 
-	const disabled = $derived(!prefs || prefs.suppressed);
+	// Per-stream and language controls are inert while the master switch is off
+	// (wants_stream returns false regardless), so disable them to show they're
+	// overridden — the master toggle itself stays usable to turn it back on.
+	const disabled = $derived(!prefs || prefs.suppressed || prefs.unsubscribed_all);
 </script>
 
 <svelte:head>

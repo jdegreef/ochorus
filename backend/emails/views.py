@@ -248,7 +248,7 @@ class EmailPreferencesView(View):
                 "key": s["key"],
                 "label": s["label"],
                 "description": s["description"],
-                "enabled": subscription.stream_prefs.get(
+                "enabled": (subscription.stream_prefs or {}).get(
                     s["key"], subscription.stream_default(s["key"])
                 ),
             }

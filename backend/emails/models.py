@@ -143,7 +143,7 @@ class EmailSubscription(models.Model):
         (opt-out posture)."""
         if self.is_suppressed or self.unsubscribed_all:
             return False
-        return bool(self.stream_prefs.get(stream, self.stream_default(stream)))
+        return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
 
     def wants(self, kind: str) -> bool:
         """Whether the reader will receive an email of ``kind`` right now —
