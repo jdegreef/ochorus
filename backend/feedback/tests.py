@@ -152,6 +152,30 @@ class SubmitTests(TestCase):
         self.assertEqual(resp.status_code, 201)
         self.assertEqual(Feedback.objects.get().page_url, "https://ochorus.com/books/x/?ch=3")
 
+    def test_page_url_scrub_keeps_ordinary_context(self):
+        # Only credentials go: a diagnostic like error_code, a section anchor and
+        # the exact spelling of every kept parameter all survive.
+        from .views import _scrub_url
+
+        self.assertEqual(
+            _scrub_url("https://ochorus.com/?error=x&error_code=otp_expired&author=a%2Fb&print"),
+            "https://ochorus.com/?error=x&error_code=otp_expired&author=a%2Fb&print",
+        )
+        self.assertEqual(
+            _scrub_url("https://ochorus.com/authors/x/?token_hash=t&type=magiclink#prayer"),
+            "https://ochorus.com/authors/x/?type=magiclink#prayer",
+        )
+
+    def test_unparseable_page_url_is_dropped_not_500(self):
+        self.client.force_authenticate(user=_reader(), token=VERIFIED)
+        resp = self.client.post(
+            "/api/feedback/",
+            {"body": "A note with a broken url.", "page_url": "http://[::1/?code=x"},
+            format="json",
+        )
+        self.assertEqual(resp.status_code, 201)
+        self.assertEqual(Feedback.objects.get().page_url, "")
+
     def test_short_body_is_rejected(self):
         self.client.force_authenticate(user=_reader(), token=VERIFIED)
         resp = self.client.post("/api/feedback/", {"body": "no"}, format="json")

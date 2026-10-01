@@ -10,7 +10,7 @@ queue.
 from __future__ import annotations
 
 import re
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import unquote_plus, urlsplit, urlunsplit
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -84,23 +84,33 @@ def _anchor_block(value) -> int | None:
     return value
 
 
-#: Query keys that can carry a credential. Supabase's implicit flow puts the
-#: session in the fragment (``#access_token=…&refresh_token=…``) and its PKCE flow
-#: puts an exchange ``code`` in the query; a reader who opens feedback straight
+#: Query keys that carry a credential, matched whole (so ``error_code`` or
+#: ``author`` survive). Supabase's implicit flow puts the session in the
+#: fragment (``#access_token=…&refresh_token=…``) and its PKCE / OTP flows put
+#: ``code`` / ``token_hash`` in the query; a reader who opens feedback straight
 #: after a magic-link sign-in would otherwise file their live session with it.
-_SECRET_KEY = re.compile(r"token|code|secret|password|key|auth|session", re.IGNORECASE)
+_SECRET_KEY = re.compile(
+    r"(\w+_)?token(_hash|_type)?|code|otp|password|secret|api_?key", re.IGNORECASE
+)
 
 
 def _scrub_url(url: str) -> str:
-    """Drop the fragment and any credential-shaped query parameter. The fragment
-    goes whole: the reader app never routes on it, so it is only ever a sign-in
-    leftover or a scroll anchor, and an anchor isn't worth the risk."""
-    parts = urlsplit(url)
-    pairs = parse_qsl(parts.query, keep_blank_values=True)
-    kept = [(k, v) for k, v in pairs if not _SECRET_KEY.search(k)]
-    # Re-encode only when a key went, so a clean query keeps its exact spelling.
-    query = urlencode(kept) if len(kept) < len(pairs) else parts.query
-    return urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
+    """Drop credential-shaped query parameters and any ``key=value`` fragment,
+    keeping every other parameter exactly as spelled. A plain ``#section``
+    anchor stays: the reader app sets those itself (author pages, /biographies)
+    and they say where the reader was. Returns "" for a URL that won't parse.
+    Only ever shortens its input."""
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return ""
+    kept = [
+        seg
+        for seg in parts.query.split("&")
+        if not _SECRET_KEY.fullmatch(unquote_plus(seg.split("=", 1)[0]))
+    ]
+    fragment = "" if "=" in parts.fragment else parts.fragment
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "&".join(kept), fragment))
 
 
 def _clip_url(value, limit: int) -> str:

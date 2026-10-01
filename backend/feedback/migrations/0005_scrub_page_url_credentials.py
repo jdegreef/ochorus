@@ -11,20 +11,28 @@ what it meant if the view's copy changes later.
 """
 
 import re
-from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
+from urllib.parse import unquote_plus, urlsplit, urlunsplit
 
 from django.db import migrations
 from django.db.models import Q
 
-_SECRET_KEY = re.compile(r"token|code|secret|password|key|auth|session", re.IGNORECASE)
+_SECRET_KEY = re.compile(
+    r"(\w+_)?token(_hash|_type)?|code|otp|password|secret|api_?key", re.IGNORECASE
+)
 
 
 def _scrub(url):
-    parts = urlsplit(url)
-    pairs = parse_qsl(parts.query, keep_blank_values=True)
-    kept = [(k, v) for k, v in pairs if not _SECRET_KEY.search(k)]
-    query = urlencode(kept) if len(kept) < len(pairs) else parts.query
-    return urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return ""
+    kept = [
+        seg
+        for seg in parts.query.split("&")
+        if not _SECRET_KEY.fullmatch(unquote_plus(seg.split("=", 1)[0]))
+    ]
+    fragment = "" if "=" in parts.fragment else parts.fragment
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "&".join(kept), fragment))
 
 
 def scrub(apps, schema_editor):
