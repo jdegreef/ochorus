@@ -1228,7 +1228,7 @@ class SearchClickTests(TestCase):
         unopened = [r["query"] for r in res.data["unopened_queries"]]
         self.assertIn("ignored", unopened)
         self.assertNotIn("answered", unopened)
-        self.assertEqual(res.data["overview"]["clicks_30d"], 1)
+        self.assertEqual(res.data["overview"]["30d"]["clicks"], 1)
 
     def test_the_trim_step_prunes_both_logs_together(self):
         # Clicks outliving their queries would compute click-through against a

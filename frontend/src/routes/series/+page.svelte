@@ -8,6 +8,7 @@
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
+	import SeriesContinue from '$lib/components/SeriesContinue.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import { audienceBlurb, audienceName, groupByAudience } from '$lib/series';
 
@@ -91,6 +92,7 @@
 	{:else if series.length === 0}
 		<EmptyState message={t('series.none')} />
 	{:else}
+		<SeriesContinue {series} />
 		{#each groups as g (g.audience ?? 'more')}
 			{@const blurb = audienceBlurb(g.audience)}
 			<section class="mb-12">
