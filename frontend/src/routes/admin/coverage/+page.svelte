@@ -114,6 +114,11 @@
 		articles: '/articles'
 	};
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
+	// A blank title (an import or edit that lost it) would leave a row, a prompt
+	// or a CSV line naming nothing — so such a work goes by its slug everywhere,
+	// and can't be queued until its title is fixed (see isGap).
+	const untitled = (r: AdminCoverageRow) => !r.title?.trim();
+	const workName = (r: AdminCoverageRow) => r.title?.trim() || r.slug;
 	// An unreviewed cell opens that translation in the review queue, panel open.
 	// A link rather than an approve button here: approving means reading the
 	// text beside its English and settling its flagged verses, which lives there.
@@ -169,7 +174,7 @@
 		if (!kind) return;
 		if (
 			!confirm(
-				`Mark the ${l.name} “${r.title}” as still matching its English? Do this only after checking the English change doesn't affect the translation.`
+				`Mark the ${l.name} “${workName(r)}” as still matching its English? Do this only after checking the English change doesn't affect the translation.`
 			)
 		)
 			return;
@@ -307,7 +312,7 @@
 		};
 		const header = ['Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
 		const lines = [header, ...visibleRows.map((r) => [
-			r.title,
+			workName(r),
 			r.slug,
 			r.author ?? '',
 			r.readers ?? '',
@@ -339,7 +344,7 @@
 		if (term)
 			out = out.filter(
 				(r) =>
-					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
+					workName(r).toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
 		if (gapLang) out = out.filter((r) => !r.cells[gapLang] && !r.blocked);
@@ -401,7 +406,7 @@
 	// A state the API adds before this page knows it shows as itself, neutrally,
 	// rather than passing for one of the states above.
 	const cellMeta = (v: string) =>
-		CELL[v as keyof typeof CELL] ?? { label: v, cls: 'border border-border text-muted' };
+		CELL[v as keyof typeof CELL] ?? { label: '?', cls: 'border border-border text-muted' };
 
 	// --- Translation queue -----------------------------------------------------
 	// Each missing cell (a work not yet in a language) becomes a click target that
@@ -460,7 +465,7 @@
 	// language) never offers a button that the POST would only reject.
 	// A copyright-blocked work has no gaps: nothing of it may be translated.
 	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
-		!r.blocked && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
+		!r.blocked && !untitled(r) && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
 	// Missing-and-unqueued count per language column, for the header's "queue all".
 	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
@@ -493,7 +498,7 @@
 	function bulkRow(r: AdminCoverageRow) {
 		const targets = langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }));
 		if (targets.length)
-			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
+			pendingBulk = { label: `“${workName(r)}” into every missing language`, type: jobType, targets };
 	}
 	// --- Selecting gaps: ⇧-click a gap to start, ⇧-click another to take every
 	// gap in the rectangle between them; ⌘/Ctrl-click toggles one. A plain click
@@ -576,7 +581,7 @@
 			bulkProgress = { done: bulkProgress.done + 1, total: targets.length };
 		}
 		const filed = bulkProgress.done - failed;
-		if (bulkStopping) bulkNote = `Stopped — filed ${filed} of ${targets.length}; the rest were not queued.`;
+		if (bulkStopping && bulkProgress.done < targets.length) bulkNote = `Stopped — filed ${filed} of ${targets.length}; the rest were not queued.`;
 		bulkProgress = null;
 		bulkStopping = false;
 		if (failed) {
@@ -774,13 +779,13 @@
 					<span class="shrink-0 tabular-nums">
 						{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
 					</span>
-					<span class="flex-1">
+					<div class="flex-1">
 						<ProgressBar
 							percent={(bulkProgress.done / bulkProgress.total) * 100}
 							label="Queueing translations"
 							size="md"
 						/>
-					</span>
+					</div>
 					<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
 				</div>
 			{:else if bulkNote}
@@ -912,11 +917,7 @@
 
 {#snippet workRow(r: AdminCoverageRow)}
 	{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
-	<!-- A blank title (an import or edit that lost it) would leave the row reading
-	     as just its author while still offering to queue jobs — so name it by
-	     slug and say what's wrong; the work's page is where it gets fixed. -->
-	{@const title = r.title?.trim() ?? ''}
-	{@const name = title || r.slug}
+	{@const name = workName(r)}
 	<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 		<!-- Titles wrap to two lines (one in Compact) — articles run long ("A Retrospect by Hudson
 		     Taylor: …"); the full title + author ride on the tooltip. -->
@@ -929,8 +930,8 @@
 				href={rowHref(r.slug)}
 				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
 				title={r.author ? `${name} — ${r.author}` : name}
-			>{#if title}{title}{:else}<span class="font-mono text-small">{r.slug}</span>{/if}</a>
-			{#if !title}
+			>{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
+			{#if untitled(r)}
 				<span
 					class="{PILL} border-danger/40 text-danger"
 					title="This work has no title — open it to fix the title before queueing translations"
@@ -1002,12 +1003,14 @@
 						title={`${name} is under copyright — no ${l.name} edition may be made`}
 						aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
 					>
-				{:else if jobsConfigured === false || !l.queueable || !canQueue}
+				{:else if jobsConfigured === false || !l.queueable || !canQueue || untitled(r)}
 					<span
 						class="{TILE} {CELL.missing.cls}"
 						title={jobsConfigured === false
 							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
-							: !canQueue
+							: untitled(r)
+								? `Fix the title of ${name} before queueing translations`
+								: !canQueue
 								? `Missing: ${name} → ${l.name}`
 								: `${l.name} isn't a translation target — nothing to queue`}
 						aria-label="Missing"
