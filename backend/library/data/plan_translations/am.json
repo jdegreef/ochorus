@@ -155,5 +155,12 @@
   "note": [
    "Queue job #4189. AI-drafted; awaiting native review. sons-of-the-king-3 has no am edition yet, so no am row is created until it does. Mirrors sons-of-the-king-book-1-30-days; «የጉርምስና ለውጦች» matches the am Daughters Book 3 wording."
   ]
+ },
+ "growing-in-wisdom-18-days": {
+  "title": "በ18 ቀናት በጥበብ ማደግ",
+  "description": "ለተማሪዎች የተዘጋጀ መመሪያ — ለአሥራ ስምንት ቀናት በየቀኑ አንድ አጭር ንባብ። ጥሪህን ከማወቅ ጀምሮ ለወደፊት ራእይ እስከ መገንባት ድረስ፣ እያንዳንዱ ቀን ተግባራዊ ምክርን ከመጽሐፍ ቅዱስ ቃል፣ ከማሰላሰያ ጥያቄና ከጸሎት ጋር ያጣምራል።",
+  "note": [
+   "AI-drafted; awaiting native review. Ships with growing-in-wisdom.am (job #3792), whose am edition is what creates this plan row. Book title «በጥበብ ማደግ» as on the am book page."
+  ]
  }
 }
