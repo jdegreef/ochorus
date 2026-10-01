@@ -26,8 +26,9 @@
 	 *
 	 *   - `card` — compact, for a grid beside other content (a topic's sermons,
 	 *     an author's sermons).
-	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and the
-	 *     brief, for the sermons index where sermons ARE the content.
+	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and a
+	 *     two-line preview of the brief, for the sermons index where sermons ARE
+	 *     the content.
 	 *
 	 * `.sermon-row*` is styled globally in app.css; only `card` carries scoped
 	 * styles here.
@@ -47,21 +48,37 @@
 	const year = $derived(preachedYear(sermon.preached_on));
 	const href = $derived(localizeHref(`/sermons/${sermon.slug}`));
 
-	// The index row reads like a table of contents: one line per sermon, the
-	// brief tucked away until asked for. Clicking a row opens its brief and a
-	// link to read it; a sermon with no brief yet is just a link. (`row` only.)
+	// The index row reads like a table of contents with a preview: one line per
+	// sermon, then the first two lines of its brief, always shown — the brief is
+	// what a reader chooses by, and two lines fill space the row had anyway. The
+	// chevron opens the rest of it; a brief that fits in two lines has no rest,
+	// so it gets no chevron. (`row` only.)
 	let open = $state(false);
 	const peekId = $derived(`sermon-peek-${sermon.slug}`);
+	// Assume a long brief until measured: prerendered HTML keeps the chevron (and
+	// its keyboard path), and the client drops it where the brief fits.
+	let clipped = $state(true);
+	let briefEl = $state<HTMLParagraphElement>();
+	$effect(() => {
+		if (!briefEl) return;
+		const measure = () => {
+			if (!open) clipped = briefEl!.scrollHeight > briefEl!.clientHeight + 1;
+		};
+		measure();
+		const ro = new ResizeObserver(measure);
+		ro.observe(briefEl);
+		return () => ro.disconnect();
+	});
 
 	// Two-stage click on the row body (a pointer convenience): the title link and
-	// the chevron keep their own jobs, but a click ANYWHERE else opens the brief
-	// first, then goes to the sermon on the next click. A sermon with no brief has
-	// nothing to open, so its body goes straight there. Keyboard users reach both
-	// actions directly — the title link navigates, the chevron toggles — so this
-	// handler on a static element is an enhancement, not the only path.
+	// the chevron keep their own jobs, but a click ANYWHERE else first opens a
+	// clipped brief in full, then goes to the sermon on the next click. A row with
+	// nothing more to show goes straight there. Keyboard users reach both actions
+	// directly — the title link navigates, the chevron toggles — so this handler
+	// on a static element is an enhancement, not the only path.
 	function onRowClick(event: MouseEvent) {
 		if ((event.target as HTMLElement).closest('a, button')) return;
-		if (sermon.summary && !open) {
+		if (sermon.summary && clipped && !open) {
 			open = true;
 			return;
 		}
@@ -97,7 +114,7 @@
 				<span class="sermon-row-meta"
 					>{readingTime(sermon.word_count)}{#if year}<span class="opacity-50"> · </span>{year}{/if}</span
 				>
-				{#if sermon.summary}
+				{#if sermon.summary && clipped}
 					<button
 						type="button"
 						class="sermon-row-toggle"
@@ -120,8 +137,8 @@
 				{/if}
 			</div>
 			{#if sermon.summary}
-				<div id={peekId} class="sermon-row-peek" hidden={!open}>
-					<p class="sermon-row-brief">{sermon.summary}</p>
+				<div id={peekId} class="sermon-row-peek">
+					<p class="sermon-row-brief" bind:this={briefEl}>{sermon.summary}</p>
 				</div>
 			{/if}
 		</div>

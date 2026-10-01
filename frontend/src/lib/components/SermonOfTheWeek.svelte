@@ -19,8 +19,12 @@
 	 */
 	// `embedded` drops the home-page section chrome (own max-width + top
 	// padding) so the card can sit inside another page's column (e.g. the
-	// sermons shelf) without fighting its container.
-	let { embedded = false }: { embedded?: boolean } = $props();
+	// sermons shelf) without fighting its container. `sermons` hands over a
+	// shelf the caller already loaded, so the sermons index doesn't fetch its
+	// own list a second time; the pick is still made on mount, for the reason
+	// above.
+	let { embedded = false, sermons }: { embedded?: boolean; sermons?: SermonSummary[] } =
+		$props();
 
 	let pick = $state<SermonSummary | null>(null);
 
@@ -36,10 +40,10 @@
 
 	onMount(async () => {
 		try {
-			const sermons = await listSermons(getLang());
-			if (!sermons.length) return;
+			const shelf = sermons ?? (await listSermons(getLang()));
+			if (!shelf.length) return;
 			const { year, week } = isoWeek(new Date());
-			pick = sermons[(year * 53 + week) % sermons.length];
+			pick = shelf[(year * 53 + week) % shelf.length];
 		} catch {
 			pick = null;
 		}
