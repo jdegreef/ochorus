@@ -624,6 +624,96 @@ services:
       - type: redirect
         source: /authors/ochorus-originals/
         destination: /originals/
+      # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
+      # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
+      # `/about/` (verified live — there is no build/about/ directory, only
+      # about.html). So `source: /books/:slug` would match `/books/<slug>/` too,
+      # and for a path with NO prerendered file it would 301 the slashed URL to
+      # itself — an infinite redirect loop. The no-slash -> slash 301 lives at
+      # the edge instead (a Cloudflare rule), and the ochorus-web.onrender.com
+      # duplicate is switched off in the dashboard: docs/seo-edge-rules.md.
+      # Without the Cloudflare rule, a no-slash detail
+      # URL gets the 404 shell below, whose JavaScript still forwards a reader
+      # to the slash form ($lib/canonicalRedirect) — so ADD THAT RULE BEFORE
+      # SYNCING THIS BLUEPRINT, or old no-slash backlinks answer 404 to crawlers.
+      #
+      # NO catch-all. A path with no prerendered file and no rule above gets
+      # Render's /404.html — the same SPA shell as 200.html (postbuild copies
+      # it; scripts/build-404.mjs), so a reader still gets the app's not-found
+      # page, but crawlers get an honest 404 STATUS. The old `/* -> /200.html`
+      # answered 200 for every typo'd slug, dead WordPress URL, out-of-range
+      # chapter and untranslated `/es/books/<en-only>/` — soft 404s that Google
+      # kept re-crawling instead of the real pages.
+      #
+      # Only the client-only app routes (prerender = false: admin, settings,
+      # notebook, the reader…) still get the 200 shell, in every locale (the
+      # `:lang` rules below). /login and /reset-password keep the
+      # shell they always got (Render doesn't map /login to login.html). The
+      # list lives in frontend/src/lib/shellRoutes.ts; shellRoutes.test.ts keeps
+      # this block, that list and the route tree in step.
+      #
+      # These come FIRST: the `:lang` index rules further down would otherwise
+      # catch the app's own two-segment routes (/admin/books, /admin/sermons,
+      # /admin/search) and rewrite them to a .html that does not exist.
+      - type: rewrite
+        source: /admin
+        destination: /200.html
+      - type: rewrite
+        source: /admin/*
+        destination: /200.html
+      - type: rewrite
+        source: /settings
+        destination: /200.html
+      - type: rewrite
+        source: /favorites
+        destination: /200.html
+      - type: rewrite
+        source: /notebook
+        destination: /200.html
+      - type: rewrite
+        source: /notebook/*
+        destination: /200.html
+      - type: rewrite
+        source: /reading
+        destination: /200.html
+      - type: rewrite
+        source: /login
+        destination: /200.html
+      - type: rewrite
+        source: /reset-password
+        destination: /200.html
+      # Every other UI locale: ONE `:lang` placeholder rule per route, never a
+      # copy per locale. The copies took this service to 255 rules and Render
+      # stopped applying them: every Blueprint sync from #4512 on failed on
+      # "Update web service ochorus-web routes" (166 rules synced, 204 did not;
+      # Render documents no limit). Keep the total well under 166.
+      - type: rewrite
+        source: /:lang/admin
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/admin/*
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/settings
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/favorites
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/notebook
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/notebook/*
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/reading
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/login
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/reset-password
+        destination: /200.html
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.
       #
@@ -665,583 +755,70 @@ services:
       - type: rewrite
         source: /search
         destination: /search.html
-      # Localized (URL-prefixed) copies of the index pages. Render has no
-      # wildcard for the locale segment, so each locale repeats the block above.
-      # Keep these before the SPA catch-all.
+      - type: rewrite
+        source: /topics
+        destination: /topics.html
+      # Each UI locale's landing page.
       - type: rewrite
         source: /es
         destination: /es.html
       - type: rewrite
-        source: /es/books
-        destination: /es/books.html
-      - type: rewrite
-        source: /es/biographies
-        destination: /es/biographies.html
-      - type: rewrite
-        source: /es/about
-        destination: /es/about.html
-      - type: rewrite
-        source: /es/contact
-        destination: /es/contact.html
-      - type: rewrite
-        source: /es/legal
-        destination: /es/legal.html
-      - type: rewrite
-        source: /es/sermons
-        destination: /es/sermons.html
-      - type: rewrite
-        source: /es/plans
-        destination: /es/plans.html
-      - type: rewrite
-        source: /es/search
-        destination: /es/search.html
-      - type: rewrite
         source: /sw
         destination: /sw.html
-      - type: rewrite
-        source: /sw/books
-        destination: /sw/books.html
-      - type: rewrite
-        source: /sw/biographies
-        destination: /sw/biographies.html
-      - type: rewrite
-        source: /sw/about
-        destination: /sw/about.html
-      - type: rewrite
-        source: /sw/contact
-        destination: /sw/contact.html
-      - type: rewrite
-        source: /sw/legal
-        destination: /sw/legal.html
-      - type: rewrite
-        source: /sw/sermons
-        destination: /sw/sermons.html
-      - type: rewrite
-        source: /sw/plans
-        destination: /sw/plans.html
-      - type: rewrite
-        source: /sw/search
-        destination: /sw/search.html
       - type: rewrite
         source: /lg
         destination: /lg.html
       - type: rewrite
-        source: /lg/books
-        destination: /lg/books.html
-      - type: rewrite
-        source: /lg/biographies
-        destination: /lg/biographies.html
-      - type: rewrite
-        source: /lg/about
-        destination: /lg/about.html
-      - type: rewrite
-        source: /lg/contact
-        destination: /lg/contact.html
-      - type: rewrite
-        source: /lg/legal
-        destination: /lg/legal.html
-      - type: rewrite
-        source: /lg/sermons
-        destination: /lg/sermons.html
-      - type: rewrite
-        source: /lg/plans
-        destination: /lg/plans.html
-      - type: rewrite
-        source: /lg/search
-        destination: /lg/search.html
-      - type: rewrite
         source: /pt
         destination: /pt.html
-      - type: rewrite
-        source: /pt/books
-        destination: /pt/books.html
-      - type: rewrite
-        source: /pt/biographies
-        destination: /pt/biographies.html
-      - type: rewrite
-        source: /pt/about
-        destination: /pt/about.html
-      - type: rewrite
-        source: /pt/contact
-        destination: /pt/contact.html
-      - type: rewrite
-        source: /pt/legal
-        destination: /pt/legal.html
-      - type: rewrite
-        source: /pt/sermons
-        destination: /pt/sermons.html
-      - type: rewrite
-        source: /pt/plans
-        destination: /pt/plans.html
-      - type: rewrite
-        source: /pt/search
-        destination: /pt/search.html
       - type: rewrite
         source: /ar
         destination: /ar.html
       - type: rewrite
-        source: /ar/books
-        destination: /ar/books.html
-      - type: rewrite
-        source: /ar/biographies
-        destination: /ar/biographies.html
-      - type: rewrite
-        source: /ar/about
-        destination: /ar/about.html
-      - type: rewrite
-        source: /ar/contact
-        destination: /ar/contact.html
-      - type: rewrite
-        source: /ar/legal
-        destination: /ar/legal.html
-      - type: rewrite
-        source: /ar/sermons
-        destination: /ar/sermons.html
-      - type: rewrite
-        source: /ar/plans
-        destination: /ar/plans.html
-      - type: rewrite
-        source: /ar/search
-        destination: /ar/search.html
-      - type: rewrite
         source: /hi
         destination: /hi.html
-      - type: rewrite
-        source: /hi/books
-        destination: /hi/books.html
-      - type: rewrite
-        source: /hi/biographies
-        destination: /hi/biographies.html
-      - type: rewrite
-        source: /hi/about
-        destination: /hi/about.html
-      - type: rewrite
-        source: /hi/contact
-        destination: /hi/contact.html
-      - type: rewrite
-        source: /hi/legal
-        destination: /hi/legal.html
-      - type: rewrite
-        source: /hi/sermons
-        destination: /hi/sermons.html
-      - type: rewrite
-        source: /hi/plans
-        destination: /hi/plans.html
-      - type: rewrite
-        source: /hi/search
-        destination: /hi/search.html
       - type: rewrite
         source: /uk
         destination: /uk.html
       - type: rewrite
-        source: /uk/books
-        destination: /uk/books.html
-      - type: rewrite
-        source: /uk/biographies
-        destination: /uk/biographies.html
-      - type: rewrite
-        source: /uk/about
-        destination: /uk/about.html
-      - type: rewrite
-        source: /uk/contact
-        destination: /uk/contact.html
-      - type: rewrite
-        source: /uk/legal
-        destination: /uk/legal.html
-      - type: rewrite
-        source: /uk/sermons
-        destination: /uk/sermons.html
-      - type: rewrite
-        source: /uk/plans
-        destination: /uk/plans.html
-      - type: rewrite
-        source: /uk/search
-        destination: /uk/search.html
-      - type: rewrite
         source: /fr
         destination: /fr.html
       - type: rewrite
-        source: /fr/books
-        destination: /fr/books.html
-      - type: rewrite
-        source: /fr/biographies
-        destination: /fr/biographies.html
-      - type: rewrite
-        source: /fr/about
-        destination: /fr/about.html
-      - type: rewrite
-        source: /fr/contact
-        destination: /fr/contact.html
-      - type: rewrite
-        source: /fr/legal
-        destination: /fr/legal.html
-      - type: rewrite
-        source: /fr/sermons
-        destination: /fr/sermons.html
-      - type: rewrite
-        source: /fr/plans
-        destination: /fr/plans.html
-      - type: rewrite
-        source: /fr/search
-        destination: /fr/search.html
-      - type: rewrite
         source: /am
         destination: /am.html
+      # Each UI locale's index pages: one `:lang` rule per page (Render
+      # substitutes the placeholder into the destination). A `:lang` that is not
+      # a locale (`/x/books`) rewrites to a .html that does not exist and gets a
+      # blank 200 rather than the 404 shell — nothing links to such paths. Real
+      # two-segment pages are safe: a file always beats a rule, and the app's
+      # client-only routes are matched first, above.
       - type: rewrite
-        source: /am/books
-        destination: /am/books.html
+        source: /:lang/books
+        destination: /:lang/books.html
       - type: rewrite
-        source: /am/biographies
-        destination: /am/biographies.html
+        source: /:lang/biographies
+        destination: /:lang/biographies.html
       - type: rewrite
-        source: /am/about
-        destination: /am/about.html
+        source: /:lang/about
+        destination: /:lang/about.html
       - type: rewrite
-        source: /am/contact
-        destination: /am/contact.html
+        source: /:lang/contact
+        destination: /:lang/contact.html
       - type: rewrite
-        source: /am/legal
-        destination: /am/legal.html
+        source: /:lang/legal
+        destination: /:lang/legal.html
       - type: rewrite
-        source: /am/sermons
-        destination: /am/sermons.html
+        source: /:lang/sermons
+        destination: /:lang/sermons.html
       - type: rewrite
-        source: /am/plans
-        destination: /am/plans.html
+        source: /:lang/plans
+        destination: /:lang/plans.html
       - type: rewrite
-        source: /am/search
-        destination: /am/search.html
-      # /topics had NO rewrite at any locale, so topics.html (23 KB, titled)
-      # was never served — /topics and /topics/ both fell to the SPA shell in
-      # all four locales while sitting in the sitemap — same class of bug as the
-      # trailing-slash split, but with no working form at all.
+        source: /:lang/search
+        destination: /:lang/search.html
       - type: rewrite
-        source: /topics
-        destination: /topics.html
-      - type: rewrite
-        source: /es/topics
-        destination: /es/topics.html
-      - type: rewrite
-        source: /sw/topics
-        destination: /sw/topics.html
-      - type: rewrite
-        source: /lg/topics
-        destination: /lg/topics.html
-      - type: rewrite
-        source: /pt/topics
-        destination: /pt/topics.html
-      - type: rewrite
-        source: /ar/topics
-        destination: /ar/topics.html
-      - type: rewrite
-        source: /hi/topics
-        destination: /hi/topics.html
-      - type: rewrite
-        source: /uk/topics
-        destination: /uk/topics.html
-      - type: rewrite
-        source: /fr/topics
-        destination: /fr/topics.html
-      - type: rewrite
-        source: /am/topics
-        destination: /am/topics.html
-      # NO no-slash -> slash 301 here, deliberately. Render's route matcher is
-      # trailing-slash-INSENSITIVE: a rule with `source: /about` also serves
-      # `/about/` (verified live — there is no build/about/ directory, only
-      # about.html). So `source: /books/:slug` would match `/books/<slug>/` too,
-      # and for a path with NO prerendered file it would 301 the slashed URL to
-      # itself — an infinite redirect loop. The no-slash -> slash 301 lives at
-      # the edge instead (a Cloudflare rule), and the ochorus-web.onrender.com
-      # duplicate is switched off in the dashboard: docs/seo-edge-rules.md.
-      # Without the Cloudflare rule, a no-slash detail
-      # URL gets the 404 shell below, whose JavaScript still forwards a reader
-      # to the slash form ($lib/canonicalRedirect) — so ADD THAT RULE BEFORE
-      # SYNCING THIS BLUEPRINT, or old no-slash backlinks answer 404 to crawlers.
-      #
-      # NO catch-all. A path with no prerendered file and no rule above gets
-      # Render's /404.html — the same SPA shell as 200.html (postbuild copies
-      # it; scripts/build-404.mjs), so a reader still gets the app's not-found
-      # page, but crawlers get an honest 404 STATUS. The old `/* -> /200.html`
-      # answered 200 for every typo'd slug, dead WordPress URL, out-of-range
-      # chapter and untranslated `/es/books/<en-only>/` — soft 404s that Google
-      # kept re-crawling instead of the real pages.
-      #
-      # Only the client-only app routes (prerender = false: admin, settings,
-      # notebook, the reader…) still get the 200 shell, per locale — Render has
-      # no wildcard for the locale segment. /login and /reset-password keep the
-      # shell they always got (Render doesn't map /login to login.html). The
-      # list lives in frontend/src/lib/shellRoutes.ts; shellRoutes.test.ts keeps
-      # this block, that list and the route tree in step.
-      - type: rewrite
-        source: /admin
-        destination: /200.html
-      - type: rewrite
-        source: /admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /settings
-        destination: /200.html
-      - type: rewrite
-        source: /favorites
-        destination: /200.html
-      - type: rewrite
-        source: /notebook
-        destination: /200.html
-      - type: rewrite
-        source: /notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /reading
-        destination: /200.html
-      - type: rewrite
-        source: /login
-        destination: /200.html
-      - type: rewrite
-        source: /reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /es/admin
-        destination: /200.html
-      - type: rewrite
-        source: /es/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /es/settings
-        destination: /200.html
-      - type: rewrite
-        source: /es/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /es/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /es/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /es/reading
-        destination: /200.html
-      - type: rewrite
-        source: /es/login
-        destination: /200.html
-      - type: rewrite
-        source: /es/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /sw/admin
-        destination: /200.html
-      - type: rewrite
-        source: /sw/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /sw/settings
-        destination: /200.html
-      - type: rewrite
-        source: /sw/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /sw/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /sw/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /sw/reading
-        destination: /200.html
-      - type: rewrite
-        source: /sw/login
-        destination: /200.html
-      - type: rewrite
-        source: /sw/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /lg/admin
-        destination: /200.html
-      - type: rewrite
-        source: /lg/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /lg/settings
-        destination: /200.html
-      - type: rewrite
-        source: /lg/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /lg/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /lg/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /lg/reading
-        destination: /200.html
-      - type: rewrite
-        source: /lg/login
-        destination: /200.html
-      - type: rewrite
-        source: /lg/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /pt/admin
-        destination: /200.html
-      - type: rewrite
-        source: /pt/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /pt/settings
-        destination: /200.html
-      - type: rewrite
-        source: /pt/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /pt/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /pt/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /pt/reading
-        destination: /200.html
-      - type: rewrite
-        source: /pt/login
-        destination: /200.html
-      - type: rewrite
-        source: /pt/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /ar/admin
-        destination: /200.html
-      - type: rewrite
-        source: /ar/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /ar/settings
-        destination: /200.html
-      - type: rewrite
-        source: /ar/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /ar/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /ar/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /ar/reading
-        destination: /200.html
-      - type: rewrite
-        source: /ar/login
-        destination: /200.html
-      - type: rewrite
-        source: /ar/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /hi/admin
-        destination: /200.html
-      - type: rewrite
-        source: /hi/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /hi/settings
-        destination: /200.html
-      - type: rewrite
-        source: /hi/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /hi/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /hi/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /hi/reading
-        destination: /200.html
-      - type: rewrite
-        source: /hi/login
-        destination: /200.html
-      - type: rewrite
-        source: /hi/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /uk/admin
-        destination: /200.html
-      - type: rewrite
-        source: /uk/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /uk/settings
-        destination: /200.html
-      - type: rewrite
-        source: /uk/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /uk/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /uk/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /uk/reading
-        destination: /200.html
-      - type: rewrite
-        source: /uk/login
-        destination: /200.html
-      - type: rewrite
-        source: /uk/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /fr/admin
-        destination: /200.html
-      - type: rewrite
-        source: /fr/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /fr/settings
-        destination: /200.html
-      - type: rewrite
-        source: /fr/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /fr/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /fr/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /fr/reading
-        destination: /200.html
-      - type: rewrite
-        source: /fr/login
-        destination: /200.html
-      - type: rewrite
-        source: /fr/reset-password
-        destination: /200.html
-      - type: rewrite
-        source: /am/admin
-        destination: /200.html
-      - type: rewrite
-        source: /am/admin/*
-        destination: /200.html
-      - type: rewrite
-        source: /am/settings
-        destination: /200.html
-      - type: rewrite
-        source: /am/favorites
-        destination: /200.html
-      - type: rewrite
-        source: /am/notebook
-        destination: /200.html
-      - type: rewrite
-        source: /am/notebook/*
-        destination: /200.html
-      - type: rewrite
-        source: /am/reading
-        destination: /200.html
-      - type: rewrite
-        source: /am/login
-        destination: /200.html
-      - type: rewrite
-        source: /am/reset-password
-        destination: /200.html
+        source: /:lang/topics
+        destination: /:lang/topics.html
     envVars:
       - key: PUBLIC_API_BASE_URL # the ochorus-api URL, after first deploy
         sync: false
