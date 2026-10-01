@@ -9,7 +9,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, Exists, F, OuterRef, Prefetch, Q
+from django.db.models import Count, F, Prefetch, Q
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -30,13 +30,13 @@ from .http_cache import (
     _if_none_match,
     content_etag,
 )
+from .hubs import Hubs
 from .languages import entry as language_entry
 from .localization import language_from_request
 from .models import (
     SERMON_CARD_DEFER,
     Article,
     Author,
-    AuthorTranslation,
     Book,
     Chapter,
     Plan,
@@ -127,35 +127,17 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         #
         # Imprints are excluded: this page — and the schema.org ItemList it
         # emits — describes people, and a house byline is not one.
-        lang = _language(self.request)
         # Sermons count too — a sermon-only author is part of the library and
-        # shouldn't read as empty on the shelf.
-        #
-        # The bio clause is per-language: qualifying on the English `bio` would
-        # put an author with nothing but an English essay on the Swahili page,
-        # where their card would then render blank (the serializer no longer
-        # falls back). An author earns a place here by having a work in this
-        # language, or a bio a reader of this language can actually read.
-        # Exists(), not a join. Joining `translations` fanned this query out a
-        # third way and forced the trailing .distinct() — which then made
-        # Postgres de-duplicate over every selected column, `bio` and `bio_html`
-        # included. A correlated EXISTS asks the same question without
-        # multiplying rows, so no DISTINCT is needed and the biography text
-        # never reaches a GROUP BY.
-        translated_bio = Exists(
-            AuthorTranslation.objects.filter(author=OuterRef("pk"), language=lang)
-            .exclude(bio="", bio_html="")
-        )
-        own_bio = Q(original_language=lang) & (~Q(bio="") | ~Q(bio_html=""))
-        # `list_in_biographies=False` withholds a real person who has work in the
-        # library but should not appear on this shelf — their books stay on /books
-        # and their own author page stays reachable. `is_imprint` excludes a
-        # non-person byline; this excludes a person by choice.
+        # shouldn't read as empty on the shelf. The bio clause is per-language:
+        # an author with nothing but an English essay would render a blank card
+        # on the Swahili page. `list_in_biographies=False` withholds a real
+        # person by choice (their books stay on /books); `is_imprint` excludes a
+        # non-person byline. The rule lives on the queryset because the hub
+        # pages list the same writers.
         return (
-            Author.objects.filter(is_imprint=False, list_in_biographies=True)
+            Author.objects.listed_in_biographies(_language(self.request))
+            .with_work_counts(_language(self.request))
             .prefetch_related("translations")
-            .with_work_counts(lang)
-            .filter(Q(num_books__gt=0) | Q(num_sermons__gt=0) | own_bio | translated_bio)
             .order_by("name")
         )
 
@@ -727,7 +709,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
             .select_related("author")
             # The tile's cover_face fields (and the author it names), no more.
             .only(
-                "slug", "language", "title", "subtitle", "cover_title", "cover_url",
+                "slug", "language", "title", "subtitle", "cover_title", "cover_byline",
+                "cover_url",
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
             )
@@ -795,6 +778,16 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
                 ),
             }
         )
+
+
+class HubListView(PublicContentCacheMixin, APIView):
+    """Biography hubs (writers by tradition and by place) that exist in the
+    requested language — prose there and enough listed writers. See
+    ``library/hubs.py`` for the rule and the data. The list is small (a few
+    dozen), so it is the one endpoint for both the index rows and a hub page."""
+
+    def get(self, request):
+        return Response(Hubs().for_language(_language(request)))
 
 
 class TopicListView(PublicContentCacheMixin, generics.ListAPIView):

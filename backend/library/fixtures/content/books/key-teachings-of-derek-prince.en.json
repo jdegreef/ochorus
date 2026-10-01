@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "derek-prince"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-derek-prince",
   "language": "en",
   "title": "The Key Teachings of Derek Prince",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Derek Prince",
   "description": "A concise, faithful guide to the heart of Derek Prince’s ministry — the authority of the written Word, the six foundations of Hebrews 6, the divine exchange at the cross, faith that comes by hearing, and prayer and fasting that shape history — weighed honestly where he must be read with care. Twelve short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion to Prince’s ministry, naming his books for the reader’s own further study.",
   "about_html": "<p>This is a companion to Derek Prince, not a book by him. Written by Ochorus, it sets out in twelve short chapters the teaching for which Prince is chiefly remembered — the Bible as a true and living book, the six foundation doctrines of Hebrews 6:1–2, the exchange that took place at the cross, faith, the baptism in the Holy Spirit, prayer and fasting, blessing and curse, spiritual warfare, Israel, rejection and acceptance, fatherhood and the return of Christ — with a chapter on his life, a conclusion and a guide to his books.</p><p>It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by any organisation that holds rights in the writings of Derek Prince. All descriptions of his teaching are the present author’s own summaries; his books and spoken ministry are named only for the reader’s further study, and readers are warmly encouraged to obtain those works from their rightful publishers. Nothing of Prince’s own text is reproduced here — only Scripture, quoted from the Authorised (King James) Version, and Ochorus’s account of what he taught.</p><p>Prince came to the Bible as a sceptic and spent sixty years urging ordinary believers to build on it and nothing else. This volume follows that thread, and it is candid where he must be weighed rather than simply received — above all on the Shepherding Movement he helped lead and later repudiated, on deliverance ministry, on inherited curses, and on Israel. He would have wanted every word of it checked against the Book he loved.</p>",
   "qa": [],

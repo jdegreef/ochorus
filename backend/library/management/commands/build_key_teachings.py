@@ -2,45 +2,31 @@
 
 These are NOT the authors' own texts. Each is an independent, house-written
 work of exposition and appreciation that distills a classic teacher's message
-into eighteen short chapters (each ending in questions and a prayer), quoting
+into a short run of chapters (each ending in questions and a prayer), quoting
 only the Authorised (King James) Version and naming the author's own works for
 further reading. That design is what lets the series cover writers whose actual
 books are still in copyright (Watchman Nee) as safely as it covers the
 public-domain ones (Simpson, Edwards, Baxter): nothing of the author's own prose
 is reproduced — only Ochorus's summaries and KJV Scripture.
 
-A companion is filed **under the author it is about** (author FK = that person,
-e.g. ``a-b-simpson``), with the Ochorus attribution carried in the ``subtitle``
-and the rights note in ``attribution`` — the same pattern as a biography ABOUT a
-person (``susanna-wesley-clarke``, ``watchman-nee-a-life``), never crediting the
-subject as if they wrote it. It is not filed under ``ochorus-originals`` (that is
-for multi-subject collections).
+A companion is BY the house: its author is ``ochorus-originals``, because the
+person it is about did not write it (an earlier build filed it under that
+person, which put "The Key Teachings of A. B. Simpson" on Simpson's shelf, and
+into his schema.org authorship, as if he had). The person is kept in two places:
+``cover_byline`` sets their name across the top of the cover, as it always was,
+and ``book_people_seed.BOOK_PEOPLE`` makes them the book's lone subject, which
+files it under "Books about" on their author page. ``Work.author_slug`` names
+that person. ``tests_originals_series.py`` holds all three together.
 
-The first four volumes came as PDFs set in one shared template; later volumes
-(Spurgeon, Murray, Hannah Whitall Smith, Catherine Booth, Augustine) are written
-directly as Markdown manuscripts (``data/key-teachings/<author>.md``, grammar at
-``manuscript``) that state the same structure the PDF reader infers — the
-description and "About this work" ride in the manuscript's front matter.
+Every volume is a Markdown manuscript, ``data/key-teachings/<author>.md``
+(grammar at ``manuscript``), with its description and "About this work" in the
+front matter. The first four (Simpson, Edwards, Baxter, Nee) were first built
+from PDFs set in one template; in 2026-09 they were converted, text unchanged,
+to manuscripts like the rest, so every volume can be edited — and reshaped —
+the same way (git history holds the PDF reader).
 
-Why a bespoke command rather than ``import_pdf`` for the PDFs: these are typographically rich
-digital PDFs (one shared template) that the generic PDF importer mishandles in
-three ways — the small-caps running header ("N THE KEY TEACHINGS OF …") leaks
-into every chapter body, the bold in-chapter subheadings fuse into the following
-paragraph, and the biographical narrative + "A Reader's Guide" fold into the
-Introduction/Conclusion instead of standing as their own chapters. This command
-reads the font/weight structure directly:
-
-    >= body*1.11   section / chapter title      -> chapter boundary
-    ~  body        prose (regular)  -> <p> ;  bold, short, unpunctuated -> <h2>
-    ~  body*0.80   set-apart Scripture quotation -> <blockquote>
-    <  body*0.72   small: an epigraph citation (chapter:verse) is kept with its
-                   quote; a running header / "CHAPTER N" marker / page number is
-                   dropped.
-
-The source PDFs are committed under ``data/key-teachings/`` (they are Ochorus's
-own prose, not fetchable from any public-domain source, so the build must not
-depend on a scratch copy). Fixture-driven: ``seed_books`` creates each book (and
-resolves the author from ``authors.json``) on the next deploy. Idempotent.
+Fixture-driven: ``seed_books`` creates each book (and resolves the author from
+``authors.json``) on the next deploy. Idempotent.
 
     DJANGO_DEBUG=true uv run python manage.py build_key_teachings                # all
     DJANGO_DEBUG=true uv run python manage.py build_key_teachings key-teachings-of-a-b-simpson
@@ -50,85 +36,31 @@ from __future__ import annotations
 
 import html
 import re
-from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
-import fitz
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.db.models import Max
 
 from library import english_audit
 from library.corrections import settled_chapter_body
-from library.ingest import clean_fragment, is_front_matter, word_count
-from library.management.commands.import_ochorus import _ends_sentence
+from library.ingest import clean_fragment, word_count
 from library.models import Author, Book, Chapter, Series
 from library.titlecase import recase_title
 
 DATA_DIR = Path(__file__).resolve().parent / "data" / "key-teachings"
-
-# De-hyphenation has to tell a syllable break ("rev-elation" → revelation) from a
-# real hyphenated compound that broke at its hyphen ("self-righteousness") — which
-# a dictionary alone can't do (web2 lacks inflections/proper nouns, so it would
-# wrongly keep "Simp-son's" etc.). For this closed 4-book corpus the answer is:
-# DROP by default, and enumerate the few real compounds that occur — the `self-*`
-# forms (all genuine here, so keep the hyphen unless the joined word is a known
-# CLOSED self-word) and number-word compounds ("twenty-five"). ("feeble-/minded"
-# once kept its hyphen here too, but it only occurs in 1 Thessalonians 5:14,
-# where the KJV reads "feebleminded".)
-_NUM_WORDS = {
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-    "eleven", "twelve", "twenty", "thirty", "forty", "fifty", "sixty", "seventy",
-    "eighty", "ninety", "hundred", "eighteenth", "nineteenth", "twentieth",
-}
-# self-words that are written CLOSED — a "self-" line break here is a syllable
-# break, so drop the hyphen ("self-ish" → "selfish"). Every other "self-" split
-# in this corpus is a real compound and keeps it.
-_SELF_CLOSED = {"selfish", "selfless", "selfsame", "selfhood"}
-
-
-def _dehyphenate(left: str, right: str) -> str:
-    """Join a line-break-hyphenated split (``left`` ends "word-", ``right`` opens
-    with the rest). Drop the hyphen — except for a real ``self-*`` or numeric
-    compound, where it is kept."""
-    m1 = re.search(r"([A-Za-z]+)-$", left)
-    m2 = re.match(r"([A-Za-z]+)", right)
-    if m1 and m2:
-        f1, f2 = m1.group(1), m2.group(1)
-        keep = (
-            (f1.lower() == "self" and (f1 + f2).lower() not in _SELF_CLOSED)
-            or f1.lower() in _NUM_WORDS
-        )
-        if keep:
-            return left + right  # the hyphen is already at the end of `left`
-    return left[:-1] + right
-
-# A chapter:verse reference — marks a small block as a kept epigraph citation
-# ("COLOSSIANS 2:9–10") rather than a running header ("2 THE KEY TEACHINGS OF …").
-_VERSE = re.compile(r"\d+\s*[:.]\s*\d+")
-_MASTHEAD = re.compile(r"key teachings of", re.I)
-_PROSE_END = re.compile(r"[.!?;:,]$")
-# A block that is nothing but a page number — arabic or roman, optionally with
-# stray punctuation. On a chapter's opening page this is set in the same size
-# band as the set-apart Scripture, so it must be recognised by content, not
-# size, and dropped as furniture without breaking the prose it sits inside.
-_BARE_NUM = re.compile(r"^[ivxlcdm\d]+[.)]?$", re.I)
-
 
 @dataclass(frozen=True)
 class Work:
     slug: str
     title: str
     subtitle: str
-    author_slug: str
-    source: str  # under DATA_DIR: a template PDF, or a Markdown manuscript
+    author_slug: str  # the person it is ABOUT — its subject, not its author
+    source: str  # the Markdown manuscript under DATA_DIR; its front matter
+    # carries the reader-visible description and "About this work"
     attribution: str
     cover_color: str
-    # Reader-visible copy. A Markdown manuscript carries both in its front
-    # matter, so the prose lives in one file; a PDF work states them here.
-    description: str = ""
-    about_html: str = ""  # "About this work" — carries the rights note
 
     @property
     def cover_url(self) -> str:
@@ -143,16 +75,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of A. B. Simpson",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="a-b-simpson",
-        source="a-b-simpson.pdf",
-        description=(
-            "A concise, faithful guide to the heart of A. B. Simpson's message — "
-            "the Fourfold Gospel of Christ our Saviour, Sanctifier, Healer, and "
-            "Coming King, and the single theme beneath it all: not the blessing "
-            "but the Blesser, Christ Himself. Eighteen short chapters, each ending "
-            "in questions and a prayer, written by Ochorus as a companion to "
-            "Simpson's own public-domain works — which readers are warmly "
-            "encouraged to go to directly."
-        ),
+        source="a-b-simpson.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus — not published by, affiliated with, or endorsed by The "
@@ -163,43 +86,13 @@ WORKS: dict[str, Work] = {
             "Version."
         ),
         cover_color="#1f5468",
-        about_html=(
-            "<p>This is not a book by A. B. Simpson. It is a companion to him — an "
-            "independent work of exposition and appreciation, written by Ochorus, "
-            "that gathers the heart of his teaching into eighteen short chapters "
-            "for the ordinary reader.</p>"
-            "<p>Simpson's one theme was Christ Himself. Behind the Fourfold Gospel "
-            "— Christ our Saviour, Sanctifier, Healer and Coming King — lay a "
-            "single discovery he never tired of pressing: that the Christian life "
-            "is not the pursuit of a blessing, an experience or a gift, but the "
-            "possession of a Person. Once it was the blessing, he sang, now it is "
-            "the Lord. This volume follows that thread through his life, his "
-            "deeper-life teaching, and his understanding of faith, prayer and "
-            "mission, and it ends each chapter where he would have wanted it to "
-            "end: in a few questions and a prayer.</p>"
-            "<p>Simpson's own writings are in the public domain and freely "
-            "available, and every chapter here names them so the reader can go to "
-            "the source. This companion is offered only to open the door. It "
-            "quotes Scripture from the Authorised (King James) Version, the Bible "
-            "Simpson preached from, and makes no claim to stand in for the man's "
-            "own unhurried, Christ-filled pages.</p>"
-        ),
     ),
     "key-teachings-of-jonathan-edwards": Work(
         slug="key-teachings-of-jonathan-edwards",
         title="The Key Teachings of Jonathan Edwards",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="jonathan-edwards",
-        source="jonathan-edwards.pdf",
-        description=(
-            "A concise, faithful guide to the mind and heart of Jonathan Edwards "
-            "— the sovereignty and the beauty of God, true religion as holy "
-            "affections, and the end for which God created the world: His own "
-            "glory, delighted in by His creatures. Eighteen short chapters, each "
-            "ending in questions and a prayer, written by Ochorus as a companion "
-            "to Edwards's own public-domain works, which readers are warmly "
-            "encouraged to go to directly."
-        ),
+        source="jonathan-edwards.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Jonathan Edwards's own writings are in the public domain "
@@ -208,43 +101,13 @@ WORKS: dict[str, Work] = {
             "the version Edwards preached from."
         ),
         cover_color="#2f4a34",
-        about_html=(
-            "<p>This is a companion to Jonathan Edwards, not a book by him. "
-            "Written by Ochorus, it distils the thought of America's greatest "
-            "theologian into eighteen short chapters an ordinary reader can "
-            "carry.</p>"
-            "<p>Edwards saw further into the greatness and beauty of God than "
-            "almost anyone who has written in English, and he bent the whole "
-            "force of a formidable mind to a single end: that God might be seen as "
-            "supremely glorious and enjoyed as supremely good. This volume traces "
-            "that vision through his most important works — the sovereignty of "
-            "God, the beauty of holiness, true religion as holy affections, the "
-            "end for which God created the world — and through the sterner texts, "
-            "like the sermon on sinners in the hands of an angry God, that people "
-            "remember and misremember. Each chapter closes in questions and a "
-            "prayer, because Edwards held that truth unfelt and unobeyed has not "
-            "yet been truly known.</p>"
-            "<p>Edwards's own writings are in the public domain and freely "
-            "available, and this companion names them throughout so the reader may "
-            "go to the source. It quotes Scripture from the Authorised (King "
-            "James) Version, the Bible Edwards preached from, and is offered only "
-            "to open the door to the man's own pages.</p>"
-        ),
     ),
     "key-teachings-of-richard-baxter": Work(
         slug="key-teachings-of-richard-baxter",
         title="The Key Teachings of Richard Baxter",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="richard-baxter",
-        source="richard-baxter.pdf",
-        description=(
-            "A concise, faithful guide to the pastoral heart of Richard Baxter — "
-            "the saints' everlasting rest, the call to the unconverted, and the "
-            "minister's charge to take heed to himself and to all the flock. "
-            "Eighteen short chapters, each ending in questions and a prayer, "
-            "written by Ochorus as a companion to Baxter's own public-domain "
-            "works, which readers are warmly encouraged to go to directly."
-        ),
+        source="richard-baxter.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Richard Baxter's own writings are in the public domain; his "
@@ -254,43 +117,13 @@ WORKS: dict[str, Work] = {
             "Version."
         ),
         cover_color="#5b2f2a",
-        about_html=(
-            "<p>This is a companion to Richard Baxter, not a book by him. Written "
-            "by Ochorus, it renders the pastoral wisdom of the great Puritan of "
-            "Kidderminster into eighteen short chapters in plain modern "
-            "English.</p>"
-            "<p>Baxter wrote, by his own account, as a dying man to dying men, and "
-            "the urgency never left him. Out of a lifetime of sickness and labour "
-            "came books the church has never let go of: The Saints' Everlasting "
-            "Rest, on the heaven the weary are travelling toward; A Call to the "
-            "Unconverted, pressed on the careless with tears; and The Reformed "
-            "Pastor, still the most searching book a minister can read about his "
-            "own soul. This volume follows those themes and more — conversion, "
-            "family religion, the crucifying of the world, counsel for the "
-            "melancholy, peace among Christians — and ends each chapter, as Baxter "
-            "would, in self-examination and prayer.</p>"
-            "<p>Baxter's own writings are in the public domain and freely "
-            "available. Because his seventeenth-century English can be heavy "
-            "going, this companion renders his thought into modern prose rather "
-            "than quoting it, and names his works throughout so the reader may go "
-            "to the source. Scripture is quoted from the Authorised (King James) "
-            "Version.</p>"
-        ),
     ),
     "key-teachings-of-watchman-nee": Work(
         slug="key-teachings-of-watchman-nee",
         title="The Key Teachings of Watchman Nee",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="watchman-nee",
-        source="watchman-nee.pdf",
-        description=(
-            "A concise, faithful guide to the heart of Watchman Nee's ministry — "
-            "the normal Christian life as Christ living in the believer, the "
-            "finished work of the cross, and the way of the overcomers. Eighteen "
-            "short chapters, each ending in questions and a prayer, written by "
-            "Ochorus as an independent companion to Nee's ministry, naming his "
-            "books for the reader's own further study."
-        ),
+        source="watchman-nee.md",
         # Nee's own works are NOT public domain — this companion quotes only the
         # KJV and paraphrases; the disavowal below is essential and must ship.
         attribution=(
@@ -304,35 +137,13 @@ WORKS: dict[str, Work] = {
             "(King James) Version."
         ),
         cover_color="#2a3a5e",
-        about_html=(
-            "<p>This is a companion to Watchman Nee, not a book by him. Written by "
-            "Ochorus, it sets out in eighteen short chapters the teaching for "
-            "which Nee is chiefly remembered — the normal Christian life as Christ "
-            "living in the believer, the finished work of the cross, the release "
-            "of the spirit through the breaking of the outer man, and the way of "
-            "the overcomers.</p>"
-            "<p>It is important to be clear about what this book is and is not. It "
-            "is an independent work of exposition, summary and appreciation. It is "
-            "not published by, affiliated with, or endorsed by any organisation "
-            "that holds rights in the writings of Watchman Nee. All descriptions "
-            "of his teaching are the present author's own summaries; his books and "
-            "spoken ministry are named only for the reader's further study, and "
-            "readers are warmly encouraged to obtain those works from their "
-            "rightful publishers. Nothing of Nee's own text is reproduced here — "
-            "only Scripture, quoted from the Authorised (King James) Version, and "
-            "Ochorus's account of what he taught.</p>"
-            "<p>Nee taught, more insistently than almost anyone, that no servant "
-            "of God is to be looked at. The right response to his ministry is not "
-            "admiration but obedience — not to him, but to the Lord he spent his "
-            "life trying to describe.</p>"
-        ),
     ),
     "key-teachings-of-charles-h-spurgeon": Work(
         slug="key-teachings-of-charles-h-spurgeon",
         title="The Key Teachings of Charles H. Spurgeon",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="charles-h-spurgeon",
-        source="charles-h-spurgeon.md",  # description + about in its front matter
+        source="charles-h-spurgeon.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by the Metropolitan "
@@ -347,7 +158,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Andrew Murray",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="andrew-murray",
-        source="andrew-murray.md",  # description + about in its front matter
+        source="andrew-murray.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Andrew Murray's own writings are in the public domain "
@@ -361,7 +172,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Hannah Whitall Smith",
         subtitle="An Ochorus companion to her life and teaching",
         author_slug="hannah-whitall-smith",
-        source="hannah-whitall-smith.md",  # description + about in its front matter
+        source="hannah-whitall-smith.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Hannah Whitall Smith's own writings are in the public domain "
@@ -375,7 +186,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Catherine Booth",
         subtitle="An Ochorus companion to her life and teaching",
         author_slug="catherine-booth",
-        source="catherine-booth.md",  # description + about in its front matter
+        source="catherine-booth.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by The Salvation "
@@ -390,7 +201,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Augustine of Hippo",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="augustine-of-hippo",
-        source="augustine-of-hippo.md",  # description + about in its front matter
+        source="augustine-of-hippo.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Augustine wrote in Latin; where his words are quoted, it is in "
@@ -405,7 +216,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Amanda Berry Smith",
         subtitle="An Ochorus companion to her life and teaching",
         author_slug="amanda-berry-smith",
-        source="amanda-berry-smith.md",  # description + about in its front matter
+        source="amanda-berry-smith.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Amanda Berry Smith's own writings are in the public "
@@ -420,7 +231,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Hudson Taylor",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="hudson-taylor",
-        source="hudson-taylor.md",  # description + about in its front matter
+        source="hudson-taylor.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. "
@@ -436,7 +247,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Athanasius of Alexandria",
         subtitle="An Ochorus companion to his life and teaching",
         author_slug="athanasius-of-alexandria",
-        source="athanasius-of-alexandria.md",  # description + about in its front matter
+        source="athanasius-of-alexandria.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. "
@@ -452,7 +263,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Julia A. J. Foote",
         subtitle="An Ochorus companion to her life and teaching",
         author_slug="julia-foote",
-        source="julia-foote.md",  # description + about in its front matter
+        source="julia-foote.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. Julia A. J. Foote's own writings are in the public "
@@ -467,7 +278,7 @@ WORKS: dict[str, Work] = {
         title="The Key Teachings of Jeanne Guyon",
         subtitle="An Ochorus companion to her life and teaching",
         author_slug="jeanne-guyon",
-        source="jeanne-guyon.md",  # description + about in its front matter
+        source="jeanne-guyon.md",
         attribution=(
             "An independent work of exposition, summary and appreciation by "
             "Ochorus. "
@@ -783,135 +594,8 @@ WORKS: dict[str, Work] = {
 }
 
 
-def _block_text(block: dict) -> str:
-    """Assemble a PyMuPDF block's text, de-hyphenating end-of-line splits.
-
-    PyMuPDF emits one entry per line; a justified line often ends on a soft
-    hyphen ("Simp-" / "son's"), so a naive join yields "Simp- son's". Join
-    line-by-line: a line ending in a letter+hyphen concatenates the next with no
-    space and no hyphen ("Simpson's"); otherwise lines join with a space. A
-    mid-line hyphen (a real compound, "deeper-life") is untouched.
-    """
-    parts: list[str] = []
-    for line in block.get("lines", []):
-        text = "".join(s["text"] for s in line.get("spans", [])).strip()
-        if not text:
-            continue
-        if parts and re.search(r"[A-Za-z]-$", parts[-1]):
-            parts[-1] = _dehyphenate(parts[-1], text)  # line-break split
-        else:
-            parts.append(text)
-    return re.sub(r"\s+", " ", " ".join(parts)).strip()
-
-
-def blocks_with_bold(pdf_bytes: bytes) -> tuple[list[tuple[str, float, bool]], float]:
-    """Return ([(text, max_font_size, is_bold), …], modal_body_size)."""
-    doc = fitz.open(stream=pdf_bytes, filetype="pdf")
-    out: list[tuple[str, float, bool]] = []
-    sizes: Counter[int] = Counter()
-    for page in doc:
-        for b in page.get_text("dict").get("blocks", []):
-            if b.get("type") != 0:  # skip images
-                continue
-            spans = [s for line in b.get("lines", []) for s in line.get("spans", [])]
-            if not spans:
-                continue
-            text = _block_text(b)
-            if not text:
-                continue
-            size = max(s["size"] for s in spans)
-            bold = all((s["flags"] & 16) or ("bold" in s["font"].lower()) for s in spans)
-            for s in spans:
-                sizes[round(s["size"])] += max(1, len(s["text"].strip()))
-            out.append((text, size, bold))
-    doc.close()
-    body = float(sizes.most_common(1)[0][0]) if sizes else 10.0
-    return out, body
-
-
-def _kind(size: float, body: float) -> str:
-    if size >= body * 1.11:
-        return "head"
-    if size >= body * 0.90:
-        return "prose"
-    if size >= body * 0.72:
-        return "quote"
-    return "small"
-
-
-def _merge_prose(paras: list[str]) -> list[str]:
-    """Rejoin prose paragraphs the PDF split across a page/column break.
-
-    Like ``import_ochorus._merge_paragraphs`` (a block that doesn't end a
-    sentence continues the previous), but a fragment ending on a hyphen is a
-    word broken across the break ("Chris-" / "tians") — drop the hyphen and join
-    with no space, matching the in-block de-hyphenation in ``_block_text``.
-    """
-    out: list[str] = []
-    for p in paras:
-        if out and not _ends_sentence(out[-1]):
-            if re.search(r"[A-Za-z]-$", out[-1]):
-                out[-1] = _dehyphenate(out[-1], p)
-            else:
-                out[-1] = f"{out[-1]} {p}".strip()
-        else:
-            out.append(p)
-    return out
-
-
-def _segment_html(seg: list[tuple[str, float, bool]], body: float) -> str:
-    """Render one chapter's blocks into ``<p>/<h2>/<blockquote>`` HTML.
-
-    ``prose`` buffers consecutive prose paragraphs (rejoined across page-break
-    furniture); ``quote`` buffers a set-apart Scripture block plus its citation.
-    Each is flushed when a boundary of a different kind arrives.
-    """
-    parts: list[tuple[str, str]] = []
-    prose: list[str] = []
-    quote: list[str] = []
-
-    def flush_prose() -> None:
-        parts.extend(("p", p) for p in _merge_prose(prose))
-        prose.clear()
-
-    def flush_quote() -> None:
-        if quote:
-            parts.append(("blockquote", " ".join(quote)))
-            quote.clear()
-
-    for text, size, bold in seg:
-        if _BARE_NUM.match(text):
-            continue  # a lone page number — drop, and don't break the prose
-        kind = _kind(size, body)
-        if kind == "small":
-            if _VERSE.search(text) and not _MASTHEAD.search(text):
-                if quote:
-                    quote.append(text)
-                else:
-                    flush_prose()
-                    parts.append(("blockquote", text))
-            # else: running header / marker / stray → drop
-            continue
-        if kind == "quote":
-            flush_prose()
-            flush_quote()
-            quote.append(text)
-            continue
-        # prose or bold subheading
-        flush_quote()
-        if bold and 1 <= len(text.split()) <= 10 and not _PROSE_END.search(text):
-            flush_prose()
-            parts.append(("h2", text))
-        else:
-            prose.append(text)
-    flush_quote()
-    flush_prose()
-    return "".join(f"<{tag}>{html.escape(t)}</{tag}>" for tag, t in parts)
-
-
-# A Markdown manuscript — the source for volumes written after the PDF template
-# (Spurgeon onward). Its grammar is the PDF's structure, stated rather than
-# inferred from font sizes:
+# A Markdown manuscript — the source of every volume. Its grammar is the shape
+# the first volumes' PDF template set, stated rather than inferred:
 #
 #     ---                         front matter: `description: <one line>` and
 #     description: …              `about: |` then indented paragraphs, blank-
@@ -921,7 +605,7 @@ def _segment_html(seg: list[tuple[str, float, bool]], body: float) -> str:
 #     # Chapter Title             -> a chapter boundary
 #     ## A subheading             -> <h2>
 #     ### A PRAYER                -> <blockquote>A PRAYER</blockquote>, the
-#                                    set-apart label the PDF volumes carry
+#                                    series' set-apart label
 #     > Words. PSALM 73:25        -> one <blockquote> per line (Scripture, or a
 #                                    line of the closing prayer)
 #     1. An application point     -> its own <p>
@@ -1010,21 +694,6 @@ def manuscript(text: str) -> tuple[dict[str, str], list[tuple[str, str]]]:
     return meta, chapters
 
 
-def chapters_from_pdf(pdf_bytes: bytes) -> list[tuple[str, str]]:
-    """Split the PDF into (title, body_html) chapters, front matter dropped."""
-    blocks, body = blocks_with_bold(pdf_bytes)
-    starts = [i for i, (_t, s, _b) in enumerate(blocks) if _kind(s, body) == "head"]
-    chapters: list[tuple[str, str]] = []
-    for j, idx in enumerate(starts):
-        end = starts[j + 1] if j + 1 < len(starts) else len(blocks)
-        title = recase_title(re.sub(r"\s+", " ", blocks[idx][0]).strip(" .:-"))
-        body_html = _segment_html(blocks[idx + 1:end], body)
-        if is_front_matter(title) or _MASTHEAD.search(title) or word_count(body_html) < 120:
-            continue  # title page, disclaimer, contents, or a stub
-        chapters.append((title[:300], body_html))
-    return chapters
-
-
 class Command(BaseCommand):
     help = "Build the Key Teachings of … study-companion series."
 
@@ -1047,20 +716,18 @@ class Command(BaseCommand):
         path = DATA_DIR / work.source
         if not path.exists():
             raise CommandError(f"missing source: {path}")
-        author = Author.objects.get(slug=work.author_slug)  # exists in authors.json
-        if path.suffix == ".md":
-            meta, chapters = manuscript(path.read_text(encoding="utf-8"))
-        else:
-            meta, chapters = {}, chapters_from_pdf(path.read_bytes())
-        description = work.description or meta.get("description", "")
-        about_html = work.about_html or meta.get("about_html", "")
+        subject = Author.objects.get(slug=work.author_slug)  # exists in authors.json
+        meta, chapters = manuscript(path.read_text(encoding="utf-8"))
+        description = meta.get("description", "")
+        about_html = meta.get("about_html", "")
         if not (description and about_html):
             raise CommandError(f"{work.slug}: no description / about — aborted.")
         if len(chapters) < 3:
             raise CommandError(f"{work.slug}: only {len(chapters)} chapters — aborted.")
 
         content = {
-            "author": author,
+            "author": Author.objects.get(slug="ochorus-originals"),
+            "cover_byline": subject.name,
             "title": work.title,
             "subtitle": work.subtitle,
             "description": description,

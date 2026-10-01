@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { hubPath } from '$lib/hubs';
 	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
@@ -53,6 +54,10 @@
 
 	let { data } = $props();
 	const author = $derived<AuthorDetail>(data.author);
+	// The books they are found in, split by whether they are the book's lone
+	// subject (`about`, from the API): a life of them heads its own section.
+	const booksAbout = $derived((author.appears_in ?? []).filter((b) => b.about));
+	const appearsIn = $derived((author.appears_in ?? []).filter((b) => !b.about));
 
 	// The biography reads like any other long-form work here: <Reader> owns the
 	// prose and everything that has to know about it (resume point, highlights
@@ -443,6 +448,14 @@
 				{#each summaryBits as bit, i (i)}{#if i > 0}<span class="opacity-50">{' · '}</span>{/if}{bit}{/each}
 			</p>
 		{/if}
+		<!-- The writer's traditions and place, each a hub page of writers like them. -->
+		{#if author.hubs?.length}
+			<ul class="mt-3 flex flex-wrap gap-2">
+				{#each author.hubs as h (h.slug)}
+					<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+				{/each}
+			</ul>
+		{/if}
 		</div>
 	</header>
 
@@ -690,14 +703,33 @@
 		</section>
 	{/if}
 
+	<!-- Books about them: a work whose lone subject they are (a Portraits of
+	     Courage life, a Key Teachings companion). They did not write it — its
+	     author is Ochorus Originals, which showAuthor says — but it is the next
+	     thing a reader of their page wants, so it follows their own work rather
+	     than waiting among the anthologies below. -->
+	{#if booksAbout.length}
+		<section id="about-them" class="jump-anchor mx-auto mt-12 max-w-[40rem]">
+			<h2 class="section-heading">
+				{t('author.booksAbout')} {author.name}
+				<span class="text-small font-normal count">({booksAbout.length})</span>
+			</h2>
+			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
+				{#each booksAbout as book (book.slug)}
+					<BookCard {book} showAuthor />
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- Also appears in: books this person is FOUND IN but did not write
-	     (BookPerson) — an anthology or a life that features them. Book cards, not
-	     person cards, and showAuthor so it's clear whose work it is. -->
-	{#if author.appears_in?.length}
+	     (BookPerson) — an anthology that features them. Book cards, not person
+	     cards, and showAuthor so it's clear whose work it is. -->
+	{#if appearsIn.length}
 		<section class="mx-auto mt-12 max-w-[40rem]">
 			<h2 class="section-heading">{t('author.appearsIn')}</h2>
 			<div class="grid grid-cols-2 gap-5 sm:grid-cols-3">
-				{#each author.appears_in as book (book.slug)}
+				{#each appearsIn as book (book.slug)}
 					<BookCard {book} showAuthor />
 				{/each}
 			</div>

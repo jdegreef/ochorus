@@ -1758,14 +1758,26 @@ with the famous later one — what is already there vs what first appears decade
 later is the honest spine of the book, and it catches legends the live bio
 repeats (spin a bio-fix task when it does).
 
-**A biography ABOUT a person is filed under that person as the author**, with
-the real author/description in the `subtitle` — NOT under `ochorus-originals`
-and NOT crediting the subject as if they wrote it. Precedent: `susanna-wesley-
-clarke` (Eliza Clarke's life of Susanna Wesley) sits on the `susanna-wesley`
-author page, subtitle "A Biography by Eliza Clarke". So "make this a book for
-X" → author `X`, subtitle carries the descriptive line. (Contrast the
-`ochorus-originals` bio *collections* — many subjects in one volume — which are
-their own author with per-chapter subject links.) *(watchman-nee-a-life, 2026-09)*
+**A book the HOUSE wrote about ONE person is BY `ochorus-originals`, and ABOUT
+them** — a Portraits of Courage life, a Key Teachings companion, any future
+single-subject Original. Three pieces, all required (`tests_originals_series.py`
+fails a volume missing any):
+  - `author` = `["ochorus-originals"]` — the subject did not write it. (Until
+    2026-09-30 these were filed under the subject, which credited Nee with his
+    own biography in the byline, the author page and schema.org.)
+  - `cover_byline` = the subject's name (e.g. `"Watchman Nee"`) on EVERY
+    language row — the cover still names who it is about across the top; blank
+    would print "Ochorus Originals" there. `translate_book` copies it.
+  - a `book_people_seed.BOOK_PEOPLE` entry making them the book's LONE
+    `"subject"` — that is what files it under "Books about X" on their author
+    page (a book with several subjects stays under "Also appears in"). The seed
+    SKIPS a subject with no `Author` row on prod — and a book by the imprint no
+    longer creates one — so a subject with no work or bio of their own yet needs
+    one first (write-biography skill).
+A PUBLIC-DOMAIN biography by a third party with no author row of their own
+(`susanna-wesley-clarke`, Eliza Clarke's life of Susanna Wesley) is the one case
+still filed under its subject, with the real author in the `subtitle`.
+*(watchman-nee-a-life 2026-09; moved to the imprint 2026-09-30)*
 
 **An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
 filed under the `ochorus-originals` imprint with NO schema change.** The shelf is
@@ -1816,7 +1828,7 @@ boundary. Confirm it's environmental by loading an existing book (it 500s too),
 then verify via the API JSON (`/api/library/books/<slug>/`) + the backend gates
 instead of chasing a screenshot. *(growing-in-wisdom, 2026-09-16)*
 
-**The "Key Teachings of …" study-companion series (`build_key_teachings`).** These
+**The "Key Teachings of …" study-companion series (`build_key_teachings`).** (HISTORY: the first four were built from PDFs until 2026-09-30; every volume is now a Markdown manuscript — see below.) These
 are Ochorus's OWN house-written expositions ABOUT a classic teacher — not the
 author's text — one shared 89-page digital-PDF template: title page, disclaimer,
 Introduction, a titled biographical narrative, eighteen `CHAPTER N` chapters (each
@@ -1825,8 +1837,9 @@ design is the point: quoting only the KJV and naming (never reproducing) the
 author's works lets the series safely cover a STILL-COPYRIGHTED author (Watchman
 Nee) as well as PD ones (Simpson, Edwards, Baxter) — QA every chapter to confirm
 no in-copyright prose is quoted before shipping a copyrighted-author volume.
-Filed under the SUBJECT as author with the Ochorus line in `subtitle`
-(per the rule above); `source_type` has no house value so it ships `public_domain`
+Filed BY `ochorus-originals` with the subject in `cover_byline` and
+`BOOK_PEOPLE` (per the rule above — `build_key_teachings` sets the first two from
+`Work.author_slug`; add the `BOOK_PEOPLE` line by hand); `source_type` has no house value so it ships `public_domain`
 with the rights note in `attribution`. Committed source PDFs live in
 `data/key-teachings/` (Ochorus's own prose, unfetchable). Why NOT `import_pdf`:
 the generic PDF path mishandles this typographically rich source three ways, so
@@ -1946,8 +1959,18 @@ point at `(book_slug, chapter_order, paragraph_index)`. Have the editor write an
 old→new chapter map; `0170_reshape_key_teachings` (+ `migrations/data/
 key_teachings_reshape.json`) rebuilds from the fixture while the live book still
 has its old shape and moves every reader row, re-finding each paragraph by exact
-text (rewritten ones fall to the nearest surviving paragraph). Leave volumes with
-a reading plan (the first four, "Four Teachers") alone unless the plan moves too.
+text (rewritten ones fall to the nearest surviving paragraph). A volume inside a
+curated reading plan needs the plan moved too: `seed_plans` never re-syncs an
+existing plan's days, and `PlanProgress.done` holds day NUMBERS —
+`0172_reshape_first_key_teachings` rebuilds the plan's days and renumbers done
+days (merged → done only if all its old days were; a new chapter → done if read
+past on both sides). Renumbering plan days IN PLACE is unsafe: `done` unions
+across devices and each device re-sends its whole cached list, so a stale device
+re-ticks old numbers under the new ones. Move the plan to a NEW slug (0172
+`RENAMES`), migrate the device cache (`frontend/src/lib/planMoves.ts`) and 301
+the old URL in render.yaml. All 32 volumes are now Markdown manuscripts; the first
+four's PDFs were converted text-for-text (their Scripture corrections baked in
+and removed from corrections.py) and the PDF reader deleted.
 
 **A HOUSE-WRITTEN original collection (no source at all) → a `build_<name>` that
 holds the original prose as committed module constants**, exactly like the

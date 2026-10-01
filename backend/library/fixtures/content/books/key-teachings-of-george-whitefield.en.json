@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "george-whitefield"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-george-whitefield",
   "language": "en",
   "title": "The Key Teachings of George Whitefield",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "George Whitefield",
   "description": "A concise, faithful guide to the heart of George Whitefield’s preaching — the new birth, the method of grace, Christ our righteousness, the indwelling Spirit, the almost Christian, the open field and the free offer of Christ to all — and to the single conviction beneath it: that religion is a work of God in the heart. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Whitefield’s own public-domain sermons, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by George Whitefield. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his preaching into fourteen short chapters for the ordinary reader, with a chapter on his life, a conclusion and a guide to his writings and the best books about him.</p><p>Whitefield preached one thing in a thousand places: that true religion is not an outward form but an inward change, wrought by the Spirit of God, which joins a sinner to Christ and clothes him in Christ’s righteousness. You must be born again. From that single conviction came everything else — his warnings against the almost Christian and the unconverted minister, his walk into the open fields, his offer of Christ to colliers and slaves and gentry alike, his counsel on prayer, Scripture and family worship, and his friendship with a man he could not agree with. This volume follows that thread through his own sermons, and it says plainly where he must not be followed, above all in his campaign for slavery in Georgia and his ownership of enslaved people at Bethesda.</p><p>Whitefield’s own writings are in the public domain and freely available, and every chapter here names the sermons it draws on so the reader can go to the source; his Selected Sermons, fifty-nine in all, are in the Ochorus library. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and it makes no claim to stand in for the voice that once reached twenty thousand people in a field.</p>",
   "qa": [],

@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "catherine-booth"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-catherine-booth",
   "language": "en",
   "title": "The Key Teachings of Catherine Booth",
   "subtitle": "An Ochorus companion to her life and teaching",
+  "cover_byline": "Catherine Booth",
   "description": "A concise, faithful guide to the heart of Catherine Booth’s message — that godliness is a real power and not a respectable form, that it must be had in the heart and carried to the people, and that God may send whom He will to carry it. Nineteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Catherine Booth’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Catherine Booth. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into nineteen short chapters for the ordinary reader, and tells the story of the life that gave that teaching its force.</p><p>Her one theme was reality. She had no patience with a religion of forms, creeds and pleasant feelings that left the heart unchanged and the streets unreached. She wanted the thing itself: a repentance that really let go of sin, a faith that really committed the whole person to Christ, a holiness that really cleansed, and a love that really went out after the lost, whatever it cost in comfort or reputation. This volume follows that thread through her life, her teaching on salvation and the Holy Spirit, her defence of women’s preaching, her counsel to parents, and her campaigns against the evils of her day. It weighs her fairly where she pressed too hard, and it ends each chapter where she would have wanted it to end: in a few questions and a prayer.</p><p>Catherine Booth’s own writings are in the public domain and freely available, and every chapter here names them so the reader can go to the source. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, the Bible she read through many times as a girl and preached from all her life, and it makes no claim to stand in for her own direct and searching words.</p>",
   "qa": [],

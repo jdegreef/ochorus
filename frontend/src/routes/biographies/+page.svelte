@@ -3,7 +3,8 @@
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
+	import { fullLifeDiscriminates, type AuthorBio, type BookSummary, type Hub } from '$lib/library-public';
+	import { hubPath, placeGroups } from '$lib/hubs';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -28,6 +29,9 @@
 	const authors = $derived<AuthorBio[]>(data.authors);
 	const loadError = $derived<boolean>(data.loadError);
 	const books = $derived<BookSummary[]>(data.books ?? []);
+	const hubs = $derived<Hub[]>(data.hubs ?? []);
+	const traditions = $derived(hubs.filter((h) => h.kind === 'tradition'));
+	const places = $derived(placeGroups(hubs));
 
 	// Group the library's books by author slug for the per-writer cover strip.
 	const booksByAuthor = $derived.by(() => {
@@ -325,6 +329,42 @@
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
 	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
+
+	<!-- Browse by tradition / place: the hub pages (/biographies/tradition|place/).
+	     Hidden while filtering — the list below is then the answer. -->
+	{#if hubs.length && !isFiltered}
+		<nav class="mb-8 flex flex-col gap-5" aria-label={t('bios.eyebrow')}>
+			{#if traditions.length}
+				<div>
+					<h2 class="section-label mb-2.5">{t('hubs.byTradition')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each traditions as h (h.slug)}
+							<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
+			{#if places.length}
+				<div>
+					<h2 class="section-label mb-2.5">{t('hubs.byPlace')}</h2>
+					<ul class="flex flex-col gap-2">
+						{#each places as g (g.region?.slug ?? '')}
+							<li class="flex flex-wrap items-center gap-2">
+								{#if g.region}
+									<a class="tag font-semibold" href={localizeHref(hubPath(g.region))}>{g.region.label}</a>
+								{:else}
+									<span class="text-small text-muted">{t('hubs.elsewhere')}</span>
+								{/if}
+								{#each g.places as h (h.slug)}
+									<a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a>
+								{/each}
+							</li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
+		</nav>
+	{/if}
 
 	<!-- Controls + A–Z, pinned under the app nav (which is itself sticky, hence
 	     the --appnav-h offset). With one writer per row the list is 35 screens

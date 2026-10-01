@@ -89,6 +89,8 @@ class Command(TranslateCommand):
                     # right hue in the meantime.
                     "cover_url": cover_path(slug, language)[0],
                     "cover_color": source.cover_color,
+                    # A name, not prose: the same in every edition.
+                    "cover_byline": source.cover_byline,
                     # pdf_url deliberately left empty: the PDF is the English
                     # edition and would mislead on a translated book page.
                     "sort_order": source.sort_order,

@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { PLANS_KEY as KEY } from './reading-schema';
+import { applyPlanMoves } from './planMoves';
 
 /**
  * Reading-plan progress: which plans the reader started and which days they've
@@ -31,6 +32,16 @@ class PlanProgress {
 		// The cache can be replaced/emptied underneath us (sign-out wipe, sign-in
 		// merge) — re-derive open plan views when that happens.
 		if (browser) window.addEventListener('ochorus:sync', () => this.ticks++);
+		if (browser) this.#applyMoves();
+	}
+
+	/** Carry progress on a retired plan slug to its successor (see planMoves). */
+	#applyMoves() {
+		const store = readAll();
+		const moved = applyPlanMoves(store);
+		if (!moved.length) return;
+		writeJSON(KEY, store);
+		for (const slug of moved) readingSync.pushPlan(slug, store[slug]);
 	}
 
 	/** Persist the store and mirror the ONE plan that changed to the account.

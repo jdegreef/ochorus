@@ -205,7 +205,9 @@ function needTwins() {
 				// one the manifest digests, which `tests_fixture` recomputes.
 				title: coverTitle(fields),
 				subtitle: fields.subtitle || '',
-				author: author.name,
+				// The byline the cover sets (`BookCover`): the person a book is
+				// about when it names one, else its author.
+				author: fields.cover_byline || author.name,
 				// The card is set in the style the cover is set in — one table, read
 				// from the app's own module rather than restated here.
 				style: coverStyleFor(eraOf(author.birth_year), author.slug, fields.slug),

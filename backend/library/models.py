@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from django.contrib.postgres.search import SearchVectorField
 from django.db import models
-from django.db.models import Subquery
+from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
@@ -61,6 +61,37 @@ class AuthorQuerySet(models.QuerySet):
         return self.annotate(
             num_books=published_count("Book", "author"),
             num_sermons=published_count("Sermon", "author"),
+        )
+
+    def listed_in_biographies(self, language: str):
+        """The writers the Biographies page lists in ``language``.
+
+        A real person (not an imprint) who hasn't been withheld from the shelf,
+        with a published book or sermon in ``language`` or a bio a reader of it
+        can read — the source-language bio, or a translation. The hub pages list
+        the same set, so a writer on a hub is one the biographies page shows too.
+
+        Every test is an ``Exists()``: no join fans the rows out (the join to
+        ``translations`` once forced a ``.distinct()`` over every column, the
+        bio HTML included), and nothing is counted — a caller that shows the
+        counts adds ``with_work_counts``.
+        """
+        from django.apps import apps
+
+        def published(model_name: str):
+            return Exists(
+                apps.get_model("library", model_name).objects.filter(
+                    author=OuterRef("pk"), is_published=True, language=language
+                )
+            )
+
+        translated_bio = Exists(
+            AuthorTranslation.objects.filter(author=OuterRef("pk"), language=language)
+            .exclude(bio="", bio_html="")
+        )
+        own_bio = Q(original_language=language) & (~Q(bio="") | ~Q(bio_html=""))
+        return self.filter(is_imprint=False, list_in_biographies=True).filter(
+            published("Book") | published("Sermon") | own_bio | translated_bio
         )
 
 
@@ -459,6 +490,14 @@ class Book(models.Model):
     # Per-language like every other row field; `translate_book` leaves it blank,
     # so a translation sets its own full title until someone gives it a short one.
     cover_title = models.CharField(max_length=120, blank=True)
+    # The name a cover sets as its BYLINE when that is not the author's: a book
+    # the house wrote ABOUT one person (a Key Teachings companion, a Portraits of
+    # Courage life) is by Ochorus Originals, yet its cover names the person it is
+    # about, as it always has. Blank = the author's name. Cover-only, like
+    # ``cover_title``: the card's author line, the book page and the schema.org
+    # author all keep ``author``. Names are one row for every language (``Author``
+    # has none per language), so ``translate_book`` copies it.
+    cover_byline = models.CharField(max_length=120, blank=True)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     description = models.TextField(blank=True)
     # Long-form "About this work" as cleaned HTML, the twin of Author.bio_html

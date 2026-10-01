@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "ignatius-of-antioch"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-ignatius-of-antioch",
   "language": "en",
   "title": "The Key Teachings of Ignatius of Antioch",
   "subtitle": "An Ochorus companion to his life and teaching",
+  "cover_byline": "Ignatius of Antioch",
   "description": "A concise, faithful guide to the heart of Ignatius of Antioch’s teaching — Christ truly born, crucified and risen, the Lord’s Supper as the medicine of immortality, one church gathered around one table, faith as the beginning and love as the end, and a disciple’s courage on the road to death. Eleven short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Ignatius’s own public-domain letters, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Ignatius of Antioch. It is a companion to him — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of his teaching into eleven short chapters for the ordinary reader. It is a shorter volume than others in this series, and deliberately so: everything Ignatius left us is seven brief letters, written in a few weeks, probably between 107 and 110, while he was taken under guard from Antioch to die at Rome. Very little else is known of his life, and this book does not pretend otherwise.</p><p>Ignatius’s one great conviction was that Jesus Christ is real — truly born, truly crucified, truly raised in the flesh — and that the Christian life must therefore be real too. From that conviction came his defence of Christ’s humanity against those who said He only seemed to suffer, his reverence for the Lord’s table, his passion for the unity of the church, his gentleness, his prayer for the whole world, and his courage in the face of death. This volume follows that thread, and it is honest about where he must be read with care: his longing for martyrdom, his strong language about bishops, and his sharp words against Judaizing.</p><p>Ignatius’s letters are in the public domain and freely available; the seven genuine letters are in the Ochorus library in J. B. Lightfoot’s translation, and every quotation from Ignatius here is taken from that edition. This companion is offered only to open the door. It quotes Scripture from the Authorised (King James) Version, and makes no claim to stand in for the urgent, burning pages of the letters themselves.</p>",
   "qa": [],

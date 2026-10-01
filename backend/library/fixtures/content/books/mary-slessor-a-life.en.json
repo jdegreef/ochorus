@@ -3,13 +3,14 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "mary-slessor"
+   "ochorus-originals"
   ],
   "slug": "mary-slessor-a-life",
   "language": "en",
   "title": "Portraits of Courage – Mary Slessor",
   "subtitle": "A Dundee Weaver, the Twin-Mothers of Calabar, and a Life Laid on the Altar",
   "cover_title": "Mary Slessor",
+  "cover_byline": "Mary Slessor",
   "description": "A Christian biography of Mary Slessor (1848–1915), the Dundee factory girl who spent almost forty years in south-eastern Nigeria — learning Efik, living alone in Okoyong, sheltering twin babies and their mothers, sitting as a magistrate, and opening the Enyong Creek to the gospel. Built on her own letters and checked against the civil records and modern historians, it tells the real woman behind the legend: frightened and brave, loving and sometimes harsh, tied to empire and devoted to Africa. All Scripture from the public-domain ASV (1901).",
   "about_html": "",
   "qa": [

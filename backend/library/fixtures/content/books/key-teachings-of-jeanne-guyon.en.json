@@ -3,12 +3,13 @@
  "model": "library.book",
  "fields": {
   "author": [
-   "jeanne-guyon"
+   "ochorus-originals"
   ],
   "slug": "key-teachings-of-jeanne-guyon",
   "language": "en",
   "title": "The Key Teachings of Jeanne Guyon",
   "subtitle": "An Ochorus companion to her life and teaching",
+  "cover_byline": "Jeanne Guyon",
   "description": "A concise, faithful guide to the heart of Madame Guyon’s message — that prayer is the simple turning of the heart to God, open to every believer, and that the soul which gives itself wholly to Him will find Him within. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as a companion to Jeanne Guyon’s own public-domain works, which readers are warmly encouraged to go to directly.",
   "about_html": "<p>This is not a book by Jeanne Guyon. It is a companion to her — an independent work of exposition and appreciation, written by Ochorus, that gathers the heart of her teaching into fifteen short chapters for the ordinary reader, with an account of her life, a conclusion, and a guide to her books.</p><p>Her teaching has a single thread. Prayer, she insisted, is not a skill for the learned but the application of the heart to God, and every believer, however simple, can learn it; and the heart that turns to God and keeps turning will be drawn, through abandonment, suffering and the fire of love, into a deep and quiet union with Him. That message made her one of the most widely read spiritual writers of her century and one of the most suspected. This volume follows the thread, weighs honestly the Quietist controversy and the places where she must be read with care, and ends each chapter with a few questions and a prayer.</p><p>Jeanne Guyon’s own writings are in the public domain and freely available, and every chapter here names the work it draws on so that the reader can go to the source; her A Short and Easy Method of Prayer is in the Ochorus library. This companion is offered only to open the door to her. Scripture is quoted from the Authorised (King James) Version, and nothing here claims to stand in for her own ardent, simple and searching pages.</p>",
   "qa": [],

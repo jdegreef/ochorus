@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 from django.db.models import Count, QuerySet, Sum
 from django.urls import reverse
@@ -10,6 +11,7 @@ from .contemporize import MODERN_LANGUAGE
 from .cover_face import COVER_AUTHOR_FIELDS, cover_face
 from .curated_art import credit
 from .export_policy import is_exportable
+from .hubs import Hubs
 from .localization import language_from_request
 from .meta_descriptions import meta_description
 from .models import (
@@ -19,6 +21,7 @@ from .models import (
     Book,
     BookPerson,
     Chapter,
+    PersonRole,
     Plan,
     PlanDay,
     Series,
@@ -408,6 +411,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "title",
             "subtitle",
             "cover_title",
+            "cover_byline",
             "author",
             "source_type",
             "cover_color",
@@ -906,6 +910,7 @@ class CoverBookSerializer(BookListSerializer):
             "title",
             "subtitle",
             "cover_title",
+            "cover_byline",
             "author",
             "source_type",
             "cover_color",
@@ -1297,6 +1302,10 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
     # locale with no translated article renders no section. Detail-only: it
     # scans the article table, nothing a shelf should pay.
     articles = serializers.SerializerMethodField()
+    # The biography hubs this writer belongs to that exist in this language
+    # (library/hubs.py) — the page links each as a chip. One query: the set of
+    # writers the language's Biographies page lists.
+    hubs = serializers.SerializerMethodField()
 
     # Present so AuthorDetail honours the AuthorBio contract the list shares;
     # the detail page already has the full sermons array + bio_html, so these
@@ -1321,7 +1330,7 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # an email digest) would have to carry the credit with it.
             "photo_attribution", "photo_source_url", "birth_year",
             "death_year", "book_count", "sermon_count", "has_long_bio",
-            "books", "sermons", "topics", "appears_in", "articles",
+            "books", "sermons", "topics", "appears_in", "articles", "hubs",
             # Authoritative identifiers for the Person markup — see the field.
             # Only the DETAIL serializer carries them: a card never emits
             # Person markup, so shipping them on every book row would be bytes
@@ -1380,6 +1389,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
+
+    def get_hubs(self, obj) -> list[dict]:
+        return Hubs().for_author(obj.slug, self._language())
 
     def get_has_long_bio(self, obj):
         return bool(obj.bio_html_for(self._language()).strip())
@@ -1561,8 +1573,19 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         # "appears in" cards is a fair price for not doubling that query.
         ctx = {**self.context, "book_topics": {}}
         data = BookListSerializer(books, many=True, context=ctx).data
+        # A book whose ONLY subject is this person is a book ABOUT them (a life,
+        # a Key Teachings companion) — the page gives those their own heading
+        # above the anthologies they merely appear in. Asked only of the books
+        # that name them as a subject, so a bio with none pays no query.
+        subject = PersonRole.SUBJECT.value
+        subject_books = [slug for slug, role in roles.items() if role == subject]
+        subjects_in = Counter(
+            BookPerson.objects.filter(book_slug__in=subject_books, role=subject)
+            .values_list("book_slug", flat=True)
+        ) if subject_books else Counter()
         for card in data:
             card["role"] = roles.get(card["slug"])
+            card["about"] = card["role"] == subject and subjects_in[card["slug"]] == 1
         data.sort(key=lambda c: order.get(c["slug"], 0))
         return data
 

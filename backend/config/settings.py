@@ -305,6 +305,17 @@ API_PUBLIC_URL = os.getenv("API_PUBLIC_URL", "").strip().rstrip("/") or (
 # on/after it, so a first run never blasts the back catalogue. Unset ⇒ a short
 # recent window (see emails/management/commands/send_welcome_emails.py).
 EMAIL_WELCOME_START = os.getenv("EMAIL_WELCOME_START", "").strip()
+# Review-mode safety net: when NON-EMPTY, the ONLY addresses that receive mail
+# are the ones listed here — every other recipient is recorded as "skipped",
+# whatever the send path (welcome drip, broadcast, or a test). Lets you turn
+# sending on and review real emails to yourself with zero risk of a reader
+# getting one, even by a mis-click. Comma-separated; an entry beginning with "@"
+# matches a whole domain (e.g. "@ochorus.com"). Clear it to truly go live.
+EMAIL_ALLOWLIST = {
+    e.strip().lower()
+    for e in os.getenv("EMAIL_ALLOWLIST", "").split(",")
+    if e.strip()
+}
 
 
 # --- CORS ---------------------------------------------------------------------
