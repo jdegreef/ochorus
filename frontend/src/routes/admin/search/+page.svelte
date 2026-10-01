@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ColumnBars from '$lib/components/ColumnBars.svelte';
 	import {
 		type SearchType
 	} from '$lib/library-public';
@@ -44,7 +45,6 @@
 			: []
 	);
 
-	const dayMax = $derived(Math.max(1, ...(data?.daily.map((d) => d.searches) ?? [1])));
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.searches) ?? [1])));
 
 	// "Where else does this exist?" — one query at a time, because the answer
@@ -176,26 +176,16 @@
 							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent"></span>zero-result</span>
 						</div>
 					</div>
-					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.daily as day (day.day)}
-							<div
-								class="flex flex-1 flex-col items-center gap-1"
-								title="{dayLabel(day.day)} · {fmt(day.searches)} search{day.searches === 1 ? '' : 'es'}{day.zero ? `, ${fmt(day.zero)} zero-result` : ''}"
-							>
-								<div class="text-small tabular-nums text-muted">{day.searches || ''}</div>
-								<div
-									class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"
-									style="height: {(day.searches / dayMax) * 100}%; min-height: {day.searches ? '3px' : '0'}"
-								>
-									<div class="w-full flex-1 bg-accent-soft"></div>
-									{#if day.zero}
-										<div class="w-full bg-accent" style="height: {(day.zero / day.searches) * 100}%"></div>
-									{/if}
-								</div>
-								<div class="text-micro text-muted">{dayLabel(day.day)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnBars
+						current
+						bars={d.daily.map((day) => ({
+							key: day.day,
+							label: dayLabel(day.day),
+							value: day.searches,
+							part: day.zero,
+							title: `${dayLabel(day.day)} · ${fmt(day.searches)} search${day.searches === 1 ? '' : 'es'}${day.zero ? `, ${fmt(day.zero)} zero-result` : ''}`
+						}))}
+					/>
 				</section>
 
 				<div class="grid gap-6 lg:grid-cols-2">

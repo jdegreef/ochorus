@@ -22,6 +22,20 @@ from ..views import _language_entry
 # only" promise; see ``AdminEngagementView._apply_privacy_floor``.
 MIN_GROUP_SIZE = 5
 
+# Every key of the engagement payload, sorted by whether the floor touches it.
+# A test fails on a key in neither, so a new breakdown has to choose when it is
+# written rather than ship unfloored by default.
+FLOORED_KEYS = frozenset(
+    {"top_content", "rising", "most_loved", "by_language", "plan_funnel", "highlight_heatmap"}
+)
+UNFLOORED_KEYS = {
+    "overview": "site-wide totals: they describe everyone",
+    "time": "site-wide totals: they describe everyone",
+    "hearts_by_kind": "one row per kind of thing saved, across all readers",
+    "weekly_active": "site-wide, one figure per week",
+    "privacy": "describes the floor itself",
+}
+
 
 def _prefer_en(rows, value_of):
     """``slug`` → value, keeping the English row where a slug has several

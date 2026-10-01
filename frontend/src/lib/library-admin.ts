@@ -922,7 +922,7 @@ export const periodTrend = (cur: number, prev: number): Trend => {
 	const dir = cur > prev ? 'up' : cur < prev ? 'down' : 'flat';
 	if (prev < SMALL_BASE) {
 		const d = cur - prev;
-		return { dir, text: d ? `${d > 0 ? '+' : ''}${d}` : '0', title: `Was ${prev} in the previous period` };
+		return { dir, text: `${d > 0 ? '+' : ''}${d}`, title: `Was ${prev} in the previous period` };
 	}
 	const d = Math.round(((cur - prev) / prev) * 100);
 	if (d === 0) return { dir: 'flat', text: '0%' };

@@ -3,6 +3,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ColumnBars from '$lib/components/ColumnBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import {
 		adminUserDirectoryCsvUrl,
@@ -104,7 +105,6 @@
 	// Drop the "Continent/" prefix for a compact label; the city carries the info.
 	const tzLabel = (tz: string) => (tz === 'Other' ? tz : tz.split('/').pop()!.replace(/_/g, ' '));
 
-	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 	const variantMax = $derived(
@@ -207,18 +207,10 @@
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
-					<div class="flex items-end gap-1.5" style="height: 8rem">
-						{#each d.weekly_signups as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
-								<div class="text-small tabular-nums text-muted">{w.count || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
-								></div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnBars
+						current
+						bars={d.weekly_signups.map((w) => ({ key: w.week, label: weekLabel(w.week), value: w.count }))}
+					/>
 				</section>
 
 				<!-- By sign-in method + Recent sign-ups -->

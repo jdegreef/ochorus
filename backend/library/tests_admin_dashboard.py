@@ -1106,6 +1106,14 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(payload["overview"]["readers"], 2)
         self.assertEqual(payload["plan_funnel"]["started"], 2)
 
+    @override_settings(DEBUG=True)
+    def test_every_engagement_key_has_chosen_whether_it_is_floored(self):
+        from .admin_views.analytics import FLOORED_KEYS, UNFLOORED_KEYS
+
+        keys = set(self.client.get("/api/admin/engagement/").data)
+        self.assertEqual(keys - FLOORED_KEYS - set(UNFLOORED_KEYS), set())
+        self.assertFalse(FLOORED_KEYS & set(UNFLOORED_KEYS))
+
     def test_the_floor_keeps_a_group_of_five(self):
         from .admin_views.analytics import AdminEngagementView
 

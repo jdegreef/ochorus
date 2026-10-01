@@ -2,6 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
+	import ColumnBars from '$lib/components/ColumnBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
@@ -89,11 +90,12 @@
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
 	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
-	// With the privacy floor applied, an empty list may mean "only small groups",
-	// not "nothing", so the empty states say which.
-	const floorNote = $derived(
-		data?.privacy?.applied ? ` with ${data.privacy.min_group} or more readers` : ''
-	);
+	// The smallest group shown when the privacy floor is applied, else null. With
+	// it on, an empty list may mean "only small groups", not "nothing", so the
+	// empty states say which. `?.` on privacy: a frontend deployed ahead of the
+	// API sees a payload without it, and must not crash the page.
+	const floor = $derived(data?.privacy?.applied ? data.privacy.min_group : null);
+	const floorNote = $derived(floor ? ` with ${floor} or more readers` : '');
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
 
@@ -132,8 +134,8 @@
 			</p>
 			<span class="privacy-badge mt-3 inline-flex items-center gap-2 text-small text-muted">
 				<span class="privacy-dot" aria-hidden="true"></span>
-				{data?.privacy?.applied
-					? `Aggregate only · groups under ${data.privacy.min_group} readers hidden`
+				{floor
+					? `Aggregate only · groups under ${floor} readers hidden`
 					: 'Aggregate only · no individual readers'}
 			</span>
 		</div>
@@ -209,25 +211,10 @@
 				<!-- Weekly active -->
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
-					<!-- Each bar is a share of a FIXED-height track, less room for its count. A percentage of
-					     the content-sized column it used to sit in resolved to auto, so
-					     every bar fell to its 3px min-height whatever the count. -->
-					<div class="flex gap-2">
-						{#each d.weekly_active as w, i (w.week)}
-							{@const current = i === d.weekly_active.length - 1}
-							<div class="flex min-w-0 flex-1 flex-col items-center gap-1">
-								<div class="flex h-32 w-full flex-col justify-end">
-									<div class="text-center text-small tabular-nums text-muted">{w.readers || ''}</div>
-									<div
-										class="w-full rounded-t-sm {current ? 'week-current' : 'bg-accent'}"
-										style="height: calc((100% - 1.5rem) * {w.readers / weekMax}); min-height: {w.readers ? '3px' : '0'}"
-									></div>
-								</div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
-					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
+					<ColumnBars
+						current
+						bars={d.weekly_active.map((w) => ({ key: w.week, label: weekLabel(w.week), value: w.readers }))}
+					/>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->
@@ -365,7 +352,7 @@
 									{/each}
 								</ul>
 							{:else}
-								<p class="text-body text-muted">No readable works{floorNote ? ` hearted by ${data?.privacy.min_group} or more readers` : ' hearted'} yet.</p>
+								<p class="text-body text-muted">No readable works hearted{floorNote} yet.</p>
 							{/if}
 						</section>
 
@@ -475,14 +462,6 @@
 		height: 7px;
 		border-radius: 999px;
 		background: var(--accent);
-	}
-
-	/* The week still in progress: outlined, so a partial count doesn't read as
-	   a drop against the full weeks beside it. */
-	.week-current {
-		background: var(--accent-soft);
-		border: 1px dashed var(--accent);
-		border-bottom: 0;
 	}
 
 	/* Reading-pulse sparkline — the 8-week active line behind the number. */
