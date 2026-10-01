@@ -47,8 +47,7 @@
 		emblem?: EmblemName;
 		/**
 		 * A monogram for the badge — label over value: a topic's epigraph
-		 * ("JER" over 33), a plan's length ("DAYS" over 21), a series' size
-		 * ("BOOKS" over 4). Null keeps the emblem (e.g. a topic with no
+		 * ("JER" over 33) or a plan's length ("DAYS" over 21). Null keeps the emblem (e.g. a topic with no
 		 * epigraph translated into this language).
 		 */
 		mark?: { top: string; value: string } | null;

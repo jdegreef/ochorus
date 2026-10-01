@@ -496,6 +496,7 @@
   "book_series_member": "{series} का हिस्सा",
   "book_series_next": "शृंखला में अगली",
   "series_progress": "{total} में से {done} पढ़ी गईं",
+  "series_reading_book": "{total} में से पुस्तक {position} पढ़ रहे हैं",
   "series_all_read": "आपने इस शृंखला की सभी पुस्तकें पढ़ ली हैं",
   "series_meta_default": "{series}: शृंखला की सभी पुस्तकें, Ochorus पर मुफ़्त में पढ़ें।",
   "series_tagline": "साथ-साथ पढ़ने के लिए लिखी गई पुस्तकें — कुछ क्रम से, कुछ एक संग्रह के रूप में।",

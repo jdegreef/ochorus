@@ -4,7 +4,10 @@ import {
 	nextInSeries,
 	seriesAmong,
 	seriesFromBooks,
+	seriesCardProgressLabel,
 	seriesProgress,
+	splitSeriesTitle,
+	type BookStage,
 	seriesLabel,
 	groupByAudience,
 	seriesAges
@@ -106,11 +109,59 @@ describe('seriesProgress', () => {
 	const of = (slug: string) => state[slug] ?? { started: false, finished: false };
 
 	it('counts finished books and notices any begun one', () => {
-		expect(seriesProgress(['a', 'b', 'c'], of)).toEqual({ done: 1, total: 3, started: true });
+		expect(seriesProgress(['a', 'b', 'c'], of)).toEqual({
+			done: 1,
+			total: 3,
+			started: true,
+			stages: ['done', 'reading', 'unread']
+		});
 	});
 
 	it('is not started when no book is opened', () => {
-		expect(seriesProgress(['c', 'd'], of)).toEqual({ done: 0, total: 2, started: false });
+		expect(seriesProgress(['c', 'd'], of)).toEqual({
+			done: 0,
+			total: 2,
+			started: false,
+			stages: ['unread', 'unread']
+		});
+	});
+});
+
+describe('seriesCardProgressLabel', () => {
+	it('names the book being read', () => {
+		const progress = { done: 1, total: 6, stages: ['done', 'reading', 'unread'] as const };
+		expect(seriesCardProgressLabel({ ...progress, stages: [...progress.stages] }, 'en')).toBe(
+			'Reading book 2 of 6'
+		);
+	});
+
+	it('counts finished books when none is open', () => {
+		const stages: BookStage[] = ['done', 'done', 'unread', 'unread'];
+		expect(seriesCardProgressLabel({ done: 2, total: 4, stages }, 'en')).toBe('2 of 4 read');
+	});
+});
+
+describe('splitSeriesTitle', () => {
+	it('splits at a spaced en dash', () => {
+		expect(splitSeriesTitle('Daughters of the King – 30 Days with God for Girls')).toEqual({
+			name: 'Daughters of the King',
+			subtitle: '30 Days with God for Girls'
+		});
+	});
+
+	it('splits at a spaced em dash (the Hindi titles)', () => {
+		const { name } = splitSeriesTitle('जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन');
+		expect(name).toBe('जड़ें जमाए');
+	});
+
+	it('leaves a title with no spaced dash whole', () => {
+		expect(splitSeriesTitle('Brave for God')).toEqual({ name: 'Brave for God', subtitle: '' });
+		expect(splitSeriesTitle('Ages 9–12').subtitle).toBe('');
+	});
+
+	it('never returns an empty name or subtitle', () => {
+		expect(splitSeriesTitle('Rooted – ')).toEqual({ name: 'Rooted – ', subtitle: '' });
+		expect(splitSeriesTitle(' – Rooted').name).toBe(' – Rooted');
 	});
 });
 

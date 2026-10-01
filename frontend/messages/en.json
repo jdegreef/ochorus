@@ -496,6 +496,7 @@
   "book_series_member": "Part of {series}",
   "book_series_next": "Next in the series",
   "series_progress": "{done} of {total} read",
+  "series_reading_book": "Reading book {position} of {total}",
   "series_all_read": "You have read every book in this series",
   "series_meta_default": "{series}: every book in the series, free to read on Ochorus.",
   "series_tagline": "Books written to be read together — some in order, some as a set.",

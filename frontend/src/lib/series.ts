@@ -38,6 +38,38 @@ export function seriesProgressLabel(done: number, total: number, language: strin
 	});
 }
 
+/**
+ * A series card's progress line: "Reading book 2 of 6" while a book is open
+ * (the first begun-not-finished one, as `nextInSeries` picks), else "2 of 6
+ * read". The book a reader is in says more than a count that is still 0.
+ */
+export function seriesCardProgressLabel(
+	progress: { done: number; total: number; stages: BookStage[] },
+	language: string
+): string {
+	const reading = progress.stages.indexOf('reading');
+	if (reading < 0) return seriesProgressLabel(progress.done, progress.total, language);
+	const position = reading + 1;
+	return m.series_reading_book({
+		position: volumeNumeral(position, language) ?? String(position),
+		total: volumeNumeral(progress.total, language) ?? String(progress.total)
+	});
+}
+
+/**
+ * A long series name split at its spaced dash into a name and a subtitle —
+ * "Daughters of the King – 30 Days with God for Girls" → "Daughters of the
+ * King" over "30 Days with God for Girls" — so the card's title stays one or
+ * two lines. Only a spaced en or em dash splits (the translations write one or
+ * the other); a title without one comes back whole, with no subtitle.
+ */
+export function splitSeriesTitle(title: string): { name: string; subtitle: string } {
+	const match = /\s+[–—]\s+/.exec(title);
+	if (!match || match.index === 0) return { name: title, subtitle: '' };
+	const subtitle = title.slice(match.index + match[0].length).trim();
+	return subtitle ? { name: title.slice(0, match.index), subtitle } : { name: title, subtitle: '' };
+}
+
 /** A card's series line — `seriesLabel` in the book's own language — or "" for
  *  a book in no (named) series. BookCard and BookListRow both draw it. */
 export function cardSeriesLine(book: Pick<CoverBook, 'series' | 'language'>): string {
@@ -106,20 +138,27 @@ export function groupBySeries<B extends Pick<BookSummary, 'series'>>(
 	return { named, standalone };
 }
 
+/** Where a reader is with one book of a series: the card draws a segment each. */
+export type BookStage = 'done' | 'reading' | 'unread';
+
 /**
  * A reader's progress through a series, from its books' slugs: how many are
- * finished, and whether any is begun at all — the card draws nothing for a
- * series the reader has never opened.
+ * finished, whether any is begun at all — the card draws nothing for a series
+ * the reader has never opened — and each book's stage, in reading order.
  */
 export function seriesProgress(
 	slugs: string[],
 	progressOf: (slug: string) => BookProgress
-): { done: number; total: number; started: boolean } {
-	const each = slugs.map(progressOf);
+): { done: number; total: number; started: boolean; stages: BookStage[] } {
+	const stages = slugs.map((slug): BookStage => {
+		const p = progressOf(slug);
+		return p.finished ? 'done' : p.started ? 'reading' : 'unread';
+	});
 	return {
-		done: each.filter((p) => p.finished).length,
+		done: stages.filter((s) => s === 'done').length,
 		total: slugs.length,
-		started: each.some((p) => p.started || p.finished)
+		started: stages.some((s) => s !== 'unread'),
+		stages
 	};
 }
 
