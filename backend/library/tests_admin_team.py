@@ -118,7 +118,7 @@ class AdminRolesTests(TestCase):
 
     @override_settings(DEBUG=True)
     def test_serves_the_presets_and_labels(self):
-        from accounts.admin_roles import PRESETS, ROLE_INFO
+        from accounts.admin_roles import PRESETS, ROLE_GRANTS, ROLE_INFO
 
         res = self.client.get("/api/admin/roles/")
         self.assertEqual(res.status_code, 200)
@@ -128,6 +128,7 @@ class AdminRolesTests(TestCase):
             self.assertEqual(roles[name]["grants"], dict(pairs))
         # …every preset has a label and summary, and the super admin holds all.
         self.assertEqual(set(ROLE_INFO), {*PRESETS, "super_admin"})
+        self.assertEqual(set(ROLE_INFO), set(ROLE_GRANTS))
         self.assertEqual(set(roles["super_admin"]["grants"]), set(AdminCapability.values))
         self.assertEqual({c["code"] for c in res.data["capabilities"]}, set(AdminCapability.values))
 

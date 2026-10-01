@@ -77,8 +77,8 @@ export const sectionRequirement = (
 	section: AdminSection,
 	capabilityLabel: (code: string) => string
 ): string =>
-	section.anyAccess
-		? 'Needs any admin access'
-		: section.superOnly
-			? 'Super admin only'
-			: `Needs ${capabilityLabel(section.capability!)}`;
+	section.superOnly
+		? 'Super admin only'
+		: section.capability && !section.anyAccess
+			? `Needs ${capabilityLabel(section.capability)}`
+			: 'Needs any admin access';

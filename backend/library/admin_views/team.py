@@ -15,7 +15,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.admin_roles import (
-    PRESETS,
+    ROLE_GRANTS,
     ROLE_INFO,
     ROLE_NAMES,
     apply_grant,
@@ -142,15 +142,13 @@ class AdminRolesView(APIView):
     permission_classes = [HasAnyAdminAccess]
 
     def get(self, request):
-        every_area = dict.fromkeys(AdminCapability.values, AdminVerb.APPROVE)
-        grants = {**PRESETS, "super_admin": every_area.items()}
         return Response(
             {
                 "capabilities": [
                     {"code": c, "label": label} for c, label in AdminCapability.choices
                 ],
                 "roles": [
-                    {"code": code, "label": label, "summary": summary, "grants": dict(grants[code])}
+                    {"code": code, "label": label, "summary": summary, "grants": ROLE_GRANTS[code]}
                     for code, (label, summary) in ROLE_INFO.items()
                 ],
                 "languages": {code: e["name"] for code, e in language_map().items()},

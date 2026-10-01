@@ -99,24 +99,24 @@
 	<!-- Roles: the summaries, then the exact grid from the backend presets -->
 	<section class="mb-8">
 		<h2 class="mb-3 text-h3">The roles</h2>
-		<ul class="flex flex-col gap-2">
-			{#each roles as role (role.code)}
-				{@const mine = myRoles.includes(role.code)}
-				<li
-					class="flex flex-col gap-0.5 rounded-card border px-4 py-2.5 sm:flex-row sm:gap-3 {mine
-						? 'border-accent bg-accent-soft'
-						: 'border-border bg-surface'}"
-				>
-					<span class="w-32 shrink-0 text-small font-semibold {mine ? 'text-accent' : 'text-text'}">
-						{role.label}{#if mine}<span class="ml-1.5 text-micro font-normal">· you</span>{/if}
-					</span>
-					<span class="text-small {mine ? 'text-text' : 'text-muted'}">{role.summary}</span>
-				</li>
-			{/each}
-		</ul>
-
-		<h3 class="mb-2 mt-6 text-small font-semibold text-text">Exactly what each role can do</h3>
 		{#if model.data}
+			<ul class="flex flex-col gap-2">
+				{#each roles as role (role.code)}
+					{@const mine = myRoles.includes(role.code)}
+					<li
+						class="flex flex-col gap-0.5 rounded-card border px-4 py-2.5 sm:flex-row sm:gap-3 {mine
+							? 'border-accent bg-accent-soft'
+							: 'border-border bg-surface'}"
+					>
+						<span class="w-32 shrink-0 text-small font-semibold {mine ? 'text-accent' : 'text-text'}">
+							{role.label}{#if mine}<span class="ml-1.5 text-micro font-normal">· you</span>{/if}
+						</span>
+						<span class="text-small {mine ? 'text-text' : 'text-muted'}">{role.summary}</span>
+					</li>
+				{/each}
+			</ul>
+
+			<h3 class="mb-2 mt-6 text-small font-semibold text-text">Exactly what each role can do</h3>
 			<div class="overflow-x-auto rounded-card border border-border">
 				<table class="w-full text-small">
 					<thead>
@@ -137,7 +137,7 @@
 									{@const verb = col.grants[cap.code]}
 									<td class="px-3 py-2 text-center {myRoles.includes(col.code) ? 'bg-accent-soft' : ''}">
 										{#if verb}
-											<span class="inline-block min-w-16 rounded-sm px-1.5 py-0.5 text-micro font-semibold uppercase {VERB_CHIP[verb]}">{verb}</span>
+											<span class="inline-block min-w-16 rounded-sm px-1.5 py-0.5 text-micro font-semibold uppercase {VERB_CHIP[verb] ?? VERB_CHIP.view}">{verb}</span>
 										{:else}
 											<span class="text-muted" aria-label="no access">—</span>
 										{/if}

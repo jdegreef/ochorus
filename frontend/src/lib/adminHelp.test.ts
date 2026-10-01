@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { AdminScope } from './adminAccess';
 import { ABILITIES, hasAbility, humanize, languageNames } from './adminHelp';
-import { ADMIN_SECTIONS, opensSection } from './adminSections';
+import { ADMIN_SECTIONS, opensSection, sectionRequirement } from './adminSections';
 
 const reviewer: AdminScope[] = [
 	{
@@ -49,6 +49,22 @@ describe('opensSection', () => {
 		expect(sections).toContain('/admin/help');
 		expect(sections).not.toContain('/admin/users');
 		expect(sections).not.toContain('/admin/team');
+	});
+});
+
+describe('sectionRequirement', () => {
+	const label = (c: string) => `<${c}>`;
+
+	it('words the same ladder opensSection checks', () => {
+		const words = (href: string) =>
+			sectionRequirement(ADMIN_SECTIONS.find((s) => s.href === href)!, label);
+		expect(words('/admin/team')).toBe('Super admin only');
+		expect(words('/admin/users')).toBe('Needs <users>');
+		expect(words('/admin/help')).toBe('Needs any admin access');
+	});
+
+	it('never names an undefined capability', () => {
+		expect(sectionRequirement({ href: '/x', label: 'X' }, label)).toBe('Needs any admin access');
 	});
 });
 

@@ -61,9 +61,10 @@ PRESETS: dict[str, list[tuple[str, str]]] = {
 
 ROLE_NAMES = tuple(PRESETS)
 
-#: role → (display label, one-line summary), for the Help & roles page. Kept
-#: beside ``PRESETS`` so a new or reworded role is one edit; the super admin is
-#: listed too, since it is a role people hold even though it isn't a preset.
+#: role → (display label, one-line summary), for the Help & roles page. Keyed
+#: like ``PRESETS`` plus the super admin (a role people hold, though not a
+#: preset); adding a preset means adding its entry here — ``tests_admin_team``
+#: fails until the two agree.
 ROLE_INFO: dict[str, tuple[str, str]] = {
     "contributor": (
         "Contributor",
@@ -81,6 +82,14 @@ ROLE_INFO: dict[str, tuple[str, str]] = {
         "Super admin",
         "Everything, including granting access, user analytics, email and taking a language live.",
     ),
+}
+
+
+#: role → {capability: verb}, every role the Help page shows. The super admin
+#: holds every area at the top of the ladder (their power is the allowlist).
+ROLE_GRANTS: dict[str, dict[str, str]] = {
+    **{name: dict(pairs) for name, pairs in PRESETS.items()},
+    "super_admin": dict.fromkeys(C.values, V.APPROVE),
 }
 
 

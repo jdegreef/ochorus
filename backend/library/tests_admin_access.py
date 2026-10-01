@@ -56,7 +56,7 @@ class AdminAccessCoverageTests(SimpleTestCase):
             # Any-admin is a valid gate only for a READ-ONLY view (the Help
             # page's access model): it admits a holder of any single grant, so
             # it must never guard a write.
-            if HasAnyAdminAccess in gate:
+            if HasAnyAdminAccess in gate and RequireCapability not in gate:
                 writes = sorted(m for m in _WRITE_METHODS if hasattr(cls, m.lower()))
                 if writes:
                     problems.append(f"{route} ({cls.__name__}): HasAnyAdminAccess on a write view {writes}")
