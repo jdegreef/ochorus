@@ -398,6 +398,17 @@ class FixtureIntegrityTests(SimpleTestCase):
                     f"field(s) {missing}",
                 )
 
+    def test_titles_not_blank(self):
+        # Present isn't enough: a "" title seeds fine, then shows on the admin
+        # coverage matrix as a row with no name that still offers to queue jobs.
+        for model in ("library.book", "library.sermon", "library.plan", "library.series"):
+            blank = [
+                f"{r['fields'].get('slug', '?')}.{r['fields'].get('language', '?')}"
+                for r in self.by_model.get(model, [])
+                if not str(r["fields"].get("title", "")).strip()
+            ]
+            self.assertEqual(blank, [], f"{model}: blank title on {blank}")
+
 
 class SeriesMembershipTests(SimpleTestCase):
     """What a series means, held where a hand edit to one book file would break it.

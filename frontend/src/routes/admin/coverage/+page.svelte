@@ -4,6 +4,7 @@
 	import { dismissable } from '$lib/actions/dismissable';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import {
@@ -381,7 +382,12 @@
 	// run of gold down a column, and the states survive greyscale. The legend
 	// draws its swatches from these same classes.
 	const TILE =
-		'relative inline-flex h-6 min-w-[2.2rem] items-center align-middle justify-center rounded-md px-1.5 text-micro font-semibold leading-none';
+		'inline-flex h-6 min-w-[2.2rem] items-center align-middle justify-center rounded-md px-1.5 text-micro font-semibold leading-none';
+	// The "English changed" mark, pinned to a tile's corner by a relative wrapper.
+	const STALE =
+		'absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg';
+	// The small status pill under a work's title ("under copyright", "no title").
+	const PILL = 'mt-0.5 inline-block rounded-full border px-1.5 text-micro';
 	const CELL = {
 		public_domain: { label: 'PD', cls: 'bg-surface-2 text-muted' },
 		present: { label: '●', cls: 'bg-surface-2 text-text' },
@@ -392,7 +398,10 @@
 		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
 		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
 	} as const;
-	const cellMeta = (v: string) => CELL[v as keyof typeof CELL] ?? CELL.present;
+	// A state the API adds before this page knows it shows as itself, neutrally,
+	// rather than passing for one of the states above.
+	const cellMeta = (v: string) =>
+		CELL[v as keyof typeof CELL] ?? { label: v, cls: 'border border-border text-muted' };
 
 	// --- Translation queue -----------------------------------------------------
 	// Each missing cell (a work not yet in a language) becomes a click target that
@@ -566,17 +575,14 @@
 			}
 			bulkProgress = { done: bulkProgress.done + 1, total: targets.length };
 		}
-		const done = bulkProgress.done;
-		const stopped = bulkStopping;
+		const filed = bulkProgress.done - failed;
+		if (bulkStopping) bulkNote = `Stopped — filed ${filed} of ${targets.length}; the rest were not queued.`;
 		bulkProgress = null;
 		bulkStopping = false;
-		if (stopped && done < targets.length) {
-			bulkNote = `Stopped — filed ${done - failed} of ${targets.length}; the rest were not queued.`;
-		}
 		if (failed) {
 			// Don't surface the generic 'failed' sentinel — only a real backend detail.
 			const detail = firstErr && firstErr !== 'failed' ? ` — ${firstErr}` : '';
-			queueError = `Queued ${done - failed} of ${targets.length}; ${failed} failed${detail}.`;
+			queueError = `Queued ${filed} of ${targets.length}; ${failed} failed${detail}.`;
 		}
 	}
 </script>
@@ -703,8 +709,15 @@
 			</div>
 
 			<!-- Legend -->
-			{#snippet swatch(k: keyof typeof CELL, text: string)}
-				<span class="flex items-center gap-1.5"><span class="{TILE} {CELL[k].cls}">{CELL[k].label}</span>{text}</span>
+			{#snippet swatch(k: keyof typeof CELL, text: string, stale = false)}
+				<span class="flex items-center gap-1.5"
+					><span class="relative inline-flex"
+						><span class="{TILE} {CELL[k].cls}">{CELL[k].label}</span>{#if stale}<span
+								class={STALE}
+								aria-hidden="true">↻</span
+							>{/if}</span
+					>{text}</span
+				>
 			{/snippet}
 			<div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-small text-muted">
 				{#if tab === 'books'}
@@ -719,9 +732,7 @@
 				{/if}
 				{@render swatch('missing', 'missing')}
 				{#if tabHasStale}
-					<span class="flex items-center gap-1.5"
-						><span class="{TILE} {CELL.ai_unreviewed.cls}">AI{@render staleDot()}</span>English changed since translated</span
-					>
+					{@render swatch('ai_unreviewed', 'English changed since translated', true)}
 				{/if}
 				{#if rows.some((r) => r.blocked)}
 					{@render swatch('blocked', 'under copyright — not translatable')}
@@ -763,11 +774,12 @@
 					<span class="shrink-0 tabular-nums">
 						{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
 					</span>
-					<span class="h-1.5 flex-1 overflow-hidden rounded-full bg-border" aria-hidden="true">
-						<span
-							class="block h-full rounded-full bg-accent transition-[width]"
-							style:width="{(bulkProgress.done / bulkProgress.total) * 100}%"
-						></span>
+					<span class="flex-1">
+						<ProgressBar
+							percent={(bulkProgress.done / bulkProgress.total) * 100}
+							label="Queueing translations"
+							size="md"
+						/>
 					</span>
 					<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
 				</div>
@@ -904,6 +916,7 @@
 	     as just its author while still offering to queue jobs — so name it by
 	     slug and say what's wrong; the work's page is where it gets fixed. -->
 	{@const title = r.title?.trim() ?? ''}
+	{@const name = title || r.slug}
 	<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 		<!-- Titles wrap to two lines (one in Compact) — articles run long ("A Retrospect by Hudson
 		     Taylor: …"); the full title + author ride on the tooltip. -->
@@ -915,18 +928,18 @@
 			<a
 				href={rowHref(r.slug)}
 				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
-				title={r.author ? `${title || r.slug} — ${r.author}` : title || r.slug}
+				title={r.author ? `${name} — ${r.author}` : name}
 			>{#if title}{title}{:else}<span class="font-mono text-small">{r.slug}</span>{/if}</a>
 			{#if !title}
 				<span
-					class="mt-0.5 inline-block rounded-full border border-danger/40 px-1.5 text-micro text-danger"
+					class="{PILL} border-danger/40 text-danger"
 					title="This work has no title — open it to fix the title before queueing translations"
 					>⚠ no title</span
 				>
 			{/if}
 			{#if r.blocked}
 				<span
-					class="mt-0.5 inline-block rounded-full border border-border px-1.5 text-micro text-muted"
+					class="{PILL} border-border text-muted"
 					title="Under copyright: every edition stays unpublished and no translation may be filed (corrections.COPYRIGHT_BLOCKED_SLUGS)"
 					>© under copyright</span
 				>
@@ -943,8 +956,8 @@
 						? 'absolute top-1/2 right-3 -translate-y-1/2 bg-surface-2 px-1'
 						: 'mt-1'}"
 					disabled={busy}
-					title={`Queue all ${rowGaps} missing translations of ${r.title}`}
-					aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
+					title={`Queue all ${rowGaps} missing translations of ${name}`}
+					aria-label={`Queue all ${rowGaps} missing translations of ${name}`}
 					onclick={() => bulkRow(r)}
 				>Queue all {rowGaps}</button>
 			{/if}
@@ -964,13 +977,13 @@
 							<a
 								href={review}
 								class="{TILE} {m.cls} transition-colors hover:bg-warning/20 hover:no-underline"
-								title={`Review ${r.title} → ${l.name}`}
-								aria-label={`Review the ${l.name} translation of ${r.title}`}
+								title={`Review ${name} → ${l.name}`}
+								aria-label={`Review the ${l.name} translation of ${name}`}
 							>{m.label}</a>
 						{:else}
 							<span class="{TILE} {m.cls}">{m.label}</span>
 						{/if}
-						{#if stale}{@render staleMark(r, l)}{/if}
+						{#if stale}{@render staleMark(r, l, name)}{/if}
 					</span>
 				{:else if job}
 					{@const m = job.state === 'in_progress' ? CELL.translating : CELL.queued}
@@ -980,13 +993,13 @@
 						rel="noopener"
 						class="{TILE} {m.cls} hover:no-underline"
 						title={job.state === 'in_progress'
-							? `Translating ${r.title} → ${l.name}… (open issue)`
-							: `Queued: ${r.title} → ${l.name} (open issue)`}
+							? `Translating ${name} → ${l.name}… (open issue)`
+							: `Queued: ${name} → ${l.name} (open issue)`}
 					>{m.label}</a>
 				{:else if r.blocked}
 					<span
 						class="{TILE} {CELL.blocked.cls}"
-						title={`${r.title} is under copyright — no ${l.name} edition may be made`}
+						title={`${name} is under copyright — no ${l.name} edition may be made`}
 						aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
 					>
 				{:else if jobsConfigured === false || !l.queueable || !canQueue}
@@ -995,7 +1008,7 @@
 						title={jobsConfigured === false
 							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 							: !canQueue
-								? `Missing: ${r.title} → ${l.name}`
+								? `Missing: ${name} → ${l.name}`
 								: `${l.name} isn't a translation target — nothing to queue`}
 						aria-label="Missing"
 					></span>
@@ -1009,8 +1022,8 @@
 							? 'border border-accent bg-accent-soft text-accent'
 							: `${CELL.missing.cls} text-muted`}"
 						disabled={busy}
-						title={`Queue a ${l.name} translation of ${r.title}`}
-						aria-label={`Queue a ${l.name} translation of ${r.title}`}
+						title={`Queue a ${l.name} translation of ${name}`}
+						aria-label={`Queue a ${l.name} translation of ${name}`}
 						onclick={(e) =>
 							e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
 					>
@@ -1027,28 +1040,20 @@
 {/snippet}
 
 <!-- The stale mark sits ON the tile's corner, absolutely positioned, so a stale
-     cell stays centred in its column instead of being shoved aside by a glyph.
-     staleDot is the legend's inert copy. -->
-{#snippet staleDot()}
-	<span
-		class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg"
-		aria-hidden="true">↻</span
-	>
-{/snippet}
-
-{#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage)}
+     cell stays centred in its column instead of being shoved aside by a glyph. -->
+{#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage, name: string)}
 	{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
 		<button
 			type="button"
-			class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg hover:bg-accent disabled:opacity-50"
+			class="{STALE} hover:bg-accent disabled:opacity-50"
 			disabled={markingCurrent !== null}
 			title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
-			aria-label={`${l.name} translation of ${r.title} predates an English change — mark it still current`}
+			aria-label={`${l.name} translation of ${name} predates an English change — mark it still current`}
 			onclick={() => markCurrent(r, l)}>↻</button
 		>
 	{:else}
 		<span
-			class="absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg"
+			class={STALE}
 			title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
 			aria-label="English changed since translated">↻</span
 		>
