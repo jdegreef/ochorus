@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { sermonMonogram } from './sermonMonogram';
+import { passageMark, sermonMonogram } from './sermonMonogram';
 
 describe('sermonMonogram', () => {
 	it.each([
@@ -34,5 +34,15 @@ describe('sermonMonogram', () => {
 		expect(sermonMonogram(ref, ' Himself')).toEqual({ book: '', chapter: 'H' });
 		// A whole grapheme, vowel sign included.
 		expect(sermonMonogram(ref, 'मैं प्रभु').chapter).toBe('मैं');
+	});
+});
+
+describe('passageMark', () => {
+	it('is the monogram as a badge mark', () => {
+		expect(passageMark('Jeremiah 33:3')).toEqual({ top: 'JER', value: '33' });
+	});
+
+	it.each(['', null, undefined])('is null with no passage (%j), so the emblem stays', (ref) => {
+		expect(passageMark(ref)).toBeNull();
 	});
 });

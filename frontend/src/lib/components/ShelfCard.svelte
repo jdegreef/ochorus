@@ -5,6 +5,7 @@
 	import { isSermonTile, tileFace, type TopicCover } from '$lib/library-public';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Emblem from '$lib/components/Emblem.svelte';
+	import Monogram from '$lib/components/Monogram.svelte';
 	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import { sermonArt } from '$lib/sermonArt';
 	import type { EmblemName } from '$lib/emblems';
@@ -31,7 +32,7 @@
 		href,
 		hue,
 		emblem,
-		scriptureRef = '',
+		mark = null,
 		portrait = '',
 		covers = [],
 		title,
@@ -42,14 +43,15 @@
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
 		hue: string;
-		/** Illustrated emblem for the badge. Ignored when `portrait` or `scriptureRef` is set. */
+		/** Illustrated emblem for the badge. Ignored when `portrait` or `mark` is set. */
 		emblem?: EmblemName;
 		/**
-		 * A passage for the badge to wear as a monogram (MAT over 11), as sermons
-		 * and topic pages do — the topic's epigraph. Empty (a locale with no
-		 * translated epigraph, or a shelf kind with none) keeps the emblem.
+		 * A monogram for the badge — label over value: a topic's epigraph
+		 * ("JER" over 33), a plan's length ("DAYS" over 21), a series' size
+		 * ("BOOKS" over 4). Null keeps the emblem (e.g. a topic with no
+		 * epigraph translated into this language).
 		 */
-		scriptureRef?: string;
+		mark?: { top: string; value: string } | null;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
 		
@@ -67,8 +69,8 @@
 
 <a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band hue-band">
-		{#if scriptureRef && !portrait}
-			<SermonMonogram class="shelf-card-badge" {scriptureRef} {title} />
+		{#if mark && !portrait}
+			<Monogram class="shelf-card-badge" top={mark.top} value={mark.value} />
 		{:else}
 			<span class="shelf-card-badge emblem-chip">
 				{#if portrait}

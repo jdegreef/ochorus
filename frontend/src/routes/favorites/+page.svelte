@@ -48,6 +48,7 @@
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SermonCard from '$lib/components/SermonCard.svelte';
 	import ShelfCard from '$lib/components/ShelfCard.svelte';
+	import { passageMark } from '$lib/sermonMonogram';
 	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
@@ -499,7 +500,7 @@
 							href={localizeHref(`/topics/${topic.slug}`)}
 							hue={meta.accent}
 							emblem={meta.emblem}
-							scriptureRef={topic.scripture_ref}
+							mark={passageMark(topic.scripture_ref)}
 							covers={topic.covers}
 							title={topic.title}
 						>
