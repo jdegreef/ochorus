@@ -39,7 +39,8 @@
 		subtitle = '',
 		headingLevel = 2,
 		aside,
-		children
+		children,
+		action
 	}: {
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
@@ -67,10 +68,17 @@
 		aside?: Snippet;
 		/** Body content under the title. */
 		children?: Snippet;
+		/**
+		 * A link of its own at the card's foot — a series' "Start with Brave".
+		 * A link can't sit inside the card's link, so with an action the card
+		 * becomes a box: the band and body are the card's link, the foot sits
+		 * under it, and the box keeps the card's border, lift and hue.
+		 */
+		action?: Snippet;
 	} = $props();
 </script>
 
-<a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>
+{#snippet content()}
 	<div class="shelf-card-band hue-band">
 		{#if mark && !portrait}
 			<Monogram class="shelf-card-badge" top={mark.top} value={mark.value} />
@@ -141,4 +149,13 @@
 			{@render children()}
 		{/if}
 	</div>
-</a>
+{/snippet}
+
+{#if action}
+	<div class="shelf-card shelf-card--action card-lift" style="--shelf-hue: {hue}">
+		<a class="shelf-card-main" {href}>{@render content()}</a>
+		<div class="shelf-card-foot">{@render action()}</div>
+	</div>
+{:else}
+	<a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>{@render content()}</a>
+{/if}

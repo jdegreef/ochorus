@@ -2,13 +2,19 @@
 	import { onMount } from 'svelte';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
-	import { seriesCardProgressLabel, seriesProgress, splitSeriesTitle } from '$lib/series';
+	import {
+		nextInSeries,
+		seriesCardProgressLabel,
+		seriesProgress,
+		splitSeriesTitle
+	} from '$lib/series';
 	import { contentLang } from '$lib/reading';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
 	import { seriesAges } from '$lib/series';
+	import SeriesSegments from './SeriesSegments.svelte';
 	import ShelfCard from './ShelfCard.svelte';
 
 	/**
@@ -47,6 +53,20 @@
 		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
+	// The card's own way in (the full card only; the rail stays compact): the
+	// book to open next, as the series page's button picks it — the first book
+	// until mount, then the book in progress or the first unfinished. Nothing
+	// once every book is read. Its title comes from the fan's tiles, which cover
+	// the first four books; past those the verb stands alone.
+	const next = $derived.by(() => {
+		const slugs = series.books ?? [];
+		if (compact || !slugs.length) return null;
+		const books = slugs.map((slug) => ({ slug }));
+		return mounted ? nextInSeries(books, bookProgressReader()) : { book: books[0], resume: false };
+	});
+	const nextTitle = $derived(
+		next ? (series.covers.find((c) => c.slug === next.book.slug)?.title ?? '') : ''
+	);
 	// "Rooted – 30 Days with God for Youth" as a name over a subtitle, so the
 	// title stays short enough to sit level with the count beside it.
 	const heading = $derived(splitSeriesTitle(series.title));
@@ -60,6 +80,7 @@
 	title={heading.name}
 	subtitle={heading.subtitle}
 	{headingLevel}
+	action={next ? nextAction : undefined}
 >
 	{#snippet aside()}
 		{series.book_count}
@@ -79,22 +100,27 @@
 		<!-- mt-auto: with the body's flex:1 this sits on the card's floor, so a
 		     row of cards keeps its meters level. -->
 		<div class="mt-auto flex flex-col gap-1.5 pt-3">
-			<div
-				class="segments"
-				role="progressbar"
-				aria-label={progressLabel}
-				aria-valuenow={progress.done}
-				aria-valuemin={0}
-				aria-valuemax={progress.total}
-			>
-				{#each progress.stages as stage, i (i)}
-					<span class="segment {stage}"></span>
-				{/each}
-			</div>
+			<SeriesSegments stages={progress.stages} label={progressLabel} />
 			<span class="text-small text-muted">{progressLabel}</span>
 		</div>
 	{/if}
 </ShelfCard>
+
+{#snippet nextAction()}
+	{#if next}
+		<a class="btn btn-sm btn-ghost max-w-full" href={localizeHref(`/books/${next.book.slug}`)}>
+			{#if next.resume}
+				{t('plans.continue')}
+			{:else if nextTitle}
+				{t('author.startWith')}
+			{:else}
+				{t('book.beginReading')}
+			{/if}
+			{#if nextTitle}<span class="truncate" dir="auto">{nextTitle}</span>{/if}
+		</a>
+	{/if}
+{/snippet}
+
 
 <style>
 	/* Five lines, not the shelf's three: series blurbs run to ~210 characters
@@ -103,23 +129,5 @@
 	.series-desc {
 		-webkit-line-clamp: 5;
 		line-clamp: 5;
-	}
-	.segments {
-		display: flex;
-		gap: 0.25rem;
-	}
-	.segment {
-		flex: 1;
-		height: 0.3rem;
-		border-radius: 9999px;
-		/* ProgressBar's track: a tint of the text colour shows on the card's
-		   surface in every theme, where surface-2 all but vanished. */
-		background: color-mix(in srgb, var(--text) 14%, transparent);
-	}
-	.segment.done {
-		background: var(--accent);
-	}
-	.segment.reading {
-		background: var(--gold);
 	}
 </style>
