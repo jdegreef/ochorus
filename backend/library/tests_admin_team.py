@@ -110,6 +110,94 @@ class AdminTeamTests(TestCase):
         )
 
 
+class AdminTeamRoleLifecycleTests(TestCase):
+    """Changing a role replaces it, and a grant made before its preset grew is
+    reported as out of date (with the languages to re-apply it on)."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _member(self, email):
+        members = self.client.get("/api/admin/team/").data["members"]
+        return next(m for m in members if m["email"] == email)
+
+    @override_settings(DEBUG=True)
+    def test_changing_role_drops_the_old_roles_extra_rows(self):
+        self.client.post(
+            "/api/admin/team/", {"email": "a@b.com", "role": "language_admin", "languages": ["lg"]}, format="json"
+        )
+        AdminGrant.objects.create(email="a@b.com", capability=AdminCapability.USERS, verb=AdminVerb.VIEW)
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["es"]}, format="json")
+        caps = set(AdminGrant.objects.filter(email="a@b.com").values_list("capability", flat=True))
+        self.assertNotIn(AdminCapability.PUBLISH, caps)
+        self.assertNotIn(AdminCapability.FEEDBACK, caps)
+        self.assertIn(AdminCapability.USERS, caps)  # a single-capability grant survives
+        self.assertEqual(self._member("a@b.com")["roles"], ["reviewer"])
+
+    @override_settings(DEBUG=True)
+    def test_a_grant_older_than_its_preset_is_reported_and_regrant_fixes_it(self):
+        self.client.post(
+            "/api/admin/team/", {"email": "a@b.com", "role": "language_admin", "languages": ["en", "lg"]}, format="json"
+        )
+        self.assertEqual(self._member("a@b.com")["outdated"], [])
+        AdminGrant.objects.filter(
+            email="a@b.com", capability__in=[AdminCapability.FEEDBACK, AdminCapability.LANGUAGE_ADMIN]
+        ).delete()
+        self.assertEqual(
+            self._member("a@b.com")["outdated"],
+            [{"role": "language_admin", "missing": ["feedback", "language_admin"], "languages": ["en", "lg"]}],
+        )
+        self.client.post(
+            "/api/admin/team/", {"email": "a@b.com", "role": "language_admin", "languages": ["en", "lg"]}, format="json"
+        )
+        self.assertEqual(self._member("a@b.com")["outdated"], [])
+
+    @override_settings(DEBUG=True)
+    def test_mixed_languages_give_no_single_regrant(self):
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["es"]}, format="json")
+        AdminGrant.objects.filter(email="a@b.com", capability=AdminCapability.AUDIT).update(languages="fr")
+        AdminGrant.objects.filter(email="a@b.com", capability=AdminCapability.REVIEW).delete()
+        self.assertEqual(self._member("a@b.com")["outdated"][0]["languages"], None)
+
+    @override_settings(DEBUG=True)
+    def test_restore_puts_back_the_exact_rows(self):
+        # Mixed languages, a stale role, two roles and a single grant: re-applying
+        # roles would change every one of these; a restore must not.
+        scopes = [
+            {"capability": "audit", "verb": "view", "languages": ["*"], "role": "reviewer"},
+            {"capability": "review", "verb": "act", "languages": ["es"], "role": "reviewer"},
+            {"capability": "publish", "verb": "act", "languages": ["lg"], "role": "language_admin"},
+            {"capability": "users", "verb": "view", "languages": ["*"], "role": ""},
+        ]
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "contributor", "languages": ["en"]}, format="json")
+        res = self.client.post("/api/admin/team/", {"email": "a@b.com", "restore": scopes}, format="json")
+        self.assertEqual(res.status_code, 201)
+        key = lambda s: s["capability"]  # noqa: E731
+        self.assertEqual(res.data["scopes"], sorted(scopes, key=key))
+
+    @override_settings(DEBUG=True)
+    def test_bad_restore_changes_nothing(self):
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["es"]}, format="json")
+        before = list(AdminGrant.objects.filter(email="a@b.com").values_list("capability", "verb"))
+        for bad in ([], "x", [{"capability": "bogus", "verb": "act", "languages": ["es"], "role": ""}]):
+            res = self.client.post("/api/admin/team/", {"email": "a@b.com", "restore": bad}, format="json")
+            self.assertEqual(res.status_code, 400)
+        self.assertEqual(list(AdminGrant.objects.filter(email="a@b.com").values_list("capability", "verb")), before)
+
+    @override_settings(DEBUG=True)
+    def test_a_role_change_records_what_it_removed(self):
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "language_admin", "languages": ["lg"]}, format="json")
+        res = self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["lg"]}, format="json")
+        self.assertIn("publish", res.data["removed"])
+        self.assertIn("publish", AdminAction.objects.latest("id").detail["removed"])
+
+    @override_settings(DEBUG=True)
+    def test_a_single_grant_over_a_role_capability_is_not_drift(self):
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["es"]}, format="json")
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "capability": "review", "verb": "approve"}, format="json")
+        self.assertEqual(self._member("a@b.com")["outdated"], [])
+
+
 class AdminRolesTests(TestCase):
     """/api/admin/roles/ — the access model the Help & roles page renders."""
 
