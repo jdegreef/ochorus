@@ -68,6 +68,11 @@
 
 <style>
 	.era-band {
+		/* The scroller is the containing block for anything absolute inside it
+		   (the counts' sr-only labels). Unpositioned, the last card's label
+		   resolved against the page, ~965px across, and a phone laid the whole
+		   page out at that width — zoomed out, the fixed tab bar 970px wide. */
+		position: relative;
 		display: grid;
 		grid-auto-flow: column;
 		grid-auto-columns: minmax(9.5rem, 1fr);
@@ -78,11 +83,6 @@
 		scrollbar-width: none;
 	}
 	.era-card {
-		/* Positioned so the count's sr-only label (position: absolute) stays
-		   inside the card. Without it the last card's label resolved against
-		   the page, ~965px across, and a phone laid the whole page out at that
-		   width — zoomed out, the fixed tab bar 970px wide. */
-		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;

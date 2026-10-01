@@ -24,7 +24,6 @@ const hubs = [
 	hub('place', 'north-africa', ['augustine'])
 ];
 const members = hubMembers(hubs);
-const all = () => true;
 
 describe('splitList / toggleIn', () => {
 	it('drops blanks and repeats', () => {
@@ -76,15 +75,15 @@ describe('inFacets', () => {
 describe('facetCounts', () => {
 	it('counts each option under the OTHER facets, not its own', () => {
 		const f = { trad: ['puritans'], place: ['scotland'], era: [] };
-		const trad = facetCounts(authors, f, members, 'trad', ['puritans', 'missionaries'], all);
+		const trad = facetCounts(authors, f, members, 'trad', ['puritans', 'missionaries']);
 		// Scotland narrows tradition counts; ticking Puritans doesn't zero Missionaries.
 		expect(Object.fromEntries(trad)).toEqual({ puritans: 0, missionaries: 1 });
-		const era = facetCounts(authors, { trad: [], place: [], era: ['early'] }, members, 'era', ['early', 'puritans'], all);
+		const era = facetCounts(authors, { trad: [], place: [], era: ['early'] }, members, 'era', ['early', 'puritans']);
 		expect(Object.fromEntries(era)).toEqual({ early: 1, puritans: 2 });
 	});
-	it('respects the base filters', () => {
-		const base = (a: AuthorBio) => a.slug !== 'bunyan';
-		const c = facetCounts(authors, { trad: [], place: [], era: [] }, members, 'trad', ['puritans'], base);
+	it('counts within the pool it is given', () => {
+		const pool = authors.filter((a) => a.slug !== 'bunyan');
+		const c = facetCounts(pool, { trad: [], place: [], era: [] }, members, 'trad', ['puritans']);
 		expect(c.get('puritans')).toBe(1);
 	});
 });

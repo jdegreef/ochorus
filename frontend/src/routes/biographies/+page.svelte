@@ -23,9 +23,9 @@
 		parseFacets,
 		toggleIn,
 		type EraCard,
-		type FacetKey,
-		type FacetOption
+		type FacetKey
 	} from '$lib/bioFacets';
+	import type { FacetOption } from '$lib/components/FacetMenu.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -113,18 +113,22 @@
 		if (!showFullLife && filters.values.full) filters.values.full = '';
 	});
 
-	// Everything but the three facets: search, has-books, full life. Split out
-	// because the facet menus count against it (facetCounts' `base`).
-	const baseMatch = $derived.by(() => {
+	// Name + bio, lowercased once per roster rather than once per keystroke.
+	// The newline keeps a query from matching across the name/bio seam.
+	const haystack = $derived(
+		new Map(authors.map((a) => [a.slug, `${a.name}\n${a.bio ?? ''}`.toLowerCase()]))
+	);
+	// Everything but the three facets: search, has-books, full life. The facet
+	// menus count within this pool, so it is computed once and shared.
+	const basePool = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		const { filter, full } = filters.values;
-		return (a: AuthorBio) => {
+		return authors.filter((a) => {
 			if (filter === 'library' && worksCount(a) === 0) return false;
 			if (filter === 'bio' && worksCount(a) > 0) return false;
 			if (showFullLife && full === '1' && !a.has_long_bio) return false;
-			if (!q) return true;
-			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
-		};
+			return !q || haystack.get(a.slug)!.includes(q);
+		});
 	});
 
 	// --- Facets: tradition · place · era ----------------------------------------
@@ -145,44 +149,77 @@
 		}
 	});
 	const toggleFacet = (k: FacetKey, v: string) => (filters.values[k] = toggleIn(filters.values[k], v));
-	const hubLabel = $derived(new Map(hubs.map((h) => [h.slug, h.label])));
 
-	const filtered = $derived(authors.filter((a) => baseMatch(a) && inFacets(a, facets, members)));
+	const filtered = $derived(basePool.filter((a) => inFacets(a, facets, members)));
 
-	const countsFor = (k: FacetKey, options: string[]) =>
-		facetCounts(authors, facets, members, k, options, baseMatch);
+	/** A facet's options with each one's count attached (facetCounts). */
+	const withCounts = (k: FacetKey, opts: Omit<FacetOption, 'count'>[]): FacetOption[] => {
+		const n = facetCounts(basePool, facets, members, k, opts.map((o) => o.v));
+		return opts.map((o) => ({ ...o, count: n.get(o.v) ?? 0 }));
+	};
 
-	const tradOptions = $derived.by((): FacetOption[] => {
-		const n = countsFor('trad', traditions.map((h) => h.slug));
-		return traditions.map((h) => ({ v: h.slug, label: h.label, count: n.get(h.slug) ?? 0 }));
-	});
-	// Each region, then its places indented beneath it; places with no region
-	// page in this language follow unindented (placeGroups' "Elsewhere").
-	const placeOptions = $derived.by((): FacetOption[] => {
-		const slugs = places.flatMap((g) => [...(g.region ? [g.region.slug] : []), ...g.places.map((p) => p.slug)]);
-		const n = countsFor('place', slugs);
-		return places.flatMap((g) => [
-			...(g.region ? [{ v: g.region.slug, label: g.region.label, count: n.get(g.region.slug) ?? 0, strong: true }] : []),
-			...g.places.map((p) => ({ v: p.slug, label: p.label, count: n.get(p.slug) ?? 0, indent: !!g.region }))
-		]);
+	// The writers per era, best-known first (portraits, then most to read) —
+	// the faces on the band. Depends on the roster only, not the filters.
+	const byEra = $derived.by(() => {
+		const m = new Map<EraId, AuthorBio[]>();
+		for (const a of authors) {
+			const id = eraOf(a.birth_year);
+			m.set(id, [...(m.get(id) ?? []), a]);
+		}
+		for (const xs of m.values())
+			xs.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a));
+		return m;
 	});
 	// Only the eras that have writers in this language at all.
-	const presentEras = $derived(ERAS.filter((e) => authors.some((a) => eraOf(a.birth_year) === e.id)));
-	const eraCounts = $derived(countsFor('era', presentEras.map((e) => e.id)));
-	const eraOptions = $derived(
-		presentEras.map((e): FacetOption => ({ v: e.id, label: t(e.k), count: eraCounts.get(e.id) ?? 0 }))
+	const presentEras = $derived(ERAS.filter((e) => byEra.has(e.id)));
+
+	// The three facets, each with its label and counted options — one list the
+	// toolbar menus, the phone sheet and the chips all read. Places are each
+	// region with its places indented beneath it; places with no region page in
+	// this language follow unindented (placeGroups' "Elsewhere").
+	const facetGroups = $derived.by(() => {
+		const groups: { k: FacetKey; label: string; options: FacetOption[] }[] = [
+			{
+				k: 'trad',
+				label: t('bios.tradition'),
+				options: withCounts('trad', traditions.map((h) => ({ v: h.slug, label: h.label })))
+			},
+			{
+				k: 'place',
+				label: t('bios.place'),
+				options: withCounts(
+					'place',
+					places.flatMap((g) => [
+						...(g.region ? [{ v: g.region.slug, label: g.region.label, strong: true }] : []),
+						...g.places.map((p) => ({ v: p.slug, label: p.label, indent: !!g.region }))
+					])
+				)
+			},
+			{
+				k: 'era',
+				label: t('bios.era'),
+				options: withCounts('era', presentEras.map((e) => ({ v: e.id, label: t(e.k) })))
+			}
+		];
+		return groups.filter((g) => g.options.length);
+	});
+	const facetLabel = $derived(
+		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.label])))
 	);
-	// The era band: each era's count (under the other filters) and three faces —
-	// the era's most-read writers, portraits first.
-	const eraCards = $derived(
-		presentEras.map((e): EraCard => {
-			const faces = authors
-				.filter((a) => eraOf(a.birth_year) === e.id)
-				.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a))
-				.slice(0, 3);
-			return { id: e.id, name: t(e.k), range: e.range, count: eraCounts.get(e.id) ?? 0, faces };
-		})
-	);
+
+	// The era band: each era's count (under the other filters) and three faces.
+	const eraCards = $derived.by(() => {
+		const counts = facetGroups.find((g) => g.k === 'era')?.options ?? [];
+		return presentEras.map(
+			(e): EraCard => ({
+				id: e.id,
+				name: t(e.k),
+				range: e.range,
+				count: counts.find((o) => o.v === e.id)?.count ?? 0,
+				faces: byEra.get(e.id)!.slice(0, 3)
+			})
+		);
+	});
 
 	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
 	type View = 'list' | 'grid';
@@ -205,35 +242,31 @@
 	const sheetCount = $derived(
 		(filters.values.filter !== 'all' ? 1 : 0) +
 			(showFullLife && filters.values.full ? 1 : 0) +
-			facets.trad.length +
-			facets.place.length +
-			facets.era.length
+			Object.values(facets).reduce((n, xs) => n + xs.length, 0)
 	);
 
 	// The filters currently narrowing the roster, each liftable on its own. The
-	// query (shared with every shelf) comes from filterChips; the library/bio
-	// segment and the Full-life toggle show their state in their own controls,
-	// but ride along so one row carries the whole set and every part has a ×. The
+	// query (shared with every shelf) comes from filterChips; the has-books switch
+	// and the Full-life toggle show their state in their own controls, but ride
+	// along so one row carries the whole set and every part has a ×. The
 	// `full` chip follows the same showFullLife guard as its control and the
 	// badge — a stale ?full=1 with no visible toggle must not surface a chip.
 	const activeChips = $derived.by(() => {
 		const c: FilterChip[] = [];
 		const q = queryChip(filters);
 		if (q) c.push(q);
-		if (filters.values.filter !== 'all') {
-			const k = FILTERS.find((f) => f.v === filters.values.filter)?.k;
-			if (k)
-				c.push({ kind: 'filter', label: t(k), onRemove: () => (filters.values.filter = 'all') });
-		}
+		// 'bio' has no control of its own any more — only an old shared link sets it.
+		if (filters.values.filter !== 'all')
+			c.push({
+				kind: 'filter',
+				label: t(filters.values.filter === 'bio' ? 'bios.filterBioOnly' : 'bios.filterInLibrary'),
+				onRemove: () => (filters.values.filter = 'all')
+			});
 		if (showFullLife && filters.values.full === '1')
 			c.push({ kind: 'full', label: t('bios.fullLife'), onRemove: () => (filters.values.full = '') });
-		for (const k of ['trad', 'place'] as const)
-			for (const s of facets[k])
-				c.push({ kind: `${k}:${s}`, label: hubLabel.get(s) ?? s, onRemove: () => toggleFacet(k, s) });
-		for (const id of facets.era) {
-			const era = ERAS.find((e) => e.id === id);
-			c.push({ kind: `era:${id}`, label: era ? t(era.k) : id, onRemove: () => toggleFacet('era', id) });
-		}
+		for (const k of ['trad', 'place', 'era'] as const)
+			for (const v of facets[k])
+				c.push({ kind: `${k}:${v}`, label: facetLabel.get(`${k}:${v}`) ?? v, onRemove: () => toggleFacet(k, v) });
 		return c;
 	});
 
@@ -289,8 +322,7 @@
 	// of 1; the snapshot brings Back to where you were ($lib/paging).
 	const pages = pager(
 		() => sorted,
-		() =>
-			`${filters.values.q}|${filters.values.filter}|${filters.values.full}|${filters.values.sort}|${filters.values.trad}|${filters.values.place}|${filters.values.era}`
+		() => Object.values(filters.values).join('|')
 	);
 	export const snapshot = pagedSnapshot(() => pages);
 
@@ -299,11 +331,6 @@
 		era: 'bios.sortEra',
 		books: 'bios.sortBooks'
 	};
-	const FILTERS: { v: Filter; k: string }[] = [
-		{ v: 'all', k: 'bios.filterAll' },
-		{ v: 'library', k: 'bios.filterInLibrary' },
-		{ v: 'bio', k: 'bios.filterBioOnly' }
-	];
 
 	// --- Eras -------------------------------------------------------------------
 	// ERAS / eraOf live in $lib/eras (shared with the per-era landing pages).
@@ -396,13 +423,8 @@
 	structuredData={[peopleLd, crumbsLd]}
 />
 
-<!--
-	`--pinned-offset` is how far down the page the first unobstructed pixel is:
-	the sticky app nav plus this page's own pinned controls bar. Everything that
-	pins or scrolls into view below reads it, so there is one number to be right
-	rather than four hard-coded ones drifting apart.
--->
-<!-- Shared by the inline row (sm up) and the phone sheet. -->
+<!-- The snippets below are each rendered twice: in the inline row (sm up)
+     and in the phone sheet. -->
 <!-- "Has books to read" — the old All / In the library / Biography only
      segment as the one question people actually ask of it. A shared
      ?filter=bio still works; it shows as a removable chip in the summary. -->
@@ -418,7 +440,7 @@
 		<span class="switch" aria-hidden="true"></span>{t('bios.hasBooks')}
 	</button>
 {/snippet}
-<!-- Orthogonal to the library/bio segments: narrows to writers with a
+<!-- Orthogonal to the has-books switch: narrows to writers with a
      full-length biography (the "Full life" badge). Shown only when it
      actually splits the roster (see showFullLife) — in English almost every
      writer has a full bio, so the chip would remove almost no one. -->
@@ -452,6 +474,12 @@
 	{/if}
 {/snippet}
 
+<!--
+	`--pinned-offset` is how far down the page the first unobstructed pixel is:
+	the sticky app nav plus this page's own pinned controls bar. Everything that
+	pins or scrolls into view below reads it, so there is one number to be right
+	rather than four hard-coded ones drifting apart.
+-->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
@@ -509,28 +537,14 @@
 				{@render hasBooksToggle()}
 				{#if showFullLife}{@render fullLifeChip()}{/if}
 			</div>
-			{#if tradOptions.length}
+			{#each facetGroups as g (g.k)}
 				<SheetChoices
-					label={t('bios.tradition')}
-					options={tradOptions}
-					isActive={(v) => facets.trad.includes(v)}
-					onselect={(v) => toggleFacet('trad', v)}
+					label={g.label}
+					options={g.options}
+					isActive={(v) => facets[g.k].includes(v)}
+					onselect={(v) => toggleFacet(g.k, v)}
 				/>
-			{/if}
-			{#if placeOptions.length}
-				<SheetChoices
-					label={t('bios.place')}
-					options={placeOptions}
-					isActive={(v) => facets.place.includes(v)}
-					onselect={(v) => toggleFacet('place', v)}
-				/>
-			{/if}
-			<SheetChoices
-				label={t('bios.era')}
-				options={eraOptions}
-				isActive={(v) => facets.era.includes(v)}
-				onselect={(v) => toggleFacet('era', v)}
-			/>
+			{/each}
 			<SheetChoices
 				label={t('bios.sort')}
 				options={SORT_VALUES.map((v) => ({ v, label: t(SORT_LABEL[v]) }))}
@@ -549,31 +563,15 @@
 		</FilterSheet>
 
 		<div class="hidden sm:contents">
-			{#if tradOptions.length}
+			{#each facetGroups as g (g.k)}
 				<FacetMenu
-					label={t('bios.tradition')}
-					options={tradOptions}
-					selected={facets.trad}
-					ontoggle={(v) => toggleFacet('trad', v)}
-					onclear={() => (filters.values.trad = '')}
+					label={g.label}
+					options={g.options}
+					selected={facets[g.k]}
+					ontoggle={(v) => toggleFacet(g.k, v)}
+					onclear={() => (filters.values[g.k] = '')}
 				/>
-			{/if}
-			{#if placeOptions.length}
-				<FacetMenu
-					label={t('bios.place')}
-					options={placeOptions}
-					selected={facets.place}
-					ontoggle={(v) => toggleFacet('place', v)}
-					onclear={() => (filters.values.place = '')}
-				/>
-			{/if}
-			<FacetMenu
-				label={t('bios.era')}
-				options={eraOptions}
-				selected={facets.era}
-				ontoggle={(v) => toggleFacet('era', v)}
-				onclear={() => (filters.values.era = '')}
-			/>
+			{/each}
 			{@render hasBooksToggle()}
 			{#if showFullLife}
 				{@render fullLifeChip()}
@@ -786,11 +784,6 @@
 		gap: 0.5rem;
 		cursor: pointer;
 		white-space: nowrap;
-	}
-	.has-books.is-active {
-		background: var(--accent-soft);
-		border-color: var(--accent-soft-border);
-		color: var(--text);
 	}
 	.switch {
 		position: relative;

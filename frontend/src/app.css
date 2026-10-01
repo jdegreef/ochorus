@@ -2251,6 +2251,14 @@ a.sermon-row-title:hover {
 	border-color: var(--accent);
 	color: var(--accent);
 }
+/* A filter-row control that is narrowing the shelf (a facet menu with ticks,
+   the biographies has-books switch): tinted like an active .chip, so "on"
+   reads the same across the row. */
+.filter-field.is-active {
+	background: var(--accent-soft);
+	border-color: var(--accent-soft-border);
+	font-weight: 600;
+}
 .field::placeholder,
 .filter-field::placeholder {
 	color: var(--muted);

@@ -1,11 +1,22 @@
+<script lang="ts" module>
+	/** One tick. `indent` nests an option under the `strong` one above it
+	 *  (a place under its region). */
+	export type FacetOption = {
+		v: string;
+		label: string;
+		count: number;
+		indent?: boolean;
+		strong?: boolean;
+	};
+</script>
+
 <script lang="ts">
 	import { dismissable } from '$lib/actions/dismissable';
 	import { i18n } from '$lib/i18n.svelte';
-	import type { FacetOption } from '$lib/bioFacets';
 
 	/**
-	 * A multi-select filter as one button and a menu of ticks — the biographies
-	 * toolbar's Tradition / Place / Era. Twelve traditions and a dozen places used
+	 * A multi-select filter as one button and a menu of ticks (first used for
+	 * the biographies toolbar's Tradition / Place / Era; shelf-agnostic). Twelve traditions and a dozen places used
 	 * to sit above the list as two walls of chips (~400px before the first
 	 * writer); here each facet is one control, and its menu says how many
 	 * writers each tick leaves.
@@ -43,14 +54,14 @@
 		aria-controls={open ? menuId : undefined}
 		onclick={() => (open = !open)}
 	>
-		{label}{#if selected.length}<span class="facet-count">{selected.length}</span>{/if}
+		{label}{#if selected.length}<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent">{selected.length}</span>{/if}
 		<svg class="facet-chev" class:open width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
 	</button>
 	{#if open}
 		<!-- A labelled group of checkboxes, not role=menu: that promises arrow-key
 		     menu navigation, and these are ordinary form controls (Tab moves
 		     through them, Space ticks). -->
-		<div id={menuId} class="facet-menu" role="group" aria-label={label}>
+		<div id={menuId} class="account-menu facet-menu" role="group" aria-label={label}>
 			<ul>
 				{#each options as o (o.v)}
 					<li>
@@ -81,21 +92,6 @@
 		cursor: pointer;
 		white-space: nowrap;
 	}
-	.facet-trigger.is-active {
-		background: var(--accent-soft);
-		border-color: var(--accent-soft-border);
-		font-weight: 600;
-	}
-	.facet-count {
-		min-width: 1.25rem;
-		border-radius: 999px;
-		background: var(--accent);
-		color: var(--accent-contrast);
-		padding: 0 0.35rem;
-		font-size: var(--fs-micro);
-		line-height: 1.25rem;
-		text-align: center;
-	}
 	.facet-chev {
 		color: var(--muted);
 		transition: transform var(--duration-base, 150ms);
@@ -103,19 +99,14 @@
 	.facet-chev.open {
 		transform: rotate(180deg);
 	}
+	/* .account-menu is the shared popover chrome; this opens it start-side and
+	   lets a long list scroll. */
 	.facet-menu {
-		position: absolute;
 		inset-inline-start: 0;
-		top: calc(100% + 0.4rem);
-		z-index: 50;
+		inset-inline-end: auto;
 		width: 18rem;
 		max-height: min(26rem, 70vh);
 		overflow-y: auto;
-		background: var(--surface);
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		box-shadow: var(--shadow-popover);
-		padding: 0.35rem;
 	}
 	.facet-option {
 		display: flex;

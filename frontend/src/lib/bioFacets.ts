@@ -12,16 +12,6 @@ import type { AuthorBio, Hub } from '$lib/library-public';
  * they are the indexable answers — but on the index the same groupings now
  * filter in place rather than navigating away.
  */
-/** One tick in a FacetMenu. `indent` nests a place under its region; `strong`
- *  marks the region. */
-export type FacetOption = {
-	v: string;
-	label: string;
-	count: number;
-	indent?: boolean;
-	strong?: boolean;
-};
-
 /** One card of the era band. */
 export type EraCard = { id: EraId; name: string; range: string; count: number; faces: AuthorBio[] };
 
@@ -79,7 +69,7 @@ export function inFacets(
 	const anyHub = (slugs: string[]) => slugs.some((s) => members.get(s)?.has(a.slug));
 	if (skip !== 'trad' && f.trad.length && !anyHub(f.trad)) return false;
 	if (skip !== 'place' && f.place.length && !anyHub(f.place)) return false;
-	if (skip !== 'era' && f.era.length && !f.era.includes(eraOf(a.birth_year) as EraId))
+	if (skip !== 'era' && f.era.length && !f.era.includes(eraOf(a.birth_year)))
 		return false;
 	return true;
 }
@@ -87,18 +77,17 @@ export function inFacets(
 /**
  * How many writers each option of `facet` would show, given everything else
  * that is narrowing the list — the number beside a tick is what ticking it
- * (alone, within its facet) gives you. `base` is the rest of the page's filters
- * (search, has-books, full life).
+ * (alone, within its facet) gives you. `authors` is the roster already narrowed
+ * by the page's other filters (search, has-books, full life).
  */
 export function facetCounts(
 	authors: AuthorBio[],
 	f: Facets,
 	members: Map<string, Set<string>>,
 	facet: FacetKey,
-	options: string[],
-	base: (a: AuthorBio) => boolean
+	options: string[]
 ): Map<string, number> {
-	const pool = authors.filter((a) => base(a) && inFacets(a, f, members, facet));
+	const pool = authors.filter((a) => inFacets(a, f, members, facet));
 	const counts = new Map<string, number>(options.map((o) => [o, 0]));
 	for (const a of pool) {
 		const era = eraOf(a.birth_year);
