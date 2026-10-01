@@ -9970,6 +9970,31 @@
 				478
 			]
 		},
+		"the-pursuit-of-god": {
+			"ground": "ac90ed259314f9e1044c7d3624e9dc3d57acc45f007acb7ea7e110ed93189f47",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[193, 102, 407, 131]
+				],
+				"title": [
+					[54, 359, 546, 435]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				308,
+				487
+			]
+		},
 		"the-reformed-pastor": {
 			"ground": "dc2edf59ee8bc58c50ee8181b46c82f50aa02da5601156c5f730f04f1b433de0",
 			"style": "press",

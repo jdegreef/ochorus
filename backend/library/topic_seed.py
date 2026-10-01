@@ -77,6 +77,7 @@ TOPICS = [
             "key-teachings-of-hannah-whitall-smith",
             "key-teachings-of-frederick-brotherton-meyer",
             "key-teachings-of-a-w-tozer",
+            "the-pursuit-of-god",
         ],
     ),
     (
@@ -169,6 +170,7 @@ TOPICS = [
             "provincial-letters",
             "letters-and-minor-works",
             "life-of-pascal",
+            "the-pursuit-of-god",
         ],
     ),
     (
@@ -360,6 +362,7 @@ TOPICS = [
             "the-inner-chamber",
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-a-w-tozer",
+            "the-pursuit-of-god",
         ],
     ),
     (

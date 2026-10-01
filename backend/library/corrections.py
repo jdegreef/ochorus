@@ -50,6 +50,24 @@ EXCLUDED_SLUGS: set[str] = {
 }
 
 CORRECTIONS: dict[str, dict] = {
+    "the-pursuit-of-god": {
+        # Gutenberg #25141 heads each chapter "I  <i>Following Hard after God</i>"
+        # — a bare roman numeral on the same line as the italic title, which
+        # survives clean_title (mixed case) and would double the reader's own
+        # number ("3. I Following…"). Orders 1–2 are the Introduction/Preface.
+        "chapter_titles": {
+            3: "Following Hard after God",
+            4: "The Blessedness of Possessing Nothing",
+            5: "Removing the Veil",
+            6: "Apprehending God",
+            7: "The Universal Presence",
+            8: "The Speaking Voice",
+            9: "The Gaze of the Soul",
+            10: "Restoring the Creator-creature Relation",
+            11: "Meekness and Rest",
+            12: "The Sacrament of Living",
+        },
+    },
     "the-secret-of-guidance": {
         # CCEL's TOC sets these titles in Title Case with a roman-numeral prefix
         # ("III. The Secret Of Christ's Indwelling"). clean_title's roman strip is
