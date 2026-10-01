@@ -14,21 +14,24 @@ import re
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from django.db import migrations
+from django.db.models import Q
 
 _SECRET_KEY = re.compile(r"token|code|secret|password|key|auth|session", re.IGNORECASE)
 
 
 def _scrub(url):
     parts = urlsplit(url)
-    query = urlencode(
-        [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True) if not _SECRET_KEY.search(k)]
-    )
+    pairs = parse_qsl(parts.query, keep_blank_values=True)
+    kept = [(k, v) for k, v in pairs if not _SECRET_KEY.search(k)]
+    query = urlencode(kept) if len(kept) < len(pairs) else parts.query
     return urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
 
 
 def scrub(apps, schema_editor):
     Feedback = apps.get_model("feedback", "Feedback")
-    for row in Feedback.objects.exclude(page_url="").only("id", "page_url").iterator():
+    # Only a fragment or a query can hold a credential; skip every other row.
+    rows = Feedback.objects.filter(Q(page_url__contains="#") | Q(page_url__contains="?"))
+    for row in rows.only("id", "page_url").iterator():
         clean = _scrub(row.page_url)
         if clean != row.page_url:
             Feedback.objects.filter(pk=row.pk).update(page_url=clean)

@@ -97,7 +97,9 @@ def _scrub_url(url: str) -> str:
     leftover or a scroll anchor, and an anchor isn't worth the risk."""
     parts = urlsplit(url)
     pairs = parse_qsl(parts.query, keep_blank_values=True)
-    query = urlencode([(k, v) for k, v in pairs if not _SECRET_KEY.search(k)])
+    kept = [(k, v) for k, v in pairs if not _SECRET_KEY.search(k)]
+    # Re-encode only when a key went, so a clean query keeps its exact spelling.
+    query = urlencode(kept) if len(kept) < len(pairs) else parts.query
     return urlunsplit((parts.scheme, parts.netloc, parts.path, query, ""))
 
 
@@ -105,8 +107,7 @@ def _clip_url(value, limit: int) -> str:
     """Like _clip, but only keep an http(s) URL — the admin queue renders this as
     a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS —
     and scrub any credential out of it first (see :func:`_scrub_url`)."""
-    url = _scrub_url(str(value or "").strip())
-    url = _clip(url, limit)
+    url = _scrub_url(_clip(value, limit))
     return url if urlsplit(url).scheme in ("http", "https") else ""
 
 
