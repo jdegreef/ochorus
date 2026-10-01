@@ -107,6 +107,10 @@ export interface TeamMember {
 	email: string;
 	scopes: AdminScope[];
 	roles: string[];
+	/** Roles whose rows lag the role's current preset (it gained capabilities
+	 *  after this grant). `languages` is null when the rows disagree, so no
+	 *  single re-grant is the faithful fix. */
+	outdated: { role: string; missing: string[]; languages: string[] | null }[];
 }
 export interface AdminTeam {
 	members: TeamMember[];
@@ -155,8 +159,10 @@ export const grantAdminAccess = (payload: {
 	capability?: string;
 	verb?: string;
 	languages?: string[];
+	/** Put back exactly these rows (Undo after a revoke) instead of granting. */
+	restore?: AdminScope[];
 }) =>
-	apiFetch<{ email: string; scopes: AdminScope[] }>('/api/admin/team/', {
+	apiFetch<{ email: string; scopes: AdminScope[]; removed: string[] }>('/api/admin/team/', {
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
