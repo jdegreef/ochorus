@@ -44,7 +44,7 @@
 		mounted && series.books ? seriesProgress(series.books, bookProgressReader()) : null
 	);
 	const progressLabel = $derived(
-		progress ? seriesCardProgressLabel(progress, contentLang(getLang())) : ''
+		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
 	// "Rooted – 30 Days with God for Youth" as a name over a subtitle, so the
@@ -58,15 +58,13 @@
 	emblem={meta.emblem}
 	covers={series.covers}
 	title={heading.name}
+	subtitle={heading.subtitle}
 	{headingLevel}
 >
 	{#snippet aside()}
 		{series.book_count}
 		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
-	{#if heading.subtitle}
-		<p class="mt-0.5 text-small text-muted" dir="auto">{heading.subtitle}</p>
-	{/if}
 	{#if ages}
 		<!-- Ink, not accent: the whole card is one link, and an indigo line
 		     inside it read as a second one that went nowhere. -->
@@ -81,7 +79,14 @@
 		<!-- mt-auto: with the body's flex:1 this sits on the card's floor, so a
 		     row of cards keeps its meters level. -->
 		<div class="mt-auto flex flex-col gap-1.5 pt-3">
-			<div class="segments" aria-hidden="true">
+			<div
+				class="segments"
+				role="progressbar"
+				aria-label={progressLabel}
+				aria-valuenow={progress.done}
+				aria-valuemin={0}
+				aria-valuemax={progress.total}
+			>
 				{#each progress.stages as stage, i (i)}
 					<span class="segment {stage}"></span>
 				{/each}
@@ -106,8 +111,10 @@
 	.segment {
 		flex: 1;
 		height: 0.3rem;
-		border-radius: 999px;
-		background: var(--surface-2);
+		border-radius: 9999px;
+		/* ProgressBar's track: a tint of the text colour shows on the card's
+		   surface in every theme, where surface-2 all but vanished. */
+		background: color-mix(in srgb, var(--text) 14%, transparent);
 	}
 	.segment.done {
 		background: var(--accent);

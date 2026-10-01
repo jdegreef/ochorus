@@ -496,7 +496,7 @@
   "book_series_member": "የ{series} አካል",
   "book_series_next": "በተከታታዩ ቀጣዩ",
   "series_progress": "ከ{total} {done} ተነብቧል",
-  "series_reading_book": "ከ{total} መጻሕፍት {position}ኛውን እያነበቡ ነው",
+  "series_in_progress": "በሂደት ላይ",
   "series_all_read": "በዚህ ተከታታይ ውስጥ ያሉትን መጻሕፍት በሙሉ አንብበዋል",
   "series_meta_default": "{series}፦ በተከታታዩ ውስጥ ያሉ መጻሕፍት በሙሉ፣ በOchorus ላይ በነጻ የሚነበቡ።",
   "series_tagline": "አብረው እንዲነበቡ የተጻፉ መጻሕፍት — አንዳንዶቹ በቅደም ተከተል፣ ሌሎቹ እንደ ስብስብ።",

@@ -39,21 +39,15 @@ export function seriesProgressLabel(done: number, total: number, language: strin
 }
 
 /**
- * A series card's progress line: "Reading book 2 of 6" while a book is open
- * (the first begun-not-finished one, as `nextInSeries` picks), else "2 of 6
- * read". The book a reader is in says more than a count that is still 0.
+ * A series card's progress line, from its books' stages: "In progress" while
+ * no book is finished yet (where "0 of 4 read" told a reader halfway through
+ * book one they had done nothing), then "2 of 6 read". No "book N": a
+ * collection has no reading order, and the card's list is this language's
+ * books, which need not match the volume numbers on the covers.
  */
-export function seriesCardProgressLabel(
-	progress: { done: number; total: number; stages: BookStage[] },
-	language: string
-): string {
-	const reading = progress.stages.indexOf('reading');
-	if (reading < 0) return seriesProgressLabel(progress.done, progress.total, language);
-	const position = reading + 1;
-	return m.series_reading_book({
-		position: volumeNumeral(position, language) ?? String(position),
-		total: volumeNumeral(progress.total, language) ?? String(progress.total)
-	});
+export function seriesCardProgressLabel(stages: BookStage[], language: string): string {
+	const done = stages.filter((s) => s === 'done').length;
+	return done ? seriesProgressLabel(done, stages.length, language) : m.series_in_progress();
 }
 
 /**

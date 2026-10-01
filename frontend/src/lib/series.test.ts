@@ -128,16 +128,15 @@ describe('seriesProgress', () => {
 });
 
 describe('seriesCardProgressLabel', () => {
-	it('names the book being read', () => {
-		const progress = { done: 1, total: 6, stages: ['done', 'reading', 'unread'] as const };
-		expect(seriesCardProgressLabel({ ...progress, stages: [...progress.stages] }, 'en')).toBe(
-			'Reading book 2 of 6'
+	it('says a series is in progress before any book is finished', () => {
+		expect(seriesCardProgressLabel(['reading', 'unread', 'unread', 'unread'], 'en')).toBe(
+			'In progress'
 		);
 	});
 
-	it('counts finished books when none is open', () => {
-		const stages: BookStage[] = ['done', 'done', 'unread', 'unread'];
-		expect(seriesCardProgressLabel({ done: 2, total: 4, stages }, 'en')).toBe('2 of 4 read');
+	it('counts finished books once there are any', () => {
+		const stages: BookStage[] = ['done', 'done', 'reading', 'unread'];
+		expect(seriesCardProgressLabel(stages, 'en')).toBe('2 of 4 read');
 	});
 });
 
