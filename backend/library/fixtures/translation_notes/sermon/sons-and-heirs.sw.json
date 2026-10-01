@@ -1,0 +1,133 @@
+{
+ "kind": "sermon",
+ "slug": "sons-and-heirs",
+ "language": "sw",
+ "job_issue": 4707,
+ "pull_request": 4870,
+ "references": [
+  {
+   "reference": "Romans 8:17a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Deuteronomy 4:20",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Peter 2:9a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Psalm 16:5a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Romans 8:17a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Isaiah 54:17b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Romans 14:17b",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Revelation 15:2a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Psalm 73:25a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Romans 8:17a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "2 Corinthians 6:15a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 5:8",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "purity-of-heart.sw.json"
+  },
+  {
+   "reference": "1 John 3:10a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "John 8:42a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "John 8:44a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Colossians 1:21",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Colossians 1:21",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "1 Corinthians 15:47",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Romans 8:17a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 8:15b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "godliness.sw.json"
+  }
+ ]
+}

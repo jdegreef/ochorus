@@ -1,0 +1,182 @@
+{
+ "kind": "sermon",
+ "slug": "i-know-that-my-redeemer-liveth",
+ "language": "sw",
+ "job_issue": 4640,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Job 19:25",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Job 19:26",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 11:13a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "John 8:56",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Mark 4:39",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Revelation 1:18",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Hebrews 13:8",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "John 8:58",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Hebrews 7:25a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Galatians 5:6",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Acts 15:9",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 John 5:4",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Matthew 17:20",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Isaiah 42:3a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Isaiah 42:3b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Kings 20:11",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 12:14",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Hosea 6:3a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Mark 9:7",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:11a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Psalm 84:7a",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Job 19:23-24",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Kings 8:27",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Joshua 23:14a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "1 John 3:2b",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 17:15a",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Matthew 22:42a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Philippians 3:21",
+   "status": "self_rendered",
+   "block_index": 25
+  }
+ ]
+}

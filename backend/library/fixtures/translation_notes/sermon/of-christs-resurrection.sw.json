@@ -1,0 +1,84 @@
+{
+ "kind": "sermon",
+ "slug": "of-christs-resurrection",
+ "language": "sw",
+ "job_issue": 4644,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Mark 16:1a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:5b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:8b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Genesis 1:13b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 4:25",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 4:25b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 1:29b",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "stepping-stones-2.sw.json"
+  },
+  {
+   "reference": "Genesis 3:15a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Genesis 22:18a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "1 Corinthians 15:54b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 15:55",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:56b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Matthew 13:33b",
+   "status": "self_rendered",
+   "block_index": 15
+  }
+ ]
+}

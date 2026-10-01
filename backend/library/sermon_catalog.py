@@ -1269,4 +1269,87 @@ SERMONS: list[SermonEntry] = [
         _SI + "robert-murray-mcheyne/electing-love/",
         scripture_ref="John 15:16",
     ),
+    # A.W. Tozer, batch 2 — nine more full-length transcribed sermons from
+    # SermonIndex, picked for the clearest transcripts (several others read as
+    # raw speech-to-text and were left off). Scripture refs are pinned from each
+    # sermon's own opening text, not SermonIndex's generated tags.
+    SermonEntry(
+        "gods-best-is-himself", "God's Best Is Himself", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/gods-best-is-himself/", scripture_ref="Numbers 18:20",
+    ),
+    SermonEntry(
+        "he-must-increase", "He Must Increase", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/he-must-increase/", scripture_ref="John 3:30",
+    ),
+    SermonEntry(
+        "seraphims-worship", "The Seraphim's Worship", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/seraphims-worship/", scripture_ref="Isaiah 6:1-4",
+    ),
+    SermonEntry(
+        "in-everything-by-prayer", "In Everything by Prayer", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/in-everything-by-prayer/", scripture_ref="Philippians 4:6",
+    ),
+    SermonEntry(
+        "how-to-cultivate-the-holy-spirits-companionship", "How to Cultivate the Holy Spirit's Companionship", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/how-to-cultivate-the-holy-spirits-companionship/", scripture_ref="John 14:16-17",
+    ),
+    SermonEntry(
+        "i-am-crucified-with-christ", "I Am Crucified with Christ", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/i-am-crucified-with-christ/", scripture_ref="Galatians 2:20",
+    ),
+    SermonEntry(
+        "how-to-grow-in-grace", "How to Grow in Grace", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/how-to-grow-in-grace/", scripture_ref="2 Peter 3:18",
+    ),
+    SermonEntry(
+        "how-to-have-a-personal-revival", "How to Have a Personal Revival", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/how-to-have-a-personal-revival/",
+    ),
+    SermonEntry(
+        "praying-church", "The Praying Church", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/praying-church/", scripture_ref="James 5:16",
+    ),
+    # A. B. Simpson, batch 2 — nine standalone printed sermons from SermonIndex,
+    # each opening on its own text. Public domain (Simpson d. 1919). Several of
+    # his SermonIndex texts come from a modernized edition ("my eye sees You" for
+    # the KJV "mine eye seeth thee") — those are left off; only texts that keep
+    # his own King James quotations are taken. His one-page devotionals there
+    # fall under the importer's word floor.
+    SermonEntry(
+        "the-spirit-of-prayer-simpson", "The Spirit of Prayer", "a-b-simpson",
+        "sermonindex", _SI + "ab-simpson/the-spirit-of-prayer/",
+        scripture_ref="Romans 8:26",
+    ),
+    SermonEntry(
+        "the-school-of-faith", "The School of Faith", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-school-of-faith/", scripture_ref="Hebrews 12:11",
+    ),
+    SermonEntry(
+        "practical-prayer", "Practical Prayer", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/practical-prayer/", scripture_ref="James 5:16",
+    ),
+    SermonEntry(
+        "the-great-secret", "The Great Secret", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-great-secret/", scripture_ref="Philippians 4:11-12",
+    ),
+    SermonEntry(
+        "the-boundless-sufficiency", "The Boundless Sufficiency", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-boundless-sufficiency/", scripture_ref="Philippians 4:19",
+    ),
+    SermonEntry(
+        "the-cloud-of-witnesses", "The Cloud of Witnesses", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-cloud-of-witnesses/", scripture_ref="Hebrews 12:1",
+    ),
+    SermonEntry(
+        "the-logic-of-missions", "The Logic of Missions", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-logic-of-missions/", scripture_ref="Romans 10:14-15",
+    ),
+    SermonEntry(
+        "wholly-sanctified", "Wholly Sanctified", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/wholly-sanctified/", scripture_ref="1 Thessalonians 5:23",
+    ),
+    SermonEntry(
+        "the-practical-hope-of-the-lords-coming", "The Practical Hope of the Lord's Coming", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-practical-hope-of-the-lords-coming/", scripture_ref="James 5:7-8",
+    ),
 ]

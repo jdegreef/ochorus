@@ -1,0 +1,120 @@
+{
+ "kind": "sermon",
+ "slug": "be-filled-with-the-spirit",
+ "language": "sw",
+ "job_issue": 4626,
+ "pull_request": 4725,
+ "references": [
+  {
+   "reference": "Ephesians 5:18b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Proverbs 28:13",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Luke 18:14b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Numbers 20:10",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Acts 26:25a",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 4:10a",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "1 Corinthians 15:31",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Mark 10:38b",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Romans 9:1-3",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 5:18a",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "2 Timothy 3:12",
+   "status": "self_rendered",
+   "block_index": 43
+  },
+  {
+   "reference": "Galatians 5:17a",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Psalms 25:14a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Genesis 32:28b",
+   "status": "self_rendered",
+   "block_index": 49
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "1 Timothy 4:2b",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 13:5",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "Luke 18:8b",
+   "status": "mined",
+   "block_index": 76,
+   "source_file": "revival-lectures.sw.json"
+  }
+ ]
+}

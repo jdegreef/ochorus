@@ -40,6 +40,7 @@ from .models import (
 )
 from .recipient import verified_email as resolve_recipient_email
 from .rendering import render_welcome
+from .streams import STREAM_KEYS
 
 User = get_user_model()
 
@@ -785,3 +786,154 @@ class AllowlistEmptyMeansEveryoneTests(TestCase):
         message = send_welcome(profile)
         send.assert_called_once()
         self.assertEqual(message.status, SendStatus.SENT)
+
+
+class StreamPreferenceTests(TestCase):
+    """Per-stream consent: the preference center's model layer."""
+
+    def setUp(self):
+        self.profile = _make_profile()
+        self.sub = EmailSubscription.objects.create(profile=self.profile)
+
+    def test_streams_default_on_opt_out_posture(self):
+        for key in STREAM_KEYS:
+            self.assertTrue(self.sub.wants_stream(key), key)
+
+    def test_explicit_off_is_honored(self):
+        self.sub.stream_prefs = {"digest": False}
+        self.assertFalse(self.sub.wants_stream("digest"))
+        # Untouched streams stay on.
+        self.assertTrue(self.sub.wants_stream("announcements"))
+
+    def test_legacy_boolean_is_the_stream_default(self):
+        # A reader who turned the old newsletter switch off defaults the
+        # announcements stream off until they set it explicitly.
+        self.sub.newsletter_opt_in = False
+        self.assertFalse(self.sub.wants_stream("announcements"))
+        self.sub.stream_prefs = {"announcements": True}
+        self.assertTrue(self.sub.wants_stream("announcements"))
+
+    def test_master_switch_and_suppression_block_every_stream(self):
+        self.sub.stream_prefs = dict.fromkeys(STREAM_KEYS, True)
+        self.sub.unsubscribed_all = True
+        for key in STREAM_KEYS:
+            self.assertFalse(self.sub.wants_stream(key), key)
+        self.sub.unsubscribed_all = False
+        self.sub.suppressed_at = timezone.now()
+        for key in STREAM_KEYS:
+            self.assertFalse(self.sub.wants_stream(key), key)
+
+    def test_kind_maps_to_its_stream(self):
+        self.sub.stream_prefs = {"announcements": False}
+        self.assertFalse(self.sub.wants(EmailKind.BROADCAST))
+        self.assertTrue(self.sub.wants(EmailKind.LIFECYCLE))
+
+
+@SENDING
+class EmailLocaleOverrideTests(TestCase):
+    def test_override_sets_the_rendered_language(self):
+        profile = _make_profile(locale="en", name="Ana")
+        sub = EmailSubscription.objects.create(profile=profile, email_locale="es")
+        rendered = render_welcome(profile, sub)
+        self.assertEqual(rendered.subject, "Bienvenido a Ochorus")
+        self.assertIn('lang="es"', rendered.html)
+
+    def test_blank_override_falls_back_to_reading_locale(self):
+        profile = _make_profile(locale="es", name="Ana")
+        sub = EmailSubscription.objects.create(profile=profile, email_locale="")
+        rendered = render_welcome(profile, sub)
+        self.assertEqual(rendered.subject, "Bienvenido a Ochorus")
+
+    def test_footer_carries_manage_preferences_link(self):
+        profile = _make_profile()
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_welcome(profile, sub)
+        self.assertIn("/email/preferences/", rendered.html)
+        self.assertIn(sub.unsubscribe_token, rendered.html)
+
+
+class EmailPreferencesViewTests(TestCase):
+    def setUp(self):
+        self.profile = _make_profile(locale="en")
+        self.sub = EmailSubscription.objects.create(profile=self.profile)
+        self.url = f"/api/emails/preferences/{self.sub.unsubscribe_token}/"
+
+    def test_get_returns_streams_and_state(self):
+        res = self.client.get(self.url)
+        self.assertEqual(res.status_code, 200)
+        body = res.json()
+        keys = {s["key"] for s in body["streams"]}
+        self.assertEqual(keys, set(STREAM_KEYS))
+        self.assertTrue(all(s["enabled"] for s in body["streams"]))
+        self.assertFalse(body["unsubscribed_all"])
+        self.assertIn("pt", {loc["code"] for loc in body["locales"]})
+
+    def test_post_saves_stream_choices(self):
+        res = self.client.post(
+            self.url,
+            data=json.dumps({"streams": {"digest": False, "bogus": True}}),
+            content_type="application/json",
+        )
+        self.assertEqual(res.status_code, 200)
+        self.sub.refresh_from_db()
+        self.assertFalse(self.sub.stream_prefs["digest"])
+        # An unknown stream key is ignored, never stored.
+        self.assertNotIn("bogus", self.sub.stream_prefs)
+
+    def test_post_sets_and_clears_locale_override(self):
+        self.client.post(
+            self.url,
+            data=json.dumps({"email_locale": "pt"}),
+            content_type="application/json",
+        )
+        self.sub.refresh_from_db()
+        self.assertEqual(self.sub.email_locale, "pt")
+        self.client.post(
+            self.url,
+            data=json.dumps({"email_locale": ""}),
+            content_type="application/json",
+        )
+        self.sub.refresh_from_db()
+        self.assertEqual(self.sub.email_locale, "")
+
+    def test_post_rejects_unknown_locale(self):
+        self.client.post(
+            self.url,
+            data=json.dumps({"email_locale": "zz"}),
+            content_type="application/json",
+        )
+        self.sub.refresh_from_db()
+        self.assertEqual(self.sub.email_locale, "")
+
+    def test_post_toggles_master_switch(self):
+        self.client.post(
+            self.url,
+            data=json.dumps({"unsubscribed_all": True}),
+            content_type="application/json",
+        )
+        self.sub.refresh_from_db()
+        self.assertTrue(self.sub.unsubscribed_all)
+        self.client.post(
+            self.url,
+            data=json.dumps({"unsubscribed_all": False}),
+            content_type="application/json",
+        )
+        self.sub.refresh_from_db()
+        self.assertFalse(self.sub.unsubscribed_all)
+
+    def test_unknown_token_is_404(self):
+        self.assertEqual(self.client.get("/api/emails/preferences/nope/").status_code, 404)
+        self.assertEqual(
+            self.client.post(
+                "/api/emails/preferences/nope/",
+                data="{}",
+                content_type="application/json",
+            ).status_code,
+            404,
+        )
+
+    def test_bad_payload_is_400(self):
+        res = self.client.post(
+            self.url, data="not json", content_type="application/json"
+        )
+        self.assertEqual(res.status_code, 400)

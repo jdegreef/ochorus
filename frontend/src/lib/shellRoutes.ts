@@ -33,7 +33,8 @@ export const SHELL_ROUTES = [
 	'/notebook/*',
 	'/reading',
 	'/login',
-	'/reset-password'
+	'/reset-password',
+	'/email/preferences/*'
 ] as const;
 
 /** Whether `pathname` (locale prefix stripped) matches a SHELL_ROUTES pattern. */

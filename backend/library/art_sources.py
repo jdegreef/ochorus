@@ -92,6 +92,7 @@ ART_SOURCES: dict[str, str] = {
     "the-inner-chamber": "met-440726@0.50",
     "the-life-of-trust": "cma-150047@0.50",
     "the-normal-christian-life": "met-437191@0.50",
+    "the-pursuit-of-god": "aic-68388@0.38",
     "the-reformed-pastor": "met-928532@0.50",
     "the-way-to-god": "met-436652@0.50",
     "things-as-they-are": "aic-76571@0.60",
