@@ -18,8 +18,11 @@ from .ingest import text_of
 # "Chapter <n>" with no real heading.
 GENERIC_TITLE = re.compile(r"^chapter\s+[\divxlc]+\.?$", re.IGNORECASE)
 # Sentence-final punctuation; a body not ending in one of these before the next
-# chapter suggests a mid-sentence split.
-TERMINAL_PUNCT = tuple('.!?"\'”’»)')
+# chapter suggests a mid-sentence split. Not just Latin marks: Hindi ends a
+# sentence with the danda (। ॥), Amharic with the Ethiopic full stop / question
+# mark (። ፧), Arabic asks with ؟. Without them every correctly-ended hi/am
+# chapter was flagged — ~1,230 of ~1,550 splits in the 2026-10 fixture.
+TERMINAL_PUNCT = tuple('.!?"\'”’»)।॥።፧؟')
 
 # Shared chapter-quality thresholds (see the book-qa skill).
 TINY_MAX = 150

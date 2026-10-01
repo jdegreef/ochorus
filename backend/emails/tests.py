@@ -152,6 +152,29 @@ class SubscriptionConsentTests(TestCase):
         self.assertTrue(self.sub.is_suppressed)
         self.assertFalse(self.sub.wants(EmailKind.LIFECYCLE))
 
+    def test_wants_stream_q_mirrors_wants_stream(self):
+        # The ORM mirror must select exactly the rows wants_stream() is true for,
+        # across the per-stream choice, its legacy fallback, and the blockers.
+        cases = [
+            {},
+            {"stream_prefs": {"announcements": False}},
+            {"stream_prefs": {"announcements": True}, "newsletter_opt_in": False},
+            {"newsletter_opt_in": False},
+            {"unsubscribed_all": True},
+            {"stream_prefs": {"announcements": True}, "unsubscribed_all": True},
+            {"suppressed_at": timezone.now()},
+        ]
+        for i, fields in enumerate(cases):
+            sub = EmailSubscription.objects.create(
+                profile=_make_profile(email=f"case{i}@example.com"), **fields
+            )
+            selected = EmailSubscription.objects.filter(
+                EmailSubscription.wants_stream_q("announcements"), pk=sub.pk
+            ).exists()
+            self.assertEqual(
+                selected, sub.wants_stream("announcements"), msg=f"case {i}: {fields}"
+            )
+
 
 @SENDING
 class RenderingTests(TestCase):
@@ -526,7 +549,37 @@ class AdminEmailMetricsTests(TestCase):
         data = self.client.get("/api/admin/email-metrics/").json()
         self.assertEqual(data["overview"]["sent"], 1)
         self.assertEqual(data["subscribers"]["total"], 1)
-        self.assertEqual(data["subscribers"]["newsletter_opt_in"], 1)
+        self.assertEqual(data["subscribers"]["announcements"], 1)
+
+    def test_announcements_count_follows_stream_prefs(self):
+        # The "announcements" subscriber count must track the preference center's
+        # per-stream choice (stream_prefs), not the legacy newsletter_opt_in
+        # boolean — mirroring EmailSubscription.wants_stream("announcements").
+        # A reader who never set the stream (default ON).
+        EmailSubscription.objects.create(profile=_make_profile(email="default@example.com"))
+        # A reader who turned Announcements OFF in the preference center while the
+        # legacy boolean is still its default True — must be excluded.
+        EmailSubscription.objects.create(
+            profile=_make_profile(email="off@example.com"),
+            stream_prefs={"announcements": False},
+        )
+        # A reader who turned Announcements ON explicitly — included even though
+        # the legacy boolean happens to be False.
+        EmailSubscription.objects.create(
+            profile=_make_profile(email="on@example.com"),
+            newsletter_opt_in=False,
+            stream_prefs={"announcements": True},
+        )
+        # Legacy opt-out, no explicit stream choice — default falls back to the
+        # boolean, so excluded.
+        EmailSubscription.objects.create(
+            profile=_make_profile(email="legacy-off@example.com"),
+            newsletter_opt_in=False,
+        )
+
+        data = self.client.get("/api/admin/email-metrics/").json()
+        self.assertEqual(data["subscribers"]["total"], 4)
+        self.assertEqual(data["subscribers"]["announcements"], 2)
 
 
 from .audience import count as audience_count  # noqa: E402

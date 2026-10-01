@@ -2398,6 +2398,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	color: var(--accent);
 	text-decoration: none;
 }
+/* A tag riding inline in a line of text — the A–Z index's young-reader
+   edition chips beside their full text. */
+.tag-sm {
+	padding: 0 0.45rem;
+	font-size: var(--fs-micro);
+	line-height: 1.5;
+}
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
 .widthctl {
