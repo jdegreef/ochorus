@@ -4,6 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import { relativeTime } from '$lib/relativeTime';
 	import {
 		adminUserDirectoryCsvUrl,
@@ -12,7 +13,6 @@
 		getAdminUsers,
 		maskEmail,
 		periodTrend,
-		SMALL_BASE,
 		type AdminUserSort,
 		type Trend
 	} from '$lib/library-admin';
@@ -84,11 +84,6 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
-	// A small-base trend reads as an absolute change ("+29"), which means
-	// nothing without the number it's relative to — so name it.
-	const prevSub = (prev: number, days: number) =>
-		prev < SMALL_BASE ? `prev ${days} days: ${fmt(prev)}` : `vs prev ${days} days`;
-
 	// "3 days ago" for the recent list, where recency is the point; the full date
 	// stays in the title.
 	const ago = (iso: string | null) => (iso ? relativeTime(Date.parse(iso), 'en', 'just now') : '—');
@@ -109,8 +104,8 @@
 					{ label: 'Registered users', value: data.total, sub: 'total accounts', trend: null },
 					{ label: 'Activated', value: data.with_activity, sub: `${pct(data.with_activity, data.total)}% have read`, trend: null },
 					{ label: 'Dormant', value: data.dormant, sub: 'no reading yet', trend: null },
-					{ label: 'New · 7d', value: data.signups_7d, sub: prevSub(data.signups_prev_7d, 7), trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
-					{ label: 'New · 30d', value: data.signups_30d, sub: prevSub(data.signups_prev_30d, 30), trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
+					{ label: 'New · 7d', value: data.signups_7d, sub: 'vs prev 7 days', trend: periodTrend(data.signups_7d, data.signups_prev_7d) },
+					{ label: 'New · 30d', value: data.signups_30d, sub: 'vs prev 30 days', trend: periodTrend(data.signups_30d, data.signups_prev_30d) }
 				]
 			: []
 	);
@@ -124,7 +119,6 @@
 	// Drop the "Continent/" prefix for a compact label; the city carries the info.
 	const tzLabel = (tz: string) => (tz === 'Other' ? tz : tz.split('/').pop()!.replace(/_/g, ' '));
 
-	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 	const variantMax = $derived(
@@ -227,22 +221,14 @@
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
-					<div class="flex items-end gap-1.5" style="height: 8rem">
-						{#each signupWeeks as w (w.week)}
-							<div class="flex h-full flex-1 flex-col items-center gap-1" title="Week of {weekLabel(w.week)} · {fmt(w.count)} sign-up{w.count === 1 ? '' : 's'}">
-								<div class="text-small tabular-nums text-muted">{w.count}</div>
-								<!-- A slot with a definite height for the bar's percentage to
-								     resolve against (the search page's daily chart does the same). -->
-								<div class="flex w-full flex-1 flex-col justify-end">
-									<div
-										class="w-full rounded-t-sm border border-b-0 border-accent-soft-border bg-accent-soft"
-										style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
-									></div>
-								</div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={signupWeeks.map((w) => ({
+							key: w.week,
+							label: weekLabel(w.week),
+							value: w.count,
+							title: `Week of ${weekLabel(w.week)} · ${fmt(w.count)} sign-up${w.count === 1 ? '' : 's'}`
+						}))}
+					/>
 				</section>
 
 				<!-- By sign-in method + Recent sign-ups -->

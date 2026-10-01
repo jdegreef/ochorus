@@ -917,15 +917,16 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean } | null;
 
 // Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
-// true and useless. Small bases report the absolute change ("+29") instead.
-export const SMALL_BASE = 20;
+// true and useless. Small bases report the absolute change ("+29 vs 1") instead.
+const SMALL_BASE = 20;
 
 const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
 const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
 
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
-	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: signed(cur - prev) };
+	// The baseline rides along, because "+29" means nothing without it.
+	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: `${signed(cur - prev)} vs ${prev}` };
 	const d = Math.round(((cur - prev) / prev) * 100);
 	return { dir: dirOf(d), text: `${signed(d)}%` };
 };
@@ -941,7 +942,7 @@ export const pointsTrend = (
 	if (prev === null) return null;
 	const d = Math.round((cur - prev) * 100);
 	const dir = dirOf(d);
-	return { dir, text: `${signed(d)} pts`, bad: dir !== 'flat' && (lowerIsBetter ? d > 0 : d < 0) };
+	return { dir, text: `${signed(d)} pts`, bad: lowerIsBetter ? d > 0 : d < 0 };
 };
 
 // Reading-engagement analytics (aggregate-only).
@@ -1619,7 +1620,7 @@ export interface SearchStatsWindow {
 	zero_rate: number;
 	/** Results opened in the same span. Rows, not readers — one search can lead
 	 *  to several opens — so a rate built on it is a trend, not "x% of people". */
-	clicks?: number;
+	clicks: number;
 }
 
 export interface SearchTopQuery {
@@ -1635,10 +1636,8 @@ export interface AdminSearchStats {
 		'7d': SearchStatsWindow;
 		'30d': SearchStatsWindow;
 		/** The window before each — the baseline for the period-over-period deltas. */
-		'7d_prev'?: SearchStatsWindow;
-		'30d_prev'?: SearchStatsWindow;
-		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
-		clicks_30d?: number;
+		'7d_prev': SearchStatsWindow;
+		'30d_prev': SearchStatsWindow;
 	};
 	/**
 	 * Queries that found plenty and were never opened — the silent failure the
