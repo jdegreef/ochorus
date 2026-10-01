@@ -1198,6 +1198,12 @@ export interface TopicSummary {
 	book_count: number;
 	sermon_count: number;
 	covers: TopicCover[];
+	/**
+	 * The shelf's epigraph passage in this language, worn by the card badge as a
+	 * monogram; "" when untranslated. Optional: an API predating it on the list
+	 * (rolling deploy) leaves it undefined and the card keeps its emblem.
+	 */
+	scripture_ref?: string;
 }
 
 /** What a topic chip draws — see `AuthorTileData`. */

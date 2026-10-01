@@ -499,6 +499,7 @@
 							href={localizeHref(`/topics/${topic.slug}`)}
 							hue={meta.accent}
 							emblem={meta.emblem}
+							scriptureRef={topic.scripture_ref}
 							covers={topic.covers}
 							title={topic.title}
 						>
