@@ -2439,6 +2439,33 @@
 				482
 			]
 		},
+		"es/men-who-tended-the-flock-2": {
+			"ground": "21a976a33deffc7d59d430961c05a8fd479228fca1e5cf9a34f5851a1e781993",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[99, 275, 501, 351],
+					[115, 341, 485, 417],
+					[161, 407, 439, 483]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				280,
+				515
+			]
+		},
 		"es/ministry-of-intercession": {
 			"ground": "d8b8c9d1f61b6b25ba9ac9e640e54155b7579b2eab4e7f376d3afb491ab3272c",
 			"style": "devotional",
