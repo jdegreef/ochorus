@@ -1099,7 +1099,7 @@ export interface AdminEmailMetrics {
 	by_broadcast: EmailBroadcastRow[];
 	subscribers: {
 		total: number;
-		newsletter_opt_in: number;
+		announcements: number;
 		unsubscribed: number;
 		suppressed: number;
 	};
