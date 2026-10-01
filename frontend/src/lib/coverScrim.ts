@@ -15,6 +15,8 @@ export const COVER_SCRIM: Record<string, number> = {
 	'a-serious-call': 0.65,
 	'a-short-and-easy-method-of-prayer': 0.80,
 	'amanda-smith-autobiography': 0.75,
+	'amanda-smith-autobiography-children': 0.30,
+	'amanda-smith-autobiography-teens': 0.30,
 	'brave-for-god': 0.30,
 	'brave-for-god-2': 0.30,
 	'brave-for-god-3': 0.30,
