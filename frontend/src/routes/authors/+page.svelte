@@ -15,6 +15,7 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -223,6 +224,7 @@
 					{#each g.entries as { author, rows } (author.slug)}
 						{@const life = formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}
 						{@const collapsed = collapses(author.slug, rows.length)}
+						{@const w = data.works[author.slug]}
 						<li class="mb-5 break-inside-avoid">
 							<a class="font-semibold hover:text-accent" href={localizeHref(`/authors/${author.slug}`)}
 								>{author.name}</a
@@ -262,6 +264,29 @@
 											: t('search.showLess')}
 									</button>
 								{/if}
+							{/if}
+							<!-- What else this writer has in this language. Sermons always
+							     (Maclaren has seven and no book — without this his entry
+							     looked broken). The biography only for a writer with nothing
+							     else listed: almost everyone has one, and on every entry the
+							     link would be noise — the name already leads there. -->
+							{#if w?.sermons || (w?.longBio && !rows.length)}
+								<div class="mt-1 flex flex-wrap gap-x-3 text-small">
+									{#if w.sermons}
+										<a
+											class="inline-flex items-center gap-1 text-muted hover:text-accent"
+											href={localizeHref(`/authors/${author.slug}#sermons`)}
+											><Icon name="mic" size={14} />{w.sermons}
+											{w.sermons === 1 ? t('common.sermonOne') : t('common.sermonMany')}</a
+										>
+									{:else}
+										<a
+											class="inline-flex items-center gap-1 text-muted hover:text-accent"
+											href={localizeHref(`/authors/${author.slug}#bio`)}
+											><Icon name="users" size={14} />{t('articles.kindBiography')}</a
+										>
+									{/if}
+								</div>
 							{/if}
 						</li>
 					{/each}

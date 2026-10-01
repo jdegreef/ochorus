@@ -9,7 +9,7 @@ import type { PageLoad } from './$types';
 export const trailingSlash = 'always';
 
 /**
- * The library A–Z ($lib/authorIndex). Two lists, fetched together:
+ * The library A–Z ($lib/authorIndex). Three lists, fetched together:
  *
  *   * the WRITERS in English — every listed writer, whatever this locale has
  *     translated. Names and dates are language-independent, and a per-locale
@@ -18,6 +18,10 @@ export const trailingSlash = 'always';
  *     who has a book here — see authorIndex.)
  *   * the BOOKS in this locale — no English fallback, so each writer lists
  *     exactly the editions a reader of this language can open.
+ *   * the writers in THIS locale too, for what else each one has here: the
+ *     list's sermon count and full-biography flag are per-language, so the
+ *     English list's would promise a Swahili reader English sermons. Off
+ *     English it is a third request; in English it is the first list again.
  *
  * A failure THROWS during the build, deliberately — the home page's `shelf()`
  * stance, not `loadShelf`'s. This page is the prerender's only seed for every
@@ -29,14 +33,21 @@ export const trailingSlash = 'always';
 export const load: PageLoad = async ({ fetch }) => {
 	const lang = getLang();
 	try {
-		const [authors, books] = await Promise.all([listAuthors('en', fetch), listBooks(lang, fetch)]);
+		const [authors, books, local] = await Promise.all([
+			listAuthors('en', fetch),
+			listBooks(lang, fetch),
+			lang === 'en' ? null : listAuthors(lang, fetch)
+		]);
 		// Only eras that actually contain a writer, matching the era route's own
 		// `entries()` — linking an empty era would bake a page the sitemap never
 		// advertises.
 		const present = new Set(authors.map((a) => eraOf(a.birth_year)));
-		return { authors, books, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
+		const works = Object.fromEntries(
+			(local ?? authors).map((a) => [a.slug, { sermons: a.sermon_count, longBio: a.has_long_bio }])
+		);
+		return { authors, books, works, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
 	} catch (e) {
 		if (building) throw e;
-		return { authors: [], books: [], eras: [], loadError: true };
+		return { authors: [], books: [], works: {}, eras: [], loadError: true };
 	}
 };
