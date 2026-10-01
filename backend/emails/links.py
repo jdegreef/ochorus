@@ -25,6 +25,12 @@ def unsubscribe_url(token: str) -> str:
     return f"{api_base()}/api/emails/unsubscribe/{token}/"
 
 
+def preferences_url(token: str) -> str:
+    """The footer's "manage preferences" link — the reader-facing preference
+    center, keyed by the same token as unsubscribe (no login needed)."""
+    return f"{site_base()}/email/preferences/{token}"
+
+
 def site_url(path: str = "") -> str:
     """A link into the reader site (defaults to the home page)."""
     return f"{site_base()}/{path.lstrip('/')}" if path else site_base() or "/"
