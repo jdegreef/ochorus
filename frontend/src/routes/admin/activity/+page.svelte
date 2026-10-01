@@ -112,7 +112,10 @@
 	const targetName = (target: string) => displayName(parseTarget(target));
 
 	async function loadOlder() {
-		if (cursor == null || loadingOlder) return;
+		// While a reload for new filters is in flight, `cursor` still belongs to
+		// the old query — pairing it with the new filters would fetch the wrong
+		// window.
+		if (cursor == null || loadingOlder || activity.loading) return;
 		loadingOlder = true;
 		olderError = null;
 		// The query this page belongs to. A base reload (a Refresh, a new target
@@ -178,22 +181,31 @@
 	// The file holds every row matching the filters, fetched for the purpose —
 	// exporting the loaded page silently dropped everything older.
 	let exporting = $state(false);
-	let exportError = $state<string | null>(null);
+	let exportNote = $state<{ text: string; error: boolean } | null>(null);
+	// A note describes one export; a filter change makes it stale.
+	$effect(() => {
+		void filterKey;
+		exportNote = null;
+	});
 	async function exportCsv() {
 		if (exporting) return;
 		exporting = true;
-		exportError = null;
+		exportNote = null;
 		try {
-			const res = await exportAdminActivity(filters);
+			// What the box says now, not the debounced value a click may beat.
+			const res = await exportAdminActivity({ ...filters, q: query.trim() || undefined });
 			downloadFile(
 				`ochorus-activity-${new Date().toISOString().slice(0, 10)}.csv`,
 				'text/csv;charset=utf-8',
 				toCsv(res.actions)
 			);
 			if (res.truncated)
-				exportError = `Exported the newest ${res.actions.length.toLocaleString('en')} rows — narrow the filters for the rest.`;
+				exportNote = {
+					text: `Exported the newest ${res.actions.length.toLocaleString('en')} rows — narrow the filters for the rest.`,
+					error: false
+				};
 		} catch (e) {
-			exportError = e instanceof Error ? e.message : 'Could not export activity.';
+			exportNote = { text: e instanceof Error ? e.message : 'Could not export activity.', error: true };
 		} finally {
 			exporting = false;
 		}
@@ -245,7 +257,7 @@
 		</div>
 	{/if}
 
-	<AdminGate resource={activity} errorTitle="Couldn't load activity">
+	<AdminGate resource={activity} errorTitle="Couldn't load activity" keepDataOnError>
 		{#snippet children(d)}
 			{#if !d.summary || d.summary.all === 0}
 				<div class="rounded-card border border-border bg-surface p-8 text-center">
@@ -319,7 +331,15 @@
 					{/if}
 				</div>
 
-				{#if exportError}<p class="mb-3 text-small text-danger">{exportError}</p>{/if}
+				{#if exportNote}
+					<p class="mb-3 text-small {exportNote.error ? 'text-danger' : 'text-muted'}">{exportNote.text}</p>
+				{/if}
+				{#if activity.error}
+					<p class="mb-3 text-small text-danger" role="alert">
+						Couldn't apply these filters: {activity.error}
+						<button class="ml-1 font-semibold underline" onclick={activity.load}>Try again</button>
+					</p>
+				{/if}
 				<p class="mb-3 text-small text-muted" aria-live="polite">
 					{#if isFiltered}
 						{(d.total ?? 0).toLocaleString('en')} matching across all {d.summary.all.toLocaleString('en')} actions{#if rows.length < (d.total ?? 0)}&nbsp;· {rows.length} loaded{/if}
@@ -419,7 +439,7 @@
 
 				{#if cursor != null}
 					<div class="mt-4 flex flex-col items-center gap-2">
-						<button class="btn btn-ghost" onclick={loadOlder} disabled={loadingOlder}>
+						<button class="btn btn-ghost" onclick={loadOlder} disabled={loadingOlder || activity.loading}>
 							{loadingOlder ? 'Loading…' : 'Load older'}
 						</button>
 						{#if olderError}<p class="text-small text-danger">{olderError}</p>{/if}

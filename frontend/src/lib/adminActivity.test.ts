@@ -24,6 +24,11 @@ const row = (over: Partial<AdminActionRow>): AdminActionRow => ({
 });
 
 describe('actionMeta', () => {
+	it('files an unknown role.* action under access, as the server does', () => {
+		expect(actionMeta('role.edit').category).toBe('access');
+		expect(actionMeta('broadcast.send').category).toBe('content');
+	});
+
 	it('marks only the two reader-facing actions loud', () => {
 		expect(actionMeta('language.go_live').loud).toBe(true);
 		expect(actionMeta('content.publish').loud).toBe(true);

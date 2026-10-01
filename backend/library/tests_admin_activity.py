@@ -216,6 +216,14 @@ class AdminActivityTests(TestCase):
         self.assertEqual(s["today"], 1)
 
     @override_settings(DEBUG=True)
+    def test_impossible_day_start_falls_back_not_500(self):
+        self._row(A.TRANSLATION_JOB)
+        for raw in ("2026-02-30T00:00:00Z", "2026-10-01T00:00:00+25:00", "nonsense"):
+            res = self.client.get("/api/admin/activity/", {"day_start": raw})
+            self.assertEqual(res.status_code, 200, raw)
+            self.assertEqual(res.data["summary"]["today"], 1)
+
+    @override_settings(DEBUG=True)
     def test_cursor_page_omits_the_summary(self):
         self._make(3)
         with patch.object(AdminActivityView, "LIMIT", 1):

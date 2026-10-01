@@ -92,10 +92,18 @@ def _day_start(raw: str | None, now):
     """The caller's local midnight, so "today" means the admin's day, not UTC's.
 
     Anything unparseable, naive, or not within the last day and a half (a
-    stale tab, a hand-edited URL) falls back to the server's own midnight.
+    stale tab, a hand-edited URL) falls back to the server's own midnight. The
+    upper bound allows a client clock running a little ahead of ours.
     """
-    parsed = parse_datetime(raw) if raw else None
-    if parsed and timezone.is_aware(parsed) and now - timedelta(hours=36) <= parsed <= now:
+    try:
+        parsed = parse_datetime(raw) if raw else None
+    except ValueError:  # well-formed but impossible, e.g. Feb 30 or +25:00
+        parsed = None
+    if (
+        parsed
+        and timezone.is_aware(parsed)
+        and now - timedelta(hours=36) <= parsed <= now + timedelta(hours=1)
+    ):
         return parsed
     return timezone.localtime(now).replace(hour=0, minute=0, second=0, microsecond=0)
 

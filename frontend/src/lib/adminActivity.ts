@@ -77,7 +77,9 @@ export const CATEGORIES: readonly Category[] = [
 export function actionMeta(action: string): ActionMeta {
 	const known = META[action];
 	if (known) return known;
-	const prefix = action.split('.')[0] as Category;
+	const head = action.split('.')[0];
+	// The same prefix rule as the server's `category_of`, which files the chips.
+	const prefix = (head === 'role' ? 'access' : head) as Category;
 	const category = CATEGORIES.includes(prefix) ? prefix : 'content';
 	return { category, icon: 'document', loud: false };
 }
