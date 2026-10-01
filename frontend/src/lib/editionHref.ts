@@ -4,6 +4,7 @@ import { MODERN_EDITION, baseEdition } from './reading-schema';
 import { authorPath } from './originals';
 import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
+import type { PlanDay } from './library-public';
 import type { WorkKind } from './reading-schema';
 
 /** The locale union `localizeHref` accepts; `lang.isAvailable` is its runtime check. */
@@ -72,5 +73,23 @@ export function chapterPath(
 	if (hasModern && (stayModern || readerPrefs.preferModern)) params.set('edition', 'modern');
 	const q = params.toString();
 	return `${workPath('book', slug, order)}${q ? `?${q}` : ''}`;
+}
+
+/**
+ * A plan day's path (unlocalized), carrying the plan context (`?plan=&day=`)
+ * its reading surface needs to mark the day done and move on. A day reads a
+ * book chapter (through `chapterPath`, so "Prefer Modern English" holds) or an
+ * article; every link into a plan day goes through here, so no entry point
+ * handles one kind and drops the other.
+ */
+export function planDayPath(
+	planSlug: string,
+	d: Pick<PlanDay, 'day' | 'book_slug' | 'chapter_order' | 'article_slug' | 'has_modern_edition'>,
+	/** Open a chapter's Modern edition whatever the preference — carrying on in it. */
+	stayModern = false
+): string {
+	const query = `plan=${encodeURIComponent(planSlug)}&day=${d.day}`;
+	if (d.article_slug) return `${workPath('article', d.article_slug)}?${query}`;
+	return chapterPath(d.book_slug, d.chapter_order ?? 1, d.has_modern_edition, query, stayModern);
 }
 

@@ -20,6 +20,7 @@ from ..audit import AdminAudited
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
+    Article,
     AuditDismissal,
     Author,
     AuthorTranslation,
@@ -1248,13 +1249,25 @@ class AdminAuditView(APIView):
         valid = set(
             Chapter.objects.values_list("book__slug", "book__language", "order")
         )
+        articles = set(
+            Article.objects.filter(is_published=True).values_list("slug", "language")
+        )
         out = []
         days = PlanDay.objects.select_related("plan").values(
-            "plan__slug", "plan__language", "day", "book_slug", "chapter_order"
+            "plan__slug",
+            "plan__language",
+            "day",
+            "book_slug",
+            "chapter_order",
+            "article_slug",
         )
         for d in days:
-            key = (d["book_slug"], d["plan__language"], d["chapter_order"])
-            if key not in valid:
+            if d["article_slug"]:
+                ok = (d["article_slug"], d["plan__language"]) in articles
+            else:
+                key = (d["book_slug"], d["plan__language"], d["chapter_order"])
+                ok = key in valid
+            if not ok:
                 out.append(
                     {
                         "plan": d["plan__slug"],
@@ -1262,6 +1275,7 @@ class AdminAuditView(APIView):
                         "day": d["day"],
                         "book": d["book_slug"],
                         "order": d["chapter_order"],
+                        "article": d["article_slug"],
                     }
                 )
         out.sort(key=lambda r: (r["plan"], r["day"]))

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { chapterPath } from '$lib/editionHref';
-	import type { PlanDetail } from '$lib/library-public';
+	import { planDayPath } from '$lib/editionHref';
+	import type { PlanDay, PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -38,9 +38,11 @@
 	// the span of days each occupies. Powers both the ItemList JSON-LD and the
 	// "In this plan" preview — a reader sees the shape of the journey (which
 	// works, in what order, over how many days) before committing.
+	// Article days are counted apart (`articleDays`): they have no book page.
 	const planBooks = $derived.by(() => {
 		const map = new Map<string, { slug: string; title: string; first: number; last: number; days: number }>();
 		for (const d of plan.days) {
+			if (d.article_slug) continue;
 			let e = map.get(d.book_slug);
 			if (!e) {
 				e = { slug: d.book_slug, title: d.book_title, first: d.day, last: d.day, days: 0 };
@@ -51,10 +53,15 @@
 		}
 		return [...map.values()];
 	});
-	const dayRange = (b: { first: number; last: number }) =>
+	const articleDays = $derived(plan.days.filter((d) => d.article_slug).length);
+	/** The line under a day's title: its book, or "Article" on an article day. */
+	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
+	const dayRange = (b: { first: number; last: number; days: number }) =>
 		b.first === b.last
 			? `${t('plans.day')} ${b.first}`
-			: `${t('plans.daysLabel')} ${b.first}–${b.last}`;
+			: b.days === b.last - b.first + 1
+				? `${t('plans.daysLabel')} ${b.first}–${b.last}`
+				: `${b.days} ${t('plans.days')}`; // read around articles: not one span
 	const planLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -105,11 +112,7 @@
 
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
-		return d
-			? localizeHref(
-					chapterPath(d.book_slug, d.chapter_order, d.has_modern_edition, `plan=${plan.slug}&day=${day}`)
-				)
-			: '#';
+		return d ? localizeHref(planDayPath(plan.slug, d)) : '#';
 	};
 </script>
 
@@ -172,7 +175,7 @@
 					<p class="text-small text-muted" dir="auto">
 						<!-- The separator as an expression: literal spaces at an {#if}
 						     boundary are compiler-trimmed ("Prayer·9 min"). -->
-						{nextDay.book_title}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
+						{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
 							>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
 					</p>
 				{/if}
@@ -205,7 +208,7 @@
 	<!-- Preview: the works this plan reads through, in order, with day spans —
 	     so a reader sees the whole journey before starting. Multi-book plans
 	     benefit most; a single-book plan is already summarised in the header. -->
-	{#if planBooks.length > 1}
+	{#if planBooks.length + (articleDays ? 1 : 0) > 1}
 		<section class="mt-8">
 			<h2 class="section-heading">
 				{t('plans.inThisPlan')}
@@ -222,6 +225,16 @@
 						<span class="shrink-0 text-small tabular-nums text-muted">{dayRange(b)}</span>
 					</li>
 				{/each}
+				{#if articleDays}
+					<!-- The articles read along the way, as one line: they sit between
+					     the books' chapters rather than in a span of their own. -->
+					<li class="flex items-baseline justify-between gap-3">
+						<span class="min-w-0 text-body font-medium text-text">{t('search.groupArticles')}</span>
+						<span class="shrink-0 text-small tabular-nums text-muted"
+							>{articleDays} {articleDays === 1 ? t('common.articleOne') : t('common.articleMany')}</span
+						>
+					</li>
+				{/if}
 			</ol>
 		</section>
 	{/if}
@@ -276,7 +289,7 @@
 							{d.chapter_title || `${t('plans.day')} ${d.day}`}
 						</span>
 						<span class="block text-small text-muted">
-							{d.book_title}{#if d.word_count}
+							{daySource(d)}{#if d.word_count}
 								<span class="opacity-60"> · </span>{readingMinutes(d.word_count)} {t('common.min')}{/if}
 						</span>
 					</span>
