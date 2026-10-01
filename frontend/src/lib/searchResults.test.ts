@@ -128,6 +128,14 @@ describe('toRow', () => {
 		expect(toRow(sermon('himself'), ctx).meta).toBe('A. B. Simpson');
 	});
 
+	it('draws a sermon as its passage monogram in its shelf hue', () => {
+		const row = toRow(sermon('himself', 'John 3:16'), ctx);
+		expect(row.monogram).toEqual({ scriptureRef: 'John 3:16', title: 'Himself' });
+		expect(row.color).toMatch(/^#[0-9a-f]{6}$/i);
+		expect(row.round).toBe(true);
+		expect(toRow(book(), ctx).monogram).toBeUndefined();
+	});
+
 	// Portraits are round and cropped to the face; covers keep their proportions.
 	it('marks portraits round and covers not', () => {
 		expect(toRow(author(), ctx).round).toBe(true);

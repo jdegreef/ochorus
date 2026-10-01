@@ -4,6 +4,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { coverSrcset } from '$lib/coverArt';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
 	import { onMount } from 'svelte';
 	import {
 		search,
@@ -678,8 +679,8 @@
 	</span>
 {/snippet}
 
-<!-- A cover or a portrait: the visual anchor that makes a list of titles
-     scannable. The box is reserved and colour-filled whether or not an image
+<!-- A cover, a portrait or a sermon's monogram: the visual anchor that makes
+     a list of titles scannable. The box is reserved and colour-filled whether or not an image
      arrives, so the list never reflows under the reader's cursor — and rows
      with neither (topics, plans) draw nothing rather than a placeholder. -->
 {#snippet thumb(row: {
@@ -689,8 +690,18 @@
 	round: boolean;
 	small?: boolean;
 	focus?: string;
+	monogram?: { scriptureRef: string; title: string };
 })}
-	{#if row.face}
+	{#if row.monogram}
+		<!-- A sermon wears its passage monogram, the mark it has on every shelf,
+		     at the portrait's size. Decorative: the row names the sermon. -->
+		<SermonMonogram
+			class="search-monogram"
+			scriptureRef={row.monogram.scriptureRef}
+			title={row.monogram.title}
+			hue={row.color}
+		/>
+	{:else if row.face}
 		<!-- A book's cover DRAWN, as everywhere else it appears: a plate is a
 		     wordless ground, so the bare image read as a blank block. -->
 		<!-- aria-hidden: the row's own title already names the book, and the
@@ -1274,5 +1285,10 @@
 		margin-inline-end: 0.15em;
 		vertical-align: super;
 		font-style: normal;
+	}
+	/* A sermon's monogram, sized like the round author portrait beside it
+	   (h-11 w-11). :global because the chip is a child component's root. */
+	:global(.search-monogram) {
+		--chip-size: 2.75rem;
 	}
 </style>

@@ -18,6 +18,7 @@ import { authorPath } from './originals';
 import { scripturePageHref } from '$lib/library-public';
 import type { ChapterHit, CoverFace, SearchHit, SearchType } from '$lib/library-public';
 import { chapterName } from './reading';
+import { sermonArt } from './sermonArt';
 
 /** One flat shape for every hit type, so the list renders uniformly. */
 export interface Row {
@@ -42,6 +43,11 @@ export interface Row {
 	round: boolean;
 	/** Where the face sits in a portrait; unset for covers, which crop nothing. */
 	focus?: string;
+	/**
+	 * A sermon's passage, drawn as its monogram (MAT over 11) in `color` — the
+	 * mark it wears on every shelf. Absent on other rows.
+	 */
+	monogram?: { scriptureRef: string; title: string };
 }
 
 export type ResultRow = Row & { type: SearchHit['type'] };
@@ -154,8 +160,10 @@ export function toRow(hit: SearchHit, ctx: RowContext): Row {
 				snippet: hit.snippet,
 				date: hit.date,
 				image: '',
-				color: '',
-				round: false
+				// The hue each sermon wears on shelves and its plate.
+				color: sermonArt(hit.sermon_slug).hue,
+				round: true,
+				monogram: { scriptureRef: hit.scripture_ref, title: hit.sermon_title }
 			};
 		default:
 			return {
