@@ -310,10 +310,10 @@ CURATED_PLANS = [
         "rooted-three-months-books-1-3",
         "Rooted: Three Months with God — Books 1–3",
         "Three months with God for readers aged 9 to 12: the first three books "
-        "of Rooted — Planted, Following Jesus and Growing Fruit — one "
-        "short devotion a day on who God is and the good news of Jesus, walking "
-        "with Him from the manger to the empty tomb, and growing the fruit of "
-        "the Spirit.",
+        "of Rooted — Planted, Following Jesus and Growing Fruit — one short "
+        "devotion a day on who God is and the good news of Jesus, walking with "
+        "Him from the manger to the empty tomb, and growing the fruit of the "
+        "Spirit.",
         [
             "rooted-1",
             "rooted-2",
@@ -324,9 +324,9 @@ CURATED_PLANS = [
         "rooted-three-months-books-4-6",
         "Rooted: Three Months with God — Books 4–6",
         "Three more months with God for readers aged 9 to 12: the last three "
-        "books of Rooted — Strong in the Storm, Branching Out and Bearing "
-        "Fruit — one short devotion a day on standing firm when life is "
-        "hard, loving the people around you, and God's purpose for your life.",
+        "books of Rooted — Strong in the Storm, Branching Out and Bearing Fruit "
+        "— one short devotion a day on standing firm when life is hard, loving "
+        "the people around you, and God's purpose for your life.",
         [
             "rooted-4",
             "rooted-5",
@@ -350,9 +350,9 @@ CURATED_PLANS = [
         "sons-of-the-king-three-months",
         "Sons of the King: Three Months with God",
         "Three months with God for boys aged 9 to 12: all three books of Sons "
-        "of the King — Strong, Faithful and Growing Up — one short "
-        "devotion a day on who you are in Christ, being someone who can be "
-        "trusted, and growing up with wisdom.",
+        "of the King — Strong, Faithful and Growing Up — one short devotion a "
+        "day on who you are in Christ, being someone who can be trusted, and "
+        "growing up with wisdom.",
         [
             "sons-of-the-king-1",
             "sons-of-the-king-2",
@@ -369,9 +369,10 @@ CURATED_PLANS = [
 #
 # Deleting is safe because a Plan row holds nothing a seed cannot rebuild: its
 # prose and days are derived from the lists above, and readers' progress is
-# keyed by slug in the reading app, not by FK. That progress is carried to the
-# successor plan(s) by a migration (reading 0032 for the series plans below) and
-# on the device by ``frontend/src/lib/planMoves.ts``. A retired slug may never
+# keyed by slug in the reading app, not by FK. That progress (and a saved
+# heart) is carried to the successor plan(s) by a migration (reading 0032 for
+# the series plans below) and, for progress, on the device by
+# ``frontend/src/lib/planMoves.ts``. A retired slug may never
 # return to LAUNCH_PLANS / CURATED_PLANS (``tests_topics_plans`` checks), so a
 # stale device that syncs its old day numbers onto one ticks nothing.
 #   {retired slug: (successor plan slugs)}

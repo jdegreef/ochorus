@@ -7,7 +7,10 @@
  * (the server moves the account's progress in a migration — backend
  * `library/migrations/0172_reshape_first_key_teachings.py`,
  * `reading/migrations/0032_move_series_plan_progress.py`) and this moves the
- * device's own cache across, once, by the same rule:
+ * device's own cache across, once, by this rule (0172 applies all of it; 0032's
+ * series moves have no merged days, and their only brand-new days — each
+ * book's Introduction and Conclusion — sit on book boundaries, so the
+ * read-past rule never fires there and the server simply leaves them unread):
  *
  * - a new day made of several old days is done only if all of them were;
  * - a brand-new day (no old days) is done when the reader had already done the

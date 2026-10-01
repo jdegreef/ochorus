@@ -24,6 +24,8 @@ device moves its own cache by the same map (``frontend/src/lib/planMoves.ts``);
 a stale device that re-sends an old slug lands on a retired one, which no plan
 reads.
 
+Saved (hearted) retired plans move to their successors too (``move_favorites``).
+
 The map is frozen here rather than imported, as a migration must be.
 """
 
@@ -87,6 +89,45 @@ def move_progress(apps, schema_editor):
             old.delete()
 
 
+def move_favorites(apps, schema_editor):
+    """A saved (hearted) retired plan becomes its successor(s), saved.
+
+    The old heart gets a tombstone, so a device that still holds it does not
+    re-create it on its next sign-in merge (a heart saved before the tombstone
+    is dropped as stale — see ``Removal``). A successor the reader had
+    deliberately un-hearted stays un-hearted.
+    """
+    from django.utils import timezone
+
+    Favorite = apps.get_model("reading", "Favorite")
+    Removal = apps.get_model("reading", "Removal")
+    now = timezone.now()
+    for fav in Favorite.objects.filter(kind="plan", slug__in=MOVES):
+        for new_slug, _ in MOVES[fav.slug]:
+            unhearted = Removal.objects.filter(
+                profile_id=fav.profile_id, domain="favorite", kind="plan", slug=new_slug
+            ).exists()
+            if not unhearted:
+                Favorite.objects.get_or_create(
+                    profile_id=fav.profile_id, kind="plan", slug=new_slug
+                )
+        Removal.objects.update_or_create(
+            profile_id=fav.profile_id,
+            domain="favorite",
+            kind="plan",
+            slug=fav.slug,
+            chapter_order=0,
+            paragraph_index=0,
+            defaults={"removed_at": now},
+        )
+        fav.delete()
+
+
+def move(apps, schema_editor):
+    move_progress(apps, schema_editor)
+    move_favorites(apps, schema_editor)
+
+
 def noop(apps, schema_editor):
     pass
 
@@ -97,5 +138,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(move_progress, noop),
+        migrations.RunPython(move, noop),
     ]

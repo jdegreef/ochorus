@@ -104,15 +104,13 @@ class Command(BaseCommand):
         (see ``RETIRED_PLANS``). An unpublished row would still count as a
         "present" plan in the admin coverage grid and per-language totals.
         """
-        for slug in RETIRED_PLANS:
-            rows = Plan.objects.filter(slug=slug)
-            langs = sorted(rows.values_list("language", flat=True))
-            if not langs:
-                continue
-            rows.delete()
-            self.stdout.write(
-                self.style.WARNING(f"Retired plan {slug} ({', '.join(langs)}).")
-            )
+        rows = Plan.objects.filter(slug__in=RETIRED_PLANS)
+        found = sorted(rows.values_list("slug", "language"))
+        if not found:
+            return  # the steady state: one query per deploy
+        rows.delete()
+        for slug, lang in found:
+            self.stdout.write(self.style.WARNING(f"Retired plan {slug} ({lang})."))
 
     def handle(self, *args, **opts):
         self._retire()
