@@ -44,6 +44,7 @@ from library.admin_views import (
     AdminManualView,
     AdminReviewDetailView,
     AdminReviewQueueView,
+    AdminRolesView,
     AdminSearchGapView,
     AdminSearchView,
     AdminSermonDetailView,
@@ -189,6 +190,7 @@ urlpatterns = [
         name="admin-translation-jobs",
     ),
     path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
+    path("api/admin/roles/", AdminRolesView.as_view(), name="admin-roles"),
     path("api/admin/feedback/", AdminFeedbackListView.as_view(), name="admin-feedback"),
     path(
         "api/admin/feedback/<int:pk>/",

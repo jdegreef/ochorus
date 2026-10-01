@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
+	import { scripturePageHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
+	import { groupScripture, heatScale, HEAT_LEVELS, mostCited } from '$lib/scriptureIndex';
+	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { tabStrip } from '$lib/actions/tabStrip';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -13,23 +17,40 @@
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// Grouped into the books of the Bible, in canonical order, each carrying its
-	// chapter pages. This is what makes the graph navigable rather than a list
-	// of URLs only a crawler ever sees: from here every chapter page is one
-	// click and every verse page two.
-	const books = $derived.by(() => {
-		const by = new Map<string, { title: string; order: number; chapters: ScripturePageEntry[] }>();
-		for (const p of pages) {
-			if (p.verse !== null) continue;
-			let b = by.get(p.book);
-			if (!b) by.set(p.book, (b = { title: p.book_title, order: p.book_order, chapters: [] }));
-			b.chapters.push(p);
-		}
-		return [...by.entries()]
-			.map(([slug, b]) => ({ slug, ...b }))
-			.sort((a, b) => a.order - b.order);
-	});
+	// The books of the Bible in canonical order, grouped into their sections
+	// (Law, History, … Paul's Letters), each carrying its chapter pages and its
+	// most-cited verse pages. This is what makes the graph navigable rather than
+	// a list of URLs only a crawler ever sees: from here every chapter page is
+	// one click, and the verses readers remember are one click too.
+	const sections = $derived(groupScripture(pages));
+	const books = $derived(sections.flatMap((s) => s.books));
 	const verseCount = $derived(pages.filter((p) => p.verse !== null).length);
+
+	// Every chapter chip is shaded by how many passages cite it, cut by rank
+	// (see heatScale) so the scale holds as the library grows. The count used
+	// to live only in a hover tooltip, which touch readers never see.
+	const heat = $derived(heatScale(books.flatMap((b) => b.chapters.map((c) => c.count))));
+	const passages = (n: number) => t('scripture.passagesCount').replace('%count%', String(n));
+
+	// A starting point for a reader who arrives without a passage in mind: the
+	// chapters the writers return to most.
+	const TOP_CHAPTERS = 8;
+	const top = $derived(mostCited(pages, TOP_CHAPTERS));
+
+	const sectionId = (key: string) => `section-${key}`;
+	const sectionName = (key: string) => t(`scripture.section.${key}`);
+
+	// Sticky jump bar over the sections, the author page's pattern: it pins under
+	// the app nav, its height feeds `--pinned-offset`, and the scroll-spy lights
+	// the section in view. No-JS / prerender: the links still jump.
+	let subnavH = $state(0);
+	const spy = scrollSpy(() => sections.map((s) => sectionId(s.key)));
+	function jumpTo(e: MouseEvent, id: string) {
+		e.preventDefault();
+		spy.set(id);
+		jumpToSection(id);
+		history.replaceState(null, '', `#${id}`);
+	}
 
 	const path = '/scripture/';
 	const canonical = `${SITE_URL}${path}`;
@@ -56,7 +77,7 @@
 			url: canonical,
 			items: books.map((b) => ({
 				name: b.title,
-				url: `/scripture/${b.slug}/${Math.min(...b.chapters.map((c) => c.chapter))}/`
+				url: `/scripture/${b.slug}/${b.chapters[0].chapter}/`
 			}))
 		})
 	);
@@ -64,7 +85,11 @@
 
 <Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, collectionLd]} />
 
-<div class="page-col px-5 py-10">
+<!-- --pinned-offset: how far down the first pixel unobstructed by both the app
+     nav and the section jump bar is; the section anchors read it for
+     scroll-margin so a jump lands below the bars. Same contract as the author
+     page. -->
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
 	     — Home is already the logo, <this> restates the H1 below, so it
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
@@ -79,24 +104,195 @@
 	{:else if !books.length}
 		<EmptyState message={t('scripture.empty')} />
 	{:else}
-		{#each books as book (book.slug)}
-			<section class="book">
-				<h2 class="bname">{book.title}</h2>
-				<ul class="chapters">
-					{#each book.chapters as c (c.chapter)}
+		<section class="top" aria-labelledby="top-heading">
+			<h2 id="top-heading" class="section-label">{t('scripture.mostCited')}</h2>
+			<ol class="top-list">
+				{#each top as c (`${c.slug}-${c.chapter}`)}
+					<li>
+						<a class="top-card" href={scripturePageHref(c.slug, c.chapter, null)}>
+							<span class="top-ref">{c.title} {c.chapter}</span>
+							<span class="top-count">{passages(c.count)}</span>
+						</a>
+					</li>
+				{/each}
+			</ol>
+		</section>
+
+		{#if sections.length >= 2}
+			<nav
+				bind:clientHeight={subnavH}
+				class="sections-nav sticky z-20 mt-10 border-b border-border bg-bg"
+				style="top: var(--appnav-h, 0px)"
+				aria-label={t('a11y.pageSections')}
+			>
+				<ul class="tab-strip flex gap-1" use:tabStrip={spy.active}>
+					{#each sections as s (s.key)}
 						<li>
-							<a href={`/scripture/${book.slug}/${c.chapter}/`} title={t('scripture.passagesCount').replace('%count%', String(c.citing_count))}
-								>{c.chapter}</a
+							<a
+								href="#{sectionId(s.key)}"
+								class="subnav-link"
+								class:is-active={spy.active === sectionId(s.key)}
+								aria-current={spy.active === sectionId(s.key) ? 'true' : undefined}
+								onclick={(e) => jumpTo(e, sectionId(s.key))}>{sectionName(s.key)}</a
 							>
 						</li>
 					{/each}
 				</ul>
+			</nav>
+		{/if}
+
+		<p class="legend" aria-hidden="true">
+			<span>{t('scripture.heatFewer')}</span>
+			{#each Array.from({ length: HEAT_LEVELS }, (_, i) => i) as level (level)}
+				<span class="swatch heat-{level}"></span>
+			{/each}
+			<span>{t('scripture.heatMore')}</span>
+		</p>
+
+		{#each sections as s, i (s.key)}
+			<section id={sectionId(s.key)} class="bible-section" aria-labelledby="{sectionId(s.key)}-h">
+				{#if s.key !== 'other' && s.testament !== sections[i - 1]?.testament}
+					<p class="testament eyebrow">
+						{t(s.testament === 'old' ? 'scripture.oldTestament' : 'scripture.newTestament')}
+					</p>
+				{/if}
+				<h2 id="{sectionId(s.key)}-h" class="section-label">{sectionName(s.key)}</h2>
+				{#each s.books as book (book.slug)}
+					<div class="book">
+						<h3 class="bname">{book.title}</h3>
+						<div class="min-w-0">
+							<ul class="chapters">
+								{#each book.chapters as c (c.chapter)}
+									<li>
+										<a
+											href={scripturePageHref(book.slug, c.chapter, null)}
+											class="heat-{heat(c.count)}"
+											title={passages(c.count)}
+											aria-label="{book.title} {c.chapter}, {passages(c.count)}">{c.chapter}</a
+										>
+									</li>
+								{/each}
+							</ul>
+							{#if book.topVerses.length}
+								<p class="verses">
+									<span class="verses-label">{t('scripture.topVerses')}</span>
+									{#each book.topVerses as v (`${v.chapter}:${v.verse}`)}
+										<a
+											href={scripturePageHref(book.slug, v.chapter, v.verse)}
+											title={passages(v.count)}
+											aria-label="{book.title} {v.chapter}:{v.verse}, {passages(v.count)}"
+											>{v.chapter}:{v.verse}</a
+										>
+									{/each}
+								</p>
+							{/if}
+						</div>
+					</div>
+				{/each}
 			</section>
 		{/each}
 	{/if}
 </div>
 
 <style>
+	/* Most-cited chapters: a wrapping grid of small cards, the hub's way in for a
+	   reader who arrives without a passage in mind. */
+	.top {
+		margin-top: 0.5rem;
+	}
+	.top-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr));
+		gap: 0.6rem;
+	}
+	.top-card {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+		height: 100%;
+		padding: 0.7rem 0.9rem;
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-sm);
+		background: var(--color-surface);
+		color: var(--color-text);
+		text-decoration: none;
+	}
+	.top-card:hover {
+		border-color: var(--color-accent-soft-border);
+		background: var(--color-accent-soft);
+	}
+	.top-ref {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		font-weight: 600;
+		line-height: 1.25;
+	}
+	.top-count {
+		font-size: var(--fs-small);
+		font-variant-numeric: tabular-nums;
+		color: var(--color-muted);
+	}
+
+	/* Section jump bar — the author page's sub-nav recipe. */
+	.sections-nav {
+		padding-block: 0.35rem 0;
+	}
+	.sections-nav ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.subnav-link {
+		display: inline-block;
+		padding: 0.5rem 0.75rem;
+		border-bottom: 2px solid transparent;
+		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
+		font-size: var(--fs-small);
+		font-weight: 500;
+		white-space: nowrap;
+		color: var(--color-muted);
+		text-decoration: none;
+	}
+	.subnav-link:hover {
+		color: var(--color-text);
+	}
+	.subnav-link.is-active {
+		color: var(--color-accent);
+		border-bottom-color: var(--color-accent);
+	}
+
+	.legend {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.3rem;
+		margin: 0.75rem 0 0;
+		font-size: var(--fs-micro);
+		color: var(--color-muted);
+	}
+	.swatch {
+		width: 1.1rem;
+		height: 0.75rem;
+		border-radius: 3px;
+	}
+	.legend span:first-child {
+		margin-inline-end: 0.2rem;
+	}
+	.legend span:last-child {
+		margin-inline-start: 0.2rem;
+	}
+
+	.bible-section {
+		margin-top: 2rem;
+		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+	}
+	.testament {
+		margin: 0 0 0.35rem;
+		color: var(--color-accent);
+	}
 	.book {
 		display: grid;
 		grid-template-columns: minmax(8rem, 11rem) 1fr;
@@ -134,7 +330,6 @@
 		font-variant-numeric: tabular-nums;
 		font-size: var(--fs-small);
 		border-radius: var(--radius-sm);
-		background: var(--color-surface-2);
 		color: var(--color-text);
 		text-decoration: none;
 	}
@@ -146,7 +341,63 @@
 			min-height: 2.75rem;
 		}
 	}
+
+	/* Heat: how many passages cite the chapter. Levels 0–3 keep body ink on an
+	   accent wash light enough to hold it (≥4.5:1 in every theme); the top level
+	   is the solid accent with its own contrast ink. */
+	.heat-0 {
+		background: var(--color-surface-2);
+	}
+	.heat-1 {
+		background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface-2));
+	}
+	.heat-2 {
+		background: color-mix(in srgb, var(--color-accent) 24%, var(--color-surface-2));
+	}
+	.heat-3 {
+		background: color-mix(in srgb, var(--color-accent) 40%, var(--color-surface-2));
+	}
+	.heat-4 {
+		background: var(--color-accent);
+		color: var(--color-accent-contrast);
+		font-weight: 600;
+	}
+	.chapters a.heat-4 {
+		color: var(--color-accent-contrast);
+	}
 	.chapters a:hover {
-		background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface-2));
+		outline: 2px solid var(--color-accent);
+		outline-offset: 1px;
+	}
+
+	/* The book's most-quoted verse pages, under its chapters. */
+	.verses {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.3rem 0.6rem;
+		margin: 0.45rem 0 0;
+		font-size: var(--fs-small);
+	}
+	.verses-label {
+		color: var(--color-muted);
+	}
+	.verses a {
+		font-variant-numeric: tabular-nums;
+		font-weight: 500;
+		color: var(--color-accent);
+		text-decoration: none;
+	}
+	.verses a:hover {
+		text-decoration: underline;
+	}
+	/* Bare text links ~20px tall: on touch, pad them to a 32px target. */
+	@media (pointer: coarse) {
+		.verses a {
+			display: inline-flex;
+			align-items: center;
+			min-height: 2rem;
+			padding-inline: 0.15rem;
+		}
 	}
 </style>

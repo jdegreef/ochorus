@@ -7,8 +7,12 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 ## Security / auth
 
 - DRF defaults are `SupabaseJWTAuthentication` + **`AllowAny`**. So every
-  private/admin endpoint MUST set `permission_classes = [IsAdminEmail]` (or
-  stricter) explicitly — forgetting it ships an open, DB-mutating endpoint.
+  private/admin endpoint MUST set its gate explicitly — forgetting it ships an
+  open, DB-mutating endpoint. The gates: `IsAdminEmail` (super admins only),
+  `@requires(capability, verb=…)` (a scoped grant), and `HasAnyAdminAccess`
+  (anyone with any grant — read-only views only, e.g. the Help page's access
+  model). `library.tests_admin_access` fails the build on an ungated or
+  mis-gated `/api/admin/*` route.
 - Supabase exposes the `public` schema over its anon API; RLS is what gates it —
   one table reachable by the anon key without RLS is a data leak. Every public
   table has RLS enabled (no policies = deny-all for non-owners; Django connects
