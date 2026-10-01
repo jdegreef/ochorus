@@ -6,6 +6,7 @@ import {
 	seriesFromBooks,
 	seriesCardProgressLabel,
 	seriesProgress,
+	seriesToContinue,
 	splitSeriesTitle,
 	type BookStage,
 	seriesLabel,
@@ -137,6 +138,40 @@ describe('seriesCardProgressLabel', () => {
 	it('counts finished books once there are any', () => {
 		const stages: BookStage[] = ['done', 'done', 'reading', 'unread'];
 		expect(seriesCardProgressLabel(stages, 'en')).toBe('2 of 4 read');
+	});
+});
+
+describe('seriesToContinue', () => {
+	const state: Record<string, { started: boolean; finished: boolean }> = {
+		'r-1': { started: true, finished: true },
+		'r-2': { started: true, finished: false },
+		'b-1': { started: true, finished: false },
+		'd-1': { started: true, finished: true }
+	};
+	const of = (slug: string) => state[slug] ?? { started: false, finished: false };
+	const at: Record<string, number> = { 'r-1': 1, 'r-2': 5, 'b-1': 9, 'd-1': 3 };
+	const lastRead = (slug: string) => at[slug] ?? 0;
+	const rooted = { slug: 'rooted', books: ['r-1', 'r-2', 'r-3'] };
+	const brave = { slug: 'brave', books: ['b-1', 'b-2'] };
+	const done = { slug: 'done', books: ['d-1'] };
+	const fresh = { slug: 'fresh', books: ['f-1'] };
+
+	it('lists begun, unfinished series, most recently read first', () => {
+		const rows = seriesToContinue([rooted, brave, done, fresh], of, lastRead);
+		expect(rows.map((r) => [r.series.slug, r.slug])).toEqual([
+			['brave', 'b-1'],
+			['rooted', 'r-2']
+		]);
+		expect(rows[1].stages).toEqual(['done', 'reading', 'unread']);
+	});
+
+	it('caps the list', () => {
+		expect(seriesToContinue([rooted, brave], of, lastRead, 1)).toHaveLength(1);
+	});
+
+	it('skips a series with no book list', () => {
+		const old: { slug: string; books?: string[] } = { slug: 'old' };
+		expect(seriesToContinue([old], of, lastRead)).toEqual([]);
 	});
 });
 
