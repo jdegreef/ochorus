@@ -31,6 +31,7 @@
 		href,
 		hue,
 		emblem,
+		scriptureRef = '',
 		portrait = '',
 		covers = [],
 		title,
@@ -41,8 +42,14 @@
 		href: string;
 		/** The card's accent, any CSS colour. Used only through color-mix(). */
 		hue: string;
-		/** Illustrated emblem for the badge. Ignored when `portrait` is set. */
+		/** Illustrated emblem for the badge. Ignored when `portrait` or `scriptureRef` is set. */
 		emblem?: EmblemName;
+		/**
+		 * A passage for the badge to wear as a monogram (MAT over 11), as sermons
+		 * and topic pages do — the topic's epigraph. Empty (a locale with no
+		 * translated epigraph, or a shelf kind with none) keeps the emblem.
+		 */
+		scriptureRef?: string;
 		/** Portrait URL to fill the badge instead of an icon (sermons). */
 		portrait?: string;
 		
@@ -60,13 +67,17 @@
 
 <a class="shelf-card card-lift" style="--shelf-hue: {hue}" {href}>
 	<div class="shelf-card-band hue-band">
-		<span class="shelf-card-badge emblem-chip">
-			{#if portrait}
-				<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
-			{:else if emblem}
-				<Emblem name={emblem} />
-			{/if}
-		</span>
+		{#if scriptureRef && !portrait}
+			<SermonMonogram class="shelf-card-badge" {scriptureRef} {title} />
+		{:else}
+			<span class="shelf-card-badge emblem-chip">
+				{#if portrait}
+					<img src={portrait} use:hydrateSrc={{ src: portrait }} alt="" loading="lazy" />
+				{:else if emblem}
+					<Emblem name={emblem} />
+				{/if}
+			</span>
+		{/if}
 		{#if covers.length}
 			<div class="cover-fan" aria-hidden="true">
 				{#each covers.slice(0, 4) as cover (`${cover.kind ?? 'book'}:${cover.slug ?? cover.title}`)}
