@@ -78,6 +78,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'mary-slessor-a-life': 0.90,
 	'men-and-women-who-gave-everything-2': 0.30,
 	'men-of-prayer-2': 0.30,
+	'men-who-moved-heaven': 0.30,
 	'men-who-tended-the-flock-2': 0.30,
 	'mortification-of-sin': 0.35,
 	'on-loving-god': 0.65,

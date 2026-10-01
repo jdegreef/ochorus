@@ -746,14 +746,30 @@
 			]
 		},
 		"am/men-who-moved-heaven": {
-			"ground": "b99db9d3004fd3a6b693ec7a3944c31c4332f32cc0d63e30798b523841f5525c",
+			"ground": "dab576e1b454bfe93dffb739cbf650c4c2939bfd98c13930e7053fc8a4506b8b",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
 			"layout": "framed",
-			"bar": 0
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[219, 308, 381, 384],
+					[118, 374, 482, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"am/men-who-tended-the-flock-2": {
 			"ground": "90e2e627a83f10c558736a849cb82125931da974e694ae0348dfe0a4a2a7aebd",
@@ -1091,13 +1107,13 @@
 			"bar": 0
 		},
 		"am/talks-to-the-farmer-teens": {
-			"ground": "2bfe9b48a0f6cc07546b40aaed307c97791993ad1afdbc0c785ddfb677cc5450",
+			"ground": "1037d0b5a13b37f556612057efeb1ebd8f6dc75186e5fe1bfeb21c93bca2b703",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
-			"art": false,
+			"art": true,
 			"scrim": 1,
-			"layout": "framed",
+			"layout": "band/oxblood",
 			"bar": 0
 		},
 		"am/the-inner-chamber": {
