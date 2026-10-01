@@ -90,11 +90,13 @@
 
 	// The weekly series is zero-filled back a fixed number of weeks, so before
 	// the first account existed it's a run of empty bars squeezing the real ones.
-	// Start at the first week with a sign-up (all of it, if there are none).
+	// Only when every account is inside the series are its leading zeros known to
+	// be pre-launch; otherwise they're real quiet weeks and stay.
 	const signupWeeks = $derived.by(() => {
 		const weeks = data?.weekly_signups ?? [];
+		const inSeries = weeks.reduce((n, w) => n + w.count, 0);
 		const first = weeks.findIndex((w) => w.count > 0);
-		return first > 0 ? weeks.slice(first) : weeks;
+		return first > 0 && inSeries === data?.total ? weeks.slice(first) : weeks;
 	});
 
 	type Card = { label: string; value: number; sub: string; trend: Trend };
@@ -279,8 +281,8 @@
 											<th class="py-2 text-start font-semibold">Reader</th>
 											<th class="py-2 text-start font-semibold">Sign-in</th>
 											<th class="hidden py-2 text-start font-semibold sm:table-cell">Lang</th>
-											<th class="hidden py-2 text-end font-semibold sm:table-cell">Joined</th>
-											<th class="py-2 text-end font-semibold">Seen</th>
+											<th class="py-2 text-end font-semibold">Joined</th>
+											<th class="hidden py-2 text-end font-semibold sm:table-cell">Seen</th>
 										</tr>
 									</thead>
 									<tbody class="divide-y divide-border">
@@ -289,6 +291,7 @@
 												<td class="w-1/2 max-w-0 py-2 pe-3">
 													<a
 														href="/admin/users/{u.uid}"
+														aria-label="View {u.display_name || u.email || 'this reader'}'s profile"
 														class="block truncate font-semibold {u.display_name ? 'text-text' : 'text-muted'} hover:text-accent hover:underline"
 														>{u.display_name || 'Unnamed'}</a
 													>
@@ -296,8 +299,8 @@
 												</td>
 												<td class="py-2 pe-3 text-muted">{u.providers.map((p) => p.label).join(', ') || '—'}</td>
 												<td class="hidden py-2 pe-3 text-muted sm:table-cell">{u.locale || '—'}</td>
-												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted sm:table-cell" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
-												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
+												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
+												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text sm:table-cell" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
 											</tr>
 										{/each}
 									</tbody>

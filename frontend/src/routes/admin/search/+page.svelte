@@ -49,27 +49,31 @@
 	// capped at the searches that found something rather than reading as more
 	// than everyone.
 	const found = (w: SearchStatsWindow) => w.searches - w.zero_results;
-	const opened = (w: SearchStatsWindow) => Math.min(w.clicks, found(w));
+	const opened = (w: SearchStatsWindow) => Math.min(w.clicks ?? 0, found(w));
 	const openRate = (w: SearchStatsWindow) => (found(w) ? opened(w) / found(w) : 0);
 
 	type Card = { label: string; value: string; sub: string; trend: Trend };
 	const cards = $derived.by<Card[]>(() => {
 		if (!data) return [];
 		const cur = data.overview[period];
+		// Optional: the static frontend can go live before the API that sends it.
 		const prev = data.overview[`${period}_prev`];
-		// A rate with no searches behind it isn't a baseline, so it gets no chip.
+		// A rate with no searches behind it, now or before, has nothing to
+		// compare, so it gets no chip.
+		const rateTrend = (f: (w: SearchStatsWindow) => number, base: (w: SearchStatsWindow) => number) =>
+			prev && base(cur) && base(prev) ? f(prev) : null;
 		return [
 			{
 				label: 'Searches',
 				value: fmt(cur.searches),
 				sub: `${fmt(cur.distinct_queries)} distinct`,
-				trend: periodTrend(cur.searches, prev.searches)
+				trend: prev ? periodTrend(cur.searches, prev.searches) : null
 			},
 			{
 				label: 'Zero-result rate',
 				value: pct(cur.zero_rate),
 				sub: `${fmt(cur.zero_results)} found nothing`,
-				trend: pointsTrend(cur.zero_rate, prev.searches ? prev.zero_rate : null, {
+				trend: pointsTrend(cur.zero_rate, rateTrend((w) => w.zero_rate, (w) => w.searches), {
 					lowerIsBetter: true
 				})
 			},
@@ -77,13 +81,13 @@
 				label: 'Opened a result',
 				value: pct(openRate(cur)),
 				sub: `${fmt(cur.clicks)} opens from ${fmt(found(cur))} searches`,
-				trend: pointsTrend(openRate(cur), found(prev) ? openRate(prev) : null)
+				trend: pointsTrend(openRate(cur), rateTrend(openRate, found))
 			},
 			{
 				label: 'Distinct queries',
 				value: fmt(cur.distinct_queries),
 				sub: cur.searches ? `${pct(cur.distinct_queries / cur.searches)} of searches` : '—',
-				trend: periodTrend(cur.distinct_queries, prev.distinct_queries)
+				trend: prev ? periodTrend(cur.distinct_queries, prev.distinct_queries) : null
 			}
 		];
 	});
@@ -241,8 +245,9 @@
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3">Where searches end</h2>
 					<p class="mb-4 text-small text-muted">
-						Last {PERIODS[period]}. Nothing found is a content gap;
-						found but not opened is usually a ranking or snippet problem.
+						Last {PERIODS[period]}. Nothing found is a content gap; found but not opened is
+						usually a ranking or snippet problem. Type-ahead prefixes count as searches, so
+						the opened share runs low: read it as a trend.
 					</p>
 					<ul class="space-y-3">
 						{#each funnel as step (step.label)}

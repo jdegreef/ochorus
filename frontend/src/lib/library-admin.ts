@@ -1101,7 +1101,7 @@ export interface EmailMetricRow {
 	sent: number;
 	delivered: number;
 	opens: number;
-	clicks: number;
+	clicks?: number;
 	bounces: number;
 	complaints: number;
 	open_rate: number;
@@ -1636,8 +1636,8 @@ export interface AdminSearchStats {
 		'7d': SearchStatsWindow;
 		'30d': SearchStatsWindow;
 		/** The window before each — the baseline for the period-over-period deltas. */
-		'7d_prev': SearchStatsWindow;
-		'30d_prev': SearchStatsWindow;
+		'7d_prev'?: SearchStatsWindow;
+		'30d_prev'?: SearchStatsWindow;
 	};
 	/**
 	 * Queries that found plenty and were never opened — the silent failure the

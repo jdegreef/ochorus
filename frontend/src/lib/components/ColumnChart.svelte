@@ -33,7 +33,7 @@
 					{/if}
 				</div>
 			</div>
-			<div class="whitespace-nowrap text-micro text-muted">{c.label}</div>
+			<div class="text-center text-micro leading-tight text-muted">{c.label}</div>
 		</div>
 	{/each}
 </div>

@@ -801,11 +801,12 @@ class AdminSearchView(APIView):
         windows = {"7d": (7, 0), "30d": (30, 0), "7d_prev": (7, 7), "30d_prev": (30, 30)}
 
         def span(key):
+            # The current windows stay open-ended, like the lists on this page,
+            # so a row logged mid-request can't land in one section but not
+            # another.
             days, offset = windows[key]
-            return Q(
-                created_at__gte=now - timedelta(days=days + offset),
-                created_at__lt=now - timedelta(days=offset),
-            )
+            q = Q(created_at__gte=now - timedelta(days=days + offset))
+            return q & Q(created_at__lt=now - timedelta(days=offset)) if offset else q
 
         recent = Q(created_at__gte=now - timedelta(days=60))
         counts = SearchQueryLog.objects.filter(recent).aggregate(
