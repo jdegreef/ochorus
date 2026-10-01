@@ -516,6 +516,12 @@ and expect a blank screenshot right after a JS scroll; read the footer with
 - Small text follows the phone type tokens (`--fs-micro` 12px, `--fs-eyebrow`
   13px below sm). A width-bound label (the tab bar) should use micro, not
   eyebrow; check truncation in fr/sw/lg/am/uk on an iPhone SE.
+- An `sr-only` (position: absolute) span inside a sideways scroller escapes
+  the scroller unless an ancestor is positioned: it resolves against the page,
+  so the last card's label (~965px across) widened the phone's LAYOUT viewport —
+  `innerWidth` 970 at a 375 emulation, page zoomed out, fixed tab bar 970 wide.
+  Give the scroller's items `position: relative`. Check: at 375, `innerWidth`
+  and `documentElement.scrollWidth` must both be 375 (biographies era band, 2026-10-01).
 - Measure, don't eyeball: a headless iPhone-13 pass listing visible text under
   13px and controls under 40px tall finds the real offenders (book-cover
   lettering scales with the cover — ignore it).
