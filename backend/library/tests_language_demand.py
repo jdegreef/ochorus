@@ -70,7 +70,8 @@ class LanguageDemandTests(TestCase):
         self.assertNotIn("en", reading_elsewhere(["en", "sw"]))
 
     def test_the_language_page_lists_works_with_their_evidence(self):
-        # Case-folded like the search report: these are one query, asked twice.
+        # Case-folded like the search report, these are one query, so one vote:
+        # the log is anonymous, and one reader retrying mustn't outvote readers.
         SearchQueryLog.objects.create(query="Pursuit", language="sw", result_count=0)
         SearchQueryLog.objects.create(query="pursuit", language="sw", result_count=0)
         hit = {"type": "book", "book_slug": "the-pursuit-of-god", "book_title": "The Pursuit of God"}
@@ -81,7 +82,7 @@ class LanguageDemandTests(TestCase):
         top = res.data["works"][0]
         self.assertEqual(
             (top["slug"], top["title"], top["author"], top["readers"], top["searches"]),
-            ("the-pursuit-of-god", "The Pursuit of God", "A. W. Tozer", 2, 2),
+            ("the-pursuit-of-god", "The Pursuit of God", "A. W. Tozer", 2, 1),
         )
         self.assertEqual([w["slug"] for w in res.data["works"]], ["the-pursuit-of-god", "waiting-on-god"])
 
@@ -91,6 +92,14 @@ class LanguageDemandTests(TestCase):
         with mock.patch("library.search.search_library", return_value=[hit]):
             res = APIClient().get("/api/admin/languages/sw/wanted/")
         self.assertNotIn("absolute-surrender", [w["slug"] for w in res.data["works"]])
+
+    def test_a_broad_query_votes_for_no_work(self):
+        """"prayer" finding many books says readers want prayer, not any one."""
+        SearchQueryLog.objects.create(query="prayer", language="sw", result_count=0)
+        hits = [{"type": "book", "book_slug": f"prayer-{i}", "book_title": f"Prayer {i}"} for i in range(4)]
+        with mock.patch("library.search.search_library", return_value=hits):
+            res = APIClient().get("/api/admin/languages/sw/wanted/")
+        self.assertFalse([w for w in res.data["works"] if w["searches"]])
 
     def test_language_health_counts_distinct_readers_reading_elsewhere(self):
         res = APIClient().get("/api/admin/language-health/")

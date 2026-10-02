@@ -16,7 +16,6 @@ from ..demand import (
     EDITION_MODELS,
     Work,
     demand_score,
-    existing_editions,
     reading_elsewhere,
     searched_elsewhere,
 )
@@ -44,10 +43,7 @@ class AdminLanguageWantedView(APIView):
         if code != "en":
             readers = reading_elsewhere([code]).get(code, {})
             since = timezone.now() - timedelta(days=self.SEARCH_DAYS)
-            have = existing_editions(code)
-            searches = {
-                w: n for w, n in searched_elsewhere(code, since=since).items() if w not in have
-            }
+            searches = searched_elsewhere(code, since=since)
         evidence = {w: (readers.get(w, 0), searches.get(w, 0)) for w in readers.keys() | searches.keys()}
         ranked = sorted(evidence, key=lambda w: (-demand_score(*evidence[w]), -evidence[w][0], w))
         ranked = ranked[: self.LIMIT]

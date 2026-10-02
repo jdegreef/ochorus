@@ -221,7 +221,6 @@ def _list_open_jobs() -> list[dict]:
     return jobs
 
 
-
 def translation_blocked(job_type: str, slug: str) -> bool:
     """Whether no translation may be made of ``(job_type, slug)``: a book under
     copyright, whose translation would be a derivative of the protected English
@@ -229,6 +228,7 @@ def translation_blocked(job_type: str, slug: str) -> bool:
     the coverage matrix locks its cells, and the demand list shows the work
     without a queue button."""
     return job_type == "book" and slug in COPYRIGHT_BLOCKED_SLUGS
+
 
 @requires(AdminCapability.TRANSLATE, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
 class AdminTranslationJobsView(AdminAudited, APIView):

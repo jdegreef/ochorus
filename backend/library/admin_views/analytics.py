@@ -12,7 +12,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..demand import failed_queries
+from ..demand import FAILED_QUERY_MIN_LEN, failed_queries
 from ..models import Article, Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
@@ -890,7 +890,7 @@ class AdminSearchView(APIView):
         def top(qs, limit=20):
             rows = (
                 qs.annotate(q=Lower("query"), qlen=Length("query"))
-                .filter(qlen__gte=3)
+                .filter(qlen__gte=FAILED_QUERY_MIN_LEN)
                 .values("q")
                 .annotate(count=Count("id"))
                 .order_by("-count", "q")[:limit]

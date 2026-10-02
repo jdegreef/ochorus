@@ -12,9 +12,12 @@ no Swahili edition. Two signals, both aggregate:
   time zone, so the signal undercounts but every vote is real. Cheap and bulk
   (one grouped query for any number of languages).
 * **searching for it** — a search in X found nothing, but the same query finds
-  the work in English. Real searches, so it is per language and bounded; a
-  caller that needs every language at once (the coverage matrix) should use the
-  reading signal alone.
+  the work in English. Only a SPECIFIC query counts (one that finds at most
+  ``SPECIFIC_QUERY_WORKS`` works): "prayer" finding twenty books says readers
+  want prayer, not any one of them. And each distinct query counts once, since
+  the search log is anonymous and one reader retrying a search would otherwise
+  outvote many readers. Real searches, so it is per language and bounded; a
+  caller that needs every language at once should use the reading signal alone.
 
 Books, sermons and articles only: each is one row per language sharing a slug,
 so "no X edition" is a plain lookup and a vote maps 1:1 onto a translation job.
@@ -42,10 +45,15 @@ Work = tuple[str, str]  # (kind, slug)
 # typing fragments.
 FAILED_QUERY_MIN_LEN = 3
 
+# A failed query that finds more works than this in English is a topic, not a
+# request for a work, and votes for none of them.
+SPECIFIC_QUERY_WORKS = 3
+
 
 def demand_score(readers: int, searches: int) -> int:
-    """How strongly a language wants one work. One rule, so the language page's
-    ranking and the coverage matrix's priority sort can't disagree."""
+    """How strongly a language wants one work: its readers reading it elsewhere
+    plus the distinct specific searches that would have found it. Named so any
+    other ranking of the same signal uses the same rule."""
     return readers + searches
 
 
@@ -93,14 +101,18 @@ def readers_elsewhere(codes) -> dict[str, int]:
     }
 
 
-def existing_editions(code: str) -> set[Work]:
-    """Every (kind, slug) with an edition in ``code``, drafts included: a draft
-    exists, so a job for it would be refused (409)."""
-    return {
-        (kind, slug)
-        for kind, model in EDITION_MODELS.items()
-        for slug in model.objects.filter(language=code).values_list("slug", flat=True)
-    }
+def existing_editions(code: str, works) -> set[Work]:
+    """Which of ``works`` already have an edition in ``code``, drafts included:
+    a draft exists, so a job for it would be refused (409)."""
+    have: set[Work] = set()
+    for kind, model in EDITION_MODELS.items():
+        slugs = [s for k, s in works if k == kind]
+        if slugs:
+            have.update(
+                (kind, slug)
+                for slug in model.objects.filter(language=code, slug__in=slugs).values_list("slug", flat=True)
+            )
+    return have
 
 
 def failed_queries(languages, *, since: datetime, limit: int = 10) -> dict[str, list[dict]]:
@@ -124,22 +136,31 @@ def failed_queries(languages, *, since: datetime, limit: int = 10) -> dict[str, 
 
 
 def searched_elsewhere(code: str, *, since: datetime, queries: int = 10) -> dict[Work, int]:
-    """Works that ``code``'s top failed searches find in English, each with how
-    many of those searches it would have answered. Not filtered by whether
-    ``code`` has the work: the caller does that once, against both signals.
+    """Works ``code`` lacks that its top failed searches find in English, each
+    with how many distinct specific queries would have found it.
 
-    A handful of real searches (English is the source language, so it has every
-    work), on a page an admin opened on purpose.
+    A query only counts once it has led to a work ``code`` lacks, so queries
+    answered by works the language already has (a title searched in English,
+    say) don't use up the budget; at most twice the budget is searched. A
+    handful of real searches, on a page an admin opened on purpose.
     """
     from .search import hit_work, search_library
 
     out: dict[Work, int] = {}
-    for row in failed_queries([code], since=since, limit=queries)[code]:
+    useful = 0
+    for row in failed_queries([code], since=since, limit=queries * 2)[code]:
+        if useful == queries:
+            break
         found = {
             (w["type"], w["slug"])
             for hit in search_library(row["query"], "en")
             if (w := hit_work(hit)) and w["type"] in EDITION_MODELS
         }
-        for work in found:
-            out[work] = out.get(work, 0) + row["count"]
+        if len(found) > SPECIFIC_QUERY_WORKS:
+            continue
+        wanted = found - existing_editions(code, found)
+        if wanted:
+            useful += 1
+        for work in wanted:
+            out[work] = out.get(work, 0) + 1
     return out

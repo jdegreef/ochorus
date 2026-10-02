@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
@@ -49,13 +50,26 @@
 	let wanted = $state<{ days: number; works: AdminWantedWork[] } | null>(null);
 	let wantedError = $state<string | null>(null);
 
+	// The search half makes this slow, so an admin can move on to another
+	// language before it answers. A late answer for the language they left is
+	// dropped: its rows would sit under this language's Translate buttons, which
+	// queue jobs for data.code.
 	async function loadWanted(code: string) {
 		wanted = null;
 		wantedError = null;
 		try {
-			wanted = await getAdminLanguageWanted(code);
+			const res = await getAdminLanguageWanted(code);
+			if (code !== data.code) return;
+			wanted = res;
+			// The section only exists once the page has loaded, so a link to
+			// #sec-wanted (Language health's "reading in another language") found
+			// nothing to scroll to on arrival; go there now.
+			if (location.hash === '#sec-wanted') {
+				await tick();
+				document.getElementById('sec-wanted')?.scrollIntoView();
+			}
 		} catch (e) {
-			wantedError = e instanceof Error ? e.message : 'Could not load what readers are asking for.';
+			if (code === data.code) wantedError = e instanceof Error ? e.message : 'Could not load what readers are asking for.';
 		}
 	}
 
