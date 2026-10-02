@@ -62,6 +62,37 @@ const nf = new Intl.NumberFormat('en');
 export const plural = (n: number, one: string, many = `${one}s`) =>
 	`${nf.format(n)} ${n === 1 ? one : many}`;
 
+/**
+ * The raw count behind a signal's bar, so a percentage never hides the size of
+ * the job. `engagementTarget` is absent from an API that predates the fixed
+ * target; engagement then shows the bare reader count.
+ */
+export function countLine(
+	key: HealthScoreKey,
+	l: AdminLanguageHealth,
+	sourceBooks: number,
+	engagementTarget?: number
+): string {
+	switch (key) {
+		case 'readiness':
+			return l.readiness.ready ? 'all checks met' : `${nf.format(l.readiness.blocking.length)} blocking`;
+		case 'coverage':
+			return `${nf.format(l.content.published_books)} of ${nf.format(sourceBooks)} books`;
+		case 'review': {
+			const total = l.content.published_books;
+			return total
+				? `${nf.format(total - l.content.unreviewed_books)} of ${nf.format(total)} reviewed`
+				: 'nothing to review';
+		}
+		case 'engagement':
+			if (!engagementTarget) return plural(l.readers, 'reader');
+			// Past the target the bar is full; "30 of 25" would read as a bug.
+			return l.readers >= engagementTarget
+				? `target met (${plural(l.readers, 'reader')})`
+				: `${nf.format(l.readers)} of ${plural(engagementTarget, 'reader')}`;
+	}
+}
+
 export type Blocker = { key: string; label: string };
 
 /**

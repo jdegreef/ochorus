@@ -12,6 +12,7 @@
 	import type { PageData } from './$types';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
@@ -139,6 +140,7 @@
 {/snippet}
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+	<LibraryTabs current="az" />
 	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
 	{#snippet counts()}
 		{writerCount}

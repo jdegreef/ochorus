@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { SermonSummary } from '$lib/library-public';
 	import { goto } from '$app/navigation';
+	import { untrack } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
@@ -26,8 +27,9 @@
 	 *
 	 *   - `card` — compact, for a grid beside other content (a topic's sermons,
 	 *     an author's sermons).
-	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and the
-	 *     brief, for the sermons index where sermons ARE the content.
+	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and a
+	 *     two-line preview of the brief, for the sermons index where sermons ARE
+	 *     the content.
 	 *
 	 * `.sermon-row*` is styled globally in app.css; only `card` carries scoped
 	 * styles here.
@@ -47,21 +49,46 @@
 	const year = $derived(preachedYear(sermon.preached_on));
 	const href = $derived(localizeHref(`/sermons/${sermon.slug}`));
 
-	// The index row reads like a table of contents: one line per sermon, the
-	// brief tucked away until asked for. Clicking a row opens its brief and a
-	// link to read it; a sermon with no brief yet is just a link. (`row` only.)
+	// The index row reads like a table of contents with a preview: one line per
+	// sermon, then the first two lines of its brief, always shown — the brief is
+	// what a reader chooses by, and two lines fill space the row had anyway. The
+	// chevron opens the rest of it; a brief that fits in two lines has no rest,
+	// so it gets no chevron. (`row` only.)
 	let open = $state(false);
-	const peekId = $derived(`sermon-peek-${sermon.slug}`);
+	const briefId = $derived(`sermon-brief-${sermon.slug}`);
+	// Assume a long brief until measured: prerendered HTML keeps the chevron (and
+	// its keyboard path), and the client drops it where the brief fits.
+	let clipped = $state(true);
+	const expandable = $derived(!!sermon.summary && clipped);
+	let briefEl = $state<HTMLParagraphElement>();
+	$effect(() => {
+		if (!briefEl) return;
+		// An open brief isn't clamped, so it can't say whether it would be; the
+		// observer re-measures when it closes. `open` is read untracked so a
+		// toggle doesn't tear down and rebuild the observer.
+		const measure = () => {
+			if (!untrack(() => open)) clipped = briefEl!.scrollHeight > briefEl!.clientHeight + 1;
+		};
+		measure();
+		// A clamped box stays two lines tall whatever overflows it, so the
+		// observer misses a reflow that only changes how much is hidden — the
+		// web font swapping in is the one that matters (a brief that fit in the
+		// fallback face can overflow in the real one).
+		document.fonts?.ready.then(measure);
+		const ro = new ResizeObserver(measure);
+		ro.observe(briefEl);
+		return () => ro.disconnect();
+	});
 
 	// Two-stage click on the row body (a pointer convenience): the title link and
-	// the chevron keep their own jobs, but a click ANYWHERE else opens the brief
-	// first, then goes to the sermon on the next click. A sermon with no brief has
-	// nothing to open, so its body goes straight there. Keyboard users reach both
-	// actions directly — the title link navigates, the chevron toggles — so this
-	// handler on a static element is an enhancement, not the only path.
+	// the chevron keep their own jobs, but a click ANYWHERE else first opens a
+	// clipped brief in full, then goes to the sermon on the next click. A row with
+	// nothing more to show goes straight there. Keyboard users reach both actions
+	// directly — the title link navigates, the chevron toggles — so this handler
+	// on a static element is an enhancement, not the only path.
 	function onRowClick(event: MouseEvent) {
 		if ((event.target as HTMLElement).closest('a, button')) return;
-		if (sermon.summary && !open) {
+		if (expandable && !open) {
 			open = true;
 			return;
 		}
@@ -84,8 +111,8 @@
 		<div class="min-w-0 flex-1">
 			<!-- One table-of-contents line: the title is the link to the sermon (a
 			     real, crawlable anchor per row); the passage, a dotted leader and the
-			     length follow; a chevron toggles the brief below — and only when
-			     there is one. The <h3> keeps the title's heading semantics. -->
+			     length follow; a chevron opens the brief below in full — only when
+			     it runs past two lines. The <h3> keeps the title's heading semantics. -->
 			<div class="sermon-row-line">
 				<h3 class="sermon-row-heading">
 					<a class="sermon-row-title" {href}>{sermon.title}</a>
@@ -97,13 +124,13 @@
 				<span class="sermon-row-meta"
 					>{readingTime(sermon.word_count)}{#if year}<span class="opacity-50"> · </span>{year}{/if}</span
 				>
-				{#if sermon.summary}
+				{#if expandable}
 					<button
 						type="button"
 						class="sermon-row-toggle"
 						aria-label={t('sermon.inBrief')}
 						aria-expanded={open}
-						aria-controls={peekId}
+						aria-controls={briefId}
 						onclick={() => (open = !open)}
 					>
 						<svg
@@ -120,9 +147,9 @@
 				{/if}
 			</div>
 			{#if sermon.summary}
-				<div id={peekId} class="sermon-row-peek" hidden={!open}>
-					<p class="sermon-row-brief">{sermon.summary}</p>
-				</div>
+				<p id={briefId} class="sermon-row-brief" class:line-clamp-2={!open} bind:this={briefEl}>
+					{sermon.summary}
+				</p>
 			{/if}
 		</div>
 	</div>

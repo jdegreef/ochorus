@@ -276,3 +276,27 @@ export const audienceName = (a: SeriesAudience | null): string =>
 /** The line under an audience heading; "" for the untagged group. */
 export const audienceBlurb = (a: SeriesAudience | null): string =>
 	a ? AUDIENCE_COPY[a].blurb() : '';
+
+/** Language codes a series card shows before folding the rest into "+N". */
+const CARD_LANGUAGES = 5;
+
+/**
+ * A series card's language tags: the series' languages with the reader's own
+ * first and the rest in code order, up to `CARD_LANGUAGES`, and the ones folded
+ * into "+N" (named in its tooltip). Nothing for a series in one language — "EN" alone on an English
+ * card says nothing.
+ */
+export function cardLanguages(
+	languages: string[],
+	current: string
+): { shown: string[]; hidden: string[] } {
+	const unique = [...new Set(languages)];
+	if (unique.length < 2) return { shown: [], hidden: [] };
+	const ordered = unique.sort((a, b) =>
+		a === current ? -1 : b === current ? 1 : a.localeCompare(b)
+	);
+	return {
+		shown: ordered.slice(0, CARD_LANGUAGES),
+		hidden: ordered.slice(CARD_LANGUAGES)
+	};
+}
