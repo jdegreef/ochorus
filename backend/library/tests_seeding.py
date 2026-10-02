@@ -115,14 +115,11 @@ class SeedBooksTests(TestCase):
 # work, with AI-translated editions), Andrew Murray's and John Bunyan's author
 # rows (absolute-surrender, grace-abounding), and the rooted / brave-for-god /
 # key-teachings series, whose author (ochorus-originals) is also the seeded
-# author with no faq. ~70 of the ~620 book files.
-NAMED_WORKS = (
-    "the-way-to-god.",
-    "absolute-surrender.",
-    "grace-abounding.",
-    "key-teachings-of-watchman-nee.",
-    "rooted-",
-    "brave-for-god",
+# author with no faq. ~70 of the ~620 book files. Anchored on the whole slug,
+# so a new work that merely shares a prefix doesn't creep in.
+NAMED_WORKS = re.compile(
+    r"(the-way-to-god|absolute-surrender|grace-abounding"
+    r"|key-teachings-of-watchman-nee|rooted-\d+|brave-for-god(-\d+)?)\.[a-z]+\.json"
 )
 
 
@@ -130,7 +127,7 @@ def named_works():
     from library.content_fixtures import BOOKS_DIR
 
     for path in sorted(BOOKS_DIR.glob("*.json")):
-        if path.name.startswith(NAMED_WORKS):
+        if NAMED_WORKS.fullmatch(path.name):
             yield path, json.loads(path.read_text())
 
 
@@ -475,14 +472,13 @@ class SeedBooksUpsertTests(NamedWorksSeedMixin, TestCase):
         self.assertEqual(Author.objects.get(slug="john-bunyan").faq, fixture_faq)
 
         # An author whose fixture OMITS faq is left untouched (no empty list
-        # forced). Picked dynamically off a live, seeded author whose fixture row
-        # has no faq key, so this stays honest as roll-out batches add more sets.
-        by_slug = authors_by_slug()
+        # forced). Picked dynamically off the fixture, so this stays honest as
+        # roll-out batches add more sets; the row is planted if the class's
+        # seed didn't create it (seed_books syncs every existing author).
         untouched = next(
-            a.slug
-            for a in Author.objects.order_by("slug")
-            if "faq" not in by_slug.get(a.slug, {})
+            slug for slug, row in sorted(authors_by_slug().items()) if "faq" not in row
         )
+        Author.objects.get_or_create(slug=untouched, defaults={"name": untouched})
         Author.objects.filter(slug=untouched).update(faq=[{"q": "mine", "a": "mine"}])
         call_command("seed_books", verbosity=0)
         self.assertEqual(
@@ -634,7 +630,7 @@ class SeedBooksChapterDriftTests(NamedWorksSeedMixin, TestCase):
     @classmethod
     def setUpTestData(cls):
         call_command("seed_books", verbosity=0)
-        cls.book = Book.objects.filter(language="en").first()
+        cls.book = Book.objects.get(slug="the-way-to-god", language="en")
 
     def test_missing_chapter_is_drift(self):
         self.book.chapters.order_by("-order").first().delete()
