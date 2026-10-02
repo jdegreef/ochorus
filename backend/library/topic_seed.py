@@ -674,6 +674,7 @@ TOPIC_SERMONS = {
         "the-holy-ghost",
         "how-to-cultivate-the-holy-spirits-companionship",
         "what-difference-does-the-holy-spirit-make",
+        "hindering-the-holy-spirit",
     ],
     "deeper-life": [
         "himself",
@@ -692,6 +693,9 @@ TOPIC_SERMONS = {
         "the-great-secret",
         "the-hidden-life-of-faith",
         "the-christian-temper-supernatural-and-divine",
+        "how-to-abide",
+        "spiritual-growth",
+        "from-strength-to-strength",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -719,6 +723,8 @@ TOPIC_SERMONS = {
         "the-boundless-sufficiency",
         "the-school-of-faith",
         "the-practical-discipline-of-life",
+        "grace-abounding",
+        "more-than-conquerors",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -745,6 +751,8 @@ TOPIC_SERMONS = {
         "the-goal-of-faith",
         "gideon-or-the-strength-of-weakness",
         "jephthah-or-the-faith-that-leads-to-faithfulness",
+        "words-for-discouraged-workers",
+        "the-weapons-of-our-warfare",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -782,6 +790,7 @@ TOPIC_SERMONS = {
         "seraphims-worship",
         "bochim-or-the-cause-of-spiritual-failure",
         "the-sin-of-murmuring",
+        "sinning-and-repenting",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -794,6 +803,8 @@ TOPIC_SERMONS = {
         "the-triumph-of-calvary",
         "worthy-is-the-lamb",
         "the-triumph-of-the-resurrection",
+        "our-kinsman-redeemer",
+        "personal-responsibility",
     ],
     "soar-like-the-eagle": [
         "rest",
