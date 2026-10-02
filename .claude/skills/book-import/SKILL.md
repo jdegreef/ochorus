@@ -1834,6 +1834,21 @@ emitting exact-string `find`/`replace` pairs, and settle their judgement calls
 against the scan, not by inference. Multi-volume works ship as one book per
 volume, joined by an ordered `Series`.
 
+**An OCR-only book with several scans → vote, then proofread, with the
+repairs as a committed data file applied to the SETTLED body.**
+`build_power_from_on_high_1` (Simpson, Part I, 2026-10): (1) caps lines are
+furniture when they carry a page number, resemble the book title, or repeat
+≥2× in the chapter; a caps line printed once is a real section head → `<h3>`;
+a bare "III." line numbers whatever block follows. (2) Align the base scan
+word-by-word (difflib) with two other scans; where both others agree on a
+different word, take it — but hand-review the votes: both witnesses can share
+a misread ("“ If" → "“ Tf"), and a dictionary filter wrongly rejects real-word
+misreads ("ease"→"case", "he"→"be"). (3) Proofreader fixes are written against
+the STORED text, and `settled_chapter_body` rewrites the body (rejoining
+"i- 3-"), so apply the data-file fixes AFTER `settled_chapter_body`, then
+settle again — a fix applied before it silently matches nothing. (4) zsh: a
+space-separated `$VAR` of slugs is ONE argument; use `${=VAR}` or an array.
+
 **A manuscript `.docx` the user hands you (an original biography/work, no
 importer).** No source URL, no catalog entry — parse the file and build the
 Book directly, then finish like any new book. What bit this loop:

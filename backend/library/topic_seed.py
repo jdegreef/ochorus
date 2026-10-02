@@ -59,6 +59,7 @@ TOPICS = [
             "key-teachings-of-r-a-torrey",
             "key-teachings-of-derek-prince",
             "power-from-on-high-new-testament",
+            "power-from-on-high-old-testament",
         ],
     ),
     (
@@ -80,6 +81,7 @@ TOPICS = [
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
             "power-from-on-high-new-testament",
+            "power-from-on-high-old-testament",
         ],
     ),
     (

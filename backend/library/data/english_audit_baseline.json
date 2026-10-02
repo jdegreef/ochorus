@@ -201,6 +201,10 @@
   "power-from-on-high-new-testament": {
    "space-before-punct": 8
   },
+  "power-from-on-high-old-testament": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 9
+  },
   "power-through-prayer": {
    "space-before-punct": 2,
    "word-fusion": 1

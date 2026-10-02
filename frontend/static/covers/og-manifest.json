@@ -7732,7 +7732,17 @@
 		"power-from-on-high-new-testament": {
 			"ground": "cc13f2cbdd3b72c686561e525e8d340c552eb80b9b4eddc9dc0c16e56ae77e6d",
 			"style": "revival",
-			"volume": null,
+			"volume": "2",
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
+		"power-from-on-high-old-testament": {
+			"ground": "058214e7ea98c6f001c51233580cee8c276520495d78f7565b39bdf747376573",
+			"style": "revival",
+			"volume": "1",
 			"script": "latin",
 			"art": true,
 			"scrim": 1,

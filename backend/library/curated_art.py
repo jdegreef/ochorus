@@ -849,6 +849,14 @@ CURATED: dict[str, Artwork] = {
         "the believer moved and carried by a power not his own.",
         focus=0.68,
     ),
+    # Part I follows the Spirit through the Old Testament, whose first picture
+    # is the Spirit moving on the face of the waters — so its ground is the sea.
+    "power-from-on-high-old-testament": Artwork(
+        "aic", 68792, "George Inness", "A Marine", "c. 1874–75",
+        "\"The Spirit of God moved upon the face of the waters.\" Inness's dark "
+        "sea breaks in light along the rocks under a heavy sky — the deep the "
+        "Spirit brooded over before the first day.",
+    ),
 }
 
 
