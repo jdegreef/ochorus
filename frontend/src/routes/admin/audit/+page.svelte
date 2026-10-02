@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ChapterLengthChart from '$lib/components/ChapterLengthChart.svelte';
 	import {
 		getAdminAudit,
 		dismissAuditFinding,
@@ -562,6 +563,12 @@
 							{@render check(q, q.c.total, false, findings, q.c.dismissed)}
 						{/if}
 					{/each}
+
+					<!-- After the checks, not beside one: Tiny and Giant sit in
+					     different tiers, and this is context for tuning both. -->
+					{#if a.chapter_lengths}
+						<div class="mt-6"><ChapterLengthChart data={a.chapter_lengths} /></div>
+					{/if}
 				</section>
 			</div>
 		{/snippet}

@@ -11,6 +11,7 @@ surfaces can never drift. Pure analysis — never mutates.
 from __future__ import annotations
 
 import re
+from bisect import bisect_left, bisect_right
 from html import escape
 
 from bs4 import BeautifulSoup, NavigableString
@@ -36,6 +37,30 @@ GIANT_MIN = 8000
 FRAG_MIN_PARAS = 10
 FRAG_MIN_WORDS = 100
 FRAG_MAX_AVG = 20
+
+# Bucket edges (words) for the admin audit's chapter-length chart, which shows
+# whether TINY_MAX and GIANT_MIN sit in sensible places. Log-ish so both tails
+# read: most of the library is 150–3,000 words, while the giant tail runs past
+# 40,000. Built around the two thresholds (a set, sorted) so moving either keeps
+# it an edge — the chart draws its threshold lines on those edges.
+LENGTH_EDGES = tuple(
+    sorted({TINY_MAX, 500, 1000, 2000, 3000, 4000, 5000, 6000, GIANT_MIN, 10000, 12000, 16000})
+)
+
+
+def length_bucket(wc: int) -> int:
+    """Index (0..len(LENGTH_EDGES)) of the chart bucket a ``wc``-word chapter
+    falls in.
+
+    Buckets are ``[lo, hi)`` below GIANT_MIN and ``(lo, hi]`` from it, mirroring
+    ``chapter_flags``' own comparisons (``wc < TINY_MAX`` / ``wc > GIANT_MIN``):
+    bucket 0 is exactly the tiny chapters and the buckets past GIANT_MIN are
+    exactly the giant ones — a chapter of exactly 8,000 words is not flagged, so
+    it must not land in a flagged bar.
+    """
+    if wc >= GIANT_MIN:
+        return bisect_left(LENGTH_EDGES, wc)
+    return bisect_right(LENGTH_EDGES, wc)
 
 # --- Text outside paragraphs -------------------------------------------------
 # A body is a sequence of blocks (p, h2–h4, blockquote, lists, hr). Some imports
