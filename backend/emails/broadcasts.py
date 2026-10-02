@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import logging
 import time
+import uuid
 from datetime import timedelta
 
 from django.conf import settings
@@ -48,9 +49,6 @@ BATCH_SIZE = 50
 #: batch; long enough that a slow batch can't lose it, short enough that a
 #: crashed worker's send is picked up by the next cron run.
 LEASE = timedelta(minutes=5)
-
-_EMPTY_TALLY = {"sent": 0, "skipped": 0, "failed": 0}
-
 
 def broadcast_key(broadcast, profile) -> str:
     return idempotency_key(EmailKind.BROADCAST, str(broadcast.id), profile)
@@ -106,49 +104,63 @@ def _send_one(broadcast, profile, subscription, pacer: _Pacer | None = None) -> 
 # --- State transitions --------------------------------------------------------
 
 
-def start_send(broadcast) -> None:
-    """Queue ``broadcast`` for the batched sender (the cron picks it up)."""
-    broadcast.status = BroadcastStatus.SENDING
-    broadcast.pause_reason = ""
-    if broadcast.send_started_at is None:
-        broadcast.send_started_at = timezone.now()
-    broadcast.save(update_fields=["status", "pause_reason", "send_started_at", "updated_at"])
-
-
-def pause(broadcast, reason: str) -> bool:
-    """Stop a SENDING broadcast where it is. Returns whether it was sending."""
-    n = Broadcast.objects.filter(pk=broadcast.pk, status=BroadcastStatus.SENDING).update(
-        status=BroadcastStatus.PAUSED, pause_reason=reason[:200], updated_at=timezone.now()
+def transition(broadcast, from_statuses, to_status, **fields) -> bool:
+    """Move ``broadcast`` to ``to_status`` only if it is still in one of
+    ``from_statuses`` — a compare-and-set, so an admin's pause or cancel and the
+    worker's finish can't overwrite each other. Refreshes ``broadcast`` and
+    returns whether it moved."""
+    n = Broadcast.objects.filter(pk=broadcast.pk, status__in=from_statuses).update(
+        status=to_status, updated_at=timezone.now(), **fields
     )
     broadcast.refresh_from_db()
     return n == 1
 
 
-def resume(broadcast, *, override_guardrail: bool = False) -> None:
-    """Put a PAUSED broadcast back in the queue, optionally past the guardrail."""
+def start_send(broadcast, *, override_guardrail: bool = False) -> None:
+    """Queue ``broadcast`` for the batched sender (the cron picks it up);
+    ``override_guardrail`` resumes it past a guardrail pause for good."""
+    broadcast.status = BroadcastStatus.SENDING
+    broadcast.status_reason = ""
+    if broadcast.send_started_at is None:
+        broadcast.send_started_at = timezone.now()
+    fields = ["status", "status_reason", "send_started_at", "updated_at"]
     if override_guardrail:
         broadcast.guardrail_override = True
-        broadcast.save(update_fields=["guardrail_override", "updated_at"])
-    start_send(broadcast)
+        fields.append("guardrail_override")
+    broadcast.save(update_fields=fields)
+
+
+def pause(broadcast, reason: str) -> bool:
+    """Stop a SENDING broadcast where it is. Returns whether it was sending."""
+    return transition(
+        broadcast, [BroadcastStatus.SENDING], BroadcastStatus.PAUSED, status_reason=reason[:200]
+    )
 
 
 def promote_due() -> int:
     """Move scheduled broadcasts whose time has come into the send queue.
 
-    The pre-send checks run again first: a scheduled broadcast can still be
+    The content checks run again first: a scheduled broadcast can still be
     edited, so the version that passed when it was scheduled may not be the one
     about to go out. One that now fails goes back to DRAFT (editable, and
     reschedulable once fixed) with the reason, instead of being sent.
     """
-    due = list(due_broadcasts())
+    due = list(
+        Broadcast.objects.filter(
+            status=BroadcastStatus.SCHEDULED, scheduled_at__lte=timezone.now()
+        ).order_by("scheduled_at")
+    )
     for broadcast in due:
-        errors = preflight.blocking(preflight.run(broadcast))
+        errors = preflight.content_errors(broadcast)
         if errors:
-            broadcast.status = BroadcastStatus.DRAFT
-            broadcast.pause_reason = f"The schedule didn't start: {errors[0]['message']}"[:200]
-            broadcast.save(update_fields=["status", "pause_reason", "updated_at"])
-            continue
-        start_send(broadcast)
+            transition(
+                broadcast,
+                [BroadcastStatus.SCHEDULED],
+                BroadcastStatus.DRAFT,
+                status_reason=f"The schedule didn't start: {errors[0]['message']}"[:200],
+            )
+        else:
+            start_send(broadcast)
     return len(due)
 
 
@@ -160,6 +172,18 @@ def sending_queue():
 
 
 # --- The worker -----------------------------------------------------------------
+
+
+def _subscriptions_for(profiles) -> dict:
+    """``{profile_pk: EmailSubscription}`` for a batch, creating the missing
+    ones — two queries a batch instead of one per reader."""
+    pks = [p.pk for p in profiles]
+    found = EmailSubscription.objects.in_bulk(pks, field_name="profile_id")
+    missing = [EmailSubscription(profile=p) for p in profiles if p.pk not in found]
+    if missing:
+        EmailSubscription.objects.bulk_create(missing, ignore_conflicts=True)
+        found = EmailSubscription.objects.in_bulk(pks, field_name="profile_id")
+    return found
 
 
 def _claim(broadcast) -> bool:
@@ -189,7 +213,7 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
     Returns this run's tally. Does nothing (an empty tally) if the broadcast
     isn't SENDING or another worker holds it.
     """
-    run = dict(_EMPTY_TALLY)
+    run = {"sent": 0, "skipped": 0, "failed": 0}
     if not _claim(broadcast):
         return run
     pacer = _Pacer(settings.EMAIL_SEND_RATE if rate is None else rate)
@@ -217,18 +241,20 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
                 .order_by("pk")[:BATCH_SIZE]
             )
             if not batch:
-                now = timezone.now()
-                Broadcast.objects.filter(
-                    pk=broadcast.pk, status=BroadcastStatus.SENDING
-                ).update(status=BroadcastStatus.SENT, send_finished_at=now, updated_at=now)
-                broadcast.refresh_from_db()
+                transition(
+                    broadcast,
+                    [BroadcastStatus.SENDING],
+                    BroadcastStatus.SENT,
+                    send_finished_at=timezone.now(),
+                )
                 break
 
-            tally = {**_EMPTY_TALLY, **(broadcast.send_tally or {})}
+            tally = broadcast.progress
+            subscriptions = _subscriptions_for(batch)
             for profile in batch:
                 if deadline is not None and time.monotonic() >= deadline:
                     break
-                subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
+                subscription = subscriptions[profile.pk]
                 try:
                     bucket = _send_one(broadcast, profile, subscription, pacer)
                 except Exception:
@@ -249,10 +275,12 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
 
 
 def send_broadcast(broadcast) -> dict:
-    """Queue ``broadcast`` and send it through to the end in this process,
-    ignoring the time budget. For the management command and tests; the admin
-    queues instead (:func:`start_send`) and lets the cron do the work."""
-    start_send(broadcast)
+    """Send ``broadcast`` through to the end in this process, ignoring the time
+    budget — queuing it first unless it is already in the queue. For the
+    ``send_due_broadcasts --id`` command and tests; the admin queues instead
+    (:func:`start_send`) and lets the cron do the work."""
+    if broadcast.status != BroadcastStatus.SENDING:
+        start_send(broadcast)
     return run_send(broadcast)
 
 
@@ -266,29 +294,25 @@ def send_test(broadcast, profile) -> bool:
     rendered = render_broadcast(broadcast, profile, subscription)
     if rendered is None:
         return False
-    stamp = int(timezone.now().timestamp())
     message = deliver(
         profile=profile,
         subscription=subscription,
         kind=EmailKind.BROADCAST,
         rendered=rendered,
-        idempotency_key=f"broadcast-test:{broadcast.id}:{profile.pk}:{stamp}",
+        # A fresh key per test, so a test can be repeated.
+        idempotency_key=idempotency_key(
+            EmailKind.BROADCAST, f"{broadcast.id}-test-{uuid.uuid4().hex}", profile
+        ),
         to_email=to_email,
         locale=(profile.locale or "en"),
         broadcast=broadcast,
         from_email=broadcast.from_address or None,
+        is_test=True,
     )
     if message.status != SendStatus.SENT:
         return False
     # Remember what was tested, so the pre-send checks can say whether the copy
     # has changed since. A queryset update: ``updated_at`` means "edited".
-    Broadcast.objects.filter(pk=broadcast.pk).update(tested_digest=broadcast.content_digest())
     broadcast.tested_digest = broadcast.content_digest()
+    Broadcast.objects.filter(pk=broadcast.pk).update(tested_digest=broadcast.tested_digest)
     return True
-
-
-def due_broadcasts():
-    """Scheduled broadcasts whose time has come."""
-    return Broadcast.objects.filter(
-        status=BroadcastStatus.SCHEDULED, scheduled_at__lte=timezone.now()
-    ).order_by("scheduled_at")

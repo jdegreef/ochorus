@@ -12,6 +12,18 @@ export class ApiError extends Error {
 }
 
 /**
+ * The message to show for a failed call: DRF's `detail` when the API sent one,
+ * else a status line, else `fallback` (not an API error at all).
+ */
+export function apiErrorDetail(e: unknown, fallback = 'Something went wrong.'): string {
+	if (e instanceof ApiError) {
+		const detail = (e.body as { detail?: unknown } | undefined)?.detail;
+		return typeof detail === 'string' && detail ? detail : `Request failed (${e.status}).`;
+	}
+	return fallback;
+}
+
+/**
  * The body of a failed response: parsed JSON when it is JSON (DRF errors are,
  * so callers can read `.detail`), otherwise the raw text.
  *

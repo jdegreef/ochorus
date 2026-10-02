@@ -90,14 +90,20 @@ def render_direct(text: dict, profile, subscription) -> RenderedEmail:
     return _render(text, profile, subscription, email_lang(profile, subscription))
 
 
+def sendable_locales(broadcast) -> list[str]:
+    """The locales a broadcast can be sent in: it has BOTH a subject and
+    content for them."""
+    return sorted(set(broadcast.subject) & set(broadcast.content))
+
+
 def resolve_broadcast_locale(broadcast, lang: str) -> str | None:
     """The locale to actually render: the reader's language, else English, else
-    any locale the broadcast has BOTH a subject and content for."""
+    the first locale the broadcast can be sent in."""
+    locales = sendable_locales(broadcast)
     for candidate in (lang, "en"):
-        if candidate in broadcast.content and candidate in broadcast.subject:
+        if candidate in locales:
             return candidate
-    common = sorted(set(broadcast.content) & set(broadcast.subject))
-    return common[0] if common else None
+    return locales[0] if locales else None
 
 
 def broadcast_text(broadcast, locale: str) -> dict:

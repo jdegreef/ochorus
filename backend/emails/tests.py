@@ -4,9 +4,9 @@ one-click unsubscribe, and signed webhook ingest."""
 from __future__ import annotations
 
 import base64
-import io
 import hashlib
 import hmac
+import io
 import json
 import time
 import uuid

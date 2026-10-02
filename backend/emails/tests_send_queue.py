@@ -73,7 +73,7 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
             run_send(b)
             b.refresh_from_db()
             self.assertEqual(b.status, BroadcastStatus.PAUSED)
-            self.assertTrue(b.pause_reason.startswith("Paused by"))
+            self.assertTrue(b.status_reason.startswith("Paused by"))
             self.assertEqual(len(calls), 2)
             self.assertEqual(b.send_cursor, self.profiles[1].pk)
 
@@ -141,7 +141,7 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
             run_send(b)
             b.refresh_from_db()
             self.assertEqual(b.status, BroadcastStatus.PAUSED)
-            self.assertIn("Bounce rate", b.pause_reason)
+            self.assertIn("Bounce rate", b.status_reason)
             self.assertEqual(len(self._sent_to()), 2)
 
             res = self._act(b, "resume")
@@ -178,7 +178,7 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         send.assert_not_called()
         b.refresh_from_db()
         self.assertEqual(b.status, BroadcastStatus.DRAFT)
-        self.assertIn("subject line is empty", b.pause_reason)
+        self.assertIn("subject line is empty", b.status_reason)
 
     def test_a_canceled_schedule_can_be_rescheduled_but_a_canceled_send_cannot(self):
         b = _broadcast(status=BroadcastStatus.CANCELED)
@@ -291,6 +291,24 @@ class PreflightTests(_AdminClientMixin, TestCase):
         b.subject = {"en": "A new subject"}
         b.save()
         self.assertIn("test", _codes(run_checks(b), "warning"))
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_test_sends_stay_out_of_the_results(self, send):
+        b = _broadcast()
+        admin = _make_profile(email="admin@example.com")
+        self.assertTrue(send_test(b, admin))
+        self.assertTrue(send_test(b, admin))  # repeatable
+        self.assertEqual(EmailMessage.objects.filter(is_test=True).count(), 2)
+        data = self.client.get(f"/api/admin/broadcasts/{b.pk}/").json()
+        self.assertEqual(data["stats"]["sent"], 0)
+        rows = self.client.get(f"/api/admin/users/{admin.supabase_uid}/emails/").json()["messages"]
+        self.assertEqual(rows[0]["label"], "September news (test)")
+
+    def test_coverage_follows_the_email_language_preference(self):
+        reader = _make_profile(email="pt@example.com", locale="en")
+        EmailSubscription.objects.create(profile=reader, email_locale="pt")
+        self.assertIn("coverage:pt", _codes(run_checks(_broadcast()), "warning"))
 
     def test_detail_includes_checks_and_progress(self):
         b = _broadcast()

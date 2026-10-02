@@ -11,7 +11,7 @@ from __future__ import annotations
 
 import uuid
 
-from .models import EmailKind, EmailMessage, EmailSubscription, SendStatus, idempotency_key
+from .models import EmailKind, EmailMessage, EmailSubscription, idempotency_key
 from .preflight import cta_path_problem
 from .recipient import verified_email
 from .rendering import email_lang, render_direct
@@ -23,18 +23,6 @@ FIELDS = ("subject", "heading", "greeting", "paragraphs", "cta_label", "cta_path
 
 class DirectEmailError(ValueError):
     """Why a direct email can't be sent — shown to the admin as is."""
-
-
-def blocked_reason(subscription) -> str | None:
-    """Why this reader can't be written to, or ``None``."""
-    if subscription.is_suppressed:
-        return (
-            "This address is suppressed after a bounce or spam complaint "
-            f"({subscription.suppression_reason or 'no reason recorded'})."
-        )
-    if subscription.unsubscribed_all:
-        return "This reader has unsubscribed from all email."
-    return None
 
 
 def clean_text(data: dict) -> dict:
@@ -71,14 +59,14 @@ def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
     """
     text = clean_text(data)
     subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
-    reason = blocked_reason(subscription)
+    reason = subscription.block_reason()
     if reason:
         raise DirectEmailError(reason)
     to_email = verified_email(profile)
     if not to_email:
         raise DirectEmailError("This reader has no verified email address.")
     rendered = render_direct(text, profile, subscription)
-    message = deliver(
+    return deliver(
         profile=profile,
         subscription=subscription,
         kind=EmailKind.DIRECT,
@@ -91,40 +79,3 @@ def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
         sent_by=sent_by,
         body_text="\n\n".join(text["paragraphs"]),
     )
-    return message
-
-
-def history(profile, limit: int = 50) -> list[dict]:
-    """The reader's recent email, newest first, with what happened to each."""
-    messages = (
-        EmailMessage.objects.filter(recipient=profile)
-        .select_related("broadcast")
-        .prefetch_related("events")[:limit]
-    )
-    rows = []
-    for m in messages:
-        if m.kind == EmailKind.BROADCAST:
-            label = m.broadcast.name if m.broadcast else "Broadcast"
-            if m.idempotency_key.startswith("broadcast-test:"):
-                label = f"{label} (test)"
-        elif m.kind == EmailKind.LIFECYCLE:
-            label = m.lifecycle_step.replace("_", " ").capitalize()
-        else:
-            label = "Direct email"
-        events = sorted({e.type for e in m.events.all()})
-        rows.append(
-            {
-                "id": m.id,
-                "kind": m.kind,
-                "label": label,
-                "subject": m.subject,
-                "status": m.status,
-                "error": m.error if m.status != SendStatus.SENT else "",
-                "events": events,
-                "sent_by": m.sent_by,
-                "body_text": m.body_text,
-                "created_at": m.created_at.isoformat(),
-                "sent_at": m.sent_at.isoformat() if m.sent_at else None,
-            }
-        )
-    return rows

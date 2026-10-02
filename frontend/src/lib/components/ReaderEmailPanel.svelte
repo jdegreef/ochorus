@@ -4,8 +4,9 @@
 	 * what happened to it), and a form to write to them directly. Super-admin
 	 * only — the backend gates it with IsAdminEmail, like the Emails section.
 	 */
-	import { ApiError } from '$lib/api';
+	import { ApiError, apiErrorDetail } from '$lib/api';
 	import {
+		formatDateTime,
 		getReaderEmails,
 		sendDirectEmail,
 		type ReaderEmailRow,
@@ -59,16 +60,13 @@
 			subject = heading = body = ctaLabel = ctaPath = '';
 			composing = false;
 		} catch (e) {
-			const detail = e instanceof ApiError ? (e.body as { detail?: string } | undefined)?.detail : '';
-			error = detail || 'Something went wrong.';
-			if (e instanceof ApiError && e.status === 409) await load(); // recorded, not delivered
+			error = apiErrorDetail(e);
+			// A 409 was recorded but not delivered; its body carries the fresh history.
+			if (e instanceof ApiError && e.status === 409) emails = e.body as ReaderEmails;
 		} finally {
 			busy = false;
 		}
 	}
-
-	const when = (iso: string) =>
-		new Date(iso).toLocaleString('en', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
 
 	/** The furthest thing that happened to a message, for one compact label. */
 	function outcome(m: ReaderEmailRow): { text: string; tone: string } {
@@ -152,7 +150,7 @@
 							</span>
 							<span class="shrink-0 whitespace-nowrap text-small tabular-nums">
 								<span class={o.tone}>{o.text}</span>
-								<span class="text-muted"> · {when(m.sent_at ?? m.created_at)}</span>
+								<span class="text-muted"> · {formatDateTime(m.sent_at ?? m.created_at)}</span>
 							</span>
 						</div>
 						{#if m.kind === 'direct'}

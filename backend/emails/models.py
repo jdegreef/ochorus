@@ -143,13 +143,29 @@ class EmailSubscription(models.Model):
         field = LEGACY_FIELD.get(stream)
         return getattr(self, field) if field else True
 
+    def block_reason(self) -> str | None:
+        """Why this reader can receive no email at all, or ``None``.
+
+        The two blockers every kind of email obeys — suppression and the master
+        off switch — in one place, worded for the admin. ``wants_stream`` (and
+        its ORM mirror below) apply them before any per-stream choice; a direct
+        email, which is no stream, applies only these."""
+        if self.is_suppressed:
+            return (
+                "This address is suppressed after a bounce or spam complaint "
+                f"({self.suppression_reason or 'no reason recorded'})."
+            )
+        if self.unsubscribed_all:
+            return "This reader has unsubscribed from all email."
+        return None
+
     def wants_stream(self, stream: str) -> bool:
         """Whether the reader will receive mail of ``stream`` right now.
 
         Suppression and the master off switch block everything; otherwise the
         reader's per-stream choice applies, defaulting to the stream's default
         (opt-out posture)."""
-        if self.is_suppressed or self.unsubscribed_all:
+        if self.block_reason():
             return False
         return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
 
@@ -224,9 +240,10 @@ class Broadcast(models.Model):
     # each batch, so two cron runs (or a cron run and a manual one) never walk
     # the same audience at once.
     send_lease_until = models.DateTimeField(null=True, blank=True)
-    # Why a PAUSED broadcast stopped (or why a schedule fell back to DRAFT),
-    # shown in the admin.
-    pause_reason = models.CharField(max_length=200, blank=True)
+    # Why the system (or an admin) put the broadcast in its current state — a
+    # pause, a guardrail stop, a schedule that fell back to DRAFT. Shown in the
+    # admin; cleared when sending (re)starts.
+    status_reason = models.CharField(max_length=200, blank=True)
     # Set when an admin resumes past a guardrail pause: the bounce/complaint
     # check no longer stops this broadcast.
     guardrail_override = models.BooleanField(default=False)
@@ -242,6 +259,38 @@ class Broadcast(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"broadcast<{self.name}>"
+
+    # --- Lifecycle rules, in one place (views, worker and the admin read these) --
+
+    #: Statuses a cancel may move from: before or during a send.
+    CANCELABLE = (
+        BroadcastStatus.DRAFT,
+        BroadcastStatus.SCHEDULED,
+        BroadcastStatus.SENDING,
+        BroadcastStatus.PAUSED,
+    )
+
+    @property
+    def is_locked(self) -> bool:
+        """Whether its copy and audience are frozen: it has mailed (or may have
+        mailed) someone. A schedule withdrawn before it started is not."""
+        if self.status in (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT):
+            return True
+        return self.status == BroadcastStatus.CANCELED and self.send_started_at is not None
+
+    @property
+    def can_send(self) -> bool:
+        """Whether it may be sent or (re)scheduled: it has never started sending."""
+        return self.status in (
+            BroadcastStatus.DRAFT,
+            BroadcastStatus.SCHEDULED,
+            BroadcastStatus.CANCELED,
+        ) and not self.is_locked
+
+    @property
+    def progress(self) -> dict:
+        """Readers processed so far by the batched send, by outcome."""
+        return {"sent": 0, "skipped": 0, "failed": 0, **(self.send_tally or {})}
 
     def content_digest(self) -> str:
         """A stable hash of everything a recipient sees, for ``tested_digest``."""
@@ -298,6 +347,9 @@ class EmailMessage(models.Model):
         max_length=20, choices=SendStatus.choices, default=SendStatus.QUEUED
     )
     error = models.CharField(max_length=300, blank=True)
+    # A test send of a broadcast to an admin: kept out of the broadcast's
+    # results, its guardrail and the metrics.
+    is_test = models.BooleanField(default=False)
     # Direct emails only: the admin who wrote it, and the plain text of what was
     # said, so the reader's email history shows the conversation, not just a subject.
     sent_by = models.CharField(max_length=254, blank=True)
@@ -311,11 +363,23 @@ class EmailMessage(models.Model):
         indexes = [
             models.Index(fields=["kind", "lifecycle_step"]),
             models.Index(fields=["recipient", "-created_at"]),
+            # Sender health reads the last 30 days of sends (emails/health.py).
+            models.Index(fields=["sent_at"]),
         ]
 
     def __str__(self) -> str:  # pragma: no cover - repr only
-        label = self.lifecycle_step or (self.broadcast_id and f"broadcast {self.broadcast_id}")
-        return f"message<{label} → {self.to_email}>"
+        return f"message<{self.label} → {self.to_email}>"
+
+    @property
+    def label(self) -> str:
+        """What this email was, for an admin: the campaign, the drip step, or a
+        direct email."""
+        if self.kind == EmailKind.BROADCAST:
+            name = self.broadcast.name if self.broadcast_id else "Broadcast"
+            return f"{name} (test)" if self.is_test else name
+        if self.kind == EmailKind.LIFECYCLE:
+            return self.lifecycle_step.replace("_", " ").capitalize()
+        return "Direct email"
 
 
 class EmailEvent(models.Model):

@@ -15,7 +15,7 @@ import time
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from emails.broadcasts import promote_due, run_send, sending_queue, start_send
+from emails.broadcasts import promote_due, run_send, send_broadcast, sending_queue
 
 
 class Command(BaseCommand):
@@ -37,9 +37,10 @@ class Command(BaseCommand):
             if broadcast is None:
                 self.stderr.write(f"no broadcast #{opts['id']}")
                 return
-            if broadcast.status in (BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED):
-                start_send(broadcast)
-            tally = run_send(broadcast)
+            if not (broadcast.can_send or broadcast.status == BroadcastStatus.SENDING):
+                self.stderr.write(f"broadcast #{broadcast.pk} is {broadcast.status}; not sending")
+                return
+            tally = send_broadcast(broadcast)
             broadcast.refresh_from_db()
             self.stdout.write(
                 self.style.SUCCESS(f"broadcast #{broadcast.pk} ({broadcast.status}): {tally}")

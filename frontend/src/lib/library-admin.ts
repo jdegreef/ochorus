@@ -1208,10 +1208,11 @@ export interface AdminBroadcast {
 	audience_count: number;
 	/** The batched send so far: readers processed, by outcome. */
 	progress: { sent: number; skipped: number; failed: number };
-	pause_reason: string;
-	guardrail_override: boolean;
+	/** Why it's in this state: a pause, a guardrail stop, a schedule that didn't start. */
+	status_reason: string;
 	send_started_at: string | null;
-	send_finished_at: string | null;
+	/** Copy and audience are frozen: it has (or may have) mailed someone. */
+	locked: boolean;
 	// detail only:
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
@@ -1247,9 +1248,11 @@ export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
 export const deleteBroadcast = (id: number) =>
 	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
 
+export type BroadcastActionName = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
+
 export const broadcastAction = (
 	id: number,
-	action: 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume',
+	action: BroadcastActionName,
 	extra: { scheduled_at?: string; override_guardrail?: boolean } = {}
 ) =>
 	apiFetch<AdminBroadcast & { ok?: boolean; sent_to?: string }>(
@@ -1277,8 +1280,6 @@ export interface ReaderEmailRow {
 export interface ReaderEmails {
 	/** Why this reader can't be written to (suppressed / unsubscribed), else null. */
 	blocked_reason: string | null;
-	unsubscribed_all: boolean;
-	suppressed: boolean;
 	messages: ReaderEmailRow[];
 }
 
@@ -1310,6 +1311,19 @@ export const previewAudience = (audience: BroadcastAudience) =>
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
+/** An admin timestamp: "Oct 2, 2026, 9:42 AM", or "—" for none. */
+export function formatDateTime(iso: string | null): string {
+	return iso
+		? new Date(iso).toLocaleString('en', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: '2-digit'
+			})
+		: '—';
+}
+
 export function formatDuration(seconds: number): string {
 	if (!seconds || seconds < 1) return '—';
 	const h = Math.floor(seconds / 3600);
