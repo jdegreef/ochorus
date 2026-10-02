@@ -74,6 +74,37 @@ def render_welcome(profile, subscription) -> RenderedEmail:
     return render_step("welcome", profile, subscription)
 
 
+def _fill(value, mapping: dict[str, str]):
+    """Substitute ``{placeholder}`` tokens in a string or list of strings.
+
+    A literal replace, NOT str.format (same reason as the greeting in _render):
+    a stray brace in a book title must never raise mid-send."""
+    if isinstance(value, list):
+        return [_fill(item, mapping) for item in value]
+    if isinstance(value, str):
+        for token, replacement in mapping.items():
+            value = value.replace(token, replacement)
+    return value
+
+
+def render_series_nudge(
+    profile, subscription, *, finished_title: str, next_title: str, cta_path: str
+) -> RenderedEmail:
+    """Render the finish-the-series nudge for ``profile`` in their language.
+
+    Unlike the static lifecycle steps, this fills the just-finished and next-up
+    book titles into the copy and points the CTA at the next volume (``cta_path``
+    is resolved per reader by the caller)."""
+    lang = _email_lang(profile, subscription)
+    mapping = {"{finished}": finished_title, "{next}": next_title}
+    text = {
+        key: _fill(value, mapping)
+        for key, value in copy_mod.step_copy("finish_series", lang).items()
+    }
+    text["cta_path"] = cta_path
+    return _render(text, profile, subscription, lang)
+
+
 def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""

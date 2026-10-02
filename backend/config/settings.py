@@ -305,6 +305,10 @@ API_PUBLIC_URL = os.getenv("API_PUBLIC_URL", "").strip().rstrip("/") or (
 # on/after it, so a first run never blasts the back catalogue. Unset ⇒ a short
 # recent window (see emails/management/commands/send_welcome_emails.py).
 EMAIL_WELCOME_START = os.getenv("EMAIL_WELCOME_START", "").strip()
+# Finish-the-series nudges consider readers who finished a book within this many
+# days (the scan window; idempotency decides who's actually new). Keeps a first
+# run from nudging the whole back catalogue.
+EMAIL_SERIES_LOOKBACK_DAYS = int(os.getenv("EMAIL_SERIES_LOOKBACK_DAYS", "30"))
 # Review-mode safety net: when NON-EMPTY, the ONLY addresses that receive mail
 # are the ones listed here — every other recipient is recorded as "skipped",
 # whatever the send path (welcome drip, broadcast, or a test). Lets you turn

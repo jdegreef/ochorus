@@ -34,6 +34,12 @@ STREAMS: list[dict] = [
         "legacy": None,
     },
     {
+        "key": "series",
+        "label": "Continue the series",
+        "description": "When you finish a book in a series, a nudge toward the next one.",
+        "legacy": None,
+    },
+    {
         "key": "new_in_language",
         "label": "New in your language",
         "description": "When a book you’d want is newly translated.",
@@ -49,3 +55,11 @@ STREAMS: list[dict] = [
 
 STREAM_KEYS = frozenset(s["key"] for s in STREAMS)
 LEGACY_FIELD: dict[str, str | None] = {s["key"]: s["legacy"] for s in STREAMS}
+
+#: A lifecycle step whose own stream differs from the default "onboarding" one.
+#: Most lifecycle steps are onboarding; a behavioural nudge like finish-the-series
+#: belongs to its own stream so a reader can keep onboarding tips but silence the
+#: series pokes (or the reverse). ``stream_for`` reads this; see emails/models.py.
+STEP_STREAM: dict[str, str] = {
+    "finish_series": "series",
+}
