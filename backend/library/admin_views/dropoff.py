@@ -5,8 +5,6 @@ chapter's content flags beside them. The curve itself lives in
 
 from __future__ import annotations
 
-from collections import defaultdict
-
 from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -37,14 +35,7 @@ class AdminDropOffView(APIView):
         language (the audit page's "all languages")."""
         language = (request.query_params.get("language") or "").strip().lower()
         progress = dropoff.progress_rows(language=language or None)
-        chapters = Chapter.objects.filter(book__slug__in={slug for slug, _ in progress})
-        if language:
-            chapters = chapters.filter(book__language=language)
-        orders = defaultdict(list)
-        for slug, lang, order in chapters.order_by("order").values_list(
-            "book__slug", "book__language", "order"
-        ):
-            orders[(slug, lang)].append(order)
+        orders = dropoff.chapter_orders(progress)
         drops = []
         for (slug, lang), rows in progress.items():
             curve = dropoff.reach(rows, orders.get((slug, lang), []))
