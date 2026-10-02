@@ -1664,11 +1664,18 @@ class SearchDecision(models.Model):
         WANTED = "wanted", "Wanted"
         #: Not something Ochorus will carry (in copyright, off-topic, spam).
         OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+        #: The library has it under another word: readers' searches for the
+        #: query run on ``target`` instead (search_triage.rules).
+        SYNONYM = "synonym", "Synonym"
+        #: Results came back but nobody opened one: ``target`` ("topic:prayer")
+        #: leads the results as the best match.
+        PINNED = "pinned", "Pinned best match"
 
     query = models.CharField(max_length=200)
     language = models.CharField(max_length=10)
     outcome = models.CharField(max_length=20, choices=Outcome.choices)
-    #: The work a translation was queued for ("book:waiting-on-god"); blank otherwise.
+    #: What the outcome points at: the work a translation was queued for or the
+    #: pinned page ("book:waiting-on-god"), or a synonym's word. Blank otherwise.
     target = models.CharField(max_length=200, blank=True)
     note = models.CharField(max_length=300, blank=True)
     decided_by = models.EmailField(blank=True)
@@ -1832,6 +1839,42 @@ class Language(models.Model):
 
     def natural_key(self):
         return (self.code,)
+
+
+class LanguageHealthSnapshot(models.Model):
+    """One language's health score on one day, so the admin page can show
+    whether the work is moving it.
+
+    Written by the scoreboard itself (``admin_views.health.record_snapshots``),
+    on every deploy and whenever the page is opened, upserting today's row, so
+    a day with any activity gets exactly one point and no extra cron service is
+    needed. ``score_version`` is the formula that produced the row: the trend
+    only compares rows scored the same way, so a change to the weights or a
+    signal starts a fresh line instead of drawing a fake jump.
+
+    ``language`` is the code, not a FK: a snapshot is history and outlives a
+    registry row being renamed or removed.
+    """
+
+    language = models.CharField(max_length=10)
+    date = models.DateField()
+    score_version = models.PositiveSmallIntegerField()
+    health = models.PositiveSmallIntegerField()
+    readiness = models.FloatField()
+    coverage = models.FloatField()
+    review = models.FloatField()
+    engagement = models.FloatField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["language", "date"], name="uniq_health_snapshot_language_date"
+            )
+        ]
+        ordering = ["language", "date"]
+
+    def __str__(self) -> str:
+        return f"{self.language} {self.date}: {self.health}"
 
 
 class ReviewOutcome(models.Model):

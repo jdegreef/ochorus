@@ -27,6 +27,7 @@ from .lifecycle import (
     FIRST_BOOK_STEP,
     PLAN_STEP,
     WELCOME_STEP,
+    WINBACK_STEP,
     due_step,
     send_due,
     send_welcome,
@@ -509,6 +510,31 @@ class LifecycleStepTests(TestCase):
         profile = self._profile(age_days=30, seen_days_ago=1)
         self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP)
         self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_winback_when_deeply_dormant(self):
+        profile = self._profile(age_days=90, seen_days_ago=35)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP, COMEBACK_STEP)
+        self.assertEqual(due_step(profile, timezone.now()).name, WINBACK_STEP)
+
+    def test_winback_not_due_before_thirty_days(self):
+        # 20 days quiet: comeback already sent, winback needs 30 → nothing due.
+        profile = self._profile(age_days=90, seen_days_ago=20)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP, COMEBACK_STEP)
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_winback_sends_end_to_end(self, send):
+        profile = self._profile(age_days=90, seen_days_ago=35)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP, CLASSIC_STEP, COMEBACK_STEP)
+        # Back-date the earlier steps past the 20h gap so winback can send now.
+        EmailMessage.objects.filter(recipient=profile).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, WINBACK_STEP)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(send.call_count, 1)
 
     @SENDING
     @mock.patch("emails.sending.send_email", return_value="rid")

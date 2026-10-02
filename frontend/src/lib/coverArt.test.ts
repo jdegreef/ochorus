@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { allBookRows } from '../test/bookRows';
 
 import {
 	COVER_WIDTHS,
@@ -223,13 +224,11 @@ describe('shareCard', () => {
 		// not in the build — right for a row the repo does not know about, and
 		// a silent downgrade for one it does. So the committed library is held
 		// to having every source here, where a gap fails instead.
-		const books = join(process.cwd(), '..', 'backend', 'library', 'fixtures', 'content', 'books');
-		const missing = readdirSync(books)
-			// The book row only: a work's file carries every chapter after it, and
-			// holding all of them to read one row each cost ~300 MB of heap.
-			.map((f) => JSON.parse(readFileSync(join(books, f), 'utf8')).find((r: { model: string }) => r.model === 'library.book'))
-			.filter((r) => r && r.fields.is_published !== false)
-			.map((r) => shareImage({ slug: r.fields.slug, language: r.fields.language, cover_url: r.fields.cover_url ?? '' }))
+		// The book row only (`allBookRows` stops parsing at the first chapter):
+		// parsing every chapter to read one row each cost ~300 MB and seconds.
+		const missing = allBookRows()
+			.filter((r) => r.is_published !== false)
+			.map((r) => shareImage({ slug: r.slug, language: r.language, cover_url: r.cover_url ?? '' }))
 			.filter((img): img is NonNullable<typeof img> => img !== null)
 			.filter((img) => !existsSync(join(process.cwd(), 'static', img.url)))
 			.map((img) => img.url);

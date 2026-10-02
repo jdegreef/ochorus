@@ -497,7 +497,7 @@ export interface ScriptureHit {
 	date: string;
 }
 
-export type SearchHit =
+export type SearchHit = (
 	| ChapterHit
 	| SermonHit
 	| AuthorHit
@@ -505,7 +505,11 @@ export type SearchHit =
 	| TopicHit
 	| PlanHit
 	| ArticleHit
-	| ScriptureHit;
+	| ScriptureHit
+) & {
+	/** An admin pinned this as the best match for the query; it leads the list. */
+	pinned?: boolean;
+};
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';
@@ -515,6 +519,8 @@ export interface SearchResponse {
 	results: SearchHit[];
 	/** A "did you mean" term when the query found nothing (fuzzy-matched). */
 	suggestion?: string;
+	/** The word actually searched, when an admin's synonym replaced the query. */
+	searched_for?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.

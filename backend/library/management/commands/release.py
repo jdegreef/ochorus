@@ -99,3 +99,11 @@ class Command(BaseCommand):
         # Bound the anonymous search-analytics log (reads cover 30 days).
         self.stdout.write("→ trim_search_log")
         call_command("trim_search_log")
+        # Today's point for the language-health trend. Last, after every seed
+        # that changes what a language has; never fatal — a missed day is a gap
+        # in a chart, not a reason to fail a deploy.
+        self.stdout.write("→ snapshot_language_health")
+        try:
+            call_command("snapshot_language_health")
+        except Exception as e:  # noqa: BLE001
+            self.stderr.write(f"  snapshot_language_health skipped: {e}")
