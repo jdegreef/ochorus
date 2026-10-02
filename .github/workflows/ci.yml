@@ -145,7 +145,8 @@ jobs:
     # the suite's size, though: it was a handful of seed tests that walked the
     # whole fixture corpus over and over — one class ran minutes after every
     # other worker had finished (#4890, then the seed tests seeding only the
-    # works they name: ~12 min, then 4m17s for the whole job — #4943).
+    # works they name: ~12 min, then 4m17s for the whole job — #4943; and
+    # autovacuum off on the test server, see that step).
     # Back to 40: a hang guard, with room to grow. If it creeps up again, read
     # the --durations list below before reaching for a job matrix — a single
     # class is one worker's long pole, and sharding can't split it.
@@ -191,6 +192,26 @@ jobs:
       - name: Check for missing migrations
         working-directory: backend
         run: uv run python manage.py makemigrations --check --dry-run
+
+      # Autovacuum OFF on this throwaway server. Every TestCase rolls back, so
+      # between classes the tables are empty again — and autovacuum's ANALYZE,
+      # landing there, records them as empty. A class that then seeds the whole
+      # library inside its one uncommitted transaction (SeedBooksCorpusTests)
+      # gets plans built for an empty table: each chapter's single-row
+      # search-vector UPDATE (WHERE t.id = <pk>) scans the growing table
+      # instead of the pkey, ~30k times. Measured locally, same class, same
+      # order: 293 s with autovacuum, 46 s without. On CI it made that one
+      # class the whole job's long pole (~16 min of a 17-min run, 2026-10-02).
+      # Production has real statistics and is not affected.
+      - name: Turn off autovacuum on the test Postgres
+        working-directory: backend
+        run: |
+          uv run python - <<'EOF'
+          import psycopg
+          with psycopg.connect("postgres://postgres:postgres@localhost:5432/postgres", autocommit=True) as c:
+              c.execute("ALTER SYSTEM SET autovacuum = off")
+              c.execute("SELECT pg_reload_conf()")
+          EOF
 
       # --parallel auto: one worker per core (4 on ubuntu-latest), each with its
       # own cloned test DB. This suite is the workflow's long pole — ~19m serial

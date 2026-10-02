@@ -345,7 +345,15 @@ class SeedBooksUpsertTests(NamedWorksSeedMixin, TestCase):
         author = self._plant_stub_with_translations()
 
         call_command("seed_books", verbosity=0)
-        call_command("seed_sermons", verbosity=0)
+        # seed_sermons' part in this is its closing author sync, which reads
+        # authors.json whatever it walks. Murray preached none of the ~750
+        # sermon files, so walking only the class's works keeps that step (and
+        # the order) while skipping a full-corpus pass that was most of this
+        # test's time.
+        with patch(
+            "library.management.commands.seed_sermons.iter_work_files", named_works
+        ):
+            call_command("seed_sermons", verbosity=0)
         call_command("seed_author_translations", verbosity=0)
 
         es = AuthorTranslation.objects.get(author=author, language="es")

@@ -9,7 +9,7 @@
 	import { groupScripture, heatScale, HEAT_LEVELS, mayBeReference, mostCited } from '$lib/scriptureIndex';
 	import { searchHref } from '$lib/searchState';
 	import { localizeHref } from '$lib/href';
-	import { scrollSpy, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -30,6 +30,8 @@
 	// a list of URLs only a crawler ever sees: from here every chapter page is
 	// one click, and the verses readers remember are one click too.
 	const sections = $derived(groupScripture(pages));
+	// The sticky section bar, when there are sections to jump between.
+	const showSubnav = $derived(sections.length >= 2);
 	const books = $derived(sections.flatMap((s) => s.books));
 	const verseCount = $derived(pages.filter((p) => p.verse !== null).length);
 
@@ -134,7 +136,7 @@
 	// the app nav, its height feeds `--pinned-offset`, and the scroll-spy lights
 	// the section in view. No-JS / prerender: the links still jump.
 	let subnavH = $state(0);
-	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	// A cold #section load jumps against the bar's estimate; re-land it once measured.
 	realignHashOnMeasure(() => subnavH);
 	const spy = scrollSpy(() => sections.map((s) => sectionId(s.key)));
 
@@ -186,7 +188,7 @@
 	<noscript><style>.books-pending .book-body { display: block !important; }</style></noscript>
 </svelte:head>
 
-<div class="page-col px-5 py-10" class:books-pending={!hydrated} style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<div class="page-col px-5 py-10" class:books-pending={!hydrated} style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
 	     — Home is already the logo, <this> restates the H1 below, so it
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
@@ -237,7 +239,7 @@
 			</ol>
 		</section>
 
-		{#if sections.length >= 2}
+		{#if showSubnav}
 			<nav
 				bind:clientHeight={subnavH}
 				class="sections-nav sticky z-20 mt-10 border-b border-border bg-bg"

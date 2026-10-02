@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections import defaultdict
 from html import unescape
 
 from django.core.cache import cache
@@ -39,8 +40,10 @@ from ..qa import (
     FRAG_MIN_WORDS,
     GENERIC_TITLE,
     GIANT_MIN,
+    LENGTH_EDGES,
     TERMINAL_PUNCT,
     TINY_MAX,
+    length_bucket,
     loose_snippet,
     loose_text,
     translation_flags,
@@ -942,6 +945,21 @@ def _only(items: list, language: str) -> list:
     return [f for f in items if f["language"] == language]
 
 
+def _chapter_lengths(by_language: dict[str, list[int]], language: str) -> dict:
+    """The chapter-length histogram for one edition ('' = all), with the edges
+    and thresholds it is drawn against — all from qa.py, so the chart cannot
+    draw a threshold the checks don't use. Accepted findings still count: this
+    is the shape of the library, not a list of open flags."""
+    zeros = [0] * (len(LENGTH_EDGES) + 1)
+    rows = [by_language.get(language, zeros)] if language else list(by_language.values())
+    return {
+        "edges": list(LENGTH_EDGES),
+        "counts": [sum(col) for col in zip(zeros, *rows, strict=True)],
+        "tiny_max": TINY_MAX,
+        "giant_min": GIANT_MIN,
+    }
+
+
 def _present(check: str, items: list, dismissed: set) -> dict:
     """Cap a quality check's findings after removing accepted ones, and report
     how many were hidden so the check still reads as examined, not empty."""
@@ -1131,6 +1149,7 @@ class AdminAuditView(APIView):
                 "language_names": scan["language_names"],
                 "language": language,
                 "scanned_at": scan["scanned_at"],
+                "chapter_lengths": _chapter_lengths(scan["lengths"], language),
             }
         )
 
@@ -1160,7 +1179,10 @@ class AdminAuditView(APIView):
             "broken_plan_days": self._broken_plan_days(),
         }
         # Computed on the FULL result so the picker is stable under a filter.
-        languages = self._languages(raw, dup_raw, integrity_raw)
+        # A clean edition still has a length chart, so it must stay pickable.
+        languages = sorted(
+            set(self._languages(raw, dup_raw, integrity_raw)) | set(per_book["lengths"])
+        )
         return {
             "scanned_at": timezone.now().isoformat(),
             "raw": raw,
@@ -1168,6 +1190,7 @@ class AdminAuditView(APIView):
             "integrity_raw": integrity_raw,
             "languages": languages,
             "language_names": {code: language_entry(code)["name"] for code in languages},
+            "lengths": per_book["lengths"],
         }
 
     @staticmethod
@@ -1200,6 +1223,9 @@ class AdminAuditView(APIView):
         # in `_order_gaps`.
         titles: dict[tuple[str, str], list[str]] = {}
         orders: dict[tuple[str, str], list[int]] = {}
+        # Per-language chapter-length histogram (see qa.length_bucket). Empty
+        # chapters are left out: they are an integrity defect, not a length.
+        lengths: defaultdict[str, list[int]] = defaultdict(lambda: [0] * (len(LENGTH_EDGES) + 1))
 
         rows = Chapter.objects.select_related("book").values(
             "book_id", "book__slug", "book__language", "order", "title",
@@ -1224,6 +1250,7 @@ class AdminAuditView(APIView):
             if not body or wc == 0:
                 empty.append(finding())
                 continue  # remaining checks need body text
+            lengths[lang][length_bucket(wc)] += 1
             if 0 < wc < TINY_MAX:
                 tiny.append(finding(word_count=wc))
             if wc > GIANT_MIN:
@@ -1259,7 +1286,8 @@ class AdminAuditView(APIView):
             # because it falls out of the same single chapter scan.
             "empty_chapters": empty,
         }
-        return raw, {"titles": titles, "orders": orders}
+        # A plain dict for the cache (a defaultdict's lambda doesn't pickle).
+        return raw, {"titles": titles, "orders": orders, "lengths": dict(lengths)}
 
     def _duplicate_titles(self, titles_by_book: dict) -> list[dict]:
         out = []

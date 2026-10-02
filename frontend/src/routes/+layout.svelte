@@ -153,6 +153,10 @@
 		ro.observe(navEl);
 		return () => ro.disconnect();
 	});
+	// Published as --appnav-h: 0 in focus mode (no nav at all), the measured
+	// height once there is one, and nothing before that, so the per-breakpoint
+	// estimate on `.app-root` (app.css) holds for a prerendered page.
+	const appnavH = $derived(readerUi.focus ? '--appnav-h: 0px; ' : navH ? `--appnav-h: ${navH}px; ` : '');
 	// …and hand it to script (readerUi.navHeight) for pages that must clear it.
 	$effect(() => {
 		readerUi.navHeight = navH;
@@ -239,10 +243,10 @@
 </svelte:head>
 
 <div
-	class="flex min-h-screen flex-col"
+	class="app-root flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
 		readerPrefs.measure
-	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px; padding-bottom: var(--tabbar-h, 0px)"
+	]}; --pw: {pageWidth.rem}rem; {appnavH}padding-bottom: var(--tabbar-h, 0px)"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	<!-- Defines the Ochorus wordmark <symbol> once; every BrandMark <use>s it. -->

@@ -18,7 +18,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { scrollSpy, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -355,7 +355,7 @@
 	// the same contract the biographies index uses so anchored sections clear both
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
-	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	// A cold #section load jumps against the bar's estimate; re-land it once measured.
 	realignHashOnMeasure(() => subnavH);
 
 	// Where the Reader parks a resumed or `?p=` paragraph, and the line its
@@ -395,7 +395,7 @@
      nav and this page's own sticky jump-bar is; anchored sections read it for
      scroll-margin so a jump lands below the bars. Same contract as the
      biographies index. -->
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- Focus mode strips the page back to the life itself. Everything here is
 	     context around the biography — portrait, timeline, epigraph, shelves,
 	     contemporaries — and it is exactly what someone reading eleven minutes
