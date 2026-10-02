@@ -2,6 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
+	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
@@ -102,18 +103,15 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
-	// Plan funnel steps, each as a share of "started" so the drop-off reads down
-	// the bars. Started is the 100% baseline; the rest narrow from it.
-	const planSteps = $derived.by(() => {
-		const f = data?.plan_funnel;
-		if (!f || !f.started) return [];
-		const share = (n: number) => Math.round((n / f.started) * 100);
-		return [
-			{ label: 'Started', count: f.started, pct: 100, note: '' },
-			{ label: 'Came back', count: f.returned, pct: share(f.returned), note: `${share(f.returned)}%` },
-			{ label: 'Completed', count: f.completed, pct: share(f.completed), note: `${share(f.completed)}%` }
-		];
-	});
+	const planSteps = $derived(
+		data
+			? [
+					{ label: 'Started', count: data.plan_funnel.started },
+					{ label: 'Came back', count: data.plan_funnel.returned },
+					{ label: 'Completed', count: data.plan_funnel.completed }
+				]
+			: []
+	);
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -379,19 +377,7 @@
 							<h2 class="text-h3">Reading plans</h2>
 							<span class="text-small text-muted">Plans live or die on retention — where readers drop off.</span>
 						</div>
-						<div class="space-y-2">
-							{#each planSteps as s (s.label)}
-								<div class="flex items-center gap-3">
-									<span class="w-24 shrink-0 text-small text-text">{s.label}</span>
-									<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
-										<div class="h-full rounded-full bg-accent-soft" style="width: {s.pct}%"></div>
-									</div>
-									<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
-										<span class="font-semibold text-text">{fmt(s.count)}</span>{#if s.note} · {s.note}{/if}
-									</span>
-								</div>
-							{/each}
-						</div>
+						<FunnelBars steps={planSteps} />
 						{#if d.plan_funnel.by_plan.length}
 							<div class="mt-5 overflow-x-auto">
 								<table class="w-full">

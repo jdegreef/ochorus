@@ -104,7 +104,11 @@ class AdminLanguageHealthView(APIView):
                     },
                     "readiness": {
                         "ready": report.ready,
-                        "blocking": [c.key for c in report.blockers],
+                        # The check's own label, so the page never keeps a
+                        # second (drifting) copy of what each key is called.
+                        "blocking": [
+                            {"key": c.key, "label": c.label} for c in report.blockers
+                        ],
                     },
                     "readers": n_readers,
                 }
@@ -112,8 +116,14 @@ class AdminLanguageHealthView(APIView):
 
         # Healthiest first; the frontend can invert to lead with what needs work.
         rows.sort(key=lambda r: (-r["health"], r["name"]))
+        # The weights ride along so the page can show what each signal is worth
+        # (and what it has lost) without keeping a second copy of them.
         return Response(
-            {"source_published_books": source_published, "languages": rows}
+            {
+                "source_published_books": source_published,
+                "weights": _WEIGHTS,
+                "languages": rows,
+            }
         )
 
     # --- component scores ------------------------------------------------------

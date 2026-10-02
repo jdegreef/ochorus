@@ -117,21 +117,31 @@ export const HEAT_LEVELS = 5;
 
 /**
  * A count → heat-level function, cut by rank rather than by fixed numbers, so
- * the scale stays useful as the library grows: the bottom half of chapters are
- * level 0, then the next quarter, the next 15%, the next 7%, and the top 3%.
- * Equal counts always share a level (the cut is the count AT that rank).
+ * the scale stays useful as the library grows. A count's level comes from the
+ * share of chapters cited LESS often than it: under half → 0, then ≥50%, ≥75%,
+ * ≥90% and ≥97% → 1–4. So the top level holds at most the top 3%, equal counts
+ * always share a level, and a library where most chapters are cited once (the
+ * long tail this index really has) climbs one level per step instead of
+ * vaulting the first count above the minimum straight to the top.
  */
 export function heatScale(counts: number[]): (count: number) => number {
 	if (!counts.length) return () => 0;
 	const sorted = [...counts].sort((a, b) => a - b);
-	const at = (q: number) => sorted[Math.min(sorted.length - 1, Math.floor(q * sorted.length))];
-	const cuts = [0.5, 0.75, 0.9, 0.97].map(at);
+	const n = sorted.length;
+	// How many counts are strictly below `count` (binary search, lower bound).
+	const below = (count: number) => {
+		let lo = 0;
+		let hi = n;
+		while (lo < hi) {
+			const mid = (lo + hi) >> 1;
+			if (sorted[mid] < count) lo = mid + 1;
+			else hi = mid;
+		}
+		return lo;
+	};
 	return (count) => {
-		let level = 0;
-		// A cut equal to the minimum would lift every chapter off level 0, so a
-		// level is earned only by exceeding the lowest count too.
-		for (const c of cuts) if (count >= c && count > sorted[0]) level++;
-		return level;
+		const share = below(count) / n;
+		return [0.5, 0.75, 0.9, 0.97].filter((cut) => share >= cut).length;
 	};
 }
 

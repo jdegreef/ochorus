@@ -224,6 +224,8 @@ export const getAdminAuthorsWithoutBio = () =>
 // engagement) per language, ranked, so the dashboard can lead with where the
 // next hour of work should go. Read-only and derived — see the backend view.
 export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
+/** What each component weighs in the composite (sums to 1). */
+export type HealthWeights = Record<HealthScoreKey, number>;
 export interface AdminLanguageHealth {
 	code: string;
 	name: string;
@@ -244,14 +246,16 @@ export interface AdminLanguageHealth {
 		chapters: number;
 		words: number;
 	};
-	readiness: { ready: boolean; blocking: string[] };
+	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
 }
 
 export const getAdminLanguageHealth = () =>
-	apiFetch<{ source_published_books: number; languages: AdminLanguageHealth[] }>(
-		'/api/admin/language-health/'
-	);
+	apiFetch<{
+		source_published_books: number;
+		weights: HealthWeights;
+		languages: AdminLanguageHealth[];
+	}>('/api/admin/language-health/');
 
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
@@ -1315,6 +1319,9 @@ export interface AdminUsers {
 	total: number;
 	with_activity: number;
 	dormant: number;
+	/** Sign-up to habit, each step a subset of the one before; the first two
+	 *  are `total` and `with_activity`. See analytics._activation_counts. */
+	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	signups_7d: number;
 	signups_30d: number;
 	/** The immediately preceding window, for a trend delta on the cards. */
@@ -1721,6 +1728,8 @@ export interface AdminActionRow {
 	/** Email; blank only for a DEBUG loopback request with no token. */
 	actor: string;
 	target: string;
+	/** The work's real name (book/sermon/article/plan/author), "" when unknown. */
+	title?: string;
 	detail: Record<string, unknown>;
 	at: string;
 }

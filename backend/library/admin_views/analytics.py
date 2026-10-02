@@ -546,12 +546,57 @@ def _profile_summary(p, *, reveal: bool) -> dict:
 RECENT_SIGNUPS_LIMIT = 25
 
 
+def _activation_counts() -> dict[str, int]:
+    """Sign-up to habit: how many accounts reach each step, where every step
+    is a subset of the one before it, so the drop between two steps is real.
+
+    * signed_up — every account;
+    * started — has any reading progress (the Users page's "Activated");
+    * returned — read on two or more days, from ``ReadingDay`` (the streak log:
+      one row per reader per LOCAL date). A sitting that runs past midnight
+      counts as two days, and readers from before that log existed, or on a
+      client that never sent it, can read as not having come back;
+    * finished — of those, finished a book, sermon, biography or article (the
+      stored ``finished_at`` stamp). Because steps nest, a reader who finished
+      in a single day stops at "started", so this is lower than the
+      engagement page's finisher counts.
+
+    Each account's three facts are annotated once and then counted, so every
+    subquery runs once per account rather than once per step.
+    """
+    from django.db.models import Exists, OuterRef, Subquery
+    from django.db.models.functions import Coalesce
+
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay, ReadingProgress
+
+    progress = ReadingProgress.objects.filter(profile=OuterRef("pk"))
+    days = (
+        ReadingDay.objects.filter(profile=OuterRef("pk"))
+        .values("profile")
+        .annotate(n=Count("pk"))
+        .values("n")
+    )
+    started, returned = Q(has_progress=True), Q(has_progress=True, days__gte=2)
+    return UserProfile.objects.annotate(
+        has_progress=Exists(progress),
+        days=Coalesce(Subquery(days), 0),
+        has_finished=Exists(progress.filter(finished_at__isnull=False)),
+    ).aggregate(
+        signed_up=Count("pk"),
+        started=Count("pk", filter=started),
+        returned=Count("pk", filter=returned),
+        finished=Count("pk", filter=returned & Q(has_finished=True)),
+    )
+
+
 @requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
-    Mostly aggregate over ``accounts.UserProfile`` (+ a distinct-reader count
-    from ReadingProgress for activation). The ``recent`` list is the exception:
+    Mostly aggregate over ``accounts.UserProfile``. ``total``, ``with_activity``
+    and the ``activation`` funnel all come from ``_activation_counts``, so the
+    tiles and the funnel always agree. The ``recent`` list is the exception:
     it names individual accounts (display name, email, sign-in method) so the
     founder can see who is actually signing up — admin-only, behind
     ``IsAdminEmail``, and served to no one else.
@@ -565,11 +610,13 @@ class AdminUsersView(APIView):
         from django.utils import timezone
 
         from accounts.models import UserProfile
-        from reading.models import ReadingProgress
 
         now = timezone.now()
-        total = UserProfile.objects.count()
-        with_activity = ReadingProgress.objects.values("profile").distinct().count()
+        # Total and activated come from the same counts as the funnel, so the
+        # tiles and the funnel's first two steps can never disagree.
+        activation = _activation_counts()
+        total = activation["signed_up"]
+        with_activity = activation["started"]
 
         def signups_between(start_days, end_days=0):
             qs = UserProfile.objects.filter(created_at__gte=now - timedelta(days=start_days))
@@ -582,6 +629,7 @@ class AdminUsersView(APIView):
                 "total": total,
                 "with_activity": with_activity,
                 "dormant": max(0, total - with_activity),
+                "activation": [{"step": k, "count": n} for k, n in activation.items()],
                 "signups_7d": signups_between(7),
                 "signups_30d": signups_between(30),
                 # The immediately preceding window, so the UI can show a trend
@@ -777,10 +825,12 @@ class AdminSearchView(APIView):
     tolerance we don't have yet. Top lists skip fragments under 3 characters
     (search-as-you-type prefixes) and fold case.
 
-    Overview counts are searches SERVED, so type-ahead prefixes inflate them
-    relative to typed intent (deliberate: 2-char queries are real searches in
-    e.g. Chinese, and the engine did the work either way). Compare trends, not
-    absolutes.
+    Counts are searches readers finished typing: the type-ahead fragments a
+    longer search extended ("pra" on the way to "prayer") are hidden by
+    SearchQueryLog's default manager, so they inflate neither the volume nor
+    the zero-result rate. A 2-char query that WASN'T extended still counts
+    (they're real searches in e.g. Chinese). Rows, not readers: compare
+    trends, not absolutes.
     """
 
 

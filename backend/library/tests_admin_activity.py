@@ -245,6 +245,35 @@ class AdminActivityTests(TestCase):
         self.assertEqual(len(res["actions"]), 3)
         self.assertTrue(res["truncated"])
 
+    @override_settings(DEBUG=True)
+    def test_rows_carry_the_works_real_title(self):
+        from .models import Author, Book
+
+        author = Author.objects.create(slug="muller", name="George Müller")
+        Book.objects.create(author=author, slug="muller-of-bristol", title="George Müller of Bristol")
+        Book.objects.create(
+            author=author, slug="muller-of-bristol", language="fr", title="George Müller de Bristol"
+        )
+        self._row(A.TRANSLATION_JOB, target="book:muller-of-bristol:fr")
+        self._row(A.TRANSLATION_JOB, target="book:muller-of-bristol:es")  # no es row yet
+        self._row(A.AUTHOR_CREATE, target="author:muller")
+        self._row(A.TRANSLATION_JOB, target="book:no-such-book:es")
+        self._row(A.LANGUAGE_GO_LIVE, target="language:sw")
+        # A review row's target carries a reference after the language.
+        self._row(A.REVIEW_DECIDE, target="book:muller-of-bristol:fr:John 3:16")
+        res = self.client.get("/api/admin/activity/").data
+        titles = {a["target"]: a["title"] for a in res["actions"]}
+        self.assertEqual(titles["book:muller-of-bristol:fr"], "George Müller de Bristol")
+        # The edition a job targets may not exist yet: the English name stands in.
+        self.assertEqual(titles["book:muller-of-bristol:es"], "George Müller of Bristol")
+        self.assertEqual(titles["author:muller"], "George Müller")
+        self.assertEqual(titles["book:no-such-book:es"], "")
+        self.assertEqual(titles["language:sw"], "")
+        self.assertEqual(titles["book:muller-of-bristol:fr:John 3:16"], "George Müller de Bristol")
+        # The CSV has no title column, so the export doesn't resolve them.
+        exported = self.client.get("/api/admin/activity/?export=1").data["actions"]
+        self.assertTrue(all(a["title"] == "" for a in exported))
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_forbidden_without_admin_email(self):
         res = self.client.get("/api/admin/activity/")

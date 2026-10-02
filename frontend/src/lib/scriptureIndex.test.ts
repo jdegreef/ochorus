@@ -97,6 +97,27 @@ describe('heatScale', () => {
 			expect(level(c)).toBeLessThanOrEqual(4);
 		}
 	});
+	it('climbs one level per step on a long tail, keeping the top level to the top 3%', () => {
+		// 60 chapters cited once, 20 twice, 10 three times, 7 five times, then 20, 40, 90.
+		const counts = [
+			...Array(60).fill(1),
+			...Array(20).fill(2),
+			...Array(10).fill(3),
+			...Array(7).fill(5),
+			20,
+			40,
+			90
+		];
+		const level = heatScale(counts);
+		expect([1, 2, 3, 5, 20, 40, 90].map(level)).toEqual([0, 1, 2, 3, 4, 4, 4]);
+		expect(counts.filter((c) => level(c) === 4)).toHaveLength(3);
+	});
+	it('does not hand the top level to everything above the minimum', () => {
+		// 80 chapters cited once, 20 twice: the twice-cited are the top 20%, not the top 3%.
+		const level = heatScale([...Array(80).fill(1), ...Array(20).fill(2)]);
+		expect(level(1)).toBe(0);
+		expect(level(2)).toBe(2);
+	});
 	it('copes with no counts', () => {
 		expect(heatScale([])(10)).toBe(0);
 	});

@@ -49,68 +49,6 @@ LAUNCH_PLANS = [
         "reflection, and a prayer.",
     ),
     (
-        "rooted-book-1-30-days",
-        "rooted-1",
-        "Rooted: 30 Days with God — Book 1",
-        "Thirty days to plant deep roots, for readers aged 9 to 12: who God is, "
-        "the good news of Jesus, who you are in Christ, how to pray, and how to "
-        "grow. Each day is one short reading with a Bible verse, a question to "
-        "think about, something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "rooted-book-2-30-days",
-        "rooted-2",
-        "Rooted: 30 Days with God — Book 2",
-        "Thirty days walking with Jesus, for readers aged 9 to 12: from the "
-        "manger in Bethlehem through His miracles and stories to the cross and "
-        "the empty tomb. Each day is one short reading with a Gospel passage, a "
-        "question to think about, something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "rooted-book-3-30-days",
-        "rooted-3",
-        "Rooted: 30 Days with God — Book 3",
-        "Thirty days of growing fruit, for readers aged 9 to 12: love, joy, "
-        "peace, patience, kindness and the rest of the fruit of the Spirit, the "
-        "words we say, and the habits of the heart. Each day is one short "
-        "reading with a Bible verse, a question to think about, something to "
-        "try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "rooted-book-4-30-days",
-        "rooted-4",
-        "Rooted: 30 Days with God — Book 4",
-        "Thirty days of standing strong in the storms of life, for readers aged "
-        "9 to 12: when you're afraid, worried or sad, when you're tempted, and "
-        "when life isn't fair. Each day is one short reading with a Bible verse, "
-        "a question to think about, something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "rooted-book-5-30-days",
-        "rooted-5",
-        "Rooted: 30 Days with God — Book 5",
-        "Thirty days of branching out in love, for readers aged 9 to 12: family, "
-        "friends, forgiveness, God's family at church, and the whole world. Each "
-        "day is one short reading with a Bible verse, a question to think about, "
-        "something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "rooted-book-6-30-days",
-        "rooted-6",
-        "Rooted: 30 Days with God — Book 6",
-        "Thirty days on God's purpose for your life, for readers aged 9 to 12: "
-        "chosen and created for good works, using your gifts and time for God, "
-        "serving and speaking up, and looking ahead to Jesus' return. Each day is "
-        "one short reading with a Bible verse, a question to think about, "
-        "something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
         "school-of-prayer-31-days",
         "school-of-prayer",
         "31 Days in the School of Prayer",
@@ -120,70 +58,6 @@ LAUNCH_PLANS = [
         "its own. One lesson a day, about ten minutes, building toward "
         "intercession and a life of prayer.",
         (2, 32),  # Lesson 1 … Lesson 31, between the Preface and the Müller note
-    ),
-    (
-        "daughters-of-the-king-book-1-30-days",
-        "daughters-of-the-king-1",
-        "Daughters of the King: 30 Days with God — Book 1",
-        "Thirty days for girls aged 9 to 12 on who you are as a daughter of the "
-        "King: worth that comes from God, escaping the comparison trap, "
-        "friendship without drama, and the brave girls of the Bible. Each day is "
-        "one short reading with a Bible verse, a question to think about, "
-        "something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "daughters-of-the-king-book-2-30-days",
-        "daughters-of-the-king-2",
-        "Daughters of the King: 30 Days with God — Book 2",
-        "Thirty days of courage for girls aged 9 to 12: facing worry with God, "
-        "using your voice, serving and leading, and following Jesus like the "
-        "brave women of the Gospels. Each day is one short reading with a Bible "
-        "verse, a question to think about, something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "daughters-of-the-king-book-3-30-days",
-        "daughters-of-the-king-3",
-        "Daughters of the King: 30 Days with God — Book 3",
-        "Thirty days on growing up for girls aged 9 to 12: big feelings, the "
-        "changes of puberty as God's good design, wise choices, discovering "
-        "your calling, and learning from older women who love God. Each day is "
-        "one short reading with a Bible verse, a question to think about, "
-        "something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "sons-of-the-king-book-1-30-days",
-        "sons-of-the-king-1",
-        "Sons of the King: 30 Days with God — Book 1",
-        "Thirty days for boys aged 9 to 12 on who you are as a son of the King: "
-        "worth that comes from God, strength under control, friends who make you "
-        "better, and courage from the men of the Bible. Each day is one short "
-        "reading with a Bible verse, a question to think about, something to "
-        "try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "sons-of-the-king-book-2-30-days",
-        "sons-of-the-king-2",
-        "Sons of the King: 30 Days with God — Book 2",
-        "Thirty days of faithfulness for boys aged 9 to 12: integrity, screens "
-        "and gaming, temptation, winning and losing well, and following Jesus "
-        "like His first disciples. Each day is one short reading with a Bible "
-        "verse, a question to think about, something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
-    ),
-    (
-        "sons-of-the-king-book-3-30-days",
-        "sons-of-the-king-3",
-        "Sons of the King: 30 Days with God — Book 3",
-        "Thirty days on growing up for boys aged 9 to 12: handling feelings, "
-        "the changes of puberty as God's good design, wise choices, discovering "
-        "your calling, and learning from older men who walk with God. Each day "
-        "is one short reading with a Bible verse, a question to think about, "
-        "something to try, and a prayer.",
-        (2, 31),  # Day 1 … Day 30, between the Introduction and Conclusion
     ),
 ]
 
@@ -503,15 +377,27 @@ CURATED_PLANS = [
         ],
     ),
     (
-        "rooted-six-months-with-god",
-        "Rooted: Six Months with God",
-        "Half a year with God for readers aged 9 to 12: all six books of Rooted, "
-        "from Planted to Bearing Fruit, one short devotion a day — a verse, what "
-        "it means, something to think about and something to try, and a prayer.",
+        "rooted-three-months-books-1-3",
+        "Rooted: Three Months with God — Books 1–3",
+        "Three months with God for readers aged 9 to 12: the first three books "
+        "of Rooted — Planted, Following Jesus and Growing Fruit — one short "
+        "devotion a day on who God is and the good news of Jesus, walking with "
+        "Him from the manger to the empty tomb, and growing the fruit of the "
+        "Spirit.",
         [
             "rooted-1",
             "rooted-2",
             "rooted-3",
+        ],
+    ),
+    (
+        "rooted-three-months-books-4-6",
+        "Rooted: Three Months with God — Books 4–6",
+        "Three more months with God for readers aged 9 to 12: the last three "
+        "books of Rooted — Strong in the Storm, Branching Out and Bearing Fruit "
+        "— one short devotion a day on standing firm when life is hard, loving "
+        "the people around you, and God's purpose for your life.",
+        [
             "rooted-4",
             "rooted-5",
             "rooted-6",
@@ -530,4 +416,58 @@ CURATED_PLANS = [
             "daughters-of-the-king-3",
         ],
     ),
+    (
+        "sons-of-the-king-three-months",
+        "Sons of the King: Three Months with God",
+        "Three months with God for boys aged 9 to 12: all three books of Sons "
+        "of the King — Strong, Faithful and Growing Up — one short devotion a "
+        "day on who you are in Christ, being someone who can be trusted, and "
+        "growing up with wisdom.",
+        [
+            "sons-of-the-king-1",
+            "sons-of-the-king-2",
+            "sons-of-the-king-3",
+        ],
+    ),
 ]
+
+# Plans that have been withdrawn from the shelf, each with the plan(s) that
+# took its place. ``seed_plans`` DELETES every row of a retired slug, in every
+# language, on each deploy — dropping a tuple from the lists above is not
+# enough on its own, because the seed only ever creates and reconciles, so the
+# old row would stay live in prod forever.
+#
+# Deleting is safe because a Plan row holds nothing a seed cannot rebuild: its
+# prose and days are derived from the lists above, and readers' progress is
+# keyed by slug in the reading app, not by FK. That progress (and a saved
+# heart) is carried to the successor plan(s) by a migration (reading 0032 for
+# the series plans below) and, for progress, on the device by
+# ``frontend/src/lib/planMoves.ts``. A retired slug may never
+# return to LAUNCH_PLANS / CURATED_PLANS (``tests_topics_plans`` checks), so a
+# stale device that syncs its old day numbers onto one ticks nothing.
+#   {retired slug: (successor plan slugs)}
+RETIRED_PLANS = {
+    # 2026-10: the young-reader series read as ONE plan per series (Rooted as two
+    # halves), not one plan per book. The combined plans read every chapter,
+    # each book's Introduction and Conclusion included.
+    **{
+        f"rooted-book-{n}-30-days": ("rooted-three-months-books-1-3",)
+        for n in (1, 2, 3)
+    },
+    **{
+        f"rooted-book-{n}-30-days": ("rooted-three-months-books-4-6",)
+        for n in (4, 5, 6)
+    },
+    "rooted-six-months-with-god": (
+        "rooted-three-months-books-1-3",
+        "rooted-three-months-books-4-6",
+    ),
+    **{
+        f"daughters-of-the-king-book-{n}-30-days": ("daughters-of-the-king-three-months",)
+        for n in (1, 2, 3)
+    },
+    **{
+        f"sons-of-the-king-book-{n}-30-days": ("sons-of-the-king-three-months",)
+        for n in (1, 2, 3)
+    },
+}

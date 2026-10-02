@@ -47,6 +47,25 @@ def synthetic_repair(body_html):
 
 
 class SeedBooksTests(TestCase):
+    def setUp(self):
+        # Both tests are about ONE work's create path, so seed just its file.
+        # Seeding all ~700 fixture files into an empty Postgres DB took 14 and
+        # 21 minutes here (the whole backend job's 40-minute budget was mostly
+        # these two); the full-corpus walk is covered by the upsert and drift
+        # classes below, which seed it once in setUpTestData.
+        from library.content_fixtures import BOOKS_DIR, work_filename
+
+        path = BOOKS_DIR / work_filename("the-way-to-god", "en")
+
+        def one_work():
+            yield path, json.loads(path.read_text())
+
+        patcher = patch(
+            "library.management.commands.seed_books.iter_work_files", one_work
+        )
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
     def test_creates_missing_books_with_chapters_and_author(self):
         from django.core.management import call_command
 

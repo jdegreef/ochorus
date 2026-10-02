@@ -246,8 +246,8 @@
 					<h2 class="text-h3">Where searches end</h2>
 					<p class="mb-4 text-small text-muted">
 						Last {PERIODS[period]}. Nothing found is a content gap; found but not opened is
-						usually a ranking or snippet problem. Type-ahead prefixes count as searches, so
-						the opened share runs low: read it as a trend.
+						usually a ranking or snippet problem. Keystrokes on the way to a search ("pra" →
+						"prayer") aren't counted.
 					</p>
 					<ul class="space-y-3">
 						{#each funnel as step (step.label)}

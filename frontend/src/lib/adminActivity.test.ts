@@ -6,10 +6,13 @@ import {
 	absoluteTime,
 	CATEGORIES,
 	dayLabel,
+	groupBursts,
 	groupByDay,
 	initials,
+	issueRange,
 	parseTarget,
 	summariseDetail,
+	titleParts,
 	toCsv
 } from './adminActivity';
 
@@ -200,5 +203,101 @@ describe('toCsv', () => {
 describe('absoluteTime', () => {
 	it('formats a short month/day and time', () => {
 		expect(absoluteTime('2026-09-06T12:00:00')).toMatch(/Sep 6/);
+	});
+});
+
+describe('summariseDetail: created', () => {
+	it('hides the normal created=true and flags a job that was already open', () => {
+		expect(summariseDetail({ created: true })).toEqual([]);
+		expect(summariseDetail({ created: false })).toEqual([
+			{ kind: 'warn', text: 'Already open — nothing filed' }
+		]);
+	});
+});
+
+describe('titleParts', () => {
+	it('lifts the edition, in the title\'s own language, into a chip', () => {
+		expect(
+			titleParts('amanda-smith-autobiography-children', 'The Story of Amanda Smith (For Children)')
+		).toEqual({ name: 'The Story of Amanda Smith', edition: 'For Children' });
+		expect(titleParts('a-retrospect-children', 'Una retrospectiva (Para niños)')).toEqual({
+			name: 'Una retrospectiva',
+			edition: 'Para niños'
+		});
+	});
+	it('leaves a work whose own title ends that way alone', () => {
+		expect(titleParts('divine-songs-for-children', 'Divine Songs for Children')).toEqual({
+			name: 'Divine Songs for Children',
+			edition: null
+		});
+	});
+	it('falls back to the slug without a title', () => {
+		expect(titleParts('grace-abounding', '')).toEqual({ name: 'Grace Abounding', edition: null });
+	});
+});
+
+describe('groupBursts', () => {
+	const job = (slug: string, at: string, over: Partial<AdminActionRow> = {}) =>
+		row({ action: 'translation.job', target: `book:${slug}:es`, at, ...over });
+
+	it('folds a run of the same action into one burst, keeping order', () => {
+		const rows = [
+			job('a', '2026-10-01T07:07:00Z'),
+			job('b', '2026-10-01T07:06:30Z'),
+			job('c', '2026-10-01T07:06:00Z'),
+			row({ action: 'review.decide', at: '2026-10-01T06:40:00Z' })
+		];
+		const items = groupBursts(rows);
+		expect(items.map((i) => i.kind)).toEqual(['burst', 'row']);
+		expect(items[0].kind === 'burst' && items[0].rows.map((r) => r.target)).toEqual([
+			'book:a:es',
+			'book:b:es',
+			'book:c:es'
+		]);
+	});
+
+	it('leaves runs of two, other languages, and long gaps as rows', () => {
+		expect(groupBursts([job('a', '2026-10-01T07:07:00Z'), job('b', '2026-10-01T07:06:00Z')]).map((i) => i.kind)).toEqual([
+			'row',
+			'row'
+		]);
+		const mixed = [
+			job('a', '2026-10-01T07:07:00Z'),
+			job('b', '2026-10-01T07:06:00Z', { target: 'book:b:fr' }),
+			job('c', '2026-10-01T07:05:00Z')
+		];
+		expect(groupBursts(mixed).every((i) => i.kind === 'row')).toBe(true);
+		const kinds = [
+			job('a', '2026-10-01T07:07:00Z'),
+			job('b', '2026-10-01T07:06:00Z', { target: 'sermon:b:es' }),
+			job('c', '2026-10-01T07:05:00Z')
+		];
+		expect(groupBursts(kinds).every((i) => i.kind === 'row')).toBe(true);
+		const gappy = [job('a', '2026-10-01T09:00:00Z'), job('b', '2026-10-01T08:00:00Z'), job('c', '2026-10-01T07:00:00Z')];
+		expect(groupBursts(gappy).every((i) => i.kind === 'row')).toBe(true);
+	});
+});
+
+describe('issueRange', () => {
+	it('spans the issues a burst filed', () => {
+		const r = (n: number) => row({ detail: { issue: `https://github.com/o/r/issues/${n}` } });
+		expect(issueRange([r(4821), r(4722), r(4800)])).toBe('#4722–#4821');
+		expect(issueRange([r(7)])).toBe('#7');
+		expect(issueRange([row({ detail: {} })])).toBe('');
+	});
+});
+
+describe('groupBursts: reviews', () => {
+	const review = (outcome: string, at: string, reason?: string) =>
+		row({ action: 'review.decide', at, detail: reason ? { outcome, reason } : { outcome } });
+	it('keeps a rejection, or a row with a reason, out of a run of approvals', () => {
+		const items = groupBursts([
+			review('approved', '2026-10-01T07:05:00Z'),
+			review('approved', '2026-10-01T07:04:00Z'),
+			review('approved', '2026-10-01T07:03:00Z'),
+			review('rejected', '2026-10-01T07:02:00Z'),
+			review('approved', '2026-10-01T07:01:00Z', 'fine')
+		]);
+		expect(items.map((i) => i.kind)).toEqual(['burst', 'row', 'row']);
 	});
 });
