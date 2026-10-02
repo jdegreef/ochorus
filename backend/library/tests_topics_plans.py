@@ -239,6 +239,156 @@ class PlanTests(TestCase):
         legacy.refresh_from_db()
         self.assertEqual(legacy.title, "Humility in 12 Days")
 
+    def test_seed_plans_deletes_a_retired_plan_in_every_language(self):
+        """Dropping a tuple is not enough: the seed only creates and reconciles,
+        so a retired plan's rows would stay live without the explicit list."""
+        from library.plan_seed import RETIRED_PLANS
+
+        retired = next(iter(RETIRED_PLANS))
+        for lang in ("en", "am"):
+            plan = Plan.objects.create(slug=retired, language=lang, title="Old")
+            PlanDay.objects.create(plan=plan, day=1, book_slug="humility-2", chapter_order=1)
+        call_command("seed_plans", verbosity=0)
+
+        self.assertFalse(Plan.objects.filter(slug=retired).exists())
+        self.assertFalse(PlanDay.objects.filter(plan__slug=retired).exists())
+        # Plans still in the lists are untouched.
+        self.assertTrue(Plan.objects.filter(slug="humility-12-days", language="en").exists())
+
+
+class RetiredPlanTests(TestCase):
+    """``RETIRED_PLANS`` and the progress move that goes with it agree."""
+
+    def test_a_retired_slug_never_returns_and_names_live_successors(self):
+        from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, RETIRED_PLANS
+
+        live = {p[0] for p in LAUNCH_PLANS} | {p[0] for p in CURATED_PLANS}
+        self.assertEqual(sorted(set(RETIRED_PLANS) & live), [])
+        self.assertEqual(
+            sorted(s for succ in RETIRED_PLANS.values() for s in succ if s not in live), []
+        )
+
+    # Scoped to 0032's own slugs: a migration is frozen once it runs, so a later
+    # retirement brings its own move rather than editing this one.
+    @staticmethod
+    def _series_move():
+        import importlib
+
+        return importlib.import_module("reading.migrations.0032_move_series_plan_progress")
+
+    def test_the_series_progress_move_follows_retired_plans(self):
+        from library.plan_seed import RETIRED_PLANS
+
+        for old, targets in self._series_move().MOVES.items():
+            self.assertIn(old, RETIRED_PLANS)
+            self.assertEqual(tuple(t for t, _ in targets), RETIRED_PLANS[old], old)
+
+    def test_series_successors_read_every_chapter_of_32_chapter_books(self):
+        """The progress move maps (book i, chapter c) to day i * 32 + c, which
+        holds only while each series book has chapters 1 … 32 in every language
+        it ships in."""
+        import json
+
+        from library.content_fixtures import BOOKS_DIR
+        from library.plan_seed import CURATED_PLANS
+
+        successors = {t for targets in self._series_move().MOVES.values() for t, _ in targets}
+        books = {b for p in CURATED_PLANS if p[0] in successors for b in p[3]}
+        bad, seen = [], set()
+        for slug in sorted(books):
+            for path in sorted(BOOKS_DIR.glob(f"{slug}.*.json")):
+                rows = json.loads(path.read_text(encoding="utf-8"))
+                orders = sorted(
+                    r["fields"]["order"] for r in rows if r["model"] == "library.chapter"
+                )
+                seen.add(slug)
+                if orders != list(range(1, 33)):
+                    bad.append(path.name)
+        self.assertEqual(seen, books)
+        self.assertEqual(bad, [])
+
+    def test_progress_moves_onto_the_successor_numbering(self):
+        import datetime
+        import importlib
+
+        from django.apps import apps as django_apps
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.models import UserProfile
+        from reading.models import PlanProgress
+
+        mod = importlib.import_module("reading.migrations.0032_move_series_plan_progress")
+        user = get_user_model().objects.create(username="00000000-0000-0000-0000-0000000000b1")
+        profile = UserProfile.objects.create(
+            user=user, supabase_uid=user.username, email="s@example.com"
+        )
+        late = timezone.now()
+        early = late - datetime.timedelta(days=9)
+        PlanProgress.objects.bulk_create(
+            PlanProgress(profile=profile, plan_slug=slug, started_at=at, done=done)
+            for slug, done, at in [
+                ("rooted-book-2-30-days", [1, 30], late),
+                ("rooted-book-1-30-days", [1], late),
+                ("rooted-three-months-books-1-3", [70], early),  # already on the new plan
+                ("rooted-six-months-with-god", [1, 97, 192], late),
+                ("sons-of-the-king-book-3-30-days", [5], late),
+            ]
+        )
+
+        mod.move_progress(django_apps, None)
+
+        got = {p.plan_slug: (p.done, p.started_at) for p in PlanProgress.objects.all()}
+        self.assertEqual(
+            {k: v[0] for k, v in got.items()},
+            {
+                # Book 1 day 1 -> 2; Book 2 days 1, 30 -> 34, 63; six-month day 1
+                # -> 1; the reader's own day 70 kept.
+                "rooted-three-months-books-1-3": [1, 2, 34, 63, 70],
+                # six-month days 97 and 192 -> the second half's 1 and 96
+                "rooted-three-months-books-4-6": [1, 96],
+                # Book 3 day 5 is the plan's 64 + 6
+                "sons-of-the-king-three-months": [70],
+            },
+        )
+        self.assertEqual(got["rooted-three-months-books-1-3"][1], early)
+
+    def test_a_saved_retired_plan_becomes_its_successor_saved(self):
+        from django.apps import apps as django_apps
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.models import UserProfile
+        from reading.models import Favorite, Removal
+
+        user = get_user_model().objects.create(username="00000000-0000-0000-0000-0000000000b2")
+        profile = UserProfile.objects.create(
+            user=user, supabase_uid=user.username, email="f@example.com"
+        )
+        for slug in ("rooted-six-months-with-god", "sons-of-the-king-book-1-30-days"):
+            Favorite.objects.create(profile=profile, kind="plan", slug=slug)
+        # The reader had deliberately un-hearted the Sons series plan.
+        Removal.objects.create(
+            profile=profile, domain="favorite", kind="plan",
+            slug="sons-of-the-king-three-months", removed_at=timezone.now(),
+        )
+
+        self._series_move().move_favorites(django_apps, None)
+
+        self.assertEqual(
+            sorted(Favorite.objects.values_list("slug", flat=True)),
+            ["rooted-three-months-books-1-3", "rooted-three-months-books-4-6"],
+        )
+        # Old hearts are tombstoned, so a stale device cannot merge them back.
+        self.assertEqual(
+            set(Removal.objects.filter(domain="favorite").values_list("slug", flat=True)),
+            {
+                "rooted-six-months-with-god",
+                "sons-of-the-king-book-1-30-days",
+                "sons-of-the-king-three-months",
+            },
+        )
+
 
 class PlanArticleDayTests(TestCase):
     """A curated plan can read articles between its book chapters."""

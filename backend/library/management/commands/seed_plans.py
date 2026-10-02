@@ -11,7 +11,13 @@ from django.core.management.base import BaseCommand
 from django.db import transaction
 
 from library.models import Article, Book, Plan, PlanDay
-from library.plan_seed import CURATED_PLANS, LAUNCH_PLANS, plan_items, plan_sources
+from library.plan_seed import (
+    CURATED_PLANS,
+    LAUNCH_PLANS,
+    RETIRED_PLANS,
+    plan_items,
+    plan_sources,
+)
 from library.plan_translations import plan_translations
 
 
@@ -93,7 +99,27 @@ class Command(BaseCommand):
             self.stdout.write(f"Updated plan {slug} ({lang}) prose.")
         return True
 
+    def _retire(self) -> None:
+        """Delete every row of a plan in ``RETIRED_PLANS``, in every language.
+
+        The rest of this command only creates and reconciles, so a plan dropped
+        from the lists would otherwise stay live forever. Deleting rather than
+        unpublishing because a Plan row is wholly derived from the seed data:
+        nothing points at it by FK but its own days, which go with it, and
+        readers' progress is slug-keyed and carried to the successor elsewhere
+        (see ``RETIRED_PLANS``). An unpublished row would still count as a
+        "present" plan in the admin coverage grid and per-language totals.
+        """
+        rows = Plan.objects.filter(slug__in=RETIRED_PLANS)
+        found = sorted(rows.values_list("slug", "language"))
+        if not found:
+            return  # the steady state: one query per deploy
+        rows.delete()
+        for slug, lang in found:
+            self.stdout.write(self.style.WARNING(f"Retired plan {slug} ({lang})."))
+
     def handle(self, *args, **opts):
+        self._retire()
         created = 0
         for slug, book_slug, title, description, *rest in LAUNCH_PLANS:
             span = rest[0] if rest else None  # (first, last) chapter order
