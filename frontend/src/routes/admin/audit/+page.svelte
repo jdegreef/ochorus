@@ -123,6 +123,11 @@
 		{ key: 'generic_titles', label: 'Generic / missing titles', desc: 'Empty title, or a bare “Chapter N”' },
 		{ key: 'missing_dropcap', label: 'Missing drop cap', desc: 'Body starts lower-case or mid-word' },
 		{ key: 'fragmented', label: 'Fragmented paragraphs', desc: 'Very low words-per-paragraph' },
+		{
+			key: 'loose_text',
+			label: 'Text outside paragraphs',
+			desc: 'Text sitting between blocks, outside any paragraph — often captions or poems that lost their markup'
+		},
 		{ key: 'duplicate_titles', label: 'Duplicate titles in a book', desc: 'Same title on multiple chapters' },
 		{ key: 'tiny_chapters', label: 'Tiny chapters', desc: 'Under 150 words' },
 		{ key: 'giant_chapters', label: 'Giant chapters', desc: 'Over 8,000 words — a split may be missed' }
@@ -161,6 +166,7 @@
 		if (f.word_count != null) return `${f.word_count} words`;
 		if (f.starts) return `“${f.starts}…”`;
 		if (f.ends) return `…${f.ends}`;
+		if (f.loose_runs != null) return `${f.loose_runs} loose · “${f.loose}”`;
 		return '';
 	}
 

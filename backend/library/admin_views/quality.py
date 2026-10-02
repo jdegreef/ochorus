@@ -41,6 +41,8 @@ from ..qa import (
     GIANT_MIN,
     TERMINAL_PUNCT,
     TINY_MAX,
+    loose_snippet,
+    loose_text,
     translation_flags,
 )
 
@@ -870,6 +872,7 @@ QUALITY_CHAPTER_CHECKS = (
     "fragmented",
     "missing_dropcap",
     "mid_sentence_splits",
+    "loose_text",
 )
 DISMISSIBLE_CHECKS = frozenset(QUALITY_CHAPTER_CHECKS + ("duplicate_titles",))
 
@@ -1017,7 +1020,7 @@ class AdminAuditView(APIView):
 
     Quality checks port the ``book-qa`` skill's heuristics (generic titles,
     tiny/giant/fragmented chapters, missing drop caps, mid-sentence splits,
-    duplicate titles). Integrity checks cover structural problems (empty books,
+    text outside paragraphs, duplicate titles). Integrity checks cover structural problems (empty books,
     empty chapters, chapter-order gaps, broken reading-plan day references).
 
     Read-only, admin-gated. One streamed pass over chapters plus a few small
@@ -1131,8 +1134,8 @@ class AdminAuditView(APIView):
             r["book_id"]: r["mx"]
             for r in Chapter.objects.values("book_id").annotate(mx=Max("order"))
         }
-        generic, tiny, giant, fragmented, dropcap, mid_split, empty = (
-            [], [], [], [], [], [], []
+        generic, tiny, giant, fragmented, dropcap, mid_split, loose, empty = (
+            [], [], [], [], [], [], [], []
         )
         # Keyed by (slug, language), NOT slug. A work is a per-language ROW —
         # eight editions of the-inner-chamber share one slug — so grouping by
@@ -1184,6 +1187,10 @@ class AdminAuditView(APIView):
             if order < maxima.get(c["book_id"], order) and not body.endswith(TERMINAL_PUNCT):
                 mid_split.append(finding(ends=body[-40:]))
 
+            runs = loose_text(c["body_html"])
+            if runs:
+                loose.append(finding(loose_runs=len(runs), loose=loose_snippet(runs)))
+
         # Raw (uncapped) lists — the caller filters out accepted findings before
         # capping, so capping here would drop rows the reviewer has NOT accepted
         # whenever a check ran past 100.
@@ -1194,6 +1201,7 @@ class AdminAuditView(APIView):
             "fragmented": fragmented,
             "missing_dropcap": dropcap,
             "mid_sentence_splits": mid_split,
+            "loose_text": loose,
             # Not a quality check — lifted into integrity by get(). Kept here
             # because it falls out of the same single chapter scan.
             "empty_chapters": empty,

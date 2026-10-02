@@ -44,7 +44,8 @@
 		giant: 'giant',
 		fragmented: 'fragmented',
 		'no-dropcap': 'no drop cap',
-		'mid-split': 'mid-sentence'
+		'mid-split': 'mid-sentence',
+		'loose-text': 'text outside ¶'
 	};
 </script>
 

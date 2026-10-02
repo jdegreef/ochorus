@@ -860,6 +860,9 @@ export interface AuditChapterFinding {
 	paragraphs?: number;
 	starts?: string;
 	ends?: string;
+	/** loose_text: how many runs sit outside any block, and the first, cut short. */
+	loose_runs?: number;
+	loose?: string;
 }
 
 export interface AdminAudit {
@@ -870,6 +873,7 @@ export interface AdminAudit {
 		fragmented: Capped<AuditChapterFinding>;
 		missing_dropcap: Capped<AuditChapterFinding>;
 		mid_sentence_splits: Capped<AuditChapterFinding>;
+		loose_text: Capped<AuditChapterFinding>;
 		duplicate_titles: Capped<{ book: string; language: string; title: string; count: number }>;
 	};
 	integrity: {

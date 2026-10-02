@@ -584,6 +584,8 @@ class AdminAuditTests(TestCase):
         self.assertIn(("humility", 1), mids)  # order 1, has a later chapter, no terminal punct
         drops = [(f["book"], f["order"]) for f in q["missing_dropcap"]["items"]]
         self.assertIn(("humility", 4), drops)
+        # Every body here is wrapped in blocks: nothing sits outside a paragraph.
+        self.assertEqual(q["loose_text"]["total"], 0)
 
     @override_settings(DEBUG=True)
     def test_integrity_checks(self):
@@ -851,6 +853,29 @@ class AdminAuditDismissTests(TestCase):
         self.assertEqual(res.status_code, 201)
         dupes = self.client.get("/api/admin/audit/").data["quality"]["duplicate_titles"]
         self.assertEqual([d for d in dupes["items"] if d["title"] == long_title], [])
+
+    def test_loose_text_found_and_dismissible(self):
+        book = Book.objects.get(slug="humility", language="en")
+        Chapter.objects.create(
+            book=book, order=3, title="Pictures",
+            body_html="<p>Before.</p>A caption under a lost picture<p>After.</p><i>Another.</i>",
+        )
+        Chapter.objects.create(book=book, order=4, title="Clean", body_html="<p>Fine <em>prose</em>.</p><hr/>")
+        loose = self.client.get("/api/admin/audit/").data["quality"]["loose_text"]
+        self.assertEqual(loose["total"], 1, "only the chapter with loose text")
+        [f] = loose["items"]
+        self.assertEqual((f["book"], f["language"], f["order"]), ("humility", "en", 3))
+        self.assertEqual(f["loose_runs"], 2)
+        self.assertEqual(f["loose"], "A caption under a lost picture")
+
+        res = self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "loose_text", "book": "humility", "language": "en", "ref": "3"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 201)
+        loose = self.client.get("/api/admin/audit/").data["quality"]["loose_text"]
+        self.assertEqual((loose["total"], loose["dismissed"]), (0, 1))
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
