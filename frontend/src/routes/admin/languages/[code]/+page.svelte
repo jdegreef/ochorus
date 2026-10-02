@@ -4,6 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
+	import { blockingLabels } from '$lib/languageHealth';
 	import {
 		type SourceType
 	} from '$lib/library-public';
@@ -536,7 +537,7 @@
 							<span class="text-small font-semibold {readiness.ready ? 'text-accent' : 'text-warning'}">
 								{readiness.ready
 									? 'Every check clear'
-									: `${readiness.blocking.length} blocking: ${readiness.blocking.join(', ')}`}
+									: `${readiness.blocking.length} blocking: ${blockingLabels(readiness).join(', ')}`}
 							</span>
 						{/if}
 					</div>

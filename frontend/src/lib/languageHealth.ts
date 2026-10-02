@@ -3,7 +3,13 @@
  * lost, which band a score sits in, and the one piece of work worth the most
  * points next. Pure, so it is tested beside this file; the page only renders.
  */
-import type { AdminLanguageHealth, HealthScoreKey, HealthWeights, ShelfKind } from './library-admin';
+import type {
+	AdminLanguageHealth,
+	AdminLanguageReadiness,
+	HealthScoreKey,
+	HealthWeights,
+	ShelfKind
+} from './library-admin';
 
 /** The composite's ingredients, in the order the backend weights them. */
 export const HEALTH_KEYS: HealthScoreKey[] = ['readiness', 'coverage', 'review', 'engagement'];
@@ -114,6 +120,14 @@ export function countLine(
 }
 
 export type Blocker = { key: string; label: string };
+
+/**
+ * A readiness report's blocking checks by their human names ("Interface
+ * strings", not "ui"). The report lists `blocking` as keys, but every check in
+ * `checks` already carries its label, so no second copy of the names is kept.
+ */
+export const blockingLabels = (r: Pick<AdminLanguageReadiness, 'blocking' | 'checks'>): string[] =>
+	r.blocking.map((key) => r.checks.find((c) => c.key === key)?.label ?? key);
 
 /**
  * The language's blocking checks, labelled. The API sends `{key, label}`; an

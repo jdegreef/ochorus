@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	blockers,
+	blockingLabels,
 	countLine,
 	healthBand,
 	nextActions,
@@ -152,5 +153,28 @@ describe('coverage across content kinds', () => {
 		expect(countLine('coverage', french(), 179, 25, noPlans)).toBe('books 30% · sermons 29% · bios 62%');
 		const cov = nextActions(french(), 179, WEIGHTS, noPlans).find((a) => a.key === 'coverage')!;
 		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 0.9 / 179);
+	});
+});
+
+describe('blockingLabels', () => {
+	const check = (key: string, label: string) => ({
+		key,
+		label,
+		status: 'fail' as const,
+		detail: '',
+		current: null,
+		required: null
+	});
+
+	it("names each blocking check by its report's own label", () => {
+		const r = {
+			blocking: ['ui', 'bios'],
+			checks: [check('ui', 'Interface strings'), check('bios', 'Biographies'), check('books', 'Books')]
+		};
+		expect(blockingLabels(r)).toEqual(['Interface strings', 'Biographies']);
+	});
+
+	it('falls back to the key for a check the report does not list', () => {
+		expect(blockingLabels({ blocking: ['new-check'], checks: [] })).toEqual(['new-check']);
 	});
 });
