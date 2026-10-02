@@ -145,7 +145,7 @@ jobs:
     # the suite's size, though: it was a handful of seed tests that walked the
     # whole fixture corpus over and over — one class ran minutes after every
     # other worker had finished (#4890, then the seed tests seeding only the
-    # works they name, which took the job to ~12 and then well under that).
+    # works they name: ~12 min, then 4m17s for the whole job — #4943).
     # Back to 40: a hang guard, with room to grow. If it creeps up again, read
     # the --durations list below before reaching for a job matrix — a single
     # class is one worker's long pole, and sharding can't split it.
