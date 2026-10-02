@@ -957,14 +957,6 @@ class ShelfRepairTests(SimpleTestCase):
             ("if one is enabled to God’s own time",
              "if one is enabled to wait God’s own time"),
         ],
-        "things-as-they-are": [
-            ("one of the old dames seen in . A capital typical face",
-             "one of the old dames seen in chapter vi. A capital typical face"),
-            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
-             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
-            ('the "rabbits" mentioned in . She saw us',
-             'the "rabbits" mentioned in Chapter I. She saw us'),
-        ],
         "selected-sermons-edwards": [
             ("for the press (see Introduction, p. ). The manuscript",
              "for the press (see Introduction, p. xxix). The manuscript"),

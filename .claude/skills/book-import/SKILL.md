@@ -1165,6 +1165,42 @@ dropped; chapters under 120 words are dropped as stubs.
   origin/main`, un-nest the two blocks, close each). To avoid it, merge each
   book's PR before starting the next, or anchor new entries at distinct
   neighbours. *(#1238 Guyon vs #1239 Bernard, 2026-08)*
+- **Text OUTSIDE any block ("loose runs") — four shapes, four repairs.** Find
+  them with `[x for x in BeautifulSoup(html,'html.parser').children if
+  isinstance(x, NavigableString) and x.strip()]`, and ALSO list top-level
+  inline tags (`<i>…</i><br/>`), which that comprehension misses. Each shipped
+  repair was a direct fixture edit in every edition at once (same ordered tag
+  sequence, each edition's own words), then `rederive_body_text`/`_word_count`:
+  - *Poem/hymn verse* (`days-of-heaven-upon-earth`, 97 a edition;
+    `ministry-of-intercession` ch1's Havergal poem) → `<blockquote><p>…</p></blockquote>`,
+    one `<p>` per stanza where the row still marks stanzas (a `<br/>` between
+    them). The verse LINE breaks were lost upstream; restore them only from
+    the source text. Gutenberg/CCEL/archive were all blocked to the session
+    (egress 403), so these shipped without line breaks — a sourced follow-up
+    can add `<br/>` inside the existing `<p>`s.
+  - *Photo captions* (`things-as-they-are`, 31 a edition) → cut. The sanitizer
+    keeps no `<img>`, so a caption is a label for nothing. Grep `corrections.py`
+    first: three `replacements` pairs repaired cross-refs INSIDE captions and
+    went dead with them (`test_no_replacement_pair_is_dead` +
+    `ShelfRepairTests` catch it). Root cause still open: the importer emits
+    `span.caption` as loose text; dropping it with the image would stop a
+    re-import bringing them back.
+  - *Epigraph attributions* (`<i>Name, Place.</i><br/> <br/><br/>`, 46 in
+    `things-as-they-are`) are the author's content → `<p><i>…</i></p>`, breaks
+    dropped. They sit just before many `wrapped_blocks` heads; the wrap guard
+    still holds because the head now follows a `</p>`.
+  - *A flattened accounts table* (`the-life-of-trust` ch8/ch9) → one `<p>` a
+    line, every figure kept. The cells read `10<br/>—— 0<br/>—— 0 <br/>—— £267…`
+    because each £/s/d cell held its figure over a rule: the line is `10 0 0`,
+    the total follows. Prove a rebuild by L/s/d arithmetic before shipping.
+    ch28's three two-column ledgers (income ‖ expenses, rows interleaved) were
+    LEFT loose: without the source, column assignment is a judgement, and two
+    of the six columns don't foot to their printed totals (£50 and £500 out),
+    so the sums can't confirm it either.
+  - Joining a run back can leave a double space at the seam (`</p>  <p>`):
+    `tests_sanitize` wants `clean_fragment(body) == body`, so re-run the edited
+    bodies through `clean_fragment` and check only whitespace moved.
+  *(2026-10)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
