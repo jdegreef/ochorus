@@ -13,6 +13,9 @@ export interface Author {
 	slug: string;
 	name: string;
 	bio: string;
+	/** One line on who they were (English only; "" elsewhere or when unwritten).
+	 *  Optional: only the card serializer sends it. */
+	tagline?: string;
 	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
