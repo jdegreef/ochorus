@@ -12,10 +12,13 @@
 	import type { PageData } from './$types';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
+	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { hydrateSrc } from '$lib/hydrateSrc';
+	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -137,6 +140,7 @@
 {/snippet}
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+	<LibraryTabs current="az" />
 	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
 	{#snippet counts()}
 		{writerCount}
@@ -225,69 +229,111 @@
 						{@const life = formatLifespan(author.birth_year, author.death_year, t('common.bornPrefix'))}
 						{@const collapsed = collapses(author.slug, rows.length)}
 						{@const w = data.works[author.slug]}
-						<li class="mb-5 break-inside-avoid">
-							<a class="font-semibold hover:text-accent" href={localizeHref(`/authors/${author.slug}`)}
-								>{author.name}</a
-							>
-							{#if life}<span class="text-small text-muted"> · {life}</span>{/if}
-							{#if rows.length}
-								<ul id="books-{author.slug}" class="mt-1 space-y-0.5 text-small">
-									{#each rows as { book: b, editions }, i (b.slug)}
-										<li hidden={collapsed && i >= ROWS_SHOWN}>
-											<a class="text-muted hover:text-accent" href={localizeHref(`/books/${b.slug}`)}
-												>{b.title}</a
-											>
-											<!-- Young-reader editions ride their full text as chips. The
-											     chip reads the audience from the edition's own (already
-											     translated) title, so no UI string is needed. -->
-											{#each editions as { book: ed, audience } (ed.slug)}
-												<a
-													class="tag tag-sm ms-1.5"
-													href={localizeHref(`/books/${ed.slug}`)}
-													aria-label={ed.title}
-													title={ed.title}>{audience}</a
+						<!-- The portrait sits beside the entry, not in the column's flow:
+						     the li stays one unbroken block (break-inside-avoid). The
+						     GroupHeading 32px recipe, greyed like the Biographies roster;
+						     alt="" because the name link beside it already says who. A
+						     writer added from a book has a photo_url too (the book's author
+						     carries one) — blank means no free image: initials instead. -->
+						<li class="mb-5 flex break-inside-avoid gap-3">
+							{#if author.photo_url}
+								{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
+								<img
+									src={source.src}
+									srcset={source.srcset}
+									use:hydrateSrc={source}
+									sizes="32px"
+									alt=""
+									loading="lazy"
+									width="32"
+									height="32"
+									class="h-8 w-8 shrink-0 rounded-full border border-border object-cover grayscale"
+									style="object-position: {portraitPosition(author.slug)}"
+								/>
+							{:else}
+								<span
+									class="font-display flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-micro font-semibold text-accent"
+									aria-hidden="true">{initials(author.name)}</span
+								>
+							{/if}
+							<div class="min-w-0 flex-1">
+								<a class="font-semibold hover:text-accent" href={localizeHref(`/authors/${author.slug}`)}
+									>{author.name}</a
+								>
+								{#if life}<span class="text-small text-muted"> · {life}</span>{/if}
+								{#if rows.length}
+									<ul id="books-{author.slug}" class="mt-1 space-y-0.5 text-small">
+										{#each rows as { book: b, editions }, i (b.slug)}
+											<li hidden={collapsed && i >= ROWS_SHOWN}>
+												<a class="text-muted hover:text-accent" href={localizeHref(`/books/${b.slug}`)}
+													>{b.title}</a
 												>
-											{/each}
-										</li>
-									{/each}
-								</ul>
-								{#if collapsible(rows.length)}
-									<button
-										type="button"
-										class="mt-1 text-small font-semibold text-accent hover:underline"
-										aria-expanded={!collapsed}
-										aria-controls="books-{author.slug}"
-										onclick={(e) => toggle(author.slug, e.currentTarget)}
-									>
-										{collapsed
-											? t('bios.showMore').replace('%n%', String(rows.length - ROWS_SHOWN))
-											: t('search.showLess')}
-									</button>
-								{/if}
-							{/if}
-							<!-- What else this writer has in this language. Sermons always
-							     (Maclaren has seven and no book — without this his entry
-							     looked broken). The biography only for a writer with nothing
-							     else listed: almost everyone has one, and on every entry the
-							     link would be noise — the name already leads there. -->
-							{#if w?.sermons || (w?.bio && !rows.length)}
-								<div class="mt-1 flex flex-wrap gap-x-3 text-small">
-									{#if w.sermons}
-										<a
-											class="inline-flex items-center gap-1 text-muted hover:text-accent"
-											href={localizeHref(`/authors/${author.slug}#sermons`)}
-											><Icon name="mic" size={14} />{w.sermons}
-											{w.sermons === 1 ? t('common.sermonOne') : t('common.sermonMany')}</a
+												<!-- Young-reader editions ride their full text as chips. The
+												     chip reads the audience from the edition's own (already
+												     translated) title, so no UI string is needed. -->
+												{#each editions as { book: ed, audience } (ed.slug)}
+													<a
+														class="tag tag-sm ms-1.5"
+														href={localizeHref(`/books/${ed.slug}`)}
+														aria-label={ed.title}
+														title={ed.title}>{audience}</a
+													>
+												{/each}
+											</li>
+										{/each}
+									</ul>
+									{#if collapsible(rows.length)}
+										<button
+											type="button"
+											class="mt-1 text-small font-semibold text-accent hover:underline"
+											aria-expanded={!collapsed}
+											aria-controls="books-{author.slug}"
+											onclick={(e) => toggle(author.slug, e.currentTarget)}
 										>
-									{:else}
-										<a
-											class="inline-flex items-center gap-1 text-muted hover:text-accent"
-											href={localizeHref(`/authors/${author.slug}#bio`)}
-											><Icon name="users" size={14} />{t('articles.kindBiography')}</a
-										>
+											{collapsed
+												? t('bios.showMore').replace('%n%', String(rows.length - ROWS_SHOWN))
+												: t('search.showLess')}
+										</button>
 									{/if}
-								</div>
-							{/if}
+								{/if}
+								<!-- What else this writer has in this language. Sermons always
+								     (Maclaren has seven and no book — without this his entry
+								     looked broken). Quotations when a person has approved some
+								     (English only — see +page.ts). The biography only for a writer
+								     with nothing else listed: almost everyone has one, and on every
+								     entry the link would be noise — the name already leads there. -->
+								{#if w?.sermons || w?.quotes || (w?.bio && !rows.length)}
+									<div class="mt-1 flex flex-wrap gap-x-3 text-small">
+										{#if w.sermons}
+											<a
+												class="inline-flex items-center gap-1 text-muted hover:text-accent"
+												href={localizeHref(`/authors/${author.slug}#sermons`)}
+												><Icon name="mic" size={14} />{w.sermons}
+												{w.sermons === 1 ? t('common.sermonOne') : t('common.sermonMany')}</a
+											>
+										{/if}
+										{#if w.quotes}
+											<!-- Un-localized, like the author page's Quotes button: the
+											     quote pages exist in English only. -->
+											<a
+												class="inline-flex items-center gap-1 text-muted hover:text-accent"
+												href={`/quotes/${author.slug}/`}
+												><Icon name="quote" size={14} />{(w.quotes === 1
+													? t('quotes.countOne')
+													: t('quotes.countMany')
+												).replace('%count%', String(w.quotes))}</a
+											>
+										{/if}
+										{#if !w.sermons && !w.quotes}
+											<a
+												class="inline-flex items-center gap-1 text-muted hover:text-accent"
+												href={localizeHref(`/authors/${author.slug}#bio`)}
+												><Icon name="users" size={14} />{t('articles.kindBiography')}</a
+											>
+										{/if}
+									</div>
+								{/if}
+							</div>
 						</li>
 					{/each}
 				</ul>

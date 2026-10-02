@@ -63,6 +63,37 @@ class AuthorQuerySet(models.QuerySet):
             num_sermons=published_count("Sermon", "author"),
         )
 
+    def with_quote_count(self):
+        """Annotate ``reviewed_quotes``: the quotations the author's quote page lists.
+
+        REVIEWED only — the quote page's publication gate (``QuotePageView``),
+        so a count never links to a page that 404s. No ``language``: a ``Quote``
+        has none. The quote pages are English (lifted from the English works,
+        each citation naming an English chapter), so it is the CALLER that
+        decides a locale may link one — the reader shows the link to English
+        readers only.
+
+        A correlated subquery, for ``with_work_counts``'s reason: a joined
+        ``Count`` beside its subqueries would put a GROUP BY over every
+        selected column (the bio HTML included) back into the author list.
+        """
+        from django.apps import apps
+
+        quote = apps.get_model("library", "Quote")
+        return self.annotate(
+            reviewed_quotes=Coalesce(
+                Subquery(
+                    quote.objects.filter(author=OuterRef("pk"), reviewed=True)
+                    .order_by()
+                    .values("author")
+                    .annotate(n=models.Count("pk"))
+                    .values("n")[:1]
+                ),
+                models.Value(0),
+                output_field=models.IntegerField(),
+            )
+        )
+
     def listed_in_biographies(self, language: str):
         """The writers the Biographies page lists in ``language``.
 
@@ -1570,6 +1601,53 @@ class SearchQueryLog(models.Model):
         return row
 
 
+def fold_query(query: str) -> str:
+    """A search as the admin reports group it: case-folded, one space between
+    words. The key a triage decision is stored under, so "Esperando en Dios" and
+    "esperando en dios " are one decision."""
+    return " ".join(query.split()).lower()[:200]
+
+
+class SearchDecision(models.Model):
+    """What an admin decided about one search that found nothing, in one language.
+
+    The admin Search page lists unanswered searches; without somewhere to record
+    "this one's handled", every visit re-lists the same queries and the list
+    trains its reader to skim it. A decision moves a query from the Open list to
+    Handled (or Wanted). Undo deletes the row. Keyed on the folded query
+    (:func:`fold_query`) and language, because a gap is per language: there is
+    no English fallback.
+    """
+
+    class Outcome(models.TextChoices):
+        #: The work exists in another language and a translation job was filed.
+        TRANSLATE = "translate", "Translation queued"
+        #: Not in the library in any language — the import shopping list.
+        WANTED = "wanted", "Wanted"
+        #: Not something Ochorus will carry (in copyright, off-topic, spam).
+        OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+
+    query = models.CharField(max_length=200)
+    language = models.CharField(max_length=10)
+    outcome = models.CharField(max_length=20, choices=Outcome.choices)
+    #: The work a translation was queued for ("book:waiting-on-god"); blank otherwise.
+    target = models.CharField(max_length=200, blank=True)
+    note = models.CharField(max_length=300, blank=True)
+    decided_by = models.EmailField(blank=True)
+    decided_at = models.DateTimeField()
+
+    class Meta:
+        ordering = ["-decided_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["query", "language"], name="uniq_searchdecision_query_lang"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.query!r} [{self.language}] → {self.outcome}"
+
+
 class SearchClickLog(models.Model):
     """A search result a reader actually opened — anonymous, like the query log.
 
@@ -2001,6 +2079,8 @@ class AdminAction(models.Model):
         BROADCAST_RESUME = "broadcast.resume", "Broadcast resumed"
         EMAIL_DIRECT = "email.direct", "Email sent to a reader"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
+        SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
+        SEARCH_UNDO = "search.undo", "Search triage undone"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

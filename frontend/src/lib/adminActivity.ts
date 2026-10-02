@@ -13,7 +13,7 @@
  */
 import { splitEdition } from './edition';
 import { initials as nameInitials, unslug } from './strings';
-import type { AdminActionRow } from './library-admin';
+import type { AdminActionRow, JobStatus } from './library-admin';
 
 /**
  * The five families an action belongs to. Colour is spent on the two that reach
@@ -361,4 +361,67 @@ export function issueRange(rows: AdminActionRow[]): string {
 	const lo = Math.min(...nums);
 	const hi = Math.max(...nums);
 	return lo === hi ? `#${lo}` : `#${lo}–#${hi}`;
+}
+
+/** How a job stage reads and looks. `tone` is the view's class set to use. */
+export interface JobStatusMeta {
+	label: string;
+	tone: 'muted' | 'active' | 'danger' | 'warning' | 'live' | 'done';
+	/** Hover text — what the stage means, and for `closed`, what it can't tell. */
+	hint: string;
+}
+
+const JOB_STATUS: Record<JobStatus, JobStatusMeta> = {
+	queued: { label: 'Queued', tone: 'muted', hint: 'Filed; no worker has claimed it yet.' },
+	in_progress: { label: 'In progress', tone: 'active', hint: 'A worker session has claimed it.' },
+	stalled: {
+		label: 'Stalled',
+		tone: 'danger',
+		hint: 'Claimed, but the issue has not moved in 6 hours — likely a crashed run.'
+	},
+	closed: {
+		label: 'Closed, not shipped',
+		tone: 'warning',
+		hint: 'The issue is closed but the edition is not in the library: a PR waiting to be merged or deployed — or closed as not planned.'
+	},
+	review: {
+		label: 'Shipped · awaiting approval',
+		tone: 'live',
+		hint: 'In the library as an AI translation (readers see it once its language is live); approve it once reviewed.'
+	},
+	done: { label: 'Approved', tone: 'done', hint: 'Shipped and approved.' },
+	unknown: {
+		label: 'Status unknown',
+		tone: 'muted',
+		hint: 'Not shipped yet, and GitHub could not be read to say where it is.'
+	}
+};
+
+/** Plans and topic shelves have no approval step: shipped is done. */
+const NO_APPROVAL = new Set(['plan', 'topic']);
+
+/** A job's stage label for its target — "Shipped" rather than "Approved" where nothing is approved. */
+export function jobStatusMeta(status: JobStatus, target: string): JobStatusMeta {
+	const meta = JOB_STATUS[status] ?? JOB_STATUS.unknown;
+	if (status === 'done' && NO_APPROVAL.has(target.split(':')[0]))
+		return { ...meta, label: 'Shipped', hint: 'In the library; nothing to approve.' };
+	return meta;
+}
+
+/** The stages in journey order — the order a progress bar and its legend use. */
+export const JOB_STAGES: readonly JobStatus[] = [
+	'done',
+	'review',
+	'closed',
+	'stalled',
+	'in_progress',
+	'queued',
+	'unknown'
+];
+
+/** How many of a burst's jobs sit at each stage, in {@link JOB_STAGES} order, zeros dropped. */
+export function jobTally(rows: AdminActionRow[]): { status: JobStatus; count: number }[] {
+	const counts = new Map<JobStatus, number>();
+	for (const r of rows) if (r.job_status) counts.set(r.job_status, (counts.get(r.job_status) ?? 0) + 1);
+	return JOB_STAGES.filter((s) => counts.has(s)).map((status) => ({ status, count: counts.get(status)! }));
 }

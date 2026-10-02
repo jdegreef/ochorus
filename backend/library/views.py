@@ -138,6 +138,7 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         return (
             Author.objects.listed_in_biographies(_language(self.request))
             .with_work_counts(_language(self.request))
+            .with_quote_count()
             .prefetch_related("translations")
             .order_by("name")
         )
@@ -154,7 +155,8 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     serializer_class = AuthorDetailSerializer
 
     def get_object(self):
-        # `reviewed_quotes` is ANNOTATED, not counted per object: the serializer
+        # `reviewed_quotes` is ANNOTATED (`with_quote_count`, the same count the
+        # A–Z list carries), not counted per object: the serializer
         # asking `obj.quotes.filter(...).count()` added a query to every author
         # page, which `BookCardPayloadTests` budgets and caught.
         return get_object_or_404(
@@ -164,11 +166,7 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
                 # prefetching keeps it out of the serializer as a lazy query and
                 # in the page's fixed budget (BookCardPayloadTests).
                 "featured_in_books",
-            ).annotate(
-                reviewed_quotes=Count(
-                    "quotes", filter=Q(quotes__reviewed=True), distinct=True
-                )
-            ),
+            ).with_quote_count(),
             slug=self.kwargs["slug"],
         )
 

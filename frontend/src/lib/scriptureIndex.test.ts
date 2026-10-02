@@ -1,6 +1,13 @@
 import { describe, it, expect } from 'vitest';
 import type { ScripturePageEntry } from '$lib/library-public';
-import { BIBLE_SECTIONS, groupScripture, heatScale, mostCited, TOP_VERSES_PER_BOOK } from './scriptureIndex';
+import {
+	BIBLE_SECTIONS,
+	groupScripture,
+	heatScale,
+	mayBeReference,
+	mostCited,
+	TOP_VERSES_PER_BOOK
+} from './scriptureIndex';
 
 const page = (
 	book: string,
@@ -130,5 +137,12 @@ describe('mostCited', () => {
 			2
 		);
 		expect(top.map((t) => `${t.slug} ${t.chapter}`)).toEqual(['john 3', 'romans 8']);
+	});
+});
+
+describe('mayBeReference', () => {
+	it('asks the resolver only when a chapter number is present', () => {
+		for (const q of ['Rom 8:28', 'Ps 23', '1 Cor 13', 'john 3']) expect(mayBeReference(q)).toBe(true);
+		for (const q of ['grace', 'John Bunyan', 'Romans']) expect(mayBeReference(q)).toBe(false);
 	});
 });

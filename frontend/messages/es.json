@@ -960,8 +960,6 @@
   "scripture_find_label": "Ir a un pasaje",
   "scripture_find_placeholder": "p. ej. Romans 8:28 o Ps 23 (en inglés)",
   "scripture_find_go": "Ir",
-  "scripture_find_none": "Aún no hay página para «%ref%».",
-  "scripture_find_search_all": "Buscarlo en la biblioteca →",
   "quotes_page_title": "Citas, con sus fuentes",
   "quotes_tagline": "Las frases por las que se recuerda a estos escritores —%count% hasta ahora— cada una rastreada hasta el libro, capítulo y párrafo exactos de los que proviene, y enlazada a la obra completa. Lo que los sitios de citas sin fuente no pueden darte es la referencia; y en eso consiste todo esto.",
   "quotes_browse_by_topic": "Explorar citas por tema →",

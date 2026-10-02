@@ -63,12 +63,33 @@ const LEAF_PAGES: { label: string; file: string }[] = [
 	{ label: 'article', file: 'lib/components/ArticleDetail.svelte' },
 	{ label: 'scripture chapter', file: 'routes/scripture/[book]/[chapter]/+page.svelte' },
 	{ label: 'scripture verse', file: 'routes/scripture/[book]/[chapter]/[verse]/+page.svelte' },
-	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },
-	{ label: 'settings', file: 'routes/settings/+page.svelte' },
 	{ label: 'error', file: 'routes/+error.svelte' }
 ];
 
-const SHELL_PAGES = [...BROWSE_PAGES, ...LEAF_PAGES];
+/**
+ * The app-like utility pages (page-design: "Settings and Notebook are app
+ * pages"). Not shelves, so the browse padding/type checks don't apply, but
+ * their title still goes through <PageHeader> — Settings hand-rolled a copy of
+ * it until page-design A9, which is how its tagline lost the shared measure.
+ */
+const APP_PAGES: { label: string; file: string }[] = [
+	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },
+	{ label: 'settings', file: 'routes/settings/+page.svelte' }
+];
+
+/**
+ * Single-form pages held to a card width. Their shell is `.page-col
+ * .page-col--narrow`, not a hand-set `mx-auto max-w-[26rem]` (page-design A11).
+ * Login's pitch variant (/login?redirect=/notebook) is a deliberate two-column
+ * layout at max-w-5xl, so the class is required somewhere in the file rather
+ * than as the only shell.
+ */
+const NARROW_PAGES: { label: string; file: string }[] = [
+	{ label: 'login', file: 'routes/login/+page.svelte' },
+	{ label: 'reset password', file: 'routes/reset-password/+page.svelte' }
+];
+
+const SHELL_PAGES = [...BROWSE_PAGES, ...LEAF_PAGES, ...APP_PAGES];
 
 const read = (file: string) => readFileSync(join(SRC, file), 'utf8');
 
@@ -81,7 +102,7 @@ describe('pages use the shared page furniture', () => {
 		).toMatch(/class="page-col/);
 	});
 
-	it.each(BROWSE_PAGES)('$label renders its title through <PageHeader>', ({ file }) => {
+	it.each([...BROWSE_PAGES, ...APP_PAGES])('$label renders its title through <PageHeader>', ({ file }) => {
 		expect(
 			read(file),
 			`${file}: use <PageHeader> rather than a hand-rolled <h1> block, or the ` +
@@ -100,12 +121,28 @@ describe('pages use the shared page furniture', () => {
 		).toMatch(/class="page-col px-5 py-10\b/);
 	});
 
+	it.each(NARROW_PAGES)('$label sits on .page-col--narrow, not a hand-set width', ({ file }) => {
+		const src = read(file);
+		expect(
+			src,
+			`${file}: a single-form page's shell is "page-col page-col--narrow" (app.css), ` +
+				`so its width lives in one place.`
+		).toMatch(/class="[^"]*\bpage-col page-col--narrow\b/);
+		expect(
+			src.match(/\bmax-w-\[[^\]]+\]/g) ?? [],
+			`${file}: a hand-set max-w-[…] is the shell .page-col--narrow replaced.`
+		).toEqual([]);
+	});
+
 	it.each(SHELL_PAGES)('$label does not re-introduce its own max-w shell', ({ file }) => {
 		// `mx-auto max-w-*` on a page's own container is what .page-col replaced.
 		// Inner elements may still cap a text measure — this only catches the
-		// centred page-shell form.
+		// centred page-shell form. Arbitrary widths (`max-w-[26rem]`) and `xl`
+		// count too: Login and Reset hid a shell that way until page-design A11.
 		expect(
-			read(file).match(/class="[^"]*\bmx-auto max-w-(?:2xl|3xl|4xl|5xl|6xl|7xl)\b/g) ?? [],
+			read(file).match(
+				/class="[^"]*\bmx-auto max-w-(?:xl|2xl|3xl|4xl|5xl|6xl|7xl|\[[^\]]+\])(?![\w-])/g
+			) ?? [],
 			`${file}: page shells come from .page-col now. A per-page max-w-* is how ` +
 				`the six browse pages ended up at five different widths.`
 		).toEqual([]);

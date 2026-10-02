@@ -3,6 +3,7 @@
  * parts that decide what a grant or an undo does are unit-tested.
  */
 import type { TeamMember } from '$lib/library-admin';
+import { relativeTime } from '$lib/relativeTime';
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -44,3 +45,31 @@ export function sharedLanguages(m: TeamMember): string[] | null {
 	const keys = new Set(m.scopes.map((s) => [...s.languages].sort().join(',')));
 	return keys.size === 1 ? [...m.scopes[0].languages].sort() : null;
 }
+
+const DAY = 86_400_000;
+
+// The admin is English-only; the same formatter the Users page shows "last seen" with.
+const ago = (iso: string, now: number) => relativeTime(Date.parse(iso), 'en', 'just now', now);
+
+export type SignInStatus = { label: string; tone: 'ok' | 'warn' | 'idle' };
+
+/** Whether a member's grant is in use. A grant only works once that exact
+ *  address signs in, so "never" is the case worth flagging; a long silence is
+ *  shown plainly for the access review rather than as an error. */
+export function signInStatus(
+	m: { last_seen_at: string | null; granted_at: string | null },
+	now = Date.now()
+): SignInStatus {
+	if (!m.last_seen_at) {
+		const since = m.granted_at ? `Invited ${ago(m.granted_at, now)}` : 'Invited';
+		return { label: `${since} · not signed in yet`, tone: 'warn' };
+	}
+	const days = (now - Date.parse(m.last_seen_at)) / DAY;
+	return days <= 30
+		? { label: `Active · seen ${ago(m.last_seen_at, now)}`, tone: 'ok' }
+		: { label: `Last seen ${ago(m.last_seen_at, now)}`, tone: 'idle' };
+}
+
+/** A history event's languages as a codes list, whatever shape was logged. */
+export const historyLanguages = (raw: string[] | string): string[] =>
+	(Array.isArray(raw) ? raw : raw.split(',')).map((c) => c.trim()).filter(Boolean);

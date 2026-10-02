@@ -774,7 +774,7 @@ class SearchLogTests(TestCase):
         top = {r["query"]: r["count"] for r in res.data["top_queries"]}
         self.assertEqual(top.get("humility"), 3)
         # Zero-result list holds the misses; the 2-char fragment is filtered out.
-        zero = [r["query"] for r in res.data["zero_result_queries"]]
+        zero = [q["query"] for lang in res.data["unanswered_by_language"] for q in lang["queries"]]
         self.assertIn("grace", zero)
         self.assertNotIn("gr", zero)
         self.assertEqual(res.data["by_language"][0]["code"], "en")

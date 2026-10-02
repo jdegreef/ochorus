@@ -177,6 +177,18 @@ class SubscriptionConsentTests(TestCase):
                 selected, sub.wants_stream("announcements"), msg=f"case {i}: {fields}"
             )
 
+    def test_unknown_stream_raises(self):
+        # A typo'd key must fail loudly in both forms, not silently resolve ON.
+        with self.assertRaises(ValueError):
+            self.sub.wants_stream("announcments")
+        with self.assertRaises(ValueError):
+            EmailSubscription.wants_stream_q("announcments")
+
+    def test_every_real_stream_is_accepted(self):
+        for key in STREAM_KEYS:
+            self.sub.wants_stream(key)  # must not raise
+            EmailSubscription.wants_stream_q(key)  # must not raise
+
 
 @SENDING
 class RenderingTests(TestCase):

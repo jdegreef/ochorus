@@ -1681,24 +1681,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
         ],
     },
     "things-as-they-are": {
-        # The dropped-anchor defect: Gutenberg spells a cross-reference as an
-        # internal link, and `[class*=pginternal]` decomposed it whole instead
-        # of unwrapping it, so the reference vanished and only the punctuation
-        # around it survived. The selector is qualified now
-        # (`sanitize.KEEP_PREDICATES`, #1573) — this is the row already on the
-        # shelf, which is never re-imported. Each target was read off the
-        # Gutenberg source, not inferred from position.
-        #
-        # Three chapter cross-references in Carmichael's picture captions and
-        # asides — "one of the old dames seen in ." for "seen in chapter vi."
-        "replacements": [
-            ("one of the old dames seen in . A capital typical face",
-             "one of the old dames seen in chapter vi. A capital typical face"),
-            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
-             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
-            ('the "rabbits" mentioned in . She saw us',
-             'the "rabbits" mentioned in Chapter I. She saw us'),
-        ],
+        # Three dropped chapter cross-references once lived here ("one of the
+        # old dames seen in ." for "seen in chapter vi."), all three inside
+        # photo captions. The photos never shipped (the sanitizer keeps no
+        # `<img>`), so the captions were orphaned loose text and are cut from
+        # every edition's fixture; the pairs went with them rather than stay
+        # dead.
+        "replacements": [],
     },
     "prayer-and-praying-men": {
         # Two words glued together in CCEL's own text (verified upstream, so
@@ -6342,7 +6331,9 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
 # importer now emits, byte for byte (`tests_english_audit` checks every
 # entry against the importer). English only: there is no translation.
 # A third element ends a line that ran into an illustration's caption, which
-# is not a display line and stays as it was.
+# is not a display line and stays as it was. (The 188 orphaned captions were
+# since deleted from the fixture itself — the photographs they named were
+# never imported — so the tails now bound a re-import or a stale row only.)
 BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
     # ch1
     ('THERE HAVE been many famous', 'p'),
@@ -9918,3 +9909,174 @@ BODY_CORRECTIONS.setdefault("causes-of-backsliding", {}).setdefault(
 BODY_CORRECTIONS.setdefault(
     "how-to-cultivate-the-holy-spirits-companionship", {}
 ).setdefault("replacements", []).append(("wild ass's coat", "wild ass's colt"))
+
+# SermonIndex batch 3 (Tozer + Simpson): each sermon was read in full and only
+# fixes forced by context are taken — a quoted verse, hymn line or name, a
+# misheard or OCR-garbled word, a stray space. Tozer texts are speech-to-text.
+BODY_CORRECTIONS.setdefault('the-hidden-life-of-faith', {}).setdefault("replacements", []).extend([
+    ("in the wilderness, it said that he was amiss.",
+     "in the wilderness, it said that he was with the wild beasts."),
+    ("where Elisha was in Dotham, the city",
+     "where Elisha was in Dothan, the city"),
+    ("The Lord said, Father, what shall we do? Kill them?",
+     "The king said, Father, what shall we do? Kill them?"),
+    ("In Corinthians 2, 7, we speak the wisdom",
+     "In 1 Corinthians 2:7, we speak the wisdom"),
+    ("The hidden manor. I will give you the hidden manor.",
+     "The hidden manna. I will give you the hidden manna."),
+    ("He knoweth the mind of the Lord that he may instruct him, but we have the mind of Christ.",
+     "For who hath known the mind of the Lord, that he may instruct him? But we have the mind of Christ."),
+    ("In every stormy wind that blows, from every",
+     "From every stormy wind that blows, from every"),
+    ("there is a calm ashore that is found beneath the mercy seat.",
+     "there is a calm, a sure retreat; 'tis found beneath the mercy seat."),
+    ("on our heads, and all the world more sweet.",
+     "on our heads, a place than all besides more sweet;"),
+])
+BODY_CORRECTIONS.setdefault('what-difference-does-the-holy-spirit-make', {}).setdefault("replacements", []).extend([
+    ("by the coming down of a new aphladis from above",
+     "by the coming down of a new afflatus from above"),
+    ("the difference between Christianity and all of the Oriental cults and the all-cult religions. The all-cult religions try",
+     "the difference between Christianity and all of the Oriental cults and the occult religions. The occult religions try"),
+    ("But the all-cult religions say, concentrate and free your mind",
+     "But the occult religions say, concentrate and free your mind"),
+    ("told them to be glad they're named or written in heaven",
+     "told them to be glad their names are written in heaven"),
+    ("And in Herne Hood they went up and had a prayer chamber",
+     "And in Herrnhut they went up and had a prayer chamber"),
+    ("He went to Peter Bowler, the Moravian, and said",
+     "He went to Peter Böhler, the Moravian, and said"),
+    ("story of Aldergate Street.",
+     "story of Aldersgate Street."),
+    ("felt his heart strangely worn",
+     "felt his heart strangely warmed"),
+    ("And the Christian and missionary alliance was born out of that.",
+     "And the Christian and Missionary Alliance was born out of that."),
+    ("Bless his holy name forever. Now I'll tell you what I want.",
+     "Bless his holy name forever."),
+])
+BODY_CORRECTIONS.setdefault('the-sin-of-murmuring', {}).setdefault("replacements", []).extend([
+    ("for the drink of that spiritual lot that followed them, and that lot was Christ",
+     "for they drank of that spiritual Rock that followed them, and that Rock was Christ"),
+    ("The people sat down to eat and drink, and all that supplied.",
+     "The people sat down to eat and drink, and rose up to play."),
+    ("and selling one day three and twenty thousand",
+     "and fell in one day three and twenty thousand"),
+    ("and were destroyed at the second.",
+     "and were destroyed of serpents."),
+    ("Therefore let him that thinketh he standeth, be lest he fall.",
+     "Therefore let him that thinketh he standeth take heed lest he fall."),
+    ("but that there is a common demand that God is faithful, who will not suffer you to be tempted about that",
+     "but such as is common to man: but God is faithful, who will not suffer you to be tempted above that"),
+    ("but will with the temptation also make away the stake that you may be able to bear.",
+     "but will with the temptation also make a way to escape, that you may be able to bear it."),
+    ("we name certain sins and write those sins like hobby horses",
+     "we name certain sins and ride those sins like hobby horses"),
+    ("when the Bible talks about the clowns ruling over this city and that city",
+     "when the Bible talks about the crowns, ruling over this city and that city"),
+    ("But if you'd had your dessert, where would you be now?",
+     "But if you'd had your deserts, where would you be now?"),
+    ("If you'd had your dessert, if you'd received your dessert, where would you be now?",
+     "If you'd had your deserts, if you'd received your deserts, where would you be now?"),
+    ("my oldest son Raul, he's very much like me",
+     "my oldest son Lowell, he's very much like me"),
+    ("whenever they'd make a deportive call or see an island",
+     "whenever they'd make a port of call or see an island"),
+    ("one of the most speakably beautiful things",
+     "one of the most unspeakably beautiful things"),
+    ("will yet take a sinner up to his kin in iniquity",
+     "will yet take a sinner up to his chin in iniquity"),
+    ("on the way out, he said, you know, Brother Trozer, this man",
+     "on the way out, he said, you know, Brother Tozer, this man"),
+    ("He said, Brother Trozer, you talked about pardoning a man",
+     "He said, Brother Tozer, you talked about pardoning a man"),
+    ("I had under my chair in the prison a fellow by the name of Joe",
+     "I had under my charge in the prison a fellow by the name of Joe"),
+    ("that heart-beaming blaze of majesty wherewith he was wanted heaven's high council table to sit in final unity.",
+     "that far-beaming blaze of majesty wherewith he wont at heaven's high council table to sit the midst of trinal unity,"),
+    ("He laid aside in here with us to be, forsook the course of everlasting day",
+     "he laid aside, and here with us to be, forsook the courts of everlasting day"),
+    ("a great big red-headed sweet by the name of Connie Erickson",
+     "a great big red-headed Swede by the name of Connie Erickson"),
+])
+BODY_CORRECTIONS.setdefault('the-triumph-of-the-resurrection', {}).setdefault("replacements", []).extend([
+    ("because it was not possible that he should beholden of it",
+     "because it was not possible that he should be holden of it"),
+    ("For the promise is unto you and your children, and to all that are for all",
+     "For the promise is unto you and your children, and to all that are afar off"),
+    ("It's written that God at Sunday times, and in divers manners",
+     "It's written that God at sundry times, and in divers manners"),
+    ("Let any man take issue with Christ and his done as far as being a Christian is concerned.",
+     "Let any man take issue with Christ and he's done as far as being a Christian is concerned."),
+    ("it's the person of Jesus that gives his teachings valid as aid",
+     "it's the person of Jesus that gives his teachings validity"),
+    ("because he is not believed in the name of the only begotten Son of God",
+     "because he hath not believed in the name of the only begotten Son of God"),
+])
+BODY_CORRECTIONS.setdefault('the-practical-discipline-of-life', {}).setdefault("replacements", []).extend([
+    ("and still believe that all things work together for good to them that love God.\"",
+     "and still believe that \"all things work together for good to them that love God.\""),
+])
+BODY_CORRECTIONS.setdefault('the-christian-temper-supernatural-and-divine', {}).setdefault("replacements", []).extend([
+    ("being made comformable unto his death; If by any means",
+     "being made conformable unto his death; If by any means"),
+    ("have not yet been made comformable unto His death",
+     "have not yet been made conformable unto His death"),
+    ("\"That I may know him, .. . and the fellowship of his sufferings.\"",
+     "\"That I may know him, . . . and the fellowship of his sufferings.\""),
+    ("then the \"fellowship of his sufferings\"and the conformity",
+     "then the \"fellowship of his sufferings\" and the conformity"),
+    ("cover the sweet and verable face of some aged saint",
+     "cover the sweet and venerable face of some aged saint"),
+    ("with whom all the promise of God's covenant were inseparably connected",
+     "with whom all the promises of God's covenant were inseparably connected"),
+])
+BODY_CORRECTIONS.setdefault('the-goal-of-faith', {}).setdefault("replacements", []).extend([
+    ("because the spirit of the Gospel is more beneficient than that of the Law",
+     "because the spirit of the Gospel is more beneficent than that of the Law"),
+])
+BODY_CORRECTIONS.setdefault('partnership-with-god', {}).setdefault("replacements", []).extend([
+    ("Each of us is created, regenerated and divinelv educated for the very place",
+     "Each of us is created, regenerated and divinely educated for the very place"),
+    ("0, what will it be, there, to find them coming from the East and the West",
+     "O, what will it be, there, to find them coming from the East and the West"),
+    ("0, then we will not regret the nights of watching and days of toil",
+     "O, then we will not regret the nights of watching and days of toil"),
+    ("0, do we realise that we are His trustees, His representatives",
+     "O, do we realise that we are His trustees, His representatives"),
+    ("is because they have he learned the secrets of nature",
+     "is because they have learned the secrets of nature"),
+])
+BODY_CORRECTIONS.setdefault('gideon-or-the-strength-of-weakness', {}).setdefault("replacements", []).extend([
+    ("the things that are mighty, . . that no flesh",
+     "the things that are mighty, . . . that no flesh"),
+    ("from Manasseh, Asher, Zebulun and Napthtali volunteers pour in",
+     "from Manasseh, Asher, Zebulun and Naphtali volunteers pour in"),
+])
+BODY_CORRECTIONS.setdefault('jephthah-or-the-faith-that-leads-to-faithfulness', {}).setdefault("replacements", []).extend([
+    ("\"Jabez called upon the Lord God and said: `Oh, that Thou wouldst bless me indeed",
+     "\"Jabez called upon the Lord God and said: 'Oh, that Thou wouldst bless me indeed"),
+])
+BODY_CORRECTIONS.setdefault('bochim-or-the-cause-of-spiritual-failure', {}).setdefault("replacements", []).extend([
+    ("and the Lord delivered the Canaanites and Perizites into their hand.",
+     "and the Lord delivered the Canaanites and Perizzites into their hand."),
+    ("We think there in no harm in taking the money of wicked men",
+     "We think there is no harm in taking the money of wicked men"),
+    ("Next we find the Canaanites dwelling will Israel",
+     "Next we find the Canaanites dwelling with Israel"),
+    ("He who controls the, very breath of our lives",
+     "He who controls the very breath of our lives"),
+    ("If is that other place of which the inspired prophet has said",
+     "It is that other place of which the inspired prophet has said"),
+])
+# "The Sin of Murmuring": after Tozer's close the tape restarts the sermon from
+# its opening and repeats about a third of it. The replacement closes the
+# paragraph on his last words; the back-matter seam cuts the repeat.
+BODY_CORRECTIONS["the-sin-of-murmuring"]["replacements"].append((
+    "do something about it right now. I want to talk about the sin of murmuring, "
+    "and in the tense of 1 Corinthians, these words",
+    "do something about it right now.</p>",
+))
+BODY_CORRECTIONS["the-sin-of-murmuring"]["back_matter"] = [
+    ("do something about it right now.</p>", ", \"'Moreover, brethren"),
+]
