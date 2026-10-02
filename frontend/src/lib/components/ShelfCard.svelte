@@ -37,6 +37,7 @@
 		covers = [],
 		title,
 		subtitle = '',
+		fan = 'sm',
 		headingLevel = 2,
 		aside,
 		children,
@@ -61,6 +62,10 @@
 		/** A second, smaller line inside the heading — a series' "30 Days with
 		 *  God for Girls" — so the heading still carries the whole name. */
 		subtitle?: string;
+		/** The cover fan's size: `lg` on the series index, where the covers are
+		 *  the point of the card — they grow to legible width, centred in the
+		 *  band, and the emblem badge steps aside for them. */
+		fan?: 'sm' | 'lg';
 		/** 2 when the card sits directly under the page's <h1> (Topics, Plans); 3
 		 *  when it sits in a section under its own <h2> (the Books page's rail). */
 		headingLevel?: 2 | 3;
@@ -79,8 +84,10 @@
 </script>
 
 {#snippet content()}
-	<div class="shelf-card-band hue-band">
-		{#if mark && !portrait}
+	<div class="shelf-card-band hue-band" class:fan-lg={fan === 'lg' && covers.length > 0}>
+		{#if fan === 'lg' && covers.length}
+			<!-- The covers carry the card's identity in the large fan. -->
+		{:else if mark && !portrait}
 			<Monogram class="shelf-card-badge" top={mark.top} value={mark.value} />
 		{:else}
 			<span class="shelf-card-badge emblem-chip">

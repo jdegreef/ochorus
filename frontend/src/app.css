@@ -1626,6 +1626,10 @@ nav.appnav .navsearch:hover {
 	padding-bottom: 0.75rem;
 }
 .shelf-card-foot {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.6rem;
 	padding: 0 1.1rem 1.15rem;
 }
 /* ── Hue bands ─────────────────────────────────────────────────────────────
@@ -1934,6 +1938,24 @@ nav.appnav .navsearch:hover {
 }
 /* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
    sizes its own images, and this rule would crop its mat. */
+/* The large fan (ShelfCard fan="lg", the series index): covers at a width
+   their titles can be read at, centred in a taller band with no badge. */
+.shelf-card-band.fan-lg {
+	justify-content: center;
+	min-height: 8.75rem;
+	padding-block: 1.1rem 0.8rem;
+}
+.shelf-card-band.fan-lg > .cover-fan {
+	margin-inline: auto;
+	padding-inline-start: 1.1rem; /* room for the first tile's pull */
+	max-width: 100%;
+}
+.fan-lg .cover-fan > * {
+	margin-inline-start: -1.1rem;
+}
+.fan-lg .cover-fan .cover {
+	width: 4.25rem;
+}
 .cover-fan .cover > img,
 .cover-fan .cover-fallback {
 	width: 100%;

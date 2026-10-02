@@ -6,6 +6,7 @@ import {
 	seriesFromBooks,
 	seriesCardProgressLabel,
 	seriesProgress,
+	seriesCompanion,
 	cardLanguages,
 	seriesToContinue,
 	splitSeriesTitle,
@@ -290,5 +291,19 @@ describe('cardLanguages', () => {
 
 	it('keeps a series not held in the reader language in code order', () => {
 		expect(cardLanguages(['sw', 'en'], 'fr').shown).toEqual(['en', 'sw']);
+	});
+});
+
+describe('seriesCompanion', () => {
+	const list = [{ slug: 'daughters-of-the-king' }, { slug: 'sons-of-the-king' }, { slug: 'rooted' }];
+
+	it('finds the other series of a pair, both ways', () => {
+		expect(seriesCompanion('daughters-of-the-king', list)?.slug).toBe('sons-of-the-king');
+		expect(seriesCompanion('sons-of-the-king', list)?.slug).toBe('daughters-of-the-king');
+	});
+
+	it('is null for a series with no pair, or whose pair has no page here', () => {
+		expect(seriesCompanion('rooted', list)).toBeNull();
+		expect(seriesCompanion('sons-of-the-king', [{ slug: 'sons-of-the-king' }])).toBeNull();
 	});
 });

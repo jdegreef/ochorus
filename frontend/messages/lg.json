@@ -504,6 +504,8 @@
   "series_progress": "Osomye {done} ku {total}",
   "series_in_progress": "Bikyagenda",
   "series_continue_heading": "Weeyongere mu nyiriri zo",
+  "series_books_list": "Ebitabo mu lunyiriri luno",
+  "series_companion": "Olunyiriri olukwatagana",
   "series_all_read": "Osomye ebitabo byonna mu lunyiriri luno",
   "series_meta_default": "{series}: ebitabo byonna eby'olunyiriri, bya bwereere okusoma ku Ochorus.",
   "series_tagline": "Ebitabo ebyawandiikibwa okusomebwa wamu — ebimu mu nsengeka, ebirala ng'ekibinja.",

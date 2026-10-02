@@ -225,6 +225,7 @@ export function seriesFromBooks(
 		book_count: g.books.length,
 		covers: g.books.slice(0, SERIES_FAN).map(toBookTile),
 		books: g.books.map((b) => b.slug),
+		titles: g.books.map((b) => b.title),
 		languages: []
 	}));
 }
@@ -299,4 +300,24 @@ export function cardLanguages(
 		shown: ordered.slice(0, CARD_LANGUAGES),
 		hidden: ordered.slice(CARD_LANGUAGES)
 	};
+}
+
+/**
+ * Series written as a pair for different readers — the same thirty days for
+ * girls and for boys — each pointing at the other. The slugs are the link, as
+ * a young-reader edition's slug suffix is: nothing in the model joins them.
+ */
+const SERIES_COMPANIONS: Record<string, string> = {
+	'daughters-of-the-king': 'sons-of-the-king',
+	'sons-of-the-king': 'daughters-of-the-king'
+};
+
+/** A series' companion among `series` (the index's list), or null when it has
+ *  none or the companion has no page in this language. */
+export function seriesCompanion<S extends Pick<SeriesSummary, 'slug'>>(
+	slug: string,
+	series: S[]
+): S | null {
+	const other = SERIES_COMPANIONS[slug];
+	return (other && series.find((s) => s.slug === other)) || null;
 }

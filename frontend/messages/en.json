@@ -504,6 +504,8 @@
   "series_progress": "{done} of {total} read",
   "series_in_progress": "In progress",
   "series_continue_heading": "Continue your series",
+  "series_books_list": "Books in this series",
+  "series_companion": "Companion series",
   "series_all_read": "You have read every book in this series",
   "series_meta_default": "{series}: every book in the series, free to read on Ochorus.",
   "series_tagline": "Books written to be read together — some in order, some as a set.",

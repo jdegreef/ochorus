@@ -1321,6 +1321,9 @@ export interface SeriesSummary extends SeriesFor {
 	/** Every book's slug in reading order — the reader's progress on the card.
 	 *  Optional: an API behind this build omits it, and no progress is drawn. */
 	books?: string[];
+	/** Every book's title, in the same order as `books` — the card's book list.
+	 *  Optional: an API behind this build omits it, and no list is drawn. */
+	titles?: string[];
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
 }
