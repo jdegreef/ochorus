@@ -54,6 +54,7 @@ from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.management.commands.import_archive import fetch_text
 from library.models import Author, Book, Chapter, Series
+from library.titlecase import recase_title
 
 SLUG = "power-from-on-high-old-testament"
 AUTHOR_SLUG = "a-b-simpson"
@@ -119,8 +120,13 @@ _BOOK_HEAD = "THE POWER FROM ON HIGH"
 #: A section number printed alone on its line ("III."); OCR reads V as Y.
 _NUMERAL = re.compile(r"^\s*([IVXLY]{1,6})\.\s*$")
 #: A paragraph whose first word is set in small capitals ("THE use of oil") —
-#: the chapter's first paragraph after its verse epigraph.
+#: the chapter's prose after its verse epigraph, and some section openings.
 _SMALL_CAPS_OPEN = re.compile(r"^([A-Z])([A-Z]+)(?=[ ,]+[a-z])")
+#: Words set in capitals in their own right, never a small-caps opener: the
+#: KJV's LORD/GOD, and section numerals.
+_NOT_OPENERS = frozenset({
+    "LORD", "GOD", "JEHOVAH", "JAH", "OH", "II", "III", "IV", "VI", "VII", "VIII", "IX",
+})
 #: 1890s typesetting spaces stops off the word ("picture ; chaos", "wreck !").
 _SPACED_STOP = re.compile(r"(?<=[\w”’\)]) +([;:!?])")
 #: Library stamps and similar marks the scanner caught on a few pages.
@@ -219,7 +225,7 @@ def _reflow(lines: list[str], heads: list[str]) -> str:
             continue
         flush_head()
         sc = _SMALL_CAPS_OPEN.match(line)
-        if sc and sc.group(0) not in ("I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"):
+        if sc and sc.group(0) not in _NOT_OPENERS:
             # The opening word in small capitals starts the chapter's prose,
             # even where no blank line parts it from the epigraph above.
             flush()
@@ -238,7 +244,6 @@ def _reflow(lines: list[str], heads: list[str]) -> str:
 
 def _title_case_head(html: str) -> str:
     """Section heads are printed in capitals; set them in title case."""
-    from library.titlecase import recase_title
 
     def fix(m: re.Match) -> str:
         text = m.group(1).rstrip(".").strip()
@@ -367,6 +372,9 @@ class Command(BaseCommand):
         book.chapters.all().delete()
 
         fixes = _fixes()
+        unknown = set(fixes) - {str(n) for n in range(1, len(chapters) + 1)}
+        if unknown:
+            raise CommandError(f"ocr_fixes.json names chapters that do not exist: {sorted(unknown)}")
         total = 0
         for order, (title, body) in enumerate(chapters, start=1):
             body = settled_chapter_body(SLUG, order, clean_fragment(body))

@@ -42,7 +42,7 @@ from library import english_audit
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.management.commands.import_sermons import extract_sermonindex, fetch
-from library.models import Author, Book, Chapter
+from library.models import Author, Book, Chapter, Series
 
 SLUG = "power-from-on-high-new-testament"
 AUTHOR_SLUG = "a-b-simpson"
@@ -51,6 +51,9 @@ SUBTITLE = "Part II: The New Testament"
 PUBLICATION_YEAR = 1896
 COVER_COLOR = "#7a3b2e"
 SOURCE_URL = "https://archive.org/details/holyspiritorpowe0002reva"
+#: The second of the work's two volumes (Part I: `build_power_from_on_high_1`).
+SERIES_SLUG = "power-from-on-high"
+SERIES_POSITION = 2
 ATTRIBUTION = (
     "Public domain — Part II first published 1896 by the Christian Alliance "
     "Publishing Co., New York. Text from SermonIndex, checked against the "
@@ -165,6 +168,13 @@ class Command(BaseCommand):
                 f"author {AUTHOR_SLUG!r} not in the DB — loaddata authors.json first."
             ) from None
 
+        try:
+            series = Series.objects.get(slug=SERIES_SLUG)
+        except Series.DoesNotExist:
+            raise CommandError(
+                f"series {SERIES_SLUG!r} not in the DB — loaddata series.json first."
+            ) from None
+
         chapters = [("Preface to Volume II", PREFACE)]
         for title, page in CHAPTERS:
             body = extract_sermonindex(fetch(_SI + page + "/"), title)
@@ -181,6 +191,8 @@ class Command(BaseCommand):
             "publication_year": PUBLICATION_YEAR,
             "cover_color": COVER_COLOR,
             "source_url": SOURCE_URL,
+            "series": series,
+            "series_position": SERIES_POSITION,
         }
         next_order = (Book.objects.aggregate(m=Max("sort_order"))["m"] or 0) + 1
         book, was_created = Book.objects.update_or_create(
