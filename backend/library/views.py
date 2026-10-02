@@ -690,12 +690,20 @@ def _series_for(series) -> dict:
     return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
 
 
-def _chapter_words(length: dict | None) -> int | None:
-    """A series' average words per chapter, or None when it has no chapters
-    with text (an import in progress) — the card then draws no minutes."""
-    if not length or not length["chapters"] or not length["words"]:
-        return None
-    return round(length["words"] / length["chapters"])
+def _is_ordered(books) -> bool:
+    """Read in order (any volume carries a number) or a collection — one test
+    for the series index's card and the series page alike."""
+    return any(b.series_position is not None for b in books)
+
+
+def _chapter_words(books) -> int | None:
+    """A series' typical chapter length in words: each book's average over its
+    chapters WITH text (a heading-only divider or a not-yet-filled row would
+    drag it down), then the mean of those, so one book of many short chapters
+    doesn't outweigh the rest. None when no book has text yet — the card then
+    draws no minutes. Reads the `text_words` / `text_chapters` annotations."""
+    per_book = [b.text_words / b.text_chapters for b in books if b.text_chapters]
+    return round(sum(per_book) / len(per_book)) if per_book else None
 
 
 class SeriesListView(PublicContentCacheMixin, APIView):
@@ -727,21 +735,16 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
             )
+            # Each book's chapter text, for the card's minutes (`_chapter_words`)
+            # — on this same query, not one more.
+            .annotate(
+                text_words=Sum("chapters__word_count"),
+                text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
+            )
             .order_by(*SERIES_READING_ORDER)
         ):
             members.setdefault(book.series_id, []).append(book)
         held = _held_languages(members)
-        # Words per chapter, per series — the card's "~N min/day" (a chapter a
-        # day). One aggregate over every listed book's chapters, not a count
-        # per series.
-        lengths = {
-            row["book__series_id"]: row
-            for row in Chapter.objects.filter(
-                book_id__in=[b.pk for books in members.values() for b in books]
-            )
-            .values("book__series_id")
-            .annotate(words=Sum("word_count"), chapters=Count("id"))
-        }
         rows = []
         for series in Series.objects.filter(pk__in=members).prefetch_related("translations"):
             title = series.title_for(language)
@@ -762,10 +765,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # this series" list names every volume, not just the fan's.
                         "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
-                        # Read in order (volume numbers), or a collection — the
-                        # same test the series page makes.
-                        "ordered": any(b.series_position is not None for b in books),
-                        "chapter_words": _chapter_words(lengths.get(series.pk)),
+                        "ordered": _is_ordered(books),
+                        "chapter_words": _chapter_words(books),
                     }
                 )
         return Response(rows)
@@ -784,7 +785,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         books = _series_books(series, language) if title else []
         if not books:
             raise Http404("No series in this language")
-        ordered = any(b.series_position is not None for b in books)
+        ordered = _is_ordered(books)
         return Response(
             {
                 "slug": series.slug,

@@ -321,3 +321,15 @@ export function seriesCompanion<S extends Pick<SeriesSummary, 'slug'>>(
 	const other = SERIES_COMPANIONS[slug];
 	return (other && series.find((s) => s.slug === other)) || null;
 }
+
+/**
+ * Whether a series card says "Read in order" or "Read in any order", or
+ * neither: not for a series of one book here (there's no order to speak of),
+ * nor from an API behind this build that doesn't send `ordered`.
+ */
+export function seriesOrder(
+	s: Pick<SeriesSummary, 'ordered' | 'book_count'>
+): 'inOrder' | 'anyOrder' | null {
+	if (s.ordered === undefined || s.book_count < 2) return null;
+	return s.ordered ? 'inOrder' : 'anyOrder';
+}

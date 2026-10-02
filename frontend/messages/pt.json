@@ -508,6 +508,7 @@
   "series_companion": "Série complementar: {title}",
   "series_in_order": "Leia em ordem",
   "series_any_order": "Leia em qualquer ordem",
+  "series_chapter_minutes": "~{minutes} min por capítulo",
   "series_parents_heading": "Para pais e professores",
   "series_parents_body": "Todos estes livros são gratuitos e não é preciso criar conta. Leiam um capítulo juntos no café da manhã ou na hora de dormir, ou usem-no em sala de aula.",
   "series_all_read": "Você leu todos os livros desta série",

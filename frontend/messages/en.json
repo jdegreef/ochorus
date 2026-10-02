@@ -508,6 +508,7 @@
   "series_companion": "Companion series: {title}",
   "series_in_order": "Read in order",
   "series_any_order": "Read in any order",
+  "series_chapter_minutes": "~{minutes} min a chapter",
   "series_parents_heading": "For parents and teachers",
   "series_parents_body": "Every book here is free to read, with no account needed. Read a chapter together at breakfast or bedtime, or use one in class.",
   "series_all_read": "You have read every book in this series",

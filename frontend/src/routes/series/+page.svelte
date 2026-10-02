@@ -123,8 +123,12 @@
 					{#if g.audience === 'young_readers'}
 						<!-- The adult choosing for a child: free, no account, and how
 						     a family or a class might use these books. -->
-						<aside class="parents-note mb-5 max-w-2xl">
-							<h3 class="text-small font-semibold text-text">{t('series.parentsHeading')}</h3>
+						<!-- A labelled aside, not an <h3>: the series cards beside it are
+						     the group's h3s, and this isn't one of them. -->
+						<aside class="parents-note mb-5 max-w-2xl" aria-labelledby="parents-note">
+							<p id="parents-note" class="text-small font-semibold text-text">
+								{t('series.parentsHeading')}
+							</p>
 							<p class="mt-1 text-small text-muted">{t('series.parentsBody')}</p>
 						</aside>
 					{/if}
@@ -146,13 +150,14 @@
 <style>
 	/* Jump targets clear the pinned app nav (the authors and biographies
 	   indexes' group sections use the same recipe). */
+	.jump-anchor {
+		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
+	}
+	/* The note for parents and teachers under "For young readers". */
 	.parents-note {
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
 		padding: 0.85rem 1rem;
-	}
-	.jump-anchor {
-		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
 	}
 </style>

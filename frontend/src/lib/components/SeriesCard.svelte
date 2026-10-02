@@ -8,7 +8,8 @@
 		seriesCardProgressLabel,
 		seriesProgress,
 		splitSeriesTitle,
-		cardLanguages
+		cardLanguages,
+		seriesOrder
 	} from '$lib/series';
 	import { contentLang, readingMinutes } from '$lib/reading';
 	import { getLang, localeName } from '$lib/lang.svelte';
@@ -72,14 +73,11 @@
 	);
 	const ages = $derived(seriesAges(series));
 	// How the series reads, at a glance (the full card): in order or as a set,
-	// and a chapter's time — a chapter a day, at this reader's own pace once
-	// it has settled (200 wpm before). Each part only when the API sends it.
+	// and a typical chapter's time, at this reader's own pace once it has
+	// settled (200 wpm before). Each part only when the API sends it.
+	const order = $derived(compact ? null : seriesOrder(series));
 	const orderLabel = $derived(
-		compact || series.ordered === undefined
-			? ''
-			: series.ordered
-				? t('series.inOrder')
-				: t('series.anyOrder')
+		order === 'inOrder' ? t('series.inOrder') : order === 'anyOrder' ? t('series.anyOrder') : ''
 	);
 	const perDay = $derived(
 		!compact && series.chapter_words ? readingMinutes(series.chapter_words) : 0
@@ -152,7 +150,9 @@
 		<p class="series-facts mt-1 text-small text-muted">
 			{#if orderLabel}<span class="whitespace-nowrap">{orderLabel}</span>{/if}
 			{#if orderLabel && perDay}{' '}<span class="opacity-50">·</span>{' '}{/if}
-			{#if perDay}<span class="whitespace-nowrap">~{perDay} {t('plans.minPerDay')}</span>{/if}
+			{#if perDay}<span class="whitespace-nowrap"
+					>{m.series_chapter_minutes({ minutes: perDay })}</span
+				>{/if}
 		</p>
 	{/if}
 	{#if !compact && langs.shown.length}

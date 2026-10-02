@@ -197,26 +197,31 @@ class SeriesViewTests(TestCase):
         self.assertEqual(bfg["languages"], ["en", "sw"])
 
     def test_the_list_gives_a_series_its_words_per_chapter(self):
-        one = self._book("bfg-1", 1)
-        two = self._book("bfg-2", 2)
-        for book, order, words in ((one, 1, 1000), (one, 2, 3000), (two, 1, 2000)):
+        def chapter(book, order, words):
             Chapter.objects.create(book=book, order=order, body_html="<p>x</p>")
             Chapter.objects.filter(book=book, order=order).update(word_count=words)
+
+        one = self._book("bfg-1", 1)
+        two = self._book("bfg-2", 2)
+        chapter(one, 1, 1000)
+        chapter(one, 2, 3000)
+        chapter(one, 3, 0)  # a heading-only divider: no text, not counted
+        chapter(two, 1, 4000)
         # A chapter of an unpublished volume doesn't count.
-        hidden = self._book("bfg-3", 3, published=False)
-        Chapter.objects.create(book=hidden, order=1, body_html="<p>x</p>")
-        Chapter.objects.filter(book=hidden, order=1).update(word_count=90000)
+        chapter(self._book("bfg-3", 3, published=False), 1, 90000)
         (row,) = self._get("series/").json()
-        self.assertEqual(row["chapter_words"], 2000)
+        # Each book's own average (2000, 4000), then their mean — not 8000/3,
+        # which would let a book of many chapters outweigh the rest.
+        self.assertEqual(row["chapter_words"], 3000)
 
     def test_the_list_costs_the_same_however_many_series(self):
         self._book("bfg-1", 1)
         for i in range(3):
             s = Series.objects.create(slug=f"s{i}", title=f"S{i}")
             self._book(f"s{i}-1", 1, series=s)
-        # The books, the languages they are held in, the chapter lengths, the
-        # series, their translations — and the cache mixin's revision read.
-        with self.assertNumQueries(6):
+        # The books (with their chapter text), the languages they are held in,
+        # the series, their translations — and the cache mixin's revision read.
+        with self.assertNumQueries(5):
             self._get("series/")
 
 
