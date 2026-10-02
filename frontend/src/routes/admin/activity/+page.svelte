@@ -194,7 +194,8 @@
 	);
 
 	// ---- translation job status ----
-	const jobCounts = $derived(summary?.jobs.by_status);
+	// Optional: a backend that predates job status sends no `jobs` at all.
+	const jobCounts = $derived(summary?.jobs?.by_status);
 	const jobTotal = $derived(jobCounts ? Object.values(jobCounts).reduce((a, b) => a + b, 0) : 0);
 	/** The cards over the job queue — each one a filter. Two are the founder's own steps. */
 	const jobCards = $derived.by(() => {
@@ -203,8 +204,8 @@
 		return [
 			{ key: null, value: c.queued + c.in_progress + c.stalled, label: 'Open jobs', sub: `${c.queued} queued · ${c.in_progress + c.stalled} claimed`, tone: '' },
 			{ key: 'stalled' as const, value: c.stalled, label: 'Stalled', sub: 'claim idle 6h+', tone: 'text-danger' },
-			{ key: 'closed' as const, value: c.closed, label: 'Closed, not live', sub: 'merge or deploy pending', tone: 'text-warning' },
-			{ key: 'review' as const, value: c.review, label: 'Need your approval', sub: 'live as AI translations', tone: 'text-accent' }
+			{ key: 'closed' as const, value: c.closed, label: 'Closed, not shipped', sub: 'merge or deploy pending', tone: 'text-warning' },
+			{ key: 'review' as const, value: c.review, label: 'Need your approval', sub: 'shipped as AI translations', tone: 'text-accent' }
 		];
 	});
 	/** Pill classes per tone — the same scale the stage bar uses. */
@@ -233,14 +234,8 @@
 			label: jobStatusMeta(s, 'book').label
 		}))
 	];
-	const jobFilterCount = (key: JobStatus | 'needs_me' | '') =>
-		!jobCounts
-			? 0
-			: key === ''
-				? jobTotal
-				: key === 'needs_me'
-					? jobCounts.closed + jobCounts.review
-					: jobCounts[key];
+	const jobFilterCount = (key: JobStatus | 'needs_me') =>
+		!jobCounts ? 0 : key === 'needs_me' ? jobCounts.closed + jobCounts.review : jobCounts[key];
 
 	// ---- the header figures: counted server-side over the whole log ----
 	const cards = $derived.by(() => {
@@ -462,10 +457,12 @@
 					<section class="mb-5" aria-labelledby="jobs-heading">
 						<div class="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
 							<h2 id="jobs-heading" class="text-small font-semibold text-text">Translation jobs</h2>
-							{#if !summary?.jobs.github}
+							{#if summary?.jobs?.github === 'down'}
 								<p class="text-small text-warning">
-									GitHub couldn't be read — showing what the site knows; unshipped jobs read "status unknown".
+									GitHub couldn't be read — showing what the library knows; unshipped jobs read "status unknown".
 								</p>
+							{:else if summary?.jobs?.github === 'off'}
+								<p class="text-small text-muted">The GitHub queue isn't configured here, so unshipped jobs read "status unknown".</p>
 							{/if}
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
@@ -500,7 +497,8 @@
 									aria-pressed={activeJob === f.key}
 									onclick={() => (activeJob = f.key)}
 								>
-									{f.label} <span class="tabular-nums opacity-70">{jobFilterCount(f.key)}</span>
+									<!-- "Any" clears the filter (every action shows), so it carries no job count. -->
+									{f.label}{#if f.key}&nbsp;<span class="tabular-nums opacity-70">{jobFilterCount(f.key)}</span>{/if}
 								</button>
 							{/each}
 						</div>

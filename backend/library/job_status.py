@@ -13,10 +13,12 @@ recorded in two places, and this module reads both:
   it. ``source_type`` / ``reviewed`` then say whether the founder approved it.
 
 So the database wins: an edition that exists is *review* or *done* whatever
-GitHub says (a worker has left an issue open after shipping). An issue that is
-closed with no edition is *closed* — awaiting a merge or a deploy, or closed as
-not planned; the open-issue list can't tell those apart. When GitHub can't be
-read, a job without an edition is *unknown* rather than a guess.
+GitHub says (a worker has left an issue open after shipping). "Exists" means
+shipped — merged and deployed — not necessarily visible: a language that isn't
+live yet still hides it from readers. An issue that is closed with no edition is
+*closed* — awaiting a merge or a deploy, or closed as not planned; the open-issue
+list can't tell those apart. When GitHub can't be read, a job without an
+edition is *unknown* rather than a guess.
 """
 
 from __future__ import annotations
@@ -46,9 +48,11 @@ STATUSES = (QUEUED, IN_PROGRESS, STALLED, CLOSED, REVIEW, DONE, UNKNOWN)
 NEEDS_ME = (CLOSED, REVIEW)
 
 #: How long one read of the open queue is reused. The page is reloaded on every
-#: filter change; the queue moves on the scale of minutes.
+#: filter change; the queue moves on the scale of minutes. A failed read is
+#: remembered as long, so an outage doesn't stall every page load on a timeout.
 CACHE_SECONDS = 60
 _CACHE_KEY = "activity:open-translation-jobs"
+_DOWN = "down"
 
 Key = tuple[str, str, str]  # (type, slug, language) — a job's identity
 
@@ -65,28 +69,45 @@ def target_of(key: Key) -> str:
     return ":".join(key)
 
 
-def open_jobs() -> dict[Key, dict] | None:
-    """The open queue by key, or None when GitHub isn't configured or answering.
+class Queue:
+    """One read of the open queue: ``jobs`` by key, and when it was read."""
 
-    Reuses the queue read behind the coverage page, cached briefly. A failure
-    isn't cached: the next load tries again.
-    """
+    def __init__(self, jobs: list[dict], read_at):
+        self.read_at = read_at
+        self.jobs: dict[Key, dict] = {}
+        for job in jobs:
+            key = (job["type"], job["slug"], job["language"])
+            # One job can have duplicate open issues (a double press before the
+            # guard saw the first). Keep the most advanced: a claim beats a
+            # queued duplicate, and the freshest claim says whether it's stalled.
+            if (held := self.jobs.get(key)) is None or _rank(job) > _rank(held):
+                self.jobs[key] = job
+
+
+def _rank(job: dict) -> tuple:
+    return (job["state"] == "in_progress", job.get("updated_at") or "")
+
+
+def open_jobs() -> Queue | str | None:
+    """The open queue; ``"down"`` when GitHub didn't answer; None when no token
+    is configured (the queue isn't set up here, which isn't an outage)."""
     if not settings.GITHUB_TRANSLATION_TOKEN:
         return None
-    jobs = cache.get(_CACHE_KEY)
-    if jobs is None:
+    read = cache.get(_CACHE_KEY)
+    if read is None:
         from .admin_views.jobs import _list_open_jobs  # the view module imports models
 
         try:
-            jobs = _list_open_jobs()
+            read = (_list_open_jobs(), timezone.now())
         except requests.RequestException:
-            return None
-        cache.set(_CACHE_KEY, jobs, CACHE_SECONDS)
-    by_key: dict[Key, dict] = {}
-    for job in jobs:
-        # Oldest first; keep the newest of duplicate issues for one job.
-        by_key[(job["type"], job["slug"], job["language"])] = job
-    return by_key
+            read = _DOWN
+        cache.set(_CACHE_KEY, read, CACHE_SECONDS)
+    return _DOWN if read == _DOWN else Queue(*read)
+
+
+def forget_queue() -> None:
+    """Drop the cached read — after filing a job, so it shows up as queued."""
+    cache.delete(_CACHE_KEY)
 
 
 def _editions(keys: set[Key]) -> dict[Key, str]:
@@ -104,7 +125,8 @@ def _editions(keys: set[Key]) -> dict[Key, str]:
     for type_, model in (("book", Book), ("sermon", Sermon), ("article", Article)):
         if slugs := by_type.get(type_):
             rows = model.objects.filter(slug__in=slugs).values_list("slug", "language", "source_type")
-            mark(type_, ((s, lang, st != "ai_unreviewed") for s, lang, st in rows))
+            unreviewed = Book.SourceType.AI_UNREVIEWED
+            mark(type_, ((s, lang, st != unreviewed) for s, lang, st in rows))
     if slugs := by_type.get("plan"):
         rows = Plan.objects.filter(slug__in=slugs).values_list("slug", "language")
         mark("plan", ((s, lang, True) for s, lang in rows))
@@ -126,18 +148,21 @@ def _editions(keys: set[Key]) -> dict[Key, str]:
     return found
 
 
-def statuses(keys: set[Key], queue: dict[Key, dict] | None, now=None) -> dict[Key, str]:
-    """Each key's status. ``queue`` is :func:`open_jobs`' answer (None: unknown)."""
+def statuses(keys: dict[Key, object], read_queue, now=None) -> dict[Key, str]:
+    """Each key's status. ``keys`` maps a job to when it was last filed;
+    ``read_queue`` is called (once, and only if some job hasn't shipped) for
+    :func:`open_jobs`' answer."""
     now = now or timezone.now()
-    live = _editions(keys)
-    out: dict[Key, str] = {}
-    for key in keys:
-        if key in live:
-            out[key] = live[key]
-        elif queue is None:
+    out = _editions(set(keys))
+    pending = [k for k in keys if k not in out]
+    queue = read_queue() if pending else None
+    for key in pending:
+        if not isinstance(queue, Queue):
             out[key] = UNKNOWN
-        elif (job := queue.get(key)) is None:
-            out[key] = CLOSED
+        elif (job := queue.jobs.get(key)) is None:
+            # Filed after the cached read: not closed — the read predates it.
+            filed = keys[key]
+            out[key] = QUEUED if filed and filed >= queue.read_at else CLOSED
         elif job["state"] != "in_progress":
             out[key] = QUEUED
         else:

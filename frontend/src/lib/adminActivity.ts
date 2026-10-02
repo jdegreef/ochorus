@@ -380,31 +380,31 @@ const JOB_STATUS: Record<JobStatus, JobStatusMeta> = {
 		hint: 'Claimed, but the issue has not moved in 6 hours — likely a crashed run.'
 	},
 	closed: {
-		label: 'Closed, not live',
+		label: 'Closed, not shipped',
 		tone: 'warning',
-		hint: 'The issue is closed but the edition is not on the site: a PR waiting to be merged or deployed — or closed as not planned.'
+		hint: 'The issue is closed but the edition is not in the library: a PR waiting to be merged or deployed — or closed as not planned.'
 	},
 	review: {
-		label: 'Live · awaiting approval',
+		label: 'Shipped · awaiting approval',
 		tone: 'live',
-		hint: 'On the site as an AI translation; approve it once reviewed.'
+		hint: 'In the library as an AI translation (readers see it once its language is live); approve it once reviewed.'
 	},
-	done: { label: 'Approved', tone: 'done', hint: 'Live and approved.' },
+	done: { label: 'Approved', tone: 'done', hint: 'Shipped and approved.' },
 	unknown: {
 		label: 'Status unknown',
 		tone: 'muted',
-		hint: 'Not on the site yet, and GitHub could not be read to say where it is.'
+		hint: 'Not shipped yet, and GitHub could not be read to say where it is.'
 	}
 };
 
-/** Plans and topic shelves have no approval step: live is done. */
+/** Plans and topic shelves have no approval step: shipped is done. */
 const NO_APPROVAL = new Set(['plan', 'topic']);
 
-/** A job's stage label for its target — "Live" rather than "Approved" where nothing is approved. */
+/** A job's stage label for its target — "Shipped" rather than "Approved" where nothing is approved. */
 export function jobStatusMeta(status: JobStatus, target: string): JobStatusMeta {
 	const meta = JOB_STATUS[status] ?? JOB_STATUS.unknown;
 	if (status === 'done' && NO_APPROVAL.has(target.split(':')[0]))
-		return { ...meta, label: 'Live', hint: 'Live on the site.' };
+		return { ...meta, label: 'Shipped', hint: 'In the library; nothing to approve.' };
 	return meta;
 }
 

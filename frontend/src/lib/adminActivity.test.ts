@@ -305,9 +305,9 @@ describe('groupBursts: reviews', () => {
 });
 
 describe('jobStatusMeta', () => {
-	it('says Live, not Approved, where nothing is approved', () => {
+	it('says Shipped, not Approved, where nothing is approved', () => {
 		expect(jobStatusMeta('done', 'book:grace:es').label).toBe('Approved');
-		expect(jobStatusMeta('done', 'plan:advent:es').label).toBe('Live');
+		expect(jobStatusMeta('done', 'plan:advent:es').label).toBe('Shipped');
 		expect(jobStatusMeta('closed', 'book:grace:es').hint).toMatch(/not planned/);
 	});
 });

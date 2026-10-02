@@ -9,8 +9,9 @@ report about chapter quality.
 from __future__ import annotations
 
 from datetime import timedelta
+from functools import cached_property
 
-from django.db.models import Count, Q
+from django.db.models import Count, Max, Q
 from django.utils import timezone
 from django.utils.dateparse import parse_datetime
 from rest_framework.response import Response
@@ -103,7 +104,9 @@ def _serialize_page(rows, *, reveal: bool, titled: bool = True, jobs=None) -> li
     titles = _titles(rows) if titled else {}
     out = [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
     if jobs is not None:
-        status = jobs.statuses_for(r.target for r in rows if r.action == TRANSLATION_JOB)
+        status = jobs.statuses_for(
+            {r.target: r.at for r in rows if r.action == TRANSLATION_JOB}
+        )
         for row, data in zip(rows, out, strict=True):
             if row.action == TRANSLATION_JOB:
                 data["job_status"] = status.get(row.target, job_status.UNKNOWN)
@@ -118,20 +121,28 @@ class _Jobs:
     (and that read is cached across requests), statuses are memoised by target."""
 
     def __init__(self):
-        self._queue = None
-        self._read = False
         self._known: dict[str, str] = {}
 
-    @property
+    @cached_property
     def queue(self):
-        if not self._read:
-            self._queue, self._read = job_status.open_jobs(), True
-        return self._queue
+        return job_status.open_jobs()
 
-    def statuses_for(self, targets) -> dict[str, str]:
-        keys = {k for t in set(targets) - self._known.keys() if (k := job_status.parse_key(t))}
+    @property
+    def github(self) -> str:
+        """"ok", "down" (didn't answer) or "off" (no token configured here)."""
+        q = self.queue
+        return "off" if q is None else "down" if q == "down" else "ok"
+
+    def statuses_for(self, filed: dict) -> dict[str, str]:
+        """Statuses for ``{target: when it was last filed}``; unparseable
+        targets are left out."""
+        keys = {
+            k: at
+            for t, at in filed.items()
+            if t not in self._known and (k := job_status.parse_key(t))
+        }
         if keys:
-            found = job_status.statuses(keys, self.queue)
+            found = job_status.statuses(keys, lambda: self.queue)
             self._known.update({job_status.target_of(k): v for k, v in found.items()})
         return self._known
 
@@ -267,6 +278,8 @@ class AdminActivityView(APIView):
             # resolve every job's status and filter to the targets that match.
             pick = job_status.NEEDS_ME if wanted == "needs_me" else (wanted,)
             status = jobs.statuses_for(self._job_targets(scope))
+            # (UNKNOWN never matches a target the status map left out — an
+            # unparseable one isn't a job, and isn't counted as one either.)
             base = base.filter(
                 action=TRANSLATION_JOB, target__in=[t for t, s in status.items() if s in pick]
             )
@@ -334,11 +347,19 @@ class AdminActivityView(APIView):
         known = scope.values_list("actor", flat=True).distinct()
         return [a for a in known if a and mask_email(a) == actor]
 
-    @staticmethod
-    def _job_targets(scope) -> list[str]:
-        return list(
-            scope.filter(action=TRANSLATION_JOB).values_list("target", flat=True).distinct()
-        )
+    def _job_targets(self, scope) -> dict:
+        """``{target: when it was last filed}`` for every job in scope — once
+        per request (the filter and the counts both need it)."""
+        if not hasattr(self, "_targets"):
+            rows = (
+                scope.filter(action=TRANSLATION_JOB)
+                .values("target")
+                .annotate(last=Max("at"), n=Count("id"))
+                .order_by()
+            )
+            self._targets = {r["target"]: r["last"] for r in rows}
+            self._target_rows = {r["target"]: r["n"] for r in rows}
+        return self._targets
 
     def _summary(self, scope, searched, params, *, reveal: bool, jobs: _Jobs) -> dict:
         now = timezone.now()
@@ -386,13 +407,17 @@ class AdminActivityView(APIView):
         }
 
     def _job_counts(self, scope, jobs: _Jobs) -> dict:
-        """Translation jobs in the log, by where each one is now — per job (one
-        target), not per row: pressing Translate twice is still one job."""
+        """Translation-job rows by where each job is now. Rows, not distinct
+        jobs, so a count matches what its filter lists (a second press of
+        Translate is a second row of the same job)."""
         targets = self._job_targets(scope)
         counts = dict.fromkeys(job_status.STATUSES, 0)
+        github = "off"
         if targets:
             status = jobs.statuses_for(targets)
-            for t in targets:
-                counts[status.get(t, job_status.UNKNOWN)] += 1
-        # Whether GitHub answered: without it, the open stages read "unknown".
-        return {"by_status": counts, "github": bool(targets) and jobs.queue is not None}
+            for t, n in self._target_rows.items():
+                if t in status:
+                    counts[status[t]] += n
+            # Only asked when some job hadn't shipped; untouched means "ok".
+            github = jobs.github if "queue" in jobs.__dict__ else "ok"
+        return {"by_status": counts, "github": github}

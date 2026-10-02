@@ -32,6 +32,7 @@ from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..job_status import forget_queue
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -349,4 +350,6 @@ class AdminTranslationJobsView(AdminAudited, APIView):
             )
 
         job = _issue_to_job(r.json())
+        # The Activity page caches the open queue; let it see this one at once.
+        forget_queue()
         return Response({"job": job, "created": True}, status=status.HTTP_201_CREATED)

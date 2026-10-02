@@ -407,7 +407,7 @@ class AdminActivityJobStatusTests(TestCase):
 
     def test_summary_counts_jobs_by_status(self):
         jobs = self._get()["summary"]["jobs"]
-        self.assertTrue(jobs["github"])
+        self.assertEqual(jobs["github"], "ok")
         self.assertEqual(
             jobs["by_status"],
             {"queued": 1, "in_progress": 1, "stalled": 1, "closed": 1, "review": 1, "done": 1, "unknown": 0},
@@ -434,7 +434,7 @@ class AdminActivityJobStatusTests(TestCase):
         self.assertEqual(status["book:grace:es"], "review")
         self.assertEqual(status["book:holy-war:fr"], "done")
         self.assertEqual(status["book:pilgrim:de"], "unknown")
-        self.assertFalse(data["summary"]["jobs"]["github"])
+        self.assertEqual(data["summary"]["jobs"]["github"], "down")
 
     @override_settings(GITHUB_TRANSLATION_TOKEN="")
     def test_no_token_means_no_github_call(self):
@@ -442,3 +442,57 @@ class AdminActivityJobStatusTests(TestCase):
             data = self.client.get("/api/admin/activity/").data
         listed.assert_not_called()
         self.assertEqual(data["summary"]["jobs"]["by_status"]["unknown"], 4)
+        # Not set up here is not an outage: the page shouldn't say GitHub is down.
+        self.assertEqual(data["summary"]["jobs"]["github"], "off")
+
+    def test_counts_are_rows_so_they_match_the_filter(self):
+        # A second press of Translate on the same job: one more row.
+        AdminAction.objects.create(
+            action=A.TRANSLATION_JOB, actor="admin@example.com", target="book:pilgrim:am",
+            detail={"created": False},
+        )
+        data = self._get(job_status="closed")
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["closed"], 2)
+        self.assertEqual(data["total"], 2)
+
+    def test_a_job_filed_after_the_queue_was_read_is_queued_not_closed(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from .job_status import Queue, statuses
+
+        read_at = timezone.now()
+        queue = Queue([], read_at)
+        key = ("book", "pilgrim", "nl")
+        found = statuses({key: read_at + timedelta(seconds=5)}, lambda: queue)
+        self.assertEqual(found[key], "queued")
+        found = statuses({key: read_at - timedelta(minutes=5)}, lambda: queue)
+        self.assertEqual(found[key], "closed")
+
+    def test_a_claim_beats_a_newer_queued_duplicate(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from .job_status import Queue, statuses
+
+        old = (timezone.now() - timedelta(hours=8)).isoformat()
+        new = timezone.now().isoformat()
+        dup = {"type": "book", "slug": "pilgrim", "language": "nl"}
+        queue = Queue(
+            [
+                {**dup, "state": "in_progress", "updated_at": old},
+                {**dup, "state": "queued", "updated_at": new},
+            ],
+            timezone.now(),
+        )
+        key = ("book", "pilgrim", "nl")
+        self.assertEqual(statuses({key: None}, lambda: queue)[key], "stalled")
+
+    def test_github_is_not_asked_when_every_job_has_shipped(self):
+        AdminAction.objects.filter(target__startswith="book:pilgrim").delete()
+        with patch("library.admin_views.jobs._list_open_jobs") as listed:
+            data = self.client.get("/api/admin/activity/").data
+        listed.assert_not_called()
+        self.assertEqual(data["summary"]["jobs"]["github"], "ok")

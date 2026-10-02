@@ -1763,8 +1763,11 @@ export interface AdminActivitySummary {
 	actors: { actor: string; count: number }[];
 	last_go_live: AdminActionRow | null;
 	last_publish: AdminActionRow | null;
-	/** Translation jobs by stage, one per job; `github` false when it couldn't be read. */
-	jobs: { by_status: Record<JobStatus, number>; github: boolean };
+	/**
+	 * Translation-job rows by stage. `github`: "ok"; "down" when it didn't
+	 * answer; "off" when no queue token is configured (not an outage).
+	 */
+	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'down' | 'off' };
 }
 
 export interface AdminActivity {
