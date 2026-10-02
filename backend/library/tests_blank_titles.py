@@ -152,7 +152,8 @@ class DatabaseConstraintTests(TestCase):
 
     def test_update_to_a_blank_title_is_refused_by_the_database(self):
         book = Book.objects.create(author=self.author, slug="b", language="en", title="Humility")
-        for t in ("", "   ", ZWSP, f" {BOM} ", RLM, HANGUL_FILLER):
+        # NBSP and the ideographic space: Postgres's own \\s misses them.
+        for t in ("", "   ", ZWSP, f" {BOM} ", RLM, HANGUL_FILLER, "\u00a0\u00a0", "\u3000"):
             with self.subTest(t=repr(t)), self.assertRaises(IntegrityError), transaction.atomic():
                 Book.objects.filter(pk=book.pk).update(title=t)
 
@@ -166,8 +167,13 @@ class MigrationNamesUntitledWorksTests(TestCase):
     constraint goes on, so the deploy's migrate can't fail on the one already
     in production."""
 
+    def test_a_slugless_blank_row_still_gets_a_name(self):
+        migration = importlib.import_module("library.migrations.0177_name_untitled_works")
+        self.assertEqual(migration._stand_in("Book", 7, ""), "Untitled book 7")
+        self.assertEqual(migration._stand_in("Book", 7, "---"), "Untitled book 7")
+
     def test_a_blank_row_is_named_from_its_slug(self):
-        migration = importlib.import_module("library.migrations.0177_title_not_blank")
+        migration = importlib.import_module("library.migrations.0177_name_untitled_works")
         author = Author.objects.create(slug="chs", name="Charles H. Spurgeon")
         book = Book.objects.create(
             author=author, slug="gleanings-among-the-sheaves", language="en", title="x"
