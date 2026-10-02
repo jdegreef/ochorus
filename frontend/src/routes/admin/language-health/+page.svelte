@@ -17,7 +17,9 @@
 		healthBand,
 		nextActions,
 		plural,
-		pointsBreakdown
+		pointsBreakdown,
+		shelfKinds,
+		type CoverageShelf
 	} from '$lib/languageHealth';
 
 	const res = adminResource(getAdminLanguageHealth, 'Something went wrong loading language health.');
@@ -31,7 +33,7 @@
 	// What each ingredient measures, for "How the score works".
 	const COMPONENTS: Record<HealthScoreKey, { label: string; hint: string }> = {
 		readiness: { label: 'Readiness', hint: 'share of the go-live checks met' },
-		coverage: { label: 'Coverage', hint: 'books here ÷ the English shelf' },
+		coverage: { label: 'Coverage', hint: 'share of the English shelf that exists here' },
 		review: { label: 'Review', hint: 'share of translations a human has confirmed' },
 		engagement: { label: 'Engagement', hint: 'readers' }
 	};
@@ -43,13 +45,35 @@
 		warning: 'border-warning/40 text-warning'
 	} as const;
 
+	// The tail of the engagement line in "How the score works". Either field is
+	// absent from an API deployed before it existed, so each degrades separately.
+	const engagementHint = (target?: number, windowDays?: number) =>
+		(windowDays ? ` active in the last ${fmt(windowDays)} days` : '') +
+		(target
+			? `, against a target of ${plural(target, 'reader')}, so another language's readers never move this score`
+			: ', against the busiest language');
+
+	// Coverage's weights and the English shelf, when the API sends them.
+	const shelfOf = (d: {
+		coverage_mix?: CoverageShelf['mix'];
+		source_shelf?: CoverageShelf['source'];
+	}): CoverageShelf | undefined =>
+		d.coverage_mix && d.source_shelf ? { mix: d.coverage_mix, source: d.source_shelf } : undefined;
+
+	const coverageHint = (sourceBooks: number, shelf?: CoverageShelf) =>
+		shelf
+			? `, blending ${shelfKinds(shelf)
+					.map((k) => `${k} ${Math.round(shelf.mix[k] * 100)}% (${fmt(shelf.source[k])})`)
+					.join(', ')}`
+			: ` (${fmt(sourceBooks)} books)`;
+
 	const formula = (w: HealthWeights) =>
 		HEALTH_KEYS.map((k) => `${Math.round(w[k] * 100)} × ${COMPONENTS[k].label.toLowerCase()}`).join(' + ');
 </script>
 
-{#snippet contentLine(l: AdminLanguageHealth)}
+{#snippet contentLine(l: AdminLanguageHealth, windowDays: number | undefined)}
 	{fmt(l.content.published_books)} books · {fmt(l.content.sermons)} sermons · {fmt(l.content.bios)} bios ·
-	{fmt(l.content.plans)} plans · {plural(l.readers, 'reader')}
+	{fmt(l.content.plans)} plans · {plural(l.readers, windowDays ? 'active reader' : 'reader')}
 {/snippet}
 
 <svelte:head><title>Admin · Language health — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -59,6 +83,7 @@
 
 	<AdminGate resource={res} errorTitle="Couldn't load language health" loadingText="Loading…" panelClass="mt-6">
 		{#snippet children(data)}
+			{@const shelf = shelfOf(data)}
 			{@const sources = data.languages.filter((l) => l.is_source)}
 			{@const ranked = data.languages.filter((l) => !l.is_source)}
 			<header class="mb-6 mt-3">
@@ -75,11 +100,9 @@
 							<li>
 								<span class="font-semibold text-text">{COMPONENTS[k].label}</span>
 								({Math.round(data.weights[k] * 100)} pts): {COMPONENTS[k].hint}{k === 'coverage'
-									? ` (${fmt(data.source_published_books)} books)`
+									? coverageHint(data.source_published_books, shelf)
 									: k === 'engagement'
-										? data.engagement_target
-											? `, against a target of ${plural(data.engagement_target, 'reader')}, so another language's readers never move this score`
-											: ', against the busiest language'
+										? engagementHint(data.engagement_target, data.reader_window_days)
 										: ''}.
 							</li>
 						{/each}
@@ -97,7 +120,7 @@
 				<div class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-card bg-surface-2 px-4 py-3">
 					<span class="rounded-full bg-accent-soft px-2 py-0.5 text-micro text-accent">source</span>
 					<a href="/admin/languages/{s.code}" class="font-semibold text-text hover:text-accent">{s.name}</a>
-					<span class="text-small tabular-nums text-muted">{@render contentLine(s)}</span>
+					<span class="text-small tabular-nums text-muted">{@render contentLine(s, data.reader_window_days)}</span>
 					{#if s.content.unreviewed_books}
 						<span class="text-small text-warning">{fmt(s.content.unreviewed_books)} awaiting review</span>
 					{/if}
@@ -108,7 +131,7 @@
 				{#each ranked as l, i (l.code)}
 					{@const b = healthBand(l.health)}
 					{@const breakdown = pointsBreakdown(l.scores, data.weights)}
-					{@const actions = nextActions(l, data.source_published_books, data.weights)}
+					{@const actions = nextActions(l, data.source_published_books, data.weights, shelf)}
 					<li class="rounded-card border border-border bg-surface p-4">
 						<div class="flex items-start justify-between gap-4">
 							<div class="min-w-0">
@@ -139,7 +162,7 @@
 										{/each}
 									{/if}
 								</div>
-								<p class="mt-1 text-small text-muted">{@render contentLine(l)}</p>
+								<p class="mt-1 text-small text-muted">{@render contentLine(l, data.reader_window_days)}</p>
 								{#if l.reading_elsewhere}
 									<a
 										href="/admin/languages/{l.code}#sec-wanted"
@@ -166,7 +189,7 @@
 							style="--weighted: {breakdown.map((p) => `${p.max}fr`).join(' ')}"
 						>
 							{#each breakdown as p (p.key)}
-								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target)}
+								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target, shelf)}
 								<div class="min-w-0">
 									<ProgressBar
 										percent={p.max ? (p.earned / p.max) * 100 : 0}
@@ -177,7 +200,9 @@
 										{COMPONENTS[p.key].label}
 										<span class="tabular-nums text-muted">{pts(p.earned)}/{pts(p.max)}</span>
 									</p>
-									<p class="truncate text-micro tabular-nums text-muted" title={line}>{line}</p>
+									<!-- Wraps rather than truncates: coverage lists four kinds, and a
+									     phone has no hover to reveal a clipped title. -->
+									<p class="text-micro tabular-nums text-muted">{line}</p>
 								</div>
 							{/each}
 						</div>

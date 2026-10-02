@@ -244,6 +244,8 @@ export const getAdminAuthorsWithoutBio = () =>
 export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
 /** What each component weighs in the composite (sums to 1). */
 export type HealthWeights = Record<HealthScoreKey, number>;
+/** The kinds of content coverage blends. */
+export type ShelfKind = 'books' | 'sermons' | 'bios' | 'plans';
 export interface AdminLanguageHealth {
 	code: string;
 	name: string;
@@ -278,6 +280,13 @@ export const getAdminLanguageHealth = () =>
 		/** Readers that earn full engagement credit. Absent from an API deployed
 		 *  before the fixed target, which scored against the busiest language. */
 		engagement_target?: number;
+		/** Readers are those active in this many days. Absent from an API that
+		 *  counted all-time readers. */
+		reader_window_days?: number;
+		/** How coverage weighs each kind (sums to 1), and the source language's
+		 *  count of each. Absent from an API that scored coverage on books alone. */
+		coverage_mix?: Record<ShelfKind, number>;
+		source_shelf?: Record<ShelfKind, number>;
 		languages: AdminLanguageHealth[];
 	}>('/api/admin/language-health/');
 
@@ -644,6 +653,9 @@ export interface AdminCoverageRow {
 	 * edition stays unpublished and no translation may be filed, so its missing
 	 * cells are locked, not gaps. Absent otherwise. */
 	blocked?: boolean;
+	/** The title would show a reader nothing (blank, or only zero-width /
+	 * bidi characters) — text.is_blank_title. Absent otherwise. */
+	untitled?: boolean;
 	/** Books, sermons and articles: language → readers whose site language it
 	 *  is, reading this work elsewhere for want of their own edition
 	 *  (library/demand.py, reading signal only). Only languages with any;
@@ -1230,7 +1242,14 @@ export const getAdminEmailMetrics = () =>
 
 // --- Broadcasts (compose / schedule / send) ---------------------------------
 
-export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'canceled';
+export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'paused' | 'sent' | 'canceled';
+
+/** One pre-send check (backend `emails/preflight.py`). An `error` blocks send and schedule. */
+export interface BroadcastCheck {
+	code: string;
+	level: 'error' | 'warning' | 'ok';
+	message: string;
+}
 
 /** One language's content block for a broadcast (structured, not raw HTML). */
 export interface BroadcastBlock {
@@ -1261,9 +1280,17 @@ export interface AdminBroadcast {
 	updated_at: string;
 	locales: string[];
 	audience_count: number;
+	/** The batched send so far: readers processed, by outcome. */
+	progress: { sent: number; skipped: number; failed: number };
+	/** Why it's in this state: a pause, a guardrail stop, a schedule that didn't start. */
+	status_reason: string;
+	send_started_at: string | null;
+	/** Copy and audience are frozen: it has (or may have) mailed someone. */
+	locked: boolean;
 	// detail only:
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
+	checks?: BroadcastCheck[];
 }
 
 export interface BroadcastPayload {
@@ -1295,21 +1322,83 @@ export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
 export const deleteBroadcast = (id: number) =>
 	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
 
+export type BroadcastActionName = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
+
 export const broadcastAction = (
 	id: number,
-	action: 'send' | 'schedule' | 'cancel' | 'test',
-	extra: { scheduled_at?: string } = {}
+	action: BroadcastActionName,
+	extra: { scheduled_at?: string; override_guardrail?: boolean } = {}
 ) =>
-	apiFetch<AdminBroadcast & { tally?: Record<string, number>; ok?: boolean; sent_to?: string }>(
+	apiFetch<AdminBroadcast & { ok?: boolean; sent_to?: string }>(
 		`/api/admin/broadcasts/${id}/action/`,
 		{ method: 'POST', body: JSON.stringify({ action, ...extra }) }
 	);
+
+// --- One reader's email (history + direct email) ------------------------------
+
+export interface ReaderEmailRow {
+	id: number;
+	kind: 'lifecycle' | 'broadcast' | 'direct';
+	label: string;
+	subject: string;
+	status: 'queued' | 'sent' | 'failed' | 'skipped';
+	error: string;
+	/** Provider events seen for it: delivered, opened, clicked, bounced, … */
+	events: string[];
+	sent_by: string;
+	body_text: string;
+	created_at: string;
+	sent_at: string | null;
+}
+
+export interface ReaderEmails {
+	/** Why this reader can't be written to (suppressed / unsubscribed), else null. */
+	blocked_reason: string | null;
+	/** The language this reader gets email in — the default "written in". */
+	email_lang: { code: string; name: string };
+	messages: ReaderEmailRow[];
+}
+
+export interface DirectEmailPayload {
+	subject: string;
+	/** The language the admin wrote in (sets the email's lang/dir). */
+	lang?: string;
+	heading?: string;
+	greeting?: string;
+	paragraphs: string[];
+	cta_label?: string;
+	cta_path?: string;
+	signoff?: string;
+	signature?: string;
+}
+
+export const getReaderEmails = (uid: string) =>
+	apiFetch<ReaderEmails>(`/api/admin/users/${uid}/emails/`);
+
+export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
+	apiFetch<ReaderEmails & { ok: true }>(`/api/admin/users/${uid}/emails/`, {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
 		method: 'POST',
 		body: JSON.stringify({ audience })
 	});
+
+/** An admin timestamp: "Oct 2, 2026, 9:42 AM", or "—" for none. */
+export function formatDateTime(iso: string | null): string {
+	return iso
+		? new Date(iso).toLocaleString('en', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: '2-digit'
+			})
+		: '—';
+}
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */

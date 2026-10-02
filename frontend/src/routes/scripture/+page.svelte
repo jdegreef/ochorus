@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
-	import { scripturePageHref, searchPage } from '$lib/library-public';
+	import { scriptureBookHref, scripturePageHref, searchPage } from '$lib/library-public';
 	import { goto } from '$app/navigation';
 	import { SvelteSet } from 'svelte/reactivity';
 	import type { Snapshot } from './$types';
@@ -9,11 +9,13 @@
 	import { groupScripture, heatScale, HEAT_LEVELS, mayBeReference, mostCited } from '$lib/scriptureIndex';
 	import { searchHref } from '$lib/searchState';
 	import { localizeHref } from '$lib/href';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import ScriptureChapterChips from '$lib/components/ScriptureChapterChips.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	// English-only; see the note on the chapter page.
@@ -102,19 +104,16 @@
 	// the reader or a #section jump; a <noscript> style reopens everything for a
 	// reader without JS. Once hydrated, `hidden="until-found"` takes over, so
 	// find-in-page still reaches a collapsed book's chapters and opens it.
-	// `narrow` is a $state set in an effect, NOT svelte/reactivity's MediaQuery,
-	// for the book reader's reason: MediaQuery reads matchMedia during hydration
-	// and would disagree with the prerendered markup.
+	// `narrow` is mediaFlag (hydration-safe: false in the prerendered markup).
 	const NARROW = '(max-width: 34rem)';
-	let narrow = $state(false);
+	const narrowQuery = mediaFlag(NARROW);
+	const narrow = $derived(narrowQuery.matches);
+	// "Has mounted" (not a media query, so not mediaFlag): flips in the same
+	// post-hydration flush as `narrow`, so `.books-pending` hands over to the
+	// `hidden` attribute in one frame.
 	let hydrated = $state(false);
 	$effect(() => {
-		const mq = window.matchMedia(NARROW);
-		const sync = () => (narrow = mq.matches);
-		sync();
 		hydrated = true;
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
 	});
 	const openBooks = new SvelteSet<string>();
 	const toggleBook = (slug: string) => (openBooks.has(slug) ? openBooks.delete(slug) : openBooks.add(slug));
@@ -136,15 +135,6 @@
 	// the section in view. No-JS / prerender: the links still jump.
 	let subnavH = $state(0);
 	const spy = scrollSpy(() => sections.map((s) => sectionId(s.key)));
-	function jumpTo(e: MouseEvent, id: string) {
-		e.preventDefault();
-		spy.set(id);
-		jumpToSection(id);
-		// Keep SvelteKit's state on the entry: replacing it with null erases the
-		// router's history index, and Back from a chapter page then changes only
-		// the URL. (The book page does the same.)
-		history.replaceState(history.state, '', `#${id}`);
-	}
 
 	const path = '/scripture/';
 	const canonical = `${SITE_URL}${path}`;
@@ -161,9 +151,9 @@
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 
 	// The same CollectionPage → ItemList every sibling hub carries (books, plans,
-	// topics, sermons, …): the books of the Bible in canonical order. There is no
-	// per-book index route, so each item points at the book's first chapter page —
-	// the shelf's roster, not an opaque grid a crawler can only guess at.
+	// topics, sermons, …): the books of the Bible in canonical order, each item
+	// its /scripture/<book>/ page — the shelf's roster, not an opaque grid a
+	// crawler can only guess at.
 	const collectionLd = $derived(
 		collectionPage({
 			name: 'Scripture in the Christian classics',
@@ -171,7 +161,7 @@
 			url: canonical,
 			items: books.map((b) => ({
 				name: b.title,
-				url: scripturePageHref(b.slug, b.chapters[0].chapter, null)
+				url: scriptureBookHref(b.slug)
 			}))
 		})
 	);
@@ -253,7 +243,7 @@
 								class="subnav-link"
 								class:is-active={spy.active === sectionId(s.key)}
 								aria-current={spy.active === sectionId(s.key) ? 'true' : undefined}
-								onclick={(e) => jumpTo(e, sectionId(s.key))}>{sectionName(s.key)}</a
+								onclick={(e) => spy.jump(e, sectionId(s.key))}>{sectionName(s.key)}</a
 							>
 						</li>
 					{/each}
@@ -298,7 +288,7 @@
 									>
 								</button>
 							{:else}
-								{book.title}
+								<a class="bname-link" href={scriptureBookHref(book.slug)}>{book.title}</a>
 							{/if}
 						</h3>
 						<div
@@ -307,18 +297,7 @@
 							hidden={collapsed ? 'until-found' : undefined}
 							onbeforematch={() => openBooks.add(book.slug)}
 						>
-							<ul class="chapters">
-								{#each book.chapters as c (c.chapter)}
-									<li>
-										<a
-											href={scripturePageHref(book.slug, c.chapter, null)}
-											class="heat-{heat(c.count)}"
-											title={passages(c.count)}
-											aria-label="{book.title} {c.chapter}, {passages(c.count)}">{c.chapter}</a
-										>
-									</li>
-								{/each}
-							</ul>
+							<ScriptureChapterChips {book} chapters={book.chapters} {heat} {passages} />
 							{#if book.topVerses.length}
 								<p class="verses">
 									<span class="verses-label">{t('scripture.topVerses')}</span>
@@ -331,6 +310,13 @@
 										>
 									{/each}
 								</p>
+							{/if}
+							<!-- On a phone the name is the open/close toggle, so the book's own
+							     page gets a link inside the opened row instead. -->
+							{#if narrow}
+								<a class="book-link" href={scriptureBookHref(book.slug)}
+									>{t('scripture.bookOverview').replace('%book%', () => book.title)}</a
+								>
 							{/if}
 						</div>
 					</div>
@@ -410,24 +396,6 @@
 		padding: 0;
 		list-style: none;
 	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.75rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--color-muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--color-text);
-	}
-	.subnav-link.is-active {
-		color: var(--color-accent);
-		border-bottom-color: var(--color-accent);
-	}
 
 	.legend {
 		display: flex;
@@ -482,6 +450,22 @@
 		font-size: var(--fs-body);
 		font-weight: 600;
 	}
+	.bname-link {
+		color: inherit;
+		text-decoration: none;
+	}
+	.bname-link:hover {
+		text-decoration: underline;
+	}
+	.book-link {
+		display: inline-flex;
+		align-items: center;
+		min-height: 2.75rem;
+		font-size: var(--fs-small);
+		font-weight: 500;
+		color: var(--color-accent);
+		text-decoration: none;
+	}
 	/* The phone-only toggle: the whole row is the target, name at the start,
 	   passage total and chevron at the end. */
 	.book-toggle {
@@ -519,64 +503,6 @@
 			transition: none;
 		}
 	}
-	.chapters {
-		list-style: none;
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.35rem;
-		margin: 0;
-		padding: 0;
-	}
-	.chapters a {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-width: 2rem;
-		padding: 0.15rem 0.45rem;
-		text-align: center;
-		font-variant-numeric: tabular-nums;
-		font-size: var(--fs-small);
-		border-radius: var(--radius-sm);
-		color: var(--color-text);
-		text-decoration: none;
-	}
-	/* On touch, each chapter number is a 44px square: 708 of them were 26px
-	   tall, a grid you had to aim at. */
-	@media (pointer: coarse) {
-		.chapters a {
-			min-width: 2.75rem;
-			min-height: 2.75rem;
-		}
-	}
-
-	/* Heat: how many passages cite the chapter. Levels 0–3 keep body ink on an
-	   accent wash light enough to hold it (≥4.5:1 in every theme); the top level
-	   is the solid accent with its own contrast ink. */
-	.heat-0 {
-		background: var(--color-surface-2);
-	}
-	.heat-1 {
-		background: color-mix(in srgb, var(--color-accent) 12%, var(--color-surface-2));
-	}
-	.heat-2 {
-		background: color-mix(in srgb, var(--color-accent) 24%, var(--color-surface-2));
-	}
-	.heat-3 {
-		background: color-mix(in srgb, var(--color-accent) 40%, var(--color-surface-2));
-	}
-	.heat-4 {
-		background: var(--color-accent);
-	}
-	/* Its ink needs `.chapters a` specificity to beat that rule's body colour. */
-	.chapters a.heat-4 {
-		color: var(--color-accent-contrast);
-		font-weight: 600;
-	}
-	.chapters a:hover {
-		outline: 2px solid var(--color-accent);
-		outline-offset: 1px;
-	}
-
 	/* The book's most-quoted verse pages, under its chapters. */
 	.verses {
 		display: flex;

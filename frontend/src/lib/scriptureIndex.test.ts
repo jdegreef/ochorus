@@ -2,9 +2,11 @@ import { describe, it, expect } from 'vitest';
 import type { ScripturePageEntry } from '$lib/library-public';
 import {
 	BIBLE_SECTIONS,
+	bookFromPageList,
 	groupScripture,
 	heatScale,
 	mayBeReference,
+	relativeHeat,
 	mostCited,
 	TOP_VERSES_PER_BOOK
 } from './scriptureIndex';
@@ -144,5 +146,40 @@ describe('mayBeReference', () => {
 	it('asks the resolver only when a chapter number is present', () => {
 		for (const q of ['Rom 8:28', 'Ps 23', '1 Cor 13', 'john 3']) expect(mayBeReference(q)).toBe(true);
 		for (const q of ['grace', 'John Bunyan', 'Romans']) expect(mayBeReference(q)).toBe(false);
+	});
+});
+
+describe('relativeHeat', () => {
+	it("makes the book's most-cited chapter the brightest, the rest in proportion", () => {
+		const level = relativeHeat([4, 8, 16, 40]);
+		expect([4, 8, 16, 40].map(level)).toEqual([0, 1, 2, 4]);
+	});
+	it('gives a single-chapter book the top shade, and no counts no heat', () => {
+		expect(relativeHeat([7])(7)).toBe(4);
+		expect(relativeHeat([])(3)).toBe(0);
+	});
+});
+
+describe('bookFromPageList', () => {
+	const list = [
+		page('genesis', 1, 3, 9),
+		page('romans', 45, 8, 30),
+		page('romans', 45, 5, 6),
+		page('romans', 45, 8, 12, 28),
+		page('john', 43, 3, 20)
+	];
+	it('builds the book page from the list, leaving server-only counts null', () => {
+		const b = bookFromPageList('romans', list)!;
+		expect(b.book).toEqual({ slug: 'romans', title: 'Romans', order: 45 });
+		expect(b.chapters.map((c) => c.chapter)).toEqual([5, 8]);
+		expect(b.verses).toEqual([{ chapter: 8, verse: 28, citing_count: 12, text: '' }]);
+		expect([b.citing_count, b.books_count, b.top_books]).toEqual([null, null, []]);
+	});
+	it('walks prev/next in Bible order', () => {
+		const b = bookFromPageList('romans', list)!;
+		expect([b.prev?.book, b.next]).toEqual(['john', null]);
+	});
+	it('is null for a book with no chapter page, like the API', () => {
+		expect(bookFromPageList('jude', list)).toBeNull();
 	});
 });

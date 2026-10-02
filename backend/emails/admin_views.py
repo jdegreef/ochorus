@@ -6,19 +6,15 @@ open/click/bounce dashboard the build plan puts in the Ochorus admin (rather
 than Resend's). Open and click *rates* are computed here from the mirrored
 events, exactly as the plan intends.
 
-Rate conventions:
-* ``delivered`` = sent − hard bounces (robust even if Resend "delivered" events
-  aren't enabled), floored at 0.
-* ``open_rate`` / ``click_rate`` = distinct messages with an open / click, over
-  ``delivered``. Opens are undercounted by inbox privacy proxies, so treat click
-  rate as the reliable signal (surfaced in the UI).
-* ``bounce_rate`` / ``complaint_rate`` = over ``sent``.
+Counts and rates come from emails/health.py, which states the conventions; the
+guardrail reads the same numbers.
 """
 
 from __future__ import annotations
 
 from functools import cached_property
 
+from django.db import transaction
 from django.db.models import Count
 from django.utils.dateparse import parse_datetime
 from rest_framework import status as http_status
@@ -27,11 +23,15 @@ from rest_framework.views import APIView
 
 from accounts.models import UserProfile
 from accounts.permissions import IsAdminEmail
-from library.audit import AdminAudited, AdminNotAudited
+from library.audit import AdminAudited, AdminNotAudited, actor_email
+from library.languages import entry as language_entry
 from library.models import AdminAction
 
 from . import audience as audience_mod
 from . import broadcasts as broadcasts_mod
+from . import direct as direct_mod
+from . import health, preflight
+from . import history as history_mod
 from .models import (
     Broadcast,
     BroadcastStatus,
@@ -39,35 +39,9 @@ from .models import (
     EmailKind,
     EmailMessage,
     EmailSubscription,
-    EventType,
     SendStatus,
 )
-
-
-def _rate(numerator: int, denominator: int) -> float:
-    return round(numerator / denominator, 4) if denominator else 0.0
-
-
-def _metrics(sent: int, counts: dict[str, int]) -> dict:
-    """Assemble one row's numbers from its sent count and per-event-type
-    distinct-message counts."""
-    bounces = counts.get(EventType.BOUNCED, 0)
-    complaints = counts.get(EventType.COMPLAINED, 0)
-    opens = counts.get(EventType.OPENED, 0)
-    clicks = counts.get(EventType.CLICKED, 0)
-    delivered = max(sent - bounces, 0)
-    return {
-        "sent": sent,
-        "delivered": delivered,
-        "opens": opens,
-        "clicks": clicks,
-        "bounces": bounces,
-        "complaints": complaints,
-        "open_rate": _rate(opens, delivered),
-        "click_rate": _rate(clicks, delivered),
-        "bounce_rate": _rate(bounces, sent),
-        "complaint_rate": _rate(complaints, sent),
-    }
+from .rendering import email_language, sendable_locales
 
 
 class AdminEmailMetricsView(APIView):
@@ -102,7 +76,7 @@ class AdminEmailMetricsView(APIView):
     @staticmethod
     def _sent_counts(field: str, *, kind: str) -> dict:
         rows = (
-            EmailMessage.objects.filter(kind=kind, status=SendStatus.SENT)
+            health.real_sends(EmailMessage.objects.filter(kind=kind))
             .values(field)
             .annotate(n=Count("id"))
         )
@@ -114,7 +88,7 @@ class AdminEmailMetricsView(APIView):
         messages of ``kind``."""
         rows = (
             EmailEvent.objects.filter(
-                message__kind=kind, message__status=SendStatus.SENT
+                message__in=health.real_sends(EmailMessage.objects.filter(kind=kind))
             )
             .values(field, "type")
             .annotate(n=Count("message_id", distinct=True))
@@ -130,7 +104,7 @@ class AdminEmailMetricsView(APIView):
         for key in keys:
             if key is None:
                 continue
-            row = _metrics(sent_counts.get(key, 0), event_counts.get(key, {}))
+            row = health.assemble(sent_counts.get(key, 0), event_counts.get(key, {}))
             row.update(label(key))
             rows.append(row)
         rows.sort(key=lambda r: r["sent"], reverse=True)
@@ -149,16 +123,7 @@ class AdminEmailMetricsView(APIView):
         return dict(Broadcast.objects.values_list("id", "name"))
 
     def _overview(self) -> dict:
-        sent = EmailMessage.objects.filter(status=SendStatus.SENT).count()
-        counts = {}
-        rows = (
-            EmailEvent.objects.filter(message__status=SendStatus.SENT)
-            .values("type")
-            .annotate(n=Count("message_id", distinct=True))
-        )
-        for row in rows:
-            counts[row["type"]] = row["n"]
-        overview = _metrics(sent, counts)
+        overview = health.metrics(EmailMessage.objects.all())
         overview["failed"] = EmailMessage.objects.filter(status=SendStatus.FAILED).count()
         return overview
 
@@ -182,24 +147,10 @@ class AdminEmailMetricsView(APIView):
 # --- Broadcast compose / schedule / send ------------------------------------
 
 
-def _broadcast_stats(broadcast) -> dict:
-    sent = EmailMessage.objects.filter(
-        broadcast=broadcast, status=SendStatus.SENT
-    ).count()
-    counts = {}
-    rows = (
-        EmailEvent.objects.filter(
-            message__broadcast=broadcast, message__status=SendStatus.SENT
-        )
-        .values("type")
-        .annotate(n=Count("message_id", distinct=True))
-    )
-    for row in rows:
-        counts[row["type"]] = row["n"]
-    return _metrics(sent, counts)
-
-
-def _serialize_broadcast(b: Broadcast, *, detail: bool = False) -> dict:
+def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> dict:
+    """A broadcast for the admin. ``detail`` adds content, results and — while
+    it can still be sent — the pre-send checks (``checks`` passes ones the
+    caller already ran, so a request computes them once)."""
     data = {
         "id": b.id,
         "name": b.name,
@@ -211,13 +162,27 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False) -> dict:
         "created_at": b.created_at.isoformat(),
         "updated_at": b.updated_at.isoformat(),
         # Locales the campaign can actually send in (subject AND content present).
-        "locales": sorted(set(b.subject) & set(b.content)),
+        "locales": sendable_locales(b),
         "audience_count": audience_mod.count(b.audience),
+        # The batched send: how far it has got, why it's in this state, and
+        # whether its copy is frozen (the client doesn't re-derive the rules).
+        "progress": b.progress,
+        "status_reason": b.status_reason,
+        "send_started_at": b.send_started_at.isoformat() if b.send_started_at else None,
+        "locked": b.is_locked,
     }
     if detail:
         data["content"] = b.content
-        data["stats"] = _broadcast_stats(b)
+        data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
+        if b.can_send:
+            data["checks"] = preflight.run(b) if checks is None else checks
+        else:
+            data["checks"] = []
     return data
+
+
+#: The fields an admin edits (everything else is the send's own state).
+_EDITABLE = ("name", "subject", "content", "audience", "from_address")
 
 
 def _apply_fields(broadcast: Broadcast, data) -> None:
@@ -285,25 +250,29 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def patch(self, request, pk):
-        broadcast = self._get(pk)
-        if broadcast is None:
-            return Response(status=http_status.HTTP_404_NOT_FOUND)
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
-            return Response(
-                {"detail": "a sent broadcast can't be edited"},
-                status=http_status.HTTP_409_CONFLICT,
-            )
-        _apply_fields(broadcast, request.data)
-        broadcast.save()
+        # Row-locked, and only the editable fields written: the send worker and
+        # the cron's schedule promotion change status/cursor/tally concurrently,
+        # and a stale full save() would write them back.
+        with transaction.atomic():
+            broadcast = Broadcast.objects.select_for_update().filter(pk=pk).first()
+            if broadcast is None:
+                return Response(status=http_status.HTTP_404_NOT_FOUND)
+            if broadcast.is_locked:
+                return Response(
+                    {"detail": "a broadcast that has started sending can't be edited"},
+                    status=http_status.HTTP_409_CONFLICT,
+                )
+            _apply_fields(broadcast, request.data)
+            broadcast.save(update_fields=[*_EDITABLE, "updated_at"])
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def delete(self, request, pk):
         broadcast = self._get(pk)
         if broadcast is None:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+        if broadcast.is_locked:
             return Response(
-                {"detail": "a sent broadcast can't be deleted"},
+                {"detail": "a broadcast that has started sending can't be deleted"},
                 status=http_status.HTTP_409_CONFLICT,
             )
         broadcast.delete()
@@ -311,7 +280,13 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
 
 
 class AdminBroadcastActionView(AdminAudited, APIView):
-    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``.
+    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, ``test``,
+    ``pause`` or ``resume``.
+
+    ``send`` queues the broadcast; the email cron sends it in batches
+    (emails/broadcasts.py), so the request returns at once however large the
+    audience. ``send`` and ``schedule`` refuse while any pre-send check is an
+    error (emails/preflight.py), returning the checks.
 
     Super-admin-only (see AdminEmailMetricsView)."""
 
@@ -322,6 +297,8 @@ class AdminBroadcastActionView(AdminAudited, APIView):
         "schedule": AdminAction.Action.BROADCAST_SCHEDULE,
         "cancel": AdminAction.Action.BROADCAST_CANCEL,
         "test": AdminAction.Action.BROADCAST_TEST,
+        "pause": AdminAction.Action.BROADCAST_PAUSE,
+        "resume": AdminAction.Action.BROADCAST_RESUME,
     }
 
     def audit_action_for(self, request):
@@ -348,49 +325,107 @@ class AdminBroadcastActionView(AdminAudited, APIView):
             return self._schedule(request, broadcast)
         if action == "cancel":
             return self._cancel(broadcast)
+        if action == "pause":
+            return self._pause(request, broadcast)
+        if action == "resume":
+            return self._resume(request, broadcast)
         return Response(
             {"detail": f"unknown action {action!r}"},
             status=http_status.HTTP_400_BAD_REQUEST,
         )
 
     @staticmethod
-    def _sendable(broadcast) -> str | None:
-        if not (set(broadcast.subject) & set(broadcast.content)):
-            return "broadcast has no subject/content in any language"
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
-            return "broadcast has already been sent"
-        return None
+    def _refuse(broadcast) -> tuple[Response | None, list | None]:
+        """``(409, None)`` when ``broadcast`` can't be sent or scheduled, else
+        ``(None, checks)`` — the checks it passed, for the response."""
+        if not broadcast.can_send:
+            return Response(
+                {"detail": f"a {broadcast.status} broadcast can't be sent again"},
+                status=http_status.HTTP_409_CONFLICT,
+            ), None
+        checks = preflight.run(broadcast)
+        errors = preflight.blocking(checks)
+        if errors:
+            return Response(
+                {"detail": errors[0]["message"], "checks": checks},
+                status=http_status.HTTP_409_CONFLICT,
+            ), None
+        return None, checks
 
     def _send(self, broadcast):
-        problem = self._sendable(broadcast)
-        if problem:
-            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
-        tally = broadcasts_mod.send_broadcast(broadcast)
-        return Response({"tally": tally, **_serialize_broadcast(broadcast, detail=True)})
+        refused, _ = self._refuse(broadcast)
+        if refused:
+            return refused
+        if not broadcasts_mod.start_send(
+            broadcast, [BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED, BroadcastStatus.CANCELED]
+        ):
+            return Response(
+                {"detail": "the broadcast changed state meanwhile; reload and try again"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response(_serialize_broadcast(broadcast, detail=True))
 
     def _schedule(self, request, broadcast):
-        problem = self._sendable(broadcast)
-        if problem:
-            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
         when = parse_datetime(str(request.data.get("scheduled_at", "")))
         if when is None:
             return Response(
                 {"detail": "a valid scheduled_at is required"},
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
+        refused, checks = self._refuse(broadcast)
+        if refused:
+            return refused
         broadcast.scheduled_at = when
         broadcast.status = BroadcastStatus.SCHEDULED
-        broadcast.save(update_fields=["scheduled_at", "status", "updated_at"])
-        return Response(_serialize_broadcast(broadcast, detail=True))
+        broadcast.status_reason = ""
+        broadcast.save(update_fields=["scheduled_at", "status", "status_reason", "updated_at"])
+        return Response(_serialize_broadcast(broadcast, detail=True, checks=checks))
 
-    def _cancel(self, broadcast):
-        if broadcast.status not in (BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED):
+    @staticmethod
+    def _cancel(broadcast):
+        """Cancel before or during a send. Mid-send, the worker stops at its next
+        batch; whoever was already mailed stays mailed."""
+        if not broadcasts_mod.transition(broadcast, Broadcast.CANCELABLE, BroadcastStatus.CANCELED):
             return Response(
-                {"detail": "only a draft or scheduled broadcast can be canceled"},
+                {"detail": f"a {broadcast.status} broadcast can't be canceled"},
                 status=http_status.HTTP_409_CONFLICT,
             )
-        broadcast.status = BroadcastStatus.CANCELED
-        broadcast.save(update_fields=["status", "updated_at"])
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    @staticmethod
+    def _pause(request, broadcast):
+        who = actor_email(request) or "an admin"
+        if not broadcasts_mod.pause(broadcast, f"Paused by {who}."):
+            return Response(
+                {"detail": "only a broadcast that is sending can be paused"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    @staticmethod
+    def _resume(request, broadcast):
+        if broadcast.status != BroadcastStatus.PAUSED:
+            return Response(
+                {"detail": "only a paused broadcast can be resumed"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        override = bool(request.data.get("override_guardrail"))
+        reason = health.broadcast_breach(broadcast)
+        if reason and not override:
+            return Response(
+                {
+                    "detail": f"{reason}. Resume anyway to send past the guardrail.",
+                    "needs_override": True,
+                },
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        if not broadcasts_mod.start_send(
+            broadcast, [BroadcastStatus.PAUSED], override_guardrail=bool(reason)
+        ):
+            return Response(
+                {"detail": "the broadcast changed state meanwhile; reload and try again"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     @staticmethod
@@ -409,7 +444,9 @@ class AdminBroadcastActionView(AdminAudited, APIView):
                 {"detail": "test send failed (no deliverable address or content, or sending disabled)"},
                 status=http_status.HTTP_409_CONFLICT,
             )
-        return Response({"ok": True, "sent_to": profile.email})
+        return Response(
+            {"ok": True, "sent_to": profile.email, **_serialize_broadcast(broadcast, detail=True)}
+        )
 
 
 class AdminAudiencePreviewView(AdminNotAudited, APIView):
@@ -428,3 +465,64 @@ class AdminAudiencePreviewView(AdminNotAudited, APIView):
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
         return Response({"count": audience_mod.count(audience)})
+
+
+# --- One reader's email: history, and writing to them directly ----------------
+
+
+class AdminReaderEmailsView(AdminAudited, APIView):
+    """GET one reader's email history and consent state; POST a direct email to
+    them (emails/direct.py).
+
+    Super-admin-only, like the rest of the Emails section (see
+    AdminEmailMetricsView): writing to a reader is outbound email."""
+
+    permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.EMAIL_DIRECT
+
+    def audit_entry(self, request, response):
+        return (
+            f"user:{self.kwargs.get('uid')}",
+            {"subject": str(request.data.get("subject", ""))[:200]},
+        )
+
+    @staticmethod
+    def _profile(uid):
+        return UserProfile.objects.filter(supabase_uid=uid).first()
+
+    @staticmethod
+    def _state(profile) -> dict:
+        subscription = EmailSubscription.objects.filter(profile=profile).first()
+        lang = email_language(profile, subscription)
+        return {
+            "blocked_reason": subscription.block_reason() if subscription else None,
+            # The language this reader gets email in, offered as the default
+            # "written in" for a direct email.
+            "email_lang": {"code": lang, "name": language_entry(lang).get("name") or lang},
+            "messages": history_mod.history(profile),
+        }
+
+    def get(self, request, uid):
+        profile = self._profile(uid)
+        if profile is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        return Response(self._state(profile))
+
+    def post(self, request, uid):
+        profile = self._profile(uid)
+        if profile is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        try:
+            message = direct_mod.send_direct(
+                profile, request.data, sent_by=actor_email(request)
+            )
+        except direct_mod.DirectEmailError as exc:
+            return Response({"detail": str(exc)}, status=http_status.HTTP_400_BAD_REQUEST)
+        if message.status != SendStatus.SENT:
+            # Recorded (it shows in the history) but not delivered: sending off,
+            # review-mode allowlist, or a provider error. Not a success.
+            return Response(
+                {"detail": f"Not sent: {message.error or message.status}.", **self._state(profile)},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response({"ok": True, **self._state(profile)}, status=http_status.HTTP_201_CREATED)

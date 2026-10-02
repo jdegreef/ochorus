@@ -9,7 +9,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, F, Prefetch, Q
+from django.db.models import Count, F, Prefetch, Q, Sum
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -688,6 +688,22 @@ def _series_for(series) -> dict:
     return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
 
 
+def _is_ordered(books) -> bool:
+    """Read in order (any volume carries a number) or a collection — one test
+    for the series index's card and the series page alike."""
+    return any(b.series_position is not None for b in books)
+
+
+def _chapter_words(books) -> int | None:
+    """A series' typical chapter length in words: each book's average over its
+    chapters WITH text (a heading-only divider or a not-yet-filled row would
+    drag it down), then the mean of those, so one book of many short chapters
+    doesn't outweigh the rest. None when no book has text yet — the card then
+    draws no minutes. Reads the `text_words` / `text_chapters` annotations."""
+    per_book = [b.text_words / b.text_chapters for b in books if b.text_chapters]
+    return round(sum(per_book) / len(per_book)) if per_book else None
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -696,8 +712,9 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     as for topics).
 
     Each row carries its first four covers in reading order, for the card's fan,
-    every book's slug (the card's progress) and title (its book list), and the
-    languages it has a page in — the index's hreflang is their union.
+    every book's slug (the card's progress) and title (its book list), the
+    languages it has a page in — the index's hreflang is their union — and
+    its format: whether it reads in order, and its words per chapter.
     Both are read in bulk for the whole list rather than per series.
     """
 
@@ -715,6 +732,12 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                 "cover_url",
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
+            )
+            # Each book's chapter text, for the card's minutes (`_chapter_words`)
+            # — on this same query, not one more.
+            .annotate(
+                text_words=Sum("chapters__word_count"),
+                text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
             )
             .order_by(*SERIES_READING_ORDER)
         ):
@@ -740,6 +763,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # this series" list names every volume, not just the fan's.
                         "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
+                        "ordered": _is_ordered(books),
+                        "chapter_words": _chapter_words(books),
                     }
                 )
         return Response(rows)
@@ -758,7 +783,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         books = _series_books(series, language) if title else []
         if not books:
             raise Http404("No series in this language")
-        ordered = any(b.series_position is not None for b in books)
+        ordered = _is_ordered(books)
         return Response(
             {
                 "slug": series.slug,
@@ -1717,6 +1742,138 @@ class ScriptureGraphView(APIView):
 
             data["prev"], data["next"] = chapter_neighbours(book, chapter)
         return Response(data)
+
+
+class ScriptureBookView(APIView):
+    """One book of the Bible across the library — the ``/scripture/<book>/`` page.
+
+    The hub lists a book's chapter pages; this answers the questions only the
+    server can: how many library passages treat the book at all (distinct
+    citing chapters, across every chapter of it, not a sum of per-chapter
+    counts, which would count a passage citing Romans 5 and 8 twice), which
+    library books return to it most, and the ASV text of its most-quoted
+    verses.
+
+    It exists only where at least one of the book's chapters has earned a page
+    (``current_pages``), so it is never thinner than the pages it links to and
+    the route's entries, the sitemap and this view agree on what exists. 404
+    otherwise, like the chapter and verse pages.
+    """
+
+    #: Library books named as the ones that quote this book most.
+    TOP_BOOKS = 6
+    #: Verse pages surfaced with their text.
+    TOP_VERSES = 8
+
+    def get(self, request, book):
+        from .models import ChapterCitation
+        from .scripture import VERSION_LABEL
+        from .scripture_graph import (
+            _SPAN_GUARD,
+            book_from_slug,
+            current_pages,
+            english_chapters,
+            verse_text,
+        )
+        from .serializers import _edition_base_slug
+
+        target = book_from_slug(book)
+        if target is None:
+            raise Http404("No such book of the Bible.")
+        pages = current_pages()
+        mine = [p for p in pages if p["book"] == book]
+        chapters = [
+            {"chapter": p["chapter"], "citing_count": p["citing_count"]}
+            for p in mine
+            if p["verse"] is None
+        ]
+        if not chapters:
+            raise Http404("No chapter of this book has a page.")
+
+        # Every citation overlapping the book: verse ids are book * 1,000,000 +
+        # chapter * 1,000 + verse. A span is clamped the way `bucket` clamps it
+        # (to _SPAN_GUARD ids past its start), so a mis-parsed citation running
+        # from Acts to Revelation can't vote for every book in between here when
+        # it votes for none of their chapter pages.
+        lo = target.value * 1_000_000
+        rows = (
+            ChapterCitation.objects.filter(
+                start_verse_id__lte=lo + 999_999,
+                start_verse_id__gte=lo - _SPAN_GUARD,
+                end_verse_id__gte=lo,
+                chapter__in=english_chapters().values("pk"),
+            )
+            .values(
+                "chapter_id",
+                "chapter__book__slug",
+                "chapter__book__title",
+                "chapter__book__author__name",
+                "chapter__book__author__slug",
+            )
+            .distinct()
+        )
+        # One query, folded here. A work's "(For Teens)" / "(For Children)"
+        # editions are separate Book rows quoting the same verses, so they are
+        # one work for this ranking (the slug convention, `_edition_base_slug`),
+        # named by the full edition when it is among them.
+        citing: set[int] = set()
+        works: dict[str, dict] = {}
+        for r in rows:
+            citing.add(r["chapter_id"])
+            slug = r["chapter__book__slug"]
+            base = _edition_base_slug(slug)
+            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w["chapters"].add(r["chapter_id"])
+            if slug == base:
+                w["row"] = r
+        top_books = sorted(
+            works.values(),
+            key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
+        )[: self.TOP_BOOKS]
+
+        verses = sorted(
+            (p for p in mine if p["verse"] is not None),
+            key=lambda p: (-p["citing_count"], p["chapter"], p["verse"]),
+        )[: self.TOP_VERSES]
+
+        # Adjacent books that have a page, in canonical order: walk the Bible
+        # book by book, as the chapter pages walk it chapter by chapter.
+        books = []
+        for p in pages:
+            if p["verse"] is None and (not books or books[-1]["book"] != p["book"]):
+                books.append({"book": p["book"], "book_title": p["book_title"]})
+        i = next(n for n, b in enumerate(books) if b["book"] == book)
+
+        return Response(
+            {
+                "book": {"slug": book, "title": target.title, "order": target.value},
+                "version": VERSION_LABEL,
+                "citing_count": len(citing),
+                "books_count": len(works),
+                "chapters": chapters,
+                "verses": [
+                    {
+                        "chapter": p["chapter"],
+                        "verse": p["verse"],
+                        "citing_count": p["citing_count"],
+                        "text": verse_text(lo + p["chapter"] * 1000 + p["verse"]),
+                    }
+                    for p in verses
+                ],
+                "top_books": [
+                    {
+                        "slug": w["row"]["chapter__book__slug"],
+                        "title": w["row"]["chapter__book__title"],
+                        "author_name": w["row"]["chapter__book__author__name"],
+                        "author_slug": w["row"]["chapter__book__author__slug"],
+                        "citing_count": len(w["chapters"]),
+                    }
+                    for w in top_books
+                ],
+                "prev": books[i - 1] if i > 0 else None,
+                "next": books[i + 1] if i + 1 < len(books) else None,
+            }
+        )
 
 
 def _scripture_floor(verse):

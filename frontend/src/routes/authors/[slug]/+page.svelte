@@ -18,7 +18,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -370,19 +370,6 @@
 	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
 	// nothing lit — the links still jump.
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-
-	// Smooth-jump to a section and light it at once, so the tap feels immediate
-	// rather than waiting on the scroll-spy to catch up. The landing offset lives
-	// in CSS (`--pinned-offset` + the subnav-link scroll-margin below), so
-	// jumpToSection just scrolls; the hash stays ours to set.
-	function jumpTo(e: MouseEvent, id: string) {
-		e.preventDefault();
-		spy.set(id);
-		jumpToSection(id);
-		// history.state, not null: a null state erases SvelteKit's history index and
-		// breaks Back after the next navigation. (The book page does the same.)
-		history.replaceState(history.state, '', `#${id}`);
-	}
 </script>
 
 <Seo
@@ -563,7 +550,7 @@
 							class="subnav-link"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
 						>
 					</li>
 				{/each}
@@ -916,24 +903,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.75rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--text);
-	}
-	.subnav-link.is-active {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
 	}
 
 	/* Derived FAQ accordion. Native <details> so it works with no JS and during

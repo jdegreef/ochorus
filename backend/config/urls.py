@@ -12,6 +12,7 @@ from emails.admin_views import (
     AdminBroadcastDetailView,
     AdminBroadcastsView,
     AdminEmailMetricsView,
+    AdminReaderEmailsView,
 )
 from feedback.admin_views import AdminFeedbackDetailView, AdminFeedbackListView
 from library.admin_import_views import (
@@ -230,6 +231,11 @@ urlpatterns = [
         "api/admin/broadcasts/<int:pk>/action/",
         AdminBroadcastActionView.as_view(),
         name="admin-broadcast-action",
+    ),
+    path(
+        "api/admin/users/<uuid:uid>/emails/",
+        AdminReaderEmailsView.as_view(),
+        name="admin-user-emails",
     ),
     path(
         "api/admin/content-edit-jobs/",

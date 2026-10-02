@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onPageHidden } from '$lib/pageHidden';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -572,17 +573,10 @@
 	// prerendered page paints right. This only picks WHICH text-settings panel
 	// to mount: popover and sheet share `readerUi.panelOpen`, and a hidden
 	// popover's click-away handler would shut the sheet on every tap inside it.
-	// A $state flipped in an effect, NOT svelte/reactivity's MediaQuery: that
-	// reads matchMedia during hydration, so on a phone both `{#if}`s below
-	// would disagree with the prerendered (desktop) markup.
-	let isPhone = $state(false);
-	$effect(() => {
-		const mq = window.matchMedia('(max-width: 639.98px)');
-		const sync = () => (isPhone = mq.matches);
-		sync();
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
-	});
+	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
+	// the prerendered markup), so both `{#if}`s below agree with it.
+	const phone = mediaFlag('(max-width: 639.98px)');
+	const isPhone = $derived(phone.matches);
 	// The phone bar's "⋯" group (bookmark, search, notebook, edition, focus).
 	let moreOpen = $state(false);
 	/** Close the "⋯" group, then run the chosen action. */

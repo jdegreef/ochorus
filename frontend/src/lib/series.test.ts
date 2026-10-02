@@ -6,6 +6,7 @@ import {
 	seriesFromBooks,
 	seriesCardProgressLabel,
 	seriesProgress,
+	seriesOrder,
 	seriesCompanion,
 	cardLanguages,
 	seriesToContinue,
@@ -305,5 +306,17 @@ describe('seriesCompanion', () => {
 	it('is null for a series with no pair, or whose pair has no page here', () => {
 		expect(seriesCompanion('rooted', list)).toBeNull();
 		expect(seriesCompanion('sons-of-the-king', [{ slug: 'sons-of-the-king' }])).toBeNull();
+	});
+});
+
+describe('seriesOrder', () => {
+	it('says how a series of several books reads', () => {
+		expect(seriesOrder({ ordered: true, book_count: 6 })).toBe('inOrder');
+		expect(seriesOrder({ ordered: false, book_count: 12 })).toBe('anyOrder');
+	});
+
+	it('says nothing for one book, or when the API sends no order', () => {
+		expect(seriesOrder({ ordered: true, book_count: 1 })).toBeNull();
+		expect(seriesOrder({ book_count: 6 })).toBeNull();
 	});
 });

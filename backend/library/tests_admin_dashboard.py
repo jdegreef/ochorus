@@ -1943,7 +1943,8 @@ class AdminLanguageHealthTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.author = Author.objects.create(slug="am", name="Andrew Murray", bio="x")
+        # No bio, so English's shelf is books only unless a test adds more.
+        self.author = Author.objects.create(slug="am", name="Andrew Murray", bio="")
 
         # A small, deterministic library: English is the source shelf (the
         # coverage ceiling); Spanish has half of it, one edition still unreviewed.
@@ -1979,10 +1980,33 @@ class AdminLanguageHealthTests(TestCase):
         self.assertTrue(en["is_source"])
 
     def test_coverage_is_measured_against_the_source_shelf(self):
-        by_code = {r["code"]: r for r in self._get()["languages"]}
-        # Spanish has 2 of English's 4 published books.
+        data = self._get()
+        by_code = {r["code"]: r for r in data["languages"]}
+        # Spanish has 2 of English's 4 published books, and English has no
+        # sermons, bios or plans here, so books carry the whole mix.
         self.assertEqual(by_code["es"]["content"]["published_books"], 2)
+        self.assertEqual(data["source_shelf"]["books"], 4)
         self.assertAlmostEqual(by_code["es"]["scores"]["coverage"], 0.5, places=3)
+
+    def test_coverage_blends_every_kind_of_content(self):
+        from .admin_views.health import _COVERAGE_MIX
+
+        # English gets 4 sermons; Spanish has all 4, on top of 2 of 4 books.
+        for i in range(4):
+            for lang in ("en", "es"):
+                Sermon.objects.create(
+                    author=self.author, slug=f"s{i}", language=lang, title=f"S{i}",
+                    body_html="<p>x</p>", is_published=True,
+                )
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(data["coverage_mix"], _COVERAGE_MIX)
+        # Books 0.5 and sermons 1.0, weighted by their share of the mix (bios
+        # and plans drop out: English has none).
+        b, s = _COVERAGE_MIX["books"], _COVERAGE_MIX["sermons"]
+        self.assertAlmostEqual(
+            es["scores"]["coverage"], (b * 0.5 + s * 1.0) / (b + s), places=3
+        )
 
     def test_review_score_reflects_the_unreviewed_share(self):
         by_code = {r["code"]: r for r in self._get()["languages"]}
@@ -2012,6 +2036,20 @@ class AdminLanguageHealthTests(TestCase):
             for b in r["readiness"]["blocking"]:
                 self.assertEqual(set(b), {"key", "label"})
                 self.assertTrue(b["label"])
+
+    def test_bios_are_counted_alike_in_the_source_and_its_translations(self):
+        # A long-form-only bio counts in English as it does in a translation, and
+        # an imprint's never counts in either.
+        writer = Author.objects.create(slug="eb", name="E. M. Bounds", bio_html="<p>x</p>")
+        imprint = Author.objects.create(
+            slug="oo", name="Ochorus Originals", bio="x", is_imprint=True
+        )
+        AuthorTranslation.objects.create(author=writer, language="es", bio_html="<p>x</p>")
+        AuthorTranslation.objects.create(author=imprint, language="es", bio="x")
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(data["source_shelf"]["bios"], 1)
+        self.assertEqual(es["content"]["bios"], 1)
 
     def test_engagement_with_no_readers_is_zero(self):
         # No reading data → engagement is zero for everyone (not a crash).
@@ -2056,6 +2094,27 @@ class AdminLanguageHealthTests(TestCase):
         after = {r["code"]: r for r in self._get()["languages"]}["es"]
         self.assertEqual(before["scores"]["engagement"], after["scores"]["engagement"])
         self.assertEqual(before["health"], after["health"])
+
+    def test_readers_outside_the_window_do_not_count(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        from .admin_views.health import _ENGAGEMENT_TARGET, _READER_WINDOW_DAYS
+
+        self._readers("es", 4)
+        # Two of the four last read before the window opened.
+        stale = timezone.now() - timedelta(days=_READER_WINDOW_DAYS + 1)
+        old = ReadingProgress.objects.filter(language="es").values_list("pk", flat=True)[:2]
+        ReadingProgress.objects.filter(pk__in=list(old)).update(updated_at=stale)
+
+        data = self._get()
+        self.assertEqual(data["reader_window_days"], _READER_WINDOW_DAYS)
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(es["readers"], 2)
+        self.assertAlmostEqual(
+            es["scores"]["engagement"], 2 / _ENGAGEMENT_TARGET, places=3
+        )
 
     def test_engagement_caps_at_the_target(self):
         from .admin_views.health import _ENGAGEMENT_TARGET

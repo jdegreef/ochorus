@@ -12,7 +12,10 @@
  *  - `elementVisible` — the degenerate single-element case, a reactive boolean;
  *  - `jumpToSection`  — a smooth scroll to an id that lands the target below the
  *                       pinned bars via CSS `scroll-margin-top` (the
- *                       `--pinned-offset` contract), NOT manual `scrollTo` math.
+ *                       `--pinned-offset` contract), NOT manual `scrollTo` math;
+ *  - `spy.jump`       — the sticky sub-nav's click handler (book, author and
+ *                       /scripture pages): light the tab, jumpToSection, and
+ *                       write `#id` keeping SvelteKit's history state.
  *
  * The landing offset lives in CSS, not here: each surface sets `scroll-margin-top`
  * on its anchors (typically `calc(var(--pinned-offset, …) + 0.5rem)`), so the
@@ -79,6 +82,32 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 		 */
 		set(id: string) {
 			active = id;
+		},
+		/**
+		 * The sub-nav link's click handler, shared by the book, author and
+		 * /scripture jump bars: write `#id` into the address bar, light the tab at
+		 * once (unless `track: false`, for a target that isn't a tab, so the bar
+		 * isn't left with nothing lit), and smooth-jump.
+		 *
+		 * `history.state`, never null: a null state erases SvelteKit's history
+		 * index on the entry, and Back after the next navigation then changes only
+		 * the URL.
+		 */
+		jump(e: MouseEvent, id: string, { track = true }: { track?: boolean } = {}) {
+			// A modified or non-primary click is the reader asking for a new tab or
+			// window: leave it to the browser.
+			if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+			e.preventDefault();
+			if (track) active = id;
+			jumpToSection(id);
+			// Last, and allowed to fail: Safari throws after ~100 replaceState calls
+			// in 30s (and some embedded frames always do). The jump has happened;
+			// only the address bar misses this one.
+			try {
+				history.replaceState(history.state, '', `#${id}`);
+			} catch {
+				/* the jump already happened */
+			}
 		}
 	};
 }

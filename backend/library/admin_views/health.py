@@ -41,6 +41,17 @@ _WEIGHTS = {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0
 # as the site grows; the page reads it from the response.
 _ENGAGEMENT_TARGET = 25
 
+# Coverage blends every kind of content a reader can arrive through, not books
+# alone (a language with 81% of the sermons scored 36% when only books counted).
+# Books still lead, so a sermon-only language can't read as complete. Weights sum
+# to 1; a kind the source shelf has none of drops out and the rest renormalise.
+_COVERAGE_MIX = {"books": 0.50, "sermons": 0.25, "bios": 0.15, "plans": 0.10}
+
+# Readers are counted over this many days, not all-time: against a fixed target,
+# an all-time count only ever rises, so a language that once had 25 readers
+# would keep full credit with nobody reading it.
+_READER_WINDOW_DAYS = 90
+
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageHealthView(APIView):
@@ -68,6 +79,13 @@ class AdminLanguageHealthView(APIView):
         # ceiling any translation is working toward.
         source = next((lang for lang in languages if lang.is_source), None)
         source_published = published.get(source.code, {}).get("total", 0) if source else 0
+        source_shelf = (
+            self._shelf(
+                {c.key: c for c in reports[source.code].checks}, source_published
+            )
+            if source
+            else dict.fromkeys(_COVERAGE_MIX, 0)
+        )
 
         rows = []
         for lang in languages:
@@ -81,8 +99,8 @@ class AdminLanguageHealthView(APIView):
                 "readiness": self._readiness_score(report),
                 "coverage": (
                     1.0
-                    if lang.is_source or not source_published
-                    else min(1.0, pub["total"] / source_published)
+                    if lang.is_source
+                    else self._coverage(self._shelf(counts, pub["total"]), source_shelf)
                 ),
                 "review": (
                     1.0
@@ -134,11 +152,38 @@ class AdminLanguageHealthView(APIView):
                 "source_published_books": source_published,
                 "weights": _WEIGHTS,
                 "engagement_target": _ENGAGEMENT_TARGET,
+                "coverage_mix": _COVERAGE_MIX,
+                "source_shelf": source_shelf,
+                "reader_window_days": _READER_WINDOW_DAYS,
                 "languages": rows,
             }
         )
 
     # --- component scores ------------------------------------------------------
+
+    @classmethod
+    def _shelf(cls, counts: dict, published_books: int) -> dict[str, int]:
+        """A language's count of each kind in ``_COVERAGE_MIX``, from its readiness
+        checks by key. Books are the published count the rest of the view uses;
+        the others come from the readiness report, which counts them for every
+        language."""
+        shelf = {k: cls._current(counts.get(k)) for k in _COVERAGE_MIX}
+        shelf["books"] = published_books
+        return shelf
+
+    @staticmethod
+    def _coverage(have: dict[str, int], source: dict[str, int]) -> float:
+        """The mix-weighted share of the source shelf present, each kind capped
+        at 1. Kinds the source has none of are left out and the weights of the
+        rest renormalised; with no source shelf at all, coverage is full."""
+        kinds = [k for k in _COVERAGE_MIX if source.get(k)]
+        total = sum(_COVERAGE_MIX[k] for k in kinds)
+        if not total:
+            return 1.0
+        return (
+            sum(_COVERAGE_MIX[k] * min(1.0, have[k] / source[k]) for k in kinds)
+            / total
+        )
 
     @staticmethod
     def _readiness_score(report: readiness.Report) -> float:
@@ -197,13 +242,19 @@ class AdminLanguageHealthView(APIView):
 
     @staticmethod
     def _readers_by_language() -> dict[str, int]:
-        """Distinct readers whose progress touches content in each language — the
-        same signal the engagement page's per-language rollup uses."""
+        """Distinct readers whose progress in each language moved within the last
+        ``_READER_WINDOW_DAYS`` — "active" the way the engagement page counts it
+        (``updated_at``, the server's clock)."""
+        from datetime import timedelta
+
+        from django.utils import timezone
+
         from reading.models import ReadingProgress
 
+        since = timezone.now() - timedelta(days=_READER_WINDOW_DAYS)
         return {
             r["language"]: r["n"]
-            for r in ReadingProgress.objects.values("language").annotate(
-                n=Count("profile", distinct=True)
-            )
+            for r in ReadingProgress.objects.filter(updated_at__gte=since)
+            .values("language")
+            .annotate(n=Count("profile", distinct=True))
         }

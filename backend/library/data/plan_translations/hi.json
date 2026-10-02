@@ -94,5 +94,12 @@
    "Single-book LAUNCH plan backed by growing-in-wisdom.hi (job #2823), which makes it creatable in hi. The title takes the book's own hi title, «बुद्धि में बढ़ना»; «पवित्रशास्त्र», «मनन» and «प्रार्थना» are the book's settled words for Scripture, reflection and prayer.",
    "«जेम्स डीग्रीफ़» is a fresh transliteration — the hi corpus had not spelled the author's name before. AI-drafted; awaiting native review."
   ]
+ },
+ "rooted-three-months-books-1-3": {
+  "title": "जड़ें जमाए: परमेश्वर के साथ तीन महीने — पुस्तकें 1–3",
+  "description": "9 से 12 वर्ष के पाठकों के लिये परमेश्वर के साथ तीन महीने: ‘जड़ें जमाए’ की पहली तीन पुस्तकें — ‘रोपे गए’, ‘यीशु के पीछे चलना’ और ‘फल उगाना’ — हर दिन एक छोटी भक्ति-वार्ता: परमेश्वर कौन है और यीशु का शुभ समाचार, चरनी से खाली कब्र तक यीशु के साथ चलना, और आत्मा का फल उगाना।",
+  "note": [
+   "AI-drafted; awaiting native review. Three-book plan backed by the hi editions of rooted-1 … rooted-3; rooted-3.hi ships in the same change, which is what makes the plan creatable in hi. The series name is the shipped hi cover_title «जड़ें जमाए», and the book names are the hi subtitles' lead words («रोपे गए» / «यीशु के पीछे चलना» / «फल उगाना»); «9 से 12 वर्ष के पाठकों के लिये» and «भक्ति-वार्ता» follow the three books' own hi descriptions, as do the ‘…’ quotes around titles."
+  ]
  }
 }

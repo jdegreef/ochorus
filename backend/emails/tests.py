@@ -6,6 +6,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import hmac
+import io
 import json
 import time
 import uuid
@@ -23,6 +24,7 @@ from reading.models import PlanProgress, ReadingProgress, WorkKind
 from .lifecycle import (
     CLASSIC_STEP,
     COMEBACK_STEP,
+    FIRST_BOOK_STEP,
     PLAN_STEP,
     WELCOME_STEP,
     due_step,
@@ -60,6 +62,7 @@ SENDING = override_settings(
     PUBLIC_SITE_URL="https://ochorus.test",
     SUPABASE_URL="",
     SUPABASE_SERVICE_ROLE_KEY="",
+    EMAIL_SEND_RATE=0,  # no pacing sleeps in tests
 )
 
 
@@ -442,6 +445,56 @@ class LifecycleStepTests(TestCase):
         # no last_seen for comeback → nothing due yet.
         self.assertIsNone(due_step(profile, timezone.now()))
 
+    def _start_book(self, profile, *, slug="b1", finished=False):
+        ReadingProgress.objects.create(
+            profile=profile,
+            kind=WorkKind.BOOK,
+            book_slug=slug,
+            language="en",
+            finished_at=timezone.now() if finished else None,
+        )
+
+    def test_finish_first_book_due_when_started_but_unfinished(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile)  # opened, not finished
+        self.assertEqual(due_step(profile, timezone.now()).name, FIRST_BOOK_STEP)
+
+    def test_finish_first_book_skipped_without_a_started_book(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        # Nothing opened yet — the finish nudge doesn't apply; classic waits day 4.
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_finish_first_book_skipped_after_a_finish(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile, slug="done", finished=True)
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_finish_first_book_precedes_classic(self):
+        # A reader with a book in hand is pointed back to it, not at a new classic.
+        profile = self._profile(age_days=5)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile)
+        self.assertEqual(due_step(profile, timezone.now()).name, FIRST_BOOK_STEP)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_finish_first_book_sends_end_to_end(self, send):
+        # Exercises the render path (copy + CTA), not just the due predicate.
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        # Back-date the earlier steps past the 20h gap so this one can send now.
+        EmailMessage.objects.filter(recipient=profile).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        self._start_book(profile)
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, FIRST_BOOK_STEP)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(send.call_count, 1)
+
     def test_classic_due_on_day_four(self):
         profile = self._profile(age_days=5)
         self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
@@ -747,14 +800,20 @@ class BroadcastAdminTests(TestCase):
 
     @SENDING
     @mock.patch("emails.sending.send_email", return_value="rid")
-    def test_send_action(self, send):
+    def test_send_action_queues_and_the_cron_sends(self, send):
         _make_profile()
         b = _broadcast()
         res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "send"})
         self.assertEqual(res.status_code, 200)
         b.refresh_from_db()
+        # The request only queues: nothing has been mailed yet.
+        self.assertEqual(b.status, BroadcastStatus.SENDING)
+        send.assert_not_called()
+        call_command("send_due_broadcasts", stdout=io.StringIO())
+        b.refresh_from_db()
         self.assertEqual(b.status, BroadcastStatus.SENT)
-        self.assertEqual(res.json()["tally"]["sent"], 1)
+        self.assertEqual(b.send_tally["sent"], 1)
+        self.assertIsNotNone(b.send_finished_at)
 
     def test_schedule_and_cancel(self):
         b = _broadcast()
@@ -799,9 +858,9 @@ class EmailCronCommandTests(TestCase):
         # With no due readers/broadcasts and sending off, it completes cleanly —
         # the point is that the single command exists and chains the two steps.
         _make_profile()
-        with mock.patch("emails.broadcasts.send_broadcast") as bcast:
-            call_command("send_email_cron")
-            bcast.assert_not_called()  # nothing scheduled
+        with mock.patch("emails.broadcasts.run_send") as run:
+            call_command("send_email_cron", stdout=io.StringIO())
+            run.assert_not_called()  # nothing scheduled or queued
 
 
 @override_settings(

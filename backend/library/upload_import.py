@@ -36,6 +36,7 @@ from .ingest import (
 )
 from .management.commands.import_ochorus import chapterize, pdf_blocks
 from .models import Author, Book, Chapter, Sermon
+from .text import is_blank_title
 
 MAX_UPLOAD_BYTES = 25 * 1024 * 1024  # 25 MB
 #: A .docx is a zip; MAX_UPLOAD_BYTES bounds only the COMPRESSED size, and mammoth
@@ -293,13 +294,19 @@ def create_book(
     so a tampered payload can only yield valid content or a rejection. Raises
     ``ParseError`` — rolling back the whole write — if no chapter survives.
     """
+    # The stored title is the first 300 characters: check THAT, so a title
+    # whose only visible text sits past the cut is refused here (a 400 from
+    # the view) rather than by the model (a 500).
+    title = title.strip()[:300]
+    if is_blank_title(title):
+        raise ParseError("A title is required.")
     slug = _unique_slug(title, Book, language)
     last = Book.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
     book = Book.objects.create(
         author=author,
         slug=slug,
         language=language,
-        title=title.strip()[:300],
+        title=title,
         subtitle=str(subtitle or "").strip()[:300],
         source_type=Book.SourceType.PUBLIC_DOMAIN,
         source_url=_http_url(source_url),
@@ -358,13 +365,16 @@ def create_sermon(
     body, words = _clean_body(body_html)
     if words < 5:
         raise ParseError("The sermon had no readable text.")
+    title = title.strip()[:300]
+    if is_blank_title(title):
+        raise ParseError("A title is required.")
     slug = _unique_slug(title, Sermon, language)
     last = Sermon.objects.order_by("-sort_order").values_list("sort_order", flat=True).first() or 0
     return Sermon.objects.create(
         author=author,
         slug=slug,
         language=language,
-        title=title.strip()[:300],
+        title=title,
         scripture_ref=scripture_ref.strip()[:160],
         body_html=body,
         source_url=_http_url(source_url),

@@ -115,14 +115,27 @@ def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     return _render(broadcast_text(broadcast, resolved), profile, subscription, resolved)
 
 
+def render_direct(text: dict, profile, subscription, lang: str) -> RenderedEmail:
+    """Render an admin's one-to-one email through the same safe template.
+    ``lang`` is the language the admin wrote it in — it sets the email's
+    ``lang``/``dir``, so an English note to an Arabic reader stays left-to-right."""
+    return _render(text, profile, subscription, lang)
+
+
+def sendable_locales(broadcast) -> list[str]:
+    """The locales a broadcast can be sent in: it has BOTH a subject and
+    content for them."""
+    return sorted(set(broadcast.subject) & set(broadcast.content))
+
+
 def resolve_broadcast_locale(broadcast, lang: str) -> str | None:
     """The locale to actually render: the reader's language, else English, else
-    any locale the broadcast has BOTH a subject and content for."""
+    the first locale the broadcast can be sent in."""
+    locales = sendable_locales(broadcast)
     for candidate in (lang, "en"):
-        if candidate in broadcast.content and candidate in broadcast.subject:
+        if candidate in locales:
             return candidate
-    common = sorted(set(broadcast.content) & set(broadcast.subject))
-    return common[0] if common else None
+    return locales[0] if locales else None
 
 
 def broadcast_text(broadcast, locale: str) -> dict:

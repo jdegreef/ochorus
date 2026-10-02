@@ -1,4 +1,4 @@
-import type { ScripturePageEntry } from '$lib/library-public';
+import type { ScriptureBookPage, ScripturePageEntry } from '$lib/library-public';
 
 /**
  * The /scripture hub's shape, computed from the flat page list the API sends
@@ -173,3 +173,52 @@ export function mostCited(pages: ScripturePageEntry[], n: number): TopChapter[] 
  * trip that could only come back empty.
  */
 export const mayBeReference = (q: string): boolean => /\d/.test(q);
+
+/**
+ * A count → heat-level function for ONE book's chapters (the /scripture/<book>/
+ * page). heatScale is rank-based and tuned for the hub's ~600 chapters: over a
+ * book's handful it can't reach the top shades (level 4 needs 34+ chapters).
+ * This scales to the book's own most-cited chapter instead, so that chapter is
+ * always the brightest, and the rest shade in proportion to it.
+ */
+export function relativeHeat(counts: number[]): (count: number) => number {
+	const max = Math.max(0, ...counts);
+	return (count) => (max > 0 ? Math.round(((HEAT_LEVELS - 1) * count) / max) : 0);
+}
+
+/**
+ * The /scripture/<book>/ page from the page list alone — for a web build racing
+ * the API's deploy (an API from before the book endpoint answers 404, and a
+ * prerender 404 fails the build). Everything the list carries is here: the
+ * chapter pages, the verse pages, prev/next. What only the server can count
+ * (passages and works across the whole book, the works that quote it most, the
+ * verse text) is left null/empty, and the page omits it. Null when the book
+ * has no chapter page, which is the server's own 404 rule.
+ */
+export function bookFromPageList(slug: string, pages: ScripturePageEntry[]): ScriptureBookPage | null {
+	const mine = pages.filter((p) => p.book === slug);
+	const chapters = mine.filter((p) => p.verse === null);
+	if (!chapters.length) return null;
+	const books: { book: string; book_title: string }[] = [];
+	for (const p of [...pages].sort((a, b) => a.book_order - b.book_order)) {
+		if (p.verse === null && books.at(-1)?.book !== p.book) books.push({ book: p.book, book_title: p.book_title });
+	}
+	const i = books.findIndex((b) => b.book === slug);
+	return {
+		book: { slug, title: chapters[0].book_title, order: chapters[0].book_order },
+		version: '',
+		citing_count: null,
+		books_count: null,
+		chapters: chapters
+			.map((p) => ({ chapter: p.chapter, citing_count: p.citing_count }))
+			.sort((a, b) => a.chapter - b.chapter),
+		verses: mine
+			.filter((p) => p.verse !== null)
+			.sort((a, b) => b.citing_count - a.citing_count || a.chapter - b.chapter || a.verse! - b.verse!)
+			.slice(0, 8)
+			.map((p) => ({ chapter: p.chapter, verse: p.verse!, citing_count: p.citing_count, text: '' })),
+		top_books: [],
+		prev: books[i - 1] ?? null,
+		next: books[i + 1] ?? null
+	};
+}

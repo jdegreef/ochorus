@@ -23,6 +23,7 @@ from .views import (
     QuoteTopicDetailView,
     QuoteTopicPagesView,
     QuoteTopicsView,
+    ScriptureBookView,
     ScriptureGraphView,
     ScripturePagesView,
     ScriptureView,
@@ -64,9 +65,10 @@ urlpatterns = [
         name="quote-author-topic",
     ),
     path("scripture/", ScriptureView.as_view(), name="scripture"),
-    # Before the <book> patterns: "pages" is one segment, they are two or three,
-    # so these cannot actually collide — the order is for a reader of this file.
+    # BEFORE scripture/<slug:book>/: that pattern is one segment too, so
+    # "pages" would otherwise be read as a book of the Bible (and 404).
     path("scripture/pages/", ScripturePagesView.as_view(), name="scripture-pages"),
+    path("scripture/<slug:book>/", ScriptureBookView.as_view(), name="scripture-book"),
     path(
         "scripture/<slug:book>/<int:chapter>/",
         ScriptureGraphView.as_view(),

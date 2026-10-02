@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
+	import { checkLabels } from '$lib/languageHealth';
 	import { workPath } from '$lib/editionHref';
 	import {
 		type SourceType
@@ -573,7 +574,7 @@
 							<span class="text-small font-semibold {readiness.ready ? 'text-accent' : 'text-warning'}">
 								{readiness.ready
 									? 'Every check clear'
-									: `${readiness.blocking.length} blocking: ${readiness.blocking.join(', ')}`}
+									: `${readiness.blocking.length} blocking: ${checkLabels(readiness, readiness.blocking).join(', ')}`}
 							</span>
 						{/if}
 					</div>
@@ -678,7 +679,7 @@
 									     forced: launching would fail the reader build. So no "launch
 									     anyway" here — say what to fix instead. -->
 									<span class="text-small text-warning">
-										Can't go live: {readiness.unforceable.join(', ')} must be
+										Can't go live: {checkLabels(readiness, readiness.unforceable).join(', ')} must be
 										resolved first (force won't skip {readiness.unforceable.length > 1
 											? 'these'
 											: 'this'}).
