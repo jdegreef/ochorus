@@ -21,6 +21,7 @@ from .audit import AdminAudited, AdminNotAudited
 from .languages import known_codes, language_map
 from .models import AdminAction, Author
 from .serializers import AuthorSerializer
+from .text import is_blank_title
 from .views import _language_entry
 
 
@@ -137,13 +138,15 @@ class AdminImportPublishView(AdminAudited, APIView):
     def post(self, request):
         d = request.data
         kind = (d.get("kind") or "").strip()
-        title = (d.get("title") or "").strip()
+        title = str(d.get("title") or "").strip()
         language = (d.get("language") or "en").strip() or "en"
         source_url = (d.get("source_url") or "").strip()
 
         if kind not in ("book", "sermon"):
             return Response({"detail": "kind must be 'book' or 'sermon'."}, status=400)
-        if not title:
+        # `is_blank_title`, not `not title`: a title of only zero-width
+        # characters survives .strip() and would publish a work with no name.
+        if is_blank_title(title):
             return Response({"detail": "A title is required."}, status=400)
         # Free text before this: a typo published content into a locale that
         # does not exist, where nothing lists it and no reader can reach it —

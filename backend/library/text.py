@@ -24,6 +24,18 @@ _WS = re.compile(r"\s+")
 _TAG = re.compile(r"<[^>]+>")
 
 
+# What renders as nothing: whitespace plus the zero-width characters and the
+# BOM, which `str.strip()` keeps. A title made only of these reads as no title
+# at all — the admin coverage matrix once showed a Spurgeon book as just its
+# author, still offering to queue translations of it.
+_INVISIBLE = re.compile(r"[\s\u00ad\u200b-\u200d\u2060\ufeff]+")
+
+
+def is_blank_title(title) -> bool:
+    """True when ``title`` would show a reader nothing."""
+    return not _INVISIBLE.sub("", str(title or ""))
+
+
 def html_to_text(body_html: str) -> str:
     spaced = _BLOCK_BREAK.sub(" \\g<0>", body_html)
     return _WS.sub(" ", html.unescape(strip_tags(spaced))).strip()

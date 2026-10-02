@@ -494,6 +494,29 @@ class SeriesTranslation(models.Model):
         return f"{self.series.slug} [{self.language}]"
 
 
+def _require_title(row, save_kwargs) -> None:
+    """Refuse to save a Book or Sermon whose title would show a reader nothing.
+
+    Some forty paths write these rows (the admin import, the translate and
+    contemporize commands, every build_* script, the seeds), and the fixture
+    gate only covers the last. A blank title still reached production, so the
+    rule lives here, where every one of them passes. A scoped save that leaves
+    the title alone (a publish toggle, an approval) is let through, so a legacy
+    blank row can still be fixed rather than wedged.
+    """
+    from django.core.exceptions import ValidationError
+
+    from .text import is_blank_title
+
+    fields = save_kwargs.get("update_fields")
+    if fields is not None and "title" not in fields:
+        return
+    if is_blank_title(row.title):
+        raise ValidationError(
+            {"title": f"{type(row).__name__} {row.slug!r} ({row.language}) needs a title."}
+        )
+
+
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
@@ -647,6 +670,7 @@ class Book(models.Model):
         return f"{self.title} ({self.language})"
 
     def save(self, *args, **kwargs):
+        _require_title(self, kwargs)
         # The book title (and language, which picks the FTS config) is baked
         # into its chapters' search vectors (library/fts.py) — a retitle must
         # ripple. Compare against the stored row first so unrelated edits
@@ -893,6 +917,7 @@ class Sermon(models.Model):
     def save(self, *args, **kwargs):
         from .text import html_to_text, word_count
 
+        _require_title(self, kwargs)
         self.body_text = html_to_text(self.body_html)
         self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
