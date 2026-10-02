@@ -15,6 +15,7 @@
 		fileBodyFixJob
 	} from '$lib/library-admin';
 	import { tick } from 'svelte';
+	import { page } from '$app/state';
 
 	let { data } = $props();
 
@@ -33,10 +34,15 @@
 
 	// "Open chapter" links (here and from the content audit) land on a row
 	// that only exists once the book has loaded, after the browser has
-	// already given up on the hash, so scroll to it then.
+	// already given up on the hash: scroll to it then, once per hash, so a
+	// reload of the book doesn't yank the page back. The row is highlighted
+	// from the hash too, since client-side navigation never sets :target.
+	const targetId = $derived(page.url.hash.slice(1));
+	let scrolledTo = '';
 	$effect(() => {
-		if (!book || !location.hash) return;
-		tick().then(() => document.getElementById(location.hash.slice(1))?.scrollIntoView());
+		if (!book || !targetId || targetId === scrolledTo) return;
+		scrolledTo = targetId;
+		tick().then(() => document.getElementById(targetId)?.scrollIntoView());
 	});
 
 	const nf = new Intl.NumberFormat('en');
@@ -115,7 +121,8 @@
 									     audit's drop-off list) lands on: the row with the fix buttons. -->
 									<li
 										id={adminChapterId(l.code, c.order)}
-										class="flex scroll-mt-[calc(var(--appnav-h,0px)+4rem)] items-baseline justify-between gap-3 px-3 py-2 target:bg-accent-soft"
+										class="flex scroll-mt-[calc(var(--appnav-h,0px)+4rem)] items-baseline justify-between gap-3 px-3 py-2"
+										class:bg-accent-soft={targetId === adminChapterId(l.code, c.order)}
 									>
 										<a href="/books/{b.slug}/{c.order}" class="min-w-0 truncate text-body text-text hover:text-accent">
 											<span class="text-muted tabular-nums">{c.order}.</span> {c.title || '(untitled)'}

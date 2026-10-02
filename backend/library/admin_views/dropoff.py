@@ -5,7 +5,9 @@ chapter's content flags beside them. The curve itself lives in
 
 from __future__ import annotations
 
-from django.db.models import Count, Q
+from collections import defaultdict
+
+from django.db.models import Q
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -21,11 +23,11 @@ from ..qa import chapter_flags
 class AdminDropOffView(APIView):
     """``GET /api/admin/drop-off/?language=en``: each book's steepest drop in
     that language, where at least ``dropoff.MIN_READERS`` readers reached the
-    chapter. Flagged chapters first (those are the fixable ones), then by the
-    share of readers lost.
+    chapter. The ``LIMIT`` steepest make the list (the cliff is the signal);
+    among those, flagged chapters come first, as the ones with a likely fix.
 
-    The content checks run only on the few chapters that make the list, not
-    the whole library: the full scan is the audit's own, and cached there.
+    The content checks run only on the chapters that make the list, not the
+    whole library: the full scan is the audit's own, and cached there.
     """
 
     LIMIT = 15
@@ -35,26 +37,30 @@ class AdminDropOffView(APIView):
         language (the audit page's "all languages")."""
         language = (request.query_params.get("language") or "").strip().lower()
         progress = dropoff.progress_rows(language=language or None)
-        lengths = {
-            (r["book__slug"], r["book__language"]): r["n"]
-            for r in Chapter.objects.filter(book__slug__in={slug for slug, _ in progress})
-            .values("book__slug", "book__language")
-            .annotate(n=Count("id"))
-        }
+        chapters = Chapter.objects.filter(book__slug__in={slug for slug, _ in progress})
+        if language:
+            chapters = chapters.filter(book__language=language)
+        orders = defaultdict(list)
+        for slug, lang, order in chapters.order_by("order").values_list(
+            "book__slug", "book__language", "order"
+        ):
+            orders[(slug, lang)].append(order)
         drops = []
         for (slug, lang), rows in progress.items():
-            curve = dropoff.reach(rows, lengths.get((slug, lang), 0))
+            curve = dropoff.reach(rows, orders.get((slug, lang), []))
             drop = dropoff.steepest_drop(curve, min_readers=dropoff.MIN_READERS)
             if drop:
                 drops.append({"slug": slug, "language": lang, **drop})
+        drops.sort(key=lambda d: (-d["rate"], -d["reached"]))
+        drops = drops[: self.LIMIT]
         self._describe(drops)
-        drops.sort(key=lambda d: (not d["flags"], -d["rate"], -d["reached"]))
+        drops.sort(key=lambda d: not d["flags"])  # stable: by rate within each
         return Response(
             {
                 "language": language,
                 "min_readers": dropoff.MIN_READERS,
                 "stall_days": dropoff.STALL_DAYS,
-                "drops": drops[: self.LIMIT],
+                "drops": drops,
             }
         )
 

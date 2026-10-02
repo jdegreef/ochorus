@@ -59,7 +59,7 @@ class AdminBookDetailView(APIView):
                         ),
                     }
                 )
-            curve = dropoff.reach(progress.get((slug, b.language), []), len(chapters))
+            curve = dropoff.reach(progress.get((slug, b.language), []), [c["order"] for c in chapters])
             languages.append(
                 {
                     **_language_entry(b.language),

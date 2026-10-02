@@ -11,8 +11,9 @@ For one edition (a book slug in one language), from ``ReadingProgress``:
 * **reached chapter N**: the reader's furthest chapter is N or later, or they
   finished the book. Furthest is ``furthest_order`` (only grows, ignores
   peeking ahead from the contents), or ``chapter_order`` on rows from before it
-  existed (0). Clamped to the edition's chapter count, so a re-import to fewer
-  chapters can't put a reader past the end.
+  existed (0). Clamped to the edition's last chapter, so a re-import to fewer
+  chapters can't put a reader past the end. Chapters are keyed by their
+  ``order``, gaps and all, so a point always names a real chapter.
 * **at chapter N**: their furthest chapter is exactly N and they haven't
   finished. Split by recency: **stopped** (no progress for ``STALL_DAYS``) or
   **still reading**. Only stopped readers are drop-off, so this week's readers
@@ -20,10 +21,15 @@ For one edition (a book slug in one language), from ``ReadingProgress``:
 
 Books only: a sermon, biography or article is one document, with no chapters to
 drop off between.
+
+A reader has one progress row per work, not per edition, so one who switches
+editions is counted in the edition they opened last. Rare, and the data holds
+nothing better.
 """
 
 from __future__ import annotations
 
+from bisect import bisect_right
 from collections import Counter, defaultdict
 from datetime import timedelta
 
@@ -43,30 +49,35 @@ MIN_READERS = 5
 MIN_READERS_BOOK = 2
 
 
-def _furthest(row: dict, chapters: int) -> int:
+def _furthest(row: dict, last: int) -> int:
     if row["finished_at"] is not None:
-        return chapters
-    furthest = row["furthest_order"] or row["chapter_order"] or 1
-    return max(1, min(furthest, chapters))
+        return last
+    return min(row["furthest_order"] or row["chapter_order"] or 1, last)
 
 
-def reach(rows, chapters: int, *, now=None) -> list[dict]:
+def reach(rows, orders: list[int], *, now=None) -> list[dict]:
     """Per-chapter reach for one edition, from its progress rows (dicts with
-    ``furthest_order``, ``chapter_order``, ``finished_at``, ``updated_at``):
-    ``[{chapter, reached, stopped, still}]`` for chapters 1..``chapters``."""
-    if chapters <= 0:
+    ``furthest_order``, ``chapter_order``, ``finished_at``, ``updated_at``) and
+    its chapter orders, ascending: ``[{chapter, reached, stopped, still}]``,
+    one per chapter. A reader whose furthest falls in a gap is "at" the last
+    chapter before it."""
+    if not orders:
         return []
     stall = (now or timezone.now()) - timedelta(days=STALL_DAYS)
     at, stopped, still = Counter(), Counter(), Counter()
     for row in rows:
-        n = _furthest(row, chapters)
-        at[n] += 1
+        # Index of the last chapter at or before the reader's furthest; a
+        # furthest before the first chapter counts as the first.
+        i = max(0, bisect_right(orders, _furthest(row, orders[-1])) - 1)
+        at[i] += 1
         if row["finished_at"] is None:
-            (stopped if row["updated_at"] < stall else still)[n] += 1
+            (stopped if row["updated_at"] < stall else still)[i] += 1
     curve, reached = [], 0
-    for n in range(chapters, 0, -1):  # reaching n means reaching 1..n
-        reached += at[n]
-        curve.append({"chapter": n, "reached": reached, "stopped": stopped[n], "still": still[n]})
+    for i in range(len(orders) - 1, -1, -1):  # reaching one means reaching all before it
+        reached += at[i]
+        curve.append(
+            {"chapter": orders[i], "reached": reached, "stopped": stopped[i], "still": still[i]}
+        )
     return curve[::-1]
 
 

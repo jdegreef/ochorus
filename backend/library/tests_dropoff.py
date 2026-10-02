@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import uuid
 from datetime import timedelta
+from unittest import mock
 
 from django.contrib.auth import get_user_model
 from django.test import SimpleTestCase, TestCase, override_settings
@@ -20,6 +21,7 @@ from accounts.models import UserProfile
 from reading.models import ReadingProgress, WorkKind
 
 from . import dropoff
+from .admin_views import AdminDropOffView
 from .models import Author, Book, Chapter
 
 NOW = timezone.now()
@@ -37,19 +39,26 @@ def row(furthest=0, chapter=1, finished=False, updated=OLD):
 
 class ReachTests(SimpleTestCase):
     def test_reaching_a_chapter_means_reaching_every_one_before_it(self):
-        curve = dropoff.reach([row(3), row(1), row(finished=True)], 4, now=NOW)
+        curve = dropoff.reach([row(3), row(1), row(finished=True)], [1, 2, 3, 4], now=NOW)
         self.assertEqual([p["reached"] for p in curve], [3, 2, 2, 1])
 
     def test_an_old_row_falls_back_to_its_current_chapter_and_is_clamped(self):
         # furthest_order 0 predates the field; 9 is past a re-imported end.
-        curve = dropoff.reach([row(0, chapter=2), row(9)], 3, now=NOW)
+        curve = dropoff.reach([row(0, chapter=2), row(9)], [1, 2, 3], now=NOW)
         self.assertEqual([p["reached"] for p in curve], [2, 2, 1])
 
     def test_only_a_reader_gone_quiet_is_stopped(self):
-        curve = dropoff.reach([row(2), row(2, updated=NOW), row(finished=True)], 3, now=NOW)
+        curve = dropoff.reach([row(2), row(2, updated=NOW), row(finished=True)], [1, 2, 3], now=NOW)
         self.assertEqual((curve[1]["stopped"], curve[1]["still"]), (1, 1))
         # Finishing isn't stopping.
         self.assertEqual((curve[2]["stopped"], curve[2]["still"]), (0, 0))
+
+    def test_points_are_the_chapters_real_orders_gaps_and_all(self):
+        # Chapter 4 is missing; a reader whose furthest is 4 is at chapter 3.
+        curve = dropoff.reach([row(4), row(5), row(1)], [1, 2, 3, 5], now=NOW)
+        self.assertEqual([p["chapter"] for p in curve], [1, 2, 3, 5])
+        self.assertEqual([p["reached"] for p in curve], [3, 2, 2, 1])
+        self.assertEqual(curve[2]["stopped"], 1)
 
     def test_the_steepest_drop_skips_small_groups_and_the_last_chapter(self):
         curve = [
@@ -117,6 +126,12 @@ class DropOffViewTests(TestCase):
         self.assertIn("giant", drops[0]["flags"])
         self.assertEqual(drops[1]["flags"], [])
         self.assertEqual((drops[0]["chapter"], drops[0]["reached"]), (2, 6))
+
+    def test_the_list_is_cut_by_rate_before_flags_reorder_it(self):
+        # With room for one, the steeper unflagged drop wins the place.
+        with mock.patch.object(AdminDropOffView, "LIMIT", 1):
+            res = APIClient().get("/api/admin/drop-off/?language=en")
+        self.assertEqual([d["slug"] for d in res.data["drops"]], ["plain"])
 
     def test_without_a_language_every_language_is_listed(self):
         res = APIClient().get("/api/admin/drop-off/")

@@ -5,6 +5,7 @@
 		getAdminAudit,
 		adminChapterHref,
 		chapterFlagLabel,
+		formatRate,
 		getAdminDropOff,
 		dismissAuditFinding,
 		undoAuditDismissal,
@@ -68,7 +69,6 @@
 		"Couldn't load where readers stop.",
 		() => language
 	);
-	const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 	async function rerun() {
 		forceRefresh = true;
@@ -537,7 +537,11 @@
 				<!-- Readers stop here: where a book loses its readers, with what the
 				     content checks say about that chapter. Flagged ones are listed
 				     first because those are usually import problems with a fix. -->
-				{#if dropRes.data?.drops.length}
+				<!-- Only the current language's list: the resource keeps the last
+				     one while it reloads, or if the reload fails. -->
+				{#if dropRes.error && !dropRes.loading}
+					<p class="text-small text-danger">{dropRes.error}</p>
+				{:else if dropRes.data?.language === language && dropRes.data.drops.length}
 					<section>
 						<h2 class="text-h3 mb-1">Readers stop here</h2>
 						<p class="mb-3 text-small text-muted">
@@ -567,7 +571,7 @@
 												<span class="block text-micro tabular-nums text-muted">{d.word_count.toLocaleString('en')} words</span>
 											</td>
 											<td class="px-3 py-2 text-end tabular-nums">
-												<span class="font-semibold text-danger">{pct(d.rate)}</span>
+												<span class="font-semibold text-danger">{formatRate(d.rate)}</span>
 												<span class="block text-micro text-muted">{d.stopped} of {d.reached}</span>
 											</td>
 											<td class="px-3 py-2">

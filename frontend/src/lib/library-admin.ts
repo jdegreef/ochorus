@@ -1698,6 +1698,9 @@ const CHAPTER_FLAG_LABEL: Record<string, string> = {
 };
 export const chapterFlagLabel = (flag: string) => CHAPTER_FLAG_LABEL[flag] ?? flag;
 
+/** A drop-off rate (0–1) as a whole percentage: "40%". */
+export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
+
 /** A chapter row's anchor on its admin book page, and the link to it: what
  *  "Open chapter" lands on (the row with the fix buttons). */
 export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
