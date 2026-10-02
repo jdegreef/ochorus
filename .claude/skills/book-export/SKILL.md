@@ -13,11 +13,8 @@ in `backend/library/book_export.py`, in this order:
    (`/covers/<slug>.png`, `/covers/<lang>/<slug>.png`) is used.
 2. **Title page**
 3. **About Ochorus** — `STRINGS[lang]["ochorus_html"]`
-4. **About the Author** — a one-page bio written for the downloads,
-   `backend/library/export_bios/<author-slug>.<lang>.txt` (3–4 paragraphs,
-   blank-line separated); without one, the SHORT site bio (`Author.bio`; for
-   another language `AuthorTranslation.bio`). Then life dates and a link to the
-   full bio. No English fallback and none for an imprint author → no page.
+4. **About the Author** — the edition's export bio (see Pre-flight), life
+   dates, and a link to the full bio. None for an imprint author.
 5. **Contents** (PDF page; EPUB uses the reader's nav) → About this work →
    chapters → colophon (rights, AI-review notice for `ai_unreviewed`).
 
@@ -34,17 +31,20 @@ in `backend/library/book_export.py`, in this order:
 - Published, and its text is clean — run `english-qa` / `founder-kit:book-qa`
   first. The PDF freezes whatever is in the DB.
 - A raster cover exists for it on the site (designed jpg, or the og twin png).
-- The author has an export bio `export_bios/<author-slug>.<lang>.txt` —
-  `PilotTests` fails without one (and on a file no edition uses). Write it from
-  the long `bio_html` (its facts, no new ones): 3–4 paragraphs, ~250–285
-  English words, ≤ ~1,700 characters. It MUST fit one A5 page with the "Read
-  the full biography" line: Swahili and Luganda run ~10% longer than English,
-  Ukrainian fills the page at ~1,700 characters — render it and look. Editing
-  one triggers `book-pdfs.yml` to rebuild every PDF. Falls back to the short
-  `bio` in that language. English: `authors.json`
-  `bio`. Other languages: an `AuthorTranslation` with `bio` (see
-  `write-biography` / `approve_author_translation`). Without one the book simply
-  has no About-the-Author page — decide if that's acceptable.
+- The author has an export bio, `backend/library/export_bios/<author-slug>.<lang>.txt`:
+  3–4 paragraphs (blank-line separated), ~250–285 English words, written from
+  the author's long `bio_html` — its facts and verbatim quotes only. `PilotTests`
+  requires one for every exportable edition, rejects a file no edition uses, and
+  pins in `export_bios/sources.json` the `bio_html` digest each was checked
+  against: when that test fails, re-read the bio against the new `bio_html`,
+  then update the digest. It must fit ONE A5 page — `export_book` fails a PDF
+  whose "Read the full biography" line spills onto the next page. Swahili and
+  Luganda run ~10% longer than English; Ukrainian fills the page at ~1,700
+  characters. A translated export bio is AI-written and has no review state
+  (unlike `AuthorTranslation`) — say so when you add one. Editing any of them
+  makes `book-pdfs.yml` rebuild every PDF. (The code still falls back to the
+  short `Author.bio` / `AuthorTranslation.bio`, but the test means no shipped
+  download uses it.)
 - **Is the book actually public domain?** A living author's book (Gareth Evans,
   Growing in Wisdom) still carries `source_type=public_domain` — the schema has no
   licensed value — so the colophon would CLAIM public domain. Give every edition an

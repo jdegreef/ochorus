@@ -278,7 +278,9 @@ def _cover_bytes(cover_url: str) -> bytes:
 
 #: One-page biographies written for the downloads: ``<author-slug>.<lang>.txt``,
 #: three or four paragraphs separated by blank lines. Longer than the site's
-#: one-paragraph ``bio`` (card and meta copy), far shorter than ``bio_html``.
+#: one-paragraph ``bio`` (card and meta copy), far shorter than ``bio_html``,
+#: which they are written from — ``sources.json`` pins the ``bio_html`` each was
+#: checked against, so a fix to the long bio flags its short copy for review.
 EXPORT_BIOS_DIR = Path(__file__).resolve().parent / "export_bios"
 
 
@@ -297,8 +299,10 @@ def author_bio(book: Book) -> str:
     if author.is_imprint:
         return ""
     written = EXPORT_BIOS_DIR / f"{author.slug}.{book.language}.txt"
-    if written.is_file():
+    try:
         return written.read_text(encoding="utf-8").strip()
+    except FileNotFoundError:
+        pass
     if book.language == DEFAULT_LANGUAGE:
         return author.bio.strip()
     tr = author.translations.filter(language=book.language).only("bio").first()

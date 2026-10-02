@@ -10,7 +10,9 @@ human check on a device.
 from __future__ import annotations
 
 import io
+import tempfile
 import zipfile
+from pathlib import Path
 from unittest import mock
 
 from django.test import TestCase, override_settings
@@ -181,16 +183,13 @@ class EpubTests(TestCase):
         self.assertEqual(book_export.author_bio(es), "Fue pastor.")
 
     def test_a_written_export_bio_wins_over_the_short_one(self):
-        import tempfile
-
-        with tempfile.TemporaryDirectory() as d:
-            written = book_export.Path(d) / "a-writer.en.txt"
-            written.write_text("He was born.\n\nHe preached.\n\nHe died.\n", encoding="utf-8")
-            with mock.patch.object(book_export, "EXPORT_BIOS_DIR", book_export.Path(d)):
-                self.assertEqual(book_export.author_bio(self.book), "He was born.\n\nHe preached.\n\nHe died.")
-                # Per language: an English file never speaks for Spanish.
-                es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
-                self.assertEqual(book_export.author_bio(es), "")
+        text = "He was born.\n\nHe preached.\n\nHe died."
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(book_export, "EXPORT_BIOS_DIR", Path(d)):
+            (Path(d) / "a-writer.en.txt").write_text(text + "\n", encoding="utf-8")
+            self.assertEqual(book_export.author_bio(self.book), text)
+            # Per language: an English file never speaks for Spanish.
+            es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
+            self.assertEqual(book_export.author_bio(es), "")
 
     def test_an_imprint_has_no_biography_page(self):
         self.book.author.is_imprint = True
@@ -267,27 +266,44 @@ class PilotTests(TestCase):
         self.assertFalse(export_policy.HELD_ESV & export_policy.ENGLISH_CLASSICS)
 
     def test_every_exportable_edition_has_a_one_page_export_bio(self):
-        # The About the Author page: three or four paragraphs that must fit one
-        # A5 page. The ceiling is loose — the real check is rendering the PDF
-        # (the book-export skill) — but it stops a bio_html pasted in by mistake.
-        import json
-
-        from .content_fixtures import book_fixture_path
-
-        wanted = set()
-        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
-            author = json.loads(book_fixture_path(slug, lang).read_text(encoding="utf-8"))[0]["fields"]["author"][0]
-            wanted.add(f"{author}.{lang}.txt")
-            path = book_export.EXPORT_BIOS_DIR / f"{author}.{lang}.txt"
-            self.assertTrue(path.is_file(), f"{slug} ({lang}): no export bio at {path.name}")
+        # The About the Author page: three or four paragraphs on one A5 page.
+        # The ceiling is loose — export_book fails a PDF whose bio runs past its
+        # page — but it stops a bio_html pasted in by mistake.
+        wanted = {
+            f"{_fixture_fields(slug, lang)['author'][0]}.{lang}.txt"
+            for slug, lang in export_policy.EXPORT_EDITIONS
+        }
+        for name in sorted(wanted):
+            path = book_export.EXPORT_BIOS_DIR / name
+            self.assertTrue(path.is_file(), f"no export bio at {path.name}")
             text = path.read_text(encoding="utf-8").strip()
-            paragraphs = [p for p in text.split("\n\n") if p.strip()]
-            self.assertIn(len(paragraphs), (3, 4), f"{path.name} should be three or four paragraphs")
-            self.assertLessEqual(len(text), 1900, f"{path.name} is too long for one page")
+            self.assertIn(book_export._bio_paragraphs(text).count("<p>"), (3, 4), f"{name}: three or four paragraphs")
+            self.assertLessEqual(len(text), 1900, f"{name} is too long for one page")
         # And no file for an author or language with nothing to download: a typo
         # in a name would otherwise sit there unread while the short bio prints.
         stray = {p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt")} - wanted
         self.assertFalse(stray, f"export bios no edition uses: {sorted(stray)}")
+
+    def test_export_bios_were_checked_against_the_current_long_bio(self):
+        # Each export bio is a short retelling of the author's bio_html. When
+        # that moves (a corrected date, a new fact), the short copy may now be
+        # wrong: re-read it against the new bio_html, then update its digest
+        # in export_bios/sources.json — the designed_covers.py pattern.
+        import hashlib
+        import json
+
+        from .content_fixtures import AUTHORS_FILE
+
+        bio_html = {
+            r["fields"]["slug"]: r["fields"].get("bio_html", "")
+            for r in json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
+        }
+        pinned = json.loads((book_export.EXPORT_BIOS_DIR / "sources.json").read_text(encoding="utf-8"))
+        files = sorted(p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt"))
+        self.assertEqual(sorted(pinned), files, "sources.json must list every export bio")
+        for name in files:
+            digest = hashlib.sha256(bio_html[name.split(".")[0]].encode()).hexdigest()[:16]
+            self.assertEqual(pinned[name], digest, f"{name}: its author's bio_html changed — re-check it")
 
 
 class CoverTests(TestCase):

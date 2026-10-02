@@ -100,7 +100,29 @@ def _print_pdf(edition, path: Path) -> None:
             pages = landed
         else:
             raise CommandError(f"{path.name}: contents page numbers never settled.")
+    _check_author_page(edition, path)
     _repack(path)
+
+
+def _check_author_page(edition, pdf: Path) -> None:
+    """About the Author is ONE page. Its last line, the link to the full
+    biography, must print on the page that opens with the author's name — a
+    bio too long for its page pushes that link onto the next one."""
+    from pypdf import PdfReader  # dev-only dependency; this command runs off-server
+
+    link = book_export.author_url(edition.book)
+    if not (edition.bio and link):
+        return
+    for page in PdfReader(pdf).pages[:10]:
+        uris = {a.get_object().get("/A", {}).get("/URI") for a in page.get("/Annots") or []}
+        if link in uris:
+            if edition.author in page.extract_text():
+                return
+            break
+    raise CommandError(
+        f"{pdf.name}: About the Author runs past one page — shorten "
+        f"library/export_bios/{edition.book.author.slug}.{edition.lang}.txt."
+    )
 
 
 def _repack(pdf: Path) -> None:
