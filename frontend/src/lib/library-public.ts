@@ -1467,8 +1467,8 @@ export interface ScriptureBookPage {
 }
 
 /** The Scripture section's share card (`npm run og:pages`), as `<Seo>` props:
- *  the hub, book and chapter pages forward as Scripture rather than the generic
- *  house card. Verse pages draw their own (verseCard). */
+ *  the hub and chapter pages forward as Scripture rather than the generic house
+ *  card. Book and verse pages draw their own (verseCard). */
 export const SCRIPTURE_OG = {
 	ogImage: absUrl('/og/scripture.png'),
 	ogImageWidth: LANDSCAPE_WIDTH,

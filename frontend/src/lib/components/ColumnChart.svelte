@@ -9,19 +9,28 @@
 	`part` draws an optional darker segment at the bottom of a bar (the search
 	page's zero-result share), as a count out of the bar's `value`. `current`
 	outlines a bar whose period is still in progress, so a partial count doesn't
-	read as a drop against the full periods beside it.
+	read as a drop against the full periods beside it. `highlight` rings the one
+	bar the page is pointing at (a book's steepest drop), and `foot` draws a
+	small mark under each bar, above its label (that chapter's length).
 -->
 <script lang="ts">
+	import type { Snippet } from 'svelte';
+
 	export type Column = {
 		key: string;
 		label: string;
 		value: number;
 		part?: number;
 		current?: boolean;
+		highlight?: boolean;
 		title?: string;
 	};
 
-	let { columns, height = '8rem' }: { columns: Column[]; height?: string } = $props();
+	let {
+		columns,
+		height = '8rem',
+		foot
+	}: { columns: Column[]; height?: string; foot?: Snippet<[Column]> } = $props();
 
 	const max = $derived(Math.max(1, ...columns.map((c) => c.value)));
 	const nf = new Intl.NumberFormat('en');
@@ -35,6 +44,8 @@
 				<div
 					class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"
 					class:current={c.current}
+					class:ring-2={c.highlight}
+					class:ring-danger={c.highlight}
 					style="height: {(c.value / max) * 100}%; min-height: {c.value ? '3px' : '0'}"
 				>
 					<div class="w-full flex-1 {c.current ? '' : 'bg-accent-soft'}"></div>
@@ -43,6 +54,7 @@
 					{/if}
 				</div>
 			</div>
+			{@render foot?.(c)}
 			<div class="text-center text-micro leading-tight text-muted">{c.label}</div>
 		</div>
 	{/each}

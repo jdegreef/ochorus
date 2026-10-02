@@ -14,6 +14,7 @@ from rest_framework.test import APIClient
 
 from common.testing import body_of
 
+from . import qa
 from .models import (
     AdminAction,
     Article,
@@ -936,6 +937,16 @@ class AdminAuditCacheTests(TestCase):
         ContentRevision.bump()
         self.assertNotEqual(first, self._scanned_at(), "a new revision re-scans")
 
+    def test_chapter_lengths_ride_the_cached_scan(self):
+        # Both giant chapters land in a bar past the threshold, and a filtered
+        # request reads the histogram from the same scan.
+        first = self.client.get("/api/admin/audit/").data
+        filtered = self.client.get("/api/admin/audit/?language=en").data
+        self.assertEqual(filtered["scanned_at"], first["scanned_at"], "not re-scanned")
+        cl = filtered["chapter_lengths"]
+        self.assertEqual(cl, first["chapter_lengths"])  # en is the only edition
+        self.assertEqual(sum(cl["counts"][cl["edges"].index(cl["giant_min"]) + 1:]), 2)
+
     def test_accepting_a_finding_takes_effect_without_a_rescan(self):
         before = self.client.get("/api/admin/audit/")
         self.assertEqual(before.data["quality"]["giant_chapters"]["total"], 2)
@@ -948,6 +959,82 @@ class AdminAuditCacheTests(TestCase):
         after = self.client.get("/api/admin/audit/")
         self.assertEqual(after.data["quality"]["giant_chapters"]["total"], 1, "dismissal applied")
         self.assertEqual(after.data["scanned_at"], scanned, "and NOT by re-scanning")
+
+
+@override_settings(DEBUG=True)
+class AdminAuditChapterLengthTests(TestCase):
+    """The chapter-length histogram rides the same chapter scan as the checks."""
+
+    def setUp(self):
+        cache.clear()
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        for order, n in enumerate((50, 800, 800, 9000, 20000), start=1):
+            Chapter.objects.create(book=en, order=order, title=f"C{order}", body_html=_words(n))
+        # Empty: an integrity defect, not a length — left out of the chart.
+        Chapter.objects.create(book=en, order=6, title="C6", body_html="")
+        es = Book.objects.create(author=author, slug="humility", language="es", title="Humildad")
+        Chapter.objects.create(book=es, order=1, title="Uno", body_html=_words(50))
+        Chapter.objects.create(book=es, order=2, title="Dos", body_html=_words(2500))
+
+    def tearDown(self):
+        cache.clear()
+
+    def _lengths(self, qs=""):
+        return self.client.get(f"/api/admin/audit/{qs}").data["chapter_lengths"]
+
+    @staticmethod
+    def _flagged(cl):
+        """(tiny, giant) — the counts in the bars either side of the lines."""
+        tiny_edge = cl["edges"].index(cl["tiny_max"])
+        giant_edge = cl["edges"].index(cl["giant_min"])
+        return sum(cl["counts"][: tiny_edge + 1]), sum(cl["counts"][giant_edge + 1:])
+
+    def test_edges_and_thresholds_come_from_qa(self):
+        cl = self._lengths()
+        self.assertEqual(cl["edges"], list(qa.LENGTH_EDGES))
+        self.assertEqual((cl["tiny_max"], cl["giant_min"]), (qa.TINY_MAX, qa.GIANT_MIN))
+        self.assertEqual(len(cl["counts"]), len(cl["edges"]) + 1)
+
+    def test_counts_sum_to_the_non_empty_chapters(self):
+        cl = self._lengths()
+        self.assertEqual(sum(cl["counts"]), Chapter.objects.exclude(body_html="").count())
+        self.assertEqual(sum(cl["counts"]), 7)
+
+    def test_flagged_bars_agree_with_the_tiny_and_giant_checks(self):
+        data = self.client.get("/api/admin/audit/").data
+        tiny, giant = self._flagged(data["chapter_lengths"])
+        self.assertEqual(tiny, data["quality"]["tiny_chapters"]["total"])
+        self.assertEqual(giant, data["quality"]["giant_chapters"]["total"])
+        self.assertEqual((tiny, giant), (2, 2))
+
+    def test_language_filter_narrows_the_histogram(self):
+        en, es = self._lengths("?language=en"), self._lengths("?language=es")
+        self.assertEqual(sum(en["counts"]), 5)
+        self.assertEqual(sum(es["counts"]), 2)
+        self.assertEqual(self._flagged(es), (1, 0))
+        both = [a + b for a, b in zip(en["counts"], es["counts"], strict=True)]
+        self.assertEqual(both, self._lengths()["counts"])
+
+    def test_a_clean_edition_is_still_pickable(self):
+        # Portuguese has one well-formed chapter and no finding at all, but its
+        # length chart must still be reachable from the language picker.
+        author = Author.objects.get(slug="am")
+        pt = Book.objects.create(author=author, slug="humility", language="pt", title="Humildade")
+        Chapter.objects.create(book=pt, order=1, title="Um", body_html=_words(800))
+        data = self.client.get("/api/admin/audit/").data
+        self.assertIn("pt", data["languages"])
+        self.assertEqual(sum(self._lengths("?language=pt")["counts"]), 1)
+
+    def test_unknown_language_is_all_zeros(self):
+        cl = self._lengths("?language=zz")
+        self.assertEqual(cl["counts"], [0] * (len(cl["edges"]) + 1))
+
+
+def _words(n: int) -> str:
+    """A one-paragraph body of n + 1 words that ends on a full stop."""
+    return "<p>" + ("word " * n) + "end.</p>"
 
 
 class AdminEngagementTests(TestCase):

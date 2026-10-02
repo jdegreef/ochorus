@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import logging
 import time
+from collections import defaultdict
 from datetime import UTC, datetime, timedelta
 from html import escape
 
@@ -45,8 +46,10 @@ from .qa import (
     FRAG_MIN_WORDS,
     GENERIC_TITLE,
     GIANT_MIN,
+    LENGTH_EDGES,
     TERMINAL_PUNCT,
     TINY_MAX,
+    length_bucket,
     loose_snippet,
     loose_text,
 )
@@ -137,7 +140,8 @@ def scan_library() -> dict:
     }
     editions = Book.objects.count()
     # Computed on the FULL result so the picker is stable under a filter.
-    languages = _languages(raw, dup_raw, integrity_raw)
+    # A clean edition still has a length chart, so it must stay pickable.
+    languages = sorted(set(_languages(raw, dup_raw, integrity_raw)) | set(per_book["lengths"]))
     return {
         "started_at": started.isoformat(),
         "scanned_at": timezone.now().isoformat(),
@@ -152,6 +156,22 @@ def scan_library() -> dict:
         "integrity_raw": integrity_raw,
         "languages": languages,
         "language_names": {code: language_entry(code)["name"] for code in languages},
+        "lengths": per_book["lengths"],
+    }
+
+
+def chapter_lengths(by_language: dict[str, list[int]], language: str) -> dict:
+    """The chapter-length histogram for one edition ('' = all), with the edges
+    and thresholds it is drawn against — all from qa.py, so the chart cannot
+    draw a threshold the checks don't use. Accepted findings still count: this
+    is the shape of the library, not a list of open flags."""
+    zeros = [0] * (len(LENGTH_EDGES) + 1)
+    rows = [by_language.get(language, zeros)] if language else list(by_language.values())
+    return {
+        "edges": list(LENGTH_EDGES),
+        "counts": [sum(col) for col in zip(zeros, *rows, strict=True)],
+        "tiny_max": TINY_MAX,
+        "giant_min": GIANT_MIN,
     }
 
 
@@ -426,6 +446,9 @@ def _scan_chapters():
     titles: dict[tuple[str, str], list[str]] = {}
     orders: dict[tuple[str, str], list[int]] = {}
     chapters = 0
+    # Per-language chapter-length histogram (see qa.length_bucket). Empty
+    # chapters are left out: they are an integrity defect, not a length.
+    lengths: defaultdict[str, list[int]] = defaultdict(lambda: [0] * (len(LENGTH_EDGES) + 1))
 
     rows = Chapter.objects.select_related("book").values(
         "book_id", "book__slug", "book__language", "order", "title",
@@ -451,6 +474,7 @@ def _scan_chapters():
         if not body or wc == 0:
             empty.append(finding())
             continue  # remaining checks need body text
+        lengths[lang][length_bucket(wc)] += 1
         if 0 < wc < TINY_MAX:
             tiny.append(finding(word_count=wc))
         if wc > GIANT_MIN:
@@ -486,7 +510,10 @@ def _scan_chapters():
         # because it falls out of the same single chapter scan.
         "empty_chapters": empty,
     }
-    return raw, {"titles": titles, "orders": orders, "chapters": chapters}
+    # A plain dict for the cache (a defaultdict's lambda doesn't pickle).
+    return raw, {
+        "titles": titles, "orders": orders, "chapters": chapters, "lengths": dict(lengths)
+    }
 
 def _duplicate_titles(titles_by_book: dict) -> list[dict]:
     out = []

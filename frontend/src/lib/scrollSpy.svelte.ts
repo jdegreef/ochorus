@@ -16,8 +16,10 @@
  *  - `spy.jump`       — the sticky sub-nav's click handler (book, author and
  *                       /scripture pages): light the tab, jumpToSection, and
  *                       write `#id` keeping SvelteKit's history state;
- *  - `realignHashOnMeasure` — fix a cold `#id` load that landed under the bar
- *                       before the bar was measured.
+ *  - `subnavOffset`   — the sub-nav's share of `--pinned-offset`, estimated
+ *                       until it is measured so a cold `#id` load lands near;
+ *  - `realignHashOnMeasure` — on a cold `#id` load, re-land a target still
+ *                       hidden by the bars once they are measured.
  *
  * The landing offset lives in CSS, not here: each surface sets `scroll-margin-top`
  * on its anchors (typically `calc(var(--pinned-offset, …) + 0.5rem)`), so the
@@ -114,17 +116,25 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 	};
 }
 
+/** The sticky sub-nav's height before it is measured: one row of
+ *  `.subnav-link` tabs (measured 44.6px at every width). The prerendered page
+ *  publishes it, so the browser's own cold `#id` jump already clears a bar of
+ *  about this size. */
+export const SUBNAV_H_EST = 44;
+
+/** The sub-nav's share of `--pinned-offset`: its measured height, the estimate
+ *  while it is shown but not yet measured, and 0 when there is none. */
+export const subnavOffset = (shown: boolean, measured: number): number =>
+	measured || (shown ? SUBNAV_H_EST : 0);
+
 /**
- * Re-land a `#id` target the browser jumped to before the sticky bars had their
- * measured heights. A cold load of `/page/#section` scrolls during parsing, when
- * `--pinned-offset` still reads 0 for the bar (it is measured on hydration), so
- * the heading lands UNDER the bar. Nudges the target only while it sits where
- * that stale jump left it — no lower than its scroll-margin less the bar's
- * height (`barH`), i.e. hidden by the bar or above it. A reader who scrolled
- * the heading to anywhere else (including a spot SvelteKit restores on Back or
- * reload) is never moved.
+ * Re-land the `#id` target if it sits hidden behind the pinned bars. Its own
+ * `scroll-margin-top` is the bars' height plus the 0.5rem the anchors add
+ * (`calc(var(--pinned-offset) + 0.5rem)`), read now, so it is the measured
+ * figure; a target whose top is above that line but still on screen is under
+ * the bars. One that is lower, or scrolled off the top, is left alone.
  */
-export function realignHashTarget(barH: number): void {
+export function realignHashTarget(): void {
 	let id = '';
 	try {
 		id = decodeURIComponent(location.hash.slice(1));
@@ -134,22 +144,48 @@ export function realignHashTarget(barH: number): void {
 	const el = id ? document.getElementById(id) : null;
 	if (!el) return;
 	const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+	const rem = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
 	const top = el.getBoundingClientRect().top;
-	if (top >= -1 && top < margin - 1 && top <= margin - barH + 1) el.scrollIntoView({ block: 'start' });
+	if (top >= -1 && top < margin - rem / 2 - 1) el.scrollIntoView({ block: 'start' });
 }
+
+const navigationType = (): string => {
+	try {
+		const [entry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+		return entry?.type ?? 'navigate';
+	} catch {
+		return 'navigate';
+	}
+};
+
+/** Whether the next page to call {@link realignHashOnMeasure} is the one the
+ *  document loaded with. */
+let firstPage = true;
+/** Tests only: treat the next page as the one the document loaded with. */
+export const resetFirstPage = (): void => {
+	firstPage = true;
+};
 
 /**
  * Call once from a page with a sticky sub-nav (during component init, like
- * `scrollSpy`): when `measured()` (the bar's bound height) first turns
- * non-zero, wait a frame for `--pinned-offset` to reach layout, then
- * {@link realignHashTarget}.
+ * `scrollSpy`). On a cold `/page/#section` load the browser jumps while parsing,
+ * against estimated bar heights (`subnavOffset`, `.app-root` in app.css); when
+ * `measured()` (the bar's bound height) first turns non-zero, wait a frame for
+ * `--pinned-offset` to reach layout, then {@link realignHashTarget}.
+ *
+ * Only for the page a fresh load hydrates: a client-side navigation already
+ * lands against the measured nav and the sub-nav estimate, and a reload or Back
+ * restores a scroll position the reader chose, which is never moved.
  */
 export function realignHashOnMeasure(measured: () => number): void {
+	if (typeof window === 'undefined') return;
+	const cold = firstPage && navigationType() === 'navigate';
+	firstPage = false;
+	if (!cold) return;
 	let frame = 0;
 	$effect(() => {
-		const barH = measured();
-		if (frame || barH <= 0) return;
-		frame = requestAnimationFrame(() => realignHashTarget(barH));
+		if (frame || measured() <= 0) return;
+		frame = requestAnimationFrame(realignHashTarget);
 	});
 	// Only on teardown — a re-measure inside that frame must not cancel it.
 	$effect(() => () => cancelAnimationFrame(frame));

@@ -838,6 +838,17 @@ CURATED: dict[str, Artwork] = {
         "plain farm valley — glory falling on the ordinary ground of life.",
         focus=0.38,
     ),
+    # ── A. B. Simpson, The Holy Spirit; or, Power from on High ──────────────
+    # The two volumes share one register: weather over land and sea. Part II
+    # follows the Spirit from the Gospels to Pentecost and the epistles, so its
+    # ground is the wind.
+    "power-from-on-high-new-testament": Artwork(
+        "aic", 57215, "Elihu Vedder", "Storm in Umbria", "1875",
+        "Pentecost came \"as of a rushing mighty wind.\" Vedder's storm sweeps "
+        "down over the Umbrian hills, and one small figure walks on into it — "
+        "the believer moved and carried by a power not his own.",
+        focus=0.68,
+    ),
 }
 
 

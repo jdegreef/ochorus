@@ -16,7 +16,7 @@ from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
-from .text import is_blank_title
+from .text import BLANK_TITLE_REGEX, is_blank_title
 
 
 class AuthorQuerySet(models.QuerySet):
@@ -514,6 +514,18 @@ class SeriesTranslation(models.Model):
         return f"{self.series.slug} [{self.language}]"
 
 
+def _title_not_blank(field: str, model: str) -> models.CheckConstraint:
+    """The database floor under a work's title: never only invisible
+    characters (text.BLANK_TITLE_REGEX) — so .update(), bulk_create and the SQL
+    editor are refused too, which save()'s guard below can't see."""
+    return models.CheckConstraint(
+        condition=~models.Q(**{f"{field}__regex": BLANK_TITLE_REGEX}),
+        name=f"{model}_{field}_not_blank",
+        violation_error_code="blank_title",
+        violation_error_message="A title is required — this one shows nothing.",
+    )
+
+
 def _require_title(row, save_kwargs, field: str = "title") -> None:
     """Refuse to save a work whose title would show a reader nothing.
 
@@ -522,11 +534,13 @@ def _require_title(row, save_kwargs, field: str = "title") -> None:
     gate only covers the last. A blank title still reached production, so the
     rule lives here, where every one of them passes.
 
-    It refuses a title that is BECOMING blank — a new row, or an edit to the
-    title — never one that already was. The release step re-saves rows whole
-    (apply_body_corrections), so refusing a legacy blank row there would fail
-    every deploy until someone fixed the data by hand; that row stays saveable
-    until it is retitled, and the coverage matrix flags it meanwhile.
+    The friendly half of the rule: a ValidationError naming the work, and the
+    wider Unicode check (is_blank_title) the database constraint can't make.
+    It refuses a title BECOMING blank — a new row or a retitle — not one that
+    already is: migration 0180 named every such row and the constraint keeps the
+    common ones out, so what's left is an exotic format character, and the
+    release step's whole-row re-saves (apply_body_corrections) must never fail
+    a deploy on it.
     """
     fields = save_kwargs.get("update_fields")
     if fields is not None and field not in fields:
@@ -655,6 +669,7 @@ class Book(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_book_slug_language"
             ),
+            _title_not_blank("title", "book"),
             # Two editions of one language cannot both be volume 2. Rows with
             # no position (a collection, or no series) are exempt: NULLs are
             # distinct in a unique index. DEFERRED because seed_books saves a
@@ -922,6 +937,7 @@ class Sermon(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_sermon_slug_language"
             ),
+            _title_not_blank("title", "sermon"),
         ]
         indexes = [
             # SermonListView, and the topic/author attach paths — same shape and
@@ -1054,6 +1070,7 @@ class Article(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_article_slug_language"
             ),
+            _title_not_blank("h1", "article"),
         ]
         indexes = [
             # ArticleListView: filter(language, is_published) then
@@ -1118,6 +1135,7 @@ class Plan(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_plan_slug_language"
             ),
+            _title_not_blank("title", "plan"),
         ]
 
     def natural_key(self):

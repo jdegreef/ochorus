@@ -19,6 +19,7 @@ from .. import invalidation
 from ..audit import AdminAudited
 from ..content_audit import (
     DISMISSIBLE_CHECKS,
+    chapter_lengths,
     dismissed_fingerprints,
     present,
     record_scan,
@@ -1056,6 +1057,7 @@ class AdminAuditView(APIView):
                 "scan": {**scan["scope"], "trigger": scan["trigger"]},
                 # The nightly, recorded scan — distinct from the cached one above.
                 "schedule": schedule_status(),
+                "chapter_lengths": chapter_lengths(scan["lengths"], language),
             }
         )
 

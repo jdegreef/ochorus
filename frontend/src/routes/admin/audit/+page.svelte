@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ChapterLengthChart from '$lib/components/ChapterLengthChart.svelte';
 	import {
 		getAdminAudit,
+		adminChapterHref,
+		chapterFlagLabel,
+		formatRate,
+		getAdminDropOff,
 		dismissAuditFinding,
 		undoAuditDismissal,
 		type AdminAudit,
@@ -56,6 +61,15 @@
 	// editions" scan is the one to restore.
 	auditRes.data ??= readAuditCache('');
 	const audit = $derived(auditRes.data);
+
+	// Readers stop here: chapters losing the largest share of their readers,
+	// for the language being audited. Its own fetch, so a slow or failed one
+	// costs only this panel.
+	const dropRes = adminResource(
+		() => getAdminDropOff(language),
+		"Couldn't load where readers stop.",
+		() => language
+	);
 
 	async function rerun() {
 		forceRefresh = true;
@@ -558,6 +572,67 @@
 					</details>
 				{/if}
 
+				<!-- Readers stop here: where a book loses its readers, with what the
+				     content checks say about that chapter. Flagged ones are listed
+				     first because those are usually import problems with a fix. -->
+				<!-- Only the current language's list: the resource keeps the last
+				     one while it reloads, or if the reload fails. -->
+				{#if dropRes.error && !dropRes.loading}
+					<p class="text-small text-danger">{dropRes.error}</p>
+				{:else if dropRes.data?.language === language && dropRes.data.drops.length}
+					<section>
+						<h2 class="text-h3 mb-1">Readers stop here</h2>
+						<p class="mb-3 text-small text-muted">
+							The chapter in each book that loses the largest share of the readers who reach it (stopped = no progress for
+							{dropRes.data.stall_days} days; {dropRes.data.min_readers}+ readers reached it). Flagged chapters first: those are usually import problems.
+						</p>
+						<div class="overflow-x-auto rounded-card border border-border">
+							<table class="w-full text-small">
+								<thead>
+									<tr class="text-micro uppercase tracking-wide text-muted">
+										<th class="px-3 py-2 text-start font-semibold">Book</th>
+										<th class="px-3 py-2 text-start font-semibold">Chapter</th>
+										<th class="px-3 py-2 text-end font-semibold">Stopped</th>
+										<th class="px-3 py-2 text-start font-semibold">Flags</th>
+										<th class="px-3 py-2"></th>
+									</tr>
+								</thead>
+								<tbody>
+									{#each dropRes.data.drops as d (`${d.language}:${d.slug}`)}
+										<tr class="border-t border-border">
+											<td class="max-w-0 px-3 py-2">
+												<span class="block truncate font-semibold text-text">{d.book_title}</span>
+												{#if !language}<span class="text-micro text-muted">{d.language}</span>{/if}
+											</td>
+											<td class="px-3 py-2">
+												<span class="tabular-nums">{d.chapter}</span>{#if d.chapter_title}<span class="text-muted">{` · ${d.chapter_title}`}</span>{/if}
+												<span class="block text-micro tabular-nums text-muted">{d.word_count.toLocaleString('en')} words</span>
+											</td>
+											<td class="px-3 py-2 text-end tabular-nums">
+												<span class="font-semibold text-danger">{formatRate(d.rate)}</span>
+												<span class="block text-micro text-muted">{d.stopped} of {d.reached}</span>
+											</td>
+											<td class="px-3 py-2">
+												{#each d.flags as f (f)}
+													<span class="me-1 rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{chapterFlagLabel(f)}</span>
+												{:else}
+													<span class="text-micro text-muted">none: may just be a hard chapter</span>
+												{/each}
+											</td>
+											<td class="px-3 py-2 text-end">
+												<a
+													href={adminChapterHref(d.slug, d.language, d.chapter)}
+													class="whitespace-nowrap text-accent hover:underline">Open chapter</a
+												>
+											</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+						</div>
+					</section>
+				{/if}
+
 				<!-- Quality: advisory heuristics. Folded by default; expand to inspect. -->
 				<section>
 					<h2 class="text-h3 mb-1">Content quality</h2>
@@ -599,6 +674,12 @@
 							{@render check(q, q.c.total, false, findings, q.c.dismissed)}
 						{/if}
 					{/each}
+
+					<!-- After the checks, not beside one: Tiny and Giant sit in
+					     different tiers, and this is context for tuning both. -->
+					{#if a.chapter_lengths}
+						<div class="mt-6"><ChapterLengthChart data={a.chapter_lengths} /></div>
+					{/if}
 				</section>
 			</div>
 		{/snippet}
