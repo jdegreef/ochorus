@@ -3,6 +3,7 @@
 import { getPlan, listPlans } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
 import { getLang } from '$lib/lang.svelte';
+import { relatedPlans } from '$lib/relatedPlans';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Trailing-slash canonical -> prerenders to plans/<slug>/index.html, which the
@@ -29,7 +30,15 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params, fetch }) => {
-	// See the note in topics/[slug]: an unknown slug must reach the not-found
-	// page, not the generic retry shell.
-	return { plan: await orNotFound(() => getPlan(params.slug, getLang(), fetch)) };
+	const lang = getLang();
+	// The plans list feeds "More like this". Fetched beside the plan (not after
+	// it) and in the load, so the block is in the prerendered HTML. It is
+	// decoration: a failed list drops the block, never the page — so it keeps
+	// its own catch rather than going through orNotFound/loadShelf. The current
+	// language's list only: a suggestion must open here (no English fallback).
+	const [plan, all] = await Promise.all([
+		orNotFound(() => getPlan(params.slug, lang, fetch)),
+		listPlans(lang, fetch).catch(() => [])
+	]);
+	return { plan, related: relatedPlans(plan, all) };
 };
