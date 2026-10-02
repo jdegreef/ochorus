@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { define } from '$lib/define.svelte';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -93,18 +94,12 @@
 	let outlineOpen = $state(false);
 
 	// Phones get the chapter reader's footer row (Listen · + · Aa) instead of
-	// Listen and Aa in the top bar. A $state+$effect flag, not svelte's
-	// MediaQuery: that reads matchMedia during hydration and would disagree with
-	// the prerendered (desktop) markup. Only one <ReaderControls> mounts — the
+	// Listen and Aa in the top bar. Only one <ReaderControls> mounts — the
 	// popover and the phone sheet share readerUi.panelOpen.
-	let isPhone = $state(false);
-	$effect(() => {
-		const mq = window.matchMedia('(max-width: 639.98px)');
-		const sync = () => (isPhone = mq.matches);
-		sync();
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
-	});
+	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
+	// the prerendered markup), so both `{#if}`s below agree with it.
+	const phone = mediaFlag('(max-width: 639.98px)');
+	const isPhone = $derived(phone.matches);
 
 	// The footer's action row folds away while reading on and returns on the
 	// first scroll up, as the chapter's does (nextBarHidden). Folding changes no

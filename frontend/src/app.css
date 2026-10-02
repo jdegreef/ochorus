@@ -2207,6 +2207,34 @@ a.sermon-row-title:hover {
 	}
 }
 
+/* A tab in a page's sticky jump bar (book, author and /scripture sub-navs):
+   quiet until hovered; the active one wears the accent and an underline drawn
+   on the bar's own bottom border (the -1px overlap makes them meet). One
+   definition — the three pages each carried a copy, already drifting. The
+   handler is scrollSpy's `spy.jump`. */
+.subnav-link {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	font-size: var(--fs-small);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--muted);
+	text-decoration: none;
+}
+.subnav-link:hover {
+	color: var(--text);
+}
+.subnav-link.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+/* A tighter tab, for a bar that also carries a CTA (the book page). */
+.subnav-link-tight {
+	padding-inline: 0.6rem;
+}
+
 /* Scripture heat: how many passages cite a Bible chapter, 0 (coolest) to 4.
    One definition for the chips (ScriptureChapterChips) and the /scripture
    legend. Levels 0–3 keep body ink on an accent wash light enough to hold it

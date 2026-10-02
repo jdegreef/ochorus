@@ -9,8 +9,9 @@
 	import { groupScripture, heatScale, HEAT_LEVELS, mayBeReference, mostCited } from '$lib/scriptureIndex';
 	import { searchHref } from '$lib/searchState';
 	import { localizeHref } from '$lib/href';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -103,19 +104,16 @@
 	// the reader or a #section jump; a <noscript> style reopens everything for a
 	// reader without JS. Once hydrated, `hidden="until-found"` takes over, so
 	// find-in-page still reaches a collapsed book's chapters and opens it.
-	// `narrow` is a $state set in an effect, NOT svelte/reactivity's MediaQuery,
-	// for the book reader's reason: MediaQuery reads matchMedia during hydration
-	// and would disagree with the prerendered markup.
+	// `narrow` is mediaFlag (hydration-safe: false in the prerendered markup).
 	const NARROW = '(max-width: 34rem)';
-	let narrow = $state(false);
+	const narrowQuery = mediaFlag(NARROW);
+	const narrow = $derived(narrowQuery.matches);
+	// "Has mounted" (not a media query, so not mediaFlag): flips in the same
+	// post-hydration flush as `narrow`, so `.books-pending` hands over to the
+	// `hidden` attribute in one frame.
 	let hydrated = $state(false);
 	$effect(() => {
-		const mq = window.matchMedia(NARROW);
-		const sync = () => (narrow = mq.matches);
-		sync();
 		hydrated = true;
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
 	});
 	const openBooks = new SvelteSet<string>();
 	const toggleBook = (slug: string) => (openBooks.has(slug) ? openBooks.delete(slug) : openBooks.add(slug));
@@ -137,15 +135,6 @@
 	// the section in view. No-JS / prerender: the links still jump.
 	let subnavH = $state(0);
 	const spy = scrollSpy(() => sections.map((s) => sectionId(s.key)));
-	function jumpTo(e: MouseEvent, id: string) {
-		e.preventDefault();
-		spy.set(id);
-		jumpToSection(id);
-		// Keep SvelteKit's state on the entry: replacing it with null erases the
-		// router's history index, and Back from a chapter page then changes only
-		// the URL. (The book page does the same.)
-		history.replaceState(history.state, '', `#${id}`);
-	}
 
 	const path = '/scripture/';
 	const canonical = `${SITE_URL}${path}`;
@@ -254,7 +243,7 @@
 								class="subnav-link"
 								class:is-active={spy.active === sectionId(s.key)}
 								aria-current={spy.active === sectionId(s.key) ? 'true' : undefined}
-								onclick={(e) => jumpTo(e, sectionId(s.key))}>{sectionName(s.key)}</a
+								onclick={(e) => spy.jump(e, sectionId(s.key))}>{sectionName(s.key)}</a
 							>
 						</li>
 					{/each}
@@ -406,24 +395,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.75rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--color-muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--color-text);
-	}
-	.subnav-link.is-active {
-		color: var(--color-accent);
-		border-bottom-color: var(--color-accent);
 	}
 
 	.legend {
