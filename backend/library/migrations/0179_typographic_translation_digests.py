@@ -430,10 +430,10 @@ def noop(apps, schema_editor):
 
 
 class Migration(migrations.Migration):
-    # Also the merge of main's three parallel 0177 leaves.
+    # Also joins main's two remaining leaves: 0178 merged two of the three
+    # parallel 0177s, and 0177_author_tagline was left beside it.
     dependencies = [
         ("library", "0177_author_tagline"),
-        ("library", "0177_languagehealthsnapshot"),
-        ("library", "0177_searchdecision_synonym_pinned"),
+        ("library", "0178_merge_two_0177_leaves"),
     ]
     operations = [migrations.RunPython(refingerprint, noop)]

@@ -248,7 +248,7 @@ class TypographyIsNotAChangeTests(TestCase):
 
 
 class RefingerprintMigrationTests(TestCase):
-    """0178 moves every digest to the typographic rule without changing which
+    """0179 moves every digest to the typographic rule without changing which
     translations are stale — except those #4936's dashes alone had flagged."""
 
     @staticmethod
@@ -266,7 +266,7 @@ class RefingerprintMigrationTests(TestCase):
 
         from django.apps import apps
 
-        mig = importlib.import_module("library.migrations.0178_typographic_translation_digests")
+        mig = importlib.import_module("library.migrations.0179_typographic_translation_digests")
         (kind, pre_slug), pre_digest = next(
             (k, v) for k, v in mig.PRE_4936.items() if k[0] == "book"
         )
