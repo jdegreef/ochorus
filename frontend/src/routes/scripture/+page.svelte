@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
-	import { scripturePageHref } from '$lib/library-public';
+	import { scripturePageHref, searchPage } from '$lib/library-public';
+	import { goto } from '$app/navigation';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { groupScripture, heatScale, HEAT_LEVELS, mostCited } from '$lib/scriptureIndex';
@@ -33,6 +34,47 @@
 	// Looked up once: the template calls this for every chip and verse link.
 	const passagesTpl = $derived(t('scripture.passagesCount'));
 	const passages = (n: number) => passagesTpl.replace('%count%', String(n));
+
+	// "Go to a passage": hand the reader's reference to the search API's
+	// scripture resolver — the server parses it (pythonbible: "Rom 8:28",
+	// "Ps 23", "1 Cor 13"; English book names, as the page is English-only) and
+	// answers only with a page that was actually built, verse page first, then
+	// its chapter. No second parser here to drift from it. The form's
+	// action=/search is the fallback before hydration.
+	let findQ = $state('');
+	let finding = $state(false);
+	let notFound = $state('');
+	// Bumped by every new lookup and every edit, so a slow reply for a query the
+	// reader has since replaced is dropped instead of navigating or showing a miss.
+	let findSeq = 0;
+	const searchAllHref = (q: string) => `/search?q=${encodeURIComponent(q)}`;
+	function editFind() {
+		findSeq++;
+		finding = false;
+		notFound = '';
+	}
+	async function find(e: SubmitEvent) {
+		e.preventDefault();
+		const q = findQ.trim();
+		if (!q) return;
+		const seq = ++findSeq;
+		finding = true;
+		notFound = '';
+		let hit;
+		try {
+			// type=scripture returns at most one row, and only scripture rows.
+			[hit] = (await searchPage(q, 'en', 'scripture')).results;
+		} catch {
+			// The API failed: the full search page has its own error and retry.
+			if (seq === findSeq) await goto(searchAllHref(q));
+			return;
+		} finally {
+			if (seq === findSeq) finding = false;
+		}
+		if (seq !== findSeq) return;
+		if (hit?.type === 'scripture') await goto(scripturePageHref(hit.book_slug, hit.chapter, hit.verse));
+		else notFound = q;
+	}
 
 	// A starting point for a reader who arrives without a passage in mind: the
 	// chapters the writers return to most.
@@ -109,6 +151,32 @@
 	{:else if !books.length}
 		<EmptyState message={t('scripture.empty')} />
 	{:else}
+		<form class="find" method="get" action="/search" role="search" onsubmit={find}>
+			<label for="scripture-find" class="find-label">{t('scripture.findLabel')}</label>
+			<div class="find-row">
+				<input
+					id="scripture-find"
+					name="q"
+					type="search"
+					class="field"
+					autocomplete="off"
+					enterkeyhint="go"
+					placeholder={t('scripture.findPlaceholder')}
+					bind:value={findQ}
+					oninput={editFind}
+				/>
+				<button type="submit" class="btn btn-primary" disabled={finding} aria-busy={finding}>
+					{t('scripture.findGo')}
+				</button>
+			</div>
+			{#if notFound}
+				<p class="find-none" role="status">
+					{t('scripture.findNone').replace('%ref%', () => notFound)}
+					<a href={searchAllHref(notFound)}>{t('scripture.findSearchAll')}</a>
+				</p>
+			{/if}
+		</form>
+
 		<section class="top" aria-labelledby="top-heading">
 			<h2 id="top-heading" class="section-label">{t('scripture.mostCited')}</h2>
 			<ol class="top-list">
@@ -200,6 +268,34 @@
 </div>
 
 <style>
+	/* "Go to a passage" — one field and a button, above the most-cited cards. */
+	.find {
+		margin: 0.25rem 0 2rem;
+		max-width: 32rem;
+	}
+	.find-label {
+		display: block;
+		margin-bottom: 0.4rem;
+		font-size: var(--fs-small);
+		font-weight: 600;
+	}
+	.find-row {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.find-row .field {
+		flex: 1;
+		min-width: 0;
+	}
+	.find-none {
+		margin: 0.5rem 0 0;
+		font-size: var(--fs-small);
+		color: var(--color-muted);
+	}
+	.find-none a {
+		color: var(--color-accent);
+		white-space: nowrap;
+	}
 	/* Most-cited chapters: a wrapping grid of small cards, the hub's way in for a
 	   reader who arrives without a passage in mind. */
 	.top {
