@@ -55,7 +55,7 @@ def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
     return RenderedEmail(subject=str(text["subject"]), html=html)
 
 
-def _email_lang(profile, subscription) -> str:
+def email_language(profile, subscription) -> str:
     """The language to render in: the reader's email-locale preference when set,
     else their reading locale, else English."""
     override = (getattr(subscription, "email_locale", "") or "").strip()
@@ -64,7 +64,7 @@ def _email_lang(profile, subscription) -> str:
 
 def render_step(step: str, profile, subscription) -> RenderedEmail:
     """Render lifecycle ``step`` for ``profile`` in their language."""
-    lang = _email_lang(profile, subscription)
+    lang = email_language(profile, subscription)
     text = copy_mod.step_copy(step, lang)
     return _render(text, profile, subscription, lang)
 
@@ -95,7 +95,7 @@ def render_series_nudge(
     Unlike the static lifecycle steps, this fills the just-finished and next-up
     book titles into the copy and points the CTA at the next volume (``cta_path``
     is resolved per reader by the caller)."""
-    lang = _email_lang(profile, subscription)
+    lang = email_language(profile, subscription)
     mapping = {"{finished}": finished_title, "{next}": next_title}
     text = {
         key: _fill(value, mapping)
@@ -108,7 +108,7 @@ def render_series_nudge(
 def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""
-    lang = _email_lang(profile, subscription)
+    lang = email_language(profile, subscription)
     resolved = resolve_broadcast_locale(broadcast, lang)
     if resolved is None:
         return None

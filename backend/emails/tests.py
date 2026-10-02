@@ -41,6 +41,7 @@ from .models import (
 )
 from .recipient import verified_email as resolve_recipient_email
 from .rendering import render_series_nudge, render_welcome
+from .series_nudge import candidate_profiles as series_candidate_profiles
 from .series_nudge import next_series_volume
 from .series_nudge import send_due as send_series_due
 from .streams import STREAM_KEYS
@@ -1098,6 +1099,40 @@ class NextSeriesVolumeTests(TestCase):
         _finish(self.profile, Book.objects.get(slug="beta-1"), when=timezone.now())
         _, next_book = next_series_volume(self.profile)
         self.assertEqual(next_book.slug, "beta-2")
+
+    def test_volume_read_in_another_language_is_not_recommended(self):
+        # Progress is one row per (profile, slug), so a volume read in any
+        # language counts as read — don't recommend another edition of it.
+        series = Series.objects.create(slug="x", title="X")
+        author = Author.objects.create(slug="ax", name="A")
+        for lang in ("en", "pt"):
+            for i in (1, 2):
+                Book.objects.create(
+                    author=author, slug=f"x-{i}", language=lang, title=f"V{i} {lang}",
+                    series=series, series_position=i,
+                )
+        _finish(self.profile, Book.objects.get(slug="x-1", language="pt"))
+        _finish(self.profile, Book.objects.get(slug="x-2", language="en"))
+        # The pt edition of volume 2 must NOT be offered — volume 2 is read.
+        self.assertIsNone(next_series_volume(self.profile))
+
+
+class SeriesCandidateProfilesTests(TestCase):
+    def test_window_includes_recent_finishers_only(self):
+        _series(n=2)
+        vol1 = Book.objects.get(slug="portraits-1")
+        recent = _make_profile(email="recent@example.com")
+        old = _make_profile(email="old@example.com")
+        unstarted = _make_profile(email="none@example.com")
+        _finish(recent, vol1, when=timezone.now())
+        _finish(old, vol1, when=timezone.now() - timedelta(days=60))
+        _start(unstarted, vol1)  # started but not finished
+
+        cutoff = timezone.now() - timedelta(days=30)
+        ids = set(series_candidate_profiles(cutoff).values_list("id", flat=True))
+        self.assertIn(recent.id, ids)
+        self.assertNotIn(old.id, ids)
+        self.assertNotIn(unstarted.id, ids)
 
 
 @SENDING

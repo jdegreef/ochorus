@@ -41,7 +41,7 @@ from .models import (
     idempotency_key,
 )
 from .recipient import verified_email
-from .rendering import render_series_nudge
+from .rendering import email_language, render_series_nudge
 from .sending import deliver
 
 #: The lifecycle_step recorded on the message (groups the metric); the per-volume
@@ -89,7 +89,11 @@ def next_series_volume(profile) -> tuple[Book, Book] | None:
             profile=profile, kind=WorkKind.BOOK
         ).values("book_slug", "language", "finished_at")
     )
-    started = {(r["book_slug"], r["language"]) for r in rows}
+    # Reading progress is one row per (profile, book_slug) — a volume, whatever
+    # language it was read in. So "already opened" is a slug question (skip a
+    # volume read in ANY language); "finished in this edition" keeps the language
+    # (it must match the Book row to read its series position).
+    started_slugs = {r["book_slug"] for r in rows}
     finished = {
         (r["book_slug"], r["language"]): r["finished_at"]
         for r in rows
@@ -132,7 +136,7 @@ def next_series_volume(profile) -> tuple[Book, Book] | None:
             .only("slug", "language", "title")
             .first()
         )
-        if nxt is None or (nxt.slug, language) in started:
+        if nxt is None or nxt.slug in started_slugs:
             continue
         if best is None or found.finished_at > best.finished_at:
             best = _Candidate(found.finished_at, found.book, nxt)
@@ -162,7 +166,9 @@ def _send(profile, subscription, finished_book: Book, next_book: Book) -> EmailM
             EmailKind.LIFECYCLE, f"{FINISH_SERIES_STEP}:{next_book.slug}", profile
         ),
         to_email=to_email,
-        locale=next_book.language,
+        # The language the email is actually rendered in (the reader's), which
+        # may differ from the next volume's language.
+        locale=email_language(profile, subscription),
         lifecycle_step=FINISH_SERIES_STEP,
     )
 
