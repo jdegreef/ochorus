@@ -24,7 +24,7 @@ drop off between.
 
 from __future__ import annotations
 
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import timedelta
 
 from django.utils import timezone
@@ -36,6 +36,11 @@ STALL_DAYS = 30
 # this many readers reached the chapter: fewer is noise, and small groups can
 # point at a person.
 MIN_READERS = 5
+
+# One book's own admin page names its steepest drop from this many readers:
+# the admin is already looking at that book, so a small group still says
+# something there.
+MIN_READERS_BOOK = 2
 
 
 def _furthest(row: dict, chapters: int) -> int:
@@ -52,20 +57,17 @@ def reach(rows, chapters: int, *, now=None) -> list[dict]:
     if chapters <= 0:
         return []
     stall = (now or timezone.now()) - timedelta(days=STALL_DAYS)
-    reached = [0] * (chapters + 2)
-    stopped = [0] * (chapters + 1)
-    still = [0] * (chapters + 1)
+    at, stopped, still = Counter(), Counter(), Counter()
     for row in rows:
         n = _furthest(row, chapters)
-        reached[n] += 1  # suffix-summed below: reaching n means reaching 1..n
+        at[n] += 1
         if row["finished_at"] is None:
             (stopped if row["updated_at"] < stall else still)[n] += 1
-    for n in range(chapters - 1, 0, -1):
-        reached[n] += reached[n + 1]
-    return [
-        {"chapter": n, "reached": reached[n], "stopped": stopped[n], "still": still[n]}
-        for n in range(1, chapters + 1)
-    ]
+    curve, reached = [], 0
+    for n in range(chapters, 0, -1):  # reaching n means reaching 1..n
+        reached += at[n]
+        curve.append({"chapter": n, "reached": reached, "stopped": stopped[n], "still": still[n]})
+    return curve[::-1]
 
 
 def steepest_drop(curve: list[dict], *, min_readers: int = 1) -> dict | None:
@@ -73,29 +75,32 @@ def steepest_drop(curve: list[dict], *, min_readers: int = 1) -> dict | None:
     (stopped readers only), among chapters reached by at least ``min_readers``.
     The last chapter is excluded: stopping there is finishing, or near enough.
     ``{chapter, reached, stopped, rate}``, or None when nothing qualifies."""
-    best = None
-    for point in curve[:-1]:
-        if point["reached"] < min_readers or not point["stopped"]:
-            continue
-        rate = point["stopped"] / point["reached"]
-        if best is None or rate > best["rate"]:
-            best = {**point, "rate": round(rate, 3)}
-    if best:
-        best.pop("still", None)
-    return best
+    candidates = [p for p in curve[:-1] if p["reached"] >= min_readers and p["stopped"]]
+    if not candidates:
+        return None
+    p = max(candidates, key=lambda p: p["stopped"] / p["reached"])
+    return {
+        "chapter": p["chapter"],
+        "reached": p["reached"],
+        "stopped": p["stopped"],
+        "rate": round(p["stopped"] / p["reached"], 3),
+    }
 
 
-def progress_rows(language: str, slugs=None):
-    """Book progress rows in ``language``, grouped by slug, in the shape
-    ``reach`` reads. One query however many books."""
+def progress_rows(*, slug: str | None = None, language: str | None = None):
+    """Book progress rows, grouped by edition ``(slug, language)``, in the
+    shape ``reach`` reads. One query, narrowed to one work and/or one language
+    when given."""
     from reading.models import ReadingProgress, WorkKind
 
-    qs = ReadingProgress.objects.filter(kind=WorkKind.BOOK, language=language)
-    if slugs is not None:
-        qs = qs.filter(book_slug__in=list(slugs))
-    out: dict[str, list[dict]] = defaultdict(list)
+    qs = ReadingProgress.objects.filter(kind=WorkKind.BOOK).order_by()
+    if slug:
+        qs = qs.filter(book_slug=slug)
+    if language:
+        qs = qs.filter(language=language)
+    out: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for row in qs.values(
-        "book_slug", "furthest_order", "chapter_order", "finished_at", "updated_at"
+        "book_slug", "language", "furthest_order", "chapter_order", "finished_at", "updated_at"
     ):
-        out[row["book_slug"]].append(row)
+        out[(row["book_slug"], row["language"])].append(row)
     return out

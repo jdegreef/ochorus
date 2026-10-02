@@ -3,6 +3,8 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import {
 		getAdminAudit,
+		adminChapterHref,
+		chapterFlagLabel,
 		getAdminDropOff,
 		dismissAuditFinding,
 		undoAuditDismissal,
@@ -536,12 +538,11 @@
 				     content checks say about that chapter. Flagged ones are listed
 				     first because those are usually import problems with a fix. -->
 				{#if dropRes.data?.drops.length}
-					{@const dd = dropRes.data}
 					<section>
 						<h2 class="text-h3 mb-1">Readers stop here</h2>
 						<p class="mb-3 text-small text-muted">
-							The chapter in each book that loses the largest share of the readers who reach it (stopped = no progress for 30
-							days; {dd.min_readers}+ readers reached it). Flagged chapters first: those are usually import problems.
+							The chapter in each book that loses the largest share of the readers who reach it (stopped = no progress for
+							{dropRes.data.stall_days} days; {dropRes.data.min_readers}+ readers reached it). Flagged chapters first: those are usually import problems.
 						</p>
 						<div class="overflow-x-auto rounded-card border border-border">
 							<table class="w-full text-small">
@@ -555,7 +556,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									{#each dd.drops as d (`${d.language}:${d.slug}`)}
+									{#each dropRes.data.drops as d (`${d.language}:${d.slug}`)}
 										<tr class="border-t border-border">
 											<td class="max-w-0 px-3 py-2">
 												<span class="block truncate font-semibold text-text">{d.book_title}</span>
@@ -571,14 +572,14 @@
 											</td>
 											<td class="px-3 py-2">
 												{#each d.flags as f (f)}
-													<span class="me-1 rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{f}</span>
+													<span class="me-1 rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{chapterFlagLabel(f)}</span>
 												{:else}
 													<span class="text-micro text-muted">none: may just be a hard chapter</span>
 												{/each}
 											</td>
 											<td class="px-3 py-2 text-end">
 												<a
-													href="/admin/books/{d.slug}#ch-{d.language}-{d.chapter}"
+													href={adminChapterHref(d.slug, d.language, d.chapter)}
 													class="whitespace-nowrap text-accent hover:underline">Open chapter</a
 												>
 											</td>

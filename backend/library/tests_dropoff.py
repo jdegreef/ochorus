@@ -107,6 +107,7 @@ class DropOffViewTests(TestCase):
         self.assertEqual([p["reached"] for p in en["reach"]], [6, 6, 2])
         self.assertEqual(en["steepest"]["chapter"], 2)
         self.assertEqual(en["steepest"]["stopped"], 4)
+        self.assertEqual(res.data["stall_days"], dropoff.STALL_DAYS)
 
     def test_the_audit_list_puts_the_flagged_drop_first(self):
         res = APIClient().get("/api/admin/drop-off/?language=en")
