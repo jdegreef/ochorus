@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
@@ -9,6 +9,7 @@ import { baseEdition } from './reading-schema';
 import { eraOf } from './eras';
 import { COVER_CSS_CODE } from '../test/coverCss';
 import { isArtCover, isPlateCover, twinUrl } from './coverArt';
+import { allBookRows } from '../test/bookRows';
 
 /**
  * The other half of the share-card staleness gate.
@@ -42,8 +43,8 @@ import { isArtCover, isPlateCover, twinUrl } from './coverArt';
 /**
  * Read once, not once per assertion.
  *
- * `needTwins()` reads and JSON-parses EVERY book fixture — 158 files, 82 MB —
- * and it was called by three separate tests, as `manifestFile()` and `births()`
+ * `needTwins()` reads every book fixture (it now parses only each file's book
+ * row, via `allBookRows`) and it was called by three separate tests, as `manifestFile()` and `births()`
  * were by several more. The file spent most of its time re-parsing the whole
  * library, which put it right at vitest's 5s default: it passed alone and timed
  * out under load, an intermittent red that told nobody anything true. Nothing
@@ -104,20 +105,9 @@ const births = once(
  */
 const needTwins = once(() => {
 	const birth = births();
-	return readdirSync(join(CONTENT, 'books'))
-		.filter((f) => f.endsWith('.json'))
-		.flatMap((f) => JSON.parse(readFileSync(join(CONTENT, 'books', f), 'utf8')))
-		.filter((row) => row.model === 'library.book')
-		.map(
-			(row) =>
-				row.fields as {
-					slug: string;
-					language: string;
-					author: string[];
-					cover_url?: string;
-					series_position?: number | null;
-				}
-		)
+	// The book row alone — parsing every chapter of a ~300 MB corpus is what
+	// ran this past vitest's 5 s timeout.
+	return allBookRows()
 		.filter((f) => isArtCover(f.cover_url) || isPlateCover(f.cover_url))
 		.map((f) => {
 			const art = isArtCover(f.cover_url);
