@@ -751,7 +751,7 @@
 			"volume": null,
 			"script": "latin",
 			"art": true,
-			"scrim": 1,
+			"scrim": 0.3,
 			"layout": "framed",
 			"bar": 0,
 			"rows": {
@@ -759,8 +759,8 @@
 					[114, 102, 486, 131]
 				],
 				"title": [
-					[219, 308, 381, 384],
-					[118, 374, 482, 450]
+					[204, 308, 396, 384],
+					[78, 374, 522, 450]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -7727,6 +7727,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "split/navy",
+			"bar": 0
+		},
+		"power-from-on-high-new-testament": {
+			"ground": "cc13f2cbdd3b72c686561e525e8d340c552eb80b9b4eddc9dc0c16e56ae77e6d",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
 			"bar": 0
 		},
 		"power-through-prayer": {

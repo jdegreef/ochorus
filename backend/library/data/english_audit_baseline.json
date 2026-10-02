@@ -198,6 +198,9 @@
    "orphan-close-quote": 1,
    "space-before-punct": 3
   },
+  "power-from-on-high-new-testament": {
+   "space-before-punct": 8
+  },
   "power-through-prayer": {
    "space-before-punct": 2,
    "word-fusion": 1
