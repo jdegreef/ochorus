@@ -187,6 +187,16 @@ worker specifics that shipped ~11 editions:
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.
+- **If the new edition will be downloadable** (you are also adding
+  `(slug, lang)` to `export_policy.EXPORT_PILOT`, or the job says so) and
+  `backend/library/export_bios/<author-slug>.<lang>.txt` doesn't exist yet,
+  write it in this job: the one-page "About the Author" for the PDF/EPUB,
+  3–4 paragraphs, written from that author's long bio in this language
+  (`migrations/data/author_bios_<lang>/<slug>.html`; if none, translate the
+  English export bio). Add its source digest to `export_bios/sources.json`
+  and render the PDF to confirm it fits one page — the `book-export` skill
+  (Pre-flight) has the rules. `PilotTests` fails the PR without it. It is
+  AI-written and outside the review dashboard: say so in the PR.
 - Ship: write **one new file** `backend/library/fixtures/content/books/
   <slug>.<lang>.json` — the translated Book row first, then its Chapters, in
   natural-key format (NO `pk` keys; `"author"` is `["author-slug"]`, each

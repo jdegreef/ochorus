@@ -36,7 +36,7 @@ in `backend/library/book_export.py`, in this order:
   the author's long `bio_html` — its facts and verbatim quotes only. `PilotTests`
   requires one for every exportable edition, rejects a file no edition uses, and
   pins in `export_bios/sources.json` the digest of the long bio each was checked
-  against (English `bio_html`; else `migrations/data/author_bios_<lang>/<slug>.html`):
+  against (`migrations/data/author_bios_<lang>/<slug>.html` when that language has one, else the English `bio_html`):
   when that test fails, re-read the bio against the new long bio, then update
   the digest. It must fit ONE A5 page — `export_book` fails a PDF whose author
   page spills onto the next (its `author-top`/`author-end` anchors land on
