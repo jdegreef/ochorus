@@ -411,6 +411,61 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    # Reading milestone. ``{count}`` is the milestone reached (filled at render
+    # time, like ``{name}``). A celebration, so a warm subject and a gentle CTA
+    # back to the library for the next one.
+    "milestone": {
+        "en": {
+            "subject": "{count} books — well done",
+            "preheader": "A real milestone. Here’s to the next one.",
+            "heading": "{count} books read",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You’ve now finished {count} books on Ochorus — that’s a genuine "
+                "milestone, and worth pausing to mark.",
+                "Each one is a classic that has steadied and stirred readers for "
+                "generations, and you’ve read it through. Here’s to the next, "
+                "whenever you’re ready.",
+            ],
+            "cta_label": "Find your next book",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "{count} libros: bien hecho",
+            "preheader": "Todo un logro. Por el siguiente.",
+            "heading": "{count} libros leídos",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ya has terminado {count} libros en Ochorus, y eso es todo un "
+                "logro que vale la pena celebrar.",
+                "Cada uno es un clásico que ha fortalecido y conmovido a lectores "
+                "durante generaciones, y lo has leído entero. Por el siguiente, "
+                "cuando quieras.",
+            ],
+            "cta_label": "Encuentra tu próximo libro",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "{count} livros: parabéns",
+            "preheader": "Um verdadeiro marco. Ao próximo.",
+            "heading": "{count} livros lidos",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já terminou {count} livros no Ochorus — isso é um verdadeiro "
+                "marco, e vale a pena parar para celebrar.",
+                "Cada um é um clássico que fortaleceu e tocou leitores durante "
+                "gerações, e leu-o até ao fim. Ao próximo, quando quiser.",
+            ],
+            "cta_label": "Encontre o seu próximo livro",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
 }
 
 

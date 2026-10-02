@@ -316,6 +316,12 @@ try:
     EMAIL_SERIES_LOOKBACK_DAYS = int(os.getenv("EMAIL_SERIES_LOOKBACK_DAYS", "30"))
 except ValueError:
     EMAIL_SERIES_LOOKBACK_DAYS = 30
+# Same idea for milestone cards: only readers who finished a book within this
+# window are scanned (idempotency decides who's actually crossed a new milestone).
+try:
+    EMAIL_MILESTONE_LOOKBACK_DAYS = int(os.getenv("EMAIL_MILESTONE_LOOKBACK_DAYS", "30"))
+except ValueError:
+    EMAIL_MILESTONE_LOOKBACK_DAYS = 30
 # Review-mode safety net: when NON-EMPTY, the ONLY addresses that receive mail
 # are the ones listed here — every other recipient is recorded as "skipped",
 # whatever the send path (welcome drip, broadcast, or a test). Lets you turn

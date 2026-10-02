@@ -14,11 +14,12 @@ the drip — the ``deliver`` choke point, the 20h min-gap (so a reader never get
 drip email and a series nudge in the same window), and the preference center
 (its own "series" stream, so it can be silenced without losing onboarding tips).
 
-The parallel to :mod:`emails.lifecycle` (``candidate_profiles`` / ``send_due`` /
-``_send`` / the command) is deliberate but duplicated: the two sweeps differ on
-four axes (candidate query, idempotency axis, per-profile context, static vs.
-dynamic render), so a shared base isn't worth it yet. A THIRD event-triggered
-email (e.g. "plan finished") is the signal to extract one — not before.
+The mechanical shell this shares with the other finish-a-book email (the
+milestone cards) now lives in :mod:`emails.sweeps` — the candidate query
+(``recent_book_finishers``), the 20h min-gap gate (``eligible_subscription``),
+and the send/skip/fail tally (``run_sweep``). This module keeps only what is its
+own: the pick logic (``next_series_volume``), the per-volume idempotency axis,
+the dynamic title-filled render, and its consent stream.
 """
 
 from __future__ import annotations
@@ -29,20 +30,18 @@ from typing import NamedTuple
 from django.conf import settings
 from django.utils import timezone
 
-from accounts.models import UserProfile
 from library.models import Book
 from reading.models import ReadingProgress, WorkKind
 
-from .lifecycle import MIN_GAP, last_lifecycle_sent_at
 from .models import (
     EmailKind,
     EmailMessage,
-    EmailSubscription,
     idempotency_key,
 )
 from .recipient import verified_email
 from .rendering import email_language, render_series_nudge
 from .sending import deliver
+from .sweeps import eligible_subscription
 
 #: The lifecycle_step recorded on the message (groups the metric); the per-volume
 #: idempotency discriminator is ``finish_series:<next-slug>``.
@@ -179,31 +178,13 @@ def send_due(profile) -> EmailMessage | None:
     ``None`` when the reader is opted out / suppressed, was mailed too recently,
     has no next volume to recommend, or has no deliverable address.
     """
-    subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
-    if not subscription.wants(EmailKind.LIFECYCLE, FINISH_SERIES_STEP):
-        return None
-    now = timezone.now()
-    last_sent = last_lifecycle_sent_at(profile)
-    if last_sent is not None and now - last_sent < MIN_GAP:
+    subscription = eligible_subscription(profile, FINISH_SERIES_STEP)
+    if subscription is None:
         return None
     pick = next_series_volume(profile)
     if pick is None:
         return None
     return _send(profile, subscription, *pick)
-
-
-def candidate_profiles(cutoff):
-    """Readers who finished a book on/after ``cutoff`` — the only ones who could
-    have a fresh series to continue. Idempotency keeps a nudge from repeating, so
-    the window only bounds the scan; it doesn't decide who has been nudged."""
-    finisher_ids = (
-        ReadingProgress.objects.filter(
-            kind=WorkKind.BOOK, finished_at__isnull=False, finished_at__gte=cutoff
-        )
-        .values_list("profile_id", flat=True)
-        .distinct()
-    )
-    return UserProfile.objects.filter(id__in=finisher_ids).order_by("id")
 
 
 def lookback_cutoff():

@@ -1,13 +1,13 @@
-"""Send due finish-the-series nudges.
+"""Send due reading-milestone cards.
 
-The Render cron runs this each pass (chained after the lifecycle sweep and
-broadcasts, in ``send_email_cron``). Safe to run repeatedly — each nudge is
-send-once per (reader, next volume) via its idempotency key, and the 20h min-gap
-keeps a reader from getting a nudge and a drip email in the same window.
+The Render cron runs this each pass (chained in ``send_email_cron``). Safe to run
+repeatedly — each milestone is send-once per (reader, level) via its idempotency
+key, and the 20h min-gap keeps a reader from getting a card and another lifecycle
+email in the same window.
 
 Scope is readers who finished a book within the look-back window
-(``EMAIL_SERIES_LOOKBACK_DAYS``, default 30; widen with ``--days`` or a date with
-``--since``) — the window only bounds the scan, idempotency decides who's new.
+(``EMAIL_MILESTONE_LOOKBACK_DAYS``, default 30; widen with ``--days`` or a date
+with ``--since``) — the window only bounds the scan, idempotency decides who's new.
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ from datetime import timedelta
 from django.core.management.base import BaseCommand, CommandError
 from django.utils import timezone
 
-from emails.series_nudge import lookback_cutoff, next_series_volume, send_due
+from emails.milestones import due_milestone, lookback_cutoff, send_due
 from emails.sweeps import recent_book_finishers, run_sweep
 
 # Reuse the lifecycle command's date parser so --since accepts a bare date too.
@@ -25,7 +25,7 @@ from .send_lifecycle_emails import _parse_cutoff
 
 
 class Command(BaseCommand):
-    help = "Send finish-the-series nudges to readers who finished a series volume."
+    help = "Send reading-milestone cards to readers who reached a new milestone."
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -40,7 +40,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--dry-run",
             action="store_true",
-            help="List who would be nudged (and toward what) without sending.",
+            help="List who would be congratulated (and at what level) without sending.",
         )
 
     def handle(self, *args, **opts):
@@ -54,21 +54,17 @@ class Command(BaseCommand):
         sent, skipped, failed = run_sweep(candidates, send_due)
         self.stdout.write(
             self.style.SUCCESS(
-                f"series nudges: sent={sent} skipped={skipped} failed={failed}"
+                f"milestone cards: sent={sent} skipped={skipped} failed={failed}"
             )
         )
 
     def _dry_run(self, candidates, cutoff):
         due = 0
         for profile in candidates:
-            pick = next_series_volume(profile)
-            if pick is not None:
+            milestone = due_milestone(profile)
+            if milestone is not None:
                 due += 1
-                finished_book, next_book = pick
-                self.stdout.write(
-                    f"would nudge {profile.pk} ({next_book.language}): "
-                    f"{finished_book.slug} → {next_book.slug}"
-                )
+                self.stdout.write(f"would congratulate {profile.pk}: {milestone} books")
         self.stdout.write(
             self.style.SUCCESS(f"dry run: {due} due since {cutoff:%Y-%m-%d}")
         )
