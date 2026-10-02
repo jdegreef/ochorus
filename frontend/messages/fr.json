@@ -138,6 +138,8 @@
   "search_sort_title": "A–Z",
   "search_sort_newest": "Récents",
   "search_did_you_mean": "Vouliez-vous dire",
+  "search_best_match": "Meilleur résultat",
+  "search_showing_for": "Résultats pour",
   "search_palette_placeholder": "Rechercher ou aller à une page…",
   "search_palette_pages": "Page",
   "search_palette_navigate": "naviguer",

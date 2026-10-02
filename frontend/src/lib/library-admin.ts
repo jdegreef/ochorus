@@ -1,7 +1,7 @@
 import { apiFetch, apiFetchRaw } from './api';
 import type { AdminScope } from './adminAccess';
 import type { FavoriteKind } from './favorites.svelte';
-import type { Language, SearchType, SourceType } from './library-public';
+import type { Language, SearchHit, SearchType, SourceType } from './library-public';
 import type { WorkKind } from './reading-schema';
 
 /** Mask an email for display — first char of the local part, then bullets, then
@@ -268,6 +268,12 @@ export interface AdminLanguageHealth {
 	};
 	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
+	/** Daily scores for the last eight weeks, oldest first, scored by the
+	 *  current formula only. Absent from an API without snapshots. */
+	trend?: { date: string; health: number }[];
+	/** Today's score minus the latest point at least a week old; null when
+	 *  there is no such point yet. */
+	week_change?: number | null;
 	/** Readers whose site language this is, reading a work it has no edition
 	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
 	reading_elsewhere: number;
@@ -1840,14 +1846,15 @@ export type SearchUnanswered = Language & {
 };
 
 /** What an admin decided about an unanswered search (see SearchDecision). */
-export type SearchOutcome = 'translate' | 'wanted' | 'out_of_scope';
+export type SearchOutcome = 'translate' | 'wanted' | 'out_of_scope' | 'synonym' | 'pinned';
 
 export interface SearchDecisionRow {
 	query: string;
 	language: string;
 	outcome: SearchOutcome;
 	outcome_label: string;
-	/** The work a translation was queued for ("book:waiting-on-god"). */
+	/** The work a translation was queued for or the pinned page
+	 *  ("book:waiting-on-god"), or a synonym's word. */
 	target: string;
 	note: string;
 	decided_by: string;
@@ -1856,6 +1863,8 @@ export interface SearchDecisionRow {
 	searches_since: number;
 	/** …and how many of them still found nothing. */
 	misses_since: number;
+	/** Results opened for this query since — the measure of a pin. */
+	opens_since: number;
 	/** A queued translation that kept missing past its grace period. */
 	reopened: boolean;
 }
@@ -1876,6 +1885,13 @@ export const decideSearch = (d: {
 		body: JSON.stringify(d)
 	});
 
+/** What a search returns in one language, unlogged and without synonyms or
+ *  pins — the preview behind the synonym and pin dialogs. */
+export const getAdminSearchPreview = (q: string, language: string) =>
+	apiFetch<{ query: string; results: SearchHit[] }>(
+		`/api/admin/search-preview/?${new URLSearchParams({ q, language })}`
+	);
+
 /** Undo a triage decision — the query goes back to the Open list. */
 export const undoSearchDecision = (query: string, language: string) =>
 	apiFetch<{ ok: boolean }>(
@@ -1895,7 +1911,8 @@ export interface AdminSearchStats {
 	 * Queries that found plenty and were never opened — the silent failure the
 	 * zero-result list can't see, and often the better content signal.
 	 */
-	unopened_queries?: SearchTopQuery[];
+	/** Per language, so a pin knows which language it answers (absent from older APIs). */
+	unopened_queries?: (SearchTopQuery & { language?: string })[];
 	top_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];

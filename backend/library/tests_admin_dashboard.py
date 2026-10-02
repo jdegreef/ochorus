@@ -5,6 +5,8 @@ edited — on its own. Pure move: no test changed.
 """
 
 
+import io
+
 from django.core.cache import cache
 from django.test import TestCase, override_settings
 from django.utils import timezone
@@ -2137,6 +2139,97 @@ class AdminLanguageHealthTests(TestCase):
         es = {r["code"]: r for r in data["languages"]}["es"]
         self.assertEqual(data["source_shelf"]["bios"], 1)
         self.assertEqual(es["content"]["bios"], 1)
+
+    def test_opening_the_page_records_one_point_per_language_per_day(self):
+        from .models import Language, LanguageHealthSnapshot
+
+        self._get()
+        self._get()
+        today = timezone.localdate()
+        self.assertEqual(
+            LanguageHealthSnapshot.objects.filter(date=today).count(),
+            Language.objects.count(),
+        )
+
+    def test_week_change_compares_with_the_point_a_week_ago(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        today = timezone.localdate()
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=today - timedelta(days=8), score_version=SCORE_VERSION,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        es = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertEqual(es["week_change"], es["health"] - 10)
+        self.assertEqual([p["health"] for p in es["trend"]], [10, es["health"]])
+
+    def test_no_week_change_from_a_baseline_much_older_than_a_week(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=timezone.localdate() - timedelta(days=22),
+            score_version=SCORE_VERSION,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        es = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertIsNone(es["week_change"])
+        self.assertEqual(len(es["trend"]), 2)  # still drawn in the line
+
+    def test_score_version_is_bumped_with_the_formula(self):
+        # The trend joins only points of one SCORE_VERSION, so a formula change
+        # that forgets the bump draws a fake jump on every language. Changing
+        # any of these means: bump SCORE_VERSION, then update this pin.
+        from .admin_views import health
+
+        self.assertEqual(
+            (
+                health.SCORE_VERSION,
+                health._WEIGHTS,
+                health._COVERAGE_MIX,
+                health._ENGAGEMENT_TARGET,
+                health._READER_WINDOW_DAYS,
+            ),
+            (
+                3,
+                {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0.15},
+                {"books": 0.50, "sermons": 0.25, "bios": 0.15, "plans": 0.10},
+                25,
+                90,
+            ),
+        )
+
+    def test_points_from_an_older_formula_are_left_out(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=timezone.localdate() - timedelta(days=8),
+            score_version=SCORE_VERSION - 1,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertIsNone(es["week_change"])
+        self.assertEqual(len(es["trend"]), 1)  # today's point only
+        self.assertEqual(data["score_version"], SCORE_VERSION)
+
+    def test_snapshot_command_records_today(self):
+        from django.core.management import call_command
+
+        from .models import LanguageHealthSnapshot
+
+        call_command("snapshot_language_health", stdout=io.StringIO())
+        call_command("snapshot_language_health", stdout=io.StringIO())
+        es = LanguageHealthSnapshot.objects.get(language="es", date=timezone.localdate())
+        self.assertAlmostEqual(es.coverage, 0.5, places=3)
 
     def test_engagement_with_no_readers_is_zero(self):
         # No reading data → engagement is zero for everyone (not a crash).

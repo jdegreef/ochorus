@@ -162,3 +162,142 @@ class SearchTriageTests(TestCase):
         self.as_language_admin(languages="es", verb=V.SUGGEST)
         self.assertEqual(self.decide("reavivamiento", "wanted").status_code, 403)
         self.assertEqual(self.client.get("/api/admin/search-decisions/").status_code, 200)
+
+
+@override_settings(DEBUG=False, ADMIN_EMAILS={"super@ochorus.com"})
+class SearchRulesTests(TestCase):
+    """Synonyms and pins: the two outcomes that change what readers get back."""
+
+    def setUp(self):
+        from .models import Author, Book, Chapter
+
+        User = get_user_model()
+        self.super = User.objects.create(username="uid-super", email="super@ochorus.com")
+        self.client = APIClient()
+        author = Author.objects.create(slug="andrew-murray", name="Andrew Murray")
+        self.book = Book.objects.create(
+            author=author, slug="humility", language="en", title="Humility"
+        )
+        Chapter.objects.create(
+            book=self.book, order=1, title="The Glory of the Creature",
+            body_html="<p>Humility is the place of entire dependence on God.</p>",
+        )
+
+    def search(self, q, **extra):
+        res = self.client.get("/api/library/search/", {"q": q, "language": "en", **extra})
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def decide(self, query, outcome, target, language="en"):
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        res = self.client.post(
+            DECIDE,
+            {"query": query, "language": language, "outcome": outcome, "target": target},
+            format="json",
+        )
+        self.client.force_authenticate(user=None)
+        return res
+
+    def test_a_synonym_runs_the_search_on_its_word_and_says_so(self):
+        self.assertEqual(self.search("meekness")["results"], [])
+        self.assertEqual(self.decide("Meekness", "synonym", " Humility ").status_code, 201)
+        data = self.search("meekness")
+        self.assertEqual(data["query"], "meekness")
+        self.assertEqual(data["searched_for"], "humility")
+        self.assertIn("humility", {h.get("book_slug") for h in data["results"]})
+        # Logged as the reader's own word, now answered.
+        self.assertGreater(SearchQueryLog.objects.get(query="meekness", result_count__gt=0).result_count, 0)
+        # One-way: the synonym's word is untouched.
+        self.assertNotIn("searched_for", self.search("humility"))
+
+    def test_a_pin_leads_the_results_once(self):
+        before = self.search("dependence")["results"]
+        self.assertTrue(before)
+        self.assertEqual(self.decide("dependence", "pinned", "book:humility").status_code, 201)
+        results = self.search("dependence")["results"]
+        self.assertEqual((results[0]["type"], results[0]["book_slug"], results[0]["pinned"]), ("book", "humility", True))
+        self.assertEqual(sum(1 for h in results if h["type"] == "book"), 1)
+
+    def test_a_pin_to_an_unpublished_page_does_nothing(self):
+        self.assertEqual(self.decide("dependence", "pinned", "book:humility").status_code, 201)
+        type(self.book).objects.filter(pk=self.book.pk).update(is_published=False)
+        self.assertFalse(any(h.get("pinned") for h in self.search("dependence")["results"]))
+
+    def test_rules_do_not_apply_inside_a_scope(self):
+        self.decide("meekness", "synonym", "humility")
+        data = self.search("meekness", **{"in": "author:andrew-murray"})
+        self.assertNotIn("searched_for", data)
+
+    def test_bad_synonyms_and_pins_are_refused(self):
+        self.assertEqual(self.decide("meekness", "synonym", "Meekness").status_code, 400)
+        self.assertEqual(self.decide("meekness", "synonym", "").status_code, 400)
+        self.assertEqual(self.decide("dependence", "pinned", "book:no-such-book").status_code, 400)
+        self.assertEqual(self.decide("dependence", "pinned", "chapter:humility").status_code, 400)
+        self.assertEqual(self.decide("dependence", "pinned", "book:humility", language="es").status_code, 400)
+        self.assertFalse(SearchDecision.objects.exists())
+
+    def test_a_synonym_that_still_misses_reopens_at_once(self):
+        self.decide("meekness", "synonym", "nothing-matches-this")
+        self.search("meekness")
+        self.search("meekness")
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        [row] = self.client.get("/api/admin/search-decisions/").data["decisions"]
+        self.assertTrue(row["reopened"])
+
+    def test_a_pin_reports_opens_and_leaves_the_unopened_list(self):
+        from .models import SearchClickLog
+
+        for _ in range(3):
+            self.search("dependence")
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        unopened = self.client.get("/api/admin/search-stats/").data["unopened_queries"]
+        self.assertIn({"query": "dependence", "language": "en", "count": 3}, unopened)
+
+        self.decide("dependence", "pinned", "book:humility")
+        SearchClickLog.objects.create(query="Dependence", language="en", result_type="book", position=1)
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        res = self.client.get("/api/admin/search-stats/")
+        self.assertNotIn("dependence", [r["query"] for r in res.data["unopened_queries"]])
+        [row] = self.client.get("/api/admin/search-decisions/").data["decisions"]
+        self.assertEqual((row["opens_since"], row["reopened"]), (1, False))
+
+    def test_the_admin_preview_searches_without_logging_or_rules(self):
+        self.decide("meekness", "synonym", "humility")
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        res = self.client.get("/api/admin/search-preview/", {"q": "meekness", "language": "en"})
+        self.assertEqual((res.status_code, res.data["results"]), (200, []))
+        res = self.client.get("/api/admin/search-preview/", {"q": "humility", "language": "en"})
+        self.assertTrue(res.data["results"])
+        self.assertFalse(SearchQueryLog.all_rows.exists())
+
+    def test_a_pin_leads_its_facet_page_and_counts_in_its_total(self):
+        from .models import Author, Book
+
+        other = Book.objects.create(
+            author=Author.objects.get(), slug="absolute-surrender", language="en",
+            title="Absolute Surrender",
+        )
+        self.decide("dependence", "pinned", f"book:{other.slug}")
+        data = self.search("dependence")
+        self.assertEqual(data["results"][0]["book_slug"], other.slug)
+        # "dependence" matches only chapter text, so the pinned book is the one
+        # book: its group's total counts it.
+        self.assertEqual(data["totals"]["book"], 1)
+        page = self.search("dependence", type="book")
+        self.assertEqual(page["results"][0]["book_slug"], other.slug)
+        self.assertTrue(page["results"][0]["pinned"])
+
+    def test_a_pin_whose_page_goes_reopens(self):
+        self.decide("dependence", "pinned", "book:humility")
+        self.book.is_published = False
+        self.book.save()
+        self.search("dependence")
+        self.search("dependence")
+        self.client.force_authenticate(user=self.super, token=VERIFIED)
+        [row] = self.client.get("/api/admin/search-decisions/").data["decisions"]
+        self.assertTrue(row["reopened"])
+
+    def test_the_audit_log_records_where_readers_were_sent(self):
+        self.decide("meekness", "synonym", "humility")
+        action = AdminAction.objects.get()
+        self.assertEqual((action.target, action.detail), ("en:meekness", {"outcome": "synonym", "to": "humility"}))

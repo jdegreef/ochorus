@@ -58,7 +58,9 @@ FILL_ONLY_FIELDS = ("photo_url", "birth_year", "death_year")
 # left untouched by the `field in fields` guard below, so nothing forces an empty
 # list onto the ~85 authors without a set. If an admin Q&A editor is ever added,
 # revisit this the way the fill-only caveat above describes.
-SYNCED_FIELDS = ("same_as", "faq")
+#
+# `tagline` likewise: written into `authors.json` and nowhere else.
+SYNCED_FIELDS = ("same_as", "faq", "tagline")
 
 def mark_translations_stale(author) -> list[str]:
     """Flag this author's short-bio translations as describing superseded text.
