@@ -473,6 +473,22 @@ class LifecycleStepTests(TestCase):
         self._start_book(profile)
         self.assertEqual(due_step(profile, timezone.now()).name, FIRST_BOOK_STEP)
 
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_finish_first_book_sends_end_to_end(self, send):
+        # Exercises the render path (copy + CTA), not just the due predicate.
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        # Back-date the earlier steps past the 20h gap so this one can send now.
+        EmailMessage.objects.filter(recipient=profile).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        self._start_book(profile)
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, FIRST_BOOK_STEP)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(send.call_count, 1)
+
     def test_classic_due_on_day_four(self):
         profile = self._profile(age_days=5)
         self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)

@@ -12,10 +12,11 @@ latency to authentication and a failed send simply retries next pass.
 
 The sequence:
 
-* ``welcome``   — immediately (first sweep after sign-up).
-* ``pick_plan`` — day 2+, only if the reader hasn't started a reading plan.
-* ``classic``   — day 4+.
-* ``comeback``  — the reader has been seen but has gone quiet 7+ days.
+* ``welcome``          — immediately (first sweep after sign-up).
+* ``pick_plan``        — day 2+, only if the reader hasn't started a reading plan.
+* ``finish_first_book`` — day 3+, the reader opened a book but hasn't finished one.
+* ``classic``          — day 4+.
+* ``comeback``         — the reader has been seen but has gone quiet 7+ days.
 """
 
 from __future__ import annotations
@@ -114,13 +115,17 @@ def _build_context(profile, now: datetime) -> StepContext:
     days_since_seen = (
         (now - last_seen).total_seconds() / 86400 if last_seen is not None else None
     )
-    book_progress = ReadingProgress.objects.filter(profile=profile, kind=WorkKind.BOOK)
+    # One query answers both: any book row means started; any with a finished_at
+    # means finished (and finished implies started, so they're not independent).
+    book_finishes = ReadingProgress.objects.filter(
+        profile=profile, kind=WorkKind.BOOK
+    ).values_list("finished_at", flat=True)
     return StepContext(
         age_days=age_days,
         has_plan=PlanProgress.objects.filter(profile=profile).exists(),
         days_since_seen=days_since_seen,
-        has_started_book=book_progress.exists(),
-        has_finished_book=book_progress.filter(finished_at__isnull=False).exists(),
+        has_started_book=bool(book_finishes),
+        has_finished_book=any(f is not None for f in book_finishes),
     )
 
 
