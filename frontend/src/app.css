@@ -1022,6 +1022,11 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 		--border: #999999;
 		--border-strong: #666666;
 		--accent: #000000;
+		/* Ink on an accent fill, and the quiet fill behind chips: the screen values
+		   are lamplight's (#16130f ink, a dark brown fill), which on a black accent
+		   or white paper print unreadable. */
+		--accent-contrast: #ffffff;
+		--surface-2: #ffffff;
 	}
 	body {
 		background: #ffffff;

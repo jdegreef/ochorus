@@ -30,7 +30,9 @@
 	// (see heatScale) so the scale holds as the library grows. The count used
 	// to live only in a hover tooltip, which touch readers never see.
 	const heat = $derived(heatScale(books.flatMap((b) => b.chapters.map((c) => c.count))));
-	const passages = (n: number) => t('scripture.passagesCount').replace('%count%', String(n));
+	// Looked up once: the template calls this for every chip and verse link.
+	const passagesTpl = $derived(t('scripture.passagesCount'));
+	const passages = (n: number) => passagesTpl.replace('%count%', String(n));
 
 	// A starting point for a reader who arrives without a passage in mind: the
 	// chapters the writers return to most.
@@ -49,7 +51,10 @@
 		e.preventDefault();
 		spy.set(id);
 		jumpToSection(id);
-		history.replaceState(null, '', `#${id}`);
+		// Keep SvelteKit's state on the entry: replacing it with null erases the
+		// router's history index, and Back from a chapter page then changes only
+		// the URL. (The book page does the same.)
+		history.replaceState(history.state, '', `#${id}`);
 	}
 
 	const path = '/scripture/';
@@ -77,7 +82,7 @@
 			url: canonical,
 			items: books.map((b) => ({
 				name: b.title,
-				url: `/scripture/${b.slug}/${b.chapters[0].chapter}/`
+				url: scripturePageHref(b.slug, b.chapters[0].chapter, null)
 			}))
 		})
 	);
@@ -359,11 +364,11 @@
 	}
 	.heat-4 {
 		background: var(--color-accent);
-		color: var(--color-accent-contrast);
-		font-weight: 600;
 	}
+	/* Its ink needs `.chapters a` specificity to beat that rule's body colour. */
 	.chapters a.heat-4 {
 		color: var(--color-accent-contrast);
+		font-weight: 600;
 	}
 	.chapters a:hover {
 		outline: 2px solid var(--color-accent);
