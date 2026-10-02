@@ -1,5 +1,6 @@
 /**
- * Draw a share card for every prerendered scripture VERSE page.
+ * Draw a share card for every prerendered scripture VERSE page, and one for
+ * every Bible BOOK page (`/scripture/<book>/`).
  *
  * Runs as `postbuild`, after `build-share-cards.mjs`:
  *
@@ -11,6 +12,8 @@
  * used to preview as the house card. Its card is the verse itself, set large in
  * Fraunces with its reference, beside a fan of the classics that treat it and
  * a line saying how many chapters do — the page's whole argument, at a glance.
+ * A book page's card is the book's name with how many passages and works cite
+ * it, beside a fan of the classics that return to it most.
  *
  * WHY AT BUILD, NOT COMMITTED
  * Which verses have a page is decided by a floor on the server, and moves as the
@@ -38,10 +41,18 @@ import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { LANDSCAPE_HEIGHT as H, LANDSCAPE_WIDTH as W } from '../src/lib/coverArt.ts';
-import { verseCardUrl, verseData, verseType } from '../src/lib/verseCard.ts';
+import {
+	scriptureBookCardUrl,
+	scriptureBookData,
+	verseCardUrl,
+	verseData,
+	verseType
+} from '../src/lib/verseCard.ts';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const FALLBACK = '/og/default.png';
+/** A book page that cannot be drawn still forwards as Scripture. */
+const BOOK_FALLBACK = '/og/scripture.png';
 
 const PAPER = 'linear-gradient(180deg, #faf6ef 0%, #f1e8d8 100%)';
 const INK = '#221c14';
@@ -97,6 +108,16 @@ function versePages(build) {
 				.filter(existsSync)
 		)
 	);
+}
+
+/** Every prerendered Bible book page: scripture/<book>/index.html. */
+function bookPages(build) {
+	const root = join(build, 'scripture');
+	if (!existsSync(root)) return [];
+	return readdirSync(root, { withFileTypes: true })
+		.filter((e) => e.isDirectory())
+		.map((b) => join(root, b.name, 'index.html'))
+		.filter(existsSync);
 }
 
 // ── Drawing ─────────────────────────────────────────────────────────────────
@@ -202,6 +223,82 @@ function layout(page, fanned) {
 	);
 }
 
+/** A book's name on its card, by length: "Job" and "1 Thessalonians" both fit. */
+const titleSize = (title) => (title.length <= 8 ? 112 : title.length <= 13 ? 92 : 74);
+
+function bookLayout(page, fanned) {
+	const { citing_count: passages, books_count: works } = page;
+	const plural = (n, one) => `${n} ${one}${n === 1 ? '' : 's'}`;
+	const line =
+		passages != null && works != null
+			? `Cited in ${plural(passages, 'passage')} across ${plural(works, 'classic')}`
+			: 'Chapter by chapter, from the Christian classics';
+	return h(
+		'div',
+		{
+			width: W,
+			height: H,
+			display: 'flex',
+			position: 'relative',
+			background: PAPER,
+			fontFamily: 'Hanken'
+		},
+		[
+			h(
+				'div',
+				{ position: 'absolute', left: 72, top: 58, fontSize: 20, letterSpacing: 6.4, color: GOLD },
+				'OCHORUS'
+			),
+			h(
+				'div',
+				{
+					position: 'absolute',
+					left: 72,
+					top: 110,
+					width: fanned ? 690 : 1056,
+					height: 400,
+					display: 'flex',
+					flexDirection: 'column',
+					justifyContent: 'center'
+				},
+				[
+					h(
+						'div',
+						{ fontFamily: 'Fraunces', fontStyle: 'italic', fontSize: 34, color: GOLD },
+						'What the classics say about'
+					),
+					h(
+						'div',
+						{
+							fontFamily: 'Fraunces',
+							fontSize: titleSize(page.book.title),
+							lineHeight: 1.05,
+							letterSpacing: -1,
+							color: INK,
+							marginTop: 6
+						},
+						page.book.title
+					),
+					h('div', { fontSize: 24, color: '#4a4035', marginTop: 22 }, line)
+				]
+			),
+			h('div', {
+				position: 'absolute',
+				left: 40,
+				right: 40,
+				top: 544,
+				height: 3,
+				background: RULE
+			}),
+			h(
+				'div',
+				{ position: 'absolute', left: 72, top: 574, fontSize: 19, color: MUTED },
+				'Read what the great Christian classics say about it · ochorus.com'
+			)
+		]
+	);
+}
+
 /** Where the fan sits on the card: its box's left/top. */
 const FAN_LEFT = 810;
 const FAN_TOP = 120;
@@ -266,12 +363,31 @@ function loadFonts() {
 	]);
 }
 
-async function draw(page, coverFiles) {
-	const books = [...new Set(page.passages.map((p) => p.book_slug))].filter((s) =>
-		coverFiles.has(s)
+/** Up to a fan's worth of cover files for these library books, in order. */
+const fanOf = (slugs, coverFiles) =>
+	[...new Set(slugs)]
+		.filter((s) => coverFiles.has(s))
+		.slice(0, FAN.length)
+		.map((s) => coverFiles.get(s));
+
+const drawVerse = (page, coverFiles) => {
+	const fan = fanOf(
+		page.passages.map((p) => p.book_slug),
+		coverFiles
 	);
-	const fan = books.slice(0, FAN.length).map((s) => coverFiles.get(s));
-	const svg = await satori(layout(page, fan.length > 0), {
+	return render(layout(page, fan.length > 0), fan);
+};
+
+const drawBook = (page, coverFiles) => {
+	const fan = fanOf(
+		page.top_books.map((b) => b.slug),
+		coverFiles
+	);
+	return render(bookLayout(page, fan.length > 0), fan);
+};
+
+async function render(tree, fan) {
+	const svg = await satori(tree, {
 		width: W,
 		height: H,
 		fonts: loadFonts()
@@ -304,20 +420,43 @@ async function main() {
 	const started = Date.now();
 	const coverFiles = covers(build);
 	const failed = [];
-	const pages = versePages(build);
-	async function one(file) {
-		const [book, chapter, verse] = relative(join(build, 'scripture'), dirname(file)).split(sep);
-		const dest = join(build, verseCardUrl(book, Number(chapter), Number(verse)));
+	// One job per card: the verse pages, then the (few) book pages.
+	const pages = [
+		...versePages(build).map((file) => {
+			const [book, chapter, verse] = relative(join(build, 'scripture'), dirname(file)).split(sep);
+			return {
+				file,
+				label: `${book} ${chapter}:${verse}`,
+				dest: verseCardUrl(book, Number(chapter), Number(verse)),
+				read: verseData,
+				draw: drawVerse,
+				fallback: FALLBACK
+			};
+		}),
+		...bookPages(build).map((file) => {
+			const book = relative(join(build, 'scripture'), dirname(file));
+			return {
+				file,
+				label: book,
+				dest: scriptureBookCardUrl(book),
+				read: scriptureBookData,
+				draw: drawBook,
+				fallback: BOOK_FALLBACK
+			};
+		})
+	];
+	async function one(job) {
+		const dest = join(build, job.dest);
 		try {
 			mkdirSync(dirname(dest), { recursive: true });
-			const page = verseData(readFileSync(file, 'utf8'));
+			const page = job.read(readFileSync(job.file, 'utf8'));
 			if (!page) throw new Error('no scripture data inlined in the page');
-			writeFileSync(dest, await draw(page, coverFiles));
+			writeFileSync(dest, await job.draw(page, coverFiles));
 		} catch (err) {
-			failed.push(`  ${book} ${chapter}:${verse} — ${err.message}`);
-			// The house card, best effort: if even that cannot be written the page
+			failed.push(`  ${job.label} — ${err.message}`);
+			// A stand-in, best effort: if even that cannot be written the page
 			// names a missing image, which is still better than a failed deploy.
-			await sharp(join(build, FALLBACK))
+			await sharp(join(build, job.fallback))
 				.resize(W, H)
 				.jpeg({ quality: 82 })
 				.toFile(dest)
@@ -334,7 +473,7 @@ async function main() {
 	await Promise.all(Array.from({ length: 8 }, worker));
 	if (failed.length) {
 		console.warn(
-			`build-verse-cards: ${failed.length} page(s) got the default card:\n${failed.join('\n')}`
+			`build-verse-cards: ${failed.length} page(s) got a stand-in card:\n${failed.join('\n')}`
 		);
 	}
 	console.log(
