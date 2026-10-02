@@ -111,19 +111,61 @@ class SeedBooksTests(TestCase):
         self.assertEqual(chapter.body_html, corrected)
 
 
-class SeedBooksUpsertTests(TestCase):
+# The works the upsert and drift tests need by name: the-way-to-god (a single
+# work, with AI-translated editions), Andrew Murray's and John Bunyan's author
+# rows (absolute-surrender, grace-abounding), and the rooted / brave-for-god /
+# key-teachings series, whose author (ochorus-originals) is also the seeded
+# author with no faq. ~70 of the ~620 book files.
+NAMED_WORKS = (
+    "the-way-to-god.",
+    "absolute-surrender.",
+    "grace-abounding.",
+    "key-teachings-of-watchman-nee.",
+    "rooted-",
+    "brave-for-god",
+)
+
+
+def named_works():
+    from library.content_fixtures import BOOKS_DIR
+
+    for path in sorted(BOOKS_DIR.glob("*.json")):
+        if path.name.startswith(NAMED_WORKS):
+            yield path, json.loads(path.read_text())
+
+
+class NamedWorksSeedMixin:
+    """Every seed_books walk in the class — setUpTestData's and each test's
+    "next deploy" — covers NAMED_WORKS instead of the whole library.
+
+    Seeding the whole corpus once per class and re-walking it in every test
+    made these two classes the backend job's long pole, minutes behind every
+    other worker. Their tests are about named works, so nothing is lost; the
+    checks only the whole corpus can make live in SeedBooksCorpusTests.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        # Started before super().setUpClass(), which runs setUpTestData. Also
+        # reaches iter_chapter_drift, which lives in the same module.
+        patcher = patch(
+            "library.management.commands.seed_books.iter_work_files", named_works
+        )
+        patcher.start()
+        cls.addClassCleanup(patcher.stop)
+        super().setUpClass()
+
+
+class SeedBooksUpsertTests(NamedWorksSeedMixin, TestCase):
     """The update branch: a fixture edit must reach an already-seeded DB.
 
     Each test starts from a seeded database standing in for prod, mutates a row
     to the state that predates a fixture edit, then runs seed_books again as
-    "the next deploy". Seeding once for the class matters — a full seed is 98
-    books and 1674 chapters, each derived through save().
+    "the next deploy". Seeds NAMED_WORKS only — see NamedWorksSeedMixin.
     """
 
     @classmethod
     def setUpTestData(cls):
-        from django.core.management import call_command
-
         call_command("seed_books", verbosity=0)
 
     def test_updates_changed_book_metadata(self):
@@ -144,14 +186,6 @@ class SeedBooksUpsertTests(TestCase):
         self.assertEqual(book.cover_url, fixture["cover_url"])
         self.assertEqual(book.description, fixture["description"])
         self.assertEqual(book.sort_order, fixture["sort_order"])
-
-    def test_second_run_updates_nothing(self):
-        # A no-op deploy must not touch a single row — updated_at is the tell.
-        from django.core.management import call_command
-
-        stamps = dict(Book.objects.values_list("pk", "updated_at"))
-        call_command("seed_books", verbosity=0)
-        self.assertEqual(dict(Book.objects.values_list("pk", "updated_at")), stamps)
 
     def test_seed_never_reverts_an_approved_translation(self):
         # source_type is create-only. It ships in the fixture as ai_unreviewed,
@@ -455,15 +489,6 @@ class SeedBooksUpsertTests(TestCase):
             Author.objects.get(slug=untouched).faq, [{"q": "mine", "a": "mine"}]
         )
 
-    def test_a_no_op_deploy_changes_no_author(self):
-        # Author has no updated_at, so snapshot the synced fields themselves.
-        fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")
-        before = list(Author.objects.order_by("slug").values_list(*fields))
-        call_command("seed_books", verbosity=0)
-        self.assertEqual(
-            list(Author.objects.order_by("slug").values_list(*fields)), before
-        )
-
     def test_series_membership_reaches_the_db(self):
         # The numeral on a cover reads `series_position`; the table it replaced
         # (coverStyles.SERIES_VOLUME) numbered these volumes, so they must land.
@@ -554,49 +579,83 @@ class SeedBooksUpsertTests(TestCase):
         return row["fields"]
 
 
-class SeedBooksChapterDriftTests(TestCase):
-    """seed_books syncs an existing book's chapters by order — creating missing
-    ones and updating drifted ones, never deleting or renumbering — then emits a
-    report-only warning for whatever still differs. The warning must never
-    mutate a chapter or fail the deploy."""
+def chapter_drift():
+    # Exactly the drift report seed_books emits, streamed one work file at a
+    # time (the command runs the same per-book check inline while it seeds).
+    from library.management.commands.seed_books import iter_chapter_drift
+
+    return {b.slug: reason for b, reason in iter_chapter_drift()}
+
+
+class SeedBooksCorpusTests(TestCase):
+    """A no-op deploy over the WHOLE library writes nothing and reports no drift.
+
+    These are the checks only the full corpus can make — a derived column or a
+    non-converging field in any one of ~620 works would rewrite rows on every
+    deploy — so this class seeds everything, once.
+    """
 
     @classmethod
     def setUpTestData(cls):
-        from django.core.management import call_command
+        call_command("seed_books", verbosity=0)
 
+    def test_second_run_updates_nothing(self):
+        # A no-op deploy must not touch a single row — updated_at is the tell.
+        stamps = dict(Book.objects.values_list("pk", "updated_at"))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(dict(Book.objects.values_list("pk", "updated_at")), stamps)
+
+    def test_a_no_op_deploy_changes_no_author(self):
+        # Author has no updated_at, so snapshot the synced fields themselves.
+        fields = ("slug", "bio", "bio_html", "photo_url", "birth_year", "death_year")
+        before = list(Author.objects.order_by("slug").values_list(*fields))
+        call_command("seed_books", verbosity=0)
+        self.assertEqual(
+            list(Author.objects.order_by("slug").values_list(*fields)), before
+        )
+
+    def test_faithful_seed_reports_no_drift(self):
+        self.assertEqual(chapter_drift(), {})
+
+    def test_a_converged_library_writes_no_chapters(self):
+        out = StringIO()
+        with patch.object(Chapter, "save", side_effect=AssertionError("wrote")):
+            call_command("seed_books", stdout=out, stderr=out)
+        self.assertNotIn("chapters:", out.getvalue())
+
+
+class SeedBooksChapterDriftTests(NamedWorksSeedMixin, TestCase):
+    """seed_books syncs an existing book's chapters by order — creating missing
+    ones and updating drifted ones, never deleting or renumbering — then emits a
+    report-only warning for whatever still differs. The warning must never
+    mutate a chapter or fail the deploy. Seeds NAMED_WORKS only — see
+    NamedWorksSeedMixin."""
+
+    @classmethod
+    def setUpTestData(cls):
         call_command("seed_books", verbosity=0)
         cls.book = Book.objects.filter(language="en").first()
 
-    def _drift(self):
-        # Exactly the drift report seed_books emits, streamed one work file at a
-        # time (the command runs the same per-book check inline while it seeds).
-        from library.management.commands.seed_books import iter_chapter_drift
-
-        return {b.slug: reason for b, reason in iter_chapter_drift()}
-
-    def test_faithful_seed_reports_no_drift(self):
-        self.assertEqual(self._drift(), {})
-
     def test_missing_chapter_is_drift(self):
         self.book.chapters.order_by("-order").first().delete()
-        self.assertIn("chapter(s) in DB", self._drift()[self.book.slug])
+        self.assertIn("chapter(s) in DB", chapter_drift()[self.book.slug])
 
     def test_retitled_chapter_is_drift(self):
         c = self.book.chapters.first()
         Chapter.objects.filter(pk=c.pk).update(title="mangled")
-        self.assertIn("title", self._drift()[self.book.slug])
+        self.assertIn("title", chapter_drift()[self.book.slug])
 
     def test_edited_body_is_drift(self):
         c = self.book.chapters.first()
         Chapter.objects.filter(pk=c.pk).update(body_html="<p>tampered</p>")
-        self.assertIn("body differs", self._drift()[self.book.slug])
+        self.assertIn("body differs", chapter_drift()[self.book.slug])
 
     def test_reordered_chapters_report_the_odd_orders(self):
         # Same count, shifted order numbers — the message must name the orders,
         # not read "N vs N".
         last = self.book.chapters.order_by("-order").first()
         Chapter.objects.filter(pk=last.pk).update(order=last.order + 100)
-        reason = self._drift()[self.book.slug]
+        reason = chapter_drift()[self.book.slug]
         self.assertIn("order(s)", reason)
         self.assertIn(str(last.order + 100), reason)
 
@@ -614,7 +673,7 @@ class SeedBooksChapterDriftTests(TestCase):
         self.assertEqual((c.title, c.body_html), (title, body))
         self.assertNotIn("tampered", c.body_text)  # save() re-derived it
         self.assertIn("chapters: 0 added, 1 updated", out.getvalue())
-        self.assertEqual(self._drift(), {})
+        self.assertEqual(chapter_drift(), {})
 
     def test_seed_appends_a_chapter_the_db_lacks(self):
         # Stepping Stones: the author added chapters 40–43 to an existing book.
@@ -627,7 +686,7 @@ class SeedBooksChapterDriftTests(TestCase):
         # Existing rows are updated in place, never recreated: saved positions,
         # quotes and citations hang off the chapter's pk.
         self.assertTrue(Chapter.objects.filter(pk=pk).exists())
-        self.assertEqual(self._drift(), {})
+        self.assertEqual(chapter_drift(), {})
 
     def test_seed_never_deletes_or_renumbers_a_chapter(self):
         # Order is a public contract; a DB chapter the fixture lacks is left in
@@ -640,13 +699,7 @@ class SeedBooksChapterDriftTests(TestCase):
         call_command("seed_books", stdout=out, stderr=out)
         self.assertTrue(Chapter.objects.filter(pk=extra.pk).exists())
         self.assertIn("Chapter drift", out.getvalue())
-        self.assertIn("chapter(s) in DB", self._drift()[self.book.slug])
-
-    def test_a_converged_library_writes_no_chapters(self):
-        out = StringIO()
-        with patch.object(Chapter, "save", side_effect=AssertionError("wrote")):
-            call_command("seed_books", stdout=out, stderr=out)
-        self.assertNotIn("chapters:", out.getvalue())
+        self.assertIn("chapter(s) in DB", chapter_drift()[self.book.slug])
 
     def test_a_corrected_chapter_is_not_drift(self):
         # apply_body_corrections runs over every stored chapter immediately
@@ -669,24 +722,36 @@ class SeedBooksChapterDriftTests(TestCase):
                 self.book.slug, chapter.order, raw
             )
             self.assertNotEqual(corrected, raw)
-            self.assertEqual(self._drift(), {})  # the raw fixture is faithful…
+            self.assertEqual(chapter_drift(), {})  # the raw fixture is faithful…
             call_command("apply_body_corrections", stdout=StringIO())
             chapter.refresh_from_db()
             self.assertEqual(chapter.body_html, corrected)  # …it was corrected…
-            self.assertEqual(self._drift(), {})  # …and that is not drift either
+            self.assertEqual(chapter_drift(), {})  # …and that is not drift either
             call_command("seed_books", stdout=StringIO())
             chapter.refresh_from_db()
             self.assertEqual(chapter.body_html, corrected)  # …nor reverted
 
 
 class SeedSermonsTests(TestCase):
-    def test_creates_missing_authors_from_fixture(self):
+    """seed_sermons against the whole sermon corpus.
+
+    Seeded ONCE for the class (from an empty DB, so that seed IS the create
+    path) — each test then plays "the next deploy" against it. Every test used
+    to seed the full corpus itself, six fresh seeds for one class.
+    """
+
+    @classmethod
+    def setUpTestData(cls):
         # Prod regression (2026-07-06): a sermon whose author has no books yet
         # (Moody) was silently skipped because the author row didn't exist.
-        from django.core.management import call_command
-
-        self.assertFalse(Author.objects.filter(slug="dwight-l-moody").exists())
+        # Recorded before the seed so the create-path test can assert on it.
+        cls.moody_existed_before_seed = Author.objects.filter(
+            slug="dwight-l-moody"
+        ).exists()
         call_command("seed_sermons", verbosity=0)
+
+    def test_creates_missing_authors_from_fixture(self):
+        self.assertFalse(self.moody_existed_before_seed)
         self.assertTrue(Author.objects.filter(slug="dwight-l-moody").exists())
         self.assertGreaterEqual(
             Sermon.objects.filter(author__slug="dwight-l-moody").count(), 5
@@ -694,9 +759,6 @@ class SeedSermonsTests(TestCase):
         self.assertGreaterEqual(Sermon.objects.count(), 18)
 
     def test_seeds_the_translation_badge_on_create(self):
-        from django.core.management import call_command
-
-        call_command("seed_sermons", verbosity=0)
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
         self.assertEqual(lg.source_type, Book.SourceType.AI_UNREVIEWED)
 
@@ -710,9 +772,6 @@ class SeedSermonsTests(TestCase):
         derived the value straight back — 33 full-row rewrites plus 33 tsvector
         rebuilds, on every deploy, converging never.
         """
-        from django.core.management import call_command
-
-        call_command("seed_sermons", verbosity=0)
         stamps = dict(Sermon.objects.values_list("pk", "updated_at"))
         self.assertTrue(stamps, "the seed created no sermons to check")
         call_command("seed_sermons", verbosity=0)
@@ -724,9 +783,6 @@ class SeedSermonsTests(TestCase):
         # owns it — re-asserting the fixture value on the next deploy would
         # silently restore the "awaiting native review" badge and make
         # approve_sermon_translation useless.
-        from django.core.management import call_command
-
-        call_command("seed_sermons", verbosity=0)
         call_command("approve_sermon_translation", "the-immutability-of-god", language="lg", no_fixture=True)
         call_command("seed_sermons", verbosity=0)  # the next deploy
         lg = Sermon.objects.get(slug="the-immutability-of-god", language="lg")
@@ -747,7 +803,6 @@ class SeedSermonsTests(TestCase):
         # corrections step in between there is nothing for the seed to revert.
         from library import corrections
 
-        call_command("seed_sermons", verbosity=0)
         sermon = Sermon.objects.filter(language="en").first()
 
         with patch.dict(
@@ -777,9 +832,6 @@ class SeedSermonsTests(TestCase):
         # urgent unpublish happens directly in the live DB, and the fixture
         # (which still says is_published=True) must not resurrect the sermon on
         # the next deploy.
-        from django.core.management import call_command
-
-        call_command("seed_sermons", verbosity=0)
         sermon = Sermon.objects.filter(language="en").first()
         Sermon.objects.filter(pk=sermon.pk).update(is_published=False)
         call_command("seed_sermons", verbosity=0)  # the next deploy

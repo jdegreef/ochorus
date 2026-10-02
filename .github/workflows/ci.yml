@@ -141,9 +141,15 @@ jobs:
     # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
     # By 2026-10-01 it had outgrown 40 the same way: a green run took 37.5 min
     # and same-day runs were cancelled at the ceiling on main and on PRs
-    # (#4879, #4880, #4883). 60 restores the headroom; splitting the suite
-    # into parallel jobs is the lasting fix.
-    timeout-minutes: 60
+    # (#4879, #4880, #4883), and was briefly raised to 60. The time was never
+    # the suite's size, though: it was a handful of seed tests that walked the
+    # whole fixture corpus over and over — one class ran minutes after every
+    # other worker had finished (#4890, then the seed tests seeding only the
+    # works they name, which took the job to ~12 and then well under that).
+    # Back to 40: a hang guard, with room to grow. If it creeps up again, read
+    # the --durations list below before reaching for a job matrix — a single
+    # class is one worker's long pole, and sharding can't split it.
+    timeout-minutes: 40
     env:
       DJANGO_DEBUG: 'true'
     # The suite runs ONCE, on Postgres — the production database. Postgres is a
@@ -194,7 +200,10 @@ jobs:
       # (build_curated_covers' .cache) is confined to one test under a fixed
       # key, and a given test method only ever runs on one worker; the
       # TransactionTestCase concurrency tests get their own worker DB. If a race
-      # ever does surface, it fails HERE by name — not in production.
+      # ever does surface, it fails HERE by name — not in production. tblib (a
+      # dev dependency) is what lets a worker send a failing subTest's
+      # traceback back to the parent; without it the run printed only
+      # "cannot pickle traceback object" and hid the real failure.
       - name: Tests (Postgres — the production database)
         working-directory: backend
         env:
