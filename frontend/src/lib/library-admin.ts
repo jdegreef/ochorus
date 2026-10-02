@@ -703,7 +703,7 @@ export interface ReviewItem {
 	outcome: ReviewOutcome | null;
 	flags?: ReviewFlags | null;
 	/** Which kind of review it needs — see `ReviewLane`. */
-	lane: Exclude<ReviewLane, 'needs_work'>;
+	lane: ReviewLane;
 }
 
 /**

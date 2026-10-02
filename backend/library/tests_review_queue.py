@@ -428,6 +428,10 @@ class ReviewQueueTests(TestCase):
         )
         data = self._get(lane="needs_work")
         self.assertEqual([r["kind"] for r in data["results"]], ["book"])
+        # Sent back means its own lane, never "ready" — whatever its notes say.
+        self.assertEqual(data["results"][0]["lane"], "needs_work")
+        # A coverage deep link (slug) still honours the lane picked on top of it.
+        self.assertEqual(self._get(slug="waiting", lane="ready")["results"], [])
         self.assertEqual(data["lanes"]["needs_work"], 1)
         self.assertEqual(data["lanes"]["unexamined"], 2)  # sermon + bio; the book left
 

@@ -30,12 +30,16 @@
 	let fLanguage = $state(initialParams.get('language') ?? '');
 	// The lane ('' = all of them). Bookmarks from before lanes still land where
 	// they did: `flagged=1` was the verses lane, `outcome=needs_work` its own.
+	const LANE_IDS: readonly ReviewLane[] = ['ready', 'verses', 'unexamined', 'needs_work'];
+	// An unknown value (a typo, a stale link) means "all lanes", as it does to the API.
+	const asLane = (v: string | null): ReviewLane | '' =>
+		LANE_IDS.includes(v as ReviewLane) ? (v as ReviewLane) : '';
 	const initialLane: ReviewLane | '' =
 		initialParams.get('flagged') === '1'
 			? 'verses'
 			: initialParams.get('outcome') === 'needs_work'
 				? 'needs_work'
-				: ((initialParams.get('lane') ?? '') as ReviewLane | '');
+				: asLane(initialParams.get('lane'));
 	let fLane = $state(initialLane);
 	// Each lane's natural order: in the verses lane that is fewest verses left,
 	// so half-finished work gets closed out first.
@@ -55,7 +59,7 @@
 		if (fKind) p.set('kind', fKind);
 		if (fLanguage) p.set('language', fLanguage);
 		if (fLane) p.set('lane', fLane);
-		if (fSort !== 'oldest') p.set('sort', fSort);
+		if (fSort !== defaultSort(fLane)) p.set('sort', fSort);
 		if (fSlug) p.set('slug', fSlug);
 		if (page > 1) p.set('p', String(page));
 		const qs = p.toString();
@@ -75,7 +79,7 @@
 	// session rather than vanishing: undo needs something to grab onto, and the
 	// reviewer keeps a visible sense of progress. This replaces the old
 	// behaviour of splicing the row out of the list on success.
-	let settled = $state<Record<string, { outcome: string; title: string }>>({});
+	let settled = $state<Record<string, { outcome: string; title: string; lane: ReviewLane }>>({});
 	let selected = $state<Record<string, boolean>>({});
 
 	// Settling one verse. Keyed by reference within the open item, so two
@@ -248,6 +252,20 @@
 		return i.outcome?.provisional ? 'Confirm' : 'Approve';
 	}
 
+	// Keep the lane cards and totals honest without a refetch (which would drop
+	// the decided rows' undo strips). `dir` 1 applies a decision, -1 undoes it.
+	// A provisional approval changed nothing live, so it moves nothing; an
+	// item leaving a queue lane (anything but needs_work) leaves the total too.
+	function moveCount(from: ReviewLane, outcome: string, dir: 1 | -1) {
+		if (!queue || outcome === 'provisional') return;
+		queue.lanes[from] -= dir;
+		if (outcome === 'needs_work') queue.lanes.needs_work += dir;
+		if (from !== 'needs_work') {
+			queue.total -= dir;
+			queue.filtered -= dir;
+		}
+	}
+
 	async function decide(items: ReviewItem[], outcome: 'approved' | 'needs_work', note = '') {
 		const keys = items.map((i) => key(i.kind, i.slug, i.language));
 		keys.forEach((k) => (busy = { ...busy, [k]: true }));
@@ -261,14 +279,15 @@
 				// "Approved" is how a reviewer approved the same translations twice
 				// and none of them ever reached readers.
 				const shown = d.status === 'provisional' ? 'provisional' : outcome;
-				settled = { ...settled, [k]: { outcome: shown, title: item?.title ?? d.slug } };
+				const lane = item?.lane ?? 'ready';
+				settled = { ...settled, [k]: { outcome: shown, title: item?.title ?? d.slug, lane } };
+				moveCount(lane, shown, 1);
 				selected = { ...selected, [k]: false };
 			}
 			for (const s of res.skipped) {
 				rowError = { ...rowError, [key(s.kind, s.slug, s.language)]: s.reason };
 			}
 			// A provisional approval stays in the queue awaiting its approver.
-			if (queue) queue.total -= res.decided.filter((d) => d.status !== 'provisional').length;
 		} catch (e) {
 			// A batch where EVERY item was held back is a 400 carrying the same
 			// per-item reasons as a 207 — show them, not a generic failure (that
@@ -301,9 +320,9 @@
 		busy = { ...busy, [k]: true };
 		try {
 			await undoReview(target(item));
-			const { [k]: _dropped, ...rest } = settled;
+			const { [k]: was, ...rest } = settled;
+			if (was) moveCount(was.lane, was.outcome, -1);
 			settled = rest;
-			if (queue) queue.total += 1;
 		} catch (e) {
 			rowError = { ...rowError, [k]: e instanceof Error ? e.message : 'Undo failed.' };
 		} finally {
@@ -386,6 +405,19 @@
 	const curPage = $derived(queue?.page ?? 1);
 	const totalPages = $derived(queue?.pages ?? 1);
 
+	// The row's second line: who, how big, where it came from. A bio's author is
+	// its title, so it isn't said twice.
+	const meta = (i: ReviewItem) =>
+		[
+			i.kind === 'bio' && i.author === i.title ? '' : i.author,
+			i.chapters ? `${i.chapters} ch` : i.words ? `${i.words.toLocaleString()} words` : '',
+			i.scripture_ref,
+			i.provenance?.job_issue ? `job #${i.provenance.job_issue}` : '',
+			i.provenance?.pull_request ? `PR #${i.provenance.pull_request}` : ''
+		]
+			.filter(Boolean)
+			.join(' · ');
+
 	// The machine checks as short verdicts, with the raw numbers on hover. Each
 	// says only what the machine found; a pass is still "the machine found
 	// nothing", never "the prose is good" (see the intro).
@@ -428,8 +460,9 @@
 			<h1 class="text-display">Review queue</h1>
 			{#if queue}
 				{@const oldest = daysSince(queue.oldest_created_at)}
+				{@const inView = queue.lanes.ready + queue.lanes.verses + queue.lanes.unexamined}
 				<p class="text-small text-muted">
-					{queue.total.toLocaleString()} awaiting review
+					{inView.toLocaleString()} awaiting review{fLanguage ? ` in ${languageName(fLanguage)}` : ''}
 					{#if oldest != null}· oldest waiting {oldest} day{oldest === 1 ? '' : 's'}{/if}
 				</p>
 			{/if}
@@ -511,7 +544,7 @@
 				{/if}
 				<p class="text-small ml-auto text-muted">
 					Showing {q.filtered.toLocaleString()} of {q.total.toLocaleString()}
-					{#if fLane || fLanguage || fKind || fSort !== 'oldest'}
+					{#if fLane || fLanguage || fKind || fSort !== defaultSort(fLane)}
 						· <button type="button" class="link" onclick={resetFilters}>Reset</button>
 					{/if}
 				</p>
@@ -630,13 +663,7 @@
 											</span>
 										{/if}
 									</div>
-									<div class="text-small truncate text-muted">
-										{#if !(i.kind === 'bio' && i.author === i.title)}{i.author} ·{/if}
-										{#if i.chapters}{i.chapters} ch{:else if i.words}{i.words.toLocaleString()} words{/if}
-										{#if i.scripture_ref}· {i.scripture_ref}{/if}
-										{#if i.provenance?.job_issue}· job #{i.provenance.job_issue}{/if}
-										{#if i.provenance?.pull_request}· PR #{i.provenance.pull_request}{/if}
-									</div>
+									<div class="text-small truncate text-muted">{meta(i)}</div>
 								</div>
 
 								{#if i.lane === 'verses'}
@@ -650,6 +677,12 @@
 										</span>
 										<span class="text-muted">verses settled</span>
 									</span>
+								{:else if i.lane === 'ready' && i.notes.mined}
+									<span
+										class="text-small text-muted"
+										title="Scripture the pipeline matched to a published translation"
+										>{i.notes.mined} verse{i.notes.mined === 1 ? '' : 's'} checked</span
+									>
 								{:else if i.lane === 'unexamined' && fLane !== 'unexamined'}
 									<span
 										class="text-micro rounded-full border border-border-strong px-2 text-muted"

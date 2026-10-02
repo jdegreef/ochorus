@@ -146,7 +146,13 @@ class AdminReviewQueueView(AdminAudited, APIView):
             # Distinguish "examined and clean" from "never examined" — the UI
             # must not render an absence of notes as an absence of problems.
             r["notes_recorded"] = k in noted
-            r["lane"] = self._lane(r["flagged"], r["notes_recorded"])
+            # A row sent back sits in its own lane whatever its notes say, so a
+            # needs-work item can never be offered as "ready".
+            r["lane"] = (
+                "needs_work"
+                if r["outcome"] and r["outcome"]["outcome"] == "needs_work"
+                else self._lane(r["flagged"], r["notes_recorded"])
+            )
 
         # Everything still awaiting attention: no decision yet, OR a PROVISIONAL
         # approval a reviewer proposed that still needs an approver to confirm
@@ -159,9 +165,16 @@ class AdminReviewQueueView(AdminAudited, APIView):
             if not r["outcome"]
             or (r["outcome"]["outcome"] == "approved" and r["outcome"].get("provisional"))
         ]
+        # Least privilege: a language-scoped reviewer sees only their languages'
+        # queue, not the whole library's — its tabs and counts included. None =
+        # no restriction (super admin / *).
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
+        visible_rows = (
+            undecided if allowed is None else [r for r in undecided if r["language"] in allowed]
+        )
         facets = {
-            "language": _tally(undecided, "language"),
-            "kind": _tally(undecided, "kind"),
+            "language": _tally(visible_rows, "language"),
+            "kind": _tally(visible_rows, "kind"),
         }
 
         # Display names come from the registry rather than a map in the frontend.
@@ -181,10 +194,6 @@ class AdminReviewQueueView(AdminAudited, APIView):
             code: language_entry(code)["name"] for code in {r["language"] for r in rows}
         }
 
-        # Least privilege: a language-scoped reviewer sees only their languages'
-        # queue, not the whole library's. None = no restriction (super admin / *).
-        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
-
         def scoped(items):
             if kind in self.KINDS:
                 items = [r for r in items if r["kind"] == kind]
@@ -194,7 +203,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 items = [r for r in items if r["language"] in allowed]
             return items
 
-        needs_work = [r for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"]
+        needs_work = [r for r in rows if r["lane"] == "needs_work"]
         # The lane counts follow the language / type in view, so the cards read
         # "Spanish: 23 ready" rather than a library-wide number the reviewer
         # can't act on. Counted from rows already loaded — no extra query.
@@ -213,8 +222,8 @@ class AdminReviewQueueView(AdminAudited, APIView):
             sel = scoped(needs_work)
         else:
             sel = in_view
-            if lane in lanes:
-                sel = [r for r in sel if r["lane"] == lane]
+        if lane in lanes:
+            sel = [r for r in sel if r["lane"] == lane]
 
         if sort == "remaining":
             # Fewest unsettled verses first: the nearly-finished items, so a
@@ -249,7 +258,8 @@ class AdminReviewQueueView(AdminAudited, APIView):
         return Response(
             {
                 "results": window,
-                "total": len(undecided),
+                # Within the reviewer's languages, like everything else here.
+                "total": len(visible_rows),
                 "filtered": len(sel),
                 "lanes": lanes,
                 # When the longest-waiting item in view arrived — the queue's
