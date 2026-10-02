@@ -22,7 +22,7 @@ from __future__ import annotations
 
 import logging
 import time
-from collections import defaultdict
+from collections import Counter, defaultdict
 from datetime import UTC, datetime, timedelta
 from html import escape
 
@@ -98,13 +98,18 @@ def _only(items: list, language: str) -> list:
     return [f for f in items if f["language"] == language]
 
 
-def _present(check: str, items: list, dismissed: set) -> dict:
-    """Cap a quality check's findings after removing accepted ones, and report
-    how many were hidden so the check still reads as examined, not empty."""
-    kept = [
+def _open(check: str, items: list, dismissed: set) -> list:
+    """``items`` without the findings a reviewer has accepted."""
+    return [
         f for f in items
         if (check, f["book"], f["language"], _ref_of(check, f)) not in dismissed
     ]
+
+
+def _present(check: str, items: list, dismissed: set) -> dict:
+    """Cap a quality check's findings after removing accepted ones, and report
+    how many were hidden so the check still reads as examined, not empty."""
+    kept = _open(check, items, dismissed)
     return {
         "total": len(kept),
         "items": kept[:AUDIT_LIMIT],
@@ -197,6 +202,53 @@ def present(scan: dict, dismissed: set, language: str = "") -> tuple[dict, dict]
     quality["duplicate_titles"] = _present("duplicate_titles", dup_raw, dismissed)
     integrity = {k: _capped(v) for k, v in integrity_raw.items()}
     return quality, integrity
+
+
+#: How many editions the "worst books first" ranking lists.
+WORST_BOOKS_LIMIT = 25
+
+
+def worst_books(scan: dict, dismissed: set, language: str = "", limit: int = WORST_BOOKS_LIMIT) -> dict:
+    """Editions ranked by open quality flags, most first, with each one's count
+    per check — the page's "worst books first" table.
+
+    Fixes happen per edition (a re-import repairs a whole book), so this is the
+    list of re-imports that clear the most flags. Counted here from the UNCAPPED
+    raw lists: the per-check item lists the page receives stop at AUDIT_LIMIT, so
+    grouping them in the browser would undercount exactly the editions that
+    matter. Accepted findings are excluded, like everywhere else; the language
+    filter applies first. Integrity defects are not counted — they are listed
+    (and fixed) on their own. ``total`` is how many editions have any open flag.
+    """
+    checks = [(c, scan["raw"][c]) for c in QUALITY_CHAPTER_CHECKS]
+    checks.append(("duplicate_titles", scan["dup_raw"]))
+    by_edition: defaultdict[tuple[str, str], Counter] = defaultdict(Counter)
+    for check, items in checks:
+        if language:
+            items = _only(items, language)
+        for f in _open(check, items, dismissed):
+            by_edition[(f["book"], f["language"])][check] += 1
+    ranked = sorted(by_edition.items(), key=lambda kv: (-kv[1].total(), kv[0]))[:limit]
+    keys = {key for key, _ in ranked}
+    # Titles are looked up per request, not cached with the scan: 25 rows, one query.
+    titles = {
+        (slug, lang): title
+        for slug, lang, title in Book.objects.filter(
+            slug__in={slug for slug, _ in keys}
+        ).values_list("slug", "language", "title")
+        if (slug, lang) in keys
+    }
+    items = [
+        {
+            "book": slug,
+            "language": lang,
+            "title": titles.get((slug, lang), ""),
+            "total": counts.total(),
+            "by_check": dict(counts.most_common()),
+        }
+        for (slug, lang), counts in ranked
+    ]
+    return {"total": len(by_edition), "items": items}
 
 
 # --- Recording ------------------------------------------------------------------

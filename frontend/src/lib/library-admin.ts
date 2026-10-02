@@ -990,6 +990,22 @@ export interface AdminAudit {
 	/** Chapter-length histogram for the edition in view. Optional: a payload
 	 *  restored from sessionStorage may predate it. */
 	chapter_lengths?: ChapterLengths;
+	/** Editions ranked by open quality flags ("worst books first"), grouped on
+	 *  the server over the uncapped scan — the item lists above stop at the cap,
+	 *  so the browser can't group them accurately. Accepted findings excluded;
+	 *  follows `language`. `total` is how many editions have any open flag.
+	 *  Optional: a payload restored from sessionStorage may predate it. */
+	worst_books?: Capped<AuditWorstBook>;
+}
+
+export interface AuditWorstBook {
+	book: string;
+	language: string;
+	/** The edition's title, or '' if its row is gone since the scan. */
+	title: string;
+	total: number;
+	/** Open flags per quality check key, biggest first. */
+	by_check: Record<string, number>;
 }
 
 export interface AuditScanScope {
