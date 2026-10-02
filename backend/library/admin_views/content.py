@@ -18,7 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
-from ..demand import reading_elsewhere
+from ..demand import demand_score, reading_elsewhere
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -582,19 +582,21 @@ def _review_state_or_present(record: dict) -> str:
     return st if st in _AI_STATES else "present"
 
 
-def _with_demand(rows: list[dict], kind: str, wanted: dict) -> list[dict]:
-    """Stamp each row with ``demand``: language → readers whose site language
-    that is, reading this work elsewhere because it has no edition in theirs
-    (``library.demand.reading_elsewhere``). Only languages with any; absent
-    when none. Every such cell is a gap by construction."""
+def _with_asking(rows: list[dict], kind: str, wanted: dict) -> list[dict]:
+    """Stamp each row with ``asking``: language → how strongly that language's
+    readers want this work, from the reading signal alone (readers whose site
+    language it is, reading the work elsewhere because it has no edition in
+    theirs), scored with ``library.demand.demand_score`` so a gap here weighs
+    what the language page's "Readers are asking for" says it does. Only
+    languages with any; absent when none. Every such cell is a gap."""
+    by_slug: dict[str, dict[str, int]] = {}
+    for lang, works in wanted.items():
+        for (k, slug), readers in works.items():
+            if k == kind:
+                by_slug.setdefault(slug, {})[lang] = demand_score(readers, 0)
     for row in rows:
-        demand = {
-            lang: works[(kind, row["slug"])]
-            for lang, works in wanted.items()
-            if (kind, row["slug"]) in works
-        }
-        if demand:
-            row["demand"] = demand
+        if asking := by_slug.get(row["slug"]):
+            row["asking"] = asking
     return rows
 
 
@@ -636,7 +638,7 @@ class AdminCoverageView(APIView):
         # Readers reaching for a work in another language for want of their own
         # (library.demand): the per-cell demand behind a gap. The reading signal
         # only; the search one runs real searches, too slow for every column.
-        wanted = reading_elsewhere([c for c in codes if c != "en" and c in registry])
+        wanted = reading_elsewhere([c for c in codes if c in registry])
         return Response(
             {
                 "languages": [
@@ -649,12 +651,12 @@ class AdminCoverageView(APIView):
                     }
                     for c in codes
                 ],
-                "books": _with_demand(
+                "books": _with_asking(
                     _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
                     "book",
                     wanted,
                 ),
-                "sermons": _with_demand(
+                "sermons": _with_asking(
                     _with_stale(self._with_readers(self._sermon_rows(), "sermon"), "sermon"),
                     "sermon",
                     wanted,
@@ -663,7 +665,7 @@ class AdminCoverageView(APIView):
                 # Bios carry `stale` from AuthorTranslation.source_stale (_bio_rows).
                 "bios": self._with_readers(self._bio_rows(), "bio"),
                 # Articles have no reading-layer rows, so no reader counts.
-                "articles": _with_demand(
+                "articles": _with_asking(
                     _with_stale(self._article_rows(), "article"), "article", wanted
                 ),
                 # The series the Books matrix can be narrowed to (each book row

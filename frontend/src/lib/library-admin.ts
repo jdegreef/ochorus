@@ -644,10 +644,11 @@ export interface AdminCoverageRow {
 	 * edition stays unpublished and no translation may be filed, so its missing
 	 * cells are locked, not gaps. Absent otherwise. */
 	blocked?: boolean;
-	/** Books, sermons and articles: language → readers whose site language that
-	 *  is, reading this work elsewhere because it has no edition in theirs
-	 *  (library/demand.py). Only languages with any; absent when none. */
-	demand?: Record<string, number>;
+	/** Books, sermons and articles: language → how strongly that language's
+	 *  readers want this work — readers whose site language it is, reading it
+	 *  elsewhere for want of their own edition, scored by demand.demand_score
+	 *  (reading signal only). Only languages with any; absent when none. */
+	asking?: Record<string, number>;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs

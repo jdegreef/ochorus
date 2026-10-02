@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { plural } from '$lib/languageHealth';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import {
@@ -357,7 +358,13 @@
 	// the one per-cell signal, so a gap three Swahili readers are waiting on
 	// outranks the same work's gap in a language nobody has asked for. A row's
 	// priority is the sum of its gaps; "Translate next" ranks the gaps themselves.
-	const asking = (r: AdminCoverageRow, l: AdminCoverageLanguage) => r.demand?.[l.code] ?? 0;
+	// The server scores it with demand.demand_score, the language page's rule.
+	const asking = (r: AdminCoverageRow, l: AdminCoverageLanguage) => r.asking?.[l.code] ?? 0;
+	// The tooltip / screen-reader note for a gap readers are waiting on.
+	const askingNote = (r: AdminCoverageRow, l: AdminCoverageLanguage) => {
+		const n = asking(r, l);
+		return n ? ` · ${plural(n, `${l.name} reader is`, `${l.name} readers are`)} reading it in another language` : '';
+	};
 	const gapScore = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
 		isGap(l, r) ? (1 + (r.readers ?? 0)) * gapWeight(l) * (1 + asking(r, l)) : 0;
 	const priority = (r: AdminCoverageRow) =>
@@ -429,6 +436,9 @@
 		queued: { label: '◷', cls: 'border border-accent-soft-border bg-accent-soft text-accent' },
 		translating: { label: '◐', cls: 'border border-accent bg-surface text-accent' },
 		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
+		// Still missing (dashed, like `missing`), but readers are waiting on it:
+		// its label is how many (see `asking`).
+		asking: { label: '', cls: 'border border-dashed border-accent bg-surface tabular-nums text-accent' },
 		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
 	} as const;
 	// The summary tiles' colours: the border/fill when its filter is on, the
@@ -546,10 +556,11 @@
 		return { gaps, unreviewed, stale, inFlight: tabJobs.length, translating };
 	});
 	// "Translate next": every open gap, scored like the Priority sort scores a
-	// row — the work's readers × how much that language searches in vain — so
-	// the top of the list is the translation most likely to be read. Readers are
-	// unbounded and the language weight is only 1–2×, so one popular work would
-	// take every slot: each work gets at most NEXT_PER_WORK. Ties keep the
+	// row — the work's readers × how much that language searches in vain × (1 +
+	// readers of that language asking for it) — so the top of the list is the
+	// translation most likely to be read. Readers and asking are unbounded and
+	// the language weight is only 1–2×, so one popular work would take every
+	// slot: each work gets at most NEXT_PER_WORK. Ties keep the
 	// tab's own (curated) order. Empty until the job list has loaded — before
 	// that a queued gap still looks open.
 	const NEXT_COUNT = 10;
@@ -1002,11 +1013,11 @@
 						</button>
 					{/if}
 				{/each}
-				{#if visibleRows.some((r) => r.demand)}
+				{#if visibleRows.some((r) => r.asking)}
 					<span
 						class="inline-flex items-center gap-1.5 text-muted"
 						title="A missing translation that readers of that language are reading in another language, for want of it. The number is how many readers; it also raises the gap in the priority order."
-						><span class="{TILE} border border-accent-soft-border bg-accent-soft font-semibold text-accent">3</span>readers asking</span
+						><span class="{TILE} {CELL.asking.cls}">3</span>readers asking</span
 					>
 				{/if}
 				<details
@@ -1352,36 +1363,29 @@
 			     queue should still see where readers are waiting. -->
 			{@const wanting = asking(r, l)}
 			<span
-				class="{TILE} {wanting
-					? 'border border-accent-soft-border bg-accent-soft font-semibold tabular-nums text-accent'
-					: CELL.missing.cls}"
+				class="{TILE} {wanting ? CELL.asking.cls : CELL.missing.cls}"
 				title={(jobsConfigured === false
 					? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 					: untitled(r)
 						? `Fix the title of ${name} before queueing translations`
 						: !canQueue
 							? `Missing: ${name} → ${l.name}`
-							: `${l.name} isn't a translation target — nothing to queue`) +
-					(wanting
-						? ` · ${wanting} ${l.name} reader${wanting === 1 ? ' is' : 's are'} reading it in another language`
-						: '')}
-				aria-label={wanting ? `Missing, ${wanting} readers asking` : 'Missing'}
+							: `${l.name} isn't a translation target — nothing to queue`) + askingNote(r, l)}
+				aria-label={'Missing' + askingNote(r, l)}
 				>{wanting || ''}</span
 			>
 		{:else}
 			{@const spot = queueing === jobKey(r.slug, l.code)}
 			{@const picked = !!selected[cellKey(r.slug, l.code)]}
 			{@const wanting = asking(r, l)}
-			{@const why = wanting
-				? ` · ${wanting} ${l.name} reader${wanting === 1 ? ' is' : 's are'} reading it in another language`
-				: ''}
+			{@const why = askingNote(r, l)}
 			<button
 				type="button"
 				aria-pressed={picked}
 				class="{TILE} transition-colors hover:border-solid hover:border-accent-soft-border hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent {picked
 					? 'border border-accent bg-accent-soft text-accent'
 					: wanting
-						? 'border border-accent-soft-border bg-accent-soft font-semibold text-accent'
+						? CELL.asking.cls
 						: `${CELL.missing.cls} text-muted`}"
 				disabled={busy}
 				title={`Queue a ${l.name} translation of ${name}${why}`}
@@ -1392,7 +1396,7 @@
 				{#if spot}
 					<span>…</span>
 				{:else if wanting && !picked}
-					<span class="tabular-nums">{wanting}</span>
+					<span>{wanting}</span>
 				{:else}
 					<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
 				{/if}

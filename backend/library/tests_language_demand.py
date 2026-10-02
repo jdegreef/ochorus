@@ -115,6 +115,6 @@ class LanguageDemandTests(TestCase):
         sermons = {r["slug"]: r for r in res.data["sermons"]}
         # Only columns that exist count: Luganda has no content yet, so its one
         # reader's vote has no cell to sit on.
-        self.assertEqual(books["the-pursuit-of-god"]["demand"], {"sw": 2})
-        self.assertEqual(sermons["waiting-on-god"]["demand"], {"sw": 1})
-        self.assertNotIn("demand", books["absolute-surrender"])
+        self.assertEqual(books["the-pursuit-of-god"]["asking"], {"sw": 2})
+        self.assertEqual(sermons["waiting-on-god"]["asking"], {"sw": 1})
+        self.assertNotIn("asking", books["absolute-surrender"])
