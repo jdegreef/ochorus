@@ -680,7 +680,12 @@ def render_print_html(
     parts.append(f'<div class="titlepage">{_title_page(ed)}</div>')
     parts.append(f'<div class="ochorus">{_ochorus_page(ed)}</div>')
     if ed.bio:
-        parts.append(f'<div class="author-page">{_author_page(ed)}</div>')
+        # The empty links make Chrome name both ends of the page as PDF
+        # destinations; export_book checks they land on one page.
+        parts.append(
+            f'<div class="author-page"><span id="author-top"></span>{_author_page(ed)}'
+            '<span id="author-end"><a href="#author-top"></a><a href="#author-end"></a></span></div>'
+        )
     toc = []
     if ed.about:
         toc.append(("about", s["about"]))

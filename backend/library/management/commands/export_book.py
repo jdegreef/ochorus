@@ -87,42 +87,41 @@ def _print_pdf(edition, path: Path) -> None:
     """The contents page numbers need a print to know: print, read where each
     anchor landed from Chrome's named destinations, print again with them.
     Filling the numbers in can itself move a page (a long contents that tips
-    onto another page), so repeat until a print agrees with its numbers."""
+    onto another page), so repeat until a print agrees with its numbers.
+
+    Printed in a scratch folder and moved to ``path`` only once it passes, so
+    ``path`` never holds a half-made or failed PDF."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
-        _print(_write_print_html(edition, Path(tmp)), path)
-        pages = _anchor_pages(path)
+        pdf = Path(tmp) / "book.pdf"
+        _print(_write_print_html(edition, Path(tmp)), pdf)
+        pages = _anchor_pages(pdf)
         for _ in range(3):
-            _print(_write_print_html(edition, Path(tmp), pages), path)
-            landed = _anchor_pages(path)
+            _print(_write_print_html(edition, Path(tmp), pages), pdf)
+            landed = _anchor_pages(pdf)
             if landed == pages:
                 break
             pages = landed
         else:
             raise CommandError(f"{path.name}: contents page numbers never settled.")
-    _check_author_page(edition, path)
-    _repack(path)
+        _check_author_page(edition, path.name, landed)
+        _repack(pdf)
+        shutil.move(pdf, path)
 
 
-def _check_author_page(edition, pdf: Path) -> None:
-    """About the Author is ONE page. Its last line, the link to the full
-    biography, must print on the page that opens with the author's name — a
-    bio too long for its page pushes that link onto the next one."""
-    from pypdf import PdfReader  # dev-only dependency; this command runs off-server
+class AuthorPageOverflow(CommandError):
+    pass
 
-    link = book_export.author_url(edition.book)
-    if not (edition.bio and link):
-        return
-    for page in PdfReader(pdf).pages[:10]:
-        uris = {a.get_object().get("/A", {}).get("/URI") for a in page.get("/Annots") or []}
-        if link in uris:
-            if edition.author in page.extract_text():
-                return
-            break
-    raise CommandError(
-        f"{pdf.name}: About the Author runs past one page — shorten "
-        f"library/export_bios/{edition.book.author.slug}.{edition.lang}.txt."
-    )
+
+def _check_author_page(edition, name: str, pages: dict[str, int]) -> None:
+    """About the Author is ONE page: its first and last lines (the print page's
+    ``author-top`` / ``author-end`` anchors) must land on the same page — a bio
+    too long for it pushes the end onto the next."""
+    if "author-top" in pages and pages["author-top"] != pages.get("author-end"):
+        raise AuthorPageOverflow(
+            f"{name}: About the Author runs past one page — shorten "
+            f"library/export_bios/{edition.book.author.slug}.{edition.lang}.txt."
+        )
 
 
 def _repack(pdf: Path) -> None:
@@ -233,7 +232,17 @@ class Command(BaseCommand):
             # collide (exit 2, or a pass laid out differently); a private
             # --user-data-dir fixes that on Linux but leaves macOS Chrome
             # hanging after it prints. A book prints in ~5 s, so it's minutes.
+            # A bio too long for its page fails its own PDF, not the run: the
+            # rest still print (and book-pdfs.yml still uploads them), and the
+            # command fails at the end so the run goes red.
+            overflowed = []
             for edition, path in jobs:
-                _print_pdf(edition, path)
+                try:
+                    _print_pdf(edition, path)
+                except AuthorPageOverflow as e:
+                    overflowed.append(str(e))
+                    continue
                 self.stdout.write(f"  {path.name}")
+            if overflowed:
+                raise CommandError("\n".join(overflowed))
         self.stdout.write(self.style.SUCCESS(f"Wrote {len(editions)} {format.upper()}s to {folder}"))

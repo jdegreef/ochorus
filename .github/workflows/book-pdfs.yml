@@ -110,7 +110,11 @@ jobs:
 
       # ubuntu-latest ships the AWS CLI. Newer versions send checksums some
       # S3-compatible stores reject, so only send them when required.
+      # Runs after a failed build too: export_book only ever leaves finished,
+      # checked PDFs in the folder, so a bio too long for its page (which
+      # fails the build) never holds back every other book's update.
       - name: Upload to Supabase Storage
+        if: ${{ !cancelled() }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.SUPABASE_S3_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.SUPABASE_S3_SECRET_ACCESS_KEY }}

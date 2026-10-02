@@ -196,6 +196,17 @@ class EpubTests(TestCase):
         self.book.author.save()
         self.assertNotIn("OEBPS/about-author.xhtml", self._zip(self._get()).namelist())
 
+    def test_an_author_page_that_spills_onto_a_second_page_fails_the_pdf(self):
+        from .management.commands import export_book
+
+        ed = book_export.build_edition(self.book)
+        html = book_export.render_print_html(ed)
+        self.assertLess(html.index('id="author-top"'), html.index('id="author-end"'))
+        export_book._check_author_page(ed, "x.pdf", {"author-top": 4, "author-end": 4, "ch1": 6})
+        export_book._check_author_page(ed, "x.pdf", {"ch1": 5})  # no bio page
+        with self.assertRaises(export_book.AuthorPageOverflow):
+            export_book._check_author_page(ed, "x.pdf", {"author-top": 4, "author-end": 5})
+
     def test_print_contents_carries_page_numbers_when_given(self):
         ed = book_export.build_edition(self.book)
         numbered = book_export.render_print_html(ed, pages={"about": 4, "ch1": 5, "ch2": 9})
@@ -285,25 +296,32 @@ class PilotTests(TestCase):
         self.assertFalse(stray, f"export bios no edition uses: {sorted(stray)}")
 
     def test_export_bios_were_checked_against_the_current_long_bio(self):
-        # Each export bio is a short retelling of the author's bio_html. When
-        # that moves (a corrected date, a new fact), the short copy may now be
-        # wrong: re-read it against the new bio_html, then update its digest
+        # Each export bio is a short retelling of the author's long bio in its
+        # own language (authors.json bio_html; author_bios_<lang>/<slug>.html).
+        # When that moves (a corrected date, a new fact) the short copy may be
+        # wrong: re-read it against the new long bio, then update its digest
         # in export_bios/sources.json — the designed_covers.py pattern.
         import hashlib
         import json
 
         from .content_fixtures import AUTHORS_FILE
 
-        bio_html = {
+        english = {
             r["fields"]["slug"]: r["fields"].get("bio_html", "")
             for r in json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
         }
+        translated = book_export.Path(book_export.settings.BASE_DIR) / "library" / "migrations" / "data"
         pinned = json.loads((book_export.EXPORT_BIOS_DIR / "sources.json").read_text(encoding="utf-8"))
         files = sorted(p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt"))
         self.assertEqual(sorted(pinned), files, "sources.json must list every export bio")
         for name in files:
-            digest = hashlib.sha256(bio_html[name.split(".")[0]].encode()).hexdigest()[:16]
-            self.assertEqual(pinned[name], digest, f"{name}: its author's bio_html changed — re-check it")
+            slug, lang, _ = name.split(".")
+            source = (
+                english[slug] if lang == "en"
+                else (translated / f"author_bios_{lang}" / f"{slug}.html").read_text(encoding="utf-8")
+            )
+            digest = hashlib.sha256(source.encode()).hexdigest()[:16]
+            self.assertEqual(pinned[name], digest, f"{name}: its author's long bio changed — re-check it")
 
 
 class CoverTests(TestCase):
