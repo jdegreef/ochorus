@@ -1994,17 +1994,18 @@ class AdminLanguageHealthTests(TestCase):
             self.assertEqual(r["scores"]["engagement"], 0.0)
 
     def _readers(self, language, n):
+        import uuid
+
         from django.contrib.auth.models import User
 
         from accounts.models import UserProfile
         from reading.models import ReadingProgress
 
-        for i in range(n):
-            # A valid UUID per (language, reader): the language's bytes as hex.
-            uid = f"00000000-0000-0000-{language.encode().hex():0>4}-{i:012d}"
+        for _ in range(n):
+            uid = str(uuid.uuid4())
             user = User.objects.create(username=uid)
             profile = UserProfile.objects.create(
-                user=user, supabase_uid=uid, email=f"{language}{i}@example.com"
+                user=user, supabase_uid=uid, email=f"{uid}@example.com"
             )
             ReadingProgress.objects.create(
                 profile=profile, book_slug="b0", language=language
@@ -2016,7 +2017,7 @@ class AdminLanguageHealthTests(TestCase):
         self._readers("es", 5)
         data = self._get()
         self.assertEqual(data["engagement_target"], _ENGAGEMENT_TARGET)
-        es = next(r for r in data["languages"] if r["code"] == "es")
+        es = {r["code"]: r for r in data["languages"]}["es"]
         self.assertAlmostEqual(
             es["scores"]["engagement"], 5 / _ENGAGEMENT_TARGET, places=3
         )
@@ -2025,9 +2026,9 @@ class AdminLanguageHealthTests(TestCase):
         # The bug the fixed target fixes: under "share of the busiest language",
         # English gaining readers lowered Spanish's score.
         self._readers("es", 5)
-        before = next(r for r in self._get()["languages"] if r["code"] == "es")
+        before = {r["code"]: r for r in self._get()["languages"]}["es"]
         self._readers("en", 30)
-        after = next(r for r in self._get()["languages"] if r["code"] == "es")
+        after = {r["code"]: r for r in self._get()["languages"]}["es"]
         self.assertEqual(before["scores"]["engagement"], after["scores"]["engagement"])
         self.assertEqual(before["health"], after["health"])
 
@@ -2035,7 +2036,7 @@ class AdminLanguageHealthTests(TestCase):
         from .admin_views.health import _ENGAGEMENT_TARGET
 
         self._readers("en", _ENGAGEMENT_TARGET + 3)
-        en = next(r for r in self._get()["languages"] if r["code"] == "en")
+        en = {r["code"]: r for r in self._get()["languages"]}["en"]
         self.assertEqual(en["scores"]["engagement"], 1.0)
 
     def test_makes_no_bible_call(self):

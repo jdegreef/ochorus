@@ -13,6 +13,7 @@
 		BAND_STRONG,
 		HEALTH_KEYS,
 		blockers,
+		countLine,
 		healthBand,
 		nextActions,
 		plural,
@@ -32,7 +33,7 @@
 		readiness: { label: 'Readiness', hint: 'share of the go-live checks met' },
 		coverage: { label: 'Coverage', hint: 'books here ÷ the English shelf' },
 		review: { label: 'Review', hint: 'share of translations a human has confirmed' },
-		engagement: { label: 'Engagement', hint: 'readers, against a fixed target' }
+		engagement: { label: 'Engagement', hint: 'readers' }
 	};
 
 	const BAND_INK = { accent: 'text-accent', text: 'text-text', warning: 'text-warning' } as const;
@@ -41,29 +42,6 @@
 		text: 'border-border text-muted',
 		warning: 'border-warning/40 text-warning'
 	} as const;
-
-	// The raw count behind each bar, so a percentage never hides the size of the job.
-	function countLine(
-		key: HealthScoreKey,
-		l: AdminLanguageHealth,
-		sourceBooks: number,
-		engagementTarget: number | undefined
-	): string {
-		switch (key) {
-			case 'readiness':
-				return l.readiness.ready ? 'all checks met' : `${fmt(l.readiness.blocking.length)} blocking`;
-			case 'coverage':
-				return `${fmt(l.content.published_books)} of ${fmt(sourceBooks)} books`;
-			case 'review': {
-				const total = l.content.published_books;
-				return total ? `${fmt(total - l.content.unreviewed_books)} of ${fmt(total)} reviewed` : 'nothing to review';
-			}
-			case 'engagement':
-				return engagementTarget
-					? `${fmt(l.readers)} of ${plural(engagementTarget, 'reader')}`
-					: plural(l.readers, 'reader');
-		}
-	}
 
 	const formula = (w: HealthWeights) =>
 		HEALTH_KEYS.map((k) => `${Math.round(w[k] * 100)} × ${COMPONENTS[k].label.toLowerCase()}`).join(' + ');
@@ -98,16 +76,18 @@
 								<span class="font-semibold text-text">{COMPONENTS[k].label}</span>
 								({Math.round(data.weights[k] * 100)} pts): {COMPONENTS[k].hint}{k === 'coverage'
 									? ` (${fmt(data.source_published_books)} books)`
-									: k === 'engagement' && data.engagement_target
-										? ` of ${plural(data.engagement_target, 'reader')}, so another language's readers never move this score`
+									: k === 'engagement'
+										? data.engagement_target
+											? `, against a target of ${plural(data.engagement_target, 'reader')}, so another language's readers never move this score`
+											: ', against the busiest language'
 										: ''}.
 							</li>
 						{/each}
 					</ul>
 					<p class="mt-2 text-small text-muted">
 						Bands: <span class="text-accent">Strong</span> ≥ {BAND_STRONG} · Fair {BAND_FAIR}–{BAND_STRONG - 1} ·
-						<span class="text-warning">Weak</span> &lt; {BAND_FAIR}. English is the source the others are measured
-						against, so it is shown as the reference, not ranked.
+						<span class="text-warning">Weak</span> &lt; {BAND_FAIR}. English is the source shelf that coverage is
+						measured against, so it is shown as the reference, not ranked.
 					</p>
 				</details>
 			</header>

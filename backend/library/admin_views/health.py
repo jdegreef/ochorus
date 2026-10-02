@@ -30,8 +30,8 @@ from ..models import Book, Chapter, Language, Sermon
 # What the composite weighs, and by how much (weights sum to 1). Readiness leads
 # — a language that fails its go-live bar isn't serving readers whatever else is
 # true — then breadth of content, then how much of it a human has confirmed, then
-# real usage. Engagement is real but modest: English will always dominate it, so
-# a large weight would just rank languages by age.
+# real usage. Engagement is real but modest: reader counts are still small and
+# noisy, so a large weight would let a handful of readers swing the ranking.
 _WEIGHTS = {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0.15}
 
 # Engagement is readers against this fixed target (capped at 1), not against the
