@@ -18,7 +18,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { scrollSpy } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -355,6 +355,8 @@
 	// the same contract the biographies index uses so anchored sections clear both
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
+	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	realignHashOnMeasure(() => subnavH);
 
 	// Where the Reader parks a resumed or `?p=` paragraph, and the line its
 	// "which paragraph is at the top" reads against: below everything pinned —
