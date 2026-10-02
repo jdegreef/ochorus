@@ -58,6 +58,16 @@ class QaReportTests(TestCase):
         chapters = [ch("One", "<p>और फिर उसने कहा कि</p>", words=200), ch("Two", f"<p>{GOOD}</p>", words=200)]
         self.assertIn("mid_sentence_split", self.checks(chapters))
 
+    def test_closing_bracket_ends_a_chapter(self):
+        # An editorial note / sermon date or a footnote marker closes a chapter.
+        for end in ("and be satisfied. [Jan. 20, 1782]", "fill it well.[4]"):
+            with self.subTest(end=end):
+                chapters = [ch("One", f"<p>{end}</p>", words=200), ch("Two", f"<p>{GOOD}</p>", words=200)]
+                self.assertNotIn("mid_sentence_split", self.checks(chapters))
+        # A chapter that really stops mid-sentence is still flagged.
+        chapters = [ch("One", "<p>and then he said that the</p>", words=200), ch("Two", f"<p>{GOOD}</p>", words=200)]
+        self.assertIn("mid_sentence_split", self.checks(chapters))
+
     def test_tiny_and_giant(self):
         tiny = [ch("Short", "<p>five words go here now</p>", words=5)]
         self.assertIn("tiny_chapter", self.checks(tiny))
