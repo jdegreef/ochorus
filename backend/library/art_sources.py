@@ -67,6 +67,7 @@ ART_SOURCES: dict[str, str] = {
     "plain-account-christian-perfection": "cma-118116@0.45",
     "possibilities-of-prayer": "cma-150038@0.50",
     "power-from-on-high-new-testament": "aic-57215@0.68",
+    "power-from-on-high-old-testament": "aic-68792@0.50",
     "power-through-prayer": "met-437683@0.50",
     "prayer-and-praying-men": "met-436831@0.50",
     "prayer-the-pulse-of-life": "met-11113@0.50",

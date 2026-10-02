@@ -98,6 +98,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "power-from-on-high",
+  "title": "The Holy Spirit, or Power from on High",
+  "description": "A. B. Simpson's two-volume study of the Holy Spirit through the whole Bible: the Old Testament's types, emblems and prophecies in Part I, and the New Testament from the Gospels to Revelation in Part II.",
+  "sort_order": 80,
+  "audience": "adults",
+  "min_age": null,
+  "max_age": null,
+  "created_at": "2026-10-02T00:00:00Z",
+  "updated_at": "2026-10-02T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [
