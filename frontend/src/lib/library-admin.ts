@@ -111,6 +111,24 @@ export interface TeamMember {
 	 *  after this grant). `languages` is null when the rows disagree, so no
 	 *  single re-grant is the faithful fix. */
 	outdated: { role: string; missing: string[]; languages: string[] | null }[];
+	/** The account's last signed-in request; null = invited, never signed in. */
+	last_seen_at: string | null;
+	/** When their earliest current grant was made, and who last changed them. */
+	granted_at: string | null;
+	granted_by: string;
+	/** Recent grant/revoke events from the audit log, newest first. */
+	history: TeamHistoryItem[];
+}
+export interface TeamHistoryItem {
+	id: number;
+	at: string;
+	kind: 'grant' | 'revoke' | 'restore';
+	actor: string;
+	role: string;
+	capability: string;
+	/** As sent with the grant: a codes list, "*" or a comma string. */
+	languages: string[] | string;
+	removed: string[];
 }
 export interface AdminTeam {
 	members: TeamMember[];
