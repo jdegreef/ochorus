@@ -2026,6 +2026,153 @@ class AdminContentEditJobsTests(TestCase):
         )
         self.assertEqual(res.status_code, 400)
 
+
+class AdminAuditFixJobTests(TestCase):
+    """The audit page's "Send to fix queue": one (book, language, check) → one
+    content-edit job whose chapter list the SERVER builds from the uncapped,
+    dismissal-filtered scan (GitHub mocked, as in AdminContentEditJobsTests)."""
+
+    URL = "/api/admin/content-edit-jobs/"
+    TITLE = "[edit] audit-fix book:big/en check:missing_dropcap"
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(author=author, slug="big", language="en", title="Big Book")
+        # More flagged chapters than the page's 100-row cap, so a server that
+        # trusted the capped list would drop chapters 101+.
+        for order in range(1, 121):
+            Chapter.objects.create(
+                book=self.book, order=order, title=f"Part {order}",
+                body_html=f"<p>umble words, part {order}.</p>",
+            )
+        # Another edition of the same slug must not leak into the English job.
+        es = Book.objects.create(author=author, slug="big", language="es", title="Libro")
+        Chapter.objects.create(book=es, order=500, title="Uno", body_html="<p>umilde.</p>")
+        # An accepted finding is not part of the job.
+        AuditDismissal.objects.create(
+            check_key="missing_dropcap", book="big", language="en", ref="3"
+        )
+
+    def _post(self, gh_jobs, created=None, **data):
+        from unittest.mock import MagicMock, patch
+
+        payload = {"kind": "audit_fix", "slug": "big", "language": "en",
+                   "check": "missing_dropcap", **data}
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: gh_jobs, raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(
+                json=lambda: created or {}, raise_for_status=lambda: None
+            )
+            res = self.client.post(self.URL, payload, format="json")
+        return res, gh
+
+    @staticmethod
+    def _issue(title, number=9):
+        return {
+            "title": title,
+            "labels": [{"name": "content-edit"}],
+            "html_url": f"https://github.com/o/r/issues/{number}",
+            "number": number,
+            "created_at": "2026-10-01T00:00:00Z",
+        }
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_files_one_job_from_the_uncapped_dismissal_filtered_scan(self):
+        import json
+        import re
+
+        res, gh = self._post([], created=self._issue(self.TITLE))
+        self.assertEqual(res.status_code, 201, res.data)
+        self.assertTrue(res.data["created"])
+        self.assertEqual(res.data["job"]["kind"], "audit_fix")
+        self.assertEqual(res.data["job"]["check"], "missing_dropcap")
+        self.assertIsNone(res.data["job"]["order"])
+
+        sent = gh.post.call_args.kwargs["json"]
+        self.assertEqual(sent["title"], self.TITLE)
+        self.assertEqual(sent["labels"], ["content-edit"])
+        body = sent["body"]
+        block = json.loads(re.search(r"```json\n(.*?)\n```", body, re.S).group(1))
+        self.assertEqual(
+            (block["job"], block["slug"], block["language"], block["check"]),
+            ("audit-fix", "big", "en", "missing_dropcap"),
+        )
+        # All 119 open findings — past the 100 cap, without the accepted #3 and
+        # without the Spanish edition's chapter.
+        self.assertEqual(block["orders"], [o for o in range(1, 121) if o != 3])
+        self.assertIn("**120** 'Part 120'", body)
+        self.assertNotIn("**3** ", body)
+        self.assertNotIn("500", body)
+        # The finding's evidence rides along, and the check's repair channel.
+        self.assertIn("starts: 'umble words, part 120.'", body)
+        self.assertIn("first letter", body)
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_EDIT_JOB)
+        self.assertEqual(act.target, "book:big:en")
+        self.assertEqual((act.detail["kind"], act.detail["check"]), ("audit_fix", "missing_dropcap"))
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_open_job_for_the_same_book_and_check_is_returned_not_refiled(self):
+        res, gh = self._post([self._issue(self.TITLE)])
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        self.assertEqual(res.data["job"]["url"], "https://github.com/o/r/issues/9")
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_other_checks_and_editions_do_not_dedupe(self):
+        others = [
+            self._issue("[edit] audit-fix book:big/en check:loose_text", 10),
+            self._issue("[edit] audit-fix book:big/es check:missing_dropcap", 11),
+            self._issue("[edit] revise book:big/en#1", 12),
+        ]
+        res, gh = self._post(others, created=self._issue(self.TITLE))
+        self.assertEqual(res.status_code, 201)
+        gh.post.assert_called_once()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_rejects_a_bad_check_or_a_clean_book(self):
+        for check in ("", "empty_books", "duplicate_titles", "nope"):
+            res, gh = self._post([], check=check)
+            self.assertEqual(res.status_code, 400, check)
+            gh.post.assert_not_called()
+        # A known check with nothing open for this book → nothing to file.
+        res, gh = self._post([], check="loose_text")
+        self.assertEqual(res.status_code, 400)
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_unknown_book_404(self):
+        res, _ = self._post([], slug="nowhere")
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_queue_listing_parses_audit_fix_titles(self):
+        from unittest.mock import MagicMock, patch
+
+        issues = [
+            self._issue(self.TITLE),
+            # Malformed: an audit fix never targets one order, nor a check on a retitle.
+            self._issue("[edit] audit-fix book:big/en#2 check:loose_text", 2),
+            self._issue("[edit] retitle book:big/en#2 check:loose_text", 3),
+        ]
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: issues, raise_for_status=lambda: None)
+            res = self.client.get(self.URL)
+        self.assertEqual([j["check"] for j in res.data["jobs"]], ["missing_dropcap"])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.post(
+            self.URL,
+            {"kind": "audit_fix", "slug": "big", "language": "en", "check": "missing_dropcap"},
+            format="json",
+        )
+        self.assertIn(res.status_code, (401, 403))
+
+
 class AdminLanguageHealthTests(TestCase):
     """The per-language health score — a composite of readiness, coverage,
     review and engagement, ranked healthiest-first."""

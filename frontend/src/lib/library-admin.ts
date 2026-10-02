@@ -1830,15 +1830,17 @@ export const getAdminBook = (slug: string) =>
 
 // Content-edit queue: a fix files a GitHub issue a worker turns into a fixture
 // PR (a title, a chapter body and an author bio are all fixture-owned prose, not
-// live DB writes). Three kinds share the one endpoint — a chapter title/body
-// carries an `order`; an author bio does not.
-export type ContentEditKind = 'title' | 'body' | 'bio';
+// live DB writes). Four kinds share the one endpoint — a chapter title/body
+// carries an `order`; an author bio does not; an audit fix carries a `check`.
+export type ContentEditKind = 'title' | 'body' | 'bio' | 'audit_fix';
 export interface ContentEditJob {
 	kind: ContentEditKind;
 	entity: 'book' | 'author';
 	slug: string;
 	language: string;
 	order: number | null;
+	/** The audit check an `audit_fix` job repairs; null for every other kind. */
+	check: string | null;
 	url: string;
 	number: number | null;
 	state: 'queued' | 'in_progress';
@@ -1846,6 +1848,10 @@ export interface ContentEditJob {
 }
 
 type FiledJob = { job: ContentEditJob | null; created: boolean };
+
+/** The open content-edit queue (`configured: false` when GitHub isn't set up). */
+export const getContentEditJobs = () =>
+	apiFetch<{ configured: boolean; jobs: ContentEditJob[] }>('/api/admin/content-edit-jobs/');
 const fileContentEdit = (body: Record<string, unknown>) =>
 	apiFetch<FiledJob>('/api/admin/content-edit-jobs/', {
 		method: 'POST',
@@ -1864,6 +1870,13 @@ export const fileBodyFixJob = (slug: string, language: string, order: number, no
  *  emphasise. Defaults to the English source bio. */
 export const fileBioJob = (slug: string, note: string, language = 'en') =>
 	fileContentEdit({ kind: 'bio', slug, language, note });
+
+/** File an "audit fix" job: one edition's open findings for one audit check. The
+ *  server builds the chapter list from its uncapped scan (minus accepted
+ *  findings) — the client only names the target. `created` is false if a job
+ *  for the same book, language and check was already open. */
+export const fileAuditFixJob = (slug: string, language: string, check: string) =>
+	fileContentEdit({ kind: 'audit_fix', slug, language, check });
 
 /**
  * Publish or unpublish one language edition of a book. `is_published` is the
