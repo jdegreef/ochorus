@@ -1,6 +1,6 @@
 ---
 name: content-edit-worker
-description: Process the Ochorus content-edit job queue — GitHub issues labeled content-edit, filed by the admin book page's "Fix title" control — one job per run, end to end (edit the fixture → ship via PR → close the issue). Use when asked to "process the content-edit queue", "work the content-edit jobs", "do the title fixes", or when a content-edit issue needs handling. This is a living playbook — append new job types and failure modes as we find them.
+description: Process the Ochorus content-edit job queue — GitHub issues labeled content-edit, filed by the admin book page's "Fix title" control and the content audit's "Send to fix queue" — one job per run, end to end (edit the fixture → ship via PR → close the issue). Use when asked to "process the content-edit queue", "work the content-edit jobs", "do the title fixes", or when a content-edit issue needs handling. This is a living playbook — append new job types and failure modes as we find them.
 ---
 
 # Content-edit queue worker
@@ -37,7 +37,7 @@ Backend that files these: `library/admin_views/content_jobs.py`.
 Every job is a **`content-edit`**-labelled issue with a deterministic title and a
 JSON block in the body naming the target. One open job per `(kind, target)` — the
 filer guards duplicates, per kind (a title and a body job for the same chapter can
-coexist). Three kinds share the queue:
+coexist). Four kinds share the queue:
 
 - **`retitle`** — a chapter title. Title `[edit] retitle book:<slug>/<lang>#<order>`,
   JSON `{"job": "retitle", "type": "book", "slug": …, "language": …, "order": N}`.
@@ -66,8 +66,30 @@ coexist). Three kinds share the queue:
     `seed_author_translations` upserts unreviewed rows on deploy — no per-batch migration,
     the files win. Never hand-edit a reviewed row (see `backend/CLAUDE.md`).
 
-The retitle protocol below is the template; a `revise`/`rewrite-bio` job follows the
-same claim → worktree → edit → verify → ship loop, with the per-kind edits above.
+- **`audit-fix`** — one book edition's open findings for one **content-audit** check,
+  filed by the audit page's (`/admin/audit`) "Send to fix queue". Title
+  `[edit] audit-fix book:<slug>/<lang> check:<check>` (no `#order`); JSON
+  `{"job": "audit-fix", "type": "book", "slug": …, "language": …, "check": …, "orders": [N, …]}`.
+  The body lists each chapter (order, current title, the scan's evidence: `ends` /
+  `starts` / `loose` / word counts) as a checklist — built server-side from the
+  **uncapped** scan minus accepted findings, so it is the whole list (capped at 200
+  rows; re-run the audit for the rest). Repair channel per check:
+  - `mid_sentence_splits` — re-join the sentence across the boundary per the
+    **book-import** skill (moving text between existing chapters = two body edits).
+  - `missing_dropcap` — restore the lost first letter (source PDF / another edition).
+  - `loose_text` — wrap each loose run in `<p>` (or the block it lost: poem, caption).
+  - `generic_titles` — a title fix per chapter, as in `retitle`.
+  - `fragmented` — re-join fragment lines into paragraphs (book-import).
+  - `tiny_chapters` / `giant_chapters` — usually a chapter SET change (merge/split):
+    hand that back; leave a genuinely fine chapter alone.
+
+  Body edits follow the `revise` rules (chapter profile, settled form). Heuristics
+  are advisory — skip a false positive and name it in the PR (an admin can then
+  "accept" it on the audit page). Done = the next audit scan no longer lists them.
+
+The retitle protocol below is the template; a `revise`/`rewrite-bio`/`audit-fix` job
+follows the same claim → worktree → edit → verify → ship loop, with the per-kind edits
+above.
 
 ## Protocol (follow in order)
 

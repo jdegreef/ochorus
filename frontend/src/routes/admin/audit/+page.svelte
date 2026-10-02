@@ -11,6 +11,9 @@
 		getAdminDropOff,
 		dismissAuditFinding,
 		undoAuditDismissal,
+		fileAuditFixJob,
+		getContentEditJobs,
+		type ContentEditJob,
 		type AdminAudit,
 		type AuditChapterFinding,
 		type AuditDismissTarget,
@@ -145,9 +148,46 @@
 		try {
 			await dismissAuditFinding(target);
 			lastUndo = { target, label };
+			lastFiled = null;
 			await auditRes.load();
 		} catch (e) {
 			actionError = e instanceof Error ? e.message : "Couldn't accept that finding.";
+		} finally {
+			busy = false;
+		}
+	}
+
+	// "Send to fix queue": one (book, language, check) becomes a content-edit job
+	// — the same GitHub-issue queue as the book page's "Fix title". The server
+	// builds the chapter list from its uncapped scan; we only name the target.
+	// Open audit-fix jobs are loaded once so a group that already has one shows
+	// "Job filed" instead of the button (the server dedupes regardless). The
+	// queue needs the content-edit capability, so a failed load just means no
+	// badges — never a broken page.
+	const fixKey = (book: string, language: string, check: string) => `${book}:${language}:${check}`;
+	const jobsRes = adminResource(() => getContentEditJobs(), "Couldn't load the fix queue.");
+	// Jobs filed from this page since it loaded, over the queue snapshot.
+	let filedJobs = $state<Record<string, ContentEditJob>>({});
+	const fixJobs = $derived.by(() => {
+		const m: Record<string, ContentEditJob> = {};
+		for (const j of jobsRes.data?.jobs ?? []) {
+			if (j.kind === 'audit_fix' && j.check) m[fixKey(j.slug, j.language, j.check)] = j;
+		}
+		return { ...m, ...filedJobs };
+	});
+	let lastFiled = $state<{ label: string; url: string; created: boolean } | null>(null);
+
+	async function sendToFixQueue(check: string, book: string, language: string, label: string) {
+		if (busy) return;
+		busy = true;
+		actionError = null;
+		try {
+			const res = await fileAuditFixJob(book, language, check);
+			if (res.job) filedJobs = { ...filedJobs, [fixKey(book, language, check)]: res.job };
+			lastFiled = { label, url: res.job?.url ?? '', created: res.created };
+			lastUndo = null;
+		} catch (e) {
+			actionError = e instanceof Error ? e.message : "Couldn't file the fix job.";
 		} finally {
 			busy = false;
 		}
@@ -260,6 +300,10 @@
 				color: `color-mix(in srgb, var(--warning) ${all.length > 1 ? Math.round(100 - (i * 65) / (all.length - 1)) : 100}%, var(--surface-2))`
 			}))
 	);
+
+	// The chapter-level quality checks a fix job can carry (the server's
+	// QUALITY_CHAPTER_CHECKS); duplicate titles are per-title, not per-chapter.
+	const FIXABLE = new Set(QUALITY.map((q) => q.key).filter((k) => k !== 'duplicate_titles'));
 
 	// Worst books first: editions ranked by open flags (grouped server-side — the
 	// lists above are capped), each with a mini bar in the summary bar's colours
@@ -446,7 +490,7 @@
 			<!-- Summary: integrity defects (fix these) and advisory quality flags
 			     are different kinds of thing, so each gets its own tile rather than
 			     a share of one bar. -->
-			<div class={lastUndo || actionError ? 'mb-2' : 'mb-8'}>
+			<div class={lastUndo || actionError || lastFiled ? 'mb-2' : 'mb-8'}>
 				<div class="grid gap-3 sm:grid-cols-2">
 					<div class="rounded-card border border-border bg-surface p-4">
 						<p class="eyebrow mb-2 text-muted">Data integrity</p>
@@ -495,6 +539,13 @@
 			</div>
 			{#if actionError}
 				<p class="mb-8 text-small text-warning">{actionError}</p>
+			{:else if lastFiled}
+				<p class="mb-8 flex items-baseline gap-2 text-small text-muted">
+					{lastFiled.created ? 'Sent' : 'Already queued:'} <span class="text-text">{lastFiled.label}</span>{lastFiled.created ? ' to the fix queue.' : ''}
+					{#if lastFiled.url}<a href={lastFiled.url} target="_blank" rel="noopener" class="text-accent hover:underline"
+							>View job ↗</a
+						>{/if}
+				</p>
 			{:else if lastUndo}
 				<p class="mb-8 flex items-baseline gap-2 text-small text-muted">
 					Accepted <span class="text-text">{lastUndo.label}</span>.
@@ -519,6 +570,31 @@
 					data-triage-accept
 					onclick={() => dismiss(target, label)}>accept</button
 				>
+			{/snippet}
+
+			<!-- "Send to fix queue" for one edition's findings in one check — or, when a
+			     job for it is already open, a link to that job instead. -->
+			{#snippet fixBtn(checkKey: string, book: string, language: string)}
+				{#if FIXABLE.has(checkKey)}
+					{@const job = fixJobs[fixKey(book, language, checkKey)]}
+					{#if job}
+						<a
+							href={job.url}
+							target="_blank"
+							rel="noopener"
+							class="shrink-0 text-small text-accent hover:underline"
+							title="A content-edit job for this book and check is open">Job filed · {job.state === 'in_progress' ? 'in progress' : 'queued'} ↗</a
+						>
+					{:else}
+						<button
+							type="button"
+							class="shrink-0 text-small text-muted hover:text-accent disabled:opacity-50"
+							title="File a content-edit job to fix this book's findings for this check"
+							disabled={busy}
+							onclick={() => sendToFixQueue(checkKey, book, language, `${book} (${language}) · ${humanize(checkKey).toLowerCase()}`)}>send to fix queue</button
+						>
+					{/if}
+				{/if}
 			{/snippet}
 
 			<!-- One chapter row, used everywhere findings are chapter-shaped. When a
@@ -550,6 +626,7 @@
 								>
 							{/if}
 							{#if checkKey}{@render acceptBtn({ check: checkKey, book: f.book, language: f.language, ref: String(f.order) }, `${f.book}/${f.order}`)}{/if}
+							{#if checkKey && !bare}{@render fixBtn(checkKey, f.book, f.language)}{/if}
 						</span>
 					</div>
 					{#if hasDetail(f)}
@@ -601,6 +678,7 @@
 									<span class="text-muted">{g.book}</span> <span class="text-micro text-muted">{g.language}</span>
 								</a>
 								<span class="text-small text-muted">· {g.items.length} chapters</span>
+								{#if checkKey}<span class="ml-2">{@render fixBtn(checkKey, g.book, g.language)}</span>{/if}
 								<ul class="ml-4 border-l border-border pl-3">
 									{#each g.items as f (findingKey(f))}
 										{@render chapterItem(f, true, checkKey)}
