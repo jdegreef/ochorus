@@ -18,7 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
-from ..demand import demand_score, reading_elsewhere
+from ..demand import reading_elsewhere
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -583,17 +583,21 @@ def _review_state_or_present(record: dict) -> str:
 
 
 def _with_asking(rows: list[dict], kind: str, wanted: dict) -> list[dict]:
-    """Stamp each row with ``asking``: language → how strongly that language's
-    readers want this work, from the reading signal alone (readers whose site
-    language it is, reading the work elsewhere because it has no edition in
-    theirs), scored with ``library.demand.demand_score`` so a gap here weighs
-    what the language page's "Readers are asking for" says it does. Only
-    languages with any; absent when none. Every such cell is a gap."""
+    """Stamp each row with ``asking``: language → readers whose site language
+    it is, reading this work elsewhere because it has no edition in theirs
+    (``library.demand.reading_elsewhere``, the reading signal only). Only
+    languages with any; absent when none. Each is a missing cell, though not
+    always an open gap: the work may be blocked, untitled, or already queued,
+    which the page decides (``isGap``).
+
+    Only the matrix's columns count, and those are languages with content: a
+    registered language with none yet has no column here, so its readers show
+    on its own admin page and on Language health instead."""
     by_slug: dict[str, dict[str, int]] = {}
     for lang, works in wanted.items():
         for (k, slug), readers in works.items():
             if k == kind:
-                by_slug.setdefault(slug, {})[lang] = demand_score(readers, 0)
+                by_slug.setdefault(slug, {})[lang] = readers
     for row in rows:
         if asking := by_slug.get(row["slug"]):
             row["asking"] = asking

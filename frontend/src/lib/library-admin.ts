@@ -644,10 +644,10 @@ export interface AdminCoverageRow {
 	 * edition stays unpublished and no translation may be filed, so its missing
 	 * cells are locked, not gaps. Absent otherwise. */
 	blocked?: boolean;
-	/** Books, sermons and articles: language → how strongly that language's
-	 *  readers want this work — readers whose site language it is, reading it
-	 *  elsewhere for want of their own edition, scored by demand.demand_score
-	 *  (reading signal only). Only languages with any; absent when none. */
+	/** Books, sermons and articles: language → readers whose site language it
+	 *  is, reading this work elsewhere for want of their own edition
+	 *  (library/demand.py, reading signal only). Only languages with any;
+	 *  absent when none. A missing cell, not always an open gap (see isGap). */
 	asking?: Record<string, number>;
 }
 
