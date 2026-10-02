@@ -1,6 +1,6 @@
 // Read by the build script under plain Node, so this module stays import-free
 // at runtime: the one import below is a type, and Node strips it.
-import type { ScripturePage } from './library-public';
+import type { ScriptureBookPage, ScripturePage } from './library-public';
 
 /**
  * Where a scripture verse page's share card lives.
@@ -14,23 +14,52 @@ export function verseCardUrl(book: string, chapter: number, verse: number): stri
 	return `/og/scripture/${book}/${chapter}/${verse}.jpg`;
 }
 
-const FETCHED =
-	/<script type="application\/json" data-sveltekit-fetched data-url="[^"]*\/api\/library\/scripture\/[^"]+"[^>]*>([\s\S]*?)<\/script>/;
+/** Where a Bible book page's (`/scripture/<book>/`) share card lives — drawn
+ *  by the same script, from the same inlined data. */
+export function scriptureBookCardUrl(book: string): string {
+	return `/og/scripture/${book}.jpg`;
+}
 
 /**
- * The scripture API response a prerendered verse page was rendered from —
- * SvelteKit inlines a load's `fetch` into the page — or null when the page
- * holds no verse to draw.
+ * The body of the first response a prerendered page inlined (SvelteKit inlines a
+ * load's `fetch`) from a scripture API URL whose path after
+ * `/api/library/scripture/` matches `rest` (a RegExp source) and that answered
+ * below 400, parsed; null if none. (card-kit's `inlined`, for this module's
+ * type-only, import-free contract.)
+ */
+function inlinedScripture(html: string, rest: string): Record<string, unknown> | null {
+	const re = new RegExp(
+		`<script type="application/json" data-sveltekit-fetched data-url="[^"]*/api/library/scripture/${rest}"[^>]*>([\\s\\S]*?)</script>`,
+		'g'
+	);
+	for (const [, raw] of html.matchAll(re)) {
+		try {
+			const response = JSON.parse(raw);
+			if ((response.status ?? 200) < 400) return JSON.parse(response.body);
+		} catch {
+			/* not this one */
+		}
+	}
+	return null;
+}
+
+/**
+ * The scripture API response a prerendered verse page was rendered from, or
+ * null when the page holds no verse to draw.
  */
 export function verseData(html: string): (ScripturePage & { text: string }) | null {
-	const raw = FETCHED.exec(html)?.[1];
-	if (!raw) return null;
-	try {
-		const data = JSON.parse(JSON.parse(raw).body);
-		return data.verse && data.text ? data : null;
-	} catch {
-		return null;
-	}
+	const data = inlinedScripture(html, '[^"]+');
+	return data?.verse && data.text ? (data as unknown as ScripturePage & { text: string }) : null;
+}
+
+/** The book response (`/api/library/scripture/<book>/`) a prerendered
+ *  `/scripture/<book>/` page inlines, or null when it holds none — a page built
+ *  from the page list fetches globally, so nothing is inlined, and its card
+ *  falls back to the Scripture card. */
+export function scriptureBookData(html: string): ScriptureBookPage | null {
+	const data = inlinedScripture(html, '[^/"]+/');
+	const book = data?.book as { title?: string } | undefined;
+	return book?.title && Array.isArray(data?.chapters) ? (data as unknown as ScriptureBookPage) : null;
 }
 
 /** The verse's size on the card, by length: a short verse reads as a headline,

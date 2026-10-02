@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage, SCRIPTURE_OG } from '$lib/library-public';
+	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage } from '$lib/library-public';
+	import { scriptureBookCardUrl } from '$lib/verseCard';
+	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { relativeHeat } from '$lib/scriptureIndex';
@@ -30,6 +32,8 @@
 	const canonical = $derived(`${SITE_URL}${path}`);
 	// Only `en` is offered as an alternate, as on the chapter page.
 	const hreflang = $derived(hreflangFor(path, ['en']));
+	// Drawn at build by scripts/build-verse-cards.mjs from this page's own data.
+	const ogImage = $derived(`${SITE_URL}${scriptureBookCardUrl(book.slug)}`);
 
 	const title = $derived(`${book.title} — what the classics say — Ochorus`);
 	const description = $derived(
@@ -66,7 +70,10 @@
 	{canonical}
 	{hreflang}
 	structuredData={[crumbsLd, collectionLd]}
-	{...SCRIPTURE_OG}
+	{ogImage}
+	ogImageWidth={LANDSCAPE_WIDTH}
+	ogImageHeight={LANDSCAPE_HEIGHT}
+	ogImageAlt="What the classics say about {book.title} — Ochorus"
 />
 
 <div class="page-col px-5 py-10">
