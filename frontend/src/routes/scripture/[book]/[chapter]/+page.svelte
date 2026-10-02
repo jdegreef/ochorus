@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { scriptureBookHref, type ScripturePage } from '$lib/library-public';
+	import { scriptureBookHref, type ScripturePage, SCRIPTURE_OG } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -66,6 +66,7 @@
 	{canonical}
 	{hreflang}
 	structuredData={[crumbsLd, quotesLd]}
+	{...SCRIPTURE_OG}
 />
 
 <div class="page-col px-5 py-10">

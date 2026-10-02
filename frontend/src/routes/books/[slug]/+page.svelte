@@ -36,7 +36,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, elementVisible } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, elementVisible, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -440,6 +440,8 @@
 	);
 	const showSubnav = $derived(navItems.length >= 2);
 	let subnavH = $state(0);
+	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	realignHashOnMeasure(() => subnavH);
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
 </script>
 
