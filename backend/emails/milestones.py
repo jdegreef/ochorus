@@ -24,14 +24,13 @@ from reading.models import ReadingProgress, WorkKind
 from .models import (
     EmailKind,
     EmailMessage,
-    EmailSubscription,
     SendStatus,
     idempotency_key,
 )
 from .recipient import verified_email
 from .rendering import email_language, render_milestone
 from .sending import deliver
-from .sweeps import blocked_by_min_gap
+from .sweeps import eligible_subscription
 
 #: The lifecycle_step recorded on the message (groups the metric); the per-level
 #: idempotency discriminator is ``milestone:<n>``.
@@ -50,26 +49,36 @@ def finished_book_count(profile) -> int:
     ).count()
 
 
-def _milestone_sent(profile, milestone: int) -> bool:
-    key = idempotency_key(EmailKind.LIFECYCLE, f"{MILESTONE_STEP}:{milestone}", profile)
-    return EmailMessage.objects.filter(
-        idempotency_key=key, status=SendStatus.SENT
-    ).exists()
+def _highest_celebrated(profile) -> int:
+    """The largest milestone this reader has already been congratulated for (0 if
+    none), read from the sent messages' idempotency keys — whose
+    ``lifecycle:milestone:<n>:<pk>`` format this module owns."""
+    keys = EmailMessage.objects.filter(
+        recipient=profile, lifecycle_step=MILESTONE_STEP, status=SendStatus.SENT
+    ).values_list("idempotency_key", flat=True)
+    highest = 0
+    for key in keys:
+        parts = key.split(":")
+        if len(parts) >= 3 and parts[2].isdigit():
+            highest = max(highest, int(parts[2]))
+    return highest
 
 
 def due_milestone(profile) -> int | None:
     """The milestone to celebrate now, or ``None``.
 
-    The highest milestone the reader has reached and not yet been congratulated
-    for. Lower ones they blew past are not back-filled: a reader who jumps from 2
-    to 6 books gets "5", never "3" after it.
+    The highest milestone the reader has reached, when it's above every level
+    they've already been congratulated for. Lower ones they blew past are not
+    back-filled (jump 2→6 gets "5", never "3" after it), and because the count is
+    recomputed each run, un-finishing a book can't drop them back onto a lower
+    card either — only a genuinely new high is ever sent.
     """
     count = finished_book_count(profile)
     reached = [m for m in MILESTONES if m <= count]
     if not reached:
         return None
     milestone = max(reached)
-    return None if _milestone_sent(profile, milestone) else milestone
+    return milestone if milestone > _highest_celebrated(profile) else None
 
 
 def _send(profile, subscription, milestone: int) -> EmailMessage | None:
@@ -98,10 +107,8 @@ def send_due(profile) -> EmailMessage | None:
     milestone (or already congratulated for the highest reached), or has no
     deliverable address.
     """
-    subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
-    if not subscription.wants(EmailKind.LIFECYCLE, MILESTONE_STEP):
-        return None
-    if blocked_by_min_gap(profile, timezone.now()):
+    subscription = eligible_subscription(profile, MILESTONE_STEP)
+    if subscription is None:
         return None
     milestone = due_milestone(profile)
     if milestone is None:

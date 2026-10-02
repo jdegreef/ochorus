@@ -14,11 +14,12 @@ the drip — the ``deliver`` choke point, the 20h min-gap (so a reader never get
 drip email and a series nudge in the same window), and the preference center
 (its own "series" stream, so it can be silenced without losing onboarding tips).
 
-The parallel to :mod:`emails.lifecycle` (``candidate_profiles`` / ``send_due`` /
-``_send`` / the command) is deliberate but duplicated: the two sweeps differ on
-four axes (candidate query, idempotency axis, per-profile context, static vs.
-dynamic render), so a shared base isn't worth it yet. A THIRD event-triggered
-email (e.g. "plan finished") is the signal to extract one — not before.
+The mechanical shell this shares with the other finish-a-book email (the
+milestone cards) now lives in :mod:`emails.sweeps` — the candidate query
+(``recent_book_finishers``), the 20h min-gap gate (``eligible_subscription``),
+and the send/skip/fail tally (``run_sweep``). This module keeps only what is its
+own: the pick logic (``next_series_volume``), the per-volume idempotency axis,
+the dynamic title-filled render, and its consent stream.
 """
 
 from __future__ import annotations
@@ -35,13 +36,12 @@ from reading.models import ReadingProgress, WorkKind
 from .models import (
     EmailKind,
     EmailMessage,
-    EmailSubscription,
     idempotency_key,
 )
 from .recipient import verified_email
 from .rendering import email_language, render_series_nudge
 from .sending import deliver
-from .sweeps import blocked_by_min_gap
+from .sweeps import eligible_subscription
 
 #: The lifecycle_step recorded on the message (groups the metric); the per-volume
 #: idempotency discriminator is ``finish_series:<next-slug>``.
@@ -178,10 +178,8 @@ def send_due(profile) -> EmailMessage | None:
     ``None`` when the reader is opted out / suppressed, was mailed too recently,
     has no next volume to recommend, or has no deliverable address.
     """
-    subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
-    if not subscription.wants(EmailKind.LIFECYCLE, FINISH_SERIES_STEP):
-        return None
-    if blocked_by_min_gap(profile, timezone.now()):
+    subscription = eligible_subscription(profile, FINISH_SERIES_STEP)
+    if subscription is None:
         return None
     pick = next_series_volume(profile)
     if pick is None:

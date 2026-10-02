@@ -42,7 +42,7 @@ STREAMS: list[dict] = [
     {
         "key": "milestones",
         "label": "Reading milestones",
-        "description": "A small celebration when you reach a milestone — 5 books, 10, and on.",
+        "description": "A small celebration each time you reach a reading milestone.",
         "legacy": None,
     },
     {

@@ -16,11 +16,13 @@ from __future__ import annotations
 from collections.abc import Callable
 from datetime import datetime
 
+from django.utils import timezone
+
 from accounts.models import UserProfile
 from reading.models import ReadingProgress, WorkKind
 
 from .lifecycle import MIN_GAP, last_lifecycle_sent_at
-from .models import EmailMessage, SendStatus
+from .models import EmailKind, EmailMessage, EmailSubscription, SendStatus
 
 
 def recent_book_finishers(cutoff):
@@ -43,6 +45,18 @@ def blocked_by_min_gap(profile, now: datetime) -> bool:
     so the day's one slot isn't double-filled."""
     last_sent = last_lifecycle_sent_at(profile)
     return last_sent is not None and now - last_sent < MIN_GAP
+
+
+def eligible_subscription(profile, lifecycle_step: str) -> EmailSubscription | None:
+    """The reader's subscription when they may receive a LIFECYCLE email of this
+    step right now — consent for the step's stream and the 20h gap both pass —
+    else ``None``. The shared front gate of every event sweep's ``send_due``."""
+    subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
+    if not subscription.wants(EmailKind.LIFECYCLE, lifecycle_step):
+        return None
+    if blocked_by_min_gap(profile, timezone.now()):
+        return None
+    return subscription
 
 
 def run_sweep(candidates, send: Callable[[object], EmailMessage | None]) -> tuple[int, int, int]:

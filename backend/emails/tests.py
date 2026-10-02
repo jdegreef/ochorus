@@ -1361,6 +1361,28 @@ class MilestoneDueTests(TestCase):
         _finish_n_books(self.profile, 6)
         self.assertEqual(due_milestone(self.profile), 5)
 
+    def test_no_backward_card_after_unfinishing_below_a_sent_level(self):
+        # Reached 6 (got the "5" card, jumped past 3), then un-finished down to 4.
+        _finish_n_books(self.profile, 6)
+        EmailMessage.objects.create(
+            recipient=self.profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step="milestone",
+            idempotency_key=f"lifecycle:milestone:5:{self.profile.pk}",
+            status=SendStatus.SENT,
+            sent_at=timezone.now(),
+        )
+        drop = list(
+            ReadingProgress.objects.filter(profile=self.profile).values_list(
+                "pk", flat=True
+            )
+        )[:2]
+        ReadingProgress.objects.filter(pk__in=drop).update(finished_at=None)
+        # count is now 4 → reaches only "3", but 3 is below the celebrated 5.
+        self.assertEqual(finished_book_count(self.profile), 4)
+        self.assertIsNone(due_milestone(self.profile))
+
     def test_count_counts_only_finished_books(self):
         _finish_n_books(self.profile, 3)
         # An unfinished book and a finished sermon don't count toward book count.
