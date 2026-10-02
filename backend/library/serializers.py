@@ -370,12 +370,16 @@ class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     # read vs. a one-line stub. A boolean, not the HTML (kept out of the list
     # payload); the long bio itself lives on the author detail endpoint.
     has_long_bio = serializers.SerializerMethodField()
+    # Reviewed quotations — what /quotes/<slug>/ lists, so the A–Z can link it
+    # (``AuthorQuerySet.with_quote_count``). Language-independent, like
+    # AuthorDetailSerializer.quote_count: the reader decides which locales link.
+    quote_count = serializers.IntegerField(source="reviewed_quotes", read_only=True)
 
     class Meta:
         model = Author
         fields = [
             "slug", "name", "bio", "photo_url", "birth_year", "death_year",
-            "book_count", "sermon_count", "has_long_bio",
+            "book_count", "sermon_count", "has_long_bio", "quote_count",
         ]
 
     def get_has_long_bio(self, obj):

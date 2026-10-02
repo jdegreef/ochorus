@@ -567,7 +567,7 @@
 			<div class="grid gap-4 sm:grid-cols-2">
 				{#each articleFavs as e (e.slug)}
 					{#if articles[e.slug]}
-						<ArticleCard article={articles[e.slug]} />
+						<ArticleCard article={articles[e.slug]} heading="h3" />
 					{/if}
 				{/each}
 			</div>
