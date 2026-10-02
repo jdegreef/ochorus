@@ -105,6 +105,17 @@ def render_series_nudge(
     return _render(text, profile, subscription, lang)
 
 
+def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
+    """Render the reading-milestone card for ``profile``, filling in the count."""
+    lang = email_language(profile, subscription)
+    mapping = {"{count}": str(milestone)}
+    text = {
+        key: _fill(value, mapping)
+        for key, value in copy_mod.step_copy("milestone", lang).items()
+    }
+    return _render(text, profile, subscription, lang)
+
+
 def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""
