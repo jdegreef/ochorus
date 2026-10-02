@@ -255,6 +255,14 @@ A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
 
+**A writer's face is always `<Portrait>`** (`$lib/components/Portrait.svelte`):
+srcset + `hydrateSrc` + per-writer crop + alt + initials fallback in one place.
+Pass the box size in `class`, the largest rendered size in `px`, and pick
+`tone` (`gray` / `hover` with a parent `.group` / `color`) and `decorative`
+when the name sits beside it. Never hand-roll the `<img>` + initials pair again
+— eleven copies had grown before it existed (2026-10-02). The Sermons preacher
+strip and an article's "Read next" rows deliberately draw their own.
+
 ## Group heading (grouped shelves, search result groups)
 
 One component: **`<GroupHeading>`** (`lib/components/GroupHeading.svelte`) —

@@ -1,10 +1,9 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 
 	// One writer's card: portrait, name + lifespan, the "Full life" badge, a
@@ -57,27 +56,15 @@
 			data-sveltekit-preload-data="hover"
 			class="bio-pic shrink-0 hover:no-underline"
 		>
-			{#if author.photo_url}
-				{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
-				<img
-					src={source.src}
-					srcset={source.srcset}
-					use:hydrateSrc={source}
-					sizes="112px"
-					alt="{t('a11y.portraitOf')} {author.name}"
-					loading="lazy"
-					width="112"
-					height="112"
-					class="h-14 w-14 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0 sm:h-28 sm:w-28"
-					style="object-position: {portraitPosition(author.slug)}"
-				/>
-			{:else}
-				<span
-					class="font-display text-h3 sm:text-h1 flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft font-semibold text-accent sm:h-28 sm:w-28"
-				>
-					{initials(author.name)}
-				</span>
-			{/if}
+			<Portrait
+				slug={author.slug}
+				name={author.name}
+				url={author.photo_url}
+				px={112}
+				tone="hover"
+				class="h-14 w-14 sm:h-28 sm:w-28"
+				initialsClass="text-h3 sm:text-h1"
+			/>
 		</a>
 		<div class="bio-text min-w-0 flex-1">
 			<h2 class="text-h2">

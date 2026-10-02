@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { formatLifespan, type AuthorBio } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	/**
 	 * A writer as a portrait tile — the biographies grid view. AuthorBioCard is
@@ -24,27 +23,15 @@
 	style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 	class="card-tint group flex flex-col items-center gap-2 rounded-card border border-border px-3 pb-4 pt-5 text-center text-text hover:no-underline"
 >
-	{#if author.photo_url}
-		{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
-		<img
-			src={source.src}
-			srcset={source.srcset}
-			use:hydrateSrc={source}
-			sizes="96px"
-			width="96"
-			height="96"
-			alt="{t('a11y.portraitOf')} {author.name}"
-			loading="lazy"
-			class="h-24 w-24 rounded-full border border-border object-cover grayscale transition-[filter] duration-[var(--duration-base)] group-hover:grayscale-0"
-			style="object-position: {portraitPosition(author.slug)}"
-		/>
-	{:else}
-		<span
-			class="font-display flex h-24 w-24 items-center justify-center rounded-full bg-accent-soft text-h2 font-semibold text-accent"
-		>
-			{initials(author.name)}
-		</span>
-	{/if}
+	<Portrait
+		slug={author.slug}
+		name={author.name}
+		url={author.photo_url}
+		px={96}
+		tone="hover"
+		class="h-24 w-24"
+		initialsClass="text-h2"
+	/>
 	<span class="font-display text-body font-semibold leading-snug group-hover:underline">{author.name}</span>
 	{#if author.birth_year}
 		<span class="whitespace-nowrap text-small text-muted"
