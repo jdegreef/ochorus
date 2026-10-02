@@ -348,18 +348,30 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
     """The author of a book/sermon card — name, portrait, and short bio.
 
     The bio is localized (``AuthorTranslation``), like the biographies page's.
-    ``tagline`` is English-only (``Author.tagline_for``): ``""`` elsewhere.
     """
 
     bio = serializers.SerializerMethodField()
-    tagline = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "tagline", "photo_url", "birth_year", "death_year"]
+        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())
+
+
+class SermonAuthorSerializer(AuthorSerializer):
+    """A sermon card's author: the card fields plus the one-line ``tagline``.
+
+    Only the sermons shelf reads it (under each preacher heading), so it rides
+    on sermon cards alone rather than on every book card in every shelf.
+    ``""`` outside the author's own language (``Author.tagline_for``).
+    """
+
+    tagline = serializers.SerializerMethodField()
+
+    class Meta(AuthorSerializer.Meta):
+        fields = AuthorSerializer.Meta.fields + ["tagline"]
 
     def get_tagline(self, obj):
         return obj.tagline_for(self._language())
@@ -525,7 +537,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """A sermon card — enough for the shelf and the author page (no body)."""
 
-    author = AuthorSerializer(read_only=True)
+    author = SermonAuthorSerializer(read_only=True)
     # Which Bible book the sermon's text is from, for the shelf's book facet
     # ("Malachi", canonical position 39). Null for unparseable/localized refs
     # ("" included — book_of returns None). lru_cached, so the paired calls

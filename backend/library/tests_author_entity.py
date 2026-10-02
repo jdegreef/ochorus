@@ -317,12 +317,13 @@ class TaglineTests(TestCase):
         self.assertEqual(en[0]["author"]["tagline"], "One line.")
         self.assertEqual(es[0]["author"]["tagline"], "")
 
-    def test_fixture_taglines_fit_on_one_line(self):
-        # It is set as a single truncated line beside the name; a paragraph
-        # here would be cut mid-thought. The column allows 160.
+    def test_fixture_taglines_fit_in_two_short_lines(self):
+        # The shelf sets it under the heading, wrapping to at most two lines and
+        # clamping the rest. On a phone that is ~50 characters a line, so 100
+        # is what shows whole there; past it the reader loses the end of it.
         long = [
             (a["slug"], len(a["tagline"]))
             for a in fixture_authors()
-            if len(a.get("tagline", "")) > 125
+            if len(a.get("tagline", "")) > 100
         ]
-        self.assertEqual(long, [], "taglines over 125 characters")
+        self.assertEqual(long, [], "taglines over 100 characters")
