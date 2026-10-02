@@ -2037,10 +2037,10 @@ nav.appnav .navsearch:hover {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
 /* ── Sermon index: table-of-contents row ─────────────────────────────────────
-   The row now reads like a book's contents: one line per sermon (title ·
-   passage · a dotted leader · length), with the brief revealed on click. The
-   emblem + content flex layout of `.sermon-row` above is unchanged; what
-   follows styles the one-line entry and the disclosed brief. */
+   The row reads like a book's contents: one line per sermon (title · passage ·
+   a dotted leader · length), then a two-line preview of the brief that the
+   chevron opens in full. The emblem + content flex layout of `.sermon-row`
+   above is unchanged; what follows styles the one-line entry and the brief. */
 
 /* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
    of its own — the title span inside does. */
@@ -2108,14 +2108,12 @@ a.sermon-row-title:hover {
 .sermon-row.is-open .sermon-row-chevron {
 	transform: rotate(180deg);
 }
-/* The brief, revealed under the entry. It hangs in the content column (already
-   inset past the emblem), and now that it is on-demand rather than always shown,
-   it gets a real reading measure instead of the full row width. */
-.sermon-row-peek {
-	margin-top: 0.7rem;
-}
+/* The brief under the entry: always there as a two-line preview (what a reader
+   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
+   hangs in the content column (already inset past the emblem) at a reading
+   measure, not the full row width. */
 .sermon-row-brief {
-	margin: 0;
+	margin: 0.4rem 0 0;
 	max-width: 64ch;
 	color: var(--muted);
 }
@@ -2684,6 +2682,15 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	.page-col {
 		width: 100vw;
 	}
+}
+/* A single-form page (Login, Reset password): the same centred column, held
+   to a 26rem card width instead of the reader's Page-width setting. It used to
+   be a hand-set `mx-auto max-w-[26rem]` the shell guard couldn't see. The
+   doubled selector outranks the phone rule above wherever it sits, so a 500px
+   phone still gets the 26rem card; `100%` (not 100vw) is the old max-w box
+   exactly — capped by <main>, so a classic scrollbar never makes it overflow. */
+.page-col.page-col--narrow {
+	width: min(26rem, 100%);
 }
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,

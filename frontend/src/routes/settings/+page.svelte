@@ -35,6 +35,7 @@
 	import { buildReminderICS } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const t = i18n.t;
 
@@ -278,10 +279,7 @@
 	<meta name="robots" content="noindex" /></svelte:head>
 
 <div class="page-col px-5 py-10">
-	<header class="mb-8">
-		<h1 class="text-h1 mb-2">{t('settings.title')}</h1>
-		<p class="text-body text-muted">{t('settings.subtitle')}</p>
-	</header>
+	<PageHeader title={t('settings.title')} tagline={t('settings.subtitle')} />
 
 	<div class="flex flex-col gap-6 sm:flex-row">
 		<!-- Sidebar -->

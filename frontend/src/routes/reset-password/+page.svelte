@@ -32,7 +32,7 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<div class="mx-auto max-w-[26rem] px-5 py-12">
+<div class="page-col page-col--narrow px-5 py-12">
 	{#if done}
 		<div class="rounded-card border border-border bg-surface p-6 text-center">
 			<h1 class="text-h2 mb-2">{t('reset.updated')}</h1>
