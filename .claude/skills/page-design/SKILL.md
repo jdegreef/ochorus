@@ -597,11 +597,14 @@ relevant group.
   `<ReaderControls>` like the sermon/bio, but its `.article-body` hand-consumes
   the `--reading-*` vars — a fourth copy of that recipe to fold into the shared
   class when this lands.)_
-- [x] **A11** _(shipped 2026-10-02 — `.page-col--narrow` in `app.css` (26rem,
-  same box at every width as before); Login's form branch and Reset use it;
-  Login's two-column pitch branch keeps `max-w-5xl`. `pageShell.test.ts` gains
-  `NARROW_PAGES` (must use the modifier, no `max-w-[…]`) and the shell regex now
-  also catches `max-w-xl` and `max-w-[…]`.)_ Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
+- [x] **A11** _(shipped 2026-10-02 — `.page-col--narrow` in `app.css`
+  (`min(26rem, 100%)`, pixel-identical to the old box at 1280/500/390px); Login's
+  form branch and Reset use it; Login's two-column pitch branch keeps
+  `max-w-5xl`. `pageShell.test.ts` gains `NARROW_PAGES` (must use the modifier,
+  no `max-w-[…]` anywhere) and the shell regex now also catches `max-w-xl` and
+  `max-w-[…]`. It still needs `mx-auto max-w-*` adjacent: the any-order form
+  flags Author's inner `mx-auto mt-12 max-w-[40rem]` measures (A10's territory),
+  so the narrow pages are held by the positive check instead.)_ Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
   guard (regex only matches `max-w-2xl…7xl`). → `.page-col--narrow`; widen the
   regex.
 

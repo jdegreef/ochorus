@@ -2626,11 +2626,12 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 /* A single-form page (Login, Reset password): the same centred column, held
    to a 26rem card width instead of the reader's Page-width setting. It used to
-   be a hand-set `mx-auto max-w-[26rem]` the shell guard couldn't see. Declared
-   after the phone rule so it wins there too — `min(…, 100vw)` keeps it 26rem
-   on a 500px phone and full-bleed (px-5 gutter) below 26rem, as before. */
-.page-col--narrow {
-	width: min(26rem, 100vw);
+   be a hand-set `mx-auto max-w-[26rem]` the shell guard couldn't see. The
+   doubled selector outranks the phone rule above wherever it sits, so a 500px
+   phone still gets the 26rem card; `100%` (not 100vw) is the old max-w box
+   exactly — capped by <main>, so a classic scrollbar never makes it overflow. */
+.page-col.page-col--narrow {
+	width: min(26rem, 100%);
 }
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,
