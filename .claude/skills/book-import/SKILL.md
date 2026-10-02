@@ -1820,6 +1820,20 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
     fresh installs converge.
 
+**A whole BOOK served chapter-per-page on SermonIndex → `build_<name>` over
+`import_sermons.extract_sermonindex`.** Simpson's *Power from on High* Part II
+(`build_power_from_on_high`, 2026-10) is 28 clean SermonIndex pages, far
+cleaner than the only scans. Before trusting it: (1) diff one chapter word-by-
+word against an Internet Archive scan of a known edition (difflib ratio ~0.9,
+every difference page furniture) to prove it is the printed text and not a
+modernized edition — SermonIndex carries both for Simpson; (2) list the run's
+pages from the speaker index and skip empty placeholders ("22. GOD"); (3) take
+chapter titles from the scan's Contents; (4) set any front matter SermonIndex
+lacks (a preface) from the scan in the command. Proofread with reader agents
+emitting exact-string `find`/`replace` pairs, and settle their judgement calls
+against the scan, not by inference. Multi-volume works ship as one book per
+volume, joined by an ordered `Series`.
+
 **A manuscript `.docx` the user hands you (an original biography/work, no
 importer).** No source URL, no catalog entry — parse the file and build the
 Book directly, then finish like any new book. What bit this loop:

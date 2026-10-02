@@ -58,6 +58,7 @@ TOPICS = [
             "jesus-himself-2",
             "key-teachings-of-r-a-torrey",
             "key-teachings-of-derek-prince",
+            "power-from-on-high-new-testament",
         ],
     ),
     (
@@ -78,6 +79,7 @@ TOPICS = [
             "key-teachings-of-frederick-brotherton-meyer",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
+            "power-from-on-high-new-testament",
         ],
     ),
     (
