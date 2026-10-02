@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import html
 import re
+import unicodedata
 
 from django.utils.html import strip_tags
 
@@ -24,16 +25,21 @@ _WS = re.compile(r"\s+")
 _TAG = re.compile(r"<[^>]+>")
 
 
-# What renders as nothing: whitespace plus the zero-width characters and the
-# BOM, which `str.strip()` keeps. A title made only of these reads as no title
-# at all — the admin coverage matrix once showed a Spurgeon book as just its
-# author, still offering to queue translations of it.
-_INVISIBLE = re.compile(r"[\s\u00ad\u200b-\u200d\u2060\ufeff]+")
+# What renders as nothing: whitespace, control and format characters (zero-width
+# spaces and joiners, the BOM, bidi marks — which `str.strip()` keeps), plus the
+# few letters that draw blank (Hangul fillers, the combining grapheme joiner).
+# A title made only of these reads as no title at all: the admin coverage matrix
+# once showed a Spurgeon book as just its author, still offering to queue
+# translations of it.
+_BLANK_LETTERS = frozenset("\u034f\u115f\u1160\u3164\uffa0")
 
 
 def is_blank_title(title) -> bool:
     """True when ``title`` would show a reader nothing."""
-    return not _INVISIBLE.sub("", str(title or ""))
+    return all(
+        unicodedata.category(c)[0] in "CZ" or c.isspace() or c in _BLANK_LETTERS
+        for c in str(title or "")
+    )
 
 
 def html_to_text(body_html: str) -> str:

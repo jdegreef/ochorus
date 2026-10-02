@@ -127,10 +127,9 @@
 	// A blank title (an import or edit that lost it) would leave a row, a prompt
 	// or a CSV line naming nothing — so such a work goes by its slug everywhere,
 	// and can't be queued until its title is fixed (see isGap).
-	// Zero-width characters and the BOM survive .trim() but show nothing — the
-	// same set as the backend's text.is_blank_title.
-	const INVISIBLE = /[\s\u00ad\u200b-\u200d\u2060\ufeff]+/g;
-	const untitled = (r: AdminCoverageRow) => !(r.title ?? '').replace(INVISIBLE, '');
+	// The API decides blankness (text.is_blank_title: zero-width and bidi marks
+	// count as nothing); the trim() is only for the deploy window before it does.
+	const untitled = (r: AdminCoverageRow) => r.untitled ?? !r.title?.trim();
 	const workName = (r: AdminCoverageRow) => (untitled(r) ? r.slug : r.title.trim());
 	// An unreviewed cell opens that translation in the review queue, panel open.
 	// A link rather than an approve button here: approving means reading the

@@ -137,10 +137,20 @@ class AdminImportPublishView(AdminAudited, APIView):
 
     def post(self, request):
         d = request.data
-        kind = (d.get("kind") or "").strip()
-        title = str(d.get("title") or "").strip()
-        language = (d.get("language") or "en").strip() or "en"
-        source_url = (d.get("source_url") or "").strip()
+
+        # Each field as text, or "" when the client sent anything else (a number,
+        # a list): a 400 below rather than an AttributeError (a 500), and never a
+        # book titled "['Humility']".
+        def text(key: str) -> str:
+            v = d.get(key)
+            return v.strip() if isinstance(v, str) else ""
+
+        kind = text("kind")
+        title = text("title")
+        # Absent means English; anything sent that isn't a known code (a typo,
+        # a number) is refused below — never quietly published as English.
+        language = text("language") or ("en" if d.get("language") in (None, "") else "?")
+        source_url = text("source_url")
 
         if kind not in ("book", "sermon"):
             return Response({"detail": "kind must be 'book' or 'sermon'."}, status=400)
@@ -158,7 +168,7 @@ class AdminImportPublishView(AdminAudited, APIView):
                 {"detail": f"Unknown language {language!r} — pick one from the list."},
                 status=400,
             )
-        author = Author.objects.filter(slug=(d.get("author_slug") or "").strip()).first()
+        author = Author.objects.filter(slug=text("author_slug")).first()
         if not author:
             return Response({"detail": "Unknown author — pick one from the list."}, status=400)
 
@@ -207,7 +217,7 @@ class AdminImportPublishView(AdminAudited, APIView):
                 title,
                 body,
                 language,
-                scripture_ref=(d.get("scripture_ref") or ""),
+                scripture_ref=text("scripture_ref"),
                 source_url=source_url,
             )
         except upload_import.ParseError as exc:

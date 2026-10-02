@@ -34,6 +34,7 @@ from ..models import (
     Topic,
     TopicTranslation,
 )
+from ..text import is_blank_title
 from ..views import _language_entry
 from .languages import language_settings
 
@@ -726,6 +727,10 @@ class AdminCoverageView(APIView):
         for r in ordered:
             r.pop("sort_order")
             r.pop("_have_en")
+            # The page names such a row by slug and won't queue it; it asks the
+            # API rather than keeping its own copy of what "blank" means.
+            if is_blank_title(r["title"]):
+                r["untitled"] = True
         return ordered
 
     def _book_rows(self) -> list[dict]:
