@@ -2,6 +2,8 @@
 	import type { ScripturePageEntry } from '$lib/library-public';
 	import { scripturePageHref, searchPage } from '$lib/library-public';
 	import { goto } from '$app/navigation';
+	import { SvelteSet } from 'svelte/reactivity';
+	import type { Snapshot } from './$types';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { groupScripture, heatScale, HEAT_LEVELS, mostCited } from '$lib/scriptureIndex';
@@ -82,6 +84,42 @@
 	const top = $derived(mostCited(pages, TOP_CHAPTERS));
 
 	const sectionId = (key: string) => `section-${key}`;
+
+	// On a phone, each book collapses to one row (name + chapter count) that a
+	// tap opens: at 44px touch targets the full index runs to dozens of screens.
+	// The breakpoint is NARROW here and `max-width: 34rem` in the CSS below; keep
+	// them in step. Collapsing starts in CSS (`.books-pending`, before the page
+	// hydrates) so a phone never lays the page out open and then shrinks it under
+	// the reader or a #section jump; a <noscript> style reopens everything for a
+	// reader without JS. Once hydrated, `hidden="until-found"` takes over, so
+	// find-in-page still reaches a collapsed book's chapters and opens it.
+	// `narrow` is a $state set in an effect, NOT svelte/reactivity's MediaQuery,
+	// for the book reader's reason: MediaQuery reads matchMedia during hydration
+	// and would disagree with the prerendered markup.
+	const NARROW = '(max-width: 34rem)';
+	let narrow = $state(false);
+	let hydrated = $state(false);
+	$effect(() => {
+		const mq = window.matchMedia(NARROW);
+		const sync = () => (narrow = mq.matches);
+		sync();
+		hydrated = true;
+		mq.addEventListener('change', sync);
+		return () => mq.removeEventListener('change', sync);
+	});
+	const openBooks = new SvelteSet<string>();
+	const toggleBook = (slug: string) => (openBooks.has(slug) ? openBooks.delete(slug) : openBooks.add(slug));
+	const chapterCount = (n: number) => `${n} ${n === 1 ? t('book.chapterOne') : t('book.chaptersMany')}`;
+
+	// Keep the open books across Back from a chapter page, so the scroll position
+	// SvelteKit restores still matches the layout it was saved against.
+	export const snapshot: Snapshot<string[]> = {
+		capture: () => [...openBooks],
+		restore: (slugs) => {
+			openBooks.clear();
+			for (const slug of slugs) openBooks.add(slug);
+		}
+	};
 	const sectionName = (key: string) => t(`scripture.section.${key}`);
 
 	// Sticky jump bar over the sections, the author page's pattern: it pins under
@@ -136,7 +174,11 @@
      nav and the section jump bar is; the section anchors read it for
      scroll-margin so a jump lands below the bars. Same contract as the author
      page. -->
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<svelte:head>
+	<noscript><style>.books-pending .book-body { display: block !important; }</style></noscript>
+</svelte:head>
+
+<div class="page-col px-5 py-10" class:books-pending={!hydrated} style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
 	<!-- No visible breadcrumb: a top-level hub's only trail is Home > <this>
 	     — Home is already the logo, <this> restates the H1 below, so it
 	     carries nothing. The BreadcrumbList JSON-LD stays in the head; the
@@ -231,9 +273,35 @@
 				{/if}
 				<h2 id="{sectionId(s.key)}-h" class="section-label">{sectionName(s.key)}</h2>
 				{#each s.books as book (book.slug)}
+					{@const collapsed = narrow && !openBooks.has(book.slug)}
 					<div class="book">
-						<h3 class="bname">{book.title}</h3>
-						<div class="min-w-0">
+						<h3 class="bname">
+							{#if narrow}
+								<button
+									type="button"
+									class="book-toggle"
+									aria-expanded={!collapsed}
+									aria-controls="book-{book.slug}"
+									onclick={() => toggleBook(book.slug)}
+								>
+									<span>{book.title}</span>
+									<!-- Not part of the heading's name: a screen reader browsing by
+									     headings hears the book, not a count. -->
+									<span class="book-total" aria-hidden="true">{chapterCount(book.chapters.length)}</span>
+									<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"
+										><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" /></svg
+									>
+								</button>
+							{:else}
+								{book.title}
+							{/if}
+						</h3>
+						<div
+							id="book-{book.slug}"
+							class="book-body min-w-0"
+							hidden={collapsed ? 'until-found' : undefined}
+							onbeforematch={() => openBooks.add(book.slug)}
+						>
 							<ul class="chapters">
 								{#each book.chapters as c (c.chapter)}
 									<li>
@@ -402,16 +470,58 @@
 		padding: 0.6rem 0;
 		border-top: 1px solid var(--color-border);
 	}
+	/* `max-width: 34rem` is NARROW in the script; keep them in step. */
 	@media (max-width: 34rem) {
 		.book {
 			grid-template-columns: 1fr;
 			gap: 0.35rem;
+		}
+		/* Collapsed from first paint, before hydration hands over to `hidden`. */
+		.books-pending .book-body {
+			display: none;
 		}
 	}
 	.bname {
 		margin: 0;
 		font-size: var(--fs-body);
 		font-weight: 600;
+	}
+	/* The phone-only toggle: the whole row is the target, name at the start,
+	   passage total and chevron at the end. */
+	.book-toggle {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+		min-height: 2.75rem;
+		padding: 0;
+		border: 0;
+		background: none;
+		font: inherit;
+		color: inherit;
+		text-align: start;
+		cursor: pointer;
+	}
+	.book-total {
+		margin-inline-start: auto;
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		font-weight: 400;
+		font-variant-numeric: tabular-nums;
+		color: var(--color-muted);
+	}
+	.chev {
+		flex: none;
+		color: var(--color-muted);
+		transition: transform 0.15s;
+	}
+	.book-toggle[aria-expanded='true'] .chev {
+		transform: rotate(180deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.chev {
+			transition: none;
+		}
 	}
 	.chapters {
 		list-style: none;

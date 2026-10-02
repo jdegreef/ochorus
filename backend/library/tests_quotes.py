@@ -724,6 +724,60 @@ class QuotePageApiTests(TestCase):
         self.quote.save()
         self.assertEqual(self.client.get("/api/library/authors/w/").data["quote_count"], 1)
 
+    def _list_row(self, language="en"):
+        rows = self.client.get(f"/api/library/authors/?language={language}").data
+        return next(a for a in rows if a["slug"] == "w")
+
+    def test_the_author_list_counts_only_reviewed_quotes(self):
+        # The library A–Z links /quotes/<slug>/ on this count, so it must be the
+        # quote page's own gate: an unreviewed row would link to a 404.
+        self.author.bio = "A short bio."
+        self.author.save(update_fields=["bio"])
+        self.assertEqual(self._list_row()["quote_count"], 0)
+        self.quote.reviewed = True
+        self.quote.save()
+        Quote.objects.create(  # still unreviewed — not counted
+            slug="w-unrev", author=self.author, text="Not yet.",
+            chapter=self.chapter, paragraph=6,
+        )
+        # Beside the work counts, over a second book and a sermon: each count
+        # stays its own.
+        Book.objects.create(author=self.author, slug="b2", language="en", title="Two")
+        Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="S", body_html="<p>x</p>"
+        )
+        row = self._list_row()
+        self.assertEqual(
+            (row["quote_count"], row["book_count"], row["sermon_count"]), (1, 2, 1)
+        )
+
+    def test_the_author_list_quote_count_is_a_subquery_with_no_query_per_author(self):
+        # Annotated, not counted per row: the prerender requests this list once
+        # per locale, and a count() per author would scale with it. And by a
+        # SUBQUERY, not a joined Count — a join to the quote table puts a GROUP
+        # BY over every author column (the bio HTML included) back into the
+        # query (see AuthorQuerySet.with_work_counts).
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        self.author.bio = "A short bio."
+        self.author.save(update_fields=["bio"])
+        with CaptureQueriesContext(connection) as one:
+            self._list_row()
+        other = Author.objects.create(slug="x", name="Another", bio="Bio.")
+        for i in range(3):
+            Quote.objects.create(
+                slug=f"x-{i}", author=other, text=f"Line {i}.",
+                chapter=self.chapter, paragraph=i, reviewed=True,
+            )
+        with CaptureQueriesContext(connection) as two:
+            rows = self.client.get("/api/library/authors/?language=en").data
+        self.assertEqual(next(a for a in rows if a["slug"] == "x")["quote_count"], 3)
+        self.assertEqual(len(two), len(one))
+        listing = next(q["sql"] for q in two if 'FROM "library_author"' in q["sql"])
+        self.assertIn('FROM "library_quote"', listing)
+        self.assertNotIn('JOIN "library_quote"', listing)
+
 
 class QuoteResolveApiTests(TestCase):
     """The reader's saved-quotes shelf: POST the stored slugs, get the cards.
