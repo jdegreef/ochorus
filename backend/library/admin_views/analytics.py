@@ -24,7 +24,8 @@ from ..models import (
     Sermon,
     fold_query,
 )
-from ..search_triage import with_status
+from ..search import MIN_QUERY_LEN
+from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
 from ..views import _language_entry
 
 
@@ -966,13 +967,13 @@ class AdminSearchView(APIView):
         per_language: dict[str, list[dict]] = {r["language"]: [] for r in worst}
         # A triaged query leaves this list (it's on the Handled or Wanted tab)
         # unless its decision has stopped working — then it comes back, flagged,
-        # carrying the decision so the page can say what was tried. Only a queued
-        # translation can stop working, so only those need the since-scan.
+        # carrying the decision so the page can say what was tried. Only the
+        # outcomes that can stop working (search_triage.GRACE) need the since-scan.
         decisions = SearchDecision.objects.filter(language__in=list(per_language))
         decided = {(d.query, d.language) for d in decisions}
         reopened = {
             (d["query"], d["language"]): d
-            for d in with_status(decisions.filter(outcome=SearchDecision.Outcome.TRANSLATE))
+            for d in with_status(decisions.filter(outcome__in=list(GRACE)))
             if d["reopened"]
         }
         # Misses on triaged queries, so each language's header counts what's
@@ -1017,16 +1018,35 @@ class AdminSearchView(APIView):
         # query text, on purpose (see SearchClickLog), so they are joined here
         # rather than in SQL.
         clicked = {
-            r["q"]: r["n"]
-            for r in SearchClickLog.objects.filter(
-                created_at__gte=now - timedelta(days=30)
-            )
+            (fold_query(r["q"]), r["language"])
+            for r in SearchClickLog.objects.filter(created_at__gte=now - timedelta(days=30))
             .annotate(q=Lower("query"))
-            .values("q")
-            .annotate(n=Count("id"))
+            .values("q", "language")
+            .distinct()
         }
         answered = top(window.filter(result_count__gt=0))
-        unopened = [r for r in answered if not clicked.get(r["query"])][:10]
+        # Per language, because a pin is: "prayer" in English and "oración" in
+        # Spanish are answered by different pages. A pinned query leaves the
+        # list (it's on the Handled tab, with its opens since).
+        pinned = set(
+            SearchDecision.objects.filter(outcome=SearchDecision.Outcome.PINNED).values_list(
+                "query", "language"
+            )
+        )
+        unopened = []
+        for r in (
+            window.filter(result_count__gt=0)
+            .annotate(q=Lower("query"), qlen=Length("query"))
+            .filter(qlen__gte=FAILED_QUERY_MIN_LEN)
+            .values("q", "language")
+            .annotate(count=Count("id"))
+            .order_by("-count", "q")[:60]
+        ):
+            key = (fold_query(r["q"]), r["language"])
+            if key not in clicked and key not in pinned:
+                unopened.append({"query": r["q"], "language": r["language"], "count": r["count"]})
+                if len(unopened) == 10:
+                    break
 
         return Response(
             {
@@ -1163,7 +1183,12 @@ class AdminSearchDecisionView(AdminAudited, APIView):
     def audit_entry(self, request, response):
         src = request.query_params if request.method == "DELETE" else request.data
         target = f"{(src.get('language') or '').strip().lower()}:{fold_query(src.get('query') or '')}"
-        return target, {"outcome": (response.data or {}).get("outcome", "")}
+        # The target too: a synonym or pin changes what every reader gets back,
+        # and once it's replaced or undone this row is the only record of it.
+        detail = {"outcome": (response.data or {}).get("outcome", "")}
+        if request.method != "DELETE":
+            detail["to"] = (response.data or {}).get("target", "")
+        return target, detail
 
     @staticmethod
     def _key(src) -> tuple[str, str] | None:
@@ -1212,19 +1237,38 @@ class AdminSearchDecisionView(AdminAudited, APIView):
         query, language = key
         if refusal := self._guard_translate(request, query, language):
             return refusal
+        target = str(request.data.get("target") or "").strip()[:200]
+        if outcome == SearchDecision.Outcome.SYNONYM:
+            # Stored folded, like the query, and refused when it's the query
+            # itself: a synonym that searches for the same word does nothing.
+            target = fold_query(target)
+            if len(target) < MIN_QUERY_LEN or target == query:
+                return Response(
+                    {"detail": "A synonym needs a different word to search for."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+        if outcome == SearchDecision.Outcome.PINNED and pinned_hit(target, query, language) is None:
+            return Response(
+                {
+                    "detail": "A pin must name a published page in this language, as "
+                    f"kind:slug (kind one of {', '.join(PIN_KINDS)})."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         _, created = SearchDecision.objects.update_or_create(
             query=query,
             language=language,
             defaults={
                 "outcome": outcome,
-                "target": str(request.data.get("target") or "").strip()[:200],
+                "target": target,
                 "note": str(request.data.get("note") or "").strip()[:300],
                 "decided_by": actor_email(request),
                 "decided_at": timezone.now(),
             },
         )
+        clear_rules(language)
         return Response(
-            {"ok": True, "query": query, "language": language, "outcome": outcome},
+            {"ok": True, "query": query, "language": language, "outcome": outcome, "target": target},
             status=status.HTTP_201_CREATED if created else status.HTTP_200_OK,
         )
 
@@ -1241,4 +1285,29 @@ class AdminSearchDecisionView(AdminAudited, APIView):
         deleted, _ = SearchDecision.objects.filter(query=query, language=language).delete()
         if not deleted:
             return Response({"detail": "No such decision to undo."}, status=status.HTTP_404_NOT_FOUND)
+        clear_rules(language)
         return Response({"ok": True, "query": query, "language": language})
+
+
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
+class AdminSearchPreviewView(APIView):
+    """What a search returns in one language — for the triage dialogs.
+
+    The synonym dialog previews the word it would search instead; the pin
+    dialog lists the pages a query already finds. Not the public endpoint, on
+    purpose: that one logs every search, so previewing would put the admin's
+    own lookups into the very report being triaged, and it applies the
+    synonyms and pins being decided. This runs the bare search, unlogged.
+    """
+
+    def get(self, request):
+        from ..search import search_library
+
+        q = (request.query_params.get("q") or "").strip()
+        language = (request.query_params.get("language") or "").strip().lower()
+        if len(q) < MIN_QUERY_LEN or not language:
+            return Response(
+                {"detail": f"q ({MIN_QUERY_LEN}+ chars) and language are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        return Response({"query": q, "results": search_library(q, language)})
