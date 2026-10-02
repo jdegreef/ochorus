@@ -11,8 +11,12 @@ surfaces can never drift. Pure analysis — never mutates.
 from __future__ import annotations
 
 import re
+from html import escape
 
-from .ingest import text_of
+from bs4 import BeautifulSoup, NavigableString
+from bs4.element import PreformattedString
+
+from .text import html_to_text, text_of
 
 # A chapter title the chapterizer failed to capture: empty, or a bare
 # "Chapter <n>" with no real heading.
@@ -32,6 +36,75 @@ GIANT_MIN = 8000
 FRAG_MIN_PARAS = 10
 FRAG_MIN_WORDS = 100
 FRAG_MAX_AVG = 20
+
+# --- Text outside paragraphs -------------------------------------------------
+# A body is a sequence of blocks (p, h2–h4, blockquote, lists, hr). Some imports
+# left text BETWEEN blocks — an illustration's caption, a poem whose wrapper the
+# sanitizer unwrapped, a flattened table — which the reader renders unstyled,
+# without paragraph spacing or the drop cap. A top-level INLINE element counts
+# as loose too: `<i>St. Paul, Asia and Europe.</i>` or a `<i>line<br/></i>` poem
+# run sits outside any paragraph exactly as bare text does (things-as-they-are
+# has 46 captions shaped like that, invisible to a bare-text-node scan). The
+# unit is a RUN — consecutive non-block top-level nodes — so a poem set as ten
+# lines joined by <br/> is one finding, not ten.
+INLINE_TAGS = frozenset({"em", "strong", "i", "b", "br", "sup", "sub", "a", "span", "small", "u"})
+_INLINE = "|".join(sorted(INLINE_TAGS))
+# Cheap pre-filter, a strict superset of what `loose_text` finds: a loose run
+# can only start at the body's start or right after a top-level block ends (a
+# non-inline close tag, an <hr>, a comment), and it opens with visible text or
+# an inline tag. On the ~11k shipped chapters (133 MB) it passes ~450 bodies to
+# the parse in ~0.7s, where parsing every body costs ~10s. (The start case is a
+# separate `match`: a `\A` alternative in one pattern made the scan 3x slower.)
+_LOOSE_OPENS = rf"\s*(?:[^<\s]|<(?:{_INLINE})\b)"
+_LOOSE_AT_START = re.compile(_LOOSE_OPENS, re.IGNORECASE)
+_LOOSE_AFTER_BLOCK = re.compile(
+    rf"(?:</(?!(?:{_INLINE})\s*>)[a-z][a-z0-9]*\s*>|<hr\b[^>]*>|-->){_LOOSE_OPENS}",
+    re.IGNORECASE,
+)
+_INVISIBLE = dict.fromkeys(map(ord, "\ufeff\u200b\u200c\u200d\u2060"))
+# How much of the first loose run a finding quotes as evidence.
+LOOSE_SNIPPET = 60
+
+
+def loose_text(body_html: str) -> list[str]:
+    """Each run of text sitting outside any block, whitespace-collapsed, in
+    document order. Empty for a well-formed body. Pure analysis."""
+    if not body_html or not (
+        _LOOSE_AT_START.match(body_html) or _LOOSE_AFTER_BLOCK.search(body_html)
+    ):
+        return []
+    runs: list[str] = []
+    current: list[str] = []  # the open run, as markup
+
+    def flush():
+        # `html_to_text` is the body_text rule: a <br> is a space (inside an
+        # inline tag too — `<i>line<br/></i>`), inline markup joins as written.
+        text = html_to_text("".join(current))
+        # A run of only invisible format characters (a BOM, a zero-width space)
+        # is nothing a reader sees, but `\s` doesn't match them. Tested, not
+        # stripped: ZWJ/ZWNJ are spelling inside Indic and Arabic-script words.
+        if text.translate(_INVISIBLE).strip():
+            runs.append(text)
+        current.clear()
+
+    for node in BeautifulSoup(body_html, "html.parser").children:
+        if isinstance(node, PreformattedString):  # comment, doctype, CDATA
+            continue
+        if isinstance(node, NavigableString):
+            current.append(escape(node, quote=False))
+        elif node.name in INLINE_TAGS:
+            current.append(node.decode())
+        else:
+            flush()
+    flush()
+    return runs
+
+
+def loose_snippet(runs: list[str]) -> str:
+    """The first loose run, cut to ``LOOSE_SNIPPET`` characters — the evidence
+    both the audit and the import preview quote."""
+    first = runs[0] if runs else ""
+    return first if len(first) <= LOOSE_SNIPPET else first[:LOOSE_SNIPPET].rstrip() + "…"
 
 
 def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
@@ -60,6 +133,8 @@ def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
         flags.append("no-dropcap")
     if has_next and not body.endswith(TERMINAL_PUNCT):
         flags.append("mid-split")
+    if loose_text(body_html):
+        flags.append("loose-text")
     return flags
 
 
@@ -70,39 +145,52 @@ _FLAG_INFO = {
     "generic-title": (
         "generic_title",
         "high",
-        lambda w, p: "No real chapter title was captured — give it one so the contents and search read well.",
+        lambda w, p, h: "No real chapter title was captured — give it one so the contents and search read well.",
     ),
     "empty": (
         "empty_body",
         "high",
-        lambda w, p: "This chapter has no readable text.",
+        lambda w, p, h: "This chapter has no readable text.",
     ),
     "mid-split": (
         "mid_sentence_split",
         "high",
-        lambda w, p: "Chapter doesn't end on a sentence — it may run into the next one.",
+        lambda w, p, h: "Chapter doesn't end on a sentence — it may run into the next one.",
     ),
     "tiny": (
         "tiny_chapter",
         "medium",
-        lambda w, p: f"Only {w} words — may be a split heading or a stray fragment.",
+        lambda w, p, h: f"Only {w} words — may be a split heading or a stray fragment.",
     ),
     "fragmented": (
         "fragmented_paragraphs",
         "medium",
-        lambda w, p: f"Short average paragraph (~{w // max(p, 1)} words) — line breaks may not have merged.",
+        lambda w, p, h: f"Short average paragraph (~{w // max(p, 1)} words) — line breaks may not have merged.",
     ),
     "no-dropcap": (
         "missing_drop_cap",
         "medium",
-        lambda w, p: "Opens with a lowercase letter — a drop-cap capital may have been lost.",
+        lambda w, p, h: "Opens with a lowercase letter — a drop-cap capital may have been lost.",
+    ),
+    "loose-text": (
+        "loose_text",
+        "medium",
+        lambda w, p, h: _loose_message(loose_text(h)),
     ),
     "giant": (
         "giant_chapter",
         "low",
-        lambda w, p: f"{w:,} words — unusually long; a chapter break may have been missed.",
+        lambda w, p, h: f"{w:,} words — unusually long; a chapter break may have been missed.",
     ),
 }
+
+
+def _loose_message(runs: list[str]) -> str:
+    n = len(runs)
+    what = "1 piece of text sits" if n == 1 else f"{n} pieces of text sit"
+    return f"{what} outside any paragraph (“{loose_snippet(runs)}”) — a caption or poem may have lost its markup."
+
+
 _SEVERITY_ORDER = {"high": 0, "medium": 1, "low": 2}
 
 
@@ -148,7 +236,7 @@ def qa_report(chapters: list[dict]) -> list[dict]:
                     "severity": severity,
                     "chapter_index": i,
                     "title": label,
-                    "message": message(words, paras),
+                    "message": message(words, paras, html),
                 }
             )
         if title:

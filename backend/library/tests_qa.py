@@ -99,3 +99,78 @@ class QaReportTests(TestCase):
         report = qa.qa_report(chapters)
         self.assertTrue(report)
         self.assertEqual(report[0]["severity"], "high")
+
+    def test_loose_text_flagged_with_count_and_snippet(self):
+        html = f"<p>{GOOD}</p>A caption under a lost picture<p>{GOOD}</p>Another stray line."
+        [w] = [w for w in qa.qa_report([ch("Pictures", html, words=200)]) if w["check"] == "loose_text"]
+        self.assertEqual(w["severity"], "medium")
+        self.assertIn("2 pieces of text", w["message"])
+        self.assertIn("A caption under a lost picture", w["message"])
+
+    def test_clean_body_has_no_loose_text_warning(self):
+        self.assertNotIn("loose_text", self.checks([ch("Clean", f"<p>{GOOD}</p><hr/><p>{GOOD}</p>")]))
+
+
+class LooseTextTests(TestCase):
+    """`loose_text`: text sitting outside any block, reported as runs."""
+
+    def test_well_formed_bodies_are_clean(self):
+        for html in (
+            "",
+            f"<p>{GOOD}</p>",
+            "<h2>Head</h2>\n<p>One <em>two</em>.</p>\n<hr/>\n<blockquote><p>Q</p></blockquote>",
+            "<ul><li>a</li><li>b</li></ul>\n \n<ol><li>c</li></ol>",
+            "<p>x</p>\xa0<p>y</p>",  # a non-breaking space between blocks is not text
+            "<p>x</p><br/><p>y</p>",  # a stray break carries no text
+            "<p>x</p><!-- a note --><p>y</p>",
+            "﻿<p>x</p>​<p>y</p>",  # a BOM / zero-width space is not visible text
+        ):
+            with self.subTest(html=html):
+                self.assertEqual(qa.loose_text(html), [])
+
+    def test_bare_text_between_blocks(self):
+        html = "<p>Before.</p>\n  A caption,   spread\nover lines  \n<p>After.</p>Tail."
+        self.assertEqual(qa.loose_text(html), ["A caption, spread over lines", "Tail."])
+
+    def test_text_at_the_start(self):
+        self.assertEqual(qa.loose_text("Opening words<p>Then a paragraph.</p>"), ["Opening words"])
+
+    def test_top_level_inline_tags_are_loose_too(self):
+        # A caption set in italics at top level (things-as-they-are's shape) is
+        # invisible to a bare-text-node scan, but sits outside any paragraph.
+        self.assertEqual(
+            qa.loose_text("<p>a</p><i>St. Paul, Asia and Europe.</i><p>b</p>"),
+            ["St. Paul, Asia and Europe."],
+        )
+        self.assertEqual(qa.loose_text("<strong>Bold start</strong><p>b</p>"), ["Bold start"])
+
+    def test_a_poem_joined_by_breaks_is_one_run(self):
+        # The Pursuit of God shape: a loose <i>line<br/></i> run between blocks.
+        html = (
+            "<p>Before.</p><i>There is no holy service<br/></i><i>But hath its secret bliss:<br/></i>"
+            "Yet, of all blessèd ministries,<br/>Is one so dear<p>After.</p>"
+        )
+        self.assertEqual(
+            qa.loose_text(html),
+            ["There is no holy service But hath its secret bliss: Yet, of all blessèd ministries, Is one so dear"],
+        )
+
+    def test_text_inside_a_block_is_not_loose(self):
+        # Bare text inside a blockquote or list item is inside a block…
+        self.assertEqual(qa.loose_text("<blockquote>Quoted <i>words</i></blockquote><ul><li>item</li></ul>"), [])
+        # …and inline markup inside a paragraph never is.
+        self.assertEqual(qa.loose_text("<p>One</p><p><em>Two</em> three</p>"), [])
+
+    def test_text_after_hr_and_comment(self):
+        self.assertEqual(qa.loose_text("<p>a</p><hr/>After the rule"), ["After the rule"])
+        self.assertEqual(qa.loose_text("<p>a</p><!-- x -->After a comment"), ["After a comment"])
+
+    def test_chapter_flag(self):
+        self.assertIn("loose-text", qa.chapter_flags("T", 200, GOOD, f"<p>{GOOD}</p>Loose", False))
+        self.assertNotIn("loose-text", qa.chapter_flags("T", 200, GOOD, f"<p>{GOOD}</p>", False))
+
+    def test_snippet_is_capped(self):
+        snip = qa.loose_snippet([("word " * 40).strip()])
+        self.assertTrue(snip.endswith("…"))
+        self.assertLessEqual(len(snip), qa.LOOSE_SNIPPET + 1)
+        self.assertEqual(qa.loose_snippet(["short"]), "short")
