@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
-	import type { QuoteAuthorSummary, QuoteTopicSummary } from '$lib/library-public';
+	import type { QuoteAuthorSummary, QuoteTopicSummary, SavedQuote } from '$lib/library-public';
 	import { quoteTopicHref } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { hueForBirthYear } from '$lib/eras';
@@ -13,6 +13,7 @@
 	import AccountCta from '$lib/components/AccountCta.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
 	import TopicPill from '$lib/components/TopicPill.svelte';
+	import FeaturedQuote from '$lib/components/FeaturedQuote.svelte';
 	import { chapterSuffix } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -20,6 +21,7 @@
 	// localized because what it lists is not.
 	let { data } = $props();
 	const authors = $derived<QuoteAuthorSummary[]>(data.authors);
+	const featured = $derived<SavedQuote[]>(data.featured);
 	const loadError = $derived<boolean>(data.loadError);
 	// The first ten themes, in the API's curated order: all twenty stack eight
 	// rows deep on a phone, pushing the writers off the first screen. The rest
@@ -81,6 +83,9 @@
 		title={t('quotes.pageTitle')}
 		tagline={t('quotes.tagline').replace('%count%', String(total))}
 	/>
+
+	<!-- One quotation first, fully cited: the thing the page promises. -->
+	<FeaturedQuote pool={featured} start={data.featuredAt} />
 
 	<!-- The other way in: by theme rather than by writer. A failed topics
 	     fetch drops the chips and keeps the link. -->

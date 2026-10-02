@@ -316,10 +316,9 @@ class PilotTests(TestCase):
         self.assertEqual(sorted(pinned), files, "sources.json must list every export bio")
         for name in files:
             slug, lang, _ = name.split(".")
-            source = (
-                english[slug] if lang == "en"
-                else (translated / f"author_bios_{lang}" / f"{slug}.html").read_text(encoding="utf-8")
-            )
+            # A language with no long bio of its own is written from the English.
+            long_bio = translated / f"author_bios_{lang}" / f"{slug}.html"
+            source = long_bio.read_text(encoding="utf-8") if lang != "en" and long_bio.is_file() else english[slug]
             digest = hashlib.sha256(source.encode()).hexdigest()[:16]
             self.assertEqual(pinned[name], digest, f"{name}: its author's long bio changed — re-check it")
 
