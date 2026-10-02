@@ -22,6 +22,7 @@
 		portfolio,
 		shelfKinds,
 		sparkPoints,
+		trendDays,
 		weekTrend,
 		type CoverageShelf
 	} from '$lib/languageHealth';
@@ -217,7 +218,7 @@
 										viewBox="0 0 100 28"
 										preserveAspectRatio="none"
 										role="img"
-										aria-label="{l.name} score, last {l.trend?.length ?? 0} days: {l.trend?.[0]?.health} to {l.health}"
+										aria-label="{l.name} score over the last {trendDays(l.trend)} days: {l.trend?.[0]?.health} to {l.health}"
 									>
 										<polyline points={spark} />
 									</svg>

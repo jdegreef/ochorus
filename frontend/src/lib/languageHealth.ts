@@ -3,6 +3,7 @@
  * lost, which band a score sits in, and the one piece of work worth the most
  * points next. Pure, so it is tested beside this file; the page only renders.
  */
+import { pointsTrend } from './library-admin';
 import type {
 	AdminLanguageHealth,
 	Trend,
@@ -230,12 +231,18 @@ export function nextActions(
 	return out.filter((a) => a.gain >= MIN_GAIN).sort((a, b) => b.gain - a.gain);
 }
 
-/** The week's change as a TrendChip trend: points, not percent, since the
- *  score is already out of 100. Null (no chip) until a week-old point exists. */
-export function weekTrend(change: number | null | undefined): Trend {
-	if (change == null) return null;
-	if (change === 0) return { dir: 'flat', text: 'no change this week' };
-	return { dir: change > 0 ? 'up' : 'down', text: `${Math.abs(change)} this week` };
+/** The week's change as a TrendChip trend, in the same "+3 pts" form the
+ *  other admin chips use (a score out of 100 is a rate in points). Null (no
+ *  chip) until a week-old point exists. */
+export const weekTrend = (change: number | null | undefined): Trend =>
+	change == null ? null : pointsTrend(change / 100, 0);
+
+/** Whole days a trend covers, first point to last (not its point count: a day
+ *  without a load or deploy has no point). */
+export function trendDays(trend: { date: string }[] | undefined): number {
+	if (!trend || trend.length < 2) return 0;
+	const t = (d: string) => Date.parse(`${d}T00:00:00Z`);
+	return Math.round((t(trend[trend.length - 1].date) - t(trend[0].date)) / 86_400_000);
 }
 
 /** The smallest score range a sparkline spans, so a one-point wobble reads as

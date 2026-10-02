@@ -2079,6 +2079,44 @@ class AdminLanguageHealthTests(TestCase):
         self.assertEqual(es["week_change"], es["health"] - 10)
         self.assertEqual([p["health"] for p in es["trend"]], [10, es["health"]])
 
+    def test_no_week_change_from_a_baseline_much_older_than_a_week(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=timezone.localdate() - timedelta(days=22),
+            score_version=SCORE_VERSION,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        es = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertIsNone(es["week_change"])
+        self.assertEqual(len(es["trend"]), 2)  # still drawn in the line
+
+    def test_score_version_is_bumped_with_the_formula(self):
+        # The trend joins only points of one SCORE_VERSION, so a formula change
+        # that forgets the bump draws a fake jump on every language. Changing
+        # any of these means: bump SCORE_VERSION, then update this pin.
+        from .admin_views import health
+
+        self.assertEqual(
+            (
+                health.SCORE_VERSION,
+                health._WEIGHTS,
+                health._COVERAGE_MIX,
+                health._ENGAGEMENT_TARGET,
+                health._READER_WINDOW_DAYS,
+            ),
+            (
+                3,
+                {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0.15},
+                {"books": 0.50, "sermons": 0.25, "bios": 0.15, "plans": 0.10},
+                25,
+                90,
+            ),
+        )
+
     def test_points_from_an_older_formula_are_left_out(self):
         from datetime import timedelta
 

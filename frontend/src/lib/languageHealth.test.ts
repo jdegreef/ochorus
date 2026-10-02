@@ -9,6 +9,7 @@ import {
 	pointsBreakdown,
 	portfolio,
 	sparkPoints,
+	trendDays,
 	weekTrend,
 	type CoverageShelf
 } from './languageHealth';
@@ -208,10 +209,17 @@ describe('weekTrend', () => {
 		expect(weekTrend(undefined)).toBeNull();
 	});
 
-	it('reads the change in points', () => {
-		expect(weekTrend(4)).toEqual({ dir: 'up', text: '4 this week' });
-		expect(weekTrend(-2)).toEqual({ dir: 'down', text: '2 this week' });
-		expect(weekTrend(0)).toEqual({ dir: 'flat', text: 'no change this week' });
+	it('reads the change in points, like the other admin chips', () => {
+		expect(weekTrend(4)).toEqual({ dir: 'up', text: '+4 pts', bad: false });
+		expect(weekTrend(-2)).toEqual({ dir: 'down', text: '-2 pts', bad: true });
+		expect(weekTrend(0)).toEqual({ dir: 'flat', text: '0 pts', bad: false });
+	});
+});
+
+describe('trendDays', () => {
+	it('counts days between the first and last point, not points', () => {
+		expect(trendDays([{ date: '2026-09-01' }, { date: '2026-09-10' }, { date: '2026-10-01' }])).toBe(30);
+		expect(trendDays([{ date: '2026-10-01' }])).toBe(0);
 	});
 });
 

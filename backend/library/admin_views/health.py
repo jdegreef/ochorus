@@ -7,7 +7,10 @@ off three separate pages — **readiness** (is the go-live bar met?), **coverage
 translations a human has confirmed). It answers "where should the next hour go?"
 at a glance, and links each row on to the page that acts on its weakest signal.
 
-Read-only and derived — it stores nothing. It leans on the existing machinery
+The score is derived, not stored — but each load (and each deploy, via
+``snapshot_language_health``) upserts today's score into
+``LanguageHealthSnapshot`` so the page can draw a trend; that is the one write.
+It leans on the existing machinery
 rather than re-deriving it: ``readiness.report`` already counts a language's
 published books / sermons / biographies / plans and runs every go-live check, so
 this borrows those counts instead of issuing them again. Only the extra signals
@@ -66,38 +69,51 @@ SCORE_VERSION = 3
 # How much history the page gets: eight weeks of daily points.
 _TREND_DAYS = 56
 
+# A week's change may compare with a point up to this many days older than a
+# week (a day with no load or deploy has no point); beyond it there is no
+# honest "this week" figure.
+_WEEK_SLACK_DAYS = 3
+
 
 def record_snapshots(rows: list[dict], day: date) -> None:
-    """Upsert each language's score for ``day`` (one row per language per day)."""
-    for r in rows:
-        LanguageHealthSnapshot.objects.update_or_create(
-            language=r["code"],
-            date=day,
-            defaults={
-                "score_version": SCORE_VERSION,
-                "health": r["health"],
+    """Upsert each language's score for ``day`` (one row per language per day),
+    in a single statement."""
+    LanguageHealthSnapshot.objects.bulk_create(
+        [
+            LanguageHealthSnapshot(
+                language=r["code"],
+                date=day,
+                score_version=SCORE_VERSION,
+                health=r["health"],
                 **{k: r["scores"][k] for k in _WEIGHTS},
-            },
-        )
+            )
+            for r in rows
+        ],
+        update_conflicts=True,
+        unique_fields=["language", "date"],
+        update_fields=["score_version", "health", *_WEIGHTS],
+    )
 
 
 def attach_trend(rows: list[dict], today: date) -> None:
     """Give each row its last ``_TREND_DAYS`` of daily scores (``trend``, oldest
     first) and its change since a week ago (``week_change``: today's score minus
-    the latest point at least seven days old, or None with no such point). Only
-    points scored by the current formula count; see ``SCORE_VERSION``."""
+    the latest point 7–10 days old, or None with no such point — an older one
+    would be a month's change shown as a week's). Only points scored by the
+    current formula count; see ``SCORE_VERSION``."""
     since = today - timedelta(days=_TREND_DAYS)
     history: dict[str, list[dict]] = {}
     for snap in LanguageHealthSnapshot.objects.filter(
-        date__gte=since, score_version=SCORE_VERSION
+        date__gt=since, score_version=SCORE_VERSION
     ).order_by("date"):
         history.setdefault(snap.language, []).append(
             {"date": snap.date.isoformat(), "health": snap.health}
         )
     week_ago = (today - timedelta(days=7)).isoformat()
+    oldest_baseline = (today - timedelta(days=_WEEK_SLACK_DAYS + 7)).isoformat()
     for r in rows:
         points = history.get(r["code"], [])
-        older = [p for p in points if p["date"] <= week_ago]
+        older = [p for p in points if oldest_baseline <= p["date"] <= week_ago]
         r["trend"] = points
         r["week_change"] = r["health"] - older[-1]["health"] if older else None
 
