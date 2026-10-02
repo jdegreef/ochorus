@@ -1401,4 +1401,52 @@ SERMONS: list[SermonEntry] = [
         "the-goal-of-faith", "The Goal of Faith", "a-b-simpson", "sermonindex",
         _SI + "ab-simpson/the-goal-of-faith/", scripture_ref="Hebrews 12:18-24",
     ),
+    # A. B. Simpson, batch 4 — standalone printed sermons that keep his King James
+    # quotations. Chapters of his serial books on SermonIndex (Power from on
+    # High, the Emblems series, the Christ in the Bible studies) are left for a
+    # future book import rather than split onto the sermon shelf.
+    SermonEntry(
+        "personal-responsibility", "Personal Responsibility", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/personal-responsibility/",
+    ),
+    SermonEntry(
+        "more-than-conquerors", "More Than Conquerors", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/more-than-conquerors/", scripture_ref="Romans 8:37",
+    ),
+    SermonEntry(
+        "grace-abounding", "Grace Abounding", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/grace-abounding/", scripture_ref="Romans 5:20",
+    ),
+    SermonEntry(
+        "from-strength-to-strength", "From Strength to Strength", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/from-strength-to-strength/", scripture_ref="Psalm 84:7",
+    ),
+    SermonEntry(
+        "hindering-the-holy-spirit", "Hindering the Holy Spirit", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/hindering-the-holy-spirit/",
+    ),
+    SermonEntry(
+        "spiritual-growth", "Spiritual Growth", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/spiritual-growth/", scripture_ref="2 Peter 3:18",
+    ),
+    SermonEntry(
+        "words-for-discouraged-workers", "Words for Discouraged Workers", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/words-for-discouraged-workers/",
+    ),
+    SermonEntry(
+        "the-weapons-of-our-warfare", "The Weapons of Our Warfare", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-weapons-of-our-warfare/", scripture_ref="2 Corinthians 10:4",
+    ),
+    SermonEntry(
+        "our-kinsman-redeemer", "Our Kinsman Redeemer", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/our-kinsman-redeemer-lessons-from-the-book-of-ruth/", scripture_ref="Isaiah 54:5",
+    ),
+    SermonEntry(
+        "how-to-abide", "How to Abide", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/how-to-abide/", scripture_ref="1 John 2:28",
+    ),
+    SermonEntry(
+        "sinning-and-repenting", "Sinning and Repenting", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/sinning-and-repenting/", scripture_ref="Judges 2:14-19",
+    ),
 ]

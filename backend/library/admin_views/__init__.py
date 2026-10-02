@@ -11,6 +11,7 @@ from .analytics import (
     AdminSearchDecisionListView,
     AdminSearchDecisionView,
     AdminSearchGapView,
+    AdminSearchPreviewView,
     AdminSearchView,
     AdminUsersView,
 )
@@ -76,6 +77,7 @@ __all__ = [
     "AdminSearchDecisionListView",
     "AdminSearchDecisionView",
     "AdminSearchGapView",
+    "AdminSearchPreviewView",
     "AdminSearchView",
     "AdminExportView",
     "AdminLanguageCreateView",

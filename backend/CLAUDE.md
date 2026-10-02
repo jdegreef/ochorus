@@ -89,8 +89,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - `manage.py release` runs the deploy chain: migrate → seed_if_empty →
   backfill_body_text → apply_body_corrections → seed_books → seed_plans →
   seed_sermons → seed_author_translations → seed_topics →
-  backfill_search_vectors → trim_search_log. Seeds are idempotent and
-  **re-run every deploy**.
+  backfill_search_vectors → trim_search_log → snapshot_language_health.
+  Seeds are idempotent and **re-run every deploy**. The last step records the
+  day's language-health score for the admin trend and is never fatal.
   backfill_search_vectors is last on purpose: vectors derive from body_text
   and bake in seed-created rows (library/fts.py).
 - Therefore any field a workflow owns after creation — review state

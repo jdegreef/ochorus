@@ -496,14 +496,17 @@
 				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 			>
 				<!-- Who the preacher was, before what they preached: their years and
-				     the first line of their bio, so a newcomer can tell Chrysostom's
-				     Antioch from Tozer's Chicago. The name links to the full life. -->
+				     one line on who they were, so a newcomer can tell Chrysostom's
+				     Antioch from Tozer's Chicago. The line is the tagline, written for
+				     this spot (a bio often opens "Name (1897–1963) was…", repeating
+				     the heading); a language without one falls back to the bio's
+				     opening. The name links to the full life. -->
 				<GroupHeading
 					name={a.name}
 					href={localizeHref(authorPath(a.slug))}
 					portraitUrl={a.photo_url}
 					portraitPosition={portraitPosition(a.slug)}
-					blurb={a.bio}
+					blurb={a.tagline || a.bio}
 				>
 					<!-- Years, then the count as words: a bare count after a
 					     lifespan read as one figure ("1843–1919 15"). -->
