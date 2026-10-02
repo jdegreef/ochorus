@@ -4,6 +4,7 @@
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { relativeHeat } from '$lib/scriptureIndex';
 	import { authorPath } from '$lib/originals';
+	import { withTrailingSlash } from '$lib/href';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScriptureChapterChips from '$lib/components/ScriptureChapterChips.svelte';
@@ -106,7 +107,7 @@
 					<li class="work">
 						<span class="min-w-0">
 							<a class="work-title" href={`/books/${w.slug}/`}>{w.title}</a>
-							<a class="work-author text-small" href={authorPath(w.author_slug)}>{w.author_name}</a>
+							<a class="work-author text-small" href={withTrailingSlash(authorPath(w.author_slug))}>{w.author_name}</a>
 						</span>
 						<span class="count text-small">{passages(w.citing_count)}</span>
 					</li>
