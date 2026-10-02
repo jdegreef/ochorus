@@ -142,6 +142,57 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    "finish_first_book": {
+        "en": {
+            "subject": "Pick up where you left off",
+            "preheader": "Your first book is waiting — a few minutes a day finishes it.",
+            "heading": "Finish what you started",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You’ve started reading — that’s the hardest step, and you’ve "
+                "already taken it. The book you opened is saved right where you "
+                "left off.",
+                "Finishing your first book is its own quiet reward. A few minutes "
+                "a day is all it takes; the rest keeps your place for you.",
+            ],
+            "cta_label": "Continue reading",
+            "cta_path": "reading",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Retoma donde lo dejaste",
+            "preheader": "Tu primer libro te espera; unos minutos al día bastan para terminarlo.",
+            "heading": "Termina lo que empezaste",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ya empezaste a leer, que es el paso más difícil, y ya lo diste. "
+                "El libro que abriste está guardado justo donde lo dejaste.",
+                "Terminar tu primer libro es una recompensa en sí misma. Bastan "
+                "unos minutos al día; nosotros te guardamos el lugar.",
+            ],
+            "cta_label": "Seguir leyendo",
+            "cta_path": "reading",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "Retome de onde parou",
+            "preheader": "O seu primeiro livro espera por si — uns minutos por dia bastam.",
+            "heading": "Termine o que começou",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já começou a ler — esse é o passo mais difícil, e já o deu. O "
+                "livro que abriu está guardado exatamente onde parou.",
+                "Terminar o seu primeiro livro é uma recompensa em si. Bastam uns "
+                "minutos por dia; nós guardamos o seu lugar.",
+            ],
+            "cta_label": "Continuar a ler",
+            "cta_path": "reading",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
     "classic": {
         "en": {
             "subject": "A classic worth your time",
