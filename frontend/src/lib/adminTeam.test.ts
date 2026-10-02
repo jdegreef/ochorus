@@ -1,12 +1,16 @@
 import { describe, it, expect } from 'vitest';
-import { emailProblem, memberLanguages, sharedLanguages } from './adminTeam';
+import { emailProblem, historyLanguages, memberLanguages, sharedLanguages, signInStatus } from './adminTeam';
 import type { TeamMember } from './library-admin';
 
 const member = (scopes: TeamMember['scopes']): TeamMember => ({
 	email: 'h@example.org',
 	scopes,
 	roles: [...new Set(scopes.map((s) => s.role).filter(Boolean))],
-	outdated: []
+	outdated: [],
+	last_seen_at: null,
+	granted_at: null,
+	granted_by: '',
+	history: []
 });
 
 describe('emailProblem', () => {
@@ -49,5 +53,34 @@ describe('sharedLanguages', () => {
 		expect(sharedLanguages(member([a, b]))).toEqual(['en', 'lg']);
 		expect(sharedLanguages(member([a, { ...b, languages: ['*'] }]))).toBeNull();
 		expect(sharedLanguages(member([]))).toBeNull();
+	});
+});
+
+describe('signInStatus', () => {
+	const now = Date.parse('2026-10-02T12:00:00Z');
+	const daysAgo = (n: number) => new Date(now - n * 86_400_000).toISOString();
+
+	it('flags a grant nobody has signed in to', () => {
+		expect(signInStatus({ last_seen_at: null, granted_at: daysAgo(16) }, now)).toEqual({
+			label: 'Invited 16 days ago · not signed in yet',
+			tone: 'warn'
+		});
+	});
+
+	it('is active within 30 days, then just says when', () => {
+		expect(signInStatus({ last_seen_at: daysAgo(3), granted_at: null }, now)).toEqual({
+			label: 'Active · seen 3 days ago',
+			tone: 'ok'
+		});
+		expect(signInStatus({ last_seen_at: daysAgo(74), granted_at: null }, now).tone).toBe('idle');
+		expect(signInStatus({ last_seen_at: daysAgo(1), granted_at: null }, now).label).toBe('Active · seen yesterday');
+	});
+});
+
+describe('historyLanguages', () => {
+	it('reads a list, a "*" or a comma string', () => {
+		expect(historyLanguages(['en', 'lg'])).toEqual(['en', 'lg']);
+		expect(historyLanguages('*')).toEqual(['*']);
+		expect(historyLanguages('en, lg')).toEqual(['en', 'lg']);
 	});
 });
