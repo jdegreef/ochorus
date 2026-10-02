@@ -29,11 +29,9 @@ from typing import NamedTuple
 from django.conf import settings
 from django.utils import timezone
 
-from accounts.models import UserProfile
 from library.models import Book
 from reading.models import ReadingProgress, WorkKind
 
-from .lifecycle import MIN_GAP, last_lifecycle_sent_at
 from .models import (
     EmailKind,
     EmailMessage,
@@ -43,6 +41,7 @@ from .models import (
 from .recipient import verified_email
 from .rendering import email_language, render_series_nudge
 from .sending import deliver
+from .sweeps import blocked_by_min_gap
 
 #: The lifecycle_step recorded on the message (groups the metric); the per-volume
 #: idempotency discriminator is ``finish_series:<next-slug>``.
@@ -182,28 +181,12 @@ def send_due(profile) -> EmailMessage | None:
     subscription, _ = EmailSubscription.objects.get_or_create(profile=profile)
     if not subscription.wants(EmailKind.LIFECYCLE, FINISH_SERIES_STEP):
         return None
-    now = timezone.now()
-    last_sent = last_lifecycle_sent_at(profile)
-    if last_sent is not None and now - last_sent < MIN_GAP:
+    if blocked_by_min_gap(profile, timezone.now()):
         return None
     pick = next_series_volume(profile)
     if pick is None:
         return None
     return _send(profile, subscription, *pick)
-
-
-def candidate_profiles(cutoff):
-    """Readers who finished a book on/after ``cutoff`` — the only ones who could
-    have a fresh series to continue. Idempotency keeps a nudge from repeating, so
-    the window only bounds the scan; it doesn't decide who has been nudged."""
-    finisher_ids = (
-        ReadingProgress.objects.filter(
-            kind=WorkKind.BOOK, finished_at__isnull=False, finished_at__gte=cutoff
-        )
-        .values_list("profile_id", flat=True)
-        .distinct()
-    )
-    return UserProfile.objects.filter(id__in=finisher_ids).order_by("id")
 
 
 def lookback_cutoff():

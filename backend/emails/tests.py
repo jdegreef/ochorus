@@ -34,6 +34,8 @@ from .lifecycle import (
     welcome_key,
 )
 from .management.commands.send_lifecycle_emails import _parse_cutoff
+from .milestones import MILESTONES, due_milestone, finished_book_count
+from .milestones import send_due as send_milestone_due
 from .models import (
     EmailEvent,
     EmailKind,
@@ -43,11 +45,11 @@ from .models import (
     SendStatus,
 )
 from .recipient import verified_email as resolve_recipient_email
-from .rendering import render_series_nudge, render_welcome
-from .series_nudge import candidate_profiles as series_candidate_profiles
+from .rendering import render_milestone, render_series_nudge, render_welcome
 from .series_nudge import next_series_volume
 from .series_nudge import send_due as send_series_due
 from .streams import STREAM_KEYS
+from .sweeps import recent_book_finishers as series_candidate_profiles
 
 User = get_user_model()
 
@@ -1328,3 +1330,119 @@ class SeriesStreamRoutingTests(TestCase):
         self.sub.stream_prefs = {"onboarding": False}
         self.assertFalse(self.sub.wants(EmailKind.LIFECYCLE))
         self.assertTrue(self.sub.wants(EmailKind.LIFECYCLE, "finish_series"))
+
+
+def _finish_n_books(profile, n, when=None):
+    """Create ``n`` finished book-progress rows for a profile."""
+    for i in range(n):
+        ReadingProgress.objects.create(
+            profile=profile,
+            kind=WorkKind.BOOK,
+            book_slug=f"bk-{i}",
+            language="en",
+            finished_at=when or timezone.now(),
+        )
+
+
+class MilestoneDueTests(TestCase):
+    def setUp(self):
+        self.profile = _make_profile()
+
+    def test_none_below_first_milestone(self):
+        _finish_n_books(self.profile, 2)  # first milestone is 3
+        self.assertIsNone(due_milestone(self.profile))
+
+    def test_exact_milestone(self):
+        _finish_n_books(self.profile, 3)
+        self.assertEqual(due_milestone(self.profile), 3)
+
+    def test_highest_reached_not_backfilled(self):
+        # Jumping straight to 6 books celebrates 5, never 3 afterwards.
+        _finish_n_books(self.profile, 6)
+        self.assertEqual(due_milestone(self.profile), 5)
+
+    def test_count_counts_only_finished_books(self):
+        _finish_n_books(self.profile, 3)
+        # An unfinished book and a finished sermon don't count toward book count.
+        ReadingProgress.objects.create(
+            profile=self.profile, kind=WorkKind.BOOK, book_slug="wip", language="en"
+        )
+        ReadingProgress.objects.create(
+            profile=self.profile, kind=WorkKind.SERMON, book_slug="serm",
+            language="en", finished_at=timezone.now(),
+        )
+        self.assertEqual(finished_book_count(self.profile), 3)
+        self.assertEqual(due_milestone(self.profile), 3)
+
+    def test_already_celebrated_milestone_is_not_repeated(self):
+        _finish_n_books(self.profile, 5)
+        EmailMessage.objects.create(
+            recipient=self.profile,
+            to_email="x@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step="milestone",
+            idempotency_key=f"lifecycle:milestone:5:{self.profile.pk}",
+            status=SendStatus.SENT,
+            sent_at=timezone.now(),
+        )
+        self.assertIsNone(due_milestone(self.profile))
+
+    def test_all_defined_milestones_are_ascending(self):
+        self.assertEqual(list(MILESTONES), sorted(MILESTONES))
+
+
+@SENDING
+class MilestoneSendTests(TestCase):
+    def setUp(self):
+        self.profile = _make_profile()
+        _finish_n_books(self.profile, 5)
+
+    @mock.patch("emails.sending.send_email", return_value="rid-m")
+    def test_sends_once_and_is_idempotent(self, send):
+        message = send_milestone_due(self.profile)
+        self.assertIsNotNone(message)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(message.lifecycle_step, "milestone")
+        self.assertIn("milestone:5", message.idempotency_key)
+        self.assertIn("5", message.subject)
+        # Same run the min-gap blocks a repeat; even past the gap, the milestone
+        # is already celebrated, so nothing more sends.
+        self.assertIsNone(send_milestone_due(self.profile))
+        EmailMessage.objects.filter(pk=message.pk).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        self.assertIsNone(send_milestone_due(self.profile))
+        self.assertEqual(send.call_count, 1)
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_opting_out_of_milestones_stream_blocks_it(self, send):
+        sub = EmailSubscription.objects.create(
+            profile=self.profile, stream_prefs={"milestones": False}
+        )
+        self.assertIsNone(send_milestone_due(self.profile))
+        send.assert_not_called()
+        self.assertTrue(sub.wants(EmailKind.LIFECYCLE))  # onboarding unaffected
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_below_milestone_sends_nothing(self, send):
+        other = _make_profile(email="other@example.com")
+        _finish_n_books(other, 1)
+        self.assertIsNone(send_milestone_due(other))
+        send.assert_not_called()
+
+
+@SENDING
+class MilestoneRenderTests(TestCase):
+    def test_fills_count_and_localizes(self):
+        profile = _make_profile(locale="en", name="Lee")
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_milestone(profile, sub, milestone=10)
+        self.assertIn("10 books", rendered.html)
+        self.assertIn("10", rendered.subject)
+        self.assertIn("Lee", rendered.html)
+
+    def test_localizes_to_reader_language(self):
+        profile = _make_profile(locale="pt", name="Ana")
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_milestone(profile, sub, milestone=5)
+        self.assertIn("livros", rendered.subject.lower())

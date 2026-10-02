@@ -40,6 +40,12 @@ STREAMS: list[dict] = [
         "legacy": None,
     },
     {
+        "key": "milestones",
+        "label": "Reading milestones",
+        "description": "A small celebration when you reach a milestone — 5 books, 10, and on.",
+        "legacy": None,
+    },
+    {
         "key": "new_in_language",
         "label": "New in your language",
         "description": "When a book you’d want is newly translated.",
@@ -62,6 +68,7 @@ LEGACY_FIELD: dict[str, str | None] = {s["key"]: s["legacy"] for s in STREAMS}
 #: series pokes (or the reverse). ``stream_for`` reads this; see emails/models.py.
 STEP_STREAM: dict[str, str] = {
     "finish_series": "series",
+    "milestone": "milestones",
 }
 
 def require_stream(stream: str) -> str:
