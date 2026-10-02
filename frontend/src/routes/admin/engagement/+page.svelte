@@ -5,6 +5,7 @@
 	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
+	import ReachSpark from '$lib/components/ReachSpark.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
@@ -260,6 +261,7 @@
 										<th class="py-2 pe-3 text-start font-semibold">Title</th>
 										<th class="px-3 py-2 text-end font-semibold">Readers</th>
 										<th class="px-3 py-2 text-end font-semibold">Finished</th>
+										{#if topTab === 'book'}<th class="px-3 py-2 text-start font-semibold">Where readers stop</th>{/if}
 										<th class="px-3 py-2 text-end font-semibold">Hearts</th>
 										<th class="ps-3 py-2 text-end font-semibold">Highlighted</th>
 									</tr>
@@ -267,7 +269,7 @@
 								<tbody>
 									{#each topRows as b (`${b.kind}:${b.slug}`)}
 										<tr class="border-t border-border">
-											<td class="max-w-0 py-2 pe-3">
+											<td class="min-w-48 max-w-0 py-2 pe-3">
 												<a href={workHref(b)} class="block truncate text-body text-text hover:text-accent">
 													{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
 												</a>
@@ -281,6 +283,18 @@
 													<span class="w-9 shrink-0 text-end text-micro text-muted tabular-nums">{finishedPct(b)}%</span>
 												</div>
 											</td>
+											{#if topTab === 'book'}
+												<td class="px-3 py-2">
+													{#if b.reach}
+														<!-- The full chart, with chapter lengths and flags, is on the book's admin page. -->
+														<a href="/admin/books/{encodeURIComponent(b.slug)}" class="block w-fit hover:opacity-80">
+															<ReachSpark reach={b.reach} />
+														</a>
+													{:else}
+														<span class="text-micro text-muted">—</span>
+													{/if}
+												</td>
+											{/if}
 											<td class="px-3 py-2 text-end tabular-nums">{fmt(b.hearts)}</td>
 											<td class="ps-3 py-2 text-end tabular-nums">{fmt(b.highlighters)}</td>
 										</tr>

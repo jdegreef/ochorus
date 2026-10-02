@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
+from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
 from ..models import (
@@ -205,8 +206,12 @@ class AdminEngagementView(APIView):
         kind). Hearts and highlighters are two more grouped lookups scoped to the
         leaderboard's own slugs, so a tab is a bounded handful of queries however
         large the library grows.
+
+        Books also carry ``reach``: where their readers stop, chapter by
+        chapter (``library.dropoff``), for the row's sparkline. Other kinds are
+        one document, with no chapters to stop between.
         """
-        from reading.models import ChapterMarks, Favorite, ReadingProgress
+        from reading.models import ChapterMarks, Favorite, ReadingProgress, WorkKind
 
         top = list(
             ReadingProgress.objects.filter(kind=work_kind)
@@ -233,6 +238,7 @@ class AdminEngagementView(APIView):
             .values("book_slug")
             .annotate(n=Count("profile", distinct=True))
         }
+        curves = dropoff.work_curves(slugs) if work_kind == WorkKind.BOOK else {}
         meta = self._work_meta
         return [
             self._row(
@@ -243,6 +249,7 @@ class AdminEngagementView(APIView):
                 finishers=r["finishers"],
                 hearts=hearts.get(r["book_slug"], 0),
                 highlighters=highlighters.get(r["book_slug"], 0),
+                reach=curves.get(r["book_slug"]),
             )
             for r in top
         ]

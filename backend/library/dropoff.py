@@ -98,15 +98,15 @@ def steepest_drop(curve: list[dict], *, min_readers: int = 1) -> dict | None:
     }
 
 
-def progress_rows(*, slug: str | None = None, language: str | None = None):
+def progress_rows(*, slugs=None, language: str | None = None):
     """Book progress rows, grouped by edition ``(slug, language)``, in the
-    shape ``reach`` reads. One query, narrowed to one work and/or one language
-    when given."""
+    shape ``reach`` reads. One query, narrowed to some works and/or one
+    language when given."""
     from reading.models import ReadingProgress, WorkKind
 
     qs = ReadingProgress.objects.filter(kind=WorkKind.BOOK).order_by()
-    if slug:
-        qs = qs.filter(book_slug=slug)
+    if slugs is not None:
+        qs = qs.filter(book_slug__in=list(slugs))
     if language:
         qs = qs.filter(language=language)
     out: dict[tuple[str, str], list[dict]] = defaultdict(list)
@@ -114,4 +114,44 @@ def progress_rows(*, slug: str | None = None, language: str | None = None):
         "book_slug", "language", "furthest_order", "chapter_order", "finished_at", "updated_at"
     ):
         out[(row["book_slug"], row["language"])].append(row)
+    return out
+
+
+def work_curves(slugs) -> dict[str, dict]:
+    """One curve per book work, for a list of works side by side (the
+    engagement leaderboard): ``{slug: {language, chapters, reached,
+    steepest}}``, where ``reached`` is the readers reaching each of
+    ``chapters`` (the edition's chapter orders).
+
+    A work's editions aren't pooled: chapter N of one translation needn't be
+    chapter N of another. Each work shows its most-read edition (ties to
+    English, then by code), which is where its readers mostly are. Two
+    queries however many works."""
+    from .models import Chapter
+
+    by_work: dict[str, dict[str, list[dict]]] = defaultdict(dict)
+    for (slug, lang), rows in progress_rows(slugs=slugs).items():
+        by_work[slug][lang] = rows
+    chosen = {
+        slug: min(eds, key=lambda lang: (-len(eds[lang]), lang != "en", lang))
+        for slug, eds in by_work.items()
+    }
+    orders: dict[tuple[str, str], list[int]] = defaultdict(list)
+    for slug, lang, order in (
+        Chapter.objects.filter(book__slug__in=list(chosen))
+        .order_by("order")
+        .values_list("book__slug", "book__language", "order")
+    ):
+        if chosen[slug] == lang:
+            orders[(slug, lang)].append(order)
+    out = {}
+    for slug, lang in chosen.items():
+        curve = reach(by_work[slug][lang], orders.get((slug, lang), []))
+        if curve:
+            out[slug] = {
+                "language": lang,
+                "chapters": [p["chapter"] for p in curve],
+                "reached": [p["reached"] for p in curve],
+                "steepest": steepest_drop(curve, min_readers=MIN_READERS_BOOK),
+            }
     return out

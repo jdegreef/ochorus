@@ -1113,6 +1113,18 @@ export interface EngagementTopRow {
 	hearts: number;
 	/** Distinct readers who highlighted the work. */
 	highlighters: number;
+	/** Books only: where readers stop in the work's most-read edition
+	 *  (library/dropoff.py `work_curves`); null for other kinds, or a book
+	 *  with no chapters. Optional for an API from before it existed. */
+	reach?: EngagementReach | null;
+}
+
+export interface EngagementReach {
+	language: string;
+	/** The edition's chapter orders, and the readers reaching each. */
+	chapters: number[];
+	reached: number[];
+	steepest: AdminSteepestDrop | null;
 }
 
 /** The leaderboard split by kind so each tab holds its own top works. */

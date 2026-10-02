@@ -138,6 +138,23 @@ class DropOffViewTests(TestCase):
         self.assertEqual([d["slug"] for d in res.data["drops"]], ["long-middle", "plain"])
         self.assertEqual({d["language"] for d in res.data["drops"]}, {"en"})
 
+    def test_a_work_shows_its_most_read_edition(self):
+        es = Book.objects.create(
+            author=Author.objects.get(slug="watson"), slug="plain", language="es", title="Llano"
+        )
+        Chapter.objects.create(book=es, order=1, title="Uno", body_html="<p>Gracia.</p>")
+        moved = ReadingProgress.objects.filter(book_slug="plain", furthest_order=1).first()
+        ReadingProgress.objects.filter(pk=moved.pk).update(language="es")
+        curves = dropoff.work_curves(["plain", "long-middle"])
+        self.assertEqual(curves["plain"]["language"], "en")  # 5 en readers, 1 es
+        self.assertEqual(curves["plain"]["reached"], [5, 1, 0])
+        self.assertEqual(curves["long-middle"]["steepest"]["chapter"], 2)
+
+    def test_the_engagement_leaderboard_carries_book_curves(self):
+        top = APIClient().get("/api/admin/engagement/").data["top_content"]
+        books = {r["slug"]: r for r in top["book"]}
+        self.assertEqual(books["long-middle"]["reach"]["reached"], [6, 6, 2])
+
     def test_a_group_under_the_minimum_is_not_listed(self):
         ReadingProgress.objects.filter(book_slug="plain", furthest_order=2).delete()
         ReadingProgress.objects.filter(book_slug="plain").first().delete()
