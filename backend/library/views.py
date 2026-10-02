@@ -1719,6 +1719,138 @@ class ScriptureGraphView(APIView):
         return Response(data)
 
 
+class ScriptureBookView(APIView):
+    """One book of the Bible across the library — the ``/scripture/<book>/`` page.
+
+    The hub lists a book's chapter pages; this answers the questions only the
+    server can: how many library passages treat the book at all (distinct
+    citing chapters, across every chapter of it, not a sum of per-chapter
+    counts, which would count a passage citing Romans 5 and 8 twice), which
+    library books return to it most, and the ASV text of its most-quoted
+    verses.
+
+    It exists only where at least one of the book's chapters has earned a page
+    (``current_pages``), so it is never thinner than the pages it links to and
+    the route's entries, the sitemap and this view agree on what exists. 404
+    otherwise, like the chapter and verse pages.
+    """
+
+    #: Library books named as the ones that quote this book most.
+    TOP_BOOKS = 6
+    #: Verse pages surfaced with their text.
+    TOP_VERSES = 8
+
+    def get(self, request, book):
+        from .models import ChapterCitation
+        from .scripture import VERSION_LABEL
+        from .scripture_graph import (
+            _SPAN_GUARD,
+            book_from_slug,
+            current_pages,
+            english_chapters,
+            verse_text,
+        )
+        from .serializers import _edition_base_slug
+
+        target = book_from_slug(book)
+        if target is None:
+            raise Http404("No such book of the Bible.")
+        pages = current_pages()
+        mine = [p for p in pages if p["book"] == book]
+        chapters = [
+            {"chapter": p["chapter"], "citing_count": p["citing_count"]}
+            for p in mine
+            if p["verse"] is None
+        ]
+        if not chapters:
+            raise Http404("No chapter of this book has a page.")
+
+        # Every citation overlapping the book: verse ids are book * 1,000,000 +
+        # chapter * 1,000 + verse. A span is clamped the way `bucket` clamps it
+        # (to _SPAN_GUARD ids past its start), so a mis-parsed citation running
+        # from Acts to Revelation can't vote for every book in between here when
+        # it votes for none of their chapter pages.
+        lo = target.value * 1_000_000
+        rows = (
+            ChapterCitation.objects.filter(
+                start_verse_id__lte=lo + 999_999,
+                start_verse_id__gte=lo - _SPAN_GUARD,
+                end_verse_id__gte=lo,
+                chapter__in=english_chapters().values("pk"),
+            )
+            .values(
+                "chapter_id",
+                "chapter__book__slug",
+                "chapter__book__title",
+                "chapter__book__author__name",
+                "chapter__book__author__slug",
+            )
+            .distinct()
+        )
+        # One query, folded here. A work's "(For Teens)" / "(For Children)"
+        # editions are separate Book rows quoting the same verses, so they are
+        # one work for this ranking (the slug convention, `_edition_base_slug`),
+        # named by the full edition when it is among them.
+        citing: set[int] = set()
+        works: dict[str, dict] = {}
+        for r in rows:
+            citing.add(r["chapter_id"])
+            slug = r["chapter__book__slug"]
+            base = _edition_base_slug(slug)
+            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w["chapters"].add(r["chapter_id"])
+            if slug == base:
+                w["row"] = r
+        top_books = sorted(
+            works.values(),
+            key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
+        )[: self.TOP_BOOKS]
+
+        verses = sorted(
+            (p for p in mine if p["verse"] is not None),
+            key=lambda p: (-p["citing_count"], p["chapter"], p["verse"]),
+        )[: self.TOP_VERSES]
+
+        # Adjacent books that have a page, in canonical order: walk the Bible
+        # book by book, as the chapter pages walk it chapter by chapter.
+        books = []
+        for p in pages:
+            if p["verse"] is None and (not books or books[-1]["book"] != p["book"]):
+                books.append({"book": p["book"], "book_title": p["book_title"]})
+        i = next(n for n, b in enumerate(books) if b["book"] == book)
+
+        return Response(
+            {
+                "book": {"slug": book, "title": target.title, "order": target.value},
+                "version": VERSION_LABEL,
+                "citing_count": len(citing),
+                "books_count": len(works),
+                "chapters": chapters,
+                "verses": [
+                    {
+                        "chapter": p["chapter"],
+                        "verse": p["verse"],
+                        "citing_count": p["citing_count"],
+                        "text": verse_text(lo + p["chapter"] * 1000 + p["verse"]),
+                    }
+                    for p in verses
+                ],
+                "top_books": [
+                    {
+                        "slug": w["row"]["chapter__book__slug"],
+                        "title": w["row"]["chapter__book__title"],
+                        "author_name": w["row"]["chapter__book__author__name"],
+                        "author_slug": w["row"]["chapter__book__author__slug"],
+                        "citing_count": len(w["chapters"]),
+                    }
+                    for w in top_books
+                ],
+                "prev": books[i - 1] if i > 0 else None,
+                "next": books[i + 1] if i + 1 < len(books) else None,
+            }
+        )
+
+
 def _scripture_floor(verse):
     from .scripture_graph import CHAPTER_FLOOR, VERSE_FLOOR
 

@@ -1424,6 +1424,38 @@ export interface ScriptureNeighbour {
 export const listScripturePages = (f?: Fetch) =>
 	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/', {}, f);
 
+/** One Bible book across the library — the /scripture/<book>/ page. */
+export interface ScriptureBookPage {
+	book: { slug: string; title: string; order: number };
+	version: string;
+	/** Distinct library passages (chapters) citing any part of the book; null
+	 *  when the page was built from the page list (see bookFromPageList). */
+	citing_count: number | null;
+	/** Distinct library works those passages come from (null: as above). */
+	books_count: number | null;
+	/** The book's chapter pages, in order, each with its own citing count. */
+	chapters: { chapter: number; citing_count: number }[];
+	/** Its most-quoted verse pages, with their ASV text. */
+	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
+	/** The library books that return to it most. */
+	top_books: {
+		slug: string;
+		title: string;
+		author_name: string;
+		author_slug: string;
+		citing_count: number;
+	}[];
+	/** Adjacent books that have a page, in canonical order. */
+	prev: { book: string; book_title: string } | null;
+	next: { book: string; book_title: string } | null;
+}
+
+/** The /scripture/<book>/ page: one Bible book across the library. */
+export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
+
+export const getScriptureBook = (book: string, f?: Fetch) =>
+	apiFetch<ScriptureBookPage>(`/api/library/scripture/${book}/`, {}, f);
+
 export const getScripturePage = (book: string, chapter: number, verse?: number, f?: Fetch) =>
 	apiFetch<ScripturePage>(
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : ''),
