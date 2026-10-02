@@ -6,7 +6,6 @@ from __future__ import annotations
 import io
 import json
 import time
-import unittest
 from datetime import timedelta
 from unittest import mock
 
@@ -218,11 +217,6 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         self.assertEqual(b.name, "renamed")
         self.assertEqual(b.status, BroadcastStatus.SENDING)
 
-    @unittest.skip(
-        "Fails on most Postgres CI runs since 2026-10-02 ('sending' != SENT); "
-        "skipped to unblock main — tracked by 'Fix flaky "
-        "test_cron_starts_a_due_schedule on Postgres CI'. Un-skip with the fix."
-    )
     def test_cron_starts_a_due_schedule(self):
         b = _broadcast(
             status=BroadcastStatus.SCHEDULED, scheduled_at=timezone.now() - timedelta(minutes=1)
