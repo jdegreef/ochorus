@@ -221,11 +221,24 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         b = _broadcast(
             status=BroadcastStatus.SCHEDULED, scheduled_at=timezone.now() - timedelta(minutes=1)
         )
-        with mock.patch("emails.sending.send_email", return_value="rid"):
-            call_command("send_due_broadcasts", stdout=io.StringIO())
+        out = io.StringIO()
+        from . import audience as aud
+        with mock.patch("emails.sending.send_email", return_value="rid"), mock.patch.object(
+            broadcasts_mod, "_claim", wraps=broadcasts_mod._claim
+        ) as claim, mock.patch.object(
+            broadcasts_mod, "run_send", wraps=broadcasts_mod.run_send
+        ):
+            call_command("send_due_broadcasts", stdout=out)
         b.refresh_from_db()
-        self.assertEqual(b.status, BroadcastStatus.SENT)
-        self.assertEqual(len(self._sent_to()), 5)
+        diag = (
+            f"out={out.getvalue()!r} run_send={rs.call_args_list} claims={claim.call_count} "
+            f"lease={b.send_lease_until} cursor={b.send_cursor} tally={b.send_tally} "
+            f"profiles={[p.pk for p in self.profiles]} "
+            f"aud={list(aud.resolve(b.audience).order_by('pk').values_list('pk', flat=True))} "
+            f"all_b={list(Broadcast.objects.values_list('pk', 'status', 'send_lease_until'))}"
+        )
+        self.assertEqual(b.status, BroadcastStatus.SENT, diag)
+        self.assertEqual(len(self._sent_to()), 5, diag)
 
     def test_a_due_schedule_that_now_fails_its_checks_goes_back_to_draft(self):
         b = _broadcast(
