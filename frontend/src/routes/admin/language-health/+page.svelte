@@ -18,6 +18,7 @@
 		nextActions,
 		plural,
 		pointsBreakdown,
+		shelfKinds,
 		type CoverageShelf
 	} from '$lib/languageHealth';
 
@@ -61,8 +62,7 @@
 
 	const coverageHint = (sourceBooks: number, shelf?: CoverageShelf) =>
 		shelf
-			? `, blending ${(['books', 'sermons', 'bios', 'plans'] as const)
-					.filter((k) => shelf.source[k] > 0)
+			? `, blending ${shelfKinds(shelf)
 					.map((k) => `${k} ${Math.round(shelf.mix[k] * 100)}% (${fmt(shelf.source[k])})`)
 					.join(', ')}`
 			: ` (${fmt(sourceBooks)} books)`;
@@ -83,6 +83,7 @@
 
 	<AdminGate resource={res} errorTitle="Couldn't load language health" loadingText="Loading…" panelClass="mt-6">
 		{#snippet children(data)}
+			{@const shelf = shelfOf(data)}
 			{@const sources = data.languages.filter((l) => l.is_source)}
 			{@const ranked = data.languages.filter((l) => !l.is_source)}
 			<header class="mb-6 mt-3">
@@ -99,7 +100,7 @@
 							<li>
 								<span class="font-semibold text-text">{COMPONENTS[k].label}</span>
 								({Math.round(data.weights[k] * 100)} pts): {COMPONENTS[k].hint}{k === 'coverage'
-									? coverageHint(data.source_published_books, shelfOf(data))
+									? coverageHint(data.source_published_books, shelf)
 									: k === 'engagement'
 										? engagementHint(data.engagement_target, data.reader_window_days)
 										: ''}.
@@ -130,7 +131,7 @@
 				{#each ranked as l, i (l.code)}
 					{@const b = healthBand(l.health)}
 					{@const breakdown = pointsBreakdown(l.scores, data.weights)}
-					{@const actions = nextActions(l, data.source_published_books, data.weights, shelfOf(data))}
+					{@const actions = nextActions(l, data.source_published_books, data.weights, shelf)}
 					<li class="rounded-card border border-border bg-surface p-4">
 						<div class="flex items-start justify-between gap-4">
 							<div class="min-w-0">
@@ -180,7 +181,7 @@
 							style="--weighted: {breakdown.map((p) => `${p.max}fr`).join(' ')}"
 						>
 							{#each breakdown as p (p.key)}
-								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target, shelfOf(data))}
+								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target, shelf)}
 								<div class="min-w-0">
 									<ProgressBar
 										percent={p.max ? (p.earned / p.max) * 100 : 0}

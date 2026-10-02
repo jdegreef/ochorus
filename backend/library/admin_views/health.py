@@ -75,7 +75,9 @@ class AdminLanguageHealthView(APIView):
         source = next((lang for lang in languages if lang.is_source), None)
         source_published = published.get(source.code, {}).get("total", 0) if source else 0
         source_shelf = (
-            self._shelf(reports[source.code], source_published)
+            self._shelf(
+                {c.key: c for c in reports[source.code].checks}, source_published
+            )
             if source
             else dict.fromkeys(_COVERAGE_MIX, 0)
         )
@@ -93,7 +95,7 @@ class AdminLanguageHealthView(APIView):
                 "coverage": (
                     1.0
                     if lang.is_source
-                    else self._coverage(self._shelf(report, pub["total"]), source_shelf)
+                    else self._coverage(self._shelf(counts, pub["total"]), source_shelf)
                 ),
                 "review": (
                     1.0
@@ -154,11 +156,11 @@ class AdminLanguageHealthView(APIView):
     # --- component scores ------------------------------------------------------
 
     @classmethod
-    def _shelf(cls, report: readiness.Report, published_books: int) -> dict[str, int]:
-        """A language's count of each kind in ``_COVERAGE_MIX``. Books are the
-        published count the rest of the view uses; the others come from the
-        readiness report, which already counts them for every language."""
-        counts = {c.key: c for c in report.checks}
+    def _shelf(cls, counts: dict, published_books: int) -> dict[str, int]:
+        """A language's count of each kind in ``_COVERAGE_MIX``, from its readiness
+        checks by key. Books are the published count the rest of the view uses;
+        the others come from the readiness report, which counts them for every
+        language."""
         shelf = {k: cls._current(counts.get(k)) for k in _COVERAGE_MIX}
         shelf["books"] = published_books
         return shelf

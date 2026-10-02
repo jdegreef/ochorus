@@ -289,12 +289,15 @@ def _glossary_check(lang: Language) -> Check:
 
 
 def _bios_present(code: str, is_source: bool) -> int:
+    # A bio counts if either the short or the long form exists — they are
+    # written and translated in separate passes — and never for an imprint,
+    # which has no biography. The source and its translations are counted the
+    # same way so language health can compare them as a share.
     if is_source:
-        return Author.objects.exclude(bio="").exclude(is_imprint=True).count()
-    # A bio counts if either the short or the long form exists in this language —
-    # they are translated in separate passes.
+        return Author.objects.exclude(bio="", bio_html="").exclude(is_imprint=True).count()
     return (
         AuthorTranslation.objects.filter(language=code)
+        .exclude(author__is_imprint=True)
         .exclude(bio="", bio_html="")
         .values("author_id")
         .distinct()

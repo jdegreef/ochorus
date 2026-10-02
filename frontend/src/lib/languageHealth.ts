@@ -77,12 +77,19 @@ export interface CoverageShelf {
 
 const SHELF_KINDS: ShelfKind[] = ['books', 'sermons', 'bios', 'plans'];
 
+const SHELF_NOUN: Record<ShelfKind, string> = {
+	books: 'book',
+	sermons: 'sermon',
+	bios: 'bio',
+	plans: 'plan'
+};
+
 const have = (l: AdminLanguageHealth, k: ShelfKind) =>
 	k === 'books' ? l.content.published_books : l.content[k];
 
 /** The kinds the source shelf actually has; the backend leaves the rest out of
  *  the mix and renormalises, so the page does the same. */
-const shelfKinds = (shelf: CoverageShelf) => SHELF_KINDS.filter((k) => shelf.source[k] > 0);
+export const shelfKinds = (shelf: CoverageShelf) => SHELF_KINDS.filter((k) => shelf.source[k] > 0);
 
 /**
  * The raw count behind a signal's bar, so a percentage never hides the size of
@@ -101,6 +108,7 @@ export function countLine(
 			return l.readiness.ready ? 'all checks met' : `${nf.format(l.readiness.blocking.length)} blocking`;
 		case 'coverage':
 			if (!shelf) return `${nf.format(l.content.published_books)} of ${nf.format(sourceBooks)} books`;
+			if (!shelfKinds(shelf).length) return 'no English shelf to compare';
 			return shelfKinds(shelf)
 				.map((k) => `${k} ${Math.round(100 * Math.min(1, have(l, k) / shelf.source[k]))}%`)
 				.join(' · ');
@@ -122,12 +130,13 @@ export function countLine(
 export type Blocker = { key: string; label: string };
 
 /**
- * A readiness report's blocking checks by their human names ("Interface
- * strings", not "ui"). The report lists `blocking` as keys, but every check in
+ * Readiness check keys by their human names ("Interface strings", not "ui").
+ * The report lists `blocking` and `unforceable` as keys, but every check in
  * `checks` already carries its label, so no second copy of the names is kept.
+ * A key the report doesn't list shows as itself.
  */
-export const blockingLabels = (r: Pick<AdminLanguageReadiness, 'blocking' | 'checks'>): string[] =>
-	r.blocking.map((key) => r.checks.find((c) => c.key === key)?.label ?? key);
+export const checkLabels = (r: Pick<AdminLanguageReadiness, 'checks'>, keys: string[]): string[] =>
+	keys.map((key) => r.checks.find((c) => c.key === key)?.label ?? key);
 
 /**
  * The language's blocking checks, labelled. The API sends `{key, label}`; an
@@ -169,22 +178,29 @@ export function nextActions(
 
 	if (shelf) {
 		const kinds = shelfKinds(shelf);
-		const missing = kinds
-			.map((k) => [k, Math.max(0, shelf.source[k] - have(l, k))] as const)
-			.filter(([, n]) => n > 0)
-			.map(([k, n]) => `${nf.format(n)} ${k}`);
-		// One book's share of the coverage points, after the renormalisation.
 		const mixTotal = kinds.reduce((s, k) => s + shelf.mix[k], 0);
+		const gaps = kinds
+			.map((k) => ({ k, n: Math.max(0, shelf.source[k] - have(l, k)) }))
+			.filter((g) => g.n > 0);
+		// Send the admin to the kind whose gap costs the most points.
+		const lostOn = (g: { k: ShelfKind; n: number }) => (shelf.mix[g.k] * g.n) / shelf.source[g.k];
+		const worst = gaps.reduce<(typeof gaps)[number] | undefined>(
+			(a, g) => (!a || lostOn(g) > lostOn(a) ? g : a),
+			undefined
+		);
+		const missingBooks = gaps.find((g) => g.k === 'books')?.n ?? 0;
 		out.push({
 			key: 'coverage',
 			gain: pts.coverage.lost,
-			label: `Translate the missing content (${missing.join(', ')})`,
+			label: `Translate the missing content (${gaps.map((g) => plural(g.n, SHELF_NOUN[g.k], g.k)).join(', ')})`,
+			// One book's share of the coverage points, after renormalising; none
+			// once every book is here, since another one would earn nothing.
 			perUnit:
-				shelf.source.books && mixTotal
+				missingBooks && mixTotal
 					? (pts.coverage.max * shelf.mix.books) / mixTotal / shelf.source.books
 					: null,
-			href: `/admin/languages/${code}#sec-books`,
-			cta: 'Open content'
+			href: `/admin/languages/${code}#sec-${worst?.k ?? 'books'}`,
+			cta: `Open ${worst?.k ?? 'books'}`
 		});
 	} else {
 		const missing = Math.max(0, sourceBooks - l.content.published_books);

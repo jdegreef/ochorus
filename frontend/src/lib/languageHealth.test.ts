@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
 	blockers,
-	blockingLabels,
+	checkLabels,
 	countLine,
 	healthBand,
 	nextActions,
@@ -146,6 +146,25 @@ describe('coverage across content kinds', () => {
 		const cov = nextActions(l, 179, WEIGHTS, SHELF).find((a) => a.key === 'coverage')!;
 		expect(cov.label).toBe('Translate the missing content (126 books, 141 sermons, 38 bios, 25 plans)');
 		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 179);
+		// Books cost the most points, so the button opens them.
+		expect(cov.href).toBe('/admin/languages/fr#sec-books');
+	});
+
+	it('uses the singular for one missing item, and points at the costliest gap', () => {
+		const l = french({
+			content: { ...french().content, published_books: 179, sermons: 197, bios: 60, plans: 35 },
+			scores: { ...french().scores, coverage: 0.93 }
+		});
+		const cov = nextActions(l, 179, WEIGHTS, SHELF).find((a) => a.key === 'coverage')!;
+		expect(cov.label).toBe('Translate the missing content (1 sermon, 39 bios, 1 plan)');
+		expect(cov.href).toBe('/admin/languages/fr#sec-bios');
+		// Every book is here, so another book is worth nothing.
+		expect(cov.perUnit).toBeNull();
+	});
+
+	it('says so when there is no English shelf to compare against', () => {
+		const empty = { ...SHELF, source: { books: 0, sermons: 0, bios: 0, plans: 0 } };
+		expect(countLine('coverage', french(), 0, 25, empty)).toBe('no English shelf to compare');
 	});
 
 	it('leaves out a kind the source shelf has none of', () => {
@@ -156,7 +175,7 @@ describe('coverage across content kinds', () => {
 	});
 });
 
-describe('blockingLabels', () => {
+describe('checkLabels', () => {
 	const check = (key: string, label: string) => ({
 		key,
 		label,
@@ -171,10 +190,10 @@ describe('blockingLabels', () => {
 			blocking: ['ui', 'bios'],
 			checks: [check('ui', 'Interface strings'), check('bios', 'Biographies'), check('books', 'Books')]
 		};
-		expect(blockingLabels(r)).toEqual(['Interface strings', 'Biographies']);
+		expect(checkLabels(r, r.blocking)).toEqual(['Interface strings', 'Biographies']);
 	});
 
 	it('falls back to the key for a check the report does not list', () => {
-		expect(blockingLabels({ blocking: ['new-check'], checks: [] })).toEqual(['new-check']);
+		expect(checkLabels({ checks: [] }, ['new-check'])).toEqual(['new-check']);
 	});
 });

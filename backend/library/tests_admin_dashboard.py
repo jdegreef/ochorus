@@ -2012,6 +2012,20 @@ class AdminLanguageHealthTests(TestCase):
                 self.assertEqual(set(b), {"key", "label"})
                 self.assertTrue(b["label"])
 
+    def test_bios_are_counted_alike_in_the_source_and_its_translations(self):
+        # A long-form-only bio counts in English as it does in a translation, and
+        # an imprint's never counts in either.
+        writer = Author.objects.create(slug="eb", name="E. M. Bounds", bio_html="<p>x</p>")
+        imprint = Author.objects.create(
+            slug="oo", name="Ochorus Originals", bio="x", is_imprint=True
+        )
+        AuthorTranslation.objects.create(author=writer, language="es", bio_html="<p>x</p>")
+        AuthorTranslation.objects.create(author=imprint, language="es", bio="x")
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(data["source_shelf"]["bios"], 1)
+        self.assertEqual(es["content"]["bios"], 1)
+
     def test_engagement_with_no_readers_is_zero(self):
         # No reading data → engagement is zero for everyone (not a crash).
         for r in self._get()["languages"]:
