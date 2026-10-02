@@ -12,7 +12,6 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
-from ..corrections import translation_blocked
 from ..demand import (
     EDITION_MODELS,
     Work,
@@ -22,6 +21,7 @@ from ..demand import (
     searched_elsewhere,
 )
 from .analytics import _prefer_en
+from .jobs import translation_blocked
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)

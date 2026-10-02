@@ -18,7 +18,6 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
-from ..corrections import translation_blocked
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -35,6 +34,7 @@ from ..models import (
     TopicTranslation,
 )
 from ..views import _language_entry
+from .jobs import translation_blocked
 from .languages import language_settings
 
 

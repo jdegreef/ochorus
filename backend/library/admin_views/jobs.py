@@ -31,7 +31,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
-from ..corrections import translation_blocked
+from ..corrections import COPYRIGHT_BLOCKED_SLUGS
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -220,6 +220,15 @@ def _list_open_jobs() -> list[dict]:
             break
     return jobs
 
+
+
+def translation_blocked(job_type: str, slug: str) -> bool:
+    """Whether no translation may be made of ``(job_type, slug)``: a book under
+    copyright, whose translation would be a derivative of the protected English
+    edition. The one owner of that rule: this filer refuses such a job (451),
+    the coverage matrix locks its cells, and the demand list shows the work
+    without a queue button."""
+    return job_type == "book" and slug in COPYRIGHT_BLOCKED_SLUGS
 
 @requires(AdminCapability.TRANSLATE, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
 class AdminTranslationJobsView(AdminAudited, APIView):
