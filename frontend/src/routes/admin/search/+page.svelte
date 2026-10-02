@@ -5,6 +5,7 @@
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import {
+		type SearchHit,
 		type SearchType
 	} from '$lib/library-public';
 	import {
@@ -15,6 +16,7 @@
 		createAdminTranslationJob,
 		decideSearch,
 		getAdminSearchDecisions,
+		getAdminSearchPreview,
 		undoSearchDecision,
 		type SearchDecisionRow,
 		type SearchOutcome,
@@ -194,6 +196,12 @@
 	const openCount = $derived(
 		(data?.unanswered_by_language ?? []).reduce((n, l) => n + openQueries(l).length, 0)
 	);
+	// "Found, but not opened", minus what was pinned this session.
+	const unopened = $derived(
+		(data?.unopened_queries ?? []).filter(
+			(r) => !r.language || !decidedNow[gapKey(r.language, r.query)]
+		)
+	);
 	// The same grant the decide endpoint checks: the translation queue at "act"
 	// in that language. Contributors and reviewers see the list but can't change it.
 	const canDecide = (language: string) => auth.can('translate', 'act', language);
@@ -205,7 +213,7 @@
 		query: string,
 		outcome: SearchOutcome,
 		{ target = '', hide = true }: { target?: string; hide?: boolean } = {}
-	) {
+	): Promise<boolean> {
 		const k = gapKey(language, query);
 		deciding = { ...deciding, [k]: 'busy' };
 		try {
@@ -214,10 +222,109 @@
 			const { [k]: _, ...rest } = deciding;
 			deciding = rest;
 			void decisions.load();
+			return true;
 		} catch (e) {
 			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
 			deciding = { ...deciding, [k]: body?.detail ?? 'Could not save — try again.' };
+			return false;
 		}
+	}
+
+	// --- Synonym: "when readers search X, search Y instead" ---------------------
+	// One form open at a time. The preview runs the real (unlogged) search for the
+	// word, so the admin sees it finds something before readers are sent to it.
+	let synonymFor = $state('');
+	let synonymWord = $state('');
+	let synonymPreview = $state<{ loading: boolean; count?: number; top?: string; error?: string } | null>(
+		null
+	);
+	function openSynonym(language: string, query: string) {
+		previewSeq++;
+		synonymFor = gapKey(language, query);
+		synonymWord = '';
+		synonymPreview = null;
+	}
+	// Only the newest preview may land: one answered after the word changed
+	// would vouch for a word that was never previewed.
+	let previewSeq = 0;
+	async function previewSynonym(language: string) {
+		const word = synonymWord.trim();
+		if (word.length < 2) return;
+		const seq = ++previewSeq;
+		synonymPreview = { loading: true };
+		try {
+			const res = await getAdminSearchPreview(word, language);
+			if (seq !== previewSeq || word !== synonymWord.trim()) return;
+			synonymPreview = {
+				loading: false,
+				count: res.results.length,
+				top: res.results.slice(0, 2).map((h) => hitTitle(h)).join(' · ')
+			};
+		} catch {
+			if (seq === previewSeq) synonymPreview = { loading: false, error: 'Preview failed — try again.' };
+		}
+	}
+	async function saveSynonym(language: string, query: string) {
+		if (await decide(language, query, 'synonym', { target: synonymWord.trim() })) synonymFor = '';
+	}
+
+	// --- Pin: the page that should lead a query's results ----------------------
+	// The choices are what the query already finds (a pin can only name a page
+	// that exists), minus passages: a chapter is pinned by pinning its book.
+	type PinOption = { target: string; title: string; kind: string };
+	const pinOption = (h: SearchHit): PinOption | null => {
+		switch (h.type) {
+			case 'author':
+				return { target: `author:${h.author_slug}`, title: h.author_name, kind: 'Author' };
+			case 'book':
+				return { target: `book:${h.book_slug}`, title: h.book_title, kind: 'Book' };
+			case 'topic':
+				return { target: `topic:${h.topic_slug}`, title: h.topic_title, kind: 'Topic' };
+			case 'plan':
+				return { target: `plan:${h.plan_slug}`, title: h.plan_title, kind: 'Reading plan' };
+			case 'article':
+				return { target: `article:${h.article_slug}`, title: h.article_title, kind: 'Article' };
+			case 'sermon':
+				return { target: `sermon:${h.sermon_slug}`, title: h.sermon_title, kind: 'Sermon' };
+			default:
+				return null;
+		}
+	};
+	const hitTitle = (h: SearchHit) =>
+		pinOption(h)?.title ?? (h.type === 'chapter' ? h.chapter_title : h.type);
+	let pinFor = $state('');
+	let pinChoice = $state('');
+	let pinOptions = $state<{ loading: boolean; options: PinOption[]; error?: string }>({
+		loading: false,
+		options: []
+	});
+	// The newest picker only: a slow answer for one row must not fill another's.
+	let pinSeq = 0;
+	async function openPin(language: string, query: string) {
+		const seq = ++pinSeq;
+		pinFor = gapKey(language, query);
+		pinChoice = '';
+		pinOptions = { loading: true, options: [] };
+		try {
+			const res = await getAdminSearchPreview(query, language);
+			if (seq !== pinSeq) return;
+			const seen = new Set<string>();
+			const options: PinOption[] = [];
+			for (const h of res.results) {
+				const o = pinOption(h);
+				if (o && !seen.has(o.target)) {
+					seen.add(o.target);
+					options.push(o);
+				}
+			}
+			pinOptions = { loading: false, options: options.slice(0, 8) };
+		} catch {
+			if (seq === pinSeq)
+				pinOptions = { loading: false, options: [], error: 'Could not load the results — try again.' };
+		}
+	}
+	async function savePin(language: string, query: string) {
+		if (pinChoice && (await decide(language, query, 'pinned', { target: pinChoice }))) pinFor = '';
 	}
 
 	async function undo(d: SearchDecisionRow) {
@@ -389,8 +496,70 @@
 							zero-result query, because nobody complains about a search that returned
 							something.
 						</p>
-						{#if d.unopened_queries?.length}
-							{@render queryList(d.unopened_queries)}
+						{#if unopened.length}
+							{@const max = Math.max(1, ...unopened.map((r) => r.count))}
+							<ul class="space-y-2">
+								{#each unopened as r (r.query + (r.language ?? ''))}
+									{@const pk = r.language ? gapKey(r.language, r.query) : ''}
+									<li>
+										<div class="flex items-baseline justify-between gap-3">
+											<a
+												href="/search?q={encodeURIComponent(r.query)}"
+												class="min-w-0 truncate text-body text-text hover:text-accent"
+												>{r.query}{#if r.language}<span class="ms-1 text-small text-muted">{r.language}</span>{/if}</a
+											>
+											<span class="flex shrink-0 items-baseline gap-2">
+												<span class="text-small tabular-nums text-muted">{fmt(r.count)}</span>
+												{#if r.language && canDecide(r.language) && pinFor !== pk}
+													<button class="btn btn-sm btn-ghost" onclick={() => openPin(r.language!, r.query)}
+														>Pin a result…</button
+													>
+												{/if}
+											</span>
+										</div>
+										<div class="mt-1 h-1.5 overflow-hidden rounded-full bg-surface-2">
+											<div class="h-full rounded-full bg-accent-soft" style="width: {(r.count / max) * 100}%"></div>
+										</div>
+										{#if r.language && pinFor === pk}
+											<!-- The pin picker: what this query already finds, one to lead. -->
+											<div class="mt-2 rounded-card border border-border bg-surface-2 p-3">
+												<p class="mb-2 text-small text-muted">
+													Pick the page that should lead “{r.query}” for {r.language} readers, labelled
+													“Best match”.
+												</p>
+												{#if pinOptions.loading}
+													<p class="text-small text-muted">Loading results…</p>
+												{:else if pinOptions.error}
+													<p class="text-small text-warning">{pinOptions.error}</p>
+												{:else if !pinOptions.options.length}
+													<p class="text-small text-muted">Nothing pinnable: this query only finds passages.</p>
+												{:else}
+													<div class="space-y-1" role="radiogroup" aria-label="Best match">
+														{#each pinOptions.options as o (o.target)}
+															<label class="flex cursor-pointer items-baseline gap-2 text-small">
+																<input type="radio" name="pin-{pk}" value={o.target} bind:group={pinChoice} />
+																<span class="text-text">{o.title}</span>
+																<span class="text-muted">{o.kind}</span>
+															</label>
+														{/each}
+													</div>
+												{/if}
+												{#if deciding[pk] && deciding[pk] !== 'busy'}
+													<p class="mt-1 text-small text-warning">{deciding[pk]}</p>
+												{/if}
+												<div class="mt-2 flex justify-end gap-2">
+													<button class="btn btn-sm btn-ghost" onclick={() => (pinFor = '')}>Cancel</button>
+													<button
+														class="btn btn-sm btn-primary"
+														disabled={!pinChoice || deciding[pk] === 'busy'}
+														onclick={() => savePin(r.language!, r.query)}>Pin for {r.language}</button
+													>
+												</div>
+											</div>
+										{/if}
+									</li>
+								{/each}
+							</ul>
 						{:else if d.overview['30d'].clicks}
 							<p class="text-body text-muted">Every recurring query led somewhere.</p>
 						{:else}
@@ -470,6 +639,11 @@
 															<button
 																class="btn btn-sm btn-ghost"
 																disabled={busy === 'busy'}
+																onclick={() => openSynonym(lang.code, q.query)}>Synonym…</button
+															>
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
 																onclick={() => decide(lang.code, q.query, 'wanted')}>Wanted</button
 															>
 															<button
@@ -489,6 +663,55 @@
 												{/if}
 												{#if busy && busy !== 'busy'}
 													<p class="mt-1 text-small text-warning">{busy}</p>
+												{/if}
+												{#if synonymFor === gk}
+													<!-- "The library has it under another word." -->
+													<form
+														class="mt-2 rounded-card border border-border bg-surface-2 p-3"
+														onsubmit={(e) => {
+															e.preventDefault();
+															void saveSynonym(lang.code, q.query);
+														}}
+													>
+														<label class="block text-small text-muted" for="syn-{gk}"
+															>When {lang.name} readers search “{q.query}”, search instead for</label
+														>
+														<div class="mt-1 flex flex-wrap gap-2">
+															<input
+																id="syn-{gk}"
+																class="min-w-0 flex-1 rounded-card border border-border bg-surface px-3 py-1.5 text-body text-text"
+																bind:value={synonymWord}
+																oninput={() => (synonymPreview = null)}
+															/>
+															<button
+																type="button"
+																class="btn btn-sm btn-ghost"
+																disabled={synonymWord.trim().length < 2 || synonymPreview?.loading}
+																onclick={() => previewSynonym(lang.code)}>Preview</button
+															>
+														</div>
+														{#if synonymPreview?.loading}
+															<p class="mt-2 text-small text-muted">Searching…</p>
+														{:else if synonymPreview?.error}
+															<p class="mt-2 text-small text-warning">{synonymPreview.error}</p>
+														{:else if synonymPreview}
+															<p class="mt-2 text-small {synonymPreview.count ? 'text-text' : 'text-warning'}">
+																{synonymPreview.count
+																	? `${fmt(synonymPreview.count)} results instead of 0. Top: ${synonymPreview.top}`
+																	: `“${synonymWord.trim()}” finds nothing either.`}
+															</p>
+														{/if}
+														<div class="mt-2 flex justify-end gap-2">
+															<button type="button" class="btn btn-sm btn-ghost" onclick={() => (synonymFor = '')}
+																>Cancel</button
+															>
+															<button
+																type="submit"
+																class="btn btn-sm btn-primary"
+																disabled={!synonymPreview?.count || busy === 'busy'}>Save synonym</button
+															>
+														</div>
+													</form>
 												{/if}
 												{#if gap?.error}
 													<p class="mt-1 text-small text-muted">{gap.error}</p>
@@ -551,7 +774,7 @@
 						{@const rows = tab === 'handled' ? handled : wanted}
 						<p class="mb-4 text-small text-muted">
 							{tab === 'handled'
-								? 'Queued translations and out-of-scope searches, with what readers did since. A translation that keeps finding nothing two weeks on goes back to Open.'
+								? 'Translations, synonyms, pins and out-of-scope searches, with what readers did since. A synonym that still finds nothing, or a translation still missing two weeks on, goes back to Open.'
 								: 'Searches for things the library doesn\'t have in any language, ranked by how often they\'ve been searched since: the import shopping list.'}
 						</p>
 						{#if decisions.error}
@@ -583,6 +806,10 @@
 												<span class="text-danger">Reopened · {fmt(row.misses_since)} misses since</span>
 											{:else if row.outcome === 'wanted'}
 												<span class="tabular-nums text-text">{fmt(row.misses_since)} searches since</span>
+											{:else if row.outcome === 'pinned'}
+												<span class="tabular-nums text-muted"
+													>{fmt(row.searches_since)} searches since · {fmt(row.opens_since)} opened</span
+												>
 											{:else}
 												<span class="tabular-nums text-muted"
 													>{fmt(row.searches_since)} searches since · {fmt(row.misses_since)} found nothing</span

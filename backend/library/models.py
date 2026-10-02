@@ -1664,11 +1664,18 @@ class SearchDecision(models.Model):
         WANTED = "wanted", "Wanted"
         #: Not something Ochorus will carry (in copyright, off-topic, spam).
         OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+        #: The library has it under another word: readers' searches for the
+        #: query run on ``target`` instead (search_triage.rules).
+        SYNONYM = "synonym", "Synonym"
+        #: Results came back but nobody opened one: ``target`` ("topic:prayer")
+        #: leads the results as the best match.
+        PINNED = "pinned", "Pinned best match"
 
     query = models.CharField(max_length=200)
     language = models.CharField(max_length=10)
     outcome = models.CharField(max_length=20, choices=Outcome.choices)
-    #: The work a translation was queued for ("book:waiting-on-god"); blank otherwise.
+    #: What the outcome points at: the work a translation was queued for or the
+    #: pinned page ("book:waiting-on-god"), or a synonym's word. Blank otherwise.
     target = models.CharField(max_length=200, blank=True)
     note = models.CharField(max_length=300, blank=True)
     decided_by = models.EmailField(blank=True)

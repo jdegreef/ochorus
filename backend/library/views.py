@@ -41,13 +41,16 @@ from .models import (
     Chapter,
     Plan,
     SearchClickLog,
+    SearchDecision,
     SearchQueryLog,
     Series,
     Sermon,
     Topic,
+    fold_query,
 )
 from .search import (
     CAPS,
+    MAX_RESULTS,
     MIN_QUERY_LEN,
     PAGE_SIZE,
     SORTS,
@@ -58,6 +61,7 @@ from .search import (
     search_library,
     suggest,
 )
+from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
@@ -942,12 +946,34 @@ class SearchView(APIView):
         # is ordered over ALL matches rather than the page the reader was given,
         # and it must not be logged — paging isn't a new search, and counting it
         # as one would quietly inflate the popular-queries report.
-        kind = (request.query_params.get("type") or "").strip().lower()
-        if kind:
-            return Response(self._page(q, language, kind, request, scope))
+        # An admin's triage of this query (search_triage.rules): a synonym runs
+        # the search on another word, a pin leads the results. Neither applies
+        # inside a scope — they answer "the library", not one author's shelf.
+        outcome, target = (
+            (None, "") if scope else rules(language).get(fold_query(q), (None, ""))
+        )
+        searched = target if outcome == SearchDecision.Outcome.SYNONYM else q
 
-        results = search_library(q, language, scope)
-        counts, capped = count_by_type(q, language, scope)
+        kind = (request.query_params.get("type") or "").strip().lower()
+        best = (
+            pinned_hit(target, q, language) if outcome == SearchDecision.Outcome.PINNED else None
+        )
+        if kind:
+            page = self._page(searched, language, kind, request, scope)
+            # The pin leads its own type's pages too, or it would vanish the
+            # moment a reader picks that facet or asks for more.
+            if best and best["type"] == kind and page["offset"] == 0:
+                page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
+            return Response(page)
+
+        results = search_library(searched, language, scope)
+        counts, capped = count_by_type(searched, language, scope)
+        if best:
+            if all(hit_key(h) != hit_key(best) for h in results):
+                # Not one of the text matches: count it, so its group's total
+                # agrees with the rows under it.
+                counts = {**counts, best["type"]: counts.get(best["type"], 0) + 1}
+            results = [best, *[h for h in results if hit_key(h) != hit_key(best)]][:MAX_RESULTS]
         payload = {
             "query": q,
             "results": results,
@@ -958,6 +984,10 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if searched != q:
+            # Said out loud, so a reader isn't left wondering why their word
+            # isn't in any of the results.
+            payload["searched_for"] = searched
         if scope:
             # Resolved (or dropped) here so the page can name the shelf without a
             # second request. None means the place doesn't exist in this
@@ -1146,7 +1176,8 @@ class SearchClickView(APIView):
             # reader's click doesn't open what they clicked.
             try:
                 SearchClickLog.objects.create(
-                    query=q,
+                    # Spacing folded like the query log's, so a click joins its search.
+                    query=" ".join(q.split()),
                     language=_language(request)[:10],
                     result_type=result_type,
                     position=position,
