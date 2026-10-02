@@ -1,6 +1,7 @@
 import { apiFetch, ApiError, type Fetch } from './api';
 import { SITE_URL } from './config';
 import { absUrl } from './seo';
+import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from './coverArt';
 import {
 	ARTICLE_FIELDS,
 	BOOK_FIELDS,
@@ -1455,6 +1456,16 @@ export interface ScriptureBookPage {
 	prev: { book: string; book_title: string } | null;
 	next: { book: string; book_title: string } | null;
 }
+
+/** The Scripture section's share card (`npm run og:pages`), as `<Seo>` props:
+ *  the hub, book and chapter pages forward as Scripture rather than the generic
+ *  house card. Verse pages draw their own (verseCard). */
+export const SCRIPTURE_OG = {
+	ogImage: absUrl('/og/scripture.png'),
+	ogImageWidth: LANDSCAPE_WIDTH,
+	ogImageHeight: LANDSCAPE_HEIGHT,
+	ogImageAlt: 'Scripture in the classics — every Bible reference, and who preached it'
+};
 
 /** The /scripture/<book>/ page: one Bible book across the library. */
 export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;

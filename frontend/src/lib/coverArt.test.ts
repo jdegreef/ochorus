@@ -216,7 +216,9 @@ describe('shareCard', () => {
 		expect(shareCard(ed(''))).toBeNull();
 	});
 
-	it('has a source on disk for every published edition the build will card', () => {
+	// Reads the whole library off disk: well under a second alone, but past the
+	// 5s default when the full suite has 40 other files competing for disk.
+	it('has a source on disk for every published edition the build will card', { timeout: 30_000 }, () => {
 		// The card build falls back to the house card where a page's cover is
 		// not in the build — right for a row the repo does not know about, and
 		// a silent downgrade for one it does. So the committed library is held

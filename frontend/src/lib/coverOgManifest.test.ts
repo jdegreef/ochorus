@@ -214,7 +214,9 @@ describe('the og twins were drawn in the style the table names now', () => {
 		expect(half, 'run `cd frontend && npm run og:covers`').toEqual([]);
 	});
 
-	it('covers every edition that needs a twin, and none that does not', () => {
+	// Reads the whole library off disk: well under a second alone, but past the
+	// 5s default when the full suite has 40 other files competing for disk.
+	it('covers every edition that needs a twin, and none that does not', { timeout: 30_000 }, () => {
 		const recorded = new Set(Object.keys(manifest()));
 		const wanted = new Set(needTwins().map((b) => b.key));
 		expect(
