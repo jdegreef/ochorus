@@ -4,11 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
+    # Joins all three 0177 leaves: two arrive through #4962's
+    # 0178_merge_two_0177_leaves, the third (author_tagline) directly.
 
     dependencies = [
-        ('library', '0177_languagehealthsnapshot'),
-        ('library', '0177_searchdecision_synonym_pinned'),
         ('library', '0177_author_tagline'),
+        ('library', '0178_merge_two_0177_leaves'),
     ]
 
     operations = [
