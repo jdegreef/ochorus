@@ -23,6 +23,7 @@ from reading.models import PlanProgress, ReadingProgress, WorkKind
 from .lifecycle import (
     CLASSIC_STEP,
     COMEBACK_STEP,
+    FIRST_BOOK_STEP,
     PLAN_STEP,
     WELCOME_STEP,
     due_step,
@@ -441,6 +442,56 @@ class LifecycleStepTests(TestCase):
         # Day 3 with a plan: welcome sent, plan skipped, classic needs day 4+,
         # no last_seen for comeback → nothing due yet.
         self.assertIsNone(due_step(profile, timezone.now()))
+
+    def _start_book(self, profile, *, slug="b1", finished=False):
+        ReadingProgress.objects.create(
+            profile=profile,
+            kind=WorkKind.BOOK,
+            book_slug=slug,
+            language="en",
+            finished_at=timezone.now() if finished else None,
+        )
+
+    def test_finish_first_book_due_when_started_but_unfinished(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile)  # opened, not finished
+        self.assertEqual(due_step(profile, timezone.now()).name, FIRST_BOOK_STEP)
+
+    def test_finish_first_book_skipped_without_a_started_book(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        # Nothing opened yet — the finish nudge doesn't apply; classic waits day 4.
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_finish_first_book_skipped_after_a_finish(self):
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile, slug="done", finished=True)
+        self.assertIsNone(due_step(profile, timezone.now()))
+
+    def test_finish_first_book_precedes_classic(self):
+        # A reader with a book in hand is pointed back to it, not at a new classic.
+        profile = self._profile(age_days=5)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        self._start_book(profile)
+        self.assertEqual(due_step(profile, timezone.now()).name, FIRST_BOOK_STEP)
+
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_finish_first_book_sends_end_to_end(self, send):
+        # Exercises the render path (copy + CTA), not just the due predicate.
+        profile = self._profile(age_days=3)
+        self._mark_sent(profile, WELCOME_STEP, PLAN_STEP)
+        # Back-date the earlier steps past the 20h gap so this one can send now.
+        EmailMessage.objects.filter(recipient=profile).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        self._start_book(profile)
+        message = send_due(profile)
+        self.assertEqual(message.lifecycle_step, FIRST_BOOK_STEP)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(send.call_count, 1)
 
     def test_classic_due_on_day_four(self):
         profile = self._profile(age_days=5)
