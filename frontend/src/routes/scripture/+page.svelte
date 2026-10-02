@@ -37,34 +37,43 @@
 
 	// "Go to a passage": hand the reader's reference to the search API's
 	// scripture resolver — the server parses it (pythonbible: "Rom 8:28",
-	// "Ps 23", "1 Cor 13") and answers only with a page that was actually built,
-	// verse page first, then its chapter. No second parser here to drift from it.
-	// Without JS the form still works: it GETs /search?q=…, which leads with the
-	// same scripture hit.
+	// "Ps 23", "1 Cor 13"; English book names, as the page is English-only) and
+	// answers only with a page that was actually built, verse page first, then
+	// its chapter. No second parser here to drift from it. The form's
+	// action=/search is the fallback before hydration.
 	let findQ = $state('');
 	let finding = $state(false);
 	let notFound = $state('');
+	// Bumped by every new lookup and every edit, so a slow reply for a query the
+	// reader has since replaced is dropped instead of navigating or showing a miss.
+	let findSeq = 0;
 	const searchAllHref = (q: string) => `/search?q=${encodeURIComponent(q)}`;
+	function editFind() {
+		findSeq++;
+		finding = false;
+		notFound = '';
+	}
 	async function find(e: SubmitEvent) {
 		e.preventDefault();
 		const q = findQ.trim();
-		if (!q || finding) return;
+		if (!q) return;
+		const seq = ++findSeq;
 		finding = true;
 		notFound = '';
+		let hit;
 		try {
-			const { results } = await searchPage(q, 'en', 'scripture');
-			const hit = results.find((h) => h.type === 'scripture');
-			if (hit?.type === 'scripture') {
-				await goto(scripturePageHref(hit.book_slug, hit.chapter, hit.verse));
-			} else {
-				notFound = q;
-			}
+			// type=scripture returns at most one row, and only scripture rows.
+			[hit] = (await searchPage(q, 'en', 'scripture')).results;
 		} catch {
 			// The API failed: the full search page has its own error and retry.
-			await goto(searchAllHref(q));
+			if (seq === findSeq) await goto(searchAllHref(q));
+			return;
 		} finally {
-			finding = false;
+			if (seq === findSeq) finding = false;
 		}
+		if (seq !== findSeq) return;
+		if (hit?.type === 'scripture') await goto(scripturePageHref(hit.book_slug, hit.chapter, hit.verse));
+		else notFound = q;
 	}
 
 	// A starting point for a reader who arrives without a passage in mind: the
@@ -154,7 +163,7 @@
 					enterkeyhint="go"
 					placeholder={t('scripture.findPlaceholder')}
 					bind:value={findQ}
-					oninput={() => (notFound = '')}
+					oninput={editFind}
 				/>
 				<button type="submit" class="btn btn-primary" disabled={finding} aria-busy={finding}>
 					{t('scripture.findGo')}
@@ -162,7 +171,7 @@
 			</div>
 			{#if notFound}
 				<p class="find-none" role="status">
-					{t('scripture.findNone').replace('%ref%', notFound)}
+					{t('scripture.findNone').replace('%ref%', () => notFound)}
 					<a href={searchAllHref(notFound)}>{t('scripture.findSearchAll')}</a>
 				</p>
 			{/if}

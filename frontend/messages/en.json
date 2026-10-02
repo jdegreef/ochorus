@@ -952,7 +952,7 @@
   "scripture_section_prophecy": "Prophecy",
   "scripture_section_other": "Other books",
   "scripture_find_label": "Go to a passage",
-  "scripture_find_placeholder": "Romans 8:28, Ps 23, 1 Cor 13",
+  "scripture_find_placeholder": "e.g. Romans 8:28 or Ps 23",
   "scripture_find_go": "Go",
   "scripture_find_none": "No page for “%ref%” yet.",
   "scripture_find_search_all": "Search the library for it →",

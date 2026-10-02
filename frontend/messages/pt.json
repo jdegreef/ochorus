@@ -952,7 +952,7 @@
   "scripture_section_prophecy": "Profecia",
   "scripture_section_other": "Outros livros",
   "scripture_find_label": "Ir para uma passagem",
-  "scripture_find_placeholder": "Romanos 8:28, Sl 23, 1 Co 13",
+  "scripture_find_placeholder": "ex.: Romans 8:28 ou Ps 23 (em inglês)",
   "scripture_find_go": "Ir",
   "scripture_find_none": "Ainda não há página para “%ref%”.",
   "scripture_find_search_all": "Procurar na biblioteca →",
