@@ -7,7 +7,10 @@ off three separate pages — **readiness** (is the go-live bar met?), **coverage
 translations a human has confirmed). It answers "where should the next hour go?"
 at a glance, and links each row on to the page that acts on its weakest signal.
 
-Read-only and derived — it stores nothing. It leans on the existing machinery
+The score is derived, not stored — but each load (and each deploy, via
+``snapshot_language_health``) upserts today's score into
+``LanguageHealthSnapshot`` so the page can draw a trend; that is the one write.
+It leans on the existing machinery
 rather than re-deriving it: ``readiness.report`` already counts a language's
 published books / sermons / biographies / plans and runs every go-live check, so
 this borrows those counts instead of issuing them again. Only the extra signals
@@ -17,7 +20,10 @@ all languages in one query rather than per-language.
 
 from __future__ import annotations
 
+from datetime import date, timedelta
+
 from django.db.models import Count, Sum
+from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -26,7 +32,7 @@ from accounts.permissions import requires
 
 from .. import readiness
 from ..demand import readers_elsewhere
-from ..models import Book, Chapter, Language, Sermon
+from ..models import Book, Chapter, Language, LanguageHealthSnapshot, Sermon
 
 # What the composite weighs, and by how much (weights sum to 1). Readiness leads
 # — a language that fails its go-live bar isn't serving readers whatever else is
@@ -52,12 +58,86 @@ _COVERAGE_MIX = {"books": 0.50, "sermons": 0.25, "bios": 0.15, "plans": 0.10}
 # would keep full credit with nobody reading it.
 _READER_WINDOW_DAYS = 90
 
+# The formula a snapshot was scored with. Bump it whenever the weights, a
+# signal's definition, the coverage mix, the target or the window change: the
+# trend only joins points of the same version, so a formula change starts a new
+# line instead of reading as a week of real movement. (1 = books-only coverage
+# against the busiest language; 2 = fixed engagement target; 3 = 90-day readers
+# and the blended shelf.)
+SCORE_VERSION = 3
+
+# How much history the page gets: eight weeks of daily points.
+_TREND_DAYS = 56
+
+# A week's change may compare with a point up to this many days older than a
+# week (a day with no load or deploy has no point); beyond it there is no
+# honest "this week" figure.
+_WEEK_SLACK_DAYS = 3
+
+
+def record_snapshots(rows: list[dict], day: date) -> None:
+    """Upsert each language's score for ``day`` (one row per language per day),
+    in a single statement."""
+    LanguageHealthSnapshot.objects.bulk_create(
+        [
+            LanguageHealthSnapshot(
+                language=r["code"],
+                date=day,
+                score_version=SCORE_VERSION,
+                health=r["health"],
+                **{k: r["scores"][k] for k in _WEIGHTS},
+            )
+            for r in rows
+        ],
+        update_conflicts=True,
+        unique_fields=["language", "date"],
+        update_fields=["score_version", "health", *_WEIGHTS],
+    )
+
+
+def attach_trend(rows: list[dict], today: date) -> None:
+    """Give each row its last ``_TREND_DAYS`` of daily scores (``trend``, oldest
+    first) and its change since a week ago (``week_change``: today's score minus
+    the latest point 7–10 days old, or None with no such point — an older one
+    would be a month's change shown as a week's). Only points scored by the
+    current formula count; see ``SCORE_VERSION``."""
+    since = today - timedelta(days=_TREND_DAYS)
+    history: dict[str, list[dict]] = {}
+    for snap in LanguageHealthSnapshot.objects.filter(
+        date__gt=since, score_version=SCORE_VERSION
+    ).order_by("date"):
+        history.setdefault(snap.language, []).append(
+            {"date": snap.date.isoformat(), "health": snap.health}
+        )
+    week_ago = (today - timedelta(days=7)).isoformat()
+    oldest_baseline = (today - timedelta(days=_WEEK_SLACK_DAYS + 7)).isoformat()
+    for r in rows:
+        points = history.get(r["code"], [])
+        older = [p for p in points if oldest_baseline <= p["date"] <= week_ago]
+        r["trend"] = points
+        r["week_change"] = r["health"] - older[-1]["health"] if older else None
+
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageHealthView(APIView):
     """GET a ranked per-language health score with its component breakdown."""
 
     def get(self, request):
+        payload = self.compute()
+        today = timezone.localdate()
+        # The page view is one of the two writers of the daily point (the deploy
+        # step is the other), so a day anyone looked at the scoreboard is a day
+        # the trend has. An upsert: opening it twice writes one row.
+        record_snapshots(payload["languages"], today)
+        attach_trend(payload["languages"], today)
+        payload["score_version"] = SCORE_VERSION
+        return Response(payload)
+
+    @classmethod
+    def compute(cls) -> dict:
+        """The scoreboard payload, ranked healthiest first. Shared by the view
+        and ``snapshot_language_health`` so a snapshot is the exact score the
+        page showed."""
         languages = list(Language.objects.all())
         # verify_bible=False: the scoreboard scores every language at once, so it
         # must not fan out one live Bible-API call per language on each load — the
@@ -67,9 +147,9 @@ class AdminLanguageHealthView(APIView):
         }
 
         # Three grouped queries cover every language at once (no per-language N+1).
-        published = self._published_by_language()
-        volume = self._volume_by_language()
-        readers = self._readers_by_language()
+        published = cls._published_by_language()
+        volume = cls._volume_by_language()
+        readers = cls._readers_by_language()
         # Readers whose site language this is, reading a work it has no edition
         # of. Shown beside the score, not folded into it, so the score keeps
         # its meaning; the language page lists the works themselves.
@@ -80,7 +160,7 @@ class AdminLanguageHealthView(APIView):
         source = next((lang for lang in languages if lang.is_source), None)
         source_published = published.get(source.code, {}).get("total", 0) if source else 0
         source_shelf = (
-            self._shelf(
+            cls._shelf(
                 {c.key: c for c in reports[source.code].checks}, source_published
             )
             if source
@@ -96,11 +176,11 @@ class AdminLanguageHealthView(APIView):
             counts = {c.key: c for c in report.checks}
 
             scores = {
-                "readiness": self._readiness_score(report),
+                "readiness": cls._readiness_score(report),
                 "coverage": (
                     1.0
                     if lang.is_source
-                    else self._coverage(self._shelf(counts, pub["total"]), source_shelf)
+                    else cls._coverage(cls._shelf(counts, pub["total"]), source_shelf)
                 ),
                 "review": (
                     1.0
@@ -124,9 +204,9 @@ class AdminLanguageHealthView(APIView):
                     "content": {
                         "published_books": pub["total"],
                         "unreviewed_books": pub["unreviewed"],
-                        "sermons": self._current(counts.get("sermons")),
-                        "bios": self._current(counts.get("bios")),
-                        "plans": self._current(counts.get("plans")),
+                        "sermons": cls._current(counts.get("sermons")),
+                        "bios": cls._current(counts.get("bios")),
+                        "plans": cls._current(counts.get("plans")),
                         "chapters": vol["chapters"],
                         "words": vol["words"],
                     },
@@ -147,17 +227,15 @@ class AdminLanguageHealthView(APIView):
         rows.sort(key=lambda r: (-r["health"], r["name"]))
         # The weights ride along so the page can show what each signal is worth
         # (and what it has lost) without keeping a second copy of them.
-        return Response(
-            {
-                "source_published_books": source_published,
-                "weights": _WEIGHTS,
-                "engagement_target": _ENGAGEMENT_TARGET,
-                "coverage_mix": _COVERAGE_MIX,
-                "source_shelf": source_shelf,
-                "reader_window_days": _READER_WINDOW_DAYS,
-                "languages": rows,
-            }
-        )
+        return {
+            "source_published_books": source_published,
+            "weights": _WEIGHTS,
+            "engagement_target": _ENGAGEMENT_TARGET,
+            "coverage_mix": _COVERAGE_MIX,
+            "source_shelf": source_shelf,
+            "reader_window_days": _READER_WINDOW_DAYS,
+            "languages": rows,
+        }
 
     # --- component scores ------------------------------------------------------
 

@@ -260,3 +260,70 @@ class ApiTests(TestCase):
         self.assertEqual(res.data["bio"], "")
         self.assertEqual(res.data["bio_html"], "")
         self.assertEqual(res.data["faq"], [])
+
+
+class TaglineTests(TestCase):
+    """`Author.tagline` — the one line under a preacher's heading on /sermons.
+
+    Fixture-owned like `same_as` (nothing else writes it), and English-only:
+    the library has no English fallback for prose, so another language gets
+    `""` and the shelf shows that language's translated bio instead.
+    """
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="t", name="A Preacher", bio="A bio.")
+
+    def test_the_fixture_fills_and_corrects_it(self):
+        sync_author(self.author, {"tagline": "First line."})
+        sync_author(self.author, {"tagline": "Better line."})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.tagline, "Better line.")
+
+    def test_a_row_that_omits_the_key_leaves_it_alone(self):
+        # Most authors carry no tagline in the fixture at all.
+        self.author.tagline = "Kept."
+        self.author.save()
+        changed, _ = sync_author(self.author, {"bio": "A bio."})
+        self.author.refresh_from_db()
+        self.assertEqual(self.author.tagline, "Kept.")
+        self.assertNotIn("tagline", changed)
+
+    def test_it_is_served_in_english_only(self):
+        self.author.tagline = "One line."
+        self.assertEqual(self.author.tagline_for("en"), "One line.")
+        self.assertEqual(self.author.tagline_for("es"), "")
+
+    def test_an_imprint_has_none(self):
+        self.author.tagline = "One line."
+        self.author.is_imprint = True
+        self.assertEqual(self.author.tagline_for("en"), "")
+
+    def test_the_sermon_shelf_carries_it_in_english_and_not_elsewhere(self):
+        from .models import Sermon
+
+        self.author.tagline = "One line."
+        self.author.save()
+        for lang in ("en", "es"):
+            Sermon.objects.create(
+                author=self.author,
+                slug="s",
+                language=lang,
+                title="A Sermon",
+                body_html="<p>x</p>",
+                is_published=True,
+            )
+        en = self.client.get("/api/library/sermons/?language=en").data
+        es = self.client.get("/api/library/sermons/?language=es").data
+        self.assertEqual(en[0]["author"]["tagline"], "One line.")
+        self.assertEqual(es[0]["author"]["tagline"], "")
+
+    def test_fixture_taglines_fit_in_two_short_lines(self):
+        # The shelf sets it under the heading, wrapping to at most two lines and
+        # clamping the rest. On a phone that is ~50 characters a line, so 100
+        # is what shows whole there; past it the reader loses the end of it.
+        long = [
+            (a["slug"], len(a["tagline"]))
+            for a in fixture_authors()
+            if len(a.get("tagline", "")) > 100
+        ]
+        self.assertEqual(long, [], "taglines over 100 characters")

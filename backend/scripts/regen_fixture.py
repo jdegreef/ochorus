@@ -79,6 +79,8 @@ MODELS = [
 # silently wave the same name through on another.
 DEFAULTED_OK = {
     ("library.author", "is_imprint"),
+    # Blank for every author who has no one-line tagline (most of them).
+    ("library.author", "tagline"),
     ("library.book", "publication_year"),
     ("library.book", "attribution"),
     ("library.book", "source_type"),
