@@ -3,6 +3,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
+	import ReachCurve from '$lib/components/ReachCurve.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
 	import { type SourceType } from '$lib/library-public';
 	import { getAdminBook, setBookPublished, fileRetitleJob, fileBodyFixJob } from '$lib/library-admin';
@@ -95,9 +96,20 @@
 						</div>
 
 						{#if l.chapters.length}
+							<ReachCurve
+								reach={l.reach ?? []}
+								chapters={l.chapters}
+								steepest={l.steepest ?? null}
+								chapterHref={(order) => `#ch-${l.code}-${order}`}
+							/>
 							<ul class="divide-y divide-border rounded-card border border-border">
 								{#each l.chapters as c (c.order)}
-									<li class="flex items-baseline justify-between gap-3 px-3 py-2">
+									<!-- The id is what "Open chapter" (here and on the content
+									     audit's drop-off list) lands on: the row with the fix buttons. -->
+									<li
+										id="ch-{l.code}-{c.order}"
+										class="flex scroll-mt-[calc(var(--appnav-h,0px)+4rem)] items-baseline justify-between gap-3 px-3 py-2 target:bg-accent-soft"
+									>
 										<a href="/books/{b.slug}/{c.order}" class="min-w-0 truncate text-body text-text hover:text-accent">
 											<span class="text-muted tabular-nums">{c.order}.</span> {c.title || '(untitled)'}
 										</a>

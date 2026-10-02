@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from collections import defaultdict
+
 from django.db.models import Count, Sum
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -9,7 +11,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
-from .. import invalidation
+from .. import dropoff, invalidation
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS
 from ..models import AdminAction, Author, Book, Plan, Sermon
@@ -33,6 +35,16 @@ class AdminBookDetailView(APIView):
             return Response({"detail": "No such work."}, status=404)
         canonical = next((b for b in books if b.language == "en"), books[0])
 
+        from reading.models import ReadingProgress, WorkKind
+
+        # Every edition's progress rows in one query, for its "where readers
+        # stop" curve (library.dropoff).
+        progress = defaultdict(list)
+        for row in ReadingProgress.objects.filter(kind=WorkKind.BOOK, book_slug=slug).values(
+            "language", "furthest_order", "chapter_order", "finished_at", "updated_at"
+        ):
+            progress[row["language"]].append(row)
+
         languages = []
         for b in sorted(books, key=lambda x: (x.language != "en", x.language)):
             rows = list(
@@ -55,6 +67,7 @@ class AdminBookDetailView(APIView):
                         ),
                     }
                 )
+            curve = dropoff.reach(progress.get(b.language, []), len(chapters))
             languages.append(
                 {
                     **_language_entry(b.language),
@@ -70,6 +83,12 @@ class AdminBookDetailView(APIView):
                     "pdf_url": b.pdf_url,
                     "word_count": sum(ch["word_count"] for ch in chapters),
                     "chapters": chapters,
+                    # Where readers stop: per-chapter reach, and the chapter
+                    # that loses the largest share of its readers. A single
+                    # book page shows any drop of 2+ readers; the library-wide
+                    # list (AdminDropOffView) waits for dropoff.MIN_READERS.
+                    "reach": curve,
+                    "steepest": dropoff.steepest_drop(curve, min_readers=2),
                 }
             )
 

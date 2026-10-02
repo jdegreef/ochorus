@@ -1709,6 +1709,46 @@ export interface AdminBookLang extends Language {
 	pdf_url: string;
 	word_count: number;
 	chapters: AdminBookChapter[];
+	/** Where readers stop (library/dropoff.py): per chapter, readers whose
+	 *  furthest chapter is this one or later, and of those at exactly this one
+	 *  who stopped (no progress for 30 days) or are still reading. */
+	reach: AdminReachPoint[];
+	/** The chapter losing the largest share of its readers (2+ reached), or
+	 *  null. */
+	steepest: AdminSteepestDrop | null;
+}
+
+/** One book's steepest drop on the content audit's "Readers stop here" list. */
+export interface AdminDropOff extends AdminSteepestDrop {
+	slug: string;
+	language: string;
+	book_title: string;
+	chapter_title: string;
+	word_count: number;
+	/** The chapter's content flags (library/qa.py); flagged drops sort first. */
+	flags: string[];
+}
+
+/** Each book's steepest drop where at least `min_readers` reached the chapter;
+ *  every language with book readers when `language` is ''. */
+export const getAdminDropOff = (language: string) =>
+	apiFetch<{ language: string; min_readers: number; drops: AdminDropOff[] }>(
+		`/api/admin/drop-off/${language ? `?language=${encodeURIComponent(language)}` : ''}`
+	);
+
+export interface AdminReachPoint {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	still: number;
+}
+
+export interface AdminSteepestDrop {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	/** stopped / reached, 0–1. */
+	rate: number;
 }
 
 export interface AdminBookDetail {

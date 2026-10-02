@@ -31,6 +31,7 @@ from library.admin_views import (
     AdminBookPublishView,
     AdminContentEditJobsView,
     AdminCoverageView,
+    AdminDropOffView,
     AdminEngagementView,
     AdminExportView,
     AdminLanguageCreateView,
@@ -107,6 +108,7 @@ urlpatterns = [
         name="admin-search-decide",
     ),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path("api/admin/drop-off/", AdminDropOffView.as_view(), name="admin-drop-off"),
     path(
         "api/admin/coverage/mark-current/",
         AdminTranslationMarkCurrentView.as_view(),
