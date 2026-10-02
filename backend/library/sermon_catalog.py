@@ -1352,4 +1352,53 @@ SERMONS: list[SermonEntry] = [
         "the-practical-hope-of-the-lords-coming", "The Practical Hope of the Lord's Coming", "a-b-simpson", "sermonindex",
         _SI + "ab-simpson/the-practical-hope-of-the-lords-coming/", scripture_ref="James 5:7-8",
     ),
+    # A.W. Tozer, batch 3 — more full-length transcribed sermons from SermonIndex,
+    # each read in full before shipping (wrong-title pages, splices and garbled
+    # transcripts are left off). Refs pinned from each sermon's own opening.
+    SermonEntry(
+        "the-hidden-life-of-faith", "The Hidden Life of Faith", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/the-hidden-life-of-faith/", scripture_ref="Exodus 33:22",
+    ),
+    SermonEntry(
+        "what-difference-does-the-holy-spirit-make", "What Difference Does the Holy Spirit Make?", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/what-difference-does-the-holy-spirit-make/",
+    ),
+    SermonEntry(
+        "the-sin-of-murmuring", "The Sin of Murmuring", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/the-sin-of-murmuring/", scripture_ref="1 Corinthians 10:1-13",
+    ),
+    SermonEntry(
+        "the-triumph-of-the-resurrection", "The Triumph of the Resurrection", "a-w-tozer", "sermonindex",
+        _SI + "aw-tozer/the-triumph-of-the-resurrection/", scripture_ref="Acts 2:22-39",
+    ),
+    # A. B. Simpson, batch 3 — printed sermons that keep his King James
+    # quotations (the modernized-edition texts on SermonIndex are left off).
+    SermonEntry(
+        "partnership-with-god", "Partnership with God", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/partnership-with-god/",
+    ),
+    SermonEntry(
+        "gideon-or-the-strength-of-weakness", "Gideon, or the Strength of Weakness", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/gideon-or-the-strength-of-weakness/", scripture_ref="1 Corinthians 1:27-29",
+    ),
+    SermonEntry(
+        "jephthah-or-the-faith-that-leads-to-faithfulness", "Jephthah, or the Faith That Leads to Faithfulness", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/jephthah-or-the-faith-that-leads-to-faithfulness/", scripture_ref="Judges 11:30-36",
+    ),
+    SermonEntry(
+        "bochim-or-the-cause-of-spiritual-failure", "Bochim, or the Cause of Spiritual Failure", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/bochim-or-the-cause-of-spiritual-failure/", scripture_ref="Judges 2:5",
+    ),
+    SermonEntry(
+        "the-practical-discipline-of-life", "The Practical Discipline of Life", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-practical-discipline-of-life/", scripture_ref="James 1:2",
+    ),
+    SermonEntry(
+        "the-christian-temper-supernatural-and-divine", "The Christian Temper, Supernatural and Divine", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-christian-temper-supernatural-and-divine/", scripture_ref="Philippians 3:10-11",
+    ),
+    SermonEntry(
+        "the-goal-of-faith", "The Goal of Faith", "a-b-simpson", "sermonindex",
+        _SI + "ab-simpson/the-goal-of-faith/", scripture_ref="Hebrews 12:18-24",
+    ),
 ]

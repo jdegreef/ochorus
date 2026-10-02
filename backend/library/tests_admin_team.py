@@ -238,3 +238,68 @@ class AdminRolesTests(TestCase):
             email="c@ochorus.com", capability=AdminCapability.FEEDBACK, verb=AdminVerb.ACT
         )
         self.assertEqual(self.client.get("/api/admin/roles/").status_code, 200)
+
+
+class AdminTeamActivityTests(TestCase):
+    """Each member carries whether they've signed in, who granted them, and
+    their recent grant/revoke history."""
+
+    def setUp(self):
+        self.client = APIClient()
+
+    def _member(self, email):
+        members = self.client.get("/api/admin/team/").data["members"]
+        return next(m for m in members if m["email"] == email)
+
+    @override_settings(DEBUG=True)
+    def test_never_signed_in_is_null_then_last_seen_once_they_have(self):
+        import uuid
+
+        from django.utils import timezone
+
+        from accounts.models import UserProfile
+
+        self.client.post("/api/admin/team/", {"email": "a@b.com", "role": "reviewer", "languages": ["es"]}, format="json")
+        m = self._member("a@b.com")
+        self.assertIsNone(m["last_seen_at"])
+        self.assertIsNotNone(m["granted_at"])
+
+        user = User.objects.create(username="77777777-7777-7777-7777-777777777777", email="A@B.com")
+        seen = timezone.now()
+        UserProfile.objects.create(user=user, supabase_uid=uuid.uuid4(), last_seen_at=seen)
+        self.assertEqual(self._member("a@b.com")["last_seen_at"], seen)
+
+    @override_settings(DEBUG=True)
+    def test_history_lists_grants_revokes_and_undo_newest_first(self):
+        post = lambda data: self.client.post("/api/admin/team/", data, format="json")  # noqa: E731
+        post({"email": "a@b.com", "role": "language_admin", "languages": ["lg"]})
+        scopes = self._member("a@b.com")["scopes"]
+        post({"email": "a@b.com", "role": "reviewer", "languages": ["lg"]})
+        self.client.delete("/api/admin/team/?email=a@b.com")
+        post({"email": "a@b.com", "restore": scopes})
+
+        history = self._member("a@b.com")["history"]
+        self.assertEqual([h["kind"] for h in history], ["restore", "revoke", "grant", "grant"])
+        self.assertEqual(history[2]["role"], "reviewer")
+        self.assertIn("publish", history[2]["removed"])
+
+    @override_settings(DEBUG=True)
+    def test_granted_at_survives_undo_and_history_is_capped(self):
+        import datetime
+
+        from django.utils import timezone
+
+        post = lambda data: self.client.post("/api/admin/team/", data, format="json")  # noqa: E731
+        post({"email": "a@b.com", "role": "reviewer", "languages": ["es"]})
+        long_ago = timezone.now() - datetime.timedelta(days=200)
+        AdminAction.objects.filter(target="user:a@b.com").update(at=long_ago)
+        scopes = self._member("a@b.com")["scopes"]
+        self.client.delete("/api/admin/team/?email=a@b.com")
+        post({"email": "a@b.com", "restore": scopes})  # Undo rewrites the rows
+        self.assertEqual(self._member("a@b.com")["granted_at"], long_ago)
+
+        for _ in range(12):
+            post({"email": "a@b.com", "role": "reviewer", "languages": ["es"]})
+        history = self._member("a@b.com")["history"]
+        self.assertEqual(len(history), 10)
+        self.assertEqual(len({h["id"] for h in history}), 10)

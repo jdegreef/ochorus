@@ -365,6 +365,17 @@ dropped; chapters under 120 words are dropped as stubs.
   from the DB rather than hand-typing the curly quotes). Common enough across
   Gutenberg editions that a general ingest strip may be worth it if it recurs.
   *(ministry-of-intercession, 2026-09)*
+- **A Gutenberg half-title banner above each chapter lands at the END of the
+  previous one.** #29296 repeats the book's subtitle, "A PLEA FOR MORE PRAYER",
+  as an `<h3>` before every chapter heading; the splitter cuts at the heading,
+  so the banner closed chapters 2–16 as a heading with nothing under it — and
+  every translation copied it (es and sw in four different wordings). Found by
+  the audit's mid-split check (it ends without punctuation), but only in the
+  editions where the banner lacked a full stop. Removed from all seven fixtures
+  in lockstep (`tests_translation_markup` pins the tag sequence), then
+  `rederive_body_text --write` + `rederive_word_count --write`. A RE-IMPORT
+  would bring it back: strip it in the build first. *(ministry-of-intercession,
+  2026-10)*
 - **A Gutenberg edition can set an ornamental `<div class="chaptertitle">CHAPTER
   N</div>` ABOVE the real `<h2>` title**, so the h2 is borrowed correctly but the
   bare "CHAPTER N" label leaks in and every body opens "CHAPTER 1 …". Fixed in
@@ -379,6 +390,26 @@ dropped; chapters under 120 words are dropped as stubs.
   for a NEW book, delete that chapter in the DB and renumber before serializing
   the fixture rather than adding a blanket rule. *(hurlbuts-life-of-christ,
   Gutenberg #40460, 104 ch, 2026-09)*
+- **An illustrated edition's photo captions survive as LOOSE TEXT when its
+  images are dropped.** The sanitizer allowlist has no `<img>`, so a Gutenberg
+  `<div class="fig…"><img…><span class="caption">…</span></div>` loses the
+  picture but its caption is unwrapped and ships as a bare top-level run between
+  blocks (`…enemies.</p> A saddled camel <p>These foothills…`, or before the
+  chapter-end `<hr/>`). Readers see "The valley of Gehenna, to the east of
+  Jerusalem" glued onto the prose, and `body_text` folds it into the next
+  paragraph. Find them with a BeautifulSoup scan for non-blank
+  `NavigableString`s among `soup.children` (top level only). Read every one
+  before deleting: plate captions often quote or paraphrase the narrative, so a
+  long sentence is not proof of lost prose — check it sits OUTSIDE any block
+  and names a picture. Fix in the fixture by replacing each chapter's exact
+  `json.dumps(body, ensure_ascii=False)` string (assert one match each; never
+  re-serialize the file): caption between two blocks → `</p> <p>`, before the
+  `<hr/>` → `</p><hr/>` (the book's own convention); then `rederive_body_text`
+  and `rederive_word_count --write`. The `<hr/>`s are chapter-end rules (one
+  per chapter), not caption furniture — keep them. Check the work's
+  `wrapped_blocks` tails too: a tail that bounds a line at a caption still
+  works once the caption is gone. *(hurlbuts-life-of-christ, 188 captions in
+  92 chapters, 2026-10)*
 - **This-edition-only chapter titles live in the CONTENTS, not the chapter
   openings.** Some Gutenberg editions (e.g. Murray #29296) open each chapter
   with a bare "CHAPTER N" then the scripture epigraph — no descriptive title in

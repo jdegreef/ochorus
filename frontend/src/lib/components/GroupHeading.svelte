@@ -29,7 +29,8 @@
 		count,
 		as = 'h2',
 		sticky = false,
-		detail
+		detail,
+		blurb
 	}: {
 		name: string;
 		/** Localized href — render the name as a link when present. */
@@ -49,6 +50,10 @@
 		/** Inline content after the name — e.g. an era's year range, or a
 		    search group's bespoke "N of M" count. */
 		detail?: Snippet;
+		/** One line under the heading saying who this group is — the sermons
+		    shelf's preacher bio opening. Truncated to one line and indented to
+		    the name (past the portrait), so the caller needn't know either. */
+		blurb?: string;
 	} = $props();
 </script>
 
@@ -56,7 +61,7 @@
 	this={as}
 	class={sticky
 		? 'sticky z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text'
-		: 'mb-4 flex items-center gap-2.5 text-h3 text-muted'}
+		: `${blurb ? 'mb-1' : 'mb-4'} flex items-center gap-2.5 text-h3 text-muted`}
 	style={sticky ? 'top: var(--pinned-offset, 0px)' : undefined}
 >
 	{#if portraitUrl}
@@ -84,3 +89,9 @@
 		<span class="text-small font-normal count" class:ms-auto={sticky}>{count}</span>
 	{/if}
 </svelte:element>
+{#if blurb}
+	<!-- Indented to the name: the portrait's w-8 plus the heading's gap-2.5. -->
+	<p class="mb-4 max-w-prose truncate text-small text-muted {portraitUrl ? 'ps-[2.625rem]' : ''}">
+		{blurb}
+	</p>
+{/if}

@@ -3,6 +3,7 @@ import {
 	DEFAULT_SEARCH_STATE,
 	readSearchState,
 	scopedSearchHref,
+	searchHref,
 	searchStateKey,
 	writeSearchState
 } from './searchState';
@@ -140,5 +141,17 @@ describe('linking into a scoped search', () => {
 		const back = read(scopedSearchHref('topic', 'prayer', 'grace').split('?')[1]);
 		expect(back.scope).toBe('topic:prayer');
 		expect(back.q).toBe('grace');
+	});
+});
+
+describe('linking into a plain search', () => {
+	it('encodes exactly as the page writes it back, and round-trips', () => {
+		const href = searchHref(' Rom 8:28 ');
+		expect(href).toBe('/search' + write({ ...DEFAULT_SEARCH_STATE, q: 'Rom 8:28' }));
+		expect(read(href.split('?')[1]).q).toBe('Rom 8:28');
+	});
+
+	it('is the bare page with no query', () => {
+		expect(searchHref('  ')).toBe('/search');
 	});
 });
