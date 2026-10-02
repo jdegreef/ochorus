@@ -73,6 +73,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
 
     KINDS = ("book", "sermon", "bio")
     PAGE_SIZE = 25
+    # Why the bulk gate holds back an item in each non-ready lane.
+    _GATE_REASON = {
+        "unexamined": "no scripture notes recorded — review individually.",
+        "verses": "has unverified verses — review individually.",
+    }
 
     # `ReviewOutcome` already records the decision itself — reviewer, reason and
     # all — and the review screen reads it. These rows exist so that ONE table
@@ -109,19 +114,13 @@ class AdminReviewQueueView(AdminAudited, APIView):
         q = request.query_params
         kind = q.get("kind") or ""
         language = q.get("language") or ""
-        outcome = q.get("outcome") or ""
         # One work, from a coverage-matrix cell's deep link. It shows the work's
         # pending translations whatever their state — awaiting review, a
         # provisional approval, or sent back as needs work — so the cell that
         # linked here always lands on its item instead of an empty filter.
         slug = q.get("slug") or ""
-        # Which of the four lanes (see `_lane`). `flagged=1` predates lanes and
-        # still means the verses lane, so an old bookmark lands where it did.
+        # Which of the four lanes (see `_lane`).
         lane = q.get("lane") or ""
-        if q.get("flagged") in ("1", "true", "yes"):
-            lane = "verses"
-        if lane == "needs_work":
-            outcome = "needs_work"
         sort = q.get("sort") or "oldest"
 
         rows = self._rows()
@@ -147,7 +146,7 @@ class AdminReviewQueueView(AdminAudited, APIView):
             # Distinguish "examined and clean" from "never examined" — the UI
             # must not render an absence of notes as an absence of problems.
             r["notes_recorded"] = k in noted
-            r["lane"] = self._lane(r)
+            r["lane"] = self._lane(r["flagged"], r["notes_recorded"])
 
         # Everything still awaiting attention: no decision yet, OR a PROVISIONAL
         # approval a reviewer proposed that still needs an approver to confirm
@@ -200,14 +199,17 @@ class AdminReviewQueueView(AdminAudited, APIView):
         # "Spanish: 23 ready" rather than a library-wide number the reviewer
         # can't act on. Counted from rows already loaded — no extra query.
         in_view = scoped(undecided)
-        lanes = {"ready": 0, "verses": 0, "unexamined": 0}
-        for r in in_view:
-            lanes[r["lane"]] += 1
-        lanes["needs_work"] = len(scoped(needs_work))
+        lanes = {
+            "ready": 0,
+            "verses": 0,
+            "unexamined": 0,
+            **_tally(in_view, "lane"),
+            "needs_work": len(scoped(needs_work)),
+        }
 
         if slug:
             sel = scoped([r for r in rows if r["slug"] == slug])
-        elif outcome == "needs_work":
+        elif lane == "needs_work":
             sel = scoped(needs_work)
         else:
             sel = in_view
@@ -249,10 +251,6 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 "results": window,
                 "total": len(undecided),
                 "filtered": len(sel),
-                "flagged_total": sum(1 for r in undecided if r["flagged"]),
-                "needs_work_total": sum(
-                    1 for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"
-                ),
                 "lanes": lanes,
                 # When the longest-waiting item in view arrived — the queue's
                 # age, whatever the page or sort.
@@ -349,17 +347,20 @@ class AdminReviewQueueView(AdminAudited, APIView):
         }
 
     @staticmethod
-    def _lane(r) -> str:
+    def _lane(flagged: bool, noted: bool) -> str:
         """Which kind of review an undecided row needs.
 
         ``verses``: the pipeline rendered scripture itself — settle each verse.
         ``unexamined``: no scripture notes at all — nothing was checked, so it
         must be read in full and can never be bulk-approved.
         ``ready``: examined with nothing flagged — the only bulk-approvable lane.
+
+        The queue's lanes and the bulk-approve gate both ask this, so the
+        "Ready" card can never offer an item the gate then refuses.
         """
-        if r["flagged"]:
+        if flagged:
             return "verses"
-        if not r["notes_recorded"]:
+        if not noted:
             return "unexamined"
         return "ready"
 
@@ -513,28 +514,19 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 )
                 continue
             key = (kind, slug, language)
-            if enforce_gate and key not in has_notes:
-                # FAIL CLOSED. An item with no TranslationNote rows has not been
-                # cleared — it has never been examined, which is the opposite of
-                # safe. Treating "no data" as "no problems" would let a bulk
-                # approve wave through the entire un-noted backlog, which is
-                # precisely what this gate exists to prevent.
+            # FAIL CLOSED. An item with no TranslationNote rows has not been
+            # cleared — it has never been examined, which is the opposite of safe.
+            # Treating "no data" as "no problems" would let a bulk approve wave
+            # through the entire un-noted backlog, which is precisely what this
+            # gate exists to prevent.
+            lane = self._lane(key in flagged, key in has_notes) if enforce_gate else "ready"
+            if lane != "ready":
                 skipped.append(
                     {
                         "kind": kind,
                         "slug": slug,
                         "language": language,
-                        "reason": "no scripture notes recorded — review individually.",
-                    }
-                )
-                continue
-            if key in flagged:
-                skipped.append(
-                    {
-                        "kind": kind,
-                        "slug": slug,
-                        "language": language,
-                        "reason": "has unverified verses — review individually.",
+                        "reason": self._GATE_REASON[lane],
                     }
                 )
                 continue

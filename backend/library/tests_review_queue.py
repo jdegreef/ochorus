@@ -228,7 +228,7 @@ class ReviewQueueTests(TestCase):
         self.assertNotIn(
             "sermon", {r["kind"] for r in self._get()["results"]}
         )
-        self.assertEqual(self._get(outcome="needs_work")["filtered"], 1)
+        self.assertEqual(self._get(lane="needs_work")["filtered"], 1)
 
     def test_undo_returns_it_to_the_queue(self):
         self.client.post(
@@ -360,13 +360,13 @@ class ReviewQueueTests(TestCase):
             reference="Isaiah 1:18", status=TranslationNote.Status.MINED,
             source_file="prevailing-prayer.sw.json",
         )
-        data = self._get(flagged="1")
+        data = self._get(lane="verses")
         self.assertEqual(data["filtered"], 1)
         row = data["results"][0]
         self.assertEqual(row["notes"]["self_rendered"], 1)
         self.assertEqual(row["notes"]["mined"], 1)
         self.assertEqual(row["provenance"], {"job_issue": 425, "pull_request": 910})
-        self.assertEqual(data["flagged_total"], 1)
+        self.assertEqual(data["lanes"]["verses"], 1)
 
     def test_detail_returns_aligned_blocks(self):
         data = self.client.get(
@@ -412,8 +412,6 @@ class ReviewQueueTests(TestCase):
         self.assertEqual(lanes, {"sermon": "verses", "bio": "ready", "book": "unexamined"})
         for lane, kind in (("ready", "bio"), ("verses", "sermon"), ("unexamined", "book")):
             self.assertEqual([r["kind"] for r in self._get(lane=lane)["results"]], [kind])
-        # The pre-lane bookmark still lands on the verses lane.
-        self.assertEqual([r["kind"] for r in self._get(flagged="1")["results"]], ["sermon"])
 
     def test_lane_counts_follow_the_type_in_view(self):
         data = self._get(kind="book")

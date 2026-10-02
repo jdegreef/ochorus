@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import {
 		getReviewQueue,
 		getReviewDetail,
@@ -36,10 +37,10 @@
 				? 'needs_work'
 				: ((initialParams.get('lane') ?? '') as ReviewLane | '');
 	let fLane = $state(initialLane);
-	// A lane's natural order (see setLane) applies to a deep link too.
-	let fSort = $state(
-		initialParams.get('sort') ?? (initialLane === 'verses' ? 'remaining' : 'oldest')
-	);
+	// Each lane's natural order: in the verses lane that is fewest verses left,
+	// so half-finished work gets closed out first.
+	const defaultSort = (lane: ReviewLane | '') => (lane === 'verses' ? 'remaining' : 'oldest');
+	let fSort = $state(initialParams.get('sort') ?? defaultSort(initialLane));
 	let page = $state(Math.max(1, Number(initialParams.get('p')) || 1));
 	// One work, from a coverage-matrix cell (`?slug=…&kind=…&language=…`). The
 	// first load opens its review panel, so the cell lands on the text itself.
@@ -182,13 +183,12 @@
 		load();
 	}
 
-	// Picking a lane also picks its natural order: in the verses lane that is
-	// fewest verses left, so half-finished work gets closed out first. Clicking
-	// the lane already in view clears it.
+	// Picking a lane also picks its natural order, unless the reviewer chose a
+	// sort of their own. Clicking the lane already in view clears it.
 	function setLane(lane: ReviewLane) {
+		const wasDefault = fSort === defaultSort(fLane);
 		fLane = fLane === lane ? '' : lane;
-		if (fLane === 'verses' && fSort === 'oldest') fSort = 'remaining';
-		else if (fLane !== 'verses' && fSort === 'remaining') fSort = 'oldest';
+		if (wasDefault) fSort = defaultSort(fLane);
 		applyFilters();
 	}
 
@@ -316,8 +316,7 @@
 	// refused. Note `notes_recorded`: an item the pipeline never examined is NOT
 	// eligible, because "no flags" must never be able to mean "no data".
 	const bulkEligible = (i: ReviewItem) =>
-		i.notes_recorded &&
-		!i.flagged &&
+		i.lane === 'ready' &&
 		!settled[key(i.kind, i.slug, i.language)] &&
 		i.flags?.tags_match !== false;
 
@@ -376,9 +375,10 @@
 		Object.entries(queue?.facets.language ?? {}).sort((a, b) => b[1] - a[1])
 	);
 
+	const currentLane = $derived(LANES.find((l) => l.id === fLane));
 	// The next lane worth opening when the one in view is empty.
 	const nextLane = $derived(
-		LANES.find((l) => l.id !== fLane && l.id !== 'needs_work' && (queue?.lanes?.[l.id] ?? 0) > 0)
+		queue && LANES.find((l) => l.id !== fLane && l.id !== 'needs_work' && queue.lanes[l.id] > 0)
 	);
 
 	// Narrowed copies: `queue` is nullable, and the arrow functions in the
@@ -460,7 +460,7 @@
 							<span class="inline-block h-2 w-2 rounded-sm {l.tone}" aria-hidden="true"></span>
 							{l.label}
 						</span>
-						<span class="text-h3 tabular-nums">{(q.lanes?.[l.id] ?? 0).toLocaleString()}</span>
+						<span class="text-h3 tabular-nums">{q.lanes[l.id].toLocaleString()}</span>
 						<span class="text-micro text-muted">{l.hint}</span>
 					</button>
 				{/each}
@@ -558,13 +558,11 @@
 				<div class="rounded-card border border-dashed border-border-strong bg-surface p-8 text-center">
 					{#if fLane}
 						<p class="text-h3">
-							{fLanguage ? languageName(fLanguage) : 'The queue'} has nothing in “{LANES.find(
-								(l) => l.id === fLane
-							)?.label}”
+							{fLanguage ? languageName(fLanguage) : 'The queue'} has nothing in “{currentLane?.label}”
 						</p>
 						{#if nextLane}
 							<p class="text-body mt-1 text-muted">
-								{(q.lanes[nextLane.id] ?? 0).toLocaleString()} still in “{nextLane.label}”.
+								{q.lanes[nextLane.id].toLocaleString()} still in “{nextLane.label}”.
 							</p>
 							<button class="btn btn-sm btn-primary mt-3" onclick={() => setLane(nextLane.id)}>
 								Open {nextLane.label.toLowerCase()}
@@ -644,8 +642,8 @@
 								{#if i.lane === 'verses'}
 									{@const pct = Math.round((100 * i.notes.settled) / Math.max(1, i.notes.self_rendered))}
 									<span class="text-small inline-flex items-center gap-1.5" title="Verses the translator rendered itself, settled by a reviewer">
-										<span class="inline-block h-1.5 w-14 overflow-hidden rounded-full bg-border" aria-hidden="true">
-											<span class="block h-full bg-warning" style="width: {pct}%"></span>
+										<span class="inline-block w-14">
+											<ProgressBar percent={pct} label="{i.title}: flagged verses settled" />
 										</span>
 										<span class={i.notes.settled >= i.notes.self_rendered ? 'font-semibold' : 'font-semibold text-warning'}>
 											{i.notes.settled} of {i.notes.self_rendered}

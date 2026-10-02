@@ -718,8 +718,6 @@ export interface ReviewQueue {
 	results: ReviewItem[];
 	total: number;
 	filtered: number;
-	flagged_total: number;
-	needs_work_total: number;
 	/** Lane counts for the language / type in view. */
 	lanes: Record<ReviewLane, number>;
 	/** When the longest-waiting item in view arrived ("" when none). */
