@@ -224,6 +224,8 @@ export const getAdminAuthorsWithoutBio = () =>
 // engagement) per language, ranked, so the dashboard can lead with where the
 // next hour of work should go. Read-only and derived — see the backend view.
 export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
+/** What each component weighs in the composite (sums to 1). */
+export type HealthWeights = Record<HealthScoreKey, number>;
 export interface AdminLanguageHealth {
 	code: string;
 	name: string;
@@ -244,14 +246,16 @@ export interface AdminLanguageHealth {
 		chapters: number;
 		words: number;
 	};
-	readiness: { ready: boolean; blocking: string[] };
+	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
 }
 
 export const getAdminLanguageHealth = () =>
-	apiFetch<{ source_published_books: number; languages: AdminLanguageHealth[] }>(
-		'/api/admin/language-health/'
-	);
+	apiFetch<{
+		source_published_books: number;
+		weights: HealthWeights;
+		languages: AdminLanguageHealth[];
+	}>('/api/admin/language-health/');
 
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
