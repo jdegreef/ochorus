@@ -141,6 +141,9 @@ class EmailSubscription(models.Model):
         Suppression and the master off switch block everything; otherwise the
         reader's per-stream choice applies, defaulting to the stream's default
         (opt-out posture)."""
+        from .streams import require_stream
+
+        require_stream(stream)
         if self.is_suppressed or self.unsubscribed_all:
             return False
         return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
@@ -158,8 +161,9 @@ class EmailSubscription(models.Model):
         choice, its legacy-boolean fallback, and the suppression/off-switch
         blockers stay defined once. Use it to count or filter a subscription
         queryset by stream consent (e.g. admin metrics)."""
-        from .streams import LEGACY_FIELD
+        from .streams import LEGACY_FIELD, require_stream
 
+        require_stream(stream)
         explicit_on = models.Q(**{f"stream_prefs__{stream}": True})
         no_choice = ~models.Q(stream_prefs__has_key=stream)
         legacy = LEGACY_FIELD.get(stream)
