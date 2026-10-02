@@ -36,7 +36,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, elementVisible } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -441,14 +441,6 @@
 	const showSubnav = $derived(navItems.length >= 2);
 	let subnavH = $state(0);
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-	/** `track: false` for a target that isn't a tab (the hero's language chip),
-	 *  so the bar isn't left with no tab highlighted. */
-	function jumpTo(e: MouseEvent, id: string, track = true) {
-		e.preventDefault();
-		history.replaceState(history.state, '', `#${id}`);
-		if (track) spy.set(id);
-		jumpToSection(id);
-	}
 </script>
 
 <Seo
@@ -566,7 +558,7 @@
 						<a
 							href="#languages"
 							class="hero-chip hero-chip-link"
-							onclick={(e) => jumpTo(e, 'languages', false)}
+							onclick={(e) => spy.jump(e, 'languages', { track: false })}
 							><Icon name="globe" size={15} class="shrink-0" /><span class="min-w-0"
 								><!-- A hidden prefix, not aria-label: the accessible name must keep
 								     the visible language names (label-in-name). --><span
@@ -701,7 +693,7 @@
 							class="subnav-link"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
 						>
 					</li>
 				{/each}
@@ -1101,23 +1093,10 @@
 		padding: 0;
 		list-style: none;
 	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.6rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px;
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--text);
-	}
-	.subnav-link.is-active {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
+	/* The shared .subnav-link (app.css), a little tighter: this bar also
+	   carries the read CTA. */
+	.book-subnav .subnav-link {
+		padding-inline: 0.6rem;
 	}
 	/* Smaller than a body button, to sit in the bar without setting its height. */
 	.subnav-cta {

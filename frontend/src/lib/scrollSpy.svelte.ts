@@ -79,6 +79,22 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 		 */
 		set(id: string) {
 			active = id;
+		},
+		/**
+		 * The sub-nav link's click handler, shared by the book, author and
+		 * /scripture jump bars: write `#id` into the address bar, light the tab at
+		 * once (unless `track: false`, for a target that isn't a tab, so the bar
+		 * isn't left with nothing lit), and smooth-jump.
+		 *
+		 * `history.state`, never null: a null state erases SvelteKit's history
+		 * index on the entry, and Back after the next navigation then changes only
+		 * the URL.
+		 */
+		jump(e: MouseEvent, id: string, { track = true }: { track?: boolean } = {}) {
+			e.preventDefault();
+			history.replaceState(history.state, '', `#${id}`);
+			if (track) active = id;
+			jumpToSection(id);
 		}
 	};
 }

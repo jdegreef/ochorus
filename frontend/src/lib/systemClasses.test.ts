@@ -34,7 +34,18 @@ function svelteFiles(dir: string, out: string[] = []): string[] {
 
 /** The shared classes app.css owns. `(?![\w-])` so `.count` doesn't match
  *  `.counter` and `.eyebrow` doesn't match `.eyebrow-micro`. */
-const SYSTEM = ['btn', 'field', 'seg', 'chip', 'tag', 'eyebrow', 'section-label', 'count', 'page-col'];
+const SYSTEM = [
+	'btn',
+	'field',
+	'seg',
+	'chip',
+	'tag',
+	'eyebrow',
+	'section-label',
+	'count',
+	'page-col',
+	'subnav-link'
+];
 const RULE = new RegExp(`^\\s*\\.(?:${SYSTEM.join('|')})(?![\\w-])`);
 
 describe('system classes are not redefined in scoped CSS', () => {
