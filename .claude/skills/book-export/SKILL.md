@@ -13,9 +13,11 @@ in `backend/library/book_export.py`, in this order:
    (`/covers/<slug>.png`, `/covers/<lang>/<slug>.png`) is used.
 2. **Title page**
 3. **About Ochorus** — `STRINGS[lang]["ochorus_html"]`
-4. **About the Author** — the author's SHORT bio (`Author.bio`; for another
-   language `AuthorTranslation.bio`), life dates, and a link to the full bio.
-   No English fallback and none for an imprint author → no page.
+4. **About the Author** — a one-page bio written for the downloads,
+   `backend/library/export_bios/<author-slug>.<lang>.txt` (3–4 paragraphs,
+   blank-line separated); without one, the SHORT site bio (`Author.bio`; for
+   another language `AuthorTranslation.bio`). Then life dates and a link to the
+   full bio. No English fallback and none for an imprint author → no page.
 5. **Contents** (PDF page; EPUB uses the reader's nav) → About this work →
    chapters → colophon (rights, AI-review notice for `ai_unreviewed`).
 
@@ -32,7 +34,14 @@ in `backend/library/book_export.py`, in this order:
 - Published, and its text is clean — run `english-qa` / `founder-kit:book-qa`
   first. The PDF freezes whatever is in the DB.
 - A raster cover exists for it on the site (designed jpg, or the og twin png).
-- The author has a short `bio` in that language. English: `authors.json`
+- The author has an export bio `export_bios/<author-slug>.<lang>.txt` —
+  `PilotTests` fails without one (and on a file no edition uses). Write it from
+  the long `bio_html` (its facts, no new ones): 3–4 paragraphs, ~250–285
+  English words, ≤ ~1,700 characters. It MUST fit one A5 page with the "Read
+  the full biography" line: Swahili and Luganda run ~10% longer than English,
+  Ukrainian fills the page at ~1,700 characters — render it and look. Editing
+  one triggers `book-pdfs.yml` to rebuild every PDF. Falls back to the short
+  `bio` in that language. English: `authors.json`
   `bio`. Other languages: an `AuthorTranslation` with `bio` (see
   `write-biography` / `approve_author_translation`). Without one the book simply
   has no About-the-Author page — decide if that's acceptable.
@@ -91,7 +100,8 @@ PUBLIC_SITE_URL=https://ochorus.com uv run python manage.py export_book <slug> -
   ```bash
   python3 -c "import fitz;d=fitz.open('frontend/static/pdfs/<file>.pdf');[d[i].get_pixmap(dpi=90).save(f'/tmp/p{i}.png') for i in range(6)]"
   ```
-  Page 1 cover, 2 title, 3 About Ochorus, 4 About the Author, 5 Contents, 6 first
+  Page 1 cover, 2 title, 3 About Ochorus, 4 About the Author (ONE page — the
+  "Read the full biography" line must be on it), 5 Table of Contents, 6 first
   part — and the contents numbers match where chapters actually start.
 - EPUB: `unzip -l` shows `OEBPS/cover.*` and `about-author.xhtml`; the OPF has
   `properties="cover-image"`; spine order is ochorus → author → about.

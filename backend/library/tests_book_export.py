@@ -180,6 +180,18 @@ class EpubTests(TestCase):
         AuthorTranslation.objects.create(author=self.book.author, language="es", bio="Fue pastor.")
         self.assertEqual(book_export.author_bio(es), "Fue pastor.")
 
+    def test_a_written_export_bio_wins_over_the_short_one(self):
+        import tempfile
+
+        with tempfile.TemporaryDirectory() as d:
+            written = book_export.Path(d) / "a-writer.en.txt"
+            written.write_text("He was born.\n\nHe preached.\n\nHe died.\n", encoding="utf-8")
+            with mock.patch.object(book_export, "EXPORT_BIOS_DIR", book_export.Path(d)):
+                self.assertEqual(book_export.author_bio(self.book), "He was born.\n\nHe preached.\n\nHe died.")
+                # Per language: an English file never speaks for Spanish.
+                es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
+                self.assertEqual(book_export.author_bio(es), "")
+
     def test_an_imprint_has_no_biography_page(self):
         self.book.author.is_imprint = True
         self.book.author.save()
@@ -253,6 +265,29 @@ class PilotTests(TestCase):
 
     def test_held_works_stay_out(self):
         self.assertFalse(export_policy.HELD_ESV & export_policy.ENGLISH_CLASSICS)
+
+    def test_every_exportable_edition_has_a_one_page_export_bio(self):
+        # The About the Author page: three or four paragraphs that must fit one
+        # A5 page. The ceiling is loose — the real check is rendering the PDF
+        # (the book-export skill) — but it stops a bio_html pasted in by mistake.
+        import json
+
+        from .content_fixtures import book_fixture_path
+
+        wanted = set()
+        for slug, lang in sorted(export_policy.EXPORT_EDITIONS):
+            author = json.loads(book_fixture_path(slug, lang).read_text(encoding="utf-8"))[0]["fields"]["author"][0]
+            wanted.add(f"{author}.{lang}.txt")
+            path = book_export.EXPORT_BIOS_DIR / f"{author}.{lang}.txt"
+            self.assertTrue(path.is_file(), f"{slug} ({lang}): no export bio at {path.name}")
+            text = path.read_text(encoding="utf-8").strip()
+            paragraphs = [p for p in text.split("\n\n") if p.strip()]
+            self.assertIn(len(paragraphs), (3, 4), f"{path.name} should be three or four paragraphs")
+            self.assertLessEqual(len(text), 1900, f"{path.name} is too long for one page")
+        # And no file for an author or language with nothing to download: a typo
+        # in a name would otherwise sit there unread while the short bio prints.
+        stray = {p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt")} - wanted
+        self.assertFalse(stray, f"export bios no edition uses: {sorted(stray)}")
 
 
 class CoverTests(TestCase):
