@@ -201,3 +201,102 @@ class ReviewedHydeTranslationMigrationTests(TestCase):
         self._run()
         tr.refresh_from_db()
         self.assertTrue(tr.reviewed)
+
+
+class TypographyIsNotAChangeTests(TestCase):
+    """A typography sweep of the English must not flag its translations."""
+
+    def setUp(self):
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.en = Book.objects.create(author=author, slug="w", language="en", title="W")
+        self.sw = Book.objects.create(
+            author=author, slug="w", language="sw", title="W",
+            source_type=Book.SourceType.AI_UNREVIEWED,
+        )
+        Chapter.objects.create(
+            book=self.en, order=1, title="One",
+            body_html='<p>Pray -- really pray -- and say &quot;yes&quot;...</p>',
+        )
+        Chapter.objects.create(book=self.sw, order=1, title="Moja", body_html="<p>Omba</p>")
+        ts.refresh("book")
+
+    def _edit(self, body):
+        Chapter.objects.filter(book=self.en, order=1).update(body_html=body)
+
+    def test_typographic_form_folds_only_typography(self):
+        f = ts.typographic_form
+        self.assertEqual(f("a -- b"), f("a—b"))
+        self.assertEqual(f("a – b"), f("a — b"))
+        self.assertEqual(f("“so”"), f('"so"'))
+        self.assertEqual(f("it’s"), f("it's"))
+        self.assertEqual(f("wait…"), f("wait..."))
+        self.assertEqual(f("a&nbsp; b"), f("a b"))
+        # Words, case and markup still count.
+        self.assertNotEqual(f("GOD"), f("God"))
+        self.assertNotEqual(f("<p>a</p><p>b</p>"), f("<p>a b</p>"))
+        self.assertNotEqual(f("self-righteous"), f("self—righteous"))
+
+    def test_a_typography_sweep_leaves_translations_current(self):
+        self._edit("<p>Pray — really pray — and say “yes”…</p>")
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {})
+
+    def test_a_wording_change_still_flags_them(self):
+        self._edit("<p>Pray — really pray — and say “no”…</p>")
+        ts.refresh("book")
+        self.assertEqual(ts.stale_languages("book"), {"w": ["sw"]})
+
+
+class RefingerprintMigrationTests(TestCase):
+    """0177 moves every digest to the typographic rule without changing which
+    translations are stale — except those #4936's dashes alone had flagged."""
+
+    @staticmethod
+    def _old(parts):
+        import hashlib
+
+        h = hashlib.sha256()
+        for p in parts:
+            h.update((p or "").encode("utf-8"))
+            h.update(ts._SEP.encode())
+        return h.hexdigest()
+
+    def test_state_carries_over_and_4936s_typography_flags_clear(self):
+        import importlib
+
+        from django.apps import apps
+
+        mig = importlib.import_module("library.migrations.0177_typographic_translation_digests")
+        (kind, pre_slug), pre_digest = next(
+            (k, v) for k, v in mig.PRE_4936.items() if k[0] == "book"
+        )
+        author = Author.objects.create(slug="x", name="X")
+
+        def edition(slug, lang, body):
+            b = Book.objects.create(
+                author=author, slug=slug, language=lang, title=slug,
+                source_type=Book.SourceType.AI_UNREVIEWED if lang != "en" else "",
+            )
+            Chapter.objects.create(book=b, order=1, title="T", body_html=body)
+            return b
+
+        en = edition("cur", "en", "<p>Text -- here</p>")
+        current = edition("cur", "sw", "<p>Maandishi</p>")
+        stale = edition("cur", "lg", "<p>Ebiwandiikiddwa</p>")
+        dash_en = edition(pre_slug, "en", "<p>After the sweep — here</p>")
+        dash_flagged = edition(pre_slug, "es", "<p>Texto</p>")
+
+        old_en = self._old(["1", "T", "<p>Text -- here</p>"])
+        Book.objects.filter(pk=en.pk).update(content_digest=old_en)
+        Book.objects.filter(pk=current.pk).update(english_digest=old_en)
+        Book.objects.filter(pk=stale.pk).update(english_digest="0" * 64)
+        Book.objects.filter(pk=dash_en.pk).update(
+            content_digest=self._old(["1", "T", "<p>After the sweep — here</p>"])
+        )
+        Book.objects.filter(pk=dash_flagged.pk).update(english_digest=pre_digest)
+
+        mig.refingerprint(apps, None)
+        # The deploy's own refresh then finds nothing to change...
+        self.assertEqual(ts.refresh("book")["rebaselined"], 0)
+        # ...and only the translation that was already behind stays flagged.
+        self.assertEqual(ts.stale_languages("book"), {"cur": ["lg"]})
