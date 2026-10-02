@@ -93,6 +93,9 @@
    "lost-paragraphing": 1,
    "word-fusion": 1
   },
+  "gideon-or-the-strength-of-weakness": {
+   "space-before-punct": 4
+  },
   "godliness": {
    "space-before-punct": 9
   },
@@ -148,9 +151,6 @@
   },
   "men-of-prayer-2": {
    "space-before-punct": 2
-  },
-  "ministry-of-intercession": {
-   "lost-paragraphing": 1
   },
   "morning-by-morning": {
    "space-before-punct": 1,
@@ -281,6 +281,9 @@
   },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
+  },
+  "the-christian-temper-supernatural-and-divine": {
+   "space-before-punct": 2
   },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23

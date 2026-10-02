@@ -302,6 +302,59 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    # Finish-the-series nudge. Dynamic per reader: ``{finished}`` is the book they
+    # just finished and ``{next}`` the next volume — both filled at render time
+    # (emails/rendering.py), like ``{name}``. ``cta_path`` is set per reader (it
+    # points at the next volume), so the block's value here is only a fallback.
+    "finish_series": {
+        "en": {
+            "subject": "The story continues: {next}",
+            "preheader": "You finished {finished} — the next volume is waiting.",
+            "heading": "Ready for the next one?",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You finished {finished} — we hope it was time well spent.",
+                "It’s part of a series, and the next volume, {next}, is ready "
+                "for you whenever you are. One book leads into the next.",
+            ],
+            "cta_label": "Start {next}",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "La historia continúa: {next}",
+            "preheader": "Terminaste {finished}; el siguiente volumen te espera.",
+            "heading": "¿Listo para el siguiente?",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Terminaste {finished}, y esperamos que haya sido un tiempo bien "
+                "aprovechado.",
+                "Forma parte de una serie, y el siguiente volumen, {next}, está "
+                "listo para cuando quieras. Un libro lleva al siguiente.",
+            ],
+            "cta_label": "Empezar {next}",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "A história continua: {next}",
+            "preheader": "Terminou {finished} — o próximo volume está à espera.",
+            "heading": "Pronto para o próximo?",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Terminou {finished}, e esperamos que tenha sido tempo bem "
+                "passado.",
+                "Faz parte de uma série, e o próximo volume, {next}, está pronto "
+                "para quando quiser. Um livro leva ao seguinte.",
+            ],
+            "cta_label": "Começar {next}",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
 }
 
 
