@@ -248,6 +248,9 @@ export interface AdminLanguageHealth {
 	};
 	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
+	/** Readers whose site language this is, reading a work it has no edition
+	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
+	reading_elsewhere: number;
 }
 
 export const getAdminLanguageHealth = () =>
@@ -424,6 +427,25 @@ export const checkAdminLanguageDeploy = (code: string) =>
 
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
+
+/** A work this language's readers are reaching for in another language, with
+ *  its evidence: readers reading it elsewhere, and failed searches here that
+ *  find it in English. */
+export interface AdminWantedWork {
+	type: 'book' | 'sermon' | 'article';
+	slug: string;
+	title: string;
+	author: string;
+	readers: number;
+	searches: number;
+	/** Under copyright: no translation job can be filed. */
+	blocked: boolean;
+}
+
+export const getAdminLanguageWanted = (code: string) =>
+	apiFetch<{ language: string; days: number; works: AdminWantedWork[] }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/wanted/`
+	);
 
 // Adding a language. The row IS the language: the translate_* commands read
 // their Bible and glossary from it, so creating one here is what makes the

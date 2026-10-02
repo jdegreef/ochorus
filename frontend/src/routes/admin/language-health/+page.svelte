@@ -151,6 +151,14 @@
 									{/if}
 								</div>
 								<p class="mt-1 text-small text-muted">{@render contentLine(l)}</p>
+								{#if l.reading_elsewhere}
+									<a
+										href="/admin/languages/{l.code}#sec-wanted"
+										class="mt-1.5 inline-block rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning hover:underline"
+										title="Readers whose site language is {l.name}, reading a work that has no {l.name} edition"
+										>{fmt(l.reading_elsewhere)} reader{l.reading_elsewhere === 1 ? '' : 's'} reading in another language →</a
+									>
+								{/if}
 							</div>
 							<div class="shrink-0 text-end">
 								<span class="text-h2 tabular-nums {BAND_INK[b.tone]}">{l.health}</span>
