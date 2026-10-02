@@ -49,3 +49,15 @@ STREAMS: list[dict] = [
 
 STREAM_KEYS = frozenset(s["key"] for s in STREAMS)
 LEGACY_FIELD: dict[str, str | None] = {s["key"]: s["legacy"] for s in STREAMS}
+
+
+def require_stream(stream: str) -> str:
+    """Return ``stream`` if it names a real stream, else raise ``ValueError``.
+
+    A typo'd key would otherwise resolve to its default (ON for a stream with no
+    legacy boolean), so an unknown stream silently reads as *wanted* — a
+    miscounted metric or a mis-sent email rather than a loud failure. Call this
+    at the stream-consent entry points to turn that into an error."""
+    if stream not in STREAM_KEYS:
+        raise ValueError(f"unknown email stream: {stream!r}")
+    return stream
