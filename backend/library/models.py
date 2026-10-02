@@ -1601,6 +1601,53 @@ class SearchQueryLog(models.Model):
         return row
 
 
+def fold_query(query: str) -> str:
+    """A search as the admin reports group it: case-folded, one space between
+    words. The key a triage decision is stored under, so "Esperando en Dios" and
+    "esperando en dios " are one decision."""
+    return " ".join(query.split()).lower()[:200]
+
+
+class SearchDecision(models.Model):
+    """What an admin decided about one search that found nothing, in one language.
+
+    The admin Search page lists unanswered searches; without somewhere to record
+    "this one's handled", every visit re-lists the same queries and the list
+    trains its reader to skim it. A decision moves a query from the Open list to
+    Handled (or Wanted). Undo deletes the row. Keyed on the folded query
+    (:func:`fold_query`) and language, because a gap is per language: there is
+    no English fallback.
+    """
+
+    class Outcome(models.TextChoices):
+        #: The work exists in another language and a translation job was filed.
+        TRANSLATE = "translate", "Translation queued"
+        #: Not in the library in any language — the import shopping list.
+        WANTED = "wanted", "Wanted"
+        #: Not something Ochorus will carry (in copyright, off-topic, spam).
+        OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+
+    query = models.CharField(max_length=200)
+    language = models.CharField(max_length=10)
+    outcome = models.CharField(max_length=20, choices=Outcome.choices)
+    #: The work a translation was queued for ("book:waiting-on-god"); blank otherwise.
+    target = models.CharField(max_length=200, blank=True)
+    note = models.CharField(max_length=300, blank=True)
+    decided_by = models.EmailField(blank=True)
+    decided_at = models.DateTimeField()
+
+    class Meta:
+        ordering = ["-decided_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["query", "language"], name="uniq_searchdecision_query_lang"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.query!r} [{self.language}] → {self.outcome}"
+
+
 class SearchClickLog(models.Model):
     """A search result a reader actually opened — anonymous, like the query log.
 
@@ -2029,6 +2076,8 @@ class AdminAction(models.Model):
         BROADCAST_CANCEL = "broadcast.cancel", "Broadcast canceled"
         BROADCAST_TEST = "broadcast.test", "Broadcast test sent"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
+        SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
+        SEARCH_UNDO = "search.undo", "Search triage undone"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a
