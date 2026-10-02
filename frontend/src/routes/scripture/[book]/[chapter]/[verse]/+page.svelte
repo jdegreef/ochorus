@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { ScripturePage } from '$lib/library-public';
+	import { scriptureBookHref, type ScripturePage } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -34,6 +34,7 @@
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
 		{ name: t('reader.scripture'), href: '/scripture' },
+		{ name: page.book.title, href: scriptureBookHref(page.book.slug) },
 		{ name: `${page.book.title} ${page.chapter}`, href: chapterPath },
 		{ name: page.reference, href: path }
 	]);

@@ -1421,6 +1421,34 @@ export interface ScriptureNeighbour {
 export const listScripturePages = (f?: Fetch) =>
 	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/', {}, f);
 
+/** One Bible book across the library — the /scripture/<book>/ page. */
+export interface ScriptureBookPage {
+	book: { slug: string; title: string; order: number };
+	version: string;
+	/** Distinct library passages (chapters) citing any part of the book. */
+	citing_count: number;
+	/** Distinct library books those passages come from. */
+	books_count: number;
+	/** The book's chapter pages, in order, each with its own citing count. */
+	chapters: { chapter: number; citing_count: number }[];
+	/** Its most-quoted verse pages, with their ASV text. */
+	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
+	/** The library books that return to it most. */
+	top_books: {
+		slug: string;
+		title: string;
+		author_name: string;
+		author_slug: string;
+		citing_count: number;
+	}[];
+	/** Adjacent books that have a page, in canonical order. */
+	prev: { book: string; book_title: string } | null;
+	next: { book: string; book_title: string } | null;
+}
+
+export const getScriptureBook = (book: string, f?: Fetch) =>
+	apiFetch<ScriptureBookPage>(`/api/library/scripture/${book}/`, {}, f);
+
 export const getScripturePage = (book: string, chapter: number, verse?: number, f?: Fetch) =>
 	apiFetch<ScripturePage>(
 		`/api/library/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : ''),
@@ -1433,6 +1461,9 @@ export const getScripturePage = (book: string, chapter: number, verse?: number, 
  * trailing `<verse>/` for a verse page. One place for the shape the search hit
  * and the command palette both link to; `null`/`0` verse means the whole chapter.
  */
+/** The /scripture/<book>/ page: one Bible book across the library. */
+export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
+
 export const scripturePageHref = (book: string, chapter: number, verse: number | null): string =>
 	`/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '');
 

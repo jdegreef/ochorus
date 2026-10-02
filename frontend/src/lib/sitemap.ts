@@ -705,11 +705,22 @@ async function build(): Promise<SitemapData> {
 	const advertisedScripture = scripturePages.filter(
 		(p) => p.verse === null && p.citing_count >= SCRIPTURE_SITEMAP_FLOOR
 	);
+	const scriptureByBook = new Map<string, (string | null | undefined)[]>();
+	for (const p of advertisedScripture) {
+		scriptureByBook.set(p.book, [...(scriptureByBook.get(p.book) ?? []), p.updated_at]);
+	}
 	const scripture: Entry[] = [
 		{
 			byLocale: new Map([['en', '/scripture/']]),
 			lastmod: newest(scripturePages.map((p) => p.updated_at))
 		},
+		// A book page (/scripture/<book>/) is advertised when at least one of its
+		// chapters is: it aggregates them, so it is never the thinner page. Dated
+		// by the newest of those chapters.
+		...[...scriptureByBook].map(([book, dates]) => ({
+			byLocale: new Map([['en', `/scripture/${book}/`] as [string, string]]),
+			lastmod: newest(dates)
+		})),
 		...advertisedScripture.map((p) => ({
 			byLocale: new Map([['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]]),
 			lastmod: p.updated_at ?? undefined

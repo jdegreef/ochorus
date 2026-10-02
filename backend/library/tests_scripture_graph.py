@@ -446,3 +446,71 @@ class CurrentPagesCacheTests(TestCase):
             ContentRevision.bump()
             current_pages()
             self.assertEqual(computed.call_count, 2)
+
+
+class BookViewTests(TestCase):
+    """The /scripture/<book>/ page: one Bible book across the library."""
+
+    def setUp(self):
+        self.client = APIClient()
+        murray = Author.objects.create(slug="murray", name="Andrew Murray")
+        bunyan = Author.objects.create(slug="bunyan", name="John Bunyan")
+        self.big = Book.objects.create(author=murray, slug="big", language="en", title="Big")
+        small = Book.objects.create(author=bunyan, slug="small", language="en", title="Small")
+        for i in range(VERSE_FLOOR + 1):
+            cite(self.big, i + 1, "Romans 8:28")
+        # One chapter citing two Romans chapters: one passage, not two.
+        cite(small, 1, "Romans 5:8", body="Compare Romans 8:28 with")
+        for i in range(CHAPTER_FLOOR):
+            cite(small, i + 2, "Romans 5:8")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+
+    def get(self, slug):
+        return self.client.get(f"/api/library/scripture/{slug}/")
+
+    def test_a_book_with_chapter_pages_is_served(self):
+        res = self.get("romans")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(res.data["book"]["title"], "Romans")
+        self.assertEqual([c["chapter"] for c in res.data["chapters"]], [5, 8])
+
+    def test_citing_count_counts_each_passage_once(self):
+        # 6 chapters in Big + 4 in Small = 10, though Small's first chapter
+        # cites both Romans 5 and Romans 8.
+        res = self.get("romans")
+        self.assertEqual(res.data["citing_count"], VERSE_FLOOR + 1 + CHAPTER_FLOOR + 1)
+        self.assertEqual(res.data["books_count"], 2)
+
+    def test_top_books_are_ranked_by_citing_chapters(self):
+        top = self.get("romans").data["top_books"]
+        self.assertEqual([b["slug"] for b in top], ["big", "small"])
+        self.assertEqual(top[0]["author_name"], "Andrew Murray")
+        self.assertEqual(top[0]["citing_count"], VERSE_FLOOR + 1)
+
+    def test_verses_carry_their_text_and_only_pages_that_exist(self):
+        verses = self.get("romans").data["verses"]
+        self.assertEqual([(v["chapter"], v["verse"]) for v in verses], [(8, 28)])
+        self.assertIn("work together for good", verses[0]["text"])
+
+    def test_a_book_without_chapter_pages_404s(self):
+        self.assertEqual(self.get("nahum").status_code, 404)
+        self.assertEqual(self.get("not-a-book").status_code, 404)
+
+    def test_pages_route_is_not_read_as_a_book(self):
+        res = self.client.get("/api/library/scripture/pages/")
+        self.assertEqual(res.status_code, 200)
+        self.assertIsInstance(res.data, list)
+
+    def test_prev_and_next_walk_books_with_pages(self):
+        author = Author.objects.get(slug="murray")
+        other = Book.objects.create(author=author, slug="o", language="en", title="O")
+        for i in range(CHAPTER_FLOOR):
+            cite(other, i + 1, "John 3:16")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+        res = self.get("romans")
+        self.assertEqual(res.data["prev"], {"book": "john", "book_title": "John"})
+        self.assertIsNone(res.data["next"])
