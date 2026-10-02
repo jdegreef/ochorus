@@ -656,6 +656,11 @@ export interface AdminCoverageRow {
 	/** The title would show a reader nothing (blank, or only zero-width /
 	 * bidi characters) — text.is_blank_title. Absent otherwise. */
 	untitled?: boolean;
+	/** Books, sermons and articles: language → readers whose site language it
+	 *  is, reading this work elsewhere for want of their own edition
+	 *  (library/demand.py, reading signal only). Only languages with any;
+	 *  absent when none. A missing cell, not always an open gap (see isGap). */
+	asking?: Record<string, number>;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs

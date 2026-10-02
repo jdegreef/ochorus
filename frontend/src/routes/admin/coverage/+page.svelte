@@ -5,6 +5,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { plural } from '$lib/languageHealth';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import {
@@ -323,7 +324,9 @@
 	};
 	function csvCell(r: AdminCoverageRow, l: AdminCoverageLanguage): string {
 		const base = r.cells[l.code] === 'public_domain' ? 'PD' : CSV_LABEL[cellState(r, l)];
-		return isStale(r, l.code) ? `${base} (out of date)` : base;
+		const n = isGap(l, r) ? asking(r, l) : 0;
+		const shown = n ? `${base}${base ? ' ' : ''}(${n} asking)` : base;
+		return isStale(r, l.code) ? `${shown} (out of date)` : shown;
 	}
 	function downloadCsv() {
 		const esc = (x: string | number) => {
@@ -351,15 +354,29 @@
 	// readers (so an unread work still ranks by its gaps); each open gap counts
 	// 1–2× by how much that language's readers search in vain (⌕, scaled to the
 	// busiest column). With "Gaps in" set every row is a gap there, so the order
-	// is simply most-read first.
+	// is that one column's gap scores.
 	const maxUnmet = $derived(Math.max(1, ...langs.map((l) => l.unmet_searches ?? 0)));
 	const gapWeight = (l: AdminCoverageLanguage) => 1 + (l.unmet_searches ?? 0) / maxUnmet;
-	// One gap's worth: the work's readers × its language's weight. A row's
-	// priority is the sum of its gaps; "Translate next" ranks the gaps themselves.
+	// One gap's worth: (1 + the work's readers + the readers of THAT language
+	// reading it elsewhere for want of it) × the language's weight. The asking
+	// readers are already among the work's readers, so adding them again counts
+	// them twice in their own language's column: a gap three Swahili readers are
+	// waiting on outranks the same work's gap in a language nobody has asked for,
+	// without squaring them. Additive, like demand.demand_score on the language
+	// page. A row's priority is the sum of its gaps; "Translate next" ranks the
+	// gaps themselves.
+	const asking = (r: AdminCoverageRow, l: AdminCoverageLanguage) => r.asking?.[l.code] ?? 0;
+	// The tooltip / screen-reader note for a gap readers are waiting on.
+	const askingNote = (r: AdminCoverageRow, l: AdminCoverageLanguage) => {
+		const n = asking(r, l);
+		return n ? ` · ${plural(n, `${l.name} reader is`, `${l.name} readers are`)} reading it in another language` : '';
+	};
 	const gapScore = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
-		isGap(l, r) ? (1 + (r.readers ?? 0)) * gapWeight(l) : 0;
-	const priority = (r: AdminCoverageRow) =>
-		gapLang ? 1 + (r.readers ?? 0) : langs.reduce((n, l) => n + gapScore(r, l), 0);
+		isGap(l, r) ? (1 + (r.readers ?? 0) + asking(r, l)) * gapWeight(l) : 0;
+	const priority = (r: AdminCoverageRow) => {
+		const only = gapLang ? langs.find((l) => l.code === gapLang) : undefined;
+		return only ? 1 + (r.readers ?? 0) + asking(r, only) : langs.reduce((n, l) => n + gapScore(r, l), 0);
+	};
 
 	const visibleRows = $derived.by(() => {
 		let out = rows;
@@ -427,6 +444,9 @@
 		queued: { label: '◷', cls: 'border border-accent-soft-border bg-accent-soft text-accent' },
 		translating: { label: '◐', cls: 'border border-accent bg-surface text-accent' },
 		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
+		// Still missing (dashed, like `missing`), but readers are waiting on it:
+		// its label is how many (see `asking`).
+		asking: { label: '', cls: 'border border-dashed border-accent bg-surface tabular-nums text-accent' },
 		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
 	} as const;
 	// The summary tiles' colours: the border/fill when its filter is on, the
@@ -544,10 +564,11 @@
 		return { gaps, unreviewed, stale, inFlight: tabJobs.length, translating };
 	});
 	// "Translate next": every open gap, scored like the Priority sort scores a
-	// row — the work's readers × how much that language searches in vain — so
-	// the top of the list is the translation most likely to be read. Readers are
-	// unbounded and the language weight is only 1–2×, so one popular work would
-	// take every slot: each work gets at most NEXT_PER_WORK. Ties keep the
+	// row — the work's readers × how much that language searches in vain × (1 +
+	// readers of that language asking for it) — so the top of the list is the
+	// translation most likely to be read. Readers and asking are unbounded and
+	// the language weight is only 1–2×, so one popular work would take every
+	// slot: each work gets at most NEXT_PER_WORK. Ties keep the
 	// tab's own (curated) order. Empty until the job list has loaded — before
 	// that a queued gap still looks open.
 	const NEXT_COUNT = 10;
@@ -595,6 +616,11 @@
 		{ k: 'stale', label: 'English changed' },
 		{ k: 'blocked', label: 'Under copyright' }
 	];
+	// Open gaps on screen that readers are waiting on: the legend's count, and
+	// whether to show its key at all (a queued or hidden one doesn't count).
+	const askingGaps = $derived(
+		visibleRows.reduce((n, r) => n + langs.filter((l) => isGap(l, r) && asking(r, l)).length, 0)
+	);
 	const legendCounts = $derived.by(() => {
 		const n = Object.fromEntries(LENSES.map((o) => [o.k, 0])) as Record<Lens, number>;
 		for (const r of visibleRows)
@@ -1000,6 +1026,13 @@
 						</button>
 					{/if}
 				{/each}
+				{#if askingGaps}
+					<span
+						class="inline-flex items-center gap-1.5 text-muted"
+						title="A missing translation that readers of that language are reading in another language, for want of it. The number is how many readers; it also raises the gap in the priority order."
+						><span class="{TILE} {CELL.asking.cls}">n</span>readers asking<span class="count">{askingGaps}</span></span
+					>
+				{/if}
 				<details
 					class="relative"
 					bind:open={helpOpen}
@@ -1339,34 +1372,46 @@
 				aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
 			>
 		{:else if !isGap(l, r) || !queueOn}
+			<!-- Demand shows here too: someone who can read the matrix but not
+			     queue should still see where readers are waiting. -->
+			{@const wanting = asking(r, l)}
 			<span
-				class="{TILE} {CELL.missing.cls}"
-				title={jobsConfigured === false
+				class="{TILE} {wanting ? CELL.asking.cls : CELL.missing.cls}"
+				title={(jobsConfigured === false
 					? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 					: untitled(r)
 						? `Fix the title of ${name} before queueing translations`
 						: !canQueue
 							? `Missing: ${name} → ${l.name}`
-							: `${l.name} isn't a translation target — nothing to queue`}
-				aria-label="Missing"
-			></span>
+							: `${l.name} isn't a translation target — nothing to queue`) + askingNote(r, l)}
+				aria-label={'Missing' + askingNote(r, l)}
+				>{wanting || ''}</span
+			>
 		{:else}
 			{@const spot = queueing === jobKey(r.slug, l.code)}
 			{@const picked = !!selected[cellKey(r.slug, l.code)]}
+			{@const wanting = asking(r, l)}
+			{@const why = askingNote(r, l)}
 			<button
 				type="button"
 				aria-pressed={picked}
 				class="{TILE} transition-colors hover:border-solid hover:border-accent-soft-border hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent {picked
 					? 'border border-accent bg-accent-soft text-accent'
-					: `${CELL.missing.cls} text-muted`}"
+					: wanting
+						? CELL.asking.cls
+						: `${CELL.missing.cls} text-muted`}"
 				disabled={busy}
-				title={`Queue a ${l.name} translation of ${name}`}
-				aria-label={`Queue a ${l.name} translation of ${name}`}
+				title={`Queue a ${l.name} translation of ${name}${why}`}
+				aria-label={`Queue a ${l.name} translation of ${name}${why}`}
 				onclick={(e) =>
 					e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
 			>
 				{#if spot}
 					<span>…</span>
+				{:else if wanting && !picked}
+					<!-- The count, and on hover the "+" every other queue tile shows:
+					     a click files a job, not opens details. -->
+					<span class="group-hover:hidden">{wanting}</span><span class="hidden group-hover:inline">+</span>
 				{:else}
 					<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
 				{/if}

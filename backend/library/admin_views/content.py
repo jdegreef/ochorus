@@ -18,6 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
+from ..demand import reading_elsewhere
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -582,6 +583,28 @@ def _review_state_or_present(record: dict) -> str:
     return st if st in _AI_STATES else "present"
 
 
+def _with_asking(rows: list[dict], kind: str, wanted: dict) -> list[dict]:
+    """Stamp each row with ``asking``: language → readers whose site language
+    it is, reading this work elsewhere because it has no edition in theirs
+    (``library.demand.reading_elsewhere``, the reading signal only). Only
+    languages with any; absent when none. Each is a missing cell, though not
+    always an open gap: the work may be blocked, untitled, or already queued,
+    which the page decides (``isGap``).
+
+    Only the matrix's columns count, and those are languages with content: a
+    registered language with none yet has no column here, so its readers show
+    on its own admin page and on Language health instead."""
+    by_slug: dict[str, dict[str, int]] = {}
+    for lang, works in wanted.items():
+        for (k, slug), readers in works.items():
+            if k == kind:
+                by_slug.setdefault(slug, {})[lang] = readers
+    for row in rows:
+        if asking := by_slug.get(row["slug"]):
+            row["asking"] = asking
+    return rows
+
+
 def _with_stale(rows: list[dict], kind: str) -> list[dict]:
     """Stamp ``stale`` — the languages whose translation predates the current
     English (library/translation_staleness) — on the rows that have any."""
@@ -617,6 +640,10 @@ class AdminCoverageView(APIView):
         # so the admin UI only offers the queue where a job would actually be filed.
         registry = known_codes()
         unmet = self._unmet_by_language()
+        # Readers reaching for a work in another language for want of their own
+        # (library.demand): the per-cell demand behind a gap. The reading signal
+        # only; the search one runs real searches, too slow for every column.
+        wanted = reading_elsewhere([c for c in codes if c in registry])
         return Response(
             {
                 "languages": [
@@ -629,15 +656,23 @@ class AdminCoverageView(APIView):
                     }
                     for c in codes
                 ],
-                "books": _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
-                "sermons": _with_stale(
-                    self._with_readers(self._sermon_rows(), "sermon"), "sermon"
+                "books": _with_asking(
+                    _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
+                    "book",
+                    wanted,
+                ),
+                "sermons": _with_asking(
+                    _with_stale(self._with_readers(self._sermon_rows(), "sermon"), "sermon"),
+                    "sermon",
+                    wanted,
                 ),
                 "plans": self._with_readers(self._plan_rows(), "plan"),
                 # Bios carry `stale` from AuthorTranslation.source_stale (_bio_rows).
                 "bios": self._with_readers(self._bio_rows(), "bio"),
                 # Articles have no reading-layer rows, so no reader counts.
-                "articles": _with_stale(self._article_rows(), "article"),
+                "articles": _with_asking(
+                    _with_stale(self._article_rows(), "article"), "article", wanted
+                ),
                 # The series the Books matrix can be narrowed to (each book row
                 # carries its `series`), so a whole series' gaps in one language
                 # queue as that column's "queue all".

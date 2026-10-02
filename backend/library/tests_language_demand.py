@@ -107,3 +107,14 @@ class LanguageDemandTests(TestCase):
         by_code = {r["code"]: r["reading_elsewhere"] for r in res.data["languages"]}
         # sw1 wants two works but is one reader.
         self.assertEqual((by_code["sw"], by_code["lg"]), (2, 1))
+
+    def test_coverage_cells_carry_the_demand_behind_each_gap(self):
+        res = APIClient().get("/api/admin/coverage/")
+        self.assertEqual(res.status_code, 200)
+        books = {r["slug"]: r for r in res.data["books"]}
+        sermons = {r["slug"]: r for r in res.data["sermons"]}
+        # Only columns that exist count: Luganda has no content yet, so its one
+        # reader's vote has no cell to sit on.
+        self.assertEqual(books["the-pursuit-of-god"]["asking"], {"sw": 2})
+        self.assertEqual(sermons["waiting-on-god"]["asking"], {"sw": 1})
+        self.assertNotIn("asking", books["absolute-surrender"])
