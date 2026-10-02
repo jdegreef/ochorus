@@ -81,7 +81,7 @@
 		defaults: {
 			q: '',
 			filter: 'all' as Filter,
-			sort: 'name' as Sort,
+			sort: 'books' as Sort,
 			full: '',
 			trad: '',
 			place: '',
