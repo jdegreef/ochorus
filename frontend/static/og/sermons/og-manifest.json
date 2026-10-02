@@ -246,6 +246,10 @@
 			"content": "43fd7561c1c80c780f2a0faeb520d2d3e1f183ec0ed7696343f7135fff2fec39",
 			"art": "55979244a41a92b6bbe07f99b353fd3bbf32d21b8cb7bbb17b7a5e2e80fd2a9d"
 		},
+		"from-strength-to-strength": {
+			"content": "8df56b0f83f16526096aa9265570c6d870977e5ba4f2431cf6c99d3bf57918cd",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"full-salvation": {
 			"content": "d8ddee72148d512ab55f19362bf3fb64934d78914aef1391003fd12b0c5e6e52",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
@@ -286,6 +290,10 @@
 			"content": "70fe1737f086909220693c05277e8bdcb9ef95bfa9f18be8cb4e3f01478e8e43",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"grace-abounding": {
+			"content": "0545dd485a1bbaf9075d89780bbe2eb4e61ec5362918b4bcd46304e9d2d68d57",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
 		"grace-and-truth": {
 			"content": "09246ae4ce03f3f896ba04cb5bdeb8aa838b33248f4933a3cb5d7bce4bebf9ef",
 			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
@@ -322,12 +330,20 @@
 			"content": "d4230634a8faf2f7b737e23d7b64f41fe7d9c54f91e4cc3479d8826c3698206e",
 			"art": "49e519d54171de841d63a6d5d2a5c1393930d7ceb46e3b624a45fc2f95cc8b26"
 		},
+		"hindering-the-holy-spirit": {
+			"content": "846c0909b224d59c39ab6ad8e96abdd31a93dc8caa9b0b27906ccd5733e7c8cd",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"homily-ii-on-the-statues": {
 			"content": "66bc364b81437b962358f44e70927cd92b1839ea5212e3d52f7e40d75473cbcc",
 			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"homily-on-the-paralytic": {
 			"content": "0501d44c6e0f276ae4c7fbdee3a9d0ac4f704df79413e56991adfb974bb78376",
+			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
+		},
+		"how-to-abide": {
+			"content": "7ecdcb3e278f05b9e79ece4e1cac27fd6b731aef010213a74069336e23a54887",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
 		"how-to-contemplate-christs-holy-sufferings": {
@@ -410,6 +426,10 @@
 			"content": "5e71cdc6b3751ea484609f59b20aa806e68d55e8cbb664a3a966287dc0231db5",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
 		},
+		"more-than-conquerors": {
+			"content": "f510c5bf83a361399c7da3bcc010a8bfea1a48195d733440d8d22a9e4569c229",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"naaman-the-syrian": {
 			"content": "c865b2279b0d86e24358c6044e5ef61726d16736af00018eac15cce691c7c2e6",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -438,6 +458,10 @@
 			"content": "d4119a1cd575d6e9a958e0d03ff1965e0332d297ff831390f3913071a2f5e9e7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"our-kinsman-redeemer": {
+			"content": "778aadf805ccdaa1aa39a20334ffebdb1c02c6034be8de4b3ac3956f09c610a6",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
+		},
 		"partnership-with-god": {
 			"content": "970e6edc192dc3b10f1f59cca748c4a7f88001a253cf6a9b8eaa527a060e63c7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -449,6 +473,10 @@
 		"pauls-praise-of-christian-love": {
 			"content": "1ae261744ef5243a8e471b9c34e1da470603165cf053eb80ef9d1743587eed09",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"personal-responsibility": {
+			"content": "a98c891200a6026e365a8fc297941be8e4a88fe65fe84b49eb04ab89dfadf254",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"please-sir-save-me": {
 			"content": "e12ac6459ef591a4601f08881bf6070b5a882e2f90baa1d539713984bbe6b45d",
@@ -514,6 +542,10 @@
 			"content": "577e856c2e6242d6401460c946d5901efbd5e6109e65d65c096305a53510aad1",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"sinning-and-repenting": {
+			"content": "922d8a991ce934aba216b557b44fe375608f50b67349ae4943b0e693143a7d77",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"so-great-salvation": {
 			"content": "1477bbc7b95ac30059b9b00b210feafe006d08d403bd332d96f966856ecfadb7",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
@@ -525,6 +557,10 @@
 		"sons-and-heirs": {
 			"content": "179653a5f74bce38ff00fcc5bbd3316a7f4c2c729099220744729bd542a26b9d",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"spiritual-growth": {
+			"content": "56420cb853dbf1e1f76ece033e22559a4f314314231b78c766f8ac94ed05a5f9",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
 		},
 		"sweet-comfort-for-feeble-saints": {
 			"content": "31822ce7059517b4cd9b2ee165884a4d1d19f0ba4f0ec0fe1fe2f472e9e735f8",
@@ -814,6 +850,10 @@
 			"content": "014c188816f0b7639aee8ec6874999325a3a9dcbc8cb6023612646014ed8ecc6",
 			"art": "42cea63793555ba46237d1496222b08e8c9445644c2c4ac5f41fe51c7e5d7d30"
 		},
+		"the-weapons-of-our-warfare": {
+			"content": "2bfc397d2619f6f6691ff9cd8c5b9bc2d96071d723a9e778732f50dc66859d91",
+			"art": "70965144f0fd3f1c97fe8267b869fe97789eddfcdc57402189e54fc398ad6309"
+		},
 		"the-witness-of-the-spirit": {
 			"content": "bf935afe1fe0a22a01ed8e444a3590f5f08a94d99ebf1bc2cb1768b043d353c5",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
@@ -897,6 +937,10 @@
 		"women-that-make-a-difference": {
 			"content": "85456c0a365b45028797316da99f18cd72a6d4fa32ccd349ec2c7b092d8a717c",
 			"art": "4bea036f0980c63e45d3b2196550f69a4ef6942d1e39343d297f0cd5f37b53fa"
+		},
+		"words-for-discouraged-workers": {
+			"content": "def8bfa39995e10308d2f00f7465692ba359587d13eef9bebdace58775d19baf",
+			"art": "b20016eb0ed2ae4661b039a3e25b0b9ef42db39f3fe7df5d4d0ba5aa7a708b52"
 		},
 		"working-out-our-own-salvation": {
 			"content": "036a5ccd9fd7865750ada8b5e9e5ed4df8bc7bf81665f92e5d4296e2b3aca3ae",

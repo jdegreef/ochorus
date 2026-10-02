@@ -268,6 +268,12 @@ export interface AdminLanguageHealth {
 	};
 	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
+	/** Daily scores for the last eight weeks, oldest first, scored by the
+	 *  current formula only. Absent from an API without snapshots. */
+	trend?: { date: string; health: number }[];
+	/** Today's score minus the latest point at least a week old; null when
+	 *  there is no such point yet. */
+	week_change?: number | null;
 	/** Readers whose site language this is, reading a work it has no edition
 	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
 	reading_elsewhere: number;

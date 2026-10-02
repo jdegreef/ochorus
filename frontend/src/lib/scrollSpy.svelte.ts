@@ -15,7 +15,9 @@
  *                       `--pinned-offset` contract), NOT manual `scrollTo` math;
  *  - `spy.jump`       — the sticky sub-nav's click handler (book, author and
  *                       /scripture pages): light the tab, jumpToSection, and
- *                       write `#id` keeping SvelteKit's history state.
+ *                       write `#id` keeping SvelteKit's history state;
+ *  - `realignHashOnMeasure` — fix a cold `#id` load that landed under the bar
+ *                       before the bar was measured.
  *
  * The landing offset lives in CSS, not here: each surface sets `scroll-margin-top`
  * on its anchors (typically `calc(var(--pinned-offset, …) + 0.5rem)`), so the
@@ -110,6 +112,47 @@ export function scrollSpy(ids: () => string[], options: { rootMargin?: string } 
 			}
 		}
 	};
+}
+
+/**
+ * Re-land a `#id` target the browser jumped to before the sticky bars had their
+ * measured heights. A cold load of `/page/#section` scrolls during parsing, when
+ * `--pinned-offset` still reads 0 for the bar (it is measured on hydration), so
+ * the heading lands UNDER the bar. Nudges the target only while it sits where
+ * that stale jump left it — no lower than its scroll-margin less the bar's
+ * height (`barH`), i.e. hidden by the bar or above it. A reader who scrolled
+ * the heading to anywhere else (including a spot SvelteKit restores on Back or
+ * reload) is never moved.
+ */
+export function realignHashTarget(barH: number): void {
+	let id = '';
+	try {
+		id = decodeURIComponent(location.hash.slice(1));
+	} catch {
+		return;
+	}
+	const el = id ? document.getElementById(id) : null;
+	if (!el) return;
+	const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+	const top = el.getBoundingClientRect().top;
+	if (top >= -1 && top < margin - 1 && top <= margin - barH + 1) el.scrollIntoView({ block: 'start' });
+}
+
+/**
+ * Call once from a page with a sticky sub-nav (during component init, like
+ * `scrollSpy`): when `measured()` (the bar's bound height) first turns
+ * non-zero, wait a frame for `--pinned-offset` to reach layout, then
+ * {@link realignHashTarget}.
+ */
+export function realignHashOnMeasure(measured: () => number): void {
+	let frame = 0;
+	$effect(() => {
+		const barH = measured();
+		if (frame || barH <= 0) return;
+		frame = requestAnimationFrame(() => realignHashTarget(barH));
+	});
+	// Only on teardown — a re-measure inside that frame must not cancel it.
+	$effect(() => () => cancelAnimationFrame(frame));
 }
 
 /**
