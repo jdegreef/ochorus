@@ -38,3 +38,36 @@ export function quoteRuns(text: string): QuoteRun[] {
   if (at < text.length) runs.push({ text: text.slice(at), smallCaps: false });
   return runs;
 }
+
+/**
+ * A paragraph split around the quotation it contains, for highlighting the
+ * sentence in context. Whitespace-insensitive (the API sends the paragraph
+ * with its whitespace collapsed); null when the sentence is not found, so the
+ * caller shows the paragraph unmarked rather than guessing.
+ */
+export function splitAround(
+  paragraph: string,
+  quote: string,
+): { before: string; match: string; after: string } | null {
+  const needle = quote.split(/\s+/).filter(Boolean).join(" ");
+  const at = needle ? paragraph.indexOf(needle) : -1;
+  if (at < 0) return null;
+  return {
+    before: paragraph.slice(0, at),
+    match: paragraph.slice(at, at + needle.length),
+    after: paragraph.slice(at + needle.length),
+  };
+}
+
+/**
+ * Which of `size` items is "today's": days since the epoch in the reader's
+ * own calendar, so the pick turns over at their midnight and walks the whole
+ * list before repeating. 0 for an empty list.
+ */
+export function dayIndex(now: Date, size: number): number {
+  if (size <= 0) return 0;
+  const day = Math.floor(
+    (now.getTime() - now.getTimezoneOffset() * 60_000) / 86_400_000,
+  );
+  return ((day % size) + size) % size;
+}

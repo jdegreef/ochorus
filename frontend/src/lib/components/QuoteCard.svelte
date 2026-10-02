@@ -4,6 +4,7 @@
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
+	import QuoteContext from '$lib/components/QuoteContext.svelte';
 	import { sourceProse } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -15,11 +16,18 @@
 	// `cite` is passed in because it differs by context: on the author page the
 	// work is the group heading, so the card need not repeat it; on a theme page
 	// the works are mixed, so the citation names the work (see citeLine).
+	// `featured` sets the quotation larger — the /quotes index's lead line.
 	let {
 		quote,
 		authorName,
-		cite
-	}: { quote: Quote; authorName: string; cite: string } = $props();
+		cite,
+		featured = false
+	}: { quote: Quote; authorName: string; cite: string; featured?: boolean } = $props();
+
+	// "In context": the paragraph the line was taken from, opened in place.
+	// Mounted on first open and then only hidden, so it fetches once.
+	let contextOpen = $state(false);
+	let contextMounted = $state(false);
 
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
@@ -67,7 +75,7 @@
 	}
 </script>
 
-<li class="quote">
+<li class="quote" class:featured>
 	<blockquote><QuoteText text={quote.text} /></blockquote>
 	<div class="foot">
 		<!-- The citation IS the product: an unsourced card is what the aggregators
@@ -79,6 +87,12 @@
 			     permanent slug, so the saved-quotes shelf can resolve it back to
 			     this same card (see resolveQuotes). -->
 			<FavoriteButton kind="quote" slug={quote.slug} />
+			<button class="act" aria-expanded={contextOpen} onclick={() => {
+					contextOpen = !contextOpen;
+					contextMounted = true;
+				}}
+				>{contextOpen ? t('quotes.hideContext') : t('quotes.inContext')}</button
+			>
 			<!-- Text, not a glyph: the icon set has no copy mark, and extending a
 			     curated set for a minor affordance is not worth it. -->
 			<button class="act" onclick={copy}>{copied ? t('quotes.copied') : t('quotes.copy')}</button>
@@ -90,6 +104,9 @@
 			>
 		</div>
 	</div>
+	{#if contextMounted}
+		<div hidden={!contextOpen}><QuoteContext {quote} /></div>
+	{/if}
 </li>
 
 <style>
@@ -110,8 +127,14 @@
 		line-height: 1.45;
 		color: var(--color-text);
 	}
+	/* The index's lead line: a size up, the one quotation the page opens on. */
+	.featured blockquote {
+		font-size: var(--fs-h2);
+		line-height: 1.35;
+	}
 	.foot {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
@@ -119,6 +142,7 @@
 	}
 	.actions {
 		display: inline-flex;
+		flex-wrap: wrap;
 		align-items: center;
 		gap: 0.5rem;
 	}
