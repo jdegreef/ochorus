@@ -47,8 +47,19 @@ export const load: PageLoad = async ({ fetch }) => {
 		const english = new Set(authors.map((a) => a.slug));
 		const roster = local ? [...authors, ...local.filter((a) => !english.has(a.slug))] : authors;
 		// `bio`: the author page renders its #bio section for a short bio too.
+		// `quotes`: English only. The quote pages are English — lifted from the
+		// English works, each citation naming an English chapter — and are never
+		// prerendered under a locale prefix (the author and book pages gate their
+		// link the same way), so a count off English would link a missing page.
 		const works = Object.fromEntries(
-			(local ?? authors).map((a) => [a.slug, { sermons: a.sermon_count, bio: a.has_long_bio || !!a.bio.trim() }])
+			(local ?? authors).map((a) => [
+				a.slug,
+				{
+					sermons: a.sermon_count,
+					bio: a.has_long_bio || !!a.bio.trim(),
+					quotes: lang === 'en' ? (a.quote_count ?? 0) : 0
+				}
+			])
 		);
 		return { authors: roster, books, works, eras: ERAS.filter((e) => present.has(e.id)), loadError: false };
 	} catch (e) {

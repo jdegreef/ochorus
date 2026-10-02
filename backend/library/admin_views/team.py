@@ -11,6 +11,8 @@ out grants. Every grant/revoke is audited (``role.grant`` / ``role.revoke``).
 from __future__ import annotations
 
 from django.conf import settings
+from django.db.models import F, Max, Min, Window
+from django.db.models.functions import Lower, RowNumber
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -28,6 +30,7 @@ from accounts.models import (
     AdminCapability,
     AdminGrant,
     AdminVerb,
+    UserProfile,
     split_providers,
 )
 from accounts.permissions import HasAnyAdminAccess, IsAdminEmail
@@ -75,16 +78,36 @@ class AdminTeamView(AdminAudited, APIView):
     def get(self, request):
         """Everyone who holds a grant, with their scopes, plus the options the
         grant form needs."""
-        emails = sorted(set(AdminGrant.objects.values_list("email", flat=True)))
+        # One read of the grant table: each member's scopes, when their access
+        # began and who last changed it all come from the same rows.
+        by_email: dict[str, list] = {}
+        for g in AdminGrant.objects.order_by("email", "capability"):
+            by_email.setdefault(g.email, []).append(g)
+        emails = list(by_email)
+        seen = self._last_seen(emails)
+        history = self._history(emails)
+        first_granted = self._first_granted(emails)
         members = []
-        for email in emails:
-            scopes = AdminGrant.scopes_for(email)
+        for email, rows in by_email.items():
+            scopes = [AdminGrant.scope_dict(g) for g in rows]
+            hist = history.get(email, [])
+            # Rows are recreated by an Undo or a role swap, so their created_at
+            # can be later than the first grant the audit log remembers.
+            began = min(d for d in (first_granted.get(email), *(g.created_at for g in rows)) if d)
             members.append(
                 {
                     "email": email,
                     "scopes": scopes,
                     "roles": sorted({s["role"] for s in scopes if s["role"]}),
                     "outdated": role_drift(scopes),
+                    # A grant only works once that exact address signs in, so
+                    # null here means "invited, never seen".
+                    "last_seen_at": seen.get(email),
+                    "granted_at": began,
+                    # The newest logged change (a revoke deletes its rows, so
+                    # the rows alone can't say who made it); else the rows.
+                    "granted_by": hist[0]["actor"] if hist else max(rows, key=lambda g: g.updated_at).granted_by,
+                    "history": hist,
                 }
             )
         codes = known_codes()
@@ -104,6 +127,78 @@ class AdminTeamView(AdminAudited, APIView):
                 "language_names": {code: entry(code)["name"] for code in codes},
             }
         )
+
+    @staticmethod
+    def _last_seen(emails) -> dict:
+        """email → the account's last authenticated request, for the members
+        that have signed in. Matched case-insensitively: grants are stored
+        lowercased, the auth user's email is whatever the provider sent.
+
+        Supabase issues no session to an unconfirmed email sign-up, so a
+        profile with a ``last_seen_at`` has signed in with that address. The
+        lookup has no index to use, but it runs once per load of a super-admin
+        page, not per reader request."""
+        rows = (
+            UserProfile.objects.annotate(addr=Lower("user__email"))
+            .filter(addr__in=emails, last_seen_at__isnull=False)
+            .values("addr")
+            .annotate(seen=Max("last_seen_at"))
+        )
+        return {r["addr"]: r["seen"] for r in rows}
+
+    @staticmethod
+    def _first_granted(emails) -> dict:
+        """email → its earliest logged grant, which survives the row rewrites."""
+        rows = (
+            AdminAction.objects.filter(
+                target__in=[f"user:{e}" for e in emails],
+                action=AdminAction.Action.ROLE_GRANT,
+            )
+            .values("target")
+            .annotate(first=Min("at"))
+        )
+        return {r["target"].removeprefix("user:"): r["first"] for r in rows}
+
+    #: Grant/revoke events shown per member in the Manage panel; the Activity
+    #: page (linked, filtered to the member) has the rest.
+    HISTORY_LIMIT = 10
+
+    @classmethod
+    def _history(cls, emails) -> dict:
+        """email → its newest grant/revoke events, from the append-only
+        AdminAction log this view writes. Capped per member in SQL — the log
+        only grows, so it must not be read whole on every page load."""
+        events = (
+            AdminAction.objects.filter(
+                target__in=[f"user:{e}" for e in emails],
+                action__in=[AdminAction.Action.ROLE_GRANT, AdminAction.Action.ROLE_REVOKE],
+            )
+            .annotate(
+                n=Window(RowNumber(), partition_by=F("target"), order_by=[F("at").desc(), F("id").desc()])
+            )
+            .filter(n__lte=cls.HISTORY_LIMIT)
+            .order_by("target", "-at", "-id")
+        )
+        out: dict[str, list] = {}
+        for a in events:
+            d = a.detail or {}
+            if a.action == AdminAction.Action.ROLE_REVOKE:
+                kind = "revoke"
+            else:
+                kind = "restore" if d.get("restore") is not None else "grant"
+            out.setdefault(a.target.removeprefix("user:"), []).append(
+                {
+                    "id": a.id,
+                    "at": a.at,
+                    "kind": kind,
+                    "actor": a.actor,
+                    "role": d.get("role") or "",
+                    "capability": d.get("capability") or "",
+                    "languages": d.get("languages") or "",
+                    "removed": d.get("removed") or [],
+                }
+            )
+        return out
 
     def post(self, request):
         """Grant a role (or a single capability+verb) to an email, or restore

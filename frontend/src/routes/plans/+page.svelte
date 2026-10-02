@@ -2,13 +2,11 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import type { PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
-	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { planMeta } from '$lib/emblemNames';
+	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
@@ -21,8 +19,8 @@
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// Hoisted: these two ran per plan card, twice (the visible line and the bar's
-	// label), and i18n.t is an uncached lookup.
+	// Hoisted for the "Continue your plans" rows (i18n.t is an uncached lookup);
+	// the shelf's own cards are PlanShelfCard, which hoists its own.
 	const OF = t('plans.of');
 	const DAYS = t('plans.days');
 	/** The progress bar's accessible name — the visible caption, in words. */
@@ -76,12 +74,6 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/plans');
-
-	// Each plan wears a curated accent + emblem — see planMeta in $lib/emblems.
-
-	/** Rounded minutes of reading in an average day of a plan. */
-	const perDay = (plan: PlanSummary) =>
-		plan.day_count ? Math.max(1, readingMinutes(Math.round(plan.total_words / plan.day_count))) : 0;
 
 	// "Continue your plans" hub: the reader's started-but-unfinished plans,
 	// most recently started first, so a daily reader lands straight on where
@@ -171,40 +163,7 @@
 
 	<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 		{#each shownPlans as plan (plan.slug)}
-			{@const done = planProgress.doneDays(plan.slug).length}
-			{@const started = planProgress.isStarted(plan.slug)}
-			{@const meta = planMeta(plan.slug)}
-			<ShelfCard
-				href={localizeHref(`/plans/${plan.slug}`)}
-				hue={meta.accent}
-				emblem={meta.emblem}
-				mark={{ top: t('plans.days'), value: String(plan.day_count) }}
-				covers={plan.covers}
-				title={plan.title}
-			>
-				{#snippet aside()}
-					{plan.day_count} {t('plans.days')}{#if plan.total_words}
-						<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
-				{/snippet}
-				<p class="shelf-card-desc mt-1.5 text-small text-muted">{plan.description}</p>
-				<!-- Pushed to the bottom of the body so every card's footer sits on the
-				     same line regardless of description length. -->
-				<div class="mt-auto pt-3">
-					{#if started}
-						<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel(plan, done)} />
-						<p class="mt-1.5 text-small text-muted">
-							{done === plan.day_count
-								? t('plans.finished')
-								: `${t('plans.day')} ${planProgress.nextDay(plan.slug, plan.day_count)} ${t('plans.of')} ${plan.day_count}`}
-						</p>
-					{:else if plan.day_one}
-						<p class="text-small text-muted">
-							<span class="font-medium text-text">{t('plans.day')} 1</span>
-							<span class="opacity-60"> · </span>{plan.day_one.book_title || plan.day_one.chapter_title}
-						</p>
-					{/if}
-				</div>
-			</ShelfCard>
+			<PlanShelfCard {plan} />
 		{/each}
 	</div>
 </div>

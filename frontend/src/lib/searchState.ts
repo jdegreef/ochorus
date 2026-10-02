@@ -72,6 +72,16 @@ export function scopedSearchHref(
 }
 
 /**
+ * A plain search link for `q`, spelled exactly as the page writes its own URL
+ * (the reason scopedSearchHref exists too): a hand-built `?q=` that encoded
+ * differently would be rewritten the moment the reader arrived. Unlocalized —
+ * wrap it in `localizeHref` where the reader's locale matters.
+ */
+export function searchHref(q: string): string {
+	return `/search${writeSearchState(new URL('https://x/search'), { ...DEFAULT_SEARCH_STATE, q: q.trim() }).search}`;
+}
+
+/**
  * A `kind:slug` scope, or '' if it isn't one.
  *
  * Shape only — whether the shelf exists is the server's answer, and it comes

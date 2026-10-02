@@ -6,10 +6,11 @@
 		nextInSeries,
 		seriesCardProgressLabel,
 		seriesProgress,
-		splitSeriesTitle
+		splitSeriesTitle,
+		cardLanguages
 	} from '$lib/series';
 	import { contentLang } from '$lib/reading';
-	import { getLang } from '$lib/lang.svelte';
+	import { getLang, localeName } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
@@ -61,6 +62,11 @@
 		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
+	// The languages the series can be read in, the reader's own first: a
+	// multilingual library's best fact about a series, and already in the list
+	// payload (for hreflang). Only drawn when there is more than one, and capped
+	// so a ten-language series stays one line.
+	const langs = $derived(cardLanguages(series.languages ?? [], getLang()));
 	// The card's own way in (the full card only; the rail stays compact): the
 	// book to open next, as the series page's button picks it — the first book
 	// until mount, then the book in progress or the first unfinished — or, once
@@ -104,6 +110,20 @@
 		     inside it read as a second one that went nowhere. -->
 		<p class="mt-0.5 text-small font-medium text-text">{ages}</p>
 	{/if}
+	{#if !compact && langs.shown.length}
+		<p class="mt-1.5 flex flex-wrap items-center gap-1" dir="ltr">
+			<span class="sr-only">{t('footer.languages')}:</span>
+			{#each langs.shown as code (code)}
+				<abbr class="lang-code" title={localeName(code)}>{code.toUpperCase()}</abbr>
+			{/each}
+			{#if langs.hidden.length}
+				{@const names = langs.hidden.map(localeName).join(', ')}
+				<abbr class="lang-code" title={names}
+					>+{langs.hidden.length}<span class="sr-only">: {names}</span></abbr
+				>
+			{/if}
+		</p>
+	{/if}
 	{#if !compact && series.description}
 		<p class="shelf-card-desc series-desc mt-1.5 text-small text-muted" dir="auto">
 			{series.description}
@@ -144,5 +164,16 @@
 	.series-desc {
 		-webkit-line-clamp: 5;
 		line-clamp: 5;
+	}
+	/* A language code: a quiet bordered tag, not a link (the card is one). */
+	.lang-code {
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		padding: 0 0.3rem;
+		font-size: var(--fs-micro);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: var(--muted);
+		text-decoration: none;
 	}
 </style>

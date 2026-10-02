@@ -673,6 +673,7 @@ TOPIC_SERMONS = {
         "filled-with-the-spirit",
         "the-holy-ghost",
         "how-to-cultivate-the-holy-spirits-companionship",
+        "what-difference-does-the-holy-spirit-make",
     ],
     "deeper-life": [
         "himself",
@@ -689,6 +690,8 @@ TOPIC_SERMONS = {
         "i-am-crucified-with-christ",
         "how-to-grow-in-grace",
         "the-great-secret",
+        "the-hidden-life-of-faith",
+        "the-christian-temper-supernatural-and-divine",
     ],
     "grace-and-comfort": [
         "free-grace",
@@ -715,6 +718,7 @@ TOPIC_SERMONS = {
         "the-greatest-sentence-ever-written",
         "the-boundless-sufficiency",
         "the-school-of-faith",
+        "the-practical-discipline-of-life",
     ],
     "revival-and-missions": [
         "compel-them-to-come-in",
@@ -725,6 +729,7 @@ TOPIC_SERMONS = {
         "why-is-god-a-stranger-in-the-land",
         "how-to-have-a-personal-revival",
         "the-logic-of-missions",
+        "partnership-with-god",
     ],
     "faith-and-guidance": [
         "the-possibilities-of-faith",
@@ -737,6 +742,9 @@ TOPIC_SERMONS = {
         "the-power-of-feeble-faith",
         "the-secret-of-tranquillity",
         "the-cloud-of-witnesses",
+        "the-goal-of-faith",
+        "gideon-or-the-strength-of-weakness",
+        "jephthah-or-the-faith-that-leads-to-faithfulness",
     ],
     "the-gospel-call": [
         "christ-crucified",
@@ -772,6 +780,8 @@ TOPIC_SERMONS = {
         "what-have-i-to-do-any-more-with-idols",
         "wholly-sanctified",
         "seraphims-worship",
+        "bochim-or-the-cause-of-spiritual-failure",
+        "the-sin-of-murmuring",
     ],
     "christ-and-the-cross": [
         "behold-the-lamb-of-god",
@@ -783,6 +793,7 @@ TOPIC_SERMONS = {
         "the-shameful-sufferer",
         "the-triumph-of-calvary",
         "worthy-is-the-lamb",
+        "the-triumph-of-the-resurrection",
     ],
     "soar-like-the-eagle": [
         "rest",

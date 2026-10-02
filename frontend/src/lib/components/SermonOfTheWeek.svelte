@@ -19,8 +19,14 @@
 	 */
 	// `embedded` drops the home-page section chrome (own max-width + top
 	// padding) so the card can sit inside another page's column (e.g. the
-	// sermons shelf) without fighting its container.
-	let { embedded = false }: { embedded?: boolean } = $props();
+	// sermons shelf) without fighting its container. `reserve` holds the
+	// panel's height until the pick lands, for a caller that heads its page
+	// with it (the sermons shelf), so the content below doesn't jump. The list
+	// is always fetched fresh, even there: the shelf's own copy is the
+	// prerendered snapshot, and picking from a list of a different length
+	// than the home page's would show two different sermons of the week.
+	let { embedded = false, reserve = false }: { embedded?: boolean; reserve?: boolean } =
+		$props();
 
 	let pick = $state<SermonSummary | null>(null);
 
@@ -76,9 +82,25 @@
 			</SermonPlate>
 		</a>
 	</section>
+{:else if reserve}
+	<!-- Holding the panel's place until the pick lands (it is chosen on mount,
+	     above), so the caller's list doesn't jump down a moment after load. -->
+	<div class="sotw-placeholder rounded-card border border-border bg-surface-2" aria-hidden="true"></div>
 {/if}
 
 <style>
+	/* The compact plate's resting height, measured: eyebrow, a one-line h2 and
+	   the byline on desktop (114px); at phone width (SermonPlate's 30rem
+	   breakpoint) the title wraps to two lines (166px). A very long title on a
+	   narrow phone can wrap to three, so a small shift is still possible there. */
+	.sotw-placeholder {
+		min-height: 7.125rem;
+	}
+	@media (max-width: 30rem) {
+		.sotw-placeholder {
+			min-height: 10.375rem;
+		}
+	}
 	/* The lift language (STYLE_GUIDE §5 → "Card hover"), hue-mixed like
 	   .shelf-card — but it cannot wear the shared .card-lift:hover, because the
 	   thing that lifts (the nested .sermon-plate) is not the thing that takes the

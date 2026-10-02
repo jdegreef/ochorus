@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { planDayPath } from '$lib/editionHref';
-	import type { PlanDay, PlanDetail } from '$lib/library-public';
+	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
@@ -19,9 +19,12 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
+	/** "More like this": up to three plans sharing a book or writer (see relatedPlans), from the loader. */
+	const related = $derived<PlanSummary[]>(data.related);
 	const t = i18n.t;
 
 	// Self-referential canonical + hreflang — an English canonical here would
@@ -300,4 +303,19 @@
 			</li>
 		{/each}
 	</ol>
+
+	<!-- More like this: where to go once this plan is done — the plans sharing
+	     its books or writers, drawn as they are on the /plans shelf. Computed in
+	     the load so it prerenders; absent (no heading) when nothing relates or
+	     the list failed to load. Reuses the book page's "More like this" key. -->
+	{#if related.length}
+		<section class="mt-12">
+			<h2 class="section-heading">{t('book.related')}</h2>
+			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+				{#each related as rel (rel.slug)}
+					<PlanShelfCard plan={rel} headingLevel={3} />
+				{/each}
+			</div>
+		</section>
+	{/if}
 </div>

@@ -627,6 +627,12 @@ export interface AuthorBio {
 	sermon_count: number;
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
+	/**
+	 * How many REVIEWED quotations /quotes/<slug>/ lists; 0 means no quote page.
+	 * Language-independent (the quote pages are English). Optional so an API
+	 * running behind this build reads as none.
+	 */
+	quote_count?: number;
 }
 
 /** What `AuthorTile` draws — see `CoverBook`. A field the tile starts reading
