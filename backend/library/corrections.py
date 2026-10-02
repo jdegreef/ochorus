@@ -6342,7 +6342,9 @@ BODY_CORRECTIONS.setdefault("revival-lectures", {}).setdefault("replacements", [
 # importer now emits, byte for byte (`tests_english_audit` checks every
 # entry against the importer). English only: there is no translation.
 # A third element ends a line that ran into an illustration's caption, which
-# is not a display line and stays as it was.
+# is not a display line and stays as it was. (The 188 orphaned captions were
+# since deleted from the fixture itself — the photographs they named were
+# never imported — so the tails now bound a re-import or a stale row only.)
 BODY_CORRECTIONS.setdefault("hurlbuts-life-of-christ", {})["wrapped_blocks"] = [
     # ch1
     ('THERE HAVE been many famous', 'p'),
