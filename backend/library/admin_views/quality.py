@@ -7,7 +7,7 @@ from html import unescape
 
 from django.core.cache import cache
 from django.db import transaction
-from django.db.models import Count, Max
+from django.db.models import Count
 from django.utils import timezone
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -17,34 +17,30 @@ from accounts.permissions import allowed_languages, has_capability, requires
 
 from .. import invalidation
 from ..audit import AdminAudited
+from ..content_audit import (
+    DISMISSIBLE_CHECKS,
+    dismissed_fingerprints,
+    present,
+    record_scan,
+    scan_library,
+    schedule_status,
+)
 from ..languages import entry as language_entry
 from ..models import (
     AdminAction,
-    Article,
     AuditDismissal,
+    AuditScan,
     Author,
     AuthorTranslation,
     Book,
     Chapter,
     ContentRevision,
-    PlanDay,
     ReviewOutcome,
     Sermon,
     TranslationNote,
     VerseReview,
 )
-from ..qa import (
-    FRAG_MAX_AVG,
-    FRAG_MIN_PARAS,
-    FRAG_MIN_WORDS,
-    GENERIC_TITLE,
-    GIANT_MIN,
-    TERMINAL_PUNCT,
-    TINY_MAX,
-    loose_snippet,
-    loose_text,
-    translation_flags,
-)
+from ..qa import translation_flags
 
 
 # No `language_arg`: POST is a batch whose language is per item, so the view-level
@@ -900,62 +896,6 @@ def _blocks(html: str) -> list[str]:
     return out
 
 
-# --- Content audit (quality + integrity) -------------------------------------
-# Chapter-quality heuristics (chapter_flags + thresholds) live in library.qa,
-# the single source of truth shared with the import preview.
-
-# Per-list cap so the payload stays bounded on a large library; totals are still
-# reported.
-AUDIT_LIMIT = 100
-
-
-def _capped(items: list) -> dict:
-    return {"total": len(items), "items": items[:AUDIT_LIMIT]}
-
-
-# The advisory quality checks, and the tail of each finding's identity (its
-# `ref`). Chapter-shaped checks are keyed by chapter order; duplicate_titles by
-# the offending title. This is the single source of truth for "what is
-# dismissible" — the audit view filters by it and the dismiss endpoint validates
-# against it, so the two cannot disagree about which findings can be accepted.
-QUALITY_CHAPTER_CHECKS = (
-    "generic_titles",
-    "tiny_chapters",
-    "giant_chapters",
-    "fragmented",
-    "missing_dropcap",
-    "mid_sentence_splits",
-    "loose_text",
-)
-DISMISSIBLE_CHECKS = frozenset(QUALITY_CHAPTER_CHECKS + ("duplicate_titles",))
-
-
-def _ref_of(check: str, finding: dict) -> str:
-    """The dismissal `ref` for one finding — its identity within (check, book,
-    language). A stringified chapter order for chapter checks; the title for
-    duplicate_titles."""
-    return finding["title"] if check == "duplicate_titles" else str(finding["order"])
-
-
-def _only(items: list, language: str) -> list:
-    """The findings for one edition. Every finding carries its ``language``."""
-    return [f for f in items if f["language"] == language]
-
-
-def _present(check: str, items: list, dismissed: set) -> dict:
-    """Cap a quality check's findings after removing accepted ones, and report
-    how many were hidden so the check still reads as examined, not empty."""
-    kept = [
-        f for f in items
-        if (check, f["book"], f["language"], _ref_of(check, f)) not in dismissed
-    ]
-    return {
-        "total": len(kept),
-        "items": kept[:AUDIT_LIMIT],
-        "dismissed": len(items) - len(kept),
-    }
-
-
 @requires(AdminCapability.REVIEW, verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT}, language_arg="language")
 class AdminVerseReviewView(AdminAudited, APIView):
     """Settle ONE flagged quotation.
@@ -1098,31 +1038,11 @@ class AdminAuditView(APIView):
     def get(self, request):
         refresh = request.query_params.get("refresh") in ("1", "true", "yes")
         scan = self._cached_scan(refresh=refresh)
-
-        raw = scan["raw"]
-        dup_raw = scan["dup_raw"]
-        integrity_raw = scan["integrity_raw"]
-
-        # Filter to one edition BEFORE capping, so a capped check (e.g. 344
-        # mid-sentence splits across editions) reports its true per-language
-        # count, not whatever survived the first 100 rows. Builds new lists —
-        # the cached scan is never mutated.
         language = (request.query_params.get("language") or "").strip()
-        if language:
-            raw = {k: _only(v, language) for k, v in raw.items()}
-            dup_raw = _only(dup_raw, language)
-            integrity_raw = {k: _only(v, language) for k, v in integrity_raw.items()}
-
         # Dismissals and the language filter are applied per request, NOT cached:
         # accepting a finding must take effect at once, without waiting for the
         # scan to expire, and it does not change the content.
-        dismissed = self._dismissed()
-        quality = {
-            check: _present(check, raw[check], dismissed)
-            for check in QUALITY_CHAPTER_CHECKS
-        }
-        quality["duplicate_titles"] = _present("duplicate_titles", dup_raw, dismissed)
-        integrity = {k: _capped(v) for k, v in integrity_raw.items()}
+        quality, integrity = present(scan, dismissed_fingerprints(), language)
         return Response(
             {
                 "quality": quality,
@@ -1131,216 +1051,32 @@ class AdminAuditView(APIView):
                 "language_names": scan["language_names"],
                 "language": language,
                 "scanned_at": scan["scanned_at"],
+                # What the scan behind this result covered, and why it ran:
+                # "manual" (Re-run, recorded) or "view" (a cache miss on open).
+                "scan": {**scan["scope"], "trigger": scan["trigger"]},
+                # The nightly, recorded scan — distinct from the cached one above.
+                "schedule": schedule_status(),
             }
         )
 
     def _cached_scan(self, *, refresh: bool) -> dict:
         """The full library scan, memoised under the content revision. Re-run
-        (``refresh``) recomputes and overwrites this worker's entry."""
+        (``refresh``) recomputes, overwrites this worker's entry, and records an
+        ``AuditScan`` (trigger "manual") so the run joins the scan history.
+
+        A manual scan never emails: whoever pressed Re-run is looking at the
+        result, and it is not an alert baseline either (see
+        ``content_audit.alert_baseline``), so it can't swallow the nightly
+        alert for a defect it happened to see first."""
         key = f"audit:scan:{ContentRevision.current()}"
         if refresh:
-            scan = self._scan()
+            scan = {**scan_library(), "trigger": AuditScan.Trigger.MANUAL.value}
+            record_scan(scan, AuditScan.Trigger.MANUAL)
             cache.set(key, scan, self.SCAN_CACHE_SECONDS)
             return scan
-        return cache.get_or_set(key, self._scan, self.SCAN_CACHE_SECONDS)
-
-    def _scan(self) -> dict:
-        """One full pass over the library — the expensive part the cache holds.
-        Language names come from the registry (the runtime source), like the
-        review queue, so an edition added without a frontend deploy still reads
-        as itself rather than a bare code."""
-        raw, per_book = self._scan_chapters()
-        dup_raw = self._duplicate_titles(per_book["titles"])
-        # empty_chapters is a structural defect (integrity), not an advisory
-        # heuristic — capped like the rest of integrity, never dismissible.
-        integrity_raw = {
-            "empty_books": self._empty_books(),
-            "empty_chapters": raw["empty_chapters"],
-            "order_gaps": self._order_gaps(per_book["orders"]),
-            "broken_plan_days": self._broken_plan_days(),
-        }
-        # Computed on the FULL result so the picker is stable under a filter.
-        languages = self._languages(raw, dup_raw, integrity_raw)
-        return {
-            "scanned_at": timezone.now().isoformat(),
-            "raw": raw,
-            "dup_raw": dup_raw,
-            "integrity_raw": integrity_raw,
-            "languages": languages,
-            "language_names": {code: language_entry(code)["name"] for code in languages},
-        }
-
-    @staticmethod
-    def _languages(raw: dict, dup_raw: list, integrity_raw: dict) -> list[str]:
-        lists = (*raw.values(), *integrity_raw.values(), dup_raw)
-        return sorted({f["language"] for lst in lists for f in lst})
-
-    @staticmethod
-    def _dismissed() -> set:
-        """Every accepted finding, as (check, book, language, ref) fingerprints."""
-        return set(
-            AuditDismissal.objects.values_list("check_key", "book", "language", "ref")
+        return cache.get_or_set(
+            key, lambda: {**scan_library(), "trigger": "view"}, self.SCAN_CACHE_SECONDS
         )
-
-    def _scan_chapters(self):
-        maxima = {
-            r["book_id"]: r["mx"]
-            for r in Chapter.objects.values("book_id").annotate(mx=Max("order"))
-        }
-        generic, tiny, giant, fragmented, dropcap, mid_split, loose, empty = (
-            [], [], [], [], [], [], [], []
-        )
-        # Keyed by (slug, language), NOT slug. A work is a per-language ROW —
-        # eight editions of the-inner-chamber share one slug — so grouping by
-        # slug alone pools chapters that belong to different books. That made
-        # `_duplicate_titles` report 17 cross-language collisions as duplicates
-        # "in a book" (a chapter 19 titled "Hazelglen Fellowship" in en, lg, pt
-        # and sw is one untranslated proper noun, not four duplicates), and it
-        # would hide a real gap in one edition behind another edition's chapters
-        # in `_order_gaps`.
-        titles: dict[tuple[str, str], list[str]] = {}
-        orders: dict[tuple[str, str], list[int]] = {}
-
-        rows = Chapter.objects.select_related("book").values(
-            "book_id", "book__slug", "book__language", "order", "title",
-            "word_count", "body_html", "body_text",
-        )
-        for c in rows.iterator(chunk_size=50):
-            slug = c["book__slug"]
-            lang = c["book__language"]
-            order = c["order"]
-            title = (c["title"] or "").strip()
-            wc = c["word_count"] or 0
-            body = (c["body_text"] or "").strip()
-
-            titles.setdefault((slug, lang), []).append(title)
-            orders.setdefault((slug, lang), []).append(order)
-
-            def finding(slug=slug, lang=lang, order=order, title=title, **extra):
-                return {"book": slug, "language": lang, "order": order, "title": title, **extra}
-
-            if not title or GENERIC_TITLE.match(title):
-                generic.append(finding())
-            if not body or wc == 0:
-                empty.append(finding())
-                continue  # remaining checks need body text
-            if 0 < wc < TINY_MAX:
-                tiny.append(finding(word_count=wc))
-            if wc > GIANT_MIN:
-                giant.append(finding(word_count=wc))
-
-            paras = c["body_html"].count("<p")
-            if paras >= FRAG_MIN_PARAS and wc >= FRAG_MIN_WORDS and wc / paras < FRAG_MAX_AVG:
-                fragmented.append(finding(avg_words=round(wc / paras, 1), paragraphs=paras))
-
-            first_alpha = next((ch for ch in body if ch.isalpha()), "")
-            if first_alpha and first_alpha.islower():
-                dropcap.append(finding(starts=body[:40]))
-
-            if order < maxima.get(c["book_id"], order) and not body.endswith(TERMINAL_PUNCT):
-                mid_split.append(finding(ends=body[-40:]))
-
-            runs = loose_text(c["body_html"])
-            if runs:
-                loose.append(finding(loose_runs=len(runs), loose=loose_snippet(runs)))
-
-        # Raw (uncapped) lists — the caller filters out accepted findings before
-        # capping, so capping here would drop rows the reviewer has NOT accepted
-        # whenever a check ran past 100.
-        raw = {
-            "generic_titles": generic,
-            "tiny_chapters": tiny,
-            "giant_chapters": giant,
-            "fragmented": fragmented,
-            "missing_dropcap": dropcap,
-            "mid_sentence_splits": mid_split,
-            "loose_text": loose,
-            # Not a quality check — lifted into integrity by get(). Kept here
-            # because it falls out of the same single chapter scan.
-            "empty_chapters": empty,
-        }
-        return raw, {"titles": titles, "orders": orders}
-
-    def _duplicate_titles(self, titles_by_book: dict) -> list[dict]:
-        out = []
-        for (slug, language), titles in titles_by_book.items():
-            seen: dict[str, int] = {}
-            for t in titles:
-                if t:
-                    seen[t] = seen.get(t, 0) + 1
-            for title, n in seen.items():
-                if n > 1:
-                    out.append(
-                        {"book": slug, "language": language, "title": title, "count": n}
-                    )
-        out.sort(key=lambda r: (-r["count"], r["book"], r["language"]))
-        return out
-
-    def _empty_books(self) -> list[dict]:
-        books = (
-            Book.objects.annotate(n=Count("chapters"))
-            .filter(n=0)
-            .select_related("author")
-            .order_by("language", "slug")
-        )
-        return [
-            {"book": b.slug, "language": b.language, "title": b.title, "author": b.author.name}
-            for b in books
-        ]
-
-    def _order_gaps(self, orders_by_book: dict) -> list[dict]:
-        out = []
-        for (slug, language), orders in orders_by_book.items():
-            present = set(orders)
-            expected = set(range(1, max(orders) + 1))
-            missing = sorted(expected - present)
-            if missing:
-                out.append(
-                    {
-                        "book": slug,
-                        "language": language,
-                        "missing": missing,
-                        "count": len(orders),
-                    }
-                )
-        out.sort(key=lambda r: (r["book"], r["language"]))
-        return out
-
-    def _broken_plan_days(self) -> list[dict]:
-        valid = set(
-            Chapter.objects.values_list("book__slug", "book__language", "order")
-        )
-        articles = set(
-            Article.objects.filter(is_published=True).values_list("slug", "language")
-        )
-        out = []
-        days = PlanDay.objects.select_related("plan").values(
-            "plan__slug",
-            "plan__language",
-            "day",
-            "book_slug",
-            "chapter_order",
-            "article_slug",
-        )
-        for d in days:
-            if d["article_slug"]:
-                ok = (d["article_slug"], d["plan__language"]) in articles
-            else:
-                key = (d["book_slug"], d["plan__language"], d["chapter_order"])
-                ok = key in valid
-            if not ok:
-                out.append(
-                    {
-                        "plan": d["plan__slug"],
-                        "language": d["plan__language"],
-                        "day": d["day"],
-                        "book": d["book_slug"],
-                        "order": d["chapter_order"],
-                        "article": d["article_slug"],
-                    }
-                )
-        out.sort(key=lambda r: (r["plan"], r["day"]))
-        return out
 
 
 @requires(AdminCapability.AUDIT, verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT}, language_arg="language")

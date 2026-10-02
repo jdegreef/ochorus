@@ -2013,6 +2013,68 @@ class AuditDismissal(models.Model):
         return f"{self.check_key}:{self.book} [{self.language}] {self.ref}"
 
 
+
+class AuditScan(models.Model):
+    """One run of the content audit: when, why, how much it read, what it found.
+
+    The audit page used to know only its own cached scan ("Scanned 4 minutes
+    ago"), so nobody could say whether the library was checked last night, how
+    much of it a scan covered, or when an integrity defect first appeared. One
+    row per recorded scan answers all three, and is what the nightly alert
+    compares against (``library.content_audit``).
+
+    Deliberately small: per-check TOTALS only, never the findings themselves —
+    the findings are recomputed on demand, and a row a night for 180 days is
+    what the retention rule keeps. The totals cover EVERY check so a per-check
+    trend can be drawn from this table alone.
+    """
+
+    class Trigger(models.TextChoices):
+        #: The nightly run (``manage.py audit_scan``, from the email cron).
+        SCHEDULE = "schedule", "Scheduled"
+        #: An admin pressed Re-run on the audit page.
+        MANUAL = "manual", "Manual"
+
+    class Alert(models.TextChoices):
+        #: Not evaluated — manual scans never alert (see ``content_audit``).
+        NOT_EVALUATED = "", "Not evaluated"
+        #: Compared with the previous scheduled scan; no integrity check rose.
+        NONE = "none", "Nothing worsened"
+        SENT = "sent", "Alert sent"
+        #: Something worsened but email is off / no recipient may be mailed.
+        SKIPPED = "skipped", "Alert skipped"
+        #: Something worsened and every send failed — the next scan retries.
+        FAILED = "failed", "Alert failed"
+
+    started_at = models.DateTimeField(db_index=True)
+    duration_ms = models.PositiveIntegerField(default=0)
+    trigger = models.CharField(max_length=10, choices=Trigger.choices)
+    #: Book rows (one per language edition) and chapter rows the scan read.
+    editions_scanned = models.PositiveIntegerField(default=0)
+    chapters_scanned = models.PositiveIntegerField(default=0)
+    #: ``ContentRevision`` at scan time — tells "content changed" from "the
+    #: heuristics changed" when a total moves.
+    content_revision = models.BigIntegerField(default=0)
+    #: ``{check: total}`` for every integrity check.
+    integrity = models.JSONField(default=dict)
+    #: ``{check: open total}`` for every quality check — net of accepted
+    #: findings, i.e. what the page's tiles show.
+    quality = models.JSONField(default=dict)
+    #: ``{check: accepted}`` — findings hidden by an ``AuditDismissal``, so the
+    #: raw count (open + accepted) is recoverable for a trend.
+    quality_accepted = models.JSONField(default=dict)
+    alert = models.CharField(max_length=10, choices=Alert.choices, blank=True, default="")
+    #: Which checks worsened / why a send was skipped or failed. Short.
+    alert_note = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        ordering = ["-started_at"]
+        indexes = [models.Index(fields=["trigger", "-started_at"])]
+
+    def __str__(self) -> str:
+        return f"audit scan {self.started_at:%Y-%m-%d %H:%M} ({self.trigger})"
+
+
 class TranslationNote(models.Model):
     """One scripture reference in one translation, and where its wording came from.
 
