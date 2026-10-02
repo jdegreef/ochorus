@@ -48,6 +48,7 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'bios_eyebrow', // Biographies
 	'bios_sermons_many', // sermons
 	'bios_sermons_one', // sermon
+	'bios_tradition', // Tradition
 	'common_article_many', // articles
 	'common_article_one', // article
 	'common_sermon_many', // sermons

@@ -9,6 +9,7 @@
 		showLabel = true,
 		options,
 		value,
+		isActive = (v: T) => v === value,
 		onselect
 	}: {
 		/** Names the group — shown above it, and its aria-label either way. */
@@ -16,7 +17,10 @@
 		/** Hide the visible label when the options name themselves ("All lengths"). */
 		showLabel?: boolean;
 		options: { v: T; label: string; count?: number }[];
-		value: T;
+		value?: T;
+		/** Overrides `value` for a multi-select group (several chips on at once,
+		 *  `onselect` toggling each) — the biographies facets. */
+		isActive?: (v: T) => boolean;
 		onselect: (v: T) => void;
 	} = $props();
 </script>
@@ -25,7 +29,7 @@
 	{#if showLabel}<p class="sheet-label">{label}</p>{/if}
 	<div class="sheet-choices" role="group" aria-label={label}>
 		{#each options as o (o.v)}
-			<button class="chip" class:active={value === o.v} aria-pressed={value === o.v} onclick={() => onselect(o.v)}
+			<button class="chip" class:active={isActive(o.v)} aria-pressed={isActive(o.v)} onclick={() => onselect(o.v)}
 				>{o.label}{#if o.count !== undefined}<span class="count">{o.count}</span>{/if}</button
 			>
 		{/each}
