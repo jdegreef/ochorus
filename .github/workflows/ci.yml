@@ -199,7 +199,7 @@ jobs:
         working-directory: backend
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-        run: uv run python manage.py test --parallel auto --verbosity 1
+        run: uv run python manage.py test --parallel auto --verbosity 1 --durations 25
 
   # --- Production image gate (runs in parallel with everything) ------------
   backend-image:
