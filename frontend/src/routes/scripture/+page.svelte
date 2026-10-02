@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { ScripturePageEntry } from '$lib/library-public';
-	import { scriptureBookHref, scripturePageHref, searchPage } from '$lib/library-public';
+	import { scriptureBookHref, scripturePageHref, searchPage, SCRIPTURE_OG } from '$lib/library-public';
 	import { goto } from '$app/navigation';
 	import { SvelteSet } from 'svelte/reactivity';
 	import type { Snapshot } from './$types';
@@ -9,7 +9,7 @@
 	import { groupScripture, heatScale, HEAT_LEVELS, mayBeReference, mostCited } from '$lib/scriptureIndex';
 	import { searchHref } from '$lib/searchState';
 	import { localizeHref } from '$lib/href';
-	import { scrollSpy } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import Seo from '$lib/components/Seo.svelte';
@@ -134,6 +134,8 @@
 	// the app nav, its height feeds `--pinned-offset`, and the scroll-spy lights
 	// the section in view. No-JS / prerender: the links still jump.
 	let subnavH = $state(0);
+	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	realignHashOnMeasure(() => subnavH);
 	const spy = scrollSpy(() => sections.map((s) => sectionId(s.key)));
 
 	const path = '/scripture/';
@@ -167,7 +169,14 @@
 	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, collectionLd]} />
+<Seo
+	{title}
+	{description}
+	{canonical}
+	{hreflang}
+	structuredData={[crumbsLd, collectionLd]}
+	{...SCRIPTURE_OG}
+/>
 
 <!-- --pinned-offset: how far down the first pixel unobstructed by both the app
      nav and the section jump bar is; the section anchors read it for
