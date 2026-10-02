@@ -11,7 +11,7 @@
 	import SeriesContinue from '$lib/components/SeriesContinue.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
-	import { audienceBlurb, audienceName, groupByAudience } from '$lib/series';
+	import { audienceBlurb, audienceName, groupByAudience, seriesCompanion } from '$lib/series';
 
 	/**
 	 * Every book series in this language — the Topics shelf's anatomy and card,
@@ -123,7 +123,11 @@
 				{/if}
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{#each g.series as s (s.slug)}
-						<SeriesCard series={s} headingLevel={grouped ? 3 : 2} />
+						<SeriesCard
+							series={s}
+							companion={seriesCompanion(s.slug, series)}
+							headingLevel={grouped ? 3 : 2}
+						/>
 					{/each}
 				</div>
 			</section>

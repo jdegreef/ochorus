@@ -696,7 +696,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     as for topics).
 
     Each row carries its first four covers in reading order, for the card's fan,
-    every book's slug (the card's progress), and the languages it has a page in — the index's hreflang is their union.
+    every book's slug (the card's progress) and title (its book list), and the
+    languages it has a page in — the index's hreflang is their union.
     Both are read in bulk for the whole list rather than per series.
     """
 
@@ -735,6 +736,9 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # Every book, in reading order — the reader's progress
                         # through the series is read against these on the card.
                         "books": [b.slug for b in books],
+                        # Their titles, in the same order — the card's "Books in
+                        # this series" list names every volume, not just the fan's.
+                        "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
                     }
                 )
