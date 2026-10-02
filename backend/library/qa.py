@@ -22,7 +22,9 @@ GENERIC_TITLE = re.compile(r"^chapter\s+[\divxlc]+\.?$", re.IGNORECASE)
 # sentence with the danda (। ॥), Amharic with the Ethiopic full stop / question
 # mark (። ፧), Arabic asks with ؟. Without them every correctly-ended hi/am
 # chapter was flagged — ~1,230 of ~1,550 splits in the 2026-10 fixture.
-TERMINAL_PUNCT = tuple('.!?"\'”’»)।॥።፧؟')
+# ``]`` closes an editorial note, sermon date, scripture ref or footnote marker
+# ("[Jan. 20, 1782]", "well.[4]") — 38 false splits, every one a real end.
+TERMINAL_PUNCT = tuple('.!?"\'”’»)]।॥።፧؟')
 
 # Shared chapter-quality thresholds (see the book-qa skill).
 TINY_MAX = 150
