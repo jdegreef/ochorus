@@ -6,6 +6,7 @@ from __future__ import annotations
 import base64
 import hashlib
 import hmac
+import io
 import json
 import time
 import uuid
@@ -61,6 +62,7 @@ SENDING = override_settings(
     PUBLIC_SITE_URL="https://ochorus.test",
     SUPABASE_URL="",
     SUPABASE_SERVICE_ROLE_KEY="",
+    EMAIL_SEND_RATE=0,  # no pacing sleeps in tests
 )
 
 
@@ -798,14 +800,20 @@ class BroadcastAdminTests(TestCase):
 
     @SENDING
     @mock.patch("emails.sending.send_email", return_value="rid")
-    def test_send_action(self, send):
+    def test_send_action_queues_and_the_cron_sends(self, send):
         _make_profile()
         b = _broadcast()
         res = self._post(f"/api/admin/broadcasts/{b.pk}/action/", {"action": "send"})
         self.assertEqual(res.status_code, 200)
         b.refresh_from_db()
+        # The request only queues: nothing has been mailed yet.
+        self.assertEqual(b.status, BroadcastStatus.SENDING)
+        send.assert_not_called()
+        call_command("send_due_broadcasts", stdout=io.StringIO())
+        b.refresh_from_db()
         self.assertEqual(b.status, BroadcastStatus.SENT)
-        self.assertEqual(res.json()["tally"]["sent"], 1)
+        self.assertEqual(b.send_tally["sent"], 1)
+        self.assertIsNotNone(b.send_finished_at)
 
     def test_schedule_and_cancel(self):
         b = _broadcast()
@@ -850,9 +858,9 @@ class EmailCronCommandTests(TestCase):
         # With no due readers/broadcasts and sending off, it completes cleanly —
         # the point is that the single command exists and chains the two steps.
         _make_profile()
-        with mock.patch("emails.broadcasts.send_broadcast") as bcast:
-            call_command("send_email_cron")
-            bcast.assert_not_called()  # nothing scheduled
+        with mock.patch("emails.broadcasts.run_send") as run:
+            call_command("send_email_cron", stdout=io.StringIO())
+            run.assert_not_called()  # nothing scheduled or queued
 
 
 @override_settings(
