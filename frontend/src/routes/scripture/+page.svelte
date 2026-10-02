@@ -2,6 +2,7 @@
 	import type { ScripturePageEntry } from '$lib/library-public';
 	import { scripturePageHref, searchPage } from '$lib/library-public';
 	import { goto } from '$app/navigation';
+	import { SvelteSet } from 'svelte/reactivity';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { groupScripture, heatScale, HEAT_LEVELS, mostCited } from '$lib/scriptureIndex';
@@ -82,6 +83,24 @@
 	const top = $derived(mostCited(pages, TOP_CHAPTERS));
 
 	const sectionId = (key: string) => `section-${key}`;
+
+	// On a phone, each book collapses to one row (name + passage total) that a
+	// tap opens: at 44px touch targets the full index runs to dozens of screens.
+	// A $state flipped in an effect, NOT svelte/reactivity's MediaQuery, for the
+	// book reader's reason: MediaQuery reads matchMedia during hydration and
+	// would disagree with the prerendered markup. So the prerendered page (and a
+	// reader without JS) shows every book open; the links are always in the HTML.
+	let narrow = $state(false);
+	$effect(() => {
+		const mq = window.matchMedia('(max-width: 34rem)');
+		const sync = () => (narrow = mq.matches);
+		sync();
+		mq.addEventListener('change', sync);
+		return () => mq.removeEventListener('change', sync);
+	});
+	const openBooks = new SvelteSet<string>();
+	const toggleBook = (slug: string) => (openBooks.has(slug) ? openBooks.delete(slug) : openBooks.add(slug));
+	const bookTotal = (chapters: { count: number }[]) => chapters.reduce((n, c) => n + c.count, 0);
 	const sectionName = (key: string) => t(`scripture.section.${key}`);
 
 	// Sticky jump bar over the sections, the author page's pattern: it pins under
@@ -231,9 +250,28 @@
 				{/if}
 				<h2 id="{sectionId(s.key)}-h" class="section-label">{sectionName(s.key)}</h2>
 				{#each s.books as book (book.slug)}
+					{@const collapsed = narrow && !openBooks.has(book.slug)}
 					<div class="book">
-						<h3 class="bname">{book.title}</h3>
-						<div class="min-w-0">
+						<h3 class="bname">
+							{#if narrow}
+								<button
+									type="button"
+									class="book-toggle"
+									aria-expanded={!collapsed}
+									aria-controls="book-{book.slug}"
+									onclick={() => toggleBook(book.slug)}
+								>
+									<span>{book.title}</span>
+									<span class="book-total">{passages(bookTotal(book.chapters))}</span>
+									<svg class="chev" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"
+										><path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.75" /></svg
+									>
+								</button>
+							{:else}
+								{book.title}
+							{/if}
+						</h3>
+						<div id="book-{book.slug}" class="min-w-0" hidden={collapsed}>
 							<ul class="chapters">
 								{#each book.chapters as c (c.chapter)}
 									<li>
@@ -412,6 +450,43 @@
 		margin: 0;
 		font-size: var(--fs-body);
 		font-weight: 600;
+	}
+	/* The phone-only toggle: the whole row is the target, name at the start,
+	   passage total and chevron at the end. */
+	.book-toggle {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+		min-height: 2.75rem;
+		padding: 0;
+		border: 0;
+		background: none;
+		font: inherit;
+		color: inherit;
+		text-align: start;
+		cursor: pointer;
+	}
+	.book-total {
+		margin-inline-start: auto;
+		font-family: var(--font-sans);
+		font-size: var(--fs-small);
+		font-weight: 400;
+		font-variant-numeric: tabular-nums;
+		color: var(--color-muted);
+	}
+	.chev {
+		flex: none;
+		color: var(--color-muted);
+		transition: transform 0.15s;
+	}
+	.book-toggle[aria-expanded='true'] .chev {
+		transform: rotate(180deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.chev {
+			transition: none;
+		}
 	}
 	.chapters {
 		list-style: none;
