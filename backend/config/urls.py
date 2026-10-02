@@ -45,6 +45,8 @@ from library.admin_views import (
     AdminReviewDetailView,
     AdminReviewQueueView,
     AdminRolesView,
+    AdminSearchDecisionListView,
+    AdminSearchDecisionView,
     AdminSearchGapView,
     AdminSearchView,
     AdminSermonDetailView,
@@ -92,6 +94,16 @@ urlpatterns = [
     ),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
+    path(
+        "api/admin/search-decisions/",
+        AdminSearchDecisionListView.as_view(),
+        name="admin-search-decisions",
+    ),
+    path(
+        "api/admin/search-decisions/decide/",
+        AdminSearchDecisionView.as_view(),
+        name="admin-search-decide",
+    ),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
     path(
         "api/admin/coverage/mark-current/",

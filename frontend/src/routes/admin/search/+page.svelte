@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
@@ -12,6 +13,12 @@
 		type AdminSearchGapWork,
 		getAdminSearchStats,
 		createAdminTranslationJob,
+		decideSearch,
+		getAdminSearchDecisions,
+		undoSearchDecision,
+		type SearchDecisionRow,
+		type SearchOutcome,
+		type SearchUnanswered,
 		periodTrend,
 		pointsTrend,
 		type SearchStatsWindow,
@@ -99,7 +106,7 @@
 		const w = data.overview[period];
 		return [
 			{ label: 'Searched', n: w.searches, note: '' },
-			{ label: 'Found something', n: found(w), note: `${fmt(w.zero_results)} found nothing → see Zero results` },
+			{ label: 'Found something', n: found(w), note: `${fmt(w.zero_results)} found nothing → see Unanswered searches` },
 			{ label: 'Opened a result', n: opened(w), note: 'the rest → see Found, but not opened' }
 		];
 	});
@@ -146,16 +153,87 @@
 	// state; 'busy' | 'done' | an error string.
 	let queued = $state<Record<string, 'busy' | 'done' | string>>({});
 	const queueKey = (lang: string, w: AdminSearchGapWork) => `${lang}${w.type}:${w.slug}`;
-	async function queueWork(targetLang: string, w: AdminSearchGapWork) {
+	async function queueWork(targetLang: string, w: AdminSearchGapWork, query: string) {
 		const k = queueKey(targetLang, w);
 		if (queued[k] === 'busy' || queued[k] === 'done') return;
 		queued = { ...queued, [k]: 'busy' };
 		try {
 			await createAdminTranslationJob({ type: w.type, slug: w.slug, language: targetLang });
 			queued = { ...queued, [k]: 'done' };
+			// Record it as the query's triage outcome. The row stays on Open until
+			// the next refresh, so a second work can still be queued from it.
+			void decide(targetLang, query, 'translate', { target: `${w.type}:${w.slug}`, hide: false });
 		} catch (e) {
 			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
 			queued = { ...queued, [k]: body?.detail ?? 'Could not queue — try again.' };
+		}
+	}
+
+	// Triage: each unanswered query gets an outcome and leaves the Open list.
+	// Decisions live server-side (SearchDecision); the Handled and Wanted tabs
+	// read them with what readers did since.
+	const decisions = adminResource(
+		getAdminSearchDecisions,
+		'Something went wrong loading triage decisions.'
+	);
+	type TriageTab = 'open' | 'handled' | 'wanted';
+	let tab = $state<TriageTab>('open');
+	const decided = $derived(decisions.data?.decisions ?? []);
+	const handled = $derived(decided.filter((d) => d.outcome !== 'wanted'));
+	// Ranked by demand since it was marked: the import shopping list, in order.
+	const wanted = $derived(
+		decided.filter((d) => d.outcome === 'wanted').sort((a, b) => b.misses_since - a.misses_since)
+	);
+	// Hidden from Open the moment they're decided. Not cleared on refresh: the
+	// server leaves decided queries out anyway, and a refresh that started before
+	// a decision would otherwise bring it back. Undo is what removes a key.
+	let decidedNow = $state<Record<string, true>>({});
+	let deciding = $state<Record<string, 'busy' | string>>({});
+	const openQueries = (lang: SearchUnanswered) =>
+		lang.queries.filter((q) => !decidedNow[gapKey(lang.code, q.query)]);
+	const openCount = $derived(
+		(data?.unanswered_by_language ?? []).reduce((n, l) => n + openQueries(l).length, 0)
+	);
+	// The same grant the decide endpoint checks: the translation queue at "act"
+	// in that language. Contributors and reviewers see the list but can't change it.
+	const canDecide = (language: string) => auth.can('translate', 'act', language);
+	const shortDate = (iso: string) =>
+		new Date(iso).toLocaleDateString('en', { month: 'short', day: 'numeric' });
+
+	async function decide(
+		language: string,
+		query: string,
+		outcome: SearchOutcome,
+		{ target = '', hide = true }: { target?: string; hide?: boolean } = {}
+	) {
+		const k = gapKey(language, query);
+		deciding = { ...deciding, [k]: 'busy' };
+		try {
+			await decideSearch({ query, language, outcome, target });
+			if (hide) decidedNow = { ...decidedNow, [k]: true };
+			const { [k]: _, ...rest } = deciding;
+			deciding = rest;
+			void decisions.load();
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			deciding = { ...deciding, [k]: body?.detail ?? 'Could not save — try again.' };
+		}
+	}
+
+	async function undo(d: SearchDecisionRow) {
+		const k = gapKey(d.language, d.query);
+		deciding = { ...deciding, [k]: 'busy' };
+		try {
+			await undoSearchDecision(d.query, d.language);
+			const { [k]: _, ...rest } = deciding;
+			deciding = rest;
+			const { [k]: __, ...stillHidden } = decidedNow;
+			decidedNow = stillHidden;
+			// Both: the decision leaves its tab and the query rejoins Open.
+			await Promise.all([decisions.load(), stats.load()]);
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			deciding = { ...deciding, [k]: body?.detail ?? 'Could not undo — try again.' };
 		}
 	}
 </script>
@@ -324,30 +402,43 @@
 						{/if}
 					</section>
 
-					<!-- Zero-result queries -->
-					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">Zero results · 30d</h2>
-						<p class="mb-3 text-small text-muted">Each of these is a reader asking for something the library doesn't have (or can't find) yet.</p>
-						{#if d.zero_result_queries.length}
-							{@render queryList(d.zero_result_queries)}
-						{:else}
-							<p class="text-body text-muted">Nothing missed — every search found something.</p>
-						{/if}
-					</section>
 				</div>
 
-				<!-- Unanswered, by language: the translation worklist -->
-				{#if d.unanswered_by_language.length}
-					<section class="mt-6 rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">What each language couldn't answer · 30d</h2>
+				<!-- Unanswered searches: the triage list. Open is the worklist (one row per
+				     query and language); Handled and Wanted are the decisions made, with
+				     what readers did since. -->
+				<section class="mt-6 rounded-card border border-border bg-surface p-5">
+					<div class="mb-1 flex flex-wrap items-center justify-between gap-3">
+						<h2 class="text-h3">Unanswered searches · 30d</h2>
+						<div class="flex flex-wrap gap-2" role="group" aria-label="Triage">
+							{#each [['open', 'Open', openCount], ['handled', 'Handled', handled.length], ['wanted', 'Wanted', wanted.length]] as [key, label, n] (key)}
+								<button
+									type="button"
+									class="rounded-full px-3 py-1 text-small {tab === key ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}"
+									aria-pressed={tab === key}
+									onclick={() => (tab = key as TriageTab)}>{label} <span class="tabular-nums">{n}</span></button
+								>
+							{/each}
+						</div>
+					</div>
+
+					{#if tab === 'open'}
 						<p class="mb-5 text-small text-muted">
-							The same zero-result queries, split by the language the reader was in — which is the
-							form you can act on. Check a query to see whether the library already has that
-							content in another language: if it does, it's a translation job; if it doesn't,
-							it's a work to acquire.
+							Searches that found nothing, by the language the reader was in. Check where else a
+							query exists: if another language has it, queue a translation; if nothing does, mark
+							it wanted. Each decision moves the query to Handled or Wanted.
 						</p>
+						{#if openCount === 0}
+							<p class="text-body text-muted">
+								{decided.length
+									? 'Nothing open: every unanswered search has an outcome.'
+									: 'No unanswered searches in the last 30 days.'}
+							</p>
+						{/if}
 						<div class="space-y-6">
 							{#each d.unanswered_by_language as lang (lang.code)}
+								{@const rows = openQueries(lang)}
+								{#if rows.length}
 								<div>
 									<h3 class="mb-2 text-body font-semibold text-text">
 										{lang.name}
@@ -356,12 +447,14 @@
 										</span>
 									</h3>
 									<ul class="space-y-1">
-										{#each lang.queries as q (q.query)}
-											{@const gap = gaps[gapKey(lang.code, q.query)]}
+										{#each rows as q (q.query)}
+											{@const gk = gapKey(lang.code, q.query)}
+											{@const gap = gaps[gk]}
+											{@const busy = deciding[gk]}
 											<li class="border-t border-border py-2 first:border-t-0">
-												<div class="flex items-baseline justify-between gap-3">
+												<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
 													<span class="min-w-0 truncate text-body text-text">{q.query}</span>
-													<span class="flex shrink-0 items-baseline gap-3">
+													<span class="flex shrink-0 flex-wrap items-baseline gap-2">
 														<span class="text-small tabular-nums text-muted">{fmt(q.count)}×</span>
 														{#if !gap?.data}
 															<!-- Gone once answered: the answer replaces the question. -->
@@ -373,8 +466,30 @@
 																{gap?.loading ? 'Checking…' : gap?.error ? 'Retry' : 'Elsewhere?'}
 															</button>
 														{/if}
+														{#if canDecide(lang.code)}
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
+																onclick={() => decide(lang.code, q.query, 'wanted')}>Wanted</button
+															>
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
+																onclick={() => decide(lang.code, q.query, 'out_of_scope')}>Out of scope</button
+															>
+														{/if}
 													</span>
 												</div>
+												{#if q.reopened}
+													<p class="mt-1 text-small text-danger">
+														Reopened: {q.reopened.outcome_label.toLowerCase()}
+														{shortDate(q.reopened.decided_at)}{q.reopened.target ? ` (${q.reopened.target})` : ''}, still
+														{fmt(q.reopened.misses_since)} misses since.
+													</p>
+												{/if}
+												{#if busy && busy !== 'busy'}
+													<p class="mt-1 text-small text-warning">{busy}</p>
+												{/if}
 												{#if gap?.error}
 													<p class="mt-1 text-small text-muted">{gap.error}</p>
 												{:else if gap?.data}
@@ -391,7 +506,8 @@
 														</ul>
 													{:else}
 														<p class="mt-1 text-small text-muted">
-															No matches in any other language — nothing to translate from.
+															No matches in any other language — nothing to translate from. Mark it wanted
+															if it belongs in the library.
 														</p>
 													{/if}
 													{#if gap.data.works.length}
@@ -409,13 +525,13 @@
 																		<button
 																			class="shrink-0 text-small text-warning hover:underline"
 																			title={queued[qk]}
-																			onclick={() => queueWork(lang.code, w)}>Retry</button
+																			onclick={() => queueWork(lang.code, w, q.query)}>Retry</button
 																		>
-																	{:else}
+																	{:else if auth.isAdmin}
 																		<button
 																			class="btn btn-sm btn-ghost shrink-0"
 																			disabled={queued[qk] === 'busy'}
-																			onclick={() => queueWork(lang.code, w)}
+																			onclick={() => queueWork(lang.code, w, q.query)}
 																			>{queued[qk] === 'busy' ? 'Queueing…' : `Queue ${lang.name}`}</button
 																		>
 																	{/if}
@@ -428,10 +544,64 @@
 										{/each}
 									</ul>
 								</div>
+								{/if}
 							{/each}
 						</div>
-					</section>
-				{/if}
+					{:else}
+						{@const rows = tab === 'handled' ? handled : wanted}
+						<p class="mb-4 text-small text-muted">
+							{tab === 'handled'
+								? 'Queued translations and out-of-scope searches, with what readers did since. A translation that keeps finding nothing two weeks on goes back to Open.'
+								: 'Searches for things the library doesn\'t have in any language, ranked by how often they\'ve been searched since: the import shopping list.'}
+						</p>
+						{#if decisions.error}
+							<p class="text-body text-warning">{decisions.error}</p>
+						{:else if decisions.loading && !decisions.data}
+							<p class="text-body text-muted">Loading…</p>
+						{:else if !rows.length}
+							<p class="text-body text-muted">
+								{tab === 'handled' ? 'Nothing handled yet.' : 'Nothing marked wanted yet.'}
+							</p>
+						{:else}
+							<ul>
+								{#each rows as row (row.language + row.query)}
+									{@const busy = deciding[gapKey(row.language, row.query)]}
+									<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-border py-2.5 first:border-t-0">
+										<div class="min-w-0">
+											<span class="text-body text-text">{row.query}</span>
+											<span class="ms-1 text-small text-muted">{row.language}</span>
+											<div class="text-small text-muted">
+												{row.outcome_label}{row.target ? ` · ${row.target}` : ''}{row.note ? ` · ${row.note}` : ''}
+												· {shortDate(row.decided_at)}{row.decided_by ? ` by ${row.decided_by}` : ''}
+											</div>
+											{#if busy && busy !== 'busy'}
+												<div class="text-small text-warning">{busy}</div>
+											{/if}
+										</div>
+										<div class="flex shrink-0 items-baseline gap-3 text-small">
+											{#if row.reopened}
+												<span class="text-danger">Reopened · {fmt(row.misses_since)} misses since</span>
+											{:else if row.outcome === 'wanted'}
+												<span class="tabular-nums text-text">{fmt(row.misses_since)} searches since</span>
+											{:else}
+												<span class="tabular-nums text-muted"
+													>{fmt(row.searches_since)} searches since · {fmt(row.misses_since)} found nothing</span
+												>
+											{/if}
+											{#if canDecide(row.language)}
+												<button
+													class="btn btn-sm btn-ghost"
+													disabled={busy === 'busy'}
+													onclick={() => undo(row)}>{busy === 'busy' ? 'Undoing…' : 'Undo'}</button
+												>
+											{/if}
+										</div>
+									</li>
+								{/each}
+							</ul>
+						{/if}
+					{/if}
+				</section>
 
 				<!-- By language -->
 				<section class="mt-6 rounded-card border border-border bg-surface p-5">

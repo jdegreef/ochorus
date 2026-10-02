@@ -1681,24 +1681,13 @@ BODY_CORRECTIONS: dict[str, dict] = {
         ],
     },
     "things-as-they-are": {
-        # The dropped-anchor defect: Gutenberg spells a cross-reference as an
-        # internal link, and `[class*=pginternal]` decomposed it whole instead
-        # of unwrapping it, so the reference vanished and only the punctuation
-        # around it survived. The selector is qualified now
-        # (`sanitize.KEEP_PREDICATES`, #1573) — this is the row already on the
-        # shelf, which is never re-imported. Each target was read off the
-        # Gutenberg source, not inferred from position.
-        #
-        # Three chapter cross-references in Carmichael's picture captions and
-        # asides — "one of the old dames seen in ." for "seen in chapter vi."
-        "replacements": [
-            ("one of the old dames seen in . A capital typical face",
-             "one of the old dames seen in chapter vi. A capital typical face"),
-            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
-             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
-            ('the "rabbits" mentioned in . She saw us',
-             'the "rabbits" mentioned in Chapter I. She saw us'),
-        ],
+        # Three dropped chapter cross-references once lived here ("one of the
+        # old dames seen in ." for "seen in chapter vi."), all three inside
+        # photo captions. The photos never shipped (the sanitizer keeps no
+        # `<img>`), so the captions were orphaned loose text and are cut from
+        # every edition's fixture; the pairs went with them rather than stay
+        # dead.
+        "replacements": [],
     },
     "prayer-and-praying-men": {
         # Two words glued together in CCEL's own text (verified upstream, so

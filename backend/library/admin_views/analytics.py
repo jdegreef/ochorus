@@ -12,7 +12,18 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import Article, Author, Book, SearchClickLog, Sermon
+from ..audit import AdminAudited, actor_email
+from ..models import (
+    AdminAction,
+    Article,
+    Author,
+    Book,
+    SearchClickLog,
+    SearchDecision,
+    Sermon,
+    fold_query,
+)
+from ..search_triage import with_status
 from ..views import _language_entry
 
 
@@ -952,6 +963,20 @@ class AdminSearchView(APIView):
         # report rather than by how many distinct things readers have ever
         # failed to find.
         per_language: dict[str, list[dict]] = {r["language"]: [] for r in worst}
+        # A triaged query leaves this list (it's on the Handled or Wanted tab)
+        # unless its decision has stopped working — then it comes back, flagged,
+        # carrying the decision so the page can say what was tried. Only a queued
+        # translation can stop working, so only those need the since-scan.
+        decisions = SearchDecision.objects.filter(language__in=list(per_language))
+        decided = {(d.query, d.language) for d in decisions}
+        reopened = {
+            (d["query"], d["language"]): d
+            for d in with_status(decisions.filter(outcome=SearchDecision.Outcome.TRANSLATE))
+            if d["reopened"]
+        }
+        # Misses on triaged queries, so each language's header counts what's
+        # still open rather than everything readers missed.
+        settled: dict[str, int] = {}
         for r in (
             window.filter(result_count=0, language__in=list(per_language))
             .annotate(q=Lower("query"), qlen=Length("query"))
@@ -960,14 +985,21 @@ class AdminSearchView(APIView):
             .annotate(count=Count("id"))
             .order_by("-count", "q")
         ):
+            key = (fold_query(r["q"]), r["language"])
+            if key in decided and key not in reopened:
+                settled[r["language"]] = settled.get(r["language"], 0) + r["count"]
+                continue
             queries = per_language[r["language"]]
             if len(queries) < 10:
-                queries.append({"query": r["q"], "count": r["count"]})
+                row = {"query": r["q"], "count": r["count"]}
+                if key in reopened:
+                    row["reopened"] = reopened[key]
+                queries.append(row)
 
         unanswered = [
             {
                 **_language_entry(r["language"]),
-                "total": r["zero"],
+                "total": r["zero"] - settled.get(r["language"], 0),
                 "queries": per_language[r["language"]],
             }
             for r in worst
@@ -1000,7 +1032,6 @@ class AdminSearchView(APIView):
                 "overview": {k: overview(k) for k in windows},
                 "unopened_queries": unopened,
                 "top_queries": answered,
-                "zero_result_queries": top(window.filter(result_count=0)),
                 "unanswered_by_language": unanswered,
                 "daily": daily,
                 "by_language": [
@@ -1111,3 +1142,129 @@ class AdminSearchGapView(APIView):
                 "works": ranked[:12],
             }
         )
+
+
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
+class AdminSearchDecisionListView(APIView):
+    """Triaged unanswered searches — the Search page's Handled and Wanted tabs.
+
+    Each decision comes with what readers did since (see
+    :func:`library.search_triage.with_status`). Language is per row, so scope is
+    enforced here rather than by the gate: a language-scoped admin sees only
+    their languages' decisions.
+    """
+
+    def get(self, request):
+        from accounts.permissions import allowed_languages
+
+        qs = SearchDecision.objects.all()
+        allowed = allowed_languages(request, AdminCapability.REPORTING, AdminVerb.VIEW)
+        if allowed is not None:
+            qs = qs.filter(language__in=allowed)
+        return Response({"decisions": with_status(qs)})
+
+
+@requires(
+    AdminCapability.TRANSLATE,
+    verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
+    language_arg="language",
+)
+class AdminSearchDecisionView(AdminAudited, APIView):
+    """Triage one unanswered search (POST), or undo that (DELETE).
+
+    Gated on the translation queue at ``act`` in the query's language: deciding
+    what a language's readers are missing is the same planning work, and it's
+    the grant a language admin holds for their own languages (contributors and
+    reviewers only ``suggest``). ``translate`` itself is super-admin-only, like
+    filing the translation job it records (see AdminTranslationJobsView).
+    """
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.SEARCH_UNDO
+            if request.method == "DELETE"
+            else AdminAction.Action.SEARCH_DECIDE
+        )
+
+    def audit_entry(self, request, response):
+        src = request.query_params if request.method == "DELETE" else request.data
+        target = f"{(src.get('language') or '').strip().lower()}:{fold_query(src.get('query') or '')}"
+        return target, {"outcome": (response.data or {}).get("outcome", "")}
+
+    @staticmethod
+    def _key(src) -> tuple[str, str] | None:
+        query = fold_query(str(src.get("query") or ""))
+        language = str(src.get("language") or "").strip().lower()
+        if len(query) < 3 or not language:
+            return None
+        return query, language
+
+    @staticmethod
+    def _guard_translate(request, query, language):
+        """A queued translation is a super admin's record — the job behind it is
+        theirs to file — so only a super admin may replace or undo it."""
+        if is_admin_user(request.user, request):
+            return None
+        if SearchDecision.objects.filter(
+            query=query, language=language, outcome=SearchDecision.Outcome.TRANSLATE
+        ).exists():
+            return Response(
+                {"detail": "A queued translation can only be changed by a super admin."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        return None
+
+    def post(self, request):
+        from django.utils import timezone
+
+        key = self._key(request.data)
+        outcome = str(request.data.get("outcome") or "").strip()
+        if key is None or outcome not in SearchDecision.Outcome.values:
+            return Response(
+                {
+                    "detail": "query (3+ chars), language and outcome ("
+                    + ", ".join(SearchDecision.Outcome.values)
+                    + ") are required."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        if outcome == SearchDecision.Outcome.TRANSLATE and not is_admin_user(
+            request.user, request
+        ):
+            return Response(
+                {"detail": "Only a super admin can queue translation work."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        query, language = key
+        if refusal := self._guard_translate(request, query, language):
+            return refusal
+        _, created = SearchDecision.objects.update_or_create(
+            query=query,
+            language=language,
+            defaults={
+                "outcome": outcome,
+                "target": str(request.data.get("target") or "").strip()[:200],
+                "note": str(request.data.get("note") or "").strip()[:300],
+                "decided_by": actor_email(request),
+                "decided_at": timezone.now(),
+            },
+        )
+        return Response(
+            {"ok": True, "query": query, "language": language, "outcome": outcome},
+            status=status.HTTP_201_CREATED if created else status.HTTP_200_OK,
+        )
+
+    def delete(self, request):
+        key = self._key(request.query_params)
+        if key is None:
+            return Response(
+                {"detail": "query and language are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        query, language = key
+        if refusal := self._guard_translate(request, query, language):
+            return refusal
+        deleted, _ = SearchDecision.objects.filter(query=query, language=language).delete()
+        if not deleted:
+            return Response({"detail": "No such decision to undo."}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"ok": True, "query": query, "language": language})
