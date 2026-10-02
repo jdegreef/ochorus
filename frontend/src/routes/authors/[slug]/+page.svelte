@@ -370,7 +370,6 @@
 	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
 	// nothing lit — the links still jump.
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-
 </script>
 
 <Seo

@@ -108,6 +108,9 @@
 	const NARROW = '(max-width: 34rem)';
 	const narrowQuery = mediaFlag(NARROW);
 	const narrow = $derived(narrowQuery.matches);
+	// "Has mounted" (not a media query, so not mediaFlag): flips in the same
+	// post-hydration flush as `narrow`, so `.books-pending` hands over to the
+	// `hidden` attribute in one frame.
 	let hydrated = $state(false);
 	$effect(() => {
 		hydrated = true;

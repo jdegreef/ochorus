@@ -421,7 +421,7 @@
 	const qa = $derived(pickQa(editorialQa, []));
 
 	// On-page jump navigation (A3) — the author page's pattern: scrollSpy for the
-	// active section, jumpToSection for a smooth scroll that lands below the pinned
+	// active section, spy.jump for a smooth scroll that lands below the pinned
 	// bars via the `--pinned-offset` scroll-margin contract. Entries are only the
 	// sections that actually render, each labelled by its own existing localized
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
@@ -690,7 +690,7 @@
 					<li>
 						<a
 							href="#{item.id}"
-							class="subnav-link"
+							class="subnav-link subnav-link-tight"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
 							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
@@ -1092,11 +1092,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	/* The shared .subnav-link (app.css), a little tighter: this bar also
-	   carries the read CTA. */
-	.book-subnav .subnav-link {
-		padding-inline: 0.6rem;
 	}
 	/* Smaller than a body button, to sit in the bar without setting its height. */
 	.subnav-cta {

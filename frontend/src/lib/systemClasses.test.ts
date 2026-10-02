@@ -3,7 +3,7 @@
  * scoped <style> block.
  *
  * The shared component classes (`.btn`, `.field`, `.seg`, `.chip`, `.eyebrow`,
- * `.section-label`, `.count`, `.page-col`) are UNLAYERED in app.css, and a
+ * `.section-label`, `.count`, `.page-col`, `.subnav-link`) are UNLAYERED in app.css, and a
  * component's scoped rule wins over them by specificity (Svelte scopes it with
  * a hash). So a scoped `.seg {…}` silently forks the design: Settings' segmented
  * toggle drifted into a weak-edged pill that no longer matched Sermons/Books,
@@ -47,6 +47,10 @@ const SYSTEM = [
 	'subnav-link'
 ];
 const RULE = new RegExp(`^\\s*\\.(?:${SYSTEM.join('|')})(?![\\w-])`);
+/** Classes guarded ANYWHERE in a selector, not just at its start: a
+ *  descendant override (`.author-subnav .subnav-link {…}`) forks them just as
+ *  well. Their variants are app.css modifiers (`.subnav-link-tight`). */
+const STRICT = /\.subnav-link(?![\w-])/;
 
 describe('system classes are not redefined in scoped CSS', () => {
 	it('no <style> block redefines an app.css component class', () => {
@@ -60,7 +64,9 @@ describe('system classes are not redefined in scoped CSS', () => {
 			const style = /<style>([\s\S]*?)<\/style>/.exec(readFileSync(file, 'utf8'))?.[1];
 			if (!style) continue;
 			for (const line of style.split('\n')) {
-				if (RULE.test(line)) offenders.push(`${rel}: ${line.trim()}`);
+				const selector = /[{,]\s*$/.test(line);
+				if (RULE.test(line) || (selector && STRICT.test(line)))
+					offenders.push(`${rel}: ${line.trim()}`);
 			}
 		}
 		expect(offenders, offenders.join('\n')).toEqual([]);

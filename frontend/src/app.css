@@ -2230,6 +2230,10 @@ a.sermon-row-title:hover {
 	color: var(--accent);
 	border-bottom-color: var(--accent);
 }
+/* A tighter tab, for a bar that also carries a CTA (the book page). */
+.subnav-link-tight {
+	padding-inline: 0.6rem;
+}
 
 /* Scripture heat: how many passages cite a Bible chapter, 0 (coolest) to 4.
    One definition for the chips (ScriptureChapterChips) and the /scripture
