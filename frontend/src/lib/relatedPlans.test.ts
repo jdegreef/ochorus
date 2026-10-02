@@ -96,6 +96,15 @@ describe('relatedPlans', () => {
 		expect(relatedPlans(withArticle, [blank, bare, summary('none', [])])).toEqual([]);
 	});
 
+	it('does not treat the house imprint as a shared writer', () => {
+		const mixed = {
+			...current,
+			authors: [...(current.authors ?? []), { slug: 'ochorus-originals', name: 'Ochorus Originals' }]
+		};
+		const series = summary('rooted-series', [['rooted-1', 'ochorus-originals']]);
+		expect(relatedPlans(mixed, [series])).toEqual([]);
+	});
+
 	it('returns nothing from an empty list (a failed fetch)', () => {
 		expect(relatedPlans(current, [])).toEqual([]);
 	});

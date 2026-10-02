@@ -1,4 +1,5 @@
 import type { BookTile, PlanDetail, PlanSummary } from './library-public';
+import { ORIGINALS_SLUG } from './originals';
 
 /** At most this many plans in the plan page's "More like this" — one row of the shelf's three-up grid. */
 export const RELATED_PLANS_LIMIT = 3;
@@ -6,8 +7,11 @@ export const RELATED_PLANS_LIMIT = 3;
 const BOOK_WEIGHT = 2;
 const AUTHOR_WEIGHT = 1;
 
-/** The writers of a cover strip's books (a list-row plan's strip holds up to five). */
-const authorsOf = (covers: BookTile[]) => covers.flatMap((c) => (c.author?.slug ? [c.author.slug] : []));
+/** The writers of a cover strip's books (a list-row plan's strip holds up to five). The house
+ *  imprint is not a writer: it bylines unrelated series (Rooted, Brave for God, …), so sharing it
+ *  says nothing about theme — the same reason the A–Z leaves it out. */
+const authorsOf = (covers: BookTile[]) =>
+	covers.flatMap((c) => (c.author?.slug && c.author.slug !== ORIGINALS_SLUG ? [c.author.slug] : []));
 /** How many of `theirs` are also in `mine`. */
 const shared = (theirs: Iterable<string>, mine: Set<string>) => new Set([...theirs].filter((s) => mine.has(s))).size;
 
@@ -33,7 +37,9 @@ export function relatedPlans(
 	// The detail payload names every book (its days) and every writer; the
 	// cover strip backs up `authors` from an API predating that field.
 	const books = new Set(plan.days.flatMap((d) => (d.book_slug ? [d.book_slug] : [])));
-	const authors = new Set([...(plan.authors ?? []).map((a) => a.slug), ...authorsOf(plan.covers)]);
+	const authors = new Set(
+		[...(plan.authors ?? []).map((a) => a.slug), ...authorsOf(plan.covers)].filter((s) => s !== ORIGINALS_SLUG)
+	);
 	return all
 		.map((p, index) => {
 			const theirBooks = p.covers.map((c) => c.slug);
