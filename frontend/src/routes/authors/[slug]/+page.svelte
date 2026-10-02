@@ -4,7 +4,6 @@
 	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import {
 		type AuthorDetail,
@@ -25,7 +24,7 @@
 	import { scopedSearchHref } from '$lib/searchState';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { authorCardUrl } from '$lib/authorCard';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -410,26 +409,15 @@
 	     one centred column removes both. The action row wraps and stays centred on
 	     a phone. -->
 	<header class="mx-auto flex max-w-[40rem] items-center gap-4 sm:gap-5">
-		{#if author.photo_url}
-			{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
-			<img
-				src={source.src}
-				srcset={source.srcset}
-				use:hydrateSrc={source}
-				sizes="112px"
-				width="112"
-				height="112"
-				alt="{t('a11y.portraitOf')} {author.name}"
-				class="h-20 w-20 shrink-0 rounded-full border border-border object-cover shadow-sm sm:h-28 sm:w-28"
-				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
-			/>
-		{:else}
-			<span
-				class="font-display flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent sm:h-28 sm:w-28"
-			>
-				{initials(author.name)}
-			</span>
-		{/if}
+		<Portrait
+			slug={author.slug}
+			name={author.name}
+			url={author.photo_url}
+			px={112}
+			loading="eager"
+			class="h-20 w-20 shadow-sm sm:h-28 sm:w-28"
+			initialsClass="text-h1"
+		/>
 		<div class="min-w-0">
 		<h1 class="text-h1" dir="auto">{heading}</h1>
 		{#if summaryBits.length}

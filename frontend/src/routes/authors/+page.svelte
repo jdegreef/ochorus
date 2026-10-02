@@ -17,8 +17,7 @@
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -236,26 +235,15 @@
 						     writer added from a book has a photo_url too (the book's author
 						     carries one) — blank means no free image: initials instead. -->
 						<li class="mb-5 flex break-inside-avoid gap-3">
-							{#if author.photo_url}
-								{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
-								<img
-									src={source.src}
-									srcset={source.srcset}
-									use:hydrateSrc={source}
-									sizes="32px"
-									alt=""
-									loading="lazy"
-									width="32"
-									height="32"
-									class="h-8 w-8 shrink-0 rounded-full border border-border object-cover grayscale"
-									style="object-position: {portraitPosition(author.slug)}"
-								/>
-							{:else}
-								<span
-									class="font-display flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent-soft text-micro font-semibold text-accent"
-									aria-hidden="true">{initials(author.name)}</span
-								>
-							{/if}
+							<Portrait
+								slug={author.slug}
+								name={author.name}
+								url={author.photo_url}
+								px={32}
+								decorative
+								class="h-8 w-8"
+								initialsClass="text-micro"
+							/>
 							<div class="min-w-0 flex-1">
 								<a class="font-semibold hover:text-accent" href={localizeHref(`/authors/${author.slug}`)}
 									>{author.name}</a

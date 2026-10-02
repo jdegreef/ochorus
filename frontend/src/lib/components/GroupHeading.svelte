@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
-	import { PORTRAIT_POSITION_DEFAULT, portraitSrcset } from '$lib/portraits';
+	import { PORTRAIT_POSITION_DEFAULT } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	/**
 	 * The heading over one group of a grouped browse shelf — Books by author,
@@ -65,21 +65,17 @@
 		: `${blurb ? 'mb-1' : 'mb-4'} flex items-center gap-2.5 text-h3 text-muted`}
 	style={sticky ? 'top: var(--pinned-offset, 0px)' : undefined}
 >
-	{#if portraitUrl}
-		{@const source = { src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
-		<img
-			src={source.src}
-			srcset={source.srcset}
-			use:hydrateSrc={source}
-			sizes="32px"
-			alt=""
-			loading="lazy"
-			width="32"
-			height="32"
-			class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
-			style="object-position: {portraitPosition}"
-		/>
-	{/if}
+	<Portrait
+		slug=""
+		name=""
+		url={portraitUrl}
+		px={32}
+		position={portraitPosition}
+		tone="color"
+		decorative
+		fallback={false}
+		class="h-8 w-8"
+	/>
 	{#if href}
 		<a {href} class="text-text hover:underline">{name}</a>
 	{:else}

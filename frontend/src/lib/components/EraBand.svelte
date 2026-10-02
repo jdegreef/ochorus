@@ -1,9 +1,8 @@
 <script lang="ts">
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
 	import { ERA_HUE, type EraId } from '$lib/eras';
 	import type { EraCard } from '$lib/bioFacets';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	/**
 	 * Two thousand years in one row: a card per church-history era with its
@@ -42,22 +41,15 @@
 			<span class="era-foot">
 				<span class="era-faces" aria-hidden="true">
 					{#each e.faces as a (a.slug)}
-						{#if a.photo_url}
-							{@const source = { src: a.photo_url, srcset: portraitSrcset(a.photo_url) }}
-							<img
-								src={source.src}
-								srcset={source.srcset}
-								use:hydrateSrc={source}
-								sizes="28px"
-								width="28"
-								height="28"
-								alt=""
-								loading="eager"
-								style="object-position: {portraitPosition(a.slug)}"
-							/>
-						{:else}
-							<span class="era-initials">{initials(a.name)}</span>
-						{/if}
+						<Portrait
+							slug={a.slug}
+							name={a.name}
+							url={a.photo_url}
+							px={28}
+							decorative
+							loading="eager"
+							initialsClass="era-initials"
+						/>
 					{/each}
 				</span>
 				<span class="era-count">{e.count}<span class="sr-only"> {t(e.count === 1 ? 'common.authorOne' : 'common.authorMany')}</span></span>
@@ -130,7 +122,10 @@
 	.era-faces {
 		display: flex;
 	}
-	.era-faces > * {
+	/* The faces are Portrait's elements, so these reach in with :global. These
+	   rules are unlayered and so beat Portrait's Tailwind utilities (its accent
+	   border, fill and text size) — the band draws its faces its own way. */
+	.era-faces > :global(*) {
 		width: 1.75rem;
 		height: 1.75rem;
 		border-radius: 999px;
@@ -139,14 +134,11 @@
 		object-fit: cover;
 		filter: grayscale(1);
 	}
-	.era-card:hover .era-faces > img,
-	.era-card.on .era-faces > img {
+	.era-card:hover .era-faces > :global(img),
+	.era-card.on .era-faces > :global(img) {
 		filter: none;
 	}
-	.era-initials {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
+	.era-faces > :global(.era-initials) {
 		background: color-mix(in srgb, var(--hue) 22%, var(--surface));
 		color: var(--text);
 		font-size: var(--fs-micro);
