@@ -52,7 +52,7 @@
 								width="28"
 								height="28"
 								alt=""
-								loading="lazy"
+								loading="eager"
 								style="object-position: {portraitPosition(a.slug)}"
 							/>
 						{:else}
@@ -60,7 +60,7 @@
 						{/if}
 					{/each}
 				</span>
-				<span class="era-count">{e.count}<span class="sr-only"> {t('bios.writers')}</span></span>
+				<span class="era-count">{e.count}<span class="sr-only"> {t(e.count === 1 ? 'common.authorOne' : 'common.authorMany')}</span></span>
 			</span>
 		</button>
 	{/each}

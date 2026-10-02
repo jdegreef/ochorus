@@ -42,6 +42,15 @@
 	const t = i18n.t;
 	const menuId = $props.id();
 	let open = $state(false);
+	let menu = $state<HTMLElement>();
+	// Opens start-side; a trigger that wrapped near the far edge of the row
+	// would push the panel off-screen, so it flips to open end-side instead.
+	let flip = $state(false);
+	$effect(() => {
+		if (!open || !menu) return void (flip = false);
+		const r = menu.getBoundingClientRect();
+		flip = r.right > document.documentElement.clientWidth - 8 || r.left < 8;
+	});
 	const on = $derived(new Set(selected));
 </script>
 
@@ -61,7 +70,7 @@
 		<!-- A labelled group of checkboxes, not role=menu: that promises arrow-key
 		     menu navigation, and these are ordinary form controls (Tab moves
 		     through them, Space ticks). -->
-		<div id={menuId} class="account-menu facet-menu" role="group" aria-label={label}>
+		<div bind:this={menu} id={menuId} class="account-menu facet-menu" class:flip role="group" aria-label={label}>
 			<ul>
 				{#each options as o (o.v)}
 					<li>
@@ -107,6 +116,10 @@
 		width: 18rem;
 		max-height: min(26rem, 70vh);
 		overflow-y: auto;
+	}
+	.facet-menu.flip {
+		inset-inline-start: auto;
+		inset-inline-end: 0;
 	}
 	.facet-option {
 		display: flex;

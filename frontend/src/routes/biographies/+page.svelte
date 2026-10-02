@@ -164,7 +164,9 @@
 		const m = new Map<EraId, AuthorBio[]>();
 		for (const a of authors) {
 			const id = eraOf(a.birth_year);
-			m.set(id, [...(m.get(id) ?? []), a]);
+			const xs = m.get(id);
+			if (xs) xs.push(a);
+			else m.set(id, [a]);
 		}
 		for (const xs of m.values())
 			xs.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a));
