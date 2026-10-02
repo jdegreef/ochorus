@@ -225,9 +225,10 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         from . import audience as aud
         with mock.patch("emails.sending.send_email", return_value="rid"), mock.patch.object(
             broadcasts_mod, "_claim", wraps=broadcasts_mod._claim
-        ) as claim, mock.patch.object(
-            broadcasts_mod, "run_send", wraps=broadcasts_mod.run_send
-        ):
+        ) as claim, mock.patch(
+            "emails.management.commands.send_due_broadcasts.run_send",
+            wraps=broadcasts_mod.run_send,
+        ) as rs:
             call_command("send_due_broadcasts", stdout=out)
         b.refresh_from_db()
         diag = (
