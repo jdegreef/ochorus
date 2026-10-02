@@ -2013,26 +2013,13 @@ a.sermon-row-title:hover {
 	transform: rotate(180deg);
 }
 /* The brief under the entry: always there as a two-line preview (what a reader
-   chooses by), opened in full by the chevron. It hangs in the content column
-   (already inset past the emblem) at a reading measure, not the full row width. */
-.sermon-row-peek {
-	margin-top: 0.4rem;
-}
+   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
+   hangs in the content column (already inset past the emblem) at a reading
+   measure, not the full row width. */
 .sermon-row-brief {
-	margin: 0;
+	margin: 0.4rem 0 0;
 	max-width: 64ch;
 	color: var(--muted);
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-	-webkit-line-clamp: 2;
-	line-clamp: 2;
-	overflow: hidden;
-}
-.sermon-row.is-open .sermon-row-brief {
-	display: block;
-	-webkit-line-clamp: unset;
-	line-clamp: none;
-	overflow: visible;
 }
 
 /* ── Browse-page filter furniture ──────────────────────────────────────────

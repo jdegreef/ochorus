@@ -4,6 +4,7 @@
 	import { formatLifespan, type SermonSummary } from '$lib/library-public';
 	import { SvelteSet } from 'svelte/reactivity';
 	import { hydrateSrc } from '$lib/hydrateSrc';
+	import { initials } from '$lib/strings';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -230,8 +231,7 @@
 	// it would hide at least two.
 	const PREVIEW = 3;
 	const expanded = new SvelteSet<string>();
-	const collapses = (slug: string, n: number) =>
-		!filtering && n > PREVIEW + 1 && !expanded.has(slug);
+	const collapsible = (n: number) => !filtering && n > PREVIEW + 1;
 	function toggleSection(slug: string) {
 		if (expanded.has(slug)) expanded.delete(slug);
 		else expanded.add(slug);
@@ -317,8 +317,8 @@
 	{/if}
 
 	<!-- Filter bar, pinned under the app nav (itself sticky, hence the
-	     --appnav-h offset) so the filters come WITH you — with a brief under
-	     every row the shelf runs dozens of screens. Its height is measured: the
+	     --appnav-h offset) so the filters come WITH you — 24 preacher sections
+	     run many screens. Its height is measured: the
 	     preacher sections pin under whatever it currently is. Same recipe as
 	     Biographies (page-design B6/L3).
 	     Below sm it is one line — search + a Filters button whose sheet holds
@@ -424,8 +424,8 @@
 	     opening it. A tile can't carry a 300–400 character brief without becoming
 	     mostly text, and prose set across a 76rem page is unreadable, so the row
 	     gives the brief a real measure and the meta a column of its own. -->
-	{#snippet sermonList(items: SermonSummary[], limit = Infinity)}
-		<div class="flex flex-col gap-3">
+	{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
+		<div {id} class="flex flex-col gap-3">
 			{#each items as sermon, i (sermon.slug)}
 				<div class="contents" hidden={i >= limit}>
 					<SermonCard {sermon} {showAuthor} variant="row" />
@@ -445,7 +445,7 @@
 		     replaced ran to three rows at 24), and a face is found faster than a
 		     name. In section order, so the strip reads like the page below it. -->
 		{#if groups.length > 1}
-			<nav class="preacher-strip mb-8" aria-label={t('sermons.jumpPreacher')}>
+			<nav class="cover-rail mb-8 flex gap-1 pb-1" aria-label={t('sermons.jumpPreacher')}>
 				{#each groups as g (g.author.slug)}
 					<a href="#preacher-{g.author.slug}" class="preacher-jump">
 						<span class="preacher-face" aria-hidden="true">
@@ -466,7 +466,7 @@
 									style="object-position: {portraitPosition(g.author.slug)}"
 								/>
 							{:else}
-								{g.author.name.replace(/[^\p{L}]/gu, '').slice(0, 1)}
+								{initials(g.author.name)}
 							{/if}
 						</span>
 						<span class="preacher-name">{g.author.name}</span>
@@ -478,7 +478,8 @@
 		{#each groups as g (g.author.slug)}
 			{@const a = g.author}
 			{@const lifespan = formatLifespan(a.birth_year, a.death_year, t('common.bornPrefix'))}
-			{@const collapsed = collapses(a.slug, g.items.length)}
+			{@const canCollapse = collapsible(g.items.length)}
+			{@const collapsed = canCollapse && !expanded.has(a.slug)}
 			<section
 				id="preacher-{a.slug}"
 				class="mb-10"
@@ -492,6 +493,7 @@
 					href={localizeHref(authorPath(a.slug))}
 					portraitUrl={a.photo_url}
 					portraitPosition={portraitPosition(a.slug)}
+					blurb={a.bio}
 				>
 					<!-- Years, then the count as words: a bare count after a
 					     lifespan read as one figure ("1843–1919 15"). -->
@@ -502,15 +504,13 @@
 						>
 					{/snippet}
 				</GroupHeading>
-				{#if a.bio}
-					<p class="preacher-blurb text-small text-muted">{a.bio}</p>
-				{/if}
-				{@render sermonList(g.items, collapsed ? PREVIEW : Infinity)}
-				{#if !filtering && g.items.length > PREVIEW + 1}
+				{@render sermonList(g.items, collapsed ? PREVIEW : Infinity, `preacher-list-${a.slug}`)}
+				{#if canCollapse}
 					<button
 						type="button"
 						class="btn btn-ghost btn-sm mt-3"
 						aria-expanded={!collapsed}
+						aria-controls="preacher-list-{a.slug}"
 						onclick={() => toggleSection(a.slug)}
 					>
 						{collapsed
@@ -537,22 +537,8 @@
 		position: sticky;
 		top: var(--appnav-h, 0px);
 	}
-	/* The preacher strip: one row of faces that scrolls sideways, with the fade
-	   on the end edge saying there is more (as .chip-scroller does on phones). */
-	.preacher-strip {
-		display: flex;
-		gap: 0.25rem;
-		overflow-x: auto;
-		overscroll-behavior-x: contain;
-		scrollbar-width: thin;
-		padding-bottom: 0.35rem;
-		-webkit-mask-image: linear-gradient(to right, black 92%, transparent);
-		mask-image: linear-gradient(to right, black 92%, transparent);
-	}
-	:global([dir='rtl']) .preacher-strip {
-		-webkit-mask-image: linear-gradient(to left, black 92%, transparent);
-		mask-image: linear-gradient(to left, black 92%, transparent);
-	}
+	/* One face in the preacher strip (the strip itself is the shared .cover-rail):
+	   portrait or initials over the name and count. */
 	.preacher-jump {
 		flex: none;
 		width: 5.5rem;
@@ -598,23 +584,5 @@
 	.preacher-name {
 		font-size: var(--fs-small);
 		line-height: 1.2;
-	}
-	/* The bio's opening, on one line under the heading — a sketch, not the bio
-	   (the name links there). Indented to the name, past the 32px portrait. */
-	.preacher-blurb {
-		margin: -0.5rem 0 1rem;
-		padding-inline-start: calc(2rem + 0.625rem);
-		max-width: calc(70ch + 2.625rem);
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	@media (min-width: 640px) and (max-width: 767.98px) {
-		.sermon-shell {
-			--pinned-offset: var(--appnav-h, 0px);
-		}
-		.sermon-filter {
-			position: static;
-		}
 	}
 </style>
