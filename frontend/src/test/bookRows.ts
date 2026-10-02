@@ -21,6 +21,7 @@ export type BookFields = {
 	author: string[];
 	cover_url?: string;
 	series?: string[] | null;
+	series_position?: number | null;
 	is_published?: boolean;
 };
 
