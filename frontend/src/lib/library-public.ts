@@ -1,6 +1,7 @@
 import { apiFetch, ApiError, type Fetch } from './api';
 import { SITE_URL } from './config';
 import { absUrl } from './seo';
+import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from './coverArt';
 import {
 	ARTICLE_FIELDS,
 	BOOK_FIELDS,
@@ -13,6 +14,9 @@ export interface Author {
 	slug: string;
 	name: string;
 	bio: string;
+	/** One line on who they were (English only; "" elsewhere or when unwritten).
+	 *  Optional: only the card serializer sends it. */
+	tagline?: string;
 	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
@@ -496,7 +500,7 @@ export interface ScriptureHit {
 	date: string;
 }
 
-export type SearchHit =
+export type SearchHit = (
 	| ChapterHit
 	| SermonHit
 	| AuthorHit
@@ -504,7 +508,11 @@ export type SearchHit =
 	| TopicHit
 	| PlanHit
 	| ArticleHit
-	| ScriptureHit;
+	| ScriptureHit
+) & {
+	/** An admin pinned this as the best match for the query; it leads the list. */
+	pinned?: boolean;
+};
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';
@@ -514,6 +522,8 @@ export interface SearchResponse {
 	results: SearchHit[];
 	/** A "did you mean" term when the query found nothing (fuzzy-matched). */
 	suggestion?: string;
+	/** The word actually searched, when an admin's synonym replaced the query. */
+	searched_for?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.
@@ -1456,6 +1466,16 @@ export interface ScriptureBookPage {
 	next: { book: string; book_title: string } | null;
 }
 
+/** The Scripture section's share card (`npm run og:pages`), as `<Seo>` props:
+ *  the hub, book and chapter pages forward as Scripture rather than the generic
+ *  house card. Verse pages draw their own (verseCard). */
+export const SCRIPTURE_OG = {
+	ogImage: absUrl('/og/scripture.png'),
+	ogImageWidth: LANDSCAPE_WIDTH,
+	ogImageHeight: LANDSCAPE_HEIGHT,
+	ogImageAlt: 'Scripture in the classics — every Bible reference, and who preached it'
+};
+
 /** The /scripture/<book>/ page: one Bible book across the library. */
 export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
 
@@ -1599,6 +1619,19 @@ export const getQuotePage = (author: string, f?: Fetch) =>
 export interface SavedQuote extends Quote {
 	author: { slug: string; name: string };
 }
+
+/** The /quotes index's featured pool — short reviewed quotes, writers interleaved. */
+export const listFeaturedQuotes = (f?: Fetch) =>
+	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
+
+/** A quotation's whole source paragraph, as plain text — "read it in context". */
+export interface QuoteContext {
+	slug: string;
+	paragraph_text: string;
+}
+
+export const getQuoteContext = (slug: string, f?: Fetch) =>
+	apiFetch<QuoteContext>(`/api/library/quotes/context/${slug}/`, {}, f);
 
 /**
  * Resolve stored quote slugs to their cards — the reader's saved-quotes shelf.

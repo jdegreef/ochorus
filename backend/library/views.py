@@ -41,13 +41,16 @@ from .models import (
     Chapter,
     Plan,
     SearchClickLog,
+    SearchDecision,
     SearchQueryLog,
     Series,
     Sermon,
     Topic,
+    fold_query,
 )
 from .search import (
     CAPS,
+    MAX_RESULTS,
     MIN_QUERY_LEN,
     PAGE_SIZE,
     SORTS,
@@ -58,6 +61,7 @@ from .search import (
     search_library,
     suggest,
 )
+from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
@@ -942,12 +946,34 @@ class SearchView(APIView):
         # is ordered over ALL matches rather than the page the reader was given,
         # and it must not be logged — paging isn't a new search, and counting it
         # as one would quietly inflate the popular-queries report.
-        kind = (request.query_params.get("type") or "").strip().lower()
-        if kind:
-            return Response(self._page(q, language, kind, request, scope))
+        # An admin's triage of this query (search_triage.rules): a synonym runs
+        # the search on another word, a pin leads the results. Neither applies
+        # inside a scope — they answer "the library", not one author's shelf.
+        outcome, target = (
+            (None, "") if scope else rules(language).get(fold_query(q), (None, ""))
+        )
+        searched = target if outcome == SearchDecision.Outcome.SYNONYM else q
 
-        results = search_library(q, language, scope)
-        counts, capped = count_by_type(q, language, scope)
+        kind = (request.query_params.get("type") or "").strip().lower()
+        best = (
+            pinned_hit(target, q, language) if outcome == SearchDecision.Outcome.PINNED else None
+        )
+        if kind:
+            page = self._page(searched, language, kind, request, scope)
+            # The pin leads its own type's pages too, or it would vanish the
+            # moment a reader picks that facet or asks for more.
+            if best and best["type"] == kind and page["offset"] == 0:
+                page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
+            return Response(page)
+
+        results = search_library(searched, language, scope)
+        counts, capped = count_by_type(searched, language, scope)
+        if best:
+            if all(hit_key(h) != hit_key(best) for h in results):
+                # Not one of the text matches: count it, so its group's total
+                # agrees with the rows under it.
+                counts = {**counts, best["type"]: counts.get(best["type"], 0) + 1}
+            results = [best, *[h for h in results if hit_key(h) != hit_key(best)]][:MAX_RESULTS]
         payload = {
             "query": q,
             "results": results,
@@ -958,6 +984,10 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if searched != q:
+            # Said out loud, so a reader isn't left wondering why their word
+            # isn't in any of the results.
+            payload["searched_for"] = searched
         if scope:
             # Resolved (or dropped) here so the page can name the shelf without a
             # second request. None means the place doesn't exist in this
@@ -1146,7 +1176,8 @@ class SearchClickView(APIView):
             # reader's click doesn't open what they clicked.
             try:
                 SearchClickLog.objects.create(
-                    query=q,
+                    # Spacing folded like the query log's, so a click joins its search.
+                    query=" ".join(q.split()),
                     language=_language(request)[:10],
                     result_type=result_type,
                     position=position,
@@ -1543,6 +1574,106 @@ class QuoteAuthorsView(APIView):
                 for r in rows
             ]
         )
+
+
+#: A quote whose work is unpublished links to a page that 404s, and its context
+#: would hand out text the work's own pages withhold.
+_PUBLISHED_SOURCE = Q(chapter__book__is_published=True) | Q(sermon__is_published=True)
+
+#: The featured pool: up to this many quotes per author, each short enough to
+#: stand as the page's lead without truncation.
+FEATURED_PER_AUTHOR = 6
+FEATURED_MAX_CHARS = 160
+
+
+class QuoteFeaturedView(APIView):
+    """The pool the /quotes index draws its featured quotation from.
+
+    A small, stable list rather than one "quote of the day": the page is
+    prerendered, so the day's pick is made in the browser from this list (and
+    "Another quote" walks it) without a request per click. Up to
+    `FEATURED_PER_AUTHOR` short quotes per writer, interleaved round-robin so
+    consecutive days rotate writers. Within a writer the order is the quote
+    slug's — an author + content hash, so stable across deploys yet unrelated
+    to reading order. Reviewed only, as every quote view.
+    """
+
+    def get(self, request):
+        from django.db.models.functions import Length
+
+        from .models import Quote
+
+        rows = (
+            Quote.objects.filter(reviewed=True)
+            .filter(_PUBLISHED_SOURCE)
+            .annotate(chars=Length("text"))
+            .filter(chars__lte=FEATURED_MAX_CHARS)
+            .select_related("author", "chapter__book", "sermon")
+            # The card needs titles and slugs, never the bodies they sit in.
+            .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+                   "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+            .order_by("author__name", "slug")
+        )
+        by_author: dict[int, list] = {}
+        for q in rows:
+            picks = by_author.setdefault(q.author_id, [])
+            if len(picks) < FEATURED_PER_AUTHOR:
+                picks.append(q)
+        groups = list(by_author.values())
+        pool = [g[i] for i in range(FEATURED_PER_AUTHOR) for g in groups if i < len(g)]
+        return Response([_quote_card_payload(q) for q in pool])
+
+
+def quote_block_text(quote) -> str | None:
+    """The plain text of the block a quote's `paragraph` points at, AS SERVED
+    (see `library.quote_blocks`). None if the index no longer lands — a work
+    edited out from under its quote."""
+    from .quote_blocks import served_block_texts
+
+    body = quote.sermon.body_html if quote.sermon_id else quote.chapter.body_html
+    blocks = served_block_texts(body)
+    return blocks[quote.paragraph] if 0 <= quote.paragraph < len(blocks) else None
+
+
+class _QuoteContextThrottle(ScopedCacheThrottle):
+    """Each context call parses a whole chapter (scripture annotation, then
+    lxml), so it gets its own bucket — generous for a reader opening cards,
+    a ceiling for a script walking every slug."""
+
+    scope = "quote-context"
+
+
+class QuoteContextView(APIView):
+    """A quotation's whole source paragraph — "read it in context".
+
+    Plain text, not HTML: the card highlights the sentence inside it and links
+    on to the reader for the real page, so nothing here needs markup (and the
+    page needs no `{@html}`). Reviewed quotes from published works only; 404
+    for anything else, or a paragraph index that no longer resolves.
+
+    The parse is the cost, so the text is cached per quote for an hour: a body
+    repair reaches it within that, and a popular card costs one parse.
+    """
+
+    throttle_classes = [_QuoteContextThrottle]
+
+    def get(self, request, quote):
+        from .models import Quote
+
+        key = f"quote-context:{quote}"
+        text = cache.get(key)
+        if text is None:
+            q = (
+                Quote.objects.filter(slug=quote, reviewed=True)
+                .filter(_PUBLISHED_SOURCE)
+                .select_related("chapter", "sermon")
+                .first()
+            )
+            text = quote_block_text(q) if q else None
+            if text is None:
+                raise Http404("No such quotation.")
+            cache.set(key, text, 60 * 60)
+        return Response({"slug": quote, "paragraph_text": text})
 
 
 class _QuoteResolveThrottle(ScopedCacheThrottle):

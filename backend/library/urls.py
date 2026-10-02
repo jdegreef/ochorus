@@ -18,6 +18,8 @@ from .views import (
     PopularSearchesView,
     QuoteAuthorsView,
     QuoteAuthorTopicView,
+    QuoteContextView,
+    QuoteFeaturedView,
     QuotePageView,
     QuoteResolveView,
     QuoteTopicDetailView,
@@ -51,6 +53,10 @@ urlpatterns = [
     # Before quotes/<author>/ so "resolve" is never read as an author slug. The
     # reader's saved-quotes shelf POSTs its stored slugs here.
     path("quotes/resolve/", QuoteResolveView.as_view(), name="quote-resolve"),
+    # The index's featured pool, and one quote's source paragraph. Both before
+    # quotes/<author>/ (and its three-segment topic page) for the same reason.
+    path("quotes/featured/", QuoteFeaturedView.as_view(), name="quote-featured"),
+    path("quotes/context/<slug:quote>/", QuoteContextView.as_view(), name="quote-context"),
     # The theme vocabulary lives under its own prefix so a theme slug can never
     # be mistaken for an author under quotes/<author>/. "pages" before <topic>,
     # like scripture/pages/ — it is one segment, they are the build's page list.

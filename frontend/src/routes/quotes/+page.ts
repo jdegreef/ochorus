@@ -1,5 +1,6 @@
-import { listQuoteAuthors, listQuoteTopics } from '$lib/library-public';
+import { listFeaturedQuotes, listQuoteAuthors, listQuoteTopics } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
+import { dayIndex } from '$lib/quoteText';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -13,9 +14,20 @@ export const trailingSlash = 'always';
 // The quote themes ride along for the topic chips — the page's second way in.
 // A failed topic fetch only hides the chips; the authors decide the error state.
 export const load: PageLoad = async ({ fetch }) => {
-	const [authors, topics] = await Promise.all([
+	const [authors, topics, featured] = await Promise.all([
 		loadShelf(listQuoteAuthors(fetch)),
-		loadShelf(listQuoteTopics(fetch))
+		loadShelf(listQuoteTopics(fetch)),
+		// The lead quotation's pool; a failed fetch just leaves the page without it.
+		loadShelf(listFeaturedQuotes(fetch))
 	]);
-	return { authors: authors.items, loadError: authors.loadError, topics: topics.items };
+	return {
+		authors: authors.items,
+		loadError: authors.loadError,
+		topics: topics.items,
+		featured: featured.items,
+		// The day's pick AS OF THE BUILD, baked into the prerendered page, so the
+		// HTML and the browser agree and the lead quote only changes after load
+		// when the day has turned since the deploy.
+		featuredAt: dayIndex(new Date(), featured.items.length)
+	};
 };

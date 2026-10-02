@@ -50,6 +50,7 @@ from library.admin_views import (
     AdminSearchDecisionListView,
     AdminSearchDecisionView,
     AdminSearchGapView,
+    AdminSearchPreviewView,
     AdminSearchView,
     AdminSermonDetailView,
     AdminSermonPublishView,
@@ -96,6 +97,11 @@ urlpatterns = [
     ),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
+    path(
+        "api/admin/search-preview/",
+        AdminSearchPreviewView.as_view(),
+        name="admin-search-preview",
+    ),
     path(
         "api/admin/search-decisions/",
         AdminSearchDecisionListView.as_view(),

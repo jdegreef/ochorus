@@ -9,11 +9,18 @@
 	 * page's context through the dialog and records `source: 'fab'`. On phones
 	 * with the tab bar, or on a reading surface with its footer row (chapter,
 	 * sermon), it steps aside: the bar's centre "+" does the same job.
+	 *
+	 * On a wide screen it says what it is — "+ Send feedback" — in the margin
+	 * beside the page column, never wider than that margin; a bare "+" in the
+	 * corner of a browse page read as "add something". And while it shows, the
+	 * site footer keeps a clear strip at its foot so the button never sits on
+	 * the page's last line.
 	 */
 	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { pageWidth } from '$lib/pageWidth.svelte';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 
 	const t = i18n.t;
@@ -30,6 +37,7 @@
 {#if show}
 	<button
 		class="fb-fab"
+		style="--pw: {pageWidth.rem}rem"
 		aria-label={t('feedback.send')}
 		title={t('feedback.send')}
 		aria-haspopup="dialog"
@@ -37,6 +45,7 @@
 	>
 		<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"
 			stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+		<span class="fb-label" aria-hidden="true">{t('feedback.send')}</span>
 	</button>
 {/if}
 
@@ -91,8 +100,41 @@
 		outline-offset: 3px;
 	}
 	.fb-fab svg {
+		flex: none;
 		width: 1.5rem;
 		height: 1.5rem;
+	}
+	/* The label: only where the margin beside the page column can hold it, at
+	   the default 76rem column. The cap follows the reader's own page width
+	   (--pw, set on the button: it mounts outside the layout column that sets
+	   it), so a wider column gets a narrower label that ellipses rather than
+	   spill over the text. */
+	.fb-label {
+		display: none;
+	}
+	@media (min-width: 100rem) {
+		.fb-fab {
+			width: auto;
+			max-width: calc((100vw - var(--pw, 76rem)) / 2 - 2rem);
+			gap: 0.45rem;
+			padding-inline: 0.9rem 1.15rem;
+		}
+		.fb-label {
+			display: block;
+			overflow: hidden;
+			font-size: var(--fs-small);
+			font-weight: 600;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	}
+	/* Room under the footer's last row (the copyright line sits at the
+	   reading end, exactly where the button floats) while the button shows.
+	   Phones with the tab bar hide the button, so only from sm up. */
+	@media (min-width: 640px) {
+		:global(:root:has(.fb-fab) .site-footer) {
+			padding-bottom: 4.5rem;
+		}
 	}
 	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
 	   and the reading surfaces in their footer's (FootFeedback.svelte) — so the floating

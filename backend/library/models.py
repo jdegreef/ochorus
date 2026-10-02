@@ -138,6 +138,12 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     bio = models.TextField(blank=True)
+    # One line saying who this person was, for a place that already shows the
+    # name and years beside it (the sermons shelf's preacher headings): a bio
+    # often opens "Name (1897–1963) was…", which repeats both. Untranslated —
+    # served only in the author's own language (`tagline_for`); others get the
+    # bio.
+    tagline = models.CharField(max_length=160, blank=True)
     # Long-form biography as cleaned HTML (paragraphs, <h2> sections, pull-quote
     # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
     # page above their books. Written via the `write-biography` skill.
@@ -270,6 +276,18 @@ class Author(models.Model):
         if self.is_imprint:
             return ""
         return self._localized("bio", language, fallback=fallback)
+
+    def tagline_for(self, language: str) -> str:
+        """The one-line tagline in ``language``; ``""`` when there is none.
+
+        Written only in the author's own language (the language of the base
+        ``bio``, as ``_localized`` reads it) and never shown in another — the
+        library has no fallback for prose, so another reader gets the
+        translated ``bio`` instead. Withheld for an imprint, like the bio.
+        """
+        if self.is_imprint or (language and language != self.original_language):
+            return ""
+        return self.tagline
 
     def bio_html_for(self, language: str, *, fallback: bool = False) -> str:
         """Long-form bio HTML in ``language``; ``""`` when untranslated.
@@ -1664,11 +1682,18 @@ class SearchDecision(models.Model):
         WANTED = "wanted", "Wanted"
         #: Not something Ochorus will carry (in copyright, off-topic, spam).
         OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+        #: The library has it under another word: readers' searches for the
+        #: query run on ``target`` instead (search_triage.rules).
+        SYNONYM = "synonym", "Synonym"
+        #: Results came back but nobody opened one: ``target`` ("topic:prayer")
+        #: leads the results as the best match.
+        PINNED = "pinned", "Pinned best match"
 
     query = models.CharField(max_length=200)
     language = models.CharField(max_length=10)
     outcome = models.CharField(max_length=20, choices=Outcome.choices)
-    #: The work a translation was queued for ("book:waiting-on-god"); blank otherwise.
+    #: What the outcome points at: the work a translation was queued for or the
+    #: pinned page ("book:waiting-on-god"), or a synonym's word. Blank otherwise.
     target = models.CharField(max_length=200, blank=True)
     note = models.CharField(max_length=300, blank=True)
     decided_by = models.EmailField(blank=True)
@@ -1832,6 +1857,42 @@ class Language(models.Model):
 
     def natural_key(self):
         return (self.code,)
+
+
+class LanguageHealthSnapshot(models.Model):
+    """One language's health score on one day, so the admin page can show
+    whether the work is moving it.
+
+    Written by the scoreboard itself (``admin_views.health.record_snapshots``),
+    on every deploy and whenever the page is opened, upserting today's row, so
+    a day with any activity gets exactly one point and no extra cron service is
+    needed. ``score_version`` is the formula that produced the row: the trend
+    only compares rows scored the same way, so a change to the weights or a
+    signal starts a fresh line instead of drawing a fake jump.
+
+    ``language`` is the code, not a FK: a snapshot is history and outlives a
+    registry row being renamed or removed.
+    """
+
+    language = models.CharField(max_length=10)
+    date = models.DateField()
+    score_version = models.PositiveSmallIntegerField()
+    health = models.PositiveSmallIntegerField()
+    readiness = models.FloatField()
+    coverage = models.FloatField()
+    review = models.FloatField()
+    engagement = models.FloatField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["language", "date"], name="uniq_health_snapshot_language_date"
+            )
+        ]
+        ordering = ["language", "date"]
+
+    def __str__(self) -> str:
+        return f"{self.language} {self.date}: {self.health}"
 
 
 class ReviewOutcome(models.Model):
