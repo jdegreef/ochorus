@@ -10,11 +10,13 @@ it's what the AI-translation pipeline keys on (same slug, new language).
 from __future__ import annotations
 
 from django.contrib.postgres.search import SearchVectorField
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
+from .text import is_blank_title
 
 
 class AuthorQuerySet(models.QuerySet):
@@ -494,6 +496,35 @@ class SeriesTranslation(models.Model):
         return f"{self.series.slug} [{self.language}]"
 
 
+def _require_title(row, save_kwargs, field: str = "title") -> None:
+    """Refuse to save a work whose title would show a reader nothing.
+
+    Some forty paths write these rows (the admin import, the translate and
+    contemporize commands, every build_* script, the seeds), and the fixture
+    gate only covers the last. A blank title still reached production, so the
+    rule lives here, where every one of them passes.
+
+    It refuses a title that is BECOMING blank — a new row, or an edit to the
+    title — never one that already was. The release step re-saves rows whole
+    (apply_body_corrections), so refusing a legacy blank row there would fail
+    every deploy until someone fixed the data by hand; that row stays saveable
+    until it is retitled, and the coverage matrix flags it meanwhile.
+    """
+    fields = save_kwargs.get("update_fields")
+    if fields is not None and field not in fields:
+        return
+    title = getattr(row, field)
+    if not is_blank_title(title):
+        return
+    if row.pk:
+        stored = type(row).objects.filter(pk=row.pk).values_list(field, flat=True).first()
+        if stored is not None and stored == title:
+            return
+    raise ValidationError(
+        {field: f"{type(row).__name__} {row.slug!r} ({row.language}) needs a title."}
+    )
+
+
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
@@ -647,6 +678,7 @@ class Book(models.Model):
         return f"{self.title} ({self.language})"
 
     def save(self, *args, **kwargs):
+        _require_title(self, kwargs)
         # The book title (and language, which picks the FTS config) is baked
         # into its chapters' search vectors (library/fts.py) — a retitle must
         # ripple. Compare against the stored row first so unrelated edits
@@ -893,6 +925,7 @@ class Sermon(models.Model):
     def save(self, *args, **kwargs):
         from .text import html_to_text, word_count
 
+        _require_title(self, kwargs)
         self.body_text = html_to_text(self.body_html)
         self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
@@ -1027,6 +1060,7 @@ class Article(models.Model):
         # article), so a scoped save() that touches body_html carries it too.
         from .text import word_count
 
+        _require_title(self, kwargs, "h1")
         self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
         if update_fields is not None and "body_html" in update_fields:
@@ -1073,6 +1107,10 @@ class Plan(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"
+
+    def save(self, *args, **kwargs):
+        _require_title(self, kwargs)
+        super().save(*args, **kwargs)
 
 
 class PlanDayManager(models.Manager):

@@ -644,6 +644,9 @@ export interface AdminCoverageRow {
 	 * edition stays unpublished and no translation may be filed, so its missing
 	 * cells are locked, not gaps. Absent otherwise. */
 	blocked?: boolean;
+	/** The title would show a reader nothing (blank, or only zero-width /
+	 * bidi characters) — text.is_blank_title. Absent otherwise. */
+	untitled?: boolean;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs

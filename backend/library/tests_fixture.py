@@ -88,7 +88,7 @@ from library.ingest import (
     word_count,
 )
 from library.quote_marks import mark_counts, mispaired_marks
-from library.text import html_to_text
+from library.text import html_to_text, is_blank_title
 
 EXPECTED_MODELS = {
     "library.author",
@@ -418,7 +418,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             blank = [
                 r["fields"].get("slug") or r["fields"].get("series")
                 for r in self.by_model.get(model, [])
-                if not str(r["fields"].get(field, "")).strip()
+                if is_blank_title(r["fields"].get(field))
             ]
             self.assertEqual(blank, [], f"{model}: blank {field} on {blank}")
 
