@@ -393,3 +393,60 @@ class ReviewQueueTests(TestCase):
         self.assertEqual(data["page"], 1)
         self.assertGreaterEqual(data["pages"], 1)
         self.assertEqual(len(data["results"]), data["filtered"])
+
+    def test_lanes_partition_the_queue(self):
+        """Every undecided row is in exactly one lane, counted for the view."""
+        TranslationNote.objects.create(
+            kind="sermon", slug="possibilities", language="sw",
+            reference="Ezekiel 36:32", status=TranslationNote.Status.SELF_RENDERED,
+        )
+        TranslationNote.objects.create(
+            kind="bio", slug="a-b-simpson", language="sw",
+            reference="John 3:16", status=TranslationNote.Status.MINED,
+        )
+        data = self._get()
+        self.assertEqual(
+            data["lanes"], {"ready": 1, "verses": 1, "unexamined": 1, "needs_work": 0}
+        )
+        lanes = {r["kind"]: r["lane"] for r in data["results"]}
+        self.assertEqual(lanes, {"sermon": "verses", "bio": "ready", "book": "unexamined"})
+        for lane, kind in (("ready", "bio"), ("verses", "sermon"), ("unexamined", "book")):
+            self.assertEqual([r["kind"] for r in self._get(lane=lane)["results"]], [kind])
+        # The pre-lane bookmark still lands on the verses lane.
+        self.assertEqual([r["kind"] for r in self._get(flagged="1")["results"]], ["sermon"])
+
+    def test_lane_counts_follow_the_type_in_view(self):
+        data = self._get(kind="book")
+        self.assertEqual(
+            data["lanes"], {"ready": 0, "verses": 0, "unexamined": 1, "needs_work": 0}
+        )
+
+    def test_needs_work_lane_lists_sent_back_items(self):
+        self.client.post(
+            self.url,
+            {"items": [{"kind": "book", "slug": "waiting", "language": "sw"}],
+             "outcome": "needs_work", "note": "Chapter 1 drops a verse."},
+            content_type="application/json",
+        )
+        data = self._get(lane="needs_work")
+        self.assertEqual([r["kind"] for r in data["results"]], ["book"])
+        self.assertEqual(data["lanes"]["needs_work"], 1)
+        self.assertEqual(data["lanes"]["unexamined"], 2)  # sermon + bio; the book left
+
+    def test_remaining_sort_puts_nearly_finished_items_first(self):
+        for ref in ("Isaiah 1:18", "Isaiah 1:19", "Isaiah 1:20"):
+            TranslationNote.objects.create(
+                kind="sermon", slug="possibilities", language="sw",
+                reference=ref, status=TranslationNote.Status.SELF_RENDERED,
+            )
+        TranslationNote.objects.create(
+            kind="book", slug="waiting", language="sw",
+            reference="John 1:1", status=TranslationNote.Status.SELF_RENDERED,
+        )
+        data = self._get(lane="verses", sort="remaining")
+        self.assertEqual([r["kind"] for r in data["results"]], ["book", "sermon"])
+
+    def test_oldest_created_at_is_the_queue_age(self):
+        data = self._get()
+        dates = [r["created_at"] for r in data["results"] if r["created_at"]]
+        self.assertEqual(data["oldest_created_at"], min(dates))
