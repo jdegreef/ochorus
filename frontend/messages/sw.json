@@ -505,7 +505,7 @@
   "series_in_progress": "Kinaendelea",
   "series_continue_heading": "Endelea na mfululizo wako",
   "series_books_list": "Vitabu katika mfululizo huu",
-  "series_companion": "Mfululizo shirikishi",
+  "series_companion": "Mfululizo shirikishi: {title}",
   "series_all_read": "Umesoma vitabu vyote vya mfululizo huu",
   "series_meta_default": "{series}: vitabu vyote vya mfululizo, bure kusoma kwenye Ochorus.",
   "series_tagline": "Vitabu vilivyoandikwa kusomwa pamoja — vingine kwa mpangilio, vingine kama mkusanyiko.",

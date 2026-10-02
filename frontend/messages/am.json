@@ -505,7 +505,7 @@
   "series_in_progress": "በሂደት ላይ",
   "series_continue_heading": "ተከታታዮችዎን ይቀጥሉ",
   "series_books_list": "በዚህ ተከታታይ ያሉ መጻሕፍት",
-  "series_companion": "ተጓዳኝ ተከታታይ",
+  "series_companion": "ተጓዳኝ ተከታታይ፦ {title}",
   "series_all_read": "በዚህ ተከታታይ ውስጥ ያሉትን መጻሕፍት በሙሉ አንብበዋል",
   "series_meta_default": "{series}፦ በተከታታዩ ውስጥ ያሉ መጻሕፍት በሙሉ፣ በOchorus ላይ በነጻ የሚነበቡ።",
   "series_tagline": "አብረው እንዲነበቡ የተጻፉ መጻሕፍት — አንዳንዶቹ በቅደም ተከተል፣ ሌሎቹ እንደ ስብስብ።",

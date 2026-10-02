@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
 	import {
@@ -123,7 +124,7 @@
 	title={heading.name}
 	subtitle={heading.subtitle}
 	{headingLevel}
-	action={hasAction ? nextAction : undefined}
+	action={hasAction || (!compact && companion) ? footer : undefined}
 >
 	{#snippet aside()}
 		{series.book_count}
@@ -163,7 +164,7 @@
 	{/if}
 </ShelfCard>
 
-{#snippet nextAction()}
+{#snippet footer()}
 	{#if bookList.length}
 		<details class="book-list">
 			<summary class="text-small font-medium text-accent">
@@ -172,8 +173,15 @@
 			<ul class="mt-2 flex flex-col gap-1">
 				{#each bookList as book (book.slug)}
 					<li class="flex items-baseline gap-2 text-small">
-						<span class="stage {book.stage}" aria-hidden="true"></span>
+						<span class="stage stage-mark {book.stage}" aria-hidden="true"></span>
 						<a href={localizeHref(`/books/${book.slug}`)} dir="auto">{book.title}</a>
+						{#if book.stage !== 'unread'}
+							<span class="sr-only"
+								>({book.stage === 'done'
+									? t('settings.statFinished')
+									: t('settings.statInProgress')})</span
+							>
+						{/if}
 					</li>
 				{/each}
 			</ul>
@@ -181,8 +189,7 @@
 	{/if}
 	{#if companion}
 		<a class="companion text-small text-muted" href={localizeHref(`/series/${companion.slug}/`)}>
-			{t('series.companion')}:
-			<span class="font-medium text-text" dir="auto">{splitSeriesTitle(companion.title).name}</span>
+			{m.series_companion({ title: splitSeriesTitle(companion.title).name })}
 			<Arrow />
 		</a>
 	{/if}
@@ -197,7 +204,7 @@
 			{/if}
 			{#if nextTitle}<span class="truncate" dir="auto">{nextTitle}</span>{/if}
 		</a>
-	{:else}
+	{:else if hasAction}
 		<p class="text-small text-muted">{t('series.allRead')}</p>
 	{/if}
 {/snippet}
@@ -213,6 +220,12 @@
 	}
 	/* The book list: a disclosure in the card's foot (outside the card's own
 	   link), each title its own link, with a dot for where the reader is. */
+	/* Capped, so opening a thirty-book list doesn't stretch its whole grid
+	   row (the row's cards share a height) by a screen. */
+	.book-list ul {
+		max-height: 13rem;
+		overflow-y: auto;
+	}
 	.book-list summary {
 		cursor: pointer;
 		width: fit-content;
@@ -232,19 +245,12 @@
 		width: 0.45rem;
 		height: 0.45rem;
 		border-radius: 9999px;
-		background: color-mix(in srgb, var(--text) 14%, transparent);
-	}
-	.stage.done {
-		background: var(--accent);
-	}
-	.stage.reading {
-		background: var(--gold);
 	}
 	.companion {
 		width: fit-content;
 		text-decoration: none;
 	}
-	.companion:hover span {
+	.companion:hover {
 		color: var(--accent);
 	}
 	/* A language code: a quiet bordered tag, not a link (the card is one). */

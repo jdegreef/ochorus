@@ -505,7 +505,7 @@
   "series_in_progress": "En curso",
   "series_continue_heading": "Continúa tus series",
   "series_books_list": "Libros de esta serie",
-  "series_companion": "Serie complementaria",
+  "series_companion": "Serie complementaria: {title}",
   "series_all_read": "Has leído todos los libros de esta serie",
   "series_meta_default": "{series}: todos los libros de la serie, gratis para leer en Ochorus.",
   "series_tagline": "Libros escritos para leerse juntos: unos en orden, otros como colección.",

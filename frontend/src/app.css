@@ -1936,18 +1936,19 @@ nav.appnav .navsearch:hover {
 .cover-fan .cover:nth-child(4) {
 	transform: rotate(7deg);
 }
-/* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
-   sizes its own images, and this rule would crop its mat. */
 /* The large fan (ShelfCard fan="lg", the series index): covers at a width
-   their titles can be read at, centred in a taller band with no badge. */
+   their titles can be read at, centred in a taller band with no badge. The
+   fan pads its block and end edges so the bigger tiles' rotated corners
+   aren't sliced by its overflow clip. */
 .shelf-card-band.fan-lg {
 	justify-content: center;
 	min-height: 8.75rem;
-	padding-block: 1.1rem 0.8rem;
+	padding-block: 1rem 0.7rem;
 }
 .shelf-card-band.fan-lg > .cover-fan {
-	margin-inline: auto;
-	padding-inline-start: 1.1rem; /* room for the first tile's pull */
+	margin-inline-start: 0;
+	padding-block: 0.35rem;
+	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's tilt */
 	max-width: 100%;
 }
 .fan-lg .cover-fan > * {
@@ -1956,6 +1957,8 @@ nav.appnav .navsearch:hover {
 .fan-lg .cover-fan .cover {
 	width: 4.25rem;
 }
+/* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
+   sizes its own images, and this rule would crop its mat. */
 .cover-fan .cover > img,
 .cover-fan .cover-fallback {
 	width: 100%;
@@ -2269,6 +2272,19 @@ a.sermon-row-title:hover {
 .subnav-link.is-active {
 	color: var(--accent);
 	border-bottom-color: var(--accent);
+}
+
+/* Where a reader is with one book of a series — the card's progress segments
+   and its book-list dots wear the same three colours. The track is
+   ProgressBar's: a text tint that shows on any surface, in every theme. */
+.stage-mark {
+	background: color-mix(in srgb, var(--text) 14%, transparent);
+}
+.stage-mark.done {
+	background: var(--accent);
+}
+.stage-mark.reading {
+	background: var(--gold);
 }
 
 /* Any input, select or textarea in the app. One height, one radius, one edge.

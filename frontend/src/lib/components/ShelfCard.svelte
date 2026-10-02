@@ -81,11 +81,12 @@
 		 */
 		action?: Snippet;
 	} = $props();
+	const bigFan = $derived(fan === 'lg' && covers.length > 0);
 </script>
 
 {#snippet content()}
-	<div class="shelf-card-band hue-band" class:fan-lg={fan === 'lg' && covers.length > 0}>
-		{#if fan === 'lg' && covers.length}
+	<div class="shelf-card-band hue-band" class:fan-lg={bigFan}>
+		{#if bigFan}
 			<!-- The covers carry the card's identity in the large fan. -->
 		{:else if mark && !portrait}
 			<Monogram class="shelf-card-badge" top={mark.top} value={mark.value} />
