@@ -13,7 +13,7 @@
  */
 import { splitEdition } from './edition';
 import { initials as nameInitials, unslug } from './strings';
-import type { AdminActionRow, JobStatus } from './library-admin';
+import { adminBookHref, type AdminActionRow, type JobStatus } from './library-admin';
 
 /**
  * The five families an action belongs to. Colour is spent on the two that reach
@@ -108,7 +108,7 @@ export function parseTarget(target: string): ParsedTarget {
 		return { kind: 'language', slug, href: `/admin/languages/${slug}` };
 	if (kind === 'author' && slug) return { kind: 'author', slug, href: `/authors/${slug}` };
 	if (kind === 'book' && slug)
-		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/books/${slug}` };
+		return { kind: 'document', slug, lang: lang || undefined, href: adminBookHref(slug) };
 	if (kind === 'sermon' && slug)
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/sermons/${slug}` };
 	// Articles and plans are per-language editions too, without an admin page.
