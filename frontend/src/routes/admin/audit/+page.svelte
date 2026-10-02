@@ -80,12 +80,44 @@
 		}
 	}
 
-	// "Scanned 3 minutes ago". Admin is English-only (see frontend/CLAUDE.md).
-	const scannedAgo = $derived(
-		audit?.scanned_at
-			? relativeTime(new Date(audit.scanned_at).getTime(), 'en', 'just now')
-			: ''
-	);
+	// Admin is English-only (see frontend/CLAUDE.md).
+	const ago = (iso: string) => relativeTime(new Date(iso).getTime(), 'en', 'just now');
+
+	// "Scanned 5 min ago · 607 editions · 9,812 chapters · 3.1 s · re-run" — the
+	// scope of the scan behind this result. `scan` is optional only because a
+	// sessionStorage copy from before it existed may seed the first paint.
+	const TRIGGER_LABEL = { manual: 're-run', view: 'on open' } as const;
+	const scanLine = $derived.by(() => {
+		if (!audit?.scanned_at) return '';
+		const parts = [`Scanned ${ago(audit.scanned_at)}`];
+		const s = audit.scan;
+		if (s) {
+			parts.push(
+				`${s.editions.toLocaleString('en')} editions`,
+				`${s.chapters.toLocaleString('en')} chapters`,
+				`${(s.duration_ms / 1000).toFixed(1)} s`,
+				TRIGGER_LABEL[s.trigger] ?? s.trigger
+			);
+		}
+		return parts.join(' · ');
+	});
+
+	// The nightly, recorded scan: when it last ran, whether it alerted, when the
+	// next is due. Overdue means the cron missed its window — say so plainly.
+	const ALERT_LABEL: Record<string, string> = {
+		sent: 'integrity alert sent',
+		failed: 'integrity alert failed to send',
+		skipped: 'integrity alert not sent (email off)'
+	};
+	const nightly = $derived.by(() => {
+		const n = audit?.schedule;
+		if (!n) return null;
+		const last = n.last_at ? `Nightly check ${ago(n.last_at)}` : 'No nightly check yet';
+		const parts = [last];
+		if (n.last_alert && ALERT_LABEL[n.last_alert]) parts.push(ALERT_LABEL[n.last_alert]);
+		parts.push(n.overdue ? 'overdue' : `next ${ago(n.next_at)}`);
+		return { text: parts.join(' · '), warn: n.overdue || n.last_alert === 'failed' };
+	});
 
 	// Names ride along with the audit (registry-sourced), so a language an admin
 	// added without a deploy reads as itself; the code is the fallback while the
@@ -302,11 +334,16 @@
 						{/each}
 					</select>
 				{/if}
-				<div class="flex flex-col items-end">
+				<div class="flex flex-col items-end text-end">
 					<button class="btn btn-ghost" onclick={rerun} disabled={auditRes.loading}
 						>{auditRes.loading ? 'Re-running…' : 'Re-run'}</button
 					>
-					{#if scannedAgo}<span class="mt-1 text-micro text-muted">Scanned {scannedAgo}</span>{/if}
+					{#if scanLine}<span class="mt-1 text-micro text-muted">{scanLine}</span>{/if}
+					{#if nightly}<span
+							class="text-micro {nightly.warn ? 'text-warning' : 'text-muted'}"
+							title="Recorded once a day at {String(audit.schedule.hour_utc).padStart(2, '0')}:00 UTC; a new data-integrity defect emails the super admins."
+							>{nightly.text}</span
+						>{/if}
 				</div>
 			</div>
 		{/if}

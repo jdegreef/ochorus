@@ -978,9 +978,34 @@ export interface AdminAudit {
 	/** ISO timestamp of the (possibly cached) scan this result was built from —
 	 *  the "last run" the page shows. */
 	scanned_at: string;
+	/** What the scan behind this result covered and why it ran: `manual` is a
+	 *  Re-run (recorded in the scan history), `view` a cache miss on open. */
+	scan: AuditScanScope;
+	/** The nightly, recorded scan (`manage.py audit_scan` from the email cron). */
+	schedule: AuditSchedule;
 	/** Chapter-length histogram for the edition in view. Optional: a payload
 	 *  restored from sessionStorage may predate it. */
 	chapter_lengths?: ChapterLengths;
+}
+
+export interface AuditScanScope {
+	editions: number;
+	chapters: number;
+	duration_ms: number;
+	trigger: 'manual' | 'view';
+}
+
+export interface AuditSchedule {
+	/** The UTC hour the nightly scan becomes due. */
+	hour_utc: number;
+	/** ISO start of the last scheduled scan, or null if none is recorded. */
+	last_at: string | null;
+	/** What its integrity alert did: '' not evaluated, none, sent, skipped, failed. */
+	last_alert: '' | 'none' | 'sent' | 'skipped' | 'failed' | null;
+	/** When the next is expected (may be in the past while it is due). */
+	next_at: string;
+	/** Well past its mark with no scan — usually the cron isn't running. */
+	overdue: boolean;
 }
 
 /** Non-empty chapters bucketed by word count (backend `qa.length_bucket`).

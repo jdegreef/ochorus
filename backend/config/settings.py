@@ -248,6 +248,11 @@ ADMIN_EMAILS = {
     if e.strip()
 }
 
+# The nightly content audit (library/content_audit.py) runs once per UTC day at
+# or after this hour, from the existing 15-minute email cron. An integrity check
+# that rose since the previous nightly scan emails ADMIN_EMAILS.
+AUDIT_SCAN_HOUR_UTC = min(23, max(0, int(os.getenv("AUDIT_SCAN_HOUR_UTC", "3") or 3)))
+
 # Translation job queue (admin "Translate" buttons → GitHub issues; see
 # library/admin_views/jobs.py). A repo-scoped token that can read/create issues.
 # Deliberately NOT an Anthropic credential — prod never holds one; the queued
