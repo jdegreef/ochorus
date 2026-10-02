@@ -5256,6 +5256,36 @@
 				549
 			]
 		},
+		"hi/rooted-3": {
+			"ground": "476f4d53c3bb68fc703820e60ef170fc95ebf8bcc95c0a6d4f04675f6140f973",
+			"style": "young",
+			"volume": "3",
+			"script": "devanagari",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[290, 257, 310, 301],
+					[196, 346, 404, 415]
+				],
+				"subtitle": [
+					[166, 488, 434, 510],
+					[168, 521, 432, 543]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				245,
+				549
+			]
+		},
 		"hi/school-of-prayer": {
 			"ground": "afd3eb09cff74bebab9bf307233b2255fdf3a4d50a394f2fd809efa0e888b793",
 			"style": "devotional",
