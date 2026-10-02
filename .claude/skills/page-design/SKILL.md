@@ -264,6 +264,12 @@ the name **as a link** when it has a page (`href`), and the count on the shared
 groups render the default variant; Biographies passes `sticky` for its bordered
 era heading (solid ink, pinned via `--pinned-offset`, count pushed to the end),
 and a `detail` snippet carries the era's year range or Search's bespoke "N of M".
+A `blurb` prop adds one truncated line under the heading, indented to the name
+(Sermons: the preacher's bio opening, under "1843–1919 · 15 sermons" in
+`detail`). Sermons no longer jumps to a preacher with a `.tag` chip wall: it uses
+a `.cover-rail` strip of faces with counts. Books still has the chip wall; when
+Books' author groups carry `photo_url`, extract the strip into a shared
+`<AuthorJumpStrip>` and use it on both.
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
 

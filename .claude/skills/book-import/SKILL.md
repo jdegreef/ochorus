@@ -365,6 +365,17 @@ dropped; chapters under 120 words are dropped as stubs.
   from the DB rather than hand-typing the curly quotes). Common enough across
   Gutenberg editions that a general ingest strip may be worth it if it recurs.
   *(ministry-of-intercession, 2026-09)*
+- **A Gutenberg half-title banner above each chapter lands at the END of the
+  previous one.** #29296 repeats the book's subtitle, "A PLEA FOR MORE PRAYER",
+  as an `<h3>` before every chapter heading; the splitter cuts at the heading,
+  so the banner closed chapters 2–16 as a heading with nothing under it — and
+  every translation copied it (es and sw in four different wordings). Found by
+  the audit's mid-split check (it ends without punctuation), but only in the
+  editions where the banner lacked a full stop. Removed from all seven fixtures
+  in lockstep (`tests_translation_markup` pins the tag sequence), then
+  `rederive_body_text --write` + `rederive_word_count --write`. A RE-IMPORT
+  would bring it back: strip it in the build first. *(ministry-of-intercession,
+  2026-10)*
 - **A Gutenberg edition can set an ornamental `<div class="chaptertitle">CHAPTER
   N</div>` ABOVE the real `<h2>` title**, so the h2 is borrowed correctly but the
   bare "CHAPTER N" label leaks in and every body opens "CHAPTER 1 …". Fixed in

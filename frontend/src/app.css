@@ -2012,10 +2012,10 @@ nav.appnav .navsearch:hover {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
 /* ── Sermon index: table-of-contents row ─────────────────────────────────────
-   The row now reads like a book's contents: one line per sermon (title ·
-   passage · a dotted leader · length), with the brief revealed on click. The
-   emblem + content flex layout of `.sermon-row` above is unchanged; what
-   follows styles the one-line entry and the disclosed brief. */
+   The row reads like a book's contents: one line per sermon (title · passage ·
+   a dotted leader · length), then a two-line preview of the brief that the
+   chevron opens in full. The emblem + content flex layout of `.sermon-row`
+   above is unchanged; what follows styles the one-line entry and the brief. */
 
 /* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
    of its own — the title span inside does. */
@@ -2083,14 +2083,12 @@ a.sermon-row-title:hover {
 .sermon-row.is-open .sermon-row-chevron {
 	transform: rotate(180deg);
 }
-/* The brief, revealed under the entry. It hangs in the content column (already
-   inset past the emblem), and now that it is on-demand rather than always shown,
-   it gets a real reading measure instead of the full row width. */
-.sermon-row-peek {
-	margin-top: 0.7rem;
-}
+/* The brief under the entry: always there as a two-line preview (what a reader
+   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
+   hangs in the content column (already inset past the emblem) at a reading
+   measure, not the full row width. */
 .sermon-row-brief {
-	margin: 0;
+	margin: 0.4rem 0 0;
 	max-width: 64ch;
 	color: var(--muted);
 }
@@ -2224,6 +2222,29 @@ a.sermon-row-title:hover {
 }
 [dir='rtl'] .tab-strip {
 	--fade-dir: to left;
+}
+
+/* A tab in a .tab-strip: quiet ink, the current one in accent with an
+   underline drawn on the row's own bottom border. Shared by the library tabs
+   (Books · Series · A–Z); the book and author pages' jump-navs still scope an
+   identical copy. */
+.subnav-link {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px; /* the underline meets the row's own border */
+	font-size: var(--fs-small);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--muted);
+	text-decoration: none;
+}
+.subnav-link:hover {
+	color: var(--text);
+}
+.subnav-link.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
 }
 
 /* Any input, select or textarea in the app. One height, one radius, one edge.

@@ -10,6 +10,7 @@
 	import SeriesCard from '$lib/components/SeriesCard.svelte';
 	import SeriesContinue from '$lib/components/SeriesContinue.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
+	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import { audienceBlurb, audienceName, groupByAudience } from '$lib/series';
 
 	/**
@@ -28,6 +29,8 @@
 	// "More book series" heading over everything.
 	const groups = $derived(groupByAudience(series));
 	const grouped = $derived(groups.some((g) => g.audience));
+	// The jump chips' targets: one id per audience group, "more" for the rest.
+	const groupId = (audience: string | null) => `audience-${audience ?? 'more'}`;
 
 	// schema.org ItemList of the series: each entry is the series page, whose own
 	// BookSeries LD names its parts.
@@ -73,7 +76,10 @@
 	{/if}
 </svelte:head>
 
-<div class="page-col px-5 py-10">
+<!-- --pinned-offset: the app nav, the one bar that pins here — what the
+     jump-chip targets clear (the authors index adds its controls bar). -->
+<div class="page-col px-5 py-10" style="--pinned-offset: var(--appnav-h, 4rem)">
+	<LibraryTabs current="series" />
 	<PageHeader
 		title={t('nav.series')}
 		tagline={t('series.tagline')}
@@ -92,10 +98,23 @@
 	{:else if series.length === 0}
 		<EmptyState message={t('series.none')} />
 	{:else}
+		{#if grouped && groups.length > 1}
+			<!-- One link per audience group: "7 Book Series" with only the young
+			     readers' four above the fold left adults guessing whether there
+			     was anything for them. Anchors, not a filter — every card stays
+			     in the prerendered page. -->
+			<nav class="chip-scroller mb-8 flex gap-2" aria-label={t('nav.series')}>
+				{#each groups as g (g.audience ?? 'more')}
+					<a class="tag" href="#{groupId(g.audience)}"
+						>{audienceName(g.audience)}<span class="count">{g.series.length}</span></a
+					>
+				{/each}
+			</nav>
+		{/if}
 		<SeriesContinue {series} />
 		{#each groups as g (g.audience ?? 'more')}
 			{@const blurb = audienceBlurb(g.audience)}
-			<section class="mb-12">
+			<section id={groupId(g.audience)} class="jump-anchor mb-12">
 				{#if grouped}
 					<GroupHeading name={audienceName(g.audience)} count={g.series.length} />
 					{#if blurb}
@@ -111,3 +130,11 @@
 		{/each}
 	{/if}
 </div>
+
+<style>
+	/* Jump targets clear the pinned app nav (the authors and biographies
+	   indexes' group sections use the same recipe). */
+	.jump-anchor {
+		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
+	}
+</style>

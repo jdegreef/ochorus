@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { blockers, healthBand, nextActions, plural, pointsBreakdown } from './languageHealth';
+import { blockers, countLine, healthBand, nextActions, plural, pointsBreakdown } from './languageHealth';
 import type { AdminLanguageHealth, HealthWeights } from './library-admin';
 
 const WEIGHTS: HealthWeights = { readiness: 0.35, coverage: 0.3, review: 0.2, engagement: 0.15 };
@@ -98,5 +98,24 @@ describe('blockers', () => {
 	it('reads a bare key from an older API as its own label', () => {
 		const l = french({ readiness: { ready: false, blocking: ['ui'] as never } });
 		expect(blockers(l)).toEqual([{ key: 'ui', label: 'ui' }]);
+	});
+});
+
+describe('countLine', () => {
+	it('shows readers against the engagement target', () => {
+		expect(countLine('engagement', french(), 179, 25)).toBe('5 of 25 readers');
+	});
+
+	it('says the target is met rather than "30 of 25"', () => {
+		expect(countLine('engagement', french({ readers: 30 }), 179, 25)).toBe('target met (30 readers)');
+	});
+
+	it('falls back to the bare count from an API without a target', () => {
+		expect(countLine('engagement', french(), 179)).toBe('5 readers');
+	});
+
+	it('gives the counts behind coverage and review', () => {
+		expect(countLine('coverage', french(), 179)).toBe('53 of 179 books');
+		expect(countLine('review', french(), 179)).toBe('3 of 53 reviewed');
 	});
 });
