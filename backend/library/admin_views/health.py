@@ -40,6 +40,11 @@ _WEIGHTS = {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0
 # as the site grows; the page reads it from the response.
 _ENGAGEMENT_TARGET = 25
 
+# Readers are counted over this many days, not all-time: against a fixed target,
+# an all-time count only ever rises, so a language that once had 25 readers
+# would keep full credit with nobody reading it.
+_READER_WINDOW_DAYS = 90
+
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageHealthView(APIView):
@@ -128,6 +133,7 @@ class AdminLanguageHealthView(APIView):
                 "source_published_books": source_published,
                 "weights": _WEIGHTS,
                 "engagement_target": _ENGAGEMENT_TARGET,
+                "reader_window_days": _READER_WINDOW_DAYS,
                 "languages": rows,
             }
         )
@@ -191,13 +197,19 @@ class AdminLanguageHealthView(APIView):
 
     @staticmethod
     def _readers_by_language() -> dict[str, int]:
-        """Distinct readers whose progress touches content in each language — the
-        same signal the engagement page's per-language rollup uses."""
+        """Distinct readers whose progress in each language moved within the last
+        ``_READER_WINDOW_DAYS`` — "active" the way the engagement page counts it
+        (``updated_at``, the server's clock)."""
+        from datetime import timedelta
+
+        from django.utils import timezone
+
         from reading.models import ReadingProgress
 
+        since = timezone.now() - timedelta(days=_READER_WINDOW_DAYS)
         return {
             r["language"]: r["n"]
-            for r in ReadingProgress.objects.values("language").annotate(
-                n=Count("profile", distinct=True)
-            )
+            for r in ReadingProgress.objects.filter(updated_at__gte=since)
+            .values("language")
+            .annotate(n=Count("profile", distinct=True))
         }

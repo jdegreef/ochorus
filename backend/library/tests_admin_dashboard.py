@@ -2032,6 +2032,27 @@ class AdminLanguageHealthTests(TestCase):
         self.assertEqual(before["scores"]["engagement"], after["scores"]["engagement"])
         self.assertEqual(before["health"], after["health"])
 
+    def test_readers_outside_the_window_do_not_count(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        from .admin_views.health import _ENGAGEMENT_TARGET, _READER_WINDOW_DAYS
+
+        self._readers("es", 4)
+        # Two of the four last read before the window opened.
+        stale = timezone.now() - timedelta(days=_READER_WINDOW_DAYS + 1)
+        old = ReadingProgress.objects.filter(language="es").values_list("pk", flat=True)[:2]
+        ReadingProgress.objects.filter(pk__in=list(old)).update(updated_at=stale)
+
+        data = self._get()
+        self.assertEqual(data["reader_window_days"], _READER_WINDOW_DAYS)
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(es["readers"], 2)
+        self.assertAlmostEqual(
+            es["scores"]["engagement"], 2 / _ENGAGEMENT_TARGET, places=3
+        )
+
     def test_engagement_caps_at_the_target(self):
         from .admin_views.health import _ENGAGEMENT_TARGET
 

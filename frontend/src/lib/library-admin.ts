@@ -275,6 +275,9 @@ export const getAdminLanguageHealth = () =>
 		/** Readers that earn full engagement credit. Absent from an API deployed
 		 *  before the fixed target, which scored against the busiest language. */
 		engagement_target?: number;
+		/** Readers are those active in this many days. Absent from an API that
+		 *  counted all-time readers. */
+		reader_window_days?: number;
 		languages: AdminLanguageHealth[];
 	}>('/api/admin/language-health/');
 
