@@ -2,6 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import TrendChip from '$lib/components/TrendChip.svelte';
 	import {
 		getAdminLanguageHealth,
 		type AdminLanguageHealth,
@@ -18,7 +19,10 @@
 		nextActions,
 		plural,
 		pointsBreakdown,
+		portfolio,
 		shelfKinds,
+		sparkPoints,
+		weekTrend,
 		type CoverageShelf
 	} from '$lib/languageHealth';
 
@@ -84,6 +88,7 @@
 	<AdminGate resource={res} errorTitle="Couldn't load language health" loadingText="Loading…" panelClass="mt-6">
 		{#snippet children(data)}
 			{@const shelf = shelfOf(data)}
+			{@const sum = portfolio(data.languages)}
 			{@const sources = data.languages.filter((l) => l.is_source)}
 			{@const ranked = data.languages.filter((l) => !l.is_source)}
 			<header class="mb-6 mt-3">
@@ -115,6 +120,34 @@
 				</details>
 			</header>
 
+			<!-- The whole portfolio at a glance, before the per-language detail. -->
+			<section aria-label="Summary" class="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+				<div class="rounded-card border border-border bg-surface px-3 py-2">
+					<p class="text-micro text-muted">Live</p>
+					<p class="text-h3 tabular-nums">{sum.live} <span class="text-small text-muted">of {sum.translations}</span></p>
+				</div>
+				<div class="rounded-card border border-border bg-surface px-3 py-2">
+					<p class="text-micro text-muted">Median score</p>
+					<p class="text-h3 tabular-nums">{sum.median ?? '—'}</p>
+				</div>
+				<a
+					href="/admin/review"
+					class="rounded-card border border-border bg-surface px-3 py-2 hover:border-accent"
+				>
+					<p class="text-micro text-muted">Awaiting review</p>
+					<p class="text-h3 tabular-nums {sum.awaitingReview ? 'text-warning' : ''}">{fmt(sum.awaitingReview)}</p>
+				</a>
+				<div class="rounded-card border border-border bg-surface px-3 py-2">
+					<p class="text-micro text-muted">Blocked from go-live</p>
+					<p class="text-h3 tabular-nums {sum.blocked.length ? 'text-warning' : ''}">{sum.blocked.length}</p>
+					{#if sum.blocked.length}
+						<p class="truncate text-micro text-muted" title={sum.blocked.map((l) => l.name).join(', ')}>
+							{sum.blocked.map((l) => l.name).join(', ')}
+						</p>
+					{/if}
+				</div>
+			</section>
+
 			<!-- The source shelf: the target every translation is measured against. -->
 			{#each sources as s (s.code)}
 				<div class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-1 rounded-card bg-surface-2 px-4 py-3">
@@ -130,6 +163,7 @@
 			<ol class="flex flex-col gap-3">
 				{#each ranked as l, i (l.code)}
 					{@const b = healthBand(l.health)}
+					{@const spark = sparkPoints(l.trend)}
 					{@const breakdown = pointsBreakdown(l.scores, data.weights)}
 					{@const actions = nextActions(l, data.source_published_books, data.weights, shelf)}
 					<li class="rounded-card border border-border bg-surface p-4">
@@ -172,12 +206,30 @@
 									>
 								{/if}
 							</div>
-							<div class="shrink-0 text-end">
-								<span class="text-h2 tabular-nums {BAND_INK[b.tone]}">{l.health}</span>
-								<span class="block text-micro text-muted">/ 100</span>
-								<span class="mt-1 inline-block rounded-full border px-2 py-0.5 text-micro {BAND_CHIP[b.tone]}"
-									>{b.label}</span
-								>
+							<div class="flex shrink-0 items-start gap-3">
+								<!-- Eight weeks of daily scores and the change since a week ago,
+								     once there is history scored by the current formula. The line
+								     hides on a phone, where it would squeeze the name; the chip
+								     carries the news there. -->
+								{#if spark}
+									<svg
+										class="spark mt-2 hidden sm:block"
+										viewBox="0 0 100 28"
+										preserveAspectRatio="none"
+										role="img"
+										aria-label="{l.name} score, last {l.trend?.length ?? 0} days: {l.trend?.[0]?.health} to {l.health}"
+									>
+										<polyline points={spark} />
+									</svg>
+								{/if}
+								<div class="text-end">
+									<span class="text-h2 tabular-nums {BAND_INK[b.tone]}">{l.health}</span>
+									<span class="block text-micro text-muted">/ 100</span>
+									<span class="mt-1 inline-block rounded-full border px-2 py-0.5 text-micro {BAND_CHIP[b.tone]}"
+										>{b.label}</span
+									>
+									<span class="block"><TrendChip trend={weekTrend(l.week_change)} title="Change since a week ago" /></span>
+								</div>
 							</div>
 						</div>
 
@@ -240,3 +292,19 @@
 		{/snippet}
 	</AdminGate>
 </div>
+
+<style>
+	/* Matches the engagement page's sparklines. */
+	.spark {
+		width: 68px;
+		height: 26px;
+	}
+	.spark polyline {
+		fill: none;
+		stroke: var(--accent);
+		stroke-width: 1.6;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		vector-effect: non-scaling-stroke;
+	}
+</style>

@@ -5,6 +5,7 @@
  */
 import type {
 	AdminLanguageHealth,
+	Trend,
 	AdminLanguageReadiness,
 	HealthScoreKey,
 	HealthWeights,
@@ -227,4 +228,71 @@ export function nextActions(
 	}
 
 	return out.filter((a) => a.gain >= MIN_GAIN).sort((a, b) => b.gain - a.gain);
+}
+
+/** The week's change as a TrendChip trend: points, not percent, since the
+ *  score is already out of 100. Null (no chip) until a week-old point exists. */
+export function weekTrend(change: number | null | undefined): Trend {
+	if (change == null) return null;
+	if (change === 0) return { dir: 'flat', text: 'no change this week' };
+	return { dir: change > 0 ? 'up' : 'down', text: `${Math.abs(change)} this week` };
+}
+
+/** The smallest score range a sparkline spans, so a one-point wobble reads as
+ *  a wobble rather than a cliff. */
+const SPARK_MIN_SPAN = 10;
+
+/**
+ * Polyline points for a score sparkline in a 100×28 box. x is placed by date,
+ * so a day without a point leaves a gap in time rather than squeezing the line.
+ * y spans the line's own range, widened to at least SPARK_MIN_SPAN points around
+ * its middle: on a fixed 0–100 scale a real eight-point climb drew as flat.
+ * Empty with fewer than two points.
+ */
+export function sparkPoints(trend: { date: string; health: number }[] | undefined): string {
+	if (!trend || trend.length < 2) return '';
+	const t = (d: string) => Date.parse(`${d}T00:00:00Z`);
+	const first = t(trend[0].date);
+	const span = t(trend[trend.length - 1].date) - first || 1;
+	const hs = trend.map((p) => p.health);
+	const mid = (Math.max(...hs) + Math.min(...hs)) / 2;
+	const range = Math.max(SPARK_MIN_SPAN, Math.max(...hs) - Math.min(...hs));
+	const lo = mid - range / 2;
+	return trend
+		.map((p) => {
+			const x = ((t(p.date) - first) / span) * 100;
+			const y = 26 - ((p.health - lo) / range) * 24;
+			return `${+x.toFixed(1)},${+y.toFixed(1)}`;
+		})
+		.join(' ');
+}
+
+export interface Portfolio {
+	/** Translations (the source language excluded). */
+	translations: number;
+	live: number;
+	/** Median translation score, or null with no translations. */
+	median: number | null;
+	/** Books awaiting human review, across every language. */
+	awaitingReview: number;
+	/** Translations failing a go-live check, live or not. */
+	blocked: AdminLanguageHealth[];
+}
+
+/** The figures for the summary strip above the ranking. */
+export function portfolio(languages: AdminLanguageHealth[]): Portfolio {
+	const translations = languages.filter((l) => !l.is_source);
+	const scores = translations.map((l) => l.health).sort((a, b) => a - b);
+	const mid = scores.length >> 1;
+	return {
+		translations: translations.length,
+		live: translations.filter((l) => l.is_live).length,
+		median: !scores.length
+			? null
+			: scores.length % 2
+				? scores[mid]
+				: Math.round((scores[mid - 1] + scores[mid]) / 2),
+		awaitingReview: languages.reduce((s, l) => s + l.content.unreviewed_books, 0),
+		blocked: translations.filter((l) => !l.readiness.ready)
+	};
 }
