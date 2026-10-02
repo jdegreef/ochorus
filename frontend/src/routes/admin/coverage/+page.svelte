@@ -352,10 +352,14 @@
 	// is simply most-read first.
 	const maxUnmet = $derived(Math.max(1, ...langs.map((l) => l.unmet_searches ?? 0)));
 	const gapWeight = (l: AdminCoverageLanguage) => 1 + (l.unmet_searches ?? 0) / maxUnmet;
-	// One gap's worth: the work's readers × its language's weight. A row's
+	// One gap's worth: the work's readers × its language's weight × (1 + the
+	// readers of THAT language reading it elsewhere for want of it). The last is
+	// the one per-cell signal, so a gap three Swahili readers are waiting on
+	// outranks the same work's gap in a language nobody has asked for. A row's
 	// priority is the sum of its gaps; "Translate next" ranks the gaps themselves.
+	const asking = (r: AdminCoverageRow, l: AdminCoverageLanguage) => r.demand?.[l.code] ?? 0;
 	const gapScore = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
-		isGap(l, r) ? (1 + (r.readers ?? 0)) * gapWeight(l) : 0;
+		isGap(l, r) ? (1 + (r.readers ?? 0)) * gapWeight(l) * (1 + asking(r, l)) : 0;
 	const priority = (r: AdminCoverageRow) =>
 		gapLang ? 1 + (r.readers ?? 0) : langs.reduce((n, l) => n + gapScore(r, l), 0);
 
@@ -998,6 +1002,13 @@
 						</button>
 					{/if}
 				{/each}
+				{#if visibleRows.some((r) => r.demand)}
+					<span
+						class="inline-flex items-center gap-1.5 text-muted"
+						title="A missing translation that readers of that language are reading in another language, for want of it. The number is how many readers; it also raises the gap in the priority order."
+						><span class="{TILE} border border-accent-soft-border bg-accent-soft font-semibold text-accent">3</span>readers asking</span
+					>
+				{/if}
 				<details
 					class="relative"
 					bind:open={helpOpen}
@@ -1337,34 +1348,51 @@
 				aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
 			>
 		{:else if !isGap(l, r) || !queueOn}
+			<!-- Demand shows here too: someone who can read the matrix but not
+			     queue should still see where readers are waiting. -->
+			{@const wanting = asking(r, l)}
 			<span
-				class="{TILE} {CELL.missing.cls}"
-				title={jobsConfigured === false
+				class="{TILE} {wanting
+					? 'border border-accent-soft-border bg-accent-soft font-semibold tabular-nums text-accent'
+					: CELL.missing.cls}"
+				title={(jobsConfigured === false
 					? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
 					: untitled(r)
 						? `Fix the title of ${name} before queueing translations`
 						: !canQueue
 							? `Missing: ${name} → ${l.name}`
-							: `${l.name} isn't a translation target — nothing to queue`}
-				aria-label="Missing"
-			></span>
+							: `${l.name} isn't a translation target — nothing to queue`) +
+					(wanting
+						? ` · ${wanting} ${l.name} reader${wanting === 1 ? ' is' : 's are'} reading it in another language`
+						: '')}
+				aria-label={wanting ? `Missing, ${wanting} readers asking` : 'Missing'}
+				>{wanting || ''}</span
+			>
 		{:else}
 			{@const spot = queueing === jobKey(r.slug, l.code)}
 			{@const picked = !!selected[cellKey(r.slug, l.code)]}
+			{@const wanting = asking(r, l)}
+			{@const why = wanting
+				? ` · ${wanting} ${l.name} reader${wanting === 1 ? ' is' : 's are'} reading it in another language`
+				: ''}
 			<button
 				type="button"
 				aria-pressed={picked}
 				class="{TILE} transition-colors hover:border-solid hover:border-accent-soft-border hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent {picked
 					? 'border border-accent bg-accent-soft text-accent'
-					: `${CELL.missing.cls} text-muted`}"
+					: wanting
+						? 'border border-accent-soft-border bg-accent-soft font-semibold text-accent'
+						: `${CELL.missing.cls} text-muted`}"
 				disabled={busy}
-				title={`Queue a ${l.name} translation of ${name}`}
-				aria-label={`Queue a ${l.name} translation of ${name}`}
+				title={`Queue a ${l.name} translation of ${name}${why}`}
+				aria-label={`Queue a ${l.name} translation of ${name}${why}`}
 				onclick={(e) =>
 					e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
 			>
 				{#if spot}
 					<span>…</span>
+				{:else if wanting && !picked}
+					<span class="tabular-nums">{wanting}</span>
 				{:else}
 					<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
 				{/if}

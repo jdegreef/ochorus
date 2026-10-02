@@ -18,6 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
+from ..demand import reading_elsewhere
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -581,6 +582,22 @@ def _review_state_or_present(record: dict) -> str:
     return st if st in _AI_STATES else "present"
 
 
+def _with_demand(rows: list[dict], kind: str, wanted: dict) -> list[dict]:
+    """Stamp each row with ``demand``: language → readers whose site language
+    that is, reading this work elsewhere because it has no edition in theirs
+    (``library.demand.reading_elsewhere``). Only languages with any; absent
+    when none. Every such cell is a gap by construction."""
+    for row in rows:
+        demand = {
+            lang: works[(kind, row["slug"])]
+            for lang, works in wanted.items()
+            if (kind, row["slug"]) in works
+        }
+        if demand:
+            row["demand"] = demand
+    return rows
+
+
 def _with_stale(rows: list[dict], kind: str) -> list[dict]:
     """Stamp ``stale`` — the languages whose translation predates the current
     English (library/translation_staleness) — on the rows that have any."""
@@ -616,6 +633,10 @@ class AdminCoverageView(APIView):
         # so the admin UI only offers the queue where a job would actually be filed.
         registry = known_codes()
         unmet = self._unmet_by_language()
+        # Readers reaching for a work in another language for want of their own
+        # (library.demand): the per-cell demand behind a gap. The reading signal
+        # only; the search one runs real searches, too slow for every column.
+        wanted = reading_elsewhere([c for c in codes if c != "en" and c in registry])
         return Response(
             {
                 "languages": [
@@ -628,15 +649,23 @@ class AdminCoverageView(APIView):
                     }
                     for c in codes
                 ],
-                "books": _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
-                "sermons": _with_stale(
-                    self._with_readers(self._sermon_rows(), "sermon"), "sermon"
+                "books": _with_demand(
+                    _with_stale(self._with_readers(self._book_rows(), "book"), "book"),
+                    "book",
+                    wanted,
+                ),
+                "sermons": _with_demand(
+                    _with_stale(self._with_readers(self._sermon_rows(), "sermon"), "sermon"),
+                    "sermon",
+                    wanted,
                 ),
                 "plans": self._with_readers(self._plan_rows(), "plan"),
                 # Bios carry `stale` from AuthorTranslation.source_stale (_bio_rows).
                 "bios": self._with_readers(self._bio_rows(), "bio"),
                 # Articles have no reading-layer rows, so no reader counts.
-                "articles": _with_stale(self._article_rows(), "article"),
+                "articles": _with_demand(
+                    _with_stale(self._article_rows(), "article"), "article", wanted
+                ),
                 # The series the Books matrix can be narrowed to (each book row
                 # carries its `series`), so a whole series' gaps in one language
                 # queue as that column's "queue all".
