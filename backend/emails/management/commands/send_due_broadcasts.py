@@ -15,7 +15,10 @@ import time
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-from emails.broadcasts import promote_due, run_send, send_broadcast, sending_queue
+# Through the module, not ``from … import run_send``: a name bound at import
+# time keeps whatever ``emails.broadcasts.run_send`` was then — in tests, a
+# mock left over from whichever test first imported this command.
+from emails import broadcasts
 
 
 class Command(BaseCommand):
@@ -40,20 +43,20 @@ class Command(BaseCommand):
             if not (broadcast.can_send or broadcast.status == BroadcastStatus.SENDING):
                 self.stderr.write(f"broadcast #{broadcast.pk} is {broadcast.status}; not sending")
                 return
-            tally = send_broadcast(broadcast)
+            tally = broadcasts.send_broadcast(broadcast)
             broadcast.refresh_from_db()
             self.stdout.write(
                 self.style.SUCCESS(f"broadcast #{broadcast.pk} ({broadcast.status}): {tally}")
             )
             return
 
-        started = promote_due()
+        started = broadcasts.promote_due()
         deadline = time.monotonic() + settings.EMAIL_SEND_BUDGET_SECONDS
         worked = 0
-        for broadcast in sending_queue():
+        for broadcast in broadcasts.sending_queue():
             if time.monotonic() >= deadline:
                 break
-            tally = run_send(broadcast, deadline=deadline)
+            tally = broadcasts.run_send(broadcast, deadline=deadline)
             broadcast.refresh_from_db()
             worked += 1
             self.stdout.write(
