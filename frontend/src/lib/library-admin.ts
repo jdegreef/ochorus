@@ -986,6 +986,22 @@ export interface AdminAudit {
 	/** Chapter-length histogram for the edition in view. Optional: a payload
 	 *  restored from sessionStorage may predate it. */
 	chapter_lengths?: ChapterLengths;
+	/** Editions ranked by open quality flags ("worst books first"), grouped on
+	 *  the server over the uncapped scan — the item lists above stop at the cap,
+	 *  so the browser can't group them accurately. Accepted findings excluded;
+	 *  follows `language`. `total` is how many editions have any open flag.
+	 *  Optional: a payload restored from sessionStorage may predate it. */
+	worst_books?: Capped<AuditWorstBook>;
+}
+
+export interface AuditWorstBook {
+	book: string;
+	language: string;
+	/** The edition's title, or '' if its row is gone since the scan. */
+	title: string;
+	total: number;
+	/** Open flags per quality check key, biggest first. */
+	by_check: Record<string, number>;
 }
 
 export interface AuditScanScope {
@@ -1754,6 +1770,11 @@ export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
 export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
 export const adminChapterHref = (slug: string, language: string, order: number) =>
 	`/admin/books/${encodeURIComponent(slug)}#${adminChapterId(language, order)}`;
+/** One edition's section on its admin book page, and the link to it: what the
+ *  audit's "worst books first" table opens. */
+export const adminEditionId = (language: string) => `ed-${language}`;
+export const adminEditionHref = (slug: string, language: string) =>
+	`/admin/books/${encodeURIComponent(slug)}#${adminEditionId(language)}`;
 
 export interface AdminBookChapter {
 	order: number;
