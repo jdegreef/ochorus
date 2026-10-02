@@ -165,3 +165,11 @@ export function mostCited(pages: ScripturePageEntry[], n: number): TopChapter[] 
 			count: p.citing_count
 		}));
 }
+
+/**
+ * Whether the "Go to a passage" box should ask the scripture resolver at all.
+ * Every reference that can have a page names a chapter, so text with no digit
+ * ("grace", "John Bunyan") goes straight to the full search, skipping a round
+ * trip that could only come back empty.
+ */
+export const mayBeReference = (q: string): boolean => /\d/.test(q);
