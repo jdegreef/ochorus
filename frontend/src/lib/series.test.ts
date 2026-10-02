@@ -272,20 +272,20 @@ describe('seriesAges', () => {
 
 describe('cardLanguages', () => {
 	it("puts the reader's language first and the rest in code order", () => {
-		expect(cardLanguages(['fr', 'en', 'es'], 'es')).toEqual({ shown: ['es', 'en', 'fr'], more: 0 });
+		expect(cardLanguages(['fr', 'en', 'es'], 'es')).toEqual({ shown: ['es', 'en', 'fr'], hidden: [] });
 	});
 
 	it('caps the list and counts the rest', () => {
 		const all = ['am', 'ar', 'en', 'es', 'fr', 'hi', 'lg', 'pt', 'sw', 'uk'];
 		expect(cardLanguages(all, 'en')).toEqual({
 			shown: ['en', 'am', 'ar', 'es', 'fr'],
-			more: 5
+			hidden: ['hi', 'lg', 'pt', 'sw', 'uk']
 		});
 	});
 
 	it('shows nothing for a one-language series', () => {
-		expect(cardLanguages(['en'], 'en')).toEqual({ shown: [], more: 0 });
-		expect(cardLanguages([], 'en')).toEqual({ shown: [], more: 0 });
+		expect(cardLanguages(['en'], 'en')).toEqual({ shown: [], hidden: [] });
+		expect(cardLanguages([], 'en')).toEqual({ shown: [], hidden: [] });
 	});
 
 	it('keeps a series not held in the reader language in code order', () => {

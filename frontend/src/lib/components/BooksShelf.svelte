@@ -331,7 +331,7 @@
 {/snippet}
 
 <div class="page-col px-5 py-10">
-	<LibraryTabs current="books" />
+	<LibraryTabs current="books" series={series.length > 0} />
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
 		{books.length}

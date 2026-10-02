@@ -2226,6 +2226,29 @@ a.sermon-row-title:hover {
 	--fade-dir: to left;
 }
 
+/* A tab in a .tab-strip: quiet ink, the current one in accent with an
+   underline drawn on the row's own bottom border. Shared by the library tabs
+   (Books · Series · A–Z); the book and author pages' jump-navs still scope an
+   identical copy. */
+.subnav-link {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px; /* the underline meets the row's own border */
+	font-size: var(--fs-small);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--muted);
+	text-decoration: none;
+}
+.subnav-link:hover {
+	color: var(--text);
+}
+.subnav-link.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
 /* Any input, select or textarea in the app. One height, one radius, one edge.
    `.filter-field` is the same thing under its original name — the filter rows
    on the browse pages read better with it, and both names resolve here. */

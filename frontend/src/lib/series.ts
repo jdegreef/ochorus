@@ -282,21 +282,21 @@ const CARD_LANGUAGES = 5;
 
 /**
  * A series card's language tags: the series' languages with the reader's own
- * first and the rest in code order, up to `CARD_LANGUAGES`, and how many more
- * there are. Nothing for a series in one language — "EN" alone on an English
+ * first and the rest in code order, up to `CARD_LANGUAGES`, and the ones folded
+ * into "+N" (named in its tooltip). Nothing for a series in one language — "EN" alone on an English
  * card says nothing.
  */
 export function cardLanguages(
 	languages: string[],
 	current: string
-): { shown: string[]; more: number } {
+): { shown: string[]; hidden: string[] } {
 	const unique = [...new Set(languages)];
-	if (unique.length < 2) return { shown: [], more: 0 };
+	if (unique.length < 2) return { shown: [], hidden: [] };
 	const ordered = unique.sort((a, b) =>
 		a === current ? -1 : b === current ? 1 : a.localeCompare(b)
 	);
 	return {
 		shown: ordered.slice(0, CARD_LANGUAGES),
-		more: Math.max(0, ordered.length - CARD_LANGUAGES)
+		hidden: ordered.slice(CARD_LANGUAGES)
 	};
 }

@@ -114,9 +114,14 @@
 		<p class="mt-1.5 flex flex-wrap items-center gap-1" dir="ltr">
 			<span class="sr-only">{t('footer.languages')}:</span>
 			{#each langs.shown as code (code)}
-				<abbr class="lang-code" title={localeName(code)} lang={code}>{code.toUpperCase()}</abbr>
+				<abbr class="lang-code" title={localeName(code)}>{code.toUpperCase()}</abbr>
 			{/each}
-			{#if langs.more}<span class="lang-code">+{langs.more}</span>{/if}
+			{#if langs.hidden.length}
+				{@const names = langs.hidden.map(localeName).join(', ')}
+				<abbr class="lang-code" title={names}
+					>+{langs.hidden.length}<span class="sr-only">: {names}</span></abbr
+				>
+			{/if}
 		</p>
 	{/if}
 	{#if !compact && series.description}
@@ -156,6 +161,10 @@
 	/* Five lines, not the shelf's three: series blurbs run to ~210 characters
 	   in English (longer in translation), and at three a three-up grid cut
 	   Sons of the King off mid-word. Still a clamp, so no blurb sets a row. */
+	.series-desc {
+		-webkit-line-clamp: 5;
+		line-clamp: 5;
+	}
 	/* A language code: a quiet bordered tag, not a link (the card is one). */
 	.lang-code {
 		border: 1px solid var(--border);
@@ -166,9 +175,5 @@
 		letter-spacing: 0.04em;
 		color: var(--muted);
 		text-decoration: none;
-	}
-	.series-desc {
-		-webkit-line-clamp: 5;
-		line-clamp: 5;
 	}
 </style>

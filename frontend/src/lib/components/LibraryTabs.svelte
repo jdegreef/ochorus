@@ -1,5 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 
 	/**
@@ -9,27 +11,42 @@
 	 * Books there) and step across. Tabs, not a breadcrumb: a top-level shelf
 	 * shows no visible trail (page-design A6); its BreadcrumbList stays in the
 	 * page's JSON-LD. Labels are the nav words, already in every catalogue.
+	 *
+	 * `series` false drops the Series tab where the page knows this language has
+	 * none (the Books shelf hides its own series links then), so the row never
+	 * leads to an empty, unindexed shelf.
 	 */
 	type Tab = 'books' | 'series' | 'az';
-	let { current }: { current: Tab } = $props();
+	let { current, series = true }: { current: Tab; series?: boolean } = $props();
 	const t = i18n.t;
 
-	const tabs: { id: Tab; href: string; label: () => string }[] = [
-		{ id: 'books', href: '/books', label: () => t('nav.books') },
-		{ id: 'series', href: '/series/', label: () => t('nav.series') },
-		{ id: 'az', href: '/authors', label: () => t('nav.azIndex') }
-	];
+	const tabs = $derived(
+		[
+			{ id: 'books' as const, href: '/books', label: t('nav.books') },
+			{ id: 'series' as const, href: '/series/', label: t('nav.series') },
+			{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+		].filter((tab) => series || tab.id !== 'series' || current === 'series')
+	);
+
+	// A long language can push the row past a phone's width; `tabStrip` fades
+	// the edge that hides tabs, and this brings the current tab into view.
+	let strip: HTMLElement;
+	onMount(() => {
+		strip.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+	});
 </script>
 
-<nav class="library-tabs mb-6" aria-label={t('nav.books')}>
-	<ul class="tab-strip flex gap-1">
+<!-- Named "Explore", not "Books": the primary nav already has a Books link,
+     and /books' own heading says Books. -->
+<nav class="library-tabs mb-6" aria-label={t('footer.explore')}>
+	<ul class="tab-strip flex gap-1" bind:this={strip} use:tabStrip={undefined}>
 		{#each tabs as tab (tab.id)}
 			<li>
 				<a
 					href={localizeHref(tab.href)}
-					class="tab-link"
+					class="subnav-link"
 					class:is-active={tab.id === current}
-					aria-current={tab.id === current ? 'page' : undefined}>{tab.label()}</a
+					aria-current={tab.id === current ? 'page' : undefined}>{tab.label}</a
 				>
 			</li>
 		{/each}
@@ -45,23 +62,5 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	.tab-link {
-		display: inline-block;
-		padding: 0.5rem 0.75rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px; /* the underline meets the row's own border */
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--muted);
-		text-decoration: none;
-	}
-	.tab-link:hover {
-		color: var(--text);
-	}
-	.tab-link.is-active {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
 	}
 </style>

@@ -76,7 +76,9 @@
 	{/if}
 </svelte:head>
 
-<div class="page-col px-5 py-10">
+<!-- --pinned-offset: the app nav, the one bar that pins here — what the
+     jump-chip targets clear (the authors index adds its controls bar). -->
+<div class="page-col px-5 py-10" style="--pinned-offset: var(--appnav-h, 4rem)">
 	<LibraryTabs current="series" />
 	<PageHeader
 		title={t('nav.series')}
@@ -130,8 +132,9 @@
 </div>
 
 <style>
-	/* Jump targets clear the pinned app nav, as the biographies index's do. */
+	/* Jump targets clear the pinned app nav (the authors and biographies
+	   indexes' group sections use the same recipe). */
 	.jump-anchor {
-		scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem);
+		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
 	}
 </style>
