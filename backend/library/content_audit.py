@@ -49,9 +49,11 @@ from .qa import (
     LENGTH_EDGES,
     TERMINAL_PUNCT,
     TINY_MAX,
+    head_snippet,
     length_bucket,
     loose_snippet,
     loose_text,
+    tail_snippet,
 )
 
 logger = logging.getLogger(__name__)
@@ -450,10 +452,15 @@ def _scan_chapters():
     # chapters are left out: they are an integrity defect, not a length.
     lengths: defaultdict[str, list[int]] = defaultdict(lambda: [0] * (len(LENGTH_EDGES) + 1))
 
-    rows = Chapter.objects.select_related("book").values(
+    # Ordered by (book, order) so a book's chapters arrive consecutively: a
+    # mid-sentence split is then completed by the very next row — the opening
+    # of the chapter a reader turns to — with no second query.
+    rows = Chapter.objects.select_related("book").order_by("book_id", "order").values(
         "book_id", "book__slug", "book__language", "order", "title",
         "word_count", "body_html", "body_text",
     )
+    # (book_id, finding) for a split still waiting on its next chapter's opening.
+    awaiting: tuple[int, dict] | None = None
     for c in rows.iterator(chunk_size=50):
         chapters += 1
         slug = c["book__slug"]
@@ -462,6 +469,11 @@ def _scan_chapters():
         title = (c["title"] or "").strip()
         wc = c["word_count"] or 0
         body = (c["body_text"] or "").strip()
+
+        if awaiting is not None:
+            if awaiting[0] == c["book_id"]:
+                awaiting[1]["next_starts"] = head_snippet(body)
+            awaiting = None
 
         titles.setdefault((slug, lang), []).append(title)
         orders.setdefault((slug, lang), []).append(order)
@@ -489,7 +501,9 @@ def _scan_chapters():
             dropcap.append(finding(starts=body[:40]))
 
         if order < maxima.get(c["book_id"], order) and not body.endswith(TERMINAL_PUNCT):
-            mid_split.append(finding(ends=body[-40:]))
+            split = finding(ends=tail_snippet(body))
+            mid_split.append(split)
+            awaiting = (c["book_id"], split)
 
         runs = loose_text(c["body_html"])
         if runs:

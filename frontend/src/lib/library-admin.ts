@@ -935,7 +935,11 @@ export interface AuditChapterFinding {
 	avg_words?: number;
 	paragraphs?: number;
 	starts?: string;
+	/** mid_sentence_splits: about the last line of the chapter. */
 	ends?: string;
+	/** mid_sentence_splits: about the first line of the NEXT chapter ('' if it
+	 *  is empty). Optional: a payload restored from sessionStorage may predate it. */
+	next_starts?: string;
 	/** loose_text: how many runs sit outside any block, and the first, cut short. */
 	loose_runs?: number;
 	loose?: string;

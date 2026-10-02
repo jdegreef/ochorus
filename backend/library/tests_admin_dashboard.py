@@ -607,6 +607,43 @@ class AdminAuditTests(TestCase):
         self.assertIn(res.status_code, (401, 403))
 
 
+class AdminAuditSplitEvidenceTests(TestCase):
+    """A mid-sentence split quotes both sides of the break — the end of the
+    flagged chapter and the opening of the next — so it can be judged inline."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        long_tail = " ".join(["word"] * 80) + " and so the sentence runs"
+        # Created out of order: the pairing must follow chapter order, not pk.
+        Chapter.objects.create(book=book, order=3, title="Three", body_html="<p>last one runs on</p>")
+        Chapter.objects.create(book=book, order=2, title="Two", body_html="<p>straight on into three</p>")
+        Chapter.objects.create(book=book, order=1, title="One", body_html=f"<p>{long_tail}</p>")
+        # Another book in between must not lend its opening to this one.
+        other = Book.objects.create(author=author, slug="abide", language="en", title="Abide")
+        Chapter.objects.create(book=other, order=1, title="Uno", body_html="<p>Abide in me.</p>")
+
+    @override_settings(DEBUG=True)
+    def test_split_carries_next_chapters_opening(self):
+        res = self.client.get("/api/admin/audit/")
+        splits = {
+            f["order"]: f
+            for f in res.data["quality"]["mid_sentence_splits"]["items"]
+            if f["book"] == "humility"
+        }
+        # The last chapter has no next, so it is never a split (and quotes none).
+        self.assertEqual(sorted(splits), [1, 2])
+        self.assertEqual(splits[1]["next_starts"], "straight on into three")
+        self.assertEqual(splits[2]["next_starts"], "last one runs on")
+        # About a line, cut on a word boundary, ending where the chapter ends.
+        ends = splits[1]["ends"]
+        self.assertLessEqual(len(ends), 160)
+        self.assertGreater(len(ends), 100)
+        self.assertTrue(ends.endswith("and so the sentence runs"))
+        self.assertTrue(ends.startswith("word "))
+
+
 class AdminAuditMultiLanguageTests(TestCase):
     """The audit against the content model it actually runs on.
 
