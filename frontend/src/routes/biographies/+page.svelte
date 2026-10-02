@@ -644,33 +644,6 @@
 	{:else if sorted.length === 0}
 		<EmptyState message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
 	{:else if filters.values.sort === 'era'}
-		{#if eraGroups.length > 1}
-			<!-- A slim timeline: each era is a node on a baseline, its name + year
-			     range below, jumping to that section. Scrolls horizontally when the
-			     eras outrun the width. -->
-			<nav class="mb-10 flex gap-0.5 overflow-x-auto pb-2" aria-label={t('bios.sortEra')}>
-				{#each eraGroups as g (g.era.id)}
-					<a
-						href="#era-{g.era.id}"
-						class="group flex shrink-0 flex-col items-center gap-1.5 px-2 hover:no-underline"
-					>
-						<span class="relative flex h-2.5 w-full items-center justify-center">
-							<span class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border"></span>
-							<span
-								class="relative h-2.5 w-2.5 rounded-full border border-border bg-surface transition-colors group-hover:border-accent group-hover:bg-accent"
-							></span>
-						</span>
-						<span
-							class="whitespace-nowrap text-eyebrow font-semibold text-muted transition-colors group-hover:text-accent"
-							>{t(g.era.k)}</span
-						>
-						{#if g.era.range}<span class="whitespace-nowrap text-eyebrow text-muted opacity-70"
-								>{g.era.range}</span
-							>{/if}
-					</a>
-				{/each}
-			</nav>
-		{/if}
 		{#each eraGroups as g (g.era.id)}
 			<section
 				id="era-{g.era.id}"
