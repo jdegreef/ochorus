@@ -19,6 +19,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
+from .. import job_status
 from ..models import AdminAction, Article, Author, Book, Plan, Sermon
 from .analytics import mask_email
 
@@ -98,9 +99,41 @@ def _titles(rows) -> dict[str, str]:
     return out
 
 
-def _serialize_page(rows, *, reveal: bool, titled: bool = True) -> list[dict]:
+def _serialize_page(rows, *, reveal: bool, titled: bool = True, jobs=None) -> list[dict]:
     titles = _titles(rows) if titled else {}
-    return [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
+    out = [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
+    if jobs is not None:
+        status = jobs.statuses_for(r.target for r in rows if r.action == TRANSLATION_JOB)
+        for row, data in zip(rows, out, strict=True):
+            if row.action == TRANSLATION_JOB:
+                data["job_status"] = status.get(row.target, job_status.UNKNOWN)
+    return out
+
+
+TRANSLATION_JOB = AdminAction.Action.TRANSLATION_JOB
+
+
+class _Jobs:
+    """One request's view of the translation queue: GitHub is read at most once
+    (and that read is cached across requests), statuses are memoised by target."""
+
+    def __init__(self):
+        self._queue = None
+        self._read = False
+        self._known: dict[str, str] = {}
+
+    @property
+    def queue(self):
+        if not self._read:
+            self._queue, self._read = job_status.open_jobs(), True
+        return self._queue
+
+    def statuses_for(self, targets) -> dict[str, str]:
+        keys = {k for t in set(targets) - self._known.keys() if (k := job_status.parse_key(t))}
+        if keys:
+            found = job_status.statuses(keys, self.queue)
+            self._known.update({job_status.target_of(k): v for k, v in found.items()})
+        return self._known
 
 
 def _serialize(row: AdminAction, *, reveal: bool, title: str = "") -> dict:
@@ -210,7 +243,9 @@ class AdminActivityView(APIView):
         q = (params.get("q") or "").strip()
         category = (params.get("category") or "").strip()
         actor = (params.get("actor") or "").strip()
+        wanted = (params.get("job_status") or "").strip()
         export = params.get("export") == "1"
+        jobs = _Jobs()
 
         reveal = is_admin_user(request.user, request)
         scope = AdminAction.objects.all()
@@ -227,6 +262,14 @@ class AdminActivityView(APIView):
         if actor:
             searched = searched.filter(actor__in=self._actors_matching(scope, actor, reveal=reveal))
         base = searched.filter(action__in=actions_in(category)) if category in CATEGORIES else searched
+        if wanted in (*job_status.STATUSES, "needs_me"):
+            # Status isn't a column — it's read from GitHub and the editions — so
+            # resolve every job's status and filter to the targets that match.
+            pick = job_status.NEEDS_ME if wanted == "needs_me" else (wanted,)
+            status = jobs.statuses_for(self._job_targets(scope))
+            base = base.filter(
+                action=TRANSLATION_JOB, target__in=[t for t, s in status.items() if s in pick]
+            )
 
         if export:
             rows = list(base.order_by("-id")[: self.EXPORT_LIMIT + 1])
@@ -258,10 +301,12 @@ class AdminActivityView(APIView):
                 # cursor) already has them and discards ours, so don't pay for
                 # the counts on every page of a table built to grow.
                 "total": base.count() if first else None,
-                "summary": self._summary(scope, searched, params, reveal=reveal) if first else None,
+                "summary": self._summary(scope, searched, params, reveal=reveal, jobs=jobs)
+                if first
+                else None,
                 "limit": self.LIMIT,
                 "next_cursor": rows[-1].id if has_more else None,
-                "actions": _serialize_page(rows, reveal=reveal),
+                "actions": _serialize_page(rows, reveal=reveal, jobs=jobs),
             }
         )
 
@@ -289,7 +334,13 @@ class AdminActivityView(APIView):
         known = scope.values_list("actor", flat=True).distinct()
         return [a for a in known if a and mask_email(a) == actor]
 
-    def _summary(self, scope, searched, params, *, reveal: bool) -> dict:
+    @staticmethod
+    def _job_targets(scope) -> list[str]:
+        return list(
+            scope.filter(action=TRANSLATION_JOB).values_list("target", flat=True).distinct()
+        )
+
+    def _summary(self, scope, searched, params, *, reveal: bool, jobs: _Jobs) -> dict:
         now = timezone.now()
         day_start = _day_start(params.get("day_start"), now)
 
@@ -331,4 +382,17 @@ class AdminActivityView(APIView):
             ],
             "last_go_live": go_live,
             "last_publish": publish,
+            "jobs": self._job_counts(scope, jobs),
         }
+
+    def _job_counts(self, scope, jobs: _Jobs) -> dict:
+        """Translation jobs in the log, by where each one is now — per job (one
+        target), not per row: pressing Translate twice is still one job."""
+        targets = self._job_targets(scope)
+        counts = dict.fromkeys(job_status.STATUSES, 0)
+        if targets:
+            status = jobs.statuses_for(targets)
+            for t in targets:
+                counts[status.get(t, job_status.UNKNOWN)] += 1
+        # Whether GitHub answered: without it, the open stages read "unknown".
+        return {"by_status": counts, "github": bool(targets) and jobs.queue is not None}

@@ -10,6 +10,8 @@ import {
 	groupByDay,
 	initials,
 	issueRange,
+	jobStatusMeta,
+	jobTally,
 	parseTarget,
 	summariseDetail,
 	titleParts,
@@ -299,5 +301,24 @@ describe('groupBursts: reviews', () => {
 			review('approved', '2026-10-01T07:01:00Z', 'fine')
 		]);
 		expect(items.map((i) => i.kind)).toEqual(['burst', 'row', 'row']);
+	});
+});
+
+describe('jobStatusMeta', () => {
+	it('says Live, not Approved, where nothing is approved', () => {
+		expect(jobStatusMeta('done', 'book:grace:es').label).toBe('Approved');
+		expect(jobStatusMeta('done', 'plan:advent:es').label).toBe('Live');
+		expect(jobStatusMeta('closed', 'book:grace:es').hint).toMatch(/not planned/);
+	});
+});
+
+describe('jobTally', () => {
+	it('counts a burst by stage in journey order, skipping rows without one', () => {
+		const r = (job_status?: AdminActionRow['job_status']) => row({ job_status });
+		expect(jobTally([r('queued'), r('done'), r('queued'), r('stalled'), r(undefined)])).toEqual([
+			{ status: 'done', count: 1 },
+			{ status: 'stalled', count: 1 },
+			{ status: 'queued', count: 2 }
+		]);
 	});
 });

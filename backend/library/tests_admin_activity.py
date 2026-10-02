@@ -333,3 +333,112 @@ class AdminActivityMaskingTests(TestCase):
         self.assertEqual(
             self.client.get("/api/admin/activity/", {"actor": "super@ochorus.com"}).data["total"], 0
         )
+
+
+@override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="test-token")
+class AdminActivityJobStatusTests(TestCase):
+    """Where each translation job is now: GitHub's open queue for the stages
+    before shipping, this database's editions for everything after."""
+
+    def setUp(self):
+        from .models import Author, Book
+
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="bunyan", name="John Bunyan")
+        Book.objects.create(author=self.author, slug="grace", title="Grace Abounding")
+        # Live, unreviewed / approved editions.
+        Book.objects.create(
+            author=self.author, slug="grace", language="es", title="Gracia", source_type="ai_unreviewed"
+        )
+        Book.objects.create(
+            author=self.author, slug="holy-war", language="fr", title="La guerre sainte",
+            source_type="ai_reviewed",
+        )
+        for target in (
+            "book:grace:es",  # live, unreviewed
+            "book:holy-war:fr",  # approved
+            "book:pilgrim:de",  # queued
+            "book:pilgrim:fr",  # claimed recently
+            "book:pilgrim:sw",  # claimed long ago
+            "book:pilgrim:am",  # closed, no edition
+        ):
+            AdminAction.objects.create(
+                action=A.TRANSLATION_JOB, actor="admin@example.com", target=target, detail={}
+            )
+        AdminAction.objects.create(action=A.LANGUAGE_GO_LIVE, actor="admin@example.com", target="language:sw")
+
+    def _queue(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        now = timezone.now()
+        job = lambda lang, state, age: {  # noqa: E731
+            "type": "book", "slug": "pilgrim", "language": lang, "state": state,
+            "number": 1, "url": "", "created_at": "", "updated_at": (now - age).isoformat(),
+        }
+        return [
+            job("de", "queued", timedelta(hours=30)),
+            job("fr", "in_progress", timedelta(hours=1)),
+            job("sw", "in_progress", timedelta(hours=7)),
+            # An issue a worker left open after shipping: the edition wins.
+            {**job("es", "in_progress", timedelta(hours=1)), "slug": "grace"},
+        ]
+
+    def _get(self, **params):
+        with patch("library.admin_views.jobs._list_open_jobs", return_value=self._queue()):
+            return self.client.get("/api/admin/activity/", params).data
+
+    def test_each_job_row_carries_its_status(self):
+        data = self._get()
+        status = {a["target"]: a.get("job_status") for a in data["actions"]}
+        self.assertEqual(
+            status,
+            {
+                "book:grace:es": "review",
+                "book:holy-war:fr": "done",
+                "book:pilgrim:de": "queued",
+                "book:pilgrim:fr": "in_progress",
+                "book:pilgrim:sw": "stalled",
+                "book:pilgrim:am": "closed",
+                "language:sw": None,  # not a job: no status at all
+            },
+        )
+
+    def test_summary_counts_jobs_by_status(self):
+        jobs = self._get()["summary"]["jobs"]
+        self.assertTrue(jobs["github"])
+        self.assertEqual(
+            jobs["by_status"],
+            {"queued": 1, "in_progress": 1, "stalled": 1, "closed": 1, "review": 1, "done": 1, "unknown": 0},
+        )
+
+    def test_filter_by_status_and_needs_me(self):
+        stalled = self._get(job_status="stalled")
+        self.assertEqual([a["target"] for a in stalled["actions"]], ["book:pilgrim:sw"])
+        mine = self._get(job_status="needs_me")
+        self.assertEqual(
+            sorted(a["target"] for a in mine["actions"]), ["book:grace:es", "book:pilgrim:am"]
+        )
+        self.assertEqual(mine["total"], 2)
+
+    def test_github_down_marks_unshipped_jobs_unknown(self):
+        import requests
+
+        with patch(
+            "library.admin_views.jobs._list_open_jobs", side_effect=requests.ConnectionError("down")
+        ):
+            data = self.client.get("/api/admin/activity/").data
+        status = {a["target"]: a.get("job_status") for a in data["actions"]}
+        # The database still knows what shipped; the rest isn't guessed at.
+        self.assertEqual(status["book:grace:es"], "review")
+        self.assertEqual(status["book:holy-war:fr"], "done")
+        self.assertEqual(status["book:pilgrim:de"], "unknown")
+        self.assertFalse(data["summary"]["jobs"]["github"])
+
+    @override_settings(GITHUB_TRANSLATION_TOKEN="")
+    def test_no_token_means_no_github_call(self):
+        with patch("library.admin_views.jobs._list_open_jobs") as listed:
+            data = self.client.get("/api/admin/activity/").data
+        listed.assert_not_called()
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["unknown"], 4)

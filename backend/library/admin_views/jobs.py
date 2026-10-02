@@ -172,6 +172,8 @@ def _issue_to_job(issue: dict) -> dict | None:
         "number": issue.get("number"),
         "state": "in_progress" if IN_PROGRESS_LABEL in labels else "queued",
         "created_at": issue.get("created_at", ""),
+        # When the issue last moved — the claim's age, for the stalled rule.
+        "updated_at": issue.get("updated_at", ""),
     }
 
 

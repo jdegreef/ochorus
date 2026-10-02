@@ -9,7 +9,8 @@
 		exportAdminActivity,
 		getAdminActivity,
 		type AdminActionRow,
-		type AdminActivityFilters
+		type AdminActivityFilters,
+		type JobStatus
 	} from '$lib/library-admin';
 	import { relativeTime } from '$lib/relativeTime';
 	import { unslug } from '$lib/strings';
@@ -22,6 +23,9 @@
 		groupByDay,
 		initials,
 		issueRange,
+		jobStatusMeta,
+		jobTally,
+		type JobStatusMeta,
 		parseTarget,
 		summariseDetail,
 		titleParts,
@@ -42,6 +46,8 @@
 	let sentQuery = $state('');
 	let activeCat = $state<Category | 'all'>('all');
 	let activeActor = $state('');
+	// A translation job's stage, or 'needs_me' (closed + awaiting approval).
+	let activeJob = $state<JobStatus | 'needs_me' | ''>('');
 	let searchEl = $state<HTMLInputElement | null>(null);
 
 	$effect(() => {
@@ -54,7 +60,8 @@
 		target: target || undefined,
 		q: sentQuery || undefined,
 		category: activeCat === 'all' ? undefined : activeCat,
-		actor: activeActor || undefined
+		actor: activeActor || undefined,
+		job_status: activeJob || undefined
 	});
 	const filterKey = $derived(JSON.stringify(filters));
 
@@ -182,7 +189,58 @@
 	const groups = $derived(
 		groupByDay(rows, now).map((g) => ({ ...g, items: groupBursts(g.rows) }))
 	);
-	const isFiltered = $derived(activeCat !== 'all' || !!activeActor || sentQuery !== '');
+	const isFiltered = $derived(
+		activeCat !== 'all' || !!activeActor || sentQuery !== '' || !!activeJob
+	);
+
+	// ---- translation job status ----
+	const jobCounts = $derived(summary?.jobs.by_status);
+	const jobTotal = $derived(jobCounts ? Object.values(jobCounts).reduce((a, b) => a + b, 0) : 0);
+	/** The cards over the job queue — each one a filter. Two are the founder's own steps. */
+	const jobCards = $derived.by(() => {
+		if (!jobCounts) return [];
+		const c = jobCounts;
+		return [
+			{ key: null, value: c.queued + c.in_progress + c.stalled, label: 'Open jobs', sub: `${c.queued} queued · ${c.in_progress + c.stalled} claimed`, tone: '' },
+			{ key: 'stalled' as const, value: c.stalled, label: 'Stalled', sub: 'claim idle 6h+', tone: 'text-danger' },
+			{ key: 'closed' as const, value: c.closed, label: 'Closed, not live', sub: 'merge or deploy pending', tone: 'text-warning' },
+			{ key: 'review' as const, value: c.review, label: 'Need your approval', sub: 'live as AI translations', tone: 'text-accent' }
+		];
+	});
+	/** Pill classes per tone — the same scale the stage bar uses. */
+	const JOB_TONE: Record<JobStatusMeta['tone'], string> = {
+		muted: 'border-border text-muted',
+		active: 'border-border-strong text-text',
+		danger: 'border-danger text-danger',
+		warning: 'border-warning text-warning',
+		live: 'border-accent-soft-border bg-accent-soft text-accent',
+		done: 'border-accent bg-accent text-accent-contrast'
+	};
+	const JOB_BAR: Record<JobStatusMeta['tone'], string> = {
+		muted: 'bg-border-strong',
+		active: 'bg-muted',
+		danger: 'bg-danger',
+		warning: 'bg-warning',
+		live: 'bg-accent/40',
+		done: 'bg-accent'
+	};
+	const JOB_FILTERS: { key: JobStatus | 'needs_me' | ''; label: string }[] = [
+		{ key: '', label: 'Any' },
+		{ key: 'needs_me', label: 'Needs me' },
+		// Problems first, then work in flight, then what's finished.
+		...(['stalled', 'closed', 'review', 'in_progress', 'queued', 'done'] as const).map((s) => ({
+			key: s,
+			label: jobStatusMeta(s, 'book').label
+		}))
+	];
+	const jobFilterCount = (key: JobStatus | 'needs_me' | '') =>
+		!jobCounts
+			? 0
+			: key === ''
+				? jobTotal
+				: key === 'needs_me'
+					? jobCounts.closed + jobCounts.review
+					: jobCounts[key];
 
 	// ---- the header figures: counted server-side over the whole log ----
 	const cards = $derived.by(() => {
@@ -327,6 +385,11 @@
 						<span>{part.text}</span>
 					{/if}
 				{/each}
+				{#if a.job_status}
+					{@const js = jobStatusMeta(a.job_status, a.target)}
+					<span class="text-border-strong" aria-hidden="true">·</span>
+					<span class="rounded-full border px-2 py-0.5 text-micro font-semibold {JOB_TONE[js.tone]}" title={js.hint}>{js.label}</span>
+				{/if}
 			</div>
 		</div>
 		<div class="text-right">
@@ -393,6 +456,56 @@
 						</div>
 					{/each}
 				</div>
+
+				{#if jobTotal > 0}
+					<!-- Translation jobs by where they are now. Each card is a filter. -->
+					<section class="mb-5" aria-labelledby="jobs-heading">
+						<div class="mb-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+							<h2 id="jobs-heading" class="text-small font-semibold text-text">Translation jobs</h2>
+							{#if !summary?.jobs.github}
+								<p class="text-small text-warning">
+									GitHub couldn't be read — showing what the site knows; unshipped jobs read "status unknown".
+								</p>
+							{/if}
+						</div>
+						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+							{#each jobCards as c (c.label)}
+								{#if c.key === null}
+									<div class="rounded-card border border-border bg-surface p-4">
+										<div class="stat-number">{c.value}</div>
+										<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+										<div class="text-small text-muted">{c.sub}</div>
+									</div>
+								{:else}
+									{@const key = c.key}
+									<button
+										class="rounded-card border bg-surface p-4 text-left transition-colors hover:border-accent-soft-border {activeJob === key ? 'border-accent' : 'border-border'}"
+										aria-pressed={activeJob === key}
+										onclick={() => (activeJob = activeJob === key ? '' : key)}
+									>
+										<div class="stat-number {c.value ? c.tone : ''}">{c.value}</div>
+										<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+										<div class="text-small text-muted">{c.sub}</div>
+									</button>
+								{/if}
+							{/each}
+						</div>
+						<div class="mt-3 flex flex-wrap items-center gap-1.5">
+							<span class="mr-1 text-small font-semibold text-muted">Job status</span>
+							{#each JOB_FILTERS as f (f.key)}
+								<button
+									class="rounded-full border px-3 py-1 text-small font-semibold {activeJob === f.key
+										? 'border-accent bg-accent text-accent-contrast'
+										: 'border-border text-muted hover:text-text'}"
+									aria-pressed={activeJob === f.key}
+									onclick={() => (activeJob = f.key)}
+								>
+									{f.label} <span class="tabular-nums opacity-70">{jobFilterCount(f.key)}</span>
+								</button>
+							{/each}
+						</div>
+					</section>
+				{/if}
 
 				<!-- Filter bar: category, admin and free-text — over the loaded window. -->
 				<div class="mb-4 flex flex-wrap items-center gap-2">
@@ -490,6 +603,7 @@
 										{@const open = expanded.has(id)}
 										{@const issues = issueRange(item.rows)}
 										{@const stale = item.rows.filter((r) => r.detail?.created === false).length}
+										{@const tally = jobTally(item.rows)}
 										<li class="border-b border-border last:border-0">
 											<div class="grid grid-cols-[auto_1fr_auto] gap-3 p-4">
 												<span class="grid h-8 w-8 place-items-center rounded-sm border {iconTone(meta.loud)}">
@@ -524,6 +638,23 @@
 															<span class="font-semibold text-danger">{stale} already open</span>
 														{/if}
 													</div>
+													{#if tally.length}
+														<!-- Where the batch's jobs are now, in journey order. -->
+														<div class="mt-2 flex h-2 overflow-hidden rounded-full bg-surface-2" role="img" aria-label={tally.map((x) => `${x.count} ${jobStatusMeta(x.status, first.target).label}`).join(', ')}>
+															{#each tally as x (x.status)}
+																<span class={JOB_BAR[jobStatusMeta(x.status, first.target).tone]} style="width: {(x.count / item.rows.length) * 100}%"></span>
+															{/each}
+														</div>
+														<div class="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-small text-muted">
+															{#each tally as x (x.status)}
+																{@const js = jobStatusMeta(x.status, first.target)}
+																<span class="inline-flex items-center gap-1.5" title={js.hint}>
+																	<span class="h-2 w-2 rounded-full {JOB_BAR[js.tone]}"></span>
+																	<span class="font-semibold tabular-nums text-text">{x.count}</span> {js.label.toLowerCase()}
+																</span>
+															{/each}
+														</div>
+													{/if}
 													{#if !open}
 														<p class="mt-1.5 truncate text-small text-muted">
 															{item.rows.slice(0, 4).map(rowName).join(' · ')}{item.rows.length > 4 ? ` · +${item.rows.length - 4} more` : ''}

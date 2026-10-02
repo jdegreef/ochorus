@@ -1730,9 +1730,24 @@ export interface AdminActionRow {
 	target: string;
 	/** The work's real name (book/sermon/article/plan/author), "" when unknown. */
 	title?: string;
+	/** Where a translation job is now — `translation.job` rows only. */
+	job_status?: JobStatus;
 	detail: Record<string, unknown>;
 	at: string;
 }
+
+/**
+ * A translation job's stage (backend `library/job_status.py`): GitHub's open
+ * queue before it ships, this database's editions after.
+ */
+export type JobStatus =
+	| 'queued'
+	| 'in_progress'
+	| 'stalled'
+	| 'closed'
+	| 'review'
+	| 'done'
+	| 'unknown';
 
 /** The header cards and chip counts — counted over the whole log, first page only. */
 export interface AdminActivitySummary {
@@ -1748,6 +1763,8 @@ export interface AdminActivitySummary {
 	actors: { actor: string; count: number }[];
 	last_go_live: AdminActionRow | null;
 	last_publish: AdminActionRow | null;
+	/** Translation jobs by stage, one per job; `github` false when it couldn't be read. */
+	jobs: { by_status: Record<JobStatus, number>; github: boolean };
 }
 
 export interface AdminActivity {
@@ -1767,11 +1784,13 @@ export interface AdminActivityFilters {
 	q?: string;
 	category?: string;
 	actor?: string;
+	/** A JobStatus, or 'needs_me' (closed + review: the two waiting on a person). */
+	job_status?: string;
 }
 
 function activityParams(f: AdminActivityFilters): URLSearchParams {
 	const params = new URLSearchParams();
-	for (const k of ['target', 'q', 'category', 'actor'] as const) {
+	for (const k of ['target', 'q', 'category', 'actor', 'job_status'] as const) {
 		const v = f[k]?.trim();
 		if (v) params.set(k, v);
 	}
