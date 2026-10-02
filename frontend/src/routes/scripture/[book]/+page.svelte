@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage } from '$lib/library-public';
+	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage, SCRIPTURE_OG } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
 	import { relativeHeat } from '$lib/scriptureIndex';
@@ -60,7 +60,14 @@
 	);
 </script>
 
-<Seo {title} {description} {canonical} {hreflang} structuredData={[crumbsLd, collectionLd]} />
+<Seo
+	{title}
+	{description}
+	{canonical}
+	{hreflang}
+	structuredData={[crumbsLd, collectionLd]}
+	{...SCRIPTURE_OG}
+/>
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />
