@@ -5,6 +5,7 @@
 	import {
 		getAdminAudit,
 		adminChapterHref,
+		adminEditionHref,
 		chapterFlagLabel,
 		formatRate,
 		getAdminDropOff,
@@ -303,6 +304,31 @@
 	// The chapter-level quality checks a fix job can carry (the server's
 	// QUALITY_CHAPTER_CHECKS); duplicate titles are per-title, not per-chapter.
 	const FIXABLE = new Set(QUALITY.map((q) => q.key).filter((k) => k !== 'duplicate_titles'));
+
+	// Worst books first: editions ranked by open flags (grouped server-side — the
+	// lists above are capped), each with a mini bar in the summary bar's colours
+	// so the legend above reads for both. Bars share one scale, the worst row's
+	// total, so a short bar is a book with few flags, not a rounding artefact.
+	const worstBooks = $derived.by(() => {
+		const w = audit?.worst_books;
+		if (!w?.items.length) return null;
+		const colour = new Map(qualitySegments.map((s) => [s.key, s.color]));
+		const label = (key: string) => QUALITY.find((q) => q.key === key)?.label ?? humanize(key);
+		const max = w.items[0].total;
+		return {
+			total: w.total,
+			rows: w.items.map((r) => ({
+				...r,
+				width: max ? (100 * r.total) / max : 0,
+				segments: Object.entries(r.by_check).map(([key, n]) => ({
+					key,
+					n,
+					label: label(key),
+					color: colour.get(key) ?? 'var(--warning)'
+				}))
+			}))
+		};
+	});
 
 	// An unknown check's items are only known to be objects; the chapter list
 	// keys rows on book/language/order, so use it only when they're there.
@@ -756,6 +782,59 @@
 						</summary>
 						<div class="mt-2">{@render integrityChecks()}</div>
 					</details>
+				{/if}
+
+				<!-- Worst books first: fixes happen per edition (a re-import repairs a
+				     whole book), so this is the list of re-imports that clear the most
+				     flags. Counted on the server over the uncapped scan. -->
+				{#if worstBooks}
+					<section>
+						<h2 class="text-h3 mb-1">Worst books first</h2>
+						<p class="mb-3 text-small text-muted">
+							Editions by open quality flags{worstBooks.total > worstBooks.rows.length
+								? ` — top ${worstBooks.rows.length} of ${worstBooks.total.toLocaleString('en')} flagged`
+								: ''}. A re-import repairs a whole edition, so the top rows clear the most.
+						</p>
+						<div class="overflow-x-auto rounded-card border border-border">
+							<table class="w-full text-small">
+								<thead>
+									<tr class="text-micro uppercase tracking-wide text-muted">
+										<th class="px-3 py-2 text-start font-semibold">Book</th>
+										<th class="px-3 py-2 text-end font-semibold">Flags</th>
+										<th class="w-2/5 px-3 py-2 text-start font-semibold">By check</th>
+										<th class="px-3 py-2"></th>
+									</tr>
+								</thead>
+								<tbody>
+									{#each worstBooks.rows as r (`${r.book}:${r.language}`)}
+										<tr class="border-t border-border">
+											<td class="max-w-0 px-3 py-2">
+												<span class="block truncate font-semibold text-text">{r.title || r.book}</span>
+												<span class="text-micro text-muted">{r.book} · {r.language}</span>
+											</td>
+											<td class="px-3 py-2 text-end font-semibold tabular-nums text-warning">{r.total.toLocaleString('en')}</td>
+											<td class="px-3 py-2">
+												<div
+													class="flex h-2 gap-0.5 overflow-hidden rounded-full"
+													style="width: {r.width}%; min-width: 4px"
+													role="img"
+													aria-label={r.segments.map((s) => `${s.label} ${s.n}`).join(', ')}
+													title={r.segments.map((s) => `${s.label} ${s.n}`).join(' · ')}
+												>
+													{#each r.segments as s (s.key)}
+														<div style="flex: {s.n} 1 0; min-width: 2px; background: {s.color}"></div>
+													{/each}
+												</div>
+											</td>
+											<td class="px-3 py-2 text-end">
+												<a href={adminEditionHref(r.book, r.language)} class="whitespace-nowrap text-accent hover:underline">Open</a>
+											</td>
+										</tr>
+									{/each}
+								</tbody>
+							</table>
+						</div>
+					</section>
 				{/if}
 
 				<!-- Readers stop here: where a book loses its readers, with what the

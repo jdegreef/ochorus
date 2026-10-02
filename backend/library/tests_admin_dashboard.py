@@ -927,6 +927,101 @@ class AdminAuditDismissTests(TestCase):
         self.assertIn(res.status_code, (401, 403))
 
 
+@override_settings(DEBUG=True)
+class AdminAuditWorstBooksTests(TestCase):
+    """"Worst books first": editions ranked by open quality flags, counted on
+    the server over the UNCAPPED scan — the per-check item lists stop at
+    AUDIT_LIMIT, so the browser could not group them accurately."""
+
+    BIG = 120  # chapters in the worst edition: past the 100-row cap
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        # Each chapter trips two checks: a bare "Chapter N" title and a tiny body.
+        # Bodies end in a full stop, so nothing reads as a mid-sentence split.
+        for slug, lang, title, n in (
+            ("bad-pdf", "en", "Bad PDF", self.BIG),
+            ("bad-pdf", "sw", "PDF Mbaya", 3),
+            ("mostly-fine", "en", "Mostly Fine", 2),
+        ):
+            book = Book.objects.create(author=author, slug=slug, language=lang, title=title)
+            for order in range(1, n + 1):
+                Chapter.objects.create(
+                    book=book, order=order, title=f"Chapter {order}", body_html="<p>Short.</p>"
+                )
+        # A clean edition never appears in the ranking.
+        clean = Book.objects.create(author=author, slug="clean", language="en", title="Clean")
+        Chapter.objects.create(
+            book=clean, order=1, title="The Real Title", body_html="<p>" + "Word " * 200 + "end.</p>"
+        )
+
+    def _worst(self, qs=""):
+        res = self.client.get(f"/api/admin/audit/{qs}")
+        self.assertEqual(res.status_code, 200)
+        return res.data["worst_books"]
+
+    def test_counts_beyond_the_item_cap(self):
+        from .content_audit import AUDIT_LIMIT
+
+        res = self.client.get("/api/admin/audit/")
+        # The item list is capped, so the browser could only ever see 100 rows…
+        self.assertEqual(len(res.data["quality"]["tiny_chapters"]["items"]), AUDIT_LIMIT)
+        worst = res.data["worst_books"]
+        top = worst["items"][0]
+        # …but the ranking counts every one of the worst edition's flags.
+        self.assertEqual((top["book"], top["language"], top["title"]), ("bad-pdf", "en", "Bad PDF"))
+        self.assertEqual(top["by_check"], {"generic_titles": self.BIG, "tiny_chapters": self.BIG})
+        self.assertEqual(top["total"], 2 * self.BIG)
+        self.assertEqual(
+            [(r["book"], r["language"], r["total"]) for r in worst["items"]],
+            [("bad-pdf", "en", 240), ("bad-pdf", "sw", 6), ("mostly-fine", "en", 4)],
+        )
+        self.assertEqual(worst["total"], 3, "editions with any open flag; clean is absent")
+
+    def test_accepted_findings_are_not_counted(self):
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "tiny_chapters", "book": "mostly-fine", "language": "en", "ref": "1"},
+            format="json",
+        )
+        # The same ref in another edition is a different finding: still counted.
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "generic_titles", "book": "bad-pdf", "language": "sw", "ref": "1"},
+            format="json",
+        )
+        rows = {(r["book"], r["language"]): r for r in self._worst()["items"]}
+        self.assertEqual(rows[("mostly-fine", "en")]["by_check"], {"generic_titles": 2, "tiny_chapters": 1})
+        self.assertEqual(rows[("bad-pdf", "sw")]["total"], 5)
+        self.assertEqual(rows[("bad-pdf", "en")]["total"], 240)
+
+    def test_duplicate_titles_count_per_edition(self):
+        book = Book.objects.get(slug="mostly-fine", language="en")
+        for order in (3, 4):
+            Chapter.objects.create(
+                book=book, order=order, title="Twice", body_html="<p>" + "Word " * 200 + "end.</p>"
+            )
+        row = next(r for r in self._worst()["items"] if r["book"] == "mostly-fine")
+        self.assertEqual(row["by_check"]["duplicate_titles"], 1)
+        self.assertEqual(row["total"], 5)
+
+    def test_language_filter(self):
+        worst = self._worst("?language=sw")
+        self.assertEqual(
+            [(r["book"], r["language"], r["total"]) for r in worst["items"]],
+            [("bad-pdf", "sw", 6)],
+        )
+        self.assertEqual(worst["total"], 1)
+
+    def test_limit_keeps_the_worst_and_the_edition_count(self):
+        from .content_audit import dismissed_fingerprints, scan_library, worst_books
+
+        worst = worst_books(scan_library(), dismissed_fingerprints(), limit=1)
+        self.assertEqual([(r["book"], r["language"]) for r in worst["items"]], [("bad-pdf", "en")])
+        self.assertEqual(worst["total"], 3)
+
+
 @override_settings(
     DEBUG=True,
     CACHES={"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache"}},

@@ -25,6 +25,7 @@ from ..content_audit import (
     record_scan,
     scan_library,
     schedule_status,
+    worst_books,
 )
 from ..languages import entry as language_entry
 from ..models import (
@@ -1043,7 +1044,8 @@ class AdminAuditView(APIView):
         # Dismissals and the language filter are applied per request, NOT cached:
         # accepting a finding must take effect at once, without waiting for the
         # scan to expire, and it does not change the content.
-        quality, integrity = present(scan, dismissed_fingerprints(), language)
+        dismissed = dismissed_fingerprints()
+        quality, integrity = present(scan, dismissed, language)
         return Response(
             {
                 "quality": quality,
@@ -1058,6 +1060,9 @@ class AdminAuditView(APIView):
                 # The nightly, recorded scan — distinct from the cached one above.
                 "schedule": schedule_status(),
                 "chapter_lengths": chapter_lengths(scan["lengths"], language),
+                # Editions ranked by open quality flags, grouped server-side over
+                # the uncapped scan (the item lists above stop at AUDIT_LIMIT).
+                "worst_books": worst_books(scan, dismissed, language),
             }
         )
 

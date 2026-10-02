@@ -1,6 +1,15 @@
 import { describe, expect, it } from 'vitest';
 
-import { countJobsByLanguageType, type AdminTranslationJob } from './library-admin';
+import { adminEditionHref, adminEditionId, countJobsByLanguageType, type AdminTranslationJob } from './library-admin';
+
+describe('adminEditionHref', () => {
+	// The audit's "worst books first" Open lands on the edition's section of
+	// the admin book page, whose id is adminEditionId.
+	it('links to the edition section of the admin book page', () => {
+		expect(adminEditionHref('the-key', 'sw')).toBe(`/admin/books/the-key#${adminEditionId('sw')}`);
+		expect(adminEditionHref('a b', 'en')).toBe('/admin/books/a%20b#ed-en');
+	});
+});
 
 // Feeds the dashboard's "+N queued" overlay. The counts come from GitHub-backed
 // issues and are grouped client-side, so this guards the grouping against the
