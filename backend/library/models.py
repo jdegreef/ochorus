@@ -138,6 +138,11 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     bio = models.TextField(blank=True)
+    # One line saying who this person was, for a place that already shows the
+    # name and years beside it (the sermons shelf's preacher headings): a bio
+    # often opens "Name (1897–1963) was…", which repeats both. English only —
+    # served only to English readers (`tagline_for`); others get the bio.
+    tagline = models.CharField(max_length=160, blank=True)
     # Long-form biography as cleaned HTML (paragraphs, <h2> sections, pull-quote
     # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
     # page above their books. Written via the `write-biography` skill.
@@ -270,6 +275,17 @@ class Author(models.Model):
         if self.is_imprint:
             return ""
         return self._localized("bio", language, fallback=fallback)
+
+    def tagline_for(self, language: str) -> str:
+        """The one-line tagline in ``language``; ``""`` when there is none.
+
+        Written in English only, and never shown in another language — the
+        library has no English fallback for prose, so a non-English reader gets
+        the translated ``bio`` instead. Withheld for an imprint, like the bio.
+        """
+        if self.is_imprint or language != "en":
+            return ""
+        return self.tagline
 
     def bio_html_for(self, language: str, *, fallback: bool = False) -> str:
         """Long-form bio HTML in ``language``; ``""`` when untranslated.

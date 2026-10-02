@@ -348,16 +348,21 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
     """The author of a book/sermon card — name, portrait, and short bio.
 
     The bio is localized (``AuthorTranslation``), like the biographies page's.
+    ``tagline`` is English-only (``Author.tagline_for``): ``""`` elsewhere.
     """
 
     bio = serializers.SerializerMethodField()
+    tagline = serializers.SerializerMethodField()
 
     class Meta:
         model = Author
-        fields = ["slug", "name", "bio", "photo_url", "birth_year", "death_year"]
+        fields = ["slug", "name", "bio", "tagline", "photo_url", "birth_year", "death_year"]
 
     def get_bio(self, obj):
         return obj.bio_for(self._language())
+
+    def get_tagline(self, obj):
+        return obj.tagline_for(self._language())
 
 
 class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
