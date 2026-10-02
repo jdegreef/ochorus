@@ -681,6 +681,70 @@ class SearchLogTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertTrue(res.data["results"])
 
+    def test_typing_on_retires_the_fragments(self):
+        # Search-as-you-type logs every pause. Only the search the reader
+        # finished counts; the keystrokes on the way are kept but hidden, so a
+        # prefix that matched nothing isn't a fake zero-result.
+        for q in ("hum", "humil", "Humility"):
+            self.search(q)
+        self.assertEqual(
+            list(SearchQueryLog.objects.values_list("query", flat=True)), ["Humility"]
+        )
+        self.assertEqual(
+            sorted(SearchQueryLog.all_rows.filter(superseded=True).values_list("query", flat=True)),
+            ["hum", "humil"],
+        )
+
+    def test_only_an_extension_in_the_same_language_and_window_supersedes(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        self.search("grace", language="es")  # another language
+        old = SearchQueryLog.objects.create(query="hum", language="en", result_count=0)
+        SearchQueryLog.objects.filter(pk=old.pk).update(
+            created_at=timezone.now() - timedelta(minutes=5)
+        )  # a separate search minutes ago
+        self.search("humbly")  # not an extension of "humility" below
+        self.search("humility")
+        self.assertEqual(
+            sorted(SearchQueryLog.objects.values_list("query", flat=True)),
+            ["grace", "hum", "humbly", "humility"],
+        )
+
+    def test_logged_query_has_its_spacing_normalised(self):
+        self.client.get("/api/library/search/", {"q": "  behold   the lamb ", "language": "en"})
+        self.assertEqual(SearchQueryLog.objects.get().query, "behold the lamb")
+
+    def test_the_migration_backfills_existing_fragments(self):
+        import importlib
+
+        from django.apps import apps
+
+        rows = [
+            SearchQueryLog.objects.create(query=q, language="en", result_count=0)
+            for q in ("pra", "pray", "prayer", "grace")
+        ]
+        SearchQueryLog.all_rows.update(superseded=False)  # as if logged before the field
+        importlib.import_module(
+            "library.migrations.0174_searchquerylog_superseded"
+        ).mark_fragments(apps, None)
+        self.assertEqual(
+            sorted(SearchQueryLog.objects.values_list("query", flat=True)), ["grace", "prayer"]
+        )
+        self.assertEqual(SearchQueryLog.all_rows.count(), len(rows))
+
+    def test_superseded_rows_are_pruned_too(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        self.search("hum")
+        self.search("humility")
+        SearchQueryLog.all_rows.update(created_at=timezone.now() - timedelta(days=200))
+        call_command("trim_search_log", verbosity=0)
+        self.assertEqual(SearchQueryLog.all_rows.count(), 0)
+
     def test_trim_command_prunes_old_rows_only(self):
         from datetime import timedelta
 
