@@ -112,6 +112,15 @@ class ReadingProgress(models.Model):
             # ...and the weekly-active panel windows on updated_at. `ordering`
             # is not an index.
             models.Index(fields=["updated_at"], name="idx_progress_updated"),
+            # The finish-the-series email sweep (emails/series_nudge.py) finds
+            # readers who finished a book within a window: kind + finished_at
+            # range. Partial on non-null finished_at keeps it small (only finished
+            # rows) and turns a full scan of this large table into a range scan.
+            models.Index(
+                fields=["kind", "finished_at"],
+                name="idx_progress_finished",
+                condition=models.Q(finished_at__isnull=False),
+            ),
         ]
 
     def __str__(self) -> str:

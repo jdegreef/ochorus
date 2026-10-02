@@ -17,7 +17,8 @@ from django.test import TestCase, override_settings
 from django.utils import timezone
 
 from accounts.models import UserProfile
-from reading.models import PlanProgress
+from library.models import Author, Book, Series
+from reading.models import PlanProgress, ReadingProgress, WorkKind
 
 from .lifecycle import (
     CLASSIC_STEP,
@@ -39,7 +40,10 @@ from .models import (
     SendStatus,
 )
 from .recipient import verified_email as resolve_recipient_email
-from .rendering import render_welcome
+from .rendering import render_series_nudge, render_welcome
+from .series_nudge import candidate_profiles as series_candidate_profiles
+from .series_nudge import next_series_volume
+from .series_nudge import send_due as send_series_due
 from .streams import STREAM_KEYS
 
 User = get_user_model()
@@ -1002,3 +1006,240 @@ class EmailPreferencesViewTests(TestCase):
             self.url, data="not json", content_type="application/json"
         )
         self.assertEqual(res.status_code, 400)
+
+
+def _series(slug="portraits", n=3, language="en", published=True):
+    """A series with ``n`` numbered, published volumes. Returns (series, [books])."""
+    series = Series.objects.create(slug=slug, title=slug.replace("-", " ").title())
+    author = Author.objects.create(slug=f"auth-{slug}", name="Author")
+    books = [
+        Book.objects.create(
+            author=author,
+            slug=f"{slug}-{i}",
+            language=language,
+            title=f"Volume {i}",
+            series=series,
+            series_position=i,
+            is_published=published,
+        )
+        for i in range(1, n + 1)
+    ]
+    return series, books
+
+
+def _finish(profile, book, when=None):
+    ReadingProgress.objects.create(
+        profile=profile,
+        kind=WorkKind.BOOK,
+        book_slug=book.slug,
+        language=book.language,
+        finished_at=when or timezone.now(),
+    )
+
+
+def _start(profile, book):
+    ReadingProgress.objects.create(
+        profile=profile, kind=WorkKind.BOOK, book_slug=book.slug, language=book.language
+    )
+
+
+class NextSeriesVolumeTests(TestCase):
+    def setUp(self):
+        self.profile = _make_profile()
+
+    def test_recommends_the_volume_after_the_furthest_finished(self):
+        _series(n=3)
+        _finish(self.profile, Book.objects.get(slug="portraits-1"))
+        pick = next_series_volume(self.profile)
+        self.assertIsNotNone(pick)
+        finished_book, next_book = pick
+        self.assertEqual(finished_book.slug, "portraits-1")
+        self.assertEqual(next_book.slug, "portraits-2")
+
+    def test_uses_furthest_finished_not_earliest(self):
+        _series(n=4)
+        _finish(self.profile, Book.objects.get(slug="portraits-1"))
+        _finish(self.profile, Book.objects.get(slug="portraits-2"))
+        _, next_book = next_series_volume(self.profile)
+        self.assertEqual(next_book.slug, "portraits-3")
+
+    def test_none_when_next_already_opened(self):
+        _series(n=3)
+        _finish(self.profile, Book.objects.get(slug="portraits-1"))
+        _start(self.profile, Book.objects.get(slug="portraits-2"))
+        self.assertIsNone(next_series_volume(self.profile))
+
+    def test_none_on_last_volume(self):
+        _series(n=3)
+        _finish(self.profile, Book.objects.get(slug="portraits-3"))
+        self.assertIsNone(next_series_volume(self.profile))
+
+    def test_none_for_unordered_collection(self):
+        # A collection has no series_position, so there is no "next".
+        series = Series.objects.create(slug="kt", title="Key Teachings")
+        author = Author.objects.create(slug="auth-kt", name="A")
+        b1 = Book.objects.create(author=author, slug="kt-1", language="en", title="One", series=series)
+        Book.objects.create(author=author, slug="kt-2", language="en", title="Two", series=series)
+        _finish(self.profile, b1)
+        self.assertIsNone(next_series_volume(self.profile))
+
+    def test_skips_unpublished_next_volume(self):
+        series, books = _series(n=3)
+        books[1].is_published = False  # volume 2 unpublished
+        books[1].save(update_fields=["is_published"])
+        _finish(self.profile, books[0])
+        _, next_book = next_series_volume(self.profile)
+        self.assertEqual(next_book.slug, "portraits-3")
+
+    def test_next_must_exist_in_readers_language(self):
+        # The series has en 1-2 but only pt 1; a pt reader finishing pt vol 1
+        # has no pt vol 2 to go to.
+        _series(n=2, language="en")
+        series = Series.objects.get(slug="portraits")
+        author = Author.objects.get(slug="auth-portraits")
+        pt1 = Book.objects.create(
+            author=author, slug="portraits-pt-1", language="pt", title="Vol 1",
+            series=series, series_position=1,
+        )
+        _finish(self.profile, pt1)
+        self.assertIsNone(next_series_volume(self.profile))
+
+    def test_picks_the_most_recently_finished_series(self):
+        _series(slug="alpha", n=2)
+        _series(slug="beta", n=2)
+        _finish(self.profile, Book.objects.get(slug="alpha-1"), when=timezone.now() - timedelta(days=5))
+        _finish(self.profile, Book.objects.get(slug="beta-1"), when=timezone.now())
+        _, next_book = next_series_volume(self.profile)
+        self.assertEqual(next_book.slug, "beta-2")
+
+    def test_volume_read_in_another_language_is_not_recommended(self):
+        # Progress is one row per (profile, slug), so a volume read in any
+        # language counts as read — don't recommend another edition of it.
+        series = Series.objects.create(slug="x", title="X")
+        author = Author.objects.create(slug="ax", name="A")
+        for lang in ("en", "pt"):
+            for i in (1, 2):
+                Book.objects.create(
+                    author=author, slug=f"x-{i}", language=lang, title=f"V{i} {lang}",
+                    series=series, series_position=i,
+                )
+        _finish(self.profile, Book.objects.get(slug="x-1", language="pt"))
+        _finish(self.profile, Book.objects.get(slug="x-2", language="en"))
+        # The pt edition of volume 2 must NOT be offered — volume 2 is read.
+        self.assertIsNone(next_series_volume(self.profile))
+
+
+class SeriesCandidateProfilesTests(TestCase):
+    def test_window_includes_recent_finishers_only(self):
+        _series(n=2)
+        vol1 = Book.objects.get(slug="portraits-1")
+        recent = _make_profile(email="recent@example.com")
+        old = _make_profile(email="old@example.com")
+        unstarted = _make_profile(email="none@example.com")
+        _finish(recent, vol1, when=timezone.now())
+        _finish(old, vol1, when=timezone.now() - timedelta(days=60))
+        _start(unstarted, vol1)  # started but not finished
+
+        cutoff = timezone.now() - timedelta(days=30)
+        ids = set(series_candidate_profiles(cutoff).values_list("id", flat=True))
+        self.assertIn(recent.id, ids)
+        self.assertNotIn(old.id, ids)
+        self.assertNotIn(unstarted.id, ids)
+
+
+@SENDING
+class SeriesNudgeSendTests(TestCase):
+    def setUp(self):
+        self.profile = _make_profile()
+        _series(n=3)
+        _finish(self.profile, Book.objects.get(slug="portraits-1"))
+
+    @mock.patch("emails.sending.send_email", return_value="rid-series")
+    def test_sends_once_and_is_idempotent(self, send):
+        message = send_series_due(self.profile)
+        self.assertIsNotNone(message)
+        self.assertEqual(message.status, SendStatus.SENT)
+        self.assertEqual(message.kind, EmailKind.LIFECYCLE)
+        self.assertEqual(message.lifecycle_step, "finish_series")
+        self.assertIn("finish_series:portraits-2", message.idempotency_key)
+        # Same run: the 20h min-gap prevents a second nudge.
+        self.assertIsNone(send_series_due(self.profile))
+        # Even past the gap, the per-volume idempotency key means the same nudge
+        # never re-sends — deliver returns the existing SENT row untouched.
+        EmailMessage.objects.filter(pk=message.pk).update(
+            sent_at=timezone.now() - timedelta(hours=48)
+        )
+        again = send_series_due(self.profile)
+        self.assertEqual(again.pk, message.pk)
+        self.assertEqual(send.call_count, 1)
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_opting_out_of_series_stream_blocks_it(self, send):
+        sub = EmailSubscription.objects.create(
+            profile=self.profile, stream_prefs={"series": False}
+        )
+        self.assertIsNone(send_series_due(self.profile))
+        send.assert_not_called()
+        # Onboarding is a different stream and stays on.
+        self.assertTrue(sub.wants(EmailKind.LIFECYCLE))
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_min_gap_blocks_a_nudge_right_after_a_drip(self, send):
+        EmailMessage.objects.create(
+            recipient=self.profile,
+            to_email="reader@example.com",
+            kind=EmailKind.LIFECYCLE,
+            lifecycle_step="welcome",
+            idempotency_key="lifecycle:welcome:x",
+            status=SendStatus.SENT,
+            sent_at=timezone.now(),
+        )
+        self.assertIsNone(send_series_due(self.profile))
+        send.assert_not_called()
+
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_no_next_volume_sends_nothing(self, send):
+        other = _make_profile(email="other@example.com")
+        self.assertIsNone(send_series_due(other))
+        send.assert_not_called()
+
+
+@SENDING
+class SeriesNudgeRenderTests(TestCase):
+    def test_fills_titles_and_points_cta_at_next_volume(self):
+        profile = _make_profile(locale="en", name="Pat")
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_series_nudge(
+            profile, sub,
+            finished_title="Watchman Nee: A Life",
+            next_title="John Hyde: A Life",
+            cta_path="books/john-hyde-a-life/",
+        )
+        self.assertIn("John Hyde: A Life", rendered.html)
+        self.assertIn("Watchman Nee: A Life", rendered.html)
+        self.assertIn("/books/john-hyde-a-life/", rendered.html)
+        self.assertIn("John Hyde: A Life", rendered.subject)
+
+    def test_localizes_to_reader_language(self):
+        profile = _make_profile(locale="pt", name="Ana")
+        sub = EmailSubscription.objects.create(profile=profile)
+        rendered = render_series_nudge(
+            profile, sub, finished_title="A", next_title="B", cta_path="pt/books/b/"
+        )
+        self.assertIn("A história continua", rendered.subject)
+
+
+class SeriesStreamRoutingTests(TestCase):
+    def setUp(self):
+        self.sub = EmailSubscription.objects.create(profile=_make_profile())
+
+    def test_finish_series_step_routes_to_series_stream(self):
+        self.sub.stream_prefs = {"series": False}
+        self.assertFalse(self.sub.wants(EmailKind.LIFECYCLE, "finish_series"))
+        # A plain lifecycle email (no step) stays on the onboarding stream.
+        self.assertTrue(self.sub.wants(EmailKind.LIFECYCLE))
+
+    def test_onboarding_optout_does_not_block_series(self):
+        self.sub.stream_prefs = {"onboarding": False}
+        self.assertFalse(self.sub.wants(EmailKind.LIFECYCLE))
+        self.assertTrue(self.sub.wants(EmailKind.LIFECYCLE, "finish_series"))
