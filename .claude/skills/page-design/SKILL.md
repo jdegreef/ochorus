@@ -687,9 +687,21 @@ relevant group.
   (bespoke row + scoped gradient) vs `.book-card--row`; `PlansProgress` vs
   `ShelfCard`; the error page's "three to try" as bare covers with floating
   captions. → the components.
-- [ ] **D6** Related blocks use five different components; the sermon's "More
+- [~] **D6** Related blocks use five different components; the sermon's "More
   sermons on X" is an **unbounded** text list; Plan, Topic, Quotes and Scripture
   have none. → card components, capped at 4–6 (Book).
+  _2026-10-02: the sermon's related list is capped at 6 (`slice(0, 6)` — it
+  already was in code). **Plan shipped**: a "More like this" block
+  (`book.related`, `.section-heading` like the page's other sections) of up to
+  3 plans drawn with `PlanShelfCard` — the /plans shelf's card, extracted so
+  both render one component (not `PlanCard`, the resume row). The rule is the
+  pure `lib/relatedPlans.ts` (2 per shared source book, 1 per shared writer —
+  plans carry no topic, so a shared book stands in for a shared theme; current
+  language only; ties keep shelf order; nothing related → no block). It is
+  computed in the LOAD from the plans list so it prerenders; the list fetch is
+  decoration and degrades to no block on failure (one extra list call per plan
+  page per locale at build). Still open: **Quotes-author and Scripture chapter
+  pages have no related block.**_
 - [x] **D7** _(shipped 2026-09-08 — `FavoriteButton` rebuilt on the `.btn` family:
   labelled `.btn-sm` on leaf action rows, icon-only `.btn-icon` in reader
   toolbars; scoped CSS + literal durations deleted. All three leaf pages now pass
