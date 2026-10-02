@@ -1,5 +1,6 @@
 import { listFeaturedQuotes, listQuoteAuthors, listQuoteTopics } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
+import { dayIndex } from '$lib/quoteText';
 import type { PageLoad } from './$types';
 
 export const prerender = true;
@@ -23,6 +24,10 @@ export const load: PageLoad = async ({ fetch }) => {
 		authors: authors.items,
 		loadError: authors.loadError,
 		topics: topics.items,
-		featured: featured.items
+		featured: featured.items,
+		// The day's pick AS OF THE BUILD, baked into the prerendered page, so the
+		// HTML and the browser agree and the lead quote only changes after load
+		// when the day has turned since the deploy.
+		featuredAt: dayIndex(new Date(), featured.items.length)
 	};
 };

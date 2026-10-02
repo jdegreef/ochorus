@@ -8,15 +8,15 @@
 
 	// The /quotes index opens on one quotation, fully cited, instead of a list
 	// of names: the thing the page promises, shown before anything else. The
-	// pool comes from the API (short reviewed lines, writers interleaved); the
-	// day's pick is made HERE, after mount, because the page is prerendered —
-	// the build's own pick would otherwise stand until the next deploy. The
-	// prerendered HTML carries the pool's first quote, so the page is complete
-	// without script and hydration matches before the swap.
-	let { pool }: { pool: SavedQuote[] } = $props();
+	// pool comes from the API (short reviewed lines, writers interleaved).
+	// `start` is the day's pick as of the build, baked into the prerendered
+	// page; after mount it is re-taken for the reader's own day, which only
+	// changes the quote when the day has turned since the deploy.
+	let { pool, start = 0 }: { pool: SavedQuote[]; start?: number } = $props();
 	const t = i18n.t;
 
-	let at = $state(0);
+	// svelte-ignore state_referenced_locally
+	let at = $state(start);
 	const q = $derived(pool[at % pool.length]);
 
 	onMount(() => {

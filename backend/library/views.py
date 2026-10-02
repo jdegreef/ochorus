@@ -1545,6 +1545,10 @@ class QuoteAuthorsView(APIView):
         )
 
 
+#: A quote whose work is unpublished links to a page that 404s, and its context
+#: would hand out text the work's own pages withhold.
+_PUBLISHED_SOURCE = Q(chapter__book__is_published=True) | Q(sermon__is_published=True)
+
 #: The featured pool: up to this many quotes per author, each short enough to
 #: stand as the page's lead without truncation.
 FEATURED_PER_AUTHOR = 6
@@ -1570,9 +1574,13 @@ class QuoteFeaturedView(APIView):
 
         rows = (
             Quote.objects.filter(reviewed=True)
+            .filter(_PUBLISHED_SOURCE)
             .annotate(chars=Length("text"))
             .filter(chars__lte=FEATURED_MAX_CHARS)
             .select_related("author", "chapter__book", "sermon")
+            # The card needs titles and slugs, never the bodies they sit in.
+            .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+                   "sermon__body_html", "sermon__body_text", "sermon__search_vector")
             .order_by("author__name", "slug")
         )
         by_author: dict[int, list] = {}
@@ -1586,24 +1594,22 @@ class QuoteFeaturedView(APIView):
 
 
 def quote_block_text(quote) -> str | None:
-    """The plain text of the block a quote's `paragraph` points at, AS SERVED.
-
-    `paragraph` is `body.children[p]` after `annotate_references` — the one
-    transform the chapter and sermon serializers apply — exactly as
-    `tests_quotes.QuoteResolutionTests` resolves it. None if the index no
-    longer lands (a work edited out from under its quote).
-    """
-    from bs4 import BeautifulSoup
-
-    from .scripture import annotate_references
+    """The plain text of the block a quote's `paragraph` points at, AS SERVED
+    (see `library.quote_blocks`). None if the index no longer lands — a work
+    edited out from under its quote."""
+    from .quote_blocks import served_block_texts
 
     body = quote.sermon.body_html if quote.sermon_id else quote.chapter.body_html
-    blocks = BeautifulSoup(f"<div>{annotate_references(body)}</div>", "lxml").div.find_all(
-        recursive=False
-    )
-    if not 0 <= quote.paragraph < len(blocks):
-        return None
-    return " ".join(blocks[quote.paragraph].get_text().split())
+    blocks = served_block_texts(body)
+    return blocks[quote.paragraph] if 0 <= quote.paragraph < len(blocks) else None
+
+
+class _QuoteContextThrottle(ScopedCacheThrottle):
+    """Each context call parses a whole chapter (scripture annotation, then
+    lxml), so it gets its own bucket — generous for a reader opening cards,
+    a ceiling for a script walking every slug."""
+
+    scope = "quote-context"
 
 
 class QuoteContextView(APIView):
@@ -1611,22 +1617,32 @@ class QuoteContextView(APIView):
 
     Plain text, not HTML: the card highlights the sentence inside it and links
     on to the reader for the real page, so nothing here needs markup (and the
-    page needs no `{@html}`). Reviewed only; 404 for an unknown or unreviewed
-    slug, or a paragraph index that no longer resolves.
+    page needs no `{@html}`). Reviewed quotes from published works only; 404
+    for anything else, or a paragraph index that no longer resolves.
+
+    The parse is the cost, so the text is cached per quote for an hour: a body
+    repair reaches it within that, and a popular card costs one parse.
     """
+
+    throttle_classes = [_QuoteContextThrottle]
 
     def get(self, request, quote):
         from .models import Quote
 
-        q = (
-            Quote.objects.filter(slug=quote, reviewed=True)
-            .select_related("author", "chapter__book", "sermon")
-            .first()
-        )
-        text = quote_block_text(q) if q else None
+        key = f"quote-context:{quote}"
+        text = cache.get(key)
         if text is None:
-            raise Http404("No such quotation.")
-        return Response({"slug": q.slug, "paragraph_text": text})
+            q = (
+                Quote.objects.filter(slug=quote, reviewed=True)
+                .filter(_PUBLISHED_SOURCE)
+                .select_related("chapter", "sermon")
+                .first()
+            )
+            text = quote_block_text(q) if q else None
+            if text is None:
+                raise Http404("No such quotation.")
+            cache.set(key, text, 60 * 60)
+        return Response({"slug": quote, "paragraph_text": text})
 
 
 class _QuoteResolveThrottle(ScopedCacheThrottle):

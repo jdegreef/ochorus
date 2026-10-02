@@ -1600,15 +1600,6 @@ export interface SavedQuote extends Quote {
 	author: { slug: string; name: string };
 }
 
-/**
- * Resolve stored quote slugs to their cards — the reader's saved-quotes shelf.
- *
- * A quote is favorited by its own slug, but there is no per-quote page and the
- * shelf can hold quotes from any author, so we POST the stored slugs and get
- * back exactly those cards in the same order. Unknown or now-unreviewed slugs
- * are dropped by the server, so a saved quote that was pulled simply falls off
- * the shelf. Called only when there are quote favorites to resolve.
- */
 /** The /quotes index's featured pool — short reviewed quotes, writers interleaved. */
 export const listFeaturedQuotes = (f?: Fetch) =>
 	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
@@ -1622,6 +1613,15 @@ export interface QuoteContext {
 export const getQuoteContext = (slug: string, f?: Fetch) =>
 	apiFetch<QuoteContext>(`/api/library/quotes/context/${slug}/`, {}, f);
 
+/**
+ * Resolve stored quote slugs to their cards — the reader's saved-quotes shelf.
+ *
+ * A quote is favorited by its own slug, but there is no per-quote page and the
+ * shelf can hold quotes from any author, so we POST the stored slugs and get
+ * back exactly those cards in the same order. Unknown or now-unreviewed slugs
+ * are dropped by the server, so a saved quote that was pulled simply falls off
+ * the shelf. Called only when there are quote favorites to resolve.
+ */
 export const resolveQuotes = (slugs: string[]) =>
 	slugs.length
 		? apiFetch<SavedQuote[]>('/api/library/quotes/resolve/', {

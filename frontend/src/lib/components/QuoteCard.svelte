@@ -25,7 +25,9 @@
 	}: { quote: Quote; authorName: string; cite: string; featured?: boolean } = $props();
 
 	// "In context": the paragraph the line was taken from, opened in place.
+	// Mounted on first open and then only hidden, so it fetches once.
 	let contextOpen = $state(false);
+	let contextMounted = $state(false);
 
 	let copied = $state(false);
 	let timer: ReturnType<typeof setTimeout>;
@@ -85,7 +87,10 @@
 			     permanent slug, so the saved-quotes shelf can resolve it back to
 			     this same card (see resolveQuotes). -->
 			<FavoriteButton kind="quote" slug={quote.slug} />
-			<button class="act" aria-expanded={contextOpen} onclick={() => (contextOpen = !contextOpen)}
+			<button class="act" aria-expanded={contextOpen} onclick={() => {
+					contextOpen = !contextOpen;
+					contextMounted = true;
+				}}
 				>{contextOpen ? t('quotes.hideContext') : t('quotes.inContext')}</button
 			>
 			<!-- Text, not a glyph: the icon set has no copy mark, and extending a
@@ -99,8 +104,8 @@
 			>
 		</div>
 	</div>
-	{#if contextOpen}
-		<QuoteContext {quote} />
+	{#if contextMounted}
+		<div hidden={!contextOpen}><QuoteContext {quote} /></div>
 	{/if}
 </li>
 

@@ -85,7 +85,7 @@
 	/>
 
 	<!-- One quotation first, fully cited: the thing the page promises. -->
-	<FeaturedQuote pool={featured} />
+	<FeaturedQuote pool={featured} start={data.featuredAt} />
 
 	<!-- The other way in: by theme rather than by writer. A failed topics
 	     fetch drops the chips and keeps the link. -->
