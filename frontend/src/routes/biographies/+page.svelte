@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { initialOf } from '$lib/authorIndex';
+	import { filingKey, initialOf } from '$lib/authorIndex';
 	import { onMount, tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -12,6 +12,21 @@
 	import { localizeHref } from '$lib/href';
 	import { ERAS, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
+	import BioTile from '$lib/components/BioTile.svelte';
+	import EraBand from '$lib/components/EraBand.svelte';
+	import FacetMenu from '$lib/components/FacetMenu.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import {
+		facetCounts,
+		hubMembers,
+		inFacets,
+		parseFacets,
+		toggleIn,
+		type EraCard,
+		type FacetKey
+	} from '$lib/bioFacets';
+	import type { FacetOption } from '$lib/components/FacetMenu.svelte';
+	import { readJSON, writeJSON } from '$lib/persisted';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -59,9 +74,19 @@
 	//
 	// `full` is a string because the URL is: '1' or ''. Keeping the flag in that
 	// shape rather than laundering a boolean in and out is one fewer conversion
-	// to get backwards.
+	// to get backwards. `trad`, `place` and `era` are comma lists of hub slugs /
+	// era ids ($lib/bioFacets) — free text to urlFilters, validated against the
+	// hubs this language has by parseFacets.
 	const filters = urlFilters({
-		defaults: { q: '', filter: 'all' as Filter, sort: 'name' as Sort, full: '' },
+		defaults: {
+			q: '',
+			filter: 'all' as Filter,
+			sort: 'name' as Sort,
+			full: '',
+			trad: '',
+			place: '',
+			era: ''
+		},
 		allowed: { filter: FILTER_VALUES, sort: SORT_VALUES, full: ['1'] },
 		url: () => $page.url
 	});
@@ -88,16 +113,127 @@
 		if (!showFullLife && filters.values.full) filters.values.full = '';
 	});
 
-	const filtered = $derived.by(() => {
+	// Name + bio, lowercased once per roster rather than once per keystroke.
+	// The newline keeps a query from matching across the name/bio seam.
+	const haystack = $derived(
+		new Map(authors.map((a) => [a.slug, `${a.name}\n${a.bio ?? ''}`.toLowerCase()]))
+	);
+	// Everything but the three facets: search, has-books, full life. The facet
+	// menus count within this pool, so it is computed once and shared.
+	const basePool = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
+		const { filter, full } = filters.values;
 		return authors.filter((a) => {
-			if (filters.values.filter === 'library' && worksCount(a) === 0) return false;
-			if (filters.values.filter === 'bio' && worksCount(a) > 0) return false;
-			if (showFullLife && filters.values.full === '1' && !a.has_long_bio) return false;
-			if (!q) return true;
-			return a.name.toLowerCase().includes(q) || (a.bio ?? '').toLowerCase().includes(q);
+			if (filter === 'library' && worksCount(a) === 0) return false;
+			if (filter === 'bio' && worksCount(a) > 0) return false;
+			if (showFullLife && full === '1' && !a.has_long_bio) return false;
+			return !q || haystack.get(a.slug)!.includes(q);
 		});
 	});
+
+	// --- Facets: tradition · place · era ----------------------------------------
+	// The tradition/place hubs and the eras, as in-page filters. Their pages are
+	// still linked (the Browse block under the list) — they are what search
+	// engines index — but on the index a tick narrows the list in place.
+	const members = $derived(hubMembers(hubs));
+	const facets = $derived(
+		parseFacets({ trad: filters.values.trad, place: filters.values.place, era: filters.values.era }, hubs)
+	);
+	// A value this language can't show (a hub that only exists in English, from a
+	// shared link) is dropped by parseFacets — so drop it from the URL too, or it
+	// would count as "filtered" with no chip to lift it (the stale-?full=1 rule).
+	$effect(() => {
+		for (const k of ['trad', 'place', 'era'] as const) {
+			const clean = facets[k].join(',');
+			if (clean !== filters.values[k]) filters.values[k] = clean;
+		}
+	});
+	const toggleFacet = (k: FacetKey, v: string) => (filters.values[k] = toggleIn(filters.values[k], v));
+
+	const filtered = $derived(basePool.filter((a) => inFacets(a, facets, members)));
+
+	/** A facet's options with each one's count attached (facetCounts). */
+	const withCounts = (k: FacetKey, opts: Omit<FacetOption, 'count'>[]): FacetOption[] => {
+		const n = facetCounts(basePool, facets, members, k, opts.map((o) => o.v));
+		return opts.map((o) => ({ ...o, count: n.get(o.v) ?? 0 }));
+	};
+
+	// The writers per era, best-known first (portraits, then most to read) —
+	// the faces on the band. Depends on the roster only, not the filters.
+	const byEra = $derived.by(() => {
+		const m = new Map<EraId, AuthorBio[]>();
+		for (const a of authors) {
+			const id = eraOf(a.birth_year);
+			const xs = m.get(id);
+			if (xs) xs.push(a);
+			else m.set(id, [a]);
+		}
+		for (const xs of m.values())
+			xs.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a));
+		return m;
+	});
+	// Only the eras that have writers in this language at all.
+	const presentEras = $derived(ERAS.filter((e) => byEra.has(e.id)));
+
+	// The three facets, each with its label and counted options — one list the
+	// toolbar menus, the phone sheet and the chips all read. Places are each
+	// region with its places indented beneath it; places with no region page in
+	// this language follow unindented (placeGroups' "Elsewhere").
+	const facetGroups = $derived.by(() => {
+		const groups: { k: FacetKey; label: string; options: FacetOption[] }[] = [
+			{
+				k: 'trad',
+				label: t('bios.tradition'),
+				options: withCounts('trad', traditions.map((h) => ({ v: h.slug, label: h.label })))
+			},
+			{
+				k: 'place',
+				label: t('bios.place'),
+				options: withCounts(
+					'place',
+					places.flatMap((g) => [
+						...(g.region ? [{ v: g.region.slug, label: g.region.label, strong: true }] : []),
+						...g.places.map((p) => ({ v: p.slug, label: p.label, indent: !!g.region }))
+					])
+				)
+			},
+			{
+				k: 'era',
+				label: t('bios.era'),
+				options: withCounts('era', presentEras.map((e) => ({ v: e.id, label: t(e.k) })))
+			}
+		];
+		return groups.filter((g) => g.options.length);
+	});
+	const facetLabel = $derived(
+		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.label])))
+	);
+
+	// The era band: each era's count (under the other filters) and three faces.
+	const eraCards = $derived.by(() => {
+		const counts = facetGroups.find((g) => g.k === 'era')?.options ?? [];
+		return presentEras.map(
+			(e): EraCard => ({
+				id: e.id,
+				name: t(e.k),
+				range: e.range,
+				count: counts.find((o) => o.v === e.id)?.count ?? 0,
+				faces: byEra.get(e.id)!.slice(0, 3)
+			})
+		);
+	});
+
+	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
+	type View = 'list' | 'grid';
+	const VIEW_KEY = 'ochorus:bios-view';
+	let view = $state<View>('list');
+	onMount(() => {
+		if (readJSON<View>(VIEW_KEY, 'list') === 'grid') view = 'grid';
+	});
+	const setView = (v: View) => {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	};
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
 	// forever. On a phone it is search (the thing you actually reach for) plus a
@@ -106,26 +242,33 @@
 	let controlsH = $state(0);
 	/** What the sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived(
-		(filters.values.filter !== 'all' ? 1 : 0) + (showFullLife && filters.values.full ? 1 : 0)
+		(filters.values.filter !== 'all' ? 1 : 0) +
+			(showFullLife && filters.values.full ? 1 : 0) +
+			Object.values(facets).reduce((n, xs) => n + xs.length, 0)
 	);
 
 	// The filters currently narrowing the roster, each liftable on its own. The
-	// query (shared with every shelf) comes from filterChips; the library/bio
-	// segment and the Full-life toggle show their state in their own controls,
-	// but ride along so one row carries the whole set and every part has a ×. The
+	// query (shared with every shelf) comes from filterChips; the has-books switch
+	// and the Full-life toggle show their state in their own controls, but ride
+	// along so one row carries the whole set and every part has a ×. The
 	// `full` chip follows the same showFullLife guard as its control and the
 	// badge — a stale ?full=1 with no visible toggle must not surface a chip.
 	const activeChips = $derived.by(() => {
 		const c: FilterChip[] = [];
 		const q = queryChip(filters);
 		if (q) c.push(q);
-		if (filters.values.filter !== 'all') {
-			const k = FILTERS.find((f) => f.v === filters.values.filter)?.k;
-			if (k)
-				c.push({ kind: 'filter', label: t(k), onRemove: () => (filters.values.filter = 'all') });
-		}
+		// 'bio' has no control of its own any more — only an old shared link sets it.
+		if (filters.values.filter !== 'all')
+			c.push({
+				kind: 'filter',
+				label: t(filters.values.filter === 'bio' ? 'bios.filterBioOnly' : 'bios.filterInLibrary'),
+				onRemove: () => (filters.values.filter = 'all')
+			});
 		if (showFullLife && filters.values.full === '1')
 			c.push({ kind: 'full', label: t('bios.fullLife'), onRemove: () => (filters.values.full = '') });
+		for (const k of ['trad', 'place', 'era'] as const)
+			for (const v of facets[k])
+				c.push({ kind: `${k}:${v}`, label: facetLabel.get(`${k}:${v}`) ?? v, onRemove: () => toggleFacet(k, v) });
 		return c;
 	});
 
@@ -148,8 +291,8 @@
 		const m = new Map<string, string>();
 		if (filters.values.sort !== 'name') return m;
 		for (const a of sorted) {
-			// One filing rule with the library A–Z (accents folded).
-			const c = initialOf(a.name);
+			// One filing rule with the library A–Z: by surname, accents folded.
+			const c = initialOf(filingKey(a.name));
 			if (c !== '#' && !m.has(c)) m.set(c, a.slug);
 		}
 		return m;
@@ -167,7 +310,8 @@
 				// Ranks by everything readable, matching the filter above.
 				return arr.sort((a, b) => worksCount(b) - worksCount(a) || a.name.localeCompare(b.name));
 			default:
-				return arr.sort((a, b) => a.name.localeCompare(b.name));
+				// Filed by surname, like the library A–Z (Tozer under T).
+				return arr.sort((a, b) => filingKey(a.name).localeCompare(filingKey(b.name)));
 		}
 	});
 
@@ -180,7 +324,7 @@
 	// of 1; the snapshot brings Back to where you were ($lib/paging).
 	const pages = pager(
 		() => sorted,
-		() => `${filters.values.q}|${filters.values.filter}|${filters.values.full}|${filters.values.sort}`
+		() => Object.values(filters.values).join('|')
 	);
 	export const snapshot = pagedSnapshot(() => pages);
 
@@ -189,11 +333,6 @@
 		era: 'bios.sortEra',
 		books: 'bios.sortBooks'
 	};
-	const FILTERS: { v: Filter; k: string }[] = [
-		{ v: 'all', k: 'bios.filterAll' },
-		{ v: 'library', k: 'bios.filterInLibrary' },
-		{ v: 'bio', k: 'bios.filterBioOnly' }
-	];
 
 	// --- Eras -------------------------------------------------------------------
 	// ERAS / eraOf live in $lib/eras (shared with the per-era landing pages).
@@ -286,26 +425,24 @@
 	structuredData={[peopleLd, crumbsLd]}
 />
 
-<!--
-	`--pinned-offset` is how far down the page the first unobstructed pixel is:
-	the sticky app nav plus this page's own pinned controls bar. Everything that
-	pins or scrolls into view below reads it, so there is one number to be right
-	rather than four hard-coded ones drifting apart.
--->
-<!-- Shared by the inline row (sm up) and the phone sheet. -->
-{#snippet filterSeg(cls: string, btnCls: string)}
-	<div class="seg {cls}">
-		{#each FILTERS as opt (opt.v)}
-			<button
-				class={btnCls}
-				class:active={filters.values.filter === opt.v}
-				onclick={() => (filters.values.filter = opt.v)}
-				aria-pressed={filters.values.filter === opt.v}>{t(opt.k)}</button
-			>
-		{/each}
-	</div>
+<!-- The snippets below are each rendered twice: in the inline row (sm up)
+     and in the phone sheet. -->
+<!-- "Has books to read" — the old All / In the library / Biography only
+     segment as the one question people actually ask of it. A shared
+     ?filter=bio still works; it shows as a removable chip in the summary. -->
+{#snippet hasBooksToggle()}
+	<button
+		type="button"
+		role="switch"
+		aria-checked={filters.values.filter === 'library'}
+		class="filter-field has-books"
+		class:is-active={filters.values.filter === 'library'}
+		onclick={() => (filters.values.filter = filters.values.filter === 'library' ? 'all' : 'library')}
+	>
+		<span class="switch" aria-hidden="true"></span>{t('bios.hasBooks')}
+	</button>
 {/snippet}
-<!-- Orthogonal to the library/bio segments: narrows to writers with a
+<!-- Orthogonal to the has-books switch: narrows to writers with a
      full-length biography (the "Full life" badge). Shown only when it
      actually splits the roster (see showFullLife) — in English almost every
      writer has a full bio, so the chip would remove almost no one. -->
@@ -322,6 +459,29 @@
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
 {/snippet}
 
+<!-- One card family per view: the row card, or the portrait tile. -->
+{#snippet writers(list: AuthorBio[])}
+	{#if view === 'grid'}
+		<div class="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-5">
+			{#each list as author (author.slug)}
+				<BioTile {author} />
+			{/each}
+		</div>
+	{:else}
+		<div class="space-y-4">
+			{#each list as author (author.slug)}
+				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
+			{/each}
+		</div>
+	{/if}
+{/snippet}
+
+<!--
+	`--pinned-offset` is how far down the page the first unobstructed pixel is:
+	the sticky app nav plus this page's own pinned controls bar. Everything that
+	pins or scrolls into view below reads it, so there is one number to be right
+	rather than four hard-coded ones drifting apart.
+-->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
@@ -330,54 +490,34 @@
 	     the page's position for search results, which is still true. -->
 	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
 
-	<!-- Browse by tradition / place: the hub pages (/biographies/tradition|place/).
-	     Hidden while filtering — the list below is then the answer. -->
-	{#if hubs.length && !isFiltered}
-		<nav class="mb-8 flex flex-col gap-5" aria-label={t('bios.eyebrow')}>
-			{#if traditions.length}
-				<div>
-					<h2 class="section-label mb-2.5">{t('hubs.byTradition')}</h2>
-					<ul class="flex flex-wrap gap-2">
-						{#each traditions as h (h.slug)}
-							<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
-			{#if places.length}
-				<div>
-					<h2 class="section-label mb-2.5">{t('hubs.byPlace')}</h2>
-					<ul class="flex flex-col gap-2">
-						{#each places as g (g.region?.slug ?? '')}
-							<li class="flex flex-wrap items-center gap-2">
-								{#if g.region}
-									<a class="tag font-semibold" href={localizeHref(hubPath(g.region))}>{g.region.label}</a>
-								{:else}
-									<span class="text-small text-muted">{t('hubs.elsewhere')}</span>
-								{/if}
-								{#each g.places as h (h.slug)}
-									<a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a>
-								{/each}
-							</li>
-						{/each}
-					</ul>
-				</div>
-			{/if}
-		</nav>
+	<!-- The eras as the page's one visual way in. They used to hide behind the
+	     "By era" sort; now each is a card that filters the list to it. -->
+	{#if eraCards.length > 1 && !loadError}
+		<div class="mb-5">
+			<EraBand
+				eras={eraCards}
+				selected={facets.era}
+				label={t('bios.era')}
+				ontoggle={(id) => toggleFacet('era', id)}
+			/>
+		</div>
 	{/if}
 
-	<!-- Controls + A–Z, pinned under the app nav (which is itself sticky, hence
-	     the --appnav-h offset). With one writer per row the list is 35 screens
-	     long, so the filters and the letter jump have to come WITH you.
-	     -mx-5 px-5 lets the background span the container's padding.
-	     Its height is measured rather than assumed: the filter row and the A–Z
-	     strip both wrap, so the bar is anywhere from ~70px to ~160px tall and
-	     the era headings below have to pin under whatever it currently is. -->
+	<!-- Controls + status, pinned under the app nav (which is itself sticky, hence
+	     the --appnav-h offset). The list is many screens long, so the filters and
+	     the letter jump have to come WITH you. -mx-5 px-5 lets the background span
+	     the container's padding. Its height is measured rather than assumed: the
+	     row and the status line both wrap, so the era headings below have to pin
+	     under whatever it currently is.
+
+	     The tradition and place chip walls that used to sit above this (~400px
+	     before the first writer) are the Tradition / Place menus now; their pages
+	     are linked from the Browse block under the list. -->
 	<div
 		bind:clientHeight={controlsH}
 		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
 	>
-	<!-- Controls: search · filter · sort -->
+	<!-- Controls: search · tradition · place · era · has-books · sort · view -->
 	<div class="filter-row">
 		<input
 			bind:value={filters.values.q}
@@ -395,70 +535,107 @@
 			filtered={isFiltered}
 			onClear={clearFilters}
 		>
-			{@render filterSeg('w-full', 'flex-1')}
-			{#if showFullLife}
-				<div>{@render fullLifeChip()}</div>
-			{/if}
+			<div class="flex flex-wrap gap-2">
+				{@render hasBooksToggle()}
+				{#if showFullLife}{@render fullLifeChip()}{/if}
+			</div>
+			{#each facetGroups as g (g.k)}
+				<SheetChoices
+					label={g.label}
+					options={g.options}
+					isActive={(v) => facets[g.k].includes(v)}
+					onselect={(v) => toggleFacet(g.k, v)}
+				/>
+			{/each}
 			<SheetChoices
 				label={t('bios.sort')}
 				options={SORT_VALUES.map((v) => ({ v, label: t(SORT_LABEL[v]) }))}
 				value={filters.values.sort}
 				onselect={(v) => (filters.values.sort = v)}
 			/>
+			<SheetChoices
+				label={t('bios.view')}
+				options={[
+					{ v: 'list' as View, label: t('bios.viewList') },
+					{ v: 'grid' as View, label: t('bios.viewGrid') }
+				]}
+				value={view}
+				onselect={setView}
+			/>
 		</FilterSheet>
 
 		<div class="hidden sm:contents">
-			{@render filterSeg('', '')}
+			{#each facetGroups as g (g.k)}
+				<FacetMenu
+					label={g.label}
+					options={g.options}
+					selected={facets[g.k]}
+					ontoggle={(v) => toggleFacet(g.k, v)}
+					onclear={() => (filters.values[g.k] = '')}
+				/>
+			{/each}
+			{@render hasBooksToggle()}
 			{#if showFullLife}
 				{@render fullLifeChip()}
 			{/if}
-			<select bind:value={filters.values.sort} class="filter-field" aria-label={t('bios.sort')}>
+			<div class="seg ms-auto" role="group" aria-label={t('bios.sort')}>
 				{#each SORT_VALUES as v (v)}
-					<option value={v}>{t(SORT_LABEL[v])}</option>
+					<button
+						type="button"
+						class:active={filters.values.sort === v}
+						aria-pressed={filters.values.sort === v}
+						onclick={() => (filters.values.sort = v)}>{t(SORT_LABEL[v])}</button
+					>
 				{/each}
-			</select>
+			</div>
+			<div class="seg" role="group" aria-label={t('bios.view')}>
+				<button type="button" class="view-btn" class:active={view === 'list'} aria-pressed={view === 'list'} aria-label={t('bios.viewList')} onclick={() => setView('list')}>
+					<Icon name="list" />
+				</button>
+				<button type="button" class="view-btn" class:active={view === 'grid'} aria-pressed={view === 'grid'} aria-label={t('bios.viewGrid')} onclick={() => setView('grid')}>
+					<Icon name="grid" />
+				</button>
+			</div>
 		</div>
 	</div>
 
-	<!-- Result count + a one-tap escape hatch when a filter is narrowing the list.
-	     Positioned by this bar rather than by the component's own default: it
-	     lives INSIDE the pinned controls, and follows them open and shut on a
-	     phone. -->
-	{#if isFiltered}
-		<FilterSummary
-			shown={sorted.length}
-			total={authors.length}
-			template={t('bios.showing')}
-			onClear={clearFilters}
-			chips={activeChips}
-			class="mt-1.5"
-		/>
-	{/if}
-
-	<!-- A–Z rail: jump to the first writer under each initial (name sort only). -->
-	{#if filters.values.sort === 'name' && sorted.length > 1}
-		<!-- On a phone a single row that swipes sideways (it used to hide there
-		     entirely); from sm up it wraps as before. -->
-		<nav
-			class="az-rail mt-1.5 flex gap-x-1 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:flex-wrap sm:overflow-visible"
-			aria-label={t('bios.jumpAz')}
-		>
-			{#each AZ as letter (letter)}
-				{#if firstByLetter.has(letter)}
-					<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
-					     a late letter has no element to anchor to yet — the prerender
-					     crawler caught exactly that ("no element with id=r-a-torrey").
-					     Reveal first, then scroll; and with no href there is no dangling
-					     fragment in the static output. -->
-					<button
-						class="shrink-0 rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
-						onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
-					>
-				{:else}
-					<span class="shrink-0 px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
-				{/if}
-			{/each}
-		</nav>
+	<!-- Status line: the count and a removable chip per active filter (only while
+	     filtering), and the A–Z jump at the far end (name sort only). -->
+	{#if isFiltered || (filters.values.sort === 'name' && sorted.length > 1)}
+		<div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+			{#if isFiltered}
+				<FilterSummary
+					shown={sorted.length}
+					total={authors.length}
+					template={t('bios.showing')}
+					onClear={clearFilters}
+					chips={activeChips}
+				/>
+			{/if}
+			{#if filters.values.sort === 'name' && sorted.length > 1}
+				<!-- On a phone a single row that swipes sideways; from sm up it wraps. -->
+				<nav
+					class="az-rail flex max-w-full gap-x-0.5 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:ms-auto sm:flex-wrap sm:overflow-visible"
+					aria-label={t('bios.jumpAz')}
+				>
+					{#each AZ as letter (letter)}
+						{#if firstByLetter.has(letter)}
+							<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
+							     a late letter has no element to anchor to yet — the prerender
+							     crawler caught exactly that ("no element with id=r-a-torrey").
+							     Reveal first, then scroll; and with no href there is no dangling
+							     fragment in the static output. -->
+							<button
+								class="shrink-0 rounded-sm px-1 py-0.5 font-semibold text-accent hover:bg-accent-soft"
+								onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
+							>
+						{:else}
+							<span class="shrink-0 px-1 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
+						{/if}
+					{/each}
+				</nav>
+			{/if}
+		</div>
 	{/if}
 	</div>
 
@@ -467,33 +644,6 @@
 	{:else if sorted.length === 0}
 		<EmptyState message={t('bios.noResults')} action={isFiltered ? clearFiltersAction : undefined} />
 	{:else if filters.values.sort === 'era'}
-		{#if eraGroups.length > 1}
-			<!-- A slim timeline: each era is a node on a baseline, its name + year
-			     range below, jumping to that section. Scrolls horizontally when the
-			     eras outrun the width. -->
-			<nav class="mb-10 flex gap-0.5 overflow-x-auto pb-2" aria-label={t('bios.sortEra')}>
-				{#each eraGroups as g (g.era.id)}
-					<a
-						href="#era-{g.era.id}"
-						class="group flex shrink-0 flex-col items-center gap-1.5 px-2 hover:no-underline"
-					>
-						<span class="relative flex h-2.5 w-full items-center justify-center">
-							<span class="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-border"></span>
-							<span
-								class="relative h-2.5 w-2.5 rounded-full border border-border bg-surface transition-colors group-hover:border-accent group-hover:bg-accent"
-							></span>
-						</span>
-						<span
-							class="whitespace-nowrap text-eyebrow font-semibold text-muted transition-colors group-hover:text-accent"
-							>{t(g.era.k)}</span
-						>
-						{#if g.era.range}<span class="whitespace-nowrap text-eyebrow text-muted opacity-70"
-								>{g.era.range}</span
-							>{/if}
-					</a>
-				{/each}
-			</nav>
-		{/if}
 		{#each eraGroups as g (g.era.id)}
 			<section
 				id="era-{g.era.id}"
@@ -522,19 +672,11 @@
 							>{/if}
 					{/snippet}
 				</GroupHeading>
-				<div class="space-y-4">
-					{#each g.authors as author (author.slug)}
-						<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
-					{/each}
-				</div>
+				{@render writers(g.authors)}
 			</section>
 		{/each}
 	{:else}
-		<div class="space-y-4">
-			{#each pages.visible as author (author.slug)}
-				<AuthorBioCard {author} {showFullLife} shelf={booksByAuthor.get(author.slug) ?? []} />
-			{/each}
-		</div>
+		{@render writers(pages.visible)}
 		{#if pages.remaining > 0}
 			<div class="mt-8 flex flex-col items-center gap-2">
 				<button class="btn btn-ghost" onclick={pages.more}>
@@ -547,6 +689,51 @@
 				</p>
 			</div>
 		{/if}
+	{/if}
+	<!-- Browse: the tradition, place and era PAGES. The same groupings filter the
+	     list in place from the toolbar; these links are the way to each page's
+	     own intro, Q&A and "where to start reading" shelf — and they keep every
+	     hub and era page linked from the static HTML of the site's most-crawled
+	     index (the prerender crawler and search engines both follow them; an era
+	     page once went unbuilt because its only link sat behind a client sort). -->
+	{#if hubs.length || presentEras.length}
+		<nav class="mt-14 flex flex-col gap-5 border-t border-border pt-8" aria-label={t('bios.eyebrow')}>
+			{#if traditions.length}
+				<div>
+					<h2 class="section-label mb-2.5">{t('hubs.byTradition')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each traditions as h (h.slug)}
+							<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
+			{#if places.length}
+				<div>
+					<h2 class="section-label mb-2.5">{t('hubs.byPlace')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each places as g (g.region?.slug ?? '')}
+							{#if g.region}
+								<li><a class="tag font-semibold" href={localizeHref(hubPath(g.region))}>{g.region.label}</a></li>
+							{/if}
+							{#each g.places as h (h.slug)}
+								<li><a class="tag" href={localizeHref(hubPath(h))}>{h.label}</a></li>
+							{/each}
+						{/each}
+					</ul>
+				</div>
+			{/if}
+			{#if presentEras.length}
+				<div>
+					<h2 class="section-label mb-2.5">{t('hubs.byEra')}</h2>
+					<ul class="flex flex-wrap gap-2">
+						{#each presentEras as e (e.id)}
+							<li><a class="tag" href={localizeHref(`/biographies/era/${e.id}`)}>{t(e.k)}</a></li>
+						{/each}
+					</ul>
+				</div>
+			{/if}
+		</nav>
 	{/if}
 </div>
 
@@ -563,5 +750,45 @@
 			min-width: 2.25rem;
 			min-height: 2.75rem;
 		}
+	}
+	/* "Has books to read": a field-shaped switch, so it sits in the row at the
+	   same height as the menus beside it. */
+	.has-books {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		cursor: pointer;
+		white-space: nowrap;
+	}
+	.switch {
+		position: relative;
+		flex-shrink: 0;
+		width: 1.9rem;
+		height: 1.1rem;
+		border-radius: 999px;
+		background: var(--border-strong);
+		transition: background var(--duration-base, 150ms);
+	}
+	.switch::after {
+		content: '';
+		position: absolute;
+		top: 0.15rem;
+		inset-inline-start: 0.15rem;
+		width: 0.8rem;
+		height: 0.8rem;
+		border-radius: 999px;
+		background: var(--surface);
+		transition: inset-inline-start var(--duration-base, 150ms);
+	}
+	.has-books.is-active .switch {
+		background: var(--accent);
+	}
+	.has-books.is-active .switch::after {
+		inset-inline-start: 0.95rem;
+	}
+	.view-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

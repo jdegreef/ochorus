@@ -2,7 +2,8 @@
  * Pure shaping for the admin Activity log — everything the page derives from a
  * row that has no reason to live inside a `.svelte` file: which family an action
  * belongs to, what its target points at, how its detail reads, how the flat
- * newest-first list breaks into days, and the few figures the header shows.
+ * newest-first list breaks into days. (The header figures and chip counts are
+ * counted server-side, over the whole log — see `AdminActivityView`.)
  *
  * Kept here (and covered by `adminActivity.test.ts`) so the component is markup
  * over already-shaped data, and so a new action or target kind is a change with
@@ -10,6 +11,7 @@
  * deliberately left out: the code→autonym map is `localeName`, and resolving it
  * here would drag a `.svelte.ts` rune module into a plain unit.
  */
+import { splitEdition } from './edition';
 import { initials as nameInitials, unslug } from './strings';
 import type { AdminActionRow } from './library-admin';
 
@@ -54,7 +56,11 @@ const META: Record<string, ActionMeta> = {
 	'role.revoke': { category: 'access', icon: 'sliders', loud: true }
 };
 
-/** The categories, in the order the filter offers them. */
+/**
+ * The categories, in the order the filter offers them. The filter runs on the
+ * server, so `category_of` in `backend/library/admin_views/activity.py` files
+ * an action by the same prefix rule as `actionMeta` below — change both.
+ */
 export const CATEGORIES: readonly Category[] = [
 	'language',
 	'content',
@@ -72,7 +78,9 @@ export const CATEGORIES: readonly Category[] = [
 export function actionMeta(action: string): ActionMeta {
 	const known = META[action];
 	if (known) return known;
-	const prefix = action.split('.')[0] as Category;
+	const head = action.split('.')[0];
+	// The same prefix rule as the server's `category_of`, which files the chips.
+	const prefix = (head === 'role' ? 'access' : head) as Category;
 	const category = CATEGORIES.includes(prefix) ? prefix : 'content';
 	return { category, icon: 'document', loud: false };
 }
@@ -103,6 +111,9 @@ export function parseTarget(target: string): ParsedTarget {
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/books/${slug}` };
 	if (kind === 'sermon' && slug)
 		return { kind: 'document', slug, lang: lang || undefined, href: `/admin/sermons/${slug}` };
+	// Articles and plans are per-language editions too, without an admin page.
+	if ((kind === 'article' || kind === 'plan') && slug)
+		return { kind: 'document', slug, lang: lang || undefined, href: null };
 	return { kind: 'other', slug: target ?? '', href: null };
 }
 
@@ -127,6 +138,8 @@ export type DetailPart =
 	| { kind: 'quote'; text: string }
 	/** A URL-valued field (e.g. a filed translation issue), shown as a link chip. */
 	| { kind: 'link'; text: string; href: string }
+	/** Something that didn't go the usual way — e.g. a job that was already open. */
+	| { kind: 'warn'; text: string }
 	/** Anything else, `label: value`. */
 	| { kind: 'text'; text: string };
 
@@ -193,6 +206,12 @@ export function summariseDetail(detail: Record<string, unknown>): DetailPart[] {
 	// Everything else: a reason as a quote, the rest as labelled values.
 	for (const [k, v] of entries) {
 		if (consumed.has(k)) continue;
+		// A filed job records `created`. True is every row's normal case and only
+		// noise; false is the one worth seeing — the click filed nothing.
+		if (k === 'created') {
+			if (v === false) parts.push({ kind: 'warn', text: 'Already open — nothing filed' });
+			continue;
+		}
 		if (k === 'reason') {
 			parts.push({ kind: 'quote', text: String(v) });
 			continue;
@@ -248,46 +267,9 @@ export function groupByDay(rows: AdminActionRow[], now: Date = new Date()): DayG
 	return groups;
 }
 
-/** How many rows fall in each category (for the filter chips' counts). */
-export function categoryCounts(rows: AdminActionRow[]): Record<Category, number> {
-	const counts = Object.fromEntries(CATEGORIES.map((c) => [c, 0])) as Record<Category, number>;
-	for (const r of rows) counts[actionMeta(r.action).category] += 1;
-	return counts;
-}
-
-/** The most active actor in the window, and how many of the rows are theirs. */
-export function busiestActor(rows: AdminActionRow[]): { actor: string; count: number } {
-	const tally = new Map<string, number>();
-	for (const r of rows) tally.set(r.actor, (tally.get(r.actor) ?? 0) + 1);
-	let actor = '';
-	let count = 0;
-	for (const [a, n] of tally) {
-		if (n > count) {
-			count = n;
-			actor = a;
-		}
-	}
-	return { actor, count };
-}
-
-/** Today's tally: all actions, and the reader-facing (loud) share of them. */
-export function todayStats(
-	rows: AdminActionRow[],
-	now: Date = new Date()
-): { count: number; readerFacing: number } {
-	let count = 0;
-	let readerFacing = 0;
-	for (const r of rows) {
-		if (dayLabel(r.at, now) !== 'Today') continue;
-		count += 1;
-		if (actionMeta(r.action).loud) readerFacing += 1;
-	}
-	return { count, readerFacing };
-}
-
 /**
- * The filtered rows as CSV — the visible/filtered set, so an export matches what
- * the admin is looking at. Detail is kept as JSON in one column rather than
+ * Rows as CSV — the export fetches every row matching the page's filters from
+ * the server first, so the file matches the filters, not just the loaded page. Detail is kept as JSON in one column rather than
  * spread, so the columns are stable whatever an action recorded.
  */
 export function toCsv(rows: AdminActionRow[]): string {
@@ -304,4 +286,79 @@ export function toCsv(rows: AdminActionRow[]): string {
 			.join(',')
 	);
 	return [header.join(','), ...body].join('\n');
+}
+
+/**
+ * A row's display name and its young-reader edition, if any. The server sends
+ * the work's real title; `splitEdition` lifts a "(For Children)" audience (in
+ * the title's own language) into a chip only when the slug agrees, so a work
+ * titled that way on its own keeps its name. Without a title (an unknown or
+ * deleted work) the slug is unslugged, as before.
+ */
+export function titleParts(slug: string, title?: string): { name: string; edition: string | null } {
+	if (!title) return { name: unslug(slug), edition: null };
+	const split = splitEdition(slug, title);
+	return split ? { name: split.base, edition: split.audience } : { name: title, edition: null };
+}
+
+/** One rendered line of a day: a single row, or a burst folded into one. */
+export type DayItem = { kind: 'row'; row: AdminActionRow } | { kind: 'burst'; rows: AdminActionRow[] };
+
+/** The gap that still counts as the same sitting — a bulk queue is seconds apart. */
+export const BURST_GAP_MS = 10 * 60_000;
+/** Fewer than this stay as separate rows: two of a thing isn't a burst. */
+export const BURST_MIN = 3;
+
+/**
+ * What makes rows "the same thing again": admin, action, the target's own kind
+ * (`book`, not the display bucket a sermon shares) and language, and a review's
+ * verdict — a rejection never hides among approvals. A row with a reason says
+ * something of its own, so it never joins.
+ */
+const burstKey = (r: AdminActionRow): string | null => {
+	if (r.detail?.reason) return null;
+	const [kind, , lang] = r.target.split(':');
+	return [r.actor, r.action, kind, lang ?? '', String(r.detail?.outcome ?? '')].join('|');
+};
+
+/**
+ * Consecutive rows that are the same thing again (see `burstKey`), each within
+ * {@link BURST_GAP_MS} of the next,
+ * folded into one item. One click on "Translate all to Spanish" files a
+ * hundred jobs, and as a hundred rows it pushed everything else that day off
+ * the page. Order is kept; nothing is dropped — the view expands a burst.
+ */
+export function groupBursts(rows: AdminActionRow[]): DayItem[] {
+	const items: DayItem[] = [];
+	let run: AdminActionRow[] = [];
+	const flush = () => {
+		if (run.length >= BURST_MIN) items.push({ kind: 'burst', rows: run });
+		else for (const row of run) items.push({ kind: 'row', row });
+		run = [];
+	};
+	for (const row of rows) {
+		const prev = run[run.length - 1];
+		const key = burstKey(row);
+		const joins =
+			prev &&
+			key !== null &&
+			burstKey(prev) === key &&
+			Math.abs(Date.parse(prev.at) - Date.parse(row.at)) <= BURST_GAP_MS;
+		if (!joins) flush();
+		run.push(row);
+	}
+	flush();
+	return items;
+}
+
+/** `#4722–#4821` for a burst's filed issues, or '' when they carry none. */
+export function issueRange(rows: AdminActionRow[]): string {
+	const nums = rows
+		.map((r) => (typeof r.detail?.issue === 'string' ? r.detail.issue : ''))
+		.map((u) => Number(u.match(/\/(?:issues|pull)\/(\d+)\b/)?.[1]))
+		.filter((n) => Number.isFinite(n) && n > 0);
+	if (nums.length === 0) return '';
+	const lo = Math.min(...nums);
+	const hi = Math.max(...nums);
+	return lo === hi ? `#${lo}` : `#${lo}–#${hi}`;
 }

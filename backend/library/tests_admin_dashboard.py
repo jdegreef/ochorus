@@ -1113,6 +1113,32 @@ class AdminUsersTests(TestCase):
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
 
     @override_settings(DEBUG=True)
+    def test_activation_steps_each_narrow_the_one_before(self):
+        """p1 read on two days and finished a book; p2 read on one day and
+        finished a sermon, but one day is not a habit, so p2 stops at
+        "started"; p3 never read."""
+        from datetime import date
+
+        from django.utils import timezone
+
+        from reading.models import ReadingDay, ReadingProgress, WorkKind
+
+        for profile, day in [(self.p1, date(2026, 9, 1)), (self.p1, date(2026, 9, 3)),
+                             (self.p2, date(2026, 9, 1))]:
+            ReadingDay.objects.create(profile=profile, day=day)
+        ReadingProgress.objects.filter(profile=self.p1).update(finished_at=timezone.now())
+        ReadingProgress.objects.create(
+            profile=self.p2, kind=WorkKind.SERMON, book_slug="humility", language="en",
+            finished_at=timezone.now(),
+        )
+
+        res = self.client.get("/api/admin/users/")
+        steps = {s["step"]: s["count"] for s in res.data["activation"]}
+        self.assertEqual(steps, {"signed_up": 3, "started": 2, "returned": 1, "finished": 1})
+        # The tiles read the same counts as the funnel's first two steps.
+        self.assertEqual((res.data["total"], res.data["with_activity"]), (3, 2))
+
+    @override_settings(DEBUG=True)
     def test_users_analytics(self):
         res = self.client.get("/api/admin/users/")
         self.assertEqual(res.status_code, 200)
@@ -1943,6 +1969,24 @@ class AdminLanguageHealthTests(TestCase):
     def test_ranked_healthiest_first(self):
         codes = [r["health"] for r in self._get()["languages"]]
         self.assertEqual(codes, sorted(codes, reverse=True))
+
+    def test_returns_the_weights_and_they_compose_the_score(self):
+        data = self._get()
+        weights = data["weights"]
+        self.assertAlmostEqual(sum(weights.values()), 1.0)
+        for r in data["languages"]:
+            composed = 100 * sum(r["scores"][k] * w for k, w in weights.items())
+            self.assertLessEqual(abs(composed - r["health"]), 0.5 + 1e-6)
+
+    def test_blockers_carry_the_checks_own_label(self):
+        # The page shows these as-is, so each must name itself.
+        languages = self._get()["languages"]
+        es = next(r for r in languages if r["code"] == "es")
+        self.assertTrue(es["readiness"]["blocking"])  # not vacuous
+        for r in languages:
+            for b in r["readiness"]["blocking"]:
+                self.assertEqual(set(b), {"key", "label"})
+                self.assertTrue(b["label"])
 
     def test_engagement_normalises_to_the_busiest_language(self):
         # No reading data → engagement is zero for everyone (not a crash).

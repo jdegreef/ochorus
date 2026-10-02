@@ -4,7 +4,11 @@ import {
 	nextInSeries,
 	seriesAmong,
 	seriesFromBooks,
+	seriesCardProgressLabel,
 	seriesProgress,
+	seriesToContinue,
+	splitSeriesTitle,
+	type BookStage,
 	seriesLabel,
 	groupByAudience,
 	seriesAges
@@ -106,11 +110,92 @@ describe('seriesProgress', () => {
 	const of = (slug: string) => state[slug] ?? { started: false, finished: false };
 
 	it('counts finished books and notices any begun one', () => {
-		expect(seriesProgress(['a', 'b', 'c'], of)).toEqual({ done: 1, total: 3, started: true });
+		expect(seriesProgress(['a', 'b', 'c'], of)).toEqual({
+			done: 1,
+			total: 3,
+			started: true,
+			stages: ['done', 'reading', 'unread']
+		});
 	});
 
 	it('is not started when no book is opened', () => {
-		expect(seriesProgress(['c', 'd'], of)).toEqual({ done: 0, total: 2, started: false });
+		expect(seriesProgress(['c', 'd'], of)).toEqual({
+			done: 0,
+			total: 2,
+			started: false,
+			stages: ['unread', 'unread']
+		});
+	});
+});
+
+describe('seriesCardProgressLabel', () => {
+	it('says a series is in progress before any book is finished', () => {
+		expect(seriesCardProgressLabel(['reading', 'unread', 'unread', 'unread'], 'en')).toBe(
+			'In progress'
+		);
+	});
+
+	it('counts finished books once there are any', () => {
+		const stages: BookStage[] = ['done', 'done', 'reading', 'unread'];
+		expect(seriesCardProgressLabel(stages, 'en')).toBe('2 of 4 read');
+	});
+});
+
+describe('seriesToContinue', () => {
+	const state: Record<string, { started: boolean; finished: boolean }> = {
+		'r-1': { started: true, finished: true },
+		'r-2': { started: true, finished: false },
+		'b-1': { started: true, finished: false },
+		'd-1': { started: true, finished: true }
+	};
+	const of = (slug: string) => state[slug] ?? { started: false, finished: false };
+	const at: Record<string, number> = { 'r-1': 1, 'r-2': 5, 'b-1': 9, 'd-1': 3 };
+	const lastRead = (slug: string) => at[slug] ?? 0;
+	const rooted = { slug: 'rooted', books: ['r-1', 'r-2', 'r-3'] };
+	const brave = { slug: 'brave', books: ['b-1', 'b-2'] };
+	const done = { slug: 'done', books: ['d-1'] };
+	const fresh = { slug: 'fresh', books: ['f-1'] };
+
+	it('lists begun, unfinished series, most recently read first', () => {
+		const rows = seriesToContinue([rooted, brave, done, fresh], of, lastRead);
+		expect(rows.map((r) => [r.series.slug, r.slug])).toEqual([
+			['brave', 'b-1'],
+			['rooted', 'r-2']
+		]);
+		expect(rows[1].stages).toEqual(['done', 'reading', 'unread']);
+	});
+
+	it('caps the list', () => {
+		expect(seriesToContinue([rooted, brave], of, lastRead, 1)).toHaveLength(1);
+	});
+
+	it('skips a series with no book list', () => {
+		const old: { slug: string; books?: string[] } = { slug: 'old' };
+		expect(seriesToContinue([old], of, lastRead)).toEqual([]);
+	});
+});
+
+describe('splitSeriesTitle', () => {
+	it('splits at a spaced en dash', () => {
+		expect(splitSeriesTitle('Daughters of the King – 30 Days with God for Girls')).toEqual({
+			name: 'Daughters of the King',
+			subtitle: '30 Days with God for Girls'
+		});
+	});
+
+	it('splits at a spaced em dash (the Hindi titles)', () => {
+		const { name } = splitSeriesTitle('जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन');
+		expect(name).toBe('जड़ें जमाए');
+	});
+
+	it('leaves a title with no spaced dash whole', () => {
+		expect(splitSeriesTitle('Brave for God')).toEqual({ name: 'Brave for God', subtitle: '' });
+		expect(splitSeriesTitle('Ages 9–12').subtitle).toBe('');
+	});
+
+	it('never returns an empty name or subtitle', () => {
+		expect(splitSeriesTitle('Rooted – ')).toEqual({ name: 'Rooted – ', subtitle: '' });
+		expect(splitSeriesTitle(' – Rooted').name).toBe(' – Rooted');
 	});
 });
 

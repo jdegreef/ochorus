@@ -2,7 +2,9 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
+	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
@@ -44,11 +46,11 @@
 
 	// Reading pulse — the headline figures, each with a plain-English sub and,
 	// where there's a prior window to divide by, a week-over-week trend chip. The
-	// active tile also carries the weekly sparkline (`spark`).
+	// active tile also carries the weekly sparkline (`spark`). Readers sits beside
+	// Registered users so the accounts that never opened a chapter read as a gap.
 	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; spark?: boolean }[]>(
 		data
 			? [
-					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
 					{
 						label: 'Active · 7d',
 						value: data.overview.active_7d,
@@ -68,8 +70,9 @@
 						sub: `${fmt(data.overview.hearts_7d)} this week`,
 						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev)
 					},
-					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
-					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
+					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
+					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null },
+					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
 				]
 			: []
 	);
@@ -100,18 +103,15 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
-	// Plan funnel steps, each as a share of "started" so the drop-off reads down
-	// the bars. Started is the 100% baseline; the rest narrow from it.
-	const planSteps = $derived.by(() => {
-		const f = data?.plan_funnel;
-		if (!f || !f.started) return [];
-		const share = (n: number) => Math.round((n / f.started) * 100);
-		return [
-			{ label: 'Started', count: f.started, pct: 100, note: '' },
-			{ label: 'Came back', count: f.returned, pct: share(f.returned), note: `${share(f.returned)}%` },
-			{ label: 'Completed', count: f.completed, pct: share(f.completed), note: `${share(f.completed)}%` }
-		];
-	});
+	const planSteps = $derived(
+		data
+			? [
+					{ label: 'Started', count: data.plan_funnel.started },
+					{ label: 'Came back', count: data.plan_funnel.returned },
+					{ label: 'Completed', count: data.plan_funnel.completed }
+				]
+			: []
+	);
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -146,7 +146,9 @@
 			{:else}
 				<!-- Reading pulse -->
 				<p class="section-label">Reading pulse</p>
-				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+				<!-- Three across at most: at six the tiles were too narrow for a label and
+				     its chip on one line, so "Active · 7d" broke at the dot. -->
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-start justify-between gap-2">
@@ -158,7 +160,7 @@
 								{/if}
 							</div>
 							<div class="mt-2 flex items-center gap-2">
-								<span class="text-small font-semibold text-text">{c.label}</span>
+								<span class="whitespace-nowrap text-small font-semibold text-text">{c.label}</span>
 								<TrendChip trend={c.trend} />
 							</div>
 							<div class="text-small text-muted">{c.sub}</div>
@@ -186,7 +188,7 @@
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers` },
 								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
 							] as c (c.label)}
-								<div class="rounded-card border border-border bg-surface-2 p-4">
+								<div class="rounded-card bg-surface-2 p-4">
 									<div class="stat-number">{c.text}</div>
 									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 									<div class="text-small text-muted">{c.sub}</div>
@@ -199,18 +201,16 @@
 				<!-- Weekly active -->
 				<section class="mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
-					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.weekly_active as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
-								<div class="text-small tabular-nums text-muted">{w.readers || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
-								></div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={d.weekly_active.map((w, i) => ({
+							key: w.week,
+							label: weekLabel(w.week),
+							value: w.readers,
+							current: i === d.weekly_active.length - 1,
+							title: `Week of ${weekLabel(w.week)} · ${fmt(w.readers)} reader${w.readers === 1 ? '' : 's'}`
+						}))}
+					/>
+					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->
@@ -377,19 +377,7 @@
 							<h2 class="text-h3">Reading plans</h2>
 							<span class="text-small text-muted">Plans live or die on retention — where readers drop off.</span>
 						</div>
-						<div class="space-y-2">
-							{#each planSteps as s (s.label)}
-								<div class="flex items-center gap-3">
-									<span class="w-24 shrink-0 text-small text-text">{s.label}</span>
-									<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
-										<div class="h-full rounded-full bg-accent-soft" style="width: {s.pct}%"></div>
-									</div>
-									<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
-										<span class="font-semibold text-text">{fmt(s.count)}</span>{#if s.note} · {s.note}{/if}
-									</span>
-								</div>
-							{/each}
-						</div>
+						<FunnelBars steps={planSteps} />
 						{#if d.plan_funnel.by_plan.length}
 							<div class="mt-5 overflow-x-auto">
 								<table class="w-full">

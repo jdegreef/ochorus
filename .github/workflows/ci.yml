@@ -86,6 +86,15 @@ jobs:
   # is covered by backend-tests, which content triggers), so it must not drag in
   # the Docker build. A `.py` seed module (quote_seed, corrections, …) is code
   # and does trip `backend` — over-running the image build, which is the safe side.
+  #
+  # `predicate-quantifier: every` — a file trips a filter only if it matches
+  # EVERY line in it. That is what makes the `!fixtures` exclusion an AND. Under
+  # the default (`some`, any one line), "not under fixtures" matched every file
+  # in the repo, so `backend` was true on EVERY PR and a frontend-only change
+  # paid for the ~40-minute backend suite and the image build (and could time
+  # out on them). With `every`, alternatives must share ONE line as a brace
+  # glob — hence `{a,b}` below rather than two lines.
+  # `.gitattributes` rides with backend: tests_fixture reads it.
   changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -106,17 +115,17 @@ jobs:
         id: filter
         if: github.event_name == 'pull_request'
         with:
+          predicate-quantifier: every
           filters: |
             backend:
-              - 'backend/**'
+              - '{backend/**,.gitattributes}'
               - '!backend/library/fixtures/**'
             content:
               - 'backend/library/fixtures/**'
             frontend:
               - 'frontend/**'
             ci:
-              - '.github/workflows/**'
-              - 'render.yaml'
+              - '{.github/workflows/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
@@ -130,7 +139,11 @@ jobs:
     # ~24.5 min (1,456-1,465 s) on its own, so the old 25-minute ceiling was
     # cancelling runs seconds after the last test finished (#3966, #3989,
     # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
-    timeout-minutes: 40
+    # By 2026-10-01 it had outgrown 40 the same way: a green run took 37.5 min
+    # and same-day runs were cancelled at the ceiling on main and on PRs
+    # (#4879, #4880, #4883). 60 restores the headroom; splitting the suite
+    # into parallel jobs is the lasting fix.
+    timeout-minutes: 60
     env:
       DJANGO_DEBUG: 'true'
     # The suite runs ONCE, on Postgres — the production database. Postgres is a
@@ -186,7 +199,7 @@ jobs:
         working-directory: backend
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-        run: uv run python manage.py test --parallel auto --verbosity 1
+        run: uv run python manage.py test --parallel auto --verbosity 1 --durations 25
 
   # --- Production image gate (runs in parallel with everything) ------------
   backend-image:

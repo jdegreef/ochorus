@@ -379,7 +379,9 @@
 		e.preventDefault();
 		spy.set(id);
 		jumpToSection(id);
-		history.replaceState(null, '', `#${id}`);
+		// history.state, not null: a null state erases SvelteKit's history index and
+		// breaks Back after the next navigation. (The book page does the same.)
+		history.replaceState(history.state, '', `#${id}`);
 	}
 </script>
 

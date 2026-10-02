@@ -10,17 +10,17 @@ The whole series uses one picture: **a tree**. Colossians 2:6–7 is on Book 1, 
 
 | Book | Focus | Slug | Reading plan |
 |---|---|---|---|
-| 1 | Planted: knowing God, receiving Jesus, and learning to grow | `rooted-1` | `rooted-book-1-30-days` |
-| 2 | Following Jesus: walking with Jesus from the manger to the empty tomb | `rooted-2` | `rooted-book-2-30-days` |
-| 3 | Growing Fruit: the fruit of the Spirit, the words we say, and the habits of the heart | `rooted-3` | `rooted-book-3-30-days` |
-| 4 | Strong in the Storm: courage for when you're afraid, sad, tempted or treated unfairly | `rooted-4` | `rooted-book-4-30-days` |
-| 5 | Branching Out: loving your family, your friends, God's family and the world | `rooted-5` | `rooted-book-5-30-days` |
-| 6 | Bearing Fruit: God's purpose for your life, now and forever | `rooted-6` | `rooted-book-6-30-days` |
+| 1 | Planted: knowing God, receiving Jesus, and learning to grow | `rooted-1` | `rooted-three-months-books-1-3` |
+| 2 | Following Jesus: walking with Jesus from the manger to the empty tomb | `rooted-2` | `rooted-three-months-books-1-3` |
+| 3 | Growing Fruit: the fruit of the Spirit, the words we say, and the habits of the heart | `rooted-3` | `rooted-three-months-books-1-3` |
+| 4 | Strong in the Storm: courage for when you're afraid, sad, tempted or treated unfairly | `rooted-4` | `rooted-three-months-books-4-6` |
+| 5 | Branching Out: loving your family, your friends, God's family and the world | `rooted-5` | `rooted-three-months-books-4-6` |
+| 6 | Bearing Fruit: God's purpose for your life, now and forever | `rooted-6` | `rooted-three-months-books-4-6` |
 
 ## Format
 
 - **Each day:** a title, the Scripture (BSB), a teaching of about 300–400 words, **Think about it** / **Try this**, and a prayer.
-- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The reading plan reads chapters 2–31, so plan day N is the chapter titled "Day N". The `(2, 31)` span in `LAUNCH_PLANS` handles this.
+- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The series reading plan (a `CURATED_PLANS` entry; one per series, Rooted in two halves) reads every chapter of its books in order, Introductions and Conclusions included, so each book is 32 plan days.
 - **Every introduction** ends with a short note "For parents, grandparents and leaders". Every conclusion includes a gentle invitation to trust Jesus and a preview of the next book.
 
 ## Sensitive days and how they were handled
@@ -47,7 +47,7 @@ DJANGO_DEBUG=true uv run python manage.py build_rooted <n>
 
 1. Serialize the fixture.
 2. Run `generate_covers`, then `npm run og:covers`.
-3. Add the `LAUNCH_PLANS` entry with span `(2, 31)`.
+3. Add the book to its series plan in `CURATED_PLANS` (not a per-book `LAUNCH_PLANS` entry: the series reads as one plan).
 4. Add the `BOOK_STYLE` entry in `coverStyles.ts`. (The volume numeral needs nothing: `build_rooted` sets `series` / `series_position`, and the cover reads them.)
 5. Add the book to the For Young Readers shelf in `topic_seed.py`.
 6. Add the prerender touches on `books/` and `plans/`.

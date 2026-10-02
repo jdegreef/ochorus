@@ -546,12 +546,57 @@ def _profile_summary(p, *, reveal: bool) -> dict:
 RECENT_SIGNUPS_LIMIT = 25
 
 
+def _activation_counts() -> dict[str, int]:
+    """Sign-up to habit: how many accounts reach each step, where every step
+    is a subset of the one before it, so the drop between two steps is real.
+
+    * signed_up — every account;
+    * started — has any reading progress (the Users page's "Activated");
+    * returned — read on two or more days, from ``ReadingDay`` (the streak log:
+      one row per reader per LOCAL date). A sitting that runs past midnight
+      counts as two days, and readers from before that log existed, or on a
+      client that never sent it, can read as not having come back;
+    * finished — of those, finished a book, sermon, biography or article (the
+      stored ``finished_at`` stamp). Because steps nest, a reader who finished
+      in a single day stops at "started", so this is lower than the
+      engagement page's finisher counts.
+
+    Each account's three facts are annotated once and then counted, so every
+    subquery runs once per account rather than once per step.
+    """
+    from django.db.models import Exists, OuterRef, Subquery
+    from django.db.models.functions import Coalesce
+
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay, ReadingProgress
+
+    progress = ReadingProgress.objects.filter(profile=OuterRef("pk"))
+    days = (
+        ReadingDay.objects.filter(profile=OuterRef("pk"))
+        .values("profile")
+        .annotate(n=Count("pk"))
+        .values("n")
+    )
+    started, returned = Q(has_progress=True), Q(has_progress=True, days__gte=2)
+    return UserProfile.objects.annotate(
+        has_progress=Exists(progress),
+        days=Coalesce(Subquery(days), 0),
+        has_finished=Exists(progress.filter(finished_at__isnull=False)),
+    ).aggregate(
+        signed_up=Count("pk"),
+        started=Count("pk", filter=started),
+        returned=Count("pk", filter=returned),
+        finished=Count("pk", filter=returned & Q(has_finished=True)),
+    )
+
+
 @requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
-    Mostly aggregate over ``accounts.UserProfile`` (+ a distinct-reader count
-    from ReadingProgress for activation). The ``recent`` list is the exception:
+    Mostly aggregate over ``accounts.UserProfile``. ``total``, ``with_activity``
+    and the ``activation`` funnel all come from ``_activation_counts``, so the
+    tiles and the funnel always agree. The ``recent`` list is the exception:
     it names individual accounts (display name, email, sign-in method) so the
     founder can see who is actually signing up — admin-only, behind
     ``IsAdminEmail``, and served to no one else.
@@ -565,11 +610,13 @@ class AdminUsersView(APIView):
         from django.utils import timezone
 
         from accounts.models import UserProfile
-        from reading.models import ReadingProgress
 
         now = timezone.now()
-        total = UserProfile.objects.count()
-        with_activity = ReadingProgress.objects.values("profile").distinct().count()
+        # Total and activated come from the same counts as the funnel, so the
+        # tiles and the funnel's first two steps can never disagree.
+        activation = _activation_counts()
+        total = activation["signed_up"]
+        with_activity = activation["started"]
 
         def signups_between(start_days, end_days=0):
             qs = UserProfile.objects.filter(created_at__gte=now - timedelta(days=start_days))
@@ -582,6 +629,7 @@ class AdminUsersView(APIView):
                 "total": total,
                 "with_activity": with_activity,
                 "dormant": max(0, total - with_activity),
+                "activation": [{"step": k, "count": n} for k, n in activation.items()],
                 "signups_7d": signups_between(7),
                 "signups_30d": signups_between(30),
                 # The immediately preceding window, so the UI can show a trend
@@ -777,10 +825,12 @@ class AdminSearchView(APIView):
     tolerance we don't have yet. Top lists skip fragments under 3 characters
     (search-as-you-type prefixes) and fold case.
 
-    Overview counts are searches SERVED, so type-ahead prefixes inflate them
-    relative to typed intent (deliberate: 2-char queries are real searches in
-    e.g. Chinese, and the engine did the work either way). Compare trends, not
-    absolutes.
+    Counts are searches readers finished typing: the type-ahead fragments a
+    longer search extended ("pra" on the way to "prayer") are hidden by
+    SearchQueryLog's default manager, so they inflate neither the volume nor
+    the zero-result rate. A 2-char query that WASN'T extended still counts
+    (they're real searches in e.g. Chinese). Rows, not readers: compare
+    trends, not absolutes.
     """
 
 
@@ -795,20 +845,45 @@ class AdminSearchView(APIView):
         now = timezone.now()
         window = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=30))
 
-        def overview(qs):
-            counts = qs.aggregate(
-                searches=Count("id"), zero=Count("id", filter=Q(result_count=0))
-            )
+        # Each period and the one before it (the baseline the page's deltas
+        # divide by), as conditional counts over ONE scan per log: the four
+        # windows overlap inside the last 60 days.
+        windows = {"7d": (7, 0), "30d": (30, 0), "7d_prev": (7, 7), "30d_prev": (30, 30)}
+
+        def span(key):
+            # The current windows stay open-ended, like the lists on this page,
+            # so a row logged mid-request can't land in one section but not
+            # another.
+            days, offset = windows[key]
+            q = Q(created_at__gte=now - timedelta(days=days + offset))
+            return q & Q(created_at__lt=now - timedelta(days=offset)) if offset else q
+
+        recent = Q(created_at__gte=now - timedelta(days=60))
+        counts = SearchQueryLog.objects.filter(recent).aggregate(
+            **{
+                f"{k}_{name}": Count(expr, filter=span(k) & extra, distinct=distinct)
+                for k in windows
+                for name, expr, extra, distinct in (
+                    ("searches", "id", Q(), False),
+                    ("zero", "id", Q(result_count=0), False),
+                    ("distinct", Lower("query"), Q(), True),
+                )
+            }
+        )
+        # Opened results in each window. Rows, not readers (the logs are
+        # anonymous), so a rate built on it is a trend, not "x% of people".
+        clicks = SearchClickLog.objects.filter(recent).aggregate(
+            **{k: Count("id", filter=span(k)) for k in windows}
+        )
+
+        def overview(k):
+            searches, zero = counts[f"{k}_searches"], counts[f"{k}_zero"]
             return {
-                "searches": counts["searches"],
-                "distinct_queries": qs.annotate(q=Lower("query"))
-                .values("q")
-                .distinct()
-                .count(),
-                "zero_results": counts["zero"],
-                "zero_rate": round(counts["zero"] / counts["searches"], 3)
-                if counts["searches"]
-                else 0.0,
+                "searches": searches,
+                "clicks": clicks[k],
+                "distinct_queries": counts[f"{k}_distinct"],
+                "zero_results": zero,
+                "zero_rate": round(zero / searches, 3) if searches else 0.0,
             }
 
         def top(qs, limit=20):
@@ -922,16 +997,7 @@ class AdminSearchView(APIView):
 
         return Response(
             {
-                "overview": {
-                    "7d": overview(
-                        window.filter(created_at__gte=now - timedelta(days=7))
-                    ),
-                    "30d": overview(window),
-                    # Whether search is answering at all, in one number. Rows,
-                    # not readers — the logs are anonymous — so read it as a
-                    # trend, not as "x% of people".
-                    "clicks_30d": sum(clicked.values()),
-                },
+                "overview": {k: overview(k) for k in windows},
                 "unopened_queries": unopened,
                 "top_queries": answered,
                 "zero_result_queries": top(window.filter(result_count=0)),

@@ -1022,6 +1022,11 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 		--border: #999999;
 		--border-strong: #666666;
 		--accent: #000000;
+		/* Ink on an accent fill, and the quiet fill behind chips: the screen values
+		   are lamplight's (#16130f ink, a dark brown fill), which on a black accent
+		   or white paper print unreadable. */
+		--accent-contrast: #ffffff;
+		--surface-2: #ffffff;
 	}
 	body {
 		background: #ffffff;
@@ -1590,6 +1595,39 @@ nav.appnav .navsearch:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
 }
+/* A shelf card with its own action link (ShelfCard `action`): the box is the
+   card, its band + body are one link, and the action sits in a foot below. */
+.shelf-card-main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	color: inherit;
+	text-decoration: none;
+}
+.shelf-card-main:hover {
+	text-decoration: none;
+}
+/* The link fills the clipped box (overflow: hidden), so its focus ring goes
+   inside it — drawn outside, it was cut off on every edge. */
+.shelf-card-main:focus-visible {
+	outline-offset: -2px;
+}
+/* Hovering the foot's own link must not light the card as if the card link
+   were the target: the box rests while the pointer is on the action. */
+.shelf-card--action:has(.shelf-card-foot:hover) {
+	border-color: var(--border);
+	box-shadow: none;
+	transform: none;
+}
+.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
+	color: var(--text);
+}
+.shelf-card--action .shelf-card-body {
+	padding-bottom: 0.75rem;
+}
+.shelf-card-foot {
+	padding: 0 1.1rem 1.15rem;
+}
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
    the top-inline-start corner over a barely-tinted surface, with a hairline at
@@ -1675,6 +1713,14 @@ nav.appnav .navsearch:hover {
 	font-weight: 600;
 	color: var(--text);
 	transition: color var(--duration-fast);
+}
+.shelf-card-subtitle {
+	display: block;
+	margin-top: 0.125rem;
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: 400;
+	color: var(--muted);
 }
 .shelf-card:hover .shelf-card-title {
 	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
@@ -1794,6 +1840,31 @@ nav.appnav .navsearch:hover {
 @media (min-width: 80rem) {
 	.book-grid {
 		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+
+/* The library's own shelf (/books) runs one step further: seven across on a
+   wide desktop, where the column has the room. Keyed off the SHELF's width, not
+   the viewport — the page-col is capped by the reader's page-width setting, so
+   at the default 76rem a 1920px screen still gives a ~1176px shelf, and a
+   viewport query would put seven columns into a narrowed column too.
+
+   Same 154px card bar as the ramp above: seven 154px cards and six 1rem gaps
+   need ~1174px, so 7-up starts at a 73rem (1168px) shelf — which the default
+   page width reaches from a ~1250px viewport — and 6-up at 68rem (1088px,
+   ~168px cards) fills the step between that and the lg 5-up. Below these, the
+   media ramp above applies unchanged; other shelves keep six. */
+.book-shelf-room {
+	container: book-shelf / inline-size;
+}
+@container book-shelf (min-width: 68rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+@container book-shelf (min-width: 73rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(7, minmax(0, 1fr));
 	}
 }
 
@@ -2178,6 +2249,14 @@ a.sermon-row-title:hover {
 	border-color: var(--accent);
 	color: var(--accent);
 }
+/* A filter-row control that is narrowing the shelf (a facet menu with ticks,
+   the biographies has-books switch): tinted like an active .chip, so "on"
+   reads the same across the row. */
+.filter-field.is-active {
+	background: var(--accent-soft);
+	border-color: var(--accent-soft-border);
+	font-weight: 600;
+}
 .field::placeholder,
 .filter-field::placeholder {
 	color: var(--muted);
@@ -2354,6 +2433,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	border-color: var(--accent);
 	color: var(--accent);
 	text-decoration: none;
+}
+/* A tag riding inline in a line of text — the A–Z index's young-reader
+   edition chips beside their full text. */
+.tag-sm {
+	padding: 0 0.45rem;
+	font-size: var(--fs-micro);
+	line-height: 1.5;
 }
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */

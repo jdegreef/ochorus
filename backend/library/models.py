@@ -1050,11 +1050,20 @@ class PlanDayManager(models.Manager):
 
 
 class PlanDay(models.Model):
+    """One day's reading: a book chapter OR an article, never both.
+
+    Both are soft references in the plan's own language (see ``Plan``). A book
+    day sets ``book_slug`` + ``chapter_order``; an article day sets
+    ``article_slug`` and leaves the other two empty. The check constraint holds
+    that shape in the DB, so nothing downstream has to guess which kind a day is.
+    """
+
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
     # 1-based day within the plan.
     day = models.PositiveIntegerField()
-    book_slug = models.SlugField(max_length=160)
-    chapter_order = models.PositiveIntegerField()
+    book_slug = models.SlugField(max_length=160, blank=True, default="")
+    chapter_order = models.PositiveIntegerField(null=True, blank=True)
+    article_slug = models.SlugField(max_length=180, blank=True, default="")
 
     objects = PlanDayManager()
 
@@ -1062,6 +1071,19 @@ class PlanDay(models.Model):
         ordering = ["day"]
         constraints = [
             models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
+            models.CheckConstraint(
+                condition=(
+                    (
+                        models.Q(article_slug="", chapter_order__isnull=False)
+                        & ~models.Q(book_slug="")
+                    )
+                    | (
+                        models.Q(book_slug="", chapter_order__isnull=True)
+                        & ~models.Q(article_slug="")
+                    )
+                ),
+                name="planday_chapter_xor_article",
+            ),
         ]
 
     def natural_key(self):
@@ -1070,7 +1092,8 @@ class PlanDay(models.Model):
     natural_key.dependencies = ["library.plan"]
 
     def __str__(self) -> str:
-        return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"
+        target = self.article_slug or f"{self.book_slug}/{self.chapter_order}"
+        return f"{self.plan_id} day {self.day} → {target}"
 
 
 class Quote(models.Model):
@@ -1457,16 +1480,38 @@ class BookPerson(models.Model):
         return f"{self.book_slug} ▷ {self.person.slug} ({self.role})"
 
 
+class _TypedSearchManager(models.Manager):
+    """Searches a reader finished typing — the default view of the log."""
+
+    def get_queryset(self):
+        return super().get_queryset().filter(superseded=False)
+
+
+#: How long after a search a longer one that extends it still counts as the
+#: same reader typing on. Search-as-you-type fires on a short debounce, so a
+#: whole word lands well inside this; two strangers extending each other's
+#: query in the same language within it is rare enough to ignore at this scale.
+TYPEAHEAD_SECONDS = 15
+
+
+def extends(earlier: str, later: str) -> bool:
+    """``later`` is ``earlier`` typed further ("pra" → "prayer"), case-folded."""
+    a, b = earlier.casefold(), later.casefold()
+    return len(a) < len(b) and b.startswith(a)
+
+
 class SearchQueryLog(models.Model):
     """One executed library search — anonymous by design (no user, ever).
 
-    Written fail-open by SearchView and read only by the admin search
-    analytics (top queries, zero-result queries — the data that decides what
-    content and features to build next). Search-as-you-type means prefix
-    fragments ("pra", "pray") land here too; the analytics aggregate by full
-    query string and skip fragments under 3 characters in the top lists, so
-    the noise washes out. Rows older than 180 days are pruned by the
-    trim_search_log release step.
+    Written fail-open by SearchView and read only by analytics (the admin
+    search report, attention and language-health signals, popular searches).
+    Search-as-you-type logs every pause in typing, so "pra", "pray" and
+    "prayer" arrive as three searches. When the longer one lands, the
+    fragments it extends are marked ``superseded`` (see :meth:`record`), and
+    the default manager hides them — so every report counts what readers
+    actually searched for, and a prefix that matched nothing isn't a fake
+    zero-result. ``all_rows`` still sees everything (pruning needs it). Rows
+    older than 180 days are pruned by the trim_search_log release step.
     """
 
     query = models.CharField(max_length=200)
@@ -1476,10 +1521,18 @@ class SearchQueryLog(models.Model):
     result_count = models.PositiveIntegerField()
     # A "did you mean" hint was offered (only computed for zero-result queries).
     suggested = models.BooleanField(default=False)
+    # A later search in the same language extended this one within
+    # TYPEAHEAD_SECONDS — a keystroke on the way, not a search in its own right.
+    superseded = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    objects = _TypedSearchManager()
+    all_rows = models.Manager()
 
     class Meta:
         ordering = ["-created_at"]
+        # Internal lookups (deletes, related access) see every row, hidden or not.
+        base_manager_name = "all_rows"
         indexes = [
             # Both the popular-searches endpoint and the admin search report
             # filter on created_at AND language. `created_at` alone is indexed
@@ -1490,6 +1543,31 @@ class SearchQueryLog(models.Model):
 
     def __str__(self) -> str:
         return f"{self.query!r} [{self.language}] → {self.result_count}"
+
+    @classmethod
+    def record(cls, query: str, language: str, result_count: int, suggested: bool):
+        """Log one search, and retire the fragments it was typed from.
+
+        The window holds a handful of rows (one language, a few seconds), so the
+        prefix test runs in Python rather than as SQL string surgery.
+        """
+        from datetime import timedelta
+
+        row = cls.objects.create(
+            # One space between words: "behold  the lamb " is the same search.
+            query=" ".join(query.split())[:200],
+            language=language[:10],
+            result_count=result_count,
+            suggested=suggested,
+        )
+        recent = cls.objects.filter(
+            language=row.language,
+            created_at__gte=row.created_at - timedelta(seconds=TYPEAHEAD_SECONDS),
+        ).exclude(pk=row.pk)
+        fragments = [pk for pk, text in recent.values_list("pk", "query") if extends(text, row.query)]
+        if fragments:
+            cls.objects.filter(pk__in=fragments).update(superseded=True)
+        return row
 
 
 class SearchClickLog(models.Model):

@@ -49,7 +49,7 @@ from .quality import (
     AdminReviewQueueView,
     AdminVerseReviewView,
 )
-from .team import AdminTeamView
+from .team import AdminRolesView, AdminTeamView
 from .user_detail import AdminUserDetailView
 from .user_directory import AdminUserDirectoryView
 
@@ -84,6 +84,7 @@ __all__ = [
     "AdminSermonPublishView",
     "AdminVerseReviewView",
     "AdminStatsView",
+    "AdminRolesView",
     "AdminTeamView",
     "AdminTranslationJobsView",
     "AdminUnpublishedView",

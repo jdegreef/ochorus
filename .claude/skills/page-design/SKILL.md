@@ -60,7 +60,8 @@ In this order, and nothing else at the top level:
    shelves head each group with the **group heading** recipe (§ below), in a
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
    A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
-   button (Books, Articles, Biographies), keyed to the filter/sort state so a
+   button (Articles, Biographies; Books opens on 56 and adds 48, sized for its
+   seven-across `.book-grid--library` — `pager()`'s `first` argument), keyed to the filter/sort state so a
    new filter starts over — use `pager()` from `$lib/paging.svelte`, and export
    `snapshot = pagedSnapshot(() => shelf)` from the route so Back lands where
    the reader was (SvelteKit restores a snapshot AFTER scroll on popstate, so a
@@ -521,6 +522,12 @@ and expect a blank screenshot right after a JS scroll; read the footer with
 - Small text follows the phone type tokens (`--fs-micro` 12px, `--fs-eyebrow`
   13px below sm). A width-bound label (the tab bar) should use micro, not
   eyebrow; check truncation in fr/sw/lg/am/uk on an iPhone SE.
+- An `sr-only` (position: absolute) span inside a sideways scroller escapes
+  the scroller unless an ancestor is positioned: it resolves against the page,
+  so the last card's label (~965px across) widened the phone's LAYOUT viewport —
+  `innerWidth` 970 at a 375 emulation, page zoomed out, fixed tab bar 970 wide.
+  Make the SCROLLER `position: relative` (it then contains every absolute child). Check: at 375, `innerWidth`
+  and `documentElement.scrollWidth` must both be 375 (biographies era band, 2026-10-01).
 - Measure, don't eyeball: a headless iPhone-13 pass listing visible text under
   13px and controls under 40px tall finds the real offenders (book-cover
   lettering scales with the cover — ignore it).

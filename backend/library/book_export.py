@@ -1,7 +1,7 @@
 """Downloadable editions of a book: EPUB (built per request) and print HTML.
 
 Both formats are assembled from the same parts — a cover, a title page, "About
-Ochorus", a short biography of the author, "About this work", the chapters, and
+Ochorus", a one-page biography of the author, "About this work", the chapters, and
 a colophon — so an EPUB and a PDF of one edition
 can never disagree about what the book contains. The chapters come straight
 from the database, so a download always matches what the reader serves,
@@ -51,7 +51,7 @@ log = logging.getLogger(__name__)
 #: exported: this is Ochorus's own writing, and there is no English fallback.
 STRINGS = {
     "en": {
-        "contents": "Contents",
+        "contents": "Table of Contents",
         "about": "About this work",
         "chapter": "Chapter {n}",
         "published": "First published {year}.",
@@ -75,7 +75,7 @@ STRINGS = {
             "speaker. It is not the author's original text."
         ),
         "read_online": "Read it online, free, at",
-        # The short-biography page after "About Ochorus", before the contents.
+        # The one-page biography after "About Ochorus", before the contents.
         "author_title": "About the Author",
         "full_bio": "Read the full biography at",
         "more": "More free classics at",
@@ -276,10 +276,20 @@ def _cover_bytes(cover_url: str) -> bytes:
     return res.content
 
 
-def author_bio(book: Book) -> str:
-    """The author's SHORT biography in the edition's language, or "".
+#: One-page biographies written for the downloads: ``<author-slug>.<lang>.txt``,
+#: three or four paragraphs separated by blank lines. Longer than the site's
+#: one-paragraph ``bio`` (card and meta copy), far shorter than ``bio_html``,
+#: which they are written from — ``sources.json`` pins the ``bio_html`` each was
+#: checked against, so a fix to the long bio flags its short copy for review.
+EXPORT_BIOS_DIR = Path(__file__).resolve().parent / "export_bios"
 
-    ``Author.bio`` is English; another language reads its ``AuthorTranslation``.
+
+def author_bio(book: Book) -> str:
+    """The author's biography for the edition's language, or "".
+
+    The export bio (``EXPORT_BIOS_DIR``) when one is written for this author
+    and language; else the SHORT site bio — ``Author.bio`` for English, the
+    ``AuthorTranslation`` for another language.
     No English fallback — the same rule as the site, which shows a translated
     edition's author page in that language or not at all — so a language with
     no translated bio simply has no biography page. An imprint (Ochorus
@@ -288,6 +298,11 @@ def author_bio(book: Book) -> str:
     author = book.author
     if author.is_imprint:
         return ""
+    written = EXPORT_BIOS_DIR / f"{author.slug}.{book.language}.txt"
+    try:
+        return written.read_text(encoding="utf-8").strip()
+    except FileNotFoundError:
+        pass
     if book.language == DEFAULT_LANGUAGE:
         return author.bio.strip()
     tr = author.translations.filter(language=book.language).only("bio").first()
@@ -402,7 +417,7 @@ def _ochorus_page(ed: Edition) -> str:
 
 
 def _author_page(ed: Edition) -> str:
-    """The short biography: name, life dates, the bio, and where to read more."""
+    """The one-page biography: name, life dates, the bio, and where to read more."""
     a = ed.book.author
     parts = [f'<h1>{_e(ed.strings["author_title"])}</h1>', f'<p class="name">{_e(ed.author)}</p>']
     if a.birth_year:
@@ -606,12 +621,12 @@ body { margin: 0; }
 .ochorus a { color: inherit; }
 .ochorus .verse { font-style: italic; text-align: center; margin-top: 6mm; }
 .ochorus .verse span { display: block; font-style: normal; font-size: 9pt; color: #555; margin-top: 1mm; }
-.author-page { page: front; break-after: page; font-size: 10.5pt; }
-.author-page h1 { font-size: 17pt; font-weight: 600; text-align: center; margin: 8mm 0 6mm; }
+.author-page { page: front; break-after: page; font-size: 10pt; line-height: 1.4; }
+.author-page h1 { font-size: 17pt; font-weight: 600; text-align: center; margin: 4mm 0 5mm; }
 .author-page p { text-indent: 0; text-align: left; margin: 0 0 2.5mm; }
 .author-page .name { text-align: center; font-size: 13pt; margin: 0 0 1mm; }
-.author-page .dates { text-align: center; font-size: 10pt; color: #555; margin: 0 0 6mm; }
-.author-page .more { font-size: 9.5pt; margin-top: 6mm; }
+.author-page .dates { text-align: center; font-size: 10pt; color: #555; margin: 0 0 5mm; }
+.author-page .more { font-size: 9.5pt; margin-top: 4mm; }
 .author-page a { color: inherit; }
 .contents { page: front; break-after: page; }
 .contents ol { list-style: none; padding: 0; margin: 0; }
@@ -665,7 +680,12 @@ def render_print_html(
     parts.append(f'<div class="titlepage">{_title_page(ed)}</div>')
     parts.append(f'<div class="ochorus">{_ochorus_page(ed)}</div>')
     if ed.bio:
-        parts.append(f'<div class="author-page">{_author_page(ed)}</div>')
+        # The empty links make Chrome name both ends of the page as PDF
+        # destinations; export_book checks they land on one page.
+        parts.append(
+            f'<div class="author-page"><span id="author-top"></span>{_author_page(ed)}'
+            '<span id="author-end"><a href="#author-top"></a><a href="#author-end"></a></span></div>'
+        )
     toc = []
     if ed.about:
         toc.append(("about", s["about"]))

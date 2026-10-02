@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import {
 		type SearchType
 	} from '$lib/library-public';
@@ -10,7 +12,11 @@
 		type AdminSearchGapWork,
 		getAdminSearchStats,
 		createAdminTranslationJob,
-		type SearchTopQuery
+		periodTrend,
+		pointsTrend,
+		type SearchStatsWindow,
+		type SearchTopQuery,
+		type Trend
 	} from '$lib/library-admin';
 	import { ApiError } from '$lib/api';
 
@@ -32,19 +38,73 @@
 	const dayLabel = (iso: string) =>
 		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 
-	const cards = $derived(
-		data
-			? [
-					{ label: 'Searches · 7d', value: data.overview['7d'].searches, sub: `${fmt(data.overview['7d'].distinct_queries)} distinct` },
-					{ label: 'Searches · 30d', value: data.overview['30d'].searches, sub: `${fmt(data.overview['30d'].distinct_queries)} distinct` },
-					{ label: 'Zero results · 7d', value: data.overview['7d'].zero_results, sub: `${pct(data.overview['7d'].zero_rate)} of searches` },
-					{ label: 'Zero results · 30d', value: data.overview['30d'].zero_results, sub: `${pct(data.overview['30d'].zero_rate)} of searches` },
-					{ label: 'Results opened · 30d', value: data.overview.clicks_30d ?? 0, sub: 'searches that led somewhere' }
-				]
-			: []
-	);
+	// One period at a time, each compared with the period before it — rather
+	// than 7d and 30d side by side, which left the trend to mental arithmetic.
+	type Period = '7d' | '30d';
+	const PERIODS: Record<Period, string> = { '7d': '7 days', '30d': '30 days' };
+	let period = $state<Period>('30d');
 
-	const dayMax = $derived(Math.max(1, ...(data?.daily.map((d) => d.searches) ?? [1])));
+	// Searches that found something, and how many of them led to an open. Opens
+	// are rows, not searches (one search can open several results), so they're
+	// capped at the searches that found something rather than reading as more
+	// than everyone.
+	const found = (w: SearchStatsWindow) => w.searches - w.zero_results;
+	const opened = (w: SearchStatsWindow) => Math.min(w.clicks ?? 0, found(w));
+	const openRate = (w: SearchStatsWindow) => (found(w) ? opened(w) / found(w) : 0);
+
+	type Card = { label: string; value: string; sub: string; trend: Trend };
+	const cards = $derived.by<Card[]>(() => {
+		if (!data) return [];
+		const cur = data.overview[period];
+		// Optional: the static frontend can go live before the API that sends it.
+		const prev = data.overview[`${period}_prev`];
+		// A rate with no searches behind it, now or before, has nothing to
+		// compare, so it gets no chip.
+		const rateTrend = (f: (w: SearchStatsWindow) => number, base: (w: SearchStatsWindow) => number) =>
+			prev && base(cur) && base(prev) ? f(prev) : null;
+		return [
+			{
+				label: 'Searches',
+				value: fmt(cur.searches),
+				sub: `${fmt(cur.distinct_queries)} distinct`,
+				trend: prev ? periodTrend(cur.searches, prev.searches) : null
+			},
+			{
+				label: 'Zero-result rate',
+				value: pct(cur.zero_rate),
+				sub: `${fmt(cur.zero_results)} found nothing`,
+				trend: pointsTrend(cur.zero_rate, rateTrend((w) => w.zero_rate, (w) => w.searches), {
+					lowerIsBetter: true
+				})
+			},
+			{
+				label: 'Opened a result',
+				value: pct(openRate(cur)),
+				sub: `${fmt(cur.clicks)} opens from ${fmt(found(cur))} searches`,
+				trend: pointsTrend(openRate(cur), rateTrend(openRate, found))
+			},
+			{
+				label: 'Distinct queries',
+				value: fmt(cur.distinct_queries),
+				sub: cur.searches ? `${pct(cur.distinct_queries / cur.searches)} of searches` : '—',
+				trend: prev ? periodTrend(cur.distinct_queries, prev.distinct_queries) : null
+			}
+		];
+	});
+
+	// Where the period's searches ended: the funnel that separates a content gap
+	// (nothing found) from a ranking gap (found, nothing opened).
+	const funnel = $derived.by(() => {
+		if (!data) return [];
+		const w = data.overview[period];
+		return [
+			{ label: 'Searched', n: w.searches, note: '' },
+			{ label: 'Found something', n: found(w), note: `${fmt(w.zero_results)} found nothing → see Zero results` },
+			{ label: 'Opened a result', n: opened(w), note: 'the rest → see Found, but not opened' }
+		];
+	});
+	const funnelTop = $derived(Math.max(1, funnel[0]?.n ?? 0));
+
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.searches) ?? [1])));
 
 	// "Where else does this exist?" — one query at a time, because the answer
@@ -153,15 +213,58 @@
 					</p>
 				</div>
 			{:else}
+				<!-- Period switch: drives the overview and the funnel; the query
+				     lists below stay on 30 days, as their headings say. -->
+				<div class="mb-3 flex flex-wrap items-center gap-2" role="group" aria-label="Period">
+					{#each Object.entries(PERIODS) as [key, label] (key)}
+						<button
+							type="button"
+							class="rounded-full px-3 py-1 text-small {period === key ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}"
+							aria-pressed={period === key}
+							onclick={() => (period = key as Period)}>{label}</button
+						>
+					{/each}
+					<span class="text-small text-muted">· compared with the {PERIODS[period]} before</span>
+				</div>
+
 				<!-- Overview -->
-				<section class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-5">
+				<section class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
-							<div class="stat-number">{fmt(c.value)}</div>
+							<div class="flex items-baseline gap-2">
+								<div class="stat-number">{c.value}</div>
+								<TrendChip trend={c.trend} />
+							</div>
 							<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 							<div class="text-small text-muted">{c.sub}</div>
 						</div>
 					{/each}
+				</section>
+
+				<!-- Where searches end -->
+				<section class="mb-8 rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3">Where searches end</h2>
+					<p class="mb-4 text-small text-muted">
+						Last {PERIODS[period]}. Nothing found is a content gap; found but not opened is
+						usually a ranking or snippet problem. Keystrokes on the way to a search ("pra" →
+						"prayer") aren't counted.
+					</p>
+					<ul class="space-y-3">
+						{#each funnel as step (step.label)}
+							<li class="grid grid-cols-[8rem_1fr_auto] items-center gap-3 sm:grid-cols-[10rem_1fr_auto]">
+								<span class="text-body text-text">{step.label}</span>
+								<div class="h-5 overflow-hidden rounded-sm bg-surface-2">
+									<div class="h-full rounded-sm bg-accent" style="width: {(step.n / funnelTop) * 100}%"></div>
+								</div>
+								<span class="w-24 text-end text-small tabular-nums text-text"
+									>{fmt(step.n)} <span class="text-muted">· {pct(step.n / funnelTop)}</span></span
+								>
+								{#if step.note}
+									<span class="col-start-2 col-end-4 -mt-2 text-micro text-muted">{step.note}</span>
+								{/if}
+							</li>
+						{/each}
+					</ul>
 				</section>
 
 				<!-- Daily volume -->
@@ -176,26 +279,15 @@
 							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent"></span>zero-result</span>
 						</div>
 					</div>
-					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.daily as day (day.day)}
-							<div
-								class="flex flex-1 flex-col items-center gap-1"
-								title="{dayLabel(day.day)} · {fmt(day.searches)} search{day.searches === 1 ? '' : 'es'}{day.zero ? `, ${fmt(day.zero)} zero-result` : ''}"
-							>
-								<div class="text-small tabular-nums text-muted">{day.searches || ''}</div>
-								<div
-									class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"
-									style="height: {(day.searches / dayMax) * 100}%; min-height: {day.searches ? '3px' : '0'}"
-								>
-									<div class="w-full flex-1 bg-accent-soft"></div>
-									{#if day.zero}
-										<div class="w-full bg-accent" style="height: {(day.zero / day.searches) * 100}%"></div>
-									{/if}
-								</div>
-								<div class="text-micro text-muted">{dayLabel(day.day)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={d.daily.map((day) => ({
+							key: day.day,
+							label: dayLabel(day.day),
+							value: day.searches,
+							part: day.zero,
+							title: `${dayLabel(day.day)} · ${fmt(day.searches)} search${day.searches === 1 ? '' : 'es'}${day.zero ? `, ${fmt(day.zero)} zero-result` : ''}`
+						}))}
+					/>
 				</section>
 
 				<div class="grid gap-6 lg:grid-cols-2">
@@ -221,7 +313,7 @@
 						</p>
 						{#if d.unopened_queries?.length}
 							{@render queryList(d.unopened_queries)}
-						{:else if d.overview.clicks_30d}
+						{:else if d.overview['30d'].clicks}
 							<p class="text-body text-muted">Every recurring query led somewhere.</p>
 						{:else}
 							<!-- No clicks at all reads as "everything failed", which would be
