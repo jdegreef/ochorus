@@ -1740,6 +1740,10 @@ export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
  *  "Open chapter" lands on (the row with the fix buttons). */
 export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
 export const adminBookHref = (slug: string) => `/admin/books/${encodeURIComponent(slug)}`;
+/** An edition's section on its admin book page, and the link to it. */
+export const adminEditionId = (language: string) => `ed-${language}`;
+export const adminEditionHref = (slug: string, language: string) =>
+	`${adminBookHref(slug)}#${adminEditionId(language)}`;
 export const adminChapterHref = (slug: string, language: string, order: number) =>
 	`${adminBookHref(slug)}#${adminChapterId(language, order)}`;
 

@@ -33,6 +33,7 @@ from bisect import bisect_right
 from collections import Counter, defaultdict
 from datetime import timedelta
 
+from django.db.models import Count
 from django.utils import timezone
 
 # No progress for this long and a reader has stopped, not paused.
@@ -98,10 +99,20 @@ def steepest_drop(curve: list[dict], *, min_readers: int = 1) -> dict | None:
     }
 
 
-def progress_rows(*, slugs=None, language: str | None = None):
+def _editions_q(editions, slug_field: str, language_field: str):
+    """Exactly these ``(slug, language)`` editions, as one OR filter."""
+    from django.db.models import Q
+
+    return Q(
+        *[Q(**{slug_field: slug, language_field: lang}) for slug, lang in editions],
+        _connector=Q.OR,
+    )
+
+
+def progress_rows(*, slugs=None, language: str | None = None, editions=None):
     """Book progress rows, grouped by edition ``(slug, language)``, in the
-    shape ``reach`` reads. One query, narrowed to some works and/or one
-    language when given."""
+    shape ``reach`` reads. One query, narrowed to some works, one language
+    and/or exact editions when given."""
     from reading.models import ReadingProgress, WorkKind
 
     qs = ReadingProgress.objects.filter(kind=WorkKind.BOOK).order_by()
@@ -109,6 +120,10 @@ def progress_rows(*, slugs=None, language: str | None = None):
         qs = qs.filter(book_slug__in=list(slugs))
     if language:
         qs = qs.filter(language=language)
+    if editions is not None:
+        if not editions:
+            return {}
+        qs = qs.filter(_editions_q(editions, "book_slug", "language"))
     out: dict[tuple[str, str], list[dict]] = defaultdict(list)
     for row in qs.values(
         "book_slug", "language", "furthest_order", "chapter_order", "finished_at", "updated_at"
@@ -122,18 +137,16 @@ def chapter_orders(editions) -> dict[tuple[str, str], list[int]]:
     all. ``editions`` is an iterable of ``(slug, language)``. One query."""
     from .models import Chapter
 
-    editions = set(editions)
+    editions = list(editions)
+    if not editions:
+        return {}
     out: dict[tuple[str, str], list[int]] = defaultdict(list)
     for slug, lang, order in (
-        Chapter.objects.filter(
-            book__slug__in={s for s, _ in editions},
-            book__language__in={lang for _, lang in editions},
-        )
+        Chapter.objects.filter(_editions_q(editions, "book__slug", "book__language"))
         .order_by("order")
         .values_list("book__slug", "book__language", "order")
     ):
-        if (slug, lang) in editions:
-            out[(slug, lang)].append(order)
+        out[(slug, lang)].append(order)
     return out
 
 
@@ -144,25 +157,37 @@ def work_curves(slugs) -> dict[str, dict]:
     ``chapters`` (the edition's chapter orders).
 
     A work's editions aren't pooled: chapter N of one translation needn't be
-    chapter N of another. Each work shows its most-read edition (ties to
-    English, then by code), which is where its readers mostly are. Two
-    queries however many works."""
-    by_work: dict[str, dict[str, list[dict]]] = defaultdict(dict)
-    for (slug, lang), rows in progress_rows(slugs=slugs).items():
-        by_work[slug][lang] = rows
-    chosen = {
-        slug: min(eds, key=lambda lang: (-len(eds[lang]), lang != "en", lang))
-        for slug, eds in by_work.items()
+    chapter N of another. Each work shows its most-read edition that has
+    chapters (ties to English, then by code), which is where its readers
+    mostly are. Readers are counted per edition in SQL, and only the chosen
+    editions' rows are loaded: three queries however many works.
+
+    It sits on a page across the library, so a drop is only named at
+    ``MIN_READERS``, as on the content audit's list."""
+    from reading.models import ReadingProgress, WorkKind
+
+    counts = {
+        (r["book_slug"], r["language"]): r["n"]
+        for r in ReadingProgress.objects.filter(kind=WorkKind.BOOK, book_slug__in=list(slugs))
+        .order_by()
+        .values("book_slug", "language")
+        .annotate(n=Count("id"))
     }
-    orders = chapter_orders(chosen.items())
+    orders = chapter_orders(counts)
+    chosen: dict[str, str] = {}
+    for slug, lang in sorted(
+        (e for e in counts if orders.get(e)),
+        key=lambda e: (-counts[e], e[1] != "en", e[1]),
+    ):
+        chosen.setdefault(slug, lang)
+    progress = progress_rows(editions=list(chosen.items()))
     out = {}
     for slug, lang in chosen.items():
-        curve = reach(by_work[slug][lang], orders.get((slug, lang), []))
-        if curve:
-            out[slug] = {
-                "language": lang,
-                "chapters": [p["chapter"] for p in curve],
-                "reached": [p["reached"] for p in curve],
-                "steepest": steepest_drop(curve, min_readers=MIN_READERS_BOOK),
-            }
+        curve = reach(progress.get((slug, lang), []), orders[(slug, lang)])
+        out[slug] = {
+            "language": lang,
+            "chapters": [p["chapter"] for p in curve],
+            "reached": [p["reached"] for p in curve],
+            "steepest": steepest_drop(curve, min_readers=MIN_READERS),
+        }
     return out

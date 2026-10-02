@@ -150,6 +150,13 @@ class DropOffViewTests(TestCase):
         self.assertEqual(curves["plain"]["reached"], [5, 1, 0])
         self.assertEqual(curves["long-middle"]["steepest"]["chapter"], 2)
 
+    def test_an_edition_with_no_chapters_is_passed_over(self):
+        # Most of "plain"'s rows say "fr", which has no edition (a client
+        # that mislabelled its language): the curve falls to English.
+        pks = ReadingProgress.objects.filter(book_slug="plain").values_list("pk", flat=True)[:4]
+        ReadingProgress.objects.filter(pk__in=list(pks)).update(language="fr")
+        self.assertEqual(dropoff.work_curves(["plain"])["plain"]["language"], "en")
+
     def test_the_engagement_leaderboard_carries_book_curves(self):
         top = APIClient().get("/api/admin/engagement/").data["top_content"]
         books = {r["slug"]: r for r in top["book"]}

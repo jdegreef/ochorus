@@ -6,7 +6,7 @@
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import ReachSpark from '$lib/components/ReachSpark.svelte';
-	import { adminBookHref, formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminEditionHref, formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -272,7 +272,7 @@
 								<tbody>
 									{#each topRows as b (`${b.kind}:${b.slug}`)}
 										<tr class="border-t border-border">
-											<td class="min-w-48 max-w-0 py-2 pe-3">
+											<td class="max-w-0 py-2 pe-3" class:min-w-48={hasReach}>
 												<a href={workHref(b)} class="block truncate text-body text-text hover:text-accent">
 													{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
 												</a>
@@ -290,7 +290,7 @@
 												<td class="px-3 py-2">
 													{#if b.reach}
 														<!-- The full chart, with chapter lengths and flags, is on the book's admin page. -->
-														<a href={adminBookHref(b.slug)} class="block w-fit hover:opacity-80">
+														<a href={adminEditionHref(b.slug, b.reach.language)} class="block w-fit hover:opacity-80">
 															<ReachSpark reach={b.reach} />
 														</a>
 													{:else}
