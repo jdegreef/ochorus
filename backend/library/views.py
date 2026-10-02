@@ -9,7 +9,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, F, Prefetch, Q
+from django.db.models import Count, F, Prefetch, Q, Sum
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -688,6 +688,22 @@ def _series_for(series) -> dict:
     return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
 
 
+def _is_ordered(books) -> bool:
+    """Read in order (any volume carries a number) or a collection — one test
+    for the series index's card and the series page alike."""
+    return any(b.series_position is not None for b in books)
+
+
+def _chapter_words(books) -> int | None:
+    """A series' typical chapter length in words: each book's average over its
+    chapters WITH text (a heading-only divider or a not-yet-filled row would
+    drag it down), then the mean of those, so one book of many short chapters
+    doesn't outweigh the rest. None when no book has text yet — the card then
+    draws no minutes. Reads the `text_words` / `text_chapters` annotations."""
+    per_book = [b.text_words / b.text_chapters for b in books if b.text_chapters]
+    return round(sum(per_book) / len(per_book)) if per_book else None
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -696,8 +712,9 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     as for topics).
 
     Each row carries its first four covers in reading order, for the card's fan,
-    every book's slug (the card's progress) and title (its book list), and the
-    languages it has a page in — the index's hreflang is their union.
+    every book's slug (the card's progress) and title (its book list), the
+    languages it has a page in — the index's hreflang is their union — and
+    its format: whether it reads in order, and its words per chapter.
     Both are read in bulk for the whole list rather than per series.
     """
 
@@ -715,6 +732,12 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                 "cover_url",
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
+            )
+            # Each book's chapter text, for the card's minutes (`_chapter_words`)
+            # — on this same query, not one more.
+            .annotate(
+                text_words=Sum("chapters__word_count"),
+                text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
             )
             .order_by(*SERIES_READING_ORDER)
         ):
@@ -740,6 +763,8 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # this series" list names every volume, not just the fan's.
                         "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
+                        "ordered": _is_ordered(books),
+                        "chapter_words": _chapter_words(books),
                     }
                 )
         return Response(rows)
@@ -758,7 +783,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         books = _series_books(series, language) if title else []
         if not books:
             raise Http404("No series in this language")
-        ordered = any(b.series_position is not None for b in books)
+        ordered = _is_ordered(books)
         return Response(
             {
                 "slug": series.slug,

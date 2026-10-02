@@ -120,6 +120,18 @@
 					{#if blurb}
 						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{blurb}</p>
 					{/if}
+					{#if g.audience === 'young_readers'}
+						<!-- The adult choosing for a child: free, no account, and how
+						     a family or a class might use these books. -->
+						<!-- A labelled aside, not an <h3>: the series cards beside it are
+						     the group's h3s, and this isn't one of them. -->
+						<aside class="parents-note mb-5 max-w-2xl" aria-labelledby="parents-note">
+							<p id="parents-note" class="text-small font-semibold text-text">
+								{t('series.parentsHeading')}
+							</p>
+							<p class="mt-1 text-small text-muted">{t('series.parentsBody')}</p>
+						</aside>
+					{/if}
 				{/if}
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{#each g.series as s (s.slug)}
@@ -140,5 +152,12 @@
 	   indexes' group sections use the same recipe). */
 	.jump-anchor {
 		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
+	}
+	/* The note for parents and teachers under "For young readers". */
+	.parents-note {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		padding: 0.85rem 1rem;
 	}
 </style>
