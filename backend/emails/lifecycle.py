@@ -55,7 +55,12 @@ _COMEBACK_AFTER_DAYS = 7
 # the cron cadence or their account age. Without it, a back-dated account newly
 # in the cohort (e.g. the cutoff moved) would get every due step in consecutive
 # 15-minute runs; this keeps the drip to at most one email a day.
-_MIN_GAP = timedelta(hours=20)
+#
+# Public (with ``last_lifecycle_sent_at``) because the gap is an invariant of the
+# LIFECYCLE *kind*, not of this drip: every sender of a LIFECYCLE email shares it,
+# so a reader never gets a drip step and a behavioural nudge in the same window
+# (see emails/series_nudge.py).
+MIN_GAP = timedelta(hours=20)
 
 
 @dataclass(frozen=True)
@@ -113,7 +118,7 @@ def _sent_steps(profile) -> set[str]:
     )
 
 
-def _last_lifecycle_sent_at(profile):
+def last_lifecycle_sent_at(profile):
     return (
         EmailMessage.objects.filter(
             recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT
@@ -163,8 +168,8 @@ def send_due(profile) -> EmailMessage | None:
     if not subscription.wants(EmailKind.LIFECYCLE):
         return None
     now = timezone.now()
-    last_sent = _last_lifecycle_sent_at(profile)
-    if last_sent is not None and now - last_sent < _MIN_GAP:
+    last_sent = last_lifecycle_sent_at(profile)
+    if last_sent is not None and now - last_sent < MIN_GAP:
         return None
     step = due_step(profile, now)
     if step is None:

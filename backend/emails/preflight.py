@@ -123,7 +123,7 @@ def _content_checks(broadcast) -> list[dict]:
 def _audience_checks(broadcast) -> list[dict]:
     # One grouped query: readers per email language — the preference center's
     # email language when set, else the reading language, as the renderer
-    # decides (rendering.email_lang).
+    # decides (rendering.email_language).
     rows = (
         resolve(broadcast.audience)
         .annotate(

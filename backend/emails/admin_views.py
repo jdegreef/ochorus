@@ -41,7 +41,7 @@ from .models import (
     EmailSubscription,
     SendStatus,
 )
-from .rendering import email_lang, sendable_locales
+from .rendering import email_language, sendable_locales
 
 
 class AdminEmailMetricsView(APIView):
@@ -493,7 +493,7 @@ class AdminReaderEmailsView(AdminAudited, APIView):
     @staticmethod
     def _state(profile) -> dict:
         subscription = EmailSubscription.objects.filter(profile=profile).first()
-        lang = email_lang(profile, subscription)
+        lang = email_language(profile, subscription)
         return {
             "blocked_reason": subscription.block_reason() if subscription else None,
             # The language this reader gets email in, offered as the default

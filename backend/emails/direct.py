@@ -17,7 +17,7 @@ from . import copy as copy_mod
 from .models import EmailKind, EmailMessage, EmailSubscription, idempotency_key
 from .preflight import cta_path_problem
 from .recipient import verified_email
-from .rendering import email_lang, render_direct
+from .rendering import email_language, render_direct
 from .sending import deliver
 
 #: The fields of the shared structured ``text`` shape an admin can write here.
@@ -60,7 +60,7 @@ def written_in(data: dict, profile, subscription) -> str:
     lang = copy_mod.base_lang(str(data.get("lang") or ""))
     if data.get("lang") and lang in language_map():
         return lang
-    return email_lang(profile, subscription)
+    return email_language(profile, subscription)
 
 
 def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
