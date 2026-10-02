@@ -1841,6 +1841,42 @@ class Language(models.Model):
         return (self.code,)
 
 
+class LanguageHealthSnapshot(models.Model):
+    """One language's health score on one day, so the admin page can show
+    whether the work is moving it.
+
+    Written by the scoreboard itself (``admin_views.health.record_snapshots``),
+    on every deploy and whenever the page is opened, upserting today's row, so
+    a day with any activity gets exactly one point and no extra cron service is
+    needed. ``score_version`` is the formula that produced the row: the trend
+    only compares rows scored the same way, so a change to the weights or a
+    signal starts a fresh line instead of drawing a fake jump.
+
+    ``language`` is the code, not a FK: a snapshot is history and outlives a
+    registry row being renamed or removed.
+    """
+
+    language = models.CharField(max_length=10)
+    date = models.DateField()
+    score_version = models.PositiveSmallIntegerField()
+    health = models.PositiveSmallIntegerField()
+    readiness = models.FloatField()
+    coverage = models.FloatField()
+    review = models.FloatField()
+    engagement = models.FloatField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["language", "date"], name="uniq_health_snapshot_language_date"
+            )
+        ]
+        ordering = ["language", "date"]
+
+    def __str__(self) -> str:
+        return f"{self.language} {self.date}: {self.health}"
+
+
 class ReviewOutcome(models.Model):
     """A reviewer's decision about one AI translation, and who made it.
 
