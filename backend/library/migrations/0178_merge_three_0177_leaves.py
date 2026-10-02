@@ -8,6 +8,7 @@ class Migration(migrations.Migration):
     dependencies = [
         ('library', '0177_languagehealthsnapshot'),
         ('library', '0177_searchdecision_synonym_pinned'),
+        ('library', '0177_author_tagline'),
     ]
 
     operations = [
