@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { authorIndex, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
+import { authorIndex, filingKey, filingName, filterIndex, foldEditions, indexRows, initialOf } from './authorIndex';
 
 const author = (slug: string, name: string) => ({
 	slug,
@@ -22,6 +22,38 @@ describe('initialOf', () => {
 	});
 });
 
+describe('filingName', () => {
+	it('files a person under the surname', () => {
+		expect(filingName('A. W. Tozer')).toBe('Tozer, A. W.');
+		expect(filingName('Charles H. Spurgeon')).toBe('Spurgeon, Charles H.');
+		expect(filingName('Martyn Lloyd-Jones')).toBe('Lloyd-Jones, Martyn');
+	});
+
+	it('keeps a lowercase particle with the surname and skips a generational suffix', () => {
+		expect(filingName('Corrie ten Boom')).toBe('ten Boom, Corrie');
+		expect(filingName('Martin Luther King Jr.')).toBe('King, Martin Luther');
+	});
+
+	it('files an epithet name or a single name as written', () => {
+		expect(filingName('Augustine of Hippo')).toBe('Augustine of Hippo');
+		expect(filingName('Gregory the Great')).toBe('Gregory the Great');
+		expect(filingName('Thomas à Kempis')).toBe('Thomas à Kempis');
+		expect(filingName('Thomas a Kempis')).toBe('Thomas a Kempis');
+		expect(filingName('John Of God')).toBe('John Of God');
+		expect(filingName('Athanasius')).toBe('Athanasius');
+	});
+});
+
+describe('filingKey', () => {
+	it('drops apostrophes but keeps the surname boundary', () => {
+		expect(filingKey('Robert Murray M’Cheyne')).toBe('MCheyne, Robert Murray');
+		const order = ['Zoe Smith', 'Al Smithers', 'William Law', 'Brother Lawrence'].sort((a, b) =>
+			filingKey(a).localeCompare(filingKey(b), 'en', { sensitivity: 'base' })
+		);
+		expect(order).toEqual(['William Law', 'Brother Lawrence', 'Zoe Smith', 'Al Smithers']);
+	});
+});
+
 describe('authorIndex', () => {
 	const groups = authorIndex(
 		[
@@ -40,14 +72,17 @@ describe('authorIndex', () => {
 		['house']
 	);
 
-	it('groups every writer by initial, in order', () => {
-		expect(groups.map((g) => g.letter)).toEqual(['A', 'E']);
-		expect(groups[0].entries.map((e) => e.author.slug)).toEqual(['murray', 'augustine']);
+	it('groups every writer by the initial of their filing name, in order', () => {
+		expect(groups.map((g) => [g.letter, g.entries.map((e) => e.author.slug)])).toEqual([
+			['A', ['augustine']],
+			['B', ['bounds']],
+			['M', ['murray']]
+		]);
 	});
 
 	it("lists each writer's books by title, and keeps a writer with none", () => {
-		expect(groups[0].entries[0].books.map((b) => b.slug)).toEqual(['humility', 'with-christ']);
-		expect(groups[0].entries[1].books).toEqual([]);
+		expect(groups[2].entries[0].books.map((b) => b.slug)).toEqual(['humility', 'with-christ']);
+		expect(groups[0].entries[0].books).toEqual([]);
 	});
 
 	it('leaves out a skipped slug (the imprint)', () => {
@@ -59,8 +94,8 @@ describe('authorIndex completeness', () => {
 	it("adds a book's writer the writers list left out, so no book goes missing", () => {
 		const groups = authorIndex([author('murray', 'Andrew Murray')], [book('pulse', 'Pulse', 'hannah')]);
 		const all = groups.flatMap((g) => g.entries);
-		expect(all.map((e) => e.author.slug)).toEqual(['murray', 'hannah']);
-		expect(all[1].books.map((b) => b.slug)).toEqual(['pulse']);
+		expect(all.map((e) => e.author.slug)).toEqual(['hannah', 'murray']);
+		expect(all[0].books.map((b) => b.slug)).toEqual(['pulse']);
 	});
 });
 
@@ -127,7 +162,7 @@ describe('filterIndex', () => {
 
 	it('keeps only the matching books of other writers, and drops empty letters', () => {
 		expect(slugs('humil')).toEqual([['murray', ['humility']]]);
-		expect(filterIndex(groups, 'humil').map((g) => g.letter)).toEqual(['A']);
+		expect(filterIndex(groups, 'humil').map((g) => g.letter)).toEqual(['M']);
 	});
 
 	it("matches an edition's own title and keeps its parent row", () => {

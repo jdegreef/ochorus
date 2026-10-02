@@ -45,9 +45,43 @@ export function initialOf(name: string): string {
 	return c >= 'A' && c <= 'Z' ? c : '#';
 }
 
+const GENERATIONAL = /^(?:jr|sr|ii|iii|iv)\.?,?$/i;
+// "Augustine of Hippo", "Gregory the Great", "Thomas à Kempis" (or "a Kempis"):
+// known by the given name, and filed under it, as library catalogues do.
+const EPITHET = new Set(['of', 'the', 'à', 'a']);
+
 /**
- * Writers grouped by initial, names in `locale` collation, each with their
- * books sorted by title. `skip` drops a slug that is not a person (the house
+ * The name a writer is FILED under: "Tozer, A. W.", the way a library index
+ * reads — readers look for Tozer under T, not under the initials he signed
+ * with. Display keeps the name as written; only grouping and order use this.
+ *
+ *  - surname = the last word ("Charles H. Spurgeon" → "Spurgeon, Charles H.");
+ *  - a lowercase particle stays with it ("Corrie ten Boom" → "ten Boom, Corrie");
+ *  - a generational suffix is skipped ("… Jr." files under the surname);
+ *  - an epithet name, or a single name, files as written
+ *    ("Augustine of Hippo", "Athanasius").
+ */
+export function filingName(name: string): string {
+	const words = name.trim().split(/\s+/);
+	if (words.length < 2 || words.slice(1).some((w) => EPITHET.has(w.toLowerCase()))) return name.trim();
+	const parts = words.filter((w) => !GENERATIONAL.test(w));
+	let i = parts.length - 1;
+	while (i > 1 && /^\p{Ll}/u.test(parts[i - 1])) i--;
+	if (i < 1) return name.trim();
+	return `${parts.slice(i).join(' ')}, ${parts.slice(0, i).join(' ')}`;
+}
+
+/**
+ * `filingName` as a sort key: apostrophes dropped so "M’Cheyne" files with the
+ * Mac/Mc names, as indexes do. Only apostrophes — a collator told to ignore ALL
+ * punctuation also ignores the ", " and spaces, and "Smith, Zoe" would sort
+ * after "Smithers, Al".
+ */
+export const filingKey = (name: string): string => filingName(name).replace(/[’'ʼ]/g, '');
+
+/**
+ * Writers grouped by the initial of their filing name (`filingName`) and
+ * ordered by it in `locale` collation, each with their books sorted by title. `skip` drops a slug that is not a person (the house
  * imprint, whose books have their own shelf).
  *
  * A book's author who is missing from `authors` is added from the book: the
@@ -71,9 +105,12 @@ export function authorIndex<A extends IndexAuthor, B extends IndexBook<IndexAuth
 	const writers = new Map<string, A | B['author']>(authors.map((a) => [a.slug, a]));
 	for (const b of books) if (!writers.has(b.author.slug)) writers.set(b.author.slug, b.author);
 	const groups = new Map<string, IndexEntry<A | B['author'], B>[]>();
-	for (const a of [...writers.values()].sort((x, y) => collator.compare(x.name, y.name))) {
-		if (skip.includes(a.slug)) continue;
-		const letter = initialOf(a.name);
+	const filed = [...writers.values()]
+		.filter((a) => !skip.includes(a.slug))
+		.map((a) => ({ a, key: filingKey(a.name) }))
+		.sort((x, y) => collator.compare(x.key, y.key));
+	for (const { a, key } of filed) {
+		const letter = initialOf(key);
 		const own = (byAuthor.get(a.slug) ?? []).sort((x, y) => collator.compare(x.title, y.title));
 		const list = groups.get(letter) ?? [];
 		list.push({ author: a, books: own });
