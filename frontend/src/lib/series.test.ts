@@ -6,6 +6,7 @@ import {
 	seriesFromBooks,
 	seriesCardProgressLabel,
 	seriesProgress,
+	cardLanguages,
 	seriesToContinue,
 	splitSeriesTitle,
 	type BookStage,
@@ -266,5 +267,28 @@ describe('seriesAges', () => {
 		expect(seriesAges({ min_age: 13, max_age: null })).toBe('Ages 13+');
 		expect(seriesAges({ min_age: null, max_age: null })).toBe('');
 		expect(seriesAges({})).toBe('');
+	});
+});
+
+describe('cardLanguages', () => {
+	it("puts the reader's language first and the rest in code order", () => {
+		expect(cardLanguages(['fr', 'en', 'es'], 'es')).toEqual({ shown: ['es', 'en', 'fr'], more: 0 });
+	});
+
+	it('caps the list and counts the rest', () => {
+		const all = ['am', 'ar', 'en', 'es', 'fr', 'hi', 'lg', 'pt', 'sw', 'uk'];
+		expect(cardLanguages(all, 'en')).toEqual({
+			shown: ['en', 'am', 'ar', 'es', 'fr'],
+			more: 5
+		});
+	});
+
+	it('shows nothing for a one-language series', () => {
+		expect(cardLanguages(['en'], 'en')).toEqual({ shown: [], more: 0 });
+		expect(cardLanguages([], 'en')).toEqual({ shown: [], more: 0 });
+	});
+
+	it('keeps a series not held in the reader language in code order', () => {
+		expect(cardLanguages(['sw', 'en'], 'fr').shown).toEqual(['en', 'sw']);
 	});
 });
