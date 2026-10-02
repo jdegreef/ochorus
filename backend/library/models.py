@@ -1997,6 +1997,9 @@ class AdminAction(models.Model):
         BROADCAST_SCHEDULE = "broadcast.schedule", "Broadcast scheduled"
         BROADCAST_CANCEL = "broadcast.cancel", "Broadcast canceled"
         BROADCAST_TEST = "broadcast.test", "Broadcast test sent"
+        BROADCAST_PAUSE = "broadcast.pause", "Broadcast paused"
+        BROADCAST_RESUME = "broadcast.resume", "Broadcast resumed"
+        EMAIL_DIRECT = "email.direct", "Email sent to a reader"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
 
     action = models.CharField(max_length=32, choices=Action.choices)

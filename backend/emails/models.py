@@ -17,6 +17,8 @@ stored twice.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import secrets
 
 from django.db import models
@@ -36,6 +38,8 @@ def _new_token() -> str:
 class EmailKind(models.TextChoices):
     LIFECYCLE = "lifecycle", "Lifecycle"
     BROADCAST = "broadcast", "Broadcast"
+    # A one-to-one email an admin wrote to a single reader from the admin.
+    DIRECT = "direct", "Direct"
 
 
 class SendStatus(models.TextChoices):
@@ -48,7 +52,11 @@ class SendStatus(models.TextChoices):
 class BroadcastStatus(models.TextChoices):
     DRAFT = "draft", "Draft"
     SCHEDULED = "scheduled", "Scheduled"
+    # Queued or mid-send: the email cron works through the audience in batches.
     SENDING = "sending", "Sending"
+    # Stopped mid-send, by an admin or by the bounce/complaint guardrail; the
+    # cursor keeps its place so a resume carries on from the next reader.
+    PAUSED = "paused", "Paused"
     SENT = "sent", "Sent"
     CANCELED = "canceled", "Canceled"
 
@@ -202,6 +210,30 @@ class Broadcast(models.Model):
     status = models.CharField(
         max_length=20, choices=BroadcastStatus.choices, default=BroadcastStatus.DRAFT
     )
+
+    # --- The batched send (emails/broadcasts.py) -------------------------------
+    # The audience is walked in profile-pk order; ``send_cursor`` is the last pk
+    # processed, so a send interrupted anywhere (a pause, a time budget, a crash)
+    # resumes from the next reader. ``send_tally`` counts sent/skipped/failed —
+    # skips leave no EmailMessage row, so the counts can't be derived from them.
+    send_cursor = models.BigIntegerField(default=0)
+    send_tally = models.JSONField(default=dict, blank=True)
+    send_started_at = models.DateTimeField(null=True, blank=True)
+    send_finished_at = models.DateTimeField(null=True, blank=True)
+    # Single-runner lease: a worker holds the send until this time and renews it
+    # each batch, so two cron runs (or a cron run and a manual one) never walk
+    # the same audience at once.
+    send_lease_until = models.DateTimeField(null=True, blank=True)
+    # Why a PAUSED broadcast stopped (or why a schedule fell back to DRAFT),
+    # shown in the admin.
+    pause_reason = models.CharField(max_length=200, blank=True)
+    # Set when an admin resumes past a guardrail pause: the bounce/complaint
+    # check no longer stops this broadcast.
+    guardrail_override = models.BooleanField(default=False)
+    # Digest of the subject/content/from the last successful test send went out
+    # with, so the pre-send checks can tell whether the copy changed since.
+    tested_digest = models.CharField(max_length=64, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -210,6 +242,13 @@ class Broadcast(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"broadcast<{self.name}>"
+
+    def content_digest(self) -> str:
+        """A stable hash of everything a recipient sees, for ``tested_digest``."""
+        payload = json.dumps(
+            [self.subject, self.content, self.from_address], sort_keys=True, ensure_ascii=False
+        )
+        return hashlib.sha256(payload.encode()).hexdigest()
 
 
 def idempotency_key(kind: str, discriminator: str, profile) -> str:
@@ -259,6 +298,10 @@ class EmailMessage(models.Model):
         max_length=20, choices=SendStatus.choices, default=SendStatus.QUEUED
     )
     error = models.CharField(max_length=300, blank=True)
+    # Direct emails only: the admin who wrote it, and the plain text of what was
+    # said, so the reader's email history shows the conversation, not just a subject.
+    sent_by = models.CharField(max_length=254, blank=True)
+    body_text = models.TextField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     sent_at = models.DateTimeField(null=True, blank=True)

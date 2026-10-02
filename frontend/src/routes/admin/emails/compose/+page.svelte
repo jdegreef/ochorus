@@ -12,6 +12,7 @@
 		previewAudience,
 		type AdminBroadcast,
 		type BroadcastAudience,
+		type BroadcastCheck,
 		type BroadcastBlock,
 		type BroadcastStatus
 	} from '$lib/library-admin';
@@ -41,6 +42,12 @@
 		subject: Record<string, string>;
 		content: Record<string, BroadcastBlock>;
 		scheduled_at: string | null;
+		// Server-computed, read-only here: the pre-send checklist and send progress.
+		checks: BroadcastCheck[];
+		progress: AdminBroadcast['progress'];
+		pause_reason: string;
+		audience_count: number;
+		started: boolean;
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -55,7 +62,20 @@
 	let error = $state('');
 	let scheduleAt = $state('');
 
-	const readOnly = $derived(draft?.status === 'sending' || draft?.status === 'sent');
+	// Once a send has started (even paused), the copy and audience are frozen.
+	const readOnly = $derived(
+		draft?.status === 'sending' ||
+			draft?.status === 'paused' ||
+			draft?.status === 'sent' ||
+			(draft?.status === 'canceled' && draft.started)
+	);
+	const blockingChecks = $derived((draft?.checks ?? []).filter((c) => c.level === 'error'));
+	const processed = $derived(
+		draft ? draft.progress.sent + draft.progress.skipped + draft.progress.failed : 0
+	);
+	const showProgress = $derived(
+		!!draft && (draft.status === 'sending' || draft.status === 'paused' || processed > 0)
+	);
 	const draftLocales = $derived(draft ? Object.keys(draft.content) : []);
 
 	function toDraft(b: AdminBroadcast): Draft {
@@ -67,7 +87,12 @@
 			audience: { ...b.audience },
 			subject: { ...b.subject },
 			content: structuredClone(b.content ?? {}),
-			scheduled_at: b.scheduled_at
+			scheduled_at: b.scheduled_at,
+			checks: b.checks ?? [],
+			progress: b.progress ?? { sent: 0, skipped: 0, failed: 0 },
+			pause_reason: b.pause_reason ?? '',
+			audience_count: b.audience_count,
+			started: !!b.send_started_at
 		};
 	}
 
@@ -158,30 +183,69 @@
 		}
 	}
 
-	async function act(action: 'send' | 'schedule' | 'cancel' | 'test') {
+	type Action = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
+
+	const CONFIRM: Partial<Record<Action, string>> = {
+		send: 'Send this broadcast to its whole audience? It goes out in batches, starting on the next email run.',
+		cancel: 'Cancel this broadcast? Anyone already emailed stays emailed; nobody else will get it.'
+	};
+
+	async function act(action: Action, extra: { override_guardrail?: boolean } = {}) {
 		if (!draft) return;
-		if (action === 'send' && !confirm('Send this broadcast to its whole audience now?')) return;
+		if (CONFIRM[action] && !confirm(CONFIRM[action])) return;
 		busy = true;
 		error = '';
 		notice = '';
 		try {
-			await persist(); // persist edits first
-			const extra =
+			if (!readOnly) await persist(); // persist edits first (a started send is frozen)
+			const body =
 				action === 'schedule' && scheduleAt
 					? { scheduled_at: new Date(scheduleAt).toISOString() }
-					: {};
-			const res = await broadcastAction(draft.id, action, extra);
-			if (action === 'test') notice = `Test sent to ${res.sent_to ?? 'your address'}.`;
-			else if (action === 'send') notice = `Sent. ${JSON.stringify(res.tally ?? {})}`;
-			else notice = 'Done.';
-			if (res.status) draft = toDraft(res as AdminBroadcast);
+					: extra;
+			const res = await broadcastAction(draft.id, action, body);
+			if (action === 'test') {
+				notice = `Test sent to ${res.sent_to ?? 'your address'}.`;
+				draft = toDraft(await getBroadcast(draft.id)); // the test check is now green
+				loadLocaleFields();
+			} else {
+				notice = {
+					send: 'Queued. It sends in batches, starting on the next email run (every 15 minutes); progress shows below.',
+					schedule: 'Scheduled.',
+					cancel: 'Canceled.',
+					pause: 'Paused. Nobody else is emailed until you resume.',
+					resume: 'Resumed. Sending continues on the next email run.'
+				}[action];
+				if (res.status) draft = toDraft(res as AdminBroadcast);
+			}
 			await list.load();
 		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { checks?: BroadcastCheck[]; needs_override?: boolean }) : undefined;
+			if (body?.checks && draft) draft.checks = body.checks;
+			if (action === 'resume' && body?.needs_override) {
+				busy = false;
+				if (confirm(`${message(e)}\n\nResume anyway?`)) return act('resume', { override_guardrail: true });
+				return;
+			}
 			error = message(e);
 		} finally {
 			busy = false;
 		}
 	}
+
+	// While a send is running, refresh its progress (and catch a guardrail pause).
+	$effect(() => {
+		if (mode !== 'edit' || draft?.status !== 'sending') return;
+		const id = draft.id;
+		const timer = setInterval(async () => {
+			try {
+				const b = await getBroadcast(id);
+				if (draft?.id === id) draft = toDraft(b);
+			} catch {
+				/* keep the last known state; the next tick retries */
+			}
+		}, 15000);
+		return () => clearInterval(timer);
+	});
 
 	async function removeBroadcast() {
 		if (!draft) return;
@@ -226,6 +290,7 @@
 		draft: 'bg-surface-2 text-muted',
 		scheduled: 'bg-accent-soft text-accent',
 		sending: 'bg-accent-soft text-accent',
+		paused: 'bg-warning/15 text-warning',
 		sent: 'bg-surface-2 text-text',
 		canceled: 'bg-surface-2 text-muted'
 	};
@@ -295,7 +360,13 @@
 		</div>
 
 		{#if readOnly}
-			<p class="mb-4 text-small text-muted">This broadcast has been sent and is read-only.</p>
+			<p class="mb-4 text-small text-muted">
+				{draft.status === 'sending' || draft.status === 'paused'
+					? 'Sending has started, so the email and its audience are locked.'
+					: 'This broadcast has been sent and is read-only.'}
+			</p>
+		{:else if draft.status === 'draft' && draft.pause_reason}
+			<p class="mb-4 rounded-md bg-warning/10 p-2 text-small text-warning">{draft.pause_reason}</p>
 		{/if}
 
 		<!-- Name -->
@@ -384,6 +455,56 @@
 			{/if}
 		</section>
 
+		{#if showProgress}
+			<!-- Send progress -->
+			<section class="mb-5 rounded-card border border-border bg-surface p-4" aria-live="polite">
+				<div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+					<h2 class="text-h3">Sending</h2>
+					<span class="text-small text-muted tabular-nums">{processed} of about {draft.audience_count} readers processed</span>
+				</div>
+				<div class="h-2 overflow-hidden rounded-full bg-surface-2">
+					<div class="h-full rounded-full bg-accent" style="width: {Math.min(100, draft.audience_count ? (processed / draft.audience_count) * 100 : 100)}%"></div>
+				</div>
+				<p class="mt-2 text-small text-muted tabular-nums">
+					{draft.progress.sent} sent · {draft.progress.skipped} skipped (opted out or no address) · {draft.progress.failed} failed
+				</p>
+				{#if draft.status === 'paused' && draft.pause_reason}
+					<p class="mt-2 rounded-md bg-warning/10 p-2 text-small text-warning">{draft.pause_reason}</p>
+				{/if}
+				{#if draft.status === 'sending' || draft.status === 'paused'}
+					<div class="mt-3 flex flex-wrap gap-2">
+						{#if draft.status === 'sending'}
+							<button class="btn btn-ghost btn-sm" onclick={() => act('pause')} disabled={busy}>Pause</button>
+						{:else}
+							<button class="btn btn-primary btn-sm" onclick={() => act('resume')} disabled={busy}>Resume</button>
+						{/if}
+						<button class="btn btn-ghost btn-sm text-danger" onclick={() => act('cancel')} disabled={busy}>Cancel sending</button>
+					</div>
+				{/if}
+			</section>
+		{/if}
+
+		{#if !readOnly && draft.checks.length}
+			<!-- Pre-send checks -->
+			<section class="mb-5 rounded-card border border-border bg-surface p-4">
+				<div class="mb-2 flex items-baseline justify-between gap-2">
+					<h2 class="text-h3">Before you send</h2>
+					<span class="text-small text-muted">Saved version · save to re-check</span>
+				</div>
+				<ul class="space-y-1.5">
+					{#each draft.checks as c (c.code)}
+						<li class="flex gap-2 text-small">
+							<span
+								class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-micro font-bold {c.level === 'error' ? 'bg-danger/15 text-danger' : c.level === 'warning' ? 'bg-warning/15 text-warning' : 'bg-accent-soft text-accent'}"
+								aria-label={c.level === 'error' ? 'Must fix' : c.level === 'warning' ? 'Warning' : 'OK'}
+							>{c.level === 'error' ? '!' : c.level === 'warning' ? '?' : '✓'}</span>
+							<span class={c.level === 'ok' ? 'text-muted' : 'text-text'}>{c.message}</span>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
+
 		<!-- From + actions -->
 		<section class="mb-5 rounded-card border border-border bg-surface p-4">
 			<label class="mb-4 block">
@@ -397,8 +518,8 @@
 					<button class="btn btn-ghost btn-sm" onclick={() => act('test')} disabled={busy}>Send test to me</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>
 					<input type="datetime-local" class="rounded-md border border-border bg-surface p-1.5 text-small" bind:value={scheduleAt} />
-					<button class="btn btn-ghost btn-sm" onclick={() => act('schedule')} disabled={busy || !scheduleAt}>Schedule</button>
-					<button class="btn btn-primary btn-sm" onclick={() => act('send')} disabled={busy}>Send now</button>
+					<button class="btn btn-ghost btn-sm" onclick={() => act('schedule')} disabled={busy || !scheduleAt || blockingChecks.length > 0}>Schedule</button>
+					<button class="btn btn-primary btn-sm" onclick={() => act('send')} disabled={busy || blockingChecks.length > 0} title={blockingChecks.length ? 'Fix the checks marked ! first' : undefined}>Send now</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>
 					{#if draft.status === 'scheduled'}
 						<button class="btn btn-ghost btn-sm" onclick={() => act('cancel')} disabled={busy}>Cancel schedule</button>

@@ -316,6 +316,23 @@ EMAIL_ALLOWLIST = {
     for e in os.getenv("EMAIL_ALLOWLIST", "").split(",")
     if e.strip()
 }
+# Broadcast send pacing (emails/broadcasts.py). A broadcast is sent by the email
+# cron in batches, at most EMAIL_SEND_RATE emails per second (Resend's default
+# account limit is 2/s; raise it with the plan), and for at most
+# EMAIL_SEND_BUDGET_SECONDS per cron run, so a run always finishes before the
+# next one (every 15 minutes) starts. A big send simply continues next run.
+EMAIL_SEND_RATE = float(os.getenv("EMAIL_SEND_RATE", "2") or 2)
+EMAIL_SEND_BUDGET_SECONDS = int(os.getenv("EMAIL_SEND_BUDGET_SECONDS", "720") or 720)
+# The deliverability guardrail: a broadcast pauses itself when its bounce or
+# spam-complaint rate crosses these (once at least EMAIL_GUARDRAIL_MIN_SENT have
+# gone out, so three early bounces can't trip it). Gmail and Yahoo throttle
+# senders whose complaint rate passes 0.3%; a bounce rate over ~5% points at a
+# bad list. An admin can resume past it deliberately.
+EMAIL_GUARDRAIL_BOUNCE_RATE = float(os.getenv("EMAIL_GUARDRAIL_BOUNCE_RATE", "0.05") or 0.05)
+EMAIL_GUARDRAIL_COMPLAINT_RATE = float(
+    os.getenv("EMAIL_GUARDRAIL_COMPLAINT_RATE", "0.003") or 0.003
+)
+EMAIL_GUARDRAIL_MIN_SENT = int(os.getenv("EMAIL_GUARDRAIL_MIN_SENT", "100") or 100)
 
 
 # --- CORS ---------------------------------------------------------------------

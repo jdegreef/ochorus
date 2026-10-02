@@ -27,11 +27,14 @@ from rest_framework.views import APIView
 
 from accounts.models import UserProfile
 from accounts.permissions import IsAdminEmail
-from library.audit import AdminAudited, AdminNotAudited
+from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import audience as audience_mod
 from . import broadcasts as broadcasts_mod
+from . import direct as direct_mod
+from . import health
+from . import preflight
 from .models import (
     Broadcast,
     BroadcastStatus,
@@ -211,13 +214,25 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False) -> dict:
         "created_at": b.created_at.isoformat(),
         "updated_at": b.updated_at.isoformat(),
         # Locales the campaign can actually send in (subject AND content present).
-        "locales": sorted(set(b.subject) & set(b.content)),
+        "locales": preflight.sendable_locales(b),
         "audience_count": audience_mod.count(b.audience),
+        # The batched send: how far it has got, and why it stopped if paused.
+        "progress": {**{"sent": 0, "skipped": 0, "failed": 0}, **(b.send_tally or {})},
+        "pause_reason": b.pause_reason,
+        "guardrail_override": b.guardrail_override,
+        "send_started_at": b.send_started_at.isoformat() if b.send_started_at else None,
+        "send_finished_at": b.send_finished_at.isoformat() if b.send_finished_at else None,
     }
     if detail:
         data["content"] = b.content
         data["stats"] = _broadcast_stats(b)
+        data["checks"] = preflight.run(b)
     return data
+
+
+#: Statuses in which a broadcast has (or may have) mailed someone, so its copy
+#: and audience are frozen.
+_LOCKED = (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT)
 
 
 def _apply_fields(broadcast: Broadcast, data) -> None:
@@ -288,9 +303,9 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
         broadcast = self._get(pk)
         if broadcast is None:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+        if broadcast.status in _LOCKED:
             return Response(
-                {"detail": "a sent broadcast can't be edited"},
+                {"detail": "a broadcast that has started sending can't be edited"},
                 status=http_status.HTTP_409_CONFLICT,
             )
         _apply_fields(broadcast, request.data)
@@ -301,9 +316,9 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
         broadcast = self._get(pk)
         if broadcast is None:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
+        if broadcast.status in _LOCKED:
             return Response(
-                {"detail": "a sent broadcast can't be deleted"},
+                {"detail": "a broadcast that has started sending can't be deleted"},
                 status=http_status.HTTP_409_CONFLICT,
             )
         broadcast.delete()
@@ -311,7 +326,13 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
 
 
 class AdminBroadcastActionView(AdminAudited, APIView):
-    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, or ``test``.
+    """Act on a broadcast: ``send`` now, ``schedule``, ``cancel``, ``test``,
+    ``pause`` or ``resume``.
+
+    ``send`` queues the broadcast; the email cron sends it in batches
+    (emails/broadcasts.py), so the request returns at once however large the
+    audience. ``send`` and ``schedule`` refuse while any pre-send check is an
+    error (emails/preflight.py), returning the checks.
 
     Super-admin-only (see AdminEmailMetricsView)."""
 
@@ -322,6 +343,8 @@ class AdminBroadcastActionView(AdminAudited, APIView):
         "schedule": AdminAction.Action.BROADCAST_SCHEDULE,
         "cancel": AdminAction.Action.BROADCAST_CANCEL,
         "test": AdminAction.Action.BROADCAST_TEST,
+        "pause": AdminAction.Action.BROADCAST_PAUSE,
+        "resume": AdminAction.Action.BROADCAST_RESUME,
     }
 
     def audit_action_for(self, request):
@@ -348,30 +371,48 @@ class AdminBroadcastActionView(AdminAudited, APIView):
             return self._schedule(request, broadcast)
         if action == "cancel":
             return self._cancel(broadcast)
+        if action == "pause":
+            return self._pause(request, broadcast)
+        if action == "resume":
+            return self._resume(request, broadcast)
         return Response(
             {"detail": f"unknown action {action!r}"},
             status=http_status.HTTP_400_BAD_REQUEST,
         )
 
     @staticmethod
-    def _sendable(broadcast) -> str | None:
-        if not (set(broadcast.subject) & set(broadcast.content)):
-            return "broadcast has no subject/content in any language"
-        if broadcast.status in (BroadcastStatus.SENDING, BroadcastStatus.SENT):
-            return "broadcast has already been sent"
+    def _unsendable(broadcast) -> Response | None:
+        """A 409 when ``broadcast`` can't be sent or scheduled, else ``None``."""
+        # A canceled broadcast that never started may be sent or rescheduled
+        # (cancel is how a schedule is withdrawn); one canceled mid-send may not.
+        fresh = broadcast.status in (BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED) or (
+            broadcast.status == BroadcastStatus.CANCELED and broadcast.send_started_at is None
+        )
+        if not fresh:
+            return Response(
+                {"detail": f"a {broadcast.status} broadcast can't be sent again"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        checks = preflight.run(broadcast)
+        errors = preflight.blocking(checks)
+        if errors:
+            return Response(
+                {"detail": errors[0]["message"], "checks": checks},
+                status=http_status.HTTP_409_CONFLICT,
+            )
         return None
 
     def _send(self, broadcast):
-        problem = self._sendable(broadcast)
-        if problem:
-            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
-        tally = broadcasts_mod.send_broadcast(broadcast)
-        return Response({"tally": tally, **_serialize_broadcast(broadcast, detail=True)})
+        refused = self._unsendable(broadcast)
+        if refused:
+            return refused
+        broadcasts_mod.start_send(broadcast)
+        return Response(_serialize_broadcast(broadcast, detail=True))
 
     def _schedule(self, request, broadcast):
-        problem = self._sendable(broadcast)
-        if problem:
-            return Response({"detail": problem}, status=http_status.HTTP_409_CONFLICT)
+        refused = self._unsendable(broadcast)
+        if refused:
+            return refused
         when = parse_datetime(str(request.data.get("scheduled_at", "")))
         if when is None:
             return Response(
@@ -384,13 +425,53 @@ class AdminBroadcastActionView(AdminAudited, APIView):
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def _cancel(self, broadcast):
-        if broadcast.status not in (BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED):
+        """Cancel before or during a send. Mid-send, the worker stops at its next
+        batch; whoever was already mailed stays mailed."""
+        cancelable = (
+            BroadcastStatus.DRAFT,
+            BroadcastStatus.SCHEDULED,
+            BroadcastStatus.SENDING,
+            BroadcastStatus.PAUSED,
+        )
+        n = Broadcast.objects.filter(pk=broadcast.pk, status__in=cancelable).update(
+            status=BroadcastStatus.CANCELED
+        )
+        if not n:
             return Response(
-                {"detail": "only a draft or scheduled broadcast can be canceled"},
+                {"detail": f"a {broadcast.status} broadcast can't be canceled"},
                 status=http_status.HTTP_409_CONFLICT,
             )
-        broadcast.status = BroadcastStatus.CANCELED
-        broadcast.save(update_fields=["status", "updated_at"])
+        broadcast.refresh_from_db()
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    @staticmethod
+    def _pause(request, broadcast):
+        who = actor_email(request) or "an admin"
+        if not broadcasts_mod.pause(broadcast, f"Paused by {who}."):
+            return Response(
+                {"detail": "only a broadcast that is sending can be paused"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response(_serialize_broadcast(broadcast, detail=True))
+
+    @staticmethod
+    def _resume(request, broadcast):
+        if broadcast.status != BroadcastStatus.PAUSED:
+            return Response(
+                {"detail": "only a paused broadcast can be resumed"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        override = bool(request.data.get("override_guardrail"))
+        reason = health.broadcast_breach(broadcast)
+        if reason and not override:
+            return Response(
+                {
+                    "detail": f"{reason}. Resume anyway to send past the guardrail.",
+                    "needs_override": True,
+                },
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        broadcasts_mod.resume(broadcast, override_guardrail=bool(reason and override))
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     @staticmethod
@@ -428,3 +509,62 @@ class AdminAudiencePreviewView(AdminNotAudited, APIView):
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
         return Response({"count": audience_mod.count(audience)})
+
+
+# --- One reader's email: history, and writing to them directly ----------------
+
+
+class AdminReaderEmailsView(AdminAudited, APIView):
+    """GET one reader's email history and consent state; POST a direct email to
+    them (emails/direct.py).
+
+    Super-admin-only, like the rest of the Emails section (see
+    AdminEmailMetricsView): writing to a reader is outbound email."""
+
+    permission_classes = [IsAdminEmail]
+    audit_action = AdminAction.Action.EMAIL_DIRECT
+
+    def audit_entry(self, request, response):
+        return (
+            f"user:{self.kwargs.get('uid')}",
+            {"subject": str(request.data.get("subject", ""))[:200]},
+        )
+
+    @staticmethod
+    def _profile(uid):
+        return UserProfile.objects.filter(supabase_uid=uid).first()
+
+    @staticmethod
+    def _state(profile) -> dict:
+        subscription = EmailSubscription.objects.filter(profile=profile).first()
+        return {
+            "blocked_reason": direct_mod.blocked_reason(subscription) if subscription else None,
+            "unsubscribed_all": bool(subscription and subscription.unsubscribed_all),
+            "suppressed": bool(subscription and subscription.is_suppressed),
+            "messages": direct_mod.history(profile),
+        }
+
+    def get(self, request, uid):
+        profile = self._profile(uid)
+        if profile is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        return Response(self._state(profile))
+
+    def post(self, request, uid):
+        profile = self._profile(uid)
+        if profile is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        try:
+            message = direct_mod.send_direct(
+                profile, request.data, sent_by=actor_email(request)
+            )
+        except direct_mod.DirectEmailError as exc:
+            return Response({"detail": str(exc)}, status=http_status.HTTP_400_BAD_REQUEST)
+        if message.status != SendStatus.SENT:
+            # Recorded (it shows in the history) but not delivered: sending off,
+            # review-mode allowlist, or a provider error. Not a success.
+            return Response(
+                {"detail": f"Not sent: {message.error or message.status}.", **self._state(profile)},
+                status=http_status.HTTP_409_CONFLICT,
+            )
+        return Response({"ok": True, **self._state(profile)}, status=http_status.HTTP_201_CREATED)

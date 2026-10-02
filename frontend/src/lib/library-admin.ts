@@ -1168,7 +1168,14 @@ export const getAdminEmailMetrics = () =>
 
 // --- Broadcasts (compose / schedule / send) ---------------------------------
 
-export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'canceled';
+export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'paused' | 'sent' | 'canceled';
+
+/** One pre-send check (backend `emails/preflight.py`). An `error` blocks send and schedule. */
+export interface BroadcastCheck {
+	code: string;
+	level: 'error' | 'warning' | 'ok';
+	message: string;
+}
 
 /** One language's content block for a broadcast (structured, not raw HTML). */
 export interface BroadcastBlock {
@@ -1199,9 +1206,16 @@ export interface AdminBroadcast {
 	updated_at: string;
 	locales: string[];
 	audience_count: number;
+	/** The batched send so far: readers processed, by outcome. */
+	progress: { sent: number; skipped: number; failed: number };
+	pause_reason: string;
+	guardrail_override: boolean;
+	send_started_at: string | null;
+	send_finished_at: string | null;
 	// detail only:
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
+	checks?: BroadcastCheck[];
 }
 
 export interface BroadcastPayload {
@@ -1235,13 +1249,58 @@ export const deleteBroadcast = (id: number) =>
 
 export const broadcastAction = (
 	id: number,
-	action: 'send' | 'schedule' | 'cancel' | 'test',
-	extra: { scheduled_at?: string } = {}
+	action: 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume',
+	extra: { scheduled_at?: string; override_guardrail?: boolean } = {}
 ) =>
-	apiFetch<AdminBroadcast & { tally?: Record<string, number>; ok?: boolean; sent_to?: string }>(
+	apiFetch<AdminBroadcast & { ok?: boolean; sent_to?: string }>(
 		`/api/admin/broadcasts/${id}/action/`,
 		{ method: 'POST', body: JSON.stringify({ action, ...extra }) }
 	);
+
+// --- One reader's email (history + direct email) ------------------------------
+
+export interface ReaderEmailRow {
+	id: number;
+	kind: 'lifecycle' | 'broadcast' | 'direct';
+	label: string;
+	subject: string;
+	status: 'queued' | 'sent' | 'failed' | 'skipped';
+	error: string;
+	/** Provider events seen for it: delivered, opened, clicked, bounced, … */
+	events: string[];
+	sent_by: string;
+	body_text: string;
+	created_at: string;
+	sent_at: string | null;
+}
+
+export interface ReaderEmails {
+	/** Why this reader can't be written to (suppressed / unsubscribed), else null. */
+	blocked_reason: string | null;
+	unsubscribed_all: boolean;
+	suppressed: boolean;
+	messages: ReaderEmailRow[];
+}
+
+export interface DirectEmailPayload {
+	subject: string;
+	heading?: string;
+	greeting?: string;
+	paragraphs: string[];
+	cta_label?: string;
+	cta_path?: string;
+	signoff?: string;
+	signature?: string;
+}
+
+export const getReaderEmails = (uid: string) =>
+	apiFetch<ReaderEmails>(`/api/admin/users/${uid}/emails/`);
+
+export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
+	apiFetch<ReaderEmails & { ok: true }>(`/api/admin/users/${uid}/emails/`, {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {

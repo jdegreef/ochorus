@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { ApiError } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
+	import ReaderEmailPanel from '$lib/components/ReaderEmailPanel.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
@@ -376,6 +378,11 @@
 					<p class="text-body text-muted">No activity recorded yet.</p>
 				{/if}
 			</section>
+
+			<!-- Email: history + write to them (super admins only, like the Emails section) -->
+			{#if auth.isAdmin}
+				<ReaderEmailPanel uid={data.uid} name={d.profile.display_name || 'this reader'} />
+			{/if}
 		{/snippet}
 	</AdminGate>
 </div>
