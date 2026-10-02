@@ -14,7 +14,11 @@ space reads as "" here and an editor may silently drop it.
 
 from __future__ import annotations
 
+import importlib
+
+from django.apps import apps
 from django.core.exceptions import ValidationError
+from django.db import IntegrityError, transaction
 from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
@@ -24,6 +28,10 @@ from .text import is_blank_title
 ZWSP, BOM, WJ, SHY, RLM, HANGUL_FILLER = "​", "﻿", "⁠", "­", "‏", "ㅤ"
 # Each renders as nothing; all but the first three survive str.strip().
 BLANKS = ("", "   ", "\n\t", ZWSP, f" {BOM} ", ZWSP + WJ + SHY, RLM, HANGUL_FILLER)
+# Blank to is_blank_title (a Unicode format character) but outside the database
+# constraint's literal set — the only way a test can still hold a "legacy" blank
+# row now that the CHECK refuses the common ones.
+TAG = "\U000e0001"
 CHAPTER = {"title": "One", "html": "<p>Consider the grace of humility, and the Lord who taught it.</p>"}
 
 
@@ -76,7 +84,7 @@ class SaveGuardTests(TestCase):
         sermon = Sermon.objects.create(
             author=self.author, slug="s", language="en", title="Abide", body_html="<p>x</p>"
         )
-        Sermon.objects.filter(pk=sermon.pk).update(title="")
+        Sermon.objects.filter(pk=sermon.pk).update(title=TAG)
         sermon.refresh_from_db()
         sermon.body_html = "<p>y</p>"
         sermon.save()  # unscoped, title unchanged: passes
@@ -128,7 +136,46 @@ class CoverageFlagsUntitledRowsTests(TestCase):
         author = Author.objects.create(slug="am", name="Andrew Murray")
         Book.objects.create(author=author, slug="good", language="en", title="Humility")
         bad = Book.objects.create(author=author, slug="bad", language="en", title="Abide")
-        Book.objects.filter(pk=bad.pk).update(title=ZWSP)  # a legacy row, past the guard
+        Book.objects.filter(pk=bad.pk).update(title=TAG)  # a legacy row, past the guard
         rows = {r["slug"]: r for r in APIClient().get("/api/admin/coverage/").data["books"]}
         self.assertTrue(rows["bad"].get("untitled"))
         self.assertNotIn("untitled", rows["good"])
+
+
+class DatabaseConstraintTests(TestCase):
+    """The CHECK constraint refuses what save() never sees: .update() and
+    bulk_create."""
+
+    @classmethod
+    def setUpTestData(cls):
+        cls.author = Author.objects.create(slug="am", name="Andrew Murray")
+
+    def test_update_to_a_blank_title_is_refused_by_the_database(self):
+        book = Book.objects.create(author=self.author, slug="b", language="en", title="Humility")
+        for t in ("", "   ", ZWSP, f" {BOM} ", RLM, HANGUL_FILLER):
+            with self.subTest(t=repr(t)), self.assertRaises(IntegrityError), transaction.atomic():
+                Book.objects.filter(pk=book.pk).update(title=t)
+
+    def test_bulk_create_of_a_blank_title_is_refused(self):
+        with self.assertRaises(IntegrityError), transaction.atomic():
+            Plan.objects.bulk_create([Plan(slug="p", language="en", title=ZWSP)])
+
+
+class MigrationNamesUntitledWorksTests(TestCase):
+    """0177 gives every blank-titled row its slug as a title BEFORE the
+    constraint goes on, so the deploy's migrate can't fail on the one already
+    in production."""
+
+    def test_a_blank_row_is_named_from_its_slug(self):
+        migration = importlib.import_module("library.migrations.0177_title_not_blank")
+        author = Author.objects.create(slug="chs", name="Charles H. Spurgeon")
+        book = Book.objects.create(
+            author=author, slug="gleanings-among-the-sheaves", language="en", title="x"
+        )
+        Book.objects.filter(pk=book.pk).update(title=TAG)
+        keep = Book.objects.create(author=author, slug="other", language="en", title="Morning")
+        migration.name_untitled_works(apps, None)
+        book.refresh_from_db()
+        keep.refresh_from_db()
+        self.assertEqual(book.title, "Gleanings Among The Sheaves")
+        self.assertEqual(keep.title, "Morning")

@@ -34,6 +34,18 @@ _TAG = re.compile(r"<[^>]+>")
 _BLANK_LETTERS = frozenset("\u034f\u115f\u1160\u3164\uffa0")
 
 
+# The database's copy of the rule (a CHECK constraint on every work's title):
+# a title made only of these is refused at the row, whatever path wrote it,
+# .update() and bulk_create included. A literal set, since a CHECK can't ask
+# Unicode for a character's category — so it covers the invisibles that turn up
+# in practice, and is_blank_title (the save() guard, the import, the coverage
+# flag) stays the wider rule in front of it.
+BLANK_TITLE_REGEX = (
+    r"^[\s\u00ad\u034f\u115f\u1160\u180e\u200b-\u200f\u202a-\u202e"
+    r"\u2060-\u2064\u2066-\u206f\u3164\ufeff\uffa0]*$"
+)
+
+
 def is_blank_title(title) -> bool:
     """True when ``title`` would show a reader nothing."""
     return all(

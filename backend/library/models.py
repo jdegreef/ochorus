@@ -16,7 +16,7 @@ from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
-from .text import is_blank_title
+from .text import BLANK_TITLE_REGEX, is_blank_title
 
 
 class AuthorQuerySet(models.QuerySet):
@@ -637,6 +637,11 @@ class Book(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_book_slug_language"
             ),
+            # No title that shows a reader nothing — see text.BLANK_TITLE_REGEX.
+            models.CheckConstraint(
+                condition=~models.Q(title__regex=BLANK_TITLE_REGEX),
+                name="book_title_not_blank",
+            ),
             # Two editions of one language cannot both be volume 2. Rows with
             # no position (a collection, or no series) are exempt: NULLs are
             # distinct in a unique index. DEFERRED because seed_books saves a
@@ -904,6 +909,11 @@ class Sermon(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_sermon_slug_language"
             ),
+            # No title that shows a reader nothing — see text.BLANK_TITLE_REGEX.
+            models.CheckConstraint(
+                condition=~models.Q(title__regex=BLANK_TITLE_REGEX),
+                name="sermon_title_not_blank",
+            ),
         ]
         indexes = [
             # SermonListView, and the topic/author attach paths — same shape and
@@ -1036,6 +1046,11 @@ class Article(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_article_slug_language"
             ),
+            # No title that shows a reader nothing — see text.BLANK_TITLE_REGEX.
+            models.CheckConstraint(
+                condition=~models.Q(h1__regex=BLANK_TITLE_REGEX),
+                name="article_h1_not_blank",
+            ),
         ]
         indexes = [
             # ArticleListView: filter(language, is_published) then
@@ -1099,6 +1114,11 @@ class Plan(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_plan_slug_language"
+            ),
+            # No title that shows a reader nothing — see text.BLANK_TITLE_REGEX.
+            models.CheckConstraint(
+                condition=~models.Q(title__regex=BLANK_TITLE_REGEX),
+                name="plan_title_not_blank",
             ),
         ]
 
