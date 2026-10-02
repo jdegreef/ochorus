@@ -117,6 +117,26 @@ def progress_rows(*, slugs=None, language: str | None = None):
     return out
 
 
+def chapter_orders(editions) -> dict[tuple[str, str], list[int]]:
+    """Each edition's chapter orders, ascending: a curve's x-axis, gaps and
+    all. ``editions`` is an iterable of ``(slug, language)``. One query."""
+    from .models import Chapter
+
+    editions = set(editions)
+    out: dict[tuple[str, str], list[int]] = defaultdict(list)
+    for slug, lang, order in (
+        Chapter.objects.filter(
+            book__slug__in={s for s, _ in editions},
+            book__language__in={lang for _, lang in editions},
+        )
+        .order_by("order")
+        .values_list("book__slug", "book__language", "order")
+    ):
+        if (slug, lang) in editions:
+            out[(slug, lang)].append(order)
+    return out
+
+
 def work_curves(slugs) -> dict[str, dict]:
     """One curve per book work, for a list of works side by side (the
     engagement leaderboard): ``{slug: {language, chapters, reached,
@@ -127,8 +147,6 @@ def work_curves(slugs) -> dict[str, dict]:
     chapter N of another. Each work shows its most-read edition (ties to
     English, then by code), which is where its readers mostly are. Two
     queries however many works."""
-    from .models import Chapter
-
     by_work: dict[str, dict[str, list[dict]]] = defaultdict(dict)
     for (slug, lang), rows in progress_rows(slugs=slugs).items():
         by_work[slug][lang] = rows
@@ -136,14 +154,7 @@ def work_curves(slugs) -> dict[str, dict]:
         slug: min(eds, key=lambda lang: (-len(eds[lang]), lang != "en", lang))
         for slug, eds in by_work.items()
     }
-    orders: dict[tuple[str, str], list[int]] = defaultdict(list)
-    for slug, lang, order in (
-        Chapter.objects.filter(book__slug__in=list(chosen))
-        .order_by("order")
-        .values_list("book__slug", "book__language", "order")
-    ):
-        if chosen[slug] == lang:
-            orders[(slug, lang)].append(order)
+    orders = chapter_orders(chosen.items())
     out = {}
     for slug, lang in chosen.items():
         curve = reach(by_work[slug][lang], orders.get((slug, lang), []))

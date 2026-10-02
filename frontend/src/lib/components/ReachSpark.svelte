@@ -3,8 +3,7 @@
 
 	// A book's "where readers stop" curve at a glance, for a leaderboard row:
 	// the share of its readers reaching each chapter, with the steepest drop
-	// dotted. The full chart, with chapter lengths and flags, is on the
-	// book's admin page.
+	// dotted.
 	let { reach }: { reach: EngagementReach } = $props();
 
 	const W = 96;
@@ -17,7 +16,7 @@
 	const last = $derived(reach.reached.at(-1) ?? 0);
 	const label = $derived(
 		[
-			`${Math.round((last / top) * 100)}% reach the last chapter (${reach.language})`,
+			`${formatRate(last / top)} reach the last chapter (${reach.language})`,
 			reach.steepest ? `${formatRate(reach.steepest.rate)} stop at chapter ${reach.steepest.chapter}` : ''
 		]
 			.filter(Boolean)

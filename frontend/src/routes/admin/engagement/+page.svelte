@@ -6,7 +6,7 @@
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import ReachSpark from '$lib/components/ReachSpark.svelte';
-	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminBookHref, formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -91,6 +91,9 @@
 	];
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
+	// A "where readers stop" column for the kinds whose rows carry a curve
+	// (books: the others are one document each).
+	const hasReach = $derived(topRows.some((r) => r.reach !== undefined));
 	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
@@ -261,7 +264,7 @@
 										<th class="py-2 pe-3 text-start font-semibold">Title</th>
 										<th class="px-3 py-2 text-end font-semibold">Readers</th>
 										<th class="px-3 py-2 text-end font-semibold">Finished</th>
-										{#if topTab === 'book'}<th class="px-3 py-2 text-start font-semibold">Where readers stop</th>{/if}
+										{#if hasReach}<th class="px-3 py-2 text-start font-semibold">Where readers stop</th>{/if}
 										<th class="px-3 py-2 text-end font-semibold">Hearts</th>
 										<th class="ps-3 py-2 text-end font-semibold">Highlighted</th>
 									</tr>
@@ -283,11 +286,11 @@
 													<span class="w-9 shrink-0 text-end text-micro text-muted tabular-nums">{finishedPct(b)}%</span>
 												</div>
 											</td>
-											{#if topTab === 'book'}
+											{#if hasReach}
 												<td class="px-3 py-2">
 													{#if b.reach}
 														<!-- The full chart, with chapter lengths and flags, is on the book's admin page. -->
-														<a href="/admin/books/{encodeURIComponent(b.slug)}" class="block w-fit hover:opacity-80">
+														<a href={adminBookHref(b.slug)} class="block w-fit hover:opacity-80">
 															<ReachSpark reach={b.reach} />
 														</a>
 													{:else}

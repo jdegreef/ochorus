@@ -1113,9 +1113,9 @@ export interface EngagementTopRow {
 	hearts: number;
 	/** Distinct readers who highlighted the work. */
 	highlighters: number;
-	/** Books only: where readers stop in the work's most-read edition
-	 *  (library/dropoff.py `work_curves`); null for other kinds, or a book
-	 *  with no chapters. Optional for an API from before it existed. */
+	/** Books only (absent on other kinds): where readers stop in the work's
+	 *  most-read edition (library/dropoff.py `work_curves`); null for a book
+	 *  with no chapters. */
 	reach?: EngagementReach | null;
 }
 
@@ -1739,8 +1739,9 @@ export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
 /** A chapter row's anchor on its admin book page, and the link to it: what
  *  "Open chapter" lands on (the row with the fix buttons). */
 export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
+export const adminBookHref = (slug: string) => `/admin/books/${encodeURIComponent(slug)}`;
 export const adminChapterHref = (slug: string, language: string, order: number) =>
-	`/admin/books/${encodeURIComponent(slug)}#${adminChapterId(language, order)}`;
+	`${adminBookHref(slug)}#${adminChapterId(language, order)}`;
 
 export interface AdminBookChapter {
 	order: number;

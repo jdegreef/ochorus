@@ -206,12 +206,8 @@ class AdminEngagementView(APIView):
         kind). Hearts and highlighters are two more grouped lookups scoped to the
         leaderboard's own slugs, so a tab is a bounded handful of queries however
         large the library grows.
-
-        Books also carry ``reach``: where their readers stop, chapter by
-        chapter (``library.dropoff``), for the row's sparkline. Other kinds are
-        one document, with no chapters to stop between.
         """
-        from reading.models import ChapterMarks, Favorite, ReadingProgress, WorkKind
+        from reading.models import ChapterMarks, Favorite, ReadingProgress
 
         top = list(
             ReadingProgress.objects.filter(kind=work_kind)
@@ -238,7 +234,6 @@ class AdminEngagementView(APIView):
             .values("book_slug")
             .annotate(n=Count("profile", distinct=True))
         }
-        curves = dropoff.work_curves(slugs) if work_kind == WorkKind.BOOK else {}
         meta = self._work_meta
         return [
             self._row(
@@ -249,7 +244,6 @@ class AdminEngagementView(APIView):
                 finishers=r["finishers"],
                 hearts=hearts.get(r["book_slug"], 0),
                 highlighters=highlighters.get(r["book_slug"], 0),
-                reach=curves.get(r["book_slug"]),
             )
             for r in top
         ]
@@ -262,8 +256,14 @@ class AdminEngagementView(APIView):
         on the page."""
         from reading.models import FavoriteKind, WorkKind
 
+        books = self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK)
+        # A book also carries where its readers stop, chapter by chapter, for
+        # its row's sparkline; the other kinds are one document each.
+        curves = dropoff.work_curves([b["slug"] for b in books])
+        for b in books:
+            b["reach"] = curves.get(b["slug"])
         return {
-            "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
+            "book": books,
             "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
             "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
             "article": self._leaderboard(WorkKind.ARTICLE, FavoriteKind.ARTICLE),
