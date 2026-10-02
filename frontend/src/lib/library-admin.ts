@@ -1319,6 +1319,9 @@ export interface AdminUsers {
 	total: number;
 	with_activity: number;
 	dormant: number;
+	/** Sign-up to habit, each step a subset of the one before; the first two
+	 *  are `total` and `with_activity`. See analytics._activation_counts. */
+	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	signups_7d: number;
 	signups_30d: number;
 	/** The immediately preceding window, for a trend delta on the cards. */

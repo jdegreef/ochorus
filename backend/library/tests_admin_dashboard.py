@@ -1113,6 +1113,32 @@ class AdminUsersTests(TestCase):
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
 
     @override_settings(DEBUG=True)
+    def test_activation_steps_each_narrow_the_one_before(self):
+        """p1 read on two days and finished a book; p2 read on one day and
+        finished a sermon, but one day is not a habit, so p2 stops at
+        "started"; p3 never read."""
+        from datetime import date
+
+        from django.utils import timezone
+
+        from reading.models import ReadingDay, ReadingProgress, WorkKind
+
+        for profile, day in [(self.p1, date(2026, 9, 1)), (self.p1, date(2026, 9, 3)),
+                             (self.p2, date(2026, 9, 1))]:
+            ReadingDay.objects.create(profile=profile, day=day)
+        ReadingProgress.objects.filter(profile=self.p1).update(finished_at=timezone.now())
+        ReadingProgress.objects.create(
+            profile=self.p2, kind=WorkKind.SERMON, book_slug="humility", language="en",
+            finished_at=timezone.now(),
+        )
+
+        res = self.client.get("/api/admin/users/")
+        steps = {s["step"]: s["count"] for s in res.data["activation"]}
+        self.assertEqual(steps, {"signed_up": 3, "started": 2, "returned": 1, "finished": 1})
+        # The tiles read the same counts as the funnel's first two steps.
+        self.assertEqual((res.data["total"], res.data["with_activity"]), (3, 2))
+
+    @override_settings(DEBUG=True)
     def test_users_analytics(self):
         res = self.client.get("/api/admin/users/")
         self.assertEqual(res.status_code, 200)
