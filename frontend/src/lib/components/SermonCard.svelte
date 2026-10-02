@@ -70,6 +70,11 @@
 			if (!untrack(() => open)) clipped = briefEl!.scrollHeight > briefEl!.clientHeight + 1;
 		};
 		measure();
+		// A clamped box stays two lines tall whatever overflows it, so the
+		// observer misses a reflow that only changes how much is hidden — the
+		// web font swapping in is the one that matters (a brief that fit in the
+		// fallback face can overflow in the real one).
+		document.fonts?.ready.then(measure);
 		const ro = new ResizeObserver(measure);
 		ro.observe(briefEl);
 		return () => ro.disconnect();

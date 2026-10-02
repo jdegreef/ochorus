@@ -19,11 +19,13 @@
 	 */
 	// `embedded` drops the home-page section chrome (own max-width + top
 	// padding) so the card can sit inside another page's column (e.g. the
-	// sermons shelf) without fighting its container. `sermons` hands over a
-	// shelf the caller already loaded, so the sermons index doesn't fetch its
-	// own list a second time; the pick is still made on mount, for the reason
-	// above.
-	let { embedded = false, sermons }: { embedded?: boolean; sermons?: SermonSummary[] } =
+	// sermons shelf) without fighting its container. `reserve` holds the
+	// panel's height until the pick lands, for a caller that heads its page
+	// with it (the sermons shelf), so the content below doesn't jump. The list
+	// is always fetched fresh, even there: the shelf's own copy is the
+	// prerendered snapshot, and picking from a list of a different length
+	// than the home page's would show two different sermons of the week.
+	let { embedded = false, reserve = false }: { embedded?: boolean; reserve?: boolean } =
 		$props();
 
 	let pick = $state<SermonSummary | null>(null);
@@ -40,10 +42,10 @@
 
 	onMount(async () => {
 		try {
-			const shelf = sermons ?? (await listSermons(getLang()));
-			if (!shelf.length) return;
+			const sermons = await listSermons(getLang());
+			if (!sermons.length) return;
 			const { year, week } = isoWeek(new Date());
-			pick = shelf[(year * 53 + week) % shelf.length];
+			pick = sermons[(year * 53 + week) % sermons.length];
 		} catch {
 			pick = null;
 		}
@@ -80,11 +82,9 @@
 			</SermonPlate>
 		</a>
 	</section>
-{:else if sermons?.length}
+{:else if reserve}
 	<!-- Holding the panel's place until the pick lands (it is chosen on mount,
-	     above), so a caller that heads its page with this panel — the sermons
-	     shelf — doesn't jump its whole list down a moment after load. Only when
-	     the caller handed over a non-empty shelf: then a pick is certain. -->
+	     above), so the caller's list doesn't jump down a moment after load. -->
 	<div class="sotw-placeholder rounded-card border border-border bg-surface-2" aria-hidden="true"></div>
 {/if}
 

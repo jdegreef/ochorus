@@ -225,7 +225,7 @@
 
 	// A preacher section opens on its first few sermons, so Spurgeon's eighteen
 	// don't fill three screens before the next preacher. The rest stay in the
-	// HTML (hidden, so every row is still a crawlable link) behind "Show all N".
+	// HTML (hidden, so every row is still a crawlable link) behind "Show N more".
 	// A filter shows every match — it already narrowed the list on purpose.
 	// "Show all" for one more sermon is noise, so a section only collapses when
 	// it would hide at least two.
@@ -233,8 +233,16 @@
 	const expanded = new SvelteSet<string>();
 	const collapsible = (n: number) => !filtering && n > PREVIEW + 1;
 	function toggleSection(slug: string) {
-		if (expanded.has(slug)) expanded.delete(slug);
-		else expanded.add(slug);
+		if (!expanded.has(slug)) {
+			expanded.add(slug);
+			return;
+		}
+		expanded.delete(slug);
+		// Collapsing a long section pulls everything after it up by many screens;
+		// bring its heading back into view so the reader stays where they were.
+		const section = document.getElementById(`preacher-${slug}`);
+		if (section && section.getBoundingClientRect().top < 0)
+			section.scrollIntoView({ block: 'start' });
 	}
 
 	// A row states its writer only when no heading above it does.
@@ -305,16 +313,6 @@
 		{preacherCount}
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
 	{/snippet}
-
-	<!-- One sermon to start with, for a reader who doesn't yet know whom to
-	     read — the same weekly pick as the home page (page-design: a shelf's
-	     secondary section, hidden while the reader is filtering). Handed the
-	     shelf already loaded, so it doesn't fetch the list again. -->
-	{#if !filtering && !loadError && sermons.length}
-		<div class="mb-8">
-			<SermonOfTheWeek embedded {sermons} />
-		</div>
-	{/if}
 
 	<!-- Filter bar, pinned under the app nav (itself sticky, hence the
 	     --appnav-h offset) so the filters come WITH you — 24 preacher sections
@@ -396,6 +394,18 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- One sermon to start with, for a reader who doesn't yet know whom to
+	     read — the same weekly pick as the home page, hidden while the reader is
+	     filtering (page-design: a shelf's secondary section). BELOW the filter
+	     bar, not above it as the anatomy's order has it: hiding it on the first
+	     keystroke would otherwise yank the search box out from under the
+	     reader's typing. `reserve` holds its height until the pick lands. -->
+	{#if !filtering && !loadError && sermons.length}
+		<div class="mb-8">
+			<SermonOfTheWeek embedded reserve />
+		</div>
+	{/if}
 
 	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
 	     Books shelf; the shared component reuses the Books labels (the same "All
@@ -514,7 +524,7 @@
 						onclick={() => toggleSection(a.slug)}
 					>
 						{collapsed
-							? t('sermons.showAll').replace('%n%', String(g.items.length))
+							? t('bios.showMore').replace('%n%', String(g.items.length - PREVIEW))
 							: t('search.showLess')}
 					</button>
 				{/if}
@@ -536,6 +546,14 @@
 	.sermon-filter {
 		position: sticky;
 		top: var(--appnav-h, 0px);
+	}
+	@media (min-width: 640px) and (max-width: 767.98px) {
+		.sermon-shell {
+			--pinned-offset: var(--appnav-h, 0px);
+		}
+		.sermon-filter {
+			position: static;
+		}
 	}
 	/* One face in the preacher strip (the strip itself is the shared .cover-rail):
 	   portrait or initials over the name and count. */
