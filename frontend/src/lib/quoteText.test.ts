@@ -1,17 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { plainQuote, quoteRuns } from "./quoteText";
-
-describe("plainQuote", () => {
-  it("sets a typewriter double hyphen as an em dash", () => {
-    expect(
-      plainQuote("No man can pray -- really pray -- who does not obey."),
-    ).toBe("No man can pray — really pray — who does not obey.");
-  });
-
-  it("leaves capitals alone — plain text has no small caps to fall back to", () => {
-    expect(plainQuote("Our love to GOD")).toBe("Our love to GOD");
-  });
-});
+import { quoteRuns } from "./quoteText";
 
 describe("quoteRuns", () => {
   it("draws a capitalised divine name, possessive included, in small caps", () => {
@@ -45,9 +33,5 @@ describe("quoteRuns", () => {
     expect(quoteRuns("God is NOT mocked; GODLY fear.")).toEqual([
       { text: "God is NOT mocked; GODLY fear.", smallCaps: false },
     ]);
-  });
-
-  it("repairs dashes in the runs too", () => {
-    expect(quoteRuns("a -- b")).toEqual([{ text: "a — b", smallCaps: false }]);
   });
 });

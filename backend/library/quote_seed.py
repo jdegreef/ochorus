@@ -1726,7 +1726,7 @@ E_M_BOUNDS = [
     },
     {
         "slug": "e-m-bounds-d44f9cee",
-        "text": "To see God, to know God, and to live for God -- these form the objective of all true praying.",
+        "text": "To see God, to know God, and to live for God — these form the objective of all true praying.",
         "chapter": ("necessity-of-prayer", 5),
         "paragraph": 33,
     },
@@ -1738,7 +1738,7 @@ E_M_BOUNDS = [
     },
     {
         "slug": "e-m-bounds-7894b850",
-        "text": "No man can pray -- really pray -- who does not obey.",
+        "text": "No man can pray — really pray — who does not obey.",
         "chapter": ("necessity-of-prayer", 11),
         "paragraph": 16,
     },
@@ -1810,7 +1810,7 @@ E_M_BOUNDS = [
     },
     {
         "slug": "e-m-bounds-aaca3882",
-        "text": "The entire life of a Christian soldier -- its being, intention, implication and action -- are all dependent on its being a life of prayer.",
+        "text": "The entire life of a Christian soldier — its being, intention, implication and action — are all dependent on its being a life of prayer.",
         "chapter": ("necessity-of-prayer", 12),
         "paragraph": 30,
     },
