@@ -2,7 +2,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import type { AdminScope } from '$lib/adminAccess';
 	import { languageNames } from '$lib/adminHelp';
-	import { emailProblem, memberLanguages, sharedLanguages } from '$lib/adminTeam';
+	import { emailProblem, historyLanguages, memberLanguages, sharedLanguages, signInStatus } from '$lib/adminTeam';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { localeName } from '$lib/lang.svelte';
 	import {
@@ -10,6 +10,7 @@
 		grantAdminAccess,
 		revokeAdminAccess,
 		type AdminTeam,
+		type TeamHistoryItem,
 		type TeamMember
 	} from '$lib/library-admin';
 
@@ -65,6 +66,17 @@
 	}
 
 	const initial = (addr: string) => addr.trim().charAt(0).toUpperCase() || '?';
+	const TONE = { ok: 'bg-accent-soft text-accent', warn: 'bg-warning/10 text-warning', idle: 'bg-surface-2 text-muted' };
+	const day = (iso: string) => new Date(iso).toLocaleDateString('en', { day: 'numeric', month: 'short', year: 'numeric' });
+
+	/** One audit event as a sentence: what changed, not how it was stored. */
+	function historyLine(h: TeamHistoryItem, L: ReturnType<typeof labels>): string {
+		if (h.kind === 'revoke') return h.capability ? `Removed ${L.cap(h.capability)}` : 'Removed all access';
+		if (h.kind === 'restore') return 'Restored access (Undo)';
+		const what = h.role ? L.role(h.role) : h.capability ? L.cap(h.capability) : 'access';
+		const removed = h.removed.length ? `; removed ${h.removed.map(L.cap).join(', ')}` : '';
+		return `Granted ${what} in ${L.langs(historyLanguages(h.languages))}${removed}`;
+	}
 
 	async function grant() {
 		const addr = email.trim().toLowerCase();
@@ -283,6 +295,7 @@
 					<ul class="divide-y divide-border rounded-card border border-border bg-surface">
 						{#each team.members as m (m.email)}
 							{@const shared = sharedLanguages(m)}
+							{@const status = signInStatus(m)}
 							<li class="px-4 py-3">
 								<div class="flex items-start gap-3">
 									<span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-accent-soft text-small font-semibold text-accent" aria-hidden="true">{initial(m.email)}</span>
@@ -294,7 +307,9 @@
 												<span class="rounded-full border border-border-strong px-2 py-0.5 text-micro text-text">{L.lang(code)}</span>
 											{/each}
 										</div>
+										<span class="mt-1 inline-block rounded-full px-2 py-0.5 text-micro font-semibold sm:hidden {TONE[status.tone]}">{status.label}</span>
 									</div>
+									<span class="hidden shrink-0 rounded-full px-2 py-0.5 text-micro font-semibold sm:inline {TONE[status.tone]}">{status.label}</span>
 									<button type="button" onclick={() => openManage(m)} aria-expanded={editing?.email === m.email} disabled={busy[m.email]} class="shrink-0 rounded-full border border-border-strong px-3 py-0.5 text-small text-text hover:border-accent disabled:opacity-50">{busy[m.email] ? 'Working…' : editing?.email === m.email ? 'Close' : 'Manage'}</button>
 								</div>
 
@@ -340,6 +355,25 @@
 												{#if langsChange}Languages: {langsBefore ? L.langs(langsBefore) : 'mixed'} → {L.langs(changedLangs)}.{/if}
 											</p>
 										{/if}
+										<div class="mt-4 border-t border-border pt-3 text-small">
+											<p class="mb-2 flex flex-wrap justify-between gap-2">
+												<span class="font-semibold text-text">History</span>
+												{#if m.granted_by}<span class="text-muted">Last changed by {m.granted_by}</span>{/if}
+											</p>
+											{#if m.history.length}
+												<ol class="grid gap-1.5">
+													{#each m.history as h (h.id)}
+														<li class="grid gap-x-3 sm:grid-cols-[7rem_1fr]">
+															<span class="tabular-nums text-muted">{day(h.at)}</span>
+															<span class="text-text">{historyLine(h, L)}{#if h.actor}<span class="text-muted"> · by {h.actor}</span>{/if}</span>
+														</li>
+													{/each}
+												</ol>
+												<a href="/admin/activity?target={encodeURIComponent(`user:${m.email}`)}" class="mt-2 inline-block text-accent hover:underline">See all activity →</a>
+											{:else}
+												<p class="text-muted">No grant changes recorded{#if m.granted_at}&nbsp;since {day(m.granted_at)}{/if}. Grants made before the activity log existed have no history.</p>
+											{/if}
+										</div>
 										<div class="mt-4 flex flex-wrap items-center justify-between gap-3">
 											<button type="button" onclick={() => (confirming = { ...confirming, [m.email]: true })} class="text-small text-danger hover:underline">Remove all access…</button>
 											<span class="flex gap-2">
