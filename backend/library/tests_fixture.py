@@ -2471,14 +2471,19 @@ class SettledBodyIdempotenceTests(SimpleTestCase):
         for row in all_rows():
             f = row["fields"]
             body = f.get("body_html") or ""
+            # A body the first pass leaves unchanged is a fixed point by
+            # definition — settled(x) == x makes settled(settled(x)) the same
+            # call — so only the ~50 bodies settling still rewrites need the
+            # second pass. Same verdict, half the work: the double pass over all
+            # ~12,000 bodies was the slowest test in the backend suite.
             if row["model"] == "library.chapter":
                 slug = f["book"][0]
                 once = settled_chapter_body(slug, f["order"], body)
-                twice = settled_chapter_body(slug, f["order"], once)
+                twice = once if once == body else settled_chapter_body(slug, f["order"], once)
             elif row["model"] == "library.sermon":
                 slug = f["slug"]
                 once = settled_sermon_body(slug, body)
-                twice = settled_sermon_body(slug, once)
+                twice = once if once == body else settled_sermon_body(slug, once)
             else:
                 continue
             with self.subTest(model=row["model"], slug=slug):
