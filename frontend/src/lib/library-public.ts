@@ -1609,6 +1609,19 @@ export interface SavedQuote extends Quote {
  * are dropped by the server, so a saved quote that was pulled simply falls off
  * the shelf. Called only when there are quote favorites to resolve.
  */
+/** The /quotes index's featured pool — short reviewed quotes, writers interleaved. */
+export const listFeaturedQuotes = (f?: Fetch) =>
+	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
+
+/** A quotation's whole source paragraph, as plain text — "read it in context". */
+export interface QuoteContext {
+	slug: string;
+	paragraph_text: string;
+}
+
+export const getQuoteContext = (slug: string, f?: Fetch) =>
+	apiFetch<QuoteContext>(`/api/library/quotes/context/${slug}/`, {}, f);
+
 export const resolveQuotes = (slugs: string[]) =>
 	slugs.length
 		? apiFetch<SavedQuote[]>('/api/library/quotes/resolve/', {

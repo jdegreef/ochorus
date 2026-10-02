@@ -1545,6 +1545,90 @@ class QuoteAuthorsView(APIView):
         )
 
 
+#: The featured pool: up to this many quotes per author, each short enough to
+#: stand as the page's lead without truncation.
+FEATURED_PER_AUTHOR = 6
+FEATURED_MAX_CHARS = 160
+
+
+class QuoteFeaturedView(APIView):
+    """The pool the /quotes index draws its featured quotation from.
+
+    A small, stable list rather than one "quote of the day": the page is
+    prerendered, so the day's pick is made in the browser from this list (and
+    "Another quote" walks it) without a request per click. Up to
+    `FEATURED_PER_AUTHOR` short quotes per writer, interleaved round-robin so
+    consecutive days rotate writers. Within a writer the order is the quote
+    slug's — an author + content hash, so stable across deploys yet unrelated
+    to reading order. Reviewed only, as every quote view.
+    """
+
+    def get(self, request):
+        from django.db.models.functions import Length
+
+        from .models import Quote
+
+        rows = (
+            Quote.objects.filter(reviewed=True)
+            .annotate(chars=Length("text"))
+            .filter(chars__lte=FEATURED_MAX_CHARS)
+            .select_related("author", "chapter__book", "sermon")
+            .order_by("author__name", "slug")
+        )
+        by_author: dict[int, list] = {}
+        for q in rows:
+            picks = by_author.setdefault(q.author_id, [])
+            if len(picks) < FEATURED_PER_AUTHOR:
+                picks.append(q)
+        groups = list(by_author.values())
+        pool = [g[i] for i in range(FEATURED_PER_AUTHOR) for g in groups if i < len(g)]
+        return Response([_quote_card_payload(q) for q in pool])
+
+
+def quote_block_text(quote) -> str | None:
+    """The plain text of the block a quote's `paragraph` points at, AS SERVED.
+
+    `paragraph` is `body.children[p]` after `annotate_references` — the one
+    transform the chapter and sermon serializers apply — exactly as
+    `tests_quotes.QuoteResolutionTests` resolves it. None if the index no
+    longer lands (a work edited out from under its quote).
+    """
+    from bs4 import BeautifulSoup
+
+    from .scripture import annotate_references
+
+    body = quote.sermon.body_html if quote.sermon_id else quote.chapter.body_html
+    blocks = BeautifulSoup(f"<div>{annotate_references(body)}</div>", "lxml").div.find_all(
+        recursive=False
+    )
+    if not 0 <= quote.paragraph < len(blocks):
+        return None
+    return " ".join(blocks[quote.paragraph].get_text().split())
+
+
+class QuoteContextView(APIView):
+    """A quotation's whole source paragraph — "read it in context".
+
+    Plain text, not HTML: the card highlights the sentence inside it and links
+    on to the reader for the real page, so nothing here needs markup (and the
+    page needs no `{@html}`). Reviewed only; 404 for an unknown or unreviewed
+    slug, or a paragraph index that no longer resolves.
+    """
+
+    def get(self, request, quote):
+        from .models import Quote
+
+        q = (
+            Quote.objects.filter(slug=quote, reviewed=True)
+            .select_related("author", "chapter__book", "sermon")
+            .first()
+        )
+        text = quote_block_text(q) if q else None
+        if text is None:
+            raise Http404("No such quotation.")
+        return Response({"slug": q.slug, "paragraph_text": text})
+
+
 class _QuoteResolveThrottle(ScopedCacheThrottle):
     """Bounds the one unauthenticated POST on this module. The batch is already
     capped at 200 slugs, so a single call is a bounded read — but nothing stops a
