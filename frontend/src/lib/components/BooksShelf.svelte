@@ -20,6 +20,7 @@
 	import BookCover from './BookCover.svelte';
 	import SeriesCard from './SeriesCard.svelte';
 	import PageHeader from './PageHeader.svelte';
+	import LibraryTabs from './LibraryTabs.svelte';
 	import GroupHeading from './GroupHeading.svelte';
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
@@ -330,6 +331,7 @@
 {/snippet}
 
 <div class="page-col px-5 py-10">
+	<LibraryTabs current="books" series={series.length > 0} />
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
 		{books.length}
