@@ -59,6 +59,27 @@ EXPORT_PILOT = frozenset({
     ("the-key-in-my-hand", "pt"),
     ("the-key-in-my-hand", "sw"),
     ("the-key-in-my-hand", "uk"),
+    # The young-reader Ochorus Originals, in English: the four series under
+    # "For young readers" on /series, whose parents-and-teachers note points
+    # families at printable copies. Ochorus's own writing, so each carries a
+    # "© Ochorus … free to read and share" attribution (book_export.is_in_copyright)
+    # rather than the public-domain rights line.
+    ("brave-for-god", "en"),
+    ("brave-for-god-2", "en"),
+    ("brave-for-god-3", "en"),
+    ("brave-for-god-4", "en"),
+    ("daughters-of-the-king-1", "en"),
+    ("daughters-of-the-king-2", "en"),
+    ("daughters-of-the-king-3", "en"),
+    ("rooted-1", "en"),
+    ("rooted-2", "en"),
+    ("rooted-3", "en"),
+    ("rooted-4", "en"),
+    ("rooted-5", "en"),
+    ("rooted-6", "en"),
+    ("sons-of-the-king-1", "en"),
+    ("sons-of-the-king-2", "en"),
+    ("sons-of-the-king-3", "en"),
 })
 
 
