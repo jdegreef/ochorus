@@ -80,9 +80,27 @@
 			</SermonPlate>
 		</a>
 	</section>
+{:else if sermons?.length}
+	<!-- Holding the panel's place until the pick lands (it is chosen on mount,
+	     above), so a caller that heads its page with this panel — the sermons
+	     shelf — doesn't jump its whole list down a moment after load. Only when
+	     the caller handed over a non-empty shelf: then a pick is certain. -->
+	<div class="sotw-placeholder rounded-card border border-border bg-surface-2" aria-hidden="true"></div>
 {/if}
 
 <style>
+	/* The compact plate's resting height, measured: eyebrow, a one-line h2 and
+	   the byline on desktop (114px); at phone width (SermonPlate's 30rem
+	   breakpoint) the title wraps to two lines (166px). A very long title on a
+	   narrow phone can wrap to three, so a small shift is still possible there. */
+	.sotw-placeholder {
+		min-height: 7.125rem;
+	}
+	@media (max-width: 30rem) {
+		.sotw-placeholder {
+			min-height: 10.375rem;
+		}
+	}
 	/* The lift language (STYLE_GUIDE §5 → "Card hover"), hue-mixed like
 	   .shelf-card — but it cannot wear the shared .card-lift:hover, because the
 	   thing that lifts (the nested .sermon-plate) is not the thing that takes the
