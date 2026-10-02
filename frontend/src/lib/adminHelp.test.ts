@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { AdminScope } from './adminAccess';
 import { ABILITIES, hasAbility, humanize, languageNames } from './adminHelp';
@@ -73,5 +75,40 @@ describe('labels', () => {
 		expect(humanize('content_edit')).toBe('Content edit');
 		expect(languageNames(['es', 'xx'], { es: 'Spanish' })).toEqual(['Spanish', 'xx']);
 		expect(languageNames(['*'], {})).toEqual(['All languages']);
+	});
+});
+
+describe('mirrors the backend access model', () => {
+	// The checklist and the section list name capabilities and verbs by hand.
+	// Read the backend's own enums so a typo or a renamed capability fails here
+	// instead of quietly showing a wrong tick or a "Needs …" with no meaning.
+	const models = readFileSync(
+		resolve(import.meta.dirname, '../../../backend/accounts/models.py'),
+		'utf8'
+	);
+	const choices = (cls: string) => {
+		const body = models.split(`class ${cls}(models.TextChoices):`)[1]?.split(/\nclass |\n#: /)[0] ?? '';
+		return new Set([...body.matchAll(/^\s+[A-Z_]+ = "([a-z_]+)"/gm)].map((m) => m[1]));
+	};
+	const capabilities = choices('AdminCapability');
+	const verbs = choices('AdminVerb');
+
+	it('reads the enums', () => {
+		// Guard the guard: an empty parse would pass every check below.
+		expect(capabilities.size).toBeGreaterThanOrEqual(10);
+		expect([...verbs]).toEqual(['view', 'suggest', 'act', 'approve']);
+	});
+
+	it('names only real capabilities and verbs in the checklist', () => {
+		for (const a of ABILITIES.filter((a) => !a.superOnly)) {
+			expect(capabilities, a.label).toContain(a.capability);
+			expect(verbs, a.label).toContain(a.verb);
+		}
+	});
+
+	it('gates the sidebar sections on real capabilities', () => {
+		for (const s of ADMIN_SECTIONS.filter((s) => s.capability)) {
+			expect(capabilities, s.href).toContain(s.capability);
+		}
 	});
 });
