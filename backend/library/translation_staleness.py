@@ -32,13 +32,17 @@ Known limits, deliberately accepted:
 - An English change that ships in the SAME deploy as any change to a
   translation's own text re-baselines that translation (the usual case is an
   English-fix PR that fixes the translations alongside — which is right).
-- Any English change counts, a typo fix included. ``mark_current`` re-baselines
-  one translation once someone has checked it still matches.
+- Any English change counts, a typo fix included — except pure typography
+  (``typographic_form``: dashes, quotation marks, ellipses, entities,
+  whitespace), which is setting the same words differently. ``mark_current``
+  re-baselines one translation once someone has checked it still matches.
 """
 
 from __future__ import annotations
 
 import hashlib
+import html
+import re
 from collections.abc import Iterable
 
 from django.db import transaction
@@ -51,11 +55,38 @@ _MODEL = {"book": Book, "sermon": Sermon, "article": Article}
 _SEP = "\x1f"  # unit separator: can't occur in titles or HTML
 
 
+#: Typography the fingerprint ignores. Each is a way of SETTING the same
+#: words, not a change to them, and the corpus is repaired in exactly these
+#: ways in bulk: #4936 set 4,460 typewriter dashes as em dashes and flagged
+#: ~97 translations whose wording was untouched. A dash in any form (and the
+#: space around it), a quotation mark in any style, an ellipsis spelled out
+#: or as one glyph, an entity or its character, and runs of whitespace all
+#: fingerprint alike. Letters, case, digits, words and markup still count — a
+#: lowercased "GOD" or a restored paragraph IS a change a translation follows.
+_DASH = re.compile(r"\s*(?:[—–―‒]|-{2,})+\s*")
+_DOUBLE_QUOTE = re.compile(r"[“”„‟«»\"]")
+_SINGLE_QUOTE = re.compile(r"[‘’‚‛]")
+_SPACE = re.compile(r"\s+")
+
+
+def typographic_form(text: str) -> str:
+    """``text`` with its typography folded — what the fingerprint hashes."""
+    t = html.unescape(text or "").replace("…", "...")
+    t = _DASH.sub("—", t)
+    t = _DOUBLE_QUOTE.sub('"', t)
+    t = _SINGLE_QUOTE.sub("'", t)
+    return _SPACE.sub(" ", t).strip()
+
+
+def _update(h, part: str) -> None:
+    h.update(typographic_form(part).encode("utf-8"))
+    h.update(_SEP.encode())
+
+
 def _digest(parts: Iterable[str]) -> str:
     h = hashlib.sha256()
     for p in parts:
-        h.update((p or "").encode("utf-8"))
-        h.update(_SEP.encode())
+        _update(h, p)
     return h.hexdigest()
 
 
@@ -76,8 +107,7 @@ def _book_digests() -> dict[int, str]:
                 out[current] = h.hexdigest()
             current, h = book_id, hashlib.sha256()
         for p in (str(order), title, body):
-            h.update((p or "").encode("utf-8"))
-            h.update(_SEP.encode())
+            _update(h, p)
     if h is not None:
         out[current] = h.hexdigest()
     return out
