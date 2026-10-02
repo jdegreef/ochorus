@@ -2,13 +2,11 @@
 
 from __future__ import annotations
 
-import re
-
 from django.test import SimpleTestCase
 
 from library import corrections
 from library.content_fixtures import BOOKS_DIR, SERMONS_DIR
-from library.dashes import convert, count
+from library.dashes import FIXTURE_BODY_FIELD, convert, count
 
 
 class ConvertTests(SimpleTestCase):
@@ -39,6 +37,7 @@ class ConvertTests(SimpleTestCase):
         # A correction pair's half can start or end mid-comment.
         self.assertEqual(convert("note --><p>a--b"), "note --><p>a—b")
         self.assertEqual(convert("x<!-- note"), "x<!-- note")
+        self.assertEqual(convert("x<!-- a -- b"), "x<!-- a -- b")
 
     def test_idempotent(self):
         once = convert("a--b -- c----d")
@@ -46,10 +45,6 @@ class ConvertTests(SimpleTestCase):
 
     def test_count(self):
         self.assertEqual(count("<!-- -- --><p>a--b -- c</p>"), 2)
-
-
-#: A body field's JSON string value in a raw fixture file.
-_FIELD = re.compile(r'"(?:body_html|body_text)": "((?:[^"\\]|\\.)*)"')
 
 
 class CorpusTests(SimpleTestCase):
@@ -65,12 +60,26 @@ class CorpusTests(SimpleTestCase):
             raw = path.read_text(encoding="utf-8")
             if "--" not in raw:
                 continue
-            n = sum(count(m.group(1)) for m in _FIELD.finditer(raw))
+            n = sum(count(m.group(2)) for m in FIXTURE_BODY_FIELD.finditer(raw))
             if n:
                 offenders[path.name] = n
         self.assertEqual(
             offenders, {}, "run `uv run python scripts/normalize_dashes.py`"
         )
+
+    def test_no_quote_keys_a_typewriter_dash(self):
+        """A quote is its paragraph's sentence verbatim, so it is dashed too —
+        and the card no longer repairs one at display."""
+        from library import quote_seed
+
+        bad = [
+            q["slug"]
+            for value in vars(quote_seed).values()
+            if isinstance(value, list)
+            for q in value
+            if isinstance(q, dict) and "text" in q and count(q["text"])
+        ]
+        self.assertEqual(bad, [])
 
     def test_no_declared_string_keys_a_typewriter_dash(self):
         """The dash rule runs FIRST, so a declared string carrying "--" never

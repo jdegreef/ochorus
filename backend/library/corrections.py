@@ -1171,7 +1171,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # have already quoted" with a Job 1:21 that was never on the page.
     #
     # The importer keeps these lines now (`ingest.display_line`), and
-    # every English block below is spelled EXACTLY as it emits them: a line set
+    # every English block below is spelled EXACTLY as it emits them, after the
+    # typewriter-dash rule that runs ahead of the guard ("--" as "—"): a line set
     # wholly in capitals is an `<h3>` with the source's own wording and stops;
     # anything else is a `<p>`; a leading quotation is the epigraph
     # `<blockquote>`. So a re-import finds each one present and the guard
@@ -1383,8 +1384,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
     #
     # The importer keeps these now (`ingest.display_line`, and a line group
     # becomes one `<blockquote>` with `<br/>` between its lines), and every
-    # English block below is spelled EXACTLY as `extract_chapters` emits it —
-    # pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
+    # English block below is spelled EXACTLY as `extract_chapters` emits it
+    # (dashed, as the correction step sees it) — pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
     # re-import finds each present and the guard skips it. The stray “ opening
     # the June 17 dateline is the edition's own. In ch9 two lines precede the
     # same paragraph; `restore_dropped_blocks` inserts each directly before
@@ -5404,8 +5405,9 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     across 41 works was never going to be hand-written string pairs. So does the
     typewriter-dash rule (`library.dashes`), and it runs before everything else.
 
-    ORDER MATTERS. The declared replacements run FIRST, so a hand-written repair
-    always beats the rule. `the-inner-chamber` is the case that proves it: it
+    ORDER MATTERS. Apart from the dash rule, which is unambiguous and so runs
+    ahead of everything, the declared replacements run FIRST, so a hand-written
+    repair always beats a rule. `the-inner-chamber` is the case that proves it: it
     declares "the scales- only practice" -> "the scales — only practice", where
     the trailing hyphen is a DASH the extractor flattened, not a broken word.
     With the rule first, it closed to "scales-only", the declared pair no longer
@@ -9836,11 +9838,10 @@ BODY_CORRECTIONS.setdefault("homily-ii-on-the-statues", {}).setdefault("replacem
 ])
 # Newton's CCEL leaf splits the small-caps LORD like its drop caps.
 BODY_CORRECTIONS["i-know-that-my-redeemer-liveth"]["replacements"].append(("L ORD", "LORD"))
-# SermonIndex's transcription: spaced double hyphens for dashes, and the
-# printed small-caps opening typed as capitals.
+# SermonIndex's transcription: the printed small-caps opening typed as
+# capitals. (Its spaced double hyphens are the general dash rule's now.)
 BODY_CORRECTIONS.setdefault("electing-love", {}).setdefault("replacements", []).extend([
     ("THIS IS A VERY HUMBLING, and", "THIS is a very humbling, and"),
-    (" — ", "—"),
 ])
 
 # The SermonIndex transcript of Tozer's "How to Cultivate the Holy Spirit's

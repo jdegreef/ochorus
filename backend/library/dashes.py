@@ -32,8 +32,9 @@ from __future__ import annotations
 import re
 
 #: What passes through untouched: an HTML comment, then any tag. Comments first,
-#: so `<!-- a -- b -->` is skipped whole rather than ending at the first `>`.
-_SKIP = re.compile(r"<!--.*?-->|<[^>]*>", re.S)
+#: so `<!-- a -- b -->` is skipped whole rather than ending at the first `>`; a
+#: fragment that stops inside a comment skips to its end.
+_SKIP = re.compile(r"<!--.*?(?:-->|\Z)|<[^>]*>", re.S)
 
 #: A run of two or more hyphens. The guards keep a FRAGMENT safe where the
 #: comment is not wholly inside it: `<!--` and `-->` are never a dash.
@@ -46,7 +47,7 @@ def _dash(match: re.Match[str]) -> str:
 
 def convert(html: str) -> str:
     """Set every typewriter dash in ``html``'s prose as an em dash. Idempotent."""
-    if "--" not in html:
+    if not _RUN.search(html):
         return html
     out: list[str] = []
     pos = 0
@@ -56,6 +57,11 @@ def convert(html: str) -> str:
         pos = skip.end()
     out.append(_RUN.sub(_dash, html[pos:]))
     return "".join(out)
+
+
+#: A book or sermon body field's JSON string value, as it stands in a raw
+#: fixture file — shared by `scripts/normalize_dashes.py` and the corpus gate.
+FIXTURE_BODY_FIELD = re.compile(r'("(?:body_html|body_text)": ")((?:[^"\\]|\\.)*)(")')
 
 
 def count(html: str) -> int:
