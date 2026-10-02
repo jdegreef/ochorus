@@ -39,6 +39,15 @@ COPYRIGHT_BLOCKED_SLUGS: frozenset[str] = frozenset({
     "if",
 })
 
+
+def translation_blocked(job_type: str, slug: str) -> bool:
+    """Whether no translation may be made of ``(job_type, slug)``: a book under
+    copyright, whose translation would be a derivative of the protected English
+    edition. The one owner of that rule, shared by the job filer (which answers
+    451), the coverage matrix (which locks the cells) and the demand list (which
+    shows the work without a queue button)."""
+    return job_type == "book" and slug in COPYRIGHT_BLOCKED_SLUGS
+
 # Catalogue slugs to skip on a full import (e.g. duplicate/teen editions we don't
 # want in the library). An explicit `import_ochorus <slug>` still imports them.
 EXCLUDED_SLUGS: set[str] = {

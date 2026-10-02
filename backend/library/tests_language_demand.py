@@ -19,7 +19,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 from reading.models import ReadingProgress, WorkKind
 
-from .admin_views.demand import reading_elsewhere
+from .demand import readers_elsewhere, reading_elsewhere
 from .models import Author, Book, Language, SearchQueryLog, Sermon
 
 User = get_user_model()
@@ -60,19 +60,18 @@ class LanguageDemandTests(TestCase):
     def test_a_vote_is_a_reader_outside_their_language_on_a_work_it_lacks(self):
         wanted = reading_elsewhere(["sw", "lg"])
         self.assertEqual(
-            {work: len(ids) for work, ids in wanted["sw"].items()},
-            {("book", "the-pursuit-of-god"): 2, ("sermon", "waiting-on-god"): 1},
+            wanted["sw"], {("book", "the-pursuit-of-god"): 2, ("sermon", "waiting-on-god"): 1}
         )
-        self.assertEqual(
-            {work: len(ids) for work, ids in wanted["lg"].items()},
-            {("book", "the-pursuit-of-god"): 1},
-        )
+        self.assertEqual(wanted["lg"], {("book", "the-pursuit-of-god"): 1})
+        # sw1 wants two works but is one reader.
+        self.assertEqual(readers_elsewhere(["sw", "lg"]), {"sw": 2, "lg": 1})
 
     def test_english_is_never_a_target(self):
         self.assertNotIn("en", reading_elsewhere(["en", "sw"]))
 
     def test_the_language_page_lists_works_with_their_evidence(self):
-        SearchQueryLog.objects.create(query="pursuit", language="sw", result_count=0)
+        # Case-folded like the search report: these are one query, asked twice.
+        SearchQueryLog.objects.create(query="Pursuit", language="sw", result_count=0)
         SearchQueryLog.objects.create(query="pursuit", language="sw", result_count=0)
         hit = {"type": "book", "book_slug": "the-pursuit-of-god", "book_title": "The Pursuit of God"}
         with mock.patch("library.search.search_library", return_value=[hit]) as search:

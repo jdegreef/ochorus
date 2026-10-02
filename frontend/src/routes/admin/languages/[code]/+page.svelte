@@ -4,6 +4,7 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
+	import { workPath } from '$lib/editionHref';
 	import {
 		type SourceType
 	} from '$lib/library-public';
@@ -751,7 +752,7 @@
 								<li class="flex items-center justify-between gap-3 py-2.5">
 									<div class="min-w-0">
 										<p class="truncate text-body">
-											<span class="font-semibold text-text">{w.title}</span>{#if w.author}<span class="text-small text-muted"
+											<a href={workPath(w.type, w.slug)} class="font-semibold text-text hover:text-accent">{w.title}</a>{#if w.author}<span class="text-small text-muted"
 													>{` · ${w.author}`}</span
 												>{/if}
 											{#if w.type !== 'book'}<span class="text-micro text-muted">{` · ${w.type}`}</span>{/if}

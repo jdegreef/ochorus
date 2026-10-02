@@ -25,8 +25,8 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import readiness
+from ..demand import readers_elsewhere
 from ..models import Book, Chapter, Language, Sermon
-from .demand import reading_elsewhere
 
 # What the composite weighs, and by how much (weights sum to 1). Readiness leads
 # — a language that fails its go-live bar isn't serving readers whatever else is
@@ -57,10 +57,7 @@ class AdminLanguageHealthView(APIView):
         # Readers whose site language this is, reading a work it has no edition
         # of. Shown beside the score, not folded into it, so the score keeps
         # its meaning; the language page lists the works themselves.
-        elsewhere = {
-            code: len(set().union(*works.values()))
-            for code, works in reading_elsewhere([lang.code for lang in languages]).items()
-        }
+        elsewhere = readers_elsewhere([lang.code for lang in languages])
 
         # Coverage is measured against the source language's published shelf — the
         # ceiling any translation is working toward.

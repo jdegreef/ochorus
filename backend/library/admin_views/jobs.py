@@ -31,7 +31,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
-from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..corrections import translation_blocked
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -285,7 +285,7 @@ class AdminTranslationJobsView(AdminAudited, APIView):
         if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
             return Response({"detail": "invalid slug."}, status=status.HTTP_400_BAD_REQUEST)
 
-        if type_ == "book" and slug in COPYRIGHT_BLOCKED_SLUGS:
+        if translation_blocked(type_, slug):
             # A translation of a protected English edition is a derivative of it;
             # three shipped this way before this check existed (2026-09-24).
             return Response(

@@ -18,7 +18,7 @@ from accounts.permissions import requires
 
 from .. import translation_staleness
 from ..audit import AdminAudited
-from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..corrections import translation_blocked
 from ..languages import known_codes
 from ..models import (
     AdminAction,
@@ -748,7 +748,7 @@ class AdminCoverageView(APIView):
             # Under copyright: every edition stays unpublished and the job filer
             # refuses a translation (451), so its missing cells aren't gaps —
             # the matrix shows them locked instead of offering a queue button.
-            if row["slug"] in COPYRIGHT_BLOCKED_SLUGS:
+            if translation_blocked("book", row["slug"]):
                 row["blocked"] = True
         return rows
 

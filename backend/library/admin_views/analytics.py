@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
+from ..demand import failed_queries
 from ..models import Article, Author, Book, SearchClickLog, Sermon
 from ..views import _language_entry
 
@@ -951,18 +952,9 @@ class AdminSearchView(APIView):
         # Scoped to those ten languages so the fetched rows stay bounded by the
         # report rather than by how many distinct things readers have ever
         # failed to find.
-        per_language: dict[str, list[dict]] = {r["language"]: [] for r in worst}
-        for r in (
-            window.filter(result_count=0, language__in=list(per_language))
-            .annotate(q=Lower("query"), qlen=Length("query"))
-            .filter(qlen__gte=3)
-            .values("language", "q")
-            .annotate(count=Count("id"))
-            .order_by("-count", "q")
-        ):
-            queries = per_language[r["language"]]
-            if len(queries) < 10:
-                queries.append({"query": r["q"], "count": r["count"]})
+        per_language = failed_queries(
+            [r["language"] for r in worst], since=now - timedelta(days=30), limit=10
+        )
 
         unanswered = [
             {
@@ -1015,33 +1007,6 @@ class AdminSearchView(APIView):
         )
 
 
-# A search hit reduced to the translatable WORK behind it, named the way the
-# translation queue names it: a chapter is its book; an author is a bio job.
-# type -> (job_type, slug field, title field) on the hit.
-_GAP_WORK = {
-    "book": ("book", "book_slug", "book_title"),
-    "chapter": ("book", "book_slug", "book_title"),
-    "sermon": ("sermon", "sermon_slug", "sermon_title"),
-    "plan": ("plan", "plan_slug", "plan_title"),
-    "author": ("bio", "author_slug", "author_name"),
-    "topic": ("topic", "topic_slug", "topic_title"),
-    "article": ("article", "article_slug", "article_title"),
-}
-
-
-def _gap_work(hit: dict) -> dict | None:
-    """One search hit as a queueable work, or None for a hit that isn't one
-    (a scripture navigational row, or anything missing a slug)."""
-    spec = _GAP_WORK.get(hit.get("type"))
-    if spec is None:
-        return None
-    job_type, slug_key, title_key = spec
-    slug = hit.get(slug_key)
-    if not slug:
-        return None
-    return {"type": job_type, "slug": slug, "title": hit.get(title_key) or slug}
-
-
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminSearchGapView(APIView):
     """For one unanswered query: does the library have it in another language?
@@ -1066,7 +1031,7 @@ class AdminSearchGapView(APIView):
 
     def get(self, request):
         from ..languages import live_codes
-        from ..search import MIN_QUERY_LEN, count_by_type, search_library
+        from ..search import MIN_QUERY_LEN, count_by_type, hit_work, search_library
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
@@ -1094,7 +1059,7 @@ class AdminSearchGapView(APIView):
             # extra work to the few that qualify (the counters above already
             # scanned every language; this adds a full search only where it pays).
             for hit in search_library(q, code):
-                work = _gap_work(hit)
+                work = hit_work(hit)
                 if work is None:
                     continue
                 entry = works.setdefault((work["type"], work["slug"]), {**work, "languages": []})
