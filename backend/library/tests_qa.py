@@ -174,3 +174,39 @@ class LooseTextTests(TestCase):
         self.assertTrue(snip.endswith("…"))
         self.assertLessEqual(len(snip), qa.LOOSE_SNIPPET + 1)
         self.assertEqual(qa.loose_snippet(["short"]), "short")
+
+
+class LengthBucketTests(TestCase):
+    """`length_bucket` feeds the audit's chapter-length chart. Its flagged bars
+    must hold exactly the chapters `chapter_flags` flags, or the chart and the
+    Tiny / Giant checks beside it would disagree about the same chapters."""
+
+    def test_edges_are_increasing_and_carry_both_thresholds(self):
+        edges = qa.LENGTH_EDGES
+        self.assertEqual(list(edges), sorted(set(edges)))
+        self.assertIn(qa.TINY_MAX, edges)
+        self.assertIn(qa.GIANT_MIN, edges)
+
+    def test_boundaries(self):
+        tiny_edge = qa.LENGTH_EDGES.index(qa.TINY_MAX)
+        giant_edge = qa.LENGTH_EDGES.index(qa.GIANT_MIN)
+        self.assertEqual(qa.length_bucket(1), 0)
+        self.assertEqual(qa.length_bucket(qa.TINY_MAX - 1), tiny_edge)
+        self.assertEqual(qa.length_bucket(qa.TINY_MAX), tiny_edge + 1)
+        # Exactly GIANT_MIN is not giant: it closes the bar below the line.
+        self.assertEqual(qa.length_bucket(qa.GIANT_MIN), giant_edge)
+        self.assertEqual(qa.length_bucket(qa.GIANT_MIN + 1), giant_edge + 1)
+        self.assertEqual(qa.length_bucket(10**6), len(qa.LENGTH_EDGES))
+
+    def test_flagged_buckets_match_chapter_flags(self):
+        # Located by edge, not by position, so moving a threshold can't break it.
+        tiny_edge = qa.LENGTH_EDGES.index(qa.TINY_MAX)
+        giant_edge = qa.LENGTH_EDGES.index(qa.GIANT_MIN)
+        probes = {1, 10**6}
+        for e in qa.LENGTH_EDGES:
+            probes |= {e - 1, e, e + 1}
+        for wc in sorted(probes):
+            flags = qa.chapter_flags("Title", wc, "Body.", "<p>Body.</p>", False)
+            b = qa.length_bucket(wc)
+            self.assertEqual(b <= tiny_edge, "tiny" in flags, wc)
+            self.assertEqual(b > giant_edge, "giant" in flags, wc)

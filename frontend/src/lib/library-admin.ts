@@ -966,7 +966,8 @@ export interface AdminAudit {
 			article?: string;
 		}>;
 	};
-	/** Content languages that have any finding — computed over the unfiltered
+	/** Content languages that have any finding or any non-empty chapter (so a
+	 *  clean edition's length chart is reachable) — computed over the unfiltered
 	 *  result, so the picker is stable whatever `language` is selected. */
 	languages: string[];
 	/** Registry-sourced display names for `languages`, so an edition an admin
@@ -977,6 +978,22 @@ export interface AdminAudit {
 	/** ISO timestamp of the (possibly cached) scan this result was built from —
 	 *  the "last run" the page shows. */
 	scanned_at: string;
+	/** Chapter-length histogram for the edition in view. Optional: a payload
+	 *  restored from sessionStorage may predate it. */
+	chapter_lengths?: ChapterLengths;
+}
+
+/** Non-empty chapters bucketed by word count (backend `qa.length_bucket`).
+ *  `counts` has one more entry than `edges`: bucket i spans edges[i-1]..edges[i],
+ *  the first is open below and the last open above. Both thresholds are always
+ *  among the edges — they come from qa.py, never from this file. */
+export interface ChapterLengths {
+	edges: number[];
+	counts: number[];
+	/** Under this many words a chapter is flagged tiny. */
+	tiny_max: number;
+	/** Over this many words a chapter is flagged giant. */
+	giant_min: number;
 }
 
 /**
