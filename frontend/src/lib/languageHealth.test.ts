@@ -1,5 +1,14 @@
 import { describe, expect, it } from 'vitest';
-import { blockers, countLine, healthBand, nextActions, plural, pointsBreakdown } from './languageHealth';
+import {
+	blockers,
+	checkLabels,
+	countLine,
+	healthBand,
+	nextActions,
+	plural,
+	pointsBreakdown,
+	type CoverageShelf
+} from './languageHealth';
 import type { AdminLanguageHealth, HealthWeights } from './library-admin';
 
 const WEIGHTS: HealthWeights = { readiness: 0.35, coverage: 0.3, review: 0.2, engagement: 0.15 };
@@ -117,5 +126,75 @@ describe('countLine', () => {
 	it('gives the counts behind coverage and review', () => {
 		expect(countLine('coverage', french(), 179)).toBe('53 of 179 books');
 		expect(countLine('review', french(), 179)).toBe('3 of 53 reviewed');
+	});
+});
+
+// English's shelf from the screenshot, under the recommended mix.
+const SHELF: CoverageShelf = {
+	mix: { books: 0.5, sermons: 0.25, bios: 0.15, plans: 0.1 },
+	source: { books: 179, sermons: 198, bios: 99, plans: 36 }
+};
+
+describe('coverage across content kinds', () => {
+	it('shows each kind as a share of the source shelf', () => {
+		expect(countLine('coverage', french(), 179, 25, SHELF)).toBe(
+			'books 30% · sermons 29% · bios 62% · plans 31%'
+		);
+	});
+
+	it('names what is missing and prices one book at its share of the mix', () => {
+		const l = french({ scores: { ...french().scores, coverage: 0.343 } });
+		const cov = nextActions(l, 179, WEIGHTS, SHELF).find((a) => a.key === 'coverage')!;
+		expect(cov.label).toBe('Translate the missing content (126 books, 141 sermons, 38 bios, 25 plans)');
+		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 179);
+		// Books cost the most points, so the button opens them.
+		expect(cov.href).toBe('/admin/languages/fr#sec-books');
+	});
+
+	it('uses the singular for one missing item, and points at the costliest gap', () => {
+		const l = french({
+			content: { ...french().content, published_books: 179, sermons: 197, bios: 60, plans: 35 },
+			scores: { ...french().scores, coverage: 0.93 }
+		});
+		const cov = nextActions(l, 179, WEIGHTS, SHELF).find((a) => a.key === 'coverage')!;
+		expect(cov.label).toBe('Translate the missing content (1 sermon, 39 bios, 1 plan)');
+		expect(cov.href).toBe('/admin/languages/fr#sec-bios');
+		// Every book is here, so another book is worth nothing.
+		expect(cov.perUnit).toBeNull();
+	});
+
+	it('says so when there is no English shelf to compare against', () => {
+		const empty = { ...SHELF, source: { books: 0, sermons: 0, bios: 0, plans: 0 } };
+		expect(countLine('coverage', french(), 0, 25, empty)).toBe('no English shelf to compare');
+	});
+
+	it('leaves out a kind the source shelf has none of', () => {
+		const noPlans = { ...SHELF, source: { ...SHELF.source, plans: 0 } };
+		expect(countLine('coverage', french(), 179, 25, noPlans)).toBe('books 30% · sermons 29% · bios 62%');
+		const cov = nextActions(french(), 179, WEIGHTS, noPlans).find((a) => a.key === 'coverage')!;
+		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 0.9 / 179);
+	});
+});
+
+describe('checkLabels', () => {
+	const check = (key: string, label: string) => ({
+		key,
+		label,
+		status: 'fail' as const,
+		detail: '',
+		current: null,
+		required: null
+	});
+
+	it("names each blocking check by its report's own label", () => {
+		const r = {
+			blocking: ['ui', 'bios'],
+			checks: [check('ui', 'Interface strings'), check('bios', 'Biographies'), check('books', 'Books')]
+		};
+		expect(checkLabels(r, r.blocking)).toEqual(['Interface strings', 'Biographies']);
+	});
+
+	it('falls back to the key for a check the report does not list', () => {
+		expect(checkLabels({ checks: [] }, ['new-check'])).toEqual(['new-check']);
 	});
 });
