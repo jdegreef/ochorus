@@ -120,6 +120,14 @@
 					{#if blurb}
 						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{blurb}</p>
 					{/if}
+					{#if g.audience === 'young_readers'}
+						<!-- The adult choosing for a child: free, no account, and how
+						     a family or a class might use these books. -->
+						<aside class="parents-note mb-5 max-w-2xl">
+							<h3 class="text-small font-semibold text-text">{t('series.parentsHeading')}</h3>
+							<p class="mt-1 text-small text-muted">{t('series.parentsBody')}</p>
+						</aside>
+					{/if}
 				{/if}
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{#each g.series as s (s.slug)}
@@ -138,6 +146,12 @@
 <style>
 	/* Jump targets clear the pinned app nav (the authors and biographies
 	   indexes' group sections use the same recipe). */
+	.parents-note {
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		padding: 0.85rem 1rem;
+	}
 	.jump-anchor {
 		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
 	}

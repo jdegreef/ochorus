@@ -10,7 +10,7 @@
 		splitSeriesTitle,
 		cardLanguages
 	} from '$lib/series';
-	import { contentLang } from '$lib/reading';
+	import { contentLang, readingMinutes } from '$lib/reading';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
@@ -71,6 +71,19 @@
 		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
+	// How the series reads, at a glance (the full card): in order or as a set,
+	// and a chapter's time — a chapter a day, at this reader's own pace once
+	// it has settled (200 wpm before). Each part only when the API sends it.
+	const orderLabel = $derived(
+		compact || series.ordered === undefined
+			? ''
+			: series.ordered
+				? t('series.inOrder')
+				: t('series.anyOrder')
+	);
+	const perDay = $derived(
+		!compact && series.chapter_words ? readingMinutes(series.chapter_words) : 0
+	);
 	// The languages the series can be read in, the reader's own first: a
 	// multilingual library's best fact about a series, and already in the list
 	// payload (for hreflang). Only drawn when there is more than one, and capped
@@ -134,6 +147,13 @@
 		<!-- Ink, not accent: the whole card is one link, and an indigo line
 		     inside it read as a second one that went nowhere. -->
 		<p class="mt-0.5 text-small font-medium text-text">{ages}</p>
+	{/if}
+	{#if orderLabel || perDay}
+		<p class="series-facts mt-1 text-small text-muted">
+			{#if orderLabel}<span class="whitespace-nowrap">{orderLabel}</span>{/if}
+			{#if orderLabel && perDay}{' '}<span class="opacity-50">·</span>{' '}{/if}
+			{#if perDay}<span class="whitespace-nowrap">~{perDay} {t('plans.minPerDay')}</span>{/if}
+		</p>
 	{/if}
 	{#if !compact && langs.shown.length}
 		<p class="mt-1.5 flex flex-wrap items-center gap-1" dir="ltr">

@@ -9,7 +9,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, F, Prefetch, Q
+from django.db.models import Count, F, Prefetch, Q, Sum
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -690,6 +690,14 @@ def _series_for(series) -> dict:
     return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
 
 
+def _chapter_words(length: dict | None) -> int | None:
+    """A series' average words per chapter, or None when it has no chapters
+    with text (an import in progress) — the card then draws no minutes."""
+    if not length or not length["chapters"] or not length["words"]:
+        return None
+    return round(length["words"] / length["chapters"])
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -698,8 +706,9 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     as for topics).
 
     Each row carries its first four covers in reading order, for the card's fan,
-    every book's slug (the card's progress) and title (its book list), and the
-    languages it has a page in — the index's hreflang is their union.
+    every book's slug (the card's progress) and title (its book list), the
+    languages it has a page in — the index's hreflang is their union — and
+    its format: whether it reads in order, and its words per chapter.
     Both are read in bulk for the whole list rather than per series.
     """
 
@@ -722,6 +731,17 @@ class SeriesListView(PublicContentCacheMixin, APIView):
         ):
             members.setdefault(book.series_id, []).append(book)
         held = _held_languages(members)
+        # Words per chapter, per series — the card's "~N min/day" (a chapter a
+        # day). One aggregate over every listed book's chapters, not a count
+        # per series.
+        lengths = {
+            row["book__series_id"]: row
+            for row in Chapter.objects.filter(
+                book_id__in=[b.pk for books in members.values() for b in books]
+            )
+            .values("book__series_id")
+            .annotate(words=Sum("word_count"), chapters=Count("id"))
+        }
         rows = []
         for series in Series.objects.filter(pk__in=members).prefetch_related("translations"):
             title = series.title_for(language)
@@ -742,6 +762,10 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # this series" list names every volume, not just the fan's.
                         "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
+                        # Read in order (volume numbers), or a collection — the
+                        # same test the series page makes.
+                        "ordered": any(b.series_position is not None for b in books),
+                        "chapter_words": _chapter_words(lengths.get(series.pk)),
                     }
                 )
         return Response(rows)

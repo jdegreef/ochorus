@@ -1324,6 +1324,12 @@ export interface SeriesSummary extends SeriesFor {
 	/** Every book's title, in the same order as `books` — the card's book list.
 	 *  Optional: an API behind this build omits it, and no list is drawn. */
 	titles?: string[];
+	/** Read in order (volume numbers) or a collection; optional from an API
+	 *  behind this build, which then draws no order line. */
+	ordered?: boolean;
+	/** Average words per chapter — the card's "~N min/day"; null with no
+	 *  chapter text yet. */
+	chapter_words?: number | null;
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
 }
