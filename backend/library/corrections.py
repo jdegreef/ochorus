@@ -20,6 +20,7 @@ import re as _re
 from collections.abc import Sequence
 from html import escape as _escape
 
+from library import dashes
 from library.text import html_to_text
 
 # NOT public domain (copyright audit 2026-07-10), and no permission: Watchman
@@ -1170,7 +1171,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
     # have already quoted" with a Job 1:21 that was never on the page.
     #
     # The importer keeps these lines now (`ingest.display_line`), and
-    # every English block below is spelled EXACTLY as it emits them: a line set
+    # every English block below is spelled EXACTLY as it emits them, after the
+    # typewriter-dash rule that runs ahead of the guard ("--" as "—"): a line set
     # wholly in capitals is an `<h3>` with the source's own wording and stops;
     # anything else is a `<p>`; a leading quotation is the epigraph
     # `<blockquote>`. So a re-import finds each one present and the guard
@@ -1340,10 +1342,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "restored_blocks": [
             # en
             ("<p>We might naturally have",
-             '<blockquote><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>--LUKE ix. 23.</blockquote>'),
+             '<blockquote><em>"If any man will come after Me, let him deny himself, and take up his cross daily, and follow Me.</em>—LUKE ix. 23.</blockquote>'),
             # sw
             ('<p>Kwa kawaida tungeweza kudhani',
-             '<blockquote><em>"Mtu ye yote akitaka kunifuata, na ajikane mwenyewe, ajitwike msalaba wake kila siku, anifuate.</em>--LUKA 9:23.</blockquote>'),
+             '<blockquote><em>"Mtu ye yote akitaka kunifuata, na ajikane mwenyewe, ajitwike msalaba wake kila siku, anifuate.</em>—LUKA 9:23.</blockquote>'),
             # fr
             ("<p>Nous aurions pu tout naturellement penser",
              "<blockquote><em>« Si quelqu’un veut venir après moi, qu’il renonce à lui-même, qu’il se charge chaque jour de sa croix, et qu’il me suive. »</em> — Luc 9:23.</blockquote>"),
@@ -1353,10 +1355,10 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "restored_blocks": [
             # en
             ("<p>How pleasant to the heart",
-             '<blockquote><em>"The LORD GOD is a Sun and Shield:<br/> the LORD will give grace and glory:<br/> "No good thing will He withhold from them<br/> that walk uprightly."<br/></em>--PSALM LXXXIV. 11.</blockquote>'),
+             '<blockquote><em>"The LORD GOD is a Sun and Shield:<br/> the LORD will give grace and glory:<br/> "No good thing will He withhold from them<br/> that walk uprightly."<br/></em>—PSALM LXXXIV. 11.</blockquote>'),
             # sw
             ('<p>Jinsi inavyopendeza moyo wa',
-             '<blockquote><em>"BWANA MUNGU ni Jua na Ngao:<br/> BWANA atatoa neema na utukufu:<br/> "Hatawanyima kitu chema<br/> hao waendao kwa unyofu."<br/></em>--ZABURI 84:11.</blockquote>'),
+             '<blockquote><em>"BWANA MUNGU ni Jua na Ngao:<br/> BWANA atatoa neema na utukufu:<br/> "Hatawanyima kitu chema<br/> hao waendao kwa unyofu."<br/></em>—ZABURI 84:11.</blockquote>'),
         ],
     },
     "under-the-shepherds-care": {
@@ -1382,8 +1384,8 @@ BODY_CORRECTIONS: dict[str, dict] = {
     #
     # The importer keeps these now (`ingest.display_line`, and a line group
     # becomes one `<blockquote>` with `<br/>` between its lines), and every
-    # English block below is spelled EXACTLY as `extract_chapters` emits it —
-    # pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
+    # English block below is spelled EXACTLY as `extract_chapters` emits it
+    # (dashed, as the correction step sees it) — pinned by `tests_import.BrainerdRestoredBlocksMatchImporterTests` — so a
     # re-import finds each present and the guard skips it. The stray “ opening
     # the June 17 dateline is the edition's own. In ch9 two lines precede the
     # same paragraph; `restore_dropped_blocks` inserts each directly before
@@ -3813,7 +3815,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>In our meditations on the", "<h3>INTRODUCTORY.</h3>"),
             ("<p>In the 8th verse of the", "<h3>GOD'S TESTIMONY AND CHALLENGE.</h3>"),
             ("<p>In the 8th verse of the",
-             '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the Name of the LORD</em>."--Job i.21.</p>'),
+             '<p><em>"The LORD gave, and the LORD hath taken away; blessed be the Name of the LORD</em>."—Job i.21.</p>'),
             ("<p>The reply of Satan is noteworthy.", "<h3>THE UNSEEN HEDGE.</h3>"),
             ("<p>Reverting to the history", "<h3>THE TESTING OF JOB</h3>"),
             ("<p>And soon Satan showed the", "<h3>SATAN'S MALIGNITY.</h3>"),
@@ -3863,7 +3865,7 @@ BODY_CORRECTIONS: dict[str, dict] = {
             ("<p>Katika mstari wa 8 wa sura",
              "<h3>USHUHUDA NA CHANGAMOTO YA MUNGU.</h3>"),
             ("<p>Katika mstari wa 8 wa sura",
-             '<p><em>"BWANA alitoa, na BWANA ametwaa; jina la BWANA na lihimidiwe</em>."--Ayubu 1:21.</p>'),
+             '<p><em>"BWANA alitoa, na BWANA ametwaa; jina la BWANA na lihimidiwe</em>."—Ayubu 1:21.</p>'),
             ("<p>Jibu la Shetani lastahili", "<h3>BOMA LISILOONEKANA.</h3>"),
             ("<p>Kurudi katika historia", "<h3>KUJARIBIWA KWA AYUBU</h3>"),
             ("<p>Na mara Shetani alionyesha", "<h3>UBAYA WA SHETANI.</h3>"),
@@ -5389,10 +5391,12 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
 
     The line-break hyphen rejoin runs for EVERY work, not just those with a
     declared entry: it is a rule, not a list, which is the point — 434 instances
-    across 41 works was never going to be hand-written string pairs.
+    across 41 works was never going to be hand-written string pairs. So does the
+    typewriter-dash rule (`library.dashes`), and it runs before everything else.
 
-    ORDER MATTERS. The declared replacements run FIRST, so a hand-written repair
-    always beats the rule. `the-inner-chamber` is the case that proves it: it
+    ORDER MATTERS. Apart from the dash rule, which is unambiguous and so runs
+    ahead of everything, the declared replacements run FIRST, so a hand-written
+    repair always beats a rule. `the-inner-chamber` is the case that proves it: it
     declares "the scales- only practice" -> "the scales — only practice", where
     the trailing hyphen is a DASH the extractor flattened, not a broken word.
     With the rule first, it closed to "scales-only", the declared pair no longer
@@ -5409,6 +5413,13 @@ def apply_body_corrections(slug: str, order: int | None, body_html: str) -> str:
     a-retrospect MIDI note). Back matter is cut before `wrapped_blocks` wraps,
     so a wrap can never run on into a tail that is about to go.
     """
+    # Typewriter dashes FIRST, unlike the rules below. It is unambiguous — a run
+    # of hyphens in prose is always a dash — so there is no hand-written repair
+    # for it to beat, and running it first means every declared string is
+    # written against the dashed text: a raw re-import and a settled row both
+    # reach the pairs carrying "—", never "--". `test_no_declared_string_keys_a_
+    # typewriter_dash` holds the table to that.
+    body_html = dashes.convert(body_html)
     entry = BODY_CORRECTIONS.get(slug)
     if entry:
         for old, new in entry.get("replacements", []):
@@ -5802,12 +5813,12 @@ BODY_CORRECTIONS.setdefault("evening-by-evening", {}).setdefault("replacements",
     ("<i>weeping</i>“.", "<i>weeping</i>”."),
     ("said nots</i>“ ", "said nots</i>” "),
     (". “<i>If</i>“ ", ". “<i>If</i>” "),
-    ("me--“<i>if</i>“ ", "me--“<i>if</i>” "),
-    ("temptation--“<i>if</i>“ ", "temptation--“<i>if</i>” "),
-    ("--“<i>if</i>“ ", "--“<i>if</i>” "),
+    ("me—“<i>if</i>“ ", "me—“<i>if</i>” "),
+    ("temptation—“<i>if</i>“ ", "temptation—“<i>if</i>” "),
+    ("—“<i>if</i>“ ", "—“<i>if</i>” "),
     (", “<i>if</i>“ ", ", “<i>if</i>” "),
     (" “<i>and</i>“ ", " “<i>and</i>” "),
-    ("<i>Christ</i>“-", "<i>Christ</i>”-"),
+    ("<i>Christ</i>“—", "<i>Christ</i>”—"),
 ])
 # grace-for-grace-2: “it is finished. “Many — the closer's space on the wrong side; and “presentings, left open.
 BODY_CORRECTIONS.setdefault("grace-for-grace-2", {}).setdefault("replacements", []).extend([
@@ -5827,13 +5838,17 @@ BODY_CORRECTIONS.setdefault("let-us-pray-2", {}).setdefault("replacements", []).
 # life-and-diary-of-david-brainerd: a stray “ after one of its 160 dated entries ("<i>Nov. 4.</i>—" everywhere else).
 BODY_CORRECTIONS.setdefault("life-and-diary-of-david-brainerd", {}).setdefault("replacements", []).extend([
     ("<i>Nov. 4.</i>“—", "<i>Nov. 4.</i>—"),
+    # The one dash in the corpus split across a tag ("Oct. 26.-</i>-“"), which
+    # the typewriter-dash rule rightly cannot see: set it as the book sets the
+    # other dated entries. Numeric, so it bites the sw edition's "Okt. 26." too.
+    ("26.-</i>-“", "26.</i>—“"),
 ])
 # morning-by-morning: “Nevertheless“--, “shall be filled“, “taste“, “thou“--.
 BODY_CORRECTIONS.setdefault("morning-by-morning", {}).setdefault("replacements", []).extend([
-    ("Nevertheless</i>“-", "Nevertheless</i>”-"),
+    ("Nevertheless</i>“—", "Nevertheless</i>”—"),
     ("be filled</i>“ ", "be filled</i>” "),
     ("<i>taste</i>“ ", "<i>taste</i>” "),
-    ("“<i>thou</i>“-", "“<i>thou</i>”-"),
+    ("“<i>thou</i>“—", "“<i>thou</i>”—"),
 ])
 # order-and-argument-in-prayer: a “…thy will.“ closer (en, pt, sw).
 BODY_CORRECTIONS.setdefault("order-and-argument-in-prayer", {}).setdefault("replacements", []).extend([
@@ -5846,7 +5861,7 @@ BODY_CORRECTIONS.setdefault("our-daily-walk", {}).setdefault("replacements", [])
     (" “I AM _____ “ ", " “I AM _____” "),
     (" conquerors! “ ", " conquerors!” "),
     ("running over “ ", "running over” "),
-    ("Abide in Me</b>“-", "Abide in Me</b>”-"),
+    ("Abide in Me</b>“—", "Abide in Me</b>”—"),
 ])
 # purpose-in-prayer: a “…kicked you out?“ closer.
 BODY_CORRECTIONS.setdefault("purpose-in-prayer", {}).setdefault("replacements", []).extend([
@@ -7534,7 +7549,7 @@ _FINNEY_MEMOIRS_PAIRS: list[tuple[str, str]] = [
     ("me, ^' Will", 'me, " Will'),
     ('cried, ^^ :N"o !', 'cried, " No !'),
     ('of G-od had', 'of God had'),
-    ('soul. ^^-. --_-- - In', 'soul. In'),
+    ('soul. ^^-. —_— - In', 'soul. In'),
     ('the d^c^jme^ofjustification by', 'the doctrine of justification by'),
     ('present experiejice^_\\That doctrine', 'present experience. That doctrine'),
     ('justification.</p><p>\\</p>', 'justification.</p>'),
@@ -9814,12 +9829,10 @@ BODY_CORRECTIONS.setdefault("homily-ii-on-the-statues", {}).setdefault("replacem
 ])
 # Newton's CCEL leaf splits the small-caps LORD like its drop caps.
 BODY_CORRECTIONS["i-know-that-my-redeemer-liveth"]["replacements"].append(("L ORD", "LORD"))
-# SermonIndex's transcription: spaced double hyphens for dashes, and the
-# printed small-caps opening typed as capitals.
+# SermonIndex's transcription: the printed small-caps opening typed as
+# capitals. (Its spaced double hyphens are the general dash rule's now.)
 BODY_CORRECTIONS.setdefault("electing-love", {}).setdefault("replacements", []).extend([
     ("THIS IS A VERY HUMBLING, and", "THIS is a very humbling, and"),
-    (" -- ", "—"),
-    ("believed--'Ye", "believed—'Ye"),
 ])
 
 # The SermonIndex transcript of Tozer's "How to Cultivate the Holy Spirit's

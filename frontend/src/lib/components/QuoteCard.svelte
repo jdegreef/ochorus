@@ -4,7 +4,6 @@
 	import { SITE_URL } from '$lib/config';
 	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import QuoteText from '$lib/components/QuoteText.svelte';
-	import { plainQuote } from '$lib/quoteText';
 	import { sourceProse } from '$lib/quoteSource';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -28,7 +27,7 @@
 		// Copy the quotation WITH its citation. The attribution travelling with
 		// the text is the whole point — stripping it is how the aggregators ended
 		// up publishing these words under nobody's name.
-		const cited = `"${plainQuote(quote.text)}"\n— ${authorName}, ${sourceProse(quote.source)}\n${SITE_URL}${quoteHref(quote)}`;
+		const cited = `"${quote.text}"\n— ${authorName}, ${sourceProse(quote.source)}\n${SITE_URL}${quoteHref(quote)}`;
 		try {
 			await navigator.clipboard.writeText(cited);
 			copied = true;
@@ -54,7 +53,7 @@
 		try {
 			const { shareQuoteCard } = await import('$lib/quoteCard');
 			await shareQuoteCard({
-				quote: plainQuote(quote.text),
+				quote: quote.text,
 				author: authorName,
 				source: sourceProse(quote.source),
 				site: 'ochorus.com'
