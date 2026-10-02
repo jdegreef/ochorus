@@ -254,6 +254,9 @@ export const getAdminLanguageHealth = () =>
 	apiFetch<{
 		source_published_books: number;
 		weights: HealthWeights;
+		/** Readers that earn full engagement credit. Absent from an API deployed
+		 *  before the fixed target, which scored against the busiest language. */
+		engagement_target?: number;
 		languages: AdminLanguageHealth[];
 	}>('/api/admin/language-health/');
 

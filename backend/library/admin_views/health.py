@@ -34,6 +34,12 @@ from ..models import Book, Chapter, Language, Sermon
 # a large weight would just rank languages by age.
 _WEIGHTS = {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0.15}
 
+# Engagement is readers against this fixed target (capped at 1), not against the
+# busiest language: measured that way, every new English reader lowered every
+# other language's score while nothing in those languages had changed. Raise it
+# as the site grows; the page reads it from the response.
+_ENGAGEMENT_TARGET = 25
+
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
 class AdminLanguageHealthView(APIView):
@@ -52,7 +58,6 @@ class AdminLanguageHealthView(APIView):
         published = self._published_by_language()
         volume = self._volume_by_language()
         readers = self._readers_by_language()
-        max_readers = max(readers.values(), default=0)
 
         # Coverage is measured against the source language's published shelf — the
         # ceiling any translation is working toward.
@@ -79,7 +84,7 @@ class AdminLanguageHealthView(APIView):
                     if lang.is_source or not pub["total"]
                     else (pub["total"] - pub["unreviewed"]) / pub["total"]
                 ),
-                "engagement": (n_readers / max_readers) if max_readers else 0.0,
+                "engagement": min(1.0, n_readers / _ENGAGEMENT_TARGET),
             }
             health = round(100 * sum(scores[k] * w for k, w in _WEIGHTS.items()))
 
@@ -122,6 +127,7 @@ class AdminLanguageHealthView(APIView):
             {
                 "source_published_books": source_published,
                 "weights": _WEIGHTS,
+                "engagement_target": _ENGAGEMENT_TARGET,
                 "languages": rows,
             }
         )

@@ -32,7 +32,7 @@
 		readiness: { label: 'Readiness', hint: 'share of the go-live checks met' },
 		coverage: { label: 'Coverage', hint: 'books here ÷ the English shelf' },
 		review: { label: 'Review', hint: 'share of translations a human has confirmed' },
-		engagement: { label: 'Engagement', hint: 'readers, against the busiest language' }
+		engagement: { label: 'Engagement', hint: 'readers, against a fixed target' }
 	};
 
 	const BAND_INK = { accent: 'text-accent', text: 'text-text', warning: 'text-warning' } as const;
@@ -43,7 +43,12 @@
 	} as const;
 
 	// The raw count behind each bar, so a percentage never hides the size of the job.
-	function countLine(key: HealthScoreKey, l: AdminLanguageHealth, sourceBooks: number): string {
+	function countLine(
+		key: HealthScoreKey,
+		l: AdminLanguageHealth,
+		sourceBooks: number,
+		engagementTarget: number | undefined
+	): string {
 		switch (key) {
 			case 'readiness':
 				return l.readiness.ready ? 'all checks met' : `${fmt(l.readiness.blocking.length)} blocking`;
@@ -54,7 +59,9 @@
 				return total ? `${fmt(total - l.content.unreviewed_books)} of ${fmt(total)} reviewed` : 'nothing to review';
 			}
 			case 'engagement':
-				return plural(l.readers, 'reader');
+				return engagementTarget
+					? `${fmt(l.readers)} of ${plural(engagementTarget, 'reader')}`
+					: plural(l.readers, 'reader');
 		}
 	}
 
@@ -91,14 +98,16 @@
 								<span class="font-semibold text-text">{COMPONENTS[k].label}</span>
 								({Math.round(data.weights[k] * 100)} pts): {COMPONENTS[k].hint}{k === 'coverage'
 									? ` (${fmt(data.source_published_books)} books)`
-									: ''}.
+									: k === 'engagement' && data.engagement_target
+										? ` of ${plural(data.engagement_target, 'reader')}, so another language's readers never move this score`
+										: ''}.
 							</li>
 						{/each}
 					</ul>
 					<p class="mt-2 text-small text-muted">
 						Bands: <span class="text-accent">Strong</span> ≥ {BAND_STRONG} · Fair {BAND_FAIR}–{BAND_STRONG - 1} ·
-						<span class="text-warning">Weak</span> &lt; {BAND_FAIR}. English is the source, so it scores 100 by
-						definition and is shown as the reference, not ranked.
+						<span class="text-warning">Weak</span> &lt; {BAND_FAIR}. English is the source the others are measured
+						against, so it is shown as the reference, not ranked.
 					</p>
 				</details>
 			</header>
@@ -169,7 +178,7 @@
 							style="--weighted: {breakdown.map((p) => `${p.max}fr`).join(' ')}"
 						>
 							{#each breakdown as p (p.key)}
-								{@const line = countLine(p.key, l, data.source_published_books)}
+								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target)}
 								<div class="min-w-0">
 									<ProgressBar
 										percent={p.max ? (p.earned / p.max) * 100 : 0}

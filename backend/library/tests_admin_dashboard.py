@@ -1988,10 +1988,55 @@ class AdminLanguageHealthTests(TestCase):
                 self.assertEqual(set(b), {"key", "label"})
                 self.assertTrue(b["label"])
 
-    def test_engagement_normalises_to_the_busiest_language(self):
+    def test_engagement_with_no_readers_is_zero(self):
         # No reading data → engagement is zero for everyone (not a crash).
         for r in self._get()["languages"]:
             self.assertEqual(r["scores"]["engagement"], 0.0)
+
+    def _readers(self, language, n):
+        from django.contrib.auth.models import User
+
+        from accounts.models import UserProfile
+        from reading.models import ReadingProgress
+
+        for i in range(n):
+            # A valid UUID per (language, reader): the language's bytes as hex.
+            uid = f"00000000-0000-0000-{language.encode().hex():0>4}-{i:012d}"
+            user = User.objects.create(username=uid)
+            profile = UserProfile.objects.create(
+                user=user, supabase_uid=uid, email=f"{language}{i}@example.com"
+            )
+            ReadingProgress.objects.create(
+                profile=profile, book_slug="b0", language=language
+            )
+
+    def test_engagement_is_readers_against_a_fixed_target(self):
+        from .admin_views.health import _ENGAGEMENT_TARGET
+
+        self._readers("es", 5)
+        data = self._get()
+        self.assertEqual(data["engagement_target"], _ENGAGEMENT_TARGET)
+        es = next(r for r in data["languages"] if r["code"] == "es")
+        self.assertAlmostEqual(
+            es["scores"]["engagement"], 5 / _ENGAGEMENT_TARGET, places=3
+        )
+
+    def test_another_languages_readers_do_not_move_this_one(self):
+        # The bug the fixed target fixes: under "share of the busiest language",
+        # English gaining readers lowered Spanish's score.
+        self._readers("es", 5)
+        before = next(r for r in self._get()["languages"] if r["code"] == "es")
+        self._readers("en", 30)
+        after = next(r for r in self._get()["languages"] if r["code"] == "es")
+        self.assertEqual(before["scores"]["engagement"], after["scores"]["engagement"])
+        self.assertEqual(before["health"], after["health"])
+
+    def test_engagement_caps_at_the_target(self):
+        from .admin_views.health import _ENGAGEMENT_TARGET
+
+        self._readers("en", _ENGAGEMENT_TARGET + 3)
+        en = next(r for r in self._get()["languages"] if r["code"] == "en")
+        self.assertEqual(en["scores"]["engagement"], 1.0)
 
     def test_makes_no_bible_call(self):
         # The scoreboard must never fan out a live Bible-API call per language —
