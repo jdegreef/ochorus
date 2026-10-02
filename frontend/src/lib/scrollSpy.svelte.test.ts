@@ -1,6 +1,13 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
+import { describe, it, expect, vi, afterEach, beforeEach } from 'vitest';
 import { flushSync } from 'svelte';
-import { realignHashOnMeasure, realignHashTarget, scrollSpy } from './scrollSpy.svelte';
+import {
+	realignHashOnMeasure,
+	realignHashTarget,
+	resetFirstPage,
+	scrollSpy,
+	SUBNAV_H_EST,
+	subnavOffset
+} from './scrollSpy.svelte';
 
 // `scrollSpy` registers an $effect, so these run inside an effect root.
 const click = (over: Partial<MouseEvent> = {}) =>
@@ -69,40 +76,41 @@ describe('spy.jump — the sticky sub-nav click handler', () => {
 	});
 });
 
-describe('realignHashTarget — a cold #section load that landed under the bar', () => {
+describe('realignHashTarget — a cold #section load that landed under the bars', () => {
 	afterEach(() => {
 		vi.restoreAllMocks();
 		history.replaceState(null, '', location.pathname);
 	});
 
+	// Measured bars of 92px: the anchors' scroll-margin is 92 + 0.5rem = 100.
 	function target(top: number) {
 		const el = document.createElement('section');
 		el.id = 'section-paul';
 		el.scrollIntoView = vi.fn();
 		el.getBoundingClientRect = () => ({ top }) as DOMRect;
 		document.body.append(el);
-		// The bars' real height, reached after hydration.
 		vi.spyOn(window, 'getComputedStyle').mockReturnValue({
-			scrollMarginTop: '100px'
+			scrollMarginTop: '100px',
+			fontSize: '16px'
 		} as CSSStyleDeclaration);
 		history.replaceState(null, '', '#section-paul');
 		return el;
 	}
 
-	// Margin 100px with a 48px sub-nav: the stale jump landed the heading at 8.
-	it('re-lands a target sitting under the bars', () => {
-		const el = target(8);
-		realignHashTarget(48);
-		expect(el.scrollIntoView).toHaveBeenCalledWith({ block: 'start' });
-		el.remove();
+	it('re-lands a target the bars hide', () => {
+		for (const top of [0, 8, 70]) {
+			const el = target(top);
+			realignHashTarget();
+			expect(el.scrollIntoView).toHaveBeenCalledWith({ block: 'start' });
+			el.remove();
+			vi.restoreAllMocks();
+		}
 	});
 
-	it('never moves a reader who has scrolled away from it', () => {
-		// 70: scrolled a little past it (or restored there on Back) — the
-		// heading sits below the app nav, not where a stale jump puts it.
-		for (const top of [70, 400, -600]) {
+	it('leaves one already clear of the bars, or scrolled off the top', () => {
+		for (const top of [92, 100, 400, -600]) {
 			const el = target(top);
-			realignHashTarget(48);
+			realignHashTarget();
 			expect(el.scrollIntoView).not.toHaveBeenCalled();
 			el.remove();
 			vi.restoreAllMocks();
@@ -111,13 +119,23 @@ describe('realignHashTarget — a cold #section load that landed under the bar',
 
 	it('does nothing without a hash, or for a hash naming nothing', () => {
 		history.replaceState(null, '', location.pathname);
-		expect(() => realignHashTarget(48)).not.toThrow();
+		expect(() => realignHashTarget()).not.toThrow();
 		history.replaceState(null, '', '#nowhere');
-		expect(() => realignHashTarget(48)).not.toThrow();
+		expect(() => realignHashTarget()).not.toThrow();
+	});
+});
+
+describe('subnavOffset', () => {
+	it('estimates a shown bar until it is measured, and is 0 with no bar', () => {
+		expect(subnavOffset(true, 0)).toBe(SUBNAV_H_EST);
+		expect(subnavOffset(true, 52)).toBe(52);
+		expect(subnavOffset(false, 0)).toBe(0);
 	});
 });
 
 describe('realignHashOnMeasure', () => {
+	// It acts only for the first page a document loads; each test starts there.
+	beforeEach(resetFirstPage);
 	afterEach(() => vi.restoreAllMocks());
 
 	it('waits for a measured bar, then realigns once, a frame later', () => {
@@ -146,5 +164,24 @@ describe('realignHashOnMeasure', () => {
 		expect(cancel).not.toHaveBeenCalled();
 		cleanup();
 		expect(cancel).toHaveBeenCalledWith(7);
+	});
+
+	it('leaves later pages, and a reload or Back, to where they landed', () => {
+		const raf = vi.spyOn(window, 'requestAnimationFrame').mockReturnValue(1);
+		const page = () => {
+			const cleanup = $effect.root(() => realignHashOnMeasure(() => 48));
+			flushSync();
+			cleanup();
+		};
+		page();
+		page(); // a client-side navigation to a second page
+		expect(raf).toHaveBeenCalledTimes(1);
+
+		for (const type of ['reload', 'back_forward']) {
+			resetFirstPage();
+			vi.spyOn(performance, 'getEntriesByType').mockReturnValue([{ type } as PerformanceNavigationTiming]);
+			page();
+		}
+		expect(raf).toHaveBeenCalledTimes(1);
 	});
 });

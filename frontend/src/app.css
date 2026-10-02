@@ -1078,6 +1078,23 @@ nav.appnav {
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
 }
+/* The nav's height until the layout measures it and publishes the real figure
+   inline as --appnav-h (on `.app-root`, its own element): what a prerendered
+   page's sticky bars and a cold `/page/#id` jump clear before hydration.
+   Measured: one row 56px; two rows (768–1023px, the links' own row below) 105px. */
+.app-root {
+	--appnav-h: 3.5rem;
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+	.app-root {
+		--appnav-h: 6.5625rem;
+	}
+}
+@media print {
+	.app-root {
+		--appnav-h: 0px;
+	}
+}
 /* The reading routes opt out: their own bar pins to the top and carries
    back/contents/settings, so a second sticky bar would take ~56px of reading
    height for the whole chapter and stack two bars over the text. */

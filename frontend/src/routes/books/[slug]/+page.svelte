@@ -36,7 +36,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, elementVisible, realignHashOnMeasure } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -440,7 +440,7 @@
 	);
 	const showSubnav = $derived(navItems.length >= 2);
 	let subnavH = $state(0);
-	// A cold #section load jumps before the bar is measured; re-land it once it is.
+	// A cold #section load jumps against the bar's estimate; re-land it once measured.
 	realignHashOnMeasure(() => subnavH);
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
 </script>
@@ -459,7 +459,7 @@
 	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<Breadcrumb items={crumbs} />
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
