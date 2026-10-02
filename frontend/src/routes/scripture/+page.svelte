@@ -6,7 +6,9 @@
 	import type { Snapshot } from './$types';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
-	import { groupScripture, heatScale, HEAT_LEVELS, mostCited } from '$lib/scriptureIndex';
+	import { groupScripture, heatScale, HEAT_LEVELS, mayBeReference, mostCited } from '$lib/scriptureIndex';
+	import { searchHref } from '$lib/searchState';
+	import { localizeHref } from '$lib/href';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import Seo from '$lib/components/Seo.svelte';
@@ -62,24 +64,27 @@
 	async function find(e: SubmitEvent) {
 		e.preventDefault();
 		const q = findQ.trim();
-		if (!q) return;
+		// Search ignores anything shorter (the input's minlength says so first).
+		if (q.length < 2) return;
 		const seq = ++findSeq;
 		finding = true;
 		let hit;
-		try {
-			// type=scripture returns at most one row, and only scripture rows.
-			[hit] = (await searchPage(q, 'en', 'scripture')).results;
-		} catch {
-			// Fall through to the full search, which has its own error and retry.
-		} finally {
-			if (seq === findSeq) finding = false;
+		if (mayBeReference(q)) {
+			try {
+				// type=scripture returns at most one row, and only scripture rows.
+				[hit] = (await searchPage(q, 'en', 'scripture')).results;
+			} catch {
+				// Fall through to the full search, which has its own error and retry.
+			}
 		}
 		if (seq !== findSeq) return;
+		// Kept busy until the navigation lands, so Go can't fire it twice.
 		await goto(
 			hit?.type === 'scripture'
 				? scripturePageHref(hit.book_slug, hit.chapter, hit.verse)
-				: `/search?q=${encodeURIComponent(q)}`
+				: localizeHref(searchHref(q))
 		);
+		if (seq === findSeq) finding = false;
 	}
 
 	// A starting point for a reader who arrives without a passage in mind: the
@@ -197,7 +202,7 @@
 	{:else if !books.length}
 		<EmptyState message={t('scripture.empty')} />
 	{:else}
-		<form class="find" method="get" action="/search" role="search" onsubmit={find}>
+		<form class="find" method="get" action={localizeHref('/search')} role="search" onsubmit={find}>
 			<label for="scripture-find" class="find-label">{t('scripture.findLabel')}</label>
 			<div class="find-row">
 				<input
@@ -206,6 +211,8 @@
 					type="search"
 					class="field"
 					autocomplete="off"
+					required
+					minlength={2}
 					enterkeyhint="go"
 					placeholder={t('scripture.findPlaceholder')}
 					bind:value={findQ}
