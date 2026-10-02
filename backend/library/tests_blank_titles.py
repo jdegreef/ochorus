@@ -163,17 +163,17 @@ class DatabaseConstraintTests(TestCase):
 
 
 class MigrationNamesUntitledWorksTests(TestCase):
-    """0177 gives every blank-titled row its slug as a title BEFORE the
+    """0180 gives every blank-titled row its slug as a title BEFORE the
     constraint goes on, so the deploy's migrate can't fail on the one already
     in production."""
 
     def test_a_slugless_blank_row_still_gets_a_name(self):
-        migration = importlib.import_module("library.migrations.0177_name_untitled_works")
+        migration = importlib.import_module("library.migrations.0180_name_untitled_works")
         self.assertEqual(migration._stand_in("Book", 7, ""), "Untitled book 7")
         self.assertEqual(migration._stand_in("Book", 7, "---"), "Untitled book 7")
 
     def test_a_blank_row_is_named_from_its_slug(self):
-        migration = importlib.import_module("library.migrations.0177_name_untitled_works")
+        migration = importlib.import_module("library.migrations.0180_name_untitled_works")
         author = Author.objects.create(slug="chs", name="Charles H. Spurgeon")
         book = Book.objects.create(
             author=author, slug="gleanings-among-the-sheaves", language="en", title="x"

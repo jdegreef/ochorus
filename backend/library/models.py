@@ -537,7 +537,7 @@ def _require_title(row, save_kwargs, field: str = "title") -> None:
     The friendly half of the rule: a ValidationError naming the work, and the
     wider Unicode check (is_blank_title) the database constraint can't make.
     It refuses a title BECOMING blank — a new row or a retitle — not one that
-    already is: migration 0177 named every such row and the constraint keeps the
+    already is: migration 0180 named every such row and the constraint keeps the
     common ones out, so what's left is an exotic format character, and the
     release step's whole-row re-saves (apply_body_corrections) must never fail
     a deploy on it.

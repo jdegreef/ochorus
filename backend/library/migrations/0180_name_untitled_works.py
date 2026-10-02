@@ -1,7 +1,7 @@
-"""Name every work whose title shows nothing, before 0178 forbids one.
+"""Name every work whose title shows nothing, before 0181 forbids one.
 
 The admin coverage matrix showed a Spurgeon book as just its author: its title
-was blank. 0178 adds a CHECK constraint against that, and would fail the
+was blank. 0181 adds a CHECK constraint against that, and would fail the
 deploy's migrate on any such row, so this gives each one a stand-in first: its
 slug, words capitalised ("gleanings-among-the-sheaves" -> "Gleanings Among The
 Sheaves"). A fixture work gets its real title back from seed_books /
@@ -58,7 +58,7 @@ def name_untitled_works(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0176_adminaction_email_actions"),
+        ("library", "0179_typographic_translation_digests"),
     ]
 
     operations = [
