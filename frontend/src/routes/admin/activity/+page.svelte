@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { SvelteSet } from 'svelte/reactivity';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { downloadFile } from '$lib/dataExport';
@@ -17,14 +18,16 @@
 		actorName,
 		absoluteTime,
 		CATEGORIES,
+		groupBursts,
 		groupByDay,
 		initials,
+		issueRange,
 		parseTarget,
 		summariseDetail,
+		titleParts,
 		toCsv,
 		type Category,
-		type IconName,
-		type ParsedTarget
+		type IconName
 	} from '$lib/adminActivity';
 
 	// One object's history when ?target= is present; the whole log otherwise.
@@ -102,14 +105,49 @@
 		undo: ['M3 7v6h6', 'M3 13a9 9 0 1 0 3-7']
 	};
 
-	// The display name for a target — the one thing left out of parseTarget,
-	// because a language's name is localeName's job and the rest is a slug.
-	function displayName(t: ParsedTarget): string {
-		if (t.kind === 'language') return localeName(t.slug);
-		if (t.kind === 'other') return t.slug || '—';
-		return unslug(t.slug);
+	// A row's display name. The server sends the work's real title; a
+	// language's name is localeName's job; anything else falls back to its slug.
+	type Named = { target: string; title?: string };
+	function nameParts(row: Named): { name: string; edition: string | null } {
+		const t = parseTarget(row.target);
+		if (t.kind === 'language') return { name: localeName(t.slug), edition: null };
+		if (t.kind === 'other') return { name: row.title || t.slug || '—', edition: null };
+		if (t.kind === 'document') return titleParts(t.slug, row.title);
+		return { name: row.title || unslug(t.slug), edition: null };
 	}
-	const targetName = (target: string) => displayName(parseTarget(target));
+	function rowName(row: Named): string {
+		const { name, edition } = nameParts(row);
+		return edition ? `${name} (${edition})` : name;
+	}
+
+	// ---- bursts: a bulk action folds into one expandable row ----
+	const expanded = new SvelteSet<string>();
+	const burstId = (rs: AdminActionRow[]) => `${rs[0].at}|${rs[0].target}`;
+	function toggleBurst(id: string) {
+		if (expanded.has(id)) expanded.delete(id);
+		else expanded.add(id);
+	}
+	/** What a burst is a run of: "100 books", "12 sermons". */
+	function burstNoun(rs: AdminActionRow[]): string {
+		const kind = rs[0].target.split(':')[0];
+		const nouns: Record<string, string> = {
+			book: 'books',
+			sermon: 'sermons',
+			article: 'articles',
+			plan: 'plans',
+			author: 'authors',
+			language: 'languages'
+		};
+		return `${rs.length} ${nouns[kind] ?? 'items'}`;
+	}
+	const clock = (iso: string) =>
+		new Date(iso).toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit' });
+	/** A burst's time span, oldest–newest; one time when it fit in a minute. */
+	function spanOf(rs: AdminActionRow[]): string {
+		const from = clock(rs[rs.length - 1].at);
+		const to = clock(rs[0].at);
+		return from === to ? to : `${from}–${to}`;
+	}
 
 	async function loadOlder() {
 		// While a reload for new filters is in flight, `cursor` still belongs to
@@ -141,7 +179,9 @@
 	const catCounts = $derived(summary?.by_category ?? {});
 	const catTotal = $derived(Object.values(catCounts).reduce((a, b) => a + b, 0));
 
-	const groups = $derived(groupByDay(rows, now));
+	const groups = $derived(
+		groupByDay(rows, now).map((g) => ({ ...g, items: groupBursts(g.rows) }))
+	);
 	const isFiltered = $derived(activeCat !== 'all' || !!activeActor || sentQuery !== '');
 
 	// ---- the header figures: counted server-side over the whole log ----
@@ -159,12 +199,12 @@
 			{ value: String(summary.today), label: 'Actions today', sub: `${summary.today_reader_facing} reader-facing` },
 			second,
 			{
-				value: goLive ? targetName(goLive.target) : '—',
+				value: goLive ? rowName(goLive) : '—',
 				label: 'Last go-live',
 				sub: goLive ? rel(new Date(goLive.at)) : 'never'
 			},
 			{
-				value: publish ? targetName(publish.target) : '—',
+				value: publish ? rowName(publish) : '—',
 				label: 'Last publish',
 				sub: publish ? rel(new Date(publish.at)) : 'never'
 			}
@@ -224,6 +264,78 @@
 <svelte:head><title>Admin · Activity — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 <svelte:window onkeydown={onKey} />
 
+{#snippet actionRow(a: AdminActionRow)}
+	{@const meta = actionMeta(a.action)}
+	{@const t = parseTarget(a.target)}
+	{@const at = new Date(a.at)}
+	{@const np = nameParts(a)}
+	<li class="grid grid-cols-[auto_1fr_auto] gap-3 border-b border-border p-4 last:border-0">
+		<span class="grid h-8 w-8 place-items-center rounded-sm border {iconTone(meta.loud)}">
+			<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+				{#each ICONS[meta.icon] as d (d)}<path {d} />{/each}
+			</svg>
+		</span>
+		<div class="min-w-0">
+			<div class="flex flex-wrap items-center gap-2">
+				{#if t.href}
+					<a href={t.href} class="font-medium text-text underline decoration-transparent underline-offset-2 hover:decoration-accent-soft-border hover:text-accent">
+						{np.name}{#if t.lang}<span class="text-small font-normal text-muted">&nbsp;· {localeName(t.lang)}</span>{/if}
+					</a>
+				{:else}
+					<span class="font-medium text-text">{np.name}</span>
+				{/if}
+				{#if np.edition}
+					<span class="shrink-0 rounded-full border border-border px-2 py-0.5 text-micro font-semibold text-muted">{np.edition}</span>
+				{/if}
+				<span class="shrink-0 rounded-full border px-2.5 py-0.5 text-small font-semibold {pillTone(meta.loud)}">{a.label}</span>
+				{#if !target && t.kind !== 'other'}
+					<a
+						href="/admin/activity?target={encodeURIComponent(a.target)}"
+						title="Show this target's history"
+						aria-label="Show this target's history"
+						class="shrink-0 text-muted hover:text-accent"
+					>
+						<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l2.5 2.5" /></svg>
+					</a>
+				{/if}
+			</div>
+			<div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
+				<span class="inline-flex items-center gap-1.5">
+					<span class="grid h-5 w-5 place-items-center rounded-full text-micro font-bold {a.actor ? 'bg-accent text-accent-contrast' : 'border border-border bg-surface-2 text-muted'}">{initials(a.actor)}</span>
+					{actorName(a.actor)}
+				</span>
+				{#each summariseDetail(a.detail) as part, pi (pi)}
+					<span class="text-border-strong" aria-hidden="true">·</span>
+					{#if part.kind === 'outcome'}
+						<span class="font-semibold text-text">{part.text}</span>
+					{:else if part.kind === 'diff'}
+						<span>{part.label} <span class="text-text line-through opacity-70">{part.from}</span> <span class="font-semibold text-text">→ {part.to}</span></span>
+					{:else if part.kind === 'warn'}
+						<span class="font-semibold text-danger">{part.text}</span>
+					{:else if part.kind === 'quote'}
+						<span class="italic">“{part.text}”</span>
+					{:else if part.kind === 'link'}
+						<a
+							href={part.href}
+							target="_blank"
+							rel="noopener"
+							title={part.href}
+							class="inline-flex items-center rounded-full border border-border px-2 py-0.5 text-micro font-semibold text-muted transition-colors hover:border-accent-soft-border hover:text-accent hover:no-underline"
+							>{part.text}</a
+						>
+					{:else}
+						<span>{part.text}</span>
+					{/if}
+				{/each}
+			</div>
+		</div>
+		<div class="text-right">
+			<div class="text-small tabular-nums text-muted" title={at.toString()}>{rel(at)}</div>
+			<div class="text-micro tabular-nums text-muted opacity-70">{absoluteTime(a.at)}</div>
+		</div>
+	</li>
+{/snippet}
+
 <div class="mx-auto max-w-5xl px-5 py-10">
 	<header class="mb-6 flex flex-wrap items-end justify-between gap-3">
 		<div>
@@ -250,7 +362,7 @@
 	{#if target}
 		<div class="mb-5 flex flex-wrap items-center justify-between gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-3">
 			<p class="text-body text-text">
-				History for <span class="font-semibold">{targetName(target)}</span>
+				History for <span class="font-semibold">{rowName({ target, title: rows[0]?.title })}</span>
 				<span class="text-small text-muted">· {target}</span>
 			</p>
 			<a href="/admin/activity" class="btn btn-ghost">← All activity</a>
@@ -367,70 +479,78 @@
 								<span class="h-px flex-1 bg-border"></span>
 							</div>
 							<ul class="overflow-hidden rounded-card border border-border bg-surface">
-								{#each g.rows as a, i (a.at + a.action + a.target + i)}
-									{@const meta = actionMeta(a.action)}
-									{@const t = parseTarget(a.target)}
-									{@const at = new Date(a.at)}
-									<li class="grid grid-cols-[auto_1fr_auto] gap-3 border-b border-border p-4 last:border-0">
-										<span class="grid h-8 w-8 place-items-center rounded-sm border {iconTone(meta.loud)}">
-											<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-												{#each ICONS[meta.icon] as d (d)}<path {d} />{/each}
-											</svg>
-										</span>
-										<div class="min-w-0">
-											<div class="flex flex-wrap items-center gap-2">
-												{#if t.href}
-													<a href={t.href} class="font-medium text-text underline decoration-transparent underline-offset-2 hover:decoration-accent-soft-border hover:text-accent">
-														{displayName(t)}{#if t.lang}<span class="text-small font-normal text-muted"> · {t.lang}</span>{/if}
-													</a>
-												{:else}
-													<span class="font-medium text-text">{displayName(t)}</span>
-												{/if}
-												<span class="shrink-0 rounded-full border px-2.5 py-0.5 text-small font-semibold {pillTone(meta.loud)}">{a.label}</span>
-												{#if !target && t.kind !== 'other'}
-													<a
-														href="/admin/activity?target={encodeURIComponent(a.target)}"
-														title="Show this target's history"
-														aria-label="Show this target's history"
-														class="shrink-0 text-muted hover:text-accent"
-													>
-														<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" /><path d="M12 8v4l2.5 2.5" /></svg>
-													</a>
-												{/if}
-											</div>
-											<div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
-												<span class="inline-flex items-center gap-1.5">
-													<span class="grid h-5 w-5 place-items-center rounded-full text-micro font-bold {a.actor ? 'bg-accent text-accent-contrast' : 'border border-border bg-surface-2 text-muted'}">{initials(a.actor)}</span>
-													{actorName(a.actor)}
+								{#each g.items as item, i (item.kind === 'row' ? `r${item.row.at}${item.row.target}${i}` : `b${burstId(item.rows)}`)}
+									{#if item.kind === 'row'}
+										{@render actionRow(item.row)}
+									{:else}
+										{@const first = item.rows[0]}
+										{@const meta = actionMeta(first.action)}
+										{@const t = parseTarget(first.target)}
+										{@const id = burstId(item.rows)}
+										{@const open = expanded.has(id)}
+										{@const issues = issueRange(item.rows)}
+										{@const stale = item.rows.filter((r) => r.detail?.created === false).length}
+										<li class="border-b border-border last:border-0">
+											<div class="grid grid-cols-[auto_1fr_auto] gap-3 p-4">
+												<span class="grid h-8 w-8 place-items-center rounded-sm border {iconTone(meta.loud)}">
+													<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+														{#each ICONS[meta.icon] as d (d)}<path {d} />{/each}
+													</svg>
 												</span>
-												{#each summariseDetail(a.detail) as part, pi (pi)}
-													<span class="text-border-strong" aria-hidden="true">·</span>
-													{#if part.kind === 'outcome'}
-														<span class="font-semibold text-text">{part.text}</span>
-													{:else if part.kind === 'diff'}
-														<span>{part.label} <span class="text-text line-through opacity-70">{part.from}</span> <span class="font-semibold text-text">→ {part.to}</span></span>
-													{:else if part.kind === 'quote'}
-														<span class="italic">“{part.text}”</span>
-													{:else if part.kind === 'link'}
-														<a
-															href={part.href}
-															target="_blank"
-															rel="noopener"
-															title={part.href}
-															class="inline-flex items-center rounded-full border border-border px-2 py-0.5 text-micro font-semibold text-muted transition-colors hover:border-accent-soft-border hover:text-accent hover:no-underline"
-															>{part.text}</a
+												<div class="min-w-0">
+													<div class="flex flex-wrap items-center gap-2">
+														<span class="font-medium text-text"
+															>{burstNoun(item.rows)}{#if t.lang}<span class="text-small font-normal text-muted">&nbsp;· {localeName(t.lang)}</span>{/if}</span
 														>
-													{:else}
-														<span>{part.text}</span>
+														<span class="shrink-0 rounded-full border px-2.5 py-0.5 text-small font-semibold {pillTone(meta.loud)}">{first.label}</span>
+													</div>
+													<div class="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-small text-muted">
+														<span class="inline-flex items-center gap-1.5">
+															<span class="grid h-5 w-5 place-items-center rounded-full text-micro font-bold {first.actor ? 'bg-accent text-accent-contrast' : 'border border-border bg-surface-2 text-muted'}">{initials(first.actor)}</span>
+															{actorName(first.actor)}
+														</span>
+														{#if first.detail?.outcome}
+															<!-- A review burst is all one verdict (see burstKey). -->
+															<span class="text-border-strong" aria-hidden="true">·</span>
+															<span class="font-semibold text-text">all {first.detail.outcome}</span>
+														{/if}
+														{#if issues}
+															<span class="text-border-strong" aria-hidden="true">·</span>
+															<span class="tabular-nums">{issues}</span>
+														{/if}
+														{#if stale}
+															<!-- Folded, a duplicate click would hide inside the burst: surface it. -->
+															<span class="text-border-strong" aria-hidden="true">·</span>
+															<span class="font-semibold text-danger">{stale} already open</span>
+														{/if}
+													</div>
+													{#if !open}
+														<p class="mt-1.5 truncate text-small text-muted">
+															{item.rows.slice(0, 4).map(rowName).join(' · ')}{item.rows.length > 4 ? ` · +${item.rows.length - 4} more` : ''}
+														</p>
 													{/if}
-												{/each}
+													<button
+														class="mt-1.5 text-small font-semibold text-accent hover:underline"
+														aria-expanded={open}
+														onclick={() => toggleBurst(id)}>{open ? 'Hide' : `Show all ${item.rows.length}`}</button
+													>
+												</div>
+												<div class="text-right">
+													<div class="text-small tabular-nums text-muted" title={new Date(first.at).toString()}>{rel(new Date(first.at))}</div>
+													<div class="text-micro tabular-nums text-muted opacity-70">
+														{spanOf(item.rows)}
+													</div>
+												</div>
 											</div>
-										</div>
-										<div class="text-right">
-											<div class="text-small tabular-nums text-muted" title={at.toString()}>{rel(at)}</div>
-											<div class="text-micro tabular-nums text-muted opacity-70">{absoluteTime(a.at)}</div>
-										</div>
-									</li>
+											{#if open}
+												<ul class="border-t border-border bg-surface-2 pl-6">
+													{#each item.rows as a, j (a.at + a.target + j)}
+														{@render actionRow(a)}
+													{/each}
+												</ul>
+											{/if}
+										</li>
+									{/if}
 								{/each}
 							</ul>
 						</section>

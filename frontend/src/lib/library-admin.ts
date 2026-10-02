@@ -1728,6 +1728,8 @@ export interface AdminActionRow {
 	/** Email; blank only for a DEBUG loopback request with no token. */
 	actor: string;
 	target: string;
+	/** The work's real name (book/sermon/article/plan/author), "" when unknown. */
+	title?: string;
 	detail: Record<string, unknown>;
 	at: string;
 }
