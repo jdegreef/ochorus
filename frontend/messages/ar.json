@@ -504,6 +504,8 @@
   "series_progress": "قرأت {done} من {total}",
   "series_in_progress": "قيد القراءة",
   "series_continue_heading": "تابع سلاسلك",
+  "series_books_list": "كتب هذه السلسلة",
+  "series_companion": "سلسلة مرافقة: {title}",
   "series_all_read": "لقد قرأت كل كتب هذه السلسلة",
   "series_meta_default": "{series}: كل كتب السلسلة، مجانًا للقراءة على Ochorus.",
   "series_tagline": "كتب كُتبت لتُقرأ معًا — بعضها بالترتيب، وبعضها مجموعة واحدة.",

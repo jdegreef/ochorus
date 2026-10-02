@@ -172,6 +172,8 @@ class SeriesViewTests(TestCase):
         kt_row, bfg = rows
         self.assertEqual((bfg["description"], bfg["book_count"]), ("True stories.", 5))
         self.assertEqual(bfg["books"], ["bfg-1", "bfg-2", "bfg-3", "bfg-4", "bfg-5"])
+        # Every title in the same order — the card's book list, not just the fan.
+        self.assertEqual(bfg["titles"], [f"bfg-{n} [en]" for n in range(1, 6)])
         # Untagged: no group, no age line.
         self.assertEqual((bfg["audience"], bfg["min_age"], bfg["max_age"]), ("", None, None))
         # The fan: the first four published volumes, in reading order.

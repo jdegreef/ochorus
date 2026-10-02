@@ -25,6 +25,7 @@ from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import requires
 
 from .. import readiness
+from ..demand import readers_elsewhere
 from ..models import Book, Chapter, Language, Sermon
 
 # What the composite weighs, and by how much (weights sum to 1). Readiness leads
@@ -69,6 +70,10 @@ class AdminLanguageHealthView(APIView):
         published = self._published_by_language()
         volume = self._volume_by_language()
         readers = self._readers_by_language()
+        # Readers whose site language this is, reading a work it has no edition
+        # of. Shown beside the score, not folded into it, so the score keeps
+        # its meaning; the language page lists the works themselves.
+        elsewhere = readers_elsewhere([lang.code for lang in languages])
 
         # Coverage is measured against the source language's published shelf — the
         # ceiling any translation is working toward.
@@ -134,6 +139,7 @@ class AdminLanguageHealthView(APIView):
                         ],
                     },
                     "readers": n_readers,
+                    "reading_elsewhere": elsewhere.get(lang.code, 0),
                 }
             )
 

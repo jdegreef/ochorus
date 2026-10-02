@@ -1,10 +1,12 @@
 <script lang="ts">
+	import { tick } from 'svelte';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import LanguageSettingsCard from '$lib/components/LanguageSettingsCard.svelte';
 	import { checkLabels } from '$lib/languageHealth';
+	import { workPath } from '$lib/editionHref';
 	import {
 		type SourceType
 	} from '$lib/library-public';
@@ -16,6 +18,8 @@
 		type AdminTranslationJob,
 		type TranslationJobType,
 		getAdminLanguageReadiness,
+		getAdminLanguageWanted,
+		type AdminWantedWork,
 		updateAdminLanguageThresholds,
 		type AdminLanguageReadiness,
 		type LanguageThresholds,
@@ -40,6 +44,35 @@
 	let readiness = $state<AdminLanguageReadiness | null>(null);
 	let readinessError = $state<string | null>(null);
 	let savingBar = $state(false);
+
+	// What this language's readers are reaching for elsewhere. Its own fetch,
+	// after the page, because the failed-search half runs real searches. Like
+	// readiness, a failure only costs this one panel.
+	let wanted = $state<{ days: number; works: AdminWantedWork[] } | null>(null);
+	let wantedError = $state<string | null>(null);
+
+	// The search half makes this slow, so an admin can move on to another
+	// language before it answers. A late answer for the language they left is
+	// dropped: its rows would sit under this language's Translate buttons, which
+	// queue jobs for data.code.
+	async function loadWanted(code: string) {
+		wanted = null;
+		wantedError = null;
+		try {
+			const res = await getAdminLanguageWanted(code);
+			if (code !== data.code) return;
+			wanted = res;
+			// The section only exists once the page has loaded, so a link to
+			// #sec-wanted (Language health's "reading in another language") found
+			// nothing to scroll to on arrival; go there now.
+			if (location.hash === '#sec-wanted') {
+				await tick();
+				document.getElementById('sec-wanted')?.scrollIntoView();
+			}
+		} catch (e) {
+			if (code === data.code) wantedError = e instanceof Error ? e.message : 'Could not load what readers are asking for.';
+		}
+	}
 
 	async function loadReadiness(code: string) {
 		readiness = null;
@@ -150,6 +183,7 @@
 			if (result.is_source) return;
 			void loadJobs();
 			void loadReadiness(data.code);
+			void loadWanted(data.code);
 		}
 	);
 	const detail = $derived(language.data);
@@ -304,7 +338,10 @@
 	// of the sticky bar.
 	const navSections = $derived([
 		...(detail && !detail.is_source
-			? [{ id: 'sec-readiness', label: 'Readiness', count: null as number | null }]
+			? [
+					{ id: 'sec-readiness', label: 'Readiness', count: null as number | null },
+					{ id: 'sec-wanted', label: 'Asked for', count: wanted?.works.length ?? null }
+				]
 			: []),
 		{ id: 'sec-books', label: 'Books', count: shown.books.length },
 		{ id: 'sec-bios', label: 'Bios', count: shown.bios.length },
@@ -695,6 +732,64 @@
 								{deployState.detail}
 							</p>
 						{/if}
+					{/if}
+				</section>
+
+				<!-- Readers are asking for: works this language's readers read in
+				     another language for want of their own, and works its failed
+				     searches find in English. Each row shows its evidence, and queues
+				     through the same control as the "Next to work on" lists. -->
+				<section
+					id="sec-wanted"
+					class="mb-6 scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+				>
+					<div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
+						<h2 class="text-h3">Readers are asking for</h2>
+						{#if wanted}
+							<span class="text-small text-muted">reading: all time · searches: last {wanted.days} days</span>
+						{/if}
+					</div>
+					{#if wantedError}
+						<p class="text-small text-warning">{wantedError}</p>
+					{:else if !wanted}
+						<p class="text-small text-muted">Loading…</p>
+					{:else if !wanted.works.length}
+						<p class="text-small text-muted">
+							No signal yet. This fills in when readers who chose {d.language.name} as their site language read a work it doesn't
+							have, or when a {d.language.name} search finds nothing that exists in English.
+						</p>
+					{:else}
+						{#if queueError}
+							<p class="mb-2 text-small text-warning">{queueError}</p>
+						{/if}
+						<ul class="divide-y divide-border">
+							{#each wanted.works as w (`${w.type}:${w.slug}`)}
+								<li class="flex items-center justify-between gap-3 py-2.5">
+									<div class="min-w-0">
+										<p class="truncate text-body">
+											<a href={workPath(w.type, w.slug)} class="font-semibold text-text hover:text-accent">{w.title}</a>{#if w.author}<span class="text-small text-muted"
+													>{` · ${w.author}`}</span
+												>{/if}
+											{#if w.type !== 'book'}<span class="text-micro text-muted">{` · ${w.type}`}</span>{/if}
+										</p>
+										<p class="flex flex-wrap gap-x-3 text-small text-muted">
+											{#if w.readers}<span
+													>{fmt(w.readers)} reader{w.readers === 1 ? '' : 's'} reading it in another language</span
+												>{/if}
+											{#if w.searches}<span>{fmt(w.searches)} failed search{w.searches === 1 ? '' : 'es'}</span>{/if}
+										</p>
+									</div>
+									{#if w.blocked}
+										<span class="shrink-0 text-small text-muted" title="Under copyright, so it can't be translated">Under copyright</span>
+									{:else}
+										{@render queueControl(w.type, w.slug)}
+									{/if}
+								</li>
+							{/each}
+						</ul>
+						<p class="mt-3 text-micro text-muted">
+							Counts readers who set their site language to {d.language.name}. Readers still on English aren't counted.
+						</p>
 					{/if}
 				</section>
 

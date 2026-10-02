@@ -41,6 +41,8 @@ from ..qa import (
     GIANT_MIN,
     TERMINAL_PUNCT,
     TINY_MAX,
+    loose_snippet,
+    loose_text,
     translation_flags,
 )
 
@@ -73,6 +75,11 @@ class AdminReviewQueueView(AdminAudited, APIView):
 
     KINDS = ("book", "sermon", "bio")
     PAGE_SIZE = 25
+    # Why the bulk gate holds back an item in each non-ready lane.
+    _GATE_REASON = {
+        "unexamined": "no scripture notes recorded — review individually.",
+        "verses": "has unverified verses — review individually.",
+    }
 
     # `ReviewOutcome` already records the decision itself — reviewer, reason and
     # all — and the review screen reads it. These rows exist so that ONE table
@@ -109,13 +116,13 @@ class AdminReviewQueueView(AdminAudited, APIView):
         q = request.query_params
         kind = q.get("kind") or ""
         language = q.get("language") or ""
-        outcome = q.get("outcome") or ""
         # One work, from a coverage-matrix cell's deep link. It shows the work's
         # pending translations whatever their state — awaiting review, a
         # provisional approval, or sent back as needs work — so the cell that
         # linked here always lands on its item instead of an empty filter.
         slug = q.get("slug") or ""
-        flagged_only = q.get("flagged") in ("1", "true", "yes")
+        # Which of the four lanes (see `_lane`).
+        lane = q.get("lane") or ""
         sort = q.get("sort") or "oldest"
 
         rows = self._rows()
@@ -141,6 +148,13 @@ class AdminReviewQueueView(AdminAudited, APIView):
             # Distinguish "examined and clean" from "never examined" — the UI
             # must not render an absence of notes as an absence of problems.
             r["notes_recorded"] = k in noted
+            # A row sent back sits in its own lane whatever its notes say, so a
+            # needs-work item can never be offered as "ready".
+            r["lane"] = (
+                "needs_work"
+                if r["outcome"] and r["outcome"]["outcome"] == "needs_work"
+                else self._lane(r["flagged"], r["notes_recorded"])
+            )
 
         # Everything still awaiting attention: no decision yet, OR a PROVISIONAL
         # approval a reviewer proposed that still needs an approver to confirm
@@ -153,9 +167,16 @@ class AdminReviewQueueView(AdminAudited, APIView):
             if not r["outcome"]
             or (r["outcome"]["outcome"] == "approved" and r["outcome"].get("provisional"))
         ]
+        # Least privilege: a language-scoped reviewer sees only their languages'
+        # queue, not the whole library's — its tabs and counts included. None =
+        # no restriction (super admin / *).
+        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
+        visible_rows = (
+            undecided if allowed is None else [r for r in undecided if r["language"] in allowed]
+        )
         facets = {
-            "language": _tally(undecided, "language"),
-            "kind": _tally(undecided, "kind"),
+            "language": _tally(visible_rows, "language"),
+            "kind": _tally(visible_rows, "kind"),
         }
 
         # Display names come from the registry rather than a map in the frontend.
@@ -175,25 +196,47 @@ class AdminReviewQueueView(AdminAudited, APIView):
             code: language_entry(code)["name"] for code in {r["language"] for r in rows}
         }
 
-        if slug:
-            sel = [r for r in rows if r["slug"] == slug]
-        elif outcome == "needs_work":
-            sel = [r for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"]
-        else:
-            sel = undecided
-        if kind in self.KINDS:
-            sel = [r for r in sel if r["kind"] == kind]
-        if language:
-            sel = [r for r in sel if r["language"] == language]
-        # Least privilege: a language-scoped reviewer sees only their languages'
-        # queue, not the whole library's. None = no restriction (super admin / *).
-        allowed = allowed_languages(request, AdminCapability.REVIEW, AdminVerb.VIEW)
-        if allowed is not None:
-            sel = [r for r in sel if r["language"] in allowed]
-        if flagged_only:
-            sel = [r for r in sel if r["flagged"]]
+        def scoped(items):
+            if kind in self.KINDS:
+                items = [r for r in items if r["kind"] == kind]
+            if language:
+                items = [r for r in items if r["language"] == language]
+            if allowed is not None:
+                items = [r for r in items if r["language"] in allowed]
+            return items
 
-        if sort == "flagged":
+        needs_work = [r for r in rows if r["lane"] == "needs_work"]
+        # The lane counts follow the language / type in view, so the cards read
+        # "Spanish: 23 ready" rather than a library-wide number the reviewer
+        # can't act on. Counted from rows already loaded — no extra query.
+        in_view = scoped(undecided)
+        lanes = {
+            "ready": 0,
+            "verses": 0,
+            "unexamined": 0,
+            **_tally(in_view, "lane"),
+            "needs_work": len(scoped(needs_work)),
+        }
+
+        if slug:
+            sel = scoped([r for r in rows if r["slug"] == slug])
+        elif lane == "needs_work":
+            sel = scoped(needs_work)
+        else:
+            sel = in_view
+        if lane in lanes:
+            sel = [r for r in sel if r["lane"] == lane]
+
+        if sort == "remaining":
+            # Fewest unsettled verses first: the nearly-finished items, so a
+            # reviewer's half-done work gets closed out before new work starts.
+            sel.sort(
+                key=lambda r: (
+                    r["notes"]["self_rendered"] - r["notes"]["settled"],
+                    r.get("created_at") or "",
+                )
+            )
+        elif sort == "flagged":
             sel.sort(key=lambda r: (-r["notes"]["self_rendered"], r["language"], r["title"]))
         elif sort == "largest":
             sel.sort(key=lambda r: -(r.get("words") or 0))
@@ -217,11 +260,14 @@ class AdminReviewQueueView(AdminAudited, APIView):
         return Response(
             {
                 "results": window,
-                "total": len(undecided),
+                # Within the reviewer's languages, like everything else here.
+                "total": len(visible_rows),
                 "filtered": len(sel),
-                "flagged_total": sum(1 for r in undecided if r["flagged"]),
-                "needs_work_total": sum(
-                    1 for r in rows if r["outcome"] and r["outcome"]["outcome"] == "needs_work"
+                "lanes": lanes,
+                # When the longest-waiting item in view arrived — the queue's
+                # age, whatever the page or sort.
+                "oldest_created_at": min(
+                    (r["created_at"] for r in in_view if r.get("created_at")), default=""
                 ),
                 "page": page,
                 "pages": pages,
@@ -311,6 +357,24 @@ class AdminReviewQueueView(AdminAudited, APIView):
             }
             for o in ReviewOutcome.objects.all()
         }
+
+    @staticmethod
+    def _lane(flagged: bool, noted: bool) -> str:
+        """Which kind of review an undecided row needs.
+
+        ``verses``: the pipeline rendered scripture itself — settle each verse.
+        ``unexamined``: no scripture notes at all — nothing was checked, so it
+        must be read in full and can never be bulk-approved.
+        ``ready``: examined with nothing flagged — the only bulk-approvable lane.
+
+        The queue's lanes and the bulk-approve gate both ask this, so the
+        "Ready" card can never offer an item the gate then refuses.
+        """
+        if flagged:
+            return "verses"
+        if not noted:
+            return "unexamined"
+        return "ready"
 
     def _note_summary(self) -> dict:
         out: dict = {}
@@ -462,28 +526,19 @@ class AdminReviewQueueView(AdminAudited, APIView):
                 )
                 continue
             key = (kind, slug, language)
-            if enforce_gate and key not in has_notes:
-                # FAIL CLOSED. An item with no TranslationNote rows has not been
-                # cleared — it has never been examined, which is the opposite of
-                # safe. Treating "no data" as "no problems" would let a bulk
-                # approve wave through the entire un-noted backlog, which is
-                # precisely what this gate exists to prevent.
+            # FAIL CLOSED. An item with no TranslationNote rows has not been
+            # cleared — it has never been examined, which is the opposite of safe.
+            # Treating "no data" as "no problems" would let a bulk approve wave
+            # through the entire un-noted backlog, which is precisely what this
+            # gate exists to prevent.
+            lane = self._lane(key in flagged, key in has_notes) if enforce_gate else "ready"
+            if lane != "ready":
                 skipped.append(
                     {
                         "kind": kind,
                         "slug": slug,
                         "language": language,
-                        "reason": "no scripture notes recorded — review individually.",
-                    }
-                )
-                continue
-            if key in flagged:
-                skipped.append(
-                    {
-                        "kind": kind,
-                        "slug": slug,
-                        "language": language,
-                        "reason": "has unverified verses — review individually.",
+                        "reason": self._GATE_REASON[lane],
                     }
                 )
                 continue
@@ -870,6 +925,7 @@ QUALITY_CHAPTER_CHECKS = (
     "fragmented",
     "missing_dropcap",
     "mid_sentence_splits",
+    "loose_text",
 )
 DISMISSIBLE_CHECKS = frozenset(QUALITY_CHAPTER_CHECKS + ("duplicate_titles",))
 
@@ -1017,7 +1073,7 @@ class AdminAuditView(APIView):
 
     Quality checks port the ``book-qa`` skill's heuristics (generic titles,
     tiny/giant/fragmented chapters, missing drop caps, mid-sentence splits,
-    duplicate titles). Integrity checks cover structural problems (empty books,
+    text outside paragraphs, duplicate titles). Integrity checks cover structural problems (empty books,
     empty chapters, chapter-order gaps, broken reading-plan day references).
 
     Read-only, admin-gated. One streamed pass over chapters plus a few small
@@ -1131,8 +1187,8 @@ class AdminAuditView(APIView):
             r["book_id"]: r["mx"]
             for r in Chapter.objects.values("book_id").annotate(mx=Max("order"))
         }
-        generic, tiny, giant, fragmented, dropcap, mid_split, empty = (
-            [], [], [], [], [], [], []
+        generic, tiny, giant, fragmented, dropcap, mid_split, loose, empty = (
+            [], [], [], [], [], [], [], []
         )
         # Keyed by (slug, language), NOT slug. A work is a per-language ROW —
         # eight editions of the-inner-chamber share one slug — so grouping by
@@ -1184,6 +1240,10 @@ class AdminAuditView(APIView):
             if order < maxima.get(c["book_id"], order) and not body.endswith(TERMINAL_PUNCT):
                 mid_split.append(finding(ends=body[-40:]))
 
+            runs = loose_text(c["body_html"])
+            if runs:
+                loose.append(finding(loose_runs=len(runs), loose=loose_snippet(runs)))
+
         # Raw (uncapped) lists — the caller filters out accepted findings before
         # capping, so capping here would drop rows the reviewer has NOT accepted
         # whenever a check ran past 100.
@@ -1194,6 +1254,7 @@ class AdminAuditView(APIView):
             "fragmented": fragmented,
             "missing_dropcap": dropcap,
             "mid_sentence_splits": mid_split,
+            "loose_text": loose,
             # Not a quality check — lifted into integrity by get(). Kept here
             # because it falls out of the same single chapter scan.
             "empty_chapters": empty,

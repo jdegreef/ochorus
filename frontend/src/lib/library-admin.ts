@@ -268,6 +268,9 @@ export interface AdminLanguageHealth {
 	};
 	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
+	/** Readers whose site language this is, reading a work it has no edition
+	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
+	reading_elsewhere: number;
 }
 
 export const getAdminLanguageHealth = () =>
@@ -454,6 +457,25 @@ export const checkAdminLanguageDeploy = (code: string) =>
 
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
+
+/** A work this language's readers are reaching for in another language, with
+ *  its evidence: readers reading it elsewhere, and failed searches here that
+ *  find it in English. */
+export interface AdminWantedWork {
+	type: 'book' | 'sermon' | 'article';
+	slug: string;
+	title: string;
+	author: string;
+	readers: number;
+	searches: number;
+	/** Under copyright: no translation job can be filed. */
+	blocked: boolean;
+}
+
+export const getAdminLanguageWanted = (code: string) =>
+	apiFetch<{ language: string; days: number; works: AdminWantedWork[] }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/wanted/`
+	);
 
 // Adding a language. The row IS the language: the translate_* commands read
 // their Bible and glossary from it, so creating one here is what makes the
@@ -732,14 +754,26 @@ export interface ReviewItem {
 	provenance: { job_issue: number | null; pull_request: number | null } | null;
 	outcome: ReviewOutcome | null;
 	flags?: ReviewFlags | null;
+	/** Which kind of review it needs — see `ReviewLane`. */
+	lane: ReviewLane;
 }
+
+/**
+ * The four lanes of the queue. `ready`: examined, nothing flagged — the only
+ * bulk-approvable lane. `verses`: the translator rendered scripture itself, so
+ * each verse needs settling. `unexamined`: no scripture notes at all, so it must
+ * be read in full. `needs_work`: sent back.
+ */
+export type ReviewLane = 'ready' | 'verses' | 'unexamined' | 'needs_work';
 
 export interface ReviewQueue {
 	results: ReviewItem[];
 	total: number;
 	filtered: number;
-	flagged_total: number;
-	needs_work_total: number;
+	/** Lane counts for the language / type in view. */
+	lanes: Record<ReviewLane, number>;
+	/** When the longest-waiting item in view arrived ("" when none). */
+	oldest_created_at: string;
 	page: number;
 	pages: number;
 	page_size: number;
@@ -759,8 +793,7 @@ export interface ReviewQueue {
 export interface ReviewQueueParams {
 	kind?: string;
 	language?: string;
-	flagged?: boolean;
-	outcome?: string;
+	lane?: string;
 	sort?: string;
 	page?: number;
 	/** One work (the coverage matrix's deep link) — shown whatever its outcome. */
@@ -771,8 +804,7 @@ export const getReviewQueue = (p: ReviewQueueParams = {}) => {
 	const q = new URLSearchParams();
 	if (p.kind) q.set('kind', p.kind);
 	if (p.language) q.set('language', p.language);
-	if (p.flagged) q.set('flagged', '1');
-	if (p.outcome) q.set('outcome', p.outcome);
+	if (p.lane) q.set('lane', p.lane);
 	if (p.sort) q.set('sort', p.sort);
 	if (p.slug) q.set('slug', p.slug);
 	if (p.page && p.page > 1) q.set('page', String(p.page));
@@ -890,6 +922,9 @@ export interface AuditChapterFinding {
 	paragraphs?: number;
 	starts?: string;
 	ends?: string;
+	/** loose_text: how many runs sit outside any block, and the first, cut short. */
+	loose_runs?: number;
+	loose?: string;
 }
 
 export interface AdminAudit {
@@ -900,6 +935,7 @@ export interface AdminAudit {
 		fragmented: Capped<AuditChapterFinding>;
 		missing_dropcap: Capped<AuditChapterFinding>;
 		mid_sentence_splits: Capped<AuditChapterFinding>;
+		loose_text: Capped<AuditChapterFinding>;
 		duplicate_titles: Capped<{ book: string; language: string; title: string; count: number }>;
 	};
 	integrity: {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
 	import {
@@ -17,6 +18,7 @@
 	import { seriesAges } from '$lib/series';
 	import SeriesSegments from './SeriesSegments.svelte';
 	import ShelfCard from './ShelfCard.svelte';
+	import Arrow from './Arrow.svelte';
 
 	/**
 	 * A book series as a browse card — the Topics/Plans `ShelfCard`, so the
@@ -25,14 +27,21 @@
 	 * `compact` is the rail's form: no description, and an <h3> title because
 	 * the rail sits under its own "Book Series" <h2>; the index's cards sit
 	 * directly under the page <h1>.
+	 *
+	 * The full card (the index) also wears the large cover fan, lists every
+	 * book in the series behind a disclosure, and links a companion series —
+	 * Daughters of the King ⇄ Sons of the King — when the index passes one.
 	 */
 	let {
 		series,
 		compact = false,
+		companion = null,
 		headingLevel = compact ? 3 : 2
 	}: {
 		series: SeriesSummary;
 		compact?: boolean;
+		/** The series written as this one's pair, when it has a page here. */
+		companion?: Pick<SeriesSummary, 'slug' | 'title'> | null;
 		/** Overrides the level `compact` implies — the index's full cards sit
 		 *  under an audience <h2>, so they title themselves <h3>. */
 		headingLevel?: 2 | 3;
@@ -71,8 +80,9 @@
 	// book to open next, as the series page's button picks it — the first book
 	// until mount, then the book in progress or the first unfinished — or, once
 	// every book is read, a line saying so (the foot stays, so the card keeps
-	// one shape from prerender to mount). Its title comes from the fan's tiles,
-	// which cover the first four books; past those the verb stands alone.
+	// one shape from prerender to mount). Its title comes from the list's
+	// `titles` (the fan's tiles cover only the first four books, so an API
+	// behind this build falls back to them, and past those the verb stands alone).
 	const slugs = $derived(series.books ?? []);
 	const hasAction = $derived(!compact && slugs.length > 0);
 	const next = $derived.by(() => {
@@ -84,7 +94,21 @@
 	// carrying on with the series, not beginning it.
 	const continuing = $derived(!!next && (next.resume || next.book.slug !== slugs[0]));
 	const nextTitle = $derived(
-		next ? (series.covers.find((c) => c.slug === next.book.slug)?.title ?? '') : ''
+		next
+			? (series.titles?.[slugs.indexOf(next.book.slug)] ??
+					series.covers.find((c) => c.slug === next.book.slug)?.title ??
+					'')
+			: ''
+	);
+	// The book list: every volume with its stage, once progress is read.
+	const bookList = $derived(
+		!compact && series.titles?.length === slugs.length
+			? slugs.map((slug, i) => ({
+					slug,
+					title: series.titles![i],
+					stage: progress?.stages[i] ?? 'unread'
+				}))
+			: []
 	);
 	// "Rooted – 30 Days with God for Youth" as a name over a subtitle, so the
 	// title stays short enough to sit level with the count beside it.
@@ -96,10 +120,11 @@
 	hue={meta.accent}
 	emblem={meta.emblem}
 	covers={series.covers}
+	fan={compact ? 'sm' : 'lg'}
 	title={heading.name}
 	subtitle={heading.subtitle}
 	{headingLevel}
-	action={hasAction ? nextAction : undefined}
+	action={hasAction || (!compact && companion) ? footer : undefined}
 >
 	{#snippet aside()}
 		{series.book_count}
@@ -139,7 +164,35 @@
 	{/if}
 </ShelfCard>
 
-{#snippet nextAction()}
+{#snippet footer()}
+	{#if bookList.length}
+		<details class="book-list">
+			<summary class="text-small font-medium text-accent">
+				{t('series.booksList')}<span class="count">{bookList.length}</span>
+			</summary>
+			<ul class="mt-2 flex flex-col gap-1">
+				{#each bookList as book (book.slug)}
+					<li class="flex items-baseline gap-2 text-small">
+						<span class="stage stage-mark {book.stage}" aria-hidden="true"></span>
+						<a href={localizeHref(`/books/${book.slug}`)} dir="auto">{book.title}</a>
+						{#if book.stage !== 'unread'}
+							<span class="sr-only"
+								>({book.stage === 'done'
+									? t('settings.statFinished')
+									: t('settings.statInProgress')})</span
+							>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		</details>
+	{/if}
+	{#if companion}
+		<a class="companion text-small text-muted" href={localizeHref(`/series/${companion.slug}/`)}>
+			{m.series_companion({ title: splitSeriesTitle(companion.title).name })}
+			<Arrow />
+		</a>
+	{/if}
 	{#if next}
 		<a class="btn btn-sm btn-ghost max-w-full" href={localizeHref(`/books/${next.book.slug}`)}>
 			{#if continuing}
@@ -151,7 +204,7 @@
 			{/if}
 			{#if nextTitle}<span class="truncate" dir="auto">{nextTitle}</span>{/if}
 		</a>
-	{:else}
+	{:else if hasAction}
 		<p class="text-small text-muted">{t('series.allRead')}</p>
 	{/if}
 {/snippet}
@@ -164,6 +217,41 @@
 	.series-desc {
 		-webkit-line-clamp: 5;
 		line-clamp: 5;
+	}
+	/* The book list: a disclosure in the card's foot (outside the card's own
+	   link), each title its own link, with a dot for where the reader is. */
+	/* Capped, so opening a thirty-book list doesn't stretch its whole grid
+	   row (the row's cards share a height) by a screen. */
+	.book-list ul {
+		max-height: 13rem;
+		overflow-y: auto;
+	}
+	.book-list summary {
+		cursor: pointer;
+		width: fit-content;
+	}
+	.book-list summary .count {
+		margin-inline-start: 0.35rem;
+	}
+	.book-list a {
+		color: var(--text);
+		text-decoration: none;
+	}
+	.book-list a:hover {
+		color: var(--accent);
+	}
+	.stage {
+		flex: none;
+		width: 0.45rem;
+		height: 0.45rem;
+		border-radius: 9999px;
+	}
+	.companion {
+		width: fit-content;
+		text-decoration: none;
+	}
+	.companion:hover {
+		color: var(--accent);
 	}
 	/* A language code: a quiet bordered tag, not a link (the card is one). */
 	.lang-code {

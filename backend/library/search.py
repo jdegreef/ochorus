@@ -1075,3 +1075,30 @@ def suggest(q: str, language: str) -> str | None:
     if not best or best[0] == ql:
         return None
     return vocab[best[0]]
+
+
+# A search hit reduced to the translatable WORK behind it, named the way the
+# translation queue names it: a chapter is its book; an author is a bio job.
+# type -> (job_type, slug field, title field) on the hit.
+HIT_WORK = {
+    "book": ("book", "book_slug", "book_title"),
+    "chapter": ("book", "book_slug", "book_title"),
+    "sermon": ("sermon", "sermon_slug", "sermon_title"),
+    "plan": ("plan", "plan_slug", "plan_title"),
+    "author": ("bio", "author_slug", "author_name"),
+    "topic": ("topic", "topic_slug", "topic_title"),
+    "article": ("article", "article_slug", "article_title"),
+}
+
+
+def hit_work(hit: dict) -> dict | None:
+    """One search hit as a queueable work, or None for a hit that isn't one
+    (a scripture navigational row, or anything missing a slug)."""
+    spec = HIT_WORK.get(hit.get("type"))
+    if spec is None:
+        return None
+    job_type, slug_key, title_key = spec
+    slug = hit.get(slug_key)
+    if not slug:
+        return None
+    return {"type": job_type, "slug": slug, "title": hit.get(title_key) or slug}

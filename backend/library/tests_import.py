@@ -1042,13 +1042,16 @@ class GutenbergDisplayLineTests(SimpleTestCase):
     def test_the_restored_english_blocks_are_what_the_importer_emits(self):
         """The `restored_blocks` guard is a string match on the block, so a
         re-import has to produce exactly what the correction inserted — or the
-        body carries both. The test above pins the importer's side."""
+        body carries both. The test above pins the importer's side. The guard
+        sees the importer's line AFTER the typewriter-dash rule, which the
+        correction step runs first, so that is what is compared."""
+        from library import dashes
         from library.corrections import BODY_CORRECTIONS
 
         restored = {block for _, block in BODY_CORRECTIONS["blessed-adversity"]["restored_blocks"]}
         for block in self.ADVERSITY_LINES:
             with self.subTest(block=block):
-                self.assertIn(block, restored)
+                self.assertIn(dashes.convert(block), restored)
 
 
 class GutenbergBookDisplayLineTests(SimpleTestCase):
@@ -1683,6 +1686,7 @@ that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
     def test_every_restored_english_block_is_emitted(self):
         import json
 
+        from library import dashes
         from library.content_fixtures import SERMONS_DIR
         from library.corrections import BODY_CORRECTIONS
         from library.management.commands.import_sermons import extract_gutenberg_section
@@ -1695,7 +1699,8 @@ that walk uprightly."<br></em>--P<small>SALM LXXXIV</small>. 11.</div>
                 block for _, block in BODY_CORRECTIONS[slug]["restored_blocks"] if block in english
             ]
             self.assertTrue(blocks)
-            extracted = extract_gutenberg_section(self.EDITION, sections[slug])
+            # As the correction step sees it: the dash rule runs first.
+            extracted = dashes.convert(extract_gutenberg_section(self.EDITION, sections[slug]))
             for block in blocks:
                 with self.subTest(slug=slug, block=block):
                     self.assertIn(block, extracted)

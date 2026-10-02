@@ -12,10 +12,11 @@ latency to authentication and a failed send simply retries next pass.
 
 The sequence:
 
-* ``welcome``   — immediately (first sweep after sign-up).
-* ``pick_plan`` — day 2+, only if the reader hasn't started a reading plan.
-* ``classic``   — day 4+.
-* ``comeback``  — the reader has been seen but has gone quiet 7+ days.
+* ``welcome``          — immediately (first sweep after sign-up).
+* ``pick_plan``        — day 2+, only if the reader hasn't started a reading plan.
+* ``finish_first_book`` — day 3+, the reader opened a book but hasn't finished one.
+* ``classic``          — day 4+.
+* ``comeback``         — the reader has been seen but has gone quiet 7+ days.
 """
 
 from __future__ import annotations
@@ -27,7 +28,7 @@ from datetime import datetime, timedelta
 from django.utils import timezone
 
 from accounts.models import UserProfile
-from reading.models import PlanProgress
+from reading.models import PlanProgress, ReadingProgress, WorkKind
 
 from .models import (
     EmailKind,
@@ -42,12 +43,14 @@ from .sending import deliver
 
 WELCOME_STEP = "welcome"
 PLAN_STEP = "pick_plan"
+FIRST_BOOK_STEP = "finish_first_book"
 CLASSIC_STEP = "classic"
 COMEBACK_STEP = "comeback"
 
 # Day thresholds for the onboarding steps, and the inactivity window that
 # triggers re-engagement. Module constants for now; easy to move to settings.
 _PLAN_AFTER_DAYS = 2
+_FIRST_BOOK_AFTER_DAYS = 3
 _CLASSIC_AFTER_DAYS = 4
 _COMEBACK_AFTER_DAYS = 7
 
@@ -55,7 +58,12 @@ _COMEBACK_AFTER_DAYS = 7
 # the cron cadence or their account age. Without it, a back-dated account newly
 # in the cohort (e.g. the cutoff moved) would get every due step in consecutive
 # 15-minute runs; this keeps the drip to at most one email a day.
-_MIN_GAP = timedelta(hours=20)
+#
+# Public (with ``last_lifecycle_sent_at``) because the gap is an invariant of the
+# LIFECYCLE *kind*, not of this drip: every sender of a LIFECYCLE email shares it,
+# so a reader never gets a drip step and a behavioural nudge in the same window
+# (see emails/series_nudge.py).
+MIN_GAP = timedelta(hours=20)
 
 
 @dataclass(frozen=True)
@@ -65,6 +73,11 @@ class StepContext:
     age_days: float
     has_plan: bool
     days_since_seen: float | None
+    # Started reading at least one book; finished at least one book. Together they
+    # spot the reader who opened their first book but hasn't carried one to the
+    # end — the finish-your-first-book nudge.
+    has_started_book: bool
+    has_finished_book: bool
 
 
 @dataclass(frozen=True)
@@ -78,6 +91,15 @@ STEPS: list[LifecycleStep] = [
     LifecycleStep(WELCOME_STEP, lambda c: True),
     LifecycleStep(
         PLAN_STEP, lambda c: c.age_days >= _PLAN_AFTER_DAYS and not c.has_plan
+    ),
+    # Opened a book but hasn't finished one yet — nudge them back to it before the
+    # generic classic recommendation, so the reader with a book already in hand is
+    # pointed at *that*, not a new one.
+    LifecycleStep(
+        FIRST_BOOK_STEP,
+        lambda c: c.age_days >= _FIRST_BOOK_AFTER_DAYS
+        and c.has_started_book
+        and not c.has_finished_book,
     ),
     LifecycleStep(CLASSIC_STEP, lambda c: c.age_days >= _CLASSIC_AFTER_DAYS),
     LifecycleStep(
@@ -98,10 +120,17 @@ def _build_context(profile, now: datetime) -> StepContext:
     days_since_seen = (
         (now - last_seen).total_seconds() / 86400 if last_seen is not None else None
     )
+    # One query answers both: any book row means started; any with a finished_at
+    # means finished (and finished implies started, so they're not independent).
+    book_finishes = ReadingProgress.objects.filter(
+        profile=profile, kind=WorkKind.BOOK
+    ).values_list("finished_at", flat=True)
     return StepContext(
         age_days=age_days,
         has_plan=PlanProgress.objects.filter(profile=profile).exists(),
         days_since_seen=days_since_seen,
+        has_started_book=bool(book_finishes),
+        has_finished_book=any(f is not None for f in book_finishes),
     )
 
 
@@ -113,7 +142,7 @@ def _sent_steps(profile) -> set[str]:
     )
 
 
-def _last_lifecycle_sent_at(profile):
+def last_lifecycle_sent_at(profile):
     return (
         EmailMessage.objects.filter(
             recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT
@@ -163,8 +192,8 @@ def send_due(profile) -> EmailMessage | None:
     if not subscription.wants(EmailKind.LIFECYCLE):
         return None
     now = timezone.now()
-    last_sent = _last_lifecycle_sent_at(profile)
-    if last_sent is not None and now - last_sent < _MIN_GAP:
+    last_sent = last_lifecycle_sent_at(profile)
+    if last_sent is not None and now - last_sent < MIN_GAP:
         return None
     step = due_step(profile, now)
     if step is None:

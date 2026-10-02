@@ -20,7 +20,7 @@
 	aria-valuemax={stages.length}
 >
 	{#each stages as stage, i (i)}
-		<span class="segment {stage}"></span>
+		<span class="segment stage-mark {stage}"></span>
 	{/each}
 </div>
 
@@ -33,14 +33,5 @@
 		flex: 1;
 		height: 0.3rem;
 		border-radius: 9999px;
-		/* ProgressBar's track: a tint of the text colour shows on the card's
-		   surface in every theme, where surface-2 all but vanished. */
-		background: color-mix(in srgb, var(--text) 14%, transparent);
-	}
-	.segment.done {
-		background: var(--accent);
-	}
-	.segment.reading {
-		background: var(--gold);
 	}
 </style>
