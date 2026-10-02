@@ -132,6 +132,38 @@ def loose_snippet(runs: list[str]) -> str:
     return first if len(first) <= LOOSE_SNIPPET else first[:LOOSE_SNIPPET].rstrip() + "…"
 
 
+# How much of each side of a chapter boundary a mid-sentence-split finding
+# quotes — about a line of text, so the break can be judged without opening
+# either chapter.
+SPLIT_SNIPPET = 160
+
+
+def _collapse(text: str) -> str:
+    return " ".join(text.split())
+
+
+def head_snippet(text: str, n: int = SPLIT_SNIPPET) -> str:
+    """The first ~``n`` characters of ``text``, whitespace-collapsed, cut back to
+    a word boundary when one is reasonably close."""
+    t = _collapse(text[: n * 2])
+    if len(t) <= n:
+        return t
+    cut = t[:n]
+    space = cut.rfind(" ")
+    return cut[:space] if space > n // 2 else cut
+
+
+def tail_snippet(text: str, n: int = SPLIT_SNIPPET) -> str:
+    """The last ~``n`` characters of ``text``, whitespace-collapsed, cut forward
+    to a word boundary when one is reasonably close."""
+    t = _collapse(text[-n * 2 :])
+    if len(t) <= n:
+        return t
+    cut = t[-n:]
+    space = cut.find(" ")
+    return cut[space + 1 :] if -1 < space < n // 2 else cut
+
+
 def chapter_flags(title, wc, body_text, body_html, has_next) -> list[str]:
     """Quality flags for one chapter (a subset of the audit heuristics).
 
