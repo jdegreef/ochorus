@@ -3,10 +3,12 @@ import {
 	GROUP_ORDER,
 	grandTotal,
 	groupRows,
+	leadWithPinned,
 	navList,
 	passageBooks,
 	toRow,
 	totalFor,
+	type ResultGroup,
 	type ResultRow
 } from './searchResults';
 import type { SearchHit } from './library-public';
@@ -274,5 +276,31 @@ describe('cover faces', () => {
 		const row = toRow(book(), ctx);
 		expect(row.face).toBeUndefined();
 		expect(row.image).toBe('/c/humility.webp');
+	});
+});
+
+describe('leadWithPinned', () => {
+	const row = (type: ResultRow['type'], pinned = false) =>
+		({ type, pinned, key: `${type}-${pinned}`, href: '', title: type }) as unknown as ResultRow;
+	const group = (type: ResultRow['type'], rows: ResultRow[]): ResultGroup => ({
+		type,
+		labelKey: type,
+		rows
+	});
+
+	it('moves the group holding a pinned best match to the front', () => {
+		const groups = [
+			group('book', [row('book')]),
+			group('author', [row('author')]),
+			group('topic', [row('topic', true)])
+		];
+		expect(leadWithPinned(groups).map((g) => g.type)).toEqual(['topic', 'book', 'author']);
+	});
+
+	it('leaves the order alone when nothing is pinned or the pin already leads', () => {
+		const groups = [group('book', [row('book', true)]), group('topic', [row('topic')])];
+		expect(leadWithPinned(groups)).toBe(groups);
+		const plain = [group('book', [row('book')])];
+		expect(leadWithPinned(plain)).toBe(plain);
 	});
 });

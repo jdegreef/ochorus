@@ -302,6 +302,62 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    "winback": {
+        "en": {
+            "subject": "Your library is still here",
+            "preheader": "It’s been a while — your place is kept, and it’s all still free.",
+            "heading": "We’ve kept your place",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "It’s been a while since you visited Ochorus, and that’s all "
+                "right — life is full. We just wanted you to know your library "
+                "is still here, exactly as you left it.",
+                "Everything is still free, still ad-free, still yours: the great "
+                "works of prayer and the deeper life, in your language. Whenever "
+                "you have a few quiet minutes, a good book is waiting.",
+            ],
+            "cta_label": "Come back to Ochorus",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Tu biblioteca sigue aquí",
+            "preheader": "Ha pasado un tiempo; tu lugar está guardado y todo sigue siendo gratis.",
+            "heading": "Te guardamos el lugar",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ha pasado un tiempo desde tu última visita a Ochorus, y no "
+                "pasa nada: la vida está llena. Solo queríamos que supieras que "
+                "tu biblioteca sigue aquí, tal como la dejaste.",
+                "Todo sigue siendo gratuito, sin publicidad y tuyo: las grandes "
+                "obras sobre la oración y la vida profunda, en tu idioma. Cuando "
+                "tengas unos minutos de calma, un buen libro te espera.",
+            ],
+            "cta_label": "Vuelve a Ochorus",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "A sua biblioteca continua aqui",
+            "preheader": "Já faz algum tempo — o seu lugar está guardado e continua tudo gratuito.",
+            "heading": "Guardámos o seu lugar",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já faz algum tempo desde a sua última visita ao Ochorus, e não "
+                "faz mal — a vida é cheia. Só queríamos que soubesse que a sua "
+                "biblioteca continua aqui, tal como a deixou.",
+                "Continua tudo gratuito, sem publicidade e seu: as grandes obras "
+                "sobre a oração e a vida profunda, no seu idioma. Quando tiver "
+                "uns minutos tranquilos, um bom livro está à espera.",
+            ],
+            "cta_label": "Volte ao Ochorus",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
     # Finish-the-series nudge. Dynamic per reader: ``{finished}`` is the book they
     # just finished and ``{next}`` the next volume — both filled at render time
     # (emails/rendering.py), like ``{name}``. ``cta_path`` is set per reader (it

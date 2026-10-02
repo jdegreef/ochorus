@@ -7,6 +7,10 @@ import {
 	nextActions,
 	plural,
 	pointsBreakdown,
+	portfolio,
+	sparkPoints,
+	trendDays,
+	weekTrend,
 	type CoverageShelf
 } from './languageHealth';
 import type { AdminLanguageHealth, HealthWeights } from './library-admin';
@@ -196,5 +200,76 @@ describe('checkLabels', () => {
 
 	it('falls back to the key for a check the report does not list', () => {
 		expect(checkLabels({ checks: [] }, ['new-check'])).toEqual(['new-check']);
+	});
+});
+
+describe('weekTrend', () => {
+	it('is no chip until a week-old point exists', () => {
+		expect(weekTrend(null)).toBeNull();
+		expect(weekTrend(undefined)).toBeNull();
+	});
+
+	it('reads the change in points, like the other admin chips', () => {
+		expect(weekTrend(4)).toEqual({ dir: 'up', text: '+4 pts', bad: false });
+		expect(weekTrend(-2)).toEqual({ dir: 'down', text: '-2 pts', bad: true });
+		expect(weekTrend(0)).toEqual({ dir: 'flat', text: '0 pts', bad: false });
+	});
+});
+
+describe('trendDays', () => {
+	it('counts days between the first and last point, not points', () => {
+		expect(trendDays([{ date: '2026-09-01' }, { date: '2026-09-10' }, { date: '2026-10-01' }])).toBe(30);
+		expect(trendDays([{ date: '2026-10-01' }])).toBe(0);
+	});
+});
+
+describe('sparkPoints', () => {
+	it('needs two points', () => {
+		expect(sparkPoints(undefined)).toBe('');
+		expect(sparkPoints([{ date: '2026-10-02', health: 49 }])).toBe('');
+	});
+
+	it('places points by date and fills the box with their range', () => {
+		const pts = sparkPoints([
+			{ date: '2026-10-01', health: 40 },
+			{ date: '2026-10-02', health: 50 },
+			{ date: '2026-10-05', health: 60 }
+		]);
+		// Day 1 of a 4-day span sits a quarter of the way along.
+		expect(pts).toBe('0,26 25,14 100,2');
+	});
+
+	it('keeps a small change small by spanning at least ten points', () => {
+		// 49 → 50 sits in the middle of a 44.5–54.5 band, not top to bottom.
+		expect(sparkPoints([
+			{ date: '2026-10-01', health: 49 },
+			{ date: '2026-10-02', health: 50 }
+		])).toBe('0,15.2 100,12.8');
+	});
+});
+
+describe('portfolio', () => {
+	const en = french({ code: 'en', is_source: true, health: 98, content: { ...french().content, unreviewed_books: 1 } });
+	const sw = french({ code: 'sw', health: 52, content: { ...french().content, unreviewed_books: 65 } });
+	const uk = french({
+		code: 'uk',
+		health: 27,
+		is_live: false,
+		content: { ...french().content, unreviewed_books: 0 },
+		readiness: { ready: false, blocking: [{ key: 'glossary', label: 'Glossary' }] }
+	});
+
+	it('summarises the translations, leaving the source out of the score figures', () => {
+		const p = portfolio([en, french(), sw, uk]);
+		expect(p.translations).toBe(3);
+		expect(p.live).toBe(2);
+		expect(p.median).toBe(49);
+		expect(p.awaitingReview).toBe(1 + 50 + 65);
+		expect(p.blocked.map((l) => l.code)).toEqual(['uk']);
+	});
+
+	it('averages the middle pair for an even count, and has no median when empty', () => {
+		expect(portfolio([french(), sw]).median).toBe(51);
+		expect(portfolio([en]).median).toBeNull();
 	});
 });

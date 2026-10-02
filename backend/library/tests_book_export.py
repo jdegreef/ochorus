@@ -280,10 +280,16 @@ class PilotTests(TestCase):
         # The About the Author page: three or four paragraphs on one A5 page.
         # The ceiling is loose — export_book fails a PDF whose bio runs past its
         # page — but it stops a bio_html pasted in by mistake.
-        wanted = {
-            f"{_fixture_fields(slug, lang)['author'][0]}.{lang}.txt"
+        # An imprint (Ochorus Originals) is a publisher, not a person: its
+        # editions have no About the Author page (author_bio), so no bio file.
+        from .content_fixtures import authors_by_slug
+
+        imprints = {slug for slug, a in authors_by_slug().items() if a.get("is_imprint")}
+        authors = {
+            (_fixture_fields(slug, lang)["author"][0], lang)
             for slug, lang in export_policy.EXPORT_EDITIONS
         }
+        wanted = {f"{author}.{lang}.txt" for author, lang in authors if author not in imprints}
         for name in sorted(wanted):
             path = book_export.EXPORT_BIOS_DIR / name
             self.assertTrue(path.is_file(), f"no export bio at {path.name}")
@@ -316,10 +322,9 @@ class PilotTests(TestCase):
         self.assertEqual(sorted(pinned), files, "sources.json must list every export bio")
         for name in files:
             slug, lang, _ = name.split(".")
-            source = (
-                english[slug] if lang == "en"
-                else (translated / f"author_bios_{lang}" / f"{slug}.html").read_text(encoding="utf-8")
-            )
+            # A language with no long bio of its own is written from the English.
+            long_bio = translated / f"author_bios_{lang}" / f"{slug}.html"
+            source = long_bio.read_text(encoding="utf-8") if lang != "en" and long_bio.is_file() else english[slug]
             digest = hashlib.sha256(source.encode()).hexdigest()[:16]
             self.assertEqual(pinned[name], digest, f"{name}: its author's long bio changed — re-check it")
 

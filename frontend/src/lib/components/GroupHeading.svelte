@@ -50,9 +50,10 @@
 		/** Inline content after the name — e.g. an era's year range, or a
 		    search group's bespoke "N of M" count. */
 		detail?: Snippet;
-		/** One line under the heading saying who this group is — the sermons
-		    shelf's preacher bio opening. Truncated to one line and indented to
-		    the name (past the portrait), so the caller needn't know either. */
+		/** A line under the heading saying who this group is — the sermons
+		    shelf's preacher tagline. Clamped to two lines, and indented to the
+		    name (past the portrait) from sm up, so the caller needn't know
+		    either; a phone gives it the full width, which it needs. */
 		blurb?: string;
 	} = $props();
 </script>
@@ -91,7 +92,7 @@
 </svelte:element>
 {#if blurb}
 	<!-- Indented to the name: the portrait's w-8 plus the heading's gap-2.5. -->
-	<p class="mb-4 max-w-prose truncate text-small text-muted {portraitUrl ? 'ps-[2.625rem]' : ''}">
+	<p class="mb-4 line-clamp-2 max-w-prose text-small text-muted {portraitUrl ? 'sm:ps-[2.625rem]' : ''}">
 		{blurb}
 	</p>
 {/if}

@@ -17,6 +17,7 @@ The sequence:
 * ``finish_first_book`` — day 3+, the reader opened a book but hasn't finished one.
 * ``classic``          — day 4+.
 * ``comeback``         — the reader has been seen but has gone quiet 7+ days.
+* ``winback``          — deeper dormancy: quiet 30+ days.
 """
 
 from __future__ import annotations
@@ -46,13 +47,15 @@ PLAN_STEP = "pick_plan"
 FIRST_BOOK_STEP = "finish_first_book"
 CLASSIC_STEP = "classic"
 COMEBACK_STEP = "comeback"
+WINBACK_STEP = "winback"
 
-# Day thresholds for the onboarding steps, and the inactivity window that
-# triggers re-engagement. Module constants for now; easy to move to settings.
+# Day thresholds for the onboarding steps, and the inactivity windows that
+# trigger re-engagement. Module constants for now; easy to move to settings.
 _PLAN_AFTER_DAYS = 2
 _FIRST_BOOK_AFTER_DAYS = 3
 _CLASSIC_AFTER_DAYS = 4
 _COMEBACK_AFTER_DAYS = 7
+_WINBACK_AFTER_DAYS = 30
 
 # Never send a reader two lifecycle emails closer together than this, whatever
 # the cron cadence or their account age. Without it, a back-dated account newly
@@ -106,6 +109,14 @@ STEPS: list[LifecycleStep] = [
         COMEBACK_STEP,
         lambda c: c.days_since_seen is not None
         and c.days_since_seen >= _COMEBACK_AFTER_DAYS,
+    ),
+    # Deep dormancy: a warmer "we've kept your place" a month out. It escalates
+    # from comeback (both send once ever), so a reader who drifts all the way to a
+    # month gets the gentle 7-day nudge and then this; the 20h gap paces them.
+    LifecycleStep(
+        WINBACK_STEP,
+        lambda c: c.days_since_seen is not None
+        and c.days_since_seen >= _WINBACK_AFTER_DAYS,
     ),
 ]
 
