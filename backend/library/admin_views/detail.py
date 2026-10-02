@@ -35,7 +35,7 @@ class AdminBookDetailView(APIView):
 
         # Every edition's progress rows in one query, for its "where readers
         # stop" curve (library.dropoff).
-        progress = dropoff.progress_rows(slug=slug)
+        progress = dropoff.progress_rows(slugs=[slug])
 
         languages = []
         for b in sorted(books, key=lambda x: (x.language != "en", x.language)):

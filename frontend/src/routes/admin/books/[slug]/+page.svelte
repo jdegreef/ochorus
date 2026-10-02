@@ -84,10 +84,9 @@
 
 			<div class="space-y-5">
 				{#each b.languages as l (l.code)}
-					<!-- The id is what the content audit's "worst books first" Open lands on. -->
 					<section
 						id={adminEditionId(l.code)}
-						class="scroll-mt-[calc(var(--appnav-h,0px)+4rem)] rounded-card border border-border bg-surface p-5"
+						class="scroll-mt-[calc(var(--appnav-h,0px)+1rem)] rounded-card border border-border bg-surface p-5"
 					>
 						<div class="mb-3 flex flex-wrap items-start justify-between gap-3">
 							<div>

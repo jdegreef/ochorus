@@ -6,6 +6,7 @@
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { type SourceType } from '$lib/library-public';
 	import {
+		adminBookHref,
 		getAdminStats,
 		getAdminAttention,
 		getAdminTranslationJobs,
@@ -421,7 +422,7 @@
 								<li class="flex items-start justify-between gap-3">
 									<div class="min-w-0">
 										<a
-											href={`/admin/books/${b.slug}`}
+											href={adminBookHref(b.slug)}
 											class="block truncate font-semibold text-text hover:text-accent"
 											>{b.title}</a
 										>

@@ -12,6 +12,7 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
+from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
 from ..models import (
@@ -255,8 +256,14 @@ class AdminEngagementView(APIView):
         on the page."""
         from reading.models import FavoriteKind, WorkKind
 
+        books = self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK)
+        # A book also carries where its readers stop, chapter by chapter, for
+        # its row's sparkline; the other kinds are one document each.
+        curves = dropoff.work_curves([b["slug"] for b in books])
+        for b in books:
+            b["reach"] = curves.get(b["slug"])
         return {
-            "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
+            "book": books,
             "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
             "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
             "article": self._leaderboard(WorkKind.ARTICLE, FavoriteKind.ARTICLE),

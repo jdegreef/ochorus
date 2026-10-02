@@ -19,6 +19,9 @@
 	import { localizeHref } from '$lib/href';
 	import { relativeTime } from '$lib/relativeTime';
 	import { locales } from '$lib/paraglide/runtime';
+	import { tick } from 'svelte';
+	import { SvelteSet } from 'svelte/reactivity';
+	import { TRIAGE_KEYS, stepIndex, triageAction } from './triageKeys';
 
 	// '' = all editions. Filtering is server-side (accurate per-language totals
 	// even when a check is capped), so a change re-fetches via the resource key.
@@ -312,7 +315,8 @@
 		if (f.avg_words != null) return `${f.avg_words} words/¶ · ${f.paragraphs} ¶`;
 		if (f.word_count != null) return `${f.word_count} words`;
 		if (f.starts) return `“${f.starts}…”`;
-		if (f.ends) return `…${f.ends}`;
+		// The full line is in the expandable evidence; the row keeps a glance.
+		if (f.ends) return `…${f.ends.slice(-40).trimStart()}`;
 		if (f.loose_runs != null) return `${f.loose_runs} loose · “${f.loose}”`;
 		return '';
 	}
@@ -333,7 +337,69 @@
 		}
 		return [...groups.values()];
 	}
+
+	// Inline evidence: a finding that carries a snippet can be expanded in place,
+	// so judging it doesn't take a new tab per row. Keyed per check, since one
+	// chapter can be flagged by several.
+	const hasDetail = (f: AuditChapterFinding) => !!(f.ends || f.starts || f.loose);
+	const expanded = new SvelteSet<string>();
+	function toggleDetail(id: string) {
+		if (expanded.has(id)) expanded.delete(id);
+		else expanded.add(id);
+	}
+
+	// Keyboard triage (see triageKeys.ts). The stops are whatever is on screen:
+	// each quality check's header and the finding rows of the checks that are
+	// open — read from the DOM, so a folded check's rows are simply skipped.
+	const visibleStops = () =>
+		[...document.querySelectorAll<HTMLElement>('[data-triage]')].filter(
+			(el) => el.getClientRects().length > 0
+		);
+	// After an accept the list reloads; focus goes back to the same position.
+	let refocusAt = $state<number | null>(null);
+	$effect(() => {
+		void audit;
+		if (refocusAt === null || busy) return;
+		const at = refocusAt;
+		refocusAt = null;
+		tick().then(() => {
+			const stops = visibleStops();
+			stops[Math.min(at, stops.length - 1)]?.focus();
+		});
+	});
+
+	function onTriageKey(e: KeyboardEvent) {
+		const action = triageAction(e);
+		if (!action) return;
+		const stops = visibleStops();
+		const active = document.activeElement;
+		const current = active instanceof Element ? active.closest<HTMLElement>('[data-triage]') : null;
+		const i = current ? stops.indexOf(current) : -1;
+		if (action === 'next' || action === 'prev') {
+			const next = stops[stepIndex(i, action === 'next' ? 1 : -1, stops.length)];
+			if (!next) return;
+			e.preventDefault();
+			next.focus();
+			next.scrollIntoView({ block: 'nearest' });
+			return;
+		}
+		if (!current) return;
+		const target = current.querySelector<HTMLElement>(`[data-triage-${action}]`);
+		if (!target) return;
+		e.preventDefault();
+		if (action === 'open') {
+			window.open((target as HTMLAnchorElement).href, '_blank', 'noopener');
+		} else {
+			if (action === 'accept') {
+				if (busy) return;
+				refocusAt = i;
+			}
+			target.click();
+		}
+	}
 </script>
+
+<svelte:window onkeydown={onTriageKey} />
 
 <svelte:head><title>Admin · Audit — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
@@ -450,6 +516,7 @@
 					class="shrink-0 text-small text-muted hover:text-accent disabled:opacity-50"
 					title="Accept as known — remove this from the audit"
 					disabled={busy}
+					data-triage-accept
 					onclick={() => dismiss(target, label)}>accept</button
 				>
 			{/snippet}
@@ -458,18 +525,59 @@
 			     book is grouped, `bare` drops the repeated slug and shows only /order.
 			     `checkKey` (present only for dismissible quality checks) adds Accept. -->
 			{#snippet chapterItem(f: AuditChapterFinding, bare = false, checkKey?: string)}
-				<li class="flex items-baseline justify-between gap-3 py-1.5">
-					<a
-						href={editionHref(`/books/${f.book}/${f.order}`, f.language)}
-						class="min-w-0 truncate text-body text-text hover:text-accent"
-					>
-						{#if bare}<span class="text-muted">/{f.order}</span>{:else}<span class="text-muted">{f.book}/{f.order}</span> <span class="text-micro text-muted">{f.language}</span>{/if}
-						— {f.title || '(untitled)'}
-					</a>
-					<span class="flex shrink-0 items-baseline gap-2">
-						{#if evidence(f)}<span class="text-small text-muted">{evidence(f)}</span>{/if}
-						{#if checkKey}{@render acceptBtn({ check: checkKey, book: f.book, language: f.language, ref: String(f.order) }, `${f.book}/${f.order}`)}{/if}
-					</span>
+				{@const id = `${checkKey ?? 'integrity'}:${findingKey(f)}`}
+				{@const open = expanded.has(id)}
+				<li class="rounded-sm py-1.5" tabindex="-1" data-triage>
+					<div class="flex items-baseline justify-between gap-3">
+						<a
+							href={editionHref(`/books/${f.book}/${f.order}`, f.language)}
+							class="min-w-0 truncate text-body text-text hover:text-accent"
+							data-triage-open
+						>
+							{#if bare}<span class="text-muted">/{f.order}</span>{:else}<span class="text-muted">{f.book}/{f.order}</span> <span class="text-micro text-muted">{f.language}</span>{/if}
+							— {f.title || '(untitled)'}
+						</a>
+						<span class="flex shrink-0 items-baseline gap-2">
+							{#if evidence(f)}<span class="text-small text-muted">{evidence(f)}</span>{/if}
+							{#if hasDetail(f)}
+								<button
+									type="button"
+									class="text-small text-muted hover:text-accent"
+									aria-expanded={open}
+									aria-controls="ev-{id}"
+									data-triage-toggle
+									onclick={() => toggleDetail(id)}>{open ? 'hide' : 'show'}</button
+								>
+							{/if}
+							{#if checkKey}{@render acceptBtn({ check: checkKey, book: f.book, language: f.language, ref: String(f.order) }, `${f.book}/${f.order}`)}{/if}
+						</span>
+					</div>
+					{#if hasDetail(f)}
+						<div id="ev-{id}" hidden={!open} class="mt-1.5 rounded-sm border border-border bg-surface-2 p-3 text-small">
+							{#if open}
+								{#if f.ends}
+									<!-- Both sides of the chapter break, with the break marked
+									     between them: the reader turns the page at the marker. -->
+									<div class="grid gap-2 sm:grid-cols-[1fr_auto_1fr] sm:gap-3">
+										<p class="text-text"><span class="block text-micro text-muted">end of ch. {f.order}</span>…{f.ends}</p>
+										<div class="flex items-center gap-2 text-micro text-warning sm:flex-col" role="separator" aria-label="Chapter break">
+											<span class="h-px flex-1 border-t border-dashed border-warning/60 sm:h-auto sm:w-px sm:border-t-0 sm:border-s"></span>
+											<span aria-hidden="true">split</span>
+											<span class="h-px flex-1 border-t border-dashed border-warning/60 sm:h-auto sm:w-px sm:border-t-0 sm:border-s"></span>
+										</div>
+										<p class="text-text">
+											<span class="block text-micro text-muted">start of next chapter</span>
+											{#if f.next_starts}{f.next_starts}…{:else if f.next_starts === ''}<span class="text-muted">(empty chapter)</span>{:else}<span class="text-muted">— re-run the audit to see it</span>{/if}
+										</p>
+									</div>
+								{:else if f.starts}
+									<p class="text-text"><span class="block text-micro text-muted">chapter opens</span>“{f.starts}…”</p>
+								{:else if f.loose}
+									<p class="text-text"><span class="block text-micro text-muted">outside any paragraph{f.loose_runs && f.loose_runs > 1 ? ` (first of ${f.loose_runs})` : ''}</span>“{f.loose}”</p>
+								{/if}
+							{/if}
+						</div>
+					{/if}
 				</li>
 			{/snippet}
 
@@ -511,7 +619,7 @@
 			     folded. -->
 			{#snippet check(def: CheckDef, total: number, open: boolean, body: import('svelte').Snippet, dismissed = 0)}
 				<details class="group border-b border-border py-2" {open}>
-					<summary class="flex cursor-pointer list-none items-baseline justify-between gap-3">
+					<summary class="flex cursor-pointer list-none items-baseline justify-between gap-3" data-triage>
 						<span class="flex min-w-0 items-baseline">
 							<span class="mr-1 inline-block shrink-0 text-muted transition-transform group-open:rotate-90">›</span>
 							<span class="min-w-0">
@@ -716,14 +824,19 @@
 				<section>
 					<h2 class="text-h3 mb-1">Content quality</h2>
 					<p class="mb-3 text-small text-muted">Advisory heuristics — expect false positives.</p>
+					<p class="mb-3 hidden flex-wrap gap-x-3 gap-y-1 text-micro text-muted sm:flex" aria-label="Keyboard shortcuts">
+						{#each TRIAGE_KEYS as k (k.label)}
+							<span>{#each k.keys as key, i (key)}{#if i} / {/if}<kbd class="rounded border border-border bg-surface-2 px-1.5 py-0.5">{key}</kbd>{/each} {k.label}</span>
+						{/each}
+					</p>
 
 					{#each qualityChecks as q (q.key)}
 						{#if q.key === 'duplicate_titles'}
 							{#snippet dupTitles()}
 								<ul class="mt-1">
 									{#each a.quality.duplicate_titles.items as f (f.book + ':' + f.language + ':' + f.title)}
-										<li class="flex items-baseline justify-between gap-3 py-1.5">
-											<a href={editionHref(`/books/${f.book}`, f.language)} class="min-w-0 truncate text-body text-text hover:text-accent"><span class="text-muted">{f.book}</span> <span class="text-micro text-muted">{f.language}</span> — “{f.title}”</a>
+										<li class="flex items-baseline justify-between gap-3 rounded-sm py-1.5" tabindex="-1" data-triage>
+											<a href={editionHref(`/books/${f.book}`, f.language)} class="min-w-0 truncate text-body text-text hover:text-accent" data-triage-open><span class="text-muted">{f.book}</span> <span class="text-micro text-muted">{f.language}</span> — “{f.title}”</a>
 											<span class="flex shrink-0 items-baseline gap-2">
 												<span class="text-small text-muted">×{f.count}</span>
 												{@render acceptBtn({ check: 'duplicate_titles', book: f.book, language: f.language, ref: f.title }, `${f.book} “${f.title}”`)}
