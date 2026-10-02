@@ -26,6 +26,7 @@ from .content import (
     AdminTranslationMarkCurrentView,
 )
 from .content_jobs import AdminContentEditJobsView
+from .demand import AdminLanguageWantedView
 from .detail import (
     AdminBookDetailView,
     AdminBookPublishView,
@@ -78,6 +79,7 @@ __all__ = [
     "AdminLanguageCreateView",
     "AdminLanguageDeployCheckView",
     "AdminLanguageDetailView",
+    "AdminLanguageWantedView",
     "AdminLanguageGoLiveView",
     "AdminLanguageReadinessView",
     "AdminLanguageSettingsView",

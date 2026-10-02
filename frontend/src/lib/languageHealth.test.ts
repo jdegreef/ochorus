@@ -17,6 +17,7 @@ const french = (over: Partial<AdminLanguageHealth> = {}): AdminLanguageHealth =>
 	content: { published_books: 53, unreviewed_books: 50, sermons: 57, bios: 61, plans: 11, chapters: 0, words: 0 },
 	readiness: { ready: true, blocking: [] },
 	readers: 5,
+	reading_elsewhere: 0,
 	...over
 });
 
