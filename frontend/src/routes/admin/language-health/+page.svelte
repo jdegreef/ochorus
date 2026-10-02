@@ -17,7 +17,8 @@
 		healthBand,
 		nextActions,
 		plural,
-		pointsBreakdown
+		pointsBreakdown,
+		type CoverageShelf
 	} from '$lib/languageHealth';
 
 	const res = adminResource(getAdminLanguageHealth, 'Something went wrong loading language health.');
@@ -31,7 +32,7 @@
 	// What each ingredient measures, for "How the score works".
 	const COMPONENTS: Record<HealthScoreKey, { label: string; hint: string }> = {
 		readiness: { label: 'Readiness', hint: 'share of the go-live checks met' },
-		coverage: { label: 'Coverage', hint: 'books here ÷ the English shelf' },
+		coverage: { label: 'Coverage', hint: 'share of the English shelf that exists here' },
 		review: { label: 'Review', hint: 'share of translations a human has confirmed' },
 		engagement: { label: 'Engagement', hint: 'readers' }
 	};
@@ -50,6 +51,21 @@
 		(target
 			? `, against a target of ${plural(target, 'reader')}, so another language's readers never move this score`
 			: ', against the busiest language');
+
+	// Coverage's weights and the English shelf, when the API sends them.
+	const shelfOf = (d: {
+		coverage_mix?: CoverageShelf['mix'];
+		source_shelf?: CoverageShelf['source'];
+	}): CoverageShelf | undefined =>
+		d.coverage_mix && d.source_shelf ? { mix: d.coverage_mix, source: d.source_shelf } : undefined;
+
+	const coverageHint = (sourceBooks: number, shelf?: CoverageShelf) =>
+		shelf
+			? `, blending ${(['books', 'sermons', 'bios', 'plans'] as const)
+					.filter((k) => shelf.source[k] > 0)
+					.map((k) => `${k} ${Math.round(shelf.mix[k] * 100)}% (${fmt(shelf.source[k])})`)
+					.join(', ')}`
+			: ` (${fmt(sourceBooks)} books)`;
 
 	const formula = (w: HealthWeights) =>
 		HEALTH_KEYS.map((k) => `${Math.round(w[k] * 100)} × ${COMPONENTS[k].label.toLowerCase()}`).join(' + ');
@@ -83,7 +99,7 @@
 							<li>
 								<span class="font-semibold text-text">{COMPONENTS[k].label}</span>
 								({Math.round(data.weights[k] * 100)} pts): {COMPONENTS[k].hint}{k === 'coverage'
-									? ` (${fmt(data.source_published_books)} books)`
+									? coverageHint(data.source_published_books, shelfOf(data))
 									: k === 'engagement'
 										? engagementHint(data.engagement_target, data.reader_window_days)
 										: ''}.
@@ -114,7 +130,7 @@
 				{#each ranked as l, i (l.code)}
 					{@const b = healthBand(l.health)}
 					{@const breakdown = pointsBreakdown(l.scores, data.weights)}
-					{@const actions = nextActions(l, data.source_published_books, data.weights)}
+					{@const actions = nextActions(l, data.source_published_books, data.weights, shelfOf(data))}
 					<li class="rounded-card border border-border bg-surface p-4">
 						<div class="flex items-start justify-between gap-4">
 							<div class="min-w-0">
@@ -164,7 +180,7 @@
 							style="--weighted: {breakdown.map((p) => `${p.max}fr`).join(' ')}"
 						>
 							{#each breakdown as p (p.key)}
-								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target)}
+								{@const line = countLine(p.key, l, data.source_published_books, data.engagement_target, shelfOf(data))}
 								<div class="min-w-0">
 									<ProgressBar
 										percent={p.max ? (p.earned / p.max) * 100 : 0}
@@ -175,7 +191,9 @@
 										{COMPONENTS[p.key].label}
 										<span class="tabular-nums text-muted">{pts(p.earned)}/{pts(p.max)}</span>
 									</p>
-									<p class="truncate text-micro tabular-nums text-muted" title={line}>{line}</p>
+									<!-- Wraps rather than truncates: coverage lists four kinds, and a
+									     phone has no hover to reveal a clipped title. -->
+									<p class="text-micro tabular-nums text-muted">{line}</p>
 								</div>
 							{/each}
 						</div>

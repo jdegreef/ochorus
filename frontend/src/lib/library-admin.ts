@@ -244,6 +244,8 @@ export const getAdminAuthorsWithoutBio = () =>
 export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
 /** What each component weighs in the composite (sums to 1). */
 export type HealthWeights = Record<HealthScoreKey, number>;
+/** The kinds of content coverage blends. */
+export type ShelfKind = 'books' | 'sermons' | 'bios' | 'plans';
 export interface AdminLanguageHealth {
 	code: string;
 	name: string;
@@ -278,6 +280,10 @@ export const getAdminLanguageHealth = () =>
 		/** Readers are those active in this many days. Absent from an API that
 		 *  counted all-time readers. */
 		reader_window_days?: number;
+		/** How coverage weighs each kind (sums to 1), and the source language's
+		 *  count of each. Absent from an API that scored coverage on books alone. */
+		coverage_mix?: Record<ShelfKind, number>;
+		source_shelf?: Record<ShelfKind, number>;
 		languages: AdminLanguageHealth[];
 	}>('/api/admin/language-health/');
 

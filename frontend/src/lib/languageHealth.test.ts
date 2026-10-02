@@ -1,5 +1,13 @@
 import { describe, expect, it } from 'vitest';
-import { blockers, countLine, healthBand, nextActions, plural, pointsBreakdown } from './languageHealth';
+import {
+	blockers,
+	countLine,
+	healthBand,
+	nextActions,
+	plural,
+	pointsBreakdown,
+	type CoverageShelf
+} from './languageHealth';
 import type { AdminLanguageHealth, HealthWeights } from './library-admin';
 
 const WEIGHTS: HealthWeights = { readiness: 0.35, coverage: 0.3, review: 0.2, engagement: 0.15 };
@@ -116,5 +124,33 @@ describe('countLine', () => {
 	it('gives the counts behind coverage and review', () => {
 		expect(countLine('coverage', french(), 179)).toBe('53 of 179 books');
 		expect(countLine('review', french(), 179)).toBe('3 of 53 reviewed');
+	});
+});
+
+// English's shelf from the screenshot, under the recommended mix.
+const SHELF: CoverageShelf = {
+	mix: { books: 0.5, sermons: 0.25, bios: 0.15, plans: 0.1 },
+	source: { books: 179, sermons: 198, bios: 99, plans: 36 }
+};
+
+describe('coverage across content kinds', () => {
+	it('shows each kind as a share of the source shelf', () => {
+		expect(countLine('coverage', french(), 179, 25, SHELF)).toBe(
+			'books 30% · sermons 29% · bios 62% · plans 31%'
+		);
+	});
+
+	it('names what is missing and prices one book at its share of the mix', () => {
+		const l = french({ scores: { ...french().scores, coverage: 0.343 } });
+		const cov = nextActions(l, 179, WEIGHTS, SHELF).find((a) => a.key === 'coverage')!;
+		expect(cov.label).toBe('Translate the missing content (126 books, 141 sermons, 38 bios, 25 plans)');
+		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 179);
+	});
+
+	it('leaves out a kind the source shelf has none of', () => {
+		const noPlans = { ...SHELF, source: { ...SHELF.source, plans: 0 } };
+		expect(countLine('coverage', french(), 179, 25, noPlans)).toBe('books 30% · sermons 29% · bios 62%');
+		const cov = nextActions(french(), 179, WEIGHTS, noPlans).find((a) => a.key === 'coverage')!;
+		expect(cov.perUnit).toBeCloseTo((30 * 0.5) / 0.9 / 179);
 	});
 });
