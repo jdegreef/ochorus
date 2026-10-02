@@ -90,6 +90,13 @@
 	}
 	const allLangs = $derived(cov?.languages ?? []);
 	const langs = $derived(allLangs.filter((l) => !hiddenLangs.includes(l.code)));
+	// English is every work's source, not a translation target: the matrix draws
+	// it once as a muted "Source" column, and every translation figure — the
+	// columns, their totals, the legend, a work's coverage — runs over the rest.
+	// (Hidden languages are out of both, so hiding one changes those figures.)
+	const SOURCE = 'en';
+	const sourceLang = $derived(langs.find((l) => l.code === SOURCE));
+	const targetLangs = $derived(langs.filter((l) => l.code !== SOURCE));
 	// Only codes that are actually columns count as hidden (a remembered code
 	// for a language that has since gone isn't worth mentioning).
 	const hiddenCount = $derived(allLangs.length - langs.length);
@@ -105,9 +112,6 @@
 	// The toolbar's two pop-downs: View (settings you set once) and More (export).
 	let viewOpen = $state(false);
 	let moreOpen = $state(false);
-	// English is every work's source, not a translation target: it renders as a
-	// muted "Source" column, and the legend and per-work coverage leave it out.
-	const SOURCE = 'en';
 	const colTint = (code: string) => (hoverCol === code ? 'bg-surface-2' : '');
 	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
 	// detail yet) link to their live pages — a biography row is an author.
@@ -152,9 +156,10 @@
 	// language — "translate the whole series into Swahili" is one press.
 	let seriesFilter = $state(init.get('series') ?? '');
 	const seriesOptions = $derived(cov?.series ?? []);
-	// How many languages a work is present in — the completeness sort key.
+	// How many target languages a work is in — the completeness sort key and the
+	// coverage figure on its row.
 	const completeness = (r: AdminCoverageRow) =>
-		langs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0);
+		targetLangs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0);
 	// An AI translation awaiting review — the backlog. A copyright-blocked work's
 	// editions stay unpublished, so there is nothing of it to review.
 	const isUnreviewed = (r: AdminCoverageRow, code: string) =>
@@ -296,19 +301,17 @@
 
 	// --- CSV of the current view: every filtered work (collapsed groups too),
 	// one column per language, each cell the state the matrix shows.
+	const CSV_LABEL: Record<CellState, string> = {
+		ai_reviewed: 'AI reviewed',
+		ai_unreviewed: 'AI unreviewed',
+		present: 'present',
+		queued: 'queued',
+		translating: 'translating',
+		blocked: 'blocked (copyright)',
+		missing: ''
+	};
 	function csvCell(r: AdminCoverageRow, l: AdminCoverageLanguage): string {
-		const v = r.cells[l.code];
-		const job = v ? undefined : jobFor(r.slug, l.code);
-		const base = v
-			? ({ public_domain: 'PD', ai_reviewed: 'AI reviewed', ai_unreviewed: 'AI unreviewed' } as Record<string, string>)[v] ??
-				'present'
-			: job
-				? job.state === 'in_progress'
-					? 'translating'
-					: 'queued'
-				: r.blocked
-					? 'blocked (copyright)'
-					: '';
+		const base = r.cells[l.code] === 'public_domain' ? 'PD' : CSV_LABEL[cellState(r, l)];
 		return isStale(r, l.code) ? `${base} (out of date)` : base;
 	}
 	function downloadCsv() {
@@ -377,14 +380,14 @@
 
 	// Per-language totals for the active matrix (how many visible works exist in each).
 	const totals = $derived(
-		langs.map((l) => visibleRows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
+		targetLangs.map((l) => visibleRows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
 	);
 	// Completion per language over the visible works that CAN exist there — a
 	// copyright-blocked work never will, so it's out of the denominator (and of
 	// the numerator: its unpublished editions don't count as progress).
 	const reachable = $derived(visibleRows.filter((r) => !r.blocked));
 	const completion = $derived(
-		langs.map((l) => {
+		targetLangs.map((l) => {
 			const have = reachable.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0);
 			const of = reachable.length;
 			return { have, of, pct: of ? Math.round((have / of) * 100) : 0 };
@@ -422,6 +425,8 @@
 	} as const;
 	// A state the API adds before this page knows it shows as itself, neutrally,
 	// rather than passing for one of the states above.
+	const cellMeta = (v: string) =>
+		CELL[v as keyof typeof CELL] ?? { label: '?', cls: 'border border-border text-muted' };
 	// One cell's state, for the legend's counts and its highlight lens. The
 	// source column has no state here (it isn't a translation).
 	type CellState = 'ai_reviewed' | 'ai_unreviewed' | 'present' | 'queued' | 'translating' | 'blocked' | 'missing';
@@ -432,8 +437,6 @@
 		if (job) return job.state === 'in_progress' ? 'translating' : 'queued';
 		return r.blocked ? 'blocked' : 'missing';
 	}
-	const cellMeta = (v: string) =>
-		CELL[v as keyof typeof CELL] ?? { label: '?', cls: 'border border-border text-muted' };
 
 	// --- Translation queue -----------------------------------------------------
 	// Each missing cell (a work not yet in a language) becomes a click target that
@@ -498,7 +501,7 @@
 	// Missing-and-unqueued count per language column, for the header's "queue all".
 	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
-		langs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
+		targetLangs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
 	);
 
 	// --- Today's view: the tab's backlog in four numbers, and its gaps ranked.
@@ -527,11 +530,19 @@
 	// without hiding a row. "stale" is a flag on top of a state, so it's its own.
 	type Lens = CellState | 'stale';
 	let lens = $state<Lens | null>(null);
-	const targetLangs = $derived(langs.filter((l) => l.code !== SOURCE));
+	// Each chip's swatch is its state's tile; "stale" draws an AI tile with the ↻.
+	const LENSES: { k: Lens; label: string }[] = [
+		{ k: 'ai_reviewed', label: 'Reviewed' },
+		{ k: 'ai_unreviewed', label: 'Unreviewed AI' },
+		{ k: 'present', label: 'Present' },
+		{ k: 'missing', label: 'Missing' },
+		{ k: 'queued', label: 'Queued' },
+		{ k: 'translating', label: 'Translating' },
+		{ k: 'stale', label: 'English changed' },
+		{ k: 'blocked', label: 'Under copyright' }
+	];
 	const legendCounts = $derived.by(() => {
-		const n: Record<Lens, number> = {
-			ai_reviewed: 0, ai_unreviewed: 0, present: 0, queued: 0, translating: 0, blocked: 0, missing: 0, stale: 0
-		};
+		const n = Object.fromEntries(LENSES.map((o) => [o.k, 0])) as Record<Lens, number>;
 		for (const r of visibleRows)
 			for (const l of targetLangs) {
 				n[cellState(r, l)]++;
@@ -539,28 +550,11 @@
 			}
 		return n;
 	});
-	const LENSES: { k: Lens; label: string; cell: keyof typeof CELL }[] = [
-		{ k: 'ai_reviewed', label: 'Reviewed', cell: 'ai_reviewed' },
-		{ k: 'ai_unreviewed', label: 'Unreviewed AI', cell: 'ai_unreviewed' },
-		{ k: 'present', label: 'Present', cell: 'present' },
-		{ k: 'missing', label: 'Missing', cell: 'missing' },
-		{ k: 'queued', label: 'Queued', cell: 'queued' },
-		{ k: 'translating', label: 'Translating', cell: 'translating' },
-		{ k: 'stale', label: 'English changed', cell: 'ai_unreviewed' },
-		{ k: 'blocked', label: 'Under copyright', cell: 'blocked' }
-	];
+	// A picked lens with nothing left to show (a tab switch, a filter) reads as
+	// off rather than fading the whole matrix.
+	const activeLens = $derived(lens && legendCounts[lens] ? lens : null);
 	const lensHit = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
-		lens === 'stale' ? isStale(r, l.code) : cellState(r, l) === lens;
-	// A lens with nothing left to show (a tab switch, a filter) turns itself off
-	// rather than fading the whole matrix.
-	$effect(() => {
-		if (lens && !legendCounts[lens]) lens = null;
-	});
-	// How many target languages a work is in — the row's own coverage figure.
-	const rowCoverage = (r: AdminCoverageRow) => ({
-		have: targetLangs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0),
-		of: targetLangs.length
-	});
+		activeLens === 'stale' ? isStale(r, l.code) : cellState(r, l) === activeLens;
 
 	const NEXT_COUNT = 10;
 	const NEXT_PER_WORK = 2;
@@ -956,23 +950,23 @@
 			     screen; picking one fades every other cell (rows stay put). -->
 			<div class="mb-3 flex flex-wrap items-center gap-1.5 text-small">
 				{#each LENSES as o (o.k)}
-					{#if legendCounts[o.k] || lens === o.k}
+					{#if legendCounts[o.k]}
+						{@const cell = CELL[o.k === 'stale' ? 'ai_unreviewed' : o.k]}
 						<button
 							type="button"
-							class="inline-flex items-center gap-1.5 rounded-full border py-0.5 pe-2.5 ps-1 transition-colors {lens === o.k
-								? 'border-accent-soft-border bg-accent-soft text-accent'
-								: 'border-border bg-surface text-text hover:border-accent-soft-border'}"
-							aria-pressed={lens === o.k}
-							onclick={() => (lens = lens === o.k ? null : o.k)}
+							class="chip inline-flex items-center gap-1.5 !py-0.5 !ps-1"
+							class:active={activeLens === o.k}
+							aria-pressed={activeLens === o.k}
+							onclick={() => (lens = activeLens === o.k ? null : o.k)}
 						>
 							<span class="relative inline-flex"
-								><span class="{TILE} {CELL[o.cell].cls}">{CELL[o.cell].label}</span>{#if o.k === 'stale'}<span
+								><span class="{TILE} {cell.cls}">{cell.label}</span>{#if o.k === 'stale'}<span
 										class={STALE}
 										aria-hidden="true">↻</span
 									>{/if}</span
 							>
 							{o.label}
-							<span class="tabular-nums text-muted">{legendCounts[o.k]}</span>
+							<span class="count">{legendCounts[o.k]}</span>
 						</button>
 					{/if}
 				{/each}
@@ -1068,15 +1062,14 @@
 									</span>
 								</span>
 							</th>
-							{#each langs as l, i (l.code)}
+							{#if sourceLang}
+								<th
+									class="sticky top-0 z-20 border-r-2 border-border bg-surface px-3 py-3 text-center align-bottom text-micro font-normal text-muted"
+									title="Every work's source text — not a translation target"
+								>Source</th>
+							{/if}
+							{#each targetLangs as l, i (l.code)}
 								{@const c = completion[i]}
-								{#if l.code === SOURCE}
-									<th
-										data-lang={l.code}
-										class="sticky top-0 z-20 border-r-2 border-border bg-surface px-3 py-3 text-center align-bottom text-micro font-normal text-muted"
-										title="Every work's source text — not a translation target"
-									>Source</th>
-								{:else}
 									<th
 										data-lang={l.code}
 										class="sticky top-0 z-20 px-3 py-3 text-center align-top font-semibold {hoverCol === l.code
@@ -1113,7 +1106,6 @@
 											{/if}
 										{/if}
 									</th>
-								{/if}
 							{/each}
 						</tr>
 					</thead>
@@ -1143,7 +1135,8 @@
 									</td>
 									<!-- How much of the group each language has: "0/12" is the gap
 									     this view exists to show ("all of Murray is missing in sw"). -->
-									{#each langs as l (l.code)}
+									{#if sourceLang}<td class="border-r-2 border-border"></td>{/if}
+									{#each targetLangs as l (l.code)}
 										{@const have = g.rows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0)}
 										<td
 											data-lang={l.code}
@@ -1166,12 +1159,17 @@
 					<tfoot>
 						<tr class="border-t border-border text-small text-muted">
 							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({visibleRows.length}{visibleRows.length !== rows.length ? ` of ${rows.length}` : ''})</td>
-							{#each totals as n, i (langs[i].code)}
+							{#if sourceLang}
+								<td class="border-r-2 border-border px-3 py-2.5 text-center tabular-nums text-muted">
+									{visibleRows.filter((r) => r.cells[SOURCE]).length}
+								</td>
+							{/if}
+							{#each totals as n, i (targetLangs[i].code)}
 								<td
-									data-lang={langs[i].code}
-									class="px-3 py-2.5 text-center tabular-nums font-semibold text-text {colTint(langs[i].code)} {langs[i].code === SOURCE ? 'border-r-2 border-border' : ''}"
+									data-lang={targetLangs[i].code}
+									class="px-3 py-2.5 text-center tabular-nums font-semibold text-text {colTint(targetLangs[i].code)}"
 								>
-									{n}{#if langs[i].code !== SOURCE}<span class="font-normal text-muted">/{completion[i].of}</span>{/if}
+									{n}<span class="font-normal text-muted">/{completion[i].of}</span>
 								</td>
 							{/each}
 						</tr>
@@ -1199,18 +1197,21 @@
 				title={r.author ? `${name} — ${r.author}` : name}
 			>{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
 			{#if !r.blocked}
-				{@const cov = rowCoverage(r)}
+				{@const have = completeness(r)}
 				<!-- The row's own coverage: how many target languages it's in, on the
 				     right edge. Compact's hover "Queue all" sits over it — the action on
 				     the same number. -->
 				<span
-					class="pointer-events-none absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-1.5 text-micro tabular-nums text-muted"
-					title={`${name}: in ${cov.have} of ${cov.of} languages`}
+					class="absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-1.5 text-micro tabular-nums text-muted"
+					title={`${name}: in ${have} of ${targetLangs.length} languages`}
 				>
-					<span class="block h-1 w-8 overflow-hidden rounded-full bg-border" aria-hidden="true">
-						<span class="block h-full rounded-full bg-accent" style:width="{cov.of ? (cov.have / cov.of) * 100 : 0}%"></span>
+					<span class="block w-8">
+						<ProgressBar
+							percent={targetLangs.length ? (have / targetLangs.length) * 100 : 0}
+							label={`${name}: translated into ${have} of ${targetLangs.length} languages`}
+						/>
 					</span>
-					{cov.have}/{cov.of}
+					{have}/{targetLangs.length}
 				</span>
 			{/if}
 			{#if untitled(r)}
@@ -1245,21 +1246,28 @@
 				>Queue all {rowGaps}</button>
 			{/if}
 		</td>
-		{#each langs as l (l.code)}
+		{#if sourceLang}
+			<!-- The source column says only that the text is there; "PD" on every row
+			     told the reader nothing. -->
+			<td
+				class="border-r-2 border-border px-3 text-center transition-opacity {compact ? 'py-1' : 'py-2.5'} {activeLens
+					? 'opacity-20'
+					: ''}"
+			>
+				{#if r.cells[SOURCE]}<span class="{TILE} {CELL.public_domain.cls}">{SOURCE.toUpperCase()}</span>{/if}
+			</td>
+		{/if}
+		{#each targetLangs as l (l.code)}
 			{@const v = r.cells[l.code]}
 			{@const job = v ? undefined : jobFor(r.slug, l.code)}
-			{@const isSource = l.code === SOURCE}
 			<td
 				data-lang={l.code}
-				class="group px-3 text-center transition-opacity {compact ? 'py-1' : 'py-2.5'} {colTint(l.code)} {isSource
-					? 'border-r-2 border-border'
-					: ''} {lens && (isSource || !lensHit(r, l)) ? 'opacity-20' : ''}"
+				class="group px-3 text-center transition-opacity {compact ? 'py-1' : 'py-2.5'} {colTint(l.code)} {activeLens &&
+				!lensHit(r, l)
+					? 'opacity-20'
+					: ''}"
 			>
-				{#if isSource}
-					<!-- The source column says only that the text is there; "PD" on every
-					     row told the reader nothing. -->
-					{#if v}<span class="{TILE} {CELL.public_domain.cls}">{l.code.toUpperCase()}</span>{/if}
-				{:else if v}
+				{#if v}
 					{@const m = cellMeta(v)}
 					{@const review = isUnreviewed(r, l.code) ? reviewHref(r.slug, l.code) : null}
 					{@const stale = isStale(r, l.code)}
