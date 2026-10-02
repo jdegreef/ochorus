@@ -35,6 +35,7 @@ from .detail import (
     AdminSermonDetailView,
     AdminSermonPublishView,
 )
+from .dropoff import AdminDropOffView
 from .health import AdminLanguageHealthView
 from .jobs import AdminTranslationJobsView
 from .languages import (
@@ -67,6 +68,7 @@ __all__ = [
     "AdminBookPublishView",
     "AdminContentEditJobsView",
     "AdminCoverageView",
+    "AdminDropOffView",
     "AdminTranslationMarkCurrentView",
     "AdminLanguageHealthView",
     "AdminLanguageManualView",

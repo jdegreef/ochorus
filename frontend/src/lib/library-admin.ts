@@ -1712,6 +1712,24 @@ export const getAdminUser = (uid: string) =>
 
 // Per-book detail: a canonical work across all its languages.
 
+/** Readable names for the content checks' chapter flags (library/qa.py). */
+const CHAPTER_FLAG_LABEL: Record<string, string> = {
+	'generic-title': 'generic title',
+	'no-dropcap': 'no drop cap',
+	'mid-split': 'mid-sentence',
+	'loose-text': 'text outside ¶'
+};
+export const chapterFlagLabel = (flag: string) => CHAPTER_FLAG_LABEL[flag] ?? flag;
+
+/** A drop-off rate (0–1) as a whole percentage: "40%". */
+export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
+
+/** A chapter row's anchor on its admin book page, and the link to it: what
+ *  "Open chapter" lands on (the row with the fix buttons). */
+export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
+export const adminChapterHref = (slug: string, language: string, order: number) =>
+	`/admin/books/${encodeURIComponent(slug)}#${adminChapterId(language, order)}`;
+
 export interface AdminBookChapter {
 	order: number;
 	title: string;
@@ -1732,6 +1750,45 @@ export interface AdminBookLang extends Language {
 	pdf_url: string;
 	word_count: number;
 	chapters: AdminBookChapter[];
+	/** Where readers stop (library/dropoff.py): per chapter, readers whose
+	 *  furthest chapter is this one or later, and of those at exactly this one
+	 *  who stopped (no progress for `stall_days`) or are still reading. */
+	reach: AdminReachPoint[];
+	/** The chapter losing the largest share of its readers, or null. */
+	steepest: AdminSteepestDrop | null;
+}
+
+/** One book's steepest drop on the content audit's "Readers stop here" list. */
+export interface AdminDropOff extends AdminSteepestDrop {
+	slug: string;
+	language: string;
+	book_title: string;
+	chapter_title: string;
+	word_count: number;
+	/** The chapter's content flags (library/qa.py); flagged drops sort first. */
+	flags: string[];
+}
+
+/** Each book's steepest drop where at least `min_readers` reached the chapter;
+ *  every language with book readers when `language` is ''. */
+export const getAdminDropOff = (language: string) =>
+	apiFetch<{ language: string; min_readers: number; stall_days: number; drops: AdminDropOff[] }>(
+		`/api/admin/drop-off/${language ? `?language=${encodeURIComponent(language)}` : ''}`
+	);
+
+export interface AdminReachPoint {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	still: number;
+}
+
+export interface AdminSteepestDrop {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	/** stopped / reached, 0–1. */
+	rate: number;
 }
 
 export interface AdminBookDetail {
@@ -1739,6 +1796,8 @@ export interface AdminBookDetail {
 	title: string;
 	author: { name: string; slug: string; id: number };
 	languages: AdminBookLang[];
+	/** No progress for this many days and a reader counts as stopped. */
+	stall_days: number;
 }
 
 export const getAdminBook = (slug: string) =>
