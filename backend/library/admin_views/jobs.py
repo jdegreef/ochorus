@@ -32,6 +32,7 @@ from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..job_status import forget_queue
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -172,6 +173,8 @@ def _issue_to_job(issue: dict) -> dict | None:
         "number": issue.get("number"),
         "state": "in_progress" if IN_PROGRESS_LABEL in labels else "queued",
         "created_at": issue.get("created_at", ""),
+        # When the issue last moved — the claim's age, for the stalled rule.
+        "updated_at": issue.get("updated_at", ""),
     }
 
 
@@ -347,4 +350,6 @@ class AdminTranslationJobsView(AdminAudited, APIView):
             )
 
         job = _issue_to_job(r.json())
+        # The Activity page caches the open queue; let it see this one at once.
+        forget_queue()
         return Response({"job": job, "created": True}, status=status.HTTP_201_CREATED)

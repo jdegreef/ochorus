@@ -1,7 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
-	import type { SermonSummary } from '$lib/library-public';
+	import { formatLifespan, type SermonSummary } from '$lib/library-public';
+	import { SvelteSet } from 'svelte/reactivity';
+	import { hydrateSrc } from '$lib/hydrateSrc';
+	import { initials } from '$lib/strings';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -9,6 +12,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonCard from '$lib/components/SermonCard.svelte';
+	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
@@ -19,7 +23,7 @@
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
-	import { portraitPosition } from '$lib/portraits';
+	import { portraitPosition, portraitSrcset } from '$lib/portraits';
 	import { readingMinutes } from '$lib/reading';
 	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
 	import type { LengthBucket } from '$lib/sermonLength';
@@ -210,18 +214,36 @@
 	// Sermons by author, in the order `sorted` produced. null = one flat list.
 	const groups = $derived.by(() => {
 		if (group === 'all') return null;
-		const map = new Map<
-			string,
-			{ name: string; slug: string; photo_url: string; items: SermonSummary[] }
-		>();
+		const map = new Map<string, { author: SermonSummary['author']; items: SermonSummary[] }>();
 		for (const s of sorted) {
 			const key = s.author.slug;
-			if (!map.has(key))
-				map.set(key, { name: s.author.name, slug: key, photo_url: s.author.photo_url, items: [] });
+			if (!map.has(key)) map.set(key, { author: s.author, items: [] });
 			map.get(key)!.items.push(s);
 		}
 		return [...map.values()];
 	});
+
+	// A preacher section opens on its first few sermons, so Spurgeon's eighteen
+	// don't fill three screens before the next preacher. The rest stay in the
+	// HTML (hidden, so every row is still a crawlable link) behind "Show N more".
+	// A filter shows every match — it already narrowed the list on purpose.
+	// "Show all" for one more sermon is noise, so a section only collapses when
+	// it would hide at least two.
+	const PREVIEW = 3;
+	const expanded = new SvelteSet<string>();
+	const collapsible = (n: number) => !filtering && n > PREVIEW + 1;
+	function toggleSection(slug: string) {
+		if (!expanded.has(slug)) {
+			expanded.add(slug);
+			return;
+		}
+		expanded.delete(slug);
+		// Collapsing a long section pulls everything after it up by many screens;
+		// bring its heading back into view so the reader stays where they were.
+		const section = document.getElementById(`preacher-${slug}`);
+		if (section && section.getBoundingClientRect().top < 0)
+			section.scrollIntoView({ block: 'start' });
+	}
 
 	// A row states its writer only when no heading above it does.
 	const showAuthor = $derived(groups === null);
@@ -293,8 +315,8 @@
 	{/snippet}
 
 	<!-- Filter bar, pinned under the app nav (itself sticky, hence the
-	     --appnav-h offset) so the filters come WITH you — with a brief under
-	     every row the shelf runs dozens of screens. Its height is measured: the
+	     --appnav-h offset) so the filters come WITH you — 24 preacher sections
+	     run many screens. Its height is measured: the
 	     preacher sections pin under whatever it currently is. Same recipe as
 	     Biographies (page-design B6/L3).
 	     Below sm it is one line — search + a Filters button whose sheet holds
@@ -373,6 +395,18 @@
 		</div>
 	</div>
 
+	<!-- One sermon to start with, for a reader who doesn't yet know whom to
+	     read — the same weekly pick as the home page, hidden while the reader is
+	     filtering (page-design: a shelf's secondary section). BELOW the filter
+	     bar, not above it as the anatomy's order has it: hiding it on the first
+	     keystroke would otherwise yank the search box out from under the
+	     reader's typing. `reserve` holds its height until the pick lands. -->
+	{#if !filtering && !loadError && sermons.length}
+		<div class="mb-8">
+			<SermonOfTheWeek embedded reserve />
+		</div>
+	{/if}
+
 	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
 	     Books shelf; the shared component reuses the Books labels (the same "All
 	     topics" / "Filter by topic") and shows only when the shelf spans >1 topic. -->
@@ -400,10 +434,12 @@
 	     opening it. A tile can't carry a 300–400 character brief without becoming
 	     mostly text, and prose set across a 76rem page is unreadable, so the row
 	     gives the brief a real measure and the meta a column of its own. -->
-	{#snippet sermonList(items: SermonSummary[])}
-		<div class="flex flex-col gap-3">
-			{#each items as sermon (sermon.slug)}
-				<SermonCard {sermon} {showAuthor} variant="row" />
+	{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
+		<div {id} class="flex flex-col gap-3">
+			{#each items as sermon, i (sermon.slug)}
+				<div class="contents" hidden={i >= limit}>
+					<SermonCard {sermon} {showAuthor} variant="row" />
+				</div>
 			{/each}
 		</div>
 	{/snippet}
@@ -413,34 +449,85 @@
 	{:else if sorted.length === 0}
 		<EmptyState message={filtering ? t('sermons.noMatches') : t('sermons.empty')} />
 	{:else if groups}
-		<!-- Jump to a writer — with a brief under every sermon the sections are
-		     long, so they need a way in that isn't scrolling. Same rail the Books
-		     shelf uses. -->
+		<!-- Jump to a writer — the sections are long, so they need a way in that
+		     isn't scrolling. One scrolling row of faces, each with its count: it
+		     holds its height however many preachers join (the chip wall it
+		     replaced ran to three rows at 24), and a face is found faster than a
+		     name. In section order, so the strip reads like the page below it. -->
 		{#if groups.length > 1}
-			<nav
-				class="chip-scroller mb-8"
-				aria-label={t('sermons.jumpPreacher')}
-			>
-				<span class="eyebrow text-muted me-1">{t('sermons.jumpPreacher')}</span>
-				{#each groups as g (g.slug)}
-					<a href="#preacher-{g.slug}" class="tag">{g.name}</a>
+			<nav class="cover-rail mb-8 flex gap-1 pb-1" aria-label={t('sermons.jumpPreacher')}>
+				{#each groups as g (g.author.slug)}
+					<a href="#preacher-{g.author.slug}" class="preacher-jump">
+						<span class="preacher-face" aria-hidden="true">
+							{#if g.author.photo_url}
+								{@const source = {
+									src: g.author.photo_url,
+									srcset: portraitSrcset(g.author.photo_url)
+								}}
+								<img
+									src={source.src}
+									srcset={source.srcset}
+									use:hydrateSrc={source}
+									sizes="44px"
+									alt=""
+									loading="lazy"
+									width="44"
+									height="44"
+									style="object-position: {portraitPosition(g.author.slug)}"
+								/>
+							{:else}
+								{initials(g.author.name)}
+							{/if}
+						</span>
+						<span class="preacher-name">{g.author.name}</span>
+						<span class="count text-micro">{g.items.length}</span>
+					</a>
 				{/each}
 			</nav>
 		{/if}
-		{#each groups as g (g.slug)}
+		{#each groups as g (g.author.slug)}
+			{@const a = g.author}
+			{@const lifespan = formatLifespan(a.birth_year, a.death_year, t('common.bornPrefix'))}
+			{@const canCollapse = collapsible(g.items.length)}
+			{@const collapsed = canCollapse && !expanded.has(a.slug)}
 			<section
-				id="preacher-{g.slug}"
+				id="preacher-{a.slug}"
 				class="mb-10"
 				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 			>
+				<!-- Who the preacher was, before what they preached: their years and
+				     the first line of their bio, so a newcomer can tell Chrysostom's
+				     Antioch from Tozer's Chicago. The name links to the full life. -->
 				<GroupHeading
-					name={g.name}
-					href={localizeHref(authorPath(g.slug))}
-					portraitUrl={g.photo_url}
-					portraitPosition={portraitPosition(g.slug)}
-					count={g.items.length}
-				/>
-				{@render sermonList(g.items)}
+					name={a.name}
+					href={localizeHref(authorPath(a.slug))}
+					portraitUrl={a.photo_url}
+					portraitPosition={portraitPosition(a.slug)}
+					blurb={a.bio}
+				>
+					<!-- Years, then the count as words: a bare count after a
+					     lifespan read as one figure ("1843–1919 15"). -->
+					{#snippet detail()}
+						<span class="text-small font-normal count"
+							>{#if lifespan}{lifespan}<span class="opacity-50">{' · '}</span>{/if}{g.items.length}
+							{g.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}</span
+						>
+					{/snippet}
+				</GroupHeading>
+				{@render sermonList(g.items, collapsed ? PREVIEW : Infinity, `preacher-list-${a.slug}`)}
+				{#if canCollapse}
+					<button
+						type="button"
+						class="btn btn-ghost btn-sm mt-3"
+						aria-expanded={!collapsed}
+						aria-controls="preacher-list-{a.slug}"
+						onclick={() => toggleSection(a.slug)}
+					>
+						{collapsed
+							? t('bios.showMore').replace('%n%', String(g.items.length - PREVIEW))
+							: t('search.showLess')}
+					</button>
+				{/if}
 			</section>
 		{/each}
 	{:else}
@@ -467,5 +554,53 @@
 		.sermon-filter {
 			position: static;
 		}
+	}
+	/* One face in the preacher strip (the strip itself is the shared .cover-rail):
+	   portrait or initials over the name and count. */
+	.preacher-jump {
+		flex: none;
+		width: 5.5rem;
+		display: grid;
+		justify-items: center;
+		align-content: start;
+		gap: 0.2rem;
+		padding: 0.4rem 0.25rem;
+		border-radius: var(--radius-card);
+		text-align: center;
+		color: var(--text);
+		text-decoration: none;
+	}
+	.preacher-jump:hover {
+		background: var(--surface-2);
+	}
+	.preacher-jump:hover .preacher-face {
+		border-color: var(--accent);
+	}
+	.preacher-jump:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 1px;
+	}
+	.preacher-face {
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 9999px;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+		border: 2px solid var(--border);
+		background: var(--surface-2);
+		font-family: var(--font-display);
+		font-weight: 600;
+		color: var(--muted);
+		transition: border-color var(--duration-fast);
+	}
+	.preacher-face img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.preacher-name {
+		font-size: var(--fs-small);
+		line-height: 1.2;
 	}
 </style>

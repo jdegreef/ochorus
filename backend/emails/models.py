@@ -71,14 +71,15 @@ class EventType(models.TextChoices):
 SUPPRESSING_EVENTS = frozenset({EventType.BOUNCED, EventType.COMPLAINED})
 
 
-def stream_for(kind: str) -> str:
+def stream_for(kind: str, lifecycle_step: str = "") -> str:
     """Which preference-center stream an email belongs to. Broadcasts are
-    announcements; every lifecycle email is onboarding for now. When a finer
-    lifecycle stream ships (e.g. plan reminders), give this the step it needs to
-    route on then — not before, so the seam and its first user land together."""
+    announcements; a lifecycle step with its own stream (``STEP_STREAM``, e.g.
+    finish-the-series) routes there; every other lifecycle email is onboarding."""
+    from .streams import STEP_STREAM
+
     if kind == EmailKind.BROADCAST:
         return "announcements"
-    return "onboarding"
+    return STEP_STREAM.get(lifecycle_step, "onboarding")
 
 
 class EmailSubscription(models.Model):
@@ -141,14 +142,17 @@ class EmailSubscription(models.Model):
         Suppression and the master off switch block everything; otherwise the
         reader's per-stream choice applies, defaulting to the stream's default
         (opt-out posture)."""
+        from .streams import require_stream
+
+        require_stream(stream)
         if self.is_suppressed or self.unsubscribed_all:
             return False
         return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
 
-    def wants(self, kind: str) -> bool:
+    def wants(self, kind: str, lifecycle_step: str = "") -> bool:
         """Whether the reader will receive an email of ``kind`` right now —
-        resolved to the stream that kind belongs to."""
-        return self.wants_stream(stream_for(kind))
+        resolved to the stream that (kind, step) belongs to."""
+        return self.wants_stream(stream_for(kind, lifecycle_step))
 
     @staticmethod
     def wants_stream_q(stream: str) -> models.Q:
@@ -158,8 +162,9 @@ class EmailSubscription(models.Model):
         choice, its legacy-boolean fallback, and the suppression/off-switch
         blockers stay defined once. Use it to count or filter a subscription
         queryset by stream consent (e.g. admin metrics)."""
-        from .streams import LEGACY_FIELD
+        from .streams import LEGACY_FIELD, require_stream
 
+        require_stream(stream)
         explicit_on = models.Q(**{f"stream_prefs__{stream}": True})
         no_choice = ~models.Q(stream_prefs__has_key=stream)
         legacy = LEGACY_FIELD.get(stream)
@@ -218,7 +223,10 @@ def idempotency_key(kind: str, discriminator: str, profile) -> str:
     The unique column on :class:`EmailMessage` is the guarantee; this is the
     single owner of its *format*, so a new lifecycle step or the broadcast path
     can't drift the string and silently defeat uniqueness. ``discriminator`` is
-    the step name (``"welcome"``) or the broadcast id.
+    the step name (``"welcome"``), the broadcast id, or a step plus a per-entity
+    suffix where one email kind sends once per thing — e.g.
+    ``"finish_series:<next-slug>"`` so the series nudge keys per next volume while
+    its stored ``lifecycle_step`` stays the bare ``"finish_series"`` for metrics.
     """
     return f"{kind}:{discriminator}:{profile.pk}"
 

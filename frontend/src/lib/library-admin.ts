@@ -111,6 +111,24 @@ export interface TeamMember {
 	 *  after this grant). `languages` is null when the rows disagree, so no
 	 *  single re-grant is the faithful fix. */
 	outdated: { role: string; missing: string[]; languages: string[] | null }[];
+	/** The account's last signed-in request; null = invited, never signed in. */
+	last_seen_at: string | null;
+	/** When their earliest current grant was made, and who last changed them. */
+	granted_at: string | null;
+	granted_by: string;
+	/** Recent grant/revoke events from the audit log, newest first. */
+	history: TeamHistoryItem[];
+}
+export interface TeamHistoryItem {
+	id: number;
+	at: string;
+	kind: 'grant' | 'revoke' | 'restore';
+	actor: string;
+	role: string;
+	capability: string;
+	/** As sent with the grant: a codes list, "*" or a comma string. */
+	languages: string[] | string;
+	removed: string[];
 }
 export interface AdminTeam {
 	members: TeamMember[];
@@ -254,6 +272,9 @@ export const getAdminLanguageHealth = () =>
 	apiFetch<{
 		source_published_books: number;
 		weights: HealthWeights;
+		/** Readers that earn full engagement credit. Absent from an API deployed
+		 *  before the fixed target, which scored against the busiest language. */
+		engagement_target?: number;
 		languages: AdminLanguageHealth[];
 	}>('/api/admin/language-health/');
 
@@ -1663,8 +1684,57 @@ export interface SearchTopQuery {
 	count: number;
 }
 
-/** Zero-result queries for one language — a translation/acquisition worklist. */
-export type SearchUnanswered = Language & { total: number; queries: SearchTopQuery[] };
+/** Zero-result queries for one language — a translation/acquisition worklist.
+ *  Triaged queries are left out unless their decision stopped working, in which
+ *  case the row carries it as `reopened`. */
+export type SearchUnanswered = Language & {
+	total: number;
+	queries: (SearchTopQuery & { reopened?: SearchDecisionRow })[];
+};
+
+/** What an admin decided about an unanswered search (see SearchDecision). */
+export type SearchOutcome = 'translate' | 'wanted' | 'out_of_scope';
+
+export interface SearchDecisionRow {
+	query: string;
+	language: string;
+	outcome: SearchOutcome;
+	outcome_label: string;
+	/** The work a translation was queued for ("book:waiting-on-god"). */
+	target: string;
+	note: string;
+	decided_by: string;
+	decided_at: string;
+	/** Searches for this query (in this language) since the decision… */
+	searches_since: number;
+	/** …and how many of them still found nothing. */
+	misses_since: number;
+	/** A queued translation that kept missing past its grace period. */
+	reopened: boolean;
+}
+
+export const getAdminSearchDecisions = () =>
+	apiFetch<{ decisions: SearchDecisionRow[] }>('/api/admin/search-decisions/');
+
+/** Triage one unanswered search. Deciding again replaces the outcome. */
+export const decideSearch = (d: {
+	query: string;
+	language: string;
+	outcome: SearchOutcome;
+	target?: string;
+	note?: string;
+}) =>
+	apiFetch<{ ok: boolean }>('/api/admin/search-decisions/decide/', {
+		method: 'POST',
+		body: JSON.stringify(d)
+	});
+
+/** Undo a triage decision — the query goes back to the Open list. */
+export const undoSearchDecision = (query: string, language: string) =>
+	apiFetch<{ ok: boolean }>(
+		`/api/admin/search-decisions/decide/?${new URLSearchParams({ query, language })}`,
+		{ method: 'DELETE' }
+	);
 
 export interface AdminSearchStats {
 	overview: {
@@ -1680,7 +1750,6 @@ export interface AdminSearchStats {
 	 */
 	unopened_queries?: SearchTopQuery[];
 	top_queries: SearchTopQuery[];
-	zero_result_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];
 	by_language: (Language & { searches: number; zero: number })[];
@@ -1730,9 +1799,24 @@ export interface AdminActionRow {
 	target: string;
 	/** The work's real name (book/sermon/article/plan/author), "" when unknown. */
 	title?: string;
+	/** Where a translation job is now — `translation.job` rows only. */
+	job_status?: JobStatus;
 	detail: Record<string, unknown>;
 	at: string;
 }
+
+/**
+ * A translation job's stage (backend `library/job_status.py`): GitHub's open
+ * queue before it ships, this database's editions after.
+ */
+export type JobStatus =
+	| 'queued'
+	| 'in_progress'
+	| 'stalled'
+	| 'closed'
+	| 'review'
+	| 'done'
+	| 'unknown';
 
 /** The header cards and chip counts — counted over the whole log, first page only. */
 export interface AdminActivitySummary {
@@ -1748,6 +1832,11 @@ export interface AdminActivitySummary {
 	actors: { actor: string; count: number }[];
 	last_go_live: AdminActionRow | null;
 	last_publish: AdminActionRow | null;
+	/**
+	 * Translation-job rows by stage. `github`: "ok"; "down" when it didn't
+	 * answer; "off" when no queue token is configured (not an outage).
+	 */
+	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'down' | 'off' };
 }
 
 export interface AdminActivity {
@@ -1767,11 +1856,13 @@ export interface AdminActivityFilters {
 	q?: string;
 	category?: string;
 	actor?: string;
+	/** A JobStatus, or 'needs_me' (closed + review: the two waiting on a person). */
+	job_status?: string;
 }
 
 function activityParams(f: AdminActivityFilters): URLSearchParams {
 	const params = new URLSearchParams();
-	for (const k of ['target', 'q', 'category', 'actor'] as const) {
+	for (const k of ['target', 'q', 'category', 'actor', 'job_status'] as const) {
 		const v = f[k]?.trim();
 		if (v) params.set(k, v);
 	}

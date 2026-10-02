@@ -8,6 +8,8 @@ Previously one 1,190-line module. The view classes are re-exported here so
 from .activity import AdminActivityView
 from .analytics import (
     AdminEngagementView,
+    AdminSearchDecisionListView,
+    AdminSearchDecisionView,
     AdminSearchGapView,
     AdminSearchView,
     AdminUsersView,
@@ -68,6 +70,8 @@ __all__ = [
     "AdminLanguageManualView",
     "AdminManualView",
     "AdminEngagementView",
+    "AdminSearchDecisionListView",
+    "AdminSearchDecisionView",
     "AdminSearchGapView",
     "AdminSearchView",
     "AdminExportView",

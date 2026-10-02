@@ -3,7 +3,8 @@
 
 	/**
 	 * The standard header for a top-level browse page (Books, Topics, Plans,
-	 * Sermons, Biographies, Search).
+	 * Sermons, Biographies, Search) and for the app pages (Settings, Notebook) —
+	 * `pageShell.test.ts` requires it on both lists, so a change here moves them all.
 	 *
 	 * These six had drifted into six different headers: `text-display` on four
 	 * of them but `text-h1` on Plans and Search, bottom margins of mb-2/mb-3,
