@@ -3,6 +3,25 @@
 from django.db import migrations, models
 
 
+def settle_legacy_rows(apps, schema_editor):
+    """Bring rows written by the old in-request sender into the new model.
+
+    * A broadcast left in ``sending`` (the old request timed out or crashed
+      mid-send) must not be picked up and resumed automatically by the new
+      cron — possibly weeks later. Pause it, saying why; an admin can resume.
+    * Test sends were told apart only by their key prefix; flag them so they
+      stay out of results and the guardrail.
+    """
+    Broadcast = apps.get_model("emails", "Broadcast")
+    EmailMessage = apps.get_model("emails", "EmailMessage")
+    Broadcast.objects.filter(status="sending").update(
+        status="paused",
+        status_reason="Paused at upgrade: it was mid-send under the old sender. "
+        "Resume to send to the rest.",
+    )
+    EmailMessage.objects.filter(idempotency_key__startswith="broadcast-test:").update(is_test=True)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -100,4 +119,5 @@ class Migration(migrations.Migration):
                 fields=["sent_at"], name="emails_emai_sent_at_9dee2e_idx"
             ),
         ),
+        migrations.RunPython(settle_legacy_rows, migrations.RunPython.noop),
     ]

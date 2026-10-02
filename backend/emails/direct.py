@@ -11,6 +11,9 @@ from __future__ import annotations
 
 import uuid
 
+from library.languages import language_map
+
+from . import copy as copy_mod
 from .models import EmailKind, EmailMessage, EmailSubscription, idempotency_key
 from .preflight import cta_path_problem
 from .recipient import verified_email
@@ -51,6 +54,15 @@ def clean_text(data: dict) -> dict:
     return text
 
 
+def written_in(data: dict, profile, subscription) -> str:
+    """The language the admin wrote in: ``data["lang"]`` when it names a known
+    language, else the reader's email language."""
+    lang = copy_mod.base_lang(str(data.get("lang") or ""))
+    if data.get("lang") and lang in language_map():
+        return lang
+    return email_lang(profile, subscription)
+
+
 def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
     """Write to ``profile`` and return the message row (check its ``status``).
 
@@ -65,7 +77,8 @@ def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
     to_email = verified_email(profile)
     if not to_email:
         raise DirectEmailError("This reader has no verified email address.")
-    rendered = render_direct(text, profile, subscription)
+    lang = written_in(data, profile, subscription)
+    rendered = render_direct(text, profile, subscription, lang)
     return deliver(
         profile=profile,
         subscription=subscription,
@@ -75,7 +88,7 @@ def send_direct(profile, data: dict, *, sent_by: str) -> EmailMessage:
         # earlier one to the same reader.
         idempotency_key=idempotency_key(EmailKind.DIRECT, uuid.uuid4().hex, profile),
         to_email=to_email,
-        locale=email_lang(profile, subscription),
+        locale=lang,
         sent_by=sent_by,
         body_text="\n\n".join(text["paragraphs"]),
     )

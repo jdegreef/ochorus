@@ -23,7 +23,8 @@ import uuid
 from datetime import timedelta
 
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import F, Q, Value
+from django.db.models.functions import Coalesce
 from django.utils import timezone
 
 from . import health, preflight
@@ -49,6 +50,8 @@ BATCH_SIZE = 50
 #: batch; long enough that a slow batch can't lose it, short enough that a
 #: crashed worker's send is picked up by the next cron run.
 LEASE = timedelta(minutes=5)
+#: Run the bounce/complaint guardrail every this many batches.
+GUARDRAIL_EVERY = 5
 
 def broadcast_key(broadcast, profile) -> str:
     return idempotency_key(EmailKind.BROADCAST, str(broadcast.id), profile)
@@ -116,18 +119,27 @@ def transition(broadcast, from_statuses, to_status, **fields) -> bool:
     return n == 1
 
 
-def start_send(broadcast, *, override_guardrail: bool = False) -> None:
-    """Queue ``broadcast`` for the batched sender (the cron picks it up);
-    ``override_guardrail`` resumes it past a guardrail pause for good."""
-    broadcast.status = BroadcastStatus.SENDING
-    broadcast.status_reason = ""
-    if broadcast.send_started_at is None:
-        broadcast.send_started_at = timezone.now()
-    fields = ["status", "status_reason", "send_started_at", "updated_at"]
+#: The statuses a send may (re)start from: never started, or paused.
+STARTABLE = (
+    BroadcastStatus.DRAFT,
+    BroadcastStatus.SCHEDULED,
+    BroadcastStatus.CANCELED,
+    BroadcastStatus.PAUSED,
+)
+
+
+def start_send(broadcast, from_statuses=STARTABLE, *, override_guardrail: bool = False) -> bool:
+    """Queue ``broadcast`` for the batched sender (the cron picks it up), if it
+    is still in one of ``from_statuses`` — a compare-and-set, so a cancel that
+    lands meanwhile wins. ``override_guardrail`` resumes it past a guardrail
+    pause for good. Returns whether it was queued."""
+    fields = {
+        "status_reason": "",
+        "send_started_at": Coalesce(F("send_started_at"), Value(timezone.now())),
+    }
     if override_guardrail:
-        broadcast.guardrail_override = True
-        fields.append("guardrail_override")
-    broadcast.save(update_fields=fields)
+        fields["guardrail_override"] = True
+    return transition(broadcast, from_statuses, BroadcastStatus.SENDING, **fields)
 
 
 def pause(broadcast, reason: str) -> bool:
@@ -160,7 +172,7 @@ def promote_due() -> int:
                 status_reason=f"The schedule didn't start: {errors[0]['message']}"[:200],
             )
         else:
-            start_send(broadcast)
+            start_send(broadcast, [BroadcastStatus.SCHEDULED])
     return len(due)
 
 
@@ -186,24 +198,31 @@ def _subscriptions_for(profiles) -> dict:
     return found
 
 
-def _claim(broadcast) -> bool:
+def _claim(broadcast):
+    """Take the broadcast's lease; returns the lease value (this worker's token)
+    or ``None`` when it isn't SENDING or another worker holds it."""
     now = timezone.now()
+    lease = now + LEASE
     n = (
         Broadcast.objects.filter(pk=broadcast.pk, status=BroadcastStatus.SENDING)
         .filter(Q(send_lease_until__isnull=True) | Q(send_lease_until__lt=now))
-        .update(send_lease_until=now + LEASE)
+        .update(send_lease_until=lease)
     )
-    return n == 1
+    return lease if n == 1 else None
 
 
-def _checkpoint(broadcast) -> None:
+def _checkpoint(broadcast, lease):
     """Persist progress and renew the lease — never touching ``status``, which
-    an admin may have changed (pause/cancel) while this batch was sending."""
-    Broadcast.objects.filter(pk=broadcast.pk).update(
+    an admin may have changed (pause/cancel) while this batch was sending.
+    Returns the renewed lease, or ``None`` if this worker no longer holds it (it
+    expired and another worker took over), in which case nothing is written."""
+    renewed = timezone.now() + LEASE
+    n = Broadcast.objects.filter(pk=broadcast.pk, send_lease_until=lease).update(
         send_cursor=broadcast.send_cursor,
         send_tally=broadcast.send_tally,
-        send_lease_until=timezone.now() + LEASE,
+        send_lease_until=renewed,
     )
+    return renewed if n == 1 else None
 
 
 def run_send(broadcast, *, deadline: float | None = None, rate: float | None = None) -> dict:
@@ -214,9 +233,14 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
     isn't SENDING or another worker holds it.
     """
     run = {"sent": 0, "skipped": 0, "failed": 0}
-    if not _claim(broadcast):
+    lease = _claim(broadcast)
+    if lease is None:
         return run
+    # The caller's copy may be stale (the cron loads the queue up front, and
+    # another worker may have advanced it since): resume from the stored cursor.
+    broadcast.refresh_from_db()
     pacer = _Pacer(settings.EMAIL_SEND_RATE if rate is None else rate)
+    batches = 0
     try:
         while True:
             current = (
@@ -227,7 +251,11 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
             if current is None or current["status"] != BroadcastStatus.SENDING:
                 break
             broadcast.guardrail_override = current["guardrail_override"]
-            reason = health.broadcast_breach(broadcast)
+            # The guardrail re-counts the whole send, so it runs every few
+            # batches rather than every one (a pause overshoots by at most that).
+            reason = (
+                health.broadcast_breach(broadcast) if batches % GUARDRAIL_EVERY == 0 else None
+            )
             if reason:
                 logger.warning("broadcast %s paused by guardrail: %s", broadcast.pk, reason)
                 pause(broadcast, f"Paused automatically: {reason}.")
@@ -268,9 +296,16 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
                 tally[bucket] += 1
                 broadcast.send_cursor = profile.pk
             broadcast.send_tally = tally
-            _checkpoint(broadcast)
+            batches += 1
+            lease = _checkpoint(broadcast, lease)
+            if lease is None:
+                logger.warning("broadcast %s: lease lost mid-send; stopping", broadcast.pk)
+                break
     finally:
-        Broadcast.objects.filter(pk=broadcast.pk).update(send_lease_until=None)
+        if lease is not None:
+            Broadcast.objects.filter(pk=broadcast.pk, send_lease_until=lease).update(
+                send_lease_until=None
+            )
     return run
 
 
@@ -280,7 +315,7 @@ def send_broadcast(broadcast) -> dict:
     ``send_due_broadcasts --id`` command and tests; the admin queues instead
     (:func:`start_send`) and lets the cron do the work."""
     if broadcast.status != BroadcastStatus.SENDING:
-        start_send(broadcast)
+        start_send(broadcast, [*STARTABLE, BroadcastStatus.SENT])
     return run_send(broadcast)
 
 

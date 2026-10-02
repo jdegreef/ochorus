@@ -23,6 +23,13 @@
 	let body = $state('');
 	let ctaLabel = $state('');
 	let ctaPath = $state('');
+	// The language the message is written in: the reader's email language, or English.
+	let lang = $state('');
+	const langOptions = $derived(
+		emails
+			? [emails.email_lang, ...(emails.email_lang.code === 'en' ? [] : [{ code: 'en', name: 'English' }])]
+			: []
+	);
 	let busy = $state(false);
 	let error = $state('');
 	let notice = $state('');
@@ -50,6 +57,7 @@
 		try {
 			emails = await sendDirectEmail(uid, {
 				subject,
+				lang: lang || emails?.email_lang.code,
 				heading,
 				// Blank lines separate paragraphs; single line breaks stay in one.
 				paragraphs: body.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean),
@@ -107,11 +115,17 @@
 		{#if composing}
 			<form class="mb-5 space-y-3 rounded-md border border-border p-4" onsubmit={(e) => { e.preventDefault(); send(); }}>
 				<p class="text-small text-muted">
-					It goes out in the reader's email language, in the standard Ochorus email layout, with the usual unsubscribe footer.
+					It goes out exactly as written, in the standard Ochorus email layout, with the usual unsubscribe footer.
 				</p>
 				<label class="block">
 					<span class="mb-1 block text-micro text-muted">Subject line</span>
 					<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={subject} maxlength="300" required />
+				</label>
+				<label class="block">
+					<span class="mb-1 block text-micro text-muted">Written in</span>
+					<select class="rounded-md border border-border bg-surface p-2 text-small" bind:value={lang}>
+						{#each langOptions as o (o.code)}<option value={o.code}>{o.name}</option>{/each}
+					</select>
 				</label>
 				<label class="block">
 					<span class="mb-1 block text-micro text-muted">Heading (optional)</span>

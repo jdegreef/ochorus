@@ -84,10 +84,11 @@ def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
     return _render(broadcast_text(broadcast, resolved), profile, subscription, resolved)
 
 
-def render_direct(text: dict, profile, subscription) -> RenderedEmail:
-    """Render an admin's one-to-one email, written in one language, through the
-    same safe template (``text`` is the shared structured shape)."""
-    return _render(text, profile, subscription, email_lang(profile, subscription))
+def render_direct(text: dict, profile, subscription, lang: str) -> RenderedEmail:
+    """Render an admin's one-to-one email through the same safe template.
+    ``lang`` is the language the admin wrote it in — it sets the email's
+    ``lang``/``dir``, so an English note to an Arabic reader stays left-to-right."""
+    return _render(text, profile, subscription, lang)
 
 
 def sendable_locales(broadcast) -> list[str]:

@@ -1280,11 +1280,15 @@ export interface ReaderEmailRow {
 export interface ReaderEmails {
 	/** Why this reader can't be written to (suppressed / unsubscribed), else null. */
 	blocked_reason: string | null;
+	/** The language this reader gets email in — the default "written in". */
+	email_lang: { code: string; name: string };
 	messages: ReaderEmailRow[];
 }
 
 export interface DirectEmailPayload {
 	subject: string;
+	/** The language the admin wrote in (sets the email's lang/dir). */
+	lang?: string;
 	heading?: string;
 	greeting?: string;
 	paragraphs: string[];
@@ -1309,8 +1313,6 @@ export const previewAudience = (audience: BroadcastAudience) =>
 		body: JSON.stringify({ audience })
 	});
 
-/** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
- *  by the admin engagement and per-user pages so time reads the same everywhere. */
 /** An admin timestamp: "Oct 2, 2026, 9:42 AM", or "—" for none. */
 export function formatDateTime(iso: string | null): string {
 	return iso
@@ -1324,6 +1326,8 @@ export function formatDateTime(iso: string | null): string {
 		: '—';
 }
 
+/** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
+ *  by the admin engagement and per-user pages so time reads the same everywhere. */
 export function formatDuration(seconds: number): string {
 	if (!seconds || seconds < 1) return '—';
 	const h = Math.floor(seconds / 3600);

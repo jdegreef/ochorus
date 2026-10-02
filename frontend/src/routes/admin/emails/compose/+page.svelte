@@ -67,7 +67,6 @@
 	// the server says so (`locked`) rather than this page re-deriving the rules.
 	const readOnly = $derived(!!draft?.locked);
 	const inFlight = $derived(draft?.status === 'sending' || draft?.status === 'paused');
-	const blockingChecks = $derived((draft?.checks ?? []).filter((c) => c.level === 'error'));
 	const processed = $derived(
 		draft ? draft.progress.sent + draft.progress.skipped + draft.progress.failed : 0
 	);
@@ -514,8 +513,10 @@
 					<button class="btn btn-ghost btn-sm" onclick={() => act('test')} disabled={busy}>Send test to me</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>
 					<input type="datetime-local" class="rounded-md border border-border bg-surface p-1.5 text-small" bind:value={scheduleAt} />
-					<button class="btn btn-ghost btn-sm" onclick={() => act('schedule')} disabled={busy || !scheduleAt || blockingChecks.length > 0}>Schedule</button>
-					<button class="btn btn-primary btn-sm" onclick={() => act('send')} disabled={busy || blockingChecks.length > 0} title={blockingChecks.length ? 'Fix the checks marked ! first' : undefined}>Send now</button>
+					<!-- Not disabled on the checks: they describe the last SAVED version, and
+					     act() saves first, then the server re-checks and refuses with the list. -->
+					<button class="btn btn-ghost btn-sm" onclick={() => act('schedule')} disabled={busy || !scheduleAt}>Schedule</button>
+					<button class="btn btn-primary btn-sm" onclick={() => act('send')} disabled={busy}>Send now</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>
 					{#if draft.status === 'scheduled'}
 						<button class="btn btn-ghost btn-sm" onclick={() => act('cancel')} disabled={busy}>Cancel schedule</button>

@@ -126,6 +126,7 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         self.assertEqual(tally, {"sent": 0, "skipped": 0, "failed": 0})
 
     @override_settings(EMAIL_GUARDRAIL_MIN_SENT=2, EMAIL_GUARDRAIL_BOUNCE_RATE=0.05)
+    @mock.patch.object(broadcasts_mod, "GUARDRAIL_EVERY", 1)
     def test_guardrail_pauses_a_bouncing_send_and_resume_needs_an_override(self):
         b = _broadcast()
         start_send(b)
@@ -156,6 +157,65 @@ class BatchedSendTests(_AdminClientMixin, TestCase):
         self.assertEqual(b.status, BroadcastStatus.SENT)
         self.assertTrue(b.guardrail_override)
         self.assertEqual(len(self._sent_to()), 5)
+
+    def test_a_cancel_beats_a_stale_start(self):
+        b = _broadcast(status=BroadcastStatus.SCHEDULED)
+        stale = Broadcast.objects.get(pk=b.pk)
+        self._act(b, "cancel")
+        self.assertFalse(start_send(stale, [BroadcastStatus.SCHEDULED]))
+        b.refresh_from_db()
+        self.assertEqual(b.status, BroadcastStatus.CANCELED)
+
+    def test_a_stale_copy_resumes_from_the_stored_cursor(self):
+        b = _broadcast()
+        start_send(b)
+        stale = Broadcast.objects.get(pk=b.pk)  # cursor 0, as the cron loaded it
+        with mock.patch("emails.sending.send_email", return_value="rid") as send:
+            Broadcast.objects.filter(pk=b.pk).update(
+                send_cursor=self.profiles[2].pk, send_tally={"sent": 3, "skipped": 0, "failed": 0}
+            )
+            run_send(stale)
+        self.assertEqual(send.call_count, 2)  # only the two after the cursor
+        b.refresh_from_db()
+        self.assertEqual(b.send_tally["sent"], 5)
+
+    def test_a_worker_that_lost_its_lease_stops_and_leaves_the_new_one(self):
+        b = _broadcast()
+        start_send(b)
+
+        def steal(**kw):
+            # Another worker takes over (as if this one's lease had expired).
+            Broadcast.objects.filter(pk=b.pk).update(
+                send_lease_until=timezone.now() + timedelta(minutes=9)
+            )
+            return "rid"
+
+        with mock.patch("emails.sending.send_email", side_effect=steal) as send:
+            run_send(b)
+        self.assertEqual(send.call_count, 2)  # stopped after its batch
+        b.refresh_from_db()
+        self.assertIsNotNone(b.send_lease_until)  # the new holder's lease is kept
+        self.assertEqual(b.send_cursor, 0)  # and its progress isn't overwritten
+
+    def test_an_edit_does_not_write_back_send_state(self):
+        b = _broadcast(status=BroadcastStatus.SCHEDULED)
+        original = Broadcast.save
+
+        def save(self_, *a, **kw):
+            # The cron starts it between the edit's read and its write.
+            Broadcast.objects.filter(pk=self_.pk).update(status=BroadcastStatus.SENDING)
+            return original(self_, *a, **kw)
+
+        with mock.patch.object(Broadcast, "save", save):
+            res = self.client.patch(
+                f"/api/admin/broadcasts/{b.pk}/",
+                data=json.dumps({"name": "renamed"}),
+                content_type="application/json",
+            )
+        self.assertEqual(res.status_code, 200)
+        b.refresh_from_db()
+        self.assertEqual(b.name, "renamed")
+        self.assertEqual(b.status, BroadcastStatus.SENDING)
 
     def test_cron_starts_a_due_schedule(self):
         b = _broadcast(
@@ -383,6 +443,19 @@ class DirectEmailTests(_AdminClientMixin, TestCase):
         # A refused send is not a successful admin write, so nothing is audited.
         self.assertFalse(AdminAction.objects.filter(action=AdminAction.Action.EMAIL_DIRECT).exists())
 
+    @SENDING
+    @mock.patch("emails.sending.send_email", return_value="rid")
+    def test_written_in_sets_the_email_language_not_the_readers(self, send):
+        reader = _make_profile(email="ar@example.com", locale="ar")
+        url = f"/api/admin/users/{reader.supabase_uid}/emails/"
+        state = self.client.get(url).json()
+        self.assertEqual(state["email_lang"]["code"], "ar")
+        res = self._post(url, {"subject": "Hello", "paragraphs": ["Hi."], "lang": "en"})
+        self.assertEqual(res.status_code, 201, res.content)
+        html = send.call_args.kwargs["html"]
+        self.assertNotIn('dir="rtl"', html)
+        self.assertEqual(EmailMessage.objects.get(recipient=reader).locale, "en")
+
     def test_history_labels_and_unknown_reader(self):
         b = _broadcast()
         EmailMessage.objects.create(
@@ -397,3 +470,26 @@ class DirectEmailTests(_AdminClientMixin, TestCase):
         self.assertEqual(rows[0]["label"], "September news")
         res = self.client.get("/api/admin/users/00000000-0000-0000-0000-000000000000/emails/")
         self.assertEqual(res.status_code, 404)
+
+
+class LegacyRowMigrationTests(TestCase):
+    def test_settles_stranded_sends_and_flags_old_tests(self):
+        import importlib
+
+        from django.apps import apps
+
+        migration = importlib.import_module("emails.migrations.0005_batched_send_and_direct_email")
+        stranded = _broadcast(status=BroadcastStatus.SENDING)
+        profile = _make_profile()
+        EmailMessage.objects.create(
+            recipient=profile,
+            to_email=profile.email,
+            kind=EmailKind.BROADCAST,
+            broadcast=stranded,
+            idempotency_key=f"broadcast-test:{stranded.pk}:{profile.pk}:123",
+            status=SendStatus.SENT,
+        )
+        migration.settle_legacy_rows(apps, None)
+        stranded.refresh_from_db()
+        self.assertEqual(stranded.status, BroadcastStatus.PAUSED)
+        self.assertTrue(EmailMessage.objects.get().is_test)

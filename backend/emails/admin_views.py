@@ -14,6 +14,7 @@ from __future__ import annotations
 
 from functools import cached_property
 
+from django.db import transaction
 from django.db.models import Count
 from django.utils.dateparse import parse_datetime
 from rest_framework import status as http_status
@@ -23,6 +24,7 @@ from rest_framework.views import APIView
 from accounts.models import UserProfile
 from accounts.permissions import IsAdminEmail
 from library.audit import AdminAudited, AdminNotAudited, actor_email
+from library.languages import entry as language_entry
 from library.models import AdminAction
 
 from . import audience as audience_mod
@@ -39,7 +41,7 @@ from .models import (
     EmailSubscription,
     SendStatus,
 )
-from .rendering import sendable_locales
+from .rendering import email_lang, sendable_locales
 
 
 class AdminEmailMetricsView(APIView):
@@ -179,6 +181,10 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
     return data
 
 
+#: The fields an admin edits (everything else is the send's own state).
+_EDITABLE = ("name", "subject", "content", "audience", "from_address")
+
+
 def _apply_fields(broadcast: Broadcast, data) -> None:
     """Copy editable fields from request data onto a broadcast (no send)."""
     if "name" in data:
@@ -244,16 +250,20 @@ class AdminBroadcastDetailView(AdminAudited, APIView):
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def patch(self, request, pk):
-        broadcast = self._get(pk)
-        if broadcast is None:
-            return Response(status=http_status.HTTP_404_NOT_FOUND)
-        if broadcast.is_locked:
-            return Response(
-                {"detail": "a broadcast that has started sending can't be edited"},
-                status=http_status.HTTP_409_CONFLICT,
-            )
-        _apply_fields(broadcast, request.data)
-        broadcast.save()
+        # Row-locked, and only the editable fields written: the send worker and
+        # the cron's schedule promotion change status/cursor/tally concurrently,
+        # and a stale full save() would write them back.
+        with transaction.atomic():
+            broadcast = Broadcast.objects.select_for_update().filter(pk=pk).first()
+            if broadcast is None:
+                return Response(status=http_status.HTTP_404_NOT_FOUND)
+            if broadcast.is_locked:
+                return Response(
+                    {"detail": "a broadcast that has started sending can't be edited"},
+                    status=http_status.HTTP_409_CONFLICT,
+                )
+            _apply_fields(broadcast, request.data)
+            broadcast.save(update_fields=[*_EDITABLE, "updated_at"])
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def delete(self, request, pk):
@@ -346,7 +356,13 @@ class AdminBroadcastActionView(AdminAudited, APIView):
         refused, _ = self._refuse(broadcast)
         if refused:
             return refused
-        broadcasts_mod.start_send(broadcast)
+        if not broadcasts_mod.start_send(
+            broadcast, [BroadcastStatus.DRAFT, BroadcastStatus.SCHEDULED, BroadcastStatus.CANCELED]
+        ):
+            return Response(
+                {"detail": "the broadcast changed state meanwhile; reload and try again"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     def _schedule(self, request, broadcast):
@@ -403,7 +419,13 @@ class AdminBroadcastActionView(AdminAudited, APIView):
                 },
                 status=http_status.HTTP_409_CONFLICT,
             )
-        broadcasts_mod.start_send(broadcast, override_guardrail=bool(reason))
+        if not broadcasts_mod.start_send(
+            broadcast, [BroadcastStatus.PAUSED], override_guardrail=bool(reason)
+        ):
+            return Response(
+                {"detail": "the broadcast changed state meanwhile; reload and try again"},
+                status=http_status.HTTP_409_CONFLICT,
+            )
         return Response(_serialize_broadcast(broadcast, detail=True))
 
     @staticmethod
@@ -471,8 +493,12 @@ class AdminReaderEmailsView(AdminAudited, APIView):
     @staticmethod
     def _state(profile) -> dict:
         subscription = EmailSubscription.objects.filter(profile=profile).first()
+        lang = email_lang(profile, subscription)
         return {
             "blocked_reason": subscription.block_reason() if subscription else None,
+            # The language this reader gets email in, offered as the default
+            # "written in" for a direct email.
+            "email_lang": {"code": lang, "name": language_entry(lang).get("name") or lang},
             "messages": history_mod.history(profile),
         }
 
