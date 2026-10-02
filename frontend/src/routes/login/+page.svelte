@@ -198,7 +198,7 @@
 	</button>
 {/snippet}
 
-<div class="mx-auto px-5 py-12 {pitch && !sent ? 'pitch-layout max-w-5xl' : 'max-w-[26rem]'}">
+<div class="px-5 py-12 {pitch && !sent ? 'pitch-layout mx-auto max-w-5xl' : 'page-col page-col--narrow'}">
 	{#if sent}
 		<!-- Email dispatched: confirmation card -->
 		<div class="rounded-card border border-border bg-surface p-6 text-center">

@@ -553,10 +553,18 @@ relevant group.
   scripture ×3, articles ×2), `py-8` on Biographies; breadcrumb-to-title gap is
   `mt-5` (book), `mt-4` (topic), 0 elsewhere. → `py-10`, no extra gap; or fold
   the padding into `.page-col`.
-- [ ] **A3** H1 register: Sermons/Biographies carry a brand h1 under a nav-word
+- [~] **A3** H1 register: Sermons/Biographies carry a brand h1 under a nav-word
   eyebrow; Books/Topics/Plans/Search use the nav word; Quotes/Scripture use a
   descriptive sentence with no eyebrow. `<title>` ≠ `<h1>` on Sermons and
   Biographies. → decide one register, document it in STYLE_GUIDE §5.
+  _2026-10-02: the brand h1 is gone — Sermons, Biographies and Books pass
+  `t('nav.*')` to `<PageHeader title>` with no eyebrow, Topics/Plans their own
+  title keys (`Topics`, `Reading Plans`). Still open: Quotes and Scripture keep a
+  descriptive h1 (`quotes.pageTitle` "Quotes, with their sources",
+  `scripture.pageTitle` "Scripture in the Christian classics"); `<title>` is an
+  SEO phrase, not the nav word, on Books/Sermons/Biographies (`*.metaTitle`:
+  "Free Classic Christian Books" …) and a hard-coded English sentence on
+  Quotes/Scripture; and the register is not yet written into STYLE_GUIDE §5._
 - [x] **A4** _(shipped #1419 — all 8 catalogues, guarded)_ `<title>` suffix: ` — Ochorus` ×39, ` · Ochorus` ×7 (book, quotes,
   articles, scripture ×2, era mixes both). → ` — Ochorus`, and put the suffix
   in `Seo.svelte` so nobody types it.
@@ -572,9 +580,15 @@ relevant group.
 - [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
   `Reading plan · 27 days`).
-- [ ] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
+- [~] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
+  _2026-10-02: Settings and Notebook are on `<PageHeader>` (no eyebrow), held
+  there by a new `APP_PAGES` list in `pageShell.test.ts`. Left: Legal still
+  wears the `Ochorus` eyebrow over a hand-rolled `h1 mb-3` + section nav, and
+  Contact a nav-word eyebrow over `h1 mb-6` + intro — both `.reading-page` prose
+  whose spacing `<PageHeader>` would change, so they wait for a prose-header
+  decision. About's photo hero is its own design, not a drift._
 - [x] **A10** _(shipped #1537 — `.reading-page`, the one prose-page shell)_ Leaf prose measure is hand-set: `max-w-[40rem]` ×3 on Author,
   `max-w-xl` on Plan and Book, `max-w-2xl` on Quotes. `.reading-page` on
   About/Legal is defined nowhere. → one `.prose-measure` class (or
@@ -583,7 +597,11 @@ relevant group.
   `<ReaderControls>` like the sermon/bio, but its `.article-body` hand-consumes
   the `--reading-*` vars — a fourth copy of that recipe to fold into the shared
   class when this lands.)_
-- [ ] **A11** Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
+- [x] **A11** _(shipped 2026-10-02 — `.page-col--narrow` in `app.css` (26rem,
+  same box at every width as before); Login's form branch and Reset use it;
+  Login's two-column pitch branch keeps `max-w-5xl`. `pageShell.test.ts` gains
+  `NARROW_PAGES` (must use the modifier, no `max-w-[…]`) and the shell regex now
+  also catches `max-w-xl` and `max-w-[…]`.)_ Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
   guard (regex only matches `max-w-2xl…7xl`). → `.page-col--narrow`; widen the
   regex.
 
@@ -679,10 +697,16 @@ relevant group.
   `.article-card`, `.sermon-row`, the quotes card, `AuthorBioCard`,
   `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded cards, border
   tint for rows; nothing else.
-- [ ] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
+- [~] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
   transitions, literal `Read →`, an `<h3>` directly under the `<h1>`. The quotes
   index card has no heading at all; `BookCard`'s title is a `<div>`. → rebuild
   on the row family; `<h2>` under the h1.
+  _2026-10-02: `ArticleCard` is done — `rounded-card` + `.card-tint` (token
+  duration), no `Read →`, and a `heading` prop (h2 on the index, h3 under a
+  section `h2`: topic, article "Read next", and now Favorites, which was
+  rendering h2 under its `SectionHeader` h2). Still open: the `/quotes` author
+  card's name is a `<span class="block text-h3">` inside a span (an h2 needs
+  the card restructured), and `BookCard`'s title is still a `<div>`._
 - [ ] **D5** Home shelves re-draw cards that have components: `ContinueReading`
   (bespoke row + scoped gradient) vs `.book-card--row`; `PlansProgress` vs
   `ShelfCard`; the error page's "three to try" as bare covers with floating
