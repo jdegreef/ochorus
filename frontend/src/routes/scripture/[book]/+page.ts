@@ -1,5 +1,6 @@
 import { getScriptureBook, listScripturePages } from '$lib/library-public';
 import { orNotFound } from '$lib/loadHelpers';
+import { bookFromPageList } from '$lib/scriptureIndex';
 import type { EntryGenerator, PageLoad } from './$types';
 
 export const prerender = true;
@@ -20,5 +21,15 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params, fetch }) => ({
-	page: await orNotFound(() => getScriptureBook(params.book, fetch))
+	page: await orNotFound(() =>
+		getScriptureBook(params.book, fetch).catch(async (e) => {
+			// An API from before the book endpoint (a web build racing the API's
+			// deploy): build the page from the page list rather than fail the
+			// prerender. Global fetch, so the list is never inlined. Still a 404
+			// when the list has no chapter page for the book either.
+			const page = bookFromPageList(params.book, await listScripturePages().catch(() => []));
+			if (page) return page;
+			throw e;
+		})
+	)
 });

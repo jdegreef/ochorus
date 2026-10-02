@@ -514,3 +514,45 @@ class BookViewTests(TestCase):
         res = self.get("romans")
         self.assertEqual(res.data["prev"], {"book": "john", "book_title": "John"})
         self.assertIsNone(res.data["next"])
+
+
+class BookViewEditionAndSpanTests(TestCase):
+    """What the book page counts as one work, and what it refuses to count."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="b", name="B")
+        full = Book.objects.create(author=author, slug="retro", language="en", title="Retro")
+        teens = Book.objects.create(
+            author=author, slug="retro-teens", language="en", title="Retro (For Teens)"
+        )
+        for i in range(CHAPTER_FLOOR):
+            cite(full, i + 1, "Romans 5:8")
+        cite(teens, 1, "Romans 5:8")
+        from django.core.management import call_command
+
+        call_command("index_citations", "--all", verbosity=0)
+
+    def test_young_reader_editions_fold_into_their_work(self):
+        res = self.client.get("/api/library/scripture/romans/")
+        self.assertEqual(res.data["books_count"], 1)
+        self.assertEqual(
+            [(b["slug"], b["citing_count"]) for b in res.data["top_books"]],
+            [("retro", CHAPTER_FLOOR + 1)],
+        )
+
+    def test_a_runaway_span_does_not_count_for_books_it_merely_crosses(self):
+        from .models import ChapterCitation
+
+        stray = Chapter.objects.filter(book__slug="retro").first()
+        # Acts 1:1 → Revelation 22:21: crosses Romans, but bucket() clamps it.
+        ChapterCitation.objects.create(
+            chapter=Chapter.objects.create(
+                book=stray.book, order=99, title="Stray", body_html="<p>x</p>"
+            ),
+            ref_text="Acts 1:1-Revelation 22:21",
+            start_verse_id=44001001,
+            end_verse_id=66022021,
+        )
+        res = self.client.get("/api/library/scripture/romans/")
+        self.assertEqual(res.data["citing_count"], CHAPTER_FLOOR + 1)

@@ -1425,10 +1425,11 @@ export const listScripturePages = (f?: Fetch) =>
 export interface ScriptureBookPage {
 	book: { slug: string; title: string; order: number };
 	version: string;
-	/** Distinct library passages (chapters) citing any part of the book. */
-	citing_count: number;
-	/** Distinct library books those passages come from. */
-	books_count: number;
+	/** Distinct library passages (chapters) citing any part of the book; null
+	 *  when the page was built from the page list (see bookFromPageList). */
+	citing_count: number | null;
+	/** Distinct library works those passages come from (null: as above). */
+	books_count: number | null;
 	/** The book's chapter pages, in order, each with its own citing count. */
 	chapters: { chapter: number; citing_count: number }[];
 	/** Its most-quoted verse pages, with their ASV text. */
@@ -1446,6 +1447,9 @@ export interface ScriptureBookPage {
 	next: { book: string; book_title: string } | null;
 }
 
+/** The /scripture/<book>/ page: one Bible book across the library. */
+export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
+
 export const getScriptureBook = (book: string, f?: Fetch) =>
 	apiFetch<ScriptureBookPage>(`/api/library/scripture/${book}/`, {}, f);
 
@@ -1461,9 +1465,6 @@ export const getScripturePage = (book: string, chapter: number, verse?: number, 
  * trailing `<verse>/` for a verse page. One place for the shape the search hit
  * and the command palette both link to; `null`/`0` verse means the whole chapter.
  */
-/** The /scripture/<book>/ page: one Bible book across the library. */
-export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
-
 export const scripturePageHref = (book: string, chapter: number, verse: number | null): string =>
 	`/scripture/${book}/${chapter}/` + (verse ? `${verse}/` : '');
 

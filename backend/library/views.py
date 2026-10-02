@@ -1740,11 +1740,13 @@ class ScriptureBookView(APIView):
         from .models import ChapterCitation
         from .scripture import VERSION_LABEL
         from .scripture_graph import (
+            _SPAN_GUARD,
             book_from_slug,
             current_pages,
             english_chapters,
             verse_text,
         )
+        from .serializers import _edition_base_slug
 
         target = book_from_slug(book)
         if target is None:
@@ -1759,24 +1761,47 @@ class ScriptureBookView(APIView):
         if not chapters:
             raise Http404("No chapter of this book has a page.")
 
-        # Every citation overlapping the book: verse ids are BBCCCVVV-style
-        # integers (book * 1,000,000 + chapter * 1,000 + verse).
+        # Every citation overlapping the book: verse ids are book * 1,000,000 +
+        # chapter * 1,000 + verse. A span is clamped the way `bucket` clamps it
+        # (to _SPAN_GUARD ids past its start), so a mis-parsed citation running
+        # from Acts to Revelation can't vote for every book in between here when
+        # it votes for none of their chapter pages.
         lo = target.value * 1_000_000
-        rows = ChapterCitation.objects.filter(
-            start_verse_id__lte=lo + 999_999,
-            end_verse_id__gte=lo,
-            chapter__in=english_chapters().values("pk"),
-        )
-        top_books = (
-            rows.values(
+        rows = (
+            ChapterCitation.objects.filter(
+                start_verse_id__lte=lo + 999_999,
+                start_verse_id__gte=lo - _SPAN_GUARD,
+                end_verse_id__gte=lo,
+                chapter__in=english_chapters().values("pk"),
+            )
+            .values(
+                "chapter_id",
                 "chapter__book__slug",
                 "chapter__book__title",
                 "chapter__book__author__name",
                 "chapter__book__author__slug",
             )
-            .annotate(n=Count("chapter_id", distinct=True))
-            .order_by("-n", "chapter__book__title")[: self.TOP_BOOKS]
+            .distinct()
         )
+        # One query, folded here. A work's "(For Teens)" / "(For Children)"
+        # editions are separate Book rows quoting the same verses, so they are
+        # one work for this ranking (the slug convention, `_edition_base_slug`),
+        # named by the full edition when it is among them.
+        citing: set[int] = set()
+        works: dict[str, dict] = {}
+        for r in rows:
+            citing.add(r["chapter_id"])
+            slug = r["chapter__book__slug"]
+            base = _edition_base_slug(slug)
+            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w["chapters"].add(r["chapter_id"])
+            if slug == base:
+                w["row"] = r
+        top_books = sorted(
+            works.values(),
+            key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
+        )[: self.TOP_BOOKS]
+
         verses = sorted(
             (p for p in mine if p["verse"] is not None),
             key=lambda p: (-p["citing_count"], p["chapter"], p["verse"]),
@@ -1794,8 +1819,8 @@ class ScriptureBookView(APIView):
             {
                 "book": {"slug": book, "title": target.title, "order": target.value},
                 "version": VERSION_LABEL,
-                "citing_count": rows.values("chapter_id").distinct().count(),
-                "books_count": rows.values("chapter__book_id").distinct().count(),
+                "citing_count": len(citing),
+                "books_count": len(works),
                 "chapters": chapters,
                 "verses": [
                     {
@@ -1808,13 +1833,13 @@ class ScriptureBookView(APIView):
                 ],
                 "top_books": [
                     {
-                        "slug": r["chapter__book__slug"],
-                        "title": r["chapter__book__title"],
-                        "author_name": r["chapter__book__author__name"],
-                        "author_slug": r["chapter__book__author__slug"],
-                        "citing_count": r["n"],
+                        "slug": w["row"]["chapter__book__slug"],
+                        "title": w["row"]["chapter__book__title"],
+                        "author_name": w["row"]["chapter__book__author__name"],
+                        "author_slug": w["row"]["chapter__book__author__slug"],
+                        "citing_count": len(w["chapters"]),
                     }
-                    for r in top_books
+                    for w in top_books
                 ],
                 "prev": books[i - 1] if i > 0 else None,
                 "next": books[i + 1] if i + 1 < len(books) else None,

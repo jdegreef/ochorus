@@ -2,7 +2,8 @@
 	import { scriptureBookHref, scripturePageHref, type ScriptureBookPage } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, collectionPage, hreflangFor } from '$lib/seo';
-	import { heatScale } from '$lib/scriptureIndex';
+	import { relativeHeat } from '$lib/scriptureIndex';
+	import { authorPath } from '$lib/originals';
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScriptureChapterChips from '$lib/components/ScriptureChapterChips.svelte';
@@ -19,10 +20,10 @@
 
 	const passagesTpl = $derived(t('scripture.passagesCount'));
 	const passages = (n: number) => passagesTpl.replace('%count%', String(n));
-	// Shaded against this book's own chapters: the brightest chip is the
-	// chapter of THIS book the library cites most.
+	// Shaded against this book's own chapters (relativeHeat): the brightest chip
+	// is the chapter of THIS book the library cites most.
 	const chapters = $derived(page.chapters.map((c) => ({ chapter: c.chapter, count: c.citing_count })));
-	const heat = $derived(heatScale(chapters.map((c) => c.count)));
+	const heat = $derived(relativeHeat(chapters.map((c) => c.count)));
 
 	const path = $derived(scriptureBookHref(book.slug));
 	const canonical = $derived(`${SITE_URL}${path}`);
@@ -31,9 +32,12 @@
 
 	const title = $derived(`${book.title} — what the classics say — Ochorus`);
 	const description = $derived(
-		`${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from ` +
-			`${page.books_count} Christian classic${page.books_count === 1 ? '' : 's'} that treat ` +
-			`${book.title}, chapter by chapter, each quoted and linked to its source.`
+		page.citing_count !== null && page.books_count !== null
+			? `${page.citing_count} passage${page.citing_count === 1 ? '' : 's'} from ` +
+					`${page.books_count} Christian classic${page.books_count === 1 ? '' : 's'} that treat ` +
+					`${book.title}, chapter by chapter, each quoted and linked to its source.`
+			: `How the Christian classics treat ${book.title}, chapter by chapter — ` +
+					'every passage quoted and linked to its source.'
 	);
 
 	const crumbs = $derived([
@@ -62,9 +66,11 @@
 
 	<header class="mb-8">
 		<h1 class="text-h1">{book.title}</h1>
-		<p class="mt-2 text-small text-muted">
-			{t('scripture.treated').replace('%count%', String(page.citing_count))}
-		</p>
+		{#if page.citing_count !== null}
+			<p class="mt-2 text-small text-muted">
+				{t('scripture.treated').replace('%count%', String(page.citing_count))}
+			</p>
+		{/if}
 	</header>
 
 	<section class="mb-10">
@@ -80,13 +86,13 @@
 					<li class="verse">
 						<a href={scripturePageHref(book.slug, v.chapter, v.verse)}>
 							<span class="num">{v.chapter}:{v.verse}</span>
-							<span class="vtext">{v.text}</span>
+							{#if v.text}<span class="vtext">{v.text}</span>{/if}
 						</a>
 						<span class="count text-small">{v.citing_count}</span>
 					</li>
 				{/each}
 			</ul>
-			<p class="mt-2 text-small text-muted">{page.version}</p>
+			{#if page.version}<p class="mt-2 text-small text-muted">{page.version}</p>{/if}
 		</section>
 	{/if}
 
@@ -100,7 +106,7 @@
 					<li class="work">
 						<span class="min-w-0">
 							<a class="work-title" href={`/books/${w.slug}/`}>{w.title}</a>
-							<a class="work-author text-small" href={`/authors/${w.author_slug}/`}>{w.author_name}</a>
+							<a class="work-author text-small" href={authorPath(w.author_slug)}>{w.author_name}</a>
 						</span>
 						<span class="count text-small">{passages(w.citing_count)}</span>
 					</li>
