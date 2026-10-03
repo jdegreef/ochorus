@@ -829,6 +829,7 @@
   "settings_goal_per_week": "በሳምንት ስንት ቀን",
   "settings_heatmap_title": "የንባብ ቀን መቁጠሪያ",
   "settings_heatmap_read": "ተነቧል",
+  "settings_heatmap_deeper": "ጠቆር ያለ = ረዘም ያለ ተከታታይ ንባብ",
   "settings_heatmap_none": "ንባብ የለም",
   "offline_download": "ከመስመር ውጭ ለማንበብ ያውርዱ",
   "offline_downloading": "በመውረድ ላይ",
