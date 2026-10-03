@@ -1490,6 +1490,12 @@ nav.appnav .navmore-btn[aria-expanded='true'] {
 	color: var(--text);
 	background: var(--surface);
 }
+/* On one of its destinations, More wears the active pill the hidden link would. */
+nav.appnav .navmore-btn.active {
+	color: var(--accent);
+	background: var(--accent-soft);
+	font-weight: 600;
+}
 nav.appnav .navmore-menu {
 	inset-inline: 0 auto;
 }
@@ -1551,15 +1557,17 @@ nav.appnav .navmore-menu {
 		margin-inline-start: 0.25rem;
 	}
 }
-/* Phones: the gear never shows. Its theme switch lives in the tab bar's
-   "More" sheet, and on the reading surfaces (no tab bar) in the reader's own
-   Aa sheet, so the bar doesn't sprout a gear only on some pages.
+/* Phones: the gear shows only where nothing else holds its theme switch —
+   the tab bar's "More" sheet holds it, and on the reading surfaces
+   (`.appnav-static`) the reader's own Aa sheet does. Elsewhere (no tab bar
+   while Listen plays, say) it stays, or the page would have no theme control.
    Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
    its "More" sheet holds the links and sign-in too, so the top bar is brand +
    search (+ a signed-in reader's avatar, whose menu keeps the admin and
    feedback entries). */
 @media (max-width: 639.98px) {
-	nav.appnav .prefs,
+	:root:has(.tabbar) nav.appnav .prefs,
+	nav.appnav.appnav-static .prefs,
 	:root:has(.tabbar) nav.appnav .navtoggle,
 	:root:has(.tabbar) nav.appnav .navmenu,
 	:root:has(.tabbar) nav.appnav .account-signin {
@@ -2465,9 +2473,10 @@ a.sermon-row-title:hover {
    author's book rail). Unlike .chip-scroller it never wraps — a rail always
    scrolls — so it keeps overflow at every width; but the end-edge fade that
    signals "more this way" (in place of a hard clip) is only wanted where it
-   actually overflows — which the shared edge mask below (`use:scrollEdges`)
-   now knows at any width. The hidden scrollbar stays scoped to <sm; a desktop
-   rail keeps its native one. Covers already carry shrink-0. */
+   actually overflows, i.e. on a phone — where the shared edge mask below
+   (`use:scrollEdges`) fades an edge only while covers hide past it. A
+   desktop rail keeps its native scrollbar and no mask. Covers already carry
+   shrink-0. */
 .cover-rail {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
@@ -2589,9 +2598,13 @@ a.sermon-row-title:hover {
 	--fade-dir: to left;
 }
 /* From sm up a chip row wraps instead of scrolling, so it has no edge to fade —
-   and a mask would clip the focus ring of a chip on its border. */
+   and a mask would clip the focus ring of a chip on its border. A cover rail
+   keeps its native scrollbar there instead: a mask makes a stacking context,
+   which lifted the AuthorBioCard rail above the card's stretched link and
+   ate clicks between the covers. */
 @media (min-width: 640px) {
-	.chip-scroller {
+	.chip-scroller,
+	.cover-rail {
 		-webkit-mask-image: none;
 		mask-image: none;
 	}

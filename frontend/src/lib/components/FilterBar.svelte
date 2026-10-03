@@ -17,7 +17,8 @@
 	 * below sm (one line — search + Filters) and from md, and scrolls away
 	 * between sm and md, where the inline row wraps too tall to pin.
 	 *
-	 * On a SHORT screen (under 500px tall — a phone held sideways) no bar pins,
+	 * On a SHORT touch screen (under 500px tall — a phone held sideways; the
+	 * same test as the tab bar's) no bar pins,
 	 * whatever `pin` says: with the nav above it, a ~90px bar left a 390px-tall
 	 * landscape phone about half its height to read in.
 	 */
@@ -43,8 +44,8 @@
 		// Keep in step with the stylesheet's media queries below.
 		const mq = window.matchMedia(
 			pin === 'compact'
-				? '(min-width: 640px) and (max-width: 767.98px), (max-height: 499.98px)'
-				: '(max-height: 499.98px)'
+				? '(min-width: 640px) and (max-width: 767.98px), (max-height: 499.98px) and (pointer: coarse)'
+				: '(max-height: 499.98px) and (pointer: coarse)'
 		);
 		const sync = () => (unpinned = mq.matches);
 		sync();
@@ -75,7 +76,7 @@
 			position: static;
 		}
 	}
-	@media (max-height: 499.98px) {
+	@media (max-height: 499.98px) and (pointer: coarse) {
 		.filter-bar {
 			position: static;
 		}

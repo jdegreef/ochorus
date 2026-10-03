@@ -2,6 +2,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { menuShift } from '$lib/menuShift';
+	import { nativeShare, shareLinks } from '$lib/share';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -42,25 +43,11 @@
 	}
 	let copied = $state(false);
 
-	const enc = encodeURIComponent;
-	// Service names (WhatsApp, Facebook) are proper nouns — not localized, like
-	// the artwork credit. "Share"/"Email" reuse existing catalogue strings.
-	const waHref = $derived(`https://wa.me/?text=${enc(`${title} ${url}`)}`);
-	const fbHref = $derived(`https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`);
-	const mailHref = $derived(`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${url}`)}`);
+	const links = $derived(shareLinks(title, url, t('login.email')));
 
 	async function onClick() {
-		if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
-			try {
-				await navigator.share({ title, url });
-				return;
-			} catch (err) {
-				// The reader dismissed the sheet — do nothing. Any other failure
-				// (unsupported payload, etc.) falls through to the menu.
-				if ((err as Error)?.name === 'AbortError') return;
-			}
-		}
-		toggle();
+		// Any failure other than a dismissed sheet falls through to the menu.
+		if ((await nativeShare(title, url)) === 'unavailable') toggle();
 	}
 
 	async function copyLink() {
@@ -119,23 +106,15 @@
 			<button type="button" class="share-opt text-small" onclick={copyLink}>
 				{copied ? t('share.linkCopied') : t('share.copyLink')}
 			</button>
-			<a
-				class="share-opt text-small"
-				href={waHref}
-				target="_blank"
-				rel="noopener"
-				onclick={() => (open = false)}>WhatsApp</a
-			>
-			<a
-				class="share-opt text-small"
-				href={fbHref}
-				target="_blank"
-				rel="noopener"
-				onclick={() => (open = false)}>Facebook</a
-			>
-			<a class="share-opt text-small" href={mailHref} onclick={() => (open = false)}
-				>{t('login.email')}</a
-			>
+			{#each links as l (l.name)}
+				<a
+					class="share-opt text-small"
+					href={l.href}
+					target={l.newTab ? '_blank' : undefined}
+					rel={l.newTab ? 'noopener' : undefined}
+					onclick={() => (open = false)}>{l.name}</a
+				>
+			{/each}
 		</div>
 	{/if}
 </div>

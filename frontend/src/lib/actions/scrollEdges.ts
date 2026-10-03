@@ -20,9 +20,14 @@ export function scrollEdges(node: HTMLElement) {
 	const ro = new ResizeObserver(sync);
 	ro.observe(node);
 	for (const child of node.children) ro.observe(child);
-	// Items rendered later (a client nav, a filter) join the observer too.
+	// Items rendered later (a client nav, a filter) join the observer too…
 	const mo = new MutationObserver((records) => {
-		for (const r of records) for (const n of r.addedNodes) if (n instanceof Element) ro.observe(n);
+		for (const r of records) {
+			for (const n of r.addedNodes) if (n instanceof Element) ro.observe(n);
+			// …and leave with it: a filtered row re-renders its children, and
+			// an observed detached node is held until the row is destroyed.
+			for (const n of r.removedNodes) if (n instanceof Element) ro.unobserve(n);
+		}
 		sync();
 	});
 	mo.observe(node, { childList: true });

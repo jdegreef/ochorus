@@ -129,6 +129,8 @@
 		...(lang.current === 'en' ? ENGLISH_HUBS.map((d) => ({ href: `${d.href}/`, label: t(d.labelKey), raw: true })) : [])
 	]);
 
+	const navMoreActive = $derived(NAV_MORE.some((d) => isActive(d.href.replace(/\/$/, ''))));
+
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
 	let navEl = $state<HTMLElement>();
@@ -311,6 +313,7 @@
 				<div class="navmore" use:dismissable={{ open: navMoreOpen, onDismiss: () => (navMoreOpen = false) }}>
 					<button
 						class="navmore-btn"
+						class:active={navMoreActive}
 						aria-expanded={navMoreOpen}
 						aria-controls={navMoreOpen ? 'nav-more' : undefined}
 						onclick={() => (navMoreOpen = !navMoreOpen)}

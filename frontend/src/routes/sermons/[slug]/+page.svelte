@@ -31,6 +31,7 @@
 	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { nativeShare, shareLinks } from '$lib/share';
 	import { favorites } from '$lib/favorites.svelte';
 	import { localizeHref } from '$lib/href';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -125,29 +126,31 @@
 	};
 	const saved = $derived(favorites.has('sermon', sermon.slug));
 	const shareLabel = $derived(`${sermon.title} — ${sermon.author_name}`);
-	// Share from the "⋯" group: the OS sheet where there is one (as
-	// ShareButton), else copy the link and say so in the row before closing.
+	// Share from the "⋯" group ($lib/share, as ShareButton): the OS sheet
+	// where there is one. Where there isn't — or it fails for any reason but
+	// a dismissal — the row becomes Copy link and the fallback targets appear
+	// under it, with the menu left open to pick from.
+	let showTargets = $state(false);
 	let copied = $state(false);
+	let copyTimer: ReturnType<typeof setTimeout> | undefined;
+	$effect(() => () => clearTimeout(copyTimer));
 	async function shareFromMore() {
-		if (typeof navigator.share === 'function') {
-			moreOpen = false;
-			try {
-				await navigator.share({ title: shareLabel, url: canonical });
+		if (!showTargets) {
+			const r = await nativeShare(shareLabel, canonical);
+			if (r !== 'unavailable') {
+				moreOpen = false;
 				return;
-			} catch (err) {
-				if ((err as Error)?.name === 'AbortError') return;
 			}
+			showTargets = true;
+			return;
 		}
 		try {
 			await navigator.clipboard.writeText(canonical);
 			copied = true;
-			setTimeout(() => {
-				copied = false;
-				moreOpen = false;
-			}, 1200);
+			clearTimeout(copyTimer);
+			copyTimer = setTimeout(() => (copied = false), 1500);
 		} catch {
-			// Clipboard blocked: nothing more to offer from a phone row — the
-			// address bar still holds the link.
+			// Clipboard blocked: the address bar still holds the link.
 		}
 	}
 
@@ -286,17 +289,8 @@
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
 
-	// Where there's no OS share sheet (most desktops), the row copies the link
-	// and the menu also offers what ShareButton's fallback menu does —
-	// WhatsApp first, because that is how this content travels.
-	let canNativeShare = $state(false);
-	onMount(() => (canNativeShare = typeof navigator.share === 'function'));
-	const enc = encodeURIComponent;
-	const shareTargets = $derived([
-		{ name: 'WhatsApp', href: `https://wa.me/?text=${enc(`${shareLabel} ${canonical}`)}` },
-		{ name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(canonical)}` },
-		{ name: t('login.email'), href: `mailto:?subject=${enc(shareLabel)}&body=${enc(`${shareLabel}\n\n${canonical}`)}` }
-	]);
+	onMount(() => (showTargets = typeof navigator.share !== 'function'));
+	const shareTargets = $derived(shareLinks(shareLabel, canonical, t('login.email')));
 
 	const year = $derived(preachedYear(sermon.preached_on));
 
@@ -588,18 +582,18 @@
 								</svg><span aria-live="polite"
 									>{copied
 										? t('share.linkCopied')
-										: canNativeShare
-											? t('reader.share')
-											: t('share.copyLink')}</span
+										: showTargets
+											? t('share.copyLink')
+											: t('reader.share')}</span
 								></button
 							>
-							{#if !canNativeShare}
+							{#if showTargets}
 								{#each shareTargets as st (st.name)}
 									<a
 										class="account-item more-item share-target"
 										href={st.href}
-										target="_blank"
-										rel="noopener noreferrer"
+										target={st.newTab ? '_blank' : undefined}
+										rel={st.newTab ? 'noopener noreferrer' : undefined}
 										onclick={() => (moreOpen = false)}>{st.name}</a
 									>
 								{/each}

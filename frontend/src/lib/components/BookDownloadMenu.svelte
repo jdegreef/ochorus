@@ -42,6 +42,14 @@
 	const isPhone = $derived(phone.matches);
 
 	let open = $state(false);
+	// Crossing 640px while open (a phone rotated mid-choice) would show the
+	// dropdown unmeasured — hung from the button's edge, possibly off-screen.
+	// Close instead; the next tap opens the right shape, measured.
+	let wasPhone: boolean | undefined;
+	$effect(() => {
+		if (wasPhone !== undefined && wasPhone !== isPhone) open = false;
+		wasPhone = isPhone;
+	});
 	let root = $state<HTMLDivElement>();
 	// Hung from the button's end edge like .account-menu, but placed by
 	// `menuShift` so a mid-row button on a phone (and a long translated label)
