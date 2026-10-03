@@ -4,6 +4,7 @@
  * they add once. `now`, `uid` and the text are injected so the builder is pure
  * and testable (and so the caller owns i18n).
  */
+import type { ReadingDays } from './planSchedule';
 
 export interface ReminderOptions {
 	/** Reference time; the first occurrence is today (if still ahead) or tomorrow. */
@@ -171,7 +172,7 @@ export function buildScheduleICS(
 }
 
 /** RRULE weekdays for each reading-days rule (RFC 5545 BYDAY). */
-const RULE_BYDAY: Record<'daily' | 'weekdays' | 'monsat', string> = {
+const RULE_BYDAY: Record<ReadingDays, string> = {
 	daily: '',
 	weekdays: 'MO,TU,WE,TH,FR',
 	monsat: 'MO,TU,WE,TH,FR,SA'
@@ -194,17 +195,16 @@ export function googleCalendarUrl(opts: {
 	/** The first reading's date (already a reading day). */
 	start: Date;
 	hhmm: string;
-	rule: 'daily' | 'weekdays' | 'monsat';
+	rule: ReadingDays;
 	/** How many readings are left. */
 	count: number;
 	/** The reader's IANA time zone. */
 	ctz?: string;
-	minutes?: number;
 }): string {
 	const [h, m] = parseHHMM(opts.hhmm);
 	const from = new Date(opts.start);
 	from.setHours(h, m, 0, 0);
-	const to = new Date(from.getTime() + (opts.minutes ?? 15) * 60_000);
+	const to = new Date(from.getTime() + 15 * 60_000); // a short slot: it's a reminder
 	const byday = RULE_BYDAY[opts.rule];
 	const rrule = byday
 		? `RRULE:FREQ=WEEKLY;BYDAY=${byday};COUNT=${opts.count}`
