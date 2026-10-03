@@ -264,15 +264,6 @@ HOURS_DAYS = 90
 HOURS_MIN_READERS = 3
 
 
-def _zone(name: str):
-    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
-
-    try:
-        return ZoneInfo(name) if name else None
-    except (ZoneInfoNotFoundError, ValueError):
-        return None
-
-
 def reading_hours(now) -> dict:
     """When people read: minutes read in each weekday x hour over the last
     ``HOURS_DAYS`` days, on each reader's own clock.
@@ -284,17 +275,28 @@ def reading_hours(now) -> dict:
     Its start is the device's own time, converted into the reader's saved
     time zone (captured from the browser at sign-in). A reader with no zone
     yet can't be placed, so they're left out and counted in
-    ``without_zone``, and the page says so. One query."""
+    ``without_zone``, and the page says so.
+
+    The zone is the reader's CURRENT one: a reader who moved since is placed
+    on their new clock for older sittings too. Storing each sitting's offset
+    would fix that, at the cost of a client change and a migration. A start
+    in the future (a device clock set ahead) is dropped. One query, streamed."""
+    from accounts.geo import zone_for
     from reading.models import ReadingSession
 
     minutes = [[0.0] * 24 for _ in range(7)]
     readers: dict[tuple, set] = defaultdict(set)
     placed, unplaced = set(), set()
-    zones: dict[str, object] = {}
-    for profile, started, seconds, tz in ReadingSession.objects.filter(
-        seconds__gt=0, started_at__gte=now - timedelta(days=HOURS_DAYS)
-    ).values_list("profile", "started_at", "seconds", "profile__timezone"):
-        zone = zones.setdefault(tz, _zone(tz))
+    for profile, started, seconds, tz in (
+        ReadingSession.objects.filter(
+            seconds__gt=0,
+            started_at__gte=now - timedelta(days=HOURS_DAYS),
+            started_at__lte=now,
+        )
+        .values_list("profile", "started_at", "seconds", "profile__timezone")
+        .iterator()
+    ):
+        zone = zone_for(tz)
         if zone is None:
             unplaced.add(profile)
             continue
@@ -310,7 +312,10 @@ def reading_hours(now) -> dict:
         "without_zone": len(unplaced),
         "minutes": [
             [
-                round(minutes[d][h]) if len(readers[(d, h)]) >= HOURS_MIN_READERS else None
+                # At least 1: an hour that cleared the floor was read in.
+                max(1, round(minutes[d][h]))
+                if len(readers[(d, h)]) >= HOURS_MIN_READERS
+                else None
                 for h in range(24)
             ]
             for d in range(7)

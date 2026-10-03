@@ -28,6 +28,5 @@ export function sendTime(minutes: Grid) {
 	const peak = Math.max(...byHour);
 	if (!peak) return null;
 	const hour = byHour.indexOf(peak);
-	const before = (hour + 23) % 24;
-	return { hour, label: `${before % 12 || 12}:30${before < 12 ? 'am' : 'pm'}` };
+	return { hour, label: hourLabel((hour + 23) % 24).replace(/(am|pm)$/, ':30$1') };
 }

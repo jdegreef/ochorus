@@ -149,6 +149,18 @@
 	const hoursPeak = $derived(hours ? busiestCell(hours.minutes) : null);
 	const hoursSend = $derived(hours ? sendTime(hours.minutes) : null);
 	let pointedHour = $state<{ day: number; hour: number } | null>(null);
+	// One tab stop for the whole grid; arrow keys move it (the ARIA grid
+	// pattern), so 168 hours aren't 168 presses of Tab.
+	let hourFocus = $state({ day: 0, hour: 0 });
+	let hoursGrid = $state<HTMLElement>();
+	const moveHour = (e: KeyboardEvent) => {
+		const step: Record<string, [number, number]> = { ArrowUp: [-1, 0], ArrowDown: [1, 0], ArrowLeft: [0, -1], ArrowRight: [0, 1] };
+		const d = step[e.key];
+		if (!d) return;
+		e.preventDefault();
+		hourFocus = { day: Math.min(6, Math.max(0, hourFocus.day + d[0])), hour: Math.min(23, Math.max(0, hourFocus.hour + d[1])) };
+		hoursGrid?.querySelector<HTMLElement>(`[data-cell="${hourFocus.day}-${hourFocus.hour}"]`)?.focus();
+	};
 	const hourText = (day: number, hour: number) => {
 		const m = hours?.minutes[day][hour];
 		const span = `${WEEKDAYS[day]} ${hourLabel(hour)}–${hourLabel((hour + 1) % 24)}`;
@@ -372,7 +384,7 @@
 					<section id="hours" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">When people read</h2>
-							<span class="text-small text-muted">Minutes read by weekday and hour, in each reader's own time zone · last {hours.days} days.</span>
+							<span class="text-small text-muted">Minutes read by weekday and hour, in each reader's own time zone · {fmt(hours.readers)} readers · last {hours.days} days.</span>
 						</div>
 						{#if hoursPeak && hoursSend}
 							<div class="mb-4 flex flex-wrap gap-6">
@@ -387,7 +399,7 @@
 							</div>
 						{/if}
 						<div class="overflow-x-auto">
-							<div class="hours" role="grid" aria-label="Minutes read by weekday and hour">
+							<div class="hours" role="grid" tabindex="-1" aria-label="Minutes read by weekday and hour" bind:this={hoursGrid} onkeydown={moveHour}>
 								<div role="row" class="contents">
 									<span></span>
 									{#each Array.from({ length: 24 }, (_, h) => h) as h (h)}
@@ -404,17 +416,20 @@
 												class="cell"
 												class:blank={m == null}
 												style={m == null ? '' : `background: ${goldWash((m / hoursMax) * 100)}`}
+												data-cell="{day}-{hour}"
+												tabindex={hourFocus.day === day && hourFocus.hour === hour ? 0 : -1}
 												aria-label={hourText(day, hour)}
 												title={hourText(day, hour)}
 												onmouseenter={() => (pointedHour = { day, hour })}
-												onfocus={() => (pointedHour = { day, hour })}
+												onfocus={() => (pointedHour = hourFocus = { day, hour })}
 											></button>
 										{/each}
 									</div>
 								{/each}
 							</div>
 						</div>
-						<p class="mt-2 min-h-[1.5em] text-small text-muted" aria-live="polite">
+						<!-- For the eye only: each hour carries its own label for a screen reader. -->
+						<p class="mt-2 min-h-[1.5em] text-small text-muted" aria-hidden="true">
 							{#if pointedHour}{hourText(pointedHour.day, pointedHour.hour)}.{:else}Hover or tap an hour to read it.{/if}
 						</p>
 						<p class="mt-1 text-micro text-muted">

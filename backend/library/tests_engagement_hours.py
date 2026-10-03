@@ -71,9 +71,15 @@ class ReadingHoursTests(TestCase):
         grid = reading_hours(self.now)
         self.assertEqual((grid["readers"], grid["without_zone"]), (0, 2))
 
-    def test_old_and_unread_sittings_are_left_out(self):
+    def test_old_future_and_unread_sittings_are_left_out(self):
         for _ in range(HOURS_MIN_READERS):
             p = self._reader()
             self._sit(p, self.now - timedelta(days=HOURS_DAYS + 1))
+            self._sit(p, self.now + timedelta(days=30))  # a device clock set ahead
             self._sit(p, self.now - timedelta(days=1), seconds=0)
         self.assertEqual(reading_hours(self.now)["readers"], 0)
+
+    def test_a_few_seconds_of_reading_is_not_zero_minutes(self):
+        for _ in range(HOURS_MIN_READERS):
+            self._sit(self._reader(), self._recent("America/New_York", 0, 7), seconds=10)
+        self.assertEqual(reading_hours(self.now)["minutes"][0][7], 1)

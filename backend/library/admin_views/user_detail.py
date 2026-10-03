@@ -42,15 +42,11 @@ def _reader_today(tz_name):
     """
     from django.utils import timezone
 
-    now = timezone.now()
-    if tz_name:
-        from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+    from accounts.geo import zone_for
 
-        try:
-            return now.astimezone(ZoneInfo(tz_name)).date()
-        except (ZoneInfoNotFoundError, ValueError):
-            pass
-    return now.date()
+    now = timezone.now()
+    zone = zone_for(tz_name or "")
+    return now.astimezone(zone).date() if zone else now.date()
 
 
 def _work_titles(pairs):
