@@ -36,6 +36,59 @@ def _running_total(now_total: int, new_per_week: list[int]) -> list[int]:
     return out[::-1]
 
 
+def distinct_readers(windows: dict) -> dict:
+    """Readers who read on any day of each window, in one query. ``windows``
+    maps a name to ``(first_day, last_day)``, both inclusive.
+
+    From the reading-day log, which keeps every day a reader read; saved
+    progress keeps only each work's latest touch, so a reader active in two
+    weeks used to count in one. Only readers the Readers tile counts (they
+    have saved progress), so an active count can never exceed it. The log
+    can gain past days when someone signs up and their on-device reading is
+    merged in: that is reading which really happened then, so past windows
+    may rise a little after the fact."""
+    from reading.models import ReadingDay, ReadingProgress
+
+    if not windows:
+        return {}
+    lo = min(a for a, _ in windows.values())
+    hi = max(b for _, b in windows.values())
+    return ReadingDay.objects.filter(
+        day__gte=lo, day__lte=hi, profile__in=ReadingProgress.objects.values("profile")
+    ).aggregate(
+        **{
+            name: Count("profile", distinct=True, filter=Q(day__gte=a, day__lte=b))
+            for name, (a, b) in windows.items()
+        }
+    )
+
+
+def latest_day(now):
+    """The last day a window "ending today" runs to. Reading days are each
+    reader's local date and the site clock is UTC, so a reader east of UTC
+    can already be on tomorrow; the current window takes them in."""
+    return day_of(now) + timedelta(days=1)
+
+
+def window(now, days: int, offset: int = 0) -> tuple:
+    """``days`` days ending ``offset`` days ago, as ``(first, last)``. The
+    current window (``offset`` 0) also takes in readers already on tomorrow."""
+    end = day_of(now) - timedelta(days=offset)
+    return (end - timedelta(days=days - 1), latest_day(now) if offset == 0 else end)
+
+
+def weekly_active(now, weeks: int) -> list[dict]:
+    """Readers who read in each charted week (each counts in every week they
+    read), in one query. This week runs to ``latest_day``."""
+    starts = week_starts(now, weeks)
+    ends = [s + timedelta(days=6) for s in starts]
+    ends[-1] = max(ends[-1], latest_day(now))
+    counts = distinct_readers(
+        {s.isoformat(): (s, e) for s, e in zip(starts, ends, strict=True)}
+    )
+    return [{"week": s.isoformat(), "readers": counts[s.isoformat()]} for s in starts]
+
+
 def weekly_signups(starts) -> list[int]:
     """Accounts created in each week beginning ``starts``: the Users page's
     sign-up chart and the Registered users tile's line."""
@@ -88,24 +141,9 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
     )
     new_readers = [arrived.get(s, 0) for s in starts]
 
-    # Readers who read on any day of each window, in one pass. From the
-    # reading-day log, which keeps every day; the tile's own count comes from
-    # saved progress, which keeps only the latest, so the two can differ by a
-    # reader or two.
-    today = day_of(now)
-    ends = [today - timedelta(days=30 * i) for i in range(MONTH_WINDOWS - 1, -1, -1)]
-    counts = ReadingDay.objects.filter(
-        day__gt=ends[0] - timedelta(days=30), day__lte=today
-    ).aggregate(
-        **{
-            f"w{i}": Count(
-                "profile",
-                distinct=True,
-                filter=Q(day__gt=end - timedelta(days=30), day__lte=end),
-            )
-            for i, end in enumerate(ends)
-        }
-    )
+    # Six 30-day windows, the last the same window as the tile.
+    offsets = [30 * i for i in range(MONTH_WINDOWS - 1, -1, -1)]
+    counts = distinct_readers({str(off): window(now, 30, off) for off in offsets})
 
     return {
         "hearts": hearts,
@@ -113,7 +151,10 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
         "users": _running_total(users, new_users),
         "readers": _running_total(readers, new_readers),
         "active_30d": [
-            {"end": end.isoformat(), "readers": counts[f"w{i}"]}
-            for i, end in enumerate(ends)
+            {
+                "end": (day_of(now) - timedelta(days=off)).isoformat(),
+                "readers": counts[str(off)],
+            }
+            for off in offsets
         ],
     }

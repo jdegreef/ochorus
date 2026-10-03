@@ -109,8 +109,8 @@ class ReadingProgress(models.Model):
             # finishers per work. The unique constraint leads with `profile`, so
             # none of that could use it — every panel scanned the whole table.
             models.Index(fields=["kind", "book_slug"], name="idx_progress_work"),
-            # ...and the weekly-active panel windows on updated_at. `ordering`
-            # is not an index.
+            # ...and the engagement page windows on updated_at ("Active today",
+            # Rising this week). `ordering` is not an index.
             models.Index(fields=["updated_at"], name="idx_progress_updated"),
             # The finish-the-series email sweep (emails/series_nudge.py) finds
             # readers who finished a book within a window: kind + finished_at
@@ -375,6 +375,12 @@ class ReadingDay(models.Model):
             models.UniqueConstraint(
                 fields=["profile", "day"], name="uniq_readingday_profile_day"
             ),
+        ]
+        indexes = [
+            # The admin's active-reader counts filter on a day range across
+            # every reader (library.engagement_trends); the unique constraint
+            # leads with `profile`, so it couldn't serve them.
+            models.Index(fields=["day"], name="idx_readingday_day"),
         ]
 
     def __str__(self) -> str:

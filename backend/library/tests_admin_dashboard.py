@@ -1203,6 +1203,13 @@ class AdminEngagementTests(TestCase):
         )
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="en", chapter_order=1)
         ReadingProgress.objects.create(profile=self.p1, book_slug="abide", language="en", chapter_order=1)
+        # Both read today (the reading-day log, which "Active" counts from).
+        from reading.models import ReadingDay
+
+        from .weeks import day_of
+
+        for p in (self.p1, self.p2):
+            ReadingDay.objects.create(profile=p, day=day_of(timezone.now()))
         ChapterMarks.objects.create(
             profile=self.p1, book_slug="humility", language="en", chapter_order=1,
             marks=[{"id": "a", "p": 0, "s": 0, "e": 5}],
