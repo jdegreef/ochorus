@@ -230,6 +230,7 @@
   "plans_week": "Тиждень %n%",
   "plans_read_of": "Прочитано %n% з %m%",
   "plans_about_book": "Про цю книгу",
+  "plans_finish_label": "до завершення, день за днем",
   "continue_title": "Продовжити читання",
   "continue_mark_finished": "Позначити як завершене",
   "continue_chapter": "Розділ",

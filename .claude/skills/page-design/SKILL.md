@@ -143,6 +143,16 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    query, not a viewport breakpoint, because the column beside the cover on a
    tablet and long translations run out of room long before `md`. A sticky sub-nav CTA shows only once the hero CTA has scrolled
    away (IntersectionObserver), never two primaries on screen.
+   **Long-list leaf: the plan page is the model for a side panel.** Where
+   the body is a long list the reader works through (a plan's days), the read
+   card, Save/Share and the writers sit in a sticky end-side panel from
+   1024px (`.plan-body` / `.plan-aside`, `top: calc(var(--pinned-offset,
+   var(--appnav-h, 0px)) + 1rem)`), and come FIRST on a phone so the one
+   action leads — instead of the book's sub-nav CTA. The grid track is
+   `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
+   min-content width otherwise pushes a phone column off-screen. Its hero
+   visual is `<CoverStrip size="fan" priority>` — the one shared big fan
+   (/originals uses it too); never re-draw fan geometry in a page.
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
    onDismiss }}` (`$lib/actions/dismissable`) on the wrapper — click-away,
    Escape, focus back to the trigger. Don't hand-roll a `<svelte:window>`
