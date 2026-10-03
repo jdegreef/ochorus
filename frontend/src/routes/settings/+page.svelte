@@ -8,7 +8,7 @@
 	import { loginHref } from '$lib/loginHref';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
-	import { theme } from '$lib/theme.svelte';
+	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
 	import {
 		readerPrefs,
@@ -552,10 +552,9 @@
 						<div class="setting-sub">{t('settings.themeSub')}</div>
 					</div>
 					<div class="seg">
-						<button class:active={theme.preference === 'system'} onclick={() => theme.set('system')}>{t('settings.themeSystem')}</button>
-						<button class:active={theme.preference === 'light'} onclick={() => theme.set('light')}>{t('settings.themeLight')}</button>
-						<button class:active={theme.preference === 'sepia'} onclick={() => theme.set('sepia')}>{t('settings.themeSepia')}</button>
-						<button class:active={theme.preference === 'dark'} onclick={() => theme.set('dark')}>{t('settings.themeDark')}</button>
+						{#each THEME_OPTIONS as o (o.v)}
+							<button class:active={theme.preference === o.v} onclick={() => theme.set(o.v)}>{t(o.k)}</button>
+						{/each}
 					</div>
 				</div>
 

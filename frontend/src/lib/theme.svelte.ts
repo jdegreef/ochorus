@@ -19,6 +19,16 @@ export type ThemeApplied = 'light' | 'dark' | 'sepia';
 
 const PREFS: readonly ThemePref[] = ['system', 'light', 'dark', 'sepia'];
 
+/** Every theme choice with its label key, in display order (lightest to
+ *  darkest after System) — Settings, the More sheet and the reader's Aa panel
+ *  all list from this. */
+export const THEME_OPTIONS: readonly { v: ThemePref; k: string }[] = [
+	{ v: 'system', k: 'settings.themeSystem' },
+	{ v: 'light', k: 'settings.themeLight' },
+	{ v: 'sepia', k: 'settings.themeSepia' },
+	{ v: 'dark', k: 'settings.themeDark' }
+];
+
 // Browser-UI colour (address bar / status bar) per applied theme; must match
 // the `--bg` of each theme in app.css and the map in the app.html boot script.
 const THEME_COLOR: Record<ThemeApplied, string> = {

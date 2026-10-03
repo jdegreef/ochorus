@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { define } from '$lib/define.svelte';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
+	import { PHONE } from '$lib/breakpoints';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import { hydrateSrc } from '$lib/hydrateSrc';
@@ -159,7 +160,7 @@
 	// popover and the phone sheet share readerUi.panelOpen.
 	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
 	// the prerendered markup), so both `{#if}`s below agree with it.
-	const phone = mediaFlag('(max-width: 639.98px)');
+	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
 
 	// The footer's action row folds away while reading on and returns on the
@@ -564,22 +565,7 @@
 								><Icon name="heart" size={20} />{saved ? t('fav.saved') : t('fav.save')}</button
 							>
 							<button class="account-item more-item" onclick={shareFromMore}
-								><svg
-									width="20"
-									height="20"
-									viewBox="0 0 24 24"
-									fill="none"
-									stroke="currentColor"
-									stroke-width="1.7"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									aria-hidden="true"
-								>
-									<circle cx="6" cy="12" r="2.6" />
-									<circle cx="17" cy="6" r="2.6" />
-									<circle cx="17" cy="18" r="2.6" />
-									<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
-								</svg><span aria-live="polite"
+								><Icon name="share" size={20} strokeWidth={1.7} /><span aria-live="polite"
 									>{copied
 										? t('share.linkCopied')
 										: showTargets
@@ -1113,24 +1099,10 @@
 		color: var(--muted);
 	}
 
-	/* --- Top bar's "⋯" group — the chapter reader's, copied ---------------- */
-	/* `.account-menu` chrome, with icon rows at thumb size. */
-	.more-group {
-		top: calc(100% + 0.25rem);
-	}
+	/* --- Top bar's "⋯" group (.more-group / .more-item: app.css) ------------ */
 	/* The share targets carry no icon; indent them past the icon column. */
 	.more-item.share-target {
 		padding-inline-start: calc(0.75rem + 20px + 0.75rem);
-	}
-	.more-item {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		min-height: 2.75rem;
-		font-size: var(--fs-body);
-	}
-	.more-item.text-accent {
-		color: var(--accent);
 	}
 
 	/* Jump-to-section outline: a light popover hung under its toggle (top and

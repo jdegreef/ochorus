@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import { onMount } from 'svelte';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
+	import { SHORT_TOUCH } from '$lib/breakpoints';
 
 	/**
 	 * A shelf's controls, pinned under the app nav so they come WITH you down a
@@ -37,23 +38,14 @@
 	} = $props();
 
 	let height = $state(0);
-	// Read after mount: the page is prerendered, so the static HTML assumes the
-	// bar pins (the common case at both ends of the range).
-	let unpinned = $state(false);
-	onMount(() => {
-		// Keep in step with the stylesheet's media queries below.
-		const mq = window.matchMedia(
-			pin === 'compact'
-				? '(min-width: 640px) and (max-width: 767.98px), (max-height: 499.98px) and (pointer: coarse)'
-				: '(max-height: 499.98px) and (pointer: coarse)'
-		);
-		const sync = () => (unpinned = mq.matches);
-		sync();
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
-	});
+	// Read after hydration: the page is prerendered, so the static HTML
+	// assumes the bar pins (the common case at both ends of the range). The
+	// queries match the stylesheet's below.
+	const unpinQ = mediaFlag(() =>
+		pin === 'compact' ? `(min-width: 640px) and (max-width: 767.98px), ${SHORT_TOUCH}` : SHORT_TOUCH
+	);
 	$effect(() => {
-		pinned = unpinned ? 0 : height;
+		pinned = unpinQ.matches ? 0 : height;
 	});
 </script>
 
