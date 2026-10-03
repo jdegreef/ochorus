@@ -22,9 +22,6 @@
 	const query = browser ? new URLSearchParams(location.search) : new URLSearchParams();
 	let range = $state<EngagementRange>(isEngagementRange(query.get('range')) ? (query.get('range') as EngagementRange) : DEFAULT_ENGAGEMENT_RANGE);
 	let compare = $state(query.get('compare') !== '0');
-	const rangeWords = $derived(ENGAGEMENT_RANGES[range]);
-	// Short enough for a tile label beside its chip: "Active · 30d".
-	const rangeTag = $derived(range === 'all' ? 'all time' : range);
 	function syncUrl() {
 		const p = new URLSearchParams(location.search);
 		if (range === DEFAULT_ENGAGEMENT_RANGE) p.delete('range');
@@ -55,6 +52,12 @@
 		() => (loadedAt = clock = Date.now())
 	);
 	const data = $derived(engagement.data);
+	// The figures' range is the one the LOADED data answers, not the button
+	// just pressed: until the new numbers land, the old labels stay with them.
+	const shownRange = $derived<EngagementRange>(data?.period?.range ?? range);
+	const rangeWords = $derived(ENGAGEMENT_RANGES[shownRange]);
+	// Short enough for a tile label beside its chip: "Active · 30d".
+	const rangeTag = $derived(shownRange === 'all' ? 'all time' : shownRange);
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -109,7 +112,7 @@
 						// At 30 days the six rolling 30-day windows end on this very
 						// number; at any other range the weekly line is the context.
 						line:
-							range === '30d' && data.trends
+							shownRange === '30d' && data.trends
 								? {
 										values: data.trends.active_30d.map((w) => w.readers),
 										labels: data.trends.active_30d.map((w) => `30 days to ${weekLabel(w.end)}`),
@@ -121,16 +124,18 @@
 					{
 						label: `Hearts · ${rangeTag}`,
 						value: data.period?.hearts.value ?? data.overview.hearts,
-						sub: `${fmt(data.overview.hearts)} all time`,
+						sub: shownRange === 'all' ? `${fmt(data.overview.hearts_7d)} this week` : `${fmt(data.overview.hearts)} all time`,
 						trend: versus(data.period?.hearts),
 						line: weekly(data.trends?.hearts, 'Hearts saved per week')
 					},
-					{
-						label: `Sign-ups · ${rangeTag}`,
-						value: data.period?.signups.value ?? 0,
-						sub: 'new accounts',
-						trend: versus(data.period?.signups)
-					},
+					// At all time, sign-ups are simply the registered users beside it.
+					data.period &&
+						shownRange !== 'all' && {
+							label: `Sign-ups · ${rangeTag}`,
+							value: data.period.signups.value,
+							sub: 'new accounts',
+							trend: versus(data.period.signups)
+						},
 					{
 						label: 'Readers',
 						value: data.overview.readers,
@@ -146,7 +151,7 @@
 						line: weekly(data.trends?.users, 'Registered users, running total')
 					},
 					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
-				]
+				].filter((c) => !!c)
 			: []
 	);
 
@@ -260,7 +265,7 @@
 			? [
 					summary && { id: 'this-week', label: 'This week' },
 					{ id: 'pulse', label: 'Pulse' },
-					data.time.sessions && { id: 'reading-time', label: 'Reading time' },
+					data.time.has_sittings && { id: 'reading-time', label: 'Reading time' },
 					hoursShown && { id: 'hours', label: 'When people read' },
 					{ id: 'weekly', label: 'Weekly readers' },
 					cohortSpan && { id: 'cohorts', label: 'Do readers stay?' },
@@ -325,7 +330,7 @@
 						disabled={range === 'all'}
 						onchange={syncUrl}
 					/>
-					{range === 'all' ? 'All time has no period before it' : `Compare with the ${rangeWords} before`}
+					{range === 'all' ? 'All time has no period before it' : `Compare with the ${ENGAGEMENT_RANGES[range]} before`}
 				</label>
 			</div>
 		{/if}
@@ -389,11 +394,11 @@
 				{/if}
 
 				<!-- Reading time (from sittings) -->
-				{#if d.time.sessions}
+				{#if d.time.has_sittings}
 					<section id="reading-time" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Reading time</h2>
-							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time · {rangeWords === 'all time' ? 'all time' : `last ${rangeWords}`}.</span>
+							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time · {shownRange === 'all' ? 'all time' : `last ${rangeWords}`}.</span>
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [

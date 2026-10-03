@@ -264,9 +264,9 @@ HOURS_DAYS = 90
 HOURS_MIN_READERS = 3
 
 
-def reading_hours(now, days: int | None = HOURS_DAYS) -> dict:
+def reading_hours(now) -> dict:
     """When people read: minutes read in each weekday x hour over the last
-    ``days`` days (None: all time), on each reader's own clock.
+    ``HOURS_DAYS`` days, on each reader's own clock.
 
     ``minutes[d][h]`` is Monday-first; None where fewer than
     ``HOURS_MIN_READERS`` readers read in that hour, so no cell describes
@@ -288,8 +288,11 @@ def reading_hours(now, days: int | None = HOURS_DAYS) -> dict:
     readers: dict[tuple, set] = defaultdict(set)
     placed, unplaced = set(), set()
     for profile, started, seconds, tz in (
-        ReadingSession.objects.filter(seconds__gt=0, started_at__lte=now)
-        .filter(**({"started_at__gte": now - timedelta(days=days)} if days else {}))
+        ReadingSession.objects.filter(
+            seconds__gt=0,
+            started_at__gte=now - timedelta(days=HOURS_DAYS),
+            started_at__lte=now,
+        )
         .values_list("profile", "started_at", "seconds", "profile__timezone")
         .iterator()
     ):
@@ -303,7 +306,7 @@ def reading_hours(now, days: int | None = HOURS_DAYS) -> dict:
         readers[(d, h)].add(profile)
         placed.add(profile)
     return {
-        "days": days,
+        "days": HOURS_DAYS,
         "min_readers": HOURS_MIN_READERS,
         "readers": len(placed),
         "without_zone": len(unplaced),

@@ -68,7 +68,7 @@ class AdminEngagementView(APIView):
 
 
     def get(self, request):
-        from datetime import timedelta
+        from datetime import date, timedelta
 
         from django.utils import timezone
 
@@ -80,15 +80,19 @@ class AdminEngagementView(APIView):
             range_key = self.DEFAULT_RANGE
         days = self.RANGES[range_key]
 
-        # Every active window in one query, from the reading-day log.
-        active = distinct_readers(
-            {
-                "7d": window(now, 7),
-                "7d_prev": window(now, 7, 7),
-                "30d": window(now, 30),
-                "30d_prev": window(now, 30, 30),
-            }
-        )
+        # Every active window in one query, from the reading-day log: the
+        # fixed ones, and the page range's (all time has no "before").
+        windows = {
+            "7d": window(now, 7),
+            "7d_prev": window(now, 7, 7),
+            "30d": window(now, 30),
+            "30d_prev": window(now, 30, 30),
+        }
+        if days:
+            windows |= {"range": window(now, days), "range_prev": window(now, days, days)}
+        else:
+            windows["range"] = (date.min, latest_day(now))
+        active = distinct_readers(windows)
 
         def hearts(days, offset=0):
             """Favorites created in the same kind of window, for the hearts
@@ -124,7 +128,9 @@ class AdminEngagementView(APIView):
         return Response(
             {
                 "overview": overview,
-                "period": self._period(now, range_key, days),
+                "period": self._period(
+                    now, range_key, days, active=(active["range"], active.get("range_prev"))
+                ),
                 "time": self._reading_time(now, days),
                 "top_content": self._top_content(),
                 "rising": self._rising(now),
@@ -136,7 +142,7 @@ class AdminEngagementView(APIView):
                 "weekly_active": weekly_active(now, self.WEEKS),
                 "events": self._events(now),
                 "cohorts": retention_cohorts(now),
-                "hours": reading_hours(now, days),
+                "hours": reading_hours(now),
                 # The tiles' lines; none for the empty state, which shows no tiles.
                 "trends": pulse_trends(
                     now,
@@ -150,57 +156,46 @@ class AdminEngagementView(APIView):
         )
 
     #: The page's date range (``?range=``): its days, None for all time. It
-    #: drives the figures that are about a PERIOD (the pulse's period tiles,
-    #: the Reading time card, When people read). Running totals stay all
-    #: time, the weekly charts keep their own axis, and the work rollups
+    #: drives the figures that are about a PERIOD (the pulse's period tiles and
+    #: the Reading time card). Running totals stay all time, the weekly
+    #: charts keep their own axis, When people read keeps its 90 days (a
+    #: week leaves most hours under its readers floor, and all time would
+    #: walk every sitting ever on each load), and the work rollups
     #: (top content, most loved, by language) stay all time: they rest on
     #: saved progress, which keeps only each work's latest touch, so "read in
     #: the last 30 days" is a claim they can't make.
     RANGES = {"7d": 7, "30d": 30, "90d": 90, "all": None}
     DEFAULT_RANGE = "30d"
 
-    def _period(self, now, range_key: str, days: int | None) -> dict:
+    def _period(self, now, range_key: str, days: int | None, *, active: tuple) -> dict:
         """The range-following pulse figures, each with the same-length period
         just before it to compare against (None for all time, which has no
-        "before"). Active readers from the reading-day log, as the 7- and
-        30-day tiles count them; hearts and sign-ups when they were made;
-        reading time by when a sitting was last seen."""
-        from datetime import date, timedelta
+        "before"). ``active`` is the range's readers and the period before's,
+        from the view's one reading-day query; hearts and sign-ups count when
+        they were made, reading time by when a sitting was last seen."""
+        from datetime import timedelta
 
         from django.db.models import Sum
 
         from accounts.models import UserProfile
         from reading.models import Favorite, ReadingSession
 
-        if days is None:
-            active = distinct_readers({"cur": (date.min, latest_day(now))})
-            return {
-                "range": range_key,
-                "days": None,
-                "active": {"value": active["cur"], "prev": None},
-                "hearts": {"value": Favorite.objects.count(), "prev": None},
-                "signups": {"value": UserProfile.objects.count(), "prev": None},
-                "seconds": {
-                    "value": ReadingSession.objects.aggregate(s=Sum("seconds"))["s"] or 0,
-                    "prev": None,
-                },
-            }
-        active = distinct_readers({"cur": window(now, days), "prev": window(now, days, days)})
-        start, before = now - timedelta(days=days), now - timedelta(days=2 * days)
-
         def split(qs, field, total=None):
             """This period's and the one before's count, or sum of ``total``,
-            in one query."""
+            in one query; all time is one figure with nothing before it."""
+            agg = (lambda q: Sum(total, filter=q)) if total else (lambda q: Count("pk", filter=q))
+            if not days:
+                return {"value": qs.aggregate(cur=agg(Q()))["cur"] or 0, "prev": None}
+            start, before = now - timedelta(days=days), now - timedelta(days=2 * days)
             cur = Q(**{f"{field}__gte": start})
             prev = Q(**{f"{field}__gte": before, f"{field}__lt": start})
-            agg = (lambda q: Sum(total, filter=q)) if total else (lambda q: Count("pk", filter=q))
             row = qs.filter(**{f"{field}__gte": before}).aggregate(cur=agg(cur), prev=agg(prev))
             return {"value": row["cur"] or 0, "prev": row["prev"] or 0}
 
         return {
             "range": range_key,
             "days": days,
-            "active": {"value": active["cur"], "prev": active["prev"]},
+            "active": {"value": active[0], "prev": active[1]},
             "hearts": split(Favorite.objects, "created_at"),
             "signups": split(UserProfile.objects, "created_at"),
             "seconds": split(ReadingSession.objects, "last_seen_at", "seconds"),
@@ -242,7 +237,7 @@ class AdminEngagementView(APIView):
             avg=Avg("seconds"),
             **self._bucket_aggregates(),
         )
-        w7, w30 = window(7), window(30)
+        w7 = window(7)
         return {
             "total_seconds": totals["secs"] or 0,
             "sessions": totals["count"] or 0,
@@ -260,8 +255,9 @@ class AdminEngagementView(APIView):
             ],
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
-            "seconds_30d": w30["secs"] or 0,
-            "readers_30d": w30["readers"] or 0,
+            # Whether any sitting exists at all: the card shows on that, so a
+            # quiet range reads as zeros rather than a missing card.
+            "has_sittings": sessions.exists(),
         }
 
     # Where sitting-length buckets start, in seconds; the last is open-ended.

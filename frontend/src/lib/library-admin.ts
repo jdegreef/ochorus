@@ -1210,8 +1210,8 @@ export interface EngagementTime {
 	lengths: SittingBucket[];
 	seconds_7d: number;
 	readers_7d: number;
-	seconds_30d: number;
-	readers_30d: number;
+	/** Any sitting at all, whatever the range: the card shows on this. */
+	has_sittings: boolean;
 }
 
 /** One sitting-length bucket: [min, max) seconds, `max` null on the last. */
@@ -1402,7 +1402,7 @@ export const getAdminEngagement = (range?: EngagementRange) =>
 export const ENGAGEMENT_RANGES = { '7d': '7 days', '30d': '30 days', '90d': '90 days', all: 'all time' } as const;
 export type EngagementRange = keyof typeof ENGAGEMENT_RANGES;
 export const DEFAULT_ENGAGEMENT_RANGE: EngagementRange = '30d';
-export const isEngagementRange = (v: string | null): v is EngagementRange => !!v && v in ENGAGEMENT_RANGES;
+export const isEngagementRange = (v: string | null): v is EngagementRange => !!v && Object.hasOwn(ENGAGEMENT_RANGES, v);
 
 // --- Email campaign metrics --------------------------------------------------
 

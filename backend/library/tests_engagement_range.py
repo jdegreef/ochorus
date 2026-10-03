@@ -68,9 +68,26 @@ class EngagementRangeTests(TestCase):
         week, every = self._get("7d"), self._get("all")
         self.assertEqual((week["time"]["total_seconds"], week["time"]["sessions"]), (120, 1))
         self.assertEqual(every["time"]["total_seconds"], 720)
-        self.assertEqual(week["time"]["seconds_30d"], every["time"]["seconds_30d"])
+        self.assertEqual(week["time"]["seconds_7d"], every["time"]["seconds_7d"])
         self.assertEqual(week["period"]["seconds"], {"value": 120, "prev": 0})
 
-    def test_when_people_read_follows_the_range(self):
-        self.assertEqual(self._get("90d")["hours"]["days"], 90)
-        self.assertIsNone(self._get("all")["hours"]["days"])
+    def test_a_quiet_range_keeps_the_reading_time_card(self):
+        self._sit("older", 40, 600)
+        t = self._get("7d")["time"]
+        self.assertEqual((t["sessions"], t["has_sittings"]), (0, True))
+
+    def test_active_readers_ride_the_one_reading_day_query(self):
+        from datetime import timedelta as td
+
+        from reading.models import ReadingDay, ReadingProgress, WorkKind
+
+        ReadingProgress.objects.create(
+            profile=self.p, kind=WorkKind.BOOK, book_slug="x", language="en", chapter_order=1
+        )
+        ReadingDay.objects.create(profile=self.p, day=self.now.date() - td(days=20))
+        self.assertEqual(self._get("30d")["period"]["active"], {"value": 1, "prev": 0})
+        self.assertEqual(self._get("7d")["period"]["active"], {"value": 0, "prev": 0})
+        self.assertEqual(self._get("all")["period"]["active"], {"value": 1, "prev": None})
+
+    def test_when_people_read_keeps_its_own_window(self):
+        self.assertEqual(self._get("7d")["hours"]["days"], self._get("all")["hours"]["days"])
