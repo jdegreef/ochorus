@@ -615,11 +615,11 @@ async function build(): Promise<SitemapData> {
 		pathOf: (slug: string) => string,
 		lastmodOf?: (item: Slice[K][number], locale: string) => string | undefined,
 		imageOf?: (item: Slice[K][number]) => string | null,
-		slices: Slice[] = advertisedSlices
+		keep: (item: Slice[K][number]) => boolean = () => true
 	) => {
 		const byWork = new Map<string, Entry>();
-		for (const slice of slices) {
-			for (const item of slice[kind] as Slice[K][number][]) {
+		for (const slice of advertisedSlices) {
+			for (const item of (slice[kind] as Slice[K][number][]).filter(keep)) {
 				let e = byWork.get(item.slug);
 				if (!e) byWork.set(item.slug, (e = { byLocale: new Map() }));
 				e.byLocale.set(slice.locale, pathOf(item.slug));
@@ -665,17 +665,13 @@ async function build(): Promise<SitemapData> {
 	);
 	// A shelf below the API's works floor in a locale is served but noindexed
 	// there (`indexable`, see the topic page), so it is not promised here.
-	const indexedTopics = advertisedSlices.map((x) => ({
-		...x,
-		topics: x.topics.filter((t) => t.indexable !== false)
-	}));
 	pages.push(
 		...collect(
 			'topics',
 			(s) => `/topics/${s}/`,
 			(t, l) => dates.get(l)?.topic.get(t.slug),
 			undefined,
-			indexedTopics
+			(t) => t.indexable !== false
 		)
 	);
 	pages.push(...collect('plans', (s) => `/plans/${s}/`, (p, l) => dates.get(l)?.plan.get(p.slug)));

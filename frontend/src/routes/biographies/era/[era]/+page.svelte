@@ -50,14 +50,11 @@
 	const pageTitle = $derived(`${eraName} · ${t('bios.eyebrow')} — Ochorus`);
 	// Each era page names its own writers, so seven pages per locale no longer
 	// share one meta description (the generic Biographies line, kept as the tail).
-	const description = $derived(
-		truncateMeta(
-			`${eraName}${era.range ? ` (${era.range})` : ''}: ${inEra
-				.slice(0, 5)
-				.map((a) => a.name)
-				.join(', ')}. ${t('bios.metaDescription')}`
-		)
-	);
+	const description = $derived.by(() => {
+		const names = inEra.slice(0, 5).map((a) => a.name).join(', ');
+		const head = `${eraName}${era.range ? ` (${era.range})` : ''}`;
+		return truncateMeta(`${head}${names ? `: ${names}.` : '.'} ${t('bios.metaDescription')}`);
+	});
 
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
