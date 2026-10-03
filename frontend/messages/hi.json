@@ -829,6 +829,7 @@
   "settings_goal_per_week": "सप्ताह में दिन",
   "settings_heatmap_title": "पठन कैलेंडर",
   "settings_heatmap_read": "पढ़ा",
+  "settings_heatmap_deeper": "गहरा = लंबी लगातार शृंखला",
   "settings_heatmap_none": "नहीं पढ़ा",
   "offline_download": "ऑफ़लाइन के लिए डाउनलोड करें",
   "offline_downloading": "डाउनलोड हो रहा है",

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { shiftDay, localToday, currentStreak, longestStreak } from './streak';
+import { shiftDay, localToday, currentStreak, longestStreak, streakTier, runLengths, runLevel } from './streak';
 
 describe('streak maths', () => {
 	it('shiftDay crosses month and year boundaries', () => {
@@ -33,5 +33,32 @@ describe('streak maths', () => {
 	it('ignores duplicates and finds the longest run', () => {
 		const days = ['2026-07-01', '2026-07-01', '2026-07-02', '2026-07-03', '2026-07-06', '2026-07-07'];
 		expect(longestStreak(days)).toBe(3);
+	});
+});
+
+describe('streakTier', () => {
+	it('steps spark, flame, blaze, crown at 7, 30 and 100 days', () => {
+		expect([0, 6, 7, 29, 30, 99, 100, 365].map(streakTier)).toEqual([
+			'spark', 'spark', 'flame', 'flame', 'blaze', 'blaze', 'crown', 'crown'
+		]);
+	});
+});
+
+describe('runLengths / runLevel', () => {
+	it('numbers each day by its place in its unbroken run', () => {
+		const runs = runLengths(['2026-07-01', '2026-07-02', '2026-07-03', '2026-07-05', '2026-07-02']);
+		expect(runs.get('2026-07-03')).toBe(3);
+		// A gap restarts the count; a duplicate log entry changes nothing.
+		expect(runs.get('2026-07-05')).toBe(1);
+		expect(runs.size).toBe(4);
+	});
+
+	it('runs across a month boundary, and skips malformed entries', () => {
+		expect(runLengths(['2026-06-30', '', 'x', '2026-7-1', '2026-07-01']).get('2026-07-01')).toBe(2);
+		expect(longestStreak(['', '2026-06-30', '2026-07-01'])).toBe(2);
+	});
+
+	it('shades a run by the same steps as the flame', () => {
+		expect([0, 1, 6, 7, 29, 30, 99, 100].map(runLevel)).toEqual([0, 1, 1, 2, 2, 3, 3, 4]);
 	});
 });

@@ -829,6 +829,7 @@
   "settings_goal_per_week": "Jours par semaine",
   "settings_heatmap_title": "Calendrier de lecture",
   "settings_heatmap_read": "Lu",
+  "settings_heatmap_deeper": "plus foncé = série plus longue",
   "settings_heatmap_none": "Pas de lecture",
   "offline_download": "Télécharger pour hors ligne",
   "offline_downloading": "Téléchargement",

@@ -10,7 +10,7 @@
 	import StatTiles from '$lib/components/StatTiles.svelte';
 	import { readingActivity } from '$lib/readingActivity.svelte';
 	import { readingGoal } from '$lib/readingGoal.svelte';
-	import { currentStreak, longestStreak, localToday } from '$lib/streak';
+	import { currentStreak, longestStreak, localToday, streakTier } from '$lib/streak';
 	import { weekReadCount } from '$lib/heatmap';
 	import { readingCounts } from '$lib/readingStats';
 
@@ -44,6 +44,10 @@
 	const today = $derived(localToday());
 	const streak = $derived(currentStreak(days, today));
 	const longest = $derived(longestStreak(days));
+	const tier = $derived(streakTier(streak));
+	// The flame grows with its tier: spark, flame, blaze, crown (streak.ts); the
+	// halo, fill and crown ring are the `.streak-flame` rules in app.css.
+	const flameSize = $derived({ spark: 28, flame: 30, blaze: 34, crown: 38 }[tier]);
 	const weekCount = $derived(weekReadCount(days, today));
 	const goal = $derived(readingGoal.perWeek);
 	const goalMet = $derived(weekCount >= goal);
@@ -68,7 +72,7 @@
 			<!-- Streak + weekly goal -->
 			<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
 				<div class="flex items-center gap-3">
-					<span class="text-gold"><Icon name="flame" size={28} /></span>
+					<span class="streak-flame" data-tier={tier}><Icon name="flame" size={flameSize} /></span>
 					<div class="leading-tight">
 						{#if streak > 0}
 							<div>
@@ -125,3 +129,4 @@
 		</div>
 	</section>
 {/if}
+

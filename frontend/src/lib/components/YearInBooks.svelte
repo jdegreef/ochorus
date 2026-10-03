@@ -249,7 +249,13 @@
 		<!-- Capped: stretched across the full page a year's cells grow to ~25px
 		     and the calendar outweighs everything above it. -->
 		<div class="mt-6 max-w-3xl">
-			<ReadingHeatmap days={yearDays} today={calendarEnd} locale={getLang()} weeks={calendarWeeks} />
+			<ReadingHeatmap
+				days={yearDays}
+				runsFrom={days}
+				today={calendarEnd}
+				locale={getLang()}
+				weeks={calendarWeeks}
+			/>
 		</div>
 
 		<div class="mt-5 flex flex-wrap items-center justify-between gap-3">
