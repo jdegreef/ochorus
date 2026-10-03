@@ -4622,6 +4622,7 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
 BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
     ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
     ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+    ("በተግባር ያሳያሉ።</p> <p>መጨረሻ።</p>", "<p>የገልባጩ ማስታወሻ፦<br/>"),
 ]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
