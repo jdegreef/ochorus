@@ -70,10 +70,18 @@
 		box-shadow: var(--shadow-card);
 		background: var(--surface);
 	}
-	/* The strip: overlapped and tilted a little more at each step. */
+	/* The strip: overlapped and tilted a little more at each step. Each tilt
+	   is written for LTR and multiplied by --lean, which flips in RTL: the
+	   covers' order mirrors there, so their lean must too. */
+	.strip {
+		--lean: 1;
+	}
+	:global([dir='rtl']) .strip {
+		--lean: -1;
+	}
 	.strip .cover {
 		margin-inline-start: -0.7rem;
-		transform: rotate(-3deg);
+		transform: rotate(calc(var(--lean) * -3deg));
 	}
 	.lg .cover {
 		width: 4.75rem;
@@ -83,13 +91,13 @@
 		margin-inline-start: 0;
 	}
 	.strip .cover:nth-child(2) {
-		transform: rotate(1deg);
+		transform: rotate(calc(var(--lean) * 1deg));
 	}
 	.strip .cover:nth-child(3) {
-		transform: rotate(4deg);
+		transform: rotate(calc(var(--lean) * 4deg));
 	}
 	.strip .cover:nth-child(4) {
-		transform: rotate(7deg);
+		transform: rotate(calc(var(--lean) * 7deg));
 	}
 	/* The fan sizes off its width: a 46%-wide 3:4 cover is 0.61 of the width
 	   tall, the tilted pair's outer corners drop a little more, and the 1rem

@@ -3,9 +3,9 @@
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
+	import { planMinutesPerDay, planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { authorPath } from '$lib/originals';
+	import { ORIGINALS_SLUG, authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
@@ -52,6 +52,8 @@
 		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
 	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
+	/** The writers to meet — not the house imprint (see the authors block). */
+	const writers = $derived((plan.authors ?? []).filter((a) => a.slug !== ORIGINALS_SLUG));
 	/** "Daughters of the King: Three Months with God" set as a title over its
 	 *  subtitle, as a book's is (plans have no subtitle field of their own). */
 	const titleParts = $derived.by(() => {
@@ -60,7 +62,8 @@
 	});
 	const groupWords = (g: PlanGroup) => g.days.reduce((s, d) => s + (d.word_count || 0), 0);
 	/** The line under a day's title: its book, or "Article" on an article day. */
-	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
+	const daySource = (d: PlanDay) =>
+		d.article_slug ? t('search.typeArticle') : (bookName.get(d.book_slug) ?? d.book_title);
 	/** A day's title — the API has already dropped the book's own "Day 13 — ",
 	 *  which would contradict the plan day in the circle. */
 	const dayTitle = (d: PlanDay) => d.chapter_title || `${t('plans.day')} ${d.day}`;
@@ -145,14 +148,14 @@
 	const finishDate = $derived(today ? dateFmt.monthDay.format(dayFrom(daysLeft - 1)) : '—');
 	/** One read count for a run of days — a book section, a week, a rail segment. */
 	const readIn = (days: PlanDay[]) => days.filter((d) => doneSet.has(d.day)).length;
+	const perDay = $derived(planMinutesPerDay(plan));
 	/** The plan's shape beyond the eyebrow's length: how much a day, how many
 	 *  books, and when a reader going a day at a time from today would finish. */
 	const facts = $derived(
 		[
-			plan.total_words && plan.day_count
-				? { value: `~${readingMinutes(plan.total_words / plan.day_count)}`, label: t('plans.minPerDay') }
-				: null,
-			planBooks.length
+			perDay ? { value: `~${perDay}`, label: t('plans.minPerDay') } : null,
+			// "1 book" says nothing the cover beside it doesn't.
+			planBooks.length > 1
 				? {
 						value: String(planBooks.length),
 						label: planBooks.length === 1 ? t('common.bookOne') : t('common.bookMany')
@@ -175,12 +178,22 @@
 			new Set(positions).size === positions.length &&
 			series.size === 1 &&
 			!series.has('');
-		return groups.map((g, i) =>
-			numbered
-				? t('originals.volume').replace('%n%', String(positions[i]))
-				: g.bookTitle || t('search.groupArticles')
-		);
+		return groups.map((g, i) => {
+			if (!numbered) return { chip: g.bookTitle || t('search.groupArticles'), name: g.bookTitle };
+			// A series' volumes share one long title ("Daughters of the King – 30
+			// Days with God for Girls – Book 1"); what tells them apart is the
+			// number and the subtitle's head ("Beloved: who you are…"), so they
+			// are named "Book 1 · Beloved" — the whole title is a tap away on
+			// the book's page.
+			const chip = t('originals.volume').replace('%n%', String(positions[i]));
+			const head = tiles[i]?.subtitle?.split(/[:：]/u)[0].trim();
+			return { chip, name: head ? `${chip} · ${head}` : g.bookTitle };
+		});
 	});
+	/** Each book's display name, by slug — the section heads and the read card. */
+	const bookName = $derived(
+		new Map(groups.map((g, i) => [g.bookSlug, groupLabels[i].name] as const).filter(([s]) => s))
+	);
 	/** A chip opens the section it jumps to — a closed <details> would land the
 	 *  reader on a bare header — then jumps the shared way (reduced-motion aware). */
 	const openSection = (e: MouseEvent, id: string) => {
@@ -217,6 +230,16 @@
 
 	/** Each day's link, built once per plan — the list, the read card, Coming
 	 *  up and the phone bar all look theirs up. */
+	/** The phone bar's height, published as --dockbar-h so the PWA toasts
+	 *  stack above it rather than over its button. */
+	let barH = $state(0);
+	$effect(() => {
+		const root = document.documentElement;
+		if (barH) root.style.setProperty('--dockbar-h', `${barH}px`);
+		else root.style.removeProperty('--dockbar-h');
+		return () => root.style.removeProperty('--dockbar-h');
+	});
+
 	const hrefByDay = $derived(new Map(plan.days.map((d) => [d.day, localizeHref(planDayPath(plan.slug, d))])));
 	const dayHref = (day: number) => hrefByDay.get(day) ?? '#';
 </script>
@@ -255,8 +278,11 @@
 	<section class="plan-hero">
 		<div class="min-w-0">
 			<p class="eyebrow mb-1 text-muted">
-				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
-					{readingTime(plan.total_words)}{/if}
+				<!-- The separators as expressions: a literal space at an {#if} boundary
+				     is compiler-trimmed ("96 days· 3 hr"). -->
+				{t('search.typePlan')}{' · '}{plan.day_count} {t('plans.days')}{#if plan.total_words}{' · '}{readingTime(
+						plan.total_words
+					)}{/if}
 			</p>
 			<!-- The whole title stays the h1's text; its subtitle is drawn as the
 			     book page draws one. -->
@@ -310,7 +336,8 @@
 							<!-- Today's reading, named and pictured: its book's cover beside
 							     the title, and the verse the day opens on. -->
 							<div class="mt-1 flex items-start gap-3">
-								{#if nextCover}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
+								<!-- One book: the hero's cover already is this one. -->
+								{#if nextCover && planBooks.length > 1}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
 								<div class="min-w-0">
 									<p class="read-card-title" dir="auto">
 										{dayTitle(nextDay)}
@@ -382,17 +409,7 @@
 			<!-- The writers this plan reads through — a link to each author page, so a
 			     plan is a way into their work, not only a sequence of chapters. Reuses the
 			     shared "Authors" label, so it is already translated in every locale. -->
-			{#if plan.authors?.length}
-				<section class="mt-6">
-					<h2 class="section-heading">{t('search.groupAuthors')}</h2>
-					<p class="text-body">
-						{#each plan.authors as a, i (a.slug)}<a
-								href={localizeHref(authorPath(a.slug))}
-								class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
-							>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
-					</p>
-				</section>
-			{/if}
+			{@render authorsBlock('plan-authors-side mt-6')}
 		</aside>
 
 		<div class="plan-main">
@@ -420,7 +437,7 @@
 								{/each}
 							</div>
 							<div class="rail-label text-micro text-muted">
-								<span>{grouped ? groupLabels[gi] : dayRange(g)}</span><span class="tabular-nums"
+								<span>{grouped ? groupLabels[gi].chip : dayRange(g)}</span><span class="tabular-nums"
 									>{readIn(g.days)}/{g.days.length}</span
 								>
 							</div>
@@ -442,7 +459,7 @@
 					>
 						{#each groups as g, gi (g.key)}
 							<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
-								>{groupLabels[gi]}</a
+								>{groupLabels[gi].chip}</a
 							>
 						{/each}
 					</nav>
@@ -454,10 +471,12 @@
 						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
 						<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
 							<summary class="plan-group-head">
-								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
+								{#if cover}<CoverStrip covers={[cover]} max={1} size="lg" />{/if}
 								<span class="min-w-0 flex-1">
 									<span class="eyebrow block text-muted">{dayRange(g)}</span>
-									<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
+									<span class="plan-group-title" dir="auto"
+										>{groupLabels[gi].name || t('search.groupArticles')}</span
+									>
 									<span class="block text-small text-muted">
 										{#if started && read}
 											{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
@@ -482,8 +501,29 @@
 					{/if}
 				{/each}
 			</section>
+			{@render authorsBlock('plan-authors-main mt-10')}
 		</div>
 	</div>
+
+	<!-- The writers this plan reads through — a link to each author page, so a
+	     plan is a way into their work, not only a sequence of chapters. Drawn in
+	     the side panel from a laptop up, and after the day list below that, so a
+	     phone reader reaches the days first. The house imprint alone (an Ochorus
+	     Originals plan) is no writer to meet, so it draws no section. Reuses the
+	     shared "Authors" label, so it is already translated in every locale. -->
+	{#snippet authorsBlock(cls: string)}
+		{#if writers.length}
+			<section class={cls}>
+				<h2 class="section-heading">{t('search.groupAuthors')}</h2>
+				<p class="text-body">
+					{#each writers as a, i (a.slug)}<a
+							href={localizeHref(authorPath(a.slug))}
+							class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
+						>{i < writers.length - 1 ? ' · ' : ''}{/each}
+				</p>
+			</section>
+		{/if}
+	{/snippet}
 
 	<!-- A run of days, in weeks when it is longer than one. The week holding the
 	     next reading opens; in a run that doesn't hold it, the first week does. -->
@@ -597,7 +637,7 @@
      the tab bar — the next day named, one button. Below the side-panel
      breakpoint only; from there the panel itself stays in view. -->
 {#if next !== null && nextDay && !cardSeen.visible}
-	<div class="plan-bar" use:portal>
+	<div class="plan-bar" bind:clientHeight={barH} use:portal>
 		<span class="min-w-0 flex-1">
 			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
 			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>
@@ -769,10 +809,22 @@
 			gap: 0.5rem;
 			padding-block: 0 1.5rem;
 		}
+		/* Small enough that the title shares the first screen with it. */
 		.plan-hero-fan {
 			order: -1;
-			width: min(18rem, 80%);
+			width: min(13.5rem, 62%);
 			margin-inline: auto;
+		}
+	}
+	/* The writers: in the panel from a laptop up, after the days below that. */
+	@media (max-width: 1023.98px) {
+		.plan-authors-side {
+			display: none;
+		}
+	}
+	@media (min-width: 1024px) {
+		.plan-authors-main {
+			display: none;
 		}
 	}
 	.plan-jump {
