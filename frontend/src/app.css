@@ -134,6 +134,52 @@
    never mistake a style for it. */
 @import './lib/site-fonts.css';
 
+/* Metric-matched fallbacks for the two house web faces — the CLS fix.
+   Fraunces and Hanken ship `font-display: swap`, so until the web file
+   arrives the Latin text is painted in the first INSTANTLY-available face the
+   stack reaches: a local device font (Georgia for the serif, the system sans
+   for Hanken), because the other web fallbacks ('PT Serif', 'PT Sans') aren't
+   downloaded yet either. A device font with different metrics reflows the line
+   when the web font swaps in — measured in Search Console as mobile CLS > 0.1
+   across ~120 URLs (2026-10, the one failing Core Web Vital; LCP/INP were fine).
+
+   These two faces alias the SAME local device fonts but override their metrics
+   so the fallback occupies the web font's exact box: `size-adjust` matches the
+   average advance width, and `ascent/descent/line-gap-override` match the line
+   box. The overrides are @capsizecss's formulas computed from the shipped
+   woff2 (Fraunces/Hanken) against the macOS Georgia/Arial — see
+   scripts/font-fallback-metrics.py, which regenerates them. Each stack names
+   the matching face immediately before its device fallback (see --font-display
+   / --font-sans), so the swap window renders in a box-for-box stand-in and the
+   line no longer jumps. Latin only: the non-Latin scripts keep their own named
+   faces ahead of this in the stack. */
+/* The `src` lists a device serif/sans for EVERY platform, not just the
+   iOS/macOS/Windows Georgia & Arial the overrides were computed against: Android
+   Chrome (a large share of the mobile traffic this fix is for) ships neither, so
+   a Georgia-only alias would be inert there and the shift would stay. It is safe
+   to widen because `ascent/descent/line-gap-override` reproduce the web font's
+   VERTICAL box — which is what CLS measures — no matter which local font the src
+   resolves to; only `size-adjust` (horizontal) is tuned to Georgia/Arial, and
+   the other serifs/sans here are metric-close enough that the leftover width
+   error is negligible. The computed-against font leads each list so the common
+   platforms get the exact match. */
+@font-face {
+	font-family: 'Fraunces Fallback';
+	src: local('Georgia'), local('Noto Serif'), local('Droid Serif');
+	size-adjust: 115.6957%;
+	ascent-override: 84.5321%;
+	descent-override: 22.0406%;
+	line-gap-override: 0%;
+}
+@font-face {
+	font-family: 'Hanken Grotesk Fallback';
+	src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Noto Sans');
+	size-adjust: 101.519%;
+	ascent-override: 98.5037%;
+	descent-override: 29.8466%;
+	line-gap-override: 0%;
+}
+
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
 @theme inline {
@@ -208,10 +254,10 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
-		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 /* The cover faces, named once — beside the @import that loads them, so adding
@@ -334,10 +380,10 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
-		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
 	   durations had accumulated across the app, including a 0.28s and a 0.3s

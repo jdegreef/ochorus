@@ -195,6 +195,41 @@ describe('font stacks', () => {
 		}
 	});
 
+	it('seats a metric-matched fallback before each device face (the CLS fix)', () => {
+		// Fraunces and Hanken swap in over a local device font (Georgia / the
+		// system sans), and a metric mismatch reflows the line — mobile CLS > 0.1.
+		// A `*-Fallback` face aliases that same device font with size-adjust +
+		// ascent/descent/line-gap overrides so its box matches the web font's, and
+		// it must sit immediately BEFORE the device face so the swap window uses it.
+		// If a stack edit drops it, or the @font-face loses its overrides, the
+		// shift comes back silently — hence this gate. See src/app.css and
+		// scripts/font-fallback-metrics.py.
+		const pairs: [string, string, string][] = [
+			['font-display', 'Fraunces Fallback', 'Georgia'],
+			['font-sans', 'Hanken Grotesk Fallback', 'ui-sans-serif']
+		];
+		for (const [token, fallback, device] of pairs) {
+			const stack = stackOf(token);
+			expect(stack, `--${token} no longer names '${fallback}'`).toContain(fallback);
+			// Ordered within the raw declaration: the fallback's quoted name must
+			// come before the device face, or the swap lands on the device face.
+			const decl = APP_CSS.slice(APP_CSS.indexOf(`--${token}:`));
+			const value = decl.slice(0, decl.indexOf(';'));
+			expect(
+				value.indexOf(`'${fallback}'`),
+				`'${fallback}' sits after ${device} in --${token}`
+			).toBeLessThan(value.indexOf(device));
+			// And it is a real @font-face that aliases a local font and overrides
+			// every metric — a bare family name would just be skipped.
+			const face = APP_CSS.slice(APP_CSS.indexOf(`font-family: '${fallback}'`));
+			const body = face.slice(0, face.indexOf('}'));
+			expect(body, `'${fallback}' @font-face does not alias a local() font`).toMatch(/src:\s*local\(/);
+			for (const desc of ['size-adjust', 'ascent-override', 'descent-override', 'line-gap-override']) {
+				expect(body, `'${fallback}' @font-face is missing ${desc}`).toContain(desc);
+			}
+		}
+	});
+
 	/** Every family a font-family value can reach: its quoted names, then the
 	 *  families of any token it names. The house tokens are the root's capture
 	 *  of --font-display / --font-sans (site-fonts.css), so they resolve to
