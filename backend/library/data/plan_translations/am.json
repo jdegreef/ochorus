@@ -93,5 +93,12 @@
   "note": [
    "AI-drafted; awaiting native review. Ships with growing-in-wisdom.am (job #3792), whose am edition is what creates this plan row. Book title «በጥበብ ማደግ» as on the am book page."
   ]
+ },
+ "voices-of-the-early-church": {
+  "title": "የጥንቷ ቤተ ክርስቲያን ድምፆች",
+  "description": "የመጀመሪያዎቹ የክርስትና ምዕተ ዓመታት በራሳቸው ቃል። የሮሜው ቀሌምንጦስ የሐዋርያት ትውልድ ገና በሕይወት ሳለ በሮም ቤተ ክርስቲያን ስም ይጽፋል፤ የአንጾኪያው አግናጥዮስ ወደ ሰማዕትነት በሚወስደው መንገድ ላይ ሳለ መልእክቶቹን ይልካል፤ የእስክንድርያው አትናቴዎስም «ስለ ሥጋዌ» በተባለው መጽሐፉ የእምነትን እምብርት — እግዚአብሔር ራሱ ስለ ምን ሰው እንደ ሆነ — ያብራራል። ለአራት ወራት ያህል በየቀኑ የሚነበቡ አጫጭር ንባቦች።",
+  "note": [
+   "AI-drafted; awaiting native review. No am plan job; the test demands it once on-the-incarnation.am ships (job #3752) beside the already-shipped first-epistle-of-clement.am and epistles-of-ignatius.am, so seed_plans creates the am row. Book titles as on the am book pages: «ወደ ቆሮንቶስ ሰዎች የተጻፈው የቀሌምንጦስ የመጀመሪያ መልእክት», «የአግናጥዮስ መልእክቶችና የሕይወቱ ታሪክ», «ስለ ሥጋዌ»."
+  ]
  }
 }
