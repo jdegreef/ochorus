@@ -5,6 +5,7 @@ import { allBookRows } from '../test/bookRows';
 
 import {
 	COVER_WIDTHS,
+	cardTint,
 	LANDSCAPE_HEIGHT,
 	LANDSCAPE_WIDTH,
 	TWIN_HEIGHT,
@@ -231,5 +232,25 @@ describe('shareCard', () => {
 			.filter((img) => !existsSync(join(process.cwd(), 'static', img.url)))
 			.map((img) => img.url);
 		expect(missing).toEqual([]);
+	});
+});
+
+describe('cardTint', () => {
+	it('passes a real, ink-safe cover colour through', () => {
+		expect(cardTint('#8c3a1b')).toBe('#8c3a1b');
+		expect(cardTint(' #2E5D52 ')).toBe('#2E5D52');
+	});
+
+	it('gives no tint for an empty or malformed colour', () => {
+		for (const bad of ['', null, undefined, 'red', '#abc', '#zzzzzz', '#12345678', 'url(x)']) {
+			expect(cardTint(bad)).toBe('');
+		}
+	});
+
+	it('refuses a colour too light to have been floored for white type', () => {
+		// #767676 is about the lightest grey that still carries white at 4.5:1.
+		expect(cardTint('#767676')).toBe('#767676');
+		expect(cardTint('#7a7a7a')).toBe('');
+		expect(cardTint('#ffffff')).toBe('');
 	});
 });

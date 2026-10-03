@@ -17,15 +17,16 @@
  * `divine-songs-for-children` ("Divine Songs for Children") has the slug suffix
  * but no trailing "(…)", so it falls through to its full title unchanged.
  */
-const EDITION_SLUG = /-(?:teens|children)$/;
+const EDITION_SLUG = /-(teens|children)$/;
 const TRAILING_PAREN = /^(.*\S)\s*\(([^()]+)\)$/;
 
 export function splitEdition(
 	slug: string,
 	title: string
-): { base: string; audience: string } | null {
-	if (!EDITION_SLUG.test(slug)) return null;
+): { base: string; audience: string; kind: 'teens' | 'children' } | null {
+	const edition = slug.match(EDITION_SLUG);
+	if (!edition) return null;
 	const m = title.trim().match(TRAILING_PAREN);
 	if (!m) return null;
-	return { base: m[1], audience: m[2].trim() };
+	return { base: m[1], audience: m[2].trim(), kind: edition[1] as 'teens' | 'children' };
 }
