@@ -90,3 +90,75 @@ class LinkScriptureWiringTests(SimpleTestCase):
         self.assertIn('href="/scripture/john/3/16/" data-ref="John 3:16"', out)
         self.assertIn('data-ref="Obadiah 1:1"', out)
         self.assertNotIn("scripture/obadiah", out)
+
+
+class ChapterOnlyCitationTests(SimpleTestCase):
+    """Whole-chapter citations ("Romans 8", "John 17") — the form the writers
+    use ~850 times in the English books, which `_CANDIDATE`'s chapter:verse
+    pattern never matched. Linked when their page exists; otherwise untouched."""
+
+    def test_collected_as_candidates(self):
+        html = "<p>Read Romans 8, then John 17 and 1 John 3; Psalm 23 too.</p>"
+        self.assertEqual(
+            reference_candidates(html), ["Romans 8", "John 17", "1 John 3", "Psalm 23"]
+        )
+
+    def test_linked_when_the_page_exists(self):
+        html = "<p>The prayer of John 17 completes the picture.</p>"
+        out = annotate_references(html, links={"John 17": "/scripture/john/17/"})
+        self.assertIn(
+            '<a class="scripture-ref" href="/scripture/john/17/" data-ref="John 17">John 17</a>',
+            out,
+        )
+
+    def test_left_as_text_without_a_page(self):
+        html = "<p>The prayer of John 17 completes the picture.</p>"
+        self.assertEqual(annotate_references(html), html)
+        self.assertEqual(annotate_references(html, links={}), html)
+
+    def test_verse_citation_wins_over_its_chapter(self):
+        # "Romans 8:28" is the verse citation, never "Romans 8" followed by junk.
+        html = "<p>Romans 8:28 and Romans 8. 3 are verse citations.</p>"
+        self.assertEqual(reference_candidates(html), ["Romans 8:28", "Romans 8. 3"])
+
+    def test_rejects_non_references(self):
+        # A chapter the book doesn't have, an abbreviation, a roman numeral,
+        # a lower-case word, and a name that is not a book.
+        html = "<p>John 25, Rom 8, John xvii, the job 5 days, Peterson 3.</p>"
+        self.assertEqual(reference_candidates(html), [])
+
+    def test_single_chapter_book_number_is_a_verse(self):
+        # Jude, Philemon, Obadiah… are cited by verse alone: "Jude 24" is 1:24.
+        self.assertEqual(reference_candidates("<p>(Jude 24)</p>"), ["Jude 24"])
+
+    def test_not_wrapped_inside_an_existing_link(self):
+        html = '<p><a href="/x">Romans 8</a></p>'
+        self.assertEqual(reference_candidates(html), [])
+        self.assertEqual(annotate_references(html, links={"Romans 8": "/s/"}), html)
+
+
+class LinkedOnlyTests(SimpleTestCase):
+    """`linked_only` — for a surface with no popover (an author bio)."""
+
+    def test_wraps_only_references_with_a_page(self):
+        html = "<p>John 3:16 and Romans 8:28.</p>"
+        out = annotate_references(
+            html, links={"John 3:16": "/scripture/john/3/16/"}, linked_only=True
+        )
+        self.assertIn('href="/scripture/john/3/16/" data-ref="John 3:16"', out)
+        self.assertNotIn('data-ref="Romans 8:28"', out)
+        self.assertIn("Romans 8:28.", out)
+
+    def test_bio_html_is_link_only(self):
+        from . import scripture_graph
+        from .serializers import _link_scripture
+
+        html = "<p>He preached on John 3:16 and Obadiah 1:1.</p>"
+        pages = {
+            "John 3:16": {"book": "john", "chapter": 3, "verse": 16},
+            "Obadiah 1:1": None,
+        }
+        with mock.patch.object(scripture_graph, "pages_for", return_value=pages):
+            out = _link_scripture(html, linked_only=True)
+        self.assertIn('href="/scripture/john/3/16/"', out)
+        self.assertNotIn('data-ref="Obadiah 1:1"', out)

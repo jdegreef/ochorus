@@ -71,6 +71,7 @@
   "reader_no_definition": "No se encontró definición para esta palabra.",
   "reader_scripture": "Escritura",
   "reader_scripture_unavailable": "No se pudo cargar el texto del versículo.",
+  "reader_scripture_page": "Lo que dicen los clásicos sobre este pasaje",
   "reader_mark_one": "marca",
   "reader_mark_many": "marcas",
   "progress_min_left": "min restantes en el capítulo",
