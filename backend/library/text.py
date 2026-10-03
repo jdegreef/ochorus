@@ -59,7 +59,11 @@ def is_blank_title(title) -> bool:
 
 def html_to_text(body_html: str) -> str:
     spaced = _BLOCK_BREAK.sub(" \\g<0>", body_html)
-    return _WS.sub(" ", html.unescape(strip_tags(spaced))).strip()
+    # `" ".join(s.split())` is `_WS.sub(" ", s).strip()` exactly — `str.split()`
+    # and `re`'s `\s` agree on every code point — but runs in C, where the
+    # regex substitution was over half of this function's cost (it derives
+    # body_text on every Chapter/Sermon save and in a whole-corpus fixture test).
+    return " ".join(html.unescape(strip_tags(spaced)).split())
 
 
 def text_of(html_str: str) -> str:
