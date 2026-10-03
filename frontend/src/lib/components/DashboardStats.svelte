@@ -61,10 +61,10 @@
 {#if days.length}
 	<section class="page-col px-5 pt-14">
 		<!-- One panel, not three loose widgets: streak, totals and calendar read as
-		     a single "your reading" section. The panel carries the border, so the
-		     inner blocks sit on the page ground (surface-2 tiles keep their contrast
-		     against it) and are separated by hairlines rather than each floating. -->
-		<div class="space-y-5 rounded-card border border-border p-5 sm:p-6">
+		     a single "your reading" section. The panel carries the border and a
+		     --surface ground (it sits on the home page's parchment band), and its
+		     inner blocks are separated by hairlines rather than each floating. -->
+		<div class="space-y-5 rounded-card border border-border bg-surface p-5 sm:p-6">
 			<!-- Streak + weekly goal -->
 			<div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
 				<div class="flex items-center gap-3">

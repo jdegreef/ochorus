@@ -309,6 +309,19 @@
 	--shelf-back: #262017;
 	--shelf-wood: #6a4a2f;
 	--shelf-wood-edge: #3b2a1c;
+	/* PAGE TEXTURE (design wave 1). --grain is a faint paper tooth laid over
+	   --bg (body) and every .page-band: fractal noise thresholded to sparse specks
+	   (the discrete alpha table keeps only the top of the noise), light on
+	   lamplight, warm brown on paper and sepia. Sparse rather than a uniform
+	   wash, so it reads as paper without moving the ground's average colour
+	   (a wash darkened paper visibly and showed no texture at all). An inline
+	   SVG data: URI (img-src allows data:), one 180px tile, no request.
+	   --band is the contrasting ground of a .page-band section, a step off
+	   --bg (lighter on lamplight, deeper on paper and sepia); every text and
+	   hue token clears 4.5:1 on it (libraryPalette.test.ts). */
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .9 0 0 0 0 .8 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .10 .10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--band: #1d1914;
+
 	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
 	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
 	   ground for chips and tiles. Every hue clears 4.5:1 as text on --bg,
@@ -389,6 +402,8 @@
 	--shelf-back: #f1e8d8;
 	--shelf-wood: #b98a5c;
 	--shelf-wood-edge: #8a6440;
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .16 .16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--band: #f1e8d8;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #ecebf7;
 	--hue-oxblood: #8a2f2a;
@@ -431,6 +446,8 @@
 	--shelf-back: #e8dbbf;
 	--shelf-wood: #a97b4d;
 	--shelf-wood-edge: #7a5634;
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .14 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .18 .18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--band: #ece1c9;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #e9e5f3;
 	--hue-oxblood: #842c27;
@@ -525,7 +542,8 @@
 	   (site-fonts.css), and html would compute it against the house stack. */
 	body {
 		font-family: var(--font-sans);
-		background: var(--bg);
+		background-color: var(--bg);
+		background-image: var(--grain);
 		color: var(--text);
 		min-height: 100%;
 	}
@@ -1122,6 +1140,9 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 		   or white paper print unreadable. */
 		--accent-contrast: #ffffff;
 		--surface-2: #ffffff;
+		/* A .page-band's ground and the paper grain are screen texture. */
+		--band: #ffffff;
+		--grain: none;
 	}
 	body {
 		background: #ffffff;
@@ -2926,4 +2947,20 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+
+/* A PAGE BAND: a full-width section on the deeper --band ground, so a long page
+   reads as chapters (cream, parchment, cream) rather than one scroll. Wraps
+   one or more self-hiding blocks (each its own `.page-col` section with its
+   own top padding); the band adds the gap above and the padding below, and
+   collapses entirely when nothing inside it rendered a <section>, so a
+   hidden block never leaves an empty stripe. */
+.page-band {
+	background-color: var(--band);
+	background-image: var(--grain);
+	margin-block-start: 3.5rem;
+	padding-block-end: 3.5rem;
+}
+.page-band:not(:has(section)) {
+	display: none;
 }
