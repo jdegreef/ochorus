@@ -71,7 +71,9 @@
 		{#if c.children?.length}
 			<!-- A region: the card's head is its own tick; each place beneath it
 			     is a chip with its own. Buttons can't nest, so this card is a div. -->
-			<div class="band-card" class:on class:dim={c.count === 0 && !on} style:--hue={c.hue}>
+			{@const kidOn = c.children.some((k) => selected.includes(k.id))}
+			<!-- Never faded while one of its places is the live filter. -->
+			<div class="band-card" class:on class:dim={c.count === 0 && !on && !kidOn} style:--hue={c.hue}>
 				<button type="button" class="band-body band-head" aria-pressed={on} onclick={() => ontoggle(c.id)}>
 					{@render face(c)}
 				</button>

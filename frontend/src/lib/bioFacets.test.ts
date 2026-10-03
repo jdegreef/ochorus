@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+	bestKnown,
 	bioChips,
 	cleanFacetValues,
 	facetCounts,
@@ -206,5 +207,22 @@ describe('bioChips — the removable filter chips', () => {
 		byKind('q').onRemove();
 		expect(v.q).toBe('');
 		expect(chips(v).map((c) => c.kind)).toEqual(['trad:methodists']);
+	});
+});
+
+describe('bestKnown — the order band cards pick faces in', () => {
+	const w = (slug: string, photo: boolean, books: number, sermons = 0) =>
+		({ slug, name: slug, photo_url: photo ? `/portraits/${slug}.jpg` : null, book_count: books, sermon_count: sermons }) as unknown as AuthorBio;
+	it('puts writers with a portrait first, then the most to read', () => {
+		const xs = [w('no-photo-many', false, 20), w('photo-few', true, 1), w('photo-many', true, 3, 9), w('photo-mid', true, 5)];
+		expect([...xs].sort(bestKnown).map((a) => a.slug)).toEqual([
+			'photo-many',
+			'photo-mid',
+			'photo-few',
+			'no-photo-many'
+		]);
+	});
+	it('counts sermons as things to read', () => {
+		expect([w('books', true, 3), w('sermons', true, 0, 4)].sort(bestKnown)[0].slug).toBe('sermons');
 	});
 });

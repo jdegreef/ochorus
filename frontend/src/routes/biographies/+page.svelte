@@ -10,6 +10,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
 	import { ERAS, ERA_HUE, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import BioTile from '$lib/components/BioTile.svelte';
@@ -218,6 +219,17 @@
 	const count = (k: FacetKey, v: string) => optCount.get(`${k}:${v}`) ?? 0;
 	const inHub = (slug: string) => (a: AuthorBio) => members.get(slug)?.has(a.slug) ?? false;
 
+	// The faces (and a tradition's name line) depend on the roster only, so they
+	// are worked out once; the cards below merge in the counts, which follow the
+	// filters — a keystroke recounts, it doesn't re-pick faces.
+	const eraFaces = $derived(
+		new Map(presentEras.map((e) => [e.id, topWriters((a) => eraOf(a.birth_year) === e.id)]))
+	);
+	const hubFaces = $derived(new Map(hubs.map((h) => [h.slug, topWriters(inHub(h.slug))])));
+	// The list separator for two names: Arabic and Amharic have their own commas.
+	const SEP: Record<string, string> = { ar: '، ', am: '፣ ' };
+	const nameSep = SEP[getLang()] ?? ', ';
+
 	const eraCards = $derived(
 		presentEras.map(
 			(e): BandCard => ({
@@ -225,7 +237,7 @@
 				name: t(e.k),
 				sub: e.range,
 				count: count('era', e.id),
-				faces: topWriters((a) => eraOf(a.birth_year) === e.id),
+				faces: eraFaces.get(e.id) ?? [],
 				hue: ERA_HUE[e.id]
 			})
 		)
@@ -234,14 +246,14 @@
 	// "Bunyan, Baxter" before they know the word "Puritan".
 	const tradCards = $derived(
 		traditions.map((h): BandCard => {
-			const faces = topWriters(inHub(h.slug));
+			const faces = hubFaces.get(h.slug) ?? [];
 			return {
 				id: h.slug,
 				name: h.label,
 				sub: faces
 					.slice(0, 2)
 					.map((a) => a.name)
-					.join(', '),
+					.join(nameSep),
 				count: count('trad', h.slug),
 				faces
 			};
@@ -255,25 +267,18 @@
 				id: h.slug,
 				name: h.label,
 				count: count('place', h.slug),
-				faces: topWriters(inHub(h.slug)),
+				faces: hubFaces.get(h.slug) ?? [],
 				children: children?.map((p) => ({ id: p.slug, name: p.label, count: count('place', p.slug) }))
 			});
 			return g.region ? [card(g.region, g.places)] : g.places.map((p) => card(p));
 		})
 	);
 
-	// Which lens the band shows — a reader preference, like the grid/list view.
+	// Which lens the band shows. Not remembered across visits on purpose: the
+	// page is prerendered with the era band, and restoring another lens after
+	// hydration would swap a one-row band for a two-row grid under the reader.
 	type Lens = 'era' | 'trad' | 'place';
-	const LENS_KEY = 'ochorus:bios-browse';
 	let lens = $state<Lens>('era');
-	onMount(() => {
-		const saved = readJSON<Lens>(LENS_KEY, 'era');
-		if (saved === 'trad' || saved === 'place') lens = saved;
-	});
-	const setLens = (l: Lens) => {
-		lens = l;
-		writeJSON(LENS_KEY, l);
-	};
 	const lenses = $derived(
 		(
 			[
@@ -555,7 +560,7 @@
 							class="lens"
 							class:active={shownLens.k === l.k}
 							aria-pressed={shownLens.k === l.k}
-							onclick={() => setLens(l.k)}>{l.label}</button
+							onclick={() => (lens = l.k)}>{l.label}</button
 						>
 					{/each}
 				</div>
