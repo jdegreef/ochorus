@@ -28,6 +28,9 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'search_sort_title',
 	// "Sepia" is the borrowed colour-tone name, unchanged across our locales.
 	'settings_theme_sepia',
+	// "Google Calendar" is the product's own name where Google doesn't localize it
+	// (Spanish, Swahili, Luganda keep it in English).
+	'plans_add_google',
 	// The About page's ministry partner is a proper-noun organisation name, kept
 	// in its registered English form in every locale.
 	'about_partner_name',

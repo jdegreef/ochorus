@@ -104,3 +104,36 @@ describe('foldLine', () => {
 		expect(foldLine('BEGIN:VEVENT')).toBe('BEGIN:VEVENT');
 	});
 });
+
+describe('googleCalendarUrl', () => {
+	it('opens one repeating event at the reminder time for the readings left', async () => {
+		const { googleCalendarUrl } = await import('./reminder');
+		const url = new URL(
+			googleCalendarUrl({
+				title: 'Daughters of the King — Ochorus',
+				details: 'https://ochorus.com/plans/dotk/',
+				start: new Date(2026, 9, 5),
+				hhmm: '07:30',
+				rule: 'weekdays',
+				count: 93,
+				ctz: 'America/Vancouver'
+			})
+		);
+		expect(url.origin + url.pathname).toBe('https://calendar.google.com/calendar/render');
+		const q = url.searchParams;
+		expect(q.get('action')).toBe('TEMPLATE');
+		expect(q.get('dates')).toBe('20261005T073000/20261005T074500');
+		expect(q.get('recur')).toBe('RRULE:FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;COUNT=93');
+		expect(q.get('ctz')).toBe('America/Vancouver');
+		expect(q.get('text')).toBe('Daughters of the King — Ochorus');
+	});
+
+	it('repeats daily for an every-day plan', async () => {
+		const { googleCalendarUrl } = await import('./reminder');
+		const q = new URL(
+			googleCalendarUrl({ title: 't', details: 'd', start: new Date(2026, 9, 5), hhmm: '06:00', rule: 'daily', count: 3 })
+		).searchParams;
+		expect(q.get('recur')).toBe('RRULE:FREQ=DAILY;COUNT=3');
+		expect(q.has('ctz')).toBe(false);
+	});
+});

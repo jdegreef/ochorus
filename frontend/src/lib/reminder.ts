@@ -169,3 +169,53 @@ export function buildScheduleICS(
 		])
 	);
 }
+
+/** RRULE weekdays for each reading-days rule (RFC 5545 BYDAY). */
+const RULE_BYDAY: Record<'daily' | 'weekdays' | 'monsat', string> = {
+	daily: '',
+	weekdays: 'MO,TU,WE,TH,FR',
+	monsat: 'MO,TU,WE,TH,FR,SA'
+};
+
+/**
+ * An "Add to Google Calendar" link for a reading plan: ONE repeating event at
+ * the reader's reminder time, on their reading days, for exactly the readings
+ * left — opened in Google's own event editor.
+ *
+ * Why not the .ics: Google's import drops an event's own alerts (VALARM), so
+ * the file's per-reading reminders never fire there. An event made in
+ * Google's editor takes the calendar's default notification instead — the
+ * alert the reader gets. Times are floating local (no Z) with `ctz`, so the
+ * event sits at the same wall-clock time wherever they are.
+ */
+export function googleCalendarUrl(opts: {
+	title: string;
+	details: string;
+	/** The first reading's date (already a reading day). */
+	start: Date;
+	hhmm: string;
+	rule: 'daily' | 'weekdays' | 'monsat';
+	/** How many readings are left. */
+	count: number;
+	/** The reader's IANA time zone. */
+	ctz?: string;
+	minutes?: number;
+}): string {
+	const [h, m] = parseHHMM(opts.hhmm);
+	const from = new Date(opts.start);
+	from.setHours(h, m, 0, 0);
+	const to = new Date(from.getTime() + (opts.minutes ?? 15) * 60_000);
+	const byday = RULE_BYDAY[opts.rule];
+	const rrule = byday
+		? `RRULE:FREQ=WEEKLY;BYDAY=${byday};COUNT=${opts.count}`
+		: `RRULE:FREQ=DAILY;COUNT=${opts.count}`;
+	const params = new URLSearchParams({
+		action: 'TEMPLATE',
+		text: opts.title,
+		details: opts.details,
+		dates: `${fmtLocal(from)}/${fmtLocal(to)}`,
+		recur: rrule
+	});
+	if (opts.ctz) params.set('ctz', opts.ctz);
+	return `https://calendar.google.com/calendar/render?${params}`;
+}
