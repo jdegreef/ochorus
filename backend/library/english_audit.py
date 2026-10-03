@@ -461,15 +461,20 @@ def _check_block(t: str, is_pd: bool, counts: Counter[str]) -> Iterator[tuple[st
     for m in DROPCAP_FUSED.finditer(t):
         if m.group(2) in FUSED_TAIL:
             yield "dropcap-fused", excerpt(t, m.start())
-    for m in HYPHEN_SPACE.finditer(t):
-        yield "hyphen-space", excerpt(t, m.start())
+    # Gated on the literal each pattern cannot match without: `in` is a C
+    # substring scan, and most blocks have neither, so these two regexes (whose
+    # leading `\b` gives `re` no literal to skip ahead on) mostly never run.
+    if "-" in t:
+        for m in HYPHEN_SPACE.finditer(t):
+            yield "hyphen-space", excerpt(t, m.start())
     for m in RUN_TOGETHER.finditer(t):
         yield "run-together", excerpt(t, m.start())
     for m in STRAY_PARENS.finditer(t):
         yield "stray-parens", excerpt(t, m.start())
     yield from _word_fusion(t, counts)
-    for m in MISSPELLED.finditer(t):
-        yield "misspelling", excerpt(t, m.start())
+    if any(k in t for k in MISSPELLINGS):
+        for m in MISSPELLED.finditer(t):
+            yield "misspelling", excerpt(t, m.start())
 
 
 def _orphan_quotes(blocks: list[str]) -> Iterator[tuple[str, int, str]]:
@@ -531,6 +536,9 @@ def _sporadic_only(per_work: dict[str, list[Finding]]) -> Iterator[Finding]:
             yield from rows
 
 
+_WORD = re.compile(r"[A-Za-z]+")
+
+
 @lru_cache(maxsize=1)
 def library_word_counts() -> Counter[str]:
     """How often each lowercase word occurs across the English library.
@@ -553,8 +561,7 @@ def library_word_counts() -> Counter[str]:
     # fusions there go unjudged.
     for rec in chain(_fixture_records(), _bio_records()):
         for _, block in BLOCK.findall(rec.body_html or ""):
-            for w in re.findall(r"[A-Za-z]+", text(block)):
-                counts[w.lower()] += 1
+            counts.update(map(str.lower, _WORD.findall(text(block))))
     return counts
 
 
