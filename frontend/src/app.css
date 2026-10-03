@@ -511,6 +511,24 @@
 	--hue-plum-soft: #ecdde3;
 }
 
+/* THE HOME HERO (HomeHero.svelte): a greeting set over a painting, so its
+   ink is theme-independent — light on a scrim that darkens from the foot,
+   where the text sits. --hero-ground shows only while the painting loads. */
+:root {
+	--hero-ink: #f8f1e4;
+	--hero-ground: #1d2a1f;
+	/* Dense through the lower two-thirds, where the date and greeting sit: the
+	   wash is a blurred painting of any brightness, and a pale one under a
+	   lighter scrim left the small date line short of 4.5:1. */
+	--hero-scrim: linear-gradient(
+		to top,
+		rgb(14 12 9 / 0.9) 0%,
+		rgb(14 12 9 / 0.75) 60%,
+		rgb(14 12 9 / 0.3) 100%
+	);
+	--hero-plate-shadow: 0 24px 40px -18px rgb(0 0 0 / 0.7);
+}
+
 /* Which hue each library section wears (nav icon, active pill, section
    chips). Theme-independent: each alias follows its hue through the themes.
    Declared on .night-band as well, so inside one the aliases resolve against
