@@ -177,9 +177,9 @@
 						</span>
 						{#if item && item.languages.length}
 							{#if item.languages.includes(locale)}
-								<span class="text-micro text-accent">Has a {localeName} edition</span>
+								<span class="text-micro text-accent">Has an edition in {localeName}</span>
 							{:else}
-								<span class="text-micro text-warning">No {localeName} edition — left out of this email</span>
+								<span class="text-micro text-warning">No edition in {localeName} — left out of this email</span>
 							{/if}
 						{/if}
 					</div>
