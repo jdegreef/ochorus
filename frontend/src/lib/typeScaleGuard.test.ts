@@ -76,9 +76,9 @@ describe('type scale', () => {
 		//
 		// The home hero now lives in HomeMarketing.svelte (the logged-out home was
 		// split out of +page.svelte into HomeMarketing / HomeDashboard), so the
-		// exemption follows it there — it is still the one and only home hero.
-		// HomeDashboard is the same page for a signed-in reader (the two never
-		// render together), so its greeting is that reader's home hero.
+		// exemption follows it there.
+		// HomeHero is the same page's hero for a signed-in reader (the dashboard
+		// and the marketing page never render together).
 		const offenders: string[] = [];
 		for (const file of svelteFiles(SRC)) {
 			const rel = file.replace(SRC, 'src');
@@ -86,7 +86,7 @@ describe('type scale', () => {
 				rel.includes('/admin/') ||
 				rel.endsWith('src/routes/+page.svelte') ||
 				rel.endsWith('src/lib/components/HomeMarketing.svelte') ||
-				rel.endsWith('src/lib/components/HomeDashboard.svelte') ||
+				rel.endsWith('src/lib/components/HomeHero.svelte') ||
 				// The error page's status number ("404") is that page's hero.
 				rel.endsWith('src/routes/+error.svelte')
 			)
