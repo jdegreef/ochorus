@@ -109,6 +109,28 @@ describe('in-flight GET dedupe', () => {
 		await Promise.all([a, b]);
 	});
 
+	it("sends a load's library read without the token, so hydration can replay it", async () => {
+		// The inlined response is matched on headers too: a signed-in reader's
+		// Authorization header missed it and hydrated from the live API.
+		setAuthTokenProvider(() => 'token-a');
+		const load = deferredFetch();
+		const authOf = (m: ReturnType<typeof vi.fn>, i: number) =>
+			new Headers((m.mock.calls[i] as unknown as [string, RequestInit])[1].headers).get(
+				'Authorization'
+			);
+		const all = Promise.all([
+			apiFetch('/api/library/authors/hudson-taylor/?language=am', {}, load.mock as typeof fetch),
+			apiFetch('/api/reading/progress/', {}, load.mock as typeof fetch),
+			apiFetch('/api/library/authors/hudson-taylor/?language=am')
+		]);
+		expect(authOf(load.mock, 0)).toBeNull();
+		expect(authOf(load.mock, 1)).toBe('Bearer token-a');
+		expect(authOf(fetchMock, 0)).toBe('Bearer token-a');
+		load.settleAll();
+		settleAll();
+		await all;
+	});
+
 	it('leaves writes alone', async () => {
 		// Two POSTs are two intentions; collapsing them would drop one.
 		const all = Promise.all([

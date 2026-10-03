@@ -126,12 +126,29 @@ async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Pr
  * user is signed in we attach their Supabase Bearer token so authenticated
  * endpoints (e.g. /api/auth/me) work.
  */
+
+/**
+ * A read of the public library through a load()'s own fetch — sent WITHOUT the
+ * reader's token, so it can replay the response the prerender inlined.
+ *
+ * SvelteKit matches an inlined response on the request's headers as well as its
+ * URL, so an `Authorization` header made every signed-in reader's hydration
+ * miss and ask the live API instead. Any blip there (a restart, an OOM under a
+ * prerender crawl) then threw the load, and a perfectly good prerendered page
+ * hydrated into the 500 page (/am/authors/hudson-taylor, 2026-10-03) — for
+ * signed-in readers only, which is why anonymous checks never saw it. No
+ * library view reads the user (library/views.py: no `request.user`, no
+ * permission classes), so the token bought nothing there.
+ */
+const isPublicLibraryRead = (path: string, init: RequestInit) =>
+	path.startsWith('/api/library/') && isIdempotent(init);
+
 async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promise<T> {
 	const headers = new Headers(init.headers);
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
 	}
-	const token = tokenProvider();
+	const token = f && isPublicLibraryRead(path, init) ? null : tokenProvider();
 	if (token && !headers.has('Authorization')) {
 		headers.set('Authorization', `Bearer ${token}`);
 	}
