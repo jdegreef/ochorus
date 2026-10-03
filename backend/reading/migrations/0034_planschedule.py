@@ -3,6 +3,23 @@
 import django.db.models.deletion
 from django.db import migrations, models
 
+# Row-level security on the new table — same as the other per-user reading
+# tables (see 0022): RLS with no policies denies the Supabase anon/authenticated
+# roles; Django connects as the owner. accounts/tests_rls.py enforces it.
+TABLE = "reading_planschedule"
+
+
+def enable_rls(apps, schema_editor):
+    if schema_editor.connection.vendor != "postgresql":
+        return
+    schema_editor.execute(f"ALTER TABLE {TABLE} ENABLE ROW LEVEL SECURITY")
+
+
+def disable_rls(apps, schema_editor):
+    if schema_editor.connection.vendor != "postgresql":
+        return
+    schema_editor.execute(f"ALTER TABLE {TABLE} DISABLE ROW LEVEL SECURITY")
+
 
 class Migration(migrations.Migration):
 
@@ -29,4 +46,5 @@ class Migration(migrations.Migration):
                 'constraints': [models.UniqueConstraint(fields=('profile', 'plan_slug'), name='uniq_planschedule_profile_plan')],
             },
         ),
+        migrations.RunPython(enable_rls, disable_rls),
     ]

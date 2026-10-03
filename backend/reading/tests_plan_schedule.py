@@ -52,10 +52,23 @@ class PlanScheduleSyncTests(TestCase):
         self.assertEqual(res.data["reading_days"], "monsat")
         self.assertEqual(PlanSchedule.objects.get(profile=self.profile).reading_days, "monsat")
 
-    def test_a_clock_from_the_future_cannot_lock_other_devices_out(self):
-        self._put(reading_days="weekdays", updated_at=_ms(-86_400))  # a day ahead
-        res = self._put(reading_days="monsat", updated_at=_ms())
-        self.assertEqual(res.data["reading_days"], "monsat")
+    def test_a_clock_far_in_the_future_cannot_lock_other_devices_out(self):
+        self._put(reading_days="weekdays", updated_at=_ms(-86_400 * 365))  # a year ahead
+        # Held to a day of skew, so a correct device's write two days on wins.
+        stored = PlanSchedule.objects.get(profile=self.profile).client_updated_at
+        self.assertLess(stored.timestamp(), time.time() + 86_400 + 60)
+
+    def test_a_merge_row_with_no_stamp_never_overwrites_the_account(self):
+        # A device's choices from before they synced carry no stamp: stale.
+        self._put(reading_days="weekdays", updated_at=_ms())
+        res = self.client.post(
+            "/api/reading/merge/",
+            {"plan_schedules": [{"plan_slug": "daughters-of-the-king-three-months", "reading_days": "monsat"}]},
+            format="json",
+        )
+        self.assertEqual(res.data["plan_schedules"][0]["reading_days"], "weekdays")
+        # …but a live PUT with none is an older client acting now.
+        self.assertEqual(self._put(reading_days="monsat").data["reading_days"], "monsat")
 
     def test_junk_falls_back_to_defaults(self):
         res = self._put(start_on="2026-02-30", reading_days="sundays", remind_at="25:00", updated_at=_ms())

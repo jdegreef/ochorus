@@ -2,7 +2,10 @@ import { browser } from '$app/environment';
 import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { PLAN_SCHEDULE_KEY as KEY } from './reading-schema';
-import type { ReadingDays } from './planSchedule';
+import { READING_DAYS } from './planSchedule';
+import type { PlanSchedulePrefs } from './planScheduleRows';
+
+export type { PlanSchedulePrefs };
 
 /**
  * A reader's schedule choices per plan — the calendar view's start date (for a
@@ -14,16 +17,6 @@ import type { ReadingDays } from './planSchedule';
  * `ticks` lets Svelte views re-derive after any change, including a merge
  * writing another device's choices back.
  */
-
-export interface PlanSchedulePrefs {
-	/** `YYYY-MM-DD` the reader chose to start on (a plan not yet started). */
-	start?: string;
-	rule?: ReadingDays;
-	/** "HH:MM" for the calendar file's alerts. */
-	time?: string;
-	/** When this device made the choice (epoch ms) — newest wins across devices. */
-	updatedAt?: number;
-}
 
 type Store = Record<string, PlanSchedulePrefs>;
 
@@ -38,9 +31,11 @@ class PlanSchedules {
 		if (browser) window.addEventListener('ochorus:sync', () => this.ticks++);
 	}
 
+	/** A plan's choices, with an unknown reading-days rule read as daily. */
 	get(slug: string): PlanSchedulePrefs {
 		void this.ticks;
-		return readAll()[slug] ?? {};
+		const p = readAll()[slug] ?? {};
+		return p.rule && !READING_DAYS.includes(p.rule) ? { ...p, rule: 'daily' } : p;
 	}
 
 	/** Change some of a plan's choices, stamp them, and mirror them to the account. */

@@ -45,7 +45,7 @@
 	// The reader's choices, read live from the synced store (another device's
 	// choice lands here after a merge); the controls write straight back to it.
 	const prefs = $derived(planSchedules.get(plan.slug));
-	const rule = $derived<ReadingDays>(prefs.rule && READING_DAYS.includes(prefs.rule) ? prefs.rule : 'daily');
+	const rule = $derived<ReadingDays>(prefs.rule ?? 'daily');
 	// Alerts default to the daily reminder time the reader set in Settings.
 	const time = $derived(prefs.time ?? readReminderTime());
 	const todayIso = $derived(localToday(today));
@@ -59,7 +59,8 @@
 	};
 
 	/** A started plan runs from today; a new one from the chosen start. */
-	const start = $derived((!started && parseIsoDay(startIso)) || today);
+	// startIso is always a real date on or after today; a started plan runs from today.
+	const start = $derived(started ? today : parseIsoDay(startIso)!);
 	const schedule = $derived(
 		schedulePlan(
 			plan.days.filter((d) => !doneSet.has(d.day)),

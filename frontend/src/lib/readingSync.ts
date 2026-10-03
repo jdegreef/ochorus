@@ -12,7 +12,12 @@ import {
 } from './shelvesData';
 import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
-import type { PlanSchedulePrefs } from './planSchedules.svelte';
+import {
+	scheduleFromServer,
+	scheduleToServer,
+	type PlanSchedulePrefs,
+	type ServerPlanSchedule
+} from './planScheduleRows';
 import type { SessionSync } from './sessionClock';
 import {
 	cleanStore,
@@ -101,13 +106,6 @@ interface ServerPlanProgress {
 	done: number[];
 	updated_at: string;
 }
-interface ServerPlanSchedule {
-	plan_slug: string;
-	start_on: string | null;
-	reading_days: PlanSchedulePrefs['rule'];
-	remind_at: string;
-	client_updated_at: string;
-}
 interface ServerBookmark {
 	kind: WorkKind;
 	book_slug: string;
@@ -180,17 +178,6 @@ function combineStored(stashed: string, current: string | null): string {
 		/* not JSON — keep the device's value */
 	}
 	return current;
-}
-
-
-/** A plan's calendar choices as the API takes them (the PUT body, a merge row). */
-function scheduleRow(p: PlanSchedulePrefs) {
-	return {
-		start_on: p.start ?? null,
-		reading_days: p.rule ?? 'daily',
-		remind_at: p.time ?? '',
-		updated_at: p.updatedAt
-	};
 }
 
 class ReadingSync {
@@ -702,13 +689,29 @@ class ReadingSync {
 	pushPlanSchedule(slug: string, prefs: PlanSchedulePrefs) {
 		if (!this.signedIn || !browser) return;
 		this.#debounce(`plan-schedule:${slug}`, () => {
-			return apiFetch(`/api/reading/plan-schedule/${slug}/`, {
+			return apiFetch<ServerPlanSchedule>(`/api/reading/plan-schedule/${slug}/`, {
 				method: 'PUT',
-				body: JSON.stringify(scheduleRow(prefs))
+				body: JSON.stringify(scheduleToServer(prefs))
 			})
-				.then(() => this.#markSynced())
+				.then((row) => {
+					this.#adoptScheduleStamp(slug, prefs.updatedAt, row);
+					this.#markSynced();
+				})
 				.catch(() => this.#owe());
 		});
+	}
+
+	/** Take the account's stamp for a choice it just stored — the server holds a
+	 *  clock that runs ahead to a day of skew, and replaying this device's own
+	 *  later would out-date a newer choice from elsewhere. Only if the entry is
+	 *  still the one that was sent (a newer local choice keeps its own). */
+	#adoptScheduleStamp(slug: string, sentAt: number | undefined, row: ServerPlanSchedule | undefined) {
+		const at = row && Date.parse(row.client_updated_at);
+		if (!at) return;
+		const all = readJson<Record<string, PlanSchedulePrefs>>(PLAN_SCHEDULE_KEY, {});
+		if (!all[slug] || all[slug].updatedAt !== sentAt || at === sentAt) return;
+		all[slug] = { ...all[slug], updatedAt: at };
+		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify(all));
 	}
 
 	/**
@@ -833,7 +836,7 @@ class ReadingSync {
 			})),
 			plan_schedules: Object.entries(localSchedules).map(([slug, p]) => ({
 				plan_slug: slug,
-				...scheduleRow(p)
+				...scheduleToServer(p)
 			})),
 			journal: journalRows,
 			// Every shelf, tombstones too: the server merges per book, so sending
@@ -1075,14 +1078,7 @@ class ReadingSync {
 		}
 		if (state.plan_schedules) {
 			const schedules: Record<string, PlanSchedulePrefs> = {};
-			for (const p of state.plan_schedules) {
-				schedules[p.plan_slug] = {
-					...(p.start_on ? { start: p.start_on } : {}),
-					...(p.reading_days ? { rule: p.reading_days } : {}),
-					...(p.remind_at ? { time: p.remind_at } : {}),
-					updatedAt: Date.parse(p.client_updated_at) || 0
-				};
-			}
+			for (const p of state.plan_schedules) schedules[p.plan_slug] = scheduleFromServer(p);
 			localStorage.setItem(PLAN_SCHEDULE_KEY, keep(PLAN_SCHEDULE_KEY, schedules));
 		}
 		if (state.journal) {

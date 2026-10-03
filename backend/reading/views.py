@@ -230,44 +230,60 @@ def _upsert_plan_progress(profile, slug, done, started):
     return locked
 
 
-_HHMM = re.compile(r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+# A wall-clock time, "HH:MM" — a plan schedule's reminder, a journal reminder's.
+_TIME = r"(?:[01]\d|2[0-3]):[0-5]\d"
+_HHMM = re.compile(rf"^{_TIME}$")
+# How far ahead of the server a client clock may stamp a write. A device a
+# little fast keeps its own stamp; one far ahead can't win every comparison
+# for good (a future stamp would beat every honest write after it).
+CLIENT_CLOCK_SKEW = timedelta(days=1)
+
+
+def _client_dt(ms, now: datetime) -> datetime | None:
+    """A client write's stamp (epoch ms) as a datetime, held to at most
+    ``CLIENT_CLOCK_SKEW`` ahead of the server, or None when it has none."""
+    dt = _ms_to_dt(ms)
+    return min(dt, now + CLIENT_CLOCK_SKEW) if dt else None
 
 
 def _clean_schedule(data: dict) -> dict:
     """A client schedule payload → valid model fields. Junk falls back to the
     defaults rather than failing the write: a bad start date is "none chosen",
     an unknown rule is daily, a malformed time is "none chosen"."""
-    try:
-        start_on = date.fromisoformat(data.get("start_on")) if data.get("start_on") else None
-    except (TypeError, ValueError):
-        start_on = None
     rule = data.get("reading_days")
     remind = data.get("remind_at")
     return {
-        "start_on": start_on,
+        "start_on": _parse_day(data.get("start_on")),
         "reading_days": rule if rule in PlanSchedule.ReadingDays.values else PlanSchedule.ReadingDays.DAILY,
         "remind_at": remind if isinstance(remind, str) and _HHMM.match(remind) else "",
     }
 
 
-def _upsert_plan_schedule(profile, slug, data: dict):
+def _upsert_plan_schedule(profile, slug, data: dict, *, keep_server_when_unknown: bool):
     """Store one plan's schedule choices unless the server's are newer.
 
     Last write wins by the client clock that made each choice
     (``updated_at``, epoch ms) — choices replace each other, they don't merge.
-    A clock running ahead can't lock other devices out: a stamp from the
-    future counts as now. A write with no stamp counts as now too (an older
-    client), and an equal stamp is the same choice arriving twice."""
+    An equal stamp is the same choice arriving twice. ``keep_server_when_unknown``
+    differs by caller, as for reading positions: a live PUT with no stamp is an
+    older client acting now, but a MERGE row with none is a device's choices
+    from before they synced — stale, so it never overwrites the account's."""
     now = datetime.now(UTC)
-    client_dt = min(_ms_to_dt(data.get("updated_at")) or now, now)
-    existing = PlanSchedule.objects.filter(profile=profile, plan_slug=slug).first()
-    if existing and existing.client_updated_at >= client_dt:
+    client_dt = _client_dt(data.get("updated_at"), now)
+    existing = PlanSchedule.objects.filter(profile=profile, plan_slug=slug).order_by().first()
+    if existing:
+        if client_dt is None and keep_server_when_unknown:
+            return existing
+        if client_dt is not None and existing.client_updated_at >= client_dt:
+            return existing
+    fields = {**_clean_schedule(data), "client_updated_at": client_dt or now}
+    if existing:
+        for k, v in fields.items():
+            setattr(existing, k, v)
+        existing.save()
         return existing
-    obj, _ = PlanSchedule.objects.update_or_create(
-        profile=profile,
-        plan_slug=slug,
-        defaults={**_clean_schedule(data), "client_updated_at": client_dt},
-    )
+    # update_or_create, not create: two devices' first writes can race.
+    obj, _ = PlanSchedule.objects.update_or_create(profile=profile, plan_slug=slug, defaults=fields)
     return obj
 
 
@@ -912,11 +928,7 @@ _JOURNAL_ID = re.compile(r"^[A-Za-z0-9_-]{1,64}$")
 JOURNAL_BODY_MAX = 20_000
 JOURNAL_ANSWER_MAX = 10_000
 MAX_JOURNAL_ENTRIES = 5_000
-# How far ahead of the server a client clock may stamp a write. Last-write-wins
-# trusts the device's clock; one set years ahead would otherwise make its entry
-# immune to every later edit from a correct device.
-JOURNAL_CLOCK_SKEW = timedelta(days=1)
-_JOURNAL_REMIND = re.compile(r"^(daily|weekly-[0-6])@([01]\d|2[0-3]):[0-5]\d$")
+_JOURNAL_REMIND = re.compile(rf"^(daily|weekly-[0-6])@{_TIME}$")
 MAX_JOURNAL_UPDATES = 50
 JOURNAL_UPDATE_MAX = 2_000
 
@@ -996,7 +1008,7 @@ def _journal_fields(data) -> dict | None:
     if kind not in JournalKind.values:
         return None
     now = datetime.now(UTC)
-    updated = min(_ms_to_dt(data.get("client_updated_at")) or now, now + JOURNAL_CLOCK_SKEW)
+    updated = _client_dt(data.get("client_updated_at"), now) or now
     created = min(_ms_to_dt(data.get("client_created_at")) or updated, updated)
 
     def text(key, n):
@@ -1287,7 +1299,9 @@ class PlanScheduleView(APIView):
     def put(self, request, slug):
         if not _valid_slug(slug):
             return Response({"detail": "Invalid slug."}, status=400)
-        obj = _upsert_plan_schedule(_profile(request), slug, _dict_body(request))
+        obj = _upsert_plan_schedule(
+            _profile(request), slug, _dict_body(request), keep_server_when_unknown=False
+        )
         return Response(PlanScheduleSerializer(obj).data)
 
 
@@ -1496,7 +1510,7 @@ class MergeView(APIView):
             return
         for row in incoming[:MAX_MERGE_ROWS]:
             if isinstance(row, dict) and _valid_slug(row.get("plan_slug")):
-                _upsert_plan_schedule(profile, row["plan_slug"], row)
+                _upsert_plan_schedule(profile, row["plan_slug"], row, keep_server_when_unknown=True)
 
     def _merge_shelves(self, profile, incoming):
         """The same merge as a live PUT, per shelf (a reader has a handful, so

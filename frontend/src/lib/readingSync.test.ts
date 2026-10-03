@@ -190,6 +190,35 @@ describe('readingSync.clearOnSignOut', () => {
 		}
 	});
 
+	it('takes the account\'s stamp for a pushed choice (a fast clock is held to a day)', async () => {
+		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify({ dotk: { rule: 'weekdays', updatedAt: 9e12 } }));
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response(
+				JSON.stringify({
+					plan_slug: 'dotk',
+					start_on: null,
+					reading_days: 'weekdays',
+					remind_at: '',
+					client_updated_at: '2026-10-04T12:00:00Z'
+				}),
+				{ status: 200, headers: { 'content-type': 'application/json' } }
+			)
+		);
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushPlanSchedule('dotk', { rule: 'weekdays', updatedAt: 9e12 });
+			await vi.runAllTimersAsync();
+			expect(JSON.parse(localStorage.getItem(PLAN_SCHEDULE_KEY)!).dotk.updatedAt).toBe(
+				Date.parse('2026-10-04T12:00:00Z')
+			);
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
 	it('the merge carries calendar choices up and writes the account\'s back', async () => {
 		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify({ dotk: { rule: 'monsat', time: '06:30', updatedAt: 7 } }));
 		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
