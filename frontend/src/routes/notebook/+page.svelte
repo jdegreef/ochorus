@@ -695,7 +695,7 @@
 		border-top: none;
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.notebook {
 			--margin-x: 1.75rem;
 			--binding: 1.2rem;

@@ -97,17 +97,19 @@
 {/if}
 
 <style>
-	/* Phones only. The scoped `display` lives in the media query — a `sm:hidden`
-	   utility would be out-ranked by it and leak the bar onto desktop. */
+	/* Phones only — upright (narrow), or held sideways (short + touch: no
+	   tablet is under 500px tall). The scoped `display` lives in the media
+	   query — a `sm:hidden` utility would be out-ranked by it and leak the bar
+	   onto desktop. */
 	.tabbar {
 		display: none;
 	}
-	@media (max-width: 639.98px) {
+	@media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
 		.tabbar {
 			position: fixed;
 			inset-inline: 0;
 			bottom: 0;
-			z-index: 40;
+			z-index: var(--z-chrome);
 			display: flex;
 			padding-bottom: env(safe-area-inset-bottom);
 			border-top: 1px solid var(--border);
@@ -193,6 +195,34 @@
 	.add svg {
 		width: 1.5rem;
 		height: 1.5rem;
+	}
+	/* Sideways: a compact bar, icon beside label, so it takes 48px of a
+	   ~390px-tall screen rather than 58. The notch side gets its inset. */
+	@media (max-height: 499.98px) and (pointer: coarse) and (min-width: 640px) {
+		.tabbar {
+			padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
+		}
+		:global(:root:has(.tabbar)) {
+			--tabbar-h: calc(3rem + 1px + env(safe-area-inset-bottom));
+		}
+		.tab {
+			min-height: 3rem;
+			flex-direction: row;
+			gap: 0.4rem;
+		}
+		.tab-icon {
+			width: auto;
+			height: auto;
+			padding: 0.3rem 0.5rem;
+		}
+		.tab-label {
+			font-size: var(--fs-small);
+		}
+		.add {
+			width: 2.5rem;
+			height: 2.5rem;
+			margin-top: 0;
+		}
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.add {

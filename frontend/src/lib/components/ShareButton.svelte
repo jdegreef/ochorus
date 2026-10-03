@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
-	import { isCoarsePointer } from '$lib/reading';
+	import { menuShift } from '$lib/menuShift';
+	import { nativeShare, shareLinks } from '$lib/share';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -31,31 +32,22 @@
 	const menuId = $props.id();
 
 	let open = $state(false);
+	let root = $state<HTMLDivElement>();
+	// Placed by `menuShift` from the button's start edge, so a button near the
+	// screen's end edge on a phone can't hang the menu off it.
+	let width = $state(192);
+	let shift = $state(0);
+	function toggle() {
+		if (!open && root) ({ width, shift } = menuShift(root, 192));
+		open = !open;
+	}
 	let copied = $state(false);
 
-	const enc = encodeURIComponent;
-	// Service names (WhatsApp, Facebook) are proper nouns — not localized, like
-	// the artwork credit. "Share"/"Email" reuse existing catalogue strings.
-	const waHref = $derived(`https://wa.me/?text=${enc(`${title} ${url}`)}`);
-	const fbHref = $derived(`https://www.facebook.com/sharer/sharer.php?u=${enc(url)}`);
-	const mailHref = $derived(`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${url}`)}`);
+	const links = $derived(shareLinks(title, url, t('login.email')));
 
 	async function onClick() {
-		// Not on desktop Chromium (the only engine with `userAgentData`): Chrome
-		// and Edge there hand off to a system dialog that often shows nothing —
-		// a click that "does nothing". Phones and Safari keep the OS sheet.
-		const desktopChromium = 'userAgentData' in navigator && !isCoarsePointer();
-		if (!desktopChromium && typeof navigator.share === 'function') {
-			try {
-				await navigator.share({ title, url });
-				return;
-			} catch (err) {
-				// The reader dismissed the sheet — do nothing. Any other failure
-				// (unsupported payload, etc.) falls through to the menu.
-				if ((err as Error)?.name === 'AbortError') return;
-			}
-		}
-		open = !open;
+		// Any failure other than a dismissed sheet falls through to the menu.
+		if ((await nativeShare(title, url)) === 'unavailable') toggle();
 	}
 
 	async function copyLink() {
@@ -70,7 +62,7 @@
 	}
 </script>
 
-<div class="share-wrap" use:dismissable={{ open, onDismiss: () => (open = false) }}>
+<div class="share-wrap" bind:this={root} use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
 		class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
@@ -103,27 +95,26 @@
 		<!-- A labelled group, not a menu role: that promises arrow-key
 		     navigation between menu items, and these are plain links and buttons
 		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
-		<div id={menuId} class="share-menu" role="group" aria-label={t('reader.share')}>
+		<div
+			id={menuId}
+			class="share-menu"
+			style:width="{width}px"
+			style:left="{shift}px"
+			role="group"
+			aria-label={t('reader.share')}
+		>
 			<button type="button" class="share-opt text-small" onclick={copyLink}>
 				{copied ? t('share.linkCopied') : t('share.copyLink')}
 			</button>
-			<a
-				class="share-opt text-small"
-				href={waHref}
-				target="_blank"
-				rel="noopener"
-				onclick={() => (open = false)}>WhatsApp</a
-			>
-			<a
-				class="share-opt text-small"
-				href={fbHref}
-				target="_blank"
-				rel="noopener"
-				onclick={() => (open = false)}>Facebook</a
-			>
-			<a class="share-opt text-small" href={mailHref} onclick={() => (open = false)}
-				>{t('login.email')}</a
-			>
+			{#each links as l (l.name)}
+				<a
+					class="share-opt text-small"
+					href={l.href}
+					target={l.newTab ? '_blank' : undefined}
+					rel={l.newTab ? 'noopener' : undefined}
+					onclick={() => (open = false)}>{l.name}</a
+				>
+			{/each}
 		</div>
 	{/if}
 </div>
@@ -136,9 +127,9 @@
 	.share-menu {
 		position: absolute;
 		top: calc(100% + 0.4rem);
-		inset-inline-start: 0;
-		z-index: 30;
-		min-width: 12rem;
+		/* Physical `left`/`width` from the script (see `toggle`). */
+		left: 0; /* rtl-ok: physical offset set from script, already direction-aware (menuShift) */
+		z-index: var(--z-popover);
 		padding: 0.35rem;
 		background: var(--surface);
 		border: 1px solid var(--border);

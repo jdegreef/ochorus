@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { i18n } from '$lib/i18n.svelte';
 
 	/**
@@ -36,7 +37,7 @@
 </script>
 
 {#if topics.length > 1}
-	<div class="chip-scroller mb-6" aria-label={t('books.filterTopic')} role="group">
+	<div class="chip-scroller mb-6" use:scrollEdges aria-label={t('books.filterTopic')} role="group">
 		<span class="eyebrow text-muted me-1">{t('common.topics')}</span>
 		<button
 			class="chip"

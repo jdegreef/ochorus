@@ -78,7 +78,7 @@
 			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px)) +
 				var(--dockbar-h, 0px)
 		);
-		z-index: 60;
+		z-index: var(--z-toast);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;

@@ -2,6 +2,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { customShelves } from '$lib/customShelves.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { menuShift } from '$lib/menuShift';
 	import Icon from './Icon.svelte';
 	import ShelfPicker from './ShelfPicker.svelte';
 
@@ -25,22 +26,12 @@
 
 	let open = $state(false);
 	let root = $state<HTMLDivElement>();
-	// Placed from the BUTTON, not by measuring the menu: on a phone the button
-	// can wrap to mid-row, where a menu hung from it runs off the screen (and
-	// scrolls the page sideways), and a menu measured as it opens is measured
-	// before its contents have laid out. So the menu gets a known width —
-	// at most 18rem, never wider than the screen less 8px a side — and is
-	// slid from the button's start edge just enough to stay inside the screen.
+	// Placed from the button by `menuShift` (see there): a known width of at
+	// most 18rem, slid just enough to stay inside the screen on a phone.
 	let width = $state(288);
 	let shift = $state(0);
 	function toggle() {
-		if (!open && root) {
-			const vw = document.documentElement.clientWidth;
-			const btn = root.getBoundingClientRect();
-			width = Math.min(288, vw - 16);
-			const left = Math.min(Math.max(btn.left, 8), vw - 8 - width);
-			shift = left - btn.left;
-		}
+		if (!open && root) ({ width, shift } = menuShift(root, 288));
 		open = !open;
 	}
 	const onCount = $derived(customShelves.list().filter((s) => customShelves.has(s.id, slug)).length);

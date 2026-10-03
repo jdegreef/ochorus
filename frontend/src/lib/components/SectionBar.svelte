@@ -42,7 +42,7 @@
 	bind:this={bar}
 	bind:clientHeight={barH}
 	aria-label="Sections"
-	class="sticky top-[var(--appnav-h,0px)] z-20 -mx-5 mb-6 flex overflow-x-auto border-b border-border bg-bg px-3 [scrollbar-width:none]"
+	class="sticky top-[var(--appnav-h,0px)] z-(--z-pinned) -mx-5 mb-6 flex overflow-x-auto border-b border-border bg-bg px-3 [scrollbar-width:none]"
 >
 	{#each sections as s (s.id)}
 		<a

@@ -30,6 +30,9 @@
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
 	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
+	import { dismissable } from '$lib/actions/dismissable';
+	import { hasNativeShare, nativeShare, shareLinks } from '$lib/share';
+	import { favorites } from '$lib/favorites.svelte';
 	import { localizeHref } from '$lib/href';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
@@ -38,8 +41,6 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
-	import ShareButton from '$lib/components/ShareButton.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 
@@ -92,6 +93,66 @@
 	// to navigate.
 	let outline = $state<OutlineEntry[]>([]);
 	let outlineOpen = $state(false);
+	// Where the popover hangs: measured from the toggle that opened it, so it
+	// drops just under that button instead of a guessed offset that sat over the
+	// global nav and missed a bar that tracks --reading-measure.
+	let outlinePos = $state('');
+
+	function toggleOutline(e: MouseEvent) {
+		if (outlineOpen) {
+			outlineOpen = false;
+			return;
+		}
+		const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+		const vw = document.documentElement.clientWidth;
+		const rtl = getComputedStyle(document.documentElement).direction === 'rtl';
+		// inset-inline-end: the gap from the viewport's end edge to the button's.
+		const end = Math.max(12, rtl ? r.left : vw - r.right);
+		// …and never wider than the room left before the start edge, or on a
+		// phone (toggle well in from the end) it ran off the screen.
+		outlinePos =
+			`top: ${Math.round(r.bottom + 6)}px; inset-inline-end: ${Math.round(end)}px; ` +
+			`max-width: ${Math.round(vw - end - 12)}px`;
+		outlineOpen = true;
+	}
+
+	// The top bar's "⋯" group (save, share, focus — plus bookmark on phones) —
+	// the chapter reader's pattern, so the two bars read the same.
+	let moreOpen = $state(false);
+	/** Close the "⋯" group, then run the chosen action. */
+	const fromMore = (action: () => void) => () => {
+		moreOpen = false;
+		action();
+	};
+	const saved = $derived(favorites.has('sermon', sermon.slug));
+	const shareLabel = $derived(`${sermon.title} — ${sermon.author_name}`);
+	// Share from the "⋯" group ($lib/share, as ShareButton): the OS sheet
+	// where there is one. Where there isn't — or it fails for any reason but
+	// a dismissal — the row becomes Copy link and the fallback targets appear
+	// under it, with the menu left open to pick from.
+	let showTargets = $state(false);
+	let copied = $state(false);
+	let copyTimer: ReturnType<typeof setTimeout> | undefined;
+	$effect(() => () => clearTimeout(copyTimer));
+	async function shareFromMore() {
+		if (!showTargets) {
+			const r = await nativeShare(shareLabel, canonical);
+			if (r !== 'unavailable') {
+				moreOpen = false;
+				return;
+			}
+			showTargets = true;
+			return;
+		}
+		try {
+			await navigator.clipboard.writeText(canonical);
+			copied = true;
+			clearTimeout(copyTimer);
+			copyTimer = setTimeout(() => (copied = false), 1500);
+		} catch {
+			// Clipboard blocked: the address bar still holds the link.
+		}
+	}
 
 	// Phones get the chapter reader's footer row (Listen · + · Aa) instead of
 	// Listen and Aa in the top bar. Only one <ReaderControls> mounts — the
@@ -227,6 +288,10 @@
 	const seo = $derived(editionSeo(path, sermon.available_languages, fallback));
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
+
+	onMount(() => (showTargets = !hasNativeShare()));
+	const shareTargets = $derived(shareLinks(shareLabel, canonical, t('login.email')));
+
 	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
@@ -370,65 +435,175 @@
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
-	<div class="reader-chrome sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<div class="reader-chrome sticky top-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur">
 		<!-- Tracks the article below it (same `--reading-measure`, same `px-5`)
 		     rather than sitting at a flat 48rem, which was wider than the text at
 		     small settings and far narrower at large ones. The floor keeps the
 		     controls from crushing at narrow/0.8x; the min() keeps that floor
 		     inside a phone. -->
 		<div
-			class="mx-auto flex items-center justify-between gap-3 px-5 py-2.5"
+			class="mx-auto flex items-center justify-between gap-0.5 px-5 py-1.5 sm:gap-3 sm:py-2.5"
 			style="max-width: min(max(var(--reading-measure), 32rem), 100%)"
 		>
-			<a href={localizeHref('/sermons')} class="text-small text-muted hover:text-text"
-				><Arrow back /> {t('nav.sermons')}</a
-			>
-			<div class="flex shrink-0 items-center gap-1">
+			<!-- Phone bar: Back · which sermon · Outline · "⋯" (the shared one at
+			     the end of the row) — the chapter reader's phone bar. Listen and Aa
+			     live in the footer row; Bookmark, Save, Share and Focus fold into "⋯". -->
+			<div class="flex min-w-0 flex-1 items-center gap-0.5 sm:hidden">
+				<a
+					href={localizeHref('/sermons')}
+					class="btn btn-icon btn-ghost min-w-11 shrink-0"
+					aria-label={t('nav.sermons')}
+					title={t('nav.sermons')}><Icon name="chevron-left" size={20} /></a
+				>
+				<div class="min-w-0 flex-1 text-center">
+					<div
+						class="truncate text-small font-semibold text-text"
+						dir="auto"
+						lang={contentLang(sermon.language)}
+					>
+						{sermon.title}
+					</div>
+					<div class="truncate text-small text-muted"><bdi>{sermon.author_name}</bdi></div>
+				</div>
 				{#if outline.length >= 2}
 					<button
-						class="outline-toggle-btn btn btn-icon btn-ghost"
+						class="btn btn-icon btn-ghost min-w-11 shrink-0"
 						class:text-accent={outlineOpen}
-						onclick={() => (outlineOpen = !outlineOpen)}
+						onclick={toggleOutline}
 						aria-label={t('sermon.outline')}
 						title={t('sermon.outline')}
-						aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
+						aria-expanded={outlineOpen}><Icon name="list" size={20} /></button
 					>
 				{/if}
-				{#if listen.supported && !isPhone}
+			</div>
+			<a
+				href={localizeHref('/sermons')}
+				class="hidden min-w-0 truncate text-small text-muted hover:text-text sm:block"
+				><Arrow back /> {t('nav.sermons')}</a
+			>
+			<!-- From `sm`, the chapter bar's shape: Outline (where Contents stands) ·
+			     Bookmark · Listen · Aa · "⋯", labelled from `md`; Save, Share and
+			     Focus fold into "⋯". -->
+			<div class="flex shrink-0 items-center gap-0.5">
+				<div class="hidden sm:contents">
+					{#if outline.length >= 2}
+						<button
+							class="outline-toggle-btn btn btn-icon btn-ghost"
+							class:text-accent={outlineOpen}
+							onclick={toggleOutline}
+							aria-label={t('sermon.outline')}
+							title={t('sermon.outline')}
+							aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
+						>
+					{/if}
+					<!-- Labelled from `md`; the aria-label matches the visible word. -->
 					<button
-						class="btn btn-icon btn-ghost"
-						class:text-accent={listen.status !== 'idle'}
-						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-						aria-label={t('reader.listen')}
-						aria-pressed={listen.status !== 'idle'}
-						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
+						class="btn btn-icon btn-ghost md:px-2.5"
+						class:text-accent={bookmark.current}
+						onclick={bookmark.toggle}
+						aria-label={t('reader.bookmark')}
+						title={t('reader.bookmark')}
+						aria-pressed={bookmark.current}
+						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
+							>{t('reader.bookmark')}</span
+						></button
 					>
-				{/if}
-				<!-- Save this sermon to "My Library" — the shared FavoriteButton in its
-				     icon-only shape, so it matches the sibling toggles here and the
-				     labelled save control on book/author/plan pages. Without it the
-				     reader's saved-sermons shelf could never fill. -->
-				<FavoriteButton kind="sermon" slug={sermon.slug} />
-				<!-- Share this sermon — icon-only to match the sibling toggles; the
-				     shared control forwards the per-locale share card the build makes. -->
-				<ShareButton url={canonical} title="{sermon.title} — {sermon.author_name}" />
-				<button
-					class="btn btn-icon btn-ghost"
-					class:text-accent={bookmark.current}
-					onclick={bookmark.toggle}
-					aria-label={t('reader.bookmark')}
-					title={t('reader.bookmark')}
-					aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
+					{#if listen.supported && !isPhone}
+						<button
+							class="btn btn-icon btn-ghost md:px-2.5"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title={t('reader.listen')}
+							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
+								>{t('reader.listen')}</span
+							></button
+						>
+					{/if}
+					{#if !isPhone}
+						<ReaderControls />
+					{/if}
+				</div>
+				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
+				     sits in the row from `sm`, so only the phone folds it in here. -->
+				<div
+					class="relative shrink-0"
+					use:dismissable={{ open: moreOpen, onDismiss: () => (moreOpen = false) }}
 				>
-				{#if !isPhone}
-					<ReaderControls />
-				{/if}
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => readerUi.toggleFocus()}
-					aria-label={t('reader.focus')}
-					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-				>
+					<button
+						class="btn btn-icon btn-ghost min-w-11 sm:min-w-0"
+						onclick={() => (moreOpen = !moreOpen)}
+						aria-expanded={moreOpen}
+						aria-controls={moreOpen ? 'sermon-more' : undefined}
+						aria-label={t('reader.moreTools')}
+						title={t('reader.moreTools')}
+						><Icon name="more" size={20} class="sm:size-[18px]" /></button
+					>
+					{#if moreOpen}
+						<!-- A labelled group, not role="menu" (no arrow-key roving) — the
+						     same treatment as AccountMenu. -->
+						<div id="sermon-more" class="account-menu more-group" role="group" aria-label={t('reader.moreTools')}>
+							{#if isPhone}
+								<button
+									class="account-item more-item"
+									class:text-accent={bookmark.current}
+									onclick={fromMore(bookmark.toggle)}
+									aria-pressed={bookmark.current}
+									><Icon name="bookmark" size={20} />{bookmark.current
+										? t('reader.removeBookmark')
+										: t('reader.bookmark')}</button
+								>
+							{/if}
+							<!-- Save to "My Library": the store FavoriteButton toggles. -->
+							<button
+								class="account-item more-item"
+								class:text-accent={saved}
+								onclick={fromMore(() => favorites.toggle('sermon', sermon.slug))}
+								aria-pressed={saved}
+								><Icon name="heart" size={20} />{saved ? t('fav.saved') : t('fav.save')}</button
+							>
+							<button class="account-item more-item" onclick={shareFromMore}
+								><svg
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="1.7"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<circle cx="6" cy="12" r="2.6" />
+									<circle cx="17" cy="6" r="2.6" />
+									<circle cx="17" cy="18" r="2.6" />
+									<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
+								</svg><span aria-live="polite"
+									>{copied
+										? t('share.linkCopied')
+										: showTargets
+											? t('share.copyLink')
+											: t('reader.share')}</span
+								></button
+							>
+							{#if showTargets}
+								{#each shareTargets as st (st.name)}
+									<a
+										class="account-item more-item share-target"
+										href={st.href}
+										target={st.newTab ? '_blank' : undefined}
+										rel={st.newTab ? 'noopener noreferrer' : undefined}
+										onclick={() => (moreOpen = false)}>{st.name}</a
+									>
+								{/each}
+							{/if}
+							<button class="account-item more-item" onclick={fromMore(() => readerUi.toggleFocus())}
+								><Icon name="maximize" size={20} />{t('reader.focus')}</button
+							>
+						</div>
+					{/if}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -444,6 +619,7 @@
 	<div class="outline-backdrop" onclick={() => (outlineOpen = false)}></div>
 	<nav
 		class="outline-panel"
+		style={outlinePos}
 		aria-label={t('sermon.outline')}
 		use:focusTrap={{ onEscape: () => (outlineOpen = false) }}
 	>
@@ -500,7 +676,10 @@
 		</div>
 	{/if}
 
-	<Breadcrumb items={crumbs} />
+	<!-- Not on phones: the top bar's title block already names the sermon, and
+	     the trail wrapped to two lines repeating it. Only the visible trail —
+	     the BreadcrumbList JSON-LD (crumbsLd) still ships. -->
+	<div class="max-sm:hidden"><Breadcrumb items={crumbs} /></div>
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" />
 
@@ -818,7 +997,7 @@
 			position: fixed;
 			inset-inline: 0;
 			bottom: 0;
-			z-index: 30;
+			z-index: var(--z-popover);
 			padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
 			text-align: center;
 			font-size: var(--fs-micro);
@@ -934,17 +1113,36 @@
 		color: var(--muted);
 	}
 
-	/* Jump-to-section outline: a light popover under the reader bar. */
+	/* --- Top bar's "⋯" group — the chapter reader's, copied ---------------- */
+	/* `.account-menu` chrome, with icon rows at thumb size. */
+	.more-group {
+		top: calc(100% + 0.25rem);
+	}
+	/* The share targets carry no icon; indent them past the icon column. */
+	.more-item.share-target {
+		padding-inline-start: calc(0.75rem + 20px + 0.75rem);
+	}
+	.more-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-height: 2.75rem;
+		font-size: var(--fs-body);
+	}
+	.more-item.text-accent {
+		color: var(--accent);
+	}
+
+	/* Jump-to-section outline: a light popover hung under its toggle (top and
+	   inset-inline-end are set inline from the button, in toggleOutline). */
 	.outline-backdrop {
 		position: fixed;
 		inset: 0;
-		z-index: 20;
+		z-index: var(--z-popover);
 	}
 	.outline-panel {
 		position: fixed;
-		top: 3.4rem;
-		inset-inline-end: max(0.75rem, calc((100vw - 48rem) / 2));
-		z-index: 21;
+		z-index: calc(var(--z-popover) + 1);
 		width: min(20rem, calc(100vw - 1.5rem));
 		max-height: 70vh;
 		overflow-y: auto;

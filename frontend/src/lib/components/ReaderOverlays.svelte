@@ -176,7 +176,7 @@
 	   these are the notice's own inline layout and padding. */
 	.saved-notice {
 		position: fixed;
-		z-index: 45;
+		z-index: var(--z-floating);
 		top: calc(env(safe-area-inset-top) + 4.25rem);
 		inset-inline: 0;
 		margin-inline: auto;
