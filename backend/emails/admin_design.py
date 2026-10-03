@@ -190,7 +190,7 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
         )
 
     def audit_entry(self, request, response):
-        language = str(request.data.get("language", ""))
+        language = str(request.data.get("language", "")).strip().lower()
         entry = (response.data.get("translations") or {}).get(language) or {}
         return (
             f"broadcast:{self.kwargs.get('pk')}:{language}",

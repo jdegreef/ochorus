@@ -32,6 +32,7 @@ State per language lives in ``Broadcast.translations``:
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import json
 import re
@@ -40,7 +41,13 @@ import requests
 from django.conf import settings
 from django.db import models
 
-from library.admin_views.jobs import GITHUB_API, _headers, _job_title, file_issue
+from library.admin_views.jobs import (
+    GITHUB_API,
+    file_issue,
+    get_all,
+    github_headers,
+    job_title,
+)
 from library.languages import entry as language_entry
 from library.languages import known_codes
 
@@ -57,8 +64,13 @@ class State(models.TextChoices):
 #: The line a worker's reply comment starts with — what fetch looks for.
 MARKER = "<!-- ochorus:email-translation -->"
 
-#: The JSON block in an issue body or a reply comment.
-JSON_BLOCK = re.compile(r"```json\s*(\{.*?\})\s*```", re.S)
+#: The JSON block in an issue body or a reply comment — greedy, so a ``}`` and a
+#: fence inside the email's own words can't end it early.
+JSON_BLOCK = re.compile(r"```json\s*(\{.*\})\s*```", re.S)
+
+#: Whose reply comments count: the repo's people (the worker posts as one of
+#: them), never a passer-by who copied the job's JSON.
+_TRUSTED = {"OWNER", "MEMBER", "COLLABORATOR"}
 
 #: How an email is translated — in every issue, so each worker follows the same rules.
 INSTRUCTIONS = (
@@ -150,6 +162,11 @@ def check_answer(payload: dict, answer: dict) -> dict:
     subject = str(answer.get("subject") or "").strip()[:300]
     if not subject:
         raise TranslationJobError("The draft has no subject line.")
+    for i, (src, text) in enumerate(zip(payload["texts"], texts, strict=True)):
+        if not str(text).strip():
+            raise TranslationJobError(f"Translated string {i + 1} is empty.")
+        if str(text).count("{name}") != src.count("{name}"):
+            raise TranslationJobError(f"Translated string {i + 1} must keep {{name}} exactly as written.")
     return {
         "broadcast": payload["broadcast"],
         "target": payload["target"],
@@ -182,20 +199,25 @@ def _save_entry(broadcast, target: str, entry: dict, *fields: str) -> None:
 
 
 def request(broadcast, source: str, target: str) -> dict:
-    """File (or return the already-open) translation job for ``target``."""
+    """File a translation job for ``target``; asking again replaces an open one."""
     if broadcast.is_locked:
         raise TranslationJobError("A broadcast that has started sending can't be translated.")
     if target == source or target not in known_codes():
         raise TranslationJobError("Choose a known language other than the source.")
     if source not in sendable_locales(broadcast):
         raise TranslationJobError("The source language needs a subject and content first.")
-    payload = job_payload(broadcast, source, target)
     current = _entry(broadcast, target)
-    if current.get("state") == State.REQUESTED and current.get("source_digest") == payload["source_digest"]:
-        return current  # one open job per language and source: pressing again doesn't re-file
+    if current.get("state") == State.DRAFT:
+        # Re-requesting would leave unreviewed AI words in the email unblocked.
+        raise TranslationJobError(
+            "An AI draft is waiting for review — approve it (after any edits) before asking for another."
+        )
     _require_github()
 
-    issue = file_issue(_job_title("email", f"broadcast-{broadcast.pk}", target), _issue_body(payload))
+    payload = job_payload(broadcast, source, target)
+    issue = file_issue(job_title("email", f"broadcast-{broadcast.pk}", target), _issue_body(payload))
+    if current.get("state") == State.REQUESTED:
+        _close(current["issue"])  # asked again: the newer job replaces the older
     entry = {
         "state": State.REQUESTED,
         "issue": issue.get("number"),
@@ -207,20 +229,24 @@ def request(broadcast, source: str, target: str) -> dict:
     return entry
 
 
+def _close(issue_number) -> None:
+    """Close a superseded job issue — best effort; a worker that still takes it
+    only posts a reply nobody fetches."""
+    with contextlib.suppress(requests.RequestException):
+        requests.patch(
+            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues/{issue_number}",
+            headers=github_headers(),
+            json={"state": "closed", "state_reason": "not_planned"},
+            timeout=15,
+        ).raise_for_status()
+
+
 def _replies(issue_number: int):
-    """Every marked JSON reply on the issue, newest first."""
-    url = f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues/{issue_number}/comments"
-    comments: list[dict] = []
-    for page in range(1, 11):
-        r = requests.get(url, headers=_headers(), params={"per_page": 100, "page": page}, timeout=15)
-        r.raise_for_status()
-        batch = r.json()
-        comments.extend(batch)
-        if len(batch) < 100:
-            break
-    for comment in reversed(comments):
+    """Every marked JSON reply on the issue from the repo's people, newest first."""
+    for comment in reversed(get_all(f"/issues/{issue_number}/comments", {})):
         body = comment.get("body") or ""
-        match = JSON_BLOCK.search(body) if MARKER in body else None
+        trusted = comment.get("author_association") in _TRUSTED
+        match = JSON_BLOCK.search(body) if trusted and MARKER in body else None
         if match:
             try:
                 yield json.loads(match.group(1))
@@ -269,7 +295,16 @@ def approve(broadcast, target: str, *, actor: str = "") -> dict:
     entry = _entry(broadcast, target)
     if entry.get("state") != State.DRAFT:
         raise TranslationJobError("Only an AI draft waiting for review can be approved.")
-    entry = {**entry, "state": State.APPROVED, "approved_by": actor}
+    if broadcast.is_locked:
+        raise TranslationJobError("A broadcast that has started sending can't be changed.")
+    # Approved against the source as it is now: stale from here means the source
+    # moved after the admin read it.
+    entry = {
+        **entry,
+        "state": State.APPROVED,
+        "approved_by": actor,
+        "source_digest": locale_digest(broadcast, entry["source_locale"]),
+    }
     _save_entry(broadcast, target, entry)
     return entry
 

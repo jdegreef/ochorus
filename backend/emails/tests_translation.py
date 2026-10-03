@@ -51,11 +51,16 @@ def _spanish(payload):
     return jobs.check_answer(payload, answer)
 
 
+def _comment(reply, who="MEMBER"):
+    return {"body": reply_comment(reply), "author_association": who}
+
+
 class _GitHub:
     """A fake of the two GitHub calls: file an issue, list its comments."""
 
     def __init__(self):
         self.filed = []
+        self.closed = []
         self.comments = []
 
     def post(self, url, json=None, **kw):
@@ -65,6 +70,10 @@ class _GitHub:
             raise_for_status=lambda: None,
             json=lambda: {"number": 4242, "html_url": "https://github.com/x/y/issues/4242"},
         )
+
+    def patch(self, url, json=None, **kw):
+        self.closed.append(url.rsplit("/", 1)[1])
+        return mock.Mock(raise_for_status=lambda: None)
 
     def get(self, url, **kw):
         return mock.Mock(raise_for_status=lambda: None, json=lambda: self.comments)
@@ -80,7 +89,7 @@ class TranslationJobTests(TestCase):
         _make_profile()
         self.gh = _GitHub()
         patcher = mock.patch.multiple(
-            "emails.translation_jobs.requests", post=self.gh.post, get=self.gh.get
+            "emails.translation_jobs.requests", post=self.gh.post, get=self.gh.get, patch=self.gh.patch
         )
         patcher.start()
         self.addCleanup(patcher.stop)
@@ -107,9 +116,10 @@ class TranslationJobTests(TestCase):
             ["Wait for the Lord", BLOCKS[1]["text"], "Start reading", "Begin the plan"],
         )
         self.assertEqual(payload["subject"], "Wait for the Lord this Advent")
-        # Pressing again doesn't file a second job.
+        # Asking again files a new job and closes the old one.
         self._act(b, "request")
-        self.assertEqual(len(self.gh.filed), 1)
+        self.assertEqual(len(self.gh.filed), 2)
+        self.assertEqual(self.gh.closed, ["4242"])
         self.assertTrue(
             AdminAction.objects.filter(action=AdminAction.Action.EMAIL_TRANSLATION_REQUEST).exists()
         )
@@ -134,7 +144,7 @@ class TranslationJobTests(TestCase):
 
         self.gh.comments = [
             {"body": "Claiming this."},
-            {"body": reply_comment(_spanish(self.gh.payload()))},
+            _comment(_spanish(self.gh.payload())),
         ]
         res = self._act(b, "fetch")
         self.assertEqual(res.status_code, 200, res.content)
@@ -163,7 +173,7 @@ class TranslationJobTests(TestCase):
     def test_a_reply_to_an_older_source_is_refused(self):
         b = _campaign()
         self._act(b, "request")
-        self.gh.comments = [{"body": reply_comment(_spanish(self.gh.payload()))}]
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
         b.refresh_from_db()
         b.subject = {"en": "A new subject"}
         b.save()
@@ -177,13 +187,49 @@ class TranslationJobTests(TestCase):
     def test_editing_the_source_marks_the_draft_stale(self):
         b = _campaign()
         self._act(b, "request")
-        self.gh.comments = [{"body": reply_comment(_spanish(self.gh.payload()))}]
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
         self._act(b, "fetch")
         b.refresh_from_db()
         b.subject = {**b.subject, "en": "A new subject"}
         b.save()
         warnings = {c["code"] for c in run_checks(b) if c["level"] == "warning"}
         self.assertIn("translation-stale:es", warnings)
+
+    def test_only_the_repos_people_can_reply(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()), who="NONE")]
+        res = self._act(b, "fetch")
+        self.assertEqual(res.json()["translations"]["es"]["state"], "requested")
+
+    def test_a_draft_must_be_reviewed_before_another_is_asked_for(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        self._act(b, "fetch")
+        self.assertEqual(self._act(b, "request").status_code, 409)
+        b.refresh_from_db()
+        errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
+        self.assertIn("translation:es", errors)
+
+    def test_approving_reads_the_draft_against_the_current_source(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        self._act(b, "fetch")
+        b.refresh_from_db()
+        b.subject = {**b.subject, "en": "A new subject"}
+        b.save()
+        self.assertTrue(self._act(b, "approve").json()["translations"]["es"]["stale"] is False)
+
+    def test_the_name_placeholder_must_survive(self):
+        payload = jobs.job_payload(_campaign(), "en", "es")
+        texts = [*SPANISH]
+        texts[1] = texts[1].replace("{name}", "{nombre}")
+        with self.assertRaises(jobs.TranslationJobError):
+            jobs.check_answer(payload, {"subject": "S", "texts": texts})
+        with self.assertRaises(jobs.TranslationJobError):
+            jobs.check_answer(payload, {"subject": "S", "texts": ["", *SPANISH[1:]]})
 
     def test_approve_needs_a_draft(self):
         self.assertEqual(self._act(_campaign(), "approve").status_code, 409)
@@ -205,19 +251,19 @@ class WorkerCommandTests(TestCase):
         return _write(jobs._issue_body(payload))
 
     def test_answer_becomes_a_reply_fetch_can_read(self):
-        answer = _write(json.dumps({"subject": "Asunto", "preheader": "", "texts": ["a", "b", "c", "d"]}))
+        answer = _write(json.dumps({"subject": "Asunto", "preheader": "", "texts": SPANISH}))
         out = io.StringIO()
         call_command("translate_email_job", self._issue(), "--answer", answer, stdout=out)
         text = out.getvalue()
         self.assertTrue(text.startswith(jobs.MARKER))
         reply = json.loads(jobs.JSON_BLOCK.search(text).group(1))
-        self.assertEqual(reply["texts"], ["a", "b", "c", "d"])
+        self.assertEqual(reply["texts"], SPANISH)
         self.assertEqual(reply["target"], "es")
 
     def test_a_wrong_answer_is_refused(self):
         issue = self._issue()
         for bad in (
-            {"subject": "", "preheader": "", "texts": ["a", "b", "c", "d"]},
+            {"subject": "", "preheader": "", "texts": SPANISH},
             {"subject": "S", "preheader": "", "texts": ["only one"]},
         ):
             with self.assertRaises(CommandError):

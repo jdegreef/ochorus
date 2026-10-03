@@ -191,7 +191,8 @@ issue, and the admin pulls it in and approves it there
    hand-edit the printed JSON.
 4. Post the printed text as a comment on the issue **exactly as printed** (it
    starts with `<!-- ochorus:email-translation -->`), remove `in-progress`, and
-   close the issue. No branch, no PR, no review notes file.
+   close the issue. Post it as the repo's account: the server ignores replies
+   from anyone who isn't the repo's owner, a member or a collaborator. No branch, no PR, no review notes file.
 
 The admin sees the draft in the email designer, edits it if needed, and must
 press Approve before the email can be sent — never approve or describe it as

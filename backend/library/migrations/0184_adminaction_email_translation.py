@@ -47,7 +47,7 @@ class Migration(migrations.Migration):
                     ("email.template_save", "Email template saved"),
                     ("email.template_delete", "Email template deleted"),
                     ("email.translation_request", "Email translation requested"),
-                    ("email.translation_draft", "Email translation draft pulled in"),
+                    ("email.translation_draft", "Email translation draft checked for"),
                     ("email.translation_approve", "Email translation approved"),
                     ("feedback.triage", "Reader feedback triaged"),
                     ("search.decide", "Unanswered search triaged"),

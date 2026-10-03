@@ -92,7 +92,7 @@ _JOB_GUIDANCE = {
 }
 
 
-def _job_title(type_: str, slug: str, language: str) -> str:
+def job_title(type_: str, slug: str, language: str) -> str:
     return f"[translation] {type_}:{slug} -> {language}"
 
 
@@ -152,7 +152,7 @@ def _resolve_source(type_: str, slug: str, language: str):
     return None
 
 
-def _headers() -> dict:
+def github_headers() -> dict:
     return {
         "Authorization": f"Bearer {settings.GITHUB_TRANSLATION_TOKEN}",
         "Accept": "application/vnd.github+json",
@@ -164,7 +164,7 @@ def file_issue(title: str, body: str) -> dict:
     JSON. Raises requests.RequestException upstream."""
     r = requests.post(
         f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-        headers=_headers(),
+        headers=github_headers(),
         json={"title": title, "body": body, "labels": [LABEL]},
         timeout=15,
     )
@@ -214,27 +214,28 @@ def _list_open_jobs() -> list[dict]:
     The GET path shares this, so the dashboard's own queue was short by the same
     jobs it was hiding from the guard.
     """
-    jobs: list[dict] = []
+    issues = get_all("/issues", {"state": "open", "labels": LABEL, "direction": "asc"})
+    return [job for issue in issues if (job := _issue_to_job(issue))]
+
+
+def get_all(path: str, params: dict) -> list[dict]:
+    """Every item of a paginated GET under the job repo, e.g. ``/issues``.
+    Raises requests.RequestException upstream."""
+    items: list[dict] = []
     for page in range(1, _MAX_PAGES + 1):
         r = requests.get(
-            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-            headers=_headers(),
-            params={
-                "state": "open",
-                "labels": LABEL,
-                "per_page": _PAGE_SIZE,
-                "direction": "asc",
-                "page": page,
-            },
+            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}{path}",
+            headers=github_headers(),
+            params={**params, "per_page": _PAGE_SIZE, "page": page},
             timeout=15,
         )
         r.raise_for_status()
         batch = r.json()
-        jobs.extend(job for issue in batch if (job := _issue_to_job(issue)))
+        items.extend(batch)
         # A short page is the last page — no Link-header parsing needed.
         if len(batch) < _PAGE_SIZE:
             break
-    return jobs
+    return items
 
 
 def translation_blocked(job_type: str, slug: str) -> bool:
@@ -339,7 +340,7 @@ class AdminTranslationJobsView(AdminAudited, APIView):
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
-        title = _job_title(type_, slug, language)
+        title = job_title(type_, slug, language)
         lang_name = language_entry(language)["name"]
         try:
             # Duplicate-press guard: one open issue per (type, slug, language).

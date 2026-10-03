@@ -293,13 +293,13 @@
 	const translationOf = (code: string) => draft?.translations[code];
 	const pendingLocales = $derived(
 		Object.entries(draft?.translations ?? {})
-			.filter(([code, t]) => t.state === 'requested' && !draft?.content[code])
+			.filter(([, t]) => t.state === 'requested')
 			.map(([code]) => code)
 	);
 
 	async function translation(action: 'request' | 'fetch' | 'approve', code: string) {
 		if (!draft) return;
-		if (action === 'request' && !confirm(`Ask for an AI draft in ${localeLabel(code)}? It goes to the translation queue; check back once a worker has run.`)) return;
+		if (action === 'request' && !confirm(`Ask for ${translationOf(code)?.state === 'requested' ? 'a new' : 'an'} AI draft in ${localeLabel(code)}? It goes to the translation queue (replacing any open request); check back once a worker has run.`)) return;
 		busy = true;
 		error = '';
 		notice = '';
@@ -335,7 +335,8 @@
 		ok: { cls: 'bg-accent-soft text-accent', label: 'OK', glyph: '✓' }
 	};
 
-	const availableToAdd = $derived(LOCALES.filter((l) => !draft?.content[l.code]));
+	// A language waiting on an AI draft is added by its draft, not by hand.
+	const availableToAdd = $derived(LOCALES.filter((l) => !draft?.content[l.code] && !pendingLocales.includes(l.code)));
 	const statusTone: Record<BroadcastStatus, string> = {
 		draft: 'bg-surface-2 text-muted',
 		scheduled: 'bg-accent-soft text-accent',
@@ -507,6 +508,7 @@
 					<span class="text-text">{localeLabel(code)}: AI draft requested</span>
 					<a class="text-micro text-accent hover:underline" href={translationOf(code)?.url} target="_blank" rel="noopener">issue #{translationOf(code)?.issue}</a>
 					<button class="btn btn-ghost btn-sm" onclick={() => translation('fetch', code)} disabled={busy}>Check for the draft</button>
+					<button class="btn btn-ghost btn-sm" onclick={() => translation('request', code)} disabled={busy || readOnly}>Ask again</button>
 				</div>
 			{/each}
 

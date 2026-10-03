@@ -2260,7 +2260,7 @@ class AdminAction(models.Model):
         EMAIL_TEMPLATE_SAVE = "email.template_save", "Email template saved"
         EMAIL_TEMPLATE_DELETE = "email.template_delete", "Email template deleted"
         EMAIL_TRANSLATION_REQUEST = "email.translation_request", "Email translation requested"
-        EMAIL_TRANSLATION_DRAFT = "email.translation_draft", "Email translation draft pulled in"
+        EMAIL_TRANSLATION_DRAFT = "email.translation_draft", "Email translation draft checked for"
         EMAIL_TRANSLATION_APPROVE = "email.translation_approve", "Email translation approved"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
         SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
