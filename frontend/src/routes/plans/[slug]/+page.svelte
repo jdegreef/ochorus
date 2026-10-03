@@ -22,6 +22,8 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
+	import { portal } from '$lib/actions/portal';
+	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	let { data } = $props();
@@ -128,12 +130,21 @@
 	 *  a prerendered date would be stale by the next morning. */
 	let today = $state<Date | null>(null);
 	onMount(() => (today = new Date()));
-	const finishDate = $derived.by(() => {
-		if (!today) return '—';
-		const end = new Date(today);
-		end.setDate(end.getDate() + daysLeft - 1);
-		return new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }).format(end);
+	/** The date `n` days from today (call only once `today` is set). */
+	const dayFrom = (n: number) => {
+		const d = new Date(today!);
+		d.setDate(d.getDate() + n);
+		return d;
+	};
+	// Built once per language, not on every progress change.
+	const dateFmt = $derived({
+		monthDay: new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }),
+		weekday: new Intl.DateTimeFormat(getLang(), { weekday: 'short' }),
+		day: new Intl.DateTimeFormat(getLang(), { day: 'numeric' })
 	});
+	const finishDate = $derived(today ? dateFmt.monthDay.format(dayFrom(daysLeft - 1)) : '—');
+	/** One read count for a run of days — a book section, a week, a rail segment. */
+	const readIn = (days: PlanDay[]) => days.filter((d) => doneSet.has(d.day)).length;
 	/** The plan's shape beyond the eyebrow's length: how much a day, how many
 	 *  books, and when a reader going a day at a time from today would finish. */
 	const facts = $derived(
@@ -151,10 +162,63 @@
 		].filter((f) => f !== null)
 	);
 
-	const dayHref = (day: number) => {
-		const d = plan.days.find((x) => x.day === day);
-		return d ? localizeHref(planDayPath(plan.slug, d)) : '#';
+	/** The jump chips' targets and labels: one per book section. Volumes of ONE
+	 *  series (a shared cover title, distinct series_position) are named by
+	 *  their number ("Book 1"); anything else by its title. */
+	const groupId = (g: PlanGroup) => `plan-${g.key}`;
+	const groupLabels = $derived.by(() => {
+		const tiles = groups.map((g) => coverBySlug.get(g.bookSlug));
+		const positions = tiles.map((c) => c?.series_position);
+		const series = new Set(tiles.map((c) => c?.cover_title));
+		const numbered =
+			positions.every((n) => n) &&
+			new Set(positions).size === positions.length &&
+			series.size === 1 &&
+			!series.has('');
+		return groups.map((g, i) =>
+			numbered
+				? t('originals.volume').replace('%n%', String(positions[i]))
+				: g.bookTitle || t('search.groupArticles')
+		);
+	});
+	/** A chip opens the section it jumps to — a closed <details> would land the
+	 *  reader on a bare header — then jumps the shared way (reduced-motion aware). */
+	const openSection = (e: MouseEvent, id: string) => {
+		const el = document.getElementById(id);
+		if (!(el instanceof HTMLDetailsElement)) return;
+		e.preventDefault();
+		el.open = true;
+		jumpToSection(id);
 	};
+
+	const nextCover = $derived(nextDay?.book_slug ? coverBySlug.get(nextDay.book_slug) : undefined);
+	/** The next few unread days after today's, each with the date it falls on
+	 *  for a reader going a day at a time (client-only, like the finish date). */
+	const comingUp = $derived.by(() => {
+		if (!started || next === null) return [];
+		const out: (PlanDay & { date: string })[] = [];
+		for (let i = plan.days.findIndex((d) => d.day > next); i >= 0 && i < plan.days.length; i++) {
+			const d = plan.days[i];
+			if (doneSet.has(d.day)) continue;
+			const on: Date | null = today ? dayFrom(out.length + 1) : null;
+			// "Sat 3": weekday then day, whatever order a combined format picks.
+			out.push({ ...d, date: on ? `${dateFmt.weekday.format(on)} ${dateFmt.day.format(on)}` : '' });
+			if (out.length === 3) break;
+		}
+		return out;
+	});
+
+	/** The phone's bottom bar shows the read verb only once the read card has
+	 *  scrolled away — never two primaries on screen (the book page's rule). */
+	let readCardEl = $state<HTMLElement>();
+	/** The pinned book chips' height, measured, for --pinned-offset. */
+	let jumpH = $state(0);
+	const cardSeen = elementVisible(() => readCardEl, { initial: true });
+
+	/** Each day's link, built once per plan — the list, the read card, Coming
+	 *  up and the phone bar all look theirs up. */
+	const hrefByDay = $derived(new Map(plan.days.map((d) => [d.day, localizeHref(planDayPath(plan.slug, d))])));
+	const dayHref = (day: number) => hrefByDay.get(day) ?? '#';
 </script>
 
 <!-- The plan's own card, in the language of the plan shown (a page that fell
@@ -171,7 +235,16 @@
 	structuredData={[planLd, crumbsLd]}
 />
 
-<div class="page-col px-5 py-10">
+<!-- The one read verb, wherever it shows: the read card, the phone bar. -->
+{#snippet readButton(cls: string, day: number)}
+	<a href={dayHref(day)} class={cls} onclick={() => planProgress.start(plan.slug)}>
+		{started ? t('plans.continue') : t('plans.start')}
+	</a>
+{/snippet}
+
+<!-- --pinned-offset: the app nav plus the book chips pinned over the list —
+     what every section jump clears. -->
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {jumpH}px)">
 	<Breadcrumb items={crumbs} />
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/plans" />
@@ -222,7 +295,7 @@
 			     progress is client-only) gets Day 1 with the "Free to read · No account
 			     needed" reassurance. Save and Share sit quietly beneath. -->
 			{#if next !== null}
-				<div class="read-card">
+				<div class="read-card" bind:this={readCardEl}>
 					<div class="read-card-body">
 						{#if started}
 							<p class="text-small text-muted">{progressLine}</p>
@@ -234,15 +307,25 @@
 							</p>
 						{/if}
 						{#if nextDay}
-							<p class="read-card-title" dir="auto">
-								{dayTitle(nextDay)}
-							</p>
-							<p class="text-small text-muted" dir="auto">
-								<!-- The separator as an expression: literal spaces at an {#if}
-								     boundary are compiler-trimmed ("Prayer·9 min"). -->
-								{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
-									>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
-							</p>
+							<!-- Today's reading, named and pictured: its book's cover beside
+							     the title, and the verse the day opens on. -->
+							<div class="mt-1 flex items-start gap-3">
+								{#if nextCover}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
+								<div class="min-w-0">
+									<p class="read-card-title" dir="auto">
+										{dayTitle(nextDay)}
+									</p>
+									<p class="text-small text-muted" dir="auto">
+										<!-- The separator as an expression: literal spaces at an {#if}
+										     boundary are compiler-trimmed ("Prayer·9 min"). -->
+										{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
+											>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+									</p>
+									{#if nextDay.key_verse}
+										<span class="tag verse-chip mt-2">{nextDay.key_verse}</span>
+									{/if}
+								</div>
+							</div>
 						{/if}
 						{#if started}
 							<div class="mt-2">
@@ -254,11 +337,37 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
-							{started ? t('plans.continue') : t('plans.start')}
-						</a>
+						{@render readButton('btn btn-primary', next)}
+						{#if started}
+							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
+								{t('plans.markDone')}
+							</button>
+						{/if}
 					</div>
 				</div>
+
+				<!-- What comes after today: the next few days, dated for a reader going
+				     a day at a time. -->
+				{#if comingUp.length}
+					<section class="mt-5" aria-labelledby="coming-up-heading">
+						<h2 id="coming-up-heading" class="section-heading">{t('plans.comingUp')}</h2>
+						<ol class="divide-y divide-border">
+							{#each comingUp as d (d.day)}
+								<li>
+									<a href={dayHref(d.day)} class="coming-row">
+										<span class="coming-date text-small font-semibold text-muted tabular-nums">{d.date}</span>
+										<span class="min-w-0 flex-1">
+											<span class="block truncate text-body text-text" dir="auto">{dayTitle(d)}</span>
+											<span class="block text-small text-muted"
+												>{t('plans.day')} {d.day} · {readingMinutes(d.word_count || 0)} {t('common.min')}</span
+											>
+										</span>
+									</a>
+								</li>
+							{/each}
+						</ol>
+					</section>
+				{/if}
 			{:else}
 				<!-- A status line, not a control: a finished plan has no action, so it
 				     must not wear a button's chrome (it read as a disabled button). -->
@@ -294,14 +403,56 @@
 			     day stays in the prerendered HTML for crawlers and no-JS readers, and the
 			     open state needs no script. Progress is client-only, so the prerender
 			     opens on Day 1 and hydration moves it to where the reader is. -->
+			<!-- The journey rail, once started: every day as a tick in its book's
+			     run — read, today, still to come, in the series segments' colours.
+			     Decorative: the read card's progress bar says it in words. -->
+			{#if started}
+				<div class="plan-rail" aria-hidden="true">
+					{#each groups as g, gi (g.key)}
+						<div class="rail-seg" style="flex-grow: {g.days.length}">
+							<div class="rail-ticks">
+								{#each g.days as d (d.day)}
+									<span
+										class="rail-tick stage-mark"
+										class:done={doneSet.has(d.day)}
+										class:reading={d.day === next}
+									></span>
+								{/each}
+							</div>
+							<div class="rail-label text-micro text-muted">
+								<span>{grouped ? groupLabels[gi] : dayRange(g)}</span><span class="tabular-nums"
+									>{readIn(g.days)}/{g.days.length}</span
+								>
+							</div>
+						</div>
+					{/each}
+				</div>
+			{/if}
+
 			<section aria-labelledby="plan-days-heading">
 				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
+				<!-- One chip per book, pinned while the list scrolls: a jump to (and
+				     open of) that book's section. Anchors, so every day stays in the
+				     prerendered page. -->
+				{#if grouped}
+					<nav
+						class="plan-jump chip-scroller"
+						aria-label={t('nav.books')}
+						bind:clientHeight={jumpH}
+					>
+						{#each groups as g, gi (g.key)}
+							<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
+								>{groupLabels[gi]}</a
+							>
+						{/each}
+					</nav>
+				{/if}
 				{#each groups as g, gi (g.key)}
 					{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
 					{#if grouped}
-						{@const read = g.days.filter((d) => doneSet.has(d.day)).length}
+						{@const read = readIn(g.days)}
 						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-						<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
+						<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
 							<summary class="plan-group-head">
 								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
 								<span class="min-w-0 flex-1">
@@ -352,7 +503,7 @@
 						{#if started}
 							<span class="sr-only"
 								>{t('plans.readOf')
-									.replace('%n%', String(w.filter((d) => doneSet.has(d.day)).length))
+									.replace('%n%', String(readIn(w)))
 									.replace('%m%', String(w.length))}</span
 							>
 						{/if}
@@ -412,7 +563,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
+							<span class="tag verse-chip row-verse">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -437,16 +588,37 @@
 			</div>
 		</section>
 	{/if}
+
 </div>
+
+<!-- Portalled to <body>: .page-col's centring transform would otherwise pin
+     a fixed bar to the column instead of the screen.
+     Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar — the next day named, one button. Below the side-panel
+     breakpoint only; from there the panel itself stays in view. -->
+{#if next !== null && nextDay && !cardSeen.visible}
+	<div class="plan-bar" use:portal>
+		<span class="min-w-0 flex-1">
+			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
+			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>
+		</span>
+		{@render readButton('btn btn-primary shrink-0', next)}
+	</div>
+{/if}
 
 <style>
 	/* A book's run of days: a card whose summary is the book (cover, span,
 	   progress) and whose body is its weeks. */
-	.plan-group {
-		margin-top: 0.75rem;
+	.plan-group,
+	.plan-rail {
 		border: 1px solid var(--border);
 		border-radius: var(--radius-card);
 		background: var(--surface);
+	}
+	/* A book section lands clear of the app nav and the pinned chips. */
+	.plan-group {
+		margin-top: 0.75rem;
+		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
 	}
 	.plan-group-head {
 		display: flex;
@@ -526,6 +698,16 @@
 	.verse-chip:hover {
 		border-color: var(--border);
 	}
+	/* In a day row the pill shows from 640px; on a phone the verse rides the
+	   line under the title instead (scoped, so it beats .tag's display). */
+	.row-verse {
+		display: none;
+	}
+	@media (min-width: 640px) {
+		.row-verse {
+			display: inline-flex;
+		}
+	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {
 		display: grid;
@@ -573,10 +755,11 @@
 			grid-column: 2;
 			grid-row: 1;
 			position: sticky;
-			top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
+			/* The app nav only: the pinned book chips live in the other column. */
+			top: calc(var(--appnav-h, 0px) + 1rem);
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
-			max-height: calc(100vh - var(--pinned-offset, var(--appnav-h, 0px)) - 2rem);
+			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
 			overflow-y: auto;
 		}
 	}
@@ -590,6 +773,90 @@
 			order: -1;
 			width: min(18rem, 80%);
 			margin-inline: auto;
+		}
+	}
+	.plan-jump {
+		position: sticky;
+		top: var(--appnav-h, 0px);
+		z-index: 10;
+		padding-block: 0.5rem;
+		background: var(--bg);
+	}
+	/* The rail: one tick a day, a book's run per segment. */
+	.plan-rail {
+		display: flex;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+		padding: 1rem;
+	}
+	.rail-seg {
+		flex-basis: 0;
+		min-width: 0;
+	}
+	.rail-ticks {
+		display: flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 2rem;
+	}
+	/* Colours from .stage-mark (done / reading), as the series segments wear. */
+	.rail-tick {
+		flex: 1 1 0;
+		min-width: 1px;
+		height: 1.25rem;
+		border-radius: 2px;
+	}
+	.rail-tick.reading {
+		height: 2rem;
+	}
+	.rail-label {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+		white-space: nowrap;
+	}
+	/* Coming up: a date block beside each of the next few days. */
+	.coming-row {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-height: 2.75rem;
+		padding-block: 0.5rem;
+		color: var(--text);
+	}
+	.coming-row:hover {
+		text-decoration: none;
+	}
+	.coming-date {
+		width: 3.5rem;
+		flex-shrink: 0;
+	}
+	/* The phone's bottom bar, above the tab bar and the home indicator. */
+	.plan-bar {
+		position: fixed;
+		inset-inline: 0;
+		/* The shared clearance every fixed bottom chrome uses (.min-left). */
+		bottom: max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px));
+		z-index: 30;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.625rem 1.25rem;
+		border-top: 1px solid var(--border);
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+	/* While the bar is up, the page's foot (the footer's last line) scrolls
+	   clear of it rather than sitting underneath. */
+	@media (max-width: 1023.98px) {
+		:global(body:has(.plan-bar)) {
+			padding-bottom: 4.5rem;
+		}
+	}
+	@media (min-width: 1024px) {
+		.plan-bar {
+			display: none;
 		}
 	}
 </style>
