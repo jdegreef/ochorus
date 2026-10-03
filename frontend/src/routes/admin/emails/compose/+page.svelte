@@ -14,6 +14,7 @@
 		previewAudience,
 		listEmailTemplates,
 		saveEmailTemplate,
+		broadcastTranslation,
 		deleteEmailTemplate,
 		type EmailTemplate,
 		type AdminBroadcast,
@@ -55,6 +56,7 @@
 		status_reason: string;
 		audience_count: number;
 		locked: boolean;
+		translations: AdminBroadcast['translations'];
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -94,7 +96,8 @@
 			progress: b.progress,
 			status_reason: b.status_reason,
 			audience_count: b.audience_count,
-			locked: b.locked
+			locked: b.locked,
+			translations: b.translations ?? {}
 		};
 	}
 
@@ -285,6 +288,40 @@
 		editLocale = code;
 	}
 
+	// --- AI-drafted translations (a job for a worker session; see the backend's
+	// emails/translation_jobs.py). A draft blocks sending until approved here.
+	const translationOf = (code: string) => draft?.translations[code];
+	const pendingLocales = $derived(
+		Object.entries(draft?.translations ?? {})
+			.filter(([code, t]) => t.state === 'requested' && !draft?.content[code])
+			.map(([code]) => code)
+	);
+
+	async function translation(action: 'request' | 'fetch' | 'approve', code: string) {
+		if (!draft) return;
+		if (action === 'request' && !confirm(`Ask for an AI draft in ${localeLabel(code)}? It goes to the translation queue; check back once a worker has run.`)) return;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			if (!readOnly) await persist(); // the draft is made from what is saved
+			const source = editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en';
+			const b = await broadcastTranslation(draft.id, action, code, source);
+			draft = toDraft(b);
+			const state = draft.translations[code]?.state;
+			notice = {
+				request: `${localeLabel(code)} draft requested — it's in the translation queue.`,
+				fetch: state === 'draft' ? `${localeLabel(code)} draft is in. Read it, edit it if you like, then approve it.` : `${localeLabel(code)} isn't back yet.`,
+				approve: `${localeLabel(code)} approved.`
+			}[action];
+			if (action === 'fetch' && state === 'draft') editLocale = code;
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
 	function switchLocale(code: string) {
 		editLocale = code;
 	}
@@ -456,8 +493,32 @@
 						<option value="">+ Add language</option>
 						{#each availableToAdd as l (l.code)}<option value={l.code}>{l.label}</option>{/each}
 					</select>
+					<select class="rounded-md border border-border bg-surface p-1 text-micro" aria-label="Draft a language with AI" disabled={busy} onchange={(e) => { const v = (e.currentTarget as HTMLSelectElement).value; (e.currentTarget as HTMLSelectElement).value = ''; if (v) translation('request', v); }}>
+						<option value="">✦ Draft with AI</option>
+						{#each availableToAdd.filter((l) => l.code !== 'en' && !translationOf(l.code)) as l (l.code)}<option value={l.code}>{l.label}</option>{/each}
+					</select>
 				{/if}
 			</div>
+
+			{#each pendingLocales as code (code)}
+				<div class="mb-2 flex flex-wrap items-center gap-2 rounded-md bg-surface-2 p-2 text-small">
+					<span class="text-text">{localeLabel(code)}: AI draft requested</span>
+					<a class="text-micro text-accent hover:underline" href={translationOf(code)?.url} target="_blank" rel="noopener">issue #{translationOf(code)?.issue}</a>
+					<button class="btn btn-ghost btn-sm" onclick={() => translation('fetch', code)} disabled={busy}>Check for the draft</button>
+				</div>
+			{/each}
+
+			{#if translationOf(editLocale)?.state === 'draft'}
+				<div class="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-md bg-warning/10 p-3 text-small">
+					<span class="text-warning">AI draft — read it, edit anything that's off, then approve it. It can't be sent until you do.</span>
+					<button class="btn btn-primary btn-sm" onclick={() => translation('approve', editLocale)} disabled={busy}>Approve {localeLabel(editLocale)}</button>
+				</div>
+			{:else if translationOf(editLocale)?.state === 'approved'}
+				<p class="mb-3 text-micro text-muted">AI draft, approved{translationOf(editLocale)?.approved_by ? ` by ${translationOf(editLocale)?.approved_by}` : ''}.</p>
+			{/if}
+			{#if translationOf(editLocale)?.stale}
+				<p class="mb-3 rounded-md bg-warning/10 p-2 text-small text-warning">The {localeLabel(translationOf(editLocale)?.source_locale ?? 'en')} text changed after this translation was drafted.</p>
+			{/if}
 
 			{#if draft.content[editLocale]}
 				<div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">

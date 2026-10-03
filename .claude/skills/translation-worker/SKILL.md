@@ -38,6 +38,10 @@ three of them gives none of them one.
    returned exactly 300 on 2026-09-22 and hid ten older sw article jobs, so a
    run reported the article queue empty while it was not. Use `--limit 1000`
    (or paginate), and if the count equals the limit, you have NOT seen it all.
+   **Email jobs go first.** A title `[translation] email:broadcast-<id> -> <lang>`
+   is an AI draft of a campaign email someone is waiting on — a few hundred
+   words, minutes of work, and it ships nothing to the repo. Take the oldest
+   email job before any other type, whatever its age (recipe: "email" below).
 2. **Conflict gate.** For every job issue carrying the `in-progress` label:
    - updated **≥ 6 hours ago** → stale claim (a crashed run); comment that
      you're reclaiming it, remove the label, and treat it as queued.
@@ -53,6 +57,7 @@ three of them gives none of them one.
    | `bio` | the **same slug AND language** (i.e. the same job) — short bios are per-slug `<slug>.short.txt` files now |
    | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
    | `topic` | any `topic` job in the **same language** — one shared `data/topic_translations/<lang>.json` |
+   | `email` | the **same job** only — it writes nothing to the repo (the draft goes back as an issue comment) |
 
    The book↔plan row is the non-obvious one, and it follows from a rule further
    down: a book that appears in `LAUNCH_PLANS` or `CURATED_PLANS` must add its
@@ -163,6 +168,34 @@ three of them gives none of them one.
    that failed validation.
 
 ## Per-type recipes
+
+### `email` — a campaign email's AI draft (no PR)
+
+Filed from the admin email designer's "Draft with AI". A broadcast lives only in
+the production database, which this session can't reach — so unlike every other
+type, **nothing ships through the repo**: the draft goes back as a comment on the
+issue, and the admin pulls it in and approves it there
+(`backend/emails/translation_jobs.py`).
+
+1. Claim the issue (`in-progress` label) as usual. Save the issue body to a file.
+2. `cd backend && uv run python manage.py translate_email_job <file> --print-texts`
+   prints the translation rules and `{subject, preheader, texts}` — the only
+   words to translate. Translate them in-session into the target language with
+   that language's glossary and register (`library.translation.system_prompt`
+   holds both; the same rules as a book). Keep `{name}` as written, keep the
+   strings in order and the same count, keep the subject short.
+3. Write your answer to a file as `{"subject": ..., "preheader": ..., "texts": [...]}`
+   and run `manage.py translate_email_job <file> --answer <answer file>`. It
+   rebuilds the blocks with only the words changed, checks them the way the
+   server will, and prints the comment. A refusal names what's wrong — fix the
+   answer, don't hand-edit the printed JSON.
+4. Post the printed text as a comment on the issue **exactly as printed** (it
+   starts with `<!-- ochorus:email-translation -->`), remove `in-progress`, and
+   close the issue. No branch, no PR, no review notes file.
+
+The admin sees the draft in the email designer, edits it if needed, and must
+press Approve before the email can be sent — never approve or describe it as
+reviewed yourself.
 
 All types follow the proven in-session pipeline (no API key — the session is
 the translator); they differ only in the source shape and the delivery vehicle.

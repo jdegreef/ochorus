@@ -7,6 +7,7 @@ a god-module. Super-admin-only like the rest of the Emails section.
 
 from __future__ import annotations
 
+import requests
 from django.db.models import Q
 from rest_framework import status as http_status
 from rest_framework.response import Response
@@ -18,6 +19,7 @@ from library.audit import AdminAudited, AdminNotAudited, actor_email
 from library.models import AdminAction
 
 from . import blocks as blocks_mod
+from . import translation_jobs
 from .models import Broadcast, EmailSubscription, EmailTemplate
 from .rendering import render_blocks
 
@@ -163,3 +165,64 @@ class AdminEmailTemplateDetailView(AdminAudited, APIView):
         if not deleted:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
         return Response(status=http_status.HTTP_204_NO_CONTENT)
+
+
+class AdminBroadcastTranslationView(AdminAudited, APIView):
+    """AI-drafted translations of a broadcast (emails/translation_jobs.py).
+
+    ``POST {"action": "request", "language": "es", "source": "en"}`` files the
+    job; ``"fetch"`` pulls the worker's draft in once it's back; ``"approve"``
+    marks a draft reviewed. Super-admin-only, like the rest of the Emails
+    section — and queueing translation work is a super-admin lever anyway."""
+
+    permission_classes = [IsAdminEmail]
+
+    _AUDIT = {
+        "request": AdminAction.Action.EMAIL_TRANSLATION_REQUEST,
+        "fetch": AdminAction.Action.EMAIL_TRANSLATION_DRAFT,
+        "approve": AdminAction.Action.EMAIL_TRANSLATION_APPROVE,
+    }
+
+    def audit_action_for(self, request):
+        return self._AUDIT.get(
+            str(request.data.get("action", "")), AdminAction.Action.EMAIL_TRANSLATION_REQUEST
+        )
+
+    def audit_entry(self, request, response):
+        language = str(request.data.get("language", ""))
+        entry = (response.data.get("translations") or {}).get(language) or {}
+        return (
+            f"broadcast:{self.kwargs.get('pk')}:{language}",
+            {"state": entry.get("state", ""), "issue": entry.get("url", "")},
+        )
+
+    def post(self, request, pk):
+        from .admin_views import _serialize_broadcast
+
+        broadcast = Broadcast.objects.filter(pk=pk).first()
+        if broadcast is None:
+            return Response(status=http_status.HTTP_404_NOT_FOUND)
+        action = str(request.data.get("action", ""))
+        language = str(request.data.get("language", "")).strip().lower()
+        try:
+            if action == "request":
+                source = str(request.data.get("source") or "en").strip().lower()
+                translation_jobs.request(broadcast, source, language, actor=actor_email(request))
+            elif action == "fetch":
+                translation_jobs.fetch(broadcast, language)
+            elif action == "approve":
+                translation_jobs.approve(broadcast, language, actor=actor_email(request))
+            else:
+                return Response(
+                    {"detail": "action must be request, fetch or approve"},
+                    status=http_status.HTTP_400_BAD_REQUEST,
+                )
+        except translation_jobs.TranslationJobError as exc:
+            return Response({"detail": str(exc)}, status=http_status.HTTP_409_CONFLICT)
+        except requests.RequestException:
+            return Response(
+                {"detail": "GitHub is unreachable — try again shortly."},
+                status=http_status.HTTP_502_BAD_GATEWAY,
+            )
+        broadcast.refresh_from_db()
+        return Response(_serialize_broadcast(broadcast, detail=True))
