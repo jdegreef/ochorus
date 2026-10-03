@@ -15,20 +15,23 @@
 	 * can appear. Taking `BookTile[]` makes that a compiler error rather than a
 	 * silently blank rectangle.
 	 */
-	// `size`: `sm` is the plan page's peek; `lg` is a series page's hero, where
-	// the covers ARE the page's picture.
+	// `size`: `sm` is a small peek; `lg` is a series page's hero, where the
+	// covers ARE the page's picture; `fan` is the plan page's hero — up to three
+	// large covers fanned from a shared bottom edge, as on /originals, filling
+	// the width it is given.
 	let {
 		covers,
 		max = 4,
 		size = 'sm'
-	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' } = $props();
+	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan' } = $props();
+	const shown = $derived(covers.slice(0, size === 'fan' ? Math.min(max, 3) : max));
 </script>
 
 {#if covers.length}
-	<div class="covers" class:lg={size === 'lg'} aria-hidden="true">
-		{#each covers.slice(0, max) as cover (cover.slug ?? cover.title)}
+	<div class="covers" class:lg={size === 'lg'} class:fan={size === 'fan'} data-n={shown.length} aria-hidden="true">
+		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
-			<div class="cover">
+			<div class="cover" data-i={i}>
 				{#if face}
 					<!-- Drawn, not a bare image: a plate ground has no words. -->
 					<BookCover book={face} rounded="" />
@@ -78,6 +81,42 @@
 	}
 	.cover:nth-child(4) {
 		transform: rotate(7deg);
+	}
+	/* The fan sizes off its width: a 46%-wide 3:4 cover is 0.61 of the width
+	   tall, the tilted pair's outer corners drop a little more, and the 1rem
+	   the side covers sit below the middle one rides on as padding. Symmetric,
+	   so it needs no RTL flip. */
+	.fan {
+		position: relative;
+		display: block;
+		box-sizing: content-box;
+		aspect-ratio: 100 / 68;
+		padding-top: 1rem;
+	}
+	.fan .cover {
+		position: absolute;
+		top: 1rem;
+		inset-inline-start: 27%;
+		width: 46%;
+		margin: 0;
+		transform: none;
+		transform-origin: bottom center;
+	}
+	.fan[data-n='3'] .cover[data-i='0'] {
+		transform: rotate(-10deg) translateX(-36%);
+	}
+	.fan[data-n='3'] .cover[data-i='1'] {
+		z-index: 1;
+		top: 0;
+	}
+	.fan[data-n='3'] .cover[data-i='2'] {
+		transform: rotate(10deg) translateX(36%);
+	}
+	.fan[data-n='2'] .cover[data-i='0'] {
+		transform: rotate(-6deg) translateX(-26%);
+	}
+	.fan[data-n='2'] .cover[data-i='1'] {
+		transform: rotate(6deg) translateX(26%);
 	}
 	.cover img,
 	.cover-fallback {

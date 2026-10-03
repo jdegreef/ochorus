@@ -230,6 +230,7 @@
   "plans_week": "الأسبوع %n%",
   "plans_read_of": "تمت قراءة %n% من %m%",
   "plans_about_book": "عن هذا الكتاب",
+  "plans_finish_label": "للإنهاء، يومًا بيوم",
   "continue_title": "تابع القراءة",
   "continue_mark_finished": "وضع علامة كمكتمل",
   "continue_chapter": "فصل",

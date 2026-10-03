@@ -50,6 +50,12 @@
 		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
 	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
+	/** "Daughters of the King: Three Months with God" set as a title over an
+	 *  italic subtitle; the h1's text stays the whole title. */
+	const titleParts = $derived.by(() => {
+		const m = plan.title.match(/^(.+?)\s*[:：]\s+(.+)$/u);
+		return m ? { main: m[1], sub: m[2] } : { main: plan.title, sub: '' };
+	});
 	const groupWords = (g: PlanGroup) => g.days.reduce((s, d) => s + (d.word_count || 0), 0);
 	/** The line under a day's title: its book, or "Article" on an article day. */
 	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
@@ -118,6 +124,36 @@
 			.join(' · ')
 	);
 
+	/** Today, once mounted — the finish date is the reader's, never the build's:
+	 *  a prerendered date would be stale by the next morning. */
+	let today = $state<Date | null>(null);
+	$effect(() => {
+		today = new Date();
+	});
+	const finishDate = $derived.by(() => {
+		if (!today || next === null) return '—';
+		const end = new Date(today);
+		end.setDate(end.getDate() + (started ? daysLeft : plan.day_count) - 1);
+		return new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }).format(end);
+	});
+	/** The plan's shape at a glance: how long, how much a day, how many books,
+	 *  and when a reader going a day at a time from today would finish. */
+	const facts = $derived(
+		[
+			{ value: String(plan.day_count), label: t('plans.days') },
+			plan.total_words && plan.day_count
+				? { value: `~${readingMinutes(plan.total_words / plan.day_count)}`, label: t('plans.minPerDay') }
+				: null,
+			planBooks.length
+				? {
+						value: String(planBooks.length),
+						label: planBooks.length === 1 ? t('common.bookOne') : t('common.bookMany')
+					}
+				: null,
+			next === null ? null : { value: finishDate, label: t('plans.finishLabel') }
+		].filter((f) => f !== null)
+	);
+
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
 		return d ? localizeHref(planDayPath(plan.slug, d)) : '#';
@@ -143,22 +179,41 @@
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/plans" />
 
-	<div class="flex items-start justify-between gap-4">
-		<div class="min-w-0 flex-1">
-			<p class="eyebrow mb-1 text-muted">
-				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
-					{readingTime(plan.total_words)}{/if}
-			</p>
-			<h1 class="text-h1 mb-2">{plan.title}</h1>
-			<p class="mb-6 max-w-xl text-body text-muted">{plan.description}</p>
+	<!-- The hero: the plan's books fanned large beside its title (the covers
+	     ARE the picture, as on /originals), and its shape as four facts — how
+	     long, how much a day, how many books, and when you'd finish. -->
+	<section class="plan-hero">
+		<div class="min-w-0">
+			<p class="eyebrow mb-1 text-muted">{t('search.typePlan')}</p>
+			<h1 class="text-h1 mb-2" dir="auto">
+				{titleParts.main}{#if titleParts.sub}<span class="sr-only">: </span><span class="plan-subtitle"
+						>{titleParts.sub}</span
+					>{/if}
+			</h1>
+			{#if plan.description}
+				<p class="max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
+			{/if}
+			<dl class="plan-facts">
+				{#each facts as f (f.label)}
+					<div class="plan-fact">
+						<dt class="text-eyebrow text-muted">{f.label}</dt>
+						<dd class="font-display text-h3 font-semibold text-text tabular-nums">{f.value}</dd>
+					</div>
+				{/each}
+			</dl>
 		</div>
 		{#if plan.covers.length}
-			<div class="hidden shrink-0 pt-1 sm:block">
-				<CoverStrip covers={plan.covers} max={5} />
+			<div class="plan-hero-fan">
+				<CoverStrip covers={plan.covers} max={3} size="fan" />
 			</div>
 		{/if}
-	</div>
+	</section>
 
+	<!-- Two columns from a laptop up: the day list, and beside it a panel that
+	     stays put while it scrolls — the next reading, Save/Share, the writers.
+	     On a phone the panel comes first, so the one action leads. -->
+	<div class="plan-body">
+		<aside class="plan-aside">
 	<!-- The read card, as on the book page: the reading that's next, named —
 	     its book and length, and for a started plan how far through you are —
 	     with the one read verb. A first visit (and the prerender, since plan
@@ -213,6 +268,23 @@
 		<ShareButton url={canonical} title={plan.title} showLabel />
 	</div>
 
+	<!-- The writers this plan reads through — a link to each author page, so a
+	     plan is a way into their work, not only a sequence of chapters. Reuses the
+	     shared "Authors" label, so it is already translated in every locale. -->
+	{#if plan.authors?.length}
+		<section class="mt-6">
+			<h2 class="section-heading">{t('search.groupAuthors')}</h2>
+			<p class="text-body">
+				{#each plan.authors as a, i (a.slug)}<a
+						href={localizeHref(authorPath(a.slug))}
+						class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
+					>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
+			</p>
+		</section>
+	{/if}
+		</aside>
+
+		<div class="plan-main">
 	<!-- The day list, shaped: grouped by the book each run of days reads (a
 	     collapsible section per book, the current one open), and each long run
 	     cut into weeks (the current week open) — so a 96-day plan reads as three
@@ -220,7 +292,7 @@
 	     day stays in the prerendered HTML for crawlers and no-JS readers, and the
 	     open state needs no script. Progress is client-only, so the prerender
 	     opens on Day 1 and hydration moves it to where the reader is. -->
-	<section class="mt-8" aria-labelledby="plan-days-heading">
+	<section aria-labelledby="plan-days-heading">
 		<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
 		{#each groups as g, gi (g.key)}
 			{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
@@ -257,21 +329,9 @@
 			{/if}
 		{/each}
 	</section>
+		</div>
+	</div>
 
-	<!-- The writers this plan reads through — a link to each author page, so a
-	     plan is a way into their work, not only a sequence of chapters. Reuses the
-	     shared "Authors" label, so it is already translated in every locale. -->
-	{#if plan.authors?.length}
-		<section class="mt-8">
-			<h2 class="section-heading">{t('search.groupAuthors')}</h2>
-			<p class="text-body">
-				{#each plan.authors as a, i (a.slug)}<a
-						href={localizeHref(authorPath(a.slug))}
-						class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
-					>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
-			</p>
-		</section>
-	{/if}
 
 	<!-- A run of days, in weeks when it is longer than one. The week holding the
 	     next reading opens; in a run that doesn't hold it, the first week does. -->
@@ -464,5 +524,76 @@
 	}
 	.verse-chip:hover {
 		border-color: var(--border);
+	}
+	/* The hero: words beside the fan; on a phone the fan leads, centred. */
+	.plan-hero {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 20rem;
+		gap: 2.5rem;
+		align-items: center;
+		padding-block: 0.5rem 2rem;
+	}
+	.plan-subtitle {
+		display: block;
+		margin-top: 0.25rem;
+		font-size: var(--fs-h3);
+		font-style: italic;
+		font-weight: 400;
+		color: var(--muted);
+	}
+	.plan-facts {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 0.625rem;
+		max-width: 40rem;
+		margin-top: 1.5rem;
+	}
+	.plan-fact {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+		padding: 0.75rem 0.875rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+	}
+	/* minmax(0, 1fr), not the implicit auto track: a truncating week summary's
+	   min-content width would otherwise widen the column past a phone. */
+	.plan-body {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+	@media (min-width: 1024px) {
+		.plan-body {
+			grid-template-columns: minmax(0, 1fr) 20rem;
+			align-items: start;
+			gap: 3rem;
+		}
+		.plan-main {
+			grid-column: 1;
+			grid-row: 1;
+		}
+		.plan-aside {
+			grid-column: 2;
+			grid-row: 1;
+			position: sticky;
+			top: calc(var(--appnav-h) + 1rem);
+		}
+	}
+	@media (max-width: 640px) {
+		.plan-hero {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 0.5rem;
+			padding-block: 0 1.5rem;
+		}
+		.plan-hero-fan {
+			order: -1;
+			width: min(18rem, 80%);
+			margin-inline: auto;
+		}
+		.plan-facts {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
 	}
 </style>
