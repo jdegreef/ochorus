@@ -209,6 +209,33 @@ class HtmlToTextTests(TestCase):
     def test_unescapes_entities(self):
         self.assertEqual(html_to_text("<p>God&rsquo;s &amp; grace</p>"), "God’s & grace")
 
+    def test_collapses_every_kind_of_whitespace_once(self):
+        # &nbsp;, an ideographic space, a line separator and a tab all collapse.
+        self.assertEqual(
+            html_to_text("<p> a&nbsp;　b \tc </p>"), "a b c"
+        )
+
+    def test_split_whitespace_is_exactly_the_regex_s(self):
+        """html_to_text collapses with `str.split()`, which must match `\\s`.
+
+        It used `re.sub(r"\\s+", " ", s).strip()`; the C split is the same rule
+        only while the two agree on what whitespace is. Pinned over every code
+        point so a Python upgrade that splits them fails here, not as a
+        body_text drift across the whole fixture.
+        """
+        import re
+        import sys
+
+        ws = re.compile(r"\s")
+        self.assertEqual(
+            [
+                hex(c)
+                for c in range(sys.maxunicode + 1)
+                if bool(ws.fullmatch(chr(c))) != chr(c).isspace()
+            ],
+            [],
+        )
+
 
 class WordCountRuleTests(SimpleTestCase):
     """Pins the divergence `library.text.text_of` documents.
