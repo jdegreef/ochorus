@@ -219,6 +219,16 @@ def book_series_map(language: str, series_ids) -> dict[int, dict]:
     return named
 
 
+#: How many works (books + sermons) a topical shelf needs IN A LANGUAGE before
+#: its page there is worth indexing. Below it the page is a title and one or two
+#: cards — a thin page Google counts against the site — so it is still served
+#: (readers browsing /topics reach it) but marked noindex, left out of the
+#: sitemap and out of the other editions' hreflang. One number, read by the
+#: list's ``indexable`` flag and the detail's ``available_languages``, which the
+#: frontend's noindex, sitemap and hreflang all follow.
+TOPIC_INDEX_MIN_WORKS = 3
+
+
 def _published_languages(model, **filters):
     """The distinct browsable languages of the published ``model`` rows matching
     ``filters`` — a values queryset, so callers can combine it (a UNION) before
@@ -2400,6 +2410,10 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     # On the list, not just the detail, so /topics can draw it without a fetch
     # per card. Reads the same prefetched translations as the title.
     scripture_ref = serializers.SerializerMethodField()
+    # Whether this shelf holds enough in this language to be indexed — see
+    # TOPIC_INDEX_MIN_WORKS. The sitemap reads it from the list; the page from
+    # the detail, which inherits it.
+    indexable = serializers.SerializerMethodField()
 
     class Meta:
         model = Topic
@@ -2411,6 +2425,7 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "sermon_count",
             "covers",
             "scripture_ref",
+            "indexable",
         ]
 
     def get_title(self, obj):
@@ -2427,6 +2442,9 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
+
+    def get_indexable(self, obj) -> bool:
+        return len(self._books(obj)) + len(self._sermons(obj)) >= TOPIC_INDEX_MIN_WORKS
 
     def get_covers(self, obj):
         """Up to four member tiles for the card's fan — books first, then sermons.
@@ -2546,17 +2564,30 @@ class TopicDetailSerializer(TopicListSerializer):
         ]
 
     def get_available_languages(self, obj):
-        """Locales this shelf actually exists in — for hreflang.
+        """Locales this shelf is INDEXED in — for hreflang.
 
         Matches Book.available_languages in purpose: the page 404s in a locale
         with no translated title (TopicDetailView), so advertising an alternate
-        there would point search engines at a missing page.
+        there would point search engines at a missing page. And a locale where
+        the shelf holds fewer than TOPIC_INDEX_MIN_WORKS works is noindexed, so
+        naming it would point them at a page we withhold. Two queries: the
+        members' published rows, counted per language.
         """
-        langs = ["en"] if obj.title.strip() else []
-        langs += sorted(
+        titled = ["en"] if obj.title.strip() else []
+        titled += sorted(
             t.language for t in obj.translations.all() if t.title.strip() and t.language != "en"
         )
-        return langs
+        works = Counter(
+            Book.objects.filter(
+                slug__in=[e.book_slug for e in obj.entries.all()], is_published=True
+            ).values_list("language", flat=True)
+        )
+        works.update(
+            Sermon.objects.filter(
+                slug__in=[e.sermon_slug for e in obj.sermon_entries.all()], is_published=True
+            ).values_list("language", flat=True)
+        )
+        return [lang for lang in titled if works[lang] >= TOPIC_INDEX_MIN_WORKS]
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())

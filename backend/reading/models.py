@@ -416,6 +416,49 @@ class PlanProgress(models.Model):
         return f"{self.profile_id} plan:{self.plan_slug} ({len(self.done)} done)"
 
 
+class PlanSchedule(models.Model):
+    """When and how a reader means to read one plan — synced across devices.
+
+    The plan page's calendar view: the date they chose to start (before
+    starting; once started, the schedule runs from today), the weekdays they
+    read on, and the time their calendar reminders fire. These are CHOICES, not
+    a log, so unlike PlanProgress nothing unions: the most recent choice wins,
+    judged by the client clock that made it (``client_updated_at``), the same
+    rule reading positions use. A row can exist for a plan not yet started.
+    """
+
+    class ReadingDays(models.TextChoices):
+        DAILY = "daily"
+        WEEKDAYS = "weekdays"
+        MONSAT = "monsat"
+
+    profile = models.ForeignKey(
+        "accounts.UserProfile",
+        on_delete=models.CASCADE,
+        related_name="plan_schedules",
+    )
+    plan_slug = models.SlugField(max_length=160)
+    start_on = models.DateField(null=True, blank=True)
+    reading_days = models.CharField(
+        max_length=10, choices=ReadingDays.choices, default=ReadingDays.DAILY
+    )
+    # "HH:MM", or "" for none chosen (the device's default then stands).
+    remind_at = models.CharField(max_length=5, blank=True, default="")
+    client_updated_at = models.DateTimeField()
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-updated_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["profile", "plan_slug"], name="uniq_planschedule_profile_plan"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.profile_id} schedule:{self.plan_slug} ({self.reading_days})"
+
+
 class ReadingSession(models.Model):
     """One sitting of reading — the signal behind "time on site".
 

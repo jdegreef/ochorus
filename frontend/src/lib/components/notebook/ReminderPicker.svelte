@@ -2,6 +2,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { formatRemind, parseRemind } from '$lib/journal';
 	import { weekdayName } from '$lib/prayerRemind';
+	import { DEFAULT_REMINDER_TIME } from '$lib/reminder';
 
 	/**
 	 * Choose a reminder — every day, or one day a week, at a time — for a single
@@ -31,7 +32,7 @@
 	const seed = (() => parseRemind(value))();
 	let freq = $state<'daily' | 'weekly'>(seed?.freq ?? 'daily');
 	let day = $state(seed?.day ?? 0);
-	let time = $state(seed?.time ?? '07:00');
+	let time = $state(seed?.time ?? DEFAULT_REMINDER_TIME);
 	const weekdays = Array.from({ length: 7 }, (_, d) => weekdayName(d, locale));
 </script>
 

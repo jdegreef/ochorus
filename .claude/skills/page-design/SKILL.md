@@ -93,6 +93,12 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   A key that holds the READER'S data rather than a device preference (a
+   plan's schedule choices, anything a sign-out should not hand the next
+   person) is declared in `reading-schema.ts` and listed in
+   `READING_DATA_KEYS`, never a literal in a component — unlisted, it
+   survives sign-out on a shared device. Write it on change, not from an
+   `$effect` that also fires on mount.
    **Mind the prerender's API load** (the crawl's load once took the API
    down): a decoration fetch on a LEAF route runs once per page per locale, so
    prefer deriving it from the payload already fetched (the topic page builds
@@ -344,6 +350,15 @@ lists content types, **in the same order** everywhere:
       by the SAME rule (the model is author pages: `hasOwnContent` + the
       `authorsIn` entries in `sitemap.ts`, #4247). Advertising every locale by
       default is what put ~330 thin author URLs in the sitemap.
+      "Has content" can need a FLOOR, not just "non-empty": a topic shelf with
+      one card is thin, so the API owns `TOPIC_INDEX_MIN_WORKS` and exposes it
+      as `indexable` + floor-aware `available_languages`, and the page,
+      sitemap and hreflang (`hreflangExact`, never `hreflangFor`, which falls
+      back to every locale on []) all read that (#4998). Derive per-locale
+      presence from THAT locale's list, never the English one (the era pages
+      were advertised in 8 languages where they were an empty state).
+      To audit: crawl every sitemap `<url>` and bucket by word count per
+      route × locale — the per-locale thin tail is invisible in English.
 - [ ] ~~`CatalogLanguageNudge`'s `kind` union~~ (component removed)
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
