@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { menuShift } from '$lib/menuShift';
@@ -42,6 +43,8 @@
 		open = !open;
 	}
 	let copied = $state(false);
+	let copyTimer: ReturnType<typeof setTimeout> | undefined;
+	$effect(() => () => clearTimeout(copyTimer));
 
 	const links = $derived(shareLinks(title, url, t('login.email')));
 
@@ -54,7 +57,8 @@
 		try {
 			await navigator.clipboard.writeText(url);
 			copied = true;
-			setTimeout(() => (copied = false), 1500);
+			clearTimeout(copyTimer);
+			copyTimer = setTimeout(() => (copied = false), 1500);
 		} catch {
 			// Clipboard blocked (older desktop app views): leave the menu open so
 			// the reader can copy the address from the location bar instead.
@@ -72,22 +76,7 @@
 		aria-label={t('reader.share')}
 		title={t('reader.share')}
 	>
-		<svg
-			width="18"
-			height="18"
-			viewBox="0 0 24 24"
-			fill="none"
-			stroke="currentColor"
-			stroke-width="1.7"
-			stroke-linecap="round"
-			stroke-linejoin="round"
-			aria-hidden="true"
-		>
-			<circle cx="6" cy="12" r="2.6" />
-			<circle cx="17" cy="6" r="2.6" />
-			<circle cx="17" cy="18" r="2.6" />
-			<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
-		</svg>
+		<Icon name="share" size={18} strokeWidth={1.7} />
 		{#if showLabel}<span class="btn-label">{t('reader.share')}</span>{/if}
 	</button>
 

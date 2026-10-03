@@ -9,7 +9,7 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
-	import { theme, type ThemePref } from '$lib/theme.svelte';
+	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 
 	/**
 	 * The phone tab bar's "More": what the top nav's hamburger, gear and sign-in
@@ -20,15 +20,6 @@
 	 */
 	let { open = $bindable(false) }: { open?: boolean } = $props();
 	const t = i18n.t;
-
-	// The header gear's theme switch, which phones don't show: the full
-	// preference (System included), as Settings offers it.
-	const THEMES: { v: ThemePref; k: string }[] = [
-		{ v: 'system', k: 'settings.themeSystem' },
-		{ v: 'light', k: 'settings.themeLight' },
-		{ v: 'sepia', k: 'settings.themeSepia' },
-		{ v: 'dark', k: 'settings.themeDark' }
-	];
 
 	const signIn = $derived(localizeHref(loginHref($page.url.pathname, $page.url.search)));
 
@@ -57,7 +48,7 @@
 
 		<h3 class="more-heading" id="more-theme">{t('nav.theme')}</h3>
 		<div class="seg more-theme" role="group" aria-labelledby="more-theme">
-			{#each THEMES as o (o.v)}
+			{#each THEME_OPTIONS as o (o.v)}
 				<button
 					class:active={theme.preference === o.v}
 					aria-pressed={theme.preference === o.v}

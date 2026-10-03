@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
-	import { revealInStrip } from '$lib/actions/scrollEdges';
 	import { localizeHref } from '$lib/href';
 
 	/**
@@ -43,17 +41,13 @@
 	);
 
 	// A long language can push the row past a phone's width; `tabStrip` fades
-	// the edge that hides tabs, and this brings the current tab into view.
-	let strip: HTMLElement;
-	onMount(() => {
-		revealInStrip(strip, strip.querySelector<HTMLElement>('.is-active'));
-	});
+	// the edge that hides tabs and brings the current tab into view.
 </script>
 
 <!-- Named "Explore", not "Books": the primary nav already has a Books link,
      and /books' own heading says Books. -->
 <nav class="library-tabs mb-6" aria-label={t('footer.explore')}>
-	<ul class="tab-strip flex gap-1" bind:this={strip} use:tabStrip={undefined}>
+	<ul class="tab-strip flex gap-1" use:tabStrip={undefined}>
 		{#each tabs as tab (tab.id)}
 			<li>
 				<a
