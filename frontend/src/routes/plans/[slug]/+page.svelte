@@ -26,6 +26,7 @@
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
+	import { readJSON, writeJSON } from '$lib/persisted';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -216,14 +217,18 @@
 	let jumpH = $state(0);
 	/** The day list as a list, or laid on real dates. The calendar is about the
 	 *  reader's today, so it exists only once mounted (the prerender is the list). */
+	const VIEW_KEY = 'ochorus:plan-view';
 	let view = $state<'list' | 'calendar'>('list');
-	const sections = $derived(
-		groups.map((g, i) => ({
-			key: g.key,
-			label: grouped ? groupLabels[i] : g.bookTitle || t('search.groupArticles'),
-			days: g.days
-		}))
-	);
+	// The reader's last choice of view, as a device preference (grid/list on
+	// the shelves is the same idea); read on mount, so the prerender is the list.
+	onMount(() => {
+		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+	});
+	const setView = (v: 'list' | 'calendar') => {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	};
+	const sections = $derived(groups.map((g, i) => ({ key: g.key, label: groupLabels[i], days: g.days })));
 	const cardSeen = elementVisible(() => readCardEl, { initial: true });
 
 	/** Each day's link, built once per plan — the list, the read card, Coming
@@ -441,22 +446,22 @@
 			{/if}
 
 			<section aria-labelledby="plan-days-heading">
-				<div class="section-heading flex items-center justify-between gap-3">
-					<h2 id="plan-days-heading">{t('plans.inThisPlan')}</h2>
-					{#if today}
-						<div class="seg" role="group" aria-label={t('plans.inThisPlan')}>
-							<button type="button" class:active={view === 'list'} aria-pressed={view === 'list'} onclick={() => (view = 'list')}
-								>{t('plans.viewList')}</button
-							>
-							<button
-								type="button"
-								class:active={view === 'calendar'}
-								aria-pressed={view === 'calendar'}
-								onclick={() => (view = 'calendar')}>{t('plans.viewCalendar')}</button
-							>
-						</div>
-					{/if}
-				</div>
+				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
+				{#if today}
+					<!-- The view toggle on its own row under the heading, as the shelves
+					     place theirs. -->
+					<div class="seg mb-4 w-fit" role="group" aria-labelledby="plan-days-heading">
+						<button type="button" class:active={view === 'list'} aria-pressed={view === 'list'} onclick={() => setView('list')}
+							>{t('plans.viewList')}</button
+						>
+						<button
+							type="button"
+							class:active={view === 'calendar'}
+							aria-pressed={view === 'calendar'}
+							onclick={() => setView('calendar')}>{t('plans.viewCalendar')}</button
+						>
+					</div>
+				{/if}
 				{#if view === 'calendar' && today}
 					<PlanCalendar {plan} {today} {started} {doneSet} {sections} {dayHref} {dayTitle} />
 				{:else}

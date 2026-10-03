@@ -5,15 +5,10 @@
 	import { absUrl } from '$lib/seo';
 	import { downloadFile } from '$lib/dataExport';
 	import { readJSON, writeJSON } from '$lib/persisted';
-	import { buildScheduleICS } from '$lib/reminder';
-	import {
-		READING_DAYS,
-		isoDay,
-		monthGrid,
-		parseIsoDay,
-		schedulePlan,
-		type ReadingDays
-	} from '$lib/planSchedule';
+	import { PLAN_SCHEDULE_KEY } from '$lib/reading-schema';
+	import { buildScheduleICS, DEFAULT_REMINDER_TIME } from '$lib/reminder';
+	import { localToday } from '$lib/streak';
+	import { READING_DAYS, monthGrid, parseIsoDay, schedulePlan, weekStart, type ReadingDays } from '$lib/planSchedule';
 	import type { PlanDay, PlanDetail } from '$lib/library-public';
 	import Icon from './Icon.svelte';
 
@@ -24,8 +19,9 @@
 	 * whole schedule as a calendar file whose events carry a morning reminder.
 	 *
 	 * Client-only by nature (it is about the reader's today), so the page shows
-	 * it only after mount. The reader's choices are a per-viewer convenience in
-	 * localStorage — never progress, which planProgress owns.
+	 * it only after mount. The reader's choices are kept per device under
+	 * PLAN_SCHEDULE_KEY (wiped at sign-out with the rest of their data) — never
+	 * progress, which planProgress owns.
 	 */
 	let {
 		plan,
@@ -47,19 +43,29 @@
 	} = $props();
 
 	const t = i18n.t;
-	const KEY = 'ochorus:plan-schedule';
+	/** The daily reminder time the reader set in Settings, if any — the
+	 *  calendar's alerts start there rather than at a time they never chose. */
+	function settingsReminderTime(): string {
+		try {
+			const v = localStorage.getItem('ochorus:reminder-time');
+			if (v && /^\d{2}:\d{2}$/.test(v)) return v;
+		} catch {
+			// Storage blocked: the default stands.
+		}
+		return DEFAULT_REMINDER_TIME;
+	}
 	type Prefs = { start?: string; rule?: ReadingDays; time?: string };
-	const saved = (() => readJSON<Record<string, Prefs>>(KEY, {})[plan.slug] ?? {})();
-
+	// Seeded once from what this device saved: the controls' own working values.
+	const saved = untrack(() => readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {})[plan.slug] ?? {});
 	let rule = $state<ReadingDays>(saved.rule && READING_DAYS.includes(saved.rule) ? saved.rule : 'daily');
-	// Seeded once from what was saved (or today): the input's own working value.
-	let startIso = $state(untrack(() => (saved.start && parseIsoDay(saved.start) ? saved.start : isoDay(today))));
-	let time = $state(saved.time ?? '07:00');
-	$effect(() => {
-		const all = readJSON<Record<string, Prefs>>(KEY, {});
+	let startIso = $state(untrack(() => (saved.start && parseIsoDay(saved.start) ? saved.start : localToday(today))));
+	let time = $state(saved.time ?? settingsReminderTime());
+	/** Kept only when the reader changes something — opening the view saves nothing. */
+	const save = () => {
+		const all = readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {});
 		all[plan.slug] = { start: startIso, rule, time };
-		writeJSON(KEY, all);
-	});
+		writeJSON(PLAN_SCHEDULE_KEY, all);
+	};
 
 	const RULE_LABEL: Record<ReadingDays, string> = {
 		daily: 'plans.everyDay',
@@ -69,16 +75,16 @@
 
 	/** A started plan runs from today; a new one from the chosen start. */
 	const start = $derived(started ? today : (parseIsoDay(startIso) ?? today));
-	const byDay = $derived(new Map(plan.days.map((d) => [d.day, d])));
 	const schedule = $derived(
 		schedulePlan(
-			plan.days.filter((d) => !doneSet.has(d.day)).map((d) => d.day),
+			plan.days.filter((d) => !doneSet.has(d.day)),
 			start,
 			rule
 		)
 	);
-	const byDate = $derived(new Map(schedule.map((s) => [isoDay(s.date), byDay.get(s.day)!])));
-	const dateOf = $derived(new Map(schedule.map((s) => [s.day, s.date])));
+	const byDate = $derived(new Map(schedule.map((s) => [localToday(s.date), s.item])));
+	const dateOf = $derived(new Map(schedule.map((s) => [s.item.day, s.date])));
+	const todayIso = $derived(localToday(today));
 
 	const fmt = $derived({
 		long: new Intl.DateTimeFormat(getLang(), { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }),
@@ -86,43 +92,35 @@
 		month: new Intl.DateTimeFormat(getLang(), { month: 'long', year: 'numeric' }),
 		weekday: new Intl.DateTimeFormat(getLang(), { weekday: 'short' })
 	});
-	// Monday-first headers, from a known Monday (5 Oct 2026).
-	const weekdays = $derived(Array.from({ length: 7 }, (_, i) => fmt.weekday.format(new Date(2026, 9, 5 + i))));
 
-	/** The month on show: the first scheduled one, until the reader pages. */
-	let shown = $state<{ y: number; m: number } | null>(null);
-	const month = $derived(shown ?? { y: (schedule[0]?.date ?? today).getFullYear(), m: (schedule[0]?.date ?? today).getMonth() });
-	const weeks = $derived(monthGrid(month.y, month.m));
-	const page = (step: number) => {
-		const d = new Date(month.y, month.m + step, 1);
-		shown = { y: d.getFullYear(), m: d.getMonth() };
-	};
-	const todayIso = $derived(isoDay(today));
+	/** The month on show: the schedule's first, paged from there by the reader. */
+	let offset = $state(0);
+	const anchor = $derived(schedule[0]?.date ?? today);
+	const month = $derived(new Date(anchor.getFullYear(), anchor.getMonth() + offset, 1));
+	// The week starts where the reader's locale starts it (Sunday in the US).
+	const weeks = $derived(monthGrid(month.getFullYear(), month.getMonth(), weekStart(getLang())));
 
-	/** When each book's remaining days begin and end — or that it is read. */
+	/** When each book's remaining days begin and end — null once it is read. */
 	const milestones = $derived(
 		sections.map((s) => {
 			const dates = s.days.map((d) => dateOf.get(d.day)).filter((d): d is Date => !!d);
 			return {
 				key: s.key,
 				label: s.label,
-				range: dates.length ? `${fmt.short.format(dates[0])} – ${fmt.short.format(dates.at(-1)!)}` : ''
+				range: dates.length ? `${fmt.short.format(dates[0])} – ${fmt.short.format(dates.at(-1)!)}` : null
 			};
 		})
 	);
 
 	const download = () => {
 		const ics = buildScheduleICS(
-			schedule.map((s) => {
-				const d = byDay.get(s.day)!;
-				return {
-					date: s.date,
-					summary: `${t('plans.day')} ${s.day} · ${dayTitle(d)} — ${plan.title}`,
-					url: absUrl(dayHref(s.day))
-				};
-			}),
+			schedule.map(({ item, date }) => ({
+				date,
+				summary: `${t('plans.day')} ${item.day} · ${dayTitle(item)} — ${plan.title}`,
+				url: absUrl(dayHref(item.day))
+			})),
 			time,
-			{ now: new Date(), uidPrefix: `ochorus-plan-${plan.slug}-${isoDay(start)}` }
+			{ now: new Date(), uidPrefix: `ochorus-plan-${plan.slug}-${localToday(start)}` }
 		);
 		downloadFile(`${plan.slug}.ics`, 'text/calendar;charset=utf-8', ics);
 	};
@@ -134,15 +132,30 @@
 		{#if !started}
 			<label class="cal-field">
 				<span class="text-eyebrow text-muted">{t('plans.startOn')}</span>
-				<input class="field" type="date" bind:value={startIso} min={isoDay(today)} />
+				<input
+					class="field"
+					type="date"
+					bind:value={startIso}
+					min={todayIso}
+					onchange={() => {
+						offset = 0;
+						save();
+					}}
+				/>
 			</label>
 		{/if}
 		<div class="cal-field">
 			<span class="text-eyebrow text-muted" id="read-on-label">{t('plans.readOn')}</span>
 			<div class="seg" role="group" aria-labelledby="read-on-label">
 				{#each READING_DAYS as r (r)}
-					<button type="button" class:active={rule === r} aria-pressed={rule === r} onclick={() => (rule = r)}
-						>{t(RULE_LABEL[r])}</button
+					<button
+						type="button"
+						class:active={rule === r}
+						aria-pressed={rule === r}
+						onclick={() => {
+							rule = r;
+							save();
+						}}>{t(RULE_LABEL[r])}</button
 					>
 				{/each}
 			</div>
@@ -156,38 +169,40 @@
 	</div>
 
 	<div class="cal-body">
-		<section class="min-w-0 flex-1" aria-labelledby="cal-month">
+		<section class="min-w-0" aria-labelledby="cal-month">
 			<div class="mb-2 flex items-center justify-between">
-				<button type="button" class="btn btn-ghost btn-icon" onclick={() => page(-1)} aria-label={t('plans.prevMonth')}>
+				<button type="button" class="btn btn-ghost btn-icon" onclick={() => offset--} aria-label={t('plans.prevMonth')}>
 					<Icon name="chevron-left" size={18} />
 				</button>
 				<h3 id="cal-month" class="font-display text-h3 font-semibold" aria-live="polite">
-					{fmt.month.format(new Date(month.y, month.m, 1))}
+					{fmt.month.format(month)}
 				</h3>
-				<button type="button" class="btn btn-ghost btn-icon" onclick={() => page(1)} aria-label={t('plans.nextMonth')}>
+				<button type="button" class="btn btn-ghost btn-icon" onclick={() => offset++} aria-label={t('plans.nextMonth')}>
 					<Icon name="chevron-right" size={18} />
 				</button>
 			</div>
-			<div class="cal-grid" role="grid" aria-labelledby="cal-month">
-				<div class="contents" role="row">
-					{#each weekdays as w (w)}<span class="cal-dow text-micro text-muted" role="columnheader">{w}</span>{/each}
-				</div>
-				{#each weeks as week (isoDay(week[0]))}
-					<div class="contents" role="row">
-						{#each week as date (isoDay(date))}
-							{@const iso = isoDay(date)}
-							{@const d = byDate.get(iso)}
-							{@const out = date.getMonth() !== month.m}
-							<div role="gridcell" class="cal-cell" class:out class:today={iso === todayIso}>
-								<span class="cal-date tabular-nums">{date.getDate()}</span>
-								{#if d}
-									<a href={dayHref(d.day)} class="cal-reading" dir="auto">
-										<span class="block text-micro text-muted">{t('plans.day')} {d.day}</span>
-										<span class="cal-title">{dayTitle(d)}</span>
-									</a>
-								{/if}
-							</div>
-						{/each}
+			<!-- A picture of the month, not a widget: each reading is a link that
+			     names its full date, so a screen reader hears the schedule as a
+			     list of links rather than a grid it can't move through. -->
+			<div class="cal-grid">
+				{#each weeks[0] as d (d.iso)}
+					<span class="cal-dow text-micro text-muted" aria-hidden="true">{fmt.weekday.format(d.date)}</span>
+				{/each}
+				{#each weeks.flat() as cell (cell.iso)}
+					{@const d = byDate.get(cell.iso)}
+					<div class="cal-cell" class:out={cell.date.getMonth() !== month.getMonth()} class:today={cell.iso === todayIso}>
+						<span class="cal-date tabular-nums" aria-hidden="true">{cell.date.getDate()}</span>
+						{#if d}
+							<a
+								href={dayHref(d.day)}
+								class="cal-reading"
+								dir="auto"
+								aria-label="{fmt.long.format(cell.date)}: {t('plans.day')} {d.day}, {dayTitle(d)}"
+							>
+								<span class="block text-micro text-muted">{t('plans.day')} {d.day}</span>
+								<span class="cal-title line-clamp-2 text-micro max-sm:hidden">{dayTitle(d)}</span>
+							</a>
+						{/if}
 					</div>
 				{/each}
 			</div>
@@ -200,7 +215,7 @@
 					{#each milestones as ms (ms.key)}
 						<li class="flex items-baseline justify-between gap-3 text-small">
 							<span class="min-w-0 truncate font-medium text-text" dir="auto">{ms.label}</span>
-							<span class="shrink-0 tabular-nums text-muted">{ms.range || '✓'}</span>
+							<span class="shrink-0 tabular-nums text-muted">{ms.range ?? '✓'}</span>
 						</li>
 					{/each}
 				</ul>
@@ -210,7 +225,7 @@
 				     each with an alert that morning — no account, no server. -->
 				<label class="cal-field">
 					<span class="text-eyebrow text-muted">{t('plans.remindAt')}</span>
-					<input class="field" type="time" bind:value={time} />
+					<input class="field" type="time" bind:value={time} onchange={save} />
 				</label>
 				<button type="button" class="btn mt-3 w-full" onclick={download}>
 					<Icon name="calendar" size={16} />{t('plans.addCalendar')}
@@ -291,22 +306,13 @@
 		color: var(--accent);
 	}
 	.cal-title {
-		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		line-clamp: 2;
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-		font-size: var(--fs-micro);
 		line-height: 1.35;
 	}
-	/* A phone's month: the date and a dot, the title left to the list view. */
+	/* A phone's month: the date and the day number; titles are the list's. */
 	@media (max-width: 639.98px) {
 		.cal-cell {
 			min-height: 3rem;
 			padding: 0.25rem;
-		}
-		.cal-title {
-			display: none;
 		}
 	}
 </style>

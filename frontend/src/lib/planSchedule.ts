@@ -4,11 +4,11 @@
  * Pure, so the schedule (and the calendar file built from it) is unit-tested
  * apart from the page.
  */
+import { localToday } from './streak';
 
 /** Which weekdays a reader reads on. */
-export type ReadingDays = 'daily' | 'weekdays' | 'monsat';
-
-export const READING_DAYS: ReadingDays[] = ['daily', 'weekdays', 'monsat'];
+export const READING_DAYS = ['daily', 'weekdays', 'monsat'] as const;
+export type ReadingDays = (typeof READING_DAYS)[number];
 
 /** Does `rule` read on this date? (getDay: 0 = Sunday … 6 = Saturday.) */
 export const readsOn = (date: Date, rule: ReadingDays): boolean => {
@@ -18,54 +18,67 @@ export const readsOn = (date: Date, rule: ReadingDays): boolean => {
 	return true;
 };
 
-/** Local midnight of `d` — schedules are in whole days, never times. */
-export const startOfDay = (d: Date): Date => new Date(d.getFullYear(), d.getMonth(), d.getDate());
-
-/** `YYYY-MM-DD` for a local date — the schedule's map key and the date input's value. */
-export const isoDay = (d: Date): string =>
-	`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-
-/** The local date a `YYYY-MM-DD` string names, or null for anything else. */
+/** The local date a `YYYY-MM-DD` string (localToday's format) names, or null. */
 export const parseIsoDay = (s: string): Date | null => {
 	const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s);
 	if (!m) return null;
 	const d = new Date(+m[1], +m[2] - 1, +m[3]);
-	return isoDay(d) === s ? d : null;
+	return localToday(d) === s ? d : null;
 };
 
 /**
- * Each of `days` (plan day numbers, in order) on its date: the first on the
- * first reading day on or after `start`, each next one on the following
- * reading day.
+ * Each item (a plan's days still to read, in order) on its date: the first on
+ * the first reading day on or after `start`, each next on the following one.
  */
-export function schedulePlan(
-	days: number[],
-	start: Date,
-	rule: ReadingDays
-): { day: number; date: Date }[] {
-	const out: { day: number; date: Date }[] = [];
-	const cur = startOfDay(start);
-	for (const day of days) {
+export function schedulePlan<T>(items: T[], start: Date, rule: ReadingDays): { item: T; date: Date }[] {
+	const out: { item: T; date: Date }[] = [];
+	const cur = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+	for (const item of items) {
 		while (!readsOn(cur, rule)) cur.setDate(cur.getDate() + 1);
-		out.push({ day, date: new Date(cur) });
+		out.push({ item, date: new Date(cur) });
 		cur.setDate(cur.getDate() + 1);
 	}
 	return out;
 }
 
 /**
- * The weeks of a month as rows of seven local dates, Monday first, padded
+ * The locale's first day of the week (0 = Sunday … 6 = Saturday): Sunday for
+ * en-US, Monday for most of the world. Intl's week info where the browser has
+ * it, else Monday.
+ */
+export function weekStart(lang: string): number {
+	try {
+		const loc = new Intl.Locale(lang) as Intl.Locale & {
+			getWeekInfo?: () => { firstDay: number };
+			weekInfo?: { firstDay: number };
+		};
+		const first = (loc.getWeekInfo?.() ?? loc.weekInfo)?.firstDay;
+		if (first) return first % 7; // Intl counts Monday 1 … Sunday 7
+	} catch {
+		// An unknown tag: fall through.
+	}
+	return 1;
+}
+
+/** A day in a month grid, with its `YYYY-MM-DD` key computed once. */
+export interface GridDay {
+	date: Date;
+	iso: string;
+}
+
+/**
+ * The weeks of a month as rows of seven days, starting on `firstDay`, padded
  * with the neighbouring months' days so every row is whole.
  */
-export function monthGrid(year: number, month: number): Date[][] {
+export function monthGrid(year: number, month: number, firstDay = 1): GridDay[][] {
 	const first = new Date(year, month, 1);
-	const lead = (first.getDay() + 6) % 7; // days before it back to Monday
+	const lead = (first.getDay() - firstDay + 7) % 7;
 	const cur = new Date(year, month, 1 - lead);
-	const weeks: Date[][] = [];
+	const weeks: GridDay[][] = [];
 	do {
-		const week: Date[] = [];
+		const week: GridDay[] = [];
 		for (let i = 0; i < 7; i++) {
-			week.push(new Date(cur));
+			week.push({ date: new Date(cur), iso: localToday(cur) });
 			cur.setDate(cur.getDate() + 1);
 		}
 		weeks.push(week);

@@ -24,13 +24,35 @@ const BYDAY = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
 
 const pad = (n: number) => String(n).padStart(2, '0');
 
+/** The reminder time every picker starts from. */
+export const DEFAULT_REMINDER_TIME = '07:00';
+
+/** A local calendar date, `YYYYMMDD` — an all-day event's DTSTART. */
+function fmtDate(d: Date): string {
+	return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+}
+
 /** Floating local time (no Z): the reminder fires at the same wall-clock time
  *  wherever the reader is — what a daily habit reminder should do. */
 function fmtLocal(d: Date): string {
-	return (
-		`${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}` +
-		`T${pad(d.getHours())}${pad(d.getMinutes())}00`
-	);
+	return `${fmtDate(d)}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+}
+
+/** "07:30" → [7, 30]; anything unparsable counts as 0. */
+function parseHHMM(hhmm: string): [number, number] {
+	const [h, m] = hhmm.split(':').map((x) => parseInt(x, 10));
+	return [h || 0, m || 0];
+}
+
+/** An alert on an event, at `trigger` (an RFC 5545 duration from its start). */
+function alarm(trigger: string, summary: string): string[] {
+	return ['BEGIN:VALARM', `TRIGGER:${trigger}`, 'ACTION:DISPLAY', `DESCRIPTION:${esc(summary)}`, 'END:VALARM'];
+}
+
+/** A whole calendar file around `events`' lines, CRLF-joined as RFC 5545 requires. */
+function calendar(product: string, events: string[]): string {
+	const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//Ochorus//${product}//EN`, 'CALSCALE:GREGORIAN'];
+	return [...lines, ...events, 'END:VCALENDAR'].join('\r\n') + '\r\n';
 }
 
 /** UTC stamp for DTSTAMP. */
@@ -48,9 +70,9 @@ function esc(s: string): string {
 
 /** Build the .ics text for a daily reminder at `hhmm` ("07:00"). */
 export function buildReminderICS(hhmm: string, opts: ReminderOptions): string {
-	const [h, m] = hhmm.split(':').map((x) => parseInt(x, 10));
+	const [h, m] = parseHHMM(hhmm);
 	const start = new Date(opts.now);
-	start.setHours(h || 0, m || 0, 0, 0);
+	start.setHours(h, m, 0, 0);
 	const weekly = opts.weekday !== undefined && opts.weekday >= 0 && opts.weekday <= 6;
 	if (weekly) {
 		// The first occurrence is the next such weekday (today, if still ahead).
@@ -61,11 +83,7 @@ export function buildReminderICS(hhmm: string, opts: ReminderOptions): string {
 		start.setDate(start.getDate() + 1);
 	}
 
-	const lines = [
-		'BEGIN:VCALENDAR',
-		'VERSION:2.0',
-		'PRODID:-//Ochorus//Reading Reminder//EN',
-		'CALSCALE:GREGORIAN',
+	return calendar('Reading Reminder', [
 		'BEGIN:VEVENT',
 		`UID:${opts.uid}`,
 		`DTSTAMP:${fmtUTC(opts.now)}`,
@@ -74,16 +92,9 @@ export function buildReminderICS(hhmm: string, opts: ReminderOptions): string {
 		`SUMMARY:${esc(opts.summary)}`,
 		`DESCRIPTION:${esc(opts.description)}`,
 		`URL:${esc(opts.url)}`,
-		'BEGIN:VALARM',
-		'TRIGGER:PT0M',
-		'ACTION:DISPLAY',
-		`DESCRIPTION:${esc(opts.summary)}`,
-		'END:VALARM',
-		'END:VEVENT',
-		'END:VCALENDAR'
-	];
-	// RFC 5545 requires CRLF line breaks.
-	return lines.join('\r\n') + '\r\n';
+		...alarm('PT0M', opts.summary),
+		'END:VEVENT'
+	]);
 }
 
 export interface ScheduledReading {
@@ -103,29 +114,20 @@ export function buildScheduleICS(
 	hhmm: string,
 	opts: { now: Date; uidPrefix: string }
 ): string {
-	const [h, m] = hhmm.split(':').map((x) => parseInt(x, 10));
-	const day = (d: Date) => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
-	const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Ochorus//Reading Plan//EN', 'CALSCALE:GREGORIAN'];
-	readings.forEach((r, i) => {
-		const next = new Date(r.date);
-		next.setDate(next.getDate() + 1);
-		lines.push(
+	const [h, m] = parseHHMM(hhmm);
+	// An all-day event lasts one day without a DTEND (RFC 5545 §3.6.1); the
+	// alert counts from its start, local midnight — so h:m that morning.
+	return calendar(
+		'Reading Plan',
+		readings.flatMap((r, i) => [
 			'BEGIN:VEVENT',
 			`UID:${opts.uidPrefix}-${i + 1}`,
 			`DTSTAMP:${fmtUTC(opts.now)}`,
-			`DTSTART;VALUE=DATE:${day(r.date)}`,
-			`DTEND;VALUE=DATE:${day(next)}`,
+			`DTSTART;VALUE=DATE:${fmtDate(r.date)}`,
 			`SUMMARY:${esc(r.summary)}`,
 			`URL:${esc(r.url)}`,
-			'BEGIN:VALARM',
-			// Relative to the all-day event's start, local midnight: that morning.
-			`TRIGGER:PT${h || 0}H${m || 0}M`,
-			'ACTION:DISPLAY',
-			`DESCRIPTION:${esc(r.summary)}`,
-			'END:VALARM',
+			...alarm(`PT${h}H${m}M`, r.summary),
 			'END:VEVENT'
-		);
-	});
-	lines.push('END:VCALENDAR');
-	return lines.join('\r\n') + '\r\n';
+		])
+	);
 }

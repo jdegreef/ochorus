@@ -32,7 +32,7 @@
 	import { weekReadCount } from '$lib/heatmap';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import StatTiles from '$lib/components/StatTiles.svelte';
-	import { buildReminderICS } from '$lib/reminder';
+	import { buildReminderICS, DEFAULT_REMINDER_TIME } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
@@ -176,7 +176,7 @@
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
 	// they add to their own calendar (no server, works on every device).
 	const REMINDER_KEY = 'ochorus:reminder-time';
-	let reminderTime = $state('07:00');
+	let reminderTime = $state(DEFAULT_REMINDER_TIME);
 	onMount(() => {
 		const saved = localStorage.getItem(REMINDER_KEY);
 		if (saved && /^\d{2}:\d{2}$/.test(saved)) reminderTime = saved;

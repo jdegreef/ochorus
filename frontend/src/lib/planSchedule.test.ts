@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { isoDay, monthGrid, parseIsoDay, readsOn, schedulePlan } from './planSchedule';
+import { monthGrid, parseIsoDay, readsOn, schedulePlan, weekStart } from './planSchedule';
+import { localToday as isoDay } from './streak';
 import { buildScheduleICS } from './reminder';
 
 // Mon 5 Oct 2026.
@@ -8,7 +9,7 @@ const MON = new Date(2026, 9, 5);
 describe('schedulePlan', () => {
 	it('puts one day on each reading day from the start', () => {
 		const s = schedulePlan([1, 2, 3], MON, 'daily');
-		expect(s.map((x) => [x.day, isoDay(x.date)])).toEqual([
+		expect(s.map((x) => [x.item, isoDay(x.date)])).toEqual([
 			[1, '2026-10-05'],
 			[2, '2026-10-06'],
 			[3, '2026-10-07']
@@ -52,8 +53,21 @@ describe('monthGrid', () => {
 	it('lays October 2026 out Monday-first in whole weeks', () => {
 		const g = monthGrid(2026, 9);
 		expect(g.every((w) => w.length === 7)).toBe(true);
-		expect(isoDay(g[0][0])).toBe('2026-09-28'); // Oct 1 is a Thursday
-		expect(isoDay(g.at(-1)!.at(-1)!)).toBe('2026-11-01');
+		expect(g[0][0].iso).toBe('2026-09-28'); // Oct 1 is a Thursday
+		expect(g.at(-1)!.at(-1)!.iso).toBe('2026-11-01');
+	});
+
+	it('starts its weeks on the day it is given (Sunday for en-US)', () => {
+		const g = monthGrid(2026, 9, 0);
+		expect(g[0][0].iso).toBe('2026-09-27');
+		expect(g[0].map((d) => d.date.getDay())).toEqual([0, 1, 2, 3, 4, 5, 6]);
+	});
+});
+
+describe('weekStart', () => {
+	it('is a weekday number, Monday when the locale cannot say', () => {
+		expect(weekStart('not a tag!!')).toBe(1);
+		expect([0, 1, 6]).toContain(weekStart('en-US'));
 	});
 });
 
@@ -69,7 +83,7 @@ describe('buildScheduleICS', () => {
 		);
 		expect(ics.match(/BEGIN:VEVENT/g)).toHaveLength(2);
 		expect(ics).toContain('DTSTART;VALUE=DATE:20261005');
-		expect(ics).toContain('DTEND;VALUE=DATE:20261006');
+		expect(ics).not.toContain('DTEND');
 		expect(ics).toContain('TRIGGER:PT7H30M');
 		expect(ics).toContain(String.raw`SUMMARY:Day 2\, Made\; to Reflect`);
 		expect(ics).toContain('UID:plan-dotk-2');
