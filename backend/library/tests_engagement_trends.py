@@ -113,10 +113,31 @@ class PulseTrendTests(TestCase):
 
     def test_the_30_day_line_ends_on_the_tile(self):
         p = profile()
+        ReadingProgress.objects.create(
+            profile=p, kind=WorkKind.BOOK, book_slug="z", language="en", chapter_order=1
+        )
         for back in (0, 20, 40):
             ReadingDay.objects.create(profile=p, day=self.today - timedelta(days=back))
         data = self._trends()
         self.assertEqual(data["trends"]["active_30d"][-1]["readers"], data["overview"]["active_30d"])
+
+    def test_a_reader_already_on_tomorrow_counts_this_week(self):
+        # Reading days are the reader's local date; east of UTC it can be
+        # tomorrow already.
+        p = profile()
+        ReadingProgress.objects.create(
+            profile=p, kind=WorkKind.BOOK, book_slug="z", language="en", chapter_order=1
+        )
+        ReadingDay.objects.create(profile=p, day=self.today + timedelta(days=1))
+        data = self._trends()
+        self.assertEqual(data["overview"]["active_7d"], 1)
+        self.assertEqual(data["weekly_active"][-1]["readers"], 1)
+
+    def test_active_never_exceeds_readers(self):
+        for _ in range(3):
+            ReadingDay.objects.create(profile=profile(), day=self.today)  # no saved progress
+        ov = self._trends()["overview"]
+        self.assertLessEqual(ov["active_7d"], ov["readers"])
 
     def test_an_empty_page_gets_no_lines(self):
         ReadingProgress.objects.all().delete()
@@ -124,6 +145,9 @@ class PulseTrendTests(TestCase):
 
     def test_the_last_30_day_window_ends_today(self):
         p = profile()
+        ReadingProgress.objects.create(
+            profile=p, kind=WorkKind.BOOK, book_slug="z", language="en", chapter_order=1
+        )
         ReadingDay.objects.create(profile=p, day=self.today)
         ReadingDay.objects.create(profile=p, day=self.today - timedelta(days=45))
         windows = self._trends()["trends"]["active_30d"]
