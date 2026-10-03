@@ -16,7 +16,10 @@
 	import BioTile from '$lib/components/BioTile.svelte';
 	import FacetBand from '$lib/components/FacetBand.svelte';
 	import FacetMenu from '$lib/components/FacetMenu.svelte';
-	import Icon from '$lib/components/Icon.svelte';
+	import FilterBar from '$lib/components/FilterBar.svelte';
+	import AzRail from '$lib/components/AzRail.svelte';
+	import ViewToggle from '$lib/components/ViewToggle.svelte';
+	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import {
 		facetCounts,
 		hubMembers,
@@ -291,7 +294,7 @@
 	const shownLens = $derived(lenses.find((l) => l.k === lens) ?? lenses[0]);
 
 	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
-	type View = 'list' | 'grid';
+	type View = 'grid' | 'list';
 	const VIEW_KEY = 'ochorus:bios-view';
 	let view = $state<View>('list');
 	onMount(() => {
@@ -305,8 +308,8 @@
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
 	// forever. On a phone it is search (the thing you actually reach for) plus a
 	// Filters button whose sheet holds the rest; from sm the controls sit inline.
-	/** Measured height of the pinned controls bar — the era headings pin below it. */
-	let controlsH = $state(0);
+	/** Height of the pinned controls bar — the era headings pin below it. */
+	let pinnedH = $state(0);
 	/** What the sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived(
 		(filters.values.filter !== 'all' ? 1 : 0) +
@@ -330,6 +333,10 @@
 	// Clear that did nothing (clearFilters keeps the sort). sheetCount already
 	// counts every real filter; add the query.
 	const isFiltered = $derived(sheetCount > 0 || filters.values.q.trim() !== '');
+
+	// How much is on the shelf, for the header's count line — the whole roster,
+	// not the current filter (it describes the library, like the Books header).
+	const bookTotal = $derived(authors.reduce((n, a) => n + a.book_count, 0));
 
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
@@ -484,19 +491,18 @@
 <!-- The snippets below are each rendered twice: in the inline row (sm up)
      and in the phone sheet. -->
 <!-- "Has books to read" — the old All / In the library / Biography only
-     segment as the one question people actually ask of it. A shared
-     ?filter=bio still works; it shows as a removable chip in the summary. -->
-{#snippet hasBooksToggle()}
+     segment as the one question people actually ask of it: an on/off chip,
+     like Full life beside it. A shared ?filter=bio still works; it shows as a
+     removable chip in the summary. -->
+{#snippet hasBooksChip()}
 	<button
 		type="button"
-		role="switch"
-		aria-checked={filters.values.filter === 'library'}
-		class="filter-field has-books"
-		class:is-active={filters.values.filter === 'library'}
+		class="chip"
+		class:active={filters.values.filter === 'library'}
+		aria-pressed={filters.values.filter === 'library'}
 		onclick={() => (filters.values.filter = filters.values.filter === 'library' ? 'all' : 'library')}
+		>{t('bios.hasBooks')}</button
 	>
-		<span class="switch" aria-hidden="true"></span>{t('bios.hasBooks')}
-	</button>
 {/snippet}
 <!-- Orthogonal to the has-books switch: narrows to writers with a
      full-length biography (the "Full life" badge). Shown only when it
@@ -538,13 +544,25 @@
 	pins or scrolls into view below reads it, so there is one number to be right
 	rather than four hard-coded ones drifting apart.
 -->
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
+	<LibraryTabs set="writers" current="bios" />
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
 	     carrying a trail. Detail pages (a book, an author) still get one, where
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
-	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
+	<PageHeader
+		title={t('nav.biographies')}
+		tagline={t('bios.tagline')}
+		meta={authors.length ? bioCounts : undefined}
+	/>
+	{#snippet bioCounts()}
+		{authors.length}
+		{authors.length === 1 ? t('common.writerOne') : t('common.writerMany')}
+		<span class="opacity-50">·</span>
+		{bookTotal}
+		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
+	{/snippet}
 
 	<!-- The page's visual way in: the eras, the traditions or the places as
 	     cards, one lens at a time (eras by default). Each card ticks that value
@@ -552,17 +570,20 @@
 	{#if shownLens && !loadError}
 		<div class="mb-5">
 			{#if lenses.length > 1}
-				<div class="lens-row" role="group" aria-label={t('bios.browseBy')}>
-					<span class="lens-label" aria-hidden="true">{t('bios.browseBy')}</span>
-					{#each lenses as l (l.k)}
-						<button
-							type="button"
-							class="lens"
-							class:active={shownLens.k === l.k}
-							aria-pressed={shownLens.k === l.k}
-							onclick={() => (lens = l.k)}>{l.label}</button
-						>
-					{/each}
+				<!-- Browse by: Era · Tradition · Place — the shared .seg, as every
+				     shelf's one-of-a-few choice is. -->
+				<div class="mb-2.5 flex items-center gap-2.5">
+					<span class="text-small text-muted" aria-hidden="true">{t('bios.browseBy')}</span>
+					<div class="seg" role="group" aria-label={t('bios.browseBy')}>
+						{#each lenses as l (l.k)}
+							<button
+								type="button"
+								class:active={shownLens.k === l.k}
+								aria-pressed={shownLens.k === l.k}
+								onclick={() => (lens = l.k)}>{l.label}</button
+							>
+						{/each}
+					</div>
 				</div>
 			{/if}
 			<FacetBand
@@ -585,10 +606,7 @@
 	     The tradition and place chip walls that used to sit above this (~400px
 	     before the first writer) are the Tradition / Place menus now; their pages
 	     are linked from the Browse block under the list. -->
-	<div
-		bind:clientHeight={controlsH}
-		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
-	>
+	<FilterBar bind:pinned={pinnedH} class="mb-6">
 	<!-- Controls: search · tradition · place · era · has-books · sort · view -->
 	<div class="filter-row">
 		<input
@@ -608,7 +626,7 @@
 			onClear={clearFilters}
 		>
 			<div class="flex flex-wrap gap-2">
-				{@render hasBooksToggle()}
+				{@render hasBooksChip()}
 				{#if showFullLife}{@render fullLifeChip()}{/if}
 			</div>
 			{#each facetGroups as g (g.k)}
@@ -625,15 +643,7 @@
 				value={filters.values.sort}
 				onselect={(v) => (filters.values.sort = v)}
 			/>
-			<SheetChoices
-				label={t('bios.view')}
-				options={[
-					{ v: 'list' as View, label: t('bios.viewList') },
-					{ v: 'grid' as View, label: t('bios.viewGrid') }
-				]}
-				value={view}
-				onselect={setView}
-			/>
+			<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
 		</FilterSheet>
 
 		<div class="hidden sm:contents">
@@ -646,25 +656,19 @@
 					onclear={() => (filters.values[g.k] = '')}
 				/>
 			{/each}
-			{@render hasBooksToggle()}
+			{@render hasBooksChip()}
 			{#if showFullLife}
 				{@render fullLifeChip()}
 			{/if}
 			<!-- Sort is a <select>, as on every shelf (page-design: no visible
-			     "Sort:" label, it rides in aria-label). -->
-			<select bind:value={filters.values.sort} class="filter-field ms-auto" aria-label={t('bios.sort')}>
+			     "Sort:" label, it rides in aria-label), straight after the filters:
+			     search · filters · sort · view. -->
+			<select bind:value={filters.values.sort} class="filter-field" aria-label={t('bios.sort')}>
 				{#each SORT_VALUES as v (v)}
 					<option value={v}>{t(SORT_LABEL[v])}</option>
 				{/each}
 			</select>
-			<div class="seg" role="group" aria-label={t('bios.view')}>
-				<button type="button" class="view-btn" class:active={view === 'list'} aria-pressed={view === 'list'} aria-label={t('bios.viewList')} onclick={() => setView('list')}>
-					<Icon name="list" />
-				</button>
-				<button type="button" class="view-btn" class:active={view === 'grid'} aria-pressed={view === 'grid'} aria-label={t('bios.viewGrid')} onclick={() => setView('grid')}>
-					<Icon name="grid" />
-				</button>
-			</div>
+			<ViewToggle {view} onchange={setView} />
 		</div>
 	</div>
 
@@ -682,31 +686,20 @@
 				/>
 			{/if}
 			{#if filters.values.sort === 'name' && sorted.length > 1}
-				<!-- On a phone a single row that swipes sideways; from sm up it wraps. -->
-				<nav
-					class="az-rail flex max-w-full gap-x-0.5 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:ms-auto sm:flex-wrap sm:overflow-visible"
-					aria-label={t('bios.jumpAz')}
-				>
-					{#each AZ as letter (letter)}
-						{#if firstByLetter.has(letter)}
-							<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
-							     a late letter has no element to anchor to yet — the prerender
-							     crawler caught exactly that ("no element with id=r-a-torrey").
-							     Reveal first, then scroll; and with no href there is no dangling
-							     fragment in the static output. -->
-							<button
-								class="shrink-0 rounded-sm px-1 py-0.5 font-semibold text-accent hover:bg-accent-soft"
-								onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
-							>
-						{:else}
-							<span class="shrink-0 px-1 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
-						{/if}
-					{/each}
-				</nav>
+				<!-- Buttons, not anchors (AzRail's `onjump`): paging paints 24 rows, so
+				     a writer under a late letter has no element to anchor to yet — reveal
+				     first, then scroll. -->
+				<AzRail
+					class="sm:ms-auto"
+					letters={AZ}
+					present={(l) => firstByLetter.has(l)}
+					onjump={(l) => jumpTo(firstByLetter.get(l)!)}
+					label={t('bios.jumpAz')}
+				/>
 			{/if}
 		</div>
 	{/if}
-	</div>
+	</FilterBar>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
@@ -805,93 +798,3 @@
 		</nav>
 	{/if}
 </div>
-
-<style>
-	/* On a touch phone the A–Z letters (21×25) take a full-height target; the
-	   strip scrolls sideways there, so width stays letter-sized. Not on a touch
-	   tablet: from sm the strip wraps, and 44px rows would swell the pinned
-	   header. */
-	@media (pointer: coarse) and (max-width: 639.98px) {
-		.az-rail button {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-width: 2.25rem;
-			min-height: 2.75rem;
-		}
-	}
-	/* "Has books to read": a field-shaped switch, so it sits in the row at the
-	   same height as the menus beside it. */
-	.has-books {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		white-space: nowrap;
-	}
-	.switch {
-		position: relative;
-		flex-shrink: 0;
-		width: 1.9rem;
-		height: 1.1rem;
-		border-radius: 999px;
-		background: var(--border-strong);
-		transition: background var(--duration-base, 150ms);
-	}
-	.switch::after {
-		content: '';
-		position: absolute;
-		top: 0.15rem;
-		inset-inline-start: 0.15rem;
-		width: 0.8rem;
-		height: 0.8rem;
-		border-radius: 999px;
-		background: var(--surface);
-		transition: inset-inline-start var(--duration-base, 150ms);
-	}
-	.has-books.is-active .switch {
-		background: var(--accent);
-	}
-	.has-books.is-active .switch::after {
-		inset-inline-start: 0.95rem;
-	}
-	.view-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-	/* Browse by: Era · Tradition · Place — text tabs over the band. */
-	.lens-row {
-		display: flex;
-		align-items: baseline;
-		gap: 0.25rem;
-		margin-bottom: 0.6rem;
-	}
-	.lens-label {
-		margin-inline-end: 0.35rem;
-		font-size: var(--fs-small);
-		color: var(--muted);
-	}
-	.lens {
-		padding: 0.2rem 0.5rem;
-		border: 0;
-		border-bottom: 2px solid transparent;
-		background: none;
-		font-size: var(--fs-small);
-		color: var(--muted);
-		cursor: pointer;
-	}
-	.lens:hover {
-		color: var(--text);
-	}
-	.lens.active {
-		border-bottom-color: var(--accent);
-		color: var(--accent);
-		font-weight: 600;
-	}
-	@media (pointer: coarse) {
-		.lens {
-			min-height: 2.75rem;
-		}
-	}
-</style>

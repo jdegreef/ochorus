@@ -52,7 +52,8 @@
 <a
 	href={localizeHref(`/books/${book.slug}`)}
 	id={anchor ? `author-${anchor}` : undefined}
-	class={`book-card card-lift group${anchor ? ' scroll-mt-20' : ''}`}
+	class="book-card card-lift group"
+	style={anchor ? 'scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)' : undefined}
 	data-testid="book-card"
 	aria-label={showAuthor ? `${book.title} — ${book.author.name}` : book.title}
 >
