@@ -921,11 +921,8 @@
 	     published edition; `siblingEditions` is the hreflang alternate set minus
 	     the edition being viewed, and localeName() gives each its autonym.
 	     hreflang/lang on the link announce the target language to the reader and
-	     to assistive tech.
-	     data-sveltekit-reload forces a full load: the locale comes from the URL
-	     via Paraglide, and a client-side nav reroutes /es/books/x/ to the SAME
-	     route and params while getLang() still reads the old URL — so the reader
-	     landed on the English edition under a Spanish address. -->
+	     to assistive tech. Following one is a full load (the root layout's
+	     cross-locale guard), so the new page reads its own locale. -->
 	<!-- On a fallback page the notice above already lists these. -->
 	{#if siblingEditions.length && !fallback}
 		<section id="languages" class="jump-anchor mt-12">
@@ -933,7 +930,7 @@
 			<div class="mt-3 flex flex-wrap items-center gap-2">
 				<span class="text-small text-muted">{t('book.availableIn')}</span>
 				{#each siblingEditions as ed (ed.loc)}
-					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc} data-sveltekit-reload>{localeName(ed.loc)}</a>
+					<a href={ed.href} class="tag" hreflang={ed.loc} lang={ed.loc}>{localeName(ed.loc)}</a>
 				{/each}
 			</div>
 		</section>

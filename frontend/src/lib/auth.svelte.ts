@@ -307,11 +307,8 @@ class Auth {
 			this.isAdmin = !!p.is_admin;
 			this.scopes = p.scopes ?? [];
 			this.displayName = p.display_name || '';
-			// A blank theme means the account has never had prefs pushed to it
-			// (every push carries one): its font scale / TTS values are just the
-			// model's defaults. Adopting them turned a dark-mode reader light the
-			// moment they signed up — so a fresh account takes THIS device's
-			// prefs instead (pushed below, once the gate is open).
+			// Blank theme = no saved prefs yet (see UserProfile.theme): the
+			// account's values are model defaults, so it takes this device's.
 			const fresh = !p.theme;
 			if (!fresh) {
 				theme.set(normalizePref(p.theme));
@@ -325,7 +322,6 @@ class Auth {
 			// again. Set BEFORE the language reconcile below, which pushes
 			// deliberately. See #profileLoaded.
 			this.#profileLoaded = true;
-			if (fresh) this.pushPrefs();
 			// Record where this reader is signing in from (browser timezone →
 			// approximate country in the admin analytics). Independent of the
 			// prefs push, so it's safe regardless of #profileLoaded.
@@ -337,12 +333,11 @@ class Auth {
 			// reconcile the profile to it so their other devices follow. Only on a
 			// device with no local choice do we adopt the saved profile locale
 			// (cross-device restore) — and only if it's a language we still offer.
-			// A fresh account's locale is the model default, not a choice: its
-			// push above already carried this page's language.
+			// A fresh account's locale is a default too: it takes this page's.
 			const chosen = lang.chosen();
-			if (chosen) {
-				if (p.locale !== lang.current) this.pushPrefs();
-			} else if (!fresh && p.locale && lang.isAvailable(p.locale)) {
+			if (fresh || (chosen && p.locale !== lang.current)) {
+				this.pushPrefs();
+			} else if (!chosen && p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
 			}
 		} catch {

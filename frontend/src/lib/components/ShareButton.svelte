@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { isCoarsePointer } from '$lib/reading';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -40,13 +41,10 @@
 	const mailHref = $derived(`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${url}`)}`);
 
 	async function onClick() {
-		// The OS sheet only on touch-first devices. Desktop Chrome/Edge expose
-		// `navigator.share` too, but there it hands off to a system dialog that
-		// often has no targets or opens out of sight — a click that "does
-		// nothing" (QA report, the series page's Share). The menu is the better
-		// desktop answer anyway: WhatsApp and Copy link are what readers use.
-		const touch = typeof matchMedia === 'function' && matchMedia('(pointer: coarse)').matches;
-		if (touch && typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+		// The OS sheet only on touch devices: desktop Chrome/Edge expose
+		// `navigator.share` too, but hand off to a system dialog that often shows
+		// nothing — a click that "does nothing". The menu serves desktop better.
+		if (isCoarsePointer() && typeof navigator.share === 'function') {
 			try {
 				await navigator.share({ title, url });
 				return;

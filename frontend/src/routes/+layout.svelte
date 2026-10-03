@@ -4,6 +4,7 @@
 	import { page } from '$app/stores';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { crossesLocale } from '$lib/localeNavigation';
+	import { isCoarsePointer } from '$lib/reading';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -59,6 +60,7 @@
 		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
+		if (!isCoarsePointer()) searchKbd = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
 		auth.init();
 		pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
@@ -132,15 +134,9 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
-	// The search shortcut hint, spelt for this platform: "⌘K" only means
-	// something on Apple keyboards (the palette also answers Ctrl+K). Decided on
-	// mount — the prerendered HTML can't know the platform — and left empty on
-	// touch-first devices, where there is no keyboard to press it on.
+	// The search shortcut hint for this platform (the palette answers both ⌘K
+	// and Ctrl+K); set on mount, left empty on touch devices.
 	let searchKbd = $state('');
-	onMount(() => {
-		if (matchMedia('(pointer: coarse)').matches) return;
-		searchKbd = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
-	});
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -550,7 +546,7 @@
 							<span
 								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
-								dir={getTextDirection(l.code as (typeof locales)[number])}
+								dir={getTextDirection(l.code)}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
@@ -558,7 +554,7 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
-								dir={getTextDirection(l.code as (typeof locales)[number])}
+								dir={getTextDirection(l.code)}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click

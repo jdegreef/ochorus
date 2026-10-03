@@ -239,7 +239,6 @@
 									href={l.href}
 									hreflang={l.loc}
 									lang={l.loc}
-									data-sveltekit-reload
 								>
 									{localeName(l.loc)} <span class="count">{counts.get(l.loc)}</span>
 								</a>
