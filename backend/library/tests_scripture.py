@@ -357,3 +357,24 @@ class ScriptureFetchTests(TestCase):
             with self.assertRaises(ScriptureUnavailable):
                 fetch_chapter("rv1858", Ref("ISA", 55))
         self.assertEqual(get.call_count, _FETCH_ATTEMPTS)
+
+
+class EpigraphReferenceTests(SimpleTestCase):
+    """A chapter's key verse: the reference its opening epigraph is attributed to."""
+
+    def test_reads_the_attributed_reference_as_written(self):
+        from .scripture import epigraph_reference
+
+        self.assertEqual(
+            epigraph_reference("“Wherever you go, I will go.” — Ruth 1:16 (BSB) Naomi had lost everything."),
+            "Ruth 1:16",
+        )
+        self.assertEqual(epigraph_reference("“…” – 1 Peter 3:3–4 (BSB)"), "1 Peter 3:3–4")
+
+    def test_needs_the_dash_and_a_real_verse_near_the_top(self):
+        from .scripture import EPIGRAPH_WINDOW, epigraph_reference
+
+        self.assertEqual(epigraph_reference("As John 3:16 says, God so loved the world."), "")
+        self.assertEqual(epigraph_reference("The keeper — Room 3:16 — waited."), "")
+        self.assertEqual(epigraph_reference("x" * EPIGRAPH_WINDOW + " — John 3:16"), "")
+        self.assertEqual(epigraph_reference(""), "")

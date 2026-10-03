@@ -583,7 +583,9 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         """
         ctx = super().get_serializer_context()
         plan = self.get_object()
-        ctx["plan_chapters"] = plan_chapter_index([plan], plan.language)
+        ctx["plan_chapters"] = plan_chapter_index(
+            [plan], plan.language, with_openings=True
+        )
         ctx["plan_books"] = plan_book_index([plan], plan.language)
         ctx["plan_articles"] = plan_article_index([plan], plan.language)
         return ctx

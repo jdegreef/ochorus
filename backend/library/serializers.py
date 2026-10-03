@@ -2,6 +2,7 @@ import re
 from collections import Counter
 
 from django.db.models import Count, QuerySet, Sum
+from django.db.models.functions import Substr
 from django.urls import reverse
 from django.utils.text import slugify
 from rest_framework import serializers
@@ -31,7 +32,7 @@ from .models import (
 )
 from .opening import opening_candidate_orders, opening_excerpt
 from .rights import is_public_domain
-from .scripture import book_of
+from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
 from .scripture_graph import treated_passages
 
 
@@ -2166,7 +2167,7 @@ class PlanListSerializer(serializers.ModelSerializer):
         return {"book_title": reading["book_title"], "chapter_title": reading["title"]}
 
 
-def plan_chapter_index(plans, language):
+def plan_chapter_index(plans, language, with_openings=False):
     """``{(book_slug, order): chapter values}`` for every day of every plan.
 
     ONE query for a whole page. The three plan card fields — total words, day
@@ -2176,6 +2177,10 @@ def plan_chapter_index(plans, language):
 
     Carries every column any of those four needs, so they read a dict instead of
     the database. Same shape ``get_days`` already built for itself.
+
+    ``with_openings`` adds each chapter's first ``EPIGRAPH_WINDOW`` characters
+    as ``opening`` — the detail page's key-verse chips read it. Off for the
+    shelf, which shows no chips and would only pay to ship the text.
     """
     pairs = {
         (d.book_slug, d.chapter_order)
@@ -2186,12 +2191,18 @@ def plan_chapter_index(plans, language):
     if not pairs:
         return {}
     slugs = {slug for slug, _ in pairs}
-    return {
-        (c["book__slug"], c["order"]): c
-        for c in Chapter.objects.filter(
-            book__slug__in=slugs, book__language=language
-        ).values("book__slug", "book__title", "order", "title", "word_count")
-    }
+    # By order too: the day list reads a few chapters of books that may hold
+    # hundreds, and with openings each extra row costs a body_text read.
+    rows = Chapter.objects.filter(
+        book__slug__in=slugs,
+        book__language=language,
+        order__in={order for _, order in pairs},
+    )
+    fields = ["book__slug", "book__title", "order", "title", "word_count"]
+    if with_openings:
+        rows = rows.annotate(opening=Substr("body_text", 1, EPIGRAPH_WINDOW))
+        fields.append("opening")
+    return {(c["book__slug"], c["order"]): c for c in rows.values(*fields)}
 
 
 def plan_book_index(plans, language):
@@ -2228,6 +2239,22 @@ def plan_article_index(plans, language):
     }
 
 
+# A devotional's chapter titles carry the BOOK's own day ("Day 13 — Where You
+# Go"), which disagrees with the plan's day as soon as a book opens on an
+# introduction — the plan shows "Day 14 of 96" over "Day 13 — …". Right in the
+# book's contents, wrong in a plan, so plan payloads drop it. The word for "day"
+# in each content language that writes it; "Psalm 23 — …" keeps its number.
+_PLAN_DAY_PREFIX = re.compile(
+    r"^(?:Day|Día|Dia|Jour|Tag|Siku|Olunaku|День|दिन|ቀን|اليوم|يوم)\s+\d+\s*[—–:-]\s*(?=[^\d\s])",
+    re.IGNORECASE,
+)
+
+
+def plan_day_title(title):
+    """A chapter title as a plan day shows it: without the book's "Day N — "."""
+    return _PLAN_DAY_PREFIX.sub("", title)
+
+
 def _plan_reading(day, chapters, articles):
     """What one plan day reads — ``{title, book_title, word_count}`` — from the
     prebuilt indexes, or None when it doesn't resolve in this language. The one
@@ -2238,9 +2265,10 @@ def _plan_reading(day, chapters, articles):
         return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
     c = chapters.get((day.book_slug, day.chapter_order))
     return c and {
-        "title": c["title"],
+        "title": plan_day_title(c["title"]),
         "book_title": c["book__title"],
         "word_count": c["word_count"],
+        "opening": c.get("opening", ""),
     }
 
 
@@ -2266,7 +2294,7 @@ def _plan_covers(plan, books, limit=5):
         b = books.get(slug)
         if b:
             covers.append(_book_cover(b))
-        if len(covers) >= limit:
+        if limit and len(covers) >= limit:
             break
     return covers
 
@@ -2282,12 +2310,15 @@ class PlanDaySerializer(serializers.ModelSerializer):
     # A published Modern English edition of the day's book exists — so the
     # reader's "Prefer Modern English" can be honoured on the day's link.
     has_modern_edition = serializers.BooleanField(read_only=True, default=False)
+    # The verse the day's chapter opens on ("Ruth 1:16"), or "" — the day list
+    # wears it as a chip, so a reader sees what each day is about.
+    key_verse = serializers.CharField(read_only=True, default="")
 
     class Meta:
         model = PlanDay
         fields = [
             "day", "book_slug", "chapter_order", "article_slug", "book_title",
-            "chapter_title", "word_count", "has_modern_edition",
+            "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 
@@ -2305,6 +2336,11 @@ class PlanDetailSerializer(PlanListSerializer):
 
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
+
+    def get_covers(self, obj):
+        """Every book's cover, not the shelf card's five: the day list draws one
+        on each book's section."""
+        return _plan_covers(obj, self._books(obj), limit=None)
 
     def get_authors(self, obj):
         """The distinct writers this plan reads through, in the order their books
@@ -2344,6 +2380,9 @@ class PlanDetailSerializer(PlanListSerializer):
             d.chapter_title = r.get("title", "")
             d.word_count = r.get("word_count", 0)
             d.has_modern_edition = bool(d.book_slug) and d.book_slug in modern
+            # Only the detail view's index carries openings; any other caller
+            # (the serializer used directly) just gets no chips.
+            d.key_verse = epigraph_reference(r.get("opening", ""))
         return PlanDaySerializer(days, many=True).data
 
 
