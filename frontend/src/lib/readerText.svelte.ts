@@ -176,7 +176,8 @@ export class ReaderText {
 		scripture.show(
 			a.dataset.ref,
 			r.bottom + window.scrollY,
-			r.left + window.scrollX + r.width / 2
+			r.left + window.scrollX + r.width / 2,
+			a.getAttribute('href') ?? ''
 		);
 		return true;
 	};

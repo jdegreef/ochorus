@@ -40,11 +40,37 @@ _ROMAN = r"(?=[ivxlc])c?(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
 # A "Book chapter:verse[-verse]" candidate: an optional leading 1/2/3, a
 # capitalised word (+ optional trailing period for abbreviations), then the
 # chapter:verse. Deliberately loose — pythonbible does the real validation.
-_CANDIDATE = re.compile(
-    r"\b((?:[1-3]\s+)?[A-Z][A-Za-z]+\.?\s+"
+_VERSE_REF = (
+    r"(?:[1-3]\s+)?[A-Z][A-Za-z]+\.?\s+"
     rf"(?:\d{{1,3}}|{_ROMAN})"
-    r"\s*[:.]\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?)"
+    r"\s*[:.]\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?"
 )
+_CANDIDATE = re.compile(rf"\b({_VERSE_REF})")
+
+# A CHAPTER-ONLY citation: "Romans 8", "John 17", "Psalm 23", "Hebrews 11".
+# The writers cite whole chapters ~850 times across the English books alone,
+# and `_CANDIDATE` (which needs chapter:verse) never saw one. These are linked
+# but never popover-only: see `annotate_references`.
+#
+# Much stricter than `_CANDIDATE`, because a bare "Name number" is far more
+# common in prose than "Name n:n". Only a FULL book name (never an abbreviation:
+# "Am 5", "Is 53") and an Arabic chapter (a roman "John i" is too often a
+# pronoun or a list marker); not followed by ":"/"." and a digit, which is a
+# verse citation `_CANDIDATE` owns. pythonbible then rejects a chapter the book
+# doesn't have ("John 25") — and reads a single-chapter book's number as a
+# verse ("Jude 24" → Jude 1:24), which is how those books are cited.
+_BOOK_NAMES = "|".join(
+    sorted(
+        {re.escape(re.sub(r"^[1-3] ", "", b.title)) for b in bible.Book}
+        | {"Psalm", "Song of Solomon"},
+        key=len,
+        reverse=True,
+    )
+)
+_CHAPTER_REF = rf"(?:[1-3]\s+)?(?:{_BOOK_NAMES})\s+\d{{1,3}}\b(?!\s*[:.]\s*\d)"
+# Both forms in one pass. Alternation tries the verse form first at each
+# position, so "Romans 8:28" is always the verse citation, never "Romans 8".
+_LINKABLE = re.compile(rf"\b(?:(?P<verse>{_VERSE_REF})|(?P<chapter>{_CHAPTER_REF}))")
 _TAG_SPLIT = re.compile(r"(<[^>]+>)")
 # Cheap pre-filter before the real regex runs. It used to be `":" in html`, but a
 # roman-numeral citation separates with a PERIOD ("Luke ii. 10"), so that test
@@ -92,7 +118,9 @@ def epigraph_reference(text: str) -> str:
     return ""
 
 
-def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
+def annotate_references(
+    html: str, links: dict[str, str] | None = None, *, linked_only: bool = False
+) -> str:
     """Wrap valid Bible references in tappable anchors, in text only.
 
     Splits on tags so attribute values are never touched, and skips text inside
@@ -107,6 +135,16 @@ def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
     :func:`reference_candidates` + ``scripture_graph.scripture_links`` so a link
     is emitted only where the page was actually built (never a 404); scripture.py
     stays free of the graph/DB layer, which imports it.
+
+    A CHAPTER-ONLY citation ("Romans 8") is wrapped only when ``links`` has a
+    page for it. Unlinked, it is left as plain text, exactly as before: the
+    popover alone has little to offer for a whole chapter (it shows the first
+    verses), and a stricter pattern is the price of matching bare
+    "Name number" prose at all — the page floor is a second filter on it.
+
+    ``linked_only`` wraps ONLY references that get an ``href``, for surfaces with
+    no popover (an author bio): there a hrefless anchor would be dead text that
+    crawlers flag as an uncrawlable link.
     """
     if not html or not _HAS_DIGIT.search(html):
         return html
@@ -122,23 +160,27 @@ def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
             continue
         if anchor_depth or not _HAS_DIGIT.search(part):
             continue
-        parts[i] = _wrap_text(part, links)
+        parts[i] = _wrap_text(part, links, linked_only)
     return "".join(parts)
 
 
-def _wrap_text(text: str, links: dict[str, str] | None = None) -> str:
+def _wrap_text(
+    text: str, links: dict[str, str] | None = None, linked_only: bool = False
+) -> str:
     def repl(match: re.Match) -> str:
-        candidate = match.group(1)
+        candidate = match.group(0)
+        href = links.get(candidate) if links else None
+        if not href and (linked_only or match.group("chapter")):
+            return candidate
         if _first_reference(candidate) is None:
             return candidate
-        href = links.get(candidate) if links else None
         href_attr = f' href="{href}"' if href else ""
         return (
             f'<a class="scripture-ref"{href_attr} data-ref="{candidate}">'
             f"{candidate}</a>"
         )
 
-    return _CANDIDATE.sub(repl, text)
+    return _LINKABLE.sub(repl, text)
 
 
 def reference_candidates(html: str) -> list[str]:
@@ -148,7 +190,8 @@ def reference_candidates(html: str) -> list[str]:
     that becomes ``data-ref`` — so a caller can resolve them to page URLs and
     feed the result back in as ``links``. Skips text inside an existing ``<a>``
     and validates with pythonbible, exactly as the wrapper does, so the two can
-    never disagree about what is a reference.
+    never disagree about what is a reference. Includes chapter-only citations
+    ("Romans 8"), which the wrapper wraps only once they resolve to a page.
     """
     if not html or not _HAS_DIGIT.search(html):
         return []
@@ -165,8 +208,8 @@ def reference_candidates(html: str) -> list[str]:
             continue
         if anchor_depth or not _HAS_DIGIT.search(part):
             continue
-        for match in _CANDIDATE.finditer(part):
-            candidate = match.group(1)
+        for match in _LINKABLE.finditer(part):
+            candidate = match.group(0)
             if candidate in seen or _first_reference(candidate) is None:
                 continue
             seen.add(candidate)
