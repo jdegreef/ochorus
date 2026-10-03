@@ -122,12 +122,6 @@ async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Pr
 }
 
 /**
- * Fetch wrapper for the Django API. The library is public (AllowAny), but when a
- * user is signed in we attach their Supabase Bearer token so authenticated
- * endpoints (e.g. /api/auth/me) work.
- */
-
-/**
  * A read of the public library through a load()'s own fetch — sent WITHOUT the
  * reader's token, so it can replay the response the prerender inlined.
  *
@@ -137,12 +131,17 @@ async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Pr
  * prerender crawl) then threw the load, and a perfectly good prerendered page
  * hydrated into the 500 page (/am/authors/hudson-taylor, 2026-10-03) — for
  * signed-in readers only, which is why anonymous checks never saw it. No
- * library view reads the user (library/views.py: no `request.user`, no
- * permission classes), so the token bought nothing there.
+ * library view reads the user — the invariant `library/http_cache.py` already
+ * relies on to mark these responses `public` — so the token bought nothing.
  */
 const isPublicLibraryRead = (path: string, init: RequestInit) =>
 	path.startsWith('/api/library/') && isIdempotent(init);
 
+/**
+ * Fetch wrapper for the Django API. The library is public (AllowAny), but when a
+ * user is signed in we attach their Supabase Bearer token so authenticated
+ * endpoints (e.g. /api/auth/me) work.
+ */
 async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promise<T> {
 	const headers = new Headers(init.headers);
 	if (init.body && !headers.has('Content-Type')) {

@@ -36,6 +36,10 @@ views or serializers reads ``request.user``, so no response varies by reader and
 a shared cache cannot leak one reader's view to another. Anything that DOES vary
 per reader lives under ``/api/reading/`` behind ``IsAuthenticated`` and must
 never use this mixin.
+The frontend leans on this too: page loads send ``/api/library/`` reads
+WITHOUT the reader's token (``isPublicLibraryRead`` in ``frontend/src/lib/api.ts``),
+so a library view that began reading the user would silently see everyone as
+anonymous.
 """
 
 from __future__ import annotations
