@@ -423,3 +423,23 @@ class EmailEvent(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"event<{self.type} {self.message_id}>"
+
+
+class EmailTemplate(models.Model):
+    """A reusable campaign design: block content (and subjects) per language,
+    the same shape as :attr:`Broadcast.content`. A new broadcast can start from
+    one, and a broadcast can be saved as one. Copied, never linked — editing a
+    template doesn't change broadcasts made from it."""
+
+    name = models.CharField(max_length=200)
+    subject = models.JSONField(default=dict, blank=True)
+    content = models.JSONField(default=dict, blank=True)
+    created_by = models.CharField(max_length=254, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"template<{self.name}>"

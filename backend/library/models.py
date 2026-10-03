@@ -2257,6 +2257,8 @@ class AdminAction(models.Model):
         BROADCAST_PAUSE = "broadcast.pause", "Broadcast paused"
         BROADCAST_RESUME = "broadcast.resume", "Broadcast resumed"
         EMAIL_DIRECT = "email.direct", "Email sent to a reader"
+        EMAIL_TEMPLATE_SAVE = "email.template_save", "Email template saved"
+        EMAIL_TEMPLATE_DELETE = "email.template_delete", "Email template deleted"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
         SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
         SEARCH_UNDO = "search.undo", "Search triage undone"

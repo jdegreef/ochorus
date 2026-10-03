@@ -1,9 +1,11 @@
 """Turn a reader + content into a rendered email (subject + HTML).
 
-Lifecycle steps and admin broadcasts share one safe body template and one
-render path: both supply a structured ``text`` dict (heading, paragraphs, an
-optional CTA and greeting), never raw HTML, so there is nothing to sanitize.
-Text direction comes from the :class:`Language` registry.
+Every email — lifecycle steps, nudges, direct email and admin broadcasts —
+renders through ONE template (``emails/blocks.html``) from structured blocks
+(emails/blocks.py), never raw HTML, so there is nothing to sanitize. The
+fixed-copy emails supply a ``text`` dict (heading, greeting, paragraphs, a CTA,
+signoff) that is read as the equivalent blocks. Text direction comes from the
+:class:`Language` registry.
 """
 
 from __future__ import annotations
@@ -14,10 +16,11 @@ from django.template.loader import render_to_string
 
 from library.languages import entry as language_entry
 
+from . import blocks as blocks_mod
 from . import copy as copy_mod
 from . import links
 
-_TEMPLATE = "emails/lifecycle.html"
+_TEMPLATE = "emails/blocks.html"
 
 
 @dataclass(frozen=True)
@@ -33,26 +36,27 @@ def _display_name(profile) -> str:
     return "friend"
 
 
-def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
-    greeting = ""
-    if text.get("greeting"):
-        # A literal substitution, NOT str.format: broadcast greetings are
-        # admin-written, and one stray "{" (or a "{name.__class__}") made
-        # .format raise mid-send — or evaluate an attribute lookup.
-        greeting = str(text["greeting"]).replace("{name}", _display_name(profile))
-    context = {
-        "copy": text,
-        "subject": text["subject"],
-        "preheader": text.get("preheader", ""),
-        "greeting": greeting,
-        "cta_url": links.site_url(str(text.get("cta_path", ""))) if text.get("cta_label") else "",
+def _base_context(subscription, lang: str) -> dict:
+    """What every email's frame needs: footer links and text direction."""
+    return {
         "unsubscribe_url": links.unsubscribe_url(subscription.unsubscribe_token),
         "preferences_url": links.preferences_url(subscription.unsubscribe_token),
         "lang": lang,
         "dir": "rtl" if language_entry(lang).get("rtl") else "ltr",
     }
-    html = render_to_string(_TEMPLATE, context)
-    return RenderedEmail(subject=str(text["subject"]), html=html)
+
+
+def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
+    """Render a fixed-copy email: its ``text`` fields read as blocks. Its CTA
+    path is built by code that already chose the edition, so it is used as is."""
+    return render_blocks(
+        subject=str(text["subject"]),
+        content={"preheader": text.get("preheader", ""), "blocks": blocks_mod.legacy_blocks(text)},
+        profile=profile,
+        subscription=subscription,
+        lang=lang,
+        localize_buttons=False,
+    )
 
 
 def email_language(profile, subscription) -> str:
@@ -116,14 +120,49 @@ def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
     return _render(text, profile, subscription, lang)
 
 
-def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
+def render_broadcast(broadcast, profile, subscription, *, cards=None) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""
     lang = email_language(profile, subscription)
     resolved = resolve_broadcast_locale(broadcast, lang)
     if resolved is None:
         return None
-    return _render(broadcast_text(broadcast, resolved), profile, subscription, resolved)
+    return render_blocks(
+        subject=str(broadcast.subject.get(resolved, "")),
+        content=broadcast.content.get(resolved) or {},
+        profile=profile,
+        subscription=subscription,
+        lang=resolved,
+        cards=cards,
+    )
+
+
+def render_blocks(
+    *,
+    subject: str,
+    content: dict,
+    profile,
+    subscription,
+    lang: str,
+    cards=None,
+    localize_buttons: bool = True,
+) -> RenderedEmail:
+    """Render one language's block content (emails/blocks.py) for ``profile``.
+    Shared by every send and the admin's live preview, so the preview is the
+    email. ``cards`` is the caller's library-card cache (``blocks.resolve``)."""
+    context = {
+        "subject": subject,
+        "preheader": content.get("preheader", ""),
+        "blocks": blocks_mod.resolve(
+            blocks_mod.blocks_for(content),
+            lang,
+            name=_display_name(profile),
+            cards=cards,
+            localize_buttons=localize_buttons,
+        ),
+        **_base_context(subscription, lang),
+    }
+    return RenderedEmail(subject=subject, html=render_to_string(_TEMPLATE, context))
 
 
 def render_direct(text: dict, profile, subscription, lang: str) -> RenderedEmail:
@@ -147,19 +186,3 @@ def resolve_broadcast_locale(broadcast, lang: str) -> str | None:
         if candidate in locales:
             return candidate
     return locales[0] if locales else None
-
-
-def broadcast_text(broadcast, locale: str) -> dict:
-    """Flatten a broadcast's per-locale content into the shared ``text`` shape."""
-    block = broadcast.content.get(locale, {})
-    return {
-        "subject": broadcast.subject.get(locale, ""),
-        "preheader": block.get("preheader", ""),
-        "heading": block.get("heading", ""),
-        "greeting": block.get("greeting", ""),
-        "paragraphs": block.get("paragraphs", []),
-        "cta_label": block.get("cta_label", ""),
-        "cta_path": block.get("cta_path", ""),
-        "signoff": block.get("signoff", ""),
-        "signature": block.get("signature", ""),
-    }

@@ -1331,14 +1331,25 @@ export interface BroadcastCheck {
 	message: string;
 }
 
-/** One language's content block for a broadcast (structured, not raw HTML). */
+/** One block of campaign content (backend `emails/blocks.py`): structured
+ *  data, never HTML. Library blocks name a work by slug and render as the
+ *  edition in the email's language, or are left out where there is none. */
+export type EmailBlock =
+	| { type: 'heading'; text: string }
+	| { type: 'text'; text: string }
+	| { type: 'button'; label: string; path: string }
+	| { type: 'divider' }
+	| { type: 'quote'; text: string; attribution: string }
+	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
+
+export type EmailBlockType = EmailBlock['type'];
+export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
+
+/** One language's content for a broadcast or template. The server always
+ *  sends it as blocks (an older broadcast's fixed fields are converted there). */
 export interface BroadcastBlock {
-	heading?: string;
-	paragraphs?: string[];
-	cta_label?: string;
-	cta_path?: string;
-	preheader?: string;
-	greeting?: string;
+	preheader: string;
+	blocks: EmailBlock[];
 }
 
 export interface BroadcastAudience {
@@ -1460,6 +1471,60 @@ export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
+
+// --- Campaign design: preview, library picker, templates -----------------------
+
+export const previewEmail = (
+	locale: string,
+	subject: string,
+	content: BroadcastBlock,
+	signal?: AbortSignal
+) =>
+	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
+		method: 'POST',
+		body: JSON.stringify({ locale, subject, content }),
+		signal
+	});
+
+export interface EmailLibraryItem {
+	slug: string;
+	title: string;
+	author: string;
+	/** Every language this work is published in. */
+	languages: string[];
+}
+
+/** Search by title, or (with `slugs`) look up exactly those works. */
+export const searchEmailLibrary = (
+	type: LibraryBlockType,
+	q: string,
+	init?: { slugs?: string[]; signal?: AbortSignal }
+) =>
+	apiFetch<{ results: EmailLibraryItem[] }>(
+		`/api/admin/emails/library/?${new URLSearchParams({ type, q, slugs: (init?.slugs ?? []).join(',') })}`,
+		{ signal: init?.signal }
+	);
+
+export interface EmailTemplate {
+	id: number;
+	name: string;
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	locales: string[];
+}
+
+export const listEmailTemplates = () =>
+	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
+
+/** Save a broadcast's design (as last saved) as a template. */
+export const saveEmailTemplate = (payload: { name: string; from_broadcast: number }) =>
+	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteEmailTemplate = (id: number) =>
+	apiFetch<null>(`/api/admin/emails/templates/${id}/`, { method: 'DELETE' });
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
