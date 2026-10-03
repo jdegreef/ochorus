@@ -1318,7 +1318,7 @@ export interface AdminEngagement {
 	/** Who stays: the last finished weeks' sign-ups, oldest first, and how
 	 *  many read in each week after (library/engagement_trends.py). Absent
 	 *  from an older API. */
-	cohorts?: EngagementCohort[];
+	cohorts?: { min_size: number; rows: EngagementCohort[] };
 }
 
 /** One join week. `active[k]` is how many of its `size` sign-ups read in

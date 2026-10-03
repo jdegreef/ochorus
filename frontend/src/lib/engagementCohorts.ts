@@ -6,7 +6,7 @@ import type { EngagementCohort } from './library-admin';
 
 export type Share = { readers: number; people: number; pct: number };
 
-const share = (readers: number, people: number): Share => ({
+export const share = (readers: number, people: number): Share => ({
 	readers,
 	people,
 	pct: people ? Math.round((readers / people) * 100) : 0

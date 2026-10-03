@@ -11,7 +11,7 @@
 	import EventMarker from '$lib/components/EventMarker.svelte';
 	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
-	import { columnShares, headline, HEADLINE_WEEK } from '$lib/engagementCohorts';
+	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -125,20 +125,21 @@
 	// A heatmap cell's gold wash, scaled to the busiest chapter so the strip's
 	// contrast is about this book, not an absolute count. Unmarked chapters stay
 	// at the recessed surface tone.
+	// The page's gold wash: 0–100% of a scale onto 0–82% gold, so the darkest
+	// cell still carries text. Shared by the marks heatmap and the cohort grid.
+	const goldWash = (pct: number) => `color-mix(in srgb, var(--gold) ${Math.round(pct * 0.82)}%, var(--surface-2))`;
 	const heatColor = (readers: number) => {
 		const peak = data?.highlight_heatmap?.peak_readers ?? 0;
-		const pct = peak ? Math.round((readers / peak) * 82) : 0;
-		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
+		return goldWash(peak ? (readers / peak) * 100 : 0);
 	};
 
 	// Retention cohorts: one column per week after joining, as far as the
 	// oldest shown cohort reaches.
-	const cohorts = $derived(data?.cohorts ?? []);
+	const cohorts = $derived(data?.cohorts?.rows ?? []);
+	const cohortFloor = $derived(data?.cohorts?.min_size ?? 0);
 	const cohortSpan = $derived(Math.max(0, ...cohorts.map((c) => c.active?.length ?? 0)));
 	const cohortCols = $derived(columnShares(cohorts, cohortSpan));
 	const cohortHead = $derived(headline(cohorts));
-	const cohortHeat = (pct: number) => `color-mix(in srgb, var(--gold) ${Math.round(pct * 0.82)}%, var(--surface-2))`;
-	const shortWeek = (iso: string) => new Date(`${iso}T00:00:00Z`).toLocaleDateString('en', { month: 'short', day: 'numeric', timeZone: 'UTC' });
 
 	// Sitting lengths: count sittings, or the minutes read in them. The second
 	// shows where the reading actually happens.
@@ -416,13 +417,13 @@
 								<div>
 									<div class="stat-number">{cohortHead.recent.pct}%</div>
 									<div class="text-small text-muted">
-										still reading at week {HEADLINE_WEEK} · joined {shortWeek(cohortHead.recent.from)}{cohortHead.recent.to !== cohortHead.recent.from ? `–${shortWeek(cohortHead.recent.to)}` : ''}
+										still reading at week {HEADLINE_WEEK} · joined {weekLabel(cohortHead.recent.from)}{cohortHead.recent.to !== cohortHead.recent.from ? `–${weekLabel(cohortHead.recent.to)}` : ''}
 									</div>
 								</div>
 								<div>
 									<div class="stat-number text-muted">{cohortHead.earlier.pct}%</div>
 									<div class="text-small text-muted">
-										at week {HEADLINE_WEEK} · joined {shortWeek(cohortHead.earlier.from)}{cohortHead.earlier.to !== cohortHead.earlier.from ? `–${shortWeek(cohortHead.earlier.to)}` : ''}
+										at week {HEADLINE_WEEK} · joined {weekLabel(cohortHead.earlier.from)}{cohortHead.earlier.to !== cohortHead.earlier.from ? `–${weekLabel(cohortHead.earlier.to)}` : ''}
 									</div>
 								</div>
 							</div>
@@ -441,18 +442,20 @@
 								<tbody>
 									{#each cohorts as c (c.week)}
 										<tr>
-											<th scope="row" class="text-left">{shortWeek(c.week)}</th>
+											<th scope="row" class="text-left">{weekLabel(c.week)}</th>
 											<td class="text-muted">{fmt(c.size)}</td>
-											{#each Array.from({ length: cohortSpan }, (_, k) => k) as k (k)}
-												{#if !c.active}
-													{#if k < 1}<td class="few text-muted" colspan={cohortSpan} title="Fewer than 5 people: shares hidden">{c.size ? 'too few to show' : 'no sign-ups'}</td>{/if}
-												{:else if k < c.active.length}
-													{@const pct = c.size ? Math.round((c.active[k] / c.size) * 100) : 0}
-													<td class="cell" style="background: {cohortHeat(pct)}" title="Joined week of {shortWeek(c.week)}: {c.active[k]} of {c.size} read in week {k}">{pct}%</td>
-												{:else}
-													<td></td>
-												{/if}
-											{/each}
+											{#if !c.active}
+												<td class="few text-muted" colspan={cohortSpan} title="Fewer than {cohortFloor} people: shares hidden">{c.size ? 'too few to show' : 'no sign-ups'}</td>
+											{:else}
+												{#each Array.from({ length: cohortSpan }, (_, k) => k) as k (k)}
+													{#if k < c.active.length}
+														{@const cell = share(c.active[k], c.size)}
+														<td class="cell" style="background: {goldWash(cell.pct)}" title="Joined week of {weekLabel(c.week)}: {cell.readers} of {cell.people} read in week {k}">{cell.pct}%</td>
+													{:else}
+														<td></td>
+													{/if}
+												{/each}
+											{/if}
 										</tr>
 									{/each}
 								</tbody>
@@ -461,14 +464,14 @@
 										<th scope="row" class="text-left">All</th>
 										<td></td>
 										{#each cohortCols as col, k (k)}
-											<td class="cell font-semibold" style={col ? `background: ${cohortHeat(col.pct)}` : ''} title={col ? `${col.readers} of ${col.people} across the groups that reached week ${k}` : ''}>{col ? `${col.pct}%` : ''}</td>
+											<td class="cell font-semibold" style={col ? `background: ${goldWash(col.pct)}` : ''} title={col ? `${col.readers} of ${col.people} across the groups that reached week ${k}` : ''}>{col ? `${col.pct}%` : ''}</td>
 										{/each}
 									</tr>
 								</tfoot>
 							</table>
 						</div>
 						<p class="mt-2 text-micro text-muted">
-							A reader counts in a week if they read on any day of it. This week is left out until it ends. A join week with fewer than 5 people shows its size only.
+							A reader counts in a week if they read on any day of it. This week is left out until it ends. A join week with fewer than {cohortFloor} people shows its size only.
 						</p>
 					</section>
 				{/if}
@@ -709,8 +712,7 @@
 	.anchor {
 		scroll-margin-top: calc(var(--appnav-h, 0px) + var(--section-bar-h, 44px) + 0.5rem);
 	}
-	/* Privacy badge — a persistent reminder that this page is aggregate-only,
-	   dressed as a quiet feature rather than fine print. */
+	/* The retention grid: separated cells, so each reads as its own swatch. */
 	.cohorts {
 		border-collapse: separate;
 		border-spacing: 3px;
@@ -731,6 +733,8 @@
 		text-align: left;
 		background: repeating-linear-gradient(135deg, var(--surface-2) 0 4px, transparent 4px 8px);
 	}
+	/* Privacy badge — a persistent reminder that this page is aggregate-only,
+	   dressed as a quiet feature rather than fine print. */
 	.privacy-badge {
 		border: 1px solid var(--border);
 		border-radius: 999px;
