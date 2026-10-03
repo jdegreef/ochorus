@@ -464,37 +464,42 @@
 	</nav>
 {/if}
 
-<!-- Persistent outline rail (wide screens): mirrors the popover, highlighting
-     the section you're reading. The top-bar toggle takes over below 1200px. -->
-{#if outline.length >= 2 && !readerUi.focus}
-	<nav class="outline-rail" aria-label={t('sermon.outline')}>
-		<p class="outline-rail-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
-		<ul>
-			{#each outline as s (s.id)}
-				<li>
-					<button
-						class="outline-rail-item"
-						class:point={s.kind === 'point'}
-						class:active={spy.active === s.id}
-						onclick={() => scrollToSection(s.id)}
-					>
-						{s.label}
-					</button>
-				</li>
-			{/each}
-		</ul>
-	</nav>
-{/if}
-
 <!-- `--pinned-offset`: how far down the first pixel unobstructed by the sticky
      reader bar is (HEADER_OFFSET). The outline anchors below hang their
      `scroll-margin-top` off it, so a jump lands the section clear of the bar —
      the same contract the biographies/search pages use, replacing this page's
      old `scrollTo(top - HEADER_OFFSET - 8)` math. -->
 <article
-	class="mx-auto px-5 py-10"
+	class="relative mx-auto px-5 py-10"
 	style="--pinned-offset: {HEADER_OFFSET}px; {readerPrefs.style}; max-width: var(--reading-measure)"
 >
+	<!-- Persistent outline rail (wide screens): mirrors the popover, highlighting
+	     the section you're reading. The top-bar toggle takes over below 1280px.
+	     It lives INSIDE the article, on a track beside the column as tall as the
+	     article, and sticks within it: when it was position:fixed it sat on top
+	     of the sign-up band and the footer at the end of every long sermon. -->
+	{#if outline.length >= 2 && !readerUi.focus}
+		<div class="outline-track">
+			<nav class="outline-rail" aria-label={t('sermon.outline')}>
+				<p class="outline-rail-title eyebrow eyebrow-micro">{t('sermon.outline')}</p>
+				<ul>
+					{#each outline as s (s.id)}
+						<li>
+							<button
+								class="outline-rail-item"
+								class:point={s.kind === 'point'}
+								class:active={spy.active === s.id}
+								onclick={() => scrollToSection(s.id)}
+							>
+								{s.label}
+							</button>
+						</li>
+					{/each}
+				</ul>
+			</nav>
+		</div>
+	{/if}
+
 	<Breadcrumb items={crumbs} />
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/sermons" />
@@ -980,12 +985,21 @@
 		display: none;
 	}
 	@media (min-width: 1280px) {
+		/* The track spans the article's height just past its inline-end edge, so
+		   the sticky rail scrolls away with the sermon's last lines. The min()
+		   keeps it on screen (a 2rem gutter, room for a scrollbar) when a wide
+		   reading measure leaves less margin than the rail needs — as the fixed
+		   rail's max(1rem, …) did — instead of opening a horizontal scroll. */
+		.outline-track {
+			position: absolute;
+			inset-block: 0;
+			inset-inline-start: min(calc(100% + 1rem), calc(50% + 50vw - 16rem));
+			width: 14rem;
+		}
 		.outline-rail {
 			display: block;
-			position: fixed;
+			position: sticky;
 			top: 5rem;
-			inset-inline-end: max(1rem, calc((100vw - var(--reading-measure, 46rem)) / 2 - 15rem));
-			width: 14rem;
 			max-height: calc(100vh - 7rem);
 			overflow-y: auto;
 			z-index: 5;

@@ -1520,9 +1520,13 @@ nav.appnav .navsearch:hover {
 	font-size: var(--fs-micro);
 	letter-spacing: 0.02em;
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (pointer: fine) {
 	.navsearch-kbd {
 		display: inline;
+		/* "⌘K" is respelt "Ctrl K" after hydration off Apple platforms; the
+		   reserved width keeps that swap from nudging the nav. */
+		min-width: 2.6em;
+		text-align: center;
 	}
 }
 

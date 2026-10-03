@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -58,11 +59,25 @@
 		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
+		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
 		auth.init();
 		pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+	});
+
+	// A navigation into another locale must be a full document load: the
+	// locale (messages, <html lang/dir>) is fixed per document, so a client-side
+	// hop between /ar/… and /… kept the old one's direction. Cancelled and
+	// re-issued as a real load — a history PUSH, so a cross-locale goto loses
+	// replaceState/keepFocus (none exists today; use location.replace for one).
+	// Links you write by hand: also mark them data-sveltekit-reload, which
+	// stops a hover preload running the target's load in the wrong locale.
+	beforeNavigate(({ from, to, type, cancel }) => {
+		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
+		cancel();
+		location.assign(to!.url.href);
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
@@ -116,6 +131,10 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+	// The search shortcut hint (the palette answers both ⌘K and Ctrl+K):
+	// prerendered as ⌘K, respelt on mount off Apple platforms; CSS hides it on
+	// touch devices.
+	let searchKbd = $state('⌘K');
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -301,7 +320,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+						<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
@@ -525,6 +544,7 @@
 							<span
 								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
@@ -532,6 +552,7 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click

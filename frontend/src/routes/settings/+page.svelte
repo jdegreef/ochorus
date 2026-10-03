@@ -410,7 +410,7 @@
 							onchange={(e) => lang.choose((e.currentTarget as HTMLSelectElement).value)}
 						>
 							{#each lang.available as l (l.code)}
-								<option value={l.code}>{l.native_name}</option>
+								<option value={l.code} lang={l.code}>{l.native_name}</option>
 							{/each}
 						</select>
 					</div>
