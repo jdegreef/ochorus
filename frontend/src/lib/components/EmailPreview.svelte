@@ -16,18 +16,22 @@
 	let width = $state<'desktop' | 'mobile'>('desktop');
 
 	$effect(() => {
-		// Read everything the preview depends on, so any edit re-renders it.
-		const payload = JSON.stringify({ locale, subject, content });
+		// A deep snapshot reads every field, so any edit re-renders the preview.
+		const snap = $state.snapshot({ locale, subject, content });
+		const controller = new AbortController();
 		const timer = setTimeout(async () => {
 			try {
-				const { locale: l, subject: s, content: c } = JSON.parse(payload);
-				html = (await previewEmail(l, s, c)).html;
+				html = (await previewEmail(snap.locale, snap.subject, snap.content, controller.signal)).html;
 				error = '';
 			} catch (e) {
-				error = apiErrorDetail(e, "Couldn't render the preview.");
+				if (!controller.signal.aborted) error = apiErrorDetail(e, "Couldn't render the preview.");
 			}
 		}, 400);
-		return () => clearTimeout(timer);
+		// A newer edit supersedes this one: never let a slow, older render land last.
+		return () => {
+			clearTimeout(timer);
+			controller.abort();
+		};
 	});
 </script>
 

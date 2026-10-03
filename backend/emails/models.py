@@ -432,7 +432,6 @@ class EmailTemplate(models.Model):
     template doesn't change broadcasts made from it."""
 
     name = models.CharField(max_length=200)
-    description = models.CharField(max_length=300, blank=True)
     subject = models.JSONField(default=dict, blank=True)
     content = models.JSONField(default=dict, blank=True)
     created_by = models.CharField(max_length=254, blank=True)

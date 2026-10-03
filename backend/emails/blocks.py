@@ -22,6 +22,8 @@ render through the one template.
 
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 from django.db import models
 
 from . import links
@@ -117,6 +119,16 @@ def blocks_for(block: dict) -> list[dict]:
     return legacy_blocks(block)
 
 
+def as_blocks(content: dict) -> dict:
+    """A broadcast's or template's ``content`` with every language in the block
+    shape — what the admin designer edits, so it never converts old fields itself."""
+    return {
+        code: {"preheader": block.get("preheader", ""), "blocks": blocks_for(block)}
+        for code, block in (content or {}).items()
+        if isinstance(block, dict)
+    }
+
+
 def has_body(blocks: list[dict]) -> bool:
     """Whether a block list says anything (not only dividers and empty text)."""
     for b in blocks:
@@ -127,18 +139,36 @@ def has_body(blocks: list[dict]) -> bool:
     return False
 
 
+def library_refs(blocks: list[dict]) -> dict[str, set[str]]:
+    """``{kind: slugs}`` for the library blocks that name a work."""
+    refs: dict[str, set[str]] = {}
+    for b in blocks:
+        if b["type"] in LIBRARY_TYPES and b.get("slug"):
+            refs.setdefault(b["type"], set()).add(b["slug"])
+    return refs
+
+
 # --- Library lookups ------------------------------------------------------------
+
+
+#: What each library type is: its model, its reader-site section, and the field
+#: its card's blurb comes from. Plans have no author.
+LIBRARY = {
+    BlockType.BOOK: ("Book", "books", "description"),
+    BlockType.SERMON: ("Sermon", "sermons", "summary"),
+    BlockType.PLAN: ("Plan", "plans", "description"),
+}
 
 
 def library_model(kind: str):
     """The library model a library block type points at."""
-    from library.models import Book, Plan, Sermon
+    from django.apps import apps
 
-    return {BlockType.BOOK: Book, BlockType.SERMON: Sermon, BlockType.PLAN: Plan}[kind]
+    return apps.get_model("library", LIBRARY[kind][0])
 
 
-#: The reader-site section each library type lives under.
-SECTION = {BlockType.BOOK: "books", BlockType.SERMON: "sermons", BlockType.PLAN: "plans"}
+def has_author(kind: str) -> bool:
+    return kind != BlockType.PLAN
 
 
 def editions(kind: str, slugs) -> dict[str, set[str]]:
@@ -152,52 +182,85 @@ def editions(kind: str, slugs) -> dict[str, set[str]]:
     return out
 
 
+def _blurb(text: str) -> str:
+    text = (text or "").strip()
+    return text if len(text) <= 220 else text[:217].rsplit(" ", 1)[0] + "…"
+
+
 def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
-    """``{slug: card}`` for the editions of ``slugs`` published in ``lang``."""
-    model = library_model(kind)
-    qs = model.objects.filter(slug__in=set(slugs), language=lang, is_published=True)
-    if kind != BlockType.PLAN:
-        qs = qs.select_related("author")
+    """``{slug: card}`` for the editions of ``slugs`` published in ``lang``.
+    Only the card's columns are read — a sermon row also carries its whole body."""
+    from library.book_export import cover_image_url
+
+    _, section, blurb_field = LIBRARY[kind]
+    fields = ["slug", "title", blurb_field]
+    if has_author(kind):
+        fields.append("author__name")
+    if kind == BlockType.BOOK:
+        fields.append("cover_url")
+    rows = library_model(kind).objects.filter(
+        slug__in=set(slugs), language=lang, is_published=True
+    ).values(*fields)
     cards = {}
-    for work in qs:
-        cover = getattr(work, "cover_url", "") or ""
-        description = (
-            getattr(work, "description", "") or getattr(work, "summary", "") or ""
-        ).strip()
-        if len(description) > 220:
-            description = description[:217].rsplit(" ", 1)[0] + "…"
-        cards[work.slug] = {
-            "title": work.title,
-            "author": work.author.name if kind != BlockType.PLAN else "",
-            "description": description,
-            # Covers are site-relative ("/covers/art/…"); email needs absolute.
+    for row in rows:
+        cover = ""
+        if kind == BlockType.BOOK:
+            # The raster that shows the cover WITH its title (a painting or a
+            # plate is a wordless ground; a plate is also an SVG, which mail
+            # clients won't show) — the site's one rule for that.
+            cover = cover_image_url(
+                SimpleNamespace(slug=row["slug"], language=lang, cover_url=row["cover_url"])
+            )
+        cards[row["slug"]] = {
+            "title": row["title"],
+            "author": row.get("author__name", ""),
+            "description": _blurb(row[blurb_field]),
             "cover_url": links.site_url(cover) if cover.startswith("/") else cover,
-            "url": links.site_url(links.reader_path(SECTION[kind], work.slug, lang)),
+            "url": links.site_url(links.reader_path(section, row["slug"], lang)),
         }
     return cards
 
 
-def resolve(blocks: list[dict], lang: str, *, name: str = "friend") -> list[dict]:
+def _button_path(path: str, lang: str) -> str:
+    """A button's path in ``lang``'s pages: a bare site path gets the language
+    prefix (English is unprefixed), so a layout copied from English into Spanish
+    doesn't send Spanish readers to English pages. A path that already names a
+    language is left alone."""
+    from library.languages import language_map
+
+    path = path.lstrip("/")
+    if lang == "en" or not path or path.split("/", 1)[0] in language_map():
+        return path
+    return f"{lang}/{path}"
+
+
+def resolve(blocks: list[dict], lang: str, *, name: str = "friend", cards=None) -> list[dict]:
     """Render-ready blocks for one email in ``lang``: ``{name}`` filled in,
-    button paths made absolute, library blocks looked up in ``lang`` — and those
-    with no edition in ``lang`` left out."""
-    wanted: dict[str, list[str]] = {}
-    for b in blocks:
-        if b["type"] in LIBRARY_TYPES and b.get("slug"):
-            wanted.setdefault(b["type"], []).append(b["slug"])
-    cards = {kind: _cards(kind, slugs, lang) for kind, slugs in wanted.items()}
+    button paths made absolute in ``lang``'s pages, library blocks looked up in
+    ``lang`` — and those with no edition in ``lang`` left out.
+
+    ``cards`` is an optional cache dict owned by the caller: a send renders the
+    same blocks for thousands of readers, and the library cards for a language
+    don't change between them, so they are looked up once per language per run.
+    """
+    if cards is None:
+        cards = {}
+    for kind, slugs in library_refs(blocks).items():
+        if (kind, lang) not in cards:
+            cards[(kind, lang)] = _cards(kind, slugs, lang)
 
     out = []
     for b in blocks:
         kind = b["type"]
         if kind in LIBRARY_TYPES:
-            card = cards.get(kind, {}).get(b.get("slug", ""))
+            card = cards.get((kind, lang), {}).get(b.get("slug", ""))
             if card is None:
                 continue
             out.append({"type": kind, "label": b.get("label", ""), **card})
         elif kind == BlockType.BUTTON:
             if b.get("label"):
-                out.append({**b, "url": links.site_url(b.get("path", ""))})
+                url = links.site_url(_button_path(b.get("path", ""), lang))
+                out.append({**b, "url": url})
         elif kind in (BlockType.HEADING, BlockType.TEXT):
             text = b.get("text", "").replace("{name}", name)
             if not text:

@@ -83,7 +83,9 @@ class RenderTests(TestCase):
         self.assertIn("Humildad", html)
         self.assertIn("Andrew Murray", html)
         self.assertIn("https://ochorus.test/es/books/humility-2/", html)
-        self.assertIn("https://ochorus.test/covers/art/humility-2.jpg", html)
+        # A painting is a wordless ground: the email shows the edition's twin,
+        # the cover with its title drawn in (library.book_export.cover_image_url).
+        self.assertIn("https://ochorus.test/covers/es/humility-2.png", html)
         self.assertNotIn(">Humility<", html)
 
     def test_no_english_fallback_for_a_missing_edition(self):
@@ -102,6 +104,24 @@ class RenderTests(TestCase):
         self.assertIn("Dear Ana,", html)
         self.assertIn("&lt;b&gt;bold&lt;/b&gt;", html)
         self.assertNotIn("<b>bold</b>", html)
+
+    def test_buttons_open_the_emails_language(self):
+        html = self._render(
+            "es",
+            {"type": "button", "label": "Ver", "path": "plans/humility-12-days/"},
+            {"type": "button", "label": "Ya", "path": "es/books/x/"},
+        ).html
+        self.assertIn("https://ochorus.test/es/plans/humility-12-days/", html)
+        self.assertNotIn("es/es/", html)
+
+    def test_cards_are_looked_up_once_per_language_per_run(self):
+        profiles = [_make_profile(email=f"r{i}@example.com", locale="es") for i in range(3)]
+        b = _broadcast(subject={"es": "Hola"}, content={"es": _content(BOOK)})
+        cards: dict = {}
+        render_broadcast(b, profiles[0], EmailSubscription.objects.create(profile=profiles[0]), cards=cards)
+        with self.assertNumQueries(0):
+            for p in profiles[1:]:
+                render_broadcast(b, p, EmailSubscription(profile=p), cards=cards)
 
     def test_email_frame_shrinks_to_a_phone(self):
         # A fixed 600px frame made every email scroll sideways on a phone.
@@ -165,6 +185,8 @@ class DesignApiTests(TestCase):
         self.assertEqual(rows[0]["slug"], "humility-2")
         self.assertEqual(rows[0]["title"], "Humility")
         self.assertEqual(sorted(rows[0]["languages"]), ["en", "es"])
+        exact = self.client.get("/api/admin/emails/library/?type=book&slugs=humility-2").json()
+        self.assertEqual(exact["results"][0]["languages"], ["en", "es"])
         plans = self.client.get("/api/admin/emails/library/?type=plan").json()["results"]
         self.assertEqual(plans[0]["slug"], "humility-12-days")
         self.assertEqual(self.client.get("/api/admin/emails/library/?type=x").status_code, 400)

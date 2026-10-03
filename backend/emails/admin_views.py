@@ -173,7 +173,7 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         "locked": b.is_locked,
     }
     if detail:
-        data["content"] = b.content
+        data["content"] = blocks_mod.as_blocks(b.content)
         data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
         if b.can_send:
             data["checks"] = preflight.run(b) if checks is None else checks

@@ -12,7 +12,6 @@
 		deleteBroadcast,
 		broadcastAction,
 		previewAudience,
-		blocksOf,
 		listEmailTemplates,
 		saveEmailTemplate,
 		deleteEmailTemplate,
@@ -89,7 +88,7 @@
 			from_address: b.from_address ?? '',
 			audience: { ...b.audience },
 			subject: { ...b.subject },
-			content: editable(b.content ?? {}),
+			content: structuredClone(b.content ?? {}),
 			scheduled_at: b.scheduled_at,
 			checks: b.checks ?? [],
 			progress: b.progress,
@@ -97,17 +96,6 @@
 			audience_count: b.audience_count,
 			locked: b.locked
 		};
-	}
-
-	/** Content in the designer's shape — every language as blocks (an older
-	 *  broadcast's fixed fields are converted; saving stores the blocks). */
-	function editable(content: Record<string, BroadcastBlock>): Record<string, BroadcastBlock> {
-		return Object.fromEntries(
-			Object.entries(structuredClone(content)).map(([code, c]) => [
-				code,
-				{ preheader: c.preheader ?? '', blocks: blocksOf(c) }
-			])
-		);
 	}
 
 	async function openEditor(id: number) {
@@ -130,8 +118,8 @@
 		try {
 			const b = await createBroadcast({
 				name: template ? template.name : 'Untitled broadcast',
-				subject: template ? { ...template.subject } : { en: '' },
-				content: template ? structuredClone(template.content) : { en: { blocks: [] } },
+				subject: template?.subject ?? { en: '' },
+				content: template?.content ?? { en: { preheader: '', blocks: [] } },
 				audience: {}
 			});
 			await list.load();
@@ -293,10 +281,7 @@
 	function addLocale(code: string) {
 		if (!draft || draft.content[code]) return;
 		draft.subject[code] = '';
-		draft.content[code] = structuredClone($state.snapshot(draft.content[editLocale])) ?? {
-			preheader: '',
-			blocks: []
-		};
+		draft.content[code] = $state.snapshot(draft.content[editLocale]) ?? { preheader: '', blocks: [] };
 		editLocale = code;
 	}
 
@@ -355,7 +340,6 @@
 									<span class="text-small text-text">
 										<span class="font-semibold">{t.name}</span>
 										<span class="text-muted"> · {t.locales.join(', ') || 'empty'}</span>
-										{#if t.description}<span class="block text-micro text-muted">{t.description}</span>{/if}
 									</span>
 									<span class="flex gap-1">
 										<button class="btn btn-ghost btn-sm" onclick={() => newBroadcast(t)}>Use</button>
@@ -487,7 +471,7 @@
 					</label>
 				</div>
 				<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
-					<EmailBlocksEditor bind:blocks={draft.content[editLocale].blocks!} locale={editLocale} localeName={localeLabel(editLocale)} disabled={readOnly} />
+					<EmailBlocksEditor bind:blocks={draft.content[editLocale].blocks} locale={editLocale} localeName={localeLabel(editLocale)} disabled={readOnly} />
 					<EmailPreview locale={editLocale} subject={draft.subject[editLocale] ?? ''} content={draft.content[editLocale]} />
 				</div>
 			{/if}

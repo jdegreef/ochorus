@@ -35,7 +35,6 @@ class Migration(migrations.Migration):
                     ),
                 ),
                 ("name", models.CharField(max_length=200)),
-                ("description", models.CharField(blank=True, max_length=300)),
                 ("subject", models.JSONField(blank=True, default=dict)),
                 ("content", models.JSONField(blank=True, default=dict)),
                 ("created_by", models.CharField(blank=True, max_length=254)),

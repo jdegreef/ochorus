@@ -60,11 +60,13 @@ def _content_checks(broadcast) -> list[dict]:
                 "No language has both a subject line and content yet.",
             )
         ]
-    library = _library_editions(broadcast, locales)
-    for code in locales:
+    blocks_by_locale = {
+        code: blocks_mod.blocks_for(broadcast.content.get(code) or {}) for code in locales
+    }
+    library = _library_editions(blocks_by_locale)
+    for code, blocks in blocks_by_locale.items():
         name = _lang_name(code)
         subject = str(broadcast.subject.get(code) or "").strip()
-        blocks = blocks_mod.blocks_for(broadcast.content.get(code) or {})
         if not subject:
             out.append(_check(f"subject:{code}", ERROR, f"{name}: the subject line is empty."))
         elif len(subject) > SUBJECT_SOFT_LIMIT:
@@ -101,14 +103,13 @@ def _content_checks(broadcast) -> list[dict]:
     return out
 
 
-def _library_editions(broadcast, locales) -> dict[str, dict[str, set[str]]]:
+def _library_editions(blocks_by_locale: dict[str, list[dict]]) -> dict[str, dict[str, set[str]]]:
     """``{kind: {slug: languages}}`` for every library block in the broadcast —
     one query per kind, shared by all its languages' checks."""
     wanted: dict[str, set[str]] = {}
-    for code in locales:
-        for block in blocks_mod.blocks_for(broadcast.content.get(code) or {}):
-            if block["type"] in blocks_mod.LIBRARY_TYPES and block.get("slug"):
-                wanted.setdefault(block["type"], set()).add(block["slug"])
+    for blocks in blocks_by_locale.values():
+        for kind, slugs in blocks_mod.library_refs(blocks).items():
+            wanted.setdefault(kind, set()).update(slugs)
     return {kind: blocks_mod.editions(kind, slugs) for kind, slugs in wanted.items()}
 
 

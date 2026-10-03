@@ -11,8 +11,7 @@
 		searchEmailLibrary,
 		type EmailBlock,
 		type EmailBlockType,
-		type EmailLibraryItem,
-		type LibraryBlockType
+		type EmailLibraryItem
 	} from '$lib/library-admin';
 
 	let {
@@ -33,8 +32,10 @@
 		{ type: 'plan', label: 'Reading plan' }
 	];
 	const typeLabel = (t: EmailBlockType) => TYPES.find((x) => x.type === t)?.label ?? t;
-	const isLibrary = (b: EmailBlock): b is Extract<EmailBlock, { slug: string }> =>
-		b.type === 'book' || b.type === 'sermon' || b.type === 'plan';
+	const LIBRARY = new Set<EmailBlockType>(['book', 'sermon', 'plan']);
+	type LibraryBlock = Extract<EmailBlock, { slug: string }>;
+	const isLibrary = (b: EmailBlock): b is LibraryBlock => LIBRARY.has(b.type);
+	const keyOf = (b: LibraryBlock) => `${b.type}:${b.slug}`;
 
 	function blank(type: EmailBlockType): EmailBlock {
 		switch (type) {
@@ -54,7 +55,7 @@
 
 	function add(type: EmailBlockType) {
 		blocks = [...blocks, blank(type)];
-		if (type === 'book' || type === 'sermon' || type === 'plan') openPicker(blocks.length - 1);
+		if (LIBRARY.has(type)) openPicker(blocks.length - 1);
 	}
 	function move(i: number, by: number) {
 		const j = i + by;
@@ -83,6 +84,8 @@
 		search();
 	}
 
+	let inflight: AbortController | undefined;
+
 	function search() {
 		clearTimeout(timer);
 		const i = picking;
@@ -90,13 +93,15 @@
 		const b = blocks[i];
 		if (!isLibrary(b)) return;
 		timer = setTimeout(async () => {
+			inflight?.abort(); // a newer query supersedes an older one
+			const controller = (inflight = new AbortController());
 			searching = true;
 			try {
-				results = (await searchEmailLibrary(b.type as LibraryBlockType, query)).results;
+				results = (await searchEmailLibrary(b.type, query, { signal: controller.signal })).results;
 			} catch {
-				results = [];
+				if (!controller.signal.aborted) results = [];
 			} finally {
-				searching = false;
+				if (!controller.signal.aborted) searching = false;
 			}
 		}, 250);
 	}
@@ -105,21 +110,29 @@
 		if (picking === null) return;
 		const b = blocks[picking];
 		if (!isLibrary(b)) return;
-		known = { ...known, [`${b.type}:${item.slug}`]: item };
-		blocks[picking] = { ...b, slug: item.slug };
+		const chosen = { ...b, slug: item.slug };
+		known = { ...known, [keyOf(chosen)]: item };
+		blocks[picking] = chosen;
 		picking = null;
 	}
 
-	// Look up the blocks already chosen (opening a saved design), once each.
+	// Name the works a saved design already points at: one exact lookup per
+	// library type, for whichever slugs aren't known yet.
 	$effect(() => {
+		const missing = new Map<LibraryBlock['type'], string[]>();
 		for (const b of blocks) {
-			if (!isLibrary(b) || !b.slug || known[`${b.type}:${b.slug}`]) continue;
-			const key = `${b.type}:${b.slug}`;
-			known = { ...known, [key]: { slug: b.slug, title: b.slug, author: '', languages: [] } };
-			searchEmailLibrary(b.type as LibraryBlockType, b.slug)
+			if (!isLibrary(b) || !b.slug || known[keyOf(b)]) continue;
+			missing.set(b.type, [...(missing.get(b.type) ?? []), b.slug]);
+		}
+		for (const [type, slugs] of missing) {
+			// Mark them as asked-for first, so this effect doesn't ask twice.
+			const pending = Object.fromEntries(
+				slugs.map((slug) => [`${type}:${slug}`, { slug, title: slug, author: '', languages: [] }])
+			);
+			known = { ...known, ...pending };
+			searchEmailLibrary(type, '', { slugs })
 				.then((r) => {
-					const hit = r.results.find((x) => x.slug === b.slug);
-					if (hit) known = { ...known, [key]: hit };
+					known = { ...known, ...Object.fromEntries(r.results.map((x) => [`${type}:${x.slug}`, x])) };
 				})
 				.catch(() => {});
 		}
@@ -155,7 +168,7 @@
 			{:else if b.type === 'divider'}
 				<hr class="border-border" />
 			{:else if isLibrary(b)}
-				{@const item = b.slug ? known[`${b.type}:${b.slug}`] : undefined}
+				{@const item = b.slug ? known[keyOf(b)] : undefined}
 				{#if b.slug}
 					<div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
 						<span class="text-body text-text">

@@ -1,9 +1,11 @@
 """Turn a reader + content into a rendered email (subject + HTML).
 
-Lifecycle steps and admin broadcasts share one safe body template and one
-render path: both supply a structured ``text`` dict (heading, paragraphs, an
-optional CTA and greeting), never raw HTML, so there is nothing to sanitize.
-Text direction comes from the :class:`Language` registry.
+Every email — lifecycle steps, nudges, direct email and admin broadcasts —
+renders through ONE template (``emails/blocks.html``) from structured blocks
+(emails/blocks.py), never raw HTML, so there is nothing to sanitize. The
+fixed-copy emails supply a ``text`` dict (heading, greeting, paragraphs, a CTA,
+signoff) that is read as the equivalent blocks. Text direction comes from the
+:class:`Language` registry.
 """
 
 from __future__ import annotations
@@ -18,8 +20,7 @@ from . import blocks as blocks_mod
 from . import copy as copy_mod
 from . import links
 
-_TEMPLATE = "emails/lifecycle.html"
-_BLOCKS_TEMPLATE = "emails/blocks.html"
+_TEMPLATE = "emails/blocks.html"
 
 
 @dataclass(frozen=True)
@@ -46,22 +47,14 @@ def _base_context(subscription, lang: str) -> dict:
 
 
 def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
-    greeting = ""
-    if text.get("greeting"):
-        # A literal substitution, NOT str.format: broadcast greetings are
-        # admin-written, and one stray "{" (or a "{name.__class__}") made
-        # .format raise mid-send — or evaluate an attribute lookup.
-        greeting = str(text["greeting"]).replace("{name}", _display_name(profile))
-    context = {
-        "copy": text,
-        "subject": text["subject"],
-        "preheader": text.get("preheader", ""),
-        "greeting": greeting,
-        "cta_url": links.site_url(str(text.get("cta_path", ""))) if text.get("cta_label") else "",
-        **_base_context(subscription, lang),
-    }
-    html = render_to_string(_TEMPLATE, context)
-    return RenderedEmail(subject=str(text["subject"]), html=html)
+    """Render a fixed-copy email: its ``text`` fields read as blocks."""
+    return render_blocks(
+        subject=str(text["subject"]),
+        content={"preheader": text.get("preheader", ""), "blocks": blocks_mod.legacy_blocks(text)},
+        profile=profile,
+        subscription=subscription,
+        lang=lang,
+    )
 
 
 def email_language(profile, subscription) -> str:
@@ -125,7 +118,7 @@ def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
     return _render(text, profile, subscription, lang)
 
 
-def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
+def render_broadcast(broadcast, profile, subscription, *, cards=None) -> RenderedEmail | None:
     """Render ``broadcast`` for ``profile``, or ``None`` when the campaign has no
     content in the reader's language (nor a usable fallback)."""
     lang = email_language(profile, subscription)
@@ -138,21 +131,25 @@ def render_broadcast(broadcast, profile, subscription) -> RenderedEmail | None:
         profile=profile,
         subscription=subscription,
         lang=resolved,
+        cards=cards,
     )
 
 
-def render_blocks(*, subject: str, content: dict, profile, subscription, lang: str) -> RenderedEmail:
+def render_blocks(
+    *, subject: str, content: dict, profile, subscription, lang: str, cards=None
+) -> RenderedEmail:
     """Render one language's block content (emails/blocks.py) for ``profile``.
-    Shared by the send and the admin's live preview, so the preview is the email."""
+    Shared by every send and the admin's live preview, so the preview is the
+    email. ``cards`` is the caller's library-card cache (``blocks.resolve``)."""
     context = {
         "subject": subject,
         "preheader": content.get("preheader", ""),
         "blocks": blocks_mod.resolve(
-            blocks_mod.blocks_for(content), lang, name=_display_name(profile)
+            blocks_mod.blocks_for(content), lang, name=_display_name(profile), cards=cards
         ),
         **_base_context(subscription, lang),
     }
-    return RenderedEmail(subject=subject, html=render_to_string(_BLOCKS_TEMPLATE, context))
+    return RenderedEmail(subject=subject, html=render_to_string(_TEMPLATE, context))
 
 
 def render_direct(text: dict, profile, subscription, lang: str) -> RenderedEmail:

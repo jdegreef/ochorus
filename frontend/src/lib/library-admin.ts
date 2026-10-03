@@ -1343,36 +1343,13 @@ export type EmailBlock =
 	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
 
 export type EmailBlockType = EmailBlock['type'];
-export type LibraryBlockType = 'book' | 'sermon' | 'plan';
+export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
 
-/** One language's content for a broadcast or template. `blocks` is the current
- *  shape; the fixed fields are how older broadcasts were stored (still rendered,
- *  converted to blocks on first edit). */
+/** One language's content for a broadcast or template. The server always
+ *  sends it as blocks (an older broadcast's fixed fields are converted there). */
 export interface BroadcastBlock {
-	preheader?: string;
-	blocks?: EmailBlock[];
-	heading?: string;
-	paragraphs?: string[];
-	cta_label?: string;
-	cta_path?: string;
-	greeting?: string;
-	signoff?: string;
-	signature?: string;
-}
-
-/** The legacy fixed fields as blocks — mirrors `blocks.legacy_blocks`. */
-export function blocksOf(content: BroadcastBlock | undefined): EmailBlock[] {
-	if (!content) return [];
-	if (content.blocks) return content.blocks;
-	const out: EmailBlock[] = [];
-	if (content.heading) out.push({ type: 'heading', text: content.heading });
-	if (content.greeting) out.push({ type: 'text', text: content.greeting });
-	for (const p of content.paragraphs ?? []) out.push({ type: 'text', text: p });
-	if (content.cta_label || content.cta_path)
-		out.push({ type: 'button', label: content.cta_label ?? '', path: content.cta_path ?? '' });
-	const sign = [content.signoff, content.signature].filter(Boolean).join('\n');
-	if (sign) out.push({ type: 'text', text: sign });
-	return out;
+	preheader: string;
+	blocks: EmailBlock[];
 }
 
 export interface BroadcastAudience {
@@ -1497,10 +1474,16 @@ export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
 
 // --- Campaign design: preview, library picker, templates -----------------------
 
-export const previewEmail = (locale: string, subject: string, content: BroadcastBlock) =>
+export const previewEmail = (
+	locale: string,
+	subject: string,
+	content: BroadcastBlock,
+	signal?: AbortSignal
+) =>
 	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
 		method: 'POST',
-		body: JSON.stringify({ locale, subject, content })
+		body: JSON.stringify({ locale, subject, content }),
+		signal
 	});
 
 export interface EmailLibraryItem {
@@ -1511,30 +1494,30 @@ export interface EmailLibraryItem {
 	languages: string[];
 }
 
-export const searchEmailLibrary = (type: LibraryBlockType, q: string) =>
+/** Search by title, or (with `slugs`) look up exactly those works. */
+export const searchEmailLibrary = (
+	type: LibraryBlockType,
+	q: string,
+	init?: { slugs?: string[]; signal?: AbortSignal }
+) =>
 	apiFetch<{ results: EmailLibraryItem[] }>(
-		`/api/admin/emails/library/?${new URLSearchParams({ type, q })}`
+		`/api/admin/emails/library/?${new URLSearchParams({ type, q, slugs: (init?.slugs ?? []).join(',') })}`,
+		{ signal: init?.signal }
 	);
 
 export interface EmailTemplate {
 	id: number;
 	name: string;
-	description: string;
 	subject: Record<string, string>;
 	content: Record<string, BroadcastBlock>;
 	locales: string[];
-	created_by: string;
-	updated_at: string;
 }
 
 export const listEmailTemplates = () =>
 	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
 
-export const saveEmailTemplate = (payload: {
-	name: string;
-	description?: string;
-	from_broadcast?: number;
-}) =>
+/** Save a broadcast's design (as last saved) as a template. */
+export const saveEmailTemplate = (payload: { name: string; from_broadcast: number }) =>
 	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
 		method: 'POST',
 		body: JSON.stringify(payload)

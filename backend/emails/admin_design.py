@@ -59,7 +59,8 @@ class AdminEmailPreviewView(AdminNotAudited, APIView):
 
 
 class AdminEmailLibraryView(AdminNotAudited, APIView):
-    """Search the library for the picker: ``?type=book|sermon|plan&q=…``.
+    """Search the library for the picker: ``?type=book|sermon|plan&q=…``, or look
+    up exact works with ``&slugs=a,b`` (what a saved design already names).
 
     One row per work (slug), with every language it is published in, so the
     designer can show at a glance which editions a block will reach."""
@@ -74,28 +75,34 @@ class AdminEmailLibraryView(AdminNotAudited, APIView):
                 {"detail": "type must be book, sermon or plan"},
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
-        q = request.query_params.get("q", "").strip()
-        model = blocks_mod.library_model(kind)
-        qs = model.objects.filter(is_published=True)
-        if q:
-            qs = qs.filter(Q(title__icontains=q) | Q(slug__icontains=q))
-        if kind != blocks_mod.BlockType.PLAN:
-            qs = qs.select_related("author")
+        published = blocks_mod.library_model(kind).objects.filter(is_published=True)
+        exact = [s for s in request.query_params.get("slugs", "").split(",") if s]
+        if exact:
+            slugs = exact[:LIBRARY_LIMIT]
+        else:
+            q = request.query_params.get("q", "").strip()
+            matches = published.filter(Q(title__icontains=q) | Q(slug__icontains=q)) if q else published
+            slugs = list(
+                matches.order_by("slug").values_list("slug", flat=True).distinct()[:LIBRARY_LIMIT]
+            )
+        # Only the picker's columns: a sermon row also carries its whole body.
+        fields = ["slug", "language", "title"]
+        if blocks_mod.has_author(kind):
+            fields.append("author__name")
         works: dict[str, dict] = {}
-        for work in qs.order_by("slug", "language")[:500]:
-            row = works.get(work.slug)
-            if row is None:
-                if len(works) >= LIBRARY_LIMIT:
-                    continue
-                row = works[work.slug] = {
-                    "slug": work.slug,
-                    "title": work.title,
-                    "author": work.author.name if kind != blocks_mod.BlockType.PLAN else "",
+        for row in published.filter(slug__in=slugs).order_by("slug", "language").values(*fields):
+            work = works.setdefault(
+                row["slug"],
+                {
+                    "slug": row["slug"],
+                    "title": row["title"],
+                    "author": row.get("author__name", ""),
                     "languages": [],
-                }
-            row["languages"].append(work.language)
-            if work.language == "en":  # name a work by its English title when it has one
-                row["title"] = work.title
+                },
+            )
+            work["languages"].append(row["language"])
+            if row["language"] == "en":  # name a work by its English title when it has one
+                work["title"] = row["title"]
         return Response({"results": list(works.values())})
 
 
@@ -103,18 +110,15 @@ def _serialize_template(t: EmailTemplate) -> dict:
     return {
         "id": t.id,
         "name": t.name,
-        "description": t.description,
         "subject": t.subject,
-        "content": t.content,
+        "content": blocks_mod.as_blocks(t.content),
         "locales": sorted(t.content),
-        "created_by": t.created_by,
-        "updated_at": t.updated_at.isoformat(),
     }
 
 
 class AdminEmailTemplatesView(AdminAudited, APIView):
-    """List saved templates, or save one — from a design in the body, or from an
-    existing broadcast (``{"name": ..., "from_broadcast": id}``)."""
+    """List saved templates, or save a broadcast as one
+    (``{"name": ..., "from_broadcast": id}``)."""
 
     permission_classes = [IsAdminEmail]
     audit_action = AdminAction.Action.EMAIL_TEMPLATE_SAVE
@@ -129,22 +133,19 @@ class AdminEmailTemplatesView(AdminAudited, APIView):
         name = str(request.data.get("name") or "").strip()[:200]
         if not name:
             return Response({"detail": "name is required"}, status=http_status.HTTP_400_BAD_REQUEST)
-        template = EmailTemplate(
+        source = str(request.data.get("from_broadcast") or "")
+        broadcast = Broadcast.objects.filter(pk=source).first() if source.isdigit() else None
+        if broadcast is None:
+            return Response(
+                {"detail": "from_broadcast must name a broadcast"},
+                status=http_status.HTTP_400_BAD_REQUEST,
+            )
+        template = EmailTemplate.objects.create(
             name=name,
-            description=str(request.data.get("description") or "").strip()[:300],
+            subject=broadcast.subject,
+            content=broadcast.content,
             created_by=actor_email(request),
         )
-        source = request.data.get("from_broadcast")
-        if source is not None:
-            broadcast = Broadcast.objects.filter(pk=source).first()
-            if broadcast is None:
-                return Response(status=http_status.HTTP_404_NOT_FOUND)
-            template.subject, template.content = broadcast.subject, broadcast.content
-        else:
-            subject = request.data.get("subject") or {}
-            template.subject = subject if isinstance(subject, dict) else {}
-            template.content = blocks_mod.clean_content(request.data.get("content") or {})
-        template.save()
         return Response(_serialize_template(template), status=http_status.HTTP_201_CREATED)
 
 
