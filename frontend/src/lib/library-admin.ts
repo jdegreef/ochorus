@@ -1428,6 +1428,8 @@ export interface AdminBroadcast {
 	/** Copy and audience are frozen: it has (or may have) mailed someone. */
 	locked: boolean;
 	// detail only:
+	/** AI-drafted translations per language — admin-only review state. */
+	translations?: Record<string, EmailTranslation>;
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
 	checks?: BroadcastCheck[];
@@ -1461,6 +1463,31 @@ export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
 
 export const deleteBroadcast = (id: number) =>
 	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
+
+/** One language's AI draft (backend `emails/translation_jobs.py`). A `draft`
+ *  blocks sending until an admin approves it; `stale` means the source text
+ *  changed after the draft was asked for. */
+export interface EmailTranslation {
+	state: 'requested' | 'draft' | 'approved';
+	issue: number;
+	url: string;
+	source_locale: string;
+	stale: boolean;
+	approved_by?: string;
+}
+
+/** Ask for an AI draft (`request`), pull it in once it's back (`fetch`), or
+ *  mark a reviewed draft approved (`approve`). */
+export const broadcastTranslation = (
+	id: number,
+	action: 'request' | 'fetch' | 'approve',
+	language: string,
+	source?: string
+) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/translations/`, {
+		method: 'POST',
+		body: JSON.stringify({ action, language, source })
+	});
 
 export type BroadcastActionName = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
 

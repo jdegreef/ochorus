@@ -7,6 +7,7 @@ from django.urls import include, path
 
 from accounts.views import MeView, SignupSourceView, health
 from emails.admin_design import (
+    AdminBroadcastTranslationView,
     AdminEmailLibraryView,
     AdminEmailPreviewView,
     AdminEmailTemplateDetailView,
@@ -245,6 +246,11 @@ urlpatterns = [
         "api/admin/broadcasts/<int:pk>/action/",
         AdminBroadcastActionView.as_view(),
         name="admin-broadcast-action",
+    ),
+    path(
+        "api/admin/broadcasts/<int:pk>/translations/",
+        AdminBroadcastTranslationView.as_view(),
+        name="admin-broadcast-translations",
     ),
     path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
     path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),

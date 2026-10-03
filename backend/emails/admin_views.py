@@ -31,7 +31,7 @@ from . import audience as audience_mod
 from . import blocks as blocks_mod
 from . import broadcasts as broadcasts_mod
 from . import direct as direct_mod
-from . import health, preflight
+from . import health, preflight, translation_jobs
 from . import history as history_mod
 from .models import (
     Broadcast,
@@ -173,6 +173,9 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         "locked": b.is_locked,
     }
     if detail:
+        # AI-drafted translations per language (admin-only review state), with
+        # whether the source changed since each was asked for.
+        data["translations"] = translation_jobs.states(b)
         data["content"] = blocks_mod.as_blocks(b.content)
         data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
         if b.can_send:

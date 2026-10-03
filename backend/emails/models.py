@@ -255,6 +255,10 @@ class Broadcast(models.Model):
     # Digest of the subject/content/from the last successful test send went out
     # with, so the pre-send checks can tell whether the copy changed since.
     tested_digest = models.CharField(max_length=64, blank=True)
+    # AI-drafted translations, per language (emails/translation_jobs.py):
+    # {lang: {"state": requested|draft|approved, "issue", "url", "source_locale",
+    # "source_digest", ...}}. Admin-only review state — never shown to readers.
+    translations = models.JSONField(default=dict, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

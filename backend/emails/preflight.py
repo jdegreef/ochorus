@@ -17,7 +17,7 @@ from library.languages import entry as language_entry
 
 from . import blocks as blocks_mod
 from . import copy as copy_mod
-from . import health
+from . import health, translation_jobs
 from .audience import resolve
 from .rendering import resolve_broadcast_locale, sendable_locales
 from .sending import emails_enabled
@@ -241,6 +241,36 @@ def _audience_checks(broadcast) -> list[dict]:
     return out
 
 
+#: What each AI-draft state means for sending: (level, message).
+_TRANSLATION_STATE = {
+    translation_jobs.State.DRAFT: (ERROR, "the AI draft hasn't been approved yet — read it and approve it."),
+    translation_jobs.State.REQUESTED: (WARNING, "an AI draft has been asked for and isn't back yet (issue #{issue})."),
+}
+
+
+def _translation_checks(broadcast) -> list[dict]:
+    """The AI-draft review state per language (admin-only; never shown to readers).
+    An unapproved draft blocks sending: nothing AI-written reaches a reader's
+    inbox until an admin has read it and pressed Approve."""
+    out = []
+    for lang, entry in sorted(translation_jobs.states(broadcast).items()):
+        name = _lang_name(lang)
+        state = entry.get("state")
+        if state in _TRANSLATION_STATE:
+            level, message = _TRANSLATION_STATE[state]
+            out.append(_check(f"translation:{lang}", level, f"{name}: " + message.format(issue=entry.get("issue"))))
+        if state != translation_jobs.State.REQUESTED and entry["stale"]:
+            source = _lang_name(entry.get("source_locale", "en"))
+            out.append(
+                _check(
+                    f"translation-stale:{lang}",
+                    WARNING,
+                    f"{name}: the {source} text changed after this translation was drafted.",
+                )
+            )
+    return out
+
+
 def _test_check(broadcast) -> dict:
     if not broadcast.tested_digest:
         return _check("test", WARNING, "No test email has been sent yet.")
@@ -287,6 +317,7 @@ def run(broadcast) -> list[dict]:
     checks = [
         *_content_checks(broadcast),
         *_audience_checks(broadcast),
+        *_translation_checks(broadcast),
         _test_check(broadcast),
         *_delivery_checks(),
     ]
@@ -298,7 +329,7 @@ def content_errors(broadcast) -> list[dict]:
     """Only the checks that can block, which are all about the copy (plus one
     library query per block type, to know the works still exist). What a due
     schedule re-checks before it starts."""
-    return blocking(_content_checks(broadcast))
+    return blocking([*_content_checks(broadcast), *_translation_checks(broadcast)])
 
 
 def blocking(checks: list[dict]) -> list[dict]:
