@@ -17,6 +17,7 @@ from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
 from ..engagement_trends import (
     distinct_readers,
+    latest_day,
     pulse_trends,
     readers_per_work,
     reading_hours,
@@ -74,6 +75,10 @@ class AdminEngagementView(APIView):
         from reading.models import ChapterMarks, Favorite, ReadingProgress
 
         now = timezone.now()
+        range_key = request.query_params.get("range", "")
+        if range_key not in self.RANGES:
+            range_key = self.DEFAULT_RANGE
+        days = self.RANGES[range_key]
 
         # Every active window in one query, from the reading-day log.
         active = distinct_readers(
@@ -119,7 +124,8 @@ class AdminEngagementView(APIView):
         return Response(
             {
                 "overview": overview,
-                "time": self._reading_time(now),
+                "period": self._period(now, range_key, days),
+                "time": self._reading_time(now, days),
                 "top_content": self._top_content(),
                 "rising": self._rising(now),
                 "highlight_heatmap": self._highlight_heatmap(),
@@ -130,7 +136,7 @@ class AdminEngagementView(APIView):
                 "weekly_active": weekly_active(now, self.WEEKS),
                 "events": self._events(now),
                 "cohorts": retention_cohorts(now),
-                "hours": reading_hours(now),
+                "hours": reading_hours(now, days),
                 # The tiles' lines; none for the empty state, which shows no tiles.
                 "trends": pulse_trends(
                     now,
@@ -143,7 +149,64 @@ class AdminEngagementView(APIView):
             }
         )
 
-    def _reading_time(self, now):
+    #: The page's date range (``?range=``): its days, None for all time. It
+    #: drives the figures that are about a PERIOD (the pulse's period tiles,
+    #: the Reading time card, When people read). Running totals stay all
+    #: time, the weekly charts keep their own axis, and the work rollups
+    #: (top content, most loved, by language) stay all time: they rest on
+    #: saved progress, which keeps only each work's latest touch, so "read in
+    #: the last 30 days" is a claim they can't make.
+    RANGES = {"7d": 7, "30d": 30, "90d": 90, "all": None}
+    DEFAULT_RANGE = "30d"
+
+    def _period(self, now, range_key: str, days: int | None) -> dict:
+        """The range-following pulse figures, each with the same-length period
+        just before it to compare against (None for all time, which has no
+        "before"). Active readers from the reading-day log, as the 7- and
+        30-day tiles count them; hearts and sign-ups when they were made;
+        reading time by when a sitting was last seen."""
+        from datetime import date, timedelta
+
+        from django.db.models import Sum
+
+        from accounts.models import UserProfile
+        from reading.models import Favorite, ReadingSession
+
+        if days is None:
+            active = distinct_readers({"cur": (date.min, latest_day(now))})
+            return {
+                "range": range_key,
+                "days": None,
+                "active": {"value": active["cur"], "prev": None},
+                "hearts": {"value": Favorite.objects.count(), "prev": None},
+                "signups": {"value": UserProfile.objects.count(), "prev": None},
+                "seconds": {
+                    "value": ReadingSession.objects.aggregate(s=Sum("seconds"))["s"] or 0,
+                    "prev": None,
+                },
+            }
+        active = distinct_readers({"cur": window(now, days), "prev": window(now, days, days)})
+        start, before = now - timedelta(days=days), now - timedelta(days=2 * days)
+
+        def split(qs, field, total=None):
+            """This period's and the one before's count, or sum of ``total``,
+            in one query."""
+            cur = Q(**{f"{field}__gte": start})
+            prev = Q(**{f"{field}__gte": before, f"{field}__lt": start})
+            agg = (lambda q: Sum(total, filter=q)) if total else (lambda q: Count("pk", filter=q))
+            row = qs.filter(**{f"{field}__gte": before}).aggregate(cur=agg(cur), prev=agg(prev))
+            return {"value": row["cur"] or 0, "prev": row["prev"] or 0}
+
+        return {
+            "range": range_key,
+            "days": days,
+            "active": {"value": active["cur"], "prev": active["prev"]},
+            "hearts": split(Favorite.objects, "created_at"),
+            "signups": split(UserProfile.objects, "created_at"),
+            "seconds": split(ReadingSession.objects, "last_seen_at", "seconds"),
+        }
+
+    def _reading_time(self, now, days: int | None = None):
         """Time-on-site rollup from ReadingSession (see reading.models).
 
         ``seconds`` is *active* reading time, so these are real reading totals,
@@ -159,6 +222,11 @@ class AdminEngagementView(APIView):
         from reading.models import ReadingSession
 
         sessions = ReadingSession.objects.filter(seconds__gt=0)
+        # The page's range: totals, the median and the length buckets cover
+        # sittings last seen inside it. The fixed 7/30-day figures don't move.
+        in_range = (
+            sessions.filter(last_seen_at__gte=now - timedelta(days=days)) if days else sessions
+        )
 
         def window(days):
             return sessions.filter(
@@ -167,7 +235,7 @@ class AdminEngagementView(APIView):
 
         # The length buckets ride the totals' query, so their sums and the
         # totals the page divides them by are one snapshot.
-        totals = sessions.aggregate(
+        totals = in_range.aggregate(
             secs=Sum("seconds"),
             count=Count("id"),
             readers=Count("profile", distinct=True),
@@ -180,7 +248,7 @@ class AdminEngagementView(APIView):
             "sessions": totals["count"] or 0,
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
-            "median_session_seconds": self._median_seconds(sessions, totals["count"] or 0),
+            "median_session_seconds": self._median_seconds(in_range, totals["count"] or 0),
             "lengths": [
                 {
                     "min_seconds": low,

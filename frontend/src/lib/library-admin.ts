@@ -1195,7 +1195,9 @@ export interface EngagementLang extends Language {
 
 /** Time-on-site rollup from reading sittings. `seconds` values are ACTIVE
  *  reading time (foreground, non-idle), so these are real reading totals, not
- *  tab-open time. All zero until the instrumentation has data. */
+ *  tab-open time. All zero until the instrumentation has data. The totals,
+ *  median and lengths cover the page's date range; the `_7d` / `_30d`
+ *  figures are fixed windows. */
 export interface EngagementTime {
 	total_seconds: number;
 	sessions: number;
@@ -1321,14 +1323,28 @@ export interface AdminEngagement {
 	cohorts?: { min_size: number; rows: EngagementCohort[] };
 	/** When people read, on their own clocks. Absent from an older API. */
 	hours?: EngagementHours;
+	/** The figures that follow the page's date range, each with the period
+	 *  before it (`prev` null for all time). Absent from an older API. */
+	period?: EngagementPeriod;
 }
+
+export interface EngagementPeriod {
+	range: EngagementRange;
+	days: number | null;
+	active: PeriodFigure;
+	hearts: PeriodFigure;
+	signups: PeriodFigure;
+	seconds: PeriodFigure;
+}
+export type PeriodFigure = { value: number; prev: number | null };
 
 /** Minutes read per weekday × hour over the last `days`, in each reader's
  *  own time zone. `minutes[d][h]` is Monday-first; null where fewer than
  *  `min_readers` readers read in that hour. `without_zone` readers have no
  *  time zone yet and are left out. */
 export interface EngagementHours {
-	days: number;
+	/** The window, or null for all time. */
+	days: number | null;
 	min_readers: number;
 	readers: number;
 	without_zone: number;
@@ -1379,7 +1395,14 @@ export const EVENT_KINDS: Record<EngagementEventKind, { glyph: string; label: st
 };
 
 
-export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
+export const getAdminEngagement = (range?: EngagementRange) =>
+	apiFetch<AdminEngagement>(`/api/admin/engagement/${range ? `?range=${range}` : ''}`);
+
+/** The Engagement page's date range, and how each reads in a sentence. */
+export const ENGAGEMENT_RANGES = { '7d': '7 days', '30d': '30 days', '90d': '90 days', all: 'all time' } as const;
+export type EngagementRange = keyof typeof ENGAGEMENT_RANGES;
+export const DEFAULT_ENGAGEMENT_RANGE: EngagementRange = '30d';
+export const isEngagementRange = (v: string | null): v is EngagementRange => !!v && v in ENGAGEMENT_RANGES;
 
 // --- Email campaign metrics --------------------------------------------------
 
