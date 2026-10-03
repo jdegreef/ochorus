@@ -403,7 +403,7 @@
 	.plan-group-title {
 		display: block;
 		font-family: var(--font-display);
-		font-size: 1.25rem;
+		font-size: var(--fs-h3);
 		font-weight: 600;
 		line-height: 1.25;
 		color: var(--text);
