@@ -1,0 +1,98 @@
+{
+ "kind": "sermon",
+ "slug": "the-hidden-life-of-faith",
+ "language": "sw",
+ "job_issue": 5043,
+ "references": [
+  {
+   "reference": "Exodus 33:22",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Exodus 33:22",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Mark 1:13",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 7:30",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Kings 6:16b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Kings 6:17b",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Isaiah 45:2a",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Numbers 23:23b",
+   "status": "mined",
+   "block_index": 32,
+   "source_file": "christ-precious-to-believers.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:7",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Revelation 2:17",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "1 Corinthians 2:15",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "1 Corinthians 2:16",
+   "status": "self_rendered",
+   "block_index": 58
+  },
+  {
+   "reference": "Isaiah 45:3a",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Psalm 143:9b",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Psalm 143:9b",
+   "status": "self_rendered",
+   "block_index": 67
+  },
+  {
+   "reference": "Psalm 143:9b",
+   "status": "self_rendered",
+   "block_index": 73
+  },
+  {
+   "reference": "1 Corinthians 11:28",
+   "status": "mined",
+   "block_index": 70,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  }
+ ]
+}

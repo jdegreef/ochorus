@@ -1,0 +1,187 @@
+{
+ "kind": "sermon",
+ "slug": "the-practical-hope-of-the-lords-coming",
+ "language": "sw",
+ "job_issue": 5046,
+ "references": [
+  {
+   "reference": "James 5:7",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "James 5:7a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "James 5:7a",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "James 5:7b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "James 5:8",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "James 4:13",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "James 4:14",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "James 4:15",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 12:20a",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalm 10:4b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 12:20b",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "James 5:1",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "James 5:2",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "James 5:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "James 5:3b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "James 5:3a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "James 5:3a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Luke 12:15b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "James 5:5",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "James 5:5a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "James 5:4",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ecclesiastes 4:1",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ecclesiastes 4:2",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "James 5:6",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ecclesiastes 8:11",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Colossians 1:24",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Mark 4:28b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "Daniel 12:3b",
+   "status": "mined",
+   "block_index": 29,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Habakkuk 2:3b",
+   "status": "self_rendered",
+   "block_index": 30
+  },
+  {
+   "reference": "Luke 18:7",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Luke 18:8a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "ministry-of-intercession.sw.json"
+  }
+ ]
+}

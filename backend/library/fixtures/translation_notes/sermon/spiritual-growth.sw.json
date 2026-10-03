@@ -1,0 +1,130 @@
+{
+ "kind": "sermon",
+ "slug": "spiritual-growth",
+ "language": "sw",
+ "job_issue": 5037,
+ "references": [
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Matthew 6:27",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "2 Peter 1:4b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Luke 2:40",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Luke 2:52",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Peter 1:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Peter 1:4a",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Peter 2:9b",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Hebrews 8:5",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "2 Peter 1:5",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Philippians 2:12b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 12:7",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "power-through-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Peter 3:17",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Peter 1:10b",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Peter 1:9",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "2 Peter 1:8",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "2 Peter 1:11",
+   "status": "self_rendered",
+   "block_index": 32
+  }
+ ]
+}

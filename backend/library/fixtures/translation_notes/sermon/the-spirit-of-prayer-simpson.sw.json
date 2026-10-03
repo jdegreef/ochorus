@@ -1,0 +1,130 @@
+{
+ "kind": "sermon",
+ "slug": "the-spirit-of-prayer-simpson",
+ "language": "sw",
+ "job_issue": 5049,
+ "references": [
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Jude 20a",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "James 1:6a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Kings 3:16",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "filled-with-the-spirit.sw.json"
+  },
+  {
+   "reference": "2 Kings 3:17b",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "filled-with-the-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 5:6",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "filled-with-the-spirit.sw.json"
+  },
+  {
+   "reference": "Zechariah 12:10b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Mark 11:24a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 8:27",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:18",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 8:16",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "James 1:6-7",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:36",
+   "status": "self_rendered",
+   "block_index": 29
+  }
+ ]
+}
