@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
-	import { onMount } from 'svelte';
+	import { onMount, tick } from 'svelte';
 	import { authorPath } from '$lib/originals';
 	import {
 		listAuthors,
@@ -111,6 +111,14 @@
 		topics = Object.fromEntries(tp.map((x) => [x.slug, x]));
 		articles = Object.fromEntries(ar.map((x) => [x.slug, x]));
 		loaded = true;
+		// The shelves render only once loaded, so a deep link to one of them
+		// (the home page's "Your year in books" → #year) found no target when
+		// the browser tried to scroll. Scroll there now that it exists.
+		const target = location.hash.slice(1);
+		if (target) {
+			await tick();
+			document.getElementById(target)?.scrollIntoView();
+		}
 	}
 
 	// favorites.all() is reactive (favorites.ticks) but re-reads and re-sorts
