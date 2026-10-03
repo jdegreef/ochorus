@@ -1,5 +1,15 @@
 import { describe, expect, it } from 'vitest';
-import { facetCounts, hubMembers, inFacets, parseFacets, splitList, toggleIn } from './bioFacets';
+import {
+	bioChips,
+	cleanFacetValues,
+	facetCounts,
+	hubMembers,
+	inFacets,
+	parseFacets,
+	splitList,
+	toggleIn,
+	type BioFilterValues
+} from './bioFacets';
 import type { AuthorBio, Hub } from './library-public';
 
 const author = (slug: string, birth_year: number | null) =>
@@ -85,5 +95,116 @@ describe('facetCounts', () => {
 		const pool = authors.filter((a) => a.slug !== 'bunyan');
 		const c = facetCounts(pool, { trad: [], place: [], era: [] }, members, 'trad', ['puritans']);
 		expect(c.get('puritans')).toBe(1);
+	});
+});
+
+describe('cleanFacetValues — the URL cleanup', () => {
+	const clean = (raw: { trad: string; place: string; era: string }) =>
+		cleanFacetValues(raw, parseFacets(raw, hubs));
+
+	it('writes nothing when every value is one this language can show', () => {
+		expect(clean({ trad: 'puritans,methodists', place: 'scotland', era: 'early' })).toEqual({});
+		expect(clean({ trad: '', place: '', era: '' })).toEqual({});
+	});
+	it('drops a hub this language does not have (a link shared from English)', () => {
+		expect(clean({ trad: 'puritans,anabaptists', place: '', era: '' })).toEqual({ trad: 'puritans' });
+	});
+	it('empties a facet whose only value is unknown, leaving the others alone', () => {
+		expect(clean({ trad: 'anabaptists', place: 'scotland', era: 'bogus' })).toEqual({
+			trad: '',
+			era: ''
+		});
+	});
+	it('drops a slug sent under the wrong facet', () => {
+		// scotland is a place, puritans a tradition — each only counts in its own key.
+		expect(clean({ trad: 'scotland', place: 'puritans', era: '' })).toEqual({ trad: '', place: '' });
+	});
+	it('collapses repeats and blanks', () => {
+		expect(clean({ trad: 'puritans,,puritans', place: '', era: 'early, early' })).toEqual({
+			trad: 'puritans',
+			era: 'early'
+		});
+	});
+	it('settles in one pass: applying it leaves nothing more to clean', () => {
+		const raw = { trad: 'anabaptists,puritans,puritans', place: 'nowhere', era: 'early,bogus' };
+		const next = { ...raw, ...clean(raw) };
+		expect(clean(next)).toEqual({});
+	});
+	it('with no hubs (a failed hub fetch) clears hub facets but keeps eras', () => {
+		const raw = { trad: 'puritans', place: 'scotland', era: 'early' };
+		expect(cleanFacetValues(raw, parseFacets(raw, []))).toEqual({ trad: '', place: '' });
+	});
+});
+
+describe('bioChips — the removable filter chips', () => {
+	const t = (k: string) => `<${k}>`;
+	const values = (over: Partial<BioFilterValues> = {}): BioFilterValues => ({
+		q: '',
+		filter: 'all',
+		full: '',
+		trad: '',
+		place: '',
+		era: '',
+		...over
+	});
+	const labels = new Map([
+		['trad:puritans', 'Puritans'],
+		['trad:methodists', 'Methodists'],
+		['place:scotland', 'Scotland'],
+		['era:early', 'The Early Church']
+	]);
+	const chips = (v: BioFilterValues, showFullLife = true) =>
+		bioChips(v, parseFacets(v, hubs), { labels, showFullLife, t });
+
+	it('is empty when nothing narrows the roster', () => {
+		expect(chips(values())).toEqual([]);
+	});
+	it('lists every active filter in control order, labelled', () => {
+		const v = values({
+			q: 'wesley',
+			filter: 'library',
+			full: '1',
+			trad: 'puritans,methodists',
+			place: 'scotland',
+			era: 'early'
+		});
+		expect(chips(v).map((c) => [c.kind, c.label])).toEqual([
+			['q', '“wesley”'],
+			['filter', '<bios.filterInLibrary>'],
+			['full', '<bios.fullLife>'],
+			['trad:puritans', 'Puritans'],
+			['trad:methodists', 'Methodists'],
+			['place:scotland', 'Scotland'],
+			['era:early', 'The Early Church']
+		]);
+	});
+	it('labels a legacy ?filter=bio link as Biography only', () => {
+		expect(chips(values({ filter: 'bio' })).map((c) => c.label)).toEqual(['<bios.filterBioOnly>']);
+	});
+	it('hides the Full-life chip when its control is hidden', () => {
+		expect(chips(values({ full: '1' }), false)).toEqual([]);
+	});
+	it('falls back to the slug when no option labels a value', () => {
+		const v = values({ trad: 'missionaries' });
+		expect(chips(v).map((c) => c.label)).toEqual(['missionaries']);
+	});
+	it('shows no chip for a value the cleanup will drop', () => {
+		expect(chips(values({ trad: 'anabaptists' }))).toEqual([]);
+	});
+	it('each × lifts only its own value', () => {
+		const v = values({ q: 'x', filter: 'bio', full: '1', trad: 'puritans,methodists', era: 'early' });
+		const byKind = (k: string) => chips(v).find((c) => c.kind === k)!;
+
+		byKind('trad:puritans').onRemove();
+		expect(v.trad).toBe('methodists');
+		byKind('era:early').onRemove();
+		expect(v.era).toBe('');
+		byKind('filter').onRemove();
+		expect(v.filter).toBe('all');
+		byKind('full').onRemove();
+		expect(v.full).toBe('');
+		byKind('q').onRemove();
+		expect(v.q).toBe('');
+		expect(chips(v).map((c) => c.kind)).toEqual(['trad:methodists']);
 	});
 });
