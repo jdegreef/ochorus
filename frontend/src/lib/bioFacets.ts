@@ -1,4 +1,5 @@
 import { eraById, eraOf, type EraId } from '$lib/eras';
+import { queryChip, type FilterChip } from '$lib/filterChips';
 import type { AuthorBio, Hub } from '$lib/library-public';
 
 /**
@@ -97,4 +98,74 @@ export function facetCounts(
 		}
 	}
 	return counts;
+}
+
+/**
+ * The URL rewrites that bring the facet params in line with what parseFacets
+ * kept: a value this language can't show (a hub that only exists in English,
+ * from a shared link), a repeat, a blank. Only the keys that change are
+ * returned, so applying an empty result writes nothing — the page runs this in
+ * an effect, and a no-op write would schedule a navigation for no reason.
+ * Without it a dropped value would still count as "filtered" (the summary and
+ * the badge would show) with no chip to lift it.
+ */
+export function cleanFacetValues(
+	raw: Record<FacetKey, string>,
+	f: Facets
+): Partial<Record<FacetKey, string>> {
+	const out: Partial<Record<FacetKey, string>> = {};
+	for (const k of ['trad', 'place', 'era'] as const) {
+		const clean = f[k].join(',');
+		if (clean !== raw[k]) out[k] = clean;
+	}
+	return out;
+}
+
+/** The biographies page's URL-backed filter values, as `urlFilters` holds them. */
+export type BioFilterValues = Record<FacetKey, string> & {
+	q: string;
+	/** 'all' | 'library' (the has-books switch) | 'bio' (old links only). */
+	filter: string;
+	full: string;
+};
+
+/**
+ * The removable chips for everything narrowing the roster, in the order the
+ * controls sit: the query, has-books (or a legacy ?filter=bio), Full life, then
+ * one chip per tradition, place and era value. Each chip's × lifts just that
+ * value, writing straight into `values` (the live urlFilters state).
+ *
+ * `labels` maps `facet:value` to a display label; a value missing from it (no
+ * option renders it) falls back to the raw slug rather than vanishing. The
+ * Full-life chip follows the same `showFullLife` guard as its control.
+ */
+export function bioChips(
+	values: BioFilterValues,
+	f: Facets,
+	ctx: {
+		labels: Map<string, string>;
+		showFullLife: boolean;
+		t: (key: string) => string;
+	}
+): FilterChip[] {
+	const c: FilterChip[] = [];
+	const q = queryChip({ values });
+	if (q) c.push(q);
+	// 'bio' has no control of its own any more — only an old shared link sets it.
+	if (values.filter !== 'all')
+		c.push({
+			kind: 'filter',
+			label: ctx.t(values.filter === 'bio' ? 'bios.filterBioOnly' : 'bios.filterInLibrary'),
+			onRemove: () => (values.filter = 'all')
+		});
+	if (ctx.showFullLife && values.full === '1')
+		c.push({ kind: 'full', label: ctx.t('bios.fullLife'), onRemove: () => (values.full = '') });
+	for (const k of ['trad', 'place', 'era'] as const)
+		for (const v of f[k])
+			c.push({
+				kind: `${k}:${v}`,
+				label: ctx.labels.get(`${k}:${v}`) ?? v,
+				onRemove: () => (values[k] = toggleIn(values[k], v))
+			});
+	return c;
 }

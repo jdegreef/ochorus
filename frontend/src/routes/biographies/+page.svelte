@@ -21,6 +21,8 @@
 		hubMembers,
 		inFacets,
 		parseFacets,
+		cleanFacetValues,
+		bioChips,
 		toggleIn,
 		type EraCard,
 		type FacetKey
@@ -35,7 +37,6 @@
 	import { pager, pagedSnapshot } from '$lib/paging.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
-	import { queryChip, type FilterChip } from '$lib/filterChips';
 	import { jumpToSection } from '$lib/scrollSpy.svelte';
 
 	const t = i18n.t;
@@ -143,10 +144,7 @@
 	// shared link) is dropped by parseFacets — so drop it from the URL too, or it
 	// would count as "filtered" with no chip to lift it (the stale-?full=1 rule).
 	$effect(() => {
-		for (const k of ['trad', 'place', 'era'] as const) {
-			const clean = facets[k].join(',');
-			if (clean !== filters.values[k]) filters.values[k] = clean;
-		}
+		Object.assign(filters.values, cleanFacetValues(filters.values, facets));
 	});
 	const toggleFacet = (k: FacetKey, v: string) => (filters.values[k] = toggleIn(filters.values[k], v));
 
@@ -253,24 +251,9 @@
 	// along so one row carries the whole set and every part has a ×. The
 	// `full` chip follows the same showFullLife guard as its control and the
 	// badge — a stale ?full=1 with no visible toggle must not surface a chip.
-	const activeChips = $derived.by(() => {
-		const c: FilterChip[] = [];
-		const q = queryChip(filters);
-		if (q) c.push(q);
-		// 'bio' has no control of its own any more — only an old shared link sets it.
-		if (filters.values.filter !== 'all')
-			c.push({
-				kind: 'filter',
-				label: t(filters.values.filter === 'bio' ? 'bios.filterBioOnly' : 'bios.filterInLibrary'),
-				onRemove: () => (filters.values.filter = 'all')
-			});
-		if (showFullLife && filters.values.full === '1')
-			c.push({ kind: 'full', label: t('bios.fullLife'), onRemove: () => (filters.values.full = '') });
-		for (const k of ['trad', 'place', 'era'] as const)
-			for (const v of facets[k])
-				c.push({ kind: `${k}:${v}`, label: facetLabel.get(`${k}:${v}`) ?? v, onRemove: () => toggleFacet(k, v) });
-		return c;
-	});
+	const activeChips = $derived(
+		bioChips(filters.values, facets, { labels: facetLabel, showFullLife, t })
+	);
 
 	// Count summary + whether any narrowing is active (sort doesn't count).
 	const isFiltered = $derived(filters.active);
