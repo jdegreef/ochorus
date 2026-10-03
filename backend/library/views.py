@@ -1997,13 +1997,24 @@ class ScriptureBookView(APIView):
             citing.add(r["chapter_id"])
             slug = r["chapter__book__slug"]
             base = _edition_base_slug(slug)
-            w = works.setdefault(base, {"chapters": set(), "row": r, "cite": r})
+            w = works.setdefault(base, {"chapters": set(), "row": r, "cite": None})
             w["chapters"].add(r["chapter_id"])
             if slug == base:
                 w["row"] = r
-            span = r["end_verse_id"] - r["start_verse_id"]
-            if span < w["cite"]["end_verse_id"] - w["cite"]["start_verse_id"]:
-                w["cite"] = r
+            # The citation its excerpt quotes: one that starts IN this book (a
+            # clamped span from the book before would label the excerpt with
+            # another book), the narrowest, from the work's own edition rather
+            # than a teens/children one, then a stable tie-break so the
+            # prerendered page doesn't churn between builds on DISTINCT order.
+            key = (
+                r["start_verse_id"] < lo,
+                r["end_verse_id"] - r["start_verse_id"],
+                slug != base,
+                r["chapter_id"],
+                r["ref_text"],
+            )
+            if w["cite"] is None or key < w["cite"][0]:
+                w["cite"] = (key, r)
         top_books = sorted(
             works.values(),
             key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
@@ -2012,7 +2023,7 @@ class ScriptureBookView(APIView):
         # One excerpt per top work, at its narrowest citation of this book —
         # what the page shows as "what the writers say". One query for the six
         # chapter bodies; the excerpt is the same snippet the chapter page uses.
-        cites = [w["cite"] for w in top_books]
+        cites = [w["cite"][1] for w in top_books]
         bodies = {
             c.pk: c
             for c in english_chapters()

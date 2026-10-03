@@ -8,7 +8,7 @@ counts a page publishes about itself.
 
 from __future__ import annotations
 
-from django.test import TestCase, override_settings
+from django.test import SimpleTestCase, TestCase, override_settings
 from rest_framework.test import APIClient
 
 from .models import Author, Book, Chapter
@@ -573,7 +573,7 @@ class BookViewEditionAndSpanTests(TestCase):
         self.assertEqual(res.data["citing_count"], CHAPTER_FLOOR + 1)
 
 
-class BibleBookIntroTests(TestCase):
+class BibleBookIntroTests(SimpleTestCase):
     """The house overviews: one for every book that can have a page, sized
     to read as a paragraph, and keyed by the slugs the pages use."""
 
