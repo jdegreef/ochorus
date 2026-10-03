@@ -354,9 +354,18 @@
 			gap: 0.5rem;
 			padding-block: 0 1.5rem;
 		}
+		/* The covers are sized off the column's width, so the fan's height must
+		   be too: a fixed rem height let them spill onto the eyebrow on any
+		   phone wider than ~340px. A 42%-wide 3:4 cover is 0.56 of the width
+		   tall, and the outer corners of the tilted pair drop ~0.06 more; the
+		   1.5rem the covers sit below the top rides on as padding. */
 		.fan {
 			order: -1;
-			height: 15rem;
+			box-sizing: content-box;
+			height: auto;
+			aspect-ratio: 100 / 66;
+			padding-top: 1.5rem;
+			margin-bottom: 0.75rem;
 		}
 		.fan-cover {
 			inset-inline-start: 29%;
