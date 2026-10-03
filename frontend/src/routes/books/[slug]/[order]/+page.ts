@@ -55,11 +55,11 @@ export const entries: EntryGenerator = async () => {
 };
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
-	// ?edition=modern reads the Modern English edition (en-modern) instead of the
-	// locale copy. Query params don't exist at prerender time (touching
-	// url.searchParams here would fail the build), so the static HTML is always
-	// the standard edition; a direct visit with ?edition=modern is reconciled
-	// client-side by the page (it re-runs this load, where `building` is false).
+	// ?edition=modern is the Modern English edition's OLD address; it now has its
+	// own route (books/[slug]/modern/[order]) and the page forwards there. Until
+	// it does, an in-app visit still reads the modern text here. Query params
+	// don't exist at prerender time (touching url.searchParams here would fail
+	// the build), so the static HTML is always the standard edition.
 	const modern = !building && url.searchParams.get('edition') === 'modern';
 	// The language the body is actually IN — needed for the prose's `lang`
 	// attribute, since the Chapter payload carries none of its own and without it

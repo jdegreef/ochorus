@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { chapterPath } from '$lib/editionHref';
+	import { chapterPath, modernChapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -160,10 +160,9 @@
 	const cardSeen = elementVisible(() => readCard, { initial: true });
 
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
-	// edition, the read CTAs open that edition by carrying ?edition=modern. The
+	// edition, the read CTAs open that edition (its own /modern/ address). The
 	// preference is applied at the link (not in the reader) so the reader's own
-	// Modern⇄Original toggle — which represents "original" as *no* param — still
-	// works within a session.
+	// Modern⇄Original toggle still works within a session.
 	const useModern = $derived(readerPrefs.preferModern && book.has_modern_edition);
 	const readHref = (order: number) =>
 		localizeHref(chapterPath(book.slug, order, book.has_modern_edition));
@@ -640,7 +639,7 @@
 						     offers the other edition. -->
 						<a
 							href={localizeHref(
-								`/books/${book.slug}/${readOrder}${useModern ? '' : '?edition=modern'}`
+								useModern ? `/books/${book.slug}/${readOrder}` : modernChapterPath(book.slug, readOrder)
 							)}
 							class="text-small text-accent hover:underline"
 							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { chapterPath, planDayPath, sourceHref, workPath } from './editionHref';
+import { chapterPath, editionHref, planDayPath, sourceHref, workPath } from './editionHref';
 import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
 
@@ -23,6 +23,15 @@ describe('sourceHref', () => {
 		expect(sourceHref(src('bio', 'andrew-murray'))).toMatch(/\/authors\/andrew-murray\/?\?p=3$/);
 		expect(sourceHref(src('article', 'how-to-pray'))).toMatch(/\/articles\/how-to-pray\/?\?p=3$/);
 	});
+
+	it('sends a Modern English mark to the edition\'s own address, not a query flag', () => {
+		// The modern edition is prerendered and canonical at /books/<slug>/modern/<n>/;
+		// the old ?edition=modern only bounces there.
+		const modern = { ...src('book', 'humility', 2), edition: 'en-modern' };
+		expect(sourceHref(modern)).toMatch(/^\/books\/humility\/modern\/2\/?\?p=3$/);
+		// A book page has no modern address of its own: it keeps the flag.
+		expect(editionHref('/books/humility', 'en-modern')).toMatch(/^\/books\/humility\/?\?edition=modern$/);
+	});
 });
 
 describe('workPath', () => {
@@ -40,12 +49,12 @@ describe('chapterPath (review bug #17)', () => {
 		readerPrefs.preferModern = false;
 		expect(chapterPath('humility', 2, true)).toBe('/books/humility/2');
 		readerPrefs.preferModern = true;
-		expect(chapterPath('humility', 2, true)).toBe('/books/humility/2?edition=modern');
+		expect(chapterPath('humility', 2, true)).toBe('/books/humility/modern/2');
 		// No modern edition (or not known): the original, never a Modern label on it.
 		expect(chapterPath('humility', 2, false)).toBe('/books/humility/2');
 		expect(chapterPath('humility', 2, undefined)).toBe('/books/humility/2');
 		expect(chapterPath('humility', 2, true, 'plan=p&day=3')).toBe(
-			'/books/humility/2?plan=p&day=3&edition=modern'
+			'/books/humility/modern/2?plan=p&day=3'
 		);
 		readerPrefs.preferModern = false;
 	});
@@ -57,7 +66,7 @@ describe('planDayPath', () => {
 		readerPrefs.preferModern = false;
 		expect(planDayPath('p', chapterDay)).toBe('/books/humility/2?plan=p&day=3');
 		// Carrying on in Modern English, as the reader's "Mark day done" does.
-		expect(planDayPath('p', chapterDay, true)).toBe('/books/humility/2?plan=p&day=3&edition=modern');
+		expect(planDayPath('p', chapterDay, true)).toBe('/books/humility/modern/2?plan=p&day=3');
 	});
 	it('links an article day to the article, with the plan context', () => {
 		const articleDay = { day: 4, book_slug: '', chapter_order: null, article_slug: 'what-is-grace' };

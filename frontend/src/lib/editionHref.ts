@@ -21,7 +21,7 @@ type UiLocale = NonNullable<Parameters<typeof localizeHref>[1]>['locale'];
  */
 export function editionHref(path: string, edition: string): string {
 	const modern = edition === MODERN_EDITION;
-	const withEdition = modern ? `${path}${path.includes('?') ? '&' : '?'}edition=modern` : path;
+	const withEdition = modern ? modernPath(path) : path;
 	const locale = modern ? 'en' : baseEdition(edition);
 	// `isAvailable` IS the check the type wants; a content language can be
 	// added in the admin without a frontend deploy, so the set of editions is
@@ -29,6 +29,26 @@ export function editionHref(path: string, edition: string): string {
 	return lang.isAvailable(locale)
 		? localizeHref(withEdition, { locale: locale as UiLocale })
 		: localizeHref(withEdition);
+}
+
+/**
+ * A book chapter's path in the Modern English edition (unlocalized). The
+ * edition has its own prerendered address — it is indexable there, where the
+ * old `?edition=modern` flag canonicalized to the original and never was.
+ */
+export const modernChapterPath = (slug: string, order: number) => `/books/${slug}/modern/${order}`;
+
+const CHAPTER_PATH = /^\/books\/([^/?#]+)\/(\d+)\/?(?=[?#]|$)/;
+
+/**
+ * `path` moved to the Modern English edition: a chapter to its own address;
+ * anything else (the book page) carries the `?edition=modern` flag, which is
+ * all it has.
+ */
+function modernPath(path: string): string {
+	const m = CHAPTER_PATH.exec(path);
+	if (m) return `${modernChapterPath(m[1], Number(m[2]))}${path.slice(m[0].length)}`;
+	return `${path}${path.includes('?') ? '&' : '?'}edition=modern`;
 }
 
 /**
@@ -69,10 +89,8 @@ export function chapterPath(
 	/** Open the Modern edition whatever the preference — carrying on in it. */
 	stayModern = false
 ): string {
-	const params = new URLSearchParams(query);
-	if (hasModern && (stayModern || readerPrefs.preferModern)) params.set('edition', 'modern');
-	const q = params.toString();
-	return `${workPath('book', slug, order)}${q ? `?${q}` : ''}`;
+	const modern = hasModern && (stayModern || readerPrefs.preferModern);
+	return `${modern ? modernChapterPath(slug, order) : workPath('book', slug, order)}${query ? `?${query}` : ''}`;
 }
 
 /**
