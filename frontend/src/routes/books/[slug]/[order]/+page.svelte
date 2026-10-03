@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { chapterMeta } from '$lib/bookSeo';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { readingSync } from '$lib/readingSync';
@@ -126,7 +127,16 @@
 	);
 	// Trimmed to a SERP-sized slice at a sentence/word boundary — the raw 250
 	// char cut fed search snippets a mid-word truncation.
-	const metaText = $derived(truncateMeta(metaDescription));
+	// Book and chapter lead, so two editions that open alike stay distinct.
+	const metaText = $derived(
+		truncateMeta(
+			chapterMeta(
+				chapter.book_title,
+				chapterNameIn(chapter.order, chapter.title, chapter.book_title),
+				metaDescription
+			)
+		)
+	);
 	// The <title> names the chapter, then the book AND its author — people search
 	// "<author> <book> chapter 1", and the author was missing. Localized via
 	// chapter_title_tag (mirrors book_title_tag), so each locale's "by" is right.
