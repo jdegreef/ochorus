@@ -39,6 +39,7 @@ from .models import (
     Author,
     Book,
     Chapter,
+    ContentRevision,
     Plan,
     SearchClickLog,
     SearchDecision,
@@ -161,22 +162,29 @@ class AuthorEraPresenceView(PublicContentCacheMixin, APIView):
     For the era pages' hreflang: an era page has writers only where that
     locale's shelf has someone born in the era. The eras are drawn in the
     frontend (`$lib/eras`), so the API hands over the years and leaves the
-    bucketing to the one place that defines it. One query per live language."""
+    bucketing to the one place that defines it.
+
+    One query per live language, so it is cached per content revision and live
+    set (the scripture_graph.current_pages idiom): every era page in every
+    locale asks during prerender, and the answer only moves with content or a
+    language going live.
+    """
 
     def get(self, request):
-        return Response(
-            {
-                lang: sorted(
-                    set(
-                        Author.objects.listed_in_biographies(lang).values_list(
-                            "birth_year", flat=True
-                        )
-                    ),
-                    key=lambda y: (y is None, y or 0),
-                )
-                for lang in languages_module.live_codes()
-            }
-        )
+        live = languages_module.live_codes()
+        key = (ContentRevision.current(), tuple(live))
+        cached = cache.get("author-era-presence")
+        if cached is not None and cached[0] == key:
+            return Response(cached[1])
+        years = {
+            lang: sorted(
+                set(Author.objects.listed_in_biographies(lang).values_list("birth_year", flat=True)),
+                key=lambda y: (y is None, y or 0),
+            )
+            for lang in live
+        }
+        cache.set("author-era-presence", (key, years), timeout=None)
+        return Response(years)
 
 
 class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
