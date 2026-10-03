@@ -9,7 +9,7 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import SectionBar from '$lib/components/SectionBar.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, DEEP_SITTINGS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, SITTING_BUCKETS, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
@@ -130,24 +130,18 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
-	// The opening sentence: the last 7 days in words, plus this week's events.
 	// Sitting lengths: count sittings, or the minutes read in them. The second
 	// shows where the reading actually happens.
 	let lengthBy = $state<'sittings' | 'seconds'>('sittings');
-	// A sitting is short, so its seconds matter: "1m 40s", not formatDuration's "1m".
-	const sittingLength = (secs: number) => {
-		const s = Math.round(secs);
-		return s >= 60 && s < 600 && s % 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : formatDuration(s);
-	};
 	const deep = $derived.by(() => {
 		const t = data?.time;
 		if (!t?.lengths) return null;
-		const of = (k: 'sittings' | 'seconds') => t.lengths.filter((b) => DEEP_SITTINGS.includes(b.key)).reduce((a, b) => a + b[k], 0);
+		const n = t.lengths.filter((b) => b.min_seconds >= DEEP_SITTING_SECONDS).reduce((a, b) => a + b[lengthBy], 0);
 		const total = lengthBy === 'sittings' ? t.sessions : t.total_seconds;
-		const n = of(lengthBy);
 		return { n, pct: total ? Math.round((n / total) * 100) : 0 };
 	});
 
+	// The opening sentence: the last 7 days in words, plus this week's events.
 	const summary = $derived(data ? weeklySummary(data, workHref) : null);
 	let copied = $state('');
 	async function copySummary() {
@@ -293,8 +287,8 @@
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [
-								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings`, line: undefined },
-								{ label: 'Typical sitting', text: sittingLength(d.time.median_session_seconds), sub: `median · average ${sittingLength(d.time.avg_session_seconds)}`, line: undefined },
+								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings · ${fmt(d.time.readers)} readers`, line: undefined },
+								{ label: 'Typical sitting', text: formatDuration(d.time.median_session_seconds, { precise: true }), sub: `median · average ${formatDuration(d.time.avg_session_seconds, { precise: true })}`, line: undefined },
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
 								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers`, line: undefined }
 							] as c (c.label)}
@@ -322,18 +316,19 @@
 								<ColumnChart
 									height="7rem"
 									columns={d.time.lengths.map((b) => {
-										const value = lengthBy === 'sittings' ? b.sittings : Math.round(b.seconds / 60);
+										const label = sittingBucketLabel(b);
 										return {
-											key: b.key,
-											label: SITTING_BUCKETS[b.key],
-											value,
-											title: `${SITTING_BUCKETS[b.key]} · ${fmt(b.sittings)} sitting${b.sittings === 1 ? '' : 's'}, ${formatDuration(b.seconds)} read`
+											key: String(b.min_seconds),
+											label,
+											// Tenths of a minute, so a bucket holding a few seconds still draws.
+											value: lengthBy === 'sittings' ? b.sittings : Math.round(b.seconds / 6) / 10,
+											title: `${label} · ${fmt(b.sittings)} sitting${b.sittings === 1 ? '' : 's'}, ${formatDuration(b.seconds, { precise: true })} read`
 										};
 									})}
 								/>
 								{#if deep}
 									<p class="mt-2 text-small text-muted" aria-live="polite">
-										15 minutes or longer:
+										{DEEP_SITTING_SECONDS / 60} minutes or longer:
 										<span class="font-semibold text-text"
 											>{lengthBy === 'sittings' ? `${fmt(deep.n)} sitting${deep.n === 1 ? '' : 's'}` : formatDuration(deep.n)}</span
 										>

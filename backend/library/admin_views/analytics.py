@@ -161,11 +161,14 @@ class AdminEngagementView(APIView):
                 last_seen_at__gte=now - timedelta(days=days)
             ).aggregate(secs=Sum("seconds"), readers=Count("profile", distinct=True))
 
+        # The length buckets ride the totals' query, so their sums and the
+        # totals the page divides them by are one snapshot.
         totals = sessions.aggregate(
             secs=Sum("seconds"),
             count=Count("id"),
             readers=Count("profile", distinct=True),
             avg=Avg("seconds"),
+            **self._bucket_aggregates(),
         )
         w7, w30 = window(7), window(30)
         return {
@@ -174,53 +177,60 @@ class AdminEngagementView(APIView):
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
             "median_session_seconds": self._median_seconds(sessions, totals["count"] or 0),
-            "lengths": self._sitting_lengths(sessions),
+            "lengths": [
+                {
+                    "min_seconds": low,
+                    "max_seconds": high,
+                    "sittings": totals[f"b{low}_n"],
+                    "seconds": totals[f"b{low}_s"] or 0,
+                }
+                for low, high in self._bucket_bounds()
+            ],
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
             "seconds_30d": w30["secs"] or 0,
             "readers_30d": w30["readers"] or 0,
         }
 
-    # Sitting-length buckets, as (key, upper bound in seconds); the last is open.
-    # 15 minutes is where a sitting stops being a look and becomes a read.
-    SITTING_BUCKETS = (("lt1", 60), ("1to5", 5 * 60), ("5to15", 15 * 60), ("15to30", 30 * 60), ("30plus", None))
+    # Where sitting-length buckets start, in seconds; the last is open-ended.
+    # The average hides the spread (a few long reads on many short looks reads
+    # the same as everyone reading a little), so the page shows how many
+    # sittings, and how much reading, fall in each. 15 minutes is where a
+    # sitting stops being a look and becomes a read. The API sends each
+    # bucket's bounds, so the page labels them from here and can't drift.
+    SITTING_BUCKET_STARTS = (0, 60, 5 * 60, 15 * 60, 30 * 60)
 
-    def _sitting_lengths(self, sessions):
-        """How many sittings, and how much reading, fall in each length bucket.
+    @classmethod
+    def _bucket_bounds(cls):
+        starts = cls.SITTING_BUCKET_STARTS
+        return list(zip(starts, (*starts[1:], None), strict=True))
 
-        The average hides the spread: a few long sittings on top of many short
-        ones reads the same as everyone reading a little. Both measures come
-        back so the page can show where sittings are and where the *time* is.
-        One query.
-        """
+    @classmethod
+    def _bucket_aggregates(cls):
         from django.db.models import Sum
 
-        aggs, low = {}, 0
-        for key, high in self.SITTING_BUCKETS:
+        aggs = {}
+        for low, high in cls._bucket_bounds():
             q = Q(seconds__gte=low) & (Q(seconds__lt=high) if high else Q())
-            aggs[f"{key}_n"] = Count("id", filter=q)
-            aggs[f"{key}_s"] = Sum("seconds", filter=q)
-            low = high
-        row = sessions.aggregate(**aggs)
-        return [
-            {"key": key, "sittings": row[f"{key}_n"], "seconds": row[f"{key}_s"] or 0}
-            for key, _ in self.SITTING_BUCKETS
-        ]
+            aggs[f"b{low}_n"] = Count("id", filter=q)
+            aggs[f"b{low}_s"] = Sum("seconds", filter=q)
+        return aggs
 
     @staticmethod
     def _median_seconds(sessions, count: int) -> int:
-        """The middle sitting's length (the mean of the two middles when even).
+        """The middle sitting's length (the mean of the two middles when even,
+        halves rounded up).
 
         Read by offset rather than a database percentile so it means the same
-        on SQLite (tests) and Postgres.
+        on SQLite (tests) and Postgres. ``count`` comes from an earlier query,
+        so a row deleted in between can leave the slice short or empty.
         """
-        if not count:
-            return 0
-        mid = sessions.order_by("seconds").values_list("seconds", flat=True)[
-            (count - 1) // 2 : count // 2 + 1
-        ]
-        values = list(mid)
-        return round(sum(values) / len(values))
+        values = list(
+            sessions.order_by("seconds").values_list("seconds", flat=True)[
+                max(count - 1, 0) // 2 : count // 2 + 1
+            ]
+        )
+        return int(sum(values) / len(values) + 0.5) if values else 0
 
     def _total_users(self) -> int:
         from accounts.models import UserProfile

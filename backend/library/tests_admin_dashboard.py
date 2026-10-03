@@ -1383,16 +1383,19 @@ class AdminEngagementTests(TestCase):
 
     @override_settings(DEBUG=True)
     def test_sitting_lengths_split_sittings_and_time_by_bucket(self):
-        # Four short looks and one long read: the average (6m 38s) describes
+        # Four short looks and one long read: the average (6m 36s) describes
         # none of them, and the long one holds most of the time.
         self._sittings(20, 40, 59, 60, 1800)
         t = self.client.get("/api/admin/engagement/").data["time"]
-        by = {b["key"]: b for b in t["lengths"]}
-        self.assertEqual([b["key"] for b in t["lengths"]], ["lt1", "1to5", "5to15", "15to30", "30plus"])
-        self.assertEqual(by["lt1"]["sittings"], 3)  # 60s is a minute, not under one
-        self.assertEqual(by["1to5"]["sittings"], 1)
-        self.assertEqual(by["15to30"]["sittings"], 0)  # 30 minutes opens the last bucket
-        self.assertEqual((by["30plus"]["sittings"], by["30plus"]["seconds"]), (1, 1800))
+        by = {b["min_seconds"]: b for b in t["lengths"]}
+        self.assertEqual(
+            [(b["min_seconds"], b["max_seconds"]) for b in t["lengths"]],
+            [(0, 60), (60, 300), (300, 900), (900, 1800), (1800, None)],
+        )
+        self.assertEqual(by[0]["sittings"], 3)  # 60s is a minute, not under one
+        self.assertEqual(by[60]["sittings"], 1)
+        self.assertEqual(by[900]["sittings"], 0)  # 30 minutes opens the last bucket
+        self.assertEqual((by[1800]["sittings"], by[1800]["seconds"]), (1, 1800))
         self.assertEqual(sum(b["seconds"] for b in t["lengths"]), t["total_seconds"])
         self.assertEqual(t["median_session_seconds"], 59)
 
@@ -1401,6 +1404,12 @@ class AdminEngagementTests(TestCase):
         self._sittings(30, 90, 600, 1200, 0)  # the unread sitting isn't a sitting
         t = self.client.get("/api/admin/engagement/").data["time"]
         self.assertEqual(t["median_session_seconds"], 345)
+
+    @override_settings(DEBUG=True)
+    def test_no_sittings_is_a_zero_median_not_an_error(self):
+        t = self.client.get("/api/admin/engagement/").data["time"]
+        self.assertEqual(t["median_session_seconds"], 0)
+        self.assertEqual(sum(b["sittings"] for b in t["lengths"]), 0)
 
     @override_settings(DEBUG=True)
     def test_highlight_heatmap(self):
