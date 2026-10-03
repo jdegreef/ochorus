@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
-	import type { BookSummary } from '$lib/library-public';
+	import { toBookTile, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, hreflangFor, absUrl, publisherLd } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
@@ -12,6 +12,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
+	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 
 	// Ochorus Originals is the house imprint — a publisher's shelf, not a person,
@@ -122,10 +123,8 @@
 				</p>
 				<a class="btn btn-primary mt-6" href="#shelves">{t('originals.browse')}</a>
 			</div>
-			<div class="fan" aria-hidden="true">
-				{#each fan as book, i (book.slug)}
-					<div class="fan-cover" data-i={i}><BookCover {book} priority={i === 1} /></div>
-				{/each}
+			<div class="fan">
+				<CoverStrip covers={fan.map(toBookTile)} size="fan" priority />
 			</div>
 		</section>
 
@@ -272,29 +271,6 @@
 		gap: 0.25rem 0.6rem;
 		font-variant-numeric: tabular-nums;
 	}
-	/* Three covers fanned from a shared bottom edge. Symmetric, so it needs no
-	   RTL flip. */
-	.fan {
-		position: relative;
-		height: 22rem;
-	}
-	.fan-cover {
-		position: absolute;
-		inset-inline-start: 25%;
-		top: 1.5rem;
-		width: 50%;
-		transform-origin: bottom center;
-	}
-	.fan-cover[data-i='0'] {
-		transform: rotate(-10deg) translateX(-36%);
-	}
-	.fan-cover[data-i='1'] {
-		z-index: 1;
-		top: 0.5rem;
-	}
-	.fan-cover[data-i='2'] {
-		transform: rotate(10deg) translateX(36%);
-	}
 	.starters {
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -354,22 +330,10 @@
 			gap: 0.5rem;
 			padding-block: 0 1.5rem;
 		}
-		/* The covers are sized off the column's width, so the fan's height must
-		   be too: a fixed rem height let them spill onto the eyebrow on any
-		   phone wider than ~340px. A 42%-wide 3:4 cover is 0.56 of the width
-		   tall, and the outer corners of the tilted pair drop ~0.06 more; the
-		   1.5rem the covers sit below the top rides on as padding. */
+		/* The fan (CoverStrip's) sizes off its own width; on a phone it leads. */
 		.fan {
 			order: -1;
-			box-sizing: content-box;
-			height: auto;
-			aspect-ratio: 100 / 66;
-			padding-top: 1.5rem;
 			margin-bottom: 0.75rem;
-		}
-		.fan-cover {
-			inset-inline-start: 29%;
-			width: 42%;
 		}
 		/* A six-volume series scrolls sideways rather than shrinking to stamps. */
 		.series-covers {
