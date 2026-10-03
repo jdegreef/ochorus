@@ -50,7 +50,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
-	import { downloadFormats, titleWithFormats } from '$lib/bookSeo';
+	import { distinctTitle, downloadFormats, titleWithFormats } from '$lib/bookSeo';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
@@ -240,7 +240,7 @@
 	// A downloadable edition names its formats too — see titleWithFormats.
 	const titleTag = $derived(
 		titleWithFormats(
-			t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name),
+			t('book.titleTag').replace('%title%', distinctTitle(book)).replace('%name%', book.author.name),
 			formats
 		)
 	);

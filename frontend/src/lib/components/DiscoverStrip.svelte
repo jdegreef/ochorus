@@ -11,6 +11,11 @@
 	 * the topics row: if the shelf failed to load (see the note in +page.ts) a
 	 * bare heading over an empty grid reads as "Ochorus has no books", where
 	 * showing nothing simply reads as a shorter page.
+	 *
+	 * It sits on the home page's one night band (app.css, .night-band): six
+	 * covers are the most colourful thing the page has, and they look their best
+	 * on a dark ground. The band re-declares the theme tokens, so BookCard and
+	 * the header draw in its night palette with no variant of their own.
 	 */
 	let { books }: { books: CoverBook[] } = $props();
 
@@ -18,23 +23,25 @@
 </script>
 
 {#if books.length}
-	<section class="page-col px-5 pt-14">
-		<SectionHeader
-			title={t('home.discoverNext')}
-			href={localizeHref('/books')}
-			linkText={t('home.allBooks')}
-		/>
-		<!-- Its own ramp rather than .book-grid: this strip is exactly six books,
-		     and .book-grid's open-shelf ramp passes through five columns, which
-		     would leave a lone sixth card on a second row. 2 / 3 / 6 all divide
-		     six. -->
-		<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
-			{#each books as book, i (book.slug)}
-				<!-- The first row is above the fold at every breakpoint (2 up on
-				     mobile, 6 up on desktop); three covers the common cases
-				     without eagerly loading a shelf nobody has scrolled to. -->
-				<BookCard {book} showAuthor priority={i < 3} />
-			{/each}
-		</div>
-	</section>
+	<div class="night-band">
+		<section class="page-col px-5 pt-14">
+			<SectionHeader
+				title={t('home.discoverNext')}
+				href={localizeHref('/books')}
+				linkText={t('home.allBooks')}
+			/>
+			<!-- Its own ramp rather than .book-grid: this strip is exactly six books,
+			     and .book-grid's open-shelf ramp passes through five columns, which
+			     would leave a lone sixth card on a second row. 2 / 3 / 6 all divide
+			     six. -->
+			<div class="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+				{#each books as book, i (book.slug)}
+					<!-- The first row is above the fold at every breakpoint (2 up on
+					     mobile, 6 up on desktop); three covers the common cases
+					     without eagerly loading a shelf nobody has scrolled to. -->
+					<BookCard {book} showAuthor priority={i < 3} />
+				{/each}
+			</div>
+		</section>
+	</div>
 {/if}

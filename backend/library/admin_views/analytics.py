@@ -18,6 +18,7 @@ from ..demand import FAILED_QUERY_MIN_LEN
 from ..engagement_trends import (
     distinct_readers,
     pulse_trends,
+    readers_per_work,
     weekly_active,
     weekly_signups,
     window,
@@ -334,30 +335,11 @@ class AdminEngagementView(APIView):
     def _rising(self, now, limit: int = 8) -> list[dict]:
         """Works with the biggest gain in weekly readers — what's catching on
         NOW, beside the all-time leaderboard that a few classics dominate.
-
-        Two windowed grouped reads (this week; the seven days before it), each
-        distinct profiles per (kind, slug); the gainers are the works whose
-        weekly reach grew. This counts activity in the window (distinct readers
-        who touched the work), not brand-new readers — labelled as such on the
-        page — and small movements wash out because only positive deltas rank."""
-        from datetime import timedelta
-
-        from reading.models import ReadingProgress
-
-        def window(start_days, end_days=0):
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=start_days)
-            )
-            if end_days:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=end_days))
-            return {
-                (r["kind"], r["book_slug"]): r["n"]
-                for r in qs.values("kind", "book_slug").annotate(
-                    n=Count("profile", distinct=True)
-                )
-            }
-
-        this_week, prev_week = window(7), window(14, 7)
+        Counts readers active on a work in each window
+        (``library.engagement_trends.readers_per_work``), not brand-new
+        readers — labelled as such on the page — and small movements wash out
+        because only positive deltas rank."""
+        this_week, prev_week = readers_per_work(now)
         meta = self._work_meta
         rows = []
         for (kind, slug), this_n in this_week.items():

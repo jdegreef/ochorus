@@ -22,16 +22,22 @@ const SECTIONS = ['books', 'sermons', 'plans', 'topics', 'biographies', 'origina
 const PAPER = ":root[data-theme='light']";
 const SEPIA = ":root[data-theme='sepia']";
 
-/** The declarations of the theme block opened by `selector {` — the one that
- *  sets --bg, since app.css has other bare `:root` blocks (fonts, sections). */
-function block(selector: string): Record<string, string> {
-	const escaped = selector.replace(/[[\]()]/g, '\\$&');
-	const start = CSS.search(new RegExp(`${escaped} \\{\\s*--bg:`));
-	if (start === -1) throw new Error(`${selector} theme block not found in app.css`);
-	const body = CSS.slice(start, CSS.indexOf('\n}', start));
+/** The custom properties declared in the first block `opener` matches, up to
+ *  the first closing brace (comments are stripped, and no value holds one). */
+function rules(opener: RegExp): Record<string, string> {
+	const start = CSS.search(opener);
+	if (start === -1) throw new Error(`${opener} not found in app.css`);
+	const body = CSS.slice(start, CSS.indexOf('}', start));
 	const vars: Record<string, string> = {};
 	for (const m of body.matchAll(/(--[\w-]+):\s*([^;]+);/g)) vars[m[1]] = m[2].trim();
 	return vars;
+}
+
+/** The theme block opened by `selector {` — the one that sets --bg, since
+ *  app.css has other bare `:root` blocks (fonts, sections). */
+function block(selector: string): Record<string, string> {
+	const escaped = selector.replace(/[[\]()]/g, '\\$&');
+	return rules(new RegExp(`${escaped} \\{\\s*--bg:`));
 }
 
 const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
@@ -80,6 +86,44 @@ describe('library palette', () => {
 			}
 		});
 	}
+
+	describe('the night band', () => {
+		// It re-declares its tokens on itself, so the page theme never reaches
+		// inside: one measurement covers lamplight, paper and sepia.
+		const night = rules(/@media screen \{\s*\.night-band \{/);
+		const ratio = (a: string, b: string) => contrastRatio(rgb(night[a]), rgb(night[b]));
+
+		it('every ink clears 4.5:1 on its grounds and every hue on its soft', () => {
+			const failures: string[] = [];
+			const inks = ['--text', '--muted', '--accent', '--gold', '--danger', '--warning', ...HUES.map((h) => `--hue-${h}`)];
+			for (const ink of inks) {
+				expect(night[ink], `${ink} missing on .night-band`).toMatch(/^#[0-9a-f]{6}$/i);
+				for (const ground of ['--bg', '--surface', '--surface-2']) {
+					if (ratio(ink, ground) < 4.5) failures.push(`${ink} on ${ground}: ${ratio(ink, ground).toFixed(2)}`);
+				}
+			}
+			for (const hue of HUES) {
+				const r = ratio(`--hue-${hue}`, `--hue-${hue}-soft`);
+				if (r < 4.5) failures.push(`${hue} on its soft: ${r.toFixed(2)}`);
+			}
+			if (ratio('--accent', '--accent-soft') < 4.5) failures.push('accent on accent-soft');
+			if (ratio('--accent-contrast', '--accent') < 4.5) failures.push('accent-contrast on accent');
+			expect(failures, failures.join('\n')).toEqual([]);
+		});
+
+		it('control edges clear 3:1 (WCAG 1.4.11)', () => {
+			for (const ground of ['--bg', '--surface', '--surface-2']) {
+				expect(ratio('--border-strong', ground), `--border-strong on ${ground}`).toBeGreaterThanOrEqual(3);
+			}
+		});
+
+		it('is screen-only, and the print reset reaches it', () => {
+			// Same specificity as the print reset and later in the file, so an
+			// unscoped band rule would win on paper: near-white ink on white.
+			expect(CSS).not.toMatch(/\n\.night-band \{\s*--bg:/);
+			expect(CSS).toMatch(/@media print \{[\s\S]*?:root\[data-theme\],\s*\.night-band \{\s*--bg: #ffffff;/);
+		});
+	});
 
 	it('every section is aliased to a defined hue', () => {
 		for (const section of SECTIONS) {
