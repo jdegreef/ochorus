@@ -27,7 +27,9 @@ from ..models import (
 )
 from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
+from ..team_events import team_events
 from ..views import _language_entry
+from ..weeks import day_of, week_start, week_starts
 
 
 def _prefer_en(rows, value_of):
@@ -112,6 +114,7 @@ class AdminEngagementView(APIView):
                 "plan_funnel": self._plan_funnel(),
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
+                "events": self._events(now),
             }
         )
 
@@ -463,16 +466,15 @@ class AdminEngagementView(APIView):
             out.append(entry)
         return out
 
-    def _weekly_active(self, now, weeks: int = 8) -> list[dict]:
+    WEEKS = 8
+
+    def _weekly_active(self, now, weeks: int = WEEKS) -> list[dict]:
         from datetime import timedelta
 
         from reading.models import ReadingProgress
 
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
         out = []
-        for i in range(weeks - 1, -1, -1):
-            start = this_week - timedelta(weeks=i)
+        for start in week_starts(now, weeks):
             end = start + timedelta(weeks=1)
             readers = (
                 ReadingProgress.objects.filter(
@@ -483,6 +485,27 @@ class AdminEngagementView(APIView):
                 .count()
             )
             out.append({"week": start.isoformat(), "readers": readers})
+        return out
+
+    def _events(self, now, weeks: int = WEEKS) -> list[dict]:
+        """What the team did in the charted weeks (``library.team_events``),
+        for the markers under the weekly chart: each with the ``week`` the
+        chart keys it by, its ``date``, and whether it falls in the same last
+        7 days as ``active_7d`` (``recent``), for the summary sentence."""
+        from datetime import timedelta
+
+        recent = now - timedelta(days=7)
+        out = []
+        for e in team_events(week_starts(now, weeks)[0]):
+            at = e.pop("at")
+            out.append(
+                {
+                    **e,
+                    "week": week_start(day_of(at)).isoformat(),
+                    "date": day_of(at).isoformat(),
+                    "recent": at >= recent,
+                }
+            )
         return out
 
 
@@ -816,22 +839,17 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from datetime import timedelta
-
         from accounts.models import UserProfile
 
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
         buckets = {}
         # One pass over sign-up dates, counted into their Monday-anchored week.
         for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = created.date() - timedelta(days=created.date().weekday())
+            wk = week_start(day_of(created))
             buckets[wk] = buckets.get(wk, 0) + 1
-        out = []
-        for i in range(weeks - 1, -1, -1):
-            wk = this_week - timedelta(weeks=i)
-            out.append({"week": wk.isoformat(), "count": buckets.get(wk, 0)})
-        return out
+        return [
+            {"week": wk.isoformat(), "count": buckets.get(wk, 0)}
+            for wk in week_starts(now, weeks)
+        ]
 
 
 
