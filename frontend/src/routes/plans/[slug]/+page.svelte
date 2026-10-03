@@ -134,11 +134,10 @@
 		end.setDate(end.getDate() + daysLeft - 1);
 		return new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }).format(end);
 	});
-	/** The plan's shape at a glance: how long, how much a day, how many books,
-	 *  and when a reader going a day at a time from today would finish. */
+	/** The plan's shape beyond the eyebrow's length: how much a day, how many
+	 *  books, and when a reader going a day at a time from today would finish. */
 	const facts = $derived(
 		[
-			{ value: String(plan.day_count), label: t('plans.days') },
 			plan.total_words && plan.day_count
 				? { value: `~${readingMinutes(plan.total_words / plan.day_count)}`, label: t('plans.minPerDay') }
 				: null,
@@ -178,24 +177,26 @@
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/plans" />
 
 	<!-- The hero: the plan's books fanned large beside its title (the covers
-	     ARE the picture, as on /originals), and its shape as four facts — how
-	     long, how much a day, how many books, and when you'd finish. -->
+	     ARE the picture, as on /originals), and its shape as facts — how much a
+	     day, how many books, and when you'd finish. -->
 	<section class="plan-hero">
 		<div class="min-w-0">
 			<p class="eyebrow mb-1 text-muted">
 				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
 					{readingTime(plan.total_words)}{/if}
 			</p>
-			<h1 class="text-h1" dir="auto">{titleParts.main}</h1>
-			{#if titleParts.sub}
-				<!-- As the book page draws a subtitle. -->
-				<p class="mt-1 text-h3 text-muted" dir="auto">{titleParts.sub}</p>
-			{/if}
+			<!-- The whole title stays the h1's text; its subtitle is drawn as the
+			     book page draws one. -->
+			<h1 class="text-h1" dir="auto">
+				{titleParts.main}{#if titleParts.sub}<span class="sr-only">{': '}</span><span
+						class="mt-1 block text-h3 font-normal text-muted">{titleParts.sub}</span
+					>{/if}
+			</h1>
 			{#if plan.description}
 				<p class="mt-3 max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
 			{/if}
 			<dl class="plan-facts">
-				{#each facts as f (f.label)}
+				{#each facts as f, i (i)}
 					<div class="plan-fact">
 						<dt class="text-eyebrow text-muted">{f.label}</dt>
 						<dd class="font-display text-h3 font-semibold text-text tabular-nums">{f.value}</dd>
@@ -535,9 +536,11 @@
 	}
 	.plan-facts {
 		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
+		/* Fills the row whether it holds three facts or two (a finished plan
+		   has no finish date), three across even on a phone. */
+		grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
 		gap: 0.625rem;
-		max-width: 40rem;
+		max-width: 32rem;
 		margin-top: 1.5rem;
 	}
 	.plan-fact {
@@ -571,6 +574,10 @@
 			grid-row: 1;
 			position: sticky;
 			top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
+			/* Taller than a short laptop screen: it scrolls itself rather than
+			   hiding its foot until the page scrolls past it. */
+			max-height: calc(100vh - var(--pinned-offset, var(--appnav-h, 0px)) - 2rem);
+			overflow-y: auto;
 		}
 	}
 	@media (max-width: 640px) {
@@ -583,9 +590,6 @@
 			order: -1;
 			width: min(18rem, 80%);
 			margin-inline: auto;
-		}
-		.plan-facts {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>
