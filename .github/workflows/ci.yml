@@ -386,7 +386,14 @@ jobs:
           # `seed_quotes` is what gives /quotes/<author> its cards.
           uv run python manage.py index_citations
           uv run python manage.py seed_quotes
-          uv run python manage.py runserver 8000 --noreload &
+          # gunicorn, not runserver: runserver is ONE Python process, and the
+          # prerender crawl was waiting on it — it spent ~70 s of CPU per build
+          # serving pages strictly one after another. Three worker processes (one
+          # core left for Node) serve the parallel crawl below; measured locally,
+          # the prerender went 86 s -> 54 s with byte-identical pages apart from
+          # the order of a few inlined responses. Same server production runs.
+          uv run gunicorn config.wsgi:application --bind 127.0.0.1:8000 \
+            --workers 3 --timeout 120 &
           for i in $(seq 1 30); do
             curl -sf http://localhost:8000/api/health/ >/dev/null && break
             sleep 1
@@ -408,10 +415,14 @@ jobs:
         working-directory: frontend
         run: npx @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/lib/paraglide
 
+      # PRERENDER_CONCURRENCY: pages rendered at once (svelte.config.js). Only
+      # CI raises it — this API is a throwaway; production's build crawls the
+      # live one and stays at 1.
       - name: Frontend — build
         working-directory: frontend
         env:
           PUBLIC_API_BASE_URL: http://localhost:8000
+          PRERENDER_CONCURRENCY: '8'
         run: npm run build
 
       # These guards assert on BUILT html, so they run after the build.
@@ -461,10 +472,10 @@ jobs:
           retention-days: 7
 
       # Stop the background API before the job's post-steps run — a lingering
-      # `uv run … runserver` process makes setup-uv's cache-prune fail (exit 2).
+      # `uv run … gunicorn` process makes setup-uv's cache-prune fail (exit 2).
       - name: Stop local API
         if: always()
-        run: pkill -f "manage.py runserver" 2>/dev/null || true
+        run: pkill -f "gunicorn config.wsgi" 2>/dev/null || true
 
   # --- EPUB validity -------------------------------------------------------
   # Every downloadable EPUB (library/export_policy.py), built from the seeded
