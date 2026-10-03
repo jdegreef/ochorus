@@ -191,3 +191,68 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
             for off in offsets
         ],
     }
+
+
+#: Join weeks the retention grid shows, and the weeks after joining it follows.
+COHORT_WEEKS = 10
+COHORT_SPAN = 9  # week 0 (the join week) to week 8
+#: A join week with fewer people than this shows its size only, never shares:
+#: one share of a group of three can point at a person.
+COHORT_MIN_SIZE = 5
+
+
+def retention_cohorts(now) -> dict:
+    """Who stays: each of the last ``COHORT_WEEKS`` finished weeks' sign-ups,
+    and how many of them read in each week after.
+
+    Returns ``{min_size, rows}``; a row is ``{week, size, active}``.
+    ``active[k]`` is how many of the week's sign-ups read in week ``k`` after
+    it (0 is the join week itself), and runs only to the last FINISHED week:
+    the week in progress would read as a drop. Below ``min_size`` people
+    ``active`` is None, so nothing narrower than the floor leaves the server.
+
+    Reading comes from the reading-day log, for readers with saved progress,
+    as the weekly chart counts them. A reading day is the reader's own date
+    while sign-up is on the site clock, so they can sit a day apart either
+    way: a day counts from the day before sign-up on, and one that lands in
+    the week before the join week counts as week 0. Reading merged in from
+    earlier than that (on-device, before the account) is not retention.
+    Two queries."""
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay, ReadingProgress
+
+    this_week = week_start(day_of(now))
+    starts = week_starts(now, COHORT_WEEKS + 1)[:-1]  # finished weeks only
+    joiners = UserProfile.objects.filter(
+        created_at__gte=start_of(starts[0]), created_at__lt=start_of(this_week)
+    )
+    joined_on = {pk: day_of(at) for pk, at in joiners.values_list("pk", "created_at")}
+    sizes = Counter(week_start(d) for d in joined_on.values())
+    read: dict[tuple, set] = defaultdict(set)  # (join week, k) -> profiles
+    for pk, day in ReadingDay.objects.filter(
+        profile__in=joiners.values("pk"),
+        day__gte=starts[0] - timedelta(days=1),
+        day__lt=this_week,
+    ).filter(profile__in=ReadingProgress.objects.values("profile")).values_list(
+        "profile", "day"
+    ):
+        if day < joined_on[pk] - timedelta(days=1):
+            continue
+        week = week_start(joined_on[pk])
+        k = max(0, (week_start(day) - week).days // 7)
+        if k < COHORT_SPAN:
+            read[(week, k)].add(pk)
+    rows = []
+    for week in starts:
+        size = sizes.get(week, 0)
+        seen = min(COHORT_SPAN, (this_week - week).days // 7)
+        rows.append(
+            {
+                "week": week.isoformat(),
+                "size": size,
+                "active": [len(read[(week, k)]) for k in range(seen)]
+                if size >= COHORT_MIN_SIZE
+                else None,
+            }
+        )
+    return {"min_size": COHORT_MIN_SIZE, "rows": rows}

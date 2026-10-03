@@ -11,6 +11,7 @@
 	import EventMarker from '$lib/components/EventMarker.svelte';
 	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
+	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -124,11 +125,21 @@
 	// A heatmap cell's gold wash, scaled to the busiest chapter so the strip's
 	// contrast is about this book, not an absolute count. Unmarked chapters stay
 	// at the recessed surface tone.
+	// The page's gold wash: 0–100% of a scale onto 0–82% gold, so the darkest
+	// cell still carries text. Shared by the marks heatmap and the cohort grid.
+	const goldWash = (pct: number) => `color-mix(in srgb, var(--gold) ${Math.round(pct * 0.82)}%, var(--surface-2))`;
 	const heatColor = (readers: number) => {
 		const peak = data?.highlight_heatmap?.peak_readers ?? 0;
-		const pct = peak ? Math.round((readers / peak) * 82) : 0;
-		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
+		return goldWash(peak ? (readers / peak) * 100 : 0);
 	};
+
+	// Retention cohorts: one column per week after joining, as far as the
+	// oldest shown cohort reaches.
+	const cohorts = $derived(data?.cohorts?.rows ?? []);
+	const cohortFloor = $derived(data?.cohorts?.min_size ?? 0);
+	const cohortSpan = $derived(Math.max(0, ...cohorts.map((c) => c.active?.length ?? 0)));
+	const cohortCols = $derived(columnShares(cohorts, cohortSpan));
+	const cohortHead = $derived(headline(cohorts));
 
 	// Sitting lengths: count sittings, or the minutes read in them. The second
 	// shows where the reading actually happens.
@@ -178,6 +189,7 @@
 					{ id: 'pulse', label: 'Pulse' },
 					data.time.sessions && { id: 'reading-time', label: 'Reading time' },
 					{ id: 'weekly', label: 'Weekly readers' },
+					cohortSpan && { id: 'cohorts', label: 'Do readers stay?' },
 					data.rising.length && { id: 'rising', label: 'Rising' },
 					{ id: 'top-content', label: 'Top content' },
 					data.highlight_heatmap?.chapters.length && { id: 'marks', label: 'Where readers mark' },
@@ -392,6 +404,77 @@
 						{/each}
 					</p>
 				</section>
+
+				<!-- Retention cohorts: does each week's sign-ups keep reading? -->
+				{#if cohortSpan}
+					<section id="cohorts" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Do readers stay?</h2>
+							<span class="text-small text-muted">Each row is a week's sign-ups; each column, a week after joining.</span>
+						</div>
+						{#if cohortHead}
+							<div class="mb-4 flex flex-wrap gap-6">
+								<div>
+									<div class="stat-number">{cohortHead.recent.pct}%</div>
+									<div class="text-small text-muted">
+										still reading at week {HEADLINE_WEEK} · joined {weekLabel(cohortHead.recent.from)}{cohortHead.recent.to !== cohortHead.recent.from ? `–${weekLabel(cohortHead.recent.to)}` : ''}
+									</div>
+								</div>
+								<div>
+									<div class="stat-number text-muted">{cohortHead.earlier.pct}%</div>
+									<div class="text-small text-muted">
+										at week {HEADLINE_WEEK} · joined {weekLabel(cohortHead.earlier.from)}{cohortHead.earlier.to !== cohortHead.earlier.from ? `–${weekLabel(cohortHead.earlier.to)}` : ''}
+									</div>
+								</div>
+							</div>
+						{/if}
+						<div class="overflow-x-auto">
+							<table class="cohorts w-full text-small tabular-nums">
+								<thead>
+									<tr>
+										<th scope="col" class="text-left">Joined</th>
+										<th scope="col">People</th>
+										{#each Array.from({ length: cohortSpan }, (_, k) => k) as k (k)}
+											<th scope="col">Wk {k}</th>
+										{/each}
+									</tr>
+								</thead>
+								<tbody>
+									{#each cohorts as c (c.week)}
+										<tr>
+											<th scope="row" class="text-left">{weekLabel(c.week)}</th>
+											<td class="text-muted">{fmt(c.size)}</td>
+											{#if !c.active}
+												<td class="few text-muted" colspan={cohortSpan} title="Fewer than {cohortFloor} people: shares hidden">{c.size ? 'too few to show' : 'no sign-ups'}</td>
+											{:else}
+												{#each Array.from({ length: cohortSpan }, (_, k) => k) as k (k)}
+													{#if k < c.active.length}
+														{@const cell = share(c.active[k], c.size)}
+														<td class="cell" style="background: {goldWash(cell.pct)}" title="Joined week of {weekLabel(c.week)}: {cell.readers} of {cell.people} read in week {k}">{cell.pct}%</td>
+													{:else}
+														<td></td>
+													{/if}
+												{/each}
+											{/if}
+										</tr>
+									{/each}
+								</tbody>
+								<tfoot>
+									<tr>
+										<th scope="row" class="text-left">All</th>
+										<td></td>
+										{#each cohortCols as col, k (k)}
+											<td class="cell font-semibold" style={col ? `background: ${goldWash(col.pct)}` : ''} title={col ? `${col.readers} of ${col.people} across the groups that reached week ${k}` : ''}>{col ? `${col.pct}%` : ''}</td>
+										{/each}
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+						<p class="mt-2 text-micro text-muted">
+							A reader counts in a week if they read on any day of it. This week is left out until it ends. A join week with fewer than {cohortFloor} people shows its size only.
+						</p>
+					</section>
+				{/if}
 
 				<!-- Rising this week — biggest gain in weekly readers -->
 				{#if d.rising.length}
@@ -628,6 +711,27 @@
 	   0.5rem the other pages' anchors add. */
 	.anchor {
 		scroll-margin-top: calc(var(--appnav-h, 0px) + var(--section-bar-h, 44px) + 0.5rem);
+	}
+	/* The retention grid: separated cells, so each reads as its own swatch. */
+	.cohorts {
+		border-collapse: separate;
+		border-spacing: 3px;
+	}
+	.cohorts th {
+		padding: 2px 6px;
+		font-weight: 600;
+		color: var(--muted);
+		white-space: nowrap;
+	}
+	.cohorts td {
+		padding: 6px 4px;
+		min-width: 2.75rem;
+		text-align: center;
+		border-radius: 4px;
+	}
+	.cohorts td.few {
+		text-align: left;
+		background: repeating-linear-gradient(135deg, var(--surface-2) 0 4px, transparent 4px 8px);
 	}
 	/* Privacy badge — a persistent reminder that this page is aggregate-only,
 	   dressed as a quiet feature rather than fine print. */
