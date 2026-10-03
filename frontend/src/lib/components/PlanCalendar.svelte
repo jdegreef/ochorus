@@ -4,7 +4,8 @@
 	import { absUrl } from '$lib/seo';
 	import { downloadFile } from '$lib/dataExport';
 	import { planSchedules } from '$lib/planSchedules.svelte';
-	import { buildScheduleICS, readReminderTime } from '$lib/reminder';
+	import { buildScheduleICS, googleCalendarUrl, readReminderTime } from '$lib/reminder';
+	import { localizeHref } from '$lib/href';
 	import { localToday } from '$lib/streak';
 	import { READING_DAYS, monthGrid, parseIsoDay, schedulePlan, weekStart, type ReadingDays } from '$lib/planSchedule';
 	import type { PlanDay, PlanDetail } from '$lib/library-public';
@@ -94,6 +95,23 @@
 				range: dates.length ? `${fmt.short.format(dates[0])} – ${fmt.short.format(dates.at(-1)!)}` : null
 			};
 		})
+	);
+
+	/** Google Calendar: one repeating event, made in Google's own editor so the
+	 *  calendar's default notification alerts the reader (its .ics import drops
+	 *  the file's own alerts). */
+	const googleUrl = $derived(
+		schedule.length
+			? googleCalendarUrl({
+					title: `${plan.title} — Ochorus`,
+					details: absUrl(localizeHref(`/plans/${plan.slug}/`)),
+					start: schedule[0].date,
+					hhmm: time,
+					rule,
+					count: schedule.length,
+					ctz: Intl.DateTimeFormat().resolvedOptions().timeZone
+				})
+			: ''
 	);
 
 	const download = () => {
@@ -202,8 +220,10 @@
 				</ul>
 			{/if}
 			{#if schedule.length}
-				<!-- The schedule on the reader's own calendar: one event a reading,
-				     each with an alert that morning — no account, no server. -->
+				<!-- The schedule on the reader's own calendar, no account or server:
+				     Google gets one repeating event made in its editor (its import
+				     drops a file's alerts); Apple and Outlook get the .ics, one event
+				     a reading, each with an alert that morning. -->
 				<label class="cal-field">
 					<span class="text-eyebrow text-muted">{t('plans.remindAt')}</span>
 					<input
@@ -213,10 +233,15 @@
 						onchange={(e) => planSchedules.set(plan.slug, { time: e.currentTarget.value })}
 					/>
 				</label>
+				<p class="mt-4 mb-2 text-eyebrow text-muted">{t('plans.addCalendar')}</p>
+				<a class="btn w-full" href={googleUrl} target="_blank" rel="noopener noreferrer">
+					<Icon name="calendar" size={16} />{t('plans.addGoogle')}
+				</a>
+				<p class="mt-1 text-micro text-muted">{t('plans.googleHint')}</p>
 				<button type="button" class="btn mt-3 w-full" onclick={download}>
-					<Icon name="calendar" size={16} />{t('plans.addCalendar')}
+					<Icon name="download" size={16} />{t('plans.downloadIcs')}
 				</button>
-				<p class="mt-2 text-micro text-muted">{t('plans.calendarHint')}</p>
+				<p class="mt-1 text-micro text-muted">{t('plans.calendarHint')}</p>
 			{/if}
 		</aside>
 	</div>
