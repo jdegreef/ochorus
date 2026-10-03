@@ -22,7 +22,6 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
-	import { publishHeight } from '$lib/actions/publishHeight';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanCalendar from '$lib/components/PlanCalendar.svelte';

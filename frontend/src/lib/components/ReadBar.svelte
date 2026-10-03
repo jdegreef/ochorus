@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { portal } from '$lib/actions/portal';
+	import { publishHeight } from '$lib/actions/publishHeight';
 
 	/**
 	 * The read verb pinned to the foot of a phone screen, once the page's own
@@ -39,7 +40,9 @@
 </script>
 
 {#if show}
-	<div class="read-bar" class:until-sm={hideFrom === 'sm'} use:portal>
+	<!-- Its height published as --dockbar-h, so other fixed chrome (the PWA
+	     toasts) sits above it; 0 where it steps aside (display: none). -->
+	<div class="read-bar" class:until-sm={hideFrom === 'sm'} use:portal use:publishHeight={'--dockbar-h'}>
 		<span class="min-w-0 flex-1">
 			<span class="block truncate text-eyebrow text-muted" dir="auto">{eyebrow}</span>
 			<span class="block truncate text-small font-semibold text-text" dir="auto">{title}</span>
