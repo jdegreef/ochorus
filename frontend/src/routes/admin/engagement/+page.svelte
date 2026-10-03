@@ -7,8 +7,8 @@
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import ReachSpark from '$lib/components/ReachSpark.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, EVENT_KINDS, eventKey, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
-	import { deltaWords, followingWeek, weeklySummary } from '$lib/engagementSummary';
+	import { adminEditionHref, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -126,13 +126,14 @@
 	// one being pointed at, named in the line under the chart.
 	const eventsByWeek = $derived.by(() => {
 		const byWeek = new Map<string, EngagementEvent[]>();
-		for (const e of data?.events ?? []) {
+		for (const e of events) {
 			const list = byWeek.get(e.week);
 			if (list) list.push(e);
 			else byWeek.set(e.week, [e]);
 		}
 		return byWeek;
 	});
+	const events = $derived(data?.events ?? []);
 	const after = (week: string) => followingWeek(data?.weekly_active ?? [], week);
 	let pointed = $state<EngagementEvent | null>(null);
 
@@ -189,7 +190,7 @@
 								<button class="btn btn-ghost btn-sm" onclick={copySummary}>Copy summary</button>
 							</span>
 						</div>
-						{#each summary.events as e (eventKey(e))}
+						{#each summary.events as e (e.id)}
 							<p class="mt-3 flex items-center gap-2 rounded-card bg-surface-2 px-3 py-2 text-small text-muted">
 								<EventMarker kind={e.kind} />
 								<span>This week: <span class="font-semibold text-text">{e.title}</span>, {e.detail}.</span>
@@ -268,29 +269,29 @@
 							<!-- What happened that week, under its bar (wide screens; the list
 							     below carries the same events on a phone). -->
 							<div class="hidden h-5 items-center justify-center gap-1 sm:flex">
-								{#each eventsByWeek.get(col.key) ?? [] as e (eventKey(e))}
+								{#each eventsByWeek.get(col.key) ?? [] as e (e.id)}
 									<EventMarker kind={e.kind} label="{e.title}, {e.detail}" active={pointed === e} onpoint={() => (pointed = e)} />
 								{/each}
 							</div>
 						{/snippet}
 					</ColumnChart>
-					{#if d.events.length}
+					{#if events.length}
 						<p class="mt-2 hidden min-h-[2.6em] text-small text-muted sm:block" aria-live="polite">
 							{#if pointed}
 								{@const n = after(pointed.week)}
-								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />Readers the next week: {fmt(n.readers)} ({deltaWords(n.delta)}){/if}
+								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />{n}{/if}
 							{:else}
 								Hover or tap a marker to see what happened that week.
 							{/if}
 						</p>
 						<ul class="mt-3 divide-y divide-border border-t border-border sm:hidden">
-							{#each d.events.toReversed() as e (eventKey(e))}
+							{#each [...events].reverse() as e (e.id)}
 								{@const n = after(e.week)}
 								<li class="flex items-center gap-2 py-2 text-small">
 									<span class="w-12 shrink-0 tabular-nums text-muted">{weekLabel(e.date)}</span>
 									<EventMarker kind={e.kind} />
 									<span class="min-w-0 flex-1"><span class="font-semibold text-text">{e.title}</span> <span class="text-muted">{e.detail}</span></span>
-									<span class="shrink-0 tabular-nums text-muted">{n ? `${deltaWords(n.delta)} next week` : 'this week'}</span>
+									<span class="max-w-[9rem] text-end text-micro text-muted">{n ?? 'this week'}</span>
 								</li>
 							{/each}
 						</ul>
@@ -298,7 +299,7 @@
 					<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-micro text-muted">
 						<span>The last bar is this week so far.</span>
 						{#each Object.entries(EVENT_KINDS) as [k, { label }] (k)}
-							{#if d.events.some((e) => e.kind === k)}
+							{#if events.some((e) => e.kind === k)}
 								<span class="inline-flex items-center gap-1.5"><EventMarker kind={k as EngagementEvent['kind']} small />{label}</span>
 							{/if}
 						{/each}

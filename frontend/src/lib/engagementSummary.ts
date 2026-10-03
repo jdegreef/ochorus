@@ -25,7 +25,8 @@ export function weekChange(cur: number, prev: number): string {
 	const { delta, pct } = periodChange(cur, prev);
 	if (!delta) return 'the same as last week';
 	const dir = delta > 0 ? 'up' : 'down';
-	return pct === null ? `${dir} ${Math.abs(delta)} on last week` : `${dir} ${Math.abs(pct)}% on last week`;
+	// A change too small to show as a whole percentage reads as a count, never "0%".
+	return pct ? `${dir} ${Math.abs(pct)}% on last week` : `${dir} ${Math.abs(delta)} on last week`;
 }
 
 /** Reading time in words: "48 minutes", "1 hour 12 minutes", "under a minute". */
@@ -38,17 +39,17 @@ export function durationWords(seconds: number): string {
 	return m ? `${plural(h, 'hour')} ${plural(m, 'minute')}` : plural(h, 'hour');
 }
 
-/** Readers the week after `week`, and the change: what followed an event,
- *  stated without claiming the event caused it. Null for the last week. */
-export function followingWeek(series: { week: string; readers: number }[], week: string) {
+/** What followed an event's week, stated without claiming the event caused
+ *  it: "9 the next week (up 1)". The series' last week is still in progress,
+ *  so it's "2 so far this week" rather than a drop. Null for this week. */
+export function followingWeek(series: { week: string; readers: number }[], week: string): string | null {
 	const i = series.findIndex((w) => w.week === week);
 	if (i < 0 || i + 1 >= series.length) return null;
-	return { readers: series[i + 1].readers, delta: series[i + 1].readers - series[i].readers };
+	const next = series[i + 1].readers;
+	if (i + 1 === series.length - 1) return `${plural(next, 'reader')} so far this week`;
+	const d = next - series[i].readers;
+	return `${plural(next, 'reader')} the next week (${d > 0 ? `up ${d}` : d < 0 ? `down ${-d}` : 'no change'})`;
 }
-
-/** That change in words: "up 2", "down 1", "no change". */
-export const deltaWords = (delta: number) =>
-	delta > 0 ? `up ${delta}` : delta < 0 ? `down ${-delta}` : 'no change';
 
 type SummaryInput = Pick<AdminEngagement, 'overview' | 'time' | 'rising'> & {
 	events?: EngagementEvent[];

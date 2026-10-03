@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { deltaWords, durationWords, followingWeek, weekChange, weeklySummary } from './engagementSummary';
+import { durationWords, followingWeek, weekChange, weeklySummary } from './engagementSummary';
 import type { EngagementEvent } from './library-admin';
 
 const base = (over: Record<string, number> = {}) => ({
@@ -15,6 +15,8 @@ describe('weekChange', () => {
 		expect(weekChange(6, 9)).toBe('down 3 on last week');
 		expect(weekChange(30, 20)).toBe('up 50% on last week');
 		expect(weekChange(4, 4)).toBe('the same as last week');
+		// Too small to show as a whole percentage: a count, never "down 0%".
+		expect(weekChange(200, 201)).toBe('down 1 on last week');
 	});
 });
 
@@ -58,6 +60,7 @@ describe('weeklySummary', () => {
 
 	it("names only the events the server marks as this week's", () => {
 		const ev = (title: string, recent: boolean): EngagementEvent => ({
+			id: title,
 			week: '2026-09-28',
 			date: '2026-09-29',
 			kind: 'email',
@@ -73,13 +76,12 @@ describe('weeklySummary', () => {
 describe('followingWeek', () => {
 	const series = [
 		{ week: 'a', readers: 4 },
-		{ week: 'b', readers: 8 }
+		{ week: 'b', readers: 8 },
+		{ week: 'c', readers: 2 }
 	];
-	it('says what followed, and nothing for the last week', () => {
-		expect(followingWeek(series, 'a')).toEqual({ readers: 8, delta: 4 });
-		expect(followingWeek(series, 'b')).toBeNull();
-		expect(deltaWords(4)).toBe('up 4');
-		expect(deltaWords(-1)).toBe('down 1');
-		expect(deltaWords(0)).toBe('no change');
+	it('says what followed; the week in progress is "so far", not a drop', () => {
+		expect(followingWeek(series, 'a')).toBe('8 readers the next week (up 4)');
+		expect(followingWeek(series, 'b')).toBe('2 readers so far this week');
+		expect(followingWeek(series, 'c')).toBeNull();
 	});
 });

@@ -25,6 +25,10 @@ class EngagementEventsTests(TestCase):
     def setUp(self):
         self.now = timezone.now()
         self.author = Author.objects.create(slug="am", name="Andrew Murray")
+        for code, name in (("en", "English"), ("sw", "Swahili")):
+            Language.objects.update_or_create(
+                code=code, defaults={"name": name, "status": Language.Status.LIVE}
+            )
 
     def _events(self):
         res = APIClient().get("/api/admin/engagement/")
@@ -42,22 +46,41 @@ class EngagementEventsTests(TestCase):
             send_tally={"sent": 28, "skipped": 2},
         )
         Broadcast.objects.create(name="Unsent draft", status=BroadcastStatus.DRAFT)
-        Broadcast.objects.create(
-            name="Canceled", status=BroadcastStatus.CANCELED, send_started_at=self.now
-        )
+        Broadcast.objects.create(name="Withdrawn schedule", status=BroadcastStatus.CANCELED)
         events = [e for e in self._events() if e["kind"] == "email"]
         self.assertEqual(len(events), 1)
         self.assertEqual(events[0]["title"], "September letter")
         self.assertEqual(events[0]["detail"], "sent to 28 readers")
         self.assertEqual(events[0]["week"], self._week(self.now))
 
+    def test_a_send_canceled_partway_still_reached_readers(self):
+        Broadcast.objects.create(
+            name="Stopped letter",
+            status=BroadcastStatus.CANCELED,
+            send_started_at=self.now,
+            send_tally={"sent": 500},
+        )
+        self.assertEqual([e["detail"] for e in self._events()], ["sent to 500 readers"])
+
+    def test_two_same_named_emails_on_one_day_are_two_events(self):
+        for _ in range(2):
+            Broadcast.objects.create(
+                name="September letter", status=BroadcastStatus.SENT, send_started_at=self.now
+            )
+        ids = [e["id"] for e in self._events()]
+        self.assertEqual(len(set(ids)), 2)
+
     def test_a_language_going_live_is_an_event(self):
         Language.objects.update_or_create(
             code="xh",
             defaults={"name": "Xhosa", "native_name": "isiXhosa", "went_live_at": self.now},
         )
+        Language.objects.filter(code="xh").update(status=Language.Status.LIVE)
         titles = [e["title"] for e in self._events() if e["kind"] == "language"]
         self.assertEqual(titles, ["Xhosa went live"])
+        # Taken back to draft, it is no longer "in the language switcher".
+        Language.objects.filter(code="xh").update(status=Language.Status.DRAFT)
+        self.assertEqual([e for e in self._events() if e["kind"] == "language"], [])
 
     def test_works_added_in_a_week_are_one_event(self):
         for i in range(3):
@@ -66,7 +89,15 @@ class EngagementEventsTests(TestCase):
         works = [e for e in self._events() if e["kind"] == "works"]
         self.assertEqual(len(works), 1)
         self.assertEqual(works[0]["title"], "4 works added")
-        self.assertTrue(works[0]["detail"].startswith("3 in English, 1 in "))
+        self.assertEqual(works[0]["detail"], "3 in English, 1 in Swahili")
+
+    def test_only_published_works_in_a_live_language_count(self):
+        Book.objects.create(
+            author=self.author, slug="hidden", language="en", title="H", is_published=False
+        )
+        Language.objects.update_or_create(code="xh", defaults={"name": "Xhosa"})  # a draft
+        Book.objects.create(author=self.author, slug="draft", language="xh", title="D")
+        self.assertEqual([e for e in self._events() if e["kind"] == "works"], [])
 
     def test_events_before_the_chart_are_left_out(self):
         long_ago = self.now - timedelta(weeks=12)

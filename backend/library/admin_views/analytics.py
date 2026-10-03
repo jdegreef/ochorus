@@ -492,14 +492,11 @@ class AdminEngagementView(APIView):
         for the markers under the weekly chart: each with the ``week`` the
         chart keys it by, its ``date``, and whether it falls in the same last
         7 days as ``active_7d`` (``recent``), for the summary sentence."""
-        from datetime import datetime, timedelta
+        from datetime import timedelta
 
-        from django.utils import timezone
-
-        since = timezone.make_aware(datetime.combine(week_starts(now, weeks)[0], datetime.min.time()))
         recent = now - timedelta(days=7)
         out = []
-        for e in team_events(since):
+        for e in team_events(week_starts(now, weeks)[0]):
             at = e.pop("at")
             out.append(
                 {

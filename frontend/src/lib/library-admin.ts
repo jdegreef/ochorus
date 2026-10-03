@@ -1286,8 +1286,8 @@ export interface AdminEngagement {
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
 	/** What the team did in the charted weeks, oldest first: the markers under
-	 *  the weekly chart. */
-	events: EngagementEvent[];
+	 *  the weekly chart. Absent from an API that predates them. */
+	events?: EngagementEvent[];
 }
 
 /** One thing done to readers in a charted week: an email sent, a language taken
@@ -1295,6 +1295,8 @@ export interface AdminEngagement {
  *  Monday the weekly chart keys that week by; `date` the day it happened;
  *  `recent` whether it falls in the same last 7 days as `active_7d`. */
 export interface EngagementEvent {
+	/** Unique and stable, for keyed lists. */
+	id: string;
 	week: string;
 	date: string;
 	kind: EngagementEventKind;
@@ -1312,8 +1314,6 @@ export const EVENT_KINDS: Record<EngagementEventKind, { glyph: string; label: st
 	works: { glyph: '+', label: 'works added' }
 };
 
-/** A stable key for an event in a keyed each block. */
-export const eventKey = (e: EngagementEvent) => `${e.kind}:${e.date}:${e.title}`;
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
 
