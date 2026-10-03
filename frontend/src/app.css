@@ -1615,6 +1615,10 @@ nav.appnav .navsearch:hover {
 @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
 	.navsearch-kbd {
 		display: inline;
+		/* "⌘K" is respelt "Ctrl K" after hydration off Apple platforms; the
+		   reserved width keeps that swap from nudging the nav. */
+		min-width: 2.6em;
+		text-align: center;
 	}
 }
 
@@ -2068,11 +2072,11 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip, .tag,
+       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
-       variants, .text-display.
+       variants, .tag, .text-display.
    The button family being layered is why the `!` on `!py-1` / `!text-small`
    was never doing anything a plain `py-1` wouldn't. */
 .book-card--row {
@@ -2815,30 +2819,35 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    ~8 times as `rounded-full border border-border px-3 py-1 …` that drifted on
    text colour (text / muted) and whether it carried a surface fill
    (page-design J1). One recipe now. */
-.tag {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.3em;
-	border: 1px solid var(--border);
-	border-radius: 999px;
-	background: var(--surface);
-	padding: 0.25rem 0.75rem;
-	font-size: var(--fs-small);
-	line-height: 1.4;
-	color: var(--text);
-	white-space: nowrap;
-}
-.tag:hover {
-	border-color: var(--accent);
-	color: var(--accent);
-	text-decoration: none;
-}
-/* A tag riding inline in a line of text — the A–Z index's young-reader
-   edition chips beside their full text. */
-.tag-sm {
-	padding: 0 0.45rem;
-	font-size: var(--fs-micro);
-	line-height: 1.5;
+/* In @layer components, like .btn: a utility on a tag (`hidden sm:inline-flex`,
+   `mt-2`) wins, as the markup says. Unlayered, `.tag`'s display beat `hidden`
+   and a "phone-only" pill showed everywhere. */
+@layer components {
+	.tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3em;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--surface);
+		padding: 0.25rem 0.75rem;
+		font-size: var(--fs-small);
+		line-height: 1.4;
+		color: var(--text);
+		white-space: nowrap;
+	}
+	.tag:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+		text-decoration: none;
+	}
+	/* A tag riding inline in a line of text — the A–Z index's young-reader
+	   edition chips beside their full text. */
+	.tag-sm {
+		padding: 0 0.45rem;
+		font-size: var(--fs-micro);
+		line-height: 1.5;
+	}
 }
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
@@ -3028,13 +3037,15 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    `--pw` is set per page from the pageWidth store; the min() keeps the column
    inside the viewport on small screens, where it simply goes full-bleed. */
 .page-col {
-	width: min(var(--pw, 76rem), calc(100vw - 2.5rem));
-	/* Centre on the viewport even when wider than the parent. Direction-aware:
-	   under dir="rtl" (Arabic) the start edge is the RIGHT edge, so the pull
-	   back has to flip sign — a physical margin-left/translateX would shove
-	   every page sideways. */
-	margin-inline-start: 50%;
-	transform: translateX(-50%);
+	--col-w: min(var(--pw, 76rem), calc(100vw - 2.5rem));
+	width: var(--col-w);
+	/* Centred on the parent's middle even when wider than it: the start edge
+	   sits half the column's width before the middle. A margin, not the old
+	   `translateX(-50%)` — a transform made every page a containing block for
+	   `position: fixed` (a fixed bar inside one pinned to the column, not the
+	   screen) and a stacking context. Logical, so Arabic (start = right edge)
+	   needs no override. */
+	margin-inline-start: calc(50% - var(--col-w) / 2);
 }
 /* Every page-col carries its own px-5, so on a phone the column takes the full
    viewport width and px-5 alone is the gutter — 20px, not 20 + 20. Viewport,
@@ -3042,7 +3053,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    narrower parent); phone scrollbars overlay, so 100vw adds no overflow. */
 @media (max-width: 639.98px) {
 	.page-col {
-		width: 100vw;
+		--col-w: 100vw;
 	}
 }
 /* A single-form page (Login, Reset password): the same centred column, held
@@ -3052,7 +3063,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    phone still gets the 26rem card; `100%` (not 100vw) is the old max-w box
    exactly — capped by <main>, so a classic scrollbar never makes it overflow. */
 .page-col.page-col--narrow {
-	width: min(26rem, 100%);
+	--col-w: min(26rem, 100%);
 }
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,
@@ -3066,12 +3077,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	padding-block: 3rem;
 	padding-inline: 1.25rem;
 }
-[dir='rtl'] .page-col {
-	transform: translateX(50%);
-}
 @media (prefers-reduced-motion: no-preference) {
+	/* The margin rides with the width (the same easing over the same time), so
+	   the column stays centred while a Page-width change animates. */
 	.page-col {
-		transition: width var(--duration-base) ease;
+		transition:
+			width var(--duration-base) ease,
+			margin-inline-start var(--duration-base) ease;
 	}
 }
 
@@ -3186,4 +3198,61 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .night-band:not(:has(section)) {
 	display: none;
+}
+
+/* THE READING CALENDAR'S GOLDS (ReadingHeatmap). A read day is never paler
+   than full --gold, so even a reader of scattered single days sees every one
+   clearly against an unread --surface-2. A longer run goes deeper, mixing the
+   gold toward the theme's own ink, one step per streak tier (streak.ts,
+   runLevel): darker on paper and sepia, brighter on lamplight. Rules rather
+   than tokens, so the mix resolves against the --gold where the calendar is. */
+.heat[data-level='0'] {
+	background: var(--surface-2);
+}
+.heat[data-level='1'] {
+	background: var(--gold);
+}
+.heat[data-level='2'] {
+	background: color-mix(in srgb, var(--gold) 80%, var(--text));
+}
+.heat[data-level='3'] {
+	background: color-mix(in srgb, var(--gold) 62%, var(--text));
+}
+.heat[data-level='4'] {
+	background: color-mix(in srgb, var(--gold) 45%, var(--text));
+}
+.heat-swatch {
+	display: inline-block;
+	width: 0.66rem;
+	height: 0.66rem;
+}
+
+/* The streak's flame by tier (DashboardStats; streak.ts, streakTier): a bare
+   gold spark under a week; a soft halo from a week; a lit, filled blaze from
+   a month; and from a hundred days a crown ring in the library's plum.
+   Ornament, so gold (STYLE_GUIDE §1): the number beside it carries the
+   meaning. The spark takes no halo box, so the common case keeps its old
+   footprint. */
+.streak-flame {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--gold);
+}
+.streak-flame:not([data-tier='spark']) {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--gold) 14%, transparent);
+}
+.streak-flame[data-tier='blaze'],
+.streak-flame[data-tier='crown'] {
+	background: color-mix(in srgb, var(--gold) 22%, transparent);
+}
+.streak-flame[data-tier='blaze'] path,
+.streak-flame[data-tier='crown'] path {
+	fill: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.streak-flame[data-tier='crown'] {
+	box-shadow: 0 0 0 2px var(--hue-plum);
 }

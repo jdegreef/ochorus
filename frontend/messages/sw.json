@@ -829,6 +829,7 @@
   "settings_goal_per_week": "Siku kwa wiki",
   "settings_heatmap_title": "Kalenda ya kusoma",
   "settings_heatmap_read": "Umesoma",
+  "settings_heatmap_deeper": "nzito zaidi = mfululizo mrefu zaidi",
   "settings_heatmap_none": "Hakuna kusoma",
   "offline_download": "Pakua kwa matumizi nje ya mtandao",
   "offline_downloading": "Inapakua",

@@ -1,0 +1,171 @@
+{
+ "kind": "sermon",
+ "slug": "partnership-with-god",
+ "language": "sw",
+ "job_issue": 5031,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "1 Corinthians 3:9a",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "John 5:17b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "John 14:10b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-way-of-salvation-made-plain.sw.json"
+  },
+  {
+   "reference": "John 14:12a",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Mark 16:19-20",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 20:12",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 40:28",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 3:5a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 3:5b-6a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 14:12b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Ephesians 2:10a",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "2 Timothy 1:7b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Timothy 3:17",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Timothy 2:21b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 2:4b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 9:15",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Isaiah 49:2",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 10:4b",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:10",
+   "status": "mined",
+   "block_index": 11,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "John 7:38b",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "John 4:36a",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Matthew 25:40b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Luke 12:37b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Daniel 12:3b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "1 Chronicles 4:23b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Hebrews 8:5b",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Matthew 28:20a",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}

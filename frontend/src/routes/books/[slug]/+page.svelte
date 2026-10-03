@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
@@ -118,6 +119,8 @@
 	// that is (workPercent — the same figure every other surface shows), and the
 	// time left from the start of it at the reader's pace.
 	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	/** The chapter the read verb opens — where they are, or where the book begins. */
+	const readChapter = $derived(book.chapters.find((c) => c.order === readOrder));
 	const wordsLeft = $derived(
 		resumeHere == null
 			? 0
@@ -921,11 +924,9 @@
 	     published edition; `siblingEditions` is the hreflang alternate set minus
 	     the edition being viewed, and localeName() gives each its autonym.
 	     hreflang/lang on the link announce the target language to the reader and
-	     to assistive tech.
-	     data-sveltekit-reload forces a full load: the locale comes from the URL
-	     via Paraglide, and a client-side nav reroutes /es/books/x/ to the SAME
-	     route and params while getLang() still reads the old URL — so the reader
-	     landed on the English edition under a Spanish address. -->
+	     to assistive tech. data-sveltekit-reload: a full load (the locale is
+	     fixed per document — see the root layout's cross-locale guard), and no
+	     hover preload, which would run this route's load in the WRONG locale. -->
 	<!-- On a fallback page the notice above already lists these. -->
 	{#if siblingEditions.length && !fallback}
 		<section id="languages" class="jump-anchor mt-12">
@@ -986,6 +987,18 @@
 		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
 	{/if}
 </div>
+
+<!-- Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar (ReadBar, shared with the plan page). From 640px the sticky
+     sub-nav carries it instead. -->
+<ReadBar
+	show={!cardSeen.visible}
+	hideFrom="sm"
+	eyebrow={book.title}
+	title={chapterNameIn(readOrder, readChapter?.title, book.title)}
+	href={readHref(readOrder)}
+	label={readLabel}
+/>
 
 <style>
 	/* A1: lift the cover off the page. `filter: drop-shadow` follows the cover's
