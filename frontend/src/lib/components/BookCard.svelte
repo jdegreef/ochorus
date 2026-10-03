@@ -67,7 +67,10 @@
 	</div>
 
 	<div class="mt-2 flex flex-1 flex-col px-0.5">
-		<div class="line-clamp-2 text-small font-medium leading-snug text-text" title={book.title}>
+		<!-- min-h-[2lh]: the title always takes its two lines, so the author
+		     and series lines start level across a grid row whether the title
+		     wraps or not (QA, 2026-10: rows were hard to scan). -->
+		<div class="line-clamp-2 min-h-[2lh] text-small font-medium leading-snug text-text" title={book.title}>
 			{edition ? edition.base : book.title}
 		</div>
 		{#if edition}

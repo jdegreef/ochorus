@@ -1121,3 +1121,28 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   (`manage.py test library`, ~12 min) and capture the `Ran …`/`OK` lines —
   piping through `tail` hides them and reports `tail`'s exit code, not the
   tests'.
+
+## External QA pass, 2026-10-03
+
+From an outside tester's report (design & accessibility section). Shipped on
+`claude/quirky-cerf-umnshe`:
+
+- [x] **Q1** Selected state rested on `--accent-soft`, which sits only
+  1.05–1.16:1 on the page in every theme. `.seg button.active`, `.chip.active`,
+  `.filter-field.is-active` and the active nav pill now carry an accent edge.
+  Rule: **a selected state is never the soft fill alone.**
+- [x] **Q2** Chrome width: the header bar was 88rem and the footer rows 64rem
+  around a 76rem body. Both now use `--chrome-w` / `.chrome-col` (the page
+  column, never under 64rem), from sm up.
+- [x] **Q3** Author page: the breadcrumb and the tab rule now sit on the 40rem
+  reading column like the rest of the page.
+- [x] **Q4** `BookCard` titles reserve two lines (`min-h-[2lh]`), so author and
+  series lines are level across a row.
+- [x] **Q5** The book page's artwork credit hangs under the hero cover from sm
+  (on phones it stays at the page foot).
+- [x] **Q6** Q&A rows are roomier, the sermon-row chevron is a 32px target,
+  the About gallery's last row shares 4:3, and lamplight `--muted` went up to
+  `#ab9f8b` (~7:1).
+- [ ] **Q7** Open, founder's call: the footer "Create an account" CTA is
+  deliberately solid indigo with a gold ring, while every other primary is soft.
+  The tester read that as inconsistent.

@@ -136,11 +136,11 @@
 						<svg
 							class="sermon-row-chevron"
 							viewBox="0 0 24 24"
-							width="20"
-							height="20"
+							width="22"
+							height="22"
 							fill="none"
 							stroke="currentColor"
-							stroke-width="2"
+							stroke-width="2.25"
 							aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg
 						>
 					</button>

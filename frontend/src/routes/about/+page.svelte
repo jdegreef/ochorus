@@ -31,15 +31,16 @@
 		{ img: 'teacher-standing', cap: 'about.capTeacher', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
 		{ img: 'staff-seated', cap: 'about.capStaff', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[3/4]' },
 		{ img: 'school', cap: 'about.capSchool', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' },
-		// The source is a near-square 3:4 portrait: his face fills the top and the
-		// books the bottom, so a 4:3 crop trimmed both. A 15/14 box holds the whole
-		// subject, and a top-biased position keeps his full face in frame.
+		// The source is a 3:4 portrait (face at the top, the book below). It
+		// once had its own 15/14 box to show both, but a taller tile in a row of
+		// 4:3s left the row ragged (QA, 2026-10); the row now shares 4:3, and a
+		// top-biased position keeps his face and the book's title in frame.
 		{
 			img: 'soar',
 			cap: 'about.capSoar',
 			span: 'col-span-1 sm:col-span-2',
-			aspect: 'aspect-[15/14]',
-			pos: 'object-[center_30%]'
+			aspect: 'aspect-[4/3]',
+			pos: 'object-[center_35%]'
 		},
 		{ img: 'murray-table', cap: 'about.capMurray', span: 'col-span-1 sm:col-span-2', aspect: 'aspect-[4/3]' }
 	];

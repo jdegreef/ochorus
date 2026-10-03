@@ -351,7 +351,9 @@
 	--surface: #201b15;
 	--surface-2: #2a241c;
 	--text: #ece3d4;
-	--muted: #998e7d;
+	/* Raised from #998e7d (5.8:1) — nav links, placeholders and secondary text
+	   read faint at night (QA, 2026-10); ~7:1 on --bg. */
+	--muted: #ab9f8b;
 	--accent: #9c9af2;
 	--accent-contrast: #16130f;
 	--accent-soft: #221f33;
@@ -1344,6 +1346,15 @@ nav.appnav .appnav-inner {
 	margin-inline: auto;
 	padding: 0.6rem 1.25rem;
 }
+/* From sm the bar shares the page column's edges (.chrome-col), so the logo
+   lines up with the breadcrumb and headings below instead of sitting on its
+   own wider grid (QA, 2026-10: "header and footer don't follow the body's
+   max-width"). */
+@media (min-width: 640px) {
+	nav.appnav .appnav-inner {
+		max-width: var(--chrome-w);
+	}
+}
 /* On the smallest phones (≤360px) the brand + search/gear/Sign-in controls + the
    hamburger were ~8px too wide for one row, so the hamburger wrapped onto a
    second line under the logo. Tighten the column gap and side padding (still a
@@ -1395,6 +1406,9 @@ nav.appnav .navlinks a.active {
 	color: var(--section-hue, var(--accent));
 	background: var(--section-hue-soft, var(--accent-soft));
 	font-weight: 600;
+	/* The soft ground alone sits ~1.1:1 on the bar; the hue ring is what
+	   makes "you are here" readable (see .chip.active). */
+	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-hue, var(--accent)) 55%, transparent);
 }
 /* The logo supplies its own wordmark, so this is a frame for artwork, not a
    text style — the display font / size / gap that used to set "Ochorus"
@@ -2400,7 +2414,14 @@ a.sermon-row-title:hover {
 	flex: none;
 	align-self: center;
 	display: inline-flex;
-	padding: 0.15rem;
+	align-items: center;
+	justify-content: center;
+	/* A 32px target with a visible ring on hover, so it reads as a control and
+	   not a stray mark at the end of the leader (QA, 2026-10); coarse pointers
+	   still grow to 44px below. */
+	min-width: 2rem;
+	min-height: 2rem;
+	padding: 0.2rem;
 	border: 0;
 	background: none;
 	color: var(--muted);
@@ -2409,6 +2430,7 @@ a.sermon-row-title:hover {
 }
 .sermon-row-toggle:hover {
 	color: var(--text);
+	background: var(--surface-2);
 }
 .sermon-row-toggle:focus-visible {
 	outline: 2px solid var(--accent);
@@ -2666,7 +2688,7 @@ a.sermon-row-title:hover {
    reads the same across the row. */
 .filter-field.is-active {
 	background: var(--accent-soft);
-	border-color: var(--accent-soft-border);
+	border-color: var(--accent);
 	font-weight: 600;
 }
 .field::placeholder,
@@ -2749,6 +2771,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	background: var(--accent-soft);
 	color: var(--accent);
 	font-weight: 600;
+	/* Selected must not rest on the fill alone: --accent-soft is only
+	   ~1.1:1 against the page in every theme, so an accent edge carries it. */
+	box-shadow: inset 0 0 0 1.5px var(--accent);
 }
 /* On the narrowest phones a three-option segment (e.g. biographies'
    All / In the library / Biography only) overran its box and the last label was
@@ -2779,7 +2804,9 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .chip.active {
 	background: var(--accent-soft);
-	border-color: var(--accent-soft-border);
+	/* An accent edge, not --accent-soft-border: the fill is ~1.1:1 on the
+	   page, so the border is what reads as "selected" (see .seg). */
+	border-color: var(--accent);
 	color: var(--accent);
 	font-weight: 600;
 }
@@ -3063,6 +3090,20 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 @media (max-width: 639.98px) {
 	.page-col {
 		--col-w: 100vw;
+	}
+}
+/* The site chrome's column: the header bar and the footer rows share the page
+   column's edges from sm up, never narrower than 64rem (the nav's six links
+   and its controls need that much). Below sm they keep their own px-5. */
+.app-root {
+	/* On .app-root, where the layout sets --pw (a var() resolves where the
+	   property is declared, so on :root it would never see the setting). */
+	--chrome-w: min(max(var(--pw, 76rem), 64rem), calc(100vw - 2.5rem));
+}
+@media (min-width: 640px) {
+	.chrome-col {
+		max-width: var(--chrome-w);
+		margin-inline: auto;
 	}
 }
 /* A single-form page (Login, Reset password): the same centred column, held

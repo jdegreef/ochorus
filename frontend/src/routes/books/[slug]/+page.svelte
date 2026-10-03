@@ -481,8 +481,16 @@
 		     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
 		     follows any cover — painting, plate or designed raster — without a fake
 		     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
-		<div class="hero-cover book-hero-cover">
-			<BookCover {book} priority />
+		<div class="book-hero-cover">
+			<div class="hero-cover">
+				<BookCover {book} priority />
+			</div>
+			{#if book.artwork_credit}
+				<!-- From sm the credit hangs under the painting it names (it read as
+				     detached at the page foot — QA, 2026-10); a phone's 7rem cover
+				     column is too narrow, so there it stays at the foot (below). -->
+				<p class="cover-credit mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
+			{/if}
 		</div>
 
 		<div class="book-hero-head min-w-0">
@@ -984,7 +992,7 @@
 		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
 		     and it is the provenance a reader would otherwise have to take on
 		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
+		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
 </div>
 
@@ -1035,6 +1043,9 @@
 	}
 	.book-hero-cover {
 		width: 7rem;
+	}
+	.cover-credit {
+		line-height: 1.4;
 	}
 	.book-hero-actions {
 		grid-column: 1 / -1;
