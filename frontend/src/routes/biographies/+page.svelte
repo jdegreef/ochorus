@@ -561,16 +561,13 @@
 			{#if showFullLife}
 				{@render fullLifeChip()}
 			{/if}
-			<div class="seg ms-auto" role="group" aria-label={t('bios.sort')}>
+			<!-- Sort is a <select>, as on every shelf (page-design: no visible
+			     "Sort:" label, it rides in aria-label). -->
+			<select bind:value={filters.values.sort} class="filter-field ms-auto" aria-label={t('bios.sort')}>
 				{#each SORT_VALUES as v (v)}
-					<button
-						type="button"
-						class:active={filters.values.sort === v}
-						aria-pressed={filters.values.sort === v}
-						onclick={() => (filters.values.sort = v)}>{t(SORT_LABEL[v])}</button
-					>
+					<option value={v}>{t(SORT_LABEL[v])}</option>
 				{/each}
-			</div>
+			</select>
 			<div class="seg" role="group" aria-label={t('bios.view')}>
 				<button type="button" class="view-btn" class:active={view === 'list'} aria-pressed={view === 'list'} aria-label={t('bios.viewList')} onclick={() => setView('list')}>
 					<Icon name="list" />
