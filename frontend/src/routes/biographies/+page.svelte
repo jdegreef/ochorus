@@ -255,8 +255,12 @@
 		bioChips(filters.values, facets, { labels: facetLabel, showFullLife, t })
 	);
 
-	// Count summary + whether any narrowing is active (sort doesn't count).
-	const isFiltered = $derived(filters.active);
+	// Count summary + whether any narrowing is active. Sort doesn't count — and
+	// `filters.active` does count it (it compares every URL key to its default),
+	// so a non-default sort read as "Showing 99 of 99 · Clear filters" with a
+	// Clear that did nothing (clearFilters keeps the sort). sheetCount already
+	// counts every real filter; add the query.
+	const isFiltered = $derived(sheetCount > 0 || filters.values.q.trim() !== '');
 
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
@@ -561,16 +565,13 @@
 			{#if showFullLife}
 				{@render fullLifeChip()}
 			{/if}
-			<div class="seg ms-auto" role="group" aria-label={t('bios.sort')}>
+			<!-- Sort is a <select>, as on every shelf (page-design: no visible
+			     "Sort:" label, it rides in aria-label). -->
+			<select bind:value={filters.values.sort} class="filter-field ms-auto" aria-label={t('bios.sort')}>
 				{#each SORT_VALUES as v (v)}
-					<button
-						type="button"
-						class:active={filters.values.sort === v}
-						aria-pressed={filters.values.sort === v}
-						onclick={() => (filters.values.sort = v)}>{t(SORT_LABEL[v])}</button
-					>
+					<option value={v}>{t(SORT_LABEL[v])}</option>
 				{/each}
-			</div>
+			</select>
 			<div class="seg" role="group" aria-label={t('bios.view')}>
 				<button type="button" class="view-btn" class:active={view === 'list'} aria-pressed={view === 'list'} aria-label={t('bios.viewList')} onclick={() => setView('list')}>
 					<Icon name="list" />
