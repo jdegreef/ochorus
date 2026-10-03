@@ -1,0 +1,118 @@
+{
+ "kind": "sermon",
+ "slug": "the-triumph-of-the-resurrection",
+ "language": "sw",
+ "job_issue": 5050,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Acts 2:22",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-resurrection-of-jesus.sw.json"
+  },
+  {
+   "reference": "Acts 2:23-24",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:33",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:34-35",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Acts 2:36",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Acts 2:38-39",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Matthew 22:42a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "the-masters-indwelling.sw.json"
+  },
+  {
+   "reference": "Hebrews 1:1-2a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "John 1:14a",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:5-6",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Hebrews 7:26",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "1 Corinthians 15:4b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "John 3:16b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "John 3:18b",
+   "status": "mined",
+   "block_index": 34,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Acts 2:24b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Acts 2:25",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Matthew 17:5b",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Revelation 14:4",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "all-of-grace.sw.json"
+  }
+ ]
+}

@@ -1,0 +1,176 @@
+{
+ "kind": "sermon",
+ "slug": "wholly-sanctified",
+ "language": "sw",
+ "job_issue": 5053,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:23a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "soar-like-the-eagle-3.sw.json"
+  },
+  {
+   "reference": "Psalms 36:9b",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Psalms 11:3",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "John 3:36a",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Philippians 4:7a",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 57:20",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 57:21",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Psalms 119:165",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 48:18",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Corinthians 6:17",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 6:18",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "2 Corinthians 7:1",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Romans 6:11a",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "John 17:16",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 15:53",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 15:47a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 15:45b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "2 Corinthians 5:21",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 6:19b",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "1 Corinthians 6:20",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Song of Solomon 6:3a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalms 23:6b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:13",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

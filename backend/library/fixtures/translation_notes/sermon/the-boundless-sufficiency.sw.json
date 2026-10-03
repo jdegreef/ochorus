@@ -1,0 +1,206 @@
+{
+ "kind": "sermon",
+ "slug": "the-boundless-sufficiency",
+ "language": "sw",
+ "job_issue": 5038,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Philippians 4:19b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Job 19:20b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 3:15b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 5:2a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 23:2a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "John 10:10b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 13:7",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 13:8a",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Colossians 1:11b",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Philippians 4:7b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Peter 1:8b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "Acts 20:35b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Isaiah 33:17b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 4:18a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Philippians 3:8b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Philippians 4:18a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Timothy 1:14",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 8:38-39",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 12:15",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Philippians 2:17",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Acts 20:23",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "the-joy-of-the-lord.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 6:12-13",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Romans 1:11a",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Romans 1:11b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:8",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "2 Corinthians 11:29b",
+   "status": "self_rendered",
+   "block_index": 29
+  },
+  {
+   "reference": "Daniel 11:32b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "John 5:17",
+   "status": "self_rendered",
+   "block_index": 40
+  },
+  {
+   "reference": "Matthew 28:9",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 1:19-20",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Ephesians 1:20-22",
+   "status": "self_rendered",
+   "block_index": 42
+  }
+ ]
+}
