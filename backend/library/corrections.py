@@ -9905,14 +9905,14 @@ BODY_CORRECTIONS.setdefault("wholly-sanctified", {}).setdefault(
 ])
 
 # Speech-to-text slips in Tozer transcripts. "God Made Man to Worship" carries a
-# two-word non-sentence the recogniser invented (no recoverable word — drop it);
+# two-word non-sentence the recogniser invented (no recoverable word — marked [inaudible], founder's call);
 # "Causes of Backsliding" heard its own subject as "sex-lighting"; and "How to
 # Cultivate the Holy Spirit's Companionship" quotes Job 11:12's "wild ass's
 # colt" as "coat".
 BODY_CORRECTIONS.setdefault("god-made-man-to-worship", {}).setdefault(
     "replacements", []).append((
     "That's seeking after God naturally. That's asshole. Well,",
-    "That's seeking after God naturally. Well,",
+    "That's seeking after God naturally. [inaudible] Well,",
 ))
 BODY_CORRECTIONS.setdefault("causes-of-backsliding", {}).setdefault(
     "replacements", []).append((
