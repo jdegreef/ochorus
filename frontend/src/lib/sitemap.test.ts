@@ -48,10 +48,14 @@ vi.mock('$lib/library-public', () => {
 		// they have something".
 		listAuthors: async (l = 'en') =>
 			l === 'en' ? [author('andrew-murray'), author('e-m-bounds')] : [],
-		// Humility also has a two-chapter Modern English edition.
+		// Humility also has a reviewed two-chapter Modern English edition; a
+		// second modern edition is still unreviewed.
 		listBooks: async (l = 'en') =>
 			l === 'en-modern'
-				? [{ slug: 'humility', chapter_count: 2, updated_at: '2026-09-10T10:00:00Z' }]
+				? [
+						{ slug: 'humility', chapter_count: 2, updated_at: '2026-09-10T10:00:00Z', source_type: 'ai_reviewed' },
+						{ slug: 'unreviewed', chapter_count: 3, updated_at: '2026-09-10T10:00:00Z', source_type: 'ai_unreviewed' }
+					]
 				: l === 'sw'
 				? [
 						{
@@ -311,7 +315,9 @@ describe('build() chapter entries', () => {
 		expect(openings).toEqual([]);
 	});
 
-	it('lists every Modern English chapter at its own address', async () => {
+	it('lists every chapter of a REVIEWED Modern English edition at its own address', async () => {
+		// The unreviewed edition is AI text no person has approved: like an
+		// unreviewed translation, it is never advertised.
 		const { modern } = await sitemapData();
 		expect(modern.map((e) => [...e.byLocale])).toEqual([
 			[['en', '/books/humility/modern/1/']],

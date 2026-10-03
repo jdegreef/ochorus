@@ -215,10 +215,10 @@ export interface SitemapData {
  * the longest chapters) is a change to `openings` alone. English editions only:
  * no translated chapter is advertised (see `chapterSlices` in build()).
  *
- * THE MODERN ENGLISH EDITION IS LISTED WHOLE (`modern`). The reasoning above
- * is about public-domain text that older libraries already serve, which Google
- * reads as duplicates; the modern edition is Ochorus's own wording, so every
- * chapter of it is a page only this site has.
+ * THE MODERN ENGLISH EDITION IS LISTED WHOLE (`modern`), once reviewed. The
+ * reasoning above is about public-domain text that older libraries already
+ * serve, which Google reads as duplicates; the modern edition is Ochorus's own
+ * wording, so every chapter of it is a page only this site has.
  *
  * The remaining order is DELIBERATELY not the reader-facing nav order
  * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
@@ -327,7 +327,13 @@ async function build(): Promise<SitemapData> {
 	const quoteTopicPages = await listQuoteTopicPages().catch(() => []);
 	// The Modern English edition's own rows — the list its route's entry
 	// generator builds from, so every advertised modern chapter is a built page.
-	const modernBooks = await listBooks(MODERN_EDITION).catch(() => []);
+	// Only REVIEWED editions: a modern edition is AI-rewritten text, and an
+	// unreviewed one is offered to Google on the same terms as an unreviewed
+	// translation — not at all. `approve_translation <slug> --language
+	// en-modern` is what lists it. (Absent `source_type` reads as unreviewed.)
+	const modernBooks = (await listBooks(MODERN_EDITION).catch(() => [])).filter(
+		(b) => b.source_type === 'ai_reviewed'
+	);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
 	// stays available for the drift check below.

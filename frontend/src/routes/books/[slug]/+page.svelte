@@ -636,12 +636,14 @@
 					{/if}
 					{#if book.has_modern_edition}
 						<!-- The primary CTA follows the Modern English preference; this
-						     offers the other edition. -->
+						     offers the other edition. A button, not a footnote link: the
+						     modern edition is a reason to read here, and the link is how
+						     readers (and the crawler) find its pages. -->
 						<a
 							href={localizeHref(
 								useModern ? `/books/${book.slug}/${readOrder}` : modernChapterPath(book.slug, readOrder)
 							)}
-							class="text-small text-accent hover:underline"
+							class="btn btn-ghost btn-sm"
 							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
 						>
 					{/if}

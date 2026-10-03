@@ -1154,10 +1154,12 @@ class CoverAssetTests(SimpleTestCase):
         # BookCover. This rule exists because a cover with English words baked in
         # was appearing over a Swahili card; a cover with no words in it cannot
         # commit that mistake.
+        # The Modern English edition is ENGLISH: its cover carries the same
+        # English words, so it wears the English file, not a translated one.
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
-            if f["language"] != "en"
+            if f["language"] not in ("en", MODERN_LANGUAGE)
             and _cover(f).startswith("/covers/")
             and not _cover(f).startswith("/covers/art/")
             and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
@@ -1762,8 +1764,12 @@ class CoverAssetTests(SimpleTestCase):
             slug = f["slug"]
             if slug not in DERIVED_GROUND:
                 continue
+            # The Modern English edition is English too, so it keeps the
+            # designed file rather than the wordless ground.
             expected = (
-                DESIGNED_BY_SLUG[slug] if f["language"] == "en" else art_url(slug)[0]
+                DESIGNED_BY_SLUG[slug]
+                if f["language"] in ("en", MODERN_LANGUAGE)
+                else art_url(slug)[0]
             )
             if _cover(f) != expected:
                 wrong.append((slug, f["language"], _cover(f), expected))
@@ -2433,7 +2439,10 @@ class PlanTranslationCoverageTests(SimpleTestCase):
             f"{language}/{slug}"
             for slug, works in needs
             for language, have in self.published.items()
+            # English variants (en-modern) own the English prose — see
+            # seed_plans._prose — so they need no plan_translations file.
             if language != "en"
+            and not language.startswith("en-")
             and all(w in have for w in works)
             and slug not in plan_translations().get(language, {})
         )
