@@ -6,6 +6,12 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, SignupSourceView, health
+from emails.admin_design import (
+    AdminEmailLibraryView,
+    AdminEmailPreviewView,
+    AdminEmailTemplateDetailView,
+    AdminEmailTemplatesView,
+)
 from emails.admin_views import (
     AdminAudiencePreviewView,
     AdminBroadcastActionView,
@@ -239,6 +245,18 @@ urlpatterns = [
         "api/admin/broadcasts/<int:pk>/action/",
         AdminBroadcastActionView.as_view(),
         name="admin-broadcast-action",
+    ),
+    path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
+    path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),
+    path(
+        "api/admin/emails/templates/",
+        AdminEmailTemplatesView.as_view(),
+        name="admin-email-templates",
+    ),
+    path(
+        "api/admin/emails/templates/<int:pk>/",
+        AdminEmailTemplateDetailView.as_view(),
+        name="admin-email-template-detail",
     ),
     path(
         "api/admin/users/<uuid:uid>/emails/",

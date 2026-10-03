@@ -1331,14 +1331,48 @@ export interface BroadcastCheck {
 	message: string;
 }
 
-/** One language's content block for a broadcast (structured, not raw HTML). */
+/** One block of campaign content (backend `emails/blocks.py`): structured
+ *  data, never HTML. Library blocks name a work by slug and render as the
+ *  edition in the email's language, or are left out where there is none. */
+export type EmailBlock =
+	| { type: 'heading'; text: string }
+	| { type: 'text'; text: string }
+	| { type: 'button'; label: string; path: string }
+	| { type: 'divider' }
+	| { type: 'quote'; text: string; attribution: string }
+	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
+
+export type EmailBlockType = EmailBlock['type'];
+export type LibraryBlockType = 'book' | 'sermon' | 'plan';
+
+/** One language's content for a broadcast or template. `blocks` is the current
+ *  shape; the fixed fields are how older broadcasts were stored (still rendered,
+ *  converted to blocks on first edit). */
 export interface BroadcastBlock {
+	preheader?: string;
+	blocks?: EmailBlock[];
 	heading?: string;
 	paragraphs?: string[];
 	cta_label?: string;
 	cta_path?: string;
-	preheader?: string;
 	greeting?: string;
+	signoff?: string;
+	signature?: string;
+}
+
+/** The legacy fixed fields as blocks — mirrors `blocks.legacy_blocks`. */
+export function blocksOf(content: BroadcastBlock | undefined): EmailBlock[] {
+	if (!content) return [];
+	if (content.blocks) return content.blocks;
+	const out: EmailBlock[] = [];
+	if (content.heading) out.push({ type: 'heading', text: content.heading });
+	if (content.greeting) out.push({ type: 'text', text: content.greeting });
+	for (const p of content.paragraphs ?? []) out.push({ type: 'text', text: p });
+	if (content.cta_label || content.cta_path)
+		out.push({ type: 'button', label: content.cta_label ?? '', path: content.cta_path ?? '' });
+	const sign = [content.signoff, content.signature].filter(Boolean).join('\n');
+	if (sign) out.push({ type: 'text', text: sign });
+	return out;
 }
 
 export interface BroadcastAudience {
@@ -1460,6 +1494,54 @@ export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
+
+// --- Campaign design: preview, library picker, templates -----------------------
+
+export const previewEmail = (locale: string, subject: string, content: BroadcastBlock) =>
+	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
+		method: 'POST',
+		body: JSON.stringify({ locale, subject, content })
+	});
+
+export interface EmailLibraryItem {
+	slug: string;
+	title: string;
+	author: string;
+	/** Every language this work is published in. */
+	languages: string[];
+}
+
+export const searchEmailLibrary = (type: LibraryBlockType, q: string) =>
+	apiFetch<{ results: EmailLibraryItem[] }>(
+		`/api/admin/emails/library/?${new URLSearchParams({ type, q })}`
+	);
+
+export interface EmailTemplate {
+	id: number;
+	name: string;
+	description: string;
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	locales: string[];
+	created_by: string;
+	updated_at: string;
+}
+
+export const listEmailTemplates = () =>
+	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
+
+export const saveEmailTemplate = (payload: {
+	name: string;
+	description?: string;
+	from_broadcast?: number;
+}) =>
+	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteEmailTemplate = (id: number) =>
+	apiFetch<null>(`/api/admin/emails/templates/${id}/`, { method: 'DELETE' });
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {

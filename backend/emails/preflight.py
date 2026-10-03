@@ -15,6 +15,7 @@ from django.db.models.functions import Coalesce, NullIf
 
 from library.languages import entry as language_entry
 
+from . import blocks as blocks_mod
 from . import copy as copy_mod
 from . import health
 from .audience import resolve
@@ -59,10 +60,11 @@ def _content_checks(broadcast) -> list[dict]:
                 "No language has both a subject line and content yet.",
             )
         ]
+    library = _library_editions(broadcast, locales)
     for code in locales:
         name = _lang_name(code)
         subject = str(broadcast.subject.get(code) or "").strip()
-        block = broadcast.content.get(code) or {}
+        blocks = blocks_mod.blocks_for(broadcast.content.get(code) or {})
         if not subject:
             out.append(_check(f"subject:{code}", ERROR, f"{name}: the subject line is empty."))
         elif len(subject) > SUBJECT_SOFT_LIMIT:
@@ -74,31 +76,10 @@ def _content_checks(broadcast) -> list[dict]:
                     f"at about {SUBJECT_SOFT_LIMIT}.",
                 )
             )
-        if not (str(block.get("heading") or "").strip() or block.get("paragraphs")):
-            out.append(_check(f"body:{code}", ERROR, f"{name}: there is no heading or text."))
-        label = str(block.get("cta_label") or "").strip()
-        path = str(block.get("cta_path") or "").strip()
-        if label:
-            bad = cta_path_problem(path)
-            if bad:
-                out.append(_check(f"cta:{code}", ERROR, f"{name}: the button link {bad}."))
-            elif not path:
-                out.append(
-                    _check(
-                        f"cta:{code}",
-                        WARNING,
-                        f"{name}: the button has no link path, so it opens the home page.",
-                    )
-                )
-        elif path:
-            out.append(
-                _check(
-                    f"cta:{code}",
-                    WARNING,
-                    f"{name}: a button link is set but the button has no label, so no "
-                    "button will show.",
-                )
-            )
+        if not blocks_mod.has_body(blocks):
+            out.append(_check(f"body:{code}", ERROR, f"{name}: the email has no content yet."))
+        for i, block in enumerate(blocks):
+            out.extend(_block_checks(block, f"{code}:{i}", name, code, library))
     half = (set(broadcast.subject) ^ set(broadcast.content)) - set(locales)
     for code in sorted(half):
         out.append(
@@ -113,11 +94,76 @@ def _content_checks(broadcast) -> list[dict]:
             _check(
                 "content",
                 OK,
-                f"Subject, text and button are complete in {len(locales)} "
+                f"Subject and content are complete in {len(locales)} "
                 f"language{'s' if len(locales) != 1 else ''}.",
             )
         )
     return out
+
+
+def _library_editions(broadcast, locales) -> dict[str, dict[str, set[str]]]:
+    """``{kind: {slug: languages}}`` for every library block in the broadcast —
+    one query per kind, shared by all its languages' checks."""
+    wanted: dict[str, set[str]] = {}
+    for code in locales:
+        for block in blocks_mod.blocks_for(broadcast.content.get(code) or {}):
+            if block["type"] in blocks_mod.LIBRARY_TYPES and block.get("slug"):
+                wanted.setdefault(block["type"], set()).add(block["slug"])
+    return {kind: blocks_mod.editions(kind, slugs) for kind, slugs in wanted.items()}
+
+
+def _block_checks(block: dict, key: str, name: str, code: str, library) -> list[dict]:
+    """Problems with one block of one language's email."""
+    kind = block["type"]
+    if kind == blocks_mod.BlockType.BUTTON:
+        label, path = block.get("label", ""), block.get("path", "")
+        if label:
+            bad = cta_path_problem(path)
+            if bad:
+                return [_check(f"cta:{key}", ERROR, f"{name}: the button link {bad}.")]
+            if not path:
+                return [
+                    _check(
+                        f"cta:{key}",
+                        WARNING,
+                        f"{name}: the button has no link path, so it opens the home page.",
+                    )
+                ]
+        elif path:
+            return [
+                _check(
+                    f"cta:{key}",
+                    WARNING,
+                    f"{name}: a button link is set but the button has no label, so no "
+                    "button will show.",
+                )
+            ]
+        return []
+    if kind not in blocks_mod.LIBRARY_TYPES:
+        return []
+    label = blocks_mod.BlockType(kind).label.lower()
+    slug = block.get("slug", "")
+    if not slug:
+        return [_check(f"library:{key}", ERROR, f"{name}: a {label} block has no {label} chosen.")]
+    languages = library.get(kind, {}).get(slug)
+    if not languages:
+        return [
+            _check(
+                f"library:{key}",
+                ERROR,
+                f"{name}: there is no published {label} “{slug}”.",
+            )
+        ]
+    if code not in languages:
+        return [
+            _check(
+                f"library:{key}",
+                WARNING,
+                f"{name}: the {label} “{slug}” has no {name} edition, so that block is left "
+                f"out of the {name} email.",
+            )
+        ]
+    return []
 
 
 def _audience_checks(broadcast) -> list[dict]:
