@@ -1918,8 +1918,9 @@ class ScriptureBookView(APIView):
     server can: how many library passages treat the book at all (distinct
     citing chapters, across every chapter of it, not a sum of per-chapter
     counts, which would count a passage citing Romans 5 and 8 twice), which
-    library books return to it most, and the ASV text of its most-quoted
-    verses.
+    library books return to it most, the ASV text of its most-quoted verses,
+    one excerpt from each of those books, and a short house overview of the
+    book itself (``bible_book_intros``).
 
     It exists only where at least one of the book's chapters has earned a page
     (``current_pages``), so it is never thinner than the pages it links to and
@@ -1933,6 +1934,7 @@ class ScriptureBookView(APIView):
     TOP_VERSES = 8
 
     def get(self, request, book):
+        from .bible_book_intros import intro as book_intro
         from .models import ChapterCitation
         from .scripture import VERSION_LABEL
         from .scripture_graph import (
@@ -1942,6 +1944,7 @@ class ScriptureBookView(APIView):
             english_chapters,
             verse_text,
         )
+        from .search import fallback_snippet
         from .serializers import _edition_base_slug
 
         target = book_from_slug(book)
@@ -1976,6 +1979,11 @@ class ScriptureBookView(APIView):
                 "chapter__book__title",
                 "chapter__book__author__name",
                 "chapter__book__author__slug",
+                # For the excerpts: the reference as the work prints it, and
+                # its span, so each work is quoted at its narrowest citation.
+                "ref_text",
+                "start_verse_id",
+                "end_verse_id",
             )
             .distinct()
         )
@@ -1989,14 +1997,42 @@ class ScriptureBookView(APIView):
             citing.add(r["chapter_id"])
             slug = r["chapter__book__slug"]
             base = _edition_base_slug(slug)
-            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w = works.setdefault(base, {"chapters": set(), "row": r, "cite": r})
             w["chapters"].add(r["chapter_id"])
             if slug == base:
                 w["row"] = r
+            span = r["end_verse_id"] - r["start_verse_id"]
+            if span < w["cite"]["end_verse_id"] - w["cite"]["start_verse_id"]:
+                w["cite"] = r
         top_books = sorted(
             works.values(),
             key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
         )[: self.TOP_BOOKS]
+
+        # One excerpt per top work, at its narrowest citation of this book —
+        # what the page shows as "what the writers say". One query for the six
+        # chapter bodies; the excerpt is the same snippet the chapter page uses.
+        cites = [w["cite"] for w in top_books]
+        bodies = {
+            c.pk: c
+            for c in english_chapters()
+            .filter(pk__in=[r["chapter_id"] for r in cites])
+            .select_related("book__author")
+        }
+        passages = [
+            {
+                "book_slug": ch.book.slug,
+                "book_title": ch.book.title,
+                "author_name": ch.book.author.name,
+                "author_slug": ch.book.author.slug,
+                "chapter_order": ch.order,
+                "chapter_title": ch.title,
+                "ref": r["ref_text"],
+                "excerpt": fallback_snippet(ch.body_text or "", r["ref_text"]),
+            }
+            for r in cites
+            if (ch := bodies.get(r["chapter_id"])) is not None
+        ]
 
         verses = sorted(
             (p for p in mine if p["verse"] is not None),
@@ -2014,8 +2050,10 @@ class ScriptureBookView(APIView):
         return Response(
             {
                 "book": {"slug": book, "title": target.title, "order": target.value},
+                "intro": book_intro(book),
                 "version": VERSION_LABEL,
                 "citing_count": len(citing),
+                "passages": passages,
                 "books_count": len(works),
                 "chapters": chapters,
                 "verses": [

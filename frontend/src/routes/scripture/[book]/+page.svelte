@@ -10,6 +10,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ScriptureChapterChips from '$lib/components/ScriptureChapterChips.svelte';
+	import CitingPassages from '$lib/components/CitingPassages.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -86,6 +87,9 @@
 				{t('scripture.treated').replace('%count%', String(page.citing_count))}
 			</p>
 		{/if}
+		<!-- The house overview: what the book is, before what the library does
+		     with it. English, like the rest of the scripture data. -->
+		{#if page.intro}<p class="mt-4 max-w-2xl text-body">{page.intro}</p>{/if}
 	</header>
 
 	<section class="mb-10">
@@ -108,6 +112,15 @@
 				{/each}
 			</ul>
 			{#if page.version}<p class="mt-2 text-small text-muted">{page.version}</p>{/if}
+		</section>
+	{/if}
+
+	<!-- One excerpt from each work that returns to the book most: the
+	     writers' own words, each linked to its chapter. -->
+	{#if page.passages?.length}
+		<section class="mb-10">
+			<h2 class="section-label">{t('scripture.preachedHeading')}</h2>
+			<CitingPassages passages={page.passages} />
 		</section>
 	{/if}
 

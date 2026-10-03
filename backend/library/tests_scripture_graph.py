@@ -489,6 +489,21 @@ class BookViewTests(TestCase):
         self.assertEqual(top[0]["author_name"], "Andrew Murray")
         self.assertEqual(top[0]["citing_count"], VERSE_FLOOR + 1)
 
+    def test_one_excerpt_per_top_work_at_its_narrowest_citation(self):
+        passages = self.get("romans").data["passages"]
+        # In top-book order, one each — not every citing chapter.
+        self.assertEqual([p["book_slug"] for p in passages], ["big", "small"])
+        self.assertEqual(passages[0]["ref"], "Romans 8:28")
+        # Small's first chapter cites Romans 5:8 and 8:28; both are one verse,
+        # so either is its narrowest — the excerpt quotes the work's own words.
+        self.assertIn(passages[1]["ref"], {"Romans 5:8", "Romans 8:28"})
+        for p in passages:
+            self.assertTrue(p["excerpt"].strip())
+            self.assertEqual(p["chapter_title"], f"Chapter {p['chapter_order']}")
+
+    def test_the_book_carries_its_house_overview(self):
+        self.assertIn("Paul", self.get("romans").data["intro"])
+
     def test_verses_carry_their_text_and_only_pages_that_exist(self):
         verses = self.get("romans").data["verses"]
         self.assertEqual([(v["chapter"], v["verse"]) for v in verses], [(8, 28)])
@@ -556,3 +571,20 @@ class BookViewEditionAndSpanTests(TestCase):
         )
         res = self.client.get("/api/library/scripture/romans/")
         self.assertEqual(res.data["citing_count"], CHAPTER_FLOOR + 1)
+
+
+class BibleBookIntroTests(TestCase):
+    """The house overviews: one for every book that can have a page, sized
+    to read as a paragraph, and keyed by the slugs the pages use."""
+
+    def test_every_book_with_asv_text_has_an_overview_of_a_paragraph(self):
+        import pythonbible as bible
+
+        from .bible_book_intros import table
+        from .scripture_graph import book_slug, verse_text
+
+        books = {book_slug(b) for b in bible.Book if verse_text(b.value * 1_000_000 + 1001)}
+        intros = table()["en"]
+        self.assertEqual(set(intros), books)
+        bad = {s: len(t.split()) for s, t in intros.items() if not 40 <= len(t.split()) <= 110}
+        self.assertEqual(bad, {}, "an overview should be one paragraph, 40-110 words")

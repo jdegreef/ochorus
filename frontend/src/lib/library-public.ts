@@ -1458,6 +1458,8 @@ export const listScripturePages = (f?: Fetch) =>
 /** One Bible book across the library — the /scripture/<book>/ page. */
 export interface ScriptureBookPage {
 	book: { slug: string; title: string; order: number };
+	/** A short house overview of the book; "" when none (or an older API). */
+	intro?: string;
 	version: string;
 	/** Distinct library passages (chapters) citing any part of the book; null
 	 *  when the page was built from the page list (see bookFromPageList). */
@@ -1468,6 +1470,9 @@ export interface ScriptureBookPage {
 	chapters: { chapter: number; citing_count: number }[];
 	/** Its most-quoted verse pages, with their ASV text. */
 	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
+	/** One excerpt from each of the top books, at its narrowest citation of
+	 *  this book; absent from an API predating it. */
+	passages?: CitingPassage[];
 	/** The library books that return to it most. */
 	top_books: {
 		slug: string;
