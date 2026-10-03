@@ -168,9 +168,7 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    visual is `<CoverStrip size="fan" priority>` — the one shared big fan
    (/originals uses it too); never re-draw fan geometry in a page.
    Below 1024px, once the read card scrolls away (`elementVisible`, as the
-   book's sub-nav CTA does), the read verb rides a bottom bar (`.plan-bar`):
-   `use:portal`ed to <body> (as every fixed overlay is), clearing the shared bottom chrome with `max(env(safe-area-inset-
-   bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))`. Pinned jump
+   book's sub-nav CTA does), x Pinned jump
    chips over a list publish their measured height into `--pinned-offset`
    (`bind:clientHeight`), never a guessed rem.
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
