@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { PlanDay } from './library-public';
-import { groupPlanDays, weeksOf } from './planGroups';
+import { groupPlanDays, shortTitles, weeksOf } from './planGroups';
 
 const day = (n: number, book: string, article = ''): PlanDay => ({
 	day: n,
@@ -47,5 +47,24 @@ describe('weeksOf', () => {
 		const days = Array.from({ length: 32 }, (_, i) => day(i + 1, 'a'));
 		expect(weeksOf(days).map((w) => w.length)).toEqual([7, 7, 7, 7, 4]);
 		expect(weeksOf(days.slice(0, 5)).length).toBe(1);
+	});
+});
+
+describe('shortTitles', () => {
+	it('drops the words a series shares, keeping whole words', () => {
+		const dotk = [1, 2, 3].map((n) => `Daughters of the King – 30 Days with God for Girls – Book ${n}`);
+		expect(shortTitles(dotk)).toEqual(['Book 1', 'Book 2', 'Book 3']);
+	});
+
+	it('keeps titles with nothing in common, or a lone title, whole', () => {
+		expect(shortTitles(['Around the Wicket Gate', 'How to Succeed'])).toEqual([
+			'Around the Wicket Gate',
+			'How to Succeed'
+		]);
+		expect(shortTitles(['Humility'])).toEqual(['Humility']);
+	});
+
+	it('never empties a title that is all prefix', () => {
+		expect(shortTitles(['Rooted', 'Rooted for Life'])).toEqual(['Rooted', 'Rooted for Life']);
 	});
 });

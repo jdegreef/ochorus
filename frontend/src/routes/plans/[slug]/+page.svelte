@@ -21,7 +21,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
-	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
+	import { groupPlanDays, shortTitles, weeksOf, type PlanGroup } from '$lib/planGroups';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	let { data } = $props();
@@ -151,6 +152,57 @@
 		].filter((f) => f !== null)
 	);
 
+	/** The jump chips' targets and labels: one per book section, named by what
+	 *  tells the books apart ("Book 1", "Book 2"), not their full shared title. */
+	const groupId = (g: PlanGroup) => `plan-${g.key}`;
+	const groupChips = $derived(
+		shortTitles(groups.map((g) => g.bookTitle || t('search.groupArticles'))).map((label, i) => ({
+			id: groupId(groups[i]),
+			label
+		}))
+	);
+	/** A chip opens the section it jumps to — a closed <details> would land the
+	 *  reader on a bare header. The anchor's own scroll does the rest. */
+	const openSection = (id: string) => {
+		const el = document.getElementById(id);
+		if (el instanceof HTMLDetailsElement) el.open = true;
+	};
+
+	/** The journey rail: every day as one tick, in its book's run, so a started
+	 *  reader sees where they are in the whole plan at a glance. */
+	const rail = $derived(
+		groups.map((g, i) => ({
+			key: g.key,
+			label: grouped ? groupChips[i].label : dayRange(g),
+			read: g.days.filter((d) => doneSet.has(d.day)).length,
+			days: g.days.map((d) => ({ day: d.day, done: doneSet.has(d.day), isNext: d.day === next }))
+		}))
+	);
+
+	const nextCover = $derived(nextDay?.book_slug ? coverBySlug.get(nextDay.book_slug) : undefined);
+	/** The next few unread days after today's, each with the date it falls on
+	 *  for a reader going a day at a time (client-only, like the finish date). */
+	const comingUp = $derived.by(() => {
+		if (!started || next === null) return [];
+		// "Sat 3": weekday then day, whatever order the locale's combined format picks.
+		const wd = new Intl.DateTimeFormat(getLang(), { weekday: 'short' });
+		const dd = new Intl.DateTimeFormat(getLang(), { day: 'numeric' });
+		const fmt = today && { format: (on: Date) => `${wd.format(on)} ${dd.format(on)}` };
+		return plan.days
+			.filter((d) => d.day > next && !doneSet.has(d.day))
+			.slice(0, 3)
+			.map((d, i) => {
+				const on = today ? new Date(today) : null;
+				on?.setDate(on.getDate() + i + 1);
+				return { ...d, date: fmt && on ? fmt.format(on) : '' };
+			});
+	});
+
+	/** The phone's bottom bar shows the read verb only once the read card has
+	 *  scrolled away — never two primaries on screen (the book page's rule). */
+	let readCardEl = $state<HTMLElement>();
+	const cardSeen = elementVisible(() => readCardEl, { initial: true });
+
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
 		return d ? localizeHref(planDayPath(plan.slug, d)) : '#';
@@ -222,7 +274,7 @@
 			     progress is client-only) gets Day 1 with the "Free to read · No account
 			     needed" reassurance. Save and Share sit quietly beneath. -->
 			{#if next !== null}
-				<div class="read-card">
+				<div class="read-card" bind:this={readCardEl}>
 					<div class="read-card-body">
 						{#if started}
 							<p class="text-small text-muted">{progressLine}</p>
@@ -234,15 +286,25 @@
 							</p>
 						{/if}
 						{#if nextDay}
-							<p class="read-card-title" dir="auto">
-								{dayTitle(nextDay)}
-							</p>
-							<p class="text-small text-muted" dir="auto">
-								<!-- The separator as an expression: literal spaces at an {#if}
-								     boundary are compiler-trimmed ("Prayer·9 min"). -->
-								{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
-									>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
-							</p>
+							<!-- Today's reading, named and pictured: its book's cover beside
+							     the title, and the verse the day opens on. -->
+							<div class="mt-1 flex items-start gap-3">
+								{#if nextCover}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
+								<div class="min-w-0">
+									<p class="read-card-title" dir="auto">
+										{dayTitle(nextDay)}
+									</p>
+									<p class="text-small text-muted" dir="auto">
+										<!-- The separator as an expression: literal spaces at an {#if}
+										     boundary are compiler-trimmed ("Prayer·9 min"). -->
+										{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
+											>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+									</p>
+									{#if nextDay.key_verse}
+										<span class="tag verse-chip mt-2">{nextDay.key_verse}</span>
+									{/if}
+								</div>
+							</div>
 						{/if}
 						{#if started}
 							<div class="mt-2">
@@ -257,8 +319,36 @@
 						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
 							{started ? t('plans.continue') : t('plans.start')}
 						</a>
+						{#if started}
+							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
+								{t('plans.markDone')}
+							</button>
+						{/if}
 					</div>
 				</div>
+
+				<!-- What comes after today: the next few days, dated for a reader going
+				     a day at a time. -->
+				{#if comingUp.length}
+					<section class="mt-5" aria-labelledby="coming-up-heading">
+						<h2 id="coming-up-heading" class="section-heading">{t('plans.comingUp')}</h2>
+						<ol class="divide-y divide-border">
+							{#each comingUp as d (d.day)}
+								<li>
+									<a href={dayHref(d.day)} class="coming-row">
+										<span class="coming-date">{d.date}</span>
+										<span class="min-w-0 flex-1">
+											<span class="block truncate text-body text-text" dir="auto">{dayTitle(d)}</span>
+											<span class="block text-small text-muted"
+												>{t('plans.day')} {d.day} · {readingMinutes(d.word_count || 0)} {t('common.min')}</span
+											>
+										</span>
+									</a>
+								</li>
+							{/each}
+						</ol>
+					</section>
+				{/if}
 			{:else}
 				<!-- A status line, not a control: a finished plan has no action, so it
 				     must not wear a button's chrome (it read as a disabled button). -->
@@ -294,14 +384,51 @@
 			     day stays in the prerendered HTML for crawlers and no-JS readers, and the
 			     open state needs no script. Progress is client-only, so the prerender
 			     opens on Day 1 and hydration moves it to where the reader is. -->
+			<!-- The journey rail, once started: every day as a tick in its book's
+			     run — read, today, still to come. Decorative (the read card's
+			     progress bar says it in words); a tick is a shortcut to its day. -->
+			{#if started}
+				<div class="plan-rail" aria-hidden="true">
+					{#each rail as seg (seg.key)}
+						<div class="rail-seg" style="flex-grow: {seg.days.length}">
+							<div class="rail-ticks">
+								{#each seg.days as d (d.day)}
+									<a
+										href={dayHref(d.day)}
+										tabindex="-1"
+										class="rail-tick"
+										class:done={d.done}
+										class:now={d.isNext}
+										title="{t('plans.day')} {d.day}"
+									></a>
+								{/each}
+							</div>
+							<div class="rail-label">
+								<span>{seg.label}</span><span class="tabular-nums">{seg.read}/{seg.days.length}</span>
+							</div>
+						</div>
+					{/each}
+				</div>
+			{/if}
+
 			<section aria-labelledby="plan-days-heading">
 				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
+				<!-- One chip per book, pinned while the list scrolls: a jump to (and
+				     open of) that book's section. Anchors, so every day stays in the
+				     prerendered page. -->
+				{#if grouped}
+					<nav class="plan-jump chip-scroller" aria-label={t('plans.inThisPlan')}>
+						{#each groupChips as c (c.id)}
+							<a class="tag" href="#{c.id}" onclick={() => openSection(c.id)} dir="auto">{c.label}</a>
+						{/each}
+					</nav>
+				{/if}
 				{#each groups as g, gi (g.key)}
 					{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
 					{#if grouped}
 						{@const read = g.days.filter((d) => doneSet.has(d.day)).length}
 						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-						<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
+						<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
 							<summary class="plan-group-head">
 								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
 								<span class="min-w-0 flex-1">
@@ -412,7 +539,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
+							<span class="tag verse-chip row-verse">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -437,7 +564,25 @@
 			</div>
 		</section>
 	{/if}
+
 </div>
+
+<!-- Outside .page-col, whose centring transform would pin a fixed bar to
+     the column instead of the screen.
+     Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar — the next day named, one button. Below the side-panel
+     breakpoint only; from there the panel itself stays in view. -->
+{#if next !== null && nextDay && !cardSeen.visible}
+	<div class="plan-bar">
+		<span class="min-w-0 flex-1">
+			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
+			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>
+		</span>
+		<a href={dayHref(next)} class="btn btn-primary shrink-0" onclick={() => planProgress.start(plan.slug)}>
+			{started ? t('plans.continue') : t('plans.start')}
+		</a>
+	</div>
+{/if}
 
 <style>
 	/* A book's run of days: a card whose summary is the book (cover, span,
@@ -526,6 +671,16 @@
 	.verse-chip:hover {
 		border-color: var(--border);
 	}
+	/* In a day row the pill shows from 640px; on a phone the verse rides the
+	   line under the title instead (scoped, so it beats .tag's display). */
+	.row-verse {
+		display: none;
+	}
+	@media (min-width: 640px) {
+		.row-verse {
+			display: inline-flex;
+		}
+	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {
 		display: grid;
@@ -590,6 +745,101 @@
 			order: -1;
 			width: min(18rem, 80%);
 			margin-inline: auto;
+		}
+	}
+	/* A book section lands clear of the app nav and the pinned chips. */
+	.plan-group {
+		scroll-margin-top: calc(var(--appnav-h, 0px) + 3.5rem);
+	}
+	.plan-jump {
+		position: sticky;
+		top: var(--appnav-h, 0px);
+		z-index: 10;
+		padding-block: 0.5rem;
+		background: var(--bg);
+	}
+	/* The rail: one tick a day, a book's run per segment. */
+	.plan-rail {
+		display: flex;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+		padding: 1rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+	}
+	.rail-seg {
+		flex-basis: 0;
+		min-width: 0;
+	}
+	.rail-ticks {
+		display: flex;
+		align-items: flex-end;
+		gap: 2px;
+		height: 2rem;
+	}
+	.rail-tick {
+		flex: 1 1 0;
+		min-width: 1px;
+		height: 1.25rem;
+		border-radius: 2px;
+		background: var(--border);
+	}
+	.rail-tick.done {
+		background: var(--accent);
+		opacity: 0.7;
+	}
+	.rail-tick.now {
+		height: 2rem;
+		background: var(--accent);
+		box-shadow: 0 0 0 2px var(--accent-soft);
+	}
+	.rail-label {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-top: 0.5rem;
+		font-size: var(--fs-micro);
+		color: var(--muted);
+		white-space: nowrap;
+	}
+	/* Coming up: a date block beside each of the next few days. */
+	.coming-row {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		min-height: 2.75rem;
+		padding-block: 0.5rem;
+		color: var(--text);
+	}
+	.coming-row:hover {
+		text-decoration: none;
+	}
+	.coming-date {
+		width: 3.5rem;
+		flex-shrink: 0;
+		font-size: var(--fs-small);
+		font-weight: 600;
+		color: var(--muted);
+		font-variant-numeric: tabular-nums;
+	}
+	/* The phone's bottom bar, above the tab bar and the home indicator. */
+	.plan-bar {
+		position: fixed;
+		inset-inline: 0;
+		bottom: max(env(safe-area-inset-bottom), var(--tabbar-h, 0px));
+		z-index: 30;
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.625rem 1.25rem;
+		border-top: 1px solid var(--border);
+		background: var(--surface);
+		box-shadow: var(--shadow-card);
+	}
+	@media (min-width: 1024px) {
+		.plan-bar {
+			display: none;
 		}
 	}
 </style>

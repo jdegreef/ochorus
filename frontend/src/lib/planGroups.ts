@@ -61,3 +61,20 @@ export function weeksOf(days: PlanDay[]): PlanDay[][] {
 	for (let i = 0; i < days.length; i += WEEK) weeks.push(days.slice(i, i + WEEK));
 	return weeks;
 }
+
+/**
+ * Short labels for a plan's books, for the jump chips: what tells each title
+ * apart once the words they all share are dropped. Three volumes of one
+ * series ("Daughters of the King – … – Book 1/2/3") become "Book 1/2/3";
+ * titles with nothing in common keep their whole text. The shared prefix is
+ * cut back to a word boundary, so "Book 1" never loses its "Book".
+ */
+export function shortTitles(titles: string[]): string[] {
+	if (titles.length < 2) return titles;
+	const words = titles.map((t) => t.split(' '));
+	let shared = 0;
+	while (words.every((w) => shared < w.length - 1 && w[shared] === words[0][shared])) shared++;
+	// A bare number ("1") says nothing alone: keep the word it numbers ("Book 1").
+	if (shared && words.every((w) => /^(\d+|[IVXLC]+)$/.test(w.slice(shared).join(' ')))) shared--;
+	return words.map((w) => w.slice(shared).join(' ').replace(/^[–—:-]\s*/u, ''));
+}
