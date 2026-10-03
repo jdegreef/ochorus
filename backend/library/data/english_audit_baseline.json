@@ -93,6 +93,9 @@
    "lost-paragraphing": 1,
    "word-fusion": 1
   },
+  "gideon-or-the-strength-of-weakness": {
+   "space-before-punct": 4
+  },
   "godliness": {
    "space-before-punct": 9
   },
@@ -149,9 +152,6 @@
   "men-of-prayer-2": {
    "space-before-punct": 2
   },
-  "ministry-of-intercession": {
-   "lost-paragraphing": 1
-  },
   "morning-by-morning": {
    "space-before-punct": 1,
    "word-fusion": 1
@@ -184,6 +184,9 @@
   "our-duty-to-israel": {
    "orphan-close-quote": 1
   },
+  "pandita-ramabai-a-life": {
+   "hyphen-space": 1
+  },
   "pauls-first-prayer": {
    "orphan-close-quote": 1
   },
@@ -195,9 +198,19 @@
    "orphan-close-quote": 1,
    "space-before-punct": 3
   },
+  "power-from-on-high-new-testament": {
+   "space-before-punct": 8
+  },
+  "power-from-on-high-old-testament": {
+   "orphan-close-quote": 1,
+   "space-before-punct": 9
+  },
   "power-through-prayer": {
    "space-before-punct": 2,
    "word-fusion": 1
+  },
+  "practical-prayer": {
+   "space-before-punct": 6
   },
   "prayer-the-pulse-of-life": {
    "hyphen-space": 1,
@@ -231,11 +244,17 @@
    "space-before-punct": 15,
    "welded-footnote": 5
   },
+  "seraphims-worship": {
+   "word-fusion": 1
+  },
   "sermons-on-several-occasions": {
    "orphan-close-quote": 47,
    "run-together": 2,
    "welded-footnote": 48,
    "word-fusion": 1
+  },
+  "sinning-and-repenting": {
+   "space-before-punct": 2
   },
   "soar-like-the-eagle-3": {
    "orphan-close-quote": 2
@@ -267,14 +286,23 @@
    "run-together": 1,
    "space-before-punct": 2
   },
+  "the-boundless-sufficiency": {
+   "space-before-punct": 2
+  },
   "the-christian-pilgrim": {
    "orphan-close-quote": 2
+  },
+  "the-christian-temper-supernatural-and-divine": {
+   "space-before-punct": 2
   },
   "the-christians-secret-of-a-happy-life-4": {
    "orphan-close-quote": 23
   },
   "the-circumcision-of-the-heart": {
    "space-before-punct": 1
+  },
+  "the-cloud-of-witnesses": {
+   "space-before-punct": 12
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1
@@ -322,6 +350,12 @@
   },
   "the-power-of-stillness": {
    "space-before-punct": 1
+  },
+  "the-practical-hope-of-the-lords-coming": {
+   "space-before-punct": 2
+  },
+  "the-school-of-faith": {
+   "space-before-punct": 4
   },
   "the-scripture-way-of-salvation": {
    "space-before-punct": 1

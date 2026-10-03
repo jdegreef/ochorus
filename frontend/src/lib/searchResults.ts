@@ -50,7 +50,11 @@ export interface Row {
 	monogram?: { scriptureRef: string; title: string };
 }
 
-export type ResultRow = Row & { type: SearchHit['type'] };
+export type ResultRow = Row & {
+	type: SearchHit['type'];
+	/** An admin's pinned best match for this query (see `leadWithPinned`). */
+	pinned?: boolean;
+};
 
 /** What `toRow` needs from the page: the type chip's wording, and the query. */
 export interface RowContext {
@@ -220,6 +224,17 @@ export function groupRows(rows: ResultRow[]): ResultGroup[] {
 		labelKey: g.labelKey,
 		rows: by.get(g.type)!
 	}));
+}
+
+/**
+ * Put the group holding a pinned best match first. Groups otherwise keep their
+ * fixed order (GROUP_ORDER), so a pinned topic would sit below every book — not
+ * leading anything. The server already put the pinned hit first in the merged
+ * list, so within its group it is already the top row.
+ */
+export function leadWithPinned(groups: ResultGroup[]): ResultGroup[] {
+	const i = groups.findIndex((g) => g.rows.some((r) => r.pinned));
+	return i > 0 ? [groups[i], ...groups.slice(0, i), ...groups.slice(i + 1)] : groups;
 }
 
 export interface PassageBook {

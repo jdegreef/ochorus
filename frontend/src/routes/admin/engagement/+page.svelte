@@ -2,8 +2,15 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
+	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
-	import { formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
+	import ReachSpark from '$lib/components/ReachSpark.svelte';
+	import Sparkline from '$lib/components/Sparkline.svelte';
+	import SectionBar from '$lib/components/SectionBar.svelte';
+	import EventMarker from '$lib/components/EventMarker.svelte';
+	import { adminEditionHref, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -13,7 +20,6 @@
 	const weekLabel = (iso: string) =>
 		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 
-	const weekMax = $derived(Math.max(1, ...(data?.weekly_active.map((w) => w.readers) ?? [1])));
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.readers) ?? [1])));
 	const heartKindMax = $derived(Math.max(1, ...(data?.hearts_by_kind.map((h) => h.count) ?? [1])));
 
@@ -31,45 +37,66 @@
 	};
 	const kindLabel = (k: string) => kindLabels[k] ?? k.charAt(0).toUpperCase() + k.slice(1);
 
-	// Sparkline for the Active · 7d tile: the 8-week active series as one line, so
-	// the trend behind the number reads at a glance. Built to a 100×28 viewBox.
-	const sparkPoints = $derived.by(() => {
-		const series = data?.weekly_active ?? [];
-		if (series.length < 2) return '';
-		const n = series.length - 1;
-		return series
-			.map((w, i) => `${(i / n) * 100},${26 - (w.readers / weekMax) * 24}`)
-			.join(' ');
-	});
+	// Each tile's line. Two shapes, on purpose: the weekly chart's 8 calendar
+	// weeks (this week last, dashed as in progress) for tiles whose sub-line
+	// talks in weeks, and six rolling 30-day windows for the 30-day tile, so
+	// its last point is the window its number counts. Marked chapters has no
+	// line: marks keep no record of when each was made.
+	type Line = { values: number[]; labels: string[]; name: string; partial: boolean };
+	const weekLabels = $derived(data?.weekly_active.map((w) => `week of ${weekLabel(w.week)}`) ?? []);
+	const weekly = (values: number[] | undefined, name: string): Line | undefined =>
+		values?.length ? { values, labels: weekLabels, name, partial: true } : undefined;
+	/** What a running total gained this calendar week (the line's last step). */
+	const gained = (total: number[] | undefined) => (total && total.length > 1 ? total[total.length - 1] - total[total.length - 2] : 0);
 
-	// Reading pulse — the headline figures, each with a plain-English sub and,
-	// where there's a prior window to divide by, a week-over-week trend chip. The
-	// active tile also carries the weekly sparkline (`spark`).
-	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; spark?: boolean }[]>(
+	// Reading pulse — the headline figures, each with a plain-English sub, a
+	// week-over-week trend chip where there's a prior window to divide by, and
+	// its line. Readers sits beside Registered users so the accounts that never
+	// opened a chapter read as a gap.
+	const cards = $derived<{ label: string; value: number; sub: string; trend: Trend; line?: Line }[]>(
 		data
 			? [
-					{ label: 'Readers', value: data.overview.readers, sub: 'with saved progress', trend: null },
 					{
 						label: 'Active · 7d',
 						value: data.overview.active_7d,
 						sub: `${fmt(data.overview.active_1d)} today`,
 						trend: periodTrend(data.overview.active_7d, data.overview.active_7d_prev),
-						spark: true
+						line: weekly(data.weekly_active.map((w) => w.readers), 'Readers active per week')
 					},
 					{
 						label: 'Active · 30d',
 						value: data.overview.active_30d,
 						sub: 'in the last month',
-						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev)
+						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev),
+						line: data.trends ? {
+							values: data.trends.active_30d.map((w) => w.readers),
+							labels: data.trends.active_30d.map((w) => `30 days to ${weekLabel(w.end)}`),
+							name: 'Readers per 30 days',
+							partial: false
+						} : undefined
 					},
 					{
 						label: 'Hearts',
 						value: data.overview.hearts,
 						sub: `${fmt(data.overview.hearts_7d)} this week`,
-						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev)
+						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev),
+						line: weekly(data.trends?.hearts, 'Hearts saved per week')
 					},
-					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null },
-					{ label: 'Registered users', value: data.overview.total_users, sub: 'accounts', trend: null }
+					{
+						label: 'Readers',
+						value: data.overview.readers,
+						sub: gained(data.trends?.readers) ? `+${fmt(gained(data.trends?.readers))} since Monday` : 'with saved progress',
+						trend: null,
+						line: weekly(data.trends?.readers, 'Readers, running total')
+					},
+					{
+						label: 'Registered users',
+						value: data.overview.total_users,
+						sub: gained(data.trends?.users) ? `+${fmt(gained(data.trends?.users))} since Monday` : 'accounts',
+						trend: null,
+						line: weekly(data.trends?.users, 'Registered users, running total')
+					},
+					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
 				]
 			: []
 	);
@@ -87,6 +114,9 @@
 	];
 	let topTab = $state<EngagementKind>('book');
 	const topRows = $derived<EngagementTopRow[]>(data?.top_content[topTab] ?? []);
+	// A "where readers stop" column for the kinds whose rows carry a curve
+	// (books: the others are one document each).
+	const hasReach = $derived(topRows.some((r) => r.reach !== undefined));
 	const topTabLabel = $derived(topTabs.find((t) => t.key === topTab)?.label ?? '');
 	const finishedPct = (b: EngagementTopRow) =>
 		b.readers ? Math.round((b.finishers / b.readers) * 100) : 0;
@@ -100,18 +130,62 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
-	// Plan funnel steps, each as a share of "started" so the drop-off reads down
-	// the bars. Started is the 100% baseline; the rest narrow from it.
-	const planSteps = $derived.by(() => {
-		const f = data?.plan_funnel;
-		if (!f || !f.started) return [];
-		const share = (n: number) => Math.round((n / f.started) * 100);
-		return [
-			{ label: 'Started', count: f.started, pct: 100, note: '' },
-			{ label: 'Came back', count: f.returned, pct: share(f.returned), note: `${share(f.returned)}%` },
-			{ label: 'Completed', count: f.completed, pct: share(f.completed), note: `${share(f.completed)}%` }
-		];
+	// The opening sentence: the last 7 days in words, plus this week's events.
+	const summary = $derived(data ? weeklySummary(data, workHref) : null);
+	let copied = $state('');
+	async function copySummary() {
+		if (!summary) return;
+		try {
+			await navigator.clipboard.writeText(summary.text);
+			copied = 'Copied';
+		} catch {
+			copied = 'Couldn’t copy; select the sentence instead';
+		}
+	}
+
+	// What the team did, under the weekly chart: each week's events, and the
+	// one being pointed at, named in the line under the chart.
+	const eventsByWeek = $derived.by(() => {
+		const byWeek = new Map<string, EngagementEvent[]>();
+		for (const e of events) {
+			const list = byWeek.get(e.week);
+			if (list) list.push(e);
+			else byWeek.set(e.week, [e]);
+		}
+		return byWeek;
 	});
+	const events = $derived(data?.events ?? []);
+	const after = (week: string) => followingWeek(data?.weekly_active ?? [], week);
+	let pointed = $state<EngagementEvent | null>(null);
+
+	// The section bar: one link per section the page is showing, in page order.
+	// Sections that hide themselves when empty drop out of the bar too.
+	const sections = $derived(
+		data && data.overview.readers
+			? [
+					summary && { id: 'this-week', label: 'This week' },
+					{ id: 'pulse', label: 'Pulse' },
+					data.time.sessions && { id: 'reading-time', label: 'Reading time' },
+					{ id: 'weekly', label: 'Weekly readers' },
+					data.rising.length && { id: 'rising', label: 'Rising' },
+					{ id: 'top-content', label: 'Top content' },
+					data.highlight_heatmap?.chapters.length && { id: 'marks', label: 'Where readers mark' },
+					data.overview.hearts && { id: 'loved', label: 'Most loved' },
+					data.plan_funnel.started && { id: 'plans', label: 'Plans' },
+					{ id: 'languages', label: 'By language' }
+				].filter((s): s is { id: string; label: string } => !!s)
+			: []
+	);
+
+	const planSteps = $derived(
+		data
+			? [
+					{ label: 'Started', count: data.plan_funnel.started },
+					{ label: 'Came back', count: data.plan_funnel.returned },
+					{ label: 'Completed', count: data.plan_funnel.completed }
+				]
+			: []
+	);
 </script>
 
 <svelte:head><title>Admin · Engagement — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
@@ -144,21 +218,42 @@
 					<p class="mt-1 text-body text-muted">Once signed-in readers start reading, their (anonymous, aggregate) activity shows up here.</p>
 				</div>
 			{:else}
+				<SectionBar {sections} />
+
+				<!-- This week in one sentence (built from the numbers below). -->
+				{#if summary}
+					<section id="this-week" class="anchor mb-6 rounded-card border border-border bg-surface p-5">
+						<div class="flex flex-wrap items-start justify-between gap-3">
+							<p class="max-w-prose font-serif text-h3 leading-snug text-text">
+								{#each summary.parts as part, i (i)}{#if part.href}<a href={part.href} class="text-accent underline decoration-1 underline-offset-4">{part.text}</a>{:else if part.strong}<strong>{part.text}</strong>{:else}{part.text}{/if}{/each}
+							</p>
+							<span class="flex shrink-0 items-center gap-2">
+								{#if copied}<span class="text-micro text-muted" aria-live="polite">{copied}</span>{/if}
+								<button class="btn btn-ghost btn-sm" onclick={copySummary}>Copy summary</button>
+							</span>
+						</div>
+						{#each summary.events as e (e.id)}
+							<p class="mt-3 flex items-center gap-2 rounded-card bg-surface-2 px-3 py-2 text-small text-muted">
+								<EventMarker kind={e.kind} />
+								<span>This week: <span class="font-semibold text-text">{e.title}</span>, {e.detail}.</span>
+							</p>
+						{/each}
+					</section>
+				{/if}
+
 				<!-- Reading pulse -->
-				<p class="section-label">Reading pulse</p>
-				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+				<p id="pulse" class="anchor section-label">Reading pulse</p>
+				<!-- Three across at most: at six the tiles were too narrow for a label and
+				     its chip on one line, so "Active · 7d" broke at the dot. -->
+				<section class="grid grid-cols-2 gap-3 sm:grid-cols-3">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
 							<div class="flex items-start justify-between gap-2">
 								<div class="stat-number">{fmt(c.value)}</div>
-								{#if c.spark && sparkPoints}
-									<svg class="spark" viewBox="0 0 100 28" preserveAspectRatio="none" aria-hidden="true">
-										<polyline points={sparkPoints} />
-									</svg>
-								{/if}
+								{#if c.line}<Sparkline {...c.line} />{/if}
 							</div>
 							<div class="mt-2 flex items-center gap-2">
-								<span class="text-small font-semibold text-text">{c.label}</span>
+								<span class="whitespace-nowrap text-small font-semibold text-text">{c.label}</span>
 								<TrendChip trend={c.trend} />
 							</div>
 							<div class="text-small text-muted">{c.sub}</div>
@@ -174,20 +269,23 @@
 
 				<!-- Reading time (from sittings) -->
 				{#if d.time.sessions}
-					<section class="mt-8 rounded-card border border-border bg-surface p-5">
+					<section id="reading-time" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Reading time</h2>
 							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time.</span>
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [
-								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings` },
-								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers` },
-								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers` },
-								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
+								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings`, line: undefined },
+								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers`, line: undefined },
+								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
+								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers`, line: undefined }
 							] as c (c.label)}
-								<div class="rounded-card border border-border bg-surface-2 p-4">
-									<div class="stat-number">{c.text}</div>
+								<div class="rounded-card bg-surface-2 p-4">
+									<div class="flex items-start justify-between gap-2">
+										<div class="stat-number">{c.text}</div>
+										{#if c.line}<Sparkline {...c.line} format={formatDuration} />{/if}
+									</div>
 									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 									<div class="text-small text-muted">{c.sub}</div>
 								</div>
@@ -197,25 +295,61 @@
 				{/if}
 
 				<!-- Weekly active -->
-				<section class="mt-8 rounded-card border border-border bg-surface p-5">
+				<section id="weekly" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">Weekly active readers</h2>
-					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.weekly_active as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
-								<div class="text-small tabular-nums text-muted">{w.readers || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.readers / weekMax) * 100}%; min-height: {w.readers ? '3px' : '0'}"
-								></div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
+					<ColumnChart
+						columns={d.weekly_active.map((w, i) => ({
+							key: w.week,
+							label: weekLabel(w.week),
+							value: w.readers,
+							current: i === d.weekly_active.length - 1,
+							title: `Week of ${weekLabel(w.week)} · ${fmt(w.readers)} reader${w.readers === 1 ? '' : 's'}`
+						}))}
+					>
+						{#snippet foot(col)}
+							<!-- What happened that week, under its bar (wide screens; the list
+							     below carries the same events on a phone). -->
+							<div class="hidden h-5 items-center justify-center gap-1 sm:flex">
+								{#each eventsByWeek.get(col.key) ?? [] as e (e.id)}
+									<EventMarker kind={e.kind} label="{e.title}, {e.detail}" active={pointed === e} onpoint={() => (pointed = e)} />
+								{/each}
 							</div>
+						{/snippet}
+					</ColumnChart>
+					{#if events.length}
+						<p class="mt-2 hidden min-h-[2.6em] text-small text-muted sm:block" aria-live="polite">
+							{#if pointed}
+								{@const n = after(pointed.week)}
+								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />{n}{/if}
+							{:else}
+								Hover or tap a marker to see what happened that week.
+							{/if}
+						</p>
+						<ul class="mt-3 divide-y divide-border border-t border-border sm:hidden">
+							{#each [...events].reverse() as e (e.id)}
+								{@const n = after(e.week)}
+								<li class="flex items-center gap-2 py-2 text-small">
+									<span class="w-12 shrink-0 tabular-nums text-muted">{weekLabel(e.date)}</span>
+									<EventMarker kind={e.kind} />
+									<span class="min-w-0 flex-1"><span class="font-semibold text-text">{e.title}</span> <span class="text-muted">{e.detail}</span></span>
+									<span class="max-w-[9rem] text-end text-micro text-muted">{n ?? 'this week'}</span>
+								</li>
+							{/each}
+						</ul>
+					{/if}
+					<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-micro text-muted">
+						<span>The last bar is this week so far.</span>
+						{#each Object.entries(EVENT_KINDS) as [k, { label }] (k)}
+							{#if events.some((e) => e.kind === k)}
+								<span class="inline-flex items-center gap-1.5"><EventMarker kind={k as EngagementEvent['kind']} small />{label}</span>
+							{/if}
 						{/each}
-					</div>
+					</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->
 				{#if d.rising.length}
-					<section class="mt-8 rounded-card border border-border bg-surface p-5">
+					<section id="rising" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Rising this week</h2>
 							<span class="text-small text-muted">Biggest gain in weekly readers vs last week — what's catching on now.</span>
@@ -237,7 +371,7 @@
 				{/if}
 
 				<!-- Top content — reach vs depth, by kind -->
-				<section class="mt-8 rounded-card border border-border bg-surface p-5">
+				<section id="top-content" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 					<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 						<h2 class="text-h3">Top content</h2>
 						<span class="text-small text-muted">An open isn't a read — reach and depth side by side.</span>
@@ -260,6 +394,7 @@
 										<th class="py-2 pe-3 text-start font-semibold">Title</th>
 										<th class="px-3 py-2 text-end font-semibold">Readers</th>
 										<th class="px-3 py-2 text-end font-semibold">Finished</th>
+										{#if hasReach}<th class="px-3 py-2 text-start font-semibold">Where readers stop</th>{/if}
 										<th class="px-3 py-2 text-end font-semibold">Hearts</th>
 										<th class="ps-3 py-2 text-end font-semibold">Highlighted</th>
 									</tr>
@@ -267,7 +402,7 @@
 								<tbody>
 									{#each topRows as b (`${b.kind}:${b.slug}`)}
 										<tr class="border-t border-border">
-											<td class="max-w-0 py-2 pe-3">
+											<td class="max-w-0 py-2 pe-3" class:min-w-48={hasReach}>
 												<a href={workHref(b)} class="block truncate text-body text-text hover:text-accent">
 													{b.title}{#if b.author}<span class="text-small text-muted"> · {b.author}</span>{/if}
 												</a>
@@ -281,6 +416,18 @@
 													<span class="w-9 shrink-0 text-end text-micro text-muted tabular-nums">{finishedPct(b)}%</span>
 												</div>
 											</td>
+											{#if hasReach}
+												<td class="px-3 py-2">
+													{#if b.reach}
+														<!-- The full chart, with chapter lengths and flags, is on the book's admin page. -->
+														<a href={adminEditionHref(b.slug, b.reach.language)} class="block w-fit hover:opacity-80">
+															<ReachSpark reach={b.reach} />
+														</a>
+													{:else}
+														<span class="text-micro text-muted">—</span>
+													{/if}
+												</td>
+											{/if}
 											<td class="px-3 py-2 text-end tabular-nums">{fmt(b.hearts)}</td>
 											<td class="ps-3 py-2 text-end tabular-nums">{fmt(b.highlighters)}</td>
 										</tr>
@@ -296,7 +443,7 @@
 				<!-- Highlight heatmap — where readers mark up the most-marked book -->
 				{#if d.highlight_heatmap && d.highlight_heatmap.chapters.length}
 					{@const hm = d.highlight_heatmap}
-					<section class="mt-6 rounded-card border border-border bg-surface p-5">
+					<section id="marks" class="anchor mt-6 rounded-card border border-border bg-surface p-5">
 						<div class="mb-1 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Where readers mark up</h2>
 							<span class="text-small text-muted">Highlight density by chapter</span>
@@ -330,7 +477,7 @@
 
 				<!-- Hearts: most loved + saved by kind -->
 				{#if d.overview.hearts}
-					<div class="mt-6 grid gap-6 lg:grid-cols-2">
+					<div id="loved" class="anchor mt-6 grid gap-6 lg:grid-cols-2">
 						<section class="rounded-card border border-border bg-surface p-5">
 							<h2 class="text-h3 mb-1">Most loved</h2>
 							<p class="mb-3 text-small text-muted">The works readers hearted most — books, sermons and authors.</p>
@@ -372,24 +519,12 @@
 
 				<!-- Reading plans: funnel + per-plan -->
 				{#if d.plan_funnel.started}
-					<section class="mt-6 rounded-card border border-border bg-surface p-5">
+					<section id="plans" class="anchor mt-6 rounded-card border border-border bg-surface p-5">
 						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Reading plans</h2>
 							<span class="text-small text-muted">Plans live or die on retention — where readers drop off.</span>
 						</div>
-						<div class="space-y-2">
-							{#each planSteps as s (s.label)}
-								<div class="flex items-center gap-3">
-									<span class="w-24 shrink-0 text-small text-text">{s.label}</span>
-									<div class="h-4 flex-1 overflow-hidden rounded-full bg-surface-2">
-										<div class="h-full rounded-full bg-accent-soft" style="width: {s.pct}%"></div>
-									</div>
-									<span class="w-24 shrink-0 text-end text-small tabular-nums text-muted">
-										<span class="font-semibold text-text">{fmt(s.count)}</span>{#if s.note} · {s.note}{/if}
-									</span>
-								</div>
-							{/each}
-						</div>
+						<FunnelBars steps={planSteps} />
 						{#if d.plan_funnel.by_plan.length}
 							<div class="mt-5 overflow-x-auto">
 								<table class="w-full">
@@ -422,7 +557,7 @@
 				{/if}
 
 				<!-- By language -->
-				<section class="mt-6 rounded-card border border-border bg-surface p-5">
+				<section id="languages" class="anchor mt-6 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-3">Readers by language</h2>
 					<ul class="space-y-2">
 						{#each d.by_language as l (l.code)}
@@ -442,6 +577,12 @@
 </div>
 
 <style>
+	/* A section the bar links to: a jump lands clear of the site header and
+	   the section bar (its measured height, published by SectionBar), plus the
+	   0.5rem the other pages' anchors add. */
+	.anchor {
+		scroll-margin-top: calc(var(--appnav-h, 0px) + var(--section-bar-h, 44px) + 0.5rem);
+	}
 	/* Privacy badge — a persistent reminder that this page is aggregate-only,
 	   dressed as a quiet feature rather than fine print. */
 	.privacy-badge {
@@ -457,20 +598,6 @@
 		background: var(--accent);
 	}
 
-	/* Reading-pulse sparkline — the 8-week active line behind the number. */
-	.spark {
-		width: 68px;
-		height: 26px;
-		flex-shrink: 0;
-	}
-	.spark polyline {
-		fill: none;
-		stroke: var(--accent);
-		stroke-width: 1.6;
-		stroke-linecap: round;
-		stroke-linejoin: round;
-		vector-effect: non-scaling-stroke;
-	}
 
 	/* Highlight heatmap — one gold cell per chapter, wrapping across the width.
 	   Gold is the reading-mark colour (STYLE_GUIDE §5); 2px corners keep the

@@ -134,6 +134,52 @@
    never mistake a style for it. */
 @import './lib/site-fonts.css';
 
+/* Metric-matched fallbacks for the two house web faces — the CLS fix.
+   Fraunces and Hanken ship `font-display: swap`, so until the web file
+   arrives the Latin text is painted in the first INSTANTLY-available face the
+   stack reaches: a local device font (Georgia for the serif, the system sans
+   for Hanken), because the other web fallbacks ('PT Serif', 'PT Sans') aren't
+   downloaded yet either. A device font with different metrics reflows the line
+   when the web font swaps in — measured in Search Console as mobile CLS > 0.1
+   across ~120 URLs (2026-10, the one failing Core Web Vital; LCP/INP were fine).
+
+   These two faces alias the SAME local device fonts but override their metrics
+   so the fallback occupies the web font's exact box: `size-adjust` matches the
+   average advance width, and `ascent/descent/line-gap-override` match the line
+   box. The overrides are @capsizecss's formulas computed from the shipped
+   woff2 (Fraunces/Hanken) against the macOS Georgia/Arial — see
+   scripts/font-fallback-metrics.py, which regenerates them. Each stack names
+   the matching face immediately before its device fallback (see --font-display
+   / --font-sans), so the swap window renders in a box-for-box stand-in and the
+   line no longer jumps. Latin only: the non-Latin scripts keep their own named
+   faces ahead of this in the stack. */
+/* The `src` lists a device serif/sans for EVERY platform, not just the
+   iOS/macOS/Windows Georgia & Arial the overrides were computed against: Android
+   Chrome (a large share of the mobile traffic this fix is for) ships neither, so
+   a Georgia-only alias would be inert there and the shift would stay. It is safe
+   to widen because `ascent/descent/line-gap-override` reproduce the web font's
+   VERTICAL box — which is what CLS measures — no matter which local font the src
+   resolves to; only `size-adjust` (horizontal) is tuned to Georgia/Arial, and
+   the other serifs/sans here are metric-close enough that the leftover width
+   error is negligible. The computed-against font leads each list so the common
+   platforms get the exact match. */
+@font-face {
+	font-family: 'Fraunces Fallback';
+	src: local('Georgia'), local('Noto Serif'), local('Droid Serif');
+	size-adjust: 115.6957%;
+	ascent-override: 84.5321%;
+	descent-override: 22.0406%;
+	line-gap-override: 0%;
+}
+@font-face {
+	font-family: 'Hanken Grotesk Fallback';
+	src: local('Arial'), local('Helvetica Neue'), local('Helvetica'), local('Roboto'), local('Noto Sans');
+	size-adjust: 101.519%;
+	ascent-override: 98.5037%;
+	descent-override: 29.8466%;
+	line-gap-override: 0%;
+}
+
 /* Map semantic theme tokens onto Tailwind color utilities so `bg-surface
    text-text border-border` respond to the runtime [data-theme] switch. */
 @theme inline {
@@ -208,10 +254,10 @@
    style (site-fonts.css) — only the ones that say var(--font-display) would.
    Plain, the utilities emit `var(--font-display)` and follow the token. */
 @theme {
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
-		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 }
 
 /* The cover faces, named once — beside the @import that loads them, so adding
@@ -309,6 +355,43 @@
 	--shelf-back: #262017;
 	--shelf-wood: #6a4a2f;
 	--shelf-wood-edge: #3b2a1c;
+	/* PAGE TEXTURE (design wave 1). --grain is a faint paper tooth laid over
+	   --bg (body) and every .page-band: fractal noise thresholded to sparse specks
+	   (the discrete alpha table keeps only the top of the noise), light on
+	   lamplight, warm brown on paper and sepia. Sparse rather than a uniform
+	   wash, so it reads as paper without moving the ground's average colour
+	   (a wash darkened paper visibly and showed no texture at all). An inline
+	   SVG data: URI (img-src allows data:), one 180px tile, no request.
+	   --band is the contrasting ground of a .page-band section, a step off
+	   --bg (lighter on lamplight, deeper on paper and sepia); every text and
+	   hue token clears 4.5:1 on it (libraryPalette.test.ts). Lamplight's grain
+	   is named (--grain-light-specks) because .night-band reuses it in every
+	   theme; paper and sepia override --grain, never this. */
+	--grain-light-specks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .9 0 0 0 0 .8 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .10 .10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--grain: var(--grain-light-specks);
+	--band: #1d1914;
+
+	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
+	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
+	   ground for chips and tiles. Every hue clears 4.5:1 as text on --bg,
+	   --surface, --surface-2 AND on its own -soft, in all three themes
+	   (libraryPalette.test.ts measures it). Where a colour MEANS a library
+	   section, components go through the role aliases below (`--section-*`,
+	   applied by `data-section`), so re-assigning a section's colour is one
+	   line. Elsewhere a hue is just a colour — the stat tiles, for instance,
+	   name hues directly. Ochorus-only: Take Root has no sections. */
+	--hue-indigo: #9c9af2;
+	--hue-indigo-soft: #221f33;
+	--hue-oxblood: #ec958a;
+	--hue-oxblood-soft: #33201d;
+	--hue-cypress: #8ecaa8;
+	--hue-cypress-soft: #1a2a21;
+	--hue-ochre: #e0b45c;
+	--hue-ochre-soft: #2e2515;
+	--hue-slate: #9fbfe0;
+	--hue-slate-soft: #1b2531;
+	--hue-plum: #d8a5ca;
+	--hue-plum-soft: #2e1f2a;
 	/* THE SCRIPTS FRAUNCES DOES NOT COVER. Ochorus reads in eight languages and
 	   three of them are not Latin; Fraunces has no Arabic and no Devanagari, and
 	   Georgia behind it has no Devanagari either. So ~609,000 words of Arabic and
@@ -334,10 +417,10 @@
 	   PT Serif above. Hanken was not even a partial answer for Cyrillic — it
 	   ships `cyrillic-ext` (U+0460-052F) and not the base block, so Б, і, ї and є
 	   all fell through it and only ґ did not. Latin still never leaves Hanken. */
-	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', Georgia,
+	--font-display: 'Fraunces Variable', 'Amiri', 'Tiro Devanagari Hindi', 'Noto Serif Ethiopic', 'PT Serif', 'Fraunces Fallback', Georgia,
 		'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk Variable', 'Noto Sans Arabic', 'Noto Sans Devanagari', 'Noto Sans Ethiopic',
-		'PT Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+		'PT Sans', 'Hanken Grotesk Fallback', ui-sans-serif, system-ui, -apple-system, sans-serif;
 	--reading-scale: 1;
 	/* Motion, per STYLE_GUIDE §7 (quiet and quick, 120-240ms). Eight distinct
 	   durations had accumulated across the app, including a 0.28s and a 0.3s
@@ -368,6 +451,20 @@
 	--shelf-back: #f1e8d8;
 	--shelf-wood: #b98a5c;
 	--shelf-wood-edge: #8a6440;
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .16 .16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--band: #f1e8d8;
+	--hue-indigo: #3f3d9a;
+	--hue-indigo-soft: #ecebf7;
+	--hue-oxblood: #8a2f2a;
+	--hue-oxblood-soft: #f7e7e3;
+	--hue-cypress: #2c5a43;
+	--hue-cypress-soft: #e3efe7;
+	--hue-ochre: #7d5512;
+	--hue-ochre-soft: #f6ecd8;
+	--hue-slate: #38557a;
+	--hue-slate-soft: #e5ecf3;
+	--hue-plum: #6b3a5e;
+	--hue-plum-soft: #f3e7f0;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -398,6 +495,73 @@
 	--shelf-back: #e8dbbf;
 	--shelf-wood: #a97b4d;
 	--shelf-wood-edge: #7a5634;
+	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .14 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .18 .18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	--band: #ece1c9;
+	--hue-indigo: #3f3d9a;
+	--hue-indigo-soft: #e9e5f3;
+	--hue-oxblood: #842c27;
+	--hue-oxblood-soft: #f1ded6;
+	--hue-cypress: #2a5640;
+	--hue-cypress-soft: #dde8db;
+	--hue-ochre: #74500f;
+	--hue-ochre-soft: #efe0c2;
+	--hue-slate: #35517a;
+	--hue-slate-soft: #e0e4e6;
+	--hue-plum: #663759;
+	--hue-plum-soft: #ecdde3;
+}
+
+/* Which hue each library section wears (nav icon, active pill, section
+   chips). Theme-independent: each alias follows its hue through the themes.
+   Declared on .night-band as well, so inside one the aliases resolve against
+   the band's own hues rather than inheriting the page theme's. */
+:root,
+.night-band {
+	--section-books: var(--hue-indigo);
+	--section-books-soft: var(--hue-indigo-soft);
+	--section-sermons: var(--hue-oxblood);
+	--section-sermons-soft: var(--hue-oxblood-soft);
+	--section-plans: var(--hue-cypress);
+	--section-plans-soft: var(--hue-cypress-soft);
+	--section-topics: var(--hue-ochre);
+	--section-topics-soft: var(--hue-ochre-soft);
+	--section-biographies: var(--hue-slate);
+	--section-biographies-soft: var(--hue-slate-soft);
+	--section-originals: var(--hue-plum);
+	--section-originals-soft: var(--hue-plum-soft);
+}
+
+/* `data-section="books"` on any element puts that section's hue in scope as
+   --section-hue / --section-hue-soft; an icon that is its direct child wears
+   it (the top nav, the phone More sheet). The mapping lives here, not in
+   markup, so a misspelt section fails to match rather than silently building
+   a var() that resolves to nothing. */
+[data-section='books'] {
+	--section-hue: var(--section-books);
+	--section-hue-soft: var(--section-books-soft);
+}
+[data-section='sermons'] {
+	--section-hue: var(--section-sermons);
+	--section-hue-soft: var(--section-sermons-soft);
+}
+[data-section='plans'] {
+	--section-hue: var(--section-plans);
+	--section-hue-soft: var(--section-plans-soft);
+}
+[data-section='topics'] {
+	--section-hue: var(--section-topics);
+	--section-hue-soft: var(--section-topics-soft);
+}
+[data-section='biographies'] {
+	--section-hue: var(--section-biographies);
+	--section-hue-soft: var(--section-biographies-soft);
+}
+[data-section='originals'] {
+	--section-hue: var(--section-originals);
+	--section-hue-soft: var(--section-originals-soft);
+}
+[data-section] > svg {
+	color: var(--section-hue);
 }
 
 @layer base {
@@ -430,7 +594,8 @@
 	   (site-fonts.css), and html would compute it against the house stack. */
 	body {
 		font-family: var(--font-sans);
-		background: var(--bg);
+		background-color: var(--bg);
+		background-image: var(--grain);
 		color: var(--text);
 		min-height: 100%;
 	}
@@ -1014,7 +1179,8 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 	   and its attribute selector outranks a bare :root, so without this the
 	   lamplight palette printed — cream text on white paper. */
 	:root,
-	:root[data-theme] {
+	:root[data-theme],
+	.night-band {
 		--bg: #ffffff;
 		--surface: #ffffff;
 		--text: #000000;
@@ -1022,6 +1188,14 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 		--border: #999999;
 		--border-strong: #666666;
 		--accent: #000000;
+		/* Ink on an accent fill, and the quiet fill behind chips: the screen values
+		   are lamplight's (#16130f ink, a dark brown fill), which on a black accent
+		   or white paper print unreadable. */
+		--accent-contrast: #ffffff;
+		--surface-2: #ffffff;
+		/* A .page-band's ground and the paper grain are screen texture. */
+		--band: #ffffff;
+		--grain: none;
 	}
 	body {
 		background: #ffffff;
@@ -1072,6 +1246,23 @@ nav.appnav {
 	z-index: 40;
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
+}
+/* The nav's height until the layout measures it and publishes the real figure
+   inline as --appnav-h (on `.app-root`, its own element): what a prerendered
+   page's sticky bars and a cold `/page/#id` jump clear before hydration.
+   Measured: one row 56px; two rows (768–1023px, the links' own row below) 105px. */
+.app-root {
+	--appnav-h: 3.5rem;
+}
+@media (min-width: 768px) and (max-width: 1023.98px) {
+	.app-root {
+		--appnav-h: 6.5625rem;
+	}
+}
+@media print {
+	.app-root {
+		--appnav-h: 0px;
+	}
 }
 /* The reading routes opt out: their own bar pins to the top and carries
    back/contents/settings, so a second sticky bar would take ~56px of reading
@@ -1147,9 +1338,13 @@ nav.appnav .navlinks a:hover {
 	background: var(--surface);
 	text-decoration: none;
 }
+/* A section link's icon wears its hue at rest (the `[data-section] > svg`
+   rule), so the bar reads as five places rather than five words; the label
+   stays muted until hover, and the active pill takes the section's own soft
+   ground. Home has no section and keeps the accent. */
 nav.appnav .navlinks a.active {
-	color: var(--accent);
-	background: var(--accent-soft);
+	color: var(--section-hue, var(--accent));
+	background: var(--section-hue-soft, var(--accent-soft));
 	font-weight: 600;
 }
 /* The logo supplies its own wordmark, so this is a frame for artwork, not a
@@ -1590,6 +1785,43 @@ nav.appnav .navsearch:hover {
 	border-color: color-mix(in srgb, var(--shelf-hue) 55%, var(--border));
 	box-shadow: 0 6px 20px -12px color-mix(in srgb, var(--shelf-hue) 70%, transparent);
 }
+/* A shelf card with its own action link (ShelfCard `action`): the box is the
+   card, its band + body are one link, and the action sits in a foot below. */
+.shelf-card-main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	color: inherit;
+	text-decoration: none;
+}
+.shelf-card-main:hover {
+	text-decoration: none;
+}
+/* The link fills the clipped box (overflow: hidden), so its focus ring goes
+   inside it — drawn outside, it was cut off on every edge. */
+.shelf-card-main:focus-visible {
+	outline-offset: -2px;
+}
+/* Hovering the foot's own link must not light the card as if the card link
+   were the target: the box rests while the pointer is on the action. */
+.shelf-card--action:has(.shelf-card-foot:hover) {
+	border-color: var(--border);
+	box-shadow: none;
+	transform: none;
+}
+.shelf-card--action:has(.shelf-card-foot:hover) .shelf-card-title {
+	color: var(--text);
+}
+.shelf-card--action .shelf-card-body {
+	padding-bottom: 0.75rem;
+}
+.shelf-card-foot {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0.6rem;
+	padding: 0 1.1rem 1.15rem;
+}
 /* ── Hue bands ─────────────────────────────────────────────────────────────
    The colour-washed ground an item's own hue is allowed to tint: a wash from
    the top-inline-start corner over a barely-tinted surface, with a hairline at
@@ -1675,6 +1907,14 @@ nav.appnav .navsearch:hover {
 	font-weight: 600;
 	color: var(--text);
 	transition: color var(--duration-fast);
+}
+.shelf-card-subtitle {
+	display: block;
+	margin-top: 0.125rem;
+	font-family: var(--font-sans);
+	font-size: var(--fs-small);
+	font-weight: 400;
+	color: var(--muted);
 }
 .shelf-card:hover .shelf-card-title {
 	color: color-mix(in srgb, var(--shelf-hue) 78%, var(--text));
@@ -1797,6 +2037,31 @@ nav.appnav .navsearch:hover {
 	}
 }
 
+/* The library's own shelf (/books) runs one step further: seven across on a
+   wide desktop, where the column has the room. Keyed off the SHELF's width, not
+   the viewport — the page-col is capped by the reader's page-width setting, so
+   at the default 76rem a 1920px screen still gives a ~1176px shelf, and a
+   viewport query would put seven columns into a narrowed column too.
+
+   Same 154px card bar as the ramp above: seven 154px cards and six 1rem gaps
+   need ~1174px, so 7-up starts at a 73rem (1168px) shelf — which the default
+   page width reaches from a ~1250px viewport — and 6-up at 68rem (1088px,
+   ~168px cards) fills the step between that and the lg 5-up. Below these, the
+   media ramp above applies unchanged; other shelves keep six. */
+.book-shelf-room {
+	container: book-shelf / inline-size;
+}
+@container book-shelf (min-width: 68rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(6, minmax(0, 1fr));
+	}
+}
+@container book-shelf (min-width: 73rem) {
+	.book-grid--library {
+		grid-template-columns: repeat(7, minmax(0, 1fr));
+	}
+}
+
 /* The fan of covers in the band. Overlapped and slightly rotated so a shelf
    reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
@@ -1860,6 +2125,27 @@ nav.appnav .navsearch:hover {
 }
 .cover-fan .cover:nth-child(4) {
 	transform: rotate(7deg);
+}
+/* The large fan (ShelfCard fan="lg", the series index): covers at a width
+   their titles can be read at, centred in a taller band with no badge. The
+   fan pads its block and end edges so the bigger tiles' rotated corners
+   aren't sliced by its overflow clip. */
+.shelf-card-band.fan-lg {
+	justify-content: center;
+	min-height: 8.75rem;
+	padding-block: 1rem 0.7rem;
+}
+.shelf-card-band.fan-lg > .cover-fan {
+	margin-inline-start: 0;
+	padding-block: 0.35rem;
+	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's tilt */
+	max-width: 100%;
+}
+.fan-lg .cover-fan > * {
+	margin-inline-start: -1.1rem;
+}
+.fan-lg .cover-fan .cover {
+	width: 4.25rem;
 }
 /* The bare-ground fallback only (`> img`): a drawn BookCover inside `.cover`
    sizes its own images, and this rule would crop its mat. */
@@ -1941,10 +2227,10 @@ nav.appnav .navsearch:hover {
 	color: color-mix(in srgb, var(--row-hue) 70%, var(--text));
 }
 /* ── Sermon index: table-of-contents row ─────────────────────────────────────
-   The row now reads like a book's contents: one line per sermon (title ·
-   passage · a dotted leader · length), with the brief revealed on click. The
-   emblem + content flex layout of `.sermon-row` above is unchanged; what
-   follows styles the one-line entry and the disclosed brief. */
+   The row reads like a book's contents: one line per sermon (title · passage ·
+   a dotted leader · length), then a two-line preview of the brief that the
+   chevron opens in full. The emblem + content flex layout of `.sermon-row`
+   above is unchanged; what follows styles the one-line entry and the brief. */
 
 /* Heading wraps the toggle (WAI accordion pattern); it carries no visual weight
    of its own — the title span inside does. */
@@ -2012,14 +2298,12 @@ a.sermon-row-title:hover {
 .sermon-row.is-open .sermon-row-chevron {
 	transform: rotate(180deg);
 }
-/* The brief, revealed under the entry. It hangs in the content column (already
-   inset past the emblem), and now that it is on-demand rather than always shown,
-   it gets a real reading measure instead of the full row width. */
-.sermon-row-peek {
-	margin-top: 0.7rem;
-}
+/* The brief under the entry: always there as a two-line preview (what a reader
+   chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
+   hangs in the content column (already inset past the emblem) at a reading
+   measure, not the full row width. */
 .sermon-row-brief {
-	margin: 0;
+	margin: 0.4rem 0 0;
 	max-width: 64ch;
 	color: var(--muted);
 }
@@ -2092,6 +2376,11 @@ a.sermon-row-title:hover {
 .cover-rail {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
+	/* Positioned, so it contains every absolute child: an unpositioned
+	   scroller let a card's absolutely-placed parts resolve against the page,
+	   and the Book Series rail on /books widened a 375px phone's layout
+	   viewport to 1173px (page-design: phone traps). */
+	position: relative;
 }
 @media (max-width: 639.98px) {
 	.cover-rail {
@@ -2111,6 +2400,55 @@ a.sermon-row-title:hover {
 		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
 		mask-image: linear-gradient(to left, #000 88%, transparent);
 	}
+}
+
+/* A tab in a page's sticky jump bar (book, author and /scripture sub-navs):
+   quiet until hovered; the active one wears the accent and an underline drawn
+   on the bar's own bottom border (the -1px overlap makes them meet). One
+   definition — the three pages each carried a copy, already drifting. The
+   handler is scrollSpy's `spy.jump`. */
+.subnav-link {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+	font-size: var(--fs-small);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--muted);
+	text-decoration: none;
+}
+.subnav-link:hover {
+	color: var(--text);
+}
+.subnav-link.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+/* A tighter tab, for a bar that also carries a CTA (the book page). */
+.subnav-link-tight {
+	padding-inline: 0.6rem;
+}
+
+/* Scripture heat: how many passages cite a Bible chapter, 0 (coolest) to 4.
+   One definition for the chips (ScriptureChapterChips) and the /scripture
+   legend. Levels 0–3 keep body ink on an accent wash light enough to hold it
+   (≥4.5:1 in every theme); level 4 is the solid accent, and the chip sets its
+   contrast ink. */
+.heat-0 {
+	background: var(--surface-2);
+}
+.heat-1 {
+	background: color-mix(in srgb, var(--accent) 12%, var(--surface-2));
+}
+.heat-2 {
+	background: color-mix(in srgb, var(--accent) 24%, var(--surface-2));
+}
+.heat-3 {
+	background: color-mix(in srgb, var(--accent) 40%, var(--surface-2));
+}
+.heat-4 {
+	background: var(--accent);
 }
 
 /* A row of section tabs that scrolls sideways when it can't fit (the book and
@@ -2155,6 +2493,42 @@ a.sermon-row-title:hover {
 	--fade-dir: to left;
 }
 
+/* A tab in a .tab-strip: quiet ink, the current one in accent with an
+   underline drawn on the row's own bottom border. Shared by the library tabs
+   (Books · Series · A–Z); the book and author pages' jump-navs still scope an
+   identical copy. */
+.subnav-link {
+	display: inline-block;
+	padding: 0.5rem 0.75rem;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px; /* the underline meets the row's own border */
+	font-size: var(--fs-small);
+	font-weight: 500;
+	white-space: nowrap;
+	color: var(--muted);
+	text-decoration: none;
+}
+.subnav-link:hover {
+	color: var(--text);
+}
+.subnav-link.is-active {
+	color: var(--accent);
+	border-bottom-color: var(--accent);
+}
+
+/* Where a reader is with one book of a series — the card's progress segments
+   and its book-list dots wear the same three colours. The track is
+   ProgressBar's: a text tint that shows on any surface, in every theme. */
+.stage-mark {
+	background: color-mix(in srgb, var(--text) 14%, transparent);
+}
+.stage-mark.done {
+	background: var(--accent);
+}
+.stage-mark.reading {
+	background: var(--gold);
+}
+
 /* Any input, select or textarea in the app. One height, one radius, one edge.
    `.filter-field` is the same thing under its original name — the filter rows
    on the browse pages read better with it, and both names resolve here. */
@@ -2179,6 +2553,14 @@ a.sermon-row-title:hover {
 .field.is-active {
 	border-color: var(--accent);
 	color: var(--accent);
+}
+/* A filter-row control that is narrowing the shelf (a facet menu with ticks,
+   the biographies has-books switch): tinted like an active .chip, so "on"
+   reads the same across the row. */
+.filter-field.is-active {
+	background: var(--accent-soft);
+	border-color: var(--accent-soft-border);
+	font-weight: 600;
 }
 .field::placeholder,
 .filter-field::placeholder {
@@ -2356,6 +2738,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	border-color: var(--accent);
 	color: var(--accent);
 	text-decoration: none;
+}
+/* A tag riding inline in a line of text — the A–Z index's young-reader
+   edition chips beside their full text. */
+.tag-sm {
+	padding: 0 0.45rem;
+	font-size: var(--fs-micro);
+	line-height: 1.5;
 }
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
@@ -2538,6 +2927,15 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 		width: 100vw;
 	}
 }
+/* A single-form page (Login, Reset password): the same centred column, held
+   to a 26rem card width instead of the reader's Page-width setting. It used to
+   be a hand-set `mx-auto max-w-[26rem]` the shell guard couldn't see. The
+   doubled selector outranks the phone rule above wherever it sits, so a 500px
+   phone still gets the 26rem card; `100%` (not 100vw) is the old max-w box
+   exactly — capped by <main>, so a classic scrollbar never makes it overflow. */
+.page-col.page-col--narrow {
+	width: min(26rem, 100%);
+}
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,
    not a shell around content, so they keep their own reading measure rather
@@ -2602,4 +3000,72 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	font-size: var(--fs-micro);
 	color: var(--muted);
 	pointer-events: none;
+}
+
+/* A PAGE BAND: a full-width section on the deeper --band ground, so a long page
+   reads as chapters (cream, parchment, cream) rather than one scroll. Wraps
+   one or more self-hiding blocks (each its own `.page-col` section with its
+   own top padding); the band adds the gap above and the padding below, and
+   collapses entirely when nothing inside it rendered a <section>, so a
+   hidden block never leaves an empty stripe. */
+.page-band {
+	background-color: var(--band);
+	background-image: var(--grain);
+	margin-block-start: 3.5rem;
+	padding-block-end: 3.5rem;
+}
+.page-band:not(:has(section)) {
+	display: none;
+}
+
+/* A NIGHT BAND: one deep-indigo band per page, for the feature it most wants
+   seen (covers look their best on a dark ground). It re-declares the theme
+   tokens it touches, so whatever sits inside (BookCard, SectionHeader, links,
+   the library hues and the section aliases) draws in a night palette in all
+   three themes without a variant of its own. Screen only: print gets the
+   white-paper reset (the print block lists .night-band beside :root). Indigo, not lamplight's brown-black, so it still reads
+   as a band on the lamplight page. Every ink clears 4.5:1 on its three
+   grounds (libraryPalette.test.ts). Same rhythm as .page-band, and it
+   collapses the same way when nothing inside rendered a <section>. */
+@media screen {
+	.night-band {
+		--bg: #1a1930;
+		--surface: #232140;
+		--surface-2: #2b2948;
+		--band: #232140;
+		--text: #f1ecdf;
+		--muted: #aca6c6;
+		--accent: #b4b2ff;
+		--accent-contrast: #1a1930;
+		--accent-soft: #34306a;
+		--accent-soft-border: #46427a;
+		--gold: #e8bf6a;
+		--border: #322f52;
+		--border-strong: #7d78a6;
+		--danger: #ef8f84;
+		--warning: #e8bf6a;
+		--shadow-card: 0 10px 24px -12px rgb(0 0 0 / 0.7);
+		--shadow-popover: 0 10px 30px rgb(0 0 0 / 0.5);
+		--hue-indigo: #b4b2ff;
+		--hue-indigo-soft: #34306a;
+		--hue-oxblood: #f0a196;
+		--hue-oxblood-soft: #3a2230;
+		--hue-cypress: #93d0ad;
+		--hue-cypress-soft: #1f3233;
+		--hue-ochre: #e8bf6a;
+		--hue-ochre-soft: #352b2a;
+		--hue-slate: #a9c7e8;
+		--hue-slate-soft: #22304a;
+		--hue-plum: #dfb0d1;
+		--hue-plum-soft: #35233f;
+		color-scheme: dark;
+		color: var(--text);
+		background-color: var(--bg);
+		background-image: var(--grain-light-specks);
+		margin-block-start: 3.5rem;
+		padding-block-end: 3.5rem;
+	}
+}
+.night-band:not(:has(section)) {
+	display: none;
 }

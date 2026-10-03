@@ -117,6 +117,16 @@ AUTHORS: dict[str, AuthorEntry] = {
             "Christ Himself."
         ),
     ),
+    "a-w-tozer": AuthorEntry(
+        slug="a-w-tozer",
+        name="A. W. Tozer",
+        birth_year=1897,
+        death_year=1963,
+        bio=(
+            "Self-taught American pastor of the Christian and Missionary "
+            "Alliance who called the church back to the pursuit of God Himself."
+        ),
+    ),
     "amy-carmichael": AuthorEntry(
         slug="amy-carmichael",
         name="Amy Carmichael",
@@ -777,6 +787,11 @@ BOOKS: list[BookEntry] = [
               "gutenberg", "40460",
               subtitle="The life of Jesus told simply, for young and old",
               cover_color="#7a4a2a"),
+    # A. W. Tozer's The Pursuit of God (1948, Gutenberg #25141): its copyright
+    # was never renewed (no entry in the 1950–92 renewal records, which list
+    # only his later books), so it is US public domain.
+    BookEntry("the-pursuit-of-god", "The Pursuit of God", "a-w-tozer",
+              "gutenberg", "25141", cover_color="#5b3a29"),
 ]
 
 # Chapters of source="web" books: (title, page URL, optional anchor). When an

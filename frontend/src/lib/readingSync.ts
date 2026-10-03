@@ -12,6 +12,13 @@ import {
 } from './shelvesData';
 import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
+import {
+	PLAN_SCHEDULES_EVENT,
+	scheduleFromServer,
+	scheduleToServer,
+	type PlanSchedulePrefs,
+	type ServerPlanSchedule
+} from './planScheduleRows';
 import type { SessionSync } from './sessionClock';
 import {
 	cleanStore,
@@ -28,6 +35,7 @@ import {
 	FAVORITES_KEY,
 	ACTIVITY_KEY,
 	PLANS_KEY,
+	PLAN_SCHEDULE_KEY,
 	BOOKMARKS_KEY,
 	JOURNAL_KEY,
 	SHELVES_KEY,
@@ -115,6 +123,8 @@ interface ServerState {
 	bookmarks?: ServerBookmark[];
 	activity?: string[];
 	plan_progress?: ServerPlanProgress[];
+	/** Each plan's calendar choices (absent on an API from before they synced). */
+	plan_schedules?: ServerPlanSchedule[];
 	/** The merge applied `removed` (an API with tombstones — see removals.ts). */
 	removed_applied?: boolean;
 	journal?: ServerJournalEntry[];
@@ -676,6 +686,42 @@ class ReadingSync {
 		});
 	}
 
+	/** Mirror a plan's calendar choices to the account (the newest choice wins there). */
+	pushPlanSchedule(slug: string, prefs: PlanSchedulePrefs) {
+		if (!this.signedIn || !browser) return;
+		this.#debounce(`plan-schedule:${slug}`, () => {
+			return apiFetch<ServerPlanSchedule>(`/api/reading/plan-schedule/${slug}/`, {
+				method: 'PUT',
+				body: JSON.stringify(scheduleToServer(prefs))
+			})
+				.then((row) => {
+					this.#adoptScheduleStamp(slug, prefs, row);
+					this.#markSynced();
+				})
+				.catch(() => this.#owe());
+		});
+	}
+
+	/** Take the account's word on a choice just pushed. Usually that is only its
+	 *  stamp — the server holds a clock running ahead to a day of skew, and
+	 *  replaying this device's own later would out-date a newer choice from
+	 *  elsewhere. But when the account already held a NEWER choice it keeps that
+	 *  one and returns it: then the whole row comes down and open views
+	 *  refresh. Only if the entry is still the one sent (a newer local choice
+	 *  keeps its own and pushes it). */
+	#adoptScheduleStamp(slug: string, sent: PlanSchedulePrefs, row: ServerPlanSchedule | undefined) {
+		if (!row || !Date.parse(row.client_updated_at)) return;
+		const all = readJson<Record<string, PlanSchedulePrefs>>(PLAN_SCHEDULE_KEY, {});
+		if (!all[slug] || all[slug].updatedAt !== sent.updatedAt) return;
+		const theirs = scheduleFromServer(row);
+		const sameChoice = JSON.stringify(scheduleToServer({ ...sent, updatedAt: 0 })) ===
+			JSON.stringify(scheduleToServer({ ...theirs, updatedAt: 0 }));
+		if (sameChoice && theirs.updatedAt === sent.updatedAt) return;
+		all[slug] = sameChoice ? { ...all[slug], updatedAt: theirs.updatedAt } : theirs;
+		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify(all));
+		if (!sameChoice) window.dispatchEvent(new Event(PLAN_SCHEDULES_EVENT));
+	}
+
 	/**
 	 * First-sign-in reconciliation. Sends the local cache to the merge endpoint,
 	 * then overwrites the cache with the merged server truth so both sides agree.
@@ -699,6 +745,7 @@ class ReadingSync {
 		const localFavorites = readJson<Record<string, number>>(FAVORITES_KEY, {});
 		const localBookmarks = readJson<BookmarksStore>(BOOKMARKS_KEY, {});
 		const localPlans = readJson<Record<string, PlanState>>(PLANS_KEY, {});
+		const localSchedules = readJson<Record<string, PlanSchedulePrefs>>(PLAN_SCHEDULE_KEY, {});
 		// Only what the account is owed, newest first, within the journal's share
 		// of the request (see MERGE_JOURNAL_CHARS). Tombstones ride too: a delete
 		// made offline must reach the account.
@@ -795,6 +842,10 @@ class ReadingSync {
 				started_at: p.startedAt,
 				done: Array.isArray(p.done) ? p.done : []
 			})),
+			plan_schedules: Object.entries(localSchedules).map(([slug, p]) => ({
+				plan_slug: slug,
+				...scheduleToServer(p)
+			})),
 			journal: journalRows,
 			// Every shelf, tombstones too: the server merges per book, so sending
 			// what it already has is harmless, and this is how an offline change
@@ -837,7 +888,8 @@ class ReadingSync {
 				[MARKS_KEY]: localMarks,
 				[FAVORITES_KEY]: localFavorites,
 				[BOOKMARKS_KEY]: localBookmarks,
-				[PLANS_KEY]: localPlans
+				[PLANS_KEY]: localPlans,
+				[PLAN_SCHEDULE_KEY]: localSchedules
 			});
 			// The account now holds everything this device sent.
 			if (localStorage.getItem(SYNC_OWED_KEY) === owedAtStart) localStorage.removeItem(SYNC_OWED_KEY);
@@ -1031,6 +1083,11 @@ class ReadingSync {
 				};
 			}
 			localStorage.setItem(PLANS_KEY, keep(PLANS_KEY, plans));
+		}
+		if (state.plan_schedules) {
+			const schedules: Record<string, PlanSchedulePrefs> = {};
+			for (const p of state.plan_schedules) schedules[p.plan_slug] = scheduleFromServer(p);
+			localStorage.setItem(PLAN_SCHEDULE_KEY, keep(PLAN_SCHEDULE_KEY, schedules));
 		}
 		if (state.journal) {
 			const server: JournalStore = {};

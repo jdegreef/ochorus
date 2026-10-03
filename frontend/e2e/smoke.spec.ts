@@ -340,7 +340,11 @@ test('a biography opens from the list and renders its prose', async ({ page }) =
 	await page.goto('/biographies');
 	await hydrated(page);
 
-	const first = page.locator('a[href*="/authors/"]').nth(1);
+	// The first writer's NAME link — the card's stretched link, the one a reader
+	// clicks. Not "the nth /authors/ link on the page": the Biographies | A–Z
+	// tabs above the list link /authors/ too, and the portrait beside the name
+	// sits under the stretched link's overlay.
+	const first = page.locator('.bio-text a[href*="/authors/"]').first();
 	await expect(first).toBeVisible();
 	await first.click();
 

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import type { Snippet } from 'svelte';
-	import { PORTRAIT_POSITION_DEFAULT, portraitSrcset } from '$lib/portraits';
+	import { PORTRAIT_POSITION_DEFAULT } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 
 	/**
 	 * The heading over one group of a grouped browse shelf — Books by author,
@@ -29,7 +29,8 @@
 		count,
 		as = 'h2',
 		sticky = false,
-		detail
+		detail,
+		blurb
 	}: {
 		name: string;
 		/** Localized href — render the name as a link when present. */
@@ -49,6 +50,11 @@
 		/** Inline content after the name — e.g. an era's year range, or a
 		    search group's bespoke "N of M" count. */
 		detail?: Snippet;
+		/** A line under the heading saying who this group is — the sermons
+		    shelf's preacher tagline. Clamped to two lines, and indented to the
+		    name (past the portrait) from sm up, so the caller needn't know
+		    either; a phone gives it the full width, which it needs. */
+		blurb?: string;
 	} = $props();
 </script>
 
@@ -56,24 +62,20 @@
 	this={as}
 	class={sticky
 		? 'sticky z-10 mb-6 flex items-baseline gap-2 border-b border-border bg-bg pb-2 pt-2 text-h3 text-text'
-		: 'mb-4 flex items-center gap-2.5 text-h3 text-muted'}
+		: `${blurb ? 'mb-1' : 'mb-4'} flex items-center gap-2.5 text-h3 text-muted`}
 	style={sticky ? 'top: var(--pinned-offset, 0px)' : undefined}
 >
-	{#if portraitUrl}
-		{@const source = { src: portraitUrl, srcset: portraitSrcset(portraitUrl) }}
-		<img
-			src={source.src}
-			srcset={source.srcset}
-			use:hydrateSrc={source}
-			sizes="32px"
-			alt=""
-			loading="lazy"
-			width="32"
-			height="32"
-			class="h-8 w-8 shrink-0 rounded-full border border-border object-cover"
-			style="object-position: {portraitPosition}"
-		/>
-	{/if}
+	<Portrait
+		slug=""
+		name=""
+		url={portraitUrl}
+		px={32}
+		position={portraitPosition}
+		tone="color"
+		decorative
+		fallback={false}
+		class="h-8 w-8"
+	/>
 	{#if href}
 		<a {href} class="text-text hover:underline">{name}</a>
 	{:else}
@@ -84,3 +86,9 @@
 		<span class="text-small font-normal count" class:ms-auto={sticky}>{count}</span>
 	{/if}
 </svelte:element>
+{#if blurb}
+	<!-- Indented to the name: the portrait's w-8 plus the heading's gap-2.5. -->
+	<p class="mb-4 line-clamp-2 max-w-prose text-small text-muted {portraitUrl ? 'sm:ps-[2.625rem]' : ''}">
+		{blurb}
+	</p>
+{/if}

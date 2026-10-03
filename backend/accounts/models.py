@@ -211,12 +211,14 @@ class AdminGrant(models.Model):
         email = (email or "").strip().lower()
         if not email:
             return []
-        return [
-            {
-                "capability": g.capability,
-                "verb": g.verb,
-                "languages": sorted(g.language_set),
-                "role": g.role_label,
-            }
-            for g in cls.objects.filter(email=email).order_by("capability")
-        ]
+        return [cls.scope_dict(g) for g in cls.objects.filter(email=email).order_by("capability")]
+
+    @staticmethod
+    def scope_dict(g) -> dict:
+        """One grant row in the shape ``scopes_for`` returns."""
+        return {
+            "capability": g.capability,
+            "verb": g.verb,
+            "languages": sorted(g.language_set),
+            "role": g.role_label,
+        }

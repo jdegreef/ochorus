@@ -5,6 +5,8 @@ edited — on its own. Pure move: no test changed.
 """
 
 
+import io
+
 from django.core.cache import cache
 from django.test import TestCase, override_settings
 from django.utils import timezone
@@ -12,6 +14,7 @@ from rest_framework.test import APIClient
 
 from common.testing import body_of
 
+from . import qa
 from .models import (
     AdminAction,
     Article,
@@ -584,6 +587,8 @@ class AdminAuditTests(TestCase):
         self.assertIn(("humility", 1), mids)  # order 1, has a later chapter, no terminal punct
         drops = [(f["book"], f["order"]) for f in q["missing_dropcap"]["items"]]
         self.assertIn(("humility", 4), drops)
+        # Every body here is wrapped in blocks: nothing sits outside a paragraph.
+        self.assertEqual(q["loose_text"]["total"], 0)
 
     @override_settings(DEBUG=True)
     def test_integrity_checks(self):
@@ -600,6 +605,43 @@ class AdminAuditTests(TestCase):
     def test_requires_admin(self):
         res = self.client.get("/api/admin/audit/")
         self.assertIn(res.status_code, (401, 403))
+
+
+class AdminAuditSplitEvidenceTests(TestCase):
+    """A mid-sentence split quotes both sides of the break — the end of the
+    flagged chapter and the opening of the next — so it can be judged inline."""
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        book = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        long_tail = " ".join(["word"] * 80) + " and so the sentence runs"
+        # Created out of order: the pairing must follow chapter order, not pk.
+        Chapter.objects.create(book=book, order=3, title="Three", body_html="<p>last one runs on</p>")
+        Chapter.objects.create(book=book, order=2, title="Two", body_html="<p>straight on into three</p>")
+        Chapter.objects.create(book=book, order=1, title="One", body_html=f"<p>{long_tail}</p>")
+        # Another book in between must not lend its opening to this one.
+        other = Book.objects.create(author=author, slug="abide", language="en", title="Abide")
+        Chapter.objects.create(book=other, order=1, title="Uno", body_html="<p>Abide in me.</p>")
+
+    @override_settings(DEBUG=True)
+    def test_split_carries_next_chapters_opening(self):
+        res = self.client.get("/api/admin/audit/")
+        splits = {
+            f["order"]: f
+            for f in res.data["quality"]["mid_sentence_splits"]["items"]
+            if f["book"] == "humility"
+        }
+        # The last chapter has no next, so it is never a split (and quotes none).
+        self.assertEqual(sorted(splits), [1, 2])
+        self.assertEqual(splits[1]["next_starts"], "straight on into three")
+        self.assertEqual(splits[2]["next_starts"], "last one runs on")
+        # About a line, cut on a word boundary, ending where the chapter ends.
+        ends = splits[1]["ends"]
+        self.assertLessEqual(len(ends), 160)
+        self.assertGreater(len(ends), 100)
+        self.assertTrue(ends.endswith("and so the sentence runs"))
+        self.assertTrue(ends.startswith("word "))
 
 
 class AdminAuditMultiLanguageTests(TestCase):
@@ -852,6 +894,29 @@ class AdminAuditDismissTests(TestCase):
         dupes = self.client.get("/api/admin/audit/").data["quality"]["duplicate_titles"]
         self.assertEqual([d for d in dupes["items"] if d["title"] == long_title], [])
 
+    def test_loose_text_found_and_dismissible(self):
+        book = Book.objects.get(slug="humility", language="en")
+        Chapter.objects.create(
+            book=book, order=3, title="Pictures",
+            body_html="<p>Before.</p>A caption under a lost picture<p>After.</p><i>Another.</i>",
+        )
+        Chapter.objects.create(book=book, order=4, title="Clean", body_html="<p>Fine <em>prose</em>.</p><hr/>")
+        loose = self.client.get("/api/admin/audit/").data["quality"]["loose_text"]
+        self.assertEqual(loose["total"], 1, "only the chapter with loose text")
+        [f] = loose["items"]
+        self.assertEqual((f["book"], f["language"], f["order"]), ("humility", "en", 3))
+        self.assertEqual(f["loose_runs"], 2)
+        self.assertEqual(f["loose"], "A caption under a lost picture")
+
+        res = self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "loose_text", "book": "humility", "language": "en", "ref": "3"},
+            format="json",
+        )
+        self.assertEqual(res.status_code, 201)
+        loose = self.client.get("/api/admin/audit/").data["quality"]["loose_text"]
+        self.assertEqual((loose["total"], loose["dismissed"]), (0, 1))
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_requires_admin(self):
         res = self.client.post(
@@ -860,6 +925,101 @@ class AdminAuditDismissTests(TestCase):
             format="json",
         )
         self.assertIn(res.status_code, (401, 403))
+
+
+@override_settings(DEBUG=True)
+class AdminAuditWorstBooksTests(TestCase):
+    """"Worst books first": editions ranked by open quality flags, counted on
+    the server over the UNCAPPED scan — the per-check item lists stop at
+    AUDIT_LIMIT, so the browser could not group them accurately."""
+
+    BIG = 120  # chapters in the worst edition: past the 100-row cap
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        # Each chapter trips two checks: a bare "Chapter N" title and a tiny body.
+        # Bodies end in a full stop, so nothing reads as a mid-sentence split.
+        for slug, lang, title, n in (
+            ("bad-pdf", "en", "Bad PDF", self.BIG),
+            ("bad-pdf", "sw", "PDF Mbaya", 3),
+            ("mostly-fine", "en", "Mostly Fine", 2),
+        ):
+            book = Book.objects.create(author=author, slug=slug, language=lang, title=title)
+            for order in range(1, n + 1):
+                Chapter.objects.create(
+                    book=book, order=order, title=f"Chapter {order}", body_html="<p>Short.</p>"
+                )
+        # A clean edition never appears in the ranking.
+        clean = Book.objects.create(author=author, slug="clean", language="en", title="Clean")
+        Chapter.objects.create(
+            book=clean, order=1, title="The Real Title", body_html="<p>" + "Word " * 200 + "end.</p>"
+        )
+
+    def _worst(self, qs=""):
+        res = self.client.get(f"/api/admin/audit/{qs}")
+        self.assertEqual(res.status_code, 200)
+        return res.data["worst_books"]
+
+    def test_counts_beyond_the_item_cap(self):
+        from .content_audit import AUDIT_LIMIT
+
+        res = self.client.get("/api/admin/audit/")
+        # The item list is capped, so the browser could only ever see 100 rows…
+        self.assertEqual(len(res.data["quality"]["tiny_chapters"]["items"]), AUDIT_LIMIT)
+        worst = res.data["worst_books"]
+        top = worst["items"][0]
+        # …but the ranking counts every one of the worst edition's flags.
+        self.assertEqual((top["book"], top["language"], top["title"]), ("bad-pdf", "en", "Bad PDF"))
+        self.assertEqual(top["by_check"], {"generic_titles": self.BIG, "tiny_chapters": self.BIG})
+        self.assertEqual(top["total"], 2 * self.BIG)
+        self.assertEqual(
+            [(r["book"], r["language"], r["total"]) for r in worst["items"]],
+            [("bad-pdf", "en", 240), ("bad-pdf", "sw", 6), ("mostly-fine", "en", 4)],
+        )
+        self.assertEqual(worst["total"], 3, "editions with any open flag; clean is absent")
+
+    def test_accepted_findings_are_not_counted(self):
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "tiny_chapters", "book": "mostly-fine", "language": "en", "ref": "1"},
+            format="json",
+        )
+        # The same ref in another edition is a different finding: still counted.
+        self.client.post(
+            "/api/admin/audit/dismiss/",
+            {"check": "generic_titles", "book": "bad-pdf", "language": "sw", "ref": "1"},
+            format="json",
+        )
+        rows = {(r["book"], r["language"]): r for r in self._worst()["items"]}
+        self.assertEqual(rows[("mostly-fine", "en")]["by_check"], {"generic_titles": 2, "tiny_chapters": 1})
+        self.assertEqual(rows[("bad-pdf", "sw")]["total"], 5)
+        self.assertEqual(rows[("bad-pdf", "en")]["total"], 240)
+
+    def test_duplicate_titles_count_per_edition(self):
+        book = Book.objects.get(slug="mostly-fine", language="en")
+        for order in (3, 4):
+            Chapter.objects.create(
+                book=book, order=order, title="Twice", body_html="<p>" + "Word " * 200 + "end.</p>"
+            )
+        row = next(r for r in self._worst()["items"] if r["book"] == "mostly-fine")
+        self.assertEqual(row["by_check"]["duplicate_titles"], 1)
+        self.assertEqual(row["total"], 5)
+
+    def test_language_filter(self):
+        worst = self._worst("?language=sw")
+        self.assertEqual(
+            [(r["book"], r["language"], r["total"]) for r in worst["items"]],
+            [("bad-pdf", "sw", 6)],
+        )
+        self.assertEqual(worst["total"], 1)
+
+    def test_limit_keeps_the_worst_and_the_edition_count(self):
+        from .content_audit import dismissed_fingerprints, scan_library, worst_books
+
+        worst = worst_books(scan_library(), dismissed_fingerprints(), limit=1)
+        self.assertEqual([(r["book"], r["language"]) for r in worst["items"]], [("bad-pdf", "en")])
+        self.assertEqual(worst["total"], 3)
 
 
 @override_settings(
@@ -909,6 +1069,16 @@ class AdminAuditCacheTests(TestCase):
         ContentRevision.bump()
         self.assertNotEqual(first, self._scanned_at(), "a new revision re-scans")
 
+    def test_chapter_lengths_ride_the_cached_scan(self):
+        # Both giant chapters land in a bar past the threshold, and a filtered
+        # request reads the histogram from the same scan.
+        first = self.client.get("/api/admin/audit/").data
+        filtered = self.client.get("/api/admin/audit/?language=en").data
+        self.assertEqual(filtered["scanned_at"], first["scanned_at"], "not re-scanned")
+        cl = filtered["chapter_lengths"]
+        self.assertEqual(cl, first["chapter_lengths"])  # en is the only edition
+        self.assertEqual(sum(cl["counts"][cl["edges"].index(cl["giant_min"]) + 1:]), 2)
+
     def test_accepting_a_finding_takes_effect_without_a_rescan(self):
         before = self.client.get("/api/admin/audit/")
         self.assertEqual(before.data["quality"]["giant_chapters"]["total"], 2)
@@ -921,6 +1091,82 @@ class AdminAuditCacheTests(TestCase):
         after = self.client.get("/api/admin/audit/")
         self.assertEqual(after.data["quality"]["giant_chapters"]["total"], 1, "dismissal applied")
         self.assertEqual(after.data["scanned_at"], scanned, "and NOT by re-scanning")
+
+
+@override_settings(DEBUG=True)
+class AdminAuditChapterLengthTests(TestCase):
+    """The chapter-length histogram rides the same chapter scan as the checks."""
+
+    def setUp(self):
+        cache.clear()
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        en = Book.objects.create(author=author, slug="humility", language="en", title="Humility")
+        for order, n in enumerate((50, 800, 800, 9000, 20000), start=1):
+            Chapter.objects.create(book=en, order=order, title=f"C{order}", body_html=_words(n))
+        # Empty: an integrity defect, not a length — left out of the chart.
+        Chapter.objects.create(book=en, order=6, title="C6", body_html="")
+        es = Book.objects.create(author=author, slug="humility", language="es", title="Humildad")
+        Chapter.objects.create(book=es, order=1, title="Uno", body_html=_words(50))
+        Chapter.objects.create(book=es, order=2, title="Dos", body_html=_words(2500))
+
+    def tearDown(self):
+        cache.clear()
+
+    def _lengths(self, qs=""):
+        return self.client.get(f"/api/admin/audit/{qs}").data["chapter_lengths"]
+
+    @staticmethod
+    def _flagged(cl):
+        """(tiny, giant) — the counts in the bars either side of the lines."""
+        tiny_edge = cl["edges"].index(cl["tiny_max"])
+        giant_edge = cl["edges"].index(cl["giant_min"])
+        return sum(cl["counts"][: tiny_edge + 1]), sum(cl["counts"][giant_edge + 1:])
+
+    def test_edges_and_thresholds_come_from_qa(self):
+        cl = self._lengths()
+        self.assertEqual(cl["edges"], list(qa.LENGTH_EDGES))
+        self.assertEqual((cl["tiny_max"], cl["giant_min"]), (qa.TINY_MAX, qa.GIANT_MIN))
+        self.assertEqual(len(cl["counts"]), len(cl["edges"]) + 1)
+
+    def test_counts_sum_to_the_non_empty_chapters(self):
+        cl = self._lengths()
+        self.assertEqual(sum(cl["counts"]), Chapter.objects.exclude(body_html="").count())
+        self.assertEqual(sum(cl["counts"]), 7)
+
+    def test_flagged_bars_agree_with_the_tiny_and_giant_checks(self):
+        data = self.client.get("/api/admin/audit/").data
+        tiny, giant = self._flagged(data["chapter_lengths"])
+        self.assertEqual(tiny, data["quality"]["tiny_chapters"]["total"])
+        self.assertEqual(giant, data["quality"]["giant_chapters"]["total"])
+        self.assertEqual((tiny, giant), (2, 2))
+
+    def test_language_filter_narrows_the_histogram(self):
+        en, es = self._lengths("?language=en"), self._lengths("?language=es")
+        self.assertEqual(sum(en["counts"]), 5)
+        self.assertEqual(sum(es["counts"]), 2)
+        self.assertEqual(self._flagged(es), (1, 0))
+        both = [a + b for a, b in zip(en["counts"], es["counts"], strict=True)]
+        self.assertEqual(both, self._lengths()["counts"])
+
+    def test_a_clean_edition_is_still_pickable(self):
+        # Portuguese has one well-formed chapter and no finding at all, but its
+        # length chart must still be reachable from the language picker.
+        author = Author.objects.get(slug="am")
+        pt = Book.objects.create(author=author, slug="humility", language="pt", title="Humildade")
+        Chapter.objects.create(book=pt, order=1, title="Um", body_html=_words(800))
+        data = self.client.get("/api/admin/audit/").data
+        self.assertIn("pt", data["languages"])
+        self.assertEqual(sum(self._lengths("?language=pt")["counts"]), 1)
+
+    def test_unknown_language_is_all_zeros(self):
+        cl = self._lengths("?language=zz")
+        self.assertEqual(cl["counts"], [0] * (len(cl["edges"]) + 1))
+
+
+def _words(n: int) -> str:
+    """A one-paragraph body of n + 1 words that ends on a full stop."""
+    return "<p>" + ("word " * n) + "end.</p>"
 
 
 class AdminEngagementTests(TestCase):
@@ -957,6 +1203,13 @@ class AdminEngagementTests(TestCase):
         )
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="en", chapter_order=1)
         ReadingProgress.objects.create(profile=self.p1, book_slug="abide", language="en", chapter_order=1)
+        # Both read today (the reading-day log, which "Active" counts from).
+        from reading.models import ReadingDay
+
+        from .weeks import day_of
+
+        for p in (self.p1, self.p2):
+            ReadingDay.objects.create(profile=p, day=day_of(timezone.now()))
         ChapterMarks.objects.create(
             profile=self.p1, book_slug="humility", language="en", chapter_order=1,
             marks=[{"id": "a", "p": 0, "s": 0, "e": 5}],
@@ -1060,6 +1313,65 @@ class AdminEngagementTests(TestCase):
         self.assertNotIn(("book", "abide"), rising)
 
     @override_settings(DEBUG=True)
+    def test_a_reader_on_a_book_both_weeks_is_not_a_rise(self):
+        """Saved progress keeps only humility's latest touch (this week), so on
+        its own p1's sitting on it last week was invisible and humility read
+        as +2. The sitting brings p1 back into last week: +1."""
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        s = ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=300, kind="book", book_slug="humility", language="en",
+        )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)  # bypass auto_now
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual((row["this_week"], row["prev_week"], row["delta"]), (2, 1, 1))
+
+    @override_settings(DEBUG=True)
+    def test_a_sitting_counts_in_one_week_and_needs_a_work(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        # Spans the boundary on the device's clock, but the server last heard
+        # from it this week: it's this week's, not both weeks'.
+        ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week,
+            last_seen_at=timezone.now(), seconds=300, kind="book",
+            book_slug="humility", language="en",
+        )
+        # An older client sends no work: it can't be credited to one.
+        old = ReadingSession.objects.create(
+            profile=self.p1, client_id="s2", started_at=last_week, last_seen_at=last_week,
+            seconds=300,
+        )
+        ReadingSession.objects.filter(pk=old.pk).update(updated_at=last_week)
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
+
+    @override_settings(DEBUG=True)
+    def test_an_opened_but_unread_sitting_is_not_a_reader(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        s = ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=0, kind="book", book_slug="humility", language="en",
+        )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
+
+    @override_settings(DEBUG=True)
     def test_highlight_heatmap(self):
         res = self.client.get("/api/admin/engagement/")
         hm = res.data["highlight_heatmap"]
@@ -1111,6 +1423,32 @@ class AdminUsersTests(TestCase):
         self.p3 = mk("en", "paper")  # dormant, no provider, no timezone reported
         ReadingProgress.objects.create(profile=self.p1, book_slug="humility", language="en")
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="sw")
+
+    @override_settings(DEBUG=True)
+    def test_activation_steps_each_narrow_the_one_before(self):
+        """p1 read on two days and finished a book; p2 read on one day and
+        finished a sermon, but one day is not a habit, so p2 stops at
+        "started"; p3 never read."""
+        from datetime import date
+
+        from django.utils import timezone
+
+        from reading.models import ReadingDay, ReadingProgress, WorkKind
+
+        for profile, day in [(self.p1, date(2026, 9, 1)), (self.p1, date(2026, 9, 3)),
+                             (self.p2, date(2026, 9, 1))]:
+            ReadingDay.objects.create(profile=profile, day=day)
+        ReadingProgress.objects.filter(profile=self.p1).update(finished_at=timezone.now())
+        ReadingProgress.objects.create(
+            profile=self.p2, kind=WorkKind.SERMON, book_slug="humility", language="en",
+            finished_at=timezone.now(),
+        )
+
+        res = self.client.get("/api/admin/users/")
+        steps = {s["step"]: s["count"] for s in res.data["activation"]}
+        self.assertEqual(steps, {"signed_up": 3, "started": 2, "returned": 1, "finished": 1})
+        # The tiles read the same counts as the funnel's first two steps.
+        self.assertEqual((res.data["total"], res.data["with_activity"]), (3, 2))
 
     @override_settings(DEBUG=True)
     def test_users_analytics(self):
@@ -1886,13 +2224,161 @@ class AdminContentEditJobsTests(TestCase):
         )
         self.assertEqual(res.status_code, 400)
 
+
+class AdminAuditFixJobTests(TestCase):
+    """The audit page's "Send to fix queue": one (book, language, check) → one
+    content-edit job whose chapter list the SERVER builds from the uncapped,
+    dismissal-filtered scan (GitHub mocked, as in AdminContentEditJobsTests)."""
+
+    URL = "/api/admin/content-edit-jobs/"
+    TITLE = "[edit] audit-fix book:big/en check:missing_dropcap"
+
+    def setUp(self):
+        self.client = APIClient()
+        author = Author.objects.create(slug="am", name="Andrew Murray")
+        self.book = Book.objects.create(author=author, slug="big", language="en", title="Big Book")
+        # More flagged chapters than the page's 100-row cap, so a server that
+        # trusted the capped list would drop chapters 101+.
+        for order in range(1, 121):
+            Chapter.objects.create(
+                book=self.book, order=order, title=f"Part {order}",
+                body_html=f"<p>umble words, part {order}.</p>",
+            )
+        # Another edition of the same slug must not leak into the English job.
+        es = Book.objects.create(author=author, slug="big", language="es", title="Libro")
+        Chapter.objects.create(book=es, order=500, title="Uno", body_html="<p>umilde.</p>")
+        # An accepted finding is not part of the job.
+        AuditDismissal.objects.create(
+            check_key="missing_dropcap", book="big", language="en", ref="3"
+        )
+
+    def _post(self, gh_jobs, created=None, **data):
+        from unittest.mock import MagicMock, patch
+
+        payload = {"kind": "audit_fix", "slug": "big", "language": "en",
+                   "check": "missing_dropcap", **data}
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: gh_jobs, raise_for_status=lambda: None)
+            gh.post.return_value = MagicMock(
+                json=lambda: created or {}, raise_for_status=lambda: None
+            )
+            res = self.client.post(self.URL, payload, format="json")
+        return res, gh
+
+    @staticmethod
+    def _issue(title, number=9):
+        return {
+            "title": title,
+            "labels": [{"name": "content-edit"}],
+            "html_url": f"https://github.com/o/r/issues/{number}",
+            "number": number,
+            "created_at": "2026-10-01T00:00:00Z",
+        }
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_files_one_job_from_the_uncapped_dismissal_filtered_scan(self):
+        import json
+        import re
+
+        res, gh = self._post([], created=self._issue(self.TITLE))
+        self.assertEqual(res.status_code, 201, res.data)
+        self.assertTrue(res.data["created"])
+        self.assertEqual(res.data["job"]["kind"], "audit_fix")
+        self.assertEqual(res.data["job"]["check"], "missing_dropcap")
+        self.assertIsNone(res.data["job"]["order"])
+
+        sent = gh.post.call_args.kwargs["json"]
+        self.assertEqual(sent["title"], self.TITLE)
+        self.assertEqual(sent["labels"], ["content-edit"])
+        body = sent["body"]
+        block = json.loads(re.search(r"```json\n(.*?)\n```", body, re.S).group(1))
+        self.assertEqual(
+            (block["job"], block["slug"], block["language"], block["check"]),
+            ("audit-fix", "big", "en", "missing_dropcap"),
+        )
+        # All 119 open findings — past the 100 cap, without the accepted #3 and
+        # without the Spanish edition's chapter.
+        self.assertEqual(block["orders"], [o for o in range(1, 121) if o != 3])
+        self.assertIn("**120** 'Part 120'", body)
+        self.assertNotIn("**3** ", body)
+        self.assertNotIn("500", body)
+        # The finding's evidence rides along, and the check's repair channel.
+        self.assertIn("starts: 'umble words, part 120.'", body)
+        self.assertIn("first letter", body)
+
+        act = AdminAction.objects.latest("id")
+        self.assertEqual(act.action, AdminAction.Action.CONTENT_EDIT_JOB)
+        self.assertEqual(act.target, "book:big:en")
+        self.assertEqual((act.detail["kind"], act.detail["check"]), ("audit_fix", "missing_dropcap"))
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_open_job_for_the_same_book_and_check_is_returned_not_refiled(self):
+        res, gh = self._post([self._issue(self.TITLE)])
+        self.assertEqual(res.status_code, 200)
+        self.assertFalse(res.data["created"])
+        self.assertEqual(res.data["job"]["url"], "https://github.com/o/r/issues/9")
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_other_checks_and_editions_do_not_dedupe(self):
+        others = [
+            self._issue("[edit] audit-fix book:big/en check:loose_text", 10),
+            self._issue("[edit] audit-fix book:big/es check:missing_dropcap", 11),
+            self._issue("[edit] revise book:big/en#1", 12),
+        ]
+        res, gh = self._post(others, created=self._issue(self.TITLE))
+        self.assertEqual(res.status_code, 201)
+        gh.post.assert_called_once()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_rejects_a_bad_check_or_a_clean_book(self):
+        for check in ("", "empty_books", "duplicate_titles", "nope"):
+            res, gh = self._post([], check=check)
+            self.assertEqual(res.status_code, 400, check)
+            gh.post.assert_not_called()
+        # A known check with nothing open for this book → nothing to file.
+        res, gh = self._post([], check="loose_text")
+        self.assertEqual(res.status_code, 400)
+        gh.post.assert_not_called()
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_unknown_book_404(self):
+        res, _ = self._post([], slug="nowhere")
+        self.assertEqual(res.status_code, 404)
+
+    @override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t")
+    def test_queue_listing_parses_audit_fix_titles(self):
+        from unittest.mock import MagicMock, patch
+
+        issues = [
+            self._issue(self.TITLE),
+            # Malformed: an audit fix never targets one order, nor a check on a retitle.
+            self._issue("[edit] audit-fix book:big/en#2 check:loose_text", 2),
+            self._issue("[edit] retitle book:big/en#2 check:loose_text", 3),
+        ]
+        with patch("library.admin_views.content_jobs.requests") as gh:
+            gh.get.return_value = MagicMock(json=lambda: issues, raise_for_status=lambda: None)
+            res = self.client.get(self.URL)
+        self.assertEqual([j["check"] for j in res.data["jobs"]], ["missing_dropcap"])
+
+    @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
+    def test_requires_admin(self):
+        res = self.client.post(
+            self.URL,
+            {"kind": "audit_fix", "slug": "big", "language": "en", "check": "missing_dropcap"},
+            format="json",
+        )
+        self.assertIn(res.status_code, (401, 403))
+
+
 class AdminLanguageHealthTests(TestCase):
     """The per-language health score — a composite of readiness, coverage,
     review and engagement, ranked healthiest-first."""
 
     def setUp(self):
         self.client = APIClient()
-        self.author = Author.objects.create(slug="am", name="Andrew Murray", bio="x")
+        # No bio, so English's shelf is books only unless a test adds more.
+        self.author = Author.objects.create(slug="am", name="Andrew Murray", bio="")
 
         # A small, deterministic library: English is the source shelf (the
         # coverage ceiling); Spanish has half of it, one edition still unreviewed.
@@ -1928,10 +2414,33 @@ class AdminLanguageHealthTests(TestCase):
         self.assertTrue(en["is_source"])
 
     def test_coverage_is_measured_against_the_source_shelf(self):
-        by_code = {r["code"]: r for r in self._get()["languages"]}
-        # Spanish has 2 of English's 4 published books.
+        data = self._get()
+        by_code = {r["code"]: r for r in data["languages"]}
+        # Spanish has 2 of English's 4 published books, and English has no
+        # sermons, bios or plans here, so books carry the whole mix.
         self.assertEqual(by_code["es"]["content"]["published_books"], 2)
+        self.assertEqual(data["source_shelf"]["books"], 4)
         self.assertAlmostEqual(by_code["es"]["scores"]["coverage"], 0.5, places=3)
+
+    def test_coverage_blends_every_kind_of_content(self):
+        from .admin_views.health import _COVERAGE_MIX
+
+        # English gets 4 sermons; Spanish has all 4, on top of 2 of 4 books.
+        for i in range(4):
+            for lang in ("en", "es"):
+                Sermon.objects.create(
+                    author=self.author, slug=f"s{i}", language=lang, title=f"S{i}",
+                    body_html="<p>x</p>", is_published=True,
+                )
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(data["coverage_mix"], _COVERAGE_MIX)
+        # Books 0.5 and sermons 1.0, weighted by their share of the mix (bios
+        # and plans drop out: English has none).
+        b, s = _COVERAGE_MIX["books"], _COVERAGE_MIX["sermons"]
+        self.assertAlmostEqual(
+            es["scores"]["coverage"], (b * 0.5 + s * 1.0) / (b + s), places=3
+        )
 
     def test_review_score_reflects_the_unreviewed_share(self):
         by_code = {r["code"]: r for r in self._get()["languages"]}
@@ -1944,10 +2453,200 @@ class AdminLanguageHealthTests(TestCase):
         codes = [r["health"] for r in self._get()["languages"]]
         self.assertEqual(codes, sorted(codes, reverse=True))
 
-    def test_engagement_normalises_to_the_busiest_language(self):
+    def test_returns_the_weights_and_they_compose_the_score(self):
+        data = self._get()
+        weights = data["weights"]
+        self.assertAlmostEqual(sum(weights.values()), 1.0)
+        for r in data["languages"]:
+            composed = 100 * sum(r["scores"][k] * w for k, w in weights.items())
+            self.assertLessEqual(abs(composed - r["health"]), 0.5 + 1e-6)
+
+    def test_blockers_carry_the_checks_own_label(self):
+        # The page shows these as-is, so each must name itself.
+        languages = self._get()["languages"]
+        es = next(r for r in languages if r["code"] == "es")
+        self.assertTrue(es["readiness"]["blocking"])  # not vacuous
+        for r in languages:
+            for b in r["readiness"]["blocking"]:
+                self.assertEqual(set(b), {"key", "label"})
+                self.assertTrue(b["label"])
+
+    def test_bios_are_counted_alike_in_the_source_and_its_translations(self):
+        # A long-form-only bio counts in English as it does in a translation, and
+        # an imprint's never counts in either.
+        writer = Author.objects.create(slug="eb", name="E. M. Bounds", bio_html="<p>x</p>")
+        imprint = Author.objects.create(
+            slug="oo", name="Ochorus Originals", bio="x", is_imprint=True
+        )
+        AuthorTranslation.objects.create(author=writer, language="es", bio_html="<p>x</p>")
+        AuthorTranslation.objects.create(author=imprint, language="es", bio="x")
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(data["source_shelf"]["bios"], 1)
+        self.assertEqual(es["content"]["bios"], 1)
+
+    def test_opening_the_page_records_one_point_per_language_per_day(self):
+        from .models import Language, LanguageHealthSnapshot
+
+        self._get()
+        self._get()
+        today = timezone.localdate()
+        self.assertEqual(
+            LanguageHealthSnapshot.objects.filter(date=today).count(),
+            Language.objects.count(),
+        )
+
+    def test_week_change_compares_with_the_point_a_week_ago(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        today = timezone.localdate()
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=today - timedelta(days=8), score_version=SCORE_VERSION,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        es = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertEqual(es["week_change"], es["health"] - 10)
+        self.assertEqual([p["health"] for p in es["trend"]], [10, es["health"]])
+
+    def test_no_week_change_from_a_baseline_much_older_than_a_week(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=timezone.localdate() - timedelta(days=22),
+            score_version=SCORE_VERSION,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        es = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertIsNone(es["week_change"])
+        self.assertEqual(len(es["trend"]), 2)  # still drawn in the line
+
+    def test_score_version_is_bumped_with_the_formula(self):
+        # The trend joins only points of one SCORE_VERSION, so a formula change
+        # that forgets the bump draws a fake jump on every language. Changing
+        # any of these means: bump SCORE_VERSION, then update this pin.
+        from .admin_views import health
+
+        self.assertEqual(
+            (
+                health.SCORE_VERSION,
+                health._WEIGHTS,
+                health._COVERAGE_MIX,
+                health._ENGAGEMENT_TARGET,
+                health._READER_WINDOW_DAYS,
+            ),
+            (
+                3,
+                {"readiness": 0.35, "coverage": 0.30, "review": 0.20, "engagement": 0.15},
+                {"books": 0.50, "sermons": 0.25, "bios": 0.15, "plans": 0.10},
+                25,
+                90,
+            ),
+        )
+
+    def test_points_from_an_older_formula_are_left_out(self):
+        from datetime import timedelta
+
+        from .admin_views.health import SCORE_VERSION
+        from .models import LanguageHealthSnapshot
+
+        LanguageHealthSnapshot.objects.create(
+            language="es", date=timezone.localdate() - timedelta(days=8),
+            score_version=SCORE_VERSION - 1,
+            health=10, readiness=0, coverage=0, review=0, engagement=0,
+        )
+        data = self._get()
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertIsNone(es["week_change"])
+        self.assertEqual(len(es["trend"]), 1)  # today's point only
+        self.assertEqual(data["score_version"], SCORE_VERSION)
+
+    def test_snapshot_command_records_today(self):
+        from django.core.management import call_command
+
+        from .models import LanguageHealthSnapshot
+
+        call_command("snapshot_language_health", stdout=io.StringIO())
+        call_command("snapshot_language_health", stdout=io.StringIO())
+        es = LanguageHealthSnapshot.objects.get(language="es", date=timezone.localdate())
+        self.assertAlmostEqual(es.coverage, 0.5, places=3)
+
+    def test_engagement_with_no_readers_is_zero(self):
         # No reading data → engagement is zero for everyone (not a crash).
         for r in self._get()["languages"]:
             self.assertEqual(r["scores"]["engagement"], 0.0)
+
+    def _readers(self, language, n):
+        import uuid
+
+        from django.contrib.auth.models import User
+
+        from accounts.models import UserProfile
+        from reading.models import ReadingProgress
+
+        for _ in range(n):
+            uid = str(uuid.uuid4())
+            user = User.objects.create(username=uid)
+            profile = UserProfile.objects.create(
+                user=user, supabase_uid=uid, email=f"{uid}@example.com"
+            )
+            ReadingProgress.objects.create(
+                profile=profile, book_slug="b0", language=language
+            )
+
+    def test_engagement_is_readers_against_a_fixed_target(self):
+        from .admin_views.health import _ENGAGEMENT_TARGET
+
+        self._readers("es", 5)
+        data = self._get()
+        self.assertEqual(data["engagement_target"], _ENGAGEMENT_TARGET)
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertAlmostEqual(
+            es["scores"]["engagement"], 5 / _ENGAGEMENT_TARGET, places=3
+        )
+
+    def test_another_languages_readers_do_not_move_this_one(self):
+        # The bug the fixed target fixes: under "share of the busiest language",
+        # English gaining readers lowered Spanish's score.
+        self._readers("es", 5)
+        before = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self._readers("en", 30)
+        after = {r["code"]: r for r in self._get()["languages"]}["es"]
+        self.assertEqual(before["scores"]["engagement"], after["scores"]["engagement"])
+        self.assertEqual(before["health"], after["health"])
+
+    def test_readers_outside_the_window_do_not_count(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingProgress
+
+        from .admin_views.health import _ENGAGEMENT_TARGET, _READER_WINDOW_DAYS
+
+        self._readers("es", 4)
+        # Two of the four last read before the window opened.
+        stale = timezone.now() - timedelta(days=_READER_WINDOW_DAYS + 1)
+        old = ReadingProgress.objects.filter(language="es").values_list("pk", flat=True)[:2]
+        ReadingProgress.objects.filter(pk__in=list(old)).update(updated_at=stale)
+
+        data = self._get()
+        self.assertEqual(data["reader_window_days"], _READER_WINDOW_DAYS)
+        es = {r["code"]: r for r in data["languages"]}["es"]
+        self.assertEqual(es["readers"], 2)
+        self.assertAlmostEqual(
+            es["scores"]["engagement"], 2 / _ENGAGEMENT_TARGET, places=3
+        )
+
+    def test_engagement_caps_at_the_target(self):
+        from .admin_views.health import _ENGAGEMENT_TARGET
+
+        self._readers("en", _ENGAGEMENT_TARGET + 3)
+        en = {r["code"]: r for r in self._get()["languages"]}["en"]
+        self.assertEqual(en["scores"]["engagement"], 1.0)
 
     def test_makes_no_bible_call(self):
         # The scoreboard must never fan out a live Bible-API call per language —

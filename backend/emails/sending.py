@@ -79,6 +79,9 @@ def deliver(
     lifecycle_step: str = "",
     broadcast=None,
     from_email: str | None = None,
+    sent_by: str = "",
+    body_text: str = "",
+    is_test: bool = False,
 ) -> EmailMessage:
     """Send ``rendered`` to ``to_email`` at most once, keyed by ``idempotency_key``.
 
@@ -97,6 +100,9 @@ def deliver(
             "broadcast": broadcast,
             "locale": locale,
             "subject": rendered.subject[:300],
+            "sent_by": sent_by[:254],
+            "body_text": body_text,
+            "is_test": is_test,
         },
     )
     if not created and message.status == SendStatus.SENT:

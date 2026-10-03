@@ -32,6 +32,7 @@ from accounts.permissions import allowed_languages, is_admin_user, requires
 
 from ..audit import AdminAudited
 from ..corrections import COPYRIGHT_BLOCKED_SLUGS
+from ..job_status import forget_queue
 from ..languages import entry as language_entry
 from ..languages import known_codes
 from ..models import (
@@ -91,7 +92,7 @@ _JOB_GUIDANCE = {
 }
 
 
-def _job_title(type_: str, slug: str, language: str) -> str:
+def job_title(type_: str, slug: str, language: str) -> str:
     return f"[translation] {type_}:{slug} -> {language}"
 
 
@@ -151,11 +152,24 @@ def _resolve_source(type_: str, slug: str, language: str):
     return None
 
 
-def _headers() -> dict:
+def github_headers() -> dict:
     return {
         "Authorization": f"Bearer {settings.GITHUB_TRANSLATION_TOKEN}",
         "Accept": "application/vnd.github+json",
     }
+
+
+def file_issue(title: str, body: str) -> dict:
+    """File one job issue (label ``translation-job``) and return GitHub's issue
+    JSON. Raises requests.RequestException upstream."""
+    r = requests.post(
+        f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
+        headers=github_headers(),
+        json={"title": title, "body": body, "labels": [LABEL]},
+        timeout=15,
+    )
+    r.raise_for_status()
+    return r.json()
 
 
 def _issue_to_job(issue: dict) -> dict | None:
@@ -172,6 +186,8 @@ def _issue_to_job(issue: dict) -> dict | None:
         "number": issue.get("number"),
         "state": "in_progress" if IN_PROGRESS_LABEL in labels else "queued",
         "created_at": issue.get("created_at", ""),
+        # When the issue last moved — the claim's age, for the stalled rule.
+        "updated_at": issue.get("updated_at", ""),
     }
 
 
@@ -198,27 +214,37 @@ def _list_open_jobs() -> list[dict]:
     The GET path shares this, so the dashboard's own queue was short by the same
     jobs it was hiding from the guard.
     """
-    jobs: list[dict] = []
+    issues = get_all("/issues", {"state": "open", "labels": LABEL, "direction": "asc"})
+    return [job for issue in issues if (job := _issue_to_job(issue))]
+
+
+def get_all(path: str, params: dict) -> list[dict]:
+    """Every item of a paginated GET under the job repo, e.g. ``/issues``.
+    Raises requests.RequestException upstream."""
+    items: list[dict] = []
     for page in range(1, _MAX_PAGES + 1):
         r = requests.get(
-            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-            headers=_headers(),
-            params={
-                "state": "open",
-                "labels": LABEL,
-                "per_page": _PAGE_SIZE,
-                "direction": "asc",
-                "page": page,
-            },
+            f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}{path}",
+            headers=github_headers(),
+            params={**params, "per_page": _PAGE_SIZE, "page": page},
             timeout=15,
         )
         r.raise_for_status()
         batch = r.json()
-        jobs.extend(job for issue in batch if (job := _issue_to_job(issue)))
+        items.extend(batch)
         # A short page is the last page — no Link-header parsing needed.
         if len(batch) < _PAGE_SIZE:
             break
-    return jobs
+    return items
+
+
+def translation_blocked(job_type: str, slug: str) -> bool:
+    """Whether no translation may be made of ``(job_type, slug)``: a book under
+    copyright, whose translation would be a derivative of the protected English
+    edition. The one owner of that rule: this filer refuses such a job (451),
+    the coverage matrix locks its cells, and the demand list shows the work
+    without a queue button."""
+    return job_type == "book" and slug in COPYRIGHT_BLOCKED_SLUGS
 
 
 @requires(AdminCapability.TRANSLATE, verbs={"GET": AdminVerb.VIEW, "POST": AdminVerb.SUGGEST}, language_arg="language")
@@ -285,7 +311,7 @@ class AdminTranslationJobsView(AdminAudited, APIView):
         if not re.fullmatch(r"[a-z0-9-]+", slug or ""):
             return Response({"detail": "invalid slug."}, status=status.HTTP_400_BAD_REQUEST)
 
-        if type_ == "book" and slug in COPYRIGHT_BLOCKED_SLUGS:
+        if translation_blocked(type_, slug):
             # A translation of a protected English edition is a derivative of it;
             # three shipped this way before this check existed (2026-09-24).
             return Response(
@@ -314,7 +340,7 @@ class AdminTranslationJobsView(AdminAudited, APIView):
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
-        title = _job_title(type_, slug, language)
+        title = job_title(type_, slug, language)
         lang_name = language_entry(language)["name"]
         try:
             # Duplicate-press guard: one open issue per (type, slug, language).
@@ -333,18 +359,14 @@ class AdminTranslationJobsView(AdminAudited, APIView):
                 "queue” (see `.claude/skills/translation-worker`).\n\n"
                 f"{_JOB_GUIDANCE[type_]}"
             )
-            r = requests.post(
-                f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-                headers=_headers(),
-                json={"title": title, "body": body, "labels": [LABEL]},
-                timeout=15,
-            )
-            r.raise_for_status()
+            issue = file_issue(title, body)
         except requests.RequestException:
             return Response(
                 {"detail": "couldn't reach GitHub to file the job — try again shortly."},
                 status=status.HTTP_502_BAD_GATEWAY,
             )
 
-        job = _issue_to_job(r.json())
+        job = _issue_to_job(issue)
+        # The Activity page caches the open queue; let it see this one at once.
+        forget_queue()
         return Response({"job": job, "created": True}, status=status.HTTP_201_CREATED)

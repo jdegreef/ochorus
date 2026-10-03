@@ -6,12 +6,20 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 from accounts.views import MeView, SignupSourceView, health
+from emails.admin_design import (
+    AdminBroadcastTranslationView,
+    AdminEmailLibraryView,
+    AdminEmailPreviewView,
+    AdminEmailTemplateDetailView,
+    AdminEmailTemplatesView,
+)
 from emails.admin_views import (
     AdminAudiencePreviewView,
     AdminBroadcastActionView,
     AdminBroadcastDetailView,
     AdminBroadcastsView,
     AdminEmailMetricsView,
+    AdminReaderEmailsView,
 )
 from feedback.admin_views import AdminFeedbackDetailView, AdminFeedbackListView
 from library.admin_import_views import (
@@ -30,6 +38,7 @@ from library.admin_views import (
     AdminBookPublishView,
     AdminContentEditJobsView,
     AdminCoverageView,
+    AdminDropOffView,
     AdminEngagementView,
     AdminExportView,
     AdminLanguageCreateView,
@@ -41,10 +50,15 @@ from library.admin_views import (
     AdminLanguageReadinessView,
     AdminLanguageSettingsView,
     AdminLanguageThresholdsView,
+    AdminLanguageWantedView,
     AdminManualView,
     AdminReviewDetailView,
     AdminReviewQueueView,
+    AdminRolesView,
+    AdminSearchDecisionListView,
+    AdminSearchDecisionView,
     AdminSearchGapView,
+    AdminSearchPreviewView,
     AdminSearchView,
     AdminSermonDetailView,
     AdminSermonPublishView,
@@ -91,7 +105,23 @@ urlpatterns = [
     ),
     path("api/admin/search-stats/", AdminSearchView.as_view(), name="admin-search-stats"),
     path("api/admin/search-gap/", AdminSearchGapView.as_view(), name="admin-search-gap"),
+    path(
+        "api/admin/search-preview/",
+        AdminSearchPreviewView.as_view(),
+        name="admin-search-preview",
+    ),
+    path(
+        "api/admin/search-decisions/",
+        AdminSearchDecisionListView.as_view(),
+        name="admin-search-decisions",
+    ),
+    path(
+        "api/admin/search-decisions/decide/",
+        AdminSearchDecisionView.as_view(),
+        name="admin-search-decide",
+    ),
     path("api/admin/coverage/", AdminCoverageView.as_view(), name="admin-coverage"),
+    path("api/admin/drop-off/", AdminDropOffView.as_view(), name="admin-drop-off"),
     path(
         "api/admin/coverage/mark-current/",
         AdminTranslationMarkCurrentView.as_view(),
@@ -189,6 +219,7 @@ urlpatterns = [
         name="admin-translation-jobs",
     ),
     path("api/admin/team/", AdminTeamView.as_view(), name="admin-team"),
+    path("api/admin/roles/", AdminRolesView.as_view(), name="admin-roles"),
     path("api/admin/feedback/", AdminFeedbackListView.as_view(), name="admin-feedback"),
     path(
         "api/admin/feedback/<int:pk>/",
@@ -217,6 +248,28 @@ urlpatterns = [
         name="admin-broadcast-action",
     ),
     path(
+        "api/admin/broadcasts/<int:pk>/translations/",
+        AdminBroadcastTranslationView.as_view(),
+        name="admin-broadcast-translations",
+    ),
+    path("api/admin/emails/preview/", AdminEmailPreviewView.as_view(), name="admin-email-preview"),
+    path("api/admin/emails/library/", AdminEmailLibraryView.as_view(), name="admin-email-library"),
+    path(
+        "api/admin/emails/templates/",
+        AdminEmailTemplatesView.as_view(),
+        name="admin-email-templates",
+    ),
+    path(
+        "api/admin/emails/templates/<int:pk>/",
+        AdminEmailTemplateDetailView.as_view(),
+        name="admin-email-template-detail",
+    ),
+    path(
+        "api/admin/users/<uuid:uid>/emails/",
+        AdminReaderEmailsView.as_view(),
+        name="admin-user-emails",
+    ),
+    path(
         "api/admin/content-edit-jobs/",
         AdminContentEditJobsView.as_view(),
         name="admin-content-edit-jobs",
@@ -232,6 +285,11 @@ urlpatterns = [
         "api/admin/languages/<str:code>/",
         AdminLanguageDetailView.as_view(),
         name="admin-language-detail",
+    ),
+    path(
+        "api/admin/languages/<str:code>/wanted/",
+        AdminLanguageWantedView.as_view(),
+        name="admin-language-wanted",
     ),
     # Identity (names, Bible, glossary) — refused for repo-defined languages,
     # whose rows the deploy re-asserts.

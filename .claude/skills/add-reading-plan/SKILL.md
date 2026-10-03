@@ -11,8 +11,15 @@ data — no new content, no migration. Two kinds live in
 `backend/library/plan_seed.py`:
 
 - **`LAUNCH_PLANS`** — one book, split over N days: `(slug, book_slug, title, description)`.
-- **`CURATED_PLANS`** — several books read in full, in order:
-  `(slug, title, description, [ordered book slugs])`.
+- **`CURATED_PLANS`** — several works, in order:
+  `(slug, title, description, [ordered items])`. An item is a book slug (the
+  whole book), `chapters(slug, first, last)` (a span of one book, a day per
+  chapter) or `article(slug)` (one day reading an `/articles` page) — so a plan
+  can interleave articles between chapters (`new-to-the-faith` is the model).
+  A plan day is then a chapter OR an article (`PlanDay.article_slug`, held by a
+  DB check constraint), and the plan exists only where every book AND article
+  is published — `plan_sources(items)` is that list, read by the seed and the
+  coverage test alike.
 
 Adding a plan is appending one tuple. The work is in getting the two gotchas
 below right, then verifying.
@@ -110,3 +117,16 @@ below right, then verifying.
   real invariant without a DB.
 - **Books can appear in more than one plan.** `around-the-wicket-gate` backs
   both `the-pilgrims-way` and `first-steps-for-teens` — reuse is fine.
+- **Removing a plan means retiring it, not deleting its tuple.** `seed_plans`
+  only creates and reconciles, so a dropped tuple leaves its rows live in prod.
+  Add the slug to `RETIRED_PLANS` in `plan_seed.py` (with its successor plans);
+  the seed then deletes its rows in every language, and a test keeps the slug
+  from coming back. Reader progress is keyed by slug + day number, so if
+  readers should land on a successor, move it twice: a `reading` data
+  migration for the account (see `0032_move_series_plan_progress`) and
+  `frontend/src/lib/planMoves.ts` for the device cache. Drop the slug's
+  entries from every `plan_translations/<lang>.json` (the dead-slug test fails
+  otherwise).
+- **Never renumber a live plan's days in place** — devices re-send their old
+  day numbers on every sync. A different day structure is a new slug plus a
+  retirement (above).

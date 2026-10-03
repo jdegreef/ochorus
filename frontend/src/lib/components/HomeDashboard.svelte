@@ -13,6 +13,7 @@
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
+	import Fleuron from '$lib/components/Fleuron.svelte';
 
 	/**
 	 * The signed-in home: a reading dashboard, not an acquisition page. Rendered
@@ -46,9 +47,12 @@
 	<!-- Parameterised so the name sits where each language wants it, rather than a
 	     hardcoded ", {name}" — Paraglide's message function, not the param-free
 	     t() facade. Falls back to a bare "Welcome back" when we have no name. -->
-	<h1 class="text-h1">
+	<!-- The home greeting is the hero, so it takes the display step the type
+	     scale reserves for one (STYLE_GUIDE §2), under a fleuron. -->
+	<h1 class="text-display">
 		{greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
 	</h1>
+	<div class="mt-4"><Fleuron /></div>
 </section>
 
 <!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
@@ -60,8 +64,11 @@
 <ContinueReading />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
-     activity to show (replaces the compact ReadingNudge on the dashboard). -->
-<DashboardStats />
+     activity to show (replaces the compact ReadingNudge on the dashboard). On a
+     parchment band, which collapses with it. -->
+<div class="page-band">
+	<DashboardStats />
+</div>
 
 <!-- Today's plan day, then multi-plan progress -->
 <TodaysReading />
@@ -81,7 +88,9 @@
 
 <!-- Eight articles for today — turns over daily; renders nothing in a language
      with fewer than eight articles. -->
-<HomeArticles />
+<div class="page-band">
+	<HomeArticles />
+</div>
 
 <!-- Browse by topic — the last block on the dashboard, so it carries the
      trailing bottom padding. -->

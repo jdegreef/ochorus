@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
@@ -45,14 +46,9 @@
 
 	// The sheet is a phone control: widen past sm (a tablet rotating) and the
 	// inline row takes over, so close it rather than leave it over the page.
+	const wide = mediaFlag('(min-width: 640px)');
 	$effect(() => {
-		if (!open) return;
-		const mq = window.matchMedia('(min-width: 640px)');
-		const close = () => {
-			if (mq.matches) open = false;
-		};
-		mq.addEventListener('change', close);
-		return () => mq.removeEventListener('change', close);
+		if (open && wide.matches) open = false;
 	});
 </script>
 

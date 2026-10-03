@@ -35,6 +35,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
+	import type { NavSection } from '$lib/contentNav';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -97,9 +98,10 @@
 	// Take Root, whose app nav carries five primary destinations).
 	// Home (chrome) then the five content types, whose order is shared with the
 	// footer and command palette via PRIMARY_NAV so the three can't drift (F2).
-	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
+	// Home is chrome, not a section, so it has no hue and keeps the accent.
+	const NAV = $derived<{ href: string; label: string; icon: IconName; section?: NavSection }[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid' },
-		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon }))
+		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon, section: d.section }))
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
@@ -153,6 +155,10 @@
 		ro.observe(navEl);
 		return () => ro.disconnect();
 	});
+	// Published as --appnav-h: 0 in focus mode (no nav at all), the measured
+	// height once there is one, and nothing before that, so the per-breakpoint
+	// estimate on `.app-root` (app.css) holds for a prerendered page.
+	const appnavH = $derived(readerUi.focus ? '--appnav-h: 0px; ' : navH ? `--appnav-h: ${navH}px; ` : '');
 	// …and hand it to script (readerUi.navHeight) for pages that must clear it.
 	$effect(() => {
 		readerUi.navHeight = navH;
@@ -239,10 +245,10 @@
 </svelte:head>
 
 <div
-	class="flex min-h-screen flex-col"
+	class="app-root flex min-h-screen flex-col"
 	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
 		readerPrefs.measure
-	]}; --pw: {pageWidth.rem}rem; --appnav-h: {readerUi.focus ? 0 : navH}px; padding-bottom: var(--tabbar-h, 0px)"
+	]}; --pw: {pageWidth.rem}rem; {appnavH}padding-bottom: var(--tabbar-h, 0px)"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
 	<!-- Defines the Ochorus wordmark <symbol> once; every BrandMark <use>s it. -->
@@ -281,6 +287,7 @@
 							href={localizeHref(item.href)}
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
+							data-section={item.section}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}

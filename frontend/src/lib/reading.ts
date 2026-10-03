@@ -2,6 +2,7 @@ import { i18n } from './i18n.svelte';
 import { getLang } from './lang.svelte';
 import { MODERN_EDITION, baseEdition, furthestOf, resumeOrderOf } from './reading-schema';
 import { readingPace } from './readingPace.svelte';
+import { minutesPerDay } from './planCard';
 
 /**
  * Estimated reading time in whole minutes from a word count, at THIS reader's
@@ -11,6 +12,15 @@ import { readingPace } from './readingPace.svelte';
  */
 export function readingMinutes(words: number): number {
 	return Math.max(1, Math.round(words / readingPace.wpm));
+}
+
+/**
+ * A plan's average day in whole minutes at THIS reader's pace — the "~N
+ * min/day" on its shelf card and its page (the share card's rule, at the
+ * reader's wpm) — or 0, nothing to show, before the plan has any text.
+ */
+export function planMinutesPerDay(plan: { day_count: number; total_words: number }): number {
+	return plan.total_words ? minutesPerDay(plan, readingPace.wpm) : 0;
 }
 
 /**

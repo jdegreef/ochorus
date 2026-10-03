@@ -10,7 +10,9 @@ human check on a device.
 from __future__ import annotations
 
 import io
+import tempfile
 import zipfile
+from pathlib import Path
 from unittest import mock
 
 from django.test import TestCase, override_settings
@@ -180,10 +182,30 @@ class EpubTests(TestCase):
         AuthorTranslation.objects.create(author=self.book.author, language="es", bio="Fue pastor.")
         self.assertEqual(book_export.author_bio(es), "Fue pastor.")
 
+    def test_a_written_export_bio_wins_over_the_short_one(self):
+        text = "He was born.\n\nHe preached.\n\nHe died."
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(book_export, "EXPORT_BIOS_DIR", Path(d)):
+            (Path(d) / "a-writer.en.txt").write_text(text + "\n", encoding="utf-8")
+            self.assertEqual(book_export.author_bio(self.book), text)
+            # Per language: an English file never speaks for Spanish.
+            es = Book.objects.create(author=self.book.author, slug="pilot-book", language="es", title="Libro")
+            self.assertEqual(book_export.author_bio(es), "")
+
     def test_an_imprint_has_no_biography_page(self):
         self.book.author.is_imprint = True
         self.book.author.save()
         self.assertNotIn("OEBPS/about-author.xhtml", self._zip(self._get()).namelist())
+
+    def test_an_author_page_that_spills_onto_a_second_page_fails_the_pdf(self):
+        from .management.commands import export_book
+
+        ed = book_export.build_edition(self.book)
+        html = book_export.render_print_html(ed)
+        self.assertLess(html.index('id="author-top"'), html.index('id="author-end"'))
+        export_book._check_author_page(ed, "x.pdf", {"author-top": 4, "author-end": 4, "ch1": 6})
+        export_book._check_author_page(ed, "x.pdf", {"ch1": 5})  # no bio page
+        with self.assertRaises(export_book.AuthorPageOverflow):
+            export_book._check_author_page(ed, "x.pdf", {"author-top": 4, "author-end": 5})
 
     def test_print_contents_carries_page_numbers_when_given(self):
         ed = book_export.build_edition(self.book)
@@ -253,6 +275,58 @@ class PilotTests(TestCase):
 
     def test_held_works_stay_out(self):
         self.assertFalse(export_policy.HELD_ESV & export_policy.ENGLISH_CLASSICS)
+
+    def test_every_exportable_edition_has_a_one_page_export_bio(self):
+        # The About the Author page: three or four paragraphs on one A5 page.
+        # The ceiling is loose — export_book fails a PDF whose bio runs past its
+        # page — but it stops a bio_html pasted in by mistake.
+        # An imprint (Ochorus Originals) is a publisher, not a person: its
+        # editions have no About the Author page (author_bio), so no bio file.
+        from .content_fixtures import authors_by_slug
+
+        imprints = {slug for slug, a in authors_by_slug().items() if a.get("is_imprint")}
+        authors = {
+            (_fixture_fields(slug, lang)["author"][0], lang)
+            for slug, lang in export_policy.EXPORT_EDITIONS
+        }
+        wanted = {f"{author}.{lang}.txt" for author, lang in authors if author not in imprints}
+        for name in sorted(wanted):
+            path = book_export.EXPORT_BIOS_DIR / name
+            self.assertTrue(path.is_file(), f"no export bio at {path.name}")
+            text = path.read_text(encoding="utf-8").strip()
+            self.assertIn(book_export._bio_paragraphs(text).count("<p>"), (3, 4), f"{name}: three or four paragraphs")
+            self.assertLessEqual(len(text), 1900, f"{name} is too long for one page")
+        # And no file for an author or language with nothing to download: a typo
+        # in a name would otherwise sit there unread while the short bio prints.
+        stray = {p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt")} - wanted
+        self.assertFalse(stray, f"export bios no edition uses: {sorted(stray)}")
+
+    def test_export_bios_were_checked_against_the_current_long_bio(self):
+        # Each export bio is a short retelling of the author's long bio in its
+        # own language (authors.json bio_html; author_bios_<lang>/<slug>.html).
+        # When that moves (a corrected date, a new fact) the short copy may be
+        # wrong: re-read it against the new long bio, then update its digest
+        # in export_bios/sources.json — the designed_covers.py pattern.
+        import hashlib
+        import json
+
+        from .content_fixtures import AUTHORS_FILE
+
+        english = {
+            r["fields"]["slug"]: r["fields"].get("bio_html", "")
+            for r in json.loads(AUTHORS_FILE.read_text(encoding="utf-8"))
+        }
+        translated = book_export.Path(book_export.settings.BASE_DIR) / "library" / "migrations" / "data"
+        pinned = json.loads((book_export.EXPORT_BIOS_DIR / "sources.json").read_text(encoding="utf-8"))
+        files = sorted(p.name for p in book_export.EXPORT_BIOS_DIR.glob("*.txt"))
+        self.assertEqual(sorted(pinned), files, "sources.json must list every export bio")
+        for name in files:
+            slug, lang, _ = name.split(".")
+            # A language with no long bio of its own is written from the English.
+            long_bio = translated / f"author_bios_{lang}" / f"{slug}.html"
+            source = long_bio.read_text(encoding="utf-8") if lang != "en" and long_bio.is_file() else english[slug]
+            digest = hashlib.sha256(source.encode()).hexdigest()[:16]
+            self.assertEqual(pinned[name], digest, f"{name}: its author's long bio changed — re-check it")
 
 
 class CoverTests(TestCase):

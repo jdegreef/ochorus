@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { verseCardUrl, verseData, verseType } from './verseCard';
+import { scriptureBookCardUrl, scriptureBookData, verseCardUrl, verseData, verseType } from './verseCard';
 
 const inlined = (url: string, body: unknown) =>
 	`<script type="application/json" data-sveltekit-fetched data-url="${url}" data-hash="1">` +
@@ -38,5 +38,33 @@ describe('verse share card', () => {
 		expect(text.endsWith('…')).toBe(true);
 		expect(long.startsWith(text.slice(0, -1))).toBe(true);
 		expect(long[text.length - 1]).toBe(' ');
+	});
+});
+
+describe('Bible book share card', () => {
+	it('lives beside its verse cards, one per book', () => {
+		expect(scriptureBookCardUrl('romans')).toBe('/og/scripture/romans.jpg');
+	});
+
+	it('reads the book response a prerendered book page inlines', () => {
+		const page = { book: { slug: 'romans', title: 'Romans', order: 45 }, chapters: [], top_books: [] };
+		const html = inlined('https://api.ochorus.com/api/library/scripture/romans/', page);
+		expect(scriptureBookData(html)).toEqual(page);
+	});
+
+	it('declines a page with no book inlined — built from the page list, it falls back', () => {
+		expect(scriptureBookData('<html></html>')).toBeNull();
+		const verse = inlined('https://api.ochorus.com/api/library/scripture/john/3/16/', { verse: 16, text: 'x' });
+		expect(scriptureBookData(verse)).toBeNull();
+	});
+
+	it('skips an inlined error response for the next good one', () => {
+		const page = { book: { slug: 'romans', title: 'Romans', order: 45 }, chapters: [] };
+		const failed =
+			'<script type="application/json" data-sveltekit-fetched data-url="https://api.ochorus.com/api/library/scripture/romans/" data-hash="1">' +
+			JSON.stringify({ status: 404, statusText: '', headers: {}, body: JSON.stringify({ book: { title: 'x' }, chapters: [] }) }) +
+			'</script>';
+		expect(scriptureBookData(failed)).toBeNull();
+		expect(scriptureBookData(failed + inlined('https://api.ochorus.com/api/library/scripture/romans/', page))).toEqual(page);
 	});
 });

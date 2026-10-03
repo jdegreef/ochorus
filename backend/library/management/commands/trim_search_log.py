@@ -25,7 +25,7 @@ class Command(BaseCommand):
         # only meaningful next to the queries it belongs to, so outliving them
         # would leave click-through rates computed against a truncated
         # denominator.
-        queries, _ = SearchQueryLog.objects.filter(created_at__lt=cutoff).delete()
+        queries, _ = SearchQueryLog.all_rows.filter(created_at__lt=cutoff).delete()
         clicks, _ = SearchClickLog.objects.filter(created_at__lt=cutoff).delete()
         self.stdout.write(
             f"Trimmed {queries} search-log and {clicks} click-log rows "

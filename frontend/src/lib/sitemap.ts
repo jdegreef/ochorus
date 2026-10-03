@@ -561,24 +561,23 @@ async function build(): Promise<SitemapData> {
 		};
 	});
 
-	// Per-era biography landing pages — only eras that actually have writers
-	// (mirrors the route's entries()). Like author pages, they exist in every
-	// locale (bios fall back to English).
-	// Dated, like an author page, by the newest work of the writers it lists —
-	// in each locale, since a Swahili era page changes when a Swahili book does.
-	const eraAuthors = new Map<string, string[]>();
-	for (const a of authors) {
-		const id = eraOf(a.birth_year);
-		eraAuthors.set(id, [...(eraAuthors.get(id) ?? []), a.slug]);
-	}
+	// Per-era biography landing pages, in each locale where the era has writers
+	// on that locale's shelf — the list the page itself renders. Elsewhere the
+	// page is an empty "no writers" state (and says noindex), which advertising
+	// every locale used to promise: the contemporary era in eight languages.
+	// Dated, like an author page, by the newest work of the writers it lists.
 	for (const e of ERAS) {
-		const slugs = eraAuthors.get(e.id);
-		if (!slugs) continue;
+		const inEra = new Map<string, string[]>(
+			advertisedSlices.map((x) => [
+				x.locale,
+				x.authors.filter((a) => eraOf(a.birth_year) === e.id).map((a) => a.slug)
+			])
+		);
+		const here = ADVERTISED_LOCALES.filter((l) => inEra.get(l)?.length);
+		if (!here.length) continue;
 		pages.push({
-			byLocale: new Map(ADVERTISED_LOCALES.map((l) => [l, `/biographies/era/${e.id}/`])),
-			lastmods: dated(ADVERTISED_LOCALES, (l) =>
-				newest(slugs.map((s) => dates.get(l)?.author.get(s)))
-			)
+			byLocale: new Map(here.map((l) => [l, `/biographies/era/${e.id}/`])),
+			lastmods: dated(here, (l) => newest(inEra.get(l)!.map((s) => dates.get(l)?.author.get(s))))
 		});
 	}
 
@@ -615,11 +614,12 @@ async function build(): Promise<SitemapData> {
 		kind: K,
 		pathOf: (slug: string) => string,
 		lastmodOf?: (item: Slice[K][number], locale: string) => string | undefined,
-		imageOf?: (item: Slice[K][number]) => string | null
+		imageOf?: (item: Slice[K][number]) => string | null,
+		keep: (item: Slice[K][number]) => boolean = () => true
 	) => {
 		const byWork = new Map<string, Entry>();
 		for (const slice of advertisedSlices) {
-			for (const item of slice[kind] as Slice[K][number][]) {
+			for (const item of (slice[kind] as Slice[K][number][]).filter(keep)) {
 				let e = byWork.get(item.slug);
 				if (!e) byWork.set(item.slug, (e = { byLocale: new Map() }));
 				e.byLocale.set(slice.locale, pathOf(item.slug));
@@ -663,7 +663,17 @@ async function build(): Promise<SitemapData> {
 			return photo ? absUrl(photo) : null;
 		}
 	);
-	pages.push(...collect('topics', (s) => `/topics/${s}/`, (t, l) => dates.get(l)?.topic.get(t.slug)));
+	// A shelf below the API's works floor in a locale is served but noindexed
+	// there (`indexable`, see the topic page), so it is not promised here.
+	pages.push(
+		...collect(
+			'topics',
+			(s) => `/topics/${s}/`,
+			(t, l) => dates.get(l)?.topic.get(t.slug),
+			undefined,
+			(t) => t.indexable !== false
+		)
+	);
 	pages.push(...collect('plans', (s) => `/plans/${s}/`, (p, l) => dates.get(l)?.plan.get(p.slug)));
 	// A series has a page only where it has a name and a book (no English
 	// fallback), which is exactly what each locale's list holds.
@@ -705,11 +715,24 @@ async function build(): Promise<SitemapData> {
 	const advertisedScripture = scripturePages.filter(
 		(p) => p.verse === null && p.citing_count >= SCRIPTURE_SITEMAP_FLOOR
 	);
+	// Book → newest edit among its advertised chapters (`bump` keeps the max).
+	const scriptureByBook = new Map<string, string>();
+	for (const p of advertisedScripture) {
+		if (!scriptureByBook.has(p.book)) scriptureByBook.set(p.book, '');
+		bump(scriptureByBook, p.book, p.updated_at);
+	}
 	const scripture: Entry[] = [
 		{
 			byLocale: new Map([['en', '/scripture/']]),
 			lastmod: newest(scripturePages.map((p) => p.updated_at))
 		},
+		// A book page (/scripture/<book>/) is advertised when at least one of its
+		// chapters is: it aggregates them, so it is never the thinner page. Dated
+		// by the newest of those chapters.
+		...[...scriptureByBook].map(([book, date]) => ({
+			byLocale: new Map([['en', `/scripture/${book}/`] as [string, string]]),
+			lastmod: date || undefined
+		})),
 		...advertisedScripture.map((p) => ({
 			byLocale: new Map([['en', `/scripture/${p.book}/${p.chapter}/`] as [string, string]]),
 			lastmod: p.updated_at ?? undefined

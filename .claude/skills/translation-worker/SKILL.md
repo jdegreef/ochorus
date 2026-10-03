@@ -38,6 +38,10 @@ three of them gives none of them one.
    returned exactly 300 on 2026-09-22 and hid ten older sw article jobs, so a
    run reported the article queue empty while it was not. Use `--limit 1000`
    (or paginate), and if the count equals the limit, you have NOT seen it all.
+   **Email jobs go first.** A title `[translation] email:broadcast-<id> -> <lang>`
+   is an AI draft of a campaign email someone is waiting on — a few hundred
+   words, minutes of work, and it ships nothing to the repo. Take the oldest
+   email job before any other type, whatever its age (recipe: "email" below).
 2. **Conflict gate.** For every job issue carrying the `in-progress` label:
    - updated **≥ 6 hours ago** → stale claim (a crashed run); comment that
      you're reclaiming it, remove the label, and treat it as queued.
@@ -53,6 +57,7 @@ three of them gives none of them one.
    | `bio` | the **same slug AND language** (i.e. the same job) — short bios are per-slug `<slug>.short.txt` files now |
    | `plan` | any `plan` job in the **same language** — one shared `data/plan_translations/<lang>.json` — **and a `book` job in that language whose slug backs a plan** |
    | `topic` | any `topic` job in the **same language** — one shared `data/topic_translations/<lang>.json` |
+   | `email` | the **same job** only — it writes nothing to the repo (the draft goes back as an issue comment) |
 
    The book↔plan row is the non-obvious one, and it follows from a rule further
    down: a book that appears in `LAUNCH_PLANS` or `CURATED_PLANS` must add its
@@ -164,6 +169,35 @@ three of them gives none of them one.
 
 ## Per-type recipes
 
+### `email` — a campaign email's AI draft (no PR)
+
+Filed from the admin email designer's "Draft with AI". A broadcast lives only in
+the production database, which this session can't reach — so unlike every other
+type, **nothing ships through the repo**: the draft goes back as a comment on the
+issue, and the admin pulls it in and approves it there
+(`backend/emails/translation_jobs.py`).
+
+1. Claim the issue (`in-progress` label) as usual. Save the issue body to a file.
+2. Its JSON block holds `subject`, `preheader` and `texts` — the only words to
+   translate (the layout, works and links stay on the server). Translate them
+   in-session into the target language with that language's glossary and
+   register (`library.translation.system_prompt` holds both; the same rules as
+   a book). Keep `{name}` as written, keep the strings in order and the same
+   count, keep the subject short.
+3. Write your answer to a file as `{"subject": ..., "preheader": ..., "texts": [...]}`
+   and run `cd backend && uv run python manage.py translate_email_job <issue file>
+   --answer <answer file>`. It checks the answer the way the server will and
+   prints the comment. A refusal names what's wrong — fix the answer, don't
+   hand-edit the printed JSON.
+4. Post the printed text as a comment on the issue **exactly as printed** (it
+   starts with `<!-- ochorus:email-translation -->`), remove `in-progress`, and
+   close the issue. Post it as the repo's account: the server ignores replies
+   from anyone who isn't the repo's owner, a member or a collaborator. No branch, no PR, no review notes file.
+
+The admin sees the draft in the email designer, edits it if needed, and must
+press Approve before the email can be sent — never approve or describe it as
+reviewed yourself.
+
 All types follow the proven in-session pipeline (no API key — the session is
 the translator); they differ only in the source shape and the delivery vehicle.
 Read `translate-book` (protocol, glossary, failure modes) and `ship-content-fix`
@@ -187,6 +221,16 @@ worker specifics that shipped ~11 editions:
 - **Validate before anything ships:** every chapter's `<p>` count equals the
   source's; JSON parses; title/body non-empty. Re-dispatch only the gaps.
 - Translate book metadata (title/subtitle/description) too.
+- **If the new edition will be downloadable** (you are also adding
+  `(slug, lang)` to `export_policy.EXPORT_PILOT`, or the job says so) and
+  `backend/library/export_bios/<author-slug>.<lang>.txt` doesn't exist yet,
+  write it in this job: the one-page "About the Author" for the PDF/EPUB,
+  3–4 paragraphs, written from that author's long bio in this language
+  (`migrations/data/author_bios_<lang>/<slug>.html`; if none, translate the
+  English export bio). Add its source digest to `export_bios/sources.json`
+  and render the PDF to confirm it fits one page — the `book-export` skill
+  (Pre-flight) has the rules. `PilotTests` fails the PR without it. It is
+  AI-written and outside the review dashboard: say so in the PR.
 - Ship: write **one new file** `backend/library/fixtures/content/books/
   <slug>.<lang>.json` — the translated Book row first, then its Chapters, in
   natural-key format (NO `pk` keys; `"author"` is `["author-slug"]`, each

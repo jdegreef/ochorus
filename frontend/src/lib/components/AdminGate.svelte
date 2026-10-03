@@ -24,6 +24,7 @@
 		loadingText = 'Loading…',
 		loading,
 		panelClass = '',
+		keepDataOnError = false,
 		children
 	}: {
 		/** The page's resource — its state decides which branch renders. */
@@ -37,6 +38,10 @@
 		loading?: Snippet;
 		/** Extra classes for the panels — detail pages sit below a back-link. */
 		panelClass?: string;
+		/** Keep rendering loaded data when a later reload fails — for a page whose
+		 * controls (search, filters) live inside it and whose reloads are many and
+		 * routine; the page shows `resource.error` inline itself. */
+		keepDataOnError?: boolean;
 		/** The page itself, rendered with the loaded payload. */
 		children: Snippet<[T]>;
 	} = $props();
@@ -69,7 +74,7 @@
 			</p>
 		{/if}
 	</div>
-{:else if resource.error}
+{:else if resource.error && !(keepDataOnError && resource.data)}
 	<div class="{panelClass} rounded-card border border-border bg-surface p-8">
 		<h2 class="text-h3 mb-2">{errorTitle}</h2>
 		<p class="mb-5 text-body text-muted">{resource.error}</p>

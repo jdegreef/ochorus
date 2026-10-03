@@ -8,12 +8,13 @@
   ]
  },
  "school-of-prayer": {
-  "title": "प्रार्थना की पाठशाला",
-  "description": "प्रार्थना की पाठशाला में चार सप्ताह, तीन मार्गदर्शकों के साथ: एंड्रयू मरे — प्रभु स्वयं हमें प्रार्थना करना कैसे सिखाते हैं; डी. एल. मूडी — प्रबल प्रार्थना; और हन्ना बुयिंज़ा — प्रार्थना, मसीही जीवन की दैनिक धड़कन।",
+  "title": "प्रार्थना की नींव",
+  "description": "प्रार्थना की नींव डालते हुए चार सप्ताह, तीन मार्गदर्शकों के साथ: एंड्रयू मरे — प्रभु स्वयं हमें प्रार्थना करना कैसे सिखाते हैं; डी. एल. मूडी — प्रबल प्रार्थना; और हन्ना बुयिंज़ा — प्रार्थना, मसीही जीवन की दैनिक धड़कन।",
   "note": [
    "Queue job #695. NONE of this curated plan's three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has a Hindi edition, so seed_plans creates no row today — this prose lands DORMANT on purpose. It exists so that whichever book lands last cannot publish an English-titled card in Hindi (the #819 defect). Same reasoning as the Spanish entry for this plan, job #517.",
    "Names are transliterated, as all shipped Hindi content does: एंड्रयू मरे and डी. एल. मूडी follow the shipped Hindi corpus (12 and 3 occurrences). हन्ना बुयिंज़ा has NO Hindi precedent — this is the first Hindi content to name her, so a later prayer-the-pulse-of-life edition or bio should match this form rather than diverge. Note es/pt/sw/lg keep her name in Latin script; Hindi cannot, so it is transliterated here.",
-   "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask."
+   "The three guides are named by AUTHOR, not by book title, because none of the three books ships in Hindi yet — there is no shipped title to quote. When they arrive, whoever translates them should either harmonise their titles with this card or adjust this entry in the same PR, exactly as the Arabic and Spanish notes ask.",
+   "2026-10-01: retitled from «प्रार्थना की पाठशाला» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description's opening «प्रार्थना की पाठशाला में चार सप्ताह» became «प्रार्थना की नींव डालते हुए चार सप्ताह» to match."
   ]
  },
  "school-of-prayer-31-days": {
@@ -94,18 +95,11 @@
    "«जेम्स डीग्रीफ़» is a fresh transliteration — the hi corpus had not spelled the author's name before. AI-drafted; awaiting native review."
   ]
  },
- "rooted-book-1-30-days": {
-  "title": "जड़ें जमाए: परमेश्वर के साथ 30 दिन — पुस्तक 1",
-  "description": "गहरी जड़ें जमाने के लिये तीस दिन, 9 से 12 वर्ष के पाठकों के लिये: परमेश्वर कौन है, यीशु का शुभ समाचार, मसीह में तुम कौन हो, प्रार्थना कैसे करें, और कैसे बढ़ें। हर दिन एक छोटा पठन होता है — एक बाइबल वचन, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
+ "rooted-three-months-books-1-3": {
+  "title": "जड़ें जमाए: परमेश्वर के साथ तीन महीने — पुस्तकें 1–3",
+  "description": "9 से 12 वर्ष के पाठकों के लिये परमेश्वर के साथ तीन महीने: ‘जड़ें जमाए’ की पहली तीन पुस्तकें — ‘रोपे गए’, ‘यीशु के पीछे चलना’ और ‘फल उगाना’ — हर दिन एक छोटी भक्ति-वार्ता: परमेश्वर कौन है और यीशु का शुभ समाचार, चरनी से खाली कब्र तक यीशु के साथ चलना, और आत्मा का फल उगाना।",
   "note": [
-   "Single-book plan backed by the hi edition of rooted-1 (book title “जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन — पुस्तक 1”); card wording follows the shipped book's settled terms and the hi 'rooted' series row (जड़ें जमाए). Added by the book:rooted-1 -> hi job (#3590), which makes this LAUNCH plan creatable in hi — without this entry seed_plans would publish an English-titled card in Hindi."
-  ]
- },
- "rooted-book-2-30-days": {
-  "title": "जड़ें जमाए: परमेश्वर के साथ 30 दिन — पुस्तक 2",
-  "description": "यीशु के साथ चलते हुए तीस दिन, 9 से 12 वर्ष के पाठकों के लिये: बैतलहम की चरनी से लेकर उसके चमत्कारों और दृष्टान्तों में से होते हुए क्रूस और खाली कब्र तक। हर दिन एक छोटा पठन होता है — सुसमाचार का एक अंश, सोचने के लिये एक प्रश्न, करने के लिये एक बात, और एक प्रार्थना।",
-  "note": [
-   "Single-book plan backed by the hi edition of rooted-2 (book title “जड़ें जमाए — युवाओं के लिये परमेश्वर के साथ 30 दिन — पुस्तक 2”); card wording follows the shipped book's settled terms and the hi 'rooted' series row (जड़ें जमाए). Added by the book:rooted-2 -> hi job (#3604), which makes this LAUNCH plan creatable in hi."
+   "AI-drafted; awaiting native review. Three-book plan backed by the hi editions of rooted-1 … rooted-3; rooted-3.hi ships in the same change, which is what makes the plan creatable in hi. The series name is the shipped hi cover_title «जड़ें जमाए», and the book names are the hi subtitles' lead words («रोपे गए» / «यीशु के पीछे चलना» / «फल उगाना»); «9 से 12 वर्ष के पाठकों के लिये» and «भक्ति-वार्ता» follow the three books' own hi descriptions, as do the ‘…’ quotes around titles."
   ]
  }
 }

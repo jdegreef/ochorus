@@ -12,7 +12,7 @@ from __future__ import annotations
 from django.test import TestCase
 
 from .cover_face import COVER_AUTHOR_FIELDS, COVER_FACE_FIELDS
-from .models import Author, Book, Series, SeriesTranslation
+from .models import Author, Book, Chapter, Series, SeriesTranslation
 from .serializers import BookDetailSerializer, series_block
 
 
@@ -172,6 +172,13 @@ class SeriesViewTests(TestCase):
         kt_row, bfg = rows
         self.assertEqual((bfg["description"], bfg["book_count"]), ("True stories.", 5))
         self.assertEqual(bfg["books"], ["bfg-1", "bfg-2", "bfg-3", "bfg-4", "bfg-5"])
+        # Every title in the same order — the card's book list, not just the fan.
+        self.assertEqual(bfg["titles"], [f"bfg-{n} [en]" for n in range(1, 6)])
+        # Format: volume numbers make it ordered; the collection is not.
+        self.assertTrue(bfg["ordered"])
+        self.assertFalse(kt_row["ordered"])
+        # No chapters yet: no length, so the card draws no minutes.
+        self.assertIsNone(bfg["chapter_words"])
         # Untagged: no group, no age line.
         self.assertEqual((bfg["audience"], bfg["min_age"], bfg["max_age"]), ("", None, None))
         # The fan: the first four published volumes, in reading order.
@@ -189,13 +196,31 @@ class SeriesViewTests(TestCase):
         bfg = self._get("series/").json()[1]
         self.assertEqual(bfg["languages"], ["en", "sw"])
 
+    def test_the_list_gives_a_series_its_words_per_chapter(self):
+        def chapter(book, order, words):
+            Chapter.objects.create(book=book, order=order, body_html="<p>x</p>")
+            Chapter.objects.filter(book=book, order=order).update(word_count=words)
+
+        one = self._book("bfg-1", 1)
+        two = self._book("bfg-2", 2)
+        chapter(one, 1, 1000)
+        chapter(one, 2, 3000)
+        chapter(one, 3, 0)  # a heading-only divider: no text, not counted
+        chapter(two, 1, 4000)
+        # A chapter of an unpublished volume doesn't count.
+        chapter(self._book("bfg-3", 3, published=False), 1, 90000)
+        (row,) = self._get("series/").json()
+        # Each book's own average (2000, 4000), then their mean — not 8000/3,
+        # which would let a book of many chapters outweigh the rest.
+        self.assertEqual(row["chapter_words"], 3000)
+
     def test_the_list_costs_the_same_however_many_series(self):
         self._book("bfg-1", 1)
         for i in range(3):
             s = Series.objects.create(slug=f"s{i}", title=f"S{i}")
             self._book(f"s{i}-1", 1, series=s)
-        # The books, the languages they are held in, the series, their
-        # translations — and the cache mixin's content-revision read.
+        # The books (with their chapter text), the languages they are held in,
+        # the series, their translations — and the cache mixin's revision read.
         with self.assertNumQueries(5):
             self._get("series/")
 

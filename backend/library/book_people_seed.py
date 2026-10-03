@@ -183,6 +183,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("key-teachings-of-richard-baxter", [("richard-baxter", "subject")]),
     ("key-teachings-of-watchman-nee", [("watchman-nee", "subject")]),
     ("mary-slessor-a-life", [("mary-slessor", "subject")]),
+    ("pandita-ramabai-a-life", [("pandita-ramabai", "subject")]),
     ("samuel-ajayi-crowther-a-life", [("samuel-ajayi-crowther", "subject")]),
     ("watchman-nee-a-life", [("watchman-nee", "subject")]),
 ]

@@ -9,7 +9,8 @@ queue.
 
 from __future__ import annotations
 
-from urllib.parse import urlsplit
+import re
+from urllib.parse import unquote_plus, urlsplit, urlunsplit
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -83,10 +84,40 @@ def _anchor_block(value) -> int | None:
     return value
 
 
+#: Query keys that carry a credential, matched whole (so ``error_code`` or
+#: ``author`` survive). Supabase's implicit flow puts the session in the
+#: fragment (``#access_token=…&refresh_token=…``) and its PKCE / OTP flows put
+#: ``code`` / ``token_hash`` in the query; a reader who opens feedback straight
+#: after a magic-link sign-in would otherwise file their live session with it.
+_SECRET_KEY = re.compile(
+    r"(\w+_)?token(_hash|_type)?|code|otp|password|secret|api_?key", re.IGNORECASE
+)
+
+
+def _scrub_url(url: str) -> str:
+    """Drop credential-shaped query parameters and any ``key=value`` fragment,
+    keeping every other parameter exactly as spelled. A plain ``#section``
+    anchor stays: the reader app sets those itself (author pages, /biographies)
+    and they say where the reader was. Returns "" for a URL that won't parse.
+    Only ever shortens its input."""
+    try:
+        parts = urlsplit(url)
+    except ValueError:
+        return ""
+    kept = [
+        seg
+        for seg in parts.query.split("&")
+        if not _SECRET_KEY.fullmatch(unquote_plus(seg.split("=", 1)[0]))
+    ]
+    fragment = "" if "=" in parts.fragment else parts.fragment
+    return urlunsplit((parts.scheme, parts.netloc, parts.path, "&".join(kept), fragment))
+
+
 def _clip_url(value, limit: int) -> str:
     """Like _clip, but only keep an http(s) URL — the admin queue renders this as
-    a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS."""
-    url = _clip(value, limit)
+    a clickable link, so a ``javascript:``/``data:`` scheme would be stored XSS —
+    and scrub any credential out of it first (see :func:`_scrub_url`)."""
+    url = _scrub_url(_clip(value, limit))
     return url if urlsplit(url).scheme in ("http", "https") else ""
 
 

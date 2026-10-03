@@ -124,6 +124,156 @@ class AdminActivityTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(len(res.data["actions"]), 3)
 
+    # --- filters and the summary: over the whole log, not the loaded page ---
+
+    def _row(self, action, target="book:humility:es", actor="admin@example.com", **detail):
+        return AdminAction.objects.create(action=action, actor=actor, target=target, detail=detail)
+
+    @override_settings(DEBUG=True)
+    def test_search_reaches_past_the_first_page(self):
+        self._row(A.TRANSLATION_JOB, target="book:morning-and-evening:de", author="Spurgeon")
+        self._make(5)  # newer rows bury it
+        with patch.object(AdminActivityView, "LIMIT", 2):
+            res = self.client.get("/api/admin/activity/?q=spurgeon").data
+        self.assertEqual(res["total"], 1)
+        self.assertEqual(res["actions"][0]["target"], "book:morning-and-evening:de")
+
+    @override_settings(DEBUG=True)
+    def test_search_matches_target_label_and_detail(self):
+        self._row(A.LANGUAGE_GO_LIVE, target="language:am")
+        self._row(A.TRANSLATION_JOB, issue_url="https://github.com/o/r/issues/4821")
+
+        def get(q):
+            return self.client.get("/api/admin/activity/", {"q": q}).data["total"]
+
+        self.assertEqual(get("language:am"), 1)
+        self.assertEqual(get("taken live"), 1)  # the label, not the stored value
+        self.assertEqual(get("4821"), 1)  # inside detail
+
+    @override_settings(DEBUG=True)
+    def test_category_filters_and_pages_within_the_category(self):
+        for _ in range(3):
+            self._row(A.REVIEW_DECIDE)
+        self._row(A.ROLE_GRANT, target="user:x@example.com")
+        self._make(4)
+        with patch.object(AdminActivityView, "LIMIT", 2):
+            p1 = self.client.get("/api/admin/activity/?category=review").data
+            p2 = self.client.get(f"/api/admin/activity/?category=review&before={p1['next_cursor']}").data
+        self.assertEqual(p1["total"], 3)
+        self.assertEqual(len(p1["actions"]) + len(p2["actions"]), 3)
+        self.assertTrue(all(a["action"] == A.REVIEW_DECIDE for a in p1["actions"] + p2["actions"]))
+        access = self.client.get("/api/admin/activity/?category=access").data
+        self.assertEqual(access["total"], 1)  # role.* files as access
+
+    @override_settings(DEBUG=True)
+    def test_actor_filter(self):
+        self._row(A.REVIEW_DECIDE, actor="a@example.com")
+        self._row(A.REVIEW_DECIDE, actor="b@example.com")
+        res = self.client.get("/api/admin/activity/?actor=b@example.com").data
+        self.assertEqual(res["total"], 1)
+        self.assertEqual(res["actions"][0]["actor"], "b@example.com")
+
+    @override_settings(DEBUG=True)
+    def test_summary_counts_the_whole_log(self):
+        for _ in range(3):
+            self._row(A.TRANSLATION_JOB)
+        self._row(A.LANGUAGE_GO_LIVE, target="language:sw")
+        self._row(A.REVIEW_DECIDE, actor="b@example.com")
+        with patch.object(AdminActivityView, "LIMIT", 1):
+            s = self.client.get("/api/admin/activity/").data["summary"]
+        self.assertEqual(s["all"], 5)
+        self.assertEqual(s["by_category"]["translation"], 3)
+        self.assertEqual(s["by_category"]["language"], 1)
+        self.assertEqual(s["by_category"]["review"], 1)
+        self.assertEqual(s["today"], 5)
+        self.assertEqual(s["today_reader_facing"], 1)
+        self.assertEqual(s["week"], 5)
+        self.assertEqual(s["actors"], [{"actor": "admin@example.com", "count": 4}, {"actor": "b@example.com", "count": 1}])
+        self.assertEqual(s["last_go_live"]["target"], "language:sw")
+        self.assertIsNone(s["last_publish"])
+
+    @override_settings(DEBUG=True)
+    def test_chip_counts_follow_search_but_not_category(self):
+        self._row(A.TRANSLATION_JOB, target="book:grace:es")
+        self._row(A.REVIEW_DECIDE, target="book:grace:es")
+        self._row(A.REVIEW_DECIDE, target="book:holiness:es")
+        s = self.client.get("/api/admin/activity/?q=grace&category=review").data["summary"]
+        # Each chip says what clicking it would show for "grace".
+        self.assertEqual(s["by_category"]["translation"], 1)
+        self.assertEqual(s["by_category"]["review"], 1)
+
+    @override_settings(DEBUG=True)
+    def test_today_uses_the_callers_midnight(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        row = self._row(A.TRANSLATION_JOB)
+        AdminAction.objects.filter(pk=row.pk).update(at=timezone.now() - timedelta(hours=3))
+        self._row(A.TRANSLATION_JOB)
+        midnight = (timezone.now() - timedelta(hours=1)).isoformat()
+        s = self.client.get("/api/admin/activity/", {"day_start": midnight}).data["summary"]
+        self.assertEqual(s["today"], 1)
+
+    @override_settings(DEBUG=True)
+    def test_impossible_day_start_falls_back_not_500(self):
+        self._row(A.TRANSLATION_JOB)
+        for raw in ("2026-02-30T00:00:00Z", "2026-10-01T00:00:00+25:00", "nonsense"):
+            res = self.client.get("/api/admin/activity/", {"day_start": raw})
+            self.assertEqual(res.status_code, 200, raw)
+            self.assertEqual(res.data["summary"]["today"], 1)
+
+    @override_settings(DEBUG=True)
+    def test_cursor_page_omits_the_summary(self):
+        self._make(3)
+        with patch.object(AdminActivityView, "LIMIT", 1):
+            first = self.client.get("/api/admin/activity/").data
+            older = self.client.get(f"/api/admin/activity/?before={first['next_cursor']}").data
+        self.assertIsNotNone(first["summary"])
+        self.assertIsNone(older["summary"])
+
+    @override_settings(DEBUG=True)
+    def test_export_returns_every_match_unpaged(self):
+        self._make(5)
+        self._row(A.REVIEW_DECIDE)
+        with patch.object(AdminActivityView, "LIMIT", 2):
+            res = self.client.get("/api/admin/activity/?export=1&category=content").data
+        self.assertEqual(len(res["actions"]), 5)
+        self.assertFalse(res["truncated"])
+        with patch.object(AdminActivityView, "EXPORT_LIMIT", 3):
+            res = self.client.get("/api/admin/activity/?export=1").data
+        self.assertEqual(len(res["actions"]), 3)
+        self.assertTrue(res["truncated"])
+
+    @override_settings(DEBUG=True)
+    def test_rows_carry_the_works_real_title(self):
+        from .models import Author, Book
+
+        author = Author.objects.create(slug="muller", name="George Müller")
+        Book.objects.create(author=author, slug="muller-of-bristol", title="George Müller of Bristol")
+        Book.objects.create(
+            author=author, slug="muller-of-bristol", language="fr", title="George Müller de Bristol"
+        )
+        self._row(A.TRANSLATION_JOB, target="book:muller-of-bristol:fr")
+        self._row(A.TRANSLATION_JOB, target="book:muller-of-bristol:es")  # no es row yet
+        self._row(A.AUTHOR_CREATE, target="author:muller")
+        self._row(A.TRANSLATION_JOB, target="book:no-such-book:es")
+        self._row(A.LANGUAGE_GO_LIVE, target="language:sw")
+        # A review row's target carries a reference after the language.
+        self._row(A.REVIEW_DECIDE, target="book:muller-of-bristol:fr:John 3:16")
+        res = self.client.get("/api/admin/activity/").data
+        titles = {a["target"]: a["title"] for a in res["actions"]}
+        self.assertEqual(titles["book:muller-of-bristol:fr"], "George Müller de Bristol")
+        # The edition a job targets may not exist yet: the English name stands in.
+        self.assertEqual(titles["book:muller-of-bristol:es"], "George Müller of Bristol")
+        self.assertEqual(titles["author:muller"], "George Müller")
+        self.assertEqual(titles["book:no-such-book:es"], "")
+        self.assertEqual(titles["language:sw"], "")
+        self.assertEqual(titles["book:muller-of-bristol:fr:John 3:16"], "George Müller de Bristol")
+        # The CSV has no title column, so the export doesn't resolve them.
+        exported = self.client.get("/api/admin/activity/?export=1").data["actions"]
+        self.assertTrue(all(a["title"] == "" for a in exported))
+
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
     def test_forbidden_without_admin_email(self):
         res = self.client.get("/api/admin/activity/")
@@ -166,3 +316,183 @@ class AdminActivityMaskingTests(TestCase):
         row = self.client.get("/api/admin/activity/?target=user:hannah@example.com").data["actions"][0]
         self.assertEqual(row["actor"], "super@ochorus.com")
         self.assertEqual(row["target"], "user:hannah@example.com")
+
+    def test_non_super_search_cannot_probe_masked_addresses(self):
+        self.client.force_authenticate(user=self.contrib, token={"email_verified": True})
+        self.assertEqual(self.client.get("/api/admin/activity/?q=hannah").data["total"], 0)
+        self.assertEqual(self.client.get("/api/admin/activity/?q=super@").data["total"], 0)
+
+    def test_non_super_actor_list_is_masked_and_filters_by_the_mask(self):
+        self.client.force_authenticate(user=self.contrib, token={"email_verified": True})
+        actors = self.client.get("/api/admin/activity/").data["summary"]["actors"]
+        self.assertEqual(len(actors), 1)
+        masked = actors[0]["actor"]
+        self.assertNotIn("super@", masked)
+        self.assertEqual(self.client.get("/api/admin/activity/", {"actor": masked}).data["total"], 1)
+        # The raw address is not a key for this caller.
+        self.assertEqual(
+            self.client.get("/api/admin/activity/", {"actor": "super@ochorus.com"}).data["total"], 0
+        )
+
+
+@override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="test-token")
+class AdminActivityJobStatusTests(TestCase):
+    """Where each translation job is now: GitHub's open queue for the stages
+    before shipping, this database's editions for everything after."""
+
+    def setUp(self):
+        from .models import Author, Book
+
+        self.client = APIClient()
+        self.author = Author.objects.create(slug="bunyan", name="John Bunyan")
+        Book.objects.create(author=self.author, slug="grace", title="Grace Abounding")
+        # Live, unreviewed / approved editions.
+        Book.objects.create(
+            author=self.author, slug="grace", language="es", title="Gracia", source_type="ai_unreviewed"
+        )
+        Book.objects.create(
+            author=self.author, slug="holy-war", language="fr", title="La guerre sainte",
+            source_type="ai_reviewed",
+        )
+        for target in (
+            "book:grace:es",  # live, unreviewed
+            "book:holy-war:fr",  # approved
+            "book:pilgrim:de",  # queued
+            "book:pilgrim:fr",  # claimed recently
+            "book:pilgrim:sw",  # claimed long ago
+            "book:pilgrim:am",  # closed, no edition
+        ):
+            AdminAction.objects.create(
+                action=A.TRANSLATION_JOB, actor="admin@example.com", target=target, detail={}
+            )
+        AdminAction.objects.create(action=A.LANGUAGE_GO_LIVE, actor="admin@example.com", target="language:sw")
+
+    def _queue(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        now = timezone.now()
+        job = lambda lang, state, age: {  # noqa: E731
+            "type": "book", "slug": "pilgrim", "language": lang, "state": state,
+            "number": 1, "url": "", "created_at": "", "updated_at": (now - age).isoformat(),
+        }
+        return [
+            job("de", "queued", timedelta(hours=30)),
+            job("fr", "in_progress", timedelta(hours=1)),
+            job("sw", "in_progress", timedelta(hours=7)),
+            # An issue a worker left open after shipping: the edition wins.
+            {**job("es", "in_progress", timedelta(hours=1)), "slug": "grace"},
+        ]
+
+    def _get(self, **params):
+        with patch("library.admin_views.jobs._list_open_jobs", return_value=self._queue()):
+            return self.client.get("/api/admin/activity/", params).data
+
+    def test_each_job_row_carries_its_status(self):
+        data = self._get()
+        status = {a["target"]: a.get("job_status") for a in data["actions"]}
+        self.assertEqual(
+            status,
+            {
+                "book:grace:es": "review",
+                "book:holy-war:fr": "done",
+                "book:pilgrim:de": "queued",
+                "book:pilgrim:fr": "in_progress",
+                "book:pilgrim:sw": "stalled",
+                "book:pilgrim:am": "closed",
+                "language:sw": None,  # not a job: no status at all
+            },
+        )
+
+    def test_summary_counts_jobs_by_status(self):
+        jobs = self._get()["summary"]["jobs"]
+        self.assertEqual(jobs["github"], "ok")
+        self.assertEqual(
+            jobs["by_status"],
+            {"queued": 1, "in_progress": 1, "stalled": 1, "closed": 1, "review": 1, "done": 1, "unknown": 0},
+        )
+
+    def test_filter_by_status_and_needs_me(self):
+        stalled = self._get(job_status="stalled")
+        self.assertEqual([a["target"] for a in stalled["actions"]], ["book:pilgrim:sw"])
+        mine = self._get(job_status="needs_me")
+        self.assertEqual(
+            sorted(a["target"] for a in mine["actions"]), ["book:grace:es", "book:pilgrim:am"]
+        )
+        self.assertEqual(mine["total"], 2)
+
+    def test_github_down_marks_unshipped_jobs_unknown(self):
+        import requests
+
+        with patch(
+            "library.admin_views.jobs._list_open_jobs", side_effect=requests.ConnectionError("down")
+        ):
+            data = self.client.get("/api/admin/activity/").data
+        status = {a["target"]: a.get("job_status") for a in data["actions"]}
+        # The database still knows what shipped; the rest isn't guessed at.
+        self.assertEqual(status["book:grace:es"], "review")
+        self.assertEqual(status["book:holy-war:fr"], "done")
+        self.assertEqual(status["book:pilgrim:de"], "unknown")
+        self.assertEqual(data["summary"]["jobs"]["github"], "down")
+
+    @override_settings(GITHUB_TRANSLATION_TOKEN="")
+    def test_no_token_means_no_github_call(self):
+        with patch("library.admin_views.jobs._list_open_jobs") as listed:
+            data = self.client.get("/api/admin/activity/").data
+        listed.assert_not_called()
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["unknown"], 4)
+        # Not set up here is not an outage: the page shouldn't say GitHub is down.
+        self.assertEqual(data["summary"]["jobs"]["github"], "off")
+
+    def test_counts_are_rows_so_they_match_the_filter(self):
+        # A second press of Translate on the same job: one more row.
+        AdminAction.objects.create(
+            action=A.TRANSLATION_JOB, actor="admin@example.com", target="book:pilgrim:am",
+            detail={"created": False},
+        )
+        data = self._get(job_status="closed")
+        self.assertEqual(data["summary"]["jobs"]["by_status"]["closed"], 2)
+        self.assertEqual(data["total"], 2)
+
+    def test_a_job_filed_after_the_queue_was_read_is_queued_not_closed(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from .job_status import Queue, statuses
+
+        read_at = timezone.now()
+        queue = Queue([], read_at)
+        key = ("book", "pilgrim", "nl")
+        found = statuses({key: read_at + timedelta(seconds=5)}, lambda: queue)
+        self.assertEqual(found[key], "queued")
+        found = statuses({key: read_at - timedelta(minutes=5)}, lambda: queue)
+        self.assertEqual(found[key], "closed")
+
+    def test_a_claim_beats_a_newer_queued_duplicate(self):
+        from datetime import timedelta
+
+        from django.utils import timezone
+
+        from .job_status import Queue, statuses
+
+        old = (timezone.now() - timedelta(hours=8)).isoformat()
+        new = timezone.now().isoformat()
+        dup = {"type": "book", "slug": "pilgrim", "language": "nl"}
+        queue = Queue(
+            [
+                {**dup, "state": "in_progress", "updated_at": old},
+                {**dup, "state": "queued", "updated_at": new},
+            ],
+            timezone.now(),
+        )
+        key = ("book", "pilgrim", "nl")
+        self.assertEqual(statuses({key: None}, lambda: queue)[key], "stalled")
+
+    def test_github_is_not_asked_when_every_job_has_shipped(self):
+        AdminAction.objects.filter(target__startswith="book:pilgrim").delete()
+        with patch("library.admin_views.jobs._list_open_jobs") as listed:
+            data = self.client.get("/api/admin/activity/").data
+        listed.assert_not_called()
+        self.assertEqual(data["summary"]["jobs"]["github"], "ok")

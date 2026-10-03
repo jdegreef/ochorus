@@ -79,6 +79,8 @@ MODELS = [
 # silently wave the same name through on another.
 DEFAULTED_OK = {
     ("library.author", "is_imprint"),
+    # Blank for every author who has no one-line tagline (most of them).
+    ("library.author", "tagline"),
     ("library.book", "publication_year"),
     ("library.book", "attribution"),
     ("library.book", "source_type"),
@@ -103,6 +105,8 @@ DEFAULTED_OK = {
     ("library.sermon", "attribution"),
     ("library.sermon", "study_questions"),
     ("library.article", "source_type"),
+    # Blank on every book-chapter plan day (migration 0173 added article days).
+    ("library.planday", "article_slug"),
 }
 
 # (model, field) pairs that dumpdata materializes but whose default is NOT

@@ -2,6 +2,7 @@ import re
 from collections import Counter
 
 from django.db.models import Count, QuerySet, Sum
+from django.db.models.functions import Substr
 from django.urls import reverse
 from django.utils.text import slugify
 from rest_framework import serializers
@@ -31,7 +32,7 @@ from .models import (
 )
 from .opening import opening_candidate_orders, opening_excerpt
 from .rights import is_public_domain
-from .scripture import book_of
+from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
 from .scripture_graph import treated_passages
 
 
@@ -218,6 +219,16 @@ def book_series_map(language: str, series_ids) -> dict[int, dict]:
     return named
 
 
+#: How many works (books + sermons) a topical shelf needs IN A LANGUAGE before
+#: its page there is worth indexing. Below it the page is a title and one or two
+#: cards — a thin page Google counts against the site — so it is still served
+#: (readers browsing /topics reach it) but marked noindex, left out of the
+#: sitemap and out of the other editions' hreflang. One number, read by the
+#: list's ``indexable`` flag and the detail's ``available_languages``, which the
+#: frontend's noindex, sitemap and hreflang all follow.
+TOPIC_INDEX_MIN_WORKS = 3
+
+
 def _published_languages(model, **filters):
     """The distinct browsable languages of the published ``model`` rows matching
     ``filters`` — a values queryset, so callers can combine it (a UNION) before
@@ -360,6 +371,23 @@ class AuthorSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
 
+class SermonAuthorSerializer(AuthorSerializer):
+    """A sermon card's author: the card fields plus the one-line ``tagline``.
+
+    Only the sermons shelf reads it (under each preacher heading), so it rides
+    on sermon cards alone rather than on every book card in every shelf.
+    ``""`` outside the author's own language (``Author.tagline_for``).
+    """
+
+    tagline = serializers.SerializerMethodField()
+
+    class Meta(AuthorSerializer.Meta):
+        fields = AuthorSerializer.Meta.fields + ["tagline"]
+
+    def get_tagline(self, obj):
+        return obj.tagline_for(self._language())
+
+
 class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """Authors for the Biographies page, with how many books each has."""
 
@@ -370,12 +398,16 @@ class AuthorListSerializer(LocalizedMixin, serializers.ModelSerializer):
     # read vs. a one-line stub. A boolean, not the HTML (kept out of the list
     # payload); the long bio itself lives on the author detail endpoint.
     has_long_bio = serializers.SerializerMethodField()
+    # Reviewed quotations — what /quotes/<slug>/ lists, so the A–Z can link it
+    # (``AuthorQuerySet.with_quote_count``). Language-independent, like
+    # AuthorDetailSerializer.quote_count: the reader decides which locales link.
+    quote_count = serializers.IntegerField(source="reviewed_quotes", read_only=True)
 
     class Meta:
         model = Author
         fields = [
             "slug", "name", "bio", "photo_url", "birth_year", "death_year",
-            "book_count", "sermon_count", "has_long_bio",
+            "book_count", "sermon_count", "has_long_bio", "quote_count",
         ]
 
     def get_has_long_bio(self, obj):
@@ -516,7 +548,7 @@ class BookListSerializer(LocalizedMixin, serializers.ModelSerializer):
 class SermonListSerializer(LocalizedMixin, serializers.ModelSerializer):
     """A sermon card — enough for the shelf and the author page (no body)."""
 
-    author = AuthorSerializer(read_only=True)
+    author = SermonAuthorSerializer(read_only=True)
     # Which Bible book the sermon's text is from, for the shelf's book facet
     # ("Malachi", canonical position 39). Null for unparseable/localized refs
     # ("" included — book_of returns None). lru_cached, so the paired calls
@@ -2115,17 +2147,37 @@ class PlanListSerializer(serializers.ModelSerializer):
             self.context["plan_books"] = index
         return index
 
+    def _articles(self, obj):
+        index = self.context.get("plan_articles")
+        if index is None:
+            index = plan_article_index([obj], obj.language)
+            self.context["plan_articles"] = index
+        return index
+
+    def _reading(self, obj, day):
+        """A day's ``{title, book_title, word_count}``, or None if unresolved."""
+        return _plan_reading(day, self._chapters(obj), self._articles(obj))
+
     def get_total_words(self, obj):
-        return _plan_total_words(obj, self._chapters(obj))
+        return sum(
+            (self._reading(obj, d) or {}).get("word_count", 0) for d in obj.days.all()
+        )
 
     def get_covers(self, obj):
         return _plan_covers(obj, self._books(obj))
 
     def get_day_one(self, obj):
-        return _plan_day_one(obj, self._chapters(obj))
+        """Day 1's book + chapter titles, so a card can say where the plan
+        starts. An article day has no book: its title stands as the chapter.
+        Days are prefetched and ordered by day, so the first is day one."""
+        first = next(iter(obj.days.all()), None)
+        reading = first and self._reading(obj, first)
+        if not reading:
+            return None
+        return {"book_title": reading["book_title"], "chapter_title": reading["title"]}
 
 
-def plan_chapter_index(plans, language):
+def plan_chapter_index(plans, language, with_openings=False):
     """``{(book_slug, order): chapter values}`` for every day of every plan.
 
     ONE query for a whole page. The three plan card fields — total words, day
@@ -2135,22 +2187,37 @@ def plan_chapter_index(plans, language):
 
     Carries every column any of those four needs, so they read a dict instead of
     the database. Same shape ``get_days`` already built for itself.
+
+    ``with_openings`` adds each chapter's first ``EPIGRAPH_WINDOW`` characters
+    as ``opening`` — the detail page's key-verse chips read it. Off for the
+    shelf, which shows no chips and would only pay to ship the text.
     """
-    pairs = {(d.book_slug, d.chapter_order) for plan in plans for d in plan.days.all()}
+    pairs = {
+        (d.book_slug, d.chapter_order)
+        for plan in plans
+        for d in plan.days.all()
+        if d.book_slug
+    }
     if not pairs:
         return {}
     slugs = {slug for slug, _ in pairs}
-    return {
-        (c["book__slug"], c["order"]): c
-        for c in Chapter.objects.filter(
-            book__slug__in=slugs, book__language=language
-        ).values("book__slug", "book__title", "order", "title", "word_count")
-    }
+    # By order too: the day list reads a few chapters of books that may hold
+    # hundreds, and with openings each extra row costs a body_text read.
+    rows = Chapter.objects.filter(
+        book__slug__in=slugs,
+        book__language=language,
+        order__in={order for _, order in pairs},
+    )
+    fields = ["book__slug", "book__title", "order", "title", "word_count"]
+    if with_openings:
+        rows = rows.annotate(opening=Substr("body_text", 1, EPIGRAPH_WINDOW))
+        fields.append("opening")
+    return {(c["book__slug"], c["order"]): c for c in rows.values(*fields)}
 
 
 def plan_book_index(plans, language):
     """``{slug: Book}`` for every book any of these plans draws from — one query."""
-    slugs = {d.book_slug for plan in plans for d in plan.days.all()}
+    slugs = {d.book_slug for plan in plans for d in plan.days.all() if d.book_slug}
     if not slugs:
         return {}
     # select_related the author so a plan can name the writers it reads through
@@ -2164,27 +2231,55 @@ def plan_book_index(plans, language):
     }
 
 
-def _plan_total_words(plan, chapters):
-    """Sum the word counts of every day's chapter, from a prebuilt index."""
-    return sum(
-        (chapters.get((d.book_slug, d.chapter_order)) or {}).get("word_count", 0)
-        for d in plan.days.all()
-    )
+def plan_article_index(plans, language):
+    """``{slug: {"h1", "word_count"}}`` for every article day — one query.
 
-
-def _plan_day_one(plan, chapters):
-    """Day 1's book + chapter titles, so a card can say where the plan starts.
-
-    Days are prefetched and ordered by day, so ``days.all()[0]`` is day one.
+    The article companion of ``plan_chapter_index``: a plan day may read an
+    article instead of a chapter. Published rows in the plan's language only,
+    the same rule the seed used to decide the plan could exist there.
     """
-    days = list(plan.days.all())
-    if not days:
-        return None
-    first = days[0]
-    chapter = chapters.get((first.book_slug, first.chapter_order))
-    if chapter is None:
-        return None
-    return {"book_title": chapter["book__title"], "chapter_title": chapter["title"]}
+    slugs = {d.article_slug for plan in plans for d in plan.days.all() if d.article_slug}
+    if not slugs:
+        return {}
+    return {
+        a["slug"]: a
+        for a in Article.objects.filter(
+            slug__in=slugs, language=language, is_published=True
+        ).values("slug", "h1", "word_count")
+    }
+
+
+# A devotional's chapter titles carry the BOOK's own day ("Day 13 — Where You
+# Go"), which disagrees with the plan's day as soon as a book opens on an
+# introduction — the plan shows "Day 14 of 96" over "Day 13 — …". Right in the
+# book's contents, wrong in a plan, so plan payloads drop it. The word for "day"
+# in each content language that writes it; "Psalm 23 — …" keeps its number.
+_PLAN_DAY_PREFIX = re.compile(
+    r"^(?:Day|Día|Dia|Jour|Tag|Siku|Olunaku|День|दिन|ቀን|اليوم|يوم)\s+\d+\s*[—–:-]\s*(?=[^\d\s])",
+    re.IGNORECASE,
+)
+
+
+def plan_day_title(title):
+    """A chapter title as a plan day shows it: without the book's "Day N — "."""
+    return _PLAN_DAY_PREFIX.sub("", title)
+
+
+def _plan_reading(day, chapters, articles):
+    """What one plan day reads — ``{title, book_title, word_count}`` — from the
+    prebuilt indexes, or None when it doesn't resolve in this language. The one
+    place that knows a day is a chapter or an article, so the card fields and
+    the day list cannot disagree about it."""
+    if day.article_slug:
+        a = articles.get(day.article_slug)
+        return a and {"title": a["h1"], "book_title": "", "word_count": a["word_count"]}
+    c = chapters.get((day.book_slug, day.chapter_order))
+    return c and {
+        "title": plan_day_title(c["title"]),
+        "book_title": c["book__title"],
+        "word_count": c["word_count"],
+        "opening": c.get("opening", ""),
+    }
 
 
 def _book_cover(book):
@@ -2200,7 +2295,7 @@ def _plan_covers(plan, books, limit=5):
     cover descriptors — mirrors a topic's covers strip. Reads a prebuilt index."""
     order = []
     for d in plan.days.all():
-        if d.book_slug not in order:
+        if d.book_slug and d.book_slug not in order:
             order.append(d.book_slug)
     if not order:
         return []
@@ -2209,13 +2304,15 @@ def _plan_covers(plan, books, limit=5):
         b = books.get(slug)
         if b:
             covers.append(_book_cover(b))
-        if len(covers) >= limit:
+        if limit and len(covers) >= limit:
             break
     return covers
 
 
 class PlanDaySerializer(serializers.ModelSerializer):
-    """One day's reading, enriched with display titles for the linked chapter."""
+    """One day's reading, enriched with display titles for the linked chapter —
+    or, on an article day (``article_slug`` set, ``book_slug`` empty and
+    ``chapter_order`` null), the article's headline as ``chapter_title``."""
 
     book_title = serializers.CharField(read_only=True, default="")
     chapter_title = serializers.CharField(read_only=True, default="")
@@ -2223,12 +2320,15 @@ class PlanDaySerializer(serializers.ModelSerializer):
     # A published Modern English edition of the day's book exists — so the
     # reader's "Prefer Modern English" can be honoured on the day's link.
     has_modern_edition = serializers.BooleanField(read_only=True, default=False)
+    # The verse the day's chapter opens on ("Ruth 1:16"), or "" — the day list
+    # wears it as a chip, so a reader sees what each day is about.
+    key_verse = serializers.CharField(read_only=True, default="")
 
     class Meta:
         model = PlanDay
         fields = [
-            "day", "book_slug", "chapter_order", "book_title", "chapter_title",
-            "word_count", "has_modern_edition",
+            "day", "book_slug", "chapter_order", "article_slug", "book_title",
+            "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 
@@ -2247,6 +2347,11 @@ class PlanDetailSerializer(PlanListSerializer):
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
 
+    def get_covers(self, obj):
+        """Every book's cover, not the shelf card's five: the day list draws one
+        on each book's section."""
+        return _plan_covers(obj, self._books(obj), limit=None)
+
     def get_authors(self, obj):
         """The distinct writers this plan reads through, in the order their books
         first appear across the days — a link out to each author page, so a plan
@@ -2264,15 +2369,14 @@ class PlanDetailSerializer(PlanListSerializer):
 
     def get_days(self, obj):
         days = list(obj.days.all())
-        # The same lookup the card fields need, so it is built once for the
-        # whole response rather than a fourth time here.
-        lookup = self._chapters(obj)
+        # Titles and lengths come from the same page-wide indexes the card
+        # fields read (``_reading``), so nothing is fetched a fourth time here.
         # Modern English is an English edition: a plan in any other language
         # links its own translations, never it.
         modern = (
             set(
                 Book.objects.filter(
-                    slug__in={d.book_slug for d in days},
+                    slug__in={d.book_slug for d in days if d.book_slug},
                     language=MODERN_LANGUAGE,
                     is_published=True,
                 ).values_list("slug", flat=True)
@@ -2281,11 +2385,14 @@ class PlanDetailSerializer(PlanListSerializer):
             else set()
         )
         for d in days:
-            c = lookup.get((d.book_slug, d.chapter_order))
-            d.book_title = c["book__title"] if c else ""
-            d.chapter_title = c["title"] if c else ""
-            d.word_count = c["word_count"] if c else 0
-            d.has_modern_edition = d.book_slug in modern
+            r = self._reading(obj, d) or {}
+            d.book_title = r.get("book_title", "")
+            d.chapter_title = r.get("title", "")
+            d.word_count = r.get("word_count", 0)
+            d.has_modern_edition = bool(d.book_slug) and d.book_slug in modern
+            # Only the detail view's index carries openings; any other caller
+            # (the serializer used directly) just gets no chips.
+            d.key_verse = epigraph_reference(r.get("opening", ""))
         return PlanDaySerializer(days, many=True).data
 
 
@@ -2303,6 +2410,10 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
     # On the list, not just the detail, so /topics can draw it without a fetch
     # per card. Reads the same prefetched translations as the title.
     scripture_ref = serializers.SerializerMethodField()
+    # Whether this shelf holds enough in this language to be indexed — see
+    # TOPIC_INDEX_MIN_WORKS. The sitemap reads it from the list; the page from
+    # the detail, which inherits it.
+    indexable = serializers.SerializerMethodField()
 
     class Meta:
         model = Topic
@@ -2314,6 +2425,7 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
             "sermon_count",
             "covers",
             "scripture_ref",
+            "indexable",
         ]
 
     def get_title(self, obj):
@@ -2330,6 +2442,9 @@ class TopicListSerializer(LocalizedMixin, serializers.ModelSerializer):
 
     def get_sermon_count(self, obj):
         return len(self._sermons(obj))
+
+    def get_indexable(self, obj) -> bool:
+        return len(self._books(obj)) + len(self._sermons(obj)) >= TOPIC_INDEX_MIN_WORKS
 
     def get_covers(self, obj):
         """Up to four member tiles for the card's fan — books first, then sermons.
@@ -2449,17 +2564,30 @@ class TopicDetailSerializer(TopicListSerializer):
         ]
 
     def get_available_languages(self, obj):
-        """Locales this shelf actually exists in — for hreflang.
+        """Locales this shelf is INDEXED in — for hreflang.
 
         Matches Book.available_languages in purpose: the page 404s in a locale
         with no translated title (TopicDetailView), so advertising an alternate
-        there would point search engines at a missing page.
+        there would point search engines at a missing page. And a locale where
+        the shelf holds fewer than TOPIC_INDEX_MIN_WORKS works is noindexed, so
+        naming it would point them at a page we withhold. Two queries: the
+        members' published rows, counted per language.
         """
-        langs = ["en"] if obj.title.strip() else []
-        langs += sorted(
+        titled = ["en"] if obj.title.strip() else []
+        titled += sorted(
             t.language for t in obj.translations.all() if t.title.strip() and t.language != "en"
         )
-        return langs
+        works = Counter(
+            Book.objects.filter(
+                slug__in=[e.book_slug for e in obj.entries.all()], is_published=True
+            ).values_list("language", flat=True)
+        )
+        works.update(
+            Sermon.objects.filter(
+                slug__in=[e.sermon_slug for e in obj.sermon_entries.all()], is_published=True
+            ).values_list("language", flat=True)
+        )
+        return [lang for lang in titled if works[lang] >= TOPIC_INDEX_MIN_WORKS]
 
     def get_scripture_text(self, obj):
         return obj.scripture_text_for(self._language())

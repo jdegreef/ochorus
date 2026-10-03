@@ -4,6 +4,8 @@
 	import { dismissable } from '$lib/actions/dismissable';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import { plural } from '$lib/languageHealth';
 	import { ApiError } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import {
@@ -89,6 +91,13 @@
 	}
 	const allLangs = $derived(cov?.languages ?? []);
 	const langs = $derived(allLangs.filter((l) => !hiddenLangs.includes(l.code)));
+	// English is every work's source, not a translation target: the matrix draws
+	// it once as a muted "Source" column, and every translation figure — the
+	// columns, their totals, the legend, a work's coverage — runs over the rest.
+	// (Hidden languages are out of both, so hiding one changes those figures.)
+	const SOURCE = 'en';
+	const sourceLang = $derived(langs.find((l) => l.code === SOURCE));
+	const targetLangs = $derived(langs.filter((l) => l.code !== SOURCE));
 	// Only codes that are actually columns count as hidden (a remembered code
 	// for a language that has since gone isn't worth mentioning).
 	const hiddenCount = $derived(allLangs.length - langs.length);
@@ -101,7 +110,10 @@
 		const cell = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-lang]');
 		hoverCol = cell?.dataset.lang ?? null;
 	}
-	let langMenuOpen = $state(false);
+	// The toolbar's two pop-downs: View (settings you set once) and More (export).
+	let viewOpen = $state(false);
+	let moreOpen = $state(false);
+	let helpOpen = $state(false);
 	const colTint = (code: string) => (hoverCol === code ? 'bg-surface-2' : '');
 	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
 	// detail yet) link to their live pages — a biography row is an author.
@@ -113,6 +125,13 @@
 		articles: '/articles'
 	};
 	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
+	// A blank title (an import or edit that lost it) would leave a row, a prompt
+	// or a CSV line naming nothing — so such a work goes by its slug everywhere,
+	// and can't be queued until its title is fixed (see isGap).
+	// The API decides blankness (text.is_blank_title: zero-width and bidi marks
+	// count as nothing); the trim() is only for the deploy window before it does.
+	const untitled = (r: AdminCoverageRow) => r.untitled ?? !r.title?.trim();
+	const workName = (r: AdminCoverageRow) => (untitled(r) ? r.slug : r.title.trim());
 	// An unreviewed cell opens that translation in the review queue, panel open.
 	// A link rather than an approve button here: approving means reading the
 	// text beside its English and settling its flagged verses, which lives there.
@@ -141,12 +160,22 @@
 	// language — "translate the whole series into Swahili" is one press.
 	let seriesFilter = $state(init.get('series') ?? '');
 	const seriesOptions = $derived(cov?.series ?? []);
-	// How many languages a work is present in — the completeness sort key.
+	// A work's original text, not a translation: a public-domain edition (a
+	// book's original — French for Pascal, so not always the English one), or an
+	// English sermon/bio/article (their English is the original). Drawn as a
+	// muted language tile and never counted as translation progress.
+	const isOriginal = (r: AdminCoverageRow, code: string) =>
+		r.cells[code] === 'public_domain' || (code === SOURCE && r.cells[code] === 'present');
+	const isTranslated = (r: AdminCoverageRow, code: string) => !!r.cells[code] && !isOriginal(r, code);
+	// How many target languages a work is translated into — the completeness
+	// sort key and the coverage figure on its row.
 	const completeness = (r: AdminCoverageRow) =>
-		langs.reduce((n, l) => n + (r.cells[l.code] ? 1 : 0), 0);
-	// A work with at least one AI translation still awaiting review — the backlog.
-	const hasUnreviewed = (r: AdminCoverageRow) =>
-		langs.some((l) => r.cells[l.code] === 'ai_unreviewed');
+		targetLangs.reduce((n, l) => n + (isTranslated(r, l.code) ? 1 : 0), 0);
+	// An AI translation awaiting review — the backlog. A copyright-blocked work's
+	// editions stay unpublished, so there is nothing of it to review.
+	const isUnreviewed = (r: AdminCoverageRow, code: string) =>
+		r.cells[code] === 'ai_unreviewed' && !r.blocked;
+	const hasUnreviewed = (r: AdminCoverageRow) => langs.some((l) => isUnreviewed(r, l.code));
 	// "Gaps in <language>": only the works missing there, so the matrix reads as
 	// that language's to-do list. Queued ones stay listed (their ◷ shows it) — the
 	// job list loads after coverage, so hiding them would make rows flicker away.
@@ -168,7 +197,7 @@
 		if (!kind) return;
 		if (
 			!confirm(
-				`Mark the ${l.name} “${r.title}” as still matching its English? Do this only after checking the English change doesn't affect the translation.`
+				`Mark the ${l.name} “${workName(r)}” as still matching its English? Do this only after checking the English change doesn't affect the translation.`
 			)
 		)
 			return;
@@ -184,14 +213,15 @@
 			markingCurrent = null;
 		}
 	}
-	const tabHasStale = $derived(rows.some((r) => r.stale?.length));
 
 	// --- View: density and grouping. Compact is a per-viewer preference, so it
 	// persists in this browser; grouping is a question you ask, so it doesn't.
+	// Compact is the default — a matrix is for comparing rows, and the roomy
+	// layout fits ~4 books on a screen — so only an explicit '0' opts out.
 	const COMPACT_KEY = 'ochorus:admin-coverage-compact';
-	let compact = $state(false);
+	let compact = $state(true);
 	try {
-		compact = browser && localStorage.getItem(COMPACT_KEY) === '1';
+		compact = !browser || localStorage.getItem(COMPACT_KEY) !== '0';
 	} catch {
 		// storage blocked — default density
 	}
@@ -282,20 +312,21 @@
 
 	// --- CSV of the current view: every filtered work (collapsed groups too),
 	// one column per language, each cell the state the matrix shows.
+	const CSV_LABEL: Record<CellState, string> = {
+		source: 'original',
+		ai_reviewed: 'AI reviewed',
+		ai_unreviewed: 'AI unreviewed',
+		present: 'present',
+		queued: 'queued',
+		translating: 'translating',
+		blocked: 'blocked (copyright)',
+		missing: ''
+	};
 	function csvCell(r: AdminCoverageRow, l: AdminCoverageLanguage): string {
-		const v = r.cells[l.code];
-		const job = v ? undefined : jobFor(r.slug, l.code);
-		const base = v
-			? ({ public_domain: 'PD', ai_reviewed: 'AI reviewed', ai_unreviewed: 'AI unreviewed' } as Record<string, string>)[v] ??
-				'present'
-			: job
-				? job.state === 'in_progress'
-					? 'translating'
-					: 'queued'
-				: r.blocked
-					? 'blocked (copyright)'
-					: '';
-		return isStale(r, l.code) ? `${base} (out of date)` : base;
+		const base = r.cells[l.code] === 'public_domain' ? 'PD' : CSV_LABEL[cellState(r, l)];
+		const n = isGap(l, r) ? asking(r, l) : 0;
+		const shown = n ? `${base}${base ? ' ' : ''}(${n} asking)` : base;
+		return isStale(r, l.code) ? `${shown} (out of date)` : shown;
 	}
 	function downloadCsv() {
 		const esc = (x: string | number) => {
@@ -304,7 +335,7 @@
 		};
 		const header = ['Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
 		const lines = [header, ...visibleRows.map((r) => [
-			r.title,
+			workName(r),
 			r.slug,
 			r.author ?? '',
 			r.readers ?? '',
@@ -323,12 +354,29 @@
 	// readers (so an unread work still ranks by its gaps); each open gap counts
 	// 1–2× by how much that language's readers search in vain (⌕, scaled to the
 	// busiest column). With "Gaps in" set every row is a gap there, so the order
-	// is simply most-read first.
+	// is that one column's gap scores.
 	const maxUnmet = $derived(Math.max(1, ...langs.map((l) => l.unmet_searches ?? 0)));
 	const gapWeight = (l: AdminCoverageLanguage) => 1 + (l.unmet_searches ?? 0) / maxUnmet;
-	const priority = (r: AdminCoverageRow) =>
-		(1 + (r.readers ?? 0)) *
-		(gapLang ? 1 : langs.reduce((n, l) => n + (isGap(l, r) ? gapWeight(l) : 0), 0));
+	// One gap's worth: (1 + the work's readers + the readers of THAT language
+	// reading it elsewhere for want of it) × the language's weight. The asking
+	// readers are already among the work's readers, so adding them again counts
+	// them twice in their own language's column: a gap three Swahili readers are
+	// waiting on outranks the same work's gap in a language nobody has asked for,
+	// without squaring them. Additive, like demand.demand_score on the language
+	// page. A row's priority is the sum of its gaps; "Translate next" ranks the
+	// gaps themselves.
+	const asking = (r: AdminCoverageRow, l: AdminCoverageLanguage) => r.asking?.[l.code] ?? 0;
+	// The tooltip / screen-reader note for a gap readers are waiting on.
+	const askingNote = (r: AdminCoverageRow, l: AdminCoverageLanguage) => {
+		const n = asking(r, l);
+		return n ? ` · ${plural(n, `${l.name} reader is`, `${l.name} readers are`)} reading it in another language` : '';
+	};
+	const gapScore = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
+		isGap(l, r) ? (1 + (r.readers ?? 0) + asking(r, l)) * gapWeight(l) : 0;
+	const priority = (r: AdminCoverageRow) => {
+		const only = gapLang ? langs.find((l) => l.code === gapLang) : undefined;
+		return only ? 1 + (r.readers ?? 0) + asking(r, only) : langs.reduce((n, l) => n + gapScore(r, l), 0);
+	};
 
 	const visibleRows = $derived.by(() => {
 		let out = rows;
@@ -336,10 +384,13 @@
 		if (term)
 			out = out.filter(
 				(r) =>
-					r.title.toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
+					workName(r).toLowerCase().includes(term) || (r.author ?? '').toLowerCase().includes(term)
 			);
 		if (unreviewedOnly) out = out.filter(hasUnreviewed);
-		if (gapLang) out = out.filter((r) => !r.cells[gapLang] && !r.blocked);
+		// Only a translation column can have gaps — a link carrying ?gaps=en (or a
+		// hidden language) mustn't filter invisibly.
+		if (gapLang && targetLangs.some((l) => l.code === gapLang))
+			out = out.filter((r) => !r.cells[gapLang] && !r.blocked);
 		if (staleOnly) out = out.filter((r) => r.stale?.length);
 		if (tab === 'books' && seriesFilter) {
 			out = out
@@ -360,33 +411,76 @@
 
 	// Per-language totals for the active matrix (how many visible works exist in each).
 	const totals = $derived(
-		langs.map((l) => visibleRows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0))
+		targetLangs.map((l) => visibleRows.reduce((n, r) => n + (isTranslated(r, l.code) ? 1 : 0), 0))
 	);
 	// Completion per language over the visible works that CAN exist there — a
 	// copyright-blocked work never will, so it's out of the denominator (and of
 	// the numerator: its unpublished editions don't count as progress).
 	const reachable = $derived(visibleRows.filter((r) => !r.blocked));
 	const completion = $derived(
-		langs.map((l) => {
-			const have = reachable.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0);
+		targetLangs.map((l) => {
+			const have = reachable.reduce((n, r) => n + (isTranslated(r, l.code) ? 1 : 0), 0);
 			const of = reachable.length;
 			return { have, of, pct: of ? Math.round((have / of) * 100) : 0 };
 		})
 	);
 
-	function cellMeta(v: string | undefined) {
-		switch (v) {
-			case 'public_domain':
-				return { label: 'PD', cls: 'border border-border text-text' };
-			case 'ai_reviewed':
-				return { label: 'AI✓', cls: 'border border-accent-soft-border bg-accent-soft text-accent' };
-			case 'ai_unreviewed':
-				return { label: 'AI·', cls: 'border border-warning/40 text-warning' };
-			case 'present':
-				return { label: '●', cls: 'text-accent' };
-			default:
-				return { label: '·', cls: 'text-muted' };
+	// Every cell is the same fixed tile, and each state differs in FILL and
+	// border, not just a glyph — so "everything awaiting review in sw" reads as a
+	// run of gold down a column, and the states survive greyscale. The legend
+	// draws its swatches from these same classes.
+	const TILE =
+		'inline-flex h-6 min-w-[2.2rem] items-center align-middle justify-center rounded-md px-1.5 text-micro font-semibold leading-none';
+	// The "English changed" mark, pinned to a tile's corner by a relative wrapper.
+	const STALE =
+		'absolute -top-2 -right-2 grid h-4 w-4 place-items-center rounded-full bg-danger text-micro leading-none text-bg';
+	// The small status pill under a work's title ("under copyright", "no title").
+	const PILL = 'mt-0.5 inline-block rounded-full border px-1.5 text-micro';
+	const CELL = {
+		public_domain: { label: 'PD', cls: 'bg-surface-2 text-muted' },
+		present: { label: '●', cls: 'bg-surface-2 text-text' },
+		ai_reviewed: { label: 'AI✓', cls: 'bg-accent text-accent-contrast' },
+		ai_unreviewed: { label: 'AI', cls: 'border border-warning bg-warning/10 text-warning' },
+		queued: { label: '◷', cls: 'border border-accent-soft-border bg-accent-soft text-accent' },
+		translating: { label: '◐', cls: 'border border-accent bg-surface text-accent' },
+		missing: { label: '', cls: 'border border-dashed border-border-strong/60' },
+		// Still missing (dashed, like `missing`), but readers are waiting on it:
+		// its label is how many (see `asking`).
+		asking: { label: '', cls: 'border border-dashed border-accent bg-surface tabular-nums text-accent' },
+		blocked: { label: '⊘', cls: 'text-muted opacity-60' }
+	} as const;
+	// The summary tiles' colours: the border/fill when its filter is on, the
+	// hover border when it's off, and the number's ink when it's non-zero.
+	const TONE = {
+		accent: { active: 'border-accent-soft-border bg-accent-soft', hover: 'enabled:hover:border-accent-soft-border', ink: '' },
+		warning: { active: 'border-warning bg-warning/10', hover: 'enabled:hover:border-warning', ink: 'text-warning' },
+		danger: { active: 'border-danger bg-danger/10', hover: 'enabled:hover:border-danger', ink: 'text-danger' },
+		none: { active: '', hover: '', ink: '' }
+	} as const;
+	// A state the API adds before this page knows it shows as itself, neutrally,
+	// rather than passing for one of the states above.
+	const cellMeta = (v: string) =>
+		CELL[v as keyof typeof CELL] ?? { label: '?', cls: 'border border-border text-muted' };
+	// One cell's state, for the legend's counts and its highlight lens. The
+	// source column has no state here (it isn't a translation).
+	type CellState =
+		| 'source'
+		| 'ai_reviewed'
+		| 'ai_unreviewed'
+		| 'present'
+		| 'queued'
+		| 'translating'
+		| 'blocked'
+		| 'missing';
+	function cellState(r: AdminCoverageRow, l: AdminCoverageLanguage): CellState {
+		const v = r.cells[l.code];
+		if (v) {
+			if (isOriginal(r, l.code)) return 'source';
+			return v === 'ai_reviewed' || v === 'ai_unreviewed' ? v : 'present';
 		}
+		const job = jobFor(r.slug, l.code);
+		if (job) return job.state === 'in_progress' ? 'translating' : 'queued';
+		return r.blocked ? 'blocked' : 'missing';
 	}
 
 	// --- Translation queue -----------------------------------------------------
@@ -403,6 +497,8 @@
 	// null = the jobs GET failed (unknown): keep the buttons and let POST surface
 	// the real error; false = the queue isn't configured (no token) → no buttons.
 	let jobsConfigured = $state<boolean | null>(null);
+	// The queue is usable here: a super admin, and the API has a token for it.
+	const queueOn = $derived(canQueue && jobsConfigured !== false);
 	let queueing = $state<string | null>(null); // "type:slug:lang" while POSTing one
 	let queueError = $state<string | null>(null);
 	// A bulk enqueue awaiting the user's confirmation (the flooding guard): filing
@@ -416,6 +512,9 @@
 	} | null>(null);
 	// Live progress while a confirmed bulk runs (jobs are filed one at a time).
 	let bulkProgress = $state<{ done: number; total: number } | null>(null);
+	// Stop asks the run to finish the job in flight and file no more.
+	let bulkStopping = $state(false);
+	let bulkNote = $state<string | null>(null);
 	// Any queue POST in flight — disables every enqueue control so two runs can't
 	// overlap and trip the API's per-caller throttle.
 	const busy = $derived(queueing !== null || bulkProgress !== null);
@@ -443,12 +542,99 @@
 	// language) never offers a button that the POST would only reject.
 	// A copyright-blocked work has no gaps: nothing of it may be translated.
 	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
-		!r.blocked && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
+		!r.blocked && !untitled(r) && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
 	// Missing-and-unqueued count per language column, for the header's "queue all".
 	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
-		langs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
+		targetLangs.map((l) => visibleRows.reduce((n, r) => n + (isGap(l, r) ? 1 : 0), 0))
 	);
+
+	// --- Today's view: the tab's backlog in four numbers, and its gaps ranked.
+	// Both read the whole tab (not the filtered rows) — they answer "what's
+	// waiting?". The review and out-of-date tiles count WORKS, the unit of the
+	// filter they toggle, so a tile's number is the rows it shows; "Open gaps"
+	// counts cells and toggles the Priority order.
+	const summary = $derived.by(() => {
+		let gaps = 0;
+		for (const r of rows) for (const l of langs) if (isGap(l, r)) gaps++;
+		const unreviewed = rows.filter(hasUnreviewed).length;
+		const stale = rows.filter((r) => r.stale?.length).length;
+		const tabJobs = jobs.filter((j) => j.type === jobType && langs.some((l) => l.code === j.language));
+		const translating = tabJobs.filter((j) => j.state === 'in_progress').length;
+		return { gaps, unreviewed, stale, inFlight: tabJobs.length, translating };
+	});
+	// "Translate next": every open gap, scored like the Priority sort scores a
+	// row — the work's readers × how much that language searches in vain × (1 +
+	// readers of that language asking for it) — so the top of the list is the
+	// translation most likely to be read. Readers and asking are unbounded and
+	// the language weight is only 1–2×, so one popular work would take every
+	// slot: each work gets at most NEXT_PER_WORK. Ties keep the
+	// tab's own (curated) order. Empty until the job list has loaded — before
+	// that a queued gap still looks open.
+	const NEXT_COUNT = 10;
+	const NEXT_PER_WORK = 2;
+	const nextGaps = $derived.by(() => {
+		if (jobsConfigured !== true) return [];
+		const scored: { r: AdminCoverageRow; l: AdminCoverageLanguage; score: number }[] = [];
+		for (const r of rows)
+			for (const l of langs) {
+				const score = gapScore(r, l);
+				if (score) scored.push({ r, l, score });
+			}
+		scored.sort((a, b) => b.score - a.score);
+		const perWork = new Map<string, number>();
+		const out: typeof scored = [];
+		for (const g of scored) {
+			const n = perWork.get(g.r.slug) ?? 0;
+			if (n >= NEXT_PER_WORK) continue;
+			perWork.set(g.r.slug, n + 1);
+			out.push(g);
+			if (out.length === NEXT_COUNT) break;
+		}
+		return out;
+	});
+	const queueNext = () =>
+		stageBulk(
+			`the ${nextGaps.length} most-wanted gap${nextGaps.length === 1 ? '' : 's'}`,
+			nextGaps.map(({ r, l }) => ({ slug: r.slug, lang: l.code }))
+		);
+
+	// --- Legend as a lens: each state's count over the works on screen, and the
+	// one picked (if any) — every other cell fades, so the picked ones stand out
+	// without hiding a row. "stale" is a flag on top of a state, so it's its own.
+	type Lens = CellState | 'stale';
+	let lens = $state<Lens | null>(null);
+	// Each chip's swatch is its state's tile; "stale" draws an AI tile with the ↻.
+	const LENSES: { k: Lens; label: string }[] = [
+		{ k: 'source', label: 'Original text' },
+		{ k: 'ai_reviewed', label: 'Reviewed' },
+		{ k: 'ai_unreviewed', label: 'Unreviewed AI' },
+		{ k: 'present', label: 'Present' },
+		{ k: 'missing', label: 'Missing' },
+		{ k: 'queued', label: 'Queued' },
+		{ k: 'translating', label: 'Translating' },
+		{ k: 'stale', label: 'English changed' },
+		{ k: 'blocked', label: 'Under copyright' }
+	];
+	// Open gaps on screen that readers are waiting on: the legend's count, and
+	// whether to show its key at all (a queued or hidden one doesn't count).
+	const askingGaps = $derived(
+		visibleRows.reduce((n, r) => n + langs.filter((l) => isGap(l, r) && asking(r, l)).length, 0)
+	);
+	const legendCounts = $derived.by(() => {
+		const n = Object.fromEntries(LENSES.map((o) => [o.k, 0])) as Record<Lens, number>;
+		for (const r of visibleRows)
+			for (const l of langs) {
+				n[cellState(r, l)]++;
+				if (isStale(r, l.code)) n.stale++;
+			}
+		return n;
+	});
+	// A picked lens with nothing left to show (a filter) reads as off rather
+	// than fading the whole matrix; a tab switch clears it outright (below).
+	const activeLens = $derived(lens && legendCounts[lens] ? lens : null);
+	const lensHit = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
+		activeLens === 'stale' ? isStale(r, l.code) : cellState(r, l) === activeLens;
 
 	// File one job; returns null on success or a message to show. Type is passed in
 	// (not read from jobType) so a bulk run is unaffected by a mid-run tab switch.
@@ -471,13 +657,17 @@
 		queueing = null;
 	}
 
-	// Stage a row (a work into all its missing languages) or a column (all missing
-	// works into a language) for confirmation. No-op when there's nothing to queue.
-	function bulkRow(r: AdminCoverageRow) {
-		const targets = langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }));
-		if (targets.length)
-			pendingBulk = { label: `“${r.title}” into every missing language`, type: jobType, targets };
+	// Stage a bulk enqueue for confirmation — a row (a work into all its missing
+	// languages), a column (all missing works into a language), a selection or
+	// the "Translate next" list. No-op when there's nothing to queue.
+	function stageBulk(label: string, targets: { slug: string; lang: string }[]) {
+		if (targets.length) pendingBulk = { label, type: jobType, targets };
 	}
+	const bulkRow = (r: AdminCoverageRow) =>
+		stageBulk(
+			`“${workName(r)}” into every missing language`,
+			langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }))
+		);
 	// --- Selecting gaps: ⇧-click a gap to start, ⇧-click another to take every
 	// gap in the rectangle between them; ⌘/Ctrl-click toggles one. A plain click
 	// still queues one straight away. Queueing a selection goes through the same
@@ -504,6 +694,7 @@
 	$effect(() => {
 		void tab;
 		clearSelection();
+		lens = null;
 	});
 	function selectCell(e: MouseEvent, r: AdminCoverageRow, l: AdminCoverageLanguage) {
 		const k = cellKey(r.slug, l.code);
@@ -525,29 +716,30 @@
 	}
 	function queueSelection() {
 		if (!selectedTargets.length) return;
-		pendingBulk = {
-			label: `the ${selectedTargets.length} selected gap${selectedTargets.length === 1 ? '' : 's'}`,
-			type: jobType,
-			targets: selectedTargets
-		};
+		stageBulk(
+			`the ${selectedTargets.length} selected gap${selectedTargets.length === 1 ? '' : 's'}`,
+			selectedTargets
+		);
 		clearSelection();
 	}
-
-	function bulkCol(l: AdminCoverageLanguage) {
-		const targets = visibleRows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }));
-		if (targets.length)
-			pendingBulk = { label: `every missing work into ${l.name}`, type: jobType, targets };
-	}
+	const bulkCol = (l: AdminCoverageLanguage) =>
+		stageBulk(
+			`every missing work into ${l.name}`,
+			visibleRows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }))
+		);
 
 	async function runBulk() {
 		if (!pendingBulk) return;
 		const { targets, type } = pendingBulk; // type pinned at stage time
 		pendingBulk = null;
 		queueError = null;
+		bulkNote = null;
+		bulkStopping = false;
 		bulkProgress = { done: 0, total: targets.length };
 		let failed = 0;
 		let firstErr: string | null = null;
 		for (const t of targets) {
+			if (bulkStopping) break;
 			const err = await enqueueOne(type, t.slug, t.lang);
 			if (err) {
 				failed++;
@@ -555,11 +747,14 @@
 			}
 			bulkProgress = { done: bulkProgress.done + 1, total: targets.length };
 		}
+		const filed = bulkProgress.done - failed;
+		if (bulkStopping && bulkProgress.done < targets.length) bulkNote = `Stopped — filed ${filed} of ${targets.length}; the rest were not queued.`;
 		bulkProgress = null;
+		bulkStopping = false;
 		if (failed) {
 			// Don't surface the generic 'failed' sentinel — only a real backend detail.
 			const detail = firstErr && firstErr !== 'failed' ? ` — ${firstErr}` : '';
-			queueError = `Queued ${targets.length - failed} of ${targets.length}; ${failed} failed${detail}.`;
+			queueError = `Queued ${filed} of ${targets.length}; ${failed} failed${detail}.`;
 		}
 	}
 </script>
@@ -589,7 +784,113 @@
 				{/each}
 			</div>
 
-			<!-- Planner controls: filter, order and narrow to the review backlog. -->
+			<!-- What's waiting, before the detail. "Open gaps" toggles the Priority
+			     order; the review and out-of-date tiles toggle their filters. -->
+			{@const reviewKind = REVIEW_KIND[tab]}
+			{#snippet tile(
+				label: string,
+				value: number,
+				hint: string,
+				tone: 'accent' | 'warning' | 'danger' | 'none',
+				active = false,
+				onclick?: () => void,
+				title = ''
+			)}
+				{@const t = TONE[tone]}
+				{@const box = 'flex flex-col items-start gap-1 rounded-card border bg-surface px-4 py-3 text-left transition-colors'}
+				{#snippet body()}
+					<span class="text-small text-muted">{label}</span>
+					<span class="stat-number-sm {value ? t.ink : ''}">{value}</span>
+					<span class="text-micro text-muted">{hint}</span>
+				{/snippet}
+				{#if onclick}
+					<button
+						type="button"
+						class="{box} disabled:cursor-default {active ? t.active : `border-border ${t.hover}`}"
+						{onclick}
+						aria-pressed={active}
+						disabled={!value && !active}
+						{title}>{@render body()}</button
+					>
+				{:else}
+					<div class="{box} border-border" {title}>{@render body()}</div>
+				{/if}
+			{/snippet}
+			<div class="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+				{@render tile(
+					'Open gaps',
+					summary.gaps,
+					sortMode === 'priority' ? 'Ordered by priority' : 'Order by priority',
+					'accent',
+					sortMode === 'priority',
+					() => (sortMode = sortMode === 'priority' ? 'default' : 'priority'),
+					'Order the works by readers × open gaps'
+				)}
+				{@render tile(
+					'Works awaiting review',
+					summary.unreviewed,
+					unreviewedOnly ? 'Showing only these' : 'Show only these',
+					'warning',
+					unreviewedOnly,
+					() => (unreviewedOnly = !unreviewedOnly),
+					'Show only works with an AI translation awaiting review'
+				)}
+				{@render tile(
+					'Works out of date',
+					summary.stale,
+					staleOnly ? 'Showing only these' : 'Show only these',
+					'danger',
+					staleOnly,
+					() => (staleOnly = !staleOnly),
+					'Show only works whose English changed after they were translated'
+				)}
+				{@render tile(
+					'In flight',
+					summary.inFlight,
+					`${summary.inFlight - summary.translating} queued · ${summary.translating} translating`,
+					'none'
+				)}
+			</div>
+			{#if reviewKind && summary.unreviewed}
+				<p class="-mt-2 mb-4 text-small">
+					<a href="/admin/review?{new URLSearchParams({ kind: reviewKind })}">Open the review queue →</a>
+				</p>
+			{/if}
+
+			{#if queueOn && nextGaps.length}
+				<section class="mb-4 rounded-card border border-border bg-surface" aria-labelledby="translate-next">
+					<div class="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5">
+						<h2 id="translate-next" class="font-sans text-body font-semibold">Translate next</h2>
+						<span class="text-small text-muted">open gaps ranked by readers × searches with no result</span>
+						<button type="button" class="btn btn-sm btn-primary ml-auto" disabled={busy} onclick={queueNext}
+							>Queue top {nextGaps.length}</button
+						>
+					</div>
+					<ol class="border-t border-border text-small">
+						{#each nextGaps as { r, l } (`${r.slug}:${l.code}`)}
+							<li class="flex items-center gap-3 border-b border-border px-4 py-1.5 last:border-0">
+								<span class="min-w-0 flex-1 truncate">
+									<a href={rowHref(r.slug)} class="text-text hover:text-accent">{workName(r)}</a>
+									<span class="text-muted">→</span>
+									<span class="font-semibold">{l.name}</span>
+								</span>
+								{#if r.readers}<span class="shrink-0 tabular-nums text-muted">{r.readers} reader{r.readers === 1 ? '' : 's'}</span>{/if}
+								{#if l.unmet_searches}<span class="shrink-0 tabular-nums text-warning" title={`${l.unmet_searches} ${l.name} search${l.unmet_searches === 1 ? '' : 'es'} found nothing (30d)`}>⌕{l.unmet_searches}</span>{/if}
+								<button
+									type="button"
+									class="shrink-0 font-semibold text-accent hover:underline disabled:opacity-40 disabled:no-underline"
+									disabled={busy}
+									onclick={() => queue(r.slug, l.code)}
+								>{queueing === jobKey(r.slug, l.code) ? '…' : 'Queue'}</button>
+							</li>
+						{/each}
+					</ol>
+				</section>
+			{/if}
+
+			<!-- Planner controls: search and "Gaps in" on the surface; the settings you
+			     set once live under View, export under More. The review and out-of-date
+			     filters are the tiles above. -->
 			<div class="mb-3 flex flex-wrap items-center gap-2">
 				<input
 					type="text"
@@ -598,123 +899,156 @@
 					aria-label="Filter works"
 					class="field min-w-48 flex-1 text-small"
 				/>
-				<select bind:value={sortMode} aria-label="Sort works" class="field text-small">
-					<option value="default">Order: as listed</option>
-					<option value="priority">Priority: most-read, most gaps</option>
-					<option value="least">Least complete first</option>
-					<option value="most">Most complete first</option>
-				</select>
 				<select bind:value={gapLang} aria-label="Show only works missing in a language" class="field text-small">
 					<option value="">Gaps in: any language</option>
-					{#each langs as l (l.code)}
+					{#each targetLangs as l (l.code)}
 						<option value={l.code}>Gaps in: {l.name}</option>
 					{/each}
 				</select>
-				<label class="flex items-center gap-1.5 text-small text-muted">
-					<input type="checkbox" bind:checked={unreviewedOnly} />
-					Only unreviewed AI
-				</label>
-				{#if tab === 'books' && seriesOptions.length}
-					<select bind:value={seriesFilter} aria-label="Narrow to a series" class="field text-small">
-						<option value="">All books</option>
-						{#each seriesOptions as s (s.slug)}
-							<option value={s.slug}>Series: {s.title}</option>
-						{/each}
-					</select>
-				{/if}
-				{#if tab === 'books' || tab === 'sermons'}
-					<select bind:value={groupBy} aria-label="Group works" class="field text-small">
-						<option value="none">Group: none</option>
-						<option value="author">Group: author</option>
-						{#if tab === 'books'}<option value="series">Group: series</option>{/if}
-					</select>
-				{/if}
-				{#if tabHasStale}
-					<label class="flex items-center gap-1.5 text-small text-muted">
-						<input type="checkbox" bind:checked={staleOnly} />
-						Only out of date
-					</label>
-				{/if}
 				<details
-					class="relative ml-auto"
-					bind:open={langMenuOpen}
-					use:dismissable={{ open: langMenuOpen, onDismiss: () => (langMenuOpen = false) }}
+					class="relative"
+					bind:open={viewOpen}
+					use:dismissable={{ open: viewOpen, onDismiss: () => (viewOpen = false) }}
 				>
-					<summary class="btn btn-sm btn-ghost cursor-pointer list-none">
-						Languages{hiddenCount ? ` (${hiddenCount} hidden)` : ''}
+					<summary class="btn btn-sm cursor-pointer list-none">
+						View{hiddenCount ? ` · ${hiddenCount} hidden` : ''} ▾
 					</summary>
 					<div
-						class="absolute right-0 z-40 mt-1 w-56 rounded-card border border-border bg-surface p-2 text-small shadow-lg"
+						class="absolute right-0 z-40 mt-1 grid w-72 gap-3 rounded-card border border-border bg-surface p-3 text-small shadow-lg"
 					>
-						{#each allLangs as l (l.code)}
-							<label class="flex items-center gap-2 rounded px-2 py-1 hover:bg-surface-2">
-								<input
-									type="checkbox"
-									checked={!hiddenLangs.includes(l.code)}
-									onchange={(e) =>
-										setHidden(
-											(e.currentTarget as HTMLInputElement).checked
-												? hiddenLangs.filter((c) => c !== l.code)
-												: [...hiddenLangs, l.code]
-										)}
-								/>
-								<span class="text-text">{l.name}</span>
-								<span class="ml-auto text-muted">{l.code}</span>
+						<label class="grid gap-1">
+							<span class="text-micro text-muted">Order</span>
+							<select bind:value={sortMode} class="field text-small">
+								<option value="default">As listed</option>
+								<option value="priority">Priority: most-read, most gaps</option>
+								<option value="least">Least complete first</option>
+								<option value="most">Most complete first</option>
+							</select>
+						</label>
+						{#if tab === 'books' || tab === 'sermons'}
+							<label class="grid gap-1">
+								<span class="text-micro text-muted">Group</span>
+								<select bind:value={groupBy} class="field text-small">
+									<option value="none">None</option>
+									<option value="author">By author</option>
+									{#if tab === 'books'}<option value="series">By series</option>{/if}
+								</select>
 							</label>
-						{/each}
-						{#if hiddenLangs.length}
-							<button type="button" class="btn btn-sm btn-ghost mt-1 w-full" onclick={() => setHidden([])}>
-								Show all
-							</button>
 						{/if}
+						{#if tab === 'books' && seriesOptions.length}
+							<label class="grid gap-1">
+								<span class="text-micro text-muted">Series</span>
+								<select bind:value={seriesFilter} class="field text-small">
+									<option value="">All books</option>
+									{#each seriesOptions as s (s.slug)}
+										<option value={s.slug}>{s.title}</option>
+									{/each}
+								</select>
+							</label>
+						{/if}
+						<fieldset class="grid gap-0.5">
+							<legend class="mb-1 text-micro text-muted">Languages shown</legend>
+							{#each allLangs as l (l.code)}
+								<label class="flex items-center gap-2 rounded px-1 py-0.5 hover:bg-surface-2">
+									<input
+										type="checkbox"
+										checked={!hiddenLangs.includes(l.code)}
+										onchange={(e) =>
+											setHidden(
+												(e.currentTarget as HTMLInputElement).checked
+													? hiddenLangs.filter((c) => c !== l.code)
+													: [...hiddenLangs, l.code]
+											)}
+									/>
+									<span class="text-text">{l.name}</span>
+									<span class="ml-auto text-muted">{l.code}</span>
+								</label>
+							{/each}
+							{#if hiddenLangs.length}
+								<button type="button" class="btn btn-sm btn-ghost mt-1 w-full" onclick={() => setHidden([])}>
+									Show all
+								</button>
+							{/if}
+						</fieldset>
+						<label class="flex items-center gap-2 border-t border-border pt-2">
+							<input
+								type="checkbox"
+								checked={compact}
+								onchange={(e) => setCompact((e.currentTarget as HTMLInputElement).checked)}
+							/>
+							Compact rows
+						</label>
 					</div>
 				</details>
-				<label class="flex items-center gap-1.5 text-small text-muted">
-					<input
-						type="checkbox"
-						checked={compact}
-						onchange={(e) => setCompact((e.currentTarget as HTMLInputElement).checked)}
-					/>
-					Compact
-				</label>
-				<button type="button" class="btn btn-sm btn-ghost" onclick={copyLink} title="Copy a link to exactly this view">
-					{copied ? 'Copied' : 'Copy link'}
-				</button>
-				<button type="button" class="btn btn-sm btn-ghost" onclick={downloadCsv} title="Download the works on screen (all filtered rows) as CSV">
-					CSV
-				</button>
+				<details
+					class="relative"
+					bind:open={moreOpen}
+					use:dismissable={{ open: moreOpen, onDismiss: () => (moreOpen = false) }}
+				>
+					<summary class="btn btn-sm btn-ghost cursor-pointer list-none" aria-label="More: copy link, download CSV">⋯</summary>
+					<div
+						class="absolute right-0 z-40 mt-1 grid w-56 gap-1 rounded-card border border-border bg-surface p-2 text-small shadow-lg"
+					>
+						<button type="button" class="btn btn-sm btn-ghost justify-start" onclick={copyLink}>
+							{copied ? 'Copied' : 'Copy link to this view'}
+						</button>
+						<button type="button" class="btn btn-sm btn-ghost justify-start" onclick={downloadCsv}>
+							Download CSV
+						</button>
+					</div>
+				</details>
 			</div>
 
-			<!-- Legend -->
-			<div class="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-small text-muted">
-				{#if tab === 'books'}
-					<span><span class="text-text">PD</span> public domain</span>
-				{/if}
-				{#if tab !== 'plans'}
-					<span><span class="text-accent">AI✓</span> reviewed</span>
-					<span>
-						<span class="text-warning">AI·</span> unreviewed{#if tab !== 'articles'}
-							— click to review{/if}
-					</span>
-				{/if}
-				{#if tab !== 'books'}
-					<span><span class="text-accent">●</span> present</span>
-				{/if}
-				<span><span class="text-muted">·</span> missing</span>
-				{#if tabHasStale}
-					<span><span class="text-warning">↻</span> English changed since translated</span>
-				{/if}
-				{#if rows.some((r) => r.blocked)}
-					<span><span class="text-muted">⊘</span> under copyright — not translatable</span>
-				{/if}
-				<span><span class="text-warning">⌕N</span> unmet searches · 30d</span>
-				{#if jobsConfigured !== false}
-					<span><span class="text-accent">◷</span> queued</span>
-					<span><span class="text-warning">◐</span> translating</span>
-					{#if canQueue}
-						<span class="text-muted">— click a gap, or a row / column “+N”, to queue; ⇧-click gaps to select a range</span>
+			<!-- Legend as a lens: each state is a chip with its count over the works on
+			     screen; picking one fades every other cell (rows stay put). -->
+			<div class="mb-3 flex flex-wrap items-center gap-1.5 text-small">
+				{#each LENSES as o (o.k)}
+					{#if legendCounts[o.k]}
+						{@const cell =
+							o.k === 'source'
+								? { label: SOURCE.toUpperCase(), cls: CELL.public_domain.cls }
+								: CELL[o.k === 'stale' ? 'ai_unreviewed' : o.k]}
+						<button
+							type="button"
+							class="chip inline-flex items-center gap-1.5 !py-0.5 !ps-1"
+							class:active={activeLens === o.k}
+							aria-pressed={activeLens === o.k}
+							onclick={() => (lens = activeLens === o.k ? null : o.k)}
+						>
+							<span class="relative inline-flex"
+								><span class="{TILE} {cell.cls}">{cell.label}</span>{#if o.k === 'stale'}<span
+										class={STALE}
+										aria-hidden="true">↻</span
+									>{/if}</span
+							>
+							{o.label}
+							<span class="count">{legendCounts[o.k]}</span>
+						</button>
 					{/if}
+				{/each}
+				{#if askingGaps}
+					<span
+						class="inline-flex items-center gap-1.5 text-muted"
+						title="A missing translation that readers of that language are reading in another language, for want of it. The number is how many readers; it also raises the gap in the priority order."
+						><span class="{TILE} {CELL.asking.cls}">n</span>readers asking<span class="count">{askingGaps}</span></span
+					>
 				{/if}
+				<details
+					class="relative"
+					bind:open={helpOpen}
+					use:dismissable={{ open: helpOpen, onDismiss: () => (helpOpen = false) }}
+				>
+					<summary class="cursor-pointer list-none rounded-full border border-border px-2 py-0.5 text-muted hover:text-text" aria-label="How to use the matrix">?</summary>
+					<div class="absolute left-0 z-40 mt-1 grid w-80 gap-1.5 rounded-card border border-border bg-surface p-3 text-small text-muted shadow-lg">
+						<p>Click a chip to highlight those cells; click it again to clear.</p>
+						{#if tab !== 'articles' && tab !== 'plans'}<p>Click a gold <strong>AI</strong> cell to review that translation.</p>{/if}
+						{#if queueOn}
+							<p>Click an empty cell to queue one translation, or a column's or row's “+N” to queue them all.</p>
+							<p>⇧-click two empty cells to select every gap between them; ⌘/Ctrl-click toggles one.</p>
+						{/if}
+						<p>A red ↻ means the English changed after the translation was made.</p>
+					</div>
+				</details>
 			</div>
 
 			{#if selectedTargets.length && !pendingBulk}
@@ -740,8 +1074,22 @@
 					</span>
 				</div>
 			{:else if bulkProgress}
+				<div class="mb-3 flex items-center gap-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
+					<span class="shrink-0 tabular-nums">
+						{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
+					</span>
+					<div class="flex-1">
+						<ProgressBar
+							percent={(bulkProgress.done / bulkProgress.total) * 100}
+							label="Queueing translations"
+							size="md"
+						/>
+					</div>
+					<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
+				</div>
+			{:else if bulkNote}
 				<div class="mb-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
-					Queueing… {bulkProgress.done}/{bulkProgress.total}
+					{bulkNote}
 				</div>
 			{/if}
 
@@ -763,41 +1111,68 @@
 				>
 					<thead>
 						<tr class="border-b border-border text-small text-muted">
-							<th class="sticky left-0 top-0 z-30 bg-surface px-4 py-3 text-left font-semibold">Work</th>
-							{#each langs as l, i (l.code)}
-								{@const c = completion[i]}
-								<th
-									data-lang={l.code}
-									class="sticky top-0 z-20 px-3 py-3 text-center font-semibold align-top {hoverCol === l.code
-										? 'bg-surface-2'
-										: 'bg-surface'}"
-									title={l.name}
-								>
-									<a href="/admin/languages/{l.code}" class="text-muted hover:text-accent">{l.code}</a>
-									<span
-										class="mt-0.5 block text-micro font-normal tabular-nums {c.pct === 100 ? 'text-accent' : 'text-muted'}"
-										title={`${l.name}: ${c.have} of ${c.of} works on screen (${c.pct}%)`}
-									>{c.pct}%</span>
-									<span class="mx-auto mt-0.5 block h-1 w-8 overflow-hidden rounded-full bg-border" aria-hidden="true">
-										<span class="block h-full rounded-full bg-accent" style:width="{c.pct}%"></span>
+							<!-- The Work header labels the stacked figures once; every language
+							     column keeps each figure on the same line (a dash when there's
+							     none), so they compare across. -->
+							<th class="sticky left-0 top-0 z-30 bg-surface px-4 py-3 text-left align-top font-semibold">
+								<!-- Built line for line like a language header (code, name,
+								     %, bar, ⌕, +N), so each label sits level with its figure. -->
+								<span class="flex justify-between gap-3">
+									<span>Work</span>
+									<span class="text-right text-micro font-normal text-muted">
+										<span class="block text-small">&nbsp;</span>
+										<span class="block">&nbsp;</span>
+										<span class="mt-0.5 block">translated</span>
+										<span class="mt-0.5 block h-1" aria-hidden="true"></span>
+										<span class="mt-0.5 block">searches with no result · 30d</span>
+										{#if queueOn}<span class="mt-1 block border border-transparent">queue the gaps</span>{/if}
 									</span>
-									{#if l.unmet_searches}
+								</span>
+							</th>
+							{#if sourceLang}
+								<th
+									class="sticky top-0 z-20 border-r-2 border-border bg-surface px-3 py-3 text-center align-bottom text-micro font-normal text-muted"
+									title="English: the original for most works (a gold AI tile means this English is a translation — Pascal's books are French originals)"
+								>English<br />source</th>
+							{/if}
+							{#each targetLangs as l, i (l.code)}
+								{@const c = completion[i]}
+									<th
+										data-lang={l.code}
+										class="sticky top-0 z-20 px-3 py-3 text-center align-top font-semibold {hoverCol === l.code
+											? 'bg-surface-2'
+											: 'bg-surface'}"
+									>
+										<a href="/admin/languages/{l.code}" class="text-text hover:text-accent">{l.code}</a>
+										<span class="block text-micro font-normal text-muted">{l.name}</span>
 										<span
-											class="mt-0.5 block text-micro font-normal text-warning"
-											title={`${l.unmet_searches} reader search${l.unmet_searches === 1 ? '' : 'es'} found nothing in ${l.name} (30d) — demand to translate toward`}
-										>⌕{l.unmet_searches}</span>
-									{/if}
-									{#if canQueue && jobsConfigured !== false && l.queueable && colGaps[i] > 0}
-										<button
-											type="button"
-											class="mt-0.5 block w-full text-micro font-semibold text-muted transition-colors hover:text-accent disabled:opacity-40 disabled:hover:text-muted"
-											disabled={busy}
-											title={`Queue all ${colGaps[i]} missing ${l.name} translations`}
-											aria-label={`Queue all ${colGaps[i]} missing ${l.name} translations`}
-											onclick={() => bulkCol(l)}
-										>+{colGaps[i]}</button>
-									{/if}
-								</th>
+											class="mt-0.5 block text-micro font-normal tabular-nums {c.pct === 100 ? 'text-accent' : 'text-text'}"
+											title={`${l.name}: ${c.have} of ${c.of} works on screen (${c.pct}%)`}
+										>{c.pct}%</span>
+										<span class="mx-auto mt-0.5 block h-1 w-8 overflow-hidden rounded-full bg-border" aria-hidden="true">
+											<span class="block h-full rounded-full bg-accent" style:width="{c.pct}%"></span>
+										</span>
+										<span
+											class="mt-0.5 block text-micro font-normal tabular-nums {l.unmet_searches ? 'text-warning' : 'text-muted'}"
+											title={l.unmet_searches
+												? `${l.unmet_searches} reader search${l.unmet_searches === 1 ? '' : 'es'} found nothing in ${l.name} (30d) — demand to translate toward`
+												: `No ${l.name} searches came up empty (30d)`}
+										>{l.unmet_searches ? `⌕ ${l.unmet_searches}` : '—'}</span>
+										{#if queueOn}
+											{#if l.queueable && colGaps[i] > 0}
+												<button
+													type="button"
+													class="mt-1 rounded-md border border-border bg-surface px-1.5 text-micro font-semibold tabular-nums text-text transition-colors hover:border-accent-soft-border hover:text-accent disabled:opacity-40"
+													disabled={busy}
+													title={`Queue all ${colGaps[i]} missing ${l.name} translations`}
+													aria-label={`Queue all ${colGaps[i]} missing ${l.name} translations`}
+													onclick={() => bulkCol(l)}
+												>+{colGaps[i]}</button>
+											{:else}
+												<span class="mt-1 block text-micro font-normal text-muted">—</span>
+											{/if}
+										{/if}
+									</th>
 							{/each}
 						</tr>
 					</thead>
@@ -827,7 +1202,8 @@
 									</td>
 									<!-- How much of the group each language has: "0/12" is the gap
 									     this view exists to show ("all of Murray is missing in sw"). -->
-									{#each langs as l (l.code)}
+									{#if sourceLang}<td class="border-r-2 border-border"></td>{/if}
+									{#each targetLangs as l (l.code)}
 										{@const have = g.rows.reduce((n, r) => n + (r.cells[l.code] ? 1 : 0), 0)}
 										<td
 											data-lang={l.code}
@@ -850,10 +1226,15 @@
 					<tfoot>
 						<tr class="border-t border-border text-small text-muted">
 							<td class="sticky left-0 z-10 bg-surface px-4 py-2.5 font-semibold">Total ({visibleRows.length}{visibleRows.length !== rows.length ? ` of ${rows.length}` : ''})</td>
-							{#each totals as n, i (langs[i].code)}
+							{#if sourceLang}
+								<td class="border-r-2 border-border px-3 py-2.5 text-center tabular-nums text-muted">
+									{visibleRows.filter((r) => r.cells[SOURCE]).length}
+								</td>
+							{/if}
+							{#each totals as n, i (targetLangs[i].code)}
 								<td
-									data-lang={langs[i].code}
-									class="px-3 py-2.5 text-center tabular-nums font-semibold text-text {colTint(langs[i].code)}"
+									data-lang={targetLangs[i].code}
+									class="px-3 py-2.5 text-center tabular-nums font-semibold text-text {colTint(targetLangs[i].code)}"
 								>
 									{n}<span class="font-normal text-muted">/{completion[i].of}</span>
 								</td>
@@ -868,22 +1249,52 @@
 
 {#snippet workRow(r: AdminCoverageRow)}
 	{@const rowGaps = langs.reduce((n, l) => n + (isGap(l, r) ? 1 : 0), 0)}
+	{@const name = workName(r)}
 	<tr class="group/row border-b border-border last:border-0 hover:bg-surface-2">
 		<!-- Titles wrap to two lines (one in Compact) — articles run long ("A Retrospect by Hudson
 		     Taylor: …"); the full title + author ride on the tooltip. -->
 		<td
-			class="sticky left-0 z-10 w-[22rem] min-w-[16rem] max-w-[22rem] bg-surface px-4 {compact
+			class="sticky left-0 z-10 w-[22rem] min-w-[16rem] max-w-[22rem] bg-surface ps-4 {r.blocked ? 'pe-4' : 'pe-24'} {compact
 				? 'py-1'
 				: 'py-2.5'}"
 		>
 			<a
 				href={rowHref(r.slug)}
-				class="{compact ? 'line-clamp-1 pr-16' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
-				title={r.author ? `${r.title} — ${r.author}` : r.title}
-			>{r.title}</a>
+				class="{compact ? 'line-clamp-1' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
+				title={r.author ? `${name} — ${r.author}` : name}
+			>{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
+			{#if !r.blocked}
+				{@const have = completeness(r)}
+				<!-- The row's own coverage, on the right edge. In Compact the hover
+				     "Queue all" takes this spot (the action on the same number), so the
+				     meter steps aside while the row is hovered. -->
+				<span
+					class="absolute top-1/2 right-3 flex -translate-y-1/2 items-center gap-1.5 text-micro tabular-nums text-muted transition-opacity {compact &&
+					queueOn &&
+					rowGaps > 0
+						? 'group-hover/row:opacity-0'
+						: ''}"
+					title={`${name}: in ${have} of ${targetLangs.length} languages`}
+				>
+					<span class="block w-8">
+						<ProgressBar
+							percent={targetLangs.length ? (have / targetLangs.length) * 100 : 0}
+							label={`${name}: translated into ${have} of ${targetLangs.length} languages`}
+						/>
+					</span>
+					{have}/{targetLangs.length}
+				</span>
+			{/if}
+			{#if untitled(r)}
+				<span
+					class="{PILL} border-danger/40 text-danger"
+					title="This work has no title — open it to fix the title before queueing translations"
+					>⚠ no title</span
+				>
+			{/if}
 			{#if r.blocked}
 				<span
-					class="mt-0.5 inline-block rounded-full border border-border px-1.5 text-micro text-muted"
+					class="{PILL} border-border text-muted"
 					title="Under copyright: every edition stays unpublished and no translation may be filed (corrections.COPYRIGHT_BLOCKED_SLUGS)"
 					>© under copyright</span
 				>
@@ -893,105 +1304,139 @@
 					{r.author ?? ''}{#if r.readers}{r.author ? ' · ' : ''}<span class="tabular-nums">{r.readers}</span> reader{r.readers === 1 ? '' : 's'}{/if}
 				</span>
 			{/if}
-			{#if canQueue && jobsConfigured !== false && rowGaps > 0}
+			{#if queueOn && rowGaps > 0}
 				<button
 					type="button"
-					class="text-micro font-semibold text-muted opacity-0 transition group-hover/row:opacity-100 hover:text-accent focus:opacity-100 disabled:opacity-40 {compact
+					class="pointer-events-none text-micro font-semibold text-muted opacity-0 transition group-hover/row:pointer-events-auto group-hover/row:opacity-100 hover:text-accent focus:pointer-events-auto focus:opacity-100 disabled:opacity-40 {compact
 						? 'absolute top-1/2 right-3 -translate-y-1/2 bg-surface-2 px-1'
 						: 'mt-1'}"
 					disabled={busy}
-					title={`Queue all ${rowGaps} missing translations of ${r.title}`}
-					aria-label={`Queue all ${rowGaps} missing translations of ${r.title}`}
+					title={`Queue all ${rowGaps} missing translations of ${name}`}
+					aria-label={`Queue all ${rowGaps} missing translations of ${name}`}
 					onclick={() => bulkRow(r)}
 				>Queue all {rowGaps}</button>
 			{/if}
 		</td>
-		{#each langs as l (l.code)}
-			{@const v = r.cells[l.code]}
-			{@const job = v ? undefined : jobFor(r.slug, l.code)}
-			<td data-lang={l.code} class="group px-3 text-center {compact ? 'py-1' : 'py-2.5'} {colTint(l.code)}">
-				{#if v}
-					{@const m = cellMeta(v)}
-					{@const review = v === 'ai_unreviewed' && !r.blocked ? reviewHref(r.slug, l.code) : null}
-					{#if review}
-						<a
-							href={review}
-							class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-warning/10 hover:no-underline {m.cls}"
-							title={`Review ${r.title} → ${l.name}`}
-							aria-label={`Review the ${l.name} translation of ${r.title}`}
-						>{m.label}</a>
-					{:else}
-						<span class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small {m.cls}">{m.label}</span>
-					{/if}
-					{#if isStale(r, l.code)}
-						{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
-							<button
-								type="button"
-								class="ml-0.5 align-super text-micro text-warning hover:text-accent disabled:opacity-50"
-								disabled={markingCurrent !== null}
-								title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
-								aria-label={`${l.name} translation of ${r.title} predates an English change — mark it still current`}
-								onclick={() => markCurrent(r, l)}>↻</button
-							>
-						{:else}
-							<span
-								class="ml-0.5 align-super text-micro text-warning"
-								title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
-								aria-label="English changed since translated">↻</span
-							>
-						{/if}
-					{/if}
-				{:else if job}
-					<a
-						href={job.url}
-						target="_blank"
-						rel="noopener"
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small hover:no-underline {job.state === 'in_progress' ? 'text-warning' : 'text-accent'}"
-						title={job.state === 'in_progress'
-							? `Translating ${r.title} → ${l.name}… (open issue)`
-							: `Queued: ${r.title} → ${l.name} (open issue)`}
-					>
-						{job.state === 'in_progress' ? '◐' : '◷'}
-					</a>
-				{:else if r.blocked}
-					<span
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted opacity-60"
-						title={`${r.title} is under copyright — no ${l.name} edition may be made`}
-						aria-label="Under copyright — not translatable">⊘</span
-					>
-				{:else if jobsConfigured === false || !l.queueable || !canQueue}
-					<span
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small text-muted"
-						title={jobsConfigured === false
-							? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
-							: !canQueue
-								? `Missing: ${r.title} → ${l.name}`
-								: `${l.name} isn't a translation target — nothing to queue`}
-					>·</span>
-				{:else}
-					{@const spot = queueing === jobKey(r.slug, l.code)}
-					{@const picked = !!selected[cellKey(r.slug, l.code)]}
-					<button
-						type="button"
-						aria-pressed={picked}
-						class="inline-flex min-w-[2.2rem] justify-center rounded-full px-1.5 py-0.5 text-small transition-colors hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-muted {picked
-							? 'bg-accent-soft text-accent ring-1 ring-accent-soft-border'
-							: 'text-muted'}"
-						disabled={busy}
-						title={`Queue a ${l.name} translation of ${r.title}`}
-						aria-label={`Queue a ${l.name} translation of ${r.title}`}
-						onclick={(e) =>
-							e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
-					>
-						{#if spot}
-							<span>…</span>
-						{:else}
-							<span class={picked ? 'hidden' : 'group-hover:hidden'}>·</span>
-							<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
-						{/if}
-					</button>
-				{/if}
-			</td>
-		{/each}
+		{#if sourceLang}{@render cell(r, sourceLang, name, true)}{/if}
+		{#each targetLangs as l (l.code)}{@render cell(r, l, name)}{/each}
 	</tr>
+{/snippet}
+
+<!-- One matrix cell, drawn from cellState — the same classifier the legend,
+     its lens and the CSV read, so the tiles and the counts can't disagree. -->
+{#snippet cell(r: AdminCoverageRow, l: AdminCoverageLanguage, name: string, isSource = false)}
+	{@const st = cellState(r, l)}
+	<td
+		data-lang={l.code}
+		class="group px-3 text-center transition-opacity {compact ? 'py-1' : 'py-2.5'} {colTint(l.code)} {isSource
+			? 'border-r-2 border-border'
+			: ''} {activeLens && !lensHit(r, l) ? 'opacity-20' : ''}"
+	>
+		{#if st === 'source'}
+			<span class="{TILE} {CELL.public_domain.cls}" title={`${name}: the original ${l.name} text`}
+				>{l.code.toUpperCase()}</span
+			>
+		{:else if st === 'ai_reviewed' || st === 'ai_unreviewed' || st === 'present'}
+			{@const m = cellMeta(r.cells[l.code]!)}
+			{@const review = isUnreviewed(r, l.code) ? reviewHref(r.slug, l.code) : null}
+			<!-- The stale mark is the tile's sibling (a button can't nest in the review
+			     link), pinned to its corner by this wrapper. -->
+			<span class="relative inline-flex align-middle">
+				{#if review}
+					<a
+						href={review}
+						class="{TILE} {m.cls} transition-colors hover:bg-warning/20 hover:no-underline"
+						title={`Review ${name} → ${l.name}`}
+						aria-label={`Review the ${l.name} translation of ${name}`}
+					>{m.label}</a>
+				{:else}
+					<span class="{TILE} {m.cls}">{m.label}</span>
+				{/if}
+				{#if isStale(r, l.code)}{@render staleMark(r, l, name)}{/if}
+			</span>
+		{:else if st === 'queued' || st === 'translating'}
+			{@const job = jobFor(r.slug, l.code)!}
+			<a
+				href={job.url}
+				target="_blank"
+				rel="noopener"
+				class="{TILE} {CELL[st].cls} hover:no-underline"
+				title={st === 'translating'
+					? `Translating ${name} → ${l.name}… (open issue)`
+					: `Queued: ${name} → ${l.name} (open issue)`}
+			>{CELL[st].label}</a>
+		{:else if st === 'blocked'}
+			<span
+				class="{TILE} {CELL.blocked.cls}"
+				title={`${name} is under copyright — no ${l.name} edition may be made`}
+				aria-label="Under copyright — not translatable">{CELL.blocked.label}</span
+			>
+		{:else if !isGap(l, r) || !queueOn}
+			<!-- Demand shows here too: someone who can read the matrix but not
+			     queue should still see where readers are waiting. -->
+			{@const wanting = asking(r, l)}
+			<span
+				class="{TILE} {wanting ? CELL.asking.cls : CELL.missing.cls}"
+				title={(jobsConfigured === false
+					? 'Set GITHUB_TRANSLATION_TOKEN on the API to enable the queue'
+					: untitled(r)
+						? `Fix the title of ${name} before queueing translations`
+						: !canQueue
+							? `Missing: ${name} → ${l.name}`
+							: `${l.name} isn't a translation target — nothing to queue`) + askingNote(r, l)}
+				aria-label={'Missing' + askingNote(r, l)}
+				>{wanting || ''}</span
+			>
+		{:else}
+			{@const spot = queueing === jobKey(r.slug, l.code)}
+			{@const picked = !!selected[cellKey(r.slug, l.code)]}
+			{@const wanting = asking(r, l)}
+			{@const why = askingNote(r, l)}
+			<button
+				type="button"
+				aria-pressed={picked}
+				class="{TILE} transition-colors hover:border-solid hover:border-accent-soft-border hover:bg-accent-soft hover:text-accent disabled:opacity-50 disabled:hover:bg-transparent {picked
+					? 'border border-accent bg-accent-soft text-accent'
+					: wanting
+						? CELL.asking.cls
+						: `${CELL.missing.cls} text-muted`}"
+				disabled={busy}
+				title={`Queue a ${l.name} translation of ${name}${why}`}
+				aria-label={`Queue a ${l.name} translation of ${name}${why}`}
+				onclick={(e) =>
+					e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
+			>
+				{#if spot}
+					<span>…</span>
+				{:else if wanting && !picked}
+					<!-- The count, and on hover the "+" every other queue tile shows:
+					     a click files a job, not opens details. -->
+					<span class="group-hover:hidden">{wanting}</span><span class="hidden group-hover:inline">+</span>
+				{:else}
+					<span class={picked ? 'inline' : 'hidden group-hover:inline'}>{picked ? '✓' : '+'}</span>
+				{/if}
+			</button>
+		{/if}
+	</td>
+{/snippet}
+
+<!-- The stale mark sits ON the tile's corner, absolutely positioned, so a stale
+     cell stays centred in its column instead of being shoved aside by a glyph. -->
+{#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage, name: string)}
+	{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
+		<button
+			type="button"
+			class="{STALE} hover:bg-accent disabled:opacity-50"
+			disabled={markingCurrent !== null}
+			title={`The English changed after this ${l.name} translation was made — re-translate it, or click once you've checked it still matches`}
+			aria-label={`${l.name} translation of ${name} predates an English change — mark it still current`}
+			onclick={() => markCurrent(r, l)}>↻</button
+		>
+	{:else}
+		<span
+			class={STALE}
+			title={`The English changed after this ${l.name} translation was made — re-translate or re-review`}
+			aria-label="English changed since translated">↻</span
+		>
+	{/if}
 {/snippet}

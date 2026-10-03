@@ -817,6 +817,46 @@ CURATED: dict[str, Artwork] = {
         "his ship, but his deliverance.",
         focus=0.45,
     ),
+    # ── Batch 25 · Portraits of Courage, volume 6 ──────────────────────────
+    # The founder's pick of five mockups (2026-09-30). Ravi Varma's girl at a
+    # doorway giving to a starving beggar: the Mukti of "I am a sweeper".
+    "pandita-ramabai-a-life": Artwork(
+        "wikidata", 112062313, "Raja Ravi Varma", "Charity", "",
+        "A girl in a white sari at her doorway, putting food into a starving "
+        "old man's bowl: Ravi Varma, the great Indian painter of her day, "
+        "painted the plain mercy Ramabai made a life's work at Mukti.",
+        focus=0.5,
+    ),
+    # ── A. W. Tozer ─────────────────────────────────────────────────────────
+    # His first book on the shelf. The Pursuit of God is about the Presence
+    # that is already here and the soul that turns to see it, so the ground is
+    # light breaking into an ordinary valley, not a distant summit.
+    "the-pursuit-of-god": Artwork(
+        "aic", 68388, "George Inness", "Catskill Mountains", "1870",
+        "Tozer's book is a call to the God who is already present and waiting "
+        "to be seen. Inness lets the light break through the cloud onto a "
+        "plain farm valley — glory falling on the ordinary ground of life.",
+        focus=0.38,
+    ),
+    # ── A. B. Simpson, The Holy Spirit; or, Power from on High ──────────────
+    # The two volumes share one register: weather over land and sea. Part II
+    # follows the Spirit from the Gospels to Pentecost and the epistles, so its
+    # ground is the wind.
+    "power-from-on-high-new-testament": Artwork(
+        "aic", 57215, "Elihu Vedder", "Storm in Umbria", "1875",
+        "Pentecost came \"as of a rushing mighty wind.\" Vedder's storm sweeps "
+        "down over the Umbrian hills, and one small figure walks on into it — "
+        "the believer moved and carried by a power not his own.",
+        focus=0.68,
+    ),
+    # Part I follows the Spirit through the Old Testament, whose first picture
+    # is the Spirit moving on the face of the waters — so its ground is the sea.
+    "power-from-on-high-old-testament": Artwork(
+        "aic", 68792, "George Inness", "A Marine", "c. 1874–75",
+        "\"The Spirit of God moved upon the face of the waters.\" Inness's dark "
+        "sea breaks in light along the rocks under a heavy sky — the deep the "
+        "Spirit brooded over before the first day.",
+    ),
 }
 
 

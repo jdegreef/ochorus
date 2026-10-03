@@ -86,6 +86,15 @@ jobs:
   # is covered by backend-tests, which content triggers), so it must not drag in
   # the Docker build. A `.py` seed module (quote_seed, corrections, …) is code
   # and does trip `backend` — over-running the image build, which is the safe side.
+  #
+  # `predicate-quantifier: every` — a file trips a filter only if it matches
+  # EVERY line in it. That is what makes the `!fixtures` exclusion an AND. Under
+  # the default (`some`, any one line), "not under fixtures" matched every file
+  # in the repo, so `backend` was true on EVERY PR and a frontend-only change
+  # paid for the ~40-minute backend suite and the image build (and could time
+  # out on them). With `every`, alternatives must share ONE line as a brace
+  # glob — hence `{a,b}` below rather than two lines.
+  # `.gitattributes` rides with backend: tests_fixture reads it.
   changes:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -106,17 +115,17 @@ jobs:
         id: filter
         if: github.event_name == 'pull_request'
         with:
+          predicate-quantifier: every
           filters: |
             backend:
-              - 'backend/**'
+              - '{backend/**,.gitattributes}'
               - '!backend/library/fixtures/**'
             content:
               - 'backend/library/fixtures/**'
             frontend:
               - 'frontend/**'
             ci:
-              - '.github/workflows/**'
-              - 'render.yaml'
+              - '{.github/workflows/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
@@ -130,6 +139,17 @@ jobs:
     # ~24.5 min (1,456-1,465 s) on its own, so the old 25-minute ceiling was
     # cancelling runs seconds after the last test finished (#3966, #3989,
     # #4012, #4013). 40 leaves room to grow and still reaps a real hang.
+    # By 2026-10-01 it had outgrown 40 the same way: a green run took 37.5 min
+    # and same-day runs were cancelled at the ceiling on main and on PRs
+    # (#4879, #4880, #4883), and was briefly raised to 60. The time was never
+    # the suite's size, though: it was a handful of seed tests that walked the
+    # whole fixture corpus over and over — one class ran minutes after every
+    # other worker had finished (#4890, then the seed tests seeding only the
+    # works they name: ~12 min, then 4m17s for the whole job — #4943; and
+    # autovacuum off on the test server, see that step).
+    # Back to 40: a hang guard, with room to grow. If it creeps up again, read
+    # the --durations list below before reaching for a job matrix — a single
+    # class is one worker's long pole, and sharding can't split it.
     timeout-minutes: 40
     env:
       DJANGO_DEBUG: 'true'
@@ -173,6 +193,26 @@ jobs:
         working-directory: backend
         run: uv run python manage.py makemigrations --check --dry-run
 
+      # Autovacuum OFF on this throwaway server. Every TestCase rolls back, so
+      # between classes the tables are empty again — and autovacuum's ANALYZE,
+      # landing there, records them as empty. A class that then seeds the whole
+      # library inside its one uncommitted transaction (SeedBooksCorpusTests)
+      # gets plans built for an empty table: each chapter's single-row
+      # search-vector UPDATE (WHERE t.id = <pk>) scans the growing table
+      # instead of the pkey, ~30k times. Measured locally, same class, same
+      # order: 293 s with autovacuum, 46 s without. On CI it made that one
+      # class the whole job's long pole (~16 min of a 17-min run, 2026-10-02).
+      # Production has real statistics and is not affected.
+      - name: Turn off autovacuum on the test Postgres
+        working-directory: backend
+        run: |
+          uv run python - <<'EOF'
+          import psycopg
+          with psycopg.connect("postgres://postgres:postgres@localhost:5432/postgres", autocommit=True) as c:
+              c.execute("ALTER SYSTEM SET autovacuum = off")
+              c.execute("SELECT pg_reload_conf()")
+          EOF
+
       # --parallel auto: one worker per core (4 on ubuntu-latest), each with its
       # own cloned test DB. This suite is the workflow's long pole — ~19m serial
       # — and it is the whole reason the four-job split did not move the needle
@@ -181,12 +221,15 @@ jobs:
       # (build_curated_covers' .cache) is confined to one test under a fixed
       # key, and a given test method only ever runs on one worker; the
       # TransactionTestCase concurrency tests get their own worker DB. If a race
-      # ever does surface, it fails HERE by name — not in production.
+      # ever does surface, it fails HERE by name — not in production. tblib (a
+      # dev dependency) is what lets a worker send a failing subTest's
+      # traceback back to the parent; without it the run printed only
+      # "cannot pickle traceback object" and hid the real failure.
       - name: Tests (Postgres — the production database)
         working-directory: backend
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
-        run: uv run python manage.py test --parallel auto --verbosity 1
+        run: uv run python manage.py test --parallel auto --verbosity 1 --durations 25
 
   # --- Production image gate (runs in parallel with everything) ------------
   backend-image:

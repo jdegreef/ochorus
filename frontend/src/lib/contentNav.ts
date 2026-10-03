@@ -25,7 +25,12 @@ export interface NavDest {
 	labelKey: string;
 	/** The top-nav icon. */
 	icon: IconName;
+	/** Its library-palette role: the nav wears `--section-<section>` on the
+	 *  icon and the active pill (app.css, "THE LIBRARY PALETTE"). */
+	section: NavSection;
 }
+
+export type NavSection = 'books' | 'topics' | 'plans' | 'sermons' | 'biographies';
 
 /** An English-only hub: the footer Explore group and the palette, gated to
  *  English, and never the top nav (an entry point for search, not a primary
@@ -38,11 +43,11 @@ export interface HubDest {
 
 /** Books · Topics · Plans · Sermons · Biographies — the primary journeys. */
 export const PRIMARY_NAV: NavDest[] = [
-	{ href: '/books', labelKey: 'nav.books', icon: 'book' },
-	{ href: '/topics', labelKey: 'nav.topics', icon: 'tag' },
-	{ href: '/plans', labelKey: 'nav.plans', icon: 'calendar' },
-	{ href: '/sermons', labelKey: 'nav.sermons', icon: 'mic' },
-	{ href: '/biographies', labelKey: 'nav.biographies', icon: 'users' }
+	{ href: '/books', labelKey: 'nav.books', icon: 'book', section: 'books' },
+	{ href: '/topics', labelKey: 'nav.topics', icon: 'tag', section: 'topics' },
+	{ href: '/plans', labelKey: 'nav.plans', icon: 'calendar', section: 'plans' },
+	{ href: '/sermons', labelKey: 'nav.sermons', icon: 'mic', section: 'sermons' },
+	{ href: '/biographies', labelKey: 'nav.biographies', icon: 'users', section: 'biographies' }
 ];
 
 /** Articles · Scripture · Quotes — English-only hubs (footer + palette). */

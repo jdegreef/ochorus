@@ -69,6 +69,29 @@ def _first_reference(text: str):
     return refs[0] if refs else None
 
 
+# An epigraph's attribution: a dash, then the reference ("— Isaiah 43:1 (BSB)").
+# A devotional opens on its key verse this way; a citation in running prose does
+# not wear the dash, so only an attributed verse becomes the day's key verse.
+_EPIGRAPH = re.compile(r"[—–]\s*" + _CANDIDATE.pattern)
+# How far into a chapter an epigraph may sit: the verse and its attribution.
+EPIGRAPH_WINDOW = 600
+
+
+def epigraph_reference(text: str) -> str:
+    """The reference a chapter's opening epigraph is attributed to, as written
+    ("Isaiah 43:1", "1 Peter 3:3–4"), or "" when the chapter opens otherwise.
+
+    Reads only the first ``EPIGRAPH_WINDOW`` characters, and keeps only a span
+    ``pythonbible`` accepts — "— Room 3:16" is not a verse. English book names
+    only, as everywhere in this module: a translated chapter yields "".
+    """
+    for m in _EPIGRAPH.finditer(text[:EPIGRAPH_WINDOW]):
+        ref = re.sub(r"\s*([:–-])\s*", r"\1", " ".join(m.group(1).split()))
+        if _first_reference(ref) is not None:
+            return ref
+    return ""
+
+
 def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
     """Wrap valid Bible references in tappable anchors, in text only.
 

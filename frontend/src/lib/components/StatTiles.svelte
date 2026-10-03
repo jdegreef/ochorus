@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
+	import type { IconName } from '$lib/components/Icon.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import type { ReadingStats } from '$lib/readingStats';
@@ -12,53 +14,122 @@
 	 * already existed, so the mapping is mostly wiring: reading → /reading, the
 	 * three annotation totals → the one /notebook that already unifies them
 	 * (filtered), favourites → the "My Library" page. A tile only becomes a link
-	 * when it has something to show: a zero total stays an inert, dimmed tile
-	 * rather than a link to an empty page.
+	 * when it has something to show: a zero total stays an inert tile rather than
+	 * a link to an empty page.
+	 *
+	 * Each total wears one library-palette hue (app.css, "THE LIBRARY PALETTE")
+	 * and an icon, so the row reads as six different things rather than six
+	 * beige boxes. A zero tile drops the colour and says how to fill it instead.
 	 */
 	let { stats }: { stats: ReadingStats } = $props();
 	const t = i18n.t;
 
-	const tiles = $derived([
-		{ label: t('settings.statInProgress'), value: stats.inProgress, href: '/reading' },
-		{ label: t('settings.statFinished'), value: stats.finished, href: '/reading#finished' },
-		{ label: t('settings.statHighlights'), value: stats.highlights, href: '/notebook?view=highlights' },
-		{ label: t('settings.statNotes'), value: stats.notes, href: '/notebook?view=notes' },
-		{ label: t('settings.statFavorites'), value: stats.favorites, href: '/favorites' },
-		{ label: t('settings.statBookmarks'), value: stats.bookmarks, href: '/notebook?view=bookmarks' }
+	type Hue = 'indigo' | 'cypress' | 'ochre' | 'plum' | 'oxblood' | 'slate';
+	type Tile = { label: string; value: number; href: string; icon: IconName; hue: Hue; hint: string };
+
+	const tiles = $derived<Tile[]>([
+		{
+			label: t('settings.statInProgress'),
+			value: stats.inProgress,
+			href: '/reading',
+			icon: 'book',
+			hue: 'indigo',
+			hint: t('settings.statEmptyBooks')
+		},
+		{
+			label: t('settings.statFinished'),
+			value: stats.finished,
+			href: '/reading#finished',
+			icon: 'check',
+			hue: 'cypress',
+			hint: t('settings.statEmptyFinished')
+		},
+		{
+			label: t('settings.statHighlights'),
+			value: stats.highlights,
+			href: '/notebook?view=highlights',
+			icon: 'highlighter',
+			hue: 'ochre',
+			hint: t('settings.statEmptyPassage')
+		},
+		{
+			label: t('settings.statNotes'),
+			value: stats.notes,
+			href: '/notebook?view=notes',
+			icon: 'pen',
+			hue: 'plum',
+			hint: t('settings.statEmptyPassage')
+		},
+		{
+			label: t('settings.statFavorites'),
+			value: stats.favorites,
+			href: '/favorites',
+			icon: 'heart',
+			hue: 'oxblood',
+			hint: t('settings.statEmptyFavorites')
+		},
+		{
+			label: t('settings.statBookmarks'),
+			value: stats.bookmarks,
+			href: '/notebook?view=bookmarks',
+			icon: 'bookmark',
+			hue: 'slate',
+			hint: t('settings.statEmptyBookmarks')
+		}
 	]);
 </script>
 
-<!-- A zero total is real information but shouldn't shout as loudly as a "70":
-     dim the whole tile so the numbers that carry momentum lead the eye. A zero
-     tile is also not a link — there is nothing to show — so it renders as a
-     plain <div>; a non-zero one is an <a> that lifts and shows a ↗ on hover. -->
+<!-- A non-zero tile is an <a> on its hue's soft ground that lifts and shows a ↗
+     on hover. A zero total is real information but shouldn't shout as loudly
+     as a "70", and there is nothing to link to: it renders as a plain <div>
+     with a dashed edge, a muted icon and a one-line hint on how to start
+     (wide screens only). -->
 <div class="grid grid-cols-3 gap-3 sm:grid-cols-6">
 	{#each tiles as tile (tile.label)}
 		{#if tile.value > 0}
 			<a
 				href={localizeHref(tile.href)}
-				class="stat-tile group relative rounded-card border border-border bg-surface-2 px-3 py-4 text-center transition hover:-translate-y-0.5 hover:border-accent hover:no-underline"
+				class="stat-tile group relative rounded-card px-3 py-4 text-center transition hover:-translate-y-0.5 hover:no-underline"
+				style="--tile-hue: var(--hue-{tile.hue}); --tile-soft: var(--hue-{tile.hue}-soft)"
 			>
 				<span
-					class="absolute end-2 top-2 text-eyebrow text-accent opacity-0 transition-opacity group-hover:opacity-100"
+					class="tile-hue absolute end-2 top-2 text-eyebrow opacity-0 transition-opacity group-hover:opacity-100"
 					aria-hidden="true">↗</span
 				>
-				<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
-				<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
+				<span class="tile-hue inline-flex"><Icon name={tile.icon} size={20} /></span>
+				<div class="tile-hue font-display text-h2 font-semibold">{tile.value}</div>
+				<div class="tile-hue mt-0.5 text-eyebrow">{tile.label}</div>
 			</a>
 		{:else}
-			<div class="rounded-card border border-border bg-surface-2 px-3 py-4 text-center opacity-60">
-				<div class="font-display text-h2 font-semibold text-text">{tile.value}</div>
-				<div class="mt-0.5 text-eyebrow text-muted">{tile.label}</div>
+			<div class="stat-empty rounded-card px-3 py-4 text-center">
+				<span class="inline-flex text-muted"><Icon name={tile.icon} size={20} /></span>
+				<div class="font-display text-h2 font-semibold text-muted">{tile.value}</div>
+				<div class="mt-0.5 text-eyebrow text-text">{tile.label}</div>
+				<!-- Not on phones: in a three-column row a translated hint wraps to
+				     four lines and stretches every tile beside it. -->
+				<div class="mt-1 hidden text-eyebrow text-muted sm:block">{tile.hint}</div>
 			</div>
 		{/if}
 	{/each}
 </div>
 
 <style>
+	.stat-tile {
+		background: var(--tile-soft);
+		border: 1px solid transparent;
+	}
+	.tile-hue {
+		color: var(--tile-hue);
+	}
 	/* The lift's shadow — `--shadow-card` is a token, not a Tailwind utility, so
 	   it's applied here rather than as a `shadow-*` class that would no-op. */
 	.stat-tile:hover {
+		border-color: var(--tile-hue);
 		box-shadow: var(--shadow-card);
+	}
+	/* --border, not --border-strong: this tile is inert, and the strong edge
+	   is the token for interactive controls (app.css). */
+	.stat-empty {
+		border: 1.5px dashed var(--border);
 	}
 </style>

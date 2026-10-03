@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Fleuron from '$lib/components/Fleuron.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -78,6 +79,7 @@
 	     seo.blurb stays the meta description only (see <Seo> above). -->
 	<header class="mb-8">
 		<h1 class="text-h1 mb-3">{seo.h1}</h1>
+		<div class="mb-3"><Fleuron /></div>
 		<p class="article-topic-intro text-body text-muted">{seo.intro}</p>
 		<!-- Bridge out of the article filter into the full library shelf on this
 		     topic: the same slug is a Topic, so /topics/<slug>/ gathers the books,

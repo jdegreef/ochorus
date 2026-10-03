@@ -1,0 +1,95 @@
+{
+ "kind": "sermon",
+ "slug": "the-conqueror",
+ "language": "sw",
+ "job_issue": 4710,
+ "pull_request": 4870,
+ "references": [
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "on-loving-god.sw.json"
+  },
+  {
+   "reference": "Luke 1:6",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Luke 1:67-68",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 1:69",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Luke 1:70-73",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 1:74-75",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Luke 1:70-71",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Luke 1:74-75",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 3:26a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Luke 1:74",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "1 John 1:7b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Matthew 1:21b",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Luke 1:45",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Acts 10:34b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "the-unselfishness-of-god.sw.json"
+  },
+  {
+   "reference": "Luke 1:45",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Mark 16:16a",
+   "status": "self_rendered",
+   "block_index": 30
+  }
+ ]
+}

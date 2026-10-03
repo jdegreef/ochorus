@@ -3,7 +3,10 @@
 	import { auth } from '$lib/auth.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
+	import { relativeTime } from '$lib/relativeTime';
 	import {
 		adminUserDirectoryCsvUrl,
 		formatDuration,
@@ -11,6 +14,7 @@
 		getAdminUsers,
 		maskEmail,
 		periodTrend,
+		type AdminUsers,
 		type AdminUserSort,
 		type Trend
 	} from '$lib/library-admin';
@@ -82,6 +86,33 @@
 	const dayFmt = (iso: string | null) =>
 		iso ? new Date(iso).toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' }) : '—';
 
+	// "3 days ago" for the recent list, where recency is the point; the full date
+	// stays in the title.
+	const ago = (iso: string | null) => (iso ? relativeTime(Date.parse(iso), 'en', 'just now') : '—');
+
+	// The weekly series is zero-filled back a fixed number of weeks, so before
+	// the first account existed it's a run of empty bars squeezing the real ones.
+	// Only when every account is inside the series are its leading zeros known to
+	// be pre-launch; otherwise they're real quiet weeks and stay.
+	const signupWeeks = $derived.by(() => {
+		const weeks = data?.weekly_signups ?? [];
+		const inSeries = weeks.reduce((n, w) => n + w.count, 0);
+		const first = weeks.findIndex((w) => w.count > 0);
+		return first > 0 && inSeries === data?.total ? weeks.slice(first) : weeks;
+	});
+
+	// Sign-up to habit; the first two steps are the Registered and Activated
+	// tiles above it (the server derives both from the same counts).
+	const activationLabels: Record<AdminUsers['activation'][number]['step'], string> = {
+		signed_up: 'Registered',
+		started: 'Activated',
+		returned: 'Came back another day',
+		finished: 'Finished something'
+	};
+	const activationSteps = $derived(
+		(data?.activation ?? []).map((a) => ({ label: activationLabels[a.step] ?? a.step, count: a.count }))
+	);
+
 	type Card = { label: string; value: number; sub: string; trend: Trend };
 	const cards = $derived<Card[]>(
 		data
@@ -104,7 +135,6 @@
 	// Drop the "Continent/" prefix for a compact label; the city carries the info.
 	const tzLabel = (tz: string) => (tz === 'Other' ? tz : tz.split('/').pop()!.replace(/_/g, ' '));
 
-	const signupMax = $derived(Math.max(1, ...(data?.weekly_signups.map((w) => w.count) ?? [1])));
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 	const variantMax = $derived(
@@ -204,21 +234,32 @@
 					Activated = has opened at least one book. Dormant = registered but hasn't started reading.
 				</p>
 
+				<!-- Sign-up to habit -->
+				{#if activationSteps[0]?.count}
+					<section class="mb-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">From sign-up to habit</h2>
+							<span class="text-small text-muted">Each step counts only accounts that reached the one before. Percentages are of registered users.</span>
+						</div>
+						<FunnelBars steps={activationSteps} />
+						<p class="mt-3 text-micro text-muted">
+							A day is a calendar day in the reader's own time zone, from the reading-streak log. Because the steps nest, a
+							reader who finished something in a single day stops at Activated.
+						</p>
+					</section>
+				{/if}
+
 				<!-- Weekly signups -->
 				<section class="mb-8 rounded-card border border-border bg-surface p-5">
 					<h2 class="text-h3 mb-4">New sign-ups per week</h2>
-					<div class="flex items-end gap-1.5" style="height: 8rem">
-						{#each d.weekly_signups as w (w.week)}
-							<div class="flex flex-1 flex-col items-center gap-1">
-								<div class="text-small tabular-nums text-muted">{w.count || ''}</div>
-								<div
-									class="w-full rounded-t-sm bg-accent-soft"
-									style="height: {(w.count / signupMax) * 100}%; min-height: {w.count ? '3px' : '0'}"
-								></div>
-								<div class="text-micro text-muted">{weekLabel(w.week)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={signupWeeks.map((w) => ({
+							key: w.week,
+							label: weekLabel(w.week),
+							value: w.count,
+							title: `Week of ${weekLabel(w.week)} · ${fmt(w.count)} sign-up${w.count === 1 ? '' : 's'}`
+						}))}
+					/>
 				</section>
 
 				<!-- By sign-in method + Recent sign-ups -->
@@ -260,40 +301,40 @@
 							{/if}
 						</div>
 						{#if d.recent.length}
-							<ul class="divide-y divide-border">
-								{#each d.recent as u, i (u.uid)}
-										<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 py-2.5">
-											<div class="min-w-0">
-												{#if u.display_name}
-													<a href="/admin/users/{u.uid}" class="block truncate font-semibold text-text hover:text-accent hover:underline">{u.display_name}</a>
-													{@render emailCell(u.email, i, 'text-small text-muted')}
-												{:else}
-													<!-- No name: the row is reached via the "View" link; email stays a reveal button. -->
-													<a href="/admin/users/{u.uid}" class="text-small text-accent hover:underline">View profile →</a>
-													{@render emailCell(u.email, i, 'font-semibold text-text')}
-												{/if}
-											</div>
-											<div class="flex items-baseline gap-4 text-small text-muted">
-												<span class="text-text">
-													{#if u.providers.length}
-														{u.providers.map((p) => p.label).join(', ')}
-													{:else}
-														<span class="text-muted">—</span>
-													{/if}
-												</span>
-												<span class="whitespace-nowrap tabular-nums" title="Joined">{dayFmt(u.joined_at)}</span>
-												<span class="hidden whitespace-nowrap tabular-nums sm:inline" title="Last seen"
-													>seen {dayFmt(u.last_seen_at)}</span
-												>
-												<a
-													href="/admin/users/{u.uid}"
-													class="whitespace-nowrap text-accent hover:underline"
-													aria-label="View {u.display_name || u.email || 'this reader'}'s profile">View →</a
-												>
-											</div>
-										</li>
-									{/each}
-							</ul>
+							<!-- One row per account, one link per row: the name (or "Unnamed")
+							     opens the profile, the email under it is the reveal toggle. -->
+							<div class="overflow-x-auto">
+								<table class="w-full text-start text-small">
+									<thead class="text-micro uppercase text-muted">
+										<tr class="border-b border-border">
+											<th class="py-2 text-start font-semibold">Reader</th>
+											<th class="py-2 text-start font-semibold">Sign-in</th>
+											<th class="hidden py-2 text-start font-semibold sm:table-cell">Lang</th>
+											<th class="py-2 text-end font-semibold">Joined</th>
+											<th class="hidden py-2 text-end font-semibold sm:table-cell">Seen</th>
+										</tr>
+									</thead>
+									<tbody class="divide-y divide-border">
+										{#each d.recent as u, i (u.uid)}
+											<tr class="hover:bg-surface-2">
+												<td class="w-1/2 max-w-0 py-2 pe-3">
+													<a
+														href="/admin/users/{u.uid}"
+														aria-label="View {u.display_name || u.email || 'this reader'}'s profile"
+														class="block truncate font-semibold {u.display_name ? 'text-text' : 'text-muted'} hover:text-accent hover:underline"
+														>{u.display_name || 'Unnamed'}</a
+													>
+													{@render emailCell(u.email, i, 'text-micro text-muted')}
+												</td>
+												<td class="py-2 pe-3 text-muted">{u.providers.map((p) => p.label).join(', ') || '—'}</td>
+												<td class="hidden py-2 pe-3 text-muted sm:table-cell">{u.locale || '—'}</td>
+												<td class="whitespace-nowrap py-2 ps-3 text-end tabular-nums text-muted" title={dayFmt(u.joined_at)}>{ago(u.joined_at)}</td>
+												<td class="hidden whitespace-nowrap py-2 ps-3 text-end tabular-nums text-text sm:table-cell" title={dayFmt(u.last_seen_at)}>{ago(u.last_seen_at)}</td>
+											</tr>
+										{/each}
+									</tbody>
+								</table>
+							</div>
 						{:else}
 							<p class="text-body text-muted">No sign-ups yet.</p>
 						{/if}

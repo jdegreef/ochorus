@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PLAN_MOVES, applyPlanMoves, movedDone } from './planMoves';
 
-const move = PLAN_MOVES['the-key-teachings-four-teachers'];
+const move = PLAN_MOVES['the-key-teachings-four-teachers'][0];
 
 describe('the Four Teachers plan move', () => {
 	it('maps all 88 old days into 86 new ones, each old day once', () => {
@@ -38,5 +38,61 @@ describe('the Four Teachers plan move', () => {
 		expect(store['key-teachings-four-teachers']).toEqual({ startedAt: 5, done: [1, 2] });
 		expect(store.other).toEqual({ startedAt: 1, done: [3] });
 		expect(applyPlanMoves(store)).toEqual([]);
+	});
+});
+
+describe('the young-reader series plan moves', () => {
+	const range = (from: number, to: number) =>
+		Array.from({ length: to - from + 1 }, (_, i) => from + i);
+	type Store = Record<string, { startedAt: number; done: number[] }>;
+
+	it('puts a per-book day N on that book’s "Day N" chapter of the series plan', () => {
+		// Book 2's Day 1 is chapter 2 of the plan's second book: 32 + 2.
+		const [m] = PLAN_MOVES['rooted-book-2-30-days'];
+		expect(m.to).toBe('rooted-three-months-books-1-3');
+		expect(m.sources).toHaveLength(96);
+		expect(movedDone(m, [1, 2, 30])).toEqual([34, 35, 63]);
+		// The Introduction and Conclusion had no day of their own: they start unread.
+		expect(movedDone(m, range(1, 30))).toEqual(range(34, 63));
+	});
+
+	it('sends each series to its one plan (Rooted to its two halves)', () => {
+		const to = (slug: string) => PLAN_MOVES[slug].map((m) => m.to);
+		expect(to('rooted-book-3-30-days')).toEqual(['rooted-three-months-books-1-3']);
+		expect(to('rooted-book-4-30-days')).toEqual(['rooted-three-months-books-4-6']);
+		expect(to('daughters-of-the-king-book-3-30-days')).toEqual([
+			'daughters-of-the-king-three-months'
+		]);
+		expect(to('sons-of-the-king-book-1-30-days')).toEqual(['sons-of-the-king-three-months']);
+		expect(movedDone(PLAN_MOVES['rooted-book-4-30-days'][0], [1])).toEqual([2]);
+	});
+
+	it('splits the six-month plan across the halves the reader reached', () => {
+		const store: Store = {
+			'rooted-six-months-with-god': { startedAt: 7, done: [1, 2, 96, 97, 98] },
+			'rooted-three-months-books-4-6': { startedAt: 3, done: [10] }
+		};
+		expect(applyPlanMoves(store).sort()).toEqual([
+			'rooted-three-months-books-1-3',
+			'rooted-three-months-books-4-6'
+		]);
+		expect(store['rooted-six-months-with-god']).toBeUndefined();
+		expect(store['rooted-three-months-books-1-3']).toEqual({ startedAt: 7, done: [1, 2, 96] });
+		expect(store['rooted-three-months-books-4-6']).toEqual({ startedAt: 3, done: [1, 2, 10] });
+
+		const early: Store = { 'rooted-six-months-with-god': { startedAt: 1, done: [] } };
+		expect(applyPlanMoves(early)).toEqual(['rooted-three-months-books-1-3']);
+		expect(early).toEqual({ 'rooted-three-months-books-1-3': { startedAt: 1, done: [] } });
+	});
+
+	it('unions several retired plans into the one plan they became', () => {
+		const store: Store = {
+			'daughters-of-the-king-book-1-30-days': { startedAt: 5, done: [1] },
+			'daughters-of-the-king-book-2-30-days': { startedAt: 9, done: [1] }
+		};
+		expect(applyPlanMoves(store)).toEqual(['daughters-of-the-king-three-months']);
+		expect(store).toEqual({
+			'daughters-of-the-king-three-months': { startedAt: 5, done: [2, 34] }
+		});
 	});
 });

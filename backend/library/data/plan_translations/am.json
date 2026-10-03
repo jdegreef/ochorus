@@ -15,11 +15,12 @@
   ]
  },
  "school-of-prayer": {
-  "title": "የጸሎት ትምህርት ቤት",
-  "description": "ከሦስት መሪዎች ጋር በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
+  "title": "የጸሎት መሠረቶች",
+  "description": "ከሦስት መሪዎች ጋር የጸሎትን መሠረት የምትጥልበት አራት ሳምንት፦ አንድሪው መሪ ጌታ ራሱ እንዴት እንድንጸልይ እንደሚያስተምረን፣ ዲ. ኤል. ሙዲ ስለሚያሸንፍ ጸሎት፣ ሃና ቡዪንዛ ደግሞ ጸሎት የክርስቲያን ሕይወት የዕለት ትርታ መሆኑን ያስተምራሉ።",
   "note": [
    "Queue job #3575. AI-drafted; awaiting native review. None of the three source books (lord-teach-us-to-pray-2, prevailing-prayer, prayer-the-pulse-of-life) has an am edition yet, so seed_plans creates no am row until they all do; whoever ships them should make the card quote their titles.",
-   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition."
+   "«የጸሎት ትምህርት ቤት» echoes the am school-of-prayer book title «ከክርስቶስ ጋር በጸሎት ትምህርት ቤት». Names follow the shipped am bios (አንድሪው መሪ, ዲ. ኤል. ሙዲ); «የሚያሸንፍ ጸሎት» is the am rendering of «prevailing prayer» already used in the am school-of-prayer edition.",
+   "2026-10-01: retitled from «የጸሎት ትምህርት ቤት» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description's opening «በጸሎት ትምህርት ቤት የምታሳልፈው አራት ሳምንት» became «የጸሎትን መሠረት የምትጥልበት አራት ሳምንት» to match."
   ]
  },
  "brave-for-god-24-true-stories": {
@@ -37,25 +38,25 @@
    "«ባለ አራት ገጽ ወንጌል» (fourfold gospel) and the name ኤ. ቢ. ሲምፕሰን are verbatim from the shipped am Simpson bio. The reader is addressed in the singular (የምታሰላስልበት), the am house style."
   ]
  },
- "daughters-of-the-king-book-1-30-days": {
-  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 1",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች፣ የንጉሡ ሴት ልጅ እንደ መሆንሽ ማንነትሽ ላይ የሚያተኩሩ ሠላሳ ቀናት፦ ከእግዚአብሔር የሚመጣ ክብር፣ ራስን ከሌሎች ከማወዳደር ወጥመድ መውጣት፣ ያለ ጭቅጭቅ የሚኖር ጓደኝነት፣ እና የመጽሐፍ ቅዱስ ደፋር ልጃገረዶች። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+ "rooted-three-months-books-1-3": {
+  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር ሦስት ወራት — መጻሕፍት 1–3",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ከእግዚአብሔር ጋር የሚያሳልፉት ሦስት ወራት፦ የ«ሥር የሰደደ» የመጀመሪያዎቹ ሦስት መጻሕፍት — «የተተከለ»፣ «ኢየሱስን መከተል» እና «ፍሬ ማፍራት» — በየቀኑ አንድ አጭር ንባብ፤ እግዚአብሔር ማን እንደ ሆነና የኢየሱስ የምሥራች፣ ከበረቱ እስከ ባዶው መቃብር ከኢየሱስ ጋር መመላለስ፣ እንዲሁም የመንፈስ ፍሬ ማፍራት።",
   "note": [
-   "Queue job #3578. AI-drafted; awaiting native review. daughters-of-the-king-1 has no am edition yet, so no am row is created until it does; make its title agree with «የንጉሡ ሴት ልጆች» when it ships. The girl reader is addressed in the feminine singular (አንቺ forms), as the English addresses her directly."
+   "AI-drafted; awaiting native review. Three-book plan backed by the am editions of rooted-1 … rooted-3; replaces the per-book rooted-book-1/2/3-30-days cards and the first half of rooted-six-months-with-god. Book names are the am subtitles' lead words («የተተከለ» / «ኢየሱስን መከተል» / «ፍሬ ማፍራት»); generic-singular አንተ address and «በየቀኑ አንድ አጭር ንባብ» as in the Daughters of the King three-month card."
   ]
  },
- "daughters-of-the-king-book-2-30-days": {
-  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 2",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች የድፍረት ሠላሳ ቀናት፦ ጭንቀትን ከእግዚአብሔር ጋር መጋፈጥ፣ ድምፅሽን መጠቀም፣ ማገልገልና መምራት፣ እንደ ወንጌሎቹ ደፋር ሴቶችም ኢየሱስን መከተል። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+ "rooted-three-months-books-4-6": {
+  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር ሦስት ወራት — መጻሕፍት 4–6",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ከእግዚአብሔር ጋር የሚያሳልፉት ሌሎች ሦስት ወራት፦ የ«ሥር የሰደደ» የመጨረሻዎቹ ሦስት መጻሕፍት — «በማዕበል ውስጥ ብርቱ»፣ «ወደ ውጭ መዘርጋት» እና «ፍሬ ማፍራት» — በየቀኑ አንድ አጭር ንባብ፤ ሕይወት ስትከብድ ጸንቶ መቆም፣ በዙሪያህ ያሉትን ሰዎች መውደድ፣ እንዲሁም እግዚአብሔር ለሕይወትህ ያለው ዓላማ።",
   "note": [
-   "Queue job #3579. AI-drafted; awaiting native review. daughters-of-the-king-2 has no am edition yet, so no am row is created until it does. Series wording and the closing sentence match Book 1's am card."
+   "AI-drafted; awaiting native review. Three-book plan backed by the am editions of rooted-4 … rooted-6; replaces the per-book rooted-book-4/5/6-30-days cards and the second half of rooted-six-months-with-god. Book names are the am subtitles' lead words («በማዕበል ውስጥ ብርቱ» / «ወደ ውጭ መዘርጋት» / «ፍሬ ማፍራት» — the am editions of Books 3 and 6 share that lead word); wording mirrors rooted-three-months-books-1-3."
   ]
  },
- "daughters-of-the-king-book-3-30-days": {
-  "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 3",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች ስለ ማደግ የሚያወሩ ሠላሳ ቀናት፦ ትልልቅ ስሜቶች፣ የጉርምስና ለውጦች የእግዚአብሔር መልካም ንድፍ መሆናቸው፣ ጥበበኛ ምርጫዎች፣ ጥሪሽን ማግኘት፣ እና እግዚአብሔርን ከሚወዱ ታላላቅ ሴቶች መማር። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስቢበት ጥያቄ፣ የምትሞክሪው ነገርና ጸሎት አለው።",
+ "sons-of-the-king-three-months": {
+  "title": "የንጉሡ ወንዶች ልጆች፦ ከእግዚአብሔር ጋር ሦስት ወራት",
+  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች ከእግዚአብሔር ጋር የሚያሳልፉት ሦስት ወራት፦ ሦስቱም የ«የንጉሡ ወንዶች ልጆች» መጻሕፍት — ብርቱ፣ ታማኝ እና ማደግ — በየቀኑ አንድ አጭር ንባብ፤ በክርስቶስ ማን እንደ ሆንክ፣ የሚታመን ሰው መሆን፣ እንዲሁም በጥበብ ማደግ።",
   "note": [
-   "Queue job #3580. AI-drafted; awaiting native review. daughters-of-the-king-3 has no am edition yet, so no am row is created until it does. Series wording and the closing sentence match Books 1–2's am cards."
+   "AI-drafted; awaiting native review. Prose only: sons-of-the-king-1 … 3 have no am editions yet, so no am row is created until all three ship — when they do, make the book names agree with their am subtitles. Replaces the per-book sons-of-the-king-book-1/2/3-30-days cards (series title «የንጉሡ ወንዶች ልጆች»); mirrors daughters-of-the-king-three-months in the masculine singular (አንተ)."
   ]
  },
  "humility-12-days": {
@@ -72,55 +73,6 @@
    "Queue job #3582. AI-drafted; awaiting native review. The three Bounds books (power-through-prayer, purpose-in-prayer, necessity-of-prayer) have no am edition yet, so no am row is created until they do. «የጸሎት ትምህርት ቤት» matches the am «A School of Prayer» card; «የሚያሸንፍ» follows the am rendering of «prevailing» prayer. ኢ. ኤም. ባውንድስ is a first spelling (no am Bounds bio yet)."
   ]
  },
- "rooted-book-1-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 1",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ጥልቅ ሥር የምትሰድበት ሠላሳ ቀናት፦ እግዚአብሔር ማን እንደ ሆነ፣ የኢየሱስ የምሥራች፣ በክርስቶስ ማን እንደ ሆንክ፣ እንዴት እንደምትጸልይ፣ እና እንዴት እንደምታድግ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "Queue job #3583. AI-drafted; awaiting native review. rooted-1 has no am edition yet, so no am row is created until it does; make its series title agree with «ሥር የሰደደ» when it ships. The reader is addressed in the generic singular (አንተ forms), the am house style; the closing sentence mirrors the Daughters of the King cards in the masculine."
-  ]
- },
- "rooted-book-2-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 2",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ከኢየሱስ ጋር የምትመላለስባቸው ሠላሳ ቀናት፦ በቤተ ልሔም ካለው በረት ጀምሮ በተአምራቱና በምሳሌዎቹ በኩል እስከ መስቀሉና ባዶው መቃብር ድረስ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ ከወንጌል የተወሰደ ክፍል፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "Queue job #4096. AI-drafted; awaiting native review. Mirrors rooted-book-1-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence with «ከወንጌል የተወሰደ ክፍል» for 'a Gospel passage'). rooted-2 has no am edition yet, so no am row is created until it ships."
-  ]
- },
- "rooted-book-3-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 3",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ፍሬ የምታፈራባቸው ሠላሳ ቀናት፦ ፍቅር፣ ደስታ፣ ሰላም፣ ትዕግሥት፣ ቸርነትና የቀሩት የመንፈስ ፍሬዎች፣ የምንናገራቸው ቃላት፣ እንዲሁም የልብ ልማዶች። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "AI-drafted; awaiting native review. Ships with rooted-3.am (job #3796), whose am edition is what creates this plan row. Mirrors rooted-book-1/2-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence); fruit names follow the book («ትዕግሥት», «ቸርነት»)."
-  ]
- },
- "rooted-book-4-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 4",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች በሕይወት ማዕበል ውስጥ ጸንተህ የምትቆምባቸው ሠላሳ ቀናት፦ ስትፈራ፣ ስትጨነቅ ወይም ስታዝን፣ ስትፈተን፣ እንዲሁም ሕይወት ፍትሐዊ በማይሆንበት ጊዜ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "AI-drafted; awaiting native review. Ships with rooted-4.am (job #3797), whose am edition is what creates this plan row. Mirrors rooted-book-1/2/3-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence)."
-  ]
- },
- "rooted-book-5-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 5",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች በፍቅር ወደ ውጭ የምትዘረጋባቸው ሠላሳ ቀናት፦ ቤተሰብ፣ ጓደኞች፣ ይቅርታ፣ በቤተ ክርስቲያን ያለው የእግዚአብሔር ቤተሰብ፣ እንዲሁም መላው ዓለም። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "AI-drafted; awaiting native review. Ships with rooted-5.am (job #3798), whose am edition is what creates this plan row. Mirrors rooted-book-1…4-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence)."
-  ]
- },
- "rooted-book-6-30-days": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 6",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች እግዚአብሔር ለሕይወትህ ስላለው ዓላማ የምታስብባቸው ሠላሳ ቀናት፦ ለመልካም ሥራ መመረጥና መፈጠር፣ ስጦታዎችህንና ጊዜህን ለእግዚአብሔር መጠቀም፣ ማገልገልና ድምፅህን ማሰማት፣ እንዲሁም የኢየሱስን መመለስ በተስፋ መጠበቅ። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "AI-drafted; awaiting native review. Ships with rooted-6.am (job #3799), whose am edition is what creates this plan row. Mirrors rooted-book-1…5-30-days (series title «ሥር የሰደደ», generic-singular አንተ address, same closing sentence)."
-  ]
- },
- "rooted-six-months-with-god": {
-  "title": "ሥር የሰደደ፦ ከእግዚአብሔር ጋር ስድስት ወራት",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ አንባቢዎች ከእግዚአብሔር ጋር የሚያሳልፉት ግማሽ ዓመት፦ ስድስቱም የ«ሥር የሰደደ» መጻሕፍት፣ ከ«የተተከለ» እስከ «ፍሬ ማፍራት»፤ በየቀኑ አንድ አጭር ንባብ — ጥቅስ፣ ትርጉሙ፣ የምታስብበት ነገር፣ የምትሞክረው ነገርና ጸሎት።",
-  "note": [
-   "AI-drafted; awaiting native review. Six-book plan backed by the am editions of rooted-1 … rooted-6; added with rooted-6.am (job #3799), which completes the set. Book names are the am subtitles of Book 1 («የተተከለ») and Book 6 («ፍሬ ማፍራት»); generic-singular አንተ address as in the per-book plan cards."
-  ]
- },
  "daughters-of-the-king-three-months": {
   "title": "የንጉሡ ሴት ልጆች፦ ከእግዚአብሔር ጋር ሦስት ወራት",
   "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ልጃገረዶች ከእግዚአብሔር ጋር የሚያሳልፉት ሦስት ወራት፦ ሦስቱም የ«የንጉሡ ሴት ልጆች» መጻሕፍት — የተወደድሽ፣ ደፋር እና ማደግ — በየቀኑ አንድ አጭር ንባብ፤ በክርስቶስ ማን እንደ ሆንሽ፣ ለመናገርና ለማገልገል የሚሆን ድፍረት፣ እንዲሁም በጥበብ ማደግ።",
@@ -135,25 +87,11 @@
    "Queue job #4190. AI-drafted; awaiting native review. Neither source book (around-the-wicket-gate, men-and-women-who-gave-everything-2) has an am edition yet, so no am row is created until both do. Teen reader addressed in the generic singular (አንተ), the am house style; ቻርልስ ስፐርጀን follows the shipped am spelling."
   ]
  },
- "sons-of-the-king-book-1-30-days": {
-  "title": "የንጉሡ ወንዶች ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 1",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች፣ የንጉሡ ልጅ እንደ መሆንህ ማንነትህ ላይ የሚያተኩሩ ሠላሳ ቀናት፦ ከእግዚአብሔር የሚመጣ ክብር፣ በቁጥጥር ሥር ያለ ብርታት፣ የተሻልህ እንድትሆን የሚረዱህ ጓደኞች፣ እና ከመጽሐፍ ቅዱስ ሰዎች የሚገኝ ድፍረት። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
+ "growing-in-wisdom-18-days": {
+  "title": "በ18 ቀናት በጥበብ ማደግ",
+  "description": "ለተማሪዎች የተዘጋጀ መመሪያ — ለአሥራ ስምንት ቀናት በየቀኑ አንድ አጭር ንባብ። ጥሪህን ከማወቅ ጀምሮ ለወደፊት ራእይ እስከ መገንባት ድረስ፣ እያንዳንዱ ቀን ተግባራዊ ምክርን ከመጽሐፍ ቅዱስ ቃል፣ ከማሰላሰያ ጥያቄና ከጸሎት ጋር ያጣምራል።",
   "note": [
-   "Queue job #4187. AI-drafted; awaiting native review. sons-of-the-king-1 has no am edition yet, so no am row is created until it does; make its series title agree with «የንጉሡ ወንዶች ልጆች» (the companion of «የንጉሡ ሴት ልጆች») when it ships. Boy reader addressed in the masculine singular (አንተ); same closing sentence as the Rooted cards."
-  ]
- },
- "sons-of-the-king-book-2-30-days": {
-  "title": "የንጉሡ ወንዶች ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 2",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች የታማኝነት ሠላሳ ቀናት፦ ቅንነት፣ ስክሪኖችና ጨዋታዎች፣ ፈተና፣ በመልካም ማሸነፍና መሸነፍ፣ እንዲሁም እንደ መጀመሪያዎቹ ደቀ መዛሙርቱ ኢየሱስን መከተል። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "Queue job #4188. AI-drafted; awaiting native review. sons-of-the-king-2 has no am edition yet, so no am row is created until it does. Mirrors sons-of-the-king-book-1-30-days."
-  ]
- },
- "sons-of-the-king-book-3-30-days": {
-  "title": "የንጉሡ ወንዶች ልጆች፦ ከእግዚአብሔር ጋር 30 ቀናት — መጽሐፍ 3",
-  "description": "ዕድሜያቸው ከ9 እስከ 12 ለሆኑ ወንዶች ልጆች ስለ ማደግ የሚናገሩ ሠላሳ ቀናት፦ ስሜቶችን መያዝ፣ የጉርምስና ለውጦችን እንደ እግዚአብሔር መልካም ንድፍ መረዳት፣ ጥበበኛ ምርጫዎች፣ ጥሪህን ማወቅ፣ እንዲሁም ከእግዚአብሔር ጋር ከሚመላለሱ በዕድሜ የሚበልጡ ወንዶች መማር። እያንዳንዱ ቀን አንድ አጭር ንባብ ነው፤ የመጽሐፍ ቅዱስ ጥቅስ፣ የምታስብበት ጥያቄ፣ የምትሞክረው ነገርና ጸሎት አለው።",
-  "note": [
-   "Queue job #4189. AI-drafted; awaiting native review. sons-of-the-king-3 has no am edition yet, so no am row is created until it does. Mirrors sons-of-the-king-book-1-30-days; «የጉርምስና ለውጦች» matches the am Daughters Book 3 wording."
+   "AI-drafted; awaiting native review. Ships with growing-in-wisdom.am (job #3792), whose am edition is what creates this plan row. Book title «በጥበብ ማደግ» as on the am book page."
   ]
  }
 }

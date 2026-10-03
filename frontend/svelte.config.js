@@ -151,6 +151,7 @@ const config = {
 					// lags this deploy, or a fresh seed, can legitimately reach none.
 					'/biographies/tradition/[slug]',
 					'/biographies/place/[slug]',
+					'/scripture/[book]',
 					'/scripture/[book]/[chapter]',
 					'/scripture/[book]/[chapter]/[verse]',
 					// Quote pages exist only for an author whose quotations a

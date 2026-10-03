@@ -168,6 +168,13 @@ services:
           name: ochorus-api
           type: web
           envVarKey: PUBLIC_SITE_URL
+      # The nightly content audit also rides this cron (send_email_cron →
+      # `audit_scan --if-due`, once per UTC day at AUDIT_SCAN_HOUR_UTC, default
+      # 3) and emails the super admins when a data-integrity check worsens.
+      # Set ADMIN_EMAILS to the same comma-separated list as the API's, or the
+      # alert goes to settings' built-in default address only.
+      - key: ADMIN_EMAILS
+        sync: false
       # The API's own public origin. The cron can't derive it (that comes from
       # the API service's RENDER_EXTERNAL_HOSTNAME), so set it to the API URL,
       # e.g. https://ochorus-api.onrender.com.
@@ -681,6 +688,9 @@ services:
       - type: rewrite
         source: /reset-password
         destination: /200.html
+      - type: rewrite
+        source: /email/preferences/*
+        destination: /200.html
       # Every other UI locale: ONE `:lang` placeholder rule per route, never a
       # copy per locale. The copies took this service to 255 rules and Render
       # stopped applying them: every Blueprint sync from #4512 on failed on
@@ -712,6 +722,9 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/reset-password
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/email/preferences/*
         destination: /200.html
       # INDEX pages: Render doesn't auto-map extensionless URLs to their .html
       # files, so map each one here.

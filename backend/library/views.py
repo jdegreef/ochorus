@@ -9,7 +9,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
-from django.db.models import Count, F, Prefetch, Q
+from django.db.models import Count, F, Prefetch, Q, Sum
 from django.http import Http404, HttpResponse, HttpResponseNotModified
 from django.shortcuts import get_object_or_404
 from rest_framework import generics, status
@@ -39,15 +39,19 @@ from .models import (
     Author,
     Book,
     Chapter,
+    ContentRevision,
     Plan,
     SearchClickLog,
+    SearchDecision,
     SearchQueryLog,
     Series,
     Sermon,
     Topic,
+    fold_query,
 )
 from .search import (
     CAPS,
+    MAX_RESULTS,
     MIN_QUERY_LEN,
     PAGE_SIZE,
     SORTS,
@@ -58,6 +62,7 @@ from .search import (
     search_library,
     suggest,
 )
+from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
@@ -78,6 +83,7 @@ from .serializers import (
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
+    plan_article_index,
     plan_book_index,
     plan_chapter_index,
     sermon_topic_map,
@@ -137,6 +143,7 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         return (
             Author.objects.listed_in_biographies(_language(self.request))
             .with_work_counts(_language(self.request))
+            .with_quote_count()
             .prefetch_related("translations")
             .order_by("name")
         )
@@ -147,13 +154,47 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         return ctx
 
 
+class AuthorEraPresenceView(PublicContentCacheMixin, APIView):
+    """``{language: [birth_year, ...]}`` for the writers on each live language's
+    Biographies shelf (``listed_in_biographies``, the author list's own rule) —
+    distinct years, ``null`` last for the undated.
+
+    For the era pages' hreflang: an era page has writers only where that
+    locale's shelf has someone born in the era. The eras are drawn in the
+    frontend (`$lib/eras`), so the API hands over the years and leaves the
+    bucketing to the one place that defines it.
+
+    One query per live language, so it is cached per content revision and live
+    set (the scripture_graph.current_pages idiom): every era page in every
+    locale asks during prerender, and the answer only moves with content or a
+    language going live.
+    """
+
+    def get(self, request):
+        live = languages_module.live_codes()
+        key = (ContentRevision.current(), tuple(live))
+        cached = cache.get("author-era-presence")
+        if cached is not None and cached[0] == key:
+            return Response(cached[1])
+        years = {
+            lang: sorted(
+                set(Author.objects.listed_in_biographies(lang).values_list("birth_year", flat=True)),
+                key=lambda y: (y is None, y or 0),
+            )
+            for lang in live
+        }
+        cache.set("author-era-presence", (key, years), timeout=None)
+        return Response(years)
+
+
 class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     """A single author with their published books (for the author page)."""
 
     serializer_class = AuthorDetailSerializer
 
     def get_object(self):
-        # `reviewed_quotes` is ANNOTATED, not counted per object: the serializer
+        # `reviewed_quotes` is ANNOTATED (`with_quote_count`, the same count the
+        # A–Z list carries), not counted per object: the serializer
         # asking `obj.quotes.filter(...).count()` added a query to every author
         # page, which `BookCardPayloadTests` budgets and caught.
         return get_object_or_404(
@@ -163,11 +204,7 @@ class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
                 # prefetching keeps it out of the serializer as a lazy query and
                 # in the page's fixed budget (BookCardPayloadTests).
                 "featured_in_books",
-            ).annotate(
-                reviewed_quotes=Count(
-                    "quotes", filter=Q(quotes__reviewed=True), distinct=True
-                )
-            ),
+            ).with_quote_count(),
             slug=self.kwargs["slug"],
         )
 
@@ -555,6 +592,7 @@ class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
         language = _language(self.request)
         ctx["plan_chapters"] = plan_chapter_index(plans, language)
         ctx["plan_books"] = plan_book_index(plans, language)
+        ctx["plan_articles"] = plan_article_index(plans, language)
         return ctx
 
 
@@ -579,8 +617,11 @@ class PlanDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
         """
         ctx = super().get_serializer_context()
         plan = self.get_object()
-        ctx["plan_chapters"] = plan_chapter_index([plan], plan.language)
+        ctx["plan_chapters"] = plan_chapter_index(
+            [plan], plan.language, with_openings=True
+        )
         ctx["plan_books"] = plan_book_index([plan], plan.language)
+        ctx["plan_articles"] = plan_article_index([plan], plan.language)
         return ctx
 
 
@@ -687,6 +728,22 @@ def _series_for(series) -> dict:
     return {"audience": series.audience, "min_age": series.min_age, "max_age": series.max_age}
 
 
+def _is_ordered(books) -> bool:
+    """Read in order (any volume carries a number) or a collection — one test
+    for the series index's card and the series page alike."""
+    return any(b.series_position is not None for b in books)
+
+
+def _chapter_words(books) -> int | None:
+    """A series' typical chapter length in words: each book's average over its
+    chapters WITH text (a heading-only divider or a not-yet-filled row would
+    drag it down), then the mean of those, so one book of many short chapters
+    doesn't outweigh the rest. None when no book has text yet — the card then
+    draws no minutes. Reads the `text_words` / `text_chapters` annotations."""
+    per_book = [b.text_words / b.text_chapters for b in books if b.text_chapters]
+    return round(sum(per_book) / len(per_book)) if per_book else None
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -695,7 +752,9 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     as for topics).
 
     Each row carries its first four covers in reading order, for the card's fan,
-    every book's slug (the card's progress), and the languages it has a page in — the index's hreflang is their union.
+    every book's slug (the card's progress) and title (its book list), the
+    languages it has a page in — the index's hreflang is their union — and
+    its format: whether it reads in order, and its words per chapter.
     Both are read in bulk for the whole list rather than per series.
     """
 
@@ -713,6 +772,12 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                 "cover_url",
                 "cover_color", "series", "series_position",
                 "author__slug", "author__name", "author__birth_year",
+            )
+            # Each book's chapter text, for the card's minutes (`_chapter_words`)
+            # — on this same query, not one more.
+            .annotate(
+                text_words=Sum("chapters__word_count"),
+                text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
             )
             .order_by(*SERIES_READING_ORDER)
         ):
@@ -734,7 +799,12 @@ class SeriesListView(PublicContentCacheMixin, APIView):
                         # Every book, in reading order — the reader's progress
                         # through the series is read against these on the card.
                         "books": [b.slug for b in books],
+                        # Their titles, in the same order — the card's "Books in
+                        # this series" list names every volume, not just the fan's.
+                        "titles": [b.title for b in books],
                         "languages": _series_languages(series, held.get(series.pk, set())),
+                        "ordered": _is_ordered(books),
+                        "chapter_words": _chapter_words(books),
                     }
                 )
         return Response(rows)
@@ -753,7 +823,7 @@ class SeriesDetailView(PublicContentCacheMixin, APIView):
         books = _series_books(series, language) if title else []
         if not books:
             raise Http404("No series in this language")
-        ordered = any(b.series_position is not None for b in books)
+        ordered = _is_ordered(books)
         return Response(
             {
                 "slug": series.slug,
@@ -912,12 +982,34 @@ class SearchView(APIView):
         # is ordered over ALL matches rather than the page the reader was given,
         # and it must not be logged — paging isn't a new search, and counting it
         # as one would quietly inflate the popular-queries report.
-        kind = (request.query_params.get("type") or "").strip().lower()
-        if kind:
-            return Response(self._page(q, language, kind, request, scope))
+        # An admin's triage of this query (search_triage.rules): a synonym runs
+        # the search on another word, a pin leads the results. Neither applies
+        # inside a scope — they answer "the library", not one author's shelf.
+        outcome, target = (
+            (None, "") if scope else rules(language).get(fold_query(q), (None, ""))
+        )
+        searched = target if outcome == SearchDecision.Outcome.SYNONYM else q
 
-        results = search_library(q, language, scope)
-        counts, capped = count_by_type(q, language, scope)
+        kind = (request.query_params.get("type") or "").strip().lower()
+        best = (
+            pinned_hit(target, q, language) if outcome == SearchDecision.Outcome.PINNED else None
+        )
+        if kind:
+            page = self._page(searched, language, kind, request, scope)
+            # The pin leads its own type's pages too, or it would vanish the
+            # moment a reader picks that facet or asks for more.
+            if best and best["type"] == kind and page["offset"] == 0:
+                page["results"] = [best, *[h for h in page["results"] if hit_key(h) != hit_key(best)]]
+            return Response(page)
+
+        results = search_library(searched, language, scope)
+        counts, capped = count_by_type(searched, language, scope)
+        if best:
+            if all(hit_key(h) != hit_key(best) for h in results):
+                # Not one of the text matches: count it, so its group's total
+                # agrees with the rows under it.
+                counts = {**counts, best["type"]: counts.get(best["type"], 0) + 1}
+            results = [best, *[h for h in results if hit_key(h) != hit_key(best)]][:MAX_RESULTS]
         payload = {
             "query": q,
             "results": results,
@@ -928,6 +1020,10 @@ class SearchView(APIView):
             "totals_capped": capped,
             "page_size": PAGE_SIZE,
         }
+        if searched != q:
+            # Said out loud, so a reader isn't left wondering why their word
+            # isn't in any of the results.
+            payload["searched_for"] = searched
         if scope:
             # Resolved (or dropped) here so the page can name the shelf without a
             # second request. None means the place doesn't exist in this
@@ -957,11 +1053,8 @@ class SearchView(APIView):
         if scope:
             return Response(payload)
         try:
-            SearchQueryLog.objects.create(
-                query=q[:200],
-                language=language[:10],
-                result_count=len(results),
-                suggested="suggestion" in payload,
+            SearchQueryLog.record(
+                q, language, result_count=len(results), suggested="suggestion" in payload
             )
         except Exception:
             logger.warning("search query logging failed", exc_info=True)
@@ -1119,7 +1212,8 @@ class SearchClickView(APIView):
             # reader's click doesn't open what they clicked.
             try:
                 SearchClickLog.objects.create(
-                    query=q,
+                    # Spacing folded like the query log's, so a click joins its search.
+                    query=" ".join(q.split()),
                     language=_language(request)[:10],
                     result_type=result_type,
                     position=position,
@@ -1479,26 +1573,143 @@ class QuoteAuthorsView(APIView):
         # sourced from exactly one of chapter/sermon, so the (book, sermon) id
         # pair — one side always null — is itself the work's distinct identity,
         # and a set of those pairs counts the distinct works.
-        teaser: dict[int, str] = {}
+        # The teaser keeps its citation (`teaser_source`), shaped as QuoteSource:
+        # a sermon is its own work, with no chapter order.
+        teaser: dict[int, tuple[tuple[int, str], dict]] = {}
         works: dict[int, set] = {}
-        for author_id, text, book_id, sermon_id in Quote.objects.filter(
+        for (author_id, text, book_id, sermon_id,
+             book_title, chapter_order, sermon_title) in Quote.objects.filter(
             reviewed=True
-        ).values_list("author_id", "text", "chapter__book_id", "sermon_id"):
-            best = teaser.get(author_id)
-            if best is None or (len(text), text) < (len(best), best):
-                teaser[author_id] = text
+        ).values_list(
+            "author_id", "text", "chapter__book_id", "sermon_id",
+            "chapter__book__title", "chapter__order", "sermon__title",
+        ):
+            key = (len(text), text)
+            if author_id not in teaser or key < teaser[author_id][0]:
+                source = (
+                    {"work": sermon_title, "order": None}
+                    if sermon_id is not None
+                    else {"work": book_title, "order": chapter_order}
+                )
+                teaser[author_id] = (key, source)
             works.setdefault(author_id, set()).add((book_id, sermon_id))
+
+        def teaser_fields(author_id: int) -> dict:
+            if author_id not in teaser:
+                return {"teaser": "", "teaser_source": None}
+            (_, text), source = teaser[author_id]
+            return {"teaser": text, "teaser_source": source}
 
         return Response(
             [
                 {"slug": r["slug"], "name": r["name"],
                  "birth_year": r["birth_year"], "photo_url": r["photo_url"],
-                 "count": r["n"], "teaser": teaser.get(r["id"], ""),
+                 "count": r["n"], **teaser_fields(r["id"]),
                  "work_count": len(works.get(r["id"], ())),
                  "updated_at": r["updated"]}
                 for r in rows
             ]
         )
+
+
+#: A quote whose work is unpublished links to a page that 404s, and its context
+#: would hand out text the work's own pages withhold.
+_PUBLISHED_SOURCE = Q(chapter__book__is_published=True) | Q(sermon__is_published=True)
+
+#: The featured pool: up to this many quotes per author, each short enough to
+#: stand as the page's lead without truncation.
+FEATURED_PER_AUTHOR = 6
+FEATURED_MAX_CHARS = 160
+
+
+class QuoteFeaturedView(APIView):
+    """The pool the /quotes index draws its featured quotation from.
+
+    A small, stable list rather than one "quote of the day": the page is
+    prerendered, so the day's pick is made in the browser from this list (and
+    "Another quote" walks it) without a request per click. Up to
+    `FEATURED_PER_AUTHOR` short quotes per writer, interleaved round-robin so
+    consecutive days rotate writers. Within a writer the order is the quote
+    slug's — an author + content hash, so stable across deploys yet unrelated
+    to reading order. Reviewed only, as every quote view.
+    """
+
+    def get(self, request):
+        from django.db.models.functions import Length
+
+        from .models import Quote
+
+        rows = (
+            Quote.objects.filter(reviewed=True)
+            .filter(_PUBLISHED_SOURCE)
+            .annotate(chars=Length("text"))
+            .filter(chars__lte=FEATURED_MAX_CHARS)
+            .select_related("author", "chapter__book", "sermon")
+            # The card needs titles and slugs, never the bodies they sit in.
+            .defer("chapter__body_html", "chapter__body_text", "chapter__search_vector",
+                   "sermon__body_html", "sermon__body_text", "sermon__search_vector")
+            .order_by("author__name", "slug")
+        )
+        by_author: dict[int, list] = {}
+        for q in rows:
+            picks = by_author.setdefault(q.author_id, [])
+            if len(picks) < FEATURED_PER_AUTHOR:
+                picks.append(q)
+        groups = list(by_author.values())
+        pool = [g[i] for i in range(FEATURED_PER_AUTHOR) for g in groups if i < len(g)]
+        return Response([_quote_card_payload(q) for q in pool])
+
+
+def quote_block_text(quote) -> str | None:
+    """The plain text of the block a quote's `paragraph` points at, AS SERVED
+    (see `library.quote_blocks`). None if the index no longer lands — a work
+    edited out from under its quote."""
+    from .quote_blocks import served_block_texts
+
+    body = quote.sermon.body_html if quote.sermon_id else quote.chapter.body_html
+    blocks = served_block_texts(body)
+    return blocks[quote.paragraph] if 0 <= quote.paragraph < len(blocks) else None
+
+
+class _QuoteContextThrottle(ScopedCacheThrottle):
+    """Each context call parses a whole chapter (scripture annotation, then
+    lxml), so it gets its own bucket — generous for a reader opening cards,
+    a ceiling for a script walking every slug."""
+
+    scope = "quote-context"
+
+
+class QuoteContextView(APIView):
+    """A quotation's whole source paragraph — "read it in context".
+
+    Plain text, not HTML: the card highlights the sentence inside it and links
+    on to the reader for the real page, so nothing here needs markup (and the
+    page needs no `{@html}`). Reviewed quotes from published works only; 404
+    for anything else, or a paragraph index that no longer resolves.
+
+    The parse is the cost, so the text is cached per quote for an hour: a body
+    repair reaches it within that, and a popular card costs one parse.
+    """
+
+    throttle_classes = [_QuoteContextThrottle]
+
+    def get(self, request, quote):
+        from .models import Quote
+
+        key = f"quote-context:{quote}"
+        text = cache.get(key)
+        if text is None:
+            q = (
+                Quote.objects.filter(slug=quote, reviewed=True)
+                .filter(_PUBLISHED_SOURCE)
+                .select_related("chapter", "sermon")
+                .first()
+            )
+            text = quote_block_text(q) if q else None
+            if text is None:
+                raise Http404("No such quotation.")
+            cache.set(key, text, 60 * 60)
+        return Response({"slug": quote, "paragraph_text": text})
 
 
 class _QuoteResolveThrottle(ScopedCacheThrottle):
@@ -1698,6 +1909,138 @@ class ScriptureGraphView(APIView):
 
             data["prev"], data["next"] = chapter_neighbours(book, chapter)
         return Response(data)
+
+
+class ScriptureBookView(APIView):
+    """One book of the Bible across the library — the ``/scripture/<book>/`` page.
+
+    The hub lists a book's chapter pages; this answers the questions only the
+    server can: how many library passages treat the book at all (distinct
+    citing chapters, across every chapter of it, not a sum of per-chapter
+    counts, which would count a passage citing Romans 5 and 8 twice), which
+    library books return to it most, and the ASV text of its most-quoted
+    verses.
+
+    It exists only where at least one of the book's chapters has earned a page
+    (``current_pages``), so it is never thinner than the pages it links to and
+    the route's entries, the sitemap and this view agree on what exists. 404
+    otherwise, like the chapter and verse pages.
+    """
+
+    #: Library books named as the ones that quote this book most.
+    TOP_BOOKS = 6
+    #: Verse pages surfaced with their text.
+    TOP_VERSES = 8
+
+    def get(self, request, book):
+        from .models import ChapterCitation
+        from .scripture import VERSION_LABEL
+        from .scripture_graph import (
+            _SPAN_GUARD,
+            book_from_slug,
+            current_pages,
+            english_chapters,
+            verse_text,
+        )
+        from .serializers import _edition_base_slug
+
+        target = book_from_slug(book)
+        if target is None:
+            raise Http404("No such book of the Bible.")
+        pages = current_pages()
+        mine = [p for p in pages if p["book"] == book]
+        chapters = [
+            {"chapter": p["chapter"], "citing_count": p["citing_count"]}
+            for p in mine
+            if p["verse"] is None
+        ]
+        if not chapters:
+            raise Http404("No chapter of this book has a page.")
+
+        # Every citation overlapping the book: verse ids are book * 1,000,000 +
+        # chapter * 1,000 + verse. A span is clamped the way `bucket` clamps it
+        # (to _SPAN_GUARD ids past its start), so a mis-parsed citation running
+        # from Acts to Revelation can't vote for every book in between here when
+        # it votes for none of their chapter pages.
+        lo = target.value * 1_000_000
+        rows = (
+            ChapterCitation.objects.filter(
+                start_verse_id__lte=lo + 999_999,
+                start_verse_id__gte=lo - _SPAN_GUARD,
+                end_verse_id__gte=lo,
+                chapter__in=english_chapters().values("pk"),
+            )
+            .values(
+                "chapter_id",
+                "chapter__book__slug",
+                "chapter__book__title",
+                "chapter__book__author__name",
+                "chapter__book__author__slug",
+            )
+            .distinct()
+        )
+        # One query, folded here. A work's "(For Teens)" / "(For Children)"
+        # editions are separate Book rows quoting the same verses, so they are
+        # one work for this ranking (the slug convention, `_edition_base_slug`),
+        # named by the full edition when it is among them.
+        citing: set[int] = set()
+        works: dict[str, dict] = {}
+        for r in rows:
+            citing.add(r["chapter_id"])
+            slug = r["chapter__book__slug"]
+            base = _edition_base_slug(slug)
+            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w["chapters"].add(r["chapter_id"])
+            if slug == base:
+                w["row"] = r
+        top_books = sorted(
+            works.values(),
+            key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
+        )[: self.TOP_BOOKS]
+
+        verses = sorted(
+            (p for p in mine if p["verse"] is not None),
+            key=lambda p: (-p["citing_count"], p["chapter"], p["verse"]),
+        )[: self.TOP_VERSES]
+
+        # Adjacent books that have a page, in canonical order: walk the Bible
+        # book by book, as the chapter pages walk it chapter by chapter.
+        books = []
+        for p in pages:
+            if p["verse"] is None and (not books or books[-1]["book"] != p["book"]):
+                books.append({"book": p["book"], "book_title": p["book_title"]})
+        i = next(n for n, b in enumerate(books) if b["book"] == book)
+
+        return Response(
+            {
+                "book": {"slug": book, "title": target.title, "order": target.value},
+                "version": VERSION_LABEL,
+                "citing_count": len(citing),
+                "books_count": len(works),
+                "chapters": chapters,
+                "verses": [
+                    {
+                        "chapter": p["chapter"],
+                        "verse": p["verse"],
+                        "citing_count": p["citing_count"],
+                        "text": verse_text(lo + p["chapter"] * 1000 + p["verse"]),
+                    }
+                    for p in verses
+                ],
+                "top_books": [
+                    {
+                        "slug": w["row"]["chapter__book__slug"],
+                        "title": w["row"]["chapter__book__title"],
+                        "author_name": w["row"]["chapter__book__author__name"],
+                        "author_slug": w["row"]["chapter__book__author__slug"],
+                        "citing_count": len(w["chapters"]),
+                    }
+                    for w in top_books
+                ],
+                "prev": books[i - 1] if i > 0 else None,
+                "next": books[i + 1] if i + 1 < len(books) else None,
+            }
+        )
 
 
 def _scripture_floor(verse):

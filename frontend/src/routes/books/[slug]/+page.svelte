@@ -36,7 +36,7 @@
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { seriesLabel } from '$lib/series';
-	import { scrollSpy, jumpToSection, elementVisible } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
 	import BookCard from '$lib/components/BookCard.svelte';
@@ -50,7 +50,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
-	import { downloadFormats, titleWithFormats } from '$lib/bookSeo';
+	import { distinctTitle, downloadFormats, titleWithFormats } from '$lib/bookSeo';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
@@ -240,7 +240,7 @@
 	// A downloadable edition names its formats too — see titleWithFormats.
 	const titleTag = $derived(
 		titleWithFormats(
-			t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name),
+			t('book.titleTag').replace('%title%', distinctTitle(book)).replace('%name%', book.author.name),
 			formats
 		)
 	);
@@ -421,7 +421,7 @@
 	const qa = $derived(pickQa(editorialQa, []));
 
 	// On-page jump navigation (A3) — the author page's pattern: scrollSpy for the
-	// active section, jumpToSection for a smooth scroll that lands below the pinned
+	// active section, spy.jump for a smooth scroll that lands below the pinned
 	// bars via the `--pinned-offset` scroll-margin contract. Entries are only the
 	// sections that actually render, each labelled by its own existing localized
 	// heading (the English-only FAQ aside). The bar also keeps the read CTA within
@@ -440,15 +440,9 @@
 	);
 	const showSubnav = $derived(navItems.length >= 2);
 	let subnavH = $state(0);
+	// A cold #section load jumps against the bar's estimate; re-land it once measured.
+	realignHashOnMeasure(() => subnavH);
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-	/** `track: false` for a target that isn't a tab (the hero's language chip),
-	 *  so the bar isn't left with no tab highlighted. */
-	function jumpTo(e: MouseEvent, id: string, track = true) {
-		e.preventDefault();
-		history.replaceState(history.state, '', `#${id}`);
-		if (track) spy.set(id);
-		jumpToSection(id);
-	}
 </script>
 
 <Seo
@@ -465,7 +459,7 @@
 	structuredData={[bookLd, crumbsLd, qa.ld].filter(Boolean)}
 />
 
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<Breadcrumb items={crumbs} />
 
 	<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" />
@@ -566,7 +560,7 @@
 						<a
 							href="#languages"
 							class="hero-chip hero-chip-link"
-							onclick={(e) => jumpTo(e, 'languages', false)}
+							onclick={(e) => spy.jump(e, 'languages', { track: false })}
 							><Icon name="globe" size={15} class="shrink-0" /><span class="min-w-0"
 								><!-- A hidden prefix, not aria-label: the accessible name must keep
 								     the visible language names (label-in-name). --><span
@@ -698,10 +692,10 @@
 					<li>
 						<a
 							href="#{item.id}"
-							class="subnav-link"
+							class="subnav-link subnav-link-tight"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
 						>
 					</li>
 				{/each}
@@ -1100,24 +1094,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.6rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px;
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--text);
-	}
-	.subnav-link.is-active {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
 	}
 	/* Smaller than a body button, to sit in the bar without setting its height. */
 	.subnav-cta {

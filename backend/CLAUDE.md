@@ -7,8 +7,12 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 ## Security / auth
 
 - DRF defaults are `SupabaseJWTAuthentication` + **`AllowAny`**. So every
-  private/admin endpoint MUST set `permission_classes = [IsAdminEmail]` (or
-  stricter) explicitly — forgetting it ships an open, DB-mutating endpoint.
+  private/admin endpoint MUST set its gate explicitly — forgetting it ships an
+  open, DB-mutating endpoint. The gates: `IsAdminEmail` (super admins only),
+  `@requires(capability, verb=…)` (a scoped grant), and `HasAnyAdminAccess`
+  (anyone with any grant — read-only views only, e.g. the Help page's access
+  model). `library.tests_admin_access` fails the build on an ungated or
+  mis-gated `/api/admin/*` route.
 - Supabase exposes the `public` schema over its anon API; RLS is what gates it —
   one table reachable by the anon key without RLS is a data leak. Every public
   table has RLS enabled (no policies = deny-all for non-owners; Django connects
@@ -85,8 +89,9 @@ Bounded-context apps: `library` (content), `accounts` (auth), `reading`
 - `manage.py release` runs the deploy chain: migrate → seed_if_empty →
   backfill_body_text → apply_body_corrections → seed_books → seed_plans →
   seed_sermons → seed_author_translations → seed_topics →
-  backfill_search_vectors → trim_search_log. Seeds are idempotent and
-  **re-run every deploy**.
+  backfill_search_vectors → trim_search_log → snapshot_language_health.
+  Seeds are idempotent and **re-run every deploy**. The last step records the
+  day's language-health score for the admin trend and is never fatal.
   backfill_search_vectors is last on purpose: vectors derive from body_text
   and bake in seed-created rows (library/fts.py).
 - Therefore any field a workflow owns after creation — review state
