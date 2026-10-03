@@ -134,7 +134,7 @@
 	.drawer-scrim {
 		position: fixed;
 		inset: 0;
-		z-index: 48;
+		z-index: var(--z-backdrop);
 		background: rgb(0 0 0 / 0.35);
 	}
 	.drawer-panel {
@@ -142,7 +142,7 @@
 		top: 0;
 		bottom: 0;
 		inset-inline-end: 0;
-		z-index: 49;
+		z-index: var(--z-sheet);
 		width: var(--drawer-width, min(24rem, 92vw));
 		display: flex;
 		flex-direction: column;

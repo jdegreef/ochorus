@@ -225,6 +225,31 @@
 	--text-h1--line-height: 1.15;
 }
 
+/* Stacking order — one scale for everything that floats over the page. Use
+   these, never a bare number (zIndexScale.test.ts enforces it outside admin).
+   Before this, the sermon/chapter reader bars sat at 10 while every other
+   pinned bar sat at 20, so a popover inside one lost to the other.
+     pinned   page bars that stick under the nav: filters, section tabs, reader bars
+     popover  a menu or popover inside page content
+     chrome   site nav, tab bar, reading dock, progress line, feedback button
+     floating reader overlays above chrome (scripture/define popovers)
+     backdrop / sheet   a drawer's dim layer and the drawer itself
+     menu / modal       header menus and dialogs (never shown together)
+     toast, skip        PWA toasts; the skip link above everything
+   Local stacking inside one component (1–10) can stay numeric. */
+:root {
+	--z-pinned: 20;
+	--z-popover: 30;
+	--z-chrome: 40;
+	--z-floating: 45;
+	--z-backdrop: 48;
+	--z-sheet: 49;
+	--z-menu: 50;
+	--z-modal: 50;
+	--z-toast: 60;
+	--z-skip: 100;
+}
+
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root;
    the phone override of the two smallest steps just below is Ochorus's own.) */
 :root {
@@ -639,7 +664,7 @@
 	position: fixed;
 	top: 0.5rem;
 	inset-inline-start: 0.5rem;
-	z-index: 100;
+	z-index: var(--z-skip);
 	transform: translateY(-150%);
 	padding: 0.5rem 0.9rem;
 	border-radius: var(--radius-sm);
@@ -800,7 +825,7 @@
 		position: fixed;
 		inset-inline: 0;
 		bottom: 0;
-		z-index: 40;
+		z-index: var(--z-chrome);
 		border-top: 1px solid var(--border);
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		backdrop-filter: blur(8px);
@@ -1241,9 +1266,9 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 nav.appnav {
 	position: sticky;
 	top: 0;
-	/* Above page content and any page's own sticky sub-bar (those sit at z-20),
-	   below the overlays (drawers 45+, note dialog 50). */
-	z-index: 40;
+	/* Above page content and any page's own sticky sub-bar (--z-pinned),
+	   below the overlays (drawers, note dialog). */
+	z-index: var(--z-chrome);
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
 }
@@ -1412,9 +1437,43 @@ nav.appnav .navtoggle:hover {
 	nav.appnav .navlinks a > svg {
 		display: none;
 	}
-	nav.appnav .navlinks a[data-home] {
+	nav.appnav .navlinks a[data-home],
+	nav.appnav .navlinks a[data-section='biographies'] {
 		display: none;
 	}
+	/* .navmenu in the selector: outranks the base `display: none` below. */
+	nav.appnav .navmenu .navmore {
+		display: block;
+	}
+}
+/* The tablet "More ▾" — hidden except in the band above. Outside .navlinks
+   on purpose: that track scrolls, and would clip the dropdown. */
+nav.appnav .navmore {
+	display: none;
+	position: relative;
+	flex: none;
+}
+nav.appnav .navmore-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 0.35rem 0.65rem;
+	border: 0;
+	border-radius: 999px;
+	background: none;
+	color: var(--muted);
+	font: inherit;
+	font-size: var(--fs-body);
+	white-space: nowrap;
+	cursor: pointer;
+}
+nav.appnav .navmore-btn:hover,
+nav.appnav .navmore-btn[aria-expanded='true'] {
+	color: var(--text);
+	background: var(--surface);
+}
+nav.appnav .navmore-menu {
+	inset-inline: 0 auto;
 }
 /* Phones and small tablets: collapse the links behind a hamburger drawer —
    below 640px only where the phone tab bar is absent (reading surfaces, focus,
@@ -1489,6 +1548,17 @@ nav.appnav .navtoggle:hover {
 		display: none;
 	}
 }
+/* A phone held sideways (short + touch — no tablet is under 500px tall) gets
+   the tab bar too, in a compact 48px form (TabBar.svelte), so the same
+   controls are in the same places whichever way the phone is turned. */
+@media (max-height: 499.98px) and (pointer: coarse) {
+	:root:has(.tabbar) nav.appnav .prefs,
+	:root:has(.tabbar) nav.appnav .navtoggle,
+	:root:has(.tabbar) nav.appnav .navmenu,
+	:root:has(.tabbar) nav.appnav .account-signin {
+		display: none;
+	}
+}
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
    the shortcut is advertised, and it is meaningless without a keyboard: so it
@@ -1544,7 +1614,7 @@ nav.appnav .navsearch:hover {
 	position: absolute;
 	inset-inline-end: 0;
 	top: calc(100% + 0.5rem);
-	z-index: 50;
+	z-index: var(--z-menu);
 	min-width: 13rem;
 	background: var(--surface);
 	border: 1px solid var(--border);
@@ -2864,6 +2934,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	   were 44px tall but 33px wide. Unlayered, beside the base rules they
 	   extend. Not gated on width: a tablet's finger is the same size. */
 	nav.appnav .navlinks a,
+	nav.appnav .navmore-btn,
 	.subnav-link {
 		min-height: 2.75rem;
 	}
@@ -2983,7 +3054,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	top: 0;
 	inset-inline: 0;
 	height: 2px;
-	z-index: 40;
+	z-index: var(--z-chrome);
 	background: var(--accent);
 	/* transform-origin takes no logical keyword, so RTL is flipped explicitly
 	   below — otherwise the bar fills from the left while the text runs
@@ -3007,7 +3078,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	);
 	left: 50%;
 	transform: translateX(-50%);
-	z-index: 30;
+	z-index: var(--z-popover);
 	border-radius: 9999px;
 	border: 1px solid var(--border);
 	background: color-mix(in srgb, var(--bg) 85%, transparent);

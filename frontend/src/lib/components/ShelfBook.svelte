@@ -107,7 +107,7 @@
 				{/if}
 			</a>
 			<div
-				class="absolute end-2.5 top-3.5 {open ? 'z-30' : 'z-10'}"
+				class="absolute end-2.5 top-3.5 {open ? 'z-(--z-popover)' : 'z-10'}"
 				use:dismissable={{ open, onDismiss: () => (open = false) }}
 			>
 				<button

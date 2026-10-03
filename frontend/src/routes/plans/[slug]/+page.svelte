@@ -924,7 +924,7 @@
 		inset-inline: 0;
 		/* The shared clearance every fixed bottom chrome uses (.min-left). */
 		bottom: max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px));
-		z-index: 30;
+		z-index: var(--z-popover);
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;

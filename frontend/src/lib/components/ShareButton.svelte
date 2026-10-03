@@ -150,7 +150,7 @@
 		top: calc(100% + 0.4rem);
 		/* Physical `left`/`width` from the script (see `toggle`). */
 		left: 0; /* rtl-ok: physical offset set from script, already direction-aware (menuShift) */
-		z-index: 30;
+		z-index: var(--z-popover);
 		padding: 0.35rem;
 		background: var(--surface);
 		border: 1px solid var(--border);

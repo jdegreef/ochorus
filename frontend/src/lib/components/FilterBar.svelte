@@ -59,7 +59,7 @@
 <div
 	bind:this={el}
 	bind:clientHeight={height}
-	class="filter-bar z-20 -mx-5 border-b border-border bg-bg px-5 pb-2.5 pt-3 {cls}"
+	class="filter-bar z-(--z-pinned) -mx-5 border-b border-border bg-bg px-5 pb-2.5 pt-3 {cls}"
 	class:filter-bar--compact={pin === 'compact'}
 >
 	{@render children()}

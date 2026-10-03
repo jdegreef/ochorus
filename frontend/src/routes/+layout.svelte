@@ -119,6 +119,16 @@
 		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
 	};
 
+	// Tablet "More ▾" (768–1023px only, by app.css): the destinations the
+	// one-row bar has no room for — Biographies, whose link is hidden there,
+	// then Originals and (in English) the hubs the footer carries.
+	let navMoreOpen = $state(false);
+	const NAV_MORE = $derived([
+		...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({ href: d.href, label: t(d.labelKey) })),
+		{ href: ORIGINALS_DEST.href, label: t(ORIGINALS_DEST.labelKey) },
+		...(lang.current === 'en' ? ENGLISH_HUBS.map((d) => ({ href: `${d.href}/`, label: t(d.labelKey), raw: true })) : [])
+	]);
+
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
 	let navEl = $state<HTMLElement>();
@@ -297,6 +307,28 @@
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}
+				</div>
+				<div class="navmore" use:dismissable={{ open: navMoreOpen, onDismiss: () => (navMoreOpen = false) }}>
+					<button
+						class="navmore-btn"
+						aria-expanded={navMoreOpen}
+						aria-controls={navMoreOpen ? 'nav-more' : undefined}
+						onclick={() => (navMoreOpen = !navMoreOpen)}
+						>{t('nav.more')}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button
+					>
+					{#if navMoreOpen}
+						<div id="nav-more" class="account-menu navmore-menu" role="group" aria-label={t('nav.more')}>
+							{#each NAV_MORE as d (d.href)}
+								<!-- English-only hubs stay unlocalized — the footer's rule. -->
+								<a
+									href={'raw' in d ? d.href : localizeHref(d.href)}
+									class="account-item"
+									aria-current={isActive(d.href.replace(/\/$/, '')) ? 'page' : undefined}
+									onclick={() => (navMoreOpen = false)}>{d.label}</a
+								>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</div>
 			<div class="navctl">
