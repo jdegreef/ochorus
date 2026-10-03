@@ -40,8 +40,6 @@
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
-	import ShareButton from '$lib/components/ShareButton.svelte';
 	import SermonPlate from '$lib/components/SermonPlate.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 
@@ -117,8 +115,8 @@
 		outlineOpen = true;
 	}
 
-	// The phone bar's "⋯" group (bookmark, save, share, focus) — the chapter
-	// reader's pattern, so the two phone bars read the same.
+	// The top bar's "⋯" group (save, share, focus — plus bookmark on phones) —
+	// the chapter reader's pattern, so the two bars read the same.
 	let moreOpen = $state(false);
 	/** Close the "⋯" group, then run the chosen action. */
 	const fromMore = (action: () => void) => () => {
@@ -287,6 +285,19 @@
 	const seo = $derived(editionSeo(path, sermon.available_languages, fallback));
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
+
+	// Where there's no OS share sheet (most desktops), the row copies the link
+	// and the menu also offers what ShareButton's fallback menu does —
+	// WhatsApp first, because that is how this content travels.
+	let canNativeShare = $state(false);
+	onMount(() => (canNativeShare = typeof navigator.share === 'function'));
+	const enc = encodeURIComponent;
+	const shareTargets = $derived([
+		{ name: 'WhatsApp', href: `https://wa.me/?text=${enc(`${shareLabel} ${canonical}`)}` },
+		{ name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(canonical)}` },
+		{ name: t('login.email'), href: `mailto:?subject=${enc(shareLabel)}&body=${enc(`${shareLabel}\n\n${canonical}`)}` }
+	]);
+
 	const year = $derived(preachedYear(sermon.preached_on));
 
 	// --- SEO -------------------------------------------------------------------
@@ -430,19 +441,19 @@
 
 <!-- Reader top bar -->
 {#if !readerUi.focus}
-	<div class="reader-chrome sticky top-0 z-10 border-b border-border bg-bg/90 backdrop-blur">
+	<div class="reader-chrome sticky top-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur">
 		<!-- Tracks the article below it (same `--reading-measure`, same `px-5`)
 		     rather than sitting at a flat 48rem, which was wider than the text at
 		     small settings and far narrower at large ones. The floor keeps the
 		     controls from crushing at narrow/0.8x; the min() keeps that floor
 		     inside a phone. -->
 		<div
-			class="mx-auto flex items-center justify-between gap-3 px-5 py-1.5 sm:py-2.5"
+			class="mx-auto flex items-center justify-between gap-0.5 px-5 py-1.5 sm:gap-3 sm:py-2.5"
 			style="max-width: min(max(var(--reading-measure), 32rem), 100%)"
 		>
-			<!-- Phone bar: Back · which sermon · Outline · "⋯" — the chapter
-			     reader's phone bar. Listen and Aa live in the footer row; Bookmark,
-			     Save, Share and Focus fold into "⋯". -->
+			<!-- Phone bar: Back · which sermon · Outline · "⋯" (the shared one at
+			     the end of the row) — the chapter reader's phone bar. Listen and Aa
+			     live in the footer row; Bookmark, Save, Share and Focus fold into "⋯". -->
 			<div class="flex min-w-0 flex-1 items-center gap-0.5 sm:hidden">
 				<a
 					href={localizeHref('/sermons')}
@@ -470,31 +481,86 @@
 						aria-expanded={outlineOpen}><Icon name="list" size={20} /></button
 					>
 				{/if}
+			</div>
+			<a
+				href={localizeHref('/sermons')}
+				class="hidden min-w-0 truncate text-small text-muted hover:text-text sm:block"
+				><Arrow back /> {t('nav.sermons')}</a
+			>
+			<!-- From `sm`, the chapter bar's shape: Outline (where Contents stands) ·
+			     Bookmark · Listen · Aa · "⋯", labelled from `md`; Save, Share and
+			     Focus fold into "⋯". -->
+			<div class="flex shrink-0 items-center gap-0.5">
+				<div class="hidden sm:contents">
+					{#if outline.length >= 2}
+						<button
+							class="outline-toggle-btn btn btn-icon btn-ghost"
+							class:text-accent={outlineOpen}
+							onclick={toggleOutline}
+							aria-label={t('sermon.outline')}
+							title={t('sermon.outline')}
+							aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
+						>
+					{/if}
+					<!-- Labelled from `md`; the aria-label matches the visible word. -->
+					<button
+						class="btn btn-icon btn-ghost md:px-2.5"
+						class:text-accent={bookmark.current}
+						onclick={bookmark.toggle}
+						aria-label={t('reader.bookmark')}
+						title={t('reader.bookmark')}
+						aria-pressed={bookmark.current}
+						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
+							>{t('reader.bookmark')}</span
+						></button
+					>
+					{#if listen.supported && !isPhone}
+						<button
+							class="btn btn-icon btn-ghost md:px-2.5"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title={t('reader.listen')}
+							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
+								>{t('reader.listen')}</span
+							></button
+						>
+					{/if}
+					{#if !isPhone}
+						<ReaderControls />
+					{/if}
+				</div>
+				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
+				     sits in the row from `sm`, so only the phone folds it in here. -->
 				<div
 					class="relative shrink-0"
 					use:dismissable={{ open: moreOpen, onDismiss: () => (moreOpen = false) }}
 				>
 					<button
-						class="btn btn-icon btn-ghost min-w-11"
+						class="btn btn-icon btn-ghost min-w-11 sm:min-w-0"
 						onclick={() => (moreOpen = !moreOpen)}
 						aria-expanded={moreOpen}
 						aria-controls={moreOpen ? 'sermon-more' : undefined}
 						aria-label={t('reader.moreTools')}
-						title={t('reader.moreTools')}><Icon name="more" size={20} /></button
+						title={t('reader.moreTools')}
+						><Icon name="more" size={20} class="sm:size-[18px]" /></button
 					>
 					{#if moreOpen}
 						<!-- A labelled group, not role="menu" (no arrow-key roving) — the
 						     same treatment as AccountMenu. -->
 						<div id="sermon-more" class="account-menu more-group" role="group" aria-label={t('reader.moreTools')}>
-							<button
-								class="account-item more-item"
-								class:text-accent={bookmark.current}
-								onclick={fromMore(bookmark.toggle)}
-								aria-pressed={bookmark.current}
-								><Icon name="bookmark" size={20} />{bookmark.current
-									? t('reader.removeBookmark')
-									: t('reader.bookmark')}</button
-							>
+							{#if isPhone}
+								<button
+									class="account-item more-item"
+									class:text-accent={bookmark.current}
+									onclick={fromMore(bookmark.toggle)}
+									aria-pressed={bookmark.current}
+									><Icon name="bookmark" size={20} />{bookmark.current
+										? t('reader.removeBookmark')
+										: t('reader.bookmark')}</button
+								>
+							{/if}
 							<!-- Save to "My Library": the store FavoriteButton toggles. -->
 							<button
 								class="account-item more-item"
@@ -519,70 +585,31 @@
 									<circle cx="17" cy="6" r="2.6" />
 									<circle cx="17" cy="18" r="2.6" />
 									<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
-								</svg><span aria-live="polite">{copied ? t('share.linkCopied') : t('reader.share')}</span></button
+								</svg><span aria-live="polite"
+									>{copied
+										? t('share.linkCopied')
+										: canNativeShare
+											? t('reader.share')
+											: t('share.copyLink')}</span
+								></button
 							>
+							{#if !canNativeShare}
+								{#each shareTargets as st (st.name)}
+									<a
+										class="account-item more-item share-target"
+										href={st.href}
+										target="_blank"
+										rel="noopener noreferrer"
+										onclick={() => (moreOpen = false)}>{st.name}</a
+									>
+								{/each}
+							{/if}
 							<button class="account-item more-item" onclick={fromMore(() => readerUi.toggleFocus())}
 								><Icon name="maximize" size={20} />{t('reader.focus')}</button
 							>
 						</div>
 					{/if}
 				</div>
-			</div>
-			<a
-				href={localizeHref('/sermons')}
-				class="hidden min-w-0 truncate text-small text-muted hover:text-text sm:block"
-				><Arrow back /> {t('nav.sermons')}</a
-			>
-			<!-- Ordered as the chapter bar (Bookmark · Contents · Search · Notes ·
-			     Listen · Aa · Focus): Outline stands where Contents would, and the
-			     sermon's own Save/Share take the Search/Notes slot. -->
-			<div class="hidden shrink-0 items-center gap-0.5 sm:flex">
-				{#if outline.length >= 2}
-					<button
-						class="outline-toggle-btn btn btn-icon btn-ghost"
-						class:text-accent={outlineOpen}
-						onclick={toggleOutline}
-						aria-label={t('sermon.outline')}
-						title={t('sermon.outline')}
-						aria-expanded={outlineOpen}><Icon name="list" size={18} /></button
-					>
-					<span class="outline-toggle-sep mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
-				{/if}
-				<button
-					class="btn btn-icon btn-ghost"
-					class:text-accent={bookmark.current}
-					onclick={bookmark.toggle}
-					aria-label={t('reader.bookmark')}
-					title={t('reader.bookmark')}
-					aria-pressed={bookmark.current}><Icon name="bookmark" size={18} /></button
-				>
-				<!-- Save this sermon to "My Library" — the shared FavoriteButton in its
-				     icon-only shape, so it matches the sibling toggles here and the
-				     labelled save control on book/author/plan pages. Without it the
-				     reader's saved-sermons shelf could never fill. -->
-				<FavoriteButton kind="sermon" slug={sermon.slug} />
-				<!-- Share this sermon — icon-only to match the sibling toggles; the
-				     shared control forwards the per-locale share card the build makes. -->
-				<ShareButton url={canonical} title={shareLabel} />
-				{#if listen.supported && !isPhone}
-					<button
-						class="btn btn-icon btn-ghost"
-						class:text-accent={listen.status !== 'idle'}
-						onclick={() => (listen.status === 'idle' ? reader?.startListening() : listen.stop())}
-						aria-label={t('reader.listen')}
-						aria-pressed={listen.status !== 'idle'}
-						title={t('reader.listen')}><Icon name="headphones" size={18} /></button
-					>
-				{/if}
-				{#if !isPhone}
-					<ReaderControls />
-				{/if}
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => readerUi.toggleFocus()}
-					aria-label={t('reader.focus')}
-					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-				>
 			</div>
 		</div>
 	</div>
@@ -971,7 +998,7 @@
 			position: fixed;
 			inset-inline: 0;
 			bottom: 0;
-			z-index: 30;
+			z-index: var(--z-popover);
 			padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
 			text-align: center;
 			font-size: var(--fs-micro);
@@ -1087,10 +1114,14 @@
 		color: var(--muted);
 	}
 
-	/* --- Phone bar's "⋯" group — the chapter reader's, copied ------------- */
+	/* --- Top bar's "⋯" group — the chapter reader's, copied ---------------- */
 	/* `.account-menu` chrome, with icon rows at thumb size. */
 	.more-group {
 		top: calc(100% + 0.25rem);
+	}
+	/* The share targets carry no icon; indent them past the icon column. */
+	.more-item.share-target {
+		padding-inline-start: calc(0.75rem + 20px + 0.75rem);
 	}
 	.more-item {
 		display: flex;
@@ -1108,11 +1139,11 @@
 	.outline-backdrop {
 		position: fixed;
 		inset: 0;
-		z-index: 20;
+		z-index: var(--z-popover);
 	}
 	.outline-panel {
 		position: fixed;
-		z-index: 21;
+		z-index: calc(var(--z-popover) + 1);
 		width: min(20rem, calc(100vw - 1.5rem));
 		max-height: 70vh;
 		overflow-y: auto;
@@ -1163,9 +1194,8 @@
 			overflow-y: auto;
 			z-index: 5;
 		}
-		/* The top-bar toggle (and its divider) is redundant once the rail is visible. */
-		.outline-toggle-btn,
-		.outline-toggle-sep {
+		/* The top-bar toggle is redundant once the rail is visible. */
+		.outline-toggle-btn {
 			display: none;
 		}
 	}
