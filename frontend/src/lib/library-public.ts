@@ -1133,6 +1133,9 @@ export interface PlanDay {
 	 *  honour "Prefer Modern English". Optional: a plan page prerendered before
 	 *  the API served it bakes it absent (and then links the original). */
 	has_modern_edition?: boolean;
+	/** The verse the day's chapter opens on ("Ruth 1:16"), or "" — the day row's
+	 *  chip. Optional: an API predating it serves none (rolling-deploy skew). */
+	key_verse?: string;
 }
 
 export interface PlanDetail extends PlanSummary {

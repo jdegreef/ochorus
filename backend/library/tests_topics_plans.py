@@ -91,6 +91,22 @@ class PlanTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertFalse(res.data["days"][0]["has_modern_edition"])
 
+    def test_detail_names_each_days_key_verse(self):
+        # A devotional opens on its verse, attributed with a dash: that verse is
+        # the day's chip. A chapter opening on plain prose gets none, and so does
+        # a dash before something that is not a verse.
+        Chapter.objects.filter(book__slug="humility-2", order=1).update(
+            body_text="“Do not fear, for I have redeemed you.” — Isaiah 43:1 (BSB)\n\nNames matter."
+        )
+        Chapter.objects.filter(book__slug="humility-2", order=2).update(
+            body_text="Humility is the root — Room 3:16 — of every grace. See John 3:16."
+        )
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertEqual([d["key_verse"] for d in res.data["days"]], ["Isaiah 43:1", ""])
+        # The shelf shows no chips, so it does not pay to fetch the openings.
+        lst = self.client.get("/api/library/plans/?language=en")
+        self.assertNotIn("days", lst.data[0])
+
     def test_detail_lists_the_plan_authors(self):
         # Both days read the one book by "am" → one distinct author, linked.
         res = self.client.get("/api/library/plans/humility-12-days/?language=en")

@@ -2,6 +2,7 @@ import re
 from collections import Counter
 
 from django.db.models import Count, QuerySet, Sum
+from django.db.models.functions import Substr
 from django.urls import reverse
 from django.utils.text import slugify
 from rest_framework import serializers
@@ -31,7 +32,7 @@ from .models import (
 )
 from .opening import opening_candidate_orders, opening_excerpt
 from .rights import is_public_domain
-from .scripture import book_of
+from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
 from .scripture_graph import treated_passages
 
 
@@ -2166,7 +2167,7 @@ class PlanListSerializer(serializers.ModelSerializer):
         return {"book_title": reading["book_title"], "chapter_title": reading["title"]}
 
 
-def plan_chapter_index(plans, language):
+def plan_chapter_index(plans, language, with_openings=False):
     """``{(book_slug, order): chapter values}`` for every day of every plan.
 
     ONE query for a whole page. The three plan card fields — total words, day
@@ -2176,6 +2177,10 @@ def plan_chapter_index(plans, language):
 
     Carries every column any of those four needs, so they read a dict instead of
     the database. Same shape ``get_days`` already built for itself.
+
+    ``with_openings`` adds each chapter's first ``EPIGRAPH_WINDOW`` characters
+    as ``opening`` — the detail page's key-verse chips read it. Off for the
+    shelf, which shows no chips and would only pay to ship the text.
     """
     pairs = {
         (d.book_slug, d.chapter_order)
@@ -2186,12 +2191,12 @@ def plan_chapter_index(plans, language):
     if not pairs:
         return {}
     slugs = {slug for slug, _ in pairs}
-    return {
-        (c["book__slug"], c["order"]): c
-        for c in Chapter.objects.filter(
-            book__slug__in=slugs, book__language=language
-        ).values("book__slug", "book__title", "order", "title", "word_count")
-    }
+    rows = Chapter.objects.filter(book__slug__in=slugs, book__language=language)
+    fields = ["book__slug", "book__title", "order", "title", "word_count"]
+    if with_openings:
+        rows = rows.annotate(opening=Substr("body_text", 1, EPIGRAPH_WINDOW))
+        fields.append("opening")
+    return {(c["book__slug"], c["order"]): c for c in rows.values(*fields)}
 
 
 def plan_book_index(plans, language):
@@ -2282,12 +2287,15 @@ class PlanDaySerializer(serializers.ModelSerializer):
     # A published Modern English edition of the day's book exists — so the
     # reader's "Prefer Modern English" can be honoured on the day's link.
     has_modern_edition = serializers.BooleanField(read_only=True, default=False)
+    # The verse the day's chapter opens on ("Ruth 1:16"), or "" — the day list
+    # wears it as a chip, so a reader sees what each day is about.
+    key_verse = serializers.CharField(read_only=True, default="")
 
     class Meta:
         model = PlanDay
         fields = [
             "day", "book_slug", "chapter_order", "article_slug", "book_title",
-            "chapter_title", "word_count", "has_modern_edition",
+            "chapter_title", "word_count", "has_modern_edition", "key_verse",
         ]
 
 
@@ -2344,6 +2352,10 @@ class PlanDetailSerializer(PlanListSerializer):
             d.chapter_title = r.get("title", "")
             d.word_count = r.get("word_count", 0)
             d.has_modern_edition = bool(d.book_slug) and d.book_slug in modern
+            # The detail view builds its index with openings; a caller that
+            # did not (the serializer used directly) just gets no chips.
+            c = self._chapters(obj).get((d.book_slug, d.chapter_order)) or {}
+            d.key_verse = epigraph_reference(c.get("opening", ""))
         return PlanDaySerializer(days, many=True).data
 
 
