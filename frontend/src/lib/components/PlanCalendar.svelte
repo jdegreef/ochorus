@@ -1,11 +1,9 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { absUrl } from '$lib/seo';
 	import { downloadFile } from '$lib/dataExport';
-	import { readJSON, writeJSON } from '$lib/persisted';
-	import { PLAN_SCHEDULE_KEY } from '$lib/reading-schema';
+	import { planSchedules } from '$lib/planSchedules.svelte';
 	import { buildScheduleICS, readReminderTime } from '$lib/reminder';
 	import { localToday } from '$lib/streak';
 	import { READING_DAYS, monthGrid, parseIsoDay, schedulePlan, weekStart, type ReadingDays } from '$lib/planSchedule';
@@ -19,9 +17,10 @@
 	 * whole schedule as a calendar file whose events carry a morning reminder.
 	 *
 	 * Client-only by nature (it is about the reader's today), so the page shows
-	 * it only after mount. The reader's choices are kept per device under
-	 * PLAN_SCHEDULE_KEY (wiped at sign-out with the rest of their data) — never
-	 * progress, which planProgress owns.
+	 * it only after mount. The reader's choices live in `planSchedules`, which
+	 * syncs them to their account — so they follow the reader across devices,
+	 * and a choice made elsewhere shows here after a sync. Never progress,
+	 * which planProgress owns.
 	 */
 	let {
 		plan,
@@ -43,22 +42,15 @@
 	} = $props();
 
 	const t = i18n.t;
-	type Prefs = { start?: string; rule?: ReadingDays; time?: string };
-	// Seeded once from what this device saved: the controls' own working values.
-	const saved = untrack(() => readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {})[plan.slug] ?? {});
-	let rule = $state<ReadingDays>(saved.rule && READING_DAYS.includes(saved.rule) ? saved.rule : 'daily');
-	// A saved start that has since passed gives way to today.
-	let startIso = $state(
-		untrack(() => (saved.start && parseIsoDay(saved.start) && saved.start >= localToday(today) ? saved.start : localToday(today)))
-	);
+	// The reader's choices, read live from the synced store (another device's
+	// choice lands here after a merge); the controls write straight back to it.
+	const prefs = $derived(planSchedules.get(plan.slug));
+	const rule = $derived<ReadingDays>(prefs.rule ?? 'daily');
 	// Alerts default to the daily reminder time the reader set in Settings.
-	let time = $state(saved.time ?? readReminderTime());
-	/** Kept only when the reader changes something — opening the view saves nothing. */
-	const save = () => {
-		const all = readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {});
-		all[plan.slug] = { start: startIso, rule, time };
-		writeJSON(PLAN_SCHEDULE_KEY, all);
-	};
+	const time = $derived(prefs.time ?? readReminderTime());
+	const todayIso = $derived(localToday(today));
+	// A chosen start that has since passed gives way to today.
+	const startIso = $derived(prefs.start && parseIsoDay(prefs.start) && prefs.start >= todayIso ? prefs.start : todayIso);
 
 	const RULE_LABEL: Record<ReadingDays, string> = {
 		daily: 'plans.everyDay',
@@ -67,10 +59,8 @@
 	};
 
 	/** A started plan runs from today; a new one from the chosen start. */
-	const start = $derived.by(() => {
-		const chosen = started ? null : parseIsoDay(startIso);
-		return chosen && chosen > today ? chosen : today;
-	});
+	// startIso is always a real date on or after today; a started plan runs from today.
+	const start = $derived(started ? today : parseIsoDay(startIso)!);
 	const schedule = $derived(
 		schedulePlan(
 			plan.days.filter((d) => !doneSet.has(d.day)),
@@ -80,8 +70,6 @@
 	);
 	const byDate = $derived(new Map(schedule.map((s) => [localToday(s.date), s.item])));
 	const dateOf = $derived(new Map(schedule.map((s) => [s.item.day, s.date])));
-	const todayIso = $derived(localToday(today));
-
 	const fmt = $derived({
 		long: new Intl.DateTimeFormat(getLang(), { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }),
 		short: new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }),
@@ -131,11 +119,11 @@
 				<input
 					class="field"
 					type="date"
-					bind:value={startIso}
+					value={startIso}
 					min={todayIso}
-					onchange={() => {
+					onchange={(e) => {
 						offset = 0;
-						save();
+						planSchedules.set(plan.slug, { start: e.currentTarget.value });
 					}}
 				/>
 			</label>
@@ -148,10 +136,7 @@
 						type="button"
 						class:active={rule === r}
 						aria-pressed={rule === r}
-						onclick={() => {
-							rule = r;
-							save();
-						}}>{t(RULE_LABEL[r])}</button
+						onclick={() => planSchedules.set(plan.slug, { rule: r })}>{t(RULE_LABEL[r])}</button
 					>
 				{/each}
 			</div>
@@ -221,7 +206,12 @@
 				     each with an alert that morning — no account, no server. -->
 				<label class="cal-field">
 					<span class="text-eyebrow text-muted">{t('plans.remindAt')}</span>
-					<input class="field" type="time" bind:value={time} onchange={save} />
+					<input
+						class="field"
+						type="time"
+						value={time}
+						onchange={(e) => planSchedules.set(plan.slug, { time: e.currentTarget.value })}
+					/>
 				</label>
 				<button type="button" class="btn mt-3 w-full" onclick={download}>
 					<Icon name="calendar" size={16} />{t('plans.addCalendar')}
