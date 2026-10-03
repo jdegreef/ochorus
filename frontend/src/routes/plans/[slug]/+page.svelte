@@ -3,7 +3,7 @@
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
+	import { planMinutesPerDay, planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
@@ -21,6 +21,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
+	import PlanStartBar from '$lib/components/PlanStartBar.svelte';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -134,13 +136,12 @@
 		end.setDate(end.getDate() + daysLeft - 1);
 		return new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }).format(end);
 	});
+	const perDay = $derived(planMinutesPerDay(plan));
 	/** The plan's shape beyond the eyebrow's length: how much a day, how many
 	 *  books, and when a reader going a day at a time from today would finish. */
 	const facts = $derived(
 		[
-			plan.total_words && plan.day_count
-				? { value: `~${readingMinutes(plan.total_words / plan.day_count)}`, label: t('plans.minPerDay') }
-				: null,
+			perDay ? { value: `~${perDay}`, label: t('plans.minPerDay') } : null,
 			planBooks.length
 				? {
 						value: String(planBooks.length),
@@ -151,10 +152,22 @@
 		].filter((f) => f !== null)
 	);
 
+	const dayPath = (d: PlanDay) => localizeHref(planDayPath(plan.slug, d));
 	const dayHref = (day: number) => {
 		const d = plan.days.find((x) => x.day === day);
-		return d ? localizeHref(planDayPath(plan.slug, d)) : '#';
+		return d ? dayPath(d) : '#';
 	};
+
+	// On a phone the start bar stands in for the read card whenever the card is
+	// off screen — under the hero fan on the first screen, or scrolled past on
+	// a long day list — so there is always exactly one read verb in view. (From
+	// sm up the bar is hidden; from lg the card's panel is sticky anyway.)
+	let readCard = $state<HTMLElement>();
+	const cardSeen = elementVisible(() => readCard, { initial: true });
+	/** The read card and the start bar say the same things: one source each. */
+	const nextHref = $derived(nextDay ? dayPath(nextDay) : '#');
+	const nextMinutes = $derived(nextDay?.word_count ? readingMinutes(nextDay.word_count) : 0);
+	const ctaLabel = $derived(started ? t('plans.continue') : t('plans.start'));
 </script>
 
 <!-- The plan's own card, in the language of the plan shown (a page that fell
@@ -222,7 +235,7 @@
 			     progress is client-only) gets Day 1 with the "Free to read · No account
 			     needed" reassurance. Save and Share sit quietly beneath. -->
 			{#if next !== null}
-				<div class="read-card">
+				<div class="read-card" bind:this={readCard}>
 					<div class="read-card-body">
 						{#if started}
 							<p class="text-small text-muted">{progressLine}</p>
@@ -240,8 +253,8 @@
 							<p class="text-small text-muted" dir="auto">
 								<!-- The separator as an expression: literal spaces at an {#if}
 								     boundary are compiler-trimmed ("Prayer·9 min"). -->
-								{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
-									>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+								{daySource(nextDay)}{#if nextMinutes}<span class="opacity-60">{' · '}</span
+									>{nextMinutes} {t('common.min')}{/if}
 							</p>
 						{/if}
 						{#if started}
@@ -254,8 +267,8 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
-							{started ? t('plans.continue') : t('plans.start')}
+						<a href={nextHref} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+							{ctaLabel}
 						</a>
 					</div>
 				</div>
@@ -303,7 +316,7 @@
 						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
 						<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
 							<summary class="plan-group-head">
-								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
+								{#if cover}<CoverStrip covers={[cover]} max={1} size="lg" />{/if}
 								<span class="min-w-0 flex-1">
 									<span class="eyebrow block text-muted">{dayRange(g)}</span>
 									<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
@@ -412,7 +425,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
+							<span class="tag verse-chip">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -422,6 +435,18 @@
 			{/each}
 		</ol>
 	{/snippet}
+
+	{#if nextDay && !cardSeen.visible}
+		<PlanStartBar
+			href={nextHref}
+			label={ctaLabel}
+			title={dayTitle(nextDay)}
+			meta="{t('plans.day')} {nextDay.day} {t('plans.of')} {plan.day_count}{nextMinutes
+				? ` · ${nextMinutes} ${t('common.min')}`
+				: ''}"
+			onstart={() => planProgress.start(plan.slug)}
+		/>
+	{/if}
 
 	<!-- More like this: where to go once this plan is done — the plans sharing
 	     its books or writers, drawn as they are on the /plans shelf. Computed in
@@ -525,6 +550,14 @@
 	}
 	.verse-chip:hover {
 		border-color: var(--border);
+	}
+	/* Phones get the verse in the meta line instead. Here, not a `hidden`
+	   utility: .tag is unlayered (app.css), so its display out-ranks one —
+	   the chip was showing beside the same verse under the title. */
+	@media (max-width: 639.98px) {
+		.verse-chip {
+			display: none;
+		}
 	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {

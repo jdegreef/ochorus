@@ -10,6 +10,7 @@ import FeedbackDialog from './FeedbackDialog.svelte';
 import ListenBar from './ListenBar.svelte';
 import ModalShell from './ModalShell.svelte';
 import NoteDialog from './NoteDialog.svelte';
+import PlanStartBar from './PlanStartBar.svelte';
 import ScripturePopover from './ScripturePopover.svelte';
 import UnsyncedSignOutDialog from './UnsyncedSignOutDialog.svelte';
 import JournalDialog from './notebook/JournalDialog.svelte';
@@ -82,6 +83,12 @@ const CASES: Case[] = [
 		root: '.modal-overlay'
 	},
 	{ name: 'UnsyncedSignOutDialog', overlay: UnsyncedSignOutDialog, root: '.modal-overlay' },
+	{
+		name: 'PlanStartBar',
+		overlay: PlanStartBar,
+		props: { href: '/plans/p/1', label: 'Start the plan', title: 'Day one', meta: 'Day 1 of 3' },
+		root: '.plan-startbar'
+	},
 	{
 		name: 'ScripturePopover',
 		overlay: ScripturePopover,

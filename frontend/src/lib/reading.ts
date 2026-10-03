@@ -14,6 +14,16 @@ export function readingMinutes(words: number): number {
 }
 
 /**
+ * A plan's average day in whole minutes — the "~N min/day" on its shelf card
+ * and its page — or 0 when there is no text to time yet.
+ */
+export function planMinutesPerDay(plan: { day_count: number; total_words: number }): number {
+	return plan.day_count && plan.total_words
+		? readingMinutes(Math.round(plan.total_words / plan.day_count))
+		: 0;
+}
+
+/**
  * Words a TTS voice speaks per minute at 1×. Natural speech is a good deal
  * slower than silent reading (~200 wpm), so a listen takes longer than a read.
  */

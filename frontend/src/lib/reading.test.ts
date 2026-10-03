@@ -12,7 +12,8 @@ import {
 	readingTime,
 	listenMinutes,
 	listenTime,
-	planTimeLeft
+	planTimeLeft,
+	planMinutesPerDay
 } from './reading';
 
 describe('readingMinutes', () => {
@@ -69,6 +70,19 @@ describe('planTimeLeft', () => {
 		expect(planTimeLeft(45)).toBe('45 min left');
 		expect(planTimeLeft(60)).toBe('1 hr left');
 		expect(planTimeLeft(251)).toBe('4 hr 11 min left');
+	});
+});
+
+describe('planMinutesPerDay', () => {
+	it("averages the plan's words over its days, at the reading pace", () => {
+		// 96 days, 44,214 words → ~460 words a day → 2 min at 200 wpm.
+		expect(planMinutesPerDay({ day_count: 96, total_words: 44214 })).toBe(2);
+		expect(planMinutesPerDay({ day_count: 12, total_words: 12 * 1600 })).toBe(8);
+	});
+
+	it('is 0 (nothing to show), not a floored 1, with no days or no text', () => {
+		expect(planMinutesPerDay({ day_count: 0, total_words: 5000 })).toBe(0);
+		expect(planMinutesPerDay({ day_count: 30, total_words: 0 })).toBe(0);
 	});
 });
 
