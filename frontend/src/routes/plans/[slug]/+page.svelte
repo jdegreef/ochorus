@@ -162,17 +162,23 @@
 		].filter((f) => f !== null)
 	);
 
-	/** The jump chips' targets and labels: one per book section. Volumes of a
-	 *  series are named by their number ("Book 1"), from the books' own
-	 *  series_position; anything else by its cover title or full title. */
+	/** The jump chips' targets and labels: one per book section. Volumes of ONE
+	 *  series (a shared cover title, distinct series_position) are named by
+	 *  their number ("Book 1"); anything else by its title. */
 	const groupId = (g: PlanGroup) => `plan-${g.key}`;
 	const groupLabels = $derived.by(() => {
-		const positions = groups.map((g) => coverBySlug.get(g.bookSlug)?.series_position);
-		const numbered = positions.every((n) => n) && new Set(positions).size === positions.length;
+		const tiles = groups.map((g) => coverBySlug.get(g.bookSlug));
+		const positions = tiles.map((c) => c?.series_position);
+		const series = new Set(tiles.map((c) => c?.cover_title));
+		const numbered =
+			positions.every((n) => n) &&
+			new Set(positions).size === positions.length &&
+			series.size === 1 &&
+			!series.has('');
 		return groups.map((g, i) =>
 			numbered
 				? t('originals.volume').replace('%n%', String(positions[i]))
-				: coverBySlug.get(g.bookSlug)?.cover_title || g.bookTitle || t('search.groupArticles')
+				: g.bookTitle || t('search.groupArticles')
 		);
 	});
 	/** A chip opens the section it jumps to — a closed <details> would land the
@@ -182,7 +188,6 @@
 		if (!(el instanceof HTMLDetailsElement)) return;
 		e.preventDefault();
 		el.open = true;
-		history.replaceState(history.state, '', `#${id}`);
 		jumpToSection(id);
 	};
 
@@ -238,7 +243,7 @@
 {/snippet}
 
 <!-- --pinned-offset: the app nav plus the book chips pinned over the list —
-     what the sticky panel and every section jump clear. -->
+     what every section jump clears. -->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {jumpH}px)">
 	<Breadcrumb items={crumbs} />
 
@@ -432,7 +437,7 @@
 				{#if grouped}
 					<nav
 						class="plan-jump chip-scroller"
-						aria-label={t('plans.inThisPlan')}
+						aria-label={t('nav.books')}
 						bind:clientHeight={jumpH}
 					>
 						{#each groups as g, gi (g.key)}
@@ -750,10 +755,11 @@
 			grid-column: 2;
 			grid-row: 1;
 			position: sticky;
-			top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
+			/* The app nav only: the pinned book chips live in the other column. */
+			top: calc(var(--appnav-h, 0px) + 1rem);
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
-			max-height: calc(100vh - var(--pinned-offset, var(--appnav-h, 0px)) - 2rem);
+			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
 			overflow-y: auto;
 		}
 	}
@@ -840,6 +846,13 @@
 		border-top: 1px solid var(--border);
 		background: var(--surface);
 		box-shadow: var(--shadow-card);
+	}
+	/* While the bar is up, the page's foot (the footer's last line) scrolls
+	   clear of it rather than sitting underneath. */
+	@media (max-width: 1023.98px) {
+		:global(body:has(.plan-bar)) {
+			padding-bottom: 4.5rem;
+		}
 	}
 	@media (min-width: 1024px) {
 		.plan-bar {
