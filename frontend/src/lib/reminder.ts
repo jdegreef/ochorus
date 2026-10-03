@@ -26,6 +26,19 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 /** The reminder time every picker starts from. */
 export const DEFAULT_REMINDER_TIME = '07:00';
+/** Where Settings keeps the reader's daily reminder time ("07:30"). */
+export const REMINDER_TIME_KEY = 'ochorus:reminder-time';
+
+/** The daily reminder time the reader set, or the default. */
+export function readReminderTime(): string {
+	try {
+		const v = localStorage.getItem(REMINDER_TIME_KEY);
+		if (v && /^\d{2}:\d{2}$/.test(v)) return v;
+	} catch {
+		// Storage blocked: the default stands.
+	}
+	return DEFAULT_REMINDER_TIME;
+}
 
 /** A local calendar date, `YYYYMMDD` — an all-day event's DTSTART. */
 function fmtDate(d: Date): string {
@@ -49,10 +62,35 @@ function alarm(trigger: string, summary: string): string[] {
 	return ['BEGIN:VALARM', `TRIGGER:${trigger}`, 'ACTION:DISPLAY', `DESCRIPTION:${esc(summary)}`, 'END:VALARM'];
 }
 
-/** A whole calendar file around `events`' lines, CRLF-joined as RFC 5545 requires. */
+/**
+ * A content line folded at 75 octets (RFC 5545 §3.1): each continuation starts
+ * with a space. Counts UTF-8 bytes and never splits a character, so a long
+ * title in any script survives strict importers.
+ */
+export function foldLine(line: string): string {
+	const enc = new TextEncoder();
+	const out: string[] = [];
+	let cur = '';
+	let bytes = 0;
+	for (const ch of line) {
+		const n = enc.encode(ch).length;
+		// Continuation lines spend one octet on their leading space.
+		if (bytes + n > (out.length ? 74 : 75)) {
+			out.push(cur);
+			cur = '';
+			bytes = 0;
+		}
+		cur += ch;
+		bytes += n;
+	}
+	out.push(cur);
+	return out.join('\r\n ');
+}
+
+/** A whole calendar file around `events`' lines, folded and CRLF-joined as RFC 5545 requires. */
 function calendar(product: string, events: string[]): string {
 	const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', `PRODID:-//Ochorus//${product}//EN`, 'CALSCALE:GREGORIAN'];
-	return [...lines, ...events, 'END:VCALENDAR'].join('\r\n') + '\r\n';
+	return [...lines, ...events, 'END:VCALENDAR'].map(foldLine).join('\r\n') + '\r\n';
 }
 
 /** UTC stamp for DTSTAMP. */

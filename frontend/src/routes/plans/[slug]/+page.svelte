@@ -463,7 +463,11 @@
 					</div>
 				{/if}
 				{#if view === 'calendar' && today}
-					<PlanCalendar {plan} {today} {started} {doneSet} {sections} {dayHref} {dayTitle} />
+					<!-- Keyed on the plan: its choices are seeded per plan, so moving to
+					     another plan re-seeds rather than carrying these over. -->
+					{#key plan.slug}
+						<PlanCalendar {plan} {today} {started} {doneSet} {sections} {dayHref} {dayTitle} />
+					{/key}
 				{:else}
 					<!-- One chip per book, pinned while the list scrolls: a jump to (and
 					     open of) that book's section. Anchors, so every day stays in the

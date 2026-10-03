@@ -90,3 +90,17 @@ describe('buildScheduleICS', () => {
 		expect(ics.endsWith('END:VCALENDAR\r\n')).toBe(true);
 	});
 });
+
+describe('foldLine', () => {
+	it('folds past 75 octets without splitting a character', async () => {
+		const { foldLine } = await import('./reminder');
+		const long = 'SUMMARY:' + 'Día 14 · Where You Go, I’ll Go — Daughters of the King: Three Months with God';
+		const folded = foldLine(long);
+		const parts = folded.split('\r\n');
+		expect(parts.length).toBeGreaterThan(1);
+		expect(parts.slice(1).every((p) => p.startsWith(' '))).toBe(true);
+		expect(parts.every((p) => new TextEncoder().encode(p).length <= 75)).toBe(true);
+		expect(parts.map((p, i) => (i ? p.slice(1) : p)).join('')).toBe(long);
+		expect(foldLine('BEGIN:VEVENT')).toBe('BEGIN:VEVENT');
+	});
+});

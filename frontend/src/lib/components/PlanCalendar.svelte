@@ -6,7 +6,7 @@
 	import { downloadFile } from '$lib/dataExport';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import { PLAN_SCHEDULE_KEY } from '$lib/reading-schema';
-	import { buildScheduleICS, DEFAULT_REMINDER_TIME } from '$lib/reminder';
+	import { buildScheduleICS, readReminderTime } from '$lib/reminder';
 	import { localToday } from '$lib/streak';
 	import { READING_DAYS, monthGrid, parseIsoDay, schedulePlan, weekStart, type ReadingDays } from '$lib/planSchedule';
 	import type { PlanDay, PlanDetail } from '$lib/library-public';
@@ -43,23 +43,16 @@
 	} = $props();
 
 	const t = i18n.t;
-	/** The daily reminder time the reader set in Settings, if any — the
-	 *  calendar's alerts start there rather than at a time they never chose. */
-	function settingsReminderTime(): string {
-		try {
-			const v = localStorage.getItem('ochorus:reminder-time');
-			if (v && /^\d{2}:\d{2}$/.test(v)) return v;
-		} catch {
-			// Storage blocked: the default stands.
-		}
-		return DEFAULT_REMINDER_TIME;
-	}
 	type Prefs = { start?: string; rule?: ReadingDays; time?: string };
 	// Seeded once from what this device saved: the controls' own working values.
 	const saved = untrack(() => readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {})[plan.slug] ?? {});
 	let rule = $state<ReadingDays>(saved.rule && READING_DAYS.includes(saved.rule) ? saved.rule : 'daily');
-	let startIso = $state(untrack(() => (saved.start && parseIsoDay(saved.start) ? saved.start : localToday(today))));
-	let time = $state(saved.time ?? settingsReminderTime());
+	// A saved start that has since passed gives way to today.
+	let startIso = $state(
+		untrack(() => (saved.start && parseIsoDay(saved.start) && saved.start >= localToday(today) ? saved.start : localToday(today)))
+	);
+	// Alerts default to the daily reminder time the reader set in Settings.
+	let time = $state(saved.time ?? readReminderTime());
 	/** Kept only when the reader changes something — opening the view saves nothing. */
 	const save = () => {
 		const all = readJSON<Record<string, Prefs>>(PLAN_SCHEDULE_KEY, {});
@@ -74,7 +67,10 @@
 	};
 
 	/** A started plan runs from today; a new one from the chosen start. */
-	const start = $derived(started ? today : (parseIsoDay(startIso) ?? today));
+	const start = $derived.by(() => {
+		const chosen = started ? null : parseIsoDay(startIso);
+		return chosen && chosen > today ? chosen : today;
+	});
 	const schedule = $derived(
 		schedulePlan(
 			plan.days.filter((d) => !doneSet.has(d.day)),
