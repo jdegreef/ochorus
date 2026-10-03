@@ -255,8 +255,12 @@
 		bioChips(filters.values, facets, { labels: facetLabel, showFullLife, t })
 	);
 
-	// Count summary + whether any narrowing is active (sort doesn't count).
-	const isFiltered = $derived(filters.active);
+	// Count summary + whether any narrowing is active. Sort doesn't count — and
+	// `filters.active` does count it (it compares every URL key to its default),
+	// so a non-default sort read as "Showing 99 of 99 · Clear filters" with a
+	// Clear that did nothing (clearFilters keeps the sort). sheetCount already
+	// counts every real filter; add the query.
+	const isFiltered = $derived(sheetCount > 0 || filters.values.q.trim() !== '');
 
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
