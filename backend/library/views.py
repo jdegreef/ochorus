@@ -153,6 +153,32 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         return ctx
 
 
+class AuthorEraPresenceView(PublicContentCacheMixin, APIView):
+    """``{language: [birth_year, ...]}`` for the writers on each live language's
+    Biographies shelf (``listed_in_biographies``, the author list's own rule) —
+    distinct years, ``null`` last for the undated.
+
+    For the era pages' hreflang: an era page has writers only where that
+    locale's shelf has someone born in the era. The eras are drawn in the
+    frontend (`$lib/eras`), so the API hands over the years and leaves the
+    bucketing to the one place that defines it. One query per live language."""
+
+    def get(self, request):
+        return Response(
+            {
+                lang: sorted(
+                    set(
+                        Author.objects.listed_in_biographies(lang).values_list(
+                            "birth_year", flat=True
+                        )
+                    ),
+                    key=lambda y: (y is None, y or 0),
+                )
+                for lang in languages_module.live_codes()
+            }
+        )
+
+
 class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
     """A single author with their published books (for the author page)."""
 

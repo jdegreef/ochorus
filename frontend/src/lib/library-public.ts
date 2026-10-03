@@ -812,6 +812,12 @@ export const listBooks = (language = 'en', f?: Fetch) =>
 export const listAuthors = (language = 'en', f?: Fetch) =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
 
+/** Birth years (null = undated) of the writers on each live language's
+ * Biographies shelf — what the era pages bucket (via `eraOf`) to know which
+ * locales have writers in their era, for hreflang. */
+export const listEraPresence = (f?: Fetch) =>
+	apiFetch<Record<string, (number | null)[]>>('/api/library/authors/eras/', {}, f);
+
 /** A series the house imprint's books run in, named in the requested language;
  * `books` holds their slugs in volume order. */
 export interface OriginalsSeries {

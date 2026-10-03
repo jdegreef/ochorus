@@ -2,7 +2,7 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangAll, truncateMeta } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll, hreflangExact, truncateMeta } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { eraOf, eraById } from '$lib/eras';
@@ -47,6 +47,11 @@
 	const path = $derived(`/biographies/era/${era.id}`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const eraName = $derived(t(era.k));
+	// Alternates only where the era has writers — the same locales the sitemap
+	// lists it in; every locale only when the API couldn't say.
+	const hreflang = $derived(
+		data.eraLocales ? hreflangExact(path, data.eraLocales) : hreflangAll(path)
+	);
 	const pageTitle = $derived(`${eraName} · ${t('bios.eyebrow')} — Ochorus`);
 	// Each era page names its own writers, so seven pages per locale no longer
 	// share one meta description (the generic Biographies line, kept as the tail).
@@ -98,7 +103,7 @@
 	title={pageTitle}
 	{description}
 	{canonical}
-	hreflang={hreflangAll(path)}
+	{hreflang}
 	ogImage="{SITE_URL}/og/biographies.png"
 	structuredData={[peopleLd, crumbsLd]}
 />
