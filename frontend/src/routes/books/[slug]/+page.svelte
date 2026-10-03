@@ -490,7 +490,7 @@
 				     shown at all): from sm it hangs under the cover it names; a
 				     phone's 7rem cover column is too narrow, so there it stays at
 				     the foot. -->
-				<p class="mt-3 hidden text-micro text-muted sm:block">{book.artwork_credit}</p>
+				<p class="mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
 			{/if}
 		</div>
 
@@ -993,7 +993,7 @@
 		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
 		     and it is the provenance a reader would otherwise have to take on
 		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-micro text-muted sm:hidden">{book.artwork_credit}</p>
+		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
 </div>
 

@@ -366,9 +366,10 @@
 	   --border-strong instead; dividers and card outlines keep --border. */
 	--border-strong: #7c7060;
 	/* "Selected" is never the soft fill alone: --accent-soft sits only
-	   1.05–1.16:1 on the page in every theme, so selected controls also carry
-	   an accent edge — border-color on bordered ones (.chip, .filter-field),
-	   an inset ring of this width on borderless ones (.seg, the nav pill). */
+	   1.05–1.16:1 on the page in the three themes, so selected controls also
+	   carry an accent edge — border-color on bordered ones (.chip,
+	   .filter-field), an inset ring of this width on borderless ones (.seg, the
+	   nav pill, the tab bar). Forced-colors fallback: see the end of this file. */
 	--selected-edge: 1.5px;
 	--danger: #e8857a;
 	/* Gold is the reading-mark/ornament colour and fails 4.5:1 as text in the
@@ -1347,7 +1348,6 @@ nav.appnav .appnav-inner {
 	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
 	gap: 0.45rem 0.9rem;
-	margin-inline: auto;
 	padding: 0.6rem 1.25rem;
 }
 /* On the smallest phones (≤360px) the brand + search/gear/Sign-in controls + the
@@ -3298,4 +3298,18 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .streak-flame[data-tier='crown'] {
 	box-shadow: 0 0 0 2px var(--hue-plum);
+}
+
+/* Forced colors (Windows High Contrast) drop box-shadows and repaint fills and
+   borders in system colours, which erases every selected edge above. Outline in
+   Highlight instead, so "selected" still reads. */
+@media (forced-colors: active) {
+	.seg button.active,
+	.chip.active,
+	.filter-field.is-active,
+	nav.appnav .navlinks a.active,
+	nav.appnav .navmore-btn.active {
+		outline: 2px solid Highlight;
+		outline-offset: -2px;
+	}
 }

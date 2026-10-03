@@ -134,7 +134,7 @@
 						aria-controls={briefId}
 						onclick={() => (open = !open)}
 					>
-						<Icon name="chevron-right" size={22} class="sermon-row-chevron" mirror={false} />
+						<Icon name="chevron-right" size={22} strokeWidth={2.25} class="sermon-row-chevron" mirror={false} />
 					</button>
 				{/if}
 			</div>

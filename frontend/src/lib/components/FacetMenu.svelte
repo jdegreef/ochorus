@@ -12,6 +12,7 @@
 
 <script lang="ts">
 	import { dismissable } from '$lib/actions/dismissable';
+	import Icon from '$lib/components/Icon.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	/**
@@ -64,7 +65,7 @@
 		onclick={() => (open = !open)}
 	>
 		{label}{#if selected.length}<span class="rounded-full bg-accent-soft px-1.5 text-eyebrow font-semibold text-accent">{selected.length}</span>{/if}
-		<svg class="facet-chev" class:open width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+		<Icon name="chevron-right" size={14} strokeWidth={2.2} class="facet-chev {open ? 'open' : ''}" mirror={false} />
 	</button>
 	{#if open}
 		<!-- A labelled group of checkboxes, not role=menu: that promises arrow-key
@@ -101,12 +102,14 @@
 		cursor: pointer;
 		white-space: nowrap;
 	}
-	.facet-chev {
+	/* The shared chevron-right turned down / up — a rotation, so no RTL flip. */
+	.facet-trigger :global(.facet-chev) {
 		color: var(--muted);
+		transform: rotate(90deg);
 		transition: transform var(--duration-base, 150ms);
 	}
-	.facet-chev.open {
-		transform: rotate(180deg);
+	.facet-trigger :global(.facet-chev.open) {
+		transform: rotate(-90deg);
 	}
 	/* .account-menu is the shared popover chrome; this opens it start-side and
 	   lets a long list scroll. */

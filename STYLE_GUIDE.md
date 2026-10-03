@@ -534,10 +534,12 @@ pills, active gets `.active`).
 
 Active states are **soft** (`--accent-soft` fill, `--accent` text) — never a
 solid `bg-accent` block — **and never the fill alone**: `--accent-soft` sits
-only 1.05–1.16:1 on the page in every theme, so a selected control also carries
-an accent edge (`border-color: var(--accent)` when it has a border — `.chip`,
-`.filter-field`; an inset ring `var(--selected-edge)` wide when it doesn't —
-`.seg`, the nav pill, in its section hue).
+only 1.05–1.16:1 on the page in the three themes, so a selected control also
+carries an accent edge (`border-color: var(--accent)` when it has a border —
+`.chip`, `.filter-field`; an inset ring `var(--selected-edge)` wide when it
+doesn't — `.seg`, the nav pill in its section hue, the tab bar). A list row
+whose own checkbox shows the state (the facet menu) may keep the fill alone.
+Under `forced-colors` the edge becomes a `Highlight` outline (end of app.css).
 
 ### Inputs
 Every text input, select and textarea uses **`.field`** (`.filter-field` is the

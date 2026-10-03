@@ -161,6 +161,8 @@
 	}
 	.tab.active .tab-icon {
 		background: var(--accent-soft);
+		/* Never the soft fill alone (STYLE_GUIDE §5): the accent ring. */
+		box-shadow: inset 0 0 0 var(--selected-edge) var(--accent);
 	}
 
 	/* The centre "+" — the same round accent button the floating FeedbackFab
