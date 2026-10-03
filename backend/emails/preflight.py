@@ -78,10 +78,14 @@ def _content_checks(broadcast) -> list[dict]:
                     f"at about {SUBJECT_SOFT_LIMIT}.",
                 )
             )
-        if not blocks_mod.has_body(blocks):
+        def reaches(block, code=code):
+            return code in library.get(block["type"], {}).get(block["slug"], set())
+
+        if not blocks_mod.has_body(blocks, reaches):
             out.append(_check(f"body:{code}", ERROR, f"{name}: the email has no content yet."))
         for i, block in enumerate(blocks):
             out.extend(_block_checks(block, f"{code}:{i}", name, code, library))
+    out.extend(_untranslated_checks(blocks_by_locale))
     half = (set(broadcast.subject) ^ set(broadcast.content)) - set(locales)
     for code in sorted(half):
         out.append(
@@ -100,6 +104,39 @@ def _content_checks(broadcast) -> list[dict]:
                 f"language{'s' if len(locales) != 1 else ''}.",
             )
         )
+    return out
+
+
+def _words(blocks: list[dict]) -> set[str]:
+    """The admin's own words in a block list, one entry per field — short ones
+    (a name, "Amen") left out, since those are often the same in any language."""
+    return {
+        b[f].strip()
+        for b in blocks
+        for f in blocks_mod.WORD_FIELDS
+        if len(b.get(f, "").strip()) >= 12
+    }
+
+
+def _untranslated_checks(blocks_by_locale: dict[str, list[dict]]) -> list[dict]:
+    """Warn where a language repeats another language's words verbatim — what a
+    layout copied with "add language" looks like until it is translated."""
+    out = []
+    words = {code: _words(blocks) for code, blocks in blocks_by_locale.items()}
+    for code, mine in words.items():
+        if code == "en" and len(words) > 1:
+            continue  # English is where a copied layout comes from; flag the copies
+        others = set().union(*(w for c, w in words.items() if c != code))
+        same = len(mine & others)
+        if same:
+            out.append(
+                _check(
+                    f"untranslated:{code}",
+                    WARNING,
+                    f"{_lang_name(code)}: {same} piece{'s' if same != 1 else ''} of text "
+                    "match another language word for word — not translated yet?",
+                )
+            )
     return out
 
 
@@ -258,8 +295,9 @@ def run(broadcast) -> list[dict]:
 
 
 def content_errors(broadcast) -> list[dict]:
-    """Only the checks that can block, which are all about the copy — no
-    database queries. What a due schedule re-checks before it starts."""
+    """Only the checks that can block, which are all about the copy (plus one
+    library query per block type, to know the works still exist). What a due
+    schedule re-checks before it starts."""
     return blocking(_content_checks(broadcast))
 
 

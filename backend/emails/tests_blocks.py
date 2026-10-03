@@ -114,6 +114,33 @@ class RenderTests(TestCase):
         self.assertIn("https://ochorus.test/es/plans/humility-12-days/", html)
         self.assertNotIn("es/es/", html)
 
+    def test_fixed_copy_links_are_used_as_built(self):
+        # A series nudge may point a Spanish-email reader at an ENGLISH series;
+        # its path was built for that edition and must not get an "es/" prefix.
+        from .rendering import _render
+
+        profile = _make_profile(locale="es")
+        sub = EmailSubscription.objects.create(profile=profile)
+        text = {"subject": "S", "heading": "H", "cta_label": "Next", "cta_path": "books/vol-2/"}
+        html = _render(text, profile, sub, "es").html
+        self.assertIn("https://ochorus.test/books/vol-2/", html)
+        self.assertNotIn("/es/books/vol-2/", html)
+
+    def test_malformed_old_content_renders(self):
+        b = _broadcast(content={"en": {"heading": 7, "paragraphs": [None, "ok"]}})
+        profile = _make_profile(email="m@example.com")
+        html = render_broadcast(b, profile, EmailSubscription.objects.create(profile=profile)).html
+        self.assertIn("ok", html)
+        self.assertIn(">7<", html)
+
+    def test_a_shared_cache_still_finds_new_slugs(self):
+        cards: dict = {}
+        blocks_mod.resolve([BOOK], "en", cards=cards)
+        out = blocks_mod.resolve(
+            [{"type": "plan", "slug": "humility-12-days"}, BOOK], "en", cards=cards
+        )
+        self.assertEqual([b["type"] for b in out], ["plan", "book"])
+
     def test_cards_are_looked_up_once_per_language_per_run(self):
         profiles = [_make_profile(email=f"r{i}@example.com", locale="es") for i in range(3)]
         b = _broadcast(subject={"es": "Hola"}, content={"es": _content(BOOK)})
@@ -153,6 +180,20 @@ class BlockPreflightTests(TestCase):
         )
         self.assertIn("library:en:0", self._codes(b, "error"))
         self.assertIn("library:fr:1", self._codes(b, "warning"))
+
+    def test_an_email_of_only_unavailable_works_is_empty(self):
+        b = _broadcast(subject={"fr": "Salut"}, content={"fr": _content(BOOK)})
+        self.assertIn("body:fr", self._codes(b, "error"))
+
+    def test_copied_untranslated_text_warns(self):
+        words = {"type": "text", "text": "Advent is a season of waiting."}
+        b = _broadcast(
+            subject={"en": "Hi", "es": "Hola"},
+            content={"en": _content(words), "es": _content(words)},
+        )
+        warnings = self._codes(b, "warning")
+        self.assertIn("untranslated:es", warnings)
+        self.assertNotIn("untranslated:en", warnings)
 
     def test_unchosen_library_block_and_empty_email_error(self):
         b = _broadcast(content={"en": _content({"type": "plan", "slug": ""})})

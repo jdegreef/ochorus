@@ -113,10 +113,11 @@ def legacy_blocks(block: dict) -> list[dict]:
 
 def blocks_for(block: dict) -> list[dict]:
     """A language's blocks: its ``blocks`` list, else its legacy fields read as
-    blocks."""
+    blocks — cleaned either way, so a malformed old row (a null paragraph, a
+    number for a heading) renders as text instead of raising mid-send."""
     if "blocks" in block:
-        return block["blocks"]
-    return legacy_blocks(block)
+        return clean(block["blocks"])
+    return clean(legacy_blocks(block))
 
 
 def as_blocks(content: dict) -> dict:
@@ -129,12 +130,19 @@ def as_blocks(content: dict) -> dict:
     }
 
 
-def has_body(blocks: list[dict]) -> bool:
-    """Whether a block list says anything (not only dividers and empty text)."""
+#: The fields that carry an admin's own words (what a translation changes).
+WORD_FIELDS = ("text", "label", "attribution")
+
+
+def has_body(blocks: list[dict], reaches=None) -> bool:
+    """Whether a block list says anything (not only dividers and empty text).
+    ``reaches(block)`` says whether a library block will actually render (has an
+    edition in the email's language); by default any chosen work counts."""
     for b in blocks:
-        if b["type"] in LIBRARY_TYPES and b.get("slug"):
-            return True
-        if any(b.get(f) for f in ("text", "label")):
+        if b["type"] in LIBRARY_TYPES:
+            if b.get("slug") and (reaches is None or reaches(b)):
+                return True
+        elif any(b.get(f) for f in ("text", "label")):
             return True
     return False
 
@@ -222,44 +230,59 @@ def _cards(kind: str, slugs, lang: str) -> dict[str, dict]:
 
 
 def _button_path(path: str, lang: str) -> str:
-    """A button's path in ``lang``'s pages: a bare site path gets the language
-    prefix (English is unprefixed), so a layout copied from English into Spanish
-    doesn't send Spanish readers to English pages. A path that already names a
-    language is left alone."""
+    """An admin-written button path in ``lang``'s pages, so a layout copied from
+    English into Spanish doesn't send Spanish readers to English pages. A path
+    that already names a language is left alone."""
     from library.languages import language_map
 
     path = path.lstrip("/")
-    if lang == "en" or not path or path.split("/", 1)[0] in language_map():
+    if not path or path.split("/", 1)[0] in language_map():
         return path
-    return f"{lang}/{path}"
+    return links.localized(path, lang)
 
 
-def resolve(blocks: list[dict], lang: str, *, name: str = "friend", cards=None) -> list[dict]:
+def resolve(
+    blocks: list[dict],
+    lang: str,
+    *,
+    name: str = "friend",
+    cards=None,
+    localize_buttons: bool = True,
+) -> list[dict]:
     """Render-ready blocks for one email in ``lang``: ``{name}`` filled in,
-    button paths made absolute in ``lang``'s pages, library blocks looked up in
-    ``lang`` — and those with no edition in ``lang`` left out.
+    button paths made absolute, library blocks looked up in ``lang`` — and those
+    with no edition in ``lang`` left out.
 
-    ``cards`` is an optional cache dict owned by the caller: a send renders the
-    same blocks for thousands of readers, and the library cards for a language
-    don't change between them, so they are looked up once per language per run.
+    ``localize_buttons`` puts admin-written button paths in ``lang``'s pages.
+    The fixed-copy emails pass False: their paths are built by code that already
+    chose the right edition (a series nudge may point an English series at a
+    reader whose email is Spanish), and English pages are unprefixed.
+
+    ``cards`` is an optional cache owned by the caller, ``{(kind, lang, slug):
+    card or None}``: a send renders the same blocks for thousands of readers, so
+    each card is looked up once per run, not per reader.
     """
     if cards is None:
         cards = {}
     for kind, slugs in library_refs(blocks).items():
-        if (kind, lang) not in cards:
-            cards[(kind, lang)] = _cards(kind, slugs, lang)
+        missing = {s for s in slugs if (kind, lang, s) not in cards}
+        if missing:
+            found = _cards(kind, missing, lang)
+            for slug in missing:
+                cards[(kind, lang, slug)] = found.get(slug)
 
     out = []
     for b in blocks:
         kind = b["type"]
         if kind in LIBRARY_TYPES:
-            card = cards.get((kind, lang), {}).get(b.get("slug", ""))
+            card = cards.get((kind, lang, b.get("slug", "")))
             if card is None:
                 continue
             out.append({"type": kind, "label": b.get("label", ""), **card})
         elif kind == BlockType.BUTTON:
             if b.get("label"):
-                url = links.site_url(_button_path(b.get("path", ""), lang))
+                path = b.get("path", "")
+                url = links.site_url(_button_path(path, lang) if localize_buttons else path)
                 out.append({**b, "url": url})
         elif kind in (BlockType.HEADING, BlockType.TEXT):
             text = b.get("text", "").replace("{name}", name)

@@ -47,13 +47,15 @@ def _base_context(subscription, lang: str) -> dict:
 
 
 def _render(text: dict, profile, subscription, lang: str) -> RenderedEmail:
-    """Render a fixed-copy email: its ``text`` fields read as blocks."""
+    """Render a fixed-copy email: its ``text`` fields read as blocks. Its CTA
+    path is built by code that already chose the edition, so it is used as is."""
     return render_blocks(
         subject=str(text["subject"]),
         content={"preheader": text.get("preheader", ""), "blocks": blocks_mod.legacy_blocks(text)},
         profile=profile,
         subscription=subscription,
         lang=lang,
+        localize_buttons=False,
     )
 
 
@@ -136,7 +138,14 @@ def render_broadcast(broadcast, profile, subscription, *, cards=None) -> Rendere
 
 
 def render_blocks(
-    *, subject: str, content: dict, profile, subscription, lang: str, cards=None
+    *,
+    subject: str,
+    content: dict,
+    profile,
+    subscription,
+    lang: str,
+    cards=None,
+    localize_buttons: bool = True,
 ) -> RenderedEmail:
     """Render one language's block content (emails/blocks.py) for ``profile``.
     Shared by every send and the admin's live preview, so the preview is the
@@ -145,7 +154,11 @@ def render_blocks(
         "subject": subject,
         "preheader": content.get("preheader", ""),
         "blocks": blocks_mod.resolve(
-            blocks_mod.blocks_for(content), lang, name=_display_name(profile), cards=cards
+            blocks_mod.blocks_for(content),
+            lang,
+            name=_display_name(profile),
+            cards=cards,
+            localize_buttons=localize_buttons,
         ),
         **_base_context(subscription, lang),
     }

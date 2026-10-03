@@ -63,10 +63,11 @@
 		const next = [...blocks];
 		[next[i], next[j]] = [next[j], next[i]];
 		blocks = next;
+		picking = null; // the picker is tied to a position; don't let it follow the wrong block
 	}
 	function remove(i: number) {
 		blocks = blocks.filter((_, k) => k !== i);
-		if (picking === i) picking = null;
+		picking = null;
 	}
 
 	// --- Library picker (one open at a time) ---------------------------------
@@ -77,14 +78,15 @@
 	// What each chosen slug is, so a block shows its title and editions.
 	let known = $state<Record<string, EmailLibraryItem>>({});
 	let timer: ReturnType<typeof setTimeout> | undefined;
+	let inflight: AbortController | undefined;
 
 	function openPicker(i: number) {
+		inflight?.abort(); // results for another block (maybe another type) must not linger
+		results = [];
 		picking = i;
 		query = '';
 		search();
 	}
-
-	let inflight: AbortController | undefined;
 
 	function search() {
 		clearTimeout(timer);
