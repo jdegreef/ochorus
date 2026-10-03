@@ -161,11 +161,14 @@ class AdminEngagementView(APIView):
                 last_seen_at__gte=now - timedelta(days=days)
             ).aggregate(secs=Sum("seconds"), readers=Count("profile", distinct=True))
 
+        # The length buckets ride the totals' query, so their sums and the
+        # totals the page divides them by are one snapshot.
         totals = sessions.aggregate(
             secs=Sum("seconds"),
             count=Count("id"),
             readers=Count("profile", distinct=True),
             avg=Avg("seconds"),
+            **self._bucket_aggregates(),
         )
         w7, w30 = window(7), window(30)
         return {
@@ -173,11 +176,61 @@ class AdminEngagementView(APIView):
             "sessions": totals["count"] or 0,
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
+            "median_session_seconds": self._median_seconds(sessions, totals["count"] or 0),
+            "lengths": [
+                {
+                    "min_seconds": low,
+                    "max_seconds": high,
+                    "sittings": totals[f"b{low}_n"],
+                    "seconds": totals[f"b{low}_s"] or 0,
+                }
+                for low, high in self._bucket_bounds()
+            ],
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
             "seconds_30d": w30["secs"] or 0,
             "readers_30d": w30["readers"] or 0,
         }
+
+    # Where sitting-length buckets start, in seconds; the last is open-ended.
+    # The average hides the spread (a few long reads on many short looks reads
+    # the same as everyone reading a little), so the page shows how many
+    # sittings, and how much reading, fall in each. 15 minutes is where a
+    # sitting stops being a look and becomes a read. The API sends each
+    # bucket's bounds, so the page labels them from here and can't drift.
+    SITTING_BUCKET_STARTS = (0, 60, 5 * 60, 15 * 60, 30 * 60)
+
+    @classmethod
+    def _bucket_bounds(cls):
+        starts = cls.SITTING_BUCKET_STARTS
+        return list(zip(starts, (*starts[1:], None), strict=True))
+
+    @classmethod
+    def _bucket_aggregates(cls):
+        from django.db.models import Sum
+
+        aggs = {}
+        for low, high in cls._bucket_bounds():
+            q = Q(seconds__gte=low) & (Q(seconds__lt=high) if high else Q())
+            aggs[f"b{low}_n"] = Count("id", filter=q)
+            aggs[f"b{low}_s"] = Sum("seconds", filter=q)
+        return aggs
+
+    @staticmethod
+    def _median_seconds(sessions, count: int) -> int:
+        """The middle sitting's length (the mean of the two middles when even,
+        halves rounded up).
+
+        Read by offset rather than a database percentile so it means the same
+        on SQLite (tests) and Postgres. ``count`` comes from an earlier query,
+        so a row deleted in between can leave the slice short or empty.
+        """
+        values = list(
+            sessions.order_by("seconds").values_list("seconds", flat=True)[
+                max(count - 1, 0) // 2 : count // 2 + 1
+            ]
+        )
+        return int(sum(values) / len(values) + 0.5) if values else 0
 
     def _total_users(self) -> int:
         from accounts.models import UserProfile

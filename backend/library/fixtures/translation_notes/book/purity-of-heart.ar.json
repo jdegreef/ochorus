@@ -1,0 +1,143 @@
+{
+  "kind": "book",
+  "slug": "purity-of-heart",
+  "language": "ar",
+  "job_issue": 1651,
+  "pull_request": null,
+  "references": [
+    {
+      "reference": "Matthew 5:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 12:14",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Proverbs 23:26",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 4:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 53:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Peter 1:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Corinthians 10:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Luke 1:74-75",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 12:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ezekiel 36:25-27",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 13:20-21",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:6",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Isaiah 57:15",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Revelation 3:20",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Romans 6:22",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 John 4:10",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Hebrews 13:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 John 5:17",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 1:21",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ephesians 4:24",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Matthew 5:48",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "1 Thessalonians 4:3",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "2 Corinthians 4:7",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ephesians 3:17-19",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "Ezekiel 36:25",
+      "status": "self_rendered"
+    },
+    {
+      "reference": "Acts 1:8",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    },
+    {
+      "reference": "James 1:12",
+      "status": "mined",
+      "source_file": "Van Dyck (arb-vd) Bible text"
+    }
+  ]
+}

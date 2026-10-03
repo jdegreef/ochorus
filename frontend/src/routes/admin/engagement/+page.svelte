@@ -9,7 +9,7 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import SectionBar from '$lib/components/SectionBar.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
@@ -129,6 +129,17 @@
 		const pct = peak ? Math.round((readers / peak) * 82) : 0;
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
+
+	// Sitting lengths: count sittings, or the minutes read in them. The second
+	// shows where the reading actually happens.
+	let lengthBy = $state<'sittings' | 'seconds'>('sittings');
+	const deep = $derived.by(() => {
+		const t = data?.time;
+		if (!t?.lengths) return null;
+		const n = t.lengths.filter((b) => b.min_seconds >= DEEP_SITTING_SECONDS).reduce((a, b) => a + b[lengthBy], 0);
+		const total = lengthBy === 'sittings' ? t.sessions : t.total_seconds;
+		return { n, pct: total ? Math.round((n / total) * 100) : 0 };
+	});
 
 	// The opening sentence: the last 7 days in words, plus this week's events.
 	const summary = $derived(data ? weeklySummary(data, workHref) : null);
@@ -276,8 +287,8 @@
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [
-								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings`, line: undefined },
-								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers`, line: undefined },
+								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings · ${fmt(d.time.readers)} readers`, line: undefined },
+								{ label: 'Typical sitting', text: formatDuration(d.time.median_session_seconds, { precise: true }), sub: `median · average ${formatDuration(d.time.avg_session_seconds, { precise: true })}`, line: undefined },
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
 								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers`, line: undefined }
 							] as c (c.label)}
@@ -291,6 +302,41 @@
 								</div>
 							{/each}
 						</div>
+						{#if d.time.lengths?.length}
+							<!-- How long sittings are: the spread the average hides. -->
+							<div class="mt-5">
+								<div class="mb-3 flex flex-wrap items-center justify-between gap-2">
+									<h3 class="text-small font-semibold text-text">How long sittings are</h3>
+									<div class="seg" role="group" aria-label="Measure sittings by">
+										{#each [{ key: 'sittings', label: 'Sittings' }, { key: 'seconds', label: 'Minutes read' }] as const as m (m.key)}
+											<button aria-pressed={lengthBy === m.key} class={lengthBy === m.key ? 'active' : ''} onclick={() => (lengthBy = m.key)}>{m.label}</button>
+										{/each}
+									</div>
+								</div>
+								<ColumnChart
+									height="7rem"
+									columns={d.time.lengths.map((b) => {
+										const label = sittingBucketLabel(b);
+										return {
+											key: String(b.min_seconds),
+											label,
+											// Tenths of a minute, so a bucket holding a few seconds still draws.
+											value: lengthBy === 'sittings' ? b.sittings : Math.round(b.seconds / 6) / 10,
+											title: `${label} · ${fmt(b.sittings)} sitting${b.sittings === 1 ? '' : 's'}, ${formatDuration(b.seconds, { precise: true })} read`
+										};
+									})}
+								/>
+								{#if deep}
+									<p class="mt-2 text-small text-muted" aria-live="polite">
+										{DEEP_SITTING_SECONDS / 60} minutes or longer:
+										<span class="font-semibold text-text"
+											>{lengthBy === 'sittings' ? `${fmt(deep.n)} sitting${deep.n === 1 ? '' : 's'}` : formatDuration(deep.n)}</span
+										>
+										({deep.pct}% of {lengthBy === 'sittings' ? 'sittings' : 'all reading time'}).
+									</p>
+								{/if}
+							</div>
+						{/if}
 					</section>
 				{/if}
 

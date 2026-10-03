@@ -373,3 +373,21 @@ export function contrastRatio(a: number[], b: number[]): number {
 	const [hi, lo] = [relativeLuminance(a), relativeLuminance(b)].sort((x, y) => y - x);
 	return (hi + 0.05) / (lo + 0.05);
 }
+
+/**
+ * A book's cover_color as a card tint (BookCard → .book-card), or '' for none.
+ *
+ * Only a well-formed six-digit hex reaches a style attribute — the field is
+ * free text — and only one dark enough to be a real cover: the card tint's
+ * contrast guarantee (libraryPalette.test.ts) assumes the colour was floored
+ * to carry white type at 4.5:1, as `covers.ink_safe` does at mint. A colour
+ * that skipped that (typed straight into the admin) is lighter than any cover
+ * can be, and gets the plain card rather than a ground that breaks the inks.
+ */
+export const CARD_TINT_MAX_LUMINANCE = 0.1834; // white at 4.5:1: (1.05 / 4.5) - 0.05
+
+export function cardTint(color: string | null | undefined): string {
+	const hex = (color ?? '').trim();
+	if (!/^#[0-9a-f]{6}$/i.test(hex)) return '';
+	return relativeLuminance(channels(hex)) <= CARD_TINT_MAX_LUMINANCE ? hex : '';
+}
