@@ -20,7 +20,8 @@
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
-	import { groupPlanDays, stripDayPrefix, weeksOf, type PlanGroup } from '$lib/planGroups';
+	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
+	import Icon from '$lib/components/Icon.svelte';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -38,38 +39,23 @@
 	const seo = $derived(editionSeo(path, plan.available_languages, fallback));
 	const hreflang = $derived(seo.hreflang);
 	const canonical = $derived(seo.canonical);
-	// The distinct books the plan reads through, in first-appearance order, with
-	// the span of days each occupies. Powers both the ItemList JSON-LD and the
-	// "In this plan" preview — a reader sees the shape of the journey (which
-	// works, in what order, over how many days) before committing.
-	// Article days are left out: they have no book page.
-	const planBooks = $derived.by(() => {
-		const map = new Map<string, { slug: string; title: string; first: number; last: number; days: number }>();
-		for (const d of plan.days) {
-			if (d.article_slug) continue;
-			let e = map.get(d.book_slug);
-			if (!e) {
-				e = { slug: d.book_slug, title: d.book_title, first: d.day, last: d.day, days: 0 };
-				map.set(d.book_slug, e);
-			}
-			e.last = d.day;
-			e.days++;
-		}
-		return [...map.values()];
-	});
 	/** The day list's sections: runs of days by book (see planGroups). One run
 	 *  (a single-book plan) draws no section chrome — the header already says it. */
 	const groups = $derived(groupPlanDays(plan.days));
 	const grouped = $derived(groups.length > 1);
+	// The distinct books the plan reads through, in first-appearance order, for
+	// the ItemList JSON-LD. Article days are left out: they have no book page.
+	const planBooks = $derived([
+		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
+	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
 	const groupWords = (g: PlanGroup) => g.days.reduce((s, d) => s + (d.word_count || 0), 0);
 	/** The line under a day's title: its book, or "Article" on an article day. */
 	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
-	/** A day's title, minus the chapter's own "Day 13 — " (the circle shows the
-	 *  plan day; the two disagree once a book opens on an introduction). */
-	const dayTitle = (d: PlanDay) =>
-		stripDayPrefix(d.chapter_title, t('plans.day')) || `${t('plans.day')} ${d.day}`;
-	const dayRange = (g: PlanGroup) =>
+	/** A day's title — the API has already dropped the book's own "Day 13 — ",
+	 *  which would contradict the plan day in the circle. */
+	const dayTitle = (d: PlanDay) => d.chapter_title || `${t('plans.day')} ${d.day}`;
+	const dayRange = (g: { first: number; last: number }) =>
 		g.first === g.last
 			? `${t('plans.day')} ${g.first}`
 			: `${t('plans.daysLabel')} ${g.first}–${g.last}`;
@@ -244,7 +230,7 @@
 								{/if}
 							</span>
 						</span>
-						<svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+						<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
 					</summary>
 					<div class="plan-group-body">
 						{#if g.bookSlug}
@@ -287,14 +273,14 @@
 					<summary class="plan-week-head">
 						<span class="font-semibold text-text">{t('plans.week').replace('%n%', String(wi + 1))}</span>
 						<span class="min-w-0 flex-1 truncate text-muted">
-							{t('plans.daysLabel')} {w[0].day}–{last.day}<span class="hidden sm:inline"
+							{dayRange({ first: w[0].day, last: last.day })}<span class="hidden sm:inline"
 								>{' · '}{dayTitle(w[0])} → {dayTitle(last)}</span
 							>
 						</span>
 						<span class="week-dots" aria-hidden="true">
 							{#each w as d (d.day)}<span class="week-dot" class:done={doneSet.has(d.day)}></span>{/each}
 						</span>
-						<svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+						<Icon name="chevron-right" size={16} class="chevron" mirror={false} />
 					</summary>
 					{@render dayRows(w)}
 				</details>
@@ -347,7 +333,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="verse-chip hidden sm:inline-flex">{d.key_verse}</span>
+							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -380,7 +366,7 @@
 	.plan-group {
 		margin-top: 0.75rem;
 		border: 1px solid var(--border);
-		border-radius: 0.875rem;
+		border-radius: var(--radius-card);
 		background: var(--surface);
 	}
 	.plan-group-head {
@@ -407,13 +393,20 @@
 	.plan-group-body {
 		padding: 0 1rem 0.5rem;
 	}
-	.chevron {
+	/* Down when closed, up when open (QandA's turn) — a rotation, so no RTL flip. */
+	summary > :global(.chevron) {
 		flex-shrink: 0;
 		color: var(--muted);
-		transition: transform 0.15s ease;
+		transform: rotate(90deg);
+		transition: transform var(--duration-fast) ease;
 	}
-	details[open] > summary > .chevron {
-		transform: rotate(180deg);
+	details[open] > summary > :global(.chevron) {
+		transform: rotate(-90deg);
+	}
+	@media (prefers-reduced-motion: reduce) {
+		summary > :global(.chevron) {
+			transition: none;
+		}
 	}
 	/* A week: a quiet header line with one dot per day (filled once read). */
 	.plan-week {
@@ -432,11 +425,6 @@
 		cursor: pointer;
 		list-style: none;
 	}
-	.plan-group-head:focus-visible,
-	.plan-week-head:focus-visible {
-		outline: 2px solid var(--accent);
-		outline-offset: 2px;
-	}
 	.week-dots {
 		display: flex;
 		gap: 0.25rem;
@@ -451,16 +439,12 @@
 		border-color: var(--accent);
 		background: var(--accent);
 	}
-	/* The verse a day opens on: a label, not a control. */
+	/* The verse a day opens on: a .tag pill, as a label rather than a link. */
 	.verse-chip {
 		flex-shrink: 0;
-		align-items: center;
-		border: 1px solid var(--accent-soft-border);
-		border-radius: 999px;
-		background: var(--accent-soft);
-		padding: 0.1rem 0.6rem;
-		font-size: var(--fs-small);
-		color: var(--accent);
-		white-space: nowrap;
+		color: var(--muted);
+	}
+	.verse-chip:hover {
+		border-color: var(--border);
 	}
 </style>

@@ -91,6 +91,26 @@ class PlanTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertFalse(res.data["days"][0]["has_modern_edition"])
 
+    def test_plan_days_drop_the_books_own_day_number(self):
+        # The plan numbers its days; a devotional's "Day 13 — " would contradict
+        # it once a book opens on an introduction. Other numbers stay.
+        Chapter.objects.filter(book__slug="humility-2", order=1).update(title="Day 13 — Where You Go")
+        Chapter.objects.filter(book__slug="humility-2", order=2).update(title="Psalm 23 — The Shepherd")
+        res = self.client.get("/api/library/plans/humility-12-days/?language=en")
+        self.assertEqual(
+            [d["chapter_title"] for d in res.data["days"]], ["Where You Go", "Psalm 23 — The Shepherd"]
+        )
+        self.assertEqual(res.data["day_one"]["chapter_title"], "Where You Go")
+
+    def test_plan_day_title_reads_every_content_language(self):
+        from .serializers import plan_day_title
+
+        for raw in ("Día 4 — Belleza", "Jour 4 — Belleza", "दिन 4 — Belleza", "ቀን 4 — Belleza",
+                    "اليوم 4 — Belleza"):
+            self.assertEqual(plan_day_title(raw), "Belleza", raw)
+        for kept in ("Day 7", "Daybreak 3 — Light", "Section 3 — Motives", "Introduction: Brave Girls"):
+            self.assertEqual(plan_day_title(kept), kept)
+
     def test_detail_names_each_days_key_verse(self):
         # A devotional opens on its verse, attributed with a dash: that verse is
         # the day's chip. A chapter opening on plain prose gets none, and so does

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { PlanDay } from './library-public';
-import { groupPlanDays, stripDayPrefix, weeksOf } from './planGroups';
+import { groupPlanDays, weeksOf } from './planGroups';
 
 const day = (n: number, book: string, article = ''): PlanDay => ({
 	day: n,
@@ -47,20 +47,5 @@ describe('weeksOf', () => {
 		const days = Array.from({ length: 32 }, (_, i) => day(i + 1, 'a'));
 		expect(weeksOf(days).map((w) => w.length)).toEqual([7, 7, 7, 7, 4]);
 		expect(weeksOf(days.slice(0, 5)).length).toBe(1);
-	});
-});
-
-describe('stripDayPrefix', () => {
-	it("drops the chapter's own day number, in English or the plan's word", () => {
-		expect(stripDayPrefix('Day 13 — Where You Go, I’ll Go', 'Day')).toBe('Where You Go, I’ll Go');
-		expect(stripDayPrefix('Día 4 — Belleza verdadera', 'Día')).toBe('Belleza verdadera');
-		expect(stripDayPrefix('day 2: Sweet Sleep', 'Jour')).toBe('Sweet Sleep');
-	});
-
-	it('leaves other numbered titles and bare day titles alone', () => {
-		expect(stripDayPrefix('Psalm 23 — The Shepherd', 'Day')).toBe('Psalm 23 — The Shepherd');
-		expect(stripDayPrefix('Introduction: Brave Girls', 'Day')).toBe('Introduction: Brave Girls');
-		expect(stripDayPrefix('Day 7', 'Day')).toBe('Day 7');
-		expect(stripDayPrefix('Daybreak 3 — Light', 'Day')).toBe('Daybreak 3 — Light');
 	});
 });
