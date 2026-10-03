@@ -10,6 +10,7 @@ import FeedbackDialog from './FeedbackDialog.svelte';
 import ListenBar from './ListenBar.svelte';
 import ModalShell from './ModalShell.svelte';
 import NoteDialog from './NoteDialog.svelte';
+import ReadBar from './ReadBar.svelte';
 import ScripturePopover from './ScripturePopover.svelte';
 import UnsyncedSignOutDialog from './UnsyncedSignOutDialog.svelte';
 import JournalDialog from './notebook/JournalDialog.svelte';
@@ -20,7 +21,7 @@ import { scripture } from '$lib/scripture.svelte';
 
 /**
  * The fixed overlays portal themselves to <body>, as DrawerShell does, so an
- * ancestor with a transform (the page-turn pager, `.page-col`) or a
+ * ancestor with a transform (the page-turn pager) or a
  * backdrop-filter (the reader's bars) can't become their containing block.
  * DrawerShell.test.ts holds the pattern for the drawers; these hold it for
  * every other overlay, each dropped into the same transformed, fenced column:
@@ -82,6 +83,13 @@ const CASES: Case[] = [
 		root: '.modal-overlay'
 	},
 	{ name: 'UnsyncedSignOutDialog', overlay: UnsyncedSignOutDialog, root: '.modal-overlay' },
+	{
+		// The phone read bar (book + plan pages): shown while its parent says so.
+		name: 'ReadBar',
+		overlay: ReadBar,
+		props: { show: true, eyebrow: 'Day 1 of 3', title: 'Called by Name', href: '/x', label: 'Start' },
+		root: '.read-bar'
+	},
 	{
 		name: 'ScripturePopover',
 		overlay: ScripturePopover,

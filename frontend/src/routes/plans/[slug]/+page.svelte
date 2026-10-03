@@ -22,11 +22,10 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
-	import { portal } from '$lib/actions/portal';
-	import { publishHeight } from '$lib/actions/publishHeight';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
+	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 
 	let { data } = $props();
@@ -267,13 +266,6 @@
 	structuredData={[planLd, crumbsLd]}
 />
 
-<!-- The one read verb, wherever it shows: the read card, the phone bar. -->
-{#snippet readButton(cls: string, day: number)}
-	<a href={dayHref(day)} class={cls} onclick={() => planProgress.start(plan.slug)}>
-		{started ? t('plans.continue') : t('plans.start')}
-	</a>
-{/snippet}
-
 <!-- --pinned-offset: the app nav plus the book chips pinned over the list —
      what every section jump clears. -->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {jumpH}px)">
@@ -373,7 +365,9 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						{@render readButton('btn btn-primary', next)}
+						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+							{started ? t('plans.continue') : t('plans.start')}
+						</a>
 						{#if started}
 							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
 								{t('plans.markDone')}
@@ -632,7 +626,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="tag verse-chip row-verse">{d.key_verse}</span>
+							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -660,22 +654,17 @@
 
 </div>
 
-<!-- Portalled to <body>: .page-col's centring transform would otherwise pin
-     a fixed bar to the column instead of the screen.
-     Phones: once the read card scrolls away, the read verb rides a bar above
-     the tab bar — the next day named, one button. Below the side-panel
-     breakpoint only; from there the panel itself stays in view. -->
-{#if next !== null && nextDay && !cardSeen.visible}
-	<!-- Its height is published as --dockbar-h so the PWA toasts stack above
-	     it rather than over its button. -->
-	<div class="plan-bar" use:portal use:publishHeight={'--dockbar-h'}>
-		<span class="min-w-0 flex-1">
-			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
-			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>
-		</span>
-		{@render readButton('btn btn-primary shrink-0', next)}
-	</div>
-{/if}
+<!-- Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar (ReadBar, shared with the book page). From 1024px the side
+     panel keeps it in view instead. -->
+<ReadBar
+	show={next !== null && !!nextDay && !cardSeen.visible}
+	eyebrow="{t('plans.day')} {next} {t('plans.of')} {plan.day_count}"
+	title={nextDay ? dayTitle(nextDay) : ''}
+	href={next === null ? '#' : dayHref(next)}
+	label={started ? t('plans.continue') : t('plans.start')}
+	onread={() => planProgress.start(plan.slug)}
+/>
 
 <style>
 	/* A book's run of days: a card whose summary is the book (cover, span,
@@ -768,16 +757,6 @@
 	}
 	.verse-chip:hover {
 		border-color: var(--border);
-	}
-	/* In a day row the pill shows from 640px; on a phone the verse rides the
-	   line under the title instead (scoped, so it beats .tag's display). */
-	.row-verse {
-		display: none;
-	}
-	@media (min-width: 640px) {
-		.row-verse {
-			display: inline-flex;
-		}
 	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {
@@ -914,32 +893,5 @@
 	.coming-date {
 		width: 3.5rem;
 		flex-shrink: 0;
-	}
-	/* The phone's bottom bar, above the tab bar and the home indicator. */
-	.plan-bar {
-		position: fixed;
-		inset-inline: 0;
-		/* The shared clearance every fixed bottom chrome uses (.min-left). */
-		bottom: max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px));
-		z-index: 30;
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 0.625rem 1.25rem;
-		border-top: 1px solid var(--border);
-		background: var(--surface);
-		box-shadow: var(--shadow-card);
-	}
-	/* While the bar is up, the page's foot (the footer's last line) scrolls
-	   clear of it rather than sitting underneath. */
-	@media (max-width: 1023.98px) {
-		:global(body:has(.plan-bar)) {
-			padding-bottom: 4.5rem;
-		}
-	}
-	@media (min-width: 1024px) {
-		.plan-bar {
-			display: none;
-		}
 	}
 </style>

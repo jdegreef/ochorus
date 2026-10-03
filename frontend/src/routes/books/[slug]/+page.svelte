@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
@@ -118,6 +119,8 @@
 	// that is (workPercent — the same figure every other surface shows), and the
 	// time left from the start of it at the reader's pace.
 	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	/** The chapter the read verb opens — where they are, or where the book begins. */
+	const readChapter = $derived(book.chapters.find((c) => c.order === readOrder));
 	const wordsLeft = $derived(
 		resumeHere == null
 			? 0
@@ -984,6 +987,18 @@
 		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
 	{/if}
 </div>
+
+<!-- Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar (ReadBar, shared with the plan page). From 640px the sticky
+     sub-nav carries it instead. -->
+<ReadBar
+	show={!cardSeen.visible}
+	hideFrom="sm"
+	eyebrow={book.title}
+	title={chapterNameIn(readOrder, readChapter?.title, book.title)}
+	href={readHref(readOrder)}
+	label={readLabel}
+/>
 
 <style>
 	/* A1: lift the cover off the page. `filter: drop-shadow` follows the cover's
