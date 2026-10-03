@@ -219,6 +219,35 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"am/a-short-and-easy-method-of-prayer": {
+			"ground": "4059820766820ef6fe060e632638063e549afcb4fabd403693dee0d44b014bd2",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[148, 266, 452, 348],
+					[127, 338, 473, 420]
+				],
+				"subtitle": [
+					[121, 496, 479, 524]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				271,
+				524
+			]
+		},
 		"am/absolute-surrender": {
 			"ground": "2a0f32685685d7df4d90c87b0edda285679aaae65118ebe638abb6fdeca59638",
 			"style": "devotional",
@@ -281,6 +310,16 @@
 				243,
 				552
 			]
+		},
+		"am/around-the-wicket-gate": {
+			"ground": "b5f7baabc46522a216c50a465a4714d3fe765cb0c128e0ad245dda33bf7ec7e6",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
 		},
 		"am/baptism-with-the-holy-spirit": {
 			"ground": "3bd9f33bc25ded7576456c963215aaa56491e8f52d9c5d9875da69a99879b7dd",
@@ -709,6 +748,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/life-experience-gospel-labours": {
+			"ground": "357d42aa8286ff64cc0202b23e8a049e19b68df1766929bc4d090624a2efd584",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[159, 102, 441, 131]
+				],
+				"title": [
+					[125, 289, 475, 352],
+					[162, 351, 438, 414]
+				],
+				"subtitle": [
+					[246, 477, 354, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"am/lord-teach-us-to-pray-2": {
 			"ground": "ce3f44ec7bd4efef11808a3bf0469f0578b5f74d814ee0631a04453cafb846ea",
 			"style": "devotional",
@@ -743,6 +811,31 @@
 			"middle": [
 				313,
 				482
+			]
+		},
+		"am/men-of-prayer-2": {
+			"ground": "5bd239894f4cdb7438f773b0f445fc081857c2045e01be37c5447d5f979fbd21",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[154, 341, 446, 417]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
 			]
 		},
 		"am/men-who-moved-heaven": {
@@ -855,6 +948,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"am/power-through-prayer": {
+			"ground": "e2ce0c651e95dc003f3162998edab3fd8ae27cc8f3a439f223fc2acdc5a1589b",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
+		},
 		"am/prayer-the-pulse-of-life": {
 			"ground": "2a1409b1f11373ce3d3418f8d47947f72edc2532a5411043298aa0e57ca55abe",
 			"style": "house",
@@ -904,6 +1007,32 @@
 			"middle": [
 				308,
 				487
+			]
+		},
+		"am/rise-up-men-of-god-2": {
+			"ground": "e5b5c0da278c85832af62be30abb97f0adf85b326613637c025247d025d74093",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[141, 308, 459, 384],
+					[113, 374, 487, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
 			]
 		},
 		"am/rooted-1": {
@@ -1096,6 +1225,16 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"am/separation-and-service": {
+			"ground": "39d6e8ff1249d02fec49f9b301ceb480cc64d53635b0cee687e5dadd2698e990",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -1235,6 +1374,16 @@
 				319,
 				476
 			]
+		},
+		"am/union-and-communion": {
+			"ground": "6482d44d7ea3ba8a5956a2f8d672c5daa02607db607909c33fe1c6a6b414208a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
 		},
 		"am/waiting-on-god": {
 			"ground": "fc2b11f3486f4fc708781c4e223efea60f11c68d461817c130d84cb859b8d4d6",
