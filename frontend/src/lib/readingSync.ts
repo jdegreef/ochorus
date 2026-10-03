@@ -13,6 +13,7 @@ import {
 import { bookmarkTarget, clearPending, clearSent, pendingAt, pendingRemovals } from './removals';
 import type { PlanState } from './planProgress.svelte';
 import {
+	PLAN_SCHEDULES_EVENT,
 	scheduleFromServer,
 	scheduleToServer,
 	type PlanSchedulePrefs,
@@ -694,24 +695,31 @@ class ReadingSync {
 				body: JSON.stringify(scheduleToServer(prefs))
 			})
 				.then((row) => {
-					this.#adoptScheduleStamp(slug, prefs.updatedAt, row);
+					this.#adoptScheduleStamp(slug, prefs, row);
 					this.#markSynced();
 				})
 				.catch(() => this.#owe());
 		});
 	}
 
-	/** Take the account's stamp for a choice it just stored — the server holds a
-	 *  clock that runs ahead to a day of skew, and replaying this device's own
-	 *  later would out-date a newer choice from elsewhere. Only if the entry is
-	 *  still the one that was sent (a newer local choice keeps its own). */
-	#adoptScheduleStamp(slug: string, sentAt: number | undefined, row: ServerPlanSchedule | undefined) {
-		const at = row && Date.parse(row.client_updated_at);
-		if (!at) return;
+	/** Take the account's word on a choice just pushed. Usually that is only its
+	 *  stamp — the server holds a clock running ahead to a day of skew, and
+	 *  replaying this device's own later would out-date a newer choice from
+	 *  elsewhere. But when the account already held a NEWER choice it keeps that
+	 *  one and returns it: then the whole row comes down and open views
+	 *  refresh. Only if the entry is still the one sent (a newer local choice
+	 *  keeps its own and pushes it). */
+	#adoptScheduleStamp(slug: string, sent: PlanSchedulePrefs, row: ServerPlanSchedule | undefined) {
+		if (!row || !Date.parse(row.client_updated_at)) return;
 		const all = readJson<Record<string, PlanSchedulePrefs>>(PLAN_SCHEDULE_KEY, {});
-		if (!all[slug] || all[slug].updatedAt !== sentAt || at === sentAt) return;
-		all[slug] = { ...all[slug], updatedAt: at };
+		if (!all[slug] || all[slug].updatedAt !== sent.updatedAt) return;
+		const theirs = scheduleFromServer(row);
+		const sameChoice = JSON.stringify(scheduleToServer({ ...sent, updatedAt: 0 })) ===
+			JSON.stringify(scheduleToServer({ ...theirs, updatedAt: 0 }));
+		if (sameChoice && theirs.updatedAt === sent.updatedAt) return;
+		all[slug] = sameChoice ? { ...all[slug], updatedAt: theirs.updatedAt } : theirs;
 		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify(all));
+		if (!sameChoice) window.dispatchEvent(new Event(PLAN_SCHEDULES_EVENT));
 	}
 
 	/**

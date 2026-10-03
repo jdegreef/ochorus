@@ -3,7 +3,7 @@ import { readJSON, writeJSON } from './persisted';
 import { readingSync } from './readingSync';
 import { PLAN_SCHEDULE_KEY as KEY } from './reading-schema';
 import { READING_DAYS } from './planSchedule';
-import type { PlanSchedulePrefs } from './planScheduleRows';
+import { PLAN_SCHEDULES_EVENT, type PlanSchedulePrefs } from './planScheduleRows';
 
 export type { PlanSchedulePrefs };
 
@@ -29,6 +29,8 @@ class PlanSchedules {
 	constructor() {
 		// Replaced underneath us by a sign-out wipe or a merge write-back.
 		if (browser) window.addEventListener('ochorus:sync', () => this.ticks++);
+		// …or one plan's choice by a push that lost to a newer one (readingSync).
+		if (browser) window.addEventListener(PLAN_SCHEDULES_EVENT, () => this.ticks++);
 	}
 
 	/** A plan's choices, with an unknown reading-days rule read as daily. */

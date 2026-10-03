@@ -219,6 +219,41 @@ describe('readingSync.clearOnSignOut', () => {
 		}
 	});
 
+	it('takes the account\'s newer choice whole when a push lost to it', async () => {
+		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify({ dotk: { rule: 'weekdays', updatedAt: 1000 } }));
+		const synced = vi.fn();
+		window.addEventListener('ochorus:plan-schedules', synced);
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+			new Response(
+				JSON.stringify({
+					plan_slug: 'dotk',
+					start_on: null,
+					reading_days: 'monsat',
+					remind_at: '06:00',
+					client_updated_at: '2026-10-04T12:00:00Z'
+				}),
+				{ status: 200, headers: { 'content-type': 'application/json' } }
+			)
+		);
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushPlanSchedule('dotk', { rule: 'weekdays', updatedAt: 1000 });
+			await vi.runAllTimersAsync();
+			expect(JSON.parse(localStorage.getItem(PLAN_SCHEDULE_KEY)!).dotk).toEqual({
+				rule: 'monsat',
+				time: '06:00',
+				updatedAt: Date.parse('2026-10-04T12:00:00Z')
+			});
+			expect(synced).toHaveBeenCalled();
+		} finally {
+			window.removeEventListener('ochorus:plan-schedules', synced);
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
 	it('the merge carries calendar choices up and writes the account\'s back', async () => {
 		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify({ dotk: { rule: 'monsat', time: '06:30', updatedAt: 7 } }));
 		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(

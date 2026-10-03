@@ -24,6 +24,11 @@ export interface ServerPlanSchedule {
 	client_updated_at: string;
 }
 
+/** Fired when the account's choice replaces this device's outside a merge (a
+ *  push that lost to a newer one): only the schedule store listens, unlike the
+ *  broad 'ochorus:sync' every reading store re-reads on. */
+export const PLAN_SCHEDULES_EVENT = 'ochorus:plan-schedules';
+
 /** A plan's choices as the API takes them — the PUT body, or a merge row. */
 export const scheduleToServer = (p: PlanSchedulePrefs) => ({
 	start_on: p.start ?? null,

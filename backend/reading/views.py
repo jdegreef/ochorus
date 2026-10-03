@@ -259,6 +259,10 @@ def _clean_schedule(data: dict) -> dict:
     }
 
 
+# More plans than anyone schedules; the merge reads at most this many rows.
+MAX_PLAN_SCHEDULES = 200
+
+
 def _upsert_plan_schedule(profile, slug, data: dict, *, keep_server_when_unknown: bool):
     """Store one plan's schedule choices unless the server's are newer.
 
@@ -1508,7 +1512,9 @@ class MergeView(APIView):
         skipped, so a bad bundle can't 500 the reconciliation."""
         if not isinstance(incoming, list):
             return
-        for row in incoming[:MAX_MERGE_ROWS]:
+        # A reader schedules a handful of plans: a far tighter cap than the
+        # merge's own, so a bloated bundle can't hold the transaction open.
+        for row in incoming[:MAX_PLAN_SCHEDULES]:
             if isinstance(row, dict) and _valid_slug(row.get("plan_slug")):
                 _upsert_plan_schedule(profile, row["plan_slug"], row, keep_server_when_unknown=True)
 
