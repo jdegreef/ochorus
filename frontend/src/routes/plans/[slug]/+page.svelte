@@ -23,6 +23,7 @@
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
 	import { portal } from '$lib/actions/portal';
+	import { publishHeight } from '$lib/actions/publishHeight';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -158,7 +159,7 @@
 			planBooks.length > 1
 				? {
 						value: String(planBooks.length),
-						label: planBooks.length === 1 ? t('common.bookOne') : t('common.bookMany')
+						label: t('common.bookMany')
 					}
 				: null,
 			next === null ? null : { value: finishDate, label: t('plans.finishLabel') }
@@ -186,7 +187,9 @@
 			// are named "Book 1 · Beloved" — the whole title is a tap away on
 			// the book's page.
 			const chip = t('originals.volume').replace('%n%', String(positions[i]));
-			const head = tiles[i]?.subtitle?.split(/[:：]/u)[0].trim();
+			// Only a "Head: the rest" subtitle has a head to borrow; any other
+			// shape keeps the book's own title.
+			const head = tiles[i]?.subtitle?.match(/^(.{1,40}?)\s*[:：]/u)?.[1];
 			return { chip, name: head ? `${chip} · ${head}` : g.bookTitle };
 		});
 	});
@@ -230,16 +233,6 @@
 
 	/** Each day's link, built once per plan — the list, the read card, Coming
 	 *  up and the phone bar all look theirs up. */
-	/** The phone bar's height, published as --dockbar-h so the PWA toasts
-	 *  stack above it rather than over its button. */
-	let barH = $state(0);
-	$effect(() => {
-		const root = document.documentElement;
-		if (barH) root.style.setProperty('--dockbar-h', `${barH}px`);
-		else root.style.removeProperty('--dockbar-h');
-		return () => root.style.removeProperty('--dockbar-h');
-	});
-
 	const hrefByDay = $derived(new Map(plan.days.map((d) => [d.day, localizeHref(planDayPath(plan.slug, d))])));
 	const dayHref = (day: number) => hrefByDay.get(day) ?? '#';
 </script>
@@ -406,9 +399,6 @@
 				<ShareButton url={canonical} title={plan.title} showLabel />
 			</div>
 
-			<!-- The writers this plan reads through — a link to each author page, so a
-			     plan is a way into their work, not only a sequence of chapters. Reuses the
-			     shared "Authors" label, so it is already translated in every locale. -->
 			{@render authorsBlock('plan-authors-side mt-6')}
 		</aside>
 
@@ -637,7 +627,9 @@
      the tab bar — the next day named, one button. Below the side-panel
      breakpoint only; from there the panel itself stays in view. -->
 {#if next !== null && nextDay && !cardSeen.visible}
-	<div class="plan-bar" bind:clientHeight={barH} use:portal>
+	<!-- Its height is published as --dockbar-h so the PWA toasts stack above
+	     it rather than over its button. -->
+	<div class="plan-bar" use:portal use:publishHeight={'--dockbar-h'}>
 		<span class="min-w-0 flex-1">
 			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
 			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>

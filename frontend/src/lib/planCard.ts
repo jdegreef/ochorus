@@ -37,10 +37,11 @@ export function planData(html: string): { plan: PlanDetail; language: string } |
 }
 
 /**
- * Minutes a day, as the plans shelf shows it before it knows a reader's own
- * pace: `readingPace`'s DEFAULT_WPM (200), whole minutes, at least one. A share
- * image has no reader, so it keeps the default rather than anyone's pace.
+ * Minutes a day — the one "~N min/day" rule: whole minutes, at least one, at
+ * `wpm`. The share image has no reader, so it keeps `readingPace`'s
+ * DEFAULT_WPM (200); the shelf card and the plan page pass the reader's own
+ * pace (`planMinutesPerDay` in lib/reading).
  */
-export function minutesPerDay(plan: { total_words: number; day_count: number }): number {
-	return plan.day_count ? Math.max(1, Math.round(plan.total_words / plan.day_count / 200)) : 0;
+export function minutesPerDay(plan: { total_words: number; day_count: number }, wpm = 200): number {
+	return plan.day_count ? Math.max(1, Math.round(plan.total_words / plan.day_count / wpm)) : 0;
 }

@@ -72,11 +72,12 @@
 	}
 	/* The strip: overlapped and tilted a little more at each step. Each tilt
 	   is written for LTR and multiplied by --lean, which flips in RTL: the
-	   covers' order mirrors there, so their lean must too. */
+	   covers' order mirrors there, so their lean must too. :dir() follows the
+	   strip's own resolved direction, not just an ancestor's attribute. */
 	.strip {
 		--lean: 1;
 	}
-	:global([dir='rtl']) .strip {
+	.strip:dir(rtl) {
 		--lean: -1;
 	}
 	.strip .cover {
