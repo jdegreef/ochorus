@@ -24,6 +24,22 @@ def base_lang(locale: str) -> str:
     return (locale or DEFAULT_LOCALE).split("-")[0].lower()
 
 
+#: What ``{name}`` becomes for a reader with no name on their account — in the
+#: email's language, or "Hola friend:" goes out. Unlisted languages use English.
+FRIEND: dict[str, str] = {
+    "en": "friend",
+    "es": "amigo",
+    "pt": "amigo",
+    "fr": "ami",
+    "sw": "rafiki",
+    "lg": "mukwano",
+    "ar": "صديقي",
+    "hi": "मित्र",
+    "uk": "друже",
+    "am": "ወዳጄ",
+}
+
+
 LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
     "welcome": {
         "en": {

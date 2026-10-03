@@ -156,6 +156,13 @@ class RenderTests(TestCase):
         self.assertIn("width:100%; max-width:600px", html)
         self.assertNotRegex(html, r"[^-]width:600px")
 
+    def test_a_nameless_reader_is_greeted_in_the_emails_language(self):
+        profile = _make_profile(email="n@example.com", locale="es", name="")
+        sub = EmailSubscription.objects.create(profile=profile)
+        b = _broadcast(subject={"es": "Hola"}, content={"es": _content({"type": "text", "text": "Querido {name},"})})
+        html = render_broadcast(b, profile, sub).html
+        self.assertIn("Querido amigo,", html)
+
     def test_rtl_language_sets_direction(self):
         html = self._render("ar", {"type": "quote", "text": "Q"}).html
         self.assertIn('dir="rtl"', html)

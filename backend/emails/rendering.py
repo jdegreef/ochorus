@@ -29,11 +29,12 @@ class RenderedEmail:
     html: str
 
 
-def _display_name(profile) -> str:
+def _display_name(profile, lang: str = "en") -> str:
+    """The reader's first name, or "friend" in the email's language."""
     name = (getattr(profile, "display_name", "") or "").strip()
     if name:
         return name.split()[0]
-    return "friend"
+    return copy_mod.FRIEND.get(lang, copy_mod.FRIEND["en"])
 
 
 def _base_context(subscription, lang: str) -> dict:
@@ -156,7 +157,7 @@ def render_blocks(
         "blocks": blocks_mod.resolve(
             blocks_mod.blocks_for(content),
             lang,
-            name=_display_name(profile),
+            name=_display_name(profile, lang),
             cards=cards,
             localize_buttons=localize_buttons,
         ),
