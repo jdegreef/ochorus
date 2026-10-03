@@ -38,7 +38,9 @@
 		| 'more'
 		| 'download'
 		| 'layers'
-		| 'quote';
+		| 'quote'
+		| 'pen'
+		| 'highlighter';
 
 	let {
 		name,
@@ -176,6 +178,12 @@
 		<path d="M5 17V11a4 4 0 0 1 4-4M14 17V11a4 4 0 0 1 4-4" />
 		<rect x="5" y="13" width="4" height="4" rx="0.5" />
 		<rect x="14" y="13" width="4" height="4" rx="0.5" />
+	{:else if name === 'pen'}
+		<path d="M12 20h8" />
+		<path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z" />
+	{:else if name === 'highlighter'}
+		<path d="m9 11-5 5v3h8l2.5-2.5" />
+		<path d="m20.5 11.5-5.4 5.4a1.6 1.6 0 0 1-2.3 0l-4.6-4.6a1.6 1.6 0 0 1 0-2.3L13.6 4.6" />
 	{:else if name === 'layers'}
 		<!-- Book spines side by side: the Bookshelf's spine view. -->
 		<path d="M5 4v16M9.5 4v16M14 6l4 14M3 20h18" />
