@@ -1313,6 +1313,39 @@ class AdminEngagementTests(TestCase):
         self.assertNotIn(("book", "abide"), rising)
 
     @override_settings(DEBUG=True)
+    def test_a_reader_on_a_book_both_weeks_is_not_a_rise(self):
+        """Saved progress keeps only humility's latest touch (this week), so on
+        its own p1's sitting on it last week was invisible and humility read
+        as +2. The sitting brings p1 back into last week: +1."""
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=300, kind="book", book_slug="humility", language="en",
+        )
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual((row["this_week"], row["prev_week"], row["delta"]), (2, 1, 1))
+
+    @override_settings(DEBUG=True)
+    def test_an_opened_but_unread_sitting_is_not_a_reader(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=0, kind="book", book_slug="humility", language="en",
+        )
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
+
+    @override_settings(DEBUG=True)
     def test_highlight_heatmap(self):
         res = self.client.get("/api/admin/engagement/")
         hm = res.data["highlight_heatmap"]

@@ -13,7 +13,7 @@ which day someone read.
 
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import timedelta
 
 from django.db.models import Count, Min, Q
@@ -87,6 +87,36 @@ def weekly_active(now, weeks: int) -> list[dict]:
         {s.isoformat(): (s, e) for s, e in zip(starts, ends, strict=True)}
     )
     return [{"week": s.isoformat(), "readers": counts[s.isoformat()]} for s in starts]
+
+
+def readers_per_work(start, end) -> dict:
+    """Distinct readers per work ``(kind, slug)`` active between ``start``
+    and ``end``, for Rising this week.
+
+    Saved progress alone undercounts the earlier of two windows: it keeps only
+    each work's latest touch, so a reader on a book both weeks shows only in
+    the later one. Reading sittings keep every sitting with the work it was
+    opened on, so they bring that reader back. A sitting records only its
+    opening work, though, so saved progress still catches works reached mid-
+    sitting: a reader counts for a work if either source puts them on it in
+    the window."""
+    from reading.models import ReadingProgress, ReadingSession
+
+    readers: dict = defaultdict(set)
+    for profile, kind, slug in (
+        ReadingSession.objects.filter(
+            last_seen_at__gte=start, started_at__lt=end, seconds__gt=0
+        )
+        .exclude(book_slug="")
+        .exclude(kind="")
+        .values_list("profile", "kind", "book_slug")
+    ):
+        readers[(kind, slug)].add(profile)
+    for profile, kind, slug in ReadingProgress.objects.filter(
+        updated_at__gte=start, updated_at__lt=end
+    ).values_list("profile", "kind", "book_slug"):
+        readers[(kind, slug)].add(profile)
+    return {work: len(profiles) for work, profiles in readers.items()}
 
 
 def weekly_signups(starts) -> list[int]:
