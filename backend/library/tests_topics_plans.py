@@ -108,7 +108,8 @@ class PlanTests(TestCase):
         for raw in ("Día 4 — Belleza", "Jour 4 — Belleza", "दिन 4 — Belleza", "ቀን 4 — Belleza",
                     "اليوم 4 — Belleza"):
             self.assertEqual(plan_day_title(raw), "Belleza", raw)
-        for kept in ("Day 7", "Daybreak 3 — Light", "Section 3 — Motives", "Introduction: Brave Girls"):
+        for kept in ("Day 7", "Daybreak 3 — Light", "Section 3 — Motives", "Introduction: Brave Girls",
+                     "Day 3-5 Readings"):
             self.assertEqual(plan_day_title(kept), kept)
 
     def test_detail_names_each_days_key_verse(self):

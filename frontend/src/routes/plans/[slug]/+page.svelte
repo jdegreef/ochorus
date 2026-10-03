@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { untrack } from 'svelte';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
@@ -96,6 +97,16 @@
 	);
 
 	const nextDay = $derived(next === null ? undefined : plan.days.find((d) => d.day === next));
+	/** Where the day list opens: the next reading as of arriving on this plan.
+	 *  Held, not derived from `next`, so ticking a day off doesn't snap its week
+	 *  shut under the reader's cursor (and a week they opened stays open). Set
+	 *  in an effect so it lands after hydration: the prerender opened on Day 1,
+	 *  and progress is client-only. */
+	let openAt = $state<number | null>(1);
+	$effect(() => {
+		void plan.slug;
+		openAt = untrack(() => next);
+	});
 	// "Day 5 of 31 · 27 days left · 4 hr 11 min left" — the read card's eyebrow.
 	const progressLine = $derived(
 		[
@@ -212,11 +223,11 @@
 	<section class="mt-8" aria-labelledby="plan-days-heading">
 		<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
 		{#each groups as g, gi (g.key)}
-			{@const hasNext = next !== null && next >= g.first && next <= g.last}
+			{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
 			{#if grouped}
 				{@const read = g.days.filter((d) => doneSet.has(d.day)).length}
 				{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-				<details class="plan-group" open={hasNext || (next === null && gi === 0)}>
+				<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
 					<summary class="plan-group-head">
 						{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
 						<span class="min-w-0 flex-1">
@@ -235,7 +246,7 @@
 					<div class="plan-group-body">
 						{#if g.bookSlug}
 							<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
-								>{t('plans.aboutBook')} →</a
+								>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
 							>
 						{/if}
 						{@render weekList(g.days, hasNext)}
@@ -269,14 +280,21 @@
 		{#if weeks.length > 1}
 			{#each weeks as w, wi (w[0].day)}
 				{@const last = w[w.length - 1]}
-				<details class="plan-week" open={hasNext ? w.some((d) => d.day === next) : wi === 0}>
+				<details class="plan-week" open={hasNext ? openAt! >= w[0].day && openAt! <= last.day : wi === 0}>
 					<summary class="plan-week-head">
 						<span class="font-semibold text-text">{t('plans.week').replace('%n%', String(wi + 1))}</span>
 						<span class="min-w-0 flex-1 truncate text-muted">
 							{dayRange({ first: w[0].day, last: last.day })}<span class="hidden sm:inline"
-								>{' · '}{dayTitle(w[0])} → {dayTitle(last)}</span
+								>{' · '}{dayTitle(w[0])} – {dayTitle(last)}</span
 							>
 						</span>
+						{#if started}
+							<span class="sr-only"
+								>{t('plans.readOf')
+									.replace('%n%', String(w.filter((d) => doneSet.has(d.day)).length))
+									.replace('%m%', String(w.length))}</span
+							>
+						{/if}
 						<span class="week-dots" aria-hidden="true">
 							{#each w as d (d.day)}<span class="week-dot" class:done={doneSet.has(d.day)}></span>{/each}
 						</span>

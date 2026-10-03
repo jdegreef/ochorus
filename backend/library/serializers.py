@@ -2245,7 +2245,7 @@ def plan_article_index(plans, language):
 # book's contents, wrong in a plan, so plan payloads drop it. The word for "day"
 # in each content language that writes it; "Psalm 23 — …" keeps its number.
 _PLAN_DAY_PREFIX = re.compile(
-    r"^(?:Day|Día|Dia|Jour|Tag|Siku|Olunaku|День|दिन|ቀን|اليوم|يوم)\s+\d+\s*[—–:-]\s*(?=\S)",
+    r"^(?:Day|Día|Dia|Jour|Tag|Siku|Olunaku|День|दिन|ቀን|اليوم|يوم)\s+\d+\s*[—–:-]\s*(?=[^\d\s])",
     re.IGNORECASE,
 )
 
@@ -2294,7 +2294,7 @@ def _plan_covers(plan, books, limit=5):
         b = books.get(slug)
         if b:
             covers.append(_book_cover(b))
-        if len(covers) >= limit:
+        if limit and len(covers) >= limit:
             break
     return covers
 
@@ -2336,6 +2336,11 @@ class PlanDetailSerializer(PlanListSerializer):
 
     def get_available_languages(self, obj):
         return _available_languages(Plan, obj.slug)
+
+    def get_covers(self, obj):
+        """Every book's cover, not the shelf card's five: the day list draws one
+        on each book's section."""
+        return _plan_covers(obj, self._books(obj), limit=None)
 
     def get_authors(self, obj):
         """The distinct writers this plan reads through, in the order their books
