@@ -125,6 +125,47 @@ describe('library palette', () => {
 		});
 	});
 
+	describe('cover-tinted book cards', () => {
+		// A card's ground is its book's cover_color mixed into --surface at
+		// --cover-tint-amount (app.css .book-card). Cover colours are floored at
+		// mint to carry white type at 4.5:1 (covers.ink_safe), so the lightest a
+		// cover can be is a grey of luminance ~0.183 (#767676); the darkest is
+		// black. Every ink must hold 4.5:1 across that whole range.
+		const mix = (c: number[], g: number[], p: number) => c.map((v, i) => v * p + g[i] * (1 - p));
+		const extremes = ['#000000', '#3a3a3a', '#767676', '#0a0a2a', '#856e48', '#7a1f1a'];
+		const amount = (vars: Record<string, string>) => parseFloat(vars['--cover-tint-amount']) / 100;
+
+		for (const [theme, vars] of Object.entries(THEMES)) {
+			it(`text, muted, accent and every hue clear 4.5:1 on a tinted card in ${theme}`, () => {
+				expect(vars['--cover-tint-amount'], '--cover-tint-amount').toMatch(/^\d+(\.\d+)?%$/);
+				const failures: string[] = [];
+				for (const cover of extremes) {
+					const ground = mix(rgb(cover), rgb(vars['--surface']), amount(vars));
+					for (const ink of ['--text', '--muted', '--accent', ...HUES.map((h) => `--hue-${h}`)]) {
+						const r = contrastRatio(rgb(vars[ink]), ground);
+						if (r < 4.5) failures.push(`${ink} over ${cover}: ${r.toFixed(2)}`);
+					}
+				}
+				expect(failures, failures.join('\n')).toEqual([]);
+			});
+		}
+
+		it('holds on the night band too, whichever theme sets the amount', () => {
+			const night = rules(/@media screen \{\s*\.night-band \{/);
+			const failures: string[] = [];
+			for (const vars of Object.values(THEMES)) {
+				for (const cover of extremes) {
+					const ground = mix(rgb(cover), rgb(night['--surface']), amount(vars));
+					for (const ink of ['--text', '--muted', '--accent']) {
+						const r = contrastRatio(rgb(night[ink]), ground);
+						if (r < 4.5) failures.push(`${ink} over ${cover} at ${vars['--cover-tint-amount']}: ${r.toFixed(2)}`);
+					}
+				}
+			}
+			expect(failures, failures.join('\n')).toEqual([]);
+		});
+	});
+
 	it('every section is aliased to a defined hue', () => {
 		for (const section of SECTIONS) {
 			const alias = CSS.match(new RegExp(`--section-${section}:\\s*var\\(--hue-(\\w+)\\)`));

@@ -395,6 +395,10 @@
 	--grain-light-specks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .96 0 0 0 0 .9 0 0 0 0 .8 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .10 .10'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 	--grain: var(--grain-light-specks);
 	--band: #1d1914;
+	/* How much of a book's own cover_color tints its card (.book-card): the
+	   most each theme can take and still keep every ink at 4.5:1 over the
+	   darkest-to-lightest colour a cover may have (libraryPalette.test.ts). */
+	--cover-tint-amount: 9%;
 
 	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
 	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
@@ -478,6 +482,7 @@
 	--shelf-wood-edge: #8a6440;
 	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .32 0 0 0 0 .18 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .16 .16'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 	--band: #f1e8d8;
+	--cover-tint-amount: 8%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #ecebf7;
 	--hue-oxblood: #8a2f2a;
@@ -522,6 +527,7 @@
 	--shelf-wood-edge: #7a5634;
 	--grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .3 0 0 0 0 .14 1 0 0 0 0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='discrete' tableValues='0 0 0 0 0 .18 .18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 	--band: #ece1c9;
+	--cover-tint-amount: 7%;
 	--hue-indigo: #3f3d9a;
 	--hue-indigo-soft: #e9e5f3;
 	--hue-oxblood: #842c27;
@@ -2053,7 +2059,8 @@ nav.appnav .navsearch:hover {
 }
 
 /* A book on the shelf. The cover is the visual, so the chrome stays quiet — a
-   hairline and a surface fill, no colour wash. Before this the grid was bare
+   hairline and a surface fill, warmed by a whisper of the book's own cover
+   colour (below). Before this the grid was bare
    covers with caption text floating under them: the only browse surface with
    no card at all, and the reason the shelf read as unfinished next to Topics.
    height:100% + the mt-auto footer keep a row of cards level whatever the
@@ -2063,9 +2070,13 @@ nav.appnav .navsearch:hover {
 	flex-direction: column;
 	height: 100%;
 	padding: 0.6rem;
-	border: 1px solid var(--border);
+	/* Each card takes a whisper of its own cover's colour (--cover-tint, set
+	   by BookCard from the book's cover_color), so a shelf of cards reads as
+	   that many books rather than that many white boxes. With no colour it
+	   falls back to the plain surface and border. */
+	border: 1px solid color-mix(in srgb, var(--cover-tint, var(--border)) 22%, var(--border));
 	border-radius: var(--radius-card);
-	background: var(--surface);
+	background: color-mix(in srgb, var(--cover-tint, var(--surface)) var(--cover-tint-amount), var(--surface));
 	/* Hover (lift + shadow + accent border) is the neutral .card-lift recipe,
 	   worn in the markup. */
 }
