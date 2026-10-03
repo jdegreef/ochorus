@@ -5,7 +5,7 @@ import DrawerShellHost from '../../test/DrawerShellHost.svelte';
 
 /**
  * DrawerShell portals its scrim + panel to <body>, so an ancestor with a
- * transform (`.page-col`) or backdrop-filter (the reader's bars) can't become
+ * transform (the page-turn pager) or backdrop-filter (the reader's bars) can't become
  * the containing block for the fixed panel. Moving DOM out from under Svelte 5
  * is only safe if block teardown still removes exactly what it should — these
  * hold that across open/close cycles and an ancestor block going away.

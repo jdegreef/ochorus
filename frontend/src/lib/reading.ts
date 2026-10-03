@@ -239,6 +239,15 @@ export function prefersReducedMotion(): boolean {
 }
 
 /**
+ * Is the primary pointer a finger? Same shape as `prefersReducedMotion`: a
+ * one-shot read for client code (event handlers, onMount). For a value that
+ * picks what to MOUNT, use `mediaFlag('(pointer: coarse)')` instead.
+ */
+export function isCoarsePointer(): boolean {
+	return window.matchMedia?.('(pointer: coarse)').matches ?? false;
+}
+
+/**
  * Run `place` once the prose has stopped moving, then once more after the next
  * frame — for restoring a reader to their paragraph.
  *

@@ -11,7 +11,7 @@
 	 * supplies only its content.
 	 *
 	 * It is portalled to <body>, so a caller may render it anywhere — inside a
-	 * transformed `.page-col`, the page-turn pager or a backdrop-filtered bar —
+	 * transformed ancestor (the page-turn pager) or a backdrop-filtered bar —
 	 * and it still covers the viewport. The overlay is this component's ONLY
 	 * root element, which is what makes moving it safe: see
 	 * `$lib/actions/portal`.

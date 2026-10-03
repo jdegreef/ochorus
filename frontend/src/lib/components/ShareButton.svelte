@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { isCoarsePointer } from '$lib/reading';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -9,8 +10,8 @@
 	 * (`shareCard`/og-manifest), which is what a forwarded link previews.
 	 *
 	 * Client-only by design (static SPA): on click it uses the OS share sheet
-	 * where the browser has one (`navigator.share` — most phones and some
-	 * desktops), and otherwise opens a small menu — Copy link, WhatsApp,
+	 * on a touch device whose browser has one (`navigator.share` — most
+	 * phones), and otherwise opens a small menu — Copy link, WhatsApp,
 	 * Facebook, Email. WhatsApp leads because that is how this content travels.
 	 * The button always renders (no prerender branch); the capability check and
 	 * the menu are decided at click time.
@@ -40,7 +41,11 @@
 	const mailHref = $derived(`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${url}`)}`);
 
 	async function onClick() {
-		if (typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
+		// Not on desktop Chromium (the only engine with `userAgentData`): Chrome
+		// and Edge there hand off to a system dialog that often shows nothing —
+		// a click that "does nothing". Phones and Safari keep the OS sheet.
+		const desktopChromium = 'userAgentData' in navigator && !isCoarsePointer();
+		if (!desktopChromium && typeof navigator.share === 'function') {
 			try {
 				await navigator.share({ title, url });
 				return;
