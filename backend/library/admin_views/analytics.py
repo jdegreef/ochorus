@@ -173,11 +173,54 @@ class AdminEngagementView(APIView):
             "sessions": totals["count"] or 0,
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
+            "median_session_seconds": self._median_seconds(sessions, totals["count"] or 0),
+            "lengths": self._sitting_lengths(sessions),
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
             "seconds_30d": w30["secs"] or 0,
             "readers_30d": w30["readers"] or 0,
         }
+
+    # Sitting-length buckets, as (key, upper bound in seconds); the last is open.
+    # 15 minutes is where a sitting stops being a look and becomes a read.
+    SITTING_BUCKETS = (("lt1", 60), ("1to5", 5 * 60), ("5to15", 15 * 60), ("15to30", 30 * 60), ("30plus", None))
+
+    def _sitting_lengths(self, sessions):
+        """How many sittings, and how much reading, fall in each length bucket.
+
+        The average hides the spread: a few long sittings on top of many short
+        ones reads the same as everyone reading a little. Both measures come
+        back so the page can show where sittings are and where the *time* is.
+        One query.
+        """
+        from django.db.models import Sum
+
+        aggs, low = {}, 0
+        for key, high in self.SITTING_BUCKETS:
+            q = Q(seconds__gte=low) & (Q(seconds__lt=high) if high else Q())
+            aggs[f"{key}_n"] = Count("id", filter=q)
+            aggs[f"{key}_s"] = Sum("seconds", filter=q)
+            low = high
+        row = sessions.aggregate(**aggs)
+        return [
+            {"key": key, "sittings": row[f"{key}_n"], "seconds": row[f"{key}_s"] or 0}
+            for key, _ in self.SITTING_BUCKETS
+        ]
+
+    @staticmethod
+    def _median_seconds(sessions, count: int) -> int:
+        """The middle sitting's length (the mean of the two middles when even).
+
+        Read by offset rather than a database percentile so it means the same
+        on SQLite (tests) and Postgres.
+        """
+        if not count:
+            return 0
+        mid = sessions.order_by("seconds").values_list("seconds", flat=True)[
+            (count - 1) // 2 : count // 2 + 1
+        ]
+        values = list(mid)
+        return round(sum(values) / len(values))
 
     def _total_users(self) -> int:
         from accounts.models import UserProfile

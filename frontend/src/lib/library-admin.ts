@@ -1201,11 +1201,34 @@ export interface EngagementTime {
 	sessions: number;
 	readers: number;
 	avg_session_seconds: number;
+	/** The middle sitting's length: what a typical sitting is, which the
+	 *  average isn't when a few long reads sit on many short looks. */
+	median_session_seconds: number;
+	/** Sittings and their reading time per length bucket, shortest first. */
+	lengths: SittingBucket[];
 	seconds_7d: number;
 	readers_7d: number;
 	seconds_30d: number;
 	readers_30d: number;
 }
+
+export interface SittingBucket {
+	key: SittingBucketKey;
+	sittings: number;
+	seconds: number;
+}
+
+/** The buckets' labels, in the API's order. The last two are the deep reads
+ *  (15 minutes and over), the group worth watching on its own. */
+export const SITTING_BUCKETS = {
+	lt1: 'Under 1m',
+	'1to5': '1–5m',
+	'5to15': '5–15m',
+	'15to30': '15–30m',
+	'30plus': '30m+'
+} as const;
+export type SittingBucketKey = keyof typeof SITTING_BUCKETS;
+export const DEEP_SITTINGS: readonly SittingBucketKey[] = ['15to30', '30plus'];
 
 /** A most-hearted work, keyed on hearts and without a reader/finisher count
  *  (a Favorite is a save, independent of reading). */
