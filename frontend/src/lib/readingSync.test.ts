@@ -12,7 +12,8 @@ import {
 	JOURNAL_DIRTY_KEY,
 	SHELVES_KEY,
 	SYNC_OWED_KEY,
-	SYNC_STASH_KEY
+	SYNC_STASH_KEY,
+	PLAN_SCHEDULE_KEY
 } from './reading-schema';
 import { addPending, bookmarkTarget, pendingAt } from './removals';
 
@@ -163,6 +164,74 @@ describe('readingSync.clearOnSignOut', () => {
 		} finally {
 			fetchSpy.mockRestore();
 			vi.useRealTimers();
+		}
+	});
+
+	it('pushPlanSchedule PUTs a plan\'s calendar choices, stamped, when signed in', async () => {
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValue(new Response('{}', { status: 200 }));
+		vi.useFakeTimers();
+		try {
+			readingSync.setSignedIn(true);
+			readingSync.pushPlanSchedule('dotk', { start: '2026-11-02', rule: 'weekdays', updatedAt: 5000 });
+			await vi.runAllTimersAsync();
+			const [url, init] = fetchSpy.mock.calls[0];
+			expect(String(url)).toContain('/api/reading/plan-schedule/dotk/');
+			expect(init?.method).toBe('PUT');
+			expect(JSON.parse(String(init?.body))).toEqual({
+				start_on: '2026-11-02',
+				reading_days: 'weekdays',
+				remind_at: '',
+				updated_at: 5000
+			});
+		} finally {
+			fetchSpy.mockRestore();
+			vi.useRealTimers();
+			readingSync.setSignedIn(false);
+		}
+	});
+
+	it('the merge carries calendar choices up and writes the account\'s back', async () => {
+		localStorage.setItem(PLAN_SCHEDULE_KEY, JSON.stringify({ dotk: { rule: 'monsat', time: '06:30', updatedAt: 7 } }));
+		const fetchSpy = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+			new Response(
+				JSON.stringify({
+					progress: [],
+					marks: [],
+					plan_schedules: [
+						// Another device chose later: the account's choice comes down.
+						{
+							plan_slug: 'dotk',
+							start_on: null,
+							reading_days: 'weekdays',
+							remind_at: '07:15',
+							client_updated_at: '2026-10-02T12:00:00Z'
+						},
+						{
+							plan_slug: 'school-of-prayer',
+							start_on: '2026-11-02',
+							reading_days: 'daily',
+							remind_at: '',
+							client_updated_at: '2026-10-01T12:00:00Z'
+						}
+					]
+				}),
+				{ status: 200, headers: { 'content-type': 'application/json' } }
+			)
+		);
+		try {
+			readingSync.setSignedIn(true);
+			await readingSync.mergeOnSignIn();
+			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
+			expect(body.plan_schedules).toEqual([
+				{ plan_slug: 'dotk', start_on: null, reading_days: 'monsat', remind_at: '06:30', updated_at: 7 }
+			]);
+			const local = JSON.parse(localStorage.getItem(PLAN_SCHEDULE_KEY)!);
+			expect(local.dotk).toEqual({ rule: 'weekdays', time: '07:15', updatedAt: Date.parse('2026-10-02T12:00:00Z') });
+			expect(local['school-of-prayer']).toMatchObject({ start: '2026-11-02', rule: 'daily' });
+			expect(local['school-of-prayer'].time).toBeUndefined();
+		} finally {
+			fetchSpy.mockRestore();
+			readingSync.setSignedIn(false);
 		}
 	});
 

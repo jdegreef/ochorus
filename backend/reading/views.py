@@ -38,6 +38,7 @@ from .models import (
     JournalEntry,
     JournalKind,
     PlanProgress,
+    PlanSchedule,
     PrayerGroup,
     ReadingDay,
     ReadingProgress,
@@ -52,6 +53,7 @@ from .serializers import (
     FavoriteSerializer,
     JournalEntrySerializer,
     PlanProgressSerializer,
+    PlanScheduleSerializer,
     ReadingProgressSerializer,
 )
 
@@ -226,6 +228,47 @@ def _upsert_plan_progress(profile, slug, done, started):
         locked.started_at = merged_started
         locked.save(update_fields=["done", "started_at", "updated_at"])
     return locked
+
+
+_HHMM = re.compile(r"^(?:[01]\d|2[0-3]):[0-5]\d$")
+
+
+def _clean_schedule(data: dict) -> dict:
+    """A client schedule payload → valid model fields. Junk falls back to the
+    defaults rather than failing the write: a bad start date is "none chosen",
+    an unknown rule is daily, a malformed time is "none chosen"."""
+    try:
+        start_on = date.fromisoformat(data.get("start_on")) if data.get("start_on") else None
+    except (TypeError, ValueError):
+        start_on = None
+    rule = data.get("reading_days")
+    remind = data.get("remind_at")
+    return {
+        "start_on": start_on,
+        "reading_days": rule if rule in PlanSchedule.ReadingDays.values else PlanSchedule.ReadingDays.DAILY,
+        "remind_at": remind if isinstance(remind, str) and _HHMM.match(remind) else "",
+    }
+
+
+def _upsert_plan_schedule(profile, slug, data: dict):
+    """Store one plan's schedule choices unless the server's are newer.
+
+    Last write wins by the client clock that made each choice
+    (``updated_at``, epoch ms) — choices replace each other, they don't merge.
+    A clock running ahead can't lock other devices out: a stamp from the
+    future counts as now. A write with no stamp counts as now too (an older
+    client), and an equal stamp is the same choice arriving twice."""
+    now = datetime.now(UTC)
+    client_dt = min(_ms_to_dt(data.get("updated_at")) or now, now)
+    existing = PlanSchedule.objects.filter(profile=profile, plan_slug=slug).first()
+    if existing and existing.client_updated_at >= client_dt:
+        return existing
+    obj, _ = PlanSchedule.objects.update_or_create(
+        profile=profile,
+        plan_slug=slug,
+        defaults={**_clean_schedule(data), "client_updated_at": client_dt},
+    )
+    return obj
 
 
 def _ms_to_dt(ms) -> datetime | None:
@@ -1234,6 +1277,20 @@ class PlanProgressView(APIView):
         return Response(PlanProgressSerializer(obj).data)
 
 
+class PlanScheduleView(APIView):
+    """Store the reader's schedule choices for one plan (start date, reading
+    days, reminder time) — the newest choice wins (see ``_upsert_plan_schedule``)."""
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [_ReadingWriteThrottle]
+
+    def put(self, request, slug):
+        if not _valid_slug(slug):
+            return Response({"detail": "Invalid slug."}, status=400)
+        obj = _upsert_plan_schedule(_profile(request), slug, _dict_body(request))
+        return Response(PlanScheduleSerializer(obj).data)
+
+
 class ActivityView(APIView):
     """Record one day the reader read (the streak's activity log)."""
 
@@ -1368,6 +1425,7 @@ class MergeView(APIView):
             self._merge_bookmarks(profile, data.get("bookmarks") or [])
             self._merge_activity(profile, data.get("activity") or [])
             self._merge_plan_progress(profile, data.get("plan_progress") or [])
+            self._merge_plan_schedules(profile, data.get("plan_schedules") or [])
             self._merge_journal(profile, data.get("journal") or [])
             self._merge_shelves(profile, data.get("shelves") or [])
         # `removed_applied` tells the client this API honours `removed`, so it
@@ -1429,6 +1487,16 @@ class MergeView(APIView):
                 continue
             started = _ms_to_dt(row.get("started_at")) or datetime.now(UTC)
             _upsert_plan_progress(profile, slug, _clean_done(row.get("done")), started)
+
+    def _merge_plan_schedules(self, profile, incoming):
+        """Each plan's schedule choices, newest wins (same rule as a live PUT —
+        see ``_upsert_plan_schedule``). A non-list is ignored and malformed rows
+        skipped, so a bad bundle can't 500 the reconciliation."""
+        if not isinstance(incoming, list):
+            return
+        for row in incoming[:MAX_MERGE_ROWS]:
+            if isinstance(row, dict) and _valid_slug(row.get("plan_slug")):
+                _upsert_plan_schedule(profile, row["plan_slug"], row)
 
     def _merge_shelves(self, profile, incoming):
         """The same merge as a live PUT, per shelf (a reader has a handful, so
@@ -1711,6 +1779,9 @@ def _serialize_state(profile) -> dict:
         "shelves": CustomShelfSerializer(profile.shelves.all(), many=True).data,
         "plan_progress": PlanProgressSerializer(
             profile.plan_progress.all(), many=True
+        ).data,
+        "plan_schedules": PlanScheduleSerializer(
+            profile.plan_schedules.all(), many=True
         ).data,
         # Activity log (the streak): just the set of days, newest first.
         "activity": [d.day.isoformat() for d in profile.reading_days.all()],

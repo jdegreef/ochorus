@@ -7,6 +7,7 @@ from .models import (
     Favorite,
     JournalEntry,
     PlanProgress,
+    PlanSchedule,
     ReadingProgress,
 )
 
@@ -54,6 +55,13 @@ class PlanProgressSerializer(serializers.ModelSerializer):
         model = PlanProgress
         fields = ["plan_slug", "started_at", "done", "updated_at"]
         read_only_fields = ["updated_at"]
+
+
+class PlanScheduleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PlanSchedule
+        fields = ["plan_slug", "start_on", "reading_days", "remind_at", "client_updated_at"]
+        read_only_fields = fields
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
