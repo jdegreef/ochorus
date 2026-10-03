@@ -171,6 +171,34 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"am/a-brand-plucked-from-the-fire": {
+			"ground": "3aa162aa52253473aa9d793cfcb701bcb8bc52c20c8fdd6bd52bbd214da2bcfe",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.95,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[141, 102, 459, 131]
+				],
+				"title": [
+					[59, 337, 542, 413]
+				],
+				"subtitle": [
+					[157, 487, 443, 508]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				287,
+				508
+			]
+		},
 		"am/a-hidden-fire": {
 			"ground": "e32ae790fff9f06c2040701935b8e855f4e6706a6a87de96d98dd0774d4e3624",
 			"style": "originals",
@@ -728,6 +756,26 @@
 				481
 			]
 		},
+		"am/how-to-bring-men-to-christ": {
+			"ground": "d6d5d7182b06864d623890bb51dad7009b41d704249ad8ce12a1b2271d577982",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0.055
+		},
+		"am/how-to-succeed-in-the-christian-life": {
+			"ground": "b8b04259289aa22cd9097c4faa1fca80676cb6ddf78288e1497c01889c848ef4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "diagonal/ochre",
+			"bar": 0
+		},
 		"am/humility-2": {
 			"ground": "55400e37a034de4f151008276c3d2b297e5130066f319d911d0fb6501e1b0bb0",
 			"style": "devotional",
@@ -747,6 +795,93 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/key-teachings-of-a-b-simpson": {
+			"ground": "5ed8a8bc3a9fdd9d0530c5ebdc29e99e85f2739ab6e5ac9a5c1a45bdfd1d149d",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[133, 169, 467, 232],
+					[121, 225, 479, 288]
+				],
+				"subtitle": [
+					[99, 348, 501, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"am/key-teachings-of-jonathan-edwards": {
+			"ground": "cfb6d0436930e933a3ecf1a5ffe1e2838783591d712a7c278ba14a0567748c48",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[116, 169, 484, 232],
+					[121, 225, 479, 288]
+				],
+				"subtitle": [
+					[99, 348, 501, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
+		"am/key-teachings-of-richard-baxter": {
+			"ground": "4ceab4ad3e812fdfedbff666c47e4f488d46a98f9462d426fc1e973b96fd56ce",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[141, 169, 459, 232],
+					[121, 225, 479, 288]
+				],
+				"subtitle": [
+					[99, 348, 501, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
 		},
 		"am/life-experience-gospel-labours": {
 			"ground": "357d42aa8286ff64cc0202b23e8a049e19b68df1766929bc4d090624a2efd584",
@@ -776,6 +911,16 @@
 				290,
 				505
 			]
+		},
+		"am/life-of-antony": {
+			"ground": "8c8467b15bd2c4489acc486ce7f934cfcc6629add65bc6d2027ff88c1aabd102",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
 		},
 		"am/lord-teach-us-to-pray-2": {
 			"ground": "ce3f44ec7bd4efef11808a3bf0469f0578b5f74d814ee0631a04453cafb846ea",
@@ -928,6 +1073,16 @@
 				472
 			]
 		},
+		"am/on-the-incarnation": {
+			"ground": "28b7c36e8662f835407e556cedc74eb6c6131f9faf803b73c31b543768fd3aa9",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/indigo",
+			"bar": 0
+		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
 			"style": "press",
@@ -941,6 +1096,16 @@
 		"am/pilgrims-progress-teens": {
 			"ground": "e751a2cc60f15531d74ce862b550003a156f280232fea80c458ce91066bb589e",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
+		"am/pilgrims-progress-words-of-one-syllable": {
+			"ground": "c5789d69db0cf580dc984b05b4bcdad954923766eca7352a3688083653ed87de",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"art": true,
@@ -1253,6 +1418,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"am/the-fourfold-gospel": {
+			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
 			"bar": 0
 		},
 		"am/the-inner-chamber": {
