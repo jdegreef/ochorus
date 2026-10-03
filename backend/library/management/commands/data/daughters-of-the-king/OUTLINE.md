@@ -10,9 +10,9 @@ The anchor is 2 Corinthians 6:18: "I will be a Father to you, and you will be My
 
 | Book | Focus | Slug | Reading plan |
 |---|---|---|---|
-| 1 | Beloved: who you are, whose you are, and the brave girls who went before you | `daughters-of-the-king-1` | `daughters-of-the-king-book-1-30-days` |
-| 2 | Brave: courage for worry, a voice to speak, and hands to serve | `daughters-of-the-king-2` | `daughters-of-the-king-book-2-30-days` |
-| 3 | Growing Up: your feelings, your changing body, wise choices, and God's calling | `daughters-of-the-king-3` | `daughters-of-the-king-book-3-30-days` |
+| 1 | Beloved: who you are, whose you are, and the brave girls who went before you | `daughters-of-the-king-1` | `daughters-of-the-king-three-months` |
+| 2 | Brave: courage for worry, a voice to speak, and hands to serve | `daughters-of-the-king-2` | `daughters-of-the-king-three-months` |
+| 3 | Growing Up: your feelings, your changing body, wise choices, and God's calling | `daughters-of-the-king-3` | `daughters-of-the-king-three-months` |
 
 ## Founder decisions (2026-09-23)
 
@@ -26,7 +26,7 @@ The anchor is 2 Corinthians 6:18: "I will be a Father to you, and you will be My
 
 - **Each day:** a title, the Scripture (BSB), a teaching of about 300–450 words, **Think about it** / **Try this**, and a prayer.
 - **Each week** ends with "**A true story:**", a short spotlight on a woman from the *Brave for God* books. Book 3 revisits women from Books 1 and 2, each from a new angle, plus Lottie Moon.
-- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The reading plan reads chapters 2–31, so plan day N is the chapter titled "Day N". The `(2, 31)` span in `LAUNCH_PLANS` handles this.
+- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The series reading plan (a `CURATED_PLANS` entry; one per series, Rooted in two halves) reads every chapter of its books in order, Introductions and Conclusions included, so each book is 32 plan days.
 - **Every introduction** ends with a short note "For parents, grandparents and leaders". Every conclusion includes a gentle invitation to trust Jesus. Books 1 and 2 preview the next book, and Book 3 closes the series.
 - **Key verses** don't repeat a key verse from Rooted or from earlier books in either series. Check a new day's verse against every manuscript, including verse ranges: Matthew 5:8 falls inside Matthew 5:3–9.
 

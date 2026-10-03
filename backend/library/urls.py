@@ -4,6 +4,7 @@ from .views import (
     ArticleDetailView,
     ArticleListView,
     AuthorDetailView,
+    AuthorEraPresenceView,
     AuthorListView,
     BookDetailView,
     BookEpubView,
@@ -18,11 +19,14 @@ from .views import (
     PopularSearchesView,
     QuoteAuthorsView,
     QuoteAuthorTopicView,
+    QuoteContextView,
+    QuoteFeaturedView,
     QuotePageView,
     QuoteResolveView,
     QuoteTopicDetailView,
     QuoteTopicPagesView,
     QuoteTopicsView,
+    ScriptureBookView,
     ScriptureGraphView,
     ScripturePagesView,
     ScriptureView,
@@ -38,6 +42,7 @@ from .views import (
 
 urlpatterns = [
     path("authors/", AuthorListView.as_view(), name="author-list"),
+    path("authors/eras/", AuthorEraPresenceView.as_view(), name="author-era-presence"),
     path("authors/<slug:slug>/", AuthorDetailView.as_view(), name="author-detail"),
     path("originals/", OriginalsView.as_view(), name="originals"),
     path("books/", BookListView.as_view(), name="book-list"),
@@ -50,6 +55,10 @@ urlpatterns = [
     # Before quotes/<author>/ so "resolve" is never read as an author slug. The
     # reader's saved-quotes shelf POSTs its stored slugs here.
     path("quotes/resolve/", QuoteResolveView.as_view(), name="quote-resolve"),
+    # The index's featured pool, and one quote's source paragraph. Both before
+    # quotes/<author>/ (and its three-segment topic page) for the same reason.
+    path("quotes/featured/", QuoteFeaturedView.as_view(), name="quote-featured"),
+    path("quotes/context/<slug:quote>/", QuoteContextView.as_view(), name="quote-context"),
     # The theme vocabulary lives under its own prefix so a theme slug can never
     # be mistaken for an author under quotes/<author>/. "pages" before <topic>,
     # like scripture/pages/ — it is one segment, they are the build's page list.
@@ -64,9 +73,10 @@ urlpatterns = [
         name="quote-author-topic",
     ),
     path("scripture/", ScriptureView.as_view(), name="scripture"),
-    # Before the <book> patterns: "pages" is one segment, they are two or three,
-    # so these cannot actually collide — the order is for a reader of this file.
+    # BEFORE scripture/<slug:book>/: that pattern is one segment too, so
+    # "pages" would otherwise be read as a book of the Bible (and 404).
     path("scripture/pages/", ScripturePagesView.as_view(), name="scripture-pages"),
+    path("scripture/<slug:book>/", ScriptureBookView.as_view(), name="scripture-book"),
     path(
         "scripture/<slug:book>/<int:chapter>/",
         ScriptureGraphView.as_view(),

@@ -17,6 +17,8 @@ stored twice.
 
 from __future__ import annotations
 
+import hashlib
+import json
 import secrets
 
 from django.db import models
@@ -36,6 +38,8 @@ def _new_token() -> str:
 class EmailKind(models.TextChoices):
     LIFECYCLE = "lifecycle", "Lifecycle"
     BROADCAST = "broadcast", "Broadcast"
+    # A one-to-one email an admin wrote to a single reader from the admin.
+    DIRECT = "direct", "Direct"
 
 
 class SendStatus(models.TextChoices):
@@ -48,7 +52,11 @@ class SendStatus(models.TextChoices):
 class BroadcastStatus(models.TextChoices):
     DRAFT = "draft", "Draft"
     SCHEDULED = "scheduled", "Scheduled"
+    # Queued or mid-send: the email cron works through the audience in batches.
     SENDING = "sending", "Sending"
+    # Stopped mid-send, by an admin or by the bounce/complaint guardrail; the
+    # cursor keeps its place so a resume carries on from the next reader.
+    PAUSED = "paused", "Paused"
     SENT = "sent", "Sent"
     CANCELED = "canceled", "Canceled"
 
@@ -71,6 +79,17 @@ class EventType(models.TextChoices):
 SUPPRESSING_EVENTS = frozenset({EventType.BOUNCED, EventType.COMPLAINED})
 
 
+def stream_for(kind: str, lifecycle_step: str = "") -> str:
+    """Which preference-center stream an email belongs to. Broadcasts are
+    announcements; a lifecycle step with its own stream (``STEP_STREAM``, e.g.
+    finish-the-series) routes there; every other lifecycle email is onboarding."""
+    from .streams import STEP_STREAM
+
+    if kind == EmailKind.BROADCAST:
+        return "announcements"
+    return STEP_STREAM.get(lifecycle_step, "onboarding")
+
+
 class EmailSubscription(models.Model):
     """A reader's email consent and suppression state — one row per profile.
 
@@ -86,9 +105,17 @@ class EmailSubscription(models.Model):
         on_delete=models.CASCADE,
         related_name="email_subscription",
     )
-    # Opt-out defaults: subscribed until the reader says otherwise.
+    # Opt-out defaults: subscribed until the reader says otherwise. These two are
+    # the coarse legacy switches; per-stream choices live in ``stream_prefs`` and
+    # default to them (see emails/streams.py).
     lifecycle_opt_in = models.BooleanField(default=True)
     newsletter_opt_in = models.BooleanField(default=True)
+    # Per-stream opt-in, {stream_key: bool}. Absent key ⇒ the stream's default
+    # (its legacy boolean, or True). Set from the preference center.
+    stream_prefs = models.JSONField(default=dict, blank=True)
+    # Preferred language for email, overriding the reader's reading locale when
+    # set (also from the preference center). Blank ⇒ use UserProfile.locale.
+    email_locale = models.CharField(max_length=10, blank=True)
     # The master off switch (the footer's one-click unsubscribe): stops
     # everything, lifecycle included.
     unsubscribed_all = models.BooleanField(default=False)
@@ -110,18 +137,65 @@ class EmailSubscription(models.Model):
     def is_suppressed(self) -> bool:
         return self.suppressed_at is not None
 
-    def wants(self, kind: str) -> bool:
-        """Whether the reader will receive an email of ``kind`` right now.
+    def stream_default(self, stream: str) -> bool:
+        """A stream's default opt-in — its legacy boolean, or True."""
+        from .streams import LEGACY_FIELD
+
+        field = LEGACY_FIELD.get(stream)
+        return getattr(self, field) if field else True
+
+    def block_reason(self) -> str | None:
+        """Why this reader can receive no email at all, or ``None``.
+
+        The two blockers every kind of email obeys — suppression and the master
+        off switch — in one place, worded for the admin. ``wants_stream`` (and
+        its ORM mirror below) apply them before any per-stream choice; a direct
+        email, which is no stream, applies only these."""
+        if self.is_suppressed:
+            return (
+                "This address is suppressed after a bounce or spam complaint "
+                f"({self.suppression_reason or 'no reason recorded'})."
+            )
+        if self.unsubscribed_all:
+            return "This reader has unsubscribed from all email."
+        return None
+
+    def wants_stream(self, stream: str) -> bool:
+        """Whether the reader will receive mail of ``stream`` right now.
 
         Suppression and the master off switch block everything; otherwise the
-        per-class opt-in applies. Broadcasts obey ``newsletter_opt_in``; every
-        lifecycle email obeys ``lifecycle_opt_in``.
-        """
-        if self.is_suppressed or self.unsubscribed_all:
+        reader's per-stream choice applies, defaulting to the stream's default
+        (opt-out posture)."""
+        from .streams import require_stream
+
+        require_stream(stream)
+        if self.block_reason():
             return False
-        if kind == EmailKind.BROADCAST:
-            return self.newsletter_opt_in
-        return self.lifecycle_opt_in
+        return bool((self.stream_prefs or {}).get(stream, self.stream_default(stream)))
+
+    def wants(self, kind: str, lifecycle_step: str = "") -> bool:
+        """Whether the reader will receive an email of ``kind`` right now —
+        resolved to the stream that (kind, step) belongs to."""
+        return self.wants_stream(stream_for(kind, lifecycle_step))
+
+    @staticmethod
+    def wants_stream_q(stream: str) -> models.Q:
+        """A ``Q`` selecting the rows ``wants_stream(stream)`` is true for.
+
+        The ORM mirror of :meth:`wants_stream` — kept beside it so the per-stream
+        choice, its legacy-boolean fallback, and the suppression/off-switch
+        blockers stay defined once. Use it to count or filter a subscription
+        queryset by stream consent (e.g. admin metrics)."""
+        from .streams import LEGACY_FIELD, require_stream
+
+        require_stream(stream)
+        explicit_on = models.Q(**{f"stream_prefs__{stream}": True})
+        no_choice = ~models.Q(stream_prefs__has_key=stream)
+        legacy = LEGACY_FIELD.get(stream)
+        default_on = no_choice & models.Q(**{legacy: True}) if legacy else no_choice
+        return (explicit_on | default_on) & models.Q(
+            unsubscribed_all=False, suppressed_at__isnull=True
+        )
 
     def suppress(self, reason: str) -> None:
         self.suppressed_at = timezone.now()
@@ -157,6 +231,35 @@ class Broadcast(models.Model):
     status = models.CharField(
         max_length=20, choices=BroadcastStatus.choices, default=BroadcastStatus.DRAFT
     )
+
+    # --- The batched send (emails/broadcasts.py) -------------------------------
+    # The audience is walked in profile-pk order; ``send_cursor`` is the last pk
+    # processed, so a send interrupted anywhere (a pause, a time budget, a crash)
+    # resumes from the next reader. ``send_tally`` counts sent/skipped/failed —
+    # skips leave no EmailMessage row, so the counts can't be derived from them.
+    send_cursor = models.BigIntegerField(default=0)
+    send_tally = models.JSONField(default=dict, blank=True)
+    send_started_at = models.DateTimeField(null=True, blank=True)
+    send_finished_at = models.DateTimeField(null=True, blank=True)
+    # Single-runner lease: a worker holds the send until this time and renews it
+    # each batch, so two cron runs (or a cron run and a manual one) never walk
+    # the same audience at once.
+    send_lease_until = models.DateTimeField(null=True, blank=True)
+    # Why the system (or an admin) put the broadcast in its current state — a
+    # pause, a guardrail stop, a schedule that fell back to DRAFT. Shown in the
+    # admin; cleared when sending (re)starts.
+    status_reason = models.CharField(max_length=200, blank=True)
+    # Set when an admin resumes past a guardrail pause: the bounce/complaint
+    # check no longer stops this broadcast.
+    guardrail_override = models.BooleanField(default=False)
+    # Digest of the subject/content/from the last successful test send went out
+    # with, so the pre-send checks can tell whether the copy changed since.
+    tested_digest = models.CharField(max_length=64, blank=True)
+    # AI-drafted translations, per language (emails/translation_jobs.py):
+    # {lang: {"state": requested|draft|approved, "issue", "url", "source_locale",
+    # "source_digest", ...}}. Admin-only review state — never shown to readers.
+    translations = models.JSONField(default=dict, blank=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -166,6 +269,48 @@ class Broadcast(models.Model):
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"broadcast<{self.name}>"
 
+    # --- Lifecycle rules, in one place (views, worker and the admin read these) --
+
+    #: Statuses a cancel may move from: before or during a send.
+    CANCELABLE = (
+        BroadcastStatus.DRAFT,
+        BroadcastStatus.SCHEDULED,
+        BroadcastStatus.SENDING,
+        BroadcastStatus.PAUSED,
+    )
+
+    #: Statuses of a broadcast that has mailed (or is mailing) readers.
+    MAILED = (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT)
+
+    @property
+    def is_locked(self) -> bool:
+        """Whether its copy and audience are frozen: it has mailed (or may have
+        mailed) someone. A schedule withdrawn before it started is not."""
+        if self.status in self.MAILED:
+            return True
+        return self.status == BroadcastStatus.CANCELED and self.send_started_at is not None
+
+    @property
+    def can_send(self) -> bool:
+        """Whether it may be sent or (re)scheduled: it has never started sending."""
+        return self.status in (
+            BroadcastStatus.DRAFT,
+            BroadcastStatus.SCHEDULED,
+            BroadcastStatus.CANCELED,
+        ) and not self.is_locked
+
+    @property
+    def progress(self) -> dict:
+        """Readers processed so far by the batched send, by outcome."""
+        return {"sent": 0, "skipped": 0, "failed": 0, **(self.send_tally or {})}
+
+    def content_digest(self) -> str:
+        """A stable hash of everything a recipient sees, for ``tested_digest``."""
+        payload = json.dumps(
+            [self.subject, self.content, self.from_address], sort_keys=True, ensure_ascii=False
+        )
+        return hashlib.sha256(payload.encode()).hexdigest()
+
 
 def idempotency_key(kind: str, discriminator: str, profile) -> str:
     """The send-once key for an (email × recipient), in ONE place.
@@ -173,7 +318,10 @@ def idempotency_key(kind: str, discriminator: str, profile) -> str:
     The unique column on :class:`EmailMessage` is the guarantee; this is the
     single owner of its *format*, so a new lifecycle step or the broadcast path
     can't drift the string and silently defeat uniqueness. ``discriminator`` is
-    the step name (``"welcome"``) or the broadcast id.
+    the step name (``"welcome"``), the broadcast id, or a step plus a per-entity
+    suffix where one email kind sends once per thing — e.g.
+    ``"finish_series:<next-slug>"`` so the series nudge keys per next volume while
+    its stored ``lifecycle_step`` stays the bare ``"finish_series"`` for metrics.
     """
     return f"{kind}:{discriminator}:{profile.pk}"
 
@@ -214,6 +362,13 @@ class EmailMessage(models.Model):
         max_length=20, choices=SendStatus.choices, default=SendStatus.QUEUED
     )
     error = models.CharField(max_length=300, blank=True)
+    # A test send of a broadcast to an admin: kept out of the broadcast's
+    # results, its guardrail and the metrics.
+    is_test = models.BooleanField(default=False)
+    # Direct emails only: the admin who wrote it, and the plain text of what was
+    # said, so the reader's email history shows the conversation, not just a subject.
+    sent_by = models.CharField(max_length=254, blank=True)
+    body_text = models.TextField(blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     sent_at = models.DateTimeField(null=True, blank=True)
@@ -223,11 +378,23 @@ class EmailMessage(models.Model):
         indexes = [
             models.Index(fields=["kind", "lifecycle_step"]),
             models.Index(fields=["recipient", "-created_at"]),
+            # Sender health reads the last 30 days of sends (emails/health.py).
+            models.Index(fields=["sent_at"]),
         ]
 
     def __str__(self) -> str:  # pragma: no cover - repr only
-        label = self.lifecycle_step or (self.broadcast_id and f"broadcast {self.broadcast_id}")
-        return f"message<{label} → {self.to_email}>"
+        return f"message<{self.label} → {self.to_email}>"
+
+    @property
+    def label(self) -> str:
+        """What this email was, for an admin: the campaign, the drip step, or a
+        direct email."""
+        if self.kind == EmailKind.BROADCAST:
+            name = self.broadcast.name if self.broadcast_id else "Broadcast"
+            return f"{name} (test)" if self.is_test else name
+        if self.kind == EmailKind.LIFECYCLE:
+            return self.lifecycle_step.replace("_", " ").capitalize()
+        return "Direct email"
 
 
 class EmailEvent(models.Model):
@@ -263,3 +430,23 @@ class EmailEvent(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"event<{self.type} {self.message_id}>"
+
+
+class EmailTemplate(models.Model):
+    """A reusable campaign design: block content (and subjects) per language,
+    the same shape as :attr:`Broadcast.content`. A new broadcast can start from
+    one, and a broadcast can be saved as one. Copied, never linked — editing a
+    template doesn't change broadcasts made from it."""
+
+    name = models.CharField(max_length=200)
+    subject = models.JSONField(default=dict, blank=True)
+    content = models.JSONField(default=dict, blank=True)
+    created_by = models.CharField(max_length=254, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"template<{self.name}>"

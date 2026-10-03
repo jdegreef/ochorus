@@ -1,63 +1,114 @@
 <script lang="ts">
-	import Arrow from '$lib/components/Arrow.svelte';
 	import type { PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { readingMinutes } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { SITE_URL } from '$lib/config';
 	import { itemList, hreflangAll } from '$lib/seo';
 	import { localizeHref } from '$lib/href';
-	import ShelfCard from '$lib/components/ShelfCard.svelte';
-	import { planMeta } from '$lib/emblemNames';
+	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import Seo from '$lib/components/Seo.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import ContinueShelf from '$lib/components/ContinueShelf.svelte';
+	import ContinueRow from '$lib/components/ContinueRow.svelte';
+	import FilterSummary from '$lib/components/FilterSummary.svelte';
+	import FilterSheet from '$lib/components/FilterSheet.svelte';
+	import SheetChoices from '$lib/components/SheetChoices.svelte';
+	import { planMeta } from '$lib/emblemNames';
+	import { queryChip, type FilterChip } from '$lib/filterChips';
+	import { readJSON, writeJSON } from '$lib/persisted';
+	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 	const plans = $derived<PlanSummary[]>(data.plans);
 	const loadError = $derived<boolean>(data.loadError);
 	const t = i18n.t;
 
-	// Hoisted: these two ran per plan card, twice (the visible line and the bar's
-	// label), and i18n.t is an uncached lookup.
+	// Hoisted for the "Continue your plans" rows (i18n.t is an uncached lookup);
+	// the shelf's own cards are PlanShelfCard, which hoists its own.
 	const OF = t('plans.of');
 	const DAYS = t('plans.days');
+	const DAY = t('plans.day');
 	/** The progress bar's accessible name — the visible caption, in words. */
 	const dayLabel = (plan: PlanSummary, done: number) =>
 		`${plan.title}: ${done} ${OF} ${plan.day_count} ${DAYS}`;
 
 	// Length filter: help a reader pick a plan that fits the time they have, and
 	// keep the list scannable as it grows. Buckets are derived from the day count
-	// — short (up to two weeks), medium (up to a month), long (a month or more).
-	type LengthBucket = 'all' | 'short' | 'medium' | 'long';
-	const BUCKETS: LengthBucket[] = ['all', 'short', 'medium', 'long'];
-	const bucketOf = (days: number): Exclude<LengthBucket, 'all'> =>
+	// — up to two weeks, up to a month, longer — and labelled with that time, as
+	// the Sermons length filter is. The query and length live in the URL
+	// (shareable/reloadable/Back-able) via $lib/urlFilters, like every shelf.
+	type LengthBucket = 'short' | 'medium' | 'long';
+	const BUCKETS: LengthBucket[] = ['short', 'medium', 'long'];
+	const bucketOf = (days: number): LengthBucket =>
 		days <= 14 ? 'short' : days <= 30 ? 'medium' : 'long';
-	// Length lives in the URL (shareable/reloadable/Back-able) via $lib/urlFilters,
-	// like the Books and Biographies shelves.
+	const LENGTH_LABEL: Record<LengthBucket, string> = {
+		short: 'plans.lengthShort',
+		medium: 'plans.lengthMedium',
+		long: 'plans.lengthLong'
+	};
 	const filters = urlFilters({
-		defaults: { length: 'all' as LengthBucket },
+		defaults: { q: '', length: '' },
 		allowed: { length: BUCKETS },
 		url: () => $page.url
 	});
 	const counts = $derived.by(() => {
-		const c: Record<string, number> = { all: plans.length, short: 0, medium: 0, long: 0 };
+		const c: Record<LengthBucket, number> = { short: 0, medium: 0, long: 0 };
 		for (const p of plans) c[bucketOf(p.day_count)]++;
 		return c;
 	});
+	// Only buckets that hold a plan are offered, and the dropdown only when the
+	// plans actually spread across two of them.
+	const shownBuckets = $derived(BUCKETS.filter((b) => counts[b] > 0));
+	const showSearch = $derived(plans.length >= SHELF_SEARCH_MIN);
+	const showLength = $derived(plans.length >= 3 && shownBuckets.length >= 2);
+
+	// Sort is the reader's preference, not the shelf's: localStorage.
+	type Sort = 'shelf' | 'shortest' | 'longest';
+	const SORTS: { v: Sort; k: string }[] = [
+		{ v: 'shelf', k: 'common.sortShelf' },
+		{ v: 'shortest', k: 'common.sortShortest' },
+		{ v: 'longest', k: 'common.sortLongest' }
+	];
+	const PREFS_KEY = 'ochorus:plans-view';
+	let sort = $state<Sort>('shelf');
+	onMount(() => {
+		const p = readJSON<{ sort?: Sort }>(PREFS_KEY, {});
+		if (p.sort && SORTS.some((o) => o.v === p.sort)) sort = p.sort;
+	});
+	const setSort = (v: Sort) => {
+		sort = v;
+		writeJSON(PREFS_KEY, { sort });
+	};
+
+	const filtering = $derived(filters.active);
+	const clearFilters = () => filters.reset();
+	const filtered = $derived.by(() => {
+		const q = filters.values.q.trim().toLowerCase();
+		const len = filters.values.length;
+		return plans.filter(
+			(p) => (!len || bucketOf(p.day_count) === len) && matchesQuery(q, p.title, p.description)
+		);
+	});
 	const shownPlans = $derived(
-		filters.values.length === 'all'
-			? plans
-			: plans.filter((p) => bucketOf(p.day_count) === filters.values.length)
+		sort === 'shelf'
+			? filtered
+			: [...filtered].sort((a, b) =>
+					sort === 'shortest' ? a.day_count - b.day_count : b.day_count - a.day_count
+				)
 	);
-	// Only offer the filter once there are enough plans (and enough spread) for it
-	// to earn its place; a two-plan list doesn't need filtering.
-	const showLengthFilter = $derived(
-		plans.length >= 3 && BUCKETS.filter((b) => b !== 'all' && counts[b] > 0).length >= 2
-	);
+	const activeChips = $derived.by(() => {
+		const c: FilterChip[] = [];
+		const q = queryChip(filters);
+		if (q) c.push(q);
+		const len = filters.values.length as LengthBucket | '';
+		if (len) c.push({ kind: 'length', label: t(LENGTH_LABEL[len]), onRemove: () => (filters.values.length = '') });
+		return c;
+	});
 
 	// Self-referential canonical + hreflang per locale (mirrors /books, /topics).
 	// schema.org ItemList of the plans shelf — an ordered roster for crawlers.
@@ -76,12 +127,6 @@
 	// correctly omitted them — two contradictory claims, with the wrong one on
 	// the site's most-crawled pages.
 	const hreflang = hreflangAll('/plans');
-
-	// Each plan wears a curated accent + emblem — see planMeta in $lib/emblems.
-
-	/** Rounded minutes of reading in an average day of a plan. */
-	const perDay = (plan: PlanSummary) =>
-		plan.day_count ? Math.max(1, readingMinutes(Math.round(plan.total_words / plan.day_count))) : 0;
 
 	// "Continue your plans" hub: the reader's started-but-unfinished plans,
 	// most recently started first, so a daily reader lands straight on where
@@ -109,102 +154,134 @@
 	structuredData={plans.length ? [plansLd] : []}
 />
 
+<!-- Shared by the inline row (sm up) and the phone sheet. -->
+{#snippet lengthSelect(cls: string)}
+	<select bind:value={filters.values.length} aria-label={t('plans.lengthAll')} class="filter-field {cls}">
+		<option value="">{t('plans.lengthAll')}</option>
+		{#each shownBuckets as b (b)}
+			<option value={b}>{t(LENGTH_LABEL[b])} ({counts[b]})</option>
+		{/each}
+	</select>
+{/snippet}
+
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
 <div class="page-col px-5 py-10">
-	<PageHeader title={t('plans.title')} tagline={t('plans.tagline')} />
+	<PageHeader
+		title={t('plans.title')}
+		tagline={t('plans.tagline')}
+		meta={plans.length ? planCounts : undefined}
+	/>
+	{#snippet planCounts()}
+		{plans.length}
+		{plans.length === 1 ? t('common.planOne') : t('common.planMany')}
+	{/snippet}
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if plans.length === 0}
 		<EmptyState message={t('plans.none')} />
-	{/if}
-
-	<!-- Continue your plans: pick up where you left off. Only shown when the
-	     reader has an unfinished plan in progress. -->
-	{#if activePlans.length}
-		<section class="mb-8">
-			<h2 class="section-label">
-				{t('plans.continueHeading')}
-			</h2>
-			<div class="space-y-3">
+	{:else}
+		<!-- Continue your plans: pick up where you left off. Only shown when the
+		     reader has an unfinished plan in progress, and not while filtering. -->
+		{#if activePlans.length && !filtering}
+			<ContinueShelf heading={t('plans.continueHeading')}>
 				{#each activePlans as plan (plan.slug)}
 					{@const done = planProgress.doneDays(plan.slug).length}
-					<a
+					{@const next = planProgress.nextDay(plan.slug, plan.day_count)}
+					{@const meta = planMeta(plan.slug)}
+					<ContinueRow
 						href={localizeHref(`/plans/${plan.slug}`)}
-						class="block rounded-card border border-accent-soft bg-surface-2 p-4 hover:bg-surface hover:no-underline"
+						title={plan.title}
+						caption={`${DAY} ${next} ${OF} ${plan.day_count}`}
+						verb={t('plans.continue')}
+						hue={meta.accent}
+						emblem={meta.emblem}
 					>
-						<div class="flex items-baseline justify-between gap-3">
-							<h3 class="text-body font-semibold text-text">{plan.title}</h3>
-							<span class="shrink-0 text-small text-accent">
-								{t('plans.day')}
-								{planProgress.nextDay(plan.slug, plan.day_count)}
-								{t('plans.of')}
-								{plan.day_count} <Arrow />
-							</span>
-						</div>
-						<div class="mt-2">
+						{#snippet progress()}
 							<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel(plan, done)} />
-						</div>
-					</a>
+						{/snippet}
+					</ContinueRow>
+				{/each}
+			</ContinueShelf>
+		{/if}
+
+		{#if showSearch || showLength}
+			<div class="filter-row mb-6">
+				{#if showSearch}
+					<input
+						bind:value={filters.values.q}
+						type="search"
+						autocomplete="off"
+						class="filter-field grow"
+						placeholder={t('plans.filterPlaceholder')}
+						aria-label={t('plans.filterPlaceholder')}
+					/>
+				{/if}
+				<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+				<FilterSheet
+					count={filters.values.length ? 1 : 0}
+					shown={filtered.length}
+					showLabel={t('plans.showResults')}
+					filtered={filtering}
+					onClear={clearFilters}
+				>
+					{#if showLength}
+						<SheetChoices
+							label={t('plans.lengthAll')}
+							showLabel={false}
+							options={[
+								{ v: '', label: t('plans.lengthAll') },
+								...shownBuckets.map((b) => ({ v: b, label: t(LENGTH_LABEL[b]), count: counts[b] }))
+							]}
+							value={filters.values.length}
+							onselect={(v) => (filters.values.length = v)}
+						/>
+					{/if}
+					<SheetChoices
+						label={t('common.sort')}
+						options={SORTS.map((o) => ({ v: o.v, label: t(o.k) }))}
+						value={sort}
+						onselect={setSort}
+					/>
+				</FilterSheet>
+				<div class="hidden sm:contents">
+					{#if showLength}{@render lengthSelect('')}{/if}
+					<select
+						value={sort}
+						onchange={(e) => setSort(e.currentTarget.value as Sort)}
+						class="filter-field"
+						aria-label={t('common.sort')}
+					>
+						{#each SORTS as o (o.v)}
+							<option value={o.v}>{t(o.k)}</option>
+						{/each}
+					</select>
+				</div>
+			</div>
+		{/if}
+
+		{#if filtering}
+			<FilterSummary
+				shown={filtered.length}
+				total={plans.length}
+				template={t('plans.showing')}
+				onClear={clearFilters}
+				chips={activeChips}
+				class="mb-6"
+			/>
+		{/if}
+
+		{#if shownPlans.length === 0}
+			<EmptyState message={t('plans.noResults')} action={clearFiltersAction} />
+		{:else}
+			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
+				{#each shownPlans as plan (plan.slug)}
+					<PlanShelfCard {plan} />
 				{/each}
 			</div>
-		</section>
+		{/if}
 	{/if}
-
-	{#if showLengthFilter}
-		<div class="filter-row mb-6" role="group" aria-label={t('plans.filterLength')}>
-			{#each BUCKETS as b (b)}
-				{#if b === 'all' || counts[b] > 0}
-					<button
-						type="button"
-						class="chip"
-						class:active={filters.values.length === b}
-						onclick={() => (filters.values.length = b)}
-						aria-pressed={filters.values.length === b}
-					>
-						{t(`plans.length_${b}`)}
-						<span class="count">{counts[b]}</span>
-					</button>
-				{/if}
-			{/each}
-		</div>
-	{/if}
-
-	<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
-		{#each shownPlans as plan (plan.slug)}
-			{@const done = planProgress.doneDays(plan.slug).length}
-			{@const started = planProgress.isStarted(plan.slug)}
-			{@const meta = planMeta(plan.slug)}
-			<ShelfCard
-				href={localizeHref(`/plans/${plan.slug}`)}
-				hue={meta.accent}
-				emblem={meta.emblem}
-				mark={{ top: t('plans.days'), value: String(plan.day_count) }}
-				covers={plan.covers}
-				title={plan.title}
-			>
-				{#snippet aside()}
-					{plan.day_count} {t('plans.days')}{#if plan.total_words}
-						<span class="opacity-60"> · </span>~{perDay(plan)} {t('plans.minPerDay')}{/if}
-				{/snippet}
-				<p class="shelf-card-desc mt-1.5 text-small text-muted">{plan.description}</p>
-				<!-- Pushed to the bottom of the body so every card's footer sits on the
-				     same line regardless of description length. -->
-				<div class="mt-auto pt-3">
-					{#if started}
-						<ProgressBar percent={(done / plan.day_count) * 100} label={dayLabel(plan, done)} />
-						<p class="mt-1.5 text-small text-muted">
-							{done === plan.day_count
-								? t('plans.finished')
-								: `${t('plans.day')} ${planProgress.nextDay(plan.slug, plan.day_count)} ${t('plans.of')} ${plan.day_count}`}
-						</p>
-					{:else if plan.day_one}
-						<p class="text-small text-muted">
-							<span class="font-medium text-text">{t('plans.day')} 1</span>
-							<span class="opacity-60"> · </span>{plan.day_one.book_title}
-						</p>
-					{/if}
-				</div>
-			</ShelfCard>
-		{/each}
-	</div>
 </div>

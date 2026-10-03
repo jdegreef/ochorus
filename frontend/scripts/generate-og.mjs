@@ -88,7 +88,8 @@ const CARDS = [
 	['plans', 'Reading Plans', 'Guided journeys through the classics'],
 	['topics', 'Topics', 'Browse the library by theme'],
 	['biographies', 'Biographies', 'The lives behind the classics'],
-	['quotes', 'Quotes, with sources', 'Traced to the book, chapter and paragraph']
+	['quotes', 'Quotes, with sources', 'Traced to the book, chapter and paragraph'],
+	['scripture', 'Scripture in the classics', 'Every Bible reference, and who preached it']
 ];
 
 for (const [name, title, subtitle] of CARDS) {

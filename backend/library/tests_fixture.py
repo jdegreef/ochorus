@@ -88,7 +88,7 @@ from library.ingest import (
     word_count,
 )
 from library.quote_marks import mark_counts, mispaired_marks
-from library.text import html_to_text
+from library.text import html_to_text, is_blank_title
 
 EXPECTED_MODELS = {
     "library.author",
@@ -340,7 +340,11 @@ class FixtureIntegrityTests(SimpleTestCase):
         # translated plan shipping ahead of its books).
         book_slugs = {r["fields"]["slug"] for r in self.by_model.get("library.book", [])}
         stray = sorted(
-            {r["fields"]["book_slug"] for r in self.by_model.get("library.planday", [])}
+            {
+                r["fields"]["book_slug"]
+                for r in self.by_model.get("library.planday", [])
+                if not r["fields"].get("article_slug")
+            }
             - book_slugs
         )
         self.assertEqual(
@@ -386,7 +390,7 @@ class FixtureIntegrityTests(SimpleTestCase):
             "library.chapter": ("book", "order", "body_html"),
             "library.sermon": ("slug", "title", "author", "body_html"),
             "library.plan": ("slug", "title"),
-            "library.planday": ("plan", "day", "book_slug", "chapter_order"),
+            "library.planday": ("plan", "day"),
             "library.series": ("slug", "title"),
             "library.seriestranslation": ("series", "language", "title"),
         }.items():
@@ -397,6 +401,26 @@ class FixtureIntegrityTests(SimpleTestCase):
                     f"{model} {r['fields'].get('slug', '?')}: missing required "
                     f"field(s) {missing}",
                 )
+
+    def test_titles_not_blank(self):
+        # Present isn't enough: a "" title seeds fine, then shows on the admin
+        # coverage matrix as a row with no name that still offers to queue jobs.
+        # An article's matrix title is its h1; a series' per-language title
+        # lives on its translation row (keyed by series, not slug).
+        for model, field in (
+            ("library.book", "title"),
+            ("library.sermon", "title"),
+            ("library.plan", "title"),
+            ("library.series", "title"),
+            ("library.seriestranslation", "title"),
+            ("library.article", "h1"),
+        ):
+            blank = [
+                r["fields"].get("slug") or r["fields"].get("series")
+                for r in self.by_model.get(model, [])
+                if is_blank_title(r["fields"].get(field))
+            ]
+            self.assertEqual(blank, [], f"{model}: blank {field} on {blank}")
 
 
 class SeriesMembershipTests(SimpleTestCase):
@@ -480,6 +504,52 @@ class SeriesMembershipTests(SimpleTestCase):
     def test_every_series_has_a_book(self):
         used = {f["series"][0] for f in self.members}
         self.assertEqual(sorted(self.series - used), [], "a series with no books")
+
+
+class DistinctBookTitleTests(SimpleTestCase):
+    """Two published editions in one language must not share a <title>.
+
+    The book page's title tag is the book's title, except that a volume whose
+    series bears its own name adds its subtitle (`distinctTitle` in
+    $lib/bookSeo) — the only way Simpson's two "Power from on High" volumes
+    differ. Two same-titled books that are NOT that shape would ship one
+    <title> on two pages, and Google folds one into the other.
+    """
+
+    def test_same_titled_books_are_named_volumes_of_one_series(self):
+        series = {
+            r["fields"]["slug"]: r["fields"]["title"]
+            for r in all_rows()
+            if r["model"] == "library.series"
+        }
+        by_title: dict = {}
+        for r in all_rows():
+            if r["model"] != "library.book" or not (f := r["fields"]).get("is_published", True):
+                continue
+            key = (f.get("language", "en"), f["title"].strip().casefold())
+            by_title.setdefault(key, []).append(f)
+        bad = []
+        for (lang, _), books in by_title.items():
+            if len(books) < 2:
+                continue
+            subtitles = [b.get("subtitle", "").strip() for b in books]
+            ok = (
+                all(b.get("series") for b in books)
+                and len({b["series"][0] for b in books}) == 1
+                # Checked against the English series name: a translated
+                # series name lives in its own table and is not in fixtures.
+                and (lang != "en" or series.get(books[0]["series"][0]) == books[0]["title"])
+                and all(subtitles)
+                and len(set(subtitles)) == len(subtitles)
+            )
+            if not ok:
+                bad.append(f"{lang}: " + ", ".join(sorted(b["slug"] for b in books)))
+        self.assertEqual(
+            bad,
+            [],
+            "editions share a title; make them volumes of a series named after it, "
+            "each with its own subtitle, or retitle one",
+        )
 
 
 class SeedFieldCoverageTests(SimpleTestCase):
@@ -2375,37 +2445,48 @@ class PlanTranslationCoverageTests(SimpleTestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.published: dict[str, set[str]] = {}
+        # language -> {("book" | "article", slug)}: a curated plan can also
+        # need articles, and is created only where those are published too.
+        cls.published: dict[str, set[tuple[str, str]]] = {}
+        kinds = {"library.book": "book", "library.article": "article"}
         for row in all_rows():
-            if row["model"] != "library.book":
+            kind = kinds.get(row["model"])
+            if kind is None:
                 continue
             f = row["fields"]
             if f.get("is_published", True):
-                cls.published.setdefault(f.get("language", "en"), set()).add(f["slug"])
+                cls.published.setdefault(f.get("language", "en"), set()).add(
+                    (kind, f["slug"])
+                )
 
     def test_every_creatable_plan_row_has_its_own_prose(self):
         from library.management.commands.seed_plans import (
             CURATED_PLANS,
             LAUNCH_PLANS,
         )
+        from library.plan_seed import plan_sources
         from library.plan_translations import plan_translations
 
-        # (plan slug, the books it needs) for both plan kinds.
-        needs = [(p[0], [p[1]]) for p in LAUNCH_PLANS]
-        needs += [(p[0], list(p[3])) for p in CURATED_PLANS]
+        # (plan slug, the works it needs) for both plan kinds.
+        needs = [(p[0], [("book", p[1])]) for p in LAUNCH_PLANS]
+        for p in CURATED_PLANS:
+            books, articles = plan_sources(p[3])
+            needs.append(
+                (p[0], [("book", b) for b in books] + [("article", a) for a in articles])
+            )
 
         missing = sorted(
             f"{language}/{slug}"
-            for slug, books in needs
+            for slug, works in needs
             for language, have in self.published.items()
             if language != "en"
-            and all(b in have for b in books)
+            and all(w in have for w in works)
             and slug not in plan_translations().get(language, {})
         )
         self.assertEqual(
             missing,
             [],
-            "Every source book of these plans is published in these languages, "
+            "Every source of these plans is published in these languages, "
             "so the plan belongs there — but data/plan_translations/<language>.json "
             "has no entry, so "
             "seed_plans will skip it and the language gets no plan at all. Add "
@@ -2436,14 +2517,19 @@ class SettledBodyIdempotenceTests(SimpleTestCase):
         for row in all_rows():
             f = row["fields"]
             body = f.get("body_html") or ""
+            # A body the first pass leaves unchanged is a fixed point by
+            # definition — settled(x) == x makes settled(settled(x)) the same
+            # call — so only the ~50 bodies settling still rewrites need the
+            # second pass. Same verdict, half the work: the double pass over all
+            # ~12,000 bodies was the slowest test in the backend suite.
             if row["model"] == "library.chapter":
                 slug = f["book"][0]
                 once = settled_chapter_body(slug, f["order"], body)
-                twice = settled_chapter_body(slug, f["order"], once)
+                twice = once if once == body else settled_chapter_body(slug, f["order"], once)
             elif row["model"] == "library.sermon":
                 slug = f["slug"]
                 once = settled_sermon_body(slug, body)
-                twice = settled_sermon_body(slug, once)
+                twice = once if once == body else settled_sermon_body(slug, once)
             else:
                 continue
             with self.subTest(model=row["model"], slug=slug):

@@ -1,7 +1,11 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
+	import { auth } from '$lib/auth.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
+	import TrendChip from '$lib/components/TrendChip.svelte';
+	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import {
+		type SearchHit,
 		type SearchType
 	} from '$lib/library-public';
 	import {
@@ -10,7 +14,18 @@
 		type AdminSearchGapWork,
 		getAdminSearchStats,
 		createAdminTranslationJob,
-		type SearchTopQuery
+		decideSearch,
+		getAdminSearchDecisions,
+		getAdminSearchPreview,
+		undoSearchDecision,
+		type SearchDecisionRow,
+		type SearchOutcome,
+		type SearchUnanswered,
+		periodTrend,
+		pointsTrend,
+		type SearchStatsWindow,
+		type SearchTopQuery,
+		type Trend
 	} from '$lib/library-admin';
 	import { ApiError } from '$lib/api';
 
@@ -32,19 +47,73 @@
 	const dayLabel = (iso: string) =>
 		new Date(iso + 'T00:00:00').toLocaleDateString('en', { month: 'short', day: 'numeric' });
 
-	const cards = $derived(
-		data
-			? [
-					{ label: 'Searches · 7d', value: data.overview['7d'].searches, sub: `${fmt(data.overview['7d'].distinct_queries)} distinct` },
-					{ label: 'Searches · 30d', value: data.overview['30d'].searches, sub: `${fmt(data.overview['30d'].distinct_queries)} distinct` },
-					{ label: 'Zero results · 7d', value: data.overview['7d'].zero_results, sub: `${pct(data.overview['7d'].zero_rate)} of searches` },
-					{ label: 'Zero results · 30d', value: data.overview['30d'].zero_results, sub: `${pct(data.overview['30d'].zero_rate)} of searches` },
-					{ label: 'Results opened · 30d', value: data.overview.clicks_30d ?? 0, sub: 'searches that led somewhere' }
-				]
-			: []
-	);
+	// One period at a time, each compared with the period before it — rather
+	// than 7d and 30d side by side, which left the trend to mental arithmetic.
+	type Period = '7d' | '30d';
+	const PERIODS: Record<Period, string> = { '7d': '7 days', '30d': '30 days' };
+	let period = $state<Period>('30d');
 
-	const dayMax = $derived(Math.max(1, ...(data?.daily.map((d) => d.searches) ?? [1])));
+	// Searches that found something, and how many of them led to an open. Opens
+	// are rows, not searches (one search can open several results), so they're
+	// capped at the searches that found something rather than reading as more
+	// than everyone.
+	const found = (w: SearchStatsWindow) => w.searches - w.zero_results;
+	const opened = (w: SearchStatsWindow) => Math.min(w.clicks ?? 0, found(w));
+	const openRate = (w: SearchStatsWindow) => (found(w) ? opened(w) / found(w) : 0);
+
+	type Card = { label: string; value: string; sub: string; trend: Trend };
+	const cards = $derived.by<Card[]>(() => {
+		if (!data) return [];
+		const cur = data.overview[period];
+		// Optional: the static frontend can go live before the API that sends it.
+		const prev = data.overview[`${period}_prev`];
+		// A rate with no searches behind it, now or before, has nothing to
+		// compare, so it gets no chip.
+		const rateTrend = (f: (w: SearchStatsWindow) => number, base: (w: SearchStatsWindow) => number) =>
+			prev && base(cur) && base(prev) ? f(prev) : null;
+		return [
+			{
+				label: 'Searches',
+				value: fmt(cur.searches),
+				sub: `${fmt(cur.distinct_queries)} distinct`,
+				trend: prev ? periodTrend(cur.searches, prev.searches) : null
+			},
+			{
+				label: 'Zero-result rate',
+				value: pct(cur.zero_rate),
+				sub: `${fmt(cur.zero_results)} found nothing`,
+				trend: pointsTrend(cur.zero_rate, rateTrend((w) => w.zero_rate, (w) => w.searches), {
+					lowerIsBetter: true
+				})
+			},
+			{
+				label: 'Opened a result',
+				value: pct(openRate(cur)),
+				sub: `${fmt(cur.clicks)} opens from ${fmt(found(cur))} searches`,
+				trend: pointsTrend(openRate(cur), rateTrend(openRate, found))
+			},
+			{
+				label: 'Distinct queries',
+				value: fmt(cur.distinct_queries),
+				sub: cur.searches ? `${pct(cur.distinct_queries / cur.searches)} of searches` : '—',
+				trend: prev ? periodTrend(cur.distinct_queries, prev.distinct_queries) : null
+			}
+		];
+	});
+
+	// Where the period's searches ended: the funnel that separates a content gap
+	// (nothing found) from a ranking gap (found, nothing opened).
+	const funnel = $derived.by(() => {
+		if (!data) return [];
+		const w = data.overview[period];
+		return [
+			{ label: 'Searched', n: w.searches, note: '' },
+			{ label: 'Found something', n: found(w), note: `${fmt(w.zero_results)} found nothing → see Unanswered searches` },
+			{ label: 'Opened a result', n: opened(w), note: 'the rest → see Found, but not opened' }
+		];
+	});
+	const funnelTop = $derived(Math.max(1, funnel[0]?.n ?? 0));
+
 	const langMax = $derived(Math.max(1, ...(data?.by_language.map((l) => l.searches) ?? [1])));
 
 	// "Where else does this exist?" — one query at a time, because the answer
@@ -86,16 +155,192 @@
 	// state; 'busy' | 'done' | an error string.
 	let queued = $state<Record<string, 'busy' | 'done' | string>>({});
 	const queueKey = (lang: string, w: AdminSearchGapWork) => `${lang}${w.type}:${w.slug}`;
-	async function queueWork(targetLang: string, w: AdminSearchGapWork) {
+	async function queueWork(targetLang: string, w: AdminSearchGapWork, query: string) {
 		const k = queueKey(targetLang, w);
 		if (queued[k] === 'busy' || queued[k] === 'done') return;
 		queued = { ...queued, [k]: 'busy' };
 		try {
 			await createAdminTranslationJob({ type: w.type, slug: w.slug, language: targetLang });
 			queued = { ...queued, [k]: 'done' };
+			// Record it as the query's triage outcome. The row stays on Open until
+			// the next refresh, so a second work can still be queued from it.
+			void decide(targetLang, query, 'translate', { target: `${w.type}:${w.slug}`, hide: false });
 		} catch (e) {
 			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
 			queued = { ...queued, [k]: body?.detail ?? 'Could not queue — try again.' };
+		}
+	}
+
+	// Triage: each unanswered query gets an outcome and leaves the Open list.
+	// Decisions live server-side (SearchDecision); the Handled and Wanted tabs
+	// read them with what readers did since.
+	const decisions = adminResource(
+		getAdminSearchDecisions,
+		'Something went wrong loading triage decisions.'
+	);
+	type TriageTab = 'open' | 'handled' | 'wanted';
+	let tab = $state<TriageTab>('open');
+	const decided = $derived(decisions.data?.decisions ?? []);
+	const handled = $derived(decided.filter((d) => d.outcome !== 'wanted'));
+	// Ranked by demand since it was marked: the import shopping list, in order.
+	const wanted = $derived(
+		decided.filter((d) => d.outcome === 'wanted').sort((a, b) => b.misses_since - a.misses_since)
+	);
+	// Hidden from Open the moment they're decided. Not cleared on refresh: the
+	// server leaves decided queries out anyway, and a refresh that started before
+	// a decision would otherwise bring it back. Undo is what removes a key.
+	let decidedNow = $state<Record<string, true>>({});
+	let deciding = $state<Record<string, 'busy' | string>>({});
+	const openQueries = (lang: SearchUnanswered) =>
+		lang.queries.filter((q) => !decidedNow[gapKey(lang.code, q.query)]);
+	const openCount = $derived(
+		(data?.unanswered_by_language ?? []).reduce((n, l) => n + openQueries(l).length, 0)
+	);
+	// "Found, but not opened", minus what was pinned this session.
+	const unopened = $derived(
+		(data?.unopened_queries ?? []).filter(
+			(r) => !r.language || !decidedNow[gapKey(r.language, r.query)]
+		)
+	);
+	// The same grant the decide endpoint checks: the translation queue at "act"
+	// in that language. Contributors and reviewers see the list but can't change it.
+	const canDecide = (language: string) => auth.can('translate', 'act', language);
+	const shortDate = (iso: string) =>
+		new Date(iso).toLocaleDateString('en', { month: 'short', day: 'numeric' });
+
+	async function decide(
+		language: string,
+		query: string,
+		outcome: SearchOutcome,
+		{ target = '', hide = true }: { target?: string; hide?: boolean } = {}
+	): Promise<boolean> {
+		const k = gapKey(language, query);
+		deciding = { ...deciding, [k]: 'busy' };
+		try {
+			await decideSearch({ query, language, outcome, target });
+			if (hide) decidedNow = { ...decidedNow, [k]: true };
+			const { [k]: _, ...rest } = deciding;
+			deciding = rest;
+			void decisions.load();
+			return true;
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			deciding = { ...deciding, [k]: body?.detail ?? 'Could not save — try again.' };
+			return false;
+		}
+	}
+
+	// --- Synonym: "when readers search X, search Y instead" ---------------------
+	// One form open at a time. The preview runs the real (unlogged) search for the
+	// word, so the admin sees it finds something before readers are sent to it.
+	let synonymFor = $state('');
+	let synonymWord = $state('');
+	let synonymPreview = $state<{ loading: boolean; count?: number; top?: string; error?: string } | null>(
+		null
+	);
+	function openSynonym(language: string, query: string) {
+		previewSeq++;
+		synonymFor = gapKey(language, query);
+		synonymWord = '';
+		synonymPreview = null;
+	}
+	// Only the newest preview may land: one answered after the word changed
+	// would vouch for a word that was never previewed.
+	let previewSeq = 0;
+	async function previewSynonym(language: string) {
+		const word = synonymWord.trim();
+		if (word.length < 2) return;
+		const seq = ++previewSeq;
+		synonymPreview = { loading: true };
+		try {
+			const res = await getAdminSearchPreview(word, language);
+			if (seq !== previewSeq || word !== synonymWord.trim()) return;
+			synonymPreview = {
+				loading: false,
+				count: res.results.length,
+				top: res.results.slice(0, 2).map((h) => hitTitle(h)).join(' · ')
+			};
+		} catch {
+			if (seq === previewSeq) synonymPreview = { loading: false, error: 'Preview failed — try again.' };
+		}
+	}
+	async function saveSynonym(language: string, query: string) {
+		if (await decide(language, query, 'synonym', { target: synonymWord.trim() })) synonymFor = '';
+	}
+
+	// --- Pin: the page that should lead a query's results ----------------------
+	// The choices are what the query already finds (a pin can only name a page
+	// that exists), minus passages: a chapter is pinned by pinning its book.
+	type PinOption = { target: string; title: string; kind: string };
+	const pinOption = (h: SearchHit): PinOption | null => {
+		switch (h.type) {
+			case 'author':
+				return { target: `author:${h.author_slug}`, title: h.author_name, kind: 'Author' };
+			case 'book':
+				return { target: `book:${h.book_slug}`, title: h.book_title, kind: 'Book' };
+			case 'topic':
+				return { target: `topic:${h.topic_slug}`, title: h.topic_title, kind: 'Topic' };
+			case 'plan':
+				return { target: `plan:${h.plan_slug}`, title: h.plan_title, kind: 'Reading plan' };
+			case 'article':
+				return { target: `article:${h.article_slug}`, title: h.article_title, kind: 'Article' };
+			case 'sermon':
+				return { target: `sermon:${h.sermon_slug}`, title: h.sermon_title, kind: 'Sermon' };
+			default:
+				return null;
+		}
+	};
+	const hitTitle = (h: SearchHit) =>
+		pinOption(h)?.title ?? (h.type === 'chapter' ? h.chapter_title : h.type);
+	let pinFor = $state('');
+	let pinChoice = $state('');
+	let pinOptions = $state<{ loading: boolean; options: PinOption[]; error?: string }>({
+		loading: false,
+		options: []
+	});
+	// The newest picker only: a slow answer for one row must not fill another's.
+	let pinSeq = 0;
+	async function openPin(language: string, query: string) {
+		const seq = ++pinSeq;
+		pinFor = gapKey(language, query);
+		pinChoice = '';
+		pinOptions = { loading: true, options: [] };
+		try {
+			const res = await getAdminSearchPreview(query, language);
+			if (seq !== pinSeq) return;
+			const seen = new Set<string>();
+			const options: PinOption[] = [];
+			for (const h of res.results) {
+				const o = pinOption(h);
+				if (o && !seen.has(o.target)) {
+					seen.add(o.target);
+					options.push(o);
+				}
+			}
+			pinOptions = { loading: false, options: options.slice(0, 8) };
+		} catch {
+			if (seq === pinSeq)
+				pinOptions = { loading: false, options: [], error: 'Could not load the results — try again.' };
+		}
+	}
+	async function savePin(language: string, query: string) {
+		if (pinChoice && (await decide(language, query, 'pinned', { target: pinChoice }))) pinFor = '';
+	}
+
+	async function undo(d: SearchDecisionRow) {
+		const k = gapKey(d.language, d.query);
+		deciding = { ...deciding, [k]: 'busy' };
+		try {
+			await undoSearchDecision(d.query, d.language);
+			const { [k]: _, ...rest } = deciding;
+			deciding = rest;
+			const { [k]: __, ...stillHidden } = decidedNow;
+			decidedNow = stillHidden;
+			// Both: the decision leaves its tab and the query rejoins Open.
+			await Promise.all([decisions.load(), stats.load()]);
+		} catch (e) {
+			const body = e instanceof ApiError ? (e.body as { detail?: string } | null) : null;
+			deciding = { ...deciding, [k]: body?.detail ?? 'Could not undo — try again.' };
 		}
 	}
 </script>
@@ -153,15 +398,58 @@
 					</p>
 				</div>
 			{:else}
+				<!-- Period switch: drives the overview and the funnel; the query
+				     lists below stay on 30 days, as their headings say. -->
+				<div class="mb-3 flex flex-wrap items-center gap-2" role="group" aria-label="Period">
+					{#each Object.entries(PERIODS) as [key, label] (key)}
+						<button
+							type="button"
+							class="rounded-full px-3 py-1 text-small {period === key ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}"
+							aria-pressed={period === key}
+							onclick={() => (period = key as Period)}>{label}</button
+						>
+					{/each}
+					<span class="text-small text-muted">· compared with the {PERIODS[period]} before</span>
+				</div>
+
 				<!-- Overview -->
-				<section class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-5">
+				<section class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
 					{#each cards as c (c.label)}
 						<div class="rounded-card border border-border bg-surface p-4">
-							<div class="stat-number">{fmt(c.value)}</div>
+							<div class="flex items-baseline gap-2">
+								<div class="stat-number">{c.value}</div>
+								<TrendChip trend={c.trend} />
+							</div>
 							<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 							<div class="text-small text-muted">{c.sub}</div>
 						</div>
 					{/each}
+				</section>
+
+				<!-- Where searches end -->
+				<section class="mb-8 rounded-card border border-border bg-surface p-5">
+					<h2 class="text-h3">Where searches end</h2>
+					<p class="mb-4 text-small text-muted">
+						Last {PERIODS[period]}. Nothing found is a content gap; found but not opened is
+						usually a ranking or snippet problem. Keystrokes on the way to a search ("pra" →
+						"prayer") aren't counted.
+					</p>
+					<ul class="space-y-3">
+						{#each funnel as step (step.label)}
+							<li class="grid grid-cols-[8rem_1fr_auto] items-center gap-3 sm:grid-cols-[10rem_1fr_auto]">
+								<span class="text-body text-text">{step.label}</span>
+								<div class="h-5 overflow-hidden rounded-sm bg-surface-2">
+									<div class="h-full rounded-sm bg-accent" style="width: {(step.n / funnelTop) * 100}%"></div>
+								</div>
+								<span class="w-24 text-end text-small tabular-nums text-text"
+									>{fmt(step.n)} <span class="text-muted">· {pct(step.n / funnelTop)}</span></span
+								>
+								{#if step.note}
+									<span class="col-start-2 col-end-4 -mt-2 text-micro text-muted">{step.note}</span>
+								{/if}
+							</li>
+						{/each}
+					</ul>
 				</section>
 
 				<!-- Daily volume -->
@@ -176,26 +464,15 @@
 							<span class="inline-flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm bg-accent"></span>zero-result</span>
 						</div>
 					</div>
-					<div class="flex items-end gap-2" style="height: 8rem">
-						{#each d.daily as day (day.day)}
-							<div
-								class="flex flex-1 flex-col items-center gap-1"
-								title="{dayLabel(day.day)} · {fmt(day.searches)} search{day.searches === 1 ? '' : 'es'}{day.zero ? `, ${fmt(day.zero)} zero-result` : ''}"
-							>
-								<div class="text-small tabular-nums text-muted">{day.searches || ''}</div>
-								<div
-									class="flex w-full flex-col justify-end overflow-hidden rounded-t-sm"
-									style="height: {(day.searches / dayMax) * 100}%; min-height: {day.searches ? '3px' : '0'}"
-								>
-									<div class="w-full flex-1 bg-accent-soft"></div>
-									{#if day.zero}
-										<div class="w-full bg-accent" style="height: {(day.zero / day.searches) * 100}%"></div>
-									{/if}
-								</div>
-								<div class="text-micro text-muted">{dayLabel(day.day)}</div>
-							</div>
-						{/each}
-					</div>
+					<ColumnChart
+						columns={d.daily.map((day) => ({
+							key: day.day,
+							label: dayLabel(day.day),
+							value: day.searches,
+							part: day.zero,
+							title: `${dayLabel(day.day)} · ${fmt(day.searches)} search${day.searches === 1 ? '' : 'es'}${day.zero ? `, ${fmt(day.zero)} zero-result` : ''}`
+						}))}
+					/>
 				</section>
 
 				<div class="grid gap-6 lg:grid-cols-2">
@@ -219,9 +496,71 @@
 							zero-result query, because nobody complains about a search that returned
 							something.
 						</p>
-						{#if d.unopened_queries?.length}
-							{@render queryList(d.unopened_queries)}
-						{:else if d.overview.clicks_30d}
+						{#if unopened.length}
+							{@const max = Math.max(1, ...unopened.map((r) => r.count))}
+							<ul class="space-y-2">
+								{#each unopened as r (r.query + (r.language ?? ''))}
+									{@const pk = r.language ? gapKey(r.language, r.query) : ''}
+									<li>
+										<div class="flex items-baseline justify-between gap-3">
+											<a
+												href="/search?q={encodeURIComponent(r.query)}"
+												class="min-w-0 truncate text-body text-text hover:text-accent"
+												>{r.query}{#if r.language}<span class="ms-1 text-small text-muted">{r.language}</span>{/if}</a
+											>
+											<span class="flex shrink-0 items-baseline gap-2">
+												<span class="text-small tabular-nums text-muted">{fmt(r.count)}</span>
+												{#if r.language && canDecide(r.language) && pinFor !== pk}
+													<button class="btn btn-sm btn-ghost" onclick={() => openPin(r.language!, r.query)}
+														>Pin a result…</button
+													>
+												{/if}
+											</span>
+										</div>
+										<div class="mt-1 h-1.5 overflow-hidden rounded-full bg-surface-2">
+											<div class="h-full rounded-full bg-accent-soft" style="width: {(r.count / max) * 100}%"></div>
+										</div>
+										{#if r.language && pinFor === pk}
+											<!-- The pin picker: what this query already finds, one to lead. -->
+											<div class="mt-2 rounded-card border border-border bg-surface-2 p-3">
+												<p class="mb-2 text-small text-muted">
+													Pick the page that should lead “{r.query}” for {r.language} readers, labelled
+													“Best match”.
+												</p>
+												{#if pinOptions.loading}
+													<p class="text-small text-muted">Loading results…</p>
+												{:else if pinOptions.error}
+													<p class="text-small text-warning">{pinOptions.error}</p>
+												{:else if !pinOptions.options.length}
+													<p class="text-small text-muted">Nothing pinnable: this query only finds passages.</p>
+												{:else}
+													<div class="space-y-1" role="radiogroup" aria-label="Best match">
+														{#each pinOptions.options as o (o.target)}
+															<label class="flex cursor-pointer items-baseline gap-2 text-small">
+																<input type="radio" name="pin-{pk}" value={o.target} bind:group={pinChoice} />
+																<span class="text-text">{o.title}</span>
+																<span class="text-muted">{o.kind}</span>
+															</label>
+														{/each}
+													</div>
+												{/if}
+												{#if deciding[pk] && deciding[pk] !== 'busy'}
+													<p class="mt-1 text-small text-warning">{deciding[pk]}</p>
+												{/if}
+												<div class="mt-2 flex justify-end gap-2">
+													<button class="btn btn-sm btn-ghost" onclick={() => (pinFor = '')}>Cancel</button>
+													<button
+														class="btn btn-sm btn-primary"
+														disabled={!pinChoice || deciding[pk] === 'busy'}
+														onclick={() => savePin(r.language!, r.query)}>Pin for {r.language}</button
+													>
+												</div>
+											</div>
+										{/if}
+									</li>
+								{/each}
+							</ul>
+						{:else if d.overview['30d'].clicks}
 							<p class="text-body text-muted">Every recurring query led somewhere.</p>
 						{:else}
 							<!-- No clicks at all reads as "everything failed", which would be
@@ -232,30 +571,43 @@
 						{/if}
 					</section>
 
-					<!-- Zero-result queries -->
-					<section class="rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">Zero results · 30d</h2>
-						<p class="mb-3 text-small text-muted">Each of these is a reader asking for something the library doesn't have (or can't find) yet.</p>
-						{#if d.zero_result_queries.length}
-							{@render queryList(d.zero_result_queries)}
-						{:else}
-							<p class="text-body text-muted">Nothing missed — every search found something.</p>
-						{/if}
-					</section>
 				</div>
 
-				<!-- Unanswered, by language: the translation worklist -->
-				{#if d.unanswered_by_language.length}
-					<section class="mt-6 rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-1">What each language couldn't answer · 30d</h2>
+				<!-- Unanswered searches: the triage list. Open is the worklist (one row per
+				     query and language); Handled and Wanted are the decisions made, with
+				     what readers did since. -->
+				<section class="mt-6 rounded-card border border-border bg-surface p-5">
+					<div class="mb-1 flex flex-wrap items-center justify-between gap-3">
+						<h2 class="text-h3">Unanswered searches · 30d</h2>
+						<div class="flex flex-wrap gap-2" role="group" aria-label="Triage">
+							{#each [['open', 'Open', openCount], ['handled', 'Handled', handled.length], ['wanted', 'Wanted', wanted.length]] as [key, label, n] (key)}
+								<button
+									type="button"
+									class="rounded-full px-3 py-1 text-small {tab === key ? 'bg-accent-soft text-text' : 'text-muted hover:text-text'}"
+									aria-pressed={tab === key}
+									onclick={() => (tab = key as TriageTab)}>{label} <span class="tabular-nums">{n}</span></button
+								>
+							{/each}
+						</div>
+					</div>
+
+					{#if tab === 'open'}
 						<p class="mb-5 text-small text-muted">
-							The same zero-result queries, split by the language the reader was in — which is the
-							form you can act on. Check a query to see whether the library already has that
-							content in another language: if it does, it's a translation job; if it doesn't,
-							it's a work to acquire.
+							Searches that found nothing, by the language the reader was in. Check where else a
+							query exists: if another language has it, queue a translation; if nothing does, mark
+							it wanted. Each decision moves the query to Handled or Wanted.
 						</p>
+						{#if openCount === 0}
+							<p class="text-body text-muted">
+								{decided.length
+									? 'Nothing open: every unanswered search has an outcome.'
+									: 'No unanswered searches in the last 30 days.'}
+							</p>
+						{/if}
 						<div class="space-y-6">
 							{#each d.unanswered_by_language as lang (lang.code)}
+								{@const rows = openQueries(lang)}
+								{#if rows.length}
 								<div>
 									<h3 class="mb-2 text-body font-semibold text-text">
 										{lang.name}
@@ -264,12 +616,14 @@
 										</span>
 									</h3>
 									<ul class="space-y-1">
-										{#each lang.queries as q (q.query)}
-											{@const gap = gaps[gapKey(lang.code, q.query)]}
+										{#each rows as q (q.query)}
+											{@const gk = gapKey(lang.code, q.query)}
+											{@const gap = gaps[gk]}
+											{@const busy = deciding[gk]}
 											<li class="border-t border-border py-2 first:border-t-0">
-												<div class="flex items-baseline justify-between gap-3">
+												<div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
 													<span class="min-w-0 truncate text-body text-text">{q.query}</span>
-													<span class="flex shrink-0 items-baseline gap-3">
+													<span class="flex shrink-0 flex-wrap items-baseline gap-2">
 														<span class="text-small tabular-nums text-muted">{fmt(q.count)}×</span>
 														{#if !gap?.data}
 															<!-- Gone once answered: the answer replaces the question. -->
@@ -281,8 +635,84 @@
 																{gap?.loading ? 'Checking…' : gap?.error ? 'Retry' : 'Elsewhere?'}
 															</button>
 														{/if}
+														{#if canDecide(lang.code)}
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
+																onclick={() => openSynonym(lang.code, q.query)}>Synonym…</button
+															>
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
+																onclick={() => decide(lang.code, q.query, 'wanted')}>Wanted</button
+															>
+															<button
+																class="btn btn-sm btn-ghost"
+																disabled={busy === 'busy'}
+																onclick={() => decide(lang.code, q.query, 'out_of_scope')}>Out of scope</button
+															>
+														{/if}
 													</span>
 												</div>
+												{#if q.reopened}
+													<p class="mt-1 text-small text-danger">
+														Reopened: {q.reopened.outcome_label.toLowerCase()}
+														{shortDate(q.reopened.decided_at)}{q.reopened.target ? ` (${q.reopened.target})` : ''}, still
+														{fmt(q.reopened.misses_since)} misses since.
+													</p>
+												{/if}
+												{#if busy && busy !== 'busy'}
+													<p class="mt-1 text-small text-warning">{busy}</p>
+												{/if}
+												{#if synonymFor === gk}
+													<!-- "The library has it under another word." -->
+													<form
+														class="mt-2 rounded-card border border-border bg-surface-2 p-3"
+														onsubmit={(e) => {
+															e.preventDefault();
+															void saveSynonym(lang.code, q.query);
+														}}
+													>
+														<label class="block text-small text-muted" for="syn-{gk}"
+															>When {lang.name} readers search “{q.query}”, search instead for</label
+														>
+														<div class="mt-1 flex flex-wrap gap-2">
+															<input
+																id="syn-{gk}"
+																class="min-w-0 flex-1 rounded-card border border-border bg-surface px-3 py-1.5 text-body text-text"
+																bind:value={synonymWord}
+																oninput={() => (synonymPreview = null)}
+															/>
+															<button
+																type="button"
+																class="btn btn-sm btn-ghost"
+																disabled={synonymWord.trim().length < 2 || synonymPreview?.loading}
+																onclick={() => previewSynonym(lang.code)}>Preview</button
+															>
+														</div>
+														{#if synonymPreview?.loading}
+															<p class="mt-2 text-small text-muted">Searching…</p>
+														{:else if synonymPreview?.error}
+															<p class="mt-2 text-small text-warning">{synonymPreview.error}</p>
+														{:else if synonymPreview}
+															<p class="mt-2 text-small {synonymPreview.count ? 'text-text' : 'text-warning'}">
+																{synonymPreview.count
+																	? `${fmt(synonymPreview.count)} results instead of 0. Top: ${synonymPreview.top}`
+																	: `“${synonymWord.trim()}” finds nothing either.`}
+															</p>
+														{/if}
+														<div class="mt-2 flex justify-end gap-2">
+															<button type="button" class="btn btn-sm btn-ghost" onclick={() => (synonymFor = '')}
+																>Cancel</button
+															>
+															<button
+																type="submit"
+																class="btn btn-sm btn-primary"
+																disabled={!synonymPreview?.count || busy === 'busy'}>Save synonym</button
+															>
+														</div>
+													</form>
+												{/if}
 												{#if gap?.error}
 													<p class="mt-1 text-small text-muted">{gap.error}</p>
 												{:else if gap?.data}
@@ -299,7 +729,8 @@
 														</ul>
 													{:else}
 														<p class="mt-1 text-small text-muted">
-															No matches in any other language — nothing to translate from.
+															No matches in any other language — nothing to translate from. Mark it wanted
+															if it belongs in the library.
 														</p>
 													{/if}
 													{#if gap.data.works.length}
@@ -317,13 +748,13 @@
 																		<button
 																			class="shrink-0 text-small text-warning hover:underline"
 																			title={queued[qk]}
-																			onclick={() => queueWork(lang.code, w)}>Retry</button
+																			onclick={() => queueWork(lang.code, w, q.query)}>Retry</button
 																		>
-																	{:else}
+																	{:else if auth.isAdmin}
 																		<button
 																			class="btn btn-sm btn-ghost shrink-0"
 																			disabled={queued[qk] === 'busy'}
-																			onclick={() => queueWork(lang.code, w)}
+																			onclick={() => queueWork(lang.code, w, q.query)}
 																			>{queued[qk] === 'busy' ? 'Queueing…' : `Queue ${lang.name}`}</button
 																		>
 																	{/if}
@@ -336,10 +767,68 @@
 										{/each}
 									</ul>
 								</div>
+								{/if}
 							{/each}
 						</div>
-					</section>
-				{/if}
+					{:else}
+						{@const rows = tab === 'handled' ? handled : wanted}
+						<p class="mb-4 text-small text-muted">
+							{tab === 'handled'
+								? 'Translations, synonyms, pins and out-of-scope searches, with what readers did since. A synonym that still finds nothing, or a translation still missing two weeks on, goes back to Open.'
+								: 'Searches for things the library doesn\'t have in any language, ranked by how often they\'ve been searched since: the import shopping list.'}
+						</p>
+						{#if decisions.error}
+							<p class="text-body text-warning">{decisions.error}</p>
+						{:else if decisions.loading && !decisions.data}
+							<p class="text-body text-muted">Loading…</p>
+						{:else if !rows.length}
+							<p class="text-body text-muted">
+								{tab === 'handled' ? 'Nothing handled yet.' : 'Nothing marked wanted yet.'}
+							</p>
+						{:else}
+							<ul>
+								{#each rows as row (row.language + row.query)}
+									{@const busy = deciding[gapKey(row.language, row.query)]}
+									<li class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-border py-2.5 first:border-t-0">
+										<div class="min-w-0">
+											<span class="text-body text-text">{row.query}</span>
+											<span class="ms-1 text-small text-muted">{row.language}</span>
+											<div class="text-small text-muted">
+												{row.outcome_label}{row.target ? ` · ${row.target}` : ''}{row.note ? ` · ${row.note}` : ''}
+												· {shortDate(row.decided_at)}{row.decided_by ? ` by ${row.decided_by}` : ''}
+											</div>
+											{#if busy && busy !== 'busy'}
+												<div class="text-small text-warning">{busy}</div>
+											{/if}
+										</div>
+										<div class="flex shrink-0 items-baseline gap-3 text-small">
+											{#if row.reopened}
+												<span class="text-danger">Reopened · {fmt(row.misses_since)} misses since</span>
+											{:else if row.outcome === 'wanted'}
+												<span class="tabular-nums text-text">{fmt(row.misses_since)} searches since</span>
+											{:else if row.outcome === 'pinned'}
+												<span class="tabular-nums text-muted"
+													>{fmt(row.searches_since)} searches since · {fmt(row.opens_since)} opened</span
+												>
+											{:else}
+												<span class="tabular-nums text-muted"
+													>{fmt(row.searches_since)} searches since · {fmt(row.misses_since)} found nothing</span
+												>
+											{/if}
+											{#if canDecide(row.language)}
+												<button
+													class="btn btn-sm btn-ghost"
+													disabled={busy === 'busy'}
+													onclick={() => undo(row)}>{busy === 'busy' ? 'Undoing…' : 'Undo'}</button
+												>
+											{/if}
+										</div>
+									</li>
+								{/each}
+							</ul>
+						{/if}
+					{/if}
+				</section>
 
 				<!-- By language -->
 				<section class="mt-6 rounded-card border border-border bg-surface p-5">

@@ -8,20 +8,146 @@ report about chapter quality.
 
 from __future__ import annotations
 
+from datetime import timedelta
+from functools import cached_property
+
+from django.db.models import Count, Max, Q
+from django.utils import timezone
+from django.utils.dateparse import parse_datetime
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import AdminAction
+from .. import job_status
+from ..models import AdminAction, Article, Author, Book, Plan, Sermon
 from .analytics import mask_email
 
 #: Team-grant rows target the grantee as ``user:<email>`` (see ``team.py``).
 USER_TARGET = "user:"
 
+#: The filter chips' families, keyed by the part of an action before the dot.
+#: The server twin of ``actionMeta`` in ``frontend/src/lib/adminActivity.ts``:
+#: the chips filter here now, so the two must file an action the same way. A
+#: prefix not listed (audit, broadcast, feedback) lands in ``content`` there too.
+CATEGORIES = ("language", "content", "review", "translation", "author", "access")
+_PREFIX_CATEGORY = {c: c for c in CATEGORIES} | {"role": "access"}
 
-def _serialize(row: AdminAction, *, reveal: bool) -> dict:
+#: The actions that change what a reader sees — ``loud`` in ``actionMeta``.
+READER_FACING = frozenset(
+    {
+        AdminAction.Action.LANGUAGE_GO_LIVE,
+        AdminAction.Action.CONTENT_PUBLISH,
+        AdminAction.Action.CONTENT_UNPUBLISH,
+        AdminAction.Action.ROLE_GRANT,
+        AdminAction.Action.ROLE_REVOKE,
+    }
+)
+
+
+def category_of(action: str) -> str:
+    return _PREFIX_CATEGORY.get(action.split(".", 1)[0], "content")
+
+
+def actions_in(category: str) -> list[str]:
+    return [a for a in AdminAction.Action.values if category_of(a) == category]
+
+
+#: Target kinds whose rows are per-language ``(slug, language)`` editions, and
+#: the field each one is displayed by.
+_TITLED = {
+    "book": (Book, "title"),
+    "sermon": (Sermon, "title"),
+    "article": (Article, "h1"),
+    "plan": (Plan, "title"),
+}
+
+
+def _titles(rows) -> dict[str, str]:
+    """Each row's display title, by target — one query per kind for the page.
+
+    The log stores slugs, so the page showed ``unslug`` guesses ("George Muller
+    Of Bristol"). The target's own language edition wins; failing that (a
+    translation job targets an edition that doesn't exist yet) the English row,
+    then any edition — the work's name either way, and better than its slug.
+    """
+    wanted: dict[str, set[str]] = {}
+    for row in rows:
+        kind, _, rest = row.target.partition(":")
+        if kind in _TITLED or kind == "author":
+            wanted.setdefault(kind, set()).add(rest.split(":", 1)[0])
+    out: dict[str, str] = {}
+    if slugs := wanted.pop("author", None):
+        for slug, name in Author.objects.filter(slug__in=slugs).values_list("slug", "name"):
+            out[f"author:{slug}"] = name
+    for kind, slugs in wanted.items():
+        model, field = _TITLED[kind]
+        by_slug: dict[str, dict[str, str]] = {}
+        for slug, lang, title in model.objects.filter(slug__in=slugs).values_list(
+            "slug", "language", field
+        ):
+            by_slug.setdefault(slug, {})[lang] = title
+        for row in rows:
+            k, _, rest = row.target.partition(":")
+            if k != kind:
+                continue
+            # `kind:slug:lang`, or `kind:slug:lang:reference` for a review row.
+            slug, lang = (rest.split(":") + [""])[:2]
+            titles = by_slug.get(slug)
+            if titles:
+                out[row.target] = titles.get(lang) or titles.get("en") or next(iter(titles.values()))
+    return out
+
+
+def _serialize_page(rows, *, reveal: bool, titled: bool = True, jobs=None) -> list[dict]:
+    titles = _titles(rows) if titled else {}
+    out = [_serialize(r, reveal=reveal, title=titles.get(r.target, "")) for r in rows]
+    if jobs is not None:
+        status = jobs.statuses_for(
+            {r.target: r.at for r in rows if r.action == TRANSLATION_JOB}
+        )
+        for row, data in zip(rows, out, strict=True):
+            if row.action == TRANSLATION_JOB:
+                data["job_status"] = status.get(row.target, job_status.UNKNOWN)
+    return out
+
+
+TRANSLATION_JOB = AdminAction.Action.TRANSLATION_JOB
+
+
+class _Jobs:
+    """One request's view of the translation queue: GitHub is read at most once
+    (and that read is cached across requests), statuses are memoised by target."""
+
+    def __init__(self):
+        self._known: dict[str, str] = {}
+
+    @cached_property
+    def queue(self):
+        return job_status.open_jobs()
+
+    @property
+    def github(self) -> str:
+        """"ok", "down" (didn't answer) or "off" (no token configured here)."""
+        q = self.queue
+        return "off" if q is None else "down" if q == "down" else "ok"
+
+    def statuses_for(self, filed: dict) -> dict[str, str]:
+        """Statuses for ``{target: when it was last filed}``; unparseable
+        targets are left out."""
+        keys = {
+            k: at
+            for t, at in filed.items()
+            if t not in self._known and (k := job_status.parse_key(t))
+        }
+        if keys:
+            found = job_status.statuses(keys, lambda: self.queue)
+            self._known.update({job_status.target_of(k): v for k, v in found.items()})
+        return self._known
+
+
+def _serialize(row: AdminAction, *, reveal: bool, title: str = "") -> dict:
     """One log row. ``reveal`` is whether the caller is a super admin; for anyone
     else the actor and any ``user:<email>`` target are masked — every role holds
     ``reporting:view``, and an unmasked log would hand the lowest of them the
@@ -38,6 +164,9 @@ def _serialize(row: AdminAction, *, reveal: bool) -> dict:
         "label": AdminAction.Action(row.action).label,
         "actor": actor,
         "target": target,
+        # The work's real name for a book/sermon/article/plan/author target, ""
+        # when there's none to find — the client falls back to the slug.
+        "title": title,
         "detail": row.detail,
         "at": row.at.isoformat(),
     }
@@ -55,6 +184,26 @@ def _parse_cursor(raw: str | None) -> int | None:
     except (TypeError, ValueError):
         return None
     return value if value > 0 else None
+
+
+def _day_start(raw: str | None, now):
+    """The caller's local midnight, so "today" means the admin's day, not UTC's.
+
+    Anything unparseable, naive, or not within the last day and a half (a
+    stale tab, a hand-edited URL) falls back to the server's own midnight. The
+    upper bound allows a client clock running a little ahead of ours.
+    """
+    try:
+        parsed = parse_datetime(raw) if raw else None
+    except ValueError:  # well-formed but impossible, e.g. Feb 30 or +25:00
+        parsed = None
+    if (
+        parsed
+        and timezone.is_aware(parsed)
+        and now - timedelta(hours=36) <= parsed <= now + timedelta(hours=1)
+    ):
+        return parsed
+    return timezone.localtime(now).replace(hour=0, minute=0, second=0, microsecond=0)
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
@@ -77,24 +226,75 @@ class AdminActivityView(APIView):
     null when this was the last. It is set by fetching one row beyond the page
     and keeping it only as the "there is more" signal, so the client never has
     to make a trailing request that comes back empty.
-    """
 
+    Filters run here, over the whole log, not over the page the client holds —
+    a search that only saw the newest hundred rows answered "never happened"
+    for anything older:
+
+    * ``?q=`` matches target, actor, detail, or the action's label.
+    * ``?category=`` one of ``CATEGORIES``; ``?actor=`` one admin, by the
+      (possibly masked) value the rows carry.
+    * ``?export=1`` returns every match up to ``EXPORT_LIMIT``, unpaged, for
+      the CSV — an export of the loaded page alone silently dropped the rest.
+
+    The first page also carries ``summary``: the header cards and chip counts,
+    counted in SQL over the whole (target-scoped) log. ``?day_start=`` is the
+    caller's local midnight, for "today".
+    """
 
     #: Enough to cover a working session and a couple before it.
     LIMIT = 100
+    #: An export is a file, not a page — but still bounded.
+    EXPORT_LIMIT = 20_000
 
     def get(self, request):
-        target = (request.query_params.get("target") or "").strip()
-        before = _parse_cursor(request.query_params.get("before"))
+        params = request.query_params
+        target = (params.get("target") or "").strip()
+        before = _parse_cursor(params.get("before"))
+        q = (params.get("q") or "").strip()
+        category = (params.get("category") or "").strip()
+        actor = (params.get("actor") or "").strip()
+        wanted = (params.get("job_status") or "").strip()
+        export = params.get("export") == "1"
+        jobs = _Jobs()
 
         reveal = is_admin_user(request.user, request)
-        base = AdminAction.objects.all()
+        scope = AdminAction.objects.all()
         if target:
             # A person's history is keyed by their email; letting a non-super
             # caller filter on it would confirm addresses the rows mask.
             if not reveal and target.startswith(USER_TARGET):
-                base = base.none()
-            base = base.filter(target=target)
+                scope = scope.none()
+            scope = scope.filter(target=target)
+
+        # The chips count over search + actor but not category, so each chip
+        # says what clicking it would show.
+        searched = self._search(scope, q, reveal=reveal)
+        if actor:
+            searched = searched.filter(actor__in=self._actors_matching(scope, actor, reveal=reveal))
+        base = searched.filter(action__in=actions_in(category)) if category in CATEGORIES else searched
+        if wanted in (*job_status.STATUSES, "needs_me"):
+            # Status isn't a column — it's read from GitHub and the editions — so
+            # resolve every job's status and filter to the targets that match.
+            pick = job_status.NEEDS_ME if wanted == "needs_me" else (wanted,)
+            status = jobs.statuses_for(self._job_targets(scope))
+            # (UNKNOWN never matches a target the status map left out — an
+            # unparseable one isn't a job, and isn't counted as one either.)
+            base = base.filter(
+                action=TRANSLATION_JOB, target__in=[t for t, s in status.items() if s in pick]
+            )
+
+        if export:
+            rows = list(base.order_by("-id")[: self.EXPORT_LIMIT + 1])
+            return Response(
+                {
+                    "truncated": len(rows) > self.EXPORT_LIMIT,
+                    # The CSV has no title column: skip resolving 20k of them.
+                    "actions": _serialize_page(
+                        rows[: self.EXPORT_LIMIT], reveal=reveal, titled=False
+                    ),
+                }
+            )
 
         page = base.filter(id__lt=before) if before is not None else base
         # Keyset on the primary key, newest first. `id` is the true insertion
@@ -107,14 +307,117 @@ class AdminActivityView(APIView):
         has_more = len(rows) > self.LIMIT
         rows = rows[: self.LIMIT]
 
+        first = before is None
         return Response(
             {
-                # A first-page figure only. A "load older" request (one with a
-                # cursor) already has the total and discards ours, so don't pay
-                # for a full count on every page of a table built to grow.
-                "total": None if before is not None else base.count(),
+                # First-page figures only. A "load older" request (one with a
+                # cursor) already has them and discards ours, so don't pay for
+                # the counts on every page of a table built to grow.
+                "total": base.count() if first else None,
+                "summary": self._summary(scope, searched, params, reveal=reveal, jobs=jobs)
+                if first
+                else None,
                 "limit": self.LIMIT,
                 "next_cursor": rows[-1].id if has_more else None,
-                "actions": [_serialize(r, reveal=reveal) for r in rows],
+                "actions": _serialize_page(rows, reveal=reveal, jobs=jobs),
             }
         )
+
+    @staticmethod
+    def _search(qs, q: str, *, reveal: bool):
+        if not q:
+            return qs
+        labels = [a for a, label in AdminAction.Action.choices if q.lower() in label.lower()]
+        match = Q(detail__icontains=q) | Q(action__in=labels) | Q(action__icontains=q)
+        if reveal:
+            match |= Q(target__icontains=q) | Q(actor__icontains=q)
+        else:
+            # The rows mask actors and user targets for this caller; a substring
+            # search over the raw values would let them probe the addresses.
+            match |= Q(target__icontains=q) & ~Q(target__startswith=USER_TARGET)
+        return qs.filter(match)
+
+    @staticmethod
+    def _actors_matching(scope, actor: str, *, reveal: bool) -> list[str]:
+        """The raw actor values an ``?actor=`` names. A non-super caller only
+        ever saw masked actors, so theirs is matched against the mask — the
+        filter works without the raw address reaching (or being probed by) them."""
+        if reveal:
+            return [actor]
+        known = scope.values_list("actor", flat=True).distinct()
+        return [a for a in known if a and mask_email(a) == actor]
+
+    def _job_targets(self, scope) -> dict:
+        """``{target: when it was last filed}`` for every job in scope — once
+        per request (the filter and the counts both need it)."""
+        if not hasattr(self, "_targets"):
+            rows = (
+                scope.filter(action=TRANSLATION_JOB)
+                .values("target")
+                .annotate(last=Max("at"), n=Count("id"))
+                .order_by()
+            )
+            self._targets = {r["target"]: r["last"] for r in rows}
+            self._target_rows = {r["target"]: r["n"] for r in rows}
+        return self._targets
+
+    def _summary(self, scope, searched, params, *, reveal: bool, jobs: _Jobs) -> dict:
+        now = timezone.now()
+        day_start = _day_start(params.get("day_start"), now)
+
+        by_category = dict.fromkeys(CATEGORIES, 0)
+        for row in searched.values("action").annotate(n=Count("id")).order_by():
+            by_category[category_of(row["action"])] += row["n"]
+
+        today = scope.filter(at__gte=day_start).aggregate(
+            n=Count("id"), loud=Count("id", filter=Q(action__in=READER_FACING))
+        )
+
+        actors: dict[str, int] = {}
+        for row in scope.values("actor").annotate(n=Count("id")).order_by():
+            if not row["actor"]:
+                continue  # a DEBUG tokenless request: nobody to filter on
+            key = row["actor"] if reveal else mask_email(row["actor"])
+            actors[key] = actors.get(key, 0) + row["n"]
+
+        # Both "last" rows in one title lookup.
+        latest = [
+            scope.filter(action=action).order_by("-id").first()
+            for action in (
+                AdminAction.Action.LANGUAGE_GO_LIVE,
+                AdminAction.Action.CONTENT_PUBLISH,
+            )
+        ]
+        found = iter(_serialize_page([r for r in latest if r], reveal=reveal))
+        go_live, publish = (next(found) if r else None for r in latest)
+
+        return {
+            "all": scope.count(),
+            "by_category": by_category,
+            "today": today["n"],
+            "today_reader_facing": today["loud"],
+            "week": scope.filter(at__gte=day_start - timedelta(days=6)).count(),
+            "actors": [
+                {"actor": a, "count": n}
+                for a, n in sorted(actors.items(), key=lambda kv: (-kv[1], kv[0]))
+            ],
+            "last_go_live": go_live,
+            "last_publish": publish,
+            "jobs": self._job_counts(scope, jobs),
+        }
+
+    def _job_counts(self, scope, jobs: _Jobs) -> dict:
+        """Translation-job rows by where each job is now. Rows, not distinct
+        jobs, so a count matches what its filter lists (a second press of
+        Translate is a second row of the same job)."""
+        targets = self._job_targets(scope)
+        counts = dict.fromkeys(job_status.STATUSES, 0)
+        github = "off"
+        if targets:
+            status = jobs.statuses_for(targets)
+            for t, n in self._target_rows.items():
+                if t in status:
+                    counts[status[t]] += n
+            # Only asked when some job hadn't shipped; untouched means "ok".
+            github = jobs.github if "queue" in jobs.__dict__ else "ok"
+        return {"by_status": counts, "github": github}

@@ -47,9 +47,9 @@
 		<h3 class="more-heading">{t('footer.explore')}</h3>
 		<div class="grid grid-cols-2 gap-2">
 			{#each PRIMARY_NAV as d (d.href)}
-				<a href={localizeHref(d.href)} class="more-tile"><Icon name={d.icon} size={20} />{t(d.labelKey)}</a>
+				<a href={localizeHref(d.href)} class="more-tile" data-section={d.section}><Icon name={d.icon} size={20} />{t(d.labelKey)}</a>
 			{/each}
-			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile"
+			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile" data-section="originals"
 				><Icon name="sparkle" size={20} />{t(ORIGINALS_DEST.labelKey)}</a
 			>
 		</div>
@@ -111,8 +111,10 @@
 		color: var(--text);
 		text-decoration: none;
 	}
+	/* Each destination's icon wears its section hue (app.css, data-section);
+	   the language tiles below carry no section and keep the accent. */
 	.more-tile :global(svg) {
-		color: var(--accent);
+		color: var(--section-hue, var(--accent));
 		flex-shrink: 0;
 	}
 	.more-row {

@@ -32,9 +32,10 @@
 	import { weekReadCount } from '$lib/heatmap';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import StatTiles from '$lib/components/StatTiles.svelte';
-	import { buildReminderICS } from '$lib/reminder';
+	import { buildReminderICS, DEFAULT_REMINDER_TIME, readReminderTime, REMINDER_TIME_KEY } from '$lib/reminder';
 	import { relativeTime } from '$lib/relativeTime';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
+	import PageHeader from '$lib/components/PageHeader.svelte';
 
 	const t = i18n.t;
 
@@ -174,15 +175,11 @@
 
 	// Daily reminder — a time the reader picks, emitted as a repeating .ics event
 	// they add to their own calendar (no server, works on every device).
-	const REMINDER_KEY = 'ochorus:reminder-time';
-	let reminderTime = $state('07:00');
-	onMount(() => {
-		const saved = localStorage.getItem(REMINDER_KEY);
-		if (saved && /^\d{2}:\d{2}$/.test(saved)) reminderTime = saved;
-	});
+	let reminderTime = $state(DEFAULT_REMINDER_TIME);
+	onMount(() => (reminderTime = readReminderTime()));
 	function addReminder() {
 		try {
-			localStorage.setItem(REMINDER_KEY, reminderTime);
+			localStorage.setItem(REMINDER_TIME_KEY, reminderTime);
 		} catch {
 			/* private mode — the picker just won't be remembered */
 		}
@@ -278,10 +275,7 @@
 	<meta name="robots" content="noindex" /></svelte:head>
 
 <div class="page-col px-5 py-10">
-	<header class="mb-8">
-		<h1 class="text-h1 mb-2">{t('settings.title')}</h1>
-		<p class="text-body text-muted">{t('settings.subtitle')}</p>
-	</header>
+	<PageHeader title={t('settings.title')} tagline={t('settings.subtitle')} />
 
 	<div class="flex flex-col gap-6 sm:flex-row">
 		<!-- Sidebar -->

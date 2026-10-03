@@ -8,7 +8,10 @@ Previously one 1,190-line module. The view classes are re-exported here so
 from .activity import AdminActivityView
 from .analytics import (
     AdminEngagementView,
+    AdminSearchDecisionListView,
+    AdminSearchDecisionView,
     AdminSearchGapView,
+    AdminSearchPreviewView,
     AdminSearchView,
     AdminUsersView,
 )
@@ -24,6 +27,7 @@ from .content import (
     AdminTranslationMarkCurrentView,
 )
 from .content_jobs import AdminContentEditJobsView
+from .demand import AdminLanguageWantedView
 from .detail import (
     AdminBookDetailView,
     AdminBookPublishView,
@@ -31,6 +35,7 @@ from .detail import (
     AdminSermonDetailView,
     AdminSermonPublishView,
 )
+from .dropoff import AdminDropOffView
 from .health import AdminLanguageHealthView
 from .jobs import AdminTranslationJobsView
 from .languages import (
@@ -49,7 +54,7 @@ from .quality import (
     AdminReviewQueueView,
     AdminVerseReviewView,
 )
-from .team import AdminTeamView
+from .team import AdminRolesView, AdminTeamView
 from .user_detail import AdminUserDetailView
 from .user_directory import AdminUserDirectoryView
 
@@ -63,17 +68,22 @@ __all__ = [
     "AdminBookPublishView",
     "AdminContentEditJobsView",
     "AdminCoverageView",
+    "AdminDropOffView",
     "AdminTranslationMarkCurrentView",
     "AdminLanguageHealthView",
     "AdminLanguageManualView",
     "AdminManualView",
     "AdminEngagementView",
+    "AdminSearchDecisionListView",
+    "AdminSearchDecisionView",
     "AdminSearchGapView",
+    "AdminSearchPreviewView",
     "AdminSearchView",
     "AdminExportView",
     "AdminLanguageCreateView",
     "AdminLanguageDeployCheckView",
     "AdminLanguageDetailView",
+    "AdminLanguageWantedView",
     "AdminLanguageGoLiveView",
     "AdminLanguageReadinessView",
     "AdminLanguageSettingsView",
@@ -84,6 +94,7 @@ __all__ = [
     "AdminSermonPublishView",
     "AdminVerseReviewView",
     "AdminStatsView",
+    "AdminRolesView",
     "AdminTeamView",
     "AdminTranslationJobsView",
     "AdminUnpublishedView",

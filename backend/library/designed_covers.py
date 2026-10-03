@@ -413,6 +413,16 @@ DERIVED_GROUND: dict[str, Ground] = {
                Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False)),
         source="3be5d85a8b6ab71b7b8d0d7d88a43e10d1d39dddbe52382c57eea5fa25db4ac1",
     ),
+    # Hands open in prayer over a Bible on a dark table, from under the "10
+    # Mighty Christian Men of Prayer" subtitle (~0.558) to the frame's foot
+    # (~0.94); the 0.09 inset crops inside the white hairline frame (x ~0.08 /
+    # ~0.92). The Ochorus lockup sits on the Bible's edge and the lower hands,
+    # painted out. Near-black above the hands, so a heavier lift than the
+    # series' other covers.
+    "men-who-moved-heaven": Ground(0.57, 0.935, 0.09, 1.30, foot=0.05,
+        erase=(Erase(0.36, 0.82, 0.64, 0.935, "any", thin=False),),
+        source="46b871cd0fe570bf38f6f6fe628064d7643d5d5baee2f77777331c347fd4ab99",
+    ),
     # The stream, the path and the pilgrim resting on the bank, from under
     # "Progress" to above the wordmark, the rule and subtitle painted off the
     # white water. Bunyan's `band` shows only the middle ~44% of the ground, so
@@ -461,6 +471,11 @@ DERIVED_GROUND: dict[str, Ground] = {
     # centres them in.
     "talks-to-the-farmer-children": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
         source="bdc9b9dcb04b2e12fa7699fe5c101e55bf44864693a27cb3b25122e7c0cf219c",
+    ),
+    # The teens cover is pixel-identical to the children's below ~0.60 (only
+    # the "FOR TEENS" line above the band differs), so the same crop.
+    "talks-to-the-farmer-teens": Ground(0.602, 0.928, 0.10, 1.30, foot=0.25,
+        source="476d31c3de2cf2a401fe72bc31f1faa26b96128a0834610a7f7a9ea257591d2c",
     ),
     # A golden sunset with an eagle. The bird flies between the lines of the
     # title, so the old crop settled for the sky below the subtitle — and the

@@ -3,9 +3,20 @@
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import QueueFixButton from '$lib/components/QueueFixButton.svelte';
+	import ReachCurve from '$lib/components/ReachCurve.svelte';
 	import PublishToggle from '$lib/components/PublishToggle.svelte';
 	import { type SourceType } from '$lib/library-public';
-	import { getAdminBook, setBookPublished, fileRetitleJob, fileBodyFixJob } from '$lib/library-admin';
+	import {
+		adminChapterId,
+		adminEditionId,
+		chapterFlagLabel,
+		getAdminBook,
+		setBookPublished,
+		fileRetitleJob,
+		fileBodyFixJob
+	} from '$lib/library-admin';
+	import { tick } from 'svelte';
+	import { page } from '$app/state';
 
 	let { data } = $props();
 
@@ -22,6 +33,19 @@
 	);
 	const book = $derived(detail.data);
 
+	// "Open chapter" links (here and from the content audit) land on a row
+	// that only exists once the book has loaded, after the browser has
+	// already given up on the hash: scroll to it then, once per hash, so a
+	// reload of the book doesn't yank the page back. The row is highlighted
+	// from the hash too, since client-side navigation never sets :target.
+	const targetId = $derived(page.url.hash.slice(1));
+	let scrolledTo = '';
+	$effect(() => {
+		if (!book || !targetId || targetId === scrolledTo) return;
+		scrolledTo = targetId;
+		tick().then(() => document.getElementById(targetId)?.scrollIntoView());
+	});
+
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
 
@@ -36,15 +60,6 @@
 		public_domain: 'Public domain',
 		ai_reviewed: 'AI · reviewed',
 		ai_unreviewed: 'AI · unreviewed'
-	};
-	const FLAG_LABEL: Record<string, string> = {
-		'generic-title': 'generic title',
-		empty: 'empty',
-		tiny: 'tiny',
-		giant: 'giant',
-		fragmented: 'fragmented',
-		'no-dropcap': 'no drop cap',
-		'mid-split': 'mid-sentence'
 	};
 </script>
 
@@ -69,7 +84,10 @@
 
 			<div class="space-y-5">
 				{#each b.languages as l (l.code)}
-					<section class="rounded-card border border-border bg-surface p-5">
+					<section
+						id={adminEditionId(l.code)}
+						class="scroll-mt-[calc(var(--appnav-h,0px)+1rem)] rounded-card border border-border bg-surface p-5"
+					>
 						<div class="mb-3 flex flex-wrap items-start justify-between gap-3">
 							<div>
 								<h2 class="text-h3">{l.native_name} <span class="text-muted">· {l.name} ({l.code})</span></h2>
@@ -94,15 +112,28 @@
 						</div>
 
 						{#if l.chapters.length}
+							<ReachCurve
+								reach={l.reach}
+								chapters={l.chapters}
+								steepest={l.steepest}
+								stallDays={b.stall_days}
+								chapterHref={(order) => `#${adminChapterId(l.code, order)}`}
+							/>
 							<ul class="divide-y divide-border rounded-card border border-border">
 								{#each l.chapters as c (c.order)}
-									<li class="flex items-baseline justify-between gap-3 px-3 py-2">
+									<!-- The id is what "Open chapter" (here and on the content
+									     audit's drop-off list) lands on: the row with the fix buttons. -->
+									<li
+										id={adminChapterId(l.code, c.order)}
+										class="flex scroll-mt-[calc(var(--appnav-h,0px)+4rem)] items-baseline justify-between gap-3 px-3 py-2"
+										class:bg-accent-soft={targetId === adminChapterId(l.code, c.order)}
+									>
 										<a href="/books/{b.slug}/{c.order}" class="min-w-0 truncate text-body text-text hover:text-accent">
 											<span class="text-muted tabular-nums">{c.order}.</span> {c.title || '(untitled)'}
 										</a>
 										<span class="flex shrink-0 items-center gap-2">
 											{#each c.flags as f (f)}
-												<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{FLAG_LABEL[f] ?? f}</span>
+												<span class="rounded-full border border-warning/40 px-2 py-0.5 text-micro text-warning">{chapterFlagLabel(f)}</span>
 											{/each}
 											<QueueFixButton
 												label="Fix title"

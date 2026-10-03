@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
-	import { ApiError } from '$lib/api';
+	import EmailBlocksEditor from '$lib/components/EmailBlocksEditor.svelte';
+	import EmailPreview from '$lib/components/EmailPreview.svelte';
+	import { ApiError, apiErrorDetail } from '$lib/api';
 	import {
 		listBroadcasts,
 		getBroadcast,
@@ -10,8 +12,15 @@
 		deleteBroadcast,
 		broadcastAction,
 		previewAudience,
+		listEmailTemplates,
+		saveEmailTemplate,
+		broadcastTranslation,
+		deleteEmailTemplate,
+		type EmailTemplate,
 		type AdminBroadcast,
+		type BroadcastActionName,
 		type BroadcastAudience,
+		type BroadcastCheck,
 		type BroadcastBlock,
 		type BroadcastStatus
 	} from '$lib/library-admin';
@@ -41,6 +50,13 @@
 		subject: Record<string, string>;
 		content: Record<string, BroadcastBlock>;
 		scheduled_at: string | null;
+		// Server-computed, read-only here: the pre-send checklist and send progress.
+		checks: BroadcastCheck[];
+		progress: AdminBroadcast['progress'];
+		status_reason: string;
+		audience_count: number;
+		locked: boolean;
+		translations: NonNullable<AdminBroadcast['translations']>;
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -48,14 +64,22 @@
 	let mode = $state<'list' | 'edit'>('list');
 	let draft = $state<Draft | null>(null);
 	let editLocale = $state('en');
-	let paragraphsText = $state(''); // the selected locale's paragraphs, one per line
 	let audienceCount = $state<number | null>(null);
 	let busy = $state(false);
 	let notice = $state('');
 	let error = $state('');
 	let scheduleAt = $state('');
 
-	const readOnly = $derived(draft?.status === 'sending' || draft?.status === 'sent');
+	// Once a send has started (even paused), the copy and audience are frozen;
+	// the server says so (`locked`) rather than this page re-deriving the rules.
+	const readOnly = $derived(!!draft?.locked);
+	const inFlight = $derived(draft?.status === 'sending' || draft?.status === 'paused');
+	const processed = $derived(
+		draft ? draft.progress.sent + draft.progress.skipped + draft.progress.failed : 0
+	);
+	const showProgress = $derived(
+		inFlight || processed > 0
+	);
 	const draftLocales = $derived(draft ? Object.keys(draft.content) : []);
 
 	function toDraft(b: AdminBroadcast): Draft {
@@ -67,14 +91,14 @@
 			audience: { ...b.audience },
 			subject: { ...b.subject },
 			content: structuredClone(b.content ?? {}),
-			scheduled_at: b.scheduled_at
+			scheduled_at: b.scheduled_at,
+			checks: b.checks ?? [],
+			progress: b.progress,
+			status_reason: b.status_reason,
+			audience_count: b.audience_count,
+			locked: b.locked,
+			translations: b.translations ?? {}
 		};
-	}
-
-	function loadLocaleFields() {
-		if (!draft) return;
-		const block = draft.content[editLocale] ?? {};
-		paragraphsText = (block.paragraphs ?? []).join('\n');
 	}
 
 	async function openEditor(id: number) {
@@ -85,43 +109,62 @@
 			draft = toDraft(b);
 			const locales = Object.keys(draft.content);
 			editLocale = locales.includes(editLocale) ? editLocale : (locales[0] ?? 'en');
-			loadLocaleFields();
 			await refreshCount();
 			mode = 'edit';
 		} catch (e) {
-			error = message(e);
+			error = apiErrorDetail(e);
 		}
 	}
 
-	async function newBroadcast() {
+	async function newBroadcast(template?: EmailTemplate) {
 		error = '';
 		try {
 			const b = await createBroadcast({
-				name: 'Untitled broadcast',
-				subject: { en: '' },
-				content: { en: {} },
+				name: template ? template.name : 'Untitled broadcast',
+				subject: template?.subject ?? { en: '' },
+				content: template?.content ?? { en: { preheader: '', blocks: [] } },
 				audience: {}
 			});
 			await list.load();
 			await openEditor(b.id);
 		} catch (e) {
-			error = message(e);
+			error = apiErrorDetail(e);
 		}
 	}
 
-	function syncParagraphs() {
+	// --- Templates ------------------------------------------------------------
+	const templates = adminResource(listEmailTemplates, "Couldn't load templates.");
+
+	async function saveAsTemplate() {
 		if (!draft) return;
-		const block = draft.content[editLocale] ?? {};
-		block.paragraphs = paragraphsText
-			.split('\n')
-			.map((p) => p.trim())
-			.filter(Boolean);
-		draft.content[editLocale] = block;
+		const name = prompt('Name this template', draft.name)?.trim();
+		if (!name) return;
+		busy = true;
+		error = '';
+		try {
+			if (!readOnly) await persist();
+			await saveEmailTemplate({ name, from_broadcast: draft.id });
+			await templates.load();
+			notice = `Saved as the template “${name}”.`;
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
+	}
+
+	async function removeTemplate(t: EmailTemplate) {
+		if (!confirm(`Delete the template “${t.name}”? Broadcasts made from it are unaffected.`)) return;
+		try {
+			await deleteEmailTemplate(t.id);
+			await templates.load();
+		} catch (e) {
+			error = apiErrorDetail(e);
+		}
 	}
 
 	async function persist() {
 		if (!draft) return;
-		syncParagraphs();
 		const b = await updateBroadcast(draft.id, {
 			name: draft.name,
 			subject: draft.subject,
@@ -130,7 +173,6 @@
 			from_address: draft.from_address
 		});
 		draft = toDraft(b);
-		loadLocaleFields();
 	}
 
 	async function save() {
@@ -142,7 +184,7 @@
 			await list.load();
 			notice = 'Saved.';
 		} catch (e) {
-			error = message(e);
+			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
 		}
@@ -158,30 +200,67 @@
 		}
 	}
 
-	async function act(action: 'send' | 'schedule' | 'cancel' | 'test') {
+	const CONFIRM: Partial<Record<BroadcastActionName, string>> = {
+		send: 'Send this broadcast to its whole audience? It goes out in batches, starting on the next email run.',
+		cancel: 'Cancel this broadcast? Anyone already emailed stays emailed; nobody else will get it.'
+	};
+
+	async function act(action: BroadcastActionName, extra: { override_guardrail?: boolean } = {}) {
 		if (!draft) return;
-		if (action === 'send' && !confirm('Send this broadcast to its whole audience now?')) return;
+		if (CONFIRM[action] && !confirm(CONFIRM[action])) return;
 		busy = true;
 		error = '';
 		notice = '';
 		try {
-			await persist(); // persist edits first
-			const extra =
+			if (!readOnly) await persist(); // persist edits first (a started send is frozen)
+			const body =
 				action === 'schedule' && scheduleAt
 					? { scheduled_at: new Date(scheduleAt).toISOString() }
-					: {};
-			const res = await broadcastAction(draft.id, action, extra);
-			if (action === 'test') notice = `Test sent to ${res.sent_to ?? 'your address'}.`;
-			else if (action === 'send') notice = `Sent. ${JSON.stringify(res.tally ?? {})}`;
-			else notice = 'Done.';
-			if (res.status) draft = toDraft(res as AdminBroadcast);
+					: extra;
+			const res = await broadcastAction(draft.id, action, body);
+			draft = toDraft(res);
+			notice =
+				action === 'test'
+					? `Test sent to ${res.sent_to ?? 'your address'}.`
+					: {
+							send: 'Queued. It sends in batches, starting on the next email run (every 15 minutes); progress shows below.',
+					schedule: 'Scheduled.',
+					cancel: 'Canceled.',
+					pause: 'Paused. Nobody else is emailed until you resume.',
+							resume: 'Resumed. Sending continues on the next email run.'
+						}[action];
 			await list.load();
 		} catch (e) {
-			error = message(e);
+			const body = e instanceof ApiError ? (e.body as { checks?: BroadcastCheck[]; needs_override?: boolean }) : undefined;
+			if (body?.checks && draft) draft.checks = body.checks;
+			if (action === 'resume' && body?.needs_override) {
+				busy = false; // not left spinning behind the native dialog
+				if (confirm(`${apiErrorDetail(e)}\n\nResume anyway?`)) await act('resume', { override_guardrail: true });
+				return;
+			}
+			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
 		}
 	}
+
+	// While a send is running, refresh its progress (and catch a guardrail pause).
+	// Progress only moves at batch checkpoints, so every 30 s is plenty, and a
+	// hidden tab doesn't poll.
+	$effect(() => {
+		if (mode !== 'edit' || draft?.status !== 'sending') return;
+		const id = draft.id;
+		const timer = setInterval(async () => {
+			if (document.hidden) return;
+			try {
+				const b = await getBroadcast(id);
+				if (draft?.id === id) draft = toDraft(b);
+			} catch {
+				/* keep the last known state; the next tick retries */
+			}
+		}, 30000);
+		return () => clearInterval(timer);
+	});
 
 	async function removeBroadcast() {
 		if (!draft) return;
@@ -193,39 +272,76 @@
 			mode = 'list';
 			draft = null;
 		} catch (e) {
-			error = message(e);
+			error = apiErrorDetail(e);
 		} finally {
 			busy = false;
 		}
 	}
 
+	/** Add a language, starting from a copy of the one on screen: the layout and
+	 *  library blocks carry over (each renders that language's own edition), and
+	 *  only the words need translating. */
 	function addLocale(code: string) {
 		if (!draft || draft.content[code]) return;
 		draft.subject[code] = '';
-		draft.content[code] = {};
+		draft.content[code] = $state.snapshot(draft.content[editLocale]) ?? { preheader: '', blocks: [] };
 		editLocale = code;
-		loadLocaleFields();
+	}
+
+	// --- AI-drafted translations (a job for a worker session; see the backend's
+	// emails/translation_jobs.py). A draft blocks sending until approved here.
+	const translationOf = (code: string) => draft?.translations[code];
+	const pendingLocales = $derived(
+		Object.entries(draft?.translations ?? {})
+			.filter(([, t]) => t.state === 'requested')
+			.map(([code]) => code)
+	);
+
+	async function translation(action: 'request' | 'fetch' | 'approve', code: string) {
+		if (!draft) return;
+		if (action === 'request' && !confirm(`Ask for ${translationOf(code)?.state === 'requested' ? 'a new' : 'an'} AI draft in ${localeLabel(code)}? It goes to the translation queue (replacing any open request); check back once a worker has run.`)) return;
+		busy = true;
+		error = '';
+		notice = '';
+		try {
+			// Save first: a request is made from what is saved, and the reply
+			// replaces this page's copy (unsaved edits would be lost).
+			if (!readOnly) await persist();
+			const source = editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en';
+			const b = await broadcastTranslation(draft.id, action, code, action === 'request' ? source : undefined);
+			draft = toDraft(b);
+			const state = draft.translations[code]?.state;
+			notice = {
+				request: `${localeLabel(code)} draft requested — it's in the translation queue.`,
+				fetch: state === 'draft' ? `${localeLabel(code)} draft is in. Read it, edit it if you like, then approve it.` : `${localeLabel(code)} isn't back yet.`,
+				approve: `${localeLabel(code)} approved.`
+			}[action];
+			if (action === 'fetch' && state === 'draft') editLocale = code;
+		} catch (e) {
+			error = apiErrorDetail(e);
+		} finally {
+			busy = false;
+		}
 	}
 
 	function switchLocale(code: string) {
-		syncParagraphs();
 		editLocale = code;
-		loadLocaleFields();
 	}
 
-	function message(e: unknown): string {
-		if (e instanceof ApiError) {
-			const body = e.body as { detail?: string } | undefined;
-			return body?.detail || `Request failed (${e.status}).`;
-		}
-		return 'Something went wrong.';
-	}
+	// How each pre-send check level reads in the checklist.
+	const LEVEL: Record<BroadcastCheck['level'], { cls: string; label: string; glyph: string }> = {
+		error: { cls: 'bg-danger/15 text-danger', label: 'Must fix', glyph: '!' },
+		warning: { cls: 'bg-warning/15 text-warning', label: 'Warning', glyph: '?' },
+		ok: { cls: 'bg-accent-soft text-accent', label: 'OK', glyph: '✓' }
+	};
 
-	const availableToAdd = $derived(LOCALES.filter((l) => !draft?.content[l.code]));
+	// A language waiting on an AI draft is added by its draft, not by hand.
+	const availableToAdd = $derived(LOCALES.filter((l) => !draft?.content[l.code] && !pendingLocales.includes(l.code)));
 	const statusTone: Record<BroadcastStatus, string> = {
 		draft: 'bg-surface-2 text-muted',
 		scheduled: 'bg-accent-soft text-accent',
 		sending: 'bg-accent-soft text-accent',
+		paused: 'bg-warning/15 text-warning',
 		sent: 'bg-surface-2 text-text',
 		canceled: 'bg-surface-2 text-muted'
 	};
@@ -233,7 +349,7 @@
 
 <svelte:head><title>Admin · Compose email — Ochorus</title><meta name="robots" content="noindex" /></svelte:head>
 
-<div class="mx-auto max-w-4xl px-5 py-10">
+<div class="mx-auto max-w-6xl px-5 py-10">
 	<header class="mb-6">
 		<p class="eyebrow mb-2 text-accent">Admin</p>
 		<h1 class="text-h1">Compose email</h1>
@@ -253,8 +369,27 @@
 		<AdminGate resource={list} errorTitle="Couldn't load broadcasts">
 			{#snippet children(d)}
 				<div class="mb-4 flex justify-end">
-					<button class="btn btn-primary btn-sm" onclick={newBroadcast}>New broadcast</button>
+					<button class="btn btn-primary btn-sm" onclick={() => newBroadcast()}>New broadcast</button>
 				</div>
+				{#if templates.data?.templates.length}
+					<section class="mb-5 rounded-card border border-border bg-surface p-4">
+						<h2 class="mb-2 text-h3">Start from a template</h2>
+						<ul class="divide-y divide-border/60">
+							{#each templates.data.templates as t (t.id)}
+								<li class="flex flex-wrap items-center justify-between gap-2 py-2">
+									<span class="text-small text-text">
+										<span class="font-semibold">{t.name}</span>
+										<span class="text-muted"> · {t.locales.join(', ') || 'empty'}</span>
+									</span>
+									<span class="flex gap-1">
+										<button class="btn btn-ghost btn-sm" onclick={() => newBroadcast(t)}>Use</button>
+										<button class="btn btn-ghost btn-sm text-danger" onclick={() => removeTemplate(t)}>Delete</button>
+									</span>
+								</li>
+							{/each}
+						</ul>
+					</section>
+				{/if}
 				{#if d.broadcasts.length === 0}
 					<div class="rounded-card border border-border bg-surface p-8 text-center">
 						<p class="text-h3">No broadcasts yet</p>
@@ -295,7 +430,13 @@
 		</div>
 
 		{#if readOnly}
-			<p class="mb-4 text-small text-muted">This broadcast has been sent and is read-only.</p>
+			<p class="mb-4 text-small text-muted">
+				{inFlight
+					? 'Sending has started, so the email and its audience are locked.'
+					: 'This broadcast has been sent and is read-only.'}
+			</p>
+		{:else if draft.status_reason}
+			<p class="mb-4 rounded-md bg-warning/10 p-2 text-small text-warning">{draft.status_reason}</p>
 		{/if}
 
 		<!-- Name -->
@@ -355,34 +496,101 @@
 						<option value="">+ Add language</option>
 						{#each availableToAdd as l (l.code)}<option value={l.code}>{l.label}</option>{/each}
 					</select>
+					<select class="rounded-md border border-border bg-surface p-1 text-micro" aria-label="Draft a language with AI" disabled={busy} onchange={(e) => { const v = (e.currentTarget as HTMLSelectElement).value; (e.currentTarget as HTMLSelectElement).value = ''; if (v) translation('request', v); }}>
+						<option value="">✦ Draft with AI</option>
+						{#each availableToAdd.filter((l) => l.code !== 'en' && !translationOf(l.code)) as l (l.code)}<option value={l.code}>{l.label}</option>{/each}
+					</select>
 				{/if}
 			</div>
 
+			{#each pendingLocales as code (code)}
+				<div class="mb-2 flex flex-wrap items-center gap-2 rounded-md bg-surface-2 p-2 text-small">
+					<span class="text-text">{localeLabel(code)}: AI draft requested</span>
+					<a class="text-micro text-accent hover:underline" href={translationOf(code)?.url} target="_blank" rel="noopener">issue #{translationOf(code)?.issue}</a>
+					<button class="btn btn-ghost btn-sm" onclick={() => translation('fetch', code)} disabled={busy}>Check for the draft</button>
+					<button class="btn btn-ghost btn-sm" onclick={() => translation('request', code)} disabled={busy || readOnly}>Ask again</button>
+				</div>
+			{/each}
+
+			{#if translationOf(editLocale)?.state === 'draft'}
+				<div class="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-md bg-warning/10 p-3 text-small">
+					<span class="text-warning">AI draft — read it, edit anything that's off, then approve it. It can't be sent until you do.</span>
+					<button class="btn btn-primary btn-sm" onclick={() => translation('approve', editLocale)} disabled={busy}>Approve {localeLabel(editLocale)}</button>
+				</div>
+			{:else if translationOf(editLocale)?.state === 'approved'}
+				<p class="mb-3 text-micro text-muted">AI draft, approved{translationOf(editLocale)?.approved_by ? ` by ${translationOf(editLocale)?.approved_by}` : ''}.</p>
+			{/if}
+			{#if translationOf(editLocale)?.stale}
+				<p class="mb-3 rounded-md bg-warning/10 p-2 text-small text-warning">The {localeLabel(translationOf(editLocale)?.source_locale ?? 'en')} text changed after this translation was drafted.</p>
+			{/if}
+
 			{#if draft.content[editLocale]}
-				<label class="mb-3 block">
-					<span class="mb-1 block text-micro text-muted">Subject line</span>
-					<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} />
-				</label>
-				<label class="mb-3 block">
-					<span class="mb-1 block text-micro text-muted">Heading</span>
-					<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].heading} disabled={readOnly} />
-				</label>
-				<label class="mb-3 block">
-					<span class="mb-1 block text-micro text-muted">Body — one paragraph per line</span>
-					<textarea class="h-40 w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={paragraphsText} onblur={syncParagraphs} disabled={readOnly}></textarea>
-				</label>
-				<div class="grid grid-cols-2 gap-3">
+				<div class="mb-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
 					<label class="block">
-						<span class="mb-1 block text-micro text-muted">Button label (optional)</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-small" bind:value={draft.content[editLocale].cta_label} disabled={readOnly} />
+						<span class="mb-1 block text-micro text-muted">Subject line</span>
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.subject[editLocale]} disabled={readOnly} />
 					</label>
 					<label class="block">
-						<span class="mb-1 block text-micro text-muted">Button link path (e.g. books)</span>
-						<input class="w-full rounded-md border border-border bg-surface p-2 text-small" bind:value={draft.content[editLocale].cta_path} disabled={readOnly} />
+						<span class="mb-1 block text-micro text-muted">Inbox preview text (optional)</span>
+						<input class="w-full rounded-md border border-border bg-surface p-2 text-body" bind:value={draft.content[editLocale].preheader} disabled={readOnly} placeholder="Shown after the subject in most inboxes" />
 					</label>
+				</div>
+				<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+					<EmailBlocksEditor bind:blocks={draft.content[editLocale].blocks} locale={editLocale} localeName={localeLabel(editLocale)} disabled={readOnly} />
+					<EmailPreview locale={editLocale} subject={draft.subject[editLocale] ?? ''} content={draft.content[editLocale]} />
 				</div>
 			{/if}
 		</section>
+
+		{#if showProgress}
+			<!-- Send progress -->
+			<section class="mb-5 rounded-card border border-border bg-surface p-4" aria-live="polite">
+				<div class="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+					<h2 class="text-h3">Sending</h2>
+					<span class="text-small text-muted tabular-nums">{processed} of about {draft.audience_count} readers processed</span>
+				</div>
+				<div class="h-2 overflow-hidden rounded-full bg-surface-2">
+					<div class="h-full rounded-full bg-accent" style="width: {Math.min(100, draft.audience_count ? (processed / draft.audience_count) * 100 : 100)}%"></div>
+				</div>
+				<p class="mt-2 text-small text-muted tabular-nums">
+					{draft.progress.sent} sent · {draft.progress.skipped} skipped (opted out or no address) · {draft.progress.failed} failed
+				</p>
+				{#if draft.status === 'paused' && draft.status_reason}
+					<p class="mt-2 rounded-md bg-warning/10 p-2 text-small text-warning">{draft.status_reason}</p>
+				{/if}
+				{#if inFlight}
+					<div class="mt-3 flex flex-wrap gap-2">
+						{#if draft.status === 'sending'}
+							<button class="btn btn-ghost btn-sm" onclick={() => act('pause')} disabled={busy}>Pause</button>
+						{:else}
+							<button class="btn btn-primary btn-sm" onclick={() => act('resume')} disabled={busy}>Resume</button>
+						{/if}
+						<button class="btn btn-ghost btn-sm text-danger" onclick={() => act('cancel')} disabled={busy}>Cancel sending</button>
+					</div>
+				{/if}
+			</section>
+		{/if}
+
+		{#if !readOnly && draft.checks.length}
+			<!-- Pre-send checks -->
+			<section class="mb-5 rounded-card border border-border bg-surface p-4">
+				<div class="mb-2 flex items-baseline justify-between gap-2">
+					<h2 class="text-h3">Before you send</h2>
+					<span class="text-small text-muted">Saved version · save to re-check</span>
+				</div>
+				<ul class="space-y-1.5">
+					{#each draft.checks as c (c.code)}
+						<li class="flex gap-2 text-small">
+							<span
+								class="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-micro font-bold {LEVEL[c.level].cls}"
+								aria-label={LEVEL[c.level].label}
+							>{LEVEL[c.level].glyph}</span>
+							<span class={c.level === 'ok' ? 'text-muted' : 'text-text'}>{c.message}</span>
+						</li>
+					{/each}
+				</ul>
+			</section>
+		{/if}
 
 		<!-- From + actions -->
 		<section class="mb-5 rounded-card border border-border bg-surface p-4">
@@ -395,8 +603,11 @@
 				<div class="flex flex-wrap items-center gap-2">
 					<button class="btn btn-primary btn-sm" onclick={save} disabled={busy}>Save</button>
 					<button class="btn btn-ghost btn-sm" onclick={() => act('test')} disabled={busy}>Send test to me</button>
+					<button class="btn btn-ghost btn-sm" onclick={saveAsTemplate} disabled={busy}>Save as template</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>
 					<input type="datetime-local" class="rounded-md border border-border bg-surface p-1.5 text-small" bind:value={scheduleAt} />
+					<!-- Not disabled on the checks: they describe the last SAVED version, and
+					     act() saves first, then the server re-checks and refuses with the list. -->
 					<button class="btn btn-ghost btn-sm" onclick={() => act('schedule')} disabled={busy || !scheduleAt}>Schedule</button>
 					<button class="btn btn-primary btn-sm" onclick={() => act('send')} disabled={busy}>Send now</button>
 					<span class="mx-1 h-5 w-px bg-border"></span>

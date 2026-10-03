@@ -49,4 +49,28 @@ describe('pager', () => {
 		other.restore(undefined);
 		expect(other.visible).toHaveLength(24);
 	});
+
+	it('opens on a separate first page, then pages by the batch', () => {
+		const many = Array.from({ length: 160 }, (_, i) => i);
+		const p = pager(() => many, () => 'k', 48, 56);
+		expect(p.visible).toHaveLength(56);
+		expect(p.next).toBe(48);
+		p.more();
+		expect(p.visible).toHaveLength(104);
+		expect(p.next).toBe(48);
+		p.more();
+		expect(p.visible).toHaveLength(152);
+		expect(p.next).toBe(8);
+	});
+
+	it('reveals past a separate first page in whole batches', () => {
+		const many = Array.from({ length: 160 }, (_, i) => i);
+		const p = pager(() => many, () => 'k', 48, 56);
+		p.reveal(40);
+		expect(p.visible).toHaveLength(56);
+		p.reveal(56);
+		expect(p.visible).toHaveLength(104);
+		p.reveal(104);
+		expect(p.visible).toHaveLength(152);
+	});
 });

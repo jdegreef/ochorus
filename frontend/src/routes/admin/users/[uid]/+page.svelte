@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { ApiError } from '$lib/api';
+	import { auth } from '$lib/auth.svelte';
+	import ReaderEmailPanel from '$lib/components/ReaderEmailPanel.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import type { FavoriteKind } from '$lib/favorites.svelte';
-	import { formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
+	import { formatDateTime, formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
 	import type { WorkKind } from '$lib/reading-schema';
 
 	let { data } = $props();
@@ -31,16 +33,6 @@
 	const dateOnlyFmt = (iso: string | null) =>
 		iso
 			? new Date(iso + 'T00:00:00').toLocaleDateString('en', { year: 'numeric', month: 'short', day: 'numeric' })
-			: '—';
-	const dateTimeFmt = (iso: string | null) =>
-		iso
-			? new Date(iso).toLocaleString('en', {
-					year: 'numeric',
-					month: 'short',
-					day: 'numeric',
-					hour: 'numeric',
-					minute: '2-digit'
-				})
 			: '—';
 
 	// Email is PII: masked until revealed, like the recent-sign-ups list.
@@ -303,7 +295,7 @@
 									<span class="text-body text-text">{formatDuration(s.seconds)}</span>
 									{#if s.title}<span class="text-small text-muted"> · {s.title}</span>{/if}
 								</div>
-								<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{dateTimeFmt(s.started_at)}</span>
+								<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{formatDateTime(s.started_at)}</span>
 							</li>
 						{/each}
 					</ul>
@@ -368,7 +360,7 @@
 									{/if}
 									{#if e.type === 'read' && e.chapter_order}<span class="text-small text-muted"> · ch {e.chapter_order}</span>{/if}
 								</span>
-								<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{dateTimeFmt(e.at)}</span>
+								<span class="shrink-0 whitespace-nowrap text-small text-muted tabular-nums">{formatDateTime(e.at)}</span>
 							</li>
 						{/each}
 					</ul>
@@ -376,6 +368,11 @@
 					<p class="text-body text-muted">No activity recorded yet.</p>
 				{/if}
 			</section>
+
+			<!-- Email: history + write to them (super admins only, like the Emails section) -->
+			{#if auth.isAdmin}
+				<ReaderEmailPanel uid={data.uid} name={d.profile.display_name || 'this reader'} />
+			{/if}
 		{/snippet}
 	</AdminGate>
 </div>

@@ -19,11 +19,12 @@
     "description": "Cuatro semanas con R. A. Torrey sobre la vida llena del Espíritu: primero el bautismo con el Espíritu Santo y el poder que trae para el servicio, y luego el estudio más pleno de la Persona y la obra del Espíritu que mora en todo creyente."
   },
   "school-of-prayer": {
-    "title": "Una escuela de oración",
-    "description": "Cuatro semanas en la escuela de la oración con tres guías: Andrew Murray sobre cómo el Señor mismo nos enseña a orar, D. L. Moody sobre la oración que prevalece, y Hannah Buyinza sobre la oración como el pulso diario de la vida cristiana.",
+    "title": "Fundamentos de la oración",
+    "description": "Cuatro semanas para afirmar los fundamentos de la oración con tres guías: Andrew Murray sobre cómo el Señor mismo nos enseña a orar, D. L. Moody sobre la oración que prevalece, y Hannah Buyinza sobre la oración como el pulso diario de la vida cristiana.",
     "note": [
       "Queue job #517. The description names the three source books the way their shipped Spanish editions name themselves: «La oración que prevalece» and «el pulso de la vida» (from «Oración – El Pulso de la Vida») are the fixture titles verbatim, so the plan card and the books it opens agree.",
-      "lord-teach-us-to-pray-2 has NO Spanish edition yet, so seed_plans will not create this row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan (the #819 defect). Whoever translates it should keep this card's phrasing for the school-of-prayer motif or adjust this entry in the same PR."
+      "lord-teach-us-to-pray-2 has NO Spanish edition yet, so seed_plans will not create this row today — the prose ships ahead so that book's arrival cannot publish an English-titled plan (the #819 defect). Whoever translates it should keep this card's phrasing for the school-of-prayer motif or adjust this entry in the same PR.",
+      "2026-10-01: retitled from «Una escuela de oración» to follow the English rename «A School of Prayer» → «Foundations in Prayer». AI-drafted; the description's opening «Cuatro semanas en la escuela de la oración» became «Cuatro semanas para afirmar los fundamentos de la oración» to match."
     ]
   },
   "the-inner-chamber-month": {
@@ -78,6 +79,13 @@
     "description": "Un mes con Andrew Murray a los pies del único Maestro. Cada día abre una de las propias palabras de Jesús sobre la oración, desde «Señor, enséñanos a orar» hasta las promesas de la última noche, y termina en una oración. Una lección al día, unos diez minutos, avanzando hacia la intercesión y una vida de oración.",
     "note": [
       "Queue job #3145. El libro fuente school-of-prayer ahora tiene edición en español, así que seed_plans crea una fila en español para este plan de un solo libro; esta prosa evita que se publique con título en inglés. El título y la descripción reflejan la edición española «Con Cristo en la escuela de oración»."
+    ]
+  },
+  "new-to-the-faith": {
+    "title": "Nuevo en la fe",
+    "description": "Cinco semanas y media para quien acaba de empezar con Cristo. Charles Spurgeon te sale al encuentro en «Junto a la puerta estrecha» con la ayuda más sencilla que existe para confiar en Jesús; luego R. A. Torrey, que escribía para nuevos creyentes, muestra en «Cómo triunfar en la vida cristiana» cómo empezar bien: la seguridad de la salvación, el Espíritu Santo, la iglesia, la Biblia, la oración y el testimonio. Por el camino, artículos breves responden las preguntas que todo nuevo cristiano se hace: qué es el evangelio, por qué murió Jesús, qué significan el bautismo y la Cena del Señor, y cómo seguir creciendo.",
+    "note": [
+      "AI-drafted alongside the plan itself (not a queue job); awaiting native review. The two books are named by their shipped Spanish titles verbatim (around-the-wicket-gate.es «Junto a la puerta estrecha», how-to-succeed-in-the-christian-life.es «Cómo triunfar en la vida cristiana»), so the card and the books it opens agree. Uses «tú», the register of the Spanish articles the plan reads."
     ]
   }
 }

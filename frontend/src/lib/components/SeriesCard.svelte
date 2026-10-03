@@ -1,16 +1,25 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { bookProgressReader } from '$lib/progress';
-	import { seriesProgress, seriesProgressLabel } from '$lib/series';
-	import { contentLang } from '$lib/reading';
-	import { getLang } from '$lib/lang.svelte';
-	import ProgressBar from './ProgressBar.svelte';
+	import {
+		nextInSeries,
+		seriesCardProgressLabel,
+		seriesProgress,
+		splitSeriesTitle,
+		cardLanguages,
+		seriesOrder
+	} from '$lib/series';
+	import { contentLang, readingMinutes } from '$lib/reading';
+	import { getLang, localeName } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
 	import { seriesAges } from '$lib/series';
+	import SeriesSegments from './SeriesSegments.svelte';
 	import ShelfCard from './ShelfCard.svelte';
+	import Arrow from './Arrow.svelte';
 
 	/**
 	 * A book series as a browse card — the Topics/Plans `ShelfCard`, so the
@@ -19,14 +28,21 @@
 	 * `compact` is the rail's form: no description, and an <h3> title because
 	 * the rail sits under its own "Book Series" <h2>; the index's cards sit
 	 * directly under the page <h1>.
+	 *
+	 * The full card (the index) also wears the large cover fan, lists every
+	 * book in the series behind a disclosure, and links a companion series —
+	 * Daughters of the King ⇄ Sons of the King — when the index passes one.
 	 */
 	let {
 		series,
 		compact = false,
+		companion = null,
 		headingLevel = compact ? 3 : 2
 	}: {
 		series: SeriesSummary;
 		compact?: boolean;
+		/** The series written as this one's pair, when it has a page here. */
+		companion?: Pick<SeriesSummary, 'slug' | 'title'> | null;
 		/** Overrides the level `compact` implies — the index's full cards sit
 		 *  under an audience <h2>, so they title themselves <h3>. */
 		headingLevel?: 2 | 3;
@@ -36,46 +52,236 @@
 
 	// The reader's progress through the series, read after mount: it lives in
 	// localStorage, and the prerendered card must not bake one visitor's place
-	// into every page. Drawn only once a book of the series is begun.
-	let mounted = $state(false);
-	onMount(() => (mounted = true));
+	// into every page. Read again on `ochorus:sync`, when an account's progress
+	// lands after the page did. Drawn only once a book of the series is begun,
+	// as one segment per book — an empty bar over "0 of 4 read" told a reader
+	// halfway through book one that they had done nothing.
+	let ticks = $state(0);
+	onMount(() => {
+		const bump = () => ticks++;
+		bump();
+		window.addEventListener('ochorus:sync', bump);
+		return () => window.removeEventListener('ochorus:sync', bump);
+	});
+	// One parse of the progress map per read, shared by the meter and the button.
+	const progressOf = $derived(ticks ? bookProgressReader() : null);
 	const progress = $derived(
-		mounted && series.books ? seriesProgress(series.books, bookProgressReader()) : null
+		progressOf && series.books ? seriesProgress(series.books, progressOf) : null
 	);
 	const progressLabel = $derived(
-		progress ? seriesProgressLabel(progress.done, progress.total, contentLang(getLang())) : ''
+		progress ? seriesCardProgressLabel(progress.stages, contentLang(getLang())) : ''
 	);
 	const ages = $derived(seriesAges(series));
+	// How the series reads, at a glance (the full card): in order or as a set,
+	// and a typical chapter's time, at this reader's own pace once it has
+	// settled (200 wpm before). Each part only when the API sends it.
+	const order = $derived(compact ? null : seriesOrder(series));
+	const orderLabel = $derived(
+		order === 'inOrder' ? t('series.inOrder') : order === 'anyOrder' ? t('series.anyOrder') : ''
+	);
+	const perDay = $derived(
+		!compact && series.chapter_words ? readingMinutes(series.chapter_words) : 0
+	);
+	// The languages the series can be read in, the reader's own first: a
+	// multilingual library's best fact about a series, and already in the list
+	// payload (for hreflang). Only drawn when there is more than one, and capped
+	// so a ten-language series stays one line.
+	const langs = $derived(cardLanguages(series.languages ?? [], getLang()));
+	// The card's own way in (the full card only; the rail stays compact): the
+	// book to open next, as the series page's button picks it — the first book
+	// until mount, then the book in progress or the first unfinished — or, once
+	// every book is read, a line saying so (the foot stays, so the card keeps
+	// one shape from prerender to mount). Its title comes from the list's
+	// `titles` (the fan's tiles cover only the first four books, so an API
+	// behind this build falls back to them, and past those the verb stands alone).
+	const slugs = $derived(series.books ?? []);
+	const hasAction = $derived(!compact && slugs.length > 0);
+	const next = $derived.by(() => {
+		if (!hasAction) return null;
+		const books = slugs.map((slug) => ({ slug }));
+		return progressOf ? nextInSeries(books, progressOf) : { book: books[0], resume: false };
+	});
+	// "Continue" for any book past the first: a reader sent to volume 5 is
+	// carrying on with the series, not beginning it.
+	const continuing = $derived(!!next && (next.resume || next.book.slug !== slugs[0]));
+	const nextTitle = $derived(
+		next
+			? (series.titles?.[slugs.indexOf(next.book.slug)] ??
+					series.covers.find((c) => c.slug === next.book.slug)?.title ??
+					'')
+			: ''
+	);
+	// The book list: every volume with its stage, once progress is read.
+	const bookList = $derived(
+		!compact && series.titles?.length === slugs.length
+			? slugs.map((slug, i) => ({
+					slug,
+					title: series.titles![i],
+					stage: progress?.stages[i] ?? 'unread'
+				}))
+			: []
+	);
+	// "Rooted – 30 Days with God for Youth" as a name over a subtitle, so the
+	// title stays short enough to sit level with the count beside it.
+	const heading = $derived(splitSeriesTitle(series.title));
 </script>
 
 <ShelfCard
 	href={localizeHref(`/series/${series.slug}/`)}
 	hue={meta.accent}
 	emblem={meta.emblem}
-	mark={{
-		top: series.book_count === 1 ? t('common.bookOne') : t('common.bookMany'),
-		value: String(series.book_count)
-	}}
 	covers={series.covers}
-	title={series.title}
+	fan={compact ? 'sm' : 'lg'}
+	title={heading.name}
+	subtitle={heading.subtitle}
 	{headingLevel}
+	action={hasAction || (!compact && companion) ? footer : undefined}
 >
 	{#snippet aside()}
 		{series.book_count}
 		{series.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
 	{#if ages}
-		<p class="mt-0.5 text-small font-medium text-accent">{ages}</p>
+		<!-- Ink, not accent: the whole card is one link, and an indigo line
+		     inside it read as a second one that went nowhere. -->
+		<p class="mt-0.5 text-small font-medium text-text">{ages}</p>
+	{/if}
+	{#if orderLabel || perDay}
+		<p class="series-facts mt-1 text-small text-muted">
+			{#if orderLabel}<span class="whitespace-nowrap">{orderLabel}</span>{/if}
+			{#if orderLabel && perDay}{' '}<span class="opacity-50">·</span>{' '}{/if}
+			{#if perDay}<span class="whitespace-nowrap"
+					>{m.series_chapter_minutes({ minutes: perDay })}</span
+				>{/if}
+		</p>
+	{/if}
+	{#if !compact && langs.shown.length}
+		<p class="mt-1.5 flex flex-wrap items-center gap-1" dir="ltr">
+			<span class="sr-only">{t('footer.languages')}:</span>
+			{#each langs.shown as code (code)}
+				<abbr class="lang-code" title={localeName(code)}>{code.toUpperCase()}</abbr>
+			{/each}
+			{#if langs.hidden.length}
+				{@const names = langs.hidden.map(localeName).join(', ')}
+				<abbr class="lang-code" title={names}
+					>+{langs.hidden.length}<span class="sr-only">: {names}</span></abbr
+				>
+			{/if}
+		</p>
 	{/if}
 	{#if !compact && series.description}
-		<p class="shelf-card-desc mt-1.5 text-small text-muted" dir="auto">{series.description}</p>
+		<p class="shelf-card-desc series-desc mt-1.5 text-small text-muted" dir="auto">
+			{series.description}
+		</p>
 	{/if}
 	{#if progress?.started}
 		<!-- mt-auto: with the body's flex:1 this sits on the card's floor, so a
 		     row of cards keeps its meters level. -->
 		<div class="mt-auto flex flex-col gap-1.5 pt-3">
-			<ProgressBar percent={(progress.done / progress.total) * 100} label={progressLabel} />
+			<SeriesSegments stages={progress.stages} label={progressLabel} />
 			<span class="text-small text-muted">{progressLabel}</span>
 		</div>
 	{/if}
 </ShelfCard>
+
+{#snippet footer()}
+	{#if bookList.length}
+		<details class="book-list">
+			<summary class="text-small font-medium text-accent">
+				{t('series.booksList')}<span class="count">{bookList.length}</span>
+			</summary>
+			<ul class="mt-2 flex flex-col gap-1">
+				{#each bookList as book (book.slug)}
+					<li class="flex items-baseline gap-2 text-small">
+						<span class="stage stage-mark {book.stage}" aria-hidden="true"></span>
+						<a href={localizeHref(`/books/${book.slug}`)} dir="auto">{book.title}</a>
+						{#if book.stage !== 'unread'}
+							<span class="sr-only"
+								>({book.stage === 'done'
+									? t('settings.statFinished')
+									: t('settings.statInProgress')})</span
+							>
+						{/if}
+					</li>
+				{/each}
+			</ul>
+		</details>
+	{/if}
+	{#if companion}
+		<a class="companion text-small text-muted" href={localizeHref(`/series/${companion.slug}/`)}>
+			{m.series_companion({ title: splitSeriesTitle(companion.title).name })}
+			<Arrow />
+		</a>
+	{/if}
+	{#if next}
+		<a class="btn btn-sm btn-ghost max-w-full" href={localizeHref(`/books/${next.book.slug}`)}>
+			{#if continuing}
+				{t('plans.continue')}
+			{:else if nextTitle}
+				{t('author.startWith')}
+			{:else}
+				{t('book.beginReading')}
+			{/if}
+			{#if nextTitle}<span class="truncate" dir="auto">{nextTitle}</span>{/if}
+		</a>
+	{:else if hasAction}
+		<p class="text-small text-muted">{t('series.allRead')}</p>
+	{/if}
+{/snippet}
+
+
+<style>
+	/* Five lines, not the shelf's three: series blurbs run to ~210 characters
+	   in English (longer in translation), and at three a three-up grid cut
+	   Sons of the King off mid-word. Still a clamp, so no blurb sets a row. */
+	.series-desc {
+		-webkit-line-clamp: 5;
+		line-clamp: 5;
+	}
+	/* The book list: a disclosure in the card's foot (outside the card's own
+	   link), each title its own link, with a dot for where the reader is. */
+	/* Capped, so opening a thirty-book list doesn't stretch its whole grid
+	   row (the row's cards share a height) by a screen. */
+	.book-list ul {
+		max-height: 13rem;
+		overflow-y: auto;
+	}
+	.book-list summary {
+		cursor: pointer;
+		width: fit-content;
+	}
+	.book-list summary .count {
+		margin-inline-start: 0.35rem;
+	}
+	.book-list a {
+		color: var(--text);
+		text-decoration: none;
+	}
+	.book-list a:hover {
+		color: var(--accent);
+	}
+	.stage {
+		flex: none;
+		width: 0.45rem;
+		height: 0.45rem;
+		border-radius: 9999px;
+	}
+	.companion {
+		width: fit-content;
+		text-decoration: none;
+	}
+	.companion:hover {
+		color: var(--accent);
+	}
+	/* A language code: a quiet bordered tag, not a link (the card is one). */
+	.lang-code {
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		padding: 0 0.3rem;
+		font-size: var(--fs-micro);
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: var(--muted);
+		text-decoration: none;
+	}
+</style>

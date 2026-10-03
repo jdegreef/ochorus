@@ -24,6 +24,22 @@ def base_lang(locale: str) -> str:
     return (locale or DEFAULT_LOCALE).split("-")[0].lower()
 
 
+#: What ``{name}`` becomes for a reader with no name on their account — in the
+#: email's language, or "Hola friend:" goes out. Unlisted languages use English.
+FRIEND: dict[str, str] = {
+    "en": "friend",
+    "es": "amigo",
+    "pt": "amigo",
+    "fr": "ami",
+    "sw": "rafiki",
+    "lg": "mukwano",
+    "ar": "صديقي",
+    "hi": "मित्र",
+    "uk": "друже",
+    "am": "ወዳጄ",
+}
+
+
 LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
     "welcome": {
         "en": {
@@ -142,6 +158,57 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    "finish_first_book": {
+        "en": {
+            "subject": "Pick up where you left off",
+            "preheader": "Your first book is waiting — a few minutes a day finishes it.",
+            "heading": "Finish what you started",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You’ve started reading — that’s the hardest step, and you’ve "
+                "already taken it. The book you opened is saved right where you "
+                "left off.",
+                "Finishing your first book is its own quiet reward. A few minutes "
+                "a day is all it takes; the rest keeps your place for you.",
+            ],
+            "cta_label": "Continue reading",
+            "cta_path": "reading",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Retoma donde lo dejaste",
+            "preheader": "Tu primer libro te espera; unos minutos al día bastan para terminarlo.",
+            "heading": "Termina lo que empezaste",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ya empezaste a leer, que es el paso más difícil, y ya lo diste. "
+                "El libro que abriste está guardado justo donde lo dejaste.",
+                "Terminar tu primer libro es una recompensa en sí misma. Bastan "
+                "unos minutos al día; nosotros te guardamos el lugar.",
+            ],
+            "cta_label": "Seguir leyendo",
+            "cta_path": "reading",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "Retome de onde parou",
+            "preheader": "O seu primeiro livro espera por si — uns minutos por dia bastam.",
+            "heading": "Termine o que começou",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já começou a ler — esse é o passo mais difícil, e já o deu. O "
+                "livro que abriu está guardado exatamente onde parou.",
+                "Terminar o seu primeiro livro é uma recompensa em si. Bastam uns "
+                "minutos por dia; nós guardamos o seu lugar.",
+            ],
+            "cta_label": "Continuar a ler",
+            "cta_path": "reading",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
     "classic": {
         "en": {
             "subject": "A classic worth your time",
@@ -246,6 +313,170 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
                 "está guardado e à sua espera quando quiser.",
             ],
             "cta_label": "Continuar a ler",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
+    "winback": {
+        "en": {
+            "subject": "Your library is still here",
+            "preheader": "It’s been a while — your place is kept, and it’s all still free.",
+            "heading": "We’ve kept your place",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "It’s been a while since you visited Ochorus, and that’s all "
+                "right — life is full. We just wanted you to know your library "
+                "is still here, exactly as you left it.",
+                "Everything is still free, still ad-free, still yours: the great "
+                "works of prayer and the deeper life, in your language. Whenever "
+                "you have a few quiet minutes, a good book is waiting.",
+            ],
+            "cta_label": "Come back to Ochorus",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Tu biblioteca sigue aquí",
+            "preheader": "Ha pasado un tiempo; tu lugar está guardado y todo sigue siendo gratis.",
+            "heading": "Te guardamos el lugar",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ha pasado un tiempo desde tu última visita a Ochorus, y no "
+                "pasa nada: la vida está llena. Solo queríamos que supieras que "
+                "tu biblioteca sigue aquí, tal como la dejaste.",
+                "Todo sigue siendo gratuito, sin publicidad y tuyo: las grandes "
+                "obras sobre la oración y la vida profunda, en tu idioma. Cuando "
+                "tengas unos minutos de calma, un buen libro te espera.",
+            ],
+            "cta_label": "Vuelve a Ochorus",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "A sua biblioteca continua aqui",
+            "preheader": "Já faz algum tempo — o seu lugar está guardado e continua tudo gratuito.",
+            "heading": "Guardámos o seu lugar",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já faz algum tempo desde a sua última visita ao Ochorus, e não "
+                "faz mal — a vida é cheia. Só queríamos que soubesse que a sua "
+                "biblioteca continua aqui, tal como a deixou.",
+                "Continua tudo gratuito, sem publicidade e seu: as grandes obras "
+                "sobre a oração e a vida profunda, no seu idioma. Quando tiver "
+                "uns minutos tranquilos, um bom livro está à espera.",
+            ],
+            "cta_label": "Volte ao Ochorus",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
+    # Finish-the-series nudge. Dynamic per reader: ``{finished}`` is the book they
+    # just finished and ``{next}`` the next volume — both filled at render time
+    # (emails/rendering.py), like ``{name}``. ``cta_path`` is set per reader (it
+    # points at the next volume), so the block's value here is only a fallback.
+    "finish_series": {
+        "en": {
+            "subject": "The story continues: {next}",
+            "preheader": "You finished {finished} — the next volume is waiting.",
+            "heading": "Ready for the next one?",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You finished {finished} — we hope it was time well spent.",
+                "It’s part of a series, and the next volume, {next}, is ready "
+                "for you whenever you are. One book leads into the next.",
+            ],
+            "cta_label": "Start {next}",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "La historia continúa: {next}",
+            "preheader": "Terminaste {finished}; el siguiente volumen te espera.",
+            "heading": "¿Listo para el siguiente?",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Terminaste {finished}, y esperamos que haya sido un tiempo bien "
+                "aprovechado.",
+                "Forma parte de una serie, y el siguiente volumen, {next}, está "
+                "listo para cuando quieras. Un libro lleva al siguiente.",
+            ],
+            "cta_label": "Empezar {next}",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "A história continua: {next}",
+            "preheader": "Terminou {finished} — o próximo volume está à espera.",
+            "heading": "Pronto para o próximo?",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Terminou {finished}, e esperamos que tenha sido tempo bem "
+                "passado.",
+                "Faz parte de uma série, e o próximo volume, {next}, está pronto "
+                "para quando quiser. Um livro leva ao seguinte.",
+            ],
+            "cta_label": "Começar {next}",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
+    # Reading milestone. ``{count}`` is the milestone reached (filled at render
+    # time, like ``{name}``). A celebration, so a warm subject and a gentle CTA
+    # back to the library for the next one.
+    "milestone": {
+        "en": {
+            "subject": "{count} books — well done",
+            "preheader": "A real milestone. Here’s to the next one.",
+            "heading": "{count} books read",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You’ve now finished {count} books on Ochorus — that’s a genuine "
+                "milestone, and worth pausing to mark.",
+                "Each one is a classic that has steadied and stirred readers for "
+                "generations, and you’ve read it through. Here’s to the next, "
+                "whenever you’re ready.",
+            ],
+            "cta_label": "Find your next book",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "{count} libros: bien hecho",
+            "preheader": "Todo un logro. Por el siguiente.",
+            "heading": "{count} libros leídos",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Ya has terminado {count} libros en Ochorus, y eso es todo un "
+                "logro que vale la pena celebrar.",
+                "Cada uno es un clásico que ha fortalecido y conmovido a lectores "
+                "durante generaciones, y lo has leído entero. Por el siguiente, "
+                "cuando quieras.",
+            ],
+            "cta_label": "Encuentra tu próximo libro",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "{count} livros: parabéns",
+            "preheader": "Um verdadeiro marco. Ao próximo.",
+            "heading": "{count} livros lidos",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Já terminou {count} livros no Ochorus — isso é um verdadeiro "
+                "marco, e vale a pena parar para celebrar.",
+                "Cada um é um clássico que fortaleceu e tocou leitores durante "
+                "gerações, e leu-o até ao fim. Ao próximo, quando quiser.",
+            ],
+            "cta_label": "Encontre o seu próximo livro",
             "cta_path": "",
             "signoff": "Graça e paz,",
             "signature": "A equipa do Ochorus",

@@ -23,10 +23,8 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import { relativeTime } from '$lib/relativeTime';
-	import { initials } from '$lib/strings';
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
@@ -190,26 +188,15 @@
 								<span class="flex w-10 shrink-0 justify-center" aria-hidden="true"
 									><span class="w-8"><BookCover book={r.shelf.book} rounded="rounded-sm" /></span></span
 								>
-							{:else if r.kind === 'author' && authors[r.slug]?.photo_url}
-								{@const url = authors[r.slug].photo_url}
-								{@const source = { src: url, srcset: portraitSrcset(url) }}
-								<img
-									src={source.src}
-									srcset={source.srcset}
-									use:hydrateSrc={source}
-									sizes="40px"
-									width="40"
-									height="40"
-									alt=""
-									loading="lazy"
-									class="h-10 w-10 shrink-0 rounded-full border border-border object-cover"
-									style="filter: grayscale(1); object-position: {portraitPosition(r.slug)}"
-								/>
 							{:else if r.kind === 'author'}
-								<span
-									class="font-display flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-soft text-small font-semibold text-accent"
-									aria-hidden="true">{initials(r.title)}</span
-								>
+								<Portrait
+									slug={r.slug}
+									name={r.title}
+									url={authors[r.slug]?.photo_url}
+									px={40}
+									decorative
+									class="h-10 w-10"
+								/>
 							{:else}
 								<span
 									class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-2 text-muted"

@@ -23,7 +23,14 @@ describe('quote card type', () => {
 
 	it('names the same faces app.css does', () => {
 		const at = APP_CSS.indexOf('--font-display:');
-		const token = families(APP_CSS.slice(at, APP_CSS.indexOf(';', at)));
+		// The `*-Fallback` family (e.g. 'Fraunces Fallback') is a browser-only CLS
+		// device: a `local()` alias with metric overrides that stands in DURING the
+		// web font's swap window. It has no font file, so the card — which
+		// rasterizes real faces through fontconfig — correctly omits it, and that is
+		// not drift. Everything else must still match app.css exactly.
+		const token = families(APP_CSS.slice(at, APP_CSS.indexOf(';', at))).filter(
+			(f) => !f.endsWith(' Fallback')
+		);
 		expect(token.length, '--font-display names no families').toBeGreaterThan(0);
 		expect(
 			families(CARD_SERIF),

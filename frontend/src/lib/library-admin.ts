@@ -1,7 +1,7 @@
 import { apiFetch, apiFetchRaw } from './api';
 import type { AdminScope } from './adminAccess';
 import type { FavoriteKind } from './favorites.svelte';
-import type { Language, SearchType, SourceType } from './library-public';
+import type { Language, SearchHit, SearchType, SourceType } from './library-public';
 import type { WorkKind } from './reading-schema';
 
 /** Mask an email for display — first char of the local part, then bullets, then
@@ -107,6 +107,28 @@ export interface TeamMember {
 	email: string;
 	scopes: AdminScope[];
 	roles: string[];
+	/** Roles whose rows lag the role's current preset (it gained capabilities
+	 *  after this grant). `languages` is null when the rows disagree, so no
+	 *  single re-grant is the faithful fix. */
+	outdated: { role: string; missing: string[]; languages: string[] | null }[];
+	/** The account's last signed-in request; null = invited, never signed in. */
+	last_seen_at: string | null;
+	/** When their earliest current grant was made, and who last changed them. */
+	granted_at: string | null;
+	granted_by: string;
+	/** Recent grant/revoke events from the audit log, newest first. */
+	history: TeamHistoryItem[];
+}
+export interface TeamHistoryItem {
+	id: number;
+	at: string;
+	kind: 'grant' | 'revoke' | 'restore';
+	actor: string;
+	role: string;
+	capability: string;
+	/** As sent with the grant: a codes list, "*" or a comma string. */
+	languages: string[] | string;
+	removed: string[];
 }
 export interface AdminTeam {
 	members: TeamMember[];
@@ -115,8 +137,22 @@ export interface AdminTeam {
 	capabilities: [string, string][];
 	verbs: [string, string][];
 	languages: string[];
+	/** Each role's plain name and one-line summary, in `roles` order. */
+	role_info: { code: string; label: string; summary: string }[];
+	/** Language code → English name, for the language chips. */
+	language_names: Record<string, string>;
 }
 export const getAdminTeam = () => apiFetch<AdminTeam>('/api/admin/team/');
+
+// The access model as data — every capability with its label, and each role's
+// label, summary and grants (backend PRESETS verbatim, plus the super admin).
+// Readable by any admin; the Help & roles page renders it so it can't drift from the presets.
+export interface AdminRoles {
+	capabilities: { code: string; label: string }[];
+	roles: { code: string; label: string; summary: string; grants: Record<string, string> }[];
+	languages: Record<string, string>;
+}
+export const getAdminRoles = () => apiFetch<AdminRoles>('/api/admin/roles/');
 
 /**
  * Fetch the Admin Manual PDF (super-admin only) as an object URL. The endpoint is
@@ -145,8 +181,10 @@ export const grantAdminAccess = (payload: {
 	capability?: string;
 	verb?: string;
 	languages?: string[];
+	/** Put back exactly these rows (Undo after a revoke) instead of granting. */
+	restore?: AdminScope[];
 }) =>
-	apiFetch<{ email: string; scopes: AdminScope[] }>('/api/admin/team/', {
+	apiFetch<{ email: string; scopes: AdminScope[]; removed: string[] }>('/api/admin/team/', {
 		method: 'POST',
 		body: JSON.stringify(payload)
 	});
@@ -204,6 +242,10 @@ export const getAdminAuthorsWithoutBio = () =>
 // engagement) per language, ranked, so the dashboard can lead with where the
 // next hour of work should go. Read-only and derived — see the backend view.
 export type HealthScoreKey = 'readiness' | 'coverage' | 'review' | 'engagement';
+/** What each component weighs in the composite (sums to 1). */
+export type HealthWeights = Record<HealthScoreKey, number>;
+/** The kinds of content coverage blends. */
+export type ShelfKind = 'books' | 'sermons' | 'bios' | 'plans';
 export interface AdminLanguageHealth {
 	code: string;
 	name: string;
@@ -224,14 +266,35 @@ export interface AdminLanguageHealth {
 		chapters: number;
 		words: number;
 	};
-	readiness: { ready: boolean; blocking: string[] };
+	readiness: { ready: boolean; blocking: { key: string; label: string }[] };
 	readers: number;
+	/** Daily scores for the last eight weeks, oldest first, scored by the
+	 *  current formula only. Absent from an API without snapshots. */
+	trend?: { date: string; health: number }[];
+	/** Today's score minus the latest point at least a week old; null when
+	 *  there is no such point yet. */
+	week_change?: number | null;
+	/** Readers whose site language this is, reading a work it has no edition
+	 *  of (admin_views/demand.py). Shown beside the score, not part of it. */
+	reading_elsewhere: number;
 }
 
 export const getAdminLanguageHealth = () =>
-	apiFetch<{ source_published_books: number; languages: AdminLanguageHealth[] }>(
-		'/api/admin/language-health/'
-	);
+	apiFetch<{
+		source_published_books: number;
+		weights: HealthWeights;
+		/** Readers that earn full engagement credit. Absent from an API deployed
+		 *  before the fixed target, which scored against the busiest language. */
+		engagement_target?: number;
+		/** Readers are those active in this many days. Absent from an API that
+		 *  counted all-time readers. */
+		reader_window_days?: number;
+		/** How coverage weighs each kind (sums to 1), and the source language's
+		 *  count of each. Absent from an API that scored coverage on books alone. */
+		coverage_mix?: Record<ShelfKind, number>;
+		source_shelf?: Record<ShelfKind, number>;
+		languages: AdminLanguageHealth[];
+	}>('/api/admin/language-health/');
 
 // Per-language drill-down: what's translated into a language + the next items
 // to work on.
@@ -400,6 +463,25 @@ export const checkAdminLanguageDeploy = (code: string) =>
 
 export const getAdminLanguageDetail = (code: string) =>
 	apiFetch<AdminLanguageDetail>(`/api/admin/languages/${encodeURIComponent(code)}/`);
+
+/** A work this language's readers are reaching for in another language, with
+ *  its evidence: readers reading it elsewhere, and failed searches here that
+ *  find it in English. */
+export interface AdminWantedWork {
+	type: 'book' | 'sermon' | 'article';
+	slug: string;
+	title: string;
+	author: string;
+	readers: number;
+	searches: number;
+	/** Under copyright: no translation job can be filed. */
+	blocked: boolean;
+}
+
+export const getAdminLanguageWanted = (code: string) =>
+	apiFetch<{ language: string; days: number; works: AdminWantedWork[] }>(
+		`/api/admin/languages/${encodeURIComponent(code)}/wanted/`
+	);
 
 // Adding a language. The row IS the language: the translate_* commands read
 // their Bible and glossary from it, so creating one here is what makes the
@@ -577,6 +659,14 @@ export interface AdminCoverageRow {
 	 * edition stays unpublished and no translation may be filed, so its missing
 	 * cells are locked, not gaps. Absent otherwise. */
 	blocked?: boolean;
+	/** The title would show a reader nothing (blank, or only zero-width /
+	 * bidi characters) — text.is_blank_title. Absent otherwise. */
+	untitled?: boolean;
+	/** Books, sermons and articles: language → readers whose site language it
+	 *  is, reading this work elsewhere for want of their own edition
+	 *  (library/demand.py, reading signal only). Only languages with any;
+	 *  absent when none. A missing cell, not always an open gap (see isGap). */
+	asking?: Record<string, number>;
 }
 
 // A matrix column. `queueable` is true only for languages the translation-jobs
@@ -678,14 +768,26 @@ export interface ReviewItem {
 	provenance: { job_issue: number | null; pull_request: number | null } | null;
 	outcome: ReviewOutcome | null;
 	flags?: ReviewFlags | null;
+	/** Which kind of review it needs — see `ReviewLane`. */
+	lane: ReviewLane;
 }
+
+/**
+ * The four lanes of the queue. `ready`: examined, nothing flagged — the only
+ * bulk-approvable lane. `verses`: the translator rendered scripture itself, so
+ * each verse needs settling. `unexamined`: no scripture notes at all, so it must
+ * be read in full. `needs_work`: sent back.
+ */
+export type ReviewLane = 'ready' | 'verses' | 'unexamined' | 'needs_work';
 
 export interface ReviewQueue {
 	results: ReviewItem[];
 	total: number;
 	filtered: number;
-	flagged_total: number;
-	needs_work_total: number;
+	/** Lane counts for the language / type in view. */
+	lanes: Record<ReviewLane, number>;
+	/** When the longest-waiting item in view arrived ("" when none). */
+	oldest_created_at: string;
 	page: number;
 	pages: number;
 	page_size: number;
@@ -705,8 +807,7 @@ export interface ReviewQueue {
 export interface ReviewQueueParams {
 	kind?: string;
 	language?: string;
-	flagged?: boolean;
-	outcome?: string;
+	lane?: string;
 	sort?: string;
 	page?: number;
 	/** One work (the coverage matrix's deep link) — shown whatever its outcome. */
@@ -717,8 +818,7 @@ export const getReviewQueue = (p: ReviewQueueParams = {}) => {
 	const q = new URLSearchParams();
 	if (p.kind) q.set('kind', p.kind);
 	if (p.language) q.set('language', p.language);
-	if (p.flagged) q.set('flagged', '1');
-	if (p.outcome) q.set('outcome', p.outcome);
+	if (p.lane) q.set('lane', p.lane);
 	if (p.sort) q.set('sort', p.sort);
 	if (p.slug) q.set('slug', p.slug);
 	if (p.page && p.page > 1) q.set('page', String(p.page));
@@ -835,7 +935,14 @@ export interface AuditChapterFinding {
 	avg_words?: number;
 	paragraphs?: number;
 	starts?: string;
+	/** mid_sentence_splits: about the last line of the chapter. */
 	ends?: string;
+	/** mid_sentence_splits: about the first line of the NEXT chapter ('' if it
+	 *  is empty). Optional: a payload restored from sessionStorage may predate it. */
+	next_starts?: string;
+	/** loose_text: how many runs sit outside any block, and the first, cut short. */
+	loose_runs?: number;
+	loose?: string;
 }
 
 export interface AdminAudit {
@@ -846,15 +953,25 @@ export interface AdminAudit {
 		fragmented: Capped<AuditChapterFinding>;
 		missing_dropcap: Capped<AuditChapterFinding>;
 		mid_sentence_splits: Capped<AuditChapterFinding>;
+		loose_text: Capped<AuditChapterFinding>;
 		duplicate_titles: Capped<{ book: string; language: string; title: string; count: number }>;
 	};
 	integrity: {
 		empty_books: Capped<{ book: string; language: string; title: string; author: string }>;
 		empty_chapters: Capped<AuditChapterFinding>;
 		order_gaps: Capped<{ book: string; language: string; missing: number[]; count: number }>;
-		broken_plan_days: Capped<{ plan: string; language: string; day: number; book: string; order: number }>;
+		broken_plan_days: Capped<{
+			plan: string;
+			language: string;
+			day: number;
+			book: string;
+			order: number | null;
+			/** Set on an article day (then `book` is empty and `order` null). */
+			article?: string;
+		}>;
 	};
-	/** Content languages that have any finding — computed over the unfiltered
+	/** Content languages that have any finding or any non-empty chapter (so a
+	 *  clean edition's length chart is reachable) — computed over the unfiltered
 	 *  result, so the picker is stable whatever `language` is selected. */
 	languages: string[];
 	/** Registry-sourced display names for `languages`, so an edition an admin
@@ -865,6 +982,63 @@ export interface AdminAudit {
 	/** ISO timestamp of the (possibly cached) scan this result was built from —
 	 *  the "last run" the page shows. */
 	scanned_at: string;
+	/** What the scan behind this result covered and why it ran: `manual` is a
+	 *  Re-run (recorded in the scan history), `view` a cache miss on open. */
+	scan: AuditScanScope;
+	/** The nightly, recorded scan (`manage.py audit_scan` from the email cron). */
+	schedule: AuditSchedule;
+	/** Chapter-length histogram for the edition in view. Optional: a payload
+	 *  restored from sessionStorage may predate it. */
+	chapter_lengths?: ChapterLengths;
+	/** Editions ranked by open quality flags ("worst books first"), grouped on
+	 *  the server over the uncapped scan — the item lists above stop at the cap,
+	 *  so the browser can't group them accurately. Accepted findings excluded;
+	 *  follows `language`. `total` is how many editions have any open flag.
+	 *  Optional: a payload restored from sessionStorage may predate it. */
+	worst_books?: Capped<AuditWorstBook>;
+}
+
+export interface AuditWorstBook {
+	book: string;
+	language: string;
+	/** The edition's title, or '' if its row is gone since the scan. */
+	title: string;
+	total: number;
+	/** Open flags per quality check key, biggest first. */
+	by_check: Record<string, number>;
+}
+
+export interface AuditScanScope {
+	editions: number;
+	chapters: number;
+	duration_ms: number;
+	trigger: 'manual' | 'view';
+}
+
+export interface AuditSchedule {
+	/** The UTC hour the nightly scan becomes due. */
+	hour_utc: number;
+	/** ISO start of the last scheduled scan, or null if none is recorded. */
+	last_at: string | null;
+	/** What its integrity alert did: '' not evaluated, none, sent, skipped, failed. */
+	last_alert: '' | 'none' | 'sent' | 'skipped' | 'failed' | null;
+	/** When the next is expected (may be in the past while it is due). */
+	next_at: string;
+	/** Well past its mark with no scan — usually the cron isn't running. */
+	overdue: boolean;
+}
+
+/** Non-empty chapters bucketed by word count (backend `qa.length_bucket`).
+ *  `counts` has one more entry than `edges`: bucket i spans edges[i-1]..edges[i],
+ *  the first is open below and the last open above. Both thresholds are always
+ *  among the edges — they come from qa.py, never from this file. */
+export interface ChapterLengths {
+	edges: number[];
+	counts: number[];
+	/** Under this many words a chapter is flagged tiny. */
+	tiny_max: number;
+	/** Over this many words a chapter is flagged giant. */
+	giant_min: number;
 }
 
 /**
@@ -909,14 +1083,48 @@ export const undoAuditDismissal = (t: AuditDismissTarget) => {
 
 // A period-over-period change for a dashboard stat, or null when there's no
 // prior baseline to divide by — a brand-new metric reads "new" rather than a
-// fake +100%. Shared by the engagement and users pages so their trend chips
-// stay identical (render one with <TrendChip>).
-export type Trend = { dir: 'up' | 'down' | 'flat'; text: string } | null;
+// fake +100%. Shared by the admin stat pages so their trend chips stay
+// identical (render one with <TrendChip>).
+//
+// `bad` marks a change that is a regression whatever its direction (a rising
+// zero-result rate); left unset, the chip reads up as good and down as bad.
+export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean } | null;
+
+// Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
+// true and useless. Small bases report the absolute change ("+29 vs 1") instead.
+const SMALL_BASE = 20;
+
+const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
+const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
+
+/** The change between two periods: the count, and the percentage once the
+ *  base is big enough to mean something (null below it). Shared by the trend
+ *  chips and the Engagement page's summary sentence, so both follow one rule. */
+export const periodChange = (cur: number, prev: number) => ({
+	delta: cur - prev,
+	pct: prev >= SMALL_BASE ? Math.round(((cur - prev) / prev) * 100) : null
+});
+
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
-	const d = Math.round(((cur - prev) / prev) * 100);
-	if (d === 0) return { dir: 'flat', text: '0%' };
-	return { dir: d > 0 ? 'up' : 'down', text: `${d > 0 ? '+' : ''}${d}%` };
+	const { delta, pct } = periodChange(cur, prev);
+	// The baseline rides along, because "+29" means nothing without it.
+	if (pct === null) return { dir: dirOf(delta), text: `${signed(delta)} vs ${prev}` };
+	return { dir: dirOf(pct), text: `${signed(pct)}%` };
+};
+
+/** The change between two RATES (0–1), in percentage points — a rate moving
+ *  from 40% to 44% is "+4 pts", not "+10%". Null without a prior period to
+ *  compare against. `lowerIsBetter` flips which direction reads as bad. */
+export const pointsTrend = (
+	cur: number,
+	prev: number | null,
+	{ lowerIsBetter = false }: { lowerIsBetter?: boolean } = {}
+): Trend => {
+	if (prev === null) return null;
+	const d = Math.round((cur - prev) * 100);
+	const dir = dirOf(d);
+	return { dir, text: `${signed(d)} pts`, bad: lowerIsBetter ? d > 0 : d < 0 };
 };
 
 // Reading-engagement analytics (aggregate-only).
@@ -958,6 +1166,18 @@ export interface EngagementTopRow {
 	hearts: number;
 	/** Distinct readers who highlighted the work. */
 	highlighters: number;
+	/** Books only (absent on other kinds): where readers stop in the work's
+	 *  most-read edition (library/dropoff.py `work_curves`); null for a book
+	 *  with no chapters. */
+	reach?: EngagementReach | null;
+}
+
+export interface EngagementReach {
+	language: string;
+	/** The edition's chapter orders, and the readers reaching each. */
+	chapters: number[];
+	reached: number[];
+	steepest: AdminSteepestDrop | null;
 }
 
 /** The leaderboard split by kind so each tab holds its own top works. */
@@ -1065,7 +1285,48 @@ export interface AdminEngagement {
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
+	/** What the team did in the charted weeks, oldest first: the markers under
+	 *  the weekly chart. Absent from an API that predates them. */
+	events?: EngagementEvent[];
+	/** The weekly lines behind the pulse tiles (library/engagement_trends.py),
+	 *  on the same weeks as `weekly_active`. Absent from an older API. */
+	trends?: EngagementTrends | null;
 }
+
+export interface EngagementTrends {
+	hearts: number[];
+	reading_seconds: number[];
+	/** Running totals ending on the tile's number. */
+	readers: number[];
+	users: number[];
+	/** Readers in each of six rolling 30-day windows, the last ending today. */
+	active_30d: { end: string; readers: number }[];
+}
+
+/** One thing done to readers in a charted week: an email sent, a language taken
+ *  live, or works added (one event per week, however many). `week` is the
+ *  Monday the weekly chart keys that week by; `date` the day it happened;
+ *  `recent` whether it falls in the same last 7 days as `active_7d`. */
+export interface EngagementEvent {
+	/** Unique and stable, for keyed lists. */
+	id: string;
+	week: string;
+	date: string;
+	kind: EngagementEventKind;
+	title: string;
+	detail: string;
+	recent: boolean;
+}
+
+export type EngagementEventKind = 'email' | 'language' | 'works';
+
+/** Each event kind's marker glyph and legend label. */
+export const EVENT_KINDS: Record<EngagementEventKind, { glyph: string; label: string }> = {
+	email: { glyph: '✉', label: 'email to readers' },
+	language: { glyph: '◎', label: 'language went live' },
+	works: { glyph: '+', label: 'works added' }
+};
+
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
 
@@ -1075,7 +1336,7 @@ export interface EmailMetricRow {
 	sent: number;
 	delivered: number;
 	opens: number;
-	clicks: number;
+	clicks?: number;
 	bounces: number;
 	complaints: number;
 	open_rate: number;
@@ -1099,7 +1360,7 @@ export interface AdminEmailMetrics {
 	by_broadcast: EmailBroadcastRow[];
 	subscribers: {
 		total: number;
-		newsletter_opt_in: number;
+		announcements: number;
 		unsubscribed: number;
 		suppressed: number;
 	};
@@ -1110,16 +1371,34 @@ export const getAdminEmailMetrics = () =>
 
 // --- Broadcasts (compose / schedule / send) ---------------------------------
 
-export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'sent' | 'canceled';
+export type BroadcastStatus = 'draft' | 'scheduled' | 'sending' | 'paused' | 'sent' | 'canceled';
 
-/** One language's content block for a broadcast (structured, not raw HTML). */
+/** One pre-send check (backend `emails/preflight.py`). An `error` blocks send and schedule. */
+export interface BroadcastCheck {
+	code: string;
+	level: 'error' | 'warning' | 'ok';
+	message: string;
+}
+
+/** One block of campaign content (backend `emails/blocks.py`): structured
+ *  data, never HTML. Library blocks name a work by slug and render as the
+ *  edition in the email's language, or are left out where there is none. */
+export type EmailBlock =
+	| { type: 'heading'; text: string }
+	| { type: 'text'; text: string }
+	| { type: 'button'; label: string; path: string }
+	| { type: 'divider' }
+	| { type: 'quote'; text: string; attribution: string }
+	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
+
+export type EmailBlockType = EmailBlock['type'];
+export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
+
+/** One language's content for a broadcast or template. The server always
+ *  sends it as blocks (an older broadcast's fixed fields are converted there). */
 export interface BroadcastBlock {
-	heading?: string;
-	paragraphs?: string[];
-	cta_label?: string;
-	cta_path?: string;
-	preheader?: string;
-	greeting?: string;
+	preheader: string;
+	blocks: EmailBlock[];
 }
 
 export interface BroadcastAudience {
@@ -1141,9 +1420,19 @@ export interface AdminBroadcast {
 	updated_at: string;
 	locales: string[];
 	audience_count: number;
+	/** The batched send so far: readers processed, by outcome. */
+	progress: { sent: number; skipped: number; failed: number };
+	/** Why it's in this state: a pause, a guardrail stop, a schedule that didn't start. */
+	status_reason: string;
+	send_started_at: string | null;
+	/** Copy and audience are frozen: it has (or may have) mailed someone. */
+	locked: boolean;
 	// detail only:
+	/** AI-drafted translations per language — admin-only review state. */
+	translations?: Record<string, EmailTranslation>;
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
+	checks?: BroadcastCheck[];
 }
 
 export interface BroadcastPayload {
@@ -1175,21 +1464,162 @@ export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
 export const deleteBroadcast = (id: number) =>
 	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
 
+/** One language's AI draft (backend `emails/translation_jobs.py`). A `draft`
+ *  blocks sending until an admin approves it; `stale` means the source text
+ *  changed after the draft was asked for. */
+export interface EmailTranslation {
+	state: 'requested' | 'draft' | 'approved';
+	issue: number;
+	url: string;
+	source_locale: string;
+	stale: boolean;
+	approved_by?: string;
+}
+
+/** Ask for an AI draft (`request`), pull it in once it's back (`fetch`), or
+ *  mark a reviewed draft approved (`approve`). */
+export const broadcastTranslation = (
+	id: number,
+	action: 'request' | 'fetch' | 'approve',
+	language: string,
+	source?: string
+) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/translations/`, {
+		method: 'POST',
+		body: JSON.stringify({ action, language, source })
+	});
+
+export type BroadcastActionName = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
+
 export const broadcastAction = (
 	id: number,
-	action: 'send' | 'schedule' | 'cancel' | 'test',
-	extra: { scheduled_at?: string } = {}
+	action: BroadcastActionName,
+	extra: { scheduled_at?: string; override_guardrail?: boolean } = {}
 ) =>
-	apiFetch<AdminBroadcast & { tally?: Record<string, number>; ok?: boolean; sent_to?: string }>(
+	apiFetch<AdminBroadcast & { ok?: boolean; sent_to?: string }>(
 		`/api/admin/broadcasts/${id}/action/`,
 		{ method: 'POST', body: JSON.stringify({ action, ...extra }) }
 	);
+
+// --- One reader's email (history + direct email) ------------------------------
+
+export interface ReaderEmailRow {
+	id: number;
+	kind: 'lifecycle' | 'broadcast' | 'direct';
+	label: string;
+	subject: string;
+	status: 'queued' | 'sent' | 'failed' | 'skipped';
+	error: string;
+	/** Provider events seen for it: delivered, opened, clicked, bounced, … */
+	events: string[];
+	sent_by: string;
+	body_text: string;
+	created_at: string;
+	sent_at: string | null;
+}
+
+export interface ReaderEmails {
+	/** Why this reader can't be written to (suppressed / unsubscribed), else null. */
+	blocked_reason: string | null;
+	/** The language this reader gets email in — the default "written in". */
+	email_lang: { code: string; name: string };
+	messages: ReaderEmailRow[];
+}
+
+export interface DirectEmailPayload {
+	subject: string;
+	/** The language the admin wrote in (sets the email's lang/dir). */
+	lang?: string;
+	heading?: string;
+	greeting?: string;
+	paragraphs: string[];
+	cta_label?: string;
+	cta_path?: string;
+	signoff?: string;
+	signature?: string;
+}
+
+export const getReaderEmails = (uid: string) =>
+	apiFetch<ReaderEmails>(`/api/admin/users/${uid}/emails/`);
+
+export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
+	apiFetch<ReaderEmails & { ok: true }>(`/api/admin/users/${uid}/emails/`, {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+// --- Campaign design: preview, library picker, templates -----------------------
+
+export const previewEmail = (
+	locale: string,
+	subject: string,
+	content: BroadcastBlock,
+	signal?: AbortSignal
+) =>
+	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
+		method: 'POST',
+		body: JSON.stringify({ locale, subject, content }),
+		signal
+	});
+
+export interface EmailLibraryItem {
+	slug: string;
+	title: string;
+	author: string;
+	/** Every language this work is published in. */
+	languages: string[];
+}
+
+/** Search by title, or (with `slugs`) look up exactly those works. */
+export const searchEmailLibrary = (
+	type: LibraryBlockType,
+	q: string,
+	init?: { slugs?: string[]; signal?: AbortSignal }
+) =>
+	apiFetch<{ results: EmailLibraryItem[] }>(
+		`/api/admin/emails/library/?${new URLSearchParams({ type, q, slugs: (init?.slugs ?? []).join(',') })}`,
+		{ signal: init?.signal }
+	);
+
+export interface EmailTemplate {
+	id: number;
+	name: string;
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	locales: string[];
+}
+
+export const listEmailTemplates = () =>
+	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
+
+/** Save a broadcast's design (as last saved) as a template. */
+export const saveEmailTemplate = (payload: { name: string; from_broadcast: number }) =>
+	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteEmailTemplate = (id: number) =>
+	apiFetch<null>(`/api/admin/emails/templates/${id}/`, { method: 'DELETE' });
 
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
 		method: 'POST',
 		body: JSON.stringify({ audience })
 	});
+
+/** An admin timestamp: "Oct 2, 2026, 9:42 AM", or "—" for none. */
+export function formatDateTime(iso: string | null): string {
+	return iso
+		? new Date(iso).toLocaleString('en', {
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric',
+				hour: 'numeric',
+				minute: '2-digit'
+			})
+		: '—';
+}
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
@@ -1261,6 +1691,9 @@ export interface AdminUsers {
 	total: number;
 	with_activity: number;
 	dormant: number;
+	/** Sign-up to habit, each step a subset of the one before; the first two
+	 *  are `total` and `with_activity`. See analytics._activation_counts. */
+	activation: { step: 'signed_up' | 'started' | 'returned' | 'finished'; count: number }[];
 	signups_7d: number;
 	signups_30d: number;
 	/** The immediately preceding window, for a trend delta on the cards. */
@@ -1477,6 +1910,29 @@ export const getAdminUser = (uid: string) =>
 
 // Per-book detail: a canonical work across all its languages.
 
+/** Readable names for the content checks' chapter flags (library/qa.py). */
+const CHAPTER_FLAG_LABEL: Record<string, string> = {
+	'generic-title': 'generic title',
+	'no-dropcap': 'no drop cap',
+	'mid-split': 'mid-sentence',
+	'loose-text': 'text outside ¶'
+};
+export const chapterFlagLabel = (flag: string) => CHAPTER_FLAG_LABEL[flag] ?? flag;
+
+/** A drop-off rate (0–1) as a whole percentage: "40%". */
+export const formatRate = (rate: number) => `${Math.round(rate * 100)}%`;
+
+/** A chapter row's anchor on its admin book page, and the link to it: what
+ *  "Open chapter" lands on (the row with the fix buttons). */
+export const adminChapterId = (language: string, order: number) => `ch-${language}-${order}`;
+export const adminBookHref = (slug: string) => `/admin/books/${encodeURIComponent(slug)}`;
+/** An edition's section on its admin book page, and the link to it. */
+export const adminEditionId = (language: string) => `ed-${language}`;
+export const adminEditionHref = (slug: string, language: string) =>
+	`${adminBookHref(slug)}#${adminEditionId(language)}`;
+export const adminChapterHref = (slug: string, language: string, order: number) =>
+	`${adminBookHref(slug)}#${adminChapterId(language, order)}`;
+
 export interface AdminBookChapter {
 	order: number;
 	title: string;
@@ -1497,6 +1953,45 @@ export interface AdminBookLang extends Language {
 	pdf_url: string;
 	word_count: number;
 	chapters: AdminBookChapter[];
+	/** Where readers stop (library/dropoff.py): per chapter, readers whose
+	 *  furthest chapter is this one or later, and of those at exactly this one
+	 *  who stopped (no progress for `stall_days`) or are still reading. */
+	reach: AdminReachPoint[];
+	/** The chapter losing the largest share of its readers, or null. */
+	steepest: AdminSteepestDrop | null;
+}
+
+/** One book's steepest drop on the content audit's "Readers stop here" list. */
+export interface AdminDropOff extends AdminSteepestDrop {
+	slug: string;
+	language: string;
+	book_title: string;
+	chapter_title: string;
+	word_count: number;
+	/** The chapter's content flags (library/qa.py); flagged drops sort first. */
+	flags: string[];
+}
+
+/** Each book's steepest drop where at least `min_readers` reached the chapter;
+ *  every language with book readers when `language` is ''. */
+export const getAdminDropOff = (language: string) =>
+	apiFetch<{ language: string; min_readers: number; stall_days: number; drops: AdminDropOff[] }>(
+		`/api/admin/drop-off/${language ? `?language=${encodeURIComponent(language)}` : ''}`
+	);
+
+export interface AdminReachPoint {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	still: number;
+}
+
+export interface AdminSteepestDrop {
+	chapter: number;
+	reached: number;
+	stopped: number;
+	/** stopped / reached, 0–1. */
+	rate: number;
 }
 
 export interface AdminBookDetail {
@@ -1504,6 +1999,8 @@ export interface AdminBookDetail {
 	title: string;
 	author: { name: string; slug: string; id: number };
 	languages: AdminBookLang[];
+	/** No progress for this many days and a reader counts as stopped. */
+	stall_days: number;
 }
 
 export const getAdminBook = (slug: string) =>
@@ -1511,15 +2008,17 @@ export const getAdminBook = (slug: string) =>
 
 // Content-edit queue: a fix files a GitHub issue a worker turns into a fixture
 // PR (a title, a chapter body and an author bio are all fixture-owned prose, not
-// live DB writes). Three kinds share the one endpoint — a chapter title/body
-// carries an `order`; an author bio does not.
-export type ContentEditKind = 'title' | 'body' | 'bio';
+// live DB writes). Four kinds share the one endpoint — a chapter title/body
+// carries an `order`; an author bio does not; an audit fix carries a `check`.
+export type ContentEditKind = 'title' | 'body' | 'bio' | 'audit_fix';
 export interface ContentEditJob {
 	kind: ContentEditKind;
 	entity: 'book' | 'author';
 	slug: string;
 	language: string;
 	order: number | null;
+	/** The audit check an `audit_fix` job repairs; null for every other kind. */
+	check: string | null;
 	url: string;
 	number: number | null;
 	state: 'queued' | 'in_progress';
@@ -1527,6 +2026,10 @@ export interface ContentEditJob {
 }
 
 type FiledJob = { job: ContentEditJob | null; created: boolean };
+
+/** The open content-edit queue (`configured: false` when GitHub isn't set up). */
+export const getContentEditJobs = () =>
+	apiFetch<{ configured: boolean; jobs: ContentEditJob[] }>('/api/admin/content-edit-jobs/');
 const fileContentEdit = (body: Record<string, unknown>) =>
 	apiFetch<FiledJob>('/api/admin/content-edit-jobs/', {
 		method: 'POST',
@@ -1545,6 +2048,13 @@ export const fileBodyFixJob = (slug: string, language: string, order: number, no
  *  emphasise. Defaults to the English source bio. */
 export const fileBioJob = (slug: string, note: string, language = 'en') =>
 	fileContentEdit({ kind: 'bio', slug, language, note });
+
+/** File an "audit fix" job: one edition's open findings for one audit check. The
+ *  server builds the chapter list from its uncapped scan (minus accepted
+ *  findings) — the client only names the target. `created` is false if a job
+ *  for the same book, language and check was already open. */
+export const fileAuditFixJob = (slug: string, language: string, check: string) =>
+	fileContentEdit({ kind: 'audit_fix', slug, language, check });
 
 /**
  * Publish or unpublish one language edition of a book. `is_published` is the
@@ -1592,6 +2102,9 @@ export interface SearchStatsWindow {
 	distinct_queries: number;
 	zero_results: number;
 	zero_rate: number;
+	/** Results opened in the same span. Rows, not readers — one search can lead
+	 *  to several opens — so a rate built on it is a trend, not "x% of people". */
+	clicks: number;
 }
 
 export interface SearchTopQuery {
@@ -1599,23 +2112,83 @@ export interface SearchTopQuery {
 	count: number;
 }
 
-/** Zero-result queries for one language — a translation/acquisition worklist. */
-export type SearchUnanswered = Language & { total: number; queries: SearchTopQuery[] };
+/** Zero-result queries for one language — a translation/acquisition worklist.
+ *  Triaged queries are left out unless their decision stopped working, in which
+ *  case the row carries it as `reopened`. */
+export type SearchUnanswered = Language & {
+	total: number;
+	queries: (SearchTopQuery & { reopened?: SearchDecisionRow })[];
+};
+
+/** What an admin decided about an unanswered search (see SearchDecision). */
+export type SearchOutcome = 'translate' | 'wanted' | 'out_of_scope' | 'synonym' | 'pinned';
+
+export interface SearchDecisionRow {
+	query: string;
+	language: string;
+	outcome: SearchOutcome;
+	outcome_label: string;
+	/** The work a translation was queued for or the pinned page
+	 *  ("book:waiting-on-god"), or a synonym's word. */
+	target: string;
+	note: string;
+	decided_by: string;
+	decided_at: string;
+	/** Searches for this query (in this language) since the decision… */
+	searches_since: number;
+	/** …and how many of them still found nothing. */
+	misses_since: number;
+	/** Results opened for this query since — the measure of a pin. */
+	opens_since: number;
+	/** A queued translation that kept missing past its grace period. */
+	reopened: boolean;
+}
+
+export const getAdminSearchDecisions = () =>
+	apiFetch<{ decisions: SearchDecisionRow[] }>('/api/admin/search-decisions/');
+
+/** Triage one unanswered search. Deciding again replaces the outcome. */
+export const decideSearch = (d: {
+	query: string;
+	language: string;
+	outcome: SearchOutcome;
+	target?: string;
+	note?: string;
+}) =>
+	apiFetch<{ ok: boolean }>('/api/admin/search-decisions/decide/', {
+		method: 'POST',
+		body: JSON.stringify(d)
+	});
+
+/** What a search returns in one language, unlogged and without synonyms or
+ *  pins — the preview behind the synonym and pin dialogs. */
+export const getAdminSearchPreview = (q: string, language: string) =>
+	apiFetch<{ query: string; results: SearchHit[] }>(
+		`/api/admin/search-preview/?${new URLSearchParams({ q, language })}`
+	);
+
+/** Undo a triage decision — the query goes back to the Open list. */
+export const undoSearchDecision = (query: string, language: string) =>
+	apiFetch<{ ok: boolean }>(
+		`/api/admin/search-decisions/decide/?${new URLSearchParams({ query, language })}`,
+		{ method: 'DELETE' }
+	);
 
 export interface AdminSearchStats {
 	overview: {
 		'7d': SearchStatsWindow;
 		'30d': SearchStatsWindow;
-		/** Results opened in 30 days. Rows, not readers — read it as a trend. */
-		clicks_30d?: number;
+		/** The window before each — the baseline for the period-over-period deltas. */
+		'7d_prev'?: SearchStatsWindow;
+		'30d_prev'?: SearchStatsWindow;
 	};
 	/**
 	 * Queries that found plenty and were never opened — the silent failure the
 	 * zero-result list can't see, and often the better content signal.
 	 */
-	unopened_queries?: SearchTopQuery[];
+	/** Per language, so a pin knows which language it answers (absent from older APIs). */
+	unopened_queries?: (SearchTopQuery & { language?: string })[];
 	top_queries: SearchTopQuery[];
-	zero_result_queries: SearchTopQuery[];
 	unanswered_by_language: SearchUnanswered[];
 	daily: { day: string; searches: number; zero: number }[];
 	by_language: (Language & { searches: number; zero: number })[];
@@ -1663,29 +2236,100 @@ export interface AdminActionRow {
 	/** Email; blank only for a DEBUG loopback request with no token. */
 	actor: string;
 	target: string;
+	/** The work's real name (book/sermon/article/plan/author), "" when unknown. */
+	title?: string;
+	/** Where a translation job is now — `translation.job` rows only. */
+	job_status?: JobStatus;
 	detail: Record<string, unknown>;
 	at: string;
 }
 
+/**
+ * A translation job's stage (backend `library/job_status.py`): GitHub's open
+ * queue before it ships, this database's editions after.
+ */
+export type JobStatus =
+	| 'queued'
+	| 'in_progress'
+	| 'stalled'
+	| 'closed'
+	| 'review'
+	| 'done'
+	| 'unknown';
+
+/** The header cards and chip counts — counted over the whole log, first page only. */
+export interface AdminActivitySummary {
+	/** Every row in scope (the whole log, or one `target`), unfiltered. */
+	all: number;
+	/** Per category, over the current search + admin filter (not the category). */
+	by_category: Record<string, number>;
+	today: number;
+	today_reader_facing: number;
+	/** The last seven days, today included. */
+	week: number;
+	/** Admins in scope, busiest first — masked for a non-super caller. */
+	actors: { actor: string; count: number }[];
+	last_go_live: AdminActionRow | null;
+	last_publish: AdminActionRow | null;
+	/**
+	 * Translation-job rows by stage. `github`: "ok"; "down" when it didn't
+	 * answer; "off" when no queue token is configured (not an outage).
+	 */
+	jobs?: { by_status: Record<JobStatus, number>; github: 'ok' | 'down' | 'off' };
+}
+
 export interface AdminActivity {
-	/** The full count — a first-page figure; null on a `before` (load-older) page. */
+	/** Rows matching the filters — a first-page figure; null on a `before` page. */
 	total: number | null;
+	/** First-page only, like `total`. */
+	summary: AdminActivitySummary | null;
 	limit: number;
 	/** The id to pass as `before` for the next older page, or null when at the end. */
 	next_cursor: number | null;
 	actions: AdminActionRow[];
 }
 
-/**
- * A page of admin actions, newest first. `target` narrows to one object's whole
- * history; `before` is a `next_cursor` from a prior page, to load older rows.
- */
-export const getAdminActivity = (opts: { before?: number | null; target?: string } = {}) => {
+/** The filters the log runs server-side, over every row rather than a page. */
+export interface AdminActivityFilters {
+	target?: string;
+	q?: string;
+	category?: string;
+	actor?: string;
+	/** A JobStatus, or 'needs_me' (closed + review: the two waiting on a person). */
+	job_status?: string;
+}
+
+function activityParams(f: AdminActivityFilters): URLSearchParams {
 	const params = new URLSearchParams();
+	for (const k of ['target', 'q', 'category', 'actor', 'job_status'] as const) {
+		const v = f[k]?.trim();
+		if (v) params.set(k, v);
+	}
+	return params;
+}
+
+/**
+ * A page of admin actions, newest first, filtered over the whole log. `before`
+ * is a `next_cursor` from a prior page, to load older rows; `dayStart` is the
+ * caller's local midnight, so the summary's "today" is their day.
+ */
+export const getAdminActivity = (
+	opts: AdminActivityFilters & { before?: number | null; dayStart?: Date } = {}
+) => {
+	const params = activityParams(opts);
 	if (opts.before != null) params.set('before', String(opts.before));
-	if (opts.target) params.set('target', opts.target);
+	if (opts.dayStart) params.set('day_start', opts.dayStart.toISOString());
 	const qs = params.toString();
 	return apiFetch<AdminActivity>(`/api/admin/activity/${qs ? `?${qs}` : ''}`);
+};
+
+/** Every row matching the filters, unpaged — for the CSV export. */
+export const exportAdminActivity = (filters: AdminActivityFilters) => {
+	const params = activityParams(filters);
+	params.set('export', '1');
+	return apiFetch<{ truncated: boolean; actions: AdminActionRow[] }>(
+		`/api/admin/activity/?${params}`
+	);
 };
 
 // --- Reader feedback queue ---------------------------------------------------

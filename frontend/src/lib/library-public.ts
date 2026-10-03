@@ -1,6 +1,7 @@
 import { apiFetch, ApiError, type Fetch } from './api';
 import { SITE_URL } from './config';
 import { absUrl } from './seo';
+import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from './coverArt';
 import {
 	ARTICLE_FIELDS,
 	BOOK_FIELDS,
@@ -13,6 +14,9 @@ export interface Author {
 	slug: string;
 	name: string;
 	bio: string;
+	/** One line on who they were (English only; "" elsewhere or when unwritten).
+	 *  Optional: only the card serializer sends it. */
+	tagline?: string;
 	photo_url: string;
 	birth_year: number | null;
 	death_year: number | null;
@@ -496,7 +500,7 @@ export interface ScriptureHit {
 	date: string;
 }
 
-export type SearchHit =
+export type SearchHit = (
 	| ChapterHit
 	| SermonHit
 	| AuthorHit
@@ -504,7 +508,11 @@ export type SearchHit =
 	| TopicHit
 	| PlanHit
 	| ArticleHit
-	| ScriptureHit;
+	| ScriptureHit
+) & {
+	/** An admin pinned this as the best match for the query; it leads the list. */
+	pinned?: boolean;
+};
 
 export type SearchType = SearchHit['type'];
 export type SearchSort = 'relevance' | 'title' | 'newest';
@@ -514,6 +522,8 @@ export interface SearchResponse {
 	results: SearchHit[];
 	/** A "did you mean" term when the query found nothing (fuzzy-matched). */
 	suggestion?: string;
+	/** The word actually searched, when an admin's synonym replaced the query. */
+	searched_for?: string;
 	/**
 	 * How many matches EXIST per type, which is not how many `results` holds:
 	 * the merged list is capped per type so no one kind crowds out the others.
@@ -627,6 +637,12 @@ export interface AuthorBio {
 	sermon_count: number;
 	/** A full long-form biography exists (vs. a one-line stub). */
 	has_long_bio: boolean;
+	/**
+	 * How many REVIEWED quotations /quotes/<slug>/ lists; 0 means no quote page.
+	 * Language-independent (the quote pages are English). Optional so an API
+	 * running behind this build reads as none.
+	 */
+	quote_count?: number;
 }
 
 /** What `AuthorTile` draws — see `CoverBook`. A field the tile starts reading
@@ -795,6 +811,12 @@ export const listBooks = (language = 'en', f?: Fetch) =>
 
 export const listAuthors = (language = 'en', f?: Fetch) =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
+
+/** Birth years (null = undated) of the writers on each live language's
+ * Biographies shelf — what the era pages bucket (via `eraOf`) to know which
+ * locales have writers in their era, for hreflang. */
+export const listEraPresence = (f?: Fetch) =>
+	apiFetch<Record<string, (number | null)[]>>('/api/library/authors/eras/', {}, f);
 
 /** A series the house imprint's books run in, named in the requested language;
  * `books` holds their slugs in volume order. */
@@ -1088,19 +1110,28 @@ export interface PlanSummary {
 	total_words: number;
 	/**
 	 * Distinct book covers the plan draws from (first-appearance order).
-	 * Books only, and the type says so: a plan's days reference `book_slug`
-	 * (`PlanDay`), so no sermon can reach this strip.
+	 * Books only, and the type says so: a plan's days reference a book chapter
+	 * or an article (`PlanDay`), so no sermon can reach this strip, and an
+	 * article day adds no tile.
 	 */
 	covers: BookTile[];
 	/** Where the plan starts, for a "begin here" teaser. Null if day 1's
-	 * chapter can't be resolved (e.g. an untranslated book in this locale). */
+	 * chapter can't be resolved (e.g. an untranslated book in this locale).
+	 * An article day 1 has an empty `book_title` and its headline as the chapter. */
 	day_one: { book_title: string; chapter_title: string } | null;
 }
 
+/**
+ * One plan day: a book chapter, or — when `article_slug` is set — an article
+ * (then `book_slug` and `book_title` are empty, `chapter_order` is null, and
+ * `chapter_title` is the article's headline). Link to it with `planDayPath`.
+ */
 export interface PlanDay {
 	day: number;
 	book_slug: string;
-	chapter_order: number;
+	chapter_order: number | null;
+	/** Optional: an API predating article days omits it (rolling-deploy skew). */
+	article_slug?: string;
 	book_title: string;
 	chapter_title: string;
 	word_count: number;
@@ -1108,6 +1139,9 @@ export interface PlanDay {
 	 *  honour "Prefer Modern English". Optional: a plan page prerendered before
 	 *  the API served it bakes it absent (and then links the original). */
 	has_modern_edition?: boolean;
+	/** The verse the day's chapter opens on ("Ruth 1:16"), or "" — the day row's
+	 *  chip. Optional: an API predating it serves none (rolling-deploy skew). */
+	key_verse?: string;
 }
 
 export interface PlanDetail extends PlanSummary {
@@ -1204,6 +1238,12 @@ export interface TopicSummary {
 	 * (rolling deploy) leaves it undefined and the card keeps its emblem.
 	 */
 	scripture_ref?: string;
+	/**
+	 * Whether the shelf holds enough in this language to be indexed (the API's
+	 * TOPIC_INDEX_MIN_WORKS). False → the page is noindex and the sitemap skips
+	 * it. Optional: an API predating it leaves it undefined, read as indexable.
+	 */
+	indexable?: boolean;
 }
 
 /** What a topic chip draws — see `AuthorTileData`. */
@@ -1312,6 +1352,15 @@ export interface SeriesSummary extends SeriesFor {
 	/** Every book's slug in reading order — the reader's progress on the card.
 	 *  Optional: an API behind this build omits it, and no progress is drawn. */
 	books?: string[];
+	/** Every book's title, in the same order as `books` — the card's book list.
+	 *  Optional: an API behind this build omits it, and no list is drawn. */
+	titles?: string[];
+	/** Read in order (volume numbers) or a collection; optional from an API
+	 *  behind this build, which then draws no order line. */
+	ordered?: boolean;
+	/** Average words per chapter — the card's "~N min/day"; null with no
+	 *  chapter text yet. */
+	chapter_words?: number | null;
 	/** Languages the series has a page in; the index's hreflang is their union. */
 	languages: string[];
 }
@@ -1405,6 +1454,48 @@ export interface ScriptureNeighbour {
 
 export const listScripturePages = (f?: Fetch) =>
 	apiFetch<ScripturePageEntry[]>('/api/library/scripture/pages/', {}, f);
+
+/** One Bible book across the library — the /scripture/<book>/ page. */
+export interface ScriptureBookPage {
+	book: { slug: string; title: string; order: number };
+	version: string;
+	/** Distinct library passages (chapters) citing any part of the book; null
+	 *  when the page was built from the page list (see bookFromPageList). */
+	citing_count: number | null;
+	/** Distinct library works those passages come from (null: as above). */
+	books_count: number | null;
+	/** The book's chapter pages, in order, each with its own citing count. */
+	chapters: { chapter: number; citing_count: number }[];
+	/** Its most-quoted verse pages, with their ASV text. */
+	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
+	/** The library books that return to it most. */
+	top_books: {
+		slug: string;
+		title: string;
+		author_name: string;
+		author_slug: string;
+		citing_count: number;
+	}[];
+	/** Adjacent books that have a page, in canonical order. */
+	prev: { book: string; book_title: string } | null;
+	next: { book: string; book_title: string } | null;
+}
+
+/** The Scripture section's share card (`npm run og:pages`), as `<Seo>` props:
+ *  the hub and chapter pages forward as Scripture rather than the generic house
+ *  card. Book and verse pages draw their own (verseCard). */
+export const SCRIPTURE_OG = {
+	ogImage: absUrl('/og/scripture.png'),
+	ogImageWidth: LANDSCAPE_WIDTH,
+	ogImageHeight: LANDSCAPE_HEIGHT,
+	ogImageAlt: 'Scripture in the classics — every Bible reference, and who preached it'
+};
+
+/** The /scripture/<book>/ page: one Bible book across the library. */
+export const scriptureBookHref = (book: string): string => `/scripture/${book}/`;
+
+export const getScriptureBook = (book: string, f?: Fetch) =>
+	apiFetch<ScriptureBookPage>(`/api/library/scripture/${book}/`, {}, f);
 
 export const getScripturePage = (book: string, chapter: number, verse?: number, f?: Fetch) =>
 	apiFetch<ScripturePage>(
@@ -1522,6 +1613,9 @@ export interface QuoteAuthorSummary {
 	count: number;
 	/** The author's shortest reviewed quote — the card's teaser line. "" if none. */
 	teaser: string;
+	/** The teaser's work and chapter order (null for a sermon). Optional: an API
+	 *  behind this build omits it. */
+	teaser_source?: { work: string; order: number | null } | null;
 	/** Distinct works (books + sermons) the author is quoted from. */
 	work_count: number;
 	/** When the newest reviewed quotation was added — the sitemap's <lastmod>.
@@ -1540,6 +1634,19 @@ export const getQuotePage = (author: string, f?: Fetch) =>
 export interface SavedQuote extends Quote {
 	author: { slug: string; name: string };
 }
+
+/** The /quotes index's featured pool — short reviewed quotes, writers interleaved. */
+export const listFeaturedQuotes = (f?: Fetch) =>
+	apiFetch<SavedQuote[]>('/api/library/quotes/featured/', {}, f);
+
+/** A quotation's whole source paragraph, as plain text — "read it in context". */
+export interface QuoteContext {
+	slug: string;
+	paragraph_text: string;
+}
+
+export const getQuoteContext = (slug: string, f?: Fetch) =>
+	apiFetch<QuoteContext>(`/api/library/quotes/context/${slug}/`, {}, f);
 
 /**
  * Resolve stored quote slugs to their cards — the reader's saved-quotes shelf.
@@ -1752,4 +1859,48 @@ export const submitFeedback = (body: FeedbackSubmission) =>
 	apiFetch<{ id: number; ok: boolean }>('/api/feedback/', {
 		method: 'POST',
 		body: JSON.stringify(body)
+	});
+
+// --- Email preference center (token-gated, no login) --------------------------
+
+export interface EmailStreamPref {
+	key: string;
+	label: string;
+	description: string;
+	enabled: boolean;
+}
+
+export interface EmailLocaleOption {
+	code: string;
+	name: string;
+}
+
+export interface EmailPreferences {
+	streams: EmailStreamPref[];
+	locales: EmailLocaleOption[];
+	email_locale: string;
+	unsubscribed_all: boolean;
+	suppressed: boolean;
+}
+
+/** What the reader may change — any subset is honored server-side. */
+export interface EmailPreferencesUpdate {
+	streams?: Record<string, boolean>;
+	email_locale?: string;
+	unsubscribed_all?: boolean;
+}
+
+/**
+ * The preference center is keyed by the unguessable unsubscribe token in the
+ * email footer, so it needs no sign-in (a reader manages email from any device).
+ * Both calls go through apiFetch; a Bearer token, if the reader happens to be
+ * signed in, is ignored by the endpoint.
+ */
+export const getEmailPreferences = (token: string, f?: Fetch) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {}, f);
+
+export const saveEmailPreferences = (token: string, update: EmailPreferencesUpdate) =>
+	apiFetch<EmailPreferences>(`/api/emails/preferences/${encodeURIComponent(token)}/`, {
+		method: 'POST',
+		body: JSON.stringify(update)
 	});

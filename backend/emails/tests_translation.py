@@ -1,0 +1,270 @@
+"""Tests for AI-drafted email translations: filing the job, the worker's
+translation, pulling the draft in (words only), approval, and the send gate."""
+
+from __future__ import annotations
+
+import io
+import json
+import tempfile
+from unittest import mock
+
+from django.core.management import call_command
+from django.core.management.base import CommandError
+from django.test import TestCase, override_settings
+
+from library.models import AdminAction
+
+from . import translation_jobs as jobs
+from .models import Broadcast
+from .preflight import run as run_checks
+from .tests import _broadcast, _make_profile
+from .translation_jobs import reply_comment
+
+BLOCKS = [
+    {"type": "heading", "text": "Wait for the Lord"},
+    {"type": "text", "text": "Dear {name},\n\nAdvent is a season of waiting."},
+    {"type": "book", "slug": "the-inner-chamber", "label": "Start reading"},
+    {"type": "button", "label": "Begin the plan", "path": "plans/humility-12-days/"},
+    {"type": "divider"},
+]
+
+
+def _campaign(**kw):
+    return _broadcast(
+        subject={"en": "Wait for the Lord this Advent"},
+        content={"en": {"preheader": "24 days", "blocks": BLOCKS}},
+        **kw,
+    )
+
+
+SPANISH = [
+    "Espera en el Señor",
+    "Querido {name},\n\nEl Adviento es tiempo de espera.",
+    "Empieza a leer",
+    "Comienza el plan",
+]
+
+
+def _spanish(payload):
+    """A worker's reply: the job's words in Spanish."""
+    answer = {"subject": "Espera en el Señor este Adviento", "preheader": "24 días", "texts": SPANISH}
+    return jobs.check_answer(payload, answer)
+
+
+def _comment(reply, who="MEMBER"):
+    return {"body": reply_comment(reply), "author_association": who}
+
+
+class _GitHub:
+    """A fake of the two GitHub calls: file an issue, list its comments."""
+
+    def __init__(self):
+        self.filed = []
+        self.closed = []
+        self.comments = []
+
+    def post(self, url, json=None, **kw):
+        self.filed.append(json)
+        return mock.Mock(
+            status_code=201,
+            raise_for_status=lambda: None,
+            json=lambda: {"number": 4242, "html_url": "https://github.com/x/y/issues/4242"},
+        )
+
+    def patch(self, url, json=None, **kw):
+        self.closed.append(url.rsplit("/", 1)[1])
+        return mock.Mock(raise_for_status=lambda: None)
+
+    def get(self, url, **kw):
+        return mock.Mock(raise_for_status=lambda: None, json=lambda: self.comments)
+
+    def payload(self):
+        body = self.filed[-1]["body"]
+        return json.loads(body.split("```json", 1)[1].split("```", 1)[0])
+
+
+@override_settings(DEBUG=True, GITHUB_TRANSLATION_TOKEN="t", GITHUB_TRANSLATION_REPO="x/y")
+class TranslationJobTests(TestCase):
+    def setUp(self):
+        _make_profile()
+        self.gh = _GitHub()
+        patcher = mock.patch.multiple(
+            "emails.translation_jobs.requests", post=self.gh.post, get=self.gh.get, patch=self.gh.patch
+        )
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def _act(self, broadcast, action, language="es"):
+        return self.client.post(
+            f"/api/admin/broadcasts/{broadcast.pk}/translations/",
+            data=json.dumps({"action": action, "language": language}),
+            content_type="application/json",
+        )
+
+    def test_request_files_one_job_with_the_words_only(self):
+        b = _campaign()
+        res = self._act(b, "request")
+        self.assertEqual(res.status_code, 200, res.content)
+        self.assertEqual(res.json()["translations"]["es"]["state"], "requested")
+        issue = self.gh.filed[0]
+        self.assertEqual(issue["title"], f"[translation] email:broadcast-{b.pk} -> es")
+        self.assertEqual(issue["labels"], ["translation-job"])
+        payload = self.gh.payload()
+        self.assertNotIn("blocks", payload)
+        self.assertEqual(
+            payload["texts"],
+            ["Wait for the Lord", BLOCKS[1]["text"], "Start reading", "Begin the plan"],
+        )
+        self.assertEqual(payload["subject"], "Wait for the Lord this Advent")
+        # Asking again files a new job and closes the old one.
+        self._act(b, "request")
+        self.assertEqual(len(self.gh.filed), 2)
+        self.assertEqual(self.gh.closed, ["4242"])
+        self.assertTrue(
+            AdminAction.objects.filter(action=AdminAction.Action.EMAIL_TRANSLATION_REQUEST).exists()
+        )
+
+    @override_settings(GITHUB_TRANSLATION_TOKEN="")
+    def test_request_explains_a_missing_token(self):
+        res = self._act(_campaign(), "request")
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("GITHUB_TRANSLATION_TOKEN", res.json()["detail"])
+
+    def test_request_refuses_english_and_unknown_languages(self):
+        b = _campaign()
+        self.assertEqual(self._act(b, "request", "en").status_code, 409)
+        self.assertEqual(self._act(b, "request", "xx").status_code, 409)
+
+    def test_draft_round_trip_gates_sending_until_approved(self):
+        b = _campaign()
+        self._act(b, "request")
+        # Nothing back yet: stays requested, nothing changes.
+        res = self._act(b, "fetch")
+        self.assertEqual(res.json()["translations"]["es"]["state"], "requested")
+
+        self.gh.comments = [
+            {"body": "Claiming this."},
+            _comment(_spanish(self.gh.payload())),
+        ]
+        res = self._act(b, "fetch")
+        self.assertEqual(res.status_code, 200, res.content)
+        b.refresh_from_db()
+        self.assertEqual(b.translations["es"]["state"], "draft")
+        self.assertEqual(b.subject["es"], "Espera en el Señor este Adviento")
+        self.assertEqual(b.content["es"]["blocks"][2]["slug"], "the-inner-chamber")
+        self.assertEqual(b.content["es"]["blocks"][2]["label"], "Empieza a leer")
+
+        # An unapproved AI draft blocks sending.
+        errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
+        self.assertIn("translation:es", errors)
+        send = self.client.post(
+            f"/api/admin/broadcasts/{b.pk}/action/",
+            data=json.dumps({"action": "send"}),
+            content_type="application/json",
+        )
+        self.assertEqual(send.status_code, 409)
+
+        res = self._act(b, "approve")
+        self.assertEqual(res.json()["translations"]["es"]["state"], "approved")
+        b.refresh_from_db()
+        errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
+        self.assertNotIn("translation:es", errors)
+
+    def test_a_reply_to_an_older_source_is_refused(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        b.refresh_from_db()
+        b.subject = {"en": "A new subject"}
+        b.save()
+        res = self._act(b, "fetch")
+        self.assertEqual(res.status_code, 409)
+        self.assertIn("changed", res.json()["detail"])
+        b.refresh_from_db()
+        self.assertNotIn("es", b.content)
+        self.assertEqual(b.translations["es"]["state"], "requested")
+
+    def test_editing_the_source_marks_the_draft_stale(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        self._act(b, "fetch")
+        b.refresh_from_db()
+        b.subject = {**b.subject, "en": "A new subject"}
+        b.save()
+        warnings = {c["code"] for c in run_checks(b) if c["level"] == "warning"}
+        self.assertIn("translation-stale:es", warnings)
+
+    def test_only_the_repos_people_can_reply(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()), who="NONE")]
+        res = self._act(b, "fetch")
+        self.assertEqual(res.json()["translations"]["es"]["state"], "requested")
+
+    def test_a_draft_must_be_reviewed_before_another_is_asked_for(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        self._act(b, "fetch")
+        self.assertEqual(self._act(b, "request").status_code, 409)
+        b.refresh_from_db()
+        errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
+        self.assertIn("translation:es", errors)
+
+    def test_approving_reads_the_draft_against_the_current_source(self):
+        b = _campaign()
+        self._act(b, "request")
+        self.gh.comments = [_comment(_spanish(self.gh.payload()))]
+        self._act(b, "fetch")
+        b.refresh_from_db()
+        b.subject = {**b.subject, "en": "A new subject"}
+        b.save()
+        self.assertTrue(self._act(b, "approve").json()["translations"]["es"]["stale"] is False)
+
+    def test_the_name_placeholder_must_survive(self):
+        payload = jobs.job_payload(_campaign(), "en", "es")
+        texts = [*SPANISH]
+        texts[1] = texts[1].replace("{name}", "{nombre}")
+        with self.assertRaises(jobs.TranslationJobError):
+            jobs.check_answer(payload, {"subject": "S", "texts": texts})
+        with self.assertRaises(jobs.TranslationJobError):
+            jobs.check_answer(payload, {"subject": "S", "texts": ["", *SPANISH[1:]]})
+
+    def test_approve_needs_a_draft(self):
+        self.assertEqual(self._act(_campaign(), "approve").status_code, 409)
+
+
+def _write(text: str) -> str:
+    """A temp file holding ``text``; returns its path."""
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(text)
+    return f.name
+
+
+class WorkerCommandTests(TestCase):
+    """A worker session translates in-session; the command checks and formats."""
+
+    def _issue(self):
+        b = _campaign()
+        payload = jobs.job_payload(Broadcast.objects.get(pk=b.pk), "en", "es")
+        return _write(jobs._issue_body(payload))
+
+    def test_answer_becomes_a_reply_fetch_can_read(self):
+        answer = _write(json.dumps({"subject": "Asunto", "preheader": "", "texts": SPANISH}))
+        out = io.StringIO()
+        call_command("translate_email_job", self._issue(), "--answer", answer, stdout=out)
+        text = out.getvalue()
+        self.assertTrue(text.startswith(jobs.MARKER))
+        reply = json.loads(jobs.JSON_BLOCK.search(text).group(1))
+        self.assertEqual(reply["texts"], SPANISH)
+        self.assertEqual(reply["target"], "es")
+
+    def test_a_wrong_answer_is_refused(self):
+        issue = self._issue()
+        for bad in (
+            {"subject": "", "preheader": "", "texts": SPANISH},
+            {"subject": "S", "preheader": "", "texts": ["only one"]},
+        ):
+            with self.assertRaises(CommandError):
+                call_command("translate_email_job", issue, "--answer", _write(json.dumps(bad)), stdout=io.StringIO())

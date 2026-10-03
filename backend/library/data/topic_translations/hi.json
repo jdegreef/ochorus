@@ -1,10 +1,9 @@
 {
  "_note": [
   "Hindi shelf prose. Scripture is the Indian Revised Version (irvhin), the edition language_seed.py names for hi, parsed verbatim from the USX on disk — never recalled. Where an excerpt is shorter than the whole verse it is a CONTIGUOUS span, asserted as a substring of the full IRV verse at build time.",
-  "Six shelves carry a verse, matching the six lg and uk carry and the same references; ar/es/pt/sw carry none, so a verse is optional and its absence is not a gap.",
   "Names follow the shipped hi content where one exists: स्पर्जन (21), ऑगस्टीन (8), बन्यन (1), बैक्सटर (1), मरे (116). Whitefield and Wesley appear nowhere in shipped Hindi yet, so व्हाइटफ़ील्ड and वेस्ली are the standard forms and the first Hindi content to name them — a later bio should match these, not diverge.",
   "Shelf wording echoes the hi book titles it stands over: «भीतरी कोठरी» is the title the-inner-chamber.hi ships under.",
-  "The nineteen shelves added for queue jobs #2276–#2294 carry NO verse: the Take Root API was unreachable this session, so a scripture object could not be sourced verbatim (never recalled). A shelf with no verse is complete (ar/es/pt/sw carry none). A later session with Bible access may add one per shelf."
+  "Shelf verses are WHOLE verses fetched verbatim from Take Root (irvhin) on 2026-10-01, at the English shelf's chapter:verse; only the book name is localized, as IRV prints it. The six earlier verses are excerpts (a contiguous span); a shelf without a hi entry (for-teens, soar-like-the-eagle, for-young-readers) has no verse until its title is translated."
  ],
  "christ-and-the-cross": {
   "title": "मसीह और क्रूस",
@@ -97,7 +96,11 @@
   "meta_description": "सुसमाचार का बुलावा पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«पापियों में सबसे बड़े» echoes the IRV's 1 Tim 1:15, which is what Bunyan's Grace Abounding to the Chief of Sinners is titled after — that book sits on this shelf."
-  ]
+  ],
+  "scripture": {
+   "reference": "2 कुरिन्थियों 5:20",
+   "text": "इसलिए हम मसीह के राजदूत हैं; मानो परमेश्वर हमारे द्वारा समझाता है: हम मसीह की ओर से निवेदन करते हैं, कि परमेश्वर के साथ मेल मिलाप कर लो। (इफि. 6:10, मला. 2:7)"
+  }
  },
  "enduring-classics": {
   "title": "चिरस्थायी क्लासिक",
@@ -107,7 +110,11 @@
   "note": [
    "«पुराने मार्ग» echoes the IRV's Jer 6:16. ऑगस्टीन and बन्यन follow the spelling in shipped hi content (8 and 1 occurrences); थॉमस ए केम्पिस is the standard form and has no shipped Hindi precedent.",
    "No book on this shelf has a Hindi edition yet, so it renders EMPTY until one ships. The entry is still required: without it the shelf is HIDDEN rather than empty, and the coverage test fails the whole file."
-  ]
+  ],
+  "scripture": {
+   "reference": "यिर्मयाह 6:16",
+   "text": "यहोवा यह भी कहता है, “सड़कों पर खड़े होकर देखो, और पूछो कि प्राचीनकाल का अच्छा मार्ग कौन सा है, उसी में चलो, और तुम अपने-अपने मन में चैन पाओगे। पर उन्होंने कहा, ‘हम उस पर न चलेंगे।’ (व्यव. 32:7)"
+  }
  },
  "the-way-of-holiness": {
   "title": "पवित्रता का मार्ग",
@@ -116,7 +123,11 @@
   "meta_description": "पवित्रता का मार्ग पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "The description avoids «भक्ति», the glossary's word for godliness, because godliness has no hi edition yet but is queued (#707 is divine-healing; godliness would land under that title) — keeping the shelf name and a future book title distinguishable, as uk.json does for «Побожність»."
-  ]
+  ],
+  "scripture": {
+   "reference": "इब्रानियों 12:14",
+   "text": "सबसे मेल मिलाप रखो, और उस पवित्रता के खोजी हो जिसके बिना कोई प्रभु को कदापि न देखेगा । (1 पत. 3:11, भज. 34:14)"
+  }
  },
  "the-preached-word": {
   "title": "प्रचार किया गया वचन",
@@ -125,7 +136,11 @@
   "meta_description": "प्रचार किया गया वचन पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "स्पर्जन and बैक्सटर follow the shipped hi bios. व्हाइटफ़ील्ड and वेस्ली have NO shipped Hindi precedent — this is the first Hindi content to name them, so a later Whitefield or Wesley bio should match these forms rather than diverge."
-  ]
+  ],
+  "scripture": {
+   "reference": "रोमियों 10:14",
+   "text": "फिर जिस पर उन्होंने विश्वास नहीं किया, वे उसका नाम क्यों लें? और जिसकी नहीं सुनी उस पर क्यों विश्वास करें? और प्रचारक बिना क्यों सुनें?"
+  }
  },
  "the-puritans": {
   "title": "प्यूरिटन जन",
@@ -136,7 +151,11 @@
    "ओवेन, वाटसन, एडवर्ड्स follow shipped hi bios (Owen 2, Watson 21, Edwards 28).",
    "बन्यन follows the shipped hi topic glossary; the shipped hi bio corpus uses बनियन (31) instead — kept बन्यन to match the topic-shelf file this stands beside.",
    "प्यूरिटन (Puritans) has no shipped Hindi precedent — standard Devanagari transliteration, first-use here."
-  ]
+  ],
+  "scripture": {
+   "reference": "इब्रानियों 4:12",
+   "text": "क्योंकि परमेश्वर का वचन जीवित, प्रबल, और हर एक दोधारी तलवार से भी बहुत तेज है, प्राण, आत्मा को, गाँठ-गाँठ, और गूदे-गूदे को अलग करके, आर-पार छेदता है; और मन की भावनाओं और विचारों को जाँचता है। (यिर्म. 23:29, यशा. 55:11)"
+  }
  },
  "abiding-in-christ": {
   "title": "मसीह में बने रहना",
@@ -145,7 +164,11 @@
   "meta_description": "मसीह में बने रहने पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«दाखलता» echoes the shipped hi title of true-vine («सच्ची दाखलता»), which sits on this shelf."
-  ]
+  ],
+  "scripture": {
+   "reference": "यूहन्ना 15:4",
+   "text": "तुम मुझ में बने रहो, और मैं तुम में जैसे डाली यदि दाखलता में बनी न रहे, तो अपने आप से नहीं फल सकती, वैसे ही तुम भी यदि मुझ में बने न रहो तो नहीं फल सकते।"
+  }
  },
  "women-of-faith": {
   "title": "विश्वास की स्त्रियाँ",
@@ -155,7 +178,11 @@
   "note": [
    "गयों (Guyon) has no shipped Hindi precedent — standard Devanagari transliteration, first-use here.",
    "«स्त्रियाँ» matches the shipped hi title of women-who-moved-heaven (स्वर्ग को हिला देने वाली महिलाएँ) in sense."
-  ]
+  ],
+  "scripture": {
+   "reference": "नीतिवचन 31:30",
+   "text": "शोभा तो झूठी और सुन्दरता व्यर्थ है, परन्तु जो स्त्री यहोवा का भय मानती है, उसकी प्रशंसा की जाएगी।"
+  }
  },
  "voices-of-the-early-church": {
   "title": "आदिकालीन कलीसिया के स्वर",
@@ -164,7 +191,11 @@
   "meta_description": "आदिकालीन कलीसिया पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "ऑगस्टीन (21) and अथनासियुस (13) follow shipped hi bios. «कलीसिया» is the corpus word for church."
-  ]
+  ],
+  "scripture": {
+   "reference": "इब्रानियों 12:1",
+   "text": "इस कारण जबकि गवाहों का ऐसा बड़ा बादल हमको घेरे हुए है, तो आओ, हर एक रोकनेवाली वस्तु, और उलझानेवाले पाप को दूर करके, वह दौड़ जिसमें हमें दौड़ना है, धीरज से दौड़ें।"
+  }
  },
  "day-by-day": {
   "title": "दिन-प्रतिदिन",
@@ -173,7 +204,11 @@
   "meta_description": "प्रतिदिन के भक्ति-पाठ की स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "स्पर्जन follows shipped hi (21). «प्रतिदिन की रोटी» echoes the shipped faith-and-guidance shelf's own wording."
-  ]
+  ],
+  "scripture": {
+   "reference": "विलापगीत 3:22–23",
+   "text": "हम मिट नहीं गए; यह यहोवा की महाकरुणा का फल है, क्योंकि उसकी दया अमर है। प्रति भोर वह नई होती रहती है; तेरी सच्चाई महान है।"
+  }
  },
  "the-east-african-revival": {
   "title": "पूर्वी अफ़्रीकी जागृति",
@@ -183,7 +218,11 @@
   "note": [
    "«जागृति» is the corpus word for revival/awakening (60 uses vs 3 for पुनरुत्थान).",
    "\"Tukutendereza Yesu\" kept as-is in Latin script per instruction (Luganda praise cry). कम्पाला (Kampala) first-use place name, standard Devanagari."
-  ]
+  ],
+  "scripture": {
+   "reference": "1 यूहन्ना 1:7",
+   "text": "पर यदि जैसा वह ज्योति में है, वैसे ही हम भी ज्योति में चलें, तो एक दूसरे से सहभागिता रखते हैं और उसके पुत्र यीशु मसीह का लहू हमें सब पापों से शुद्ध करता है। (यशा. 2:5)"
+  }
  },
  "contemporary-voices": {
   "title": "समकालीन स्वर",
@@ -192,7 +231,11 @@
   "meta_description": "समकालीन ईसाई शिक्षकों की पुस्तकें, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«पुराने मार्ग» echoes Jer 6:16, as used in the shipped enduring-classics shelf."
-  ]
+  ],
+  "scripture": {
+   "reference": "भजन संहिता 145:4",
+   "text": "तेरे कामों की प्रशंसा और तेरे पराक्रम के कामों का वर्णन, पीढ़ी-पीढ़ी होता चला जाएगा।"
+  }
  },
  "the-inner-life": {
   "title": "भीतरी जीवन",
@@ -203,7 +246,11 @@
    "ए केम्पिस matches the shipped enduring-classics shelf form (थॉमस ए केम्पिस); no bio precedent.",
    "विलियम लॉ (Law) and गयों (Guyon) have no shipped Hindi precedent — standard Devanagari, first-use here.",
    "«भीतरी» / «गुप्त स्थान का बन्द किवाड़» echoes the shipped the-inner-chamber title (भीतरी कोठरी) and Matt 6:6."
-  ]
+  ],
+  "scripture": {
+   "reference": "मत्ती 6:6",
+   "text": "परन्तु जब तू प्रार्थना करे, तो अपनी कोठरी में जा; और द्वार बन्द करके अपने पिता से जो गुप्त में है प्रार्थना कर; और तब तेरा पिता जो गुप्त में देखता है, तुझे प्रतिफल देगा।"
+  }
  },
  "the-great-awakening": {
   "title": "महान जागृति",
@@ -213,7 +260,11 @@
   "note": [
    "व्हाइटफ़ील्ड (25), वेस्ली (41), एडवर्ड्स (28), फ़िन्नी (21) follow shipped hi bios.",
    "«व्हाइटफ़ील्ड और वेस्ली» matches the shipped the-preached-word shelf's pairing."
-  ]
+  ],
+  "scripture": {
+   "reference": "भजन संहिता 85:6",
+   "text": "क्या तू हमको फिर न जिलाएगा, कि तेरी प्रजा तुझ में आनन्द करे?"
+  }
  },
  "the-body-of-christ": {
   "title": "मसीह की देह",
@@ -222,7 +273,11 @@
   "meta_description": "मसीह की देह और कलीसिया पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«कलीसिया» is the corpus word for the church (158 uses)."
-  ]
+  ],
+  "scripture": {
+   "reference": "1 कुरिन्थियों 12:27",
+   "text": "इसी प्रकार तुम सब मिलकर मसीह की देह हो, और अलग-अलग उसके अंग हो।"
+  }
  },
  "for-those-who-lead": {
   "title": "उनके लिये जो अगुवाई करते हैं",
@@ -231,7 +286,11 @@
   "meta_description": "मसीही अगुवाई और चरवाही पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«प्रार्थना में सामर्थ्य» echoes the shipped hi book titles on this shelf (प्रार्थना के द्वारा सामर्थ्य / प्रार्थना में महान सामर्थ्य)."
-  ]
+  ],
+  "scripture": {
+   "reference": "1 पतरस 5:2",
+   "text": "कि परमेश्वर के उस झुण्ड की, जो तुम्हारे बीच में है रखवाली करो; और यह दबाव से नहीं, परन्तु परमेश्वर की इच्छा के अनुसार आनन्द से, और नीच-कमाई के लिये नहीं, पर मन लगाकर।"
+  }
  },
  "the-wesleys-and-early-methodism": {
   "title": "वेस्ली परिवार और आरम्भिक मेथोडिज़्म",
@@ -241,7 +300,11 @@
   "note": [
    "जॉन वेस्ली / वेस्ली (41) follow shipped hi bios; the mother Susanna is सुसन्ना in the shipped Wesley bio.",
    "मेथोडिज़्म (Methodism) has no shipped Hindi precedent — standard Devanagari, first-use here."
-  ]
+  ],
+  "scripture": {
+   "reference": "लूका 24:32",
+   "text": "उन्होंने आपस में कहा, “जब वह मार्ग में हम से बातें करता था, और पवित्रशास्त्र का अर्थ हमें समझाता था, तो क्या हमारे मन में उत्तेजना न उत्पन्न हुई?”"
+  }
  },
  "foundations-of-the-faith": {
   "title": "विश्वास की नींव",
@@ -250,7 +313,11 @@
   "meta_description": "विश्वास की नींव और मूल सिद्धान्तों पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«अनुग्रह» is the glossary word for grace. «एक ही बार सदा के लिये... सौंप दी गईं» echoes Jude 1:3."
-  ]
+  ],
+  "scripture": {
+   "reference": "यहूदा 3",
+   "text": "हे प्रियों, जब मैं तुम्हें उस उद्धार के विषय में लिखने में अत्यन्त परिश्रम से प्रयत्न कर रहा था, जिसमें हम सब सहभागी हैं; तो मैंने तुम्हें यह समझाना आवश्यक जाना कि उस विश्वास के लिये पूरा यत्न करो जो पवित्र लोगों को एक ही बार सौंपा गया था।"
+  }
  },
  "saints-of-the-african-diaspora": {
   "title": "अफ़्रीकी प्रवासी के सन्त",
@@ -260,7 +327,11 @@
   "note": [
    "रिचर्ड एलन (Richard Allen) and क्राउथर (Crowther) have no shipped Hindi precedent — standard Devanagari, first-use here.",
    "नाइजर (Niger) first-use place name, standard Devanagari. «पवित्रता» is the glossary word for holiness."
-  ]
+  ],
+  "scripture": {
+   "reference": "भजन संहिता 68:31",
+   "text": "मिस्र से अधिकारी आएँगे; कूशी अपने हाथों को परमेश्वर की ओर फुर्ती से फैलाएँगे।"
+  }
  },
  "the-grace-of-god": {
   "title": "परमेश्वर का अनुग्रह",
@@ -270,7 +341,11 @@
   "note": [
    "«अनुग्रह» is the glossary word for grace and echoes the shipped all-of-grace title (सब कुछ अनुग्रह से).",
    "«पापियों में सबसे बड़े» echoes 1 Tim 1:15, as used in the shipped the-gospel-call shelf."
-  ]
+  ],
+  "scripture": {
+   "reference": "इफिसियों 2:8",
+   "text": "क्योंकि विश्वास के द्वारा अनुग्रह ही से तुम्हारा उद्धार हुआ है, और यह तुम्हारी ओर से नहीं, वरन् परमेश्वर का दान है;"
+  }
  },
  "victory-over-sin": {
   "title": "पाप पर विजय",
@@ -279,7 +354,11 @@
   "meta_description": "पाप पर विजय और पवित्रता पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«पवित्रता» / «अनुराग» echo the shipped the-way-of-holiness shelf (हृदय के अनुराग). «परमपवित्र स्थान» echoes Heb 10:19."
-  ]
+  ],
+  "scripture": {
+   "reference": "रोमियों 6:14",
+   "text": "तब तुम पर पाप की प्रभुता न होगी, क्योंकि तुम व्यवस्था के अधीन नहीं वरन् अनुग्रह के अधीन हो।"
+  }
  },
  "to-the-ends-of-the-earth": {
   "title": "पृथ्वी की छोर तक",
@@ -289,7 +368,11 @@
   "note": [
    "ब्रेनर्ड (डेविड ब्रेनर्ड, shipped form), टेलर (हडसन टेलर, 17), कारमाइकल (एमी कारमाइकल, 6) follow shipped hi bios.",
    "क्राउथर (Crowther) has no shipped Hindi precedent — standard Devanagari, first-use (also used on saints-of-the-african-diaspora)."
-  ]
+  ],
+  "scripture": {
+   "reference": "प्रेरितों के काम 1:8",
+   "text": "परन्तु जब पवित्र आत्मा तुम पर आएगा तब तुम सामर्थ्य पाओगे; और यरूशलेम और सारे यहूदिया और सामरिया में, और पृथ्वी की छोर तक मेरे गवाह होंगे।”"
+  }
  },
  "faith-for-the-impossible": {
   "title": "असम्भव के लिये विश्वास",
@@ -298,7 +381,11 @@
   "meta_description": "प्रार्थना और विश्वास पर स्थायी ईसाई क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "म्यूलर (जॉर्ज म्यूलर, 17) follows shipped hi bio. «बाट जोहने» echoes the shipped waiting-on-god title (परमेश्वर की बाट जोहना)."
-  ]
+  ],
+  "scripture": {
+   "reference": "मरकुस 9:23",
+   "text": "यीशु ने उससे कहा, “यदि तू कर सकता है! यह क्या बात है? विश्वास करनेवाले के लिये सब कुछ हो सकता है।”"
+  }
  },
  "men-of-valour": {
   "title": "वीर पुरुष",
@@ -307,6 +394,10 @@
   "meta_description": "साहस और मसीही पुरुषत्व पर स्थायी क्लासिक्स, Ochorus पर मुफ़्त में पढ़ें।",
   "note": [
    "«झुंड की चरवाही» echoes 1 Pet 5:2. «परमेश्वर के पुत्रों» renders sons of God."
-  ]
+  ],
+  "scripture": {
+   "reference": "1 कुरिन्थियों 16:13",
+   "text": "जागते रहो, विश्वास में स्थिर रहो, पुरुषार्थ करो, बलवन्त हो। (इफि. 6:10)"
+  }
  }
 }

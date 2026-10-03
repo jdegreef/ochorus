@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { authorPath } from '$lib/originals';
-	import type { SermonSummary } from '$lib/library-public';
+	import { formatLifespan, type SermonSummary } from '$lib/library-public';
+	import { SvelteSet } from 'svelte/reactivity';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -9,6 +10,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 	import SermonCard from '$lib/components/SermonCard.svelte';
+	import SermonOfTheWeek from '$lib/components/SermonOfTheWeek.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
@@ -16,6 +18,8 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
+	import FilterBar from '$lib/components/FilterBar.svelte';
+	import AuthorJumpStrip from '$lib/components/AuthorJumpStrip.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
@@ -175,10 +179,10 @@
 		{ v: 'shortest', k: 'common.sortShortest' }
 	];
 
-	// Measured height of the pinned controls bar. The filter row wraps to a
-	// second line on narrow screens, so the offset the preacher anchors clear
-	// can't be assumed — it feeds `--pinned-offset`, mirroring Biographies.
-	let controlsH = $state(0);
+	// How much the pinned controls bar covers (0 where it doesn't pin). The
+	// filter row wraps to a second line on narrow screens, so the offset the
+	// preacher anchors clear can't be assumed — it feeds `--pinned-offset`.
+	let pinnedH = $state(0);
 
 	// Hydrated after mount, not during load: the page is prerendered, so reading
 	// localStorage while rendering would desync the static HTML from the client.
@@ -210,18 +214,36 @@
 	// Sermons by author, in the order `sorted` produced. null = one flat list.
 	const groups = $derived.by(() => {
 		if (group === 'all') return null;
-		const map = new Map<
-			string,
-			{ name: string; slug: string; photo_url: string; items: SermonSummary[] }
-		>();
+		const map = new Map<string, { author: SermonSummary['author']; items: SermonSummary[] }>();
 		for (const s of sorted) {
 			const key = s.author.slug;
-			if (!map.has(key))
-				map.set(key, { name: s.author.name, slug: key, photo_url: s.author.photo_url, items: [] });
+			if (!map.has(key)) map.set(key, { author: s.author, items: [] });
 			map.get(key)!.items.push(s);
 		}
 		return [...map.values()];
 	});
+
+	// A preacher section opens on its first few sermons, so Spurgeon's eighteen
+	// don't fill three screens before the next preacher. The rest stay in the
+	// HTML (hidden, so every row is still a crawlable link) behind "Show N more".
+	// A filter shows every match — it already narrowed the list on purpose.
+	// "Show all" for one more sermon is noise, so a section only collapses when
+	// it would hide at least two.
+	const PREVIEW = 3;
+	const expanded = new SvelteSet<string>();
+	const collapsible = (n: number) => !filtering && n > PREVIEW + 1;
+	function toggleSection(slug: string) {
+		if (!expanded.has(slug)) {
+			expanded.add(slug);
+			return;
+		}
+		expanded.delete(slug);
+		// Collapsing a long section pulls everything after it up by many screens;
+		// bring its heading back into view so the reader stays where they were.
+		const section = document.getElementById(`preacher-${slug}`);
+		if (section && section.getBoundingClientRect().top < 0)
+			section.scrollIntoView({ block: 'start' });
+	}
 
 	// A row states its writer only when no heading above it does.
 	const showAuthor = $derived(groups === null);
@@ -273,7 +295,11 @@
 	</div>
 {/snippet}
 
-<div class="page-col px-5 py-10 sermon-shell" style="--controls-h: {controlsH}px">
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<PageHeader
 		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
@@ -292,20 +318,12 @@
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
 	{/snippet}
 
-	<!-- Filter bar, pinned under the app nav (itself sticky, hence the
-	     --appnav-h offset) so the filters come WITH you — with a brief under
-	     every row the shelf runs dozens of screens. Its height is measured: the
-	     preacher sections pin under whatever it currently is. Same recipe as
-	     Biographies (page-design B6/L3).
-	     Below sm it is one line — search + a Filters button whose sheet holds
-	     the rest (four stacked controls were ~300px before the first sermon) —
-	     and pins. From sm the controls sit inline; between sm and md that row
-	     wraps too tall to pin, so there it scrolls away. The sticky rules and the
-	     matching --pinned-offset live in the <style> block below. -->
-	<div
-		bind:clientHeight={controlsH}
-		class="sermon-filter z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
-	>
+	<!-- Filter bar, pinned under the app nav so the filters come WITH you — 24
+	     preacher sections run many screens. Below sm it is one line — search +
+	     a Filters button whose sheet holds the rest (four stacked controls were
+	     ~300px before the first sermon). `compact`: between sm and md the inline
+	     row wraps too tall to pin, so there it scrolls away (FilterBar). -->
+	<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-8">
 		<div class="filter-row">
 			<input
 				bind:value={filters.values.q}
@@ -371,7 +389,19 @@
 				{@render groupSeg('', '')}
 			</div>
 		</div>
-	</div>
+	</FilterBar>
+
+	<!-- One sermon to start with, for a reader who doesn't yet know whom to
+	     read — the same weekly pick as the home page, hidden while the reader is
+	     filtering (page-design: a shelf's secondary section). BELOW the filter
+	     bar, not above it as the anatomy's order has it: hiding it on the first
+	     keystroke would otherwise yank the search box out from under the
+	     reader's typing. `reserve` holds its height until the pick lands. -->
+	{#if !filtering && !loadError && sermons.length}
+		<div class="mb-8">
+			<SermonOfTheWeek embedded reserve />
+		</div>
+	{/if}
 
 	<!-- Topic filter — a chip row for taxonomy, under the controls. Mirrors the
 	     Books shelf; the shared component reuses the Books labels (the same "All
@@ -400,10 +430,12 @@
 	     opening it. A tile can't carry a 300–400 character brief without becoming
 	     mostly text, and prose set across a 76rem page is unreadable, so the row
 	     gives the brief a real measure and the meta a column of its own. -->
-	{#snippet sermonList(items: SermonSummary[])}
-		<div class="flex flex-col gap-3">
-			{#each items as sermon (sermon.slug)}
-				<SermonCard {sermon} {showAuthor} variant="row" />
+	{#snippet sermonList(items: SermonSummary[], limit = Infinity, id?: string)}
+		<div {id} class="flex flex-col gap-3">
+			{#each items as sermon, i (sermon.slug)}
+				<div class="contents" hidden={i >= limit}>
+					<SermonCard {sermon} {showAuthor} variant="row" />
+				</div>
 			{/each}
 		</div>
 	{/snippet}
@@ -411,61 +443,70 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if sorted.length === 0}
-		<EmptyState message={filtering ? t('sermons.noMatches') : t('sermons.empty')} />
+		<EmptyState
+			message={filtering ? t('sermons.noMatches') : t('sermons.empty')}
+			action={filtering ? clearFiltersAction : undefined}
+		/>
 	{:else if groups}
-		<!-- Jump to a writer — with a brief under every sermon the sections are
-		     long, so they need a way in that isn't scrolling. Same rail the Books
-		     shelf uses. -->
+		<!-- Jump to a preacher — the sections are long, so they need a way in
+		     that isn't scrolling: the shared faces strip (Books uses it too). -->
 		{#if groups.length > 1}
-			<nav
-				class="chip-scroller mb-8"
-				aria-label={t('sermons.jumpPreacher')}
-			>
-				<span class="eyebrow text-muted me-1">{t('sermons.jumpPreacher')}</span>
-				{#each groups as g (g.slug)}
-					<a href="#preacher-{g.slug}" class="tag">{g.name}</a>
-				{/each}
-			</nav>
+			<AuthorJumpStrip
+				class="mb-8"
+				label={t('sermons.jumpPreacher')}
+				href={(slug) => `#preacher-${slug}`}
+				writers={groups.map((g) => ({ ...g.author, count: g.items.length }))}
+			/>
 		{/if}
-		{#each groups as g (g.slug)}
+		{#each groups as g (g.author.slug)}
+			{@const a = g.author}
+			{@const lifespan = formatLifespan(a.birth_year, a.death_year, t('common.bornPrefix'))}
+			{@const canCollapse = collapsible(g.items.length)}
+			{@const collapsed = canCollapse && !expanded.has(a.slug)}
 			<section
-				id="preacher-{g.slug}"
+				id="preacher-{a.slug}"
 				class="mb-10"
 				style="scroll-margin-top: calc(var(--pinned-offset, 5rem) + 0.5rem)"
 			>
+				<!-- Who the preacher was, before what they preached: their years and
+				     one line on who they were, so a newcomer can tell Chrysostom's
+				     Antioch from Tozer's Chicago. The line is the tagline, written for
+				     this spot (a bio often opens "Name (1897–1963) was…", repeating
+				     the heading); a language without one falls back to the bio's
+				     opening. The name links to the full life. -->
 				<GroupHeading
-					name={g.name}
-					href={localizeHref(authorPath(g.slug))}
-					portraitUrl={g.photo_url}
-					portraitPosition={portraitPosition(g.slug)}
-					count={g.items.length}
-				/>
-				{@render sermonList(g.items)}
+					name={a.name}
+					href={localizeHref(authorPath(a.slug))}
+					portraitUrl={a.photo_url}
+					portraitPosition={portraitPosition(a.slug)}
+					blurb={a.tagline || a.bio}
+				>
+					<!-- Years, then the count as words: a bare count after a
+					     lifespan read as one figure ("1843–1919 15"). -->
+					{#snippet detail()}
+						<span class="text-small font-normal count"
+							>{#if lifespan}{lifespan}<span class="opacity-50">{' · '}</span>{/if}{g.items.length}
+							{g.items.length === 1 ? t('common.sermonOne') : t('common.sermonMany')}</span
+						>
+					{/snippet}
+				</GroupHeading>
+				{@render sermonList(g.items, collapsed ? PREVIEW : Infinity, `preacher-list-${a.slug}`)}
+				{#if canCollapse}
+					<button
+						type="button"
+						class="btn btn-ghost btn-sm mt-3"
+						aria-expanded={!collapsed}
+						aria-controls="preacher-list-{a.slug}"
+						onclick={() => toggleSection(a.slug)}
+					>
+						{collapsed
+							? t('bios.showMore').replace('%n%', String(g.items.length - PREVIEW))
+							: t('search.showLess')}
+					</button>
+				{/if}
 			</section>
 		{/each}
 	{:else}
 		{@render sermonList(sorted)}
 	{/if}
 </div>
-
-<style>
-	/* The filter bar pins below sm (one line: search + Filters) and from md
-	   (the inline row fits a line or two); between sm and md the inline row
-	   wraps too tall to pin, so it scrolls away and the preacher anchors only
-	   clear the app nav. */
-	.sermon-shell {
-		--pinned-offset: calc(var(--appnav-h, 0px) + var(--controls-h, 0px));
-	}
-	.sermon-filter {
-		position: sticky;
-		top: var(--appnav-h, 0px);
-	}
-	@media (min-width: 640px) and (max-width: 767.98px) {
-		.sermon-shell {
-			--pinned-offset: var(--appnav-h, 0px);
-		}
-		.sermon-filter {
-			position: static;
-		}
-	}
-</style>

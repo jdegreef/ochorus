@@ -10,9 +10,9 @@ The anchor is 2 Corinthians 6:18: "I will be a Father to you, and you will be My
 
 | Book | Focus | Slug | Reading plan |
 |---|---|---|---|
-| 1 | Strong: who you are, whose you are, and the brave men who went before you | `sons-of-the-king-1` | `sons-of-the-king-book-1-30-days` |
-| 2 | Faithful: integrity, screens, temptation, sports, and following Jesus all the way | `sons-of-the-king-2` | `sons-of-the-king-book-2-30-days` |
-| 3 | Growing Up: your feelings, your changing body, wise choices, and God's calling | `sons-of-the-king-3` | `sons-of-the-king-book-3-30-days` |
+| 1 | Strong: who you are, whose you are, and the brave men who went before you | `sons-of-the-king-1` | `sons-of-the-king-three-months` |
+| 2 | Faithful: integrity, screens, temptation, sports, and following Jesus all the way | `sons-of-the-king-2` | `sons-of-the-king-three-months` |
+| 3 | Growing Up: your feelings, your changing body, wise choices, and God's calling | `sons-of-the-king-3` | `sons-of-the-king-three-months` |
 
 ## Approach
 
@@ -24,7 +24,7 @@ The anchor is 2 Corinthians 6:18: "I will be a Father to you, and you will be My
 
 - **Each day:** a title, the Scripture (BSB), a teaching of about 300–450 words, **Think about it** / **Try this**, and a prayer.
 - **Each week** ends with "**A true story:**", a short spotlight on a man from the *Brave for God* books. In Book 1, the fifth spotlight falls on Day 29.
-- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The reading plan reads chapters 2–31 (span `(2, 31)` in `LAUNCH_PLANS`).
+- **Each book:** an Introduction, Day 1–30 and a Conclusion, so 32 chapters. The series reading plan (a `CURATED_PLANS` entry; one per series, Rooted in two halves) reads every chapter of its books in order, Introductions and Conclusions included, so each book is 32 plan days.
 - **Every introduction** ends with a short note "For parents, grandparents and leaders". Every conclusion includes a gentle invitation to trust Jesus. Books 1 and 2 preview the next book, and Book 3 closes the series.
 - **Key verses** don't repeat a key verse from Rooted or from earlier books in either series. Check verse ranges too, not only exact references: Book 3 first shipped Matthew 5:8 and 2 Timothy 4:7, which fall inside Rooted's Matthew 5:3–9 and 2 Timothy 4:6–8, and those two days were later given 1 John 3:2–3 and Acts 20:24.
 

@@ -30,7 +30,7 @@ describe('the layout publishes the nav height as a fact', () => {
 	it('does not zero --appnav-h on the reading routes', () => {
 		// It used to be `inReader ? 0 : navH`. True only in scroll mode, where the
 		// static nav rides away — and page mode is the case that doesn't scroll.
-		const decl = read(LAYOUT).match(/--appnav-h:\s*\{([^}]*)\}/)?.[1] ?? '';
+		const decl = read(LAYOUT).match(/const appnavH = \$derived\((.*)\);/)?.[1] ?? '';
 		expect(decl, '--appnav-h must be declared from a value, not omitted').not.toEqual('');
 		expect(
 			decl,
@@ -40,8 +40,12 @@ describe('the layout publishes the nav height as a fact', () => {
 	});
 
 	it('reports 0 only when the nav is genuinely not rendered', () => {
-		// Focus mode removes the nav from the DOM, so 0 is the truth there.
-		expect(read(LAYOUT)).toMatch(/--appnav-h:\s*\{readerUi\.focus \? 0 : navH\}px/);
+		// Focus mode removes the nav from the DOM, so 0 is the truth there. Before
+		// the nav is measured (a prerendered page) it is left unset, so app.css's
+		// per-breakpoint estimate on .app-root holds — never a stand-in 0.
+		const src = read(LAYOUT);
+		expect(src).toMatch(/readerUi\.focus \? '--appnav-h: 0px; ' : navH \? `--appnav-h: \$\{navH\}px; ` : ''/);
+		expect(src).toMatch(/style="[^"]*\{appnavH\}/);
 	});
 
 	it('seeds navH synchronously before observing it', () => {

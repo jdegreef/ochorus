@@ -1,7 +1,9 @@
 <script lang="ts">
+	import { chapterMeta } from '$lib/bookSeo';
 	import { onPageHidden } from '$lib/pageHidden';
+	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { readingSync } from '$lib/readingSync';
-	import { chapterPath } from '$lib/editionHref';
+	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -125,7 +127,16 @@
 	);
 	// Trimmed to a SERP-sized slice at a sentence/word boundary — the raw 250
 	// char cut fed search snippets a mid-word truncation.
-	const metaText = $derived(truncateMeta(metaDescription));
+	// Book and chapter lead, so two editions that open alike stay distinct.
+	const metaText = $derived(
+		truncateMeta(
+			chapterMeta(
+				chapter.book_title,
+				chapterNameIn(chapter.order, chapter.title, chapter.book_title),
+				metaDescription
+			)
+		)
+	);
 	// The <title> names the chapter, then the book AND its author — people search
 	// "<author> <book> chapter 1", and the author was missing. Localized via
 	// chapter_title_tag (mirrors book_title_tag), so each locale's "by" is right.
@@ -572,17 +583,10 @@
 	// prerendered page paints right. This only picks WHICH text-settings panel
 	// to mount: popover and sheet share `readerUi.panelOpen`, and a hidden
 	// popover's click-away handler would shut the sheet on every tap inside it.
-	// A $state flipped in an effect, NOT svelte/reactivity's MediaQuery: that
-	// reads matchMedia during hydration, so on a phone both `{#if}`s below
-	// would disagree with the prerendered (desktop) markup.
-	let isPhone = $state(false);
-	$effect(() => {
-		const mq = window.matchMedia('(max-width: 639.98px)');
-		const sync = () => (isPhone = mq.matches);
-		sync();
-		mq.addEventListener('change', sync);
-		return () => mq.removeEventListener('change', sync);
-	});
+	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
+	// the prerendered markup), so both `{#if}`s below agree with it.
+	const phone = mediaFlag('(max-width: 639.98px)');
+	const isPhone = $derived(phone.matches);
 	// The phone bar's "⋯" group (bookmark, search, notebook, edition, focus).
 	let moreOpen = $state(false);
 	/** Close the "⋯" group, then run the chosen action. */
@@ -1212,7 +1216,10 @@
 	/** The plan day covering a chapter of THIS book, when following a plan. */
 	function planDayFor(order: number): number | null {
 		const d = plan?.days.find((x) => x.book_slug === slug && x.chapter_order === order);
-		return d?.day ?? null;
+		// Only the neighbouring day: a plan can put an article between two
+		// chapters, and the book's own Next must not jump past it.
+		if (!d || (planDay && d.day !== planDay && Math.abs(d.day - planDay) !== 1)) return null;
+		return d.day;
 	}
 
 	/**
@@ -1434,18 +1441,8 @@
 		const next = planProgress.nextDay(plan.slug, plan.day_count);
 		const nextEntry = next && plan.days.find((d) => d.day === next);
 		if (nextEntry) {
-			goto(
-				localizeHref(
-					chapterPath(
-						nextEntry.book_slug,
-						nextEntry.chapter_order,
-						nextEntry.has_modern_edition,
-						`plan=${plan.slug}&day=${nextEntry.day}`,
-						// A plan followed in Modern English carries on in it.
-						edition === 'modern'
-					)
-				)
-			);
+			// A plan followed in Modern English carries on in it.
+			goto(localizeHref(planDayPath(plan.slug, nextEntry, edition === 'modern')));
 		} else {
 			goto(localizeHref(`/plans/${plan.slug}`));
 		}

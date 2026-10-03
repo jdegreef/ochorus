@@ -34,10 +34,9 @@ from library.english_audit import Record, audit_records, counts
 def _corpus() -> dict[str, dict[str, int]]:
     """One corpus scan shared by every test that needs it.
 
-    Scanning 94 fixture files costs ~5s. Three tests want the same immutable
-    artefact, and they live in two different TestCase classes, so `setUpClass`
-    would still leave two scans — hence a module-level cache. Measured: 14.0s to
-    4.7s for the file.
+    Three tests want the same immutable artefact. They all live in
+    EnglishAuditRatchetTests, because under --parallel this cache is per
+    worker process: spread across classes, each worker paid for its own scan.
     """
     return english_audit.counts_by_work(english_audit.audit_fixtures())
 
@@ -47,6 +46,14 @@ def _findings(body_html: str, *, is_pd: bool = True, title: str = "") -> dict[st
 
 
 class EnglishAuditRatchetTests(SimpleTestCase):
+    """Every test that reads the whole-corpus scan, in ONE class.
+
+    `_corpus()` caches per process, and the parallel runner hands each TestCase
+    class to whichever worker is free — so three classes reading it meant up to
+    three full scans per run (~7 s each locally, ~30 s on CI). Gathered here,
+    the scan runs once.
+    """
+
     def test_findings_match_the_baseline_work_for_work(self):
         """No work's defect count may drift from its pin, in either direction.
 
@@ -66,6 +73,63 @@ class EnglishAuditRatchetTests(SimpleTestCase):
             "re-pin with `manage.py audit_english --update-baseline` and say in "
             "the commit message what you fixed.",
         )
+
+
+    def test_the_committed_baseline_is_its_own_fixed_point(self):
+        self.assertEqual(english_audit.baseline_regressions(_corpus()), [])
+
+    def test_every_class_the_scanner_emits_is_classified(self):
+        """A new check must be declared auto-fixable, mechanical, or neither.
+
+        Otherwise it lands in the report with no guidance and gets treated
+        however the reader guesses.
+        """
+        known = (
+            english_audit.AUTO_FIXABLE
+            | english_audit.MECHANICAL
+            | {
+                "anachronism",
+                "dropcap-fused",
+                "misspelling",
+                "orphan-close-quote",
+                # Neither: most are a bare stray to delete, but some stand
+                # where a LETTER was lost ("“ruth from truth"), and only a
+                # second printing can say which.
+                "orphan-open-quote",
+                "run-together",
+                # Neither. The DETECTION is exact — an empty parenthesis pair
+                # is never prose — but the repair is not: only the source can
+                # say what the anchor said, and it may be a note letter
+                # (`(Note A.)`), a chapter reference (`(ch. 3)`) or a page.
+                # `holy-in-christ` ch10 needed the Gutenberg HTML read for the
+                # targets AND two archive.org printings compared to settle
+                # whether the references were the author's at all.
+                "stray-parens",
+                "title-case-vs-body",
+                # Neither: the scanner can spot that a word LOOKS like two
+                # glued together, but only a reader can say where the seam
+                # goes — or that there is no seam. Power Through Prayer is the
+                # work that first put this class in the corpus, and its one
+                # finding is a false positive ("soother", a real word that
+                # occurs nowhere else in the library, read as "so" + "other").
+                "word-fusion",
+                # Neither, and emphatically not mechanical: where a paragraph
+                # breaks is a judgement about the prose. The scanner can say a
+                # chapter has lost its paragraphing — 4,602 words in two blocks
+                # is not a style — but only a reader can put the breaks back.
+                "lost-paragraphing",
+                # Neither. The DETECTION is exact — a doubled marker carrying
+                # the same number, which no correctly extracted footnote has —
+                # but the repair is not, because where the note ends is not
+                # marked. Only ~39% close on a clean full stop; the rest run
+                # "Mr. R. Rowley, of Shrewsbury, upon Acham bridge." or carry a
+                # scripture reference mid-note, so a machine cutting at the
+                # first period would take half a note or half a sentence.
+                "welded-footnote",
+            }
+        )
+        emitted = {label for classes in _corpus().values() for label in classes}
+        self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
 
 
 class EnglishAuditRepinTests(SimpleTestCase):
@@ -114,9 +178,6 @@ class EnglishAuditRepinTests(SimpleTestCase):
         self.assertEqual(
             english_audit.baseline_regressions({"a-book": {"hyphen-space": 1}}, self.OLD), []
         )
-
-    def test_the_committed_baseline_is_its_own_fixed_point(self):
-        self.assertEqual(english_audit.baseline_regressions(_corpus()), [])
 
 
 class EnglishAuditPrecisionTests(SimpleTestCase):
@@ -754,13 +815,36 @@ class CorrectionsHygieneTests(SimpleTestCase):
         # straight quotes `things-as-they-are` uses throughout — matched nothing
         # and was reported dead. A false positive on a test whose whole job is
         # to notice a pair that protects nothing.
-        corpus = "\n".join(
-            value
-            for path in list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
-            for row in json.loads(path.read_text(encoding="utf-8"))
-            for value in (row.get("fields") or {}).values()
-            if isinstance(value, str)
-        )
+        paths = list(BOOKS_DIR.glob("*.json")) + list(SERMONS_DIR.glob("*.json"))
+
+        def text_of(files):
+            return "\n".join(
+                value
+                for path in files
+                for row in json.loads(path.read_text(encoding="utf-8"))
+                for value in (row.get("fields") or {}).values()
+                if isinstance(value, str)
+            )
+
+        # Each pair is looked for in its own work's files first (`<slug>.<lang>.json`),
+        # and only on a miss in the whole fixture. Scanning the full ~380 MB
+        # corpus once per pair is what made this one test take over half an
+        # hour; the fallback keeps the verdict exactly the same — "somewhere".
+        by_slug: dict[str, list] = {}
+        for path in paths:
+            by_slug.setdefault(path.name.split(".", 1)[0], []).append(path)
+        own_text: dict[str, str] = {}
+        whole: list[str] = []
+
+        def found(slug, *texts):
+            if slug not in own_text:
+                own_text[slug] = text_of(by_slug.get(slug, ()))
+            if any(t in own_text[slug] for t in texts):
+                return True
+            if not whole:
+                whole.append(text_of(paths))
+            return any(t in whole[0] for t in texts)
+
         dead = [
             (slug, old)
             for slug, entry in BODY_CORRECTIONS.items()
@@ -787,7 +871,7 @@ class CorrectionsHygieneTests(SimpleTestCase):
                 # ending it cuts after (applied). Dead means both are gone.
                 *entry.get("back_matter", ()),
             )
-            if old not in corpus and new not in corpus
+            if not found(slug, old, new)
         ]
         self.assertEqual(dead, [], "BODY_CORRECTIONS entries matching nothing in the fixture")
 
@@ -839,58 +923,6 @@ class EnglishAuditContractTests(SimpleTestCase):
         """
         self.assertEqual(english_audit.AUTO_FIXABLE, frozenset({"broken-smallcaps"}))
 
-    def test_every_class_the_scanner_emits_is_classified(self):
-        """A new check must be declared auto-fixable, mechanical, or neither.
-
-        Otherwise it lands in the report with no guidance and gets treated
-        however the reader guesses.
-        """
-        known = (
-            english_audit.AUTO_FIXABLE
-            | english_audit.MECHANICAL
-            | {
-                "anachronism",
-                "dropcap-fused",
-                "misspelling",
-                "orphan-close-quote",
-                # Neither: most are a bare stray to delete, but some stand
-                # where a LETTER was lost ("“ruth from truth"), and only a
-                # second printing can say which.
-                "orphan-open-quote",
-                "run-together",
-                # Neither. The DETECTION is exact — an empty parenthesis pair
-                # is never prose — but the repair is not: only the source can
-                # say what the anchor said, and it may be a note letter
-                # (`(Note A.)`), a chapter reference (`(ch. 3)`) or a page.
-                # `holy-in-christ` ch10 needed the Gutenberg HTML read for the
-                # targets AND two archive.org printings compared to settle
-                # whether the references were the author's at all.
-                "stray-parens",
-                "title-case-vs-body",
-                # Neither: the scanner can spot that a word LOOKS like two
-                # glued together, but only a reader can say where the seam
-                # goes — or that there is no seam. Power Through Prayer is the
-                # work that first put this class in the corpus, and its one
-                # finding is a false positive ("soother", a real word that
-                # occurs nowhere else in the library, read as "so" + "other").
-                "word-fusion",
-                # Neither, and emphatically not mechanical: where a paragraph
-                # breaks is a judgement about the prose. The scanner can say a
-                # chapter has lost its paragraphing — 4,602 words in two blocks
-                # is not a style — but only a reader can put the breaks back.
-                "lost-paragraphing",
-                # Neither. The DETECTION is exact — a doubled marker carrying
-                # the same number, which no correctly extracted footnote has —
-                # but the repair is not, because where the note ends is not
-                # marked. Only ~39% close on a clean full stop; the rest run
-                # "Mr. R. Rowley, of Shrewsbury, upon Acham bridge." or carry a
-                # scripture reference mid-note, so a machine cutting at the
-                # first period would take half a note or half a sentence.
-                "welded-footnote",
-            }
-        )
-        emitted = {label for classes in _corpus().values() for label in classes}
-        self.assertEqual(emitted - known, set(), "unclassified finding class(es)")
 
 
 def _book_bodies(slug: str, language: str = "en") -> dict[int, str]:
@@ -933,14 +965,6 @@ class ShelfRepairTests(SimpleTestCase):
              "Again, four from among the Sunday-school children"),
             ("if one is enabled to God’s own time",
              "if one is enabled to wait God’s own time"),
-        ],
-        "things-as-they-are": [
-            ("one of the old dames seen in . A capital typical face",
-             "one of the old dames seen in chapter vi. A capital typical face"),
-            ('stuff on the stone is the "Imp" of . <p>Then a Caste meeting',
-             'stuff on the stone is the "Imp" of chapter xx. <p>Then a Caste meeting'),
-            ('the "rabbits" mentioned in . She saw us',
-             'the "rabbits" mentioned in Chapter I. She saw us'),
         ],
         "selected-sermons-edwards": [
             ("for the press (see Introduction, p. ). The manuscript",

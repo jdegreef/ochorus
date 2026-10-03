@@ -198,6 +198,9 @@ REST_FRAMEWORK = {
         # tables — so it gets a ceiling for parity with the other public
         # endpoints. Sized well above a reader (the shelf resolves once per load).
         "quote-resolve": "120/min",
+        # A quote's source paragraph (QuoteContextView): one chapter parse each,
+        # cached per quote. Far above a reader opening cards.
+        "quote-context": "60/min",
         # A signed-in reader filing feedback (FeedbackView). Occasional by
         # nature — a handful a day at most — so this only catches a script
         # flooding the queue, never a genuine submitter. Per account.
@@ -244,6 +247,11 @@ ADMIN_EMAILS = {
     for e in os.getenv("ADMIN_EMAILS", "james.degreef@gmail.com").split(",")
     if e.strip()
 }
+
+# The nightly content audit (library/content_audit.py) runs once per UTC day at
+# or after this hour, from the existing 15-minute email cron. An integrity check
+# that rose since the previous nightly scan emails ADMIN_EMAILS.
+AUDIT_SCAN_HOUR_UTC = min(23, max(0, int(os.getenv("AUDIT_SCAN_HOUR_UTC", "3") or 3)))
 
 # Translation job queue (admin "Translate" buttons → GitHub issues; see
 # library/admin_views/jobs.py). A repo-scoped token that can read/create issues.
@@ -305,6 +313,20 @@ API_PUBLIC_URL = os.getenv("API_PUBLIC_URL", "").strip().rstrip("/") or (
 # on/after it, so a first run never blasts the back catalogue. Unset ⇒ a short
 # recent window (see emails/management/commands/send_welcome_emails.py).
 EMAIL_WELCOME_START = os.getenv("EMAIL_WELCOME_START", "").strip()
+# Finish-the-series nudges consider readers who finished a book within this many
+# days (the scan window; idempotency decides who's actually new). Keeps a first
+# run from nudging the whole back catalogue. A malformed value falls back rather
+# than crashing boot — this is on the API process, not just the cron.
+try:
+    EMAIL_SERIES_LOOKBACK_DAYS = int(os.getenv("EMAIL_SERIES_LOOKBACK_DAYS", "30"))
+except ValueError:
+    EMAIL_SERIES_LOOKBACK_DAYS = 30
+# Same idea for milestone cards: only readers who finished a book within this
+# window are scanned (idempotency decides who's actually crossed a new milestone).
+try:
+    EMAIL_MILESTONE_LOOKBACK_DAYS = int(os.getenv("EMAIL_MILESTONE_LOOKBACK_DAYS", "30"))
+except ValueError:
+    EMAIL_MILESTONE_LOOKBACK_DAYS = 30
 # Review-mode safety net: when NON-EMPTY, the ONLY addresses that receive mail
 # are the ones listed here — every other recipient is recorded as "skipped",
 # whatever the send path (welcome drip, broadcast, or a test). Lets you turn
@@ -316,6 +338,23 @@ EMAIL_ALLOWLIST = {
     for e in os.getenv("EMAIL_ALLOWLIST", "").split(",")
     if e.strip()
 }
+# Broadcast send pacing (emails/broadcasts.py). A broadcast is sent by the email
+# cron in batches, at most EMAIL_SEND_RATE emails per second (Resend's default
+# account limit is 2/s; raise it with the plan), and for at most
+# EMAIL_SEND_BUDGET_SECONDS per cron run, so a run always finishes before the
+# next one (every 15 minutes) starts. A big send simply continues next run.
+EMAIL_SEND_RATE = float(os.getenv("EMAIL_SEND_RATE", "2") or 2)
+EMAIL_SEND_BUDGET_SECONDS = int(os.getenv("EMAIL_SEND_BUDGET_SECONDS", "720") or 720)
+# The deliverability guardrail: a broadcast pauses itself when its bounce or
+# spam-complaint rate crosses these (once at least EMAIL_GUARDRAIL_MIN_SENT have
+# gone out, so three early bounces can't trip it). Gmail and Yahoo throttle
+# senders whose complaint rate passes 0.3%; a bounce rate over ~5% points at a
+# bad list. An admin can resume past it deliberately.
+EMAIL_GUARDRAIL_BOUNCE_RATE = float(os.getenv("EMAIL_GUARDRAIL_BOUNCE_RATE", "0.05") or 0.05)
+EMAIL_GUARDRAIL_COMPLAINT_RATE = float(
+    os.getenv("EMAIL_GUARDRAIL_COMPLAINT_RATE", "0.003") or 0.003
+)
+EMAIL_GUARDRAIL_MIN_SENT = int(os.getenv("EMAIL_GUARDRAIL_MIN_SENT", "100") or 100)
 
 
 # --- CORS ---------------------------------------------------------------------

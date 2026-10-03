@@ -8,6 +8,7 @@ from .views import (
     MarksView,
     MergeView,
     PlanProgressView,
+    PlanScheduleView,
     ProgressView,
     SermonMarksView,
     SessionsView,
@@ -34,6 +35,11 @@ urlpatterns = [
     path("shelves/<str:shelf_id>/", ShelfView.as_view(), name="reading-shelf"),
     path("progress/<slug:slug>/", ProgressView.as_view(), name="reading-progress"),
     path("plan/<slug:slug>/", PlanProgressView.as_view(), name="reading-plan"),
+    path(
+        "plan-schedule/<slug:slug>/",
+        PlanScheduleView.as_view(),
+        name="reading-plan-schedule",
+    ),
     path(
         "marks/<slug:slug>/<int:order>/",
         MarksView.as_view(),

@@ -12,8 +12,32 @@ from rest_framework.views import APIView
 from accounts.models import AdminCapability, AdminVerb
 from accounts.permissions import is_admin_user, requires
 
-from ..models import Article, Author, Book, SearchClickLog, Sermon
+from .. import dropoff
+from ..audit import AdminAudited, actor_email
+from ..demand import FAILED_QUERY_MIN_LEN
+from ..engagement_trends import (
+    distinct_readers,
+    pulse_trends,
+    readers_per_work,
+    weekly_active,
+    weekly_signups,
+    window,
+)
+from ..models import (
+    AdminAction,
+    Article,
+    Author,
+    Book,
+    SearchClickLog,
+    SearchDecision,
+    Sermon,
+    fold_query,
+)
+from ..search import MIN_QUERY_LEN
+from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
+from ..team_events import team_events
 from ..views import _language_entry
+from ..weeks import day_of, week_start, week_starts
 
 
 def _prefer_en(rows, value_of):
@@ -33,8 +57,9 @@ class AdminEngagementView(APIView):
     """Reading-engagement analytics from ReadingProgress / ChapterMarks.
 
     Aggregate-only — counts and per-book/-language rollups, never individual
-    readers' identities. "Active" is distinct profiles whose progress was
-    touched within the window; "finishers" reached (or passed) the book's last
+    readers' identities. "Active" is distinct readers who read on any day of
+    the window, from the reading-day log (every day a reader read, not just
+    each work's latest touch); "finishers" reached (or passed) the book's last
     English chapter.
     """
 
@@ -48,17 +73,15 @@ class AdminEngagementView(APIView):
 
         now = timezone.now()
 
-        def active(days, offset=0):
-            """Distinct readers whose progress moved in a window ending ``offset``
-            days ago. ``active(7)`` is the last 7 days; ``active(7, 7)`` is the 7
-            days before that, so the page can show an honest week-over-week delta
-            rather than a bare count."""
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=days + offset)
-            )
-            if offset:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=offset))
-            return qs.values("profile").distinct().count()
+        # Every active window in one query, from the reading-day log.
+        active = distinct_readers(
+            {
+                "7d": window(now, 7),
+                "7d_prev": window(now, 7, 7),
+                "30d": window(now, 30),
+                "30d_prev": window(now, 30, 30),
+            }
+        )
 
         def hearts(days, offset=0):
             """Favorites created in the same kind of window, for the hearts
@@ -71,11 +94,16 @@ class AdminEngagementView(APIView):
         overview = {
             "readers": ReadingProgress.objects.values("profile").distinct().count(),
             "progress_rows": ReadingProgress.objects.count(),
-            "active_1d": active(1),
-            "active_7d": active(7),
-            "active_7d_prev": active(7, 7),
-            "active_30d": active(30),
-            "active_30d_prev": active(30, 30),
+            # "Today" is the last 24 hours of saved progress: a rolling window
+            # needs no history, and day-boundaries differ reader to reader.
+            "active_1d": ReadingProgress.objects.filter(updated_at__gte=now - timedelta(days=1))
+            .values("profile")
+            .distinct()
+            .count(),
+            "active_7d": active["7d"],
+            "active_7d_prev": active["7d_prev"],
+            "active_30d": active["30d"],
+            "active_30d_prev": active["30d_prev"],
             "readers_with_marks": ChapterMarks.objects.exclude(marks=[])
             .values("profile")
             .distinct()
@@ -97,7 +125,17 @@ class AdminEngagementView(APIView):
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
                 "by_language": self._by_language(),
-                "weekly_active": self._weekly_active(now),
+                "weekly_active": weekly_active(now, self.WEEKS),
+                "events": self._events(now),
+                # The tiles' lines; none for the empty state, which shows no tiles.
+                "trends": pulse_trends(
+                    now,
+                    self.WEEKS,
+                    readers=overview["readers"],
+                    users=overview["total_users"],
+                )
+                if overview["readers"]
+                else None,
             }
         )
 
@@ -242,8 +280,14 @@ class AdminEngagementView(APIView):
         on the page."""
         from reading.models import FavoriteKind, WorkKind
 
+        books = self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK)
+        # A book also carries where its readers stop, chapter by chapter, for
+        # its row's sparkline; the other kinds are one document each.
+        curves = dropoff.work_curves([b["slug"] for b in books])
+        for b in books:
+            b["reach"] = curves.get(b["slug"])
         return {
-            "book": self._leaderboard(WorkKind.BOOK, FavoriteKind.BOOK),
+            "book": books,
             "sermon": self._leaderboard(WorkKind.SERMON, FavoriteKind.SERMON),
             "bio": self._leaderboard(WorkKind.BIO, FavoriteKind.AUTHOR),
             "article": self._leaderboard(WorkKind.ARTICLE, FavoriteKind.ARTICLE),
@@ -291,30 +335,11 @@ class AdminEngagementView(APIView):
     def _rising(self, now, limit: int = 8) -> list[dict]:
         """Works with the biggest gain in weekly readers — what's catching on
         NOW, beside the all-time leaderboard that a few classics dominate.
-
-        Two windowed grouped reads (this week; the seven days before it), each
-        distinct profiles per (kind, slug); the gainers are the works whose
-        weekly reach grew. This counts activity in the window (distinct readers
-        who touched the work), not brand-new readers — labelled as such on the
-        page — and small movements wash out because only positive deltas rank."""
-        from datetime import timedelta
-
-        from reading.models import ReadingProgress
-
-        def window(start_days, end_days=0):
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=start_days)
-            )
-            if end_days:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=end_days))
-            return {
-                (r["kind"], r["book_slug"]): r["n"]
-                for r in qs.values("kind", "book_slug").annotate(
-                    n=Count("profile", distinct=True)
-                )
-            }
-
-        this_week, prev_week = window(7), window(14, 7)
+        Counts readers active on a work in each window
+        (``library.engagement_trends.readers_per_work``), not brand-new
+        readers — labelled as such on the page — and small movements wash out
+        because only positive deltas rank."""
+        this_week, prev_week = readers_per_work(now)
         meta = self._work_meta
         rows = []
         for (kind, slug), this_n in this_week.items():
@@ -443,26 +468,26 @@ class AdminEngagementView(APIView):
             out.append(entry)
         return out
 
-    def _weekly_active(self, now, weeks: int = 8) -> list[dict]:
-        from datetime import timedelta
+    WEEKS = 8
 
-        from reading.models import ReadingProgress
+    def _events(self, now, weeks: int = WEEKS) -> list[dict]:
+        """What the team did in the charted weeks (``library.team_events``),
+        for the markers under the weekly chart: each with the ``week`` the
+        chart keys it by, its ``date``, and whether it falls in the same last
+        7 days as ``active_7d`` (``recent``), for the summary sentence."""
 
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
+        first_recent, _ = window(now, 7)  # the same days as active_7d
         out = []
-        for i in range(weeks - 1, -1, -1):
-            start = this_week - timedelta(weeks=i)
-            end = start + timedelta(weeks=1)
-            readers = (
-                ReadingProgress.objects.filter(
-                    updated_at__date__gte=start, updated_at__date__lt=end
-                )
-                .values("profile")
-                .distinct()
-                .count()
+        for e in team_events(week_starts(now, weeks)[0]):
+            at = e.pop("at")
+            out.append(
+                {
+                    **e,
+                    "week": week_start(day_of(at)).isoformat(),
+                    "date": day_of(at).isoformat(),
+                    "recent": day_of(at) >= first_recent,
+                }
             )
-            out.append({"week": start.isoformat(), "readers": readers})
         return out
 
 
@@ -546,12 +571,57 @@ def _profile_summary(p, *, reveal: bool) -> dict:
 RECENT_SIGNUPS_LIMIT = 25
 
 
+def _activation_counts() -> dict[str, int]:
+    """Sign-up to habit: how many accounts reach each step, where every step
+    is a subset of the one before it, so the drop between two steps is real.
+
+    * signed_up — every account;
+    * started — has any reading progress (the Users page's "Activated");
+    * returned — read on two or more days, from ``ReadingDay`` (the streak log:
+      one row per reader per LOCAL date). A sitting that runs past midnight
+      counts as two days, and readers from before that log existed, or on a
+      client that never sent it, can read as not having come back;
+    * finished — of those, finished a book, sermon, biography or article (the
+      stored ``finished_at`` stamp). Because steps nest, a reader who finished
+      in a single day stops at "started", so this is lower than the
+      engagement page's finisher counts.
+
+    Each account's three facts are annotated once and then counted, so every
+    subquery runs once per account rather than once per step.
+    """
+    from django.db.models import Exists, OuterRef, Subquery
+    from django.db.models.functions import Coalesce
+
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay, ReadingProgress
+
+    progress = ReadingProgress.objects.filter(profile=OuterRef("pk"))
+    days = (
+        ReadingDay.objects.filter(profile=OuterRef("pk"))
+        .values("profile")
+        .annotate(n=Count("pk"))
+        .values("n")
+    )
+    started, returned = Q(has_progress=True), Q(has_progress=True, days__gte=2)
+    return UserProfile.objects.annotate(
+        has_progress=Exists(progress),
+        days=Coalesce(Subquery(days), 0),
+        has_finished=Exists(progress.filter(finished_at__isnull=False)),
+    ).aggregate(
+        signed_up=Count("pk"),
+        started=Count("pk", filter=started),
+        returned=Count("pk", filter=returned),
+        finished=Count("pk", filter=returned & Q(has_finished=True)),
+    )
+
+
 @requires(AdminCapability.USERS, verb=AdminVerb.VIEW)
 class AdminUsersView(APIView):
     """Account analytics: sign-up growth, locale/theme split, activation.
 
-    Mostly aggregate over ``accounts.UserProfile`` (+ a distinct-reader count
-    from ReadingProgress for activation). The ``recent`` list is the exception:
+    Mostly aggregate over ``accounts.UserProfile``. ``total``, ``with_activity``
+    and the ``activation`` funnel all come from ``_activation_counts``, so the
+    tiles and the funnel always agree. The ``recent`` list is the exception:
     it names individual accounts (display name, email, sign-in method) so the
     founder can see who is actually signing up — admin-only, behind
     ``IsAdminEmail``, and served to no one else.
@@ -565,11 +635,13 @@ class AdminUsersView(APIView):
         from django.utils import timezone
 
         from accounts.models import UserProfile
-        from reading.models import ReadingProgress
 
         now = timezone.now()
-        total = UserProfile.objects.count()
-        with_activity = ReadingProgress.objects.values("profile").distinct().count()
+        # Total and activated come from the same counts as the funnel, so the
+        # tiles and the funnel's first two steps can never disagree.
+        activation = _activation_counts()
+        total = activation["signed_up"]
+        with_activity = activation["started"]
 
         def signups_between(start_days, end_days=0):
             qs = UserProfile.objects.filter(created_at__gte=now - timedelta(days=start_days))
@@ -582,6 +654,7 @@ class AdminUsersView(APIView):
                 "total": total,
                 "with_activity": with_activity,
                 "dormant": max(0, total - with_activity),
+                "activation": [{"step": k, "count": n} for k, n in activation.items()],
                 "signups_7d": signups_between(7),
                 "signups_30d": signups_between(30),
                 # The immediately preceding window, so the UI can show a trend
@@ -748,24 +821,12 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from datetime import timedelta
 
-        from accounts.models import UserProfile
-
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
-        buckets = {}
-        # One pass over sign-up dates, counted into their Monday-anchored week.
-        for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = created.date() - timedelta(days=created.date().weekday())
-            buckets[wk] = buckets.get(wk, 0) + 1
-        out = []
-        for i in range(weeks - 1, -1, -1):
-            wk = this_week - timedelta(weeks=i)
-            out.append({"week": wk.isoformat(), "count": buckets.get(wk, 0)})
-        return out
-
-
+        starts = week_starts(now, weeks)
+        return [
+            {"week": wk.isoformat(), "count": n}
+            for wk, n in zip(starts, weekly_signups(starts), strict=True)
+        ]
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
@@ -777,10 +838,12 @@ class AdminSearchView(APIView):
     tolerance we don't have yet. Top lists skip fragments under 3 characters
     (search-as-you-type prefixes) and fold case.
 
-    Overview counts are searches SERVED, so type-ahead prefixes inflate them
-    relative to typed intent (deliberate: 2-char queries are real searches in
-    e.g. Chinese, and the engine did the work either way). Compare trends, not
-    absolutes.
+    Counts are searches readers finished typing: the type-ahead fragments a
+    longer search extended ("pra" on the way to "prayer") are hidden by
+    SearchQueryLog's default manager, so they inflate neither the volume nor
+    the zero-result rate. A 2-char query that WASN'T extended still counts
+    (they're real searches in e.g. Chinese). Rows, not readers: compare
+    trends, not absolutes.
     """
 
 
@@ -795,26 +858,51 @@ class AdminSearchView(APIView):
         now = timezone.now()
         window = SearchQueryLog.objects.filter(created_at__gte=now - timedelta(days=30))
 
-        def overview(qs):
-            counts = qs.aggregate(
-                searches=Count("id"), zero=Count("id", filter=Q(result_count=0))
-            )
+        # Each period and the one before it (the baseline the page's deltas
+        # divide by), as conditional counts over ONE scan per log: the four
+        # windows overlap inside the last 60 days.
+        windows = {"7d": (7, 0), "30d": (30, 0), "7d_prev": (7, 7), "30d_prev": (30, 30)}
+
+        def span(key):
+            # The current windows stay open-ended, like the lists on this page,
+            # so a row logged mid-request can't land in one section but not
+            # another.
+            days, offset = windows[key]
+            q = Q(created_at__gte=now - timedelta(days=days + offset))
+            return q & Q(created_at__lt=now - timedelta(days=offset)) if offset else q
+
+        recent = Q(created_at__gte=now - timedelta(days=60))
+        counts = SearchQueryLog.objects.filter(recent).aggregate(
+            **{
+                f"{k}_{name}": Count(expr, filter=span(k) & extra, distinct=distinct)
+                for k in windows
+                for name, expr, extra, distinct in (
+                    ("searches", "id", Q(), False),
+                    ("zero", "id", Q(result_count=0), False),
+                    ("distinct", Lower("query"), Q(), True),
+                )
+            }
+        )
+        # Opened results in each window. Rows, not readers (the logs are
+        # anonymous), so a rate built on it is a trend, not "x% of people".
+        clicks = SearchClickLog.objects.filter(recent).aggregate(
+            **{k: Count("id", filter=span(k)) for k in windows}
+        )
+
+        def overview(k):
+            searches, zero = counts[f"{k}_searches"], counts[f"{k}_zero"]
             return {
-                "searches": counts["searches"],
-                "distinct_queries": qs.annotate(q=Lower("query"))
-                .values("q")
-                .distinct()
-                .count(),
-                "zero_results": counts["zero"],
-                "zero_rate": round(counts["zero"] / counts["searches"], 3)
-                if counts["searches"]
-                else 0.0,
+                "searches": searches,
+                "clicks": clicks[k],
+                "distinct_queries": counts[f"{k}_distinct"],
+                "zero_results": zero,
+                "zero_rate": round(zero / searches, 3) if searches else 0.0,
             }
 
         def top(qs, limit=20):
             rows = (
                 qs.annotate(q=Lower("query"), qlen=Length("query"))
-                .filter(qlen__gte=3)
+                .filter(qlen__gte=FAILED_QUERY_MIN_LEN)
                 .values("q")
                 .annotate(count=Count("id"))
                 .order_by("-count", "q")[:limit]
@@ -877,22 +965,43 @@ class AdminSearchView(APIView):
         # report rather than by how many distinct things readers have ever
         # failed to find.
         per_language: dict[str, list[dict]] = {r["language"]: [] for r in worst}
+        # A triaged query leaves this list (it's on the Handled or Wanted tab)
+        # unless its decision has stopped working — then it comes back, flagged,
+        # carrying the decision so the page can say what was tried. Only the
+        # outcomes that can stop working (search_triage.GRACE) need the since-scan.
+        decisions = SearchDecision.objects.filter(language__in=list(per_language))
+        decided = {(d.query, d.language) for d in decisions}
+        reopened = {
+            (d["query"], d["language"]): d
+            for d in with_status(decisions.filter(outcome__in=list(GRACE)))
+            if d["reopened"]
+        }
+        # Misses on triaged queries, so each language's header counts what's
+        # still open rather than everything readers missed.
+        settled: dict[str, int] = {}
         for r in (
             window.filter(result_count=0, language__in=list(per_language))
             .annotate(q=Lower("query"), qlen=Length("query"))
-            .filter(qlen__gte=3)
+            .filter(qlen__gte=FAILED_QUERY_MIN_LEN)
             .values("language", "q")
             .annotate(count=Count("id"))
             .order_by("-count", "q")
         ):
+            key = (fold_query(r["q"]), r["language"])
+            if key in decided and key not in reopened:
+                settled[r["language"]] = settled.get(r["language"], 0) + r["count"]
+                continue
             queries = per_language[r["language"]]
             if len(queries) < 10:
-                queries.append({"query": r["q"], "count": r["count"]})
+                row = {"query": r["q"], "count": r["count"]}
+                if key in reopened:
+                    row["reopened"] = reopened[key]
+                queries.append(row)
 
         unanswered = [
             {
                 **_language_entry(r["language"]),
-                "total": r["zero"],
+                "total": r["zero"] - settled.get(r["language"], 0),
                 "queries": per_language[r["language"]],
             }
             for r in worst
@@ -909,32 +1018,41 @@ class AdminSearchView(APIView):
         # query text, on purpose (see SearchClickLog), so they are joined here
         # rather than in SQL.
         clicked = {
-            r["q"]: r["n"]
-            for r in SearchClickLog.objects.filter(
-                created_at__gte=now - timedelta(days=30)
-            )
+            (fold_query(r["q"]), r["language"])
+            for r in SearchClickLog.objects.filter(created_at__gte=now - timedelta(days=30))
             .annotate(q=Lower("query"))
-            .values("q")
-            .annotate(n=Count("id"))
+            .values("q", "language")
+            .distinct()
         }
         answered = top(window.filter(result_count__gt=0))
-        unopened = [r for r in answered if not clicked.get(r["query"])][:10]
+        # Per language, because a pin is: "prayer" in English and "oración" in
+        # Spanish are answered by different pages. A pinned query leaves the
+        # list (it's on the Handled tab, with its opens since).
+        pinned = set(
+            SearchDecision.objects.filter(outcome=SearchDecision.Outcome.PINNED).values_list(
+                "query", "language"
+            )
+        )
+        unopened = []
+        for r in (
+            window.filter(result_count__gt=0)
+            .annotate(q=Lower("query"), qlen=Length("query"))
+            .filter(qlen__gte=FAILED_QUERY_MIN_LEN)
+            .values("q", "language")
+            .annotate(count=Count("id"))
+            .order_by("-count", "q")[:60]
+        ):
+            key = (fold_query(r["q"]), r["language"])
+            if key not in clicked and key not in pinned:
+                unopened.append({"query": r["q"], "language": r["language"], "count": r["count"]})
+                if len(unopened) == 10:
+                    break
 
         return Response(
             {
-                "overview": {
-                    "7d": overview(
-                        window.filter(created_at__gte=now - timedelta(days=7))
-                    ),
-                    "30d": overview(window),
-                    # Whether search is answering at all, in one number. Rows,
-                    # not readers — the logs are anonymous — so read it as a
-                    # trend, not as "x% of people".
-                    "clicks_30d": sum(clicked.values()),
-                },
+                "overview": {k: overview(k) for k in windows},
                 "unopened_queries": unopened,
                 "top_queries": answered,
-                "zero_result_queries": top(window.filter(result_count=0)),
                 "unanswered_by_language": unanswered,
                 "daily": daily,
                 "by_language": [
@@ -947,33 +1065,6 @@ class AdminSearchView(APIView):
                 ],
             }
         )
-
-
-# A search hit reduced to the translatable WORK behind it, named the way the
-# translation queue names it: a chapter is its book; an author is a bio job.
-# type -> (job_type, slug field, title field) on the hit.
-_GAP_WORK = {
-    "book": ("book", "book_slug", "book_title"),
-    "chapter": ("book", "book_slug", "book_title"),
-    "sermon": ("sermon", "sermon_slug", "sermon_title"),
-    "plan": ("plan", "plan_slug", "plan_title"),
-    "author": ("bio", "author_slug", "author_name"),
-    "topic": ("topic", "topic_slug", "topic_title"),
-    "article": ("article", "article_slug", "article_title"),
-}
-
-
-def _gap_work(hit: dict) -> dict | None:
-    """One search hit as a queueable work, or None for a hit that isn't one
-    (a scripture navigational row, or anything missing a slug)."""
-    spec = _GAP_WORK.get(hit.get("type"))
-    if spec is None:
-        return None
-    job_type, slug_key, title_key = spec
-    slug = hit.get(slug_key)
-    if not slug:
-        return None
-    return {"type": job_type, "slug": slug, "title": hit.get(title_key) or slug}
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
@@ -1000,7 +1091,7 @@ class AdminSearchGapView(APIView):
 
     def get(self, request):
         from ..languages import live_codes
-        from ..search import MIN_QUERY_LEN, count_by_type, search_library
+        from ..search import MIN_QUERY_LEN, count_by_type, hit_work, search_library
 
         q = (request.query_params.get("q") or "").strip()
         language = (request.query_params.get("language") or "").strip().lower()
@@ -1028,7 +1119,7 @@ class AdminSearchGapView(APIView):
             # extra work to the few that qualify (the counters above already
             # scanned every language; this adds a full search only where it pays).
             for hit in search_library(q, code):
-                work = _gap_work(hit)
+                work = hit_work(hit)
                 if work is None:
                     continue
                 entry = works.setdefault((work["type"], work["slug"]), {**work, "languages": []})
@@ -1045,3 +1136,178 @@ class AdminSearchGapView(APIView):
                 "works": ranked[:12],
             }
         )
+
+
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
+class AdminSearchDecisionListView(APIView):
+    """Triaged unanswered searches — the Search page's Handled and Wanted tabs.
+
+    Each decision comes with what readers did since (see
+    :func:`library.search_triage.with_status`). Language is per row, so scope is
+    enforced here rather than by the gate: a language-scoped admin sees only
+    their languages' decisions.
+    """
+
+    def get(self, request):
+        from accounts.permissions import allowed_languages
+
+        qs = SearchDecision.objects.all()
+        allowed = allowed_languages(request, AdminCapability.REPORTING, AdminVerb.VIEW)
+        if allowed is not None:
+            qs = qs.filter(language__in=allowed)
+        return Response({"decisions": with_status(qs)})
+
+
+@requires(
+    AdminCapability.TRANSLATE,
+    verbs={"POST": AdminVerb.ACT, "DELETE": AdminVerb.ACT},
+    language_arg="language",
+)
+class AdminSearchDecisionView(AdminAudited, APIView):
+    """Triage one unanswered search (POST), or undo that (DELETE).
+
+    Gated on the translation queue at ``act`` in the query's language: deciding
+    what a language's readers are missing is the same planning work, and it's
+    the grant a language admin holds for their own languages (contributors and
+    reviewers only ``suggest``). ``translate`` itself is super-admin-only, like
+    filing the translation job it records (see AdminTranslationJobsView).
+    """
+
+    def audit_action_for(self, request):
+        return (
+            AdminAction.Action.SEARCH_UNDO
+            if request.method == "DELETE"
+            else AdminAction.Action.SEARCH_DECIDE
+        )
+
+    def audit_entry(self, request, response):
+        src = request.query_params if request.method == "DELETE" else request.data
+        target = f"{(src.get('language') or '').strip().lower()}:{fold_query(src.get('query') or '')}"
+        # The target too: a synonym or pin changes what every reader gets back,
+        # and once it's replaced or undone this row is the only record of it.
+        detail = {"outcome": (response.data or {}).get("outcome", "")}
+        if request.method != "DELETE":
+            detail["to"] = (response.data or {}).get("target", "")
+        return target, detail
+
+    @staticmethod
+    def _key(src) -> tuple[str, str] | None:
+        query = fold_query(str(src.get("query") or ""))
+        language = str(src.get("language") or "").strip().lower()
+        if len(query) < 3 or not language:
+            return None
+        return query, language
+
+    @staticmethod
+    def _guard_translate(request, query, language):
+        """A queued translation is a super admin's record — the job behind it is
+        theirs to file — so only a super admin may replace or undo it."""
+        if is_admin_user(request.user, request):
+            return None
+        if SearchDecision.objects.filter(
+            query=query, language=language, outcome=SearchDecision.Outcome.TRANSLATE
+        ).exists():
+            return Response(
+                {"detail": "A queued translation can only be changed by a super admin."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        return None
+
+    def post(self, request):
+        from django.utils import timezone
+
+        key = self._key(request.data)
+        outcome = str(request.data.get("outcome") or "").strip()
+        if key is None or outcome not in SearchDecision.Outcome.values:
+            return Response(
+                {
+                    "detail": "query (3+ chars), language and outcome ("
+                    + ", ".join(SearchDecision.Outcome.values)
+                    + ") are required."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        if outcome == SearchDecision.Outcome.TRANSLATE and not is_admin_user(
+            request.user, request
+        ):
+            return Response(
+                {"detail": "Only a super admin can queue translation work."},
+                status=status.HTTP_403_FORBIDDEN,
+            )
+        query, language = key
+        if refusal := self._guard_translate(request, query, language):
+            return refusal
+        target = str(request.data.get("target") or "").strip()[:200]
+        if outcome == SearchDecision.Outcome.SYNONYM:
+            # Stored folded, like the query, and refused when it's the query
+            # itself: a synonym that searches for the same word does nothing.
+            target = fold_query(target)
+            if len(target) < MIN_QUERY_LEN or target == query:
+                return Response(
+                    {"detail": "A synonym needs a different word to search for."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+        if outcome == SearchDecision.Outcome.PINNED and pinned_hit(target, query, language) is None:
+            return Response(
+                {
+                    "detail": "A pin must name a published page in this language, as "
+                    f"kind:slug (kind one of {', '.join(PIN_KINDS)})."
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        _, created = SearchDecision.objects.update_or_create(
+            query=query,
+            language=language,
+            defaults={
+                "outcome": outcome,
+                "target": target,
+                "note": str(request.data.get("note") or "").strip()[:300],
+                "decided_by": actor_email(request),
+                "decided_at": timezone.now(),
+            },
+        )
+        clear_rules(language)
+        return Response(
+            {"ok": True, "query": query, "language": language, "outcome": outcome, "target": target},
+            status=status.HTTP_201_CREATED if created else status.HTTP_200_OK,
+        )
+
+    def delete(self, request):
+        key = self._key(request.query_params)
+        if key is None:
+            return Response(
+                {"detail": "query and language are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        query, language = key
+        if refusal := self._guard_translate(request, query, language):
+            return refusal
+        deleted, _ = SearchDecision.objects.filter(query=query, language=language).delete()
+        if not deleted:
+            return Response({"detail": "No such decision to undo."}, status=status.HTTP_404_NOT_FOUND)
+        clear_rules(language)
+        return Response({"ok": True, "query": query, "language": language})
+
+
+@requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
+class AdminSearchPreviewView(APIView):
+    """What a search returns in one language — for the triage dialogs.
+
+    The synonym dialog previews the word it would search instead; the pin
+    dialog lists the pages a query already finds. Not the public endpoint, on
+    purpose: that one logs every search, so previewing would put the admin's
+    own lookups into the very report being triaged, and it applies the
+    synonyms and pins being decided. This runs the bare search, unlogged.
+    """
+
+    def get(self, request):
+        from ..search import search_library
+
+        q = (request.query_params.get("q") or "").strip()
+        language = (request.query_params.get("language") or "").strip().lower()
+        if len(q) < MIN_QUERY_LEN or not language:
+            return Response(
+                {"detail": f"q ({MIN_QUERY_LEN}+ chars) and language are required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        return Response({"query": q, "results": search_library(q, language)})

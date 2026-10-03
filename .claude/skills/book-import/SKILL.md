@@ -319,6 +319,17 @@ dropped; chapters under 120 words are dropped as stubs.
   limited to the trailing ~5 sections. Regression-check any change here by
   scanning the whole corpus for head-imprints (expect 0) and re-importing a
   couple of Gutenberg books to confirm counts hold. *(the-life-of-trust, 2026-08)*
+- **Poems whose verse lines are indent SPANS, not divs, imported as a bare
+  `<i>` run outside any block.** Gutenberg #25141 (*The Pursuit of God*) sets
+  each poem as `<div class="poem"><div class="stanza"><i><span class="i0">line<br>`
+  — and the sibling path of `split_by_heading` only converted poems in its
+  fallback walk, so `clean_fragment` unwrapped the divs and left `</p> <i> line<br/>
+  … </i> <p>` loose between paragraphs. `poem_blockquote` (shared by both paths)
+  now also reads `span.i<N>` lines; the sibling path converts ONLY that span-line
+  shape (`_span_line_poem`), because widening it to div-line poems re-flowed 8
+  shipped Gutenberg books. Regression method that proved it: run the old and new
+  `extract_chapters` over every catalog Gutenberg id's cached HTML and diff —
+  only #25141 changed. *(the-pursuit-of-god, 2026-10)*
 - **A stray page-number divider heading ("[364]")** — one chapter's Gutenberg
   chapter-divider heading was a bracketed page number, not the title, and the
   real title sat in an `<h3>` at the top of the body. Heuristics can't infer the
@@ -354,6 +365,17 @@ dropped; chapters under 120 words are dropped as stubs.
   from the DB rather than hand-typing the curly quotes). Common enough across
   Gutenberg editions that a general ingest strip may be worth it if it recurs.
   *(ministry-of-intercession, 2026-09)*
+- **A Gutenberg half-title banner above each chapter lands at the END of the
+  previous one.** #29296 repeats the book's subtitle, "A PLEA FOR MORE PRAYER",
+  as an `<h3>` before every chapter heading; the splitter cuts at the heading,
+  so the banner closed chapters 2–16 as a heading with nothing under it — and
+  every translation copied it (es and sw in four different wordings). Found by
+  the audit's mid-split check (it ends without punctuation), but only in the
+  editions where the banner lacked a full stop. Removed from all seven fixtures
+  in lockstep (`tests_translation_markup` pins the tag sequence), then
+  `rederive_body_text --write` + `rederive_word_count --write`. A RE-IMPORT
+  would bring it back: strip it in the build first. *(ministry-of-intercession,
+  2026-10)*
 - **A Gutenberg edition can set an ornamental `<div class="chaptertitle">CHAPTER
   N</div>` ABOVE the real `<h2>` title**, so the h2 is borrowed correctly but the
   bare "CHAPTER N" label leaks in and every body opens "CHAPTER 1 …". Fixed in
@@ -368,6 +390,26 @@ dropped; chapters under 120 words are dropped as stubs.
   for a NEW book, delete that chapter in the DB and renumber before serializing
   the fixture rather than adding a blanket rule. *(hurlbuts-life-of-christ,
   Gutenberg #40460, 104 ch, 2026-09)*
+- **An illustrated edition's photo captions survive as LOOSE TEXT when its
+  images are dropped.** The sanitizer allowlist has no `<img>`, so a Gutenberg
+  `<div class="fig…"><img…><span class="caption">…</span></div>` loses the
+  picture but its caption is unwrapped and ships as a bare top-level run between
+  blocks (`…enemies.</p> A saddled camel <p>These foothills…`, or before the
+  chapter-end `<hr/>`). Readers see "The valley of Gehenna, to the east of
+  Jerusalem" glued onto the prose, and `body_text` folds it into the next
+  paragraph. Find them with a BeautifulSoup scan for non-blank
+  `NavigableString`s among `soup.children` (top level only). Read every one
+  before deleting: plate captions often quote or paraphrase the narrative, so a
+  long sentence is not proof of lost prose — check it sits OUTSIDE any block
+  and names a picture. Fix in the fixture by replacing each chapter's exact
+  `json.dumps(body, ensure_ascii=False)` string (assert one match each; never
+  re-serialize the file): caption between two blocks → `</p> <p>`, before the
+  `<hr/>` → `</p><hr/>` (the book's own convention); then `rederive_body_text`
+  and `rederive_word_count --write`. The `<hr/>`s are chapter-end rules (one
+  per chapter), not caption furniture — keep them. Check the work's
+  `wrapped_blocks` tails too: a tail that bounds a line at a caption still
+  works once the caption is gone. *(hurlbuts-life-of-christ, 188 captions in
+  92 chapters, 2026-10)*
 - **This-edition-only chapter titles live in the CONTENTS, not the chapter
   openings.** Some Gutenberg editions (e.g. Murray #29296) open each chapter
   with a bare "CHAPTER N" then the scripture epigraph — no descriptive title in
@@ -1123,6 +1165,42 @@ dropped; chapters under 120 words are dropped as stubs.
   origin/main`, un-nest the two blocks, close each). To avoid it, merge each
   book's PR before starting the next, or anchor new entries at distinct
   neighbours. *(#1238 Guyon vs #1239 Bernard, 2026-08)*
+- **Text OUTSIDE any block ("loose runs") — four shapes, four repairs.** Find
+  them with `[x for x in BeautifulSoup(html,'html.parser').children if
+  isinstance(x, NavigableString) and x.strip()]`, and ALSO list top-level
+  inline tags (`<i>…</i><br/>`), which that comprehension misses. Each shipped
+  repair was a direct fixture edit in every edition at once (same ordered tag
+  sequence, each edition's own words), then `rederive_body_text`/`_word_count`:
+  - *Poem/hymn verse* (`days-of-heaven-upon-earth`, 97 a edition;
+    `ministry-of-intercession` ch1's Havergal poem) → `<blockquote><p>…</p></blockquote>`,
+    one `<p>` per stanza where the row still marks stanzas (a `<br/>` between
+    them). The verse LINE breaks were lost upstream; restore them only from
+    the source text. Gutenberg/CCEL/archive were all blocked to the session
+    (egress 403), so these shipped without line breaks — a sourced follow-up
+    can add `<br/>` inside the existing `<p>`s.
+  - *Photo captions* (`things-as-they-are`, 31 a edition) → cut. The sanitizer
+    keeps no `<img>`, so a caption is a label for nothing. Grep `corrections.py`
+    first: three `replacements` pairs repaired cross-refs INSIDE captions and
+    went dead with them (`test_no_replacement_pair_is_dead` +
+    `ShelfRepairTests` catch it). Root cause still open: the importer emits
+    `span.caption` as loose text; dropping it with the image would stop a
+    re-import bringing them back.
+  - *Epigraph attributions* (`<i>Name, Place.</i><br/> <br/><br/>`, 46 in
+    `things-as-they-are`) are the author's content → `<p><i>…</i></p>`, breaks
+    dropped. They sit just before many `wrapped_blocks` heads; the wrap guard
+    still holds because the head now follows a `</p>`.
+  - *A flattened accounts table* (`the-life-of-trust` ch8/ch9) → one `<p>` a
+    line, every figure kept. The cells read `10<br/>—— 0<br/>—— 0 <br/>—— £267…`
+    because each £/s/d cell held its figure over a rule: the line is `10 0 0`,
+    the total follows. Prove a rebuild by L/s/d arithmetic before shipping.
+    ch28's three two-column ledgers (income ‖ expenses, rows interleaved) were
+    LEFT loose: without the source, column assignment is a judgement, and two
+    of the six columns don't foot to their printed totals (£50 and £500 out),
+    so the sums can't confirm it either.
+  - Joining a run back can leave a double space at the seam (`</p>  <p>`):
+    `tests_sanitize` wants `clean_fragment(body) == body`, so re-run the edited
+    bodies through `clean_fragment` and check only whitespace moved.
+  *(2026-10)*
 
 ## Adding a public-domain book NOT on ochorus.com
 
@@ -1529,6 +1607,35 @@ all of which this command already does. The steps:
     "blockquote the first paragraph if it opens with a quote" would swallow a
     prose paragraph here — render only `<p>` and `div.c1`, and never skip a
     `<p>` merely for having a div ancestor.
+- **SermonIndex batch gotchas** *(Tozer + Simpson batch 2, #4871, 2026-10)*:
+  - **Some SermonIndex Simpson texts are a MODERNIZED edition** ("my eye sees
+    You" for KJV "mine eye seeth thee") — not his wording, possibly copyrighted
+    editing. Screen every candidate: count `thee/thou/thy` and `-eth` words vs a
+    mid-sentence capital `You`; take only texts with archaic forms and zero
+    `You`. Same trap as the modernized-scripture memory note.
+  - **Audio transcripts hide whole-sermon defects the audit can't see:** a page
+    whose transcript is a DIFFERENT sermon (the "Five Spiritual Vows" page),
+    a second message spliced in midway, the opening reading restarted at the
+    tail, and cassette/radio-host notes. Have a reader (agent) read each one in
+    full before shipping, and grep for profanity/slur mishearings ("a Negro" was
+    "a Nero", a vulgarity was "a farce") — two had already shipped live.
+  - **Cutting from mid-paragraph to the end:** a replacement that splits the
+    paragraph + a `back_matter` seam on the new block reds
+    `test_no_replacement_pair_is_dead` (after the cut neither side survives).
+    Make the replacement's NEW string the kept close (`"…will you?</p>"`, eating
+    the restart's first words) and seam `back_matter` on the words after it.
+  - **A sermon slug that already exists** (`the-spirit-of-prayer` = Finney)
+    makes `import_sermons <slug>` import BOTH catalog entries — the second
+    overwrites the first's dev row. `ls fixtures/content/sermons/<slug>.*`
+    before naming; suffix the author (`-simpson`) on a clash, and restore the
+    clobbered row with `seed_sermons`.
+  - **Serializing an existing sermon** adds blank `content_digest` /
+    `english_digest` keys and bumps `updated_at` — strip the keys and restore
+    `updated_at`/`created_at`/`sort_order` from `git show HEAD:` so the diff
+    is the body only.
+  - **A new BOOK also needs a search snippet** in
+    `library/data/book_meta/en.json` (≤125 chars) or
+    `tests_meta_descriptions` reds.
 - **A sermon may have no scripture text** (Luther's Good Friday Passion
   meditation, Chrysostom's treatise): leave `scripture_ref` blank rather than
   invent an anchor. Cards and pages render with the passage line empty.
@@ -1713,6 +1820,35 @@ The whole book is ONE page; hazards worth knowing before reusing it:
     Confirm `stale.replace(old, "") == fixed_fixture_body` exactly so prod and
     fresh installs converge.
 
+**A whole BOOK served chapter-per-page on SermonIndex → `build_<name>` over
+`import_sermons.extract_sermonindex`.** Simpson's *Power from on High* Part II
+(`build_power_from_on_high`, 2026-10) is 28 clean SermonIndex pages, far
+cleaner than the only scans. Before trusting it: (1) diff one chapter word-by-
+word against an Internet Archive scan of a known edition (difflib ratio ~0.9,
+every difference page furniture) to prove it is the printed text and not a
+modernized edition — SermonIndex carries both for Simpson; (2) list the run's
+pages from the speaker index and skip empty placeholders ("22. GOD"); (3) take
+chapter titles from the scan's Contents; (4) set any front matter SermonIndex
+lacks (a preface) from the scan in the command. Proofread with reader agents
+emitting exact-string `find`/`replace` pairs, and settle their judgement calls
+against the scan, not by inference. Multi-volume works ship as one book per
+volume, joined by an ordered `Series`.
+
+**An OCR-only book with several scans → vote, then proofread, with the
+repairs as a committed data file applied to the SETTLED body.**
+`build_power_from_on_high_1` (Simpson, Part I, 2026-10): (1) caps lines are
+furniture when they carry a page number, resemble the book title, or repeat
+≥2× in the chapter; a caps line printed once is a real section head → `<h3>`;
+a bare "III." line numbers whatever block follows. (2) Align the base scan
+word-by-word (difflib) with two other scans; where both others agree on a
+different word, take it — but hand-review the votes: both witnesses can share
+a misread ("“ If" → "“ Tf"), and a dictionary filter wrongly rejects real-word
+misreads ("ease"→"case", "he"→"be"). (3) Proofreader fixes are written against
+the STORED text, and `settled_chapter_body` rewrites the body (rejoining
+"i- 3-"), so apply the data-file fixes AFTER `settled_chapter_body`, then
+settle again — a fix applied before it silently matches nothing. (4) zsh: a
+space-separated `$VAR` of slugs is ONE argument; use `${=VAR}` or an array.
+
 **A manuscript `.docx` the user hands you (an original biography/work, no
 importer).** No source URL, no catalog entry — parse the file and build the
 Book directly, then finish like any new book. What bit this loop:
@@ -1778,6 +1914,12 @@ A PUBLIC-DOMAIN biography by a third party with no author row of their own
 (`susanna-wesley-clarke`, Eliza Clarke's life of Susanna Wesley) is the one case
 still filed under its subject, with the real author in the `subtitle`.
 *(watchman-nee-a-life 2026-09; moved to the imprint 2026-09-30)*
+
+**Every new published ENGLISH book ships with its search snippet** in
+`backend/library/data/book_meta/en.json` (keys sorted; 40–125 chars, no
+padding). `tests_meta_descriptions` fails CI on a published `.en.json` with no
+entry — it is not caught by `tests_fixture`/`tests_covers`, so run it before
+pushing. *(Crowther #4541 went red on it, 2026-09-30)*
 
 **An ORIGINAL, in-copyright book (the founder's own work, not a PD classic) is
 filed under the `ochorus-originals` imprint with NO schema change.** The shelf is

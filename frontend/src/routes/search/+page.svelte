@@ -28,6 +28,7 @@
 		GROUP_ORDER,
 		grandTotal as grandTotalOf,
 		groupRows,
+		leadWithPinned,
 		navList,
 		passageBooks as passageBooksOf,
 		toRow,
@@ -66,6 +67,8 @@
 	let searchError = $state(false);
 	let ran = $state('');
 	let suggestion = $state('');
+	// The word actually searched when an admin's synonym replaced the reader's.
+	let searchedFor = $state('');
 	let timer: ReturnType<typeof setTimeout> | undefined;
 	// The view currently reflected in the URL — query, type facet and sort, as one
 	// string. Plain (non-reactive): it exists only to tell "the reader navigated"
@@ -116,8 +119,10 @@
 		label: (type: SearchHit['type']) => TYPE_LABELS[type](),
 		query: ran || q.trim()
 	});
-	const rows = $derived<ResultRow[]>(hits.map((h) => ({ ...toRow(h, rowCtx), type: h.type })));
-	const groups = $derived<ResultGroup[]>(groupRows(rows));
+	const rows = $derived<ResultRow[]>(
+		hits.map((h) => ({ ...toRow(h, rowCtx), type: h.type, pinned: h.pinned }))
+	);
+	const groups = $derived<ResultGroup[]>(leadWithPinned(groupRows(rows)));
 
 	// Sort is the SERVER's job, and only offered once a type is selected. It used
 	// to reorder the fetched rows in the browser, which meant "newest" showed the
@@ -297,6 +302,7 @@
 		hits = [];
 		ran = '';
 		suggestion = '';
+		searchedFor = '';
 		scriptureAnswer = null;
 		totals = {};
 		totalsCapped = {};
@@ -434,6 +440,7 @@
 			hits = res.results;
 			ran = res.query;
 			suggestion = res.suggestion ?? '';
+			searchedFor = res.searched_for ?? '';
 			totals = res.totals ?? {};
 			totalsCapped = res.totals_capped ?? {};
 			pageSize = res.page_size ?? pageSize;
@@ -445,6 +452,7 @@
 			hits = [];
 			ran = '';
 			suggestion = '';
+			searchedFor = '';
 			totals = {};
 			totalsCapped = {};
 			searchError = true;
@@ -976,6 +984,13 @@
 				{@render waysIn(false)}
 			</div>
 		{:else}
+			{#if searchedFor}
+				<!-- An admin's synonym ran the search on another word; say which, so
+				     the reader isn't left wondering why theirs is in none of the results. -->
+				<p class="mb-4 text-small text-muted">
+					{t('search.showingFor')} “<span class="font-semibold text-text">{searchedFor}</span>”
+				</p>
+			{/if}
 			<!-- The rail earns its 12rem only when there are chips to put in it. A
 			     query that matched one kind (any scripture reference, for instance)
 			     was still paying for the column, which then held nothing but the word
@@ -1190,6 +1205,11 @@
 										>
 											{@render thumb(row)}
 											<div class="min-w-0 flex-1">
+												{#if row.pinned}
+													<span class="mb-1 inline-block rounded-full bg-accent-soft px-2 py-0.5 text-micro font-semibold text-accent"
+														>{t('search.bestMatch')}</span
+													>
+												{/if}
 												{#if row.meta}
 													<div class="text-small text-muted">{row.meta}</div>
 												{/if}

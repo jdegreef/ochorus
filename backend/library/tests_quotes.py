@@ -166,9 +166,8 @@ class QuoteResolutionTests(SimpleTestCase):
         return None
 
     def test_every_quote_resolves_to_a_block_containing_its_text(self):
-        from bs4 import BeautifulSoup
-
-        from .scripture import annotate_references
+        # The same block count the context endpoint serves (quote_blocks).
+        from .quote_blocks import served_block_texts
 
         def norm(t):
             return " ".join(t.split())
@@ -178,13 +177,7 @@ class QuoteResolutionTests(SimpleTestCase):
                 body = self._body_html(q)
                 with self.subTest(slug=q["slug"]):
                     self.assertIsNotNone(body, "source work missing from fixtures")
-                    served = annotate_references(body)
-                    blocks = [
-                        norm(k.get_text())
-                        for k in BeautifulSoup(f"<div>{served}</div>", "lxml").div.find_all(
-                            recursive=False
-                        )
-                    ]
+                    blocks = served_block_texts(body)
                     p = q["paragraph"]
                     self.assertTrue(0 < p < len(blocks), f"paragraph {p} out of range {len(blocks)}")
                     self.assertIn(norm(q["text"]), blocks[p])
@@ -554,7 +547,8 @@ class QuotePageApiTests(TestCase):
             listing,
             [{"slug": "w", "name": "A Writer", "birth_year": None,
               "photo_url": "", "count": 1,
-              "teaser": "A memorable sentence about grace.", "work_count": 1}],
+              "teaser": "A memorable sentence about grace.",
+              "teaser_source": {"work": "A Work", "order": 3}, "work_count": 1}],
         )
 
     def test_the_index_work_count_is_distinct_books_and_sermons(self):
@@ -610,6 +604,23 @@ class QuotePageApiTests(TestCase):
         )
         row = self.client.get("/api/library/quotes/").data[0]
         self.assertEqual(row["teaser"], "Short and sweet.")
+        # Its citation is the shortest line's own, not the first quote's.
+        self.assertEqual(row["teaser_source"], {"work": "A Work", "order": 3})
+
+    def test_a_sermon_teaser_cites_the_sermon_with_no_chapter(self):
+        # A sermon has no chapters, so its citation is the sermon's title alone —
+        # `order` null, as in `QuoteSource`, which the card reads to drop ", chapter N".
+        sermon = Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="A Sermon",
+            body_html="<p>x</p>",
+        )
+        Quote.objects.create(
+            slug="w-serm", author=self.author, text="Brief.",
+            sermon=sermon, paragraph=1, reviewed=True,
+        )
+        row = self.client.get("/api/library/quotes/").data[0]
+        self.assertEqual(row["teaser"], "Brief.")
+        self.assertEqual(row["teaser_source"], {"work": "A Sermon", "order": None})
 
     def test_the_payload_carries_the_citation(self):
         self.quote.reviewed = True
@@ -705,6 +716,60 @@ class QuotePageApiTests(TestCase):
         self.quote.reviewed = True
         self.quote.save()
         self.assertEqual(self.client.get("/api/library/authors/w/").data["quote_count"], 1)
+
+    def _list_row(self, language="en"):
+        rows = self.client.get(f"/api/library/authors/?language={language}").data
+        return next(a for a in rows if a["slug"] == "w")
+
+    def test_the_author_list_counts_only_reviewed_quotes(self):
+        # The library A–Z links /quotes/<slug>/ on this count, so it must be the
+        # quote page's own gate: an unreviewed row would link to a 404.
+        self.author.bio = "A short bio."
+        self.author.save(update_fields=["bio"])
+        self.assertEqual(self._list_row()["quote_count"], 0)
+        self.quote.reviewed = True
+        self.quote.save()
+        Quote.objects.create(  # still unreviewed — not counted
+            slug="w-unrev", author=self.author, text="Not yet.",
+            chapter=self.chapter, paragraph=6,
+        )
+        # Beside the work counts, over a second book and a sermon: each count
+        # stays its own.
+        Book.objects.create(author=self.author, slug="b2", language="en", title="Two")
+        Sermon.objects.create(
+            author=self.author, slug="s", language="en", title="S", body_html="<p>x</p>"
+        )
+        row = self._list_row()
+        self.assertEqual(
+            (row["quote_count"], row["book_count"], row["sermon_count"]), (1, 2, 1)
+        )
+
+    def test_the_author_list_quote_count_is_a_subquery_with_no_query_per_author(self):
+        # Annotated, not counted per row: the prerender requests this list once
+        # per locale, and a count() per author would scale with it. And by a
+        # SUBQUERY, not a joined Count — a join to the quote table puts a GROUP
+        # BY over every author column (the bio HTML included) back into the
+        # query (see AuthorQuerySet.with_work_counts).
+        from django.db import connection
+        from django.test.utils import CaptureQueriesContext
+
+        self.author.bio = "A short bio."
+        self.author.save(update_fields=["bio"])
+        with CaptureQueriesContext(connection) as one:
+            self._list_row()
+        other = Author.objects.create(slug="x", name="Another", bio="Bio.")
+        for i in range(3):
+            Quote.objects.create(
+                slug=f"x-{i}", author=other, text=f"Line {i}.",
+                chapter=self.chapter, paragraph=i, reviewed=True,
+            )
+        with CaptureQueriesContext(connection) as two:
+            rows = self.client.get("/api/library/authors/?language=en").data
+        self.assertEqual(next(a for a in rows if a["slug"] == "x")["quote_count"], 3)
+        self.assertEqual(len(two), len(one))
+        listing = next(q["sql"] for q in two if 'FROM "library_author"' in q["sql"])
+        self.assertIn('FROM "library_quote"', listing)
+        self.assertNotIn('JOIN "library_quote"', listing)
 
 
 class QuoteResolveApiTests(TestCase):
@@ -809,3 +874,79 @@ class QuoteResolveApiTests(TestCase):
         with enforcing_throttle(_QuoteResolveThrottle, rate):
             codes = [self.resolve(["andrew-murray-aaa"]).status_code for _ in range(40)]
         self.assertEqual(set(codes), {200})
+
+
+class QuoteFeaturedAndContextApiTests(TestCase):
+    """The /quotes index's featured pool, and a quote's source paragraph."""
+
+    def setUp(self):
+        from django.core.cache import cache
+
+        # The context view caches per slug; start every test cold.
+        cache.clear()
+        self.client = APIClient()
+        self.a = Author.objects.create(slug="a", name="Alpha Writer")
+        self.b = Author.objects.create(slug="b", name="Beta Writer")
+        book = Book.objects.create(author=self.a, slug="bk", language="en", title="A Work")
+        self.chapter = Chapter.objects.create(
+            book=book, order=2, title="Two",
+            body_html="<h2>Head</h2><p>Before it. The line itself. After it.</p><p>Next.</p>",
+        )
+        self.sermon = Sermon.objects.create(
+            author=self.b, slug="s", language="en", title="A Sermon",
+            body_html="<p>Opening.</p><p>Sermon line here.</p>",
+        )
+
+    def _quote(self, slug, author, text, reviewed=True, **src):
+        return Quote.objects.create(
+            slug=slug, author=author, text=text, reviewed=reviewed, **src
+        )
+
+    def test_the_pool_interleaves_writers_and_caps_each(self):
+        from library.views import FEATURED_PER_AUTHOR
+
+        for i in range(FEATURED_PER_AUTHOR + 2):
+            self._quote(f"a-{i}", self.a, f"Alpha line {i}.", chapter=self.chapter, paragraph=1)
+        self._quote("b-0", self.b, "Beta line.", sermon=self.sermon, paragraph=1)
+        self._quote("a-x", self.a, "Unreviewed.", reviewed=False, chapter=self.chapter, paragraph=1)
+        self._quote("a-long", self.a, "x" * 400, chapter=self.chapter, paragraph=1)
+
+        pool = self.client.get("/api/library/quotes/featured/").data
+        slugs = [q["slug"] for q in pool]
+        # Round-robin: each writer's first pick before anyone's second.
+        self.assertEqual(slugs[:2], ["a-0", "b-0"])
+        self.assertEqual(sum(s.startswith("a-") for s in slugs), FEATURED_PER_AUTHOR)
+        self.assertNotIn("a-x", slugs)  # reviewed only
+        self.assertNotIn("a-long", slugs)  # too long to lead the page
+        # Each card names its author, as the saved-quotes shelf's do.
+        self.assertEqual(pool[1]["author"], {"slug": "b", "name": "Beta Writer"})
+        self.assertEqual(pool[1]["source"]["kind"], "sermon")
+
+    def test_context_is_the_served_paragraph_as_text(self):
+        self._quote("q1", self.a, "The line itself.", chapter=self.chapter, paragraph=1)
+        res = self.client.get("/api/library/quotes/context/q1/")
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(
+            res.data, {"slug": "q1", "paragraph_text": "Before it. The line itself. After it."}
+        )
+
+    def test_context_for_a_sermon_quote(self):
+        self._quote("q2", self.b, "Sermon line here.", sermon=self.sermon, paragraph=1)
+        res = self.client.get("/api/library/quotes/context/q2/")
+        self.assertEqual(res.data["paragraph_text"], "Sermon line here.")
+
+    def test_unpublished_works_are_left_out(self):
+        self._quote("q5", self.b, "Sermon line here.", sermon=self.sermon, paragraph=1)
+        self.sermon.is_published = False
+        self.sermon.save()
+        self.assertEqual(self.client.get("/api/library/quotes/context/q5/").status_code, 404)
+        self.assertEqual(self.client.get("/api/library/quotes/featured/").data, [])
+
+    def test_context_404s_unknown_unreviewed_and_unresolvable(self):
+        self._quote("q3", self.a, "Hidden.", reviewed=False, chapter=self.chapter, paragraph=1)
+        self._quote("q4", self.a, "Lost.", chapter=self.chapter, paragraph=9)
+        for slug in ("nope", "q3", "q4"):
+            with self.subTest(slug=slug):
+                self.assertEqual(
+                    self.client.get(f"/api/library/quotes/context/{slug}/").status_code, 404
+                )

@@ -70,9 +70,12 @@
 		   the home-indicator strip below it. Listening offline used to put the
 		   "reading from your device" pill straight over the transport controls.
 		   The phone tab bar (--tabbar-h, safe area included) never shows with the
-		   Listen bar, so clear whichever is up. */
+		   Listen bar, so clear whichever is up — plus any bar docked ON TOP of
+		   that, which publishes its height as --dockbar-h (use:publishHeight;
+		   the plan page's phone read bar), whose button the pill would cover. */
 		bottom: calc(
-			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))
+			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px)) +
+				var(--dockbar-h, 0px)
 		);
 		z-index: 60;
 		display: flex;

@@ -10,11 +10,13 @@ it's what the AI-translation pipeline keys on (same slug, new language).
 from __future__ import annotations
 
 from django.contrib.postgres.search import SearchVectorField
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Exists, OuterRef, Q, Subquery
 from django.db.models.functions import Coalesce
 
 from . import fts
+from .text import BLANK_TITLE_REGEX, is_blank_title
 
 
 class AuthorQuerySet(models.QuerySet):
@@ -63,6 +65,37 @@ class AuthorQuerySet(models.QuerySet):
             num_sermons=published_count("Sermon", "author"),
         )
 
+    def with_quote_count(self):
+        """Annotate ``reviewed_quotes``: the quotations the author's quote page lists.
+
+        REVIEWED only — the quote page's publication gate (``QuotePageView``),
+        so a count never links to a page that 404s. No ``language``: a ``Quote``
+        has none. The quote pages are English (lifted from the English works,
+        each citation naming an English chapter), so it is the CALLER that
+        decides a locale may link one — the reader shows the link to English
+        readers only.
+
+        A correlated subquery, for ``with_work_counts``'s reason: a joined
+        ``Count`` beside its subqueries would put a GROUP BY over every
+        selected column (the bio HTML included) back into the author list.
+        """
+        from django.apps import apps
+
+        quote = apps.get_model("library", "Quote")
+        return self.annotate(
+            reviewed_quotes=Coalesce(
+                Subquery(
+                    quote.objects.filter(author=OuterRef("pk"), reviewed=True)
+                    .order_by()
+                    .values("author")
+                    .annotate(n=models.Count("pk"))
+                    .values("n")[:1]
+                ),
+                models.Value(0),
+                output_field=models.IntegerField(),
+            )
+        )
+
     def listed_in_biographies(self, language: str):
         """The writers the Biographies page lists in ``language``.
 
@@ -105,6 +138,12 @@ class Author(models.Model):
     name = models.CharField(max_length=200)
     # Short summary (a few sentences) — used on cards, lists and SEO meta.
     bio = models.TextField(blank=True)
+    # One line saying who this person was, for a place that already shows the
+    # name and years beside it (the sermons shelf's preacher headings): a bio
+    # often opens "Name (1897–1963) was…", which repeats both. Untranslated —
+    # served only in the author's own language (`tagline_for`); others get the
+    # bio.
+    tagline = models.CharField(max_length=160, blank=True)
     # Long-form biography as cleaned HTML (paragraphs, <h2> sections, pull-quote
     # <blockquote>s, and <aside class="prayer"> callouts). Rendered on the author
     # page above their books. Written via the `write-biography` skill.
@@ -237,6 +276,18 @@ class Author(models.Model):
         if self.is_imprint:
             return ""
         return self._localized("bio", language, fallback=fallback)
+
+    def tagline_for(self, language: str) -> str:
+        """The one-line tagline in ``language``; ``""`` when there is none.
+
+        Written only in the author's own language (the language of the base
+        ``bio``, as ``_localized`` reads it) and never shown in another — the
+        library has no fallback for prose, so another reader gets the
+        translated ``bio`` instead. Withheld for an imprint, like the bio.
+        """
+        if self.is_imprint or (language and language != self.original_language):
+            return ""
+        return self.tagline
 
     def bio_html_for(self, language: str, *, fallback: bool = False) -> str:
         """Long-form bio HTML in ``language``; ``""`` when untranslated.
@@ -463,6 +514,49 @@ class SeriesTranslation(models.Model):
         return f"{self.series.slug} [{self.language}]"
 
 
+def _title_not_blank(field: str, model: str) -> models.CheckConstraint:
+    """The database floor under a work's title: never only invisible
+    characters (text.BLANK_TITLE_REGEX) — so .update(), bulk_create and the SQL
+    editor are refused too, which save()'s guard below can't see."""
+    return models.CheckConstraint(
+        condition=~models.Q(**{f"{field}__regex": BLANK_TITLE_REGEX}),
+        name=f"{model}_{field}_not_blank",
+        violation_error_code="blank_title",
+        violation_error_message="A title is required — this one shows nothing.",
+    )
+
+
+def _require_title(row, save_kwargs, field: str = "title") -> None:
+    """Refuse to save a work whose title would show a reader nothing.
+
+    Some forty paths write these rows (the admin import, the translate and
+    contemporize commands, every build_* script, the seeds), and the fixture
+    gate only covers the last. A blank title still reached production, so the
+    rule lives here, where every one of them passes.
+
+    The friendly half of the rule: a ValidationError naming the work, and the
+    wider Unicode check (is_blank_title) the database constraint can't make.
+    It refuses a title BECOMING blank — a new row or a retitle — not one that
+    already is: migration 0180 named every such row and the constraint keeps the
+    common ones out, so what's left is an exotic format character, and the
+    release step's whole-row re-saves (apply_body_corrections) must never fail
+    a deploy on it.
+    """
+    fields = save_kwargs.get("update_fields")
+    if fields is not None and field not in fields:
+        return
+    title = getattr(row, field)
+    if not is_blank_title(title):
+        return
+    if row.pk:
+        stored = type(row).objects.filter(pk=row.pk).values_list(field, flat=True).first()
+        if stored is not None and stored == title:
+            return
+    raise ValidationError(
+        {field: f"{type(row).__name__} {row.slug!r} ({row.language}) needs a title."}
+    )
+
+
 class BookManager(models.Manager):
     def get_by_natural_key(self, slug, language):
         return self.get(slug=slug, language=language)
@@ -575,6 +669,7 @@ class Book(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_book_slug_language"
             ),
+            _title_not_blank("title", "book"),
             # Two editions of one language cannot both be volume 2. Rows with
             # no position (a collection, or no series) are exempt: NULLs are
             # distinct in a unique index. DEFERRED because seed_books saves a
@@ -616,6 +711,7 @@ class Book(models.Model):
         return f"{self.title} ({self.language})"
 
     def save(self, *args, **kwargs):
+        _require_title(self, kwargs)
         # The book title (and language, which picks the FTS config) is baked
         # into its chapters' search vectors (library/fts.py) — a retitle must
         # ripple. Compare against the stored row first so unrelated edits
@@ -841,6 +937,7 @@ class Sermon(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_sermon_slug_language"
             ),
+            _title_not_blank("title", "sermon"),
         ]
         indexes = [
             # SermonListView, and the topic/author attach paths — same shape and
@@ -862,6 +959,7 @@ class Sermon(models.Model):
     def save(self, *args, **kwargs):
         from .text import html_to_text, word_count
 
+        _require_title(self, kwargs)
         self.body_text = html_to_text(self.body_html)
         self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
@@ -972,6 +1070,7 @@ class Article(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_article_slug_language"
             ),
+            _title_not_blank("h1", "article"),
         ]
         indexes = [
             # ArticleListView: filter(language, is_published) then
@@ -996,6 +1095,7 @@ class Article(models.Model):
         # article), so a scoped save() that touches body_html carries it too.
         from .text import word_count
 
+        _require_title(self, kwargs, "h1")
         self.word_count = word_count(self.body_html)
         update_fields = kwargs.get("update_fields")
         if update_fields is not None and "body_html" in update_fields:
@@ -1035,6 +1135,7 @@ class Plan(models.Model):
             models.UniqueConstraint(
                 fields=["slug", "language"], name="uniq_plan_slug_language"
             ),
+            _title_not_blank("title", "plan"),
         ]
 
     def natural_key(self):
@@ -1043,6 +1144,10 @@ class Plan(models.Model):
     def __str__(self) -> str:
         return f"{self.title} ({self.language})"
 
+    def save(self, *args, **kwargs):
+        _require_title(self, kwargs)
+        super().save(*args, **kwargs)
+
 
 class PlanDayManager(models.Manager):
     def get_by_natural_key(self, slug, language, day):
@@ -1050,11 +1155,20 @@ class PlanDayManager(models.Manager):
 
 
 class PlanDay(models.Model):
+    """One day's reading: a book chapter OR an article, never both.
+
+    Both are soft references in the plan's own language (see ``Plan``). A book
+    day sets ``book_slug`` + ``chapter_order``; an article day sets
+    ``article_slug`` and leaves the other two empty. The check constraint holds
+    that shape in the DB, so nothing downstream has to guess which kind a day is.
+    """
+
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE, related_name="days")
     # 1-based day within the plan.
     day = models.PositiveIntegerField()
-    book_slug = models.SlugField(max_length=160)
-    chapter_order = models.PositiveIntegerField()
+    book_slug = models.SlugField(max_length=160, blank=True, default="")
+    chapter_order = models.PositiveIntegerField(null=True, blank=True)
+    article_slug = models.SlugField(max_length=180, blank=True, default="")
 
     objects = PlanDayManager()
 
@@ -1062,6 +1176,19 @@ class PlanDay(models.Model):
         ordering = ["day"]
         constraints = [
             models.UniqueConstraint(fields=["plan", "day"], name="uniq_plan_day"),
+            models.CheckConstraint(
+                condition=(
+                    (
+                        models.Q(article_slug="", chapter_order__isnull=False)
+                        & ~models.Q(book_slug="")
+                    )
+                    | (
+                        models.Q(book_slug="", chapter_order__isnull=True)
+                        & ~models.Q(article_slug="")
+                    )
+                ),
+                name="planday_chapter_xor_article",
+            ),
         ]
 
     def natural_key(self):
@@ -1070,7 +1197,8 @@ class PlanDay(models.Model):
     natural_key.dependencies = ["library.plan"]
 
     def __str__(self) -> str:
-        return f"{self.plan_id} day {self.day} → {self.book_slug}/{self.chapter_order}"
+        target = self.article_slug or f"{self.book_slug}/{self.chapter_order}"
+        return f"{self.plan_id} day {self.day} → {target}"
 
 
 class Quote(models.Model):
@@ -1457,16 +1585,38 @@ class BookPerson(models.Model):
         return f"{self.book_slug} ▷ {self.person.slug} ({self.role})"
 
 
+class _TypedSearchManager(models.Manager):
+    """Searches a reader finished typing — the default view of the log."""
+
+    def get_queryset(self):
+        return super().get_queryset().filter(superseded=False)
+
+
+#: How long after a search a longer one that extends it still counts as the
+#: same reader typing on. Search-as-you-type fires on a short debounce, so a
+#: whole word lands well inside this; two strangers extending each other's
+#: query in the same language within it is rare enough to ignore at this scale.
+TYPEAHEAD_SECONDS = 15
+
+
+def extends(earlier: str, later: str) -> bool:
+    """``later`` is ``earlier`` typed further ("pra" → "prayer"), case-folded."""
+    a, b = earlier.casefold(), later.casefold()
+    return len(a) < len(b) and b.startswith(a)
+
+
 class SearchQueryLog(models.Model):
     """One executed library search — anonymous by design (no user, ever).
 
-    Written fail-open by SearchView and read only by the admin search
-    analytics (top queries, zero-result queries — the data that decides what
-    content and features to build next). Search-as-you-type means prefix
-    fragments ("pra", "pray") land here too; the analytics aggregate by full
-    query string and skip fragments under 3 characters in the top lists, so
-    the noise washes out. Rows older than 180 days are pruned by the
-    trim_search_log release step.
+    Written fail-open by SearchView and read only by analytics (the admin
+    search report, attention and language-health signals, popular searches).
+    Search-as-you-type logs every pause in typing, so "pra", "pray" and
+    "prayer" arrive as three searches. When the longer one lands, the
+    fragments it extends are marked ``superseded`` (see :meth:`record`), and
+    the default manager hides them — so every report counts what readers
+    actually searched for, and a prefix that matched nothing isn't a fake
+    zero-result. ``all_rows`` still sees everything (pruning needs it). Rows
+    older than 180 days are pruned by the trim_search_log release step.
     """
 
     query = models.CharField(max_length=200)
@@ -1476,10 +1626,18 @@ class SearchQueryLog(models.Model):
     result_count = models.PositiveIntegerField()
     # A "did you mean" hint was offered (only computed for zero-result queries).
     suggested = models.BooleanField(default=False)
+    # A later search in the same language extended this one within
+    # TYPEAHEAD_SECONDS — a keystroke on the way, not a search in its own right.
+    superseded = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True, db_index=True)
+
+    objects = _TypedSearchManager()
+    all_rows = models.Manager()
 
     class Meta:
         ordering = ["-created_at"]
+        # Internal lookups (deletes, related access) see every row, hidden or not.
+        base_manager_name = "all_rows"
         indexes = [
             # Both the popular-searches endpoint and the admin search report
             # filter on created_at AND language. `created_at` alone is indexed
@@ -1490,6 +1648,85 @@ class SearchQueryLog(models.Model):
 
     def __str__(self) -> str:
         return f"{self.query!r} [{self.language}] → {self.result_count}"
+
+    @classmethod
+    def record(cls, query: str, language: str, result_count: int, suggested: bool):
+        """Log one search, and retire the fragments it was typed from.
+
+        The window holds a handful of rows (one language, a few seconds), so the
+        prefix test runs in Python rather than as SQL string surgery.
+        """
+        from datetime import timedelta
+
+        row = cls.objects.create(
+            # One space between words: "behold  the lamb " is the same search.
+            query=" ".join(query.split())[:200],
+            language=language[:10],
+            result_count=result_count,
+            suggested=suggested,
+        )
+        recent = cls.objects.filter(
+            language=row.language,
+            created_at__gte=row.created_at - timedelta(seconds=TYPEAHEAD_SECONDS),
+        ).exclude(pk=row.pk)
+        fragments = [pk for pk, text in recent.values_list("pk", "query") if extends(text, row.query)]
+        if fragments:
+            cls.objects.filter(pk__in=fragments).update(superseded=True)
+        return row
+
+
+def fold_query(query: str) -> str:
+    """A search as the admin reports group it: case-folded, one space between
+    words. The key a triage decision is stored under, so "Esperando en Dios" and
+    "esperando en dios " are one decision."""
+    return " ".join(query.split()).lower()[:200]
+
+
+class SearchDecision(models.Model):
+    """What an admin decided about one search that found nothing, in one language.
+
+    The admin Search page lists unanswered searches; without somewhere to record
+    "this one's handled", every visit re-lists the same queries and the list
+    trains its reader to skim it. A decision moves a query from the Open list to
+    Handled (or Wanted). Undo deletes the row. Keyed on the folded query
+    (:func:`fold_query`) and language, because a gap is per language: there is
+    no English fallback.
+    """
+
+    class Outcome(models.TextChoices):
+        #: The work exists in another language and a translation job was filed.
+        TRANSLATE = "translate", "Translation queued"
+        #: Not in the library in any language — the import shopping list.
+        WANTED = "wanted", "Wanted"
+        #: Not something Ochorus will carry (in copyright, off-topic, spam).
+        OUT_OF_SCOPE = "out_of_scope", "Out of scope"
+        #: The library has it under another word: readers' searches for the
+        #: query run on ``target`` instead (search_triage.rules).
+        SYNONYM = "synonym", "Synonym"
+        #: Results came back but nobody opened one: ``target`` ("topic:prayer")
+        #: leads the results as the best match.
+        PINNED = "pinned", "Pinned best match"
+
+    query = models.CharField(max_length=200)
+    language = models.CharField(max_length=10)
+    outcome = models.CharField(max_length=20, choices=Outcome.choices)
+    #: What the outcome points at: the work a translation was queued for or the
+    #: pinned page ("book:waiting-on-god"), or a synonym's word. Blank otherwise.
+    target = models.CharField(max_length=200, blank=True)
+    note = models.CharField(max_length=300, blank=True)
+    decided_by = models.EmailField(blank=True)
+    decided_at = models.DateTimeField()
+
+    class Meta:
+        ordering = ["-decided_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["query", "language"], name="uniq_searchdecision_query_lang"
+            ),
+        ]
+
+    def __str__(self) -> str:
+        return f"{self.query!r} [{self.language}] → {self.outcome}"
 
 
 class SearchClickLog(models.Model):
@@ -1640,6 +1877,42 @@ class Language(models.Model):
         return (self.code,)
 
 
+class LanguageHealthSnapshot(models.Model):
+    """One language's health score on one day, so the admin page can show
+    whether the work is moving it.
+
+    Written by the scoreboard itself (``admin_views.health.record_snapshots``),
+    on every deploy and whenever the page is opened, upserting today's row, so
+    a day with any activity gets exactly one point and no extra cron service is
+    needed. ``score_version`` is the formula that produced the row: the trend
+    only compares rows scored the same way, so a change to the weights or a
+    signal starts a fresh line instead of drawing a fake jump.
+
+    ``language`` is the code, not a FK: a snapshot is history and outlives a
+    registry row being renamed or removed.
+    """
+
+    language = models.CharField(max_length=10)
+    date = models.DateField()
+    score_version = models.PositiveSmallIntegerField()
+    health = models.PositiveSmallIntegerField()
+    readiness = models.FloatField()
+    coverage = models.FloatField()
+    review = models.FloatField()
+    engagement = models.FloatField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["language", "date"], name="uniq_health_snapshot_language_date"
+            )
+        ]
+        ordering = ["language", "date"]
+
+    def __str__(self) -> str:
+        return f"{self.language} {self.date}: {self.health}"
+
+
 class ReviewOutcome(models.Model):
     """A reviewer's decision about one AI translation, and who made it.
 
@@ -1756,6 +2029,68 @@ class AuditDismissal(models.Model):
 
     def __str__(self) -> str:
         return f"{self.check_key}:{self.book} [{self.language}] {self.ref}"
+
+
+
+class AuditScan(models.Model):
+    """One run of the content audit: when, why, how much it read, what it found.
+
+    The audit page used to know only its own cached scan ("Scanned 4 minutes
+    ago"), so nobody could say whether the library was checked last night, how
+    much of it a scan covered, or when an integrity defect first appeared. One
+    row per recorded scan answers all three, and is what the nightly alert
+    compares against (``library.content_audit``).
+
+    Deliberately small: per-check TOTALS only, never the findings themselves —
+    the findings are recomputed on demand, and a row a night for 180 days is
+    what the retention rule keeps. The totals cover EVERY check so a per-check
+    trend can be drawn from this table alone.
+    """
+
+    class Trigger(models.TextChoices):
+        #: The nightly run (``manage.py audit_scan``, from the email cron).
+        SCHEDULE = "schedule", "Scheduled"
+        #: An admin pressed Re-run on the audit page.
+        MANUAL = "manual", "Manual"
+
+    class Alert(models.TextChoices):
+        #: Not evaluated — manual scans never alert (see ``content_audit``).
+        NOT_EVALUATED = "", "Not evaluated"
+        #: Compared with the previous scheduled scan; no integrity check rose.
+        NONE = "none", "Nothing worsened"
+        SENT = "sent", "Alert sent"
+        #: Something worsened but email is off / no recipient may be mailed.
+        SKIPPED = "skipped", "Alert skipped"
+        #: Something worsened and every send failed — the next scan retries.
+        FAILED = "failed", "Alert failed"
+
+    started_at = models.DateTimeField(db_index=True)
+    duration_ms = models.PositiveIntegerField(default=0)
+    trigger = models.CharField(max_length=10, choices=Trigger.choices)
+    #: Book rows (one per language edition) and chapter rows the scan read.
+    editions_scanned = models.PositiveIntegerField(default=0)
+    chapters_scanned = models.PositiveIntegerField(default=0)
+    #: ``ContentRevision`` at scan time — tells "content changed" from "the
+    #: heuristics changed" when a total moves.
+    content_revision = models.BigIntegerField(default=0)
+    #: ``{check: total}`` for every integrity check.
+    integrity = models.JSONField(default=dict)
+    #: ``{check: open total}`` for every quality check — net of accepted
+    #: findings, i.e. what the page's tiles show.
+    quality = models.JSONField(default=dict)
+    #: ``{check: accepted}`` — findings hidden by an ``AuditDismissal``, so the
+    #: raw count (open + accepted) is recoverable for a trend.
+    quality_accepted = models.JSONField(default=dict)
+    alert = models.CharField(max_length=10, choices=Alert.choices, blank=True, default="")
+    #: Which checks worsened / why a send was skipped or failed. Short.
+    alert_note = models.CharField(max_length=300, blank=True)
+
+    class Meta:
+        ordering = ["-started_at"]
+        indexes = [models.Index(fields=["trigger", "-started_at"])]
+
+    def __str__(self) -> str:
+        return f"audit scan {self.started_at:%Y-%m-%d %H:%M} ({self.trigger})"
 
 
 class TranslationNote(models.Model):
@@ -1919,7 +2254,17 @@ class AdminAction(models.Model):
         BROADCAST_SCHEDULE = "broadcast.schedule", "Broadcast scheduled"
         BROADCAST_CANCEL = "broadcast.cancel", "Broadcast canceled"
         BROADCAST_TEST = "broadcast.test", "Broadcast test sent"
+        BROADCAST_PAUSE = "broadcast.pause", "Broadcast paused"
+        BROADCAST_RESUME = "broadcast.resume", "Broadcast resumed"
+        EMAIL_DIRECT = "email.direct", "Email sent to a reader"
+        EMAIL_TEMPLATE_SAVE = "email.template_save", "Email template saved"
+        EMAIL_TEMPLATE_DELETE = "email.template_delete", "Email template deleted"
+        EMAIL_TRANSLATION_REQUEST = "email.translation_request", "Email translation requested"
+        EMAIL_TRANSLATION_DRAFT = "email.translation_draft", "Email translation draft checked for"
+        EMAIL_TRANSLATION_APPROVE = "email.translation_approve", "Email translation approved"
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
+        SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
+        SEARCH_UNDO = "search.undo", "Search triage undone"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

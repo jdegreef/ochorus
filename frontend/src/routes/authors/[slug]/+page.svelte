@@ -4,7 +4,6 @@
 	import { chapterPath } from '$lib/editionHref';
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
-	import { hydrateSrc } from '$lib/hydrateSrc';
 	import Icon from '$lib/components/Icon.svelte';
 	import {
 		type AuthorDetail,
@@ -18,14 +17,14 @@
 	import { absUrl, jsonLd, breadcrumbLd, faqPage, hreflangAll, hreflangExact, stripHtml, truncateMeta, itemList, topicThings, personId } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readingTime, readingMinutes } from '$lib/reading';
-	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
+	import { scrollSpy, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
 	import { authorCardUrl } from '$lib/authorCard';
-	import { initials, portraitPosition, portraitSrcset } from '$lib/portraits';
+	import Portrait from '$lib/components/Portrait.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { getLang } from '$lib/lang.svelte';
 	import { page } from '$app/stores';
@@ -355,6 +354,8 @@
 	// the same contract the biographies index uses so anchored sections clear both
 	// the app nav and this bar. Mirrors +layout's navH measurement.
 	let subnavH = $state(0);
+	// A cold #section load jumps against the bar's estimate; re-land it once measured.
+	realignHashOnMeasure(() => subnavH);
 
 	// Where the Reader parks a resumed or `?p=` paragraph, and the line its
 	// "which paragraph is at the top" reads against: below everything pinned —
@@ -370,17 +371,6 @@
 	// (empty while the sub-nav is hidden). No-JS / prerender shows the bar with
 	// nothing lit — the links still jump.
 	const spy = scrollSpy(() => (showSubnav ? navItems.map((n) => n.id) : []));
-
-	// Smooth-jump to a section and light it at once, so the tap feels immediate
-	// rather than waiting on the scroll-spy to catch up. The landing offset lives
-	// in CSS (`--pinned-offset` + the subnav-link scroll-margin below), so
-	// jumpToSection just scrolls; the hash stays ours to set.
-	function jumpTo(e: MouseEvent, id: string) {
-		e.preventDefault();
-		spy.set(id);
-		jumpToSection(id);
-		history.replaceState(null, '', `#${id}`);
-	}
 </script>
 
 <Seo
@@ -404,7 +394,7 @@
      nav and this page's own sticky jump-bar is; anchored sections read it for
      scroll-margin so a jump lands below the bars. Same contract as the
      biographies index. -->
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {subnavOffset(showSubnav, subnavH)}px)">
 	<!-- Focus mode strips the page back to the life itself. Everything here is
 	     context around the biography — portrait, timeline, epigraph, shelves,
 	     contemporaries — and it is exactly what someone reading eleven minutes
@@ -419,26 +409,15 @@
 	     one centred column removes both. The action row wraps and stays centred on
 	     a phone. -->
 	<header class="mx-auto flex max-w-[40rem] items-center gap-4 sm:gap-5">
-		{#if author.photo_url}
-			{@const source = { src: author.photo_url, srcset: portraitSrcset(author.photo_url) }}
-			<img
-				src={source.src}
-				srcset={source.srcset}
-				use:hydrateSrc={source}
-				sizes="112px"
-				width="112"
-				height="112"
-				alt="{t('a11y.portraitOf')} {author.name}"
-				class="h-20 w-20 shrink-0 rounded-full border border-border object-cover shadow-sm sm:h-28 sm:w-28"
-				style="filter: grayscale(1); object-position: {portraitPosition(author.slug)}"
-			/>
-		{:else}
-			<span
-				class="font-display flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-accent-soft text-h1 font-semibold text-accent sm:h-28 sm:w-28"
-			>
-				{initials(author.name)}
-			</span>
-		{/if}
+		<Portrait
+			slug={author.slug}
+			name={author.name}
+			url={author.photo_url}
+			px={112}
+			loading="eager"
+			class="h-20 w-20 shadow-sm sm:h-28 sm:w-28"
+			initialsClass="text-h1"
+		/>
 		<div class="min-w-0">
 		<h1 class="text-h1" dir="auto">{heading}</h1>
 		{#if summaryBits.length}
@@ -561,7 +540,7 @@
 							class="subnav-link"
 							class:is-active={spy.active === item.id}
 							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => jumpTo(e, item.id)}>{item.label}</a
+							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
 						>
 					</li>
 				{/each}
@@ -914,24 +893,6 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
-	}
-	.subnav-link {
-		display: inline-block;
-		padding: 0.5rem 0.75rem;
-		border-bottom: 2px solid transparent;
-		margin-bottom: -1px; /* overlap the bar's own border so the underline meets it */
-		font-size: var(--fs-small);
-		font-weight: 500;
-		white-space: nowrap;
-		color: var(--muted);
-		text-decoration: none;
-	}
-	.subnav-link:hover {
-		color: var(--text);
-	}
-	.subnav-link.is-active {
-		color: var(--accent);
-		border-bottom-color: var(--accent);
 	}
 
 	/* Derived FAQ accordion. Native <details> so it works with no JS and during

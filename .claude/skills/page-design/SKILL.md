@@ -60,7 +60,8 @@ In this order, and nothing else at the top level:
    shelves head each group with the **group heading** recipe (§ below), in a
    `<section>` whose `scroll-margin-top` tracks the sticky bar, not `scroll-mt-20`.
    A flat list over ~30 items pages **24 at a time** with a "Show %n% more"
-   button (Books, Articles, Biographies), keyed to the filter/sort state so a
+   button (Articles, Biographies; Books opens on 56 and adds 48, sized for its
+   seven-across `.book-grid--library` — `pager()`'s `first` argument), keyed to the filter/sort state so a
    new filter starts over — use `pager()` from `$lib/paging.svelte`, and export
    `snapshot = pagedSnapshot(() => shelf)` from the route so Back lands where
    the reader was (SvelteKit restores a snapshot AFTER scroll on popstate, so a
@@ -92,6 +93,12 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   A key that holds the READER'S data rather than a device preference (a
+   plan's schedule choices, anything a sign-out should not hand the next
+   person) is declared in `reading-schema.ts` and listed in
+   `READING_DATA_KEYS`, never a literal in a component — unlisted, it
+   survives sign-out on a shared device. Write it on change, not from an
+   `$effect` that also fires on mount.
    **Mind the prerender's API load** (the crawl's load once took the API
    down): a decoration fetch on a LEAF route runs once per page per locale, so
    prefer deriving it from the payload already fetched (the topic page builds
@@ -142,6 +149,23 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    query, not a viewport breakpoint, because the column beside the cover on a
    tablet and long translations run out of room long before `md`. A sticky sub-nav CTA shows only once the hero CTA has scrolled
    away (IntersectionObserver), never two primaries on screen.
+   **Long-list leaf: the plan page is the model for a side panel.** Where
+   the body is a long list the reader works through (a plan's days), the read
+   card, Save/Share and the writers sit in a sticky end-side panel from
+   1024px (`.plan-body` / `.plan-aside`, `top: calc(var(--pinned-offset,
+   var(--appnav-h, 0px)) + 1rem)`), and come FIRST on a phone so the one
+   action leads — instead of the book's sub-nav CTA. The grid track is
+   `minmax(0, 1fr)`, never the implicit auto track: a truncating row's
+   min-content width otherwise pushes a phone column off-screen. Its hero
+   visual is `<CoverStrip size="fan" priority>` — the one shared big fan
+   (/originals uses it too); never re-draw fan geometry in a page.
+   Below 1024px, once the read card scrolls away (`elementVisible`, as the
+   book's sub-nav CTA does), the read verb rides a bottom bar (`.plan-bar`):
+   `use:portal`ed to <body> (`.page-col`'s transform would pin it to the
+   column), clearing the shared bottom chrome with `max(env(safe-area-inset-
+   bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))`. Pinned jump
+   chips over a list publish their measured height into `--pinned-offset`
+   (`bind:clientHeight`), never a guessed rem.
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
    onDismiss }}` (`$lib/actions/dismissable`) on the wrapper — click-away,
    Escape, focus back to the trigger. Don't hand-roll a `<svelte:window>`
@@ -254,6 +278,14 @@ A card directly under the `<h1>` titles itself with `<h2>`; a card under a
 group `<h2>` uses `<h3>`. Home shelves, the error page's "three to try" and the
 plans-progress panel must use these same components, not re-drawn tiles.
 
+**A writer's face is always `<Portrait>`** (`$lib/components/Portrait.svelte`):
+srcset + `hydrateSrc` + per-writer crop + alt + initials fallback in one place.
+Pass the box size in `class`, the largest rendered size in `px`, and pick
+`tone` (`gray` / `hover` with a parent `.group` / `color`) and `decorative`
+when the name sits beside it. Never hand-roll the `<img>` + initials pair again
+— eleven copies had grown before it existed (2026-10-02). The Sermons preacher
+strip and an article's "Read next" rows deliberately draw their own.
+
 ## Group heading (grouped shelves, search result groups)
 
 One component: **`<GroupHeading>`** (`lib/components/GroupHeading.svelte`) —
@@ -263,6 +295,12 @@ the name **as a link** when it has a page (`href`), and the count on the shared
 groups render the default variant; Biographies passes `sticky` for its bordered
 era heading (solid ink, pinned via `--pinned-offset`, count pushed to the end),
 and a `detail` snippet carries the era's year range or Search's bespoke "N of M".
+A `blurb` prop adds one truncated line under the heading, indented to the name
+(Sermons: the preacher's bio opening, under "1843–1919 · 15 sermons" in
+`detail`). Sermons no longer jumps to a preacher with a `.tag` chip wall: it uses
+a `.cover-rail` strip of faces with counts. Books still has the chip wall; when
+Books' author groups carry `photo_url`, extract the strip into a shared
+`<AuthorJumpStrip>` and use it on both.
 `<SectionHeader>` is *not* this — it renders `h2.text-h2` and is the home page's
 "shelf title + See all" pattern.
 
@@ -312,6 +350,15 @@ lists content types, **in the same order** everywhere:
       by the SAME rule (the model is author pages: `hasOwnContent` + the
       `authorsIn` entries in `sitemap.ts`, #4247). Advertising every locale by
       default is what put ~330 thin author URLs in the sitemap.
+      "Has content" can need a FLOOR, not just "non-empty": a topic shelf with
+      one card is thin, so the API owns `TOPIC_INDEX_MIN_WORKS` and exposes it
+      as `indexable` + floor-aware `available_languages`, and the page,
+      sitemap and hreflang (`hreflangExact`, never `hreflangFor`, which falls
+      back to every locale on []) all read that (#4998). Derive per-locale
+      presence from THAT locale's list, never the English one (the era pages
+      were advertised in 8 languages where they were an empty state).
+      To audit: crawl every sitemap `<url>` and bucket by word count per
+      route × locale — the per-locale thin tail is invisible in English.
 - [ ] ~~`CatalogLanguageNudge`'s `kind` union~~ (component removed)
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
@@ -515,6 +562,12 @@ and expect a blank screenshot right after a JS scroll; read the footer with
 - Small text follows the phone type tokens (`--fs-micro` 12px, `--fs-eyebrow`
   13px below sm). A width-bound label (the tab bar) should use micro, not
   eyebrow; check truncation in fr/sw/lg/am/uk on an iPhone SE.
+- An `sr-only` (position: absolute) span inside a sideways scroller escapes
+  the scroller unless an ancestor is positioned: it resolves against the page,
+  so the last card's label (~965px across) widened the phone's LAYOUT viewport —
+  `innerWidth` 970 at a 375 emulation, page zoomed out, fixed tab bar 970 wide.
+  Make the SCROLLER `position: relative` (it then contains every absolute child). Check: at 375, `innerWidth`
+  and `documentElement.scrollWidth` must both be 375 (biographies era band, 2026-10-01).
 - Measure, don't eyeball: a headless iPhone-13 pass listing visible text under
   13px and controls under 40px tall finds the real offenders (book-cover
   lettering scales with the cover — ignore it).
@@ -546,10 +599,18 @@ relevant group.
   scripture ×3, articles ×2), `py-8` on Biographies; breadcrumb-to-title gap is
   `mt-5` (book), `mt-4` (topic), 0 elsewhere. → `py-10`, no extra gap; or fold
   the padding into `.page-col`.
-- [ ] **A3** H1 register: Sermons/Biographies carry a brand h1 under a nav-word
+- [~] **A3** H1 register: Sermons/Biographies carry a brand h1 under a nav-word
   eyebrow; Books/Topics/Plans/Search use the nav word; Quotes/Scripture use a
   descriptive sentence with no eyebrow. `<title>` ≠ `<h1>` on Sermons and
   Biographies. → decide one register, document it in STYLE_GUIDE §5.
+  _2026-10-02: the brand h1 is gone — Sermons, Biographies and Books pass
+  `t('nav.*')` to `<PageHeader title>` with no eyebrow, Topics/Plans their own
+  title keys (`Topics`, `Reading Plans`). Still open: Quotes and Scripture keep a
+  descriptive h1 (`quotes.pageTitle` "Quotes, with their sources",
+  `scripture.pageTitle` "Scripture in the Christian classics"); `<title>` is an
+  SEO phrase, not the nav word, on Books/Sermons/Biographies (`*.metaTitle`:
+  "Free Classic Christian Books" …) and a hard-coded English sentence on
+  Quotes/Scripture; and the register is not yet written into STYLE_GUIDE §5._
 - [x] **A4** _(shipped #1419 — all 8 catalogues, guarded)_ `<title>` suffix: ` — Ochorus` ×39, ` · Ochorus` ×7 (book, quotes,
   articles, scripture ×2, era mixes both). → ` — Ochorus`, and put the suffix
   in `Seo.svelte` so nobody types it.
@@ -565,9 +626,15 @@ relevant group.
 - [x] **A8** _(shipped #1540 — kind eyebrow on the book and plan heads)_ The kind eyebrow (`Sermon · 12 min · 1855`) exists on Sermon and
   Reader only. → every leaf (Book: `Book · 7 chapters · 34 min`; Plan:
   `Reading plan · 27 days`).
-- [ ] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
+- [~] **A9** Settings and Notebook hand-roll headers; eyebrows are `Ochorus`
   (legal, notebook), the nav word (about, contact), or none. → `<PageHeader>`;
   section name or no eyebrow.
+  _2026-10-02: Settings and Notebook are on `<PageHeader>` (no eyebrow), held
+  there by a new `APP_PAGES` list in `pageShell.test.ts`. Left: Legal still
+  wears the `Ochorus` eyebrow over a hand-rolled `h1 mb-3` + section nav, and
+  Contact a nav-word eyebrow over `h1 mb-6` + intro — both `.reading-page` prose
+  whose spacing `<PageHeader>` would change, so they wait for a prose-header
+  decision. About's photo hero is its own design, not a drift._
 - [x] **A10** _(shipped #1537 — `.reading-page`, the one prose-page shell)_ Leaf prose measure is hand-set: `max-w-[40rem]` ×3 on Author,
   `max-w-xl` on Plan and Book, `max-w-2xl` on Quotes. `.reading-page` on
   About/Legal is defined nowhere. → one `.prose-measure` class (or
@@ -576,7 +643,14 @@ relevant group.
   `<ReaderControls>` like the sermon/bio, but its `.article-body` hand-consumes
   the `--reading-*` vars — a fourth copy of that recipe to fold into the shared
   class when this lands.)_
-- [ ] **A11** Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
+- [x] **A11** _(shipped 2026-10-02 — `.page-col--narrow` in `app.css`
+  (`min(26rem, 100%)`, pixel-identical to the old box at 1280/500/390px); Login's
+  form branch and Reset use it; Login's two-column pitch branch keeps
+  `max-w-5xl`. `pageShell.test.ts` gains `NARROW_PAGES` (must use the modifier,
+  no `max-w-[…]` anywhere) and the shell regex now also catches `max-w-xl` and
+  `max-w-[…]`. It still needs `mx-auto max-w-*` adjacent: the any-order form
+  flags Author's inner `mx-auto mt-12 max-w-[40rem]` measures (A10's territory),
+  so the narrow pages are held by the positive check instead.)_ Login/Reset use `mx-auto max-w-[26rem]`, invisible to the shell
   guard (regex only matches `max-w-2xl…7xl`). → `.page-col--narrow`; widen the
   regex.
 
@@ -672,17 +746,35 @@ relevant group.
   `.article-card`, `.sermon-row`, the quotes card, `AuthorBioCard`,
   `BookListRow`, `PersonCard`, `AuthorTile`. → lift for banded cards, border
   tint for rows; nothing else.
-- [ ] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
+- [~] **D4** `ArticleCard` is bespoke: `border-radius: 0.75rem`, `0.15s` literal
   transitions, literal `Read →`, an `<h3>` directly under the `<h1>`. The quotes
   index card has no heading at all; `BookCard`'s title is a `<div>`. → rebuild
   on the row family; `<h2>` under the h1.
+  _2026-10-02: `ArticleCard` is done — `rounded-card` + `.card-tint` (token
+  duration), no `Read →`, and a `heading` prop (h2 on the index, h3 under a
+  section `h2`: topic, article "Read next", and now Favorites, which was
+  rendering h2 under its `SectionHeader` h2). Still open: the `/quotes` author
+  card's name is a `<span class="block text-h3">` inside a span (an h2 needs
+  the card restructured), and `BookCard`'s title is still a `<div>`._
 - [ ] **D5** Home shelves re-draw cards that have components: `ContinueReading`
   (bespoke row + scoped gradient) vs `.book-card--row`; `PlansProgress` vs
   `ShelfCard`; the error page's "three to try" as bare covers with floating
   captions. → the components.
-- [ ] **D6** Related blocks use five different components; the sermon's "More
+- [~] **D6** Related blocks use five different components; the sermon's "More
   sermons on X" is an **unbounded** text list; Plan, Topic, Quotes and Scripture
   have none. → card components, capped at 4–6 (Book).
+  _2026-10-02: the sermon's related list is capped at 6 (`slice(0, 6)` — it
+  already was in code). **Plan shipped**: a "More like this" block
+  (`book.related`, `.section-heading` like the page's other sections) of up to
+  3 plans drawn with `PlanShelfCard` — the /plans shelf's card, extracted so
+  both render one component (not `PlanCard`, the resume row). The rule is the
+  pure `lib/relatedPlans.ts` (2 per shared source book, 1 per shared writer —
+  plans carry no topic, so a shared book stands in for a shared theme; current
+  language only; ties keep shelf order; nothing related → no block). It is
+  computed in the LOAD from the plans list so it prerenders; the list fetch is
+  decoration and degrades to no block on failure (one extra list call per plan
+  page per locale at build). Still open: **Quotes-author and Scripture chapter
+  pages have no related block.**_
 - [x] **D7** _(shipped 2026-09-08 — `FavoriteButton` rebuilt on the `.btn` family:
   labelled `.btn-sm` on leaf action rows, icon-only `.btn-icon` in reader
   toolbars; scoped CSS + literal durations deleted. All three leaf pages now pass
