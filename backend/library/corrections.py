@@ -4730,6 +4730,8 @@ BODY_CORRECTIONS["life-and-diary-of-david-brainerd"]["restored_after"] = [
 BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("before God can use them.</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("ሊኖራቸውም የግድ ነው።</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
 # sits in its own wrapper div, so `import_gutenberg.split_by_heading` takes its
