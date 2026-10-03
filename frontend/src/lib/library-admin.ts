@@ -1092,7 +1092,7 @@ export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean }
 
 // Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
 // true and useless. Small bases report the absolute change ("+29 vs 1") instead.
-const SMALL_BASE = 20;
+export const SMALL_BASE = 20;
 
 const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
 const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
@@ -1277,6 +1277,20 @@ export interface AdminEngagement {
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
+	/** What the team did in the charted weeks, oldest first: the markers under
+	 *  the weekly chart. */
+	events: EngagementEvent[];
+}
+
+/** One thing done to readers in a charted week: an email sent, a language taken
+ *  live, or works added (one event per week, however many). `week` is the
+ *  Monday the weekly chart keys that week by; `date` the day it happened. */
+export interface EngagementEvent {
+	week: string;
+	date: string;
+	kind: 'email' | 'language' | 'works';
+	title: string;
+	detail: string;
 }
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
