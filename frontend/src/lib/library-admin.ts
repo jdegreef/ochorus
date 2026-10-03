@@ -1319,6 +1319,20 @@ export interface AdminEngagement {
 	 *  many read in each week after (library/engagement_trends.py). Absent
 	 *  from an older API. */
 	cohorts?: { min_size: number; rows: EngagementCohort[] };
+	/** When people read, on their own clocks. Absent from an older API. */
+	hours?: EngagementHours;
+}
+
+/** Minutes read per weekday × hour over the last `days`, in each reader's
+ *  own time zone. `minutes[d][h]` is Monday-first; null where fewer than
+ *  `min_readers` readers read in that hour. `without_zone` readers have no
+ *  time zone yet and are left out. */
+export interface EngagementHours {
+	days: number;
+	min_readers: number;
+	readers: number;
+	without_zone: number;
+	minutes: (number | null)[][];
 }
 
 /** One join week. `active[k]` is how many of its `size` sign-ups read in

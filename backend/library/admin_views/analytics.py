@@ -19,6 +19,7 @@ from ..engagement_trends import (
     distinct_readers,
     pulse_trends,
     readers_per_work,
+    reading_hours,
     retention_cohorts,
     weekly_active,
     weekly_signups,
@@ -129,6 +130,7 @@ class AdminEngagementView(APIView):
                 "weekly_active": weekly_active(now, self.WEEKS),
                 "events": self._events(now),
                 "cohorts": retention_cohorts(now),
+                "hours": reading_hours(now),
                 # The tiles' lines; none for the empty state, which shows no tiles.
                 "trends": pulse_trends(
                     now,

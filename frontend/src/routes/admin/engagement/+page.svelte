@@ -12,6 +12,7 @@
 	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
+	import { busiestCell, hourLabel, sendTime, WEEKDAYS } from '$lib/engagementHours';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -141,6 +142,19 @@
 	const cohortCols = $derived(columnShares(cohorts, cohortSpan));
 	const cohortHead = $derived(headline(cohorts));
 
+	// When people read: the grid shows once any hour clears the readers floor.
+	const hours = $derived(data?.hours);
+	const hoursShown = $derived(!!hours?.minutes.some((row) => row.some((m) => m != null)));
+	const hoursMax = $derived(Math.max(1, ...(hours?.minutes.flat().map((m) => m ?? 0) ?? [1])));
+	const hoursPeak = $derived(hours ? busiestCell(hours.minutes) : null);
+	const hoursSend = $derived(hours ? sendTime(hours.minutes) : null);
+	let pointedHour = $state<{ day: number; hour: number } | null>(null);
+	const hourText = (day: number, hour: number) => {
+		const m = hours?.minutes[day][hour];
+		const span = `${WEEKDAYS[day]} ${hourLabel(hour)}–${hourLabel((hour + 1) % 24)}`;
+		return m == null ? `${span}: fewer than ${hours?.min_readers} readers, left blank` : `${span}: ${fmt(m)} minutes read`;
+	};
+
 	// Sitting lengths: count sittings, or the minutes read in them. The second
 	// shows where the reading actually happens.
 	let lengthBy = $state<'sittings' | 'seconds'>('sittings');
@@ -188,6 +202,7 @@
 					summary && { id: 'this-week', label: 'This week' },
 					{ id: 'pulse', label: 'Pulse' },
 					data.time.sessions && { id: 'reading-time', label: 'Reading time' },
+					hoursShown && { id: 'hours', label: 'When people read' },
 					{ id: 'weekly', label: 'Weekly readers' },
 					cohortSpan && { id: 'cohorts', label: 'Do readers stay?' },
 					data.rising.length && { id: 'rising', label: 'Rising' },
@@ -349,6 +364,63 @@
 								{/if}
 							</div>
 						{/if}
+					</section>
+				{/if}
+
+				<!-- When people read: weekday × hour, on each reader's own clock -->
+				{#if hours && hoursShown}
+					<section id="hours" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">When people read</h2>
+							<span class="text-small text-muted">Minutes read by weekday and hour, in each reader's own time zone · last {hours.days} days.</span>
+						</div>
+						{#if hoursPeak && hoursSend}
+							<div class="mb-4 flex flex-wrap gap-6">
+								<div>
+									<div class="stat-number">{WEEKDAYS[hoursPeak.day]} {hourLabel(hoursPeak.hour)}</div>
+									<div class="text-small text-muted">busiest hour</div>
+								</div>
+								<div>
+									<div class="stat-number">≈ {hoursSend.label}</div>
+									<div class="text-small text-muted">to send, reader-local: just before {hourLabel(hoursSend.hour)}, the week's peak hour</div>
+								</div>
+							</div>
+						{/if}
+						<div class="overflow-x-auto">
+							<div class="hours" role="grid" aria-label="Minutes read by weekday and hour">
+								<div role="row" class="contents">
+									<span></span>
+									{#each Array.from({ length: 24 }, (_, h) => h) as h (h)}
+										<span role="columnheader" class="text-center text-micro text-muted">{h % 6 === 0 ? hourLabel(h) : ''}</span>
+									{/each}
+								</div>
+								{#each hours.minutes as row, day (day)}
+									<div role="row" class="contents">
+										<span role="rowheader" class="self-center text-micro text-muted">{WEEKDAYS[day]}</span>
+										{#each row as m, hour (hour)}
+											<button
+												type="button"
+												role="gridcell"
+												class="cell"
+												class:blank={m == null}
+												style={m == null ? '' : `background: ${goldWash((m / hoursMax) * 100)}`}
+												aria-label={hourText(day, hour)}
+												title={hourText(day, hour)}
+												onmouseenter={() => (pointedHour = { day, hour })}
+												onfocus={() => (pointedHour = { day, hour })}
+											></button>
+										{/each}
+									</div>
+								{/each}
+							</div>
+						</div>
+						<p class="mt-2 min-h-[1.5em] text-small text-muted" aria-live="polite">
+							{#if pointedHour}{hourText(pointedHour.day, pointedHour.hour)}.{:else}Hover or tap an hour to read it.{/if}
+						</p>
+						<p class="mt-1 text-micro text-muted">
+							A sitting counts in the hour it started. An hour with fewer than {hours.min_readers} readers is left blank.
+							{#if hours.without_zone}{fmt(hours.without_zone)} reader{hours.without_zone === 1 ? ' has' : 's have'} no time zone yet, so they're left out.{/if}
+						</p>
 					</section>
 				{/if}
 
@@ -711,6 +783,25 @@
 	   0.5rem the other pages' anchors add. */
 	.anchor {
 		scroll-margin-top: calc(var(--appnav-h, 0px) + var(--section-bar-h, 44px) + 0.5rem);
+	}
+	/* The reading-hours grid: a day label, then 24 square hours. */
+	.hours {
+		display: grid;
+		grid-template-columns: 2.25rem repeat(24, minmax(0.9rem, 1fr));
+		gap: 2px;
+		min-width: 30rem;
+		max-width: 48rem;
+	}
+	.hours .cell.blank {
+		background: repeating-linear-gradient(135deg, var(--surface-2) 0 3px, transparent 3px 6px);
+	}
+	.hours .cell {
+		aspect-ratio: 1;
+		border-radius: 2px;
+	}
+	.hours .cell:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 1px;
 	}
 	/* The retention grid: separated cells, so each reads as its own swatch. */
 	.cohorts {

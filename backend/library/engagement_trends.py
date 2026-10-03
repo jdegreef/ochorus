@@ -256,3 +256,63 @@ def retention_cohorts(now) -> dict:
             }
         )
     return {"min_size": COHORT_MIN_SIZE, "rows": rows}
+
+
+#: How far back the reading-hours grid looks, and the fewest readers an hour
+#: needs before it shows: below that, a lone night-owl's habit is visible.
+HOURS_DAYS = 90
+HOURS_MIN_READERS = 3
+
+
+def _zone(name: str):
+    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+    try:
+        return ZoneInfo(name) if name else None
+    except (ZoneInfoNotFoundError, ValueError):
+        return None
+
+
+def reading_hours(now) -> dict:
+    """When people read: minutes read in each weekday x hour over the last
+    ``HOURS_DAYS`` days, on each reader's own clock.
+
+    ``minutes[d][h]`` is Monday-first; None where fewer than
+    ``HOURS_MIN_READERS`` readers read in that hour, so no cell describes
+    one person. A sitting counts whole in the hour it started (sittings are
+    short; splitting them across hours would add precision nobody acts on).
+    Its start is the device's own time, converted into the reader's saved
+    time zone (captured from the browser at sign-in). A reader with no zone
+    yet can't be placed, so they're left out and counted in
+    ``without_zone``, and the page says so. One query."""
+    from reading.models import ReadingSession
+
+    minutes = [[0.0] * 24 for _ in range(7)]
+    readers: dict[tuple, set] = defaultdict(set)
+    placed, unplaced = set(), set()
+    zones: dict[str, object] = {}
+    for profile, started, seconds, tz in ReadingSession.objects.filter(
+        seconds__gt=0, started_at__gte=now - timedelta(days=HOURS_DAYS)
+    ).values_list("profile", "started_at", "seconds", "profile__timezone"):
+        zone = zones.setdefault(tz, _zone(tz))
+        if zone is None:
+            unplaced.add(profile)
+            continue
+        local = started.astimezone(zone)
+        d, h = local.weekday(), local.hour
+        minutes[d][h] += seconds / 60
+        readers[(d, h)].add(profile)
+        placed.add(profile)
+    return {
+        "days": HOURS_DAYS,
+        "min_readers": HOURS_MIN_READERS,
+        "readers": len(placed),
+        "without_zone": len(unplaced),
+        "minutes": [
+            [
+                round(minutes[d][h]) if len(readers[(d, h)]) >= HOURS_MIN_READERS else None
+                for h in range(24)
+            ]
+            for d in range(7)
+        ],
+    }
