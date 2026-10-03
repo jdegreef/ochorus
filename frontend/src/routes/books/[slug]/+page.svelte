@@ -119,6 +119,8 @@
 	// that is (workPercent — the same figure every other surface shows), and the
 	// time left from the start of it at the reader's pace.
 	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	/** The chapter the read verb opens — where they are, or where the book begins. */
+	const readChapter = $derived(book.chapters.find((c) => c.order === readOrder));
 	const wordsLeft = $derived(
 		resumeHere == null
 			? 0
@@ -995,7 +997,7 @@
 	show={!cardSeen.visible}
 	hideFrom="sm"
 	eyebrow={book.title}
-	title={chapterNameIn(readOrder, book.chapters.find((c) => c.order === readOrder)?.title, book.title)}
+	title={chapterNameIn(readOrder, readChapter?.title, book.title)}
 	href={readHref(readOrder)}
 	label={readLabel}
 />

@@ -2974,8 +2974,12 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	padding-inline: 1.25rem;
 }
 @media (prefers-reduced-motion: no-preference) {
+	/* The margin rides with the width (the same easing over the same time), so
+	   the column stays centred while a Page-width change animates. */
 	.page-col {
-		transition: width var(--duration-base) ease;
+		transition:
+			width var(--duration-base) ease,
+			margin-inline-start var(--duration-base) ease;
 	}
 }
 
