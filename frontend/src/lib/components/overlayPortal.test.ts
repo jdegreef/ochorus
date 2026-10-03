@@ -20,7 +20,7 @@ import { scripture } from '$lib/scripture.svelte';
 
 /**
  * The fixed overlays portal themselves to <body>, as DrawerShell does, so an
- * ancestor with a transform (the page-turn pager, `.page-col`) or a
+ * ancestor with a transform (the page-turn pager) or a
  * backdrop-filter (the reader's bars) can't become their containing block.
  * DrawerShell.test.ts holds the pattern for the drawers; these hold it for
  * every other overlay, each dropped into the same transformed, fenced column:

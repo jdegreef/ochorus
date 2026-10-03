@@ -19,7 +19,7 @@
 	 * logical form, so those two alone are flipped explicitly under RTL below.
 	 *
 	 * Scrim and panel are portalled to <body>, so a caller may render the drawer
-	 * anywhere — inside `.page-col` (centred with a transform) or a bar with a
+	 * anywhere — inside the transformed page-turn pager or a bar with a
 	 * backdrop-filter — and it still covers the viewport. Both sit inside ONE
 	 * wrapper, which is the node that moves: see `$lib/actions/portal` for why
 	 * it has to be one.

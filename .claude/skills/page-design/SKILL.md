@@ -169,8 +169,7 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    (/originals uses it too); never re-draw fan geometry in a page.
    Below 1024px, once the read card scrolls away (`elementVisible`, as the
    book's sub-nav CTA does), the read verb rides a bottom bar (`.plan-bar`):
-   `use:portal`ed to <body> (`.page-col`'s transform would pin it to the
-   column), clearing the shared bottom chrome with `max(env(safe-area-inset-
+   `use:portal`ed to <body> (as every fixed overlay is), clearing the shared bottom chrome with `max(env(safe-area-inset-
    bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))`. Pinned jump
    chips over a list publish their measured height into `--pinned-offset`
    (`bind:clientHeight`), never a guessed rem.
@@ -224,10 +223,12 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
 - **Fixed overlays portal to `<body>`, so they can mount anywhere.**
-  `.page-col`'s `transform: translateX(-50%)` and the reader bars'
-  `backdrop-filter` each become the containing block for `position: fixed` AND
-  a stacking context — a sheet inside one was pinned to the column (running
-  off-screen) under the z-40 tab bar. So every overlay portals, and a new one
+  The page-turn pager's transform and the reader bars' `backdrop-filter` each
+  become the containing block for `position: fixed` AND a stacking context — a
+  sheet inside one was pinned to it (running off-screen) under the z-40 tab
+  bar. (`.page-col` was the worst offender until it centred with a margin
+  instead of `translateX(-50%)` — never give it a transform back.) So every
+  overlay portals, and a new one
   should reuse a shell rather than hand-roll it:
   - a drawer or phone bottom sheet → `DrawerShell`;
   - a centred modal dialog → `ModalShell` (scrim, card, `role`/`aria-modal`,
