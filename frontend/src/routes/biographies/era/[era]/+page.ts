@@ -1,4 +1,4 @@
-import { listAuthors, listBooks, type BookSummary } from '$lib/library-public';
+import { listAuthors, listBooks, listEraPresence, type BookSummary } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
 import { error } from '@sveltejs/kit';
@@ -41,5 +41,16 @@ export const load: PageLoad = async ({ params, fetch }) => {
 	} catch {
 		books = [];
 	}
-	return { eraId: era.id, authors, books, loadError };
+	// The locales whose shelf has a writer in this era — the page's hreflang
+	// names only those (the rest are an empty, noindexed state). Null when the
+	// endpoint is unavailable (an API behind this build), and the page then
+	// keeps its old every-locale alternates rather than naming none.
+	let eraLocales: string[] | null = null;
+	try {
+		const years = await listEraPresence(fetch);
+		eraLocales = Object.keys(years).filter((l) => years[l].some((y) => eraOf(y) === era.id));
+	} catch {
+		eraLocales = null;
+	}
+	return { eraId: era.id, authors, books, loadError, eraLocales };
 };
