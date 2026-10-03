@@ -6,7 +6,9 @@
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import ReachSpark from '$lib/components/ReachSpark.svelte';
-	import { adminEditionHref, formatDuration, getAdminEngagement, periodTrend, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import EventMarker from '$lib/components/EventMarker.svelte';
+	import { adminEditionHref, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -107,6 +109,34 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
+	// The opening sentence: the last 7 days in words, plus this week's events.
+	const summary = $derived(data ? weeklySummary(data, workHref) : null);
+	let copied = $state('');
+	async function copySummary() {
+		if (!summary) return;
+		try {
+			await navigator.clipboard.writeText(summary.text);
+			copied = 'Copied';
+		} catch {
+			copied = 'Couldn’t copy; select the sentence instead';
+		}
+	}
+
+	// What the team did, under the weekly chart: each week's events, and the
+	// one being pointed at, named in the line under the chart.
+	const eventsByWeek = $derived.by(() => {
+		const byWeek = new Map<string, EngagementEvent[]>();
+		for (const e of events) {
+			const list = byWeek.get(e.week);
+			if (list) list.push(e);
+			else byWeek.set(e.week, [e]);
+		}
+		return byWeek;
+	});
+	const events = $derived(data?.events ?? []);
+	const after = (week: string) => followingWeek(data?.weekly_active ?? [], week);
+	let pointed = $state<EngagementEvent | null>(null);
+
 	const planSteps = $derived(
 		data
 			? [
@@ -148,6 +178,27 @@
 					<p class="mt-1 text-body text-muted">Once signed-in readers start reading, their (anonymous, aggregate) activity shows up here.</p>
 				</div>
 			{:else}
+				<!-- This week in one sentence (built from the numbers below). -->
+				{#if summary}
+					<section class="mb-6 rounded-card border border-border bg-surface p-5">
+						<div class="flex flex-wrap items-start justify-between gap-3">
+							<p class="max-w-prose font-serif text-h3 leading-snug text-text">
+								{#each summary.parts as part, i (i)}{#if part.href}<a href={part.href} class="text-accent underline decoration-1 underline-offset-4">{part.text}</a>{:else if part.strong}<strong>{part.text}</strong>{:else}{part.text}{/if}{/each}
+							</p>
+							<span class="flex shrink-0 items-center gap-2">
+								{#if copied}<span class="text-micro text-muted" aria-live="polite">{copied}</span>{/if}
+								<button class="btn btn-ghost btn-sm" onclick={copySummary}>Copy summary</button>
+							</span>
+						</div>
+						{#each summary.events as e (e.id)}
+							<p class="mt-3 flex items-center gap-2 rounded-card bg-surface-2 px-3 py-2 text-small text-muted">
+								<EventMarker kind={e.kind} />
+								<span>This week: <span class="font-semibold text-text">{e.title}</span>, {e.detail}.</span>
+							</p>
+						{/each}
+					</section>
+				{/if}
+
 				<!-- Reading pulse -->
 				<p class="section-label">Reading pulse</p>
 				<!-- Three across at most: at six the tiles were too narrow for a label and
@@ -213,8 +264,46 @@
 							current: i === d.weekly_active.length - 1,
 							title: `Week of ${weekLabel(w.week)} · ${fmt(w.readers)} reader${w.readers === 1 ? '' : 's'}`
 						}))}
-					/>
-					<p class="mt-2 text-micro text-muted">The last bar is this week so far.</p>
+					>
+						{#snippet foot(col)}
+							<!-- What happened that week, under its bar (wide screens; the list
+							     below carries the same events on a phone). -->
+							<div class="hidden h-5 items-center justify-center gap-1 sm:flex">
+								{#each eventsByWeek.get(col.key) ?? [] as e (e.id)}
+									<EventMarker kind={e.kind} label="{e.title}, {e.detail}" active={pointed === e} onpoint={() => (pointed = e)} />
+								{/each}
+							</div>
+						{/snippet}
+					</ColumnChart>
+					{#if events.length}
+						<p class="mt-2 hidden min-h-[2.6em] text-small text-muted sm:block" aria-live="polite">
+							{#if pointed}
+								{@const n = after(pointed.week)}
+								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />{n}{/if}
+							{:else}
+								Hover or tap a marker to see what happened that week.
+							{/if}
+						</p>
+						<ul class="mt-3 divide-y divide-border border-t border-border sm:hidden">
+							{#each [...events].reverse() as e (e.id)}
+								{@const n = after(e.week)}
+								<li class="flex items-center gap-2 py-2 text-small">
+									<span class="w-12 shrink-0 tabular-nums text-muted">{weekLabel(e.date)}</span>
+									<EventMarker kind={e.kind} />
+									<span class="min-w-0 flex-1"><span class="font-semibold text-text">{e.title}</span> <span class="text-muted">{e.detail}</span></span>
+									<span class="max-w-[9rem] text-end text-micro text-muted">{n ?? 'this week'}</span>
+								</li>
+							{/each}
+						</ul>
+					{/if}
+					<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-micro text-muted">
+						<span>The last bar is this week so far.</span>
+						{#each Object.entries(EVENT_KINDS) as [k, { label }] (k)}
+							{#if events.some((e) => e.kind === k)}
+								<span class="inline-flex items-center gap-1.5"><EventMarker kind={k as EngagementEvent['kind']} small />{label}</span>
+							{/if}
+						{/each}
+					</p>
 				</section>
 
 				<!-- Rising this week — biggest gain in weekly readers -->

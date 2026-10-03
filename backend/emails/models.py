@@ -279,11 +279,14 @@ class Broadcast(models.Model):
         BroadcastStatus.PAUSED,
     )
 
+    #: Statuses of a broadcast that has mailed (or is mailing) readers.
+    MAILED = (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT)
+
     @property
     def is_locked(self) -> bool:
         """Whether its copy and audience are frozen: it has mailed (or may have
         mailed) someone. A schedule withdrawn before it started is not."""
-        if self.status in (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT):
+        if self.status in self.MAILED:
             return True
         return self.status == BroadcastStatus.CANCELED and self.send_started_at is not None
 
