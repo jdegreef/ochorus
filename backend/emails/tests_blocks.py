@@ -103,6 +103,12 @@ class RenderTests(TestCase):
         self.assertIn("&lt;b&gt;bold&lt;/b&gt;", html)
         self.assertNotIn("<b>bold</b>", html)
 
+    def test_email_frame_shrinks_to_a_phone(self):
+        # A fixed 600px frame made every email scroll sideways on a phone.
+        html = self._render("en", {"type": "heading", "text": "H"}).html
+        self.assertIn("width:100%; max-width:600px", html)
+        self.assertNotRegex(html, r"[^-]width:600px")
+
     def test_rtl_language_sets_direction(self):
         html = self._render("ar", {"type": "quote", "text": "Q"}).html
         self.assertIn('dir="rtl"', html)

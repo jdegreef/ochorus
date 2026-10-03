@@ -487,7 +487,7 @@
 					</label>
 				</div>
 				<div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
-					<EmailBlocksEditor bind:blocks={draft.content[editLocale].blocks!} locale={editLocale} disabled={readOnly} />
+					<EmailBlocksEditor bind:blocks={draft.content[editLocale].blocks!} locale={editLocale} localeName={localeLabel(editLocale)} disabled={readOnly} />
 					<EmailPreview locale={editLocale} subject={draft.subject[editLocale] ?? ''} content={draft.content[editLocale]} />
 				</div>
 			{/if}

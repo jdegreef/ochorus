@@ -18,8 +18,9 @@
 	let {
 		blocks = $bindable(),
 		locale,
+		localeName = locale,
 		disabled = false
-	}: { blocks: EmailBlock[]; locale: string; disabled?: boolean } = $props();
+	}: { blocks: EmailBlock[]; locale: string; localeName?: string; disabled?: boolean } = $props();
 
 	const TYPES: { type: EmailBlockType; label: string }[] = [
 		{ type: 'heading', label: 'Heading' },
@@ -163,9 +164,9 @@
 						</span>
 						{#if item && item.languages.length}
 							{#if item.languages.includes(locale)}
-								<span class="text-micro text-accent">Has a {locale} edition</span>
+								<span class="text-micro text-accent">Has a {localeName} edition</span>
 							{:else}
-								<span class="text-micro text-warning">No {locale} edition — left out of this language's email</span>
+								<span class="text-micro text-warning">No {localeName} edition — left out of this email</span>
 							{/if}
 						{/if}
 					</div>
