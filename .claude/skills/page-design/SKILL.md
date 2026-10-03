@@ -93,6 +93,12 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   A key that holds the READER'S data rather than a device preference (a
+   plan's schedule choices, anything a sign-out should not hand the next
+   person) is declared in `reading-schema.ts` and listed in
+   `READING_DATA_KEYS`, never a literal in a component — unlisted, it
+   survives sign-out on a shared device. Write it on change, not from an
+   `$effect` that also fires on mount.
    **Mind the prerender's API load** (the crawl's load once took the API
    down): a decoration fetch on a LEAF route runs once per page per locale, so
    prefer deriving it from the payload already fetched (the topic page builds
