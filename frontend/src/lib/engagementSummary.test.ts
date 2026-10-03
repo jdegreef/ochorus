@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { durationWords, weekChange, weeklySummary } from './engagementSummary';
+import { deltaWords, durationWords, followingWeek, weekChange, weeklySummary } from './engagementSummary';
 import type { EngagementEvent } from './library-admin';
 
 const base = (over: Record<string, number> = {}) => ({
@@ -30,7 +30,7 @@ describe('durationWords', () => {
 
 describe('weeklySummary', () => {
 	it('says how the week went', () => {
-		expect(weeklySummary(base(), '2026-10-03', href).text).toBe(
+		expect(weeklySummary(base(), href).text).toBe(
 			'11 readers opened a book this week, up 2 on last week, and spent 48 minutes reading.'
 		);
 	});
@@ -40,29 +40,46 @@ describe('weeklySummary', () => {
 			...base({ hearts_7d: 2, hearts_7d_prev: 7 }),
 			rising: [{ title: 'The Pursuit of God', delta: 4 }] as never[]
 		};
-		const s = weeklySummary(d, '2026-10-03', href);
+		const s = weeklySummary(d, href);
 		expect(s.text).toContain('The Pursuit of God is rising fastest, with 4 more readers than last week.');
 		expect(s.text).toContain('Hearts fell to 2 this week.');
 		expect(s.parts.find((p) => p.text === 'The Pursuit of God')?.href).toBe('/books/x');
-		expect(weeklySummary(base({ hearts_7d: 9 }), '2026-10-03', href).text).not.toContain('Hearts');
+		expect(weeklySummary(base({ hearts_7d: 9 }), href).text).not.toContain('Hearts');
 	});
 
 	it('leaves reading time out when there is none, and says so plainly on an empty week', () => {
-		expect(weeklySummary({ ...base(), time: { seconds_7d: 0 } as never }, '2026-10-03', href).text).toBe(
+		expect(weeklySummary({ ...base(), time: { seconds_7d: 0 } as never }, href).text).toBe(
 			'11 readers opened a book this week, up 2 on last week.'
 		);
-		expect(weeklySummary(base({ active_7d: 0 }), '2026-10-03', href).text).toBe(
+		expect(weeklySummary(base({ active_7d: 0 }), href).text).toBe(
 			'No one has opened a book yet this week.'
 		);
 	});
 
-	it("picks the last 7 days' events", () => {
-		const ev = (date: string): EngagementEvent => ({ week: date, date, kind: 'email', title: date, detail: '' });
-		const s = weeklySummary(
-			{ ...base(), events: [ev('2026-09-26'), ev('2026-09-27'), ev('2026-10-03')] },
-			'2026-10-03',
-			href
-		);
-		expect(s.events.map((e) => e.date)).toEqual(['2026-09-27', '2026-10-03']);
+	it("names only the events the server marks as this week's", () => {
+		const ev = (title: string, recent: boolean): EngagementEvent => ({
+			week: '2026-09-28',
+			date: '2026-09-29',
+			kind: 'email',
+			title,
+			detail: '',
+			recent
+		});
+		const s = weeklySummary({ ...base(), events: [ev('old', false), ev('new', true)] }, href);
+		expect(s.events.map((e) => e.title)).toEqual(['new']);
+	});
+});
+
+describe('followingWeek', () => {
+	const series = [
+		{ week: 'a', readers: 4 },
+		{ week: 'b', readers: 8 }
+	];
+	it('says what followed, and nothing for the last week', () => {
+		expect(followingWeek(series, 'a')).toEqual({ readers: 8, delta: 4 });
+		expect(followingWeek(series, 'b')).toBeNull();
+		expect(deltaWords(4)).toBe('up 4');
+		expect(deltaWords(-1)).toBe('down 1');
+		expect(deltaWords(0)).toBe('no change');
 	});
 });

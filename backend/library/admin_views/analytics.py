@@ -27,7 +27,9 @@ from ..models import (
 )
 from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
+from ..team_events import team_events
 from ..views import _language_entry
+from ..weeks import day_of, week_start, week_starts
 
 
 def _prefer_en(rows, value_of):
@@ -466,22 +468,13 @@ class AdminEngagementView(APIView):
 
     WEEKS = 8
 
-    @staticmethod
-    def _week_starts(now, weeks: int) -> list:
-        """The Mondays of the last ``weeks`` weeks, oldest first, this week last."""
-        from datetime import timedelta
-
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())
-        return [this_week - timedelta(weeks=i) for i in range(weeks - 1, -1, -1)]
-
     def _weekly_active(self, now, weeks: int = WEEKS) -> list[dict]:
         from datetime import timedelta
 
         from reading.models import ReadingProgress
 
         out = []
-        for start in self._week_starts(now, weeks):
+        for start in week_starts(now, weeks):
             end = start + timedelta(weeks=1)
             readers = (
                 ReadingProgress.objects.filter(
@@ -495,82 +488,28 @@ class AdminEngagementView(APIView):
         return out
 
     def _events(self, now, weeks: int = WEEKS) -> list[dict]:
-        """What the team did, by week, for the markers under the weekly chart:
-        emails sent to readers, languages taken live, and works added. Oldest
-        first; each ``{week, date, kind, title, detail}``, ``week`` being the
-        Monday the weekly chart keys that week by.
-
-        Only things done TO readers that week. Lifecycle emails go out every day
-        (background, not an event), and drafts, tests and canceled broadcasts
-        never reached anyone. Works are one event per week, not per work, so a
-        big import doesn't bury the row."""
-        from collections import Counter, defaultdict
+        """What the team did in the charted weeks (``library.team_events``),
+        for the markers under the weekly chart: each with the ``week`` the
+        chart keys it by, its ``date``, and whether it falls in the same last
+        7 days as ``active_7d`` (``recent``), for the summary sentence."""
         from datetime import datetime, timedelta
 
         from django.utils import timezone
 
-        from emails.models import Broadcast, BroadcastStatus
-
-        from ..models import Book, Language, Sermon
-
-        starts = self._week_starts(now, weeks)
-        since = timezone.make_aware(datetime.combine(starts[0], datetime.min.time()))
-
-        def week_of(dt):
-            day = timezone.localtime(dt).date()
-            return (day - timedelta(days=day.weekday())).isoformat()
-
-        events = []
-        for b in Broadcast.objects.filter(
-            send_started_at__gte=since,
-            status__in=[BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT],
-        ).order_by("send_started_at"):
-            sent = b.progress["sent"]
-            events.append(
-                {
-                    "at": b.send_started_at,
-                    "kind": "email",
-                    "title": b.name,
-                    "detail": f"sent to {sent} reader{'' if sent == 1 else 's'}",
-                }
-            )
-        for lang in Language.objects.filter(went_live_at__gte=since).order_by("went_live_at"):
-            events.append(
-                {
-                    "at": lang.went_live_at,
-                    "kind": "language",
-                    "title": f"{lang.name} went live",
-                    "detail": "now in the language switcher",
-                }
-            )
-        added: dict[str, Counter] = defaultdict(Counter)
-        first: dict[str, datetime] = {}  # each week's earliest addition
-        for model in (Book, Sermon):
-            for code, created in model.objects.filter(created_at__gte=since).values_list(
-                "language", "created_at"
-            ):
-                week = week_of(created)
-                added[week][code] += 1
-                first[week] = min(first.get(week, created), created)
-        for week, counts in added.items():
-            total = sum(counts.values())
-            events.append(
-                {
-                    "at": first[week],
-                    "kind": "works",
-                    "title": f"{total} work{'' if total == 1 else 's'} added",
-                    "detail": ", ".join(
-                        f"{n} in {_language_entry(code)['name']}"
-                        for code, n in counts.most_common()
-                    ),
-                }
-            )
-        events.sort(key=lambda e: e["at"])
-        for e in events:
+        since = timezone.make_aware(datetime.combine(week_starts(now, weeks)[0], datetime.min.time()))
+        recent = now - timedelta(days=7)
+        out = []
+        for e in team_events(since):
             at = e.pop("at")
-            e["week"] = week_of(at)
-            e["date"] = timezone.localtime(at).date().isoformat()
-        return events
+            out.append(
+                {
+                    **e,
+                    "week": week_start(day_of(at)).isoformat(),
+                    "date": day_of(at).isoformat(),
+                    "recent": at >= recent,
+                }
+            )
+        return out
 
 
 # Human labels for the reader themes stored on UserProfile.
@@ -903,22 +842,17 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from datetime import timedelta
-
         from accounts.models import UserProfile
 
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
         buckets = {}
         # One pass over sign-up dates, counted into their Monday-anchored week.
         for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = created.date() - timedelta(days=created.date().weekday())
+            wk = week_start(day_of(created))
             buckets[wk] = buckets.get(wk, 0) + 1
-        out = []
-        for i in range(weeks - 1, -1, -1):
-            wk = this_week - timedelta(weeks=i)
-            out.append({"week": wk.isoformat(), "count": buckets.get(wk, 0)})
-        return out
+        return [
+            {"week": wk.isoformat(), "count": buckets.get(wk, 0)}
+            for wk in week_starts(now, weeks)
+        ]
 
 
 

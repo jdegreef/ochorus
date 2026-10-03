@@ -6,8 +6,9 @@
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
 	import ReachSpark from '$lib/components/ReachSpark.svelte';
-	import { adminEditionHref, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
-	import { weeklySummary } from '$lib/engagementSummary';
+	import EventMarker from '$lib/components/EventMarker.svelte';
+	import { adminEditionHref, EVENT_KINDS, eventKey, formatDuration, getAdminEngagement, periodTrend, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { deltaWords, followingWeek, weeklySummary } from '$lib/engagementSummary';
 
 	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
 	const data = $derived(engagement.data);
@@ -108,13 +109,8 @@
 		return `color-mix(in srgb, var(--gold) ${pct}%, var(--surface-2))`;
 	};
 
-	// The opening sentence (idea 6): the last 7 days in words, plus this week's
-	// events. `today` is the viewer's date, the same clock the week labels use.
-	const todayIso = () => {
-		const t = new Date();
-		return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
-	};
-	const summary = $derived(data ? weeklySummary(data, todayIso(), workHref) : null);
+	// The opening sentence: the last 7 days in words, plus this week's events.
+	const summary = $derived(data ? weeklySummary(data, workHref) : null);
 	let copied = $state('');
 	async function copySummary() {
 		if (!summary) return;
@@ -126,32 +122,18 @@
 		}
 	}
 
-	// What the team did, under the weekly chart (idea 7): each week's events,
-	// and the one being pointed at, named in the line under the chart.
-	const EVENT_GLYPH: Record<EngagementEvent['kind'], string> = { email: '✉', language: '◎', works: '+' };
-	const EVENT_LABEL: Record<EngagementEvent['kind'], string> = {
-		email: 'email to readers',
-		language: 'language went live',
-		works: 'works added'
-	};
+	// What the team did, under the weekly chart: each week's events, and the
+	// one being pointed at, named in the line under the chart.
 	const eventsByWeek = $derived.by(() => {
 		const byWeek = new Map<string, EngagementEvent[]>();
-		for (const e of data?.events ?? []) byWeek.set(e.week, [...(byWeek.get(e.week) ?? []), e]);
+		for (const e of data?.events ?? []) {
+			const list = byWeek.get(e.week);
+			if (list) list.push(e);
+			else byWeek.set(e.week, [e]);
+		}
 		return byWeek;
 	});
-	/** Readers the week after an event's week, and the change: what followed,
-	 *  stated without claiming the event caused it. Null for this week. */
-	const nextWeek = (week: string) => {
-		const series = data?.weekly_active ?? [];
-		const i = series.findIndex((w) => w.week === week);
-		if (i < 0 || i + 1 >= series.length) return null;
-		return { readers: series[i + 1].readers, delta: series[i + 1].readers - series[i].readers };
-	};
-	const followed = (week: string) => {
-		const n = nextWeek(week);
-		if (!n) return 'this week';
-		return n.delta ? `${n.delta > 0 ? '+' : ''}${n.delta} next week` : 'no change next week';
-	};
+	const after = (week: string) => followingWeek(data?.weekly_active ?? [], week);
 	let pointed = $state<EngagementEvent | null>(null);
 
 	const planSteps = $derived(
@@ -207,9 +189,9 @@
 								<button class="btn btn-ghost btn-sm" onclick={copySummary}>Copy summary</button>
 							</span>
 						</div>
-						{#each summary.events as e (`${e.kind}:${e.date}:${e.title}`)}
+						{#each summary.events as e (eventKey(e))}
 							<p class="mt-3 flex items-center gap-2 rounded-card bg-surface-2 px-3 py-2 text-small text-muted">
-								<span class="ev ev-{e.kind}" aria-hidden="true">{EVENT_GLYPH[e.kind]}</span>
+								<EventMarker kind={e.kind} />
 								<span>This week: <span class="font-semibold text-text">{e.title}</span>, {e.detail}.</span>
 							</p>
 						{/each}
@@ -286,16 +268,8 @@
 							<!-- What happened that week, under its bar (wide screens; the list
 							     below carries the same events on a phone). -->
 							<div class="hidden h-5 items-center justify-center gap-1 sm:flex">
-								{#each eventsByWeek.get(col.key) ?? [] as e (`${e.kind}:${e.date}:${e.title}`)}
-									<button
-										type="button"
-										class="ev ev-{e.kind}"
-										class:ev-on={pointed === e}
-										aria-label="{e.title}, {e.detail}"
-										onmouseenter={() => (pointed = e)}
-										onfocus={() => (pointed = e)}
-										onclick={() => (pointed = e)}>{EVENT_GLYPH[e.kind]}</button
-									>
+								{#each eventsByWeek.get(col.key) ?? [] as e (eventKey(e))}
+									<EventMarker kind={e.kind} label="{e.title}, {e.detail}" active={pointed === e} onpoint={() => (pointed = e)} />
 								{/each}
 							</div>
 						{/snippet}
@@ -303,28 +277,29 @@
 					{#if d.events.length}
 						<p class="mt-2 hidden min-h-[2.6em] text-small text-muted sm:block" aria-live="polite">
 							{#if pointed}
-								{@const n = nextWeek(pointed.week)}
-								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />Readers the next week: {fmt(n.readers)} ({n.delta > 0 ? `up ${n.delta}` : n.delta < 0 ? `down ${-n.delta}` : 'no change'}){/if}
+								{@const n = after(pointed.week)}
+								<span class="font-semibold text-text">{pointed.title}</span> · {weekLabel(pointed.date)} · {pointed.detail}{#if n}<br />Readers the next week: {fmt(n.readers)} ({deltaWords(n.delta)}){/if}
 							{:else}
 								Hover or tap a marker to see what happened that week.
 							{/if}
 						</p>
 						<ul class="mt-3 divide-y divide-border border-t border-border sm:hidden">
-							{#each d.events.toReversed() as e (`${e.kind}:${e.date}:${e.title}`)}
+							{#each d.events.toReversed() as e (eventKey(e))}
+								{@const n = after(e.week)}
 								<li class="flex items-center gap-2 py-2 text-small">
 									<span class="w-12 shrink-0 tabular-nums text-muted">{weekLabel(e.date)}</span>
-									<span class="ev ev-{e.kind}" aria-hidden="true">{EVENT_GLYPH[e.kind]}</span>
+									<EventMarker kind={e.kind} />
 									<span class="min-w-0 flex-1"><span class="font-semibold text-text">{e.title}</span> <span class="text-muted">{e.detail}</span></span>
-									<span class="shrink-0 tabular-nums text-muted">{followed(e.week)}</span>
+									<span class="shrink-0 tabular-nums text-muted">{n ? `${deltaWords(n.delta)} next week` : 'this week'}</span>
 								</li>
 							{/each}
 						</ul>
 					{/if}
 					<p class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-micro text-muted">
 						<span>The last bar is this week so far.</span>
-						{#each ['email', 'language', 'works'] as const as k (k)}
+						{#each Object.entries(EVENT_KINDS) as [k, { label }] (k)}
 							{#if d.events.some((e) => e.kind === k)}
-								<span class="inline-flex items-center gap-1.5"><span class="ev ev-sm ev-{k}" aria-hidden="true">{EVENT_GLYPH[k]}</span>{EVENT_LABEL[k]}</span>
+								<span class="inline-flex items-center gap-1.5"><EventMarker kind={k as EngagementEvent['kind']} small />{label}</span>
 							{/if}
 						{/each}
 					</p>
@@ -560,40 +535,6 @@
 </div>
 
 <style>
-	/* An event marker: a small round glyph, coloured by kind. */
-	.ev {
-		display: inline-grid;
-		place-items: center;
-		width: 1.125rem;
-		height: 1.125rem;
-		flex: none;
-		border-radius: 999px;
-		color: var(--surface);
-		font-size: var(--fs-micro);
-		font-weight: 700;
-		line-height: 1;
-	}
-	.ev-sm {
-		width: 0.875rem;
-		height: 0.875rem;
-	}
-	.ev-email {
-		background: var(--accent);
-	}
-	.ev-language {
-		background: var(--border-strong);
-	}
-	.ev-works {
-		background: var(--gold);
-	}
-	button.ev {
-		cursor: pointer;
-	}
-	button.ev:focus-visible,
-	.ev-on {
-		outline: 2px solid var(--text);
-		outline-offset: 1px;
-	}
 	/* Privacy badge — a persistent reminder that this page is aggregate-only,
 	   dressed as a quiet feature rather than fine print. */
 	.privacy-badge {

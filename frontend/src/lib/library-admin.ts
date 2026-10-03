@@ -1092,17 +1092,25 @@ export type Trend = { dir: 'up' | 'down' | 'flat'; text: string; bad?: boolean }
 
 // Below this baseline a percentage is noise: 1 → 30 sign-ups is "+2900%",
 // true and useless. Small bases report the absolute change ("+29 vs 1") instead.
-export const SMALL_BASE = 20;
+const SMALL_BASE = 20;
 
 const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
 const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
 
+/** The change between two periods: the count, and the percentage once the
+ *  base is big enough to mean something (null below it). Shared by the trend
+ *  chips and the Engagement page's summary sentence, so both follow one rule. */
+export const periodChange = (cur: number, prev: number) => ({
+	delta: cur - prev,
+	pct: prev >= SMALL_BASE ? Math.round(((cur - prev) / prev) * 100) : null
+});
+
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	const { delta, pct } = periodChange(cur, prev);
 	// The baseline rides along, because "+29" means nothing without it.
-	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: `${signed(cur - prev)} vs ${prev}` };
-	const d = Math.round(((cur - prev) / prev) * 100);
-	return { dir: dirOf(d), text: `${signed(d)}%` };
+	if (pct === null) return { dir: dirOf(delta), text: `${signed(delta)} vs ${prev}` };
+	return { dir: dirOf(pct), text: `${signed(pct)}%` };
 };
 
 /** The change between two RATES (0–1), in percentage points — a rate moving
@@ -1284,14 +1292,28 @@ export interface AdminEngagement {
 
 /** One thing done to readers in a charted week: an email sent, a language taken
  *  live, or works added (one event per week, however many). `week` is the
- *  Monday the weekly chart keys that week by; `date` the day it happened. */
+ *  Monday the weekly chart keys that week by; `date` the day it happened;
+ *  `recent` whether it falls in the same last 7 days as `active_7d`. */
 export interface EngagementEvent {
 	week: string;
 	date: string;
-	kind: 'email' | 'language' | 'works';
+	kind: EngagementEventKind;
 	title: string;
 	detail: string;
+	recent: boolean;
 }
+
+export type EngagementEventKind = 'email' | 'language' | 'works';
+
+/** Each event kind's marker glyph and legend label. */
+export const EVENT_KINDS: Record<EngagementEventKind, { glyph: string; label: string }> = {
+	email: { glyph: '✉', label: 'email to readers' },
+	language: { glyph: '◎', label: 'language went live' },
+	works: { glyph: '+', label: 'works added' }
+};
+
+/** A stable key for an event in a keyed each block. */
+export const eventKey = (e: EngagementEvent) => `${e.kind}:${e.date}:${e.title}`;
 
 export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
 

@@ -1,8 +1,9 @@
 // The Engagement page's opening sentence: how the last 7 days went, in words,
 // from numbers the page already loads. Pure, so its wording rules are tested
 // rather than eyeballed. "This week" is the last 7 days, the same window as the
-// "Active · 7d" tile, so the sentence and the tile never disagree.
-import { SMALL_BASE, type AdminEngagement, type EngagementEvent } from './library-admin';
+// "Active · 7d" tile; the server marks which events fall in it (`recent`).
+import { plural } from './languageHealth';
+import { periodChange, type AdminEngagement, type EngagementEvent } from './library-admin';
 
 /** A run of the sentence: plain, bold, or a link. */
 export type SummaryPart = { text: string; strong?: boolean; href?: string };
@@ -18,15 +19,13 @@ export interface WeeklySummary {
 /** Hearts must move at least this much to earn a clause. */
 export const HEARTS_MIN_CHANGE = 3;
 
-const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
-
 /** "up 2 on last week": a count below the small base, a percentage above it,
  *  the same rule as the trend chips. */
 export function weekChange(cur: number, prev: number): string {
-	if (cur === prev) return 'the same as last week';
-	const dir = cur > prev ? 'up' : 'down';
-	if (prev < SMALL_BASE) return `${dir} ${Math.abs(cur - prev)} on last week`;
-	return `${dir} ${Math.abs(Math.round(((cur - prev) / prev) * 100))}% on last week`;
+	const { delta, pct } = periodChange(cur, prev);
+	if (!delta) return 'the same as last week';
+	const dir = delta > 0 ? 'up' : 'down';
+	return pct === null ? `${dir} ${Math.abs(delta)} on last week` : `${dir} ${Math.abs(pct)}% on last week`;
 }
 
 /** Reading time in words: "48 minutes", "1 hour 12 minutes", "under a minute". */
@@ -39,21 +38,28 @@ export function durationWords(seconds: number): string {
 	return m ? `${plural(h, 'hour')} ${plural(m, 'minute')}` : plural(h, 'hour');
 }
 
+/** Readers the week after `week`, and the change: what followed an event,
+ *  stated without claiming the event caused it. Null for the last week. */
+export function followingWeek(series: { week: string; readers: number }[], week: string) {
+	const i = series.findIndex((w) => w.week === week);
+	if (i < 0 || i + 1 >= series.length) return null;
+	return { readers: series[i + 1].readers, delta: series[i + 1].readers - series[i].readers };
+}
+
+/** That change in words: "up 2", "down 1", "no change". */
+export const deltaWords = (delta: number) =>
+	delta > 0 ? `up ${delta}` : delta < 0 ? `down ${-delta}` : 'no change';
+
 type SummaryInput = Pick<AdminEngagement, 'overview' | 'time' | 'rising'> & {
 	events?: EngagementEvent[];
 };
 
-/** `today` is an ISO date (the viewer's), for picking this week's events. */
 export function weeklySummary(
 	d: SummaryInput,
-	today: string,
 	workHref: (w: SummaryInput['rising'][number]) => string
 ): WeeklySummary {
 	const { active_7d: n, active_7d_prev: prev, hearts_7d, hearts_7d_prev } = d.overview;
-	const since = new Date(today + 'T00:00:00Z'); // UTC, so toISOString can't shift the day
-	since.setUTCDate(since.getUTCDate() - 6);
-	const sinceIso = since.toISOString().slice(0, 10);
-	const events = (d.events ?? []).filter((e) => e.date >= sinceIso && e.date <= today);
+	const events = (d.events ?? []).filter((e) => e.recent);
 
 	if (!n) {
 		const text = 'No one has opened a book yet this week.';

@@ -17,6 +17,7 @@ from rest_framework.test import APIClient
 from emails.models import Broadcast, BroadcastStatus
 
 from .models import Author, Book, Language, Sermon
+from .weeks import day_of, week_start
 
 
 @override_settings(DEBUG=True)
@@ -31,8 +32,7 @@ class EngagementEventsTests(TestCase):
         return res.data["events"]
 
     def _week(self, dt):
-        day = timezone.localtime(dt).date()
-        return (day - timedelta(days=day.weekday())).isoformat()
+        return week_start(day_of(dt)).isoformat()
 
     def test_a_sent_email_is_an_event_and_a_draft_is_not(self):
         Broadcast.objects.create(
@@ -76,6 +76,16 @@ class EngagementEventsTests(TestCase):
         old = Book.objects.create(author=self.author, slug="old", language="en", title="Old")
         Book.objects.filter(pk=old.pk).update(created_at=long_ago)
         self.assertEqual(self._events(), [])
+
+    def test_recent_means_the_same_last_7_days_as_the_active_tile(self):
+        Broadcast.objects.create(
+            name="This week", status=BroadcastStatus.SENT, send_started_at=self.now - timedelta(days=2)
+        )
+        Broadcast.objects.create(
+            name="Last week", status=BroadcastStatus.SENT, send_started_at=self.now - timedelta(days=8)
+        )
+        recent = {e["title"]: e["recent"] for e in self._events()}
+        self.assertEqual(recent, {"This week": True, "Last week": False})
 
     def test_every_event_falls_in_a_charted_week(self):
         Broadcast.objects.create(
