@@ -806,12 +806,26 @@ class SeedSermonsTests(TestCase):
         # test_second_run_updates_nothing does NOT catch this — without the
         # corrections step in between there is nothing for the seed to revert.
         from library import corrections
+        from library.content_fixtures import sermon_fixture_path
 
         sermon = Sermon.objects.filter(language="en").first()
+        # The property is one sermon's, so the three corrections passes and two
+        # seeds here cover that sermon alone: the other rows go (rolled back
+        # with the test) and the seed reads only its file. Walking the whole
+        # sermon library five times made this the slowest test in the suite;
+        # the corpus-wide "a no-op deploy writes nothing" is
+        # test_second_run_updates_nothing's job.
+        Sermon.objects.exclude(pk=sermon.pk).delete()
+        path = sermon_fixture_path(sermon.slug, sermon.language)
+
+        def its_file():
+            yield path, json.loads(path.read_text())
 
         with patch.dict(
             corrections.BODY_CORRECTIONS,
             {sermon.slug: {"replacements": synthetic_repair(sermon.body_html)}},
+        ), patch(
+            "library.management.commands.seed_sermons.iter_work_files", its_file
         ):
             corrected = corrections.settled_sermon_body(sermon.slug, sermon.body_html)
             self.assertNotEqual(corrected, sermon.body_html)
