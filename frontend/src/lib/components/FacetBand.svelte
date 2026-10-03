@@ -266,7 +266,7 @@
 	}
 	.band-kid.on {
 		background: var(--accent-soft);
-		border-color: var(--accent-soft-border);
+		border-color: var(--accent);
 		color: var(--accent);
 		font-weight: 600;
 	}

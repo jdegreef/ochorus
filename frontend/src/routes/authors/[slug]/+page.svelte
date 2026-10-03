@@ -400,7 +400,11 @@
 	     contemporaries — and it is exactly what someone reading eleven minutes
 	     of prose wants out of the way. -->
 	{#if !readerUi.focus}
-	<Breadcrumb items={crumbs} />
+	<!-- On the reading column like everything below it: full-width, the trail
+	     was a second left edge beside the centred page (QA, 2026-10). -->
+	<div class="mx-auto w-full max-w-[40rem]">
+		<Breadcrumb items={crumbs} />
+	</div>
 
 	<!-- A CENTRED masthead stack: portrait, name, era/counts, then the action row,
 	     all sharing the same reading column as the timeline, quote and biography
@@ -525,26 +529,29 @@
 	{#if showSubnav}
 		<nav
 			bind:clientHeight={subnavH}
-			class="author-subnav sticky z-(--z-pinned) mt-6 border-b border-border bg-bg"
+			class="author-subnav sticky z-(--z-pinned) mt-6 bg-bg"
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<!-- Centred when the tabs fit, start-aligned when they don't: plain
-			     `justify-center` on a scroller pushed the first tabs past the
-			     start edge, out of scroll reach. -->
-			<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
-				{#each navItems as item (item.id)}
-					<li>
-						<a
-							href="#{item.id}"
-							class="subnav-link"
-							class:is-active={spy.active === item.id}
-							aria-current={spy.active === item.id ? 'true' : undefined}
-							onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
-						>
-					</li>
-				{/each}
-			</ul>
+			<!-- Tabs centred when they fit, start-aligned when they don't (plain
+			     `justify-center` on a scroller pushed the first tabs out of scroll
+			     reach). The rule spans the reading column, not the page; the nav
+			     stays full-width so its ground still covers text scrolling under. -->
+			<div class="mx-auto w-full max-w-[40rem] border-b border-border">
+				<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
+					{#each navItems as item (item.id)}
+						<li>
+							<a
+								href="#{item.id}"
+								class="subnav-link"
+								class:is-active={spy.active === item.id}
+								aria-current={spy.active === item.id ? 'true' : undefined}
+								onclick={(e) => spy.jump(e, item.id)}>{item.label}</a
+							>
+						</li>
+					{/each}
+				</ul>
+			</div>
 		</nav>
 	{/if}
 

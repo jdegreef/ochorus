@@ -55,8 +55,10 @@
 		display: flex;
 		align-items: center;
 		gap: 0.75rem;
-		min-height: 2.75rem;
-		padding-block: 0.6rem;
+		/* Room between questions — at 0.6rem the list read as cramped
+		   (QA, 2026-10); a 3rem row is also a comfortable tap target. */
+		min-height: 3rem;
+		padding-block: 0.9rem;
 		list-style: none;
 		cursor: pointer;
 		font-size: var(--fs-body);
@@ -77,9 +79,10 @@
 		transform: rotate(-90deg);
 	}
 	.qa-a {
-		padding-bottom: 1rem;
+		max-width: 68ch;
+		padding-bottom: 1.25rem;
 		font-size: var(--fs-body);
-		line-height: 1.6;
+		line-height: 1.7;
 		color: var(--muted);
 	}
 	@media (prefers-reduced-motion: reduce) {
