@@ -41,10 +41,11 @@
 	const mailHref = $derived(`mailto:?subject=${enc(title)}&body=${enc(`${title}\n\n${url}`)}`);
 
 	async function onClick() {
-		// The OS sheet only on touch devices: desktop Chrome/Edge expose
-		// `navigator.share` too, but hand off to a system dialog that often shows
-		// nothing — a click that "does nothing". The menu serves desktop better.
-		if (isCoarsePointer() && typeof navigator.share === 'function') {
+		// Not on desktop Chromium (the only engine with `userAgentData`): Chrome
+		// and Edge there hand off to a system dialog that often shows nothing —
+		// a click that "does nothing". Phones and Safari keep the OS sheet.
+		const desktopChromium = 'userAgentData' in navigator && !isCoarsePointer();
+		if (!desktopChromium && typeof navigator.share === 'function') {
 			try {
 				await navigator.share({ title, url });
 				return;

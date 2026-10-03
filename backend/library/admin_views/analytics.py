@@ -512,9 +512,11 @@ class AdminEngagementView(APIView):
 # Human labels for the reader themes stored on UserProfile.
 THEME_LABELS = {
     "": "Not yet set",
-    "paper": "Paper (light)",
+    "system": "Match device",
     "light": "Light",
+    "paper": "Paper (light, legacy)",
     "dark": "Lamplight (dark)",
+    "sepia": "Sepia",
 }
 
 # Human labels for the Supabase auth providers stored on UserProfile.providers.

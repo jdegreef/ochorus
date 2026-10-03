@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { crossesLocale } from '$lib/localeNavigation';
-	import { isCoarsePointer } from '$lib/reading';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -60,7 +59,7 @@
 		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
-		if (!isCoarsePointer()) searchKbd = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
 		auth.init();
 		pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
@@ -70,9 +69,11 @@
 
 	// A navigation into another locale must be a full document load: the
 	// locale (messages, <html lang/dir>) is fixed per document, so a client-side
-	// hop between /ar/… and /… kept the old one's direction. Links and goto are
-	// cancelled and re-issued as a real load; a back/forward across locales can't
-	// be re-issued before it happens, so afterNavigate reloads that one below.
+	// hop between /ar/… and /… kept the old one's direction. Cancelled and
+	// re-issued as a real load — a history PUSH, so a cross-locale goto loses
+	// replaceState/keepFocus (none exists today; use location.replace for one).
+	// Links you write by hand: also mark them data-sveltekit-reload, which
+	// stops a hover preload running the target's load in the wrong locale.
 	beforeNavigate(({ from, to, type, cancel }) => {
 		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
 		cancel();
@@ -80,11 +81,7 @@
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
-	afterNavigate(({ from, to, type }) => {
-		if (type === 'popstate' && crossesLocale(from?.url, to?.url)) {
-			location.reload();
-			return;
-		}
+	afterNavigate(({ from, to }) => {
 		pwa.navigated();
 		// Focus mode hides this layout's nav and footer, and only the reading
 		// surfaces carry a way out of it (FocusExit, Escape). It was never reset,
@@ -134,9 +131,10 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
-	// The search shortcut hint for this platform (the palette answers both ⌘K
-	// and Ctrl+K); set on mount, left empty on touch devices.
-	let searchKbd = $state('');
+	// The search shortcut hint (the palette answers both ⌘K and Ctrl+K):
+	// prerendered as ⌘K, respelt on mount off Apple platforms; CSS hides it on
+	// touch devices.
+	let searchKbd = $state('⌘K');
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -322,7 +320,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						{#if searchKbd}<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>{/if}
+						<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.

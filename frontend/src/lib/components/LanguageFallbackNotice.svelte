@@ -61,7 +61,8 @@
 						class="tag"
 						hreflang={ed.loc}
 						lang={ed.loc}
-						aria-current={ed.loc === fallback.shown ? 'page' : undefined}>{localeName(ed.loc)}</a
+						aria-current={ed.loc === fallback.shown ? 'page' : undefined}
+						data-sveltekit-reload>{localeName(ed.loc)}</a
 					>
 				{/each}
 			</div>

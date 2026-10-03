@@ -55,6 +55,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+	vi.useRealTimers();
 	vi.unstubAllGlobals();
 	window.history.replaceState(null, '', '/');
 });

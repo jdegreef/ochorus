@@ -328,7 +328,8 @@
 							{#each otherEditions as e, i (e.loc)}{#if i}{' · '}{/if}<a
 									href={e.href}
 									hreflang={e.loc}
-									lang={e.loc}>{localeName(e.loc)}</a
+									lang={e.loc}
+									data-sveltekit-reload>{localeName(e.loc)}</a
 								>{/each}
 						</p>
 					{/if}
