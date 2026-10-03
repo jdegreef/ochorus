@@ -2203,6 +2203,11 @@ a.sermon-row-title:hover {
 .cover-rail {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
+	/* Positioned, so it contains every absolute child: an unpositioned
+	   scroller let a card's absolutely-placed parts resolve against the page,
+	   and the Book Series rail on /books widened a 375px phone's layout
+	   viewport to 1173px (page-design: phone traps). */
+	position: relative;
 }
 @media (max-width: 639.98px) {
 	.cover-rail {
