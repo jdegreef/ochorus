@@ -1516,6 +1516,16 @@
 			"layout": "wash/sage",
 			"bar": 0.05
 		},
+		"ar/gleanings-among-the-sheaves": {
+			"ground": "3f9a60c3d07f8e91707b12b09664a85d120dc2b139a57b4100ab535935aa26f3",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ar/godliness": {
 			"ground": "c926ed08e44cc75afcd1516677092d528e3f0487f529c4165357e1ac47caa462",
 			"style": "revival",
@@ -1596,6 +1606,16 @@
 				326,
 				469
 			]
+		},
+		"ar/holy-in-christ": {
+			"ground": "01cd2b9bb6511cbc961984231d6d07951f38a635cd4daf63ecab99d3ee54fd2d",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
 		},
 		"ar/humility-2": {
 			"ground": "96f1ad9616b3ae4ad64873abd34d029727f0941f724866641216ba1e0034f91e",
@@ -1703,6 +1723,16 @@
 				463
 			]
 		},
+		"ar/ministry-of-intercession": {
+			"ground": "9d58e33374dac9351e60dadcae0e6c56989508e368b097820d1accf0830a8e55",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ar/pilgrims-progress": {
 			"ground": "9e0a4426d01ec0414ece972b8d364cf3de899d5eabe0454eb42ab30f468d8fe7",
 			"style": "press",
@@ -1757,6 +1787,31 @@
 			"scrim": 1,
 			"layout": "wash/ochre",
 			"bar": 0
+		},
+		"ar/purity-of-heart": {
+			"ground": "4f26cf9eed6a33b01ee18bb158141cc844fb663f1843bd1bdf84eb67c405f7a0",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.55,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[157, 102, 443, 131]
+				],
+				"title": [
+					[186, 355, 414, 439]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				294,
+				501
+			]
 		},
 		"ar/rise-up-men-of-god-2": {
 			"ground": "fccef2e782dd899e510d91e8c007ded6f397cbf3fe1dd2da56c771895ebd3809",
@@ -1967,6 +2022,41 @@
 			"layout": "wash/sage",
 			"bar": 0.04
 		},
+		"ar/soar-like-the-eagle-3": {
+			"ground": "1ed5797b5542bd90f4f06d655bd62b65114357d8afbc50413f8d4ed05bfcdc94",
+			"style": "lettered",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[181, 358, 419, 436]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				351,
+				444
+			]
+		},
+		"ar/spurgeon-on-prayer": {
+			"ground": "46659d76d5d93973bc5f6373004a77459ee37b7677b0be28389531ec67e5b06f",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"ar/stepping-stones-2": {
 			"ground": "0f4d1d9dafbc823a70beff8be4112fbbcb26574bbc4c545843bd670e30897b1d",
 			"style": "lettered",
@@ -1994,6 +2084,16 @@
 				326,
 				469
 			]
+		},
+		"ar/talks-to-the-farmer": {
+			"ground": "224b894d61a919164e7a1fb229d6cbc89993aa121780953eccf3a551af91b1a6",
+			"style": "revival",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
 		},
 		"ar/the-christians-secret-of-a-happy-life-4": {
 			"ground": "6162c6864a9d095720f7695166bc7fb204d1191a2af40338e15f2f9745ce8b21",
@@ -2173,6 +2273,16 @@
 			"layout": "wash/ochre",
 			"bar": 0
 		},
+		"ar/true-vine": {
+			"ground": "f328facf4912d77e4384ac00688ea67af259ca1b087c1044cf6f2264e069b26a",
+			"style": "devotional",
+			"volume": null,
+			"script": "arabic",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"ar/union-and-communion": {
 			"ground": "689326febad4304a18305f45444b48172aad1552d9a10ab74fd78b6fccb9b400",
 			"style": "revival",
@@ -2192,6 +2302,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"ar/watchman-nee-a-life": {
+			"ground": "b980acfeef1392283d6893763fc5464a9628fcb722595b14036c88ca5d5ba038",
+			"style": "house",
+			"volume": "1",
+			"script": "arabic",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[161, 102, 439, 131]
+				],
+				"title": [
+					[292, 303, 308, 347],
+					[184, 394, 416, 471]
+				],
+				"subtitle": [
+					[130, 498, 470, 537]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				260,
+				534
+			]
 		},
 		"ar/women-who-moved-heaven-2": {
 			"ground": "ea361a999c34a9a4918ee556302e4bd5d97f248abd15c9d5b2f156f0da42cb6a",

@@ -208,6 +208,19 @@
   "series": [
    "portraits-of-courage"
   ],
+  "language": "ar",
+  "title": "صور من الشجاعة",
+  "description": "سير مسيحية كاملة لرجال ونساء حسبوا النفقة وتبعوا المسيح مع ذلك: كل حياة تُروى مع تعليمها، وتوزن في ضوء الكتاب المقدس، وتُكتب بامتنان لا بتمجيد.",
+  "created_at": "2026-10-03T00:00:00Z",
+  "updated_at": "2026-10-03T00:00:00Z"
+ }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "portraits-of-courage"
+  ],
   "language": "es",
   "title": "Retratos de coraje",
   "description": "Biografías cristianas completas de hombres y mujeres que calcularon el costo y aun así siguieron a Cristo: cada vida contada junto con su enseñanza, sopesada a la luz de las Escrituras y escrita con gratitud, pero sin hagiografía.",
