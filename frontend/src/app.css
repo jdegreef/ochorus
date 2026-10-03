@@ -309,6 +309,27 @@
 	--shelf-back: #262017;
 	--shelf-wood: #6a4a2f;
 	--shelf-wood-edge: #3b2a1c;
+	/* THE LIBRARY PALETTE (design wave 1). Six hues drawn from the painted
+	   covers — indigo, oxblood, cypress, ochre, slate, plum — each with a soft
+	   ground for chips and tiles. Every hue clears 4.5:1 as text on --bg,
+	   --surface, --surface-2 AND on its own -soft, in all three themes
+	   (libraryPalette.test.ts measures it). Where a colour MEANS a library
+	   section, components go through the role aliases below (`--section-*`,
+	   applied by `data-section`), so re-assigning a section's colour is one
+	   line. Elsewhere a hue is just a colour — the stat tiles, for instance,
+	   name hues directly. Ochorus-only: Take Root has no sections. */
+	--hue-indigo: #9c9af2;
+	--hue-indigo-soft: #221f33;
+	--hue-oxblood: #ec958a;
+	--hue-oxblood-soft: #33201d;
+	--hue-cypress: #8ecaa8;
+	--hue-cypress-soft: #1a2a21;
+	--hue-ochre: #e0b45c;
+	--hue-ochre-soft: #2e2515;
+	--hue-slate: #9fbfe0;
+	--hue-slate-soft: #1b2531;
+	--hue-plum: #d8a5ca;
+	--hue-plum-soft: #2e1f2a;
 	/* THE SCRIPTS FRAUNCES DOES NOT COVER. Ochorus reads in eight languages and
 	   three of them are not Latin; Fraunces has no Arabic and no Devanagari, and
 	   Georgia behind it has no Devanagari either. So ~609,000 words of Arabic and
@@ -368,6 +389,18 @@
 	--shelf-back: #f1e8d8;
 	--shelf-wood: #b98a5c;
 	--shelf-wood-edge: #8a6440;
+	--hue-indigo: #3f3d9a;
+	--hue-indigo-soft: #ecebf7;
+	--hue-oxblood: #8a2f2a;
+	--hue-oxblood-soft: #f7e7e3;
+	--hue-cypress: #2c5a43;
+	--hue-cypress-soft: #e3efe7;
+	--hue-ochre: #7d5512;
+	--hue-ochre-soft: #f6ecd8;
+	--hue-slate: #38557a;
+	--hue-slate-soft: #e5ecf3;
+	--hue-plum: #6b3a5e;
+	--hue-plum-soft: #f3e7f0;
 }
 
 /* "Sepia" = a warm parchment reading tone: like paper but softer on the eyes
@@ -398,6 +431,68 @@
 	--shelf-back: #e8dbbf;
 	--shelf-wood: #a97b4d;
 	--shelf-wood-edge: #7a5634;
+	--hue-indigo: #3f3d9a;
+	--hue-indigo-soft: #e9e5f3;
+	--hue-oxblood: #842c27;
+	--hue-oxblood-soft: #f1ded6;
+	--hue-cypress: #2a5640;
+	--hue-cypress-soft: #dde8db;
+	--hue-ochre: #74500f;
+	--hue-ochre-soft: #efe0c2;
+	--hue-slate: #35517a;
+	--hue-slate-soft: #e0e4e6;
+	--hue-plum: #663759;
+	--hue-plum-soft: #ecdde3;
+}
+
+/* Which hue each library section wears (nav icon, active pill, section
+   chips). Theme-independent: each alias follows its hue through the themes. */
+:root {
+	--section-books: var(--hue-indigo);
+	--section-books-soft: var(--hue-indigo-soft);
+	--section-sermons: var(--hue-oxblood);
+	--section-sermons-soft: var(--hue-oxblood-soft);
+	--section-plans: var(--hue-cypress);
+	--section-plans-soft: var(--hue-cypress-soft);
+	--section-topics: var(--hue-ochre);
+	--section-topics-soft: var(--hue-ochre-soft);
+	--section-biographies: var(--hue-slate);
+	--section-biographies-soft: var(--hue-slate-soft);
+	--section-originals: var(--hue-plum);
+	--section-originals-soft: var(--hue-plum-soft);
+}
+
+/* `data-section="books"` on any element puts that section's hue in scope as
+   --section-hue / --section-hue-soft; an icon that is its direct child wears
+   it (the top nav, the phone More sheet). The mapping lives here, not in
+   markup, so a misspelt section fails to match rather than silently building
+   a var() that resolves to nothing. */
+[data-section='books'] {
+	--section-hue: var(--section-books);
+	--section-hue-soft: var(--section-books-soft);
+}
+[data-section='sermons'] {
+	--section-hue: var(--section-sermons);
+	--section-hue-soft: var(--section-sermons-soft);
+}
+[data-section='plans'] {
+	--section-hue: var(--section-plans);
+	--section-hue-soft: var(--section-plans-soft);
+}
+[data-section='topics'] {
+	--section-hue: var(--section-topics);
+	--section-hue-soft: var(--section-topics-soft);
+}
+[data-section='biographies'] {
+	--section-hue: var(--section-biographies);
+	--section-hue-soft: var(--section-biographies-soft);
+}
+[data-section='originals'] {
+	--section-hue: var(--section-originals);
+	--section-hue-soft: var(--section-originals-soft);
+}
+[data-section] > svg {
+	color: var(--section-hue);
 }
 
 @layer base {
@@ -1169,9 +1264,13 @@ nav.appnav .navlinks a:hover {
 	background: var(--surface);
 	text-decoration: none;
 }
+/* A section link's icon wears its hue at rest (the `[data-section] > svg`
+   rule), so the bar reads as five places rather than five words; the label
+   stays muted until hover, and the active pill takes the section's own soft
+   ground. Home has no section and keeps the accent. */
 nav.appnav .navlinks a.active {
-	color: var(--accent);
-	background: var(--accent-soft);
+	color: var(--section-hue, var(--accent));
+	background: var(--section-hue-soft, var(--accent-soft));
 	font-weight: 600;
 }
 /* The logo supplies its own wordmark, so this is a frame for artwork, not a

@@ -35,6 +35,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
+	import type { NavSection } from '$lib/contentNav';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -97,9 +98,10 @@
 	// Take Root, whose app nav carries five primary destinations).
 	// Home (chrome) then the five content types, whose order is shared with the
 	// footer and command palette via PRIMARY_NAV so the three can't drift (F2).
-	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
+	// Home is chrome, not a section, so it has no hue and keeps the accent.
+	const NAV = $derived<{ href: string; label: string; icon: IconName; section?: NavSection }[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid' },
-		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon }))
+		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon, section: d.section }))
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
@@ -285,6 +287,7 @@
 							href={localizeHref(item.href)}
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
+							data-section={item.section}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}
