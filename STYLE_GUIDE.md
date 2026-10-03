@@ -51,7 +51,7 @@ values are identical to Take Root's.
 | `--surface` | Card / input surface | `#201b15` | `#ffffff` |
 | `--surface-2` | Recessed / neutral button | `#2a241c` | `#f4eee3` |
 | `--text` | Primary text | `#ece3d4` | `#221c15` |
-| `--muted` | Secondary text | `#998e7d` | `#6e6358` |
+| `--muted` | Secondary text | `#ab9f8b` | `#6e6358` |
 | `--accent` | Brand indigo (links, primary) | `#9c9af2` | `#3f3d9a` |
 | `--accent-contrast` | Text on solid accent | `#16130f` | `#ffffff` |
 | `--accent-soft` | Soft indigo fill | `#221f33` | `#ecebf7` |
@@ -533,7 +533,11 @@ One family for every browse page's filter row: **`.filter-row`** (the wrapper),
 pills, active gets `.active`).
 
 Active states are **soft** (`--accent-soft` fill, `--accent` text) — never a
-solid `bg-accent` block.
+solid `bg-accent` block — **and never the fill alone**: `--accent-soft` sits
+only 1.05–1.16:1 on the page in every theme, so a selected control also carries
+an accent edge (`border-color: var(--accent)` when it has a border — `.chip`,
+`.filter-field`; an inset ring `var(--selected-edge)` wide when it doesn't —
+`.seg`, the nav pill, in its section hue).
 
 ### Inputs
 Every text input, select and textarea uses **`.field`** (`.filter-field` is the
@@ -551,13 +555,16 @@ at the start; six app destinations (Home / Books / Topics / Plans / Sermons /
 Biographies — About and Contact live in the footer, matching Take Root); the end
 cluster holds the search control, quick settings and the account menu (the
 language picker was deliberately removed from the bar). Active link carries
-`aria-current="page"`. Hidden in reader focus mode.
+`aria-current="page"`. Hidden in reader focus mode. From sm the bar's content
+sits on **`.chrome-col`** (`--chrome-w`: the page column's width, never under
+64rem), so the wordmark shares the page's start edge.
 
 ### Footer
 Identical on every page: wordmark + tagline, an **Explore** group (the six nav
 destinations, then — in English only — Articles, Scripture, Quotes, RSS), an
 **About** group (About / Contact / Legal), the mission block, a language strip
-and the copyright line. Hidden in focus mode.
+and the copyright line. Hidden in focus mode. Its rows sit on `.chrome-col`,
+like the nav bar.
 
 **Every surface that lists content types lists the same ones in the same
 order** — nav, footer Explore, the command palette's `COMMANDS`, the search

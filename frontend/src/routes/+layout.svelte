@@ -292,7 +292,7 @@
 			bind:this={navEl}
 			use:dismissable={{ open: navOpen, onDismiss: () => (navOpen = false) }}
 		>
-			<div class="appnav-inner">
+			<div class="appnav-inner chrome-col">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
 			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
 			<button
@@ -404,7 +404,7 @@
 			     the trade is that rewording those at their source also rewords this
 			     band. -->
 			{#if auth.enabled && !auth.user && !onLogin}
-				<div class="chrome-col mx-auto px-5 pt-10 sm:pt-12">
+				<div class="chrome-col px-5 pt-10 sm:pt-12">
 					<div class="footer-invite">
 						<span class="footer-invite-mark" aria-hidden="true">
 							<Icon name="bookmark" size={22} />
@@ -427,7 +427,7 @@
 			     computed once in footerGridClass, which spells every reachable
 			     grid-cols literal out for Tailwind's scanner. -->
 			<div
-				class="chrome-col mx-auto grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
+				class="chrome-col grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
 			>
 				<div class="col-span-2 lg:col-span-1">
 					<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
@@ -535,7 +535,7 @@
 			     See bibleCredit.ts, and library/language_seed.py which owns the
 			     same string. -->
 			{#if bibleCredit(lang.current)}
-				<p class="chrome-col mx-auto border-t border-border px-5 py-4 text-small text-muted" lang="en">
+				<p class="chrome-col border-t border-border px-5 py-4 text-small text-muted" lang="en">
 					{#each creditParts(bibleCredit(lang.current)) as part, i (i)}{#if part.href}<a
 								class="underline"
 								href={part.href}
@@ -561,7 +561,7 @@
 				aria-label={t('footer.languages')}
 			>
 				<div
-					class="chrome-col mx-auto flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
+					class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 				>
 					<span class="eyebrow py-1 text-text"
 						>{t('footer.languages')}</span
@@ -617,7 +617,7 @@
 			     translating, so the © costs no catalogue keys. -->
 			<div class="border-t border-border">
 				<div
-					class="chrome-col mx-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
+					class="chrome-col flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
 				>
 					<nav class="footer-legal flex flex-wrap gap-x-5 gap-y-1" aria-label={t('footer.aboutHeading')}>
 						<a class="text-muted hover:text-text" href={localizeHref('/about')}>{t('nav.about')}</a>

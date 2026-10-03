@@ -533,12 +533,10 @@
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
-			<!-- Centred when the tabs fit, start-aligned when they don't: plain
-			     `justify-center` on a scroller pushed the first tabs past the
-			     start edge, out of scroll reach. -->
-			<!-- The rule is the column's width, not the page's: a bar wider than
-			     everything under it read as misaligned. The nav itself stays
-			     full-width so its ground still covers text scrolling under it. -->
+			<!-- Tabs centred when they fit, start-aligned when they don't (plain
+			     `justify-center` on a scroller pushed the first tabs out of scroll
+			     reach). The rule spans the reading column, not the page; the nav
+			     stays full-width so its ground still covers text scrolling under. -->
 			<div class="mx-auto w-full max-w-[40rem] border-b border-border">
 				<ul class="tab-strip flex justify-center-safe gap-1" use:tabStrip={spy.active}>
 					{#each navItems as item (item.id)}

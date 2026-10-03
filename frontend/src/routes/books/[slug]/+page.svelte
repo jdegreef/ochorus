@@ -486,10 +486,11 @@
 				<BookCover {book} priority />
 			</div>
 			{#if book.artwork_credit}
-				<!-- From sm the credit hangs under the painting it names (it read as
-				     detached at the page foot — QA, 2026-10); a phone's 7rem cover
-				     column is too narrow, so there it stays at the foot (below). -->
-				<p class="cover-credit mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
+				<!-- The painting's credit (see the foot copy below for why it is
+				     shown at all): from sm it hangs under the cover it names; a
+				     phone's 7rem cover column is too narrow, so there it stays at
+				     the foot. -->
+				<p class="mt-3 hidden text-micro text-muted sm:block">{book.artwork_credit}</p>
 			{/if}
 		</div>
 
@@ -992,7 +993,7 @@
 		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
 		     and it is the provenance a reader would otherwise have to take on
 		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
+		<p class="mt-2 text-micro text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
 </div>
 
@@ -1043,9 +1044,6 @@
 	}
 	.book-hero-cover {
 		width: 7rem;
-	}
-	.cover-credit {
-		line-height: 1.4;
 	}
 	.book-hero-actions {
 		grid-column: 1 / -1;

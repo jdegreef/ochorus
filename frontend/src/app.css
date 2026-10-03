@@ -365,6 +365,11 @@
 	   Interactive controls (inputs, selects, segmented toggles, chips) take
 	   --border-strong instead; dividers and card outlines keep --border. */
 	--border-strong: #7c7060;
+	/* "Selected" is never the soft fill alone: --accent-soft sits only
+	   1.05–1.16:1 on the page in every theme, so selected controls also carry
+	   an accent edge — border-color on bordered ones (.chip, .filter-field),
+	   an inset ring of this width on borderless ones (.seg, the nav pill). */
+	--selected-edge: 1.5px;
 	--danger: #e8857a;
 	/* Gold is the reading-mark/ornament colour and fails 4.5:1 as text in the
 	   light and sepia themes, so it cannot double as "warning". This is the
@@ -1342,18 +1347,8 @@ nav.appnav .appnav-inner {
 	grid-template-columns: 1fr auto 1fr;
 	align-items: center;
 	gap: 0.45rem 0.9rem;
-	max-width: 88rem;
 	margin-inline: auto;
 	padding: 0.6rem 1.25rem;
-}
-/* From sm the bar shares the page column's edges (.chrome-col), so the logo
-   lines up with the breadcrumb and headings below instead of sitting on its
-   own wider grid (QA, 2026-10: "header and footer don't follow the body's
-   max-width"). */
-@media (min-width: 640px) {
-	nav.appnav .appnav-inner {
-		max-width: var(--chrome-w);
-	}
 }
 /* On the smallest phones (≤360px) the brand + search/gear/Sign-in controls + the
    hamburger were ~8px too wide for one row, so the hamburger wrapped onto a
@@ -1406,9 +1401,7 @@ nav.appnav .navlinks a.active {
 	color: var(--section-hue, var(--accent));
 	background: var(--section-hue-soft, var(--accent-soft));
 	font-weight: 600;
-	/* The soft ground alone sits ~1.1:1 on the bar; the hue ring is what
-	   makes "you are here" readable (see .chip.active). */
-	box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--section-hue, var(--accent)) 55%, transparent);
+	box-shadow: inset 0 0 0 var(--selected-edge) var(--section-hue, var(--accent));
 }
 /* The logo supplies its own wordmark, so this is a frame for artwork, not a
    text style — the display font / size / gap that used to set "Ochorus"
@@ -1518,6 +1511,7 @@ nav.appnav .navmore-btn.active {
 	color: var(--accent);
 	background: var(--accent-soft);
 	font-weight: 600;
+	box-shadow: inset 0 0 0 var(--selected-edge) var(--accent);
 }
 nav.appnav .navmore-menu {
 	inset-inline: 0 auto;
@@ -2436,12 +2430,15 @@ a.sermon-row-title:hover {
 	outline: 2px solid var(--accent);
 	outline-offset: 1px;
 }
+/* The shared chevron-right, turned down (closed) / up (open) like QandA's —
+   a rotation, so it needs no RTL flip. */
 .sermon-row-chevron {
 	display: block;
+	transform: rotate(90deg);
 	transition: transform var(--duration-fast);
 }
 .sermon-row.is-open .sermon-row-chevron {
-	transform: rotate(180deg);
+	transform: rotate(-90deg);
 }
 /* The brief under the entry: always there as a two-line preview (what a reader
    chooses by; the clamp is `line-clamp-2` in the markup, lifted while open). It
@@ -2771,9 +2768,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	background: var(--accent-soft);
 	color: var(--accent);
 	font-weight: 600;
-	/* Selected must not rest on the fill alone: --accent-soft is only
-	   ~1.1:1 against the page in every theme, so an accent edge carries it. */
-	box-shadow: inset 0 0 0 1.5px var(--accent);
+	box-shadow: inset 0 0 0 var(--selected-edge) var(--accent);
 }
 /* On the narrowest phones a three-option segment (e.g. biographies'
    All / In the library / Biography only) overran its box and the last label was
@@ -2804,8 +2799,6 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .chip.active {
 	background: var(--accent-soft);
-	/* An accent edge, not --accent-soft-border: the fill is ~1.1:1 on the
-	   page, so the border is what reads as "selected" (see .seg). */
 	border-color: var(--accent);
 	color: var(--accent);
 	font-weight: 600;
@@ -3093,11 +3086,11 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	}
 }
 /* The site chrome's column: the header bar and the footer rows share the page
-   column's edges from sm up, never narrower than 64rem (the nav's six links
-   and its controls need that much). Below sm they keep their own px-5. */
+   column's edges from sm up (they sat at 88rem / 64rem around a 76rem body),
+   never narrower than 64rem — the nav's six links and controls need that.
+   Declared on .app-root, where the layout sets --pw: a var() resolves where
+   the property is declared, so on :root it would never see the setting. */
 .app-root {
-	/* On .app-root, where the layout sets --pw (a var() resolves where the
-	   property is declared, so on :root it would never see the setting). */
 	--chrome-w: min(max(var(--pw, 76rem), 64rem), calc(100vw - 2.5rem));
 }
 @media (min-width: 640px) {
