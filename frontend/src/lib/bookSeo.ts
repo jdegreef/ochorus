@@ -50,4 +50,4 @@ export function distinctTitle(book: {
  * description is distinct before any truncation reaches the excerpt.
  */
 export const chapterMeta = (bookTitle: string, chapter: string, opening: string): string =>
-	`${bookTitle} — ${chapter}: ${opening.trim()}`;
+	opening.trim() ? `${bookTitle} — ${chapter}: ${opening.trim()}` : `${bookTitle} — ${chapter}`;

@@ -58,5 +58,7 @@ describe('chapterMeta', () => {
 		expect(a).toBe('Talks to the Farmer — Chapter 1: “I passed by the field of a sluggard…”');
 		expect(a).not.toBe(b);
 	});
+	it('drops the colon when the chapter has no text', () => {
+		expect(chapterMeta('Book', 'Chapter 2', '  ')).toBe('Book — Chapter 2');
+	});
 });
-
