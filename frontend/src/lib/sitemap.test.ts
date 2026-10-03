@@ -78,7 +78,14 @@ vi.mock('$lib/library-public', () => {
 		listQuoteTopicPages: empty,
 		listSeries: async (l = 'en') => (l === 'sw' ? [{ slug: 'rooted' }] : []),
 		listSermons: empty,
-		listTopics: async (l = 'en') => (l === 'sw' ? [{ slug: 'prayer' }] : []),
+		// Indexable in Swahili; on the Spanish shelf but below the API's works
+		// floor, so served there yet not advertised.
+		listTopics: async (l = 'en') =>
+			l === 'sw'
+				? [{ slug: 'prayer', indexable: true }]
+				: l === 'es'
+					? [{ slug: 'prayer', indexable: false }]
+					: [],
 		listScripturePages: async () => [
 			{ book: 'romans', chapter: 8, verse: null, citing_count: 40 },
 			{ book: 'jude', chapter: 1, verse: null, citing_count: 3 },
@@ -311,6 +318,24 @@ describe('build() author entries', () => {
 	it('advertises an author only in the locales where they have a bio or a work', async () => {
 		expect([...(await find('andrew-murray'))!.byLocale.keys()]).toEqual(['en', 'sw']);
 		expect([...(await find('e-m-bounds'))!.byLocale.keys()]).toEqual(['en']);
+	});
+});
+
+describe('build() thin per-locale pages', () => {
+	beforeEach(() => resetSitemapData());
+
+	const page = async (path: string) =>
+		(await sitemapData()).pages.find((e) => [...e.byLocale.values()].includes(path));
+
+	it('advertises a topic only where it clears the works floor', async () => {
+		expect([...(await page('/topics/prayer/'))!.byLocale.keys()]).toEqual(['sw']);
+	});
+
+	it('advertises an era only in the locales whose shelf has a writer in it', async () => {
+		// Both mocked writers are undated (contemporary) and on the English
+		// shelf only — so the Spanish and Swahili era pages would be empty.
+		expect([...(await page('/biographies/era/contemporary/'))!.byLocale.keys()]).toEqual(['en']);
+		expect(await page('/biographies/era/puritans/')).toBeUndefined();
 	});
 });
 

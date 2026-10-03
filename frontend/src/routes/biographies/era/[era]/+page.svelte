@@ -2,7 +2,7 @@
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { fullLifeDiscriminates, type AuthorBio, type BookSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangAll } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangAll, truncateMeta } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { eraOf, eraById } from '$lib/eras';
@@ -48,6 +48,16 @@
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const eraName = $derived(t(era.k));
 	const pageTitle = $derived(`${eraName} · ${t('bios.eyebrow')} — Ochorus`);
+	// Each era page names its own writers, so seven pages per locale no longer
+	// share one meta description (the generic Biographies line, kept as the tail).
+	const description = $derived(
+		truncateMeta(
+			`${eraName}${era.range ? ` (${era.range})` : ''}: ${inEra
+				.slice(0, 5)
+				.map((a) => a.name)
+				.join(', ')}. ${t('bios.metaDescription')}`
+		)
+	);
 
 	const crumbs = $derived([
 		{ name: t('common.home'), href: '/' },
@@ -64,7 +74,7 @@
 			'@type': 'CollectionPage',
 			name: pageTitle,
 			url: absUrl(localizeHref(path)),
-			description: t('bios.metaDescription'),
+			description,
 			mainEntity: {
 				'@type': 'ItemList',
 				name: eraName,
@@ -89,12 +99,18 @@
 
 <Seo
 	title={pageTitle}
-	description={t('bios.metaDescription')}
+	{description}
 	{canonical}
 	hreflang={hreflangAll(path)}
 	ogImage="{SITE_URL}/og/biographies.png"
 	structuredData={[peopleLd, crumbsLd]}
 />
+
+<!-- An era with no writers on this locale's shelf (or a failed load) is an empty state: served,
+     never indexed, and left out of the sitemap by the same test. -->
+<svelte:head>
+	{#if loadError || inEra.length === 0}<meta name="robots" content="noindex" />{/if}
+</svelte:head>
 
 <div class="page-col px-5 py-10">
 	<Breadcrumb items={crumbs} />

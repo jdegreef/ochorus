@@ -6,7 +6,7 @@
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readJSON, writeJSON } from '$lib/persisted';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangFor, pickQa } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangExact, pickQa } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -153,11 +153,13 @@
 	// Self-referential canonical, and hreflang only for the locales this shelf
 	// actually exists in. A topic no longer falls back to its English title — it
 	// 404s in a locale with no translation — so advertising every locale here
-	// would point search engines at missing pages (see hreflangFor, and the
+	// would point search engines at missing pages (see hreflangExact, and the
 	// same treatment on books/sermons).
 	const path = $derived(`/topics/${topic.slug}/`);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	const hreflang = $derived(hreflangFor(path, topic.available_languages));
+	// The API counts only the editions above its works floor, and may return
+	// none — hreflangExact then emits no alternates rather than every locale.
+	const hreflang = $derived(hreflangExact(path, topic.available_languages));
 	// The per-topic share card (npm run og:topics). One value feeds both the
 	// og:image meta tag and the CollectionPage JSON-LD image, as on books/sermons.
 	const ogImage = $derived(absUrl(`/og/topics/${topic.slug}.png`));
@@ -215,6 +217,12 @@
 	{ogImage}
 	structuredData={[topicLd, crumbsLd, qa.ld].filter(Boolean)}
 />
+
+<!-- A shelf holding only a card or two in this language: served for readers,
+     withheld from the index (and from the sitemap) until it fills. -->
+<svelte:head>
+	{#if topic.indexable === false}<meta name="robots" content="noindex" />{/if}
+</svelte:head>
 
 <div class="page-col px-5 py-10" style="--topic: {meta.accent}">
 	<Breadcrumb items={crumbs} />
