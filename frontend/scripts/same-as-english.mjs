@@ -38,6 +38,10 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	// sibling (short/long) IS translated, but "min" is the standard minute
 	// abbreviation in both Spanish and Portuguese, so the range reads identically.
 	'sermons_length_mid',
+	// "plan" / "plans" is the same word in Spanish (one) and French (one and
+	// many) — the shelves' count line, not a placeholder.
+	'common_plan_one',
+	'common_plan_many',
 	// French shares a large Latinate vocabulary with English, so a run of
 	// single-word UI labels is spelled identically in both and is correctly
 	// translated by being unchanged — not debt. These collide on `fr` only

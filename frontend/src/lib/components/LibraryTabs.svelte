@@ -15,17 +15,30 @@
 	 * `series` false drops the Series tab where the page knows this language has
 	 * none (the Books shelf hides its own series links then), so the row never
 	 * leads to an empty, unindexed shelf.
+	 *
+	 * `set="writers"` is the same row for the two indexes of the writers —
+	 * Biographies (their lives) and the A–Z (their books) — on /biographies, so
+	 * a reader there can see the alphabetical index exists and step across.
 	 */
-	type Tab = 'books' | 'series' | 'az';
-	let { current, series = true }: { current: Tab; series?: boolean } = $props();
+	type Tab = 'books' | 'series' | 'az' | 'bios';
+	let {
+		current,
+		series = true,
+		set = 'library'
+	}: { current: Tab; series?: boolean; set?: 'library' | 'writers' } = $props();
 	const t = i18n.t;
 
 	const tabs = $derived(
-		[
-			{ id: 'books' as const, href: '/books', label: t('nav.books') },
-			{ id: 'series' as const, href: '/series/', label: t('nav.series') },
-			{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
-		].filter((tab) => series || tab.id !== 'series' || current === 'series')
+		set === 'writers'
+			? [
+					{ id: 'bios' as const, href: '/biographies', label: t('nav.biographies') },
+					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+				]
+			: [
+					{ id: 'books' as const, href: '/books', label: t('nav.books') },
+					{ id: 'series' as const, href: '/series/', label: t('nav.series') },
+					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+				].filter((tab) => series || tab.id !== 'series' || current === 'series')
 	);
 
 	// A long language can push the row past a phone's width; `tabStrip` fades

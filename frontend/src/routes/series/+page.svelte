@@ -11,7 +11,12 @@
 	import SeriesContinue from '$lib/components/SeriesContinue.svelte';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
+	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { audienceBlurb, audienceName, groupByAudience, seriesCompanion } from '$lib/series';
+	import { queryChip } from '$lib/filterChips';
+	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
+	import { urlFilters } from '$lib/urlFilters.svelte';
+	import { page } from '$app/stores';
 
 	/**
 	 * Every book series in this language — the Topics shelf's anatomy and card,
@@ -24,10 +29,23 @@
 	const t = i18n.t;
 
 	const bookTotal = $derived(series.reduce((n, s) => n + s.book_count, 0));
+
+	// A filter field once the shelf is long enough to want one — the Topics
+	// shelf's row. The query is in the URL like every shelf's.
+	const filters = urlFilters({ defaults: { q: '' }, url: () => $page.url });
+	const showSearch = $derived(series.length >= SHELF_SEARCH_MIN);
+	const filtering = $derived(filters.active);
+	const clearFilters = () => filters.reset();
+	const shown = $derived.by(() => {
+		const q = filters.values.q.trim().toLowerCase();
+		return series.filter((s) => matchesQuery(q, s.title, s.description, ...(s.titles ?? [])));
+	});
+	const activeChips = $derived([queryChip(filters)].filter((c) => c !== null));
+
 	// Grouped by who each series is for. A list with no audience tagged at all
 	// (an API behind this build) stays one flat grid rather than a lone
 	// "More book series" heading over everything.
-	const groups = $derived(groupByAudience(series));
+	const groups = $derived(groupByAudience(shown));
 	const grouped = $derived(groups.some((g) => g.audience));
 	// The jump chips' targets: one id per audience group, "more" for the rest.
 	const groupId = (audience: string | null) => `audience-${audience ?? 'more'}`;
@@ -93,11 +111,43 @@
 		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
 	{/snippet}
 
+	{#snippet clearFiltersAction()}
+		<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+	{/snippet}
+
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if series.length === 0}
 		<EmptyState message={t('series.none')} />
 	{:else}
+		{#if !filtering}
+			<SeriesContinue {series} />
+		{/if}
+		{#if showSearch}
+			<div class="filter-row mb-6">
+				<input
+					bind:value={filters.values.q}
+					type="search"
+					autocomplete="off"
+					class="filter-field grow"
+					placeholder={t('series.filterPlaceholder')}
+					aria-label={t('series.filterPlaceholder')}
+				/>
+			</div>
+		{/if}
+		{#if filtering}
+			<FilterSummary
+				shown={shown.length}
+				total={series.length}
+				template={t('series.showing')}
+				onClear={clearFilters}
+				chips={activeChips}
+				class="mb-6"
+			/>
+		{/if}
+		{#if shown.length === 0}
+			<EmptyState message={t('series.noResults')} action={clearFiltersAction} />
+		{/if}
 		{#if grouped && groups.length > 1}
 			<!-- One link per audience group: "7 Book Series" with only the young
 			     readers' four above the fold left adults guessing whether there
@@ -111,7 +161,6 @@
 				{/each}
 			</nav>
 		{/if}
-		<SeriesContinue {series} />
 		{#each groups as g (g.audience ?? 'more')}
 			{@const blurb = audienceBlurb(g.audience)}
 			<section id={groupId(g.audience)} class="jump-anchor mb-12">

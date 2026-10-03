@@ -168,3 +168,42 @@ describe('the type scale is used, not bypassed', () => {
 		).toEqual([]);
 	});
 });
+
+/**
+ * The shelf controls are shared components, not per-page copies (the
+ * 2026-10-03 shelf-consistency pass). Each of these was written out by hand on
+ * two to five shelves and had drifted: a different sticky recipe per page, two
+ * A–Z rails with different padding, grid/list in opposite orders.
+ */
+describe('shelf controls come from the shared components', () => {
+	/** The long shelves whose controls pin under the app nav. */
+	const PINNED = ['books', 'sermons', 'biographies', 'authors a-z'];
+	it.each(BROWSE_PAGES.filter((p) => PINNED.includes(p.label)))(
+		'$label pins its controls with <FilterBar>',
+		({ file }) => {
+			const src = read(file);
+			expect(src, `${file}: wrap the shelf's controls in <FilterBar>.`).toContain('<FilterBar');
+			expect(
+				src.match(/class="[^"]*\bsticky\b[^"]*border-b/g) ?? [],
+				`${file}: a hand-rolled sticky controls bar — use <FilterBar> (it owns ` +
+					`the offset, the rule and the measured height).`
+			).toEqual([]);
+		}
+	);
+
+	it.each(BROWSE_PAGES)('$label draws grid/list with <ViewToggle>, if at all', ({ file }) => {
+		const src = read(file);
+		expect(
+			/<Icon name="(grid|list)"/.test(src),
+			`${file}: the grid/list switch is <ViewToggle> (grid first, same icons everywhere).`
+		).toBe(false);
+	});
+
+	it.each(BROWSE_PAGES)('$label jumps by letter with <AzRail>, if at all', ({ file }) => {
+		const src = read(file);
+		expect(
+			/aria-label=\{t\('bios\.jumpAz'\)\}/.test(src) && !src.includes('<AzRail'),
+			`${file}: an A–Z jump is <AzRail> (anchors or reveal-then-scroll buttons).`
+		).toBe(false);
+	});
+});
