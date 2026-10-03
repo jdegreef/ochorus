@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { adminEditionHref, adminEditionId, countJobsByLanguageType, type AdminTranslationJob } from './library-admin';
+import { adminEditionHref, adminEditionId, countJobsByLanguageType, formatDuration, sittingBucketLabel, type AdminTranslationJob } from './library-admin';
 
 describe('adminEditionHref', () => {
 	// The audit's "worst books first" Open lands on the edition's section of
@@ -58,5 +58,24 @@ describe('countJobsByLanguageType', () => {
 		const counts = countJobsByLanguageType([]);
 		expect(counts).toEqual({});
 		expect(counts.es?.book ?? 0).toBe(0);
+	});
+});
+
+describe('formatDuration', () => {
+	it('drops seconds by default, and keeps them under 10 minutes when precise', () => {
+		expect(formatDuration(100)).toBe('1m');
+		expect(formatDuration(100, { precise: true })).toBe('1m 40s');
+		expect(formatDuration(120, { precise: true })).toBe('2m');
+		expect(formatDuration(700, { precise: true })).toBe('11m');
+		expect(formatDuration(45, { precise: true })).toBe('45s');
+		expect(formatDuration(3700, { precise: true })).toBe('1h 1m');
+	});
+});
+
+describe('sittingBucketLabel', () => {
+	it('names a bucket from its bounds', () => {
+		expect(sittingBucketLabel({ min_seconds: 0, max_seconds: 60 })).toBe('Under 1m');
+		expect(sittingBucketLabel({ min_seconds: 60, max_seconds: 300 })).toBe('1–5m');
+		expect(sittingBucketLabel({ min_seconds: 1800, max_seconds: null })).toBe('30m+');
 	});
 });

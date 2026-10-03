@@ -1201,10 +1201,34 @@ export interface EngagementTime {
 	sessions: number;
 	readers: number;
 	avg_session_seconds: number;
+	/** The middle sitting's length: what a typical sitting is, which the
+	 *  average isn't when a few long reads sit on many short looks. */
+	median_session_seconds: number;
+	/** Sittings and their reading time per length bucket, shortest first. */
+	lengths: SittingBucket[];
 	seconds_7d: number;
 	readers_7d: number;
 	seconds_30d: number;
 	readers_30d: number;
+}
+
+/** One sitting-length bucket: [min, max) seconds, `max` null on the last. */
+export interface SittingBucket {
+	min_seconds: number;
+	max_seconds: number | null;
+	sittings: number;
+	seconds: number;
+}
+
+/** Sittings this long or longer are the deep reads, the group worth watching
+ *  on its own. A bucket boundary on the API side. */
+export const DEEP_SITTING_SECONDS = 15 * 60;
+
+/** "Under 1m", "1–5m", "30m+", from a bucket's bounds. */
+export function sittingBucketLabel(b: Pick<SittingBucket, 'min_seconds' | 'max_seconds'>): string {
+	const m = (s: number) => Math.round(s / 60);
+	if (!b.min_seconds && b.max_seconds) return `Under ${m(b.max_seconds)}m`;
+	return b.max_seconds ? `${m(b.min_seconds)}–${m(b.max_seconds)}m` : `${m(b.min_seconds)}m+`;
 }
 
 /** A most-hearted work, keyed on hearts and without a reader/finisher count
@@ -1623,12 +1647,15 @@ export function formatDateTime(iso: string | null): string {
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
-export function formatDuration(seconds: number): string {
+export function formatDuration(seconds: number, { precise = false } = {}): string {
 	if (!seconds || seconds < 1) return '—';
 	const h = Math.floor(seconds / 3600);
 	const m = Math.floor((seconds % 3600) / 60);
 	if (h) return m ? `${h}h ${m}m` : `${h}h`;
-	if (m) return `${m}m`;
+	// `precise` keeps the seconds under 10 minutes, where they matter: a sitting
+	// is "1m 40s", not "1m".
+	const s = Math.round(seconds % 60);
+	if (m) return precise && m < 10 && s ? `${m}m ${s}s` : `${m}m`;
 	return `${Math.round(seconds)}s`;
 }
 
