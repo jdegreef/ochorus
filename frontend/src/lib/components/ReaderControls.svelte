@@ -352,7 +352,7 @@
 
 		{#if open.value}
 			<div
-				class="absolute end-0 z-30 mt-2 max-h-[70vh] w-64 overflow-y-auto rounded-card border border-border bg-surface p-4 shadow-lg"
+				class="absolute end-0 z-30 mt-2 max-h-[70dvh] w-64 overflow-y-auto rounded-card border border-border bg-surface p-4 shadow-lg"
 				role="dialog"
 				aria-label={t('reader.textSettings')}
 			>

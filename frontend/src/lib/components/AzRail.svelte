@@ -87,10 +87,11 @@
 		background: var(--accent);
 		color: var(--accent-contrast);
 	}
-	/* On a touch phone the letters take a full-height target; the strip scrolls
-	   sideways there, so width stays letter-sized. Not on a touch tablet: from
-	   sm the strip wraps, and 44px rows would swell the pinned bar. */
-	@media (pointer: coarse) and (max-width: 639.98px) {
+	/* On a touch screen the letters take a full-height target, and a 36px
+	   width. Tablets included: they were left at ~22×25px to keep the pinned
+	   bar short, but that bar is what a tablet reader taps, and with the nav
+	   now one row (56px, not 105) the second row of letters fits the budget. */
+	@media (pointer: coarse) {
 		.az-live {
 			display: inline-flex;
 			align-items: center;

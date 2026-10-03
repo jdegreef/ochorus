@@ -5,6 +5,7 @@
 	import { offlineBooks } from '$lib/offlineBooks.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { menuShift } from '$lib/menuShift';
 	import Icon from './Icon.svelte';
 
 	/**
@@ -34,15 +35,25 @@
 	const pct = $derived(downloading?.total ? Math.round((downloading.done / downloading.total) * 100) : 0);
 
 	let open = $state(false);
+	let root = $state<HTMLDivElement>();
+	// Hung from the button's end edge like .account-menu, but placed by
+	// `menuShift` so a mid-row button on a phone (and a long translated label)
+	// can't push the menu off the screen's start edge.
+	let width = $state(288);
+	let shift = $state(0);
+	function toggle() {
+		if (!open && root) ({ width, shift } = menuShift(root, 288, 'end'));
+		open = !open;
+	}
 </script>
 
-<div class="relative" use:dismissable={{ open, onDismiss: () => (open = false) }}>
+<div class="relative" bind:this={root} use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"
 		aria-controls={open ? menuId : undefined}
 		aria-expanded={open}
-		onclick={() => (open = !open)}
+		onclick={toggle}
 	>
 		<Icon name={savedOffline ? 'check' : 'download'} size={15} />
 		<span>{downloading ? `${pct}%` : t('book.download')}</span>
@@ -51,7 +62,14 @@
 		<!-- A labelled group, not a menu role: that promises arrow-key
 		     navigation between menu items, and these are plain links and buttons
 		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
-		<div id={menuId} class="account-menu" role="group" aria-label={t('book.download')}>
+		<div
+			id={menuId}
+			class="account-menu dl-menu"
+			style:width="{width}px"
+			style:left="{shift}px"
+			role="group"
+			aria-label={t('book.download')}
+		>
 			{#if downloading}
 				<span class="account-item dl-item text-muted">
 					<Icon name="download" size={15} />
@@ -113,11 +131,17 @@
 </div>
 
 <style>
+	/* Physical `left` from the script (see `toggle`). Two classes, to outrank
+	   the unlayered .account-menu. */
+	.account-menu.dl-menu {
+		inset-inline: auto;
+		min-width: 0;
+	}
 	.dl-item {
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
-		white-space: nowrap;
+		max-width: calc(100vw - 2rem);
 	}
 	.dl-item:disabled {
 		opacity: 0.5;

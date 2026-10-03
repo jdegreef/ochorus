@@ -52,7 +52,7 @@
 		/**
 		 * `end` slides in from the reading-direction end (the default);
 		 * `bottom` is a phone bottom sheet — full width, rounded top, a grab
-		 * handle, capped at 85vh with its body scrolling.
+		 * handle, capped at 85dvh with its body scrolling.
 		 */
 		placement?: 'end' | 'bottom';
 		/** Custom title block (e.g. title + subtitle), replacing `title`. */
@@ -117,7 +117,7 @@
 				{/if}
 			</header>
 			{#if placement === 'bottom'}
-				<!-- The sheet's body scrolls within the 85vh cap and clears the
+				<!-- The sheet's body scrolls within the 85dvh cap and clears the
 				     home-indicator strip — once here, not in every sheet. -->
 				<div class="sheet-body">{@render children()}</div>
 			{:else}
@@ -152,6 +152,11 @@
 		--drawer-slide-from: 1.5rem;
 		animation: drawer-in var(--duration-fast) ease-out;
 	}
+	/* A side drawer runs to the screen's bottom edge; its scrolling body (the
+	   caller's) ends above the home-indicator strip, like .sheet-body does. */
+	.drawer-panel:not(.bottom) {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
 	:global([dir='rtl']) .drawer-panel {
 		box-shadow: 12px 0 40px rgb(0 0 0 / 0.25);
 		--drawer-slide-from: -1.5rem;
@@ -161,6 +166,7 @@
 		inset-inline: 0;
 		width: auto;
 		max-height: 85vh;
+		max-height: 85dvh;
 		border-inline-start: 0;
 		border-top: 1px solid var(--border);
 		border-radius: 1.25rem 1.25rem 0 0;

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { onMount, untrack } from 'svelte';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
@@ -482,6 +483,7 @@
 					{#if grouped}
 						<nav
 							class="plan-jump chip-scroller"
+							use:scrollEdges
 							aria-label={t('nav.books')}
 							bind:clientHeight={jumpH}
 						>
@@ -831,10 +833,11 @@
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
 			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
+			max-height: calc(100dvh - var(--appnav-h, 0px) - 2rem);
 			overflow-y: auto;
 		}
 	}
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.plan-hero {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 0.5rem;

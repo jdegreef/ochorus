@@ -1783,8 +1783,8 @@
 				with this block in the row the bar wrapped to THREE rows — 141px of an
 				780px viewport — and squeezed this text to five pixels wide, which is
 				not a label, just a thing pushing everything else out of line. The
-				article's own breadcrumb sits directly beneath and says the same, so
-				nothing is lost by standing this down where there is no room for it.
+				phone bar's own title block (above) says the same, so nothing is lost
+				by standing this down where there is no room for it.
 			-->
 			<div class="hidden min-w-0 flex-1 sm:block">
 				{#if titleSpy.visible}
@@ -1797,12 +1797,23 @@
 				{/if}
 			</div>
 			<div class="hidden shrink-0 items-center gap-0.5 sm:flex">
+				<!-- Both slots always render: at the first or last chapter the missing
+				     one is a dimmed, inert stand-in rather than nothing, so the row
+				     keeps its shape and nothing jumps between chapters (a lone ">"
+				     used to float on chapter 1). -->
 				{#if chapter.prev}
 					<a
 						href={chapterHref(chapter.prev.order)}
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.prevChapter')}
 						title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
+					>
+				{:else}
+					<span
+						class="btn btn-icon btn-ghost nav-off"
+						role="link"
+						aria-disabled="true"
+						aria-label={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></span
 					>
 				{/if}
 				{#if chapter.next}
@@ -1811,6 +1822,13 @@
 						class="btn btn-icon btn-ghost"
 						aria-label={t('reader.nextChapter')}
 						title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
+					>
+				{:else}
+					<span
+						class="btn btn-icon btn-ghost nav-off"
+						role="link"
+						aria-disabled="true"
+						aria-label={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></span
 					>
 				{/if}
 				{#if chapter.has_modern_edition}
@@ -1921,7 +1939,10 @@
 	ontouchcancel={onTouchCancel}
 	use:swipeMove
 >
-	<Breadcrumb items={crumbs} />
+	<!-- Not on phones: there the top bar's title block already names the book
+	     and chapter, and the trail wrapped to two lines repeating it. Only the
+	     visible trail — the BreadcrumbList JSON-LD (crumbsLd) still ships. -->
+	<div class="max-sm:hidden"><Breadcrumb items={crumbs} /></div>
 
 	<!-- The pager wraps everything the reader acts on: the plan strip, the
 	     chapter, and its ending. In scroll mode it is display:contents (no
@@ -2696,6 +2717,13 @@
 	article:not(.paged) .chapter-kicker {
 		margin-top: 2.5rem;
 	}
+	/* Phones hide the breadcrumb (the top bar's title block names the book and
+	   chapter), so there is nothing above the kicker to clear. */
+	@media (max-width: 639.98px) {
+		article:not(.paged) .chapter-kicker {
+			margin-top: 0;
+		}
+	}
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;
@@ -2758,6 +2786,12 @@
 	}
 	.more-item.text-accent {
 		color: var(--accent);
+	}
+	/* The top bar's stand-in for a missing Previous/Next: holds the slot. */
+	.nav-off {
+		opacity: 0.35;
+		cursor: default;
+		pointer-events: none;
 	}
 	/* Previous · Listen · Aa · Next. Phones only — via the media query, not a
 	   `sm:hidden` utility, which a scoped `display` here would out-rank. */

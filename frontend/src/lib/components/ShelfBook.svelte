@@ -115,9 +115,7 @@
 					onclick={toggle}
 					aria-expanded={open}
 					aria-label="{t('fav.bookActions')}: {book.title}"
-					class="flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface text-muted opacity-90 shadow-sm transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100 {open
-						? 'sm:opacity-100'
-						: ''}"
+					class="book-actions flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface text-muted opacity-90 shadow-sm transition hover:text-accent focus-visible:opacity-100"
 				>
 					<Icon name="more" size={16} />
 				</button>
@@ -176,6 +174,19 @@
 {/if}
 
 <style>
+	/* The actions button hides until the cell is hovered or focused — on a
+	   mouse device only. A touch tablet is wide enough for `sm:` but has no
+	   hover, so there it stays visible rather than invisible-but-tappable. */
+	@media (hover: hover) and (pointer: fine) {
+		.book-actions {
+			opacity: 0;
+		}
+		.cell:hover .book-actions,
+		.cell:focus-within .book-actions,
+		.book-actions[aria-expanded='true'] {
+			opacity: 1;
+		}
+	}
 	/* Resting, not gone: a paused book (unopened for weeks) is drawn quieter
 	   until it's picked back up. */
 	.book.paused {

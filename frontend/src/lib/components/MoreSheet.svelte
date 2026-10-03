@@ -9,15 +9,26 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
+	import { theme, type ThemePref } from '$lib/theme.svelte';
 
 	/**
 	 * The phone tab bar's "More": what the top nav's hamburger, gear and sign-in
-	 * button hold on wider screens, in one bottom sheet. Every list comes from
+	 * button hold on wider screens, in one bottom sheet (the gear's theme
+	 * switch included — phones never show the gear). Every list comes from
 	 * the source the footer uses, so the two can't drift. (A signed-in reader's
 	 * avatar menu — sign out, admin, feedback — stays in the top bar.)
 	 */
 	let { open = $bindable(false) }: { open?: boolean } = $props();
 	const t = i18n.t;
+
+	// The header gear's theme switch, which phones don't show: the full
+	// preference (System included), as Settings offers it.
+	const THEMES: { v: ThemePref; k: string }[] = [
+		{ v: 'system', k: 'settings.themeSystem' },
+		{ v: 'light', k: 'settings.themeLight' },
+		{ v: 'sepia', k: 'settings.themeSepia' },
+		{ v: 'dark', k: 'settings.themeDark' }
+	];
 
 	const signIn = $derived(localizeHref(loginHref($page.url.pathname, $page.url.search)));
 
@@ -43,6 +54,17 @@
 				</div>
 			</div>
 		{/if}
+
+		<h3 class="more-heading" id="more-theme">{t('nav.theme')}</h3>
+		<div class="seg more-theme" role="group" aria-labelledby="more-theme">
+			{#each THEMES as o (o.v)}
+				<button
+					class:active={theme.preference === o.v}
+					aria-pressed={theme.preference === o.v}
+					onclick={() => theme.set(o.v)}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
 
 		<h3 class="more-heading">{t('footer.explore')}</h3>
 		<div class="grid grid-cols-2 gap-2">
@@ -86,6 +108,15 @@
 </DrawerShell>
 
 <style>
+	/* Full width, four equal cells; a long label (sw, lg) wraps inside its
+	   cell rather than being clipped by .seg's overflow. */
+	.more-theme button {
+		flex: 1 1 0;
+		min-width: 0;
+		min-height: 2.75rem;
+		white-space: normal;
+		font-size: var(--fs-body);
+	}
 	.more-card {
 		margin-bottom: 0.5rem;
 		padding: 1rem;

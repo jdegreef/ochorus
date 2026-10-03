@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
+	import { menuShift } from '$lib/menuShift';
 
 	/**
 	 * The one share control for a leaf page (book / sermon / article / author /
@@ -30,6 +31,15 @@
 	const menuId = $props.id();
 
 	let open = $state(false);
+	let root = $state<HTMLDivElement>();
+	// Placed by `menuShift` from the button's start edge, so a button near the
+	// screen's end edge on a phone can't hang the menu off it.
+	let width = $state(192);
+	let shift = $state(0);
+	function toggle() {
+		if (!open && root) ({ width, shift } = menuShift(root, 192));
+		open = !open;
+	}
 	let copied = $state(false);
 
 	const enc = encodeURIComponent;
@@ -50,7 +60,7 @@
 				if ((err as Error)?.name === 'AbortError') return;
 			}
 		}
-		open = !open;
+		toggle();
 	}
 
 	async function copyLink() {
@@ -65,7 +75,7 @@
 	}
 </script>
 
-<div class="share-wrap" use:dismissable={{ open, onDismiss: () => (open = false) }}>
+<div class="share-wrap" bind:this={root} use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<button
 		type="button"
 		class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
@@ -98,7 +108,14 @@
 		<!-- A labelled group, not a menu role: that promises arrow-key
 		     navigation between menu items, and these are plain links and buttons
 		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->
-		<div id={menuId} class="share-menu" role="group" aria-label={t('reader.share')}>
+		<div
+			id={menuId}
+			class="share-menu"
+			style:width="{width}px"
+			style:left="{shift}px"
+			role="group"
+			aria-label={t('reader.share')}
+		>
 			<button type="button" class="share-opt text-small" onclick={copyLink}>
 				{copied ? t('share.linkCopied') : t('share.copyLink')}
 			</button>
@@ -131,9 +148,9 @@
 	.share-menu {
 		position: absolute;
 		top: calc(100% + 0.4rem);
-		inset-inline-start: 0;
+		/* Physical `left`/`width` from the script (see `toggle`). */
+		left: 0; /* rtl-ok: physical offset set from script, already direction-aware (menuShift) */
 		z-index: 30;
-		min-width: 12rem;
 		padding: 0.35rem;
 		background: var(--surface);
 		border: 1px solid var(--border);

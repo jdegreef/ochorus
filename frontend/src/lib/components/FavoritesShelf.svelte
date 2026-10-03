@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount } from 'svelte';
 	import {
@@ -155,7 +156,7 @@
 		/>
 
 		{#if pills.length}
-			<div class="chip-scroller mb-3 flex gap-2">
+			<div class="chip-scroller mb-3 flex gap-2" use:scrollEdges>
 				{#each pills as p (p.value)}
 					<button
 						type="button"

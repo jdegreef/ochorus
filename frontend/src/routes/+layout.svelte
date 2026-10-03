@@ -53,7 +53,12 @@
 	let { children } = $props();
 	const t = i18n.t;
 
+	// The palette shortcut, as this platform spells it (CommandPalette accepts
+	// both ⌘K and Ctrl+K). Prerendered as the Mac form; corrected on mount.
+	let paletteKey = $state('⌘K');
+
 	onMount(() => {
+		if (!/Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent)) paletteKey = 'Ctrl K';
 		theme.init();
 		siteFont.init();
 		readerPrefs.init();
@@ -288,6 +293,7 @@
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
 							data-section={item.section}
+							data-home={item.href === '/' ? '' : undefined}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}
@@ -301,7 +307,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+						<kbd class="navsearch-kbd" aria-hidden="true">{paletteKey}</kbd>
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
@@ -712,7 +718,7 @@
 		}
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.footer-invite {
 			grid-template-columns: auto 1fr;
 		}

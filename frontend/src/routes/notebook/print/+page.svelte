@@ -314,7 +314,7 @@
 		font-style: italic;
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.title-page,
 		.part {
 			padding: 2rem 1.25rem;

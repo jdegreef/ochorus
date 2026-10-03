@@ -118,14 +118,15 @@
 		</div>
 	</div>
 </a>
-	<!-- Finish (or un-finish, on a completed card) without reopening. Faint until
-	     the card is hovered or the button focused; always reachable on touch. -->
+	<!-- Finish (or un-finish, on a completed card) without reopening. Hidden
+	     until the card is hovered or focused on a mouse device only; always
+	     visible on touch (phones AND tablets), where there is no hover. -->
 	<button
 		type="button"
 		onclick={toggleFinished}
 		title={complete ? t('settings.unfinish') : t('continue.markFinished')}
 		aria-label="{complete ? t('settings.unfinish') : t('continue.markFinished')}: {item.title}"
-		class="finish-btn absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-70 transition hover:text-accent focus-visible:opacity-100 sm:opacity-0 sm:group-hover:opacity-100"
+		class="finish-btn absolute end-2 top-2 flex h-7 w-7 items-center justify-center rounded-full border border-border bg-surface-2 text-muted opacity-70 transition hover:text-accent focus-visible:opacity-100"
 	>
 		<Icon name={complete ? 'skip-back' : 'check'} size={15} />
 	</button>
@@ -138,5 +139,16 @@
 		color: var(--color-accent);
 		border-color: var(--color-accent-soft-border);
 		background: linear-gradient(155deg, var(--color-accent-soft), var(--color-surface-2));
+	}
+	/* Hover-reveal only where hover exists: a touch tablet is wide enough for
+	   `sm:` but would otherwise get an invisible, tappable button. */
+	@media (hover: hover) and (pointer: fine) {
+		.finish-btn {
+			opacity: 0;
+		}
+		.group:hover .finish-btn,
+		.group:focus-within .finish-btn {
+			opacity: 1;
+		}
 	}
 </style>

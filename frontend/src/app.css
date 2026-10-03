@@ -1250,14 +1250,11 @@ nav.appnav {
 /* The nav's height until the layout measures it and publishes the real figure
    inline as --appnav-h (on `.app-root`, its own element): what a prerendered
    page's sticky bars and a cold `/page/#id` jump clear before hydration.
-   Measured: one row 56px; two rows (768–1023px, the links' own row below) 105px. */
+   One row at every width (56px) — the 768–1023px band used to wrap the links
+   onto a second row (105px), which with a pinned filter bar under it took a
+   quarter of a portrait iPad and half of a landscape phone. */
 .app-root {
 	--appnav-h: 3.5rem;
-}
-@media (min-width: 768px) and (max-width: 1023.98px) {
-	.app-root {
-		--appnav-h: 6.5625rem;
-	}
 }
 @media print {
 	.app-root {
@@ -1381,31 +1378,42 @@ nav.appnav .navtoggle {
 nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
-/* Tablets (768–1023px): the six links plus the brand and controls need ~892px
-   on one row (more in longer-label locales), so between `md` and `lg` they get
-   their OWN row instead. The bar becomes a wrapping flex column of two lines —
-   brand + controls on top (navctl's `order:1` puts it beside the brand, its
-   `margin-inline-start:auto` holds it to the end), the centred links on a
-   full-width line beneath (`flex-basis:100%` breaks the line; navlinks wraps if
-   a locale is wide enough to need it). This keeps every link visible and
-   centred here — no hamburger, no horizontal overflow — where the single-row
-   grid could not fit them. Below 768px the drawer takes over (next block). */
+/* Tablets (768–1023px): ONE row, like every other width. The six links plus
+   the brand and controls need ~892px with their icons, so here the bar sheds
+   what it can spare rather than growing a second row: the link icons go (the
+   section hue still marks the active pill), and Home goes because the logo
+   beside it already goes home. What's left — five words — fits a portrait
+   iPad in English; a longer-label locale scrolls the links sideways inside
+   their own track (the grid's middle column is minmax(0, 1fr), so it can
+   shrink below its content) instead of wrapping or pushing the controls off. */
 @media (min-width: 768px) and (max-width: 1023.98px) {
 	nav.appnav .appnav-inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-	}
-	nav.appnav .navctl {
-		order: 1;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		gap: 0.45rem 0.5rem;
 	}
 	nav.appnav .navmenu {
-		order: 2;
-		flex-basis: 100%;
-		margin-top: 0.4rem;
+		min-width: 0;
+		justify-content: flex-start;
 	}
 	nav.appnav .navlinks {
-		flex-wrap: wrap;
+		justify-content: flex-start;
+		justify-content: safe center;
+		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: none;
+		gap: 0.1rem;
+	}
+	nav.appnav .navlinks::-webkit-scrollbar {
+		display: none;
+	}
+	nav.appnav .navlinks a {
+		padding-inline: 0.65rem;
+	}
+	nav.appnav .navlinks a > svg {
+		display: none;
+	}
+	nav.appnav .navlinks a[data-home] {
+		display: none;
 	}
 }
 /* Phones and small tablets: collapse the links behind a hamburger drawer —
@@ -1466,21 +1474,27 @@ nav.appnav .navtoggle:hover {
 		margin-inline-start: 0.25rem;
 	}
 }
-/* Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
-   its "More" sheet holds the links, quick settings and sign-in, so the top
-   bar is brand + search (+ a signed-in reader's avatar, whose menu keeps the
-   admin and feedback entries). */
+/* Phones: the gear never shows. Its theme switch lives in the tab bar's
+   "More" sheet, and on the reading surfaces (no tab bar) in the reader's own
+   Aa sheet, so the bar doesn't sprout a gear only on some pages.
+   Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
+   its "More" sheet holds the links and sign-in too, so the top bar is brand +
+   search (+ a signed-in reader's avatar, whose menu keeps the admin and
+   feedback entries). */
 @media (max-width: 639.98px) {
+	nav.appnav .prefs,
 	:root:has(.tabbar) nav.appnav .navtoggle,
 	:root:has(.tabbar) nav.appnav .navmenu,
-	:root:has(.tabbar) nav.appnav .prefs,
 	:root:has(.tabbar) nav.appnav .account-signin {
 		display: none;
 	}
 }
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
-   the shortcut is advertised, and it is meaningless without a keyboard. */
+   the shortcut is advertised, and it is meaningless without a keyboard: so it
+   is gated on a fine, hovering pointer as well as width. An iPad held either
+   way is 768px+ and showed "⌘K" in place of any word, to a reader with no
+   keyboard to press it on. */
 nav.appnav .navsearch {
 	display: inline-flex;
 	align-items: center;
@@ -1502,7 +1516,7 @@ nav.appnav .navsearch:hover {
 	font-size: var(--fs-micro);
 	letter-spacing: 0.02em;
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
 	.navsearch-kbd {
 		display: inline;
 	}
@@ -2330,8 +2344,9 @@ a.sermon-row-title:hover {
 
 /* A filter-chip row that becomes a single horizontal scroller on a phone, so a
    long topic list can't push the content it filters two screens down; from sm up
-   it wraps as an ordinary chip cloud. The right-edge mask fades the last chip to
-   hint the overflow — it fades to whatever is behind, so it's theme-agnostic.
+   it wraps as an ordinary chip cloud. Its edges fade only while chips are
+   hidden past them (the shared edge mask below, driven by `use:scrollEdges`) —
+   it fades to whatever is behind, so it's theme-agnostic.
    Unlayered on purpose, so it reliably wins over any Tailwind layout utility a
    caller composes onto it (a `flex-wrap`/`overflow` utility would otherwise beat
    a rule inside `@layer components`). Shared by the Books and Sermons topic
@@ -2348,8 +2363,6 @@ a.sermon-row-title:hover {
 		overflow-x: auto;
 		overscroll-behavior-x: contain;
 		scrollbar-width: none;
-		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-		mask-image: linear-gradient(to right, #000 88%, transparent);
 	}
 	.chip-scroller::-webkit-scrollbar {
 		display: none;
@@ -2358,21 +2371,15 @@ a.sermon-row-title:hover {
 	.chip-scroller > * {
 		flex-shrink: 0;
 	}
-	/* The scroller runs from the inline-start edge, so the fade belongs on the
-	   END edge — the left under RTL. */
-	[dir='rtl'] .chip-scroller {
-		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
-		mask-image: linear-gradient(to left, #000 88%, transparent);
-	}
 }
 
 /* A horizontal shelf of covers (Continue reading, New to the library, an
    author's book rail). Unlike .chip-scroller it never wraps — a rail always
    scrolls — so it keeps overflow at every width; but the end-edge fade that
    signals "more this way" (in place of a hard clip) is only wanted where it
-   actually overflows, i.e. on a phone. So the fade + hidden scrollbar are
-   scoped to <sm, matching .chip-scroller's recipe; a desktop that fits the
-   rail keeps its native scrollbar and no fade. Covers already carry shrink-0. */
+   actually overflows — which the shared edge mask below (`use:scrollEdges`)
+   now knows at any width. The hidden scrollbar stays scoped to <sm; a desktop
+   rail keeps its native one. Covers already carry shrink-0. */
 .cover-rail {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
@@ -2385,8 +2392,6 @@ a.sermon-row-title:hover {
 @media (max-width: 639.98px) {
 	.cover-rail {
 		scrollbar-width: none;
-		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-		mask-image: linear-gradient(to right, #000 88%, transparent);
 	}
 	.cover-rail::-webkit-scrollbar {
 		display: none;
@@ -2394,19 +2399,15 @@ a.sermon-row-title:hover {
 	.cover-rail > * {
 		flex-shrink: 0;
 	}
-	/* Runs from the inline-start edge, so the fade is on the END edge — the
-	   left under RTL. */
-	[dir='rtl'] .cover-rail {
-		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
-		mask-image: linear-gradient(to left, #000 88%, transparent);
-	}
 }
 
 /* A tab in a page's sticky jump bar (book, author and /scripture sub-navs):
    quiet until hovered; the active one wears the accent and an underline drawn
    on the bar's own bottom border (the -1px overlap makes them meet). One
-   definition — the three pages each carried a copy, already drifting. The
-   handler is scrollSpy's `spy.jump`. */
+   definition — the three pages each carried a copy, already drifting, and a
+   second identical copy for the library tabs (Books · Series · A–Z) sat
+   further down this file until 2026-10. The handler is scrollSpy's
+   `spy.jump`. */
 .subnav-link {
 	display: inline-block;
 	padding: 0.5rem 0.75rem;
@@ -2457,14 +2458,21 @@ a.sermon-row-title:hover {
    actually have tabs hidden past them (`more-start` / `more-end`), so each edge
    fades only then — a static fade dimmed the first tab at rest, and the start
    edge never faded at all once scrolled. The gradient's direction is a
-   variable, so RTL flips one token rather than restating the gradient. */
+   variable, so RTL flips one token rather than restating the gradient.
+   The same mask serves .chip-scroller and .cover-rail (each paired with
+   `use:scrollEdges`); with neither class set it is fully opaque, so a row
+   that fits — or a wrapped chip cloud — shows no fade at all. */
 .tab-strip {
-	--fade-dir: to right;
-	--fade-s: 0rem;
-	--fade-e: 0rem;
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
 	scrollbar-width: none;
+}
+.tab-strip,
+.chip-scroller,
+.cover-rail {
+	--fade-dir: to right;
+	--fade-s: 0rem;
+	--fade-e: 0rem;
 	-webkit-mask-image: linear-gradient(
 		var(--fade-dir),
 		transparent,
@@ -2483,37 +2491,22 @@ a.sermon-row-title:hover {
 .tab-strip::-webkit-scrollbar {
 	display: none;
 }
-.tab-strip.more-start {
+:is(.tab-strip, .chip-scroller, .cover-rail).more-start {
 	--fade-s: 1.5rem;
 }
-.tab-strip.more-end {
+:is(.tab-strip, .chip-scroller, .cover-rail).more-end {
 	--fade-e: 1.5rem;
 }
-[dir='rtl'] .tab-strip {
+[dir='rtl'] :is(.tab-strip, .chip-scroller, .cover-rail) {
 	--fade-dir: to left;
 }
-
-/* A tab in a .tab-strip: quiet ink, the current one in accent with an
-   underline drawn on the row's own bottom border. Shared by the library tabs
-   (Books · Series · A–Z); the book and author pages' jump-navs still scope an
-   identical copy. */
-.subnav-link {
-	display: inline-block;
-	padding: 0.5rem 0.75rem;
-	border-bottom: 2px solid transparent;
-	margin-bottom: -1px; /* the underline meets the row's own border */
-	font-size: var(--fs-small);
-	font-weight: 500;
-	white-space: nowrap;
-	color: var(--muted);
-	text-decoration: none;
-}
-.subnav-link:hover {
-	color: var(--text);
-}
-.subnav-link.is-active {
-	color: var(--accent);
-	border-bottom-color: var(--accent);
+/* From sm up a chip row wraps instead of scrolling, so it has no edge to fade —
+   and a mask would clip the focus ring of a chip on its border. */
+@media (min-width: 640px) {
+	.chip-scroller {
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
 }
 
 /* Where a reader is with one book of a series — the card's progress segments
@@ -2864,6 +2857,29 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    touch UI wants the larger text anyway. Deliberately NOT inside the @layer
    above: the base .field rule is unlayered, so a layered override loses to it. */
 @media (pointer: coarse) {
+	/* The 44px finger target for the controls at the top of a page that the
+	   list above missed: the nav's text links (37px), the section tabs (37px —
+	   and, matched to a 44px .btn, the book page's tab bar no longer grows 7px
+	   when its Continue button appears mid-scroll), and the icon buttons, which
+	   were 44px tall but 33px wide. Unlayered, beside the base rules they
+	   extend. Not gated on width: a tablet's finger is the same size. */
+	nav.appnav .navlinks a,
+	.subnav-link {
+		min-height: 2.75rem;
+	}
+	.subnav-link {
+		display: inline-flex;
+		align-items: center;
+	}
+	.btn-icon {
+		min-width: 2.75rem;
+	}
+	/* The gear, avatar and search pill each grow an invisible 44px hit area
+	   around a 32px disc; 8px apart, neighbouring areas overlapped by 4px, so a
+	   tap between two of them was a coin toss. 12px clears them. */
+	nav.appnav .navctl {
+		gap: 0.75rem;
+	}
 	.field,
 	.filter-field {
 		font-size: var(--fs-body);
