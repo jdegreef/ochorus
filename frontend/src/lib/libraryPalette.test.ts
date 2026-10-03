@@ -2,10 +2,11 @@
  * The library palette (app.css, "THE LIBRARY PALETTE") — measured, not trusted.
  *
  * Six hues, three themes, and each hue is used as TEXT (a stat tile's number,
- * an active nav label) on four grounds: --bg, --surface, --surface-2 and its
- * own -soft tint. That is 72 pairs, and STYLE_GUIDE §1 notes sepia is the
- * theme that has actually failed before — so every pair is computed here
- * against WCAG AA (4.5:1) rather than eyeballed in one theme.
+ * an active nav label) on five grounds: --bg, --surface, --surface-2, --band
+ * (the deeper ground of a `.band` section) and its own -soft tint. That is 90
+ * pairs, and STYLE_GUIDE §1 notes sepia is the theme that has actually failed
+ * before — so every pair is computed here against WCAG AA (4.5:1) rather than
+ * eyeballed in one theme.
  */
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
@@ -49,12 +50,19 @@ describe('library palette', () => {
 			for (const hue of HUES) {
 				const ink = vars[`--hue-${hue}`];
 				expect(ink, `--hue-${hue} missing in ${theme}`).toMatch(/^#[0-9a-f]{6}$/i);
-				for (const ground of ['--bg', '--surface', '--surface-2', `--hue-${hue}-soft`]) {
+				for (const ground of ['--bg', '--surface', '--surface-2', '--band', `--hue-${hue}-soft`]) {
 					const ratio = contrastRatio(rgb(ink), rgb(vars[ground]));
 					if (ratio < 4.5) failures.push(`${hue} on ${ground}: ${ratio.toFixed(2)}`);
 				}
 			}
 			expect(failures, failures.join('\n')).toEqual([]);
+		});
+
+		it(`text, muted and accent clear 4.5:1 on a .band in ${theme}`, () => {
+			for (const ink of ['--text', '--muted', '--accent']) {
+				const ratio = contrastRatio(rgb(vars[ink]), rgb(vars['--band']));
+				expect(ratio, `${ink} on --band`).toBeGreaterThanOrEqual(4.5);
+			}
 		});
 	}
 
@@ -62,8 +70,10 @@ describe('library palette', () => {
 		['paper', PAPER],
 		['sepia', SEPIA]
 	]) {
-		it(`${theme} defines every hue itself rather than inheriting lamplight's`, () => {
+		it(`${theme} defines every hue and its band itself rather than inheriting lamplight's`, () => {
 			const own = block(selector);
+			expect(own['--band'], '--band').toBeDefined();
+			expect(own['--grain'], '--grain').toBeDefined();
 			for (const hue of HUES) {
 				expect(own[`--hue-${hue}`], `--hue-${hue}`).toBeDefined();
 				expect(own[`--hue-${hue}-soft`], `--hue-${hue}-soft`).toBeDefined();
