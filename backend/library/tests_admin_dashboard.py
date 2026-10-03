@@ -1322,13 +1322,38 @@ class AdminEngagementTests(TestCase):
         from reading.models import ReadingSession
 
         last_week = timezone.now() - timedelta(days=10)
-        ReadingSession.objects.create(
+        s = ReadingSession.objects.create(
             profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
             seconds=300, kind="book", book_slug="humility", language="en",
         )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)  # bypass auto_now
         res = self.client.get("/api/admin/engagement/")
         row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
         self.assertEqual((row["this_week"], row["prev_week"], row["delta"]), (2, 1, 1))
+
+    @override_settings(DEBUG=True)
+    def test_a_sitting_counts_in_one_week_and_needs_a_work(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        # Spans the boundary on the device's clock, but the server last heard
+        # from it this week: it's this week's, not both weeks'.
+        ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week,
+            last_seen_at=timezone.now(), seconds=300, kind="book",
+            book_slug="humility", language="en",
+        )
+        # An older client sends no work: it can't be credited to one.
+        old = ReadingSession.objects.create(
+            profile=self.p1, client_id="s2", started_at=last_week, last_seen_at=last_week,
+            seconds=300,
+        )
+        ReadingSession.objects.filter(pk=old.pk).update(updated_at=last_week)
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
 
     @override_settings(DEBUG=True)
     def test_an_opened_but_unread_sitting_is_not_a_reader(self):
@@ -1337,10 +1362,11 @@ class AdminEngagementTests(TestCase):
         from reading.models import ReadingSession
 
         last_week = timezone.now() - timedelta(days=10)
-        ReadingSession.objects.create(
+        s = ReadingSession.objects.create(
             profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
             seconds=0, kind="book", book_slug="humility", language="en",
         )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)
         res = self.client.get("/api/admin/engagement/")
         row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
         self.assertEqual(row["prev_week"], 0)

@@ -339,10 +339,7 @@ class AdminEngagementView(APIView):
         (``library.engagement_trends.readers_per_work``), not brand-new
         readers — labelled as such on the page — and small movements wash out
         because only positive deltas rank."""
-        from datetime import timedelta
-
-        this_week = readers_per_work(now - timedelta(days=7), now)
-        prev_week = readers_per_work(now - timedelta(days=14), now - timedelta(days=7))
+        this_week, prev_week = readers_per_work(now)
         meta = self._work_meta
         rows = []
         for (kind, slug), this_n in this_week.items():

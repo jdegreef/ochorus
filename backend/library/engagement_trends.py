@@ -89,34 +89,37 @@ def weekly_active(now, weeks: int) -> list[dict]:
     return [{"week": s.isoformat(), "readers": counts[s.isoformat()]} for s in starts]
 
 
-def readers_per_work(start, end) -> dict:
-    """Distinct readers per work ``(kind, slug)`` active between ``start``
-    and ``end``, for Rising this week.
+def readers_per_work(now) -> tuple[dict, dict]:
+    """Distinct readers per work ``(kind, slug)`` in the last 7 days and the 7
+    before them, for Rising this week.
 
-    Saved progress alone undercounts the earlier of two windows: it keeps only
-    each work's latest touch, so a reader on a book both weeks shows only in
-    the later one. Reading sittings keep every sitting with the work it was
-    opened on, so they bring that reader back. A sitting records only its
-    opening work, though, so saved progress still catches works reached mid-
-    sitting: a reader counts for a work if either source puts them on it in
-    the window."""
+    Saved progress alone undercounts the earlier week: it keeps only each
+    work's latest touch, so a reader on a book both weeks shows only in the
+    later one. Reading sittings keep every sitting, so they bring that reader
+    back. Their limits, stated rather than papered over: a sitting names only
+    the work it was opened on (a work reached mid-sitting is seen through
+    saved progress alone, so it can still read a little high), and older
+    clients send no work at all. Each sitting falls in one week, by when the
+    server last heard from it (``updated_at``, the server's clock rather than
+    the device's)."""
     from reading.models import ReadingProgress, ReadingSession
 
-    readers: dict = defaultdict(set)
-    for profile, kind, slug in (
-        ReadingSession.objects.filter(
-            last_seen_at__gte=start, started_at__lt=end, seconds__gt=0
-        )
+    split, since = now - timedelta(days=7), now - timedelta(days=14)
+    weeks: tuple[dict, dict] = (defaultdict(set), defaultdict(set))  # this, prev
+    for profile, kind, slug, at in (
+        ReadingSession.objects.filter(updated_at__gte=since, seconds__gt=0)
         .exclude(book_slug="")
         .exclude(kind="")
-        .values_list("profile", "kind", "book_slug")
+        .values_list("profile", "kind", "book_slug", "updated_at")
+        .distinct()
     ):
-        readers[(kind, slug)].add(profile)
-    for profile, kind, slug in ReadingProgress.objects.filter(
-        updated_at__gte=start, updated_at__lt=end
-    ).values_list("profile", "kind", "book_slug"):
-        readers[(kind, slug)].add(profile)
-    return {work: len(profiles) for work, profiles in readers.items()}
+        weeks[at < split][(kind, slug)].add(profile)
+    for profile, kind, slug, at in ReadingProgress.objects.filter(
+        updated_at__gte=since
+    ).values_list("profile", "kind", "book_slug", "updated_at"):
+        weeks[at < split][(kind, slug)].add(profile)
+    this_week, prev_week = ({w: len(p) for w, p in week.items()} for week in weeks)
+    return this_week, prev_week
 
 
 def weekly_signups(starts) -> list[int]:
