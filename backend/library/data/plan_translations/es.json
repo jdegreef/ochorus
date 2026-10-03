@@ -87,5 +87,12 @@
     "note": [
       "AI-drafted alongside the plan itself (not a queue job); awaiting native review. The two books are named by their shipped Spanish titles verbatim (around-the-wicket-gate.es «Junto a la puerta estrecha», how-to-succeed-in-the-christian-life.es «Cómo triunfar en la vida cristiana»), so the card and the books it opens agree. Uses «tú», the register of the Spanish articles the plan reads."
     ]
+  },
+  "first-steps-for-teens": {
+    "title": "Primeros pasos: fe para adolescentes",
+    "description": "Un primer camino con Jesús, para lectores adolescentes. Charles Spurgeon te sale al encuentro en «Junto a la puerta estrecha» con la ayuda más sencilla para quien está encontrando el camino hacia Cristo; luego las historias verdaderas de «Hombres y mujeres que lo dieron todo» muestran en qué se convierte esa vida: dos libros breves en unas tres semanas.",
+    "note": [
+      "Written in the same PR as men-and-women-who-gave-everything-2.es (job #2783): that book completes this plan's book set in Spanish (around-the-wicket-gate.es already shipped), so seed_plans would otherwise create the es row with English prose. The two books are named by their shipped Spanish titles verbatim («Junto a la puerta estrecha», «Hombres y mujeres que lo dieron todo»). «Primeros pasos» renders the plan's 'Starting Out' / slug idea; uses «tú», as new-to-the-faith does. AI-drafted; awaiting native review."
+    ]
   }
 }
