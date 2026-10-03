@@ -295,7 +295,7 @@
 </div>
 
 <style>
-	/* Matches the engagement page's sparklines. */
+	/* The score line beside each language: 68×26, accent stroke, no fill. */
 	.spark {
 		width: 68px;
 		height: 26px;

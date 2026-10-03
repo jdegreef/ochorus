@@ -26,3 +26,22 @@ def week_starts(now: datetime, weeks: int) -> list[date]:
     """The Mondays of the last ``weeks`` weeks, oldest first, this week last."""
     this_week = week_start(day_of(now))
     return [this_week - timedelta(weeks=i) for i in range(weeks - 1, -1, -1)]
+
+
+def start_of(day: date) -> datetime:
+    """Midnight at the start of ``day`` on the site clock, for filtering a
+    datetime column on its raw value (an index can serve that; ``__date``
+    can't)."""
+    return timezone.make_aware(datetime.combine(day, datetime.min.time()))
+
+
+def weekly_counts(rows, starts: list[date]) -> list[int]:
+    """Bucket ``(moment, amount)`` rows into the weeks beginning ``starts``,
+    one total per week, 0 for a week with none. Rows before the first week
+    or after the last are ignored."""
+    totals = dict.fromkeys(starts, 0)
+    for at, amount in rows:
+        week = week_start(day_of(at))
+        if week in totals:
+            totals[week] += amount or 0
+    return list(totals.values())

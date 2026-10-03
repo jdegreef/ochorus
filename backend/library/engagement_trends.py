@@ -16,21 +16,13 @@ from __future__ import annotations
 from collections import Counter
 from datetime import timedelta
 
-from django.db.models import Count, Min, Sum
-from django.db.models.functions import TruncWeek
+from django.db.models import Count, Min, Q, Value
 
-from .weeks import day_of, week_start, week_starts
+from .weeks import start_of, week_start, week_starts, weekly_counts
 
 #: The rolling windows behind the "Active · 30d" line: six 30-day windows,
 #: the last ending now, so its final point is the same window as the tile.
 MONTH_WINDOWS = 6
-
-
-def _weekly(rows, starts) -> list[int]:
-    """``(week datetime, n)`` rows from a TruncWeek query, as one value per
-    charted week (0 where a week has none)."""
-    by_week = {week_start(day_of(w)): n or 0 for w, n in rows}
-    return [by_week.get(s, 0) for s in starts]
 
 
 def _running_total(now_total: int, new_per_week: list[int]) -> list[int]:
@@ -51,67 +43,66 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
     from reading.models import Favorite, ReadingDay, ReadingSession
 
     starts = week_starts(now, weeks)
-    first = starts[0]
+    since = start_of(starts[0])
 
-    hearts = _weekly(
-        Favorite.objects.filter(created_at__date__gte=first)
-        .annotate(w=TruncWeek("created_at"))
-        .values_list("w")
-        .annotate(n=Count("id"))
-        .order_by(),
+    hearts = weekly_counts(
+        Favorite.objects.filter(created_at__gte=since).values_list(
+            "created_at", Value(1)
+        ),
         starts,
     )
-    reading_seconds = _weekly(
-        ReadingSession.objects.filter(last_seen_at__date__gte=first, seconds__gt=0)
-        .annotate(w=TruncWeek("last_seen_at"))
-        .values_list("w")
-        .annotate(n=Sum("seconds"))
-        .order_by(),
+    reading_seconds = weekly_counts(
+        ReadingSession.objects.filter(
+            last_seen_at__gte=since, seconds__gt=0
+        ).values_list("last_seen_at", "seconds"),
         starts,
     )
-    new_users = _weekly(
-        UserProfile.objects.filter(created_at__date__gte=first)
-        .annotate(w=TruncWeek("created_at"))
-        .values_list("w")
-        .annotate(n=Count("id"))
-        .order_by(),
+    new_users = weekly_counts(
+        UserProfile.objects.filter(created_at__gte=since).values_list(
+            "created_at", Value(1)
+        ),
         starts,
     )
     # A reader's first reading day, from the streak log: when they arrived.
+    # Only readers who read in the charted weeks and never before them.
     arrived = Counter(
         week_start(day)
-        for day in ReadingDay.objects.values("profile")
+        for day in ReadingDay.objects.filter(day__gte=starts[0])
+        .exclude(
+            profile__in=ReadingDay.objects.filter(day__lt=starts[0]).values("profile")
+        )
+        .values("profile")
         .annotate(first=Min("day"))
-        .filter(first__gte=first)
         .values_list("first", flat=True)
     )
     new_readers = [arrived.get(s, 0) for s in starts]
 
-    # Readers who read on any day of each window. From the reading-day log,
-    # which keeps every day; the tile's own count comes from saved progress,
-    # which keeps only the latest, so the two can differ by a reader or two.
-    windows = []
-    for i in range(MONTH_WINDOWS - 1, -1, -1):
-        end = now.date() - timedelta(days=30 * i)
-        windows.append(
-            {
-                "end": end.isoformat(),
-                "readers": ReadingDay.objects.filter(
-                    day__gt=end - timedelta(days=30), day__lte=end
-                )
-                .values("profile")
-                .distinct()
-                .count(),
-            }
-        )
+    # Readers who read on any day of each window, in one pass. From the
+    # reading-day log, which keeps every day; the tile's own count comes from
+    # saved progress, which keeps only the latest, so the two can differ by a
+    # reader or two.
+    today = now.date()
+    ends = [today - timedelta(days=30 * i) for i in range(MONTH_WINDOWS - 1, -1, -1)]
+    counts = ReadingDay.objects.filter(
+        day__gt=ends[0] - timedelta(days=30), day__lte=today
+    ).aggregate(
+        **{
+            f"w{i}": Count(
+                "profile",
+                distinct=True,
+                filter=Q(day__gt=end - timedelta(days=30), day__lte=end),
+            )
+            for i, end in enumerate(ends)
+        }
+    )
 
     return {
-        "weeks": [s.isoformat() for s in starts],
         "hearts": hearts,
         "reading_seconds": reading_seconds,
         "users": _running_total(users, new_users),
-        "users_added": new_users,
         "readers": _running_total(readers, new_readers),
-        "readers_added": new_readers,
-        "active_30d": windows,
+        "active_30d": [
+            {"end": end.isoformat(), "readers": counts[f"w{i}"]}
+            for i, end in enumerate(ends)
+        ],
     }

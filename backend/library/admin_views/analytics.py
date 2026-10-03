@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from functools import cached_property
 
-from django.db.models import Count, Q
+from django.db.models import Count, Q, Value
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -30,7 +30,7 @@ from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
 from ..team_events import team_events
 from ..views import _language_entry
-from ..weeks import day_of, week_start, week_starts
+from ..weeks import day_of, start_of, week_start, week_starts, weekly_counts
 
 
 def _prefer_en(rows, value_of):
@@ -848,16 +848,20 @@ class AdminUsersView(APIView):
     def _weekly_signups(self, now, weeks: int = 12):
         from accounts.models import UserProfile
 
-        buckets = {}
-        # One pass over sign-up dates, counted into their Monday-anchored week.
-        for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = week_start(day_of(created))
-            buckets[wk] = buckets.get(wk, 0) + 1
+        starts = week_starts(now, weeks)
         return [
-            {"week": wk.isoformat(), "count": buckets.get(wk, 0)}
-            for wk in week_starts(now, weeks)
+            {"week": wk.isoformat(), "count": n}
+            for wk, n in zip(
+                starts,
+                weekly_counts(
+                    UserProfile.objects.filter(created_at__gte=start_of(starts[0])).values_list(
+                        "created_at", Value(1)
+                    ),
+                    starts,
+                ),
+                strict=True,
+            )
         ]
-
 
 
 

@@ -1294,14 +1294,11 @@ export interface AdminEngagement {
 }
 
 export interface EngagementTrends {
-	weeks: string[];
 	hearts: number[];
 	reading_seconds: number[];
-	/** Running totals ending on the tile's number, and what each week added. */
+	/** Running totals ending on the tile's number. */
 	readers: number[];
-	readers_added: number[];
 	users: number[];
-	users_added: number[];
 	/** Readers in each of six rolling 30-day windows, the last ending today. */
 	active_30d: { end: string; readers: number }[];
 }

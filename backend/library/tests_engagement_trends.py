@@ -49,7 +49,6 @@ class PulseTrendTests(TestCase):
         data = self._trends()
         weeks = [w["week"] for w in data["weekly_active"]]
         t = data["trends"]
-        self.assertEqual(t["weeks"], weeks)
         for key in ("hearts", "reading_seconds", "readers", "users"):
             self.assertEqual(len(t[key]), len(weeks), key)
         self.assertEqual(len(t["active_30d"]), 6)
@@ -82,7 +81,6 @@ class PulseTrendTests(TestCase):
         self.assertEqual(t["users"][-1], data["overview"]["total_users"])
         # The new reader arrived this week; the old one was there all along.
         self.assertEqual(t["readers"], [1] * 7 + [2])
-        self.assertEqual(t["readers_added"][-1], 1)
 
     def test_the_last_30_day_window_ends_today(self):
         p = profile()
@@ -93,7 +91,9 @@ class PulseTrendTests(TestCase):
         self.assertEqual([w["readers"] for w in windows[-2:]], [1, 1])
         self.assertEqual(windows[0]["readers"], 0)
 
-    def test_weeks_follow_the_shared_rule(self):
-        self.assertEqual(
-            self._trends()["trends"]["weeks"][-1], week_start(self.today).isoformat()
-        )
+    def test_a_sign_up_lands_in_the_same_week_on_both_charts(self):
+        profile()
+        users = self._trends()["trends"]["users"]
+        weekly = APIClient().get("/api/admin/users/").data["weekly_signups"]
+        self.assertEqual(users[-1] - users[-2], 1)
+        self.assertEqual(weekly[-1], {"week": week_start(self.today).isoformat(), "count": 1})

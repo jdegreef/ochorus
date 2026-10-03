@@ -37,15 +37,17 @@
 	};
 	const kindLabel = (k: string) => kindLabels[k] ?? k.charAt(0).toUpperCase() + k.slice(1);
 
-	// Each tile's line: the 8 charted weeks (this week last, so drawn dashed as
-	// in progress), or six rolling 30-day windows for the 30-day tile so the
-	// line plots the same thing as its number. Marked chapters has no line:
-	// marks keep no record of when each was made.
+	// Each tile's line. Two shapes, on purpose: the weekly chart's 8 calendar
+	// weeks (this week last, dashed as in progress) for tiles whose sub-line
+	// talks in weeks, and six rolling 30-day windows for the 30-day tile, so
+	// its last point is the window its number counts. Marked chapters has no
+	// line: marks keep no record of when each was made.
 	type Line = { values: number[]; labels: string[]; name: string; partial: boolean };
-	const weekLabels = $derived((data?.trends?.weeks ?? data?.weekly_active.map((w) => w.week) ?? []).map((w) => `week of ${weekLabel(w)}`));
+	const weekLabels = $derived(data?.weekly_active.map((w) => `week of ${weekLabel(w.week)}`) ?? []);
 	const weekly = (values: number[] | undefined, name: string): Line | undefined =>
 		values?.length ? { values, labels: weekLabels, name, partial: true } : undefined;
-	const lastAdded = (added: number[] | undefined) => added?.at(-1) ?? 0;
+	/** What a running total gained this week. */
+	const gained = (total: number[] | undefined) => (total && total.length > 1 ? total[total.length - 1] - total[total.length - 2] : 0);
 
 	// Reading pulse — the headline figures, each with a plain-English sub, a
 	// week-over-week trend chip where there's a prior window to divide by, and
@@ -83,14 +85,14 @@
 					{
 						label: 'Readers',
 						value: data.overview.readers,
-						sub: lastAdded(data.trends?.readers_added) ? `+${fmt(lastAdded(data.trends?.readers_added))} this week` : 'with saved progress',
+						sub: gained(data.trends?.readers) ? `+${fmt(gained(data.trends?.readers))} this week` : 'with saved progress',
 						trend: null,
 						line: weekly(data.trends?.readers, 'Readers, running total')
 					},
 					{
 						label: 'Registered users',
 						value: data.overview.total_users,
-						sub: lastAdded(data.trends?.users_added) ? `+${fmt(lastAdded(data.trends?.users_added))} this week` : 'accounts',
+						sub: gained(data.trends?.users) ? `+${fmt(gained(data.trends?.users))} this week` : 'accounts',
 						trend: null,
 						line: weekly(data.trends?.users, 'Registered users, running total')
 					},
@@ -274,15 +276,15 @@
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [
-								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings` },
-								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers` },
+								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings`, line: undefined },
+								{ label: 'Avg sitting', text: formatDuration(d.time.avg_session_seconds), sub: `${fmt(d.time.readers)} readers`, line: undefined },
 								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
-								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers` }
+								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers`, line: undefined }
 							] as c (c.label)}
 								<div class="rounded-card bg-surface-2 p-4">
 									<div class="flex items-start justify-between gap-2">
 										<div class="stat-number">{c.text}</div>
-										{#if 'line' in c && c.line}<Sparkline {...c.line} format={formatDuration} />{/if}
+										{#if c.line}<Sparkline {...c.line} format={formatDuration} />{/if}
 									</div>
 									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
 									<div class="text-small text-muted">{c.sub}</div>
@@ -576,9 +578,10 @@
 
 <style>
 	/* A section the bar links to: a jump lands clear of the site header and
-	   the sticky section bar. */
+	   the section bar (one row of tabs, SUBNAV_H_EST in scrollSpy), plus the
+	   0.5rem the other pages' anchors add. */
 	.anchor {
-		scroll-margin-top: calc(var(--appnav-h, 0px) + 4rem);
+		scroll-margin-top: calc(var(--appnav-h, 0px) + 44px + 0.5rem);
 	}
 	/* Privacy badge — a persistent reminder that this page is aggregate-only,
 	   dressed as a quiet feature rather than fine print. */
