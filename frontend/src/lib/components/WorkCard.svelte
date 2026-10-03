@@ -3,7 +3,7 @@
 	 * A card-shaped placeholder, for a list that knows a card is coming but not
 	 * yet what it holds ("Continue reading" above the hero, while a list loads).
 	 * It lives HERE, beside the card, and draws the card's own frame and line
-	 * boxes — the same border and padding, the same w-14 3:4 cover box, the
+	 * boxes — the same border and padding, the same w-20 3:4 cover box, the
 	 * title/author/caption lines at their real sizes and the real ProgressBar —
 	 * so it is the card's height by construction, not by a measurement someone
 	 * has to keep in step. A sermon card has no meter, so neither does its
@@ -63,9 +63,9 @@
 {#snippet placeholder(kind: 'book' | 'sermon')}
 	<div class="group relative" aria-hidden="true" data-testid="work-card-placeholder">
 		<div class="flex gap-4 rounded-card border border-border p-4">
-			<div class="aspect-[3/4] w-14 shrink-0 animate-pulse rounded-sm bg-surface-2"></div>
+			<div class="aspect-[3/4] w-20 shrink-0 animate-pulse rounded-sm bg-surface-2"></div>
 			<div class="min-w-0 flex-1 self-center">
-				<div class="truncate text-small font-semibold">
+				<div class="truncate font-display text-body font-semibold">
 					<span class="inline-block w-3/4 animate-pulse rounded bg-surface-2">&nbsp;</span>
 				</div>
 				<div class="mt-0.5 truncate text-small">
@@ -89,20 +89,20 @@
 		<!-- Draw through BookCover, not a bare <img>: a plate (SVG) ground carries
 		     no title in the file, so a raw image shows a blank coloured tile —
 		     BookCover sets the title over it, as the shelves do. -->
-		<div class="w-14 shrink-0">
+		<div class="w-20 shrink-0">
 			<BookCover book={item.book} rounded="rounded-sm" />
 		</div>
 	{:else}
 		<!-- Sermons have no cover; a soft mic tile (matching SermonCard's visual
 		     language) reads as intentional, not a blank block. -->
 		<div
-			class="sermon-thumb flex aspect-[3/4] w-14 shrink-0 items-center justify-center rounded-sm border shadow-sm"
+			class="sermon-thumb flex aspect-[3/4] w-20 shrink-0 items-center justify-center rounded-sm border shadow-sm"
 		>
-			<Icon name="mic" size={22} />
+			<Icon name="mic" size={26} />
 		</div>
 	{/if}
 	<div class="min-w-0 flex-1 self-center">
-		<div class="truncate text-small font-semibold text-text">{item.title}</div>
+		<div class="truncate font-display text-body font-semibold text-text">{item.title}</div>
 		<div class="mt-0.5 truncate text-small text-muted">{item.author}</div>
 		{#if item.pct !== null && !complete}
 			<div class="mt-2">
@@ -133,12 +133,13 @@
 </div>
 
 <style>
-	/* Sermon thumbnail: a soft, accent-tinted tile with the mic glyph, sized to
-	   the same footprint as book covers. Theme-aware via the shared tokens. */
+	/* Sermon thumbnail: a soft tile in the sermons' library hue (oxblood, the
+	   nav's Sermons colour) with the mic glyph, sized to the same footprint as
+	   book covers. Theme-aware via the shared tokens. */
 	.sermon-thumb {
-		color: var(--color-accent);
-		border-color: var(--color-accent-soft-border);
-		background: linear-gradient(155deg, var(--color-accent-soft), var(--color-surface-2));
+		color: var(--section-sermons);
+		border-color: color-mix(in srgb, var(--section-sermons) 30%, transparent);
+		background: linear-gradient(155deg, var(--section-sermons-soft), var(--color-surface-2));
 	}
 	/* Hover-reveal only where hover exists: a touch tablet is wide enough for
 	   `sm:` but would otherwise get an invisible, tappable button. */

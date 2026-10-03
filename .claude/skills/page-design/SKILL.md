@@ -93,6 +93,14 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   **But never restore one that changes the layout on a prerendered page.**
+   The static HTML is drawn with the default; reading localStorage in
+   `onMount` then swaps rows for a grid (or one band for another) after the
+   reader can see the page — a visible jump on every load. Biographies dropped
+   restoring its grid/list and Browse-by choices for this (2026-10-03). Books
+   (view/sort/group) and Sermons (group/sort) still restore theirs and still
+   jump; fix them the same way, or apply the choice before first paint (the
+   `app.html` boot script, as the theme does) if it must persist.
    A key that holds the READER'S data rather than a device preference (a
    plan's schedule choices, anything a sign-out should not hand the next
    person) is declared in `reading-schema.ts` and listed in

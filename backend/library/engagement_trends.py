@@ -13,7 +13,7 @@ which day someone read.
 
 from __future__ import annotations
 
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import timedelta
 
 from django.db.models import Count, Min, Q
@@ -87,6 +87,39 @@ def weekly_active(now, weeks: int) -> list[dict]:
         {s.isoformat(): (s, e) for s, e in zip(starts, ends, strict=True)}
     )
     return [{"week": s.isoformat(), "readers": counts[s.isoformat()]} for s in starts]
+
+
+def readers_per_work(now) -> tuple[dict, dict]:
+    """Distinct readers per work ``(kind, slug)`` in the last 7 days and the 7
+    before them, for Rising this week.
+
+    Saved progress alone undercounts the earlier week: it keeps only each
+    work's latest touch, so a reader on a book both weeks shows only in the
+    later one. Reading sittings keep every sitting, so they bring that reader
+    back. Their limits, stated rather than papered over: a sitting names only
+    the work it was opened on (a work reached mid-sitting is seen through
+    saved progress alone, so it can still read a little high), and older
+    clients send no work at all. Each sitting falls in one week, by when the
+    server last heard from it (``updated_at``, the server's clock rather than
+    the device's)."""
+    from reading.models import ReadingProgress, ReadingSession
+
+    split, since = now - timedelta(days=7), now - timedelta(days=14)
+    weeks: tuple[dict, dict] = (defaultdict(set), defaultdict(set))  # this, prev
+    for profile, kind, slug, at in (
+        ReadingSession.objects.filter(updated_at__gte=since, seconds__gt=0)
+        .exclude(book_slug="")
+        .exclude(kind="")
+        .values_list("profile", "kind", "book_slug", "updated_at")
+        .distinct()
+    ):
+        weeks[at < split][(kind, slug)].add(profile)
+    for profile, kind, slug, at in ReadingProgress.objects.filter(
+        updated_at__gte=since
+    ).values_list("profile", "kind", "book_slug", "updated_at"):
+        weeks[at < split][(kind, slug)].add(profile)
+    this_week, prev_week = ({w: len(p) for w, p in week.items()} for week in weeks)
+    return this_week, prev_week
 
 
 def weekly_signups(starts) -> list[int]:
