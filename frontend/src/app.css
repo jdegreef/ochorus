@@ -552,6 +552,15 @@
 		rgb(14 12 9 / 0.3) 100%
 	);
 	--hero-plate-shadow: 0 24px 40px -18px rgb(0 0 0 / 0.7);
+	/* The quote card (HomeQuote): clear over its top 6rem, full strength from
+	   9rem — where the text begins (its pt-36) — however tall the quote grows. */
+	--quote-scrim: linear-gradient(
+		to bottom,
+		rgb(14 12 9 / 0.1) 0,
+		rgb(14 12 9 / 0.45) 6rem,
+		rgb(14 12 9 / 0.86) 9rem,
+		rgb(14 12 9 / 0.9) 100%
+	);
 }
 
 /* Which hue each library section wears (nav icon, active pill, section

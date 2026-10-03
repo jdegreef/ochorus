@@ -14,6 +14,8 @@
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
 	import HomeHero from '$lib/components/HomeHero.svelte';
+	import HomeQuote from '$lib/components/HomeQuote.svelte';
+	import HomeYear from '$lib/components/HomeYear.svelte';
 
 	/**
 	 * The signed-in home: a reading dashboard, not an acquisition page. Rendered
@@ -64,11 +66,16 @@
      parchment band, which collapses with it. -->
 <div class="page-band">
 	<DashboardStats />
+	<!-- This year's finished covers, under the stats on the same parchment. -->
+	<HomeYear />
 </div>
 
 <!-- Today's plan day, then multi-plan progress -->
 <TodaysReading />
 <PlansProgress />
+
+<!-- Today's line from the library, over a painting (English only). -->
+<HomeQuote />
 
 <!-- Personalised discovery — self-hides until there is history to score against -->
 <RecommendedNext />
