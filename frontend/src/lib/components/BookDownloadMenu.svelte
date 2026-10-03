@@ -7,6 +7,7 @@
 	import { dismissable } from '$lib/actions/dismissable';
 	import { menuShift } from '$lib/menuShift';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
+	import { PHONE } from '$lib/breakpoints';
 	import DrawerShell from './DrawerShell.svelte';
 	import Icon from './Icon.svelte';
 
@@ -38,17 +39,19 @@
 
 	// Phones (<640px) get a bottom sheet; wider screens the dropdown. mediaFlag
 	// is false until hydrated, so the prerendered markup is the dropdown's.
-	const phone = mediaFlag('(max-width: 639.98px)');
+	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
 
 	let open = $state(false);
+	const dropdownOpen = $derived(open && !isPhone);
 	// Crossing 640px while open (a phone rotated mid-choice) would show the
 	// dropdown unmeasured — hung from the button's edge, possibly off-screen.
-	// Close instead; the next tap opens the right shape, measured.
-	let wasPhone: boolean | undefined;
+	// Close instead; the next tap opens the right shape, measured. (Runs on
+	// every change of isPhone only; the first run, at hydration, finds the
+	// menu closed already.)
 	$effect(() => {
-		if (wasPhone !== undefined && wasPhone !== isPhone) open = false;
-		wasPhone = isPhone;
+		void isPhone;
+		open = false;
 	});
 	let root = $state<HTMLDivElement>();
 	// Hung from the button's end edge like .account-menu, but placed by
@@ -131,12 +134,12 @@
 <div
 	class="relative"
 	bind:this={root}
-	use:dismissable={{ open: open && !isPhone, onDismiss: () => (open = false) }}
+	use:dismissable={{ open: dropdownOpen, onDismiss: () => (open = false) }}
 >
 	<button
 		type="button"
 		class="btn btn-sm btn-ghost"
-		aria-controls={open && !isPhone ? menuId : undefined}
+		aria-controls={dropdownOpen ? menuId : undefined}
 		aria-haspopup={isPhone ? 'dialog' : undefined}
 		aria-expanded={open}
 		onclick={toggle}
@@ -144,7 +147,7 @@
 		<Icon name={savedOffline ? 'check' : 'download'} size={15} />
 		<span>{downloading ? `${pct}%` : t('book.download')}</span>
 	</button>
-	{#if open && !isPhone}
+	{#if dropdownOpen}
 		<!-- A labelled group, not a menu role: that promises arrow-key
 		     navigation between menu items, and these are plain links and buttons
 		     reached with Tab — the same treatment as AccountMenu/QuickSettings. -->

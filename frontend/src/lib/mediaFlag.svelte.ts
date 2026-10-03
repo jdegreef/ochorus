@@ -8,15 +8,18 @@
  * (desktop) markup. This starts false (the prerendered answer), then flips in
  * an effect, after hydration, and follows changes (rotation, resizing).
  *
+ * `query` may be a getter, for a query built from props (it is re-read, and
+ * the listener swapped, when they change).
+ *
  * Call it once from a component's `<script>` (it owns an `$effect`, so it must
  * run during component init, like `scrollSpy`). Anything that must be right on
  * the very first paint belongs in CSS instead — this is for choosing what to
  * MOUNT, not how it looks.
  */
-export function mediaFlag(query: string) {
+export function mediaFlag(query: string | (() => string)) {
 	let matches = $state(false);
 	$effect(() => {
-		const mq = window.matchMedia(query);
+		const mq = window.matchMedia(typeof query === 'function' ? query() : query);
 		const sync = () => (matches = mq.matches);
 		sync();
 		mq.addEventListener('change', sync);

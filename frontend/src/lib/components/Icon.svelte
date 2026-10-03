@@ -40,7 +40,8 @@
 		| 'layers'
 		| 'quote'
 		| 'pen'
-		| 'highlighter';
+		| 'highlighter'
+		| 'share';
 
 	let {
 		name,
@@ -155,6 +156,11 @@
 	{:else if name === 'mountain'}
 		<path d="M3 20h18L14 6l-3.2 6-2.3-3z" />
 		<path d="m10.8 12 1.2-2 2 4" />
+	{:else if name === 'share'}
+		<circle cx="6" cy="12" r="2.6" />
+		<circle cx="17" cy="6" r="2.6" />
+		<circle cx="17" cy="18" r="2.6" />
+		<path d="M8.3 10.9 14.7 7.2M8.3 13.1l6.4 3.7" />
 	{:else if name === 'heart'}
 		<path d="M12 20.5S4 15.9 4 10.3A4.3 4.3 0 0 1 12 8a4.3 4.3 0 0 1 8 2.3c0 5.6-8 10.2-8 10.2z" />
 	{:else if name === 'flame'}

@@ -124,22 +124,9 @@
 		/* Room for the focus ring and the scrollbar on a phone. */
 		padding: 0.15rem 0.15rem 0.5rem;
 		scrollbar-width: none;
-		/* Fade an edge while cards hide past it (`use:scrollEdges`): with no
-		   scrollbar, a tablet with a trackpad had no sign there was more. */
-		--fade-s: 0rem;
-		--fade-e: 0rem;
-		-webkit-mask-image: linear-gradient(to right, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
-		mask-image: linear-gradient(to right, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
-	}
-	.band:global(.more-start) {
-		--fade-s: 1.5rem;
-	}
-	.band:global(.more-end) {
-		--fade-e: 1.5rem;
-	}
-	:global([dir='rtl']) .band {
-		-webkit-mask-image: linear-gradient(to left, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
-		mask-image: linear-gradient(to left, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
+		/* Its edges fade while cards hide past them (`.edge-fade`, via
+		   `use:scrollEdges`): with no scrollbar, a tablet with a trackpad had
+		   no other sign there was more. */
 	}
 	/* The card's frame: a <button> for an era or tradition, a <div> holding a
 	   head button and place chips for a region. */
@@ -284,8 +271,6 @@
 			grid-auto-flow: row;
 			grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 			overflow: visible;
-			-webkit-mask-image: none;
-			mask-image: none;
 		}
 	}
 </style>

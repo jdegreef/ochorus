@@ -1443,6 +1443,13 @@ nav.appnav .navtoggle {
 nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
+/* The tablet "More ▾" — hidden except in the 768–1023px band below. Outside
+   .navlinks on purpose: that track scrolls, and would clip the dropdown. */
+nav.appnav .navmore {
+	display: none;
+	position: relative;
+	flex: none;
+}
 /* Tablets (768–1023px): ONE row, like every other width. The six links plus
    the brand and controls need ~892px with their icons, so here the bar sheds
    what it can spare rather than growing a second row: the link icons go (the
@@ -1481,17 +1488,9 @@ nav.appnav .navtoggle:hover {
 	nav.appnav .navlinks a[data-section='biographies'] {
 		display: none;
 	}
-	/* .navmenu in the selector: outranks the base `display: none` below. */
-	nav.appnav .navmenu .navmore {
+	nav.appnav .navmore {
 		display: block;
 	}
-}
-/* The tablet "More ▾" — hidden except in the band above. Outside .navlinks
-   on purpose: that track scrolls, and would clip the dropdown. */
-nav.appnav .navmore {
-	display: none;
-	position: relative;
-	flex: none;
 }
 nav.appnav .navmore-btn {
 	display: inline-flex;
@@ -1580,31 +1579,23 @@ nav.appnav .navmore-menu {
 		margin-inline-start: 0.25rem;
 	}
 }
-/* Phones: the gear shows only where nothing else holds its theme switch —
-   the tab bar's "More" sheet holds it, and on the reading surfaces
-   (`.appnav-static`) the reader's own Aa sheet does. Elsewhere (no tab bar
-   while Listen plays, say) it stays, or the page would have no theme control.
-   Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
-   its "More" sheet holds the links and sign-in too, so the top bar is brand +
-   search (+ a signed-in reader's avatar, whose menu keeps the admin and
-   feedback entries). */
-@media (max-width: 639.98px) {
-	:root:has(.tabbar) nav.appnav .prefs,
-	nav.appnav.appnav-static .prefs,
-	:root:has(.tabbar) nav.appnav .navtoggle,
-	:root:has(.tabbar) nav.appnav .navmenu,
-	:root:has(.tabbar) nav.appnav .account-signin {
+/* Wherever the tab bar shows (TabBar.svelte, which defines --tabbar-h —
+   phones upright, and held sideways: short + touch, as no tablet is under
+   500px tall) its "More" sheet holds the links, the theme switch and sign-in,
+   so the top bar is brand + search (+ a signed-in reader's avatar, whose menu
+   keeps the admin and feedback entries). Keep the query list in step with
+   TabBar's. */
+@media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
+	:root:has(.tabbar) nav.appnav :is(.prefs, .navtoggle, .navmenu, .account-signin) {
 		display: none;
 	}
 }
-/* A phone held sideways (short + touch — no tablet is under 500px tall) gets
-   the tab bar too, in a compact 48px form (TabBar.svelte), so the same
-   controls are in the same places whichever way the phone is turned. */
-@media (max-height: 499.98px) and (pointer: coarse) {
-	:root:has(.tabbar) nav.appnav .prefs,
-	:root:has(.tabbar) nav.appnav .navtoggle,
-	:root:has(.tabbar) nav.appnav .navmenu,
-	:root:has(.tabbar) nav.appnav .account-signin {
+/* On a phone's reading surfaces (`.appnav-static`, no tab bar) the reader's own
+   Aa sheet holds the theme switch, so the gear goes there too. Elsewhere with
+   no tab bar (while Listen plays, say) it stays, or the page would have no
+   theme control. */
+@media (max-width: 639.98px) {
+	nav.appnav.appnav-static .prefs {
 		display: none;
 	}
 }
@@ -1691,6 +1682,22 @@ nav.appnav .navsearch:hover {
 .account-item:hover {
 	background: var(--surface-2);
 	text-decoration: none;
+}
+
+/* The readers' "⋯" group (chapter and sermon top bars): .account-menu chrome
+   hung a little closer to its button, with icon rows at thumb size. */
+.account-menu.more-group {
+	top: calc(100% + 0.25rem);
+}
+.account-item.more-item {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	min-height: 2.75rem;
+	font-size: var(--fs-body);
+}
+.account-item.more-item.text-accent {
+	color: var(--accent);
 }
 
 /* Preferences menu (gear → dropdown). Reuses .account-menu chrome; these
@@ -2484,8 +2491,8 @@ a.sermon-row-title:hover {
 /* A filter-chip row that becomes a single horizontal scroller on a phone, so a
    long topic list can't push the content it filters two screens down; from sm up
    it wraps as an ordinary chip cloud. Its edges fade only while chips are
-   hidden past them (the shared edge mask below, driven by `use:scrollEdges`) —
-   it fades to whatever is behind, so it's theme-agnostic.
+   hidden past them (`.edge-fade`, via `use:scrollEdges`) — it fades to
+   whatever is behind, so it's theme-agnostic.
    Unlayered on purpose, so it reliably wins over any Tailwind layout utility a
    caller composes onto it (a `flex-wrap`/`overflow` utility would otherwise beat
    a rule inside `@layer components`). Shared by the Books and Sermons topic
@@ -2516,8 +2523,8 @@ a.sermon-row-title:hover {
    author's book rail). Unlike .chip-scroller it never wraps — a rail always
    scrolls — so it keeps overflow at every width; but the end-edge fade that
    signals "more this way" (in place of a hard clip) is only wanted where it
-   actually overflows, i.e. on a phone — where the shared edge mask below
-   (`use:scrollEdges`) fades an edge only while covers hide past it. A
+   actually overflows, i.e. on a phone — where `.edge-fade` (via
+   `use:scrollEdges`) fades an edge only while covers hide past it. A
    desktop rail keeps its native scrollbar and no mask. Covers already carry
    shrink-0. */
 .cover-rail {
@@ -2599,20 +2606,35 @@ a.sermon-row-title:hover {
    fades only then — a static fade dimmed the first tab at rest, and the start
    edge never faded at all once scrolled. The gradient's direction is a
    variable, so RTL flips one token rather than restating the gradient.
-   The same mask serves .chip-scroller and .cover-rail (each paired with
-   `use:scrollEdges`); with neither class set it is fully opaque, so a row
-   that fits — or a wrapped chip cloud — shows no fade at all. */
+   The mask is the shared `.edge-fade` below. */
 .tab-strip {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
 	scrollbar-width: none;
 }
-.tab-strip,
-.chip-scroller,
-.cover-rail {
+.tab-strip::-webkit-scrollbar {
+	display: none;
+}
+
+/* The edge fade for any sideways-scrolling row. `use:scrollEdges` adds
+   `.edge-fade` and marks which ends have something hidden past them
+   (`more-start` / `more-end`); the mask applies only then. A row that fits
+   carries no mask at all — and so no stacking context, which a mask always
+   creates (it once lifted a bio card's cover rail over the card's stretched
+   link and ate the clicks between covers). The gradient's direction is a
+   variable, so RTL flips one token rather than restating the gradient. */
+.edge-fade {
 	--fade-dir: to right;
 	--fade-s: 0rem;
 	--fade-e: 0rem;
+}
+.edge-fade.more-start {
+	--fade-s: 1.5rem;
+}
+.edge-fade.more-end {
+	--fade-e: 1.5rem;
+}
+.edge-fade:is(.more-start, .more-end) {
 	-webkit-mask-image: linear-gradient(
 		var(--fade-dir),
 		transparent,
@@ -2628,26 +2650,14 @@ a.sermon-row-title:hover {
 		transparent
 	);
 }
-.tab-strip::-webkit-scrollbar {
-	display: none;
-}
-:is(.tab-strip, .chip-scroller, .cover-rail).more-start {
-	--fade-s: 1.5rem;
-}
-:is(.tab-strip, .chip-scroller, .cover-rail).more-end {
-	--fade-e: 1.5rem;
-}
-[dir='rtl'] :is(.tab-strip, .chip-scroller, .cover-rail) {
+[dir='rtl'] .edge-fade {
 	--fade-dir: to left;
 }
-/* From sm up a chip row wraps instead of scrolling, so it has no edge to fade —
-   and a mask would clip the focus ring of a chip on its border. A cover rail
-   keeps its native scrollbar there instead: a mask makes a stacking context,
-   which lifted the AuthorBioCard rail above the card's stretched link and
-   ate clicks between the covers. */
+/* From sm up a chip row wraps instead of scrolling, and a cover rail keeps its
+   native scrollbar — no fade on either (same specificity as the rule above,
+   so source order decides). */
 @media (min-width: 640px) {
-	.chip-scroller,
-	.cover-rail {
+	.edge-fade:is(.chip-scroller, .cover-rail) {
 		-webkit-mask-image: none;
 		mask-image: none;
 	}

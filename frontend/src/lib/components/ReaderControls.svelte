@@ -13,7 +13,7 @@
 	import { onDestroy } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
-	import { theme } from '$lib/theme.svelte';
+	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
 	import DrawerShell from '$lib/components/DrawerShell.svelte';
 
@@ -92,12 +92,9 @@
 	// with it "open" and the arrow keys swallowed.
 	onDestroy(() => (readerUi.panelOpen = false));
 
-	/** Paper / Sepia / Lamplight, in that order — lightest to darkest. */
-	const THEMES: { v: 'light' | 'sepia' | 'dark'; k: string }[] = [
-		{ v: 'light', k: 'settings.themeLight' },
-		{ v: 'sepia', k: 'settings.themeSepia' },
-		{ v: 'dark', k: 'settings.themeDark' }
-	];
+	/** Paper / Sepia / Lamplight — the fixed looks; the reader picks what it
+	 *  sees, so no System here. */
+	const THEMES = THEME_OPTIONS.filter((o) => o.v !== 'system');
 	const LEADINGS: { v: Leading; k: string }[] = [
 		{ v: 'compact', k: 'spacing.compact' },
 		{ v: 'normal', k: 'spacing.normal' },

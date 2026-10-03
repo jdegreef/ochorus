@@ -2,6 +2,7 @@
 	import { chapterMeta } from '$lib/bookSeo';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
+	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -585,7 +586,7 @@
 	// popover's click-away handler would shut the sheet on every tap inside it.
 	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
 	// the prerendered markup), so both `{#if}`s below agree with it.
-	const phone = mediaFlag('(max-width: 639.98px)');
+	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
 	// The top bar's "⋯" group: search, notebook, edition, focus — plus bookmark
 	// on phones, whose bar has no room for it.
@@ -1767,11 +1768,9 @@
 							title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
 						>
 					{:else}
-						<span
-							class="btn btn-icon btn-ghost nav-off"
-							role="link"
-							aria-disabled="true"
-							aria-label={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></span
+						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
+						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.prevChapter')}
+							><Icon name="chevron-left" size={18} /></button
 						>
 					{/if}
 					{#if chapter.next}
@@ -1782,11 +1781,9 @@
 							title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
 						>
 					{:else}
-						<span
-							class="btn btn-icon btn-ghost nav-off"
-							role="link"
-							aria-disabled="true"
-							aria-label={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></span
+						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
+						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.nextChapter')}
+							><Icon name="chevron-right" size={18} /></button
 						>
 					{/if}
 					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
@@ -2760,26 +2757,8 @@
 	}
 
 	/* --- Top-bar chrome -------------------------------------------------------- */
-	/* The "⋯" group (both bars): `.account-menu` chrome, with icon rows at thumb size. */
-	.more-group {
-		top: calc(100% + 0.25rem);
-	}
-	.more-item {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		min-height: 2.75rem;
-		font-size: var(--fs-body);
-	}
-	.more-item.text-accent {
-		color: var(--accent);
-	}
-	/* The top bar's stand-in for a missing Previous/Next: holds the slot. */
-	.nav-off {
-		opacity: 0.35;
-		cursor: default;
-		pointer-events: none;
-	}
+	/* The "⋯" group's .more-group / .more-item live in app.css, shared with the
+	   sermon reader. */
 	/* Previous · Listen · Aa · Next. Phones only — via the media query, not a
 	   `sm:hidden` utility, which a scoped `display` here would out-rank. */
 	.foot-actions {

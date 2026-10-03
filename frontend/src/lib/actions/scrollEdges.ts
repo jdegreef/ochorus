@@ -1,8 +1,9 @@
 /**
- * Marks which ends of a sideways-scrolling row have content hidden past them
- * (`more-start` / `more-end`), so the CSS fades an edge only when something
- * is really there. Used by `.tab-strip` (via `tabStrip`), `.chip-scroller`
- * and `.cover-rail` — a static end-edge mask dimmed the last chip even when
+ * Marks a sideways-scrolling row `.edge-fade` and which of its ends have
+ * content hidden past them (`more-start` / `more-end`), so app.css fades an
+ * edge only when something is really there. Used by `.tab-strip` (via
+ * `tabStrip`), `.chip-scroller`, `.cover-rail` and FacetBand — a static
+ * end-edge mask dimmed the last chip even when
  * scrolled to the end, and never faded the start edge at all. Observes the
  * children as well as the row: a font load or a late-rendered item changes
  * their widths without resizing the row.
@@ -17,6 +18,7 @@ export function scrollEdges(node: HTMLElement) {
 		node.classList.toggle('more-end', x + node.clientWidth < node.scrollWidth - 1);
 	}
 
+	node.classList.add('edge-fade');
 	const ro = new ResizeObserver(sync);
 	ro.observe(node);
 	for (const child of node.children) ro.observe(child);

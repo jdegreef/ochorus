@@ -133,13 +133,22 @@
 	// one-row bar has no room for — Biographies, whose link is hidden there,
 	// then Originals and (in English) the hubs the footer carries.
 	let navMoreOpen = $state(false);
-	const NAV_MORE = $derived([
-		...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({ href: d.href, label: t(d.labelKey) })),
-		{ href: ORIGINALS_DEST.href, label: t(ORIGINALS_DEST.labelKey) },
-		...(lang.current === 'en' ? ENGLISH_HUBS.map((d) => ({ href: `${d.href}/`, label: t(d.labelKey), raw: true })) : [])
-	]);
-
-	const navMoreActive = $derived(NAV_MORE.some((d) => isActive(d.href.replace(/\/$/, ''))));
+	// English-only hubs stay unlocalized (the footer's rule), so each item
+	// carries its final href; `active` is matched on the route path.
+	const navMore = $derived(
+		[
+			...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({
+				path: d.href,
+				href: localizeHref(d.href),
+				label: t(d.labelKey)
+			})),
+			{ path: ORIGINALS_DEST.href, href: localizeHref(ORIGINALS_DEST.href), label: t(ORIGINALS_DEST.labelKey) },
+			...(lang.current === 'en'
+				? ENGLISH_HUBS.map((d) => ({ path: d.href, href: `${d.href}/`, label: t(d.labelKey) }))
+				: [])
+		].map((d) => ({ ...d, active: isActive(d.path) }))
+	);
+	const navMoreActive = $derived(navMore.some((d) => d.active));
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
@@ -331,16 +340,15 @@
 						aria-expanded={navMoreOpen}
 						aria-controls={navMoreOpen ? 'nav-more' : undefined}
 						onclick={() => (navMoreOpen = !navMoreOpen)}
-						>{t('nav.more')}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button
+						>{t('nav.more')}<Icon name="chevron-right" size={16} mirror={false} class="rotate-90" /></button
 					>
 					{#if navMoreOpen}
 						<div id="nav-more" class="account-menu navmore-menu" role="group" aria-label={t('nav.more')}>
-							{#each NAV_MORE as d (d.href)}
-								<!-- English-only hubs stay unlocalized — the footer's rule. -->
+							{#each navMore as d (d.path)}
 								<a
-									href={'raw' in d ? d.href : localizeHref(d.href)}
+									href={d.href}
 									class="account-item"
-									aria-current={isActive(d.href.replace(/\/$/, '')) ? 'page' : undefined}
+									aria-current={d.active ? 'page' : undefined}
 									onclick={() => (navMoreOpen = false)}>{d.label}</a
 								>
 							{/each}
