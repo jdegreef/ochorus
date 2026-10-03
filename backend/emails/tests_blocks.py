@@ -135,9 +135,9 @@ class RenderTests(TestCase):
 
     def test_a_shared_cache_still_finds_new_slugs(self):
         cards: dict = {}
-        blocks_mod.resolve([BOOK], "en", cards=cards)
+        blocks_mod.resolve([BOOK], "en", name="Ana", cards=cards)
         out = blocks_mod.resolve(
-            [{"type": "plan", "slug": "humility-12-days"}, BOOK], "en", cards=cards
+            [{"type": "plan", "slug": "humility-12-days"}, BOOK], "en", name="Ana", cards=cards
         )
         self.assertEqual([b["type"] for b in out], ["plan", "book"])
 

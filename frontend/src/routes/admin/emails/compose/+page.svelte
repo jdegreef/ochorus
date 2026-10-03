@@ -56,7 +56,7 @@
 		status_reason: string;
 		audience_count: number;
 		locked: boolean;
-		translations: AdminBroadcast['translations'];
+		translations: NonNullable<AdminBroadcast['translations']>;
 	};
 
 	const list = adminResource(listBroadcasts, 'Something went wrong loading broadcasts.');
@@ -304,9 +304,11 @@
 		error = '';
 		notice = '';
 		try {
-			if (!readOnly) await persist(); // the draft is made from what is saved
+			// Save first: a request is made from what is saved, and the reply
+			// replaces this page's copy (unsaved edits would be lost).
+			if (!readOnly) await persist();
 			const source = editLocale in draft.content && !translationOf(editLocale) ? editLocale : 'en';
-			const b = await broadcastTranslation(draft.id, action, code, source);
+			const b = await broadcastTranslation(draft.id, action, code, action === 'request' ? source : undefined);
 			draft = toDraft(b);
 			const state = draft.translations[code]?.state;
 			notice = {

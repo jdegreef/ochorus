@@ -29,12 +29,12 @@ class RenderedEmail:
     html: str
 
 
-def _display_name(profile, lang: str = "en") -> str:
+def _display_name(profile, lang: str) -> str:
     """The reader's first name, or "friend" in the email's language."""
     name = (getattr(profile, "display_name", "") or "").strip()
     if name:
         return name.split()[0]
-    return copy_mod.FRIEND.get(lang, copy_mod.FRIEND["en"])
+    return copy_mod.FRIEND.get(copy_mod.base_lang(lang), copy_mod.FRIEND["en"])
 
 
 def _base_context(subscription, lang: str) -> dict:

@@ -245,7 +245,7 @@ def resolve(
     blocks: list[dict],
     lang: str,
     *,
-    name: str = "friend",
+    name: str,
     cards=None,
     localize_buttons: bool = True,
 ) -> list[dict]:

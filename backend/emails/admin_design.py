@@ -20,6 +20,7 @@ from library.models import AdminAction
 
 from . import blocks as blocks_mod
 from . import translation_jobs
+from .admin_views import _serialize_broadcast
 from .models import Broadcast, EmailSubscription, EmailTemplate
 from .rendering import render_blocks
 
@@ -197,8 +198,6 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
         )
 
     def post(self, request, pk):
-        from .admin_views import _serialize_broadcast
-
         broadcast = Broadcast.objects.filter(pk=pk).first()
         if broadcast is None:
             return Response(status=http_status.HTTP_404_NOT_FOUND)
@@ -207,7 +206,7 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
         try:
             if action == "request":
                 source = str(request.data.get("source") or "en").strip().lower()
-                translation_jobs.request(broadcast, source, language, actor=actor_email(request))
+                translation_jobs.request(broadcast, source, language)
             elif action == "fetch":
                 translation_jobs.fetch(broadcast, language)
             elif action == "approve":
@@ -224,5 +223,4 @@ class AdminBroadcastTranslationView(AdminAudited, APIView):
                 {"detail": "GitHub is unreachable — try again shortly."},
                 status=http_status.HTTP_502_BAD_GATEWAY,
             )
-        broadcast.refresh_from_db()
         return Response(_serialize_broadcast(broadcast, detail=True))

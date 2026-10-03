@@ -159,6 +159,19 @@ def _headers() -> dict:
     }
 
 
+def file_issue(title: str, body: str) -> dict:
+    """File one job issue (label ``translation-job``) and return GitHub's issue
+    JSON. Raises requests.RequestException upstream."""
+    r = requests.post(
+        f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
+        headers=_headers(),
+        json={"title": title, "body": body, "labels": [LABEL]},
+        timeout=15,
+    )
+    r.raise_for_status()
+    return r.json()
+
+
 def _issue_to_job(issue: dict) -> dict | None:
     """Parse a GitHub issue into a job dict; None if it isn't a job issue."""
     m = _TITLE_RE.match(issue.get("title", ""))
@@ -345,20 +358,14 @@ class AdminTranslationJobsView(AdminAudited, APIView):
                 "queue” (see `.claude/skills/translation-worker`).\n\n"
                 f"{_JOB_GUIDANCE[type_]}"
             )
-            r = requests.post(
-                f"{GITHUB_API}/repos/{settings.GITHUB_TRANSLATION_REPO}/issues",
-                headers=_headers(),
-                json={"title": title, "body": body, "labels": [LABEL]},
-                timeout=15,
-            )
-            r.raise_for_status()
+            issue = file_issue(title, body)
         except requests.RequestException:
             return Response(
                 {"detail": "couldn't reach GitHub to file the job — try again shortly."},
                 status=status.HTTP_502_BAD_GATEWAY,
             )
 
-        job = _issue_to_job(r.json())
+        job = _issue_to_job(issue)
         # The Activity page caches the open queue; let it see this one at once.
         forget_queue()
         return Response({"job": job, "created": True}, status=status.HTTP_201_CREATED)

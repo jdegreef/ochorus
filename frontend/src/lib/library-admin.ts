@@ -1378,9 +1378,9 @@ export interface AdminBroadcast {
 	send_started_at: string | null;
 	/** Copy and audience are frozen: it has (or may have) mailed someone. */
 	locked: boolean;
-	/** AI-drafted translations per language — admin-only review state. */
-	translations: Record<string, EmailTranslation>;
 	// detail only:
+	/** AI-drafted translations per language — admin-only review state. */
+	translations?: Record<string, EmailTranslation>;
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
 	checks?: BroadcastCheck[];
@@ -1433,7 +1433,7 @@ export const broadcastTranslation = (
 	id: number,
 	action: 'request' | 'fetch' | 'approve',
 	language: string,
-	source = 'en'
+	source?: string
 ) =>
 	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/translations/`, {
 		method: 'POST',

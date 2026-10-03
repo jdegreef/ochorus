@@ -241,34 +241,25 @@ def _audience_checks(broadcast) -> list[dict]:
     return out
 
 
+#: What each AI-draft state means for sending: (level, message).
+_TRANSLATION_STATE = {
+    translation_jobs.State.DRAFT: (ERROR, "the AI draft hasn't been approved yet — read it and approve it."),
+    translation_jobs.State.REQUESTED: (WARNING, "an AI draft has been asked for and isn't back yet (issue #{issue})."),
+}
+
+
 def _translation_checks(broadcast) -> list[dict]:
     """The AI-draft review state per language (admin-only; never shown to readers).
     An unapproved draft blocks sending: nothing AI-written reaches a reader's
     inbox until an admin has read it and pressed Approve."""
     out = []
-    for lang, entry in sorted((broadcast.translations or {}).items()):
+    for lang, entry in sorted(translation_jobs.states(broadcast).items()):
         name = _lang_name(lang)
         state = entry.get("state")
-        if state == translation_jobs.DRAFT:
-            out.append(
-                _check(
-                    f"translation:{lang}",
-                    ERROR,
-                    f"{name}: the AI draft hasn't been approved yet — read it and approve it.",
-                )
-            )
-        elif state == translation_jobs.REQUESTED:
-            out.append(
-                _check(
-                    f"translation:{lang}",
-                    WARNING,
-                    f"{name}: an AI draft has been asked for and isn't back yet "
-                    f"(issue #{entry.get('issue')}).",
-                )
-            )
-        if state in (translation_jobs.DRAFT, translation_jobs.APPROVED) and translation_jobs.is_stale(
-            broadcast, lang
-        ):
+        if state in _TRANSLATION_STATE:
+            level, message = _TRANSLATION_STATE[state]
+            out.append(_check(f"translation:{lang}", level, f"{name}: " + message.format(issue=entry.get("issue"))))
+        if state != translation_jobs.State.REQUESTED and entry["stale"]:
             source = _lang_name(entry.get("source_locale", "en"))
             out.append(
                 _check(

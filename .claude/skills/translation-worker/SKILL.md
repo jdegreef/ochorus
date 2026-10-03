@@ -178,17 +178,17 @@ issue, and the admin pulls it in and approves it there
 (`backend/emails/translation_jobs.py`).
 
 1. Claim the issue (`in-progress` label) as usual. Save the issue body to a file.
-2. `cd backend && uv run python manage.py translate_email_job <file> --print-texts`
-   prints the translation rules and `{subject, preheader, texts}` — the only
-   words to translate. Translate them in-session into the target language with
-   that language's glossary and register (`library.translation.system_prompt`
-   holds both; the same rules as a book). Keep `{name}` as written, keep the
-   strings in order and the same count, keep the subject short.
+2. Its JSON block holds `subject`, `preheader` and `texts` — the only words to
+   translate (the layout, works and links stay on the server). Translate them
+   in-session into the target language with that language's glossary and
+   register (`library.translation.system_prompt` holds both; the same rules as
+   a book). Keep `{name}` as written, keep the strings in order and the same
+   count, keep the subject short.
 3. Write your answer to a file as `{"subject": ..., "preheader": ..., "texts": [...]}`
-   and run `manage.py translate_email_job <file> --answer <answer file>`. It
-   rebuilds the blocks with only the words changed, checks them the way the
-   server will, and prints the comment. A refusal names what's wrong — fix the
-   answer, don't hand-edit the printed JSON.
+   and run `cd backend && uv run python manage.py translate_email_job <issue file>
+   --answer <answer file>`. It checks the answer the way the server will and
+   prints the comment. A refusal names what's wrong — fix the answer, don't
+   hand-edit the printed JSON.
 4. Post the printed text as a comment on the issue **exactly as printed** (it
    starts with `<!-- ochorus:email-translation -->`), remove `in-progress`, and
    close the issue. No branch, no PR, no review notes file.

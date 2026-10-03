@@ -6,7 +6,6 @@ from __future__ import annotations
 import io
 import json
 import tempfile
-from types import SimpleNamespace
 from unittest import mock
 
 from django.core.management import call_command
@@ -19,7 +18,7 @@ from . import translation_jobs as jobs
 from .models import Broadcast
 from .preflight import run as run_checks
 from .tests import _broadcast, _make_profile
-from .translate import TranslateError, reply_comment, translate_payload
+from .translation_jobs import reply_comment
 
 BLOCKS = [
     {"type": "heading", "text": "Wait for the Lord"},
@@ -38,25 +37,18 @@ def _campaign(**kw):
     )
 
 
+SPANISH = [
+    "Espera en el Señor",
+    "Querido {name},\n\nEl Adviento es tiempo de espera.",
+    "Empieza a leer",
+    "Comienza el plan",
+]
+
+
 def _spanish(payload):
-    """A worker's reply: the same blocks with Spanish words."""
-    words = {
-        "Wait for the Lord": "Espera en el Señor",
-        "Dear {name},\n\nAdvent is a season of waiting.": "Querido {name},\n\nEl Adviento es tiempo de espera.",
-        "Start reading": "Empieza a leer",
-        "Begin the plan": "Comienza el plan",
-    }
-    return {
-        "broadcast": payload["broadcast"],
-        "target": "es",
-        "source_digest": payload["source_digest"],
-        "subject": "Espera en el Señor este Adviento",
-        "preheader": "24 días",
-        "blocks": [
-            {**b, **{f: words.get(b.get(f), b.get(f)) for f in ("text", "label") if f in b}}
-            for b in payload["blocks"]
-        ],
-    }
+    """A worker's reply: the job's words in Spanish."""
+    answer = {"subject": "Espera en el Señor este Adviento", "preheader": "24 días", "texts": SPANISH}
+    return jobs.check_answer(payload, answer)
 
 
 class _GitHub:
@@ -100,7 +92,7 @@ class TranslationJobTests(TestCase):
             content_type="application/json",
         )
 
-    def test_request_files_one_job_with_the_source(self):
+    def test_request_files_one_job_with_the_words_only(self):
         b = _campaign()
         res = self._act(b, "request")
         self.assertEqual(res.status_code, 200, res.content)
@@ -109,7 +101,11 @@ class TranslationJobTests(TestCase):
         self.assertEqual(issue["title"], f"[translation] email:broadcast-{b.pk} -> es")
         self.assertEqual(issue["labels"], ["translation-job"])
         payload = self.gh.payload()
-        self.assertEqual(payload["blocks"], BLOCKS)
+        self.assertNotIn("blocks", payload)
+        self.assertEqual(
+            payload["texts"],
+            ["Wait for the Lord", BLOCKS[1]["text"], "Start reading", "Begin the plan"],
+        )
         self.assertEqual(payload["subject"], "Wait for the Lord this Advent")
         # Pressing again doesn't file a second job.
         self._act(b, "request")
@@ -164,15 +160,16 @@ class TranslationJobTests(TestCase):
         errors = {c["code"] for c in run_checks(b) if c["level"] == "error"}
         self.assertNotIn("translation:es", errors)
 
-    def test_a_reply_that_changes_more_than_words_is_refused(self):
+    def test_a_reply_to_an_older_source_is_refused(self):
         b = _campaign()
         self._act(b, "request")
-        bad = _spanish(self.gh.payload())
-        bad["blocks"][2]["slug"] = "another-book"
-        self.gh.comments = [{"body": reply_comment(bad)}]
+        self.gh.comments = [{"body": reply_comment(_spanish(self.gh.payload()))}]
+        b.refresh_from_db()
+        b.subject = {"en": "A new subject"}
+        b.save()
         res = self._act(b, "fetch")
         self.assertEqual(res.status_code, 409)
-        self.assertIn("slug", res.json()["detail"])
+        self.assertIn("changed", res.json()["detail"])
         b.refresh_from_db()
         self.assertNotIn("es", b.content)
         self.assertEqual(b.translations["es"]["state"], "requested")
@@ -192,81 +189,36 @@ class TranslationJobTests(TestCase):
         self.assertEqual(self._act(_campaign(), "approve").status_code, 409)
 
 
-def _fake_client(answer):
-    message = SimpleNamespace(
-        stop_reason="end_turn", content=[SimpleNamespace(type="text", text=json.dumps(answer))]
-    )
-    return SimpleNamespace(messages=SimpleNamespace(create=mock.Mock(return_value=message)))
-
-
-class TranslateWorkerTests(TestCase):
-    def _payload(self):
-        b = _campaign()
-        return jobs.source_payload(Broadcast.objects.get(pk=b.pk), "en", "es")
-
-    def test_only_words_are_sent_and_replaced(self):
-        payload = self._payload()
-        client = _fake_client(
-            {"subject": "Asunto", "preheader": "Vista", "texts": ["T1", "T2", "T3", "T4"]}
-        )
-        reply = translate_payload(client, payload)
-        sent = json.loads(client.messages.create.call_args.kwargs["messages"][0]["content"].split("\n\n", 1)[1])
-        self.assertEqual(len(sent["texts"]), 4)  # heading, text, card label, button label
-        self.assertEqual([b["type"] for b in reply["blocks"]], [b["type"] for b in BLOCKS])
-        self.assertEqual(reply["blocks"][2]["slug"], "the-inner-chamber")
-        self.assertEqual(reply["blocks"][3]["path"], "plans/humility-12-days/")
-        self.assertEqual(reply["blocks"][0]["text"], "T1")
-        # The reply validates as a words-only draft against the source.
-        jobs.validate_draft(BLOCKS, reply)
-
-    def test_a_short_answer_is_an_error(self):
-        client = _fake_client({"subject": "A", "preheader": "", "texts": ["only one"]})
-        with self.assertRaises(TranslateError):
-            translate_payload(client, self._payload())
-
-    def test_command_prints_a_comment_fetch_can_read(self):
-        payload = self._payload()
-        with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
-            f.write("Issue body\n\n```json\n" + json.dumps(payload) + "\n```\n")
-        client = _fake_client(
-            {"subject": "Asunto", "preheader": "", "texts": ["a", "b", "c", "d"]}
-        )
-        out = io.StringIO()
-        with mock.patch("emails.management.commands.translate_email_job.anthropic.Anthropic", return_value=client):
-            call_command("translate_email_job", f.name, stdout=out)
-        text = out.getvalue()
-        self.assertTrue(text.startswith(jobs.MARKER))
-        parsed = json.loads(jobs._JSON_BLOCK.search(text).group(1))
-        self.assertEqual(parsed["subject"], "Asunto")
-
-
-def _write_json(obj) -> str:
-    """A temp file holding ``obj`` as JSON; returns its path."""
-    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
-        f.write(json.dumps(obj))
+def _write(text: str) -> str:
+    """A temp file holding ``text``; returns its path."""
+    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as f:
+        f.write(text)
     return f.name
 
 
-class InSessionWorkerTests(TestCase):
-    """A worker session translates without an API key: print, translate, assemble."""
+class WorkerCommandTests(TestCase):
+    """A worker session translates in-session; the command checks and formats."""
 
-    def _job_file(self):
+    def _issue(self):
         b = _campaign()
-        return _write_json(jobs.source_payload(Broadcast.objects.get(pk=b.pk), "en", "es"))
+        payload = jobs.job_payload(Broadcast.objects.get(pk=b.pk), "en", "es")
+        return _write(jobs._issue_body(payload))
 
-    def test_print_then_answer(self):
-        job = self._job_file()
+    def test_answer_becomes_a_reply_fetch_can_read(self):
+        answer = _write(json.dumps({"subject": "Asunto", "preheader": "", "texts": ["a", "b", "c", "d"]}))
         out = io.StringIO()
-        call_command("translate_email_job", job, "--print-texts", stdout=out)
-        texts = json.loads(out.getvalue().split("\n\n", 1)[1])
-        self.assertEqual(texts["texts"][0], "Wait for the Lord")
-        answer = _write_json({"subject": "Asunto", "preheader": "", "texts": ["a", "b", "c", "d"]})
-        out = io.StringIO()
-        call_command("translate_email_job", job, "--answer", answer, stdout=out)
-        self.assertTrue(out.getvalue().startswith(jobs.MARKER))
+        call_command("translate_email_job", self._issue(), "--answer", answer, stdout=out)
+        text = out.getvalue()
+        self.assertTrue(text.startswith(jobs.MARKER))
+        reply = json.loads(jobs.JSON_BLOCK.search(text).group(1))
+        self.assertEqual(reply["texts"], ["a", "b", "c", "d"])
+        self.assertEqual(reply["target"], "es")
 
     def test_a_wrong_answer_is_refused(self):
-        job = self._job_file()
-        answer = _write_json({"subject": "", "preheader": "", "texts": ["a", "b", "c", "d"]})
-        with self.assertRaises(CommandError):
-            call_command("translate_email_job", job, "--answer", answer, stdout=io.StringIO())
+        issue = self._issue()
+        for bad in (
+            {"subject": "", "preheader": "", "texts": ["a", "b", "c", "d"]},
+            {"subject": "S", "preheader": "", "texts": ["only one"]},
+        ):
+            with self.assertRaises(CommandError):
+                call_command("translate_email_job", issue, "--answer", _write(json.dumps(bad)), stdout=io.StringIO())

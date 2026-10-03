@@ -171,14 +171,11 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         "status_reason": b.status_reason,
         "send_started_at": b.send_started_at.isoformat() if b.send_started_at else None,
         "locked": b.is_locked,
-        # AI-drafted translations per language (admin-only review state), with
-        # whether the source changed since each was asked for.
-        "translations": {
-            lang: {**entry, "stale": translation_jobs.is_stale(b, lang)}
-            for lang, entry in (b.translations or {}).items()
-        },
     }
     if detail:
+        # AI-drafted translations per language (admin-only review state), with
+        # whether the source changed since each was asked for.
+        data["translations"] = translation_jobs.states(b)
         data["content"] = blocks_mod.as_blocks(b.content)
         data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
         if b.can_send:
