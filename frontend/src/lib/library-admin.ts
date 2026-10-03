@@ -1315,6 +1315,19 @@ export interface AdminEngagement {
 	/** The weekly lines behind the pulse tiles (library/engagement_trends.py),
 	 *  on the same weeks as `weekly_active`. Absent from an older API. */
 	trends?: EngagementTrends | null;
+	/** Who stays: the last finished weeks' sign-ups, oldest first, and how
+	 *  many read in each week after (library/engagement_trends.py). Absent
+	 *  from an older API. */
+	cohorts?: EngagementCohort[];
+}
+
+/** One join week. `active[k]` is how many of its `size` sign-ups read in
+ *  week `k` after joining (0 is the join week), up to the last finished week.
+ *  Null when the week is under the privacy floor: its size only. */
+export interface EngagementCohort {
+	week: string;
+	size: number;
+	active: number[] | null;
 }
 
 export interface EngagementTrends {

@@ -191,3 +191,58 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
             for off in offsets
         ],
     }
+
+
+#: Join weeks the retention grid shows, and the weeks after joining it follows.
+COHORT_WEEKS = 10
+COHORT_SPAN = 9  # week 0 (the join week) to week 8
+#: A join week with fewer people than this shows its size only, never shares:
+#: one share of a group of three can point at a person.
+COHORT_MIN_SIZE = 5
+
+
+def retention_cohorts(now) -> list[dict]:
+    """Who stays: each of the last ``COHORT_WEEKS`` finished weeks' sign-ups,
+    and how many of them read in each week after.
+
+    A row is ``{week, size, active}``. ``active[k]`` is how many of the week's
+    sign-ups read in week ``k`` after it (0 is the join week itself), and runs
+    only to the last FINISHED week: the week in progress would read as a drop.
+    Below ``COHORT_MIN_SIZE`` people ``active`` is None, so nothing narrower
+    than the floor leaves the server. Reading comes from the reading-day log
+    (every day a reader read; each reader's local date, as the weekly chart
+    uses it). Reading merged in from before the account existed is ignored:
+    a cohort starts the week it joined. Two queries."""
+    from accounts.models import UserProfile
+    from reading.models import ReadingDay
+
+    this_week = week_start(day_of(now))
+    starts = week_starts(now, COHORT_WEEKS + 1)[:-1]  # finished weeks only
+    joined = {
+        pk: week_start(day_of(at))
+        for pk, at in UserProfile.objects.filter(
+            created_at__gte=start_of(starts[0]), created_at__lt=start_of(this_week)
+        ).values_list("pk", "created_at")
+    }
+    sizes = Counter(joined.values())
+    read: dict[tuple, set] = defaultdict(set)  # (join week, k) -> profiles
+    for pk, day in ReadingDay.objects.filter(
+        profile__in=list(joined), day__gte=starts[0], day__lt=this_week
+    ).values_list("profile", "day"):
+        k = (week_start(day) - joined[pk]).days // 7
+        if 0 <= k < COHORT_SPAN:
+            read[(joined[pk], k)].add(pk)
+    rows = []
+    for week in starts:
+        weeks_seen = min(COHORT_SPAN, (this_week - week).days // 7)
+        size = sizes.get(week, 0)
+        rows.append(
+            {
+                "week": week.isoformat(),
+                "size": size,
+                "active": [len(read[(week, k)]) for k in range(weeks_seen)]
+                if size >= COHORT_MIN_SIZE
+                else None,
+            }
+        )
+    return rows
