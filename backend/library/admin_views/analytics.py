@@ -15,6 +15,7 @@ from accounts.permissions import is_admin_user, requires
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
+from ..engagement_trends import pulse_trends, weekly_signups
 from ..models import (
     AdminAction,
     Article,
@@ -115,6 +116,15 @@ class AdminEngagementView(APIView):
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
                 "events": self._events(now),
+                # The tiles' lines; none for the empty state, which shows no tiles.
+                "trends": pulse_trends(
+                    now,
+                    self.WEEKS,
+                    readers=overview["readers"],
+                    users=overview["total_users"],
+                )
+                if overview["readers"]
+                else None,
             }
         )
 
@@ -839,19 +849,12 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from accounts.models import UserProfile
 
-        buckets = {}
-        # One pass over sign-up dates, counted into their Monday-anchored week.
-        for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = week_start(day_of(created))
-            buckets[wk] = buckets.get(wk, 0) + 1
+        starts = week_starts(now, weeks)
         return [
-            {"week": wk.isoformat(), "count": buckets.get(wk, 0)}
-            for wk in week_starts(now, weeks)
+            {"week": wk.isoformat(), "count": n}
+            for wk, n in zip(starts, weekly_signups(starts), strict=True)
         ]
-
-
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)
