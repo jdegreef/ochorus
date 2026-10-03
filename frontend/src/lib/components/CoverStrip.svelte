@@ -5,9 +5,14 @@
 	import BookCover from './BookCover.svelte';
 
 	/**
-	 * A small fanned "shelf peek" of book covers — the plan page's strip.
-	 * Decorative (aria-hidden); falls back to the book's cover colour when
-	 * there's no image.
+	 * Book covers fanned together. Decorative (aria-hidden); falls back to the
+	 * book's cover colour when there's no image.
+	 *
+	 * `size`: `sm` is a small strip (a plan's book sections); `lg` a larger one
+	 * (a series page's hero); `fan` is a page's hero picture — up to three big
+	 * covers fanned from a shared bottom edge, filling the width it is given
+	 * (the plan page, /originals). `priority` loads the leading cover eagerly
+	 * for a fan that is the page's largest paint.
 	 *
 	 * BOOKS ONLY, by type. A topic's fan can also hold sermon tiles, which are
 	 * drawn as emblem chips rather than covers (`ShelfCard`); this one cannot
@@ -15,26 +20,27 @@
 	 * can appear. Taking `BookTile[]` makes that a compiler error rather than a
 	 * silently blank rectangle.
 	 */
-	// `size`: `sm` is a small peek; `lg` is a series page's hero, where the
-	// covers ARE the page's picture; `fan` is the plan page's hero — up to three
-	// large covers fanned from a shared bottom edge, as on /originals, filling
-	// the width it is given.
 	let {
 		covers,
 		max = 4,
-		size = 'sm'
-	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan' } = $props();
+		size = 'sm',
+		priority = false
+	}: { covers: BookTile[]; max?: number; size?: 'sm' | 'lg' | 'fan'; priority?: boolean } =
+		$props();
+	// The fan's geometry holds three; the middle one (or the only one) is in front.
 	const shown = $derived(covers.slice(0, size === 'fan' ? Math.min(max, 3) : max));
+	const front = $derived(shown.length === 3 ? 1 : 0);
 </script>
 
 {#if covers.length}
-	<div class="covers" class:lg={size === 'lg'} class:fan={size === 'fan'} data-n={shown.length} aria-hidden="true">
+	<div class="covers" class:strip={size !== 'fan'} class:lg={size === 'lg'} class:fan={size === 'fan'} aria-hidden="true">
 		{#each shown as cover, i (cover.slug ?? cover.title)}
 			{@const face = tileFace(cover)}
-			<div class="cover" data-i={i}>
+			{@const eager = priority && i === front}
+			<div class="cover">
 				{#if face}
 					<!-- Drawn, not a bare image: a plate ground has no words. -->
-					<BookCover book={face} rounded="" />
+					<BookCover book={face} rounded="" priority={eager} />
 				{:else if cover.cover_url}
 					{@const source = { src: cover.cover_url, srcset: coverSrcset(cover.cover_url) || undefined }}
 					<img
@@ -42,7 +48,7 @@
 						srcset={source.srcset}
 						use:hydrateSrc={source}
 						alt=""
-						loading="lazy"
+						loading={eager ? 'eager' : 'lazy'}
 					/>
 				{:else}
 					<div class="cover-fallback" style="background: {coverGradient(cover.cover_color)}"></div>
@@ -62,30 +68,34 @@
 		border-radius: 0.25rem;
 		overflow: hidden;
 		box-shadow: var(--shadow-card);
-		margin-inline-start: -0.7rem;
 		background: var(--surface);
+	}
+	/* The strip: overlapped and tilted a little more at each step. */
+	.strip .cover {
+		margin-inline-start: -0.7rem;
 		transform: rotate(-3deg);
 	}
 	.lg .cover {
 		width: 4.75rem;
 		margin-inline-start: -1.4rem;
 	}
-	.cover:first-child {
+	.strip .cover:first-child {
 		margin-inline-start: 0;
 	}
-	.cover:nth-child(2) {
+	.strip .cover:nth-child(2) {
 		transform: rotate(1deg);
 	}
-	.cover:nth-child(3) {
+	.strip .cover:nth-child(3) {
 		transform: rotate(4deg);
 	}
-	.cover:nth-child(4) {
+	.strip .cover:nth-child(4) {
 		transform: rotate(7deg);
 	}
 	/* The fan sizes off its width: a 46%-wide 3:4 cover is 0.61 of the width
 	   tall, the tilted pair's outer corners drop a little more, and the 1rem
 	   the side covers sit below the middle one rides on as padding. Symmetric,
-	   so it needs no RTL flip. */
+	   so it needs no RTL flip. One cover stands alone; two lean apart; three
+	   lean out from a raised middle. */
 	.fan {
 		position: relative;
 		display: block;
@@ -98,24 +108,22 @@
 		top: 1rem;
 		inset-inline-start: 27%;
 		width: 46%;
-		margin: 0;
-		transform: none;
 		transform-origin: bottom center;
 	}
-	.fan[data-n='3'] .cover[data-i='0'] {
+	.fan .cover:first-child:nth-last-child(3) {
 		transform: rotate(-10deg) translateX(-36%);
 	}
-	.fan[data-n='3'] .cover[data-i='1'] {
+	.fan .cover:nth-child(2):nth-last-child(2) {
 		z-index: 1;
 		top: 0;
 	}
-	.fan[data-n='3'] .cover[data-i='2'] {
+	.fan .cover:nth-child(3) {
 		transform: rotate(10deg) translateX(36%);
 	}
-	.fan[data-n='2'] .cover[data-i='0'] {
+	.fan .cover:first-child:nth-last-child(2) {
 		transform: rotate(-6deg) translateX(-26%);
 	}
-	.fan[data-n='2'] .cover[data-i='1'] {
+	.fan .cover:nth-child(2):last-child {
 		transform: rotate(6deg) translateX(26%);
 	}
 	.cover img,

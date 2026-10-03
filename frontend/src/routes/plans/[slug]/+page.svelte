@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { untrack } from 'svelte';
+	import { onMount, untrack } from 'svelte';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
@@ -50,8 +50,8 @@
 		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
 	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
-	/** "Daughters of the King: Three Months with God" set as a title over an
-	 *  italic subtitle; the h1's text stays the whole title. */
+	/** "Daughters of the King: Three Months with God" set as a title over its
+	 *  subtitle, as a book's is (plans have no subtitle field of their own). */
 	const titleParts = $derived.by(() => {
 		const m = plan.title.match(/^(.+?)\s*[:：]\s+(.+)$/u);
 		return m ? { main: m[1], sub: m[2] } : { main: plan.title, sub: '' };
@@ -127,13 +127,11 @@
 	/** Today, once mounted — the finish date is the reader's, never the build's:
 	 *  a prerendered date would be stale by the next morning. */
 	let today = $state<Date | null>(null);
-	$effect(() => {
-		today = new Date();
-	});
+	onMount(() => (today = new Date()));
 	const finishDate = $derived.by(() => {
-		if (!today || next === null) return '—';
+		if (!today) return '—';
 		const end = new Date(today);
-		end.setDate(end.getDate() + (started ? daysLeft : plan.day_count) - 1);
+		end.setDate(end.getDate() + daysLeft - 1);
 		return new Intl.DateTimeFormat(getLang(), { month: 'short', day: 'numeric' }).format(end);
 	});
 	/** The plan's shape at a glance: how long, how much a day, how many books,
@@ -184,14 +182,17 @@
 	     long, how much a day, how many books, and when you'd finish. -->
 	<section class="plan-hero">
 		<div class="min-w-0">
-			<p class="eyebrow mb-1 text-muted">{t('search.typePlan')}</p>
-			<h1 class="text-h1 mb-2" dir="auto">
-				{titleParts.main}{#if titleParts.sub}<span class="sr-only">: </span><span class="plan-subtitle"
-						>{titleParts.sub}</span
-					>{/if}
-			</h1>
+			<p class="eyebrow mb-1 text-muted">
+				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
+					{readingTime(plan.total_words)}{/if}
+			</p>
+			<h1 class="text-h1" dir="auto">{titleParts.main}</h1>
+			{#if titleParts.sub}
+				<!-- As the book page draws a subtitle. -->
+				<p class="mt-1 text-h3 text-muted" dir="auto">{titleParts.sub}</p>
+			{/if}
 			{#if plan.description}
-				<p class="max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
+				<p class="mt-3 max-w-xl text-body text-muted" dir="auto">{plan.description}</p>
 			{/if}
 			<dl class="plan-facts">
 				{#each facts as f (f.label)}
@@ -204,7 +205,7 @@
 		</div>
 		{#if plan.covers.length}
 			<div class="plan-hero-fan">
-				<CoverStrip covers={plan.covers} max={3} size="fan" />
+				<CoverStrip covers={plan.covers} size="fan" priority />
 			</div>
 		{/if}
 	</section>
@@ -214,124 +215,123 @@
 	     On a phone the panel comes first, so the one action leads. -->
 	<div class="plan-body">
 		<aside class="plan-aside">
-	<!-- The read card, as on the book page: the reading that's next, named —
-	     its book and length, and for a started plan how far through you are —
-	     with the one read verb. A first visit (and the prerender, since plan
-	     progress is client-only) gets Day 1 with the "Free to read · No account
-	     needed" reassurance. Save and Share sit quietly beneath. -->
-	{#if next !== null}
-		<div class="read-card">
-			<div class="read-card-body">
-				{#if started}
-					<p class="text-small text-muted">{progressLine}</p>
-				{:else}
-					<p class="text-small">
-						<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
-							class="px-1.5 opacity-50">·</span
-						><span class="text-muted">{t('book.noAccount')}</span>
-					</p>
-				{/if}
-				{#if nextDay}
-					<p class="read-card-title" dir="auto">
-						{dayTitle(nextDay)}
-					</p>
-					<p class="text-small text-muted" dir="auto">
-						<!-- The separator as an expression: literal spaces at an {#if}
-						     boundary are compiler-trimmed ("Prayer·9 min"). -->
-						{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
-							>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
-					</p>
-				{/if}
-				{#if started}
-					<div class="mt-2">
-						<ProgressBar
-							percent={pct}
-							label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
-						/>
+			<!-- The read card, as on the book page: the reading that's next, named —
+			     its book and length, and for a started plan how far through you are —
+			     with the one read verb. A first visit (and the prerender, since plan
+			     progress is client-only) gets Day 1 with the "Free to read · No account
+			     needed" reassurance. Save and Share sit quietly beneath. -->
+			{#if next !== null}
+				<div class="read-card">
+					<div class="read-card-body">
+						{#if started}
+							<p class="text-small text-muted">{progressLine}</p>
+						{:else}
+							<p class="text-small">
+								<span class="font-medium text-accent">{t('book.freeToRead')}</span><span
+									class="px-1.5 opacity-50">·</span
+								><span class="text-muted">{t('book.noAccount')}</span>
+							</p>
+						{/if}
+						{#if nextDay}
+							<p class="read-card-title" dir="auto">
+								{dayTitle(nextDay)}
+							</p>
+							<p class="text-small text-muted" dir="auto">
+								<!-- The separator as an expression: literal spaces at an {#if}
+								     boundary are compiler-trimmed ("Prayer·9 min"). -->
+								{daySource(nextDay)}{#if nextDay.word_count}<span class="opacity-60">{' · '}</span
+									>{readingMinutes(nextDay.word_count)} {t('common.min')}{/if}
+							</p>
+						{/if}
+						{#if started}
+							<div class="mt-2">
+								<ProgressBar
+									percent={pct}
+									label="{plan.title}: {doneCount} {t('plans.of')} {plan.day_count} {t('plans.days')}"
+								/>
+							</div>
+						{/if}
 					</div>
-				{/if}
-			</div>
-			<div class="read-card-cta">
-				<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
-					{started ? t('plans.continue') : t('plans.start')}
-				</a>
-			</div>
-		</div>
-	{:else}
-		<!-- A status line, not a control: a finished plan has no action, so it
-		     must not wear a button's chrome (it read as a disabled button). -->
-		<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
-	{/if}
+					<div class="read-card-cta">
+						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+							{started ? t('plans.continue') : t('plans.start')}
+						</a>
+					</div>
+				</div>
+			{:else}
+				<!-- A status line, not a control: a finished plan has no action, so it
+				     must not wear a button's chrome (it read as a disabled button). -->
+				<p class="text-small font-medium text-muted">✓ {t('plans.finished')}</p>
+			{/if}
 
-	<div class="mt-3 flex flex-wrap items-center gap-2">
-		<FavoriteButton kind="plan" slug={plan.slug} showLabel />
-		<ShareButton url={canonical} title={plan.title} showLabel />
-	</div>
+			<div class="mt-3 flex flex-wrap items-center gap-2">
+				<FavoriteButton kind="plan" slug={plan.slug} showLabel />
+				<ShareButton url={canonical} title={plan.title} showLabel />
+			</div>
 
-	<!-- The writers this plan reads through — a link to each author page, so a
-	     plan is a way into their work, not only a sequence of chapters. Reuses the
-	     shared "Authors" label, so it is already translated in every locale. -->
-	{#if plan.authors?.length}
-		<section class="mt-6">
-			<h2 class="section-heading">{t('search.groupAuthors')}</h2>
-			<p class="text-body">
-				{#each plan.authors as a, i (a.slug)}<a
-						href={localizeHref(authorPath(a.slug))}
-						class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
-					>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
-			</p>
-		</section>
-	{/if}
+			<!-- The writers this plan reads through — a link to each author page, so a
+			     plan is a way into their work, not only a sequence of chapters. Reuses the
+			     shared "Authors" label, so it is already translated in every locale. -->
+			{#if plan.authors?.length}
+				<section class="mt-6">
+					<h2 class="section-heading">{t('search.groupAuthors')}</h2>
+					<p class="text-body">
+						{#each plan.authors as a, i (a.slug)}<a
+								href={localizeHref(authorPath(a.slug))}
+								class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
+							>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
+					</p>
+				</section>
+			{/if}
 		</aside>
 
 		<div class="plan-main">
-	<!-- The day list, shaped: grouped by the book each run of days reads (a
-	     collapsible section per book, the current one open), and each long run
-	     cut into weeks (the current week open) — so a 96-day plan reads as three
-	     books of five weeks, not one column of 96 rows. Native <details>: every
-	     day stays in the prerendered HTML for crawlers and no-JS readers, and the
-	     open state needs no script. Progress is client-only, so the prerender
-	     opens on Day 1 and hydration moves it to where the reader is. -->
-	<section aria-labelledby="plan-days-heading">
-		<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
-		{#each groups as g, gi (g.key)}
-			{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
-			{#if grouped}
-				{@const read = g.days.filter((d) => doneSet.has(d.day)).length}
-				{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-				<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
-					<summary class="plan-group-head">
-						{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
-						<span class="min-w-0 flex-1">
-							<span class="eyebrow block text-muted">{dayRange(g)}</span>
-							<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
-							<span class="block text-small text-muted">
-								{#if started && read}
-									{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
-								{:else}
-									{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
+			<!-- The day list, shaped: grouped by the book each run of days reads (a
+			     collapsible section per book, the current one open), and each long run
+			     cut into weeks (the current week open) — so a 96-day plan reads as three
+			     books of five weeks, not one column of 96 rows. Native <details>: every
+			     day stays in the prerendered HTML for crawlers and no-JS readers, and the
+			     open state needs no script. Progress is client-only, so the prerender
+			     opens on Day 1 and hydration moves it to where the reader is. -->
+			<section aria-labelledby="plan-days-heading">
+				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
+				{#each groups as g, gi (g.key)}
+					{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
+					{#if grouped}
+						{@const read = g.days.filter((d) => doneSet.has(d.day)).length}
+						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
+						<details class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
+							<summary class="plan-group-head">
+								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
+								<span class="min-w-0 flex-1">
+									<span class="eyebrow block text-muted">{dayRange(g)}</span>
+									<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
+									<span class="block text-small text-muted">
+										{#if started && read}
+											{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
+										{:else}
+											{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
+										{/if}
+									</span>
+								</span>
+								<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
+							</summary>
+							<div class="plan-group-body">
+								{#if g.bookSlug}
+									<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
+										>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
+									>
 								{/if}
-							</span>
-						</span>
-						<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
-					</summary>
-					<div class="plan-group-body">
-						{#if g.bookSlug}
-							<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
-								>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
-							>
-						{/if}
+								{@render weekList(g.days, hasNext)}
+							</div>
+						</details>
+					{:else}
 						{@render weekList(g.days, hasNext)}
-					</div>
-				</details>
-			{:else}
-				{@render weekList(g.days, hasNext)}
-			{/if}
-		{/each}
-	</section>
+					{/if}
+				{/each}
+			</section>
 		</div>
 	</div>
-
 
 	<!-- A run of days, in weeks when it is longer than one. The week holding the
 	     next reading opens; in a run that doesn't hold it, the first week does. -->
@@ -533,14 +533,6 @@
 		align-items: center;
 		padding-block: 0.5rem 2rem;
 	}
-	.plan-subtitle {
-		display: block;
-		margin-top: 0.25rem;
-		font-size: var(--fs-h3);
-		font-style: italic;
-		font-weight: 400;
-		color: var(--muted);
-	}
 	.plan-facts {
 		display: grid;
 		grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -578,7 +570,7 @@
 			grid-column: 2;
 			grid-row: 1;
 			position: sticky;
-			top: calc(var(--appnav-h) + 1rem);
+			top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
 		}
 	}
 	@media (max-width: 640px) {
