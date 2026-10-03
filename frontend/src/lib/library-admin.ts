@@ -1290,7 +1290,7 @@ export interface AdminEngagement {
 	events?: EngagementEvent[];
 	/** The weekly lines behind the pulse tiles (library/engagement_trends.py),
 	 *  on the same weeks as `weekly_active`. Absent from an older API. */
-	trends?: EngagementTrends;
+	trends?: EngagementTrends | null;
 }
 
 export interface EngagementTrends {

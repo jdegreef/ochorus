@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from functools import cached_property
 
-from django.db.models import Count, Q, Value
+from django.db.models import Count, Q
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -15,7 +15,7 @@ from accounts.permissions import is_admin_user, requires
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
-from ..engagement_trends import pulse_trends
+from ..engagement_trends import pulse_trends, weekly_signups
 from ..models import (
     AdminAction,
     Article,
@@ -30,7 +30,7 @@ from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
 from ..team_events import team_events
 from ..views import _language_entry
-from ..weeks import day_of, start_of, week_start, week_starts, weekly_counts
+from ..weeks import day_of, week_start, week_starts
 
 
 def _prefer_en(rows, value_of):
@@ -116,12 +116,15 @@ class AdminEngagementView(APIView):
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
                 "events": self._events(now),
+                # The tiles' lines; none for the empty state, which shows no tiles.
                 "trends": pulse_trends(
                     now,
                     self.WEEKS,
                     readers=overview["readers"],
                     users=overview["total_users"],
-                ),
+                )
+                if overview["readers"]
+                else None,
             }
         )
 
@@ -846,23 +849,12 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from accounts.models import UserProfile
 
         starts = week_starts(now, weeks)
         return [
             {"week": wk.isoformat(), "count": n}
-            for wk, n in zip(
-                starts,
-                weekly_counts(
-                    UserProfile.objects.filter(created_at__gte=start_of(starts[0])).values_list(
-                        "created_at", Value(1)
-                    ),
-                    starts,
-                ),
-                strict=True,
-            )
+            for wk, n in zip(starts, weekly_signups(starts), strict=True)
         ]
-
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)

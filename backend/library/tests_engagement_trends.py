@@ -39,6 +39,10 @@ class PulseTrendTests(TestCase):
     def setUp(self):
         self.now = timezone.now()
         self.today = day_of(self.now)
+        # One reader from before the reading-day log, so the page has tiles.
+        ReadingProgress.objects.create(
+            profile=profile(), kind=WorkKind.BOOK, book_slug="x", language="en", chapter_order=1
+        )
 
     def _trends(self):
         res = APIClient().get("/api/admin/engagement/")
@@ -79,8 +83,20 @@ class PulseTrendTests(TestCase):
         t = data["trends"]
         self.assertEqual(t["readers"][-1], data["overview"]["readers"])
         self.assertEqual(t["users"][-1], data["overview"]["total_users"])
-        # The new reader arrived this week; the old one was there all along.
-        self.assertEqual(t["readers"], [1] * 7 + [2])
+        # The new reader arrived this week; the others were there all along.
+        self.assertEqual(t["readers"], [2] * 7 + [3])
+
+    def test_a_reading_day_without_saved_progress_is_not_an_arrival(self):
+        # The tile counts readers with saved progress; someone who only has a
+        # reading day isn't one of them, so the line can't dip below zero.
+        for _ in range(3):
+            ReadingDay.objects.create(profile=profile(), day=self.today)
+        t = self._trends()["trends"]
+        self.assertEqual(t["readers"], [1] * 8)
+
+    def test_an_empty_page_gets_no_lines(self):
+        ReadingProgress.objects.all().delete()
+        self.assertIsNone(self._trends()["trends"])
 
     def test_the_last_30_day_window_ends_today(self):
         p = profile()
@@ -95,5 +111,6 @@ class PulseTrendTests(TestCase):
         profile()
         users = self._trends()["trends"]["users"]
         weekly = APIClient().get("/api/admin/users/").data["weekly_signups"]
-        self.assertEqual(users[-1] - users[-2], 1)
-        self.assertEqual(weekly[-1], {"week": week_start(self.today).isoformat(), "count": 1})
+        # Two this week: setUp's reader and this one.
+        self.assertEqual(users[-1] - users[-2], 2)
+        self.assertEqual(weekly[-1], {"week": week_start(self.today).isoformat(), "count": 2})

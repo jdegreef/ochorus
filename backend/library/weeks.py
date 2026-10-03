@@ -35,10 +35,14 @@ def start_of(day: date) -> datetime:
     return timezone.make_aware(datetime.combine(day, datetime.min.time()))
 
 
-def weekly_counts(rows, starts: list[date]) -> list[int]:
-    """Bucket ``(moment, amount)`` rows into the weeks beginning ``starts``,
-    one total per week, 0 for a week with none. Rows before the first week
-    or after the last are ignored."""
+def weekly_counts(moments, starts: list[date]) -> list[int]:
+    """How many of ``moments`` fall in each week beginning ``starts``, 0 for a
+    week with none. Moments outside the charted weeks are ignored."""
+    return weekly_sums(((at, 1) for at in moments), starts)
+
+
+def weekly_sums(rows, starts: list[date]) -> list[int]:
+    """The ``(moment, amount)`` rows' total in each week beginning ``starts``."""
     totals = dict.fromkeys(starts, 0)
     for at, amount in rows:
         week = week_start(day_of(at))

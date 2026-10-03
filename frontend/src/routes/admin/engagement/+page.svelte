@@ -46,7 +46,7 @@
 	const weekLabels = $derived(data?.weekly_active.map((w) => `week of ${weekLabel(w.week)}`) ?? []);
 	const weekly = (values: number[] | undefined, name: string): Line | undefined =>
 		values?.length ? { values, labels: weekLabels, name, partial: true } : undefined;
-	/** What a running total gained this week. */
+	/** What a running total gained this calendar week (the line's last step). */
 	const gained = (total: number[] | undefined) => (total && total.length > 1 ? total[total.length - 1] - total[total.length - 2] : 0);
 
 	// Reading pulse — the headline figures, each with a plain-English sub, a
@@ -68,12 +68,12 @@
 						value: data.overview.active_30d,
 						sub: 'in the last month',
 						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev),
-						line: data.trends && {
+						line: data.trends ? {
 							values: data.trends.active_30d.map((w) => w.readers),
 							labels: data.trends.active_30d.map((w) => `30 days to ${weekLabel(w.end)}`),
 							name: 'Readers per 30 days',
 							partial: false
-						}
+						} : undefined
 					},
 					{
 						label: 'Hearts',
@@ -85,14 +85,14 @@
 					{
 						label: 'Readers',
 						value: data.overview.readers,
-						sub: gained(data.trends?.readers) ? `+${fmt(gained(data.trends?.readers))} this week` : 'with saved progress',
+						sub: gained(data.trends?.readers) ? `+${fmt(gained(data.trends?.readers))} since Monday` : 'with saved progress',
 						trend: null,
 						line: weekly(data.trends?.readers, 'Readers, running total')
 					},
 					{
 						label: 'Registered users',
 						value: data.overview.total_users,
-						sub: gained(data.trends?.users) ? `+${fmt(gained(data.trends?.users))} this week` : 'accounts',
+						sub: gained(data.trends?.users) ? `+${fmt(gained(data.trends?.users))} since Monday` : 'accounts',
 						trend: null,
 						line: weekly(data.trends?.users, 'Registered users, running total')
 					},
@@ -578,10 +578,10 @@
 
 <style>
 	/* A section the bar links to: a jump lands clear of the site header and
-	   the section bar (one row of tabs, SUBNAV_H_EST in scrollSpy), plus the
+	   the section bar (its measured height, published by SectionBar), plus the
 	   0.5rem the other pages' anchors add. */
 	.anchor {
-		scroll-margin-top: calc(var(--appnav-h, 0px) + 44px + 0.5rem);
+		scroll-margin-top: calc(var(--appnav-h, 0px) + var(--section-bar-h, 44px) + 0.5rem);
 	}
 	/* Privacy badge — a persistent reminder that this page is aggregate-only,
 	   dressed as a quiet feature rather than fine print. */

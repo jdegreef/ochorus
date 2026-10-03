@@ -16,9 +16,9 @@ from __future__ import annotations
 from collections import Counter
 from datetime import timedelta
 
-from django.db.models import Count, Min, Q, Value
+from django.db.models import Count, Min, Q
 
-from .weeks import start_of, week_start, week_starts, weekly_counts
+from .weeks import day_of, start_of, week_start, week_starts, weekly_counts, weekly_sums
 
 #: The rolling windows behind the "Active · 30d" line: six 30-day windows,
 #: the last ending now, so its final point is the same window as the tile.
@@ -36,38 +36,49 @@ def _running_total(now_total: int, new_per_week: list[int]) -> list[int]:
     return out[::-1]
 
 
+def weekly_signups(starts) -> list[int]:
+    """Accounts created in each week beginning ``starts``: the Users page's
+    sign-up chart and the Registered users tile's line."""
+    from accounts.models import UserProfile
+
+    return weekly_counts(
+        UserProfile.objects.filter(created_at__gte=start_of(starts[0])).values_list(
+            "created_at", flat=True
+        ),
+        starts,
+    )
+
+
 def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
     """``readers`` and ``users`` are the tiles' own totals, so each running
     total ends exactly on the number shown above it."""
-    from accounts.models import UserProfile
-    from reading.models import Favorite, ReadingDay, ReadingSession
+    from reading.models import Favorite, ReadingDay, ReadingProgress, ReadingSession
 
     starts = week_starts(now, weeks)
     since = start_of(starts[0])
 
     hearts = weekly_counts(
         Favorite.objects.filter(created_at__gte=since).values_list(
-            "created_at", Value(1)
+            "created_at", flat=True
         ),
         starts,
     )
-    reading_seconds = weekly_counts(
+    reading_seconds = weekly_sums(
         ReadingSession.objects.filter(
             last_seen_at__gte=since, seconds__gt=0
         ).values_list("last_seen_at", "seconds"),
         starts,
     )
-    new_users = weekly_counts(
-        UserProfile.objects.filter(created_at__gte=since).values_list(
-            "created_at", Value(1)
-        ),
-        starts,
-    )
+    new_users = weekly_signups(starts)
     # A reader's first reading day, from the streak log: when they arrived.
-    # Only readers who read in the charted weeks and never before them.
+    # Only readers the tile counts (they have saved progress), who read in the
+    # charted weeks and never before them, so the back-filled total can't
+    # fall below zero or count anyone the tile doesn't.
     arrived = Counter(
         week_start(day)
-        for day in ReadingDay.objects.filter(day__gte=starts[0])
+        for day in ReadingDay.objects.filter(
+            day__gte=starts[0], profile__in=ReadingProgress.objects.values("profile")
+        )
         .exclude(
             profile__in=ReadingDay.objects.filter(day__lt=starts[0]).values("profile")
         )
@@ -81,7 +92,7 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
     # reading-day log, which keeps every day; the tile's own count comes from
     # saved progress, which keeps only the latest, so the two can differ by a
     # reader or two.
-    today = now.date()
+    today = day_of(now)
     ends = [today - timedelta(days=30 * i) for i in range(MONTH_WINDOWS - 1, -1, -1)]
     counts = ReadingDay.objects.filter(
         day__gt=ends[0] - timedelta(days=30), day__lte=today
