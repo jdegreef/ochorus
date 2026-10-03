@@ -16,6 +16,9 @@ export const MARKS_KEY = 'ochorus:marks';
 export const ANCHOR_KEY = 'ochorus:anchors';
 export const BOOKMARKS_KEY = 'ochorus:bookmarks';
 export const PLANS_KEY = 'ochorus:plans';
+// A plan's schedule choices on this device — start date, reading days, reminder
+// time — for its calendar view (PlanCalendar). Not progress; wiped with it.
+export const PLAN_SCHEDULE_KEY = 'ochorus:plan-schedule';
 // The Notebook's own writing — notes and prayers (see journal.ts).
 export const JOURNAL_KEY = 'ochorus:journal';
 // Journal entries not yet confirmed by the account: id → the updatedAt last
@@ -79,6 +82,7 @@ export const READING_DATA_KEYS = [
 	ANCHOR_KEY,
 	BOOKMARKS_KEY,
 	PLANS_KEY,
+	PLAN_SCHEDULE_KEY,
 	JOURNAL_KEY,
 	JOURNAL_DIRTY_KEY,
 	DAILY_DRAFT_KEY,

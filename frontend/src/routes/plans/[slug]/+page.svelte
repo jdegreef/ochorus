@@ -25,6 +25,8 @@
 	import { portal } from '$lib/actions/portal';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
+	import { readJSON, writeJSON } from '$lib/persisted';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -213,6 +215,20 @@
 	let readCardEl = $state<HTMLElement>();
 	/** The pinned book chips' height, measured, for --pinned-offset. */
 	let jumpH = $state(0);
+	/** The day list as a list, or laid on real dates. The calendar is about the
+	 *  reader's today, so it exists only once mounted (the prerender is the list). */
+	const VIEW_KEY = 'ochorus:plan-view';
+	let view = $state<'list' | 'calendar'>('list');
+	// The reader's last choice of view, as a device preference (grid/list on
+	// the shelves is the same idea); read on mount, so the prerender is the list.
+	onMount(() => {
+		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+	});
+	const setView = (v: 'list' | 'calendar') => {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	};
+	const sections = $derived(groups.map((g, i) => ({ key: g.key, label: groupLabels[i], days: g.days })));
 	const cardSeen = elementVisible(() => readCardEl, { initial: true });
 
 	/** Each day's link, built once per plan — the list, the read card, Coming
@@ -431,56 +447,79 @@
 
 			<section aria-labelledby="plan-days-heading">
 				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
-				<!-- One chip per book, pinned while the list scrolls: a jump to (and
-				     open of) that book's section. Anchors, so every day stays in the
-				     prerendered page. -->
-				{#if grouped}
-					<nav
-						class="plan-jump chip-scroller"
-						aria-label={t('nav.books')}
-						bind:clientHeight={jumpH}
-					>
-						{#each groups as g, gi (g.key)}
-							<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
-								>{groupLabels[gi]}</a
-							>
-						{/each}
-					</nav>
+				{#if today}
+					<!-- The view toggle on its own row under the heading, as the shelves
+					     place theirs. -->
+					<div class="seg mb-4 w-fit" role="group" aria-labelledby="plan-days-heading">
+						<button type="button" class:active={view === 'list'} aria-pressed={view === 'list'} onclick={() => setView('list')}
+							>{t('plans.viewList')}</button
+						>
+						<button
+							type="button"
+							class:active={view === 'calendar'}
+							aria-pressed={view === 'calendar'}
+							onclick={() => setView('calendar')}>{t('plans.viewCalendar')}</button
+						>
+					</div>
 				{/if}
-				{#each groups as g, gi (g.key)}
-					{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
+				{#if view === 'calendar' && today}
+					<!-- Keyed on the plan: its choices are seeded per plan, so moving to
+					     another plan re-seeds rather than carrying these over. -->
+					{#key plan.slug}
+						<PlanCalendar {plan} {today} {started} {doneSet} {sections} {dayHref} {dayTitle} />
+					{/key}
+				{:else}
+					<!-- One chip per book, pinned while the list scrolls: a jump to (and
+					     open of) that book's section. Anchors, so every day stays in the
+					     prerendered page. -->
 					{#if grouped}
-						{@const read = readIn(g.days)}
-						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-						<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
-							<summary class="plan-group-head">
-								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
-								<span class="min-w-0 flex-1">
-									<span class="eyebrow block text-muted">{dayRange(g)}</span>
-									<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
-									<span class="block text-small text-muted">
-										{#if started && read}
-											{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
-										{:else}
-											{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
-										{/if}
-									</span>
-								</span>
-								<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
-							</summary>
-							<div class="plan-group-body">
-								{#if g.bookSlug}
-									<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
-										>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
-									>
-								{/if}
-								{@render weekList(g.days, hasNext)}
-							</div>
-						</details>
-					{:else}
-						{@render weekList(g.days, hasNext)}
+						<nav
+							class="plan-jump chip-scroller"
+							aria-label={t('nav.books')}
+							bind:clientHeight={jumpH}
+						>
+							{#each groups as g, gi (g.key)}
+								<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
+									>{groupLabels[gi]}</a
+								>
+							{/each}
+						</nav>
 					{/if}
-				{/each}
+					{#each groups as g, gi (g.key)}
+						{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
+						{#if grouped}
+							{@const read = readIn(g.days)}
+							{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
+							<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
+								<summary class="plan-group-head">
+									{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
+									<span class="min-w-0 flex-1">
+										<span class="eyebrow block text-muted">{dayRange(g)}</span>
+										<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
+										<span class="block text-small text-muted">
+											{#if started && read}
+												{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
+											{:else}
+												{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
+											{/if}
+										</span>
+									</span>
+									<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
+								</summary>
+								<div class="plan-group-body">
+									{#if g.bookSlug}
+										<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
+											>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
+										>
+									{/if}
+									{@render weekList(g.days, hasNext)}
+								</div>
+							</details>
+						{:else}
+							{@render weekList(g.days, hasNext)}
+						{/if}
+					{/each}
+				{/if}
 			</section>
 		</div>
 	</div>
