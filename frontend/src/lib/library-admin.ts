@@ -1288,6 +1288,22 @@ export interface AdminEngagement {
 	/** What the team did in the charted weeks, oldest first: the markers under
 	 *  the weekly chart. Absent from an API that predates them. */
 	events?: EngagementEvent[];
+	/** The weekly lines behind the pulse tiles (library/engagement_trends.py),
+	 *  on the same weeks as `weekly_active`. Absent from an older API. */
+	trends?: EngagementTrends;
+}
+
+export interface EngagementTrends {
+	weeks: string[];
+	hearts: number[];
+	reading_seconds: number[];
+	/** Running totals ending on the tile's number, and what each week added. */
+	readers: number[];
+	readers_added: number[];
+	users: number[];
+	users_added: number[];
+	/** Readers in each of six rolling 30-day windows, the last ending today. */
+	active_30d: { end: string; readers: number }[];
 }
 
 /** One thing done to readers in a charted week: an email sent, a language taken

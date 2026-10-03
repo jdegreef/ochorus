@@ -1,0 +1,99 @@
+"""The weekly lines behind the Engagement page's pulse tiles.
+
+What matters: each line's weeks are the chart's weeks, a running total ends on
+the tile's own number, and a week with nothing in it reads as zero rather than
+dropping out of the series.
+"""
+
+from __future__ import annotations
+
+import uuid
+from datetime import timedelta
+
+from django.contrib.auth import get_user_model
+from django.test import TestCase, override_settings
+from django.utils import timezone
+from rest_framework.test import APIClient
+
+from accounts.models import UserProfile
+from reading.models import (
+    Favorite,
+    ReadingDay,
+    ReadingProgress,
+    ReadingSession,
+    WorkKind,
+)
+
+from .weeks import day_of, week_start
+
+User = get_user_model()
+
+
+def profile():
+    user = User.objects.create(username=str(uuid.uuid4()))
+    return UserProfile.objects.create(user=user, supabase_uid=uuid.uuid4())
+
+
+@override_settings(DEBUG=True)
+class PulseTrendTests(TestCase):
+    def setUp(self):
+        self.now = timezone.now()
+        self.today = day_of(self.now)
+
+    def _trends(self):
+        res = APIClient().get("/api/admin/engagement/")
+        self.assertEqual(res.status_code, 200)
+        return res.data
+
+    def test_every_line_is_on_the_charts_weeks(self):
+        data = self._trends()
+        weeks = [w["week"] for w in data["weekly_active"]]
+        t = data["trends"]
+        self.assertEqual(t["weeks"], weeks)
+        for key in ("hearts", "reading_seconds", "readers", "users"):
+            self.assertEqual(len(t[key]), len(weeks), key)
+        self.assertEqual(len(t["active_30d"]), 6)
+
+    def test_hearts_and_reading_time_are_counted_in_their_week(self):
+        p = profile()
+        Favorite.objects.create(profile=p, kind="book", slug="a")
+        old = Favorite.objects.create(profile=p, kind="book", slug="b")
+        Favorite.objects.filter(pk=old.pk).update(created_at=self.now - timedelta(weeks=2))
+        ReadingSession.objects.create(
+            profile=p, client_id="x", started_at=self.now, last_seen_at=self.now, seconds=600
+        )
+        t = self._trends()["trends"]
+        self.assertEqual(t["hearts"][-1], 1)
+        self.assertEqual(t["hearts"][-3], 1)
+        self.assertEqual(t["hearts"][-2], 0)
+        self.assertEqual(t["reading_seconds"][-1], 600)
+
+    def test_running_totals_end_on_the_tiles_number(self):
+        old, new = profile(), profile()
+        UserProfile.objects.filter(pk=old.pk).update(created_at=self.now - timedelta(weeks=20))
+        for p, first in ((old, self.today - timedelta(weeks=20)), (new, self.today)):
+            ReadingDay.objects.create(profile=p, day=first)
+            ReadingProgress.objects.create(
+                profile=p, kind=WorkKind.BOOK, book_slug="x", language="en", chapter_order=1
+            )
+        data = self._trends()
+        t = data["trends"]
+        self.assertEqual(t["readers"][-1], data["overview"]["readers"])
+        self.assertEqual(t["users"][-1], data["overview"]["total_users"])
+        # The new reader arrived this week; the old one was there all along.
+        self.assertEqual(t["readers"], [1] * 7 + [2])
+        self.assertEqual(t["readers_added"][-1], 1)
+
+    def test_the_last_30_day_window_ends_today(self):
+        p = profile()
+        ReadingDay.objects.create(profile=p, day=self.today)
+        ReadingDay.objects.create(profile=p, day=self.today - timedelta(days=45))
+        windows = self._trends()["trends"]["active_30d"]
+        self.assertEqual(windows[-1]["end"], self.today.isoformat())
+        self.assertEqual([w["readers"] for w in windows[-2:]], [1, 1])
+        self.assertEqual(windows[0]["readers"], 0)
+
+    def test_weeks_follow_the_shared_rule(self):
+        self.assertEqual(
+            self._trends()["trends"]["weeks"][-1], week_start(self.today).isoformat()
+        )

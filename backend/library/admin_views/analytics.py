@@ -15,6 +15,7 @@ from accounts.permissions import is_admin_user, requires
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
+from ..engagement_trends import pulse_trends
 from ..models import (
     AdminAction,
     Article,
@@ -115,6 +116,12 @@ class AdminEngagementView(APIView):
                 "by_language": self._by_language(),
                 "weekly_active": self._weekly_active(now),
                 "events": self._events(now),
+                "trends": pulse_trends(
+                    now,
+                    self.WEEKS,
+                    readers=overview["readers"],
+                    users=overview["total_users"],
+                ),
             }
         )
 
