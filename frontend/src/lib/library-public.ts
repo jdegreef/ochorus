@@ -1232,6 +1232,12 @@ export interface TopicSummary {
 	 * (rolling deploy) leaves it undefined and the card keeps its emblem.
 	 */
 	scripture_ref?: string;
+	/**
+	 * Whether the shelf holds enough in this language to be indexed (the API's
+	 * TOPIC_INDEX_MIN_WORKS). False → the page is noindex and the sitemap skips
+	 * it. Optional: an API predating it leaves it undefined, read as indexable.
+	 */
+	indexable?: boolean;
 }
 
 /** What a topic chip draws — see `AuthorTileData`. */

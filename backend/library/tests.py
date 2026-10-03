@@ -1322,6 +1322,9 @@ class NoSourceLanguageLeakTests(TestCase):
         res = self.client.get("/api/library/authors/jane-doe/?language=sw")
         self.assertEqual(res.data["faq"], [{"q": "Nani Jane Doe?", "a": "Mwandishi."}])
 
+    # The works floor is pinned in tests_topic_index_floor; this one is about
+    # the translated title alone, so the floor is lifted out of its way.
+    @mock.patch("library.serializers.TOPIC_INDEX_MIN_WORKS", 0)
     def test_topic_available_languages_drives_hreflang(self):
         # A shelf 404s in a locale with no translated title, so it must not be
         # advertised there — this field is what the page's hreflang is built from.
