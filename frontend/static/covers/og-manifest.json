@@ -339,6 +339,16 @@
 				552
 			]
 		},
+		"am/answers-to-prayer": {
+			"ground": "4427216bd8dbe970e68e08e45944cac08d76b68b351c28389d6036bc1faa5a9c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0.105
+		},
 		"am/around-the-wicket-gate": {
 			"ground": "b5f7baabc46522a216c50a465a4714d3fe765cb0c128e0ad245dda33bf7ec7e6",
 			"style": "revival",
@@ -609,6 +619,16 @@
 				313,
 				482
 			]
+		},
+		"am/essentials-of-prayer": {
+			"ground": "e2a14bd3c33e9802caa70ca3ac676b4dbfba790fb1ba527c13eb026aba960d6e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.04
 		},
 		"am/feasting-at-the-table": {
 			"ground": "2320144dca36ff8ca0519020b57ffc252176582b96a1fd30080983531126abb2",
@@ -883,6 +903,35 @@
 				376
 			]
 		},
+		"am/key-teachings-of-watchman-nee": {
+			"ground": "66d7db4c19d3f0929e7409dd8ffab048f7f473de4c560adb14e7f42ac640b6ee",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[161, 169, 439, 232],
+					[157, 225, 443, 288]
+				],
+				"subtitle": [
+					[99, 348, 501, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"am/life-experience-gospel-labours": {
 			"ground": "357d42aa8286ff64cc0202b23e8a049e19b68df1766929bc4d090624a2efd584",
 			"style": "enlightenment",
@@ -1044,6 +1093,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/necessity-of-prayer": {
+			"ground": "659984ad34f66f33dbe9e88e089b28e5079243fc862750c0902c70c57751b3a7",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0.05
+		},
 		"am/on-loving-god": {
 			"ground": "9d036bf187c22adc50974c0bf2c85efee0f12735930087ddc37af912a0240f61",
 			"style": "inscriptional",
@@ -1113,6 +1172,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"am/plain-account-christian-perfection": {
+			"ground": "2047626fed361251e2ca807bf78aefa4df9fce68159dfb0f7a7695c90c223918",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/mauve",
+			"bar": 0
+		},
 		"am/power-through-prayer": {
 			"ground": "e2ce0c651e95dc003f3162998edab3fd8ae27cc8f3a439f223fc2acdc5a1589b",
 			"style": "devotional",
@@ -1148,6 +1217,16 @@
 				316,
 				478
 			]
+		},
+		"am/prevailing-prayer": {
+			"ground": "f6d3531e7c5e6ce3f5bd34b14550769daea8e0e1ca8e4a91c79b3346dfbc7031",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
 		},
 		"am/purity-of-heart": {
 			"ground": "89ef771f4a61a7409bd59d77590037ebd1b208e52b835b1889a79dda10b4ce4e",
@@ -1400,6 +1479,32 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"am/soar-like-the-eagle-3": {
+			"ground": "270861ae4181eb81f1d9a95ec1f97ddaab48acd9f059db734b68b183a9f4e1b1",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[147, 302, 453, 408],
+					[132, 386, 468, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
+			]
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -1485,6 +1590,31 @@
 			"scrim": 1,
 			"layout": "split/oxblood",
 			"bar": 0
+		},
+		"am/the-secret-of-guidance": {
+			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.6,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[196, 102, 404, 131]
+				],
+				"title": [
+					[68, 326, 532, 408]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				331,
+				463
+			]
 		},
 		"am/the-unselfishness-of-god": {
 			"ground": "08dcc7f118edbc6f069f0f3d5132f838b0b7037d572fa6f044cb917aea5e7019",
