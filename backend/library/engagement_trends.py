@@ -36,6 +36,39 @@ def _running_total(now_total: int, new_per_week: list[int]) -> list[int]:
     return out[::-1]
 
 
+def active_readers(today, days: int, offset: int = 0) -> int:
+    """Readers who read on any day of the ``days`` days ending ``offset`` days
+    before ``today`` (``active_readers(today, 7)`` is the last 7 days,
+    ``(today, 7, 7)`` the 7 before that). From the reading-day log, which
+    keeps every day a reader read; saved progress keeps only each work's
+    latest touch, so a reader active in two weeks would count in one."""
+    from reading.models import ReadingDay
+
+    end = today - timedelta(days=offset)
+    return (
+        ReadingDay.objects.filter(day__gt=end - timedelta(days=days), day__lte=end)
+        .values("profile")
+        .distinct()
+        .count()
+    )
+
+
+def weekly_active(now, weeks: int) -> list[dict]:
+    """Readers who read in each charted week, from the reading-day log: a
+    reader counts in every week they read, in one query."""
+    from reading.models import ReadingDay
+
+    starts = week_starts(now, weeks)
+    readers: dict = {s: set() for s in starts}
+    for profile, day in ReadingDay.objects.filter(day__gte=starts[0]).values_list(
+        "profile", "day"
+    ):
+        week = week_start(day)
+        if week in readers:
+            readers[week].add(profile)
+    return [{"week": s.isoformat(), "readers": len(readers[s])} for s in starts]
+
+
 def weekly_signups(starts) -> list[int]:
     """Accounts created in each week beginning ``starts``: the Users page's
     sign-up chart and the Registered users tile's line."""
@@ -88,10 +121,8 @@ def pulse_trends(now, weeks: int, *, readers: int, users: int) -> dict:
     )
     new_readers = [arrived.get(s, 0) for s in starts]
 
-    # Readers who read on any day of each window, in one pass. From the
-    # reading-day log, which keeps every day; the tile's own count comes from
-    # saved progress, which keeps only the latest, so the two can differ by a
-    # reader or two.
+    # Readers who read on any day of each window, in one pass: the same count
+    # as the tile (``active_readers``), so the last point is its number.
     today = day_of(now)
     ends = [today - timedelta(days=30 * i) for i in range(MONTH_WINDOWS - 1, -1, -1)]
     counts = ReadingDay.objects.filter(

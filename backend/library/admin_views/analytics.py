@@ -15,7 +15,12 @@ from accounts.permissions import is_admin_user, requires
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
-from ..engagement_trends import pulse_trends, weekly_signups
+from ..engagement_trends import (
+    active_readers,
+    pulse_trends,
+    weekly_active,
+    weekly_signups,
+)
 from ..models import (
     AdminAction,
     Article,
@@ -50,8 +55,9 @@ class AdminEngagementView(APIView):
     """Reading-engagement analytics from ReadingProgress / ChapterMarks.
 
     Aggregate-only — counts and per-book/-language rollups, never individual
-    readers' identities. "Active" is distinct profiles whose progress was
-    touched within the window; "finishers" reached (or passed) the book's last
+    readers' identities. "Active" is distinct readers who read on any day of
+    the window, from the reading-day log (every day a reader read, not just
+    each work's latest touch); "finishers" reached (or passed) the book's last
     English chapter.
     """
 
@@ -65,17 +71,14 @@ class AdminEngagementView(APIView):
 
         now = timezone.now()
 
+        today = day_of(now)
+
         def active(days, offset=0):
-            """Distinct readers whose progress moved in a window ending ``offset``
-            days ago. ``active(7)`` is the last 7 days; ``active(7, 7)`` is the 7
-            days before that, so the page can show an honest week-over-week delta
-            rather than a bare count."""
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=days + offset)
-            )
-            if offset:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=offset))
-            return qs.values("profile").distinct().count()
+            """Readers who read in a window ending ``offset`` days ago, from the
+            reading-day log (``library.engagement_trends.active_readers``).
+            ``active(7)`` is the last 7 days; ``active(7, 7)`` the 7 days before
+            that, for an honest week-over-week delta."""
+            return active_readers(today, days, offset)
 
         def hearts(days, offset=0):
             """Favorites created in the same kind of window, for the hearts
@@ -479,23 +482,7 @@ class AdminEngagementView(APIView):
     WEEKS = 8
 
     def _weekly_active(self, now, weeks: int = WEEKS) -> list[dict]:
-        from datetime import timedelta
-
-        from reading.models import ReadingProgress
-
-        out = []
-        for start in week_starts(now, weeks):
-            end = start + timedelta(weeks=1)
-            readers = (
-                ReadingProgress.objects.filter(
-                    updated_at__date__gte=start, updated_at__date__lt=end
-                )
-                .values("profile")
-                .distinct()
-                .count()
-            )
-            out.append({"week": start.isoformat(), "readers": readers})
-        return out
+        return weekly_active(now, weeks)
 
     def _events(self, now, weeks: int = WEEKS) -> list[dict]:
         """What the team did in the charted weeks (``library.team_events``),

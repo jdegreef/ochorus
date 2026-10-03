@@ -94,6 +94,30 @@ class PulseTrendTests(TestCase):
         t = self._trends()["trends"]
         self.assertEqual(t["readers"], [1] * 8)
 
+    def test_a_reader_active_in_two_weeks_counts_in_both(self):
+        # The bug this fixes: saved progress keeps only each work's latest
+        # touch, so a reader who read last week AND this week used to count
+        # only this week, shrinking last week and inflating the rise.
+        p = profile()
+        ReadingProgress.objects.create(
+            profile=p, kind=WorkKind.BOOK, book_slug="y", language="en", chapter_order=2
+        )
+        for back in (0, 8):
+            ReadingDay.objects.create(profile=p, day=self.today - timedelta(days=back))
+        data = self._trends()
+        ov = data["overview"]
+        self.assertEqual((ov["active_7d"], ov["active_7d_prev"]), (1, 1))
+        weekly = [w["readers"] for w in data["weekly_active"]]
+        self.assertEqual(weekly[-1], 1)
+        self.assertEqual(sum(weekly[:-1]), 1)  # last week (or the one before, by weekday)
+
+    def test_the_30_day_line_ends_on_the_tile(self):
+        p = profile()
+        for back in (0, 20, 40):
+            ReadingDay.objects.create(profile=p, day=self.today - timedelta(days=back))
+        data = self._trends()
+        self.assertEqual(data["trends"]["active_30d"][-1]["readers"], data["overview"]["active_30d"])
+
     def test_an_empty_page_gets_no_lines(self):
         ReadingProgress.objects.all().delete()
         self.assertIsNone(self._trends()["trends"])
