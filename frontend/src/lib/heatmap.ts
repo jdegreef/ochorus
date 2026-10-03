@@ -6,7 +6,7 @@
  * (row 0 = Sunday … row 6 = Saturday), matching the familiar contribution grid.
  */
 
-import { shiftDay } from './streak';
+import { runLengths, runLevel, shiftDay } from './streak';
 
 /** One day cell in the grid. `future` = after today (a trailing placeholder in
  *  the current, still-unfinished week) — rendered blank, never as "unread". */
@@ -14,7 +14,11 @@ export interface HeatCell {
 	iso: string;
 	read: boolean;
 	future: boolean;
+	/** 0 unread, else 1–4 by the streak tier this day's unbroken run had
+	 *  reached (streak.ts, `runLevel`) — the calendar's shade. */
+	level: 0 | 1 | 2 | 3 | 4;
 }
+
 
 export interface HeatmapGrid {
 	/** Columns, oldest→newest; each column is 7 cells, Sunday→Saturday. */
@@ -44,9 +48,13 @@ export function buildHeatmap(
 	days: Iterable<string>,
 	today: string,
 	weeks = 26,
-	locale = 'en'
+	locale = 'en',
+	runsFrom: Iterable<string> = days
 ): HeatmapGrid {
+	// Runs are measured over `runsFrom` (by default the same log), so a view
+	// that draws a slice — one year — still shades a run that began before it.
 	const read = new Set(days);
+	const runs = runLengths(runsFrom);
 	const lastSaturday = shiftDay(today, 6 - weekday(today));
 	const firstSunday = shiftDay(lastSaturday, -(weeks * 7 - 1));
 
@@ -58,7 +66,9 @@ export function buildHeatmap(
 		const col: HeatCell[] = [];
 		for (let d = 0; d < 7; d++) {
 			const iso = shiftDay(firstSunday, w * 7 + d);
-			col.push({ iso, read: read.has(iso), future: iso > today });
+			const future = iso > today;
+			const run = future || !read.has(iso) ? 0 : (runs.get(iso) ?? 0);
+			col.push({ iso, read: run > 0, future, level: runLevel(run) });
 		}
 		// Label the column by the month its first (Sunday) cell falls in, but only
 		// when that month changes — so each month is labelled once, at its start.

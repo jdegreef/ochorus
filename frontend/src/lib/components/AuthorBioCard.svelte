@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { type AuthorBio, type BookSummary, formatLifespan } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
@@ -165,6 +166,7 @@
 	{#if shelf.length}
 			<div
 			class="cover-rail mt-4 hidden gap-3 pb-1 sm:flex"
+			use:scrollEdges
 			aria-label={t('nav.books')}
 		>
 				{#each shelf.slice(0, SHELF_MAX) as book (book.slug)}

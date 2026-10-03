@@ -43,7 +43,7 @@
 	   translucency — so the pills that appear while reading read as one family.
 	   At the inline end, not centred: `.min-left` owns the centre and this one is
 	   tappable. It clears whichever bottom bar is up, as the PWA toasts do — the
-	   phone tab bar (z-40) used to sit on top of it and take the tap. Logical
+	   phone tab bar (--z-chrome) used to sit on top of it and take the tap. Logical
 	   properties throughout: Arabic is a routed locale. */
 	.float-bookmark {
 		position: fixed;
@@ -51,7 +51,7 @@
 			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))
 		);
 		inset-inline-end: 1rem;
-		z-index: 30;
+		z-index: var(--z-popover);
 		display: flex;
 		align-items: center;
 		justify-content: center;

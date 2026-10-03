@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { initials } from '$lib/strings';
 	import { portraitPosition, portraitSrcset } from '$lib/portraits';
@@ -30,7 +31,7 @@
 	} = $props();
 </script>
 
-<nav class="cover-rail flex gap-1 pb-1 {cls}" aria-label={label}>
+<nav class="cover-rail flex gap-1 pb-1 {cls}" use:scrollEdges aria-label={label}>
 	{#each writers as w (w.slug)}
 		<a href={href(w.slug)} class="writer-jump">
 			<span class="writer-face" aria-hidden="true">

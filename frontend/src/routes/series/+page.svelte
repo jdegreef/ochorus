@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import type { SeriesSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { breadcrumbLd, hreflangFor, itemList } from '$lib/seo';
@@ -153,7 +154,7 @@
 			     readers' four above the fold left adults guessing whether there
 			     was anything for them. Anchors, not a filter — every card stays
 			     in the prerendered page. -->
-			<nav class="chip-scroller mb-8 flex gap-2" aria-label={t('nav.series')}>
+			<nav class="chip-scroller mb-8 flex gap-2" use:scrollEdges aria-label={t('nav.series')}>
 				{#each groups as g (g.audience ?? 'more')}
 					<a class="tag" href="#{groupId(g.audience)}"
 						>{audienceName(g.audience)}<span class="count">{g.series.length}</span></a

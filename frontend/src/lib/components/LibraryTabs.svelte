@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
+	import { revealInStrip } from '$lib/actions/scrollEdges';
 	import { localizeHref } from '$lib/href';
 
 	/**
@@ -45,7 +46,7 @@
 	// the edge that hides tabs, and this brings the current tab into view.
 	let strip: HTMLElement;
 	onMount(() => {
-		strip.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+		revealInStrip(strip, strip.querySelector<HTMLElement>('.is-active'));
 	});
 </script>
 

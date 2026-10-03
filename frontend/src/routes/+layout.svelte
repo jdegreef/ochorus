@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -58,11 +59,25 @@
 		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
+		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
 		auth.init();
 		pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+	});
+
+	// A navigation into another locale must be a full document load: the
+	// locale (messages, <html lang/dir>) is fixed per document, so a client-side
+	// hop between /ar/… and /… kept the old one's direction. Cancelled and
+	// re-issued as a real load — a history PUSH, so a cross-locale goto loses
+	// replaceState/keepFocus (none exists today; use location.replace for one).
+	// Links you write by hand: also mark them data-sveltekit-reload, which
+	// stops a hover preload running the target's load in the wrong locale.
+	beforeNavigate(({ from, to, type, cancel }) => {
+		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
+		cancel();
+		location.assign(to!.url.href);
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
@@ -114,8 +129,24 @@
 		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
 	};
 
+	// Tablet "More ▾" (768–1023px only, by app.css): the destinations the
+	// one-row bar has no room for — Biographies, whose link is hidden there,
+	// then Originals and (in English) the hubs the footer carries.
+	let navMoreOpen = $state(false);
+	const NAV_MORE = $derived([
+		...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({ href: d.href, label: t(d.labelKey) })),
+		{ href: ORIGINALS_DEST.href, label: t(ORIGINALS_DEST.labelKey) },
+		...(lang.current === 'en' ? ENGLISH_HUBS.map((d) => ({ href: `${d.href}/`, label: t(d.labelKey), raw: true })) : [])
+	]);
+
+	const navMoreActive = $derived(NAV_MORE.some((d) => isActive(d.href.replace(/\/$/, ''))));
+
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+	// The search shortcut hint (the palette answers both ⌘K and Ctrl+K):
+	// prerendered as ⌘K, respelt on mount off Apple platforms; CSS hides it on
+	// touch devices.
+	let searchKbd = $state('⌘K');
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -288,9 +319,33 @@
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
 							data-section={item.section}
+							data-home={item.href === '/' ? '' : undefined}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}
+				</div>
+				<div class="navmore" use:dismissable={{ open: navMoreOpen, onDismiss: () => (navMoreOpen = false) }}>
+					<button
+						class="navmore-btn"
+						class:active={navMoreActive}
+						aria-expanded={navMoreOpen}
+						aria-controls={navMoreOpen ? 'nav-more' : undefined}
+						onclick={() => (navMoreOpen = !navMoreOpen)}
+						>{t('nav.more')}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg></button
+					>
+					{#if navMoreOpen}
+						<div id="nav-more" class="account-menu navmore-menu" role="group" aria-label={t('nav.more')}>
+							{#each NAV_MORE as d (d.href)}
+								<!-- English-only hubs stay unlocalized — the footer's rule. -->
+								<a
+									href={'raw' in d ? d.href : localizeHref(d.href)}
+									class="account-item"
+									aria-current={isActive(d.href.replace(/\/$/, '')) ? 'page' : undefined}
+									onclick={() => (navMoreOpen = false)}>{d.label}</a
+								>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</div>
 			<div class="navctl">
@@ -301,7 +356,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+						<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
@@ -525,6 +580,7 @@
 							<span
 								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
@@ -532,6 +588,7 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click
@@ -712,7 +769,7 @@
 		}
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.footer-invite {
 			grid-template-columns: auto 1fr;
 		}

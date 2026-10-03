@@ -71,7 +71,7 @@
 					var(--listenbar-h, 0px) + env(safe-area-inset-bottom)
 				)
 		);
-		z-index: 40; /* above content, below the dialog overlay (z-50) */
+		z-index: var(--z-chrome); /* above content, below the dialog overlay */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -139,7 +139,7 @@
 	/* Phones with the tab bar carry the "+" in its centre slot (TabBar.svelte),
 	   and the reading surfaces in their footer's (FootFeedback.svelte) — so the floating
 	   one would only duplicate it (and it covered "More", then the text). */
-	@media (max-width: 639.98px) {
+	@media (max-width: 639.98px), (max-height: 499.98px) and (pointer: coarse) {
 		:global(:root:has(.tabbar)) .fb-fab,
 		:global(:root:has(.foot-actions)) .fb-fab {
 			display: none;

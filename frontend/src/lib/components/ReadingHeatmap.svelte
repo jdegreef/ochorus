@@ -3,17 +3,28 @@
 	import { buildHeatmap } from '$lib/heatmap';
 
 	// Pure/prop-driven: `days` is the activity log, `today` the reader's local
-	// date, `locale` for month/weekday names. Weeks default to ~6 months, which
+	// date, `locale` for month/weekday names. A read day's shade is the streak
+	// tier its unbroken run had reached (streak.ts, runLevel); the golds are the
+	// `.heat` rules in app.css. Weeks default to ~6 months, which
 	// shows a meaningful pattern without a vast empty grid for new readers.
 	let {
 		days,
 		today,
 		locale = 'en',
-		weeks = 26
-	}: { days: string[]; today: string; locale?: string; weeks?: number } = $props();
+		weeks = 26,
+		runsFrom = undefined
+	}: {
+		days: string[];
+		today: string;
+		locale?: string;
+		weeks?: number;
+		/** The log runs are measured over, when `days` is a slice of it (Year in
+		 *  Books draws one year but a run may have begun the December before). */
+		runsFrom?: string[];
+	} = $props();
 
 	const t = i18n.t;
-	const grid = $derived(buildHeatmap(days, today, weeks, locale));
+	const grid = $derived(buildHeatmap(days, today, weeks, locale, runsFrom ?? days));
 
 	// Month label keyed by its starting column, for O(1) lookup while rendering.
 	const monthByCol = $derived(new Map(grid.monthLabels.map((mo) => [mo.col, mo.label])));
@@ -77,7 +88,8 @@
 					<div style="aspect-ratio: 1" aria-hidden="true"></div>
 				{:else}
 					<div
-						class="rounded-[2px] {cell.read ? 'bg-gold' : 'bg-surface-2'}"
+						class="heat rounded-[2px]"
+						data-level={cell.level}
 						style="aspect-ratio: 1"
 						title={cellTitle(cell.iso, cell.read)}
 						aria-hidden="true"
@@ -87,15 +99,16 @@
 		{/each}
 	</div>
 
-	<!-- Legend -->
-	<div class="mt-2 flex items-center gap-1.5 text-micro text-muted">
-		<span class="inline-block rounded-[2px] bg-surface-2" style="width: 0.66rem; height: 0.66rem"
-		></span>
+	<!-- Legend: unread, then the four run shades. -->
+	<div class="mt-2 flex flex-wrap items-center gap-1.5 text-micro text-muted">
+		<span class="heat heat-swatch rounded-[2px]" data-level="0"></span>
 		<span>{t('settings.heatmapNone')}</span>
-		<span
-			class="ms-2 inline-block rounded-[2px] bg-gold"
-			style="width: 0.66rem; height: 0.66rem"
-		></span>
-		<span>{t('settings.heatmapRead')}</span>
+		<span class="ms-2 inline-flex gap-0.5">
+			{#each [1, 2, 3, 4] as level (level)}
+				<span class="heat heat-swatch rounded-[2px]" data-level={level}></span>
+			{/each}
+		</span>
+		<span>{t('settings.heatmapRead')} · {t('settings.heatmapDeeper')}</span>
 	</div>
 </div>
+

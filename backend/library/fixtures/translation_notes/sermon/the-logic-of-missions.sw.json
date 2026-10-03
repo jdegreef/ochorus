@@ -1,0 +1,182 @@
+{
+ "kind": "sermon",
+ "slug": "the-logic-of-missions",
+ "language": "sw",
+ "job_issue": 5044,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Romans 10:15a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Romans 10:15b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Romans 10:1",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 3:21a",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 10:4",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Acts 17:6b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Romans 1:16b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Ezekiel 36:27b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Haggai 2:7",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "1 John 4:17b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Romans 10:13",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Romans 10:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 10:6",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 10:7",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 10:8",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Romans 10:9",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Exodus 20:25b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Exodus 20:26",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Isaiah 55:1",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Leviticus 14:3a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "self_rendered",
+   "block_index": 28
+  },
+  {
+   "reference": "Luke 19:10b",
+   "status": "mined",
+   "block_index": 28,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 3:18b",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "1 Peter 3:19",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "2 Corinthians 5:20",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Isaiah 6:8a",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Isaiah 6:8b",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "Acts 13:4",
+   "status": "self_rendered",
+   "block_index": 36
+  }
+ ]
+}

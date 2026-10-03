@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { pagedSnapshot } from '$lib/paging.svelte';
 	import type { ArticleSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -213,7 +214,7 @@
 							{t('articles.allGuides').replace('%n%', String(guides.length))}
 						</button>
 					</div>
-					<div class="cover-rail flex gap-4 pb-1">
+					<div class="cover-rail flex gap-4 pb-1" use:scrollEdges>
 						{#each guideRail as g (g.slug)}
 							<a href={localizeHref(`/articles/${g.slug}/`)} class="w-20 shrink-0 hover:no-underline sm:w-24">
 								<BookCover book={g.book} />

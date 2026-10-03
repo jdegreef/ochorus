@@ -72,12 +72,13 @@
 		   The phone tab bar (--tabbar-h, safe area included) never shows with the
 		   Listen bar, so clear whichever is up — plus any bar docked ON TOP of
 		   that, which publishes its height as --dockbar-h (use:publishHeight;
-		   the plan page's phone read bar), whose button the pill would cover. */
+		   ReadBar, the book and plan pages' phone read bar), whose button the pill
+		   would cover. */
 		bottom: calc(
 			1rem + max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px)) +
 				var(--dockbar-h, 0px)
 		);
-		z-index: 60;
+		z-index: var(--z-toast);
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;

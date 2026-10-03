@@ -1,0 +1,172 @@
+{
+ "kind": "sermon",
+ "slug": "words-for-discouraged-workers",
+ "language": "sw",
+ "job_issue": 5054,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Zechariah 1:12",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Zechariah 1:13",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 7:25b",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:14",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Zechariah 1:14",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Zechariah 1:16a",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Zechariah 1:17",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Zechariah 1:18",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Zechariah 1:20",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Zechariah 1:21",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Isaiah 49:25b",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "christ-all-in-all.sw.json"
+  },
+  {
+   "reference": "Zechariah 2:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Zechariah 2:4",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Zechariah 2:5",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Zechariah 2:11",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Zechariah 3:1",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Zechariah 3:2",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Zechariah 3:4a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-good-way-of-coming-before-the-lord.sw.json"
+  },
+  {
+   "reference": "Zechariah 3:4b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Zechariah 3:5a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Zechariah 3:7",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Zechariah 4:7",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Zechariah 4:10a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Zechariah 6:1",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Zechariah 6:5",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Zechariah 6:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Psalms 76:10",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

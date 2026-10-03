@@ -399,7 +399,7 @@
 <style>
 	.selbar {
 		position: absolute;
-		z-index: 40;
+		z-index: var(--z-chrome);
 		display: flex;
 		align-items: center;
 		gap: 0.25rem;

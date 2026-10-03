@@ -1,0 +1,47 @@
+{
+ "kind": "sermon",
+ "slug": "in-everything-by-prayer",
+ "language": "sw",
+ "job_issue": 5027,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "Philippians 4:6a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Philippians 3:3",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Corinthians 16:2",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "2 Corinthians 9:9",
+   "status": "self_rendered",
+   "block_index": 34
+  },
+  {
+   "reference": "1 Corinthians 3:12b",
+   "status": "mined",
+   "block_index": 98,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Acts 13:36",
+   "status": "self_rendered",
+   "block_index": 90
+  }
+ ]
+}

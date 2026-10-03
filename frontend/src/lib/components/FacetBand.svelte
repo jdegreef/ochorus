@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { i18n } from '$lib/i18n.svelte';
 	import type { BandCard } from '$lib/bioFacets';
 	import Portrait from '$lib/components/Portrait.svelte';
@@ -62,6 +63,7 @@
      places sit side by side rather than one per line. -->
 <div
 	class="band"
+	use:scrollEdges
 	role="group"
 	aria-label={label}
 	style="--cols: {cols}; --card-min: {cards.some((c) => c.children?.length) ? '15rem' : '9.5rem'}"
@@ -122,6 +124,22 @@
 		/* Room for the focus ring and the scrollbar on a phone. */
 		padding: 0.15rem 0.15rem 0.5rem;
 		scrollbar-width: none;
+		/* Fade an edge while cards hide past it (`use:scrollEdges`): with no
+		   scrollbar, a tablet with a trackpad had no sign there was more. */
+		--fade-s: 0rem;
+		--fade-e: 0rem;
+		-webkit-mask-image: linear-gradient(to right, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
+		mask-image: linear-gradient(to right, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
+	}
+	.band:global(.more-start) {
+		--fade-s: 1.5rem;
+	}
+	.band:global(.more-end) {
+		--fade-e: 1.5rem;
+	}
+	:global([dir='rtl']) .band {
+		-webkit-mask-image: linear-gradient(to left, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
+		mask-image: linear-gradient(to left, transparent, black var(--fade-s), black calc(100% - var(--fade-e)), transparent);
 	}
 	/* The card's frame: a <button> for an era or tradition, a <div> holding a
 	   head button and place chips for a region. */
@@ -205,6 +223,12 @@
 	.band-card.on .band-faces > :global(img) {
 		filter: none;
 	}
+	/* No hover on a touch screen, so the faces would stay grey until tapped. */
+	@media (hover: none) {
+		.band-faces > :global(img) {
+			filter: none;
+		}
+	}
 	.band-faces > :global(.band-initials) {
 		background: color-mix(in srgb, var(--hue, var(--accent)) 22%, var(--surface));
 		color: var(--text);
@@ -252,7 +276,7 @@
 	}
 	@media (pointer: coarse) {
 		.band-kid {
-			min-height: 2.25rem;
+			min-height: 2.75rem;
 		}
 	}
 	@media (min-width: 1024px) {
@@ -260,6 +284,8 @@
 			grid-auto-flow: row;
 			grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 			overflow: visible;
+			-webkit-mask-image: none;
+			mask-image: none;
 		}
 	}
 </style>

@@ -307,12 +307,17 @@ class Auth {
 			this.isAdmin = !!p.is_admin;
 			this.scopes = p.scopes ?? [];
 			this.displayName = p.display_name || '';
-			if (typeof p.theme === 'string' && p.theme) theme.set(normalizePref(p.theme));
-			if (p.font_scale) readerPrefs.setScale(p.font_scale);
-			// Listening prefs: rate always applies; a voiceURI only resolves if the
-			// device actually has that voice (best-effort across devices).
-			if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
-			if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
+			// Blank theme = no saved prefs yet (see UserProfile.theme): the
+			// account's values are model defaults, so it takes this device's.
+			const fresh = !p.theme;
+			if (!fresh) {
+				theme.set(normalizePref(p.theme));
+				if (p.font_scale) readerPrefs.setScale(p.font_scale);
+				// Listening prefs: rate always applies; a voiceURI only resolves if
+				// the device actually has that voice (best-effort across devices).
+				if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
+				if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
+			}
 			// The account's values are now the local values, so pushing is safe
 			// again. Set BEFORE the language reconcile below, which pushes
 			// deliberately. See #profileLoaded.
@@ -328,10 +333,11 @@ class Auth {
 			// reconcile the profile to it so their other devices follow. Only on a
 			// device with no local choice do we adopt the saved profile locale
 			// (cross-device restore) — and only if it's a language we still offer.
+			// A fresh account's locale is a default too: it takes this page's.
 			const chosen = lang.chosen();
-			if (chosen) {
-				if (p.locale !== lang.current) this.pushPrefs();
-			} else if (p.locale && lang.isAvailable(p.locale)) {
+			if (fresh || (chosen && p.locale !== lang.current)) {
+				this.pushPrefs();
+			} else if (!chosen && p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
 			}
 		} catch {

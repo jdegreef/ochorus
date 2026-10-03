@@ -829,6 +829,7 @@
   "settings_goal_per_week": "Días por semana",
   "settings_heatmap_title": "Calendario de lectura",
   "settings_heatmap_read": "Leído",
+  "settings_heatmap_deeper": "más intenso = racha más larga",
   "settings_heatmap_none": "Sin lectura",
   "offline_download": "Descargar para sin conexión",
   "offline_downloading": "Descargando",

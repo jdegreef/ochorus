@@ -50,7 +50,7 @@
 <style>
 	.scripture-pop {
 		position: absolute;
-		z-index: 45;
+		z-index: var(--z-floating);
 		width: min(22rem, calc(100vw - 2rem));
 		transform: translate(-50%, 0.5rem);
 		padding: 0.9rem 1rem;

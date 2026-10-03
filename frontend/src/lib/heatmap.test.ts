@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { buildHeatmap, weekReadCount } from './heatmap';
+import { shiftDay as shift } from './streak';
 
 describe('buildHeatmap', () => {
 	it('lays out weeks columns of 7 Sunday→Saturday cells', () => {
@@ -39,5 +40,31 @@ describe('weekReadCount', () => {
 
 	it('is 0 when nothing was read this week', () => {
 		expect(weekReadCount(['2026-07-01'], '2026-07-22')).toBe(0);
+	});
+});
+
+describe('run shading', () => {
+	it('shades the grid by tier, and leaves unread and future days at level 0', () => {
+		const days = Array.from({ length: 40 }, (_, i) => shift('2026-06-01', i));
+		const flat = buildHeatmap([...days, '2026-07-24'], '2026-07-20', 10).weeks.flat();
+		const level = (iso: string) => flat.find((c) => c.iso === iso)?.level;
+		expect(level('2026-06-01')).toBe(1); // day 1 of the run
+		expect(level('2026-06-07')).toBe(2); // day 7: flame
+		expect(level('2026-06-30')).toBe(3); // day 30: blaze
+		expect(level('2026-07-11')).toBe(0); // the run ended on 07-10
+		// Never shade a future day, even if the log somehow holds one.
+		expect(flat.find((c) => c.iso === '2026-07-24')).toMatchObject({ future: true, read: false, level: 0 });
+	});
+
+	it('measures runs over runsFrom, so a slice keeps a run begun before it', () => {
+		const dec = Array.from({ length: 10 }, (_, i) => shift('2025-12-22', i)); // to 2025-12-31
+		const jan = Array.from({ length: 5 }, (_, i) => shift('2026-01-01', i));
+		const flat = buildHeatmap(jan, '2026-01-05', 2, 'en', [...dec, ...jan]).weeks.flat();
+		expect(flat.find((c) => c.iso === '2026-01-01')?.level).toBe(2); // day 11
+		expect(flat.find((c) => c.iso === '2025-12-31')?.read).toBe(false); // outside the slice
+	});
+
+	it('survives a malformed log entry', () => {
+		expect(() => buildHeatmap(['', '2026-7-1', '2026-07-01'], '2026-07-02', 2)).not.toThrow();
 	});
 });

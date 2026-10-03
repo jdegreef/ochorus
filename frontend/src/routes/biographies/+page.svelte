@@ -33,7 +33,6 @@
 		type FacetKey
 	} from '$lib/bioFacets';
 	import type { FacetOption } from '$lib/components/FacetMenu.svelte';
-	import { readJSON, writeJSON } from '$lib/persisted';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -293,17 +292,13 @@
 	);
 	const shownLens = $derived(lenses.find((l) => l.k === lens) ?? lenses[0]);
 
-	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
+	// --- View: rows or a portrait grid ----------------------------------------
+	// Not remembered across visits, like the Browse-by lens: the page is
+	// prerendered as rows, and restoring the grid after hydration swapped one
+	// for the other under the reader (a visible jump on every load).
 	type View = 'grid' | 'list';
-	const VIEW_KEY = 'ochorus:bios-view';
 	let view = $state<View>('list');
-	onMount(() => {
-		if (readJSON<View>(VIEW_KEY, 'list') === 'grid') view = 'grid';
-	});
-	const setView = (v: View) => {
-		view = v;
-		writeJSON(VIEW_KEY, v);
-	};
+	const setView = (v: View) => (view = v);
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
 	// forever. On a phone it is search (the thing you actually reach for) plus a

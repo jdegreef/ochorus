@@ -829,6 +829,7 @@
   "settings_goal_per_week": "أيام في الأسبوع",
   "settings_heatmap_title": "تقويم القراءة",
   "settings_heatmap_read": "قراءة",
+  "settings_heatmap_deeper": "الأغمق = سلسلة أطول",
   "settings_heatmap_none": "بلا قراءة",
   "offline_download": "تنزيل للقراءة دون اتصال",
   "offline_downloading": "جارٍ التنزيل",

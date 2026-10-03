@@ -1,0 +1,124 @@
+{
+ "kind": "sermon",
+ "slug": "gods-best-is-himself",
+ "language": "sw",
+ "job_issue": 5018,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "Numbers 18:20a",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Numbers 18:20b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Deuteronomy 10:9",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Ezekiel 44:28",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Peter 2:9",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Hebrews 13:20",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "John 14:21",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "John 17:21a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "John 17:23",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Matthew 8:20b",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Genesis 22:2a",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Psalms 17:15b",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Psalms 73:25",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "John 17:3",
+   "status": "mined",
+   "block_index": 52,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "Hebrews 11:6b",
+   "status": "self_rendered",
+   "block_index": 55
+  },
+  {
+   "reference": "John 17:23a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Colossians 1:27b",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 13:5b",
+   "status": "mined",
+   "block_index": 62,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "Psalms 62:11",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Matthew 6:33b",
+   "status": "self_rendered",
+   "block_index": 81
+  }
+ ]
+}

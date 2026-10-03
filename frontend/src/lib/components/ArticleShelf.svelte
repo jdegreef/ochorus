@@ -1,4 +1,5 @@
 <script lang="ts" module>
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { ARTICLE_KINDS } from '$lib/articleIndex';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 
@@ -216,7 +217,7 @@
 </div>
 
 {#if topicLinks && topicTabs.length > 1}
-	<nav class="chip-scroller mb-6" aria-label={t('articles.filterByTopic')}>
+	<nav class="chip-scroller mb-6" use:scrollEdges aria-label={t('articles.filterByTopic')}>
 		<a
 			class="chip"
 			class:active={activeTopic === ''}

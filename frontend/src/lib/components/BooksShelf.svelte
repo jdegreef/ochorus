@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { resumeOrderOf } from '$lib/reading-schema';
@@ -392,7 +393,7 @@
 				</div>
 				<!-- pt/pb leave room for the cards' hover lift and shadow, which the
 				     rail's overflow would otherwise clip. -->
-				<div class="cover-rail flex gap-4 pt-1 pb-2">
+				<div class="cover-rail flex gap-4 pt-1 pb-2" use:scrollEdges>
 					{#each railSeries as s (s.slug)}
 						<div class="grid w-64 shrink-0">
 							<SeriesCard series={s} compact />
@@ -408,17 +409,22 @@
 				<h2 class="section-label">
 					{t('books.newTitle')}
 				</h2>
-				<div class="cover-rail flex gap-4 pb-1">
+				<div class="cover-rail flex gap-4 pb-1" use:scrollEdges>
 					{#each recent as book (book.slug)}
+						<!-- A tile this narrow can't hold most titles on two lines, and
+						     "The Evangelization o…" / "Smith Wiggles…" left readers
+						     guessing (QA report): three title lines, the author wraps
+						     rather than ellipsizes, and the full pair rides the tooltip. -->
 						<a
 							href={localizeHref(`/books/${book.slug}`)}
 							class="w-20 shrink-0 hover:no-underline sm:w-24"
+							title="{book.title} — {book.author.name}"
 						>
 							<BookCover {book} />
-							<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+							<div class="mt-1.5 line-clamp-3 text-eyebrow font-medium text-text">
 								{book.title}
 							</div>
-							<div class="truncate text-eyebrow text-muted">{book.author.name}</div>
+							<div class="line-clamp-2 text-eyebrow text-muted">{book.author.name}</div>
 						</a>
 					{/each}
 				</div>

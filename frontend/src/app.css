@@ -225,6 +225,31 @@
 	--text-h1--line-height: 1.15;
 }
 
+/* Stacking order — one scale for everything that floats over the page. Use
+   these, never a bare number (zIndexScale.test.ts enforces it outside admin).
+   Before this, the sermon/chapter reader bars sat at 10 while every other
+   pinned bar sat at 20, so a popover inside one lost to the other.
+     pinned   page bars that stick under the nav: filters, section tabs, reader bars
+     popover  a menu or popover inside page content
+     chrome   site nav, tab bar, reading dock, progress line, feedback button
+     floating reader overlays above chrome (scripture/define popovers)
+     backdrop / sheet   a drawer's dim layer and the drawer itself
+     menu / modal       header menus and dialogs (never shown together)
+     toast, skip        PWA toasts; the skip link above everything
+   Local stacking inside one component (1–10) can stay numeric. */
+:root {
+	--z-pinned: 20;
+	--z-popover: 30;
+	--z-chrome: 40;
+	--z-floating: 45;
+	--z-backdrop: 48;
+	--z-sheet: 49;
+	--z-menu: 50;
+	--z-modal: 50;
+	--z-toast: 60;
+	--z-skip: 100;
+}
+
 /* Type scale — modular ratio 1.25, anchored at 1rem body. (Shared with Take Root;
    the phone override of the two smallest steps just below is Ochorus's own.) */
 :root {
@@ -511,6 +536,33 @@
 	--hue-plum-soft: #ecdde3;
 }
 
+/* THE HOME HERO (HomeHero.svelte): a greeting set over a painting, so its
+   ink is theme-independent — light on a scrim that darkens from the foot,
+   where the text sits. --hero-ground shows only while the painting loads. */
+:root {
+	--hero-ink: #f8f1e4;
+	--hero-ground: #1d2a1f;
+	/* Dense through the lower two-thirds, where the date and greeting sit: the
+	   wash is a blurred painting of any brightness, and a pale one under a
+	   lighter scrim left the small date line short of 4.5:1. */
+	--hero-scrim: linear-gradient(
+		to top,
+		rgb(14 12 9 / 0.9) 0%,
+		rgb(14 12 9 / 0.75) 60%,
+		rgb(14 12 9 / 0.3) 100%
+	);
+	--hero-plate-shadow: 0 24px 40px -18px rgb(0 0 0 / 0.7);
+	/* The quote card (HomeQuote): clear over its top 6rem, full strength from
+	   9rem — where the text begins (its pt-36) — however tall the quote grows. */
+	--quote-scrim: linear-gradient(
+		to bottom,
+		rgb(14 12 9 / 0.1) 0,
+		rgb(14 12 9 / 0.45) 6rem,
+		rgb(14 12 9 / 0.86) 9rem,
+		rgb(14 12 9 / 0.9) 100%
+	);
+}
+
 /* Which hue each library section wears (nav icon, active pill, section
    chips). Theme-independent: each alias follows its hue through the themes.
    Declared on .night-band as well, so inside one the aliases resolve against
@@ -639,7 +691,7 @@
 	position: fixed;
 	top: 0.5rem;
 	inset-inline-start: 0.5rem;
-	z-index: 100;
+	z-index: var(--z-skip);
 	transform: translateY(-150%);
 	padding: 0.5rem 0.9rem;
 	border-radius: var(--radius-sm);
@@ -800,7 +852,7 @@
 		position: fixed;
 		inset-inline: 0;
 		bottom: 0;
-		z-index: 40;
+		z-index: var(--z-chrome);
 		border-top: 1px solid var(--border);
 		background: color-mix(in srgb, var(--surface) 92%, transparent);
 		backdrop-filter: blur(8px);
@@ -1241,23 +1293,20 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 nav.appnav {
 	position: sticky;
 	top: 0;
-	/* Above page content and any page's own sticky sub-bar (those sit at z-20),
-	   below the overlays (drawers 45+, note dialog 50). */
-	z-index: 40;
+	/* Above page content and any page's own sticky sub-bar (--z-pinned),
+	   below the overlays (drawers, note dialog). */
+	z-index: var(--z-chrome);
 	border-bottom: 1px solid var(--border);
 	background: var(--surface-2);
 }
 /* The nav's height until the layout measures it and publishes the real figure
    inline as --appnav-h (on `.app-root`, its own element): what a prerendered
    page's sticky bars and a cold `/page/#id` jump clear before hydration.
-   Measured: one row 56px; two rows (768–1023px, the links' own row below) 105px. */
+   One row at every width (56px) — the 768–1023px band used to wrap the links
+   onto a second row (105px), which with a pinned filter bar under it took a
+   quarter of a portrait iPad and half of a landscape phone. */
 .app-root {
 	--appnav-h: 3.5rem;
-}
-@media (min-width: 768px) and (max-width: 1023.98px) {
-	.app-root {
-		--appnav-h: 6.5625rem;
-	}
 }
 @media print {
 	.app-root {
@@ -1381,32 +1430,83 @@ nav.appnav .navtoggle {
 nav.appnav .navtoggle:hover {
 	color: var(--accent);
 }
-/* Tablets (768–1023px): the six links plus the brand and controls need ~892px
-   on one row (more in longer-label locales), so between `md` and `lg` they get
-   their OWN row instead. The bar becomes a wrapping flex column of two lines —
-   brand + controls on top (navctl's `order:1` puts it beside the brand, its
-   `margin-inline-start:auto` holds it to the end), the centred links on a
-   full-width line beneath (`flex-basis:100%` breaks the line; navlinks wraps if
-   a locale is wide enough to need it). This keeps every link visible and
-   centred here — no hamburger, no horizontal overflow — where the single-row
-   grid could not fit them. Below 768px the drawer takes over (next block). */
+/* Tablets (768–1023px): ONE row, like every other width. The six links plus
+   the brand and controls need ~892px with their icons, so here the bar sheds
+   what it can spare rather than growing a second row: the link icons go (the
+   section hue still marks the active pill), and Home goes because the logo
+   beside it already goes home. What's left — five words — fits a portrait
+   iPad in English; a longer-label locale scrolls the links sideways inside
+   their own track (the grid's middle column is minmax(0, 1fr), so it can
+   shrink below its content) instead of wrapping or pushing the controls off. */
 @media (min-width: 768px) and (max-width: 1023.98px) {
 	nav.appnav .appnav-inner {
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-	}
-	nav.appnav .navctl {
-		order: 1;
+		grid-template-columns: auto minmax(0, 1fr) auto;
+		gap: 0.45rem 0.5rem;
 	}
 	nav.appnav .navmenu {
-		order: 2;
-		flex-basis: 100%;
-		margin-top: 0.4rem;
+		min-width: 0;
+		justify-content: flex-start;
 	}
 	nav.appnav .navlinks {
-		flex-wrap: wrap;
+		justify-content: flex-start;
+		justify-content: safe center;
+		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: none;
+		gap: 0.1rem;
 	}
+	nav.appnav .navlinks::-webkit-scrollbar {
+		display: none;
+	}
+	nav.appnav .navlinks a {
+		padding-inline: 0.65rem;
+	}
+	nav.appnav .navlinks a > svg {
+		display: none;
+	}
+	nav.appnav .navlinks a[data-home],
+	nav.appnav .navlinks a[data-section='biographies'] {
+		display: none;
+	}
+	/* .navmenu in the selector: outranks the base `display: none` below. */
+	nav.appnav .navmenu .navmore {
+		display: block;
+	}
+}
+/* The tablet "More ▾" — hidden except in the band above. Outside .navlinks
+   on purpose: that track scrolls, and would clip the dropdown. */
+nav.appnav .navmore {
+	display: none;
+	position: relative;
+	flex: none;
+}
+nav.appnav .navmore-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.2rem;
+	padding: 0.35rem 0.65rem;
+	border: 0;
+	border-radius: 999px;
+	background: none;
+	color: var(--muted);
+	font: inherit;
+	font-size: var(--fs-body);
+	white-space: nowrap;
+	cursor: pointer;
+}
+nav.appnav .navmore-btn:hover,
+nav.appnav .navmore-btn[aria-expanded='true'] {
+	color: var(--text);
+	background: var(--surface);
+}
+/* On one of its destinations, More wears the active pill the hidden link would. */
+nav.appnav .navmore-btn.active {
+	color: var(--accent);
+	background: var(--accent-soft);
+	font-weight: 600;
+}
+nav.appnav .navmore-menu {
+	inset-inline: 0 auto;
 }
 /* Phones and small tablets: collapse the links behind a hamburger drawer —
    below 640px only where the phone tab bar is absent (reading surfaces, focus,
@@ -1466,21 +1566,40 @@ nav.appnav .navtoggle:hover {
 		margin-inline-start: 0.25rem;
 	}
 }
-/* Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
-   its "More" sheet holds the links, quick settings and sign-in, so the top
-   bar is brand + search (+ a signed-in reader's avatar, whose menu keeps the
-   admin and feedback entries). */
+/* Phones: the gear shows only where nothing else holds its theme switch —
+   the tab bar's "More" sheet holds it, and on the reading surfaces
+   (`.appnav-static`) the reader's own Aa sheet does. Elsewhere (no tab bar
+   while Listen plays, say) it stays, or the page would have no theme control.
+   Phones with the tab bar (TabBar.svelte, which is what defines --tabbar-h):
+   its "More" sheet holds the links and sign-in too, so the top bar is brand +
+   search (+ a signed-in reader's avatar, whose menu keeps the admin and
+   feedback entries). */
 @media (max-width: 639.98px) {
+	:root:has(.tabbar) nav.appnav .prefs,
+	nav.appnav.appnav-static .prefs,
 	:root:has(.tabbar) nav.appnav .navtoggle,
 	:root:has(.tabbar) nav.appnav .navmenu,
+	:root:has(.tabbar) nav.appnav .account-signin {
+		display: none;
+	}
+}
+/* A phone held sideways (short + touch — no tablet is under 500px tall) gets
+   the tab bar too, in a compact 48px form (TabBar.svelte), so the same
+   controls are in the same places whichever way the phone is turned. */
+@media (max-height: 499.98px) and (pointer: coarse) {
 	:root:has(.tabbar) nav.appnav .prefs,
+	:root:has(.tabbar) nav.appnav .navtoggle,
+	:root:has(.tabbar) nav.appnav .navmenu,
 	:root:has(.tabbar) nav.appnav .account-signin {
 		display: none;
 	}
 }
 
 /* The command palette's trigger. The hint is desktop-only — it is the one place
-   the shortcut is advertised, and it is meaningless without a keyboard. */
+   the shortcut is advertised, and it is meaningless without a keyboard: so it
+   is gated on a fine, hovering pointer as well as width. An iPad held either
+   way is 768px+ and showed "⌘K" in place of any word, to a reader with no
+   keyboard to press it on. */
 nav.appnav .navsearch {
 	display: inline-flex;
 	align-items: center;
@@ -1502,9 +1621,13 @@ nav.appnav .navsearch:hover {
 	font-size: var(--fs-micro);
 	letter-spacing: 0.02em;
 }
-@media (min-width: 768px) {
+@media (min-width: 768px) and (hover: hover) and (pointer: fine) {
 	.navsearch-kbd {
 		display: inline;
+		/* "⌘K" is respelt "Ctrl K" after hydration off Apple platforms; the
+		   reserved width keeps that swap from nudging the nav. */
+		min-width: 2.6em;
+		text-align: center;
 	}
 }
 
@@ -1530,7 +1653,7 @@ nav.appnav .navsearch:hover {
 	position: absolute;
 	inset-inline-end: 0;
 	top: calc(100% + 0.5rem);
-	z-index: 50;
+	z-index: var(--z-menu);
 	min-width: 13rem;
 	background: var(--surface);
 	border: 1px solid var(--border);
@@ -1958,11 +2081,11 @@ nav.appnav .navsearch:hover {
 
    WHICH classes are unlayered matters, and the split is not obvious:
      - UNLAYERED (a utility loses, so use a modifier): .book-card, .book-grid,
-       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip, .tag,
+       .shelf-card, .sermon-row, .filter-field, .field, .seg, .chip,
        .section-label, .eyebrow, .reading, .widthctl, nav.appnav, .account-*,
        .prefs-*.
      - IN `@layer components` (a utility WINS, no `!` needed): .btn and its
-       variants, .text-display.
+       variants, .tag, .text-display.
    The button family being layered is why the `!` on `!py-1` / `!text-small`
    was never doing anything a plain `py-1` wouldn't. */
 .book-card--row {
@@ -2330,8 +2453,9 @@ a.sermon-row-title:hover {
 
 /* A filter-chip row that becomes a single horizontal scroller on a phone, so a
    long topic list can't push the content it filters two screens down; from sm up
-   it wraps as an ordinary chip cloud. The right-edge mask fades the last chip to
-   hint the overflow — it fades to whatever is behind, so it's theme-agnostic.
+   it wraps as an ordinary chip cloud. Its edges fade only while chips are
+   hidden past them (the shared edge mask below, driven by `use:scrollEdges`) —
+   it fades to whatever is behind, so it's theme-agnostic.
    Unlayered on purpose, so it reliably wins over any Tailwind layout utility a
    caller composes onto it (a `flex-wrap`/`overflow` utility would otherwise beat
    a rule inside `@layer components`). Shared by the Books and Sermons topic
@@ -2348,8 +2472,6 @@ a.sermon-row-title:hover {
 		overflow-x: auto;
 		overscroll-behavior-x: contain;
 		scrollbar-width: none;
-		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-		mask-image: linear-gradient(to right, #000 88%, transparent);
 	}
 	.chip-scroller::-webkit-scrollbar {
 		display: none;
@@ -2358,21 +2480,16 @@ a.sermon-row-title:hover {
 	.chip-scroller > * {
 		flex-shrink: 0;
 	}
-	/* The scroller runs from the inline-start edge, so the fade belongs on the
-	   END edge — the left under RTL. */
-	[dir='rtl'] .chip-scroller {
-		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
-		mask-image: linear-gradient(to left, #000 88%, transparent);
-	}
 }
 
 /* A horizontal shelf of covers (Continue reading, New to the library, an
    author's book rail). Unlike .chip-scroller it never wraps — a rail always
    scrolls — so it keeps overflow at every width; but the end-edge fade that
    signals "more this way" (in place of a hard clip) is only wanted where it
-   actually overflows, i.e. on a phone. So the fade + hidden scrollbar are
-   scoped to <sm, matching .chip-scroller's recipe; a desktop that fits the
-   rail keeps its native scrollbar and no fade. Covers already carry shrink-0. */
+   actually overflows, i.e. on a phone — where the shared edge mask below
+   (`use:scrollEdges`) fades an edge only while covers hide past it. A
+   desktop rail keeps its native scrollbar and no mask. Covers already carry
+   shrink-0. */
 .cover-rail {
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
@@ -2385,8 +2502,6 @@ a.sermon-row-title:hover {
 @media (max-width: 639.98px) {
 	.cover-rail {
 		scrollbar-width: none;
-		-webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-		mask-image: linear-gradient(to right, #000 88%, transparent);
 	}
 	.cover-rail::-webkit-scrollbar {
 		display: none;
@@ -2394,19 +2509,15 @@ a.sermon-row-title:hover {
 	.cover-rail > * {
 		flex-shrink: 0;
 	}
-	/* Runs from the inline-start edge, so the fade is on the END edge — the
-	   left under RTL. */
-	[dir='rtl'] .cover-rail {
-		-webkit-mask-image: linear-gradient(to left, #000 88%, transparent);
-		mask-image: linear-gradient(to left, #000 88%, transparent);
-	}
 }
 
 /* A tab in a page's sticky jump bar (book, author and /scripture sub-navs):
    quiet until hovered; the active one wears the accent and an underline drawn
    on the bar's own bottom border (the -1px overlap makes them meet). One
-   definition — the three pages each carried a copy, already drifting. The
-   handler is scrollSpy's `spy.jump`. */
+   definition — the three pages each carried a copy, already drifting, and a
+   second identical copy for the library tabs (Books · Series · A–Z) sat
+   further down this file until 2026-10. The handler is scrollSpy's
+   `spy.jump`. */
 .subnav-link {
 	display: inline-block;
 	padding: 0.5rem 0.75rem;
@@ -2457,14 +2568,21 @@ a.sermon-row-title:hover {
    actually have tabs hidden past them (`more-start` / `more-end`), so each edge
    fades only then — a static fade dimmed the first tab at rest, and the start
    edge never faded at all once scrolled. The gradient's direction is a
-   variable, so RTL flips one token rather than restating the gradient. */
+   variable, so RTL flips one token rather than restating the gradient.
+   The same mask serves .chip-scroller and .cover-rail (each paired with
+   `use:scrollEdges`); with neither class set it is fully opaque, so a row
+   that fits — or a wrapped chip cloud — shows no fade at all. */
 .tab-strip {
-	--fade-dir: to right;
-	--fade-s: 0rem;
-	--fade-e: 0rem;
 	overflow-x: auto;
 	overscroll-behavior-x: contain;
 	scrollbar-width: none;
+}
+.tab-strip,
+.chip-scroller,
+.cover-rail {
+	--fade-dir: to right;
+	--fade-s: 0rem;
+	--fade-e: 0rem;
 	-webkit-mask-image: linear-gradient(
 		var(--fade-dir),
 		transparent,
@@ -2483,37 +2601,26 @@ a.sermon-row-title:hover {
 .tab-strip::-webkit-scrollbar {
 	display: none;
 }
-.tab-strip.more-start {
+:is(.tab-strip, .chip-scroller, .cover-rail).more-start {
 	--fade-s: 1.5rem;
 }
-.tab-strip.more-end {
+:is(.tab-strip, .chip-scroller, .cover-rail).more-end {
 	--fade-e: 1.5rem;
 }
-[dir='rtl'] .tab-strip {
+[dir='rtl'] :is(.tab-strip, .chip-scroller, .cover-rail) {
 	--fade-dir: to left;
 }
-
-/* A tab in a .tab-strip: quiet ink, the current one in accent with an
-   underline drawn on the row's own bottom border. Shared by the library tabs
-   (Books · Series · A–Z); the book and author pages' jump-navs still scope an
-   identical copy. */
-.subnav-link {
-	display: inline-block;
-	padding: 0.5rem 0.75rem;
-	border-bottom: 2px solid transparent;
-	margin-bottom: -1px; /* the underline meets the row's own border */
-	font-size: var(--fs-small);
-	font-weight: 500;
-	white-space: nowrap;
-	color: var(--muted);
-	text-decoration: none;
-}
-.subnav-link:hover {
-	color: var(--text);
-}
-.subnav-link.is-active {
-	color: var(--accent);
-	border-bottom-color: var(--accent);
+/* From sm up a chip row wraps instead of scrolling, so it has no edge to fade —
+   and a mask would clip the focus ring of a chip on its border. A cover rail
+   keeps its native scrollbar there instead: a mask makes a stacking context,
+   which lifted the AuthorBioCard rail above the card's stretched link and
+   ate clicks between the covers. */
+@media (min-width: 640px) {
+	.chip-scroller,
+	.cover-rail {
+		-webkit-mask-image: none;
+		mask-image: none;
+	}
 }
 
 /* Where a reader is with one book of a series — the card's progress segments
@@ -2721,30 +2828,35 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    ~8 times as `rounded-full border border-border px-3 py-1 …` that drifted on
    text colour (text / muted) and whether it carried a surface fill
    (page-design J1). One recipe now. */
-.tag {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.3em;
-	border: 1px solid var(--border);
-	border-radius: 999px;
-	background: var(--surface);
-	padding: 0.25rem 0.75rem;
-	font-size: var(--fs-small);
-	line-height: 1.4;
-	color: var(--text);
-	white-space: nowrap;
-}
-.tag:hover {
-	border-color: var(--accent);
-	color: var(--accent);
-	text-decoration: none;
-}
-/* A tag riding inline in a line of text — the A–Z index's young-reader
-   edition chips beside their full text. */
-.tag-sm {
-	padding: 0 0.45rem;
-	font-size: var(--fs-micro);
-	line-height: 1.5;
+/* In @layer components, like .btn: a utility on a tag (`hidden sm:inline-flex`,
+   `mt-2`) wins, as the markup says. Unlayered, `.tag`'s display beat `hidden`
+   and a "phone-only" pill showed everywhere. */
+@layer components {
+	.tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.3em;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--surface);
+		padding: 0.25rem 0.75rem;
+		font-size: var(--fs-small);
+		line-height: 1.4;
+		color: var(--text);
+		white-space: nowrap;
+	}
+	.tag:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+		text-decoration: none;
+	}
+	/* A tag riding inline in a line of text — the A–Z index's young-reader
+	   edition chips beside their full text. */
+	.tag-sm {
+		padding: 0 0.45rem;
+		font-size: var(--fs-micro);
+		line-height: 1.5;
+	}
 }
 
 /* Narrower / wider stepper (prefs menu), styled as a joined button pair. */
@@ -2864,6 +2976,30 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    touch UI wants the larger text anyway. Deliberately NOT inside the @layer
    above: the base .field rule is unlayered, so a layered override loses to it. */
 @media (pointer: coarse) {
+	/* The 44px finger target for the controls at the top of a page that the
+	   list above missed: the nav's text links (37px), the section tabs (37px —
+	   and, matched to a 44px .btn, the book page's tab bar no longer grows 7px
+	   when its Continue button appears mid-scroll), and the icon buttons, which
+	   were 44px tall but 33px wide. Unlayered, beside the base rules they
+	   extend. Not gated on width: a tablet's finger is the same size. */
+	nav.appnav .navlinks a,
+	nav.appnav .navmore-btn,
+	.subnav-link {
+		min-height: 2.75rem;
+	}
+	.subnav-link {
+		display: inline-flex;
+		align-items: center;
+	}
+	.btn-icon {
+		min-width: 2.75rem;
+	}
+	/* The gear, avatar and search pill each grow an invisible 44px hit area
+	   around a 32px disc; 8px apart, neighbouring areas overlapped by 4px, so a
+	   tap between two of them was a coin toss. 12px clears them. */
+	nav.appnav .navctl {
+		gap: 0.75rem;
+	}
 	.field,
 	.filter-field {
 		font-size: var(--fs-body);
@@ -2910,13 +3046,15 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    `--pw` is set per page from the pageWidth store; the min() keeps the column
    inside the viewport on small screens, where it simply goes full-bleed. */
 .page-col {
-	width: min(var(--pw, 76rem), calc(100vw - 2.5rem));
-	/* Centre on the viewport even when wider than the parent. Direction-aware:
-	   under dir="rtl" (Arabic) the start edge is the RIGHT edge, so the pull
-	   back has to flip sign — a physical margin-left/translateX would shove
-	   every page sideways. */
-	margin-inline-start: 50%;
-	transform: translateX(-50%);
+	--col-w: min(var(--pw, 76rem), calc(100vw - 2.5rem));
+	width: var(--col-w);
+	/* Centred on the parent's middle even when wider than it: the start edge
+	   sits half the column's width before the middle. A margin, not the old
+	   `translateX(-50%)` — a transform made every page a containing block for
+	   `position: fixed` (a fixed bar inside one pinned to the column, not the
+	   screen) and a stacking context. Logical, so Arabic (start = right edge)
+	   needs no override. */
+	margin-inline-start: calc(50% - var(--col-w) / 2);
 }
 /* Every page-col carries its own px-5, so on a phone the column takes the full
    viewport width and px-5 alone is the gutter — 20px, not 20 + 20. Viewport,
@@ -2924,7 +3062,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    narrower parent); phone scrollbars overlay, so 100vw adds no overflow. */
 @media (max-width: 639.98px) {
 	.page-col {
-		width: 100vw;
+		--col-w: 100vw;
 	}
 }
 /* A single-form page (Login, Reset password): the same centred column, held
@@ -2934,7 +3072,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
    phone still gets the 26rem card; `100%` (not 100vw) is the old max-w box
    exactly — capped by <main>, so a classic scrollbar never makes it overflow. */
 .page-col.page-col--narrow {
-	width: min(26rem, 100%);
+	--col-w: min(26rem, 100%);
 }
 
 /* The three static prose pages (About / Contact / Legal) are a page of text,
@@ -2948,12 +3086,13 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	padding-block: 3rem;
 	padding-inline: 1.25rem;
 }
-[dir='rtl'] .page-col {
-	transform: translateX(50%);
-}
 @media (prefers-reduced-motion: no-preference) {
+	/* The margin rides with the width (the same easing over the same time), so
+	   the column stays centred while a Page-width change animates. */
 	.page-col {
-		transition: width var(--duration-base) ease;
+		transition:
+			width var(--duration-base) ease,
+			margin-inline-start var(--duration-base) ease;
 	}
 }
 
@@ -2967,7 +3106,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	top: 0;
 	inset-inline: 0;
 	height: 2px;
-	z-index: 40;
+	z-index: var(--z-chrome);
 	background: var(--accent);
 	/* transform-origin takes no logical keyword, so RTL is flipped explicitly
 	   below — otherwise the bar fills from the left while the text runs
@@ -2991,7 +3130,7 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	);
 	left: 50%;
 	transform: translateX(-50%);
-	z-index: 30;
+	z-index: var(--z-popover);
 	border-radius: 9999px;
 	border: 1px solid var(--border);
 	background: color-mix(in srgb, var(--bg) 85%, transparent);
@@ -3068,4 +3207,61 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 }
 .night-band:not(:has(section)) {
 	display: none;
+}
+
+/* THE READING CALENDAR'S GOLDS (ReadingHeatmap). A read day is never paler
+   than full --gold, so even a reader of scattered single days sees every one
+   clearly against an unread --surface-2. A longer run goes deeper, mixing the
+   gold toward the theme's own ink, one step per streak tier (streak.ts,
+   runLevel): darker on paper and sepia, brighter on lamplight. Rules rather
+   than tokens, so the mix resolves against the --gold where the calendar is. */
+.heat[data-level='0'] {
+	background: var(--surface-2);
+}
+.heat[data-level='1'] {
+	background: var(--gold);
+}
+.heat[data-level='2'] {
+	background: color-mix(in srgb, var(--gold) 80%, var(--text));
+}
+.heat[data-level='3'] {
+	background: color-mix(in srgb, var(--gold) 62%, var(--text));
+}
+.heat[data-level='4'] {
+	background: color-mix(in srgb, var(--gold) 45%, var(--text));
+}
+.heat-swatch {
+	display: inline-block;
+	width: 0.66rem;
+	height: 0.66rem;
+}
+
+/* The streak's flame by tier (DashboardStats; streak.ts, streakTier): a bare
+   gold spark under a week; a soft halo from a week; a lit, filled blaze from
+   a month; and from a hundred days a crown ring in the library's plum.
+   Ornament, so gold (STYLE_GUIDE §1): the number beside it carries the
+   meaning. The spark takes no halo box, so the common case keeps its old
+   footprint. */
+.streak-flame {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--gold);
+}
+.streak-flame:not([data-tier='spark']) {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--gold) 14%, transparent);
+}
+.streak-flame[data-tier='blaze'],
+.streak-flame[data-tier='crown'] {
+	background: color-mix(in srgb, var(--gold) 22%, transparent);
+}
+.streak-flame[data-tier='blaze'] path,
+.streak-flame[data-tier='crown'] path {
+	fill: color-mix(in srgb, var(--gold) 40%, transparent);
+}
+.streak-flame[data-tier='crown'] {
+	box-shadow: 0 0 0 2px var(--hue-plum);
 }
