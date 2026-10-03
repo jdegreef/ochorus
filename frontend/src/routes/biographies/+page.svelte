@@ -10,10 +10,11 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { ERAS, eraOf, type EraId } from '$lib/eras';
+	import { getLang } from '$lib/lang.svelte';
+	import { ERAS, ERA_HUE, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import BioTile from '$lib/components/BioTile.svelte';
-	import EraBand from '$lib/components/EraBand.svelte';
+	import FacetBand from '$lib/components/FacetBand.svelte';
 	import FacetMenu from '$lib/components/FacetMenu.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import {
@@ -24,7 +25,8 @@
 		cleanFacetValues,
 		bioChips,
 		toggleIn,
-		type EraCard,
+		type BandCard,
+		bestKnown,
 		type FacetKey
 	} from '$lib/bioFacets';
 	import type { FacetOption } from '$lib/components/FacetMenu.svelte';
@@ -156,22 +158,23 @@
 		return opts.map((o) => ({ ...o, count: n.get(o.v) ?? 0 }));
 	};
 
-	// The writers per era, best-known first (portraits, then most to read) —
-	// the faces on the band. Depends on the roster only, not the filters.
-	const byEra = $derived.by(() => {
-		const m = new Map<EraId, AuthorBio[]>();
-		for (const a of authors) {
-			const id = eraOf(a.birth_year);
-			const xs = m.get(id);
-			if (xs) xs.push(a);
-			else m.set(id, [a]);
+	// The roster best-known first (portraits, then most to read) — the order
+	// the browse cards pick their faces in. Depends on the roster only, not the
+	// filters, so it sorts once.
+	const ranked = $derived([...authors].sort(bestKnown));
+	/** The first `n` best-known writers a predicate admits. */
+	const topWriters = (keep: (a: AuthorBio) => boolean, n = 3) => {
+		const out: AuthorBio[] = [];
+		for (const a of ranked) {
+			if (keep(a)) out.push(a);
+			if (out.length === n) break;
 		}
-		for (const xs of m.values())
-			xs.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a));
-		return m;
-	});
+		return out;
+	};
 	// Only the eras that have writers in this language at all.
-	const presentEras = $derived(ERAS.filter((e) => byEra.has(e.id)));
+	const presentEras = $derived(
+		ERAS.filter((e) => authors.some((a) => eraOf(a.birth_year) === e.id))
+	);
 
 	// The three facets, each with its label and counted options — one list the
 	// toolbar menus, the phone sheet and the chips all read. Places are each
@@ -207,19 +210,85 @@
 		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.label])))
 	);
 
-	// The era band: each era's count (under the other filters) and three faces.
-	const eraCards = $derived.by(() => {
-		const counts = facetGroups.find((g) => g.k === 'era')?.options ?? [];
-		return presentEras.map(
-			(e): EraCard => ({
+	// --- Browse band: eras, traditions or places as cards ------------------------
+	// Each card ticks a value of its facet; its count is the menu's count (under
+	// the other filters) and its faces the best-known writers it holds.
+	const optCount = $derived(
+		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.count])))
+	);
+	const count = (k: FacetKey, v: string) => optCount.get(`${k}:${v}`) ?? 0;
+	const inHub = (slug: string) => (a: AuthorBio) => members.get(slug)?.has(a.slug) ?? false;
+
+	// The faces (and a tradition's name line) depend on the roster only, so they
+	// are worked out once; the cards below merge in the counts, which follow the
+	// filters — a keystroke recounts, it doesn't re-pick faces.
+	const eraFaces = $derived(
+		new Map(presentEras.map((e) => [e.id, topWriters((a) => eraOf(a.birth_year) === e.id)]))
+	);
+	const hubFaces = $derived(new Map(hubs.map((h) => [h.slug, topWriters(inHub(h.slug))])));
+	// The list separator for two names: Arabic and Amharic have their own commas.
+	const SEP: Record<string, string> = { ar: '، ', am: '፣ ' };
+	const nameSep = SEP[getLang()] ?? ', ';
+
+	const eraCards = $derived(
+		presentEras.map(
+			(e): BandCard => ({
 				id: e.id,
 				name: t(e.k),
-				range: e.range,
-				count: counts.find((o) => o.v === e.id)?.count ?? 0,
-				faces: byEra.get(e.id)!.slice(0, 3)
+				sub: e.range,
+				count: count('era', e.id),
+				faces: eraFaces.get(e.id) ?? [],
+				hue: ERA_HUE[e.id]
 			})
-		);
-	});
+		)
+	);
+	// A tradition's two best-known names under its title, so a reader finds
+	// "Bunyan, Baxter" before they know the word "Puritan".
+	const tradCards = $derived(
+		traditions.map((h): BandCard => {
+			const faces = hubFaces.get(h.slug) ?? [];
+			return {
+				id: h.slug,
+				name: h.label,
+				sub: faces
+					.slice(0, 2)
+					.map((a) => a.name)
+					.join(nameSep),
+				count: count('trad', h.slug),
+				faces
+			};
+		})
+	);
+	// Each region with its places as chips; places with no region page in this
+	// language get a card each.
+	const placeCards = $derived(
+		places.flatMap((g): BandCard[] => {
+			const card = (h: Hub, children?: Hub[]): BandCard => ({
+				id: h.slug,
+				name: h.label,
+				count: count('place', h.slug),
+				faces: hubFaces.get(h.slug) ?? [],
+				children: children?.map((p) => ({ id: p.slug, name: p.label, count: count('place', p.slug) }))
+			});
+			return g.region ? [card(g.region, g.places)] : g.places.map((p) => card(p));
+		})
+	);
+
+	// Which lens the band shows. Not remembered across visits on purpose: the
+	// page is prerendered with the era band, and restoring another lens after
+	// hydration would swap a one-row band for a two-row grid under the reader.
+	type Lens = 'era' | 'trad' | 'place';
+	let lens = $state<Lens>('era');
+	const lenses = $derived(
+		(
+			[
+				{ k: 'era', label: t('bios.era'), cards: eraCards, cols: 6 },
+				{ k: 'trad', label: t('bios.tradition'), cards: tradCards, cols: 6 },
+				{ k: 'place', label: t('bios.place'), cards: placeCards, cols: 3 }
+			] as const
+		).filter((l) => l.cards.length > 1)
+	);
+	const shownLens = $derived(lenses.find((l) => l.k === lens) ?? lenses[0]);
 
 	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
 	type View = 'list' | 'grid';
@@ -477,15 +546,31 @@
 	     the page's position for search results, which is still true. -->
 	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
 
-	<!-- The eras as the page's one visual way in. They used to hide behind the
-	     "By era" sort; now each is a card that filters the list to it. -->
-	{#if eraCards.length > 1 && !loadError}
+	<!-- The page's visual way in: the eras, the traditions or the places as
+	     cards, one lens at a time (eras by default). Each card ticks that value
+	     of its facet, exactly as the toolbar menus do. -->
+	{#if shownLens && !loadError}
 		<div class="mb-5">
-			<EraBand
-				eras={eraCards}
-				selected={facets.era}
-				label={t('bios.era')}
-				ontoggle={(id) => toggleFacet('era', id)}
+			{#if lenses.length > 1}
+				<div class="lens-row" role="group" aria-label={t('bios.browseBy')}>
+					<span class="lens-label" aria-hidden="true">{t('bios.browseBy')}</span>
+					{#each lenses as l (l.k)}
+						<button
+							type="button"
+							class="lens"
+							class:active={shownLens.k === l.k}
+							aria-pressed={shownLens.k === l.k}
+							onclick={() => (lens = l.k)}>{l.label}</button
+						>
+					{/each}
+				</div>
+			{/if}
+			<FacetBand
+				cards={shownLens.cards}
+				cols={shownLens.cols}
+				selected={facets[shownLens.k]}
+				label={shownLens.label}
+				ontoggle={(id) => toggleFacet(shownLens.k, id)}
 			/>
 		</div>
 	{/if}
@@ -774,5 +859,39 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+	}
+	/* Browse by: Era · Tradition · Place — text tabs over the band. */
+	.lens-row {
+		display: flex;
+		align-items: baseline;
+		gap: 0.25rem;
+		margin-bottom: 0.6rem;
+	}
+	.lens-label {
+		margin-inline-end: 0.35rem;
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
+	.lens {
+		padding: 0.2rem 0.5rem;
+		border: 0;
+		border-bottom: 2px solid transparent;
+		background: none;
+		font-size: var(--fs-small);
+		color: var(--muted);
+		cursor: pointer;
+	}
+	.lens:hover {
+		color: var(--text);
+	}
+	.lens.active {
+		border-bottom-color: var(--accent);
+		color: var(--accent);
+		font-weight: 600;
+	}
+	@media (pointer: coarse) {
+		.lens {
+			min-height: 2.75rem;
+		}
 	}
 </style>

@@ -1,4 +1,4 @@
-import { eraById, eraOf, type EraId } from '$lib/eras';
+import { eraById, eraOf } from '$lib/eras';
 import { queryChip, type FilterChip } from '$lib/filterChips';
 import type { AuthorBio, Hub } from '$lib/library-public';
 
@@ -13,8 +13,25 @@ import type { AuthorBio, Hub } from '$lib/library-public';
  * they are the indexable answers — but on the index the same groupings now
  * filter in place rather than navigating away.
  */
-/** One card of the era band. */
-export type EraCard = { id: EraId; name: string; range: string; count: number; faces: AuthorBio[] };
+/** One card of a FacetBand (an era, a tradition, a region with its places). */
+export type BandCard = {
+	id: string;
+	name: string;
+	/** A line under the name: an era's dates, a tradition's best-known writers. */
+	sub?: string;
+	count: number;
+	faces: AuthorBio[];
+	/** Tints the card; the accent when absent. */
+	hue?: string;
+	/** A region's places, each its own tick. */
+	children?: { id: string; name: string; count: number }[];
+};
+
+/** Best-known first: writers with a portrait, then the most to read. The order
+ *  the band cards pick their faces in. */
+export const bestKnown = (a: AuthorBio, b: AuthorBio): number =>
+	Number(!!b.photo_url) - Number(!!a.photo_url) ||
+	b.book_count + b.sermon_count - (a.book_count + a.sermon_count);
 
 export type FacetKey = 'trad' | 'place' | 'era';
 export type Facets = Record<FacetKey, string[]>;
