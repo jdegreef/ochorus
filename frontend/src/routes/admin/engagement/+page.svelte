@@ -569,14 +569,13 @@
 		flex: none;
 		border-radius: 999px;
 		color: var(--surface);
-		font-size: 0.6875rem;
+		font-size: var(--fs-micro);
 		font-weight: 700;
 		line-height: 1;
 	}
 	.ev-sm {
 		width: 0.875rem;
 		height: 0.875rem;
-		font-size: 0.5625rem;
 	}
 	.ev-email {
 		background: var(--accent);
