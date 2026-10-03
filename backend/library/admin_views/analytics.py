@@ -510,7 +510,12 @@ class AdminEngagementView(APIView):
 
 
 # Human labels for the reader themes stored on UserProfile.
-THEME_LABELS = {"paper": "Paper (light)", "light": "Light", "dark": "Lamplight (dark)"}
+THEME_LABELS = {
+    "": "Not yet set",
+    "paper": "Paper (light)",
+    "light": "Light",
+    "dark": "Lamplight (dark)",
+}
 
 # Human labels for the Supabase auth providers stored on UserProfile.providers.
 # Anything unlisted is title-cased so a new provider still reads sensibly.

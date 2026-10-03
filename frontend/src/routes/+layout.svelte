@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -65,8 +66,23 @@
 		initAnalytics();
 	});
 
+	// A navigation into another locale must be a full document load: the
+	// locale (messages, <html lang/dir>) is fixed per document, so a client-side
+	// hop between /ar/… and /… kept the old one's direction. Links and goto are
+	// cancelled and re-issued as a real load; a back/forward across locales can't
+	// be re-issued before it happens, so afterNavigate reloads that one below.
+	beforeNavigate(({ from, to, type, cancel }) => {
+		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
+		cancel();
+		location.assign(to!.url.href);
+	});
+
 	// Leaving a chapter is the safe moment to take a waiting app update.
-	afterNavigate(({ from, to }) => {
+	afterNavigate(({ from, to, type }) => {
+		if (type === 'popstate' && crossesLocale(from?.url, to?.url)) {
+			location.reload();
+			return;
+		}
 		pwa.navigated();
 		// Focus mode hides this layout's nav and footer, and only the reading
 		// surfaces carry a way out of it (FocusExit, Escape). It was never reset,
@@ -116,6 +132,15 @@
 
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+	// The search shortcut hint, spelt for this platform: "⌘K" only means
+	// something on Apple keyboards (the palette also answers Ctrl+K). Decided on
+	// mount — the prerendered HTML can't know the platform — and left empty on
+	// touch-first devices, where there is no keyboard to press it on.
+	let searchKbd = $state('');
+	onMount(() => {
+		if (matchMedia('(pointer: coarse)').matches) return;
+		searchKbd = /Mac|iPhone|iPad/.test(navigator.platform) ? '⌘K' : 'Ctrl K';
+	});
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -301,7 +326,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+						{#if searchKbd}<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>{/if}
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
@@ -525,6 +550,7 @@
 							<span
 								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code as (typeof locales)[number])}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
@@ -532,6 +558,7 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code as (typeof locales)[number])}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click

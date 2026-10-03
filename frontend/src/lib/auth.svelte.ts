@@ -307,16 +307,25 @@ class Auth {
 			this.isAdmin = !!p.is_admin;
 			this.scopes = p.scopes ?? [];
 			this.displayName = p.display_name || '';
-			if (typeof p.theme === 'string' && p.theme) theme.set(normalizePref(p.theme));
-			if (p.font_scale) readerPrefs.setScale(p.font_scale);
-			// Listening prefs: rate always applies; a voiceURI only resolves if the
-			// device actually has that voice (best-effort across devices).
-			if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
-			if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
+			// A blank theme means the account has never had prefs pushed to it
+			// (every push carries one): its font scale / TTS values are just the
+			// model's defaults. Adopting them turned a dark-mode reader light the
+			// moment they signed up — so a fresh account takes THIS device's
+			// prefs instead (pushed below, once the gate is open).
+			const fresh = !p.theme;
+			if (!fresh) {
+				theme.set(normalizePref(p.theme));
+				if (p.font_scale) readerPrefs.setScale(p.font_scale);
+				// Listening prefs: rate always applies; a voiceURI only resolves if
+				// the device actually has that voice (best-effort across devices).
+				if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
+				if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
+			}
 			// The account's values are now the local values, so pushing is safe
 			// again. Set BEFORE the language reconcile below, which pushes
 			// deliberately. See #profileLoaded.
 			this.#profileLoaded = true;
+			if (fresh) this.pushPrefs();
 			// Record where this reader is signing in from (browser timezone →
 			// approximate country in the admin analytics). Independent of the
 			// prefs push, so it's safe regardless of #profileLoaded.
@@ -328,10 +337,12 @@ class Auth {
 			// reconcile the profile to it so their other devices follow. Only on a
 			// device with no local choice do we adopt the saved profile locale
 			// (cross-device restore) — and only if it's a language we still offer.
+			// A fresh account's locale is the model default, not a choice: its
+			// push above already carried this page's language.
 			const chosen = lang.chosen();
 			if (chosen) {
 				if (p.locale !== lang.current) this.pushPrefs();
-			} else if (p.locale && lang.isAvailable(p.locale)) {
+			} else if (!fresh && p.locale && lang.isAvailable(p.locale)) {
 				lang.set(p.locale);
 			}
 		} catch {
