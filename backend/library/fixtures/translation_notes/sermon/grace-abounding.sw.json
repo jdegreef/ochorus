@@ -1,0 +1,229 @@
+{
+ "kind": "sermon",
+ "slug": "grace-abounding",
+ "language": "sw",
+ "job_issue": 5019,
+ "references": [
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "humility-2.sw.json"
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Romans 5:20b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 5,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:16",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "1 Timothy 1:14",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 55:13",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Psalms 25:11",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "2 Corinthians 10:1a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Galatians 6:7b",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Revelation 19:6b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-possibilities-of-faith.sw.json"
+  },
+  {
+   "reference": "Revelation 5:12a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "things-as-they-are.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:7b",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 John 3:1a",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-greatest-sentence-ever-written.sw.json"
+  },
+  {
+   "reference": "1 John 3:2",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "the-way-to-god.sw.json"
+  },
+  {
+   "reference": "2 Peter 1:4a",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Colossians 3:3b-4",
+   "status": "self_rendered",
+   "block_index": 18
+  },
+  {
+   "reference": "Jeremiah 18:12",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Hebrews 6:17",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Timothy 1:14",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 5:17b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "John 10:10b",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Ephesians 1:7b-8",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 4:15",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 1:5",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "2 Corinthians 9:8",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Ephesians 3:20-21",
+   "status": "self_rendered",
+   "block_index": 24
+  },
+  {
+   "reference": "Colossians 2:7",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Philippians 1:9",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "1 Thessalonians 4:1",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Philippians 1:26",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 15:13",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 8:2b",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Corinthians 8:7",
+   "status": "self_rendered",
+   "block_index": 25
+  },
+  {
+   "reference": "2 Peter 1:5-8",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "2 Peter 1:11",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "John 1:16",
+   "status": "self_rendered",
+   "block_index": 27
+  }
+ ]
+}

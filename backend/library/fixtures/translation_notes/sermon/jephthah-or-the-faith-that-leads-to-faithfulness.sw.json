@@ -1,0 +1,76 @@
+{
+ "kind": "sermon",
+ "slug": "jephthah-or-the-faith-that-leads-to-faithfulness",
+ "language": "sw",
+ "job_issue": 5028,
+ "references": [
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 Chronicles 4:10",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "1 Chronicles 4:10b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Judges 11:3",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "1 Corinthians 1:28",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "1 Corinthians 1:29",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Revelation 3:9b",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Judges 11:11",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Judges 11:38",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Judges 11:40",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Psalm 15:4",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "revival-lectures.sw.json"
+  }
+ ]
+}

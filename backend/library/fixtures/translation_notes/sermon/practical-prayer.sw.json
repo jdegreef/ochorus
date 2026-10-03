@@ -1,0 +1,147 @@
+{
+ "kind": "sermon",
+ "slug": "practical-prayer",
+ "language": "sw",
+ "job_issue": 5033,
+ "references": [
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "James 1:5",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "Ezra 8:21-22",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "2 Samuel 5:19",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Samuel 5:23",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Samuel 5:24",
+   "status": "mined",
+   "block_index": 7,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 27:6",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Proverbs 3:6",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "block_index": 8,
+   "source_file": "answers-to-prayer.sw.json"
+  },
+  {
+   "reference": "James 5:13a",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "1 Samuel 30:6b",
+   "status": "mined",
+   "block_index": 12,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "2 Kings 3:10",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Jonah 2:7",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Jonah 2:9",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "2 Chronicles 33:12-13",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Psalm 50:15",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Isaiah 30:15",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 30:16",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Isaiah 30:18a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Isaiah 30:18b",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "James 5:13b",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "James 5:14-15",
+   "status": "mined",
+   "block_index": 20,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 25,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 25
+  }
+ ]
+}

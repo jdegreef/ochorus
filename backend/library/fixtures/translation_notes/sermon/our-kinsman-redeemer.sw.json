@@ -1,0 +1,81 @@
+{
+ "kind": "sermon",
+ "slug": "our-kinsman-redeemer",
+ "language": "sw",
+ "job_issue": 5030,
+ "references": [
+  {
+   "reference": "Isaiah 54:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "James 1:15",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Ruth 1:16",
+   "status": "mined",
+   "block_index": 4,
+   "source_file": "the-way-of-salvation.sw.json"
+  },
+  {
+   "reference": "Ruth 1:17",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Song of Solomon 8:9",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Ruth 2:12b",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 2:6-8",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Matthew 13:45-46",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "Deuteronomy 32:9a",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:7",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 1:38",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Luke 1:45",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:19",
+   "status": "self_rendered",
+   "block_index": 26
+  },
+  {
+   "reference": "Isaiah 54:5",
+   "status": "self_rendered",
+   "block_index": 0
+  }
+ ]
+}

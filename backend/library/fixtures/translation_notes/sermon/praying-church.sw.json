@@ -1,0 +1,133 @@
+{
+ "kind": "sermon",
+ "slug": "praying-church",
+ "language": "sw",
+ "job_issue": 5034,
+ "references": [
+  {
+   "reference": "James 5:16b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "James 4:2b",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "James 4:3a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Luke 18:1b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Matthew 15:13",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Isaiah 6:1",
+   "status": "self_rendered",
+   "block_index": 54
+  },
+  {
+   "reference": "Isaiah 6:1b",
+   "status": "mined",
+   "block_index": 54,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22b",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Acts 5:12b-13a",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Matthew 6:9b",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 6:9c",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "John 14:13",
+   "status": "mined",
+   "block_index": 78,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Acts 2:36b",
+   "status": "self_rendered",
+   "block_index": 82
+  },
+  {
+   "reference": "Revelation 1:17a",
+   "status": "self_rendered",
+   "block_index": 83
+  },
+  {
+   "reference": "Genesis 1:24",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Genesis 6:4a",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Revelation 14:4b",
+   "status": "mined",
+   "block_index": 124,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Philippians 4:6b",
+   "status": "mined",
+   "block_index": 136,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 16:2a",
+   "status": "self_rendered",
+   "block_index": 143
+  },
+  {
+   "reference": "2 Corinthians 9:9",
+   "status": "self_rendered",
+   "block_index": 144
+  },
+  {
+   "reference": "1 Corinthians 1:26b",
+   "status": "self_rendered",
+   "block_index": 157
+  },
+  {
+   "reference": "Acts 13:36a",
+   "status": "self_rendered",
+   "block_index": 201
+  }
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-cultivate-the-holy-spirits-companionship",
+ "language": "sw",
+ "job_issue": 5023,
+ "references": [
+  {
+   "reference": "John 14:16",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "John 14:18",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Amos 3:3",
+   "status": "mined",
+   "block_index": 42,
+   "source_file": "the-secret-of-guidance.sw.json"
+  },
+  {
+   "reference": "Isaiah 60:13b",
+   "status": "self_rendered",
+   "block_index": 56
+  },
+  {
+   "reference": "Genesis 5:24",
+   "status": "mined",
+   "block_index": 61,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Micah 6:8b",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "1 Peter 3:4b",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Job 11:12b",
+   "status": "self_rendered",
+   "block_index": 69
+  },
+  {
+   "reference": "Matthew 19:6a",
+   "status": "self_rendered",
+   "block_index": 77
+  }
+ ]
+}

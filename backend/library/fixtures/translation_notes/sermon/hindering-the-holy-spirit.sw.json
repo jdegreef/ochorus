@@ -1,0 +1,128 @@
+{
+ "kind": "sermon",
+ "slug": "hindering-the-holy-spirit",
+ "language": "sw",
+ "job_issue": 5021,
+ "references": [
+  {
+   "reference": "Ephesians 4:30a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Acts 7:51b",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Thessalonians 5:19",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:28b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Isaiah 48:18",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "James 4:5",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "James 4:4a",
+   "status": "mined",
+   "block_index": 55,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 4:31",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "self_rendered",
+   "block_index": 62
+  },
+  {
+   "reference": "Jeremiah 6:14",
+   "status": "self_rendered",
+   "block_index": 74
+  },
+  {
+   "reference": "Matthew 23:27b",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Luke 13:26",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Matthew 7:23a",
+   "status": "self_rendered",
+   "block_index": 89
+  },
+  {
+   "reference": "Isaiah 1:20a",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Proverbs 1:24a",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Hebrews 10:26",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Hebrews 10:27",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Hebrews 10:28",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 10:29",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Hebrews 10:30",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Hebrews 10:31",
+   "status": "self_rendered",
+   "block_index": 93
+  },
+  {
+   "reference": "Mark 3:29",
+   "status": "self_rendered",
+   "block_index": 98
+  },
+  {
+   "reference": "Hosea 4:17",
+   "status": "self_rendered",
+   "block_index": 100
+  }
+ ]
+}
