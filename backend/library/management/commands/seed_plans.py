@@ -10,6 +10,7 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
+from library.localization import is_english_edition
 from library.models import Article, Book, Plan, PlanDay
 from library.plan_seed import (
     CURATED_PLANS,
@@ -45,7 +46,7 @@ def _prose(slug, lang, en_title, en_description):
     # edition language) own the English tuple: it is their prose, not a
     # fallback. Without this an en-modern book would publish no plan at all,
     # and every plan would need a duplicated en-modern.json.
-    if lang == "en" or lang.startswith("en-"):
+    if is_english_edition(lang):
         return (en_title, en_description)
     return plan_translations().get(lang, {}).get(slug)
 

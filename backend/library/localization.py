@@ -19,3 +19,17 @@ def language_from_request(request) -> str:
     if request is None:
         return DEFAULT_LANGUAGE
     return request.query_params.get("language") or DEFAULT_LANGUAGE
+
+
+def is_english_edition(language: str) -> bool:
+    """English, or an English variant of it — the Modern English edition
+    (``en-modern``, library.contemporize.MODERN_LANGUAGE).
+
+    One rule for every place that has to decide "is this English?": an English
+    variant shares English prose (plan titles), English covers (the words on
+    them are English) and is never a translation. Spelled once because it was
+    spelled two ways — ``in ("en", MODERN_LANGUAGE)`` and ``startswith("en-")``
+    — and the cover script used neither, so it would have redrawn the modern
+    edition's cover as if it were a foreign one.
+    """
+    return language == "en" or language.startswith("en-")

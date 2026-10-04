@@ -106,6 +106,7 @@ from library.covers import (  # noqa: E402
 )
 from library.curated_art import CURATED, ORIGINAL_GROUND  # noqa: E402
 from library.designed_covers import DERIVED_GROUND, is_designed  # noqa: E402
+from library.localization import is_english_edition  # noqa: E402
 
 ROOT = BACKEND.parent
 STATIC = ROOT / "frontend" / "static"
@@ -198,7 +199,9 @@ def main() -> int:
             continue
         if language == "en":
             english[slug] = fields
-        else:
+        elif not is_english_edition(language):
+            # An English variant (the Modern English edition) wears the English
+            # cover — its words are English — so it is never redrawn here.
             editions.append((path, slug, language, fields))
 
     drawn = patched = unchanged = 0

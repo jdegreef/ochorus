@@ -2,7 +2,7 @@
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { readingSync } from '$lib/readingSync';
-	import { modernChapterPath, planDayPath } from '$lib/editionHref';
+	import { bookChapterPath, modernChapterPath, planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -108,9 +108,7 @@
 		editionSeo(`/books/${slug}/${chapter.order}/`, chapter.available_languages, shownElsewhere)
 	);
 	const canonical = $derived(
-		edition === 'modern'
-			? `${SITE_URL}${localizeHref(modernChapterPath(slug, chapter.order), { locale: 'en' })}`
-			: seo.canonical
+		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
 	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
@@ -121,10 +119,7 @@
 		{ name: chapter.book_title, href: `/books/${slug}` },
 		{
 			name: chapterName(chapter.order, chapter.title),
-			href:
-				edition === 'modern'
-					? modernChapterPath(slug, chapter.order)
-					: `/books/${slug}/${chapter.order}`
+			href: bookChapterPath(slug, chapter.order, edition === 'modern')
 		}
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
@@ -218,28 +213,6 @@
 	// match and won't surprise-play. A plain var, not $state: the page component
 	// is reused across chapter navigations, so it survives the goto.
 	let autoContinueOrder: number | null = null;
-
-	// `?edition=modern` is the Modern English edition's old address (bookmarks,
-	// shared links, saved marks). It now lives at /books/<slug>/modern/<n>/, so
-	// forward there, keeping the rest of the query (?p=, plan context) and the
-	// hash. A work with no Modern edition just drops the flag — the modern route
-	// would 404. An effect, not onMount: an in-app link can still carry the flag
-	// into this already-mounted page.
-	$effect(() => {
-		const url = $page.url;
-		if ($page.route.id !== '/books/[slug]/[order]') return;
-		if (url.searchParams.get('edition') !== 'modern') return;
-		const qs = new URLSearchParams(url.search);
-		qs.delete('edition');
-		const q = qs.toString();
-		const path = chapter.has_modern_edition
-			? modernChapterPath(slug, chapter.order)
-			: `/books/${slug}/${chapter.order}`;
-		goto(localizeHref(`${path}${q ? `?${q}` : ''}`) + url.hash, {
-			replaceState: true,
-			noScroll: true
-		});
-	});
 
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
@@ -1247,7 +1220,7 @@
 	 * the day rather than passing the old one through. Plain link otherwise, since
 	 * a chapter outside the plan means they've stepped off its path.
 	 */
-	function chapterHref(order: number, pg?: 'last'): string {
+	function chapterHref(order: number, pg?: 'last', modern = edition === 'modern'): string {
 		const qs = new URLSearchParams();
 		if (pg) qs.set('pg', pg); // land on the last page when paging backwards
 		const day = planDayFor(order);
@@ -1256,24 +1229,12 @@
 			qs.set('day', String(day));
 		}
 		const q = qs.toString();
-		const path = edition === 'modern' ? modernChapterPath(slug, order) : `/books/${slug}/${order}`;
-		return localizeHref(`${path}${q ? `?${q}` : ''}`);
+		return localizeHref(`${bookChapterPath(slug, order, modern)}${q ? `?${q}` : ''}`);
 	}
 
 	/** The current chapter in the opposite edition — drives the Modern ⇄ Original
 	 *  toggle. Keeps the reader's plan context on the same chapter. */
-	function editionToggleHref(): string {
-		const qs = new URLSearchParams();
-		const day = planDayFor(chapter.order);
-		if (plan && day) {
-			qs.set('plan', plan.slug);
-			qs.set('day', String(day));
-		}
-		const q = qs.toString();
-		const path =
-			edition === 'modern' ? `/books/${slug}/${chapter.order}` : modernChapterPath(slug, chapter.order);
-		return localizeHref(`${path}${q ? `?${q}` : ''}`);
-	}
+	const editionToggleHref = () => chapterHref(chapter.order, undefined, edition !== 'modern');
 
 	function gotoChapter(target: { order: number } | null) {
 		if (target) goto(chapterHref(target.order));

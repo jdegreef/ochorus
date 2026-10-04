@@ -11,7 +11,7 @@
 	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { modernChapterPath } from '$lib/editionHref';
+	import { bookChapterPath } from '$lib/editionHref';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is
@@ -37,8 +37,7 @@
 
 	// Carry the reader's edition onto every chapter link (and fetch the matching
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
-	const chapterHref = (order: number) =>
-		edition === 'modern' ? modernChapterPath(slug, order) : `/books/${slug}/${order}`;
+	const chapterHref = (order: number) => bookChapterPath(slug, order, edition === 'modern');
 	const contentLang = $derived(editionLang(edition));
 	// The fetched book, but only while it is THIS work: a drawer reopened on a
 	// second book keeps the previous one in `book` until its replacement lands,

@@ -1,6 +1,6 @@
 import { lang } from './lang.svelte';
 import { localizeHref } from './href';
-import { MODERN_EDITION, baseEdition } from './reading-schema';
+import { MODERN_EDITION, baseEdition, bookChapterPath, modernChapterPath } from './reading-schema';
 import { authorPath } from './originals';
 import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
@@ -31,12 +31,7 @@ export function editionHref(path: string, edition: string): string {
 		: localizeHref(withEdition);
 }
 
-/**
- * A book chapter's path in the Modern English edition (unlocalized). The
- * edition has its own prerendered address — it is indexable there, where the
- * old `?edition=modern` flag canonicalized to the original and never was.
- */
-export const modernChapterPath = (slug: string, order: number) => `/books/${slug}/modern/${order}`;
+export { bookChapterPath, modernChapterPath };
 
 const CHAPTER_PATH = /^\/books\/([^/?#]+)\/(\d+)\/?(?=[?#]|$)/;
 
@@ -59,7 +54,7 @@ function modernPath(path: string): string {
  */
 export function workPath(kind: WorkKind, slug: string, order?: number): string {
 	const path: Record<WorkKind, string> = {
-		book: order ? `/books/${slug}/${order}` : `/books/${slug}`,
+		book: order ? bookChapterPath(slug, order, false) : `/books/${slug}`,
 		sermon: `/sermons/${slug}`,
 		bio: authorPath(slug),
 		article: `/articles/${slug}/`
@@ -89,8 +84,8 @@ export function chapterPath(
 	/** Open the Modern edition whatever the preference — carrying on in it. */
 	stayModern = false
 ): string {
-	const modern = hasModern && (stayModern || readerPrefs.preferModern);
-	return `${modern ? modernChapterPath(slug, order) : workPath('book', slug, order)}${query ? `?${query}` : ''}`;
+	const modern = !!hasModern && (stayModern || readerPrefs.preferModern);
+	return `${bookChapterPath(slug, order, modern)}${query ? `?${query}` : ''}`;
 }
 
 /**

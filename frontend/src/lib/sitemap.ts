@@ -53,6 +53,8 @@ import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
 import { APP_ONLY } from '$lib/robots';
+import { withTrailingSlash } from '$lib/href';
+import { modernChapterPath } from '$lib/reading-schema';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -198,8 +200,10 @@ export interface SitemapData {
  * `/books/[slug]/[order]` route builds every one) and stay crawlable through
  * each book page's chapter list — so Google reaches and may still index the
  * ones it judges worthwhile. We simply stop *promising* the whole set in the
- * sitemap. Fully reversible: restore the `chapters-${l}` spread below and the
- * per-locale child machinery advertises them again, because it is kept intact
+ * sitemap. Reversible: restore the `chapters-${l}` spread below and the
+ * per-locale child machinery advertises them again — for English only, unless
+ * `chapterSlices` in build() is widened too (the translated chapters are off by
+ * that second switch; see there). The machinery is kept intact
  * on purpose — `sectionEntries` and `sectionLocale` still resolve a
  * `chapters-<locale>` section, and `build()` still fills `data.chapters`.
  *
@@ -820,7 +824,7 @@ async function build(): Promise<SitemapData> {
 		// are. English only, like the edition. Dated by the edition's own row.
 		modern: modernBooks.flatMap((b) =>
 			Array.from({ length: b.chapter_count }, (_, i) => ({
-				byLocale: new Map([['en', `/books/${b.slug}/modern/${i + 1}/`] as [string, string]]),
+				byLocale: new Map([['en', withTrailingSlash(modernChapterPath(b.slug, i + 1))] as [string, string]]),
 				lastmod: b.updated_at
 			}))
 		)

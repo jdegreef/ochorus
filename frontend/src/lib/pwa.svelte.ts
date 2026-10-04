@@ -1,7 +1,7 @@
 import { browser, dev } from '$app/environment';
 import { page } from '$app/stores';
 import { get } from 'svelte/store';
-import { READER_ROUTE_IDS } from './readerRoutes';
+import { isReaderRoute } from './readerRoutes';
 
 /**
  * Progressive-web-app lifecycle: registers the service worker, tracks whether
@@ -19,10 +19,6 @@ import { READER_ROUTE_IDS } from './readerRoutes';
  * they are.
  */
 
-// Reading surfaces, where a reload would cost the reader their place and cut
-// off text-to-speech mid-sentence. Route ids are de-localized by the reroute
-// hook, so these match in every language (/lg/books/x/1 included).
-const READER_ROUTES = new Set<string>(READER_ROUTE_IDS);
 
 // When this tab last auto-applied an update. Belt-and-braces: if a deploy ever
 // served two versions in turn, an unguarded auto-apply could reload in a loop,
@@ -118,8 +114,11 @@ class Pwa {
 		this.applyUpdate();
 	}
 
+	/** On a reading surface, where a reload would cost the reader their place
+	 *  and cut off text-to-speech mid-sentence. Route ids are de-localized by
+	 *  the reroute hook, so this matches in every language. */
 	#inReader(): boolean {
-		return READER_ROUTES.has(get(page).route.id ?? '');
+		return isReaderRoute(get(page).route.id);
 	}
 
 	/** Called after each client-side navigation: a page change is the natural

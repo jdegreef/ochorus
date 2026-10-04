@@ -17,3 +17,10 @@ export async function orNotFound<T>(fn: () => Promise<T>): Promise<T> {
 		throw e;
 	}
 }
+
+/** One prerender entry per chapter of each book — the `entries` of the chapter
+ *  routes (original and Modern English), which differ only in the books listed. */
+export const chapterEntries = (books: { slug: string; chapter_count: number }[]) =>
+	books.flatMap((b) =>
+		Array.from({ length: b.chapter_count }, (_, i) => ({ slug: b.slug, order: String(i + 1) }))
+	);

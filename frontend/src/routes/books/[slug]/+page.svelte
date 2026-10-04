@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { chapterPath, modernChapterPath } from '$lib/editionHref';
+	import { bookChapterPath, chapterPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -641,7 +641,7 @@
 						     readers (and the crawler) find its pages. -->
 						<a
 							href={localizeHref(
-								useModern ? `/books/${book.slug}/${readOrder}` : modernChapterPath(book.slug, readOrder)
+								bookChapterPath(book.slug, readOrder, !useModern)
 							)}
 							class="btn btn-ghost btn-sm"
 							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
