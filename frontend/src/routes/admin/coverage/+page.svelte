@@ -515,9 +515,13 @@
 	// Stop asks the run to finish the job in flight and file no more.
 	let bulkStopping = $state(false);
 	let bulkNote = $state<string | null>(null);
+	// Where the status bar shows: beside the control that staged the bulk (or
+	// filed the single job), so its confirmation is on screen where you clicked.
+	let bulkFrom = $state<'next' | 'matrix'>('matrix');
 	// Any queue POST in flight — disables every enqueue control so two runs can't
 	// overlap and trip the API's per-caller throttle.
 	const busy = $derived(queueing !== null || bulkProgress !== null);
+	const bulkShowing = $derived(!!(pendingBulk || bulkProgress || bulkNote || queueError));
 
 	async function loadJobs() {
 		try {
@@ -596,7 +600,8 @@
 	const queueNext = () =>
 		stageBulk(
 			`the ${nextGaps.length} most-wanted gap${nextGaps.length === 1 ? '' : 's'}`,
-			nextGaps.map(({ r, l }) => ({ slug: r.slug, lang: l.code }))
+			nextGaps.map(({ r, l }) => ({ slug: r.slug, lang: l.code })),
+			'next'
 		);
 
 	// --- Legend as a lens: each state's count over the works on screen, and the
@@ -649,8 +654,10 @@
 		}
 	}
 
-	async function queue(slug: string, lang: string) {
+	async function queue(slug: string, lang: string, from: 'next' | 'matrix' = 'matrix') {
 		queueError = null;
+		bulkNote = null;
+		bulkFrom = from;
 		queueing = jobKey(slug, lang);
 		const err = await enqueueOne(jobType, slug, lang);
 		if (err) queueError = err === 'failed' ? "Couldn't queue the translation — try again." : err;
@@ -660,8 +667,10 @@
 	// Stage a bulk enqueue for confirmation — a row (a work into all its missing
 	// languages), a column (all missing works into a language), a selection or
 	// the "Translate next" list. No-op when there's nothing to queue.
-	function stageBulk(label: string, targets: { slug: string; lang: string }[]) {
-		if (targets.length) pendingBulk = { label, type: jobType, targets };
+	function stageBulk(label: string, targets: { slug: string; lang: string }[], from: 'next' | 'matrix' = 'matrix') {
+		if (!targets.length) return;
+		pendingBulk = { label, type: jobType, targets };
+		bulkFrom = from;
 	}
 	const bulkRow = (r: AdminCoverageRow) =>
 		stageBulk(
@@ -770,6 +779,48 @@
 
 	<AdminGate resource={coverage} errorTitle="Couldn't load coverage">
 		{#snippet children(d)}
+			<!-- The bulk confirm / progress / error bar, rendered beside whichever control
+			     staged it — the "Translate next" panel sits far above the matrix, and a
+			     confirmation below the fold reads as a button that does nothing. -->
+			{#snippet bulkStatus()}
+				{#if pendingBulk}
+					<div class="mb-3 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-2.5 text-small text-accent" role="alertdialog">
+						<span>
+							Queue {pendingBulk.targets.length} translation{pendingBulk.targets.length === 1 ? '' : 's'}
+							— {pendingBulk.label}? Each files a job a worker processes one at a time.
+						</span>
+						<span class="ml-auto flex gap-2">
+							<button class="btn btn-sm btn-primary" onclick={runBulk}>Queue all</button>
+							<button class="btn btn-sm btn-ghost" onclick={() => (pendingBulk = null)}>Cancel</button>
+						</span>
+					</div>
+				{:else if bulkProgress}
+					<div class="mb-3 flex items-center gap-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
+						<span class="shrink-0 tabular-nums">
+							{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
+						</span>
+						<div class="flex-1">
+							<ProgressBar
+								percent={(bulkProgress.done / bulkProgress.total) * 100}
+								label="Queueing translations"
+								size="md"
+							/>
+						</div>
+						<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
+					</div>
+				{:else if bulkNote}
+					<div class="mb-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
+						{bulkNote}
+					</div>
+				{/if}
+
+				{#if queueError}
+					<div class="mb-3 rounded-card border border-warning/40 bg-warning/5 px-4 py-2 text-small text-warning" role="alert">
+						{queueError}
+					</div>
+				{/if}
+			{/snippet}
+
 			<!-- Tabs -->
 			<div class="mb-4 flex flex-wrap items-center gap-2">
 				{#each TABS as t (t.key)}
@@ -880,11 +931,12 @@
 									type="button"
 									class="shrink-0 font-semibold text-accent hover:underline disabled:opacity-40 disabled:no-underline"
 									disabled={busy}
-									onclick={() => queue(r.slug, l.code)}
+									onclick={() => queue(r.slug, l.code, 'next')}
 								>{queueing === jobKey(r.slug, l.code) ? '…' : 'Queue'}</button>
 							</li>
 						{/each}
 					</ol>
+					{#if bulkFrom === 'next' && bulkShowing}<div class="border-t border-border px-4 pt-3">{@render bulkStatus()}</div>{/if}
 				</section>
 			{/if}
 
@@ -1062,42 +1114,7 @@
 				</div>
 			{/if}
 
-			{#if pendingBulk}
-				<div class="mb-3 flex flex-wrap items-center gap-3 rounded-card border border-accent-soft-border bg-accent-soft px-4 py-2.5 text-small text-accent" role="alertdialog">
-					<span>
-						Queue {pendingBulk.targets.length} translation{pendingBulk.targets.length === 1 ? '' : 's'}
-						— {pendingBulk.label}? Each files a job a worker processes one at a time.
-					</span>
-					<span class="ml-auto flex gap-2">
-						<button class="btn btn-sm btn-primary" onclick={runBulk}>Queue all</button>
-						<button class="btn btn-sm btn-ghost" onclick={() => (pendingBulk = null)}>Cancel</button>
-					</span>
-				</div>
-			{:else if bulkProgress}
-				<div class="mb-3 flex items-center gap-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
-					<span class="shrink-0 tabular-nums">
-						{bulkStopping ? 'Stopping…' : 'Queueing…'} {bulkProgress.done}/{bulkProgress.total}
-					</span>
-					<div class="flex-1">
-						<ProgressBar
-							percent={(bulkProgress.done / bulkProgress.total) * 100}
-							label="Queueing translations"
-							size="md"
-						/>
-					</div>
-					<button class="btn btn-sm btn-ghost" disabled={bulkStopping} onclick={() => (bulkStopping = true)}>Stop</button>
-				</div>
-			{:else if bulkNote}
-				<div class="mb-3 rounded-card border border-border bg-surface-2 px-4 py-2 text-small text-muted" role="status">
-					{bulkNote}
-				</div>
-			{/if}
-
-			{#if queueError}
-				<div class="mb-3 rounded-card border border-warning/40 bg-warning/5 px-4 py-2 text-small text-warning" role="alert">
-					{queueError}
-				</div>
-			{/if}
+			{#if bulkFrom === 'matrix' || !(queueOn && nextGaps.length)}{@render bulkStatus()}{/if}
 
 			<!-- Bounded scroll box so the header sticks on vertical scroll too: a bare
 			     overflow-x container leaves `sticky top-0` nothing to stick within.
