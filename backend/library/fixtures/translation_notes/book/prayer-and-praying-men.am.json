@@ -1,0 +1,2377 @@
+{
+ "kind": "book",
+ "slug": "prayer-and-praying-men",
+ "language": "am",
+ "job_issue": 3758,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 13:52",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Matthew 14:25",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Matthew 25:6",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Joshua 10:12",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Joshua 10:13",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 28:12",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 28:16",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 28:20-22",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 31:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 32:24-28",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 32:26",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Genesis 33:4",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Samuel 1:15",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Samuel 1:12",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "1 Samuel 1:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 65:2",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:14",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:15",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:16",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:17",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:18",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 15:19",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:4-21",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:23-25",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:26",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:27",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:28-29",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Judges 16:30",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Jonah 1:2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 1:3-17",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 2:10",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 2:9",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Jonah 2:2",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 12:40",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 55:17",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Samuel 23:1",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 95:6",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 65:2",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Samuel 12:14-24",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Samuel 12:13",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 51:12",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:4-5",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:7",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:8",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:9",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:10",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:11",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:12",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:13",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Kings 3:7",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 3
+  },
+  {
+   "reference": "2 Chronicles 7:1",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 3
+  },
+  {
+   "reference": "James 2:23",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 12:1-8",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 17:3",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 4,
+   "source_file": "school-of-prayer.am.json"
+  },
+  {
+   "reference": "Romans 4:11",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 17:15-21",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 17:18",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 18:16-33",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 20:1-6",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 20:7",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 20:17-18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Job 42:8",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Job 42:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 19:27",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Genesis 32:28",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 5,
+   "source_file": "school-of-prayer.am.json"
+  },
+  {
+   "reference": "Exodus 34:29",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 5
+  },
+  {
+   "reference": "James 2:13",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 5
+  },
+  {
+   "reference": "1 Samuel 12:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 8:8",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 8:12-13",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 8:28",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 8:30-31",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 9:28",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 9:33",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Matthew 21:13",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 32:10",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 5
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 32:31",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 5,
+   "source_file": "broken-before-the-throne.am.json"
+  },
+  {
+   "reference": "Exodus 32:32",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 5,
+   "source_file": "broken-before-the-throne.am.json"
+  },
+  {
+   "reference": "Exodus 32:33",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 5,
+   "source_file": "broken-before-the-throne.am.json"
+  },
+  {
+   "reference": "Exodus 32:34",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 5,
+   "source_file": "broken-before-the-throne.am.json"
+  },
+  {
+   "reference": "Numbers 16:20",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 16:21",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 16:22",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:1-13",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:9-10",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:11",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:12",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:13",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 12:14",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 15:23",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 15:24",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Exodus 15:25",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 106:23",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 11:1",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Numbers 11:2",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 5
+  },
+  {
+   "reference": "2 Corinthians 12:7-9",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 90:12",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 90:17",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 5
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Kings 17:1",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:1",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "the-inner-chamber.am.json"
+  },
+  {
+   "reference": "Luke 1:19",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 5:16-17",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:2-9",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:17",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:18",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:19",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:20",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:21",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:22",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:23",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:24",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 6,
+   "source_file": "the-inner-chamber.am.json"
+  },
+  {
+   "reference": "Luke 4:25-26",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 17:24",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 6,
+   "source_file": "the-inner-chamber.am.json"
+  },
+  {
+   "reference": "1 Kings 18:19-35",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:36",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:37",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:38",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:39",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:1",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:41",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:42",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:43",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:44",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:45",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:46",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 5:17-18",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Kings 18:44",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Kings 2:11-12",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 5:17",
+   "status": "self_rendered",
+   "block_index": 40,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Revelation 4:4",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 18:3",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 30:17",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 30:18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 30:19",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 30:20",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 32:7",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Chronicles 32:8",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 19:1",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 19:14",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 19:15",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 19:19",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 19:35",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:1",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:2",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:3",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 7
+  },
+  {
+   "reference": "John 17:4",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 62:6",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 26:1",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 7,
+   "source_file": "waiting-on-god.am.json"
+  },
+  {
+   "reference": "2 Kings 20:4",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:5",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:6",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:5",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:7",
+   "status": "self_rendered",
+   "block_index": 39,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:8",
+   "status": "self_rendered",
+   "block_index": 41,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:9",
+   "status": "self_rendered",
+   "block_index": 42,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:10",
+   "status": "self_rendered",
+   "block_index": 43,
+   "chapter_order": 7
+  },
+  {
+   "reference": "2 Kings 20:11",
+   "status": "self_rendered",
+   "block_index": 44,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Isaiah 38:9-20",
+   "status": "self_rendered",
+   "block_index": 45,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 4:12",
+   "status": "mined",
+   "block_index": 48,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 64:7",
+   "status": "self_rendered",
+   "block_index": 50,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ezra 9:1-2",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Deuteronomy 7:3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 42:19",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezra 9:3",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezra 10:1",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezra 10:2",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezra 10:3",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Ezra 10:4",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Nehemiah 1:1-3",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 1:4",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "prayer-the-pulse-of-life.am.json"
+  },
+  {
+   "reference": "Nehemiah 1:5-11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 1:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 2:1-8",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 2:4",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 4:1-3",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 4:4",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 4:9",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 6:9",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 6:10-13",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 6:14",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:10-13",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:14",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Luke 18:10-12",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:15-21",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:22",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:23-25",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:29",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:30-31",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Nehemiah 13:31",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Samuel 3:8-10",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:1-3",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:10",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:15-17",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 7:17",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 8:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Samuel 8:7",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Daniel 6:7",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 6:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "rooted-4.am.json"
+  },
+  {
+   "reference": "Daniel 6:22",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 1:8",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:1-13",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:14-18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:19",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 2:46-49",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:1-14",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:15",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 8:16",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:2",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:3-4",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 9:21-22",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 10:2-3",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 10:10",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 10:11",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 10:12",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Daniel 10:13",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Psalm 27:14",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 11,
+   "source_file": "waiting-on-god.am.json"
+  },
+  {
+   "reference": "1 Corinthians 3:12",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Isaiah 61:3",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Numbers 21:4",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Numbers 21:5",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Numbers 21:6",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Numbers 21:7",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 13:1-2",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 13:3",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 13:4",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 13:4-5",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 13:6",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 14:1-11",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Kings 14:12",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 41:1-18",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 42:2-3",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 21:2",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Jeremiah 21:3-10",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 12
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 13,
+   "source_file": "prayer-the-pulse-of-life.am.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Thessalonians 5:17-18",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Colossians 4:2",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 13,
+   "source_file": "prayer-the-pulse-of-life.am.json"
+  },
+  {
+   "reference": "1 Timothy 2:2",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 13,
+   "source_file": "prayer-the-pulse-of-life.am.json"
+  },
+  {
+   "reference": "1 Timothy 2:3",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 2:4",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 13,
+   "source_file": "prayer-the-pulse-of-life.am.json"
+  },
+  {
+   "reference": "1 Timothy 2:5",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 2:6",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Timothy 2:8",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 5:5-6",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 13
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 3:14",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 3:19",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "block_index": 33,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:15",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:17",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:16",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:19",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:20",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 4:2-4",
+   "status": "mined",
+   "block_index": 43,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 7:46",
+   "status": "self_rendered",
+   "block_index": 44,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Hebrews 5:7",
+   "status": "mined",
+   "block_index": 44,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 9:11-12",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 9:9",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:16-18",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:25",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Timothy 4:5",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Romans 1:9",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 14,
+   "source_file": "ministry-of-intercession.am.json"
+  },
+  {
+   "reference": "Acts 16:25-26",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "2 Timothy 2:9",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 5:41",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 1:2",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 20:36-37",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 20:36",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 13:1",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 13:3",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 14:22",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 14:23",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:9-10",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:13",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:16-34",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Acts 16:25",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:26",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:27",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:28",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 20:6-12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 20:9-12",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 27:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 27:21-25",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 28:1-6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 28:8-9",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 20:36",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 21:3-4",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 21:5",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 21:5",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 9:9-17",
+   "status": "self_rendered",
+   "block_index": 12,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:16",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 9:11",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:17",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:18",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:19",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:20",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Acts 22:21",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 1:9",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 12:12",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 1:2",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 1:3",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 3:11",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 3:12-13",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 1:9",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Colossians 1:3",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Philippians 1:4",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 15,
+   "source_file": "ministry-of-intercession.am.json"
+  },
+  {
+   "reference": "Colossians 1:9",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 15
+  },
+  {
+   "reference": "2 Thessalonians 1:11",
+   "status": "mined",
+   "block_index": 36,
+   "chapter_order": 15,
+   "source_file": "ministry-of-intercession.am.json"
+  },
+  {
+   "reference": "Ephesians 1:16",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 15
+  },
+  {
+   "reference": "2 Timothy 1:3",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 3:10",
+   "status": "mined",
+   "block_index": 37,
+   "chapter_order": 15,
+   "source_file": "ministry-of-intercession.am.json"
+  },
+  {
+   "reference": "Romans 1:10",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Romans 1:11",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 13:18-19",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 16,
+   "source_file": "school-of-prayer.am.json"
+  },
+  {
+   "reference": "2 Corinthians 11:26",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Philippians 1:19",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:20",
+   "status": "mined",
+   "block_index": 11,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 15:31-32",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Romans 15:30-32",
+   "status": "self_rendered",
+   "block_index": 17,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "self_rendered",
+   "block_index": 18,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Romans 15:30",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 16
+  },
+  {
+   "reference": "1 Corinthians 13:11",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 6:19",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 6:20",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 4:15",
+   "status": "self_rendered",
+   "block_index": 11,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Corinthians 1:10-11",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Philippians 1:18",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 1:19",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Colossians 4:3",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 4:4",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 4:3-4",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Philippians 1:19",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Corinthians 1:11",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 17,
+   "source_file": "power-through-prayer.am.json"
+  },
+  {
+   "reference": "2 Thessalonians 3:2",
+   "status": "mined",
+   "block_index": 26,
+   "chapter_order": 17,
+   "source_file": "power-through-prayer.am.json"
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Philippians 2:12",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Thessalonians 3:1",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 17
+  },
+  {
+   "reference": "2 Thessalonians 3:2",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 17,
+   "source_file": "power-through-prayer.am.json"
+  },
+  {
+   "reference": "Hebrews 13:18",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 13:18",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Hebrews 13:19",
+   "status": "self_rendered",
+   "block_index": 37,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Philemon 1:22",
+   "status": "mined",
+   "block_index": 38,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  }
+ ]
+}

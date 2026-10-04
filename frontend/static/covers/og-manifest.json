@@ -286,6 +286,16 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/all-of-grace": {
+			"ground": "ec39b51a2f1a809ace85ede328399c971d1501015f5da0beb73fc5876978ed32",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"am/amanda-smith-autobiography-children": {
 			"ground": "c939c7980985ee774d953fd7da54804d312bb55c9b207931f1fd891149fb6339",
 			"style": "revival",
@@ -589,6 +599,16 @@
 				292,
 				503
 			]
+		},
+		"am/enchiridion": {
+			"ground": "7ae31c07e8978531c12b9ac476cb427ea9e6130d45630eb4f804ffe1db80367d",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
 		},
 		"am/epistles-of-ignatius": {
 			"ground": "a109f788e357e05024a25f4b2371668835d880bdc77b41509c227757bc708636",
@@ -1182,6 +1202,16 @@
 			"layout": "split/mauve",
 			"bar": 0
 		},
+		"am/possibilities-of-prayer": {
+			"ground": "a04e8cd424325a99f65f6f542fac93f7d63c05a7b2f878dd171153fc9d83b1c3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"am/power-through-prayer": {
 			"ground": "e2ce0c651e95dc003f3162998edab3fd8ae27cc8f3a439f223fc2acdc5a1589b",
 			"style": "devotional",
@@ -1191,6 +1221,16 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.04
+		},
+		"am/prayer-and-praying-men": {
+			"ground": "19e6b8688fd7d983fe462852e5d68721f92a02fc623a3196655135086d0330f3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
 		},
 		"am/prayer-the-pulse-of-life": {
 			"ground": "2a1409b1f11373ce3d3418f8d47947f72edc2532a5411043298aa0e57ca55abe",
@@ -1252,6 +1292,26 @@
 				308,
 				487
 			]
+		},
+		"am/purpose-in-prayer": {
+			"ground": "cc5dcca15ca2f2d94e4903c537dae7f0fd283c6fd8ac1ec18adba7624bb1927e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
+		"am/reality-of-prayer": {
+			"ground": "9d83d9b8465bb0094752a5ab8c32a3255f338f97f6f3474769a695e046b6a9c1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
 		},
 		"am/rise-up-men-of-god-2": {
 			"ground": "e5b5c0da278c85832af62be30abb97f0adf85b326613637c025247d025d74093",
@@ -1525,8 +1585,46 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"am/the-bruised-reed": {
+			"ground": "cfb6bb36379a9615b164376ba1a7c3202c43a64c597bf2f60056913b2e0483d8",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[96, 337, 505, 410]
+				],
+				"subtitle": [
+					[204, 463, 396, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"am/the-fourfold-gospel": {
 			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
+		"am/the-gospel-of-healing": {
+			"ground": "49e5ac0bf37060291f4b17ae81dd50c95966edc75c4bcbd2c48157b6444e285c",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
