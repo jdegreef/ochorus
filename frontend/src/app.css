@@ -2005,6 +2005,31 @@ nav.appnav .navsearch:hover {
 	min-height: 5.75rem;
 	padding: 1rem 1.1rem 0.9rem;
 }
+/* ── Duotone portraits ─────────────────────────────────────────────────────
+   A face printed in one ink: the photograph's light and shade, the colour of
+   the section it stands in. Most sources are already monochrome plates and
+   engravings, so a plain grey photo sat on a coloured card like a cutting
+   pasted in; in the card's own hue it belongs to it. The colour blend keeps
+   the image's luminance and takes hue and saturation from --duotone-hue, so
+   the face stays exactly as legible as the grey one. Decorative only — every
+   caller names the person in text — so nothing here is measured for
+   contrast. `isolation` keeps the blend inside the frame. */
+.duotone {
+	position: relative;
+	isolation: isolate;
+}
+.duotone img {
+	filter: grayscale(1) contrast(1.08);
+}
+.duotone::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: var(--duotone-hue, var(--section-hue, var(--accent)));
+	mix-blend-mode: color;
+	pointer-events: none;
+}
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
    one recipe for every surface (shelf cards, sermon rows and cards, topic

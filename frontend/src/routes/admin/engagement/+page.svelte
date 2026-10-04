@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
+	import { replaceState } from '$app/navigation';
 	import { adminResource } from '$lib/adminResource.svelte';
 	import AdminGate from '$lib/components/AdminGate.svelte';
 	import { workPath } from '$lib/editionHref';
+	import { relativeTime } from '$lib/relativeTime';
 	import FunnelBars from '$lib/components/FunnelBars.svelte';
 	import TrendChip from '$lib/components/TrendChip.svelte';
 	import ColumnChart from '$lib/components/ColumnChart.svelte';
@@ -9,13 +12,52 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import SectionBar from '$lib/components/SectionBar.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, DEEP_SITTING_SECONDS, EVENT_KINDS, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminEditionHref, DEEP_SITTING_SECONDS, DEFAULT_ENGAGEMENT_RANGE, ENGAGEMENT_RANGES, EVENT_KINDS, isEngagementRange, type EngagementRange, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type PeriodFigure, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
 	import { busiestCell, hourLabel, sendTime, WEEKDAYS } from '$lib/engagementHours';
 
-	const engagement = adminResource(getAdminEngagement, 'Something went wrong loading engagement.');
+	// The date range and the compare switch live in the URL (?range=90d,
+	// &compare=0), so a link opens the same view. The default stays out of it.
+	const query = browser ? new URLSearchParams(location.search) : new URLSearchParams();
+	let range = $state<EngagementRange>(isEngagementRange(query.get('range')) ? (query.get('range') as EngagementRange) : DEFAULT_ENGAGEMENT_RANGE);
+	let compare = $state(query.get('compare') !== '0');
+	function syncUrl() {
+		const p = new URLSearchParams(location.search);
+		if (range === DEFAULT_ENGAGEMENT_RANGE) p.delete('range');
+		else p.set('range', range);
+		if (compare) p.delete('compare');
+		else p.set('compare', '0');
+		const qs = p.toString();
+		try {
+			replaceState(`${location.pathname}${qs ? `?${qs}` : ''}${location.hash}`, {});
+		} catch {
+			// Router not ready yet; the next change writes it.
+		}
+	}
+
+	// When the numbers were loaded, said as "Updated 2 min ago" and kept current.
+	let loadedAt = $state(0);
+	let clock = $state(Date.now());
+	$effect(() => {
+		const t = setInterval(() => (clock = Date.now()), 30_000);
+		return () => clearInterval(t);
+	});
+	const updated = $derived(loadedAt ? relativeTime(loadedAt, 'en', 'just now', clock) : '');
+
+	const engagement = adminResource(
+		() => getAdminEngagement(range),
+		'Something went wrong loading engagement.',
+		() => range,
+		() => (loadedAt = clock = Date.now())
+	);
 	const data = $derived(engagement.data);
+	// The figures' range is the one the LOADED data answers, not the button
+	// just pressed: until the new numbers land, the old labels stay with them.
+	const shownRange = $derived<EngagementRange>(data?.period?.range ?? range);
+	const rangeWords = $derived(ENGAGEMENT_RANGES[shownRange]);
+	// Short enough for a tile label beside its chip: "Active · 30d".
+	const rangeTag = $derived(shownRange === 'all' ? 'all time' : shownRange);
 
 	const nf = new Intl.NumberFormat('en');
 	const fmt = (n: number | null | undefined) => nf.format(n ?? 0);
@@ -51,6 +93,10 @@
 	/** What a running total gained this calendar week (the line's last step). */
 	const gained = (total: number[] | undefined) => (total && total.length > 1 ? total[total.length - 1] - total[total.length - 2] : 0);
 
+	/** A range figure against the period before it: no chip with the compare
+	 *  switch off, or for all time (nothing comes before it). */
+	const versus = (f: PeriodFigure | undefined): Trend => (compare && f && f.prev != null ? periodTrend(f.value, f.prev) : null);
+
 	// Reading pulse — the headline figures, each with a plain-English sub, a
 	// week-over-week trend chip where there's a prior window to divide by, and
 	// its line. Readers sits beside Registered users so the accounts that never
@@ -59,31 +105,37 @@
 		data
 			? [
 					{
-						label: 'Active · 7d',
-						value: data.overview.active_7d,
+						label: `Active · ${rangeTag}`,
+						value: data.period?.active.value ?? data.overview.active_30d,
 						sub: `${fmt(data.overview.active_1d)} today`,
-						trend: periodTrend(data.overview.active_7d, data.overview.active_7d_prev),
-						line: weekly(data.weekly_active.map((w) => w.readers), 'Readers active per week')
+						trend: versus(data.period?.active),
+						// At 30 days the six rolling 30-day windows end on this very
+						// number; at any other range the weekly line is the context.
+						line:
+							shownRange === '30d' && data.trends
+								? {
+										values: data.trends.active_30d.map((w) => w.readers),
+										labels: data.trends.active_30d.map((w) => `30 days to ${weekLabel(w.end)}`),
+										name: 'Readers per 30 days',
+										partial: false
+									}
+								: weekly(data.weekly_active.map((w) => w.readers), 'Readers active per week')
 					},
 					{
-						label: 'Active · 30d',
-						value: data.overview.active_30d,
-						sub: 'in the last month',
-						trend: periodTrend(data.overview.active_30d, data.overview.active_30d_prev),
-						line: data.trends ? {
-							values: data.trends.active_30d.map((w) => w.readers),
-							labels: data.trends.active_30d.map((w) => `30 days to ${weekLabel(w.end)}`),
-							name: 'Readers per 30 days',
-							partial: false
-						} : undefined
-					},
-					{
-						label: 'Hearts',
-						value: data.overview.hearts,
-						sub: `${fmt(data.overview.hearts_7d)} this week`,
-						trend: periodTrend(data.overview.hearts_7d, data.overview.hearts_7d_prev),
+						label: `Hearts · ${rangeTag}`,
+						value: data.period?.hearts.value ?? data.overview.hearts,
+						sub: shownRange === 'all' ? `${fmt(data.overview.hearts_7d)} this week` : `${fmt(data.overview.hearts)} all time`,
+						trend: versus(data.period?.hearts),
 						line: weekly(data.trends?.hearts, 'Hearts saved per week')
 					},
+					// At all time, sign-ups are simply the registered users beside it.
+					data.period &&
+						shownRange !== 'all' && {
+							label: `Sign-ups · ${rangeTag}`,
+							value: data.period.signups.value,
+							sub: 'new accounts',
+							trend: versus(data.period.signups)
+						},
 					{
 						label: 'Readers',
 						value: data.overview.readers,
@@ -99,7 +151,7 @@
 						line: weekly(data.trends?.users, 'Registered users, running total')
 					},
 					{ label: 'Marked chapters', value: data.overview.marked_chapters, sub: `${fmt(data.overview.readers_with_marks)} readers`, trend: null }
-				]
+				].filter((c) => !!c)
 			: []
 	);
 
@@ -213,7 +265,7 @@
 			? [
 					summary && { id: 'this-week', label: 'This week' },
 					{ id: 'pulse', label: 'Pulse' },
-					data.time.sessions && { id: 'reading-time', label: 'Reading time' },
+					data.time.has_sittings && { id: 'reading-time', label: 'Reading time' },
 					hoursShown && { id: 'hours', label: 'When people read' },
 					{ id: 'weekly', label: 'Weekly readers' },
 					cohortSpan && { id: 'cohorts', label: 'Do readers stay?' },
@@ -254,9 +306,33 @@
 			</span>
 		</div>
 		{#if data}
-			<button class="btn btn-ghost btn-sm" onclick={engagement.load} disabled={engagement.loading}
-				>{engagement.loading ? 'Refreshing…' : 'Refresh'}</button
-			>
+			<div class="flex flex-col items-end gap-2">
+				<div class="flex flex-wrap items-center justify-end gap-3">
+					<div class="seg" role="group" aria-label="Date range">
+						{#each Object.keys(ENGAGEMENT_RANGES) as EngagementRange[] as r (r)}
+							<button
+								aria-pressed={range === r}
+								class={range === r ? 'active' : ''}
+								onclick={() => {
+									range = r;
+									syncUrl();
+								}}>{r === 'all' ? 'All' : r}</button
+							>
+						{/each}
+					</div>
+					<span class="text-small text-muted" aria-live="polite">{engagement.loading ? 'Loading…' : `Updated ${updated}`}</span>
+					<button class="btn btn-ghost btn-sm" onclick={engagement.load} disabled={engagement.loading}>Refresh</button>
+				</div>
+				<label class="flex items-center gap-2 text-small text-muted">
+					<input
+						type="checkbox"
+						bind:checked={compare}
+						disabled={range === 'all'}
+						onchange={syncUrl}
+					/>
+					{range === 'all' ? 'All time has no period before it' : `Compare with the ${ENGAGEMENT_RANGES[range]} before`}
+				</label>
+			</div>
 		{/if}
 	</header>
 
@@ -318,25 +394,28 @@
 				{/if}
 
 				<!-- Reading time (from sittings) -->
-				{#if d.time.sessions}
+				{#if d.time.has_sittings}
 					<section id="reading-time" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">Reading time</h2>
-							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time.</span>
+							<span class="text-small text-muted">Active reading — foreground, non-idle — not tab-open time · {shownRange === 'all' ? 'all time' : `last ${rangeWords}`}.</span>
 						</div>
 						<div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
 							{#each [
-								{ label: 'Total time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings · ${fmt(d.time.readers)} readers`, line: undefined },
-								{ label: 'Typical sitting', text: formatDuration(d.time.median_session_seconds, { precise: true }), sub: `median · average ${formatDuration(d.time.avg_session_seconds, { precise: true })}`, line: undefined },
-								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
-								{ label: 'Last 30 days', text: formatDuration(d.time.seconds_30d), sub: `${fmt(d.time.readers_30d)} readers`, line: undefined }
+								{ label: 'Reading time', text: formatDuration(d.time.total_seconds), sub: `${fmt(d.time.sessions)} sittings`, trend: versus(d.period?.seconds), line: weekly(d.trends?.reading_seconds, 'Reading time per week') },
+								{ label: 'Typical sitting', text: formatDuration(d.time.median_session_seconds, { precise: true }), sub: `median · average ${formatDuration(d.time.avg_session_seconds, { precise: true })}`, trend: null, line: undefined },
+								{ label: 'Readers', text: fmt(d.time.readers), sub: 'with any reading time', trend: null, line: undefined },
+								{ label: 'Last 7 days', text: formatDuration(d.time.seconds_7d), sub: `${fmt(d.time.readers_7d)} readers`, trend: null, line: undefined }
 							] as c (c.label)}
 								<div class="rounded-card bg-surface-2 p-4">
 									<div class="flex items-start justify-between gap-2">
 										<div class="stat-number">{c.text}</div>
 										{#if c.line}<Sparkline {...c.line} format={formatDuration} />{/if}
 									</div>
-									<div class="mt-2 text-small font-semibold text-text">{c.label}</div>
+									<div class="mt-2 flex items-center gap-2">
+										<span class="whitespace-nowrap text-small font-semibold text-text">{c.label}</span>
+										<TrendChip trend={c.trend} />
+									</div>
 									<div class="text-small text-muted">{c.sub}</div>
 								</div>
 							{/each}
@@ -384,7 +463,7 @@
 					<section id="hours" class="anchor mt-8 rounded-card border border-border bg-surface p-5">
 						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
 							<h2 class="text-h3">When people read</h2>
-							<span class="text-small text-muted">Minutes read by weekday and hour, in each reader's own time zone · {fmt(hours.readers)} readers · last {hours.days} days.</span>
+							<span class="text-small text-muted">Minutes read by weekday and hour, in each reader's own time zone · {fmt(hours.readers)} readers · {hours.days ? `last ${hours.days} days` : 'all time'}.</span>
 						</div>
 						{#if hoursPeak && hoursSend}
 							<div class="mb-4 flex flex-wrap gap-6">
