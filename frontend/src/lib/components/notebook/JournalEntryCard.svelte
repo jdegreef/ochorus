@@ -459,6 +459,7 @@
 		font-weight: 800;
 		letter-spacing: 0.14em;
 		text-transform: uppercase;
+		/* tilt-ok: an ink stamp, not a cover */
 		transform: rotate(-6deg);
 		opacity: 0.9;
 	}

@@ -224,6 +224,7 @@
 	.page-card {
 		width: 88%;
 		padding-bottom: 1.75rem;
+		/* tilt-ok: a page of notes in the illustration, not a cover */
 		transform: rotate(-1.2deg);
 	}
 	.passage {
@@ -247,6 +248,7 @@
 		align-self: flex-end;
 		width: min(15rem, 62%);
 		margin-top: -1.35rem;
+		/* tilt-ok: a sticky note in the illustration, not a cover */
 		transform: rotate(1.5deg);
 		border-color: var(--accent-soft-border);
 		background: var(--accent-soft);
