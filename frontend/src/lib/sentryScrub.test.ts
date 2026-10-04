@@ -45,7 +45,21 @@ describe('scrubEvent / scrubBreadcrumb', () => {
 	it('scrubs the page URL and every breadcrumb URL, and drops the copied query', () => {
 		const event = scrubEvent({
 			request: { url: 'https://ochorus.com/search/?q=secret#access_token=t', query_string: 'q=secret' },
-			exception: { values: [{ value: 'Bad response from /api/library/search/?q=secret' }] },
+			exception: {
+				values: [
+					{
+						value: 'Bad response from /api/library/search/?q=secret',
+						stacktrace: {
+							frames: [
+								{
+									filename: 'https://ochorus.com/auth/callback/#access_token=t',
+									abs_path: 'https://ochorus.com/search/?q=secret'
+								}
+							]
+						}
+					}
+				]
+			},
 			breadcrumbs: [
 				{ data: { from: '/auth/callback/#access_token=t', to: '/search/?q=secret' } },
 				{ data: { url: 'https://api.ochorus.com/api/library/search/?q=secret', status_code: 200 } },
@@ -67,6 +81,11 @@ describe('scrubEvent / scrubBreadcrumb', () => {
 		expect(crumb.message).toContain('language=am');
 		expect(crumb.message).toContain('— retrying in 700ms');
 		expect(crumb.data?.arguments).toEqual([crumb.message, 42]);
+	});
+
+	it('keeps the punctuation that closes a URL in prose', () => {
+		const crumb = scrubBreadcrumb({ message: 'failed (https://api.ochorus.com/x/?q=secret).' });
+		expect(crumb.message).toBe(`failed (https://api.ochorus.com/x/?q=${encodeURIComponent(REDACTED)}).`);
 	});
 
 	it('leaves a breadcrumb without data alone', () => {

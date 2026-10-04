@@ -52,7 +52,7 @@ const absoluteAssetUrls = (): Plugin => ({
 	}
 });
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
 	plugins: [
 		tailwindcss(),
 		// Compiles messages/*.json into $lib/paraglide and provides the URL-locale
@@ -70,7 +70,9 @@ export default defineConfig({
 		// Source maps only for a build that will upload them to Sentry, and
 		// 'hidden' (no `//# sourceMappingURL`), so a browser never asks for one.
 		// scripts/sentry-sourcemaps.mjs uploads them and deletes them from build/.
-		sourcemap: process.env.SENTRY_AUTH_TOKEN ? 'hidden' : false
+		// Client build only: the server/prerender build never ships, and its maps
+		// would only add time to a deploy.
+		sourcemap: process.env.SENTRY_AUTH_TOKEN && !isSsrBuild ? 'hidden' : false
 	},
 	define: {
 		/**
@@ -88,4 +90,4 @@ export default defineConfig({
 		 */
 		__RELEASE__: JSON.stringify(process.env.RENDER_GIT_COMMIT ?? '')
 	}
-});
+}));

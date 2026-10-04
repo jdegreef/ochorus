@@ -52,7 +52,9 @@ async function upload() {
 		},
 		{ buildTool: 'sveltekit-static', loggerPrefix: '[sentry-sourcemaps]' }
 	);
-	await manager.createRelease();
+	// A release needs a name; without RENDER_GIT_COMMIT (a manual build) the
+	// debug-ID upload below still works, and creating one would only fail.
+	if (RENDER_GIT_COMMIT) await manager.createRelease();
 	await manager.injectDebugIds([ASSETS]);
 	await manager.uploadSourcemaps([ASSETS]);
 }

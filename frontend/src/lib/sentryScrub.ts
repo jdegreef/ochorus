@@ -49,8 +49,9 @@ export function scrubUrl(url: string): string {
 		: out;
 }
 
-/** Absolute URLs and API paths inside free text, such as a console line. */
-const URL_IN_TEXT = /https?:\/\/[^\s"'`<>]+|\/api\/[^\s"'`<>]+/g;
+/** Absolute URLs and API paths inside free text, such as a console line. The
+ * last character may not be closing punctuation, so `(…?q=a).` keeps its `).`. */
+const URL_IN_TEXT = /(?:https?:\/\/|\/api\/)[^\s"'`<>]*[^\s"'`<>.,;:)\]]/g;
 
 /** `text` with every URL in it scrubbed. The API's retry warning logs the
  * request URL (`[api] … from …/search/?q=… — retrying`), and Sentry keeps
@@ -61,7 +62,12 @@ export const scrubText = (text: string) => text.replace(URL_IN_TEXT, scrubUrl);
  * structurally so the module needs no Sentry import (the SDK loads lazily). */
 interface ScrubbableEvent {
 	request?: { url?: string; query_string?: unknown };
-	exception?: { values?: { value?: string }[] };
+	exception?: {
+		values?: {
+			value?: string;
+			stacktrace?: { frames?: { filename?: string; abs_path?: string }[] };
+		}[];
+	};
 	breadcrumbs?: ScrubbableBreadcrumb[];
 }
 interface ScrubbableBreadcrumb {
@@ -90,9 +96,14 @@ export function scrubEvent<E extends ScrubbableEvent>(event: E): E {
 	if (event.request?.url) event.request.url = scrubUrl(event.request.url);
 	// The SDK also copies the query out on its own; the scrubbed URL carries it.
 	if (event.request) delete event.request.query_string;
-	// An error's message can quote a URL as well.
+	// An error's message can quote a URL as well, and a frame from an inline
+	// script on the page names the PAGE as its file, hash and query included.
 	for (const ex of event.exception?.values ?? []) {
 		if (ex.value) ex.value = scrubText(ex.value);
+		for (const frame of ex.stacktrace?.frames ?? []) {
+			if (frame.filename) frame.filename = scrubUrl(frame.filename);
+			if (frame.abs_path) frame.abs_path = scrubUrl(frame.abs_path);
+		}
 	}
 	event.breadcrumbs?.forEach(scrubBreadcrumb);
 	return event;
