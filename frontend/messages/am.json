@@ -1310,5 +1310,13 @@
   "plans_no_results": "ከእነዚህ ማጣሪያዎች ጋር የሚስማማ ዕቅድ የለም።",
   "series_no_results": "ከእነዚህ ማጣሪያዎች ጋር የሚስማማ የመጻሕፍት ተከታታይ የለም።",
   "plans_show_results": "ዕቅዶችን አሳይ (%n%)",
-  "authors_bios_link": "ከእነዚህ ስሞች በስተጀርባ ያሉ ሕይወቶች"
+  "authors_bios_link": "ከእነዚህ ስሞች በስተጀርባ ያሉ ሕይወቶች",
+  "finished_eyebrow": "መጽሐፉ ተጠናቋል",
+  "finished_stats": "%c% ምዕራፎች · %w% ቃላት",
+  "finished_reflect_heading": "የምትይዘው",
+  "finished_reflect_prompt": "ከዚህ መጽሐፍ ምን ይዘህ ትሄዳለህ?",
+  "finished_highlights": "ያደመቅሃቸው (%n%)",
+  "finished_more_by": "ተጨማሪ ከ%name%",
+  "finished_about_author": "ስለ ደራሲው",
+  "finished_plans": "ይህን መጽሐፍ የያዙ የንባብ ዕቅዶች"
 }

@@ -1310,5 +1310,13 @@
   "plans_no_results": "No plans match these filters.",
   "series_no_results": "No book series match these filters.",
   "plans_show_results": "Show plans (%n%)",
-  "authors_bios_link": "The lives behind these names"
+  "authors_bios_link": "The lives behind these names",
+  "finished_eyebrow": "Book finished",
+  "finished_stats": "%c% chapters · %w% words",
+  "finished_reflect_heading": "What you carry away",
+  "finished_reflect_prompt": "What will you carry with you from this book?",
+  "finished_highlights": "Your highlights (%n%)",
+  "finished_more_by": "More by %name%",
+  "finished_about_author": "About the author",
+  "finished_plans": "Reading plans with this book"
 }

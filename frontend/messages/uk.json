@@ -1310,5 +1310,13 @@
   "plans_no_results": "Немає планів за цими фільтрами.",
   "series_no_results": "Немає книжкових серій за цими фільтрами.",
   "plans_show_results": "Показати плани (%n%)",
-  "authors_bios_link": "Життя за цими іменами"
+  "authors_bios_link": "Життя за цими іменами",
+  "finished_eyebrow": "Книгу прочитано",
+  "finished_stats": "%c% розділів · %w% слів",
+  "finished_reflect_heading": "Що ви з собою візьмете",
+  "finished_reflect_prompt": "Що ви візьмете з собою з цієї книги?",
+  "finished_highlights": "Ваші виділення (%n%)",
+  "finished_more_by": "Більше від %name%",
+  "finished_about_author": "Про автора",
+  "finished_plans": "Плани читання з цією книгою"
 }
