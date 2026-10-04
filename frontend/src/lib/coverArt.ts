@@ -85,7 +85,12 @@ function shade(hex: string, factor: number): string {
  * to it through this same function rather than a second copy of the rule.
  */
 export function twinUrl(slug: string, language: string): string {
-	return language === 'en' ? `/covers/${slug}.png` : `/covers/${language}/${slug}.png`;
+	// An English edition — the Modern English one too (`en-modern`) — has the
+	// same words on its cover, so the same twin. The backend's
+	// `localization.is_english_edition` rule; inline because the cover scripts
+	// load this file under bare Node, which can't resolve a sibling import.
+	const english = language === 'en' || language.startsWith('en-');
+	return english ? `/covers/${slug}.png` : `/covers/${language}/${slug}.png`;
 }
 
 /** The og twin's pixel size. `generate-cover-og.mjs` draws every card at it

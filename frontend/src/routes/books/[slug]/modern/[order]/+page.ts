@@ -1,4 +1,4 @@
-import { error, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { building } from '$app/environment';
 import { ApiError } from '$lib/api';
 import { getChapterExact, listBooks, MODERN_EDITION } from '$lib/library-public';
@@ -27,10 +27,15 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 		return { chapter, slug: params.slug, language: MODERN_EDITION, edition: 'modern' as const };
 	} catch (e) {
 		if (!(e instanceof ApiError && e.status === 404)) throw e;
-		// No Modern English chapter here. At build time that is a page that does
-		// not exist; at runtime it is usually an old `?edition=modern` link to a
-		// work that has no modern edition — read the original instead.
-		if (building) error(404, 'Not found');
-		redirect(307, localizeHref(`${bookChapterPath(params.slug, order, false)}${url.search}`));
+		// No Modern English chapter here — an old `?edition=modern` link to a
+		// work with no modern edition, or a modern edition shorter than the
+		// original that the toggle still links. Read the original instead, at
+		// runtime and in the build alike: a 404 would fail the whole prerender.
+		// The edition flag is dropped, or the original route would send it
+		// straight back here.
+		const qs = new URLSearchParams(building ? '' : url.search);
+		qs.delete('edition');
+		const q = qs.toString();
+		redirect(307, localizeHref(`${bookChapterPath(params.slug, order, false)}${q ? `?${q}` : ''}`));
 	}
 };

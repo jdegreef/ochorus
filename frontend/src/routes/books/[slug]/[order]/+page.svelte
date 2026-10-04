@@ -2,13 +2,13 @@
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
 	import { readingSync } from '$lib/readingSync';
-	import { bookChapterPath, modernChapterPath, planDayPath } from '$lib/editionHref';
+	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 	import { getBook, getPlan, type BookDetail, type Chapter, type PlanDetail } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
 	import { reflectPrompt } from '$lib/journal';
@@ -63,7 +63,7 @@
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
-	import { baseEdition } from '$lib/reading-schema';
+	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -213,6 +213,14 @@
 	// match and won't surprise-play. A plain var, not $state: the page component
 	// is reused across chapter navigations, so it survives the goto.
 	let autoContinueOrder: number | null = null;
+
+	// Backstop for the load's `?edition=modern` redirect (+page.ts): if hydration
+	// ever reuses the prerendered standard-edition data instead of re-running the
+	// load with the live URL, re-run it once so the redirect fires.
+	onMount(() => {
+		const wantsModern = new URLSearchParams(location.search).get('edition') === 'modern';
+		if (wantsModern && edition !== 'modern') invalidateAll();
+	});
 
 	let tocOpen = $state(false);
 	let searchOpen = $state(false);
@@ -1635,6 +1643,14 @@
 	});
 </script>
 
+<!-- An unreviewed Modern English edition is AI-rewritten text no person has
+     approved: kept out of the index as well as the sitemap ($lib/sitemap) until
+     `approve_translation <slug> --language en-modern`. Never shown to readers. -->
+<svelte:head>
+	{#if edition === 'modern' && chapter.source_type !== 'ai_reviewed'}
+		<meta name="robots" content="noindex" />
+	{/if}
+</svelte:head>
 <Seo
 	title={titleTag}
 	description={metaText}

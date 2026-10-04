@@ -1,0 +1,302 @@
+{
+ "kind": "book",
+ "slug": "absolute-surrender",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "1 Kings 20:1-4",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Philippians 2:13",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Mark 9:23",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Hebrews 9:14",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Galatians 5:22",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 13:10",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 John 4:8",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 13:35",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 5:5",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 13:34",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Colossians 3:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 John 4:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Acts 13:1-4",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:12",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Galatians 3:3",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 22:61",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 22:62",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 13:36",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Matthew 19:27",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 5:4",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 5:5",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Matthew 14:28",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Matthew 16:22-23",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Mark 14:29",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 22:33",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 21:17",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Peter 4:14",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Peter 2:21",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Acts 5:29",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Peter 5:5",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Luke 18:27",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:1-25",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Philippians 2:1-30",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:24",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:25",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:17",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:22",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:6-25",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:14",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 7:23",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 8:13",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Romans 14:17",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 4:1",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 4:10",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Galatians 6:13",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "1 Peter 1:5",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "Isaiah 27:3",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 15:5",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "2 Corinthians 5:14",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  },
+  {
+   "reference": "John 15:8",
+   "status": "mined",
+   "source_file": "absolute-surrender.en.json"
+  }
+ ]
+}

@@ -31,8 +31,6 @@ export function editionHref(path: string, edition: string): string {
 		: localizeHref(withEdition);
 }
 
-export { bookChapterPath, modernChapterPath };
-
 const CHAPTER_PATH = /^\/books\/([^/?#]+)\/(\d+)\/?(?=[?#]|$)/;
 
 /**

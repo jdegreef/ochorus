@@ -19,7 +19,6 @@ import { isReaderRoute } from './readerRoutes';
  * they are.
  */
 
-
 // When this tab last auto-applied an update. Belt-and-braces: if a deploy ever
 // served two versions in turn, an unguarded auto-apply could reload in a loop,
 // so a second one hard on the heels of the first is left to the prompt instead.

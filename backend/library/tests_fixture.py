@@ -1155,14 +1155,19 @@ class CoverAssetTests(SimpleTestCase):
         # was appearing over a Swahili card; a cover with no words in it cannot
         # commit that mistake.
         # The Modern English edition is ENGLISH: its cover carries the same
-        # English words, so it wears the English file, not a translated one.
+        # English words, so it wears exactly its own work's English file.
+        english = {f["slug"]: _cover(f) for f in self.books if f["language"] == "en"}
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
-            if not is_english_edition(f["language"])
-            and _cover(f).startswith("/covers/")
-            and not _cover(f).startswith("/covers/art/")
-            and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
+            if f["language"] != "en"
+            and (
+                _cover(f) != english.get(f["slug"])
+                if is_english_edition(f["language"])
+                else _cover(f).startswith("/covers/")
+                and not _cover(f).startswith("/covers/art/")
+                and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
+            )
         )
         self.assertEqual(
             wrong, [],
@@ -1941,7 +1946,7 @@ class CoverAssetTests(SimpleTestCase):
             if slug not in CURATED_GROUND:
                 continue
             wants = (
-                DESIGNED_BY_SLUG[slug] if language == "en" else art_url(slug)[0]
+                DESIGNED_BY_SLUG[slug] if is_english_edition(language) else art_url(slug)[0]
             )
             if cover != wants:
                 wrong.append((slug, language, cover, wants))

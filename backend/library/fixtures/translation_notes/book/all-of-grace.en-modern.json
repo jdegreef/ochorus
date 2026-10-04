@@ -1,0 +1,67 @@
+{
+ "kind": "book",
+ "slug": "all-of-grace",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Micah 7:18",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Romans 3:21-26",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Ezekiel 11:19",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Mark 16:16",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Acts 5:30",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "source_file": "all-of-grace.en.json"
+  }
+ ]
+}

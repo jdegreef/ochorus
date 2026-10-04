@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { bookChapterPath, chapterPath } from '$lib/editionHref';
+	import { chapterPath } from '$lib/editionHref';
+	import { bookChapterPath } from '$lib/reading-schema';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';

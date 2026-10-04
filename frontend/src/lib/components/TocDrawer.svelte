@@ -11,7 +11,7 @@
 	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { bookChapterPath } from '$lib/editionHref';
+	import { bookChapterPath } from '$lib/reading-schema';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is
