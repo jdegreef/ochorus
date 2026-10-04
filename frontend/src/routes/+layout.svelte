@@ -464,7 +464,7 @@
 						     RSS — ride in Explore for them. -->
 						{#if lang.current !== 'en'}
 							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
-							<li><a href="/feed.xml">RSS</a></li>
+							<li><a href={localizeHref('/rss')}>RSS</a></li>
 						{/if}
 					</ul>
 				</nav>
@@ -485,7 +485,7 @@
 								<li><a href="{d.href}/">{t(d.labelKey)}</a></li>
 							{/each}
 							<li><a href={pageHref(ORIGINALS_DEST.href)}>{t(ORIGINALS_DEST.labelKey)}</a></li>
-							<li><a href="/feed.xml">RSS</a></li>
+							<li><a href={localizeHref('/rss')}>RSS</a></li>
 						</ul>
 					</nav>
 				{/if}

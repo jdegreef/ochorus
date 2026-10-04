@@ -132,7 +132,8 @@ const config = {
 					`/${l}/plans`,
 					`/${l}/topics`,
 					`/${l}/about`,
-					`/${l}/contact`
+					`/${l}/contact`,
+					`/${l}/rss`
 				])
 			],
 			// Routes that are prerenderable but legitimately unreached at build:
