@@ -1,0 +1,1271 @@
+---
+description: A concise, faithful guide to the heart of C. S. Lewis’s Christian teaching — the longing he called joy, the moral law and the case for faith, who Jesus is, pride and humility, temptation, pain and grief, prayer, the four loves, imagination as a road to truth, and the weight of glory — weighed honestly where evangelical readers part company with him. Fifteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion. Lewis’s own books are still in copyright; they are named here for readers to obtain from their publishers.
+about: |
+  This is a companion to C. S. Lewis, not a book by him. Written by Ochorus, it sets out in fifteen short chapters the teaching for which Lewis is chiefly remembered — the longing that points beyond this world, the moral law and what it tells us about the Lawgiver, the claims of Jesus Christ, the faith held in common by all Christians, pride and humility, the new life of the Christian, temptation and the reality of the enemy, the problem of pain and the honest face of grief, prayer, the four loves, myth and imagination, miracles, glory, and the final choice between heaven and hell. It adds a chapter on his life, a conclusion, and a guide to his books and to the older classics he loved.
+
+  It is important to be clear about what this book is and is not. It is an independent work of exposition, summary and appreciation. It is not published by, affiliated with, or endorsed by the C. S. Lewis estate or by any organisation that holds rights in his writings. Lewis’s own books are still in copyright, and none of his words are reproduced here: every description of his thought is the present author’s own summary, and his books are named only so that readers may obtain them from their publishers and read him for themselves, which they are warmly encouraged to do. The only words quoted are those of Scripture, from the Authorised (King James) Version.
+
+  Lewis was loved by evangelicals and was not quite one of them. This volume says so where it matters — on his openness to a purifying purgatory, on his hope that some who never knew Christ’s name might yet be saved by Him, on his view of how Scripture is inspired, and on his willingness to accept an evolutionary account of human origins — briefly, charitably and without hiding it. He would have wanted every claim tested, and he would have wanted readers to go past him to the One he served.
+
+  Many of the older writers who shaped him are in the Ochorus library and are named in the last chapter: Athanasius, Augustine, Bunyan, Thomas à Kempis, William Law and others.
+---
+
+# Introduction
+
+> But sanctify the Lord God in your hearts: and be ready always to give an answer to every man that asketh you a reason of the hope that is in you with meekness and fear. 1 PETER 3:15
+
+Few Christian writers of any century have been read by so many people who would never have opened a book of theology. C. S. Lewis was an Oxford tutor in English literature, a specialist in the poetry of the Middle Ages and the Renaissance, a bachelor for most of his life, and for half of it an unbeliever. He came back to faith in his early thirties, after years of resisting it, and spent the rest of his life explaining it — to wartime radio audiences, to airmen in draughty huts, to undergraduates in debating societies, to children through a wardrobe, and to thousands of strangers who wrote him letters and received a reply in his own hand. More than sixty years after his death his books sell in their millions, in dozens of languages. Many believers can name one of them as the book that first made the faith seem not only true but reasonable, and not only reasonable but beautiful.
+
+The reason is not that he invented anything. He insisted, to the point of tedium, that he had no new doctrines to offer and would have been ashamed of any. What he had was a gift for putting the old faith into plain words, a habit of thinking in pictures, a scholar’s knowledge of what Christians of every age had believed, and an honesty about difficulty that disarmed his readers. He wrote as a man who had stood outside the faith and remembered what it looked like from there. He took objections seriously because he had made most of them himself.
+
+## Why he still matters
+
+Lewis matters, first, because he showed that the mind and the heart need not be enemies. He was a trained logician who could take an argument apart with relish, and he was also a man who had been haunted since childhood by a longing that no argument could explain. He came to believe that both his reason and his longing had been pointing to the same God all along, and he spent his life writing to both. His apologetics argue; his stories enchant; and the two are not as far apart as they look.
+
+> Come now, and let us reason together, saith the Lord: though your sins be as scarlet, they shall be as white as snow. ISAIAH 1:18
+
+He matters, second, because he wrote for ordinary Christians about ordinary Christian life. Alongside the great questions of God’s existence and the claims of Christ, he wrote about pride and envy, about prayer when it is dull, about the difficulty of loving people we do not like, about temptation, marriage, grief and the long middle stretch of discipleship where nothing much seems to happen. He treated these things as the real battleground, which they are.
+
+He matters, third, because he refused to be a party man. He was a lifelong member of the Church of England, but he wrote for the faith that the churches hold in common, and he deliberately kept out of the quarrels that divide the churches. Readers of every tradition have found themselves at home in his pages. That is a large part of his appeal, and, as we shall see, it is also the source of some of the places where evangelical readers must weigh him carefully.
+
+## How this book is arranged
+
+After a chapter on his life, fifteen short chapters set out his teaching. The first group follows the road by which Lewis himself came to faith and by which he tried to lead others: the longing he called joy, the moral law written on the human heart, the question of who Jesus is, and the plain, shared faith he defended. The second group turns to the Christian life: pride and humility, the remaking of the believer into the likeness of Christ, and the reality of temptation and the enemy. The third group takes up the hardest things: pain, grief and prayer. The fourth turns to love and imagination: the four loves, myth and story, and the miracles that Lewis believed broke into nature from outside it. The last two chapters look towards eternity: the weight of glory that God intends for His children, and the final choice between heaven and hell. A conclusion follows, and a last chapter on his books, where to start with them, and the older writers he loved.
+
+Each chapter ends with points for reflection and a prayer. Lewis believed that the purpose of thinking about God is to meet Him, and that a man who reads theology and never prays has missed the point of the reading. Take the chapters slowly, one at a time, with a Bible open.
+
+## A word about his words
+
+Lewis’s books remain in copyright and in print, and his estate guards them carefully. This companion does not reproduce them. Not a sentence of his is quoted in these pages, not even the famous ones that appear on calendars and greeting cards. Every description of his teaching is a summary in our own words, and where his arguments are set out they are set out as we understand them, in our own phrasing. His books are named throughout so that the reader can go to the source, and the last chapter is a guide to them. Readers are warmly encouraged to buy them, borrow them and read them. Nothing here can replace the clarity, wit and warmth of the man himself.
+
+## Where he must be read with care
+
+This is not a book of hero-worship. Lewis was loved by evangelicals, and has been for three generations, but he never called himself one, and there are places where his convictions differ from those that most evangelical readers hold. It is kinder to name them at the start.
+
+First, he believed in a form of purgatory — not as a place of punishment that pays for sin, but as a purifying process after death which, he thought, the redeemed would themselves want. He also prayed for the dead. Chapter seventeen weighs this.
+
+Second, he held out the hope that some who had never consciously known Christ might yet be saved by Him, and he put that hope into one of his stories. He was clear that no one is saved except through Christ; he was less sure than most evangelicals that only those who know His name are saved by Him. Chapter seventeen weighs this too.
+
+Third, his view of the Bible was high but not that of the evangelical doctrine of inerrancy. He believed Scripture to be the Word of God, carrying God’s message through human writers, but he thought that some Old Testament narratives were not meant as literal history. Chapter fourteen considers it.
+
+Fourth, he accepted, as a scientific hypothesis, that the human body may have come about by a long process of development, and he offered a speculative account of the Fall that fitted it — while attacking, with real energy, the godless philosophy of inevitable progress that often travelled with the theory. Chapter ten considers it.
+
+Fifth, he was a sacramental, high-church Anglican in his habits of worship, who made a regular confession to a priest, and he deliberately declined to take sides on questions — such as the precise way in which the cross saves us — that evangelicals have regarded as central. Chapters five and six touch on this.
+
+None of these points is raised to diminish him. They are raised because he would have demanded it. He hated nothing more than a cult of personality, and he had no patience with readers who swallowed an author whole.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21
+
+Where Lewis is faithful — and he is faithful far more often than not — receive it gladly. Where he goes beyond what is written, mark it and test it by Scripture. He would not have wanted you to follow him. He would have wanted you to follow Christ.
+
+### FOR REFLECTION AND ACTION
+
+1. Ask yourself honestly whether your faith has ever been tested by hard questions, and whether you have been afraid to ask them. Write one down.
+2. Think of someone you know who finds Christianity implausible. Pray for that person by name as you read this book.
+3. Decide how you will read: one chapter a day or a week, with a Bible open and a few minutes of quiet after each prayer.
+4. Obtain one of Lewis’s own books — Mere Christianity is the natural place to begin — and read it alongside these chapters.
+5. Ask God to give you a mind that thinks clearly and a heart that is not afraid of the answers.
+
+### A PRAYER
+
+> Lord God, You are the truth, and You are not afraid of our questions.
+> Thank You for the servants You have given Your church, who have helped doubters and strengthened the weak by their words.
+> As I read about one of them, keep me from admiring him and forgetting You. Let every argument and every story lead me to Christ.
+> Give me a ready answer for the hope that is in me, and give me meekness and fear in giving it. Amen.
+
+# From Belfast to Magdalen
+
+> I was found of them that sought me not: I was made manifest unto them that asked not after me. ROMANS 10:20
+
+A house full of books. Clive Staples Lewis was born in Belfast on the twenty-ninth of November, 1898, the younger son of Albert Lewis, a police-court solicitor, and Flora Hamilton Lewis, a clergyman’s daughter who had taken a university degree at a time when few women did. While still a small boy he announced that his name was Jack, and Jack he remained to family and friends for the rest of his life. His elder brother Warren, three years his senior, was his closest companion. In 1905 the family moved to a large, rambling house on the edge of the city, and the boy who would one day write of a wardrobe that opened onto another world grew up among endless passages, empty attics and shelves crammed with books that no one forbade him to read.
+
+The first loss. In the summer of 1908 his mother died of cancer. Jack was nine. He had prayed, as a child prays, that she would be healed, and when she was not, something in his trust in God began to give way, though he did not know it yet. Within weeks he was sent across the sea to a boarding school in England whose headmaster was later declared insane. The settled happiness of his early years was over. His father, grief-stricken and awkward, never found the way to his sons’ hearts.
+
+> When my father and my mother forsake me, then the Lord will take me up. PSALM 27:10
+
+Losing faith. By his early teens, at school in Malvern, the boy had quietly given up the Christianity of his upbringing. Partly it was the influence of a kindly school matron who had drifted into spiritualism and theosophy; partly it was the anxiety of trying to pray with the right feelings and never succeeding; partly it was the sheer weight of the world’s suffering and the apparent indifference of the universe. He hated his public school, with its cult of games and its cruelty, and in 1914 his father sent him instead to be tutored privately by William Kirkpatrick, a retired headmaster in Surrey. Kirkpatrick was a convinced atheist and a ferocious logician who would not let a careless sentence pass. Lewis loved him. Under his teaching the boy learned Greek, Latin, French, Italian and German, read the classics in their own tongues, and was trained to argue with a rigour he never lost. He came out of those years a confirmed and articulate atheist.
+
+A book bought at a station. Yet something else was happening at the same time. Ever since early childhood Lewis had known sudden, piercing moments of longing — for what, he could not say — stirred by a toy garden his brother made, by a story of Beatrix Potter’s, by the sagas of the northern gods. In 1916, waiting for a train, he bought a copy of Phantastes by George MacDonald, a Scottish minister and writer of fantasy. He did not become a Christian by reading it. But he found in it a quality of holiness, though he had no name for it then, that seemed to cleanse the longing itself, and many years later he would say that this book had begun to work on his imagination long before his reason caught up.
+
+War. In 1917 Lewis won a place at University College, Oxford, but within weeks he was in the army. He was commissioned in the Somerset Light Infantry and reached the front line in France on his nineteenth birthday. In April 1918, near Arras, he was wounded by a British shell that fell short and killed the sergeant beside him. During his training he had shared quarters with a young man named Paddy Moore, and the two had promised each other that if either were killed, the survivor would care for the other’s family. Paddy was killed. Lewis kept the promise. For more than thirty years, until her death in 1951, he shared a household with Paddy’s mother, Janie Moore, and supported her and her daughter. It was a strange arrangement, which his biographers have interpreted in different ways, and it cost him a great deal. He kept it to the end.
+
+The scholar. Back at Oxford after the war, Lewis took first-class honours three times over — in classical literature, in philosophy and ancient history, and in English. In 1925 he was elected a fellow of Magdalen College, where he taught English language and literature for nearly thirty years. He was a demanding tutor and a celebrated lecturer, whose lectures on medieval and Renaissance literature filled the hall. In 1926 he met a young professor of Anglo-Saxon named J. R. R. Tolkien. The two men discovered a shared love of myth and of the old northern stories, and a friendship began that would change both of their lives.
+
+> Iron sharpeneth iron; so a man sharpeneth the countenance of his friend. PROVERBS 27:17
+
+The pursuit. Through the late 1920s the atheist found his defences falling one by one. Several of his closest friends were believers, and he could not dismiss them as fools. The authors he most admired — not only MacDonald, but G. K. Chesterton, whose The Everlasting Man he read in these years, and the old poets of the Christian centuries — seemed to have a depth and sanity that the moderns lacked. A thoroughly sceptical colleague remarked one evening that the historical evidence for the Gospels was surprisingly good, and the remark lodged in Lewis like a splinter. Philosophy had already led him from materialism to a kind of idealism, and idealism kept pointing beyond itself. Looking back, he could not describe these years as a search for God on his part. It had felt far more like being hunted down.
+
+The surrender. In 1929, alone in his rooms at Magdalen, he gave in. He knelt and admitted that God was God. It was not yet faith in Christ. It was the bare acknowledgement of a Creator, and by his own account it felt more like a defeat than a homecoming. The same year his father died. Lewis began to attend his college chapel and his parish church, not because he believed the creeds, but because he thought a theist ought to show his colours.
+
+> The fear of the Lord is the beginning of wisdom: and the knowledge of the holy is understanding. PROVERBS 9:10
+
+The long night walk. The second step came two years later. On the evening of the nineteenth of September, 1931, Lewis walked with Tolkien and another friend, Hugo Dyson, along Addison’s Walk, the path that circles the water meadow behind Magdalen, and talked until three in the morning. The subject was myth. Lewis had always loved the ancient stories of a god who dies and rises again; what he could not see was how the death of a man two thousand years ago could help him now. Tolkien and Dyson put it to him that the story of Christ was a true myth — a story with all the power of the pagan myths, but one that had actually happened, in history, in a particular place, at a particular time. A little over a week later, riding to Whipsnade Zoo in the sidecar of his brother’s motorcycle, Lewis set out unpersuaded and arrived believing that Jesus Christ is the Son of God, though he could never say at what point on the road the change had come. He took communion at his parish church in Headington Quarry on Christmas Day, 1931, and remained a communicant member of the Church of England for the rest of his life.
+
+The writer. His first Christian book, The Pilgrim’s Regress, an allegory of his own journey on the pattern of John Bunyan’s, appeared in 1933. His scholarly reputation was made by The Allegory of Love in 1936, and his first novel, Out of the Silent Planet, followed in 1938. Then came the war, and with it the work that made him famous. The Problem of Pain appeared in 1940. The Screwtape Letters, first published as a weekly series in an Anglican paper, came out as a book in 1942 and was an immediate success. Between 1941 and 1944 the BBC invited him to give four series of radio talks on the Christian faith, and his voice, broadcast into the kitchens and barracks of a nation at war, reached more people than any sermon. He also travelled to air force bases to speak to aircrew, many of whom would not survive the year. The talks were published in three short books and later gathered into one as Mere Christianity. In the same years he preached The Weight of Glory at the university church of St Mary the Virgin, gave the lectures that became The Abolition of Man, wrote Perelandra, That Hideous Strength and The Great Divorce, and presided over a debating society at Oxford, the Socratic Club, founded to give believers and unbelievers a fair hearing.
+
+Friends. Through all of this Lewis was sustained by friendship. For many years a circle of friends who called themselves the Inklings met in his college rooms on Thursday evenings and in a pub on Tuesday mornings to read aloud what they were writing and to argue about it. Tolkien read The Lord of the Rings to them chapter by chapter. Lewis’s brother Warren, after retiring from the army, came to live with him and became his secretary, typing replies to the flood of letters that arrived from strangers seeking help. Lewis answered nearly every one. He also quietly gave away a large part of his earnings through a charitable trust he set up for the purpose, and lived simply in a house called The Kilns, on the eastern edge of Oxford.
+
+> Freely ye have received, freely give. MATTHEW 10:8
+
+Narnia. In 1950 he published The Lion, the Witch and the Wardrobe, and over the next six years six more books followed, making up The Chronicles of Narnia. Some of his friends, Tolkien among them, did not much like them. Children did, and have done ever since. In 1955 he published Surprised by Joy, the story of his early life and conversion, and in 1956 the novel he thought his best, Till We Have Faces.
+
+Cambridge, and Joy. In 1954 Cambridge University created a new chair of medieval and Renaissance literature and offered it to Lewis, whom Oxford had repeatedly passed over for a professorship, partly, some believed, because his popular Christian writing embarrassed his colleagues. He moved to Magdalene College, Cambridge, coming home to Oxford at weekends. In these years an American writer named Joy Davidman, a former communist and a convert from atheism who had first written to him in 1950, came to England with her two young sons. A friendship of minds grew between them. In 1956 Lewis married her in a civil ceremony, so that she could stay in the country, and he regarded it at first as a formality. That autumn she was found to have advanced cancer. In March 1957 they were married by a priest at her hospital bedside, and to the astonishment of her doctors she went into remission. For three years Lewis, who had been a bachelor for nearly sixty, knew a happy marriage. The cancer returned, and Joy died in July 1960. Out of the grief that followed he wrote A Grief Observed, and published it under a pseudonym.
+
+> I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live. JOHN 11:25
+
+The end. Lewis’s own health was failing. In the summer of 1963 he had a heart attack and fell into a coma, and was given the last rites; he recovered for a time, but resigned his Cambridge chair. He died at The Kilns on the twenty-second of November, 1963, a week before his sixty-fifth birthday. The news of his death was overshadowed by the assassination of President Kennedy on the same day. He was buried in the churchyard of Holy Trinity, Headington Quarry, where he had worshipped for more than thirty years. His Letters to Malcolm, on prayer, appeared the following year. In 2013, fifty years after his death, a memorial to him was set in Poets’ Corner in Westminster Abbey.
+
+What kind of man. Those who knew him describe a big, ruddy, untidy man with a loud laugh, a prodigious memory and a love of long walks, beer and conversation. He disliked fuss, modern gadgets and talk about himself. He could be a bruising debater and a gentle correspondent. He was a careful, conscientious churchman who made a regular confession to a priest for most of his Christian life and who disliked hymns but went to church anyway, because he believed that a Christian must belong to the body. He was not a saint in any stained-glass sense. But he was, by every account, a man who took his own advice seriously, prayed daily, gave generously, kept his promises at great cost, and spent himself for strangers.
+
+### FOR REFLECTION AND ACTION
+
+1. Lewis’s loss of faith began with an unanswered prayer in childhood. Is there an old disappointment with God that you have never brought back to Him? Bring it now.
+2. He kept a promise made to a dead friend for more than thirty years. Is there a promise you have made that you have been tempted to let slip?
+3. Friendship with believers wore down his resistance. Thank God for the friends who have helped your faith, and ask how you might be such a friend to someone else.
+4. He answered strangers’ letters for decades. Consider one small, unglamorous service you could offer regularly for the sake of others.
+5. Read Romans 10:20 again. Give thanks that God sought you before you sought Him.
+
+### A PRAYER
+
+> Lord, You were seeking me long before I knew it, in my longings and my losses, in books and friends and long conversations.
+> Thank You for the patience that would not let C. S. Lewis go, and that has not let me go.
+> Where grief has made me doubt Your goodness, meet me as You met him. Where pride has kept me from kneeling, bring me to my knees.
+> Make me faithful in my promises, generous with my time and gifts, and ready to give my life away for others, for the sake of Jesus Christ. Amen.
+
+# The Longing Called Joy
+
+> He hath made every thing beautiful in his time: also he hath set the world in their heart, so that no man can find out the work that God maketh from the beginning to the end. ECCLESIASTES 3:11
+
+If there is one experience that runs beneath everything Lewis wrote, it is a longing. He first knew it as a very small child, and he went on knowing it all his life. It would come without warning, stirred by the oddest things — a toy garden of moss and twigs in a biscuit-tin lid, the autumn mood of a children’s story, a line of poetry about the death of a northern god, the sight of distant hills from a nursery window. For a moment he would be pierced by a desire so intense that it was almost pain, and then it would be gone, and he would be left wanting nothing so much as to feel it again. He gave this experience a name. He called it Joy, and he used the old German word Sehnsucht for the longing at its heart.
+
+## Not happiness, not pleasure
+
+Lewis was careful to say what Joy was not. It was not happiness, which is a settled condition, nor pleasure, which is a satisfaction. Joy, as he used the word, was a wanting, not a having; and yet he prized that wanting above any having he had known. It had a strange double quality. It was a pang of loss and a breath of home at the same moment.
+
+The trouble was that he could not hold it, and he could not find out what it was for. As a young man he chased it through every door he could think of. He tried to find it again in the books and music that had first stirred it, and found that the harder he went looking for the feeling, the more surely it fled. He wondered whether it was a disguised form of sexual desire, and found that it was not: the one could be satisfied, and the other plainly could not. He tried the occult, and found it a dead end. Every object he fixed on turned out to be only the place where the longing had touched down, not the thing it was longing for.
+
+> My soul longeth, yea, even fainteth for the courts of the Lord: my heart and my flesh crieth out for the living God. PSALM 84:2
+
+## The argument from desire
+
+Out of this experience Lewis drew one of the arguments for which he is best remembered. He set it out in several places — in Mere Christianity, in the sermon The Weight of Glory, and in the preface he wrote for a later edition of The Pilgrim’s Regress. In our own words, and with our own examples, it runs something like this.
+
+The desires that are built into us, as a rule, answer to something real that can meet them. Thirst is matched by water, weariness by sleep, loneliness by friendship. A particular person may of course go thirsty or lonely, and a desire may go unmet in a particular life; but the existence of the appetite is itself a sign that its object exists somewhere. Suppose, then, that we find in ourselves a desire that nothing in this world can meet — a desire that every earthly good awakens and none fulfils. The natural inference is that its true object lies beyond this world altogether, and that we are creatures meant for more than this world can give. On that view the good things of earth have a different job from the one we usually give them. They are not there to quench the longing. They are there to wake it, and to point past themselves.
+
+> For here have we no continuing city, but we seek one to come. HEBREWS 13:14
+
+Lewis did not pretend that this argument amounts to a proof. A determined sceptic can always say that the longing is a trick of the nerves, a leftover of evolution, or a sign that the universe is simply cruel. But he thought it was a pointer of great power, because it fits the experience of countless people who have never put it into words. Augustine had said the same thing fifteen centuries earlier, at the opening of his Confessions: the human heart is restless until it rests in God. Lewis was describing that restlessness from the inside.
+
+## Three ways of dealing with it
+
+He noticed that people tend to deal with this longing in one of three ways. Some blame the things that aroused it. They suppose that if only they had a different spouse, a better house, a more exciting holiday, a more beautiful place to live, the longing would at last be satisfied; and so they spend their lives moving from one object to the next, always disappointed and always hoping. Others, sobered by experience, decide that the whole thing was a youthful illusion. They settle down, stop expecting much, and smile at the dreams of the young. They are often decent and practical people, and they have shut a door that ought to have stayed open.
+
+The third way, Lewis said, is the Christian one. It neither despises the longing nor mistakes its object. It recognises that earthly goods are real goods, to be enjoyed with thanks, and that they are also messengers. The beauty of a landscape or a piece of music is not the thing we were made for, but it is a true message from the country we were made for. The right response is to be grateful for the message, and to go on towards the One who sent it.
+
+> One thing have I desired of the Lord, that will I seek after; that I may dwell in the house of the Lord all the days of my life, to behold the beauty of the Lord, and to enquire in his temple. PSALM 27:4
+
+## When the longing has done its work
+
+This led Lewis to a striking conclusion about his own story. After his conversion, he found that the old stabs of Joy came less often and mattered less to him. He was not troubled by it. He had discovered what they had been for. A lamp left burning in a window means everything to a traveller out on a dark night; once he is through the door and sitting by the fire with his family, he does not go back out to stare at the lamp. The longing had done its work. It had kept him restless, kept him from settling for anything less, and finally brought him to the One it had been pointing to all along.
+
+That does not mean that the Christian outgrows longing. Lewis believed that the believer, too, lives in a world full of such messengers, and that every good thing in it — friendship, marriage, the sea, the hills, great books, good food — carries a hint of a joy that has not yet been given. The Christian hope is not that our desires will be extinguished, but that they will at last be met.
+
+> Thou wilt shew me the path of life: in thy presence is fulness of joy; at thy right hand there are pleasures for evermore. PSALM 16:11
+
+## Weighing it
+
+There is much here that is simply biblical. The Scriptures everywhere describe a thirst that only God can quench, and Lewis’s account of it has helped many readers name something they had felt all their lives. Two cautions are worth adding.
+
+The first is that longing is not the same as faith. A man may feel the ache for another world his whole life and never turn to Christ; indeed, the ache can be cultivated for its own sake, as a kind of refined melancholy. Lewis knew this danger well, because he had fallen into it. Desire may point to God, but it is the gospel that brings us to Him, and the way home is not through our feelings but through the cross.
+
+> Jesus answered and said unto her, Whosoever drinketh of this water shall thirst again: but whosoever drinketh of the water that I shall give him shall never thirst. JOHN 4:13–14
+
+The second is that the argument from desire is persuasive chiefly to those who already feel the desire. It is a door that opens from the inside. That is not a reason to set it aside; it is a reason to use it wisely, alongside the plainer preaching of sin and grace, and never instead of it.
+
+### FOR REFLECTION AND ACTION
+
+1. Think back over your life. When have you felt a longing that nothing in this world could satisfy? What stirred it?
+2. Which of the three ways of dealing with longing have you tended to follow — chasing new objects, giving up, or following the message home?
+3. Name one good thing in your life that you have been asking to satisfy you completely. Thank God for it, and give it back its proper place.
+4. Read Psalm 84 slowly. Notice how the writer’s longing is directed to God Himself.
+5. Read the opening pages of Augustine’s Confessions in the Ochorus library, and compare his restless heart with Lewis’s Joy.
+
+### A PRAYER
+
+> Lord, You have set eternity in my heart, and nothing under the sun can fill it.
+> Forgive me for asking Your gifts to be my God, and for blaming them when they could not satisfy me.
+> Thank You for every beauty that has stirred my longing. Let each of them point me past itself to You.
+> Bring me at last to the country I was made for, and to the fulness of joy in Your presence, through Jesus Christ my Lord. Amen.
+
+# The Law Written on the Heart
+
+> For when the Gentiles, which have not the law, do by nature the things contained in the law, these, having not the law, are a law unto themselves: which shew the work of the law written in their hearts, their conscience also bearing witness. ROMANS 2:14–15
+
+When the BBC asked Lewis in 1941 to speak on the radio about the Christian faith, he made an unexpected choice. He did not begin with God, or with Christ, or with the Bible. He began with quarrelling. The first series of talks, later the opening section of Mere Christianity, started from something every listener did every day, and asked what it implied about the universe.
+
+## The appeal to a standard
+
+Listen to people quarrel, Lewis said in substance, and you will notice something curious. They do not simply say that they dislike what the other person has done. They say that it is unfair. They complain that a promise has been broken, that someone has jumped the queue, that a debt has not been repaid. And the person accused rarely replies that fairness does not matter. He tries to show that what he did was not really unfair after all, or that there was a special reason for it. Both sides, in other words, are appealing to a standard of behaviour that they expect the other to know and accept.
+
+This standard, which the old writers called the law of nature, is not peculiar to one people or one age. Lewis, who knew the moral literature of many ancient civilisations, insisted that the differences between them have been exaggerated. Peoples have drawn the circle of obligation in different places, and arranged marriage and property in different ways; but no people has honoured the traitor, praised the coward or held that a man owes nothing to anyone but himself. The details vary; the outline is remarkably constant.
+
+> He hath shewed thee, O man, what is good; and what doth the Lord require of thee, but to do justly, and to love mercy, and to walk humbly with thy God? MICAH 6:8
+
+## Not instinct, not convention
+
+Lewis then dealt with two common ways of explaining the moral law away. Some say it is merely herd instinct — the impulses evolution has given us to help the species survive. But, he replied, we often feel two impulses pulling against each other — the urge to help someone in danger, and the urge to keep ourselves safe — and the moral law is the thing that tells us which of them to follow. It stands to our impulses rather as a conductor stands to the players in an orchestra. It cannot be simply one more of them.
+
+Others say the moral law is only a social convention, taught to us by our parents and our schools, like the rules of a game. But conventions can differ without one being better than another, while we do in fact judge some moral codes to be better than others. We say that a nation that abolished slavery made moral progress. If morality were merely convention, there could be no such thing as progress, only change. The very idea that one people’s morals can be better than another’s implies a real standard against which both are measured.
+
+## Everyone fails
+
+The second fact Lewis drew out was as plain as the first. Not only do all people know this law; all people break it. None of us keeps even our own standards, let alone the standards we expect of others. And we are remarkably good at excusing ourselves. When we fail, we blame our tiredness, our upbringing, our circumstances. The very energy we put into excuses shows how much we believe in the law we are breaking.
+
+> For all have sinned, and come short of the glory of God. ROMANS 3:23
+
+Everything else, Lewis believed, has to start from these two facts: that we know how we ought to behave, and that we do not behave that way.
+
+## Something behind the law
+
+What follows from this? Lewis argued that the moral law is not like the laws of nature, such as gravity, which simply describe what matter does. Stones do not choose to fall, and nobody blames them for doing so. The moral law describes not what we do but what we ought to do, and we fail to do it. It is a law pressing on us from outside, a command. And a command implies someone who commands. The best evidence we have of what lies behind the universe, Lewis suggested, is not the stars or the mountains, which tell us that whatever made them is very great, but this law inside us, which tells us that whatever made us cares intensely about right and wrong — about fairness, unselfishness, courage, good faith and honesty.
+
+> The heavens declare the glory of God; and the firmament sheweth his handywork. PSALM 19:1
+
+> The law of the Lord is perfect, converting the soul: the testimony of the Lord is sure, making wise the simple. PSALM 19:7
+
+He was careful not to claim too much. This argument does not yet bring us to the Christian God. It brings us to a Power behind the universe that is personal — a will with purposes of its own — and that is concerned with how we behave. But that, Lewis said, is precisely what makes it disturbing. If such a Power exists, and if we have broken its law, then we are in trouble. Christianity, he concluded, has nothing to offer a person who has not felt that trouble. It is the medicine for a disease, and a man who does not believe he is ill will have no use for a doctor.
+
+> They that be whole need not a physician, but they that are sick. MATTHEW 9:12
+
+## The Abolition of Man
+
+Lewis returned to the moral law, from a different angle, in a short book of 1943 called The Abolition of Man. It began as a set of lectures prompted by a school textbook on English, which taught children, without quite saying so, that all statements of value are merely statements about the speaker’s feelings. To call a waterfall sublime, the textbook implied, is only to report one’s own emotions. Lewis argued that this apparently harmless teaching was poison. If no value is real, then courage, honour and self-sacrifice are only feelings, and the young will be trained to feel nothing in particular about them. A society that teaches its children that goodness is merely a matter of taste, he warned, cannot then complain when they behave as though it were.
+
+Against this he set what he called, by an ancient Chinese name, the Tao — the shared recognition, found in the moral teaching of every great civilisation, that some things really are good and others really are evil, and that the human heart ought to be trained to love the one and hate the other. At the end of the book he gathered illustrations from Hebrew, Greek, Roman, Chinese, Indian, Norse and Christian sources to show how widely that recognition has been shared. His warning was that a generation which set itself above the moral law, treating it as something to be engineered rather than obeyed, would not liberate humanity; it would hand power over humanity to whoever did the engineering. His novel That Hideous Strength puts the same warning into story.
+
+> Woe unto them that call evil good, and good evil; that put darkness for light, and light for darkness; that put bitter for sweet, and sweet for bitter! ISAIAH 5:20
+
+## Weighing it
+
+Lewis’s moral argument has been one of the most widely used tools of Christian apologetics for eighty years, and it stands firmly on the ground Paul lays down in Romans 1 and 2: that God has left His witness in creation and in conscience, so that men are without excuse. Evangelical readers can receive it with gratitude.
+
+Two cautions are in order. First, the argument establishes a moral Lawgiver, not a Saviour. Lewis knew this and said so; but readers who stop at the first section of Mere Christianity have only half the message. The law can show us our sin; it cannot take it away.
+
+> Therefore by the deeds of the law there shall no flesh be justified in his sight: for by the law is the knowledge of sin. ROMANS 3:20
+
+Second, conscience is a true witness but a damaged one. The moral law is written on every heart, but sin has blurred the writing, and the natural moral sense can be deadened, distorted or trained into error. That is why God gave His law in words, and why He sent His Son. Lewis would have agreed; but the reader should remember that conscience needs the Scriptures to correct it, not only to confirm it.
+
+### FOR REFLECTION AND ACTION
+
+1. Recall the last time you complained that something was unfair. What standard were you appealing to, and where did you think it came from?
+2. Name one point at which you consistently fail to keep your own moral standards. How have you been excusing it?
+3. Read Romans 1:18–2:16 and notice how Paul describes the witness of creation and conscience.
+4. Think about what the children around you are being taught about right and wrong. Is goodness presented as real, or as a matter of taste?
+5. Thank God that the law which condemns you points you to the Saviour who fulfilled it.
+
+### A PRAYER
+
+> Holy God, You have written Your law on my heart, and I have broken it again and again.
+> I have known what is right and not done it, and I have spent my strength making excuses.
+> Thank You that You did not leave me with only a law to condemn me, but sent Your Son to keep it in my place and to bear the penalty of my failure.
+> Write Your law more deeply in me by Your Spirit, and make me love what You love, through Jesus Christ. Amen.
+
+# Who Is This Man?
+
+> He saith unto them, But whom say ye that I am? And Simon Peter answered and said, Thou art the Christ, the Son of the living God. MATTHEW 16:15–16
+
+Once Lewis had shown his listeners that there is a moral law, that we have broken it, and that there is a Power behind it, he turned to the question on which everything depends. The second series of radio talks, which became the second section of Mere Christianity, moved from the Lawgiver to the Son. At its heart Lewis set out an argument about the identity of Jesus that has been repeated, adapted and debated ever since.
+
+## The claims He made
+
+Lewis began with what Jesus actually said and did, as the Gospels record it. Among the Jews of the first century — a people who believed with fierce conviction that there was one God, utterly distinct from His creation — there appeared a man who spoke as though He were that God. He claimed to forgive sins. He said that He had existed before Abraham. He said that He would come again at the end of the world to judge all people. He accepted worship. He spoke of Himself as the one through whom alone men could come to the Father.
+
+> Verily, verily, I say unto you, Before Abraham was, I am. JOHN 8:58
+
+> I and my Father are one. JOHN 10:30
+
+Lewis paid special attention to the forgiveness of sins, because it is the most startling claim of all and the one most easily read past. If someone wrongs me, I may forgive him. But if a stranger steps forward and announces that he forgives the man who has wronged me, I shall think him either absurd or insolent — unless he is the one against whom every wrong is, in the end, committed. When Jesus told a paralysed man that his sins were forgiven, the scribes who heard Him understood exactly what He was claiming.
+
+> Why doth this man thus speak blasphemies? who can forgive sins but God only? MARK 2:7
+
+## The middle ground that will not hold
+
+From this Lewis drew his best-known conclusion. People often say, he observed, that they are happy to accept Jesus as a wise moral teacher, but not to accept His claim to be God. This, Lewis argued, is exactly the position that will not hold. Someone who made such claims without their being true could hardly be called a wise teacher of morals. He would be either gravely deluded about himself or deliberately misleading others on the most serious subject there is. Either way, no one would set him up as a guide to life; we would pity him or condemn him. The only remaining possibility is that He was telling the truth. And so the choice is forced on us. We may dismiss Him as deluded, we may denounce Him as a deceiver, or we may worship Him. What we cannot do is admire Him politely as a good man and pass on. The Gospels do not leave that middle ground available, and Jesus did not mean to leave it.
+
+> Thomas answered and said unto him, My Lord and my God. JOHN 20:28
+
+Lewis added that the teaching of Jesus, by common consent, is among the sanest and most profound the world has ever heard; and that His character, as the Gospels present it, shows none of the marks of either madness or fraud. Self-deluded men are not usually humble, and deceivers do not usually go to their deaths for the lie. The consistency of the man with His claims is itself evidence.
+
+## But are the Gospels true?
+
+The obvious reply is that the argument depends on the Gospels being a faithful record. Perhaps, a critic might say, Jesus never made such claims at all, and they were put into His mouth by later believers, as a legend grows around a hero. Lewis answered this objection elsewhere, especially in essays written later in his life, and he answered it as a literary scholar. He had spent his career reading myths, legends and romances of every age, and he said that the Gospels did not read like any of them. They have the texture of reportage — the odd, unnecessary details that an eyewitness remembers and a myth-maker would never think to invent. Either, he suggested, the Gospel writers were reporting what they had seen, or some unknown writer of the first century had stumbled, eighteen hundred years early, onto the methods of the realistic novel, with no one before him and no one after. He found the first explanation far easier to believe. He also had sharp words for scholars who claimed to read between the lines of ancient texts while showing, in his view, little sense of what kind of texts they were reading.
+
+> That which was from the beginning, which we have heard, which we have seen with our eyes, which we have looked upon, and our hands have handled, of the Word of life. 1 JOHN 1:1
+
+## Why He came
+
+Lewis did not stop at who Jesus is. He went on to ask why God became man, and his answer began from our condition. Humanity is in revolt against God, and the way back is surrender — a giving up of self-will so complete that it is a kind of death. But here is the difficulty: the one who needs to make that surrender is the sinner, and the sinner is precisely the one who cannot make it fully. If God were to become man, however, He could do in our nature and on our behalf what we could not do, and we could share in what He had done. That, Lewis believed, is part of what happened when the Son of God died and rose again.
+
+> For he hath made him to be sin for us, who knew no sin; that we might be made the righteousness of God in him. 2 CORINTHIANS 5:21
+
+## Weighing it
+
+The argument about the identity of Jesus has strengthened the faith of a great many readers, and it rests squarely on the testimony of the New Testament. Its force is real. Evangelicals have generally welcomed it, while noting that it is strongest when joined to the evidence for the resurrection, which Lewis took for granted more often than he argued for it.
+
+Evangelical readers will want to notice one thing in the same section of Mere Christianity. When Lewis turned to the meaning of the cross, he deliberately declined to commit himself to any one account of how Christ’s death saves us. He held that the central Christian belief is simply that the death of Christ has, in some way, reconciled us to God and made a new beginning possible, and that the explanations of how it does so are secondary. He admitted that the explanation in terms of Christ paying the penalty for our sins had not, at that time, helped him much, and he preferred to speak of Christ as the one who perfectly made, in our nature, the surrender and repentance that we could not make. Many readers, of many traditions, have been helped by his reticence. But the New Testament does not treat the substitution of Christ for sinners as one theory among several. It places it near the very centre of the gospel.
+
+> But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed. ISAIAH 53:5
+
+> Who his own self bare our sins in his own body on the tree, that we, being dead to sins, should live unto righteousness: by whose stripes ye were healed. 1 PETER 2:24
+
+Lewis was right that we are saved by Christ and not by our theories about Him. But a reader who is helped by his account of the incarnation should go on to the apostles’ own account of the cross, where the language of a debt paid, a curse borne and wrath turned aside is plain and unembarrassed.
+
+### FOR REFLECTION AND ACTION
+
+1. If someone asked you who Jesus is, what would you say? Write your answer in a few sentences.
+2. Have you been content to admire Jesus as a teacher without bowing to Him as Lord? What would it mean to change that?
+3. Read Mark 2:1–12 and notice what the scribes understood Jesus to be claiming.
+4. Read one of the Gospels this week, looking for the small, unnecessary details that mark an eyewitness account.
+5. Read Isaiah 53 slowly, and give thanks for the One who was wounded for your transgressions.
+
+### A PRAYER
+
+> Lord Jesus Christ, You asked Your disciples who they said You were, and You ask me still.
+> I confess You as the Christ, the Son of the living God. I will not admire You from a distance; I bow to You as my Lord and my God.
+> Thank You for forgiving sins that only God could forgive, and for bearing in Your own body the sins that I could never pay for.
+> Let my whole life answer Your question truly, today and every day. Amen.
+
+# The Faith Held in Common
+
+> There is one body, and one Spirit, even as ye are called in one hope of your calling; one Lord, one faith, one baptism, one God and Father of all, who is above all, and through all, and in you all. EPHESIANS 4:4–6
+
+Lewis took the title of his most famous book from the seventeenth-century Puritan Richard Baxter, who in a quarrelsome age had described himself as a mere Christian — a man who belonged to no party but simply to Christ. Lewis meant the same thing by it. His aim in the broadcast talks was not to defend his own church, nor to settle the disputes between Christians, but to set out the faith that Christians of almost every century and every church have confessed together. Before publishing one of the series he sent the script to four clergymen — an Anglican, a Methodist, a Presbyterian and a Roman Catholic — to make sure he had not slipped into the special views of any one of them.
+
+## The common house and its rooms
+
+He described this common faith with a picture: a great entrance hall with doors opening into many rooms. Mere Christianity, as he meant it, is the hall. It is a real place, and a man may stand in it and be a Christian. But it is not a place to live. The rooms are the different churches, each with its own warmth and table and household, and the newcomer who has come into the hall must eventually choose a room — and must choose it not for its comfort or its company but because he believes its teaching to be true. And once inside, he must be kind to those who have chosen other doors, and pray for them.
+
+> Endeavouring to keep the unity of the Spirit in the bond of peace. EPHESIANS 4:3
+
+This was a generous vision, and it shaped all his work. He wrote, as far as he could, for the hall and not for any one room. That is why Christians of every tradition have found him useful, and why some evangelical readers have found him frustrating: on questions they regard as essential, he deliberately refused to say.
+
+## Reading old books
+
+One of the ways Lewis guarded the common faith was by reading, and urging others to read, the books of earlier centuries. In 1944 he wrote an introduction to a new English translation of Athanasius’ On the Incarnation, the fourth-century defence of the deity of Christ that is now in the Ochorus library. In it he made a case that has become famous in its own right. Every age, he argued, has its own characteristic mistakes — mistakes so widely shared at the time that no one notices them. Modern books share the mistakes of the modern age, and so cannot correct them. Old books have different mistakes, which we can easily see, and they are free of ours. Reading them lets the air of other ages into a stuffy room. He urged readers who could not manage more to let at least some old books into their reading alongside the new.
+
+> Thus saith the Lord, Stand ye in the ways, and see, and ask for the old paths, where is the good way, and walk therein, and ye shall find rest for your souls. JEREMIAH 6:16
+
+In the same introduction he made another observation that has helped many believers. He said that he often found books of doctrine more helpful to his devotion than books written to be devotional. A reader whose heart grows cold over a book of pious reflections may find it warming over a careful book of theology, read slowly and attentively. The mind and the heart, again, were not rivals.
+
+## Against the spirit of the age
+
+Lewis had himself been a victim of the assumption that whatever is newer must be truer. As a young man he had looked down on the beliefs of the past simply because they were old, without asking whether they had ever been refuted. His friend Owen Barfield cured him of this by pressing him on what reason he had for thinking that the ideas of his own century were right where those of earlier centuries were wrong. Once he saw the question, Lewis could not unsee it. Throughout his life he insisted that a belief should be judged by whether it is true, not by when it was held. Christianity was not out of date, because truth does not go out of date.
+
+> Jesus Christ the same yesterday, and to day, and for ever. Be not carried about with divers and strange doctrines. HEBREWS 13:8–9
+
+## The church
+
+Lewis did not come easily to church. In the early years after his conversion he disliked hymns, which he thought poor poetry set to poor music, and he found the company of many churchgoers uncongenial. He went anyway, because he became convinced that a Christian is not a solitary believer but a member of a body, and that the body meets. Over time he came to see that the very things he disliked were good for him: the rubbing of shoulders with people of different tastes and backgrounds, the humility of singing words he would not have chosen, the discipline of being one among many. He remained a faithful member of his parish church in Headington Quarry for more than thirty years.
+
+> Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching. HEBREWS 10:25
+
+He took communion regularly and, from 1940, made a regular confession to a priest, a practice he kept for most of his Christian life. His churchmanship was sacramental and, by the standards of many evangelicals, high. He was also suspicious of what he regarded as fashionable novelties in the Church of England, and he argued in print against the ordination of women to the priesthood on the grounds that it would change the church’s symbolic language about God.
+
+## Weighing it
+
+Lewis’s mere Christianity is a precious thing. It reminds believers that the great creeds are a common inheritance, that our quarrels are among family, and that the faith once delivered is larger and older than any of our denominations. His counsel to read old books is wise and is almost universally neglected.
+
+The caution is that the hall can become an excuse for never deciding anything. Lewis himself said that the hall was not a place to live; but because he wrote almost entirely for the hall, some of his readers have stayed there, treating every question beyond the creed as a matter of taste. The Reformation was not a quarrel about furnishings. Questions such as how a sinner is justified before God, what the Lord’s Supper is, and where final authority lies are not secondary to those who must answer them, and the New Testament speaks to them. Lewis’s generosity is to be imitated; his reticence on these questions is not always to be imitated. Evangelical readers will also note that his sacramental practices, such as confession to a priest, rest on convictions about ministry that they do not share.
+
+> For other foundation can no man lay than that is laid, which is Jesus Christ. 1 CORINTHIANS 3:11
+
+### FOR REFLECTION AND ACTION
+
+1. Read the Apostles’ Creed or the Nicene Creed slowly. Give thanks for the faith you share with believers of every age and tradition.
+2. Think of a Christian of another tradition whom you find difficult. Pray for that person by name this week.
+3. Choose an old book — Athanasius’ On the Incarnation is a good start, and it is in the Ochorus library — and read it alongside whatever modern book you are reading.
+4. Is there a question of doctrine you have avoided deciding because it seemed divisive? Study what Scripture says about it, humbly and carefully.
+5. If you have drifted from regular fellowship, take one concrete step back towards your local church this week.
+
+### A PRAYER
+
+> Father, You have called us into one body by one Spirit, under one Lord.
+> Forgive me for my party spirit, and for my pride in the room I have chosen. Forgive me too for the times I have stayed in the hall to avoid deciding what is true.
+> Teach me from the saints of other centuries, and correct the blind spots of my own.
+> Keep me faithful in Your church, among people I did not choose, and make me a builder of unity on the one foundation, Jesus Christ. Amen.
+
+# The Great Sin
+
+> Pride goeth before destruction, and an haughty spirit before a fall. PROVERBS 16:18
+
+When Lewis came, in his third series of broadcast talks, to the subject of Christian behaviour, he gave one chapter a title that surprised his listeners. He did not reserve it for murder, or cruelty, or the sins of the flesh that respectable people most like to condemn. He gave it to pride. Pride, he told them, is easy to spot in other people and almost impossible to spot in oneself. In the Christian tradition he was drawing on, it was the sin of the first rebel angel, before ever there was a human sinner. Every other vice, by comparison, is small.
+
+## Why pride is the worst
+
+Lewis gave several reasons for this ranking, and each of them is worth weighing.
+
+The first is that pride is by its very nature competitive. Most sins arise from appetites that can at least in principle be satisfied. A greedy man may have eaten enough; a lazy man may have rested enough. Pride, by contrast, does not care about having a thing; it cares about having it in greater measure than others. Two proud people cannot both be the cleverest, the richest or the best-looking in the room, and so pride sets every person against every other. It is the root of enmity between neighbours, and between nations.
+
+The second is that pride sets a man against God. Pride wants to be at the top, and a creature determined to be at the top cannot bow to the One who is truly above it. That is why pride, more than any other condition of the heart, shuts a person off from knowing God at all. God is, by definition, immeasurably greater than we are; and a heart that is determined to be on top will never bow to Him.
+
+> God resisteth the proud, but giveth grace unto the humble. JAMES 4:6
+
+The third reason is the most unsettling. Pride can grow out of goodness itself. The other vices are, so to speak, the devil working on our animal nature. Pride works on our spiritual nature, and it can feed on our very virtues. A man may conquer his temper, his greed or his lust, and become proud of conquering them. A church may grow, and its members become proud of it. Lewis warned that a person can be cured of a dozen lesser faults and be no safer for it, if pride is quietly feeding on the cure; the enemy has then traded small sins for a great one.
+
+> And he spake this parable unto certain which trusted in themselves that they were righteous, and despised others. LUKE 18:9
+
+## Religious pride
+
+Lewis was especially concerned about pride among religious people. He noticed that it is possible to be very devout and yet to be using religion as a platform from which to look down on others. Such people may talk a great deal about their unworthiness, and imagine themselves humble, while all the time they are quietly congratulating themselves on being better than the unbelievers around them. Lewis suggested a simple test. If our religion is leaving us more pleased with ourselves and more contemptuous of others, that is a sure sign that something other than God is at work in it.
+
+> Two men went up into the temple to pray; the one a Pharisee, and the other a publican. LUKE 18:10
+
+> And the publican, standing afar off, would not lift up so much as his eyes unto heaven, but smote upon his breast, saying, God be merciful to me a sinner. LUKE 18:13
+
+## What pride is not
+
+Lewis was careful to clear away some misunderstandings. Pleasure in being praised is not the same as pride. A child who is glad when a parent says well done, or a worker who is pleased by honest thanks, is not proud; the pleasure comes from having pleased someone whom it was right to want to please. The trouble begins when we start to admire ourselves for what has been praised, and to want praise for its own sake.
+
+Nor is pride the same as warm admiration for one’s country or family or school, though that too can go wrong. And it is certainly not the same as self-respect in the sense of refusing to do what is shameful. Lewis’s target was narrower and deeper: the settled habit of the heart that puts self at the centre, measures everything against self, and resents anything greater.
+
+## The humble man
+
+What, then, is humility? Here Lewis said something that has helped many readers. Humility, he argued, does not consist in having a low opinion of one’s own gifts, or in pretending to be worse at things than one is. That kind of humility is often a performance, and a tiring one. The truly humble person, Lewis suggested, is someone you would hardly notice as humble at all. He is not thinking about his own merits, high or low. He is too absorbed in other things — in the person in front of him, in the work, in the world, in God — to be keeping score of himself at all. The surest mark of humility is not self-criticism but freedom from self-concern.
+
+> Let nothing be done through strife or vainglory; but in lowliness of mind let each esteem other better than themselves. PHILIPPIANS 2:3
+
+> Let this mind be in you, which was also in Christ Jesus. PHILIPPIANS 2:5
+
+The way to humility, he added, begins with the recognition that one is proud. That is a large first step, and many never take it. The person most confident that he is free of pride, Lewis thought, is usually the one most firmly in its grip.
+
+## Why God wants us humble
+
+Lewis was clear that God does not demand humility because He wants to make us feel small, or because He enjoys our grovelling. He demands it because humility is the truth about us, and because pride makes it impossible for us to know Him. To come into God’s presence is to be overwhelmed with delight, and the delight is greatest when we have forgotten ourselves entirely. God wants us humble because He wants us happy, and the proud cannot be happy in His company.
+
+> Humble yourselves in the sight of the Lord, and he shall lift you up. JAMES 4:10
+
+He found the same theme in his own experience. He had been, by his own account, a proud young man, proud of his intellect and contemptuous of those who did not share it. The surrender of 1929 was above all a defeat of that pride. He knew from the inside how hard it is for a clever person to kneel.
+
+## Weighing it
+
+There is almost nothing in Lewis’s teaching on pride to set aside. It is a faithful exposition of a theme that runs through the whole Bible, from the serpent’s promise that our first parents would be as gods, through the proud king of Babylon, to the Lord who humbled Himself to the death of the cross. Augustine had said the same in his City of God, and the Puritans after him.
+
+If one point needs adding, it is the remedy. Lewis described humility beautifully, but the deepest cure for pride is not a technique of self-forgetfulness. It is the cross. Nothing humbles a sinner like the sight of what his sin cost the Son of God, and nothing frees him from the need to be better than others like the knowledge that he has been accepted, freely, for Christ’s sake alone.
+
+> But God forbid that I should glory, save in the cross of our Lord Jesus Christ, by whom the world is crucified unto me, and I unto the world. GALATIANS 6:14
+
+### FOR REFLECTION AND ACTION
+
+1. Think of the person whose success or praise most annoys you. Ask honestly what that annoyance reveals about your own heart.
+2. Notice this week when you compare yourself with others, whether favourably or unfavourably. Bring each comparison to God.
+3. Read Luke 18:9–14. Which of the two men do you more naturally resemble in prayer?
+4. In your next conversation, practise forgetting yourself: listen fully, ask questions, and resist the urge to turn the subject back to you.
+5. Spend time at the foot of the cross in prayer, and let it do its humbling work.
+
+### A PRAYER
+
+> Lord, You resist the proud and give grace to the humble. I confess that I am proud, more proud than I know.
+> Forgive me for looking down on others, for measuring myself against them, and for being proud even of my religion.
+> Show me myself as I am, and show me Yourself as You are, until I forget myself in wonder.
+> Let this mind be in me which was also in Christ Jesus, who humbled Himself and became obedient unto death, even the death of the cross. Amen.
+
+# Made New
+
+> Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new. 2 CORINTHIANS 5:17
+
+The last of Lewis’s four series of broadcast talks was the most ambitious. Having argued for a moral law, for the identity of Christ, and for a Christian way of behaving, he turned to the doctrine that most of his listeners thought was beyond them: the Trinity. And he used it to explain what the Christian life actually is. Christianity, as Lewis presented it, is not mainly a set of rules for being good, nor even a set of beliefs about God. It is God taking ordinary human beings and making them into new creatures, sharing His own life with them, so that they come to be truly His children.
+
+## Made and begotten
+
+Lewis began with a distinction from the Nicene Creed, which says that the Son of God was begotten, not made. To make something, he explained, is to produce something different from oneself, as a carpenter makes a table or a sculptor a statue. To beget is to produce something of one’s own kind, as parents beget children. The Son is begotten of the Father, and so is God as the Father is God. We, on the other hand, are made. By nature we are God’s creatures, not His children — rather as a photograph of a man is not a man, however lifelike it may be.
+
+> But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name. JOHN 1:12
+
+The whole point of Christianity, Lewis said, is that this gap can be crossed. The life that the Son has from the Father — a different kind of life from the merely biological life we have by nature — can be shared with created beings. The New Testament calls it eternal life. When a person is joined to Christ, that life begins to flow into him, and he begins, slowly, to become what by nature he is not: a son of God, sharing the life of God.
+
+## The life of the Trinity
+
+To explain this Lewis needed the doctrine of the Trinity, and he approached it with a teacher’s patience. He presented God not as a solitary being but as an eternal communion of love: the Father loving the Son, the Son loving the Father, and the love between them being itself a Person, the Holy Spirit. Christians are not invited simply to look at this life from outside. They are drawn into it. Lewis pointed out that the doctrine is not remote from the simplest believer’s experience, because Christian prayer is itself shaped by it: the believer prays to the Father, through the Son, by the help of the Spirit.
+
+> For through him we both have access by one Spirit unto the Father. EPHESIANS 2:18
+
+> And because ye are sons, God hath sent forth the Spirit of his Son into your hearts, crying, Abba, Father. GALATIANS 4:6
+
+## Acting as sons
+
+How does this new life actually take hold? Lewis offered a homely answer. When we pray the Lord’s Prayer and call God our Father, we are, in a sense, putting ourselves in the place of the Son. We are claiming a relationship that, left to ourselves, we do not have. This might seem like pretending. But there is a kind of acting that leads to the real thing, as a beginner plays a piece of music badly long before he can play it well, and learns to play it well only by playing it badly first. When we begin to act as children of God, Christ Himself is present to make the act real. Very often, Lewis said, the right thing to do is to behave as a Christian would behave, even when we do not feel like it, and find that Christ comes to meet us in the doing.
+
+> Put ye on the Lord Jesus Christ, and make not provision for the flesh, to fulfil the lusts thereof. ROMANS 13:14
+
+## Nothing less than everything
+
+Lewis was very clear that this process is not comfortable. God does not want a part of us. He is not interested in improving us a little, making us somewhat nicer or more respectable, and then leaving us alone. He intends to remake us completely, and He will not stop until the work is finished. It is as if a man asked a gardener to trim one overgrown hedge, and found him setting about the replanting of the whole estate. The work goes deeper than we asked for, and it hurts.
+
+> Being confident of this very thing, that he which hath begun a good work in you will perform it until the day of Jesus Christ. PHILIPPIANS 1:6
+
+This was why Lewis distinguished so carefully between being nice and being new. Some people are naturally pleasant, with easy tempers and good upbringing; others are naturally difficult, with nervous constitutions or bitter memories. God does not grade us on what we started with. A naturally irritable person who has become a Christian may be much less pleasant than a naturally sweet-tempered unbeliever, and yet be much further along the road. The question is not how nice someone is, but whether they have handed themselves over to be remade. And the niceness of the nice unbeliever, Lewis warned, may be the very thing that keeps him from seeing his need of God.
+
+## Christian behaviour
+
+The same section of Mere Christianity, together with the third series of talks, set out much practical teaching on the Christian life, and a few points stand out. Lewis argued that morality has three parts: fair dealing between people, the right ordering of each person’s inner life, and the purpose of human life as a whole — and that modern people tend to think only of the first. He held that Christian giving ought to pinch — that if it costs us nothing we notice, it is probably too small. He wrote frankly about sexual morality and held to the Christian teaching of chastity outside marriage and faithfulness within it. He said that forgiving our enemies is the hardest of the commands, and that we can begin by remembering that we already know how to hate what a person does while still wishing him well, because that is how we treat ourselves.
+
+> But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you. MATTHEW 5:44
+
+On the old dispute between faith and works, Lewis characteristically declined to take sides. He said that both are necessary, that a man who trusts God will begin to obey Him, and that arguing over which comes first is less useful than getting on with both.
+
+## Weighing it
+
+Lewis’s teaching on the new life is rich and searching, and much of it is a vivid account of what the New Testament calls sanctification and adoption. His insistence that God wants all of us, not a part, is a bracing word for comfortable believers.
+
+Evangelical readers will want to add what Lewis left implicit. His account of the Christian life is overwhelmingly about the gradual transformation of the believer, and it says relatively little about the believer’s standing before God from the first moment of faith. The New Testament holds the two together, but it puts justification first. A believer is not accepted by God because he is becoming like Christ; he is becoming like Christ because he has already been accepted, freely, for Christ’s sake. Lewis’s reluctance to engage with the Reformation’s language of justification by faith alone leaves his account open to being read as though our acceptance depended on our progress. That is not what the apostles taught, and the anxious reader should rest on their word.
+
+> Therefore being justified by faith, we have peace with God through our Lord Jesus Christ. ROMANS 5:1
+
+> For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: not of works, lest any man should boast. EPHESIANS 2:8–9
+
+Read with that foundation in place, Lewis’s picture of the long, costly, glorious remaking of the believer is one of the finest things he wrote.
+
+### FOR REFLECTION AND ACTION
+
+1. Read John 1:12–13 and Galatians 4:4–7. Give thanks that you have been made a child of God.
+2. Ask yourself whether you have been content to let God improve you a little, rather than remake you entirely. What part of your life are you holding back?
+3. Think of a Christian you find difficult. Remember that God judges the raw material differently, and pray for that person.
+4. Look honestly at your giving. Is it comfortable? Ask God whether He wants more.
+5. If you have been anxious about whether you are changing fast enough, read Romans 5:1–11 and rest on your justification.
+
+### A PRAYER
+
+> Father, You have given me the right to become Your child, through faith in Your Son.
+> I confess that I have wanted to be improved, not remade, and that I have held back parts of my life from You.
+> Take all of me. Knock down what must come down, and build what You intend, however long it takes and whatever it costs.
+> Thank You that You have accepted me in Christ already, and that the One who began this good work in me will finish it. Amen.
+
+# Letters from Below
+
+> Be sober, be vigilant; because your adversary the devil, as a roaring lion, walketh about, seeking whom he may devour. 1 PETER 5:8
+
+In the summer of 1940, sitting in church, Lewis had an idea for a book. It would be a series of letters from a senior devil to a junior one, giving him advice on how to win a human soul. It appeared, first as a weekly series in an Anglican newspaper and then as a book in 1942, under the title The Screwtape Letters. It made Lewis famous on both sides of the Atlantic, and it has never been out of print.
+
+## What the book is
+
+The book is a correspondence in one direction only. Screwtape, an experienced official in the bureaucracy of hell, writes to his nephew Wormwood, a beginner assigned to tempt a young Englishman during the Second World War. Everything is turned upside down: God is the enemy, the devil is the father, and every Christian virtue is a danger to be avoided. The effect is that the reader sees his own life from an unexpected angle, and recognises, often with a shock, the small and ordinary ways in which he is drawn away from God. Lewis said that writing the book was a strain, because he had to keep thinking his way into a point of view he loathed.
+
+> Lest Satan should get an advantage of us: for we are not ignorant of his devices. 2 CORINTHIANS 2:11
+
+## Two errors
+
+In his preface, Lewis warned against two opposite mistakes about devils. The first is to disbelieve in them altogether, and so to be defenceless against an enemy one has decided does not exist. The second is to take an excessive and unhealthy interest in them, and so to give them an attention they do not deserve. He himself believed, as the church has always believed, that there are fallen angels who, in their pride, rebelled against God and now seek the ruin of human beings. He did not believe that the devil is God’s equal opposite; he is a creature, and a defeated one. But he is real.
+
+> And the angels which kept not their first estate, but left their own habitation, he hath reserved in everlasting chains under darkness unto the judgment of the great day. JUDE 6
+
+## What the book teaches
+
+The Screwtape Letters is full of shrewd observation, and a few of its lessons stand out.
+
+The first is that the road to destruction is usually gradual. Temptation rarely asks for dramatic sins. It is content with small compromises, minor neglects, and a slow drift away from God that never seems to be heading anywhere in particular. In the book’s logic, ruin is reached far more often by drift than by any single leap.
+
+The second is that distraction is often more useful to the tempter than argument. A person is much more likely to be led away from God by a stream of trivial occupations, idle curiosity and vague worry than by a well-reasoned case against Christianity. Keep a man busy, keep his mind on the next thing, and he will never have time to think about what matters most.
+
+> Martha, Martha, thou art careful and troubled about many things: but one thing is needful. LUKE 10:41–42
+
+The third is that the tempter loves to work on disappointment. A new Christian, full of enthusiasm, goes to church and finds there the ordinary people of his neighbourhood, with their bad singing and their odd clothes, and is tempted to conclude that the whole thing cannot be true. Lewis saw that the church as it appears to an outsider is easy to despise, and that one of the devil’s chief weapons is to keep believers from seeing the church as it truly is, in Christ.
+
+The fourth is that the tempter would rather we lived anywhere than in the present. He wants us full of anxiety about the future or regret about the past, because it is only in the present moment that we can obey God, receive His grace and love our neighbour. The future, in particular, is the place where fear and greed both breed.
+
+> Take therefore no thought for the morrow: for the morrow shall take thought for the things of itself. Sufficient unto the day is the evil thereof. MATTHEW 6:34
+
+The fifth is that pleasure, in itself, belongs to God. The devils in the book have made nothing good; every real pleasure is God’s invention. All they can do is persuade people to take God’s gifts at the wrong times, in the wrong ways or in the wrong amounts, until what was a gift becomes a compulsion that no longer even delights.
+
+The sixth is that the believer’s low seasons are part of God’s plan. The Christian life, Lewis observed, moves in rhythms of high and low, and the low times, when prayer is dry and God seems absent, are not signs of failure. They are often the times when God is teaching His child to walk by faith and to obey without the support of feeling. The tempter wants us to treat these times as proof that our faith was an illusion; God wants us to learn to keep going.
+
+> For we walk by faith, not by sight. 2 CORINTHIANS 5:7
+
+## Resisting the enemy
+
+The book is not a manual of spiritual warfare, and it does not offer techniques for fighting the devil. Its counsel is rather the old and plain counsel of Scripture: watch, pray, stay humble, stay in the fellowship of believers, live in the present, and keep turning back to God. Lewis believed that the devil has no power over a person who keeps turning to God, however often he falls.
+
+> Submit yourselves therefore to God. Resist the devil, and he will flee from you. JAMES 4:7
+
+## Weighing it
+
+The Screwtape Letters is one of the most useful books on temptation written in the last century, and there is little in it that an evangelical reader need set aside. Its understanding of sin, of the devil and of the believer’s inner life is broadly biblical, and its wit makes its lessons memorable.
+
+One caution may be added. Because the book shows the devil working so cleverly, a reader can come away more impressed by the tempter than by the Saviour. The New Testament never leaves the devil without mentioning his defeat. The believer who reads Screwtape should also read Colossians 2 and Revelation 12, where the enemy is seen disarmed and cast down.
+
+> And having spoiled principalities and powers, he made a shew of them openly, triumphing over them in it. COLOSSIANS 2:15
+
+### FOR REFLECTION AND ACTION
+
+1. Where has a gentle slope of small compromises been leading you away from God? Name it and turn back.
+2. Look at how you spend a typical day. Where does distraction crowd out time with God?
+3. Have you been disappointed with your church? Pray for the people who disappoint you, and ask God to show you the church as He sees it.
+4. Notice this week when your mind runs to future fears or past regrets. Bring it back to the present, and to God.
+5. Read Ephesians 6:10–18 and Colossians 2:13–15, and give thanks for Christ’s victory over the enemy.
+
+### A PRAYER
+
+> Lord, I have an adversary who is real and cunning, and I am often unaware of his devices.
+> Guard me from the small compromises, the endless distractions and the quiet disappointments that would draw me from You.
+> Keep me in the present, where I can obey You, and keep me humble, so that I do not fall.
+> Thank You that the enemy is a defeated foe, disarmed at the cross. Let me stand in Christ’s victory today. Amen.
+
+# The Problem of Pain
+
+> Shall not the Judge of all the earth do right? GENESIS 18:25
+
+The first of Lewis’s popular Christian books was written to order. In 1939 a publisher asked him to write a short book on suffering for a series aimed at general readers. He agreed, though he said in his preface that he wished he could have published it anonymously, because he knew he was writing about something that others had borne far more bravely than he. The Problem of Pain appeared in 1940, as Britain went to war. It is a book of the head more than of the heart, but it is a careful and serious attempt to think through the hardest objection to the Christian faith.
+
+## The problem stated
+
+The objection is an ancient one. A God who was both good and all-powerful, it says, would not allow His creatures to suffer; His creatures do suffer; so He must lack either goodness or power. Lewis set out to show that the argument depends on what we mean by the words good, almighty and happy, and that the Christian meanings of those words change the problem considerably.
+
+> Clouds and darkness are round about him: righteousness and judgment are the habitation of his throne. PSALM 97:2
+
+## What almighty means
+
+He began with omnipotence. To say that God is almighty, Lewis argued, means that He can do anything that is possible in itself. It does not include doing what is self-contradictory. God cannot make a square circle, because a square circle is not a thing at all; it is a meaningless combination of words. Now, if God chose to make free creatures who could know and love Him and one another, He had to make them a world to live in — a stable, ordered, shared environment where they could meet and act. But such a world, with fixed properties, will necessarily allow some creatures to hurt others. The same fire that cooks a meal can burn a house down. God could, in principle, intervene to prevent every harm, but a world in which He did so continually would be a world in which no free choice had real consequences.
+
+## What good means
+
+Lewis then turned to the goodness of God. Our trouble, he suggested, is that we tend to want God to be kind rather than loving — to be an indulgent elderly relative who wants only that everyone should have a pleasant time. But love is far more demanding than kindness. We are kind to strangers; we love our children, and because we love them we will not leave them as they are. A craftsman takes the most trouble over the work he cares about most, and the trouble is a measure of his care. God’s love for us is like that. He wants us not merely to be comfortable but to be good, because only goodness can bring us into lasting joy in His presence.
+
+> For whom the Lord loveth he chasteneth, and scourgeth every son whom he receiveth. HEBREWS 12:6
+
+## Human wickedness and the Fall
+
+Lewis then insisted, against the mood of his time, that much of the suffering in the world is caused by human beings. Most of the pain people endure is inflicted by other people: by greed, cruelty, war, injustice and neglect. And he argued that a modern reluctance to talk about sin had made the problem seem more mysterious than it is. The Christian doctrine of the Fall holds that humanity has rebelled against God and is, as a race, in a state of disorder. Our suffering must be understood against the background of that rebellion.
+
+> Wherefore, as by one man sin entered into the world, and death by sin; and so death passed upon all men, for that all have sinned. ROMANS 5:12
+
+## Pain as a messenger
+
+Lewis argued that pain has a peculiar power that pleasure does not. We can take our pleasures for granted, and we can ignore the quiet voice of conscience; but pain cannot be ignored. It breaks through our complacency, shatters the illusion that all is well, and confronts us with the fact that we are not self-sufficient. A man who is getting along comfortably may never think of God at all. Suffering makes him ask questions. It does not always bring him to God — it can harden as well as soften — but it gives God an opening that comfort does not.
+
+> Before I was afflicted I went astray: but now have I kept thy word. PSALM 119:67
+
+He was careful not to say that all suffering is deserved, or that suffering is good in itself. Pain is an evil. But God, who did not cause the Fall, can use even the evils that follow from it to bring His children home.
+
+## Hell, animals, heaven
+
+The last chapters of the book took up three further subjects. On hell, Lewis admitted that no Christian doctrine was less welcome to him, and that he held it because Scripture, and above all the Lord’s own words, left him no choice. He argued that hell is not a punishment arbitrarily imposed but the final condition of those who have chosen, to the end, to be on their own terms rather than God’s — and that God respects that choice.
+
+On animal suffering he admitted frankly that he was speculating. He wondered whether the higher animals might in some way share in the resurrection through their relationship with human beings. He offered this as a guess and asked his readers to treat it as one.
+
+On heaven he wrote some of the most beautiful pages in the book, arguing that the secret longing he had felt all his life, the longing described in an earlier chapter of this companion, is the very thing that heaven will fulfil.
+
+## Weighing it
+
+The Problem of Pain is a valuable book, and its central arguments — about omnipotence, about love that is more than kindness, about the reality of human sin, and about the use God makes of suffering — are consistent with Scripture and have helped many readers.
+
+Two points need weighing. The first is Lewis’s account of the Fall. Accepting, as a scientific hypothesis, that the human body may have developed over a long period, he offered what he presented openly as a guess — a plausible story rather than a dogma — in which God, at a certain point, brought a creature into full consciousness of Himself, and that creature then fell by choosing self over God. Lewis was careful to say that he was not certain of this account. He was also, throughout his life, a sharp critic of evolution treated as a total worldview — the belief that everything is steadily improving and that nature explains itself — which he regarded as a modern myth with no scientific standing. Many evangelical readers will hold, with the plain reading of Genesis and of Paul’s teaching in Romans 5 and 1 Corinthians 15, that Adam was a real historical man, created directly by God and the father of all humanity, and will find Lewis’s speculation unnecessary and unpersuasive. They should read the chapter knowing that he presented it tentatively, and that his main argument does not depend on it.
+
+> And the Lord God formed man of the dust of the ground, and breathed into his nostrils the breath of life; and man became a living soul. GENESIS 2:7
+
+The second is a matter of tone. The Problem of Pain is clear and confident, and twenty years later Lewis himself would discover that the arguments, true as they were, did not make suffering easier to bear when it came to him. That discovery is the subject of the next chapter.
+
+### FOR REFLECTION AND ACTION
+
+1. When you think of God’s goodness, do you think more of kindness or of love? Read Hebrews 12:5–11 and consider the difference.
+2. Think of a time when suffering made you think about God. Did it soften you or harden you?
+3. Name one suffering in the world that you have blamed on God which is in fact the work of human sin. Pray about it, and ask what you might do.
+4. Read Romans 8:18–25. How does Paul set present suffering against future glory?
+5. If you are suffering now, do not hurry to an answer. Bring the pain itself to God.
+
+### A PRAYER
+
+> Judge of all the earth, You will do right, even when I cannot see how.
+> Forgive me for wanting You to be merely kind, and for resenting the love that will not leave me as I am.
+> Where I suffer through my own sin, bring me to repentance. Where I suffer through the sins of others, bring me justice and comfort. Where I cannot understand, keep me trusting.
+> Use every pain to bring me nearer to You, and keep before me the glory that shall be revealed, through Jesus Christ my Lord. Amen.
+
+# A Grief Observed
+
+> My God, my God, why hast thou forsaken me? why art thou so far from helping me, and from the words of my roaring? PSALM 22:1
+
+When Joy Davidman died in July 1960, Lewis was sixty-one and had been married for little more than four years. In the weeks that followed he did what a writer does: he wrote. He filled a set of notebooks with his thoughts and feelings, recording them as honestly as he could, without trying to make them presentable. The next year he published them, under a pseudonym, as A Grief Observed. It is said that some who did not know who had written it recommended it to him in his grief. It is a short, raw, unsettling book, and it has been a lifeline to countless people in bereavement.
+
+## Honesty in grief
+
+The first thing to notice about A Grief Observed is its honesty. Lewis does not pretend. He describes the physical feel of grief, the restlessness, the strange sense of being cut off from everyone around him. He describes the embarrassment of friends who do not know what to say. He describes the painful moments when he catches himself forgetting, for an instant, that she is gone. And he describes, above all, his struggle with God.
+
+> Why standest thou afar off, O Lord? why hidest thou thyself in times of trouble? PSALM 10:1
+
+Lewis’s trouble was not that he stopped believing in God. It was that he began to fear that God might be very different from what he had believed. When he turned to God in his grief, the heavens seemed silent. When he had been happy, he had felt God’s presence; now, when he most needed it, there was nothing. For a while he entertained the terrible thought that God might be real but not good — that His purposes might be cruel. He wrote down these thoughts as he had them, without softening them.
+
+## The Psalms knew
+
+This kind of honesty may shock some readers, but it is deeply biblical. The Psalms are full of the same complaints. Job cried out against God, and God in the end said that Job had spoken rightly, while his tidy-minded comforters had not. Jeremiah accused God of deceiving him. The Lord Jesus Himself, on the cross, took up the opening words of the twenty-second Psalm. The Bible does not ask the grieving to pretend. It gives them words for their anguish and invites them to bring it to God.
+
+> How long wilt thou forget me, O Lord? for ever? how long wilt thou hide thy face from me? PSALM 13:1
+
+> But I have trusted in thy mercy; my heart shall rejoice in thy salvation. PSALM 13:5
+
+## Turning
+
+Gradually, over the course of the four notebooks, something changes. Lewis notices that his own frantic grief may have been part of what made God seem absent, as a man who is shouting cannot hear an answer. He notices that his memories of Joy are already beginning to blur into a picture of his own making, and he is afraid of losing the real woman behind it. And slowly he comes to see that his picture of God, too — even his best and truest picture — was not God. It had to be broken, and God Himself had broken it. The breaking of our images of God, he came to believe, is one of the marks of His presence, not His absence.
+
+> For my thoughts are not your thoughts, neither are your ways my ways, saith the Lord. ISAIAH 55:8
+
+The book does not end with a solution. It ends with something closer to peace — a peace that has not explained the pain away, but has found God on the other side of it. Lewis records a moment when he was suddenly aware of Joy, not as a ghost or a rush of feeling, but as a calm sense of her very self, briefly near. He records a return of the capacity to praise. And he records a deep sense that his questions were not so much answered as quietly laid aside, as questions often are in the presence of someone we have come to trust.
+
+## The two books together
+
+A Grief Observed is often read as a correction of The Problem of Pain, and in a sense it is. The earlier book is confident and argued; the later is broken and searching. But Lewis did not reject what he had written in 1940. He simply discovered that knowing the right answers did not make suffering easier to endure. The arguments were true, but truth in the head is not the same as comfort in the heart, and comfort, when it came, came from God and not from arguments.
+
+> Blessed be God, even the Father of our Lord Jesus Christ, the Father of mercies, and the God of all comfort; who comforteth us in all our tribulation. 2 CORINTHIANS 1:3–4
+
+The two books belong together. The Problem of Pain is the book to read before suffering comes, to steady the mind. A Grief Observed is the book to read when it has come, to know that one is not alone, and that even the believer’s faith can be shaken to its foundations and survive.
+
+## Weighing it
+
+There is nothing in A Grief Observed that an evangelical reader need set aside, provided it is read as what it is: a diary, not a doctrine. Some readers, coming upon Lewis’s darkest moments, have concluded that he lost his faith. He did not. The book records a faith tested almost to destruction and coming through, chastened and deepened.
+
+One addition may be helpful. Lewis’s comfort, as the book records it, came largely through a change in his own perception. The Christian in grief has also a promise, objective and outside himself: that the dead in Christ are with the Lord, and that they will rise.
+
+> For if we believe that Jesus died and rose again, even so them also which sleep in Jesus will God bring with him. 1 THESSALONIANS 4:14
+
+> And God shall wipe away all tears from their eyes; and there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain: for the former things are passed away. REVELATION 21:4
+
+### FOR REFLECTION AND ACTION
+
+1. Have you ever felt that God was absent in your grief? Read Psalm 13 and Psalm 22, and notice how the writers bring their complaint to Him.
+2. Is there a grief you have never fully expressed to God? Write it down, honestly, as Lewis did.
+3. Think of someone you know who is grieving. Resist the temptation to explain; simply be present, and pray.
+4. Ask whether your picture of God needs breaking. What have you assumed about Him that may not be true?
+5. Read 1 Thessalonians 4:13–18 and give thanks for the hope of the resurrection.
+
+### A PRAYER
+
+> Lord, You know the grief that has no words, and You have given me the Psalms to speak it to You.
+> When You seem far away, when the heavens are silent and my prayers come back to me, do not let me go.
+> Break every false picture I have made of You, and show me Yourself as You are.
+> Comfort all who mourn today, and keep before us the day when You will wipe away all tears, through Jesus Christ, the resurrection and the life. Amen.
+
+# Letters on Prayer
+
+> And when thou prayest, thou shalt not be as the hypocrites are: for they love to pray standing in the synagogues and in the corners of the streets, that they may be seen of men. MATTHEW 6:5
+
+> But thou, when thou prayest, enter into thy closet, and when thou hast shut thy door, pray to thy Father which is in secret; and thy Father which seeth in secret shall reward thee openly. MATTHEW 6:6
+
+Lewis prayed every day of his Christian life, and he wrote about prayer more often than many readers realise. His last book, finished in the months before he died and published the year after, was devoted to it. Letters to Malcolm: Chiefly on Prayer is a series of letters to an imaginary friend, an old acquaintance with a wife and a son, with whom Lewis discusses the practice and the puzzles of prayer as two ordinary believers might, over many months. Malcolm never existed, but the questions are real ones, and the book is perhaps the most personal thing Lewis wrote about his own life with God.
+
+## The practice
+
+Lewis was refreshingly practical about how to pray. He saw no particular virtue in kneeling if kneeling made the body so uncomfortable that the mind could not attend; he also thought the body ought to have some share in prayer. He did not think the last minutes before sleep were a good time for the main prayers of the day, because a tired mind prays badly; he preferred to pray earlier in the evening. And he was willing to pray anywhere — on a walk, on a bench, on a journey — when a quiet room was not to be had.
+
+> Pray without ceasing. 1 THESSALONIANS 5:17
+
+He used both set prayers and his own words, and he thought each was a corrective to the other. Ready-made prayers, especially the old prayers of the church, kept him in touch with sound doctrine and stopped him from praying only about the things that happened to be on his mind. His own words kept his prayers honest and personal. He liked to take the clauses of the Lord’s Prayer one at a time and add to each his own particular thoughts and requests, so that the great prayer became a framework for the smaller ones.
+
+## The first prayer
+
+Lewis believed that the hardest thing in prayer is honesty. We come to God as we think we ought to be, with the feelings we think we ought to have, and we present Him with a respectable version of ourselves. But God already knows us completely. The purpose of prayer is not to inform Him but to stop hiding from Him. Lewis thought that the wisest first request in any prayer is simply for honesty on both sides: that we come as we really are, and that we meet God as He really is, rather than an image of Him of our own making.
+
+> O Lord, thou hast searched me, and known me. Thou knowest my downsitting and mine uprising, thou understandest my thought afar off. PSALM 139:1–2
+
+> Search me, O God, and know my heart: try me, and know my thoughts. PSALM 139:23
+
+This was the same lesson he had learned so painfully in grief. Our ideas of God are never quite God, and part of every true prayer is the willingness to have them corrected.
+
+## Adoration in small things
+
+One of the most helpful things in Letters to Malcolm is Lewis’s account of how ordinary pleasures can become occasions of worship. A cool breeze, the smell of earth after rain, the taste of good bread, the sight of sunlight on a wall — these, he said, need not distract us from God. If we attend to them rightly, each can become a small act of adoration, a moment in which we recognise the giver in the gift. We do not need to wait for great experiences in order to worship. We can begin with the little goods that come to us every hour, and thank the One from whom they come.
+
+> Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning. JAMES 1:17
+
+## Does prayer change things?
+
+Lewis did not avoid the hard questions. If God knows everything and has already decided what He will do, what is the point of asking Him for anything? Lewis answered, in several essays as well as in Letters to Malcolm, that God has chosen to give His creatures a real share in the running of the world. He lets us cause things by our work, and He lets us cause things by our prayers. When God answers a prayer, it is not that we have changed His mind; it is that He took our prayer into account from the beginning, as part of the way He chose to govern the world. Prayer is not magic, and it is not a technique for controlling God. But neither is it a pious exercise that changes only the person praying. It is one of the means God has appointed for doing what He does.
+
+> The effectual fervent prayer of a righteous man availeth much. JAMES 5:16
+
+Lewis also admitted a difficulty he could not solve. The New Testament seems to give two patterns of prayer. In one, the believer asks humbly, adding, as the Lord Himself did in Gethsemane, that God’s will be done. In the other, the believer is told to ask with complete confidence that he will receive what he asks. Lewis could not see how to hold both together, and he said so plainly. He offered the problem to others rather than pretending to an answer. It is a mark of his honesty that he left it open.
+
+> Saying, Father, if thou be willing, remove this cup from me: nevertheless not my will, but thine, be done. LUKE 22:42
+
+> Therefore I say unto you, What things soever ye desire, when ye pray, believe that ye receive them, and ye shall have them. MARK 11:24
+
+## Dry seasons
+
+Lewis was candid about the dullness of much prayer. He confessed that he often found prayer a duty rather than a delight, and that he was glad when it was over. He did not think this was cause for despair. The fact that prayer feels like a burden, he suggested, is a sign of our present condition as fallen creatures. One day, he believed, prayer will be pure delight; for now, it is often hard work, and the faithfulness of doing it anyway is itself pleasing to God.
+
+## Weighing it
+
+Letters to Malcolm is a wise, warm and practical book on prayer, and most of it can be received with gratitude. Its honesty, its humility, its delight in God’s gifts and its realism about dryness are all deeply biblical.
+
+Evangelical readers should be aware that the same book contains two of the convictions mentioned in the Introduction. Lewis wrote that he prayed for the dead, and he defended the practice. And he wrote that he believed in purgatory, though not in the form the Reformers had attacked. These views are weighed in chapter seventeen. They do not touch the heart of what he says about prayer, but they are there, and the reader should know it.
+
+### FOR REFLECTION AND ACTION
+
+1. Think about when and where you pray. Is there a better time or place that would help you attend to God?
+2. This week, pray the Lord’s Prayer slowly, adding your own particular thoughts and requests to each clause.
+3. Before you pray, ask God for honesty: to come as you really are, and to meet Him as He really is.
+4. Choose one ordinary pleasure each day — food, light, air, music — and turn it into a moment of thanksgiving.
+5. If prayer has become dry and dutiful, do not give up. Keep praying, and ask God to make it a joy again in His time.
+
+### A PRAYER
+
+> Our Father in heaven, You see me as I am. Let me come to You without pretence.
+> Forgive me for the respectable mask I bring to prayer, and for the false pictures of You I have made.
+> Thank You for every good gift that comes down from You — the light, the bread, the breath of each morning. Teach me to see You in them and to thank You for them.
+> When prayer is dry, keep me faithful. When it is a delight, keep me humble. And let Your will be done in me, as it is done in heaven. Amen.
+
+# The Four Loves
+
+> Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God. 1 JOHN 4:7
+
+In 1958 Lewis was invited to record a series of radio talks on love for an American audience. He used them as the basis for The Four Loves, published in 1960, the year Joy died. It is a mature book, the fruit of long reflection and of his own late and unexpected marriage, and it is one of the most searching things he wrote about the Christian life.
+
+## Need and gift
+
+Lewis began with a distinction. There is the love that comes from need — the love of a child running to its mother, or of a lonely man for company, or of a sinner turning to God for mercy. And there is the love that gives — the love of a father working to provide for his family, or of anyone who spends himself for another’s good. We tend to think of gift-love as the higher, and in some ways it is; it is the love most like God’s. But Lewis insisted that need-love is not shameful. Our whole relationship with God begins with need. We come to Him because we are empty, and it is no part of humility to pretend otherwise.
+
+> Blessed are they which do hunger and thirst after righteousness: for they shall be filled. MATTHEW 5:6
+
+He also noticed a third element, the love that simply appreciates — that delights in something for its own sake, apart from any need it meets or any gift it can receive. This is the love that gazes at a mountain or listens to music and is glad that such a thing exists. In its highest form, it is the love that adores God simply because He is glorious.
+
+## Affection
+
+The first of the four natural loves is affection, the love that grows between people who are familiar with one another: parents and children, brothers and sisters, old neighbours, even master and dog. The Greeks called it storge. It is the humblest and most widespread of the loves. It does not require the loved one to be admirable or attractive; it can grow between the most unlikely people, simply by sharing a life. It is the love behind most of the happiness in ordinary homes.
+
+But affection has its dangers. Because it grows out of familiarity, it can take people for granted. Because it is so comfortable, it can turn into a kind of ownership, resentful of any change in the loved one. Lewis drew a memorable picture of a mother whose endless, unwanted service to her family was in truth a way of controlling them, and of people who were rude at home in a way they would never be to strangers, because affection had become an excuse for bad manners.
+
+## Friendship
+
+The second is friendship, which the Greeks called philia. Lewis thought it had been badly neglected in modern times, partly because people mistook it for something else. Friendship, he said, arises when two or more people discover that they share some interest, insight or love — a subject, a question, a vision — that others around them do not share. Lovers are absorbed in each other. Friends are absorbed together in something else, and their friendship grows out of their common attention to it. That is why friendship, unlike romantic love, is not jealous; a third friend who shares the same interest adds to the circle rather than threatening it.
+
+> A man that hath friends must shew himself friendly: and there is a friend that sticketh closer than a brother. PROVERBS 18:24
+
+Lewis knew friendship from the inside. His circle of friends, the Inklings, was one of the great joys of his life. But he also saw friendship’s danger. Because it is a love between a few who share something others do not, it can turn into a clique, proud and exclusive, looking down on outsiders. The very thing that makes friendship precious can make it a breeding ground of pride.
+
+## Eros
+
+The third is eros, the love of being in love. Lewis was careful to distinguish it from mere sexual desire, which can exist without it. Eros is a love for a particular person, a longing to be united with the beloved, and in its first glow it can make a person forget himself entirely. It is one of God’s good gifts, and it is meant to find its fulfilment in marriage.
+
+Lewis saw that eros, more than any other love, can present itself as a god. A person in love may feel that the love itself justifies anything — any betrayal, any broken vow, any cruelty to others. Eros speaks with the voice of eternity, and lovers vow that it will last for ever. But feeling alone cannot deliver on the vows it inspires. Left to itself, it fades. It must be governed and sustained by something greater than itself — by commitment, by faithfulness, and finally by charity — if it is to last.
+
+> Set me as a seal upon thine heart, as a seal upon thine arm: for love is strong as death. SONG OF SOLOMON 8:6
+
+## Charity
+
+The fourth love is charity, the love the New Testament calls agape. It is God’s own love, the love that gives without needing to receive, and it is not a natural human love at all. It is a gift of God, and it is meant to take up all the natural loves into itself, transforming them.
+
+> Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up. 1 CORINTHIANS 13:4
+
+Here Lewis made his central point. The natural loves are good, and they are images of the love of God. But when any one of them is made absolute — when we love family, friends or beloved as though they were God — the love turns destructive. A mother’s affection, a friend’s loyalty, a lover’s passion can all become idols, demanding everything and justifying anything. The cure is not to love less, but to love God first, so that all the natural loves take their proper place beneath Him. Only then can they become what they were meant to be.
+
+Lewis was also clear that love always carries the risk of grief. A heart can be kept safe only by being kept to itself, and a heart kept to itself slowly hardens. The Christian does not avoid the risk. He accepts it, as Christ accepted it, and he finds that charity is strong enough to bear it.
+
+> Greater love hath no man than this, that a man lay down his life for his friends. JOHN 15:13
+
+## Weighing it
+
+The Four Loves is a wise and humane book, and its teaching is consistent with Scripture. Its warnings against idolatrous love, its defence of friendship, and its insistence that all natural loves must be ordered under the love of God are of great value.
+
+If anything is to be added, it is to bring the cross nearer the centre. Lewis described charity as the love that God gives and that we are to show; the New Testament defines it by pointing to the one place where it was fully shown.
+
+> Hereby perceive we the love of God, because he laid down his life for us: and we ought to lay down our lives for the brethren. 1 JOHN 3:16
+
+### FOR REFLECTION AND ACTION
+
+1. Think of the people you love with affection. Do you take any of them for granted, or try to control them? Ask God to show you.
+2. Thank God for a friend who shares your deepest interests. Consider whether your friendships have become exclusive.
+3. If you are married, ask whether your love is being sustained by faithfulness and charity, or only by feeling.
+4. Is there a natural love in your life that has become an idol? Put it back beneath your love for God.
+5. Read 1 Corinthians 13 slowly. Ask God to give you the love that it describes.
+
+### A PRAYER
+
+> Lord, You are love, and every love I know is a gift from You.
+> Thank You for the affection of family, the gift of friends, and the joy of human love. Forgive me where I have made any of them my god.
+> Fill me with Your own love, which suffers long and is kind, which gives without counting the cost.
+> Teach me to love You first, and to love others in You, as Christ loved us and gave Himself for us. Amen.
+
+# Myth Became Fact
+
+> And the Word was made flesh, and dwelt among us, (and we beheld his glory, the glory as of the only begotten of the Father,) full of grace and truth. JOHN 1:14
+
+The night walk with Tolkien and Dyson in September 1931 changed more than Lewis’s beliefs. It changed his understanding of how stories and truth are related. For years he had loved the old myths — the Norse gods, the Greek legends, the stories of a god who dies and comes back to life — and for years he had assumed that they were beautiful lies. What his friends showed him was that the story of Christ has all the shape of those myths, but with one difference: it happened. The dying and rising God is no longer a dream at the edge of history. He was born in Bethlehem, crucified under Pontius Pilate, and raised on the third day. Lewis later gave this idea a phrase of his own, in an essay with that title: myth became fact.
+
+## Hints among the nations
+
+This led Lewis to a generous view of pagan mythology. He did not think the old myths were simply demonic or simply false. He thought that God had scattered among the nations a kind of longing and a set of pictures — sacrifice, death and rebirth, a god who suffers for his people — that prepared the human imagination for the gospel. The myths were, in a sense, hints and foreshadowings allowed by God before the reality came. When the reality did come, it fulfilled them as a sunrise fulfils the promise of the dawn.
+
+> God, who at sundry times and in divers manners spake in time past unto the fathers by the prophets, hath in these last days spoken unto us by his Son. HEBREWS 1:1–2
+
+He was careful to say that this did not make Christianity one myth among many. The Christian story is unique precisely because it is true; the others are echoes and anticipations of it. And he insisted that the believer must hold onto both sides: Christ is fact, and must be believed as historical fact; but the fact also has the power of myth, and must be received with the imagination as well as the reason.
+
+## Reason and imagination
+
+This conviction shaped all of Lewis’s writing. He believed that reason is the faculty by which we judge whether something is true, but that imagination is the faculty by which we grasp what it means. We need both. An argument can convince the mind that God exists, but a story can make the heart feel what it would be like to meet Him. That is why Lewis wrote both apologetics and fiction, and why he saw no contradiction between them.
+
+## Narnia
+
+The Chronicles of Narnia grew from this conviction. Lewis said that they began not with a message but with pictures that had been in his mind for years, and that the stories grew out of the pictures. He was firm that Narnia was not an allegory, in which each character stands for something else. He described it instead as a supposal: suppose there were another world, and suppose that the Son of God chose to enter it as He entered ours, what might happen? Aslan, the great lion, is not a symbol of Christ but a picture of what Christ might be like in such a world.
+
+> The lion of the tribe of Juda, the Root of David, hath prevailed to open the book. REVELATION 5:5
+
+He also hoped that the stories might do something that sermons could not. Many people, he thought, had grown up with a sense that they ought to feel deeply about God and Christ, and that very sense of duty had made real feeling hard. By setting the gospel in a new world, under new names, he hoped to let readers meet it fresh, before the old associations could get in the way. Countless children, and many adults, have found that this is exactly what happened to them.
+
+## Other stories
+
+Lewis wrote other fiction with the same aim. His space trilogy — Out of the Silent Planet, Perelandra and That Hideous Strength — imagines a universe in which the planets are inhabited by unfallen creatures and only Earth has rebelled against its Maker. It is a way of seeing our world from the outside, and of seeing how strange our sin is. Till We Have Faces, his last novel, retells an ancient myth of Cupid and Psyche from the point of view of an elder sister who loves possessively, and it is a profound study of how human love can become a form of selfishness and how the soul must be stripped bare before it can meet God.
+
+## Weighing it
+
+Lewis’s understanding of myth and imagination has enriched Christian thinking and writing, and his stories have led many to faith. His insistence that the gospel is historical fact, and not merely a beautiful story, is exactly right.
+
+Two points need weighing. The first is his generous view of pagan myths. Scripture does speak of God leaving a witness among the nations, but it also speaks of idolatry as darkness and of the gods of the nations as no gods. The good dreams of paganism, if that is what they were, were mixed with much that was false and degrading. Lewis knew this, but a reader of his fiction should remember it.
+
+> For all the gods of the nations are idols: but the Lord made the heavens. PSALM 96:5
+
+The second, and more important, concerns Scripture itself. Lewis applied his literary understanding of myth not only to pagan stories but to parts of the Old Testament. In Reflections on the Psalms and in some of his letters, he suggested that certain Old Testament narratives might be myth gradually becoming history, and that books such as Job and Jonah need not be read as literal history. He also believed that the Scriptures, though truly the Word of God, carried that Word through human writers whose limitations sometimes showed, and that not every sentence of the Bible is free from error in matters of science or history. He believed firmly in the historicity of the Gospels, and he was scornful of attempts to dismiss the miraculous in the life of Christ. But on the Old Testament, and on the doctrine of inspiration, he stood apart from the evangelical conviction that Scripture is wholly true and trustworthy in all that it affirms. Evangelical readers will want to hold, with the Lord and His apostles, that the whole of Scripture is God-breathed.
+
+> All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness. 2 TIMOTHY 3:16
+
+> For the prophecy came not in old time by the will of man: but holy men of God spake as they were moved by the Holy Ghost. 2 PETER 1:21
+
+### FOR REFLECTION AND ACTION
+
+1. Think of a story that has helped you understand the gospel more deeply. What did it show you that an argument could not?
+2. Read John 1:1–18 slowly. Give thanks that the Word became flesh in real history.
+3. If you have children or grandchildren, consider reading them a good story that points to Christ, and talk with them about it.
+4. Ask yourself whether your faith engages your imagination as well as your reason. How might you let it do so more fully?
+5. Read 2 Timothy 3:14–17 and give thanks for the trustworthiness of the Scriptures.
+
+### A PRAYER
+
+> Lord Jesus Christ, You are the true story to which every good story points.
+> Thank You that You were born, died and rose again in real history, and that the gospel is not a dream but a fact.
+> Sanctify my imagination as well as my mind. Let me see Your glory in new ways, and love You more.
+> Keep me faithful to Your written Word, and let all my reading lead me back to You. Amen.
+
+# The Grand Miracle
+
+> Ah Lord God! behold, thou hast made the heaven and the earth by thy great power and stretched out arm, and there is nothing too hard for thee. JEREMIAH 32:17
+
+In 1947 Lewis published Miracles, the most philosophical of his popular books. It addressed a question that many modern people consider settled: can a reasonable person believe in miracles at all? Lewis argued that the answer depends on what one believes about the nature of reality, and that the case against miracles rests on a philosophy that cannot survive examination.
+
+## Two pictures of the world
+
+Lewis began by distinguishing two views of reality. The first, which he called naturalism, holds that nature is all there is — a vast, self-contained system of causes and effects, with nothing outside it. If naturalism is true, miracles are impossible, because there is nothing outside nature to interfere with it. The second view, which he called supernaturalism, holds that nature is not the whole of reality; that there is a God who made it and who stands outside it. If supernaturalism is true, miracles are at least possible.
+
+The question, then, is which picture is true. And here Lewis made the argument for which the book is chiefly remembered.
+
+## The argument from reason
+
+If naturalism is true, Lewis argued, then every thought we think is simply the product of physical causes — chemical events in the brain, themselves caused by earlier events, going back to the beginning of the universe. Our thoughts are not caused by the truth of what we think, but by blind processes that have nothing to do with truth. But if that is so, we have no reason to trust our thoughts — including the thought that naturalism is true. Naturalism, in other words, undermines the very reasoning by which anyone might come to believe it. It saws off the branch on which it sits.
+
+> The fool hath said in his heart, There is no God. PSALM 14:1
+
+Lewis concluded that human reason, if it is to be trusted at all, must have its source in something beyond nature — in a rational Mind. Our capacity to know truth is itself evidence that we are not merely products of nature, but creatures made in the image of a reasoning God.
+
+## A debate and a revision
+
+This argument led to one of the most famous episodes in Lewis’s career. In February 1948, at the Socratic Club in Oxford, the philosopher Elizabeth Anscombe, herself a devout Christian, presented a paper criticising the argument as Lewis had stated it. She argued that he had confused different senses of words such as cause and reason. Accounts of the evening differ about how badly Lewis felt he had fared, but he took the criticism seriously, and when Miracles was reissued in 1960 he rewrote the chapter to meet it. That is worth remembering. Lewis did not treat his arguments as infallible, and he was willing to revise them when a fair critic showed him a weakness. Philosophers still debate the argument in its revised form, and many think it has real force.
+
+## What a miracle is
+
+Lewis also addressed the common objection that miracles break the laws of nature. He argued that this misunderstands what laws of nature are. The laws describe what happens when nothing outside nature intervenes. They do not forbid intervention; they simply say what will happen once it has occurred. If you place a stone on a table, the laws of physics will tell you that it stays there; if someone picks it up, the laws do not complain. In the same way, a miracle does not break the laws of nature. God introduces a new event into the system, and the laws at once take it up and carry on from there. Once the new event has occurred, nature receives it and carries on with it in her ordinary way.
+
+> And Jesus took the loaves; and when he had given thanks, he distributed to the disciples, and the disciples to them that were set down. JOHN 6:11
+
+He also responded to the objection, associated with the philosopher David Hume, that no amount of testimony could ever make a miracle credible, because the uniform experience of humanity is against it. Lewis pointed out that we only know the experience against miracles is uniform if we already know that all reports of miracles are false — which is precisely the question at issue.
+
+## The Grand Miracle
+
+The heart of the book is not the philosophy but the Incarnation. Lewis called it the Grand Miracle, the central event of which all other miracles are either preparations or consequences. In the Incarnation, God the Son came down into His own creation, took on human nature, went down even into death, and rose again, bringing human nature up with Him. Lewis saw this pattern of descent and return everywhere: in the seed that falls into the ground and dies and then springs up; in the rhythm of night and day; in the stories of the dying god. All of these, he suggested, are echoes of the great movement by which God stooped down to raise us up.
+
+> Except a corn of wheat fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit. JOHN 12:24
+
+> Who, being in the form of God, thought it not robbery to be equal with God: but made himself of no reputation, and took upon him the form of a servant, and was made in the likeness of men. PHILIPPIANS 2:6–7
+
+The miracles of Christ, Lewis argued, are not random displays of power. They are of a piece with creation, not at odds with it. Augustine had made the point long before him: the Lord who turned water into wine at Cana is the same Lord whose ordinary gifts fill the vineyards every year. And the resurrection, Lewis believed, is the first sign of a new creation, the beginning of the remaking of nature itself.
+
+## Weighing it
+
+Miracles is a demanding book, and not every reader will follow every step of its argument. But its central claims — that naturalism cannot account for reason, that miracles are possible if God exists, and that the Incarnation is the key to the whole Christian story — are sound, and they have helped many thinking people.
+
+If there is a caution, it is that arguments of this kind can establish only that miracles are possible. Whether any particular miracle actually happened is a question of evidence, and for the Christian the decisive evidence is the testimony of the apostles to the risen Christ. Lewis knew this and pointed to it; a reader should go on from his book to the testimony itself.
+
+> And that he was seen of Cephas, then of the twelve: after that, he was seen of above five hundred brethren at once. 1 CORINTHIANS 15:5–6
+
+### FOR REFLECTION AND ACTION
+
+1. Have you been influenced by the assumption that miracles cannot happen? Where did that assumption come from?
+2. Thank God that your ability to reason and to know truth is itself a gift from Him.
+3. Read the account of a miracle in the Gospels, and consider what it shows about the God who made nature.
+4. Meditate on Philippians 2:5–11. Trace the pattern of Christ’s coming down and being lifted up.
+5. Read 1 Corinthians 15 and give thanks for the evidence of the resurrection.
+
+### A PRAYER
+
+> Almighty God, You made the heavens and the earth, and there is nothing too hard for You.
+> Thank You for the gift of reason, and for making me able to know Your truth.
+> Thank You above all for the Grand Miracle: that Your Son came down to us, took our nature, died our death, and rose again to bring us up with Him.
+> Let me live today in the power of His resurrection, and look for the day when all creation will be made new. Amen.
+
+# The Weight of Glory
+
+> For our light affliction, which is but for a moment, worketh for us a far more exceeding and eternal weight of glory. 2 CORINTHIANS 4:17
+
+On the evening of the eighth of June, 1941, Lewis climbed into the pulpit of the university church of St Mary the Virgin in Oxford and preached a sermon that many consider the finest thing he ever wrote. Its title came from Paul’s words to the Corinthians. Its subject was heaven, and what it means for a creature to share in the glory of God.
+
+## Wanting too little
+
+Lewis began with a startling claim. Most modern people, he observed, assume that the problem with human desire is that it is too strong; that we want too much, and should learn to want less. Lewis turned this upside down. The promises of Scripture are so great — joy, glory, the vision of God, the inheritance of all things — that, measured against them, our fault is a poverty of desire, not an excess of it. We are offered infinite joy, and we settle for small and passing pleasures, because we cannot imagine anything better.
+
+> Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him. 1 CORINTHIANS 2:9
+
+This was the argument from desire, which we met in an earlier chapter, turned into a sermon. Lewis believed that the hunger in the human heart is a sign of what God intends to give, and that the right response is not to suppress it but to direct it towards Him.
+
+## What glory means
+
+He then asked what the Bible means by glory. The word, he noticed, can suggest fame or brightness, and both seemed at first unattractive — fame because it sounds like vanity, brightness because it is hard to see why anyone should want to glow. But on reflection he came to see that both meanings are true. The glory promised to the believer is, first, to be noticed and approved by God — to hear from Him the words, well done. Nothing could be further from vanity. It is the pleasure of a child praised by a father, of a creature that has pleased its creator. And glory is, second, a kind of radiance, a sharing in the beauty and life of God Himself, so that we become what we were made to be.
+
+> His lord said unto him, Well done, thou good and faithful servant: thou hast been faithful over a few things, I will make thee ruler over many things: enter thou into the joy of thy lord. MATTHEW 25:21
+
+> Then shall the righteous shine forth as the sun in the kingdom of their Father. MATTHEW 13:43
+
+## The weight of our neighbour’s glory
+
+The sermon ends with its most famous and most searching passage. If every person we meet is destined for eternity — either to share God’s glory or to be shut out from it for ever — then no human being is unimportant. The people we pass in the street, the colleagues we work with, the family members who annoy us, are not passing figures in a temporary world. Each of them will exist for ever, and each is becoming, day by day, something either glorious or terrible. And our dealings with them help to push them one way or the other.
+
+> Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is. 1 JOHN 3:2
+
+Lewis drew from this a conclusion about how we should treat one another. Lewis did not mean that Christians should go about with long faces; laughter and play belong to the Christian life too. He meant that we must take people seriously — must treat them with a respect and a love that recognise what they are and what they may become. Every neighbour carries a sacredness that, in Lewis’s view, only the bread and wine of the Lord’s Table could exceed. Our friendships, our marriages, our daily courtesies are all part of the great work of helping one another towards glory.
+
+## Weighing it
+
+The Weight of Glory is a masterpiece, and its teaching is deeply biblical. Its recovery of the glory promised to believers, its insistence that heaven is the fulfilment of our deepest desires, and its call to take our neighbours seriously are all of great value.
+
+Evangelical readers may wish to make one point clearer than Lewis did. The glory promised to the believer is not earned by faithfulness, though faithfulness will be rewarded. It is a gift, given to those who are in Christ, and it rests on His merits, not ours.
+
+> And if children, then heirs; heirs of God, and joint-heirs with Christ; if so be that we suffer with him, that we may be also glorified together. ROMANS 8:17
+
+And the remark about the holiness of the neighbour, set beside the sacrament, reflects Lewis’s own sacramental churchmanship. Readers of other traditions will want to put it in their own terms. But the point beneath it — that the people around us bear the image of God and are destined for eternity — is the plain teaching of Scripture.
+
+### FOR REFLECTION AND ACTION
+
+1. Have you been settling for small pleasures when God is offering you infinite joy? Name one.
+2. Read 1 Corinthians 2:9–10 and Romans 8:18. Let the greatness of God’s promises enlarge your desire.
+3. Think of the person you find most difficult. Remember that he or she will exist for ever, and pray for that person.
+4. Consider how you speak to and about others. Does it reflect the respect due to an eternal being made in God’s image?
+5. Ask God to let you hear, at the end, the words well done, and to make you faithful in small things now.
+
+### A PRAYER
+
+> Father of glory, You have prepared for those who love You things that no eye has seen and no heart has imagined.
+> Forgive me for wanting so little, and for settling for small pleasures when You offer me Yourself.
+> Teach me to see every person I meet as an eternal being made in Your image, and to treat each one with love and respect.
+> Bring me at last into Your glory, to hear Your voice say well done, through Jesus Christ, in whom all Your promises are yes. Amen.
+
+# Heaven, Hell and the Great Choice
+
+> I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live. DEUTERONOMY 30:19
+
+Lewis believed in heaven and hell, and he believed that every human being is moving, day by day, towards one or the other. He wrote about this most memorably in The Great Divorce, published in 1945, a dream-story in which a group of people from a grey and dreary town take a bus journey to the outskirts of heaven. The title is a reply to William Blake, who had written of the marriage of heaven and hell. Lewis’s point was that the two can never be married. They must be divorced, finally and for ever, and every soul must choose between them.
+
+## What the book is
+
+The Great Divorce is not a map of the afterlife. Lewis said plainly that it was an imaginative fantasy, and he did not want readers to take its details as a guess about what happens after death. The visitors from the grey town find heaven’s outskirts so solid and real that they themselves seem ghostly; even the grass hurts their feet. They are met by bright figures who invite them to stay and to go on into the mountains. But almost all of them refuse. Each clings to something — a grievance, a pride, a possessive love, a theological opinion, a habit of self-pity — that he will not let go, and each would rather keep it than enter joy. The narrator’s guide on this visit is George MacDonald, the writer whose book had first touched Lewis’s imagination in his youth.
+
+## Hell is chosen
+
+The central teaching of the book is one that Lewis had already set out in The Problem of Pain. Hell, he believed, is not a place to which God sends people against their will. It is the final state of those who have refused God to the end. The final division, as Lewis saw it, runs between those who in the end surrender their will to God and those whom God in the end leaves to their own. God does not force anyone into heaven. He offers it, again and again, and those who refuse it finally receive what they have chosen.
+
+> And this is the condemnation, that light is come into the world, and men loved darkness rather than light, because their deeds were evil. JOHN 3:19
+
+Lewis did not soften the reality of hell. He believed it was real, terrible and permanent. But he insisted that it is not the expression of God’s cruelty but of His respect for the choices of His creatures.
+
+## Heaven is real
+
+The other side of the book’s teaching is that heaven is not thinner or less real than earth, but more real. Our world, compared with heaven, is like a shadow compared with the solid object. Heaven is not a vague, misty place of disembodied spirits, but a world of overwhelming solidity, beauty and joy. Everything good in this world will be found there, perfected. Everything we have loved rightly will be given back to us.
+
+> For now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known. 1 CORINTHIANS 13:12
+
+## Weighing it
+
+The Great Divorce is a profound book, and its teaching on the reality of choice, the seriousness of sin and the glory of heaven is of great value. Many readers have found in its portraits of the ghosts an uncomfortable mirror of their own hearts.
+
+Two points of Lewis’s teaching on the last things must be weighed, and it is right to be plain about both.
+
+The first is purgatory. In The Great Divorce, the grey town is presented as something that may be either hell or purgatory, depending on whether its inhabitants leave it. In Letters to Malcolm, Lewis wrote plainly that he believed in purgatory — not the system of punishments, payments and indulgences that the Reformers rightly attacked, but a process of purification after death, which he thought the redeemed would themselves want, so as to be made clean before entering God’s presence. He also prayed for the dead. Evangelical readers will hold that Christ’s work is finished and sufficient, that those who die in Him are made perfect and are at once with the Lord, and that there is no need of further cleansing after death.
+
+> For by one offering he hath perfected for ever them that are sanctified. HEBREWS 10:14
+
+> We are confident, I say, and willing rather to be absent from the body, and to be present with the Lord. 2 CORINTHIANS 5:8
+
+The second is the question of those who never heard of Christ. In Mere Christianity Lewis held that Christ is the only way of salvation, yet thought it possible that His saving work reaches some who have never consciously known Him. He suggested that God may be at work in some adherents of other faiths, drawing them towards whatever in their religion is true, so that they are in fact His without having learned His name. In The Last Battle, the final Narnia story, a sincere soldier who had served a false god all his life is welcomed by Aslan, who tells him that his sincere service was in fact accepted as service to Aslan himself. This passage has been much discussed. Lewis’s view is sometimes called inclusivism: the belief that Christ is the only Saviour, but that His saving work may reach some who do not consciously know Him.
+
+Evangelical readers will want to hold firmly to what Scripture plainly teaches: that there is salvation in no other name, that faith comes by hearing the word of God, and that the church is sent into all the world precisely because those who have not heard must hear in order to be saved. Lewis did not intend to weaken the call to mission; he believed in it. But his speculation, however charitably meant, goes beyond what Scripture warrants, and it should not be allowed to dull the urgency of the gospel.
+
+> Neither is there salvation in any other: for there is none other name under heaven given among men, whereby we must be saved. ACTS 4:12
+
+> How then shall they call on him in whom they have not believed? and how shall they believe in him of whom they have not heard? and how shall they hear without a preacher? ROMANS 10:14
+
+It should be added, in fairness, that Lewis was firm that the Christian is not to speculate about others’ salvation but to attend to his own, and to the task of making Christ known. On that, at least, all readers can agree with him.
+
+### FOR REFLECTION AND ACTION
+
+1. Is there something in your life — a grievance, a pride, a possessive love — that you would rather keep than let go for the sake of God? Name it.
+2. Read Deuteronomy 30:15–20. Consider the seriousness of the choice set before every person.
+3. Thank God that heaven is more real, not less real, than this world, and let that hope shape how you live.
+4. Read Hebrews 10:10–18 and rest in the finished work of Christ.
+5. Pray for someone who has never heard the gospel, and ask how you might help to make Christ known.
+
+### A PRAYER
+
+> Lord, You have set before me life and death, and You call me to choose life.
+> Forgive me for the things I cling to that would keep me from You — my grievances, my pride, my self-pity. Help me to let them go.
+> Thank You for the finished work of Christ, by which You have perfected for ever those who are sanctified.
+> Make me faithful in making Him known, so that others may hear and believe and call on His name. And bring me at last into the joy of Your presence, where there is fulness of joy for evermore. Amen.
+
+# Conclusion
+
+> For now we see through a glass, darkly; but then face to face: now I know in part; but then shall I know even as also I am known. 1 CORINTHIANS 13:12
+
+We have covered a great deal of ground in fifteen short chapters, and it would be easy to come away with the impression that Lewis was a man of many subjects. In one sense he was. He wrote about longing and logic, Christ and the creeds, pride and temptation, pain and grief, prayer and love, myth and miracle, heaven and hell, and he wrote about all of them in poetry, fiction, essays, sermons, letters and broadcast talks. But beneath the variety there was a single conviction, held with growing depth from the night on Addison’s Walk to the day of his death. It was that Christianity is true — not merely useful, not merely comforting, not merely beautiful, but true — and that because it is true, it is the key to everything else.
+
+## One thread
+
+Look back over the chapters and the thread appears. The longing he called joy was a pointer to the God who made us for Himself. The moral law was the witness of that same God in conscience. The claims of Jesus were the claims of that God made flesh. The common faith of the church was the faith in that incarnate Lord, handed down. Pride was the refusal to bow to Him; humility the freedom of forgetting oneself before Him. The new life was His own life shared with His children. Temptation was the enemy’s attempt to draw them away; pain and grief were the hard places in which He held on to them; prayer was their speech with Him. The four loves were images of His love; myth was the dream of Him, and history the fact. Miracles were His acts in His own creation; glory was His gift; and heaven and hell were the final answer to the question of whether we would have Him.
+
+> For of him, and through him, and to him, are all things: to whom be glory for ever. Amen. ROMANS 11:36
+
+## What to do with it
+
+If you have read this far, you face the danger that every reader of Lewis faces. His books are a pleasure to read. They are clear, witty and wise, and they flatter the intelligence of the reader by taking it seriously. It is possible to enjoy them enormously and to change not at all. Lewis would have regarded that as a failure — his, and yours. He wrote to bring his readers to Christ, not to make them admirers of C. S. Lewis.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+So here is the plainest counsel this book can give. Go back to the chapter that troubled you most — not the one you found most interesting, but the one you would rather not read again. That is likely to be where God is at work. Take its points for reflection and act on them, one at a time, over the coming weeks. Then go to Lewis’s own books, beginning with the guide in the next chapter, and read him for yourself. And then, above all, go past him to the Scriptures he loved and to the Lord he served.
+
+## Two things to carry
+
+Carry away, first, a confidence that the faith is true. Lewis had been an atheist, and a clever one, and he did not come to Christ because he stopped thinking. He came because he thought harder. The Christian has no need to be afraid of hard questions, and no need to leave his mind at the church door. The God who made reason is the God who saves, and the more truly we think, the more clearly we shall see Him.
+
+Carry away, second, a sense of how much is at stake in ordinary life. Lewis believed that every choice, every temptation resisted or yielded to, every kindness or cruelty, is part of the long process by which human beings become what they will be for ever. Nothing is merely small. The way we pray, the way we treat our families, the way we give, the way we bear suffering, are all part of the making of eternal souls — ours and others’.
+
+> Therefore, my beloved brethren, be ye stedfast, unmoveable, always abounding in the work of the Lord, forasmuch as ye know that your labour is not in vain in the Lord. 1 CORINTHIANS 15:58
+
+## A last word about the man
+
+We have been honest in these pages about the points at which Lewis must be weighed. He believed in a purifying purgatory and prayed for the dead. He hoped that some who never knew Christ’s name might be saved by Him, and he put that hope into a story. He held a view of Scripture’s inspiration that fell short of the evangelical confidence in its entire truthfulness. He accepted an evolutionary account of human origins and offered a speculative account of the Fall to fit it. He declined to commit himself on the way the cross saves us, and on much else that evangelicals regard as essential.
+
+None of this has been raised to diminish him. It has been raised because he would have insisted on it. He had no patience with readers who treated any human author as beyond question, and he was always the first to point beyond himself. Generations of believers, many of them evangelicals, have found in his books a clear and faithful guide to the heart of the Christian faith, and they have been right to do so. They have also been right to read him with their Bibles open.
+
+> But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us. 2 CORINTHIANS 4:7
+
+Lewis died on the twenty-second of November, 1963, at his home in Oxford. He had spent thirty-two years trying to help others see what he had come to see: that the longing in the human heart is a longing for God, that God has come to us in Jesus Christ, and that in Him every good thing we have loved will be given back to us, and more. He now sees face to face what he once saw through a glass, darkly. The right response to him is not admiration but faith in the One he served.
+
+### FOR REFLECTION AND ACTION
+
+1. Return to the chapter of this book that most troubled you. Read it again, and act on the first of its points this week.
+2. Obtain one of Lewis’s own books and begin reading it this month.
+3. Ask yourself whether you have been afraid of hard questions about your faith. Bring one of them to God, and to a wise Christian friend.
+4. Choose one ordinary part of your life — your work, your home, your giving — and offer it to God as part of the making of an eternal soul.
+5. Read 1 Corinthians 13 and 15 aloud, and end in thanksgiving for the hope of glory.
+
+### A PRAYER
+
+> Lord God, You are the truth, and You have come to us in Jesus Christ.
+> Thank You for the servant whose life and words we have been considering. Thank You for the many You have drawn to Yourself through him.
+> Do not let me stop at admiring him. Bring me to the Christ he served, and make me a doer of Your word.
+> Keep me faithful in small things, strong in suffering, honest in prayer and generous in love, until I see You face to face. Amen.
+
+# His Books, and Where to Start
+
+> Of making many books there is no end; and much study is a weariness of the flesh. Let us hear the conclusion of the whole matter: Fear God, and keep his commandments: for this is the whole duty of man. ECCLESIASTES 12:12–13
+
+Lewis wrote a great deal, in many forms, and it is not always easy to know where to begin. His books remain in copyright and in print, and they are widely available from their publishers, in libraries and second-hand; none of them is reproduced here. What follows is a short guide, arranged for usefulness rather than chronology, with a suggested order of reading. At the end is a second guide, to the older writers Lewis read and loved, many of whom are in the Ochorus library.
+
+## Begin here
+
+Mere Christianity (1952). The natural starting point. Drawn from his wartime broadcast talks, it moves from the moral law to the claims of Christ, through Christian behaviour to the doctrine of the Trinity and the new life of the believer. It is the book behind chapters four to eight of this companion. Read it slowly, a chapter at a sitting.
+
+The Screwtape Letters (1942). The devil’s-eye view of temptation, short, witty and searching. Read it after Mere Christianity, a letter at a time, and expect to recognise yourself. A later short piece, Screwtape Proposes a Toast, can be found in some editions.
+
+The Great Divorce (1945). A short dream-story about heaven, hell and the choices that lead to each. Read it after the first two, and see chapter seventeen of this book for the points that need weighing.
+
+## For hard questions
+
+The Problem of Pain (1940). His careful, reasoned account of suffering and the goodness of God. Read it before suffering comes, with the cautions of chapter ten in mind.
+
+A Grief Observed (1961). His raw notebooks after the death of his wife. Read it when grief has come, and know that you are not alone.
+
+Miracles (1947, revised 1960). His most philosophical popular book, on whether miracles can happen and on the Incarnation as the Grand Miracle. Demanding but rewarding.
+
+The Abolition of Man (1943). A short, prophetic book on objective moral value and the danger of educating people to believe that goodness is a matter of taste. Best read alongside its novel counterpart, That Hideous Strength.
+
+## For the Christian life
+
+The Four Loves (1960). On affection, friendship, romantic love and charity. Wise, humane and searching.
+
+Letters to Malcolm: Chiefly on Prayer (1964). His last book, a warm and practical conversation about prayer. Read it with chapter twelve of this book in mind.
+
+Reflections on the Psalms (1958). A personal and often illuminating book on the Psalter, written for ordinary readers. It is also the book in which his view of Scripture’s inspiration is most clearly stated; see chapter fourteen.
+
+The Weight of Glory. His great sermon of 1941 on heaven and the eternal worth of every neighbour, usually published in a collection of the same name with several other addresses. One of the finest short things he wrote.
+
+God in the Dock (1970). A posthumous collection of essays on theology and ethics, including several of his shorter pieces on the Gospels, miracles and prayer.
+
+## His own story
+
+Surprised by Joy (1955). The story of his early life and conversion, up to the night he came to faith in Christ. Read it after Mere Christianity, to see the man behind the arguments.
+
+The Pilgrim’s Regress (1933). His first Christian book, an allegory of his own journey modelled on Bunyan’s. Dense with allusion and harder going than his later work, but rewarding for those who love The Pilgrim’s Progress.
+
+## His stories
+
+The Chronicles of Narnia (1950–1956). Seven books for children, beloved by readers of every age. There has been much debate about the best order to read them in; the order in which they were first published, beginning with The Lion, the Witch and the Wardrobe, is the order in which Lewis’s first readers met them and is a good one for a first reading. Read them aloud if you can. Keep chapter fourteen of this book in mind, and chapter seventeen for The Last Battle.
+
+The space trilogy: Out of the Silent Planet (1938), Perelandra (1943) and That Hideous Strength (1945). Imaginative stories of other worlds and of our own, best read in order.
+
+Till We Have Faces (1956). His last novel, and the one he thought his best. A retelling of an ancient myth about love, jealousy and the stripping of the soul before God. Demanding, and for mature readers.
+
+## His scholarship
+
+Lewis was a scholar first, and readers who want to see the mind behind the popular books may enjoy The Allegory of Love (1936), A Preface to Paradise Lost (1942), An Experiment in Criticism (1961) and The Discarded Image (1964), a lucid introduction to the medieval picture of the universe that he loved.
+
+## Letters and lives
+
+His Collected Letters, edited by Walter Hooper in three large volumes, show the patient pastoral care he gave to strangers for thirty years. For his life, Roger Lancelyn Green and Walter Hooper’s C. S. Lewis: A Biography (1974) was written by friends; George Sayer’s Jack (1988), by a former pupil; and Alister McGrath’s C. S. Lewis — A Life (2013) is the fullest modern account. Humphrey Carpenter’s The Inklings (1978) describes the circle of friends who met in his rooms. The Ochorus author page carries a shorter biography.
+
+## A suggested order
+
+For a first year with Lewis: Mere Christianity; The Screwtape Letters; The Great Divorce; Surprised by Joy; The Four Loves; The Problem of Pain; and then, as the need arises, A Grief Observed or Letters to Malcolm. Read The Chronicles of Narnia alongside, perhaps aloud to a child.
+
+## Read what Lewis read
+
+Lewis insisted that his readers should not stop at him. He urged them, again and again, to go back to the older books he had learned from. Here are some of the writers he loved, and where they can be found.
+
+George MacDonald (1824–1905). The Scottish writer whom Lewis regarded as his master, and from whose works he said he had drawn in almost everything he wrote. It was MacDonald’s Phantastes that first touched Lewis’s imagination in 1916; Lewis later compiled an anthology of passages from MacDonald’s sermons, and made him the guide in The Great Divorce. Readers should know that MacDonald hoped for the final salvation of all, and rejected the teaching that Christ bore the penalty of sin in our place; Lewis loved him without following him in the first, and evangelical readers will want to weigh both. MacDonald’s Unspoken Sermons, Phantastes and his books for children are in the public domain.
+
+G. K. Chesterton (1874–1936). His Orthodoxy and, above all, The Everlasting Man, which Lewis read in his twenties while still an unbeliever, helped Lewis to see that the Christian account of history made sense. Lewis credited it with a large part in his return to faith.
+
+Athanasius of Alexandria. On the Incarnation, the fourth-century defence of the deity of Christ, for whose English translation Lewis wrote the introduction discussed in chapter six. It is in the Ochorus library, with Athanasius’ Life of Antony, and Ochorus’s own companion, The Key Teachings of Athanasius of Alexandria.
+
+Augustine of Hippo. His Confessions, the great story of a restless heart finding its rest in God, stands behind much of what Lewis wrote about longing and pride. The Confessions and Augustine’s Enchiridion are in the Ochorus library, with The Key Teachings of Augustine of Hippo.
+
+John Bunyan. The Pilgrim’s Progress gave Lewis the shape of his first Christian book, and late in life he wrote an appreciative essay on Bunyan. The Pilgrim’s Progress, with editions for children and teens, and Grace Abounding to the Chief of Sinners are in the Ochorus library, with The Key Teachings of John Bunyan.
+
+Thomas à Kempis. The Imitation of Christ was among the old devotional books Lewis commended in his introduction to Athanasius. It is in the Ochorus library.
+
+William Law. A Serious Call to a Devout and Holy Life, which Lewis read and admired, is a searching summons to give the whole of life to God. It is in the Ochorus library.
+
+Richard Baxter. The Puritan from whom Lewis borrowed the phrase that gave Mere Christianity its title. Baxter’s A Call to the Unconverted and The Reformed Pastor are in the Ochorus library, with The Key Teachings of Richard Baxter.
+
+Boethius. The Consolation of Philosophy, written in prison in the sixth century, shaped Lewis’s thinking about time and eternity, and he drew on it in Mere Christianity and wrote about it in The Discarded Image.
+
+Among the poets, Lewis loved Dante, Spenser, Milton and George Herbert, the last of whom he admired even before his conversion. All are in the public domain, and all repay the effort.
+
+## Three counsels for reading him
+
+Read him with the Bible open. Lewis claimed no authority of his own, and he would have been the first to send you back to Scripture. Where he is plainly scriptural, receive it gladly. Where he goes beyond it, weigh it.
+
+Read him slowly. His sentences are so clear that they are easily hurried. Take a chapter at a time, and think about it before you move on.
+
+And read him as he would have wanted: not as an end in himself, but as a signpost to Christ. Close the book, and go to the One he pointed to.
+
+> Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me. JOHN 14:6
