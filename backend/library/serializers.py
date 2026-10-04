@@ -48,8 +48,7 @@ def _link_scripture(
     thousands of hrefless anchors. Kept here (not in scripture.py) because the
     resolver lives in scripture_graph, which imports scripture.
 
-    ``linked_only`` is for a surface with no popover (an author bio): only
-    references with a page are wrapped, so no hrefless anchor is emitted.
+    ``linked_only``: see ``annotate_references``.
     """
     from .scripture import annotate_references, reference_candidates
     from .scripture_graph import scripture_links
@@ -1394,8 +1393,6 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
     def get_bio_html(self, obj):
-        # Bible references a bio cites link to their scripture page, as a
-        # chapter's do. Link-only: the author page has no verse popover.
         return _link_scripture(obj.bio_html_for(self._language()), linked_only=True)
 
     def get_faq(self, obj):

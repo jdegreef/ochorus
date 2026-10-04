@@ -45,9 +45,8 @@
 			<p class="mt-2 text-small text-muted">{t('reader.scriptureUnavailable')}</p>
 		{/if}
 		{#if scripture.href}
-			<!-- The tap opened this popover instead of following the anchor's
-			     href, so the scripture page it links to is offered here. -->
-			<a class="scripture-page-link mt-2" href={scripture.href} onclick={() => scripture.close()}
+			<!-- The tap opened this popover instead of following the href: offer it here. -->
+			<a class="mt-2 inline-block text-small font-semibold" href={scripture.href} onclick={() => scripture.close()}
 				>{t('reader.scripturePage')}</a
 			>
 		{/if}
@@ -92,14 +91,5 @@
 	}
 	.scripture-close:hover {
 		color: var(--text);
-	}
-	.scripture-page-link {
-		display: inline-block;
-		font-size: var(--fs-small);
-		font-weight: 600;
-		color: var(--accent);
-	}
-	.scripture-page-link:hover {
-		text-decoration: underline;
 	}
 </style>

@@ -93,8 +93,7 @@ class LinkScriptureWiringTests(SimpleTestCase):
 
 
 class ChapterOnlyCitationTests(SimpleTestCase):
-    """Whole-chapter citations ("Romans 8", "John 17") — the form the writers
-    use ~850 times in the English books, which `_CANDIDATE`'s chapter:verse
+    """Whole-chapter citations ("Romans 8", "John 17"), which the chapter:verse
     pattern never matched. Linked when their page exists; otherwise untouched."""
 
     def test_collected_as_candidates(self):
