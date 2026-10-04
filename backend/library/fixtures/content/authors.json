@@ -6017,5 +6017,24 @@
         }
       ]
     }
+  },
+  {
+    "model": "library.author",
+    "fields": {
+      "slug": "c-s-lewis",
+      "name": "C. S. Lewis",
+      "bio": "C. S. Lewis (1898–1963) was an Oxford and Cambridge scholar of medieval and Renaissance literature who came back from atheism to Christian faith in 1931 and became the twentieth century's best-loved defender of it — in the wartime broadcasts that became Mere Christianity, in The Screwtape Letters, and in the seven Chronicles of Narnia. His own books are still in copyright; Ochorus offers its own companions to his life and teaching, and the older classics he loved.",
+      "bio_html": "",
+      "photo_url": "",
+      "birth_year": 1898,
+      "death_year": 1963,
+      "original_language": "en",
+      "is_imprint": false,
+      "created_at": "2026-10-04T00:00:00Z",
+      "same_as": [
+        "https://en.wikipedia.org/wiki/C._S._Lewis"
+      ],
+      "faq": []
+    }
   }
 ]
