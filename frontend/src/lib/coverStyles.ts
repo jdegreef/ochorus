@@ -79,8 +79,7 @@ export const ERA_STYLE: Record<EraId, CoverStyleId> = {
 	puritans: 'press',
 	awakenings: 'enlightenment',
 	missionary: 'revival',
-	modern: 'house',
-	contemporary: 'house'
+	modern: 'house'
 };
 
 /**
@@ -254,7 +253,7 @@ export function scriptOf(language: string): CoverScript | null {
  * Total, and never null: an author the tables have never heard of — an admin
  * import, a contributor added this morning — comes back with their century's
  * recipe, and one with no birth year comes back in the house voice, because
- * `eraOf(null)` is `contemporary`.
+ * `eraOf(null)` is `modern`.
  */
 export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string): CoverStyleId {
 	return BOOK_STYLE[bookSlug] ?? AUTHOR_STYLE[authorSlug] ?? ERA_STYLE[era];
