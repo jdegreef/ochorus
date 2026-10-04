@@ -5,7 +5,7 @@
 	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
 	import { onMount } from 'svelte';
-	import { isTranslated, type BookSummary, type SeriesSummary } from '$lib/library-public';
+	import { type BookSummary, type SeriesSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { getLang } from '$lib/lang.svelte';
 	import { localizeHref } from '$lib/href';
@@ -52,7 +52,6 @@
 	type View = 'grid' | 'list';
 	type Sort = BookSort;
 	type Group = 'author' | 'series' | 'all';
-	type Source = 'all' | 'public_domain' | 'translated';
 	const PREFS_KEY = 'ochorus:books-view2';
 
 	let view = $state<View>('grid');
@@ -65,14 +64,8 @@
 	// A filtered shelf is a place: it survives a reload, comes back with Back,
 	// and can be sent to someone. View preferences above deliberately stay in
 	// localStorage — they describe the reader, not the shelf.
-	const SOURCES: [Source, string][] = [
-		['all', 'books.sourceAll'],
-		['public_domain', 'books.sourcePublic'],
-		['translated', 'books.sourceTranslated']
-	];
 	const filters = urlFilters({
-		defaults: { q: '', source: 'all' as Source, topic: '' },
-		allowed: { source: SOURCES.map(([v]) => v) },
+		defaults: { q: '', topic: '' },
 		url: () => $page.url
 	});
 	const clearFilters = () => filters.reset();
@@ -107,8 +100,6 @@
 
 	// --- Derived --------------------------------------------------------------
 	const searching = $derived(filters.active);
-	const sourceTypes = $derived(new Set(books.map((b) => b.source_type)));
-	const showSourceFilter = $derived(sourceTypes.size > 1);
 
 	// Distinct topics present on the shelf, alphabetical — the topic-filter chips.
 	const allTopics = $derived.by(() => {
@@ -119,23 +110,12 @@
 	const authorCount = $derived(new Set(books.map((b) => b.author.slug)).size);
 	const isEnglish = $derived(getLang() === 'en');
 
-	// The filters currently narrowing the shelf, each liftable on its own. The
-	// query and topic (shared with every shelf) come from filterChips; the source
-	// segment shows its own state but rides along here so one row has the whole set.
-	const SOURCE_LABEL: Record<string, string> = {
-		public_domain: 'books.sourcePublic',
-		translated: 'books.sourceTranslated'
-	};
+	// The filters currently narrowing the shelf, each liftable on its own
+	// (query and topic, shared with every shelf, via filterChips).
 	const activeChips = $derived.by(() => {
 		const c: FilterChip[] = [];
 		const q = queryChip(filters);
 		if (q) c.push(q);
-		if (filters.values.source !== 'all')
-			c.push({
-				kind: 'source',
-				label: t(SOURCE_LABEL[filters.values.source]),
-				onRemove: () => (filters.values.source = 'all')
-			});
 		const topic = topicChip(filters, allTopics);
 		if (topic) c.push(topic);
 		return c;
@@ -150,11 +130,9 @@
 	const filtered = $derived.by(() => {
 		const q = filters.values.q.trim().toLowerCase();
 		return books.filter((b) => {
-			if (filters.values.source === 'public_domain' && isTranslated(b.source_type)) return false;
-			if (filters.values.source === 'translated' && !isTranslated(b.source_type)) return false;
 			const topic = filters.values.topic;
 			if (topic && !(b.topics ?? []).some((tc) => tc.slug === topic)) return false;
-			// Source and topic are shelf-only facets; the title/subtitle/author query
+			// Topic is a shelf-only facet; the title/subtitle/author query
 			// is the shared primitive (also used by the topic shelf). q is already
 			// normalised, and matchesBookQuery treats '' as "no filter".
 			return matchesBookQuery(b, q);
@@ -174,7 +152,7 @@
 	const MORE_PAGE = 48;
 	const flat = pager(
 		() => sorted,
-		() => `${filters.values.q}|${filters.values.source}|${filters.values.topic}|${sort}`,
+		() => `${filters.values.q}|${filters.values.topic}|${sort}`,
 		MORE_PAGE,
 		FIRST_PAGE
 	);
@@ -284,18 +262,6 @@
 {/snippet}
 
 <!-- Shared by the inline row (sm up) and the phone sheet. -->
-{#snippet sourceSeg(cls: string, btnCls: string)}
-	<div class="seg {cls}">
-		{#each SOURCES as [v, k] (v)}
-			<button
-				class={btnCls}
-				class:active={filters.values.source === v}
-				onclick={() => (filters.values.source = v)}
-				aria-pressed={filters.values.source === v}>{t(k)}</button
-			>
-		{/each}
-	</div>
-{/snippet}
 {#snippet groupSeg(cls: string, btnCls: string)}
 	<div class="seg {cls}">
 		<button
@@ -431,7 +397,7 @@
 			</section>
 		{/if}
 
-		<!-- Controls: search · source · sort · group · view — pinned under the app
+		<!-- Controls: search · sort · group · view — pinned under the app
 		     nav (FilterBar) so a reader deep in the shelf can re-sort or regroup
 		     without scrolling back up. `compact`: between sm and md the inline row
 		     wraps too tall to pin. -->
@@ -447,15 +413,12 @@
 
 				<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
 				<FilterSheet
-					count={filters.values.source !== 'all' ? 1 : 0}
+					count={0}
 					shown={filtered.length}
 					showLabel={t('books.showResults')}
 					filtered={searching}
 					onClear={clearFilters}
 				>
-					{#if showSourceFilter}
-						{@render sourceSeg('w-full', 'flex-1')}
-					{/if}
 					<SheetChoices
 						label={t('common.sort')}
 						options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
@@ -467,9 +430,6 @@
 				</FilterSheet>
 
 				<div class="hidden sm:contents">
-					{#if showSourceFilter}
-						{@render sourceSeg('', '')}
-					{/if}
 					<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
 						{#each BOOK_SORTS as v (v)}
 							<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
