@@ -376,6 +376,23 @@ test('turning to the next chapter stays in the same book and moves the prose', a
 		.not.toBe(firstOpening);
 });
 
+test('in page-turn mode a stray window scroll leaves the progress on page 1', async ({ page }) => {
+	// Page-turn is the default at this viewport. A window scroll event there (a
+	// focus jump, a rubber-band) used to run the SCROLL-mode fraction, which reads
+	// a fixed, fully visible column as finished: a full scrubber and "1 min left"
+	// over "Page 1 / 4".
+	await page.goto(`/books/${BOOK}/1/`);
+	await hydrated(page);
+	const scrubber = page.locator('input.scrubber');
+	await expect(page.locator('.progress-meta')).toContainText(/1 \/ ([2-9]|\d{2,})/);
+	await expect(scrubber).toHaveValue('0');
+
+	await page.evaluate(() => window.dispatchEvent(new Event('scroll')));
+	// Past the 250 ms settle the scroll save waits for.
+	await page.waitForTimeout(600);
+	await expect(scrubber).toHaveValue('0');
+});
+
 test('an unknown slug is a real 404 that still renders not-found', async ({ page }) => {
 	const res = await page.goto('/books/this-book-does-not-exist/');
 	// The host answers unknown paths with 404.html — the SPA shell under an

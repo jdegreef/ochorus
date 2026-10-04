@@ -47,4 +47,13 @@ describe('pagedFraction', () => {
 	it('reads a one-page chapter as fully on screen', () => {
 		expect(pagedFraction(0, 1)).toBe(1);
 	});
+
+	it('treats a missing or unmeasured count as one page', () => {
+		expect([0, -1, NaN].map((n) => pagedFraction(0, n))).toEqual([1, 1, 1]);
+	});
+
+	it('clamps an index outside the count — the instant before a re-measure clamps it', () => {
+		expect(pagedFraction(7, 5)).toBe(1);
+		expect(pagedFraction(-1, 5)).toBe(0);
+	});
 });
