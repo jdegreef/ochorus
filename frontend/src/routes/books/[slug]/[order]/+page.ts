@@ -73,5 +73,6 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
 	const { data: chapter, language } = await orNotFound(() =>
 		getChapterWithLang(params.slug, Number(params.order), getLang(), fetch)
 	);
-	return { chapter, slug: params.slug, language, edition: null };
+	// The shared reader component's prop shape: the modern route sets 'modern'.
+	return { chapter, slug: params.slug, language, edition: null as 'modern' | null };
 };
