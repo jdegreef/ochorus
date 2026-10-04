@@ -16,13 +16,14 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import SermonCover from '$lib/components/SermonCover.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { offerFinish, unmarkFinished } from '$lib/progress';
 	import type { ResumeItem } from '$lib/resumeItems';
 
 	/**
-	 * One resume card: a cover (books) or a soft mic tile (sermons), the title and
+	 * One resume card: a cover (books, or a typeset one for sermons), the title and
 	 * author, and either a chapter meter or the sermon's reference line. Shared by
 	 * the home "Continue reading" strip and the /reading page so a resume card is
 	 * drawn in exactly one place.
@@ -93,12 +94,15 @@
 			<BookCover book={item.book} rounded="rounded-sm" />
 		</div>
 	{:else}
-		<!-- Sermons have no cover; a soft mic tile (matching SermonCard's visual
-		     language) reads as intentional, not a blank block. -->
-		<div
-			class="sermon-thumb flex aspect-[3/4] w-20 shrink-0 items-center justify-center rounded-sm border shadow-sm"
-		>
-			<Icon name="mic" size={26} />
+		<!-- Sermons have no cover file, so one is set in type (SermonCover) — a
+		     peer of the book covers beside it rather than an icon tile. -->
+		<div class="w-20 shrink-0">
+			<SermonCover
+				slug={item.slug}
+				title={item.title}
+				author={item.author}
+				scriptureRef={item.scriptureRef}
+			/>
 		</div>
 	{/if}
 	<div class="min-w-0 flex-1 self-center">
@@ -133,14 +137,6 @@
 </div>
 
 <style>
-	/* Sermon thumbnail: a soft tile in the sermons' library hue (oxblood, the
-	   nav's Sermons colour) with the mic glyph, sized to the same footprint as
-	   book covers. Theme-aware via the shared tokens. */
-	.sermon-thumb {
-		color: var(--section-sermons);
-		border-color: color-mix(in srgb, var(--section-sermons) 30%, transparent);
-		background: linear-gradient(155deg, var(--section-sermons-soft), var(--color-surface-2));
-	}
 	/* Hover-reveal only where hover exists: a touch tablet is wide enough for
 	   `sm:` but would otherwise get an invisible, tappable button. */
 	@media (hover: hover) and (pointer: fine) {
