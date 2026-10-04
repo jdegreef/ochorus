@@ -92,7 +92,9 @@
 		// the de-localize before matching.
 		const dest = safeRedirect($page.url.searchParams.get('redirect'));
 		const path = dest ? deLocalizeHref(dest).split(/[?#]/)[0] : '';
-		pitch = path === '/favorites' ? 'shelf' : path === '/notebook' ? 'notebook' : null;
+		// Any notebook page (Today, print) pitches the notebook.
+		const notebook = path === '/notebook' || path.startsWith('/notebook/');
+		pitch = path === '/favorites' ? 'shelf' : notebook ? 'notebook' : null;
 	});
 	const pitchKey = $derived(pitch === 'shelf' ? 'login.pitchShelf' : 'login.pitchNotebook');
 	/** The form's own heading: the destination's on sign-up, the usual otherwise. */
