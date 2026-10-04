@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { pageOfOffset } from './pageMath';
+import { pageOfOffset, pagedFraction } from './pageMath';
 
 // Real geometry, measured in the browser at pageW 1248 with a two-column spread
 // (two columns per page, so offsets pair up: 0,0,1,1,2,2…).
@@ -36,5 +36,24 @@ describe('pageOfOffset', () => {
 
 	it('degrades to page 0 before the first measurement', () => {
 		expect(pageOfOffset(500, 0, 0)).toBe(0);
+	});
+});
+
+describe('pagedFraction', () => {
+	it('runs 0 → 1 across the pages', () => {
+		expect([0, 1, 2, 3, 4].map((i) => pagedFraction(i, 5))).toEqual([0, 0.25, 0.5, 0.75, 1]);
+	});
+
+	it('reads a one-page chapter as fully on screen', () => {
+		expect(pagedFraction(0, 1)).toBe(1);
+	});
+
+	it('treats a missing or unmeasured count as one page', () => {
+		expect([0, -1, NaN].map((n) => pagedFraction(0, n))).toEqual([1, 1, 1]);
+	});
+
+	it('clamps an index outside the count — the instant before a re-measure clamps it', () => {
+		expect(pagedFraction(7, 5)).toBe(1);
+		expect(pagedFraction(-1, 5)).toBe(0);
 	});
 });

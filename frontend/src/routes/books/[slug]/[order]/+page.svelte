@@ -46,7 +46,7 @@
 		HEADER_OFFSET,
 		placeAfterLayout
 	} from '$lib/reading';
-	import { pageOfOffset } from '$lib/pageMath';
+	import { pageOfOffset, pagedFraction } from '$lib/pageMath';
 	import { EARLY_RESUME_TAG } from '$lib/earlyResume';
 	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
 	import { fetchSyncedProgress } from '$lib/progress';
@@ -358,20 +358,35 @@
 
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
-	// throttled scroll handler that saves the position anchor.
-	let chapterFrac = $state(0);
+	// throttled scroll handler that saves the position anchor. Scroll mode only:
+	// `chapterFrac` (below) is what everything reads, in either layout.
+	let scrollFrac = $state(0);
+	let pageIndex = $state(0);
+	let pageTotal = $state(1);
+	let pageW = $state(0);
+	// This chapter's pages have been counted. Until then pageIndex/pageTotal are
+	// the last chapter's (or the initial 1), which read as "finished".
+	let pagesMeasured = $state(false);
+	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
+	// How far through the chapter the reader is (0..1) — the scrubber, hairline,
+	// page number and time-left figures. Derived, so it can't go stale when the
+	// page count changes without a turn (it once showed a full bar on page 1/5).
+	const chapterFrac = $derived(
+		paged ? (pagesMeasured ? pagedFraction(pageIndex, pageTotal) : 0) : scrollFrac
+	);
 	let bookForProgress = $state<BookDetail | null>(null);
 	/** On the last chapter, the series' next volume in this language, if any.
 	 *  Rides the book fetch above, so it appears once that lands (the button
 	 *  falls back to "Back to contents" until then, and for good offline). */
 	const nextInSeries = $derived(chapter.next ? null : (bookForProgress?.series?.next ?? null));
 
-	// Reset the scroll fraction when the CHAPTER changes — a fresh chapter opens
-	// at the top until the per-chapter effect below restores the saved position.
-	// This is deliberately separate from the book fetch: the old combined effect
-	// also read `bookForProgress`, so that fetch's async write re-ran the effect
-	// and snapped `chapterFrac` back to 0 *after* the position had been restored,
-	// jumping the progress footer/scrubber to page 1.
+	// Reset the progress when the CHAPTER changes (the effect after the block
+	// below) — a fresh chapter opens at the top until the per-chapter effect
+	// restores the saved position. This is deliberately separate from the book
+	// fetch: the old combined effect also read `bookForProgress`, so that fetch's
+	// async write re-ran the effect and snapped the fraction back to 0 *after*
+	// the position had been restored, jumping the progress footer/scrubber to
+	// page 1.
 	// --- Finishing a chapter ---------------------------------------------------
 	// Reaching the end of a chapter is a small milestone; mark it once, with a
 	// brief haptic and a gentle pulse of the "Next chapter" button, so finishing
@@ -387,7 +402,8 @@
 	$effect(() => {
 		void slug;
 		void chapter.order;
-		chapterFrac = 0;
+		scrollFrac = 0;
+		pagesMeasured = false;
 		chapterCelebrated = false;
 		celebrate = false;
 		chapterOpenedAt = performance.now();
@@ -450,7 +466,7 @@
 		const total = rect.height;
 		if (total <= 0) return;
 		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), total);
-		chapterFrac = Math.min(1, Math.max(0, seen / total));
+		scrollFrac = Math.min(1, Math.max(0, seen / total));
 		topIndex = topVisibleIndex();
 	}
 
@@ -496,11 +512,6 @@
 	// The phone bar's second line — the chapter, in words that don't repeat the
 	// book title above it.
 	const phoneChapterLine = $derived(chapterNameIn(chapter.order, chapter.title, chapter.book_title));
-	// One clamped read-fraction for the whole-book figures below, so "% through"
-	// and "time left in book" always agree on how far into the open chapter the
-	// reader is (chapterFrac is already [0,1] at every writer, but sharing the
-	// clamp keeps the two from ever diverging if that changes).
-	const readFrac = $derived(Math.min(1, Math.max(0, chapterFrac)));
 	// The book's word counts split around the open chapter — the words before it,
 	// the words after it, and the total. Computed once per (book, chapter), NOT on
 	// the scroll path, then shared by both the "% through" figure and the "time
@@ -521,7 +532,7 @@
 	const bookPercent = $derived.by(() => {
 		const w = bookWords;
 		if (!w || !w.total) return null;
-		return Math.min(100, Math.round(((w.before + chapter.word_count * readFrac) / w.total) * 100));
+		return Math.min(100, Math.round(((w.before + chapter.word_count * chapterFrac) / w.total) * 100));
 	});
 	// Stored on the progress record, so the home strip, /reading and the book
 	// page show this same figure rather than each estimating its own.
@@ -535,7 +546,7 @@
 	const bookMinsLeft = $derived.by(() => {
 		const w = bookWords;
 		if (!w) return null;
-		const remainingHere = chapter.word_count * (1 - readFrac);
+		const remainingHere = chapter.word_count * (1 - chapterFrac);
 		return readingMinutes(remainingHere + w.later);
 	});
 	// "3 hr 12 min left in book" — the whole-book companion to the chapter's "N
@@ -596,10 +607,6 @@
 		moreOpen = false;
 		action();
 	};
-	let pageIndex = $state(0);
-	let pageTotal = $state(1);
-	let pageW = $state(0);
-	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
 
 	// Kindle-style two-column spread: when the viewport is wide enough for two
 	// comfortable columns, page mode lays the text out as an open book (two
@@ -770,6 +777,7 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+		if (w > 0) pagesMeasured = true;
 		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
 		const target = wasLast
@@ -797,7 +805,6 @@
 	function goToPage(p: number, save = true) {
 		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
-		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			// Not gated on listen.status like the scroll handlers: paged mode is
@@ -1125,6 +1132,9 @@
 			(async () => {
 				await tick();
 				measureScrollPages();
+				// Back from page mode (Listen started, or the layout toggled): the
+				// scroll fraction is from before the switch until something scrolls.
+				updateFraction();
 				// A newly chosen face is still downloading at this point: the
 				// measure above ran on fallback metrics and triggered the fetch.
 				// Count again once it lands, or the total stays stale.
@@ -1558,7 +1568,9 @@
 	function saveScrollNow() {
 		clearTimeout(saveTimer);
 		saveTimer = undefined;
-		if (!body) return;
+		// Page mode saves on each turn (goToPage); a stray window scroll there
+		// would store topVisibleIndex(), which is 0 on every page.
+		if (!body || paged) return;
 		updateFraction();
 		// While actively playing, listen.start's onAdvance owns the resume point
 		// (the spoken paragraph); don't overwrite it with the viewport-top one.
@@ -1571,7 +1583,7 @@
 		// Scrolled to the bottom of the chapter. markChapterComplete ignores the
 		// post-open settle window, so the restore-scroll landing at a saved
 		// end-of-chapter position doesn't count as finishing.
-		if (chapterFrac >= 0.999) markChapterComplete();
+		if (scrollFrac >= 0.999) markChapterComplete();
 	}
 
 	const cite = $derived({

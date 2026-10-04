@@ -19,3 +19,12 @@ export function pageOfOffset(offsetLeft: number, flowOrigin: number, pageW: numb
 	if (!(pageW > 0)) return 0;
 	return Math.floor(Math.abs(offsetLeft - flowOrigin) / pageW);
 }
+
+/**
+ * How far through a paged chapter the reader is (0..1). A one-page chapter is
+ * wholly on screen, so it reads as 1.
+ */
+export function pagedFraction(pageIndex: number, pageTotal: number): number {
+	if (!(pageTotal > 1)) return 1;
+	return Math.min(1, Math.max(0, pageIndex / (pageTotal - 1)));
+}
