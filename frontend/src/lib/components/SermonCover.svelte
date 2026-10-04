@@ -14,7 +14,7 @@
 	 *
 	 * Every length is a container unit, as in `cover-type.css`, so the drawing
 	 * holds at any width the slot gives it. The title steps down a size as it
-	 * gets longer and clamps after five lines; the card beside it carries the
+	 * gets longer and clamps after six lines; the card beside it carries the
 	 * full title, which is also why the cover is `aria-hidden`.
 	 *
 	 * hex-ok-file: cream ink and gold on the sermon's own hue — artwork, like a
@@ -46,6 +46,7 @@
 		aspect-ratio: 3 / 4;
 		width: 100%;
 		overflow: hidden;
+		--sermon-gold: #d9b25a;
 		color: #f3ead6;
 		background: linear-gradient(
 			170deg,
@@ -105,15 +106,15 @@
 		font-size: 6.5cqw;
 		letter-spacing: 0.25em;
 		text-transform: uppercase;
-		color: #d9b25a;
+		color: var(--sermon-gold);
 	}
 	.ref {
 		padding-top: 5cqw;
-		border-top: 1px solid rgb(217 178 90 / 0.45);
+		border-top: 1px solid color-mix(in srgb, var(--sermon-gold) 45%, transparent);
 		font-family: var(--font-display);
 		font-style: italic;
 		font-size: 8cqw;
-		color: #d9b25a;
+		color: var(--sermon-gold);
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
