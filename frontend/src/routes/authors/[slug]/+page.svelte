@@ -331,7 +331,8 @@
 
 	// On-page jump navigation over the substantial sections. Each entry names a
 	// section `id` stamped on the markup below. Labels reuse existing localized
-	// strings, so no new visible copy is introduced; "Questions" rides `showFaq`,
+	// strings, so no new visible copy is introduced (the Q&A tab is the book page's
+	// `qa.sectionTitle`, as its section heading is); it rides `showFaq`,
 	// so it never appears without the section it points at (in a locale whose Q&A
 	// is not yet translated the API returns none, and both drop out together).
 	const navItems = $derived(
@@ -340,7 +341,7 @@
 			author.books.length ? { id: 'books', label: t('nav.books') } : null,
 			author.sermons.length ? { id: 'sermons', label: t('nav.sermons') } : null,
 			author.articles?.length ? { id: 'articles', label: t('nav.articles') } : null,
-			showFaq ? { id: 'faq', label: 'Questions' } : null
+			showFaq ? { id: 'faq', label: t('qa.sectionTitle') } : null
 		].filter((x): x is { id: string; label: string } => x != null)
 	);
 	// Articles about this person: the first few, then "Show N more" (see markup).
