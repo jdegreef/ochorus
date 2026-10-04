@@ -15,6 +15,8 @@ export interface ScriptureResult {
 	reference: string;
 	verses: { number: number; text: string }[];
 	version: string;
+	/** True when only the first verses came back (a whole chapter is cut). */
+	truncated?: boolean;
 }
 
 const cache = new Map<string, ScriptureResult | 'none'>();

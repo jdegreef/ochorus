@@ -38,7 +38,7 @@
 		{:else if scripture.result}
 			<p class="scripture-body mt-2">
 				{#each scripture.result.verses as v (v.number)}<sup class="scripture-num">{v.number}</sup
-					>{v.text}{' '}{/each}
+					>{v.text}{' '}{/each}{#if scripture.result.truncated}…{/if}
 			</p>
 			<p class="eyebrow mt-2 text-muted">{scripture.result.version}</p>
 		{:else}

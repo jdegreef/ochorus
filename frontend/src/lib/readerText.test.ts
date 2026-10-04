@@ -130,10 +130,10 @@ describe('ReaderText selection bar', () => {
 describe('ReaderText scripture taps', () => {
 	// The chapter reader's own click handler asks this first: a tap it handled
 	// must not also be read as an edge-zone page turn.
-	const clickOn = (html: string) => {
+	const clickOn = (html: string, init: MouseEventInit = {}) => {
 		document.body.innerHTML = html;
 		const target = document.body.querySelector('span') ?? document.body;
-		const e = new MouseEvent('click', { bubbles: true, cancelable: true });
+		const e = new MouseEvent('click', { bubbles: true, cancelable: true, ...init });
 		Object.defineProperty(e, 'target', { value: target });
 		return { handled: new ReaderText({} as ReaderTextOptions).onScriptureClick(e), e };
 	};
@@ -157,5 +157,17 @@ describe('ReaderText scripture taps', () => {
 	it('leaves a scripture-ref carrying no ref alone', () => {
 		const { handled } = clickOn('<a class="scripture-ref"><span>Somewhere</span></a>');
 		expect(handled).toBe(false);
+	});
+
+	// Cmd/Ctrl-click on a linked reference opens its scripture page in a new tab.
+	it('lets a modified click on a linked reference through to the browser', () => {
+		const linked =
+			'<a class="scripture-ref" href="/scripture/john/17/" data-ref="John 17"><span>John 17</span></a>';
+		for (const init of [{ metaKey: true }, { ctrlKey: true }, { shiftKey: true }, { button: 1 }]) {
+			const { handled, e } = clickOn(linked, init);
+			expect(handled).toBe(false);
+			expect(e.defaultPrevented).toBe(false);
+		}
+		expect(clickOn(linked).handled, 'a plain tap still opens the popover').toBe(true);
 	});
 });

@@ -44,24 +44,38 @@ VERSION_LABEL = "American Standard Version"
 # is a permanent entry in the unbounded `_first_reference` cache below.
 _ROMAN = r"(?=[ivxlc])c?(?:xc|xl|l?x{0,3})(?:ix|iv|v?i{0,3})"
 
-# A "Book chapter:verse[-verse]" candidate: an optional leading 1/2/3, a
+# A numbered book's prefix: "1 John", and the "I John" / "First John" / "1st
+# John" Victorian prose writes. Without it "I John 3" matched as "John 3" —
+# the Gospel. pythonbible reads every one of these forms.
+_BOOK_PREFIX = r"(?:(?:[1-3](?:st|nd|rd)?|I{1,3}|First|Second|Third)\s+)?"
+# The books that take one. A "Book c." followed by "1 Corinthians" is a LIST of
+# citations ("Romans 8. 1 Corinthians 13"), not the verse "Romans 8:1".
+_NUMBERED = "|".join(
+    sorted({b.title[2:] for b in bible.Book if b.title[0] in "123"}, key=len, reverse=True)
+)
+_NEXT_BOOK = rf"\d{{1,3}}(?!\d)\s+(?:{_NUMBERED})\b"
+
+# A "Book chapter:verse[-verse]" candidate: an optional book prefix, a
 # capitalised word (+ optional trailing period for abbreviations), then the
 # chapter:verse. Deliberately loose — pythonbible does the real validation.
+# A PERIOD separator ("Luke ii. 10") is not a verse when the number after it
+# starts the next numbered book.
 _VERSE_REF = (
-    r"(?:[1-3]\s+)?[A-Z][A-Za-z]+\.?\s+"
+    rf"{_BOOK_PREFIX}[A-Z][A-Za-z]+\.?\s+"
     rf"(?:\d{{1,3}}|{_ROMAN})"
-    r"\s*[:.]\s*\d{1,3}(?:\s*[-–]\s*\d{1,3})?"
+    rf"\s*(?::|\.(?!\s*{_NEXT_BOOK}))\s*\d{{1,3}}(?:\s*[-–]\s*\d{{1,3}})?"
 )
-# Every candidate starts with a 1-3 or a capital; checking that first skips the
-# full match attempt at every lower-case word boundary (~3x faster, same matches).
+# Every candidate starts with a digit or a capital; checking that first skips
+# the full match attempt at every lower-case word boundary (~3x faster).
 _CANDIDATE = re.compile(rf"\b(?=[1-3A-Z])({_VERSE_REF})")
 
-# A CHAPTER-ONLY citation ("Romans 8", "Psalm 23"). Linked, never popover-only
-# (see `annotate_references`), and much stricter than `_CANDIDATE`, since bare
-# "Name number" is common prose: FULL book names only (no "Am 5"), an Arabic
-# chapter only, never followed by ":"/"." + digit (a verse citation). pythonbible
-# rejects chapters a book lacks ("John 25") and reads a single-chapter book's
-# number as a verse ("Jude 24" → 1:24), which is how those books are cited.
+# A CHAPTER-ONLY citation ("Romans 8", "Psalm 23", "Romans 9-11"). Linked,
+# never popover-only (see `annotate_references`), and much stricter than
+# `_CANDIDATE`, since bare "Name number" is common prose: FULL book names only
+# (no "Am 5"), an Arabic chapter only, never followed by a verse (":"/"." +
+# digit, unless that digit starts the next numbered book). pythonbible rejects
+# chapters a book lacks ("John 25") and reads a single-chapter book's number as
+# a verse ("Jude 24" → 1:24), which is how those books are cited.
 _BOOK_NAMES = "|".join(
     sorted(
         {re.escape(re.sub(r"^[1-3] ", "", b.title)) for b in bible.Book}
@@ -70,11 +84,16 @@ _BOOK_NAMES = "|".join(
         reverse=True,
     )
 )
-_CHAPTER_REF = rf"(?:[1-3]\s+)?(?:{_BOOK_NAMES})\s+\d{{1,3}}\b(?!\s*[:.]\s*\d)"
+_CHAPTER_REF = (
+    rf"{_BOOK_PREFIX}(?:{_BOOK_NAMES})\s+\d{{1,3}}(?:\s*[-–]\s*\d{{1,3}})?\b"
+    rf"(?!\s*:\s*\d)(?!\s*\.\s*(?!{_NEXT_BOOK})\d)"
+)
 # Both forms in one pass; the verse form is tried first at each position, so
 # "Romans 8:28" is always the verse citation, never "Romans 8".
 _LINKABLE = re.compile(rf"\b(?=[1-3A-Z])(?:{_VERSE_REF}|(?P<chapter>{_CHAPTER_REF}))")
 _TAG_SPLIT = re.compile(r"(<[^>]+>)")
+_ANCHOR_OPEN = re.compile(r"<a[\s>]", re.I)
+_ANCHOR_CLOSE = re.compile(r"</a\s*>", re.I)
 # Cheap pre-filter before the real regex runs. It used to be `":" in html`, but a
 # roman-numeral citation separates with a PERIOD ("Luke ii. 10"), so that test
 # skipped exactly the 23 works this module was widened to read. A digit is the
@@ -128,19 +147,16 @@ def _text_runs(parts: list[str]):
     text and can never disagree about what is a reference."""
     anchor_depth = 0
     for i, part in enumerate(parts):
-        if i % 2 == 1:  # a tag
-            tag = part[:3].lower()
-            if tag.startswith("<a") and not part.lower().startswith("<area"):
+        if i % 2 == 1:  # a tag: exactly <a …> / </a>, never <aside>, <abbr>…
+            if _ANCHOR_OPEN.match(part):
                 anchor_depth += 1
-            elif tag == "</a":
+            elif _ANCHOR_CLOSE.match(part):
                 anchor_depth = max(0, anchor_depth - 1)
         elif not anchor_depth and _HAS_DIGIT.search(part):
             yield i, part
 
 
-def annotate_references(
-    html: str, links: dict[str, str] | None = None, *, linked_only: bool = False
-) -> str:
+def annotate_references(html: str, links: dict[str, str] | None = None) -> str:
     """Wrap valid Bible references in tappable anchors, in text only.
 
     Splits on tags so attribute values are never touched, and skips text inside
@@ -157,8 +173,7 @@ def annotate_references(
     stays free of the graph/DB layer, which imports it.
 
     A chapter-only citation is wrapped only when it has a page; unlinked it
-    stays plain text. ``linked_only`` applies that to every reference, for a
-    surface with no popover (an author bio), where a hrefless anchor is dead.
+    stays plain text.
     """
     if not html or not _HAS_DIGIT.search(html):
         return html
@@ -166,9 +181,7 @@ def annotate_references(
     def repl(match: re.Match) -> str:
         candidate = match.group(0)
         href = links.get(candidate) if links else None
-        if not href and (
-            linked_only or match.group("chapter") or _first_reference(candidate) is None
-        ):
+        if not href and (match.group("chapter") or _first_reference(candidate) is None):
             return candidate
         href_attr = f' href="{href}"' if href else ""
         return f'<a class="scripture-ref"{href_attr} data-ref="{candidate}">{candidate}</a>'
@@ -261,7 +274,8 @@ def lookup(ref_text: str) -> dict | None:
     ref = _first_reference(ref_text)
     if ref is None:
         return None
-    verse_ids = bible.convert_reference_to_verse_ids(ref)[:_MAX_VERSES]
+    all_ids = bible.convert_reference_to_verse_ids(ref)
+    verse_ids = all_ids[:_MAX_VERSES]
     verses = []
     for vid in verse_ids:
         try:
@@ -276,6 +290,9 @@ def lookup(ref_text: str) -> dict | None:
         "reference": bible.format_scripture_references([ref]),
         "verses": verses,
         "version": VERSION_LABEL,
+        # A whole chapter ("Psalm 119") is cut to the first verses; say so, or
+        # the popover passes off a fragment as the chapter.
+        "truncated": len(all_ids) > _MAX_VERSES,
     }
 
 
