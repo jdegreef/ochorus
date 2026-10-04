@@ -34,3 +34,16 @@ def preferences_url(token: str) -> str:
 def site_url(path: str = "") -> str:
     """A link into the reader site (defaults to the home page)."""
     return f"{site_base()}/{path.lstrip('/')}" if path else site_base() or "/"
+
+
+def localized(path: str, language: str) -> str:
+    """``path`` in ``language``'s pages: English is unprefixed, every other
+    language sits under ``<language>/`` — the reader site's one URL rule."""
+    path = path.lstrip("/")
+    return path if language == "en" else f"{language}/{path}"
+
+
+def reader_path(section: str, slug: str, language: str) -> str:
+    """The reader-site path for a work (``section`` is "books", "sermons" or
+    "plans"), slash-terminated so it lands on the prerendered page."""
+    return localized(f"{section}/{slug}/", language)

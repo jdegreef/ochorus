@@ -2,7 +2,8 @@
 	import '../app.css';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
+	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
 	import { paletteUi } from '$lib/paletteUi.svelte';
@@ -35,6 +36,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import type { IconName } from '$lib/components/Icon.svelte';
 	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
+	import type { NavSection } from '$lib/contentNav';
 	// The slash-correct builder: /originals prerenders to originals/index.html.
 	import { localizeHref as pageHref } from '$lib/href';
 	import BrandMark from '$lib/components/BrandMark.svelte';
@@ -57,11 +59,25 @@
 		siteFont.init();
 		readerPrefs.init();
 		pageWidth.init();
+		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
 		auth.init();
 		pwa.init();
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+	});
+
+	// A navigation into another locale must be a full document load: the
+	// locale (messages, <html lang/dir>) is fixed per document, so a client-side
+	// hop between /ar/… and /… kept the old one's direction. Cancelled and
+	// re-issued as a real load — a history PUSH, so a cross-locale goto loses
+	// replaceState/keepFocus (none exists today; use location.replace for one).
+	// Links you write by hand: also mark them data-sveltekit-reload, which
+	// stops a hover preload running the target's load in the wrong locale.
+	beforeNavigate(({ from, to, type, cancel }) => {
+		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
+		cancel();
+		location.assign(to!.url.href);
 	});
 
 	// Leaving a chapter is the safe moment to take a waiting app update.
@@ -97,9 +113,10 @@
 	// Take Root, whose app nav carries five primary destinations).
 	// Home (chrome) then the five content types, whose order is shared with the
 	// footer and command palette via PRIMARY_NAV so the three can't drift (F2).
-	const NAV = $derived<{ href: string; label: string; icon: IconName }[]>([
+	// Home is chrome, not a section, so it has no hue and keeps the accent.
+	const NAV = $derived<{ href: string; label: string; icon: IconName; section?: NavSection }[]>([
 		{ href: '/', label: t('nav.home'), icon: 'grid' },
-		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon }))
+		...PRIMARY_NAV.map((d) => ({ href: d.href, label: t(d.labelKey), icon: d.icon, section: d.section }))
 	]);
 
 	// The reroute hook strips the locale prefix before routing, so page.route.id
@@ -112,8 +129,33 @@
 		return route.startsWith(href) || (href === '/books' && route.startsWith(SERIES_DEST.href));
 	};
 
+	// Tablet "More ▾" (768–1023px only, by app.css): the destinations the
+	// one-row bar has no room for — Biographies, whose link is hidden there,
+	// then Originals and (in English) the hubs the footer carries.
+	let navMoreOpen = $state(false);
+	// English-only hubs stay unlocalized (the footer's rule), so each item
+	// carries its final href; `active` is matched on the route path.
+	const navMore = $derived(
+		[
+			...PRIMARY_NAV.filter((d) => d.href === '/biographies').map((d) => ({
+				path: d.href,
+				href: localizeHref(d.href),
+				label: t(d.labelKey)
+			})),
+			{ path: ORIGINALS_DEST.href, href: localizeHref(ORIGINALS_DEST.href), label: t(ORIGINALS_DEST.labelKey) },
+			...(lang.current === 'en'
+				? ENGLISH_HUBS.map((d) => ({ path: d.href, href: `${d.href}/`, label: t(d.labelKey) }))
+				: [])
+		].map((d) => ({ ...d, active: isActive(d.path) }))
+	);
+	const navMoreActive = $derived(navMore.some((d) => d.active));
+
 	// Mobile nav drawer (collapsed behind a hamburger on small screens).
 	let navOpen = $state(false);
+	// The search shortcut hint (the palette answers both ⌘K and Ctrl+K):
+	// prerendered as ⌘K, respelt on mount off Apple platforms; CSS hides it on
+	// touch devices.
+	let searchKbd = $state('⌘K');
 	let navEl = $state<HTMLElement>();
 
 	/** Reading surfaces pin their OWN bar to the top; see .appnav-static. */
@@ -259,7 +301,7 @@
 			bind:this={navEl}
 			use:dismissable={{ open: navOpen, onDismiss: () => (navOpen = false) }}
 		>
-			<div class="appnav-inner">
+			<div class="appnav-inner chrome-col">
 			<!-- No separate wordmark: the logo carries "Ochorus" in the artwork. -->
 			<a class="brand" href={localizeHref('/')}><BrandMark height={36} /></a>
 			<button
@@ -285,9 +327,33 @@
 							href={localizeHref(item.href)}
 							class:active={isActive(item.href)}
 							aria-current={isActive(item.href) ? 'page' : undefined}
+							data-section={item.section}
+							data-home={item.href === '/' ? '' : undefined}
 							onclick={() => (navOpen = false)}><Icon name={item.icon} />{item.label}</a
 						>
 					{/each}
+				</div>
+				<div class="navmore" use:dismissable={{ open: navMoreOpen, onDismiss: () => (navMoreOpen = false) }}>
+					<button
+						class="navmore-btn"
+						class:active={navMoreActive}
+						aria-expanded={navMoreOpen}
+						aria-controls={navMoreOpen ? 'nav-more' : undefined}
+						onclick={() => (navMoreOpen = !navMoreOpen)}
+						>{t('nav.more')}<Icon name="chevron-right" size={16} mirror={false} class="rotate-90" /></button
+					>
+					{#if navMoreOpen}
+						<div id="nav-more" class="account-menu navmore-menu" role="group" aria-label={t('nav.more')}>
+							{#each navMore as d (d.path)}
+								<a
+									href={d.href}
+									class="account-item"
+									aria-current={d.active ? 'page' : undefined}
+									onclick={() => (navMoreOpen = false)}>{d.label}</a
+								>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</div>
 			<div class="navctl">
@@ -298,7 +364,7 @@
 						title={t('nav.search')}
 					>
 						<Icon name="search" size={18} />
-						<kbd class="navsearch-kbd" aria-hidden="true">⌘K</kbd>
+						<kbd class="navsearch-kbd" aria-hidden="true">{searchKbd}</kbd>
 					</button>
 					<!-- No language control here, deliberately. Switching locale lives in
 					     two places instead: the footer strip below, and Settings.
@@ -346,7 +412,7 @@
 			     the trade is that rewording those at their source also rewords this
 			     band. -->
 			{#if auth.enabled && !auth.user && !onLogin}
-				<div class="mx-auto max-w-5xl px-5 pt-10 sm:pt-12">
+				<div class="chrome-col px-5 pt-10 sm:pt-12">
 					<div class="footer-invite">
 						<span class="footer-invite-mark" aria-hidden="true">
 							<Icon name="bookmark" size={22} />
@@ -369,7 +435,7 @@
 			     computed once in footerGridClass, which spells every reachable
 			     grid-cols literal out for Tailwind's scanner. -->
 			<div
-				class="mx-auto grid max-w-5xl grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
+				class="chrome-col grid grid-cols-2 gap-x-8 gap-y-10 px-5 py-10 sm:py-12 {footerGridClass}"
 			>
 				<div class="col-span-2 lg:col-span-1">
 					<a class="inline-block text-text" href={localizeHref('/')} aria-label={t('common.home')}>
@@ -477,7 +543,7 @@
 			     See bibleCredit.ts, and library/language_seed.py which owns the
 			     same string. -->
 			{#if bibleCredit(lang.current)}
-				<p class="mx-auto max-w-5xl border-t border-border px-5 py-4 text-small text-muted" lang="en">
+				<p class="chrome-col border-t border-border px-5 py-4 text-small text-muted" lang="en">
 					{#each creditParts(bibleCredit(lang.current)) as part, i (i)}{#if part.href}<a
 								class="underline"
 								href={part.href}
@@ -503,7 +569,7 @@
 				aria-label={t('footer.languages')}
 			>
 				<div
-					class="mx-auto flex max-w-5xl flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
+					class="chrome-col flex flex-wrap items-baseline gap-x-5 gap-y-1 px-5 py-4 text-small"
 				>
 					<span class="eyebrow py-1 text-text"
 						>{t('footer.languages')}</span
@@ -522,6 +588,7 @@
 							<span
 								class="footer-lang whitespace-nowrap py-1 font-semibold text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								aria-current="true">{l.native_name}</span
 							>
 						{:else}
@@ -529,6 +596,7 @@
 								href={localizeHref('/', { locale: l.code as (typeof locales)[number] })}
 								class="footer-lang whitespace-nowrap py-1 text-muted hover:text-text"
 								lang={l.code}
+								dir={getTextDirection(l.code)}
 								onclick={(e) => {
 									// Hand modified and non-primary clicks back to the browser.
 									// The href is already the correct locale home, so cmd/ctrl-click
@@ -557,7 +625,7 @@
 			     translating, so the © costs no catalogue keys. -->
 			<div class="border-t border-border">
 				<div
-					class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
+					class="chrome-col flex flex-wrap items-center justify-between gap-x-6 gap-y-2 px-5 py-4 text-small"
 				>
 					<nav class="footer-legal flex flex-wrap gap-x-5 gap-y-1" aria-label={t('footer.aboutHeading')}>
 						<a class="text-muted hover:text-text" href={localizeHref('/about')}>{t('nav.about')}</a>
@@ -709,7 +777,7 @@
 		}
 	}
 
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.footer-invite {
 			grid-template-columns: auto 1fr;
 		}

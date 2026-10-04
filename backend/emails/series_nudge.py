@@ -33,6 +33,7 @@ from django.utils import timezone
 from library.models import Book
 from reading.models import ReadingProgress, WorkKind
 
+from . import links
 from .models import (
     EmailKind,
     EmailMessage,
@@ -66,13 +67,6 @@ class _Candidate(NamedTuple):
     finished_at: object
     finished_book: Book
     next_book: Book
-
-
-def _book_path(slug: str, language: str) -> str:
-    """The reader-site path for a book, locale-prefixed and slash-terminated so it
-    lands on the prerendered page (English is unprefixed)."""
-    path = f"books/{slug}/"
-    return path if language == "en" else f"{language}/{path}"
 
 
 def next_series_volume(profile) -> tuple[Book, Book] | None:
@@ -154,7 +148,7 @@ def _send(profile, subscription, finished_book: Book, next_book: Book) -> EmailM
         subscription,
         finished_title=finished_book.title,
         next_title=next_book.title,
-        cta_path=_book_path(next_book.slug, next_book.language),
+        cta_path=links.reader_path("books", next_book.slug, next_book.language),
     )
     return deliver(
         profile=profile,

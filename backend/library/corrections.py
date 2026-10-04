@@ -4622,6 +4622,7 @@ BODY_CORRECTIONS.setdefault("separation-and-service", {}).setdefault("replacemen
 BODY_CORRECTIONS["separation-and-service"]["back_matter"] = [
     ("crucified for us.</p> <p>THE END.</p>", "<p>Transcriber's Note:<br/>"),
     ("crucificado por nosotros.</p> <p>FIN.</p>", "<p>Nota del transcriptor:<br/>"),
+    ("በተግባር ያሳያሉ።</p> <p>መጨረሻ።</p>", "<p>የገልባጩ ማስታወሻ፦<br/>"),
 ]
 BODY_CORRECTIONS.setdefault("the-fourfold-gospel", {}).setdefault("replacements", []).extend([
     # "lie will lead" -> "He will lead" (l/H, ie/e misread).
@@ -4728,6 +4729,8 @@ BODY_CORRECTIONS["life-and-diary-of-david-brainerd"]["restored_after"] = [
 # Notes" section that the importer merged into ch13 as an <h3> and its errata.
 BODY_CORRECTIONS.setdefault("how-to-bring-men-to-christ", {})["back_matter"] = [
     ("before God can use them.</p>",
+     "<p>“<i>Few books of recent years are better adapted to instruct"),
+    ("ሊኖራቸውም የግድ ነው።</p>",
      "<p>“<i>Few books of recent years are better adapted to instruct"),
 ]
 # Two stanzas of verse lost at import (Gutenberg #73032). Every chapter heading
@@ -9905,14 +9908,14 @@ BODY_CORRECTIONS.setdefault("wholly-sanctified", {}).setdefault(
 ])
 
 # Speech-to-text slips in Tozer transcripts. "God Made Man to Worship" carries a
-# two-word non-sentence the recogniser invented (no recoverable word — drop it);
+# two-word non-sentence the recogniser invented (no recoverable word — marked [inaudible], founder's call);
 # "Causes of Backsliding" heard its own subject as "sex-lighting"; and "How to
 # Cultivate the Holy Spirit's Companionship" quotes Job 11:12's "wild ass's
 # colt" as "coat".
 BODY_CORRECTIONS.setdefault("god-made-man-to-worship", {}).setdefault(
     "replacements", []).append((
     "That's seeking after God naturally. That's asshole. Well,",
-    "That's seeking after God naturally. Well,",
+    "That's seeking after God naturally. [inaudible] Well,",
 ))
 BODY_CORRECTIONS.setdefault("causes-of-backsliding", {}).setdefault(
     "replacements", []).append((

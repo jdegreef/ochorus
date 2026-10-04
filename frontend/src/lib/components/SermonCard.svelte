@@ -6,6 +6,8 @@
 	import { localizeHref } from '$lib/href';
 	import { readingTime, preachedYear } from '$lib/reading';
 	import SermonMonogram from '$lib/components/SermonMonogram.svelte';
+	import Portrait from '$lib/components/Portrait.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 	import { hueForBirthYear } from '$lib/eras';
 
 	/**
@@ -30,6 +32,13 @@
 	 *   - `row` — full width, with the era rail, the era-tinted passage monogram and a
 	 *     two-line preview of the brief, for the sermons index where sermons ARE
 	 *     the content.
+	 *
+	 * The card opens with the preacher's face, printed as a duotone in the
+	 * sermons hue (`.duotone`, app.css), when it names the preacher and there
+	 * is a portrait — a face is what a reader recognises a sermon by before its
+	 * title. Otherwise, and always where the page already belongs to one
+	 * preacher (their author page, `showAuthor` off), the passage monogram:
+	 * the same face on every card there would say nothing.
 	 *
 	 * `.sermon-row*` is styled globally in app.css; only `card` carries scoped
 	 * styles here.
@@ -133,16 +142,7 @@
 						aria-controls={briefId}
 						onclick={() => (open = !open)}
 					>
-						<svg
-							class="sermon-row-chevron"
-							viewBox="0 0 24 24"
-							width="20"
-							height="20"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg
-						>
+						<Icon name="chevron-right" size={22} strokeWidth={2.25} class="sermon-row-chevron" mirror={false} />
 					</button>
 				{/if}
 			</div>
@@ -158,7 +158,21 @@
 		class="sermon-card card-tint rounded-card border border-border bg-surface"
 		href={localizeHref(`/sermons/${sermon.slug}`)}
 	>
-		<SermonMonogram class="monogram" scriptureRef={sermon.scripture_ref} title={sermon.title} />
+		{#if showAuthor && sermon.author.photo_url}
+			<span class="monogram emblem-chip duotone">
+				<Portrait
+					slug={sermon.author.slug}
+					name={sermon.author.name}
+					url={sermon.author.photo_url}
+					px={48}
+					decorative
+					tone="color"
+					class="h-full w-full"
+				/>
+			</span>
+		{:else}
+			<SermonMonogram class="monogram" scriptureRef={sermon.scripture_ref} title={sermon.title} />
+		{/if}
 		<span class="min-w-0 flex-1">
 			<span class="eyebrow sermon-label">{t('sermons.label')}</span>
 			<span class="title">{sermon.title}</span>
@@ -188,12 +202,13 @@
 	/* The sermon's monogram chip (recipe in app.css) — only size and hue here. */
 	.sermon-card :global(.monogram) {
 		--chip-size: 3rem;
-		--chip-hue: var(--color-accent);
+		--chip-hue: var(--section-sermons);
+		--duotone-hue: var(--section-sermons);
 	}
 	.sermon-label {
 		display: inline-block;
 		font-size: var(--fs-micro);
-		color: var(--color-accent);
+		color: var(--section-sermons);
 	}
 	.title {
 		display: block;

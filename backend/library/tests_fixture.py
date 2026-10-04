@@ -506,6 +506,52 @@ class SeriesMembershipTests(SimpleTestCase):
         self.assertEqual(sorted(self.series - used), [], "a series with no books")
 
 
+class DistinctBookTitleTests(SimpleTestCase):
+    """Two published editions in one language must not share a <title>.
+
+    The book page's title tag is the book's title, except that a volume whose
+    series bears its own name adds its subtitle (`distinctTitle` in
+    $lib/bookSeo) — the only way Simpson's two "Power from on High" volumes
+    differ. Two same-titled books that are NOT that shape would ship one
+    <title> on two pages, and Google folds one into the other.
+    """
+
+    def test_same_titled_books_are_named_volumes_of_one_series(self):
+        series = {
+            r["fields"]["slug"]: r["fields"]["title"]
+            for r in all_rows()
+            if r["model"] == "library.series"
+        }
+        by_title: dict = {}
+        for r in all_rows():
+            if r["model"] != "library.book" or not (f := r["fields"]).get("is_published", True):
+                continue
+            key = (f.get("language", "en"), f["title"].strip().casefold())
+            by_title.setdefault(key, []).append(f)
+        bad = []
+        for (lang, _), books in by_title.items():
+            if len(books) < 2:
+                continue
+            subtitles = [b.get("subtitle", "").strip() for b in books]
+            ok = (
+                all(b.get("series") for b in books)
+                and len({b["series"][0] for b in books}) == 1
+                # Checked against the English series name: a translated
+                # series name lives in its own table and is not in fixtures.
+                and (lang != "en" or series.get(books[0]["series"][0]) == books[0]["title"])
+                and all(subtitles)
+                and len(set(subtitles)) == len(subtitles)
+            )
+            if not ok:
+                bad.append(f"{lang}: " + ", ".join(sorted(b["slug"] for b in books)))
+        self.assertEqual(
+            bad,
+            [],
+            "editions share a title; make them volumes of a series named after it, "
+            "each with its own subtitle, or retitle one",
+        )
+
+
 class SeedFieldCoverageTests(SimpleTestCase):
     """The seed commands' field lists must cover the models they create.
 

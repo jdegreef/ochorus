@@ -1,0 +1,143 @@
+{
+ "kind": "sermon",
+ "slug": "sinning-and-repenting",
+ "language": "sw",
+ "job_issue": 5036,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Judges 2:14-19",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 3:14",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Judges 3:7-11",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Judges 3:12-30",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Judges 3:7a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Judges 3:12a",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "Judges 3:12b",
+   "status": "self_rendered",
+   "block_index": 7
+  },
+  {
+   "reference": "2 Timothy 3:13a",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Judges 3:15a",
+   "status": "self_rendered",
+   "block_index": 9
+  },
+  {
+   "reference": "Joel 2:25",
+   "status": "self_rendered",
+   "block_index": 11
+  },
+  {
+   "reference": "Psalms 90:15",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Jude 24a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "1 Thessalonians 5:23b",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Jude 24b",
+   "status": "mined",
+   "block_index": 13,
+   "source_file": "the-fourfold-gospel.sw.json"
+  },
+  {
+   "reference": "Judges 2:19b",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Judges 2:17",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "Joel 2:28a",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Hebrews 8:11",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Psalms 4:3a",
+   "status": "mined",
+   "block_index": 19,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Judges 3:20b",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Colossians 3:17a",
+   "status": "mined",
+   "block_index": 22,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Matthew 4:10a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Luke 10:19a",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "John 16:8",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "1 Peter 4:11a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "1 Peter 4:11b",
+   "status": "mined",
+   "block_index": 23,
+   "source_file": "true-vine.sw.json"
+  }
+ ]
+}

@@ -1,10 +1,9 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
 	import { resumeOrderOf } from '$lib/reading-schema';
 	import { chapterPath } from '$lib/editionHref';
-	import Arrow from '$lib/components/Arrow.svelte';
-	import Icon from '$lib/components/Icon.svelte';
 	import { onMount } from 'svelte';
 	import { isTranslated, type BookSummary, type SeriesSummary } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
@@ -25,6 +24,12 @@
 	import EmptyState from './EmptyState.svelte';
 	import FilterSummary from './FilterSummary.svelte';
 	import TopicFilterRow from './TopicFilterRow.svelte';
+	import FilterBar from './FilterBar.svelte';
+	import AuthorJumpStrip from './AuthorJumpStrip.svelte';
+	import ViewToggle from './ViewToggle.svelte';
+	import ContinueShelf from './ContinueShelf.svelte';
+	import ContinueRow from './ContinueRow.svelte';
+	import ProgressBar from './ProgressBar.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { BOOK_SORTS, BOOK_SORT_LABEL, matchesBookQuery, sortBooks, type BookSort } from '$lib/bookSort';
 	import { pager } from '$lib/paging.svelte';
@@ -97,7 +102,7 @@
 				return book ? { book, order: resumeOrderOf(r) } : null;
 			})
 			.filter((x): x is { book: BookSummary; order: number } => x !== null)
-			.slice(0, 6);
+			.slice(0, 3);
 	});
 
 	// --- Derived --------------------------------------------------------------
@@ -183,9 +188,14 @@
 
 	const groups = $derived.by(() => {
 		if (activeGroup !== 'author') return null;
-		const map = new Map<string, { slug: string; name: string; books: BookSummary[] }>();
+		const map = new Map<string, { slug: string; name: string; photo_url: string; books: BookSummary[] }>();
 		for (const b of sorted) {
-			const g = map.get(b.author.slug) ?? { slug: b.author.slug, name: b.author.name, books: [] };
+			const g = map.get(b.author.slug) ?? {
+				slug: b.author.slug,
+				name: b.author.name,
+				photo_url: b.author.photo_url ?? '',
+				books: []
+			};
 			g.books.push(b);
 			map.set(b.author.slug, g);
 		}
@@ -211,6 +221,10 @@
 		activeGroup === 'series' ? groupBySeries(sorted, series.map((s) => s.slug)) : null
 	);
 	const authorAnchor = $derived(new Map((groups ?? []).map((g) => [g.books[0].slug, g.slug])));
+
+	// How much the pinned controls bar covers (0 where it doesn't pin) — what the
+	// author anchors and group headings clear, via --pinned-offset.
+	let pinnedH = $state(0);
 
 	// --- SEO: ItemList structured data ------------------------------------------
 	// Item URLs are LOCALIZED. This shelf prerenders once per locale, and a bare
@@ -306,31 +320,13 @@
 		>
 	</div>
 {/snippet}
-{#snippet viewSeg(cls: string, btnCls: string)}
-	<div class="seg {cls}">
-		<button
-			class={btnCls}
-			class:active={view === 'grid'}
-			onclick={() => setView('grid')}
-			aria-label={t('books.viewGrid')}
-			aria-pressed={view === 'grid'}><Icon name="grid" /></button
-		>
-		<button
-			class={btnCls}
-			class:active={view === 'list'}
-			onclick={() => setView('list')}
-			aria-label={t('books.viewList')}
-			aria-pressed={view === 'list'}><Icon name="list" /></button
-		>
-	</div>
-{/snippet}
 
 <!-- Filtered the shelf down to nothing: clear the filters (Biographies' model). -->
 {#snippet clearFiltersAction()}
 	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
 {/snippet}
 
-<div class="page-col px-5 py-10">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<LibraryTabs current="books" series={series.length > 0} />
 	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
@@ -356,48 +352,32 @@
 		     the reader already is. -->
 		<EmptyState message={t('books.noneInLanguage')} action={isEnglish ? undefined : readEnglish} />
 	{:else}
-		<!-- Continue reading -->
+		<!-- Continue reading — the shared resume rows (Plans and Series use them
+		     too), most recently read first. -->
 		{#if continueBooks.length && !searching}
-			<section class="mb-8">
-				<h2 class="section-label">
-					{t('books.continue')}
-				</h2>
-				{#if continueBooks.length === 1}
-					<!-- One book reads as a broken row when rendered as a scroll strip:
-					     a single 80px cover marooned in the full page width. On its own
-					     it becomes a proper resume card instead. -->
-					{@const c = continueBooks[0]}
-					<a
+			<ContinueShelf heading={t('books.continue')}>
+				{#each continueBooks as c (c.book.slug)}
+					{@const of = c.book.chapter_count}
+					{@const caption = of
+						? `${t('continue.chapter')} ${c.order} ${t('plans.of')} ${of}`
+						: `${t('continue.chapter')} ${c.order}`}
+					<ContinueRow
 						href={localizeHref(chapterPath(c.book.slug, c.order, c.book.has_modern_edition))}
-						class="book-card book-card--row card-lift group !p-4 sm:max-w-md"
+						title={c.book.title}
+						{caption}
+						verb={t('plans.continue')}
 					>
-						<div class="w-16 shrink-0 sm:w-20"><BookCover book={c.book} /></div>
-						<div class="min-w-0 flex-1">
-							<div class="line-clamp-2 text-body font-medium text-text">{c.book.title}</div>
-							<div class="text-small text-muted">{c.book.author.name}</div>
-							<div class="mt-1 text-small font-semibold text-accent">
-								{t('continue.chapter')}
-								{c.order} <Arrow />
-							</div>
-						</div>
-					</a>
-				{:else}
-					<div class="cover-rail flex gap-4 pb-1">
-						{#each continueBooks as c (c.book.slug)}
-							<a
-								href={localizeHref(chapterPath(c.book.slug, c.order, c.book.has_modern_edition))}
-								class="w-20 shrink-0 hover:no-underline sm:w-24"
-							>
-								<BookCover book={c.book} />
-								<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
-									{c.book.title}
-								</div>
-								<div class="text-eyebrow text-muted">{t('continue.chapter')} {c.order}</div>
-							</a>
-						{/each}
-					</div>
-				{/if}
-			</section>
+						{#snippet visual()}
+							<span class="w-10 shrink-0"><BookCover book={c.book} /></span>
+						{/snippet}
+						{#snippet progress()}
+							{#if of}
+								<ProgressBar percent={((c.order - 1) / of) * 100} label={`${c.book.title}: ${caption}`} />
+							{/if}
+						{/snippet}
+					</ContinueRow>
+				{/each}
+			</ContinueShelf>
 		{/if}
 
 		<!-- Book Series — books written to be read together. A rail of the index's
@@ -413,7 +393,7 @@
 				</div>
 				<!-- pt/pb leave room for the cards' hover lift and shadow, which the
 				     rail's overflow would otherwise clip. -->
-				<div class="cover-rail flex gap-4 pt-1 pb-2">
+				<div class="cover-rail flex gap-4 pt-1 pb-2" use:scrollEdges>
 					{#each railSeries as s (s.slug)}
 						<div class="grid w-64 shrink-0">
 							<SeriesCard series={s} compact />
@@ -429,67 +409,77 @@
 				<h2 class="section-label">
 					{t('books.newTitle')}
 				</h2>
-				<div class="cover-rail flex gap-4 pb-1">
+				<div class="cover-rail flex gap-4 pb-1" use:scrollEdges>
 					{#each recent as book (book.slug)}
+						<!-- A tile this narrow can't hold most titles on two lines, and
+						     "The Evangelization o…" / "Smith Wiggles…" left readers
+						     guessing (QA report): three title lines, the author wraps
+						     rather than ellipsizes, and the full pair rides the tooltip. -->
 						<a
 							href={localizeHref(`/books/${book.slug}`)}
 							class="w-20 shrink-0 hover:no-underline sm:w-24"
+							title="{book.title} — {book.author.name}"
 						>
 							<BookCover {book} />
-							<div class="mt-1.5 line-clamp-2 text-eyebrow font-medium text-text">
+							<div class="mt-1.5 line-clamp-3 text-eyebrow font-medium text-text">
 								{book.title}
 							</div>
-							<div class="truncate text-eyebrow text-muted">{book.author.name}</div>
+							<div class="line-clamp-2 text-eyebrow text-muted">{book.author.name}</div>
 						</a>
 					{/each}
 				</div>
 			</section>
 		{/if}
 
-		<!-- Controls: search · source · sort · group · view -->
-		<div class="filter-row mb-6">
-			<input
-				bind:value={filters.values.q}
-				type="search"
-				class="filter-field grow"
-				placeholder={t('books.filterPlaceholder')}
-				aria-label={t('books.filterPlaceholder')}
-			/>
-
-			<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
-			<FilterSheet
-				count={filters.values.source !== 'all' ? 1 : 0}
-				shown={filtered.length}
-				showLabel={t('books.showResults')}
-				filtered={searching}
-				onClear={clearFilters}
-			>
-				{#if showSourceFilter}
-					{@render sourceSeg('w-full', 'flex-1')}
-				{/if}
-				<SheetChoices
-					label={t('common.sort')}
-					options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
-					value={sort}
-					onselect={setSort}
+		<!-- Controls: search · source · sort · group · view — pinned under the app
+		     nav (FilterBar) so a reader deep in the shelf can re-sort or regroup
+		     without scrolling back up. `compact`: between sm and md the inline row
+		     wraps too tall to pin. -->
+		<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-6">
+			<div class="filter-row">
+				<input
+					bind:value={filters.values.q}
+					type="search"
+					class="filter-field grow"
+					placeholder={t('books.filterPlaceholder')}
+					aria-label={t('books.filterPlaceholder')}
 				/>
-				{@render groupSeg('w-full', 'flex-1')}
-				{@render viewSeg('w-full', 'flex-1')}
-			</FilterSheet>
 
-			<div class="hidden sm:contents">
-				{#if showSourceFilter}
-					{@render sourceSeg('', '')}
-				{/if}
-				<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
-					{#each BOOK_SORTS as v (v)}
-						<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
-					{/each}
-				</select>
-				{@render groupSeg('', '')}
-				{@render viewSeg('', '')}
+				<!-- Phone only: the same controls, as one-tap choices in a sheet. -->
+				<FilterSheet
+					count={filters.values.source !== 'all' ? 1 : 0}
+					shown={filtered.length}
+					showLabel={t('books.showResults')}
+					filtered={searching}
+					onClear={clearFilters}
+				>
+					{#if showSourceFilter}
+						{@render sourceSeg('w-full', 'flex-1')}
+					{/if}
+					<SheetChoices
+						label={t('common.sort')}
+						options={BOOK_SORTS.map((v) => ({ v, label: t(BOOK_SORT_LABEL[v]) }))}
+						value={sort}
+						onselect={setSort}
+					/>
+					{@render groupSeg('w-full', 'flex-1')}
+					<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
+				</FilterSheet>
+
+				<div class="hidden sm:contents">
+					{#if showSourceFilter}
+						{@render sourceSeg('', '')}
+					{/if}
+					<select bind:value={sort} onchange={save} class="filter-field" aria-label={t('common.sort')}>
+						{#each BOOK_SORTS as v (v)}
+							<option value={v}>{t(BOOK_SORT_LABEL[v])}</option>
+						{/each}
+					</select>
+					{@render groupSeg('', '')}
+					<ViewToggle {view} onchange={setView} />
+				</div>
 			</div>
-		</div>
+		</FilterBar>
 
 		<!-- Topic filter -->
 		<TopicFilterRow
@@ -512,16 +502,14 @@
 			/>
 		{/if}
 
-		<!-- Author quick-nav -->
+		<!-- Author quick-nav: the shared faces strip (Sermons uses it too). -->
 		{#if groups && groups.length > 1}
-			<nav class="mb-8 flex flex-wrap items-center gap-1.5" aria-label={t('books.jumpAuthor')}>
-				<span class="eyebrow text-muted me-1">{t('books.jumpAuthor')}</span>
-				{#each groups as g (g.slug)}
-					<a href="#author-{g.slug}" class="tag">
-						{g.name}
-					</a>
-				{/each}
-			</nav>
+			<AuthorJumpStrip
+				class="mb-8"
+				label={t('books.jumpAuthor')}
+				href={(slug) => `#author-${slug}`}
+				writers={groups.map((g) => ({ slug: g.slug, name: g.name, photo_url: g.photo_url, count: g.books.length }))}
+			/>
 		{/if}
 
 		<!-- Results — in a size container, so the library grid steps to seven

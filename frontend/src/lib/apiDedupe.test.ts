@@ -9,7 +9,7 @@ vi.mock('$app/environment', () => ({
 	version: 'test'
 }));
 
-import { apiFetch, setAuthTokenProvider } from './api';
+import { apiFetch, ApiError, setAuthTokenProvider } from './api';
 
 /** A fetch that does not resolve until told, so requests genuinely overlap. */
 function deferredFetch() {
@@ -109,6 +109,28 @@ describe('in-flight GET dedupe', () => {
 		await Promise.all([a, b]);
 	});
 
+	it("sends a load's library read without the token, so hydration can replay it", async () => {
+		// The inlined response is matched on headers too: a signed-in reader's
+		// Authorization header missed it and hydrated from the live API.
+		setAuthTokenProvider(() => 'token-a');
+		const load = deferredFetch();
+		const authOf = (m: ReturnType<typeof vi.fn>, i: number) =>
+			new Headers((m.mock.calls[i] as unknown as [string, RequestInit])[1].headers).get(
+				'Authorization'
+			);
+		const all = Promise.all([
+			apiFetch('/api/library/authors/hudson-taylor/?language=am', {}, load.mock as typeof fetch),
+			apiFetch('/api/reading/progress/', {}, load.mock as typeof fetch),
+			apiFetch('/api/library/authors/hudson-taylor/?language=am')
+		]);
+		expect(authOf(load.mock, 0)).toBeNull();
+		expect(authOf(load.mock, 1)).toBe('Bearer token-a');
+		expect(authOf(fetchMock, 0)).toBe('Bearer token-a');
+		load.settleAll();
+		settleAll();
+		await all;
+	});
+
 	it('leaves writes alone', async () => {
 		// Two POSTs are two intentions; collapsing them would drop one.
 		const all = Promise.all([
@@ -123,11 +145,15 @@ describe('in-flight GET dedupe', () => {
 	it('a failed request does not poison the next one', async () => {
 		vi.stubGlobal(
 			'fetch',
-			vi.fn().mockRejectedValueOnce(new Error('offline')).mockResolvedValue(
-				new Response('{}', { status: 200, headers: { 'Content-Type': 'application/json' } })
-			)
+			// A 404, not a network error: the runtime retry would absorb a one-off
+			// network failure, and this test is about the in-flight map.
+			vi.fn()
+				.mockResolvedValueOnce(new Response('', { status: 404 }))
+				.mockResolvedValue(
+					new Response('{}', { status: 200, headers: { 'Content-Type': 'application/json' } })
+				)
 		);
-		await expect(apiFetch('/library/plans/')).rejects.toThrow('offline');
+		await expect(apiFetch('/library/plans/')).rejects.toThrow('API 404');
 		// The in-flight entry must have been cleared, or this would re-throw the
 		// first failure forever.
 		await expect(apiFetch('/library/plans/')).resolves.toEqual({});
@@ -139,5 +165,73 @@ describe('in-flight GET dedupe', () => {
 		expect(init.signal).toBeInstanceOf(AbortSignal);
 		settleAll();
 		await done;
+	});
+});
+
+describe('runtime retries', () => {
+	let fetchMock: ReturnType<typeof vi.fn>;
+	const ok = () =>
+		new Response('{"ok":true}', { status: 200, headers: { 'Content-Type': 'application/json' } });
+	const status = (code: number) => new Response('', { status: code });
+
+	beforeEach(() => {
+		vi.useFakeTimers();
+		setAuthTokenProvider(() => null);
+		fetchMock = vi.fn();
+		vi.stubGlobal('fetch', fetchMock);
+		vi.spyOn(console, 'warn').mockImplementation(() => {});
+	});
+	afterEach(() => {
+		vi.unstubAllGlobals();
+		vi.useRealTimers();
+		vi.restoreAllMocks();
+	});
+
+	it('rides out a proxy 503 (an API restart) instead of failing the page', async () => {
+		fetchMock.mockResolvedValueOnce(status(503)).mockResolvedValueOnce(ok());
+		const p = apiFetch('/api/library/authors/hudson-taylor/?language=am');
+		await vi.runAllTimersAsync();
+		await expect(p).resolves.toEqual({ ok: true });
+		expect(fetchMock).toHaveBeenCalledTimes(2);
+	});
+
+	it('retries a network error, and gives up after the ladder', async () => {
+		fetchMock.mockRejectedValue(new TypeError('Failed to fetch'));
+		const p = apiFetch('/api/library/books/');
+		const settled = expect(p).rejects.toThrow('Failed to fetch');
+		await vi.runAllTimersAsync();
+		await settled;
+		expect(fetchMock).toHaveBeenCalledTimes(3);
+	});
+
+	it('never retries a 500 — Django answered, and that is a bug to see', async () => {
+		fetchMock.mockResolvedValue(status(500));
+		const p = apiFetch('/api/library/books/');
+		const settled = expect(p).rejects.toBeInstanceOf(ApiError);
+		await vi.runAllTimersAsync();
+		await settled;
+		expect(fetchMock).toHaveBeenCalledTimes(1);
+	});
+
+	it('never retries a write', async () => {
+		fetchMock.mockResolvedValue(status(503));
+		const p = apiFetch('/api/library/search-click/', { method: 'POST', body: '{}' });
+		const settled = expect(p).rejects.toBeInstanceOf(ApiError);
+		await vi.runAllTimersAsync();
+		await settled;
+		expect(fetchMock).toHaveBeenCalledTimes(1);
+	});
+
+	it('stops once the request was aborted', async () => {
+		const controller = new AbortController();
+		fetchMock.mockImplementation(() => {
+			controller.abort();
+			return Promise.reject(new DOMException('aborted', 'AbortError'));
+		});
+		const p = apiFetch('/api/library/books/', { signal: controller.signal });
+		const settled = expect(p).rejects.toThrow('aborted');
+		await vi.runAllTimersAsync();
+		await settled;
+		expect(fetchMock).toHaveBeenCalledTimes(1);
 	});
 });

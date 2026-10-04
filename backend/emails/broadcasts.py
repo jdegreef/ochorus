@@ -74,14 +74,16 @@ class _Pacer:
         self.next_at = now + self.interval
 
 
-def _send_one(broadcast, profile, subscription, pacer: _Pacer | None = None) -> str:
+def _send_one(
+    broadcast, profile, subscription, pacer: _Pacer | None = None, cards: dict | None = None
+) -> str:
     """Send the broadcast to one recipient. Returns a tally bucket name."""
     if not subscription.wants(EmailKind.BROADCAST):
         return "skipped"
     to_email = verified_email(profile)
     if not to_email:
         return "skipped"
-    rendered = render_broadcast(broadcast, profile, subscription)
+    rendered = render_broadcast(broadcast, profile, subscription, cards=cards)
     if rendered is None:  # no content in the reader's language (nor a fallback)
         return "skipped"
     if pacer is not None:
@@ -240,6 +242,8 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
     # another worker may have advanced it since): resume from the stored cursor.
     broadcast.refresh_from_db()
     pacer = _Pacer(settings.EMAIL_SEND_RATE if rate is None else rate)
+    # Library cards per language, looked up once for the whole run, not per reader.
+    cards: dict = {}
     batches = 0
     try:
         while True:
@@ -284,7 +288,7 @@ def run_send(broadcast, *, deadline: float | None = None, rate: float | None = N
                     break
                 subscription = subscriptions[profile.pk]
                 try:
-                    bucket = _send_one(broadcast, profile, subscription, pacer)
+                    bucket = _send_one(broadcast, profile, subscription, pacer, cards)
                 except Exception:
                     # One recipient's failure (a render error, a provider hiccup)
                     # is a "failed" tally, not an abort that strands the rest.

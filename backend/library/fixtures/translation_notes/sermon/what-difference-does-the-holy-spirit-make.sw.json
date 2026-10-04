@@ -1,0 +1,98 @@
+{
+ "kind": "sermon",
+ "slug": "what-difference-does-the-holy-spirit-make",
+ "language": "sw",
+ "job_issue": 5052,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Luke 24:49b",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "John 17:7",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 17:8",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "the-god-of-all-comfort.sw.json"
+  },
+  {
+   "reference": "John 17:9a",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 17:12",
+   "status": "self_rendered",
+   "block_index": 15
+  },
+  {
+   "reference": "John 17:14",
+   "status": "self_rendered",
+   "block_index": 16
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Acts 1:8a",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Luke 10:17b",
+   "status": "self_rendered",
+   "block_index": 33
+  },
+  {
+   "reference": "Acts 17:11b",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Ephesians 5:18b-19b",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Acts 2:37b",
+   "status": "mined",
+   "block_index": 80,
+   "source_file": "godliness.sw.json"
+  },
+  {
+   "reference": "Acts 2:37",
+   "status": "self_rendered",
+   "block_index": 80
+  },
+  {
+   "reference": "Revelation 17:14b",
+   "status": "self_rendered",
+   "block_index": 103
+  },
+  {
+   "reference": "Luke 11:1b",
+   "status": "self_rendered",
+   "block_index": 107
+  },
+  {
+   "reference": "Romans 8:26b",
+   "status": "mined",
+   "block_index": 110,
+   "source_file": "a-short-and-easy-method-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 7:20",
+   "status": "self_rendered",
+   "block_index": 137
+  }
+ ]
+}

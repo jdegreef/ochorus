@@ -216,7 +216,7 @@
 	<!-- Backdrop. Click closes; keyboard dismissal is the global Escape handler. -->
 	<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
 	<div
-		class="palette-overlay fixed inset-0 z-50 flex items-start justify-center bg-black/40 px-4 pt-[12vh]"
+		class="palette-overlay fixed inset-0 z-(--z-modal) flex items-start justify-center bg-black/40 px-4 pt-[12dvh]"
 		use:portal
 		role="presentation"
 		onclick={close}
@@ -245,7 +245,7 @@
 				class="w-full border-b border-border bg-transparent px-4 py-4 text-body text-text focus-visible:-outline-offset-2"
 			/>
 
-			<div class="max-h-[52vh] overflow-y-auto py-2">
+			<div class="max-h-[52dvh] overflow-y-auto py-2">
 				{#if items.length === 0}
 					<p class="px-4 py-6 text-center text-small text-muted">
 						{loading ? '…' : t('search.noResultsShort')}

@@ -1,0 +1,1459 @@
+{
+ "kind": "book",
+ "slug": "key-teachings-of-a-b-simpson",
+ "language": "am",
+ "job_issue": 3745,
+ "pull_request": null,
+ "note": [
+  "Scripture authority is the 1962 Amharic Bible (UBS; NT revised 2003). Its New Testament is on disk whole (ebible mirror gracious-tech/fetch_collection, bibles/amh_amh). The mirror carries no Old Testament, so OT quotations reuse the wording of an already-shipped Amharic work where one quotes the same verse (source_file names it) and are otherwise self_rendered in the 1962 register.",
+  "A `mined` row was re-measured against the finished text: an exact byte substring of at least 20 characters of the 1962 NT verse (or 25 of the cited corpus file) inside that block. Shorter or re-personed quotations are self_rendered, whatever the translator believed. The mirror bridges some verse ranges into one entry holding only part of their text (e.g. John 5:41-43, Revelation 4:9-11, Ephesians 3:8-10), so verses inside those ranges could not be quoted verbatim and are self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 1:3",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 1,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Philippians 4:13",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Colossians 2:9-10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 3
+  },
+  {
+   "reference": "John 1:16",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 73:25",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 3,
+   "source_file": "the-almost-christian.am.json"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 3,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 106:15",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Psalm 37:4",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 3,
+   "source_file": "daughters-of-the-king-3.am.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "self_rendered",
+   "block_index": 36,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Acts 4:12",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 5:12",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 5:17",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Exodus 15:2",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 16:31",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 5:13",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 4,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:23-24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 1:30",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 5,
+   "source_file": "the-unselfishness-of-god.am.json"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 2:6",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 5
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 1:29",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 5
+  },
+  {
+   "reference": "2 Peter 3:18",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 6:13",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 1:8",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 5,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Proverbs 4:18",
+   "status": "self_rendered",
+   "block_index": 25,
+   "chapter_order": 5
+  },
+  {
+   "reference": "James 5:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 53:4-5",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 6,
+   "source_file": "christ-all-in-all.am.json"
+  },
+  {
+   "reference": "Matthew 8:16-17",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 5:15",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Colossians 4:14",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Luke 10:34",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 8:23",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 26:39",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Job 2:13",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 6
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 23,
+   "chapter_order": 6,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Acts 1:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Revelation 1:7",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 4:16",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Titus 2:13",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Peter 1:8",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "mined",
+   "block_index": 14,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 24:42",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "block_index": 18,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Acts 1:7-8",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 4:13",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 4:16-17",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Thessalonians 4:18",
+   "status": "mined",
+   "block_index": 29,
+   "chapter_order": 7,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 4:17",
+   "status": "self_rendered",
+   "block_index": 30,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 John 3:3",
+   "status": "self_rendered",
+   "block_index": 33,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "John 3:30",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 4:11",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Jude 1:3",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 8
+  },
+  {
+   "reference": "3 John 1:9",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 8,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Timothy 2:21",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Corinthians 6:19-20",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Joshua 1:3",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 9,
+   "source_file": "the-unselfishness-of-god.am.json"
+  },
+  {
+   "reference": "Numbers 13:32-33",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Hebrews 3:19",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Joshua 5:12",
+   "status": "self_rendered",
+   "block_index": 27,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "block_index": 28,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 2:6",
+   "status": "self_rendered",
+   "block_index": 34,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Ephesians 6:12",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 9:23",
+   "status": "mined",
+   "block_index": 40,
+   "chapter_order": 9,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "self_rendered",
+   "block_index": 47,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 50,
+   "chapter_order": 9
+  },
+  {
+   "reference": "1 Thessalonians 5:24",
+   "status": "self_rendered",
+   "block_index": 53,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 4:30",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 14:17",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:16",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:9",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 16:14",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 5:18",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 4:31",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 5:32",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 12:30",
+   "status": "self_rendered",
+   "block_index": 26,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 12:11",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Galatians 5:22-23",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "block_index": 32,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 35,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:14",
+   "status": "mined",
+   "block_index": 39,
+   "chapter_order": 10,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "self_rendered",
+   "block_index": 44,
+   "chapter_order": 10
+  },
+  {
+   "reference": "John 16:14",
+   "status": "self_rendered",
+   "block_index": 45,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Isaiah 54:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "2 Corinthians 6:11-12",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 11,
+   "source_file": "the-life-of-trust-teens.am.json"
+  },
+  {
+   "reference": "Ephesians 3:20",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 4:1",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Thessalonians 3:12",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 11,
+   "source_file": "rooted-5.am.json"
+  },
+  {
+   "reference": "2 Corinthians 6:13",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 11,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 11:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 4:20-21",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 12,
+   "source_file": "women-who-moved-heaven-2.am.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "2 Corinthians 12:8",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Mark 9:24",
+   "status": "self_rendered",
+   "block_index": 16,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Joshua 3:13",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 12
+  },
+  {
+   "reference": "James 2:18",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 12,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 4:3",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Psalm 2:8",
+   "status": "mined",
+   "block_index": 24,
+   "chapter_order": 13,
+   "source_file": "first-epistle-of-clement.am.json"
+  },
+  {
+   "reference": "Psalm 66:18",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Mark 11:25",
+   "status": "mined",
+   "block_index": 31,
+   "chapter_order": 13,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Peter 3:7",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 13
+  },
+  {
+   "reference": "Luke 24:27",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 24:44",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "John 5:39",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Hebrews 10:7",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Genesis 3:15",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Malachi 3:1",
+   "status": "self_rendered",
+   "block_index": 9,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Romans 5:14",
+   "status": "mined",
+   "block_index": 9,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 5:7",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Genesis 22:13",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Exodus 15:26",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Exodus 17:15",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Judges 6:24",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Ezekiel 48:35",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 10:38",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "1 Corinthians 15:57",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 14,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Ephesians 2:14",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "John 10:11",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 14,
+   "source_file": "jesus-himself-2.am.json"
+  },
+  {
+   "reference": "Luke 24:13-32",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 14
+  },
+  {
+   "reference": "Deuteronomy 11:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Isaiah 26:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Matthew 6:34",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "self_rendered",
+   "block_index": 10,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalm 16:8",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:11",
+   "status": "mined",
+   "block_index": 17,
+   "chapter_order": 15,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 15
+  },
+  {
+   "reference": "1 Thessalonians 5:18",
+   "status": "self_rendered",
+   "block_index": 23,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Psalm 34:1",
+   "status": "self_rendered",
+   "block_index": 24,
+   "chapter_order": 15
+  },
+  {
+   "reference": "John 15:11",
+   "status": "self_rendered",
+   "block_index": 35,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Deuteronomy 33:25",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 15
+  },
+  {
+   "reference": "Matthew 25:40",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 16
+  },
+  {
+   "reference": "James 2:1",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 2:4",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 2:2-3",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 16
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 John 3:17",
+   "status": "mined",
+   "block_index": 13,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 25:31-46",
+   "status": "self_rendered",
+   "block_index": 15,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "mined",
+   "block_index": 16,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 6:17",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Timothy 6:18",
+   "status": "self_rendered",
+   "block_index": 20,
+   "chapter_order": 16
+  },
+  {
+   "reference": "2 Corinthians 8:1-5",
+   "status": "self_rendered",
+   "block_index": 21,
+   "chapter_order": 16
+  },
+  {
+   "reference": "2 Corinthians 8:3",
+   "status": "mined",
+   "block_index": 22,
+   "chapter_order": 16,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 25:31-46",
+   "status": "self_rendered",
+   "block_index": 29,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Luke 4:18",
+   "status": "self_rendered",
+   "block_index": 31,
+   "chapter_order": 16
+  },
+  {
+   "reference": "James 2:1",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 16
+  },
+  {
+   "reference": "Romans 10:14-15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Matthew 28:19",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 17,
+   "source_file": "men-and-women-who-gave-everything-2.am.json"
+  },
+  {
+   "reference": "Romans 15:20",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Revelation 12:11",
+   "status": "mined",
+   "block_index": 12,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Isaiah 6:8",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 17,
+   "source_file": "daughters-of-the-king-3.am.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "block_index": 20,
+   "chapter_order": 17,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Acts 17:26-27",
+   "status": "self_rendered",
+   "block_index": 22,
+   "chapter_order": 17
+  },
+  {
+   "reference": "Matthew 24:14",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 18,
+   "source_file": "men-and-women-who-gave-everything-2.am.json"
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Peter 3:12",
+   "status": "self_rendered",
+   "block_index": 13,
+   "chapter_order": 18
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "self_rendered",
+   "block_index": 14,
+   "chapter_order": 18
+  },
+  {
+   "reference": "2 Peter 3:9",
+   "status": "mined",
+   "block_index": 15,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 15:58",
+   "status": "mined",
+   "block_index": 19,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "Revelation 22:20",
+   "status": "mined",
+   "block_index": 21,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 5:10",
+   "status": "mined",
+   "block_index": 25,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:14-15",
+   "status": "mined",
+   "block_index": 27,
+   "chapter_order": 18,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Corinthians 3:15",
+   "status": "self_rendered",
+   "block_index": 28,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 32,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Revelation 7:9",
+   "status": "self_rendered",
+   "block_index": 38,
+   "chapter_order": 18
+  },
+  {
+   "reference": "Colossians 3:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 19,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 19,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "block_index": 10,
+   "chapter_order": 19,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "2 Timothy 2:15",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 20,
+   "source_file": "Amharic Bible 1962/2003 (UBS), NT — ebible amh"
+  },
+  {
+   "reference": "1 Thessalonians 5:23",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 20
+  },
+  {
+   "reference": "1 Thessalonians 5:21",
+   "status": "self_rendered",
+   "block_index": 19,
+   "chapter_order": 20
+  }
+ ]
+}

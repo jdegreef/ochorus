@@ -2,6 +2,7 @@
 	import { chapterPath } from '$lib/editionHref';
 	import { bookChapterPath } from '$lib/reading-schema';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
 	import { authorLdType, authorPath } from '$lib/originals';
 	import { type BookDetail, formatLifespan } from '$lib/library-public';
@@ -51,7 +52,7 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Breadcrumb from '$lib/components/Breadcrumb.svelte';
 	import BookDownloadMenu from '$lib/components/BookDownloadMenu.svelte';
-	import { downloadFormats, titleWithFormats } from '$lib/bookSeo';
+	import { distinctTitle, downloadFormats, titleWithFormats } from '$lib/bookSeo';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 
 	let { data } = $props();
@@ -119,6 +120,8 @@
 	// that is (workPercent — the same figure every other surface shows), and the
 	// time left from the start of it at the reader's pace.
 	const resumeChapter = $derived(book.chapters.find((c) => c.order === resumeHere));
+	/** The chapter the read verb opens — where they are, or where the book begins. */
+	const readChapter = $derived(book.chapters.find((c) => c.order === readOrder));
 	const wordsLeft = $derived(
 		resumeHere == null
 			? 0
@@ -240,7 +243,7 @@
 	// A downloadable edition names its formats too — see titleWithFormats.
 	const titleTag = $derived(
 		titleWithFormats(
-			t('book.titleTag').replace('%title%', book.title).replace('%name%', book.author.name),
+			t('book.titleTag').replace('%title%', distinctTitle(book)).replace('%name%', book.author.name),
 			formats
 		)
 	);
@@ -478,8 +481,17 @@
 		     drop-shadow that hugs the cover's rounded shape (via `filter`, so it
 		     follows any cover — painting, plate or designed raster — without a fake
 		     spine drawn over the artwork) and a slim page-edge on the fore-edge. -->
-		<div class="hero-cover book-hero-cover">
-			<BookCover {book} priority />
+		<div class="book-hero-cover">
+			<div class="hero-cover">
+				<BookCover {book} priority />
+			</div>
+			{#if book.artwork_credit}
+				<!-- The painting's credit (see the foot copy below for why it is
+				     shown at all): from sm it hangs under the cover it names; a
+				     phone's 7rem cover column is too narrow, so there it stays at
+				     the foot. -->
+				<p class="mt-3 hidden text-eyebrow text-muted sm:block">{book.artwork_credit}</p>
+			{/if}
 		</div>
 
 		<div class="book-hero-head min-w-0">
@@ -685,7 +697,7 @@
 	{#if showSubnav}
 		<nav
 			bind:clientHeight={subnavH}
-			class="book-subnav sticky z-20 mt-6 flex items-center gap-3 border-b border-border bg-bg"
+			class="book-subnav sticky z-(--z-pinned) mt-6 flex items-center gap-3 border-b border-border bg-bg"
 			style="top: var(--appnav-h, 0px)"
 			aria-label={t('a11y.pageSections')}
 		>
@@ -923,11 +935,9 @@
 	     published edition; `siblingEditions` is the hreflang alternate set minus
 	     the edition being viewed, and localeName() gives each its autonym.
 	     hreflang/lang on the link announce the target language to the reader and
-	     to assistive tech.
-	     data-sveltekit-reload forces a full load: the locale comes from the URL
-	     via Paraglide, and a client-side nav reroutes /es/books/x/ to the SAME
-	     route and params while getLang() still reads the old URL — so the reader
-	     landed on the English edition under a Spanish address. -->
+	     to assistive tech. data-sveltekit-reload: a full load (the locale is
+	     fixed per document — see the root layout's cross-locale guard), and no
+	     hover preload, which would run this route's load in the WRONG locale. -->
 	<!-- On a fallback page the notice above already lists these. -->
 	{#if siblingEditions.length && !fallback}
 		<section id="languages" class="jump-anchor mt-12">
@@ -985,9 +995,21 @@
 		     Met Open Access (CC0) so the credit isn't owed — it is simply right,
 		     and it is the provenance a reader would otherwise have to take on
 		     trust. Not translated: it is a name, a title and a year. -->
-		<p class="mt-2 text-eyebrow text-muted">{book.artwork_credit}</p>
+		<p class="mt-2 text-eyebrow text-muted sm:hidden">{book.artwork_credit}</p>
 	{/if}
 </div>
+
+<!-- Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar (ReadBar, shared with the plan page). From 640px the sticky
+     sub-nav carries it instead. -->
+<ReadBar
+	show={!cardSeen.visible}
+	hideFrom="sm"
+	eyebrow={book.title}
+	title={chapterNameIn(readOrder, readChapter?.title, book.title)}
+	href={readHref(readOrder)}
+	label={readLabel}
+/>
 
 <style>
 	/* A1: lift the cover off the page. `filter: drop-shadow` follows the cover's

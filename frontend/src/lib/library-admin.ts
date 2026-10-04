@@ -1097,12 +1097,20 @@ const SMALL_BASE = 20;
 const signed = (n: number) => `${n > 0 ? '+' : ''}${n}`;
 const dirOf = (n: number): 'up' | 'down' | 'flat' => (n > 0 ? 'up' : n < 0 ? 'down' : 'flat');
 
+/** The change between two periods: the count, and the percentage once the
+ *  base is big enough to mean something (null below it). Shared by the trend
+ *  chips and the Engagement page's summary sentence, so both follow one rule. */
+export const periodChange = (cur: number, prev: number) => ({
+	delta: cur - prev,
+	pct: prev >= SMALL_BASE ? Math.round(((cur - prev) / prev) * 100) : null
+});
+
 export const periodTrend = (cur: number, prev: number): Trend => {
 	if (prev <= 0) return cur > 0 ? { dir: 'up', text: 'new' } : null;
+	const { delta, pct } = periodChange(cur, prev);
 	// The baseline rides along, because "+29" means nothing without it.
-	if (prev < SMALL_BASE) return { dir: dirOf(cur - prev), text: `${signed(cur - prev)} vs ${prev}` };
-	const d = Math.round(((cur - prev) / prev) * 100);
-	return { dir: dirOf(d), text: `${signed(d)}%` };
+	if (pct === null) return { dir: dirOf(delta), text: `${signed(delta)} vs ${prev}` };
+	return { dir: dirOf(pct), text: `${signed(pct)}%` };
 };
 
 /** The change between two RATES (0–1), in percentage points — a rate moving
@@ -1187,16 +1195,42 @@ export interface EngagementLang extends Language {
 
 /** Time-on-site rollup from reading sittings. `seconds` values are ACTIVE
  *  reading time (foreground, non-idle), so these are real reading totals, not
- *  tab-open time. All zero until the instrumentation has data. */
+ *  tab-open time. All zero until the instrumentation has data. The totals,
+ *  median and lengths cover the page's date range; the `_7d` / `_30d`
+ *  figures are fixed windows. */
 export interface EngagementTime {
 	total_seconds: number;
 	sessions: number;
 	readers: number;
 	avg_session_seconds: number;
+	/** The middle sitting's length: what a typical sitting is, which the
+	 *  average isn't when a few long reads sit on many short looks. */
+	median_session_seconds: number;
+	/** Sittings and their reading time per length bucket, shortest first. */
+	lengths: SittingBucket[];
 	seconds_7d: number;
 	readers_7d: number;
-	seconds_30d: number;
-	readers_30d: number;
+	/** Any sitting at all, whatever the range: the card shows on this. */
+	has_sittings: boolean;
+}
+
+/** One sitting-length bucket: [min, max) seconds, `max` null on the last. */
+export interface SittingBucket {
+	min_seconds: number;
+	max_seconds: number | null;
+	sittings: number;
+	seconds: number;
+}
+
+/** Sittings this long or longer are the deep reads, the group worth watching
+ *  on its own. A bucket boundary on the API side. */
+export const DEEP_SITTING_SECONDS = 15 * 60;
+
+/** "Under 1m", "1–5m", "30m+", from a bucket's bounds. */
+export function sittingBucketLabel(b: Pick<SittingBucket, 'min_seconds' | 'max_seconds'>): string {
+	const m = (s: number) => Math.round(s / 60);
+	if (!b.min_seconds && b.max_seconds) return `Under ${m(b.max_seconds)}m`;
+	return b.max_seconds ? `${m(b.min_seconds)}–${m(b.max_seconds)}m` : `${m(b.min_seconds)}m+`;
 }
 
 /** A most-hearted work, keyed on hearts and without a reader/finisher count
@@ -1277,9 +1311,98 @@ export interface AdminEngagement {
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];
 	weekly_active: { week: string; readers: number }[];
+	/** What the team did in the charted weeks, oldest first: the markers under
+	 *  the weekly chart. Absent from an API that predates them. */
+	events?: EngagementEvent[];
+	/** The weekly lines behind the pulse tiles (library/engagement_trends.py),
+	 *  on the same weeks as `weekly_active`. Absent from an older API. */
+	trends?: EngagementTrends | null;
+	/** Who stays: the last finished weeks' sign-ups, oldest first, and how
+	 *  many read in each week after (library/engagement_trends.py). Absent
+	 *  from an older API. */
+	cohorts?: { min_size: number; rows: EngagementCohort[] };
+	/** When people read, on their own clocks. Absent from an older API. */
+	hours?: EngagementHours;
+	/** The figures that follow the page's date range, each with the period
+	 *  before it (`prev` null for all time). Absent from an older API. */
+	period?: EngagementPeriod;
 }
 
-export const getAdminEngagement = () => apiFetch<AdminEngagement>('/api/admin/engagement/');
+export interface EngagementPeriod {
+	range: EngagementRange;
+	days: number | null;
+	active: PeriodFigure;
+	hearts: PeriodFigure;
+	signups: PeriodFigure;
+	seconds: PeriodFigure;
+}
+export type PeriodFigure = { value: number; prev: number | null };
+
+/** Minutes read per weekday × hour over the last `days`, in each reader's
+ *  own time zone. `minutes[d][h]` is Monday-first; null where fewer than
+ *  `min_readers` readers read in that hour. `without_zone` readers have no
+ *  time zone yet and are left out. */
+export interface EngagementHours {
+	/** The window, or null for all time. */
+	days: number | null;
+	min_readers: number;
+	readers: number;
+	without_zone: number;
+	minutes: (number | null)[][];
+}
+
+/** One join week. `active[k]` is how many of its `size` sign-ups read in
+ *  week `k` after joining (0 is the join week), up to the last finished week.
+ *  Null when the week is under the privacy floor: its size only. */
+export interface EngagementCohort {
+	week: string;
+	size: number;
+	active: number[] | null;
+}
+
+export interface EngagementTrends {
+	hearts: number[];
+	reading_seconds: number[];
+	/** Running totals ending on the tile's number. */
+	readers: number[];
+	users: number[];
+	/** Readers in each of six rolling 30-day windows, the last ending today. */
+	active_30d: { end: string; readers: number }[];
+}
+
+/** One thing done to readers in a charted week: an email sent, a language taken
+ *  live, or works added (one event per week, however many). `week` is the
+ *  Monday the weekly chart keys that week by; `date` the day it happened;
+ *  `recent` whether it falls in the same last 7 days as `active_7d`. */
+export interface EngagementEvent {
+	/** Unique and stable, for keyed lists. */
+	id: string;
+	week: string;
+	date: string;
+	kind: EngagementEventKind;
+	title: string;
+	detail: string;
+	recent: boolean;
+}
+
+export type EngagementEventKind = 'email' | 'language' | 'works';
+
+/** Each event kind's marker glyph and legend label. */
+export const EVENT_KINDS: Record<EngagementEventKind, { glyph: string; label: string }> = {
+	email: { glyph: '✉', label: 'email to readers' },
+	language: { glyph: '◎', label: 'language went live' },
+	works: { glyph: '+', label: 'works added' }
+};
+
+
+export const getAdminEngagement = (range?: EngagementRange) =>
+	apiFetch<AdminEngagement>(`/api/admin/engagement/${range ? `?range=${range}` : ''}`);
+
+/** The Engagement page's date range, and how each reads in a sentence. */
+export const ENGAGEMENT_RANGES = { '7d': '7 days', '30d': '30 days', '90d': '90 days', all: 'all time' } as const;
+export type EngagementRange = keyof typeof ENGAGEMENT_RANGES;
+export const DEFAULT_ENGAGEMENT_RANGE: EngagementRange = '30d';
+export const isEngagementRange = (v: string | null): v is EngagementRange => !!v && Object.hasOwn(ENGAGEMENT_RANGES, v);
 
 // --- Email campaign metrics --------------------------------------------------
 
@@ -1331,14 +1454,25 @@ export interface BroadcastCheck {
 	message: string;
 }
 
-/** One language's content block for a broadcast (structured, not raw HTML). */
+/** One block of campaign content (backend `emails/blocks.py`): structured
+ *  data, never HTML. Library blocks name a work by slug and render as the
+ *  edition in the email's language, or are left out where there is none. */
+export type EmailBlock =
+	| { type: 'heading'; text: string }
+	| { type: 'text'; text: string }
+	| { type: 'button'; label: string; path: string }
+	| { type: 'divider' }
+	| { type: 'quote'; text: string; attribution: string }
+	| { type: 'book' | 'sermon' | 'plan'; slug: string; label: string };
+
+export type EmailBlockType = EmailBlock['type'];
+export type LibraryBlockType = Extract<EmailBlock, { slug: string }>['type'];
+
+/** One language's content for a broadcast or template. The server always
+ *  sends it as blocks (an older broadcast's fixed fields are converted there). */
 export interface BroadcastBlock {
-	heading?: string;
-	paragraphs?: string[];
-	cta_label?: string;
-	cta_path?: string;
-	preheader?: string;
-	greeting?: string;
+	preheader: string;
+	blocks: EmailBlock[];
 }
 
 export interface BroadcastAudience {
@@ -1368,6 +1502,8 @@ export interface AdminBroadcast {
 	/** Copy and audience are frozen: it has (or may have) mailed someone. */
 	locked: boolean;
 	// detail only:
+	/** AI-drafted translations per language — admin-only review state. */
+	translations?: Record<string, EmailTranslation>;
 	content?: Record<string, BroadcastBlock>;
 	stats?: EmailMetricRow;
 	checks?: BroadcastCheck[];
@@ -1401,6 +1537,31 @@ export const updateBroadcast = (id: number, payload: BroadcastPayload) =>
 
 export const deleteBroadcast = (id: number) =>
 	apiFetch<null>(`/api/admin/broadcasts/${id}/`, { method: 'DELETE' });
+
+/** One language's AI draft (backend `emails/translation_jobs.py`). A `draft`
+ *  blocks sending until an admin approves it; `stale` means the source text
+ *  changed after the draft was asked for. */
+export interface EmailTranslation {
+	state: 'requested' | 'draft' | 'approved';
+	issue: number;
+	url: string;
+	source_locale: string;
+	stale: boolean;
+	approved_by?: string;
+}
+
+/** Ask for an AI draft (`request`), pull it in once it's back (`fetch`), or
+ *  mark a reviewed draft approved (`approve`). */
+export const broadcastTranslation = (
+	id: number,
+	action: 'request' | 'fetch' | 'approve',
+	language: string,
+	source?: string
+) =>
+	apiFetch<AdminBroadcast>(`/api/admin/broadcasts/${id}/translations/`, {
+		method: 'POST',
+		body: JSON.stringify({ action, language, source })
+	});
 
 export type BroadcastActionName = 'send' | 'schedule' | 'cancel' | 'test' | 'pause' | 'resume';
 
@@ -1461,6 +1622,60 @@ export const sendDirectEmail = (uid: string, payload: DirectEmailPayload) =>
 		body: JSON.stringify(payload)
 	});
 
+// --- Campaign design: preview, library picker, templates -----------------------
+
+export const previewEmail = (
+	locale: string,
+	subject: string,
+	content: BroadcastBlock,
+	signal?: AbortSignal
+) =>
+	apiFetch<{ subject: string; html: string }>('/api/admin/emails/preview/', {
+		method: 'POST',
+		body: JSON.stringify({ locale, subject, content }),
+		signal
+	});
+
+export interface EmailLibraryItem {
+	slug: string;
+	title: string;
+	author: string;
+	/** Every language this work is published in. */
+	languages: string[];
+}
+
+/** Search by title, or (with `slugs`) look up exactly those works. */
+export const searchEmailLibrary = (
+	type: LibraryBlockType,
+	q: string,
+	init?: { slugs?: string[]; signal?: AbortSignal }
+) =>
+	apiFetch<{ results: EmailLibraryItem[] }>(
+		`/api/admin/emails/library/?${new URLSearchParams({ type, q, slugs: (init?.slugs ?? []).join(',') })}`,
+		{ signal: init?.signal }
+	);
+
+export interface EmailTemplate {
+	id: number;
+	name: string;
+	subject: Record<string, string>;
+	content: Record<string, BroadcastBlock>;
+	locales: string[];
+}
+
+export const listEmailTemplates = () =>
+	apiFetch<{ templates: EmailTemplate[] }>('/api/admin/emails/templates/');
+
+/** Save a broadcast's design (as last saved) as a template. */
+export const saveEmailTemplate = (payload: { name: string; from_broadcast: number }) =>
+	apiFetch<EmailTemplate>('/api/admin/emails/templates/', {
+		method: 'POST',
+		body: JSON.stringify(payload)
+	});
+
+export const deleteEmailTemplate = (id: number) =>
+	apiFetch<null>(`/api/admin/emails/templates/${id}/`, { method: 'DELETE' });
+
 export const previewAudience = (audience: BroadcastAudience) =>
 	apiFetch<{ count: number }>('/api/admin/broadcasts/audience-preview/', {
 		method: 'POST',
@@ -1482,12 +1697,15 @@ export function formatDateTime(iso: string | null): string {
 
 /** Human duration from seconds: "1h 12m", "8m", "45s", "—" for nothing. Shared
  *  by the admin engagement and per-user pages so time reads the same everywhere. */
-export function formatDuration(seconds: number): string {
+export function formatDuration(seconds: number, { precise = false } = {}): string {
 	if (!seconds || seconds < 1) return '—';
 	const h = Math.floor(seconds / 3600);
 	const m = Math.floor((seconds % 3600) / 60);
 	if (h) return m ? `${h}h ${m}m` : `${h}h`;
-	if (m) return `${m}m`;
+	// `precise` keeps the seconds under 10 minutes, where they matter: a sitting
+	// is "1m 40s", not "1m".
+	const s = Math.round(seconds % 60);
+	if (m) return precise && m < 10 && s ? `${m}m ${s}s` : `${m}m`;
 	return `${Math.round(seconds)}s`;
 }
 

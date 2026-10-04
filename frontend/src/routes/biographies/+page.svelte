@@ -10,12 +10,16 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { ERAS, eraOf, type EraId } from '$lib/eras';
+	import { getLang } from '$lib/lang.svelte';
+	import { ERAS, ERA_HUE, eraOf, type EraId } from '$lib/eras';
 	import AuthorBioCard from '$lib/components/AuthorBioCard.svelte';
 	import BioTile from '$lib/components/BioTile.svelte';
-	import EraBand from '$lib/components/EraBand.svelte';
+	import FacetBand from '$lib/components/FacetBand.svelte';
 	import FacetMenu from '$lib/components/FacetMenu.svelte';
-	import Icon from '$lib/components/Icon.svelte';
+	import FilterBar from '$lib/components/FilterBar.svelte';
+	import AzRail from '$lib/components/AzRail.svelte';
+	import ViewToggle from '$lib/components/ViewToggle.svelte';
+	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import {
 		facetCounts,
 		hubMembers,
@@ -24,11 +28,11 @@
 		cleanFacetValues,
 		bioChips,
 		toggleIn,
-		type EraCard,
+		type BandCard,
+		bestKnown,
 		type FacetKey
 	} from '$lib/bioFacets';
 	import type { FacetOption } from '$lib/components/FacetMenu.svelte';
-	import { readJSON, writeJSON } from '$lib/persisted';
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import PageHeader from '$lib/components/PageHeader.svelte';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -156,22 +160,23 @@
 		return opts.map((o) => ({ ...o, count: n.get(o.v) ?? 0 }));
 	};
 
-	// The writers per era, best-known first (portraits, then most to read) —
-	// the faces on the band. Depends on the roster only, not the filters.
-	const byEra = $derived.by(() => {
-		const m = new Map<EraId, AuthorBio[]>();
-		for (const a of authors) {
-			const id = eraOf(a.birth_year);
-			const xs = m.get(id);
-			if (xs) xs.push(a);
-			else m.set(id, [a]);
+	// The roster best-known first (portraits, then most to read) — the order
+	// the browse cards pick their faces in. Depends on the roster only, not the
+	// filters, so it sorts once.
+	const ranked = $derived([...authors].sort(bestKnown));
+	/** The first `n` best-known writers a predicate admits. */
+	const topWriters = (keep: (a: AuthorBio) => boolean, n = 3) => {
+		const out: AuthorBio[] = [];
+		for (const a of ranked) {
+			if (keep(a)) out.push(a);
+			if (out.length === n) break;
 		}
-		for (const xs of m.values())
-			xs.sort((a, b) => Number(!!b.photo_url) - Number(!!a.photo_url) || worksCount(b) - worksCount(a));
-		return m;
-	});
+		return out;
+	};
 	// Only the eras that have writers in this language at all.
-	const presentEras = $derived(ERAS.filter((e) => byEra.has(e.id)));
+	const presentEras = $derived(
+		ERAS.filter((e) => authors.some((a) => eraOf(a.birth_year) === e.id))
+	);
 
 	// The three facets, each with its label and counted options — one list the
 	// toolbar menus, the phone sheet and the chips all read. Places are each
@@ -207,37 +212,99 @@
 		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.label])))
 	);
 
-	// The era band: each era's count (under the other filters) and three faces.
-	const eraCards = $derived.by(() => {
-		const counts = facetGroups.find((g) => g.k === 'era')?.options ?? [];
-		return presentEras.map(
-			(e): EraCard => ({
+	// --- Browse band: eras, traditions or places as cards ------------------------
+	// Each card ticks a value of its facet; its count is the menu's count (under
+	// the other filters) and its faces the best-known writers it holds.
+	const optCount = $derived(
+		new Map(facetGroups.flatMap((g) => g.options.map((o) => [`${g.k}:${o.v}`, o.count])))
+	);
+	const count = (k: FacetKey, v: string) => optCount.get(`${k}:${v}`) ?? 0;
+	const inHub = (slug: string) => (a: AuthorBio) => members.get(slug)?.has(a.slug) ?? false;
+
+	// The faces (and a tradition's name line) depend on the roster only, so they
+	// are worked out once; the cards below merge in the counts, which follow the
+	// filters — a keystroke recounts, it doesn't re-pick faces.
+	const eraFaces = $derived(
+		new Map(presentEras.map((e) => [e.id, topWriters((a) => eraOf(a.birth_year) === e.id)]))
+	);
+	const hubFaces = $derived(new Map(hubs.map((h) => [h.slug, topWriters(inHub(h.slug))])));
+	// The list separator for two names: Arabic and Amharic have their own commas.
+	const SEP: Record<string, string> = { ar: '، ', am: '፣ ' };
+	const nameSep = SEP[getLang()] ?? ', ';
+
+	const eraCards = $derived(
+		presentEras.map(
+			(e): BandCard => ({
 				id: e.id,
 				name: t(e.k),
-				range: e.range,
-				count: counts.find((o) => o.v === e.id)?.count ?? 0,
-				faces: byEra.get(e.id)!.slice(0, 3)
+				sub: e.range,
+				count: count('era', e.id),
+				faces: eraFaces.get(e.id) ?? [],
+				hue: ERA_HUE[e.id]
 			})
-		);
-	});
+		)
+	);
+	// A tradition's two best-known names under its title, so a reader finds
+	// "Bunyan, Baxter" before they know the word "Puritan".
+	const tradCards = $derived(
+		traditions.map((h): BandCard => {
+			const faces = hubFaces.get(h.slug) ?? [];
+			return {
+				id: h.slug,
+				name: h.label,
+				sub: faces
+					.slice(0, 2)
+					.map((a) => a.name)
+					.join(nameSep),
+				count: count('trad', h.slug),
+				faces
+			};
+		})
+	);
+	// Each region with its places as chips; places with no region page in this
+	// language get a card each.
+	const placeCards = $derived(
+		places.flatMap((g): BandCard[] => {
+			const card = (h: Hub, children?: Hub[]): BandCard => ({
+				id: h.slug,
+				name: h.label,
+				count: count('place', h.slug),
+				faces: hubFaces.get(h.slug) ?? [],
+				children: children?.map((p) => ({ id: p.slug, name: p.label, count: count('place', p.slug) }))
+			});
+			return g.region ? [card(g.region, g.places)] : g.places.map((p) => card(p));
+		})
+	);
 
-	// --- View: rows or a portrait grid (a reader preference → localStorage) ----
-	type View = 'list' | 'grid';
-	const VIEW_KEY = 'ochorus:bios-view';
+	// Which lens the band shows. Not remembered across visits on purpose: the
+	// page is prerendered with the era band, and restoring another lens after
+	// hydration would swap a one-row band for a two-row grid under the reader.
+	type Lens = 'era' | 'trad' | 'place';
+	let lens = $state<Lens>('era');
+	const lenses = $derived(
+		(
+			[
+				{ k: 'era', label: t('bios.era'), cards: eraCards, cols: 6 },
+				{ k: 'trad', label: t('bios.tradition'), cards: tradCards, cols: 6 },
+				{ k: 'place', label: t('bios.place'), cards: placeCards, cols: 3 }
+			] as const
+		).filter((l) => l.cards.length > 1)
+	);
+	const shownLens = $derived(lenses.find((l) => l.k === lens) ?? lenses[0]);
+
+	// --- View: rows or a portrait grid ----------------------------------------
+	// Not remembered across visits, like the Browse-by lens: the page is
+	// prerendered as rows, and restoring the grid after hydration swapped one
+	// for the other under the reader (a visible jump on every load).
+	type View = 'grid' | 'list';
 	let view = $state<View>('list');
-	onMount(() => {
-		if (readJSON<View>(VIEW_KEY, 'list') === 'grid') view = 'grid';
-	});
-	const setView = (v: View) => {
-		view = v;
-		writeJSON(VIEW_KEY, v);
-	};
+	const setView = (v: View) => (view = v);
 
 	// The pinned bar was 177px on a 375px screen — 22% of the viewport, kept
 	// forever. On a phone it is search (the thing you actually reach for) plus a
 	// Filters button whose sheet holds the rest; from sm the controls sit inline.
-	/** Measured height of the pinned controls bar — the era headings pin below it. */
-	let controlsH = $state(0);
+	/** Height of the pinned controls bar — the era headings pin below it. */
+	let pinnedH = $state(0);
 	/** What the sheet is narrowing by (FilterSheet's `count`). */
 	const sheetCount = $derived(
 		(filters.values.filter !== 'all' ? 1 : 0) +
@@ -255,8 +322,16 @@
 		bioChips(filters.values, facets, { labels: facetLabel, showFullLife, t })
 	);
 
-	// Count summary + whether any narrowing is active (sort doesn't count).
-	const isFiltered = $derived(filters.active);
+	// Count summary + whether any narrowing is active. Sort doesn't count — and
+	// `filters.active` does count it (it compares every URL key to its default),
+	// so a non-default sort read as "Showing 99 of 99 · Clear filters" with a
+	// Clear that did nothing (clearFilters keeps the sort). sheetCount already
+	// counts every real filter; add the query.
+	const isFiltered = $derived(sheetCount > 0 || filters.values.q.trim() !== '');
+
+	// How much is on the shelf, for the header's count line — the whole roster,
+	// not the current filter (it describes the library, like the Books header).
+	const bookTotal = $derived(authors.reduce((n, a) => n + a.book_count, 0));
 
 	/** Reveal the page holding `slug`, then scroll to it once it has painted. */
 	function jumpTo(slug: string) {
@@ -411,19 +486,18 @@
 <!-- The snippets below are each rendered twice: in the inline row (sm up)
      and in the phone sheet. -->
 <!-- "Has books to read" — the old All / In the library / Biography only
-     segment as the one question people actually ask of it. A shared
-     ?filter=bio still works; it shows as a removable chip in the summary. -->
-{#snippet hasBooksToggle()}
+     segment as the one question people actually ask of it: an on/off chip,
+     like Full life beside it. A shared ?filter=bio still works; it shows as a
+     removable chip in the summary. -->
+{#snippet hasBooksChip()}
 	<button
 		type="button"
-		role="switch"
-		aria-checked={filters.values.filter === 'library'}
-		class="filter-field has-books"
-		class:is-active={filters.values.filter === 'library'}
+		class="chip"
+		class:active={filters.values.filter === 'library'}
+		aria-pressed={filters.values.filter === 'library'}
 		onclick={() => (filters.values.filter = filters.values.filter === 'library' ? 'all' : 'library')}
+		>{t('bios.hasBooks')}</button
 	>
-		<span class="switch" aria-hidden="true"></span>{t('bios.hasBooks')}
-	</button>
 {/snippet}
 <!-- Orthogonal to the has-books switch: narrows to writers with a
      full-length biography (the "Full life" badge). Shown only when it
@@ -465,23 +539,54 @@
 	pins or scrolls into view below reads it, so there is one number to be right
 	rather than four hard-coded ones drifting apart.
 -->
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
+	<LibraryTabs set="writers" current="bios" />
 	<!-- No visible breadcrumb: this is a top-level destination already marked
 	     active in the nav, and it was the only one of the six browse pages
 	     carrying a trail. Detail pages (a book, an author) still get one, where
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
-	<PageHeader title={t('nav.biographies')} tagline={t('bios.tagline')} />
+	<PageHeader
+		title={t('nav.biographies')}
+		tagline={t('bios.tagline')}
+		meta={authors.length ? bioCounts : undefined}
+	/>
+	{#snippet bioCounts()}
+		{authors.length}
+		{authors.length === 1 ? t('common.writerOne') : t('common.writerMany')}
+		<span class="opacity-50">·</span>
+		{bookTotal}
+		{bookTotal === 1 ? t('common.bookOne') : t('common.bookMany')}
+	{/snippet}
 
-	<!-- The eras as the page's one visual way in. They used to hide behind the
-	     "By era" sort; now each is a card that filters the list to it. -->
-	{#if eraCards.length > 1 && !loadError}
+	<!-- The page's visual way in: the eras, the traditions or the places as
+	     cards, one lens at a time (eras by default). Each card ticks that value
+	     of its facet, exactly as the toolbar menus do. -->
+	{#if shownLens && !loadError}
 		<div class="mb-5">
-			<EraBand
-				eras={eraCards}
-				selected={facets.era}
-				label={t('bios.era')}
-				ontoggle={(id) => toggleFacet('era', id)}
+			{#if lenses.length > 1}
+				<!-- Browse by: Era · Tradition · Place — the shared .seg, as every
+				     shelf's one-of-a-few choice is. -->
+				<div class="mb-2.5 flex items-center gap-2.5">
+					<span class="text-small text-muted" aria-hidden="true">{t('bios.browseBy')}</span>
+					<div class="seg" role="group" aria-label={t('bios.browseBy')}>
+						{#each lenses as l (l.k)}
+							<button
+								type="button"
+								class:active={shownLens.k === l.k}
+								aria-pressed={shownLens.k === l.k}
+								onclick={() => (lens = l.k)}>{l.label}</button
+							>
+						{/each}
+					</div>
+				</div>
+			{/if}
+			<FacetBand
+				cards={shownLens.cards}
+				cols={shownLens.cols}
+				selected={facets[shownLens.k]}
+				label={shownLens.label}
+				ontoggle={(id) => toggleFacet(shownLens.k, id)}
 			/>
 		</div>
 	{/if}
@@ -496,10 +601,7 @@
 	     The tradition and place chip walls that used to sit above this (~400px
 	     before the first writer) are the Tradition / Place menus now; their pages
 	     are linked from the Browse block under the list. -->
-	<div
-		bind:clientHeight={controlsH}
-		class="sticky z-20 -mx-5 mb-6 border-b border-border bg-bg px-5 pb-2.5 pt-3" style="top: var(--appnav-h, 0px)"
-	>
+	<FilterBar bind:pinned={pinnedH} class="mb-6">
 	<!-- Controls: search · tradition · place · era · has-books · sort · view -->
 	<div class="filter-row">
 		<input
@@ -519,7 +621,7 @@
 			onClear={clearFilters}
 		>
 			<div class="flex flex-wrap gap-2">
-				{@render hasBooksToggle()}
+				{@render hasBooksChip()}
 				{#if showFullLife}{@render fullLifeChip()}{/if}
 			</div>
 			{#each facetGroups as g (g.k)}
@@ -536,15 +638,7 @@
 				value={filters.values.sort}
 				onselect={(v) => (filters.values.sort = v)}
 			/>
-			<SheetChoices
-				label={t('bios.view')}
-				options={[
-					{ v: 'list' as View, label: t('bios.viewList') },
-					{ v: 'grid' as View, label: t('bios.viewGrid') }
-				]}
-				value={view}
-				onselect={setView}
-			/>
+			<ViewToggle {view} onchange={setView} cls="w-full" btnCls="flex-1" />
 		</FilterSheet>
 
 		<div class="hidden sm:contents">
@@ -557,28 +651,19 @@
 					onclear={() => (filters.values[g.k] = '')}
 				/>
 			{/each}
-			{@render hasBooksToggle()}
+			{@render hasBooksChip()}
 			{#if showFullLife}
 				{@render fullLifeChip()}
 			{/if}
-			<div class="seg ms-auto" role="group" aria-label={t('bios.sort')}>
+			<!-- Sort is a <select>, as on every shelf (page-design: no visible
+			     "Sort:" label, it rides in aria-label), straight after the filters:
+			     search · filters · sort · view. -->
+			<select bind:value={filters.values.sort} class="filter-field" aria-label={t('bios.sort')}>
 				{#each SORT_VALUES as v (v)}
-					<button
-						type="button"
-						class:active={filters.values.sort === v}
-						aria-pressed={filters.values.sort === v}
-						onclick={() => (filters.values.sort = v)}>{t(SORT_LABEL[v])}</button
-					>
+					<option value={v}>{t(SORT_LABEL[v])}</option>
 				{/each}
-			</div>
-			<div class="seg" role="group" aria-label={t('bios.view')}>
-				<button type="button" class="view-btn" class:active={view === 'list'} aria-pressed={view === 'list'} aria-label={t('bios.viewList')} onclick={() => setView('list')}>
-					<Icon name="list" />
-				</button>
-				<button type="button" class="view-btn" class:active={view === 'grid'} aria-pressed={view === 'grid'} aria-label={t('bios.viewGrid')} onclick={() => setView('grid')}>
-					<Icon name="grid" />
-				</button>
-			</div>
+			</select>
+			<ViewToggle {view} onchange={setView} />
 		</div>
 	</div>
 
@@ -596,31 +681,20 @@
 				/>
 			{/if}
 			{#if filters.values.sort === 'name' && sorted.length > 1}
-				<!-- On a phone a single row that swipes sideways; from sm up it wraps. -->
-				<nav
-					class="az-rail flex max-w-full gap-x-0.5 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:ms-auto sm:flex-wrap sm:overflow-visible"
-					aria-label={t('bios.jumpAz')}
-				>
-					{#each AZ as letter (letter)}
-						{#if firstByLetter.has(letter)}
-							<!-- A BUTTON, not an anchor. Paging paints 24 rows, so a writer under
-							     a late letter has no element to anchor to yet — the prerender
-							     crawler caught exactly that ("no element with id=r-a-torrey").
-							     Reveal first, then scroll; and with no href there is no dangling
-							     fragment in the static output. -->
-							<button
-								class="shrink-0 rounded-sm px-1 py-0.5 font-semibold text-accent hover:bg-accent-soft"
-								onclick={() => jumpTo(firstByLetter.get(letter)!)}>{letter}</button
-							>
-						{:else}
-							<span class="shrink-0 px-1 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
-						{/if}
-					{/each}
-				</nav>
+				<!-- Buttons, not anchors (AzRail's `onjump`): paging paints 24 rows, so
+				     a writer under a late letter has no element to anchor to yet — reveal
+				     first, then scroll. -->
+				<AzRail
+					class="sm:ms-auto"
+					letters={AZ}
+					present={(l) => firstByLetter.has(l)}
+					onjump={(l) => jumpTo(firstByLetter.get(l)!)}
+					label={t('bios.jumpAz')}
+				/>
 			{/if}
 		</div>
 	{/if}
-	</div>
+	</FilterBar>
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
@@ -719,59 +793,3 @@
 		</nav>
 	{/if}
 </div>
-
-<style>
-	/* On a touch phone the A–Z letters (21×25) take a full-height target; the
-	   strip scrolls sideways there, so width stays letter-sized. Not on a touch
-	   tablet: from sm the strip wraps, and 44px rows would swell the pinned
-	   header. */
-	@media (pointer: coarse) and (max-width: 639.98px) {
-		.az-rail button {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-width: 2.25rem;
-			min-height: 2.75rem;
-		}
-	}
-	/* "Has books to read": a field-shaped switch, so it sits in the row at the
-	   same height as the menus beside it. */
-	.has-books {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		cursor: pointer;
-		white-space: nowrap;
-	}
-	.switch {
-		position: relative;
-		flex-shrink: 0;
-		width: 1.9rem;
-		height: 1.1rem;
-		border-radius: 999px;
-		background: var(--border-strong);
-		transition: background var(--duration-base, 150ms);
-	}
-	.switch::after {
-		content: '';
-		position: absolute;
-		top: 0.15rem;
-		inset-inline-start: 0.15rem;
-		width: 0.8rem;
-		height: 0.8rem;
-		border-radius: 999px;
-		background: var(--surface);
-		transition: inset-inline-start var(--duration-base, 150ms);
-	}
-	.has-books.is-active .switch {
-		background: var(--accent);
-	}
-	.has-books.is-active .switch::after {
-		inset-inline-start: 0.95rem;
-	}
-	.view-btn {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-	}
-</style>

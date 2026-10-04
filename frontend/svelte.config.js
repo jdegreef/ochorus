@@ -71,6 +71,17 @@ const config = {
 		// can surface an "update available" prompt instead of updating silently.
 		serviceWorker: { register: false },
 		prerender: {
+			// Pages rendered at once: 1 (SvelteKit's default) unless the build asks
+			// for more, and only CI does — its API is a throwaway local gunicorn
+			// with a worker per spare core (.github/workflows/ci.yml). The production
+			// build stays at 1 on purpose: it crawls the LIVE API, whose memory the
+			// crawl once exhausted (2026-09-26), so raising it there is a decision
+			// about that server, not a build setting. The build-time fetch layer
+			// ($lib/buildFetch, $lib/chapterBatch) keys everything by URL, so a page
+			// built alongside others carries the same responses — only the ORDER of
+			// a page's inlined responses can differ, when its load makes two
+			// requests at once; hydration replays them by URL.
+			concurrency: Number(process.env.PRERENDER_CONCURRENCY) || 1,
 			// A prerendered page that errors still fails the build — never ship a
 			// half-broken page — but the default message buries the diagnosis. Say
 			// what died and where, and point at the build-time retry layer: apiFetch

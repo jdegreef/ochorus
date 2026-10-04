@@ -28,6 +28,9 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	'search_sort_title',
 	// "Sepia" is the borrowed colour-tone name, unchanged across our locales.
 	'settings_theme_sepia',
+	// "Google Calendar" is the product's own name where Google doesn't localize it
+	// (Spanish, Swahili, Luganda keep it in English).
+	'plans_add_google',
 	// The About page's ministry partner is a proper-noun organisation name, kept
 	// in its registered English form in every locale.
 	'about_partner_name',
@@ -38,6 +41,10 @@ export const SAME_AS_ENGLISH_OK = new Set([
 	// sibling (short/long) IS translated, but "min" is the standard minute
 	// abbreviation in both Spanish and Portuguese, so the range reads identically.
 	'sermons_length_mid',
+	// "plan" / "plans" is the same word in Spanish (one) and French (one and
+	// many) — the shelves' count line, not a placeholder.
+	'common_plan_one',
+	'common_plan_many',
 	// French shares a large Latinate vocabulary with English, so a run of
 	// single-word UI labels is spelled identically in both and is correctly
 	// translated by being unchanged — not debt. These collide on `fr` only

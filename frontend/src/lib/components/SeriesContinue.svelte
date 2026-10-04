@@ -12,8 +12,9 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { seriesMeta } from '$lib/emblemNames';
-	import Emblem from './Emblem.svelte';
 	import SeriesSegments from './SeriesSegments.svelte';
+	import ContinueShelf from './ContinueShelf.svelte';
+	import ContinueRow from './ContinueRow.svelte';
 
 	/**
 	 * The /series index's "Continue your series": up to three series the reader
@@ -40,54 +41,23 @@
 </script>
 
 {#if rows.length}
-	<section class="mb-12">
-		<h2 class="section-label mb-4">{t('series.continueHeading')}</h2>
-		<ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-			{#each rows as row (row.series.slug)}
-				{@const meta = seriesMeta(row.series.slug)}
-				{@const label = seriesCardProgressLabel(row.stages, lang)}
-				<li>
-					<a
-						class="continue-row card-tint"
-						style="--shelf-hue: {meta.accent}"
-						href={localizeHref(`/books/${row.slug}`)}
-					>
-						<span class="emblem-chip continue-chip"><Emblem name={meta.emblem} /></span>
-						<span class="flex min-w-0 flex-1 flex-col gap-1.5">
-							<span class="continue-title truncate" dir="auto">
-								{splitSeriesTitle(row.series.title).name}
-							</span>
-							<SeriesSegments stages={row.stages} {label} />
-							<span class="text-small text-muted">{label}</span>
-						</span>
-						<span class="btn btn-sm btn-primary shrink-0">{t('plans.continue')}</span>
-					</a>
-				</li>
-			{/each}
-		</ul>
-	</section>
+	<ContinueShelf heading={t('series.continueHeading')}>
+		{#each rows as row (row.series.slug)}
+			{@const meta = seriesMeta(row.series.slug)}
+			{@const label = seriesCardProgressLabel(row.stages, lang)}
+			<ContinueRow
+				href={localizeHref(`/books/${row.slug}`)}
+				title={splitSeriesTitle(row.series.title).name}
+				caption={label}
+				verb={t('plans.continue')}
+				hue={meta.accent}
+				emblem={meta.emblem}
+			>
+				{#snippet progress()}
+					<SeriesSegments stages={row.stages} {label} />
+				{/snippet}
+			</ContinueRow>
+		{/each}
+	</ContinueShelf>
 {/if}
 
-<style>
-	.continue-row {
-		display: flex;
-		align-items: center;
-		gap: 0.85rem;
-		height: 100%;
-		padding: 0.85rem 1rem;
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		background: var(--surface);
-		color: inherit;
-		text-decoration: none;
-	}
-	.continue-chip {
-		--chip-size: 2.75rem;
-		--chip-hue: var(--shelf-hue);
-	}
-	.continue-title {
-		font-family: var(--font-display);
-		font-weight: 600;
-		color: var(--text);
-	}
-</style>

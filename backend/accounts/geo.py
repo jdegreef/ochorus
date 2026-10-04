@@ -16,6 +16,8 @@ are a separate decision.
 
 from __future__ import annotations
 
+import functools
+
 # IANA timezone → ISO 3166-1 alpha-2 country code. One entry per zone; multiple
 # zones can map to the same country (the US and Australia especially).
 COUNTRY_BY_TZ: dict[str, str] = {
@@ -290,3 +292,19 @@ def country_for_timezone(tz: str) -> str | None:
 def country_name(code: str) -> str:
     """Display name for a country code; the code itself if we have no name."""
     return COUNTRY_NAMES.get(code, code)
+
+
+@functools.lru_cache(maxsize=512)
+def zone_for(tz: str):
+    """A profile's saved IANA zone as a ``ZoneInfo``, or None when blank or
+    unknown. Cached, failures included: ``ZoneInfo`` caches the zones it
+    finds, not the names it can't, and a bad name recurs on every row of
+    that reader."""
+    from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+
+    if not tz:
+        return None
+    try:
+        return ZoneInfo(tz)
+    except (ZoneInfoNotFoundError, ValueError):
+        return None

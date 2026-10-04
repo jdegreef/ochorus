@@ -1,6 +1,8 @@
 <script lang="ts">
+	import { chapterMeta } from '$lib/bookSeo';
 	import { onPageHidden } from '$lib/pageHidden';
 	import { mediaFlag } from '$lib/mediaFlag.svelte';
+	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { planDayPath } from '$lib/editionHref';
 	import Arrow from '$lib/components/Arrow.svelte';
@@ -137,7 +139,16 @@
 	);
 	// Trimmed to a SERP-sized slice at a sentence/word boundary — the raw 250
 	// char cut fed search snippets a mid-word truncation.
-	const metaText = $derived(truncateMeta(metaDescription));
+	// Book and chapter lead, so two editions that open alike stay distinct.
+	const metaText = $derived(
+		truncateMeta(
+			chapterMeta(
+				chapter.book_title,
+				chapterNameIn(chapter.order, chapter.title, chapter.book_title),
+				metaDescription
+			)
+		)
+	);
 	// The <title> names the chapter, then the book AND its author — people search
 	// "<author> <book> chapter 1", and the author was missing. Localized via
 	// chapter_title_tag (mirrors book_title_tag), so each locale's "by" is right.
@@ -585,9 +596,10 @@
 	// popover's click-away handler would shut the sheet on every tap inside it.
 	// mediaFlag, not svelte/reactivity's MediaQuery: hydration-safe (false in
 	// the prerendered markup), so both `{#if}`s below agree with it.
-	const phone = mediaFlag('(max-width: 639.98px)');
+	const phone = mediaFlag(PHONE);
 	const isPhone = $derived(phone.matches);
-	// The phone bar's "⋯" group (bookmark, search, notebook, edition, focus).
+	// The top bar's "⋯" group: search, notebook, edition, focus — plus bookmark
+	// on phones, whose bar has no room for it.
 	let moreOpen = $state(false);
 	/** Close the "⋯" group, then run the chosen action. */
 	const fromMore = (action: () => void) => () => {
@@ -1687,27 +1699,28 @@
 	     `fixed` measures from the VIEWPORT, though, and the global nav is
 	     `.appnav-static` here — in flow, at the top, and (since nothing scrolls
 	     in page mode) never going anywhere. So `top-0` parked this whole bar
-	     underneath it at z-10 vs the nav's z-40: every control in it, Contents
+	     underneath it, below the nav in the stacking order: every control in it, Contents
 	     and Text settings and Focus included, was invisible and unclickable at
 	     every viewport width. `.reader-chrome.fixed` below starts it beneath the
 	     nav instead. Scroll mode is untouched — there the nav really does ride
 	     away, and 0 is right. -->
 	<div
 		bind:this={chromeEl}
-		class="reader-chrome top-0 inset-x-0 z-10 border-b border-border bg-bg/90 backdrop-blur"
+		class="reader-chrome top-0 inset-x-0 z-(--z-pinned) border-b border-border bg-bg/90 backdrop-blur"
 		class:fixed={paged || showPeek}
 		class:sticky={!paged && !showPeek}
 		class:peeking={showPeek}
 		class:autohidden={hideChrome}
 	>
 		<div
-			class="mx-auto flex items-center justify-between gap-3 py-1.5 sm:py-2.5"
+			class="mx-auto flex items-center justify-between gap-0.5 py-1.5 sm:gap-3 sm:py-2.5"
 			style="max-width: {chromeMax}; padding-inline: {chromeGutter}"
 		>
-			<!-- Phone bar: Back · where you are · Contents · "⋯". Chapter turning,
-			     Listen and Text settings move to the bottom bar, in thumb reach;
-			     the rest folds into "⋯". Eight icons in one row overflowed a 320px
-			     phone and left no room to say where you are. -->
+			<!-- Phone bar: Back · where you are · Contents · "⋯" (the "⋯" is the
+			     shared one at the end of the row). Chapter turning, Listen and Text
+			     settings move to the bottom bar, in thumb reach; the rest folds into
+			     "⋯". Eight icons in one row overflowed a 320px phone and left no
+			     room to say where you are. -->
 			<div class="flex min-w-0 flex-1 items-center gap-0.5 sm:hidden">
 				<a
 					href={localizeHref(`/books/${slug}`)}
@@ -1726,31 +1739,132 @@
 					aria-label={t('reader.contents')}
 					title={t('reader.contents')}><Icon name="list" size={20} /></button
 				>
+			</div>
+			<!--
+				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
+				with this block in the row the bar wrapped to THREE rows — 141px of an
+				780px viewport — and squeezed this text to five pixels wide, which is
+				not a label, just a thing pushing everything else out of line. The
+				phone bar's own title block (above) says the same, so nothing is lost
+				by standing this down where there is no room for it.
+			-->
+			<div class="hidden min-w-0 flex-1 sm:block">
+				{#if titleSpy.visible}
+					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
+						<Arrow back /> <bdi>{chapter.book_title}</bdi>
+					</a>
+				{:else}
+					<!-- Once the heading scrolls away, show where you are. -->
+					<div class="truncate text-small text-text">{@render locationLabel()}</div>
+				{/if}
+			</div>
+			<!-- From `sm`: Prev · Next | Contents · Bookmark · Listen · Aa · "⋯" —
+			     the few verbs a reader reaches for, labelled from `md`; Search,
+			     Notebook, Edition and Focus fold into "⋯" (the sermon bar's shape). -->
+			<div class="flex shrink-0 items-center gap-0.5">
+				<div class="hidden sm:contents">
+					<!-- Both slots always render: at the first or last chapter the missing
+					     one is a dimmed, inert stand-in rather than nothing, so the row
+					     keeps its shape and nothing jumps between chapters (a lone ">"
+					     used to float on chapter 1). -->
+					{#if chapter.prev}
+						<a
+							href={chapterHref(chapter.prev.order)}
+							class="btn btn-icon btn-ghost"
+							aria-label={t('reader.prevChapter')}
+							title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
+						>
+					{:else}
+						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
+						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.prevChapter')}
+							><Icon name="chevron-left" size={18} /></button
+						>
+					{/if}
+					{#if chapter.next}
+						<a
+							href={chapterHref(chapter.next.order)}
+							class="btn btn-icon btn-ghost"
+							aria-label={t('reader.nextChapter')}
+							title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
+						>
+					{:else}
+						<!-- No such chapter: a disabled stand-in holds the slot (.btn:disabled). -->
+						<button class="btn btn-icon btn-ghost" disabled aria-label={t('reader.nextChapter')}
+							><Icon name="chevron-right" size={18} /></button
+						>
+					{/if}
+					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
+					<button
+						class="btn btn-icon btn-ghost"
+						onclick={() => (tocOpen = true)}
+						aria-label={t('reader.contents')}
+						title={t('reader.contents')}><Icon name="list" size={18} /></button
+					>
+					<!-- Labelled from `md`; the aria-label matches the visible word. -->
+					<button
+						class="btn btn-icon btn-ghost md:px-2.5"
+						class:text-accent={currentBookmarked}
+						onclick={toggleBookmark}
+						aria-label={t('reader.bookmark')}
+						title={t('reader.bookmark')}
+						aria-pressed={currentBookmarked}
+						><Icon name="bookmark" size={18} /><span class="hidden text-small md:inline"
+							>{t('reader.bookmark')}</span
+						></button
+					>
+					{#if listen.supported}
+						<button
+							class="btn btn-icon btn-ghost md:px-2.5"
+							class:text-accent={listen.status !== 'idle'}
+							onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
+							aria-label={t('reader.listen')}
+							aria-pressed={listen.status !== 'idle'}
+							title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
+							><Icon name="headphones" size={18} /><span class="hidden text-small md:inline"
+								>{t('reader.listen')}</span
+							></button
+						>
+					{/if}
+					<!-- `layout`: the chapter reader is the one surface that implements
+					     paged mode, so it is the one that offers the switch. -->
+					<!-- `sample`: the chapter's opening line, so the panel's live preview
+					     restyles the reader's own prose. metaDescription is already the
+					     body's plain text. -->
+					<!-- Not mounted on phones, where the bottom sheet takes over. -->
+					{#if !isPhone}
+						<ReaderControls layout margins {...rcProps} />
+					{/if}
+				</div>
+				<!-- The one "⋯" group, both bars. Its rows depend on the bar: Bookmark
+				     sits in the row from `sm`, so only the phone folds it in here. -->
 				<div
 					class="relative shrink-0"
 					use:dismissable={{ open: moreOpen, onDismiss: () => (moreOpen = false) }}
 				>
 					<button
-						class="btn btn-icon btn-ghost min-w-11"
+						class="btn btn-icon btn-ghost min-w-11 sm:min-w-0"
 						onclick={() => (moreOpen = !moreOpen)}
 						aria-expanded={moreOpen}
 						aria-controls={moreOpen ? 'reader-more' : undefined}
 						aria-label={t('reader.moreTools')}
-						title={t('reader.moreTools')}><Icon name="more" size={20} /></button
+						title={t('reader.moreTools')}
+						><Icon name="more" size={20} class="sm:size-[18px]" /></button
 					>
 					{#if moreOpen}
 						<!-- A labelled group, not role="menu" (no arrow-key roving) — the
 						     same treatment as AccountMenu. -->
 						<div id="reader-more" class="account-menu more-group" role="group" aria-label={t('reader.moreTools')}>
-							<button
-								class="account-item more-item"
-								class:text-accent={currentBookmarked}
-								onclick={fromMore(toggleBookmark)}
-								aria-pressed={currentBookmarked}
-								><Icon name="bookmark" size={20} />{currentBookmarked
-									? t('reader.removeBookmark')
-									: t('reader.bookmark')}</button
-							>
+							{#if isPhone}
+								<button
+									class="account-item more-item"
+									class:text-accent={currentBookmarked}
+									onclick={fromMore(toggleBookmark)}
+									aria-pressed={currentBookmarked}
+									><Icon name="bookmark" size={20} />{currentBookmarked
+										? t('reader.removeBookmark')
+										: t('reader.bookmark')}</button
+								>
+							{/if}
 							<button class="account-item more-item" onclick={fromMore(() => (searchOpen = true))}
 								><Icon name="search" size={20} />{t('reader.search')}</button
 							>
@@ -1774,108 +1888,6 @@
 						</div>
 					{/if}
 				</div>
-			</div>
-			<!--
-				Hidden below `sm`. The controls alone need ~303px of a 360px phone, so
-				with this block in the row the bar wrapped to THREE rows — 141px of an
-				780px viewport — and squeezed this text to five pixels wide, which is
-				not a label, just a thing pushing everything else out of line. The
-				article's own breadcrumb sits directly beneath and says the same, so
-				nothing is lost by standing this down where there is no room for it.
-			-->
-			<div class="hidden min-w-0 flex-1 sm:block">
-				{#if titleSpy.visible}
-					<a href={localizeHref(`/books/${slug}`)} class="text-small text-muted hover:text-text">
-						<Arrow back /> <bdi>{chapter.book_title}</bdi>
-					</a>
-				{:else}
-					<!-- Once the heading scrolls away, show where you are. -->
-					<div class="truncate text-small text-text">{@render locationLabel()}</div>
-				{/if}
-			</div>
-			<div class="hidden shrink-0 items-center gap-0.5 sm:flex">
-				{#if chapter.prev}
-					<a
-						href={chapterHref(chapter.prev.order)}
-						class="btn btn-icon btn-ghost"
-						aria-label={t('reader.prevChapter')}
-						title={t('reader.prevChapter')}><Icon name="chevron-left" size={18} /></a
-					>
-				{/if}
-				{#if chapter.next}
-					<a
-						href={chapterHref(chapter.next.order)}
-						class="btn btn-icon btn-ghost"
-						aria-label={t('reader.nextChapter')}
-						title={t('reader.nextChapter')}><Icon name="chevron-right" size={18} /></a
-					>
-				{/if}
-				{#if chapter.has_modern_edition}
-					<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
-					<a
-						href={editionToggleHref()}
-						data-sveltekit-noscroll
-						class="btn btn-sm btn-ghost px-2"
-						class:text-accent={edition === 'modern'}
-						title={editionLabel}
-						aria-label={editionLabel}
-					>
-						{edition === 'modern' ? t('reader.original') : t('reader.modern')}
-					</a>
-				{/if}
-				<span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
-				<button
-					class="btn btn-icon btn-ghost"
-					class:text-accent={currentBookmarked}
-					onclick={toggleBookmark}
-					aria-label={t('reader.bookmark')}
-					title={t('reader.bookmark')}
-					aria-pressed={currentBookmarked}><Icon name="bookmark" size={18} /></button
-				>
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => (tocOpen = true)}
-					aria-label={t('reader.contents')}
-					title={t('reader.contents')}><Icon name="list" size={18} /></button
-				>
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => (searchOpen = true)}
-					aria-label={t('reader.search')}
-					title={t('reader.search')}><Icon name="search" size={18} /></button
-				>
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => (notesOpen = true)}
-					aria-label={t('notebook.title')}
-					title={t('notebook.title')}><Icon name="book" size={18} /></button
-				>
-				{#if listen.supported}
-					<button
-						class="btn btn-icon btn-ghost"
-						class:text-accent={listen.status !== 'idle'}
-						onclick={() => (listen.status === 'idle' ? reader.startListening() : listen.stop())}
-						aria-label={t('reader.listen')}
-						aria-pressed={listen.status !== 'idle'}
-						title="{t('reader.listen')} · {listenTime(chapter.word_count, listen.rate)}"
-						><Icon name="headphones" size={18} /></button
-					>
-				{/if}
-				<!-- `layout`: the chapter reader is the one surface that implements
-				     paged mode, so it is the one that offers the switch. -->
-				<!-- `sample`: the chapter's opening line, so the panel's live preview
-				     restyles the reader's own prose. metaDescription is already the
-				     body's plain text. -->
-				<!-- Not mounted on phones, where the bottom sheet takes over. -->
-				{#if !isPhone}
-					<ReaderControls layout margins {...rcProps} />
-				{/if}
-				<button
-					class="btn btn-icon btn-ghost"
-					onclick={() => readerUi.toggleFocus()}
-					aria-label={t('reader.focus')}
-					title={t('reader.focus')}><Icon name="maximize" size={18} /></button
-				>
 			</div>
 		</div>
 	</div>
@@ -1918,7 +1930,10 @@
 	ontouchcancel={onTouchCancel}
 	use:swipeMove
 >
-	<Breadcrumb items={crumbs} />
+	<!-- Not on phones: there the top bar's title block already names the book
+	     and chapter, and the trail wrapped to two lines repeating it. Only the
+	     visible trail — the BreadcrumbList JSON-LD (crumbsLd) still ships. -->
+	<div class="max-sm:hidden"><Breadcrumb items={crumbs} /></div>
 
 	<!-- The pager wraps everything the reader acts on: the plan strip, the
 	     chapter, and its ending. In scroll mode it is display:contents (no
@@ -2393,7 +2408,7 @@
 	   regardless of where the (possibly hidden) global nav sits, and slides in. */
 	.reader-chrome.peeking {
 		top: 0;
-		z-index: 40;
+		z-index: var(--z-chrome);
 		animation: chrome-peek var(--duration-base) ease;
 	}
 	@keyframes chrome-peek {
@@ -2693,11 +2708,18 @@
 	article:not(.paged) .chapter-kicker {
 		margin-top: 2.5rem;
 	}
+	/* Phones hide the breadcrumb (the top bar's title block names the book and
+	   chapter), so there is nothing above the kicker to clear. */
+	@media (max-width: 639.98px) {
+		article:not(.paged) .chapter-kicker {
+			margin-top: 0;
+		}
+	}
 	.progress-foot {
 		position: fixed;
 		inset-inline: 0;
 		bottom: 0;
-		z-index: 30;
+		z-index: var(--z-popover);
 		/* The extra bottom padding clears the iPhone home-indicator strip, which
 		   this bar sat inside. env() is 0 everywhere it doesn't apply. */
 		padding: 0.25rem 1rem calc(0.4rem + env(safe-area-inset-bottom));
@@ -2741,21 +2763,9 @@
 		}
 	}
 
-	/* --- Phone chrome (below `sm`) -------------------------------------------- */
-	/* The "⋯" group: `.account-menu` chrome, with icon rows at thumb size. */
-	.more-group {
-		top: calc(100% + 0.25rem);
-	}
-	.more-item {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		min-height: 2.75rem;
-		font-size: var(--fs-body);
-	}
-	.more-item.text-accent {
-		color: var(--accent);
-	}
+	/* --- Top-bar chrome -------------------------------------------------------- */
+	/* The "⋯" group's .more-group / .more-item live in app.css, shared with the
+	   sermon reader. */
 	/* Previous · Listen · Aa · Next. Phones only — via the media query, not a
 	   `sm:hidden` utility, which a scoped `display` here would out-rank. */
 	.foot-actions {
@@ -2802,7 +2812,7 @@
 		position: fixed;
 		inset-inline: 0;
 		bottom: calc(var(--foot-h, calc(3.1rem + env(safe-area-inset-bottom))) + 0.5rem);
-		z-index: 31;
+		z-index: calc(var(--z-popover) + 1);
 		margin-inline: auto;
 		width: max-content;
 		display: inline-flex;

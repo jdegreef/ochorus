@@ -255,6 +255,10 @@ class Broadcast(models.Model):
     # Digest of the subject/content/from the last successful test send went out
     # with, so the pre-send checks can tell whether the copy changed since.
     tested_digest = models.CharField(max_length=64, blank=True)
+    # AI-drafted translations, per language (emails/translation_jobs.py):
+    # {lang: {"state": requested|draft|approved, "issue", "url", "source_locale",
+    # "source_digest", ...}}. Admin-only review state — never shown to readers.
+    translations = models.JSONField(default=dict, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -275,11 +279,14 @@ class Broadcast(models.Model):
         BroadcastStatus.PAUSED,
     )
 
+    #: Statuses of a broadcast that has mailed (or is mailing) readers.
+    MAILED = (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT)
+
     @property
     def is_locked(self) -> bool:
         """Whether its copy and audience are frozen: it has mailed (or may have
         mailed) someone. A schedule withdrawn before it started is not."""
-        if self.status in (BroadcastStatus.SENDING, BroadcastStatus.PAUSED, BroadcastStatus.SENT):
+        if self.status in self.MAILED:
             return True
         return self.status == BroadcastStatus.CANCELED and self.send_started_at is not None
 
@@ -423,3 +430,23 @@ class EmailEvent(models.Model):
 
     def __str__(self) -> str:  # pragma: no cover - repr only
         return f"event<{self.type} {self.message_id}>"
+
+
+class EmailTemplate(models.Model):
+    """A reusable campaign design: block content (and subjects) per language,
+    the same shape as :attr:`Broadcast.content`. A new broadcast can start from
+    one, and a broadcast can be saved as one. Copied, never linked — editing a
+    template doesn't change broadcasts made from it."""
+
+    name = models.CharField(max_length=200)
+    subject = models.JSONField(default=dict, blank=True)
+    content = models.JSONField(default=dict, blank=True)
+    created_by = models.CharField(max_length=254, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["name"]
+
+    def __str__(self) -> str:  # pragma: no cover - repr only
+        return f"template<{self.name}>"

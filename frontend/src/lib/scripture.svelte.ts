@@ -43,15 +43,18 @@ class Scripture {
 	open = $state(false);
 	loading = $state(false);
 	ref = $state('');
+	/** The reference's scripture page, when the server linked it ('' if none). */
+	href = $state('');
 	result = $state<ScriptureResult | null>(null);
 	notFound = $state(false);
 	top = $state(0);
 	left = $state(0);
 	#token = 0;
 
-	async show(ref: string, top: number, left: number) {
+	async show(ref: string, top: number, left: number, href = '') {
 		if (!browser || !ref) return;
 		this.ref = ref;
+		this.href = href;
 		this.top = top;
 		// 22rem is .scripture-pop's width; a reference near either margin used to
 		// render half off-screen.

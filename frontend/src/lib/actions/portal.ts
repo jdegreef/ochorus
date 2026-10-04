@@ -4,9 +4,10 @@
  * For fixed-position overlays: an ancestor with a `transform`, `filter` or
  * `backdrop-filter` becomes the containing block for `position: fixed`, so an
  * overlay rendered inside one is laid out against that ancestor rather than the
- * viewport (and trapped in its stacking context). `.page-col` is centred with a
- * transform and the reader's bars carry a backdrop-filter, so without this every
- * caller had to remember to render its drawer outside them.
+ * viewport (and trapped in its stacking context). The page-turn pager is
+ * transformed and the reader's bars carry a backdrop-filter (`.page-col` was
+ * too, until it centred with a margin), so without this every caller had to
+ * remember to render its drawer outside them.
  *
  * SAFE ONLY ON A BLOCK'S SOLE ROOT NODE. Svelte 5 tears a block down by
  * removing the DOM range from its first node to its last, walking

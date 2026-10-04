@@ -242,7 +242,7 @@
 		{#if showSubnav}
 			<nav
 				bind:clientHeight={subnavH}
-				class="sections-nav sticky z-20 mt-10 border-b border-border bg-bg"
+				class="sections-nav sticky z-(--z-pinned) mt-10 border-b border-border bg-bg"
 				style="top: var(--appnav-h, 0px)"
 				aria-label={t('a11y.pageSections')}
 			>

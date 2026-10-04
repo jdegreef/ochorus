@@ -1,0 +1,131 @@
+{
+ "kind": "sermon",
+ "slug": "more-than-conquerors",
+ "language": "sw",
+ "job_issue": 5029,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Joshua 11:23b",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Joshua 11:20",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 41:11",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Isaiah 41:12",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "James 1:2",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "James 1:3",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "1 Corinthians 4:9",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Daniel 3:17",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Daniel 3:18",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "Jeremiah 1:18",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Jeremiah 1:19a",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ezekiel 3:8",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Ezekiel 3:9",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Matthew 16:18b",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "James 1:12",
+   "status": "self_rendered",
+   "block_index": 22
+  },
+  {
+   "reference": "Ephesians 6:10",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Ephesians 6:13a",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-inner-chamber.sw.json"
+  },
+  {
+   "reference": "2 Chronicles 20:15",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Exodus 14:14",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 2:14a",
+   "status": "mined",
+   "block_index": 24,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 2:14a",
+   "status": "self_rendered",
+   "block_index": 24
+  }
+ ]
+}

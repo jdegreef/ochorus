@@ -812,6 +812,12 @@ export const listBooks = (language = 'en', f?: Fetch) =>
 export const listAuthors = (language = 'en', f?: Fetch) =>
 	apiFetch<AuthorBio[]>(`/api/library/authors/?language=${language}`, {}, f);
 
+/** Birth years (null = undated) of the writers on each live language's
+ * Biographies shelf — what the era pages bucket (via `eraOf`) to know which
+ * locales have writers in their era, for hreflang. */
+export const listEraPresence = (f?: Fetch) =>
+	apiFetch<Record<string, (number | null)[]>>('/api/library/authors/eras/', {}, f);
+
 /** A series the house imprint's books run in, named in the requested language;
  * `books` holds their slugs in volume order. */
 export interface OriginalsSeries {
@@ -1242,6 +1248,12 @@ export interface TopicSummary {
 	 * (rolling deploy) leaves it undefined and the card keeps its emblem.
 	 */
 	scripture_ref?: string;
+	/**
+	 * Whether the shelf holds enough in this language to be indexed (the API's
+	 * TOPIC_INDEX_MIN_WORKS). False → the page is noindex and the sitemap skips
+	 * it. Optional: an API predating it leaves it undefined, read as indexable.
+	 */
+	indexable?: boolean;
 }
 
 /** What a topic chip draws — see `AuthorTileData`. */
@@ -1456,6 +1468,8 @@ export const listScripturePages = (f?: Fetch) =>
 /** One Bible book across the library — the /scripture/<book>/ page. */
 export interface ScriptureBookPage {
 	book: { slug: string; title: string; order: number };
+	/** A short house overview of the book; "" when none (or an older API). */
+	intro?: string;
 	version: string;
 	/** Distinct library passages (chapters) citing any part of the book; null
 	 *  when the page was built from the page list (see bookFromPageList). */
@@ -1466,6 +1480,9 @@ export interface ScriptureBookPage {
 	chapters: { chapter: number; citing_count: number }[];
 	/** Its most-quoted verse pages, with their ASV text. */
 	verses: { chapter: number; verse: number; citing_count: number; text: string }[];
+	/** One excerpt from each of the top books, at its narrowest citation of
+	 *  this book; absent from an API predating it. */
+	passages?: CitingPassage[];
 	/** The library books that return to it most. */
 	top_books: {
 		slug: string;

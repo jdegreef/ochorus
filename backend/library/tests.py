@@ -209,6 +209,33 @@ class HtmlToTextTests(TestCase):
     def test_unescapes_entities(self):
         self.assertEqual(html_to_text("<p>God&rsquo;s &amp; grace</p>"), "God’s & grace")
 
+    def test_collapses_every_kind_of_whitespace_once(self):
+        # &nbsp;, an ideographic space, a line separator and a tab all collapse.
+        self.assertEqual(
+            html_to_text("<p> a&nbsp;　b \tc </p>"), "a b c"
+        )
+
+    def test_split_whitespace_is_exactly_the_regex_s(self):
+        """html_to_text collapses with `str.split()`, which must match `\\s`.
+
+        It used `re.sub(r"\\s+", " ", s).strip()`; the C split is the same rule
+        only while the two agree on what whitespace is. Pinned over every code
+        point so a Python upgrade that splits them fails here, not as a
+        body_text drift across the whole fixture.
+        """
+        import re
+        import sys
+
+        ws = re.compile(r"\s")
+        self.assertEqual(
+            [
+                hex(c)
+                for c in range(sys.maxunicode + 1)
+                if bool(ws.fullmatch(chr(c))) != chr(c).isspace()
+            ],
+            [],
+        )
+
 
 class WordCountRuleTests(SimpleTestCase):
     """Pins the divergence `library.text.text_of` documents.
@@ -1295,6 +1322,9 @@ class NoSourceLanguageLeakTests(TestCase):
         res = self.client.get("/api/library/authors/jane-doe/?language=sw")
         self.assertEqual(res.data["faq"], [{"q": "Nani Jane Doe?", "a": "Mwandishi."}])
 
+    # The works floor is pinned in tests_topic_index_floor; this one is about
+    # the translated title alone, so the floor is lifted out of its way.
+    @mock.patch("library.serializers.TOPIC_INDEX_MIN_WORKS", 0)
     def test_topic_available_languages_drives_hreflang(self):
         # A shelf 404s in a locale with no translated title, so it must not be
         # advertised there — this field is what the page's hreflang is built from.

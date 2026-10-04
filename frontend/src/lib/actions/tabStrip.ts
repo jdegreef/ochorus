@@ -1,59 +1,37 @@
+import { revealInStrip, scrollEdges } from './scrollEdges';
+
 /**
  * A horizontally scrolling row of section tabs (the book and author pages'
  * sticky jump-navs). Pair with the `.tab-strip` class in app.css.
  *
  * - Keeps the active tab in view: on a phone the row holds two or three of
  *   its tabs, and it used to highlight one it had scrolled out of sight. Only
- *   the strip scrolls — `scrollIntoView` would also move the page, fighting
- *   the reader's own scroll and a smooth jump already in flight.
- * - Marks which ends have tabs hidden past them (`more-start` / `more-end`),
- *   so the CSS fades an edge only when something is really there. Observes
- *   the tabs as well as the strip: a font load or a new section changes their
- *   widths without resizing the strip.
+ *   the strip scrolls (`revealInStrip`). Pass the active section id for a
+ *   jump-nav, or nothing for a row of route tabs (`.is-active`).
+ * - Marks which ends have tabs hidden past them (`scrollEdges`), so the CSS
+ *   fades an edge only when something is really there.
  *
  *   <ul class="tab-strip" use:tabStrip={spy.active}>…<a href="#id">…
  */
 export function tabStrip(node: HTMLElement, active: string | null | undefined) {
-	function syncEdges() {
-		// |scrollLeft|: RTL scrolls negative.
-		const x = Math.abs(node.scrollLeft);
-		node.classList.toggle('more-start', x > 1);
-		node.classList.toggle('more-end', x + node.clientWidth < node.scrollWidth - 1);
-	}
+	const edges = scrollEdges(node);
+	// A jump-nav names its active tab by section id; a route tab row (no id)
+	// marks it with `.is-active` / aria-current, so that is what's revealed.
 	function reveal(id: string | null | undefined) {
-		const link = id ? node.querySelector<HTMLElement>(`[href="#${CSS.escape(id)}"]`) : null;
-		if (!link) return;
-		const strip = node.getBoundingClientRect();
-		const tab = link.getBoundingClientRect();
-		// Physical deltas, so the same arithmetic holds under RTL.
-		const pad = 16;
-		if (tab.left < strip.left) node.scrollBy({ left: tab.left - strip.left - pad });
-		else if (tab.right > strip.right) node.scrollBy({ left: tab.right - strip.right + pad });
+		revealInStrip(
+			node,
+			node.querySelector<HTMLElement>(
+				id ? `[href="#${CSS.escape(id)}"]` : '.is-active, [aria-current="page"]'
+			)
+		);
 	}
-
-	const ro = new ResizeObserver(syncEdges);
-	ro.observe(node);
-	for (const child of node.children) ro.observe(child);
-	// Tabs rendered later (a client nav to a book with other sections) join
-	// the observer too.
-	const mo = new MutationObserver((records) => {
-		for (const r of records) for (const n of r.addedNodes) if (n instanceof Element) ro.observe(n);
-		syncEdges();
-	});
-	mo.observe(node, { childList: true });
-	node.addEventListener('scroll', syncEdges, { passive: true });
-	syncEdges();
 	reveal(active);
 
 	return {
 		update(next: string | null | undefined) {
 			reveal(next);
-			syncEdges();
+			edges.sync();
 		},
-		destroy() {
-			ro.disconnect();
-			mo.disconnect();
-			node.removeEventListener('scroll', syncEdges);
-		}
+		destroy: edges.destroy
 	};
 }

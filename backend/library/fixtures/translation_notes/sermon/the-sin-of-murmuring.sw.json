@@ -1,0 +1,119 @@
+{
+ "kind": "sermon",
+ "slug": "the-sin-of-murmuring",
+ "language": "sw",
+ "job_issue": 5048,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "1 Corinthians 10:1",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 10:3",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 10:4",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 10:5",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "1 Corinthians 10:6",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 10:7",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 10:8",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "1 Corinthians 10:9",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 10:10",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "1 Corinthians 10:11",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "the-gospel-of-healing.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 10:12",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "1 Corinthians 10:13",
+   "status": "mined",
+   "block_index": 3,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Revelation 7:9a",
+   "status": "self_rendered",
+   "block_index": 23
+  },
+  {
+   "reference": "Romans 1:14a",
+   "status": "self_rendered",
+   "block_index": 27
+  },
+  {
+   "reference": "Isaiah 1:18a",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "prevailing-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 130:4",
+   "status": "self_rendered",
+   "block_index": 48
+  },
+  {
+   "reference": "Revelation 21:5a",
+   "status": "self_rendered",
+   "block_index": 51
+  },
+  {
+   "reference": "Philippians 2:6",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "self_rendered",
+   "block_index": 68
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "block_index": 69,
+   "source_file": "the-worlds-need.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:14b",
+   "status": "mined",
+   "block_index": 107,
+   "source_file": "way-into-holiest.sw.json"
+  }
+ ]
+}

@@ -4,6 +4,7 @@ from .views import (
     ArticleDetailView,
     ArticleListView,
     AuthorDetailView,
+    AuthorEraPresenceView,
     AuthorListView,
     BookDetailView,
     BookEpubView,
@@ -41,6 +42,7 @@ from .views import (
 
 urlpatterns = [
     path("authors/", AuthorListView.as_view(), name="author-list"),
+    path("authors/eras/", AuthorEraPresenceView.as_view(), name="author-era-presence"),
     path("authors/<slug:slug>/", AuthorDetailView.as_view(), name="author-detail"),
     path("originals/", OriginalsView.as_view(), name="originals"),
     path("books/", BookListView.as_view(), name="book-list"),

@@ -15,6 +15,17 @@ from accounts.permissions import is_admin_user, requires
 from .. import dropoff
 from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
+from ..engagement_trends import (
+    distinct_readers,
+    latest_day,
+    pulse_trends,
+    readers_per_work,
+    reading_hours,
+    retention_cohorts,
+    weekly_active,
+    weekly_signups,
+    window,
+)
 from ..models import (
     AdminAction,
     Article,
@@ -27,7 +38,9 @@ from ..models import (
 )
 from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
+from ..team_events import team_events
 from ..views import _language_entry
+from ..weeks import day_of, week_start, week_starts
 
 
 def _prefer_en(rows, value_of):
@@ -47,32 +60,39 @@ class AdminEngagementView(APIView):
     """Reading-engagement analytics from ReadingProgress / ChapterMarks.
 
     Aggregate-only — counts and per-book/-language rollups, never individual
-    readers' identities. "Active" is distinct profiles whose progress was
-    touched within the window; "finishers" reached (or passed) the book's last
+    readers' identities. "Active" is distinct readers who read on any day of
+    the window, from the reading-day log (every day a reader read, not just
+    each work's latest touch); "finishers" reached (or passed) the book's last
     English chapter.
     """
 
 
     def get(self, request):
-        from datetime import timedelta
+        from datetime import date, timedelta
 
         from django.utils import timezone
 
         from reading.models import ChapterMarks, Favorite, ReadingProgress
 
         now = timezone.now()
+        range_key = request.query_params.get("range", "")
+        if range_key not in self.RANGES:
+            range_key = self.DEFAULT_RANGE
+        days = self.RANGES[range_key]
 
-        def active(days, offset=0):
-            """Distinct readers whose progress moved in a window ending ``offset``
-            days ago. ``active(7)`` is the last 7 days; ``active(7, 7)`` is the 7
-            days before that, so the page can show an honest week-over-week delta
-            rather than a bare count."""
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=days + offset)
-            )
-            if offset:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=offset))
-            return qs.values("profile").distinct().count()
+        # Every active window in one query, from the reading-day log: the
+        # fixed ones, and the page range's (all time has no "before").
+        windows = {
+            "7d": window(now, 7),
+            "7d_prev": window(now, 7, 7),
+            "30d": window(now, 30),
+            "30d_prev": window(now, 30, 30),
+        }
+        if days:
+            windows |= {"range": window(now, days), "range_prev": window(now, days, days)}
+        else:
+            windows["range"] = (date.min, latest_day(now))
+        active = distinct_readers(windows)
 
         def hearts(days, offset=0):
             """Favorites created in the same kind of window, for the hearts
@@ -85,11 +105,16 @@ class AdminEngagementView(APIView):
         overview = {
             "readers": ReadingProgress.objects.values("profile").distinct().count(),
             "progress_rows": ReadingProgress.objects.count(),
-            "active_1d": active(1),
-            "active_7d": active(7),
-            "active_7d_prev": active(7, 7),
-            "active_30d": active(30),
-            "active_30d_prev": active(30, 30),
+            # "Today" is the last 24 hours of saved progress: a rolling window
+            # needs no history, and day-boundaries differ reader to reader.
+            "active_1d": ReadingProgress.objects.filter(updated_at__gte=now - timedelta(days=1))
+            .values("profile")
+            .distinct()
+            .count(),
+            "active_7d": active["7d"],
+            "active_7d_prev": active["7d_prev"],
+            "active_30d": active["30d"],
+            "active_30d_prev": active["30d_prev"],
             "readers_with_marks": ChapterMarks.objects.exclude(marks=[])
             .values("profile")
             .distinct()
@@ -103,7 +128,10 @@ class AdminEngagementView(APIView):
         return Response(
             {
                 "overview": overview,
-                "time": self._reading_time(now),
+                "period": self._period(
+                    now, range_key, days, active=(active["range"], active.get("range_prev"))
+                ),
+                "time": self._reading_time(now, days),
                 "top_content": self._top_content(),
                 "rising": self._rising(now),
                 "highlight_heatmap": self._highlight_heatmap(),
@@ -111,11 +139,69 @@ class AdminEngagementView(APIView):
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
                 "by_language": self._by_language(),
-                "weekly_active": self._weekly_active(now),
+                "weekly_active": weekly_active(now, self.WEEKS),
+                "events": self._events(now),
+                "cohorts": retention_cohorts(now),
+                "hours": reading_hours(now),
+                # The tiles' lines; none for the empty state, which shows no tiles.
+                "trends": pulse_trends(
+                    now,
+                    self.WEEKS,
+                    readers=overview["readers"],
+                    users=overview["total_users"],
+                )
+                if overview["readers"]
+                else None,
             }
         )
 
-    def _reading_time(self, now):
+    #: The page's date range (``?range=``): its days, None for all time. It
+    #: drives the figures that are about a PERIOD (the pulse's period tiles and
+    #: the Reading time card). Running totals stay all time, the weekly
+    #: charts keep their own axis, When people read keeps its 90 days (a
+    #: week leaves most hours under its readers floor, and all time would
+    #: walk every sitting ever on each load), and the work rollups
+    #: (top content, most loved, by language) stay all time: they rest on
+    #: saved progress, which keeps only each work's latest touch, so "read in
+    #: the last 30 days" is a claim they can't make.
+    RANGES = {"7d": 7, "30d": 30, "90d": 90, "all": None}
+    DEFAULT_RANGE = "30d"
+
+    def _period(self, now, range_key: str, days: int | None, *, active: tuple) -> dict:
+        """The range-following pulse figures, each with the same-length period
+        just before it to compare against (None for all time, which has no
+        "before"). ``active`` is the range's readers and the period before's,
+        from the view's one reading-day query; hearts and sign-ups count when
+        they were made, reading time by when a sitting was last seen."""
+        from datetime import timedelta
+
+        from django.db.models import Sum
+
+        from accounts.models import UserProfile
+        from reading.models import Favorite, ReadingSession
+
+        def split(qs, field, total=None):
+            """This period's and the one before's count, or sum of ``total``,
+            in one query; all time is one figure with nothing before it."""
+            agg = (lambda q: Sum(total, filter=q)) if total else (lambda q: Count("pk", filter=q))
+            if not days:
+                return {"value": qs.aggregate(cur=agg(Q()))["cur"] or 0, "prev": None}
+            start, before = now - timedelta(days=days), now - timedelta(days=2 * days)
+            cur = Q(**{f"{field}__gte": start})
+            prev = Q(**{f"{field}__gte": before, f"{field}__lt": start})
+            row = qs.filter(**{f"{field}__gte": before}).aggregate(cur=agg(cur), prev=agg(prev))
+            return {"value": row["cur"] or 0, "prev": row["prev"] or 0}
+
+        return {
+            "range": range_key,
+            "days": days,
+            "active": {"value": active[0], "prev": active[1]},
+            "hearts": split(Favorite.objects, "created_at"),
+            "signups": split(UserProfile.objects, "created_at"),
+            "seconds": split(ReadingSession.objects, "last_seen_at", "seconds"),
+        }
+
+    def _reading_time(self, now, days: int | None = None):
         """Time-on-site rollup from ReadingSession (see reading.models).
 
         ``seconds`` is *active* reading time, so these are real reading totals,
@@ -131,29 +217,88 @@ class AdminEngagementView(APIView):
         from reading.models import ReadingSession
 
         sessions = ReadingSession.objects.filter(seconds__gt=0)
+        # The page's range: totals, the median and the length buckets cover
+        # sittings last seen inside it. The fixed 7/30-day figures don't move.
+        in_range = (
+            sessions.filter(last_seen_at__gte=now - timedelta(days=days)) if days else sessions
+        )
 
         def window(days):
             return sessions.filter(
                 last_seen_at__gte=now - timedelta(days=days)
             ).aggregate(secs=Sum("seconds"), readers=Count("profile", distinct=True))
 
-        totals = sessions.aggregate(
+        # The length buckets ride the totals' query, so their sums and the
+        # totals the page divides them by are one snapshot.
+        totals = in_range.aggregate(
             secs=Sum("seconds"),
             count=Count("id"),
             readers=Count("profile", distinct=True),
             avg=Avg("seconds"),
+            **self._bucket_aggregates(),
         )
-        w7, w30 = window(7), window(30)
+        w7 = window(7)
         return {
             "total_seconds": totals["secs"] or 0,
             "sessions": totals["count"] or 0,
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
+            "median_session_seconds": self._median_seconds(in_range, totals["count"] or 0),
+            "lengths": [
+                {
+                    "min_seconds": low,
+                    "max_seconds": high,
+                    "sittings": totals[f"b{low}_n"],
+                    "seconds": totals[f"b{low}_s"] or 0,
+                }
+                for low, high in self._bucket_bounds()
+            ],
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
-            "seconds_30d": w30["secs"] or 0,
-            "readers_30d": w30["readers"] or 0,
+            # Whether any sitting exists at all: the card shows on that, so a
+            # quiet range reads as zeros rather than a missing card.
+            "has_sittings": sessions.exists(),
         }
+
+    # Where sitting-length buckets start, in seconds; the last is open-ended.
+    # The average hides the spread (a few long reads on many short looks reads
+    # the same as everyone reading a little), so the page shows how many
+    # sittings, and how much reading, fall in each. 15 minutes is where a
+    # sitting stops being a look and becomes a read. The API sends each
+    # bucket's bounds, so the page labels them from here and can't drift.
+    SITTING_BUCKET_STARTS = (0, 60, 5 * 60, 15 * 60, 30 * 60)
+
+    @classmethod
+    def _bucket_bounds(cls):
+        starts = cls.SITTING_BUCKET_STARTS
+        return list(zip(starts, (*starts[1:], None), strict=True))
+
+    @classmethod
+    def _bucket_aggregates(cls):
+        from django.db.models import Sum
+
+        aggs = {}
+        for low, high in cls._bucket_bounds():
+            q = Q(seconds__gte=low) & (Q(seconds__lt=high) if high else Q())
+            aggs[f"b{low}_n"] = Count("id", filter=q)
+            aggs[f"b{low}_s"] = Sum("seconds", filter=q)
+        return aggs
+
+    @staticmethod
+    def _median_seconds(sessions, count: int) -> int:
+        """The middle sitting's length (the mean of the two middles when even,
+        halves rounded up).
+
+        Read by offset rather than a database percentile so it means the same
+        on SQLite (tests) and Postgres. ``count`` comes from an earlier query,
+        so a row deleted in between can leave the slice short or empty.
+        """
+        values = list(
+            sessions.order_by("seconds").values_list("seconds", flat=True)[
+                max(count - 1, 0) // 2 : count // 2 + 1
+            ]
+        )
+        return int(sum(values) / len(values) + 0.5) if values else 0
 
     def _total_users(self) -> int:
         from accounts.models import UserProfile
@@ -311,30 +456,11 @@ class AdminEngagementView(APIView):
     def _rising(self, now, limit: int = 8) -> list[dict]:
         """Works with the biggest gain in weekly readers — what's catching on
         NOW, beside the all-time leaderboard that a few classics dominate.
-
-        Two windowed grouped reads (this week; the seven days before it), each
-        distinct profiles per (kind, slug); the gainers are the works whose
-        weekly reach grew. This counts activity in the window (distinct readers
-        who touched the work), not brand-new readers — labelled as such on the
-        page — and small movements wash out because only positive deltas rank."""
-        from datetime import timedelta
-
-        from reading.models import ReadingProgress
-
-        def window(start_days, end_days=0):
-            qs = ReadingProgress.objects.filter(
-                updated_at__gte=now - timedelta(days=start_days)
-            )
-            if end_days:
-                qs = qs.filter(updated_at__lt=now - timedelta(days=end_days))
-            return {
-                (r["kind"], r["book_slug"]): r["n"]
-                for r in qs.values("kind", "book_slug").annotate(
-                    n=Count("profile", distinct=True)
-                )
-            }
-
-        this_week, prev_week = window(7), window(14, 7)
+        Counts readers active on a work in each window
+        (``library.engagement_trends.readers_per_work``), not brand-new
+        readers — labelled as such on the page — and small movements wash out
+        because only positive deltas rank."""
+        this_week, prev_week = readers_per_work(now)
         meta = self._work_meta
         rows = []
         for (kind, slug), this_n in this_week.items():
@@ -463,31 +589,38 @@ class AdminEngagementView(APIView):
             out.append(entry)
         return out
 
-    def _weekly_active(self, now, weeks: int = 8) -> list[dict]:
-        from datetime import timedelta
+    WEEKS = 8
 
-        from reading.models import ReadingProgress
+    def _events(self, now, weeks: int = WEEKS) -> list[dict]:
+        """What the team did in the charted weeks (``library.team_events``),
+        for the markers under the weekly chart: each with the ``week`` the
+        chart keys it by, its ``date``, and whether it falls in the same last
+        7 days as ``active_7d`` (``recent``), for the summary sentence."""
 
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
+        first_recent, _ = window(now, 7)  # the same days as active_7d
         out = []
-        for i in range(weeks - 1, -1, -1):
-            start = this_week - timedelta(weeks=i)
-            end = start + timedelta(weeks=1)
-            readers = (
-                ReadingProgress.objects.filter(
-                    updated_at__date__gte=start, updated_at__date__lt=end
-                )
-                .values("profile")
-                .distinct()
-                .count()
+        for e in team_events(week_starts(now, weeks)[0]):
+            at = e.pop("at")
+            out.append(
+                {
+                    **e,
+                    "week": week_start(day_of(at)).isoformat(),
+                    "date": day_of(at).isoformat(),
+                    "recent": day_of(at) >= first_recent,
+                }
             )
-            out.append({"week": start.isoformat(), "readers": readers})
         return out
 
 
 # Human labels for the reader themes stored on UserProfile.
-THEME_LABELS = {"paper": "Paper (light)", "light": "Light", "dark": "Lamplight (dark)"}
+THEME_LABELS = {
+    "": "Not yet set",
+    "system": "Match device",
+    "light": "Light",
+    "paper": "Paper (light, legacy)",
+    "dark": "Lamplight (dark)",
+    "sepia": "Sepia",
+}
 
 # Human labels for the Supabase auth providers stored on UserProfile.providers.
 # Anything unlisted is title-cased so a new provider still reads sensibly.
@@ -816,24 +949,12 @@ class AdminUsersView(APIView):
         return {"by_country": by_country, "by_timezone": by_timezone}
 
     def _weekly_signups(self, now, weeks: int = 12):
-        from datetime import timedelta
 
-        from accounts.models import UserProfile
-
-        today = now.date()
-        this_week = today - timedelta(days=today.weekday())  # Monday
-        buckets = {}
-        # One pass over sign-up dates, counted into their Monday-anchored week.
-        for (created,) in UserProfile.objects.values_list("created_at"):
-            wk = created.date() - timedelta(days=created.date().weekday())
-            buckets[wk] = buckets.get(wk, 0) + 1
-        out = []
-        for i in range(weeks - 1, -1, -1):
-            wk = this_week - timedelta(weeks=i)
-            out.append({"week": wk.isoformat(), "count": buckets.get(wk, 0)})
-        return out
-
-
+        starts = week_starts(now, weeks)
+        return [
+            {"week": wk.isoformat(), "count": n}
+            for wk, n in zip(starts, weekly_signups(starts), strict=True)
+        ]
 
 
 @requires(AdminCapability.REPORTING, verb=AdminVerb.VIEW)

@@ -3,8 +3,6 @@
 	import { authorPath } from '$lib/originals';
 	import { formatLifespan, type SermonSummary } from '$lib/library-public';
 	import { SvelteSet } from 'svelte/reactivity';
-	import { hydrateSrc } from '$lib/hydrateSrc';
-	import { initials } from '$lib/strings';
 	import { SITE_URL } from '$lib/config';
 	import { collectionPage, breadcrumbLd, hreflangAll } from '$lib/seo';
 	import Seo from '$lib/components/Seo.svelte';
@@ -20,10 +18,12 @@
 	import GroupHeading from '$lib/components/GroupHeading.svelte';
 	import FilterSheet from '$lib/components/FilterSheet.svelte';
 	import SheetChoices from '$lib/components/SheetChoices.svelte';
+	import FilterBar from '$lib/components/FilterBar.svelte';
+	import AuthorJumpStrip from '$lib/components/AuthorJumpStrip.svelte';
 	import { queryChip, topicChip, type FilterChip } from '$lib/filterChips';
 	import { urlFilters } from '$lib/urlFilters.svelte';
 	import { page } from '$app/stores';
-	import { portraitPosition, portraitSrcset } from '$lib/portraits';
+	import { portraitPosition } from '$lib/portraits';
 	import { readingMinutes } from '$lib/reading';
 	import { lengthBucket, LENGTH_BUCKETS } from '$lib/sermonLength';
 	import type { LengthBucket } from '$lib/sermonLength';
@@ -179,10 +179,10 @@
 		{ v: 'shortest', k: 'common.sortShortest' }
 	];
 
-	// Measured height of the pinned controls bar. The filter row wraps to a
-	// second line on narrow screens, so the offset the preacher anchors clear
-	// can't be assumed — it feeds `--pinned-offset`, mirroring Biographies.
-	let controlsH = $state(0);
+	// How much the pinned controls bar covers (0 where it doesn't pin). The
+	// filter row wraps to a second line on narrow screens, so the offset the
+	// preacher anchors clear can't be assumed — it feeds `--pinned-offset`.
+	let pinnedH = $state(0);
 
 	// Hydrated after mount, not during load: the page is prerendered, so reading
 	// localStorage while rendering would desync the static HTML from the client.
@@ -295,7 +295,11 @@
 	</div>
 {/snippet}
 
-<div class="page-col px-5 py-10 sermon-shell" style="--controls-h: {controlsH}px">
+{#snippet clearFiltersAction()}
+	<button class="btn btn-ghost" onclick={clearFilters}>{t('common.clearFilters')}</button>
+{/snippet}
+
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<PageHeader
 		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
@@ -314,20 +318,12 @@
 		{preacherCount === 1 ? t('common.preacherOne') : t('common.preacherMany')}
 	{/snippet}
 
-	<!-- Filter bar, pinned under the app nav (itself sticky, hence the
-	     --appnav-h offset) so the filters come WITH you — 24 preacher sections
-	     run many screens. Its height is measured: the
-	     preacher sections pin under whatever it currently is. Same recipe as
-	     Biographies (page-design B6/L3).
-	     Below sm it is one line — search + a Filters button whose sheet holds
-	     the rest (four stacked controls were ~300px before the first sermon) —
-	     and pins. From sm the controls sit inline; between sm and md that row
-	     wraps too tall to pin, so there it scrolls away. The sticky rules and the
-	     matching --pinned-offset live in the <style> block below. -->
-	<div
-		bind:clientHeight={controlsH}
-		class="sermon-filter z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
-	>
+	<!-- Filter bar, pinned under the app nav so the filters come WITH you — 24
+	     preacher sections run many screens. Below sm it is one line — search +
+	     a Filters button whose sheet holds the rest (four stacked controls were
+	     ~300px before the first sermon). `compact`: between sm and md the inline
+	     row wraps too tall to pin, so there it scrolls away (FilterBar). -->
+	<FilterBar bind:pinned={pinnedH} pin="compact" class="mb-8">
 		<div class="filter-row">
 			<input
 				bind:value={filters.values.q}
@@ -393,7 +389,7 @@
 				{@render groupSeg('', '')}
 			</div>
 		</div>
-	</div>
+	</FilterBar>
 
 	<!-- One sermon to start with, for a reader who doesn't yet know whom to
 	     read — the same weekly pick as the home page, hidden while the reader is
@@ -447,43 +443,20 @@
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else if sorted.length === 0}
-		<EmptyState message={filtering ? t('sermons.noMatches') : t('sermons.empty')} />
+		<EmptyState
+			message={filtering ? t('sermons.noMatches') : t('sermons.empty')}
+			action={filtering ? clearFiltersAction : undefined}
+		/>
 	{:else if groups}
-		<!-- Jump to a writer — the sections are long, so they need a way in that
-		     isn't scrolling. One scrolling row of faces, each with its count: it
-		     holds its height however many preachers join (the chip wall it
-		     replaced ran to three rows at 24), and a face is found faster than a
-		     name. In section order, so the strip reads like the page below it. -->
+		<!-- Jump to a preacher — the sections are long, so they need a way in
+		     that isn't scrolling: the shared faces strip (Books uses it too). -->
 		{#if groups.length > 1}
-			<nav class="cover-rail mb-8 flex gap-1 pb-1" aria-label={t('sermons.jumpPreacher')}>
-				{#each groups as g (g.author.slug)}
-					<a href="#preacher-{g.author.slug}" class="preacher-jump">
-						<span class="preacher-face" aria-hidden="true">
-							{#if g.author.photo_url}
-								{@const source = {
-									src: g.author.photo_url,
-									srcset: portraitSrcset(g.author.photo_url)
-								}}
-								<img
-									src={source.src}
-									srcset={source.srcset}
-									use:hydrateSrc={source}
-									sizes="44px"
-									alt=""
-									loading="lazy"
-									width="44"
-									height="44"
-									style="object-position: {portraitPosition(g.author.slug)}"
-								/>
-							{:else}
-								{initials(g.author.name)}
-							{/if}
-						</span>
-						<span class="preacher-name">{g.author.name}</span>
-						<span class="count text-micro">{g.items.length}</span>
-					</a>
-				{/each}
-			</nav>
+			<AuthorJumpStrip
+				class="mb-8"
+				label={t('sermons.jumpPreacher')}
+				href={(slug) => `#preacher-${slug}`}
+				writers={groups.map((g) => ({ ...g.author, count: g.items.length }))}
+			/>
 		{/if}
 		{#each groups as g (g.author.slug)}
 			{@const a = g.author}
@@ -537,73 +510,3 @@
 		{@render sermonList(sorted)}
 	{/if}
 </div>
-
-<style>
-	/* The filter bar pins below sm (one line: search + Filters) and from md
-	   (the inline row fits a line or two); between sm and md the inline row
-	   wraps too tall to pin, so it scrolls away and the preacher anchors only
-	   clear the app nav. */
-	.sermon-shell {
-		--pinned-offset: calc(var(--appnav-h, 0px) + var(--controls-h, 0px));
-	}
-	.sermon-filter {
-		position: sticky;
-		top: var(--appnav-h, 0px);
-	}
-	@media (min-width: 640px) and (max-width: 767.98px) {
-		.sermon-shell {
-			--pinned-offset: var(--appnav-h, 0px);
-		}
-		.sermon-filter {
-			position: static;
-		}
-	}
-	/* One face in the preacher strip (the strip itself is the shared .cover-rail):
-	   portrait or initials over the name and count. */
-	.preacher-jump {
-		flex: none;
-		width: 5.5rem;
-		display: grid;
-		justify-items: center;
-		align-content: start;
-		gap: 0.2rem;
-		padding: 0.4rem 0.25rem;
-		border-radius: var(--radius-card);
-		text-align: center;
-		color: var(--text);
-		text-decoration: none;
-	}
-	.preacher-jump:hover {
-		background: var(--surface-2);
-	}
-	.preacher-jump:hover .preacher-face {
-		border-color: var(--accent);
-	}
-	.preacher-jump:focus-visible {
-		outline: 2px solid var(--accent);
-		outline-offset: 1px;
-	}
-	.preacher-face {
-		width: 2.75rem;
-		height: 2.75rem;
-		border-radius: 9999px;
-		overflow: hidden;
-		display: grid;
-		place-items: center;
-		border: 2px solid var(--border);
-		background: var(--surface-2);
-		font-family: var(--font-display);
-		font-weight: 600;
-		color: var(--muted);
-		transition: border-color var(--duration-fast);
-	}
-	.preacher-face img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-	.preacher-name {
-		font-size: var(--fs-small);
-		line-height: 1.2;
-	}
-</style>

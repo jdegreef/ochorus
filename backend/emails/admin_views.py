@@ -28,9 +28,10 @@ from library.languages import entry as language_entry
 from library.models import AdminAction
 
 from . import audience as audience_mod
+from . import blocks as blocks_mod
 from . import broadcasts as broadcasts_mod
 from . import direct as direct_mod
-from . import health, preflight
+from . import health, preflight, translation_jobs
 from . import history as history_mod
 from .models import (
     Broadcast,
@@ -172,7 +173,10 @@ def _serialize_broadcast(b: Broadcast, *, detail: bool = False, checks=None) -> 
         "locked": b.is_locked,
     }
     if detail:
-        data["content"] = b.content
+        # AI-drafted translations per language (admin-only review state), with
+        # whether the source changed since each was asked for.
+        data["translations"] = translation_jobs.states(b)
+        data["content"] = blocks_mod.as_blocks(b.content)
         data["stats"] = health.metrics(EmailMessage.objects.filter(broadcast=b))
         if b.can_send:
             data["checks"] = preflight.run(b) if checks is None else checks
@@ -189,9 +193,11 @@ def _apply_fields(broadcast: Broadcast, data) -> None:
     """Copy editable fields from request data onto a broadcast (no send)."""
     if "name" in data:
         broadcast.name = str(data["name"]).strip()[:200]
-    for field in ("subject", "content", "audience"):
+    for field in ("subject", "audience"):
         if field in data and isinstance(data[field], dict):
             setattr(broadcast, field, data[field])
+    if "content" in data and isinstance(data["content"], dict):
+        broadcast.content = blocks_mod.clean_content(data["content"])
     if "from_address" in data:
         broadcast.from_address = str(data["from_address"]).strip()[:200]
 

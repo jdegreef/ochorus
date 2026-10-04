@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { localizeHref } from '$lib/href';
@@ -15,31 +14,40 @@
 	 * `series` false drops the Series tab where the page knows this language has
 	 * none (the Books shelf hides its own series links then), so the row never
 	 * leads to an empty, unindexed shelf.
+	 *
+	 * `set="writers"` is the same row for the two indexes of the writers —
+	 * Biographies (their lives) and the A–Z (their books) — on /biographies, so
+	 * a reader there can see the alphabetical index exists and step across.
 	 */
-	type Tab = 'books' | 'series' | 'az';
-	let { current, series = true }: { current: Tab; series?: boolean } = $props();
+	type Tab = 'books' | 'series' | 'az' | 'bios';
+	let {
+		current,
+		series = true,
+		set = 'library'
+	}: { current: Tab; series?: boolean; set?: 'library' | 'writers' } = $props();
 	const t = i18n.t;
 
 	const tabs = $derived(
-		[
-			{ id: 'books' as const, href: '/books', label: t('nav.books') },
-			{ id: 'series' as const, href: '/series/', label: t('nav.series') },
-			{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
-		].filter((tab) => series || tab.id !== 'series' || current === 'series')
+		set === 'writers'
+			? [
+					{ id: 'bios' as const, href: '/biographies', label: t('nav.biographies') },
+					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+				]
+			: [
+					{ id: 'books' as const, href: '/books', label: t('nav.books') },
+					{ id: 'series' as const, href: '/series/', label: t('nav.series') },
+					{ id: 'az' as const, href: '/authors', label: t('nav.azIndex') }
+				].filter((tab) => series || tab.id !== 'series' || current === 'series')
 	);
 
 	// A long language can push the row past a phone's width; `tabStrip` fades
-	// the edge that hides tabs, and this brings the current tab into view.
-	let strip: HTMLElement;
-	onMount(() => {
-		strip.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-	});
+	// the edge that hides tabs and brings the current tab into view.
 </script>
 
 <!-- Named "Explore", not "Books": the primary nav already has a Books link,
      and /books' own heading says Books. -->
 <nav class="library-tabs mb-6" aria-label={t('footer.explore')}>
-	<ul class="tab-strip flex gap-1" bind:this={strip} use:tabStrip={undefined}>
+	<ul class="tab-strip flex gap-1" use:tabStrip={undefined}>
 		{#each tabs as tab (tab.id)}
 			<li>
 				<a

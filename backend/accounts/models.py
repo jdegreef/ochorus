@@ -37,8 +37,12 @@ class UserProfile(models.Model):
     display_name = models.CharField(max_length=120, blank=True)
     # Preferred reading language (BCP-47-ish short code, e.g. "en", "sw").
     locale = models.CharField(max_length=10, default="en")
-    # Reader preferences.
-    theme = models.CharField(max_length=20, default="paper")
+    # Reader preferences. ``theme`` is blank until the reader's device first
+    # pushes its prefs: every client push carries a theme, so blank means "this
+    # account has no saved prefs yet" and the client keeps (and uploads) the
+    # device's own instead of adopting these defaults. A non-blank default here
+    # turned a dark-mode reader light the moment they signed up.
+    theme = models.CharField(max_length=20, blank=True, default="")
     font_scale = models.FloatField(default=1.0)
     # Listening (Text-to-Speech) preferences. tts_voice_uri is the device
     # SpeechSynthesis voiceURI — best-effort across devices (a voice absent on

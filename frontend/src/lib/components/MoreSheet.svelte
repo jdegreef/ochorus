@@ -9,10 +9,12 @@
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
+	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 
 	/**
 	 * The phone tab bar's "More": what the top nav's hamburger, gear and sign-in
-	 * button hold on wider screens, in one bottom sheet. Every list comes from
+	 * button hold on wider screens, in one bottom sheet (the gear's theme
+	 * switch included — phones never show the gear). Every list comes from
 	 * the source the footer uses, so the two can't drift. (A signed-in reader's
 	 * avatar menu — sign out, admin, feedback — stays in the top bar.)
 	 */
@@ -44,12 +46,23 @@
 			</div>
 		{/if}
 
+		<h3 class="more-heading" id="more-theme">{t('nav.theme')}</h3>
+		<div class="seg more-theme" role="group" aria-labelledby="more-theme">
+			{#each THEME_OPTIONS as o (o.v)}
+				<button
+					class:active={theme.preference === o.v}
+					aria-pressed={theme.preference === o.v}
+					onclick={() => theme.set(o.v)}>{t(o.k)}</button
+				>
+			{/each}
+		</div>
+
 		<h3 class="more-heading">{t('footer.explore')}</h3>
 		<div class="grid grid-cols-2 gap-2">
 			{#each PRIMARY_NAV as d (d.href)}
-				<a href={localizeHref(d.href)} class="more-tile"><Icon name={d.icon} size={20} />{t(d.labelKey)}</a>
+				<a href={localizeHref(d.href)} class="more-tile" data-section={d.section}><Icon name={d.icon} size={20} />{t(d.labelKey)}</a>
 			{/each}
-			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile"
+			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile" data-section="originals"
 				><Icon name="sparkle" size={20} />{t(ORIGINALS_DEST.labelKey)}</a
 			>
 		</div>
@@ -86,6 +99,15 @@
 </DrawerShell>
 
 <style>
+	/* Full width, four equal cells; a long label (sw, lg) wraps inside its
+	   cell rather than being clipped by .seg's overflow. */
+	.more-theme button {
+		flex: 1 1 0;
+		min-width: 0;
+		min-height: 2.75rem;
+		white-space: normal;
+		font-size: var(--fs-body);
+	}
 	.more-card {
 		margin-bottom: 0.5rem;
 		padding: 1rem;
@@ -111,8 +133,10 @@
 		color: var(--text);
 		text-decoration: none;
 	}
+	/* Each destination's icon wears its section hue (app.css, data-section);
+	   the language tiles below carry no section and keep the accent. */
 	.more-tile :global(svg) {
-		color: var(--accent);
+		color: var(--section-hue, var(--accent));
 		flex-shrink: 0;
 	}
 	.more-row {

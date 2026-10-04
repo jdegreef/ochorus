@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { onMount, untrack } from 'svelte';
 	import { planDayPath } from '$lib/editionHref';
 	import type { PlanDay, PlanDetail, PlanSummary } from '$lib/library-public';
 	import { planProgress } from '$lib/planProgress.svelte';
-	import { planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
+	import { planMinutesPerDay, planTimeLeft, readingMinutes, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
-	import { authorPath } from '$lib/originals';
+	import { ORIGINALS_SLUG, authorPath } from '$lib/originals';
 	import { SITE_URL } from '$lib/config';
 	import { absUrl, jsonLd, breadcrumbLd } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH } from '$lib/coverArt';
@@ -22,9 +23,11 @@
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import { groupPlanDays, weeksOf, type PlanGroup } from '$lib/planGroups';
-	import { portal } from '$lib/actions/portal';
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
+	import ReadBar from '$lib/components/ReadBar.svelte';
+	import { readJSON, writeJSON } from '$lib/persisted';
 
 	let { data } = $props();
 	const plan = $derived<PlanDetail>(data.plan);
@@ -52,6 +55,8 @@
 		...new Map(groups.filter((g) => g.bookSlug).map((g) => [g.bookSlug, g.bookTitle]))
 	].map(([slug, title]) => ({ slug, title })));
 	const coverBySlug = $derived(new Map(plan.covers.map((c) => [c.slug, c])));
+	/** The writers to meet — not the house imprint (see the authors block). */
+	const writers = $derived((plan.authors ?? []).filter((a) => a.slug !== ORIGINALS_SLUG));
 	/** "Daughters of the King: Three Months with God" set as a title over its
 	 *  subtitle, as a book's is (plans have no subtitle field of their own). */
 	const titleParts = $derived.by(() => {
@@ -60,7 +65,8 @@
 	});
 	const groupWords = (g: PlanGroup) => g.days.reduce((s, d) => s + (d.word_count || 0), 0);
 	/** The line under a day's title: its book, or "Article" on an article day. */
-	const daySource = (d: PlanDay) => (d.article_slug ? t('search.typeArticle') : d.book_title);
+	const daySource = (d: PlanDay) =>
+		d.article_slug ? t('search.typeArticle') : (bookName.get(d.book_slug) ?? d.book_title);
 	/** A day's title — the API has already dropped the book's own "Day 13 — ",
 	 *  which would contradict the plan day in the circle. */
 	const dayTitle = (d: PlanDay) => d.chapter_title || `${t('plans.day')} ${d.day}`;
@@ -145,17 +151,17 @@
 	const finishDate = $derived(today ? dateFmt.monthDay.format(dayFrom(daysLeft - 1)) : '—');
 	/** One read count for a run of days — a book section, a week, a rail segment. */
 	const readIn = (days: PlanDay[]) => days.filter((d) => doneSet.has(d.day)).length;
+	const perDay = $derived(planMinutesPerDay(plan));
 	/** The plan's shape beyond the eyebrow's length: how much a day, how many
 	 *  books, and when a reader going a day at a time from today would finish. */
 	const facts = $derived(
 		[
-			plan.total_words && plan.day_count
-				? { value: `~${readingMinutes(plan.total_words / plan.day_count)}`, label: t('plans.minPerDay') }
-				: null,
-			planBooks.length
+			perDay ? { value: `~${perDay}`, label: t('plans.minPerDay') } : null,
+			// "1 book" says nothing the cover beside it doesn't.
+			planBooks.length > 1
 				? {
 						value: String(planBooks.length),
-						label: planBooks.length === 1 ? t('common.bookOne') : t('common.bookMany')
+						label: t('common.bookMany')
 					}
 				: null,
 			next === null ? null : { value: finishDate, label: t('plans.finishLabel') }
@@ -175,12 +181,24 @@
 			new Set(positions).size === positions.length &&
 			series.size === 1 &&
 			!series.has('');
-		return groups.map((g, i) =>
-			numbered
-				? t('originals.volume').replace('%n%', String(positions[i]))
-				: g.bookTitle || t('search.groupArticles')
-		);
+		return groups.map((g, i) => {
+			if (!numbered) return { chip: g.bookTitle || t('search.groupArticles'), name: g.bookTitle };
+			// A series' volumes share one long title ("Daughters of the King – 30
+			// Days with God for Girls – Book 1"); what tells them apart is the
+			// number and the subtitle's head ("Beloved: who you are…"), so they
+			// are named "Book 1 · Beloved" — the whole title is a tap away on
+			// the book's page.
+			const chip = t('originals.volume').replace('%n%', String(positions[i]));
+			// Only a "Head: the rest" subtitle has a head to borrow; any other
+			// shape keeps the book's own title.
+			const head = tiles[i]?.subtitle?.match(/^(.{1,40}?)\s*[:：]/u)?.[1];
+			return { chip, name: head ? `${chip} · ${head}` : g.bookTitle };
+		});
 	});
+	/** Each book's display name, by slug — the section heads and the read card. */
+	const bookName = $derived(
+		new Map(groups.map((g, i) => [g.bookSlug, groupLabels[i].name] as const).filter(([s]) => s))
+	);
 	/** A chip opens the section it jumps to — a closed <details> would land the
 	 *  reader on a bare header — then jumps the shared way (reduced-motion aware). */
 	const openSection = (e: MouseEvent, id: string) => {
@@ -213,6 +231,20 @@
 	let readCardEl = $state<HTMLElement>();
 	/** The pinned book chips' height, measured, for --pinned-offset. */
 	let jumpH = $state(0);
+	/** The day list as a list, or laid on real dates. The calendar is about the
+	 *  reader's today, so it exists only once mounted (the prerender is the list). */
+	const VIEW_KEY = 'ochorus:plan-view';
+	let view = $state<'list' | 'calendar'>('list');
+	// The reader's last choice of view, as a device preference (grid/list on
+	// the shelves is the same idea); read on mount, so the prerender is the list.
+	onMount(() => {
+		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
+	});
+	const setView = (v: 'list' | 'calendar') => {
+		view = v;
+		writeJSON(VIEW_KEY, v);
+	};
+	const sections = $derived(groups.map((g, i) => ({ key: g.key, label: groupLabels[i].chip, days: g.days })));
 	const cardSeen = elementVisible(() => readCardEl, { initial: true });
 
 	/** Each day's link, built once per plan — the list, the read card, Coming
@@ -235,13 +267,6 @@
 	structuredData={[planLd, crumbsLd]}
 />
 
-<!-- The one read verb, wherever it shows: the read card, the phone bar. -->
-{#snippet readButton(cls: string, day: number)}
-	<a href={dayHref(day)} class={cls} onclick={() => planProgress.start(plan.slug)}>
-		{started ? t('plans.continue') : t('plans.start')}
-	</a>
-{/snippet}
-
 <!-- --pinned-offset: the app nav plus the book chips pinned over the list —
      what every section jump clears. -->
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {jumpH}px)">
@@ -255,8 +280,11 @@
 	<section class="plan-hero">
 		<div class="min-w-0">
 			<p class="eyebrow mb-1 text-muted">
-				{t('search.typePlan')} · {plan.day_count} {t('plans.days')}{#if plan.total_words} ·
-					{readingTime(plan.total_words)}{/if}
+				<!-- The separators as expressions: a literal space at an {#if} boundary
+				     is compiler-trimmed ("96 days· 3 hr"). -->
+				{t('search.typePlan')}{' · '}{plan.day_count} {t('plans.days')}{#if plan.total_words}{' · '}{readingTime(
+						plan.total_words
+					)}{/if}
 			</p>
 			<!-- The whole title stays the h1's text; its subtitle is drawn as the
 			     book page draws one. -->
@@ -310,7 +338,8 @@
 							<!-- Today's reading, named and pictured: its book's cover beside
 							     the title, and the verse the day opens on. -->
 							<div class="mt-1 flex items-start gap-3">
-								{#if nextCover}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
+								<!-- One book: the hero's cover already is this one. -->
+								{#if nextCover && planBooks.length > 1}<CoverStrip covers={[nextCover]} size="lg" max={1} />{/if}
 								<div class="min-w-0">
 									<p class="read-card-title" dir="auto">
 										{dayTitle(nextDay)}
@@ -337,7 +366,9 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						{@render readButton('btn btn-primary', next)}
+						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+							{started ? t('plans.continue') : t('plans.start')}
+						</a>
 						{#if started}
 							<button type="button" class="btn btn-ghost" onclick={() => planProgress.markDone(plan.slug, next!)}>
 								{t('plans.markDone')}
@@ -379,20 +410,7 @@
 				<ShareButton url={canonical} title={plan.title} showLabel />
 			</div>
 
-			<!-- The writers this plan reads through — a link to each author page, so a
-			     plan is a way into their work, not only a sequence of chapters. Reuses the
-			     shared "Authors" label, so it is already translated in every locale. -->
-			{#if plan.authors?.length}
-				<section class="mt-6">
-					<h2 class="section-heading">{t('search.groupAuthors')}</h2>
-					<p class="text-body">
-						{#each plan.authors as a, i (a.slug)}<a
-								href={localizeHref(authorPath(a.slug))}
-								class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
-							>{i < plan.authors.length - 1 ? ' · ' : ''}{/each}
-					</p>
-				</section>
-			{/if}
+			{@render authorsBlock('plan-authors-side mt-6')}
 		</aside>
 
 		<div class="plan-main">
@@ -420,7 +438,7 @@
 								{/each}
 							</div>
 							<div class="rail-label text-micro text-muted">
-								<span>{grouped ? groupLabels[gi] : dayRange(g)}</span><span class="tabular-nums"
+								<span>{grouped ? groupLabels[gi].chip : dayRange(g)}</span><span class="tabular-nums"
 									>{readIn(g.days)}/{g.days.length}</span
 								>
 							</div>
@@ -431,59 +449,106 @@
 
 			<section aria-labelledby="plan-days-heading">
 				<h2 id="plan-days-heading" class="section-heading">{t('plans.inThisPlan')}</h2>
-				<!-- One chip per book, pinned while the list scrolls: a jump to (and
-				     open of) that book's section. Anchors, so every day stays in the
-				     prerendered page. -->
-				{#if grouped}
-					<nav
-						class="plan-jump chip-scroller"
-						aria-label={t('nav.books')}
-						bind:clientHeight={jumpH}
-					>
-						{#each groups as g, gi (g.key)}
-							<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
-								>{groupLabels[gi]}</a
-							>
-						{/each}
-					</nav>
+				{#if today}
+					<!-- The view toggle on its own row under the heading, as the shelves
+					     place theirs. -->
+					<div class="seg mb-4 w-fit" role="group" aria-labelledby="plan-days-heading">
+						<button type="button" class:active={view === 'list'} aria-pressed={view === 'list'} onclick={() => setView('list')}
+							>{t('plans.viewList')}</button
+						>
+						<button
+							type="button"
+							class:active={view === 'calendar'}
+							aria-pressed={view === 'calendar'}
+							onclick={() => setView('calendar')}>{t('plans.viewCalendar')}</button
+						>
+					</div>
 				{/if}
-				{#each groups as g, gi (g.key)}
-					{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
+				{#if view === 'calendar' && today}
+					<!-- Keyed on the plan: its choices are seeded per plan, so moving to
+					     another plan re-seeds rather than carrying these over. -->
+					{#key plan.slug}
+						<PlanCalendar {plan} {today} {started} {doneSet} {sections} {dayHref} {dayTitle} />
+					{/key}
+				{:else}
+					<!-- One chip per book, pinned while the list scrolls: a jump to (and
+					     open of) that book's section. Anchors, so every day stays in the
+					     prerendered page. -->
 					{#if grouped}
-						{@const read = readIn(g.days)}
-						{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
-						<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
-							<summary class="plan-group-head">
-								{#if cover}<CoverStrip covers={[cover]} max={1} />{/if}
-								<span class="min-w-0 flex-1">
-									<span class="eyebrow block text-muted">{dayRange(g)}</span>
-									<span class="plan-group-title" dir="auto">{g.bookTitle || t('search.groupArticles')}</span>
-									<span class="block text-small text-muted">
-										{#if started && read}
-											{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
-										{:else}
-											{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
-										{/if}
-									</span>
-								</span>
-								<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
-							</summary>
-							<div class="plan-group-body">
-								{#if g.bookSlug}
-									<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
-										>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
-									>
-								{/if}
-								{@render weekList(g.days, hasNext)}
-							</div>
-						</details>
-					{:else}
-						{@render weekList(g.days, hasNext)}
+						<nav
+							class="plan-jump chip-scroller"
+							use:scrollEdges
+							aria-label={t('nav.books')}
+							bind:clientHeight={jumpH}
+						>
+							{#each groups as g, gi (g.key)}
+								<a class="tag" href="#{groupId(g)}" onclick={(e) => openSection(e, groupId(g))} dir="auto"
+									>{groupLabels[gi].chip}</a
+								>
+							{/each}
+						</nav>
 					{/if}
-				{/each}
+					{#each groups as g, gi (g.key)}
+						{@const hasNext = openAt !== null && openAt >= g.first && openAt <= g.last}
+						{#if grouped}
+							{@const read = readIn(g.days)}
+							{@const cover = g.bookSlug ? coverBySlug.get(g.bookSlug) : undefined}
+							<details id={groupId(g)} class="plan-group" open={hasNext || (openAt === null && gi === 0)}>
+								<summary class="plan-group-head">
+									{#if cover}<CoverStrip covers={[cover]} max={1} size="lg" />{/if}
+									<span class="min-w-0 flex-1">
+										<span class="eyebrow block text-muted">{dayRange(g)}</span>
+										<span class="plan-group-title" dir="auto"
+											>{groupLabels[gi].name || t('search.groupArticles')}</span
+										>
+										<span class="block text-small text-muted">
+											{#if started && read}
+												{t('plans.readOf').replace('%n%', String(read)).replace('%m%', String(g.days.length))}
+											{:else}
+												{g.days.length} {t('plans.days')} · {readingTime(groupWords(g))}
+											{/if}
+										</span>
+									</span>
+									<Icon name="chevron-right" size={20} class="chevron" mirror={false} />
+								</summary>
+								<div class="plan-group-body">
+									{#if g.bookSlug}
+										<a href={localizeHref(`/books/${g.bookSlug}`)} class="text-small font-medium text-accent hover:underline"
+											>{t('plans.aboutBook')}<Icon name="chevron-right" size={14} class="ms-0.5 inline" /></a
+										>
+									{/if}
+									{@render weekList(g.days, hasNext)}
+								</div>
+							</details>
+						{:else}
+							{@render weekList(g.days, hasNext)}
+						{/if}
+					{/each}
+				{/if}
 			</section>
+			{@render authorsBlock('plan-authors-main mt-10')}
 		</div>
 	</div>
+
+	<!-- The writers this plan reads through — a link to each author page, so a
+	     plan is a way into their work, not only a sequence of chapters. Drawn in
+	     the side panel from a laptop up, and after the day list below that, so a
+	     phone reader reaches the days first. The house imprint alone (an Ochorus
+	     Originals plan) is no writer to meet, so it draws no section. Reuses the
+	     shared "Authors" label, so it is already translated in every locale. -->
+	{#snippet authorsBlock(cls: string)}
+		{#if writers.length}
+			<section class={cls}>
+				<h2 class="section-heading">{t('search.groupAuthors')}</h2>
+				<p class="text-body">
+					{#each writers as a, i (a.slug)}<a
+							href={localizeHref(authorPath(a.slug))}
+							class="font-medium text-text hover:text-accent hover:underline">{a.name}</a
+						>{i < writers.length - 1 ? ' · ' : ''}{/each}
+				</p>
+			</section>
+		{/if}
+	{/snippet}
 
 	<!-- A run of days, in weeks when it is longer than one. The week holding the
 	     next reading opens; in a run that doesn't hold it, the first week does. -->
@@ -563,7 +628,7 @@
 							</span>
 						</span>
 						{#if d.key_verse}
-							<span class="tag verse-chip row-verse">{d.key_verse}</span>
+							<span class="tag verse-chip hidden sm:inline-flex">{d.key_verse}</span>
 						{/if}
 						{#if isNext}
 							<span class="shrink-0 text-small font-semibold text-accent">{t('plans.today')}</span>
@@ -591,20 +656,17 @@
 
 </div>
 
-<!-- Portalled to <body>: .page-col's centring transform would otherwise pin
-     a fixed bar to the column instead of the screen.
-     Phones: once the read card scrolls away, the read verb rides a bar above
-     the tab bar — the next day named, one button. Below the side-panel
-     breakpoint only; from there the panel itself stays in view. -->
-{#if next !== null && nextDay && !cardSeen.visible}
-	<div class="plan-bar" use:portal>
-		<span class="min-w-0 flex-1">
-			<span class="block text-eyebrow text-muted">{t('plans.day')} {next} {t('plans.of')} {plan.day_count}</span>
-			<span class="block truncate text-small font-semibold text-text" dir="auto">{dayTitle(nextDay)}</span>
-		</span>
-		{@render readButton('btn btn-primary shrink-0', next)}
-	</div>
-{/if}
+<!-- Phones: once the read card scrolls away, the read verb rides a bar above
+     the tab bar (ReadBar, shared with the book page). From 1024px the side
+     panel keeps it in view instead. -->
+<ReadBar
+	show={next !== null && !!nextDay && !cardSeen.visible}
+	eyebrow="{t('plans.day')} {next} {t('plans.of')} {plan.day_count}"
+	title={nextDay ? dayTitle(nextDay) : ''}
+	href={next === null ? '#' : dayHref(next)}
+	label={started ? t('plans.continue') : t('plans.start')}
+	onread={() => planProgress.start(plan.slug)}
+/>
 
 <style>
 	/* A book's run of days: a card whose summary is the book (cover, span,
@@ -698,16 +760,6 @@
 	.verse-chip:hover {
 		border-color: var(--border);
 	}
-	/* In a day row the pill shows from 640px; on a phone the verse rides the
-	   line under the title instead (scoped, so it beats .tag's display). */
-	.row-verse {
-		display: none;
-	}
-	@media (min-width: 640px) {
-		.row-verse {
-			display: inline-flex;
-		}
-	}
 	/* The hero: words beside the fan; on a phone the fan leads, centred. */
 	.plan-hero {
 		display: grid;
@@ -760,19 +812,32 @@
 			/* Taller than a short laptop screen: it scrolls itself rather than
 			   hiding its foot until the page scrolls past it. */
 			max-height: calc(100vh - var(--appnav-h, 0px) - 2rem);
+			max-height: calc(100dvh - var(--appnav-h, 0px) - 2rem);
 			overflow-y: auto;
 		}
 	}
-	@media (max-width: 640px) {
+	@media (max-width: 639.98px) {
 		.plan-hero {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 0.5rem;
 			padding-block: 0 1.5rem;
 		}
+		/* Small enough that the title shares the first screen with it. */
 		.plan-hero-fan {
 			order: -1;
-			width: min(18rem, 80%);
+			width: min(13.5rem, 62%);
 			margin-inline: auto;
+		}
+	}
+	/* The writers: in the panel from a laptop up, after the days below that. */
+	@media (max-width: 1023.98px) {
+		.plan-authors-side {
+			display: none;
+		}
+	}
+	@media (min-width: 1024px) {
+		.plan-authors-main {
+			display: none;
 		}
 	}
 	.plan-jump {
@@ -831,32 +896,5 @@
 	.coming-date {
 		width: 3.5rem;
 		flex-shrink: 0;
-	}
-	/* The phone's bottom bar, above the tab bar and the home indicator. */
-	.plan-bar {
-		position: fixed;
-		inset-inline: 0;
-		/* The shared clearance every fixed bottom chrome uses (.min-left). */
-		bottom: max(env(safe-area-inset-bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px));
-		z-index: 30;
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 0.625rem 1.25rem;
-		border-top: 1px solid var(--border);
-		background: var(--surface);
-		box-shadow: var(--shadow-card);
-	}
-	/* While the bar is up, the page's foot (the footer's last line) scrolls
-	   clear of it rather than sitting underneath. */
-	@media (max-width: 1023.98px) {
-		:global(body:has(.plan-bar)) {
-			padding-bottom: 4.5rem;
-		}
-	}
-	@media (min-width: 1024px) {
-		.plan-bar {
-			display: none;
-		}
 	}
 </style>

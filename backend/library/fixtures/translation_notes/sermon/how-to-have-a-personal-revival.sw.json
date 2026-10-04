@@ -1,0 +1,48 @@
+{
+ "kind": "sermon",
+ "slug": "how-to-have-a-personal-revival",
+ "language": "sw",
+ "job_issue": 5025,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "Zechariah 13:6b",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Acts 2:4a",
+   "status": "mined",
+   "block_index": 15,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Acts 2:3",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "the-person-and-work-of-the-holy-spirit.sw.json"
+  },
+  {
+   "reference": "Isaiah 50:7b",
+   "status": "self_rendered",
+   "block_index": 32
+  },
+  {
+   "reference": "Mark 10:47b",
+   "status": "self_rendered",
+   "block_index": 36
+  },
+  {
+   "reference": "Proverbs 28:13a",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Ephesians 5:16",
+   "status": "mined",
+   "block_index": 93,
+   "source_file": "watchman-nee-a-life.sw.json"
+  }
+ ]
+}

@@ -1203,6 +1203,13 @@ class AdminEngagementTests(TestCase):
         )
         ReadingProgress.objects.create(profile=self.p2, book_slug="humility", language="en", chapter_order=1)
         ReadingProgress.objects.create(profile=self.p1, book_slug="abide", language="en", chapter_order=1)
+        # Both read today (the reading-day log, which "Active" counts from).
+        from reading.models import ReadingDay
+
+        from .weeks import day_of
+
+        for p in (self.p1, self.p2):
+            ReadingDay.objects.create(profile=p, day=day_of(timezone.now()))
         ChapterMarks.objects.create(
             profile=self.p1, book_slug="humility", language="en", chapter_order=1,
             marks=[{"id": "a", "p": 0, "s": 0, "e": 5}],
@@ -1304,6 +1311,105 @@ class AdminEngagementTests(TestCase):
         self.assertEqual(rising[("book", "humility")]["delta"], 2)
         # abide's only activity was last week, so it isn't rising this week.
         self.assertNotIn(("book", "abide"), rising)
+
+    @override_settings(DEBUG=True)
+    def test_a_reader_on_a_book_both_weeks_is_not_a_rise(self):
+        """Saved progress keeps only humility's latest touch (this week), so on
+        its own p1's sitting on it last week was invisible and humility read
+        as +2. The sitting brings p1 back into last week: +1."""
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        s = ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=300, kind="book", book_slug="humility", language="en",
+        )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)  # bypass auto_now
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual((row["this_week"], row["prev_week"], row["delta"]), (2, 1, 1))
+
+    @override_settings(DEBUG=True)
+    def test_a_sitting_counts_in_one_week_and_needs_a_work(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        # Spans the boundary on the device's clock, but the server last heard
+        # from it this week: it's this week's, not both weeks'.
+        ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week,
+            last_seen_at=timezone.now(), seconds=300, kind="book",
+            book_slug="humility", language="en",
+        )
+        # An older client sends no work: it can't be credited to one.
+        old = ReadingSession.objects.create(
+            profile=self.p1, client_id="s2", started_at=last_week, last_seen_at=last_week,
+            seconds=300,
+        )
+        ReadingSession.objects.filter(pk=old.pk).update(updated_at=last_week)
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
+
+    @override_settings(DEBUG=True)
+    def test_an_opened_but_unread_sitting_is_not_a_reader(self):
+        from datetime import timedelta
+
+        from reading.models import ReadingSession
+
+        last_week = timezone.now() - timedelta(days=10)
+        s = ReadingSession.objects.create(
+            profile=self.p1, client_id="s1", started_at=last_week, last_seen_at=last_week,
+            seconds=0, kind="book", book_slug="humility", language="en",
+        )
+        ReadingSession.objects.filter(pk=s.pk).update(updated_at=last_week)
+        res = self.client.get("/api/admin/engagement/")
+        row = {(r["kind"], r["slug"]): r for r in res.data["rising"]}[("book", "humility")]
+        self.assertEqual(row["prev_week"], 0)
+
+    def _sittings(self, *lengths):
+        from reading.models import ReadingSession
+
+        now = timezone.now()
+        for i, secs in enumerate(lengths):
+            ReadingSession.objects.create(
+                profile=self.p1, client_id=f"len{i}", started_at=now, last_seen_at=now,
+                seconds=secs,
+            )
+
+    @override_settings(DEBUG=True)
+    def test_sitting_lengths_split_sittings_and_time_by_bucket(self):
+        # Four short looks and one long read: the average (6m 36s) describes
+        # none of them, and the long one holds most of the time.
+        self._sittings(20, 40, 59, 60, 1800)
+        t = self.client.get("/api/admin/engagement/").data["time"]
+        by = {b["min_seconds"]: b for b in t["lengths"]}
+        self.assertEqual(
+            [(b["min_seconds"], b["max_seconds"]) for b in t["lengths"]],
+            [(0, 60), (60, 300), (300, 900), (900, 1800), (1800, None)],
+        )
+        self.assertEqual(by[0]["sittings"], 3)  # 60s is a minute, not under one
+        self.assertEqual(by[60]["sittings"], 1)
+        self.assertEqual(by[900]["sittings"], 0)  # 30 minutes opens the last bucket
+        self.assertEqual((by[1800]["sittings"], by[1800]["seconds"]), (1, 1800))
+        self.assertEqual(sum(b["seconds"] for b in t["lengths"]), t["total_seconds"])
+        self.assertEqual(t["median_session_seconds"], 59)
+
+    @override_settings(DEBUG=True)
+    def test_median_of_an_even_count_is_the_middle_pair(self):
+        self._sittings(30, 90, 600, 1200, 0)  # the unread sitting isn't a sitting
+        t = self.client.get("/api/admin/engagement/").data["time"]
+        self.assertEqual(t["median_session_seconds"], 345)
+
+    @override_settings(DEBUG=True)
+    def test_no_sittings_is_a_zero_median_not_an_error(self):
+        t = self.client.get("/api/admin/engagement/").data["time"]
+        self.assertEqual(t["median_session_seconds"], 0)
+        self.assertEqual(sum(b["sittings"] for b in t["lengths"]), 0)
 
     @override_settings(DEBUG=True)
     def test_highlight_heatmap(self):

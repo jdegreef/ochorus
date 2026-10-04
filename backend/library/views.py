@@ -39,6 +39,7 @@ from .models import (
     Author,
     Book,
     Chapter,
+    ContentRevision,
     Plan,
     SearchClickLog,
     SearchDecision,
@@ -151,6 +152,39 @@ class AuthorListView(PublicContentCacheMixin, generics.ListAPIView):
         ctx = super().get_serializer_context()
         ctx["language"] = _language(self.request)
         return ctx
+
+
+class AuthorEraPresenceView(PublicContentCacheMixin, APIView):
+    """``{language: [birth_year, ...]}`` for the writers on each live language's
+    Biographies shelf (``listed_in_biographies``, the author list's own rule) —
+    distinct years, ``null`` last for the undated.
+
+    For the era pages' hreflang: an era page has writers only where that
+    locale's shelf has someone born in the era. The eras are drawn in the
+    frontend (`$lib/eras`), so the API hands over the years and leaves the
+    bucketing to the one place that defines it.
+
+    One query per live language, so it is cached per content revision and live
+    set (the scripture_graph.current_pages idiom): every era page in every
+    locale asks during prerender, and the answer only moves with content or a
+    language going live.
+    """
+
+    def get(self, request):
+        live = languages_module.live_codes()
+        key = (ContentRevision.current(), tuple(live))
+        cached = cache.get("author-era-presence")
+        if cached is not None and cached[0] == key:
+            return Response(cached[1])
+        years = {
+            lang: sorted(
+                set(Author.objects.listed_in_biographies(lang).values_list("birth_year", flat=True)),
+                key=lambda y: (y is None, y or 0),
+            )
+            for lang in live
+        }
+        cache.set("author-era-presence", (key, years), timeout=None)
+        return Response(years)
 
 
 class AuthorDetailView(PublicContentCacheMixin, generics.RetrieveAPIView):
@@ -1884,8 +1918,9 @@ class ScriptureBookView(APIView):
     server can: how many library passages treat the book at all (distinct
     citing chapters, across every chapter of it, not a sum of per-chapter
     counts, which would count a passage citing Romans 5 and 8 twice), which
-    library books return to it most, and the ASV text of its most-quoted
-    verses.
+    library books return to it most, the ASV text of its most-quoted verses,
+    one excerpt from each of those books, and a short house overview of the
+    book itself (``bible_book_intros``).
 
     It exists only where at least one of the book's chapters has earned a page
     (``current_pages``), so it is never thinner than the pages it links to and
@@ -1899,6 +1934,7 @@ class ScriptureBookView(APIView):
     TOP_VERSES = 8
 
     def get(self, request, book):
+        from .bible_book_intros import intro as book_intro
         from .models import ChapterCitation
         from .scripture import VERSION_LABEL
         from .scripture_graph import (
@@ -1908,6 +1944,7 @@ class ScriptureBookView(APIView):
             english_chapters,
             verse_text,
         )
+        from .search import fallback_snippet
         from .serializers import _edition_base_slug
 
         target = book_from_slug(book)
@@ -1942,6 +1979,11 @@ class ScriptureBookView(APIView):
                 "chapter__book__title",
                 "chapter__book__author__name",
                 "chapter__book__author__slug",
+                # For the excerpts: the reference as the work prints it, and
+                # its span, so each work is quoted at its narrowest citation.
+                "ref_text",
+                "start_verse_id",
+                "end_verse_id",
             )
             .distinct()
         )
@@ -1955,14 +1997,53 @@ class ScriptureBookView(APIView):
             citing.add(r["chapter_id"])
             slug = r["chapter__book__slug"]
             base = _edition_base_slug(slug)
-            w = works.setdefault(base, {"chapters": set(), "row": r})
+            w = works.setdefault(base, {"chapters": set(), "row": r, "cite": None})
             w["chapters"].add(r["chapter_id"])
             if slug == base:
                 w["row"] = r
+            # The citation its excerpt quotes: one that starts IN this book (a
+            # clamped span from the book before would label the excerpt with
+            # another book), the narrowest, from the work's own edition rather
+            # than a teens/children one, then a stable tie-break so the
+            # prerendered page doesn't churn between builds on DISTINCT order.
+            key = (
+                r["start_verse_id"] < lo,
+                r["end_verse_id"] - r["start_verse_id"],
+                slug != base,
+                r["chapter_id"],
+                r["ref_text"],
+            )
+            if w["cite"] is None or key < w["cite"][0]:
+                w["cite"] = (key, r)
         top_books = sorted(
             works.values(),
             key=lambda w: (-len(w["chapters"]), w["row"]["chapter__book__title"]),
         )[: self.TOP_BOOKS]
+
+        # One excerpt per top work, at its narrowest citation of this book —
+        # what the page shows as "what the writers say". One query for the six
+        # chapter bodies; the excerpt is the same snippet the chapter page uses.
+        cites = [w["cite"][1] for w in top_books]
+        bodies = {
+            c.pk: c
+            for c in english_chapters()
+            .filter(pk__in=[r["chapter_id"] for r in cites])
+            .select_related("book__author")
+        }
+        passages = [
+            {
+                "book_slug": ch.book.slug,
+                "book_title": ch.book.title,
+                "author_name": ch.book.author.name,
+                "author_slug": ch.book.author.slug,
+                "chapter_order": ch.order,
+                "chapter_title": ch.title,
+                "ref": r["ref_text"],
+                "excerpt": fallback_snippet(ch.body_text or "", r["ref_text"]),
+            }
+            for r in cites
+            if (ch := bodies.get(r["chapter_id"])) is not None
+        ]
 
         verses = sorted(
             (p for p in mine if p["verse"] is not None),
@@ -1980,8 +2061,10 @@ class ScriptureBookView(APIView):
         return Response(
             {
                 "book": {"slug": book, "title": target.title, "order": target.value},
+                "intro": book_intro(book),
                 "version": VERSION_LABEL,
                 "citing_count": len(citing),
+                "passages": passages,
                 "books_count": len(works),
                 "chapters": chapters,
                 "verses": [

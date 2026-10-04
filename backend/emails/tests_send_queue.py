@@ -35,6 +35,12 @@ def _codes(checks, level):
     return {c["code"] for c in checks if c["level"] == level}
 
 
+def _prefixed(checks, level, prefix):
+    """Whether any ``level`` check's code starts with ``prefix`` (per-block
+    checks carry the block's index)."""
+    return any(c["code"].startswith(prefix) for c in checks if c["level"] == level)
+
+
 class _AdminClientMixin:
     def _post(self, url, payload):
         return self.client.post(url, data=json.dumps(payload), content_type="application/json")
@@ -316,7 +322,7 @@ class PreflightTests(_AdminClientMixin, TestCase):
                 }
             }
         )
-        self.assertIn("cta:en", _codes(run_checks(b), "error"))
+        self.assertTrue(_prefixed(run_checks(b), "error", "cta:en:"))
 
     def test_label_without_path_and_path_without_label_warn(self):
         b = _broadcast(
@@ -326,7 +332,9 @@ class PreflightTests(_AdminClientMixin, TestCase):
                 "es": {"heading": "H", "cta_path": "books"},
             },
         )
-        self.assertTrue({"cta:en", "cta:es"} <= _codes(run_checks(b), "warning"))
+        checks = run_checks(b)
+        self.assertTrue(_prefixed(checks, "warning", "cta:en:"))
+        self.assertTrue(_prefixed(checks, "warning", "cta:es:"))
 
     def test_readers_in_an_unwritten_language_are_flagged(self):
         _make_profile(email="es@example.com", locale="es")

@@ -94,32 +94,62 @@ export function setAuthTokenProvider(fn: () => string | null) {
  * failures — network errors and 5xx — with a short backoff before giving up.
  * The last delay is long enough to ride out a Render API restart. Persistent
  * errors still fail the build: never ship a page that is genuinely broken.
- * At runtime nothing changes — retrying in the browser would only delay the
- * error UI.
+ *
+ * At runtime the ladder is shorter and narrower. A signed-in reader once got
+ * the 500 page on a perfectly good author page because one request landed
+ * while the API was restarting (2026-10-03); a client-side navigation still
+ * asks the live API, so it could happen to anyone. The browser therefore
+ * retries only what a restart or a proxy swap looks like (a network error, or
+ * 502/503/504 from Render's proxy), never a 500 (Django answered, and that is
+ * a bug to see), and never after the request was aborted: the 15s timeout and
+ * a caller's own signal both mean stop. The retries share that one timeout
+ * signal, so the error UI is never pushed back past it.
  */
 const BUILD_RETRY_DELAYS_MS = [1000, 4000, 10000];
+const RUNTIME_RETRY_DELAYS_MS = [700, 2500];
+const RUNTIME_TRANSIENT = new Set([502, 503, 504]);
 
 const isIdempotent = (init: RequestInit) =>
 	!init.method || ['GET', 'HEAD'].includes(init.method.toUpperCase());
 
 async function robustFetch(url: string, init: RequestInit, f: Fetch = fetch): Promise<Response> {
-	if (!building || !isIdempotent(init)) return f(url, init);
+	if (!isIdempotent(init)) return f(url, init);
+	const delays = building ? BUILD_RETRY_DELAYS_MS : RUNTIME_RETRY_DELAYS_MS;
+	const transient = (status: number) => (building ? status >= 500 : RUNTIME_TRANSIENT.has(status));
 	for (let attempt = 0; ; attempt++) {
-		const outOfRetries = attempt >= BUILD_RETRY_DELAYS_MS.length;
+		const outOfRetries = attempt >= delays.length;
 		let failure: string;
 		try {
 			const res = await f(url, init);
-			if (res.status < 500 || outOfRetries) return res;
+			if (!transient(res.status) || outOfRetries) return res;
 			failure = `${res.status}`;
 		} catch (err) {
-			if (outOfRetries) throw err;
+			if (outOfRetries || init.signal?.aborted) throw err;
 			failure = String(err);
 		}
-		const delay = BUILD_RETRY_DELAYS_MS[attempt];
-		console.warn(`[api] ${failure} from ${url} during prerender — retrying in ${delay}ms`);
+		const delay = delays[attempt];
+		console.warn(
+			`[api] ${failure} from ${url}${building ? ' during prerender' : ''} — retrying in ${delay}ms`
+		);
 		await new Promise((resolve) => setTimeout(resolve, delay));
 	}
 }
+
+/**
+ * A read of the public library through a load()'s own fetch — sent WITHOUT the
+ * reader's token, so it can replay the response the prerender inlined.
+ *
+ * SvelteKit matches an inlined response on the request's headers as well as its
+ * URL, so an `Authorization` header made every signed-in reader's hydration
+ * miss and ask the live API instead. Any blip there (a restart, an OOM under a
+ * prerender crawl) then threw the load, and a perfectly good prerendered page
+ * hydrated into the 500 page (/am/authors/hudson-taylor, 2026-10-03) — for
+ * signed-in readers only, which is why anonymous checks never saw it. No
+ * library view reads the user — the invariant `library/http_cache.py` already
+ * relies on to mark these responses `public` — so the token bought nothing.
+ */
+const isPublicLibraryRead = (path: string, init: RequestInit) =>
+	path.startsWith('/api/library/') && isIdempotent(init);
 
 /**
  * Fetch wrapper for the Django API. The library is public (AllowAny), but when a
@@ -131,7 +161,7 @@ async function requestJSON<T>(path: string, init: RequestInit, f?: Fetch): Promi
 	if (init.body && !headers.has('Content-Type')) {
 		headers.set('Content-Type', 'application/json');
 	}
-	const token = tokenProvider();
+	const token = f && isPublicLibraryRead(path, init) ? null : tokenProvider();
 	if (token && !headers.has('Authorization')) {
 		headers.set('Authorization', `Bearer ${token}`);
 	}

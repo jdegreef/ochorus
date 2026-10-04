@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Fleuron from '$lib/components/Fleuron.svelte';
 
 	/**
 	 * The standard header for a top-level browse page (Books, Topics, Plans,
@@ -37,7 +38,8 @@
 	{#if eyebrow}
 		<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
 	{/if}
-	<h1 class="text-h1 mb-2">{title}</h1>
+	<h1 class="text-h1 mb-3">{title}</h1>
+	<div class="mb-3"><Fleuron /></div>
 	{#if tagline}
 		<p class="max-w-2xl text-body text-muted">{tagline}</p>
 	{/if}

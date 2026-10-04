@@ -93,6 +93,20 @@ In this order, and nothing else at the top level:
    whole-page error panel when only a strip failed or leave a `loadError` no one
    reads. Filter values that describe *what is shown* live in the URL via
    `urlFilters()`; view preferences (grid/list, sort) live in localStorage.
+   **But never restore one that changes the layout on a prerendered page.**
+   The static HTML is drawn with the default; reading localStorage in
+   `onMount` then swaps rows for a grid (or one band for another) after the
+   reader can see the page — a visible jump on every load. Biographies dropped
+   restoring its grid/list and Browse-by choices for this (2026-10-03). Books
+   (view/sort/group) and Sermons (group/sort) still restore theirs and still
+   jump; fix them the same way, or apply the choice before first paint (the
+   `app.html` boot script, as the theme does) if it must persist.
+   A key that holds the READER'S data rather than a device preference (a
+   plan's schedule choices, anything a sign-out should not hand the next
+   person) is declared in `reading-schema.ts` and listed in
+   `READING_DATA_KEYS`, never a literal in a component — unlisted, it
+   survives sign-out on a shared device. Write it on change, not from an
+   `$effect` that also fires on mount.
    **Mind the prerender's API load** (the crawl's load once took the API
    down): a decoration fetch on a LEAF route runs once per page per locale, so
    prefer deriving it from the payload already fetched (the topic page builds
@@ -154,10 +168,10 @@ build it with `breadcrumbLd(crumbs)` (§ leaf-page step 9).
    visual is `<CoverStrip size="fan" priority>` — the one shared big fan
    (/originals uses it too); never re-draw fan geometry in a page.
    Below 1024px, once the read card scrolls away (`elementVisible`, as the
-   book's sub-nav CTA does), the read verb rides a bottom bar (`.plan-bar`):
-   `use:portal`ed to <body> (`.page-col`'s transform would pin it to the
-   column), clearing the shared bottom chrome with `max(env(safe-area-inset-
-   bottom) + var(--listenbar-h, 0px), var(--tabbar-h, 0px))`. Pinned jump
+   book's sub-nav CTA does), the read verb rides `<ReadBar>` — ONE component
+   for every page's phone read bar (book: `hideFrom="sm"`, plan: `"lg"`). It
+   portals, clears the shared bottom chrome, pads the body and publishes
+   `--dockbar-h` for the toasts; never hand-roll another. Pinned jump
    chips over a list publish their measured height into `--pinned-offset`
    (`bind:clientHeight`), never a guessed rem.
    Any dropdown (trigger + menu) closes via `use:dismissable={{ open,
@@ -210,10 +224,12 @@ Two reader gotchas (both fixed in #2906, both scroll-vs-paged specific):
   is scroll-only too — scope with `article:not(.paged)`, since page mode zeroes
   the article padding and paginates from the top.
 - **Fixed overlays portal to `<body>`, so they can mount anywhere.**
-  `.page-col`'s `transform: translateX(-50%)` and the reader bars'
-  `backdrop-filter` each become the containing block for `position: fixed` AND
-  a stacking context — a sheet inside one was pinned to the column (running
-  off-screen) under the z-40 tab bar. So every overlay portals, and a new one
+  The page-turn pager's transform and the reader bars' `backdrop-filter` each
+  become the containing block for `position: fixed` AND a stacking context — a
+  sheet inside one was pinned to it (running off-screen) under the z-40 tab
+  bar. (`.page-col` was the worst offender until it centred with a margin
+  instead of `translateX(-50%)` — never give it a transform back.) So every
+  overlay portals, and a new one
   should reuse a shell rather than hand-roll it:
   - a drawer or phone bottom sheet → `DrawerShell`;
   - a centred modal dialog → `ModalShell` (scrim, card, `role`/`aria-modal`,
@@ -344,6 +360,15 @@ lists content types, **in the same order** everywhere:
       by the SAME rule (the model is author pages: `hasOwnContent` + the
       `authorsIn` entries in `sitemap.ts`, #4247). Advertising every locale by
       default is what put ~330 thin author URLs in the sitemap.
+      "Has content" can need a FLOOR, not just "non-empty": a topic shelf with
+      one card is thin, so the API owns `TOPIC_INDEX_MIN_WORKS` and exposes it
+      as `indexable` + floor-aware `available_languages`, and the page,
+      sitemap and hreflang (`hreflangExact`, never `hreflangFor`, which falls
+      back to every locale on []) all read that (#4998). Derive per-locale
+      presence from THAT locale's list, never the English one (the era pages
+      were advertised in 8 languages where they were an empty state).
+      To audit: crawl every sitemap `<url>` and bucket by word count per
+      route × locale — the per-locale thin tail is invisible in English.
 - [ ] ~~`CatalogLanguageNudge`'s `kind` union~~ (component removed)
 - [ ] a `/og/<section>.png` card for pages without their own image
 - [ ] the guard lists in `lib/pageShell.test.ts` (`BROWSE_PAGES` / `LEAF_PAGES`)
@@ -1096,3 +1121,28 @@ surfaced H2/I2/J1/K2/K5 — a good signal those are real, not noise.
   (`manage.py test library`, ~12 min) and capture the `Ran …`/`OK` lines —
   piping through `tail` hides them and reports `tail`'s exit code, not the
   tests'.
+
+## External QA pass, 2026-10-03
+
+From an outside tester's report (design & accessibility section). Shipped on
+`claude/quirky-cerf-umnshe`:
+
+- [x] **Q1** Selected state rested on `--accent-soft`, which sits only
+  1.05–1.16:1 on the page in every theme. `.seg button.active`, `.chip.active`,
+  `.filter-field.is-active` and the active nav pill now carry an accent edge.
+  Rule: **a selected state is never the soft fill alone.**
+- [x] **Q2** Chrome width: the header bar was 88rem and the footer rows 64rem
+  around a 76rem body. Both now use `--chrome-w` / `.chrome-col` (the page
+  column, never under 64rem), from sm up.
+- [x] **Q3** Author page: the breadcrumb and the tab rule now sit on the 40rem
+  reading column like the rest of the page.
+- [x] **Q4** `BookCard` titles reserve two lines (`min-h-[2lh]`), so author and
+  series lines are level across a row.
+- [x] **Q5** The book page's artwork credit hangs under the hero cover from sm
+  (on phones it stays at the page foot).
+- [x] **Q6** Q&A rows are roomier, the sermon-row chevron is a 32px target,
+  the About gallery's last row shares 4:3, and lamplight `--muted` went up to
+  `#ab9f8b` (~7:1).
+- [ ] **Q7** Open, founder's call: the footer "Create an account" CTA is
+  deliberately solid indigo with a gold ring, while every other primary is soft.
+  The tester read that as inconsistent.

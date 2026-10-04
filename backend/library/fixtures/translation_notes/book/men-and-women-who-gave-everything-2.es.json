@@ -1,0 +1,716 @@
+{
+ "kind": "book",
+ "slug": "men-and-women-who-gave-everything-2",
+ "language": "es",
+ "job_issue": 2783,
+ "note": [
+  "Acts 1:8 is self_rendered although its RV1960 wording is verbatim in the-person-and-work-of-the-holy-spirit.es.json: there it is an uncited quotation that audit_mined_notes cannot pair (the file cites the verse in its RV1909 form), so it is not claimed as mined."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 1,
+   "source_file": "articles/what-is-the-great-commission.es.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 2
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 5,
+   "source_file": "articles/what-is-the-great-commission.es.json"
+  },
+  {
+   "reference": "Romans 10:15",
+   "status": "self_rendered",
+   "chapter_order": 1,
+   "block_index": 5
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "chapter_order": 1,
+   "block_index": 6,
+   "source_file": "the-joy-of-the-lord.es.json"
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 5,
+   "source_file": "articles/how-to-pray-for-revival.es.json"
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 5
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 6,
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Job 23:10",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 7
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 8,
+   "source_file": "necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 10,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Isaiah 49:6",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 4
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 5
+  },
+  {
+   "reference": "Proverbs 31:8-9",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 6
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 10,
+   "source_file": "articles/what-is-the-trinity.es.json"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 3,
+   "block_index": 11,
+   "source_file": "articles/how-to-share-your-faith.es.json"
+  },
+  {
+   "reference": "Acts 2:17-18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 4
+  },
+  {
+   "reference": "Luke 4:18-19",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 5,
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "1 John 3:17-18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Corinthians 5:14-15",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 9,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "1 Corinthians 9:16",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 10
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 6,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 7
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 8,
+   "source_file": "articles/how-to-know-if-god-is-calling-you-to-ministry.es.json"
+  },
+  {
+   "reference": "2 Corinthians 9:6",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 11,
+   "source_file": "gleanings-among-the-sheaves.es.json"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 4,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Joel 2:28-29",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 5
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 7
+  },
+  {
+   "reference": "Philippians 3:7-8",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 8
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 4,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 5,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Romans 15:20-21",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 6
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 7,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Acts 17:23",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 7,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 8,
+   "source_file": "articles/how-to-know-if-god-is-calling-you-to-ministry.es.json"
+  },
+  {
+   "reference": "Matthew 6:19-20",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 9
+  },
+  {
+   "reference": "2 Timothy 4:1-2",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Corinthians 4:7",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 4,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 4
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 6
+  },
+  {
+   "reference": "1 Peter 4:12",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 9
+  },
+  {
+   "reference": "1 Peter 4:13",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 9,
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 10,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Luke 9:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 4,
+   "source_file": "articles/absolute-surrender-guide.es.json"
+  },
+  {
+   "reference": "Luke 9:25",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 4
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 6,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 8,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 9,
+   "source_file": "the-joy-of-the-lord.es.json"
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 4,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 5,
+   "source_file": "articles/what-is-worship.es.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 7,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 8,
+   "source_file": "articles/how-to-find-gods-will-for-your-life.es.json"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 3,
+   "source_file": "articles/how-to-share-your-faith.es.json"
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 8,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 10
+  },
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 2,
+   "source_file": "articles/what-is-the-great-commission.es.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 3
+  },
+  {
+   "reference": "Romans 10:14-15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 4
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 5
+  },
+  {
+   "reference": "Habakkuk 2:14",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 7
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 8,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Job 23:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 9
+  },
+  {
+   "reference": "Isaiah 55:11",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 10,
+   "source_file": "necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 11,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Isaiah 49:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 13
+  },
+  {
+   "reference": "2 Corinthians 4:8-9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 14
+  },
+  {
+   "reference": "Proverbs 31:8-9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 15
+  },
+  {
+   "reference": "John 1:14",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 16,
+   "source_file": "articles/what-is-the-trinity.es.json"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 17,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Acts 2:17-18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 4:18-19",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 20,
+   "source_file": "the-person-and-work-of-the-holy-spirit.es.json"
+  },
+  {
+   "reference": "1 John 3:17-18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 21
+  },
+  {
+   "reference": "2 Corinthians 5:14-15",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 22,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "1 Corinthians 9:16",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 23
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 25,
+   "source_file": "the-fourfold-gospel.es.json"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 26
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 27,
+   "source_file": "articles/how-to-know-if-god-is-calling-you-to-ministry.es.json"
+  },
+  {
+   "reference": "2 Corinthians 9:6",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 28
+  },
+  {
+   "reference": "Philippians 1:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 29,
+   "source_file": "gleanings-among-the-sheaves.es.json"
+  },
+  {
+   "reference": "James 1:27",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 31,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Joel 2:28-29",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 32
+  },
+  {
+   "reference": "Isaiah 40:8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 34
+  },
+  {
+   "reference": "Philippians 3:7-8",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 35
+  },
+  {
+   "reference": "Matthew 19:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 37,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 38,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Romans 15:20-21",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 39
+  },
+  {
+   "reference": "Romans 8:18",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 40
+  },
+  {
+   "reference": "Acts 17:23",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 42
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 43,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "2 Timothy 2:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 44,
+   "source_file": "articles/how-to-know-if-god-is-calling-you-to-ministry.es.json"
+  },
+  {
+   "reference": "Matthew 6:19-20",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 45
+  },
+  {
+   "reference": "2 Timothy 4:1-2",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 46
+  },
+  {
+   "reference": "2 Corinthians 4:7-9",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 48
+  },
+  {
+   "reference": "Philippians 3:10",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 49
+  },
+  {
+   "reference": "1 Peter 4:12-13",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 50
+  },
+  {
+   "reference": "2 Corinthians 12:10",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 51,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Luke 9:24-25",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 53
+  },
+  {
+   "reference": "John 12:24",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 54,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 55
+  },
+  {
+   "reference": "Matthew 5:44-45",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 57,
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Romans 12:1",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 58,
+   "source_file": "articles/what-is-worship.es.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 59,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Proverbs 3:5-6",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 60,
+   "source_file": "articles/how-to-find-gods-will-for-your-life.es.json"
+  },
+  {
+   "reference": "Matthew 28:20",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 62,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "John 20:21",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 63,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Acts 20:24",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 64
+  }
+ ]
+}

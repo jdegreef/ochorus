@@ -1,0 +1,141 @@
+{
+ "kind": "sermon",
+ "slug": "i-am-crucified-with-christ",
+ "language": "sw",
+ "job_issue": 5026,
+ "pull_request": 5059,
+ "references": [
+  {
+   "reference": "Galatians 2:20a",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20b",
+   "status": "mined",
+   "block_index": 1,
+   "source_file": "feasting-at-the-table.sw.json"
+  },
+  {
+   "reference": "Galatians 2:20",
+   "status": "self_rendered",
+   "block_index": 97
+  },
+  {
+   "reference": "Psalm 23:1a",
+   "status": "self_rendered",
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 12:30",
+   "status": "self_rendered",
+   "block_index": 19
+  },
+  {
+   "reference": "John 8:24b",
+   "status": "mined",
+   "block_index": 21,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "block_index": 45,
+   "source_file": "jesus-himself-2.sw.json"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "block_index": 49,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Colossians 1:27b",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Ephesians 1:6b",
+   "status": "mined",
+   "block_index": 63,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Colossians 2:10a",
+   "status": "mined",
+   "block_index": 64,
+   "source_file": "filled-with-the-spirit.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:30b",
+   "status": "self_rendered",
+   "block_index": 64
+  },
+  {
+   "reference": "Hebrews 13:21b",
+   "status": "self_rendered",
+   "block_index": 65
+  },
+  {
+   "reference": "Hebrews 2:5b",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Hebrews 12:23b",
+   "status": "mined",
+   "block_index": 66,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:22b-23a",
+   "status": "self_rendered",
+   "block_index": 66
+  },
+  {
+   "reference": "Revelation 22:4",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "1 John 3:2b",
+   "status": "self_rendered",
+   "block_index": 70
+  },
+  {
+   "reference": "John 3:30",
+   "status": "mined",
+   "block_index": 79,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "James 1:24",
+   "status": "self_rendered",
+   "block_index": 84
+  },
+  {
+   "reference": "Psalm 90:17a",
+   "status": "self_rendered",
+   "block_index": 88
+  },
+  {
+   "reference": "Revelation 22:11",
+   "status": "self_rendered",
+   "block_index": 92
+  },
+  {
+   "reference": "Matthew 6:10a",
+   "status": "mined",
+   "block_index": 95,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  }
+ ]
+}

@@ -33,6 +33,13 @@ class MeViewTests(TestCase):
         self.profile.refresh_from_db()
         self.assertEqual(self.profile.display_name, "")
 
+    def test_new_profile_has_no_theme_until_the_device_pushes_one(self):
+        # Blank = "no saved prefs yet" (see UserProfile.theme).
+        res = self.client.get("/api/auth/me/")
+        self.assertEqual(res.data["theme"], "")
+        self.client.patch("/api/auth/me/", {"theme": "dark"}, format="json")
+        self.assertEqual(self.client.get("/api/auth/me/").data["theme"], "dark")
+
     def test_patch_stores_and_returns_timezone(self):
         res = self.client.patch(
             "/api/auth/me/", {"timezone": "  Europe/London  "}, format="json"

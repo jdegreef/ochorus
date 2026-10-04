@@ -18,6 +18,9 @@
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import Portrait from '$lib/components/Portrait.svelte';
+	import FilterBar from '$lib/components/FilterBar.svelte';
+	import AzRail from '$lib/components/AzRail.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 
 	// The library A–Z: every writer and, under each, every book of theirs in
 	// this language — see $lib/authorIndex for why this page exists. It used to
@@ -69,8 +72,8 @@
 	// not on every keystroke that rebuilds `shownGroups`.
 	const letterIds = $derived(shownGroups.map((g) => anchor(g.letter)).join(' '));
 
-	/** Measured height of the pinned controls bar — jumps land below it. */
-	let controlsH = $state(0);
+	/** Height of the pinned controls bar — jumps land below it. */
+	let pinnedH = $state(0);
 	let controlsEl = $state<HTMLElement>();
 	let railEl = $state<HTMLElement>();
 
@@ -81,6 +84,8 @@
 	// with the wrap and the filter summary, and a short letter (M: four names)
 	// landed under a fixed band lit the one before it.
 	let active = $state('');
+	/** The rail's letter for the lit section id. */
+	const activeLetter = $derived(active === 'letter-other' ? '#' : active.replace(/^letter-/, ''));
 	$effect(() => {
 		const ids = letterIds.split(' ').filter(Boolean);
 		let frame = 0;
@@ -138,7 +143,7 @@
 	<button class="btn btn-ghost" onclick={() => (query = '')}>{t('common.clearFilters')}</button>
 {/snippet}
 
-<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {controlsH}px)">
+<div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<LibraryTabs current="az" />
 	<PageHeader {title} tagline={t('authors.indexTagline')} meta={groups.length ? counts : undefined} />
 	{#snippet counts()}
@@ -153,25 +158,17 @@
 	{#if data.loadError || groups.length === 0}
 		<EmptyState message={t('common.loadError')} onRetry />
 	{:else}
-		{#if data.eras.length}
-			<nav class="mb-6 flex flex-wrap items-center gap-2" aria-label={t('bios.sortEra')}>
-				<span class="eyebrow me-1">{t('bios.sortEra')}</span>
-				{#each data.eras as era (era.id)}
-					<a class="tag" href={localizeHref(`/biographies/era/${era.id}`)}>{t(era.k)}</a>
-				{/each}
-			</nav>
-		{/if}
+		<!-- The other index of the same writers: their lives, by era, tradition
+		     and place. -->
+		<p class="mb-6 text-small">
+			<a href={localizeHref('/biographies')}>{t('authors.biosLink')} <Arrow /></a>
+		</p>
 
 		<!-- Filter + A–Z, pinned under the app nav — the Biographies controls bar.
 		     At one column on a phone this page is ~25 screens long, so the letter
 		     jump has to come WITH you. Its height is measured (the rail wraps),
 		     and --pinned-offset above lands every jump below it. -->
-		<div
-			bind:clientHeight={controlsH}
-			bind:this={controlsEl}
-			class="sticky z-20 -mx-5 mb-8 border-b border-border bg-bg px-5 pb-2.5 pt-3"
-			style="top: var(--appnav-h, 0px)"
-		>
+		<FilterBar bind:pinned={pinnedH} bind:el={controlsEl} class="mb-8">
 			<div class="filter-row">
 				<input
 					bind:value={query}
@@ -193,25 +190,16 @@
 			<!-- Real anchors, not the Biographies rail's buttons: every group is in
 			     the HTML (no paging), so each #letter- target always exists. On a
 			     phone one row that swipes sideways; from sm up it wraps. -->
-			<nav
-				bind:this={railEl}
-				class="mt-1.5 flex gap-x-1 gap-y-0.5 overflow-x-auto text-small [scrollbar-width:none] sm:flex-wrap sm:overflow-visible"
-				aria-label={t('bios.jumpAz')}
-			>
-				{#each rail as letter (letter)}
-					{#if present.has(letter)}
-						<a
-							href="#{anchor(letter)}"
-							class="shrink-0 rounded-sm px-1.5 py-0.5 font-semibold text-accent hover:bg-accent-soft"
-							class:az-current={active === anchor(letter)}
-							aria-current={active === anchor(letter) ? 'location' : undefined}>{letter}</a
-						>
-					{:else}
-						<span class="shrink-0 px-1.5 py-0.5 text-muted opacity-40" aria-hidden="true">{letter}</span>
-					{/if}
-				{/each}
-			</nav>
-		</div>
+			<AzRail
+				bind:el={railEl}
+				class="mt-1.5"
+				letters={rail}
+				present={(l) => present.has(l)}
+				active={activeLetter}
+				href={(l) => `#${anchor(l)}`}
+				label={t('bios.jumpAz')}
+			/>
+		</FilterBar>
 
 		{#if shownGroups.length === 0}
 			<EmptyState message={t('bios.noResults')} action={clearAction} />
@@ -327,6 +315,20 @@
 				</ul>
 			</section>
 		{/each}
+
+		<!-- Browse by era — at the foot, as on Biographies, not above the list as
+		     a second filter row. Load-bearing for the build: this page is the
+		     prerender's seed for every localized era page (see +page.ts). -->
+		{#if data.eras.length}
+			<nav class="mt-14 border-t border-border pt-8" aria-label={t('hubs.byEra')}>
+				<h2 class="section-label mb-2.5">{t('hubs.byEra')}</h2>
+				<ul class="flex flex-wrap gap-2">
+					{#each data.eras as era (era.id)}
+						<li><a class="tag" href={localizeHref(`/biographies/era/${era.id}`)}>{t(era.k)}</a></li>
+					{/each}
+				</ul>
+			</nav>
+		{/if}
 	{/if}
 </div>
 
@@ -334,10 +336,5 @@
 	/* Jumps land the letter heading below the app nav AND the pinned controls. */
 	.az-group {
 		scroll-margin-top: calc(var(--pinned-offset, var(--appnav-h, 0px)) + 1rem);
-	}
-	/* The letter you are scrolled into, lit on the rail. */
-	.az-current {
-		background: var(--accent);
-		color: var(--accent-contrast);
 	}
 </style>

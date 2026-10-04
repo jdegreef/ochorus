@@ -1,0 +1,135 @@
+{
+ "kind": "sermon",
+ "slug": "the-goal-of-faith",
+ "language": "sw",
+ "job_issue": 5041,
+ "pull_request": 5064,
+ "references": [
+  {
+   "reference": "Hebrews 12:18",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "Hebrews 12:19",
+   "status": "self_rendered",
+   "block_index": 1
+  },
+  {
+   "reference": "Hebrews 12:20",
+   "status": "self_rendered",
+   "block_index": 2
+  },
+  {
+   "reference": "Hebrews 12:21",
+   "status": "self_rendered",
+   "block_index": 3
+  },
+  {
+   "reference": "Hebrews 12:22",
+   "status": "self_rendered",
+   "block_index": 4
+  },
+  {
+   "reference": "Hebrews 12:23",
+   "status": "self_rendered",
+   "block_index": 5
+  },
+  {
+   "reference": "Hebrews 12:24",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Hebrews 11:40",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "Romans 8:1",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Galatians 5:1a",
+   "status": "self_rendered",
+   "block_index": 10
+  },
+  {
+   "reference": "Jude 21",
+   "status": "self_rendered",
+   "block_index": 12
+  },
+  {
+   "reference": "Philippians 3:20a",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "John 20:17",
+   "status": "self_rendered",
+   "block_index": 21
+  },
+  {
+   "reference": "1 Peter 3:18",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "around-the-wicket-gate.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "mined",
+   "block_index": 31,
+   "source_file": "life-and-diary-of-david-brainerd.sw.json"
+  },
+  {
+   "reference": "John 17:21",
+   "status": "self_rendered",
+   "block_index": 31
+  },
+  {
+   "reference": "John 14:2b",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "John 14:2-3",
+   "status": "self_rendered",
+   "block_index": 35
+  },
+  {
+   "reference": "Hebrews 12:25",
+   "status": "mined",
+   "block_index": 39,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:29",
+   "status": "self_rendered",
+   "block_index": 39
+  },
+  {
+   "reference": "Hebrews 12:26",
+   "status": "self_rendered",
+   "block_index": 41
+  },
+  {
+   "reference": "Hebrews 12:27",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:2",
+   "status": "mined",
+   "block_index": 41,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:28",
+   "status": "self_rendered",
+   "block_index": 46
+  }
+ ]
+}

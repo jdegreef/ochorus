@@ -13,6 +13,9 @@
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
+	import HomeHero from '$lib/components/HomeHero.svelte';
+	import HomeQuote from '$lib/components/HomeQuote.svelte';
+	import HomeYear from '$lib/components/HomeYear.svelte';
 
 	/**
 	 * The signed-in home: a reading dashboard, not an acquisition page. Rendered
@@ -42,14 +45,13 @@
 	const greetingName = $derived(auth.displayName || (auth.user?.email?.split('@')[0] ?? ''));
 </script>
 
-<section class="page-col px-5 pt-10 sm:pt-14">
-	<!-- Parameterised so the name sits where each language wants it, rather than a
-	     hardcoded ", {name}" — Paraglide's message function, not the param-free
-	     t() facade. Falls back to a bare "Welcome back" when we have no name. -->
-	<h1 class="text-h1">
-		{greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
-	</h1>
-</section>
+<!-- The greeting over the painting of the book they're reading (HomeHero).
+     Parameterised so the name sits where each language wants it, rather than a
+     hardcoded ", {name}" — Paraglide's message function, not the param-free
+     t() facade. Falls back to a bare "Welcome back" when we have no name. -->
+<HomeHero
+	greeting={greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
+/>
 
 <!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
      Self-hides the moment there's any reading, favourite or plan. -->
@@ -60,12 +62,20 @@
 <ContinueReading />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
-     activity to show (replaces the compact ReadingNudge on the dashboard). -->
-<DashboardStats />
+     activity to show (replaces the compact ReadingNudge on the dashboard). On a
+     parchment band, which collapses with it. -->
+<div class="page-band">
+	<DashboardStats />
+	<!-- This year's finished covers, under the stats on the same parchment. -->
+	<HomeYear />
+</div>
 
 <!-- Today's plan day, then multi-plan progress -->
 <TodaysReading />
 <PlansProgress />
+
+<!-- Today's line from the library, over a painting (English only). -->
+<HomeQuote />
 
 <!-- Personalised discovery — self-hides until there is history to score against -->
 <RecommendedNext />
@@ -81,7 +91,9 @@
 
 <!-- Eight articles for today — turns over daily; renders nothing in a language
      with fewer than eight articles. -->
-<HomeArticles />
+<div class="page-band">
+	<HomeArticles />
+</div>
 
 <!-- Browse by topic — the last block on the dashboard, so it carries the
      trailing bottom padding. -->
