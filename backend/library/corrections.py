@@ -4691,6 +4691,8 @@ BODY_CORRECTIONS["reality-of-prayer"]["back_matter"] = [
      "<p><i>Printed in the United States of America</i></p>"),
     ("definida y prevaleciente.</p>",
      "<p><i>Impreso en los Estados Unidos de América</i></p>"),
+    ("በድል አድራጊነት በሚቀርብ ጸሎት ነው።</p>",
+     "<p><i>Printed in the United States of America</i></p>"),
 ]
 # Gutenberg #29426 ends ch35 on the printer's imprint, "LONDON: MORGAN AND
 # SCOTT", then its own "Transcriber's Notes" (`div.tnote`: punctuation repaired,
@@ -4765,6 +4767,11 @@ BODY_CORRECTIONS["reality-of-prayer"]["restored_blocks"] = [
      "<blockquote>La oración es el aliento vital del cristiano,<br/>el aire nativo del cristiano;<br/>su santo y seña a las puertas de la muerte;<br/>con la oración entra en el cielo.</blockquote>"),
     ("<p>Dos cosas pueden decirse aquí",
      "<blockquote>“Las cosas que ignora el débil sentido,<br/>ocultas al tenue rayo de la razón,<br/>con firme y soberana confianza<br/>muestran su origen celestial.”</blockquote>"),
+    # am (translated from the restored English; same blocks, same positions)
+    ("<p>ክርስቶስ ከመጸለይ ራስን",
+     "<blockquote>ጸሎት የክርስቲያን የሕይወት እስትንፋስ ነው፣<br/>የሚኖርበትም የተፈጥሮ አየሩ፤<br/>በሞት ደጆች ፊት መለያ ቃሉ፣<br/>በጸሎት ይገባል ወደ ሰማይ አገሩ።</blockquote>"),
+    ("<p>በዚህ ርዕስ ላይ የምናደርገውን",
+     "<blockquote>«ደካማ ስሜት የማያውቃቸው፣<br/>የአእምሮ ጭላንጭል ያላያቸው፣<br/>በብርቱና በሚያዝዝ መተማመን<br/>ሰማያዊ ምንጫቸውን ይገልጣሉ።»</blockquote>"),
 ]
 BODY_CORRECTIONS.setdefault("prayer-and-praying-men", {}).setdefault("replacements", []).extend([
     # "Betelguese" -> "Betelgeuse".
