@@ -1322,5 +1322,11 @@
   "finished_highlights": "Vivutio vyako (%n%)",
   "finished_more_by": "Zaidi kutoka kwa %name%",
   "finished_about_author": "Kuhusu mwandishi",
-  "finished_plans": "Mipango ya kusoma yenye kitabu hiki"
+  "finished_plans": "Mipango ya kusoma yenye kitabu hiki",
+  "welcome_eyebrow": "Karibu Ochorus",
+  "welcome_palette_title": "Chagua maktaba yako",
+  "welcome_palette_sub": "Chagua rangi ungependa kusomea — programu yote hubadilika unapochagua. Unaweza kubadilisha hili wakati wowote katika Mipangilio.",
+  "welcome_brightness": "Ung'avu",
+  "welcome_done": "Anza kusoma",
+  "welcome_skip": "Si sasa"
 }

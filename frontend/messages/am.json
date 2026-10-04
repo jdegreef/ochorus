@@ -1322,5 +1322,11 @@
   "finished_highlights": "ያደመቅሃቸው (%n%)",
   "finished_more_by": "ተጨማሪ ከ%name%",
   "finished_about_author": "ስለ ደራሲው",
-  "finished_plans": "ይህን መጽሐፍ የያዙ የንባብ ዕቅዶች"
+  "finished_plans": "ይህን መጽሐፍ የያዙ የንባብ ዕቅዶች",
+  "welcome_eyebrow": "ወደ Ochorus እንኳን ደህና መጡ",
+  "welcome_palette_title": "ቤተ መጻሕፍትህን ምረጥ",
+  "welcome_palette_sub": "ማንበብ የምትፈልግባቸውን ቀለሞች ምረጥ — ስትመርጥ መተግበሪያው በሙሉ ይቀየራል። ይህን በማንኛውም ጊዜ በቅንብሮች ውስጥ መቀየር ትችላለህ።",
+  "welcome_brightness": "ብሩህነት",
+  "welcome_done": "ማንበብ ጀምር",
+  "welcome_skip": "አሁን አይደለም"
 }

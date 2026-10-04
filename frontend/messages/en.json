@@ -1322,5 +1322,11 @@
   "finished_highlights": "Your highlights (%n%)",
   "finished_more_by": "More by %name%",
   "finished_about_author": "About the author",
-  "finished_plans": "Reading plans with this book"
+  "finished_plans": "Reading plans with this book",
+  "welcome_eyebrow": "Welcome to Ochorus",
+  "welcome_palette_title": "Choose your library",
+  "welcome_palette_sub": "Pick the colours you'd like to read in — the whole app changes as you choose. You can change this any time in Settings.",
+  "welcome_brightness": "Brightness",
+  "welcome_done": "Start reading",
+  "welcome_skip": "Not now"
 }

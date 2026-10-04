@@ -1322,5 +1322,11 @@
   "finished_highlights": "Ваші виділення (%n%)",
   "finished_more_by": "Більше від %name%",
   "finished_about_author": "Про автора",
-  "finished_plans": "Плани читання з цією книгою"
+  "finished_plans": "Плани читання з цією книгою",
+  "welcome_eyebrow": "Ласкаво просимо до Ochorus",
+  "welcome_palette_title": "Оберіть свою бібліотеку",
+  "welcome_palette_sub": "Оберіть кольори, у яких хочете читати, — увесь застосунок змінюється, поки ви обираєте. Змінити це можна будь-коли в Налаштуваннях.",
+  "welcome_brightness": "Яскравість",
+  "welcome_done": "Почати читати",
+  "welcome_skip": "Не зараз"
 }
