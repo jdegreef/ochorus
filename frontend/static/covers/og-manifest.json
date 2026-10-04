@@ -199,6 +199,16 @@
 				508
 			]
 		},
+		"am/a-call-to-the-unconverted": {
+			"ground": "e170f939292535e89d742c392d5aba304b9317c0d4f52bc53383d3fcda7af313",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"am/a-hidden-fire": {
 			"ground": "e32ae790fff9f06c2040701935b8e855f4e6706a6a87de96d98dd0774d4e3624",
 			"style": "originals",
@@ -866,6 +876,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/journal-of-an-expedition-up-the-niger": {
+			"ground": "6b114c79613cc352097ac9678711950bd9ebcfdc59328ae417d50be148f3e59a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[71, 102, 529, 131]
+				],
+				"title": [
+					[106, 305, 495, 381],
+					[58, 370, 542, 446]
+				],
+				"subtitle": [
+					[152, 520, 448, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
+		},
 		"am/key-teachings-of-a-b-simpson": {
 			"ground": "5ed8a8bc3a9fdd9d0530c5ebdc29e99e85f2739ab6e5ac9a5c1a45bdfd1d149d",
 			"style": "originals",
@@ -1400,6 +1439,35 @@
 			"layout": "split/navy",
 			"bar": 0
 		},
+		"am/religious-experience-and-journal": {
+			"ground": "9812587ac39ea3ea738308c253604895b40fc1095e19d46ab18fbeeb9c179ad8",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[100, 289, 500, 352],
+					[51, 351, 549, 414]
+				],
+				"subtitle": [
+					[87, 477, 514, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
+			]
+		},
 		"am/rise-up-men-of-god-2": {
 			"ground": "e5b5c0da278c85832af62be30abb97f0adf85b326613637c025247d025d74093",
 			"style": "originals",
@@ -1652,6 +1720,32 @@
 				481
 			]
 		},
+		"am/stepping-stones-2": {
+			"ground": "f8d031b41f94fe7d118dd3885fe8c6f67920fc1bf261da72d4c47a07ab955f41",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[141, 302, 459, 408],
+					[161, 386, 439, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
+			]
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -1710,6 +1804,32 @@
 			"layout": "box/teal",
 			"bar": 0
 		},
+		"am/the-god-of-all-comfort": {
+			"ground": "f045eb23d3fe9d56955f4a2925a7c8f120d3714bd89fda1c3f2c84abfc3a55f3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[80, 102, 520, 131]
+				],
+				"title": [
+					[178, 290, 422, 372],
+					[163, 362, 437, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
 		"am/the-gospel-of-healing": {
 			"ground": "49e5ac0bf37060291f4b17ae81dd50c95966edc75c4bcbd2c48157b6444e285c",
 			"style": "revival",
@@ -1719,6 +1839,34 @@
 			"scrim": 1,
 			"layout": "box/teal",
 			"bar": 0
+		},
+		"am/the-imitation-of-christ": {
+			"ground": "e74a48e4248bfbfff0230f47a962648d970ebb232987cea79a513b376acc5ce9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 302, 513, 384]
+				],
+				"subtitle": [
+					[95, 460, 506, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				307,
+				488
+			]
 		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
@@ -10637,7 +10785,10 @@
 					[232, 664, 368, 746]
 				]
 			},
-			"middle": [261, 534]
+			"middle": [
+				261,
+				534
+			]
 		},
 		"sw/school-of-prayer": {
 			"ground": "ba1d7796dd35ae8f92d3e873d37ff74d0adde6857d725cb75a7261a02f665ac1",
