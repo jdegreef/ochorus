@@ -169,6 +169,10 @@ const config = {
 					// person has approved. Until `approve_quotes` runs there are
 					// none, which is the correct state — not a broken build.
 					'/quotes/[author]',
+					// The Modern English edition's own pages exist only for a work
+					// with a published `en-modern` row — none until one is
+					// contemporized and shipped (contemporize-book skill).
+					'/books/[slug]/modern/[order]',
 					'/account'
 				]);
 				const unexpected = routes.filter((id) => !expected.has(id));

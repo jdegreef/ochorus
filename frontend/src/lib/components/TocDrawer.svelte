@@ -11,6 +11,7 @@
 	import { chapterLabel, editionLang, readingTime } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { bookChapterPath } from '$lib/reading-schema';
 
 	/**
 	 * Slide-over table of contents for the reader. The book's chapter list is
@@ -36,7 +37,7 @@
 
 	// Carry the reader's edition onto every chapter link (and fetch the matching
 	// TOC titles) so tapping a chapter in the drawer stays in the same edition.
-	const suffix = $derived(edition === 'modern' ? '?edition=modern' : '');
+	const chapterHref = (order: number) => bookChapterPath(slug, order, edition === 'modern');
 	const contentLang = $derived(editionLang(edition));
 	// The fetched book, but only while it is THIS work: a drawer reopened on a
 	// second book keeps the previous one in `book` until its replacement lands,
@@ -115,7 +116,7 @@
 						<li class="bm-row">
 							<a
 								href={localizeHref(
-									`/books/${slug}/${bm.order}?p=${bm.p}${edition === 'modern' ? '&edition=modern' : ''}`
+									`${chapterHref(bm.order)}?p=${bm.p}`
 								)}
 								class="toc-item min-w-0 flex-1"
 								onclick={close}
@@ -154,7 +155,7 @@
 					{@const markCount = marks.countFor(slug, ch.order, 'book', shownLang)}
 					<li>
 						<a
-							href={localizeHref(`/books/${slug}/${ch.order}${suffix}`)}
+							href={localizeHref(chapterHref(ch.order))}
 							class="toc-item"
 							class:current={ch.order === currentOrder}
 							aria-current={ch.order === currentOrder ? 'page' : undefined}

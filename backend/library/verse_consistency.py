@@ -45,6 +45,8 @@ from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
+from library.localization import is_english_edition
+
 CONTENT = Path(__file__).resolve().parent / "fixtures" / "content"
 BASELINE_PATH = Path(__file__).resolve().parent / "data" / "verse_consistency_baseline.json"
 
@@ -98,11 +100,15 @@ class Rendering:
 
 
 def _fixture_bodies():
-    """(language, filename, body_html) for every non-English shipped work."""
+    """(language, filename, body_html) for every non-English shipped work.
+
+    English editions are skipped — the Modern English one included: its
+    Scripture is kept exactly as each author quoted it, so it diverges exactly
+    where the originals do, and there is no single rendering to converge on."""
     for sub in ("books", "sermons"):
         for path in sorted((CONTENT / sub).glob("*.json")):
             language = path.name.split(".")[-2]
-            if language == "en":
+            if is_english_edition(language):
                 continue
             for row in json.loads(path.read_text(encoding="utf-8")):
                 body = row.get("fields", {}).get("body_html")

@@ -1,5 +1,5 @@
 /**
- * The two reading surfaces, by SvelteKit route id.
+ * The reading surfaces, by SvelteKit route id.
  *
  * A chapter and a sermon are the pages where the text itself is the product,
  * and they behave differently from every browse surface in two ways that both
@@ -20,7 +20,12 @@
  *
  * Adding a third reading surface? Add it here and both behaviours follow.
  */
-export const READER_ROUTE_IDS = ['/books/[slug]/[order]', '/sermons/[slug]'] as const;
+export const READER_ROUTE_IDS = [
+	'/books/[slug]/[order]',
+	// The Modern English edition: the same chapter reader at its own address.
+	'/books/[slug]/modern/[order]',
+	'/sermons/[slug]'
+] as const;
 
 /** Whether a route id (as given by `$page.route.id`) is a reading surface. */
 export function isReaderRoute(routeId: string | null | undefined): boolean {

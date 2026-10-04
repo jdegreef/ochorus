@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { chapterPath } from '$lib/editionHref';
+	import { bookChapterPath } from '$lib/reading-schema';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { shareCard, shareImage } from '$lib/coverArt';
@@ -163,10 +164,9 @@
 	const cardSeen = elementVisible(() => readCard, { initial: true });
 
 	// "Prefer Modern English" (settings): when it's on and this book has a modern
-	// edition, the read CTAs open that edition by carrying ?edition=modern. The
+	// edition, the read CTAs open that edition (its own /modern/ address). The
 	// preference is applied at the link (not in the reader) so the reader's own
-	// Modern⇄Original toggle — which represents "original" as *no* param — still
-	// works within a session.
+	// Modern⇄Original toggle still works within a session.
 	const useModern = $derived(readerPrefs.preferModern && book.has_modern_edition);
 	const readHref = (order: number) =>
 		localizeHref(chapterPath(book.slug, order, book.has_modern_edition));
@@ -649,12 +649,14 @@
 					{/if}
 					{#if book.has_modern_edition}
 						<!-- The primary CTA follows the Modern English preference; this
-						     offers the other edition. -->
+						     offers the other edition. A button, not a footnote link: the
+						     modern edition is a reason to read here, and the link is how
+						     readers (and the crawler) find its pages. -->
 						<a
 							href={localizeHref(
-								`/books/${book.slug}/${readOrder}${useModern ? '' : '?edition=modern'}`
+								bookChapterPath(book.slug, readOrder, !useModern)
 							)}
-							class="text-small text-accent hover:underline"
+							class="btn btn-ghost btn-sm"
 							>{useModern ? t('reader.readOriginal') : t('book.readModern')}</a
 						>
 					{/if}

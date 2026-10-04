@@ -41,6 +41,7 @@ import {
 	listSeries,
 	listSermons,
 	listTopics,
+	MODERN_EDITION,
 	type Hub
 } from '$lib/library-public';
 import { hubPath } from '$lib/hubs';
@@ -52,6 +53,8 @@ import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
 import { APP_ONLY } from '$lib/robots';
+import { withTrailingSlash } from '$lib/href';
+import { modernChapterPath } from '$lib/reading-schema';
 
 /** Locale-prefixed absolute URL ('' prefix for the default locale, en). */
 export const loc = (locale: string, path: string) =>
@@ -171,11 +174,14 @@ export interface SitemapData {
 	authors: Entry[];
 	books: Entry[];
 	sermons: Entry[];
-	/** Every chapter, all locales. The child routes slice this per locale. */
+	/** Every ENGLISH chapter. The child routes slice this per locale. */
 	chapters: Entry[];
-	/** Each edition's OPENING chapter — the one chapter per book the sitemap
-	 *  advertises (the `chapters` section); see `sections()`. */
+	/** Each English edition's OPENING chapter — the one chapter per book the
+	 *  sitemap advertises (the `chapters` section); see `sections()`. */
 	openings: Entry[];
+	/** Every chapter of the Modern English edition, at its own address
+	 *  (`/books/<slug>/modern/<n>/`) — the `modern` section. */
+	modern: Entry[];
 }
 
 /**
@@ -194,8 +200,10 @@ export interface SitemapData {
  * `/books/[slug]/[order]` route builds every one) and stay crawlable through
  * each book page's chapter list — so Google reaches and may still index the
  * ones it judges worthwhile. We simply stop *promising* the whole set in the
- * sitemap. Fully reversible: restore the `chapters-${l}` spread below and the
- * per-locale child machinery advertises them again, because it is kept intact
+ * sitemap. Reversible: restore the `chapters-${l}` spread below and the
+ * per-locale child machinery advertises them again — for English only, unless
+ * `chapterSlices` in build() is widened too (the translated chapters are off by
+ * that second switch; see there). The machinery is kept intact
  * on purpose — `sectionEntries` and `sectionLocale` still resolve a
  * `chapters-<locale>` section, and `build()` still fills `data.chapters`.
  *
@@ -208,7 +216,13 @@ export interface SitemapData {
  * back into IndexNow, which submits from the sitemap. Dated by the book's own
  * `updated_at`, so a corrected edition asks for a recrawl of its first page.
  * If Search Console shows these indexing well, widening the rule (chapter 2,
- * the longest chapters) is a change to `openings` alone.
+ * the longest chapters) is a change to `openings` alone. English editions only:
+ * no translated chapter is advertised (see `chapterSlices` in build()).
+ *
+ * THE MODERN ENGLISH EDITION IS LISTED WHOLE (`modern`), once reviewed. The
+ * reasoning above is about public-domain text that older libraries already
+ * serve, which Google reads as duplicates; the modern edition is Ochorus's own
+ * wording, so every chapter of it is a page only this site has.
  *
  * The remaining order is DELIBERATELY not the reader-facing nav order
  * (`$lib/contentNav`). It answers a crawl/coverage question, not "what order
@@ -217,6 +231,7 @@ export interface SitemapData {
 export const sections = (): string[] => [
 	'books',
 	'chapters',
+	'modern',
 	'sermons',
 	'authors',
 	'scripture',
@@ -246,6 +261,7 @@ export function sectionEntries(data: SitemapData, section: string): Entry[] | nu
 	}
 	if (section === 'books') return data.books;
 	if (section === 'chapters') return data.openings;
+	if (section === 'modern') return data.modern;
 	if (section === 'sermons') return data.sermons;
 	if (section === 'authors') return data.authors;
 	if (section === 'scripture') return data.scripture;
@@ -313,6 +329,15 @@ async function build(): Promise<SitemapData> {
 	// themes deep enough to earn a page, and the (author, theme) pairs likewise.
 	const quoteTopics = await listQuoteTopics().catch(() => []);
 	const quoteTopicPages = await listQuoteTopicPages().catch(() => []);
+	// The Modern English edition's own rows — the list its route's entry
+	// generator builds from, so every advertised modern chapter is a built page.
+	// Only REVIEWED editions: a modern edition is AI-rewritten text, and an
+	// unreviewed one is offered to Google on the same terms as an unreviewed
+	// translation — not at all. `approve_translation <slug> --language
+	// en-modern` is what lists it. (Absent `source_type` reads as unreviewed.)
+	const modernBooks = (await listBooks(MODERN_EDITION).catch(() => [])).filter(
+		(b) => b.source_type === 'ai_reviewed'
+	);
 
 	// Emission uses only the advertised locales; `perLocale` (all UI locales)
 	// stays available for the drift check below.
@@ -759,10 +784,17 @@ async function build(): Promise<SitemapData> {
 		}))
 	];
 
-	// Chapter pages (prerendered): one entry per (work, chapter), again listing
-	// only the locales whose edition actually has that chapter.
+	// Chapter pages are ENGLISH ONLY, here and in the openings below. Every
+	// translated chapter is unreviewed AI text, and offering ~2,000 of them is
+	// what Google's scaled-content policy is written against — the risk lands on
+	// the whole locale, book pages included. They still prerender, link and
+	// read; they are just not promised (and the chapter page carries no hreflang
+	// for the same reason). Widening this again is a locale filter here.
+	const chapterSlices = advertisedSlices.filter((x) => x.locale === 'en');
+
+	// Chapter pages (prerendered): one entry per (work, chapter).
 	const byChapter = new Map<string, Entry>();
-	for (const slice of advertisedSlices) {
+	for (const slice of chapterSlices) {
 		for (const b of slice.books) {
 			for (let order = 1; order <= b.chapter_count; order++) {
 				const key = `${b.slug}#${order}`;
@@ -777,7 +809,7 @@ async function build(): Promise<SitemapData> {
 	// (see sections()). Like a book entry: only the locales whose edition has a
 	// chapter, each dated by its own edition.
 	const byOpening = new Map<string, Entry>();
-	for (const slice of advertisedSlices) {
+	for (const slice of chapterSlices) {
 		for (const b of slice.books) {
 			if (b.chapter_count < 1) continue;
 			let e = byOpening.get(b.slug);
@@ -796,7 +828,16 @@ async function build(): Promise<SitemapData> {
 		quotes,
 		articles: articleEntries,
 		chapters: [...byChapter.values()],
-		openings: [...byOpening.values()]
+		openings: [...byOpening.values()],
+		// EVERY modern chapter, not just the opening: this is the text no other
+		// library carries, so it is not the duplicate pile the original chapters
+		// are. English only, like the edition. Dated by the edition's own row.
+		modern: modernBooks.flatMap((b) =>
+			Array.from({ length: b.chapter_count }, (_, i) => ({
+				byLocale: new Map([['en', withTrailingSlash(modernChapterPath(b.slug, i + 1))] as [string, string]]),
+				lastmod: b.updated_at
+			}))
+		)
 	};
 }
 

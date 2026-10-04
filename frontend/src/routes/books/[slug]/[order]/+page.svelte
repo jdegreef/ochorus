@@ -65,7 +65,7 @@
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
 	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
-	import { baseEdition } from '$lib/reading-schema';
+	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
 	import ReaderControls from '$lib/components/ReaderControls.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -92,18 +92,26 @@
 	const t = i18n.t;
 
 	// --- SEO head (this page prerenders — see +page.ts) -------------------------
-	// Self-referential canonical + hreflang, same convention as books/[slug]:
-	// only the locales this book actually exists in (chapter counts match across
-	// a book's translations, so the same order URL resolves in each).
-	const seoPath = $derived(`/books/${slug}/${chapter.order}/`);
+	// Self-referential canonical, and NO hreflang. Only English chapters are
+	// offered to search engines: the translated chapters are unreviewed AI text,
+	// which they are kept out of the sitemap for too (see `$lib/sitemap`), and an
+	// alternate pointing at one would advertise it all the same. The book pages
+	// still carry their alternates.
 	// A missing edition renders the English one (see languageFallback). The
-	// canonical follows it always; the notice not under ?edition=modern, where
+	// canonical follows it always; the notice not in the Modern edition, where
 	// English is what the reader asked for.
 	const shownElsewhere = $derived(languageFallback(getLang(), language));
 	const fallback = $derived(edition ? null : shownElsewhere);
-	const seo = $derived(editionSeo(seoPath, chapter.available_languages, shownElsewhere));
-	const hreflang = $derived(seo.hreflang);
-	const canonical = $derived(seo.canonical);
+	// The Modern English edition is canonical at its own address, in English
+	// whatever the UI locale — a localized copy is the same English text.
+	// `seo.hreflang` still lists the editions this chapter exists in — for the
+	// fallback notice's "read it in …" links, never for the <head>.
+	const seo = $derived(
+		editionSeo(`/books/${slug}/${chapter.order}/`, chapter.available_languages, shownElsewhere)
+	);
+	const canonical = $derived(
+		edition === 'modern' ? absUrl(modernChapterPath(slug, chapter.order)) : seo.canonical
+	);
 
 	// One trail feeds both the visible <Breadcrumb> and the JSON-LD (the reader
 	// had a hand-rolled nav Books › Author › Book and no BreadcrumbList at all).
@@ -111,7 +119,10 @@
 		{ name: t('common.home'), href: '/' },
 		{ name: t('nav.books'), href: '/books' },
 		{ name: chapter.book_title, href: `/books/${slug}` },
-		{ name: chapterName(chapter.order, chapter.title), href: `/books/${slug}/${chapter.order}` }
+		{
+			name: chapterName(chapter.order, chapter.title),
+			href: bookChapterPath(slug, chapter.order, edition === 'modern')
+		}
 	]);
 	const crumbsLd = $derived(breadcrumbLd(crumbs));
 	const metaDescription = $derived(
@@ -214,10 +225,9 @@
 	// is reused across chapter navigations, so it survives the goto.
 	let autoContinueOrder: number | null = null;
 
-	// The prerendered HTML is always the standard edition (query params don't
-	// exist at build time — see +page.ts). A direct visit to ?edition=modern
-	// hydrates with that standard-edition data, so re-run load client-side once
-	// to fetch the Modern English chapter.
+	// Backstop for the load's `?edition=modern` redirect (+page.ts): if hydration
+	// ever reuses the prerendered standard-edition data instead of re-running the
+	// load with the live URL, re-run it once so the redirect fires.
 	onMount(() => {
 		const wantsModern = new URLSearchParams(location.search).get('edition') === 'modern';
 		if (wantsModern && edition !== 'modern') invalidateAll();
@@ -1240,7 +1250,7 @@
 	 * the day rather than passing the old one through. Plain link otherwise, since
 	 * a chapter outside the plan means they've stepped off its path.
 	 */
-	function chapterHref(order: number, pg?: 'last'): string {
+	function chapterHref(order: number, pg?: 'last', modern = edition === 'modern'): string {
 		const qs = new URLSearchParams();
 		if (pg) qs.set('pg', pg); // land on the last page when paging backwards
 		const day = planDayFor(order);
@@ -1248,24 +1258,13 @@
 			qs.set('plan', plan.slug);
 			qs.set('day', String(day));
 		}
-		if (edition === 'modern') qs.set('edition', 'modern');
 		const q = qs.toString();
-		return localizeHref(`/books/${slug}/${order}${q ? `?${q}` : ''}`);
+		return localizeHref(`${bookChapterPath(slug, order, modern)}${q ? `?${q}` : ''}`);
 	}
 
 	/** The current chapter in the opposite edition — drives the Modern ⇄ Original
 	 *  toggle. Keeps the reader's plan context on the same chapter. */
-	function editionToggleHref(): string {
-		const qs = new URLSearchParams();
-		if (edition !== 'modern') qs.set('edition', 'modern'); // flip to modern
-		const day = planDayFor(chapter.order);
-		if (plan && day) {
-			qs.set('plan', plan.slug);
-			qs.set('day', String(day));
-		}
-		const q = qs.toString();
-		return localizeHref(`/books/${slug}/${chapter.order}${q ? `?${q}` : ''}`);
-	}
+	const editionToggleHref = () => chapterHref(chapter.order, undefined, edition !== 'modern');
 
 	function gotoChapter(target: { order: number } | null) {
 		if (target) goto(chapterHref(target.order));
@@ -1668,11 +1667,19 @@
 	});
 </script>
 
+<!-- An unreviewed Modern English edition is AI-rewritten text no person has
+     approved: kept out of the index as well as the sitemap ($lib/sitemap) until
+     `approve_translation <slug> --language en-modern`. Never shown to readers. -->
+<svelte:head>
+	{#if edition === 'modern' && chapter.source_type !== 'ai_reviewed'}
+		<meta name="robots" content="noindex" />
+	{/if}
+</svelte:head>
 <Seo
 	title={titleTag}
 	description={metaText}
 	{canonical}
-	{hreflang}
+	hreflang={null}
 	ogType="article"
 	{ogImage}
 	ogImageWidth={LANDSCAPE_WIDTH}
@@ -1947,7 +1954,7 @@
 	     readerPagedEnding.test.ts. -->
 	<div class="pager" class:dragging bind:this={pager} style="--page-w:{pageW}px; --page-idx:{pageIndex}; --cols:{cols};">
 		<div bind:this={leadEl}>
-			<LanguageFallbackNotice {fallback} alternates={hreflang.alternates} browsePath="/books" class="mb-6" />
+			<LanguageFallbackNotice {fallback} alternates={seo.hreflang.alternates} browsePath="/books" class="mb-6" />
 			{#if plan && planDay}
 				<div
 					class="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-card border border-border bg-surface-2 px-4 py-3"

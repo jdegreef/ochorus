@@ -34,9 +34,11 @@ export function feedbackContext(pathname: string): FeedbackContext {
 		const slug = segments[i + 1];
 		if (!kind || !slug) continue;
 		const ctx: FeedbackContext = { content_kind: kind, content_slug: slug };
-		// A book chapter is /books/<slug>/<order>; only a numeric next segment is
-		// a chapter (never another route word).
-		const next = segments[i + 2];
+		// A book chapter is /books/<slug>/<order>, or /books/<slug>/modern/<order>
+		// in the Modern English edition; only a numeric segment is a chapter
+		// (never another route word).
+		const modern = segments[i + 2] === 'modern';
+		const next = segments[i + (modern ? 3 : 2)];
 		if (kind === 'book' && next && /^\d+$/.test(next)) ctx.chapter_ref = next;
 		return ctx;
 	}

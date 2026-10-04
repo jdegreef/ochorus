@@ -1,0 +1,282 @@
+{
+ "kind": "book",
+ "slug": "waiting-on-god",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "Psalms 62:5",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 64:4",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 62:1",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Genesis 49:18",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 104:27",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 104:28",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 145:14",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 145:15",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 25:4",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 25:5",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 25:3",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 25:21",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 27:14",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 31:24",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 33:18-22",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 37:7",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 37:9",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 37:34",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 39:7",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 39:8",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 40:1-3",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 106:13",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 130:5",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 130:6",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 8:17",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 25:9",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 26:8",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 26:9",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 30:18",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 40:31",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Isaiah 49:23",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Lamentations 3:25",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Lamentations 3:26",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Micah 7:7",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Acts 1:4",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Hosea 12:6",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 62:6",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 104:1-35",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 5:1",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Psalms 25:1-22",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "2 Thessalonians 3:5",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Deuteronomy 32:11",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:9",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Habakkuk 2:20",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Zephaniah 1:7",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Zechariah 2:13",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Luke 2:25",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Luke 2:38",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Luke 12:36",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "1 Timothy 6:14",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "1 Timothy 6:15",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 1:9",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 1:10",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  },
+  {
+   "reference": "Acts 13:1-52",
+   "status": "mined",
+   "source_file": "waiting-on-god.en.json"
+  }
+ ]
+}

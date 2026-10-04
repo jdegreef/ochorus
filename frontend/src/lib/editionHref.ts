@@ -1,6 +1,6 @@
 import { lang } from './lang.svelte';
 import { localizeHref } from './href';
-import { MODERN_EDITION, baseEdition } from './reading-schema';
+import { MODERN_EDITION, baseEdition, bookChapterPath, modernChapterPath } from './reading-schema';
 import { authorPath } from './originals';
 import { readerPrefs } from './readerPrefs.svelte';
 import type { EntrySource } from './journal';
@@ -21,7 +21,7 @@ type UiLocale = NonNullable<Parameters<typeof localizeHref>[1]>['locale'];
  */
 export function editionHref(path: string, edition: string): string {
 	const modern = edition === MODERN_EDITION;
-	const withEdition = modern ? `${path}${path.includes('?') ? '&' : '?'}edition=modern` : path;
+	const withEdition = modern ? modernPath(path) : path;
 	const locale = modern ? 'en' : baseEdition(edition);
 	// `isAvailable` IS the check the type wants; a content language can be
 	// added in the admin without a frontend deploy, so the set of editions is
@@ -29,6 +29,19 @@ export function editionHref(path: string, edition: string): string {
 	return lang.isAvailable(locale)
 		? localizeHref(withEdition, { locale: locale as UiLocale })
 		: localizeHref(withEdition);
+}
+
+const CHAPTER_PATH = /^\/books\/([^/?#]+)\/(\d+)\/?(?=[?#]|$)/;
+
+/**
+ * `path` moved to the Modern English edition: a chapter to its own address;
+ * anything else (the book page) carries the `?edition=modern` flag, which is
+ * all it has.
+ */
+function modernPath(path: string): string {
+	const m = CHAPTER_PATH.exec(path);
+	if (m) return `${modernChapterPath(m[1], Number(m[2]))}${path.slice(m[0].length)}`;
+	return `${path}${path.includes('?') ? '&' : '?'}edition=modern`;
 }
 
 /**
@@ -39,7 +52,7 @@ export function editionHref(path: string, edition: string): string {
  */
 export function workPath(kind: WorkKind, slug: string, order?: number): string {
 	const path: Record<WorkKind, string> = {
-		book: order ? `/books/${slug}/${order}` : `/books/${slug}`,
+		book: order ? bookChapterPath(slug, order, false) : `/books/${slug}`,
 		sermon: `/sermons/${slug}`,
 		bio: authorPath(slug),
 		article: `/articles/${slug}/`
@@ -69,10 +82,8 @@ export function chapterPath(
 	/** Open the Modern edition whatever the preference — carrying on in it. */
 	stayModern = false
 ): string {
-	const params = new URLSearchParams(query);
-	if (hasModern && (stayModern || readerPrefs.preferModern)) params.set('edition', 'modern');
-	const q = params.toString();
-	return `${workPath('book', slug, order)}${q ? `?${q}` : ''}`;
+	const modern = !!hasModern && (stayModern || readerPrefs.preferModern);
+	return `${bookChapterPath(slug, order, modern)}${query ? `?${query}` : ''}`;
 }
 
 /**

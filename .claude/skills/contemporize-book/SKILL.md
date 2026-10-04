@@ -77,10 +77,29 @@ How the reader surfaces it (PR, 2026-07-17):
 - The API advertises availability: `BookDetailSerializer` /
   `ChapterDetailSerializer` return `has_modern_edition` (a published en-modern
   row exists for this English work) and `is_modern_edition` (this row IS it).
-- The edition is a **reader-level mode carried in the URL** as
-  `?edition=modern`, NOT the UI locale. The reader/book loads map it to content
-  language `en-modern`; every in-reader chapter link (prev/next, TOC drawer,
-  bookmarks) preserves the param so you stay in the edition as you navigate.
+- The edition has **its own address**: `/books/<slug>/modern/<n>/`
+  (route `books/[slug]/modern/[order]`, the same reader component), NOT the UI
+  locale. It prerenders for every published `en-modern` row, canonicalizes to
+  itself, carries no hreflang, and — once REVIEWED (`approve_translation
+  <slug> --language en-modern`) — is listed whole in the `modern` sitemap
+  child. It is the one text no other library has, so it is indexable where the
+  public-domain originals mostly are not.
+- **Ship the CAREFUL pass, not the light one.** Measured 2026-10-03: the light
+  pass leaves 99.5–99.8% of the words identical to the original — a duplicate
+  page of our own original, which hurts SEO rather than helping it. Without an
+  API key, write the careful pass in-session (as translation-worker does): one
+  chapter at a time, **the same `<p>` count per chapter** (marks and reading
+  position carry across the toggle by paragraph index), Scripture kept exactly
+  as the author quoted it, quoted authors (e.g. William Law's notes) only
+  lightly modernized and attributed. Then overwrite the light-pass rows'
+  `body_html`/`body_text`/`word_count` and serialize the file
+  (`books/<slug>.en-modern.json`, `render_rows`). The first one shipped this
+  way: `humility-2` (~32% long-run overlap, almost all of it Scripture). Every in-reader chapter link
+  (prev/next, TOC drawer, bookmarks, notes) stays on that address
+  (`modernChapterPath` in `$lib/editionHref`). The old `?edition=modern` URL
+  still works: the chapter page forwards it to the new address.
+- **It only goes live with a web rebuild**: the pages are baked at build time,
+  so shipping the `en-modern` rows must be followed by the static redeploy.
 - The book page shows a "Read in Modern English" entry button when
   `has_modern_edition`; the reader chrome shows a compact **Modern ⇄ Original**
   toggle, and the chapter meta line tags the modern edition.

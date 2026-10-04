@@ -916,6 +916,16 @@ export const getChapterWithLang = async (
 	return { ...res, data: requireFields<Chapter>(`chapter ${slug}/${order}`, res.data, CHAPTER_FIELDS) };
 };
 
+/** A chapter in exactly `language` — a 404 is a 404, with no English fallback.
+ *  The Modern English route's fetch: falling back there would put the original
+ *  text at the modern edition's address, and fetch a whole chapter to discard. */
+export const getChapterExact = async (slug: string, order: number, language: string, f?: Fetch) =>
+	requireFields<Chapter>(
+		`chapter ${slug}/${order}`,
+		await apiFetch<Chapter>(chapterApiPath(slug, order, language), {}, f),
+		CHAPTER_FIELDS
+	);
+
 /** The queries readers search most (aggregate, public). Empty when the log is
  * too sparse — the caller falls back to browse-topic chips. */
 export const getPopularSearches = (language = 'en') =>
