@@ -1310,5 +1310,13 @@
   "plans_no_results": "ከእነዚህ ማጣሪያዎች ጋር የሚስማማ ዕቅድ የለም።",
   "series_no_results": "ከእነዚህ ማጣሪያዎች ጋር የሚስማማ የመጻሕፍት ተከታታይ የለም።",
   "plans_show_results": "ዕቅዶችን አሳይ (%n%)",
-  "authors_bios_link": "ከእነዚህ ስሞች በስተጀርባ ያሉ ሕይወቶች"
+  "authors_bios_link": "ከእነዚህ ስሞች በስተጀርባ ያሉ ሕይወቶች",
+  "settings_palette": "የቤተ መጻሕፍት ቀለሞች",
+  "settings_palette_sub": "የቤተ መጻሕፍትህ ቀለሞች። ብርሃን፣ ሴፒያ ወይም ጨለማ አሁንም ብሩህነቱን ይወስናል።",
+  "palette_parchment": "ብራና",
+  "palette_cathedral": "ካቴድራል",
+  "palette_olive": "የወይራ ተክል",
+  "palette_hearth": "ምድጃ",
+  "palette_dawn": "ንጋት",
+  "palette_monastery": "ገዳም"
 }

@@ -1310,5 +1310,13 @@
   "plans_no_results": "Немає планів за цими фільтрами.",
   "series_no_results": "Немає книжкових серій за цими фільтрами.",
   "plans_show_results": "Показати плани (%n%)",
-  "authors_bios_link": "Життя за цими іменами"
+  "authors_bios_link": "Життя за цими іменами",
+  "settings_palette": "Кольори бібліотеки",
+  "settings_palette_sub": "Кольори вашої бібліотеки. Світла, сепія чи темна тема й далі задає яскравість.",
+  "palette_parchment": "Пергамент",
+  "palette_cathedral": "Собор",
+  "palette_olive": "Оливковий гай",
+  "palette_hearth": "Вогнище",
+  "palette_dawn": "Світанок",
+  "palette_monastery": "Монастир"
 }

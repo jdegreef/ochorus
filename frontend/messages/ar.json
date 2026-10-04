@@ -1310,5 +1310,13 @@
   "plans_no_results": "لا توجد خطط تطابق عوامل التصفية هذه.",
   "series_no_results": "لا توجد سلاسل كتب تطابق عوامل التصفية هذه.",
   "plans_show_results": "عرض الخطط (%n%)",
-  "authors_bios_link": "سِيَر أصحاب هذه الأسماء"
+  "authors_bios_link": "سِيَر أصحاب هذه الأسماء",
+  "settings_palette": "ألوان المكتبة",
+  "settings_palette_sub": "ألوان مكتبتك. يبقى الفاتح أو البني أو الداكن هو ما يحدد السطوع.",
+  "palette_parchment": "رَقّ",
+  "palette_cathedral": "كاتدرائية",
+  "palette_olive": "بستان الزيتون",
+  "palette_hearth": "موقد",
+  "palette_dawn": "فجر",
+  "palette_monastery": "دير"
 }

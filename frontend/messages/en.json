@@ -1310,5 +1310,13 @@
   "plans_no_results": "No plans match these filters.",
   "series_no_results": "No book series match these filters.",
   "plans_show_results": "Show plans (%n%)",
-  "authors_bios_link": "The lives behind these names"
+  "authors_bios_link": "The lives behind these names",
+  "settings_palette": "Library colours",
+  "settings_palette_sub": "The colours of your library. Light, sepia or dark still sets the brightness.",
+  "palette_parchment": "Parchment",
+  "palette_cathedral": "Cathedral",
+  "palette_olive": "Olive Grove",
+  "palette_hearth": "Hearth",
+  "palette_dawn": "Dawn",
+  "palette_monastery": "Monastery"
 }

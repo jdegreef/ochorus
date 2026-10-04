@@ -9,6 +9,7 @@
 	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { siteFont } from '$lib/siteFont.svelte';
+	import { palette } from '$lib/palette.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { API_BASE_URL } from '$lib/config';
@@ -57,6 +58,7 @@
 	onMount(() => {
 		theme.init();
 		siteFont.init();
+		palette.init();
 		readerPrefs.init();
 		pageWidth.init();
 		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';

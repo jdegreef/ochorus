@@ -1310,5 +1310,13 @@
   "plans_no_results": "इन फ़िल्टरों से कोई योजना मेल नहीं खाती।",
   "series_no_results": "इन फ़िल्टरों से कोई पुस्तक शृंखला मेल नहीं खाती।",
   "plans_show_results": "योजनाएँ दिखाएँ (%n%)",
-  "authors_bios_link": "इन नामों के पीछे के जीवन"
+  "authors_bios_link": "इन नामों के पीछे के जीवन",
+  "settings_palette": "पुस्तकालय के रंग",
+  "settings_palette_sub": "आपके पुस्तकालय के रंग। हल्का, सीपिया या गहरा अब भी चमक तय करता है।",
+  "palette_parchment": "चर्मपत्र",
+  "palette_cathedral": "महागिरजा",
+  "palette_olive": "जैतून का बाग़",
+  "palette_hearth": "अलाव",
+  "palette_dawn": "भोर",
+  "palette_monastery": "मठ"
 }

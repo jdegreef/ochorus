@@ -1,4 +1,5 @@
 import { browser } from '$app/environment';
+import { normalizePalette, PALETTE_COLORS } from './palettes';
 
 /**
  * Theme preference and the concrete theme it resolves to.
@@ -91,12 +92,22 @@ class Theme {
 	#apply() {
 		if (!browser) return;
 		document.documentElement.setAttribute('data-theme', this.current);
+		this.refreshChrome();
+	}
+
+	/** Re-colour the browser chrome for the applied theme AND palette — the
+	 *  palette store calls this when only the palette changes. Sepia keeps its
+	 *  own ground under every palette (app.css), so its colour is the theme's. */
+	refreshChrome() {
+		if (!browser) return;
+		const pal = normalizePalette(document.documentElement.dataset.palette);
+		const color = this.current === 'sepia' ? THEME_COLOR.sepia : PALETTE_COLORS[pal][this.current];
 		// All of them, media attribute removed: app.html ships a media-scoped
 		// pair for the pre-hydration paint, and an explicit choice has to win
 		// over the OS preference those tags key on.
 		for (const tc of document.querySelectorAll('meta[name="theme-color"]')) {
 			tc.removeAttribute('media');
-			tc.setAttribute('content', THEME_COLOR[this.current]);
+			tc.setAttribute('content', color);
 		}
 	}
 }

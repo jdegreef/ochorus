@@ -1310,5 +1310,13 @@
   "plans_no_results": "Ningún plan coincide con estos filtros.",
   "series_no_results": "Ninguna serie de libros coincide con estos filtros.",
   "plans_show_results": "Ver planes (%n%)",
-  "authors_bios_link": "Las vidas detrás de estos nombres"
+  "authors_bios_link": "Las vidas detrás de estos nombres",
+  "settings_palette": "Colores de la biblioteca",
+  "settings_palette_sub": "Los colores de tu biblioteca. Claro, sepia u oscuro sigue fijando el brillo.",
+  "palette_parchment": "Pergamino",
+  "palette_cathedral": "Catedral",
+  "palette_olive": "Olivar",
+  "palette_hearth": "Hogar",
+  "palette_dawn": "Alba",
+  "palette_monastery": "Monasterio"
 }

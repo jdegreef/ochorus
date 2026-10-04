@@ -1310,5 +1310,13 @@
   "plans_no_results": "Tewali ntegeka etuukana n’ebisengejja bino.",
   "series_no_results": "Tewali lunyiriri lwa bitabo lutuukana n’ebisengejja bino.",
   "plans_show_results": "Laga entegeka (%n%)",
-  "authors_bios_link": "Obulamu bw'abali emabega w'amannya gano"
+  "authors_bios_link": "Obulamu bw'abali emabega w'amannya gano",
+  "settings_palette": "Langi z'etterekero",
+  "settings_palette_sub": "Langi z'etterekero lyo. Ekitangaala, sepia oba ekizikiza bikyateekawo okwaka.",
+  "palette_parchment": "Olupapula olw'edda",
+  "palette_cathedral": "Lutikko",
+  "palette_olive": "Ennimiro y'emizeyituuni",
+  "palette_hearth": "Ekyoto",
+  "palette_dawn": "Matulutulu",
+  "palette_monastery": "Monasteri"
 }
