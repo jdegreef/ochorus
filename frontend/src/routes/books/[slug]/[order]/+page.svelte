@@ -358,8 +358,17 @@
 
 	// --- Reading-progress indicators -------------------------------------------
 	// Fraction of the current chapter scrolled past (0..1), updated by the same
-	// throttled scroll handler that saves the position anchor.
-	let chapterFrac = $state(0);
+	// throttled scroll handler that saves the position anchor. Scroll mode only:
+	// `chapterFrac` (below) is what everything reads, in either layout.
+	let scrollFrac = $state(0);
+	let pageIndex = $state(0);
+	let pageTotal = $state(1);
+	let pageW = $state(0);
+	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
+	// How far through the chapter the reader is (0..1) — the scrubber, hairline,
+	// page number and time-left figures. Derived, so it can't go stale when the
+	// page count changes without a turn (it once showed a full bar on page 1/5).
+	const chapterFrac = $derived(paged ? pagedFraction(pageIndex, pageTotal) : scrollFrac);
 	let bookForProgress = $state<BookDetail | null>(null);
 	/** On the last chapter, the series' next volume in this language, if any.
 	 *  Rides the book fetch above, so it appears once that lands (the button
@@ -387,7 +396,7 @@
 	$effect(() => {
 		void slug;
 		void chapter.order;
-		chapterFrac = 0;
+		scrollFrac = 0;
 		chapterCelebrated = false;
 		celebrate = false;
 		chapterOpenedAt = performance.now();
@@ -450,7 +459,7 @@
 		const total = rect.height;
 		if (total <= 0) return;
 		const seen = Math.min(Math.max(window.innerHeight - rect.top, 0), total);
-		chapterFrac = Math.min(1, Math.max(0, seen / total));
+		scrollFrac = Math.min(1, Math.max(0, seen / total));
 		topIndex = topVisibleIndex();
 	}
 
@@ -596,10 +605,6 @@
 		moreOpen = false;
 		action();
 	};
-	let pageIndex = $state(0);
-	let pageTotal = $state(1);
-	let pageW = $state(0);
-	const paged = $derived(readerPrefs.paged && listen.status === 'idle');
 
 	// Kindle-style two-column spread: when the viewport is wide enough for two
 	// comfortable columns, page mode lays the text out as an open book (two
@@ -770,9 +775,6 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
-		// The count can change without a turn (first measure, re-flow), so the
-		// fraction is re-derived here too — not only in goToPage.
-		chapterFrac = pagedFraction(pageIndex, pageTotal);
 		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
 		const target = wasLast
@@ -800,7 +802,6 @@
 	function goToPage(p: number, save = true) {
 		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
-		chapterFrac = pagedFraction(pageIndex, pageTotal);
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			// Not gated on listen.status like the scroll handlers: paged mode is
@@ -1574,7 +1575,7 @@
 		// Scrolled to the bottom of the chapter. markChapterComplete ignores the
 		// post-open settle window, so the restore-scroll landing at a saved
 		// end-of-chapter position doesn't count as finishing.
-		if (chapterFrac >= 0.999) markChapterComplete();
+		if (scrollFrac >= 0.999) markChapterComplete();
 	}
 
 	const cite = $derived({
