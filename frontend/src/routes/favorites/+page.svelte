@@ -1,9 +1,6 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, tick } from 'svelte';
-	import { goto } from '$app/navigation';
-	import { auth } from '$lib/auth.svelte';
-	import { accountHref } from '$lib/accountNav';
 	import { authorPath } from '$lib/originals';
 	import {
 		listAuthors,
@@ -56,6 +53,7 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import AccountGate from '$lib/components/AccountGate.svelte';
 
 	/**
 	 * "My Bookshelf" — the reader's books first, drawn as a bookcase with three
@@ -63,11 +61,8 @@
 	 * book goes where), then everything else they've saved. Client-only and
 	 * personal, so it never prerenders.
 	 *
-	 * Signed-in only: a signed-out reader is sent to the "create account" form,
-	 * which pitches the shelf beside it (LoginPitch) and returns here after. The
-	 * hearts and progress they gathered signed-out are device-local and merge
-	 * into the account on sign-in, so nothing is lost on the way. With auth
-	 * unconfigured (local dev) there is no account to ask for, so it stays open.
+	 * Signed-in only (AccountGate): a signed-out reader is sent to the "create
+	 * account" form with the shelf pitch, and returns here after.
 	 *
 	 * Below the books: Sermons, Plans, Authors, Topics, Articles, saved Quotes.
 	 *
@@ -79,15 +74,6 @@
 	 * drops off the shelf.
 	 */
 	const t = i18n.t;
-
-	// Hidden until the session resolves, so neither a signed-out reader sees the
-	// shelf flash before the redirect nor a signed-in one sees it blank.
-	const gated = $derived(auth.enabled && !auth.user);
-	$effect(() => {
-		if (auth.enabled && auth.initialized && !auth.user) {
-			void goto(accountHref('/favorites', false, true), { replaceState: true });
-		}
-	});
 
 	// Resolved catalogs, keyed by slug. Populated on mount; empty until then.
 	let books = $state<Record<string, BookSummary>>({});
@@ -304,7 +290,7 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-{#if !gated}
+<AccountGate>
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('fav.yourFavorites')} tagline={t('fav.tagline')} />
 
@@ -616,7 +602,7 @@
 		</section>
 	{/if}
 </div>
-{/if}
+</AccountGate>
 
 <style>
 	.new-shelf {
