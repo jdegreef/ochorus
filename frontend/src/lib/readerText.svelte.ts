@@ -171,6 +171,10 @@ export class ReaderText {
 	onScriptureClick = (e: MouseEvent): boolean => {
 		const a = (e.target as HTMLElement).closest?.('a.scripture-ref') as HTMLElement | null;
 		if (!a?.dataset.ref) return false;
+		// A modified click on a linked reference (new tab, new window) is the
+		// reader asking for the scripture page itself: let the browser have it.
+		if (a.hasAttribute('href') && (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0))
+			return false;
 		e.preventDefault();
 		const r = a.getBoundingClientRect();
 		scripture.show(

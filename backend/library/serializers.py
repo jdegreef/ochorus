@@ -36,27 +36,22 @@ from .scripture import EPIGRAPH_WINDOW, book_of, epigraph_reference
 from .scripture_graph import treated_passages
 
 
-def _link_scripture(
-    body_html: str, links: dict[str, str] | None = None, *, linked_only: bool = False
-) -> str:
+def _link_scripture(body_html: str, links: dict[str, str] | None = None) -> str:
     """Annotate a body's Bible references AND link the ones that have a page.
 
-    One place so chapters, sermons and articles treat citations alike: every
+    One place so chapters, sermons, articles and bios treat citations alike: every
     reference becomes the reader's popover anchor, and those whose Bible chapter
     cleared the scripture-graph floor also carry an ``href`` to the reverse-index
     page — a real internal link a crawler follows, where before there were
     thousands of hrefless anchors. Kept here (not in scripture.py) because the
     resolver lives in scripture_graph, which imports scripture.
-
-    ``linked_only`` is for a surface with no popover (an author bio): only
-    references with a page are wrapped, so no hrefless anchor is emitted.
     """
     from .scripture import annotate_references, reference_candidates
     from .scripture_graph import scripture_links
 
     if links is None:
         links = scripture_links(reference_candidates(body_html))
-    return annotate_references(body_html, links=links, linked_only=linked_only)
+    return annotate_references(body_html, links=links)
 
 #: The annotations every book card needs. ``BookListSerializer`` reads
 #: ``num_chapters`` and ``total_words`` off the instance; a queryset missing
@@ -1394,9 +1389,9 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
         return obj.bio_for(self._language())
 
     def get_bio_html(self, obj):
-        # Bible references a bio cites link to their scripture page, as a
-        # chapter's do. Link-only: the author page has no verse popover.
-        return _link_scripture(obj.bio_html_for(self._language()), linked_only=True)
+        # A bio renders in <Reader>, so it gets the chapter treatment: popover
+        # anchors, and links where a scripture page exists.
+        return _link_scripture(obj.bio_html_for(self._language()))
 
     def get_faq(self, obj):
         return obj.faq_for(self._language())
