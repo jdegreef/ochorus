@@ -370,5 +370,18 @@
   "created_at": "2026-09-28T00:00:00Z",
   "updated_at": "2026-09-28T00:00:00Z"
  }
+},
+{
+ "model": "library.seriestranslation",
+ "fields": {
+  "series": [
+   "rooted"
+  ],
+  "language": "sw",
+  "title": "Wenye Mizizi – Siku 30 na Mungu kwa Vijana",
+  "description": "Tafakari za siku thelathini kwa wasomaji wenye umri wa miaka 9 hadi 12, kitabu kimoja baada ya kingine: mstari wa Biblia, maana yake, swali la kufikiria, jambo la kujaribu, na sala.",
+  "created_at": "2026-10-04T00:00:00Z",
+  "updated_at": "2026-10-04T00:00:00Z"
+ }
 }
 ]
