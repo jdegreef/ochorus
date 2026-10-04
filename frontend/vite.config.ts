@@ -13,7 +13,17 @@ import { defineConfig, type Plugin } from 'vite';
  * doubled-prefix 404 that crashes hydration on static builds. SvelteKit's
  * `paths.relative:false` is meant to prevent this but Vite ignores the `false`
  * case, so we post-process the chunks. (Carried over from Take Root.)
+ *
+ * LENGTH-PRESERVING, because the rewrite runs after the source maps are made
+ * (scripts/sentry-sourcemaps.mjs uploads them). Dropping the "." shortens the
+ * file by one character per occurrence, and these chunks are one long line
+ * with the deps list near the start, so every later column would point a
+ * character early and Sentry would name the wrong code. Each quoted literal
+ * gets its spare character back as a space after the closing quote, which is
+ * legal anywhere a string token is. An occurrence that is not a whole quoted
+ * literal falls back to the plain replace.
  */
+const RELATIVE_LITERAL = /(["'`])\.\/_app\/immutable\/([^"'`]*)\1/g;
 const absoluteAssetUrls = (): Plugin => ({
 	name: 'absolute-immutable-asset-urls',
 	apply: 'build',
@@ -28,7 +38,12 @@ const absoluteAssetUrls = (): Plugin => ({
 				else if (entry.name.endsWith('.js')) {
 					const code = fs.readFileSync(p, 'utf8');
 					if (code.includes('./_app/immutable/')) {
-						fs.writeFileSync(p, code.replaceAll('./_app/immutable/', '/_app/immutable/'));
+						fs.writeFileSync(
+							p,
+							code
+								.replace(RELATIVE_LITERAL, '$1/_app/immutable/$2$1 ')
+								.replaceAll('./_app/immutable/', '/_app/immutable/')
+						);
 					}
 				}
 			}
@@ -51,6 +66,12 @@ export default defineConfig({
 		sveltekit(),
 		absoluteAssetUrls()
 	],
+	build: {
+		// Source maps only for a build that will upload them to Sentry, and
+		// 'hidden' (no `//# sourceMappingURL`), so a browser never asks for one.
+		// scripts/sentry-sourcemaps.mjs uploads them and deletes them from build/.
+		sourcemap: process.env.SENTRY_AUTH_TOKEN ? 'hidden' : false
+	},
 	define: {
 		/**
 		 * The commit this bundle was built from, baked in so a browser error can

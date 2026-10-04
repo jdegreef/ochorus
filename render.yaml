@@ -842,14 +842,23 @@ services:
         sync: false
       # Optional: paste a Sentry DSN to turn on browser error monitoring. Reports
       # carry the build's commit, baked in at build time (see vite.config.ts).
-      #
-      # NOT YET WIRED: source maps. Without them a browser stack trace is one
-      # minified line, so the release tells you WHICH build broke and not where.
-      # Uploading them needs a Sentry auth token, org and project in the build
-      # environment — credentials this file deliberately does not carry — plus
-      # `build.sourcemap` on and the maps deleted after upload, since serving
-      # them publishes the source.
+      # The build adds the DSN's ingest host to the CSP's connect-src by itself
+      # (svelte.config.js), and the browser scrubs sign-in tokens and search
+      # text from what it sends ($lib/sentryScrub).
       - key: PUBLIC_SENTRY_DSN
+        sync: false
+      # Optional, for readable browser stack traces: with all three set, the
+      # build emits source maps, uploads them to Sentry and deletes them from
+      # build/ (scripts/sentry-sourcemaps.mjs). Without them a trace is one
+      # minified line. A failed upload warns and the deploy goes on. The token
+      # is an Organization Token (Sentry → Settings → Developer Settings →
+      # Organization Tokens), which can upload maps and nothing else. ORG and
+      # PROJECT are the slugs in the project's URL.
+      - key: SENTRY_AUTH_TOKEN
+        sync: false
+      - key: SENTRY_ORG
+        sync: false
+      - key: SENTRY_PROJECT
         sync: false
       # Optional: set to the site's Plausible property (its `data-domain`, e.g.
       # `ochorus.com`) to turn on cookieless pageview analytics. Unset = off, no
