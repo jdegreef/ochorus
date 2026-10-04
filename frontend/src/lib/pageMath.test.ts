@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { pageOfOffset } from './pageMath';
+import { pageOfOffset, pagedFraction } from './pageMath';
 
 // Real geometry, measured in the browser at pageW 1248 with a two-column spread
 // (two columns per page, so offsets pair up: 0,0,1,1,2,2…).
@@ -36,5 +36,21 @@ describe('pageOfOffset', () => {
 
 	it('degrades to page 0 before the first measurement', () => {
 		expect(pageOfOffset(500, 0, 0)).toBe(0);
+	});
+});
+
+describe('pagedFraction', () => {
+	it('runs 0 → 1 across the pages', () => {
+		expect([0, 1, 2, 3, 4].map((i) => pagedFraction(i, 5))).toEqual([0, 0.25, 0.5, 0.75, 1]);
+	});
+
+	it('reads a one-page chapter as fully on screen', () => {
+		expect(pagedFraction(0, 1)).toBe(1);
+	});
+
+	it('is page 1 of 5 = empty, not the stale full bar from before the measure', () => {
+		// The bug: the fraction was set to 1 while the count was still 1, then the
+		// count grew to 5 with the reader on page 1 and nothing re-derived it.
+		expect(pagedFraction(0, 5)).toBe(0);
 	});
 });

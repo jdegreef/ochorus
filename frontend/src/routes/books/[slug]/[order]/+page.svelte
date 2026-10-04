@@ -46,7 +46,7 @@
 		HEADER_OFFSET,
 		placeAfterLayout
 	} from '$lib/reading';
-	import { pageOfOffset } from '$lib/pageMath';
+	import { pageOfOffset, pagedFraction } from '$lib/pageMath';
 	import { EARLY_RESUME_TAG } from '$lib/earlyResume';
 	import { tapTurn, swipeTurn, dampDrag } from '$lib/pageGestures';
 	import { fetchSyncedProgress } from '$lib/progress';
@@ -770,6 +770,9 @@
 		// needed for a two-column spread whose last page may hold a single column.
 		pageTotal = w > 0 ? Math.max(1, Math.ceil(pager.scrollWidth / w - 0.02)) : 1;
 		if (pageIndex > pageTotal - 1) pageIndex = pageTotal - 1;
+		// The count can change without a turn (first measure, re-flow), so the
+		// fraction is re-derived here too — not only in goToPage.
+		chapterFrac = pagedFraction(pageIndex, pageTotal);
 		if (!measured) return;
 		const el = body!.children[at] as HTMLElement | undefined;
 		const target = wasLast
@@ -797,7 +800,7 @@
 	function goToPage(p: number, save = true) {
 		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
-		chapterFrac = pageTotal > 1 ? pageIndex / (pageTotal - 1) : 1;
+		chapterFrac = pagedFraction(pageIndex, pageTotal);
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			// Not gated on listen.status like the scroll handlers: paged mode is
