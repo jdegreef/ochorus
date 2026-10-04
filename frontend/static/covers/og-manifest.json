@@ -227,6 +227,16 @@
 				476
 			]
 		},
+		"am/a-retrospect": {
+			"ground": "043170b8310dad1118194ea2d20a355c5d43798211e7f88114d6eae5d043274c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"am/a-retrospect-children": {
 			"ground": "7fcb4177a864a141ce153542f723314c938b4f623e4b5802d292a3aa0e64066d",
 			"style": "revival",
@@ -294,6 +304,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"am/all-things-for-good": {
+			"ground": "377f95295ffd0d798f8b8bf02cd96734df8b56894499cd8d4f736d228e403c1e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"am/amanda-smith-autobiography-children": {
@@ -742,6 +762,16 @@
 				519
 			]
 		},
+		"am/grace-abounding": {
+			"ground": "6a9ead0bf1c91576a9f372d764093675de39d6933d460dee2f5fa7e1f477ffb0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"am/growing-in-wisdom": {
 			"ground": "8ef595657257815f9b131f0cbe319b4e1b224cbdb4a46b40651a0b9f6151735d",
 			"style": "originals",
@@ -1113,6 +1143,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/mortification-of-sin": {
+			"ground": "4429392070f9d22d1349f9b23bfd584546958cf08f26b392ea8f58d2944c4d44",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[128, 307, 472, 380],
+					[83, 367, 518, 440]
+				],
+				"subtitle": [
+					[175, 492, 425, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"am/necessity-of-prayer": {
 			"ground": "659984ad34f66f33dbe9e88e089b28e5079243fc862750c0902c70c57751b3a7",
 			"style": "devotional",
@@ -1161,6 +1220,34 @@
 			"scrim": 1,
 			"layout": "rail/indigo",
 			"bar": 0
+		},
+		"am/on-the-priesthood": {
+			"ground": "bea83efca65ee62ab62dbcd66fae794113a9dcb661c1461c2495022028243975",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[130, 102, 470, 131]
+				],
+				"title": [
+					[201, 337, 399, 399]
+				],
+				"subtitle": [
+					[133, 428, 467, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
 		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
@@ -1689,6 +1776,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"am/the-masters-indwelling": {
+			"ground": "f0d489b999aec3a8f40130daa1be9e7ca6f60d468b4e5680a6d2e4eab2400fef",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
@@ -1739,6 +1836,26 @@
 				295,
 				500
 			]
+		},
+		"am/the-way-to-god": {
+			"ground": "88495b5a4aeca8d70d14f7ac22859d0ca6274af4df65ac48651aec12d8b73e73",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"am/thoughts-for-the-quiet-hour": {
+			"ground": "a80c6821de09c1671e16a85f508993d72c32b5cf1edefb3a18b1110be0e129ff",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
 		},
 		"am/true-vine": {
 			"ground": "2287250c00d7070c14685a5591b74a48f314bedf2a288561463a236fbe5f907e",
