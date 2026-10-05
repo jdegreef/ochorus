@@ -2236,8 +2236,9 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* The fan of covers in the band. Overlapped and slightly rotated so a shelf
-   reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
+/* The fan of covers in the band. Overlapped (and upright: a book is never
+   drawn on a slant — coverStraight.test.ts) so a shelf reads as books rather
+   than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
 /* The band's far end. The band does the pushing, so an occupant only styles
    itself. */
@@ -2267,7 +2268,6 @@ nav.appnav .navsearch:hover {
 	border-radius: 0.25rem;
 	overflow: hidden;
 	background: var(--surface);
-	transform: rotate(-3deg);
 }
 /* A sermon in the fan: the emblem chip, sized to the tile height. Round rather
    than 3:4 on purpose — see ShelfCard.
@@ -2291,19 +2291,10 @@ nav.appnav .navsearch:hover {
 .cover-fan .sermon-tile:first-child {
 	margin-inline-start: 0;
 }
-.cover-fan .cover:nth-child(2) {
-	transform: rotate(1deg);
-}
-.cover-fan .cover:nth-child(3) {
-	transform: rotate(4deg);
-}
-.cover-fan .cover:nth-child(4) {
-	transform: rotate(7deg);
-}
 /* The large fan (ShelfCard fan="lg", the series index): covers at a width
    their titles can be read at, centred in a taller band with no badge. The
-   fan pads its block and end edges so the bigger tiles' rotated corners
-   aren't sliced by its overflow clip. */
+   fan pads its block and end edges so the bigger tiles' shadows aren't sliced
+   by its overflow clip. */
 .shelf-card-band.fan-lg {
 	justify-content: center;
 	min-height: 8.75rem;
@@ -2312,7 +2303,7 @@ nav.appnav .navsearch:hover {
 .shelf-card-band.fan-lg > .cover-fan {
 	margin-inline-start: 0;
 	padding-block: 0.35rem;
-	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's tilt */
+	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's shadow */
 	max-width: 100%;
 }
 .fan-lg .cover-fan > * {

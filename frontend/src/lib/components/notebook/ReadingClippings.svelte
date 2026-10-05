@@ -541,12 +541,14 @@
 		border-inline-start: 3px solid var(--clip-hue, var(--border-strong));
 		border-radius: 2px;
 		box-shadow: var(--shadow-card);
+		/* tilt-ok: a paper clipping, not a cover */
 		transform: rotate(-0.35deg);
 		transition:
 			transform var(--duration-fast) ease,
 			box-shadow var(--duration-fast) ease;
 	}
 	.clips li:nth-child(even) .clip {
+		/* tilt-ok: a paper clipping, not a cover */
 		transform: rotate(0.3deg);
 	}
 	.clip::before {
@@ -557,6 +559,7 @@
 		width: 3.25rem;
 		height: 0.9rem;
 		background: color-mix(in srgb, var(--gold) 28%, transparent);
+		/* tilt-ok: the clipping's strip of tape */
 		transform: rotate(3deg);
 	}
 	.clip:hover {

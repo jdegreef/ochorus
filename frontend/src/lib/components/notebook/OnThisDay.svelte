@@ -49,6 +49,7 @@
 		border: 1px dashed color-mix(in srgb, var(--accent) 35%, transparent);
 		border-radius: var(--radius-sm);
 		background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+		/* tilt-ok: a paper slip, not a book cover */
 		transform: rotate(-0.3deg);
 	}
 	.head {
