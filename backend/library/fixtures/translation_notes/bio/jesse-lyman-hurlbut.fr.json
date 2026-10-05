@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "jesse-lyman-hurlbut",
+ "language": "fr",
+ "job_issue": 4265,
+ "references": [
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "block_index": 27,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

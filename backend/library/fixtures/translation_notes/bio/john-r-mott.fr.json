@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-r-mott",
+ "language": "fr",
+ "job_issue": 4267,
+ "references": [
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 9:35",
+   "status": "self_rendered",
+   "block_index": 31
+  }
+ ]
+}
