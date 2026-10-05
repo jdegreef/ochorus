@@ -2,6 +2,12 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { seenOnView, withSource } from '$lib/signupSource';
+	import { withSignup } from '$lib/loginHref';
+
+	/** Which kind of page it sits on, for sign-up attribution. Required, so a
+	 *  new placement can't silently count as an article. */
+	let { source }: { source: 'article' | 'quote' } = $props();
 
 	/**
 	 * A logged-out-only prompt to create a free Ochorus account — the site's one
@@ -30,7 +36,8 @@
 			<h2 class="cta-h">{t('home.signupTitle')}</h2>
 			<p class="cta-p">{t('login.syncNote')}</p>
 		</div>
-		<a class="btn btn-primary shrink-0" href="{localizeHref('/login')}?mode=signup">
+		<a class="btn btn-primary shrink-0" href={withSource(withSignup(localizeHref('/login')), source)}
+			use:seenOnView={source}>
 			{t('login.createAccountLink')}
 		</a>
 	</aside>

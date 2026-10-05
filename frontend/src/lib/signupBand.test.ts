@@ -1,11 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import {
-	FIRST_VISIT_ARMS,
-	chooseVariant,
-	firstVisitArm,
-	shownVariant,
-	type SignupVariant
-} from './signupBand';
+import { FIRST_VISIT_ARMS, chooseVariant, firstVisitArm } from './signupBand';
 
 beforeEach(() => localStorage.clear());
 
@@ -34,40 +28,19 @@ describe('firstVisitArm — sticky uniform A/B assignment', () => {
 	});
 });
 
-describe('chooseVariant — targeting beats A/B, and records what was shown', () => {
+describe('chooseVariant — targeting beats A/B', () => {
 	it('shows the progress band to a reader with local reading', () => {
 		expect(chooseVariant(true)).toBe('progress');
-		expect(shownVariant()).toBe('progress');
 	});
 
 	it('shows a sticky random arm to a first-time visitor', () => {
 		expect(chooseVariant(false, () => 0.8)).toBe('library');
-		expect(shownVariant()).toBe('library');
 	});
 
 	it('does not let a stored A/B arm override live progress targeting', () => {
 		chooseVariant(false, () => 0); // becomes "keep", stored as the sticky arm
 		expect(chooseVariant(true)).toBe('progress');
-		expect(shownVariant()).toBe('progress');
 		// …and once they have no live progress again, the sticky arm returns.
 		expect(chooseVariant(false)).toBe('keep');
-	});
-});
-
-describe('shownVariant — attribution key read by auth', () => {
-	it('is null when nothing has been shown', () => {
-		expect(shownVariant()).toBeNull();
-	});
-
-	it('ignores a junk stored value so it can never reach the backend', () => {
-		localStorage.setItem('ochorus:signup_variant', JSON.stringify('not-a-real-variant'));
-		expect(shownVariant()).toBeNull();
-	});
-
-	it('round-trips every known variant', () => {
-		for (const v of ['keep', 'habit', 'library', 'progress'] satisfies SignupVariant[]) {
-			localStorage.setItem('ochorus:signup_variant', JSON.stringify(v));
-			expect(shownVariant()).toBe(v);
-		}
 	});
 });

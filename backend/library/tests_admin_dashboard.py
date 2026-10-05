@@ -1641,6 +1641,39 @@ class AdminUsersTests(TestCase):
         self.assertEqual(res.data["by_signup_variant"][-1]["variant"], "unknown")
 
     @override_settings(DEBUG=True)
+    def test_by_signup_variant_counts_last_30_days_and_prompt_sources(self):
+        import uuid
+        from datetime import timedelta
+
+        from django.contrib.auth import get_user_model
+        from django.utils import timezone
+
+        from accounts.models import UserProfile
+
+        User = get_user_model()
+
+        def mk(variant):
+            u = User.objects.create(username=str(uuid.uuid4()))
+            return UserProfile.objects.create(
+                user=u, supabase_uid=uuid.uuid4(), signup_variant=variant
+            )
+
+        mk("chapter_end")
+        old = mk("chapter_end")
+        UserProfile.objects.filter(pk=old.pk).update(
+            created_at=timezone.now() - timedelta(days=45)
+        )
+        mk("bookshelf")
+
+        res = self.client.get("/api/admin/users/")
+        rows = {r["variant"]: r for r in res.data["by_signup_variant"]}
+        self.assertEqual(rows["chapter_end"]["count"], 2)
+        self.assertEqual(rows["chapter_end"]["count_30d"], 1)
+        self.assertEqual(rows["chapter_end"]["label"], "End of chapter")
+        self.assertEqual(rows["bookshelf"]["label"], "Bookshelf page")
+        self.assertFalse(rows["bookshelf"]["targeted"])
+
+    @override_settings(DEBUG=True)
     def test_recent_lists_individuals_newest_first(self):
         res = self.client.get("/api/admin/users/")
         recent = res.data["recent"]

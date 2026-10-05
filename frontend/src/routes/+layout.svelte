@@ -15,6 +15,7 @@
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { loginHref, withSignup } from '$lib/loginHref';
+	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -232,7 +233,9 @@
 	// ...and not on /login itself, where the form is already the whole page and
 	// a second "Create an account" band under it only competes with it.
 	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
-	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
+	const signupHref = $derived(
+		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
+	);
 
 	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
 	// with the phone "More" sheet; accountHref routes a signed-out reader
@@ -251,7 +254,7 @@
 	// on (they open it from here or the dropdown once signed in).
 	let feedbackOpen = $state(false);
 	const feedbackSignedOutHref = $derived(
-		localizeHref(loginHref($page.url.pathname, $page.url.search))
+		withSource(localizeHref(loginHref($page.url.pathname, $page.url.search)), 'feedback')
 	);
 
 	// Footer column count: brand + Explore + mission are always present (3);
@@ -421,7 +424,7 @@
 							<p class="footer-invite-title">{t('home.signupTitle')}</p>
 							<p class="text-small text-muted">{t('login.syncNote')}</p>
 						</div>
-						<a href={localizeHref(signupHref)} class="btn footer-invite-cta">
+						<a href={localizeHref(signupHref)} class="btn footer-invite-cta" use:seenOnView={'footer'}>
 							<span>{t('login.createAccountLink')}</span>
 							<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
 						</a>
@@ -513,7 +516,7 @@
 										>{t('feedback.send')}</button
 									>
 								{:else}
-									<a href={feedbackSignedOutHref}>{t('feedback.send')}</a>
+									<a href={feedbackSignedOutHref} use:seenOnView={'feedback'}>{t('feedback.send')}</a>
 								{/if}
 							</li>
 						</ul>

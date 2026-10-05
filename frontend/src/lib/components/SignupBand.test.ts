@@ -86,7 +86,9 @@ describe('SignupBand progress caption', () => {
 		resume.unfinishedBookSlugs.mockReturnValue([]);
 		resume.cachedResumeBooks.mockReturnValue([]);
 		render();
-		const { shownVariant } = await import('$lib/signupBand');
-		expect(shownVariant()).not.toBe('progress');
+		flushSync();
+		// The band's button carries the arm it shows as its sign-up source.
+		const href = target.querySelector('a.btn-primary')?.getAttribute('href') ?? '';
+		expect(href).toMatch(/src=(keep|habit|library)\b/);
 	});
 });

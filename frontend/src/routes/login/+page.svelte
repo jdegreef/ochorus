@@ -10,6 +10,7 @@
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import GoogleMark from '$lib/components/GoogleMark.svelte';
 	import LoginPitch, { type PitchKind } from '$lib/components/LoginPitch.svelte';
+	import { isSignupSource, noteSignupSource, promptSeen, signupStarted } from '$lib/signupSource';
 
 	const t = i18n.t;
 
@@ -96,6 +97,21 @@
 		const notebook = path === '/notebook' || path.startsWith('/notebook/');
 		pitch = path === '/favorites' ? 'shelf' : notebook ? 'notebook' : null;
 	});
+	// Credit for a sign-up made from here: the prompt that linked here
+	// (`?src=`), else the Bookshelf / Notebook page the reader was headed for.
+	// The pitch page is itself the prompt for those two, so arriving on its
+	// create-account form counts as seeing it (not the sign-in form a returning
+	// reader switches to).
+	$effect(() => {
+		const src = $page.url.searchParams.get('src');
+		if (isSignupSource(src)) {
+			noteSignupSource(src);
+		} else if (pitch) {
+			const source = pitch === 'shelf' ? 'bookshelf' : 'notebook';
+			noteSignupSource(source);
+			if (mode === 'signup') promptSeen(source);
+		}
+	});
 	const pitchKey = $derived(pitch === 'shelf' ? 'login.pitchShelf' : 'login.pitchNotebook');
 	/** The form's own heading: the destination's on sign-up, the usual otherwise. */
 	const formTitle = $derived(pitch && mode === 'signup' ? t(`${pitchKey}FormTitle`) : titles[mode]);
@@ -117,6 +133,7 @@
 			err = await auth.sendPasswordReset(email);
 			if (!err) sent = 'reset';
 		} else if (mode === 'signup') {
+			signupStarted();
 			err = await auth.signUp(email, password);
 			if (!err) sent = 'signup';
 		} else {
@@ -135,6 +152,7 @@
 		}
 		busy = true;
 		error = null;
+		if (mode === 'signup') signupStarted();
 		const err = await auth.signInWithMagicLink(email);
 		busy = false;
 		if (err) error = t(authErrorKey(err));
@@ -144,6 +162,7 @@
 	async function google() {
 		busy = true;
 		error = null;
+		if (mode === 'signup') signupStarted();
 		const err = await auth.signInWithGoogle();
 		// On success the browser navigates to Google; only reachable on error.
 		if (err) {
