@@ -5,6 +5,7 @@
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import {
 		type AuthorDetail,
 		type AuthorBio,
@@ -133,6 +134,14 @@
 	const heading = $derived(
 		headingKey ? t(headingKey).replace('%name%', author.name) : author.name
 	);
+	// The search title carries the lifespan — "Andrew Murray (1828–1917)" is how
+	// people recognise the person they searched for. Title only; the H1 stays the
+	// plain heading. (seo.fitTitle drops the brand suffix if it runs long.)
+	const seoTitle = $derived(
+		headingKey && years
+			? t(headingKey).replace('%name%', `${author.name} (${years})`)
+			: heading
+	);
 
 	// A one-line "what's here" summary under the name: era + work counts.
 	const summaryBits = $derived(
@@ -151,6 +160,12 @@
 	// mount; the page is prerendered). Falls back to any other authors when this
 	// one has no dated birth year.
 	let contemporaries = $state<AuthorBio[]>([]);
+
+	// A reading plan built from this author's books, if there is one: "Read
+	// Andrew Murray a day at a time". The plan page then asks how to be reminded
+	// (PlanStartSheet). Chosen by the API (AuthorDetailSerializer.get_plan), so
+	// it is in the prerendered page and never shifts the fold.
+	const authorPlan = $derived(author.plan ?? null);
 	onMount(async () => {
 		try {
 			const all = await listAuthors(getLang());
@@ -188,13 +203,29 @@
 	// "…fourteen great-gr"); truncateMeta ends on a sentence or whole-word boundary
 	// within the ~160-char budget scrapers actually display. The book page already
 	// routes its description through the same helper.
-	// A bio, when this locale has one, is used as-is. When it doesn't, the localized
+	// A bio, when this locale has one, leads (see below). When it doesn't, the localized
 	// metaFallback sentence is enriched with the same era + work counts the header
 	// shows (summaryBits — already localized), so a bio-less author page still offers
 	// the SERP something concrete rather than a bare "free classic Christian books"
 	// line. No new catalogue string; the counts matter most on translated pages,
 	// where a localized bio is most often absent.
+	// With a bio and books: as much of the bio as fits, then what the reader
+	// can do here — "Their books are free to read on Ochorus, online or
+	// offline." Search showed author pages seen often and clicked rarely; the
+	// bio alone never said the books are here, free, to read. No count: it
+	// would need real plurals (Arabic, Ukrainian) and young-reader editions
+	// are separate rows that would inflate it.
+	const readFree = $derived(
+		author.books.length > 1
+			? t('author.metaReadFreeBooks')
+			: author.books.length === 1
+				? t('author.metaReadFree')
+				: ''
+	);
 	const description = $derived.by(() => {
+		if (author.bio && readFree) {
+			return `${truncateMeta(author.bio, 160 - readFree.length - 1)} ${readFree}`;
+		}
 		if (author.bio) return truncateMeta(author.bio);
 		const base = t('author.metaFallback').replace('%name%', author.name);
 		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
@@ -375,7 +406,7 @@
 </script>
 
 <Seo
-	title="{heading} — Ochorus"
+	title="{seoTitle} — Ochorus"
 	{description}
 	{canonical}
 	{hreflang}
@@ -491,6 +522,14 @@
 				>
 			</div>
 		</div>
+	{/if}
+
+	{#if authorPlan}
+		<a class="author-plan mx-auto mt-3 max-w-[40rem]" href={localizeHref(`/plans/${authorPlan.slug}`)}>
+			<span class="text-eyebrow text-gold">{t('author.planEyebrow').replace('%name%', author.name)}</span>
+			<span class="font-display text-h3 text-text" dir="auto">{authorPlan.title}</span>
+			<span class="text-small text-muted">{authorPlan.day_count} {t('plans.days')} · {t('author.planCta')} <Arrow /></span>
+		</a>
 	{/if}
 
 	<!-- The page's own actions — keep, share, the writer's quotations, search
@@ -1077,5 +1116,18 @@
 	:global(.bio .prayer.answered)::before {
 		content: '✦ ' var(--label-answered, 'Answer to prayer');
 		color: var(--accent);
+	}
+	.author-plan {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		padding: 0.9rem 1.1rem;
+		text-decoration: none;
+	}
+	.author-plan:hover {
+		border-color: var(--accent);
 	}
 </style>
