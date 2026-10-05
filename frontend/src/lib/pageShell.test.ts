@@ -75,7 +75,8 @@ const LEAF_PAGES: { label: string; file: string }[] = [
  */
 const APP_PAGES: { label: string; file: string }[] = [
 	{ label: 'notebook', file: 'routes/notebook/+page.svelte' },
-	{ label: 'settings', file: 'routes/settings/+page.svelte' }
+	{ label: 'settings', file: 'routes/settings/+page.svelte' },
+	{ label: 'welcome', file: 'routes/welcome/+page.svelte' }
 ];
 
 /**

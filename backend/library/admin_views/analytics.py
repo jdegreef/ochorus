@@ -648,6 +648,18 @@ SIGNUP_VARIANT_LABELS = {
     "habit": "Reading rhythm",
     "library": "Build your shelf",
     "progress": "Progress-targeted",
+    "bookshelf": "Bookshelf page",
+    "notebook": "Notebook page",
+    "save_toast": "Save message",
+    "highlight_toast": "Highlight message",
+    "chapter_end": "End of chapter",
+    "plan_start": "Plan start",
+    "article": "Articles",
+    "quote": "Quotes",
+    "footer": "Footer",
+    "header": "Header sign-in",
+    "menu": "Phone menu",
+    "feedback": "Feedback link",
 }
 
 
@@ -839,38 +851,54 @@ class AdminUsersView(APIView):
         return out
 
     def _by_signup_variant(self):
-        """Accounts per logged-out sign-up band arm — the home page's A/B test.
+        """Accounts per sign-up source — the prompt each reader followed to sign
+        up (any of ``accounts.models.SIGNUP_VARIANTS``: the home band's A/B arms
+        and every other prompt), all-time and in the last 30 days.
 
-        Each account counts once, under the arm that was showing when it was
-        created (create-only, so a later login can't move it). ``targeted``
-        flags the progress-targeted variant: it is shown only to readers who
+        Each account counts once, under the source recorded when it was created
+        (create-only, so a later login can't move it). ``targeted`` flags the
+        band's progress-targeted variant: it is shown only to readers who
         already had local reading, so its rate is NOT comparable head-to-head
         with the random arms — the UI sets it apart. ``unknown`` collects
-        accounts with nothing recorded (created before this shipped, or a
-        sign-up that carried no variant, e.g. Google OAuth). Only the four known
-        arms are ever stored (validated on capture), so no junk reaches here.
+        accounts with nothing recorded (created before attribution shipped, or
+        a sign-up that followed no tagged prompt). Only known sources are ever
+        stored (validated on capture), so no junk reaches here. Rows sort by the
+        30-day count, so a newly added prompt rises as it earns sign-ups.
         """
-        from django.db.models import Count
+        from datetime import timedelta
+
+        from django.db.models import Count, Q
+        from django.utils import timezone
 
         from accounts.models import UserProfile
 
+        since = timezone.now() - timedelta(days=30)
         rows = {
-            r["signup_variant"]: r["n"]
-            for r in UserProfile.objects.values("signup_variant").annotate(n=Count("id"))
+            r["signup_variant"]: (r["n"], r["n30"])
+            for r in UserProfile.objects.values("signup_variant").annotate(
+                n=Count("id"), n30=Count("id", filter=Q(created_at__gte=since))
+            )
         }
-        unknown = rows.pop("", 0)
+        unknown, unknown_30d = rows.pop("", (0, 0))
         out = [
             {
                 "variant": code,
                 "label": _signup_variant_label(code),
                 "count": n,
+                "count_30d": n30,
                 "targeted": code == "progress",
             }
-            for code, n in sorted(rows.items(), key=lambda kv: (-kv[1], kv[0]))
+            for code, (n, n30) in sorted(rows.items(), key=lambda kv: (-kv[1][1], -kv[1][0], kv[0]))
         ]
         if unknown:
             out.append(
-                {"variant": "unknown", "label": "Unknown", "count": unknown, "targeted": False}
+                {
+                    "variant": "unknown",
+                    "label": "Unknown",
+                    "count": unknown,
+                    "count_30d": unknown_30d,
+                    "targeted": False,
+                }
             )
         return out
 

@@ -34,6 +34,25 @@ export const ANALYTICS_ENABLED = domain !== '';
 
 let injected = false;
 
+type Plausible = ((event: string, options?: { props?: Record<string, string> }) => void) & {
+	q?: unknown[];
+};
+
+/**
+ * Plausible's own queue stub: calls made before the script loads are kept and
+ * replayed by it, so a custom event fired during the first render isn't lost.
+ */
+function plausible(): Plausible {
+	const w = window as unknown as { plausible?: Plausible };
+	w.plausible ??= Object.assign(
+		(...args: unknown[]) => {
+			(w.plausible!.q ??= []).push(args);
+		},
+		{ q: [] as unknown[] }
+	) as Plausible;
+	return w.plausible;
+}
+
 /**
  * Inject the Plausible script once, in the browser, when configured. Safe to
  * call on every mount: it no-ops when disabled, off the browser, or already in.
@@ -45,5 +64,20 @@ export function initAnalytics(): void {
 	s.defer = true;
 	s.setAttribute('data-domain', domain);
 	s.src = src;
+	plausible();
 	document.head.appendChild(s);
+}
+
+/**
+ * Send a Plausible custom event. A no-op when analytics is off or off the
+ * browser. Props are short labels only — never a URL, an id or anything
+ * personal (Plausible stays cookieless and consent-free).
+ */
+export function track(event: string, props?: Record<string, string>): void {
+	if (!ANALYTICS_ENABLED || !browser) return;
+	try {
+		plausible()(event, props ? { props } : undefined);
+	} catch {
+		/* analytics must never break the page */
+	}
 }

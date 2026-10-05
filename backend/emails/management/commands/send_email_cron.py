@@ -31,6 +31,9 @@ class Command(BaseCommand):
         # whichever runs first claims a reader's slot for the day. Onboarding, then
         # the "keep reading" series nudge, then the milestone celebration.
         call_command("send_lifecycle_emails")
+        # Plan reminders keep their own time and don't take the shared slot
+        # (lifecycle.UNGATED_STEPS), so their place in the order doesn't matter.
+        call_command("send_plan_reminders")
         call_command("send_series_nudges")
         call_command("send_milestone_cards")
         call_command("send_due_broadcasts")

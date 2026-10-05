@@ -1730,6 +1730,8 @@ export interface AdminSignupVariant {
 	variant: string;
 	label: string;
 	count: number;
+	/** Of `count`, the accounts created in the last 30 days. */
+	count_30d: number;
 	targeted: boolean;
 }
 

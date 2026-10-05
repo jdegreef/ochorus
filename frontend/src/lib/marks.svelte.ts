@@ -289,6 +289,14 @@ class Marks {
 		this.#persist();
 	}
 
+	/** Every highlight on this device, each counted once (a mark id is unique
+	 *  within its chapter; one highlight can span several segments). */
+	countAll(): number {
+		let n = 0;
+		for (const e of Object.values(readAll())) n += new Set((e.m ?? []).map((m) => m.id)).size;
+		return n;
+	}
+
 	/**
 	 * Mark-group count for a chapter without loading it (for the TOC).
 	 *

@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { loginHref as buildLoginHref } from '$lib/loginHref';
+	import { seenOnView, withSource } from '$lib/signupSource';
 	import { fetchAdminManualUrl, fetchLanguageAdminManualUrl } from '$lib/library-admin';
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import { dismissable } from '$lib/actions/dismissable';
@@ -128,7 +129,7 @@
 			{/if}
 		</div>
 	{:else}
-		<a href={localizeHref(loginHref)} class="account-signin btn btn-sm btn-primary hover:no-underline">
+		<a href={withSource(localizeHref(loginHref), 'header')} use:seenOnView={'header'} class="account-signin btn btn-sm btn-primary hover:no-underline">
 			{t('account.signIn')}
 		</a>
 	{/if}

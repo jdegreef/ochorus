@@ -3,9 +3,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import EmptyState from '$lib/components/EmptyState.svelte';
-	import { allProgress } from '$lib/progress';
-	import { favorites } from '$lib/favorites.svelte';
-	import { planProgress } from '$lib/planProgress.svelte';
+	import { getLang } from '$lib/lang.svelte';
+	import { hasStarted, readerActivity } from '$lib/readerActivity';
 
 	/**
 	 * The signed-in dashboard's welcome for a reader with nothing yet — no reading,
@@ -29,11 +28,7 @@
 
 	const isNew = $derived.by(() => {
 		void ticks;
-		return (
-			allProgress().length === 0 &&
-			favorites.count() === 0 &&
-			planProgress.started().length === 0
-		);
+		return !hasStarted(readerActivity(getLang()));
 	});
 </script>
 
@@ -41,9 +36,14 @@
 	<section class="page-col px-5 pt-8">
 		<EmptyState message={t('settings.activityEmpty')}>
 			{#snippet action()}
-				<a href={localizeHref('/books')} class="btn btn-primary hover:no-underline">
-					{t('home.browseLibrary')}
-				</a>
+				<div class="flex flex-wrap justify-center gap-3">
+					<a href={localizeHref('/welcome')} class="btn btn-primary hover:no-underline">
+						{t('welcomePage.getStarted')}
+					</a>
+					<a href={localizeHref('/books')} class="btn btn-ghost hover:no-underline">
+						{t('home.browseLibrary')}
+					</a>
+				</div>
 			{/snippet}
 		</EmptyState>
 	</section>

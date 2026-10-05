@@ -83,6 +83,20 @@ describe('#pullProfile and the reader’s theme', () => {
 		expect(set).not.toHaveBeenCalled();
 	});
 
+	it('offers the sign-up welcome to a fresh account only', async () => {
+		profile = { email: 'r@example.com', theme: '' };
+		await signIn();
+		const { welcome } = await import('./welcome.svelte');
+		expect(welcome.pending).toBe(true);
+		expect(welcome.pagePending).toBe(true);
+
+		localStorage.clear();
+		profile = { email: 'r@example.com', theme: 'light' };
+		await signIn();
+		const again = await import('./welcome.svelte');
+		expect(again.welcome.pending).toBe(false);
+	});
+
 	it('adopts a saved account theme', async () => {
 		localStorage.setItem('theme', 'dark');
 		profile = { email: 'r@example.com', theme: 'sepia', font_scale: 1, tts_rate: 1 };

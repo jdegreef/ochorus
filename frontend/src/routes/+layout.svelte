@@ -9,12 +9,14 @@
 	import { paletteUi } from '$lib/paletteUi.svelte';
 	import { readerPrefs } from '$lib/readerPrefs.svelte';
 	import { siteFont } from '$lib/siteFont.svelte';
+	import { palette } from '$lib/palette.svelte';
 	import { listen } from '$lib/listen.svelte';
 	import { browser } from '$app/environment';
 	import { API_BASE_URL } from '$lib/config';
 	import { lang } from '$lib/lang.svelte';
 	import { footerLocales } from '$lib/footerLocales';
 	import { loginHref, withSignup } from '$lib/loginHref';
+	import { seenOnView, withSource } from '$lib/signupSource';
 	import { bibleCredit, creditParts } from '$lib/bibleCredit';
 	import { i18n } from '$lib/i18n.svelte';
 	import { auth } from '$lib/auth.svelte';
@@ -31,6 +33,8 @@
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
+	import SignInSheet from '$lib/components/SignInSheet.svelte';
+	import { openFrom } from '$lib/signInSheet.svelte';
 	import TabBar from '$lib/components/TabBar.svelte';
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
 	import Icon from '$lib/components/Icon.svelte';
@@ -57,6 +61,7 @@
 	onMount(() => {
 		theme.init();
 		siteFont.init();
+		palette.init();
 		readerPrefs.init();
 		pageWidth.init();
 		if (!/Mac|iPhone|iPad/.test(navigator.platform)) searchKbd = 'Ctrl K';
@@ -232,7 +237,9 @@
 	// ...and not on /login itself, where the form is already the whole page and
 	// a second "Create an account" band under it only competes with it.
 	const onLogin = $derived(deLocalizeHref($page.url.pathname).startsWith('/login'));
-	const signupHref = $derived(withSignup(loginHref($page.url.pathname, $page.url.search)));
+	const signupHref = $derived(
+		withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'footer')
+	);
 
 	// Footer "My Account" column — the reader's own pages (ACCOUNT_NAV, shared
 	// with the phone "More" sheet; accountHref routes a signed-out reader
@@ -251,7 +258,7 @@
 	// on (they open it from here or the dropdown once signed in).
 	let feedbackOpen = $state(false);
 	const feedbackSignedOutHref = $derived(
-		localizeHref(loginHref($page.url.pathname, $page.url.search))
+		withSource(localizeHref(loginHref($page.url.pathname, $page.url.search)), 'feedback')
 	);
 
 	// Footer column count: brand + Explore + mission are always present (3);
@@ -421,7 +428,12 @@
 							<p class="footer-invite-title">{t('home.signupTitle')}</p>
 							<p class="text-small text-muted">{t('login.syncNote')}</p>
 						</div>
-						<a href={localizeHref(signupHref)} class="btn footer-invite-cta">
+						<a
+							href={localizeHref(signupHref)}
+							class="btn footer-invite-cta"
+							use:seenOnView={'footer'}
+							onclick={(e) => openFrom(e, 'footer')}
+						>
 							<span>{t('login.createAccountLink')}</span>
 							<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
 						</a>
@@ -513,7 +525,7 @@
 										>{t('feedback.send')}</button
 									>
 								{:else}
-									<a href={feedbackSignedOutHref}>{t('feedback.send')}</a>
+									<a href={feedbackSignedOutHref} use:seenOnView={'feedback'}>{t('feedback.send')}</a>
 								{/if}
 							</li>
 						</ul>
@@ -645,6 +657,7 @@
 {/if}
 <CommandPalette />
 <PwaToasts />
+{#if auth.enabled}<SignInSheet />{/if}
 
 <!-- The floating feedback button — signed-in only, hidden in focus mode and over
      the admin console (it self-gates). Opens its own FeedbackDialog. -->

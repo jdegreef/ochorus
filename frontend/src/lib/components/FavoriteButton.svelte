@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { favorites, type FavoriteKind } from '$lib/favorites.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { accountHref } from '$lib/accountNav';
+	import { withSource } from '$lib/signupSource';
+	import { signupNudge } from '$lib/signupNudge.svelte';
 
 	/**
 	 * The one save control for an author / book / plan / sermon, so "saved"
@@ -27,13 +31,32 @@
 			? t(active ? 'fav.followingTopic' : 'fav.followTopic')
 			: t(active ? 'fav.saved' : 'fav.save')
 	);
+
+	function toggle() {
+		favorites.toggle(kind, slug);
+		const saved = favorites.has(kind, slug);
+		// Un-saved straight away (a mis-tap): don't leave "Saved" on screen.
+		if (!saved && signupNudge.current?.id === 'save') signupNudge.dismiss();
+		// Signed out, the shelf this lands on needs an account to open — say so,
+		// once a session, the first time something is saved. Not for a topic:
+		// that is followed, not saved, and the wording would be wrong.
+		if (saved && kind !== 'topic' && auth.enabled && auth.initialized && !auth.user) {
+			signupNudge.offer({
+				id: 'save',
+				textKey: 'nudge.savedToShelf',
+				linkKey: 'nudge.openShelf',
+				href: withSource(accountHref('/favorites', false, true), 'save_toast'),
+				source: 'save_toast'
+			});
+		}
+	}
 </script>
 
 <button
 	type="button"
 	class="btn btn-ghost {showLabel ? 'btn-sm' : 'btn-icon'}"
 	class:text-accent={active}
-	onclick={() => favorites.toggle(kind, slug)}
+	onclick={toggle}
 	aria-pressed={active}
 	aria-label={label}
 	title={label}
