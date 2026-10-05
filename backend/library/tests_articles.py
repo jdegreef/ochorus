@@ -10,7 +10,10 @@ that don't resolve), and the per-language visibility rules match books/sermons
 
 from __future__ import annotations
 
-from django.test import TestCase
+import json
+from pathlib import Path
+
+from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 from rest_framework.test import APIClient
 
@@ -512,3 +515,31 @@ class ArticleScriptureRefsTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(res.data["scripture_refs"], ["John 3:16", "Romans 8:28"])
         self.assertIsInstance(res.data["scripture_links"], dict)
+
+
+class TranslatedArticleSourceTypeTests(SimpleTestCase):
+    """A translated article must SAY it is a translation.
+
+    ``source_type`` is create-only in ``seed_articles`` and the model default is
+    ``public_domain``, so a non-English row that omits the key is created live as
+    an original — no "awaiting native review" badge, and no later fixture edit
+    can fix it. #4724 shipped 23 Hindi guides that way (re-gated by migration
+    0186). Pin the key on every translated row so it cannot happen again.
+    """
+
+    def test_every_translated_article_declares_its_review_state(self):
+        articles_dir = (
+            Path(__file__).resolve().parent / "fixtures" / "content" / "articles"
+        )
+        bad = []
+        for path in sorted(articles_dir.glob("*.json")):
+            for row in json.loads(path.read_text(encoding="utf-8")):
+                fields = row["fields"]
+                if fields.get("language", "en") == "en":
+                    continue
+                if fields.get("source_type") not in {
+                    Book.SourceType.AI_UNREVIEWED,
+                    Book.SourceType.AI_REVIEWED,
+                }:
+                    bad.append(path.name)
+        self.assertEqual(bad, [], "translated articles missing source_type")
