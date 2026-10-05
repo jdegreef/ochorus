@@ -16,14 +16,14 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
-	import SermonCover from '$lib/components/SermonCover.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { offerFinish, unmarkFinished } from '$lib/progress';
 	import type { ResumeItem } from '$lib/resumeItems';
+	import { sermonCoverFace } from '$lib/sermonArt';
 
 	/**
-	 * One resume card: a cover (books, or a typeset one for sermons), the title and
+	 * One resume card: a cover (a book's, or one set from a sermon), the title and
 	 * author, and either a chapter meter or the sermon's reference line. Shared by
 	 * the home "Continue reading" strip and the /reading page so a resume card is
 	 * drawn in exactly one place.
@@ -52,8 +52,8 @@
 	// chapter meter. So the strip and /reading can't word it two ways.
 	const caption = $derived.by(() => {
 		if (item.kind === 'sermon') {
-			return item.scriptureRef
-				? `${t('search.typeSermon')} · ${item.scriptureRef}`
+			return item.sermon.scripture_ref
+				? `${t('search.typeSermon')} · ${item.sermon.scripture_ref}`
 				: t('search.typeSermon');
 		}
 		if (complete) return `${t('settings.statFinished')} · ${item.order} / ${item.chapterCount}`;
@@ -86,18 +86,18 @@
 	href={localizeHref(item.href)}
 	class="flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 >
-	{#if item.book}
+	{#if item.kind === 'book'}
 		<!-- Draw through BookCover, not a bare <img>: a plate (SVG) ground carries
 		     no title in the file, so a raw image shows a blank coloured tile —
 		     BookCover sets the title over it, as the shelves do. -->
 		<div class="w-20 shrink-0">
 			<BookCover book={item.book} rounded="rounded-sm" />
 		</div>
-	{:else if item.sermon}
-		<!-- Sermons have no cover file, so one is set in type (SermonCover) — a
-		     peer of the book covers beside it rather than an icon tile. -->
+	{:else}
+		<!-- A sermon has no cover file, so BookCover sets one from it on its own
+		     plate, in the sermon's hue (`sermonCoverFace`; STYLE_GUIDE §Cards). -->
 		<div class="w-20 shrink-0">
-			<SermonCover sermon={item.sermon} />
+			<BookCover book={sermonCoverFace(item.sermon)} rounded="rounded-sm" />
 		</div>
 	{/if}
 	<div class="min-w-0 flex-1 self-center">

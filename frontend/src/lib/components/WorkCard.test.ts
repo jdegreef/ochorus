@@ -64,7 +64,6 @@ const sermon: ResumeItem = {
 	title: 'Power in Prayer',
 	author: 'R. A. Torrey',
 	pct: null,
-	scriptureRef: 'James 5:16',
 	sermon: {
 		slug: 'power-in-prayer',
 		language: 'en',
@@ -125,20 +124,18 @@ describe('WorkCard caption', () => {
 });
 
 describe('WorkCard sermon cover', () => {
-	it('sets the sermon on a cover plate in its own hue, hidden from assistive tech', () => {
+	it("sets the sermon on BookCover's plate: preacher, title, passage", () => {
 		const card = render(WorkCard, { item: sermon });
-		const cover = card.querySelector<HTMLElement>('[data-testid="sermon-cover"]')!;
-		expect(cover.getAttribute('aria-hidden')).toBe('true');
-		expect(cover.querySelector('.byline')?.textContent).toBe('R. A. Torrey');
-		expect(cover.querySelector('.title')?.textContent).toBe('Power in Prayer');
-		expect(cover.querySelector('.subtitle')?.textContent?.trim()).toBe('James 5:16');
-		const plate = cover.querySelector<HTMLElement>('.cover-plate')!;
+		const plate = card.querySelector<HTMLElement>('.cover-plate')!;
+		expect(plate.querySelector('.byline')?.textContent).toBe('R. A. Torrey');
+		expect(plate.querySelector('.title')?.textContent).toBe('Power in Prayer');
+		expect(plate.querySelector('.subtitle')?.textContent?.trim()).toBe('James 5:16');
 		expect(plate.style.getPropertyValue('--plate')).toContain('linear-gradient');
 	});
 
 	it('drops the passage line when the sermon has no reference', () => {
-		const item = { ...sermon, sermon: { ...sermon.sermon!, scripture_ref: '' } };
+		const item = { ...sermon, sermon: { ...sermon.sermon, scripture_ref: '' } };
 		const card = render(WorkCard, { item });
-		expect(card.querySelector('[data-testid="sermon-cover"] .subtitle')).toBeNull();
+		expect(card.querySelector('.cover-plate .subtitle')).toBeNull();
 	});
 });

@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { sermonArt } from './sermonArt';
+import { sermonArt, sermonCoverFace } from './sermonArt';
+import { channels, contrastRatio, inkSafe, INK_MIN_CONTRAST, tintable } from './coverArt';
 import { isSermonTile, type TopicCover } from './library-public';
 import { EMBLEM_HUES } from './emblemHues';
 import { emblemForSermon } from './emblemNames';
@@ -55,5 +56,42 @@ describe('isSermonTile', () => {
 		} else {
 			throw new Error('expected a sermon tile');
 		}
+	});
+});
+
+describe('sermonCoverFace', () => {
+	// White type sits on the ribbed base of the plate's gradient (its lightest
+	// point), so that is where every emblem's hue must clear AA once floored.
+	// `tintable` lifts the gold emblems to ~2.8:1 there, which is why the
+	// floor exists; this fails if a new emblem hue slips past it.
+	const RIB = 0.959;
+	it.each(Object.entries(EMBLEM_HUES))('floors the %s hue so white type clears AA', (_, hue) => {
+		const safe = channels(inkSafe(tintable(hue))).map((c) => c * RIB);
+		expect(contrastRatio([255, 255, 255], safe)).toBeGreaterThanOrEqual(INK_MIN_CONTRAST);
+	});
+
+	it('leaves a colour that already passes untouched', () => {
+		expect(inkSafe('#1f2a44')).toBe('#1f2a44');
+	});
+
+	it("namespaces the slug so a book's per-slug tables never match a sermon", () => {
+		const face = sermonCoverFace({
+			slug: 'power-in-prayer',
+			language: 'en',
+			title: 'Power in Prayer',
+			scripture_ref: 'James 5:16',
+			scripture_book: null,
+			scripture_book_order: null,
+			summary: '',
+			preached_on: null,
+			word_count: 1,
+			author: { slug: 'torrey', name: 'R. A. Torrey', bio: '', photo_url: '', birth_year: 1856, death_year: 1928 },
+			topics: [],
+			created_at: ''
+		});
+		expect(face.slug).toBe('sermon:power-in-prayer');
+		expect(face.cover_url).toBe('');
+		expect(face.subtitle).toBe('James 5:16');
+		expect(face.cover_color).toBe(inkSafe(sermonArt('power-in-prayer').hue));
 	});
 });
