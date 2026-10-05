@@ -5,12 +5,15 @@
 	import { readerBookmark } from '$lib/readerBookmark.svelte';
 	import FloatingBookmark from '$lib/components/FloatingBookmark.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import {
 		type AuthorDetail,
 		type AuthorBio,
 		listAuthors,
+		listPlans,
 		formatLifespan,
-		hasOwnContent
+		hasOwnContent,
+		type PlanSummary
 	} from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
@@ -133,6 +136,14 @@
 	const heading = $derived(
 		headingKey ? t(headingKey).replace('%name%', author.name) : author.name
 	);
+	// The search title carries the lifespan — "Andrew Murray (1828–1917)" is how
+	// people recognise the person they searched for. Title only; the H1 stays the
+	// plain heading. (seo.fitTitle drops the brand suffix if it runs long.)
+	const seoTitle = $derived(
+		headingKey && years
+			? t(headingKey).replace('%name%', `${author.name} (${years})`)
+			: heading
+	);
 
 	// A one-line "what's here" summary under the name: era + work counts.
 	const summaryBits = $derived(
@@ -151,6 +162,23 @@
 	// mount; the page is prerendered). Falls back to any other authors when this
 	// one has no dated birth year.
 	let contemporaries = $state<AuthorBio[]>([]);
+
+	// A reading plan built from this author's books, if there is one: "Read
+	// Andrew Murray a day at a time". The plan page then asks how to be reminded
+	// (PlanStartSheet). Loaded after mount, like contemporaries; a plan drawn
+	// only from this author's books beats one that merely includes one.
+	let authorPlan = $state<PlanSummary | null>(null);
+	onMount(async () => {
+		try {
+			const mine = new Set(author.books.map((b) => b.slug));
+			if (!mine.size) return;
+			const plans = (await listPlans(getLang())).filter((p) => p.covers.some((c) => mine.has(c.slug)));
+			const own = (p: PlanSummary) => p.covers.every((c) => mine.has(c.slug));
+			authorPlan = plans.find(own) ?? plans[0] ?? null;
+		} catch {
+			authorPlan = null;
+		}
+	});
 	onMount(async () => {
 		try {
 			const all = await listAuthors(getLang());
@@ -194,7 +222,33 @@
 	// the SERP something concrete rather than a bare "free classic Christian books"
 	// line. No new catalogue string; the counts matter most on translated pages,
 	// where a localized bio is most often absent.
+	// With a bio: its first sentence, then what the reader can do here — "Read
+	// 12 books free on Ochorus, online or offline." Search showed author pages
+	// seen often and clicked rarely; the bio alone never said the books are
+	// here, free, to read.
+	const readFree = $derived(
+		author.books.length > 1
+			? t('author.metaReadFreeMany').replace('%n%', String(author.books.length))
+			: author.books.length === 1
+				? t('author.metaReadFree')
+				: ''
+	);
+	/** The bio's first real sentence: an end mark at least 60 characters in, so
+	 *  "Andrew Murray Jr." isn't taken for one. */
+	function firstSentence(text: string): string {
+		for (const m of text.matchAll(/[.!?。।።](?=\s|$)/g)) {
+			if ((m.index ?? 0) >= 60) return text.slice(0, (m.index ?? 0) + 1);
+		}
+		return text;
+	}
 	const description = $derived.by(() => {
+		if (author.bio && readFree) {
+			const room = 160 - readFree.length - 1;
+			const first = firstSentence(author.bio);
+			const lead =
+				first.length <= room ? first : `${first.slice(0, room - 1).replace(/\s+\S*$/, '')}…`;
+			return `${lead} ${readFree}`;
+		}
 		if (author.bio) return truncateMeta(author.bio);
 		const base = t('author.metaFallback').replace('%name%', author.name);
 		return truncateMeta(summaryBits.length ? `${base} ${summaryBits.join(' · ')}.` : base);
@@ -375,7 +429,7 @@
 </script>
 
 <Seo
-	title="{heading} — Ochorus"
+	title="{seoTitle} — Ochorus"
 	{description}
 	{canonical}
 	{hreflang}
@@ -491,6 +545,14 @@
 				>
 			</div>
 		</div>
+	{/if}
+
+	{#if authorPlan}
+		<a class="author-plan mx-auto mt-3 max-w-[40rem]" href={localizeHref(`/plans/${authorPlan.slug}`)}>
+			<span class="text-eyebrow text-gold">{t('author.planEyebrow').replace('%name%', author.name)}</span>
+			<span class="font-display text-h3 text-text" dir="auto">{authorPlan.title}</span>
+			<span class="text-small text-muted">{authorPlan.day_count} {t('plans.days')} · {t('author.planCta')} <Arrow /></span>
+		</a>
 	{/if}
 
 	<!-- The page's own actions — keep, share, the writer's quotations, search
@@ -1077,5 +1139,18 @@
 	:global(.bio .prayer.answered)::before {
 		content: '✦ ' var(--label-answered, 'Answer to prayer');
 		color: var(--accent);
+	}
+	.author-plan {
+		display: flex;
+		flex-direction: column;
+		gap: 0.2rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		padding: 0.9rem 1.1rem;
+		text-decoration: none;
+	}
+	.author-plan:hover {
+		border-color: var(--accent);
 	}
 </style>

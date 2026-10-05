@@ -26,10 +26,13 @@
 	const active = $derived(favorites.has(kind, slug));
 	// A topic is a shelf you follow, not an item you save, so it gets its own
 	// verb; every other kind keeps the shared "Save"/"Saved".
+	// A topic and a person are followed, not saved; everything else is saved.
 	const label = $derived(
 		kind === 'topic'
 			? t(active ? 'fav.followingTopic' : 'fav.followTopic')
-			: t(active ? 'fav.saved' : 'fav.save')
+			: kind === 'author'
+				? t(active ? 'fav.followingTopic' : 'fav.follow')
+				: t(active ? 'fav.saved' : 'fav.save')
 	);
 
 	function toggle() {
@@ -43,7 +46,7 @@
 		if (saved && kind !== 'topic' && auth.enabled && auth.initialized && !auth.user) {
 			signupNudge.offer({
 				id: 'save',
-				textKey: 'nudge.savedToShelf',
+				textKey: kind === 'author' ? 'nudge.followedToShelf' : 'nudge.savedToShelf',
 				linkKey: 'nudge.openShelf',
 				href: withSource(accountHref('/favorites', false, true), 'save_toast'),
 				source: 'save_toast'
