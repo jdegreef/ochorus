@@ -43,6 +43,23 @@ const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 const origin = () => (browser ? window.location.origin : undefined);
 
 /**
+ * Where an emailed link or Google should bring the reader back to: `returnTo`
+ * when it is a page on this site (the sign-up panel passes the page it sits
+ * over), else the site root as before. Supabase only honours URLs on the
+ * project's redirect allow-list and falls back to its Site URL otherwise, so
+ * this can never send anyone off-site.
+ */
+function returnUrl(returnTo?: string): string | undefined {
+	if (!browser || !returnTo) return origin();
+	try {
+		const u = new URL(returnTo, window.location.origin);
+		return u.origin === window.location.origin ? u.href : origin();
+	} catch {
+		return origin();
+	}
+}
+
+/**
  * Supabase sign-up options carrying the sign-up attribution (the prompt the
  * reader followed, else the home band they saw — see `$lib/signupSource`), or
  * nothing.
@@ -218,7 +235,7 @@ class Auth {
 	}
 
 	/** Passwordless: email the user a one-time sign-in link. */
-	async signInWithMagicLink(email: string): Promise<string | null> {
+	async signInWithMagicLink(email: string, returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOtp({
@@ -226,7 +243,7 @@ class Auth {
 			// `data` seeds user_metadata only when this link CREATES the account,
 			// so it attributes a first-time sign-up and is ignored for a returning
 			// reader — same create-only story as the password path.
-			options: { emailRedirectTo: origin(), ...signupMetadata() }
+			options: { emailRedirectTo: returnUrl(returnTo), ...signupMetadata() }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
@@ -234,13 +251,27 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
+	/**
+	 * Finish an emailed sign-in with the 6-digit code from the same email as the
+	 * link (`signInWithMagicLink` sends both once the Supabase templates carry
+	 * `{{ .Token }}`). On success Supabase raises SIGNED_IN and the listener in
+	 * `init` merges this device's reading in, exactly as after the link.
+	 */
+	async verifyEmailCode(email: string, code: string): Promise<string | null> {
+		const sb = await supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.verifyOtp({ email, token: code, type: 'email' });
+		// `||`, not `??`: see signIn.
+		return error ? error.code || 'unexpected_failure' : null;
+	}
+
 	/** OAuth via Google. On success the browser navigates away to Google. */
-	async signInWithGoogle(): Promise<string | null> {
+	async signInWithGoogle(returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOAuth({
 			provider: 'google',
-			options: { redirectTo: origin() }
+			options: { redirectTo: returnUrl(returnTo) }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
@@ -294,6 +325,7 @@ class Auth {
 		// the session ends: the auth listener that fires then finds nothing
 		// unsynced, so it can't stash what the reader chose to discard.
 		readingSync.clearOnSignOut();
+		welcome.forgetPage();
 		await (await supabase())?.auth.signOut();
 		this.user = null;
 		this.#token = null;

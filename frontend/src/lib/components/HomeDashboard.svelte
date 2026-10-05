@@ -1,7 +1,13 @@
 <script lang="ts">
 	import type { CoverBook, TopicCount } from '$lib/library-public';
 	import * as m from '$lib/paraglide/messages.js';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { auth } from '$lib/auth.svelte';
+	import { localizeHref } from '$lib/href';
+	import { getLang } from '$lib/lang.svelte';
+	import { hasStarted, readerActivity } from '$lib/readerActivity';
+	import { welcome } from '$lib/welcome.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
 	import WelcomePalette from '$lib/components/WelcomePalette.svelte';
@@ -44,6 +50,19 @@
 	// (never the full address — a greeting is not the place to print it). The
 	// whole clause is dropped when we have neither, leaving a bare "Welcome back".
 	const greetingName = $derived(auth.displayName || (auth.user?.email?.split('@')[0] ?? ''));
+
+	// Every sign-up path (password, emailed code, Google) ends on this page, so
+	// this is where a brand-new account is sent on to /welcome — once, and only
+	// from home: a reader who signed up over a book stays on the book until they
+	// next come home. `pagePending` is set by the fresh sign-in (auth) or read
+	// back from storage here. A reader who has already started reading by then
+	// has found their way in, so the welcome is settled without the detour.
+	onMount(() => welcome.init());
+	$effect(() => {
+		if (!welcome.pagePending) return;
+		if (hasStarted(readerActivity(getLang()))) welcome.pageSeen();
+		else goto(localizeHref('/welcome'), { replaceState: true });
+	});
 </script>
 
 <!-- The greeting over the painting of the book they're reading (HomeHero).
@@ -54,8 +73,12 @@
 	greeting={greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
 />
 
-<!-- Just signed up: choose the colours of your library (once; see WelcomePalette). -->
-<WelcomePalette />
+<!-- Just signed up: choose the colours of your library (once; see WelcomePalette).
+     Held back while the /welcome page is still owed, so the card doesn't flash
+     on the way there; it greets the reader on their next visit home instead. -->
+{#if !welcome.pagePending}
+	<WelcomePalette />
+{/if}
 
 <!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
      Self-hides the moment there's any reading, favourite or plan. -->

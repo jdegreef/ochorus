@@ -33,6 +33,8 @@
 	import FeedbackDialog from '$lib/components/FeedbackDialog.svelte';
 	import UnsyncedSignOutDialog from '$lib/components/UnsyncedSignOutDialog.svelte';
 	import PwaToasts from '$lib/components/PwaToasts.svelte';
+	import SignInSheet from '$lib/components/SignInSheet.svelte';
+	import { openFrom } from '$lib/signInSheet.svelte';
 	import TabBar from '$lib/components/TabBar.svelte';
 	import { ACCOUNT_NAV, accountHref } from '$lib/accountNav';
 	import Icon from '$lib/components/Icon.svelte';
@@ -426,7 +428,12 @@
 							<p class="footer-invite-title">{t('home.signupTitle')}</p>
 							<p class="text-small text-muted">{t('login.syncNote')}</p>
 						</div>
-						<a href={localizeHref(signupHref)} class="btn footer-invite-cta" use:seenOnView={'footer'}>
+						<a
+							href={localizeHref(signupHref)}
+							class="btn footer-invite-cta"
+							use:seenOnView={'footer'}
+							onclick={(e) => openFrom(e, 'footer')}
+						>
 							<span>{t('login.createAccountLink')}</span>
 							<Icon name="chevron-right" size={16} class="footer-invite-arrow" mirror={false} />
 						</a>
@@ -650,6 +657,7 @@
 {/if}
 <CommandPalette />
 <PwaToasts />
+{#if auth.enabled}<SignInSheet />{/if}
 
 <!-- The floating feedback button — signed-in only, hidden in focus mode and over
      the admin console (it self-gates). Opens its own FeedbackDialog. -->

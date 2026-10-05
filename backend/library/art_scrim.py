@@ -28,6 +28,7 @@ ART_SCRIM: dict[str, float] = {
     "brave-for-god-2": 0.30,
     "brave-for-god-3": 0.30,
     "brave-for-god-4": 0.30,
+    "c-s-lewis-a-life": 0.40,
     "christ-the-healer": 0.80,
     "clothed-with-strength-and-dignity": 0.35,
     "corrie-ten-boom-a-life": 0.85,

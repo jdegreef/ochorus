@@ -110,6 +110,32 @@ def render_series_nudge(
     return _render(text, profile, subscription, lang)
 
 
+def render_plan_reminder(
+    profile,
+    subscription,
+    *,
+    step: str,
+    plan_title: str,
+    day: int,
+    total: int,
+    reading_title: str,
+    cta_path: str,
+) -> RenderedEmail:
+    """Render a reading-plan email (``plan_reminder`` or ``plan_paused``) for
+    ``profile``: the plan, the day and today's reading filled into the copy, the
+    CTA pointing at that day (``cta_path``, built by the caller)."""
+    lang = email_language(profile, subscription)
+    mapping = {
+        "{plan}": plan_title,
+        "{day}": str(day),
+        "{total}": str(total),
+        "{reading}": reading_title or plan_title,
+    }
+    text = {key: _fill(value, mapping) for key, value in copy_mod.step_copy(step, lang).items()}
+    text["cta_path"] = cta_path
+    return _render(text, profile, subscription, lang)
+
+
 def render_milestone(profile, subscription, *, milestone: int) -> RenderedEmail:
     """Render the reading-milestone card for ``profile``, filling in the count."""
     lang = email_language(profile, subscription)

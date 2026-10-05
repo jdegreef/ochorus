@@ -176,9 +176,9 @@ TOPICS = [
             "letters-and-minor-works",
             "life-of-pascal",
             "the-pursuit-of-god",
-            "unspoken-sermons",
             "orthodoxy",
             "the-everlasting-man",
+            "unspoken-sermons",
         ],
     ),
     (

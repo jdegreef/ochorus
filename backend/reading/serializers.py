@@ -60,7 +60,14 @@ class PlanProgressSerializer(serializers.ModelSerializer):
 class PlanScheduleSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlanSchedule
-        fields = ["plan_slug", "start_on", "reading_days", "remind_at", "client_updated_at"]
+        fields = [
+            "plan_slug",
+            "start_on",
+            "reading_days",
+            "remind_at",
+            "email_reminder",
+            "client_updated_at",
+        ]
         read_only_fields = fields
 
 

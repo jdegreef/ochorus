@@ -4,7 +4,8 @@ Two emails now fire when a reader *finishes a book* — the finish-the-series nu
 (:mod:`emails.series_nudge`) and the reading milestones (:mod:`emails.milestones`)
 — so the parts they share live here rather than being copied a third time: the
 candidate query (who finished a book lately), the 20h min-gap gate (an invariant
-of the LIFECYCLE kind, so one reader never gets two LIFECYCLE emails a day), and
+of the LIFECYCLE kind, so one reader never gets two LIFECYCLE emails a day —
+except the reader-requested plan reminders, ``lifecycle.UNGATED_STEPS``), and
 the send/skip/fail tally every sweep command prints.
 
 Each sweep keeps its own *pick* logic (what to recommend / celebrate) and its own

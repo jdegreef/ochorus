@@ -88,6 +88,7 @@ describe('#pullProfile and the reader’s theme', () => {
 		await signIn();
 		const { welcome } = await import('./welcome.svelte');
 		expect(welcome.pending).toBe(true);
+		expect(welcome.pagePending).toBe(true);
 
 		localStorage.clear();
 		profile = { email: 'r@example.com', theme: 'light' };

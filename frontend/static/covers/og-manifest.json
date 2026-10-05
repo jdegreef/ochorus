@@ -3303,6 +3303,36 @@
 				550
 			]
 		},
+		"c-s-lewis-a-life": {
+			"ground": "7b2e9f42dd1df1a94700612a0af807ac1482f5433d20e572380ae2d7dd425b4e",
+			"style": "house",
+			"volume": "7",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[291, 306, 310, 350],
+					[156, 386, 445, 457]
+				],
+				"subtitle": [
+					[154, 476, 447, 504],
+					[114, 504, 486, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
