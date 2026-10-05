@@ -35,7 +35,10 @@
 	// — the POST is gated server-side too (see admin_views/jobs.py).
 	const canQueue = $derived(auth.isAdmin);
 
-	type Tab = 'books' | 'sermons' | 'plans' | 'bios' | 'articles';
+	// A kind is one content type (one key of the API's payload); a tab is a kind,
+	// or "all" — every kind's works in one matrix.
+	type Kind = 'books' | 'sermons' | 'plans' | 'bios' | 'articles';
+	type Tab = Kind | 'all';
 	// The view lives in the querystring (tab, filters, order, grouping), so a
 	// reload restores it and a link opens exactly this view for a colleague.
 	// Seeded here, one-of-a-set values validated; written back by syncUrl().
@@ -44,29 +47,50 @@
 		const v = init.get(key) as T | null;
 		return v && allowed.includes(v) ? v : fallback;
 	};
-	const TAB_KEYS = ['books', 'sermons', 'plans', 'bios', 'articles'] as const;
+	const KINDS = ['books', 'sermons', 'plans', 'bios', 'articles'] as const;
+	const TAB_KEYS = ['all', ...KINDS] as const;
 	let tab = $state<Tab>(pick('tab', TAB_KEYS, 'books'));
 
+	// Everything that differs by kind, in one place: its tab label, its name on a
+	// row of the All matrix, its translation-job type (the queue's singular
+	// names), and where its rows link — books to their admin detail page, the
+	// rest (no admin detail yet) to their live pages; a biography row is an
+	// author. `review`: its review-queue kind (articles and plans aren't in the
+	// queue, so their cells stay plain). `stale`: whether "still current" can
+	// clear its ↻ — a stale bio clears through its own review/re-translation.
+	const KIND: Record<
+		Kind,
+		{
+			label: string;
+			one: string;
+			job: TranslationJobType;
+			href: string;
+			review?: ReviewKind;
+			stale?: 'book' | 'sermon' | 'article';
+		}
+	> = {
+		books: { label: 'Books', one: 'Book', job: 'book', href: '/admin/books', review: 'book', stale: 'book' },
+		sermons: { label: 'Sermons', one: 'Sermon', job: 'sermon', href: '/sermons', review: 'sermon', stale: 'sermon' },
+		plans: { label: 'Plans', one: 'Plan', job: 'plan', href: '/plans' },
+		bios: { label: 'Biographies', one: 'Biography', job: 'bio', href: '/authors', review: 'bio' },
+		articles: { label: 'Articles', one: 'Article', job: 'article', href: '/articles', stale: 'article' }
+	};
 	const TABS: { key: Tab; label: string }[] = [
-		{ key: 'books', label: 'Books' },
-		{ key: 'sermons', label: 'Sermons' },
-		{ key: 'plans', label: 'Plans' },
-		{ key: 'bios', label: 'Biographies' },
-		{ key: 'articles', label: 'Articles' }
+		{ key: 'all', label: 'All' },
+		...KINDS.map((k) => ({ key: k, label: KIND[k].label }))
 	];
 
-	// Each tab is one job type (the queue's singular names).
-	const JOB_TYPE: Record<Tab, TranslationJobType> = {
-		books: 'book',
-		sermons: 'sermon',
-		plans: 'plan',
-		bios: 'bio',
-		articles: 'article'
-	};
-
 	// `?? []` guards the deploy window where the SPA carries a new tab before the
-	// API's payload does: a missing `cov[tab]` must render empty, not throw.
-	const rows = $derived<AdminCoverageRow[]>(cov?.[tab] ?? []);
+	// API's payload does: a missing `cov[kind]` must render empty, not throw.
+	const kindRows = (k: Kind): AdminCoverageRow[] => cov?.[k] ?? [];
+	const rows = $derived<AdminCoverageRow[]>(tab === 'all' ? KINDS.flatMap(kindRows) : kindRows(tab));
+	// Every rule that differs by kind (its link, job type, review queue) reads the
+	// ROW's kind, not the tab's, so the All matrix acts on each work as its own tab
+	// would. Rows are the resource's stable proxies, so they key the map.
+	const kindIndex = $derived(new Map(KINDS.flatMap((k) => kindRows(k).map((r) => [r, k] as const))));
+	const kindOf = (r: AdminCoverageRow): Kind => kindIndex.get(r) ?? 'books';
+	// Slugs are only unique within a kind (a book and a plan can share one).
+	const rowKey = (r: AdminCoverageRow) => `${kindOf(r)}:${r.slug}`;
 	// Hidden languages (a per-viewer preference, like Compact) drop out of the
 	// whole matrix — columns, totals, "+N", Priority, selection and CSV — so the
 	// view is about the languages this person actually works on.
@@ -115,16 +139,7 @@
 	let moreOpen = $state(false);
 	let helpOpen = $state(false);
 	const colTint = (code: string) => (hoverCol === code ? 'bg-surface-2' : '');
-	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
-	// detail yet) link to their live pages — a biography row is an author.
-	const ROW_HREF_BASE: Record<Tab, string> = {
-		books: '/admin/books',
-		sermons: '/sermons',
-		plans: '/plans',
-		bios: '/authors',
-		articles: '/articles'
-	};
-	const rowHref = (slug: string) => `${ROW_HREF_BASE[tab]}/${slug}`;
+	const rowHref = (r: AdminCoverageRow) => `${KIND[kindOf(r)].href}/${r.slug}`;
 	// A blank title (an import or edit that lost it) would leave a row, a prompt
 	// or a CSV line naming nothing — so such a work goes by its slug everywhere,
 	// and can't be queued until its title is fixed (see isGap).
@@ -135,16 +150,10 @@
 	// An unreviewed cell opens that translation in the review queue, panel open.
 	// A link rather than an approve button here: approving means reading the
 	// text beside its English and settling its flagged verses, which lives there.
-	// Articles aren't in the review queue, so their cells stay plain.
-	const REVIEW_KIND: Partial<Record<Tab, ReviewKind>> = {
-		books: 'book',
-		sermons: 'sermon',
-		bios: 'bio'
-	};
-	const reviewHref = (slug: string, lang: string) => {
-		const kind = REVIEW_KIND[tab];
+	const reviewHref = (r: AdminCoverageRow, lang: string) => {
+		const kind = KIND[kindOf(r)].review;
 		return kind
-			? `/admin/review?${new URLSearchParams({ kind, language: lang, slug })}`
+			? `/admin/review?${new URLSearchParams({ kind, language: lang, slug: r.slug })}`
 			: null;
 	};
 
@@ -184,16 +193,10 @@
 	let staleOnly = $state(init.get('stale') === '1');
 	const isStale = (r: AdminCoverageRow, code: string) => !!r.stale?.includes(code);
 	// "Still current": a reviewer checked a stale translation against the new
-	// English and it holds (the change was a typo fix, say). Books, sermons and
-	// articles only — a stale bio clears through its own review/re-translation.
-	const STALE_KIND: Partial<Record<Tab, 'book' | 'sermon' | 'article'>> = {
-		books: 'book',
-		sermons: 'sermon',
-		articles: 'article'
-	};
+	// English and it holds (the change was a typo fix, say). See KIND[].stale.
 	let markingCurrent = $state<string | null>(null);
 	async function markCurrent(r: AdminCoverageRow, l: AdminCoverageLanguage) {
-		const kind = STALE_KIND[tab];
+		const kind = KIND[kindOf(r)].stale;
 		if (!kind) return;
 		if (
 			!confirm(
@@ -201,7 +204,7 @@
 			)
 		)
 			return;
-		markingCurrent = `${r.slug}:${l.code}`;
+		markingCurrent = `${rowKey(r)}:${l.code}`;
 		queueError = null;
 		try {
 			await markTranslationCurrent({ kind, slug: r.slug, language: l.code });
@@ -234,16 +237,19 @@
 		}
 	}
 
-	// Group by author (books, sermons) or series (books). A tab without the
-	// chosen axis simply shows ungrouped, so switching tabs never strands a view.
-	const GROUPS = ['none', 'author', 'series'] as const;
+	// Group by author (books, sermons, all), series (books) or type (all). A tab
+	// without the chosen axis simply shows ungrouped, so switching tabs never
+	// strands a view.
+	const GROUPS = ['none', 'author', 'series', 'type'] as const;
 	let groupBy = $state<(typeof GROUPS)[number]>(pick('group', GROUPS, 'none'));
 	const groupAxis = $derived(
-		groupBy === 'author' && (tab === 'books' || tab === 'sermons')
+		groupBy === 'author' && (tab === 'books' || tab === 'sermons' || tab === 'all')
 			? 'author'
 			: groupBy === 'series' && tab === 'books'
 				? 'series'
-				: 'none'
+				: groupBy === 'type' && tab === 'all'
+					? 'type'
+					: 'none'
 	);
 	const seriesTitle = $derived(new Map(seriesOptions.map((s) => [s.slug, s.title])));
 	const NO_SERIES = '\u0000none'; // sorts nowhere in particular; placed last below
@@ -254,13 +260,20 @@
 		if (groupAxis === 'none') return [{ key: '', label: '', rows: visibleRows }];
 		const byKey = new Map<string, { key: string; label: string; rows: AdminCoverageRow[] }>();
 		for (const r of visibleRows) {
-			const key = groupAxis === 'author' ? (r.author ?? '—') : (r.series ?? NO_SERIES);
+			const key =
+				groupAxis === 'author'
+					? (r.author ?? '—')
+					: groupAxis === 'type'
+						? kindOf(r)
+						: (r.series ?? NO_SERIES);
 			const label =
 				groupAxis === 'author'
 					? key
-					: key === NO_SERIES
-						? 'Not in a series'
-						: (seriesTitle.get(key) ?? key);
+					: groupAxis === 'type'
+						? KIND[key as Kind].label
+						: key === NO_SERIES
+							? 'Not in a series'
+							: (seriesTitle.get(key) ?? key);
 			let g = byKey.get(key);
 			if (!g) byKey.set(key, (g = { key, label, rows: [] }));
 			g.rows.push(r);
@@ -333,8 +346,10 @@
 			const t = String(x);
 			return /[",\n]/.test(t) ? `"${t.replaceAll('"', '""')}"` : t;
 		};
-		const header = ['Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
+		const all = tab === 'all';
+		const header = [...(all ? ['Type'] : []), 'Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
 		const lines = [header, ...visibleRows.map((r) => [
+			...(all ? [KIND[kindOf(r)].one] : []),
 			workName(r),
 			r.slug,
 			r.author ?? '',
@@ -398,8 +413,8 @@
 				.sort((a, b) => (a.series_position ?? 0) - (b.series_position ?? 0));
 		}
 		if (sortMode === 'priority') {
-			const score = new Map(out.map((r) => [r.slug, priority(r)]));
-			out = [...out].sort((a, b) => score.get(b.slug)! - score.get(a.slug)!);
+			const score = new Map(out.map((r) => [r, priority(r)]));
+			out = [...out].sort((a, b) => score.get(b)! - score.get(a)!);
 		} else if (sortMode !== 'default')
 			out = [...out].sort((a, b) =>
 				sortMode === 'least'
@@ -478,7 +493,7 @@
 			if (isOriginal(r, l.code)) return 'source';
 			return v === 'ai_reviewed' || v === 'ai_unreviewed' ? v : 'present';
 		}
-		const job = jobFor(r.slug, l.code);
+		const job = jobFor(r, l.code);
 		if (job) return job.state === 'in_progress' ? 'translating' : 'queued';
 		return r.blocked ? 'blocked' : 'missing';
 	}
@@ -490,8 +505,12 @@
 	// state instead of the button and links to the issue. A row / column header can
 	// also queue every gap along it at once, behind a count confirmation.
 	//
-	// The matrix tab maps 1:1 onto a job type (plural → singular).
-	const jobType = $derived<TranslationJobType>(JOB_TYPE[tab]);
+	// A row's kind maps 1:1 onto a job type (plural → singular).
+	const jobTypeOf = (r: AdminCoverageRow) => KIND[kindOf(r)].job;
+	// The job types on screen: one per tab, every one under All.
+	const tabJobTypes = $derived(new Set((tab === 'all' ? KINDS : [tab]).map((k) => KIND[k].job)));
+	type Target = { type: TranslationJobType; slug: string; lang: string };
+	const target = (r: AdminCoverageRow, lang: string): Target => ({ type: jobTypeOf(r), slug: r.slug, lang });
 
 	let jobs = $state<AdminTranslationJob[]>([]);
 	// null = the jobs GET failed (unknown): keep the buttons and let POST surface
@@ -503,13 +522,9 @@
 	let queueError = $state<string | null>(null);
 	// A bulk enqueue awaiting the user's confirmation (the flooding guard): filing
 	// N jobs means N worker sessions, so a row/column press asks before it fires.
-	// The job type is captured here, at stage time, so switching tabs while the
-	// confirmation is up can't file the targets under the new tab's type.
-	let pendingBulk = $state<{
-		label: string;
-		type: TranslationJobType;
-		targets: { slug: string; lang: string }[];
-	} | null>(null);
+	// Each target carries its job type, captured at stage time, so switching tabs
+	// while the confirmation is up can't file them under another type.
+	let pendingBulk = $state<{ label: string; targets: Target[] } | null>(null);
 	// Live progress while a confirmed bulk runs (jobs are filed one at a time).
 	let bulkProgress = $state<{ done: number; total: number } | null>(null);
 	// Stop asks the run to finish the job in flight and file no more.
@@ -533,20 +548,20 @@
 		}
 	}
 
-	const jobKey = (slug: string, lang: string) => `${jobType}:${slug}:${lang}`;
+	const jobKey = (r: AdminCoverageRow, lang: string) => `${jobTypeOf(r)}:${r.slug}:${lang}`;
 	// Index the open jobs by `type:slug:lang` so each of the matrix's many cells
 	// is an O(1) lookup rather than a linear scan of the whole queue.
 	const jobIndex = $derived(
 		new Map(jobs.map((j) => [`${j.type}:${j.slug}:${j.language}`, j]))
 	);
-	const jobFor = (slug: string, lang: string) => jobIndex.get(jobKey(slug, lang));
+	const jobFor = (r: AdminCoverageRow, lang: string) => jobIndex.get(jobKey(r, lang));
 	// A cell is a queueable gap when the language is a translation target, the work
 	// has no row in it, and no job is already open. Shared by the buttons, the bulk
 	// counts, and the bulk target lists — so a non-queueable column (a stray content
 	// language) never offers a button that the POST would only reject.
 	// A copyright-blocked work has no gaps: nothing of it may be translated.
 	const isGap = (l: AdminCoverageLanguage, r: AdminCoverageRow) =>
-		!r.blocked && !untitled(r) && l.queueable && !r.cells[l.code] && !jobFor(r.slug, l.code);
+		!r.blocked && !untitled(r) && l.queueable && !r.cells[l.code] && !jobFor(r, l.code);
 	// Missing-and-unqueued count per language column, for the header's "queue all".
 	// Over the visible rows, so a filtered view queues only what it shows.
 	const colGaps = $derived(
@@ -563,7 +578,7 @@
 		for (const r of rows) for (const l of langs) if (isGap(l, r)) gaps++;
 		const unreviewed = rows.filter(hasUnreviewed).length;
 		const stale = rows.filter((r) => r.stale?.length).length;
-		const tabJobs = jobs.filter((j) => j.type === jobType && langs.some((l) => l.code === j.language));
+		const tabJobs = jobs.filter((j) => tabJobTypes.has(j.type) && langs.some((l) => l.code === j.language));
 		const translating = tabJobs.filter((j) => j.state === 'in_progress').length;
 		return { gaps, unreviewed, stale, inFlight: tabJobs.length, translating };
 	});
@@ -586,12 +601,12 @@
 				if (score) scored.push({ r, l, score });
 			}
 		scored.sort((a, b) => b.score - a.score);
-		const perWork = new Map<string, number>();
+		const perWork = new Map<AdminCoverageRow, number>();
 		const out: typeof scored = [];
 		for (const g of scored) {
-			const n = perWork.get(g.r.slug) ?? 0;
+			const n = perWork.get(g.r) ?? 0;
 			if (n >= NEXT_PER_WORK) continue;
-			perWork.set(g.r.slug, n + 1);
+			perWork.set(g.r, n + 1);
 			out.push(g);
 			if (out.length === NEXT_COUNT) break;
 		}
@@ -600,7 +615,7 @@
 	const queueNext = () =>
 		stageBulk(
 			`the ${nextGaps.length} most-wanted gap${nextGaps.length === 1 ? '' : 's'}`,
-			nextGaps.map(({ r, l }) => ({ slug: r.slug, lang: l.code })),
+			nextGaps.map(({ r, l }) => target(r, l.code)),
 			'next'
 		);
 
@@ -641,9 +656,8 @@
 	const lensHit = (r: AdminCoverageRow, l: AdminCoverageLanguage) =>
 		activeLens === 'stale' ? isStale(r, l.code) : cellState(r, l) === activeLens;
 
-	// File one job; returns null on success or a message to show. Type is passed in
-	// (not read from jobType) so a bulk run is unaffected by a mid-run tab switch.
-	async function enqueueOne(type: TranslationJobType, slug: string, lang: string): Promise<string | null> {
+	// File one job; returns null on success or a message to show.
+	async function enqueueOne({ type, slug, lang }: Target): Promise<string | null> {
 		try {
 			const res = await createAdminTranslationJob({ type, slug, language: lang });
 			if (!jobs.some((j) => j.url === res.job.url)) jobs = [...jobs, res.job];
@@ -654,12 +668,12 @@
 		}
 	}
 
-	async function queue(slug: string, lang: string, from: 'next' | 'matrix' = 'matrix') {
+	async function queue(r: AdminCoverageRow, lang: string, from: 'next' | 'matrix' = 'matrix') {
 		queueError = null;
 		bulkNote = null;
 		bulkFrom = from;
-		queueing = jobKey(slug, lang);
-		const err = await enqueueOne(jobType, slug, lang);
+		queueing = jobKey(r, lang);
+		const err = await enqueueOne(target(r, lang));
 		if (err) queueError = err === 'failed' ? "Couldn't queue the translation — try again." : err;
 		queueing = null;
 	}
@@ -667,27 +681,27 @@
 	// Stage a bulk enqueue for confirmation — a row (a work into all its missing
 	// languages), a column (all missing works into a language), a selection or
 	// the "Translate next" list. No-op when there's nothing to queue.
-	function stageBulk(label: string, targets: { slug: string; lang: string }[], from: 'next' | 'matrix' = 'matrix') {
+	function stageBulk(label: string, targets: Target[], from: 'next' | 'matrix' = 'matrix') {
 		if (!targets.length) return;
-		pendingBulk = { label, type: jobType, targets };
+		pendingBulk = { label, targets };
 		bulkFrom = from;
 	}
 	const bulkRow = (r: AdminCoverageRow) =>
 		stageBulk(
 			`“${workName(r)}” into every missing language`,
-			langs.filter((l) => isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }))
+			langs.filter((l) => isGap(l, r)).map((l) => target(r, l.code))
 		);
 	// --- Selecting gaps: ⇧-click a gap to start, ⇧-click another to take every
 	// gap in the rectangle between them; ⌘/Ctrl-click toggles one. A plain click
 	// still queues one straight away. Queueing a selection goes through the same
 	// count confirmation as a row / column.
-	const cellKey = (slug: string, lang: string) => `${slug}:${lang}`;
+	const cellKey = (r: AdminCoverageRow, lang: string) => `${rowKey(r)}:${lang}`;
 	let selected = $state<Record<string, true>>({});
-	let anchor = $state<{ slug: string; lang: string } | null>(null);
+	let anchor = $state<{ key: string; lang: string } | null>(null);
 	// Only cells still gaps count — one queued meanwhile drops out by itself.
 	const selectedTargets = $derived(
 		shownRows.flatMap((r) =>
-			langs.filter((l) => selected[cellKey(r.slug, l.code)] && isGap(l, r)).map((l) => ({ slug: r.slug, lang: l.code }))
+			langs.filter((l) => selected[cellKey(r, l.code)] && isGap(l, r)).map((l) => target(r, l.code))
 		)
 	);
 	const selectedByLang = $derived(
@@ -699,29 +713,29 @@
 		selected = {};
 		anchor = null;
 	}
-	// A different tab is a different job type — never carry a selection across.
+	// A different tab is a different set of rows — never carry a selection across.
 	$effect(() => {
 		void tab;
 		clearSelection();
 		lens = null;
 	});
 	function selectCell(e: MouseEvent, r: AdminCoverageRow, l: AdminCoverageLanguage) {
-		const k = cellKey(r.slug, l.code);
+		const k = cellKey(r, l.code);
 		if (e.shiftKey && anchor) {
-			const ri = [shownRows.findIndex((x) => x.slug === anchor!.slug), shownRows.indexOf(r)].sort((a, b) => a - b);
+			const ri = [shownRows.findIndex((x) => rowKey(x) === anchor!.key), shownRows.indexOf(r)].sort((a, b) => a - b);
 			const li = [langs.findIndex((x) => x.code === anchor!.lang), langs.indexOf(l)].sort((a, b) => a - b);
 			if (ri[0] >= 0 && li[0] >= 0) {
 				const next = { ...selected };
 				for (const row of shownRows.slice(ri[0], ri[1] + 1))
 					for (const col of langs.slice(li[0], li[1] + 1))
-						if (isGap(col, row)) next[cellKey(row.slug, col.code)] = true;
+						if (isGap(col, row)) next[cellKey(row, col.code)] = true;
 				selected = next;
 				return;
 			}
 		}
 		const { [k]: was, ...rest } = selected;
 		selected = was ? rest : { ...rest, [k]: true };
-		anchor = { slug: r.slug, lang: l.code };
+		anchor = { key: rowKey(r), lang: l.code };
 	}
 	function queueSelection() {
 		if (!selectedTargets.length) return;
@@ -734,12 +748,12 @@
 	const bulkCol = (l: AdminCoverageLanguage) =>
 		stageBulk(
 			`every missing work into ${l.name}`,
-			visibleRows.filter((r) => isGap(l, r)).map((r) => ({ slug: r.slug, lang: l.code }))
+			visibleRows.filter((r) => isGap(l, r)).map((r) => target(r, l.code))
 		);
 
 	async function runBulk() {
 		if (!pendingBulk) return;
-		const { targets, type } = pendingBulk; // type pinned at stage time
+		const { targets } = pendingBulk; // each target's type pinned at stage time
 		pendingBulk = null;
 		queueError = null;
 		bulkNote = null;
@@ -749,7 +763,7 @@
 		let firstErr: string | null = null;
 		for (const t of targets) {
 			if (bulkStopping) break;
-			const err = await enqueueOne(type, t.slug, t.lang);
+			const err = await enqueueOne(t);
 			if (err) {
 				failed++;
 				firstErr ??= err;
@@ -830,14 +844,14 @@
 							: 'border-border text-muted hover:text-text'}"
 						onclick={() => (tab = t.key)}
 					>
-						{t.label} ({d[t.key]?.length ?? 0})
+						{t.label} ({t.key === 'all' ? KINDS.reduce((n, k) => n + (d[k]?.length ?? 0), 0) : (d[t.key]?.length ?? 0)})
 					</button>
 				{/each}
 			</div>
 
 			<!-- What's waiting, before the detail. "Open gaps" toggles the Priority
 			     order; the review and out-of-date tiles toggle their filters. -->
-			{@const reviewKind = REVIEW_KIND[tab]}
+			{@const reviewKind = tab === 'all' ? null : KIND[tab].review}
 			{#snippet tile(
 				label: string,
 				value: number,
@@ -902,9 +916,9 @@
 					'none'
 				)}
 			</div>
-			{#if reviewKind && summary.unreviewed}
+			{#if (reviewKind || tab === 'all') && summary.unreviewed}
 				<p class="-mt-2 mb-4 text-small">
-					<a href="/admin/review?{new URLSearchParams({ kind: reviewKind })}">Open the review queue →</a>
+					<a href="/admin/review{reviewKind ? `?${new URLSearchParams({ kind: reviewKind })}` : ''}">Open the review queue →</a>
 				</p>
 			{/if}
 
@@ -918,10 +932,11 @@
 						>
 					</div>
 					<ol class="border-t border-border text-small">
-						{#each nextGaps as { r, l } (`${r.slug}:${l.code}`)}
+						{#each nextGaps as { r, l } (cellKey(r, l.code))}
 							<li class="flex items-center gap-3 border-b border-border px-4 py-1.5 last:border-0">
 								<span class="min-w-0 flex-1 truncate">
-									<a href={rowHref(r.slug)} class="text-text hover:text-accent">{workName(r)}</a>
+									{#if tab === 'all'}<span class="text-micro text-muted">{KIND[kindOf(r)].one}</span>{/if}
+									<a href={rowHref(r)} class="text-text hover:text-accent">{workName(r)}</a>
 									<span class="text-muted">→</span>
 									<span class="font-semibold">{l.name}</span>
 								</span>
@@ -931,8 +946,8 @@
 									type="button"
 									class="shrink-0 font-semibold text-accent hover:underline disabled:opacity-40 disabled:no-underline"
 									disabled={busy}
-									onclick={() => queue(r.slug, l.code, 'next')}
-								>{queueing === jobKey(r.slug, l.code) ? '…' : 'Queue'}</button>
+									onclick={() => queue(r, l.code, 'next')}
+								>{queueing === jobKey(r, l.code) ? '…' : 'Queue'}</button>
 							</li>
 						{/each}
 					</ol>
@@ -977,11 +992,12 @@
 								<option value="most">Most complete first</option>
 							</select>
 						</label>
-						{#if tab === 'books' || tab === 'sermons'}
+						{#if tab === 'books' || tab === 'sermons' || tab === 'all'}
 							<label class="grid gap-1">
 								<span class="text-micro text-muted">Group</span>
 								<select bind:value={groupBy} class="field text-small">
 									<option value="none">None</option>
+									{#if tab === 'all'}<option value="type">By type</option>{/if}
 									<option value="author">By author</option>
 									{#if tab === 'books'}<option value="series">By series</option>{/if}
 								</select>
@@ -1093,7 +1109,7 @@
 					<summary class="cursor-pointer list-none rounded-full border border-border px-2 py-0.5 text-muted hover:text-text" aria-label="How to use the matrix">?</summary>
 					<div class="absolute left-0 z-40 mt-1 grid w-80 gap-1.5 rounded-card border border-border bg-surface p-3 text-small text-muted shadow-lg">
 						<p>Click a chip to highlight those cells; click it again to clear.</p>
-						{#if tab !== 'articles' && tab !== 'plans'}<p>Click a gold <strong>AI</strong> cell to review that translation.</p>{/if}
+						{#if tab === 'all'}<p>Click a gold <strong>AI</strong> cell on a book, sermon or biography to review that translation.</p>{:else if KIND[tab].review}<p>Click a gold <strong>AI</strong> cell to review that translation.</p>{/if}
 						{#if queueOn}
 							<p>Click an empty cell to queue one translation, or a column's or row's “+N” to queue them all.</p>
 							<p>⇧-click two empty cells to select every gap between them; ⌘/Ctrl-click toggles one.</p>
@@ -1233,10 +1249,10 @@
 									{/each}
 								</tr>
 								{#if open}
-									{#each g.rows as r (r.slug)}{@render workRow(r)}{/each}
+									{#each g.rows as r (rowKey(r))}{@render workRow(r)}{/each}
 								{/if}
 							{:else}
-								{#each g.rows as r (r.slug)}{@render workRow(r)}{/each}
+								{#each g.rows as r (rowKey(r))}{@render workRow(r)}{/each}
 							{/if}
 						{/each}
 					</tbody>
@@ -1276,10 +1292,10 @@
 				: 'py-2.5'}"
 		>
 			<a
-				href={rowHref(r.slug)}
+				href={rowHref(r)}
 				class="{compact ? 'line-clamp-1' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
 				title={r.author ? `${name} — ${r.author}` : name}
-			>{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
+			>{#if tab === 'all' && groupAxis !== 'type'}<span class="me-1 text-micro font-normal text-muted">{KIND[kindOf(r)].one}</span>{/if}{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
 			{#if !r.blocked}
 				{@const have = completeness(r)}
 				<!-- The row's own coverage, on the right edge. In Compact the hover
@@ -1355,7 +1371,7 @@
 			>
 		{:else if st === 'ai_reviewed' || st === 'ai_unreviewed' || st === 'present'}
 			{@const m = cellMeta(r.cells[l.code]!)}
-			{@const review = isUnreviewed(r, l.code) ? reviewHref(r.slug, l.code) : null}
+			{@const review = isUnreviewed(r, l.code) ? reviewHref(r, l.code) : null}
 			<!-- The stale mark is the tile's sibling (a button can't nest in the review
 			     link), pinned to its corner by this wrapper. -->
 			<span class="relative inline-flex align-middle">
@@ -1372,7 +1388,7 @@
 				{#if isStale(r, l.code)}{@render staleMark(r, l, name)}{/if}
 			</span>
 		{:else if st === 'queued' || st === 'translating'}
-			{@const job = jobFor(r.slug, l.code)!}
+			{@const job = jobFor(r, l.code)!}
 			<a
 				href={job.url}
 				target="_blank"
@@ -1405,8 +1421,8 @@
 				>{wanting || ''}</span
 			>
 		{:else}
-			{@const spot = queueing === jobKey(r.slug, l.code)}
-			{@const picked = !!selected[cellKey(r.slug, l.code)]}
+			{@const spot = queueing === jobKey(r, l.code)}
+			{@const picked = !!selected[cellKey(r, l.code)]}
 			{@const wanting = asking(r, l)}
 			{@const why = askingNote(r, l)}
 			<button
@@ -1421,7 +1437,7 @@
 				title={`Queue a ${l.name} translation of ${name}${why}`}
 				aria-label={`Queue a ${l.name} translation of ${name}${why}`}
 				onclick={(e) =>
-					e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r.slug, l.code)}
+					e.shiftKey || e.metaKey || e.ctrlKey ? selectCell(e, r, l) : queue(r, l.code)}
 			>
 				{#if spot}
 					<span>…</span>
@@ -1440,7 +1456,7 @@
 <!-- The stale mark sits ON the tile's corner, absolutely positioned, so a stale
      cell stays centred in its column instead of being shoved aside by a glyph. -->
 {#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage, name: string)}
-	{#if STALE_KIND[tab] && auth.can('review', 'act', l.code)}
+	{#if KIND[kindOf(r)].stale && auth.can('review', 'act', l.code)}
 		<button
 			type="button"
 			class="{STALE} hover:bg-accent disabled:opacity-50"
