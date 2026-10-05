@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { i18n } from '$lib/i18n.svelte';
+	import type { SavedSummary } from '$lib/savedSummary';
+	import { getLang } from '$lib/lang.svelte';
 
 	/**
 	 * The left-hand pitch on /login when the reader arrived from a My Bookshelf or
@@ -18,7 +20,22 @@
 	 * `features` list — so a phone can put the form between them instead of
 	 * making the reader scroll past three benefit blurbs to reach it.
 	 */
-	let { kind, part }: { kind: PitchKind; part: 'intro' | 'features' } = $props();
+	let {
+		kind,
+		part,
+		saved = null
+	}: {
+		kind: PitchKind;
+		part: 'intro' | 'features';
+		/**
+		 * What the reader already saved on this device. When there is any, the
+		 * intro shows those counts in place of the drawing — "Your bookshelf is
+		 * waiting" — since their own shelf sells it better than a sample one.
+		 */
+		saved?: SavedSummary | null;
+	} = $props();
+	const waiting = $derived(saved != null && saved.total > 0);
+	const nf = $derived(new Intl.NumberFormat(getLang()));
 
 	const t = i18n.t;
 	const p = $derived(kind === 'shelf' ? 'login.pitchShelf' : 'login.pitchNotebook');
@@ -47,6 +64,18 @@
 {#if part === 'intro'}
 	<section class="pitch">
 		<p class="eyebrow pitch-eyebrow">{t(kind === 'shelf' ? 'fav.yourFavorites' : 'notebook.title')}</p>
+		{#if waiting && saved}
+			<h1 class="pitch-title">{t(kind === 'shelf' ? 'login.waitingShelf' : 'login.waitingNotebook')}</h1>
+			<div class="saved">
+				<p class="saved-k">{t('login.waitingLabel')}</p>
+				<ul class="saved-chips">
+					{#each saved.chips as c (c.labelKey)}
+						<li><b>{nf.format(c.count)}</b> {t(c.labelKey)}</li>
+					{/each}
+				</ul>
+			</div>
+			<p class="lede">{t(kind === 'shelf' ? 'login.waitingLedeShelf' : 'login.waitingLedeNotebook')}</p>
+		{:else}
 		<h1 class="pitch-title">{t(`${p}Title`)}</h1>
 		<p class="lede">{t(`${p}Lede`)}</p>
 
@@ -93,6 +122,7 @@
 				</div>
 			{/if}
 		</div>
+		{/if}
 	</section>
 {:else}
 	<ul class="feats">
@@ -120,6 +150,39 @@
 		flex-direction: column;
 		gap: 1.25rem;
 		min-width: 0;
+	}
+	.saved {
+		display: flex;
+		flex-direction: column;
+		gap: 0.6rem;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-card);
+		background: var(--surface);
+		padding: 1rem;
+	}
+	.saved-k {
+		margin: 0;
+		font-size: var(--fs-small);
+		color: var(--muted);
+	}
+	.saved-chips {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	.saved-chips li {
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		padding: 0.25rem 0.75rem;
+		font-size: var(--fs-small);
+		background: var(--surface-2);
+	}
+	.saved-chips b {
+		font-variant-numeric: tabular-nums;
+		color: var(--accent);
 	}
 	.pitch-eyebrow {
 		margin: 0;
