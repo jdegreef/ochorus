@@ -99,6 +99,7 @@ TOPICS = [
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",
+            "revelations-of-divine-love",
         ],
     ),
     (
@@ -182,6 +183,7 @@ TOPICS = [
             "paradise-lost",
             "heretics",
             "st-francis-of-assisi",
+            "revelations-of-divine-love",
             "phantastes",
             "diary-of-an-old-soul",
         ],
@@ -294,6 +296,7 @@ TOPICS = [
             "key-teachings-of-julia-foote",
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-corrie-ten-boom",
+            "revelations-of-divine-love",
         ],
     ),
     (
@@ -377,6 +380,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
+            "revelations-of-divine-love",
         ],
     ),
     (
