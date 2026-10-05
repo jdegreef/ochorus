@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "blaise-pascal",
+ "language": "sw",
+ "job_issue": 5088,
+ "note": [
+  "Zaburi 119:16 ('I will not forget thy word', the Memorial's last line) is not quoted anywhere in the shipped sw corpus, so it is self-rendered in the Swahili Union Version idiom ('Sitalisahau neno lako'); a reviewer should check it against the SUV.",
+  "2 Timotheo 1:12 (the seal motto Scio cui credidi) is pasted verbatim from thoughts-for-the-quiet-hour.sw.json (also in gleanings-among-the-sheaves.sw.json).",
+  "'Mungu wa Ibrahimu, Mungu wa Isaka, Mungu wa Yakobo' is Pascal's own Memorial wording echoing Exodus 3:6, rendered as his prose (it matches the SUV words in the-god-of-all-comfort.sw.json); the Gethsemane sayings from 'The Mystery of Jesus' are Pascal's words, not scripture.",
+  "Clock times are CONVERTED to Swahili reckoning (10:30 pm = saa nne na nusu usiku; 12:30 am = saa sita na nusu usiku wa manane; 1 am = saa saba usiku). The reviewer may prefer the keep-the-number convention."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 119:16",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "2 Timothy 1:12",
+   "status": "mined",
+   "source_file": "thoughts-for-the-quiet-hour.sw.json",
+   "block_index": 26
+  }
+ ]
+}
