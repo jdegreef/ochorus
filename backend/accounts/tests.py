@@ -111,6 +111,13 @@ class SignupSourceViewTests(TestCase):
         self.profile.refresh_from_db()
         self.assertEqual(self.profile.signup_variant, "library")
 
+    def test_tags_a_prompt_source_too(self):
+        # Not only the home band: any sign-up prompt (here the reader's
+        # chapter-end card) is a known source.
+        self._post("chapter_end")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.signup_variant, "chapter_end")
+
     def test_is_create_only_never_overwrites(self):
         self.profile.signup_variant = "keep"
         self.profile.save(update_fields=["signup_variant"])

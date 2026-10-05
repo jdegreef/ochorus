@@ -49,13 +49,15 @@ const KEYS: Record<string, string> = {
 	over_request_rate_limit: 'authErr.rateLimited',
 	over_sms_send_rate_limit: 'authErr.rateLimited',
 
-	// NOTE: no `otp_expired`. An expired magic/reset link never reaches these
-	// functions — Supabase reports it on the redirect back, and the recovery
-	// session simply comes up missing (AuthSessionMissingError, no `code`). A
-	// mapping for it would be a string nothing can ever render.
+	// A typed sign-in code that is wrong or too old (verifyEmailCode). An
+	// expired magic/reset LINK never reaches these functions — Supabase reports
+	// that on the redirect back — so this only ever describes the code.
+	otp_expired: 'authErr.codeInvalid',
 
 	// Sign-up is switched off for this project.
 	signup_disabled: 'authErr.signupDisabled',
+	// Email sign-in codes switched off — raised when SENDING, before any code.
+	otp_disabled: 'authErr.signupDisabled',
 	email_provider_disabled: 'authErr.signupDisabled'
 };
 

@@ -550,6 +550,173 @@
 	--hue-plum-soft: #ecdde3;
 }
 
+/* PALETTES — a reader's choice of library colours, layered OVER the theme
+   (light / sepia / dark stay the brightness choice; a palette is the
+   character). Set as data-palette on <html> by $lib/palette.svelte.ts and
+   the app.html boot script; no attribute is the house palette (Parchment —
+   everything above). Each palette re-tints the grounds and the accent in
+   light and dark, and only the accent in sepia, whose parchment is the
+   point of choosing it. Screen only: print keeps its black-on-white.
+   Every ink still clears 4.5:1 on every re-tinted ground — palettes.test.ts
+   measures it rather than trusting this list. */
+@media screen {
+	/* Cathedral — navy and gold over cool stone. */
+	:root[data-theme='light'][data-palette='cathedral'] {
+		--bg: #f5f6f8;
+		--surface: #ffffff;
+		--surface-2: #eaedf2;
+		--band: #e6eaf0;
+		--border: #dce1e9;
+		--shelf-back: #e6e9ef;
+		--accent: #1f3a6e;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e6ebf5;
+		--accent-soft-border: #cdd6e8;
+	}
+	:root[data-theme='dark'][data-palette='cathedral'] {
+		--bg: #10141c;
+		--surface: #171c26;
+		--surface-2: #1f2531;
+		--band: #141923;
+		--border: #262d3a;
+		--shelf-back: #1a1f29;
+		--accent: #93b4ee;
+		--accent-contrast: #10141c;
+		--accent-soft: #1a2335;
+		--accent-soft-border: #2c3a55;
+	}
+	:root[data-theme='sepia'][data-palette='cathedral'] {
+		--accent: #1f3a6e;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e2e3ea;
+		--accent-soft-border: #cfd3e2;
+	}
+	/* Olive Grove — sage and olive over a field-cream ground. */
+	:root[data-theme='light'][data-palette='olive'] {
+		--bg: #f6f5ee;
+		--surface: #ffffff;
+		--surface-2: #ecebdf;
+		--band: #e9e8d9;
+		--border: #e0dfcd;
+		--shelf-back: #ebe9da;
+		--accent: #2f5a3a;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e4efe5;
+		--accent-soft-border: #cfe0d2;
+	}
+	:root[data-theme='dark'][data-palette='olive'] {
+		--bg: #121510;
+		--surface: #1a1e17;
+		--surface-2: #232820;
+		--band: #171a14;
+		--border: #282e24;
+		--shelf-back: #1b1f18;
+		--accent: #9fd0a8;
+		--accent-contrast: #121510;
+		--accent-soft: #1c2a1f;
+		--accent-soft-border: #2f4533;
+	}
+	:root[data-theme='sepia'][data-palette='olive'] {
+		--accent: #2f5a3a;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e2e6d3;
+		--accent-soft-border: #cdd7bf;
+	}
+	/* Hearth — terracotta and amber over a warm, firelit ground. */
+	:root[data-theme='light'][data-palette='hearth'] {
+		--bg: #fbf4ec;
+		--surface: #ffffff;
+		--surface-2: #f5e9dc;
+		--band: #f2e3d2;
+		--border: #ecdcc9;
+		--shelf-back: #f2e3d2;
+		--accent: #8c3b1e;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f6e6dd;
+		--accent-soft-border: #ebcfbf;
+	}
+	:root[data-theme='dark'][data-palette='hearth'] {
+		--bg: #1a120e;
+		--surface: #231915;
+		--surface-2: #2d211b;
+		--band: #1f1611;
+		--border: #33261e;
+		--shelf-back: #261b15;
+		--accent: #eba98a;
+		--accent-contrast: #1a120e;
+		--accent-soft: #33211a;
+		--accent-soft-border: #4d3226;
+	}
+	:root[data-theme='sepia'][data-palette='hearth'] {
+		--accent: #8c3b1e;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f1dfcf;
+		--accent-soft-border: #e3c8b2;
+	}
+	/* Dawn — plum and rose over a blush ground. */
+	:root[data-theme='light'][data-palette='dawn'] {
+		--bg: #fbf6f6;
+		--surface: #ffffff;
+		--surface-2: #f4ebec;
+		--band: #f1e5e7;
+		--border: #ecdfe1;
+		--shelf-back: #f1e5e7;
+		--accent: #6b3a7a;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f1e8f4;
+		--accent-soft-border: #e2d2e8;
+	}
+	:root[data-theme='dark'][data-palette='dawn'] {
+		--bg: #17121a;
+		--surface: #201924;
+		--surface-2: #2a212f;
+		--band: #1c1620;
+		--border: #2f2535;
+		--shelf-back: #211a26;
+		--accent: #d3a8e6;
+		--accent-contrast: #17121a;
+		--accent-soft: #2b1f33;
+		--accent-soft-border: #44314f;
+	}
+	:root[data-theme='sepia'][data-palette='dawn'] {
+		--accent: #6b3a7a;
+		--accent-contrast: #ffffff;
+		--accent-soft: #ece0e2;
+		--accent-soft-border: #dbc9d6;
+	}
+	/* Monastery — slate over plain stone; quiet, almost colourless. */
+	:root[data-theme='light'][data-palette='monastery'] {
+		--bg: #f6f6f4;
+		--surface: #ffffff;
+		--surface-2: #ececea;
+		--band: #e8e8e5;
+		--border: #e0e0dc;
+		--shelf-back: #e8e8e5;
+		--accent: #3b4a5c;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e8ecf0;
+		--accent-soft-border: #d3dbe3;
+	}
+	:root[data-theme='dark'][data-palette='monastery'] {
+		--bg: #141414;
+		--surface: #1c1c1c;
+		--surface-2: #252525;
+		--band: #181818;
+		--border: #2a2a2a;
+		--shelf-back: #1e1e1e;
+		--accent: #a9bdd4;
+		--accent-contrast: #141414;
+		--accent-soft: #1e252d;
+		--accent-soft-border: #33404d;
+	}
+	:root[data-theme='sepia'][data-palette='monastery'] {
+		--accent: #3b4a5c;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e4e2dc;
+		--accent-soft-border: #cfd0cc;
+	}
+}
+
 /* THE HOME HERO (HomeHero.svelte): a greeting set over a painting, so its
    ink is theme-independent — light on a scrim that darkens from the foot,
    where the text sits. --hero-ground shows only while the painting loads. */
@@ -2005,6 +2172,31 @@ nav.appnav .navsearch:hover {
 	min-height: 5.75rem;
 	padding: 1rem 1.1rem 0.9rem;
 }
+/* ── Duotone portraits ─────────────────────────────────────────────────────
+   A face printed in one ink: the photograph's light and shade, the colour of
+   the section it stands in. Most sources are already monochrome plates and
+   engravings, so a plain grey photo sat on a coloured card like a cutting
+   pasted in; in the card's own hue it belongs to it. The colour blend keeps
+   the image's luminance and takes hue and saturation from --duotone-hue, so
+   the face stays exactly as legible as the grey one. Decorative only — every
+   caller names the person in text — so nothing here is measured for
+   contrast. `isolation` keeps the blend inside the frame. */
+.duotone {
+	position: relative;
+	isolation: isolate;
+}
+.duotone img {
+	filter: grayscale(1) contrast(1.08);
+}
+.duotone::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background: var(--duotone-hue, var(--section-hue, var(--accent)));
+	mix-blend-mode: color;
+	pointer-events: none;
+}
 /* ── Emblem chips ──────────────────────────────────────────────────────────
    The round tinted chip carrying an illustrated emblem ($lib/emblems.ts) —
    one recipe for every surface (shelf cards, sermon rows and cards, topic
@@ -2211,8 +2403,9 @@ nav.appnav .navsearch:hover {
 	}
 }
 
-/* The fan of covers in the band. Overlapped and slightly rotated so a shelf
-   reads as books rather than thumbnails. `margin-inline-start:auto` pushes it
+/* The fan of covers in the band. Overlapped (and upright: a book is never
+   drawn on a slant — coverStraight.test.ts) so a shelf reads as books rather
+   than thumbnails. `margin-inline-start:auto` pushes it
    to the far end; under RTL that is the left, which is correct. */
 /* The band's far end. The band does the pushing, so an occupant only styles
    itself. */
@@ -2242,7 +2435,6 @@ nav.appnav .navsearch:hover {
 	border-radius: 0.25rem;
 	overflow: hidden;
 	background: var(--surface);
-	transform: rotate(-3deg);
 }
 /* A sermon in the fan: the emblem chip, sized to the tile height. Round rather
    than 3:4 on purpose — see ShelfCard.
@@ -2266,19 +2458,10 @@ nav.appnav .navsearch:hover {
 .cover-fan .sermon-tile:first-child {
 	margin-inline-start: 0;
 }
-.cover-fan .cover:nth-child(2) {
-	transform: rotate(1deg);
-}
-.cover-fan .cover:nth-child(3) {
-	transform: rotate(4deg);
-}
-.cover-fan .cover:nth-child(4) {
-	transform: rotate(7deg);
-}
 /* The large fan (ShelfCard fan="lg", the series index): covers at a width
    their titles can be read at, centred in a taller band with no badge. The
-   fan pads its block and end edges so the bigger tiles' rotated corners
-   aren't sliced by its overflow clip. */
+   fan pads its block and end edges so the bigger tiles' shadows aren't sliced
+   by its overflow clip. */
 .shelf-card-band.fan-lg {
 	justify-content: center;
 	min-height: 8.75rem;
@@ -2287,7 +2470,7 @@ nav.appnav .navsearch:hover {
 .shelf-card-band.fan-lg > .cover-fan {
 	margin-inline-start: 0;
 	padding-block: 0.35rem;
-	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's tilt */
+	padding-inline: 1.1rem 0.5rem; /* the first tile's pull; the last's shadow */
 	max-width: 100%;
 }
 .fan-lg .cover-fan > * {

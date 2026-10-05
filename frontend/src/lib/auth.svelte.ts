@@ -5,9 +5,10 @@ import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
 import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
+import { welcome } from './welcome.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
-import { shownVariant } from './signupBand';
+import { signupSource } from './signupSource';
 import { type AdminScope, type Scopes, can as canDo, hasAnyAdminAccess } from './adminAccess';
 
 export interface Profile {
@@ -42,15 +43,34 @@ const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 const origin = () => (browser ? window.location.origin : undefined);
 
 /**
- * Supabase sign-up options carrying the sign-up-band attribution, or nothing.
+ * Where an emailed link or Google should bring the reader back to: `returnTo`
+ * when it is a page on this site (the sign-up panel passes the page it sits
+ * over), else the site root as before. Supabase only honours URLs on the
+ * project's redirect allow-list and falls back to its Site URL otherwise, so
+ * this can never send anyone off-site.
+ */
+function returnUrl(returnTo?: string): string | undefined {
+	if (!browser || !returnTo) return origin();
+	try {
+		const u = new URL(returnTo, window.location.origin);
+		return u.origin === window.location.origin ? u.href : origin();
+	} catch {
+		return origin();
+	}
+}
+
+/**
+ * Supabase sign-up options carrying the sign-up attribution (the prompt the
+ * reader followed, else the home band they saw — see `$lib/signupSource`), or
+ * nothing.
  * `data` lands in the user's ``user_metadata`` (so it survives the email
  * confirmation round-trip) and Django records it create-only against the new
  * account. Only set when the reader actually saw a band — the backend also
  * validates the value, so a stale key can never corrupt the analytics.
  */
 function signupMetadata(): { data?: { signup_variant: string } } {
-	const variant = shownVariant();
-	return variant ? { data: { signup_variant: variant } } : {};
+	const source = signupSource();
+	return source ? { data: { signup_variant: source } } : {};
 }
 
 /**
@@ -215,7 +235,7 @@ class Auth {
 	}
 
 	/** Passwordless: email the user a one-time sign-in link. */
-	async signInWithMagicLink(email: string): Promise<string | null> {
+	async signInWithMagicLink(email: string, returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOtp({
@@ -223,7 +243,7 @@ class Auth {
 			// `data` seeds user_metadata only when this link CREATES the account,
 			// so it attributes a first-time sign-up and is ignored for a returning
 			// reader — same create-only story as the password path.
-			options: { emailRedirectTo: origin(), ...signupMetadata() }
+			options: { emailRedirectTo: returnUrl(returnTo), ...signupMetadata() }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
@@ -231,13 +251,27 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
+	/**
+	 * Finish an emailed sign-in with the 6-digit code from the same email as the
+	 * link (`signInWithMagicLink` sends both once the Supabase templates carry
+	 * `{{ .Token }}`). On success Supabase raises SIGNED_IN and the listener in
+	 * `init` merges this device's reading in, exactly as after the link.
+	 */
+	async verifyEmailCode(email: string, code: string): Promise<string | null> {
+		const sb = await supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.verifyOtp({ email, token: code, type: 'email' });
+		// `||`, not `??`: see signIn.
+		return error ? error.code || 'unexpected_failure' : null;
+	}
+
 	/** OAuth via Google. On success the browser navigates away to Google. */
-	async signInWithGoogle(): Promise<string | null> {
+	async signInWithGoogle(returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOAuth({
 			provider: 'google',
-			options: { redirectTo: origin() }
+			options: { redirectTo: returnUrl(returnTo) }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
@@ -291,6 +325,7 @@ class Auth {
 		// the session ends: the auth listener that fires then finds nothing
 		// unsynced, so it can't stash what the reader chose to discard.
 		readingSync.clearOnSignOut();
+		welcome.forgetPage();
 		await (await supabase())?.auth.signOut();
 		this.user = null;
 		this.#token = null;
@@ -310,6 +345,8 @@ class Auth {
 			// Blank theme = no saved prefs yet (see UserProfile.theme): the
 			// account's values are model defaults, so it takes this device's.
 			const fresh = !p.theme;
+			// A new account's first sign-in: offer the "choose your library" welcome.
+			if (fresh) welcome.offer();
 			if (!fresh) {
 				theme.set(normalizePref(p.theme));
 				if (p.font_scale) readerPrefs.setScale(p.font_scale);
@@ -355,16 +392,16 @@ class Auth {
 	}
 
 	/**
-	 * Attribute a NEW account to the sign-up band the reader saw, for providers
+	 * Attribute a NEW account to the sign-up prompt the reader followed, for providers
 	 * that can't carry it in the JWT (OAuth). Fire-and-forget POST of the stored
-	 * arm, gated to a genuinely fresh account (Supabase `created_at` within the
-	 * window) so a returning reader's stale stored arm is never sent. The backend
+	 * source, gated to a genuinely fresh account (Supabase `created_at` within the
+	 * window) so a returning reader's stale stored source is never sent. The backend
 	 * re-checks create-only + freshness, and email/magic-link accounts already
-	 * carry their arm from the JWT, so this is a no-op for them.
+	 * carry their source from the JWT, so this is a no-op for them.
 	 */
 	#recordSignupSource() {
 		if (!this.user) return;
-		const variant = shownVariant();
+		const variant = signupSource();
 		if (!variant) return;
 		const created = this.#userCreatedAt ? Date.parse(this.#userCreatedAt) : NaN;
 		if (!Number.isFinite(created) || Date.now() - created > 15 * 60 * 1000) return;

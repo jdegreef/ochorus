@@ -125,7 +125,7 @@ jobs:
             frontend:
               - 'frontend/**'
             ci:
-              - '{.github/workflows/**,render.yaml}'
+              - '{.github/workflows/**,.github/scripts/**,render.yaml}'
 
   # --- Backend gate -------------------------------------------------------
   backend-tests:
@@ -418,11 +418,14 @@ jobs:
       # PRERENDER_CONCURRENCY: pages rendered at once (svelte.config.js). Only
       # CI raises it — this API is a throwaway; production's build crawls the
       # live one and stays at 1.
+      # PARALLEL_CARDS: the postbuild share-card scripts as three lanes at once
+      # instead of one after another (scripts/build-cards.mjs); same cards.
       - name: Frontend — build
         working-directory: frontend
         env:
           PUBLIC_API_BASE_URL: http://localhost:8000
           PRERENDER_CONCURRENCY: '8'
+          PARALLEL_CARDS: '1'
         run: npm run build
 
       # These guards assert on BUILT html, so they run after the build.
@@ -508,16 +511,20 @@ jobs:
           uv run python manage.py seed_if_empty
           uv run python manage.py export_book --all --format epub --out "$RUNNER_TEMP/epubs"
 
-      # ubuntu-latest ships a JDK (epubcheck 5 needs 11+). One JVM per book,
-      # run a core apiece; -q prints only what's wrong.
+      # ubuntu-latest ships a JDK (epubcheck 5 needs 11+; `java File.java` runs
+      # a single-file source, which needs the JDK, not just a JRE). ONE JVM for
+      # every book: EpubCheckAll calls the epubcheck CLI's own entry point per
+      # file, so the -q error lines and each verdict are the CLI's. It used to
+      # be a JVM per book, and those ~140 start-ups and warm-ups were nearly all
+      # of this step's ~8 minutes (locally: 139 s -> 7 s for the same 138 books).
+      # It also fails on an empty export, which the per-file loop passed.
       - name: epubcheck
         run: |
           curl -sfL -o "$RUNNER_TEMP/epubcheck.zip" \
             "https://github.com/w3c/epubcheck/releases/download/v$EPUBCHECK_VERSION/epubcheck-$EPUBCHECK_VERSION.zip"
           unzip -q "$RUNNER_TEMP/epubcheck.zip" -d "$RUNNER_TEMP"
-          export JAR="$RUNNER_TEMP/epubcheck-$EPUBCHECK_VERSION/epubcheck.jar"
-          find "$RUNNER_TEMP/epubs" -name '*.epub' -print0 \
-            | xargs -0 -n1 -P"$(nproc)" sh -c 'java -jar "$JAR" -q "$0" || { echo "::error::epubcheck failed: $(basename "$0")"; exit 255; }'
+          java -cp "$RUNNER_TEMP/epubcheck-$EPUBCHECK_VERSION/epubcheck.jar" \
+            .github/scripts/EpubCheckAll.java "$RUNNER_TEMP/epubs"
 
   # --- Stable required-check name -----------------------------------------
   # Branch protection requires the context "test-and-build". Splitting the old

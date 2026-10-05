@@ -70,19 +70,10 @@
 		box-shadow: var(--shadow-card);
 		background: var(--surface);
 	}
-	/* The strip: overlapped and tilted a little more at each step. Each tilt
-	   is written for LTR and multiplied by --lean, which flips in RTL: the
-	   covers' order mirrors there, so their lean must too. :dir() follows the
-	   strip's own resolved direction, not just an ancestor's attribute. */
-	.strip {
-		--lean: 1;
-	}
-	.strip:dir(rtl) {
-		--lean: -1;
-	}
+	/* The strip: overlapped, every cover standing straight (a book is never
+	   drawn on a slant — coverStraight.test.ts). */
 	.strip .cover {
 		margin-inline-start: -0.7rem;
-		transform: rotate(calc(var(--lean) * -3deg));
 	}
 	.lg .cover {
 		width: 4.75rem;
@@ -91,20 +82,10 @@
 	.strip .cover:first-child {
 		margin-inline-start: 0;
 	}
-	.strip .cover:nth-child(2) {
-		transform: rotate(calc(var(--lean) * 1deg));
-	}
-	.strip .cover:nth-child(3) {
-		transform: rotate(calc(var(--lean) * 4deg));
-	}
-	.strip .cover:nth-child(4) {
-		transform: rotate(calc(var(--lean) * 7deg));
-	}
 	/* The fan sizes off its width: a 46%-wide 3:4 cover is 0.61 of the width
-	   tall, the tilted pair's outer corners drop a little more, and the 1rem
-	   the side covers sit below the middle one rides on as padding. Symmetric,
-	   so it needs no RTL flip. One cover stands alone; two lean apart; three
-	   lean out from a raised middle. */
+	   tall, and the 1rem the side covers sit below the middle one rides on as
+	   padding. Symmetric, so it needs no RTL flip. One cover stands alone; two
+	   stand apart; three stand either side of a raised middle — all upright. */
 	.fan {
 		position: relative;
 		display: block;
@@ -120,20 +101,20 @@
 		transform-origin: bottom center;
 	}
 	.fan .cover:first-child:nth-last-child(3) {
-		transform: rotate(-10deg) translateX(-36%);
+		transform: translateX(-36%);
 	}
 	.fan .cover:nth-child(2):nth-last-child(2) {
 		z-index: 1;
 		top: 0;
 	}
 	.fan .cover:nth-child(3) {
-		transform: rotate(10deg) translateX(36%);
+		transform: translateX(36%);
 	}
 	.fan .cover:first-child:nth-last-child(2) {
-		transform: rotate(-6deg) translateX(-26%);
+		transform: translateX(-26%);
 	}
 	.fan .cover:nth-child(2):last-child {
-		transform: rotate(6deg) translateX(26%);
+		transform: translateX(26%);
 	}
 	.cover img,
 	.cover-fallback {

@@ -98,6 +98,7 @@ TOPICS = [
             "all-things-for-good",
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
+            "key-teachings-of-c-s-lewis",
         ],
     ),
     (
@@ -175,6 +176,9 @@ TOPICS = [
             "letters-and-minor-works",
             "life-of-pascal",
             "the-pursuit-of-god",
+            "orthodoxy",
+            "the-everlasting-man",
+            "unspoken-sermons",
         ],
     ),
     (
@@ -443,6 +447,8 @@ TOPICS = [
             "key-teachings-of-r-a-torrey",
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
+            "key-teachings-of-c-s-lewis",
+            "the-everlasting-man",
         ],
     ),
     (

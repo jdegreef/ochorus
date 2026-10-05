@@ -1,0 +1,472 @@
+{
+ "kind": "book",
+ "slug": "the-inner-chamber",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "Psalms 5:3",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Isaiah 50:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 6:17-18",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Acts 4:13",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Exodus 34:29-33",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:3",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Corinthians 2:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Corinthians 4:1-18",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Numbers 7:89",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Exodus 3:11-13",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Deuteronomy 33:1",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 14:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 14:20",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 14:23",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 John 4:1-21",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:13",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 33:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Romans 4:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Galatians 6:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 13:31",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Luke 11:28",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 7:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Samuel 7:25",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Chronicles 6:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Chronicles 6:10",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Chronicles 6:15",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Chronicles 6:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Chronicles 6:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:1-176",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "James 1:22-25",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 13:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 14:15",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 John 2:3-5",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Genesis 2:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Corinthians 13:2",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Proverbs 3:5",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 25:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Proverbs 9:10",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 1:1-2",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Joshua 1:8",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:15",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:23",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:48",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:78",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:97",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 119:99",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Timothy 4:15",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 19:14",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 11:25",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Luke 10:21",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 25:12",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 25:14",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 25:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 25:20",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Luke 24:45",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Acts 16:14",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Revelation 5:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 1:1",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 1:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 8:12",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Psalms 1:2",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 3:2",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 3:3",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 6:10",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Jeremiah 15:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 4:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Luke 12:39",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Luke 11:40",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "1 Corinthians 15:46",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "2 Corinthians 4:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Titus 3:5",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Romans 12:2",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Ephesians 4:23",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 3:10",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 3:9-10",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Ephesians 4:21",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Ephesians 4:24",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 1:9",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Colossians 1:1",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 17:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Ephesians 3:14-21",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 15:4",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "John 6:15",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Proverbs 11:30",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Judges 16:6",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "Isaiah 53:1-12",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  },
+  {
+   "reference": "James 5:17",
+   "status": "mined",
+   "source_file": "the-inner-chamber.en.json"
+  }
+ ]
+}

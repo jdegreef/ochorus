@@ -79,8 +79,7 @@ export const ERA_STYLE: Record<EraId, CoverStyleId> = {
 	puritans: 'press',
 	awakenings: 'enlightenment',
 	missionary: 'revival',
-	modern: 'house',
-	contemporary: 'house'
+	modern: 'house'
 };
 
 /**
@@ -254,7 +253,7 @@ export function scriptOf(language: string): CoverScript | null {
  * Total, and never null: an author the tables have never heard of — an admin
  * import, a contributor added this morning — comes back with their century's
  * recipe, and one with no birth year comes back in the house voice, because
- * `eraOf(null)` is `contemporary`.
+ * `eraOf(null)` is `modern`.
  */
 export function coverStyleFor(era: EraId, authorSlug: string, bookSlug: string): CoverStyleId {
 	return BOOK_STYLE[bookSlug] ?? AUTHOR_STYLE[authorSlug] ?? ERA_STYLE[era];
@@ -334,6 +333,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'key-teachings-of-derek-prince': 'originals',
 	'key-teachings-of-dietrich-bonhoeffer': 'originals',
 	'key-teachings-of-gareth-evans': 'originals',
+	'key-teachings-of-c-s-lewis': 'originals',
 	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wore the
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.
@@ -344,7 +344,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'corrie-ten-boom-a-life': 'house',
 	'mary-slessor-a-life': 'house',
 	'samuel-ajayi-crowther-a-life': 'house',
-	'pandita-ramabai-a-life': 'house'
+	'pandita-ramabai-a-life': 'house',
+	'c-s-lewis-a-life': 'house'
 };
 
 /**

@@ -57,6 +57,7 @@ from pathlib import Path
 # predicates live beside `art_url` rather than in a command.
 from library.curated_art import CURATED, CURATED_GROUND, ORIGINAL_GROUND
 from library.designed_covers import DERIVED_GROUND
+from library.localization import is_english_edition
 
 # A plain module, imported for exactly that reason — see its docstring.
 from library.topic_seed import TOPICS
@@ -345,7 +346,7 @@ def twin_path(slug: str, language: str) -> tuple[str, str]:
     the JS side of this one rule — the generator and the page both read it from
     there, and ``CoverAssetTests`` reads it from here.
     """
-    if language == "en":
+    if is_english_edition(language):  # the Modern English edition shares English's
         return f"/covers/{slug}.png", f"{slug}.png"
     return f"/covers/{language}/{slug}.png", f"{language}/{slug}.png"
 
@@ -434,6 +435,7 @@ TYPE_TOP = frozenset({
     "key-teachings-of-derek-prince",
     "key-teachings-of-dietrich-bonhoeffer",
     "key-teachings-of-gareth-evans",
+    "key-teachings-of-c-s-lewis",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP

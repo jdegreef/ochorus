@@ -1,0 +1,362 @@
+{
+ "kind": "book",
+ "slug": "humility-2",
+ "language": "en-modern",
+ "references": [
+  {
+   "reference": "Revelation 4:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:8",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:5-9",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:9",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 16:24",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 22:27",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 23:12",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 5:19",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 5:30",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 5:41",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 6:38",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 7:16",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 7:28",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 8:28",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 8:42",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 8:50",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 14:10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 14:24",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 11:29",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 20:27",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 5:3",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 5:5",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 9:46",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 18:3-5",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 18:1",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 9:48",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 23:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 14:1-11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 14:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 18:14",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 13:14",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 22:26",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 5:8",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 20:28",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 5:20",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 John 4:20",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 12:10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 12:16",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Proverbs 3:7",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Corinthians 13:4",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:3",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:5",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Philippians 2:7",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Colossians 3:12-13",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Isaiah 65:5",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Job 1:6",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Luke 18:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Job 42:5-6",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Isaiah 6:5",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Corinthians 15:9-10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Ephesians 3:8",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Timothy 1:13",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Thessalonians 2:10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "2 Corinthians 1:12",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 7:18",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 8:2",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Isaiah 2:17",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "John 5:44",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 15:28",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Matthew 15:27",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 6:3",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Romans 6:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Hebrews 10:14",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9-10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "2 Corinthians 12:11",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "2 Corinthians 12:9",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "James 4:10",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "1 Peter 5:6",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  },
+  {
+   "reference": "Isaiah 57:15",
+   "status": "mined",
+   "source_file": "humility-2.en.json"
+  }
+ ]
+}

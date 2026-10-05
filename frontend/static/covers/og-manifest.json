@@ -199,6 +199,16 @@
 				508
 			]
 		},
+		"am/a-call-to-the-unconverted": {
+			"ground": "e170f939292535e89d742c392d5aba304b9317c0d4f52bc53383d3fcda7af313",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/rust",
+			"bar": 0
+		},
 		"am/a-hidden-fire": {
 			"ground": "e32ae790fff9f06c2040701935b8e855f4e6706a6a87de96d98dd0774d4e3624",
 			"style": "originals",
@@ -226,6 +236,16 @@
 				319,
 				476
 			]
+		},
+		"am/a-retrospect": {
+			"ground": "043170b8310dad1118194ea2d20a355c5d43798211e7f88114d6eae5d043274c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
 		},
 		"am/a-retrospect-children": {
 			"ground": "7fcb4177a864a141ce153542f723314c938b4f623e4b5802d292a3aa0e64066d",
@@ -284,6 +304,26 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "wash/sage",
+			"bar": 0
+		},
+		"am/all-of-grace": {
+			"ground": "ec39b51a2f1a809ace85ede328399c971d1501015f5da0beb73fc5876978ed32",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"am/all-things-for-good": {
+			"ground": "377f95295ffd0d798f8b8bf02cd96734df8b56894499cd8d4f736d228e403c1e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "fade/oxblood",
 			"bar": 0
 		},
 		"am/amanda-smith-autobiography-children": {
@@ -590,6 +630,16 @@
 				503
 			]
 		},
+		"am/enchiridion": {
+			"ground": "7ae31c07e8978531c12b9ac476cb427ea9e6130d45630eb4f804ffe1db80367d",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/rust",
+			"bar": 0
+		},
 		"am/epistles-of-ignatius": {
 			"ground": "a109f788e357e05024a25f4b2371668835d880bdc77b41509c227757bc708636",
 			"style": "inscriptional",
@@ -722,6 +772,16 @@
 				519
 			]
 		},
+		"am/grace-abounding": {
+			"ground": "6a9ead0bf1c91576a9f372d764093675de39d6933d460dee2f5fa7e1f477ffb0",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"am/growing-in-wisdom": {
 			"ground": "8ef595657257815f9b131f0cbe319b4e1b224cbdb4a46b40651a0b9f6151735d",
 			"style": "originals",
@@ -815,6 +875,35 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0
+		},
+		"am/journal-of-an-expedition-up-the-niger": {
+			"ground": "6b114c79613cc352097ac9678711950bd9ebcfdc59328ae417d50be148f3e59a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.7,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[71, 102, 529, 131]
+				],
+				"title": [
+					[106, 305, 495, 381],
+					[58, 370, 542, 446]
+				],
+				"subtitle": [
+					[152, 520, 448, 541]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				254,
+				541
+			]
 		},
 		"am/key-teachings-of-a-b-simpson": {
 			"ground": "5ed8a8bc3a9fdd9d0530c5ebdc29e99e85f2739ab6e5ac9a5c1a45bdfd1d149d",
@@ -1093,6 +1182,35 @@
 			"layout": "wash/sage",
 			"bar": 0
 		},
+		"am/mortification-of-sin": {
+			"ground": "4429392070f9d22d1349f9b23bfd584546958cf08f26b392ea8f58d2944c4d44",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.35,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[197, 102, 403, 131]
+				],
+				"title": [
+					[128, 307, 472, 380],
+					[83, 367, 518, 440]
+				],
+				"subtitle": [
+					[175, 492, 425, 513]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				281,
+				513
+			]
+		},
 		"am/necessity-of-prayer": {
 			"ground": "659984ad34f66f33dbe9e88e089b28e5079243fc862750c0902c70c57751b3a7",
 			"style": "devotional",
@@ -1142,6 +1260,34 @@
 			"layout": "rail/indigo",
 			"bar": 0
 		},
+		"am/on-the-priesthood": {
+			"ground": "bea83efca65ee62ab62dbcd66fae794113a9dcb661c1461c2495022028243975",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.65,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[130, 102, 470, 131]
+				],
+				"title": [
+					[201, 337, 399, 399]
+				],
+				"subtitle": [
+					[133, 428, 467, 449]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				346,
+				449
+			]
+		},
 		"am/pilgrims-progress-children": {
 			"ground": "8e613687910ef239e57c915726d5a43dbe681a6db3e7d1b9bea9189d0fc6357d",
 			"style": "press",
@@ -1182,6 +1328,16 @@
 			"layout": "split/mauve",
 			"bar": 0
 		},
+		"am/possibilities-of-prayer": {
+			"ground": "a04e8cd424325a99f65f6f542fac93f7d63c05a7b2f878dd171153fc9d83b1c3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
 		"am/power-through-prayer": {
 			"ground": "e2ce0c651e95dc003f3162998edab3fd8ae27cc8f3a439f223fc2acdc5a1589b",
 			"style": "devotional",
@@ -1191,6 +1347,16 @@
 			"scrim": 1,
 			"layout": "split/navy",
 			"bar": 0.04
+		},
+		"am/prayer-and-praying-men": {
+			"ground": "19e6b8688fd7d983fe462852e5d68721f92a02fc623a3196655135086d0330f3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
 		},
 		"am/prayer-the-pulse-of-life": {
 			"ground": "2a1409b1f11373ce3d3418f8d47947f72edc2532a5411043298aa0e57ca55abe",
@@ -1251,6 +1417,55 @@
 			"middle": [
 				308,
 				487
+			]
+		},
+		"am/purpose-in-prayer": {
+			"ground": "cc5dcca15ca2f2d94e4903c537dae7f0fd283c6fd8ac1ec18adba7624bb1927e",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
+		"am/reality-of-prayer": {
+			"ground": "9d83d9b8465bb0094752a5ab8c32a3255f338f97f6f3474769a695e046b6a9c1",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/navy",
+			"bar": 0
+		},
+		"am/religious-experience-and-journal": {
+			"ground": "9812587ac39ea3ea738308c253604895b40fc1095e19d46ab18fbeeb9c179ad8",
+			"style": "enlightenment",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[195, 102, 405, 131]
+				],
+				"title": [
+					[100, 289, 500, 352],
+					[51, 351, 549, 414]
+				],
+				"subtitle": [
+					[87, 477, 514, 505]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				290,
+				505
 			]
 		},
 		"am/rise-up-men-of-god-2": {
@@ -1505,6 +1720,32 @@
 				481
 			]
 		},
+		"am/stepping-stones-2": {
+			"ground": "f8d031b41f94fe7d118dd3885fe8c6f67920fc1bf261da72d4c47a07ab955f41",
+			"style": "lettered",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[168, 102, 432, 131]
+				],
+				"title": [
+					[141, 302, 459, 408],
+					[161, 386, 439, 492]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				481
+			]
+		},
 		"am/talks-to-the-farmer-children": {
 			"ground": "328af163781b14f92b1364e0e6205e0e2ebfc93e25caef31f05d715a175eacfb",
 			"style": "revival",
@@ -1525,6 +1766,34 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"am/the-bruised-reed": {
+			"ground": "cfb6bb36379a9615b164376ba1a7c3202c43a64c597bf2f60056913b2e0483d8",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.85,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[153, 102, 447, 131]
+				],
+				"title": [
+					[96, 337, 505, 410]
+				],
+				"subtitle": [
+					[204, 463, 396, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				311,
+				484
+			]
+		},
 		"am/the-fourfold-gospel": {
 			"ground": "d0da509adb8cbc721a95106cf94c77302afceed851358b4ae44a5c465003daff",
 			"style": "revival",
@@ -1534,6 +1803,70 @@
 			"scrim": 1,
 			"layout": "box/teal",
 			"bar": 0
+		},
+		"am/the-god-of-all-comfort": {
+			"ground": "f045eb23d3fe9d56955f4a2925a7c8f120d3714bd89fda1c3f2c84abfc3a55f3",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.9,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[80, 102, 520, 131]
+				],
+				"title": [
+					[178, 290, 422, 372],
+					[163, 362, 437, 444]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				295,
+				500
+			]
+		},
+		"am/the-gospel-of-healing": {
+			"ground": "49e5ac0bf37060291f4b17ae81dd50c95966edc75c4bcbd2c48157b6444e285c",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
+		"am/the-imitation-of-christ": {
+			"ground": "e74a48e4248bfbfff0230f47a962648d970ebb232987cea79a513b376acc5ce9",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[138, 102, 462, 131]
+				],
+				"title": [
+					[87, 302, 513, 384]
+				],
+				"subtitle": [
+					[95, 460, 506, 488]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				307,
+				488
+			]
 		},
 		"am/the-inner-chamber": {
 			"ground": "df4f1775ddb1ebf270d95fdcfa8f01bf2c23f7f241f47c2e095085533218008b",
@@ -1591,6 +1924,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"am/the-masters-indwelling": {
+			"ground": "f0d489b999aec3a8f40130daa1be9e7ca6f60d468b4e5680a6d2e4eab2400fef",
+			"style": "devotional",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/sage",
+			"bar": 0
+		},
 		"am/the-secret-of-guidance": {
 			"ground": "078f5ac17594fbfa0486c73ccbf1473db2b087743666b5d8a2e9ed7f3d12b3aa",
 			"style": "devotional",
@@ -1641,6 +1984,26 @@
 				295,
 				500
 			]
+		},
+		"am/the-way-to-god": {
+			"ground": "88495b5a4aeca8d70d14f7ac22859d0ca6274af4df65ac48651aec12d8b73e73",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
+		},
+		"am/thoughts-for-the-quiet-hour": {
+			"ground": "a80c6821de09c1671e16a85f508993d72c32b5cf1edefb3a18b1110be0e129ff",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "wash/ochre",
+			"bar": 0
 		},
 		"am/true-vine": {
 			"ground": "2287250c00d7070c14685a5591b74a48f314bedf2a288561463a236fbe5f907e",
@@ -2938,6 +3301,36 @@
 			"middle": [
 				245,
 				550
+			]
+		},
+		"c-s-lewis-a-life": {
+			"ground": "7b2e9f42dd1df1a94700612a0af807ac1482f5433d20e572380ae2d7dd425b4e",
+			"style": "house",
+			"volume": "7",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.4,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[291, 306, 310, 350],
+					[156, 386, 445, 457]
+				],
+				"subtitle": [
+					[154, 476, 447, 504],
+					[114, 504, 486, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
 			]
 		},
 		"cheque-book": {
@@ -6528,6 +6921,35 @@
 				432
 			]
 		},
+		"key-teachings-of-c-s-lewis": {
+			"ground": "463361ca0e793a7b2f019bb8b1a5678c31916e2d82493e958491e0c339952536",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[137, 225, 463, 288]
+				],
+				"subtitle": [
+					[57, 348, 544, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-catherine-booth": {
 			"ground": "88bac2aa566c00a51ea776c4c2b9aa4ab0271844b437524793a1922629334da1",
 			"style": "originals",
@@ -8222,6 +8644,16 @@
 				323,
 				472
 			]
+		},
+		"orthodoxy": {
+			"ground": "c66ef315e539a441b3f5e73aa632a09dbdfc6dd452da0ab4ee0f914b80722ee9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"our-daily-walk": {
 			"ground": "8aa8e59e6f24962428661d08f47f3a4ac4ffbcfb2a94619e444f41d3e5ef0315",
@@ -10397,6 +10829,36 @@
 				515
 			]
 		},
+		"sw/rooted-1": {
+			"ground": "a64cf6a2fa6bfab351073a7298dc58927e0ae28422acf297b99578fcfa432767",
+			"style": "young",
+			"volume": "1",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[292, 273, 309, 317],
+					[134, 348, 466, 423]
+				],
+				"subtitle": [
+					[158, 478, 442, 506],
+					[114, 506, 487, 534]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				261,
+				534
+			]
+		},
 		"sw/school-of-prayer": {
 			"ground": "ba1d7796dd35ae8f92d3e873d37ff74d0adde6857d725cb75a7261a02f665ac1",
 			"style": "devotional",
@@ -10940,6 +11402,16 @@
 				311,
 				484
 			]
+		},
+		"the-everlasting-man": {
+			"ground": "000eb079389729b799c793af9e18dafec44602d57f657fe9dc99635bb83160f9",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"the-fourfold-gospel": {
 			"ground": "db69f96349627742c737be57da3e78156d0cbc57c92d6ab8efd4dc4b8662a828",
@@ -11763,6 +12235,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "rail/teal",
+			"bar": 0
+		},
+		"unspoken-sermons": {
+			"ground": "1e5e4780de2862c6bf80d1a124ea59ae616fe03cb3618742f329fcb614832fff",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"waiting-on-god": {

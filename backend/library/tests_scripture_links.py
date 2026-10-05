@@ -93,8 +93,7 @@ class LinkScriptureWiringTests(SimpleTestCase):
 
 
 class ChapterOnlyCitationTests(SimpleTestCase):
-    """Whole-chapter citations ("Romans 8", "John 17") — the form the writers
-    use ~850 times in the English books, which `_CANDIDATE`'s chapter:verse
+    """Whole-chapter citations ("Romans 8", "John 17"), which the chapter:verse
     pattern never matched. Linked when their page exists; otherwise untouched."""
 
     def test_collected_as_candidates(self):
@@ -137,19 +136,42 @@ class ChapterOnlyCitationTests(SimpleTestCase):
         self.assertEqual(annotate_references(html, links={"Romans 8": "/s/"}), html)
 
 
-class LinkedOnlyTests(SimpleTestCase):
-    """`linked_only` — for a surface with no popover (an author bio)."""
+class CitationFormTests(SimpleTestCase):
+    """Citation forms the code review found mis-read."""
 
-    def test_wraps_only_references_with_a_page(self):
-        html = "<p>John 3:16 and Romans 8:28.</p>"
-        out = annotate_references(
-            html, links={"John 3:16": "/scripture/john/3/16/"}, linked_only=True
+    def test_roman_and_ordinal_prefixes_name_the_epistle(self):
+        # Matching only "John 3" sent "I John 3" to the Gospel.
+        for text in ("I John 3", "III John 4", "First John 3", "1st John 3"):
+            self.assertEqual(reference_candidates(f"<p>In {text} we read</p>"), [text])
+
+    def test_chapter_range_is_one_citation(self):
+        self.assertEqual(reference_candidates("<p>Romans 9-11 explains</p>"), ["Romans 9-11"])
+
+    def test_list_of_citations_is_not_a_verse(self):
+        # "Romans 8. 1 Corinthians 13" lists two chapters; it is not Romans 8:1.
+        self.assertEqual(
+            reference_candidates("<p>Romans 8. 1 Corinthians 13.</p>"),
+            ["Romans 8", "1 Corinthians 13"],
         )
-        self.assertIn('href="/scripture/john/3/16/" data-ref="John 3:16"', out)
-        self.assertNotIn('data-ref="Romans 8:28"', out)
-        self.assertIn("Romans 8:28.", out)
+        # A colon is always a verse, whatever follows.
+        self.assertEqual(reference_candidates("<p>Mark 1:4 John came</p>"), ["Mark 1:4"])
 
-    def test_bio_html_is_link_only(self):
+    def test_aside_is_not_an_anchor(self):
+        # "<aside" starts with "<a"; its text was skipped as if already linked.
+        html = '<aside class="prayer"><p>John 3:16</p></aside>'
+        self.assertEqual(reference_candidates(html), ["John 3:16"])
+
+    def test_lookup_flags_a_cut_chapter(self):
+        from .scripture import lookup
+
+        self.assertTrue(lookup("Psalm 119")["truncated"])
+        self.assertFalse(lookup("John 3:16")["truncated"])
+
+
+class BioLinkTests(SimpleTestCase):
+    """A bio renders in <Reader>, so it gets the chapter treatment."""
+
+    def test_bio_html_gets_popover_anchors_and_links(self):
         from . import scripture_graph
         from .serializers import _link_scripture
 
@@ -159,6 +181,6 @@ class LinkedOnlyTests(SimpleTestCase):
             "Obadiah 1:1": None,
         }
         with mock.patch.object(scripture_graph, "pages_for", return_value=pages):
-            out = _link_scripture(html, linked_only=True)
+            out = _link_scripture(html)
         self.assertIn('href="/scripture/john/3/16/"', out)
-        self.assertNotIn('data-ref="Obadiah 1:1"', out)
+        self.assertIn('<a class="scripture-ref" data-ref="Obadiah 1:1">', out)

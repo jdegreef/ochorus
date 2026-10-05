@@ -24,6 +24,9 @@ export function loginHref(pathname: string, search = ''): string {
 	return `/login?redirect=${encodeURIComponent(pathname + search)}`;
 }
 
+/** Append one query parameter to an href that may already have a query. */
+export const withParam = (href: string, key: string, value: string): string =>
+	`${href}${href.includes('?') ? '&' : '?'}${key}=${encodeURIComponent(value)}`;
+
 /** Open the login page on its "create account" form. */
-export const withSignup = (href: string): string =>
-	`${href}${href.includes('?') ? '&' : '?'}mode=signup`;
+export const withSignup = (href: string): string => withParam(href, 'mode', 'signup');

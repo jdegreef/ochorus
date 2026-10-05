@@ -35,6 +35,7 @@ vi.mock('$lib/library-public', () => {
 	const empty = async () => [];
 	const author = (slug: string) => ({ slug, name: slug, photo_url: '', birth_year: null });
 	return {
+		MODERN_EDITION: 'en-modern',
 		// One article in English and Swahili, none in Spanish.
 		listArticles: async (l = 'en') =>
 			l === 'en'
@@ -47,11 +48,19 @@ vi.mock('$lib/library-public', () => {
 		// they have something".
 		listAuthors: async (l = 'en') =>
 			l === 'en' ? [author('andrew-murray'), author('e-m-bounds')] : [],
+		// Humility also has a reviewed two-chapter Modern English edition; a
+		// second modern edition is still unreviewed.
 		listBooks: async (l = 'en') =>
-			l === 'sw'
+			l === 'en-modern'
+				? [
+						{ slug: 'humility', chapter_count: 2, updated_at: '2026-09-10T10:00:00Z', source_type: 'ai_reviewed' },
+						{ slug: 'unreviewed', chapter_count: 3, updated_at: '2026-09-10T10:00:00Z', source_type: 'ai_unreviewed' }
+					]
+				: l === 'sw'
 				? [
 						{
 							slug: 'humility',
+							chapter_count: 2,
 							author: author('andrew-murray'),
 							updated_at: '2026-08-25T10:00:00Z',
 							topics: [{ slug: 'prayer', title: 'Maombi' }],
@@ -112,6 +121,7 @@ const data = (over: Partial<SitemapData> = {}): SitemapData => ({
 	articles: [],
 	chapters: [],
 	openings: [],
+	modern: [],
 	...over
 });
 
@@ -238,6 +248,13 @@ describe('sections', () => {
 		expect(sectionEntries(data(), 'nonsense')).toBeNull();
 	});
 
+	it('gives the Modern English edition its own section, carrying only English', () => {
+		const d = data({ modern: [entry({ en: '/books/humility/modern/1/' })] });
+		expect(sections()).toContain('modern');
+		expect(sectionEntries(d, 'modern')).toHaveLength(1);
+		expect(sectionLocale('modern')).toBeUndefined();
+	});
+
 	it('gives the scripture graph its own section, carrying only English', () => {
 		// These pages exist in English alone (citations parse against English book
 		// names), so a second locale here would be a false alternate.
@@ -294,6 +311,29 @@ describe('build() scripture entries', () => {
 	});
 });
 
+describe('build() chapter entries', () => {
+	beforeEach(() => resetSitemapData());
+
+	it('advertises no translated chapter', async () => {
+		// The mock's only books are Swahili, so an English-only rule leaves both
+		// chapter lists empty — a Swahili chapter here is the regression.
+		const { chapters, openings } = await sitemapData();
+		expect(chapters).toEqual([]);
+		expect(openings).toEqual([]);
+	});
+
+	it('lists every chapter of a REVIEWED Modern English edition at its own address', async () => {
+		// The unreviewed edition is AI text no person has approved: like an
+		// unreviewed translation, it is never advertised.
+		const { modern } = await sitemapData();
+		expect(modern.map((e) => [...e.byLocale])).toEqual([
+			[['en', '/books/humility/modern/1/']],
+			[['en', '/books/humility/modern/2/']]
+		]);
+		expect(modern[0].lastmod).toBe('2026-09-10T10:00:00Z');
+	});
+});
+
 describe('build() hub entries', () => {
 	beforeEach(() => resetSitemapData());
 
@@ -332,9 +372,10 @@ describe('build() thin per-locale pages', () => {
 	});
 
 	it('advertises an era only in the locales whose shelf has a writer in it', async () => {
-		// Both mocked writers are undated (contemporary) and on the English
-		// shelf only — so the Spanish and Swahili era pages would be empty.
-		expect([...(await page('/biographies/era/contemporary/'))!.byLocale.keys()]).toEqual(['en']);
+		// Both mocked writers are undated (filed under modern) and on the
+		// English shelf only — so the Spanish and Swahili era pages would be empty.
+		expect([...(await page('/biographies/era/modern/'))!.byLocale.keys()]).toEqual(['en']);
+		expect(await page('/biographies/era/contemporary/')).toBeUndefined();
 		expect(await page('/biographies/era/puritans/')).toBeUndefined();
 	});
 });

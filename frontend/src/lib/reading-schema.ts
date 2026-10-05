@@ -266,6 +266,18 @@ export interface Mark {
  */
 export const MODERN_EDITION = 'en-modern';
 
+/**
+ * A book chapter's path in the Modern English edition (unlocalized). The
+ * edition has its own prerendered address — indexable there, where the old
+ * `?edition=modern` flag canonicalized to the original and never was.
+ */
+export const modernChapterPath = (slug: string, order: number) => `/books/${slug}/modern/${order}`;
+
+/** A book chapter's path (unlocalized) in the original or the Modern edition —
+ *  the one place that choice is spelled. */
+export const bookChapterPath = (slug: string, order: number, modern: boolean) =>
+	modern ? modernChapterPath(slug, order) : `/books/${slug}/${order}`;
+
 /** The plain-language edition behind an edition tag (`en-modern` → `en`). */
 export const baseEdition = (edition: string): string =>
 	edition === MODERN_EDITION ? 'en' : edition;

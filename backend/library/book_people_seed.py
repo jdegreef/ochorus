@@ -148,6 +148,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     # Key Teachings (companions to one teacher). Each is BY Ochorus Originals and
     # ABOUT one person, so its lone subject is who the author page files it
     # under ("Books about"); `tests_originals_series.py` keeps every volume here.
+    ("c-s-lewis-a-life", [("c-s-lewis", "subject")]),
     ("corrie-ten-boom-a-life", [("corrie-ten-boom", "subject")]),
     ("john-hyde-a-life", [("john-hyde", "subject")]),
     ("key-teachings-of-a-b-simpson", [("a-b-simpson", "subject")]),
@@ -156,6 +157,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("key-teachings-of-andrew-murray", [("andrew-murray", "subject")]),
     ("key-teachings-of-athanasius-of-alexandria", [("athanasius-of-alexandria", "subject")]),
     ("key-teachings-of-augustine-of-hippo", [("augustine-of-hippo", "subject")]),
+    ("key-teachings-of-c-s-lewis", [("c-s-lewis", "subject")]),
     ("key-teachings-of-catherine-booth", [("catherine-booth", "subject")]),
     ("key-teachings-of-charles-finney", [("charles-finney", "subject")]),
     ("key-teachings-of-charles-h-spurgeon", [("charles-h-spurgeon", "subject")]),

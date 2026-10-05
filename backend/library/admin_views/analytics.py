@@ -17,6 +17,7 @@ from ..audit import AdminAudited, actor_email
 from ..demand import FAILED_QUERY_MIN_LEN
 from ..engagement_trends import (
     distinct_readers,
+    latest_day,
     pulse_trends,
     readers_per_work,
     reading_hours,
@@ -67,23 +68,31 @@ class AdminEngagementView(APIView):
 
 
     def get(self, request):
-        from datetime import timedelta
+        from datetime import date, timedelta
 
         from django.utils import timezone
 
         from reading.models import ChapterMarks, Favorite, ReadingProgress
 
         now = timezone.now()
+        range_key = request.query_params.get("range", "")
+        if range_key not in self.RANGES:
+            range_key = self.DEFAULT_RANGE
+        days = self.RANGES[range_key]
 
-        # Every active window in one query, from the reading-day log.
-        active = distinct_readers(
-            {
-                "7d": window(now, 7),
-                "7d_prev": window(now, 7, 7),
-                "30d": window(now, 30),
-                "30d_prev": window(now, 30, 30),
-            }
-        )
+        # Every active window in one query, from the reading-day log: the
+        # fixed ones, and the page range's (all time has no "before").
+        windows = {
+            "7d": window(now, 7),
+            "7d_prev": window(now, 7, 7),
+            "30d": window(now, 30),
+            "30d_prev": window(now, 30, 30),
+        }
+        if days:
+            windows |= {"range": window(now, days), "range_prev": window(now, days, days)}
+        else:
+            windows["range"] = (date.min, latest_day(now))
+        active = distinct_readers(windows)
 
         def hearts(days, offset=0):
             """Favorites created in the same kind of window, for the hearts
@@ -119,7 +128,10 @@ class AdminEngagementView(APIView):
         return Response(
             {
                 "overview": overview,
-                "time": self._reading_time(now),
+                "period": self._period(
+                    now, range_key, days, active=(active["range"], active.get("range_prev"))
+                ),
+                "time": self._reading_time(now, days),
                 "top_content": self._top_content(),
                 "rising": self._rising(now),
                 "highlight_heatmap": self._highlight_heatmap(),
@@ -143,7 +155,53 @@ class AdminEngagementView(APIView):
             }
         )
 
-    def _reading_time(self, now):
+    #: The page's date range (``?range=``): its days, None for all time. It
+    #: drives the figures that are about a PERIOD (the pulse's period tiles and
+    #: the Reading time card). Running totals stay all time, the weekly
+    #: charts keep their own axis, When people read keeps its 90 days (a
+    #: week leaves most hours under its readers floor, and all time would
+    #: walk every sitting ever on each load), and the work rollups
+    #: (top content, most loved, by language) stay all time: they rest on
+    #: saved progress, which keeps only each work's latest touch, so "read in
+    #: the last 30 days" is a claim they can't make.
+    RANGES = {"7d": 7, "30d": 30, "90d": 90, "all": None}
+    DEFAULT_RANGE = "30d"
+
+    def _period(self, now, range_key: str, days: int | None, *, active: tuple) -> dict:
+        """The range-following pulse figures, each with the same-length period
+        just before it to compare against (None for all time, which has no
+        "before"). ``active`` is the range's readers and the period before's,
+        from the view's one reading-day query; hearts and sign-ups count when
+        they were made, reading time by when a sitting was last seen."""
+        from datetime import timedelta
+
+        from django.db.models import Sum
+
+        from accounts.models import UserProfile
+        from reading.models import Favorite, ReadingSession
+
+        def split(qs, field, total=None):
+            """This period's and the one before's count, or sum of ``total``,
+            in one query; all time is one figure with nothing before it."""
+            agg = (lambda q: Sum(total, filter=q)) if total else (lambda q: Count("pk", filter=q))
+            if not days:
+                return {"value": qs.aggregate(cur=agg(Q()))["cur"] or 0, "prev": None}
+            start, before = now - timedelta(days=days), now - timedelta(days=2 * days)
+            cur = Q(**{f"{field}__gte": start})
+            prev = Q(**{f"{field}__gte": before, f"{field}__lt": start})
+            row = qs.filter(**{f"{field}__gte": before}).aggregate(cur=agg(cur), prev=agg(prev))
+            return {"value": row["cur"] or 0, "prev": row["prev"] or 0}
+
+        return {
+            "range": range_key,
+            "days": days,
+            "active": {"value": active[0], "prev": active[1]},
+            "hearts": split(Favorite.objects, "created_at"),
+            "signups": split(UserProfile.objects, "created_at"),
+            "seconds": split(ReadingSession.objects, "last_seen_at", "seconds"),
+        }
+
+    def _reading_time(self, now, days: int | None = None):
         """Time-on-site rollup from ReadingSession (see reading.models).
 
         ``seconds`` is *active* reading time, so these are real reading totals,
@@ -159,6 +217,11 @@ class AdminEngagementView(APIView):
         from reading.models import ReadingSession
 
         sessions = ReadingSession.objects.filter(seconds__gt=0)
+        # The page's range: totals, the median and the length buckets cover
+        # sittings last seen inside it. The fixed 7/30-day figures don't move.
+        in_range = (
+            sessions.filter(last_seen_at__gte=now - timedelta(days=days)) if days else sessions
+        )
 
         def window(days):
             return sessions.filter(
@@ -167,20 +230,20 @@ class AdminEngagementView(APIView):
 
         # The length buckets ride the totals' query, so their sums and the
         # totals the page divides them by are one snapshot.
-        totals = sessions.aggregate(
+        totals = in_range.aggregate(
             secs=Sum("seconds"),
             count=Count("id"),
             readers=Count("profile", distinct=True),
             avg=Avg("seconds"),
             **self._bucket_aggregates(),
         )
-        w7, w30 = window(7), window(30)
+        w7 = window(7)
         return {
             "total_seconds": totals["secs"] or 0,
             "sessions": totals["count"] or 0,
             "readers": totals["readers"] or 0,
             "avg_session_seconds": round(totals["avg"] or 0),
-            "median_session_seconds": self._median_seconds(sessions, totals["count"] or 0),
+            "median_session_seconds": self._median_seconds(in_range, totals["count"] or 0),
             "lengths": [
                 {
                     "min_seconds": low,
@@ -192,8 +255,9 @@ class AdminEngagementView(APIView):
             ],
             "seconds_7d": w7["secs"] or 0,
             "readers_7d": w7["readers"] or 0,
-            "seconds_30d": w30["secs"] or 0,
-            "readers_30d": w30["readers"] or 0,
+            # Whether any sitting exists at all: the card shows on that, so a
+            # quiet range reads as zeros rather than a missing card.
+            "has_sittings": sessions.exists(),
         }
 
     # Where sitting-length buckets start, in seconds; the last is open-ended.
@@ -584,6 +648,18 @@ SIGNUP_VARIANT_LABELS = {
     "habit": "Reading rhythm",
     "library": "Build your shelf",
     "progress": "Progress-targeted",
+    "bookshelf": "Bookshelf page",
+    "notebook": "Notebook page",
+    "save_toast": "Save message",
+    "highlight_toast": "Highlight message",
+    "chapter_end": "End of chapter",
+    "plan_start": "Plan start",
+    "article": "Articles",
+    "quote": "Quotes",
+    "footer": "Footer",
+    "header": "Header sign-in",
+    "menu": "Phone menu",
+    "feedback": "Feedback link",
 }
 
 
@@ -775,38 +851,54 @@ class AdminUsersView(APIView):
         return out
 
     def _by_signup_variant(self):
-        """Accounts per logged-out sign-up band arm — the home page's A/B test.
+        """Accounts per sign-up source — the prompt each reader followed to sign
+        up (any of ``accounts.models.SIGNUP_VARIANTS``: the home band's A/B arms
+        and every other prompt), all-time and in the last 30 days.
 
-        Each account counts once, under the arm that was showing when it was
-        created (create-only, so a later login can't move it). ``targeted``
-        flags the progress-targeted variant: it is shown only to readers who
+        Each account counts once, under the source recorded when it was created
+        (create-only, so a later login can't move it). ``targeted`` flags the
+        band's progress-targeted variant: it is shown only to readers who
         already had local reading, so its rate is NOT comparable head-to-head
         with the random arms — the UI sets it apart. ``unknown`` collects
-        accounts with nothing recorded (created before this shipped, or a
-        sign-up that carried no variant, e.g. Google OAuth). Only the four known
-        arms are ever stored (validated on capture), so no junk reaches here.
+        accounts with nothing recorded (created before attribution shipped, or
+        a sign-up that followed no tagged prompt). Only known sources are ever
+        stored (validated on capture), so no junk reaches here. Rows sort by the
+        30-day count, so a newly added prompt rises as it earns sign-ups.
         """
-        from django.db.models import Count
+        from datetime import timedelta
+
+        from django.db.models import Count, Q
+        from django.utils import timezone
 
         from accounts.models import UserProfile
 
+        since = timezone.now() - timedelta(days=30)
         rows = {
-            r["signup_variant"]: r["n"]
-            for r in UserProfile.objects.values("signup_variant").annotate(n=Count("id"))
+            r["signup_variant"]: (r["n"], r["n30"])
+            for r in UserProfile.objects.values("signup_variant").annotate(
+                n=Count("id"), n30=Count("id", filter=Q(created_at__gte=since))
+            )
         }
-        unknown = rows.pop("", 0)
+        unknown, unknown_30d = rows.pop("", (0, 0))
         out = [
             {
                 "variant": code,
                 "label": _signup_variant_label(code),
                 "count": n,
+                "count_30d": n30,
                 "targeted": code == "progress",
             }
-            for code, n in sorted(rows.items(), key=lambda kv: (-kv[1], kv[0]))
+            for code, (n, n30) in sorted(rows.items(), key=lambda kv: (-kv[1][1], -kv[1][0], kv[0]))
         ]
         if unknown:
             out.append(
-                {"variant": "unknown", "label": "Unknown", "count": unknown, "targeted": False}
+                {
+                    "variant": "unknown",
+                    "label": "Unknown",
+                    "count": unknown,
+                    "count_30d": unknown_30d,
+                    "targeted": False,
+                }
             )
         return out
 

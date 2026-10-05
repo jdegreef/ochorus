@@ -34,7 +34,7 @@ import { READER_PREFS_KEY, WIDE_SCREEN_MIN } from './readerPrefs.svelte';
 export const EARLY_RESUME_JS =
 	'(function(){try{var b=document.currentScript&&document.currentScript.previousElementSibling;' +
 	'if(!b||/[?&](p|pg)=/.test(location.search)||location.hash)return;' +
-	'var m=location.pathname.match(/\\/books\\/([^/]+)\\/(\\d+)\\/?$/);if(!m)return;' +
+	'var m=location.pathname.match(/\\/books\\/([^/]+)\\/(?:modern\\/)?(\\d+)\\/?$/);if(!m)return;' +
 	"var g=function(k){return JSON.parse(localStorage.getItem(k)||'{}')};" +
 	// Page mode: stored, or the wide-screen default a reader who never chose gets.
 	`var pm=g('${READER_PREFS_KEY}').paged;if(pm===true||(pm!==false&&innerWidth>=${WIDE_SCREEN_MIN}))return;` +

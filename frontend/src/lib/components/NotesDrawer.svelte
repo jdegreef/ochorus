@@ -7,6 +7,7 @@
 	import { editionLang, chapterLabel } from '$lib/reading';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { bookChapterPath } from '$lib/reading-schema';
 
 	/**
 	 * In-reader notes & highlights for the CURRENT book — a study surface without
@@ -102,7 +103,7 @@
 							<li>
 								<a
 									href={localizeHref(
-										`/books/${slug}/${ch.order}?p=${hl.p}${edition === 'modern' ? '&edition=modern' : ''}`
+										`${bookChapterPath(slug, ch.order, edition === 'modern')}?p=${hl.p}`
 									)}
 									class="hl-item"
 									style="border-inline-start-color: var(--hl-{hl.color})"

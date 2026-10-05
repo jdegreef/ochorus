@@ -7,6 +7,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
+	import { accountHref } from '$lib/accountNav';
 	import { PRIMARY_NAV, SERIES_DEST, ENGLISH_HUBS, ORIGINALS_DEST, AZ_INDEX_DEST } from '$lib/contentNav';
 
 	/**
@@ -30,12 +31,14 @@
 
 	type Tab = { href: string; label: string; icon: IconName; active: boolean };
 	const LEFT = $derived<Tab[]>([
-		{ href: '/', label: t('nav.home'), icon: 'grid', active: routeId === '/' },
-		{ href: '/books', label: t('common.library'), icon: 'book', active: under(LIBRARY) }
+		{ href: localizeHref('/'), label: t('nav.home'), icon: 'grid', active: routeId === '/' },
+		{ href: localizeHref('/books'), label: t('common.library'), icon: 'book', active: under(LIBRARY) }
 	]);
 	const RIGHT = $derived<Tab[]>([
 		{
-			href: '/favorites',
+			// The shelf is signed-in only: signed out, the tab opens "create
+			// account" with the shelf pitch, as the footer and More sheet do.
+			href: accountHref('/favorites', !auth.enabled || !!auth.user, true),
 			// A tab-only word: the page's own title ("My bookshelf") ran to four
 			// words in several languages and truncated in a quarter of the bar.
 			label: t('nav.tabShelf'),
@@ -48,7 +51,7 @@
 
 {#snippet tabLink(tab: Tab)}
 	<a
-		href={localizeHref(tab.href)}
+		href={tab.href}
 		class="tab"
 		class:active={tab.active}
 		aria-current={tab.active ? 'page' : undefined}

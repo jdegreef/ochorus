@@ -153,11 +153,19 @@ def _sent_steps(profile) -> set[str]:
     )
 
 
+#: LIFECYCLE steps the reader asked for at a time of their choosing (a plan's
+#: daily reminder). They neither wait for nor take the shared 20h slot: a
+#: reminder is due when the reader said, and a daily one would otherwise starve
+#: every other lifecycle email.
+UNGATED_STEPS = frozenset({"plan_reminder", "plan_paused"})
+
+
 def last_lifecycle_sent_at(profile):
     return (
         EmailMessage.objects.filter(
             recipient=profile, kind=EmailKind.LIFECYCLE, status=SendStatus.SENT
         )
+        .exclude(lifecycle_step__in=UNGATED_STEPS)
         .order_by("-sent_at")
         .values_list("sent_at", flat=True)
         .first()

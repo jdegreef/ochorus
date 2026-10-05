@@ -53,13 +53,16 @@
 	import QuoteCard from '$lib/components/QuoteCard.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import ProgressBar from '$lib/components/ProgressBar.svelte';
+	import AccountGate from '$lib/components/AccountGate.svelte';
 
 	/**
 	 * "My Bookshelf" — the reader's books first, drawn as a bookcase with three
 	 * shelves (Currently reading, To read, Finished; see $lib/bookshelf for which
 	 * book goes where), then everything else they've saved. Client-only and
-	 * personal (favorites and progress are device-local first, synced when signed
-	 * in), so it works signed-out too and never prerenders.
+	 * personal, so it never prerenders.
+	 *
+	 * Signed-in only (AccountGate): a signed-out reader is sent to the "create
+	 * account" form with the shelf pitch, and returns here after.
 	 *
 	 * Below the books: Sermons, Plans, Authors, Topics, Articles, saved Quotes.
 	 *
@@ -287,6 +290,7 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
+<AccountGate>
 <div class="page-col px-5 py-10">
 	<PageHeader title={t('fav.yourFavorites')} tagline={t('fav.tagline')} />
 
@@ -598,6 +602,7 @@
 		</section>
 	{/if}
 </div>
+</AccountGate>
 
 <style>
 	.new-shelf {

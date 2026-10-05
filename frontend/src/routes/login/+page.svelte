@@ -8,8 +8,12 @@
 	import { authErrorKey } from '$lib/authErrors';
 	import { safeRedirect } from '$lib/safeRedirect';
 	import BrandMark from '$lib/components/BrandMark.svelte';
-	import GoogleMark from '$lib/components/GoogleMark.svelte';
+	import GoogleButton from '$lib/components/GoogleButton.svelte';
 	import LoginPitch, { type PitchKind } from '$lib/components/LoginPitch.svelte';
+	import EmailCodeForm from '$lib/components/EmailCodeForm.svelte';
+	import { isSignupSource, noteSignupSource, promptSeen, signupStarted } from '$lib/signupSource';
+	import { readSavedSummary, type SavedSummary } from '$lib/savedSummary';
+	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
 
@@ -33,7 +37,11 @@
 	let error = $state<string | null>(null);
 	let busy = $state(false);
 	// Which confirmation card to show after an email is dispatched.
-	let sent = $state<null | 'magic' | 'signup' | 'reset'>(null);
+	let sent = $state<null | 'signup' | 'reset'>(null);
+	// Creating an account defaults to the emailed code (EmailCodeForm), with the
+	// password form one tap away; signing in defaults to the password, with the
+	// code one tap away. `alt` is that tap, reset whenever the mode changes.
+	let alt = $state(false);
 	let resentMsg = $state<string | null>(null);
 	let resentErr = $state<string | null>(null);
 	/** Seconds until Resend is allowed again — the button had no throttle at all. */
@@ -81,7 +89,10 @@
 	$effect(() => {
 		const raw = $page.url.searchParams.get('mode') ?? '';
 		const next = (MODES as string[]).includes(raw) ? (raw as Mode) : 'signin';
-		if (lastMode !== null && next !== lastMode) error = null;
+		if (lastMode !== null && next !== lastMode) {
+			error = null;
+			alt = false;
+		}
 		lastMode = next;
 		mode = next;
 
@@ -92,11 +103,46 @@
 		// the de-localize before matching.
 		const dest = safeRedirect($page.url.searchParams.get('redirect'));
 		const path = dest ? deLocalizeHref(dest).split(/[?#]/)[0] : '';
-		pitch = path === '/favorites' ? 'shelf' : path === '/notebook' ? 'notebook' : null;
+		// Any notebook page (Today, print) pitches the notebook.
+		const notebook = path === '/notebook' || path.startsWith('/notebook/');
+		pitch = path === '/favorites' ? 'shelf' : notebook ? 'notebook' : null;
+	});
+
+	// What this reader already saved on this device, for the pitch: "Your
+	// bookshelf is waiting". `pitch` is only set in the browser (see above), so
+	// this reads the browser-only stores in the same pass that first draws the
+	// pitch — no second layout change — and a reader with nothing saved keeps
+	// the generic one.
+	const saved = $derived<SavedSummary | null>(pitch ? readSavedSummary(pitch) : null);
+	const savedTotal = $derived(saved?.total ?? 0);
+	/** Showing the emailed-code form (see `alt`). Never for a password reset. */
+	const codeFlow = $derived(mode === 'signup' ? !alt : mode === 'signin' && alt);
+	// Credit for a sign-up made from here: the prompt that linked here
+	// (`?src=`), else the Bookshelf / Notebook page the reader was headed for.
+	// The pitch page is itself the prompt for those two, so arriving on its
+	// create-account form counts as seeing it (not the sign-in form a returning
+	// reader switches to).
+	$effect(() => {
+		const src = $page.url.searchParams.get('src');
+		if (isSignupSource(src)) {
+			noteSignupSource(src);
+		} else if (pitch) {
+			const source = pitch === 'shelf' ? 'bookshelf' : 'notebook';
+			noteSignupSource(source);
+			if (mode === 'signup') promptSeen(source);
+		}
 	});
 	const pitchKey = $derived(pitch === 'shelf' ? 'login.pitchShelf' : 'login.pitchNotebook');
 	/** The form's own heading: the destination's on sign-up, the usual otherwise. */
-	const formTitle = $derived(pitch && mode === 'signup' ? t(`${pitchKey}FormTitle`) : titles[mode]);
+	const formTitle = $derived(
+		pitch && mode === 'signup'
+			? savedTotal === 1
+				? t('login.keepSavedOne')
+				: savedTotal > 1
+					? t('login.keepSaved').replace('%n%', new Intl.NumberFormat(getLang()).format(savedTotal))
+					: t(`${pitchKey}FormTitle`)
+			: titles[mode]
+	);
 
 	function switchMode(m: Mode) {
 		const url = new URL($page.url);
@@ -115,6 +161,7 @@
 			err = await auth.sendPasswordReset(email);
 			if (!err) sent = 'reset';
 		} else if (mode === 'signup') {
+			signupStarted();
 			err = await auth.signUp(email, password);
 			if (!err) sent = 'signup';
 		} else {
@@ -126,22 +173,10 @@
 		else password = '';
 	}
 
-	async function magicLink() {
-		if (!email) {
-			error = t('login.enterEmailFirst');
-			return;
-		}
-		busy = true;
-		error = null;
-		const err = await auth.signInWithMagicLink(email);
-		busy = false;
-		if (err) error = t(authErrorKey(err));
-		else sent = 'magic';
-	}
-
 	async function google() {
 		busy = true;
 		error = null;
+		if (mode === 'signup') signupStarted();
 		const err = await auth.signInWithGoogle();
 		// On success the browser navigates to Google; only reachable on error.
 		if (err) {
@@ -172,12 +207,7 @@
 	}
 
 	const sentBody = $derived(
-		(sent === 'signup'
-			? t('login.sentSignup')
-			: sent === 'reset'
-				? t('login.sentReset')
-				: t('login.sentMagic')
-		).replace('%email%', email)
+		(sent === 'signup' ? t('login.sentSignup') : t('login.sentReset')).replace('%email%', email)
 	);
 </script>
 
@@ -192,10 +222,7 @@
 </svelte:head>
 
 {#snippet googleButton()}
-	<button class="google-btn" type="button" onclick={google} disabled={busy || !auth.enabled}>
-		<GoogleMark />
-		{t('login.google')}
-	</button>
+	<GoogleButton onclick={google} disabled={busy || !auth.enabled} />
 {/snippet}
 
 <div class="px-5 py-12 {pitch && !sent ? 'pitch-layout mx-auto max-w-5xl' : 'page-col page-col--narrow'}">
@@ -218,7 +245,7 @@
 			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent"><Arrow back /> {t('login.backToSignIn')}</a>
 		</p>
 	{:else}
-		{#if pitch}<div class="pitch-intro"><LoginPitch kind={pitch} part="intro" /></div>{/if}
+		{#if pitch}<div class="pitch-intro"><LoginPitch kind={pitch} part="intro" {saved} /></div>{/if}
 		<div class="pitch-form min-w-0">
 			{#if !pitch}
 				<div class="mb-6 text-center">
@@ -232,6 +259,22 @@
 				</div>
 			{/if}
 
+			{#if codeFlow}
+				<div class="rounded-card border border-border bg-surface p-6">
+					{#if pitch}
+						<h2 class="text-h2">{formTitle}</h2>
+						<p class="mt-1 mb-4 text-small text-muted">
+							{mode === 'signup' ? t('login.pitchFree') : t('login.syncNote')}
+						</p>
+					{/if}
+					<EmailCodeForm
+						bind:email
+						counts={mode === 'signup'}
+						cta={pitch && mode === 'signup' ? t(`${pitchKey}Cta`) : undefined}
+						onPassword={() => (alt = !alt)}
+					/>
+				</div>
+			{:else}
 			<form class="rounded-card border border-border bg-surface p-6" onsubmit={submit}>
 				{#if pitch}
 					<h2 class="text-h2">{formTitle}</h2>
@@ -318,10 +361,10 @@
 					<button
 						class="btn btn-ghost mt-2 w-full"
 						type="button"
-						onclick={magicLink}
+						onclick={() => (alt = !alt)}
 						disabled={busy || !auth.enabled}
 					>
-						{t('login.magicLink')}
+						{t(mode === 'signup' ? 'login.useCode' : 'login.emailCode')}
 					</button>
 
 					{#if !pitch}
@@ -338,6 +381,7 @@
 					</p>
 				{/if}
 			</form>
+			{/if}
 
 			<p class="mt-4 text-center text-small text-muted">
 				{#if mode === 'signin'}
@@ -428,32 +472,6 @@
 		height: 1px;
 		background: var(--border);
 	}
-	.google-btn {
-		display: flex;
-		width: 100%;
-		align-items: center;
-		justify-content: center;
-		gap: 0.6rem;
-		padding: 0.6rem 1.1rem;
-		border-radius: var(--radius-sm);
-		border: 1px solid var(--border);
-		background: var(--surface-2);
-		color: var(--text);
-		font-family: var(--font-sans);
-		font-weight: 600;
-		font-size: var(--fs-body);
-		cursor: pointer;
-		transition: background var(--duration-fast) ease, border-color var(--duration-fast) ease;
-	}
-	.google-btn:hover:not(:disabled) {
-		background: var(--surface);
-		border-color: var(--accent-soft-border);
-	}
-	.google-btn:disabled {
-		opacity: 0.5;
-		cursor: default;
-	}
-
 	/* The reveal sits inside the field's box rather than beside it, so the input
 	   keeps the full row width the other fields have. */
 	.pw-wrap {

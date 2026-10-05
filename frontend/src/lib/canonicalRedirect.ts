@@ -9,7 +9,7 @@ import { locales } from '$lib/paraglide/runtime';
 export const RENDER_HOST = 'ochorus-web.onrender.com';
 
 /** Index pages whose route exports `trailingSlash = 'always'`. */
-const SLASHED_INDEXES = new Set(['articles', 'authors', 'originals', 'quotes', 'scripture', 'series']);
+const SLASHED_INDEXES = new Set(['articles', 'authors', 'originals', 'quotes', 'rss', 'scripture', 'series']);
 /** Sections whose every deeper page exports `trailingSlash = 'always'`. */
 const SLASHED_SECTIONS = new Set([
 	'articles',

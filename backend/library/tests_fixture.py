@@ -40,7 +40,6 @@ from pathlib import Path
 from django.conf import settings
 from django.test import SimpleTestCase
 
-from library.contemporize import MODERN_LANGUAGE
 from library.content_fixtures import (
     ARTICLES_DIR,
     AUTHORS_FILE,
@@ -87,6 +86,7 @@ from library.ingest import (
     strip_restated_heading,
     word_count,
 )
+from library.localization import is_english_edition
 from library.quote_marks import mark_counts, mispaired_marks
 from library.text import html_to_text, is_blank_title
 
@@ -1200,13 +1200,20 @@ class CoverAssetTests(SimpleTestCase):
         # BookCover. This rule exists because a cover with English words baked in
         # was appearing over a Swahili card; a cover with no words in it cannot
         # commit that mistake.
+        # The Modern English edition is ENGLISH: its cover carries the same
+        # English words, so it wears exactly its own work's English file.
+        english = {f["slug"]: _cover(f) for f in self.books if f["language"] == "en"}
         wrong = sorted(
             (f["slug"], f["language"], _cover(f))
             for f in self.books
             if f["language"] != "en"
-            and _cover(f).startswith("/covers/")
-            and not _cover(f).startswith("/covers/art/")
-            and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
+            and (
+                _cover(f) != english.get(f["slug"])
+                if is_english_edition(f["language"])
+                else _cover(f).startswith("/covers/")
+                and not _cover(f).startswith("/covers/art/")
+                and not _cover(f).startswith(f"/covers/{f['language']}/{f['slug']}.")
+            )
         )
         self.assertEqual(
             wrong, [],
@@ -1229,7 +1236,7 @@ class CoverAssetTests(SimpleTestCase):
         copied = sorted(
             f"{f['slug']}.{f['language']}: {f['cover_title']!r}"
             for f in self.books
-            if f["language"] not in ("en", MODERN_LANGUAGE)
+            if not is_english_edition(f["language"])
             and f.get("cover_title")
             and f["cover_title"] == english.get(f["slug"])
             and f["cover_title"] not in f["title"]
@@ -1808,8 +1815,12 @@ class CoverAssetTests(SimpleTestCase):
             slug = f["slug"]
             if slug not in DERIVED_GROUND:
                 continue
+            # The Modern English edition is English too, so it keeps the
+            # designed file rather than the wordless ground.
             expected = (
-                DESIGNED_BY_SLUG[slug] if f["language"] == "en" else art_url(slug)[0]
+                DESIGNED_BY_SLUG[slug]
+                if is_english_edition(f["language"])
+                else art_url(slug)[0]
             )
             if _cover(f) != expected:
                 wrong.append((slug, f["language"], _cover(f), expected))
@@ -1981,7 +1992,7 @@ class CoverAssetTests(SimpleTestCase):
             if slug not in CURATED_GROUND:
                 continue
             wants = (
-                DESIGNED_BY_SLUG[slug] if language == "en" else art_url(slug)[0]
+                DESIGNED_BY_SLUG[slug] if is_english_edition(language) else art_url(slug)[0]
             )
             if cover != wants:
                 wrong.append((slug, language, cover, wants))
@@ -2479,7 +2490,9 @@ class PlanTranslationCoverageTests(SimpleTestCase):
             f"{language}/{slug}"
             for slug, works in needs
             for language, have in self.published.items()
-            if language != "en"
+            # English variants (en-modern) own the English prose — see
+            # seed_plans._prose — so they need no plan_translations file.
+            if not is_english_edition(language)
             and all(w in have for w in works)
             and slug not in plan_translations().get(language, {})
         )
@@ -3007,7 +3020,7 @@ class PlanTranslationFileTests(SimpleTestCase):
         be read by nothing and edited by someone expecting it to work — the same
         silent no-op the slug check above exists to prevent, one level up.
         """
-        bad = sorted(lang for lang in self.raw if lang == "en" or lang.startswith("en-"))
+        bad = sorted(lang for lang in self.raw if is_english_edition(lang))
         self.assertEqual(
             bad,
             [],
@@ -3170,7 +3183,7 @@ class TopicTranslationFileTests(SimpleTestCase):
         bad = sorted(
             lang
             for lang in self.raw
-            if lang == "en" or lang.startswith("en-") or not _LANG_CODE.fullmatch(lang)
+            if is_english_edition(lang) or not _LANG_CODE.fullmatch(lang)
         )
         self.assertEqual(
             bad,

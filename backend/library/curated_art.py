@@ -1263,6 +1263,30 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A slim desk lamp, an open Bible, a blue ceramic mug and a notebook "
         "with a pen: a present-day study.",
     ),
+    # Drawn 2026-10-04 by a stand-in SDF ray-marcher in the same frame (wall in
+    # the book's colour, desk in lamplight), since the series' own renderer is
+    # not in the repo. Nothing Narnian and no likeness: the don's desk only.
+    "key-teachings-of-c-s-lewis": Original(
+        "aa4d46315b0c6a682340cb7582980c59e02fc2c996cac38ce3b8849dff22017e",
+        "A parchment-shaded brass lamp, three old calf and cloth volumes, an "
+        "ink bottle with a dip pen and a cup of tea: the Oxford don who wrote "
+        "everything by hand.",
+    ),
+    # Portraits of Courage, volume 7. The series wears museum paintings through
+    # CURATED, but the session that wrote this life could reach no collection
+    # host (Commons, Wikidata and the museum APIs were all blocked), so the
+    # ground is our own: an inline SVG (gradients, fractal-noise cloud and
+    # foliage, a mirrored sky for the river) rendered in headless Chromium at
+    # 2x and downscaled. A placeholder in the series' register, not a likeness
+    # and nothing Narnian; a public-domain Oxford view (Turner's or a Victorian
+    # watercolour of Magdalen from the meadows) would be the natural level-up,
+    # which is a two-line diff here plus a CURATED entry.
+    "c-s-lewis-a-life": Original(
+        "4d80afaaceebb5ae4bab8867a17a5ce700f592b3b430d527ce13ffc7716e1ae9",
+        "Dusk over the Magdalen water meadow: a storm-dark sky, the college "
+        "tower on the skyline and the Cherwell winding toward it, the walk "
+        "where Lewis talked through the night of 19 September 1931.",
+    ),
 }
 
 

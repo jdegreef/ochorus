@@ -143,7 +143,7 @@
 		<a href={`/authors/${page.author.slug}/`}>{t('quotes.authorBio').replace('%name%', page.author.name)}</a>
 	</nav>
 
-	<AccountCta />
+	<AccountCta source="quote" />
 </div>
 
 <style>

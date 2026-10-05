@@ -52,8 +52,8 @@
 		 * so the preacher has a face — used by the Sermon of the week panel. Left
 		 * null (the sermon's own page) keeps the monogram, so this is purely
 		 * additive and the page header is unchanged. `pos` is the `object-position`
-		 * from `$lib/portraits`, which lands the crop on the face; the chip keeps
-		 * its tinted ring, so the photo still wears the band's hue.
+		 * from `$lib/portraits`, which lands the crop on the face; the face is
+		 * printed as a duotone in the band's hue (`.duotone`, app.css).
 		 */
 		portrait?: { src: string; pos?: string } | null;
 		/** The sermon's own header — eyebrow, title, byline. */
@@ -74,7 +74,7 @@
 	     have a screen reader say it twice. SermonMonogram is aria-hidden; the
 	     portrait carries an empty alt for the same reason. -->
 	{#if portrait}
-		<span class="emblem-chip portrait-chip">
+		<span class="emblem-chip portrait-chip duotone">
 			<img src={portrait.src} use:hydrateSrc={{ src: portrait.src }} alt="" loading="lazy" style="object-position: {portrait.pos ?? '50% 0%'}" />
 		</span>
 	{:else}
@@ -102,15 +102,16 @@
 		gap: 1rem;
 		padding: 1rem 1.15rem;
 	}
-	/* The portrait fills the chip the monogram otherwise sits in; grayscale
-	   matches AuthorTile so the same face reads the same way wherever it
-	   appears. The chip's tinted ring and hue background (`.emblem-chip`
-	   in app.css) still show at the rim, so the photo sits in the band's colour. */
+	/* The portrait fills the chip the monogram otherwise sits in, printed in
+	   the band's own hue (the shared .duotone recipe), so the face belongs to
+	   the plate rather than sitting on it as a grey cutting. */
+	.portrait-chip {
+		--duotone-hue: var(--chip-hue);
+	}
 	.portrait-chip img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter: grayscale(1);
 	}
 	/* Phones. At full size the chip eats a third of a 390px measure and pushed
 	   the longest title to four lines, so it shrinks — but it does NOT go away:

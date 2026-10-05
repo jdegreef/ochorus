@@ -93,7 +93,7 @@
 	</header>
 	<ArticleShelf bind:this={shelf} {articles} activeTopic={slug} {filters} />
 
-	<AccountCta />
+	<AccountCta source="article" />
 </div>
 
 <style>
