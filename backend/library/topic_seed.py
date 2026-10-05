@@ -178,6 +178,7 @@ TOPICS = [
             "the-pursuit-of-god",
             "orthodoxy",
             "the-everlasting-man",
+            "unspoken-sermons",
         ],
     ),
     (
