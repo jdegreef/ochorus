@@ -1,0 +1,41 @@
+{
+ "kind": "bio",
+ "slug": "smith-wigglesworth",
+ "language": "fr",
+ "job_issue": 4268,
+ "references": [
+  {
+   "reference": "Mark 5:36",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 3:12",
+   "status": "self_rendered",
+   "block_index": 0
+  },
+  {
+   "reference": "John 3:3",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Jeremiah 9:1",
+   "status": "mined",
+   "block_index": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "block_index": 33,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Mark 16:18",
+   "status": "self_rendered",
+   "block_index": 34
+  }
+ ]
+}

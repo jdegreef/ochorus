@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "charles-s-price",
+ "language": "fr",
+ "job_issue": 4270,
+ "references": [
+  {
+   "reference": "Matthew 15:14",
+   "status": "self_rendered",
+   "block_index": 8
+  },
+  {
+   "reference": "1 Corinthians 2:2",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Kings 19:12",
+   "status": "mined",
+   "block_index": 26,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

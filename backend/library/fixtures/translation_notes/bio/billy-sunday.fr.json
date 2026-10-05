@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "billy-sunday",
+ "language": "fr",
+ "job_issue": 4269,
+ "references": [
+  {
+   "reference": "Luke 18:13",
+   "status": "mined",
+   "block_index": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 118:23",
+   "status": "self_rendered",
+   "block_index": 20
+  },
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "block_index": 37,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
