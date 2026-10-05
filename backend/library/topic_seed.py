@@ -99,6 +99,7 @@ TOPICS = [
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",
+            "key-teachings-of-george-macdonald",
         ],
     ),
     (
@@ -371,6 +372,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
+            "key-teachings-of-george-macdonald",
         ],
     ),
     (
