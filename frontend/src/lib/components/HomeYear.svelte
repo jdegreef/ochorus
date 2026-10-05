@@ -59,19 +59,22 @@
 
 {#if stats.finished}
 	<section class="page-col px-5 pt-14">
-		<div class="flex flex-col gap-8 rounded-card border border-border bg-surface p-6 sm:flex-row sm:items-center sm:p-8">
-			<div class="flex shrink-0 flex-col gap-2 sm:w-64">
+		<div class="flex flex-col gap-6 rounded-card border border-border bg-surface p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-8">
+			<div class="shrink-0 sm:w-56">
 				<p class="eyebrow text-gold">{t('year.title')} · {year}</p>
-				<p class="font-display text-h1 leading-none">{stats.finished}</p>
-				<p class="text-body text-muted">{t('year.statFinished')}</p>
-				<a
-					href="{localizeHref('/favorites')}#year"
-					class="mt-2 text-small font-semibold text-accent hover:underline">{t('year.title')} <Arrow /></a
-				>
+				<!-- The number and what it counts on one line: stacked, they left a
+				     tall empty column beside nothing on a phone. -->
+				<p class="mt-2 flex items-baseline gap-3">
+					<span class="font-display text-h1 leading-none">{stats.finished}</span>
+					<span class="text-body text-muted">{t('year.statFinished')}</span>
+				</p>
 			</div>
 			<!-- The covers as a straight grid, newest first, each a way back
 			     into its book (as on the Bookshelf's year). Only covers this language
-			     has: the count above is the year's, as YearInBooks shows it. -->
+			     has: the count above is the year's, as YearInBooks shows it. The way
+			     to the full year closes the grid as a tile of its own — one link,
+			     where a text link repeated the eyebrow, and it fills the gap a short
+			     last row would otherwise leave (seven covers in four columns). -->
 			{#if stats.books.length}
 				<ul class="grid flex-1 grid-cols-4 gap-2.5 sm:grid-cols-6" aria-label={t('year.title')}>
 					{#each stats.books.slice(0, MAX_COVERS) as book (book.slug)}
@@ -81,8 +84,38 @@
 							</a>
 						</li>
 					{/each}
+					<li>
+						<a href="{localizeHref('/favorites')}#year" class="year-more card-tint">
+							<span>{t('year.seeYear')} <Arrow /></span>
+						</a>
+					</li>
 				</ul>
+			{:else}
+				<a href="{localizeHref('/favorites')}#year" class="inline-block text-small font-semibold text-accent hover:underline"
+					>{t('year.seeYear')} <Arrow /></a
+				>
 			{/if}
 		</div>
 	</section>
 {/if}
+
+<style>
+	/* The closing tile: a cover's shape, so the grid stays level, holding the
+	   way to the full year. */
+	.year-more {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		aspect-ratio: 3 / 4;
+		padding: 0.5rem;
+		border: 1px dashed var(--border-strong);
+		border-radius: var(--radius-sm);
+		background: var(--surface-2);
+		color: var(--accent);
+		font-size: var(--fs-small);
+		font-weight: 600;
+		line-height: 1.25;
+		text-align: center;
+		text-decoration: none;
+	}
+</style>
