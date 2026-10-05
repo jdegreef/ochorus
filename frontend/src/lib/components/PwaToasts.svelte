@@ -4,6 +4,7 @@
 	import { undo } from '$lib/undo.svelte';
 	import { signupNudge } from '$lib/signupNudge.svelte';
 	import { seenOnView } from '$lib/signupSource';
+	import { openFrom } from '$lib/signInSheet.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -63,8 +64,12 @@
 		<div class="pwa-toast nudge">
 			<span>
 				{t(n.textKey)}
-				<a href={n.href} class="nudge-link" use:seenOnView={n.source} onclick={() => signupNudge.dismiss()}
-					>{t(n.linkKey)}</a
+				<a href={n.href} class="nudge-link" use:seenOnView={n.source} onclick={(e) => {
+						// Read before dismissing: `n` is derived from the slot dismiss empties.
+						const source = n.source;
+						signupNudge.dismiss();
+						openFrom(e, source);
+					}}>{t(n.linkKey)}</a
 				>
 			</span>
 			<button class="pwa-link" onclick={() => signupNudge.dismiss()}>{t('pwa.dismiss')}</button>

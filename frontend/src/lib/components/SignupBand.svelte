@@ -10,6 +10,7 @@
 	import { chooseVariant, type SignupVariant } from '$lib/signupBand';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { withSignup } from '$lib/loginHref';
+	import { openFrom } from '$lib/signInSheet.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
 	/**
@@ -91,7 +92,7 @@
      differing only in their two message keys. -->
 {#snippet cta(ctaKey: string, microKey: string)}
 	<div class="flex flex-col items-stretch gap-2 text-center">
-		<a class="btn btn-primary" href={signupHref} use:seenOnView={variant}>{t(ctaKey)}</a>
+		<a class="btn btn-primary" href={signupHref} use:seenOnView={variant} onclick={(e) => openFrom(e, variant)}>{t(ctaKey)}</a>
 		<span class="text-small text-muted">{t(microKey)}</span>
 	</div>
 {/snippet}
