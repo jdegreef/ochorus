@@ -349,7 +349,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'mary-slessor-a-life': 'house',
 	'samuel-ajayi-crowther-a-life': 'house',
 	'pandita-ramabai-a-life': 'house',
-	'c-s-lewis-a-life': 'house'
+	'c-s-lewis-a-life': 'house',
+	'elisabeth-elliot-a-life': 'house'
 };
 
 /**
