@@ -17,8 +17,12 @@
 	// Never over the text being read: the install offer waits for a page that
 	// isn't the reader (see $lib/installPrompt for when it's offered at all).
 	const showInstall = $derived(install.offer && !readerUi.focus && !isReaderRoute($page.route.id));
-	const isAndroid = $derived(typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent));
-	const chromeHref = $derived(showInstall ? chromeIntentUrl($page.url.href) : null);
+	const chromeHref = $derived(
+		showInstall && install.platform === 'inapp-android' ? chromeIntentUrl($page.url.href) : null
+	);
+	$effect(() => {
+		if (showInstall) install.shown();
+	});
 </script>
 
 <!-- Fixed, unobtrusive stack in the bottom-right. Layered above the reader. -->
@@ -97,18 +101,27 @@
 				<span class="text-small text-muted">
 					{install.platform === 'ios'
 						? t('install.iosSteps')
-						: install.platform === 'inapp'
-							? t(isAndroid ? 'install.inappAndroid' : 'install.inappIos')
-							: t('install.body')}
+						: install.platform === 'inapp-android'
+							? t('install.inappAndroid')
+							: install.platform === 'inapp-ios'
+								? t('install.inappIos')
+								: t('install.body')}
 				</span>
 			</div>
 			<div class="install-actions">
 				{#if install.platform === 'native'}
 					<button class="btn btn-sm btn-primary" onclick={() => install.install()}>{t('install.button')}</button>
-				{:else if install.platform === 'inapp' && isAndroid && chromeHref}
-					<a class="btn btn-sm btn-primary" href={chromeHref}>{t('install.openChrome')}</a>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
+				{:else if chromeHref}
+					<a class="btn btn-sm btn-primary" href={chromeHref} onclick={() => install.later('open_browser')}
+						>{t('install.openChrome')}</a
+					>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
+				{:else}
+					<!-- iPhone steps / open in Safari: nothing to tap here but "done". -->
+					<button class="btn btn-sm btn-primary" onclick={() => install.later('done')}>{t('install.gotIt')}</button>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
 				{/if}
-				<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
 			</div>
 		</div>
 	{/if}

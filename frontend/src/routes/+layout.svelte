@@ -96,6 +96,7 @@
 		// plan-day redirect — landed on a page with no nav and no exit. Keep it
 		// across chapter-to-chapter turns (same route), drop it on anything else.
 		if (from?.route.id !== to?.route.id) readerUi.exitFocus();
+		install.touch();
 	});
 
 	// Reflect the URL locale on <html> for accessibility + correct hyphenation.

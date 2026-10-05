@@ -68,6 +68,13 @@
 				if (sf === 'classic' || sf === 'hyperlegible')
 					document.documentElement.setAttribute('data-site-font', sf);
 			} catch (e) {}
+			// Chrome fires its install offer once, early — often before the app has
+			// mounted. Hold it for $lib/install.svelte.ts so it isn't missed, and so
+			// Chrome's own mini-infobar doesn't appear at a random moment.
+			window.addEventListener('beforeinstallprompt', function (e) {
+				e.preventDefault();
+				window.__ochorusInstall = e;
+			});
 		</script>
 		%sveltekit.head%
 	</head>

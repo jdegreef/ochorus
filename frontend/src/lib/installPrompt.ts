@@ -13,7 +13,7 @@
  * all, so it's told to open the page in the browser instead.
  */
 
-export type InstallPlatform = 'native' | 'ios' | 'inapp' | 'none';
+export type InstallPlatform = 'native' | 'ios' | 'inapp-android' | 'inapp-ios' | 'none';
 
 export interface InstallState {
 	/** Visits so far on this device (a gap of 30 min starts a new one). */
@@ -21,6 +21,8 @@ export interface InstallState {
 	lastSeen: number;
 	snoozedUntil: number;
 	installed: boolean;
+	/** Arrived via "Open in Chrome": the reader already asked to install. */
+	requested?: boolean;
 }
 
 export const NEW_VISIT_GAP_MS = 30 * 60 * 1000;
@@ -37,13 +39,20 @@ export function noteVisit(s: InstallState, now: number): InstallState {
 
 /** What a browser user agent can do about installing. */
 export function platformFor(ua: string, canPromptNatively: boolean): InstallPlatform {
-	if (/FBAN|FBAV|FB_IAB|Instagram|Line\/|WhatsApp|; wv\)/i.test(ua)) return 'inapp';
-	if (canPromptNatively) return 'native';
 	const ios = /iPhone|iPad|iPod/.test(ua);
-	// Only Safari can add to the home screen on iOS; Chrome/Firefox there can't.
-	if (ios && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua)) return 'ios';
+	if (/FBAN|FBAV|FB_IAB|Instagram|Line\/|WhatsApp|; wv\)/i.test(ua)) {
+		return ios ? 'inapp-ios' : 'inapp-android';
+	}
+	if (canPromptNatively) return 'native';
+	// Every iOS browser can Share → Add to Home Screen since iOS 16.4 (Safari,
+	// Chrome, Edge, Firefox alike); only in-app views (above) can't.
+	if (ios && /Safari\//.test(ua)) return 'ios';
 	return 'none';
 }
+
+/** The query flag "Open in Chrome" carries: the reader asked to install, so
+ *  the visit rule (and Chrome's fresh, empty storage) doesn't apply. */
+export const INSTALL_PARAM = 'install';
 
 export function shouldOffer(
 	s: InstallState,
@@ -52,7 +61,7 @@ export function shouldOffer(
 	now: number
 ): boolean {
 	if (standalone || s.installed || platform === 'none') return false;
-	if (s.visits < MIN_VISITS) return false;
+	if (s.visits < MIN_VISITS && !s.requested) return false;
 	return now >= s.snoozedUntil;
 }
 
@@ -65,7 +74,10 @@ export const snooze = (s: InstallState, now: number): InstallState => ({
 export function chromeIntentUrl(href: string): string | null {
 	try {
 		const u = new URL(href);
-		return `intent://${u.host}${u.pathname}${u.search}#Intent;scheme=https;package=com.android.chrome;end`;
+		u.searchParams.set(INSTALL_PARAM, '1');
+		// Without Chrome (some Android builds), fall back to the plain page.
+		const fallback = encodeURIComponent(u.href);
+		return `intent://${u.host}${u.pathname}${u.search}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${fallback};end`;
 	} catch {
 		return null;
 	}

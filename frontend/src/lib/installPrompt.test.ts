@@ -23,12 +23,12 @@ describe('platformFor', () => {
 	it('uses the native dialog when the browser offers one', () => {
 		expect(platformFor(ANDROID_CHROME, true)).toBe('native');
 	});
-	it('explains Share → Add to Home Screen on iPhone Safari only', () => {
+	it('explains Share → Add to Home Screen on any iPhone browser', () => {
 		expect(platformFor(IPHONE_SAFARI, false)).toBe('ios');
-		expect(platformFor(IPHONE_CHROME, false)).toBe('none');
+		expect(platformFor(IPHONE_CHROME, false)).toBe('ios');
 	});
 	it('sends in-app browsers to the real browser', () => {
-		expect(platformFor(FACEBOOK_ANDROID, false)).toBe('inapp');
+		expect(platformFor(FACEBOOK_ANDROID, false)).toBe('inapp-android');
 	});
 	it('offers nothing where installing isn’t possible', () => {
 		expect(platformFor(ANDROID_CHROME, false)).toBe('none');
@@ -50,6 +50,9 @@ describe('shouldOffer', () => {
 		expect(shouldOffer(s, 'native', true, now)).toBe(false);
 		expect(shouldOffer({ ...s, installed: true }, 'native', false, now)).toBe(false);
 	});
+	it('offers at once to a reader who asked via "Open in Chrome"', () => {
+		expect(shouldOffer({ ...EMPTY, visits: 1, requested: true }, 'native', false, now)).toBe(true);
+	});
 	it('stays away for 30 days after "Not now"', () => {
 		const s = snooze({ ...EMPTY, visits: 5 }, now);
 		expect(shouldOffer(s, 'ios', false, now + SNOOZE_MS - 1)).toBe(false);
@@ -59,8 +62,8 @@ describe('shouldOffer', () => {
 
 describe('chromeIntentUrl', () => {
 	it('reopens the same page in Chrome', () => {
-		expect(chromeIntentUrl('https://ochorus.com/sw/books/x/2/?plan=p&day=2')).toBe(
-			'intent://ochorus.com/sw/books/x/2/?plan=p&day=2#Intent;scheme=https;package=com.android.chrome;end'
-		);
+		const url = chromeIntentUrl('https://ochorus.com/sw/books/x/2/?plan=p&day=2')!;
+		expect(url.startsWith('intent://ochorus.com/sw/books/x/2/?plan=p&day=2&install=1#Intent;scheme=https;package=com.android.chrome;')).toBe(true);
+		expect(url).toContain('S.browser_fallback_url=https%3A%2F%2Fochorus.com%2Fsw%2Fbooks%2Fx%2F2%2F%3Fplan%3Dp%26day%3D2%26install%3D1');
 	});
 });

@@ -167,6 +167,7 @@
   "install_body": "በአንድ ንክኪ ወደ መጽሐፍዎ ይመለሱ። ያለ ኢንተርኔትም ይሰራል።",
   "install_button": "ወደ መነሻ ገጽ ጨምር",
   "install_later": "አሁን አይደለም",
+  "install_got_it": "ገባኝ",
   "install_ios_steps": "የማጋሪያ ቁልፉን ይንኩ፣ ከዚያ “Add to Home Screen” ይምረጡ።",
   "install_inapp_android": "በሌላ መተግበሪያ ውስጥ ነዎት። Ochorusን በመነሻ ገጽዎ ለመጨመር ይህን ገጽ በChrome ይክፈቱ።",
   "install_inapp_ios": "በሌላ መተግበሪያ ውስጥ ነዎት። Ochorusን በመነሻ ገጽዎ ለመጨመር ይህን ገጽ በSafari ይክፈቱ (በ••• ምናሌ)።",
