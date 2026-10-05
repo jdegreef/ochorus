@@ -7,7 +7,7 @@
   "paragraphs": [
    "Webale okwegatta ku Ochorus — etterekero ery’obwereere, eritaliimu matangaazo, ery’ebitabo by’Ekikristaayo eby’edda, mu lulimi lwo.",
    "Buli kimu wano kyo okusoma: ebitabo ebinene ku kusaba, okwewaayo eri Katonda, n’obulamu obw’omwoyo obw’omunda, okuva ku Andrew Murray okutuuka ku Thomas à Kempis. Tewali ky’ogula, tewali kye weetaaga kuggulawo.",
-   "Engeri esinga obulungi ey’okutandika kwe kutandika butandisi okusoma. Londa ekitabo ekikusikiriza, oba leka entegeka y’okusoma empanvu entono ekutwale eddakiika ntono buli lunaku."
+   "Engeri esinga obulungi ey’okutandika kwe kutandika butandisi okusoma. Londa ekitabo ekikusikiriza, oba leka entegeka y’okusoma ennyimpi ekutwale eddakiika ntono buli lunaku."
   ],
   "cta_label": "Tandika okusoma",
   "cta_path": "welcome",
@@ -35,9 +35,9 @@
   "greeting": "Oli otya, {name},",
   "paragraphs": [
    "Watandika okusoma — eryo lye ddaala erisinga obuzibu, era olituuseeko dda. Ekitabo kye waggulawo kiterekeddwa we wakoma ddala.",
-   "Okumaliriza ekitabo kyo ekisooka kirina essanyu lyakyo ekkakkamu. Eddakiika ntono buli lunaku zokka ze weetaaga; ebirala tubikukuumira aw’otuuse."
+   "Okumaliriza ekitabo kyo ekisooka kirina essanyu lyakyo ekkakkamu. Eddakiika ntono buli lunaku zokka ze weetaaga; ebirala tubikukolera — tukukuumira aw’otuuse."
   ],
-  "cta_label": "Weyongere okusoma",
+  "cta_label": "Weeyongere okusoma",
   "cta_path": "reading",
   "signoff": "Ekisa n’emirembe,",
   "signature": "Ttiimu ya Ochorus"
@@ -48,7 +48,7 @@
   "heading": "Ekintu ekisaanira okusomebwa",
   "greeting": "Oli otya, {name},",
   "paragraphs": [
-   "Bw’oba tomanyi w’otandikira, tandikira ku kitabo ekyasukka dda emirembe gyonna — ekitabo eky’edda abasomi ab’emirembe mingi kye bazzeemu okusoma.",
+   "Bw’oba tomanyi w’otandikira, tandikira ku kitabo ekiwangadde okusinga emisono gyonna — ekitabo eky’edda abasomi ab’emirembe mingi kye bazzeemu okusoma.",
    "Bino bitabo bimpi, bya buziba, era bikyusa obulamu mu kasirise: Andrew Murray ku bwetoowaze, Brother Lawrence ku kubeerawo kwa Katonda, Thomas à Kempis ku kugoberera Kristo. Ggulawo kimu ekiro kya leero."
   ],
   "cta_label": "Ketaaketaa mu Tterekero",
@@ -63,9 +63,9 @@
   "greeting": "Oli otya, {name},",
   "paragraphs": [
    "Wayiseewo akaseera — era ekyo tekirina buzibu. Ebitabo bigumiikiriza, era buli kye watandika kiri ddala we wakireka.",
-   "Eddakiika ntono ez’akasirise zokka ze weetaaga okuddamu okukwata ku wuzi. Aw’otuuse waterekeddwa era wakulindiridde buli lw’onoobeera mwetegefu."
+   "Eddakiika ntono ez’akasirise zokka ze weetaaga okuddamu okutandika we wakoma. Aw’otuuse waterekeddwa era wakulindiridde buli lw’onoobeera mwetegefu."
   ],
-  "cta_label": "Weyongere okusoma",
+  "cta_label": "Weeyongere okusoma",
   "cta_path": "",
   "signoff": "Ekisa n’emirembe,",
   "signature": "Ttiimu ya Ochorus"
