@@ -301,6 +301,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-corrie-ten-boom",
             "revelations-of-divine-love",
+            "key-teachings-of-elisabeth-elliot",
         ],
     ),
     (
@@ -446,6 +447,7 @@ TOPICS = [
             "godliness",
             "purity-of-heart",
             "key-teachings-of-john-wesley",
+            "key-teachings-of-elisabeth-elliot",
         ],
     ),
     (

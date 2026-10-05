@@ -62,6 +62,7 @@ ART_SCRIM: dict[str, float] = {
     "key-teachings-of-dietrich-bonhoeffer": 0.30,
     "key-teachings-of-dwight-l-moody": 0.35,
     "key-teachings-of-e-m-bounds": 0.30,
+    "key-teachings-of-elisabeth-elliot": 0.75,
     "key-teachings-of-frederick-brotherton-meyer": 0.30,
     "key-teachings-of-g-k-chesterton": 0.30,
     "key-teachings-of-gareth-evans": 0.30,

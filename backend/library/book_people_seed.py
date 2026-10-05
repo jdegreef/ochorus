@@ -162,6 +162,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("key-teachings-of-charles-finney", [("charles-finney", "subject")]),
     ("key-teachings-of-charles-h-spurgeon", [("charles-h-spurgeon", "subject")]),
     ("key-teachings-of-corrie-ten-boom", [("corrie-ten-boom", "subject")]),
+    ("key-teachings-of-elisabeth-elliot", [("elisabeth-elliot", "subject")]),
     ("key-teachings-of-derek-prince", [("derek-prince", "subject")]),
     ("key-teachings-of-dietrich-bonhoeffer", [("dietrich-bonhoeffer", "subject")]),
     ("key-teachings-of-dwight-l-moody", [("dwight-l-moody", "subject")]),

@@ -7214,6 +7214,35 @@
 				376
 			]
 		},
+		"key-teachings-of-elisabeth-elliot": {
+			"ground": "d9beac65e4ffe3be8b8c27d3639f0fe1f148587ac6db4b5fabcfbc9b9e04ae63",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.75,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[78, 225, 522, 288]
+				],
+				"subtitle": [
+					[54, 348, 546, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-frederick-brotherton-meyer": {
 			"ground": "a83efdc05ac91f8365e9d9c0b7dc58c5fda7b258d509eebd4117ba42b0eca441",
 			"style": "originals",
