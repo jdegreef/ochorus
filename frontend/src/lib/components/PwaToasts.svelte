@@ -87,8 +87,8 @@
 			<span class="text-small">
 				{t('midBook.where')
 					.replace('%n%', String(w.order))
-					.replace('%title%', w.bookTitle)
-					.replace('%author%', w.author)}
+					.replace('%author%', () => w.author)
+					.replace('%title%', () => w.bookTitle)}
 			</span>
 			<div class="midbook-actions">
 				<a class="btn btn-sm btn-primary" href={w.firstHref} onclick={() => midBook.clear()}>{t('midBook.fromStart')}</a>

@@ -348,6 +348,8 @@
 			const chapters = bookForProgress?.chapters;
 			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
 			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			// The account knows their place: that, not "start from chapter 1".
+			midBook.clear();
 			// It says more than the resume note; don't let that come back after it.
 			dismissResumed();
 			clearTimeout(syncTimer);
@@ -817,6 +819,7 @@
 	function goToPage(p: number, save = true) {
 		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
+		if (save && pageIndex > 0) midBook.clear(); // paged mode's "read on"
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			// Not gated on listen.status like the scroll handlers: paged mode is
@@ -1024,16 +1027,6 @@
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
-		// The mid-book welcome steps aside once the reader has chosen to read on
-		// (a screen's worth into the text): it was a door, not a bar.
-		const settle = () => {
-			if (window.scrollY > window.innerHeight) {
-				midBook.clear();
-				window.removeEventListener('scroll', settle);
-			}
-		};
-		window.addEventListener('scroll', settle, { passive: true });
-		return () => window.removeEventListener('scroll', settle);
 	});
 
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
@@ -1085,17 +1078,25 @@
 		// hit): the reader chose that spot.
 		clearTimeout(syncTimer);
 		syncOffer = null;
+		const localRecord = getProgressRecord(s);
 		syncAsk =
 			!deliberateJump && !syncDismissed.has(s)
-				? { slug: s, order, language, local: getProgressRecord(s) }
+				? { slug: s, order, language, local: localRecord }
 				: null;
 
-		// Landed mid-book with no place in this book yet (search, a shared
-		// link): say where they are and offer the beginning ($lib/midBook).
-		// Not on chapter 1, a plan day, or a deliberate jump. Read BEFORE
-		// saveProgress, which is what gives them a place.
-		const firstInBook = getProgressRecord(s) == null;
-		if (firstInBook && order > 1 && !deliberateJump && !$page.url.searchParams.has('plan')) {
+		// Landed mid-book from outside the site (search, a shared link) with no
+		// place in this book yet: say where they are and offer the beginning
+		// ($lib/midBook). Only on the page the visit entered on — a chapter
+		// picked from the contents or turned to is the reader's own choice —
+		// and not on chapter 1, a plan day, or a deliberate jump. The record is
+		// read BEFORE saveProgress, which is what gives them a place.
+		if (
+			midBook.landing &&
+			localRecord == null &&
+			order > 1 &&
+			!deliberateJump &&
+			!planSlug
+		) {
 			midBook.show({
 				slug: s,
 				bookTitle: chapter.book_title,
@@ -1584,6 +1585,9 @@
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	function onScroll() {
 		trackChrome();
+		// The mid-book welcome steps aside once the reader has read on a
+		// screen's worth: it was a door, not a bar.
+		if (midBook.current && window.scrollY > window.innerHeight) midBook.clear();
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(saveScrollNow, 250);
 	}

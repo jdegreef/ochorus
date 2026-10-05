@@ -7,7 +7,8 @@
  * chapter text never moves under the reader.
  *
  * The reader page decides WHEN (a first open of this book, past chapter 1,
- * not a plan day or a deliberate jump); this holds what to show. Dismissed
+ * not a plan day or a deliberate jump, on the entry page only); this holds
+ * what to show. Dismissed
  * per book for the session, and gone once the reader scrolls on into the text.
  */
 export interface MidBookWelcome {
@@ -22,7 +23,14 @@ export interface MidBookWelcome {
 
 class MidBook {
 	current = $state<MidBookWelcome | null>(null);
+	/** Still on the page the visit entered on: no in-app navigation yet. */
+	landing = true;
 	#dismissed = new Set<string>();
+
+	/** Any in-app navigation (the layout's beforeNavigate): not a landing now. */
+	navigated() {
+		this.landing = false;
+	}
 
 	show(w: MidBookWelcome) {
 		if (this.#dismissed.has(w.slug)) return;
