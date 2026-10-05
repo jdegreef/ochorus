@@ -1,0 +1,25 @@
+{
+ "kind": "bio",
+ "slug": "john-hyde",
+ "language": "fr",
+ "job_issue": 2952,
+ "references": [
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Zechariah 2:8",
+   "status": "self_rendered",
+   "block_index": 17
+  },
+  {
+   "reference": "Revelation 12:10",
+   "status": "mined",
+   "block_index": 18,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
