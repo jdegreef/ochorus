@@ -2,6 +2,8 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { storageHealth } from '$lib/storageHealth.svelte';
 	import { undo } from '$lib/undo.svelte';
+	import { midBook } from '$lib/midBook.svelte';
+	import FavoriteButton from '$lib/components/FavoriteButton.svelte';
 	import { page } from '$app/stores';
 	import { install } from '$lib/install.svelte';
 	import { chromeIntentUrl } from '$lib/installPrompt';
@@ -88,6 +90,26 @@
 				>
 			</span>
 			<button class="pwa-link" onclick={() => signupNudge.dismiss()}>{t('pwa.dismiss')}</button>
+		</div>
+	{/if}
+
+	<!-- Landed mid-book (see $lib/midBook): where you are, the way to the
+	     beginning, and a Save. -->
+	{#if midBook.current}
+		{@const w = midBook.current}
+		<div class="pwa-toast midbook" role="region" aria-label={w.bookTitle}>
+			<span class="text-small">
+				{t('midBook.where')
+					.replace('%n%', String(w.order))
+					.replace('%author%', () => w.author)
+					.replace('%title%', () => w.bookTitle)}
+			</span>
+			<div class="midbook-actions">
+				<a class="btn btn-sm btn-primary" href={w.firstHref} onclick={() => midBook.clear()}>{t('midBook.fromStart')}</a>
+				<a class="btn btn-sm btn-ghost" href={w.bookHref} onclick={() => midBook.clear()}>{t('midBook.aboutBook')}</a>
+				<FavoriteButton kind="book" slug={w.slug} />
+				<button class="pwa-link" onclick={() => midBook.dismiss()}>{t('pwa.dismiss')}</button>
+			</div>
 		</div>
 	{/if}
 
@@ -182,6 +204,18 @@
 		height: 0.5rem;
 		border-radius: 999px;
 		background: var(--muted);
+	}
+	.midbook {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.5rem;
+		max-width: min(24rem, calc(100vw - 2rem));
+	}
+	.midbook-actions {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.5rem;
 	}
 	.install {
 		flex-direction: column;

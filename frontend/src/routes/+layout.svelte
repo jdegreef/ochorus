@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
+	import { midBook } from '$lib/midBook.svelte';
 	import { crossesLocale } from '$lib/localeNavigation';
 	import { theme } from '$lib/theme.svelte';
 	import { readerUi } from '$lib/readerUi.svelte';
@@ -82,6 +83,7 @@
 	// Links you write by hand: also mark them data-sveltekit-reload, which
 	// stops a hover preload running the target's load in the wrong locale.
 	beforeNavigate(({ from, to, type, cancel }) => {
+		midBook.navigated();
 		if (type === 'leave' || type === 'popstate' || !crossesLocale(from?.url, to?.url)) return;
 		cancel();
 		location.assign(to!.url.href);

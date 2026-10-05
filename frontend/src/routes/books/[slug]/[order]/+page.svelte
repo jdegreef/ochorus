@@ -81,6 +81,7 @@
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import ChapterEndAsk from '$lib/components/ChapterEndAsk.svelte';
+	import { midBook } from '$lib/midBook.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
@@ -347,6 +348,8 @@
 			const chapters = bookForProgress?.chapters;
 			if (chapters && !chapters.some((c) => c.order === offer.order)) return;
 			syncOffer = { ...offer, p: remote?.language === ask.language ? offer.p : 0 };
+			// The account knows their place: that, not "start from chapter 1".
+			midBook.clear();
 			// It says more than the resume note; don't let that come back after it.
 			dismissResumed();
 			clearTimeout(syncTimer);
@@ -816,6 +819,7 @@
 	function goToPage(p: number, save = true) {
 		if (save) stickToLast = false;
 		pageIndex = Math.min(pageTotal - 1, Math.max(0, p));
+		if (save && pageIndex > 0) midBook.clear(); // paged mode's "read on"
 		if (save) {
 			topIndex = firstIndexOnPage(pageIndex);
 			// Not gated on listen.status like the scroll handlers: paged mode is
@@ -1011,6 +1015,7 @@
 		}
 	}
 	onDestroy(() => {
+		midBook.clear();
 		clearTimeout(peekTimer);
 		clearTimeout(returnTimer);
 		clearTimeout(syncTimer);
@@ -1073,10 +1078,36 @@
 		// hit): the reader chose that spot.
 		clearTimeout(syncTimer);
 		syncOffer = null;
+		const localRecord = getProgressRecord(s);
 		syncAsk =
 			!deliberateJump && !syncDismissed.has(s)
-				? { slug: s, order, language, local: getProgressRecord(s) }
+				? { slug: s, order, language, local: localRecord }
 				: null;
+
+		// Landed mid-book from outside the site (search, a shared link) with no
+		// place in this book yet: say where they are and offer the beginning
+		// ($lib/midBook). Only on the page the visit entered on — a chapter
+		// picked from the contents or turned to is the reader's own choice —
+		// and not on chapter 1, a plan day, or a deliberate jump. The record is
+		// read BEFORE saveProgress, which is what gives them a place.
+		if (
+			midBook.landing &&
+			localRecord == null &&
+			order > 1 &&
+			!deliberateJump &&
+			!planSlug
+		) {
+			midBook.show({
+				slug: s,
+				bookTitle: chapter.book_title,
+				author: chapter.author_name,
+				order,
+				firstHref: chapterHref(1),
+				bookHref: localizeHref(`/books/${s}`)
+			});
+		} else {
+			midBook.clear();
+		}
 
 		saveProgress(s, order, language);
 		bookmarks.load('book', s);
@@ -1554,6 +1585,9 @@
 	let saveTimer: ReturnType<typeof setTimeout> | undefined;
 	function onScroll() {
 		trackChrome();
+		// The mid-book welcome steps aside once the reader has read on a
+		// screen's worth: it was a door, not a bar.
+		if (midBook.current && window.scrollY > window.innerHeight) midBook.clear();
 		clearTimeout(saveTimer);
 		saveTimer = setTimeout(saveScrollNow, 250);
 	}
