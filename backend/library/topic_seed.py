@@ -181,6 +181,8 @@ TOPICS = [
             "the-everlasting-man",
             "unspoken-sermons",
             "paradise-lost",
+            "heretics",
+            "st-francis-of-assisi",
             "revelations-of-divine-love",
         ],
     ),

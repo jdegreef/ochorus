@@ -5767,6 +5767,16 @@
 				509
 			]
 		},
+		"heretics": {
+			"ground": "cc92c90fd5432c6ba802748bf5e663634e287d63836fbd6fd144174550815031",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"hi/absolute-surrender": {
 			"ground": "450a82d88d926b869f771cd08e1fa6c105facc09e8ed11152e22d532ba5688cb",
 			"style": "devotional",
@@ -10088,6 +10098,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"st-francis-of-assisi": {
+			"ground": "08c362af071625872d4d52dd094d991af54dd446c62595443e4ffdee8d9f116b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"susanna-wesley-clarke": {
