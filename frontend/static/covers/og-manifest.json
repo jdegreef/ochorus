@@ -11548,6 +11548,16 @@
 				478
 			]
 		},
+		"the-practice-of-the-presence-of-god": {
+			"ground": "fcb34844fd46e3ea87c80b2aff90f15f1c5b03cbb383b3cb40db8afbae9b11af",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-pursuit-of-god": {
 			"ground": "ac90ed259314f9e1044c7d3624e9dc3d57acc45f007acb7ea7e110ed93189f47",
 			"style": "revival",

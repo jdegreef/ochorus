@@ -44,6 +44,7 @@ TOPICS = [
             "prayer-the-pulse-of-life",
             "cheque-book",
             "key-teachings-of-e-m-bounds",
+            "the-practice-of-the-presence-of-god",
         ],
     ),
     (
@@ -82,6 +83,7 @@ TOPICS = [
             "the-pursuit-of-god",
             "power-from-on-high-new-testament",
             "power-from-on-high-old-testament",
+            "the-practice-of-the-presence-of-god",
         ],
     ),
     (
@@ -378,6 +380,7 @@ TOPICS = [
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
             "revelations-of-divine-love",
+            "the-practice-of-the-presence-of-god",
         ],
     ),
     (
