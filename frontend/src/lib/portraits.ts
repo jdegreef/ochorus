@@ -32,6 +32,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'amy-carmichael': '50% 0%',
 	'andrew-murray': '50% 2%',
 	'anselm-of-canterbury': '50% 0%', // engraved profile, face at ~28% of a near-square plate
+	'arthur-t-pierson': '50% 10%', // 1886 engraving (Many Infallible Proofs); face at ~25% of a 0.77 plate
 	'athanasius-of-alexandria': '50% 0%', // icon: head at ~20% of a 0.69 plate
 	'augustine-of-hippo': '50% 0%',
 	'bernard-of-clairvaux': '50% 0%', // painting cropped to a bust; face at ~42%, near-square so nearly inert
@@ -39,24 +40,31 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'billy-graham': '50% 0%', // 1966 press photo; face high at ~23% of a 0.80 plate
 	'billy-sunday': '50% 0%', // 1921 LoC studio bust; face at ~33% of a 0.70 plate — 0% is the highest the crop goes
 	'blaise-pascal': '50% 10%', // c. 1690 Versailles oil, cropped to a bust; face at ~35% of a 0.84 plate
+	'c-s-lewis': '50% 0%', // 1957 dust-jacket photo (John S. Murray); head high — anything lower clips the crown
 	'c-t-studd': '50% 0%', // full-length cricket photo; head high at ~10% of a 0.54 plate
 	'catherine-booth': '50% 0%',
 	'charles-finney': '50% 0%',
 	'charles-h-spurgeon': '50% 0%',
+	'charles-s-price': '50% 30%', // 1920s–30s studio portrait; near-square, so nearly inert
 	'christmas-evans': '50% 25%', // 1859 engraved frontispiece; face at ~40% of a 0.75 plate
 	'clement-of-rome': '50% 0%', // mosaic bust; face at ~28% of a 0.80 plate
 	'corrie-ten-boom': '50% 0%', // 1921 photo, hat; face at ~27% of a 0.63 plate
 	'cyprian-of-carthage': '50% 0%', // icon: bust, face at ~22%
 	'david-brainerd': '50% 0%',
 	'david-livingstone': '50% 3%', // seated Annan photo; face high at ~25% of a 0.82 plate
+	'derek-prince': '50% 5%', // studio bust; face at ~29% of a 0.71 plate
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
+	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
+	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
 	'frederick-brotherton-meyer': '50% 0%',
+	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
 	'gareth-evans': '50% 45%', // square source
 	'george-herbert': '50% 8%', // engraving; face at ~35% of a 0.80 plate
+	'george-macdonald': '50% 10%', // 1860s William Jeffrey photo, signature cropped off
 	'george-muller': '50% 37%',
 	'george-whitefield': '50% 0%',
 	'gladys-aylward': '50% 8%', // bust-cropped from a full-length photo; face at ~28% of a 0.74 plate
@@ -65,14 +73,21 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'helen-roseveare': '50% 8%', // 2003 bust photo; face at ~36% of a 0.82 plate
 	'hudson-taylor': '50% 20%',
 	'ignatius-of-antioch': '50% 0%', // fresco: head at ~17% of a 0.72 plate
+	'isaac-watts': '50% 20%', // NPG portrait cropped to a bust; near-square, so nearly inert
 	'j-c-ryle': '50% 0%', // 1888 photograph: bust, face high at ~30% of a 0.70 plate
+	'janani-luwum': '50% 50%', // square close-up — the crop takes the whole photo
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
+	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
+	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
 	'john-bunyan': '50% 0%',
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
 	'john-cassian': '50% 0%', // icon: standing figure, head at ~20% of a 0.70 plate
 	'john-chrysostom': '50% 0%', // mosaic: standing figure, head at ~11%
+	'john-foxe': '50% 20%', // 1587 portrait cropped to a bust; near-square
 	'john-g-lake': '50% 0%', // c.1900–05 profile bust; face at ~25% of a 0.62 plate
+	'john-hyde': '50% 20%', // studio bust; face at ~40% of a 0.86 plate
+	'john-milton': '50% 30%', // c. 1629 portrait; face at ~40% of a 0.80 plate
 	'john-newton': '50% 27%', // portrait; face at ~40% of a 0.72 plate
 	'john-owen': '50% 0%', // Greenhill portrait; face at ~31% of a 0.81 plate
 	'john-r-mott': '50% 0%', // 1910 Review of Reviews bust; face at ~28% of a 0.81 plate
@@ -80,19 +95,23 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
+	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
 	'lottie-moon': '50% 30%', // oval studio photo; face at ~40% of a 0.66 plate
 	'martin-luther': '50% 0%', // Cranach 1517 half-length; face at ~23% of a 0.64 plate
+	'martyn-lloyd-jones': '50% 50%', // square source — the crop takes the whole photo
 	'mary-slessor': '50% 3%', // seated photo; head high at ~22% of a 0.67 plate
 	'monica-of-hippo': '50% 0%', // Gozzoli fresco, tall niche; head high at ~18% of a 0.42 plate
 	'pandita-ramabai': '50% 20%', // bust photo; face at ~30% of a 0.73 plate
 	'r-a-torrey': '50% 10%',
+	'rees-howells': '50% 10%', // bust photo; face at ~32% of a 0.84 plate
 	'richard-allen': '50% 37%',
 	'richard-baxter': '50% 18%',
 	'richard-sibbes': '50% 0%', // labelled portrait; face at ~28% of a 0.72 plate
 	'robert-murray-mcheyne': '50% 2%', // engraving; side profile, head high at ~32% of a 0.78 plate
 	'samuel-ajayi-crowther': '50% 45%',
+	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
@@ -102,7 +121,9 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
-	'william-law': '50% 16%' // cropped oval engraving; face at ~33% of a 0.58 plate
+	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
+	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
+	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
 };
 
 /**
