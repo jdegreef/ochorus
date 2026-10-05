@@ -1375,7 +1375,42 @@ class AuthorDetailSerializer(LocalizedMixin, serializers.ModelSerializer):
             # Life-and-ministry events for the timeline (plain JSON on the model,
             # so it serializes as-is). Only the detail page draws the timeline.
             "milestones",
+            # A reading plan drawn from this author's books, for the page's "Read
+            # Andrew Murray a day at a time" card — or null. Server-side and so
+            # prerendered: a card fetched after mount pushed the fold down.
+            "plan",
         ]
+
+    plan = serializers.SerializerMethodField()
+
+    def get_plan(self, obj) -> dict | None:
+        """The published plan in this language that reads this author's books:
+        one made only of them beats one that merely includes one, then the
+        plans' own order. Judged on EVERY day (a plan list's covers stop at
+        five books), an article day counting as someone else's. One query."""
+        mine = {b.slug for b in self._books(obj)}
+        if not mine:
+            return None
+        plans: dict[int, dict] = {}
+        rows = PlanDay.objects.filter(
+            plan__language=self._language(), plan__is_published=True
+        ).values_list("plan_id", "book_slug", "plan__slug", "plan__title", "plan__sort_order")
+        for plan_id, book_slug, slug, title, sort_order in rows:
+            p = plans.setdefault(
+                plan_id,
+                {"slug": slug, "title": title, "sort": (sort_order, title),
+                 "days": 0, "hits": 0, "own": True},
+            )
+            p["days"] += 1
+            if book_slug in mine:
+                p["hits"] += 1
+            else:
+                p["own"] = False
+        reading = [p for p in plans.values() if p["hits"]]
+        if not reading:
+            return None
+        best = min(reading, key=lambda p: (not p["own"], p["sort"]))
+        return {"slug": best["slug"], "title": best["title"], "day_count": best["days"]}
 
     # Reads the view's annotation; falls back to a count only when a caller
     # serialized an un-annotated Author (the admin does).
