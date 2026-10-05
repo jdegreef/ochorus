@@ -9770,6 +9770,16 @@
 				550
 			]
 		},
+		"revelations-of-divine-love": {
+			"ground": "95665a1e9e73abf85047ac9af0a99328ea4a1644fbb22363a16d6fad8ffe39fc",
+			"style": "inscriptional",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"revival-lectures": {
 			"ground": "842406cf6789e2fa5426e898a4ab03998bc0395d73e3ce44b25030af0ec886ea",
 			"style": "revival",
