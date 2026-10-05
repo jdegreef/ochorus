@@ -2577,3 +2577,16 @@ archaic spelling and period punctuation are the text, not defects in it.
   1.165–1.30, pt 1.01–1.09. Do NOT put an example range dash in a brief — two hi
   translators copied the brief's en dash over the source's hyphen; say "keep the
   English's dash". A batch of 8 articles = 8 parallel agents, ~2–4 min each.
+- **The French Bible is `fra_lsg` (Louis Segond 1910, PD), USFM in the ebible mirror —
+  and its `\x … \x*` cross-references sit BETWEEN sentences with no space** (fr bios
+  #4264/#4265/#4267, 2026-10-05). URL: `bibles/fra_lsg/usfm/<code>.usfm` (`usx/` 404s).
+  Words are `\w mot|strong="G…"\w*` (and `\+w` inside `\wj`). Stripping a cross-ref with
+  `''` welds sentences in 112 verses (`Fils unique,afin`, `persécutes.Il`). Replace it with
+  a SPACE and then collapse whitespace. After that, a scan for punctuation glued to a
+  capital letter finds 0. French bio house style, measured from 62 files: « x » with
+  ordinary spaces, curly ’, a space before ? ! ; :, passé simple; bio band 1.04–1.12.
+  Translators default to English denomination names, but the fr corpus uses
+  « Assemblées de Dieu » and « Alliance chrétienne et missionnaire », so normalise.
+  **The prerender touch in step 5 is RETIRED** (deploy skill, #3433): the web
+  `buildFilter` rebuilds every content root and waits for the API release, so a content PR
+  needs no `+page.ts` touch and no follow-up PR.

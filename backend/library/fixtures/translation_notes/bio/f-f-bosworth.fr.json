@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "f-f-bosworth",
+ "language": "fr",
+ "job_issue": 4264,
+ "references": [
+  {
+   "reference": "Luke 23:34",
+   "status": "self_rendered",
+   "block_index": 14
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "block_index": 16,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Revelation 7:14",
+   "status": "mined",
+   "block_index": 17,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "2 Timothy 4:7",
+   "status": "self_rendered",
+   "block_index": 36
+  }
+ ]
+}
