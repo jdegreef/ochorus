@@ -73,6 +73,7 @@ describe('buildResumeItems', () => {
 			[book('waiting-on-god', 'Waiting on God', 35)],
 			[sermon('power-of-stillness', 'The Power of Stillness', '1 Kings 19:12')]
 		);
+		if (bk.kind !== 'book' || sm.kind !== 'sermon') throw new Error('expected [sermon, book]');
 		// Book: deep-links to the open chapter and carries the meter + caption fields
 		// (WorkCard composes the line "Chapter 27 / 35 · N%" from these).
 		expect(bk.href).toBe('/books/waiting-on-god/27');
@@ -83,8 +84,7 @@ describe('buildResumeItems', () => {
 		expect(bk.order).toBe(27);
 		// Sermon: resumes at its paragraph, has no meter, carries its reference.
 		expect(sm.href).toBe('/sermons/power-of-stillness?p=4');
-		expect(sm.book).toBeUndefined();
 		expect(sm.pct).toBeNull();
-		expect(sm.scriptureRef).toBe('1 Kings 19:12');
+		expect(sm.sermon.scripture_ref).toBe('1 Kings 19:12');
 	});
 });

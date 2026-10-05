@@ -64,7 +64,27 @@ const sermon: ResumeItem = {
 	title: 'Power in Prayer',
 	author: 'R. A. Torrey',
 	pct: null,
-	scriptureRef: 'James 5:16',
+	sermon: {
+		slug: 'power-in-prayer',
+		language: 'en',
+		title: 'Power in Prayer',
+		scripture_ref: 'James 5:16',
+		scripture_book: 'James',
+		scripture_book_order: 59,
+		summary: '',
+		preached_on: null,
+		word_count: 4000,
+		author: {
+			slug: 'torrey',
+			name: 'R. A. Torrey',
+			bio: '',
+			photo_url: '',
+			birth_year: 1856,
+			death_year: 1928
+		},
+		topics: [],
+		created_at: '2026-01-01T00:00:00Z'
+	},
 	finished: false
 };
 
@@ -100,5 +120,22 @@ describe('WorkCard caption', () => {
 		expect(caption.classList.contains('truncate')).toBe(true);
 		// The verse range survives the ellipsis, on hover and to assistive tech.
 		expect(caption.getAttribute('title')).toContain('James 5:16');
+	});
+});
+
+describe('WorkCard sermon cover', () => {
+	it("sets the sermon on BookCover's plate: preacher, title, passage", () => {
+		const card = render(WorkCard, { item: sermon });
+		const plate = card.querySelector<HTMLElement>('.cover-plate')!;
+		expect(plate.querySelector('.byline')?.textContent).toBe('R. A. Torrey');
+		expect(plate.querySelector('.title')?.textContent).toBe('Power in Prayer');
+		expect(plate.querySelector('.subtitle')?.textContent?.trim()).toBe('James 5:16');
+		expect(plate.style.getPropertyValue('--plate')).toContain('linear-gradient');
+	});
+
+	it('drops the passage line when the sermon has no reference', () => {
+		const item = { ...sermon, sermon: { ...sermon.sermon, scripture_ref: '' } };
+		const card = render(WorkCard, { item });
+		expect(card.querySelector('.cover-plate .subtitle')).toBeNull();
 	});
 });

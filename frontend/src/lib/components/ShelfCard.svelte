@@ -104,8 +104,8 @@
 				{#each covers.slice(0, 4) as cover (`${cover.kind ?? 'book'}:${cover.slug ?? cover.title}`)}
 					{#if isSermonTile(cover)}
 						<!-- Round, not a 3:4 tile: the shape is what says "sermon, not a
-						     volume" at a glance, which is the whole reason sermons were
-						     never given covers. It wears its passage monogram, as on
+						     volume" at a glance, which is why sermons are
+						     given no cover on a shelf. It wears its passage monogram, as on
 						     every sermon shelf. -->
 						<SermonMonogram
 							class="sermon-tile"

@@ -1,7 +1,8 @@
 import { emblemForSermon } from '$lib/emblemNames';
 import { EMBLEM_HUES } from '$lib/emblemHues';
-import { tintable } from '$lib/coverArt';
+import { inkSafe, tintable } from '$lib/coverArt';
 import type { EmblemName } from '$lib/emblems';
+import type { CoverFace, SermonSummary } from '$lib/library-public';
 
 /**
  * A sermon's art, from its slug: which emblem it wears and the hue to tint with.
@@ -19,4 +20,38 @@ import type { EmblemName } from '$lib/emblems';
 export function sermonArt(slug: string): { emblem: EmblemName; hue: string } {
 	const emblem = emblemForSermon(slug);
 	return { emblem, hue: tintable(EMBLEM_HUES[emblem]) };
+}
+
+/**
+ * A sermon as a `CoverFace`, so `<BookCover>` sets it on its own plate — the
+ * resume card's 3:4 slot, the one place a sermon wears a cover (STYLE_GUIDE
+ * §Cards). Through BookCover rather than a copy of its markup, so the plate,
+ * the preacher's house style and the parity gate all hold for it unchanged.
+ *
+ * - No `cover_url`, so BookCover takes its no-file branch: `coverGradient` of
+ *   `cover_color`, with the type drawn over it.
+ * - `cover_color` is the sermon's own hue through `inkSafe`: `sermonArt` lifts
+ *   it for a wash, and white type needs it floored the other way.
+ * - The passage is the subtitle.
+ * - The slug is namespaced (`sermon:`), because BookCover keys tables by BOOK
+ *   slug — `BOOK_STYLE` among them — and a sermon sharing a book's slug must
+ *   not wear that book's style.
+ */
+export function sermonCoverFace(sermon: SermonSummary): CoverFace {
+	return {
+		slug: `sermon:${sermon.slug}`,
+		language: sermon.language,
+		title: sermon.title,
+		subtitle: sermon.scripture_ref,
+		cover_title: '',
+		cover_byline: '',
+		cover_color: inkSafe(sermonArt(sermon.slug).hue),
+		cover_url: '',
+		series_position: null,
+		author: {
+			slug: sermon.author.slug,
+			name: sermon.author.name,
+			birth_year: sermon.author.birth_year
+		}
+	};
 }

@@ -20,9 +20,10 @@
 	import { localizeHref } from '$lib/href';
 	import { offerFinish, unmarkFinished } from '$lib/progress';
 	import type { ResumeItem } from '$lib/resumeItems';
+	import { sermonCoverFace } from '$lib/sermonArt';
 
 	/**
-	 * One resume card: a cover (books) or a soft mic tile (sermons), the title and
+	 * One resume card: a cover (a book's, or one set from a sermon), the title and
 	 * author, and either a chapter meter or the sermon's reference line. Shared by
 	 * the home "Continue reading" strip and the /reading page so a resume card is
 	 * drawn in exactly one place.
@@ -51,8 +52,8 @@
 	// chapter meter. So the strip and /reading can't word it two ways.
 	const caption = $derived.by(() => {
 		if (item.kind === 'sermon') {
-			return item.scriptureRef
-				? `${t('search.typeSermon')} · ${item.scriptureRef}`
+			return item.sermon.scripture_ref
+				? `${t('search.typeSermon')} · ${item.sermon.scripture_ref}`
 				: t('search.typeSermon');
 		}
 		if (complete) return `${t('settings.statFinished')} · ${item.order} / ${item.chapterCount}`;
@@ -85,7 +86,7 @@
 	href={localizeHref(item.href)}
 	class="flex gap-4 rounded-card border border-border p-4 hover:bg-surface-2 hover:no-underline"
 >
-	{#if item.book}
+	{#if item.kind === 'book'}
 		<!-- Draw through BookCover, not a bare <img>: a plate (SVG) ground carries
 		     no title in the file, so a raw image shows a blank coloured tile —
 		     BookCover sets the title over it, as the shelves do. -->
@@ -93,12 +94,10 @@
 			<BookCover book={item.book} rounded="rounded-sm" />
 		</div>
 	{:else}
-		<!-- Sermons have no cover; a soft mic tile (matching SermonCard's visual
-		     language) reads as intentional, not a blank block. -->
-		<div
-			class="sermon-thumb flex aspect-[3/4] w-20 shrink-0 items-center justify-center rounded-sm border shadow-sm"
-		>
-			<Icon name="mic" size={26} />
+		<!-- A sermon has no cover file, so BookCover sets one from it on its own
+		     plate, in the sermon's hue (`sermonCoverFace`; STYLE_GUIDE §Cards). -->
+		<div class="w-20 shrink-0">
+			<BookCover book={sermonCoverFace(item.sermon)} rounded="rounded-sm" />
 		</div>
 	{/if}
 	<div class="min-w-0 flex-1 self-center">
@@ -133,14 +132,6 @@
 </div>
 
 <style>
-	/* Sermon thumbnail: a soft tile in the sermons' library hue (oxblood, the
-	   nav's Sermons colour) with the mic glyph, sized to the same footprint as
-	   book covers. Theme-aware via the shared tokens. */
-	.sermon-thumb {
-		color: var(--section-sermons);
-		border-color: color-mix(in srgb, var(--section-sermons) 30%, transparent);
-		background: linear-gradient(155deg, var(--section-sermons-soft), var(--color-surface-2));
-	}
 	/* Hover-reveal only where hover exists: a touch tablet is wide enough for
 	   `sm:` but would otherwise get an invisible, tappable button. */
 	@media (hover: hover) and (pointer: fine) {

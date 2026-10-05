@@ -379,6 +379,34 @@ export function contrastRatio(a: number[], b: number[]): number {
 	return (hi + 0.05) / (lo + 0.05);
 }
 
+/** WCAG AA for normal-size text — what white cover ink has to clear. */
+export const INK_MIN_CONTRAST = 4.5;
+
+/**
+ * A colour darkened just enough for white cover ink to clear AA on the plate
+ * `coverGradient` paints from it — the client half of `covers.ink_safe`, for
+ * a ground minted HERE rather than in the fixture (a sermon's `sermonArt`
+ * hue, which `tintable` lifts for a wash and so can sit far too light for
+ * type: the gold emblems come out near 2.8:1).
+ *
+ * Same method as the backend: scale the channels, never move the hue, and
+ * walk in 1% steps rather than bisect. Measured against the gradient's
+ * LIGHTEST point (the ribbed base at 0%), where `ink_safe` measures the tone
+ * under the byline — so it can land a step or two darker than the backend
+ * would, never lighter. A colour that already passes comes back unchanged.
+ */
+export function inkSafe(hex: string): string {
+	const passes = (c: string) =>
+		contrastRatio([255, 255, 255], channels(shade(c, GROUND_RIB))) >= INK_MIN_CONTRAST;
+	if (!/^#[0-9a-f]{6}$/i.test(hex)) return COVER_FALLBACK;
+	if (passes(hex)) return hex;
+	for (let step = 99; step > 0; step--) {
+		const candidate = shade(hex, step / 100);
+		if (passes(candidate)) return candidate;
+	}
+	return '#000000';
+}
+
 /**
  * A book's cover_color as a card tint (BookCard → .book-card), or '' for none.
  *
