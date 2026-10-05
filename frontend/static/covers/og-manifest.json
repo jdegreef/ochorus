@@ -3184,6 +3184,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"at-the-back-of-the-north-wind": {
+			"ground": "7f5bd7852fc8aedfce43232c7860222c3cfc2b059cdcc7f458a24d4de7c52530",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"brave-for-god": {
 			"ground": "20c53172ca517970f584b2547b408aa333f33525846b6322c9b60b031a52dd9e",
 			"style": "young",
@@ -3449,6 +3459,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "box/teal",
+			"bar": 0
+		},
+		"diary-of-an-old-soul": {
+			"ground": "d61a71fadedb8cb4a48c8b4c55050c1b512813d2d7abb08bed53685dc62da5aa",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"divine-healing": {
@@ -8791,6 +8811,16 @@
 				484
 			]
 		},
+		"phantastes": {
+			"ground": "0996f3993ea7abf0dfbb271553b7bb0185f129a6502bcd0f45330acc8278159a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pilgrims-progress": {
 			"ground": "8127b1cc84e2573af44c41f4f7dfbf76f7e9ee51ea8beab21a3883579fd6e5a8",
 			"style": "press",
@@ -11577,6 +11607,16 @@
 				316,
 				478
 			]
+		},
+		"the-princess-and-the-goblin": {
+			"ground": "3854b45419aceda3308db4ac758ccb413248ab37ebae1acf17e1f086b1468a70",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"the-pursuit-of-god": {
 			"ground": "ac90ed259314f9e1044c7d3624e9dc3d57acc45f007acb7ea7e110ed93189f47",
