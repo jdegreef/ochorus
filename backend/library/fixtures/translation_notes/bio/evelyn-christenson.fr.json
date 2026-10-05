@@ -1,0 +1,14 @@
+{
+ "kind": "bio",
+ "slug": "evelyn-christenson",
+ "language": "fr",
+ "job_issue": 4273,
+ "references": [
+  {
+   "reference": "Romans 8:28",
+   "status": "mined",
+   "block_index": 6,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
