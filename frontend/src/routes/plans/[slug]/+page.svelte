@@ -26,6 +26,7 @@
 	import { elementVisible, jumpToSection } from '$lib/scrollSpy.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import PlanCalendar from '$lib/components/PlanCalendar.svelte';
+	import PlanStartSheet from '$lib/components/PlanStartSheet.svelte';
 	import ReadBar from '$lib/components/ReadBar.svelte';
 	import { readJSON, writeJSON } from '$lib/persisted';
 
@@ -240,6 +241,22 @@
 	onMount(() => {
 		if (readJSON<string>(VIEW_KEY, 'list') === 'calendar') view = 'calendar';
 	});
+	// The first "Start the plan": start it, then ask how to be reminded about
+	// day 2 (PlanStartSheet) before opening day 1 — the one moment a reader has
+	// just said they mean to come back. A modified click (new tab) just starts.
+	let askReminder = $state(false);
+	function startPlan(e: MouseEvent) {
+		const first = !started;
+		planProgress.start(plan.slug);
+		if (!first || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+		e.preventDefault();
+		askReminder = true;
+	}
+	function showCalendar() {
+		setView('calendar');
+		requestAnimationFrame(() => document.getElementById('plan-days-heading')?.scrollIntoView({ behavior: 'smooth' }));
+	}
+
 	const setView = (v: 'list' | 'calendar') => {
 		view = v;
 		writeJSON(VIEW_KEY, v);
@@ -366,7 +383,7 @@
 						{/if}
 					</div>
 					<div class="read-card-cta">
-						<a href={dayHref(next)} class="btn btn-primary" onclick={() => planProgress.start(plan.slug)}>
+						<a href={dayHref(next)} class="btn btn-primary" onclick={startPlan}>
 							{started ? t('plans.continue') : t('plans.start')}
 						</a>
 						{#if started}
@@ -666,6 +683,14 @@
 	href={next === null ? '#' : dayHref(next)}
 	label={started ? t('plans.continue') : t('plans.start')}
 	onread={() => planProgress.start(plan.slug)}
+/>
+
+
+<PlanStartSheet
+	bind:open={askReminder}
+	slug={plan.slug}
+	dayHref={dayHref(next ?? 1)}
+	onCalendar={showCalendar}
 />
 
 <style>

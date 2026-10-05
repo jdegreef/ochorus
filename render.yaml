@@ -691,6 +691,9 @@ services:
         source: /reading
         destination: /200.html
       - type: rewrite
+        source: /welcome
+        destination: /200.html
+      - type: rewrite
         source: /login
         destination: /200.html
       - type: rewrite
@@ -724,6 +727,9 @@ services:
         destination: /200.html
       - type: rewrite
         source: /:lang/reading
+        destination: /200.html
+      - type: rewrite
+        source: /:lang/welcome
         destination: /200.html
       - type: rewrite
         source: /:lang/login

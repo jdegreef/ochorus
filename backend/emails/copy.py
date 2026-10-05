@@ -427,6 +427,102 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
             "signature": "A equipa do Ochorus",
         },
     },
+    # Reading-plan reminder: today's reading from a plan the reader started,
+    # at the time they chose. ``{plan}``, ``{day}``, ``{total}`` and
+    # ``{reading}`` (the chapter or article title) are filled at render time.
+    "plan_reminder": {
+        "en": {
+            "subject": "Day {day} · {plan}",
+            "preheader": "Today’s reading: {reading}",
+            "heading": "{reading}",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "Day {day} of {total} in {plan} is ready for you.",
+            ],
+            "cta_label": "Read day {day}",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Día {day} · {plan}",
+            "preheader": "La lectura de hoy: {reading}",
+            "heading": "{reading}",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "El día {day} de {total} de {plan} está listo para ti.",
+            ],
+            "cta_label": "Leer el día {day}",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "Dia {day} · {plan}",
+            "preheader": "A leitura de hoje: {reading}",
+            "heading": "{reading}",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "O dia {day} de {total} de {plan} está pronto para você.",
+            ],
+            "cta_label": "Ler o dia {day}",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
+    # Sent once instead of reminders after a few days without reading; the
+    # reminders then pause until the reader reads again.
+    "plan_paused": {
+        "en": {
+            "subject": "Your place in {plan} is saved",
+            "preheader": "Pick it up whenever you’re ready.",
+            "heading": "Your place is saved",
+            "greeting": "Hello {name},",
+            "paragraphs": [
+                "You stopped at day {day} of {plan}. No pressure — it’s there "
+                "whenever you’re ready.",
+                "We’ve paused your daily reminders. Read the next day and they’ll "
+                "start again.",
+            ],
+            "cta_label": "Read day {day}",
+            "cta_path": "",
+            "signoff": "Grace and peace,",
+            "signature": "The Ochorus team",
+        },
+        "es": {
+            "subject": "Tu lugar en {plan} está guardado",
+            "preheader": "Retómalo cuando quieras.",
+            "heading": "Tu lugar está guardado",
+            "greeting": "Hola {name}:",
+            "paragraphs": [
+                "Te quedaste en el día {day} de {plan}. Sin prisa: sigue ahí "
+                "para cuando quieras.",
+                "Hemos pausado tus recordatorios diarios. Lee el día siguiente y "
+                "volverán a empezar.",
+            ],
+            "cta_label": "Leer el día {day}",
+            "cta_path": "",
+            "signoff": "Gracia y paz,",
+            "signature": "El equipo de Ochorus",
+        },
+        "pt": {
+            "subject": "O seu lugar em {plan} está guardado",
+            "preheader": "Retome quando quiser.",
+            "heading": "O seu lugar está guardado",
+            "greeting": "Olá {name},",
+            "paragraphs": [
+                "Você parou no dia {day} de {plan}. Sem pressa: continua lá "
+                "para quando quiser.",
+                "Pausamos os seus lembretes diários. Leia o dia seguinte e eles "
+                "voltam a começar.",
+            ],
+            "cta_label": "Ler o dia {day}",
+            "cta_path": "",
+            "signoff": "Graça e paz,",
+            "signature": "A equipa do Ochorus",
+        },
+    },
     # Reading milestone. ``{count}`` is the milestone reached (filled at render
     # time, like ``{name}``). A celebration, so a warm subject and a gentle CTA
     # back to the library for the next one.

@@ -71,9 +71,16 @@ export interface Shelved {
 	shelves: { key: ShelfKey; books: BookSummary[] }[];
 }
 
+/** Covers in one series row on a wide screen (`.series-covers` on /originals).
+ * A series longer than this wraps into a wall of covers. */
+export const SERIES_ROW_COVERS = 6;
+
 /**
  * Split the imprint's books into series rows (in the API's series order, each
- * in volume order) and stand-alone shelves. A book the API lists in a series is
+ * in volume order) and stand-alone shelves. A series too long for one row of
+ * covers (The Key Teachings' thirty-odd volumes) sinks below the short ones,
+ * so its wall doesn't bury every other series beneath it; within each band
+ * the API's order holds. A book the API lists in a series is
  * never also shelved alone; empty shelves are dropped.
  */
 export function shelveOriginals(books: BookSummary[], series: OriginalsSeries[]): Shelved {
@@ -90,9 +97,11 @@ export function shelveOriginals(books: BookSummary[], series: OriginalsSeries[])
 			words: members.reduce((n, b) => n + (b.word_count ?? 0), 0)
 		});
 	}
+	const long = (r: SeriesRow) => r.books.length > SERIES_ROW_COVERS;
+	const ordered = [...rows.filter((r) => !long(r)), ...rows.filter(long)];
 	const shelves = SHELF_ORDER.map((key) => ({
 		key,
 		books: books.filter((b) => !inSeries.has(b.slug) && (SHELF_OF[b.slug] ?? 'more') === key)
 	})).filter((s) => s.books.length);
-	return { series: rows, shelves };
+	return { series: ordered, shelves };
 }

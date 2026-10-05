@@ -4,6 +4,7 @@
 	import { localizeHref } from '$lib/href';
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { withSignup } from '$lib/loginHref';
+	import { openFrom } from '$lib/signInSheet.svelte';
 
 	/** Which kind of page it sits on, for sign-up attribution. Required, so a
 	 *  new placement can't silently count as an article. */
@@ -37,7 +38,8 @@
 			<p class="cta-p">{t('login.syncNote')}</p>
 		</div>
 		<a class="btn btn-primary shrink-0" href={withSource(withSignup(localizeHref('/login')), source)}
-			use:seenOnView={source}>
+			use:seenOnView={source}
+			onclick={(e) => openFrom(e, source)}>
 			{t('login.createAccountLink')}
 		</a>
 	</aside>

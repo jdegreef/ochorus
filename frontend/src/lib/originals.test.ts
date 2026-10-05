@@ -47,6 +47,19 @@ describe('shelveOriginals', () => {
 		expect(shelves).toEqual([{ key: 'more', books: [book('rooted-1')] }]);
 	});
 
+	it('sinks a series too long for one row of covers below the short ones', () => {
+		const keySlugs = Array.from({ length: 7 }, (_, i) => `key-${i + 1}`);
+		const { series } = shelveOriginals(
+			[...books, ...keySlugs.map((s) => book(s))],
+			[
+				{ slug: 'key', title: 'Key', description: '', books: keySlugs },
+				brave[0],
+				{ slug: 'wisdom', title: 'Wisdom', description: '', books: ['growing-in-wisdom'] }
+			]
+		);
+		expect(series.map((s) => s.slug)).toEqual(['brave-for-god', 'wisdom', 'key']);
+	});
+
 	it('drops a series whose books are all missing in this language', () => {
 		const { series } = shelveOriginals([], [
 			{ slug: 'rooted', title: 'Rooted', description: '', books: ['rooted-1'] }

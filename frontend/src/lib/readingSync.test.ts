@@ -181,6 +181,7 @@ describe('readingSync.clearOnSignOut', () => {
 				start_on: '2026-11-02',
 				reading_days: 'weekdays',
 				remind_at: '',
+				email_reminder: false,
 				updated_at: 5000
 			});
 		} finally {
@@ -287,7 +288,14 @@ describe('readingSync.clearOnSignOut', () => {
 			await readingSync.mergeOnSignIn();
 			const body = JSON.parse(String(fetchSpy.mock.calls[0][1]?.body));
 			expect(body.plan_schedules).toEqual([
-				{ plan_slug: 'dotk', start_on: null, reading_days: 'monsat', remind_at: '06:30', updated_at: 7 }
+				{
+					plan_slug: 'dotk',
+					start_on: null,
+					reading_days: 'monsat',
+					remind_at: '06:30',
+					email_reminder: false,
+					updated_at: 7
+				}
 			]);
 			const local = JSON.parse(localStorage.getItem(PLAN_SCHEDULE_KEY)!);
 			expect(local.dotk).toEqual({ rule: 'weekdays', time: '07:15', updatedAt: Date.parse('2026-10-02T12:00:00Z') });
