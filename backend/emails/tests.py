@@ -33,6 +33,7 @@ from .lifecycle import (
     send_welcome,
     welcome_key,
 )
+from .links import site_url
 from .management.commands.send_lifecycle_emails import _parse_cutoff
 from .milestones import MILESTONES, due_milestone, finished_book_count
 from .milestones import send_due as send_milestone_due
@@ -208,6 +209,14 @@ class RenderingTests(TestCase):
         self.assertIn("María", rendered.html)
         self.assertIn(sub.unsubscribe_token, rendered.html)
         self.assertIn('lang="es"', rendered.html)
+
+    def test_welcome_button_opens_the_welcome_page(self):
+        # The sign-up email and the /welcome page make one first step, so the
+        # email's button lands on that page in every language it is written in.
+        for locale in ("en", "es", "pt"):
+            profile = _make_profile(email=f"{locale}@example.com", locale=locale, name="Ana")
+            sub = EmailSubscription.objects.create(profile=profile)
+            self.assertIn(f'href="{site_url("welcome")}"', render_welcome(profile, sub).html)
 
     def test_unknown_locale_falls_back_to_english(self):
         profile = _make_profile(locale="xx")
