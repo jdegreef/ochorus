@@ -9,8 +9,10 @@ export interface PlanSchedulePrefs {
 	/** `YYYY-MM-DD` the reader chose to start on (a plan not yet started). */
 	start?: string;
 	rule?: ReadingDays;
-	/** "HH:MM" for the calendar file's alerts. */
+	/** "HH:MM" for the calendar file's alerts (and the email, if asked for). */
 	time?: string;
+	/** Email this plan's day at `time` (asked when the plan is started). */
+	email?: boolean;
 	/** When this device made the choice (epoch ms) — newest wins across devices. */
 	updatedAt?: number;
 }
@@ -21,6 +23,7 @@ export interface ServerPlanSchedule {
 	start_on: string | null;
 	reading_days: ReadingDays;
 	remind_at: string;
+	email_reminder?: boolean;
 	client_updated_at: string;
 }
 
@@ -34,6 +37,7 @@ export const scheduleToServer = (p: PlanSchedulePrefs) => ({
 	start_on: p.start ?? null,
 	reading_days: p.rule ?? 'daily',
 	remind_at: p.time ?? '',
+	email_reminder: p.email ?? false,
 	updated_at: p.updatedAt
 });
 
@@ -43,5 +47,6 @@ export const scheduleFromServer = (r: ServerPlanSchedule): PlanSchedulePrefs => 
 	start: r.start_on ?? undefined,
 	rule: r.reading_days,
 	time: r.remind_at || undefined,
+	email: r.email_reminder || undefined,
 	updatedAt: Date.parse(r.client_updated_at) || 0
 });

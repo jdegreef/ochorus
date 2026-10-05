@@ -69,6 +69,8 @@ LEGACY_FIELD: dict[str, str | None] = {s["key"]: s["legacy"] for s in STREAMS}
 STEP_STREAM: dict[str, str] = {
     "finish_series": "series",
     "milestone": "milestones",
+    "plan_reminder": "plan_reminders",
+    "plan_paused": "plan_reminders",
 }
 
 def require_stream(stream: str) -> str:
