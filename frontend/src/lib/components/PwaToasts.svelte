@@ -2,6 +2,8 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { storageHealth } from '$lib/storageHealth.svelte';
 	import { undo } from '$lib/undo.svelte';
+	import { signupNudge } from '$lib/signupNudge.svelte';
+	import { seenOnView } from '$lib/signupSource';
 	import { i18n } from '$lib/i18n.svelte';
 
 	const t = i18n.t;
@@ -51,6 +53,21 @@
 			>
 			<button class="btn btn-sm btn-primary" onclick={() => undo.act()}>{t('undo.action')}</button>
 			<button class="pwa-link" onclick={() => undo.dismiss()}>{t('pwa.dismiss')}</button>
+		</div>
+	{/if}
+
+	<!-- A one-line sign-up suggestion after the reader saved something an
+	     account would keep (see $lib/signupNudge). Signed-out readers only. -->
+	{#if signupNudge.current}
+		{@const n = signupNudge.current}
+		<div class="pwa-toast nudge">
+			<span>
+				{t(n.textKey)}
+				<a href={n.href} class="nudge-link" use:seenOnView={n.source} onclick={() => signupNudge.dismiss()}
+					>{t(n.linkKey)}</a
+				>
+			</span>
+			<button class="pwa-link" onclick={() => signupNudge.dismiss()}>{t('pwa.dismiss')}</button>
 		</div>
 	{/if}
 
@@ -110,6 +127,13 @@
 		height: 0.5rem;
 		border-radius: 999px;
 		background: var(--muted);
+	}
+	.nudge {
+		max-width: min(24rem, calc(100vw - 2rem));
+	}
+	.nudge-link {
+		font-weight: 600;
+		color: var(--accent);
 	}
 	.pwa-link {
 		color: var(--muted);

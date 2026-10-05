@@ -11,6 +11,8 @@
 	import GoogleMark from '$lib/components/GoogleMark.svelte';
 	import LoginPitch, { type PitchKind } from '$lib/components/LoginPitch.svelte';
 	import { isSignupSource, noteSignupSource, promptSeen, signupStarted } from '$lib/signupSource';
+	import { readSavedSummary, type SavedSummary } from '$lib/savedSummary';
+	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
 
@@ -97,6 +99,14 @@
 		const notebook = path === '/notebook' || path.startsWith('/notebook/');
 		pitch = path === '/favorites' ? 'shelf' : notebook ? 'notebook' : null;
 	});
+
+	// What this reader already saved on this device, for the pitch: "Your
+	// bookshelf is waiting". `pitch` is only set in the browser (see above), so
+	// this reads the browser-only stores in the same pass that first draws the
+	// pitch — no second layout change — and a reader with nothing saved keeps
+	// the generic one.
+	const saved = $derived<SavedSummary | null>(pitch ? readSavedSummary(pitch) : null);
+	const savedTotal = $derived(saved?.total ?? 0);
 	// Credit for a sign-up made from here: the prompt that linked here
 	// (`?src=`), else the Bookshelf / Notebook page the reader was headed for.
 	// The pitch page is itself the prompt for those two, so arriving on its
@@ -114,7 +124,15 @@
 	});
 	const pitchKey = $derived(pitch === 'shelf' ? 'login.pitchShelf' : 'login.pitchNotebook');
 	/** The form's own heading: the destination's on sign-up, the usual otherwise. */
-	const formTitle = $derived(pitch && mode === 'signup' ? t(`${pitchKey}FormTitle`) : titles[mode]);
+	const formTitle = $derived(
+		pitch && mode === 'signup'
+			? savedTotal === 1
+				? t('login.keepSavedOne')
+				: savedTotal > 1
+					? t('login.keepSaved').replace('%n%', new Intl.NumberFormat(getLang()).format(savedTotal))
+					: t(`${pitchKey}FormTitle`)
+			: titles[mode]
+	);
 
 	function switchMode(m: Mode) {
 		const url = new URL($page.url);
@@ -239,7 +257,7 @@
 			<a href={localizeHref('/login')} onclick={() => (sent = null)} class="text-accent"><Arrow back /> {t('login.backToSignIn')}</a>
 		</p>
 	{:else}
-		{#if pitch}<div class="pitch-intro"><LoginPitch kind={pitch} part="intro" /></div>{/if}
+		{#if pitch}<div class="pitch-intro"><LoginPitch kind={pitch} part="intro" {saved} /></div>{/if}
 		<div class="pitch-form min-w-0">
 			{#if !pitch}
 				<div class="mb-6 text-center">
