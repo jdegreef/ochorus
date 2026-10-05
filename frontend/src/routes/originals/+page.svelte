@@ -7,13 +7,22 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { lang, localeName } from '$lib/lang.svelte';
 	import { readingTime } from '$lib/reading';
-	import { ORIGINALS_PATH, SHELF_META, STARTERS, shelveOriginals } from '$lib/originals';
+	import {
+		ORIGINALS_PATH,
+		SERIES_ROW_COVERS,
+		SHELF_META,
+		STARTERS,
+		shelveOriginals
+	} from '$lib/originals';
+	import { audienceName, groupByAudience } from '$lib/series';
+	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import { volumeNumeral } from '$lib/coverStyles';
 	import Seo from '$lib/components/Seo.svelte';
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import CoverStrip from '$lib/components/CoverStrip.svelte';
 	import EmptyState from '$lib/components/EmptyState.svelte';
+	import GroupHeading from '$lib/components/GroupHeading.svelte';
 
 	// Ochorus Originals is the house imprint — a publisher's shelf, not a person,
 	// so it gets this page instead of an author page (see $lib/originals).
@@ -35,6 +44,17 @@
 
 	const shelved = $derived(shelveOriginals(shelf.books, shelf.series));
 	const bySlug = $derived(new Map(shelf.books.map((b) => [b.slug, b])));
+	// The series by who they're for — /series' groups, so a parent reaches the
+	// children's devotionals without scrolling past adult theology. An API
+	// behind this build sends no audience: one ungrouped list, as before.
+	const seriesGroups = $derived(groupByAudience(shelved.series));
+	const grouped = $derived(seriesGroups.some((g) => g.audience));
+	const groupId = (audience: string | null) => `series-${audience ?? 'more'}`;
+	// A series too long for one row shows a row's worth: the first covers, then
+	// a tile to the series page (which has the whole grid), so The Key Teachings'
+	// thirty-odd volumes are one row like every other series.
+	const visibleBooks = (books: BookSummary[]) =>
+		books.length > SERIES_ROW_COVERS ? books.slice(0, SERIES_ROW_COVERS - 1) : books;
 	const totalWords = $derived(shelf.books.reduce((n, b) => n + (b.word_count ?? 0), 0));
 	const count = (n: number, one: string, many: string) => `${n} ${n === 1 ? t(one) : t(many)}`;
 
@@ -163,41 +183,82 @@
 						{t('originals.seriesHeading')}
 						<span class="meta">· {shelved.series.length}</span>
 					</h2>
-					{#each shelved.series as s (s.slug)}
-						<div class="series-row">
-							<div>
-								<h3 class="text-h3 font-display font-semibold text-balance">
-									<a class="hover:text-accent" href={localizeHref(`/series/${s.slug}`)}>{s.title}</a>
-								</h3>
-								{#if s.description}
-									<p class="mt-1 text-small text-muted">{s.description}</p>
-								{/if}
-								<p class="mt-2 text-eyebrow text-muted">
-									<!-- Separator as an expression: a literal space at an {#if}
-									     boundary is compiler-trimmed ("2 books· 2 hr"). -->
-									{count(s.books.length, 'common.bookOne', 'common.bookMany')}{#if s.words}{` · ${readingTime(s.words)}`}{/if}
-								</p>
-								<a class="mt-2 inline-block text-small font-semibold text-accent" href={localizeHref(`/books/${s.books[0].slug}`)}>
-									{t('originals.startSeries').replace(
-										'%n%',
-										volumeNumeral(s.books[0].series_position, lang.current) ?? '1'
-									)} <Arrow />
-								</a>
-							</div>
-							<ol class="series-covers">
-								{#each s.books as book (book.slug)}
-									<li>
-										<a href={localizeHref(`/books/${book.slug}`)} class="card-lift block" aria-label={book.title}>
-											<BookCover {book} />
-										</a>
-										{#if book.series_position}
-											<p class="mt-1.5 text-center text-eyebrow text-muted">
-												{t('originals.volume').replace('%n%', volumeNumeral(book.series_position, lang.current) ?? '')}
-											</p>
+					{#if grouped && seriesGroups.length > 1}
+						<!-- Anchors, not a filter, as on /series: every row stays in the
+						     prerendered page. -->
+						<nav
+							class="chip-scroller mb-2 flex gap-2"
+							use:scrollEdges
+							aria-label={t('originals.seriesHeading')}
+						>
+							{#each seriesGroups as g (g.audience ?? 'more')}
+								<a class="tag" href="#{groupId(g.audience)}"
+									>{audienceName(g.audience)}<span class="count">{g.series.length}</span></a
+								>
+							{/each}
+						</nav>
+					{/if}
+					{#each seriesGroups as g (g.audience ?? 'more')}
+						<div id={groupId(g.audience)} class="jump-anchor" class:mt-8={grouped}>
+							{#if grouped}
+								<GroupHeading name={audienceName(g.audience)} count={g.series.length} as="h3" />
+							{/if}
+							{#each g.series as s (s.slug)}
+								{@const shown = visibleBooks(s.books)}
+								{@const seriesHref = localizeHref(`/series/${s.slug}`)}
+								<div class="series-row">
+									<div>
+										<svelte:element
+											this={grouped ? 'h4' : 'h3'}
+											class="text-h3 font-display font-semibold text-balance"
+										>
+											<a class="hover:text-accent" href={seriesHref}>{s.title}</a>
+										</svelte:element>
+										{#if s.description}
+											<p class="mt-1 text-small text-muted">{s.description}</p>
 										{/if}
-									</li>
-								{/each}
-							</ol>
+										<p class="mt-2 text-eyebrow text-muted">
+											<!-- Separator as an expression: a literal space at an {#if}
+											     boundary is compiler-trimmed ("2 books· 2 hr"). -->
+											{count(s.books.length, 'common.bookOne', 'common.bookMany')}{#if s.words}{` · ${readingTime(s.words)}`}{/if}
+										</p>
+										<a class="mt-2 inline-block text-small font-semibold text-accent" href={localizeHref(`/books/${s.books[0].slug}`)}>
+											{t('originals.startSeries').replace(
+												'%n%',
+												volumeNumeral(s.books[0].series_position, lang.current) ?? '1'
+											)} <Arrow />
+										</a>
+									</div>
+									<ol class="series-covers">
+										{#each shown as book (book.slug)}
+											<li>
+												<a href={localizeHref(`/books/${book.slug}`)} class="card-lift block" aria-label={book.title}>
+													<BookCover {book} />
+												</a>
+												{#if book.series_position}
+													<p class="mt-1.5 text-center text-eyebrow text-muted">
+														{t('originals.volume').replace('%n%', volumeNumeral(book.series_position, lang.current) ?? '')}
+													</p>
+												{/if}
+											</li>
+										{/each}
+										{#if shown.length < s.books.length}
+											<li>
+												<!-- "See all N" is the Articles shelf's string: already in
+												     every catalogue, and generic over what it counts. -->
+												<a class="more-tile card-lift" href={seriesHref}>
+													<span class="font-display text-h3 font-semibold text-text">
+														+{s.books.length - shown.length}
+													</span>
+													<span class="text-small font-semibold text-accent">
+														{t('articles.seeAll').replace('%n%', String(s.books.length))} <Arrow />
+													</span>
+												</a>
+											</li>
+										{/if}
+									</ol>
+								</div>
+							{/each}
 						</div>
 					{/each}
 				</section>
@@ -296,6 +357,24 @@
 	}
 	.series-row:last-child {
 		border-bottom: 0;
+	}
+	/* Jump targets clear the pinned app nav (the /series recipe). */
+	.jump-anchor {
+		scroll-margin-top: calc(var(--appnav-h, 4rem) + 0.5rem);
+	}
+	/* The last cell of a capped row: a cover-sized door to the whole series. */
+	.more-tile {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		aspect-ratio: 3 / 4;
+		padding: 0.5rem;
+		text-align: center;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		background: var(--surface);
 	}
 	.series-covers {
 		display: grid;

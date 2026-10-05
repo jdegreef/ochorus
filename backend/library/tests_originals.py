@@ -22,7 +22,8 @@ class OriginalsViewTests(TestCase):
         )
         self.person = Author.objects.create(slug="john-bunyan", name="John Bunyan")
         self.series = Series.objects.create(
-            slug="brave-for-god", title="Brave for God", description="True stories."
+            slug="brave-for-god", title="Brave for God", description="True stories.",
+            audience="young_readers",
         )
         SeriesTranslation.objects.create(
             series=self.series, language="sw", title="Jasiri kwa ajili ya Mungu"
@@ -65,6 +66,7 @@ class OriginalsViewTests(TestCase):
                     "slug": "brave-for-god",
                     "title": "Brave for God",
                     "description": "True stories.",
+                    "audience": "young_readers",
                     "books": ["brave-for-god", "brave-for-god-2"],
                 }
             ],
