@@ -3186,7 +3186,7 @@
 		},
 		"at-the-back-of-the-north-wind": {
 			"ground": "7f5bd7852fc8aedfce43232c7860222c3cfc2b059cdcc7f458a24d4de7c52530",
-			"style": "revival",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"art": false,
@@ -11570,7 +11570,7 @@
 		},
 		"the-princess-and-the-goblin": {
 			"ground": "3854b45419aceda3308db4ac758ccb413248ab37ebae1acf17e1f086b1468a70",
-			"style": "revival",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"art": false,
