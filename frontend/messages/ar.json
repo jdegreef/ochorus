@@ -494,7 +494,6 @@
   "bios_era_awakenings": "الصحوات الكبرى",
   "bios_era_missionary": "قرن الإرساليات",
   "bios_era_modern": "العصر الحديث",
-  "bios_era_contemporary": "المعاصرون",
   "bios_no_results": "لا يوجد كُتّاب يطابقون عوامل التصفية هذه.",
   "bios_showing": "عرض %shown% من %total% كاتبًا",
   "books_showing": "عرض %shown% من %total% كتابًا",
@@ -634,9 +633,6 @@
   "books_standalone": "كتب مستقلة",
   "books_view_grid": "عرض شبكي",
   "books_view_list": "عرض قائمة",
-  "books_source_all": "الكل",
-  "books_source_public": "ملكية عامة",
-  "books_source_translated": "مترجمة",
   "books_topic_all": "كل المواضيع",
   "books_filter_topic": "تصفية حسب الموضوع",
   "books_new_title": "جديد في المكتبة",
@@ -1318,5 +1314,13 @@
   "palette_olive": "بستان الزيتون",
   "palette_hearth": "موقد",
   "palette_dawn": "فجر",
-  "palette_monastery": "دير"
+  "palette_monastery": "دير",
+  "finished_eyebrow": "أنهيت الكتاب",
+  "finished_stats": "%c% فصول · %w% كلمة",
+  "finished_reflect_heading": "ما تحمله معك",
+  "finished_reflect_prompt": "ماذا ستحمل معك من هذا الكتاب؟",
+  "finished_highlights": "تظليلاتك (%n%)",
+  "finished_more_by": "المزيد من %name%",
+  "finished_about_author": "عن المؤلف",
+  "finished_plans": "خطط قراءة تتضمن هذا الكتاب"
 }

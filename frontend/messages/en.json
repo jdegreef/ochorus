@@ -494,7 +494,6 @@
   "bios_era_awakenings": "The Great Awakenings",
   "bios_era_missionary": "The Missionary Century",
   "bios_era_modern": "The Modern Era",
-  "bios_era_contemporary": "Contemporary",
   "bios_no_results": "No writers match these filters.",
   "bios_showing": "Showing %shown% of %total% writers",
   "books_showing": "Showing %shown% of %total% books",
@@ -634,9 +633,6 @@
   "books_standalone": "Books on their own",
   "books_view_grid": "Grid view",
   "books_view_list": "List view",
-  "books_source_all": "All",
-  "books_source_public": "Public domain",
-  "books_source_translated": "Translated",
   "books_topic_all": "All topics",
   "books_filter_topic": "Filter by topic",
   "books_new_title": "New to the library",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Olive Grove",
   "palette_hearth": "Hearth",
   "palette_dawn": "Dawn",
-  "palette_monastery": "Monastery"
+  "palette_monastery": "Monastery",
+  "finished_eyebrow": "Book finished",
+  "finished_stats": "%c% chapters · %w% words",
+  "finished_reflect_heading": "What you carry away",
+  "finished_reflect_prompt": "What will you carry with you from this book?",
+  "finished_highlights": "Your highlights (%n%)",
+  "finished_more_by": "More by %name%",
+  "finished_about_author": "About the author",
+  "finished_plans": "Reading plans with this book"
 }

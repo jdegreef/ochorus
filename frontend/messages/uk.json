@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Великі пробудження",
   "bios_era_missionary": "Місіонерське століття",
   "bios_era_modern": "Новітня доба",
-  "bios_era_contemporary": "Сучасність",
   "bios_no_results": "Немає письменників за цими фільтрами.",
   "bios_showing": "Показано %shown% з %total% письменників",
   "books_showing": "Показано %shown% з %total% книг",
@@ -634,9 +633,6 @@
   "books_standalone": "Окремі книги",
   "books_view_grid": "Плиткою",
   "books_view_list": "Списком",
-  "books_source_all": "Усі",
-  "books_source_public": "Суспільне надбання",
-  "books_source_translated": "Перекладені",
   "books_topic_all": "Усі теми",
   "books_filter_topic": "Фільтр за темою",
   "books_new_title": "Нове в бібліотеці",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Оливковий гай",
   "palette_hearth": "Вогнище",
   "palette_dawn": "Світанок",
-  "palette_monastery": "Монастир"
+  "palette_monastery": "Монастир",
+  "finished_eyebrow": "Книгу прочитано",
+  "finished_stats": "%c% розділів · %w% слів",
+  "finished_reflect_heading": "Що ви з собою візьмете",
+  "finished_reflect_prompt": "Що ви візьмете з собою з цієї книги?",
+  "finished_highlights": "Ваші виділення (%n%)",
+  "finished_more_by": "Більше від %name%",
+  "finished_about_author": "Про автора",
+  "finished_plans": "Плани читання з цією книгою"
 }

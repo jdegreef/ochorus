@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Maamsho Makuu",
   "bios_era_missionary": "Karne ya Umishonari",
   "bios_era_modern": "Enzi ya Kisasa",
-  "bios_era_contemporary": "Wa Wakati Huu",
   "bios_no_results": "Hakuna mwandishi anayelingana na vichujio hivi.",
   "bios_showing": "Inaonyesha %shown% kati ya %total% waandishi",
   "books_showing": "Inaonyesha %shown% kati ya %total% vitabu",
@@ -634,9 +633,6 @@
   "books_standalone": "Vitabu vinavyojitegemea",
   "books_view_grid": "Mwonekano wa gridi",
   "books_view_list": "Mwonekano wa orodha",
-  "books_source_all": "Vyote",
-  "books_source_public": "Mali ya umma",
-  "books_source_translated": "Kimetafsiriwa",
   "books_topic_all": "Mada zote",
   "books_filter_topic": "Chuja kwa mada",
   "books_new_title": "Vipya maktabani",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Shamba la mizeituni",
   "palette_hearth": "Meko",
   "palette_dawn": "Alfajiri",
-  "palette_monastery": "Monasteri"
+  "palette_monastery": "Monasteri",
+  "finished_eyebrow": "Kitabu kimekamilika",
+  "finished_stats": "Sura %c% · maneno %w%",
+  "finished_reflect_heading": "Unachobeba",
+  "finished_reflect_prompt": "Utabeba nini kutoka kitabu hiki?",
+  "finished_highlights": "Vivutio vyako (%n%)",
+  "finished_more_by": "Zaidi kutoka kwa %name%",
+  "finished_about_author": "Kuhusu mwandishi",
+  "finished_plans": "Mipango ya kusoma yenye kitabu hiki"
 }

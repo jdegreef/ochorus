@@ -1,4 +1,5 @@
 import type { ClientInit, HandleClientError } from '@sveltejs/kit';
+import { dev } from '$app/environment';
 import { env } from '$env/dynamic/public';
 import { canonicalRedirect } from '$lib/canonicalRedirect';
 import { SITE_URL } from '$lib/config';
@@ -30,21 +31,35 @@ let sentry: Promise<SentryModule> | null = null;
 
 function loadSentry(): Promise<SentryModule> {
 	if (!sentry) {
-		sentry = import('@sentry/sveltekit').then((module) => {
-			module.init({
-				dsn: env.PUBLIC_SENTRY_DSN,
-				environment: env.PUBLIC_SENTRY_ENVIRONMENT || 'production',
-				// WHICH build an error came from. Without it every browser report
-				// is attributed to one undifferentiated "production", so a
-				// regression cannot be traced to the deploy that introduced it.
-				// Baked in at build time (see vite.config.ts); empty outside a
-				// Render build, and an empty release is worse than none — Sentry
-				// would group every local and CI error under "".
-				release: __RELEASE__ || undefined,
-				tracesSampleRate: 0
-			});
-			return module;
-		});
+		sentry = Promise.all([import('@sentry/sveltekit'), import('$lib/sentryScrub')]).then(
+			([module, { ALLOW_URLS, IGNORE_ERRORS, isOffline, scrubBreadcrumb, scrubEvent }]) => {
+				module.init({
+					dsn: env.PUBLIC_SENTRY_DSN,
+					environment: env.PUBLIC_SENTRY_ENVIRONMENT || 'production',
+					// WHICH build an error came from. Without it every browser report
+					// is attributed to one undifferentiated "production", so a
+					// regression cannot be traced to the deploy that introduced it.
+					// Baked in at build time (see vite.config.ts); empty outside a
+					// Render build, and an empty release is worse than none — Sentry
+					// would group every local and CI error under "".
+					release: __RELEASE__ || undefined,
+					tracesSampleRate: 0,
+					// v11 collects user info, cookies, headers and HTTP BODIES by
+					// default. Bodies here are a reader's notes, highlights and
+					// progress as they sync, so all of it is off. URLs stay, scrubbed
+					// of sign-in tokens and search text below.
+					dataCollection: { userInfo: false, cookies: false, httpHeaders: false, httpBodies: [] },
+					// No extension noise, and nothing from a reader who is simply
+					// offline (see $lib/sentryScrub).
+					ignoreErrors: IGNORE_ERRORS,
+					// Dev serves modules from /src/, which this would drop wholesale.
+					allowUrls: dev ? undefined : ALLOW_URLS,
+					beforeSend: (event) => (isOffline() ? null : scrubEvent(event)),
+					beforeBreadcrumb: (crumb) => scrubBreadcrumb(crumb)
+				});
+				return module;
+			}
+		);
 	}
 	return sentry;
 }

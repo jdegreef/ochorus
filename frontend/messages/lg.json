@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Okuzuukuka Okukulu",
   "bios_era_missionary": "Omulembe gw’Ababaka b’Enjiri",
   "bios_era_modern": "Omulembe gw’Omulembe",
-  "bios_era_contemporary": "Ab’Omulembe guno",
   "bios_no_results": "Tewali muwandiisi atuukana n’ebisengejja bino.",
   "bios_showing": "Tulaga %shown% ku %total% abawandiisi",
   "books_showing": "Tulaga %shown% ku %total% ebitabo",
@@ -634,9 +633,6 @@
   "books_standalone": "Ebitabo ebyetongodde",
   "books_view_grid": "Endabika ya gulidi",
   "books_view_list": "Endabika ya lukalala",
-  "books_source_all": "Byonna",
-  "books_source_public": "Nkendo za bonna",
-  "books_source_translated": "Kivvuunuddwa",
   "books_topic_all": "Emitwe gyonna",
   "books_filter_topic": "Sengejja okusinziira ku mutwe",
   "books_new_title": "Ebiggya mu tterekero",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Ennimiro y'emizeyituuni",
   "palette_hearth": "Ekyoto",
   "palette_dawn": "Matulutulu",
-  "palette_monastery": "Monasteri"
+  "palette_monastery": "Monasteri",
+  "finished_eyebrow": "Ekitabo kiwedde",
+  "finished_stats": "Essuula %c% · ebigambo %w%",
+  "finished_reflect_heading": "By'otwala",
+  "finished_reflect_prompt": "Kiki ky'onootwala okuva mu kitabo kino?",
+  "finished_highlights": "By'olambye (%n%)",
+  "finished_more_by": "Ebirala okuva eri %name%",
+  "finished_about_author": "Ku muwandiisi",
+  "finished_plans": "Enteekateeka z'okusoma ezirimu ekitabo kino"
 }

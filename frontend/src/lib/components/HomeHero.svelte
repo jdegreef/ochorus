@@ -128,7 +128,6 @@
 		border-radius: 4px;
 		border: 4px solid var(--hero-ink);
 		box-shadow: var(--hero-plate-shadow);
-		transform: rotate(2deg);
 	}
 	@media (min-width: 640px) {
 		.home-hero-plate {

@@ -494,7 +494,6 @@
   "bios_era_awakenings": "ታላላቅ መነቃቃቶች",
   "bios_era_missionary": "የሚስዮናውያን ክፍለ ዘመን",
   "bios_era_modern": "ዘመናዊው ዘመን",
-  "bios_era_contemporary": "የዘመኑ",
   "bios_no_results": "ከእነዚህ ማጣሪያዎች ጋር የሚስማማ ጸሐፊ የለም።",
   "bios_showing": "ከ%total% ጸሐፊዎች %shown% በመታየት ላይ",
   "books_showing": "ከ%total% መጻሕፍት %shown% በመታየት ላይ",
@@ -634,9 +633,6 @@
   "books_standalone": "ለብቻቸው የቆሙ መጻሕፍት",
   "books_view_grid": "የፍርግርግ እይታ",
   "books_view_list": "የዝርዝር እይታ",
-  "books_source_all": "ሁሉም",
-  "books_source_public": "የሕዝብ ንብረት",
-  "books_source_translated": "የተተረጎሙ",
   "books_topic_all": "ሁሉም ርዕሶች",
   "books_filter_topic": "በርዕስ ያጣሩ",
   "books_new_title": "በቤተ መጻሕፍቱ አዲስ",
@@ -1318,5 +1314,13 @@
   "palette_olive": "የወይራ ተክል",
   "palette_hearth": "ምድጃ",
   "palette_dawn": "ንጋት",
-  "palette_monastery": "ገዳም"
+  "palette_monastery": "ገዳም",
+  "finished_eyebrow": "መጽሐፉ ተጠናቋል",
+  "finished_stats": "%c% ምዕራፎች · %w% ቃላት",
+  "finished_reflect_heading": "የምትይዘው",
+  "finished_reflect_prompt": "ከዚህ መጽሐፍ ምን ይዘህ ትሄዳለህ?",
+  "finished_highlights": "ያደመቅሃቸው (%n%)",
+  "finished_more_by": "ተጨማሪ ከ%name%",
+  "finished_about_author": "ስለ ደራሲው",
+  "finished_plans": "ይህን መጽሐፍ የያዙ የንባብ ዕቅዶች"
 }

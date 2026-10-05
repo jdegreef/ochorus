@@ -372,9 +372,10 @@ describe('build() thin per-locale pages', () => {
 	});
 
 	it('advertises an era only in the locales whose shelf has a writer in it', async () => {
-		// Both mocked writers are undated (contemporary) and on the English
-		// shelf only — so the Spanish and Swahili era pages would be empty.
-		expect([...(await page('/biographies/era/contemporary/'))!.byLocale.keys()]).toEqual(['en']);
+		// Both mocked writers are undated (filed under modern) and on the
+		// English shelf only — so the Spanish and Swahili era pages would be empty.
+		expect([...(await page('/biographies/era/modern/'))!.byLocale.keys()]).toEqual(['en']);
+		expect(await page('/biographies/era/contemporary/')).toBeUndefined();
 		expect(await page('/biographies/era/puritans/')).toBeUndefined();
 	});
 });

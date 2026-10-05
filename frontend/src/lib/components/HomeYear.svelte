@@ -69,11 +69,11 @@
 					class="mt-2 text-small font-semibold text-accent hover:underline">{t('year.title')} <Arrow /></a
 				>
 			</div>
-			<!-- The covers as a slightly tilted collage, newest first, each a way back
+			<!-- The covers as a straight grid, newest first, each a way back
 			     into its book (as on the Bookshelf's year). Only covers this language
 			     has: the count above is the year's, as YearInBooks shows it. -->
 			{#if stats.books.length}
-				<ul class="year-collage grid flex-1 grid-cols-4 gap-2.5 sm:grid-cols-6" aria-label={t('year.title')}>
+				<ul class="grid flex-1 grid-cols-4 gap-2.5 sm:grid-cols-6" aria-label={t('year.title')}>
 					{#each stats.books.slice(0, MAX_COVERS) as book (book.slug)}
 						<li>
 							<a href={localizeHref(`/books/${book.slug}`)} title={book.title} aria-label={book.title}>
@@ -86,9 +86,3 @@
 		</div>
 	</section>
 {/if}
-
-<style>
-	.year-collage {
-		transform: rotate(-1.5deg);
-	}
-</style>

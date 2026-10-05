@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Les grands réveils",
   "bios_era_missionary": "Le siècle missionnaire",
   "bios_era_modern": "L’époque moderne",
-  "bios_era_contemporary": "Contemporains",
   "bios_no_results": "Aucun écrivain ne correspond à ces filtres.",
   "bios_showing": "Affichage de %shown% écrivains sur %total%",
   "books_showing": "Affichage de %shown% livres sur %total%",
@@ -634,9 +633,6 @@
   "books_standalone": "Livres indépendants",
   "books_view_grid": "Vue en grille",
   "books_view_list": "Vue en liste",
-  "books_source_all": "Tous",
-  "books_source_public": "Domaine public",
-  "books_source_translated": "Traduits",
   "books_topic_all": "Tous les thèmes",
   "books_filter_topic": "Filtrer par thème",
   "books_new_title": "Nouveautés dans la bibliothèque",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Oliveraie",
   "palette_hearth": "Foyer",
   "palette_dawn": "Aube",
-  "palette_monastery": "Monastère"
+  "palette_monastery": "Monastère",
+  "finished_eyebrow": "Livre terminé",
+  "finished_stats": "%c% chapitres · %w% mots",
+  "finished_reflect_heading": "Ce que vous en retenez",
+  "finished_reflect_prompt": "Que retiendrez-vous de ce livre ?",
+  "finished_highlights": "Vos passages surlignés (%n%)",
+  "finished_more_by": "Plus de %name%",
+  "finished_about_author": "À propos de l'auteur",
+  "finished_plans": "Plans de lecture avec ce livre"
 }

@@ -2189,6 +2189,22 @@
 					>
 				</p>
 			</div>
+
+			<!-- The end of the book, once it is finished: the arrival, and the ways
+			     onward (reflect, editions, the author, a plan, something like it).
+			     After the nav, not before it, so appearing as the finish lands never
+			     moves a button under the reader's thumb. Its sections are direct
+			     children of .chapter-end, so page mode keeps each one whole. Loaded
+			     on demand: most chapters are not a book's last. -->
+			{#if !chapter.next && endMounted && bookForProgress}
+				{#await import('$lib/components/BookFinished.svelte') then { default: BookFinished }}
+					<BookFinished
+						book={bookForProgress}
+						{language}
+						shareUrl={absUrl(localizeHref(`/books/${slug}`))}
+					/>
+				{/await}
+			{/if}
 		</div>
 	</div>
 </article>

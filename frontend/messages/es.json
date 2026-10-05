@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Los grandes avivamientos",
   "bios_era_missionary": "El siglo misionero",
   "bios_era_modern": "La era moderna",
-  "bios_era_contemporary": "Contemporáneos",
   "bios_no_results": "Ningún escritor coincide con estos filtros.",
   "bios_showing": "Mostrando %shown% de %total% escritores",
   "books_showing": "Mostrando %shown% de %total% libros",
@@ -634,9 +633,6 @@
   "books_standalone": "Libros independientes",
   "books_view_grid": "Vista de cuadrícula",
   "books_view_list": "Vista de lista",
-  "books_source_all": "Todos",
-  "books_source_public": "Dominio público",
-  "books_source_translated": "Traducido",
   "books_topic_all": "Todos los temas",
   "books_filter_topic": "Filtrar por tema",
   "books_new_title": "Nuevo en la biblioteca",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Olivar",
   "palette_hearth": "Hogar",
   "palette_dawn": "Alba",
-  "palette_monastery": "Monasterio"
+  "palette_monastery": "Monasterio",
+  "finished_eyebrow": "Libro terminado",
+  "finished_stats": "%c% capítulos · %w% palabras",
+  "finished_reflect_heading": "Lo que te llevas",
+  "finished_reflect_prompt": "¿Qué te llevas de este libro?",
+  "finished_highlights": "Tus subrayados (%n%)",
+  "finished_more_by": "Más de %name%",
+  "finished_about_author": "Sobre el autor",
+  "finished_plans": "Planes de lectura con este libro"
 }

@@ -494,7 +494,6 @@
   "bios_era_awakenings": "महान जागरण",
   "bios_era_missionary": "मिशनरी शताब्दी",
   "bios_era_modern": "आधुनिक युग",
-  "bios_era_contemporary": "समकालीन",
   "bios_no_results": "इन फ़िल्टरों से कोई लेखक मेल नहीं खाता।",
   "bios_showing": "%total% में से %shown% लेखक दिखाए जा रहे हैं",
   "books_showing": "%total% में से %shown% पुस्तकें दिखाई जा रही हैं",
@@ -634,9 +633,6 @@
   "books_standalone": "स्वतंत्र पुस्तकें",
   "books_view_grid": "ग्रिड दृश्य",
   "books_view_list": "सूची दृश्य",
-  "books_source_all": "सभी",
-  "books_source_public": "सार्वजनिक डोमेन",
-  "books_source_translated": "अनूदित",
   "books_topic_all": "सभी विषय",
   "books_filter_topic": "विषय से छाँटें",
   "books_new_title": "पुस्तकालय में नया",
@@ -1318,5 +1314,13 @@
   "palette_olive": "जैतून का बाग़",
   "palette_hearth": "अलाव",
   "palette_dawn": "भोर",
-  "palette_monastery": "मठ"
+  "palette_monastery": "मठ",
+  "finished_eyebrow": "पुस्तक पूरी हुई",
+  "finished_stats": "%c% अध्याय · %w% शब्द",
+  "finished_reflect_heading": "जो आप साथ ले जाते हैं",
+  "finished_reflect_prompt": "इस पुस्तक से आप क्या साथ ले जाएँगे?",
+  "finished_highlights": "आपके हाइलाइट (%n%)",
+  "finished_more_by": "%name% की और रचनाएँ",
+  "finished_about_author": "लेखक के बारे में",
+  "finished_plans": "इस पुस्तक वाली पठन योजनाएँ"
 }

@@ -494,7 +494,6 @@
   "bios_era_awakenings": "Os Grandes Avivamentos",
   "bios_era_missionary": "O Século Missionário",
   "bios_era_modern": "A Era Moderna",
-  "bios_era_contemporary": "Contemporâneo",
   "bios_no_results": "Nenhum escritor corresponde a estes filtros.",
   "bios_showing": "Mostrando %shown% de %total% autores",
   "books_showing": "Mostrando %shown% de %total% livros",
@@ -634,9 +633,6 @@
   "books_standalone": "Livros avulsos",
   "books_view_grid": "Visualização em grade",
   "books_view_list": "Visualização em lista",
-  "books_source_all": "Todos",
-  "books_source_public": "Domínio público",
-  "books_source_translated": "Traduzidos",
   "books_topic_all": "Todos os temas",
   "books_filter_topic": "Filtrar por tema",
   "books_new_title": "Novidades na biblioteca",
@@ -1318,5 +1314,13 @@
   "palette_olive": "Olival",
   "palette_hearth": "Lareira",
   "palette_dawn": "Aurora",
-  "palette_monastery": "Mosteiro"
+  "palette_monastery": "Mosteiro",
+  "finished_eyebrow": "Livro concluído",
+  "finished_stats": "%c% capítulos · %w% palavras",
+  "finished_reflect_heading": "O que você leva consigo",
+  "finished_reflect_prompt": "O que você vai levar deste livro?",
+  "finished_highlights": "Seus destaques (%n%)",
+  "finished_more_by": "Mais de %name%",
+  "finished_about_author": "Sobre o autor",
+  "finished_plans": "Planos de leitura com este livro"
 }

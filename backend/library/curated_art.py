@@ -1263,6 +1263,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "A slim desk lamp, an open Bible, a blue ceramic mug and a notebook "
         "with a pen: a present-day study.",
     ),
+    # Drawn 2026-10-04 by a stand-in SDF ray-marcher in the same frame (wall in
+    # the book's colour, desk in lamplight), since the series' own renderer is
+    # not in the repo. Nothing Narnian and no likeness: the don's desk only.
+    "key-teachings-of-c-s-lewis": Original(
+        "aa4d46315b0c6a682340cb7582980c59e02fc2c996cac38ce3b8849dff22017e",
+        "A parchment-shaded brass lamp, three old calf and cloth volumes, an "
+        "ink bottle with a dip pen and a cup of tea: the Oxford don who wrote "
+        "everything by hand.",
+    ),
 }
 
 
