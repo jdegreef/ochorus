@@ -22,6 +22,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import { pwa } from '$lib/pwa.svelte';
 	import { initAnalytics } from '$lib/analytics';
+	import { install } from '$lib/install.svelte';
 	import { localizeHref, deLocalizeHref, getLocale, getTextDirection, locales } from '$lib/paraglide/runtime';
 	import AccountMenu from '$lib/components/AccountMenu.svelte';
 	import QuickSettings from '$lib/components/QuickSettings.svelte';
@@ -70,6 +71,7 @@
 		// Cookieless pageview analytics; no-ops unless PUBLIC_PLAUSIBLE_DOMAIN is
 		// set. The script self-tracks SPA route changes from here on.
 		initAnalytics();
+		install.init();
 	});
 
 	// A navigation into another locale must be a full document load: the
