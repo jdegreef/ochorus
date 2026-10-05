@@ -1,0 +1,20 @@
+{
+ "kind": "bio",
+ "slug": "dietrich-bonhoeffer",
+ "language": "fr",
+ "job_issue": 4271,
+ "references": [
+  {
+   "reference": "Luke 14:28",
+   "status": "mined",
+   "block_index": 0,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 13:44",
+   "status": "mined",
+   "block_index": 14,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}
