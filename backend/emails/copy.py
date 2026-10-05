@@ -1,16 +1,22 @@
 """Localized copy for lifecycle emails, keyed by step then locale.
 
 This is app-string copy (like the reader's paraglide catalog), not library
-content, so it is translated per locale. English is the seed; a locale with no
-block for a step falls back to English. To add a language, add a block under the
-step; to add a step, add an entry to ``LIFECYCLE`` and register it in
-:mod:`emails.lifecycle`.
+content, so it is translated per locale. English, Spanish and Portuguese live
+inline below; every other language is one JSON file per language in
+``copy_data/<lang>.json`` (``{step: block}``), merged in at import. A locale with
+no block for a step falls back to English. ``tests_copy`` holds every
+translation to the English shape: the same keys and paragraph count, the same
+``{placeholders}``, the same ``cta_path``. To add a step, add an entry to
+``LIFECYCLE`` (English at least) and register it in :mod:`emails.lifecycle`.
 
 Each block is a flat dict of strings; ``{name}`` is filled at render time.
 ``cta_path`` is a path on the reader site the button points to ("" = home).
 """
 
 from __future__ import annotations
+
+import json
+from pathlib import Path
 
 DEFAULT_LOCALE = "en"
 
@@ -579,6 +585,21 @@ LIFECYCLE: dict[str, dict[str, dict[str, object]]] = {
         },
     },
 }
+
+
+#: Per-language JSON copy (see the module docstring).
+COPY_DATA = Path(__file__).with_name("copy_data")
+
+
+def _load_copy_data() -> None:
+    for path in sorted(COPY_DATA.glob("*.json")):
+        lang = path.stem
+        for step, block in json.loads(path.read_text(encoding="utf-8")).items():
+            if step in LIFECYCLE:
+                LIFECYCLE[step][lang] = block
+
+
+_load_copy_data()
 
 
 def step_copy(step: str, locale: str) -> dict[str, object]:

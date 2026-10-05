@@ -1,0 +1,142 @@
+{
+ "welcome": {
+  "subject": "Bienvenue sur Ochorus",
+  "preheader": "Une paisible bibliothèque de classiques chrétiens — gratuite, pour toujours.",
+  "heading": "Bienvenue sur Ochorus",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Merci d’avoir rejoint Ochorus — une bibliothèque gratuite et sans publicité de classiques chrétiens du domaine public, dans votre langue.",
+   "Tout ce qui s’y trouve est à vous : les grandes œuvres sur la prière, la dévotion et la vie spirituelle profonde, d’Andrew Murray à Thomas à Kempis. Rien à acheter, rien à débloquer.",
+   "La meilleure façon de commencer, c’est tout simplement de lire. Choisissez un livre qui vous attire, ou laissez un court plan de lecture vous guider quelques minutes par jour."
+  ],
+  "cta_label": "Commencer à lire",
+  "cta_path": "welcome",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "pick_plan": {
+  "subject": "Quelques minutes par jour",
+  "preheader": "Un court plan de lecture est la façon la plus simple de commencer.",
+  "heading": "Trouvez votre rythme",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Les lecteurs qui restent fidèles à Ochorus commencent presque toujours de la même façon — avec un court plan de lecture qui ne demande que quelques minutes par jour.",
+   "Un plan vous fait parcourir un classique petit à petit : la lecture ne s’accumule jamais, et l’habitude se forme d’elle-même. Choisissez-en un qui convient à la saison que vous traversez."
+  ],
+  "cta_label": "Parcourir les plans de lecture",
+  "cta_path": "plans",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "finish_first_book": {
+  "subject": "Reprenez là où vous vous étiez arrêté",
+  "preheader": "Votre premier livre vous attend — quelques minutes par jour suffisent pour le terminer.",
+  "heading": "Terminez ce que vous avez commencé",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Vous avez commencé à lire — c’est le pas le plus difficile, et vous l’avez déjà franchi. Le livre que vous avez ouvert est gardé exactement là où vous vous étiez arrêté.",
+   "Terminer votre premier livre est en soi une paisible récompense. Quelques minutes par jour suffisent ; nous gardons votre page pour vous."
+  ],
+  "cta_label": "Poursuivre la lecture",
+  "cta_path": "reading",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "classic": {
+  "subject": "Un classique qui mérite votre temps",
+  "preheader": "Des siècles de lecteurs ne peuvent pas tous se tromper.",
+  "heading": "Une lecture qui en vaut la peine",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Si vous ne savez pas par où commencer, commencez par un livre qui a déjà survécu à toutes les modes — un classique vers lequel des générations de lecteurs sont revenues.",
+   "Ces livres sont courts, profonds, et transforment une vie en silence : Andrew Murray sur l’humilité, frère Laurent sur la présence de Dieu, Thomas à Kempis sur l’imitation de Jésus-Christ. Ouvrez-en un ce soir."
+  ],
+  "cta_label": "Explorer la bibliothèque",
+  "cta_path": "books",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "comeback": {
+  "subject": "Votre lecture vous attend",
+  "preheader": "Reprenez exactement là où vous vous étiez arrêté.",
+  "heading": "Revenez-y",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Cela fait un petit moment — et ce n’est pas grave. Les livres sont patients, et tout ce que vous avez commencé est exactement là où vous l’avez laissé.",
+   "Quelques minutes de calme suffisent pour reprendre le fil. Votre page est gardée et vous attend, quand vous le voudrez."
+  ],
+  "cta_label": "Poursuivre la lecture",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "winback": {
+  "subject": "Votre bibliothèque est toujours là",
+  "preheader": "Cela fait un moment — votre page est gardée, et tout est toujours gratuit.",
+  "heading": "Nous avons gardé votre page",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Cela fait un moment que vous n’êtes pas venu sur Ochorus, et ce n’est pas grave — la vie est bien remplie. Nous voulions simplement vous dire que votre bibliothèque est toujours là, exactement comme vous l’avez laissée.",
+   "Tout est toujours gratuit, toujours sans publicité, toujours à vous : les grandes œuvres sur la prière et la vie spirituelle profonde, dans votre langue. Dès que vous aurez quelques minutes de calme, un bon livre vous attend."
+  ],
+  "cta_label": "Revenir sur Ochorus",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "finish_series": {
+  "subject": "L’histoire continue : {next}",
+  "preheader": "Vous avez terminé {finished} — le volume suivant vous attend.",
+  "heading": "Prêt pour le suivant ?",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Vous avez terminé {finished} — nous espérons que ce fut un temps bien employé.",
+   "Ce livre fait partie d’une série, et le volume suivant, {next}, vous attend dès que vous le souhaitez. Un livre mène au suivant."
+  ],
+  "cta_label": "Commencer {next}",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "plan_reminder": {
+  "subject": "Jour {day} · {plan}",
+  "preheader": "Lecture du jour : {reading}",
+  "heading": "{reading}",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Le jour {day} sur {total} de {plan} vous attend."
+  ],
+  "cta_label": "Lire le jour {day}",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "plan_paused": {
+  "subject": "Votre progression dans {plan} est gardée",
+  "preheader": "Reprenez quand vous serez prêt.",
+  "heading": "Votre progression est gardée",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Vous vous êtes arrêté au jour {day} de {plan}. Rien ne presse — il vous attend dès que vous serez prêt.",
+   "Nous avons mis en pause vos rappels quotidiens. Lisez le jour suivant et ils reprendront."
+  ],
+  "cta_label": "Lire le jour {day}",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ },
+ "milestone": {
+  "subject": "{count} livres — bravo",
+  "preheader": "Une vraie étape. Au prochain !",
+  "heading": "{count} livres lus",
+  "greeting": "Bonjour {name},",
+  "paragraphs": [
+   "Vous avez maintenant terminé {count} livres sur Ochorus — c’est une véritable étape, qui mérite qu’on s’y arrête.",
+   "Chacun est un classique qui a affermi et réveillé des lecteurs depuis des générations, et vous l’avez lu jusqu’au bout. Au prochain, dès que vous serez prêt."
+  ],
+  "cta_label": "Trouver votre prochain livre",
+  "cta_path": "",
+  "signoff": "Grâce et paix,",
+  "signature": "L’équipe Ochorus"
+ }
+}
