@@ -450,6 +450,10 @@ class PlanSchedule(models.Model):
     )
     # "HH:MM", or "" for none chosen (the device's default then stands).
     remind_at = models.CharField(max_length=5, blank=True, default="")
+    # The reader asked for this plan's day by EMAIL at `remind_at` (chosen when
+    # starting the plan). A time alone only sets the calendar file's alerts, so
+    # it never starts emails on its own. See emails.plan_reminders.
+    email_reminder = models.BooleanField(default=False)
     client_updated_at = models.DateTimeField()
     updated_at = models.DateTimeField(auto_now=True)
 

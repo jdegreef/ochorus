@@ -244,9 +244,6 @@
    "space-before-punct": 15,
    "welded-footnote": 5
   },
-  "seraphims-worship": {
-   "word-fusion": 1
-  },
   "sermons-on-several-occasions": {
    "orphan-close-quote": 47,
    "run-together": 2,
@@ -303,6 +300,10 @@
   },
   "the-cloud-of-witnesses": {
    "space-before-punct": 12
+  },
+  "the-everlasting-man": {
+   "lost-paragraphing": 3,
+   "word-fusion": 4
   },
   "the-fourfold-gospel": {
    "hyphen-space": 1

@@ -31,6 +31,15 @@ class PlanScheduleSyncTests(TestCase):
     def _put(self, **body):
         return self.client.put(URL, body, format="json")
 
+    def test_email_reminder_is_stored_only_when_asked_for(self):
+        res = self._put(remind_at="07:00", email_reminder=True, updated_at=_ms())
+        self.assertTrue(res.data["email_reminder"])
+        # A client that doesn't send it (an older one) turns email off, never on.
+        res = self._put(remind_at="07:00", updated_at=_ms() + 1000)
+        self.assertFalse(res.data["email_reminder"])
+        res = self._put(remind_at="07:00", email_reminder="yes", updated_at=_ms() + 2000)
+        self.assertFalse(res.data["email_reminder"])
+
     def test_put_stores_the_choices_and_they_appear_in_state(self):
         res = self._put(start_on="2026-11-02", reading_days="weekdays", remind_at="06:30", updated_at=_ms())
         self.assertEqual(res.status_code, 200)

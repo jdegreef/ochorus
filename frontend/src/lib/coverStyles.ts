@@ -344,7 +344,8 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'corrie-ten-boom-a-life': 'house',
 	'mary-slessor-a-life': 'house',
 	'samuel-ajayi-crowther-a-life': 'house',
-	'pandita-ramabai-a-life': 'house'
+	'pandita-ramabai-a-life': 'house',
+	'c-s-lewis-a-life': 'house'
 };
 
 /**
