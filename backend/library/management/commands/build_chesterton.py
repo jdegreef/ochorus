@@ -1,10 +1,16 @@
-"""Build G. K. Chesterton's *Orthodoxy* (1908) and *The Everlasting Man* (1925).
+"""Build G. K. Chesterton's *Heretics* (1905), *Orthodoxy* (1908), *St. Francis
+of Assisi* (1923) and *The Everlasting Man* (1925).
 
-Both texts come from Standard Ebooks, whose editions are proofread against page
+Three texts come from Standard Ebooks, whose editions are proofread against page
 scans and whose own contributions are dedicated to the public domain (CC0). The
 source files are each ebook's ``src/epub/text/*.xhtml``, read from the
 Standard Ebooks repositories on GitHub (standardebooks.org and gutenberg.org
 refuse this environment's egress; the GitHub mirror is the same text).
+Standard Ebooks has no *St. Francis*; it comes from Project Gutenberg's HTML
+edition instead, read from the GITenberg mirror (see below).
+
+* *Heretics* — Standard Ebooks' edition follows Project Gutenberg #470 and a
+  scan of the 1905 printing. The twenty chapters are the chapters.
 
 * *Orthodoxy* — Standard Ebooks' edition follows Project Gutenberg #16769 and
   the 1908 scan; it keeps the italics that the older plain-text etext (#130)
@@ -14,19 +20,26 @@ refuse this environment's egress; the GitHub mirror is the same text).
   the 1925 scan. The Prefatory Note, the Introduction, the two Parts' fourteen
   chapters, the Conclusion and the two Appendices are the chapters; each Part's
   title is set as a heading at the head of its first chapter.
+* *St. Francis of Assisi* — Project Gutenberg #63084 (released 2020, after the
+  1923 text entered the US public domain), transcribed by Distributed
+  Proofreaders from a Hodder and Stoughton printing. Its ten chapters are the
+  chapters; the spelling is the printing's own (to-day, civilisation), and
+  its straight quotation marks are set curly. The page-number anchors and the
+  publisher's advertisements at the back are left out.
 
 Only the author's text is taken: Standard Ebooks' title page, imprint,
-colophon and uncopyright pages are left out, as is the dedication. Their
+colophon and uncopyright pages are left out, as is the dedication (and the
+closing "The End"). Their
 typography is kept (curly quotes, em dashes); the invisible word-joiners and
 hair spaces it uses for line-breaking are removed, and no-break spaces become
 plain spaces, as across the library.
 
-Fixture-driven like every other book: ``seed_books`` creates both books (and
+Fixture-driven like every other book: ``seed_books`` creates the books (and
 the author, from ``authors.json``) on the next deploy from
 ``fixtures/content/books/<slug>.en.json``. This command GENERATES those
 fixtures reproducibly; it is idempotent.
 
-    DJANGO_DEBUG=true uv run python manage.py build_chesterton [orthodoxy|the-everlasting-man]
+    DJANGO_DEBUG=true uv run python manage.py build_chesterton [heretics|orthodoxy|st-francis-of-assisi|the-everlasting-man]
 """
 
 from __future__ import annotations
@@ -44,11 +57,14 @@ from library.content_fixtures import book_sort_order
 from library.corrections import settled_chapter_body
 from library.ingest import clean_fragment, word_count
 from library.models import Author, Book, Chapter
+from library.quote_marks import assert_punctuation_only, convert
 
 AUTHOR_SLUG = "g-k-chesterton"
 AUTHOR_STUB = {"name": "G. K. Chesterton", "birth_year": 1874, "death_year": 1936}
 
 SE_RAW = "https://raw.githubusercontent.com/standardebooks/{repo}/master/src/epub/text/{name}.xhtml"
+# Project Gutenberg's HTML edition, as the GITenberg mirror carries it.
+PG_RAW = "https://raw.githubusercontent.com/GITenberg/{repo}/master/{name}"
 
 
 @dataclass(frozen=True)
@@ -72,7 +88,61 @@ class Work:
     description: str
     attribution: str
     parts: tuple[Part, ...]
+    # Set for a Project Gutenberg HTML edition (GITenberg repo, file path);
+    # `repo` then names the GITenberg repo and each Part's `name` is unused.
+    pg_html: str = ""
 
+
+HERETICS = Work(
+    slug="heretics",
+    title="Heretics",
+    repo="g-k-chesterton_heretics",
+    publication_year=1905,
+    cover_color=covers.ink_safe("#4a3a64"),
+    source_url="https://standardebooks.org/ebooks/g-k-chesterton/heretics",
+    description=(
+        "The modern world, Chesterton complains, has stopped asking whether a "
+        "man's view of the universe is true; it is thought bad manners to have "
+        "one at all. In these twenty essays he takes the celebrated thinkers of "
+        "his day one by one, Kipling, Shaw, Wells, Moore, Whistler and the rest, "
+        "and asks of each the question it is no longer polite to ask: what does "
+        "he believe, and is it right? Witty, generous to his opponents and "
+        "relentless with their ideas, the book argues that a man who refuses to "
+        "have a creed has not escaped dogma but only hidden it, and it is the "
+        "challenge to which Orthodoxy, three years later, gave his answer."
+    ),
+    attribution=(
+        "Public domain — G. K. Chesterton's Heretics (1905). Text from the "
+        "Standard Ebooks edition (CC0), which follows Project Gutenberg ebook "
+        "470 checked against a scan of the 1905 printing, with lightly "
+        "modernised spelling. All twenty chapters are complete."
+    ),
+    parts=(
+        Part("chapter-1", "Introductory Remarks on the Importance of Orthodoxy"),
+        Part("chapter-2", "On the Negative Spirit"),
+        Part("chapter-3", "On Mr. Rudyard Kipling and Making the World Small"),
+        Part("chapter-4", "Mr. Bernard Shaw"),
+        Part("chapter-5", "Mr. H. G. Wells and the Giants"),
+        Part("chapter-6", "Christmas and the Aesthetes"),
+        Part("chapter-7", "Omar and the Sacred Vine"),
+        Part("chapter-8", "The Mildness of the Yellow Press"),
+        Part("chapter-9", "The Moods of Mr. George Moore"),
+        Part("chapter-10", "On Sandals and Simplicity"),
+        Part("chapter-11", "Science and the Savages"),
+        Part("chapter-12", "Paganism and Mr. Lowes Dickinson"),
+        Part("chapter-13", "Celts and Celtophiles"),
+        Part(
+            "chapter-14",
+            "On Certain Modern Writers and the Institution of the Family",
+        ),
+        Part("chapter-15", "On Smart Novelists and the Smart Set"),
+        Part("chapter-16", "On Mr. McCabe and a Divine Frivolity"),
+        Part("chapter-17", "On the Wit of Whistler"),
+        Part("chapter-18", "The Fallacy of the Young Nation"),
+        Part("chapter-19", "Slum Novelists and the Slums"),
+        Part("chapter-20", "Concluding Remarks on the Importance of Orthodoxy"),
+    ),
+)
 
 ORTHODOXY = Work(
     slug="orthodoxy",
@@ -168,7 +238,46 @@ EVERLASTING_MAN = Work(
     ),
 )
 
-WORKS = {w.slug: w for w in (ORTHODOXY, EVERLASTING_MAN)}
+ST_FRANCIS = Work(
+    slug="st-francis-of-assisi",
+    title="St. Francis of Assisi",
+    repo="St-Francis-of-Assisi_63084",
+    pg_html="63084-h/63084-h.htm",
+    publication_year=1923,
+    cover_color=covers.ink_safe("#5e4630"),
+    source_url="https://www.gutenberg.org/ebooks/63084",
+    description=(
+        "A life of St. Francis, Chesterton says, can be written as if he were "
+        "only a lover of nature and a friend of the birds, or only a saint of "
+        "the stained-glass window; he sets out to do something harder, and to "
+        "show a modern reader why the man did what he did. Beginning with the "
+        "dark world Francis was born into, he follows the young soldier of "
+        "Assisi through his conversion, the rebuilding of the ruined church, "
+        "the leper he ran to embrace and the joyful poverty of the friars, to "
+        "the stigmata and his death, and finds the secret of it all in one "
+        "thing: that Francis was a lover, a lover of God and of men."
+    ),
+    attribution=(
+        "Public domain — G. K. Chesterton's St. Francis of Assisi (1923). Text "
+        "from Project Gutenberg ebook 63084, transcribed by Distributed "
+        "Proofreaders from a Hodder and Stoughton printing, in its original "
+        "spelling. All ten chapters are complete."
+    ),
+    parts=(
+        Part("", "The Problem of St. Francis"),
+        Part("", "The World St. Francis Found"),
+        Part("", "Francis the Fighter"),
+        Part("", "Francis the Builder"),
+        Part("", "Le Jongleur de Dieu"),
+        Part("", "The Little Poor Man"),
+        Part("", "The Three Orders"),
+        Part("", "The Mirror of Christ"),
+        Part("", "Miracles and Death"),
+        Part("", "The Testament of St. Francis"),
+    ),
+)
+
+WORKS = {w.slug: w for w in (HERETICS, ORTHODOXY, ST_FRANCIS, EVERLASTING_MAN)}
 
 # Printer's slips the Standard Ebooks text keeps from its scan, each read
 # correctly by the independent Project Gutenberg transcription (#130). A
@@ -193,8 +302,8 @@ _UNWRAP = {"abbr", "span", "time", "a"}
 _RENAME = {"i": "em", "b": "strong"}
 
 
-def _fetch(repo: str, name: str) -> str:
-    url = SE_RAW.format(repo=repo, name=name)
+def _fetch(repo: str, name: str, template: str = SE_RAW) -> str:
+    url = template.format(repo=repo, name=name)
     for _attempt in range(4):
         try:
             resp = requests.get(url, timeout=60)
@@ -246,6 +355,8 @@ def _body(xhtml: str, where: str) -> str:
         if el.name in {"hgroup", "header", "h2", "h3"}:
             continue  # the chapter's own heading — the reader shows our title
         if el.name == "p":
+            if el.get_text(strip=True) == "The End":
+                continue  # Standard Ebooks' closing line, not the author's
             parts.append(f"<p>{_block(_inline(el))}</p>")
         elif el.name == "footer":  # the Preface's signature
             parts.extend(
@@ -266,11 +377,62 @@ def _body(xhtml: str, where: str) -> str:
     return "".join(parts)
 
 
+def _pg_bodies(html: str, where: str) -> list[str]:
+    """Each chapter's body from a Project Gutenberg HTML edition.
+
+    A chapter opens at its ``div.chapter`` (the heading, which the reader
+    replaces with our title) and runs to the next one; the publisher's
+    advertisements (``div.books``) end the book. The page-number anchors are
+    the edition's apparatus, not text.
+    """
+    soup = BeautifulSoup(html, "lxml")
+    for span in soup.select("span.pagenum"):
+        span.decompose()
+    bodies: list[list[str]] = []
+    for el in soup.body.find_all(recursive=False):
+        classes = el.get("class") or []
+        if el.name == "div" and "chapter" in classes:
+            bodies.append([])
+        elif el.name == "div" and "books" in classes:
+            break
+        elif not bodies:
+            continue  # front matter and contents
+        elif el.name == "p":
+            bodies[-1].append(f"<p>{_block(_inline(el))}</p>")
+        elif el.name == "div" and "poetry-container" in classes:
+            lines = [_block(_inline(v)) for v in el.select("div.verse")]
+            if not lines:
+                raise CommandError(f"{where}: an empty verse block.")
+            bodies[-1].append(
+                "<blockquote><p>" + "<br>".join(lines) + "</p></blockquote>"
+            )
+        else:
+            raise CommandError(f"{where}: unexpected block <{el.name} {classes}>.")
+    return ["".join(b) for b in bodies]
+
+
 def chapters(work: Work) -> list[tuple[str, str, int]]:
     """(title, body_html, min_words) per chapter, in reading order."""
     out = []
-    for part in work.parts:
-        body = _body(_fetch(work.repo, part.name), f"{work.slug}/{part.name}")
+    if work.pg_html:
+        bodies = _pg_bodies(_fetch(work.repo, work.pg_html, PG_RAW), work.slug)
+        if len(bodies) != len(work.parts):
+            raise CommandError(
+                f"{work.slug}: {len(bodies)} chapters in the edition, "
+                f"{len(work.parts)} expected — the edition changed."
+            )
+    else:
+        bodies = [
+            _body(_fetch(work.repo, part.name), f"{work.slug}/{part.name}")
+            for part in work.parts
+        ]
+    for n, (part, body) in enumerate(zip(work.parts, bodies, strict=True), 1):
+        if work.pg_html:
+            # Gutenberg's straight quotes, set curly like the Standard Ebooks
+            # texts beside it; only the marks may move.
+            curled, _ = convert(body, outer_guillemets=False)
+            assert_punctuation_only(body, curled, f"{work.slug}[{n}]")
+            body = curled
         if part.heading:
             body = f"<h2>{_escape(part.heading)}</h2>" + body
         out.append([part.title, body, part.min_words])
@@ -285,11 +447,11 @@ def chapters(work: Work) -> list[tuple[str, str, int]]:
 
 
 class Command(BaseCommand):
-    help = "Build Chesterton's Orthodoxy and The Everlasting Man in the dev DB; then serialize the fixtures."
+    help = "Build Chesterton's books in the dev DB; then serialize the fixtures."
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "slugs", nargs="*", choices=list(WORKS), help="default: both"
+            "slugs", nargs="*", choices=list(WORKS), help="default: all"
         )
 
     @transaction.atomic
