@@ -1291,6 +1291,16 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "a glass of claret and a walking stick against the wall: the Fleet "
         "Street journalist who said grace before he dipped his pen.",
     ),
+    # Drawn 2026-10-05 in the series' frame (wall in the book's colour, a desk
+    # in lamplight) but as an inline SVG rendered in headless Chromium, since
+    # neither the series' renderer nor a stand-in ray-marcher is in the repo.
+    # No likeness: the desk of a missionary linguist turned writer.
+    "key-teachings-of-elisabeth-elliot": Original(
+        "627c767893456b2de21dabe19a2356a99d9dcc50c04952041b20b3679f312b3f",
+        "A lit hurricane lantern, a black Bible under a small Greek New "
+        "Testament, and a bundle of letters tied with string: the jungle "
+        "station, the Greek scholar and the woman who answered her mail.",
+    ),
     # Portraits of Courage, volume 7. The series wears museum paintings through
     # CURATED, but the session that wrote this life could reach no collection
     # host (Commons, Wikidata and the museum APIs were all blocked), so the

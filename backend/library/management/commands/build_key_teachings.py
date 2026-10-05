@@ -656,6 +656,27 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#6e2a2a",
     ),
+    # Elisabeth Elliot's own works are NOT public domain — this companion quotes
+    # none of her prose, only the KJV, a few lines of public-domain verse and one
+    # sentence of Amy Carmichael; the disavowal is essential and must ship.
+    "key-teachings-of-elisabeth-elliot": Work(
+        slug="key-teachings-of-elisabeth-elliot",
+        title="The Key Teachings of Elisabeth Elliot",
+        subtitle="An Ochorus companion to her life and teaching",
+        author_slug="elisabeth-elliot",
+        source="elisabeth-elliot.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any organisation holding rights in the writings of Elisabeth "
+            "Elliot. All descriptions of her teaching are the present author's "
+            "own summaries; none of her words are reproduced, and her books are "
+            "named for further study, which readers are warmly encouraged to "
+            "obtain from their rightful publishers. Scripture quotations are "
+            "from the Authorised (King James) Version."
+        ),
+        cover_color="#2c4a40",
+    ),
 }
 
 
