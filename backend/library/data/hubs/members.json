@@ -53,9 +53,11 @@
         "george-whitefield",
         "richard-allen",
         "jarena-lee",
+        "zilpha-elaw",
         "julia-foote",
         "e-m-bounds",
         "amanda-berry-smith",
+        "fanny-jackson-coppin",
         "jesse-lyman-hurlbut",
         "john-r-mott"
       ]
@@ -66,6 +68,7 @@
       "members": [
         "william-carey",
         "christmas-evans",
+        "maria-w-stewart",
         "alexander-maclaren",
         "charles-h-spurgeon",
         "lottie-moon",
@@ -78,6 +81,7 @@
       "members": [
         "john-calvin",
         "jonathan-edwards",
+        "samson-occom",
         "robert-murray-mcheyne",
         "arthur-t-pierson",
         "john-hyde",
@@ -90,6 +94,7 @@
       "slug": "evangelical-anglicans",
       "members": [
         "john-newton",
+        "absalom-jones",
         "j-c-ryle",
         "erica-sabiti",
         "festo-kivengere",
@@ -114,6 +119,7 @@
       "kind": "tradition",
       "slug": "holiness-and-keswick",
       "members": [
+        "zilpha-elaw",
         "andrew-murray",
         "julia-foote",
         "william-booth",
@@ -130,6 +136,7 @@
       "members": [
         "smith-wigglesworth",
         "john-g-lake",
+        "william-j-seymour",
         "f-f-bosworth",
         "charles-s-price"
       ]
@@ -139,6 +146,7 @@
       "slug": "missionaries",
       "members": [
         "david-brainerd",
+        "samson-occom",
         "william-carey",
         "samuel-ajayi-crowther",
         "david-livingstone",
@@ -148,6 +156,7 @@
         "c-t-studd",
         "john-hyde",
         "amy-carmichael",
+        "sadhu-sundar-singh",
         "joe-church",
         "gladys-aylward",
         "lawrence-barham",
@@ -274,6 +283,7 @@
       "kind": "region",
       "slug": "north-america",
       "members": [
+        "kateri-tekakwitha",
         "a-b-simpson",
         "john-g-lake"
       ]
@@ -285,22 +295,28 @@
       "members": [
         "jonathan-edwards",
         "david-brainerd",
+        "samson-occom",
+        "absalom-jones",
         "lemuel-haynes",
         "richard-allen",
         "jarena-lee",
+        "zilpha-elaw",
         "charles-finney",
+        "maria-w-stewart",
         "julia-foote",
         "hannah-whitall-smith",
         "amanda-berry-smith",
         "dwight-l-moody",
         "e-m-bounds",
         "arthur-t-pierson",
+        "fanny-jackson-coppin",
         "jesse-lyman-hurlbut",
         "lottie-moon",
         "r-a-torrey",
         "billy-sunday",
         "john-r-mott",
         "john-hyde",
+        "william-j-seymour",
         "f-f-bosworth",
         "a-w-tozer",
         "billy-graham",
@@ -340,7 +356,8 @@
         "cyprian-of-carthage",
         "athanasius-of-alexandria",
         "monica-of-hippo",
-        "augustine-of-hippo"
+        "augustine-of-hippo",
+        "josephine-bakhita"
       ]
     },
     {
@@ -349,7 +366,10 @@
       "members": [
         "ignatius-of-antioch",
         "john-chrysostom",
+        "soonderbai-powar",
         "pandita-ramabai",
+        "kanzo-uchimura",
+        "sadhu-sundar-singh",
         "watchman-nee"
       ]
     }

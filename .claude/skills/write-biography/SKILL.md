@@ -416,6 +416,24 @@ Sermon.objects.update_or_create(slug='sermon-slug', language='en', defaults=dict
 (`clean_fragment` cleans an HTML string; `word_count` counts it. Confirm the
 current signatures in `library/ingest.py` before relying on them.)
 
+## The rest of a new author row (easy to forget)
+
+- **`faq`**: every bio author ships an editorial Q&A — 6–10 `{"q","a"}` pairs,
+  plain text, no tags/entities/URLs, never the word "ochorus"
+  (`AuthorFaqShapeTests`). House habit is 10, walking the life in order, opening
+  "Who was <name>?". It syncs every deploy (`author_sync.SYNCED_FIELDS`), so the
+  create-migration need not copy it — same for `same_as`.
+- **Biography hubs**: tag the person in `library/data/hubs/members.json` — one
+  most-specific *place* (nationality, not mission field) and any *tradition*
+  that genuinely fits. An untagged author is invisible to the tradition/place
+  browse pages (several authors added after #4540 were missed this way).
+- **Portrait variants**: a new `portraits/<slug>.jpg` also needs its WebP
+  siblings — run `uv run python scripts/build_portrait_assets.py` from
+  `backend/` and commit the `-96.webp` / `-224.webp` files, or
+  `portraits.test.ts` ("ships every width") fails.
+- **Create-migration**: for a biography-only batch, copy the latest
+  `0xxx_*_biography_author(s).py` and change only `NEW_SLUGS` + `dependencies`.
+
 ## Quality checklist (before commit)
 
 1. **≥ 1500 words** of real, accurate biography.
