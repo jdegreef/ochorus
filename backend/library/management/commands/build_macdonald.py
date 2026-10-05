@@ -204,10 +204,6 @@ PRINCESS = Work(
 
 WORKS = {w.slug: w for w in (PHANTASTES, DIARY, NORTH_WIND, PRINCESS)}
 
-# Unambiguous slips, each checked to occur exactly the given number of times in
-# the built chapter bodies (book-wide), so a changed edition fails loudly.
-SOURCE_FIXES: dict[str, tuple[tuple[str, str, int], ...]] = {}
-
 # The one figure in the four books: the wise woman's palm, Phantastes ch. 19.
 _PALM_MARK = "[a wavy line above a bowl-shaped line]"
 
@@ -339,19 +335,15 @@ def _diary_chapters() -> list[tuple[str, str]]:
     return chapters
 
 
-def chapters(work: Work) -> list[list[str]]:
-    """[title, body_html] per chapter, in reading order, fixes applied."""
+def chapters(work: Work) -> list[tuple[str, str]]:
+    """(title, body_html) per chapter, in reading order.
+
+    No transcription fixes: Standard Ebooks' text is proofread against scans,
+    and the English audit finds nothing in any of the four.
+    """
     if work is DIARY:
-        out = [list(c) for c in _diary_chapters()]
-    else:
-        out = [list(_chapter(work, n)) for n in range(1, work.chapters + 1)]
-    for wrong, right, count in SOURCE_FIXES.get(work.slug, ()):
-        found = sum(row[1].count(wrong) for row in out)
-        if found != count:
-            raise CommandError(f"{work.slug}: fix {wrong!r} expected {count}, found {found}.")
-        for row in out:
-            row[1] = row[1].replace(wrong, right)
-    return out
+        return _diary_chapters()
+    return [_chapter(work, n) for n in range(1, work.chapters + 1)]
 
 
 class Command(BaseCommand):
