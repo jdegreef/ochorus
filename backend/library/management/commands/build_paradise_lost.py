@@ -11,7 +11,7 @@ second edition first did. The edition does not carry Milton's note on "The
 Verse", so neither does this book.
 
 One chapter per Book. Each opens with Milton's Argument, set as a quotation
-under an "The Argument" heading, and then the poem itself, one ``<p>`` per
+under a "The Argument" heading, and then the poem itself, one ``<p>`` per
 verse paragraph with a ``<br>`` at the end of every line: blank verse keeps
 its lines and its paragraphs, and is never reflowed into prose. ``<br>`` and
 ``<p>`` are both in the chapter sanitizer's allowlist, so the lines survive
