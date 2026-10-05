@@ -256,6 +256,9 @@ def _clean_schedule(data: dict) -> dict:
         "start_on": _parse_day(data.get("start_on")),
         "reading_days": rule if rule in PlanSchedule.ReadingDays.values else PlanSchedule.ReadingDays.DAILY,
         "remind_at": remind if isinstance(remind, str) and _HHMM.match(remind) else "",
+        # Only an explicit true: an older client that doesn't send it turns
+        # email off, never on.
+        "email_reminder": data.get("email_reminder") is True,
     }
 
 
