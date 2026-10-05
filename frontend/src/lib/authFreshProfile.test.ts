@@ -97,6 +97,30 @@ describe('#pullProfile and the reader’s theme', () => {
 		expect(again.welcome.pending).toBe(false);
 	});
 
+	it("adopts the account's saved palette", async () => {
+		localStorage.setItem('ochorus:palette', 'dawn');
+		profile = { email: 'r@example.com', theme: 'light', palette: 'cathedral' };
+		await signIn();
+		const { palette } = await import('./palette.svelte');
+		expect(palette.current).toBe('cathedral');
+		expect(document.documentElement.dataset.palette).toBe('cathedral');
+	});
+
+	it("keeps and uploads this device's palette when the account never saved one", async () => {
+		localStorage.setItem('ochorus:palette', 'hearth');
+		profile = { email: 'r@example.com', theme: 'light', palette: '' };
+		await signIn(async () => {
+			const { palette } = await import('./palette.svelte');
+			palette.init();
+		});
+		const { palette } = await import('./palette.svelte');
+		expect(palette.current).toBe('hearth');
+		vi.advanceTimersByTime(1000);
+		const push = apiFetch.mock.calls.find((c) => c[1]?.method === 'PATCH' && c[1].body?.includes('palette'));
+		expect(push, 'expected the device palette to be pushed').toBeTruthy();
+		expect(JSON.parse(push![1]!.body!).palette).toBe('hearth');
+	});
+
 	it('adopts a saved account theme', async () => {
 		localStorage.setItem('theme', 'dark');
 		profile = { email: 'r@example.com', theme: 'sepia', font_scale: 1, tts_rate: 1 };

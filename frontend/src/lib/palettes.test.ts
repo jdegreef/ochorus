@@ -93,6 +93,14 @@ describe('library palettes', () => {
 		expect(PALETTE_COLORS.parchment.swatch.dark[1]).toBe(lamplight['--accent']);
 	});
 
+	it("the API accepts exactly these palettes (backend accounts/models.py PALETTES)", () => {
+		const models = readFileSync(join(process.cwd(), '../backend/accounts/models.py'), 'utf-8');
+		const tuple = models.match(/^PALETTES = \(([^)]*)\)/m);
+		expect(tuple, 'PALETTES tuple not found in accounts/models.py').toBeTruthy();
+		const backend = [...tuple![1].matchAll(/"([a-z]+)"/g)].map((m) => m[1]);
+		expect(backend).toEqual([...PALETTES]);
+	});
+
 	it('the boot script reads the store key', () => {
 		expect(HTML).toContain(`getItem('${PALETTE_KEY}')`);
 	});

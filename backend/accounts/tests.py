@@ -40,6 +40,15 @@ class MeViewTests(TestCase):
         self.client.patch("/api/auth/me/", {"theme": "dark"}, format="json")
         self.assertEqual(self.client.get("/api/auth/me/").data["theme"], "dark")
 
+    def test_palette_is_blank_until_pushed_and_only_takes_known_palettes(self):
+        # Blank = "never saved", like theme: the device's own choice is kept.
+        self.assertEqual(self.client.get("/api/auth/me/").data["palette"], "")
+        res = self.client.patch("/api/auth/me/", {"palette": "hearth"}, format="json")
+        self.assertEqual(res.data["palette"], "hearth")
+        self.client.patch("/api/auth/me/", {"palette": "neon"}, format="json")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.palette, "hearth")
+
     def test_patch_stores_and_returns_timezone(self):
         res = self.client.patch(
             "/api/auth/me/", {"timezone": "  Europe/London  "}, format="json"

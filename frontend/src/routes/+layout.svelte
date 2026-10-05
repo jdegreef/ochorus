@@ -108,6 +108,7 @@
 	$effect(() => {
 		// touch the values so the effect tracks them
 		void theme.current;
+		void palette.current;
 		void readerPrefs.scale;
 		void listen.rate;
 		void listen.voiceURI;

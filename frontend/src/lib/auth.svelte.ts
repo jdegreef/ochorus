@@ -6,6 +6,8 @@ import { readerPrefs } from './readerPrefs.svelte';
 import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
 import { welcome } from './welcome.svelte';
+import { palette } from './palette.svelte';
+import { normalizePalette } from './palettes';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
 import { signupSource } from './signupSource';
@@ -16,6 +18,8 @@ export interface Profile {
 	display_name: string;
 	locale: string;
 	theme: string;
+	/** The library palette; blank = never saved (see UserProfile.palette). */
+	palette?: string;
 	font_scale: number;
 	tts_rate?: number;
 	tts_voice_uri?: string;
@@ -349,6 +353,9 @@ class Auth {
 			if (fresh) welcome.offer();
 			if (!fresh) {
 				theme.set(normalizePref(p.theme));
+				// Blank = this account never saved a palette (it predates them):
+				// keep this device's and upload it (below), as for a fresh account.
+				if (p.palette) palette.set(normalizePalette(p.palette));
 				if (p.font_scale) readerPrefs.setScale(p.font_scale);
 				// Listening prefs: rate always applies; a voiceURI only resolves if
 				// the device actually has that voice (best-effort across devices).
@@ -359,6 +366,7 @@ class Auth {
 			// again. Set BEFORE the language reconcile below, which pushes
 			// deliberately. See #profileLoaded.
 			this.#profileLoaded = true;
+			if (!fresh && !p.palette) this.pushPrefs();
 			// Record where this reader is signing in from (browser timezone →
 			// approximate country in the admin analytics). Independent of the
 			// prefs push, so it's safe regardless of #profileLoaded.
@@ -436,6 +444,7 @@ class Auth {
 				method: 'PATCH',
 				body: JSON.stringify({
 					theme: theme.preference,
+					palette: palette.current,
 					font_scale: readerPrefs.scale,
 					tts_rate: listen.rate,
 					tts_voice_uri: listen.voiceURI,
