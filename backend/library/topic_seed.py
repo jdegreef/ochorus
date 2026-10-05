@@ -532,6 +532,7 @@ TOPICS = [
             "amanda-smith-autobiography",
             "men-and-women-who-gave-everything-2",
             "key-teachings-of-hudson-taylor",
+            "elisabeth-elliot-a-life",
         ],
     ),
     (

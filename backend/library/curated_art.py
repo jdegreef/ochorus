@@ -1316,6 +1316,20 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "tower on the skyline and the Cherwell winding toward it, the walk "
         "where Lewis talked through the night of 19 September 1931.",
     ),
+    # Portraits of Courage, volume 8. Drawn like volume 7's, and for the same
+    # reason (no collection host reachable from the session): an inline SVG of
+    # gradients, fractal-noise cloud and displaced foliage, rendered in headless
+    # Chromium at 2x and downscaled. A forest river at first light with a dugout
+    # drawn up on a sandbar: it evokes the Curaray and the Waorani country she
+    # went into in 1958, without staging the killings of 1956 or any likeness.
+    # A public-domain Ecuador by Frederic Church (The Andes of Ecuador, or
+    # Cotopaxi) would be the natural level-up: a two-line diff plus a CURATED row.
+    "elisabeth-elliot-a-life": Original(
+        "de5d3dfe6e2c18bc5bffb3304534f7090166c863b02b4d999aaae5dd10004f7c",
+        "First light over a forest river, a dugout canoe drawn up on a "
+        "sandbar: the Curaray country where her husband died and where she "
+        "went to live among the people who had killed him.",
+    ),
 }
 
 
