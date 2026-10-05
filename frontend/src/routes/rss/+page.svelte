@@ -16,7 +16,7 @@
 	// link — they find the feed through the <link rel="alternate"> in every
 	// page's <head> (routes/+layout.svelte), which this page carries too.
 	// (A styled feed via XSLT was the other option; Chrome is removing XSLT.)
-	const path = '/rss';
+	const path = '/rss/';
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
 	const feedUrl = `${SITE_URL}/feed.xml`;
 
