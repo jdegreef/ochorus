@@ -51,31 +51,34 @@
 	const TAB_KEYS = ['all', ...KINDS] as const;
 	let tab = $state<Tab>(pick('tab', TAB_KEYS, 'books'));
 
+	// Everything that differs by kind, in one place: its tab label, its name on a
+	// row of the All matrix, its translation-job type (the queue's singular
+	// names), and where its rows link — books to their admin detail page, the
+	// rest (no admin detail yet) to their live pages; a biography row is an
+	// author. `review`: its review-queue kind (articles and plans aren't in the
+	// queue, so their cells stay plain). `stale`: whether "still current" can
+	// clear its ↻ — a stale bio clears through its own review/re-translation.
+	const KIND: Record<
+		Kind,
+		{
+			label: string;
+			one: string;
+			job: TranslationJobType;
+			href: string;
+			review?: ReviewKind;
+			stale?: 'book' | 'sermon' | 'article';
+		}
+	> = {
+		books: { label: 'Books', one: 'Book', job: 'book', href: '/admin/books', review: 'book', stale: 'book' },
+		sermons: { label: 'Sermons', one: 'Sermon', job: 'sermon', href: '/sermons', review: 'sermon', stale: 'sermon' },
+		plans: { label: 'Plans', one: 'Plan', job: 'plan', href: '/plans' },
+		bios: { label: 'Biographies', one: 'Biography', job: 'bio', href: '/authors', review: 'bio' },
+		articles: { label: 'Articles', one: 'Article', job: 'article', href: '/articles', stale: 'article' }
+	};
 	const TABS: { key: Tab; label: string }[] = [
 		{ key: 'all', label: 'All' },
-		{ key: 'books', label: 'Books' },
-		{ key: 'sermons', label: 'Sermons' },
-		{ key: 'plans', label: 'Plans' },
-		{ key: 'bios', label: 'Biographies' },
-		{ key: 'articles', label: 'Articles' }
+		...KINDS.map((k) => ({ key: k, label: KIND[k].label }))
 	];
-	// A row's kind in the All matrix, where kinds sit side by side.
-	const KIND_LABEL: Record<Kind, string> = {
-		books: 'Book',
-		sermons: 'Sermon',
-		plans: 'Plan',
-		bios: 'Biography',
-		articles: 'Article'
-	};
-
-	// Each kind is one job type (the queue's singular names).
-	const JOB_TYPE: Record<Kind, TranslationJobType> = {
-		books: 'book',
-		sermons: 'sermon',
-		plans: 'plan',
-		bios: 'bio',
-		articles: 'article'
-	};
 
 	// `?? []` guards the deploy window where the SPA carries a new tab before the
 	// API's payload does: a missing `cov[kind]` must render empty, not throw.
@@ -136,16 +139,7 @@
 	let moreOpen = $state(false);
 	let helpOpen = $state(false);
 	const colTint = (code: string) => (hoverCol === code ? 'bg-surface-2' : '');
-	// Books link to their admin detail page; sermons/plans/bios/articles (no admin
-	// detail yet) link to their live pages — a biography row is an author.
-	const ROW_HREF_BASE: Record<Kind, string> = {
-		books: '/admin/books',
-		sermons: '/sermons',
-		plans: '/plans',
-		bios: '/authors',
-		articles: '/articles'
-	};
-	const rowHref = (r: AdminCoverageRow) => `${ROW_HREF_BASE[kindOf(r)]}/${r.slug}`;
+	const rowHref = (r: AdminCoverageRow) => `${KIND[kindOf(r)].href}/${r.slug}`;
 	// A blank title (an import or edit that lost it) would leave a row, a prompt
 	// or a CSV line naming nothing — so such a work goes by its slug everywhere,
 	// and can't be queued until its title is fixed (see isGap).
@@ -156,14 +150,8 @@
 	// An unreviewed cell opens that translation in the review queue, panel open.
 	// A link rather than an approve button here: approving means reading the
 	// text beside its English and settling its flagged verses, which lives there.
-	// Articles aren't in the review queue, so their cells stay plain.
-	const REVIEW_KIND: Partial<Record<Kind, ReviewKind>> = {
-		books: 'book',
-		sermons: 'sermon',
-		bios: 'bio'
-	};
 	const reviewHref = (r: AdminCoverageRow, lang: string) => {
-		const kind = REVIEW_KIND[kindOf(r)];
+		const kind = KIND[kindOf(r)].review;
 		return kind
 			? `/admin/review?${new URLSearchParams({ kind, language: lang, slug: r.slug })}`
 			: null;
@@ -205,16 +193,10 @@
 	let staleOnly = $state(init.get('stale') === '1');
 	const isStale = (r: AdminCoverageRow, code: string) => !!r.stale?.includes(code);
 	// "Still current": a reviewer checked a stale translation against the new
-	// English and it holds (the change was a typo fix, say). Books, sermons and
-	// articles only — a stale bio clears through its own review/re-translation.
-	const STALE_KIND: Partial<Record<Kind, 'book' | 'sermon' | 'article'>> = {
-		books: 'book',
-		sermons: 'sermon',
-		articles: 'article'
-	};
+	// English and it holds (the change was a typo fix, say). See KIND[].stale.
 	let markingCurrent = $state<string | null>(null);
 	async function markCurrent(r: AdminCoverageRow, l: AdminCoverageLanguage) {
-		const kind = STALE_KIND[kindOf(r)];
+		const kind = KIND[kindOf(r)].stale;
 		if (!kind) return;
 		if (
 			!confirm(
@@ -288,7 +270,7 @@
 				groupAxis === 'author'
 					? key
 					: groupAxis === 'type'
-						? (TABS.find((t) => t.key === key)?.label ?? key)
+						? KIND[key as Kind].label
 						: key === NO_SERIES
 							? 'Not in a series'
 							: (seriesTitle.get(key) ?? key);
@@ -367,7 +349,7 @@
 		const all = tab === 'all';
 		const header = [...(all ? ['Type'] : []), 'Work', 'Slug', 'Author', 'Readers', ...langs.map((l) => l.code)];
 		const lines = [header, ...visibleRows.map((r) => [
-			...(all ? [KIND_LABEL[kindOf(r)]] : []),
+			...(all ? [KIND[kindOf(r)].one] : []),
 			workName(r),
 			r.slug,
 			r.author ?? '',
@@ -524,9 +506,9 @@
 	// also queue every gap along it at once, behind a count confirmation.
 	//
 	// A row's kind maps 1:1 onto a job type (plural → singular).
-	const jobTypeOf = (r: AdminCoverageRow) => JOB_TYPE[kindOf(r)];
+	const jobTypeOf = (r: AdminCoverageRow) => KIND[kindOf(r)].job;
 	// The job types on screen: one per tab, every one under All.
-	const tabJobTypes = $derived(new Set((tab === 'all' ? KINDS : [tab]).map((k) => JOB_TYPE[k])));
+	const tabJobTypes = $derived(new Set((tab === 'all' ? KINDS : [tab]).map((k) => KIND[k].job)));
 	type Target = { type: TranslationJobType; slug: string; lang: string };
 	const target = (r: AdminCoverageRow, lang: string): Target => ({ type: jobTypeOf(r), slug: r.slug, lang });
 
@@ -715,7 +697,7 @@
 	// count confirmation as a row / column.
 	const cellKey = (r: AdminCoverageRow, lang: string) => `${rowKey(r)}:${lang}`;
 	let selected = $state<Record<string, true>>({});
-	let anchor = $state<{ row: AdminCoverageRow; lang: string } | null>(null);
+	let anchor = $state<{ key: string; lang: string } | null>(null);
 	// Only cells still gaps count — one queued meanwhile drops out by itself.
 	const selectedTargets = $derived(
 		shownRows.flatMap((r) =>
@@ -740,7 +722,7 @@
 	function selectCell(e: MouseEvent, r: AdminCoverageRow, l: AdminCoverageLanguage) {
 		const k = cellKey(r, l.code);
 		if (e.shiftKey && anchor) {
-			const ri = [shownRows.indexOf(anchor.row), shownRows.indexOf(r)].sort((a, b) => a - b);
+			const ri = [shownRows.findIndex((x) => rowKey(x) === anchor!.key), shownRows.indexOf(r)].sort((a, b) => a - b);
 			const li = [langs.findIndex((x) => x.code === anchor!.lang), langs.indexOf(l)].sort((a, b) => a - b);
 			if (ri[0] >= 0 && li[0] >= 0) {
 				const next = { ...selected };
@@ -753,7 +735,7 @@
 		}
 		const { [k]: was, ...rest } = selected;
 		selected = was ? rest : { ...rest, [k]: true };
-		anchor = { row: r, lang: l.code };
+		anchor = { key: rowKey(r), lang: l.code };
 	}
 	function queueSelection() {
 		if (!selectedTargets.length) return;
@@ -869,7 +851,7 @@
 
 			<!-- What's waiting, before the detail. "Open gaps" toggles the Priority
 			     order; the review and out-of-date tiles toggle their filters. -->
-			{@const reviewKind = tab === 'all' ? null : REVIEW_KIND[tab]}
+			{@const reviewKind = tab === 'all' ? null : KIND[tab].review}
 			{#snippet tile(
 				label: string,
 				value: number,
@@ -953,7 +935,7 @@
 						{#each nextGaps as { r, l } (cellKey(r, l.code))}
 							<li class="flex items-center gap-3 border-b border-border px-4 py-1.5 last:border-0">
 								<span class="min-w-0 flex-1 truncate">
-									{#if tab === 'all'}<span class="text-micro text-muted">{KIND_LABEL[kindOf(r)]}</span>{/if}
+									{#if tab === 'all'}<span class="text-micro text-muted">{KIND[kindOf(r)].one}</span>{/if}
 									<a href={rowHref(r)} class="text-text hover:text-accent">{workName(r)}</a>
 									<span class="text-muted">→</span>
 									<span class="font-semibold">{l.name}</span>
@@ -1127,7 +1109,7 @@
 					<summary class="cursor-pointer list-none rounded-full border border-border px-2 py-0.5 text-muted hover:text-text" aria-label="How to use the matrix">?</summary>
 					<div class="absolute left-0 z-40 mt-1 grid w-80 gap-1.5 rounded-card border border-border bg-surface p-3 text-small text-muted shadow-lg">
 						<p>Click a chip to highlight those cells; click it again to clear.</p>
-						{#if tab !== 'articles' && tab !== 'plans'}<p>Click a gold <strong>AI</strong> cell to review that translation.</p>{/if}
+						{#if tab === 'all'}<p>Click a gold <strong>AI</strong> cell on a book, sermon or biography to review that translation.</p>{:else if KIND[tab].review}<p>Click a gold <strong>AI</strong> cell to review that translation.</p>{/if}
 						{#if queueOn}
 							<p>Click an empty cell to queue one translation, or a column's or row's “+N” to queue them all.</p>
 							<p>⇧-click two empty cells to select every gap between them; ⌘/Ctrl-click toggles one.</p>
@@ -1313,7 +1295,7 @@
 				href={rowHref(r)}
 				class="{compact ? 'line-clamp-1' : 'line-clamp-2'} font-medium leading-snug text-text hover:text-accent"
 				title={r.author ? `${name} — ${r.author}` : name}
-			>{#if tab === 'all' && groupAxis !== 'type'}<span class="me-1 text-micro font-normal text-muted">{KIND_LABEL[kindOf(r)]}</span>{/if}{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
+			>{#if tab === 'all' && groupAxis !== 'type'}<span class="me-1 text-micro font-normal text-muted">{KIND[kindOf(r)].one}</span>{/if}{#if untitled(r)}<span class="font-mono text-small">{r.slug}</span>{:else}{name}{/if}</a>
 			{#if !r.blocked}
 				{@const have = completeness(r)}
 				<!-- The row's own coverage, on the right edge. In Compact the hover
@@ -1474,7 +1456,7 @@
 <!-- The stale mark sits ON the tile's corner, absolutely positioned, so a stale
      cell stays centred in its column instead of being shoved aside by a glyph. -->
 {#snippet staleMark(r: AdminCoverageRow, l: AdminCoverageLanguage, name: string)}
-	{#if STALE_KIND[kindOf(r)] && auth.can('review', 'act', l.code)}
+	{#if KIND[kindOf(r)].stale && auth.can('review', 'act', l.code)}
 		<button
 			type="button"
 			class="{STALE} hover:bg-accent disabled:opacity-50"
