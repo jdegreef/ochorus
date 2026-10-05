@@ -99,6 +99,7 @@ TOPICS = [
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",
+            "revelations-of-divine-love",
         ],
     ),
     (
@@ -180,6 +181,7 @@ TOPICS = [
             "the-everlasting-man",
             "unspoken-sermons",
             "paradise-lost",
+            "revelations-of-divine-love",
         ],
     ),
     (
@@ -290,6 +292,7 @@ TOPICS = [
             "key-teachings-of-julia-foote",
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-corrie-ten-boom",
+            "revelations-of-divine-love",
         ],
     ),
     (
@@ -372,6 +375,7 @@ TOPICS = [
             "key-teachings-of-jeanne-guyon",
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
+            "revelations-of-divine-love",
         ],
     ),
     (
