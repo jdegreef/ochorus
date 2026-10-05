@@ -11637,6 +11637,16 @@
 				478
 			]
 		},
+		"the-practice-of-the-presence-of-god": {
+			"ground": "fcb34844fd46e3ea87c80b2aff90f15f1c5b03cbb383b3cb40db8afbae9b11af",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"the-princess-and-the-goblin": {
 			"ground": "3854b45419aceda3308db4ac758ccb413248ab37ebae1acf17e1f086b1468a70",
 			"style": "young",
