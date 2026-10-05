@@ -6,6 +6,7 @@
 	import { seenOnView } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import { i18n } from '$lib/i18n.svelte';
+	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
 </script>
@@ -63,7 +64,7 @@
 		{@const n = signupNudge.current}
 		<div class="pwa-toast nudge">
 			<span>
-				{t(n.textKey)}
+				{n.n == null ? t(n.textKey) : t(n.textKey).replace('%n%', new Intl.NumberFormat(getLang()).format(n.n))}
 				<a href={n.href} class="nudge-link" use:seenOnView={n.source} onclick={(e) => {
 						// Read before dismissing: `n` is derived from the slot dismiss empties.
 						const source = n.source;

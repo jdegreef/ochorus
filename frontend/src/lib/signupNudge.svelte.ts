@@ -11,8 +11,9 @@ import type { SignupSource } from './signupSource';
 export interface Nudge {
 	/** Once-per-session key, e.g. 'save'. */
 	id: string;
-	/** The sentence. */
+	/** The sentence; `%n%` in it is replaced by `n`. */
 	textKey: string;
+	n?: number;
 	/** The link's words and where it goes (already localized). */
 	linkKey: string;
 	href: string;
