@@ -99,6 +99,7 @@ TOPICS = [
             "key-teachings-of-martyn-lloyd-jones",
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",
+            "key-teachings-of-g-k-chesterton",
         ],
     ),
     (
@@ -449,6 +450,7 @@ TOPICS = [
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
             "key-teachings-of-c-s-lewis",
+            "key-teachings-of-g-k-chesterton",
             "the-everlasting-man",
         ],
     ),

@@ -334,6 +334,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'key-teachings-of-dietrich-bonhoeffer': 'originals',
 	'key-teachings-of-gareth-evans': 'originals',
 	'key-teachings-of-c-s-lewis': 'originals',
+	'key-teachings-of-g-k-chesterton': 'originals',
 	// Portraits of Courage is a series too: volume 1 (Nee, born 1903) wore the
 	// house face by era, so the later volumes are held to it rather than dressed
 	// in the `revival` display face their subjects' 19th-century births would give.

@@ -612,6 +612,30 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#2f4a6e",
     ),
+    # G. K. Chesterton died in 1936. Orthodoxy (1908) and The Everlasting Man
+    # (1925) are public domain and in the library, so — unlike the Lewis
+    # volume — a few short sentences from those two are quoted, each checked
+    # against the library's own text; nothing from his works still in
+    # copyright (1931 on) is quoted, only described.
+    "key-teachings-of-g-k-chesterton": Work(
+        slug="key-teachings-of-g-k-chesterton",
+        title="The Key Teachings of G. K. Chesterton",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="g-k-chesterton",
+        source="g-k-chesterton.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "any society or body devoted to G. K. Chesterton's memory or "
+            "cause. Short quotations from Orthodoxy (1908) and The Everlasting "
+            "Man (1925), both in the public domain and in the Ochorus library, "
+            "are checked against the library's text; his later works are "
+            "described, not quoted, and readers are warmly encouraged to go to "
+            "his books directly. Scripture quotations are from the Authorised "
+            "(King James) Version."
+        ),
+        cover_color="#6e2a2a",
+    ),
 }
 
 

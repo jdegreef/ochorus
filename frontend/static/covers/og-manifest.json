@@ -7213,6 +7213,35 @@
 				376
 			]
 		},
+		"key-teachings-of-g-k-chesterton": {
+			"ground": "0aabda9bdc7d55e885f22b5ebd60c34ceb9bf6bd0bed646f24e23407b0c9016f",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[136, 102, 464, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[62, 225, 538, 288]
+				],
+				"subtitle": [
+					[57, 348, 544, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-gareth-evans": {
 			"ground": "1bcb47a1a9299f9c2e05200e8ffca8ea88e5f9d9955bfe50ea33bd1d8007d734",
 			"style": "originals",
