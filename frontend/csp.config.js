@@ -40,13 +40,14 @@ export const cspDirectives = {
 	'script-src': [
 		'self',
 		'https://plausible.io',
-		// The static app.html theme-boot script. SvelteKit hashes the inline
+		// The static app.html boot script (theme, and holding Chrome's install
+		// offer for $lib/install.svelte.ts). SvelteKit hashes the inline
 		// scripts IT emits (the per-build bootstrap) but NOT a template script, so
 		// its hash is pinned here by hand. Stable (the boot script text is
 		// build-invariant) and guarded by csp.test.ts, which fails the build if
 		// app.html changes and this is not updated — rather than silently blocking
 		// the theme boot in production.
-		'sha256-09riZjqV+qMqm2u4wLZpFS+bZViKzTB/Ga2C+YmfbgE=',
+		'sha256-5TtXu5PDDR7yl+m0/+7p9MGlf7o4AL+5H12qPDoSs3k=',
 		// The chapter reader's early-resume script (src/lib/earlyResume.ts): puts
 		// a returning reader at their paragraph before first paint. Fixed text,
 		// pinned the same way and guarded by csp.test.ts. Matches both chapter routes

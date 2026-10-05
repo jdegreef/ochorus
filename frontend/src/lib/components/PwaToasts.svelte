@@ -2,6 +2,11 @@
 	import { pwa } from '$lib/pwa.svelte';
 	import { storageHealth } from '$lib/storageHealth.svelte';
 	import { undo } from '$lib/undo.svelte';
+	import { page } from '$app/stores';
+	import { install } from '$lib/install.svelte';
+	import { chromeIntentUrl } from '$lib/installPrompt';
+	import { isReaderRoute } from '$lib/readerRoutes';
+	import { readerUi } from '$lib/readerUi.svelte';
 	import { signupNudge } from '$lib/signupNudge.svelte';
 	import { seenOnView } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
@@ -9,6 +14,15 @@
 	import { getLang } from '$lib/lang.svelte';
 
 	const t = i18n.t;
+	// Never over the text being read: the install offer waits for a page that
+	// isn't the reader (see $lib/installPrompt for when it's offered at all).
+	const showInstall = $derived(install.offer && !readerUi.focus && !isReaderRoute($page.route.id));
+	const chromeHref = $derived(
+		showInstall && install.platform === 'inapp-android' ? chromeIntentUrl($page.url.href) : null
+	);
+	$effect(() => {
+		if (showInstall) install.shown();
+	});
 </script>
 
 <!-- Fixed, unobtrusive stack in the bottom-right. Layered above the reader. -->
@@ -77,6 +91,41 @@
 		</div>
 	{/if}
 
+	<!-- Add to home screen (see $lib/install). Native: the browser's own
+	     dialog. iPhone Safari: the two taps. In another app's browser: open
+	     the page in the real browser first. -->
+	{#if showInstall}
+		<div class="pwa-toast install" role="region" aria-label={t('install.title')}>
+			<div class="install-text">
+				<b>{t('install.title')}</b>
+				<span class="text-small text-muted">
+					{install.platform === 'ios'
+						? t('install.iosSteps')
+						: install.platform === 'inapp-android'
+							? t('install.inappAndroid')
+							: install.platform === 'inapp-ios'
+								? t('install.inappIos')
+								: t('install.body')}
+				</span>
+			</div>
+			<div class="install-actions">
+				{#if install.platform === 'native'}
+					<button class="btn btn-sm btn-primary" onclick={() => install.install()}>{t('install.button')}</button>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
+				{:else if chromeHref}
+					<a class="btn btn-sm btn-primary" href={chromeHref} onclick={() => install.later('open_browser')}
+						>{t('install.openChrome')}</a
+					>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
+				{:else}
+					<!-- iPhone steps / open in Safari: nothing to tap here but "done". -->
+					<button class="btn btn-sm btn-primary" onclick={() => install.later('done')}>{t('install.gotIt')}</button>
+					<button class="pwa-link" onclick={() => install.later()}>{t('install.later')}</button>
+				{/if}
+			</div>
+		</div>
+	{/if}
+
 	{#if storageHealth.writeFailed}
 		<div class="pwa-toast" role="alert">
 			<span>{t('storage.saveFailed')}</span>
@@ -133,6 +182,21 @@
 		height: 0.5rem;
 		border-radius: 999px;
 		background: var(--muted);
+	}
+	.install {
+		flex-direction: column;
+		align-items: stretch;
+		max-width: min(22rem, calc(100vw - 2rem));
+	}
+	.install-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15rem;
+	}
+	.install-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
 	}
 	.nudge {
 		max-width: min(24rem, calc(100vw - 2rem));
