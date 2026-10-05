@@ -12,6 +12,7 @@ export const APP_ONLY = [
 	'/account',
 	'/notebook',
 	'/favorites',
+	'/welcome',
 	'/reset-password',
 	'/search'
 ] as const;

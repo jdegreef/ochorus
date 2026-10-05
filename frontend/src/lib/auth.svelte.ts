@@ -325,6 +325,7 @@ class Auth {
 		// the session ends: the auth listener that fires then finds nothing
 		// unsynced, so it can't stash what the reader chose to discard.
 		readingSync.clearOnSignOut();
+		welcome.forgetPage();
 		await (await supabase())?.auth.signOut();
 		this.user = null;
 		this.#token = null;
