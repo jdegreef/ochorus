@@ -535,6 +535,17 @@ advertised-but-unbuilt, so built-but-unadvertised is fine.
   (`seed_books` syncs chapters by order), re-deriving `body_text`/`word_count`.
   Prefer "the devotional accounts say…" + the nearest documented figure over
   deleting a famous story outright.
+  **For a founder-directed WORDING edit (not a factual error),** step (4) can be
+  lighter: a migration that swaps only the changed sentences, verbatim, on
+  es/pt/… rows and leaves `reviewed` alone, so the approver's other wording
+  survives (model: `0188_bonhoeffer_bio_standalone_translations`; check that its
+  pairs applied to `origin/main`'s files reproduce the new files). It holds the
+  pairs inline, so it can ship in the SAME PR. Editing only `bio_html` does not
+  set `source_stale`; only a change to `bio` does (`author_sync`).
+  Watch for **anthology framing** in bios lifted from a multi-subject Original
+  ("in these pages", "the youngest … in this book", "most of the men in this
+  book"). It reads wrongly on a standalone author page, and a request usually
+  names only some of the sentences, so `grep` for book/pages in every edition.
   **If the English fix adds or removes ANY tag** (e.g. `<em>` round a newly
   cited title), (1) and (3) must ship in ONE PR: `tests_bio_markup` demands every
   translation carry the English tag sequence, so the English-only PR goes red
