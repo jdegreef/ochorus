@@ -20,6 +20,8 @@
 		type Measure
 	} from '$lib/readerPrefs.svelte';
 	import { siteFont, SITE_FONTS, type SiteFont } from '$lib/siteFont.svelte';
+	import { palette } from '$lib/palette.svelte';
+	import PalettePicker from '$lib/components/PalettePicker.svelte';
 	import { listen, RATE_MIN, RATE_MAX } from '$lib/listen.svelte';
 	import { readingSync } from '$lib/readingSync';
 	import { SITE_URL } from '$lib/config';
@@ -245,6 +247,7 @@
 		readerPrefs.reset();
 		theme.set('system');
 		siteFont.set('house');
+		palette.set('parchment');
 	}
 
 	// The device's TTS voices load asynchronously; init the store so they populate,
@@ -558,6 +561,17 @@
 					</div>
 				</div>
 
+				<!-- Library colours — a palette over the theme above (which stays the
+				     brightness choice). Swatches, not a segmented row: a colour is
+				     chosen by sight. -->
+				<div class="setting-row stacked">
+					<div class="mb-3">
+						<div class="setting-label">{t('settings.palette')}</div>
+						<div class="setting-sub">{t('settings.paletteSub')}</div>
+					</div>
+					<PalettePicker label={t('settings.palette')} />
+				</div>
+
 				<!-- Site style — the interface's typeface, not the book text's. -->
 				<div class="setting-row">
 					<div>
@@ -738,6 +752,11 @@
 	   segment's label rather than wrapping itself. */
 	.setting-row > .seg {
 		flex-shrink: 0;
+	}
+	/* A row whose control is too wide to sit beside its label (the palette
+	   swatches): label above, control below. */
+	.setting-row.stacked {
+		display: block;
 	}
 	.setting-row:first-of-type {
 		border-top: none;
