@@ -1272,6 +1272,15 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "ink bottle with a dip pen and a cup of tea: the Oxford don who wrote "
         "everything by hand.",
     ),
+    # Drawn 2026-10-05 by the same stand-in SDF ray-marcher as the Lewis volume
+    # (the series' own renderer is not in the repo): the wall in the book's
+    # Highland green, the desk in lamplight. No likeness, nothing of Lewis's.
+    "key-teachings-of-george-macdonald": Original(
+        "5703af8c08002646d680b6f07d0c6edb4da988d66f920fcb7b259238573bc20b",
+        "A brass paraffin lamp with a glass chimney, three old volumes with a "
+        "stoneware jug of heather, and sermon pages with a dip pen: the "
+        "Aberdeenshire minister who preached his sermons on paper.",
+    ),
     # Portraits of Courage, volume 7. The series wears museum paintings through
     # CURATED, but the session that wrote this life could reach no collection
     # host (Commons, Wikidata and the museum APIs were all blocked), so the

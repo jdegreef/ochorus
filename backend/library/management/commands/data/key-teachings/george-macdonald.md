@@ -1,0 +1,1046 @@
+---
+description: A concise, faithful guide to the heart of George MacDonald’s teaching — God as Father, the consuming fire of His love, obedience as the opener of eyes, the child in the midst, prayer, self-denial, the new name, the cry from the cross and the imagination as a servant of truth — weighed plainly where evangelical readers part company with him. Fourteen short chapters, each ending in questions and a prayer, written by Ochorus as an independent companion. His Unspoken Sermons are in the Ochorus library.
+about: |
+  This is a companion to George MacDonald, not a book by him. Written by Ochorus, it sets out in fourteen short chapters the teaching for which MacDonald is chiefly remembered — the Fatherhood of God, the love that burns like fire and will not let sin stand, obedience as the way to knowledge, the childlikeness of God, prayer, the denial of self, the new name God gives to each soul, love of neighbour and enemy, the truth in Jesus, the cry of desolation on the cross, the creation of all things in Christ, the imagination as a servant of truth, death and the life beyond it, and the last farthing. It adds a chapter on his life, a conclusion, and a guide to his books.
+
+  It is important to be clear about what this book is. It is an independent work of exposition, summary and appreciation by Ochorus. MacDonald’s own writings are in the public domain, and where he is quoted the words have been checked against the text of his Unspoken Sermons in the Ochorus library, where every sermon named in these pages can be read in full. Readers are warmly encouraged to go to them directly. Scripture quotations are from the Authorised (King James) Version.
+
+  MacDonald was a man of deep faith and fierce honesty, and he did not hold everything that evangelical Christians hold. This volume says so where it matters — on his hope, which became a conviction, that God’s love would at last redeem every soul; on his rejection of the teaching that Christ bore the punishment of our sins in our place; on his rejection of imputed righteousness; and on his quarrel with the doctrine of adoption — plainly, charitably and without hiding it. He wanted nothing taken on his authority, and he would have wanted every claim tested against the words of Christ.
+
+  The Unspoken Sermons, all three series, are in the Ochorus library, and the last chapter of this book is a guide to them and to his other books.
+---
+
+# Introduction
+
+> Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God. 1 JOHN 3:1
+
+George MacDonald is one of those writers whom many people have met without knowing it. C. S. Lewis called him his master and said that he had hardly written a book in which he did not quote him. G. K. Chesterton said that one of his stories for children had changed his whole way of seeing the world. W. H. Auden, Madeleine L’Engle and a long line of writers of fantasy owe him a debt they have freely confessed. Yet MacDonald himself is now little read. His novels of Scottish life, once enormously popular, are long and old-fashioned; his fairy tales survive mainly in libraries; and his sermons, which he regarded as the heart of his work, are known chiefly through the passages Lewis gathered from them.
+
+That is a loss, because the sermons are extraordinary. MacDonald was a Scottish Congregational minister who lost his only pulpit before he was thirty, and who went on preaching for the rest of his life — in novels, in poems, in stories for children, and in three volumes of sermons that no congregation ever heard. He called them Unspoken Sermons. They are not easy reading. Their sentences are long and their thought is dense, and they were written by a man who would rather say a hard thing truly than an easy thing smoothly. But page after page they ring with a single conviction, held with a passion that is rare in any century: that God is a Father, wholly and only good, and that He will not rest until His children are as good as He is.
+
+## Why he still matters
+
+MacDonald matters, first, because he refused to let anyone make God less good than the best of men. He had grown up among Christians who spoke of God as a stern ruler whose justice had to be satisfied and whose love was reserved for a chosen few, and he found that he could not love such a God or believe that Jesus had revealed Him. He spent his life insisting that the God and Father of our Lord Jesus Christ is exactly like Jesus. Whatever one makes of the conclusions he drew from that conviction, the conviction itself is the heart of the New Testament, and he held it with a fire that warms his readers still.
+
+> He that hath seen me hath seen the Father. JOHN 14:9
+
+He matters, second, because he made obedience the centre of the Christian life. Long before it became a commonplace, he saw that a great deal of religion is talk about God that never becomes doing what God says. He had little patience with arguments about doctrine that left the arguers unchanged, and he returned again and again to the plain question of whether we are doing what Christ told us to do. For MacDonald the way to know Christ is to obey Him, and the way to understand His words is to do them.
+
+> If any man will do his will, he shall know of the doctrine, whether it be of God, or whether I speak of myself. JOHN 7:17
+
+He matters, third, because he believed that the imagination is a gift of God and a servant of truth. He wrote fairy tales not as a holiday from preaching but as another way of preaching, and he saw in the beauty of the world — a primrose, a sunset, the face of a child — a speech of God that could reach places argument could not. Through Lewis and the writers who followed him, that conviction has shaped the way a great many Christians think about story and wonder.
+
+## How this book is arranged
+
+After a chapter on his life, fourteen short chapters set out his teaching. The first group concerns the God he knew: the Father whose child every person is, and the love that is a consuming fire. The second group concerns the life of the disciple: obedience as the opener of eyes, the childlikeness that Jesus set in the midst of His disciples, prayer, the denial of self, the love of neighbour and enemy, and the new name that God gives to each soul. The third group turns to Christ Himself: the truth in Jesus and MacDonald’s account of righteousness, the cry of desolation from the cross, and the creation of all things in Him. The last group looks outward and onward: the imagination as a servant of truth, the God of the living and the hope beyond death, and the last farthing — MacDonald’s teaching on judgement and on the final end of all things. A conclusion follows, and a last chapter on his books and where to start with them.
+
+Each chapter ends with points for reflection and a prayer. MacDonald would have been impatient with any book about God that did not lead its reader to do something, and he would have been more impatient still with one that did not lead its reader to pray. Take the chapters slowly, one at a time, with a Bible open.
+
+## A word about his words
+
+MacDonald’s writings are in the public domain, and the Unspoken Sermons are in the Ochorus library. Where he is quoted in these pages the quotations are short, they are taken from those sermons, and the sermon is named, so that the reader may find the passage and read it in its setting. Much of his thought is set out in our own words, because his sentences are long and his style is not the style of our day. Nothing here can replace the man himself. The best use of this book is as a door into his.
+
+## Where he must be read with care
+
+This is not a book of hero-worship. MacDonald was a man of deep and searching faith, and many evangelical readers have found that he sends them back to the Gospels with fresh eyes. But on several points of real weight he taught what the historic evangelical faith does not, and he taught it openly and with conviction. It is kinder to name these points at the start, and to name them plainly.
+
+First, and most important, MacDonald hoped and in the end taught that God’s love would finally redeem every soul. He believed in hell, and he described it in terrible terms; but he believed that all punishment is for the sake of healing, and that the prison of which Jesus spoke would not open until the last farthing was paid — and would then open. In his sermon Justice he wrote that “no hell will be lacking which would help the just mercy of God to redeem his children.” This is the view usually called Christian universalism. The church has not held it, and evangelical readers will hold, with the plain words of the Lord, that the judgement is final and the punishment of the wicked everlasting. Chapter sixteen weighs this.
+
+Second, he rejected the teaching that Christ, on the cross, bore the punishment due to our sins in our place. In his sermon Righteousness he called the idea of laying the pain upon the righteous in the name of justice simply monstrous. He believed that Christ died to deliver us from sin, not from its penalty, and that God is bound to destroy sin rather than to punish it. Evangelical readers will hold that the substitution of Christ for sinners stands at the very centre of the gospel. Chapters four and eleven weigh this.
+
+Third, and closely joined to the second, he rejected the doctrine that the righteousness of Christ is credited to the believer who trusts in Him. He thought it a legal fiction that would let a man be called good without being made good, and he said so with scorn. Evangelical readers will hold that God justifies the ungodly freely, for Christ’s sake, and that the making good of the believer follows from that justification rather than replacing it. Chapters five and eleven weigh this.
+
+Fourth, he taught that every human being is a child of God by creation, and he spoke harshly of the doctrine of adoption, by which, as the New Testament puts it, believers receive the right to become the sons of God. Chapter three weighs this.
+
+None of these points is raised to diminish him. They are raised because he would have demanded it. He loathed the habit of taking anything on authority, his own included, and he insisted that every teacher, however good, must be tested against the words of Christ. It should be said, too, that C. S. Lewis, who loved him more than any other writer, did not follow him on the first of these points, and this book will say so where it matters.
+
+> Prove all things; hold fast that which is good. 1 THESSALONIANS 5:21
+
+Where MacDonald is faithful — on the goodness of God, on the holiness God demands, on obedience, on prayer, on the denial of self, on the beauty of Christ — receive it gladly; there are few writers who say these things so well. Where he goes beyond what is written, or against it, mark it and test it by Scripture. He would not have wanted you to follow him. He would have wanted you to follow Christ, and to do what He says.
+
+### FOR REFLECTION AND ACTION
+
+1. When you think of God, what face do you see? Is it the face of Jesus? Write down honestly what you believe God is like.
+2. MacDonald asked whether we are doing what Christ told us. Think of one plain command of Christ that you have not been obeying.
+3. Decide how you will read: one chapter a day or a week, with a Bible open and a few minutes of quiet after each prayer.
+4. Read MacDonald’s sermon The Child in the Midst, the first of the Unspoken Sermons in the Ochorus library, alongside the first chapters of this book.
+5. Ask God for a heart that will receive what is true in any teacher and test everything by His Word.
+
+### A PRAYER
+
+> Father in heaven, You have shown us Your face in the face of Jesus Christ, and there is no darkness in You at all.
+> Thank You for the servants You have given Your church, who have helped Your children to see how good You are.
+> As I read about one of them, keep me from admiring him and forgetting You. Where he was faithful, teach me through him; where he erred, keep me in Your truth.
+> Make me a doer of Your word and not a hearer only, for the sake of Jesus Christ my Lord. Amen.
+
+# From Huntly to Bordighera
+
+> For here have we no continuing city, but we seek one to come. HEBREWS 13:14
+
+A boy from Huntly. George MacDonald was born on the tenth of December, 1824, in Huntly, a small market town in Aberdeenshire, in the north-east of Scotland. His family were farmers and weavers who ran a bleaching business and a mill. His mother died when he was eight, and he was brought up by his father, also named George, a man of great patience, humour and quiet goodness. The son never forgot him. Many readers have seen that father behind the wise and gentle fathers who fill MacDonald’s novels, and behind the way he would later speak of God. A man who has known a good father, he believed, has been given a picture, however faint, of the Father of all.
+
+A hard religion. The faith of his boyhood was the strict Calvinism of the Congregational chapel in Huntly, and the boy took it seriously — so seriously that it troubled him. He was taught that God had chosen some for eternal life and passed the rest by, and he could not make himself believe that a God who did such a thing was good. Nor could he stop wanting God. The struggle between the God he was taught and the God his heart longed for would shape everything he wrote. He would spend his life arguing, against the theology of his childhood, that the true God is better than the best that any child can imagine.
+
+> Like as a father pitieth his children, so the Lord pitieth them that fear him. PSALM 103:13
+
+Aberdeen and London. In 1840 he went to King’s College, Aberdeen, where he studied chemistry and natural philosophy and took his degree in 1845. He went south to London and worked for a time as a tutor in a family, and in 1848 he entered Highbury College, a Congregational seminary, to train for the ministry. There he read widely, wrote poetry, and fell in love with Louisa Powell, the daughter of a London leather merchant. He also began to read the German Romantic writers, Novalis above all, whose dreamlike stories and sense of the sacredness of nature would leave their mark on his own.
+
+Arundel. In 1850 he was called as minister of Trinity Congregational Church in Arundel, in Sussex, and in 1851 he married Louisa. Their marriage would last more than fifty years, and they would have eleven children, six sons and five daughters. Arundel did not go well. Within two years some of the leading members of the congregation had accused their young minister of heresy. He had suggested from the pulpit that the heathen who never heard the gospel might have an opportunity after death, and he was said to be tainted with German theology. The deacons did not dismiss him; they cut his salary, hoping he would leave. MacDonald replied that this was bad news, but that he supposed he must try to live on less, and for a while he did, helped by gifts of food from the poorer members of the church, who did not share their deacons’ views. In May 1853 he resigned. He never held a pastorate again.
+
+> Take no thought for your life, what ye shall eat, or what ye shall drink; nor yet for your body, what ye shall put on. Is not the life more than meat, and the body than raiment? MATTHEW 6:25
+
+Want and sickness. The years that followed were years of real poverty. The family moved to Manchester, where MacDonald preached to small groups who gathered to hear him, gave lectures and took pupils. He had tuberculosis, the disease that would take several of his children, and there were long seasons when he could do nothing but lie still. Again and again the family’s needs were met, often at the last moment, in ways they could only receive as answers to prayer. Among their helpers was Lady Byron, the poet’s widow, who sought MacDonald out after reading his long dramatic poem Within and Without in 1855, became his friend and patron, and paid for a winter in Algiers that restored his health for a time.
+
+The pen. Shut out of the pulpit, MacDonald turned to writing. In 1858 he published Phantastes, a faerie romance for men and women, in which a young man named Anodos wanders through a dreamlike Fairy Land, meets his own shadow, and learns at last that it is better to love than to be loved. It sold poorly. To support his family he began to write novels of Scottish life — David Elginbrod in 1863, Alec Forbes of Howglen in 1865, Robert Falconer in 1868, and many more — full of crofters, schoolmasters, ministers and plain people who find their way out of a hard religion into the love of God. They made his name. For the rest of his life he wrote steadily, more than fifty books in all, and he lectured on English literature, for a time as a professor at Bedford College in London.
+
+Stories for children. MacDonald also wrote for children, and it is for these books that many people know him best. At the Back of the North Wind, published as a book in 1871, tells of a poor London cab-driver’s son named Diamond and the mysterious lady who carries him through the night. The Princess and the Goblin, in 1872, gave the world the princess Irene, the miner’s boy Curdie, and the great-great-grandmother who spins in the attic, whose invisible thread leads a frightened child safely home through the dark. Short fairy tales such as The Light Princess and The Golden Key followed. Among the friends of the family was a young Oxford mathematician named Charles Dodgson, who brought the MacDonalds the manuscript of a story he had written for a little girl named Alice. Louisa read it aloud to the children, and their delight persuaded him to publish it.
+
+> And Jesus called a little child unto him, and set him in the midst of them. MATTHEW 18:2
+
+The unspoken sermons. All the while MacDonald went on preaching wherever he was asked, often in Congregational and Anglican pulpits alike, and writing sermons that no congregation heard. The first series of Unspoken Sermons appeared in 1867, the second in 1885 and the third in 1889. In them he spoke most directly about the things that mattered most to him: that God is our Father and we are truly His children; that obedience, not opinion, is the way to know Him; and that God’s love is not soft but fierce, a fire that will burn away everything in us that is not good.
+
+The family on the road. The MacDonalds were a large, warm and theatrical household. Louisa adapted The Pilgrim’s Progress for the stage, and for years the family performed it together in drawing rooms and halls across England, with MacDonald himself playing Mr Greatheart. In 1872 he was invited to lecture in the United States, and for the better part of a year he travelled from city to city, speaking to large audiences on Burns, Shakespeare and the poets. In 1877 Queen Victoria granted him a small pension from the Civil List, which eased at last the long strain on the family purse.
+
+Sorrow. The pension came just before the hardest years. Their daughter Mary Josephine died of tuberculosis in 1878, and their son Maurice the next year. Grace died in 1884, and Lilia, the eldest, who had nursed so many of the others, in 1891. In 1880, in the midst of these losses, MacDonald printed privately A Book of Strife in the Form of the Diary of an Old Soul: a short poem of prayer for every day of the year, with a blank page beside each one for the reader’s own prayers. It is one long conversation with God, written by a man in grief and sickness, bringing his doubts, his weariness and his longing straight to his Father.
+
+> Though he slay me, yet will I trust in him. JOB 13:15
+
+The House of Courage. For the sake of the family’s lungs the MacDonalds had begun to spend their winters on the Italian Riviera, and around Christmas 1880 they moved into a large house at Bordighera that friends had helped them to build. They called it Casa Coraggio, the House of Courage. It became a gathering place for the English community there, with readings, music, worship and plays, and MacDonald preached to whoever would come. Much of his later work was written there.
+
+The long silence. MacDonald’s last major book, Lilith, appeared in 1895. It is a strange, dark dream of death and resurrection, in which even the most rebellious soul is at last brought to lie down and sleep in hope. After it he wrote little. A stroke took his speech, and he spent his last years almost entirely silent, cared for by his family. Louisa died in January 1902. MacDonald lived three more years, and died on the eighteenth of September, 1905, at Ashtead in Surrey. His ashes were buried in the English cemetery at Bordighera, beside Louisa and their daughters Lilia and Grace.
+
+What kind of man. Those who knew him describe a tall, bearded, gentle man with deep-set eyes, a soft Scots voice and a great capacity for delight. He was poor most of his life and never seemed to mind it. He buried four of his children and wrote, in the years of their deaths, some of the most hopeful words he ever wrote. He was suspected of heresy by many in the churches he had grown up in, and he did not answer them with bitterness. He prayed constantly, read the Gospels with a rare attention, and seems to have been, by the testimony of those closest to him, very much the man his books describe: one who trusted his Father in heaven for everything, and who tried, in all he did, to do what Jesus said.
+
+> In my Father’s house are many mansions: if it were not so, I would have told you. I go to prepare a place for you. JOHN 14:2
+
+### FOR REFLECTION AND ACTION
+
+1. MacDonald’s picture of God was shaped by a good earthly father. How has your own father, or the lack of one, shaped your picture of God? Bring it honestly to Him.
+2. He lost his only pulpit and spent the rest of his life serving God in other ways. Is there a closed door in your life through which God may be leading you somewhere else?
+3. His family’s needs were met again and again in their poverty. Thank God for a time when He provided for you, and trust Him with a present need.
+4. He buried four of his children and kept praying. Think of someone you know who is grieving, and pray for that person by name.
+5. Read Matthew 6:25–34. Ask God to give you the simple trust that MacDonald learned in want.
+
+### A PRAYER
+
+> Father, You were caring for George MacDonald in the town where he was born, in the pulpit he lost, in the years of want and in the house of his grief.
+> Thank You for the good fathers You give, who show us something of Your face; and where my father failed me, show me Yourself.
+> When doors close, lead me on. When I am poor, feed me. When I mourn, keep me trusting You.
+> Bring me at last, with all who love You, into the many mansions of Your house, through Jesus Christ my Lord. Amen.
+
+# Our Father
+
+> For ye have not received the spirit of bondage again to fear; but ye have received the Spirit of adoption, whereby we cry, Abba, Father. ROMANS 8:15
+
+If one word could stand for the whole of MacDonald’s teaching, it would be the word Father. He believed that the deepest truth about God is that He is a Father, and that the deepest truth about every human being is that he is God’s child. Nearly everything else he taught grows out of that root. His sermon on the cry of Romans 8:15 opens with a sentence that sums up his life’s work: “The hardest, gladdest thing in the world is, to cry Father! from a full heart.” He wrote, he said, to help whoever he could to call upon the Father in that way.
+
+## A Father, not a sovereign only
+
+MacDonald grew up among Christians who spoke much of God as King, Judge and Lawgiver, and he did not deny that God is all of these. But he believed that a great deal of popular theology had put the King in front of the Father, so that the God men worshipped was a ruler first, who might choose to be a father to some, rather than a Father first, whose rule is the rule of love. He thought this got the order of things backwards. In his sermon Abba, Father! he put it as strongly as he could: “The refusal to look up to God as our Father is the one central wrong in the whole human affair; the inability, the one central misery.”
+
+> Our Father which art in heaven, Hallowed be thy name. MATTHEW 6:9
+
+For MacDonald, the proof that God is Father was Jesus. The Son came to show us the Father, and everything Jesus was — His tenderness to sinners, His anger at hypocrisy, His patience with slow disciples, His welcome to children — was a window into the heart of God. MacDonald never tired of saying that God is just like Jesus. Whatever we believe about God that would not fit the face of Christ, he thought, we had better stop believing.
+
+## What a Father wants
+
+But a father, as MacDonald understood the word, is not an indulgent old man who wants his children to have a pleasant time. A true father wants his children to be good, and he will go to any lengths to make them so. This is where MacDonald’s teaching about the Fatherhood of God becomes searching rather than merely comforting. Because God is our Father, He will not be satisfied with anything less than our holiness. He will not leave His children in their selfishness, their lies or their pride. He will discipline them, pursue them, strip them, and bring them through fire, because He loves them too much to leave them as they are.
+
+> For whom the Lord loveth he chasteneth, and scourgeth every son whom he receiveth. HEBREWS 12:6
+
+The child’s part, then, is trust and obedience. MacDonald thought the whole of religion could be gathered into the relationship of a child to a good father: to look to him for everything, to do what he says, to believe that what he asks is good even when it is hard, and to go to him at once when one has done wrong. A child who trusts his father does not need to understand everything his father does. He needs to know his father.
+
+## Into Thy hands
+
+MacDonald found the deepest picture of this trust in the last words of Jesus on the cross, as Luke records them: Father, into Thy hands I commend My spirit. In his sermon The Hands of the Father he called this the summing up of the whole life of Jesus, who had been giving Himself back to the Father every day He lived. And he drew from it a lesson for every believer: “Every highest human act is just a giving back to God of that which he first gave to us.” Worship, obedience, sacrifice and death itself are all, at their best, the same act — the child placing himself in the hands of the Father who made him.
+
+> And when Jesus had cried with a loud voice, he said, Father, into thy hands I commend my spirit: and having said thus, he gave up the ghost. LUKE 23:46
+
+He urged his readers to make that prayer their own, not only at the hour of death but every day: in the morning when the day’s work lies ahead, at night when its failures are behind, in sickness and in fear. A life lived in that prayer, he believed, is a life that cannot finally be lost.
+
+## Weighing it
+
+MacDonald’s teaching on the Fatherhood of God is one of the great gifts of his work, and much of it is simply the teaching of Jesus. The Lord taught His disciples to say Our Father, and He spoke of God as the Father who sees in secret, who knows what we need before we ask, who clothes the lilies and feeds the sparrows, and who runs to meet the prodigal on the road. MacDonald’s insistence that God is like Jesus has helped many readers whose picture of God had been darkened by fear.
+
+There is one point at which evangelical readers will part company with him, and he made it a point of argument. MacDonald held that every human being is God’s child by creation, and that sin, however it defaces the image of God, cannot undo that fact. In the same sermon he therefore attacked the doctrine of adoption, by which, as the Reformers and evangelicals have taught, sinners are taken into God’s family through faith in Christ. He called it a cold wind blowing at the very gate of heaven, and an evil doctrine that had darkened his childhood, and he argued that the word Paul uses should be read as the full placing of sons — the redemption of the body — rather than as adoption.
+
+There is truth in what he saw. Scripture does speak of all people as God’s offspring, made in His image, and it does speak of the sonship that will be revealed at the resurrection. But the New Testament also speaks plainly of a sonship that is given, not possessed by nature, and given to those who receive Christ. Jesus told some who were proud of their descent that they were not the children of God but of the devil. John says that to those who received Him He gave the right to become the sons of God. Paul says that God sent His Son to redeem those under the law, that we might receive the adoption of sons. To be a creature made in God’s image is a great dignity; to be His child in the full sense of the gospel is a gift of grace through faith.
+
+> But as many as received him, to them gave he power to become the sons of God, even to them that believe on his name. JOHN 1:12
+
+> But when the fulness of the time was come, God sent forth his Son, made of a woman, made under the law, to redeem them that were under the law, that we might receive the adoption of sons. GALATIANS 4:4–5
+
+Read with that in mind, MacDonald’s passion for the Fatherhood of God can do the reader much good. The doctrine of adoption, rightly taught, is not a cold legal arrangement; it is the warmest word in the New Testament, the Father running to meet His child. MacDonald feared that the word had been made cold. The answer is not to give up the word but to let it be as warm as Scripture makes it.
+
+### FOR REFLECTION AND ACTION
+
+1. When you pray, whom do you picture — a distant ruler, a stern judge, or a Father? Read Luke 15:11–24 and let the father in the story correct your picture.
+2. Is there anything you believe about God that would not fit the face of Jesus? Bring it to the Gospels and test it.
+3. Think of a hard thing in your life. Could your Father be using it to make you good? Ask Him to show you.
+4. Pray Luke 23:46 at the beginning and end of each day this week, giving yourself back into the Father’s hands.
+5. Read John 1:12 and Galatians 4:4–7, and give thanks that through Christ you have received the right to call God Father.
+
+### A PRAYER
+
+> Father, the hardest and gladdest thing in the world is to cry Father from a full heart. Give me that heart.
+> Forgive me for the times I have thought of You as less good than Jesus, and for the fear that has kept me from running to You.
+> Thank You that through Your Son You have given me the right to be called Your child, and have sent the Spirit of Your Son into my heart.
+> Into Your hands I commend my spirit, today and every day, until You bring me home. Amen.
+
+# The Consuming Fire
+
+> Wherefore we receiving a kingdom which cannot be moved, let us have grace, whereby we may serve God acceptably with reverence and godly fear: for our God is a consuming fire. HEBREWS 12:28–29
+
+The second sermon of MacDonald’s first series takes its title from the last verse of Hebrews 12, and its first sentence is one of the most famous he ever wrote: “Nothing is inexorable but love.” It sounds at first like a paradox. We think of love as the soft thing, the yielding thing, the thing that gives way; and we think of fire as the hard thing, the destroying thing, the thing to be afraid of. MacDonald’s whole sermon is an argument that the two are one. God is love, and God is a consuming fire, and these are not two truths about Him but one.
+
+## A love that will not yield
+
+What MacDonald meant was this. Love that will give way to anything is not perfect love. A father who lets his child do whatever the child likes, because he cannot bear to see him unhappy, does not love him enough. Real love wants the real good of the one it loves, and it will not rest until that good is reached. In the sermon’s words, “love loves unto purity.” It has always in view the full beauty of the one it loves, and where that beauty is spoiled, it spends itself to restore it. That is why love can never make peace with evil in the beloved. It will burn against the evil, not because it hates the person, but because it loves him.
+
+> Charity suffereth long, and is kind. 1 CORINTHIANS 13:4
+
+So God’s holiness, which the Israelites saw as fire on the mountain, is not something in God opposed to His love. It is His love in its purity, refusing to let sin stand. MacDonald put it in one sentence that captures his whole view: the fire of God burns against evil, and “It is not that the fire will burn us if we do not worship thus; but that the fire will burn us until we worship thus.” The fire is not a threat held over us. It is a purifying presence that will not leave us until everything in us that cannot bear it has been burned away.
+
+## The fire on the mountain
+
+MacDonald did not dismiss the terror of the Old Testament as a mistake. When God appeared on Sinai in fire and smoke, he said, He was revealing something true about Himself. A people who had just been worshipping a golden calf did well to be afraid. Fear of a holy God, he argued, is far better than no fear at all, and better than the worship of a god made with hands. But the fire on the mountain was a partial revelation, suited to a people who could not yet receive more. The fuller revelation came in Jesus, in whom the same fire burns, but whose face shows us what the fire is for.
+
+> And the sight of the glory of the Lord was like devouring fire on the top of the mount in the eyes of the children of Israel. EXODUS 24:17
+
+He would not let anyone pretend that God puts on a show of terror to frighten people into obedience. “He will not put on a mask. He puts on a face.” If God appeared in fire, then there is something in God that fire truly shows. What it shows is a holiness so pure that nothing impure can stand before it.
+
+## To love our brother
+
+The last verses of Hebrews 12 run straight on into the first verse of Hebrews 13: Let brotherly love continue. MacDonald saw in this a clue to the meaning of the whole passage. How do we serve the consuming fire acceptably? By loving one another. The worship God wants is not a nervous attempt to avoid His wrath, but a life that shares His love. “To love our brother is to worship the Consuming Fire.”
+
+> Let brotherly love continue. HEBREWS 13:1
+
+This is the practical heart of the sermon. A person who fears God rightly, MacDonald said, flees not from God but from himself, and runs to God, afraid of nothing so much as doing wrong to Him or to his neighbour.
+
+## Weighing it
+
+There is much here that evangelical readers can receive with gratitude. MacDonald was right that the holiness of God is not opposed to His love, and right that God’s love is not soft. The God of the Bible does pursue His children with a love that will not let them go, and He does discipline them for their good, that they may share His holiness. Few writers have made the reader feel so strongly that sin is not a small thing to a holy God.
+
+Two cautions must be added, and the second is serious. The first is that MacDonald so identified the fire of God with purifying love that he left little room for the wrath of God as Scripture describes it — a settled, holy opposition to sin that is just in itself, and not only a means of making sinners better. The New Testament speaks of a day of wrath and of the righteous judgement of God, of vengeance on those who do not obey the gospel, and of everlasting destruction from the presence of the Lord. These are not the words of a fire that only refines.
+
+> For the wrath of God is revealed from heaven against all ungodliness and unrighteousness of men, who hold the truth in unrighteousness. ROMANS 1:18
+
+> Who shall be punished with everlasting destruction from the presence of the Lord, and from the glory of his power. 2 THESSALONIANS 1:9
+
+The second follows from the first. Because MacDonald believed that all of God’s dealings with sin are remedial, he believed that the fire would burn every soul until it was pure — that is, that every soul would at last be saved. And because he believed that God is bound to destroy sin rather than to punish it, he rejected the teaching that Christ bore the punishment of sin in our place; in this very sermon he set the self-giving of the Son against the idea of a sacrifice offered to satisfy God’s justice. Both convictions are weighed more fully in chapters eleven and sixteen. Here it is enough to say that Scripture holds together what MacDonald pulled apart: the God who is a consuming fire is the God who set forth His Son to be a propitiation, so that He might be just and the justifier of him that believes in Jesus.
+
+> Whom God hath set forth to be a propitiation through faith in his blood, to declare his righteousness for the remission of sins that are past, through the forbearance of God. ROMANS 3:25
+
+### FOR REFLECTION AND ACTION
+
+1. Have you thought of God’s love as soft? Read Hebrews 12:5–11 and consider the love that disciplines.
+2. Is there a sin in your life that you have hoped God would leave alone? Ask Him to burn it away.
+3. MacDonald said that to love our brother is to worship the consuming fire. Whom do you find hardest to love? Do one act of love for that person this week.
+4. Read Exodus 19:16–20 and Hebrews 12:18–29 together. Notice both the terror and the grace.
+5. Give thanks that the fire of God’s holiness fell on Christ at the cross, so that those who trust in Him may draw near.
+
+### A PRAYER
+
+> Holy God, You are a consuming fire, and You are love.
+> Burn away everything in me that cannot stand in Your presence — my pride, my lies, my selfishness, my secret sins.
+> Thank You that Your Son bore the fire of Your judgement for me, so that I may come near to You without fear.
+> Let me serve You with reverence and godly fear, and let me show that fear by loving my brother, through Jesus Christ my Lord. Amen.
+
+# Obedience, the Opener of Eyes
+
+> If ye love me, keep my commandments. JOHN 14:15
+
+If MacDonald had a single practical message, it was this: do what Jesus says. He said it in many ways and in almost every sermon, and he said it with an urgency that can be startling. In his sermon The Way, on the rich young man who asked what good thing he should do to have eternal life, he summed it up in five words that have become one of his best-known sayings: “Obedience is the opener of eyes.”
+
+## Doing before understanding
+
+MacDonald noticed that the Gospels are full of people who wanted to understand Jesus before they would obey Him, and that Jesus almost never let them. When the young man came asking about eternal life, Jesus did not give him a lecture on doctrine. He gave him something to do: go, sell what you have, give to the poor, and come, follow Me. MacDonald thought that if the young man had obeyed, he would have understood far more than any explanation could have taught him. The light comes to those who walk in it.
+
+> Then Jesus beholding him loved him, and said unto him, One thing thou lackest: go thy way, sell whatsoever thou hast, and give to the poor, and thou shalt have treasure in heaven: and come, take up the cross, and follow me. MARK 10:21
+
+He said the same thing in his sermon on the disciples’ failure to understand the warning about the leaven of the Pharisees, which he called The Cause of Spiritual Stupidity. “It is to the man who is trying to live, to the man who is obedient to the word of the Master, that the word of the Master unfolds itself.” The meaning of Christ’s words is not hidden from the clever and revealed to the simple by some arbitrary rule. It is hidden from those who will not do them, because only doing them can open their meaning.
+
+## Get up and do something
+
+MacDonald was impatient with Christians who spent their lives examining their own feelings, wondering whether they really believed, or arguing about how salvation works, while never doing the plain things Christ commanded. In his sermon The Truth in Jesus he imagined such a person protesting that he did not know how to wake up and rise from the dead. His answer was blunt: “Get up, and do something the master tells you; so make yourself his disciple at once.” And he added a test that searches every reader: instead of asking whether you believe, ask whether you have this day done one thing because He said, Do it, or once abstained because He said, Do not do it.
+
+> And why call ye me, Lord, Lord, and do not the things which I say? LUKE 6:46
+
+He was just as hard on the churches. He thought that much of what passes for Christianity is a substitute for obedience — a busy round of opinions, controversies and religious activities that leaves the plain commands of Christ untouched. In The Word of Jesus on Prayer he lamented that many eat and drink and talk and teach in Christ’s presence, but few do the things He says to them; and he concluded that obedience is the one key of life.
+
+## The hardness of the way
+
+MacDonald did not pretend that obedience was easy. He followed the story of the rich young man into its sequel, where Jesus told His disciples how hard it is for those who trust in riches to enter the kingdom. In The Hardness of the Way he applied the warning not only to the rich but to everyone whose heart is held by things: “But it is not the rich man only who is under the dominion of things; they too are slaves who, having no money, are unhappy from the lack of it.” Whatever holds us back from following Christ must be let go, and letting go is hard. But it is the only way into life.
+
+> Children, how hard is it for them that trust in riches to enter into the kingdom of God! MARK 10:24
+
+## Faith as obedience
+
+For MacDonald, faith and obedience were not two things but one. To believe in Christ is to trust Him enough to do what He says. In The Truth in Jesus he asked what faith in Christ is, and answered: the leaving of our own way, our objects and our self, and the taking of His way and Himself, “and doing as he tells you.” A faith that does nothing, he thought, is not faith at all. It is an opinion about Christ, and Christ did not die to give us opinions.
+
+## Weighing it
+
+MacDonald’s call to obedience is a bracing and needed word. Jesus did say that those who love Him keep His commandments, that the wise man is the one who hears His sayings and does them, and that not everyone who calls Him Lord will enter the kingdom, but he that does the will of His Father. James says that faith without works is dead. A great many believers have been helped by MacDonald to stop analysing their faith and start living it.
+
+> Therefore whosoever heareth these sayings of mine, and doeth them, I will liken him unto a wise man, which built his house upon a rock. MATTHEW 7:24
+
+But a caution is needed, and it is an important one. MacDonald so closely identified faith with obedience that he left little room for the free justification of the sinner by grace through faith alone. In the same sermon in which he defined faith as doing what Christ says, he listed among the things we must stop trusting in the atonement itself. Elsewhere, as chapter eleven shows, he scorned the teaching that Christ’s righteousness is credited to the believer. The New Testament holds that the sinner is accepted by God not because of his obedience but because of Christ’s, received by faith; and that obedience is the fruit of that acceptance, not its ground. A believer who is taught only that he must obey may be left anxious and striving, never sure whether he has obeyed enough. The gospel says that Christ has obeyed for us, and that we obey because we are loved.
+
+> But to him that worketh not, but believeth on him that justifieth the ungodly, his faith is counted for righteousness. ROMANS 4:5
+
+> For by grace are ye saved through faith; and that not of yourselves: it is the gift of God: not of works, lest any man should boast. For we are his workmanship, created in Christ Jesus unto good works. EPHESIANS 2:8–10
+
+Read on that foundation, MacDonald’s summons to obedience is exactly what many comfortable Christians need to hear. Grace is not an excuse for disobedience; it is the power for obedience. And it remains true, as MacDonald saw, that the way to understand Christ better is to do what He has already told us.
+
+### FOR REFLECTION AND ACTION
+
+1. Have you this day done one thing because Christ said, Do it, or once abstained because He said, Do not do it? Answer honestly.
+2. Is there a plain command of Christ that you have been putting off until you understand it better? Obey it this week, and see what you learn.
+3. What things hold your heart? Read Mark 10:17–27 and ask what Christ might be asking you to let go.
+4. Read Matthew 7:21–27. Consider whether your faith is built on hearing or on doing.
+5. Read Romans 5:1–11 and give thanks that your acceptance with God rests on Christ’s obedience, not your own.
+
+### A PRAYER
+
+> Lord Jesus, You have told me what to do, and I have so often asked for explanations instead.
+> Forgive me for calling You Lord and not doing what You say. Forgive me for the things I love more than You.
+> Thank You that You obeyed the Father perfectly for me, and that I am accepted in You.
+> Now give me grace to get up and do something You have told me, today, and open my eyes as I obey. Amen.
+
+# The Child in the Midst
+
+> And he took a child, and set him in the midst of them: and when he had taken him in his arms, he said unto them, Whosoever shall receive one of such children in my name, receiveth me: and whosoever shall receive me, receiveth not me, but him that sent me. MARK 9:36–37
+
+MacDonald chose to open his first series of Unspoken Sermons with the moment when Jesus took a child in His arms and set him in the midst of His quarrelling disciples. They had been arguing on the road about which of them would be the greatest. Jesus answered not with an argument but with a child. MacDonald thought this one of the most important things Jesus ever did, and he drew from it a teaching that runs through all his work: that childlikeness is not only what God asks of us, but something that belongs to God Himself.
+
+## Receiving the child
+
+MacDonald began with the plain sense of the words. To receive a child in the name of Jesus is to receive Jesus; and to receive Jesus is to receive the Father who sent Him. He spelled out the chain: “to receive a child in the name of Jesus is to receive Jesus; to receive Jesus is to receive God; therefore to receive the child is to receive God himself.” He believed that Jesus meant this quite seriously. The child was not merely an illustration of humility. The child was a revelation of something in the heart of God.
+
+> Verily I say unto you, Except ye be converted, and become as little children, ye shall not enter into the kingdom of heaven. MATTHEW 18:3
+
+He was careful to say that he did not mean every child is good. Children can be selfish, cruel and worldly, and he said frankly that there are children who are not childlike. What Jesus set in the midst was childhood as God meant it: trust, openness, dependence, readiness to learn, freedom from the need to be great. That, MacDonald said, is what must be found in us if we are to enter the kingdom.
+
+## The childlike God
+
+Then MacDonald made his boldest claim. If the child reveals something of God, then childlikeness must belong to God’s own nature. The Son of God, he argued, did not cease to be childlike when He grew up, and He did not become childlike only when He became man. The Son, he wrote, “was, is, and ever shall be divinely childlike.” The eternal Son lives in perfect trust and obedience towards the Father, and that trust and obedience is what we see, in a small and imperfect way, in a good child. “Childhood belongs to the divine nature.”
+
+He drew from this a conclusion about the dignity of service. We tend to think that to rule is higher than to obey, and to command higher than to serve. MacDonald said that in God it is not so. The Father commands and the Son obeys, and both are equally divine. “Obedience, then, is as divine as Will, Service as divine as Rule.” The disciples arguing about greatness had it all upside down. In the kingdom of God the greatest is the one who serves, because that is what God Himself, in the Son, is like.
+
+> For even the Son of man came not to be ministered unto, but to minister, and to give his life a ransom for many. MARK 10:45
+
+## Children of a Father
+
+The sermon ends with the Lord’s Prayer. Because God is the Father of the childlike Son, MacDonald said, we may come to Him as children, unworthy as we are, and call Him Our Father. Our childhood is born of His Fatherhood. The child does not need to be great, or wise, or good enough, to run to his father. He needs only to know that he is his father’s child.
+
+MacDonald spent much of his life writing for children, and he said elsewhere that he wrote not for children only but for the childlike, of whatever age. This sermon shows why. He believed that the childlike heart sees what the clever mind misses: that the world is God’s, that God is good, and that the right response to Him is trust.
+
+## Weighing it
+
+The Child in the Midst is one of MacDonald’s loveliest sermons, and most of what it says is the plain teaching of Jesus. The Lord did set a child in the midst, did say that we must become as little children, and did say that whoever receives a child in His name receives Him. MacDonald’s reflection on the humility of the Son, who came not to be served but to serve, is deeply scriptural, and it echoes Paul’s great hymn of the Son who made Himself of no reputation and took upon Him the form of a servant.
+
+> Let this mind be in you, which was also in Christ Jesus: who, being in the form of God, thought it not robbery to be equal with God: but made himself of no reputation, and took upon him the form of a servant. PHILIPPIANS 2:5–7
+
+Readers should note that some of MacDonald’s language about the childlikeness of God is his own reflection rather than the direct teaching of Scripture, and it should be held more lightly than the words of Christ on which it rests. The obedience of the Son to the Father is real and eternal, but it is the obedience of one who is equal with the Father, and the church has always guarded that equality carefully. MacDonald affirmed it, and his reader should keep it in view. With that said, the sermon is a fine meditation on the humility of Christ and on the trust He asks of His disciples.
+
+### FOR REFLECTION AND ACTION
+
+1. Where in your life are you arguing, like the disciples, about who is greatest? Lay it down before the child in the midst.
+2. Think of a child you know. What does that child’s trust and openness teach you about the way you should come to God?
+3. Is there a form of service you have thought beneath you? Do it this week, gladly, as Christ served.
+4. Read Mark 9:33–37 and Matthew 18:1–6, and ask God to make you childlike.
+5. Pray the Lord’s Prayer slowly, as a child speaking to a Father.
+
+### A PRAYER
+
+> Lord Jesus, You took a child in Your arms and set him in the midst of Your proud disciples. Set him in the midst of me.
+> Forgive me for wanting to be great, and for despising the small and the weak.
+> Make me childlike: trusting, teachable, glad to obey, and free from the need to be first.
+> Teach me to serve as You served, and to come to Your Father as my Father, through Your name. Amen.
+
+# Men Ought Always to Pray
+
+> And he spake a parable unto them to this end, that men ought always to pray, and not to faint. LUKE 18:1
+
+MacDonald wrote two sermons on a single verse, the one that introduces the parable of the unjust judge and the widow who would not stop asking. The first, The Word of Jesus on Prayer, takes the first half of the verse: men ought always to pray. The second, Man’s Difficulty Concerning Prayer, takes the second: and not to faint. Together they are among the most practical things he wrote, and he began the first with a warning to his readers not to treat them as theory: “if prayer be anything at all, it is a thing to be done: what matter whether you agree with me or not, if you do not pray?”
+
+## The parable
+
+MacDonald read the parable as an argument from the lesser to the greater. If an unrighteous judge, who cared nothing for the widow and feared neither God nor man, would give her justice at last simply to be rid of her, how much more will God, who loves His children and has made them to call upon Him, hear them when they cry? Jesus told the story, MacDonald noticed, because He knew how prayer often looks to those who pray. It looks as though God is not listening. The parable does not deny the appearance; it tells us not to go by it. MacDonald put its message in a run of short sentences: “It looks as if he did not hear you: never mind; he does; it must be that he does; go on as the woman did; you too will be heard.”
+
+> And shall not God avenge his own elect, which cry day and night unto him, though he bear long with them? LUKE 18:7
+
+He was moved by the sigh at the end of the parable, when Jesus asks whether the Son of Man, when He comes, will find faith on the earth. He took it to mean that the Lord knew how slow His children would be to trust their Father, and how long the Father would have to wait for them to believe that He was hearing them all along.
+
+## Why ask at all?
+
+The obvious objection, MacDonald knew, is this: if God is as good as Christians say, and knows all that we need better than we do, why should we need to ask Him for anything? His answer is the centre of his teaching on prayer, and it is worth reading in his own words. “What if he knows prayer to be the thing we need first and most? What if the main object in God’s idea of prayer be the supplying of our great, our endless need—the need of himself?”
+
+Our smaller needs, he argued, are there partly to drive us to God. A runaway child may be driven home by hunger, and when he gets there he may or may not be fed at once, but what he needs most is not his dinner but his mother. So it is with us. “Communion with God is the one need of the soul beyond all other need; prayer is the beginning of that communion, and some need is the motive of that prayer.” God gives us many good things in answer to prayer, but the greatest answer is Himself.
+
+> Ask, and it shall be given you; seek, and ye shall find; knock, and it shall be opened unto you. MATTHEW 7:7
+
+He drew a striking conclusion from Paul’s thorn in the flesh, which God did not remove but promised grace to bear. The answer Paul received was better than the one he asked for. “Verily, if we have God, we can do without the answer to any prayer.”
+
+## Can prayer change anything?
+
+The second sermon turns to a harder question. How can the plans of an all-wise God be altered by the prayers of His creatures? Surely His purposes are fixed, and the world runs by law. MacDonald answered with characteristic boldness. He said that the objection rests on a poor idea of God, as though God had plans for the world that had nothing to do with His children. The whole system of things, MacDonald argued, exists for the education of God’s children, and its first aim is to bring them to the point where they will pray. Would God then build the world so rigidly that He could not answer the prayers it was made to produce?
+
+> The effectual fervent prayer of a righteous man availeth much. JAMES 5:16
+
+He did not think the laws of nature were a cage around God. “Law is the slave of Life.” God is not like steam in an engine, driven by valves and pistons; He is a living Father, free to act within the order He has made, and that order exists to serve His purposes of love. MacDonald was careful not to make prayer into a lever by which we control God. Often, he said, the prayer is itself more God’s purpose than the thing prayed for, because what God wants above all is that His child should come to Him. But he insisted that prayer is real, that it is heard, and that it makes a difference.
+
+## Not to faint
+
+The second half of the verse is the practical one. MacDonald knew how easily people stop praying, and why. Prayer seems not to be answered; the heart grows cold; doubts creep in; and other things crowd it out. His counsel was simple: keep going. Bring everything to God — the large and the small, the worthy and the unworthy, even the things one is not sure one ought to ask for. He thought it a lack of childlikeness to stop asking for something for fear that God might give it when it was not good. A child does not weigh every request before he makes it. He asks, and trusts his father to answer well.
+
+> Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God. PHILIPPIANS 4:6
+
+## Weighing it
+
+These two sermons are among the soundest MacDonald wrote, and most of what they say can be received gladly. Their insistence that prayer is a thing to be done rather than discussed, their account of communion with God as the deepest purpose of prayer, their confidence that God hears and acts, and their pastoral encouragement to keep praying when prayer seems unanswered are all deeply scriptural.
+
+If anything is to be added, it is the ground on which a sinner may come to God at all. MacDonald wrote of prayer as the child coming to the Father, and that is true; but the New Testament adds that we come through a High Priest who has offered Himself for our sins and who ever lives to make intercession for us. Our boldness at the throne of grace rests not only on God’s Fatherhood but on Christ’s blood.
+
+> Having therefore, brethren, boldness to enter into the holiest by the blood of Jesus, by a new and living way, which he hath consecrated for us. HEBREWS 10:19–20
+
+### FOR REFLECTION AND ACTION
+
+1. MacDonald said prayer is a thing to be done. Set a time and a place for prayer each day this week, and keep it.
+2. Think of a prayer that seems unanswered. Read Luke 18:1–8 and keep asking.
+3. What need is driving you to God at the moment? Thank Him for it, and ask Him for Himself as well as for the thing you need.
+4. Read 2 Corinthians 12:7–10. Has God ever given you grace instead of the answer you asked for?
+5. Read Hebrews 4:14–16 and 10:19–22, and come to the throne of grace with boldness, through Christ.
+
+### A PRAYER
+
+> Father, Your Son taught us that we ought always to pray and not to faint. I confess that I have often fainted.
+> Thank You that You hear me even when You seem silent, and that You are working when I cannot see it.
+> Above every other thing I ask for, give me Yourself.
+> Keep me praying, through Jesus Christ my High Priest, by whose blood I come to You. Amen.
+
+# The Self Denied
+
+> And he said to them all, If any man will come after me, let him deny himself, and take up his cross daily, and follow me. LUKE 9:23
+
+MacDonald’s sermon Self-Denial is one of the longest and most demanding in the second series, and it is one of the most misunderstood words of Jesus that it sets out to explain. Everyone knows that Christ calls His disciples to deny themselves. MacDonald thought that most people had misunderstood what He meant, and that the misunderstanding had done great harm.
+
+## Not thwarting, but abandoning
+
+Some Christians, MacDonald observed, take self-denial to mean going against one’s likings simply because they are one’s likings — refusing pleasant things because they are pleasant, and doing disagreeable things because they are disagreeable, as though misery were a virtue. He did not deny that God could bring good out of such efforts when they were made in honesty. But he thought them dangerous, because a man who sets out to master himself by his own rules may only feed a worse self — the self that is proud of its own victories. “True victory over self is the victory of God in the man, not of the man alone.”
+
+> For whosoever will save his life shall lose it: but whosoever will lose his life for my sake, the same shall save it. LUKE 9:24
+
+What then did Jesus mean? MacDonald’s answer was that we are not to torment the self, but to give it up as the ruler of our lives. We must refuse self “altogether as a ruling, or determining, or originating element in us.” And he put the change in one plain question that every disciple can ask: “We are no more to think, ‘What should I like to do?’ but ‘What would the Living One have me do?’”
+
+## The good gifts of God
+
+This led MacDonald to a balanced and humane conclusion about the ordinary pleasures of life. The things God has made are good, and they are to be received with thanksgiving. It is not selfish to enjoy them. It is self-denial, rather, to enjoy them heartily when God gives them and to do without them cheerfully when He takes them away, without complaint and without clinging. The world we are to renounce is not God’s world of sun and fields and friendship, but the world men make by leaving God out — the ways of thinking and judging, in business, politics, society and even the church, that never ask what God wants.
+
+> For every creature of God is good, and nothing to be refused, if it be received with thanksgiving. 1 TIMOTHY 4:4
+
+## I am my own
+
+MacDonald went to the root of the matter in another sermon, Kingship, on the words of Jesus to Pilate. There he named the one principle of the kingdom of darkness. “For the one principle of hell is—‘I am my own. I am my own king and my own subject.’” The self that will not be denied is the self that says: I am my own king; my own glory is my chief care; my thoughts begin and end with me. That is the spirit of hell, wherever it is found, and the denial of self is nothing less than the overthrow of it.
+
+> What? know ye not that your body is the temple of the Holy Ghost which is in you, which ye have of God, and ye are not your own? For ye are bought with a price. 1 CORINTHIANS 6:19–20
+
+He did not think the self would be destroyed by this. On the contrary, he believed that only the self given up to God becomes truly itself. The day will come, he wrote, when the self is so filled and enlarged by the indwelling God that it no longer needs to be denied, because it has learned to want nothing but what God wants, and to give itself gladly for others.
+
+## The way of the cross
+
+All of this, for MacDonald, was simply following Jesus. Christ did first all He asks us to do. He did not please Himself; He came not to do His own will but the will of Him that sent Him; He took up His cross daily long before He carried it to Golgotha. The disciple who denies himself is not undertaking some private programme of self-improvement. He is walking behind his Master.
+
+> For even Christ pleased not himself. ROMANS 15:3
+
+## Weighing it
+
+MacDonald’s teaching on self-denial is wise and searching, and there is little in it that an evangelical reader need set aside. His warning against a self-made asceticism that breeds pride is close to Paul’s warning against rules that have a show of wisdom in will-worship and humility and neglecting of the body. His insistence that the good things of creation are to be received with thanks is the plain teaching of Scripture. And his naming of the principle of hell — I am my own — goes to the root of sin as the Bible describes it.
+
+If one point needs adding, it is the source of the power to deny self. MacDonald was clear that it must be God’s victory and not ours; the New Testament makes clear how that victory is won. The believer has been crucified with Christ, and the life he now lives he lives by the faith of the Son of God, who loved him and gave Himself for him. Self is denied not by effort alone, but by union with the One who died and rose.
+
+> I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me: and the life which I now live in the flesh I live by the faith of the Son of God, who loved me, and gave himself for me. GALATIANS 2:20
+
+### FOR REFLECTION AND ACTION
+
+1. Have you thought of self-denial as making yourself miserable? Read Luke 9:23–25 again in the light of this chapter.
+2. Try MacDonald’s question at each decision this week: not, What should I like to do? but, What would the Living One have me do?
+3. Thank God for one good gift you enjoy, and ask whether you could do without it cheerfully if He asked.
+4. Where in your life is the principle I am my own still ruling? Name it and give it to God.
+5. Read Galatians 2:20 and 2 Corinthians 5:14–15, and ask Christ to live His life in you.
+
+### A PRAYER
+
+> Lord Jesus, You did not please Yourself, but came to do the will of Him who sent You.
+> I confess that I have said in my heart, I am my own. Forgive me, and take back the throne I have tried to keep.
+> Teach me to receive Your gifts with thanks and to give them up without complaint.
+> I have been crucified with You. Live Your life in me, and let me follow You, carrying my cross, today. Amen.
+
+# Love Thy Neighbour
+
+> Thou shalt not avenge, nor bear any grudge against the children of thy people, but thou shalt love thy neighbour as thyself: I am the Lord. LEVITICUS 19:18
+
+Two sermons in the first series belong together: Love Thy Neighbour and Love Thine Enemy. In them MacDonald turned from the soul’s dealings with God to its dealings with other people, and he found that they were, in the end, the same thing. To love God and to love one’s neighbour are not two duties but one life.
+
+## More than law
+
+MacDonald began with a question about the relationship between love and law. Paul says that love is the fulfilling of the law. Does it follow that keeping the law is love? MacDonald thought not. A man who loves his neighbour will keep the law towards him; but a man may keep every rule and not love at all. And in fact, MacDonald argued, no one can keep the law towards his neighbour without love, because the law reaches into every delicate corner of how we treat one another, and only love can follow it there. “We are not made for law, but for love.”
+
+> Love worketh no ill to his neighbour: therefore love is the fulfilling of the law. ROMANS 13:10
+
+## The neighbour God sends
+
+Who, then, is my neighbour? MacDonald’s answer was the answer of the parable of the good Samaritan, put in his own plain terms. We do not get to choose. “A man must not choose his neighbour; he must take the neighbour that God sends him.” The neighbour is simply whoever is next to us at the moment — the person on the train, the colleague at work, the stranger at the door. In each of them, MacDonald believed, there is hidden a brother or sister made in the image of God.
+
+> Which now of these three, thinkest thou, was neighbour unto him that fell among the thieves? And he said, He that shewed mercy on him. Then said Jesus unto him, Go, and do thou likewise. LUKE 10:36–37
+
+He saw the love of neighbour as a way of escape. Left to ourselves, we live shut up in our own concerns, breathing our own air. “This love of our neighbour is the only door out of the dungeon of self.”
+
+## Even the enemy
+
+The second sermon goes further. Jesus did not only say Love your neighbour; He said Love your enemies, bless them that curse you, do good to them that hate you, that ye may be the children of your Father which is in heaven. MacDonald did not pretend this was easy. He asked whether it was reasonable even to expect it, and answered with a sentence that cuts through every objection: “Is it then reasonable to love our enemies? God does; therefore it must be the highest reason.”
+
+> But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you; that ye may be the children of your Father which is in heaven. MATTHEW 5:44–45
+
+How can we love someone who is cruel, unjust and contemptuous towards us? MacDonald was honest: we cannot love the cruelty, the injustice or the contempt. Nobody can, and the best people hate them most. But those things are not the person. Beneath them lies a human being whom God made and loves, and it is that person we are called to love — the person God means him to become, and is still working to make him. To love an enemy is to want for him what God wants for him.
+
+## The Father’s way
+
+For MacDonald, the love of enemies was simply the way of the Father. God sends His sun and rain on the evil and the good alike. He loved us when we were His enemies. A child of such a Father cannot hate the people his Father loves. To learn to love our enemies is to grow into the likeness of our Father in heaven.
+
+## Weighing it
+
+These sermons are a fine exposition of one of the hardest commands of Christ, and their teaching is deeply biblical. MacDonald’s distinction between keeping the law and loving, his refusal to let us choose our neighbours, and his insistence that we love our enemies because God does are all true to the Lord’s words.
+
+If there is a caution, it is a small one. MacDonald’s confidence in the hidden goodness of every person sometimes led him to speak as though the divine nature were already present in everyone, waiting to be uncovered. Scripture speaks of the image of God in every person, which is a real ground of their dignity and of our love; but it also speaks of a heart that is deceitful above all things, and of a new birth that is needed before a person can share the divine nature. We love our enemies not because they are secretly good, but because God loves sinners, and because Christ died for the ungodly.
+
+> But God commendeth his love toward us, in that, while we were yet sinners, Christ died for us. ROMANS 5:8
+
+### FOR REFLECTION AND ACTION
+
+1. Who is the neighbour God has sent you this week? Do one concrete thing for that person.
+2. Think of someone whose company you avoid. Pray for that person by name, and ask God to show you how to love him or her.
+3. Name an enemy, or someone who has wronged you. Separate the wrong from the person, and pray for the person’s good.
+4. Read Luke 10:25–37 and ask where you have passed by on the other side.
+5. Read Romans 5:6–11 and give thanks that God loved you when you were His enemy.
+
+### A PRAYER
+
+> Father, You make Your sun rise on the evil and on the good, and You loved me when I was Your enemy.
+> Forgive me for choosing my neighbours, and for passing by the ones You sent me.
+> Give me grace to love those who have hurt me, to bless those who curse me, and to pray for those who use me badly.
+> Bring me out of the dungeon of self into the freedom of Your love, that I may be Your child indeed, through Jesus Christ. Amen.
+
+# The White Stone and the New Name
+
+> He that hath an ear, let him hear what the Spirit saith unto the churches; To him that overcometh will I give to eat of the hidden manna, and will give him a white stone, and in the stone a new name written, which no man knoweth saving he that receiveth it. REVELATION 2:17
+
+Among the promises to the seven churches in the book of Revelation is one that has puzzled interpreters for centuries: to the one who overcomes, Christ will give a white stone, with a new name written on it, which no one knows except the one who receives it. MacDonald made it the subject of one of his most beautiful sermons, The New Name, and he found in it what he called the essence of religion.
+
+## What a name is
+
+MacDonald was not much interested in what the white stone itself might have meant in the ancient world. He cared about the name. An ordinary name, he said, is only a label, a way of telling one person from another. A true name is something else. “The true name is one which expresses the character, the nature, the being, the meaning of the person who bears it.” It is a person’s own symbol, the picture of his soul. And only God can give such a name, because only God truly sees what a person is.
+
+> But now thus saith the Lord that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine. ISAIAH 43:1
+
+Why is the name given only to the one who overcomes? Not because God does not know it until then. He knows from the beginning, as surely as He sees the oak in the acorn, what each of His children is to become. But the child could not understand the name until he had become what it means. “Such a name cannot be given until the man is the name.” The giving of the new name, MacDonald concluded, is God telling a person, at last, what God has always thought of him — the divine word of approval spoken to one soul alone.
+
+## Each one known
+
+From this MacDonald drew a teaching about the uniqueness of every soul. Because each person has a name that no one else knows, each person has a relationship with God that no one else can share. “With every man he has a secret—the secret of the new name.” There is in every person, he wrote, “an inner chamber of peculiar life into which God only can enter.” No husband or wife, no friend, no minister, can come into it. God made each of us to know Him in a way no one else can, and to show something of Him that no one else can show.
+
+> I will praise thee; for I am fearfully and wonderfully made: marvellous are thy works; and that my soul knoweth right well. PSALM 139:14
+
+He saw this as the answer to two opposite dangers. One is the pride that wants to be like no one else, admired for its own distinction. The other is the fear of being lost in the crowd, one more face among millions. The truth, MacDonald said, is that each soul is precious to God precisely in its own particularity; and because each sees something of God that the others do not, each has something to bring to the others. The many different children of God are not rivals. They are a family, and each needs what the others have seen.
+
+## Overcoming
+
+The promise is to him that overcometh. MacDonald did not let his readers forget that. The new name is not a reward for simply existing. It is given to those who have fought the long fight against sin and self and have, by God’s grace, won. The name is the blossom of a life; and a life, if it is to blossom, must grow.
+
+## Weighing it
+
+The New Name is a lovely sermon, and its central teaching — that God knows each of His children personally and completely, and that He will at last show each of them what He has always seen in them — is a precious and scriptural truth. The Good Shepherd calls His own sheep by name.
+
+> To him the porter openeth; and the sheep hear his voice: and he calleth his own sheep by name, and leadeth them out. JOHN 10:3
+
+Readers should notice that MacDonald’s interpretation of the white stone is his own, and he said so himself, admitting that others might read John differently. Interpreters have long differed about this verse, and his reading is one among several. What matters more is the ground of the promise. The one who overcomes in the book of Revelation overcomes by the blood of the Lamb and the word of his testimony. The new name is the gift of the Lamb who was slain to those He has redeemed, and it rests on His victory before it rests on ours.
+
+> And they overcame him by the blood of the Lamb, and by the word of their testimony; and they loved not their lives unto the death. REVELATION 12:11
+
+### FOR REFLECTION AND ACTION
+
+1. Do you believe that God knows you completely, better than anyone else ever will? Read Psalm 139 slowly.
+2. Is there a part of you that you have never brought to God because you thought no one could understand it? Bring it now.
+3. Thank God for a fellow believer who has shown you something of God that you had not seen.
+4. Are you tempted to be admired for your distinction, or afraid of being lost in the crowd? Bring that temptation or fear to the God who calls you by name.
+5. Read Revelation 2–3 and note the promises to those who overcome. Ask God for grace to be among them.
+
+### A PRAYER
+
+> Lord, You have called me by my name, and I am Yours.
+> Thank You that You know me completely, and that there is a place in me where only You can come.
+> Keep me from pride and from fear. Let me see what You alone can show me, and give it gladly to my brothers and sisters.
+> Make me one who overcomes, by the blood of the Lamb, and give me at last the new name You have kept for me. Amen.
+
+# Righteousness and the Truth in Jesus
+
+> Yea doubtless, and I count all things but loss for the excellency of the knowledge of Christ Jesus my Lord: for whom I have suffered the loss of all things, and do count them but dung, that I may win Christ, and be found in him, not having mine own righteousness, which is of the law, but that which is through the faith of Christ, the righteousness which is of God by faith. PHILIPPIANS 3:8–9
+
+This chapter takes up the most controversial part of MacDonald’s teaching after his hope for the salvation of all, and it must be read with care. Three sermons belong together here: The Truth in Jesus, from the second series, and Justice and Righteousness, from the third. In them MacDonald set out what he believed about how Christ saves us, and he set it against the teaching of most of the churches of his day. He did so with great passion, and at times with scorn. It is only fair to let him speak, and then to weigh what he said.
+
+## The truth is a person
+
+MacDonald began, in The Truth in Jesus, with Paul’s phrase about the truth as it is in Jesus. He argued that the truth of the gospel is not first of all a set of statements about Christ but Christ Himself, living and present. To believe in Christ is to trust Him and obey Him, not to accept a theory about what He did. He wrote at length against Christians who, in his view, put their faith in a doctrine — in the finished work of Christ, in His merits, in the atonement, in the blood He shed — rather than in the living Lord. He was bitterly grieved to be accused of denying the atonement, and he insisted that he believed in the atoner, as he put it, “with my whole heart, and soul, and strength, and mind.” What he rejected was a particular explanation of the atonement, which he believed was not in the New Testament.
+
+> Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me. JOHN 14:6
+
+In Justice he gave a short statement of his own belief, and it is worth hearing in his words. “I believe in Jesus Christ, the eternal Son of God, my elder brother, my lord and master.” He believed that Christ has a right to his absolute obedience; that Christ died that he might die like Him, to every ruling power but the will of God; and that Christ is his Saviour from himself and from everything God does not love. The atonement, for MacDonald, meant the making of sinners one with God by making them like Christ.
+
+## Justice and mercy
+
+The sermon Justice takes as its text a verse from the sixty-second Psalm: unto Thee, O Lord, belongeth mercy: for Thou renderest to every man according to his work. MacDonald noticed that the Psalmist does not say that justice belongs to God because He rewards every man according to his work, but that mercy does. From this he argued that justice and mercy in God are not two things to be balanced against each other but one. He believed that God punishes sin, and punishes it severely; but he insisted that all God’s punishment is for the sake of healing. “Punishment is for the sake of amendment and atonement.” And he drew the conclusion that God’s first concern is not to punish sin but to end it: “Primarily, God is not bound to punish sin; he is bound to destroy sin.”
+
+> Also unto thee, O Lord, belongeth mercy: for thou renderest to every man according to his work. PSALM 62:12
+
+From this conviction MacDonald rejected the teaching that Christ, on the cross, bore the punishment due to sinners in their place, so that God could justly forgive them. He thought it made God unjust twice over: unjust to Christ, by punishing the innocent, and unjust to the law, by letting the guilty go. In the sermon Righteousness he wrote, “To lay the pain upon the righteous in the name of justice is simply monstrous.”
+
+## Righteousness, not a robe
+
+The sermon Righteousness, on Paul’s words in Philippians 3, carries the argument further. MacDonald believed that the righteousness Paul longed for — the righteousness which is of God by faith — is a real righteousness that God works in the believer, the same righteousness that Christ had by His faith in the Father. He therefore rejected, with great vehemence, the teaching that the righteousness of Christ is credited, or imputed, to the believer, so that God treats the sinner as righteous for Christ’s sake. He thought it a legal fiction that let men be called good without being made good, and he wrote: “Pray God I have no righteousness imputed to me. Let me be regarded as the sinner I am; for nothing will serve my need but to be made a righteous man, one that will no more sin.” In The Last Farthing he spoke of imputed righteousness with the same scorn.
+
+He read the great text of 2 Corinthians 5:21 — He hath made Him to be sin for us, who knew no sin; that we might be made the righteousness of God in Him — to mean that God gave Christ to be treated as a sinner by sinful men, killed and cast out, so that we might be made truly righteous in Him. He read the faith of Abraham, which was counted to him for righteousness, as Abraham’s own trust in God reckoned as the righteous thing it was.
+
+## What he was against
+
+To read MacDonald fairly, it is important to see what he feared. He feared a religion that would let a man feel safe while remaining selfish, dishonest and unkind — a faith in a transaction rather than in a Person, which left the heart unchanged. He had seen such religion, and he hated it. He feared, too, a picture of God as an angry ruler who must be bought off before He can love, and he believed that such a picture drove people from God. Against both he set the God who is like Jesus, who will make His children good, and who will settle for nothing less.
+
+> Little children, let no man deceive you: he that doeth righteousness is righteous, even as he is righteous. 1 JOHN 3:7
+
+## Weighing it
+
+It must be said plainly that on these points MacDonald stands outside the faith that evangelical Christians — and the Reformers before them, and a long line of the church’s teachers before them — have found in Scripture. His fears were real, and many preachers have deserved his rebuke. But the remedy he chose was to reject truths that the New Testament teaches clearly.
+
+The New Testament does teach that Christ died in the place of sinners and bore the penalty of their sin. The prophet foresaw a servant on whom the Lord would lay the iniquity of us all, who would be wounded for our transgressions. Paul says that Christ redeemed us from the curse of the law, being made a curse for us; that God set Him forth as a propitiation, to declare His righteousness, that He might be just, and the justifier of him which believeth in Jesus; and that God made Him to be sin for us, who knew no sin. Peter says that He bare our sins in His own body on the tree, the just for the unjust. These are not the words of a mere example, nor of a death inflicted only by men. They are the words of a substitute, given by the Father and freely offering Himself.
+
+> But he was wounded for our transgressions, he was bruised for our iniquities: the chastisement of our peace was upon him; and with his stripes we are healed. All we like sheep have gone astray; we have turned every one to his own way; and the Lord hath laid on him the iniquity of us all. ISAIAH 53:5–6
+
+> To declare, I say, at this time his righteousness: that he might be just, and the justifier of him which believeth in Jesus. ROMANS 3:26
+
+> For he hath made him to be sin for us, who knew no sin; that we might be made the righteousness of God in him. 2 CORINTHIANS 5:21
+
+MacDonald thought this made God unjust. But the cross is not God punishing a third party. It is God Himself, in the person of the Son, bearing what we deserved. The Son was not unwilling; the Father did not love Him less. Love and justice meet at the cross, not because justice gives way, but because love pays.
+
+The New Testament also teaches that the sinner is justified — declared righteous — by faith, apart from his works, and that this rests on the righteousness of Christ given to him. Paul speaks of God who justifies the ungodly, of the blessedness of the man to whom God imputes righteousness without works, and of being found in Christ, not having his own righteousness. MacDonald was right that this is not a fiction that leaves the sinner as he was: those whom God justifies, He also sanctifies, and no one is justified who is not also being made new. But the order matters. The sinner is accepted first, for Christ’s sake, and then made good; he is not made good in order to be accepted. To remove the first is to leave the anxious sinner with nothing to stand on but his own progress.
+
+> Even as David also describeth the blessedness of the man, unto whom God imputeth righteousness without works. ROMANS 4:6
+
+What, then, may the evangelical reader learn from MacDonald here? A great deal, if he reads with discernment. MacDonald is right that faith is trust in a living Person, not in a formula. He is right that a gospel which leaves the heart unchanged is no gospel at all. He is right that God will not be content until His children are holy, and that the justified are called to be righteous indeed. He is right that God is not reluctant to love us and does not need to be persuaded. The reader who holds fast to the substitution of Christ and to justification by faith alone will find MacDonald a sharp and salutary goad against a faith that has gone comfortable. But he should not follow him into denying what Christ has done for us, because only what Christ has done for us can make us what MacDonald longed for us to be.
+
+### FOR REFLECTION AND ACTION
+
+1. Is your faith in a living Christ, or in a set of ideas about Him? Read John 14:1–11 and speak to Him directly.
+2. MacDonald feared a faith that leaves the heart unchanged. Has your faith changed the way you live? Name one change it has made, and one it still needs to make.
+3. Read Isaiah 53 and 2 Corinthians 5:14–21 slowly. Give thanks for the One who bore your sins.
+4. Read Romans 3:21–26 and 4:1–8. Rest on the righteousness that God gives freely in Christ.
+5. Ask God to make you righteous indeed, not only in His sight but in your life, because you have been accepted in His Son.
+
+### A PRAYER
+
+> Lord Jesus Christ, You are the truth, and You are my Saviour.
+> Thank You that You were wounded for my transgressions, and that the Lord laid on You the iniquity of us all.
+> Thank You that I am found in You, not having my own righteousness, but the righteousness which is of God by faith.
+> Now make me righteous in all my ways, true in my words and pure in my heart, that I may be like You, because I am Yours. Amen.
+
+# The Cry from the Cross
+
+> And about the ninth hour Jesus cried with a loud voice, saying, Eli, Eli, lama sabachthani? that is to say, My God, my God, why hast thou forsaken me? MATTHEW 27:46
+
+MacDonald approached the cry of desolation from the cross with reverence. His sermon on it, The Eloi, opens with an admission that he would hardly have dared to write about those words at all if he had not believed that they hold the deepest practical lesson the human heart has to learn. He thought that in the darkest moment of the Lord’s suffering we see the purest form of faith that has ever been, and that this faith is meant to be ours.
+
+## Faith without feeling
+
+MacDonald’s reading of the cry begins from the humanity of Jesus. The Son of God, he said, had always known the presence of His Father. Now, in the extremity of His suffering, that sense of presence was taken from Him. He could not see God beside Him; He could not feel Him near. “Never before had he been unable to see God beside him. Yet never was God nearer him than now.” And in that darkness Jesus still cried My God. His will, stripped of every feeling that might support it, still chose to trust the Father.
+
+> And when the sixth hour was come, there was darkness over the whole land until the ninth hour. MARK 15:33
+
+For MacDonald this was the victory. The cry came not out of happiness or peace or even hope, but out of desolation; and yet, he wrote, “It was a cry in desolation, but it came out of Faith.” The Son held on to God when there was nothing left to hold on with but His will. That, MacDonald believed, was the final temptation and the final triumph, and without it the Lord would not have passed through every region of human experience. There would have been a darkness into which His brothers and sisters must go where they could not call to their Captain and be heard.
+
+## A word for the troubled
+
+From this MacDonald drew a word for every believer who has known the darkness. There are times when God seems far away, when prayer feels empty and the heart is cold. MacDonald did not say that such times are signs of failure. He said that they are the times when faith is most truly faith, because it has nothing to lean on but God. And he spoke directly to those in such times, in words that many have found a lifeline: “Troubled soul, thou art not bound to feel, but thou art bound to arise. God loves thee whether thou feelest or not.”
+
+> Who is among you that feareth the Lord, that obeyeth the voice of his servant, that walketh in darkness, and hath no light? let him trust in the name of the Lord, and stay upon his God. ISAIAH 50:10
+
+The counsel is practical. Do not try to make yourself feel good when you are not good; cry to Him who is good. He does not change because you change. Arise in the darkness and say, I will go to my Father; and do the next thing He asks of you.
+
+## The voice of Job
+
+MacDonald returned to the same theme in a long sermon in the second series, The Voice of Job. There he defended Job’s bold complaints against God as more honest, and closer to the truth, than the tidy theology of his comforters. He believed that honest doubt, brought to God, is no enemy of faith. “Doubts are the messengers of the Living One to rouse the honest.” The danger is not in asking hard questions, but in refusing to bring them to God, or in letting them become a settled distrust of His goodness.
+
+> But he knoweth the way that I take: when he hath tried me, I shall come forth as gold. JOB 23:10
+
+## Weighing it
+
+There is much here that is precious. MacDonald saw that the cry from the cross is a cry of faith — it is, after all, addressed to My God — and that the Lord’s trust in the darkness is a pattern and a comfort for His people. Many who have walked in darkness have found in this sermon a word that kept them going. His defence of honest lament has the Psalms and the book of Job behind it.
+
+But evangelical readers will want to add what MacDonald’s reading leaves out, and it is the heart of the matter. Jesus took the words from Psalm 22, the psalm of the righteous sufferer; and the New Testament tells us why the Holy One was forsaken. It was not only that the feeling of His Father’s presence was taken from Him as a trial of faith. He was bearing our sins. He was made a curse for us. It pleased the Lord to bruise Him, and to make His soul an offering for sin. The darkness at noon was the darkness of judgement, and He went into it in our place. MacDonald, holding the view of the cross described in the last chapter, did not see this; but it is the reason the cry gives comfort at all. The believer in darkness can be sure he is not forsaken, because Christ was forsaken for him.
+
+> Christ hath redeemed us from the curse of the law, being made a curse for us: for it is written, Cursed is every one that hangeth on a tree. GALATIANS 3:13
+
+> Yet it pleased the Lord to bruise him; he hath put him to grief: when thou shalt make his soul an offering for sin, he shall see his seed. ISAIAH 53:10
+
+### FOR REFLECTION AND ACTION
+
+1. Have you known a time when God seemed absent? Read Psalm 22 from beginning to end, and notice where it ends.
+2. If you are in such a time now, take MacDonald’s counsel: do not wait to feel, but arise and do the next thing God asks.
+3. Is there a doubt you have been afraid to bring to God? Bring it honestly, as Job did.
+4. Read Isaiah 53:4–12 and Galatians 3:10–14. Give thanks that Christ was forsaken so that you need never be.
+5. Think of someone who is walking in darkness. Pray for that person, and send a word of encouragement.
+
+### A PRAYER
+
+> Lord Jesus, in the darkness You cried My God, and held fast to Your Father when every feeling had gone.
+> Thank You that You were forsaken for me, bearing my sin and my curse, so that I will never be forsaken.
+> When I walk in darkness and have no light, teach me to trust in the name of the Lord and stay upon my God.
+> I am not bound to feel, but I am bound to arise. Help me to arise and go to my Father, today. Amen.
+
+# All Things Made in Him
+
+> All things were made by him; and without him was not any thing made that was made. In him was life; and the life was the light of men. JOHN 1:3–4
+
+The second series of Unspoken Sermons contains a group of sermons that are among the most philosophical MacDonald wrote: The Creation in Christ, Life, The Truth, and The Knowing of the Son. In them he tried to say what it means that all things were made through the Son of God, and that in Him was life. These sermons are not easy, and MacDonald knew it. But they open onto a vision of the world, and of the Christian life, that underlies much of his other work.
+
+## Life made in Him
+
+The Creation in Christ begins with a question of punctuation in the opening verses of John’s Gospel. MacDonald preferred a reading, found in some of the ancient manuscripts, that places the break differently, so that the verse says: that which was made in Him was life. He did not rest his teaching on this reading alone, but he found in it a picture of what Christ is. The Father, he said, is the source of all being; the Son, from all eternity, answers the Father’s love with a love that gives itself up entirely to the Father’s will. That self-giving, MacDonald believed, is the very life of Christ, and it is the life He came to share with us.
+
+> For as the Father hath life in himself; so hath he given to the Son to have life in himself. JOHN 5:26
+
+The life of Christ, as MacDonald described it, is this: that He does nothing for His own sake and cares with His whole soul for the will of His Father. And this, he said, is the only life there is for any of us. We were made by the Father, but we come alive as children only when we choose, as the Son chose, to live for the Father’s will. In one of the sermon’s clearest sentences, “To will, not from self, but with the Eternal, is to live.”
+
+## The light of men
+
+The life in Christ, John says, was the light of men. MacDonald took this to mean that the life of the Son, lived out on earth in Jesus, became visible, so that men could see what true life is and choose it for themselves. Jesus did not only teach about life; He lived it, and in living it He showed it. MacDonald believed that this is why obedience is the way to understanding. The light is a life, and the only way to see it truly is to begin to live it.
+
+> In him was life; and the life was the light of men. And the light shineth in darkness; and the darkness comprehended it not. JOHN 1:4–5
+
+## The world as God’s speech
+
+In his sermon The Truth, MacDonald turned from life to the created world. He believed that the things God has made are not merely objects for science to measure, though he honoured science. They are God’s speech, His thoughts made visible. The ordered beauty of the world — the flowers, the stars, the seasons, the faces of men and women — is a revelation of the God who made it. Of the world’s order he wrote: “Its so-called laws are the waving of his garments, waving so because he is thinking and loving and walking inside them.” And he believed that only the childlike heart truly sees this. “For things as they are, not as science deals with them, are the revelation of God to his children.”
+
+> The heavens declare the glory of God; and the firmament sheweth his handywork. PSALM 19:1
+
+This conviction is the root of everything MacDonald wrote about beauty and imagination, which the next chapter takes up.
+
+## Weighing it
+
+There is much in these sermons to be grateful for. MacDonald saw clearly that the Son is the one through whom all things were made, that in Him is the life of the world, that His life is a life of perfect obedience to the Father, and that the created world declares the glory of God. His vision of the Christian life as a sharing in the Son’s own devotion to the Father is rich and true, and close to the Lord’s own words about doing always the things that please the Father.
+
+Two cautions should be added. The first concerns MacDonald’s language about the Son. In The Creation in Christ he wrote that the Father is the greater, and spoke of the Son as deriving His being and power from the Father. He did worship the Son, and he called Him the eternal Son of the eternal Father; and he was aware that all human speech about these things falls short. But the church, guarding the faith against error, has learned to say with care that the Son is begotten, not made, of one substance with the Father, equal to Him in power and glory. Readers should hold MacDonald’s phrasing in the light of that confession, which is the faith of the New Testament.
+
+> I and my Father are one. JOHN 10:30
+
+The second concerns his reading of the opening of John’s Gospel. His preferred punctuation has some ancient support, and scholars still discuss it; but the common reading has strong support too, and it would be unwise to build much on the difference. What John clearly says — that all things were made by the Word, and that in Him was life — is enough, and it is glorious.
+
+### FOR REFLECTION AND ACTION
+
+1. Read John 1:1–18 slowly. Give thanks that all things were made through Christ, and that in Him is life.
+2. MacDonald said that to will with the Eternal is to live. Where are you living from your own will rather than God’s? Bring it to Him.
+3. Go outside this week and look at one created thing — a flower, a tree, the sky — and let it speak to you of the God who made it.
+4. Read John 5:19–30 and notice how the Son lives in dependence on the Father.
+5. Confess the Nicene Creed, and give thanks for the Son who is one with the Father.
+
+### A PRAYER
+
+> Lord Jesus Christ, all things were made by You, and in You is life, and Your life is the light of men.
+> Thank You for living among us the life of perfect love for the Father, and for showing us what it is to live.
+> Teach me to will not from myself but with You, and to see Your glory in the things You have made.
+> Eternal Son of the eternal Father, one with Him in glory, I worship You. Amen.
+
+# The Servant Imagination
+
+> Consider the lilies of the field, how they grow; they toil not, neither do they spin: and yet I say unto you, That even Solomon in all his glory was not arrayed like one of these. MATTHEW 6:28–29
+
+MacDonald is remembered today less for his sermons than for his stories, and he would not have minded, because he did not think of the stories as something other than preaching. He believed that the imagination is a gift of God, made to see and to show the truth, and that a fairy tale could carry the gospel into places a sermon could not reach. This conviction, more than anything else, is what C. S. Lewis and the writers after him learned from him.
+
+## Made to mirror truth
+
+MacDonald stated his view of the imagination most clearly in an essay on the fantastic imagination, and in a longer one on the imagination itself; but it runs through the sermons too. In The Last Farthing, pausing after an imaginative picture of the soul cut off from God, he stopped to explain what he was doing. “True, all I have been saying is imaginary; but our imagination is made to mirror truth.” He believed that the things that appear in the imagination are made, more or less, after the pattern of things that are, and that when we are true, our imagination will mirror nothing but truth.
+
+> Every good gift and every perfect gift is from above, and cometh down from the Father of lights, with whom is no variableness, neither shadow of turning. JAMES 1:17
+
+He meant that the imagination is not a toy or a means of escape. It is a way of knowing. In The Voice of Job he made the point with a homely comparison. Things, he said, speak their deepest truth through what they show, not through what analysis takes apart. “To know a primrose is a higher thing than to know all the botany of it—just as to know Christ is an infinitely higher thing than to know all theology.” The imagination is the faculty by which we know the primrose, and it has its part to play in knowing Christ.
+
+## Phantastes
+
+The first of MacDonald’s fairy books for adults, Phantastes, appeared in 1858. Its hero, Anodos, wakes one morning to find his bedroom turning into a forest, and wanders through a Fairy Land of beauty and danger. He is pursued by a shadow that attaches itself to him and spoils whatever it falls on, and the book is in part the story of his long and painful deliverance from himself. Near its end he learns that it is better to love than to be loved, and he dies a kind of death that is the beginning of a better life. It is a strange book, dreamlike and uneven, and it sold poorly. But it was the book that, more than fifty years later, a young atheist named C. S. Lewis bought at a railway station and found, to his surprise, to be holy.
+
+## The stories for children
+
+MacDonald’s books for children are his best-loved work. In At the Back of the North Wind, the boy Diamond is befriended by the North Wind, who appears to him as a beautiful and terrible lady and carries him through the night to see the sorrows and the goodness of London. She does things that seem cruel — she sinks a ship — and she tells Diamond that she does them because she must, and that there is a goodness behind them he cannot yet see. The book is MacDonald’s teaching on suffering and providence put into the shape of a story a child can love.
+
+In The Princess and the Goblin, the princess Irene finds, at the top of a forgotten stair in her castle, her great-great-grandmother, a queen of unknown age, spinning a thread too fine to see. She gives Irene a ring tied to the thread and tells her that if she is ever in danger she must follow it, and it will lead her home. When the time comes, the thread leads Irene not away from danger but straight into the goblins’ caves, to rescue the miner’s boy Curdie, and only then home. Few stories have so simply pictured what it means to walk by faith.
+
+> And thine ears shall hear a word behind thee, saying, This is the way, walk ye in it, when ye turn to the right hand, and when ye turn to the left. ISAIAH 30:21
+
+The shorter tales — The Light Princess, The Golden Key, The Day Boy and the Night Girl and others — carry the same convictions in smaller compass. MacDonald insisted that a fairy tale should not be an allegory, with a moral to be decoded; it should be a true picture of the world, which each reader will understand as far as he is able.
+
+## The poems and Lilith
+
+MacDonald was also a poet, and his Diary of an Old Soul, a short prayer in verse for every day of the year, written in the years when his children were dying, is perhaps the most intimate thing he wrote. His last long story, Lilith, published in 1895, is a dark and difficult book about death, sleep and resurrection, in which the soul must lie down and die to itself before it can wake. It gives the fullest imaginative shape to his hope that every soul, even the most rebellious, will at last be brought home.
+
+## Weighing it
+
+MacDonald’s conviction that the imagination is a servant of truth has been a blessing to the church. The Bible itself is full of images, stories, poems and parables; the Lord taught in parables and pointed His hearers to the lilies and the sparrows; and much of the deepest truth of Scripture comes to us in the form of pictures. MacDonald helped recover the sense that beauty and story belong to God, and many Christians who would never read a sermon have met something of God in his books.
+
+Two cautions are worth making. The first is that the imagination, like every other human faculty, is fallen. It can mirror truth, but it can also invent idols, and it is not a safe guide on its own. MacDonald himself said that the imagination mirrors truth when we are true; the Christian will add that it must be disciplined by the written Word, by which every picture is to be tested.
+
+> Casting down imaginations, and every high thing that exalteth itself against the knowledge of God, and bringing into captivity every thought to the obedience of Christ. 2 CORINTHIANS 10:5
+
+The second is that MacDonald’s stories carry his theology with them, including the hope for universal salvation described in chapter sixteen. Lilith especially is shaped by it. Readers, and parents reading his stories to children, will enjoy them most wisely when they know this. The stories for children are, for the most part, simply good, and their pictures of trust, courage and faithfulness are well worth giving to the young.
+
+### FOR REFLECTION AND ACTION
+
+1. Think of a story, poem or picture that has helped you see something of God. Give thanks for it.
+2. Spend ten minutes this week simply looking at one created thing — a flower, a bird, the sky — and let it speak to you of its Maker.
+3. If you have children or grandchildren, read them The Princess and the Goblin, and talk with them about the thread.
+4. Read some of the parables of Jesus in Matthew 13 and Luke 15, and notice how He used pictures to teach.
+5. Read 2 Corinthians 10:3–6, and ask God to bring your imagination into the obedience of Christ.
+
+### A PRAYER
+
+> Father of lights, every good and perfect gift comes from You, and You have made the world full of beauty and wonder.
+> Thank You for the gift of imagination, and for the stories and pictures that have shown me something of Your face.
+> Cleanse my imagination of every idol, and bring every thought into the obedience of Christ.
+> When I cannot see the way, teach me to follow the thread You have given me, until it leads me home. Amen.
+
+# The God of the Living
+
+> Now that the dead are raised, even Moses shewed at the bush, when he calleth the Lord the God of Abraham, and the God of Isaac, and the God of Jacob. For he is not a God of the dead, but of the living: for all live unto him. LUKE 20:37–38
+
+MacDonald knew death well. His mother died when he was eight. He was ill all his life with the disease that killed several of his children, and he buried four of them. It is not surprising that he wrote often about death and what lies beyond it. What is surprising is how much joy there is in what he wrote. His sermon The God of the Living, in the first series, and The Inheritance, which closes the third, are full of a confident hope.
+
+## The argument of Jesus
+
+The God of the Living is a sermon on the Lord’s answer to the Sadducees, who denied the resurrection. Jesus pointed them to the words God spoke to Moses at the burning bush: I am the God of Abraham, and the God of Isaac, and the God of Jacob. God did not say I was, but I am; and He is not a God of the dead, but of the living. MacDonald thought this argument went far deeper than a point of grammar. God changes not. If He has once called Himself a man’s God, He cannot then let that man perish and remain his God. A God who let His children fall into nothingness would not be the God He has revealed Himself to be.
+
+> I am the resurrection, and the life: he that believeth in me, though he were dead, yet shall he live: and whosoever liveth and believeth in me shall never die. JOHN 11:25–26
+
+He turned the argument into prayer, as he often did. “The beloved pass from our sight, but they pass not from thine.” Death, he said, looks final to us; it seems an end, an utter change. But “This that we call death, is but a form in the eyes of men.” Those who have died are still alive to God, and still known and loved by Him.
+
+## The resurrection of the body
+
+MacDonald believed firmly in the resurrection of the body. He did not think the dead were destined to be ghosts. We will always need bodies, he said, to reveal us to one another and to receive the revelation of God in His world. In the resurrection, those we have loved will be known again, more truly themselves than ever, and every heart will cry out with joy at the sight of them. “Yet not the less is the doctrine of the Resurrection gladdening as the sound of the silver trumpet of its visions, needful as the very breath of life to our longing souls.”
+
+> For this corruptible must put on incorruption, and this mortal must put on immortality. 1 CORINTHIANS 15:53
+
+## The inheritance
+
+The last of all the Unspoken Sermons takes as its text Paul’s thanksgiving to the Father, which hath made us meet to be partakers of the inheritance of the saints in light. MacDonald began with a contrast. In any earthly inheritance, every share given to one heir makes the shares of the others smaller. In the inheritance of the saints it is the other way round. “In the inheritance of the saints, that which each has, goes to increase the possession of the rest.” The more there are to share it, the richer each one is, because the inheritance is God Himself, and love multiplies by being shared.
+
+> Giving thanks unto the Father, which hath made us meet to be partakers of the inheritance of the saints in light. COLOSSIANS 1:12
+
+He believed that heaven would not be a place of idleness, but of endless discovery and joy, and he was impatient with dreary pictures of heaven that made children afraid of it. The inheritance is the universe of God, given to His children to know and love, with God at the heart of it; and the way into it is to become, here and now, children fit to receive it.
+
+## Weighing it
+
+These sermons are full of a hope that is deeply scriptural, and they have comforted many in bereavement. MacDonald’s reading of the Lord’s answer to the Sadducees — that the God who calls Himself our God will not let us perish — is close to the heart of the passage. His joy in the resurrection of the body, his picture of the inheritance of the saints, and his refusal to be gloomy about heaven are a fine corrective to the vague and ghostly hopes of much popular religion.
+
+Two points need weighing. The first is that, in The God of the Living, MacDonald wrote that we are not required to believe that the same body is raised again, and he spoke of a resurrection body that would carry the same person but not the same matter. He believed in a real, bodily resurrection; but readers will want to keep before them the empty tomb, where the very body that was laid in the grave was raised, and Paul’s teaching that God will quicken our mortal bodies. There is mystery here, and Paul himself speaks of a body sown in weakness and raised in power; but the continuity is real.
+
+> But if the Spirit of him that raised up Jesus from the dead dwell in you, he that raised up Christ from the dead shall also quicken your mortal bodies by his Spirit that dwelleth in you. ROMANS 8:11
+
+The second is that MacDonald’s hope for the dead extended, as the next chapter shows, to all the dead. The New Testament speaks of a resurrection of the just and of the unjust, and of a judgement that follows death. The hope of the inheritance belongs to those whom the Father has made meet for it, through the Son in whom we have redemption.
+
+> And as it is appointed unto men once to die, but after this the judgment. HEBREWS 9:27
+
+### FOR REFLECTION AND ACTION
+
+1. Think of someone you love who has died in Christ. Give thanks that they live unto God.
+2. Read Luke 20:27–38 and consider the Lord’s argument. What does it mean to you that God is the God of the living?
+3. Read 1 Corinthians 15:35–58 and let its hope fill your heart.
+4. Is your picture of heaven dreary? Read Revelation 21:1–7 and 22:1–5, and let Scripture enlarge it.
+5. Read Colossians 1:12–14 and give thanks for the inheritance of the saints, and for the redemption that makes you meet to share it.
+
+### A PRAYER
+
+> Father, You are not the God of the dead, but of the living, and all live unto You.
+> Thank You that those I have loved and lost in Christ have not passed out of Your sight, and that I shall see them again.
+> Thank You for the hope of the resurrection, and for the inheritance of the saints in light.
+> Make me meet to share it, through Your Son, in whom I have redemption through His blood, the forgiveness of sins. Amen.
+
+# The Last Farthing
+
+> Agree with thine adversary quickly, whiles thou art in the way with him; lest at any time the adversary deliver thee to the judge, and the judge deliver thee to the officer, and thou be cast into prison. Verily I say unto thee, Thou shalt by no means come out thence, till thou hast paid the uttermost farthing. MATTHEW 5:25–26
+
+This chapter takes up the point at which MacDonald stands furthest from the historic faith of the church, and it is important to be both fair and plain. MacDonald believed in judgement. He believed in hell. He wrote about it in some of the most terrible pages in the Unspoken Sermons. But he hoped, and in the end taught, that hell would not be the last word for anyone — that God’s love would pursue every soul through every darkness until at last it came home.
+
+## No escape from righteousness
+
+MacDonald’s sermon The Last Farthing, in the second series, takes the Lord’s words about the prisoner who will not come out until he has paid the uttermost farthing. He read them first as a warning, and a fierce one. There is no escaping the demands of righteousness. God will not let anyone off. “No, there is no escape. There is no heaven with a little of hell in it—no plan to retain this or that of the devil in our hearts or our pockets.” Whatever we owe to God and to our neighbour must be paid, and the sooner we begin, the better.
+
+> For we must all appear before the judgment seat of Christ; that every one may receive the things done in his body, according to that he hath done, whether it be good or bad. 2 CORINTHIANS 5:10
+
+He then tried to imagine what the outer darkness might be. He pictured it as utter loneliness: a soul that in life cared for nothing but itself, now shut up with nothing but itself, without a sign of God or of any other being, the endless and unavoidable presence of self. It is one of the most searching passages he ever wrote, and no reader who takes it seriously will think MacDonald made light of hell.
+
+## The door that opens
+
+But MacDonald read the prison as having a door. The Lord said that the prisoner would not come out until he had paid the last farthing; MacDonald took this to mean that when the last farthing is paid, he will come out. And he believed that the darkness itself is the means of his paying it. “God in the dark can make a man thirst for the light, who never in the light sought but the dark.” The very misery of the prison, he thought, might at last teach the soul to loathe itself and to long for something beyond itself; and the first faint thinning of the darkness would be welcomed as a messenger from God. “Nay, there must be hope while there is existence; for where there is existence there must be God; and God is for ever good, nor can be other than good.”
+
+He was careful to say that the way out is not easy or quick. It is the way of repentance, step by step, a little less dark at each step. But he was confident that the God who made each soul to be His child would never stop drawing it. The sermon ends: “there can be no deliverance for human soul, whether in that prison or out of it, but in paying the last farthing, in becoming lowly, penitent, self-refusing—so receiving the sonship, and learning to cry, Father!”
+
+## The fire of His distance
+
+The same hope is stated, as a matter of belief, in the creed that MacDonald set out in his sermon Justice. There he wrote that God, in His mercy, “will hold his children in the consuming fire of his distance until they pay the uttermost farthing,” until they drop the purse of selfishness and rush home to the Father and the Son. And he added: “I believe that no hell will be lacking which would help the just mercy of God to redeem his children.”
+
+This is the view usually called Christian universalism, or the hope of universal restoration. It was held by a few in the early church, most famously Origen, and it has been held by some since. It has never been the teaching of the church at large, and it was not the teaching of the Reformers or of the evangelical tradition. MacDonald held it not out of softness about sin, but out of a conviction about the goodness of God so strong that he could not believe God would ever give up on any of His children.
+
+## Weighing it
+
+It must be said clearly that on this point MacDonald goes beyond, and against, what Scripture teaches. The Lord Jesus spoke more often of hell than anyone else in the Bible, and He spoke of it as final. At the end of the parable of the sheep and the goats He said that the wicked shall go away into everlasting punishment, but the righteous into life eternal — using the same word of both. He spoke of the fire that never shall be quenched, and of a great gulf fixed, so that those who would pass from one side to the other cannot. The writer to the Hebrews says that it is appointed unto men once to die, and after this the judgement. Nowhere does Scripture hold out a second chance after death, or a hope that the lost will at last be saved.
+
+> And these shall go away into everlasting punishment: but the righteous into life eternal. MATTHEW 25:46
+
+> And beside all this, between us and you there is a great gulf fixed: so that they which would pass from hence to you cannot; neither can they pass to us, that would come from thence. LUKE 16:26
+
+MacDonald read the Lord’s word about the last farthing as a promise that the prison would open. But the Lord gave it as a warning, and its force is the same as His other warnings: settle the matter now, while you are in the way. The gospel’s urgency rests on the truth that now is the accepted time, and now is the day of salvation. MacDonald believed that urgency too — he pleaded with his readers to pay what they owed at once — but his hope blunts it, and readers who share his hope may find it easier to put off repentance.
+
+> Behold, now is the accepted time; behold, now is the day of salvation. 2 CORINTHIANS 6:2
+
+It is right, too, to say that C. S. Lewis, who loved MacDonald more than any other writer, did not follow him here. In The Great Divorce, where he made MacDonald his guide on a visit to the borders of heaven, Lewis has his teacher turn the narrator away from speculation about universal salvation, as a question that creatures still inside time cannot answer, and insist on the reality and seriousness of the choice every soul makes. Lewis believed that hell is real and that some will choose it for ever. He learned from MacDonald the goodness of God and the seriousness of holiness, and he left his master’s universalism behind.
+
+What may the evangelical reader learn from MacDonald here? Several things, and they are worth having. MacDonald is right that God is good and only good, and that He takes no pleasure in the death of the wicked. He is right that there is no escape from the demands of righteousness, and no heaven with a little hell in it. He is right that hell is the condition of a soul shut up in itself, and that self-will is its principle. And he is right that the remedy is to become lowly, penitent and self-refusing, and to learn to cry Father. The reader who holds, with Scripture, that the judgement is final will find in MacDonald’s pages a powerful reason to repent now, while the door stands open — and a powerful reason to plead with others to come in.
+
+> As I live, saith the Lord God, I have no pleasure in the death of the wicked; but that the wicked turn from his way and live: turn ye, turn ye from your evil ways; for why will ye die? EZEKIEL 33:11
+
+### FOR REFLECTION AND ACTION
+
+1. Is there a debt of love, justice or honesty that you owe to God or to your neighbour? Settle it now, while you are in the way.
+2. Read MacDonald’s picture of the outer darkness in The Last Farthing. Where do you see the beginnings of that self-enclosed loneliness in your own heart?
+3. Read Matthew 25:31–46 and Luke 16:19–31. Let the Lord’s own words about judgement sober you.
+4. Pray for someone you love who does not yet know Christ, and ask God for an opportunity to speak to that person of Him.
+5. Read 2 Corinthians 5:10–21 and give thanks that, in Christ, God has reconciled you to Himself.
+
+### A PRAYER
+
+> Righteous Father, there is no escape from Your demands, and I would not escape them; I would be made righteous.
+> Forgive me for my unpaid debts of love and justice, and for the self that wants to live shut up in itself.
+> Thank You that Your Son has paid what I could not pay, and that now is the day of salvation.
+> Make me lowly, penitent and self-refusing, teach me to cry Father, and send me to plead with others while the door is open, through Jesus Christ. Amen.
+
+# Conclusion
+
+> God is light, and in him is no darkness at all. 1 JOHN 1:5
+
+We have covered a great deal of ground in fourteen short chapters, and it would be easy to come away thinking of MacDonald as a writer of many subjects. In one sense he was. He wrote about the Fatherhood of God and the fire of His holiness, about obedience and childlikeness, prayer and self-denial, the love of neighbour and enemy, the new name and the truth in Jesus, the cry from the cross and the creation in Christ, the imagination, death, and the last things. He wrote about them in sermons, novels, fairy tales and poems. But beneath the variety there was one conviction, held with growing intensity from his boyhood in Huntly to his long silence at the end. It was that God is good — wholly, utterly, only good — and that He will not rest until His children are as good as He is.
+
+## One thread
+
+Look back over the chapters and the thread appears. God is a Father, and a Father wants His children good. His love is a consuming fire, because it will not let evil stand in those it loves. Obedience opens the eyes, because the Father’s will is the child’s life. The child in the midst shows us both what we must become and what God is like. Prayer is the child’s speech with the Father, and its deepest answer is the Father Himself. Self-denial is the overthrow of the principle that I am my own. The love of neighbour and enemy is the Father’s love lived out in His children. The new name is the Father’s word to each child at last. The truth in Jesus is the life of the obedient Son; His cry from the cross is the faith of the Son in the dark; and the world was made in Him, and speaks of Him. The imagination mirrors that truth; death cannot break the Father’s hold on His children; and the last farthing — whatever we make of MacDonald’s hope — is the Father’s refusal to leave any debt of love unpaid.
+
+> For of him, and through him, and to him, are all things: to whom be glory for ever. Amen. ROMANS 11:36
+
+## What to do with it
+
+If you have read this far, you face the danger MacDonald would have warned you about first. It is possible to enjoy his thought, to admire his language, to be stirred by his vision of God, and to change not at all. He would have regarded that as the worst outcome of all. He did not write to be admired. He wrote to get his readers to do what Jesus said.
+
+> But be ye doers of the word, and not hearers only, deceiving your own selves. JAMES 1:22
+
+So here is the plainest counsel this book can give, and it is his. Do not ask, at the end of it, whether you agree with MacDonald. Ask whether there is one thing Christ has told you to do that you are not doing. Then go and do it. Go back to the chapter that searched you most, and act on its points for reflection, one at a time. Then go to the Unspoken Sermons themselves, which are in the Ochorus library, and read them slowly, with the Bible open beside them, testing everything.
+
+## Two things to carry
+
+Carry away, first, a deeper confidence in the goodness of God. MacDonald spent his life insisting that God is like Jesus, and that nothing we believe about Him should make Him less good than the best of men. That conviction, held within the whole teaching of Scripture, is the faith of the New Testament, and it is a cure for a great deal of fear. God is not reluctant to love you. He is not waiting to be persuaded. He so loved the world that He gave His only begotten Son.
+
+Carry away, second, a deeper seriousness about holiness. MacDonald’s God will not be content with a respectable Christian who is still selfish at heart. He means to make His children good, and He will go to any lengths to do it. The believer who rests, as he must, on the finished work of Christ for his acceptance, should hear in MacDonald a summons not to rest content with anything less than the holiness for which he was accepted.
+
+> Follow peace with all men, and holiness, without which no man shall see the Lord. HEBREWS 12:14
+
+## A last word about the man
+
+We have been plain in these pages about the points at which MacDonald must be weighed. He hoped and taught that every soul would at last be saved, where Scripture speaks of a judgement that is final. He rejected the teaching that Christ bore the punishment of our sins in our place, which stands at the centre of the apostles’ gospel. He rejected the imputed righteousness by which the ungodly are justified freely. He quarrelled with the doctrine of adoption. These are not small matters, and it would be no kindness to him or to the reader to pretend that they are.
+
+None of this has been said to diminish him. It has been said because he would have demanded it. He hated nothing more than taking a teacher’s word for something without testing it against the words of Christ, and he wanted his own words tested too. Many readers, evangelicals among them, have found that MacDonald sent them back to the Gospels with new eyes, made them ashamed of their comfortable faith, and taught them to pray. They have been right to receive what he gave. They have been right, too, to read him with their Bibles open.
+
+> But we have this treasure in earthen vessels, that the excellency of the power may be of God, and not of us. 2 CORINTHIANS 4:7
+
+MacDonald died at Ashtead on the eighteenth of September, 1905, after years of silence. He had spent half a century telling anyone who would listen that God is our Father, that Jesus shows us His face, and that the way to know Him is to do what He says. The right response to him is not admiration, but to go to the Father he loved, through the Son who alone is the way, and to do what He tells us.
+
+### FOR REFLECTION AND ACTION
+
+1. Is there one thing Christ has told you to do that you are not doing? Do it this week.
+2. Return to the chapter of this book that searched you most. Read it again, and act on the first of its points.
+3. Read one of the Unspoken Sermons in the Ochorus library this month, slowly, with your Bible open.
+4. Where has fear distorted your picture of God? Read 1 John 4:7–19 and let His love cast it out.
+5. Read Hebrews 12:1–14 and ask God to make you holy, whatever it costs.
+
+### A PRAYER
+
+> Father, You are light, and in You is no darkness at all.
+> Thank You for Your servant George MacDonald, and for the many You have drawn nearer to Yourself through him.
+> Where he saw truly, let me see with him; where he erred, keep me in Your Word.
+> Do not let me stop at admiring his words. Make me a doer of Yours, and make me good, as You are good, through Jesus Christ my Saviour. Amen.
+
+# His Books, and Where to Start
+
+> Of making many books there is no end; and much study is a weariness of the flesh. Let us hear the conclusion of the whole matter: Fear God, and keep his commandments: for this is the whole duty of man. ECCLESIASTES 12:12–13
+
+MacDonald wrote more than fifty books — sermons, novels, fairy tales, fantasies and poems — and it is not easy to know where to begin. All of them are in the public domain, and most are easy to find. What follows is a short guide, arranged for usefulness rather than chronology, with a suggested order of reading. At the end is a note on his influence, and especially on the reader who did most to keep his name alive.
+
+## Begin here
+
+Unspoken Sermons (three series, 1867, 1885 and 1889). The heart of his work and the source of every chapter of this companion. All three series are in the Ochorus library as one book of thirty-six sermons. Do not try to read them straight through. Begin with The Child in the Midst, The Consuming Fire, The Way and The Word of Jesus on Prayer, and read one at a sitting, slowly. Then go on to Self-Denial, The Eloi, Abba, Father! and The New Name. Read Justice, Righteousness and The Last Farthing last, with chapters eleven and sixteen of this book in mind.
+
+The Ochorus author page for George MacDonald carries a short biography and answers to common questions about his life and teaching.
+
+## His fantasies
+
+Phantastes (1858). The faerie romance that first touched C. S. Lewis. Dreamlike and uneven, but haunting, and the best introduction to MacDonald the myth-maker.
+
+Lilith (1895). His last long story, a dark and difficult dream of death and resurrection. For mature readers, and best read after Phantastes and with chapter sixteen of this book in mind, since it is shaped throughout by his hope for the salvation of all.
+
+## His stories for children
+
+At the Back of the North Wind (1871). The story of Diamond and the North Wind, gentle and strange, about suffering, goodness and trust.
+
+The Princess and the Goblin (1872) and its sequel The Princess and Curdie (1883). The princess Irene, the miner’s boy Curdie, and the great-great-grandmother with her thread. The first is the best place to start with his children’s books; the second is darker and more searching.
+
+His shorter fairy tales, especially The Light Princess, The Golden Key and The Day Boy and the Night Girl, are collected in many editions. Read them aloud.
+
+## His novels
+
+MacDonald’s novels of Scottish life were his most popular books in his own day, and they carry much of his teaching in the lives of their characters. They are long and full of dialect, and modern readers often prefer abridged editions. Good places to begin are Robert Falconer (1868), Alec Forbes of Howglen (1865), Malcolm (1875) and Sir Gibbie (1879), the story of a mute and barefoot orphan boy whose simple goodness is one of MacDonald’s finest portraits. Thomas Wingfold, Curate (1876), the story of a young clergyman who discovers that he does not believe what he preaches and sets out to find out whether it is true, is the most directly theological.
+
+## His poems and other writings
+
+A Book of Strife in the Form of the Diary of an Old Soul (1880). A short prayer in verse for every day of the year, written in the years of his greatest sorrow. Many readers keep it beside their Bibles.
+
+The Miracles of Our Lord (1870) and The Hope of the Gospel (1892) are further collections of his teaching, close in spirit to the Unspoken Sermons. His essays on the imagination and on the fantastic imagination, gathered in collections such as A Dish of Orts, set out his view of story and wonder.
+
+## Letters and lives
+
+His son Greville MacDonald wrote a long and loving account of his parents, George MacDonald and His Wife (1924), which remains the fullest source for his life. Among modern studies, William Raeper’s George MacDonald (1987) and Rolland Hein’s George MacDonald: Victorian Mythmaker (1993) are both careful and readable.
+
+## A suggested order
+
+For a first year with MacDonald: The Princess and the Goblin; four or five of the Unspoken Sermons, beginning with The Child in the Midst; Phantastes; At the Back of the North Wind; more of the sermons, one at a time; and then one of the novels, perhaps Sir Gibbie. Keep the Diary of an Old Soul for the hard seasons.
+
+## The master of C. S. Lewis
+
+MacDonald’s reputation faded after his death, and it might have faded further but for one reader. In 1916 a seventeen-year-old atheist named Clive Staples Lewis, waiting for a train at Leatherhead station, bought a cheap copy of Phantastes from the bookstall. He remained an atheist for years afterwards. But he later said that the book had begun to work on his imagination long before the rest of him followed, and that it carried a quality he could only afterwards name as holiness.
+
+Lewis came to regard MacDonald as his master, and he said that he had hardly written a book in which he did not quote him. In 1946 he published an anthology of short readings from MacDonald, drawn mostly from the Unspoken Sermons, because he wanted to spread MacDonald’s religious teaching rather than revive his literary fame. In The Great Divorce he made MacDonald himself the narrator’s guide through the outskirts of heaven. Lewis’s own books, which are still in copyright, are named here for the reader’s further study; Ochorus’s companion, The Key Teachings of C. S. Lewis, and the Portraits of Courage life of him are in the library.
+
+It is worth repeating what chapter sixteen said. Lewis loved MacDonald without following him into universalism. He learned from him the goodness and holiness of God, the seriousness of obedience, and the power of the imagination to carry truth; he did not learn from him to hope that hell would at last be empty, and in The Great Divorce he set that question aside as one no creature inside time can answer.
+
+Others learned from MacDonald too. G. K. Chesterton wrote that The Princess and the Goblin had made a difference to his whole way of seeing the world; his Orthodoxy and The Everlasting Man are in the Ochorus library. J. R. R. Tolkien, asked late in life to write a preface for an edition of The Golden Key, found it growing instead into a story of his own. Through these writers and many after them, MacDonald’s Fairy Land has reached millions who have never heard his name.
+
+## Three counsels for reading him
+
+Read him with the Bible open. MacDonald claimed no authority of his own, and he would have been the first to send you back to the words of Christ. Where he is plainly scriptural, receive it gladly. Where he goes beyond it or against it, weigh it, and hold fast to what is written.
+
+Read him slowly. His sentences are long and his thought is dense. Take one sermon at a time, and think about it before you move on.
+
+And read him as he would have wanted: not as an end in himself, but as a summons to obey. Close the book, and go and do something the Master tells you.
+
+> Jesus saith unto him, I am the way, the truth, and the life: no man cometh unto the Father, but by me. JOHN 14:6
