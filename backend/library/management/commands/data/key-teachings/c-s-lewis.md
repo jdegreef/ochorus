@@ -7,7 +7,7 @@ about: |
 
   Lewis was loved by evangelicals and was not quite one of them. This volume says so where it matters — on his openness to a purifying purgatory, on his hope that some who never knew Christ’s name might yet be saved by Him, on his view of how Scripture is inspired, and on his willingness to accept an evolutionary account of human origins — briefly, charitably and without hiding it. He would have wanted every claim tested, and he would have wanted readers to go past him to the One he served.
 
-  Many of the older writers who shaped him are in the Ochorus library and are named in the last chapter: Athanasius, Augustine, Bunyan, Thomas à Kempis, William Law and others.
+  Many of the older writers who shaped him are in the Ochorus library and are named in the last chapter: George MacDonald, G. K. Chesterton, Athanasius, Augustine, Bunyan, Thomas à Kempis, William Law and others.
 ---
 
 # Introduction
@@ -1240,9 +1240,9 @@ For a first year with Lewis: Mere Christianity; The Screwtape Letters; The Great
 
 Lewis insisted that his readers should not stop at him. He urged them, again and again, to go back to the older books he had learned from. Here are some of the writers he loved, and where they can be found.
 
-George MacDonald (1824–1905). The Scottish writer whom Lewis regarded as his master, and from whose works he said he had drawn in almost everything he wrote. It was MacDonald’s Phantastes that first touched Lewis’s imagination in 1916; Lewis later compiled an anthology of passages from MacDonald’s sermons, and made him the guide in The Great Divorce. Readers should know that MacDonald hoped for the final salvation of all, and rejected the teaching that Christ bore the penalty of sin in our place; Lewis loved him without following him in the first, and evangelical readers will want to weigh both. MacDonald’s Unspoken Sermons, Phantastes and his books for children are in the public domain.
+George MacDonald (1824–1905). The Scottish writer whom Lewis regarded as his master, and from whose works he said he had drawn in almost everything he wrote. It was MacDonald’s Phantastes that first touched Lewis’s imagination in 1916; Lewis later compiled an anthology of passages from MacDonald’s sermons, and made him the guide in The Great Divorce. Readers should know that MacDonald hoped for the final salvation of all, and rejected the teaching that Christ bore the penalty of sin in our place; Lewis loved him without following him in the first, and evangelical readers will want to weigh both. MacDonald’s Unspoken Sermons, all three series, are in the Ochorus library; Phantastes and his books for children are also in the public domain.
 
-G. K. Chesterton (1874–1936). His Orthodoxy and, above all, The Everlasting Man, which Lewis read in his twenties while still an unbeliever, helped Lewis to see that the Christian account of history made sense. Lewis credited it with a large part in his return to faith.
+G. K. Chesterton (1874–1936). His Orthodoxy and, above all, The Everlasting Man, which Lewis read in his twenties while still an unbeliever, helped Lewis to see that the Christian account of history made sense. Lewis credited it with a large part in his return to faith. Both Orthodoxy and The Everlasting Man are in the Ochorus library.
 
 Athanasius of Alexandria. On the Incarnation, the fourth-century defence of the deity of Christ, for whose English translation Lewis wrote the introduction discussed in chapter six. It is in the Ochorus library, with Athanasius’ Life of Antony, and Ochorus’s own companion, The Key Teachings of Athanasius of Alexandria.
 
