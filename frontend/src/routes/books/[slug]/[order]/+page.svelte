@@ -2181,8 +2181,6 @@
 				<ChapterEndAsk
 					title={plan && planDay ? plan.title : chapter.book_title}
 					chapterKey="book:{slug}:{chapter.order}"
-					pathname={$page.url.pathname}
-					search={$page.url.search}
 				/>
 				<!-- Colophon: a crawlable link out to the book and its author from every
 				     chapter — the site's largest page type, which otherwise linked only to

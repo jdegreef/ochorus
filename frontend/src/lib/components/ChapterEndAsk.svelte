@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { auth } from '$lib/auth.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import { noteChapterEnd, shouldAsk, snoozeAsk } from '$lib/chapterAsk';
@@ -15,17 +16,12 @@
 	 */
 	let {
 		title,
-		chapterKey,
-		pathname,
-		search
+		chapterKey
 	}: {
 		/** The book's (or plan's) title, for "Keep your place in …". */
 		title: string;
 		/** This chapter, e.g. "book:humility:3", to count chapter ends reached. */
 		chapterKey: string;
-		/** This page's localized path and query, for the sign-up's way back. */
-		pathname: string;
-		search: string;
 	} = $props();
 
 	const t = i18n.t;
@@ -51,8 +47,10 @@
 	});
 
 	const show = $derived(signedOut && !dismissed && shouldAsk(ends));
+	// Read only inside {#if show}, i.e. in the browser: the chapter page is
+	// prerendered, and SvelteKit forbids reading the query string there.
 	const href = $derived(
-		localizeHref(withSource(withSignup(loginHref(pathname, search)), 'chapter_end'))
+		localizeHref(withSource(withSignup(loginHref($page.url.pathname, $page.url.search)), 'chapter_end'))
 	);
 
 	function later() {
