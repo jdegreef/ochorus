@@ -4,6 +4,8 @@
 	import { absUrl } from '$lib/seo';
 	import { downloadFile } from '$lib/dataExport';
 	import { planSchedules } from '$lib/planSchedules.svelte';
+	import { auth } from '$lib/auth.svelte';
+	import { signInSheet } from '$lib/signInSheet.svelte';
 	import { buildScheduleICS, googleCalendarUrl, readReminderTime } from '$lib/reminder';
 	import { localizeHref } from '$lib/href';
 	import { localToday } from '$lib/streak';
@@ -233,6 +235,32 @@
 						onchange={(e) => planSchedules.set(plan.slug, { time: e.currentTarget.value })}
 					/>
 				</label>
+				<!-- The plan's reading by email at that time — the same opt-in the
+				     plan-start question sets (PlanSchedule.email_reminder), here to turn
+				     on later or off for this plan alone. It needs an account to send
+				     to, so signed out it offers one instead of a switch. -->
+				{#if auth.user}
+					<label class="email-toggle">
+						<input
+							type="checkbox"
+							checked={!!prefs.email}
+							onchange={(e) =>
+								planSchedules.set(plan.slug, {
+									...prefs,
+									time: prefs.time ?? time,
+									email: e.currentTarget.checked
+								})}
+						/>
+						<span>
+							<span class="text-small text-text">{t('plans.emailToggle')}</span>
+							<span class="block text-micro text-muted">{t('plans.emailToggleHint')}</span>
+						</span>
+					</label>
+				{:else if auth.enabled}
+					<button type="button" class="btn btn-ghost btn-sm mt-2 w-full" onclick={() => signInSheet.show('plan_start')}>
+						<Icon name="mail" size={16} />{t('plans.emailSignin')}
+					</button>
+				{/if}
 				<p class="mt-4 mb-2 text-eyebrow text-muted">{t('plans.addCalendar')}</p>
 				<a class="btn w-full" href={googleUrl} target="_blank" rel="noopener noreferrer">
 					<Icon name="calendar" size={16} />{t('plans.addGoogle')}
@@ -254,6 +282,17 @@
 		align-items: flex-end;
 		gap: 1rem 1.5rem;
 		margin-bottom: 1.25rem;
+	}
+	.email-toggle {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.5rem;
+		margin-top: 0.6rem;
+		cursor: pointer;
+	}
+	.email-toggle input {
+		margin-top: 0.2rem;
+		accent-color: var(--accent);
 	}
 	.cal-field {
 		display: flex;
