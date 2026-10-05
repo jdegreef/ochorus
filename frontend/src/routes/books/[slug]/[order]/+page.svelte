@@ -81,6 +81,7 @@
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import ChapterEndAsk from '$lib/components/ChapterEndAsk.svelte';
+	import { midBook } from '$lib/midBook.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
@@ -1011,6 +1012,7 @@
 		}
 	}
 	onDestroy(() => {
+		midBook.clear();
 		clearTimeout(peekTimer);
 		clearTimeout(returnTimer);
 		clearTimeout(syncTimer);
@@ -1022,6 +1024,16 @@
 	onMount(() => {
 		readerPrefs.init();
 		listen.init();
+		// The mid-book welcome steps aside once the reader has chosen to read on
+		// (a screen's worth into the text): it was a door, not a bar.
+		const settle = () => {
+			if (window.scrollY > window.innerHeight) {
+				midBook.clear();
+				window.removeEventListener('scroll', settle);
+			}
+		};
+		window.addEventListener('scroll', settle, { passive: true });
+		return () => window.removeEventListener('scroll', settle);
 	});
 
 	// Per-chapter setup: progress, marks, restore scroll, observe title.
@@ -1077,6 +1089,24 @@
 			!deliberateJump && !syncDismissed.has(s)
 				? { slug: s, order, language, local: getProgressRecord(s) }
 				: null;
+
+		// Landed mid-book with no place in this book yet (search, a shared
+		// link): say where they are and offer the beginning ($lib/midBook).
+		// Not on chapter 1, a plan day, or a deliberate jump. Read BEFORE
+		// saveProgress, which is what gives them a place.
+		const firstInBook = getProgressRecord(s) == null;
+		if (firstInBook && order > 1 && !deliberateJump && !$page.url.searchParams.has('plan')) {
+			midBook.show({
+				slug: s,
+				bookTitle: chapter.book_title,
+				author: chapter.author_name,
+				order,
+				firstHref: chapterHref(1),
+				bookHref: localizeHref(`/books/${s}`)
+			});
+		} else {
+			midBook.clear();
+		}
 
 		saveProgress(s, order, language);
 		bookmarks.load('book', s);
