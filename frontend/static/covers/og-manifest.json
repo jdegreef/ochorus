@@ -3511,6 +3511,36 @@
 				517
 			]
 		},
+		"elisabeth-elliot-a-life": {
+			"ground": "0a992144608f19f756cadec30b7f372deb4f2cd7aa2742184a029304cedeeec4",
+			"style": "house",
+			"volume": "8",
+			"script": "latin",
+			"art": true,
+			"scrim": 0.8,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[134, 102, 466, 131]
+				],
+				"title": [
+					[289, 306, 311, 350],
+					[91, 386, 510, 457]
+				],
+				"subtitle": [
+					[110, 476, 491, 504],
+					[79, 504, 521, 532]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				263,
+				532
+			]
+		},
 		"enchiridion": {
 			"ground": "e2019e027f55ad618f84ec4ad8e7ae060f22a347d03a6f7914243c5d2180c7c8",
 			"style": "inscriptional",

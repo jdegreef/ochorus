@@ -150,6 +150,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     # under ("Books about"); `tests_originals_series.py` keeps every volume here.
     ("c-s-lewis-a-life", [("c-s-lewis", "subject")]),
     ("corrie-ten-boom-a-life", [("corrie-ten-boom", "subject")]),
+    ("elisabeth-elliot-a-life", [("elisabeth-elliot", "subject")]),
     ("john-hyde-a-life", [("john-hyde", "subject")]),
     ("key-teachings-of-a-b-simpson", [("a-b-simpson", "subject")]),
     ("key-teachings-of-a-w-tozer", [("a-w-tozer", "subject")]),
