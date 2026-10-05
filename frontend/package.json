@@ -31,7 +31,7 @@
 		"await-api": "node scripts/await-api-release.mjs",
 		"sync:catalogues": "node scripts/sync-ui-catalogues.mjs",
 		"prebuild": "npm run await-api && npm run locales",
-		"postbuild": "node scripts/build-404.mjs && node scripts/build-share-cards.mjs && node scripts/build-verse-cards.mjs && node scripts/build-author-cards.mjs && node scripts/build-quote-cards.mjs && node scripts/build-plan-cards.mjs && node scripts/sentry-sourcemaps.mjs"
+		"postbuild": "node scripts/build-404.mjs && node scripts/build-cards.mjs && node scripts/sentry-sourcemaps.mjs"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.39.5",

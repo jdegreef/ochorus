@@ -418,11 +418,14 @@ jobs:
       # PRERENDER_CONCURRENCY: pages rendered at once (svelte.config.js). Only
       # CI raises it — this API is a throwaway; production's build crawls the
       # live one and stays at 1.
+      # PARALLEL_CARDS: the postbuild share-card scripts as three lanes at once
+      # instead of one after another (scripts/build-cards.mjs); same cards.
       - name: Frontend — build
         working-directory: frontend
         env:
           PUBLIC_API_BASE_URL: http://localhost:8000
           PRERENDER_CONCURRENCY: '8'
+          PARALLEL_CARDS: '1'
         run: npm run build
 
       # These guards assert on BUILT html, so they run after the build.

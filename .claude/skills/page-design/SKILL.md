@@ -919,7 +919,12 @@ relevant group.
   build on `scripts/card-kit.mjs` (font setup, text, portraits, `inlined`,
   `bookCovers`, `drawAll`) and take `sharp` from it. sharp crops each text
   block to its ink — stack blocks with real gaps, never negative overlap — and
-  never letter-space Arabic or Devanagari (it breaks the joins)._ → localized fallback, one length, section
+  never letter-space Arabic or Devanagari (it breaks the joins).
+  **Wiring it in:** register the script in `scripts/build-cards.mjs` — in
+  `SEQUENTIAL` and in a `LANES` lane — not in `package.json`'s `postbuild`. CI
+  runs the lanes at once (`PARALLEL_CARDS=1`), so a card that reads another
+  script's output (the plan shelf reads the share cards' `/og/covers/`) goes
+  in that script's lane, after it; otherwise give it its own._ → localized fallback, one length, section
   OG cards (Book).
 
 ### G. Guide and guards
