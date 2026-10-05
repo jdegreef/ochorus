@@ -591,6 +591,27 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#7a0a5a",
     ),
+    # C. S. Lewis's own works are NOT public domain — and his estate actively
+    # protects them. This companion quotes only the KJV and paraphrases; not a
+    # sentence of his is reproduced, and the disavowal is essential and must ship.
+    "key-teachings-of-c-s-lewis": Work(
+        slug="key-teachings-of-c-s-lewis",
+        title="The Key Teachings of C. S. Lewis",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="c-s-lewis",
+        source="c-s-lewis.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. It is not published by, affiliated with, or endorsed by "
+            "the C. S. Lewis estate or any organisation holding rights in the "
+            "writings of C. S. Lewis. All descriptions of his teaching are the "
+            "present author's own summaries; none of his words are reproduced, "
+            "and his books are named for further study, which readers are "
+            "warmly encouraged to obtain from their rightful publishers. "
+            "Scripture quotations are from the Authorised (King James) Version."
+        ),
+        cover_color="#2f4a6e",
+    ),
 }
 
 

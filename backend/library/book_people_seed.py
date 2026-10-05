@@ -156,6 +156,7 @@ BOOK_PEOPLE: list[tuple[str, list[tuple[str, str]]]] = [
     ("key-teachings-of-andrew-murray", [("andrew-murray", "subject")]),
     ("key-teachings-of-athanasius-of-alexandria", [("athanasius-of-alexandria", "subject")]),
     ("key-teachings-of-augustine-of-hippo", [("augustine-of-hippo", "subject")]),
+    ("key-teachings-of-c-s-lewis", [("c-s-lewis", "subject")]),
     ("key-teachings-of-catherine-booth", [("catherine-booth", "subject")]),
     ("key-teachings-of-charles-finney", [("charles-finney", "subject")]),
     ("key-teachings-of-charles-h-spurgeon", [("charles-h-spurgeon", "subject")]),

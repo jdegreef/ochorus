@@ -6891,6 +6891,35 @@
 				432
 			]
 		},
+		"key-teachings-of-c-s-lewis": {
+			"ground": "463361ca0e793a7b2f019bb8b1a5678c31916e2d82493e958491e0c339952536",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[200, 102, 400, 131]
+				],
+				"title": [
+					[62, 169, 538, 232],
+					[137, 225, 463, 288]
+				],
+				"subtitle": [
+					[57, 348, 544, 376]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				376
+			]
+		},
 		"key-teachings-of-catherine-booth": {
 			"ground": "88bac2aa566c00a51ea776c4c2b9aa4ab0271844b437524793a1922629334da1",
 			"style": "originals",
