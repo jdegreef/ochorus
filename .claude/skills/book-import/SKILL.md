@@ -2230,6 +2230,19 @@ and writes no twin — then `tests_fixture` reds on the missing raster. Run
 `~/Library/Caches/ms-playwright`, so later worktrees on the same machine are
 fine. *(2026-09)*
 
+**`npm run og:covers` redraws ALL ~670 twins → check the manifest's `fonts`
+digest before you commit anything.** The skip compares `css`, `markup` and
+`fonts`; any mismatch redraws every card, and on another machine's Chromium
+that is a ~670-PNG diff of sub-pixel noise. `fonts` hashes the inlined
+@fontsource CSS *and the `--cover-face-*` / `--font-display` token text in
+`app.css`*, so a token edit that cannot change a card still moves it — #5001
+added `'Fraunces Fallback'` to `--font-display` and left the committed digest
+stale. Don't commit the mass redraw: revert the other PNGs, prove the cause
+(the digest computed against the pre-change `app.css` must equal the committed
+one), then update the one `"fonts"` line and re-run — it should report `wrote 0`.
+Use `--force` only when a face a card actually draws has changed.
+*(Elliot follow-up, 2026-10)*
+
 **ochorus.com no longer serves `/pdfs/<slug>.pdf`** (404 as of 2026-07) — every
 `import_ochorus` re-import fails at the fetch. It fails safely, leaving existing
 rows untouched, but it means the ochorus-sourced books are effectively frozen:
