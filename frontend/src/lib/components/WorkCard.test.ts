@@ -65,6 +65,27 @@ const sermon: ResumeItem = {
 	author: 'R. A. Torrey',
 	pct: null,
 	scriptureRef: 'James 5:16',
+	sermon: {
+		slug: 'power-in-prayer',
+		language: 'en',
+		title: 'Power in Prayer',
+		scripture_ref: 'James 5:16',
+		scripture_book: 'James',
+		scripture_book_order: 59,
+		summary: '',
+		preached_on: null,
+		word_count: 4000,
+		author: {
+			slug: 'torrey',
+			name: 'R. A. Torrey',
+			bio: '',
+			photo_url: '',
+			birth_year: 1856,
+			death_year: 1928
+		},
+		topics: [],
+		created_at: '2026-01-01T00:00:00Z'
+	},
 	finished: false
 };
 
@@ -104,18 +125,20 @@ describe('WorkCard caption', () => {
 });
 
 describe('WorkCard sermon cover', () => {
-	it('sets the sermon as a cover in its own hue, hidden from assistive tech', () => {
+	it('sets the sermon on a cover plate in its own hue, hidden from assistive tech', () => {
 		const card = render(WorkCard, { item: sermon });
 		const cover = card.querySelector<HTMLElement>('[data-testid="sermon-cover"]')!;
 		expect(cover.getAttribute('aria-hidden')).toBe('true');
-		expect(cover.textContent).toContain('R. A. Torrey');
-		expect(cover.textContent).toContain('Power in Prayer');
-		expect(cover.textContent).toContain('James 5:16');
-		expect(cover.style.getPropertyValue('--sermon-hue')).toMatch(/^#[0-9a-f]{6}$/i);
+		expect(cover.querySelector('.byline')?.textContent).toBe('R. A. Torrey');
+		expect(cover.querySelector('.title')?.textContent).toBe('Power in Prayer');
+		expect(cover.querySelector('.subtitle')?.textContent?.trim()).toBe('James 5:16');
+		const plate = cover.querySelector<HTMLElement>('.cover-plate')!;
+		expect(plate.style.getPropertyValue('--plate')).toContain('linear-gradient');
 	});
 
 	it('drops the passage line when the sermon has no reference', () => {
-		const card = render(WorkCard, { item: { ...sermon, scriptureRef: '' } });
-		expect(card.querySelector('[data-testid="sermon-cover"] .ref')).toBeNull();
+		const item = { ...sermon, sermon: { ...sermon.sermon!, scripture_ref: '' } };
+		const card = render(WorkCard, { item });
+		expect(card.querySelector('[data-testid="sermon-cover"] .subtitle')).toBeNull();
 	});
 });

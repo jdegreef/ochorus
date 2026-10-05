@@ -30,6 +30,8 @@ export type ResumeItem = {
 	author: string;
 	/** The full book, for `<BookCover>` to draw its title; absent for sermons. */
 	book?: CoverBook;
+	/** The full sermon, for `<SermonCover>` to set; absent for books. */
+	sermon?: SermonSummary;
 	/** Chapter meter 0–100 for books; null for single-document sermons. */
 	pct: number | null;
 	/** Last-opened chapter and total (books only) — the caption's numbers. */
@@ -77,6 +79,7 @@ export function buildResumeItems(
 					author: sermon.author.name,
 					pct: null,
 					scriptureRef: sermon.scripture_ref,
+					sermon,
 					finished: p.finished_at != null
 				};
 			}

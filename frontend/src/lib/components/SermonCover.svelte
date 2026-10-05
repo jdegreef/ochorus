@@ -1,122 +1,64 @@
 <script lang="ts">
+	import { coverGradient } from '$lib/coverArt';
+	import { isLongTitle } from '$lib/coverCardMarkup';
+	import { coverStyleFor, scriptOf } from '$lib/coverStyles';
+	import { contentLang } from '$lib/reading';
+	import { eraOf } from '$lib/eras';
 	import { sermonArt } from '$lib/sermonArt';
-	import { i18n } from '$lib/i18n.svelte';
+	import type { SermonSummary } from '$lib/library-public';
+	import './cover-type.css';
+	import BrandMark from './BrandMark.svelte';
 
 	/**
-	 * A sermon drawn as a book cover: the preacher at the head, "Sermon" over
-	 * the title in the middle, the passage at the foot, on a deep ground in the
-	 * sermon's own hue. It stands in a resume card's 3:4 cover slot, so a
-	 * sermon sits beside the book covers as a peer rather than as an icon tile.
+	 * A sermon set as a book cover, for the 3:4 slot of a resume card — the one
+	 * surface where a sermon is given a cover (STYLE_GUIDE §Cards says why).
 	 *
-	 * Nothing is loaded: it is text on a gradient, so it paints with the card.
-	 * The hue comes from `sermonArt`, so the sermon keeps the one colour its
-	 * plate and share card wear.
+	 * It is BookCover's own plate, not a second drawing of one: the same
+	 * `.cover-plate` / `.cover-type` classes from `cover-type.css`, the same
+	 * house style for the preacher's century, the same long-title step and the
+	 * same mark. Only the ground and the subtitle differ. The ground is
+	 * `coverGradient` of the sermon's `sermonArt` hue, so it keeps the colour
+	 * its plate and share card wear, and the passage sits where a subtitle
+	 * would. No "Sermon" eyebrow: the card's caption already says so, and the
+	 * one slot above the title (`.volume`) is drawn as a series numeral.
 	 *
-	 * Every length is a container unit, as in `cover-type.css`, so the drawing
-	 * holds at any width the slot gives it. The title steps down a size as it
-	 * gets longer and clamps after six lines; the card beside it carries the
-	 * full title, which is also why the cover is `aria-hidden`.
-	 *
-	 * hex-ok-file: cream ink and gold on the sermon's own hue — artwork, like a
-	 * book cover's ink on its `cover_color`, so it must not follow the theme.
+	 * Decorative (`aria-hidden`): the card beside it carries the title, the
+	 * preacher and the passage as text.
 	 */
-	let {
-		slug,
-		title,
-		author,
-		scriptureRef = ''
-	}: { slug: string; title: string; author: string; scriptureRef?: string } = $props();
-	const t = i18n.t;
+	let { sermon }: { sermon: SermonSummary } = $props();
 
-	const hue = $derived(sermonArt(slug).hue);
-	const size = $derived(title.length <= 22 ? 'short' : title.length <= 40 ? 'medium' : 'long');
+	const style = $derived(
+		coverStyleFor(eraOf(sermon.author.birth_year), sermon.author.slug, sermon.slug)
+	);
+	const lang = $derived(contentLang(sermon.language));
+	const script = $derived(scriptOf(lang));
+	const blockDir = $derived(script === 'arabic' ? { dir: 'rtl' as const } : {});
 </script>
 
-<div class="sermon-cover rounded-sm" style:--sermon-hue={hue} aria-hidden="true" data-testid="sermon-cover">
-	<div class="inner">
-		<span class="by">{author}</span>
-		<span class="ti {size}"><em>{t('search.typeSermon')}</em>{title}</span>
-		{#if scriptureRef}<span class="ref">{scriptureRef}</span>{/if}
+<div
+	class="relative aspect-[3/4] w-full overflow-hidden rounded-sm shadow-sm"
+	aria-hidden="true"
+	data-testid="sermon-cover"
+>
+	<div class="cover-plate" style="--plate: {coverGradient(sermonArt(sermon.slug).hue)}">
+		<div
+			class={[
+				'cover-type',
+				`style-${style}`,
+				script && `script-${script}`,
+				isLongTitle(sermon.title) && 'long-title'
+			]}
+			{...blockDir}
+		>
+			<div class="byline" dir="auto">{sermon.author.name}</div>
+			<div class="middle">
+				<div class="title" {lang} dir="auto">{sermon.title}</div>
+				<div class="rule"></div>
+				{#if sermon.scripture_ref}<div class="subtitle" {lang} dir="auto">
+						{sermon.scripture_ref}
+					</div>{/if}
+			</div>
+			<BrandMark height="13.7cqw" />
+		</div>
 	</div>
 </div>
-
-<style>
-	.sermon-cover {
-		container-type: inline-size;
-		aspect-ratio: 3 / 4;
-		width: 100%;
-		overflow: hidden;
-		--sermon-gold: #d9b25a;
-		color: #f3ead6;
-		background: linear-gradient(
-			170deg,
-			color-mix(in srgb, var(--sermon-hue) 55%, #101522),
-			color-mix(in srgb, var(--sermon-hue) 18%, #0a0d16)
-		);
-		box-shadow:
-			0 1px 2px rgb(0 0 0 / 0.18),
-			0 4px 10px rgb(0 0 0 / 0.14);
-	}
-	.inner {
-		box-sizing: border-box;
-		height: 100%;
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		gap: 4cqw;
-		padding: 10cqw 8cqw;
-		text-align: center;
-	}
-	.by {
-		font-size: 7cqw;
-		letter-spacing: 0.18em;
-		text-transform: uppercase;
-		opacity: 0.75;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	.ti {
-		align-self: center;
-		font-family: var(--font-display);
-		font-weight: 600;
-		line-height: 1.12;
-		overflow-wrap: anywhere;
-		hyphens: auto;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 6;
-		line-clamp: 6;
-		overflow: hidden;
-	}
-	.ti.short {
-		font-size: 14cqw;
-	}
-	.ti.medium {
-		font-size: 11.5cqw;
-	}
-	.ti.long {
-		font-size: 9.5cqw;
-	}
-	.ti em {
-		display: block;
-		margin-bottom: 6cqw;
-		font-family: var(--font-sans);
-		font-style: normal;
-		font-weight: 500;
-		font-size: 6.5cqw;
-		letter-spacing: 0.25em;
-		text-transform: uppercase;
-		color: var(--sermon-gold);
-	}
-	.ref {
-		padding-top: 5cqw;
-		border-top: 1px solid color-mix(in srgb, var(--sermon-gold) 45%, transparent);
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: 8cqw;
-		color: var(--sermon-gold);
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-</style>

@@ -386,6 +386,7 @@ holds in both themes. Hues come from:
 | Sermon plate | `sermonArt(slug).hue` — derived from the emblem's own art |
 | Sermons index row | `hueForBirthYear(...)` — the preacher's era |
 | Sermon tile in a fan | `sermonArt(slug).hue` — its own art, even inside a band |
+| Sermon cover in a resume card | `sermonArt(slug).hue` — its own art: a recency list has no grouping hue |
 
 The band's far end takes a **fan of member tiles** (`covers`); the band does the
 positioning, so an occupant only styles itself. A topic's fan holds books first
@@ -436,8 +437,17 @@ than useless: they do share the topic, and that shelf is tinted for it anyway.)
 **Sermon plate** (`<SermonPlate>`) — a sermon's head, on its own page and in
 Sermon of the week: the eyebrow/title/byline in a hue wash with the sermon's
 emblem anchoring the far end, the same composition as its share card. Sermons
-are **not** given 3:4 covers: that silhouette says *volume*, and differing
-silhouettes are what tell a book from a sermon at a glance on a mixed shelf.
+are **not** given 3:4 covers on a browse shelf: that silhouette says *volume*,
+and differing silhouettes are what tell a book from a sermon at a glance there.
+
+The one exception is the **resume card** (`<WorkCard>`: Continue reading,
+/reading), where a sermon wears `<SermonCover>`: BookCover's own plate
+(`.cover-plate` / `.cover-type`, the preacher's house style, the long-title
+step, the mark) on `coverGradient(sermonArt(slug).hue)`, with the passage
+as its subtitle. A founder decision (2026-10-04): a resume strip is a row of
+things *you are reading*, not a shelf to tell apart, and a lone icon tile
+among covers read as broken. The card's caption still says "Sermon". Draw it
+through `<SermonCover>` and never a hand-copy of the plate.
 Its hue is `sermonArt(slug).hue` — derived from the emblem's own art, so a new
 sermon is coloured the moment its emblem is picked, then floored into a
 lightness band, because a wash is only as visible as the hue is light. Go

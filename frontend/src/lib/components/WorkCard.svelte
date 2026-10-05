@@ -93,16 +93,11 @@
 		<div class="w-20 shrink-0">
 			<BookCover book={item.book} rounded="rounded-sm" />
 		</div>
-	{:else}
+	{:else if item.sermon}
 		<!-- Sermons have no cover file, so one is set in type (SermonCover) — a
 		     peer of the book covers beside it rather than an icon tile. -->
 		<div class="w-20 shrink-0">
-			<SermonCover
-				slug={item.slug}
-				title={item.title}
-				author={item.author}
-				scriptureRef={item.scriptureRef}
-			/>
+			<SermonCover sermon={item.sermon} />
 		</div>
 	{/if}
 	<div class="min-w-0 flex-1 self-center">
