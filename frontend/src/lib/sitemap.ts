@@ -589,7 +589,7 @@ async function build(): Promise<SitemapData> {
 	// Per-era biography landing pages, in each locale where the era has writers
 	// on that locale's shelf — the list the page itself renders. Elsewhere the
 	// page is an empty "no writers" state (and says noindex), which advertising
-	// every locale used to promise: the contemporary era in eight languages.
+	// every locale used to promise: an undated-writers era in eight languages.
 	// Dated, like an author page, by the newest work of the writers it lists.
 	for (const e of ERAS) {
 		const inEra = new Map<string, string[]>(

@@ -21,10 +21,17 @@ const run = (era: string) =>
 
 describe('era load', () => {
 	it('lists the locales with a writer born in the era', async () => {
-		// 1600 is a Puritan; null is undated (contemporary).
+		// 1600 is a Puritan; null is undated (filed under modern).
 		presence.mockResolvedValue({ en: [1600, null], es: [null], sw: [1600] });
 		expect((await run('puritans')).eraLocales).toEqual(['en', 'sw']);
-		expect((await run('contemporary')).eraLocales).toEqual(['en', 'es']);
+		expect((await run('modern')).eraLocales).toEqual(['en', 'es']);
+	});
+
+	it('redirects the retired contemporary era to modern', async () => {
+		await expect(run('contemporary')).rejects.toMatchObject({
+			status: 308,
+			location: '/biographies/era/modern/'
+		});
 	});
 
 	it('is null when the endpoint is unavailable, so the page keeps every locale', async () => {

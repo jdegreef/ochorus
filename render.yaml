@@ -622,6 +622,14 @@ services:
       - type: redirect
         source: /articles/samuel-crowther-from-captive-to-bishop/
         destination: /authors/samuel-ajayi-crowther/
+      # The "Contemporary" era (undated writers) was folded into the modern
+      # era. Localized /<lang>/ forms are redirected by the era page's load.
+      - type: redirect
+        source: /biographies/era/contemporary
+        destination: /biographies/era/modern/
+      - type: redirect
+        source: /biographies/era/contemporary/
+        destination: /biographies/era/modern/
       # Ochorus Originals is the house imprint, not a person: its books moved
       # from an author page to their own shelf. Localized /<lang>/authors/
       # ochorus-originals/ URLs are redirected by the page's own load.

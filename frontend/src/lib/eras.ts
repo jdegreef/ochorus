@@ -3,18 +3,21 @@
 // pages (/biographies/era/<id>) so both agree on where a writer falls. The
 // label characterises the era; the year range beside it keeps the
 // generalisation honest. Undated writers (Ochorus' contemporary contributors)
-// fall to a trailing "Contemporary" bucket.
+// fall to "The Modern Era" too: a separate "Contemporary" bucket held only two
+// writers and split one timeframe in two, so it was folded in (2026-10-04).
+// Its old URL, /biographies/era/contemporary/, redirects here (see the era
+// page's load and render.yaml).
 
 // hex-ok-file: illustration hues, one per era, used as `--row-hue` on the
 // sermon rails and biography rails. They are the palette OF a drawing — the
 // same kind of colour a book cover carries — not chrome that follows the theme.
-export type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern' | 'contemporary';
+export type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern';
 
-export type Era = { id: EraId; k: string; until: number | null; range: string };
+export type Era = { id: EraId; k: string; until: number; range: string };
 
 // `until` is the exclusive upper bound on birth year and is the single source
 // of truth; `range` is only its display form, kept on the same row so the two
-// can't drift. `until: null` marks the undated bucket.
+// can't drift.
 //
 // The first cut is 1480, not 1500: the Reformers had to land under "Puritans &
 // Reformers", and Luther (b. 1483), Zwingli (1484), Cranmer (1489) and Tyndale
@@ -26,8 +29,7 @@ export const ERAS: Era[] = [
 	{ id: 'puritans', k: 'bios.eraPuritans', until: 1700, range: '1480–1699' },
 	{ id: 'awakenings', k: 'bios.eraAwakenings', until: 1800, range: '1700–1799' },
 	{ id: 'missionary', k: 'bios.eraMissionary', until: 1900, range: '1800–1899' },
-	{ id: 'modern', k: 'bios.eraModern', until: Infinity, range: '1900–' },
-	{ id: 'contemporary', k: 'bios.eraContemporary', until: null, range: '' }
+	{ id: 'modern', k: 'bios.eraModern', until: Infinity, range: '1900–' }
 ];
 
 /**
@@ -52,14 +54,16 @@ export const ERA_HUE: Record<EraId, string> = {
 	puritans: '#3f6fb5', // sober blue
 	awakenings: '#d98324', // revival fire
 	missionary: '#149e93', // teal, for the voyages
-	modern: '#5257c9', // the brand indigo
-	contemporary: '#4f9a3e' // living and green
+	modern: '#5257c9' // the brand indigo
 };
 
 /** Shelf-card hue for a writer, from their birth year. */
 export const hueForBirthYear = (birth: number | null): string => ERA_HUE[eraOf(birth)];
 
 export const eraOf = (birth: number | null): EraId =>
-	birth == null ? 'contemporary' : ERAS.find((e) => e.until != null && birth < e.until)!.id;
+	birth == null ? 'modern' : ERAS.find((e) => birth < e.until)!.id;
+
+/** Era ids that were folded into another; the old URL redirects to the new. */
+export const RETIRED_ERAS: Record<string, EraId> = { contemporary: 'modern' };
 
 export const eraById = (id: string): Era | undefined => ERAS.find((e) => e.id === id);

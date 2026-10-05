@@ -1,8 +1,9 @@
 import { listAuthors, listBooks, listEraPresence, type BookSummary } from '$lib/library-public';
 import { loadShelf } from '$lib/loadShelf';
 import { getLang } from '$lib/lang.svelte';
-import { error } from '@sveltejs/kit';
-import { ERAS, eraById, eraOf } from '$lib/eras';
+import { error, redirect } from '@sveltejs/kit';
+import { localizeHref } from '$lib/href';
+import { ERAS, RETIRED_ERAS, eraById, eraOf } from '$lib/eras';
 import type { EntryGenerator, PageLoad } from './$types';
 
 // Trailing-slash canonical -> prerenders to era/<id>/index.html, served as a
@@ -27,6 +28,8 @@ export const entries: EntryGenerator = async () => {
 // these era shelves too (each card's photo_url and schema.org image). Force a
 // rebuild AFTER the API migration lands so the era pages show them.
 export const load: PageLoad = async ({ params, fetch }) => {
+	const merged = RETIRED_ERAS[params.era];
+	if (merged) redirect(308, localizeHref(`/biographies/era/${merged}/`));
 	const era = eraById(params.era);
 	if (!era) throw error(404, 'Unknown era');
 	const lang = getLang();
