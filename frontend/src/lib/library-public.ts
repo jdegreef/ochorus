@@ -689,6 +689,10 @@ export interface AppearsInBook extends BookSummary {
 
 export interface AuthorDetail extends AuthorBio {
 	bio_html: string;
+	/** A reading plan drawn from this author's books (the API prefers one made
+	 *  only of them), for the page's "a day at a time" card. Optional: a
+	 *  prerender against an older API omits it. */
+	plan?: { slug: string; title: string; day_count: number } | null;
 	/** How the bio in the requested language got here — badge an unreviewed AI
 	 * translation. "public_domain" for the source-language original (no badge).
 	 * Optional for the same prerender-before-API reason as Chapter.source_type. */

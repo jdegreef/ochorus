@@ -10,10 +10,8 @@
 		type AuthorDetail,
 		type AuthorBio,
 		listAuthors,
-		listPlans,
 		formatLifespan,
-		hasOwnContent,
-		type PlanSummary
+		hasOwnContent
 	} from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { cssString } from '$lib/cssString';
@@ -165,20 +163,9 @@
 
 	// A reading plan built from this author's books, if there is one: "Read
 	// Andrew Murray a day at a time". The plan page then asks how to be reminded
-	// (PlanStartSheet). Loaded after mount, like contemporaries; a plan drawn
-	// only from this author's books beats one that merely includes one.
-	let authorPlan = $state<PlanSummary | null>(null);
-	onMount(async () => {
-		try {
-			const mine = new Set(author.books.map((b) => b.slug));
-			if (!mine.size) return;
-			const plans = (await listPlans(getLang())).filter((p) => p.covers.some((c) => mine.has(c.slug)));
-			const own = (p: PlanSummary) => p.covers.every((c) => mine.has(c.slug));
-			authorPlan = plans.find(own) ?? plans[0] ?? null;
-		} catch {
-			authorPlan = null;
-		}
-	});
+	// (PlanStartSheet). Chosen by the API (AuthorDetailSerializer.get_plan), so
+	// it is in the prerendered page and never shifts the fold.
+	const authorPlan = $derived(author.plan ?? null);
 	onMount(async () => {
 		try {
 			const all = await listAuthors(getLang());
@@ -216,38 +203,28 @@
 	// "…fourteen great-gr"); truncateMeta ends on a sentence or whole-word boundary
 	// within the ~160-char budget scrapers actually display. The book page already
 	// routes its description through the same helper.
-	// A bio, when this locale has one, is used as-is. When it doesn't, the localized
+	// A bio, when this locale has one, leads (see below). When it doesn't, the localized
 	// metaFallback sentence is enriched with the same era + work counts the header
 	// shows (summaryBits — already localized), so a bio-less author page still offers
 	// the SERP something concrete rather than a bare "free classic Christian books"
 	// line. No new catalogue string; the counts matter most on translated pages,
 	// where a localized bio is most often absent.
-	// With a bio: its first sentence, then what the reader can do here — "Read
-	// 12 books free on Ochorus, online or offline." Search showed author pages
-	// seen often and clicked rarely; the bio alone never said the books are
-	// here, free, to read.
+	// With a bio and books: as much of the bio as fits, then what the reader
+	// can do here — "Their books are free to read on Ochorus, online or
+	// offline." Search showed author pages seen often and clicked rarely; the
+	// bio alone never said the books are here, free, to read. No count: it
+	// would need real plurals (Arabic, Ukrainian) and young-reader editions
+	// are separate rows that would inflate it.
 	const readFree = $derived(
 		author.books.length > 1
-			? t('author.metaReadFreeMany').replace('%n%', String(author.books.length))
+			? t('author.metaReadFreeBooks')
 			: author.books.length === 1
 				? t('author.metaReadFree')
 				: ''
 	);
-	/** The bio's first real sentence: an end mark at least 60 characters in, so
-	 *  "Andrew Murray Jr." isn't taken for one. */
-	function firstSentence(text: string): string {
-		for (const m of text.matchAll(/[.!?。।።](?=\s|$)/g)) {
-			if ((m.index ?? 0) >= 60) return text.slice(0, (m.index ?? 0) + 1);
-		}
-		return text;
-	}
 	const description = $derived.by(() => {
 		if (author.bio && readFree) {
-			const room = 160 - readFree.length - 1;
-			const first = firstSentence(author.bio);
-			const lead =
-				first.length <= room ? first : `${first.slice(0, room - 1).replace(/\s+\S*$/, '')}…`;
-			return `${lead} ${readFree}`;
+			return `${truncateMeta(author.bio, 160 - readFree.length - 1)} ${readFree}`;
 		}
 		if (author.bio) return truncateMeta(author.bio);
 		const base = t('author.metaFallback').replace('%name%', author.name);

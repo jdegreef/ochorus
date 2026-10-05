@@ -1536,13 +1536,15 @@ class BookCardPayloadTests(TestCase):
         # The 16th is `hubs` (the tradition/place chips): ONE read of which
         # writers this language's Biographies page lists, to know which hubs
         # have enough of them to exist here.
+        # The 17th is `plan` (the "read them a day at a time" card): ONE read of
+        # this language's published plan days, flat however many plans exist.
         for i in range(6):
             Article.objects.create(
                 slug=f"a{i}-guide", language="en", h1=f"Guide {i}",
                 description="d", body_html="<p>x</p>", is_published=True,
                 related=[{"type": "author", "slug": "murray"}],
             )
-        with self.assertNumQueries(16):
+        with self.assertNumQueries(17):
             self.client.get("/api/library/authors/murray/?language=en")
 
     def test_book_detail_query_count_is_the_same_in_every_language(self):
@@ -1575,6 +1577,47 @@ class BookCardPayloadTests(TestCase):
             self.client.get("/api/library/books/humility/?language=en")
         with self.assertNumQueries(16):
             self.client.get("/api/library/books/humility/?language=lg")
+
+
+class AuthorPlanTests(TestCase):
+    """The author page's plan card: judged on every day of a plan, not the
+    five-book covers strip, and an all-their-own plan beats a mixed one."""
+
+    def setUp(self):
+        self.client = APIClient()
+        murray = Author.objects.create(slug="murray", name="Andrew Murray")
+        bounds = Author.objects.create(slug="bounds", name="E. M. Bounds")
+        for i in range(6):
+            Book.objects.create(author=murray, slug=f"m{i}", language="en", title=f"M{i}")
+        Book.objects.create(author=bounds, slug="prayer", language="en", title="Prayer")
+
+    def _plan(self, slug, books, sort_order=0, language="en"):
+        plan = Plan.objects.create(slug=slug, language=language, title=slug, sort_order=sort_order)
+        for day, b in enumerate(books, start=1):
+            PlanDay.objects.create(plan=plan, day=day, book_slug=b, chapter_order=1)
+
+    def _get(self, language="en"):
+        return self.client.get(f"/api/library/authors/murray/?language={language}").json()["plan"]
+
+    def test_none_without_a_plan(self):
+        self._plan("prayer-week", ["prayer"])
+        self.assertIsNone(self._get())
+
+    def test_own_plan_beats_an_earlier_mixed_one_even_past_five_books(self):
+        # Five Murray books then Bounds: the covers strip would call it his own.
+        self._plan("mixed", ["m0", "m1", "m2", "m3", "m4", "prayer"], sort_order=0)
+        self._plan("murray-days", ["m5", "m5", "m1"], sort_order=5)
+        self.assertEqual(
+            self._get(), {"slug": "murray-days", "title": "murray-days", "day_count": 3}
+        )
+
+    def test_a_late_appearance_still_counts(self):
+        self._plan("survey", ["prayer"] * 6 + ["m3"])
+        self.assertEqual(self._get()["slug"], "survey")
+
+    def test_other_languages_plans_are_not_offered(self):
+        self._plan("murray-days", ["m1"], language="es")
+        self.assertIsNone(self._get())
 
 
 class TranslationBadgeSourceTypeTests(TestCase):
