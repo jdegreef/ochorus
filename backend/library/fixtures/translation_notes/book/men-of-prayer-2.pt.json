@@ -1,0 +1,382 @@
+{
+ "kind": "book",
+ "slug": "men-of-prayer-2",
+ "language": "pt",
+ "job_issue": 5123,
+ "references": [
+  {
+   "reference": "John 15:7",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 13,
+   "source_file": "articles/what-does-it-mean-to-abide-in-christ.pt.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 2,
+   "block_index": 14,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 15
+  },
+  {
+   "reference": "1 Thessalonians 5:17",
+   "status": "self_rendered",
+   "chapter_order": 2,
+   "block_index": 29
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 1
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 11
+  },
+  {
+   "reference": "Hebrews 4:16",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 13
+  },
+  {
+   "reference": "2 Samuel 7:25",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 18
+  },
+  {
+   "reference": "Genesis 1:31",
+   "status": "self_rendered",
+   "chapter_order": 3,
+   "block_index": 25
+  },
+  {
+   "reference": "Romans 8:26-27",
+   "status": "mined",
+   "chapter_order": 4,
+   "block_index": 10,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 11
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "self_rendered",
+   "chapter_order": 4,
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 10
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 5,
+   "block_index": 11,
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "self_rendered",
+   "chapter_order": 5,
+   "block_index": 12
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 10,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 6,
+   "block_index": 11,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "1 John 5:14",
+   "status": "self_rendered",
+   "chapter_order": 6,
+   "block_index": 12
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 10,
+   "source_file": "articles/purpose-in-prayer-guide.pt.json"
+  },
+  {
+   "reference": "Ephesians 6:18",
+   "status": "mined",
+   "chapter_order": 7,
+   "block_index": 11,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "John 15:16",
+   "status": "self_rendered",
+   "chapter_order": 7,
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 44:3",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 12
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 13
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 14,
+   "source_file": "articles/prevailing-prayer-guide.pt.json"
+  },
+  {
+   "reference": "Zechariah 12:10",
+   "status": "mined",
+   "chapter_order": 8,
+   "block_index": 17,
+   "source_file": "ministry-of-intercession.pt.json"
+  },
+  {
+   "reference": "Ephesians 2:12",
+   "status": "self_rendered",
+   "chapter_order": 8,
+   "block_index": 19
+  },
+  {
+   "reference": "Luke 11:13",
+   "status": "mined",
+   "chapter_order": 9,
+   "block_index": 10,
+   "source_file": "articles/what-is-the-baptism-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Isaiah 44:3",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 2:17",
+   "status": "self_rendered",
+   "chapter_order": 9,
+   "block_index": 12
+  },
+  {
+   "reference": "Isaiah 62:6-7",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 14
+  },
+  {
+   "reference": "Ezekiel 22:30",
+   "status": "self_rendered",
+   "chapter_order": 10,
+   "block_index": 15
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 10,
+   "block_index": 16,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "Romans 10:14",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 10
+  },
+  {
+   "reference": "2 Timothy 4:2",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 12
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "chapter_order": 11,
+   "block_index": 13,
+   "source_file": "sermons/christs-boundless-compassion.pt.json"
+  },
+  {
+   "reference": "Psalm 119:11",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 24
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 11,
+   "block_index": 26
+  },
+  {
+   "reference": "Jeremiah 29:13",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 10
+  },
+  {
+   "reference": "John 14:21",
+   "status": "mined",
+   "chapter_order": 12,
+   "block_index": 11,
+   "source_file": "the-masters-indwelling.pt.json"
+  },
+  {
+   "reference": "Isaiah 55:8",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 13
+  },
+  {
+   "reference": "Isaiah 55:9",
+   "status": "self_rendered",
+   "chapter_order": 12,
+   "block_index": 13
+  },
+  {
+   "reference": "Matthew 28:19-20",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 11
+  },
+  {
+   "reference": "Acts 1:8",
+   "status": "mined",
+   "chapter_order": 13,
+   "block_index": 12,
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "1 John 5:14-15",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 13
+  },
+  {
+   "reference": "2 Chronicles 7:14",
+   "status": "self_rendered",
+   "chapter_order": 13,
+   "block_index": 22
+  },
+  {
+   "reference": "Mark 16:15",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 10,
+   "source_file": "a-call-to-the-unconverted.pt.json"
+  },
+  {
+   "reference": "John 10:27",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 11,
+   "source_file": "articles/how-to-find-gods-will-for-your-life.pt.json"
+  },
+  {
+   "reference": "Acts 13:2",
+   "status": "mined",
+   "chapter_order": 14,
+   "block_index": 12,
+   "source_file": "the-person-and-work-of-the-holy-spirit.pt.json"
+  },
+  {
+   "reference": "Ephesians 6:17-18",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 10
+  },
+  {
+   "reference": "Romans 8:34",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 11
+  },
+  {
+   "reference": "1 Timothy 2:1",
+   "status": "self_rendered",
+   "chapter_order": 15,
+   "block_index": 12
+  },
+  {
+   "reference": "Matthew 6:6",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 11,
+   "source_file": "articles/the-morning-watch.pt.json"
+  },
+  {
+   "reference": "Philippians 4:6",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 12,
+   "source_file": "articles/prevailing-prayer-guide.pt.json"
+  },
+  {
+   "reference": "Philippians 4:7",
+   "status": "self_rendered",
+   "chapter_order": 16,
+   "block_index": 12
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "mined",
+   "chapter_order": 16,
+   "block_index": 13,
+   "source_file": "articles/what-is-intercessory-prayer.pt.json"
+  },
+  {
+   "reference": "Hebrews 7:25",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 4
+  },
+  {
+   "reference": "Romans 8:26",
+   "status": "self_rendered",
+   "chapter_order": 17
+  },
+  {
+   "reference": "Matthew 21:22",
+   "status": "self_rendered",
+   "chapter_order": 17,
+   "block_index": 44
+  }
+ ]
+}
