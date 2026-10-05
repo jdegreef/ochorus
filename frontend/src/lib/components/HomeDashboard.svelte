@@ -4,6 +4,7 @@
 	import { auth } from '$lib/auth.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
+	import WelcomePalette from '$lib/components/WelcomePalette.svelte';
 	import DashboardStats from '$lib/components/DashboardStats.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
 	import PlansProgress from '$lib/components/PlansProgress.svelte';
@@ -52,6 +53,9 @@
 <HomeHero
 	greeting={greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
 />
+
+<!-- Just signed up: choose the colours of your library (once; see WelcomePalette). -->
+<WelcomePalette />
 
 <!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
      Self-hides the moment there's any reading, favourite or plan. -->

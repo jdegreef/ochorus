@@ -1322,5 +1322,11 @@
   "finished_highlights": "تظليلاتك (%n%)",
   "finished_more_by": "المزيد من %name%",
   "finished_about_author": "عن المؤلف",
-  "finished_plans": "خطط قراءة تتضمن هذا الكتاب"
+  "finished_plans": "خطط قراءة تتضمن هذا الكتاب",
+  "welcome_eyebrow": "مرحبًا بك في Ochorus",
+  "welcome_palette_title": "اختر مكتبتك",
+  "welcome_palette_sub": "اختر الألوان التي تحب القراءة بها — يتغير التطبيق كله أثناء اختيارك. يمكنك تغيير ذلك في أي وقت من الإعدادات.",
+  "welcome_brightness": "السطوع",
+  "welcome_done": "ابدأ القراءة",
+  "welcome_skip": "ليس الآن"
 }

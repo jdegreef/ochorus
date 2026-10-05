@@ -1322,5 +1322,11 @@
   "finished_highlights": "Vos passages surlignés (%n%)",
   "finished_more_by": "Plus de %name%",
   "finished_about_author": "À propos de l'auteur",
-  "finished_plans": "Plans de lecture avec ce livre"
+  "finished_plans": "Plans de lecture avec ce livre",
+  "welcome_eyebrow": "Bienvenue sur Ochorus",
+  "welcome_palette_title": "Choisissez votre bibliothèque",
+  "welcome_palette_sub": "Choisissez les couleurs dans lesquelles vous aimeriez lire — toute l'application change à mesure que vous choisissez. Vous pourrez le modifier à tout moment dans les Réglages.",
+  "welcome_brightness": "Luminosité",
+  "welcome_done": "Commencer à lire",
+  "welcome_skip": "Pas maintenant"
 }

@@ -1322,5 +1322,11 @@
   "finished_highlights": "By'olambye (%n%)",
   "finished_more_by": "Ebirala okuva eri %name%",
   "finished_about_author": "Ku muwandiisi",
-  "finished_plans": "Enteekateeka z'okusoma ezirimu ekitabo kino"
+  "finished_plans": "Enteekateeka z'okusoma ezirimu ekitabo kino",
+  "welcome_eyebrow": "Tukwanirizza ku Ochorus",
+  "welcome_palette_title": "Londa etterekero lyo",
+  "welcome_palette_sub": "Londa langi z'oyagala okusomeramu — app yonna ekyuka ng'olonda. Osobola okukikyusa essaawa yonna mu Settings.",
+  "welcome_brightness": "Okwaka",
+  "welcome_done": "Tandika okusoma",
+  "welcome_skip": "Si kati"
 }

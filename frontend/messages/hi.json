@@ -1322,5 +1322,11 @@
   "finished_highlights": "आपके हाइलाइट (%n%)",
   "finished_more_by": "%name% की और रचनाएँ",
   "finished_about_author": "लेखक के बारे में",
-  "finished_plans": "इस पुस्तक वाली पठन योजनाएँ"
+  "finished_plans": "इस पुस्तक वाली पठन योजनाएँ",
+  "welcome_eyebrow": "Ochorus में आपका स्वागत है",
+  "welcome_palette_title": "अपना पुस्तकालय चुनें",
+  "welcome_palette_sub": "वे रंग चुनें जिनमें आप पढ़ना चाहेंगे — चुनते ही पूरा ऐप बदल जाता है। आप इसे कभी भी सेटिंग्स में बदल सकते हैं।",
+  "welcome_brightness": "चमक",
+  "welcome_done": "पढ़ना शुरू करें",
+  "welcome_skip": "अभी नहीं"
 }

@@ -5,6 +5,7 @@ import { authEnabled, supabase } from './supabase';
 import { readerPrefs } from './readerPrefs.svelte';
 import { listen } from './listen.svelte';
 import { theme, normalizePref } from './theme.svelte';
+import { welcome } from './welcome.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
 import { shownVariant } from './signupBand';
@@ -310,6 +311,8 @@ class Auth {
 			// Blank theme = no saved prefs yet (see UserProfile.theme): the
 			// account's values are model defaults, so it takes this device's.
 			const fresh = !p.theme;
+			// A new account's first sign-in: offer the "choose your library" welcome.
+			if (fresh) welcome.offer();
 			if (!fresh) {
 				theme.set(normalizePref(p.theme));
 				if (p.font_scale) readerPrefs.setScale(p.font_scale);
