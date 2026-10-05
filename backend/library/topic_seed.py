@@ -187,6 +187,8 @@ TOPICS = [
             "heretics",
             "st-francis-of-assisi",
             "revelations-of-divine-love",
+            "phantastes",
+            "diary-of-an-old-soul",
         ],
     ),
     (
@@ -333,6 +335,7 @@ TOPICS = [
             "our-daily-walk",
             "days-of-heaven-upon-earth",
             "cheque-book",
+            "diary-of-an-old-soul",
         ],
     ),
     (
@@ -624,6 +627,8 @@ TOPICS = [
             "sons-of-the-king-2",
             "daughters-of-the-king-3",
             "sons-of-the-king-3",
+            "the-princess-and-the-goblin",
+            "at-the-back-of-the-north-wind",
         ],
     ),
 ]
