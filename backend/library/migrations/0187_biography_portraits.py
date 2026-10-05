@@ -1,4 +1,4 @@
-"""Portraits for the 23 biography authors who were still wearing initials.
+"""Portraits for 21 biography authors who were still wearing initials.
 
 Same mechanism as 0129 / 0146: ``author_sync`` fill-syncs ``photo_url`` on every
 deploy but NOT the credit fields, so a credited portrait's ``photo_attribution``
@@ -6,7 +6,7 @@ deploy but NOT the credit fields, so a credited portrait's ``photo_attribution``
 fresh DB gets them from ``authors.json``).
 
 Sourcing follows the founder's 2026-10-05 steer: the photos need not be public
-domain. Nine are public-domain paintings, engravings or old photographs from
+domain. Eight are public-domain paintings, engravings or old photographs from
 Wikimedia Commons (blank credit). The rest are 20th-century photographs with no
 free copy anywhere; each is the best available image from a ministry, church,
 archive, publisher or news outlet, credited to that source with a link to the
@@ -31,10 +31,6 @@ PORTRAITS = {
         "Derek Prince Ministries",
         "https://www.derekprince.com/en-gb/about/derek-prince",
     ),
-    "elisabeth-elliot": (
-        "The Elisabeth Elliot Foundation",
-        "https://elisabethelliot.org/about/timeline/",
-    ),
     "erica-sabiti": (
         "Courtesy of the Church of Uganda, via Daily Monitor",
         "https://www.monitor.co.ug/uganda/news/national/namirembe-question-troubles-anglican-church-4401686",
@@ -51,10 +47,6 @@ PORTRAITS = {
         "https://anglicanfocus.org.au/2020/05/29/ugandan-anglican-martyr-archbishop-janani-luwum/",
     ),
     "jesse-lyman-hurlbut": ("", ""),
-    "jim-elliot": (
-        "The Elisabeth Elliot Foundation",
-        "https://elisabethelliot.org/about/timeline/",
-    ),
     "joe-church": (
         "From H. H. Osborn, Pioneers in the East African Revival, via Beautiful Feet",
         "https://romans1015.com/east-africa/",

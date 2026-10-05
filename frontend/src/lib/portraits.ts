@@ -56,7 +56,6 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'dietrich-bonhoeffer': '50% 0%', // 1939 standing figure; head high at ~15% of a 0.63 plate
 	'dwight-l-moody': '50% 5%',
 	'e-m-bounds': '50% 2%', // 1864 photograph; face at ~32% of a 0.72 plate
-	'elisabeth-elliot': '50% 15%', // 1970s studio bust; face at ~33% of a 0.69 plate
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
@@ -80,7 +79,6 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'jarena-lee': '50% 0%', // 1849 lithograph: seated figure, face at ~18% of a 0.73 plate
 	'jeanne-guyon': '50% 58%',
 	'jesse-lyman-hurlbut': '50% 30%', // c. 1895 bust photo; near-square, so nearly inert
-	'jim-elliot': '50% 10%', // 1953 snapshot from the Elliots' scrapbook; face at ~30% of a 0.73 plate
 	'joe-church': '50% 30%', // cropped from a photo with his wife Decie; near-square
 	'john-bunyan': '50% 0%',
 	'john-calvin': '50% 0%', // c.1550 capped portrait; face at ~29% of a 0.72 plate
