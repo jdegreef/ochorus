@@ -8,6 +8,8 @@
 	import { allProgress } from '$lib/progress';
 	import { buildResumeItems } from '$lib/resumeItems';
 	import { chooseVariant, type SignupVariant } from '$lib/signupBand';
+	import { seenOnView, withSource } from '$lib/signupSource';
+	import { withSignup } from '$lib/loginHref';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
 
 	/**
@@ -29,13 +31,13 @@
 	 * comes from the local progress cache, read after mount.
 	 */
 	const t = i18n.t;
-	const signupHref = $derived(`${localizeHref('/login')}?mode=signup`);
 
 	let decided = $state(false);
 	// Set synchronously when the effect below starts deciding, so a re-run while
 	// the book list is in flight (auth settling) cannot decide twice.
 	let deciding = false;
 	let variant = $state<SignupVariant>('keep');
+	const signupHref = $derived(withSource(withSignup(localizeHref('/login')), variant));
 	let topBook = $state<ResumeItem | null>(null);
 
 	// A genuine side effect: it reads localStorage (progress + the sticky arm),
@@ -89,7 +91,7 @@
      differing only in their two message keys. -->
 {#snippet cta(ctaKey: string, microKey: string)}
 	<div class="flex flex-col items-stretch gap-2 text-center">
-		<a class="btn btn-primary" href={signupHref}>{t(ctaKey)}</a>
+		<a class="btn btn-primary" href={signupHref} use:seenOnView={variant}>{t(ctaKey)}</a>
 		<span class="text-small text-muted">{t(microKey)}</span>
 	</div>
 {/snippet}

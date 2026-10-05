@@ -138,7 +138,7 @@
 	const localeMax = $derived(Math.max(1, ...(data?.by_locale.map((l) => l.count) ?? [1])));
 	const methodMax = $derived(Math.max(1, ...(data?.by_method.map((m) => m.count) ?? [1])));
 	const variantMax = $derived(
-		Math.max(1, ...(data?.by_signup_variant.map((v) => v.count) ?? [1]))
+		Math.max(1, ...(data?.by_signup_variant.map((v) => v.count_30d) ?? [1]))
 	);
 	const countryMax = $derived(Math.max(1, ...(data?.by_country.map((c) => c.count) ?? [1])));
 	const tzMax = $derived(Math.max(1, ...(data?.by_timezone.map((t) => t.count) ?? [1])));
@@ -341,12 +341,17 @@
 					</section>
 				</div>
 
-				<!-- By sign-up prompt: which logged-out home band earned each account
-				     (the A/B test). The three random arms are comparable; the
-				     progress-targeted arm is a different audience, so it's set apart. -->
+				<!-- By where they started: the sign-up prompt each account came
+				     through (the last one followed, within a day — $lib/signupSource),
+				     including the home band's A/B arms. Bars are the last 30 days, so a
+				     new prompt shows up next to old ones; all-time counts sit beside.
+				     The progress-targeted arm is a different audience, so it's flagged. -->
 				{#if d.by_signup_variant.length}
 					<section class="mb-8 rounded-card border border-border bg-surface p-5">
-						<h2 class="text-h3 mb-3">By sign-up prompt</h2>
+						<div class="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">By where they started</h2>
+							<span class="text-micro text-muted">last 30 days · all time</span>
+						</div>
 						<ul class="space-y-2">
 							{#each d.by_signup_variant as v (v.variant)}
 								<li class="flex items-center gap-3">
@@ -365,17 +370,20 @@
 											>
 										{/if}
 									</span>
-									{@render bar(v.count, variantMax)}
+									{@render bar(v.count_30d, variantMax)}
 									<span class="w-8 shrink-0 text-right font-semibold tabular-nums text-text"
-										>{fmt(v.count)}</span
+										>{fmt(v.count_30d)}</span
 									>
+									<span class="w-10 shrink-0 text-right tabular-nums text-muted">{fmt(v.count)}</span>
 								</li>
 							{/each}
 						</ul>
 						<p class="mt-3 text-micro text-muted">
-							The three random arms split first-time visitors evenly, so their counts compare
-							directly. “Progress-targeted” is shown only to readers who already had reading in
-							progress — a warmer audience, tracked but not ranked against the others.
+							Each account counts once, under the last prompt the reader followed to sign up
+							(within a day). The home band's three random arms split first-time visitors evenly, so
+							they compare directly; “Progress-targeted” is shown only to readers with reading in
+							progress. How many people saw and started each prompt is in Plausible, under the
+							“Signup prompt seen” and “Signup started” goals.
 						</p>
 					</section>
 				{/if}

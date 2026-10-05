@@ -244,7 +244,7 @@
 		<EmptyState message={t('articles.emptyIndex')} />
 	{/if}
 
-	<AccountCta />
+	<AccountCta source="article" />
 </div>
 
 <style>

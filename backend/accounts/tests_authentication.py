@@ -161,6 +161,11 @@ class SupabaseJWTAuthenticationTests(TestCase):
         user, _ = self.auth.authenticate(_request(token))
         self.assertEqual(UserProfile.objects.get(user=user).signup_variant, "habit")
 
+    def test_records_prompt_source_from_token_metadata(self):
+        token = _token(email="reader@example.com", user_metadata={"signup_variant": "bookshelf"})
+        user, _ = self.auth.authenticate(_request(token))
+        self.assertEqual(UserProfile.objects.get(user=user).signup_variant, "bookshelf")
+
     def test_signup_variant_is_create_only(self):
         # Recorded at first sign-up; a later login (even one advertising a
         # different arm, as a stale localStorage would) must not move it.

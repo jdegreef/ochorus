@@ -11,13 +11,34 @@ def split_providers(value: str) -> list[str]:
     return [p for p in value.split(",") if p]
 
 
-#: The logged-out home sign-up band arms (``UserProfile.signup_variant``). Three
-#: random A/B arms shown to first-time visitors, plus ``progress`` — the
-#: progress-targeted variant shown only to readers who already have local
-#: reading. Kept here so the JWT capture (``accounts.authentication``) and the
+#: Every sign-up source (``UserProfile.signup_variant``): the logged-out home
+#: band's arms — three random A/B arms shown to first-time visitors, plus
+#: ``progress``, the progress-targeted variant shown only to readers who already
+#: have local reading — and every other prompt that asks for an account. Kept
+#: here so the JWT capture (``accounts.authentication``) and the
 #: admin breakdown (``library.admin_views.analytics``) share one vocabulary; an
 #: unknown value from a stray client is dropped rather than stored.
-SIGNUP_VARIANTS = ("keep", "habit", "library", "progress")
+SIGNUP_VARIANTS = (
+    # The home sign-up band's arms.
+    "keep",
+    "habit",
+    "library",
+    "progress",
+    # Every other prompt that asks for an account (frontend $lib/signupSource,
+    # PROMPT_SOURCES — signupSource.test.ts fails if the two drift).
+    "bookshelf",
+    "notebook",
+    "save_toast",
+    "highlight_toast",
+    "chapter_end",
+    "plan_start",
+    "article",
+    "quote",
+    "footer",
+    "header",
+    "menu",
+    "feedback",
+)
 
 
 class UserProfile(models.Model):

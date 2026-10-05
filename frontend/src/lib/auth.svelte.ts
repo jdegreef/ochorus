@@ -8,7 +8,7 @@ import { theme, normalizePref } from './theme.svelte';
 import { welcome } from './welcome.svelte';
 import { lang } from './lang.svelte';
 import { readingSync } from './readingSync';
-import { shownVariant } from './signupBand';
+import { signupSource } from './signupSource';
 import { type AdminScope, type Scopes, can as canDo, hasAnyAdminAccess } from './adminAccess';
 
 export interface Profile {
@@ -43,15 +43,17 @@ const NOT_CONFIGURED = AUTH_NOT_CONFIGURED;
 const origin = () => (browser ? window.location.origin : undefined);
 
 /**
- * Supabase sign-up options carrying the sign-up-band attribution, or nothing.
+ * Supabase sign-up options carrying the sign-up attribution (the prompt the
+ * reader followed, else the home band they saw — see `$lib/signupSource`), or
+ * nothing.
  * `data` lands in the user's ``user_metadata`` (so it survives the email
  * confirmation round-trip) and Django records it create-only against the new
  * account. Only set when the reader actually saw a band — the backend also
  * validates the value, so a stale key can never corrupt the analytics.
  */
 function signupMetadata(): { data?: { signup_variant: string } } {
-	const variant = shownVariant();
-	return variant ? { data: { signup_variant: variant } } : {};
+	const source = signupSource();
+	return source ? { data: { signup_variant: source } } : {};
 }
 
 /**
@@ -358,16 +360,16 @@ class Auth {
 	}
 
 	/**
-	 * Attribute a NEW account to the sign-up band the reader saw, for providers
+	 * Attribute a NEW account to the sign-up prompt the reader followed, for providers
 	 * that can't carry it in the JWT (OAuth). Fire-and-forget POST of the stored
-	 * arm, gated to a genuinely fresh account (Supabase `created_at` within the
-	 * window) so a returning reader's stale stored arm is never sent. The backend
+	 * source, gated to a genuinely fresh account (Supabase `created_at` within the
+	 * window) so a returning reader's stale stored source is never sent. The backend
 	 * re-checks create-only + freshness, and email/magic-link accounts already
-	 * carry their arm from the JWT, so this is a no-op for them.
+	 * carry their source from the JWT, so this is a no-op for them.
 	 */
 	#recordSignupSource() {
 		if (!this.user) return;
-		const variant = shownVariant();
+		const variant = signupSource();
 		if (!variant) return;
 		const created = this.#userCreatedAt ? Date.parse(this.#userCreatedAt) : NaN;
 		if (!Number.isFinite(created) || Date.now() - created > 15 * 60 * 1000) return;

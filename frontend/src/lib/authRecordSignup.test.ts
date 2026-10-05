@@ -42,8 +42,11 @@ import { auth } from './auth.svelte';
 beforeEach(() => localStorage.clear());
 
 describe('#recordSignupSource wiring', () => {
-	it('POSTs the shown band arm on a fresh sign-in (the OAuth attribution path)', async () => {
-		localStorage.setItem('ochorus:signup_variant', JSON.stringify('library'));
+	it('POSTs the followed prompt on a fresh sign-in (the OAuth attribution path)', async () => {
+		localStorage.setItem(
+			'ochorus:signup_source',
+			JSON.stringify({ source: 'library', at: Date.now() })
+		);
 		await auth.init();
 		const call = apiFetch.mock.calls.find((c) => c[0] === '/api/auth/signup-source/');
 		expect(call, 'expected a POST to /api/auth/signup-source/').toBeTruthy();
