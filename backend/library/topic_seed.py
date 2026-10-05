@@ -910,6 +910,7 @@ TOPIC_ARTICLES = {
         "the-god-of-all-comfort-guide",
         "gleanings-among-the-sheaves-guide",
         "the-key-in-my-hand-guide",
+        "why-do-we-long-for-something-more",
     ],
     "revival-and-missions": [
         "what-is-revival-and-how-does-it-begin",
@@ -1061,6 +1062,7 @@ TOPIC_ARTICLES = {
         "a-short-and-easy-method-of-prayer-guide",
         "the-masters-indwelling-guide",
         "life-experience-gospel-labours-guide",
+        "the-old-books-behind-c-s-lewis",
     ],
     "the-preached-word": [
         "how-to-know-if-god-is-calling-you-to-ministry",
