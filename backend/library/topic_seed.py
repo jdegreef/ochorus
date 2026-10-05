@@ -177,6 +177,8 @@ TOPICS = [
             "life-of-pascal",
             "the-pursuit-of-god",
             "unspoken-sermons",
+            "orthodoxy",
+            "the-everlasting-man",
         ],
     ),
     (
@@ -446,6 +448,7 @@ TOPICS = [
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
             "key-teachings-of-c-s-lewis",
+            "the-everlasting-man",
         ],
     ),
     (
