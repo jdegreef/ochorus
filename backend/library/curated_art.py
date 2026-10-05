@@ -1281,6 +1281,16 @@ ORIGINAL_GROUND: dict[str, Original] = {
         "stoneware jug of heather, and sermon pages with a dip pen: the "
         "Aberdeenshire minister who preached his sermons on paper.",
     ),
+    # Drawn 2026-10-05 by the same stand-in SDF ray-marcher, wall in the book's
+    # claret, since the series' own renderer is not in the repo. No likeness:
+    # the journalist's table only, every lit object kept clear of the mark.
+    "key-teachings-of-g-k-chesterton": Original(
+        "4f631aa3d024379b6645dc3cc83bd988271f426e78ae2ce89142350589e8a698",
+        "A parchment-shaded brass lamp, the day's newspapers on a cloth "
+        "volume under a wide-brimmed hat, galley proofs with a fountain pen, "
+        "a glass of claret and a walking stick against the wall: the Fleet "
+        "Street journalist who said grace before he dipped his pen.",
+    ),
     # Portraits of Courage, volume 7. The series wears museum paintings through
     # CURATED, but the session that wrote this life could reach no collection
     # host (Commons, Wikidata and the museum APIs were all blocked), so the

@@ -149,7 +149,8 @@ export const BOOK_LAYOUT: Record<string, CoverLayout | null> = {
 	'key-teachings-of-dietrich-bonhoeffer': null,
 	'key-teachings-of-gareth-evans': null,
 	'key-teachings-of-c-s-lewis': null,
-	'key-teachings-of-george-macdonald': null
+	'key-teachings-of-george-macdonald': null,
+	'key-teachings-of-g-k-chesterton': null
 };
 
 /**
@@ -199,7 +200,8 @@ export const TYPE_TOP: ReadonlySet<string> = new Set([
 	'key-teachings-of-dietrich-bonhoeffer',
 	'key-teachings-of-gareth-evans',
 	'key-teachings-of-c-s-lewis',
-	'key-teachings-of-george-macdonald'
+	'key-teachings-of-george-macdonald',
+	'key-teachings-of-g-k-chesterton'
 ]);
 
 /**

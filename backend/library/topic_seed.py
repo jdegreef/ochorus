@@ -101,6 +101,7 @@ TOPICS = [
             "key-teachings-of-c-s-lewis",
             "revelations-of-divine-love",
             "key-teachings-of-george-macdonald",
+            "key-teachings-of-g-k-chesterton",
         ],
     ),
     (
@@ -460,6 +461,7 @@ TOPICS = [
             "key-teachings-of-john-calvin",
             "key-teachings-of-martin-luther",
             "key-teachings-of-c-s-lewis",
+            "key-teachings-of-g-k-chesterton",
             "the-everlasting-man",
         ],
     ),

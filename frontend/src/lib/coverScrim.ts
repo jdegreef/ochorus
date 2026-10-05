@@ -56,6 +56,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'key-teachings-of-dwight-l-moody': 0.35,
 	'key-teachings-of-e-m-bounds': 0.30,
 	'key-teachings-of-frederick-brotherton-meyer': 0.30,
+	'key-teachings-of-g-k-chesterton': 0.30,
 	'key-teachings-of-gareth-evans': 0.30,
 	'key-teachings-of-george-macdonald': 0.30,
 	'key-teachings-of-george-whitefield': 0.30,
