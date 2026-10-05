@@ -41,6 +41,11 @@ SIGNUP_VARIANTS = (
 )
 
 
+# The library palettes the web app offers (frontend/src/lib/palettes.ts — a
+# frontend test holds the two lists together). Anything else is ignored.
+PALETTES = ("parchment", "cathedral", "olive", "hearth", "dawn", "monastery")
+
+
 class UserProfile(models.Model):
     """App-side profile for a Supabase-authenticated user.
 
@@ -64,6 +69,11 @@ class UserProfile(models.Model):
     # device's own instead of adopting these defaults. A non-blank default here
     # turned a dark-mode reader light the moment they signed up.
     theme = models.CharField(max_length=20, blank=True, default="")
+    # The library palette (the web app's "Library colours": parchment,
+    # cathedral, …) — layered over ``theme``, which stays the brightness. Blank
+    # the same way and for the same reason: "never saved", so the device's own
+    # choice is kept and uploaded rather than reset to the house palette.
+    palette = models.CharField(max_length=20, blank=True, default="")
     font_scale = models.FloatField(default=1.0)
     # Listening (Text-to-Speech) preferences. tts_voice_uri is the device
     # SpeechSynthesis voiceURI — best-effort across devices (a voice absent on

@@ -95,6 +95,7 @@ class MeView(APIView):
             "display_name": profile.display_name,
             "locale": profile.locale,
             "theme": profile.theme,
+            "palette": profile.palette,
             "font_scale": profile.font_scale,
             "tts_rate": profile.tts_rate,
             "tts_voice_uri": profile.tts_voice_uri,
@@ -123,6 +124,8 @@ class MeView(APIView):
         return Response(data)
 
     def patch(self, request):
+        from .models import PALETTES
+
         profile = self._profile(request)
         data = request.data
         updated = []
@@ -137,6 +140,9 @@ class MeView(APIView):
         if data.get("theme") in ("paper", "light", "dark", "sepia", "system"):
             profile.theme = data["theme"]
             updated.append("theme")
+        if data.get("palette") in PALETTES:
+            profile.palette = data["palette"]
+            updated.append("palette")
         try:
             if data.get("font_scale") is not None:
                 profile.font_scale = max(0.8, min(1.6, float(data["font_scale"])))
