@@ -639,6 +639,16 @@ nobody knows which of the two renderings came first.
 
 ## When the ENGLISH is wrong — report it, always
 
+> **Founder direction (2026-10-05): FIX, don't just report.** For house-written
+> content (articles, guides) apply the repair to the English AND every shipped
+> edition carrying it, in the same PR (#5201 fixed 11 across en/es/ar/hi/pt/fr).
+> Brief translators to emit `ENGLISH-ERROR: <exact en substring> => <fix> | why`
+> (or `UNSURE:`) so the edit is mechanical; translate the corrected sense. When a
+> citation moves (Matt 3:2→4:17), re-quote each edition from ITS Bible — the
+> wording differs per verse. Verify every claim against the book first: one of
+> five "errors" in #5199 was the translator's miscount. For PD book/sermon text
+> the rules below still govern.
+
 Translating is how we find defects in the source, because it is the one process
 that reads every sentence with attention. Every `BODY_CORRECTIONS` entry we
 have was written by a translator who hit one: `baptism-with-the-holy-spirit`
@@ -2549,3 +2559,21 @@ archaic spelling and period punctuation are the text, not defects in it.
   `waiting-on-god.uk`: drop `R.V.` where the words shown are Kulish (mined), and
   where the rendering follows the R.V. against Kulish (self_rendered) write
   `за англійським Переглянутим перекладом`.
+- **Articles: a translated row MUST carry `"source_type": "ai_unreviewed"`**
+  (after `related`, like every es/fr/ar file). `source_type` is create-only and
+  the model default is `public_domain`, so #4724's 23 hi guides went live as
+  ORIGINALS with no review badge; migration 0186 re-gated them and
+  `TranslatedArticleSourceTypeTests` now fails any translated article without it.
+  Articles have no `translation_notes` kind — put the scripture tally in the PR.
+- **pt Bible on disk: ebible mirror `por_bpm` = `porbrbsl`** (public, USFM —
+  `bibles/por_bpm/usfm/<code>.usfm`). Its John 15:11 matches shipped
+  `union-and-communion.pt` byte for byte. USFM carries `\f…\f*` notes,
+  `\x…\x*` cross-refs and `\wj`/`\qs` character markers, and verses continue
+  across `\q1/\q2/\p` lines; drop `\d`/`\s` heading lines. Whole Bible ~66
+  files; splice verses by script (#5199/#5201, ~130 quotations, all verbatim).
+- **Article conventions, measured 2026-10-05:** hi and pt articles MIRROR the
+  English's curly quotes; pt articles address the reader as *você* (20/20
+  shipped), Brazilian spelling, centuries as Roman (século XIX). hi article band
+  1.165–1.30, pt 1.01–1.09. Do NOT put an example range dash in a brief — two hi
+  translators copied the brief's en dash over the source's hyphen; say "keep the
+  English's dash". A batch of 8 articles = 8 parallel agents, ~2–4 min each.
