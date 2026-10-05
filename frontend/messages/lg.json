@@ -1306,5 +1306,13 @@
   "plans_no_results": "Tewali ntegeka etuukana n’ebisengejja bino.",
   "series_no_results": "Tewali lunyiriri lwa bitabo lutuukana n’ebisengejja bino.",
   "plans_show_results": "Laga entegeka (%n%)",
-  "authors_bios_link": "Obulamu bw'abali emabega w'amannya gano"
+  "authors_bios_link": "Obulamu bw'abali emabega w'amannya gano",
+  "finished_eyebrow": "Ekitabo kiwedde",
+  "finished_stats": "Essuula %c% · ebigambo %w%",
+  "finished_reflect_heading": "By'otwala",
+  "finished_reflect_prompt": "Kiki ky'onootwala okuva mu kitabo kino?",
+  "finished_highlights": "By'olambye (%n%)",
+  "finished_more_by": "Ebirala okuva eri %name%",
+  "finished_about_author": "Ku muwandiisi",
+  "finished_plans": "Enteekateeka z'okusoma ezirimu ekitabo kino"
 }

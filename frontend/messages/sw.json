@@ -1306,5 +1306,13 @@
   "plans_no_results": "Hakuna mipango inayolingana na vichujio hivi.",
   "series_no_results": "Hakuna mfululizo wa vitabu unaolingana na vichujio hivi.",
   "plans_show_results": "Onyesha mipango (%n%)",
-  "authors_bios_link": "Maisha ya walio nyuma ya majina haya"
+  "authors_bios_link": "Maisha ya walio nyuma ya majina haya",
+  "finished_eyebrow": "Kitabu kimekamilika",
+  "finished_stats": "Sura %c% · maneno %w%",
+  "finished_reflect_heading": "Unachobeba",
+  "finished_reflect_prompt": "Utabeba nini kutoka kitabu hiki?",
+  "finished_highlights": "Vivutio vyako (%n%)",
+  "finished_more_by": "Zaidi kutoka kwa %name%",
+  "finished_about_author": "Kuhusu mwandishi",
+  "finished_plans": "Mipango ya kusoma yenye kitabu hiki"
 }

@@ -1306,5 +1306,13 @@
   "plans_no_results": "Ningún plan coincide con estos filtros.",
   "series_no_results": "Ninguna serie de libros coincide con estos filtros.",
   "plans_show_results": "Ver planes (%n%)",
-  "authors_bios_link": "Las vidas detrás de estos nombres"
+  "authors_bios_link": "Las vidas detrás de estos nombres",
+  "finished_eyebrow": "Libro terminado",
+  "finished_stats": "%c% capítulos · %w% palabras",
+  "finished_reflect_heading": "Lo que te llevas",
+  "finished_reflect_prompt": "¿Qué te llevas de este libro?",
+  "finished_highlights": "Tus subrayados (%n%)",
+  "finished_more_by": "Más de %name%",
+  "finished_about_author": "Sobre el autor",
+  "finished_plans": "Planes de lectura con este libro"
 }

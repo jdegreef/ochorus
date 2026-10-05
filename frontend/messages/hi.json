@@ -1306,5 +1306,13 @@
   "plans_no_results": "इन फ़िल्टरों से कोई योजना मेल नहीं खाती।",
   "series_no_results": "इन फ़िल्टरों से कोई पुस्तक शृंखला मेल नहीं खाती।",
   "plans_show_results": "योजनाएँ दिखाएँ (%n%)",
-  "authors_bios_link": "इन नामों के पीछे के जीवन"
+  "authors_bios_link": "इन नामों के पीछे के जीवन",
+  "finished_eyebrow": "पुस्तक पूरी हुई",
+  "finished_stats": "%c% अध्याय · %w% शब्द",
+  "finished_reflect_heading": "जो आप साथ ले जाते हैं",
+  "finished_reflect_prompt": "इस पुस्तक से आप क्या साथ ले जाएँगे?",
+  "finished_highlights": "आपके हाइलाइट (%n%)",
+  "finished_more_by": "%name% की और रचनाएँ",
+  "finished_about_author": "लेखक के बारे में",
+  "finished_plans": "इस पुस्तक वाली पठन योजनाएँ"
 }

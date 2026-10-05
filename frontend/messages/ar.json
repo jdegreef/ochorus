@@ -1306,5 +1306,13 @@
   "plans_no_results": "لا توجد خطط تطابق عوامل التصفية هذه.",
   "series_no_results": "لا توجد سلاسل كتب تطابق عوامل التصفية هذه.",
   "plans_show_results": "عرض الخطط (%n%)",
-  "authors_bios_link": "سِيَر أصحاب هذه الأسماء"
+  "authors_bios_link": "سِيَر أصحاب هذه الأسماء",
+  "finished_eyebrow": "أنهيت الكتاب",
+  "finished_stats": "%c% فصول · %w% كلمة",
+  "finished_reflect_heading": "ما تحمله معك",
+  "finished_reflect_prompt": "ماذا ستحمل معك من هذا الكتاب؟",
+  "finished_highlights": "تظليلاتك (%n%)",
+  "finished_more_by": "المزيد من %name%",
+  "finished_about_author": "عن المؤلف",
+  "finished_plans": "خطط قراءة تتضمن هذا الكتاب"
 }
