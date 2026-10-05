@@ -7281,6 +7281,36 @@
 				376
 			]
 		},
+		"key-teachings-of-george-macdonald": {
+			"ground": "f942c5243bfde2150c449c7938352ef17b3bfd184a3c1b242a9fb0e2b0339175",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed-top",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[115, 102, 485, 131]
+				],
+				"title": [
+					[196, 169, 404, 232],
+					[140, 225, 460, 288],
+					[60, 280, 540, 343]
+				],
+				"subtitle": [
+					[57, 404, 544, 432]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				173,
+				432
+			]
+		},
 		"key-teachings-of-george-whitefield": {
 			"ground": "6ccbb3ee8bba30fcf0fc428c8e15e0d75dd1ba6c9cd46057a94df5d83062ab0f",
 			"style": "originals",

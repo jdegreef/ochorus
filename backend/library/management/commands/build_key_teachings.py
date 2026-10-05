@@ -612,6 +612,26 @@ WORKS: dict[str, Work] = {
         ),
         cover_color="#2f4a6e",
     ),
+    # George MacDonald IS public domain, so — unlike the Lewis volume — he is
+    # quoted, briefly, and only in lines checked against the library's own text
+    # of Unspoken Sermons (each sermon is named where it is quoted).
+    "key-teachings-of-george-macdonald": Work(
+        slug="key-teachings-of-george-macdonald",
+        title="The Key Teachings of George MacDonald",
+        subtitle="An Ochorus companion to his life and teaching",
+        author_slug="george-macdonald",
+        source="george-macdonald.md",  # description + about in its front matter
+        attribution=(
+            "An independent work of exposition, summary and appreciation by "
+            "Ochorus. George MacDonald's own words are quoted only briefly, from "
+            "the text of his Unspoken Sermons in the Ochorus library; elsewhere "
+            "his teaching is set out in modern prose. His writings are in the "
+            "public domain and freely available; readers are encouraged to go to "
+            "them directly. Scripture quotations are from the Authorised (King "
+            "James) Version."
+        ),
+        cover_color="#24503f",
+    ),
     # G. K. Chesterton died in 1936. Orthodoxy (1908) and The Everlasting Man
     # (1925) are public domain and in the library, so — unlike the Lewis
     # volume — a few short sentences from those two are quoted, each checked

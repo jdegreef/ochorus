@@ -436,6 +436,7 @@ TYPE_TOP = frozenset({
     "key-teachings-of-dietrich-bonhoeffer",
     "key-teachings-of-gareth-evans",
     "key-teachings-of-c-s-lewis",
+    "key-teachings-of-george-macdonald",
     "key-teachings-of-g-k-chesterton",
 })
 
