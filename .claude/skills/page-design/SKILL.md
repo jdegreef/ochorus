@@ -483,6 +483,16 @@ green in CI but never went live because two of its three books were unpublished
 
 ## Guards to extend when a page ships
 
+**A new top-level route must be SERVABLE, not just built.** A no-slash route
+(`/rss`) prerenders to `rss.html`, but Render serves it only through an explicit
+`render.yaml` rewrite (+ `/:lang/…` twin, + a founder Blueprint sync) — without
+one the live URL is the 7.5 KB app shell, and `npm run dev` hides it (#5080).
+Prefer `export const trailingSlash = 'always'` in `+page.ts` (the `/authors/`
+pattern): it prerenders to `<route>/index.html`, served natively; then add the
+segment to `SLASHED_INDEXES` (`lib/canonicalRedirect.ts`) and the slash set in
+`docs/seo-edge-rules.md` (`edgeRules.test.ts` enforces it), and link `/x/` (#5148).
+Verify live with `curl -sL https://ochorus.com/x/ | wc -c` — ~7.5 KB = shell.
+
 Add a new route to `lib/pageShell.test.ts` — `BROWSE_PAGES` (shell + PageHeader
 + the `page-col px-5 py-10` padding) or `LEAF_PAGES` (shell only). **When a page
 delegates its shell to a component** (as `books` points at `BooksShelf.svelte`,
