@@ -8,6 +8,7 @@
 	import { lang, localeName } from '$lib/lang.svelte';
 	import { loginHref, withSignup } from '$lib/loginHref';
 	import { seenOnView, withSource } from '$lib/signupSource';
+	import { openFrom } from '$lib/signInSheet.svelte';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
@@ -44,7 +45,12 @@
 				<p class="mt-1 text-small text-muted">{t('login.syncNote')}</p>
 				<div class="mt-3 grid grid-cols-2 gap-2">
 					<a href={signIn} class="btn btn-primary">{t('account.signIn')}</a>
-					<a href={withSignup(signIn)} class="btn btn-ghost" use:seenOnView={'menu'}>{t('login.createAccountBtn')}</a>
+					<a
+						href={withSignup(signIn)}
+						class="btn btn-ghost"
+						use:seenOnView={'menu'}
+						onclick={(e) => openFrom(e, 'menu')}
+					>{t('login.createAccountBtn')}</a>
 				</div>
 			</div>
 		{/if}
