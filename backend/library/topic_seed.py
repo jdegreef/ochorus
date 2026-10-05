@@ -180,6 +180,9 @@ TOPICS = [
             "orthodoxy",
             "the-everlasting-man",
             "unspoken-sermons",
+            "paradise-lost",
+            "heretics",
+            "st-francis-of-assisi",
         ],
     ),
     (
