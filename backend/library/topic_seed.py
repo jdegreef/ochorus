@@ -102,6 +102,7 @@ TOPICS = [
             "key-teachings-of-corrie-ten-boom",
             "key-teachings-of-c-s-lewis",
             "revelations-of-divine-love",
+            "key-teachings-of-george-macdonald",
         ],
     ),
     (
@@ -380,6 +381,7 @@ TOPICS = [
             "key-teachings-of-a-w-tozer",
             "the-pursuit-of-god",
             "revelations-of-divine-love",
+            "key-teachings-of-george-macdonald",
             "the-practice-of-the-presence-of-god",
         ],
     ),

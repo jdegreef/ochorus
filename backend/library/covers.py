@@ -436,6 +436,7 @@ TYPE_TOP = frozenset({
     "key-teachings-of-dietrich-bonhoeffer",
     "key-teachings-of-gareth-evans",
     "key-teachings-of-c-s-lewis",
+    "key-teachings-of-george-macdonald",
 })
 
 #: The brandmark's own columns (`BookCover`'s centred lockup). Only a TYPE_TOP
