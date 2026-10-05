@@ -35,6 +35,11 @@ import { shouldFollow } from '$lib/listenFollow';
 import { saveScrollAnchor } from '$lib/progress';
 import { contentLang, HEADER_OFFSET, prefersReducedMotion } from '$lib/reading';
 import { DEFAULT_HIGHLIGHT, workKey, type WorkKind } from '$lib/reading-schema';
+import { auth } from '$lib/auth.svelte';
+import { accountHref } from '$lib/accountNav';
+import { withSource } from '$lib/signupSource';
+import { signupNudge } from '$lib/signupNudge.svelte';
+import { lastMilestone, milestoneFor, milestonesDone, recordMilestone } from '$lib/highlightMilestone';
 
 /** How long read-along leaves the page alone after a hand-scroll. */
 const FOLLOW_YIELD_MS = 3000;
@@ -198,7 +203,10 @@ export class ReaderText {
 	onHighlight = (segments: Segment[], color: string): void => {
 		const paras = this.#paras();
 		const existing = marks.groupCovering(segments, paras);
-		if (!existing) marks.add(segments, undefined, color, paras);
+		if (!existing) {
+			marks.add(segments, undefined, color, paras);
+			nudgeHighlightMilestone();
+		}
 		else if (marks.getColor(existing) === color) removeMarkUndoable(existing);
 		else marks.setColor(existing, color);
 	};
@@ -237,6 +245,7 @@ export class ReaderText {
 			// Saved with no words is still a highlight in the colour picked — the
 			// reader pressed Save, so something is kept.
 			marks.add(this.pending, this.draft.trim() || undefined, this.color, this.#paras());
+			nudgeHighlightMilestone();
 		}
 		this.open = false;
 	};
@@ -401,4 +410,28 @@ export function createReaderText(options: ReaderTextOptions): ReaderText {
 	const reader = new ReaderText(options);
 	reader.attach();
 	return reader;
+}
+
+/**
+ * Signed out, at the 3rd, 10th and 25th highlight on this device: say how many
+ * there are now, and that the Notebook (an account) keeps them. Each milestone
+ * once per device ($lib/highlightMilestone); nothing is counted once all three
+ * have been shown.
+ */
+function nudgeHighlightMilestone(): void {
+	if (!auth.enabled || !auth.initialized || auth.user) return;
+	const last = lastMilestone();
+	if (milestonesDone(last)) return;
+	const n = marks.countAll();
+	const m = milestoneFor(n, last);
+	if (m == null) return;
+	recordMilestone(m);
+	signupNudge.offer({
+		id: `highlight-${m}`,
+		textKey: 'nudge.highlightSaved',
+		n,
+		linkKey: 'nudge.keepInNotebook',
+		href: withSource(accountHref('/notebook', false, true), 'highlight_toast'),
+		source: 'highlight_toast'
+	});
 }

@@ -80,6 +80,7 @@
 	import SearchDrawer from '$lib/components/SearchDrawer.svelte';
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
+	import ChapterEndAsk from '$lib/components/ChapterEndAsk.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
@@ -2177,6 +2178,12 @@
 						showLabel
 					/>
 				</div>
+				<ChapterEndAsk
+					title={plan && planDay ? plan.title : chapter.book_title}
+					chapterKey="book:{slug}:{chapter.order}"
+					pathname={$page.url.pathname}
+					search={$page.url.search}
+				/>
 				<!-- Colophon: a crawlable link out to the book and its author from every
 				     chapter — the site's largest page type, which otherwise linked only to
 				     its own contents and the next chapter (a dead end for the author graph).
