@@ -26,6 +26,7 @@ export const COVER_SCRIM: Record<string, number> = {
 	'clothed-with-strength-and-dignity': 0.35,
 	'corrie-ten-boom-a-life': 0.85,
 	'divine-songs-for-children': 0.65,
+	'elisabeth-elliot-a-life': 0.80,
 	'epistles-of-ignatius': 0.50,
 	'evangelization-of-the-world': 0.85,
 	'ever-increasing-faith': 0.70,
