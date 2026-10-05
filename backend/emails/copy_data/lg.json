@@ -1,0 +1,142 @@
+{
+ "welcome": {
+  "subject": "Tukwanirizza mu Ochorus",
+  "preheader": "Etterekero ekkakkamu ery’ebitabo by’Ekikristaayo eby’edda — bya bwereere, emirembe gyonna.",
+  "heading": "Tukwanirizza mu Ochorus",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Webale okwegatta ku Ochorus — etterekero ery’obwereere, eritaliimu matangaazo, ery’ebitabo by’Ekikristaayo eby’edda, mu lulimi lwo.",
+   "Buli kimu wano kyo okusoma: ebitabo ebinene ku kusaba, okwewaayo eri Katonda, n’obulamu obw’omwoyo obw’omunda, okuva ku Andrew Murray okutuuka ku Thomas à Kempis. Tewali ky’ogula, tewali kye weetaaga kuggulawo.",
+   "Engeri esinga obulungi ey’okutandika kwe kutandika butandisi okusoma. Londa ekitabo ekikusikiriza, oba leka entegeka y’okusoma empanvu entono ekutwale eddakiika ntono buli lunaku."
+  ],
+  "cta_label": "Tandika okusoma",
+  "cta_path": "welcome",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "pick_plan": {
+  "subject": "Eddakiika ntono buli lunaku",
+  "preheader": "Entegeka y’okusoma ennyimpi y’engeri esinga obwangu ey’okutandika.",
+  "heading": "Zuula engeri yo ey’okusoma",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Abasomi abasigala ne Ochorus kumpi bulijjo batandika mu ngeri y’emu — n’entegeka y’okusoma ennyimpi esaba eddakiika ntono zokka buli lunaku.",
+   "Entegeka ekutambuza mu kitabo eky’edda kitono kitono, okusoma ne kutakugwako ng’omugugu, n’empisa n’ekula yokka. Londa esaanira ekiseera ky’olimu kati."
+  ],
+  "cta_label": "Laba Entegeka z’Okusoma",
+  "cta_path": "plans",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "finish_first_book": {
+  "subject": "Weeyongere we wakoma",
+  "preheader": "Ekitabo kyo ekisooka kikulindiridde — eddakiika ntono buli lunaku zikimaliriza.",
+  "heading": "Maliriza kye watandika",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Watandika okusoma — eryo lye ddaala erisinga obuzibu, era olituuseeko dda. Ekitabo kye waggulawo kiterekeddwa we wakoma ddala.",
+   "Okumaliriza ekitabo kyo ekisooka kirina essanyu lyakyo ekkakkamu. Eddakiika ntono buli lunaku zokka ze weetaaga; ebirala tubikukuumira aw’otuuse."
+  ],
+  "cta_label": "Weyongere okusoma",
+  "cta_path": "reading",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "classic": {
+  "subject": "Ekitabo eky’edda ekisaanira obudde bwo",
+  "preheader": "Abasomi ab’emyaka ebikumi tebayinza bonna kuba nga basobya.",
+  "heading": "Ekintu ekisaanira okusomebwa",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Bw’oba tomanyi w’otandikira, tandikira ku kitabo ekyasukka dda emirembe gyonna — ekitabo eky’edda abasomi ab’emirembe mingi kye bazzeemu okusoma.",
+   "Bino bitabo bimpi, bya buziba, era bikyusa obulamu mu kasirise: Andrew Murray ku bwetoowaze, Brother Lawrence ku kubeerawo kwa Katonda, Thomas à Kempis ku kugoberera Kristo. Ggulawo kimu ekiro kya leero."
+  ],
+  "cta_label": "Ketaaketaa mu Tterekero",
+  "cta_path": "books",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "comeback": {
+  "subject": "Okusoma kwo kukulindiridde",
+  "preheader": "Weeyongere we wakoma ddala.",
+  "heading": "Komawo osome",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Wayiseewo akaseera — era ekyo tekirina buzibu. Ebitabo bigumiikiriza, era buli kye watandika kiri ddala we wakireka.",
+   "Eddakiika ntono ez’akasirise zokka ze weetaaga okuddamu okukwata ku wuzi. Aw’otuuse waterekeddwa era wakulindiridde buli lw’onoobeera mwetegefu."
+  ],
+  "cta_label": "Weyongere okusoma",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "winback": {
+  "subject": "Etterekero lyo likyaliwo",
+  "preheader": "Wayiseewo ebbanga — aw’otuuse twakukuumira, era byonna bikyali bya bwereere.",
+  "heading": "Twakukuumira aw’otuuse",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Wayiseewo ebbanga bukyanga okyalira Ochorus, era ekyo tekirina buzibu — obulamu bujjudde emirimu. Twayagadde bwagazi omanye nti etterekero lyo likyaliwo, nga bwe walireka ddala.",
+   "Buli kimu kikyali kya bwereere, tekirimu matangaazo, era kikyali kikyo: ebitabo ebinene ku kusaba n’obulamu obw’omwoyo obw’omunda, mu lulimi lwo. Buli lw’onoofuna eddakiika ntono ez’akasirise, ekitabo ekirungi kikulindiridde."
+  ],
+  "cta_label": "Komawo ku Ochorus",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "finish_series": {
+  "subject": "Olugero lugenda mu maaso: {next}",
+  "preheader": "Omalirizza {finished} — ekitabo ekiddako kikulindiridde.",
+  "heading": "Oli mwetegefu ku kiddako?",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Omalirizza {finished} — tusuubira nti obudde bwo bwakozesebwa bulungi.",
+   "Kiri mu lunyiriri lw’ebitabo, era ekitabo ekiddako, {next}, kikwetegekedde buli lw’onoobeera mwetegefu. Ekitabo ekimu kikutwala mu kiddako."
+  ],
+  "cta_label": "Tandika {next}",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "plan_reminder": {
+  "subject": "Olunaku {day} · {plan}",
+  "preheader": "Okusoma kwa leero: {reading}",
+  "heading": "{reading}",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Olunaku {day} ku {total} mu {plan} lukwetegekedde."
+  ],
+  "cta_label": "Soma olunaku {day}",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "plan_paused": {
+  "subject": "Aw’otuuse mu {plan} waterekeddwa",
+  "preheader": "Weeyongereyo buli lw’onoobeera mwetegefu.",
+  "heading": "Aw’otuuse waterekeddwa",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Wakoma ku lunaku {day} mu {plan}. Tewali kukuyanguyiriza — kikyaliwo buli lw’onoobeera mwetegefu.",
+   "Tuyimirizza obujjukizo bwo obwa buli lunaku. Soma olunaku oluddako era bujja kuddamu okutandika."
+  ],
+  "cta_label": "Soma olunaku {day}",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ },
+ "milestone": {
+  "subject": "Ebitabo {count} — weebale nnyo",
+  "preheader": "Omutendera ogw’amaanyi ddala. Tukwagaliza ekiddako.",
+  "heading": "Ebitabo {count} by’osomye",
+  "greeting": "Oli otya, {name},",
+  "paragraphs": [
+   "Kati omalirizza ebitabo {count} ku Ochorus — ogwo mutendera gwa ddala, era gusaanira okuyimirira akaseera okugujaguza.",
+   "Buli kimu ku byo kitabo kya dda ekinywezezza era ne kizuukusa abasomi okumala emirembe n’emirembe, era okisomye okukimaliriza. Tukwagaliza ekiddako, buli lw’onoobeera mwetegefu."
+  ],
+  "cta_label": "Zuula ekitabo kyo ekiddako",
+  "cta_path": "",
+  "signoff": "Ekisa n’emirembe,",
+  "signature": "Ttiimu ya Ochorus"
+ }
+}

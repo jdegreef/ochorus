@@ -1,0 +1,142 @@
+{
+ "welcome": {
+  "subject": "Karibu Ochorus",
+  "preheader": "Maktaba tulivu ya vitabu vya kale vya Kikristo — bure, milele.",
+  "heading": "Karibu Ochorus",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Asante kwa kujiunga na Ochorus — maktaba ya bure, isiyo na matangazo, ya vitabu vya kale vya Kikristo visivyo na hakimiliki, kwa lugha yako.",
+   "Kila kitu hapa ni chako kusoma: kazi kuu za maombi, ibada na maisha ya ndani zaidi ya kiroho, kuanzia Andrew Murray hadi Thomas à Kempis. Hakuna cha kununua, hakuna cha kufungua kwa malipo.",
+   "Njia bora ya kuanza ni kuanza tu kusoma. Chagua kitabu kinachokuvutia, au acha mpango mfupi wa kusoma ukuongoze kwa dakika chache kila siku."
+  ],
+  "cta_label": "Anza kusoma",
+  "cta_path": "welcome",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "pick_plan": {
+  "subject": "Dakika chache kila siku",
+  "preheader": "Mpango mfupi wa kusoma ndiyo njia rahisi zaidi ya kuanza.",
+  "heading": "Pata mdundo wako",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Wasomaji wanaodumu na Ochorus karibu kila mara huanza kwa njia ileile — kwa mpango mfupi wa kusoma unaohitaji dakika chache tu kila siku.",
+   "Mpango hukupitisha katika kitabu cha kale kidogo kidogo, ili usomaji usirundikane na tabia ijengeke yenyewe. Chagua mmoja unaoendana na kipindi ulichomo sasa."
+  ],
+  "cta_label": "Vinjari mipango ya kusoma",
+  "cta_path": "plans",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "finish_first_book": {
+  "subject": "Endelea pale ulipoishia",
+  "preheader": "Kitabu chako cha kwanza kinakusubiri — dakika chache kila siku zitakimaliza.",
+  "heading": "Maliza ulichoanza",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Umeanza kusoma — hiyo ndiyo hatua ngumu zaidi, nawe umeshaipiga. Kitabu ulichofungua kimehifadhiwa pale pale ulipoishia.",
+   "Kumaliza kitabu chako cha kwanza ni zawadi tulivu yenyewe. Dakika chache kila siku zinatosha; sisi tutakuwekea mahali ulipofikia."
+  ],
+  "cta_label": "Endelea kusoma",
+  "cta_path": "reading",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "classic": {
+  "subject": "Kitabu cha kale kinachostahili muda wako",
+  "preheader": "Vizazi vya wasomaji kwa karne nyingi haviwezi kuwa vimekosea wote.",
+  "heading": "Kitu kinachostahili kusomwa",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Kama huna uhakika uanzie wapi, anza na kitabu ambacho tayari kimedumu kuliko kila mtindo wa kupita — kitabu cha kale ambacho vizazi vya wasomaji vimekirudia tena na tena.",
+   "Ni vifupi, vina kina, na hubadilisha maisha kimya kimya: Andrew Murray kuhusu unyenyekevu, Ndugu Lawrence kuhusu kuwepo kwa Mungu, Thomas à Kempis kuhusu kumfuata Kristo. Fungua kimoja usiku huu."
+  ],
+  "cta_label": "Gundua maktaba",
+  "cta_path": "books",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "comeback": {
+  "subject": "Usomaji wako unakusubiri",
+  "preheader": "Endelea pale pale ulipoishia.",
+  "heading": "Rudi tena",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Imepita muda kidogo — na hiyo si tatizo. Vitabu ni vyenye subira, na kila ulichoanza kiko pale pale ulipokiacha.",
+   "Dakika chache za utulivu zinatosha kuendelea ulipoachia. Mahali ulipofikia pamehifadhiwa, panakusubiri wakati wowote utakapokuwa tayari."
+  ],
+  "cta_label": "Endelea kusoma",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "winback": {
+  "subject": "Maktaba yako bado iko hapa",
+  "preheader": "Imepita muda — mahali ulipofikia pamehifadhiwa, na kila kitu bado ni bure.",
+  "heading": "Tumekuwekea mahali ulipofikia",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Imepita muda tangu ulipotembelea Ochorus, na hilo si tatizo — maisha yana shughuli nyingi. Tulitaka tu ujue kwamba maktaba yako bado iko hapa, kama ulivyoiacha.",
+   "Kila kitu bado ni bure, bado hakina matangazo, bado ni chako: kazi kuu za maombi na maisha ya ndani zaidi ya kiroho, kwa lugha yako. Wakati wowote utakapopata dakika chache za utulivu, kitabu kizuri kinakusubiri."
+  ],
+  "cta_label": "Rudi Ochorus",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "finish_series": {
+  "subject": "Hadithi inaendelea: {next}",
+  "preheader": "Umemaliza {finished} — juzuu inayofuata inakusubiri.",
+  "heading": "Uko tayari kwa kinachofuata?",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Umemaliza {finished} — tunatumaini ulitumia muda wako vizuri.",
+   "Ni sehemu ya mfululizo, na juzuu inayofuata, {next}, iko tayari kwako wakati wowote utakapokuwa tayari. Kitabu kimoja kinaongoza kwenye kingine."
+  ],
+  "cta_label": "Anza {next}",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "plan_reminder": {
+  "subject": "Siku ya {day} · {plan}",
+  "preheader": "Somo la leo: {reading}",
+  "heading": "{reading}",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Siku ya {day} kati ya {total} katika {plan} iko tayari kwako."
+  ],
+  "cta_label": "Soma siku ya {day}",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "plan_paused": {
+  "subject": "Mahali ulipofikia katika {plan} pamehifadhiwa",
+  "preheader": "Endelea wakati wowote utakapokuwa tayari.",
+  "heading": "Mahali ulipofikia pamehifadhiwa",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Ulisimama siku ya {day} ya {plan}. Usijali — utaukuta pale pale wakati wowote utakapokuwa tayari.",
+   "Tumesimamisha vikumbusho vyako vya kila siku. Soma siku inayofuata navyo vitaanza tena."
+  ],
+  "cta_label": "Soma siku ya {day}",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ },
+ "milestone": {
+  "subject": "Vitabu {count} — hongera",
+  "preheader": "Hatua ya kweli. Tunakutakia kingine kijacho.",
+  "heading": "Umesoma vitabu {count}",
+  "greeting": "Habari {name},",
+  "paragraphs": [
+   "Sasa umemaliza vitabu {count} kwenye Ochorus — hiyo ni hatua ya kweli, inayostahili kusimama na kuiadhimisha.",
+   "Kila kimoja ni kitabu cha kale ambacho kimewaimarisha na kuwagusa wasomaji kwa vizazi, nawe umekisoma hadi mwisho. Tunakutakia kingine kijacho, wakati wowote utakapokuwa tayari."
+  ],
+  "cta_label": "Tafuta kitabu chako kinachofuata",
+  "cta_path": "",
+  "signoff": "Neema na amani,",
+  "signature": "Timu ya Ochorus"
+ }
+}
