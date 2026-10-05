@@ -8713,6 +8713,16 @@
 				532
 			]
 		},
+		"paradise-lost": {
+			"ground": "1376e1ad2ef24885e058a912da76a841b3d991190a0454afdf01674c1f690416",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pensees": {
 			"ground": "f1ca61540b0b59478d9834f26314d78e103c39844490a2d60e9b111ffcbfb830",
 			"style": "press",
