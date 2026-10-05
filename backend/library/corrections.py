@@ -1838,6 +1838,26 @@ BODY_CORRECTIONS: dict[str, dict] = {
         "replacements": [
             ("fulfilled in us\u201d (Rom. vii. 4)", "fulfilled in us\u201d (Rom. viii. 4)"),
             ("(I. Peter xii. 16)", "(I. Peter iv. 12)"),
+            # Found while translating the book to Spanish (job #4800). Two
+            # Revised Version epigraphs cite the next verse along: "He emptied
+            # Himself" is Phil 2:7 RV, "the building up of the body of Christ"
+            # Eph 4:12 RV. Every edition (fr/lg/pt/sw) carried both and is
+            # repaired alongside.
+            ("\u201cHe emptied Himself\u201d (Phil. ii. 8, R. V.)",
+             "\u201cHe emptied Himself\u201d (Phil. ii. 7, R. V.)"),
+            ("(R. V., Eph. iv. 13)", "(R. V., Eph. iv. 12)"),
+            # Scan slips with one possible reading: three doubled words, a
+            # doubled "may" in the Oct 24 hymn, and four misread letters in
+            # quotations (Ps 97:2, Heb 10:39, 1 Cor 2:12) and prose.
+            ("at the Thy footstool", "at Thy footstool"),
+            ("by the the measures", "by the measures"),
+            ("meek and and lowly", "meek and lowly"),
+            ("crowns you may yet may wear", "crowns you may yet wear"),
+            ("true that white \u201cclouds", "true that while \u201cclouds"),
+            ("unto the saving our the soul", "unto the saving of the soul"),
+            ("freely given of us of God", "freely given to us of God"),
+            ("to which be owed his", "to which he owed his"),
+            ("It make us more conscious", "It makes us more conscious"),
         ],
     },
     "confessions": {

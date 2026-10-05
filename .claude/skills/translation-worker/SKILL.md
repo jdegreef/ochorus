@@ -2590,3 +2590,14 @@ archaic spelling and period punctuation are the text, not defects in it.
   **The prerender touch in step 5 is RETIRED** (deploy skill, #3433): the web
   `buildFilter` rebuilds every content root and waits for the API release, so a content PR
   needs no `+page.ts` touch and no follow-up PR.
+- **es BOOKS are no longer all « » — measure the same AUTHOR's shipped es books
+  before briefing** (job #4800, 2026-10-05). The #515 entry above says all 13
+  shipped es books convert to « »; at 59 es books that no longer holds. Simpson's
+  `the-fourfold-gospel.es` (213 “, 0 «) and `separation-and-service.es` (139 “,
+  0 «) mirror their curly English, while `the-god-of-all-comfort.es` converts
+  (979 «). Both are attested, so for a new book by an author already shipped in
+  es, match that author's es editions (here: mirror curly) so the shelf reads as
+  one voice. Same measurement settled reader address: **tú** (fourfold 19 tú,
+  0 usted). Also: in a fresh worktree `system_prompt('es')` raises
+  `no such table: library_language` until you run `manage.py migrate` — do it
+  before prep, you need the DB for `seed_books` later anyway.
