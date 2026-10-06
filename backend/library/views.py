@@ -84,6 +84,8 @@ from .serializers import (
     TopicListSerializer,
     _book_cover,
     _edition_base_slug,
+    _is_retold,
+    _retold_bases,
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
@@ -867,20 +869,6 @@ def _audience_topic(audience: str):
     )
 
 
-def _retold_bases(slugs, suffix: str) -> set[str]:
-    """The full texts that the ``suffix`` editions among ``slugs`` retell, where
-    that full text exists as a book (in any language) — one query. The suffix
-    alone would also catch an original whose title happens to end so (Watts's
-    *Divine Songs for Children*); see ``_is_retold``."""
-    bases = {_edition_base_slug(slug) for slug in slugs if slug.endswith(suffix)}
-    return set(Book.objects.filter(slug__in=bases).values_list("slug", flat=True).distinct())
-
-
-def _is_retold(slug: str, suffix: str, bases: set[str]) -> bool:
-    """A retelling retells something: the suffix AND the full text it names."""
-    return slug.endswith(suffix) and _edition_base_slug(slug) in bases
-
-
 def _audience_rows(audience: str, topic) -> set[tuple[str, str]]:
     """``(language, slug)`` for every book the audience's hub shows in some
     language — a book in a series of its that is named there, a retold edition,
@@ -1023,7 +1011,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "languages": languages,
                 # Who the hub is for, as its books' default (`book_ages`) — the
                 # page's schema.org audience.
-                "ages": dict(zip(("min", "max"), AUDIENCE_AGES[audience])),
+                "ages": AUDIENCE_AGES[audience],
             }
         )
 
@@ -2163,7 +2151,6 @@ class ScriptureBookView(APIView):
             verse_text,
         )
         from .search import fallback_snippet
-        from .serializers import _edition_base_slug
 
         target = book_from_slug(book)
         if target is None:

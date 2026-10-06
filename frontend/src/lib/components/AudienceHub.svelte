@@ -2,7 +2,7 @@
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import type { AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { breadcrumbLd, hreflangExact, itemList, jsonLd } from '$lib/seo';
+	import { breadcrumbLd, collectionPage, hreflangExact } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { contentLang } from '$lib/reading';
@@ -66,17 +66,6 @@
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
 
-	// schema.org: the hub's books as an ItemList — inside a CollectionPage that
-	// says who it is for (`ages`) and that it is free — and its place under Home.
-	const booksLd = $derived(
-		itemList(title, [
-			...shelf.series.map((s) => ({ name: s.title, url: localizeHref(`/series/${s.slug}/`) })),
-			...hubBooks(shelf).map((b) => ({
-				name: b.title,
-				url: localizeHref(`/books/${b.slug}`)
-			}))
-		])
-	);
 	const crumbsLd = $derived(
 		breadcrumbLd([
 			{ name: t('common.home'), href: '/' },
@@ -93,19 +82,18 @@
 		}
 	);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	// schema.org: a free CollectionPage of the hub's series and books, saying
+	// who it is for (`ages`); and, below, its place under Home.
 	const pageLd = $derived(
-		jsonLd({
-			'@context': 'https://schema.org',
-			'@type': 'CollectionPage',
+		collectionPage({
 			name: title,
 			description,
 			url: canonical,
-			isAccessibleForFree: true,
-			audience: shelf.ages && {
-				'@type': 'PeopleAudience',
-				suggestedMinAge: shelf.ages.min,
-				suggestedMaxAge: shelf.ages.max ?? undefined
-			}
+			items: [
+				...shelf.series.map((s) => ({ name: s.title, url: localizeHref(`/series/${s.slug}/`) })),
+				...hubBooks(shelf).map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}`) }))
+			],
+			ages: shelf.ages
 		})
 	);
 </script>
@@ -117,7 +105,7 @@
 	{canonical}
 	{hreflang}
 	ogImage={`${SITE_URL}/og${hub.href}.png`}
-	structuredData={empty ? [crumbsLd] : [pageLd, booksLd, crumbsLd]}
+	structuredData={empty ? [crumbsLd] : [pageLd, crumbsLd]}
 />
 
 <svelte:head>

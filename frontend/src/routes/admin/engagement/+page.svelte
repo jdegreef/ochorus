@@ -12,9 +12,10 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import SectionBar from '$lib/components/SectionBar.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, DEEP_SITTING_SECONDS, DEFAULT_ENGAGEMENT_RANGE, ENGAGEMENT_RANGES, EVENT_KINDS, isEngagementRange, type EngagementRange, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type PeriodFigure, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminBookHref, adminEditionHref, DEEP_SITTING_SECONDS, DEFAULT_ENGAGEMENT_RANGE, ENGAGEMENT_RANGES, EVENT_KINDS, isEngagementRange, type EngagementRange, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type PeriodFigure, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
 	import { hubFor } from '$lib/audienceHub';
+	import { audienceName } from '$lib/series';
 	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
 	import { busiestCell, hourLabel, sendTime, WEEKDAYS } from '$lib/engagementHours';
 
@@ -281,7 +282,6 @@
 			: []
 	);
 
-	const HUB_NAMES = { young_readers: 'For young readers', teens: 'For teens' } as const;
 
 	const planSteps = $derived(
 		data
@@ -866,18 +866,18 @@
 							{#each d.young_readers as hub (hub.audience)}
 								<div>
 									<h3 class="text-body font-semibold text-text">
-										<a href="{hubFor(hub.audience)?.href}/" class="hover:text-accent">{HUB_NAMES[hub.audience]}</a>
+										<a href="{hubFor(hub.audience)?.href}/" class="hover:text-accent">{audienceName(hub.audience)}</a>
 									</h3>
 									<p class="mt-1 text-small text-muted">
-										{fmt(hub.readers)} {hub.readers === 1 ? 'reader' : 'readers'} · {fmt(hub.finished)} finished a book{#if hub.plans.started}
+										{fmt(hub.readers)} {hub.readers === 1 ? 'reader' : 'readers'} · {fmt(hub.finishers)} finished a book{#if hub.plans.started}
 											· plans {fmt(hub.plans.started)} started, {fmt(hub.plans.completed)} completed{/if}
 									</p>
 									{#if hub.books.length}
 										<ul class="mt-3 space-y-1.5">
 											{#each hub.books as b (b.slug)}
 												<li class="flex items-baseline gap-3 text-small">
-													<a href="/books/{b.slug}" class="min-w-0 flex-1 truncate text-text hover:text-accent">{b.title}</a>
-													<span class="shrink-0 tabular-nums text-muted">{fmt(b.readers)} · {fmt(b.finished)} done</span>
+													<a href={adminBookHref(b.slug)} class="min-w-0 flex-1 truncate text-text hover:text-accent">{b.title}</a>
+													<span class="shrink-0 tabular-nums text-muted">{fmt(b.readers)} · {fmt(b.finishers)} done</span>
 												</li>
 											{/each}
 										</ul>

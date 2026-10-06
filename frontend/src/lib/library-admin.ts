@@ -1275,8 +1275,8 @@ export interface EngagementPlanFunnel {
 export interface EngagementYoungHub {
 	audience: 'young_readers' | 'teens';
 	readers: number;
-	finished: number;
-	books: { slug: string; title: string; readers: number; finished: number }[];
+	finishers: number;
+	books: { slug: string; title: string; readers: number; finishers: number }[];
 	plans: EngagementPlanFunnel;
 }
 

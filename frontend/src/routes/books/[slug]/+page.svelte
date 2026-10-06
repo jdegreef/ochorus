@@ -292,9 +292,7 @@
 	]);
 	// "Ages 8–12" — the series index's wording, for a book written for young
 	// readers or teens.
-	const ages = $derived(
-		book.ages ? seriesAges({ min_age: book.ages.min, max_age: book.ages.max }) : ''
-	);
+	const ages = $derived(book.ages ? seriesAges(book.ages) : '');
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -336,7 +334,9 @@
 			wordCount: totalWords || undefined,
 			// Who it is written for: "8-12", or "13-" for "13 and up" (schema.org's
 			// open-ended form). Only on the young-reader books (`ages`).
-			typicalAgeRange: book.ages ? `${book.ages.min}-${book.ages.max ?? ''}` : undefined,
+			typicalAgeRange: book.ages
+				? `${book.ages.min_age}-${book.ages.max_age ?? ''}`
+				: undefined,
 			// What the work is ABOUT, as opposed to what it is called — the topical
 			// shelves it belongs to, which the page has always rendered as chips
 			// and never told a machine. Shared topicThings shape, same as a Person's

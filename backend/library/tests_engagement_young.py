@@ -66,17 +66,11 @@ class YoungReadersEngagementTests(TestCase):
 
     def test_each_hub_counts_its_own_books_readers_and_finishers(self):
         kids = self._hubs()["young_readers"]
-        self.assertEqual((kids["readers"], kids["finished"]), (2, 1))
+        self.assertEqual((kids["readers"], kids["finishers"]), (2, 1))
+        [book] = kids["books"]
         self.assertEqual(
-            kids["books"],
-            [
-                {
-                    "slug": "pilgrims-progress-children",
-                    "title": "The Pilgrim's Progress (For Children)",
-                    "readers": 2,
-                    "finished": 1,
-                }
-            ],
+            (book["slug"], book["title"], book["readers"], book["finishers"]),
+            ("pilgrims-progress-children", "The Pilgrim's Progress (For Children)", 2, 1),
         )
 
     def test_only_a_plan_of_nothing_but_the_hubs_books_is_its_plan(self):
@@ -86,4 +80,4 @@ class YoungReadersEngagementTests(TestCase):
 
     def test_a_hub_nobody_has_read_still_reports_zero(self):
         teens = self._hubs()["teens"]
-        self.assertEqual((teens["readers"], teens["finished"], teens["books"]), (0, 0, []))
+        self.assertEqual((teens["readers"], teens["finishers"], teens["books"]), (0, 0, []))
