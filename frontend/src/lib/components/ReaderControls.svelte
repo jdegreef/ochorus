@@ -140,6 +140,24 @@
 		</div>
 	{/if}
 
+	<!-- On a children's edition, the young-reader layout (readerPrefs YOUNG_LAYOUT)
+	     comes first: it is what the settings below start from, and the one switch
+	     back to the reader's own layout. -->
+	{#if readerPrefs.youngEdition}
+		<button
+			class="rc-opt mb-3 w-full rounded-sm border px-2 py-1.5 text-start text-small"
+			class:border-accent={readerPrefs.youngLayout}
+			class:text-accent={readerPrefs.youngLayout}
+			class:border-border-strong={!readerPrefs.youngLayout}
+			class:text-muted={!readerPrefs.youngLayout}
+			onclick={() => readerPrefs.setYoungLayout(!readerPrefs.youngLayout)}
+			aria-pressed={readerPrefs.youngLayout}
+		>
+			<span class="block font-semibold">{t('reader.youngLayout')}</span>
+			<span class="block text-muted">{t('reader.youngLayoutHint')}</span>
+		</button>
+	{/if}
+
 	<!-- Font size -->
 	<div class="mb-3 flex items-center justify-between">
 		<span class="text-small font-semibold text-text">{t('reader.size')}</span>

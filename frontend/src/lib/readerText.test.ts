@@ -1,7 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ReaderText, type ReaderTextOptions } from './readerText.svelte';
 import { marks } from './marks.svelte';
 import { DEFAULT_HIGHLIGHT } from './reading-schema';
+import { listen } from './listen.svelte';
 
 // The note editor and the selection-bar handlers, which the chapter, sermon and
 // biography readers now all run. `attach()` is deliberately not called: these
@@ -169,5 +170,39 @@ describe('ReaderText scripture taps', () => {
 			expect(e.defaultPrevented).toBe(false);
 		}
 		expect(clickOn(linked).handled, 'a plain tap still opens the popover').toBe(true);
+	});
+});
+
+describe('ReaderText read-aloud', () => {
+	const bodyOf = (...texts: string[]) => {
+		const el = document.createElement('div');
+		el.innerHTML = texts.map((t) => `<p>${t}</p>`).join('');
+		return el;
+	};
+
+	it('speaks the questions after the text, at the reader’s default speed', () => {
+		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
+		const onListenFinish = vi.fn();
+		const body = bodyOf('Once upon a time.', 'The end.');
+		build({
+			body: () => body,
+			onListenFinish,
+			listenEpilogue: () => ['Talk about it together', 'Why did he run?'],
+			listenDefaultRate: () => 0.9
+		}).startListening(0);
+		const [paragraphs, , opts] = start.mock.calls[0];
+		expect(paragraphs).toEqual(['Once upon a time.', 'The end.', 'Talk about it together', 'Why did he run?']);
+		expect(opts?.onFinish).toBe(onListenFinish);
+		expect(opts?.defaultRate).toBe(0.9);
+		start.mockRestore();
+	});
+
+	it('hands the finish to the surface, with no default speed of its own', () => {
+		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
+		const onListenFinish = vi.fn();
+		build({ body: () => bodyOf('Text.'), onListenFinish }).startListening(0);
+		expect(start.mock.calls[0][2]?.onFinish).toBe(onListenFinish);
+		expect(start.mock.calls[0][2]?.defaultRate).toBeUndefined();
+		start.mockRestore();
 	});
 });

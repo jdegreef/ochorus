@@ -45,7 +45,8 @@
 		bookTimeLeft,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
-		placeAfterLayout
+		placeAfterLayout,
+		prefersReducedMotion
 	} from '$lib/reading';
 	import { pageOfOffset, pagedFraction } from '$lib/pageMath';
 	import { EARLY_RESUME_TAG } from '$lib/earlyResume';
@@ -56,7 +57,7 @@
 	import { paceDelta, paragraphWordCounts, type PaceSample } from '$lib/pace';
 	import { readingPace } from '$lib/readingPace.svelte';
 	import { readingTimer } from '$lib/readingTime.svelte';
-	import { listen } from '$lib/listen.svelte';
+	import { listen, GENTLE_RATE } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
@@ -96,11 +97,15 @@
 	// one speaks to the grown-up reading aloud. Any other book reads like the
 	// sermon page: its heading, its answers open.
 	const chapterQuestions = $derived(toQa(chapter.study_questions));
+	// Which young-reader edition this is, if any — the questions' voice, and for a
+	// children's edition the young-reader layout, the story styling, the large
+	// Listen button and the gentle read-aloud speed.
+	const editionKind = $derived(splitEdition(slug, chapter.book_title)?.kind ?? null);
+	const childrens = $derived(editionKind === 'children');
 	const questionsCopy = $derived.by(() => {
-		const kind = splitEdition(slug, chapter.book_title)?.kind;
-		if (kind === 'children')
+		if (editionKind === 'children')
 			return { title: t('reader.questionsYoung'), hint: t('reader.questionsHintYoung'), folded: true };
-		if (kind === 'teens')
+		if (editionKind === 'teens')
 			return { title: t('reader.questionsTeens'), hint: t('reader.questionsHintTeens'), folded: true };
 		return { title: t('sermon.questionsTitle'), hint: '', folded: false };
 	});
@@ -1677,12 +1682,49 @@
 		// Audiobook roll-over: when a chapter finishes reading itself, continue
 		// into the next one. Only when there is a next chapter — the last chapter
 		// simply stops. gotoChapter navigates; the per-chapter effect resumes.
+		// A children's chapter's questions, spoken after it (listenEpilogue), are
+		// where a family talks, not a bridge to the next chapter: there the
+		// reading stops. Everything else rolls on like an audiobook.
 		onListenFinish: () => {
-			if (chapter.next) {
+			if (chapter.next && !spokenQuestions.length) {
 				autoContinueOrder = chapter.next.order;
 				gotoChapter(chapter.next);
 			}
-		}
+		},
+		listenEpilogue: () => spokenQuestions,
+		listenDefaultRate: () => (childrens ? GENTLE_RATE : undefined)
+	});
+
+	// The young-reader layout follows the open edition, and goes when the reader
+	// leaves it (readerPrefs never stores it — see YOUNG_LAYOUT).
+	// What read-aloud says after a children's chapter: the heading, then each
+	// question — never the answers, which are for the grown-up to read when they
+	// want to. The heading is interface copy, so it is spoken only when the
+	// interface speaks the book's language (the voice is the book's).
+	const spokenQuestions = $derived(
+		childrens && chapterQuestions.length
+			? [
+					...(getLang() === contentLang(language) ? [questionsCopy.title] : []),
+					...chapterQuestions.map((qa) => qa.q)
+				]
+			: []
+	);
+	// While those are spoken there is no paragraph to highlight: bring the
+	// questions themselves into view instead, once, as the first one begins.
+	$effect(() => {
+		const bodyCount = body?.children.length ?? 0;
+		if (listen.status === 'idle' || !spokenQuestions.length || listen.current !== bodyCount) return;
+		document.getElementById('questions')?.scrollIntoView({
+			block: 'start',
+			behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+		});
+	});
+
+	// Before the DOM updates, so a children's chapter lays out once, in its own
+	// layout, rather than flashing the reader's and re-measuring.
+	$effect.pre(() => {
+		readerPrefs.youngEdition = childrens;
+		return () => (readerPrefs.youngEdition = false);
 	});
 
 	// Shared by both <ReaderControls> mounts (popover, phone sheet). `layout`
@@ -1991,6 +2033,7 @@
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
+	class:young-edition={childrens}
 	style="{readerPrefs.styleFor(paged)}; --article-max: {articleMax}"
 	onclick={onArticleClick}
 	onfocusin={onArticleFocusIn}
@@ -2040,9 +2083,18 @@
 		</p>
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
 
+		<!-- A children's chapter offers the read-aloud up front, where a parent
+		     looks first — on a phone the footer's Listen is easy to miss. -->
+		{#if childrens && listen.supported && listen.status === 'idle'}
+			<button class="btn btn-primary listen-story mb-8" onclick={() => reader.startListening(0)}>
+				<Icon name="headphones" size={20} />
+				<span>{t('reader.listenStory')}</span>
+			</button>
+		{/if}
+
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
+		<div class="reading" class:story={childrens} bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an
@@ -2469,6 +2521,37 @@
 <NotesDrawer {slug} {edition} bind:open={notesOpen} />
 
 <style>
+	/* ── A children's edition: the story look ─────────────────────────────────
+	   Its chapters share one shape (the fixtures' young-reader editions): an
+	   opening verse in a <blockquote>, the story, and a closing prayer as the
+	   last paragraph, all in italics. So the verse stands as a card at the top,
+	   and the prayer as a soft card at the end — "now we pray" — while the
+	   house drop cap opens the story itself. Server HTML, hence :global. */
+	.reading.story > :global(blockquote:first-child) {
+		margin: 0 0 1.6em;
+		padding: 0.9em 1.1em;
+		border-inline-start: 4px solid var(--accent);
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+		color: var(--text);
+		font-style: normal;
+		font-size: 1.05em;
+	}
+	.reading.story > :global(p:last-child:has(> em:only-child)) {
+		margin-top: 1.6em;
+		padding: 0.9em 1.1em;
+		border: 1px solid var(--accent-soft-border);
+		border-radius: var(--radius-card);
+		background: var(--accent-soft);
+	}
+	/* The large "Listen to this story" button under the title. */
+	.listen-story {
+		min-height: 3rem;
+	}
+	/* Bigger next / previous for small hands at the end of a chapter. */
+	.young-edition :global(.end-links .btn) {
+		min-height: 3.5rem;
+	}
 	/* --- Page-turn mode --------------------------------------------------------
 	   The pager is transparent (display:contents) in scroll mode; in page mode
 	   the <article> becomes a fixed, measure-capped viewport and the pager its

@@ -160,3 +160,77 @@ describe('defaultMeasureFor (first-run column width by device class)', () => {
 		expect(defaultMeasureFor(1440)).toBe('normal');
 	});
 });
+
+describe('the young-reader layout', () => {
+	it('lays a children’s edition out big, clear and scrolling until the reader chooses', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		expect(readerPrefs.youngActive).toBe(true);
+		expect([readerPrefs.scale, readerPrefs.leading, readerPrefs.measure]).toEqual([1.3, 'relaxed', 'narrow']);
+		expect([readerPrefs.font, readerPrefs.paged]).toEqual(['hyperlegible', false]);
+		// Never written down: leaving the edition restores the reader's own layout.
+		readerPrefs.youngEdition = false;
+		expect([readerPrefs.scale, readerPrefs.font]).toEqual([1, 'serif']);
+		expect(stored().font).toBeUndefined();
+	});
+
+	it('steps aside for each setting the reader picks, and only that one', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		readerPrefs.setFont('garamond');
+		readerPrefs.bumpScale(0.1); // from the layout's 1.3, not the stored 1
+		expect([readerPrefs.font, readerPrefs.scale, readerPrefs.leading]).toEqual(['garamond', 1.4, 'relaxed']);
+		expect(stored().chosen).toEqual(['font', 'scale']);
+	});
+
+	it('lets a young reader go up to 200%, capped back to 160% elsewhere', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		readerPrefs.setScale(5);
+		expect(readerPrefs.scale).toBe(2);
+		readerPrefs.youngEdition = false;
+		expect(readerPrefs.scale).toBe(1.6);
+		expect(readerPrefs.canGrow).toBe(false);
+	});
+
+	it('goes off with the toggle, and the toggle is remembered', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		readerPrefs.setYoungLayout(false);
+		expect([readerPrefs.youngActive, readerPrefs.font]).toEqual([false, 'serif']);
+		expect(stored().youngLayout).toBe(false);
+	});
+
+	it('counts an older saved preference as chosen only where it differs from a first run', () => {
+		// Saved before `chosen` existed: every field present, only the font changed.
+		localStorage.setItem(
+			KEY,
+			JSON.stringify({ scale: 1, leading: 'normal', measure: defaultMeasureFor(window.innerWidth), font: 'lora', paged: window.innerWidth >= 1024 })
+		);
+		expect(load().chosen).toEqual(['font']);
+	});
+
+	it('keeps the account in step with the reader’s own values, never the layer', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		expect(readerPrefs.scale).toBe(1.3);
+		expect(readerPrefs.own.scale).toBe(1); // what the account sync sends
+	});
+
+	it('takes the account’s default size on sign-in without counting it as chosen', () => {
+		readerPrefs.init();
+		readerPrefs.applySyncedScale(1);
+		readerPrefs.youngEdition = true;
+		expect(readerPrefs.scale).toBe(1.3);
+		// …but a size the reader did set somewhere is theirs.
+		readerPrefs.applySyncedScale(1.5);
+		expect(readerPrefs.scale).toBe(1.5);
+	});
+
+	it('keeps a children’s 200% out of the reader’s own values everywhere else', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		readerPrefs.setScale(2);
+		expect(readerPrefs.own.scale).toBe(1.6);
+	});
+});

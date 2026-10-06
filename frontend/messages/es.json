@@ -1453,5 +1453,8 @@
   "reader_questions_young": "Conversen juntos",
   "reader_questions_teens": "Preguntas para pensar",
   "reader_questions_hint_young": "Hagan primero las preguntas; luego toquen una para ver una nota para los adultos.",
-  "reader_questions_hint_teens": "Piénsalo primero; luego toca una pregunta para ver una forma de responderla."
+  "reader_questions_hint_teens": "Piénsalo primero; luego toca una pregunta para ver una forma de responderla.",
+  "reader_listen_story": "Escuchar esta historia",
+  "reader_young_layout": "Diseño para lectores jóvenes",
+  "reader_young_layout_hint": "Texto grande y claro para este libro infantil. Tus propios cambios de abajo siguen mandando."
 }

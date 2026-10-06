@@ -121,8 +121,8 @@
 		// touch the values so the effect tracks them
 		void theme.current;
 		void palette.current;
-		void readerPrefs.scale;
-		void listen.rate;
+		void readerPrefs.own.scale;
+		void listen.ownRate;
 		void listen.voiceURI;
 		if (auth.user) auth.pushPrefs();
 	});
@@ -306,8 +306,8 @@
 
 <div
 	class="app-root flex min-h-screen flex-col"
-	style="--reading-scale: {readerPrefs.scale}; --reading-measure: {MEASURE[
-		readerPrefs.measure
+	style="--reading-scale: {readerPrefs.own.scale}; --reading-measure: {MEASURE[
+		readerPrefs.own.measure
 	]}; --pw: {pageWidth.rem}rem; {appnavH}padding-bottom: var(--tabbar-h, 0px)"
 >
 	<a href="#main" class="skip-link">{t('a11y.skipToContent')}</a>
