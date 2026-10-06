@@ -333,6 +333,13 @@ export function faqPage(items: { q: string; a: string }[]): string {
 	});
 }
 
+/** Stored Q&A (`{question, answer}` — book/topic `qa`, sermon and chapter
+ *  `study_questions`) in the `{q, a}` shape `pickQa`, `faqPage()` and `<QandA>`
+ *  take. One mapping, rather than one per page. */
+export function toQa(stored: { question: string; answer: string }[] | null | undefined) {
+	return (stored ?? []).map(({ question, answer }) => ({ q: question, a: answer }));
+}
+
 /**
  * The two-tier Q&A contract in one place: prefer the editorial set once it clears
  * the two-item floor a real Q&A section needs, otherwise fall back to the derived

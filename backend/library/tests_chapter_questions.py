@@ -1,22 +1,17 @@
 """`Chapter.study_questions` — the young-reader editions' "Talk about it".
 
 Pinned here: the seed upserts the field from the fixture and leaves a chapter
-alone when its fixture row carries no key; the chapter API serves it; and every
-shipped set is well formed (plain text, answered, three per chapter), so a bad
-batch fails the build rather than reaching a family's reading.
+alone when its fixture row carries no key, and the chapter API serves it. The
+shipped sets' shape is ``tests_fixture.ChapterQuestionsShapeTests``.
 """
 
 from __future__ import annotations
-
-import json
-from pathlib import Path
 
 from django.test import TestCase
 
 from .management.commands.seed_books import sync_chapters
 from .models import Author, Book, Chapter
 
-BOOKS = Path(__file__).parent / "fixtures" / "content" / "books"
 QA = [{"question": "Why did Christian run?", "answer": "To reach the light."}]
 
 
@@ -53,27 +48,3 @@ class SyncChapterQuestionsTests(TestCase):
         self.book.save()
         response = self.client.get("/api/library/books/pp-children/chapters/1/?language=en")
         self.assertEqual(response.json()["study_questions"], QA)
-
-
-class ShippedChapterQuestionsTests(TestCase):
-    def test_every_shipped_set_is_three_plain_answered_questions(self):
-        bad, books = [], 0
-        for path in sorted(BOOKS.glob("*.json")):
-            rows = json.loads(path.read_text(encoding="utf-8"))
-            chapters = [r for r in rows if r["model"] == "library.chapter"]
-            sets = [c["fields"]["study_questions"] for c in chapters if c["fields"].get("study_questions")]
-            if not sets:
-                continue
-            books += 1
-            if len(sets) != len(chapters):
-                bad.append(f"{path.name}: {len(sets)} of {len(chapters)} chapters have questions")
-            for qa_set in sets:
-                ok = len(qa_set) == 3 and all(
-                    set(qa) == {"question", "answer"}
-                    and all(isinstance(v, str) and v.strip() and "<" not in v for v in qa.values())
-                    for qa in qa_set
-                )
-                if not ok:
-                    bad.append(f"{path.name}: malformed set {qa_set!r:.80}")
-        self.assertEqual(bad, [])
-        self.assertGreaterEqual(books, 10)  # the ten young-reader editions

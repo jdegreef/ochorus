@@ -182,8 +182,9 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
 
     Additive by ``order`` (see the module docstring): an order the DB lacks is
     created, one whose title, study questions or settled body differs is
-    updated in place, and nothing is ever deleted or renumbered — a DB chapter the fixture lacks is
-    returned in ``extra_orders`` for the deploy log to report.
+    updated in place, and nothing is ever deleted or renumbered — a DB chapter
+    the fixture lacks is returned in ``extra_orders`` for the deploy log to
+    report.
 
     The fixture WINS: a data migration that edits chapter rows without the
     matching fixture edit is reverted in the same release (``release`` runs
@@ -200,11 +201,13 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
     """
     # The body's md5, not the body: hashed in SQL, so a converged book costs
     # 32 characters a chapter instead of its text (library/deploy_fingerprints).
+    # study_questions is read whole: `[]` on every chapter outside the
+    # young-reader editions, so it costs a deploy next to nothing.
     db = {
         c.order: c
-        for c in book.chapters.only("id", "book_id", "order", "title", "study_questions").annotate(
-            body_md5=MD5("body_html")
-        )
+        for c in book.chapters.only(
+            "id", "book_id", "order", "title", "study_questions"
+        ).annotate(body_md5=MD5("body_html"))
     }
     added = updated = 0
     for fc in sorted(fixture_chapters, key=lambda c: c["order"]):

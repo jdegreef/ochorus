@@ -5,6 +5,7 @@
 	import { PHONE } from '$lib/breakpoints';
 	import { readingSync } from '$lib/readingSync';
 	import { planDayPath } from '$lib/editionHref';
+	import { splitEdition } from '$lib/edition';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import { onMount, onDestroy, tick, untrack } from 'svelte';
 	import { authorLdType, authorPath } from '$lib/originals';
@@ -63,7 +64,7 @@
 	import ReaderOverlays from '$lib/components/ReaderOverlays.svelte';
 	import FootFeedback from '$lib/components/FootFeedback.svelte';
 	import { API_BASE_URL, SITE_URL } from '$lib/config';
-	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId } from '$lib/seo';
+	import { jsonLd, breadcrumbLd, truncateMeta, absUrl, publisherLd, PUBLIC_DOMAIN_MARK, bookId, personId, toQa } from '$lib/seo';
 	import { LANDSCAPE_HEIGHT, LANDSCAPE_WIDTH, landscapeUrl } from '$lib/coverArt';
 	import { baseEdition, bookChapterPath, modernChapterPath } from '$lib/reading-schema';
 	import { localizeHref } from '$lib/href';
@@ -88,12 +89,21 @@
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
 	const slug = $derived(data.slug as string);
-	// The young-reader editions' "Talk about it" (`Chapter.study_questions`), in
-	// QandA's shape; a children's edition speaks to the grown-up reading aloud.
-	const chapterQuestions = $derived(
-		(chapter.study_questions ?? []).map((qa) => ({ q: qa.question, a: qa.answer }))
-	);
-	const childrens = $derived(slug.endsWith('-children'));
+	// The end-of-chapter questions (`Chapter.study_questions`), in the voice of
+	// the edition (`splitEdition`: the slug AND the title's "(For Children)", so
+	// Watts's Divine Songs for Children is not mistaken for one). A young-reader
+	// edition keeps its answers folded — the reader answers first; a children's
+	// one speaks to the grown-up reading aloud. Any other book reads like the
+	// sermon page: its heading, its answers open.
+	const chapterQuestions = $derived(toQa(chapter.study_questions));
+	const questionsCopy = $derived.by(() => {
+		const kind = splitEdition(slug, chapter.book_title)?.kind;
+		if (kind === 'children')
+			return { title: t('reader.questionsYoung'), hint: t('reader.questionsHintYoung'), folded: true };
+		if (kind === 'teens')
+			return { title: t('reader.questionsTeens'), hint: t('reader.questionsHintTeens'), folded: true };
+		return { title: t('sermon.questionsTitle'), hint: '', folded: false };
+	});
 	const language = $derived(data.language as string);
 	// 'modern' when reading the Modern English edition, else null. Carried in the
 	// URL and preserved across every in-reader chapter link.
@@ -2038,17 +2048,16 @@
 		<!-- The chapter's ending. In page mode it starts on a fresh column, so the
 		     last page of every chapter is where to go next (see .chapter-end). -->
 		<div class="chapter-end" bind:this={chapterEndEl}>
-			<!-- Talk about it: the young-reader editions' questions, first in the
-			     ending so a family reading aloud meets them before anything else.
-			     Answers stay folded — a child answers first, the grown-up taps for
-			     the note. Plain text, so no {@html}. -->
+			<!-- The chapter's questions, first in the ending so a family reading
+			     aloud meets them before anything else (questionsCopy picks the voice
+			     and whether answers start folded). Plain text, so no {@html}. -->
 			{#if chapterQuestions.length}
 				<QandA
 					items={chapterQuestions}
-					title={childrens ? t('reader.questionsYoung') : t('reader.questionsTeens')}
-					hint={childrens ? t('reader.questionsHintYoung') : t('reader.questionsHintTeens')}
+					title={questionsCopy.title}
+					hint={questionsCopy.hint}
 					headingClass="section-heading"
-					openFirst={false}
+					openFirst={!questionsCopy.folded}
 				/>
 			{/if}
 			<!-- A plan day's reflection: what the reader takes from today's reading,

@@ -29,7 +29,7 @@
 	import { page } from '$app/stores';
 	import { buildOutline, type OutlineEntry } from '$lib/sermonOutline';
 	import { scrollSpy, jumpToSection } from '$lib/scrollSpy.svelte';
-	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, truncateMeta, stripHtml, faqPage, toQa, REVIEWED_UI_LOCALES, publisherLd, personId } from '$lib/seo';
 	import { focusTrap } from '$lib/actions/focusTrap';
 	import { dismissable } from '$lib/actions/dismissable';
 	import { hasNativeShare, nativeShare, shareLinks } from '$lib/share';
@@ -392,7 +392,7 @@
 	// content and the clean entity signal, not a SERP accordion.)
 	const faqItems = $derived(
 		REVIEWED_UI_LOCALES.has(getLang())
-			? (sermon.study_questions ?? []).map((qa) => ({ q: qa.question, a: qa.answer }))
+			? toQa(sermon.study_questions)
 			: []
 	);
 	const faqLd = $derived(faqItems.length ? faqPage(faqItems) : '');

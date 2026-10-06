@@ -6,7 +6,7 @@
 	import type { TopicDetail } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
 	import { readJSON, writeJSON } from '$lib/persisted';
-	import { absUrl, jsonLd, breadcrumbLd, hreflangExact, pickQa } from '$lib/seo';
+	import { absUrl, jsonLd, breadcrumbLd, hreflangExact, pickQa, toQa } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { scopedSearchHref } from '$lib/searchState';
@@ -51,11 +51,8 @@
 	// Editorial Q&A about the shelf. Content, per-language via qa_for on the API,
 	// so it's not locale-gated here — an untranslated locale simply returns [].
 	// Topics have no derived fallback (unlike books), so the second arg is empty;
-	// pickQa still centralizes the >=2 floor and the FAQPage JSON-LD. Stored shape
-	// is {question, answer}; map to {q, a} for pickQa/faqPage/QandA.
-	const qa = $derived(
-		pickQa((topic.qa ?? []).map((it) => ({ q: it.question, a: it.answer })), [])
-	);
+	// pickQa still centralizes the >=2 floor and the FAQPage JSON-LD.
+	const qa = $derived(pickQa(toQa(topic.qa), []));
 
 	// Books grouped by author for author-clustered topics (the Puritans), null —
 	// a diverse gallery (Women of Faith) that never clusters. See topicBookGroups.
