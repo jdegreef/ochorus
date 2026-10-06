@@ -824,7 +824,8 @@ export const listEraPresence = (f?: Fetch) =>
 
 /** A series the house imprint's books run in, named in the requested language;
  * `books` holds their slugs in volume order. */
-export interface OriginalsSeries {
+/** A series on /originals; `audience` (from SeriesFor) groups the shelf. */
+export interface OriginalsSeries extends Pick<SeriesFor, 'audience'> {
 	slug: string;
 	title: string;
 	description: string;

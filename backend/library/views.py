@@ -262,6 +262,8 @@ class OriginalsView(PublicContentCacheMixin, APIView):
                     "slug": s.slug,
                     "title": title,
                     "description": s.description_for(lang),
+                    # Who it's for: the page groups its series by it, as /series does.
+                    "audience": s.audience,
                     "books": [b.slug for b in members],
                 }
             )
