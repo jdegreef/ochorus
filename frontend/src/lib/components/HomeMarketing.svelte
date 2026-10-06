@@ -222,6 +222,7 @@
 {#if authors.length}
 	<section class="page-col px-5 pt-14 pb-20">
 		<SectionHeader
+			section="biographies"
 			title={t('home.authorsTitle')}
 			href={localizeHref('/biographies')}
 			linkText={t('home.allBiographies')}

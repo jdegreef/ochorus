@@ -64,6 +64,7 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader
+		section="topics"
 		title={t('topics.title')}
 		tagline={t('topics.tagline')}
 		meta={topics.length ? topicCounts : undefined}

@@ -294,7 +294,7 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<LibraryTabs current="books" series={series.length > 0} />
-	<PageHeader title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
+	<PageHeader section="books" title={t('nav.books')} tagline={t('books.tagline')} meta={books.length ? bookCounts : undefined} />
 	{#snippet bookCounts()}
 		{books.length}
 		{books.length === 1 ? t('common.bookOne') : t('common.bookMany')}

@@ -34,6 +34,7 @@
 {#if rows.length >= 2}
 	<section class="page-col px-5 pt-14">
 		<SectionHeader
+			section="plans"
 			title={t('home.yourPlans')}
 			href={localizeHref('/plans')}
 			linkText={t('plans.all')}

@@ -26,6 +26,7 @@
 {#if topics.length}
 	<section class="page-col px-5 pt-14" class:pb-20={lastBlock}>
 		<SectionHeader
+			section="topics"
 			title={t('home.browseTopic')}
 			href={localizeHref('/topics')}
 			linkText={t('home.allTopics')}

@@ -547,6 +547,7 @@
 	     the hierarchy is real. The BreadcrumbList JSON-LD stays — it describes
 	     the page's position for search results, which is still true. -->
 	<PageHeader
+		section="biographies"
 		title={t('nav.biographies')}
 		tagline={t('bios.tagline')}
 		meta={authors.length ? bioCounts : undefined}
