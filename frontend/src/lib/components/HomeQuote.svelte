@@ -68,7 +68,7 @@
 			<div class="relative px-6 pb-6 pt-36 sm:px-10 sm:pb-10">
 				<p id="home-quote-label" class="eyebrow home-quote-eyebrow mb-4">{t('quotes.featuredEyebrow')}</p>
 				<figure class="m-0 flex flex-col gap-4">
-					<blockquote class="home-quote-text font-display">“<QuoteText text={quote.text} />”</blockquote>
+					<blockquote class="home-quote-text font-display"><span class="home-quote-mark">“</span><QuoteText text={quote.text} />”</blockquote>
 					<figcaption class="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-small">
 						<a class="home-quote-author font-semibold" href={localizeHref(`/quotes/${quote.author.slug}/`)}
 							>{quote.author.name}</a
@@ -113,6 +113,17 @@
 		line-height: 1.3;
 		font-weight: 500;
 		color: var(--hero-ink);
+	}
+	/* The opening mark set large and gilded, as a printed epigraph's is. Kept
+	   in the line rather than hung into the margin: on a phone the card's
+	   padding is narrower than the mark, and a hung one would be clipped. */
+	.home-quote-mark {
+		display: inline-block;
+		margin-inline-end: 0.04em;
+		font-size: 2.2em;
+		line-height: 0;
+		vertical-align: -0.32em;
+		color: var(--hero-gilt);
 	}
 	.home-quote-author {
 		color: var(--hero-ink);

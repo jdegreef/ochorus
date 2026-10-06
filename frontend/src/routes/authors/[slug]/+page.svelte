@@ -1027,10 +1027,11 @@
 	:global(.bio p) {
 		margin: 0 0 1.15em;
 	}
-	/* A gold drop cap opens the life — the first letter of the FIRST paragraph
-	   only, so pull-quotes and prayer callouts keep their own opening. Sized in
-	   `em` so it tracks the reader's text-size control, and floated inline-start
-	   so it sits correctly under a routed RTL (Arabic) bio too. */
+	/* An illuminated drop cap opens the life — the same initial as a chapter's
+	   (app.css, --initial-ink / --initial-gilt) — on the first letter of the
+	   FIRST paragraph only, so pull-quotes and prayer callouts keep their own
+	   opening. Sized in `em` so it tracks the reader's text-size control, and
+	   floated inline-start so it sits correctly under a routed RTL bio too. */
 	:global(.bio > p:first-of-type)::first-letter {
 		float: inline-start;
 		font-family: var(--font-display);
@@ -1039,7 +1040,8 @@
 		line-height: 0.82;
 		padding-inline-end: 0.09em;
 		padding-block-start: 0.02em;
-		color: var(--gold);
+		color: var(--initial-ink);
+		text-shadow: var(--initial-gilt);
 	}
 	/* …but NOT under RTL: a drop cap is a Latin/LTR flourish, and an enlarged,
 	   detached initial reads as broken in Arabic's cursive script. Revert it to
@@ -1052,6 +1054,7 @@
 		line-height: inherit;
 		padding: 0;
 		color: inherit;
+		text-shadow: none;
 	}
 	:global(.bio h2) {
 		font-family: var(--font-display);

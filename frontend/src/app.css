@@ -1445,7 +1445,15 @@
    - `:first-of-type`, so a chapter opening with a heading still caps its first
      real paragraph, and no later paragraph gets one.
    - `.no-initial` opts a text out: an article opens on an answer to a
-     question, not a chapter, so it has no initial. */
+     question, not a chapter, so it has no initial.
+
+   ILLUMINATED: the letter is set in the palette's accent (so it is indigo in
+   Parchment, navy in Cathedral, violet in Advent under the Church year) and
+   gilded — a hairline of gold offset down and to the reading edge's far side,
+   like a gilt initial's raised edge in a printed devotional. --initial-ink and
+   --initial-gilt are shared with the author bio's opening, so the site has one
+   initial. The accent clears 4.5:1 on every ground in every palette
+   (palettes.test.ts), which a 3em display letter needs far less than that. */
 article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
@@ -1456,7 +1464,16 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 	font-weight: 600;
 	margin-inline-end: 0.08em;
 	padding-top: 0.06em;
-	color: var(--text);
+	color: var(--initial-ink);
+	text-shadow: var(--initial-gilt);
+}
+:root {
+	--initial-ink: var(--accent);
+	--initial-gilt: 0.035em 0.035em 0 color-mix(in srgb, var(--gold) 75%, transparent);
+}
+/* An RTL page's reading edge is on the right, so the gilt falls to the left. */
+:root[dir='rtl'] {
+	--initial-gilt: -0.035em 0.035em 0 color-mix(in srgb, var(--gold) 75%, transparent);
 }
 
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
