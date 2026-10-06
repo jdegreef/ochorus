@@ -9,9 +9,12 @@ const auth = vi.hoisted(() => ({
 	initialized: true,
 	user: null,
 	signUp: vi.fn(),
+	resendSignup: vi.fn(),
 	signInWithGoogle: vi.fn()
 }));
 vi.mock('$lib/auth.svelte', () => ({ auth }));
+const signupStarted = vi.hoisted(() => vi.fn());
+vi.mock('$lib/signupSource', () => ({ signupStarted }));
 
 const { default: SignUpForm } = await import('./SignUpForm.svelte');
 
@@ -50,6 +53,8 @@ afterAll(() => {
 
 beforeEach(() => {
 	auth.signUp.mockReset().mockResolvedValue(null);
+	auth.resendSignup.mockReset().mockResolvedValue(null);
+	signupStarted.mockReset();
 	target = document.body.appendChild(document.createElement('div'));
 	component = mount(SignUpForm, { target, props: { returnTo: 'https://ochorus.test/books/humility' } });
 	flushSync();
@@ -86,5 +91,29 @@ describe('SignUpForm', () => {
 		flushSync();
 		expect(target.querySelector('form')).not.toBeNull();
 		expect(target.querySelector('[role=alert]')?.textContent).not.toBe('');
+	});
+
+	it('counts one sign-up start however many times the reader retries', async () => {
+		auth.signUp.mockResolvedValue('weak_password');
+		fillAndSubmit();
+		await tick();
+		submit(target.querySelector('form')!);
+		await tick();
+		expect(auth.signUp).toHaveBeenCalledTimes(2);
+		expect(signupStarted).toHaveBeenCalledTimes(1);
+	});
+
+	it('re-sends the confirmation email, not a magic link', async () => {
+		fillAndSubmit();
+		await tick();
+		flushSync();
+		target.querySelector<HTMLButtonElement>('.suf button')!.click();
+		await tick();
+		flushSync();
+		expect(auth.resendSignup).toHaveBeenCalledWith(
+			'grace@example.org',
+			'https://ochorus.test/books/humility'
+		);
+		expect(target.querySelector('[role=status]')?.textContent).not.toBe('');
 	});
 });
