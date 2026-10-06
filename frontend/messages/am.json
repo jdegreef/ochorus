@@ -1453,5 +1453,8 @@
   "reader_questions_young": "አብራችሁ ተወያዩበት",
   "reader_questions_teens": "ለማሰብ የሚረዱ ጥያቄዎች",
   "reader_questions_hint_young": "መጀመሪያ ጥያቄዎቹን ጠይቁ — ከዚያም ለአዋቂዎች የተጻፈውን ማስታወሻ ለማየት አንዱን ጥያቄ ንኩ።",
-  "reader_questions_hint_teens": "መጀመሪያ አስብበት — ከዚያም አንድ የመመለሻ መንገድ ለማየት ጥያቄውን ንካ።"
+  "reader_questions_hint_teens": "መጀመሪያ አስብበት — ከዚያም አንድ የመመለሻ መንገድ ለማየት ጥያቄውን ንካ።",
+  "reader_listen_story": "ይህን ታሪክ አዳምጡ",
+  "reader_young_layout": "የልጆች ንባብ አቀማመጥ",
+  "reader_young_layout_hint": "ለዚህ የልጆች መጽሐፍ ትልቅና ግልጽ ጽሑፍ። ከታች የምታደርጋቸው የራስህ ለውጦች አሁንም ይቀድማሉ።"
 }

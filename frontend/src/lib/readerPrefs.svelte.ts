@@ -149,6 +149,29 @@ export const READER_FONTS = Object.keys(FONT_STACK) as ReaderFont[];
 
 const SCALE_MIN = 0.8;
 const SCALE_MAX = 1.6;
+/** A young reader's edition may go larger — very early or low-vision readers. */
+const SCALE_MAX_YOUNG = 2;
+
+/** The settings the young-reader layout fills in. */
+export type YoungField = 'scale' | 'leading' | 'measure' | 'font' | 'paged';
+const YOUNG_FIELDS: readonly YoungField[] = ['scale', 'leading', 'measure', 'font', 'paged'];
+
+/**
+ * The young-reader layout: what a children's edition reads in until the reader
+ * says otherwise — big, clear, roomy text in a short column, scrolling rather
+ * than turning pages (simpler for small hands). It is a LAYER, never written to
+ * storage: each field applies only while the reader hasn't chosen that setting
+ * themselves (`chosen`), and the whole layer goes off with the Aa panel's
+ * toggle (`youngLayout`).
+ */
+type YoungValues = Pick<Stored, YoungField>;
+export const YOUNG_LAYOUT: Readonly<YoungValues> = {
+	scale: 1.3,
+	leading: 'relaxed',
+	measure: 'narrow',
+	font: 'hyperlegible',
+	paged: false
+};
 
 // Viewport width (px) at/above which the page-turn layout is the first-run
 // default — wide enough for a comfortable two-column spread. Matches the
@@ -172,6 +195,11 @@ interface Stored {
 	paged: boolean;
 	tapToScroll: boolean;
 	preferModern: boolean;
+	/** The young-reader-layout settings the reader has set themselves — those
+	 *  the layer leaves alone. */
+	chosen: YoungField[];
+	/** The young-reader layout on children's editions (the Aa panel's toggle). */
+	youngLayout: boolean;
 }
 
 const DEFAULTS: Stored = {
@@ -187,8 +215,30 @@ const DEFAULTS: Stored = {
 	// of the sibling idea (edge-tap to change chapter) was a footgun on phones
 	// and was removed; this one only turns on when a reader asks for it.
 	tapToScroll: false,
-	preferModern: false
+	preferModern: false,
+	chosen: [],
+	youngLayout: true
 };
+
+/**
+ * Which young-layout settings a stored prefs object counts as the reader's own.
+ * A `chosen` list is the record; prefs saved before it existed carry every
+ * field (every save writes them all), so there a field counts as chosen only
+ * when it differs from what a first run would have given this device.
+ */
+function chosenFrom(raw: Record<string, unknown>, s: Omit<Stored, 'chosen'>): YoungField[] {
+	if (Array.isArray(raw.chosen))
+		return YOUNG_FIELDS.filter((f) => (raw.chosen as unknown[]).includes(f));
+	const width = browser ? window.innerWidth : 0;
+	const firstRun: YoungValues = {
+		scale: DEFAULTS.scale,
+		leading: DEFAULTS.leading,
+		measure: browser ? defaultMeasureFor(width) : DEFAULTS.measure,
+		font: DEFAULTS.font,
+		paged: browser && width >= WIDE_SCREEN_MIN
+	};
+	return YOUNG_FIELDS.filter((f) => f in raw && s[f] !== firstRun[f]);
+}
 
 const ALIGNS: readonly Align[] = ['left', 'justify'];
 
@@ -204,9 +254,9 @@ export function load(): Stored {
 	const raw = readJSON<Record<string, unknown>>(KEY, {});
 	const scale =
 		typeof raw.scale === 'number' && Number.isFinite(raw.scale)
-			? Math.min(SCALE_MAX, Math.max(SCALE_MIN, raw.scale))
+			? Math.min(SCALE_MAX_YOUNG, Math.max(SCALE_MIN, raw.scale))
 			: DEFAULTS.scale;
-	return {
+	const s = {
 		scale,
 		leading: (raw.leading as Leading) in LEADING ? (raw.leading as Leading) : DEFAULTS.leading,
 		// A stored measure always wins; only a first run picks by device class.
@@ -234,21 +284,30 @@ export function load(): Stored {
 				: browser && window.innerWidth >= WIDE_SCREEN_MIN,
 		tapToScroll:
 			typeof raw.tapToScroll === 'boolean' ? raw.tapToScroll : DEFAULTS.tapToScroll,
-		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern
+		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern,
+		youngLayout: typeof raw.youngLayout === 'boolean' ? raw.youngLayout : DEFAULTS.youngLayout
 	};
+	return { ...s, chosen: chosenFrom(raw, s) };
 }
 
 class ReaderPrefs {
-	scale = $state(DEFAULTS.scale);
-	leading = $state<Leading>(DEFAULTS.leading);
-	measure = $state<Measure>(DEFAULTS.measure);
-	font = $state<ReaderFont>(DEFAULTS.font);
+	// The reader's own values for the young-layout fields. Read them through the
+	// getters below, which answer with the young-reader layout where it applies.
+	#scale = $state(DEFAULTS.scale);
+	#leading = $state<Leading>(DEFAULTS.leading);
+	#measure = $state<Measure>(DEFAULTS.measure);
+	#font = $state<ReaderFont>(DEFAULTS.font);
+	#paged = $state(DEFAULTS.paged);
+	#chosen = $state<YoungField[]>([]);
+	/** The open text is a children's edition (set by the chapter reader; never stored). */
+	#youngEdition = $state(false);
+	/** The young-reader layout on children's editions — the Aa panel's toggle. */
+	youngLayout = $state(DEFAULTS.youngLayout);
 	align = $state<Align>(DEFAULTS.align);
 	/** True once the reader picks an alignment; until then it's layout-derived. */
 	alignChosen = $state(DEFAULTS.alignChosen);
 	/** Side gutters of the reading column in scroll mode. */
 	margin = $state<Margin>(DEFAULTS.margin);
-	paged = $state(DEFAULTS.paged);
 	/** Opt-in: in scroll mode, a tap in the lower part of the screen pages down. */
 	tapToScroll = $state(DEFAULTS.tapToScroll);
 	/** When a Modern English edition exists, open it by default (device-local). */
@@ -259,31 +318,78 @@ class ReaderPrefs {
 	init() {
 		if (this.#loaded || !browser) return;
 		const s = load();
-		this.scale = s.scale;
-		this.leading = s.leading;
-		this.measure = s.measure;
-		this.font = s.font;
+		this.#scale = s.scale;
+		this.#leading = s.leading;
+		this.#measure = s.measure;
+		this.#font = s.font;
 		this.align = s.align;
 		this.alignChosen = s.alignChosen;
 		this.margin = s.margin;
-		this.paged = s.paged;
+		this.#paged = s.paged;
 		this.tapToScroll = s.tapToScroll;
 		this.preferModern = s.preferModern;
+		this.#chosen = s.chosen;
+		this.youngLayout = s.youngLayout;
 		this.#loaded = true;
+	}
+
+	/** Whether the young-reader layout is in force: a children's edition is open
+	 *  and the reader hasn't switched the layout off. */
+	get youngActive(): boolean {
+		return this.#youngEdition && this.youngLayout;
+	}
+	/** A children's edition is open (whether or not its layout is on). */
+	get youngEdition(): boolean {
+		return this.#youngEdition;
+	}
+	#young<F extends YoungField>(f: F, own: YoungValues[F]): YoungValues[F] {
+		return this.youngActive && !this.#chosen.includes(f) ? YOUNG_LAYOUT[f] : own;
+	}
+	get #scaleMax(): number {
+		return this.youngActive ? SCALE_MAX_YOUNG : SCALE_MAX;
+	}
+	get scale(): number {
+		return this.#young('scale', Math.min(this.#scaleMax, this.#scale));
+	}
+	get leading(): Leading {
+		return this.#young('leading', this.#leading);
+	}
+	get measure(): Measure {
+		return this.#young('measure', this.#measure);
+	}
+	get font(): ReaderFont {
+		return this.#young('font', this.#font);
+	}
+	get paged(): boolean {
+		return this.#young('paged', this.#paged);
+	}
+	#choose(f: YoungField) {
+		if (!this.#chosen.includes(f)) this.#chosen = [...this.#chosen, f];
+	}
+
+	/** The chapter reader says whether the open text is a children's edition. */
+	setYoungEdition(on: boolean) {
+		this.#youngEdition = on;
+	}
+	setYoungLayout(v: boolean) {
+		this.youngLayout = v;
+		this.#save();
 	}
 
 	#save() {
 		const s: Stored = {
-			scale: this.scale,
-			leading: this.leading,
-			measure: this.measure,
-			font: this.font,
+			scale: this.#scale,
+			leading: this.#leading,
+			measure: this.#measure,
+			font: this.#font,
 			align: this.align,
 			alignChosen: this.alignChosen,
 			margin: this.margin,
-			paged: this.paged,
+			paged: this.#paged,
 			tapToScroll: this.tapToScroll,
-			preferModern: this.preferModern
+			preferModern: this.preferModern,
+			chosen: this.#chosen,
+			youngLayout: this.youngLayout
 		};
 		writeJSON(KEY, s);
 	}
@@ -293,26 +399,30 @@ class ReaderPrefs {
 		return this.scale > SCALE_MIN;
 	}
 	get canGrow(): boolean {
-		return this.scale < SCALE_MAX;
+		return this.scale < this.#scaleMax;
 	}
 
 	setScale(next: number) {
-		this.scale = Math.min(SCALE_MAX, Math.max(SCALE_MIN, Math.round(next * 20) / 20));
+		this.#scale = Math.min(this.#scaleMax, Math.max(SCALE_MIN, Math.round(next * 20) / 20));
+		this.#choose('scale');
 		this.#save();
 	}
 	bumpScale(delta: number) {
 		this.setScale(this.scale + delta);
 	}
 	setLeading(v: Leading) {
-		this.leading = v;
+		this.#leading = v;
+		this.#choose('leading');
 		this.#save();
 	}
 	setMeasure(v: Measure) {
-		this.measure = v;
+		this.#measure = v;
+		this.#choose('measure');
 		this.#save();
 	}
 	setFont(v: ReaderFont) {
-		this.font = v;
+		this.#font = v;
+		this.#choose('font');
 		this.#save();
 	}
 	setAlign(v: Align) {
@@ -325,7 +435,8 @@ class ReaderPrefs {
 		this.#save();
 	}
 	setPaged(v: boolean) {
-		this.paged = v;
+		this.#paged = v;
+		this.#choose('paged');
 		this.#save();
 	}
 	setTapToScroll(v: boolean) {
@@ -340,19 +451,21 @@ class ReaderPrefs {
 	/** Restore every reader comfort preference to its default (Settings → reset).
 	 *  Does not touch reading data (progress, highlights) — only preferences. */
 	reset() {
-		this.scale = DEFAULTS.scale;
-		this.leading = DEFAULTS.leading;
+		this.#scale = DEFAULTS.scale;
+		this.#leading = DEFAULTS.leading;
 		// Back to the first-run default for THIS device, not the bare constant —
 		// otherwise a tablet reader who resets can never regain the wide column
 		// its first run gave it (reset() saves, so the no-pref branch never fires).
-		this.measure = browser ? defaultMeasureFor(window.innerWidth) : DEFAULTS.measure;
-		this.font = DEFAULTS.font;
+		this.#measure = browser ? defaultMeasureFor(window.innerWidth) : DEFAULTS.measure;
+		this.#font = DEFAULTS.font;
 		this.align = DEFAULTS.align;
 		this.alignChosen = DEFAULTS.alignChosen;
 		this.margin = DEFAULTS.margin;
-		this.paged = DEFAULTS.paged;
+		this.#paged = DEFAULTS.paged;
 		this.tapToScroll = DEFAULTS.tapToScroll;
 		this.preferModern = DEFAULTS.preferModern;
+		this.#chosen = [];
+		this.youngLayout = DEFAULTS.youngLayout;
 		this.#save();
 	}
 

@@ -110,3 +110,31 @@ describe('listen onFinish (audiobook roll-over hook)', () => {
 		expect(seen).toEqual([0]); // only the paragraph that had begun before stop
 	});
 });
+
+describe('listen gentle speed (children’s editions)', () => {
+	afterEach(() => {
+		vi.unstubAllGlobals();
+		localStorage.clear();
+	});
+
+	it('reads a children’s edition a little slower until the listener picks a speed', async () => {
+		localStorage.clear();
+		const { listen, synth } = await freshListen();
+		listen.start(['One.'], 0, { gentle: true });
+		expect(listen.rate).toBe(0.9);
+		expect(synth.state.last?.rate).toBe(0.9);
+		listen.start(['One.'], 0);
+		expect(listen.rate).toBe(1);
+	});
+
+	it('never overrides a speed the listener chose, nor saves the gentle one as theirs', async () => {
+		localStorage.clear();
+		const { listen } = await freshListen();
+		listen.start(['One.'], 0, { gentle: true });
+		listen.setVoice('test-en');
+		expect(JSON.parse(localStorage.getItem('ochorus:listen') || '{}').rate).toBeUndefined();
+		listen.setRate(1.5);
+		listen.start(['One.'], 0, { gentle: true });
+		expect(listen.rate).toBe(1.5);
+	});
+});

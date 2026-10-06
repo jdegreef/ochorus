@@ -25,6 +25,10 @@ export function clampRate(rate: number): number {
 	return Math.min(RATE_MAX, Math.max(RATE_MIN, Math.round(rate * 20) / 20));
 }
 
+/** A children's edition's first speed, until the listener picks one: a little
+ *  slower than speech, for a child following the words. */
+export const GENTLE_RATE = 0.9;
+
 const KEY = 'ochorus:listen';
 
 /**
@@ -39,6 +43,8 @@ const PREFERRED_DEFAULTS: Record<string, RegExp> = {
 
 interface Stored {
 	rate: number;
+	/** Whether the listener ever set a speed (a saved `rate`). */
+	rateChosen: boolean;
 	voiceURI: string;
 }
 
@@ -52,17 +58,19 @@ export interface StartOptions {
 	/** Fires as each paragraph `index` begins, driven by the audio (not a
 	 *  reactive effect) — the reader saves the resume point from it. */
 	onAdvance?: (index: number) => void;
+	/** A children's edition: read at GENTLE_RATE unless the listener chose a speed. */
+	gentle?: boolean;
 }
 
 function loadPrefs(): Stored {
 	const raw = readJSON<{ rate?: number; voiceURI?: unknown }>(KEY, {});
+	// Any speed inside the range — Settings is a continuous slider now, so a
+	// saved value need not be one of the RATES presets.
+	const rateChosen =
+		typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX;
 	return {
-		// Any speed inside the range — Settings is a continuous slider now, so a
-		// saved value need not be one of the RATES presets.
-		rate:
-			typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX
-				? raw.rate
-				: 1,
+		rate: rateChosen ? (raw.rate as number) : 1,
+		rateChosen,
 		voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
 	};
 }
@@ -102,12 +110,16 @@ class Listen {
 	// otherwise and the onend callback (our advance mechanism) never fires.
 	#utterance: SpeechSynthesisUtterance | null = null;
 	#initialized = false;
+	// Whether `rate` is the listener's own (saved) speed. Until it is, each start
+	// picks the default for its text — GENTLE_RATE for a children's edition.
+	#rateChosen = false;
 
 	init() {
 		if (!this.supported || this.#initialized) return;
 		this.#initialized = true;
 		const prefs = loadPrefs();
 		this.rate = prefs.rate;
+		this.#rateChosen = prefs.rateChosen;
 		this.voiceURI = prefs.voiceURI;
 
 		const load = () => (this.voices = speechSynthesis.getVoices());
@@ -207,6 +219,7 @@ class Listen {
 		}
 		this.noVoice = false;
 		this.stop();
+		if (!this.#rateChosen) this.rate = opts.gentle ? GENTLE_RATE : 1;
 		this.#paragraphs = paragraphs;
 		this.#lang = lang;
 		this.total = paragraphs.length;
@@ -260,6 +273,7 @@ class Listen {
 
 	setRate(rate: number) {
 		this.rate = clampRate(rate);
+		this.#rateChosen = true;
 		this.#savePrefs();
 		this.#restartCurrent();
 	}
@@ -298,7 +312,9 @@ class Listen {
 	}
 
 	#savePrefs() {
-		writeJSON(KEY, { rate: this.rate, voiceURI: this.voiceURI });
+		// A speed only once the listener has set one: choosing a voice during a
+		// gentle children's reading must not save GENTLE_RATE as their own.
+		writeJSON(KEY, { ...(this.#rateChosen ? { rate: this.rate } : {}), voiceURI: this.voiceURI });
 	}
 
 	#speakFrom(index: number) {

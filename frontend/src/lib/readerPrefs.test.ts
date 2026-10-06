@@ -160,3 +160,53 @@ describe('defaultMeasureFor (first-run column width by device class)', () => {
 		expect(defaultMeasureFor(1440)).toBe('normal');
 	});
 });
+
+describe('the young-reader layout', () => {
+	it('lays a children’s edition out big, clear and scrolling until the reader chooses', () => {
+		readerPrefs.init();
+		readerPrefs.setYoungEdition(true);
+		expect(readerPrefs.youngActive).toBe(true);
+		expect([readerPrefs.scale, readerPrefs.leading, readerPrefs.measure]).toEqual([1.3, 'relaxed', 'narrow']);
+		expect([readerPrefs.font, readerPrefs.paged]).toEqual(['hyperlegible', false]);
+		// Never written down: leaving the edition restores the reader's own layout.
+		readerPrefs.setYoungEdition(false);
+		expect([readerPrefs.scale, readerPrefs.font]).toEqual([1, 'serif']);
+		expect(stored().font).toBeUndefined();
+	});
+
+	it('steps aside for each setting the reader picks, and only that one', () => {
+		readerPrefs.init();
+		readerPrefs.setYoungEdition(true);
+		readerPrefs.setFont('garamond');
+		readerPrefs.bumpScale(0.1); // from the layout's 1.3, not the stored 1
+		expect([readerPrefs.font, readerPrefs.scale, readerPrefs.leading]).toEqual(['garamond', 1.4, 'relaxed']);
+		expect(stored().chosen).toEqual(['font', 'scale']);
+	});
+
+	it('lets a young reader go up to 200%, capped back to 160% elsewhere', () => {
+		readerPrefs.init();
+		readerPrefs.setYoungEdition(true);
+		readerPrefs.setScale(5);
+		expect(readerPrefs.scale).toBe(2);
+		readerPrefs.setYoungEdition(false);
+		expect(readerPrefs.scale).toBe(1.6);
+		expect(readerPrefs.canGrow).toBe(false);
+	});
+
+	it('goes off with the toggle, and the toggle is remembered', () => {
+		readerPrefs.init();
+		readerPrefs.setYoungEdition(true);
+		readerPrefs.setYoungLayout(false);
+		expect([readerPrefs.youngActive, readerPrefs.font]).toEqual([false, 'serif']);
+		expect(stored().youngLayout).toBe(false);
+	});
+
+	it('counts an older saved preference as chosen only where it differs from a first run', () => {
+		// Saved before `chosen` existed: every field present, only the font changed.
+		localStorage.setItem(
+			KEY,
+			JSON.stringify({ scale: 1, leading: 'normal', measure: defaultMeasureFor(window.innerWidth), font: 'lora', paged: window.innerWidth >= 1024 })
+		);
+		expect(load().chosen).toEqual(['font']);
+	});
+});

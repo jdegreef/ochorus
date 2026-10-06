@@ -102,6 +102,15 @@ export interface ReaderTextOptions {
 	 * single-document surfaces (sermon, bio) leave it unset.
 	 */
 	onListenFinish?: () => void;
+	/**
+	 * Spoken after the text, without a paragraph of their own on the page (the
+	 * young-reader editions' "Talk about it" questions). When there are any, the
+	 * reading STOPS there instead of rolling on: the questions are where a
+	 * family talks, not a bridge to the next chapter.
+	 */
+	listenEpilogue?: () => string[];
+	/** A children's edition: read at the gentle speed (see `listen`). */
+	listenGentle?: () => boolean;
 }
 
 export class ReaderText {
@@ -147,17 +156,21 @@ export class ReaderText {
 		// highlight still lines up), with footnote markers and other eye-only
 		// bits removed so the engine doesn't voice "…grace four".
 		const paragraphs = [...body.children].map((el) => spokenText(el));
-		listen.start(paragraphs, from ?? this.#o.topIndex(), {
+		const epilogue = this.#o.listenEpilogue?.() ?? [];
+		listen.start([...paragraphs, ...epilogue], from ?? this.#o.topIndex(), {
 			// The TEXT's language, not the interface's: a work shown in its English
 			// fallback to a French reader must be voiced in English.
 			lang: contentLang(this.#o.language()),
 			media: { title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
-			onFinish: this.#o.onListenFinish,
+			onFinish: epilogue.length ? undefined : this.#o.onListenFinish,
+			gentle: this.#o.listenGentle?.() ?? false,
 			// The spoken paragraph IS the resume point while listening — save it (this
 			// also pushes the synced progress paragraph_index), so picking the work
 			// back up, here or on another device, lands where the audio reached. The
 			// scroll handlers step aside while playing so they don't overwrite it.
+			// (Not while in the epilogue: it has no place on the page to resume at.)
 			onAdvance: (index) =>
+				index < paragraphs.length &&
 				saveScrollAnchor(
 					this.#o.slug(),
 					this.#o.order(),

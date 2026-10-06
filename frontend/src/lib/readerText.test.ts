@@ -1,7 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ReaderText, type ReaderTextOptions } from './readerText.svelte';
 import { marks } from './marks.svelte';
 import { DEFAULT_HIGHLIGHT } from './reading-schema';
+import { listen } from './listen.svelte';
 
 // The note editor and the selection-bar handlers, which the chapter, sermon and
 // biography readers now all run. `attach()` is deliberately not called: these
@@ -169,5 +170,39 @@ describe('ReaderText scripture taps', () => {
 			expect(e.defaultPrevented).toBe(false);
 		}
 		expect(clickOn(linked).handled, 'a plain tap still opens the popover').toBe(true);
+	});
+});
+
+describe('ReaderText read-aloud', () => {
+	const bodyOf = (...texts: string[]) => {
+		const el = document.createElement('div');
+		el.innerHTML = texts.map((t) => `<p>${t}</p>`).join('');
+		return el;
+	};
+
+	it('speaks the questions after the text, and stops there instead of rolling on', () => {
+		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
+		const onListenFinish = vi.fn();
+		const body = bodyOf('Once upon a time.', 'The end.');
+		build({
+			body: () => body,
+			onListenFinish,
+			listenEpilogue: () => ['Talk about it together', 'Why did he run?'],
+			listenGentle: () => true
+		}).startListening(0);
+		const [paragraphs, , opts] = start.mock.calls[0];
+		expect(paragraphs).toEqual(['Once upon a time.', 'The end.', 'Talk about it together', 'Why did he run?']);
+		expect(opts?.onFinish).toBeUndefined();
+		expect(opts?.gentle).toBe(true);
+		start.mockRestore();
+	});
+
+	it('rolls on to the next chapter when there is nothing to ask', () => {
+		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
+		const onListenFinish = vi.fn();
+		build({ body: () => bodyOf('Text.'), onListenFinish }).startListening(0);
+		expect(start.mock.calls[0][2]?.onFinish).toBe(onListenFinish);
+		expect(start.mock.calls[0][2]?.gentle).toBe(false);
+		start.mockRestore();
 	});
 });

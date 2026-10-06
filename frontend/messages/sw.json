@@ -1453,5 +1453,8 @@
   "reader_questions_young": "Zungumzeni pamoja",
   "reader_questions_teens": "Maswali ya kufikiria",
   "reader_questions_hint_young": "Ulizeni maswali kwanza — kisha gusa swali moja kuona maelezo kwa watu wazima.",
-  "reader_questions_hint_teens": "Fikiri kwanza — kisha gusa swali kuona njia moja ya kulijibu."
+  "reader_questions_hint_teens": "Fikiri kwanza — kisha gusa swali kuona njia moja ya kulijibu.",
+  "reader_listen_story": "Sikiliza hadithi hii",
+  "reader_young_layout": "Mpangilio wa wasomaji wachanga",
+  "reader_young_layout_hint": "Maandishi makubwa na wazi kwa kitabu hiki cha watoto. Mabadiliko yako mwenyewe hapa chini bado yanatumika."
 }

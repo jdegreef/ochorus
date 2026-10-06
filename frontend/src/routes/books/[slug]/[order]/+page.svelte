@@ -96,8 +96,13 @@
 	// one speaks to the grown-up reading aloud. Any other book reads like the
 	// sermon page: its heading, its answers open.
 	const chapterQuestions = $derived(toQa(chapter.study_questions));
+	// Which young-reader edition this is, if any — the questions' voice, and for a
+	// children's edition the young-reader layout, the story styling, the large
+	// Listen button and the gentle read-aloud speed.
+	const editionKind = $derived(splitEdition(slug, chapter.book_title)?.kind ?? null);
+	const childrens = $derived(editionKind === 'children');
 	const questionsCopy = $derived.by(() => {
-		const kind = splitEdition(slug, chapter.book_title)?.kind;
+		const kind = editionKind;
 		if (kind === 'children')
 			return { title: t('reader.questionsYoung'), hint: t('reader.questionsHintYoung'), folded: true };
 		if (kind === 'teens')
@@ -1677,7 +1682,20 @@
 				autoContinueOrder = chapter.next.order;
 				gotoChapter(chapter.next);
 			}
-		}
+		},
+		// After the text, the questions — the heading, then each question (never
+		// the answers: those are for the grown-up to read when they want to).
+		// With questions to talk about, the reading stops there.
+		listenEpilogue: () =>
+			chapterQuestions.length ? [questionsCopy.title, ...chapterQuestions.map((qa) => qa.q)] : [],
+		listenGentle: () => childrens
+	});
+
+	// The young-reader layout follows the open edition, and goes when the reader
+	// leaves it (readerPrefs never stores it — see YOUNG_LAYOUT).
+	$effect(() => {
+		readerPrefs.setYoungEdition(childrens);
+		return () => readerPrefs.setYoungEdition(false);
 	});
 
 	// Shared by both <ReaderControls> mounts (popover, phone sheet). `layout`
@@ -1986,6 +2004,7 @@
 	class:paged
 	class:focus={readerUi.focus}
 	class:twocol={cols === 2}
+	class:young-edition={childrens}
 	style="{readerPrefs.styleFor(paged)}; --article-max: {articleMax}"
 	onclick={onArticleClick}
 	onfocusin={onArticleFocusIn}
@@ -2035,9 +2054,18 @@
 		</p>
 		<h1 bind:this={titleEl} class="text-h1 mb-8" dir="auto" lang={contentLang(language)}>{chapterName(chapter.order, chapter.title)}</h1>
 
+		<!-- A children's chapter offers the read-aloud up front, where a parent
+		     looks first — on a phone the footer's Listen is easy to miss. -->
+		{#if childrens && listen.supported && listen.status === 'idle'}
+			<button class="btn btn-primary listen-story mb-8" onclick={() => reader.startListening(0)}>
+				<Icon name="headphones" size={20} />
+				<span>{t('reader.listenStory')}</span>
+			</button>
+		{/if}
+
 		<!-- Body HTML is cleaned server-side to a safe tag subset on ingest. -->
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="reading" bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
+		<div class="reading" class:story={childrens} bind:this={body} dir="auto" lang={contentLang(language)}>{@html chapter.body_html}</div>
 		<!-- Parsed straight after the body, so it can put a returning reader at
 		     their paragraph before first paint (see $lib/earlyResume). Runs from
 		     the prerendered HTML only: on hydration and client navigation an
@@ -2463,6 +2491,40 @@
 <NotesDrawer {slug} {edition} bind:open={notesOpen} />
 
 <style>
+	/* ── A children's edition: the story look ─────────────────────────────────
+	   Its chapters share one shape (the fixtures' young-reader editions): an
+	   opening verse in a <blockquote>, the story, and a closing prayer as the
+	   last paragraph, all in italics. So the verse stands as a card at the top,
+	   and the prayer as a soft card at the end — "now we pray" — while the
+	   house drop cap opens the story itself. Server HTML, hence :global. */
+	.reading.story > :global(blockquote:first-child) {
+		margin: 0 0 1.6em;
+		padding: 0.9em 1.1em;
+		border-inline-start: 4px solid var(--accent);
+		border-radius: var(--radius-card);
+		background: var(--surface-2);
+		color: var(--text);
+		font-style: normal;
+		font-size: 1.05em;
+	}
+	.reading.story > :global(p:last-child:has(> em:only-child)) {
+		margin-top: 1.6em;
+		padding: 0.9em 1.1em;
+		border: 1px solid var(--accent-soft-border);
+		border-radius: var(--radius-card);
+		background: var(--accent-soft);
+	}
+	/* The large "Listen to this story" button under the title. */
+	.listen-story {
+		gap: 0.5rem;
+		min-height: 3rem;
+		font-size: var(--fs-body);
+	}
+	/* Bigger next / previous for small hands at the end of a chapter. */
+	.young-edition :global(.end-links .btn) {
+		min-height: 3.5rem;
+		font-size: var(--fs-body);
+	}
 	/* --- Page-turn mode --------------------------------------------------------
 	   The pager is transparent (display:contents) in scroll mode; in page mode
 	   the <article> becomes a fixed, measure-capped viewport and the pager its
