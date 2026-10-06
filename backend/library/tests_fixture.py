@@ -3211,7 +3211,10 @@ class ContentSourceCoverageTests(SimpleTestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.repo_root = Path(__file__).resolve().parents[2]
-        cls.render_yaml = (cls.repo_root / "render.yaml").read_text()
+        # Only ochorus-web's block: the API and cron carry buildFilters of their
+        # own (backend/** minus tests), which say nothing about the reader.
+        render_yaml = (cls.repo_root / "render.yaml").read_text()
+        cls.render_yaml = render_yaml[render_yaml.index("  - name: ochorus-web\n") :]
         cls.roots = json.loads(
             (Path(__file__).resolve().parent / "content_sources.json").read_text()
         )["roots"]
