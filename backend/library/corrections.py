@@ -5092,9 +5092,6 @@ _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
         ('akuteekeddeteekedde', 'akuteekedde'),
         ('atuteekeddeteekedde', 'atuteekedde'),
     ],
-    "prayer-the-pulse-of-life": [
-        ("by'akuteekeddeteekedde", "by'akuteekedde"),
-    ],
     "stepping-stones-2": [
         ('atuteekeddeteekedde', 'atuteekedde'),
         ('biteekeddwateekeddwa', 'biteekeddwa'),
@@ -5115,7 +5112,6 @@ _LG_DOUBLED_VERB: dict[str, list[tuple[str, str]]] = {
     "the-unselfishness-of-god": [
         ('abateekeddwateekeddwa', 'abateekeddwa'),
         ('biteekeddwateekeddwa', 'biteekeddwa'),
-        ("by'ateekeddeteekeddwa", "by'ateekedde"),
         ('eteekeddwateekeddwa', 'eteekeddwa'),
         ('guteekeddwateekeddwa', 'guteekeddwa'),
         ('nteekeddwateekeddwa', 'nteekeddwa'),

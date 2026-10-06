@@ -39,6 +39,7 @@ import json
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.db.models.functions import MD5
 
 from library.author_sync import sync_all_authors
 from library.content_fixtures import (
@@ -48,6 +49,7 @@ from library.content_fixtures import (
     iter_work_files,
 )
 from library.corrections import settled_chapter_body
+from library.deploy_fingerprints import md5_hex
 from library.models import Author, Book, Chapter, Series, SeriesTranslation
 
 BOOK_FIELDS = (
@@ -196,9 +198,13 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
     a converged library costs no writes. Settling is computed only for a
     chapter whose raw body already disagrees, as in ``chapter_drift_reason``.
     """
+    # The body's md5, not the body: hashed in SQL, so a converged book costs
+    # 32 characters a chapter instead of its text (library/deploy_fingerprints).
     db = {
         c.order: c
-        for c in book.chapters.only("id", "book_id", "order", "title", "body_html")
+        for c in book.chapters.only("id", "book_id", "order", "title").annotate(
+            body_md5=MD5("body_html")
+        )
     }
     added = updated = 0
     for fc in sorted(fixture_chapters, key=lambda c: c["order"]):
@@ -221,9 +227,9 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
         if (chapter.title or "") != title:
             chapter.title = title
             changed.append("title")
-        if body != chapter.body_html:
+        if md5_hex(body) != chapter.body_md5:
             body = settled_chapter_body(book.slug, order, body)
-            if body != chapter.body_html:
+            if md5_hex(body) != chapter.body_md5:
                 chapter.body_html = body
                 changed.append("body_html")
         if changed:

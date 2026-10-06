@@ -9,7 +9,7 @@
   },
   "christ-and-the-cross": {
     "title": "Kristo n'omusaalaba",
-    "description": "Omuntu n'omulimu gw'Omulokozi — Omwana gw'Endiga eyattibwa, ensonyi n'obuwanguzi bw'omusaalaba, obulungi bwa Kristo, n'entaana enkalu."
+    "description": "Omuntu n'omulimu gw'Omulokozi — Omwana gw'Endiga eyattibwa, ensonyi n'obuwanguzi bw'omusaalaba, obulungi bwa Kristo, n'entaana enjereere."
   },
   "day-by-day": {
     "title": "Buli Lunaku",
@@ -20,7 +20,7 @@
     }
   },
   "deeper-life": {
-    "title": "Obulamu Obw'obuziba",
+    "title": "Obulamu obw'Omunda",
     "description": "Obutukuvu, okwewaayo, n'obulamu obw'ekyengera obukwekeddwa mu Kristo — ebitabo eby'okugenda mu maaso ennyo mu by'omwoyo.",
     "scripture": {
       "reference": "Abakkolosaayi 3:3",
@@ -29,14 +29,14 @@
   },
   "enduring-classics": {
     "title": "Ebitabo eby'Edda Ebisigalawo",
-    "description": "Ebitabo ebitambulidde n'abatambuze okumala ebyasa — okwatula kwa Awugusitino, ekirooto kya Bunyan, amagezi ga Kempis — amakubo ag'edda, era nga makyali malungi."
+    "description": "Ebitabo ebitambulidde n'abatambuze okumala ebyasa — okwatula kwa Augustine, ekirooto kya Bunyan, amagezi ga Kempis — amakubo ag'edda, era nga makyali malungi."
   },
   "faith-and-guidance": {
     "title": "Okukkiriza n'Obulagirizi",
     "description": "Okwesiga Katonda olw'emmere eya buli lunaku, obulagirizi, na buli kisuubizo — okutambula mu kukkiriza, so si mu kulaba.",
     "scripture": {
       "reference": "Engero 3:6",
-      "text": "Mu makubo go gonna mumumanye, naye alitereeza amakubo go."
+      "text": "Mu makubo go gonna omumanyenga, naye alitereeza amakubo go."
     }
   },
   "grace-and-comfort": {
@@ -49,7 +49,7 @@
   },
   "holy-spirit": {
     "title": "Omwoyo Omutukuvu",
-    "description": "Okubatizibwa kw'Omwoyo, okutuula kwe mu ffe, n'omulimu gwe — amaanyi agaasuubizibwa ag'obulamu obw'Ekikristaayo.",
+    "description": "Okubatizibwa kw'Omwoyo, okubeera kwe mu ffe, n'omulimu gwe — amaanyi agaasuubizibwa ag'obulamu obw'Ekikristaayo.",
     "scripture": {
       "reference": "Zekkaliya 4:6",
       "text": "Si na maanyi, so si na buyinza, wabula na Mwoyo gwange, bw'ayogera Mukama ow'eggye."
@@ -60,11 +60,11 @@
     "description": "Okuyiga okusaba — era n'okunyiikira okusaba obutakoowa. Ebitabo eby'edda ebyogera ku bulamu obw'omunda obw'okusaba, okuva mu kifo eky'ekyama okutuuka ku kwegayiririra abalala okw'amaanyi.",
     "scripture": {
       "reference": "Yeremiya 33:3",
-      "text": "Munkoowoole, nange ndikuyitaba, ne nkulaga ebintu ebikulu era eby'ekitalo, by'otomanyi."
+      "text": "Nkoowoola, nange ndikuyitaba, ne nkulaga ebintu ebikulu era eby'ekitalo, by'otomanyi."
     }
   },
   "revival-and-missions": {
-    "title": "Okuzuukusibwa n'Obuweereza bw'Enjiri",
+    "title": "Okuzuukuka n'Obuminsani",
     "description": "Obulamu obwawaayo olw'enjiri, n'ebiseera eby'okuzuukusibwa — eky'okwongera omuliro mu mutima ogwaka.",
     "scripture": {
       "reference": "Kaabakuuku 3:2",
@@ -77,7 +77,7 @@
   },
   "the-preached-word": {
     "title": "Ekigambo Ekibuulirwa",
-    "description": "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley mu ddoboozi eryonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter eri buli musumba w'emyoyo."
+    "description": "Okubuulira okw'amaanyi ku lupapula — Whitefield ne Wesley nga babuulira n'amaanyi gaabwe gonna, Spurgeon mu balimi be — n'ekiragiro kya Baxter eri buli musumba w'emyoyo."
   },
   "the-puritans": {
     "title": "Abapuritani",
@@ -89,11 +89,11 @@
   },
   "the-way-of-holiness": {
     "title": "Ekkubo ery'Obutukuvu",
-    "description": "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, obutuukirivu nga bunoonyezebwa n'obwesimbu, n'okwagala kw'omutima nga kugezesebwa ne kulabika nga kwa mazima."
+    "description": "Okwawulibwa ku lwa Katonda — amateeka nga gakebejjebwa, okutuukirira nga kunoonyezebwa n'obwesimbu, n'okwagala kw'omutima nga kugezesebwa ne kulabika nga kwa mazima."
   },
   "voices-of-the-early-church": {
     "title": "Amaloboozi g'Ekkanisa ey'Edda",
-    "description": "Okukkiriza kw'ebyasa ebyasooka mu bigambo byakwo bennyini — omutima gwa Awugusitino nga gwanjuluddwa, Asanasiyo ku Kigambo ekyafuuka omubiri, n'ebbaluwa z'abaafiira okukkiriza n'abasumba.",
+    "description": "Okukkiriza kw'ebyasa ebyasooka mu bigambo byakwo byennyini — omutima gwa Awugusitino nga gwanjuluddwa, Asanasiyo ku Kigambo ekyafuuka omubiri, n'ebbaluwa z'abaafiira okukkiriza n'abasumba.",
     "scripture": {
       "reference": "Abaebbulaniya 12:1",
       "text": "Kale nga bwe tulina ekibiina ekinene eky'abajulirwa ekyenkana awo, twambulengamu buli ekizitowa, awamu n'ekibi ekitwesibako amangu, tuddukenga n'okugumiikiriza embiro ez'empaka ezatutegekerwa,"

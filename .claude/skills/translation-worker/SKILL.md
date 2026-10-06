@@ -1176,6 +1176,26 @@ archaic spelling and period punctuation are the text, not defects in it.
   curly-quoted lg files use the curly ’ (U+2019, matching OLCB); a few use
   ASCII ' — either is attested, pick one and keep the file internally
   consistent.
+- **Luganda's recurring MT errors are WORD-level, not structural** (full lg
+  review, 2026-10-05: 927 findings; every structural gate was already green).
+  Brief the translator against these and grep your output for them:
+  - **Real words in the wrong sense:** "Mr." → `Mukama` (= the LORD — "Lord
+    Moody"; use `Omwami <Surname>`); "Blessed" → `Omuweereza` (servant; use
+    `Omutendereze`); "devils" → `balubaale` (Ganda deities); "spirit" (of God)
+    → `muzimu` (ancestral ghost); "dare/venture" → `okuvumirira` (condemn);
+    "plainly" → `mu bwangu` (hastily); "evangelist" → `omuvuunuzi` (translator);
+    "Father" (God) → `Kitaawe` (his father; use `Kitaffe`); "Divine Person" →
+    `Muntu wa Katonda` (a man of God).
+  - **English negatives/litotes flipped:** "no small profit" → "a small profit";
+    "indispensable" → "unnecessary". Check every `no small / not a few /
+    indispensable / nobody need` against the output.
+  - **Spelling rules the model breaks hundreds of times:** `r` only straight
+    after `e`/`i`, `l` elsewhere (`oliraba`, not `olilaba`); passive `-bwa`, never
+    `-bbwa`; no tripled letters. Regex-scan for `[ei]l` and `bbwa\b` in native
+    words before shipping.
+  - **One term per concept, site-wide:** `Bayibuli` (not Baibuli),
+    `Omukristaayo`, `Setaani`, `omusaalaba`, `omuminsani`, `Buyindi`,
+    `omubuulizi w'enjiri`. Epistles keep the OLCB `A-` (`Abaruumi`, `Abaefeso`).
 - **Check BOOK NAMES against the edition too, not just verses.** The uk brief
   guessed six and got three wrong: the Kulish text headers Matthew `Маттея`
   (not `Матея`), Isaiah `Ісаїї` (not `Ісаї`), Malachi `Малахія` (nominative,

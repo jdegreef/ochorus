@@ -43,7 +43,9 @@
 			{#if author.book_count > 0}
 				{author.book_count}
 				{author.book_count === 1 ? t('common.bookOne') : t('common.bookMany')}
-			{:else}
+			{/if}
+			{#if author.book_count > 0 && author.sermon_count > 0}·{/if}
+			{#if author.sermon_count > 0}
 				{author.sermon_count}
 				{author.sermon_count === 1 ? t('bios.sermonsOne') : t('bios.sermonsMany')}
 			{/if}
