@@ -8,7 +8,8 @@ import {
 	collectionPage,
 	faqPage,
 	hreflangFor,
-	itemList
+	itemList,
+	toQa
 } from './seo';
 import { SITE_URL } from './config';
 
@@ -260,5 +261,16 @@ describe('site entity and locale helpers', () => {
 		const { bookId, personId } = await import('./seo');
 		expect(bookId('https://x/books/humility/')).toBe('https://x/books/humility/#book');
 		expect(personId('https://x/authors/andrew-murray/')).toBe('https://x/authors/andrew-murray/#person');
+	});
+});
+
+describe('toQa', () => {
+	it('maps stored {question, answer} to the {q, a} the Q&A helpers take', () => {
+		expect(toQa([{ question: 'Why?', answer: 'Because.' }])).toEqual([{ q: 'Why?', a: 'Because.' }]);
+	});
+
+	it('treats a missing set as empty', () => {
+		expect(toQa(undefined)).toEqual([]);
+		expect(toQa(null)).toEqual([]);
 	});
 });

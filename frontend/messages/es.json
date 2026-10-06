@@ -1449,5 +1449,9 @@
   "audience_parents_printable": "Estos tienen PDF y EPUB gratuitos para imprimir — busca Descargar en la página del libro:",
   "audience_home_heading": "Para lectores jóvenes y adolescentes",
   "audience_see_young": "Todo para lectores jóvenes",
-  "audience_see_teens": "Todo para adolescentes"
+  "audience_see_teens": "Todo para adolescentes",
+  "reader_questions_young": "Conversen juntos",
+  "reader_questions_teens": "Preguntas para pensar",
+  "reader_questions_hint_young": "Hagan primero las preguntas; luego toquen una para ver una nota para los adultos.",
+  "reader_questions_hint_teens": "Piénsalo primero; luego toca una pregunta para ver una forma de responderla."
 }

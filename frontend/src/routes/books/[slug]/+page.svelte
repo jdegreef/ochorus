@@ -23,6 +23,7 @@
 		jsonLd,
 		breadcrumbLd,
 		pickQa,
+		toQa,
 		truncateMeta,
 		topicThings,
 		publisherLd,
@@ -411,11 +412,8 @@
 	// ONLY this editorial set — the derived "Common questions" fallback was dropped
 	// (founder decision, questions-and-answers-plan.md §8): every Q&A shown is
 	// human-authored. Content, not chrome, so it is NOT locale-gated: an es row's qa
-	// is Spanish. The stored shape is {question, answer}; map to {q, a} for the
-	// shared component and faqPage() (the sermon page does the same).
-	const editorialQa = $derived(
-		(book.qa ?? []).map((it) => ({ q: it.question, a: it.answer }))
-	);
+	// is Spanish.
+	const editorialQa = $derived(toQa(book.qa));
 
 	// The one array the visible section and the FAQPage JSON-LD both read (so the
 	// markup can never assert a question the page doesn't show), plus that JSON-LD.

@@ -77,7 +77,7 @@ SERIES_TRANSLATION_FIELDS = ("title", "description")
 # No `word_count`: `Chapter.save()` derives it from body_html, so passing the
 # fixture's copy here would be discarded. See seed_sermons.SERMON_FIELDS, where
 # the same entry also cost a re-write on every deploy.
-CHAPTER_FIELDS = ("order", "title", "body_html")
+CHAPTER_FIELDS = ("order", "title", "body_html", "study_questions")
 
 # Seeded on create, then owned by workflows that act on the live DB:
 # approve_translation flips source_type (37 fixture books still say
@@ -181,9 +181,10 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
     ``(added, updated, extra_orders)``.
 
     Additive by ``order`` (see the module docstring): an order the DB lacks is
-    created, one whose title or settled body differs is updated in place, and
-    nothing is ever deleted or renumbered — a DB chapter the fixture lacks is
-    returned in ``extra_orders`` for the deploy log to report.
+    created, one whose title, study questions or settled body differs is
+    updated in place, and nothing is ever deleted or renumbered — a DB chapter
+    the fixture lacks is returned in ``extra_orders`` for the deploy log to
+    report.
 
     The fixture WINS: a data migration that edits chapter rows without the
     matching fixture edit is reverted in the same release (``release`` runs
@@ -200,11 +201,13 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
     """
     # The body's md5, not the body: hashed in SQL, so a converged book costs
     # 32 characters a chapter instead of its text (library/deploy_fingerprints).
+    # study_questions is read whole: `[]` on every chapter outside the
+    # young-reader editions, so it costs a deploy next to nothing.
     db = {
         c.order: c
-        for c in book.chapters.only("id", "book_id", "order", "title").annotate(
-            body_md5=MD5("body_html")
-        )
+        for c in book.chapters.only(
+            "id", "book_id", "order", "title", "study_questions"
+        ).annotate(body_md5=MD5("body_html"))
     }
     added = updated = 0
     for fc in sorted(fixture_chapters, key=lambda c: c["order"]):
@@ -220,6 +223,7 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
                 order=order,
                 title=title,
                 body_html=settled_chapter_body(book.slug, order, body),
+                study_questions=fc.get("study_questions") or [],
             )
             added += 1
             continue
@@ -227,6 +231,11 @@ def sync_chapters(book, fixture_chapters) -> tuple[int, int, list[int]]:
         if (chapter.title or "") != title:
             chapter.title = title
             changed.append("title")
+        # Fixture-owned, like the title. A row predating the field (most of the
+        # library) carries no key: absent is not "changed to empty".
+        if "study_questions" in fc and chapter.study_questions != fc["study_questions"]:
+            chapter.study_questions = fc["study_questions"]
+            changed.append("study_questions")
         if md5_hex(body) != chapter.body_md5:
             body = settled_chapter_body(book.slug, order, body)
             if md5_hex(body) != chapter.body_md5:

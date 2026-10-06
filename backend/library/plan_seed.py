@@ -429,6 +429,38 @@ CURATED_PLANS = [
             "sons-of-the-king-3",
         ],
     ),
+    # Family devotions: the young-reader editions read aloud, one short chapter
+    # a night — each carries its own verse and prayer, and ends with three
+    # questions to talk about (`Chapter.study_questions`), so a night's reading
+    # is a whole five-minute devotion.
+    (
+        "family-devotions-pilgrims-journey",
+        "Family Devotions: The Pilgrim’s Journey",
+        "Five-minute family devotions for children and the grown-ups who read "
+        "with them, about three and a half weeks of nights. Read one short "
+        "chapter aloud: first Bunyan’s pilgrim on the road to the Celestial "
+        "City, then Spurgeon’s pictures from the farm. Each ends with a prayer "
+        "and three questions to talk about together.",
+        [
+            "pilgrims-progress-children",
+            "talks-to-the-farmer-children",
+        ],
+    ),
+    (
+        "family-devotions-heroes-who-trusted-god",
+        "Family Devotions: Heroes Who Trusted God",
+        "Five weeks of five-minute family devotions: true stories of three "
+        "people who trusted God for everything, read aloud one short chapter a "
+        "night — George Müller and his orphans, Hudson Taylor on his way to "
+        "China, and Amanda Smith, born into slavery, who prayed for a pair of "
+        "shoes. Each ends with a prayer and three questions to talk about "
+        "together.",
+        [
+            "the-life-of-trust-children",
+            "a-retrospect-children",
+            "amanda-smith-autobiography-children",
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that

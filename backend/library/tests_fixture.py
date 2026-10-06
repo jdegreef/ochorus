@@ -894,7 +894,7 @@ class AuthorBioDataIntegrityTests(SimpleTestCase):
             )
 
 
-def assert_qa_wellformed(test, items, keys, label):
+def assert_qa_wellformed(test, items, keys, label, count=(6, 10)):
     """Shared shape / plain-text guard for editorial Q&A.
 
     Q&A (author ``faq``, book/topic ``qa``) ships as plain-text JSON and is
@@ -902,14 +902,16 @@ def assert_qa_wellformed(test, items, keys, label):
     must carry no markup and must talk about the CONTENT, not the platform.
     ``items`` is the stored list, ``keys`` the exact key set each entry must have
     ({"q", "a"} for authors, {"question", "answer"} for books/topics), ``label``
-    a human tag for the failure message. One helper so the two callers cannot
-    drift (backend/CLAUDE.md: "a second copy drifts — it already did once").
+    a human tag for the failure message, ``count`` the (min, max) entries a set
+    may hold. One helper so the callers cannot drift (backend/CLAUDE.md: "a
+    second copy drifts — it already did once").
     """
     test.assertIsInstance(items, list, f"{label}: Q&A must be a list")
-    # A present set is an editorial one: the spec is 6–10 entries.
+    # A present set is an editorial one: the book/topic/author spec is 6–10.
+    low_n, high_n = count
     test.assertTrue(
-        6 <= len(items) <= 10,
-        f"{label}: Q&A has {len(items)} entries — the spec is 6 to 10",
+        low_n <= len(items) <= high_n,
+        f"{label}: Q&A has {len(items)} entries — the spec is {low_n} to {high_n}",
     )
     for i, item in enumerate(items):
         test.assertEqual(set(item), keys, f"{label}[{i}]: each entry is exactly {keys}")
@@ -992,6 +994,56 @@ class BookQaShapeTests(SimpleTestCase):
                 continue
             with self.subTest(book=path.name):
                 assert_qa_wellformed(self, qa, {"question", "answer"}, path.name)
+
+
+class ChapterQuestionsShapeTests(SimpleTestCase):
+    """``Chapter.study_questions`` — the young-reader editions' "Talk about it"
+    at the end of a chapter: the same plain-text contract as book Q&A, a short
+    set (the authoring target is three), and on every chapter of an edition
+    that has them, so a family never meets a chapter that stops asking."""
+
+    def test_question_sets_are_well_formed_and_complete(self):
+        books = 0
+        for path, rows in files_by_path().items():
+            if path.parent != BOOKS_DIR:
+                continue
+            chapters = [r["fields"] for r in rows[1:]]
+            sets = [c["study_questions"] for c in chapters if c.get("study_questions")]
+            if not sets:
+                continue
+            books += 1
+            with self.subTest(book=path.name):
+                self.assertEqual(len(sets), len(chapters), "questions on every chapter, or none")
+                for c in chapters:
+                    assert_qa_wellformed(
+                        self,
+                        c["study_questions"],
+                        {"question", "answer"},
+                        f"{path.name} ch.{c['order']}",
+                        count=(2, 5),
+                    )
+        self.assertGreaterEqual(books, 10)  # the ten young-reader editions
+
+    def test_family_devotions_read_only_chapters_that_ask(self):
+        # Each card promises "three questions to talk about together", so every
+        # chapter a family plan reads must carry exactly three — in English,
+        # where they ship. (Family plans are the ``family-devotions-`` slugs.)
+        from .plan_seed import CURATED_PLANS, plan_sources
+
+        asking = {
+            rows[0]["fields"]["slug"]
+            for path, rows in files_by_path().items()
+            if path.parent == BOOKS_DIR
+            and rows[0]["fields"].get("language") == "en"
+            and rows[1:]
+            and all(len(r["fields"].get("study_questions") or []) == 3 for r in rows[1:])
+        }
+        family = [p for p in CURATED_PLANS if p[0].startswith("family-devotions-")]
+        self.assertTrue(family)
+        for slug, _title, _desc, items in family:
+            books, _articles = plan_sources(items)
+            with self.subTest(plan=slug):
+                self.assertEqual([b for b in books if b not in asking], [])
 
 
 class TopicQaShapeTests(SimpleTestCase):

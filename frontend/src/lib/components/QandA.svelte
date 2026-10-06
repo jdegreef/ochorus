@@ -24,16 +24,30 @@
 	let {
 		items,
 		title,
-		headingClass = 'text-h3'
-	}: { items: { q: string; a: string }[]; title: string; headingClass?: string } = $props();
+		headingClass = 'text-h3',
+		openFirst = true,
+		hint = ''
+	}: {
+		items: { q: string; a: string }[];
+		title: string;
+		headingClass?: string;
+		/** The book/topic pages lead with an answer showing; a chapter's
+		 *  "Talk about it" keeps every answer folded until it is asked for. */
+		openFirst?: boolean;
+		/** One muted line under the heading (e.g. who the answers are for). */
+		hint?: string;
+	} = $props();
 </script>
 
 {#if items.length}
 	<section id="questions" class="jump-anchor mt-12" aria-labelledby="qa-heading">
 		<h2 id="qa-heading" class={headingClass}>{title}</h2>
+		{#if hint}
+			<p class="mt-1 text-small text-muted">{hint}</p>
+		{/if}
 		<div class="mt-3 divide-y divide-border border-y border-border">
 			{#each items as item, i (item.q)}
-				<details id="q-{i + 1}" class="qa-item" open={i === 0}>
+				<details id="q-{i + 1}" class="qa-item" open={openFirst && i === 0}>
 					<summary class="qa-q">
 						<span class="flex-1" dir="auto">{item.q}</span>
 						<Icon name="chevron-right" size={18} class="qa-chevron shrink-0" mirror={false} />

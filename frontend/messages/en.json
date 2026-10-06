@@ -1449,5 +1449,9 @@
   "audience_parents_printable": "These have a free printable PDF and EPUB — find Download on the book’s page:",
   "audience_home_heading": "For young readers and teens",
   "audience_see_young": "Everything for young readers",
-  "audience_see_teens": "Everything for teens"
+  "audience_see_teens": "Everything for teens",
+  "reader_questions_young": "Talk about it together",
+  "reader_questions_teens": "Questions to think about",
+  "reader_questions_hint_young": "Ask the questions first — then tap one for a note for grown-ups.",
+  "reader_questions_hint_teens": "Think it through first — then tap a question to see one way to answer it."
 }
