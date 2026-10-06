@@ -1,0 +1,54 @@
+name: Deploy train
+
+# Deploys main to Render in batches instead of on every merge. Render's
+# auto-deploy is off (render.yaml), so this workflow is the only thing that
+# ships a merge: every three hours, it moves all three services to the newest
+# commit whose `test-and-build` passed, if anything deployable changed since
+# the last deploy. .github/scripts/deploy_train.py has the rules and the why.
+#
+# Need it live now? Actions → Deploy train → Run workflow (tick "force" to
+# redeploy even when nothing deployable changed), or:
+#   gh workflow run deploy-train.yml
+#
+# Setup: copy each service's Render deploy hook (service → Settings → Deploy
+# Hook) into the repo secrets RENDER_DEPLOY_HOOK_API, RENDER_DEPLOY_HOOK_WEB
+# and RENDER_DEPLOY_HOOK_CRON. A missing secret skips that service.
+on:
+  schedule:
+    - cron: '5 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Deploy the newest green commit even if nothing deployable changed'
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy-train
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  checks: read
+  deployments: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Deploy if anything deployable changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FORCE: ${{ inputs.force }}
+          RENDER_DEPLOY_HOOK_API: ${{ secrets.RENDER_DEPLOY_HOOK_API }}
+          RENDER_DEPLOY_HOOK_WEB: ${{ secrets.RENDER_DEPLOY_HOOK_WEB }}
+          RENDER_DEPLOY_HOOK_CRON: ${{ secrets.RENDER_DEPLOY_HOOK_CRON }}
+        run: |
+          pip install --quiet pyyaml
+          python3 .github/scripts/deploy_train.py
