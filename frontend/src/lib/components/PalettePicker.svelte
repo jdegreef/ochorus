@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, PALETTE_COLORS, type Palette } from '$lib/palettes';
+	import { PALETTES, PALETTE_COLORS } from '$lib/palettes';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
+	import { radioKeys } from '$lib/radioKeys';
 
 	/**
 	 * The library-palette choice as swatch cards: each one draws its palette's
@@ -15,26 +16,8 @@
 	let { label }: { label: string } = $props();
 	const t = i18n.t;
 	const mode = $derived(theme.current === 'dark' ? 'dark' : 'light');
-	const NAME: Record<Palette, string> = $derived({
-		parchment: t('palette.parchment'),
-		cathedral: t('palette.cathedral'),
-		olive: t('palette.olive'),
-		hearth: t('palette.hearth'),
-		dawn: t('palette.dawn'),
-		monastery: t('palette.monastery')
-	});
 
-	function onkeydown(e: KeyboardEvent) {
-		const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-		if (!step) return;
-		e.preventDefault();
-		const rtl = getComputedStyle(e.currentTarget as Element).direction === 'rtl';
-		const horizontal = e.key === 'ArrowLeft' || e.key === 'ArrowRight';
-		const i = PALETTES.indexOf(palette.current);
-		const next = PALETTES[(i + (rtl && horizontal ? -step : step) + PALETTES.length) % PALETTES.length];
-		palette.set(next);
-		(e.currentTarget as HTMLElement).querySelector<HTMLElement>(`[data-palette-option='${next}']`)?.focus();
-	}
+	const onkeydown = radioKeys(PALETTES, () => palette.current, (v) => palette.set(v), 'data-palette-option');
 </script>
 
 <div class="palettes" role="radiogroup" aria-label={label} tabindex="-1" {onkeydown}>
@@ -53,7 +36,7 @@
 				<span class="bar" style:background={accent}></span>
 				<span class="dot" style:background={second}></span>
 			</span>
-			<span class="name">{NAME[p]}</span>
+			<span class="name">{t(`palette.${p}`)}</span>
 		</button>
 	{/each}
 </div>

@@ -62,13 +62,15 @@ describe('the Page width stepper hides on the reading surfaces', () => {
 	});
 
 	it('gates the width row and nothing else', () => {
-		// The theme toggle applies everywhere, including in the reader — if it
-		// drifted inside the guard, dark mode would vanish from the two pages
-		// people spend the most time on.
+		// The theme, palette and site-style groups apply everywhere, including
+		// in the reader — if one drifted inside the guard, it would vanish from
+		// the two pages people spend the most time on.
 		const guarded = src.slice(src.indexOf('{#if !inReader}'));
 		const row = guarded.slice(0, guarded.indexOf('{/if}'));
 		expect(row).toMatch(/nav\.pageWidth/);
 		expect(row, 'the theme toggle must stay outside the reader guard').not.toMatch(/nav\.theme/);
+		expect(row, 'library colours must stay outside the reader guard').not.toMatch(/settings\.palette/);
+		expect(row, 'site style must stay outside the reader guard').not.toMatch(/settings\.siteFont/);
 	});
 
 	it('still adopts the stored width in the reader', () => {

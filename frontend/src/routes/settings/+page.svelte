@@ -19,7 +19,7 @@
 		type ReaderFont,
 		type Measure
 	} from '$lib/readerPrefs.svelte';
-	import { siteFont, SITE_FONTS, type SiteFont } from '$lib/siteFont.svelte';
+	import { siteFont, SITE_FONTS, SITE_FONT_LABEL_KEY } from '$lib/siteFont.svelte';
 	import { palette } from '$lib/palette.svelte';
 	import PalettePicker from '$lib/components/PalettePicker.svelte';
 	import { listen, RATE_MIN, RATE_MAX } from '$lib/listen.svelte';
@@ -70,11 +70,6 @@
 			dyslexic: t('settings.fontDyslexic')
 		})
 	}));
-	const SITE_FONT_LABEL: Record<SiteFont, string> = {
-		house: t('settings.siteFontHouse'),
-		classic: t('settings.siteFontClassic'),
-		hyperlegible: t('settings.siteFontHyperlegible')
-	};
 	const WIDTHS = Object.keys(MEASURE) as Measure[];
 
 	// Export my data — assemble the bundle (fetches catalogs for titles) then hand
@@ -581,7 +576,7 @@
 					<div class="seg">
 						{#each SITE_FONTS as f (f)}
 							<button class:active={siteFont.current === f} onclick={() => siteFont.set(f)}
-								>{SITE_FONT_LABEL[f]}</button
+								>{t(SITE_FONT_LABEL_KEY[f])}</button
 							>
 						{/each}
 					</div>
