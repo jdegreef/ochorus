@@ -42,9 +42,8 @@ const PREFERRED_DEFAULTS: Record<string, RegExp> = {
 };
 
 interface Stored {
-	rate: number;
-	/** Whether the listener ever set a speed (a saved `rate`). */
-	rateChosen: boolean;
+	/** The listener's own speed, or null if they never set one. */
+	rate: number | null;
 	voiceURI: string;
 }
 
@@ -58,19 +57,20 @@ export interface StartOptions {
 	/** Fires as each paragraph `index` begins, driven by the audio (not a
 	 *  reactive effect) — the reader saves the resume point from it. */
 	onAdvance?: (index: number) => void;
-	/** A children's edition: read at GENTLE_RATE unless the listener chose a speed. */
-	gentle?: boolean;
+	/** The speed to read at when the listener hasn't chosen one (1 otherwise) —
+	 *  the chapter reader passes GENTLE_RATE for a children's edition. */
+	defaultRate?: number;
 }
 
 function loadPrefs(): Stored {
 	const raw = readJSON<{ rate?: number; voiceURI?: unknown }>(KEY, {});
-	// Any speed inside the range — Settings is a continuous slider now, so a
-	// saved value need not be one of the RATES presets.
-	const rateChosen =
-		typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX;
 	return {
-		rate: rateChosen ? (raw.rate as number) : 1,
-		rateChosen,
+		// Any speed inside the range — Settings is a continuous slider now, so a
+		// saved value need not be one of the RATES presets.
+		rate:
+			typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX
+				? raw.rate
+				: null,
 		voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
 	};
 }
@@ -118,8 +118,8 @@ class Listen {
 		if (!this.supported || this.#initialized) return;
 		this.#initialized = true;
 		const prefs = loadPrefs();
-		this.rate = prefs.rate;
-		this.#rateChosen = prefs.rateChosen;
+		this.rate = prefs.rate ?? 1;
+		this.#rateChosen = prefs.rate !== null;
 		this.voiceURI = prefs.voiceURI;
 
 		const load = () => (this.voices = speechSynthesis.getVoices());
@@ -219,7 +219,7 @@ class Listen {
 		}
 		this.noVoice = false;
 		this.stop();
-		if (!this.#rateChosen) this.rate = opts.gentle ? GENTLE_RATE : 1;
+		if (!this.#rateChosen) this.rate = opts.defaultRate ?? 1;
 		this.#paragraphs = paragraphs;
 		this.#lang = lang;
 		this.total = paragraphs.length;
@@ -254,6 +254,9 @@ class Listen {
 		// stopping (including the stop() the reader fires on navigation) retires
 		// it, so it can't linger onto the next page.
 		this.noVoice = false;
+		// A default speed belongs to the reading it was picked for: back to plain
+		// speed, so Settings never shows a children's 0.9× as if it were chosen.
+		if (!this.#rateChosen) this.rate = 1;
 		// A user stop / navigation is not a natural finish — retire the callbacks so
 		// the roll-over can't fire from a deliberate stop and no stray resume-point
 		// save lands after we've stopped.
@@ -269,6 +272,22 @@ class Listen {
 		const next = this.current + delta;
 		if (next < 0 || next >= this.#paragraphs.length) return;
 		this.#speakFrom(next);
+	}
+
+	/** The listener's own speed — what the account syncs; 1 until they choose. */
+	get ownRate(): number {
+		return this.#rateChosen ? this.rate : 1;
+	}
+
+	/**
+	 * The account's speed, applied on sign-in. Not a choice made HERE, so it
+	 * counts as one only when it isn't the plain 1 — otherwise a children's
+	 * edition would never read gently for a signed-in listener.
+	 */
+	applySyncedRate(rate: number) {
+		const r = clampRate(rate);
+		if (r === 1 && !this.#rateChosen) return;
+		this.setRate(r);
 	}
 
 	setRate(rate: number) {
@@ -314,7 +333,8 @@ class Listen {
 	#savePrefs() {
 		// A speed only once the listener has set one: choosing a voice during a
 		// gentle children's reading must not save GENTLE_RATE as their own.
-		writeJSON(KEY, { ...(this.#rateChosen ? { rate: this.rate } : {}), voiceURI: this.voiceURI });
+		// (JSON drops an undefined `rate`.)
+		writeJSON(KEY, { rate: this.#rateChosen ? this.rate : undefined, voiceURI: this.voiceURI });
 	}
 
 	#speakFrom(index: number) {

@@ -102,15 +102,11 @@ export interface ReaderTextOptions {
 	 * single-document surfaces (sermon, bio) leave it unset.
 	 */
 	onListenFinish?: () => void;
-	/**
-	 * Spoken after the text, without a paragraph of their own on the page (the
-	 * young-reader editions' "Talk about it" questions). When there are any, the
-	 * reading STOPS there instead of rolling on: the questions are where a
-	 * family talks, not a bridge to the next chapter.
-	 */
+	/** Spoken after the text, without a paragraph of their own on the page (the
+	 *  young-reader editions' "Talk about it" questions). */
 	listenEpilogue?: () => string[];
-	/** A children's edition: read at the gentle speed (see `listen`). */
-	listenGentle?: () => boolean;
+	/** The speed to read at until the listener picks one (see `listen`). */
+	listenDefaultRate?: () => number | undefined;
 }
 
 export class ReaderText {
@@ -162,8 +158,8 @@ export class ReaderText {
 			// fallback to a French reader must be voiced in English.
 			lang: contentLang(this.#o.language()),
 			media: { title: this.#o.listenTitle(), artist: this.#o.listenArtist() },
-			onFinish: epilogue.length ? undefined : this.#o.onListenFinish,
-			gentle: this.#o.listenGentle?.() ?? false,
+			onFinish: this.#o.onListenFinish,
+			defaultRate: this.#o.listenDefaultRate?.(),
 			// The spoken paragraph IS the resume point while listening — save it (this
 			// also pushes the synced progress paragraph_index), so picking the work
 			// back up, here or on another device, lands where the audio reached. The

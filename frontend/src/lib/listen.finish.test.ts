@@ -120,7 +120,7 @@ describe('listen gentle speed (children’s editions)', () => {
 	it('reads a children’s edition a little slower until the listener picks a speed', async () => {
 		localStorage.clear();
 		const { listen, synth } = await freshListen();
-		listen.start(['One.'], 0, { gentle: true });
+		listen.start(['One.'], 0, { defaultRate: 0.9 });
 		expect(listen.rate).toBe(0.9);
 		expect(synth.state.last?.rate).toBe(0.9);
 		listen.start(['One.'], 0);
@@ -130,11 +130,24 @@ describe('listen gentle speed (children’s editions)', () => {
 	it('never overrides a speed the listener chose, nor saves the gentle one as theirs', async () => {
 		localStorage.clear();
 		const { listen } = await freshListen();
-		listen.start(['One.'], 0, { gentle: true });
+		listen.start(['One.'], 0, { defaultRate: 0.9 });
 		listen.setVoice('test-en');
 		expect(JSON.parse(localStorage.getItem('ochorus:listen') || '{}').rate).toBeUndefined();
 		listen.setRate(1.5);
-		listen.start(['One.'], 0, { gentle: true });
+		listen.start(['One.'], 0, { defaultRate: 0.9 });
 		expect(listen.rate).toBe(1.5);
+	});
+
+	it('syncs the listener’s own speed, and takes the account’s plain 1 without calling it chosen', async () => {
+		localStorage.clear();
+		const { listen } = await freshListen();
+		listen.applySyncedRate(1);
+		listen.start(['One.'], 0, { defaultRate: 0.9 });
+		expect(listen.rate).toBe(0.9);
+		expect(listen.ownRate).toBe(1); // what the account sync sends
+		listen.stop();
+		expect(listen.rate).toBe(1); // Settings shows plain speed again
+		listen.applySyncedRate(1.25);
+		expect(listen.ownRate).toBe(1.25);
 	});
 });

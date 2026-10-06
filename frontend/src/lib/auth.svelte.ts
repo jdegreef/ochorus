@@ -360,10 +360,13 @@ class Auth {
 				// Blank = this account never saved a palette (it predates them):
 				// keep this device's and upload it (below), as for a fresh account.
 				if (p.palette) palette.set(normalizePalette(p.palette));
-				if (p.font_scale) readerPrefs.setScale(p.font_scale);
+				// The synced setters, not the user-intent ones: an account value is a
+				// choice only when it isn't the default (see applySyncedScale), so a
+				// children's edition still gets its layout and gentle speed.
+				if (p.font_scale) readerPrefs.applySyncedScale(p.font_scale);
 				// Listening prefs: rate always applies; a voiceURI only resolves if
 				// the device actually has that voice (best-effort across devices).
-				if (typeof p.tts_rate === 'number') listen.setRate(p.tts_rate);
+				if (typeof p.tts_rate === 'number') listen.applySyncedRate(p.tts_rate);
 				if (typeof p.tts_voice_uri === 'string') listen.setVoice(p.tts_voice_uri);
 			}
 			// The account's values are now the local values, so pushing is safe
@@ -449,8 +452,10 @@ class Auth {
 				body: JSON.stringify({
 					theme: theme.preference,
 					palette: palette.current,
-					font_scale: readerPrefs.scale,
-					tts_rate: listen.rate,
+					// The reader's OWN values — never a children's edition's layout or
+					// gentle speed, which are this page's, not the account's.
+					font_scale: readerPrefs.own.scale,
+					tts_rate: listen.ownRate,
 					tts_voice_uri: listen.voiceURI,
 					locale: lang.current
 				})

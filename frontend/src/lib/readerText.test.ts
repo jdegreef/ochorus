@@ -180,7 +180,7 @@ describe('ReaderText read-aloud', () => {
 		return el;
 	};
 
-	it('speaks the questions after the text, and stops there instead of rolling on', () => {
+	it('speaks the questions after the text, at the reader’s default speed', () => {
 		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
 		const onListenFinish = vi.fn();
 		const body = bodyOf('Once upon a time.', 'The end.');
@@ -188,21 +188,21 @@ describe('ReaderText read-aloud', () => {
 			body: () => body,
 			onListenFinish,
 			listenEpilogue: () => ['Talk about it together', 'Why did he run?'],
-			listenGentle: () => true
+			listenDefaultRate: () => 0.9
 		}).startListening(0);
 		const [paragraphs, , opts] = start.mock.calls[0];
 		expect(paragraphs).toEqual(['Once upon a time.', 'The end.', 'Talk about it together', 'Why did he run?']);
-		expect(opts?.onFinish).toBeUndefined();
-		expect(opts?.gentle).toBe(true);
+		expect(opts?.onFinish).toBe(onListenFinish);
+		expect(opts?.defaultRate).toBe(0.9);
 		start.mockRestore();
 	});
 
-	it('rolls on to the next chapter when there is nothing to ask', () => {
+	it('hands the finish to the surface, with no default speed of its own', () => {
 		const start = vi.spyOn(listen, 'start').mockImplementation(() => {});
 		const onListenFinish = vi.fn();
 		build({ body: () => bodyOf('Text.'), onListenFinish }).startListening(0);
 		expect(start.mock.calls[0][2]?.onFinish).toBe(onListenFinish);
-		expect(start.mock.calls[0][2]?.gentle).toBe(false);
+		expect(start.mock.calls[0][2]?.defaultRate).toBeUndefined();
 		start.mockRestore();
 	});
 });

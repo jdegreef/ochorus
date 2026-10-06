@@ -56,7 +56,7 @@
 	import { paceDelta, paragraphWordCounts, type PaceSample } from '$lib/pace';
 	import { readingPace } from '$lib/readingPace.svelte';
 	import { readingTimer } from '$lib/readingTime.svelte';
-	import { listen } from '$lib/listen.svelte';
+	import { listen, GENTLE_RATE } from '$lib/listen.svelte';
 	import { define } from '$lib/define.svelte';
 	import { scripture } from '$lib/scripture.svelte';
 	import { createReaderText } from '$lib/readerText.svelte';
@@ -102,10 +102,9 @@
 	const editionKind = $derived(splitEdition(slug, chapter.book_title)?.kind ?? null);
 	const childrens = $derived(editionKind === 'children');
 	const questionsCopy = $derived.by(() => {
-		const kind = editionKind;
-		if (kind === 'children')
+		if (editionKind === 'children')
 			return { title: t('reader.questionsYoung'), hint: t('reader.questionsHintYoung'), folded: true };
-		if (kind === 'teens')
+		if (editionKind === 'teens')
 			return { title: t('reader.questionsTeens'), hint: t('reader.questionsHintTeens'), folded: true };
 		return { title: t('sermon.questionsTitle'), hint: '', folded: false };
 	});
@@ -1677,25 +1676,28 @@
 		// Audiobook roll-over: when a chapter finishes reading itself, continue
 		// into the next one. Only when there is a next chapter — the last chapter
 		// simply stops. gotoChapter navigates; the per-chapter effect resumes.
+		// The questions spoken after a chapter (listenEpilogue) are where a family
+		// talks, not a bridge to the next chapter: with any, the reading stops.
 		onListenFinish: () => {
-			if (chapter.next) {
+			if (chapter.next && !chapterQuestions.length) {
 				autoContinueOrder = chapter.next.order;
 				gotoChapter(chapter.next);
 			}
 		},
 		// After the text, the questions — the heading, then each question (never
 		// the answers: those are for the grown-up to read when they want to).
-		// With questions to talk about, the reading stops there.
 		listenEpilogue: () =>
 			chapterQuestions.length ? [questionsCopy.title, ...chapterQuestions.map((qa) => qa.q)] : [],
-		listenGentle: () => childrens
+		listenDefaultRate: () => (childrens ? GENTLE_RATE : undefined)
 	});
 
 	// The young-reader layout follows the open edition, and goes when the reader
 	// leaves it (readerPrefs never stores it — see YOUNG_LAYOUT).
-	$effect(() => {
-		readerPrefs.setYoungEdition(childrens);
-		return () => readerPrefs.setYoungEdition(false);
+	// Before the DOM updates, so a children's chapter lays out once, in its own
+	// layout, rather than flashing the reader's and re-measuring.
+	$effect.pre(() => {
+		readerPrefs.youngEdition = childrens;
+		return () => (readerPrefs.youngEdition = false);
 	});
 
 	// Shared by both <ReaderControls> mounts (popover, phone sheet). `layout`
@@ -2516,14 +2518,11 @@
 	}
 	/* The large "Listen to this story" button under the title. */
 	.listen-story {
-		gap: 0.5rem;
 		min-height: 3rem;
-		font-size: var(--fs-body);
 	}
 	/* Bigger next / previous for small hands at the end of a chapter. */
 	.young-edition :global(.end-links .btn) {
 		min-height: 3.5rem;
-		font-size: var(--fs-body);
 	}
 	/* --- Page-turn mode --------------------------------------------------------
 	   The pager is transparent (display:contents) in scroll mode; in page mode
