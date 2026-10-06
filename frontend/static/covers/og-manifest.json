@@ -7900,7 +7900,7 @@
 			]
 		},
 		"lg/all-of-grace": {
-			"ground": "4c372b2b25f5213e71c9deb1d11edaefdcc908be9847f18e0dfa638307783c7f",
+			"ground": "061ef7fbfa3d53136aa192a81e9613154bf540c22db8a65fc6520ee9d4762d07",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -7920,7 +7920,7 @@
 			"bar": 0.085
 		},
 		"lg/brave-for-god": {
-			"ground": "1c141e54a669c9b824a6e9595863004f5b315e38ddf1b66eedcaa12a5df5db74",
+			"ground": "2f0db4e9f66c412a1327e96db0f1a0960f3fe1f355969531e81c767b4763f474",
 			"style": "young",
 			"volume": "1",
 			"script": "latin",
@@ -7934,7 +7934,7 @@
 				],
 				"title": [
 					[292, 243, 308, 287],
-					[137, 318, 463, 393],
+					[140, 318, 460, 393],
 					[141, 379, 459, 454]
 				],
 				"subtitle": [
@@ -7983,7 +7983,7 @@
 			]
 		},
 		"lg/brave-for-god-3": {
-			"ground": "cf6ad0b045933a1ed4501632187619229d634245c24222d68fd72c6cea15ee97",
+			"ground": "20dd0cb107a1f42fbad78707af0c4f2e95f5cee51196f6551cb5c54a92f9e87f",
 			"style": "young",
 			"volume": "3",
 			"script": "latin",
@@ -7997,7 +7997,7 @@
 				],
 				"title": [
 					[290, 212, 310, 256],
-					[101, 287, 499, 362],
+					[88, 287, 512, 362],
 					[82, 348, 518, 423],
 					[141, 410, 459, 485]
 				],
@@ -8177,7 +8177,7 @@
 			]
 		},
 		"lg/growing-in-wisdom": {
-			"ground": "59c686e883a75ae10a8ffec858de18a5a111542f12fcf0bedb5a568d24e457fd",
+			"ground": "1df9af464768ca33b3623b06ba9ed3517a09e2910d898c603519c5682d5c4361",
 			"style": "originals",
 			"volume": null,
 			"script": "latin",
@@ -8194,8 +8194,8 @@
 					[139, 333, 461, 409]
 				],
 				"subtitle": [
-					[141, 467, 459, 495],
-					[130, 495, 470, 523]
+					[140, 467, 460, 495],
+					[129, 495, 471, 523]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -8207,7 +8207,7 @@
 			]
 		},
 		"lg/he-holds-my-tomorrows": {
-			"ground": "2c3e4a56295a0bf54caa5c39b8a19c06edb10d80b59c79ff25370dd96c6779f6",
+			"ground": "ba9efcc0ff9fcf3bab82998ec1a9931bb40063e29260a92f64a68a8e169a2492",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -8220,9 +8220,9 @@
 					[168, 102, 432, 131]
 				],
 				"title": [
-					[212, 239, 388, 345],
-					[118, 323, 482, 429],
-					[124, 407, 476, 513]
+					[118, 239, 482, 345],
+					[69, 323, 531, 429],
+					[102, 407, 498, 513]
 				],
 				"subtitle": [
 					[187, 517, 413, 545]
@@ -8277,7 +8277,7 @@
 			"bar": 0
 		},
 		"lg/prayer-the-pulse-of-life": {
-			"ground": "842b16bd6293350349dfa3f338a5ac38838c6723a58c4e6598b2a86c1a2f2dfe",
+			"ground": "3d415e2371b4aeb25fd799d32fdb99033c0c779544983fb3ecfee4204ca7ec13",
 			"style": "house",
 			"volume": null,
 			"script": "latin",
@@ -8290,21 +8290,22 @@
 					[143, 102, 457, 131]
 				],
 				"title": [
-					[157, 312, 443, 383],
-					[138, 377, 462, 448],
-					[150, 443, 450, 514]
+					[157, 279, 443, 350],
+					[173, 344, 427, 415],
+					[121, 410, 479, 481],
+					[125, 475, 475, 546]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				284,
-				511
+				251,
+				544
 			]
 		},
 		"lg/prevailing-prayer": {
-			"ground": "ce2c8816ac1f0d0b728c96bd67643212c18cf66bf0c88f0add1646b6baa80bc6",
+			"ground": "8be06045401330af2595354bdba1156430d073a510f1a2bf614820e0f0ee51ce",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -8368,7 +8369,7 @@
 			]
 		},
 		"lg/stepping-stones-2": {
-			"ground": "ad09964537f4d2e16700b8ebf0680720eab3b25eeabae7abc585a0c0ee4c4f3c",
+			"ground": "debb33c2e054861dd0431082b3bcd60f2bafa76df4da01b2aa0ee9dbaef1ecf5",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -8382,10 +8383,10 @@
 				],
 				"title": [
 					[178, 281, 422, 387],
-					[80, 365, 520, 471]
+					[89, 365, 511, 471]
 				],
 				"subtitle": [
-					[160, 475, 440, 503]
+					[174, 475, 426, 503]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -8407,7 +8408,7 @@
 			"bar": 0
 		},
 		"lg/the-fourfold-gospel": {
-			"ground": "5778f6e505366ac3b4b2093eafb48796c420ae4d20ec817653f07a22b5f7e3d8",
+			"ground": "fbaf688479f32d7d7d2ee46f7196cf03296ec054c047365f796403041d8a4691",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -8417,7 +8418,7 @@
 			"bar": 0
 		},
 		"lg/the-god-of-all-comfort": {
-			"ground": "70ba7399a04d13242c5b6782e43771a63964faec65c6cad29493b9e72fab2fa7",
+			"ground": "10a0418153a34df5bf9904bdec46dea72237ec6942e4cf24b496e307e978373c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -8431,7 +8432,7 @@
 				],
 				"title": [
 					[191, 254, 409, 336],
-					[59, 326, 541, 408],
+					[58, 326, 542, 408],
 					[194, 398, 406, 480]
 				],
 				"mark": [
@@ -8444,7 +8445,7 @@
 			]
 		},
 		"lg/the-inner-chamber": {
-			"ground": "e097ab385616b11ca0532e575c685decef2450eec4afc0abb13e17214ae905ad",
+			"ground": "2a58cf5cb54ad7c3760c89b9fab850263f594e5eacee98bc75bc0501f429a6cc",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -8454,7 +8455,7 @@
 			"bar": 0
 		},
 		"lg/the-key-in-my-hand": {
-			"ground": "7996c4285dad6dbefe365dc87351e7dff1750d57373192802ab1aed5958a97d9",
+			"ground": "0e0ed9e6ba243afa3a76939c32433318ee3a548f7410be9eae81ed5e66bdcc01",
 			"style": "lettered",
 			"volume": null,
 			"script": "latin",
@@ -8467,24 +8468,21 @@
 					[168, 102, 432, 131]
 				],
 				"title": [
-					[137, 239, 463, 345],
-					[189, 323, 411, 429],
-					[89, 407, 511, 513]
-				],
-				"subtitle": [
-					[195, 517, 405, 545]
+					[137, 260, 463, 366],
+					[189, 344, 411, 450],
+					[89, 428, 511, 534]
 				],
 				"mark": [
 					[232, 664, 368, 746]
 				]
 			},
 			"middle": [
-				250,
-				545
+				271,
+				523
 			]
 		},
 		"lg/the-person-and-work-of-the-holy-spirit": {
-			"ground": "ca447ef8f25785d55775c5b69ad438ca8437778d2e3f8d0fa10047354f2667f1",
+			"ground": "5da943eecf3d8e73301013c0868c069e327c48410bed6dfeeb050577875e9f73",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -8494,7 +8492,7 @@
 			"bar": 0
 		},
 		"lg/the-unselfishness-of-god": {
-			"ground": "d02ccccef11fc0ed5d436fdacbf9d2a15ad729a89996048f15c9a3190b938ad0",
+			"ground": "76e9947bdf3f6ad142c78c16d1b527c9cc1d1b7d00df8963f2d695f5e03da84c",
 			"style": "devotional",
 			"volume": null,
 			"script": "latin",
@@ -8507,7 +8505,7 @@
 					[79, 102, 521, 131]
 				],
 				"title": [
-					[42, 290, 558, 372],
+					[139, 290, 461, 372],
 					[133, 362, 467, 444]
 				],
 				"mark": [
@@ -8520,7 +8518,7 @@
 			]
 		},
 		"lg/the-way-to-god": {
-			"ground": "8ebe038a4a10f4112d69037d35d908fdf9e09e35c4b5fbc35b0177caba4e7801",
+			"ground": "89e4d06a03046380801c66026dd0b0f6778d8fccf620c35fba22aec2af6e4f37",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -9316,6 +9314,32 @@
 			"scrim": 1,
 			"layout": "wash/sage",
 			"bar": 0.11
+		},
+		"pt/men-of-prayer-2": {
+			"ground": "4ccfa79e0cf284fe44c0dbea3faf6ed4eff3f259334e6e7386da1ebd3feaacc6",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[114, 102, 486, 131]
+				],
+				"title": [
+					[174, 308, 426, 384],
+					[150, 374, 450, 450]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				313,
+				482
+			]
 		},
 		"pt/ministry-of-intercession": {
 			"ground": "c1fad63f32eaeb37a2ec11401f9a76c668fcacf130b92e1353ae28eb7eb28231",

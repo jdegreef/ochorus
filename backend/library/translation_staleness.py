@@ -43,16 +43,22 @@ from __future__ import annotations
 import hashlib
 import html
 import re
+import sys
 from collections.abc import Iterable
 
 from django.db import transaction
+from django.db.models.functions import MD5
 
+from .deploy_fingerprints import keyed_md5, keyed_md5_hex, source_version
 from .models import Article, Book, Chapter, Sermon
 from .originals import ORIGINAL_SOURCE_TYPE, is_original
 
 KINDS = ("book", "sermon", "article")
 _MODEL = {"book": Book, "sermon": Sermon, "article": Article}
 _SEP = "\x1f"  # unit separator: can't occur in titles or HTML
+_TITLE = {"sermon": "title", "article": "h1"}
+#: The code that turns text into a digest. Editing it re-reads every row.
+_VERSION = source_version(sys.modules[__name__])
 
 
 #: Typography the fingerprint ignores. Each is a way of SETTING the same
@@ -90,14 +96,16 @@ def _digest(parts: Iterable[str]) -> str:
     return h.hexdigest()
 
 
-def _book_digests() -> dict[int, str]:
-    """book_id → digest over its chapters in order. Streamed, one book at a
-    time: the corpus is hundreds of MB and must never be held in memory."""
+def _book_digests(book_ids) -> dict[int, str]:
+    """book_id → digest over its chapters in order, for ``book_ids``. Streamed,
+    one book at a time: the corpus is hundreds of MB and must never be held in
+    memory."""
     out: dict[int, str] = {}
     current: int | None = None
     h = None
     rows = (
-        Chapter.objects.order_by("book_id", "order")
+        Chapter.objects.filter(book_id__in=book_ids)
+        .order_by("book_id", "order")
         .values_list("book_id", "order", "title", "body_html")
         .iterator(chunk_size=200)
     )
@@ -113,22 +121,49 @@ def _book_digests() -> dict[int, str]:
     return out
 
 
-def _row_digests(kind: str) -> dict[int, str]:
+def _row_digests(kind: str, pks: set[int]) -> dict[int, str]:
+    """pk → content digest, reading the text of ``pks`` only."""
+    if not pks:
+        return {}
     if kind == "book":
-        digests = _book_digests()
+        digests = _book_digests(pks)
         # A book with no chapters still gets a (constant) digest, so it is
         # comparable rather than "unknown".
-        for pk in Book.objects.values_list("pk", flat=True):
+        for pk in pks:
             digests.setdefault(pk, _digest(()))
         return digests
-    title = "title" if kind == "sermon" else "h1"
     rows = (
         _MODEL[kind]
-        .objects.order_by()
-        .values_list("pk", title, "body_html")
+        .objects.filter(pk__in=pks)
+        .order_by()
+        .values_list("pk", _TITLE[kind], "body_html")
         .iterator(chunk_size=200)
     )
     return {pk: _digest((t, body)) for pk, t, body in rows}
+
+
+
+def _sources(kind: str) -> dict[int, str]:
+    """pk → md5 of the text this row's digest is computed from.
+
+    Hashed in SQL, so knowing which rows moved costs 32 characters a row, not
+    the corpus. A book's is folded in Python from its chapters' SQL hashes."""
+    if kind != "book":
+        return dict(
+            _MODEL[kind]
+            .objects.order_by()
+            .annotate(src=keyed_md5(_VERSION, _TITLE[kind], "body_html"))
+            .values_list("pk", "src")
+        )
+    parts: dict[int, list[str]] = {pk: [] for pk in Book.objects.values_list("pk", flat=True)}
+    rows = (
+        Chapter.objects.order_by("book_id", "order")
+        .annotate(body_md5=MD5("body_html"))
+        .values_list("book_id", "order", "title", "body_md5")
+    )
+    for book_id, order, title, body_md5 in rows:
+        parts[book_id] += [str(order), title, body_md5]
+    return {pk: keyed_md5_hex(_VERSION, *p) for pk, p in parts.items()}
 
 
 def _is_translation(row) -> bool:
@@ -139,40 +174,56 @@ def _is_translation(row) -> bool:
 
 
 def refresh(kind: str) -> dict[str, int]:
-    """Recompute every row's ``content_digest`` for one kind and (re)baseline the
-    translations that need it. Returns counts for the deploy log."""
+    """Bring every row's ``content_digest`` for one kind up to date and
+    (re)baseline the translations that need it. Only rows whose text moved are
+    read (``digest_source``). Returns counts for the deploy log."""
     model = _MODEL[kind]
-    new = _row_digests(kind)
     rows = list(
-        model.objects.only("pk", "slug", "language", "source_type", "content_digest", "english_digest")
+        model.objects.only(
+            "pk", "slug", "language", "source_type",
+            "content_digest", "english_digest", "digest_source",
+        )
     )
+    # Re-read the text only of rows whose text moved since their digest was
+    # taken; every other row's stored digest is still the right one.
+    sources = _sources(kind)
+    moved = {r.pk for r in rows if r.digest_source != sources[r.pk]}
+    computed = _row_digests(kind, moved)
+    new = {r.pk: computed.get(r.pk, r.content_digest) for r in rows}
     english = {r.slug: new[r.pk] for r in rows if r.language == "en"}
 
     touched = []
-    rebaselined = 0
+    updated = rebaselined = 0
     for r in rows:
         own_changed = r.content_digest != new[r.pk]
+        updated += own_changed
         r.content_digest = new[r.pk]
+        store = own_changed
+        if r.pk in moved:
+            # Recorded even when the digest held (a typography-only edit), or
+            # the row would be re-read on every deploy.
+            r.digest_source = sources[r.pk]
+            store = True
         if _is_translation(r):
             en = english.get(r.slug, "")
             if en and (not r.english_digest or own_changed) and r.english_digest != en:
                 r.english_digest = en
                 rebaselined += 1
-                own_changed = True
-        if own_changed:
+                store = True
+        if store:
             touched.append(r)
     with transaction.atomic():
         # bulk_update, not save(): these fields feed no search vector or hook,
         # and save() would also bump updated_at for every row on every deploy.
         model.objects.bulk_update(
-            touched, ["content_digest", "english_digest"], batch_size=500
+            touched, ["content_digest", "english_digest", "digest_source"], batch_size=500
         )
     stale = sum(
         1
         for r in rows
         if _is_translation(r) and r.slug in english and r.english_digest != english[r.slug]
     )
-    return {"updated": len(touched), "rebaselined": rebaselined, "stale": stale}
+    return {"updated": updated, "rebaselined": rebaselined, "stale": stale}
 
 
 def stale_languages(kind: str) -> dict[str, list[str]]:

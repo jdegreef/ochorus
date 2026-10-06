@@ -659,6 +659,11 @@ class Book(models.Model):
     # in the fixture, so the seeds never touch them.
     content_digest = models.CharField(max_length=64, blank=True, default="")
     english_digest = models.CharField(max_length=64, blank=True, default="")
+    # md5 of the text content_digest was computed from (hashed in SQL), so
+    # refresh_translation_digests re-reads only rows whose text moved.
+    digest_source = models.CharField(
+        max_length=32, blank=True, default="", editable=False, serialize=False
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = BookManager()
@@ -765,6 +770,14 @@ class Chapter(models.Model):
     # so a body edit triggers reindexing on the next deploy.
     citations_indexed_at = models.DateTimeField(
         null=True, editable=False, serialize=False
+    )
+
+    # md5 of the corrections code's version + body_html, from the last time
+    # apply_body_corrections settled this body (library/deploy_fingerprints).
+    # Lets that release step skip every body it has already judged instead of
+    # reading the whole corpus. DB-only, like the digests.
+    corrections_key = models.CharField(
+        max_length=32, blank=True, default="", editable=False, serialize=False
     )
 
     objects = ChapterManager()
@@ -906,6 +919,10 @@ class Sermon(models.Model):
     # Stored tsvector (Postgres only; NULL on SQLite). Kept by save() +
     # backfill_search_vectors; GIN-indexed in migration 0041. See library/fts.py.
     search_vector = SearchVectorField(null=True, editable=False, serialize=False)
+    # As on Chapter: the last body apply_body_corrections settled.
+    corrections_key = models.CharField(
+        max_length=32, blank=True, default="", editable=False, serialize=False
+    )
     source_url = models.URLField(blank=True)
     # Free-text rights / permission / credit note, the twin of Book.attribution.
     # Blank for a public-domain sermon (the reader then shows its generic
@@ -927,6 +944,11 @@ class Sermon(models.Model):
     # in the fixture, so the seeds never touch them.
     content_digest = models.CharField(max_length=64, blank=True, default="")
     english_digest = models.CharField(max_length=64, blank=True, default="")
+    # md5 of the text content_digest was computed from (hashed in SQL), so
+    # refresh_translation_digests re-reads only rows whose text moved.
+    digest_source = models.CharField(
+        max_length=32, blank=True, default="", editable=False, serialize=False
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = SermonManager()
@@ -1060,6 +1082,11 @@ class Article(models.Model):
     # in the fixture, so the seeds never touch them.
     content_digest = models.CharField(max_length=64, blank=True, default="")
     english_digest = models.CharField(max_length=64, blank=True, default="")
+    # md5 of the text content_digest was computed from (hashed in SQL), so
+    # refresh_translation_digests re-reads only rows whose text moved.
+    digest_source = models.CharField(
+        max_length=32, blank=True, default="", editable=False, serialize=False
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     objects = ArticleManager()
