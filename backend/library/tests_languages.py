@@ -777,14 +777,20 @@ class GoLiveTests(TestCase):
         self.assertEqual(self.ar.status, "live")
 
     def test_the_deploy_hook_is_fired_when_configured(self):
-        with self.settings(RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy"):
+        with self.settings(
+            RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy",
+            RELEASE_COMMIT="abc123",
+            DEPLOY_TRAIN=True,
+        ):
             with self._perm_and_ready(ready=True):
                 with mock.patch("library.golive.requests.post") as post:
                     post.return_value = mock.Mock(ok=True, status_code=200)
                     res = self.client.post(
                         "/api/admin/languages/ar/go-live/", {}, format="json"
                     )
-                    post.assert_called_once_with("https://hook.example/deploy", timeout=20)
+                    post.assert_called_once_with(
+                        "https://hook.example/deploy", params={"ref": "abc123"}, timeout=20
+                    )
         self.assertEqual(res.data["deploy"]["status"], "triggered")
 
     def test_english_cannot_be_launched(self):

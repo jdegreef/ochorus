@@ -54,8 +54,16 @@ def trigger_web_deploy() -> DeployResult:
                 "site is deployed — trigger a deploy in Render, or set the hook."
             ),
         )
+    # Under the deploy train, build the commit this API runs, not main's tip:
+    # main can hold content this API hasn't released, and a web build of the
+    # tip would wait on the API for content it will never serve, then fail.
+    # The train keeps every service on one commit, so this commit's frontend
+    # is also what the reader already runs. Without the train (auto-deploy) the
+    # reader may be AHEAD of this commit, so pinning would roll it back.
+    pin = settings.DEPLOY_TRAIN and settings.RELEASE_COMMIT
+    params = {"ref": settings.RELEASE_COMMIT} if pin else None
     try:
-        res = requests.post(hook, timeout=20)
+        res = requests.post(hook, params=params, timeout=20)
     except requests.RequestException as e:
         return DeployResult("failed", f"Deploy hook unreachable ({e.__class__.__name__}).")
     if not res.ok:
