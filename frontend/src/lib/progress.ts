@@ -184,12 +184,13 @@ export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
  * Mark finished AND offer a short Undo — the one "I'm done with this" action
  * behind both auto-detection (reaching the end in a reader) and the explicit
  * taps (the dashboard card). Silent when the work is already finished
- * (`markFinished` is a no-op, so no misleading Undo appears).
+ * (`markFinished` is a no-op, so no misleading Undo appears). Returns whether
+ * it finished the work just now — the chapter reader celebrates on that.
  */
-export function offerFinish(slug: string, kind: WorkKind = 'book'): void {
-	if (markFinished(slug, kind)) {
-		undo.offer({ restore: () => unmarkFinished(slug, kind), kind: 'finished' });
-	}
+export function offerFinish(slug: string, kind: WorkKind = 'book'): boolean {
+	if (!markFinished(slug, kind)) return false;
+	undo.offer({ restore: () => unmarkFinished(slug, kind), kind: 'finished' });
+	return true;
 }
 
 /**

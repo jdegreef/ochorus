@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+	<!-- A falling leaf for the finished-book shower: a solid shape, painted
+	     gold through a CSS mask (BookFinished). -->
+	<path d="M12 2.5c-4.5 4.5-4.5 14.5 0 19 4.5-4.5 4.5-14.5 0-19z" fill="#000"/>
+</svg>

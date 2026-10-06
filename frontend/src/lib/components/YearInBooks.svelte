@@ -236,7 +236,7 @@
 			<ul class="mt-6 flex list-none flex-wrap gap-2 p-0">
 				{#each stats.books as book (book.slug)}
 					<li class="w-12 sm:w-14">
-						<a href={localizeHref(`/books/${book.slug}`)} title={book.title} aria-label={book.title}>
+						<a class="sealed" href={localizeHref(`/books/${book.slug}`)} title={book.title} aria-label={book.title}>
 							<BookCover {book} rounded="rounded-sm" />
 						</a>
 					</li>
