@@ -7,11 +7,14 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 const auth = vi.hoisted(() => ({
 	enabled: true,
 	initialized: true,
-	user: null,
+	user: null as { email: string } | null,
 	signUp: vi.fn(),
+	resendSignup: vi.fn(),
 	signInWithGoogle: vi.fn()
 }));
 vi.mock('$lib/auth.svelte', () => ({ auth }));
+const signupStarted = vi.hoisted(() => vi.fn());
+vi.mock('$lib/signupSource', () => ({ signupStarted }));
 
 const { default: SignUpForm } = await import('./SignUpForm.svelte');
 
@@ -49,7 +52,10 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+	auth.user = null;
 	auth.signUp.mockReset().mockResolvedValue(null);
+	auth.resendSignup.mockReset().mockResolvedValue(null);
+	signupStarted.mockReset();
 	target = document.body.appendChild(document.createElement('div'));
 	component = mount(SignUpForm, { target, props: { returnTo: 'https://ochorus.test/books/humility' } });
 	flushSync();
@@ -79,6 +85,20 @@ describe('SignUpForm', () => {
 		expect(target.querySelector('[role=status]')).not.toBeNull();
 	});
 
+	it('says nothing about an email when sign-up signs the reader straight in', async () => {
+		// No email confirmation: Supabase's listener has set the session by the
+		// time signUp resolves, and no link went out.
+		auth.signUp.mockImplementation(async (email: string) => {
+			auth.user = { email };
+			return null;
+		});
+		fillAndSubmit();
+		await tick();
+		flushSync();
+		expect(target.querySelector('form')).not.toBeNull();
+		expect(target.querySelector('[role=status]')).toBeNull();
+	});
+
 	it('keeps the form and shows the error when sign-up fails', async () => {
 		auth.signUp.mockResolvedValue('weak_password');
 		fillAndSubmit();
@@ -86,5 +106,29 @@ describe('SignUpForm', () => {
 		flushSync();
 		expect(target.querySelector('form')).not.toBeNull();
 		expect(target.querySelector('[role=alert]')?.textContent).not.toBe('');
+	});
+
+	it('counts one sign-up start however many times the reader retries', async () => {
+		auth.signUp.mockResolvedValue('weak_password');
+		fillAndSubmit();
+		await tick();
+		submit(target.querySelector('form')!);
+		await tick();
+		expect(auth.signUp).toHaveBeenCalledTimes(2);
+		expect(signupStarted).toHaveBeenCalledTimes(1);
+	});
+
+	it('re-sends the confirmation email, not a magic link', async () => {
+		fillAndSubmit();
+		await tick();
+		flushSync();
+		target.querySelector<HTMLButtonElement>('.suf button')!.click();
+		await tick();
+		flushSync();
+		expect(auth.resendSignup).toHaveBeenCalledWith(
+			'grace@example.org',
+			'https://ochorus.test/books/humility'
+		);
+		expect(target.querySelector('[role=status]')?.textContent).not.toBe('');
 	});
 });

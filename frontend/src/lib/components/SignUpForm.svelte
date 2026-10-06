@@ -36,12 +36,23 @@
 	let busy = $state(false);
 	let error = $state<string | null>(null);
 	let sent = $state(false);
+	// One "Signup started" per reader, not one per retry after an error.
+	let started = false;
+	let resendIn = $state(0);
+	let resent = $state<string | null>(null);
+
+	// 30s between sends, as on /login: hammering Resend trips Supabase's rate
+	// limit, which then blocks the send that would have worked.
+	const RESEND_WAIT = 30;
+	let tick: ReturnType<typeof setInterval> | undefined;
+	$effect(() => () => clearInterval(tick));
 
 	async function submit(e: SubmitEvent) {
 		e.preventDefault();
 		busy = true;
 		error = null;
-		signupStarted();
+		if (!started) signupStarted();
+		started = true;
 		const err = await auth.signUp(email, password, returnTo);
 		busy = false;
 		if (err) {
@@ -49,13 +60,29 @@
 			return;
 		}
 		password = '';
-		sent = true;
+		// Signed in already (no email confirmation): the panel closes itself, and
+		// no link was sent to tell the reader about.
+		if (!auth.user) sent = true;
+	}
+
+	async function resend() {
+		if (resendIn > 0) return;
+		resent = null;
+		resendIn = RESEND_WAIT;
+		clearInterval(tick);
+		tick = setInterval(() => {
+			resendIn -= 1;
+			if (resendIn <= 0) clearInterval(tick);
+		}, 1000);
+		const err = await auth.resendSignup(email, returnTo);
+		resent = err ? t(authErrorKey(err)) : t('login.sentAgain');
 	}
 
 	async function google() {
 		busy = true;
 		error = null;
-		signupStarted();
+		if (!started) signupStarted();
+		started = true;
 		const err = await auth.signInWithGoogle(returnTo);
 		// On success the browser navigates to Google; only reachable on error.
 		if (err) {
@@ -66,9 +93,16 @@
 </script>
 
 {#if sent}
-	<div class="suf" role="status">
+	<div class="suf">
 		<h3 class="text-h3">{t('login.checkEmail')}</h3>
 		<p class="text-body text-muted">{t('login.sentSignup').replace('%email%', email)}</p>
+		<p class="text-center text-small text-muted">
+			{t('login.didntGet')}
+			<button type="button" class="text-accent" onclick={resend} disabled={resendIn > 0}>
+				{resendIn > 0 ? t('login.resendIn').replace('%n%', String(resendIn)) : t('login.resend')}
+			</button>
+		</p>
+		<p role="status" class="text-center text-small text-muted">{resent ?? ''}</p>
 	</div>
 {:else}
 	<form class="suf" onsubmit={submit}>
@@ -131,8 +165,11 @@
 		flex-direction: column;
 		gap: 0.6rem;
 	}
+	/* Collapsed, not display:none: a live region (the error, "sent again") is
+	   only announced if it was already in the accessibility tree when its text
+	   arrived. The negative margin takes back the flex gap it would leave. */
 	.suf p:empty {
-		display: none;
+		margin-block-end: -0.6rem;
 	}
 	.pw-wrap {
 		position: relative;

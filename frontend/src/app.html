@@ -38,13 +38,20 @@
 							: 'light';
 				document.documentElement.setAttribute('data-theme', applied);
 				// The library palette (mirrors $lib/palette.svelte.ts + $lib/palettes).
-				var pal = localStorage.getItem('ochorus:palette');
+				// A choice that resolves to another palette (the Church year's
+				// season) paints what the app last applied — this script has no
+				// calendar; the app corrects it on load. Unresolvable without that
+				// cache: no palette entry matches, so the house palette.
+				var pal = localStorage.getItem('ochorus:palette-applied') || localStorage.getItem('ochorus:palette');
 				var palColors = {
 					cathedral: { light: '#f5f6f8', dark: '#10141c' },
 					olive: { light: '#f6f5ee', dark: '#121510' },
 					hearth: { light: '#fbf4ec', dark: '#1a120e' },
 					dawn: { light: '#fbf6f6', dark: '#17121a' },
-					monastery: { light: '#f6f6f4', dark: '#141414' }
+					monastery: { light: '#f6f6f4', dark: '#141414' },
+					violet: { light: '#f7f5fa', dark: '#15121c' },
+					feast: { light: '#fcfaf4', dark: '#17150f' },
+					flame: { light: '#fbf6f5', dark: '#1a1112' }
 				};
 				if (palColors[pal]) document.documentElement.setAttribute('data-palette', pal);
 				// Match the browser UI (address bar / status bar) to the active theme

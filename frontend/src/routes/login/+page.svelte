@@ -152,8 +152,12 @@
 			if (!err) sent = 'reset';
 		} else if (mode === 'signup') {
 			signupStarted();
-			err = await auth.signUp(email, password);
-			if (!err) sent = 'signup';
+			err = await auth.signUp(email, password, redirectTarget);
+			// Signed in already (the project doesn't ask for email confirmation):
+			// no link was sent, so no "check your email" card — the $effect above
+			// routes on. Supabase runs the auth listener before signUp resolves,
+			// so `auth.user` is set by now when a session came back.
+			if (!err && !auth.user) sent = 'signup';
 		} else {
 			err = await auth.signIn(email, password);
 			// success routes via the $effect above
@@ -171,7 +175,7 @@
 		busy = true;
 		error = null;
 		if (mode === 'signup') signupStarted();
-		const err = await auth.signInWithMagicLink(email);
+		const err = await auth.signInWithMagicLink(email, redirectTarget);
 		busy = false;
 		if (err) error = t(authErrorKey(err));
 		else sent = 'magic';
@@ -205,7 +209,11 @@
 			if (resendIn <= 0) clearInterval(tick);
 		}, 1000);
 		const err =
-			sent === 'reset' ? await auth.sendPasswordReset(email) : await auth.signInWithMagicLink(email);
+			sent === 'reset'
+				? await auth.sendPasswordReset(email)
+				: sent === 'signup'
+					? await auth.resendSignup(email, redirectTarget)
+					: await auth.signInWithMagicLink(email, redirectTarget);
 		if (err) resentErr = t(authErrorKey(err));
 		else resentMsg = t('login.sentAgain');
 	}

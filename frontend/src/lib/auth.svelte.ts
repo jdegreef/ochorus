@@ -239,8 +239,25 @@ class Auth {
 		return error ? error.code || 'unexpected_failure' : null;
 	}
 
-	/** Passwordless: email the user a one-time sign-in link. */
-	async signInWithMagicLink(email: string): Promise<string | null> {
+	/**
+	 * Send the sign-up confirmation email again — the password path's Resend.
+	 * A magic link here would sign the reader in but leave the account
+	 * unconfirmed, and say "sent again" about an email they never asked for.
+	 */
+	async resendSignup(email: string, returnTo?: string): Promise<string | null> {
+		const sb = await supabase();
+		if (!sb) return NOT_CONFIGURED;
+		const { error } = await sb.auth.resend({
+			type: 'signup',
+			email,
+			options: { emailRedirectTo: returnUrl(returnTo) }
+		});
+		// `||`, not `??`: see signIn.
+		return error ? error.code || 'unexpected_failure' : null;
+	}
+
+	/** Passwordless: email the user a one-time sign-in link back to `returnTo`. */
+	async signInWithMagicLink(email: string, returnTo?: string): Promise<string | null> {
 		const sb = await supabase();
 		if (!sb) return NOT_CONFIGURED;
 		const { error } = await sb.auth.signInWithOtp({
@@ -248,7 +265,7 @@ class Auth {
 			// `data` seeds user_metadata only when this link CREATES the account,
 			// so it attributes a first-time sign-up and is ignored for a returning
 			// reader — same create-only story as the password path.
-			options: { emailRedirectTo: origin(), ...signupMetadata() }
+			options: { emailRedirectTo: returnUrl(returnTo), ...signupMetadata() }
 		});
 		// `||`, not `??`: an AuthError with an empty-string code would otherwise
 		// return '' — which every caller's `if (err)` reads as SUCCESS, silently
