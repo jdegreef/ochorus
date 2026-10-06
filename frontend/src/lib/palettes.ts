@@ -45,13 +45,12 @@ export const PALETTE_KEY = 'ochorus:palette';
  *  can paint the season before the app (and its calendar) has loaded. */
 export const APPLIED_PALETTE_KEY = 'ochorus:palette-applied';
 
-export function normalizePalette(v: string | null | undefined): Palette {
-	return (PALETTES as readonly string[]).includes(v ?? '') ? (v as Palette) : 'parchment';
-}
+/** `v` if it is one of `list`, else the house palette. */
+const oneOf = <T extends string>(list: readonly T[], v: string | null | undefined): T =>
+	(list as readonly string[]).includes(v ?? '') ? (v as T) : ('parchment' as T);
 
-export function normalizeApplied(v: string | null | undefined): AppliedPalette {
-	return (APPLIED_PALETTES as readonly string[]).includes(v ?? '') ? (v as AppliedPalette) : 'parchment';
-}
+export const normalizePalette = (v: string | null | undefined): Palette => oneOf(PALETTES, v);
+export const normalizeApplied = (v: string | null | undefined): AppliedPalette => oneOf(APPLIED_PALETTES, v);
 
 /** The palette each liturgical colour applies. */
 export const SEASON_PALETTE: Record<SeasonColour, AppliedPalette> = {
@@ -123,4 +122,12 @@ export const PALETTE_COLORS: Record<AppliedPalette, { light: string; dark: strin
  *  season, so the reader sees what they are about to get. */
 export function swatchOf(p: Palette, mode: 'light' | 'dark', date: Date = new Date()): Swatch {
 	return PALETTE_COLORS[appliedPalette(p, date)].swatch[mode];
+}
+
+/** The Church year's own mark: its four seasons' accents as quarters of a
+ *  disc — what tells it apart from the one palette it is wearing today (in
+ *  Ordinary Time, Olive Grove's swatch exactly). */
+export function seasonWheel(mode: 'light' | 'dark'): string {
+	const [v, w, r, g] = (['violet', 'feast', 'flame', 'olive'] as const).map((p) => PALETTE_COLORS[p].swatch[mode][1]);
+	return `conic-gradient(${v} 0 25%, ${w} 0 50%, ${r} 0 75%, ${g} 0)`;
 }

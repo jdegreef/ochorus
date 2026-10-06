@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, swatchOf } from '$lib/palettes';
+	import { PALETTES, seasonWheel, swatchOf } from '$lib/palettes';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { radioKeys } from '$lib/radioKeys';
@@ -34,7 +34,7 @@
 		>
 			<span class="swatch" style:background={ground} aria-hidden="true">
 				<span class="bar" style:background={accent}></span>
-				<span class="dot" style:background={second}></span>
+				<span class="dot" style:background={p === 'liturgical' ? seasonWheel(mode) : second}></span>
 			</span>
 			<span class="name">{t(`palette.${p}`)}</span>
 		</button>

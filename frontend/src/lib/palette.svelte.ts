@@ -13,8 +13,12 @@ import { theme } from './theme.svelte';
 class PalettePref {
 	/** What the reader chose (and what syncs to their account). */
 	current = $state<Palette>('parchment');
+	#listening = false;
+
 	/** What is painted: the choice, or the Church year's season today. */
-	applied = $state<AppliedPalette>('parchment');
+	get applied(): AppliedPalette {
+		return appliedPalette(this.current);
+	}
 
 	init() {
 		if (!browser) return;
@@ -25,7 +29,10 @@ class PalettePref {
 		}
 		this.#apply();
 		// The Church year turns with the calendar: a tab left open across a
-		// season's first day takes the new colours when the reader comes back.
+		// season's first day takes the new colours when the reader comes back
+		// (as the home hero's date and season dot do). Once per page.
+		if (this.#listening) return;
+		this.#listening = true;
 		document.addEventListener('visibilitychange', () => {
 			if (document.visibilityState === 'visible' && this.current === 'liturgical') this.#apply();
 		});
@@ -45,15 +52,15 @@ class PalettePref {
 	}
 
 	#apply() {
-		this.applied = appliedPalette(this.current);
 		if (!browser) return;
+		const applied = this.applied;
 		const root = document.documentElement;
-		if (this.applied === 'parchment') delete root.dataset.palette;
-		else root.dataset.palette = this.applied;
+		if (applied === 'parchment') delete root.dataset.palette;
+		else root.dataset.palette = applied;
 		// The boot script can't compute the season (it has no calendar), so it
 		// paints the one cached here; the app corrects it on load if it moved.
 		try {
-			if (this.current === 'liturgical') localStorage.setItem(APPLIED_PALETTE_KEY, this.applied);
+			if (this.current === 'liturgical') localStorage.setItem(APPLIED_PALETTE_KEY, applied);
 			else localStorage.removeItem(APPLIED_PALETTE_KEY);
 		} catch {
 			/* the cache is a nicety: the app applies the right season anyway */

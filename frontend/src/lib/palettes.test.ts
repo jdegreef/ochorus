@@ -21,6 +21,7 @@ import {
 	PALETTE_COLORS,
 	PALETTE_KEY,
 	PALETTES,
+	seasonWheel,
 	swatchOf
 } from './palettes';
 import { palette } from './palette.svelte';
@@ -167,6 +168,16 @@ describe('the Church year', () => {
 		const advent = new Date(2026, 11, 6);
 		expect(swatchOf('liturgical', 'light', advent)).toEqual(PALETTE_COLORS.violet.swatch.light);
 		expect(swatchOf('liturgical', 'dark', advent)).toEqual(PALETTE_COLORS.violet.swatch.dark);
+	});
+
+	it('has a mark of its own: all four seasons, never one palette', () => {
+		// In Ordinary Time it wears Olive Grove exactly; the wheel is what tells
+		// the two apart in a picker.
+		for (const mode of ['light', 'dark'] as const) {
+			const wheel = seasonWheel(mode);
+			for (const p of ['violet', 'feast', 'flame', 'olive'] as const)
+				expect(wheel).toContain(PALETTE_COLORS[p].swatch[mode][1]);
+		}
 	});
 });
 

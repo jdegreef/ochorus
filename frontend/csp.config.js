@@ -47,7 +47,7 @@ export const cspDirectives = {
 		// build-invariant) and guarded by csp.test.ts, which fails the build if
 		// app.html changes and this is not updated — rather than silently blocking
 		// the theme boot in production.
-		'sha256-EtvOAk/tG0N+Z6P6VtktPszHO9t/QLcm39PnDKpied4=',
+		'sha256-mtC3a1lKVVJLEmQvb3B/Ae6Nrz/oJr6zshSaq+eNZ/k=',
 		// The chapter reader's early-resume script (src/lib/earlyResume.ts): puts
 		// a returning reader at their paragraph before first paint. Fixed text,
 		// pinned the same way and guarded by csp.test.ts. Matches both chapter routes

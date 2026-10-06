@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, swatchOf } from '$lib/palettes';
+	import { PALETTES, seasonWheel, swatchOf } from '$lib/palettes';
 	import { siteFont, SITE_FONTS, SITE_FONT_LABEL_KEY, type SiteFont } from '$lib/siteFont.svelte';
 	import { FONT_STACK } from '$lib/readerPrefs.svelte';
 	import { radioKeys } from '$lib/radioKeys';
@@ -122,6 +122,7 @@
 							style:--sw-ground={ground}
 							style:--sw-accent={accent}
 							style:--sw-second={second}
+							style:background={p === 'liturgical' ? seasonWheel(mode) : undefined}
 							onclick={() => palette.set(p)}
 						></button>
 					{/each}
