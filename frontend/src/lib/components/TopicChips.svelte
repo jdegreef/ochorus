@@ -4,6 +4,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import TopicPill from '$lib/components/TopicPill.svelte';
+	import { TOPIC_META } from '$lib/emblemNames';
 
 	/**
 	 * The "Browse by topic" pill row, shared by the logged-out home and the
@@ -39,6 +40,8 @@
 					href={localizeHref(`/topics/${topic.slug}`)}
 					title={topic.title}
 					count={topic.book_count + topic.sermon_count}
+					emblem={TOPIC_META[topic.slug]?.emblem}
+					accent={TOPIC_META[topic.slug]?.accent}
 					class={[i >= PHONE_CAP && 'max-sm:hidden', i >= TABLET_CAP && 'max-lg:hidden']}
 				/>
 			{/each}

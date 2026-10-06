@@ -19,6 +19,9 @@ import { TOPIC_META, topicEmblems } from './emblemNames';
  * (`brandAssets.test.ts`) and the precomputed hues (`emblemHues.test.ts`).
  * `emblems.ts` is the source; nothing hand-edits the backend copies.
  *
+ * The same files are also served from `static/emblems/` for the home topic
+ * pills, and checked byte-for-byte against the backend copies.
+ *
  * If this fails, run `cd frontend && npm run emblem:art` and commit the result.
  *
  * The mapping itself is `topicEmblems()` — the SAME function the exporter
@@ -43,6 +46,17 @@ describe('the cover generator has the emblems it draws', () => {
 		// The export wraps the fragment in a viewBox'd document; compare the art.
 		expect(committed).toContain(EMBLEM_ART[meta.emblem]);
 		expect(committed).toContain('viewBox="0 0 48 48"');
+	});
+
+	it('serves the same files the backend draws from (static/emblems)', () => {
+		// The home topic pills load these as <img>s; one exporter writes both
+		// trees, so they must be the same bytes.
+		const SERVED = join(process.cwd(), 'static', 'emblems');
+		const served = readdirSync(SERVED).filter((f) => f.endsWith('.svg')).sort();
+		const backend = readdirSync(BACKEND_EMBLEMS).filter((f) => f.endsWith('.svg')).sort();
+		expect(served).toEqual(backend);
+		for (const f of served)
+			expect(readFileSync(join(SERVED, f), 'utf-8'), f).toBe(readFileSync(join(BACKEND_EMBLEMS, f), 'utf-8'));
 	});
 
 	it('records which emblem each topic wears', () => {
