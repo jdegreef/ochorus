@@ -2478,6 +2478,25 @@ nav.appnav .navsearch:hover {
 	width: 66%;
 	height: 66%;
 }
+/* A finished book's cover in the year shelves (HomeYear, YearInBooks) wears a
+   wax seal at its foot — every cover there is a book finished, and a seal is
+   how a book was once closed. Decoration on a link that already names the
+   book, so a pseudo-element: no markup, nothing for a screen reader. */
+.sealed {
+	position: relative;
+	display: block;
+}
+.sealed::after {
+	content: '';
+	position: absolute;
+	inset-inline-end: -8%;
+	bottom: -6%;
+	width: 42%;
+	aspect-ratio: 1;
+	background: url('/marks/seal.svg') center / contain no-repeat;
+	filter: drop-shadow(0 1px 1.5px rgb(0 0 0 / 0.35));
+	pointer-events: none;
+}
 /* A section page's emblem, beside its <PageHeader> title, in the section's
    hue (data-section puts it in scope as --section-hue). */
 .page-header-emblem {

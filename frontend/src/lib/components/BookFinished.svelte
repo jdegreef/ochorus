@@ -3,7 +3,7 @@
 	import type { BookDetail, BookSummary, PlanSummary } from '$lib/library-public';
 	import { listPlans } from '$lib/library-public';
 	import { libraryBooks } from '$lib/resumeBooks';
-	import { allProgress, bookProgressReader, isFinished } from '$lib/progress';
+	import { allProgress, bookProgressReader, getProgressRecord, isFinished } from '$lib/progress';
 	import { yearStats } from '$lib/yearInBooks';
 	import { marks } from '$lib/marks.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -70,6 +70,26 @@
 		void ticks;
 		return isFinished(book.slug);
 	});
+	// The moment of finishing, not the state of being finished: the leaves fall
+	// only when the book was stamped in the last few seconds — whether this
+	// block mounted before the stamp (it flips on the sync event) or just after
+	// (the chapter end mounts as the reader nears it). A finished book reopened
+	// later shows the same arrival, quietly.
+	const JUST_NOW_MS = 15_000;
+	const justFinished = $derived.by(() => {
+		void ticks;
+		const at = getProgressRecord(book.slug)?.finished_at;
+		return at != null && Date.now() - at < JUST_NOW_MS;
+	});
+	// A dozen leaves, spread across the band and staggered, from fixed numbers
+	// rather than random ones so the shower is the same on every device.
+	const LEAVES = Array.from({ length: 12 }, (_, i) => ({
+		x: (i * 37 + 7) % 96,
+		delay: ((i * 53) % 90) / 100,
+		turn: ((i * 71) % 160) - 80,
+		size: 12 + ((i * 29) % 9)
+	}));
+
 	const finishedThisYear = $derived.by(() => {
 		void ticks;
 		return yearStats({ progress: allProgress(), books: [], days: [], year, wpm: 0 }).finished;
@@ -92,6 +112,20 @@
 {#if finished}
 	<!-- 1. The arrival. -->
 	<section class="finished-hero mt-14 rounded-card border border-border bg-surface p-6 text-center sm:p-8" aria-labelledby="finished-heading">
+		{#if justFinished}
+			<!-- Gold leaves falling once through the band: the arrival marked.
+			     Decoration only; still under prefers-reduced-motion. -->
+			<div class="leaf-shower" aria-hidden="true">
+				{#each LEAVES as leaf, i (i)}
+					<i
+						style:--x="{leaf.x}%"
+						style:--delay="{leaf.delay}s"
+						style:--turn="{leaf.turn}deg"
+						style:--size="{leaf.size}px"
+					></i>
+				{/each}
+			</div>
+		{/if}
 		<p class="eyebrow text-gold">{t('finished.eyebrow')}</p>
 		<h2 id="finished-heading" class="font-display mt-2 text-h2 text-balance" dir="auto">{book.title}</h2>
 		<p class="mt-1 text-small text-muted">
@@ -200,11 +234,48 @@
 
 <style>
 	.finished-hero {
+		position: relative;
+		overflow: hidden;
 		background-image: radial-gradient(
 			ellipse at top,
 			color-mix(in srgb, var(--gold) 12%, transparent),
 			transparent 70%
 		);
+	}
+	.leaf-shower {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+	.leaf-shower i {
+		position: absolute;
+		top: -2rem;
+		inset-inline-start: var(--x);
+		width: var(--size);
+		height: var(--size);
+		background: var(--gold);
+		-webkit-mask: url('/marks/leaf.svg') center / contain no-repeat;
+		mask: url('/marks/leaf.svg') center / contain no-repeat;
+		opacity: 0;
+		animation: leaf-fall 2.8s ease-in var(--delay) forwards;
+	}
+	@keyframes leaf-fall {
+		0% {
+			opacity: 0;
+			transform: translateY(0) rotate(0deg);
+		}
+		15% {
+			opacity: 0.9;
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(16rem) rotate(var(--turn));
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.leaf-shower {
+			display: none;
+		}
 	}
 	.year-tile {
 		border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--border));

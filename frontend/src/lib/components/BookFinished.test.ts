@@ -8,12 +8,14 @@ import type { BookDetail, BookSummary } from '$lib/library-public';
  * — the author's other books, a plan that reads this one.
  */
 vi.mock('$lib/lang.svelte', () => ({ getLang: () => 'en' }));
-const state = vi.hoisted(() => ({ finished: new Set<string>() }));
+const state = vi.hoisted(() => ({ finished: new Set<string>(), finishedAgoMs: 0 }));
 vi.mock('$lib/progress', () => ({
 	isFinished: (slug: string) => state.finished.has(slug),
 	allProgress: () =>
 		[...state.finished].map((slug) => ({ slug, kind: 'book', finished_at: Date.now(), at: Date.now() })),
-	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) })
+	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) }),
+	getProgressRecord: (slug: string) =>
+		state.finished.has(slug) ? { finished_at: Date.now() - state.finishedAgoMs } : null
 }));
 const resume = vi.hoisted(() => ({ libraryBooks: vi.fn() }));
 vi.mock('$lib/resumeBooks', () => resume);
@@ -75,6 +77,7 @@ describe('BookFinished', () => {
 	beforeEach(() => {
 		target = document.body.appendChild(document.createElement('div'));
 		state.finished = new Set();
+		state.finishedAgoMs = 0;
 		resume.libraryBooks.mockResolvedValue([summary('inner-chamber'), summary('abide'), summary('other', 'bounds')]);
 		listPlans.mockResolvedValue([
 			{ slug: 'school-of-prayer', title: '31 Days in the School of Prayer', day_count: 31, covers: [{ kind: 'book', slug: 'inner-chamber', title: '', cover_url: '', cover_color: '#123456' }] },
@@ -103,6 +106,17 @@ describe('BookFinished', () => {
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 		await settle();
 		expect(target.querySelector('#finished-heading')).toBeNull();
+	});
+
+	it('lets the leaves fall for a finish just made, never for an old one', async () => {
+		state.finished.add('inner-chamber');
+		state.finishedAgoMs = 60_000;
+		await show();
+		expect(target.querySelector('.leaf-shower')).toBeNull();
+		unmount(component!);
+		state.finishedAgoMs = 1_000;
+		await show();
+		expect(target.querySelectorAll('.leaf-shower i').length).toBeGreaterThan(0);
 	});
 
 	it("counts the year's finished books and offers the ways on", async () => {
