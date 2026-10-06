@@ -14,6 +14,14 @@ export type SiteFont = 'house' | 'classic' | 'hyperlegible';
 
 export const SITE_FONTS: readonly SiteFont[] = ['house', 'classic', 'hyperlegible'];
 
+/** Each site style's label key — Settings and the header's quick settings
+ *  both name them from this. */
+export const SITE_FONT_LABEL_KEY: Record<SiteFont, string> = {
+	house: 'settings.siteFontHouse',
+	classic: 'settings.siteFontClassic',
+	hyperlegible: 'settings.siteFontHyperlegible'
+};
+
 const KEY = 'ochorus:site-font';
 
 /** Normalise a stored value; anything unknown is the house style. */

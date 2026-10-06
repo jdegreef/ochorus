@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { theme, THEME_OPTIONS, type ThemePref } from '$lib/theme.svelte';
+	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, PALETTE_COLORS, type Palette } from '$lib/palettes';
-	import { siteFont, SITE_FONTS, type SiteFont } from '$lib/siteFont.svelte';
+	import { PALETTES, PALETTE_COLORS } from '$lib/palettes';
+	import { siteFont, SITE_FONTS, SITE_FONT_LABEL_KEY, type SiteFont } from '$lib/siteFont.svelte';
+	import { FONT_STACK } from '$lib/readerPrefs.svelte';
+	import { radioKeys } from '$lib/radioKeys';
 	import { localizeHref } from '$lib/href';
 	import { pageWidth } from '$lib/pageWidth.svelte';
 	import { isReaderRoute } from '$lib/readerRoutes';
@@ -15,9 +17,8 @@
 	// Take Root's quick-settings popover: the gear opens a small menu with the
 	// look of the site — brightness (system / light / sepia / dark), library
 	// colours, site style — and a page-width stepper, with no navigation to the
-	// Settings page. Every control drives the same store Settings does, so the
-	// two can never disagree. The stepper drives the shared pageWidth preference, so every browse
-	// surface (`.page-col`) resizes together and the choice persists.
+	// Settings page. Every control drives the same store Settings does (the
+	// stepper, the shared pageWidth that every `.page-col` follows).
 	const t = i18n.t;
 	let open = $state(false);
 
@@ -34,57 +35,20 @@
 	// Swatches draw in the brightness showing (a dark ground under dark), like
 	// PalettePicker's cards: a preview of the applied palette would show nothing.
 	const mode = $derived(theme.current === 'dark' ? 'dark' : 'light');
-	const PALETTE_NAME = $derived<Record<Palette, string>>({
-		parchment: t('palette.parchment'),
-		cathedral: t('palette.cathedral'),
-		olive: t('palette.olive'),
-		hearth: t('palette.hearth'),
-		dawn: t('palette.dawn'),
-		monastery: t('palette.monastery')
-	});
-	const FONT_NAME = $derived<Record<SiteFont, string>>({
-		house: t('settings.siteFontHouse'),
-		classic: t('settings.siteFontClassic'),
-		hyperlegible: t('settings.siteFontHyperlegible')
-	});
 
-	/** Arrow keys move a radio group's choice, as PalettePicker's do. */
-	function radioKeys<T extends string>(all: readonly T[], current: T, set: (v: T) => void, attr: string) {
-		return (e: KeyboardEvent) => {
-			const step = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-			if (!step) return;
-			e.preventDefault();
-			const host = e.currentTarget as HTMLElement;
-			const rtl = getComputedStyle(host).direction === 'rtl';
-			const horizontal = e.key === 'ArrowLeft' || e.key === 'ArrowRight';
-			const i = all.indexOf(current);
-			const next = all[(i + (rtl && horizontal ? -step : step) + all.length) % all.length];
-			set(next);
-			host.querySelector<HTMLElement>(`[${attr}='${next}']`)?.focus();
-		};
-	}
+	// Each site style says "Aa" in its own face — the stacks the reader's font
+	// list already holds (and fontStacks.test.ts already checks).
+	const FACE: Record<SiteFont, string> = {
+		house: FONT_STACK.serif,
+		classic: FONT_STACK.garamond,
+		hyperlegible: FONT_STACK.hyperlegible
+	};
+
+	const THEME_PREFS = THEME_OPTIONS.map((o) => o.v);
+	const themeKeys = radioKeys(THEME_PREFS, () => theme.preference, (v) => theme.set(v), 'data-theme-option');
+	const paletteKeys = radioKeys(PALETTES, () => palette.current, (v) => palette.set(v), 'data-palette-option');
+	const fontKeys = radioKeys(SITE_FONTS, () => siteFont.current, (v) => siteFont.set(v), 'data-font-option');
 </script>
-
-<!-- The four brightness icons. System is a disc half lit, sepia a page with a
-     turned corner; sun and moon come from the shared set. -->
-{#snippet themeIcon(v: ThemePref)}
-	{#if v === 'light'}
-		<Icon name="sun" size={17} />
-	{:else if v === 'dark'}
-		<Icon name="moon" size={17} />
-	{:else if v === 'system'}
-		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-			<circle cx="12" cy="12" r="8.5" />
-			<path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none" />
-		</svg>
-	{:else}
-		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-			<path d="M6 3h9l4 4v14H6z" />
-			<path d="M15 3v4h4" />
-			<path d="M9 12h7M9 16h5" />
-		</svg>
-	{/if}
-{/snippet}
 
 <div class="prefs" use:dismissable={{ open, onDismiss: () => (open = false) }}>
 	<!-- aria-controls only while the panel exists: it is rendered by {#if open},
@@ -103,13 +67,13 @@
 		     here to choose. Hidden on the house palette, where it would say
 		     nothing. -->
 		{#if palette.current !== 'parchment'}
-			<span class="prefs-badge" style:background={PALETTE_COLORS[palette.current].swatch[mode][1]} aria-hidden="true"></span>
+			<span class="prefs-badge" aria-hidden="true"></span>
 		{/if}
 	</button>
 	{#if open}
 		<!-- A labelled GROUP of controls, not a menu. role="menu" promises
 		     menuitem children and arrow-key navigation between them; this popover
-		     holds a theme toggle (and, off the reading surfaces, a width stepper)
+		     holds radio groups (and, off the reading surfaces, a width stepper)
 		     with their labels, and under that role a screen reader hides the
 		     labels as foreign content and announces a menu whose items don't
 		     respond to the keys it just promised. It borrows the account menu's
@@ -117,30 +81,20 @@
 		<div id="quick-settings" class="account-menu prefs-menu" role="group" aria-label={t('settings.title')}>
 			<div class="prefs-row">
 				<span class="prefs-label" id="qs-theme">{t('nav.theme')}</span>
-				<div
-					class="prefs-seg"
-					role="radiogroup"
-					aria-labelledby="qs-theme"
-					tabindex="-1"
-					onkeydown={radioKeys(
-						THEME_OPTIONS.map((o) => o.v),
-						theme.preference,
-						(v) => theme.set(v),
-						'data-theme-option'
-					)}
-				>
+				<div class="seg prefs-seg" role="radiogroup" aria-labelledby="qs-theme" tabindex="-1" onkeydown={themeKeys}>
 					{#each THEME_OPTIONS as o (o.v)}
 						<button
 							type="button"
 							role="radio"
 							aria-checked={theme.preference === o.v}
+							class:active={theme.preference === o.v}
 							tabindex={theme.preference === o.v ? 0 : -1}
 							data-theme-option={o.v}
 							aria-label={t(o.k)}
 							title={t(o.k)}
 							onclick={() => theme.set(o.v)}
 						>
-							{@render themeIcon(o.v)}
+							<Icon name={o.icon} size={17} />
 						</button>
 					{/each}
 				</div>
@@ -152,7 +106,7 @@
 					role="radiogroup"
 					aria-labelledby="qs-palette"
 					tabindex="-1"
-					onkeydown={radioKeys(PALETTES, palette.current, (v) => palette.set(v), 'data-palette-option')}
+					onkeydown={paletteKeys}
 				>
 					{#each PALETTES as p (p)}
 						{@const [ground, accent, second] = PALETTE_COLORS[p].swatch[mode]}
@@ -162,8 +116,8 @@
 							aria-checked={palette.current === p}
 							tabindex={palette.current === p ? 0 : -1}
 							data-palette-option={p}
-							aria-label={PALETTE_NAME[p]}
-							title={PALETTE_NAME[p]}
+							aria-label={t(`palette.${p}`)}
+							title={t(`palette.${p}`)}
 							class="prefs-swatch"
 							style:--sw-ground={ground}
 							style:--sw-accent={accent}
@@ -175,23 +129,19 @@
 			</div>
 			<div class="prefs-row prefs-row--stack">
 				<span class="prefs-label" id="qs-font">{t('settings.siteFont')}</span>
-				<div
-					class="prefs-seg prefs-seg--fonts"
-					role="radiogroup"
-					aria-labelledby="qs-font"
-					tabindex="-1"
-					onkeydown={radioKeys(SITE_FONTS, siteFont.current, (v) => siteFont.set(v), 'data-font-option')}
-				>
+				<div class="seg prefs-seg" role="radiogroup" aria-labelledby="qs-font" tabindex="-1" onkeydown={fontKeys}>
 					{#each SITE_FONTS as f (f)}
 						<button
 							type="button"
 							role="radio"
 							aria-checked={siteFont.current === f}
+							class:active={siteFont.current === f}
 							tabindex={siteFont.current === f ? 0 : -1}
 							data-font-option={f}
-							aria-label={FONT_NAME[f]}
-							title={FONT_NAME[f]}
-							class="prefs-font prefs-font--{f}"
+							aria-label={t(SITE_FONT_LABEL_KEY[f])}
+							title={t(SITE_FONT_LABEL_KEY[f])}
+							class="prefs-font"
+							style:font-family={FACE[f]}
 							onclick={() => siteFont.set(f)}
 						>
 							<span aria-hidden="true">Aa</span>

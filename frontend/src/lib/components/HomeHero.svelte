@@ -86,20 +86,22 @@
 	<!-- The painting twice: blurred and scaled as the band's colour (a 600px
 	     ground stretched to the page width only reads as a smear), and whole,
 	     sharp and framed beside the greeting, where it is seen at its own size. -->
-	<img
-		src={art}
-		alt=""
-		class="home-hero-wash"
-		use:hydrateSrc={{ src: art }}
-		onerror={fallBack}
-	/>
+	<div class="home-hero-drift">
+		<img
+			src={art}
+			alt=""
+			class="home-hero-wash"
+			use:hydrateSrc={{ src: art }}
+			onerror={fallBack}
+		/>
+	</div>
 	<div class="home-hero-scrim"></div>
 	<div class="home-hero-grain"></div>
 	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-16 sm:pb-12 sm:pt-20">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
 				{today}<span class="home-hero-season"
-					><span class="home-hero-season-dot season-{SEASON_COLOUR[season]}" aria-hidden="true"></span>{seasonName}</span
+					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"></span>{seasonName}</span
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
@@ -123,17 +125,22 @@
 		overflow: hidden;
 		background: var(--hero-ground);
 	}
-	.home-hero-wash {
+	/* The drift moves this wrapper, not the blurred image inside it: the blur
+	   is then drawn once into the wrapper's layer and the compositor only
+	   slides the bitmap, rather than re-running the filter every frame. */
+	.home-hero-drift {
 		position: absolute;
 		inset: 0;
+		animation: home-hero-drift 60s ease-in-out infinite alternate;
+		will-change: transform;
+	}
+	.home-hero-wash {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		/* Blurred enough to lose the 640px source's pixels at page width, not so
 		   much that the painting's shapes go: its light still reads through. */
 		filter: blur(18px) saturate(1.3);
-		transform: scale(1.18);
-		animation: home-hero-drift 60s ease-in-out infinite alternate;
 	}
 	/* A slow drift across the painting — a minute each way, too slow to watch,
 	   enough that the band is never quite still. */
@@ -146,8 +153,9 @@
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
-		.home-hero-wash {
+		.home-hero-drift {
 			animation: none;
+			transform: scale(1.18);
 		}
 	}
 	.home-hero-scrim,
@@ -214,17 +222,5 @@
 		height: 0.55em;
 		border-radius: 50%;
 		box-shadow: 0 0 0 2px color-mix(in srgb, var(--hero-ink) 18%, transparent);
-	}
-	.season-violet {
-		background: var(--season-violet);
-	}
-	.season-white {
-		background: var(--season-white);
-	}
-	.season-red {
-		background: var(--season-red);
-	}
-	.season-green {
-		background: var(--season-green);
 	}
 </style>

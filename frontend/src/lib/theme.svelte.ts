@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { normalizePalette, PALETTE_COLORS } from './palettes';
+import type { IconName } from './components/Icon.svelte';
 
 /**
  * Theme preference and the concrete theme it resolves to.
@@ -20,14 +21,14 @@ export type ThemeApplied = 'light' | 'dark' | 'sepia';
 
 const PREFS: readonly ThemePref[] = ['system', 'light', 'dark', 'sepia'];
 
-/** Every theme choice with its label key, in display order (lightest to
- *  darkest after System) — Settings, the header's quick settings, the More
- *  sheet and the reader's Aa panel all list from this. */
-export const THEME_OPTIONS: readonly { v: ThemePref; k: string }[] = [
-	{ v: 'system', k: 'settings.themeSystem' },
-	{ v: 'light', k: 'settings.themeLight' },
-	{ v: 'sepia', k: 'settings.themeSepia' },
-	{ v: 'dark', k: 'settings.themeDark' }
+/** Every theme choice with its label key and icon, in display order
+ *  (lightest to darkest after System) — Settings, the header's quick
+ *  settings, the More sheet and the reader's Aa panel all list from this. */
+export const THEME_OPTIONS: readonly { v: ThemePref; k: string; icon: IconName }[] = [
+	{ v: 'system', k: 'settings.themeSystem', icon: 'contrast' },
+	{ v: 'light', k: 'settings.themeLight', icon: 'sun' },
+	{ v: 'sepia', k: 'settings.themeSepia', icon: 'page' },
+	{ v: 'dark', k: 'settings.themeDark', icon: 'moon' }
 ];
 
 // Browser-UI colour (address bar / status bar) per applied theme; must match

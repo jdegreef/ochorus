@@ -7,6 +7,8 @@
  * Pure date arithmetic on the reader's local calendar day; no data, no clock
  * beyond the Date passed in, so the boundaries are tested rather than trusted.
  */
+import { localDayNumber } from './dailyArticles';
+
 export type Season = 'advent' | 'christmas' | 'epiphany' | 'lent' | 'holyWeek' | 'easter' | 'pentecost' | 'ordinary';
 
 /** The liturgical colour each season is vested in — the hero's dot wears it. */
@@ -56,7 +58,7 @@ export function adventStart(year: number): number {
 
 export function liturgicalSeason(date: Date): Season {
 	const y = date.getFullYear();
-	const today = dayNumber(y, date.getMonth(), date.getDate());
+	const today = localDayNumber(date);
 	const easter = easterDay(y);
 
 	if (today >= adventStart(y) && today <= dayNumber(y, 11, 24)) return 'advent';

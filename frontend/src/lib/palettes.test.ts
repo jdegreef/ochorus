@@ -86,6 +86,24 @@ describe('library palettes', () => {
 		});
 	}
 
+	// The home hero's scrim is the palette's --hero-tint, not black. The date
+	// line sits where the scrim is 75% tint over a painting that may be white,
+	// so every tint is composited at 75% over white and must still carry the
+	// hero's ink at 4.5:1.
+	const heroRoot = (() => {
+		const start = CSS.search(/:root \{\s*--hero-ink:/);
+		const body = CSS.slice(start, CSS.indexOf('}', start));
+		return Object.fromEntries([...body.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
+	})();
+	for (const p of PALETTES) {
+		it(`${p}: the home hero's date line clears 4.5:1 over a white painting`, () => {
+			const tint = p === 'parchment' ? heroRoot['--hero-tint'] : block(`:root[data-palette='${p}']`)['--hero-tint'];
+			expect(tint, `${p} has no --hero-tint`).toMatch(/^#[0-9a-f]{6}$/i);
+			const ground = rgb(tint).map((c) => c * 0.75 + 255 * 0.25);
+			expect(contrastRatio(rgb(heroRoot['--hero-ink']), ground)).toBeGreaterThanOrEqual(4.5);
+		});
+	}
+
 	it("the house palette's chrome colours are the themes' own", () => {
 		expect(PALETTE_COLORS.parchment.light).toBe(theme('light')['--bg']);
 		expect(PALETTE_COLORS.parchment.dark).toBe(lamplight['--bg']);

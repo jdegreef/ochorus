@@ -15,6 +15,8 @@
 		| 'gear'
 		| 'sun'
 		| 'moon'
+		| 'contrast'
+		| 'page'
 		| 'tag'
 		| 'list'
 		| 'bookmark'
@@ -119,6 +121,13 @@
 		<path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
 	{:else if name === 'moon'}
 		<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
+	{:else if name === 'contrast'}
+		<circle cx="12" cy="12" r="8.5" />
+		<path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor" stroke="none" />
+	{:else if name === 'page'}
+		<path d="M6 3h9l4 4v14H6z" />
+		<path d="M15 3v4h4" />
+		<path d="M9 12h7M9 16h5" />
 	{:else if name === 'tag'}
 		<path d="M4 4h7l9 9-7 7-9-9V4z" />
 		<circle cx="8" cy="8" r="1.4" />

@@ -1960,6 +1960,7 @@ nav.appnav .navsearch:hover {
 	width: 0.5rem;
 	height: 0.5rem;
 	border-radius: 50%;
+	background: var(--accent);
 	box-shadow: 0 0 0 2px var(--bg);
 }
 /* A row whose control needs the full width (the swatches, the faces) puts its
@@ -1970,67 +1971,18 @@ nav.appnav .navsearch:hover {
 	align-items: stretch;
 	gap: 0.5rem;
 }
-/* Segmented radio groups — the width stepper's chrome, one control wide per
-   choice; the chosen one wears the accent like every selected control
-   (--selected-edge: never the soft fill alone). */
-.prefs-seg {
-	display: flex;
-	align-items: stretch;
-}
+/* The theme and site-style groups are the shared .seg control; in the menu
+   each option takes an equal share of the row and centres its icon or "Aa". */
 .prefs-seg button {
 	display: inline-flex;
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-	padding: 0.35rem 0.6rem;
-	background: transparent;
-	border: 1px solid var(--border-strong);
-	color: var(--muted);
-	cursor: pointer;
-	transition:
-		background-color var(--duration-fast),
-		color var(--duration-fast);
 }
-.prefs-seg button + button {
-	margin-inline-start: -1px;
-}
-.prefs-seg button:first-child {
-	border-start-start-radius: var(--radius-sm);
-	border-end-start-radius: var(--radius-sm);
-}
-.prefs-seg button:last-child {
-	border-start-end-radius: var(--radius-sm);
-	border-end-end-radius: var(--radius-sm);
-}
-.prefs-seg button:hover {
-	background: var(--surface-2);
-	color: var(--text);
-}
-.prefs-seg button[aria-checked='true'] {
-	position: relative;
-	background: var(--accent-soft);
-	border-color: var(--accent);
-	color: var(--accent);
-	box-shadow: inset 0 0 0 calc(var(--selected-edge) - 1px) var(--accent);
-}
-/* Each site style says "Aa" in its own face — the choice previews itself. The
-   faces are the ones site-fonts.css applies; a declared-but-unused face costs
-   nothing until this menu opens. */
 .prefs-font {
 	font-size: var(--fs-body);
+	font-weight: 600;
 	line-height: 1.2;
-}
-.prefs-font--house {
-	font-family: var(--house-display);
-	font-weight: 600;
-}
-.prefs-font--classic {
-	font-family: 'EB Garamond Variable', var(--house-display);
-	font-weight: 600;
-}
-.prefs-font--hyperlegible {
-	font-family: 'Atkinson Hyperlegible Next Variable', var(--house-sans);
-	font-weight: 700;
 }
 /* Palette swatches: a disc split between the palette's ground and accent,
    with its second colour as a bead at the centre — the same three colours
@@ -2062,8 +2014,7 @@ nav.appnav .navsearch:hover {
 		0 0 0 calc(2px + var(--selected-edge)) var(--accent);
 }
 @media (prefers-reduced-motion: reduce) {
-	.prefs-swatch,
-	.prefs-seg button {
+	.prefs-swatch {
 		transition: none;
 	}
 	.prefs-swatch:hover {
