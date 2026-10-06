@@ -27,6 +27,7 @@
 export const PORTRAIT_POSITION: Record<string, string> = {
 	'a-b-simpson': '50% 50%', // square source — the crop takes the whole plate
 	'a-w-tozer': '50% 65%', // 1950s bust; face centred at ~55% of a 0.75 plate — 2% left the eyes below centre and cut the chin
+	'absalom-jones': '50% 29%', // Raphaelle Peale 1810 oil, cropped to a bust; face at ~41% of a 0.75 plate
 	'alexander-maclaren': '50% 0%', // 1889 bust photo; face high at ~22% of a 0.75 plate
 	'amanda-berry-smith': '50% 0%',
 	'amy-carmichael': '50% 0%',
@@ -59,6 +60,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'erica-sabiti': '50% 20%', // bust in clerical cap; near-square
 	'evelyn-christenson': '50% 50%', // square source — the crop takes the whole photo
 	'f-f-bosworth': '50% 0%', // small studio bust; face at ~30% of a 0.85 plate
+	'fanny-jackson-coppin': '50% 9%', // 1913 frontispiece (Reminiscences); face at ~36% of a 0.75 plate
 	'festo-kivengere': '50% 10%', // bishop photo; face at ~37% of a 0.70 plate
 	'frederick-brotherton-meyer': '50% 0%',
 	'g-k-chesterton': '50% 10%', // E. H. Mills photo; face at ~28% of a 0.78 plate
@@ -94,7 +96,10 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'john-stott': '50% 0%', // photograph, bust; face at ~25% of a 0.73 plate
 	'john-wesley': '50% 0%',
 	'jonathan-edwards': '50% 0%',
+	'josephine-bakhita': '50% 21%', // studio photo cropped to a bust; face at ~39% of a 0.75 plate
 	'julia-foote': '50% 0%', // studio photo: standing figure, face at ~22% of a 0.62 plate
+	'kanzo-uchimura': '50% 15%', // c.1912 photo; face at ~37% of a 0.75 plate
+	'kateri-tekakwitha': '50% 0%', // Chauchetière's c.1690s painting cropped to the upper figure; face high at ~28%
 	'lawrence-barham': '50% 0%', // cropped from a photo with his wife Julia; head at the top edge
 	'lemuel-haynes': '50% 0%',
 	'loren-cunningham': '50% 0%', // cropped from a group photo; face at ~22% of a 0.61 plate
@@ -110,9 +115,12 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'richard-baxter': '50% 18%',
 	'richard-sibbes': '50% 0%', // labelled portrait; face at ~28% of a 0.72 plate
 	'robert-murray-mcheyne': '50% 2%', // engraving; side profile, head high at ~32% of a 0.78 plate
+	'sadhu-sundar-singh': '50% 2%', // 1922 Uppsala photo cropped to a bust; face at ~34% of a 0.75 plate
+	'samson-occom': '50% 0%', // 18th-c. portrait engraving (repr. 1899); face at ~34% of a 0.75 plate
 	'samuel-ajayi-crowther': '50% 45%',
 	'simeon-nsibambi': '50% 30%', // cropped from a photo with his wife Eva; near-square
 	'smith-wigglesworth': '50% 0%', // 1920 preaching photo cropped to a bust; face at ~25% of a 0.77 plate
+	'soonderbai-powar': '50% 0%', // 1900 plate (Dyer, Pandita Ramabai); oval vignette, face at ~33% of a 0.76 plate
 	'susanna-wesley': '50% 21%',
 	'teresa-of-avila': '50% 0%', // cropped to the bust; face at ~25% of a 0.58 plate
 	'thomas-a-kempis': '50% 0%',
@@ -121,6 +129,7 @@ export const PORTRAIT_POSITION: Record<string, string> = {
 	'watchman-nee': '50% 32%',
 	'william-booth': '50% 25%',
 	'william-carey': '50% 18%', // engraved bust; face at ~30% of a 0.67 plate
+	'william-j-seymour': '50% 0%', // 1910s photo cropped to a bust; face high at ~25% of a 0.75 plate
 	'william-law': '50% 16%', // cropped oval engraving; face at ~33% of a 0.58 plate
 	'william-nagenda': '50% 20%', // cropped from a photo with his wife Sala; near-square
 	'yosiya-kinuka': '50% 30%', // cropped from a photo of him riding a motorcycle; near-square
