@@ -3773,6 +3773,16 @@
 				515
 			]
 		},
+		"es/days-of-heaven-upon-earth": {
+			"ground": "b7761b5167880578c3cc63cbbaaa3661996fdf8336c45b3ddbd5213dc0de7864",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "box/teal",
+			"bar": 0
+		},
 		"es/divine-healing": {
 			"ground": "37de9f451b8fd717a6469972bdd412bc2cde4e42e526a156cea45195eaa10da5",
 			"style": "devotional",
