@@ -177,6 +177,7 @@ ENGLISH_CLASSICS = frozenset({
     "the-masters-indwelling",
     "the-practice-of-the-presence-of-god",
     "the-princess-and-the-goblin",
+    "the-pursuit-of-god",
     "the-reformed-pastor",
     "the-unselfishness-of-god",
     "the-way-to-god",
