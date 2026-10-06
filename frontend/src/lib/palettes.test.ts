@@ -72,6 +72,17 @@ describe('library palettes', () => {
 						const r = ratio(vars[ink], vars[ground]);
 						if (r < 4.5) failures.push(`${ink} on ${ground}: ${r.toFixed(2)}`);
 					}
+				// A section hue is also text on its own soft tint (a chip, a tile).
+				for (const h of HUES) {
+					const r = ratio(vars[`--hue-${h}`], vars[`--hue-${h}-soft`]);
+					if (r < 4.5) failures.push(`--hue-${h} on its soft: ${r.toFixed(2)}`);
+				}
+				// The ornament metal paints the settings gear: a control, so 3:1.
+				const metal = vars['--ornament'] === 'var(--gold)' ? vars['--gold'] : vars['--ornament'];
+				for (const ground of ['--bg', '--surface']) {
+					const r = ratio(metal, vars[ground]);
+					if (r < 3) failures.push(`--ornament on ${ground}: ${r.toFixed(2)}`);
+				}
 				for (const [ink, ground] of [
 					['--accent', '--accent-soft'],
 					['--accent-contrast', '--accent']
