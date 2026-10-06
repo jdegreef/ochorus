@@ -1,5 +1,6 @@
 import { browser } from '$app/environment';
 import { storageHealth } from './storageHealth.svelte';
+import { crossfade } from './crossfade';
 import {
 	APPLIED_PALETTE_KEY,
 	appliedPalette,
@@ -56,6 +57,10 @@ class PalettePref {
 				else localStorage.setItem(PALETTE_KEY, v);
 			} catch {
 				storageHealth.fail();
+			}
+			if (this.applied !== normalizeApplied(document.documentElement.dataset.palette)) {
+				crossfade(() => this.#apply());
+				return;
 			}
 		}
 		this.#apply();

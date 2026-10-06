@@ -1,6 +1,7 @@
 import { browser } from '$app/environment';
 import { normalizeApplied, PALETTE_COLORS } from './palettes';
 import type { IconName } from './components/Icon.svelte';
+import { crossfade } from './crossfade';
 
 /**
  * Theme preference and the concrete theme it resolves to.
@@ -67,16 +68,20 @@ class Theme {
 	set(pref: ThemePref) {
 		this.preference = pref;
 		if (browser) localStorage.setItem('theme', pref);
-		this.#resolveAndApply();
+		// A choice that changes what is painted crossfades; one that doesn't
+		// (System while the OS is already light, a profile sync of the same
+		// value) has nothing to fade.
+		const before = this.current;
+		if (browser && this.#resolve() !== before) crossfade(() => this.#resolveAndApply());
+		else this.#resolveAndApply();
+	}
+
+	#resolve(): ThemeApplied {
+		return this.preference === 'system' ? (this.#systemDark() ? 'dark' : 'light') : this.preference;
 	}
 
 	#resolveAndApply() {
-		this.current =
-			this.preference === 'system'
-				? this.#systemDark()
-					? 'dark'
-					: 'light'
-				: this.preference;
+		this.current = this.#resolve();
 		this.#apply();
 	}
 
