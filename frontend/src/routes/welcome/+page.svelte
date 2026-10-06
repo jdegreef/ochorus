@@ -329,7 +329,6 @@
 	.start-cover.skeleton {
 		aspect-ratio: 2 / 3;
 		border-radius: var(--radius-card);
-		background: var(--surface-2);
 	}
 	.quote {
 		margin: 1rem 0 0;

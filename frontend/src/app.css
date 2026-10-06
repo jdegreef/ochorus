@@ -1733,6 +1733,33 @@
 	}
 }
 
+/* A loading placeholder: a block of parchment (the band's ground, warmed
+   with a breath of gold) that a slow band of light crosses, like a page
+   turning under a lamp — not the grey pulse of a generic skeleton. Wear it on
+   any shape that stands in for content still coming. The global
+   reduced-motion rule stops the shimmer after one frame, leaving the plain
+   parchment. Decorative: the region it sits in carries aria-busy. */
+.skeleton {
+	background-color: color-mix(in srgb, var(--gold) 7%, var(--band));
+	background-image: linear-gradient(
+		100deg,
+		transparent 30%,
+		color-mix(in srgb, var(--gold) 12%, var(--surface)) 50%,
+		transparent 70%
+	);
+	background-size: 250% 100%;
+	background-repeat: no-repeat;
+	animation: skeleton-shimmer 1.8s ease-in-out infinite;
+}
+@keyframes skeleton-shimmer {
+	from {
+		background-position: 150% 0;
+	}
+	to {
+		background-position: -50% 0;
+	}
+}
+
 /* ── Reading view ───────────────────────────────────────────────────────────
    Long-form prose set like a printed devotional page. Typeface, size, leading
    and measure are all driven by reader controls (see readerPrefs) via custom

@@ -198,7 +198,7 @@ describe('BookCover falls back to a plate', () => {
 		const img = el.querySelector('img')!;
 		expect(img.className).not.toMatch(/\bopacity-0\b/);
 		// The placeholder is behind it, not instead of it.
-		expect(el.querySelector('.animate-pulse')).not.toBeNull();
+		expect(el.querySelector('.skeleton')).not.toBeNull();
 	});
 
 	it('recognises a cover that finished loading before it hydrated', () => {
@@ -213,7 +213,7 @@ describe('BookCover falls back to a plate', () => {
 		try {
 			const el = render({ book: book({ cover_url: '/covers/lord-teach-us-to-pray-2.jpg' }) });
 			flushSync();
-			expect(el.querySelector('.animate-pulse')).toBeNull();
+			expect(el.querySelector('.skeleton')).toBeNull();
 			const imgs = el.querySelectorAll('img');
 			expect(imgs).toHaveLength(2);
 			expect(imgs[0].className).toContain('object-contain');

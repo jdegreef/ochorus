@@ -946,10 +946,10 @@
 		{#if loading}
 			<div class="space-y-6" aria-hidden="true">
 				{#each Array(4) as _, i (i)}
-					<div class="animate-pulse space-y-2">
-						<div class="h-3 w-1/4 rounded-sm bg-surface-2"></div>
-						<div class="h-4 w-2/3 rounded-sm bg-surface-2"></div>
-						<div class="h-3 w-full rounded-sm bg-surface-2"></div>
+					<div class="space-y-2">
+						<div class="skeleton h-3 w-1/4 rounded-sm"></div>
+						<div class="skeleton h-4 w-2/3 rounded-sm"></div>
+						<div class="skeleton h-3 w-full rounded-sm"></div>
 					</div>
 				{/each}
 			</div>
