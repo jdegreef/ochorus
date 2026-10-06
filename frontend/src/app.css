@@ -1325,6 +1325,21 @@
 		outline: 2px solid var(--accent);
 		outline-offset: 2px;
 	}
+	/* The small native details wear the palette too, so a chosen palette
+	   reaches the corners the browser paints: checkboxes, radios and
+	   ranges (accent-color inherits, so one declaration covers every
+	   control — the scoped ones in components only restate it), the text a
+	   reader selects (an accent wash, not gold: gold is a highlight the reader
+	   has SAVED, and a selection should not look like one), and the
+	   scrollbars, whose thumb takes a little of the accent. Overlay scrollbars
+	   on phones ignore scrollbar-color and stay the platform's. */
+	:root {
+		accent-color: var(--accent);
+		scrollbar-color: color-mix(in srgb, var(--accent) 45%, var(--border)) transparent;
+	}
+	::selection {
+		background: color-mix(in srgb, var(--accent) 24%, transparent);
+	}
 }
 
 /* Skip-to-content link: off-screen until it receives keyboard focus, then it
