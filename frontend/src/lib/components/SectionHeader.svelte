@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import type { NavSection } from '$lib/contentNav';
-	import { SECTION_MARKS } from '$lib/sections';
+	import { sectionDest, type NavSection } from '$lib/contentNav';
 	/**
 	 * A section title with an optional "see all" link beside it.
 	 *
@@ -43,13 +42,9 @@
 </script>
 
 {#snippet heading()}
-	{#if section}
-		<h2 class="text-h2 section-header-title flex items-start gap-3" data-section={section}>
-			<Icon name={SECTION_MARKS[section].icon} size={22} />{title}
-		</h2>
-	{:else}
-		<h2 class="text-h2">{title}</h2>
-	{/if}
+	<h2 class={section ? 'text-h2 section-header-title flex items-start gap-3' : 'text-h2'} data-section={section}>
+		{#if section}<Icon name={sectionDest(section).icon} size={22} />{/if}{title}
+	</h2>
 {/snippet}
 
 <div class="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1">

@@ -2466,6 +2466,10 @@ nav.appnav .navsearch:hover {
 	--chip-size: 2.75rem;
 	--chip-hue: var(--section-hue);
 }
+.page-header-emblem img {
+	width: 66%;
+	height: 66%;
+}
 /* The shelf card's badge: an emblem chip in the card's hue. */
 .shelf-card-badge {
 	--chip-size: 3.5rem;

@@ -29,9 +29,20 @@ export interface NavDest {
 	/** Its library-palette role: the nav wears `--section-<section>` on the
 	 *  icon and the active pill (app.css, "THE LIBRARY PALETTE"). */
 	section: NavSection;
+	/** The printer's ornament under its page title (`<Fleuron>`), drawn from
+	 *  `/marks/ornament-<name>.svg`; its emblem beside that title is
+	 *  `/marks/emblem-<section>.svg` (marks.test.ts checks both exist). */
+	ornament: Ornament;
 }
 
 export type NavSection = 'books' | 'topics' | 'plans' | 'sermons' | 'biographies';
+
+/** A section's ornament, in gold like every ornament (STYLE_GUIDE §1): a lamp
+ *  for Books ("Thy word is a lamp", Ps 119:105), an anchor for Topics (hope,
+ *  Heb 6:19), a vine for Plans (abiding, day by day, John 15), a descending
+ *  dove for Sermons, a laurel for Biographies. 'leaf' is the house ornament,
+ *  for every page that is not a section's. */
+export type Ornament = 'leaf' | 'lamp' | 'anchor' | 'vine' | 'dove' | 'laurel';
 
 /** An English-only hub: the footer Explore group and the palette, gated to
  *  English, and never the top nav (an entry point for search, not a primary
@@ -44,12 +55,15 @@ export interface HubDest {
 
 /** Books · Topics · Plans · Sermons · Biographies — the primary journeys. */
 export const PRIMARY_NAV: NavDest[] = [
-	{ href: '/books', labelKey: 'nav.books', icon: 'book', section: 'books' },
-	{ href: '/topics', labelKey: 'nav.topics', icon: 'tag', section: 'topics' },
-	{ href: '/plans', labelKey: 'nav.plans', icon: 'calendar', section: 'plans' },
-	{ href: '/sermons', labelKey: 'nav.sermons', icon: 'mic', section: 'sermons' },
-	{ href: '/biographies', labelKey: 'nav.biographies', icon: 'users', section: 'biographies' }
+	{ href: '/books', labelKey: 'nav.books', icon: 'book', section: 'books', ornament: 'lamp' },
+	{ href: '/topics', labelKey: 'nav.topics', icon: 'tag', section: 'topics', ornament: 'anchor' },
+	{ href: '/plans', labelKey: 'nav.plans', icon: 'calendar', section: 'plans', ornament: 'vine' },
+	{ href: '/sermons', labelKey: 'nav.sermons', icon: 'mic', section: 'sermons', ornament: 'dove' },
+	{ href: '/biographies', labelKey: 'nav.biographies', icon: 'users', section: 'biographies', ornament: 'laurel' }
 ];
+
+/** A section's entry in PRIMARY_NAV — its icon, ornament and the rest. */
+export const sectionDest = (section: NavSection): NavDest => PRIMARY_NAV.find((d) => d.section === section)!;
 
 /** Articles · Scripture · Quotes — English-only hubs (footer + palette). */
 export const ENGLISH_HUBS: HubDest[] = [
