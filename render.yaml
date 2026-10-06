@@ -24,7 +24,13 @@ services:
     dockerfilePath: ./Dockerfile
     plan: starter # always-on; avoids cold-start spin-down
     healthCheckPath: /api/health/
-    autoDeploy: true
+    # Deploy a commit only once its GitHub checks pass (CI's push run on main,
+    # plus Book PDFs when it runs). With `commit`, a red merge built and went
+    # live, and then its fix built again: two builds, and a bug in production
+    # while CI was still running. A failed or cancelled check means no deploy;
+    # the next green commit carries the change. Replaces the deprecated
+    # `autoDeploy: true`.
+    autoDeployTrigger: checksPass
     # Per deploy, before the new version goes live: apply migrations, then seed
     # the library from the committed fixture if (and only if) the DB is empty.
     # If this fails, Render keeps the current version up.
@@ -110,6 +116,8 @@ services:
     rootDir: backend
     dockerfilePath: ./Dockerfile
     schedule: "*/15 * * * *"
+    # Same trigger as ochorus-api, whose image this rebuilds.
+    autoDeployTrigger: checksPass
     # A SINGLE management command that runs both steps in-process. Render runs a
     # cron dockerCommand argv-style (no shell) AND keeps literal quotes, so both a
     # bare `&&` ("unrecognized arguments: &&") and an `sh -c '…'` wrapper (status
@@ -188,7 +196,9 @@ services:
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: ./build
-    autoDeploy: true
+    # Same as ochorus-api, so both services skip the same red commits and the
+    # prebuild gate finds the API serving the content this build checks out.
+    autoDeployTrigger: checksPass
     # By default Render rebuilds this static service only when files under its
     # rootDir (frontend/) change — so a backend-only content commit (new authors,
     # book/title edits) would leave the prerendered /books|authors|sermons pages
