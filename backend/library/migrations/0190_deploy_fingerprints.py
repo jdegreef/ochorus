@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('library', '0188_bonhoeffer_bio_standalone_translations'),
+        ('library', '0189_anthology_framing_bios_standalone'),
     ]
 
     operations = [
