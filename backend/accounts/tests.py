@@ -48,6 +48,14 @@ class MeViewTests(TestCase):
         self.client.patch("/api/auth/me/", {"palette": "neon"}, format="json")
         self.profile.refresh_from_db()
         self.assertEqual(self.profile.palette, "hearth")
+        # The Church year is stored as the choice, never as the season it
+        # resolved to on the day it was saved.
+        res = self.client.patch("/api/auth/me/", {"palette": "liturgical"}, format="json")
+        self.assertEqual(res.data["palette"], "liturgical")
+        # A seasonal palette is something the app applies, not a choice.
+        self.client.patch("/api/auth/me/", {"palette": "violet"}, format="json")
+        self.profile.refresh_from_db()
+        self.assertEqual(self.profile.palette, "liturgical")
 
     def test_patch_stores_and_returns_timezone(self):
         res = self.client.patch(

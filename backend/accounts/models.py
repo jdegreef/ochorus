@@ -43,7 +43,9 @@ SIGNUP_VARIANTS = (
 
 # The library palettes the web app offers (frontend/src/lib/palettes.ts — a
 # frontend test holds the two lists together). Anything else is ignored.
-PALETTES = ("parchment", "cathedral", "olive", "hearth", "dawn", "monastery")
+# "liturgical" (the Church year) is a choice, not a colour: the web app
+# resolves it to the season's palette on the reader's own calendar.
+PALETTES = ("parchment", "cathedral", "olive", "hearth", "dawn", "monastery", "liturgical")
 
 
 class UserProfile(models.Model):
