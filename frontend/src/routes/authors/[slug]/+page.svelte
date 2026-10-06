@@ -1027,35 +1027,9 @@
 	:global(.bio p) {
 		margin: 0 0 1.15em;
 	}
-	/* An illuminated drop cap opens the life — the same initial as a chapter's
-	   (app.css, --initial-ink / --initial-gilt) — on the first letter of the
-	   FIRST paragraph only, so pull-quotes and prayer callouts keep their own
-	   opening. Sized in `em` so it tracks the reader's text-size control, and
-	   floated inline-start so it sits correctly under a routed RTL bio too. */
-	:global(.bio > p:first-of-type)::first-letter {
-		float: inline-start;
-		font-family: var(--font-display);
-		font-weight: 600;
-		font-size: 3.4em;
-		line-height: 0.82;
-		padding-inline-end: 0.09em;
-		padding-block-start: 0.02em;
-		color: var(--initial-ink);
-		text-shadow: var(--initial-gilt);
-	}
-	/* …but NOT under RTL: a drop cap is a Latin/LTR flourish, and an enlarged,
-	   detached initial reads as broken in Arabic's cursive script. Revert it to
-	   normal prose there (higher specificity than the rule above wins). */
-	:global([dir='rtl'] .bio > p:first-of-type)::first-letter {
-		float: none;
-		font-family: inherit;
-		font-weight: inherit;
-		font-size: inherit;
-		line-height: inherit;
-		padding: 0;
-		color: inherit;
-		text-shadow: none;
-	}
+	/* The life opens with the site's one initial — app.css's drop-cap rule
+	   includes `.reading.bio` — so its face, colour, gilt and script gate
+	   (none for Arabic or Hindi) are a chapter's. */
 	:global(.bio h2) {
 		font-family: var(--font-display);
 		font-size: var(--fs-h2);
