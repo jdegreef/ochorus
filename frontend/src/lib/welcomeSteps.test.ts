@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { welcomeSteps } from './welcomeSteps';
+import { welcomeEventProps, welcomeSteps } from './welcomeSteps';
 
 const none = { signedIn: false, read: false, saved: false, marked: false };
 
@@ -18,5 +18,12 @@ describe('welcomeSteps', () => {
 
 	it('is complete once everything has been tried', () => {
 		expect(welcomeSteps({ signedIn: true, read: true, saved: true, marked: true }).done).toBe(4);
+	});
+});
+
+describe('welcomeEventProps', () => {
+	it('carries the action and the language, nothing else', () => {
+		expect(welcomeEventProps('step: read', 'sw')).toEqual({ action: 'step: read', lang: 'sw' });
+		expect(welcomeEventProps('goal: 3', 'en')).toEqual({ action: 'goal: 3', lang: 'en' });
 	});
 });

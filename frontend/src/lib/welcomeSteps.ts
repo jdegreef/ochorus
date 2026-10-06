@@ -26,3 +26,24 @@ export function welcomeSteps(a: WelcomeActivity): { steps: WelcomeStep[]; done: 
 	];
 	return { steps, done: steps.filter((s) => s.done).length };
 }
+
+/**
+ * What the /welcome page reports to analytics: one Plausible event, "Welcome
+ * page", whose `action` says what the new reader did there — so the shape of a
+ * first visit (did they read? start the plan? leave?) can be read off one
+ * breakdown. Short labels only, plus the UI language; never an id or a URL.
+ */
+export type WelcomeAction =
+	| 'viewed'
+	| 'read first chapter'
+	| 'follow plan'
+	| 'browse library'
+	| `step: ${WelcomeStepKey}`
+	| `goal: ${number}`
+	| 'go home';
+
+export const WELCOME_EVENT = 'Welcome page';
+
+export function welcomeEventProps(action: WelcomeAction, lang: string): Record<string, string> {
+	return { action, lang };
+}
