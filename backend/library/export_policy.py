@@ -7,9 +7,9 @@ must rebuild the reader. Keeping the gate tiny keeps the renderers and their
 CSS out of the build filter.
 
 Two lists. ``EXPORT_PILOT`` is the first editions, each with a generated PDF
-beside its EPUB. ``ENGLISH_CLASSICS`` is the English public-domain library,
-EPUB only — a PDF is a snapshot that goes stale on the next text fix, so those
-wait for a pipeline that rebuilds them. Adding an edition needs its language's
+beside its EPUB. ``ENGLISH_CLASSICS`` is the English public-domain library;
+its PDFs, like the pilot's, are rebuilt by ``book-pdfs.yml`` whenever the text
+changes (``STORED_PDF_EDITIONS``), so each needs a fixture ``pdf_url``. Adding an edition needs its language's
 back matter in ``book_export.STRINGS`` (``tests_book_export.PilotTests`` holds
 that) and a bundled cover (``export_book`` writes it; ``CoverTests`` holds it).
 """
@@ -177,7 +177,6 @@ ENGLISH_CLASSICS = frozenset({
     "the-masters-indwelling",
     "the-practice-of-the-presence-of-god",
     "the-princess-and-the-goblin",
-    "the-pursuit-of-god",
     "the-reformed-pastor",
     "the-unselfishness-of-god",
     "the-way-to-god",

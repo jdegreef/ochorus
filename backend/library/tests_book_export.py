@@ -164,7 +164,7 @@ class EpubTests(TestCase):
         author.birth_year, author.death_year = 1343, None
         author.save()
         bio = self._zip(self._get()).read("OEBPS/about-author.xhtml").decode()
-        self.assertNotIn("1343", bio)
+        self.assertNotIn('class="dates"', bio)
         author.birth_year = 1938  # a living author keeps the open range
         author.save()
         bio = self._zip(self._get()).read("OEBPS/about-author.xhtml").decode()
