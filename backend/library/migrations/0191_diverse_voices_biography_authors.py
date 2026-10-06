@@ -73,7 +73,7 @@ def create_authors(apps, schema_editor):
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("library", "0188_bonhoeffer_bio_standalone_translations"),
+        ("library", "0190_deploy_fingerprints"),
     ]
 
     operations = [
