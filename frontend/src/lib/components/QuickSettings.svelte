@@ -27,7 +27,7 @@
 	// stepper still rendered there and still WORKED, in the sense that it stored a
 	// new value and moved nothing: a width control sitting a few pixels from the
 	// width control that does something. Hide the row rather than leave it lying;
-	// the theme toggle below still applies everywhere.
+	// the theme, colour and style groups below still apply everywhere.
 	const inReader = $derived(isReaderRoute($page.route.id));
 
 	onMount(() => pageWidth.init());

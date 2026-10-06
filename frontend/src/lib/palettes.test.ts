@@ -87,7 +87,8 @@ describe('library palettes', () => {
 	}
 
 	// The home hero's scrim is the palette's --hero-tint, not black. The date
-	// line sits where the scrim is 75% tint over a painting that may be white,
+	// line sits where the scrim is at least 75% tint (it holds 75% up to 85% of
+	// the hero's height) over a painting that may be white,
 	// so every tint is composited at 75% over white and must still carry the
 	// hero's ink at 4.5:1.
 	const heroRoot = (() => {
@@ -95,6 +96,11 @@ describe('library palettes', () => {
 		const body = CSS.slice(start, CSS.indexOf('}', start));
 		return Object.fromEntries([...body.matchAll(/(--[\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
 	})();
+	it("the hero scrim holds 75% tint up to 85% of the hero's height", () => {
+		// What the composite below assumes; lower the stop and a wrapped
+		// greeting lifts the date line into a thinner scrim.
+		expect(heroRoot['--hero-scrim']).toMatch(/var\(--hero-tint\) 75%, transparent\) 85%/);
+	});
 	for (const p of PALETTES) {
 		it(`${p}: the home hero's date line clears 4.5:1 over a white painting`, () => {
 			const tint = p === 'parchment' ? heroRoot['--hero-tint'] : block(`:root[data-palette='${p}']`)['--hero-tint'];

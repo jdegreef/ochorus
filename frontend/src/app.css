@@ -740,28 +740,33 @@
 
    The scrim is not black: it is --hero-tint, a deep shade of the reader's
    palette (indigo-umber for the house palette, navy for Cathedral, and so on,
-   set in the PALETTES block below), so the band carries the library's colour
+   set in the PALETTES block above), so the band carries the library's colour
    instead of laying a brown fog over the painting. Every tint is dark enough
-   that --hero-ink still clears 4.5:1 at the date line's 75% even over a WHITE
-   painting — homeHero.test.ts composites it against white and measures. */
+   that --hero-ink still clears 4.5:1 at 75% even over a WHITE painting —
+   palettes.test.ts composites it against white and measures. */
 :root {
 	--hero-ink: #f8f1e4;
 	--hero-ground: #1d2a1f;
 	--hero-tint: #1b1526;
-	/* Dense through the lower two-thirds, where the date and greeting sit: the
-	   wash is a blurred painting of any brightness, and a pale one under a
-	   lighter scrim left the small date line short of 4.5:1. Lighter at the top
-	   than it was (0.3 → 0.2), so the painting's own colour shows above the
-	   words; the vignette darkens the corners back into a frame. */
+	/* At least 75% through the lower 85%, where the date and greeting sit —
+	   on a phone a two- or three-line greeting lifts the date line to ~76% of
+	   the hero's height: the wash is a blurred painting of any brightness, and
+	   a pale one under a lighter scrim left the small date line short of 4.5:1.
+	   Only the top band, above any text, opens to 20%, so the painting's own
+	   colour shows; the vignette darkens the corners back into a frame. */
 	--hero-scrim:
 		radial-gradient(ellipse 120% 90% at 50% 35%, transparent 55%, rgb(0 0 0 / 0.35) 100%),
 		linear-gradient(
 			to top,
 			color-mix(in srgb, var(--hero-tint) 90%, transparent) 0%,
-			color-mix(in srgb, var(--hero-tint) 75%, transparent) 60%,
+			color-mix(in srgb, var(--hero-tint) 75%, transparent) 85%,
 			color-mix(in srgb, var(--hero-tint) 20%, transparent) 100%
 		);
 	--hero-plate-shadow: 0 24px 40px -18px rgb(0 0 0 / 0.7);
+	--hero-ink-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+	/* The date line's divider and the ring round its season dot. */
+	--hero-rule: color-mix(in srgb, var(--hero-ink) 45%, transparent);
+	--hero-ink-faint: color-mix(in srgb, var(--hero-ink) 18%, transparent);
 	/* The framed painting: a cream mat inside a gilt fillet, like a print hung
 	   in a gallery rather than a screenshot with a border. */
 	--hero-mat: #f3ead6;
@@ -1979,7 +1984,8 @@ nav.appnav .navsearch:hover {
 	align-items: center;
 	justify-content: center;
 }
-.prefs-font {
+/* Beats `.seg button`'s small label size: the faces need room to show. */
+.seg button.prefs-font {
 	font-size: var(--fs-body);
 	font-weight: 600;
 	line-height: 1.2;
@@ -2012,6 +2018,17 @@ nav.appnav .navsearch:hover {
 	box-shadow:
 		0 0 0 2px var(--surface),
 		0 0 0 calc(2px + var(--selected-edge)) var(--accent);
+}
+/* A finger needs the 44px every other menu control gets (Touch targets,
+   below); six of them need a wider menu to sit in. */
+@media (pointer: coarse) {
+	.prefs-menu {
+		min-width: 19rem;
+	}
+	.prefs-swatch {
+		width: 2.75rem;
+		height: 2.75rem;
+	}
 }
 @media (prefers-reduced-motion: reduce) {
 	.prefs-swatch {

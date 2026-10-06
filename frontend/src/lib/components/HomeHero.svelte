@@ -8,6 +8,7 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
 	import { liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
+	import { localDayNumber } from '$lib/dailyArticles';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 
 	/**
@@ -72,17 +73,37 @@
 
 	const fallBack = () => (art = DEFAULT_ART);
 
-	const today = new Intl.DateTimeFormat(getLang(), {
-		weekday: 'long',
-		day: 'numeric',
-		month: 'long'
-	}).format(new Date());
+	// The date and the season turn over with the calendar day, so a tab left
+	// open overnight is right when the reader comes back to it (as HomeArticles
+	// below re-picks its shelf).
+	let now = $state(new Date());
+	const today = $derived(
+		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
+	);
+	const season = $derived(liturgicalSeason(now));
 
-	const season = liturgicalSeason(new Date());
-	const seasonName = i18n.t(`liturgical.${season}`);
+	let hero: HTMLElement;
+	let offscreen = $state(false);
+
+	onMount(() => {
+		const onVisible = () => {
+			const d = new Date();
+			if (document.visibilityState === 'visible' && localDayNumber(d) !== localDayNumber(now)) now = d;
+		};
+		document.addEventListener('visibilitychange', onVisible);
+		// The drift is paused while the hero is scrolled away: nobody sees it,
+		// and an endless animation keeps the compositor awake for the whole
+		// visit to the dashboard.
+		const io = new IntersectionObserver(([e]) => (offscreen = !e.isIntersecting));
+		io.observe(hero);
+		return () => {
+			document.removeEventListener('visibilitychange', onVisible);
+			io.disconnect();
+		};
+	});
 </script>
 
-<section class="home-hero">
+<section class="home-hero" class:offscreen bind:this={hero}>
 	<!-- The painting twice: blurred and scaled as the band's colour (a 600px
 	     ground stretched to the page width only reads as a smear), and whole,
 	     sharp and framed beside the greeting, where it is seen at its own size. -->
@@ -100,8 +121,9 @@
 	<div class="page-col relative flex items-end justify-between gap-8 px-5 pb-10 pt-16 sm:pb-12 sm:pt-20">
 		<div class="min-w-0">
 			<p class="eyebrow home-hero-date mb-3">
-				{today}<span class="home-hero-season"
-					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"></span>{seasonName}</span
+				{today}<span class="sr-only">, </span><span class="home-hero-season"
+					><span class="home-hero-season-dot" style:background="var(--season-{SEASON_COLOUR[season]})" aria-hidden="true"
+					></span>{i18n.t(`liturgical.${season}`)}</span
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
@@ -132,7 +154,9 @@
 		position: absolute;
 		inset: 0;
 		animation: home-hero-drift 60s ease-in-out infinite alternate;
-		will-change: transform;
+	}
+	.offscreen .home-hero-drift {
+		animation-play-state: paused;
 	}
 	.home-hero-wash {
 		width: 100%;
@@ -202,7 +226,7 @@
 	}
 	.home-hero-ink {
 		color: var(--hero-ink);
-		text-shadow: 0 2px 18px rgb(0 0 0 / 0.35);
+		text-shadow: var(--hero-ink-shadow);
 	}
 	.home-hero-date {
 		color: var(--hero-ink);
@@ -215,12 +239,12 @@
 		gap: 0.45em;
 		margin-inline-start: 0.75em;
 		padding-inline-start: 0.75em;
-		border-inline-start: 1px solid color-mix(in srgb, var(--hero-ink) 45%, transparent);
+		border-inline-start: 1px solid var(--hero-rule);
 	}
 	.home-hero-season-dot {
 		width: 0.55em;
 		height: 0.55em;
 		border-radius: 50%;
-		box-shadow: 0 0 0 2px color-mix(in srgb, var(--hero-ink) 18%, transparent);
+		box-shadow: 0 0 0 2px var(--hero-ink-faint);
 	}
 </style>
