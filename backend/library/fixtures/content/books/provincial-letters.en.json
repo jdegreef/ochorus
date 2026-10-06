@@ -18,7 +18,7 @@
   "source_url": "https://www.gutenberg.org/ebooks/73959",
   "attribution": "Public domain — Blaise Pascal's Provincial Letters (1656–1657), translated by Thomas M'Crie; text from Project Gutenberg (ebook 73959), from the 1856 New York printing. Each letter is a chapter, and the Provincial's reply is printed at the end of Letter II; the translator's preface, historical introduction and notes are not included.",
   "cover_url": "/covers/art/provincial-letters.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/provincial-letters.pdf?download=provincial-letters.pdf",
   "cover_color": "#5a3e36",
   "series": null,
   "series_position": null,
