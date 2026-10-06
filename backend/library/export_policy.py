@@ -7,9 +7,9 @@ must rebuild the reader. Keeping the gate tiny keeps the renderers and their
 CSS out of the build filter.
 
 Two lists. ``EXPORT_PILOT`` is the first editions, each with a generated PDF
-beside its EPUB. ``ENGLISH_CLASSICS`` is the English public-domain library,
-EPUB only — a PDF is a snapshot that goes stale on the next text fix, so those
-wait for a pipeline that rebuilds them. Adding an edition needs its language's
+beside its EPUB. ``ENGLISH_CLASSICS`` is the English public-domain library;
+its PDFs, like the pilot's, are rebuilt by ``book-pdfs.yml`` whenever the text
+changes (``STORED_PDF_EDITIONS``), so each needs a fixture ``pdf_url``. Adding an edition needs its language's
 back matter in ``book_export.STRINGS`` (``tests_book_export.PilotTests`` holds
 that) and a bundled cover (``export_book`` writes it; ``CoverTests`` holds it).
 """
@@ -80,6 +80,20 @@ EXPORT_PILOT = frozenset({
     ("sons-of-the-king-1", "en"),
     ("sons-of-the-king-2", "en"),
     ("sons-of-the-king-3", "en"),
+    # The young-reader retellings of public-domain classics, in English. The
+    # telling is Ochorus's, so each carries a "© Ochorus … retelling" attribution
+    # (and the Teens editions Crossway's ESV notice); the About the Author page
+    # is the original author's, as the edition keeps the parent author.
+    ("a-retrospect-children", "en"),
+    ("a-retrospect-teens", "en"),
+    ("amanda-smith-autobiography-children", "en"),
+    ("amanda-smith-autobiography-teens", "en"),
+    ("pilgrims-progress-children", "en"),
+    ("pilgrims-progress-teens", "en"),
+    ("talks-to-the-farmer-children", "en"),
+    ("talks-to-the-farmer-teens", "en"),
+    ("the-life-of-trust-children", "en"),
+    ("the-life-of-trust-teens", "en"),
 })
 
 
@@ -100,10 +114,12 @@ ENGLISH_CLASSICS = frozenset({
     "amanda-smith-autobiography",
     "answers-to-prayer",
     "around-the-wicket-gate",
+    "at-the-back-of-the-north-wind",
     "cheque-book",
     "christ-the-healer",
     "confessions",
     "days-of-heaven-upon-earth",
+    "diary-of-an-old-soul",
     "divine-healing",
     "divine-songs-for-children",
     "enchiridion",
@@ -119,11 +135,13 @@ ENGLISH_CLASSICS = frozenset({
     "george-muller-of-bristol",
     "gleanings-among-the-sheaves",
     "grace-abounding",
+    "heretics",
     "holy-in-christ",
     "how-to-bring-men-to-christ",
     "how-to-succeed-in-the-christian-life",
     "hurlbuts-life-of-christ",
     "journal-of-an-expedition-up-the-niger",
+    "letters-and-minor-works",
     "life-and-diary-of-david-brainerd",
     "life-experience-gospel-labours",
     "life-of-antony",
@@ -134,33 +152,46 @@ ENGLISH_CLASSICS = frozenset({
     "on-loving-god",
     "on-the-incarnation",
     "on-the-priesthood",
+    "orthodoxy",
     "our-daily-walk",
+    "paradise-lost",
+    "pensees",
+    "phantastes",
     "pilgrims-progress-words-of-one-syllable",
     "pilgrims-progress",
     "plain-account-christian-perfection",
     "possibilities-of-prayer",
+    "power-from-on-high-new-testament",
+    "power-from-on-high-old-testament",
     "power-through-prayer",
     "prayer-and-praying-men",
     "prevailing-prayer",
+    "provincial-letters",
     "purpose-in-prayer",
     "reality-of-prayer",
     "religious-affections",
     "religious-experience-and-journal",
+    "revelations-of-divine-love",
     "revival-lectures",
     "school-of-prayer",
     "selected-sermons-edwards",
     "selected-sermons-whitefield",
     "separation-and-service",
     "sermons-on-several-occasions",
+    "st-francis-of-assisi",
     "susanna-wesley-clarke",
     "ten-commandments",
     "the-bruised-reed",
+    "the-everlasting-man",
     "the-fourfold-gospel",
     "the-fundamental-doctrines-of-the-christian-faith",
     "the-gospel-of-healing",
     "the-imitation-of-christ",
     "the-life-of-trust",
     "the-masters-indwelling",
+    "the-practice-of-the-presence-of-god",
+    "the-princess-and-the-goblin",
+    "the-pursuit-of-god",
     "the-reformed-pastor",
     "the-unselfishness-of-god",
     "the-way-to-god",
@@ -170,6 +201,7 @@ ENGLISH_CLASSICS = frozenset({
     "treatises-of-cyprian",
     "true-vine",
     "union-and-communion",
+    "unspoken-sermons",
     "waiting-on-god",
     "way-into-holiest",
 })

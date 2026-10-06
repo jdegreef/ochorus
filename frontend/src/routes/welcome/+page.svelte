@@ -11,7 +11,15 @@
 	import { readingMinutes } from '$lib/reading';
 	import { bookChapterPath } from '$lib/reading-schema';
 	import { authorPath } from '$lib/originals';
-	import { welcomeSteps, type WelcomeStepKey } from '$lib/welcomeSteps';
+	import {
+		STEP_COPY,
+		WELCOME_EVENT,
+		welcomeEventProps,
+		welcomeSteps,
+		type WelcomeAction,
+		type WelcomeStepKey
+	} from '$lib/welcomeSteps';
+	import { track } from '$lib/analytics';
 	import { getBook, getPlan, type BookDetail, type PlanDetail } from '$lib/library-public';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import Icon, { type IconName } from '$lib/components/Icon.svelte';
@@ -44,8 +52,12 @@
 	// mount and whenever a sign-in merge lands (`ochorus:sync`), the same way
 	// OnboardingCard does.
 	let ticks = $state(0);
+	/** One analytics event per thing a new reader does here (see welcomeSteps). */
+	const report = (action: WelcomeAction) => track(WELCOME_EVENT, welcomeEventProps(action, getLang()));
+
 	onMount(() => {
 		welcome.pageSeen();
+		report('viewed');
 		const bump = () => ticks++;
 		bump();
 		window.addEventListener('ochorus:sync', bump);
@@ -81,12 +93,6 @@
 	/** Murray's own line from chapter 1, minus the highlight markers the login pitch uses. */
 	const quote = $derived(t('login.pitchSampleQuote').replace(/\[\[|\]\]/g, ''));
 
-	const STEP_COPY: Record<WelcomeStepKey, { title: string; hint?: string }> = {
-		account: { title: 'welcomePage.stepAccount' },
-		read: { title: 'welcomePage.stepRead', hint: 'welcomePage.stepReadHint' },
-		save: { title: 'welcomePage.stepSave', hint: 'welcomePage.stepSaveHint' },
-		mark: { title: 'welcomePage.stepMark', hint: 'welcomePage.stepMarkHint' }
-	};
 	function stepHref(key: WelcomeStepKey): string {
 		if (key === 'account') return accountHref('/welcome', false, true);
 		if (key === 'save') return localizeHref('/books');
@@ -138,9 +144,17 @@
 						{/if}
 						<blockquote class="quote font-display text-body">{quote}</blockquote>
 						<div class="mt-4 flex flex-wrap gap-3">
-							<a class="btn btn-primary hover:no-underline" href={firstChapter}>{t('welcomePage.readFirst')}</a>
+							<a
+								class="btn btn-primary hover:no-underline"
+								href={firstChapter}
+								onclick={() => report('read first chapter')}
+							>{t('welcomePage.readFirst')}</a>
 							{#if plan}
-								<a class="btn btn-ghost hover:no-underline" href={localizeHref(`/plans/${plan.slug}`)}>
+								<a
+									class="btn btn-ghost hover:no-underline"
+									href={localizeHref(`/plans/${plan.slug}`)}
+									onclick={() => report('follow plan')}
+								>
 									{t('welcomePage.followPlan').replace('%n%', String(plan.day_count))}
 								</a>
 							{/if}
@@ -150,7 +164,11 @@
 					<div class="start-wide min-w-0">
 						<h2 id="welcome-start" class="font-display text-h2">{t('welcomePage.browseTitle')}</h2>
 						<p class="mt-1 text-body text-muted">{t('welcomePage.browseBody')}</p>
-						<a class="btn btn-primary mt-4 hover:no-underline" href={localizeHref('/books')}>
+						<a
+							class="btn btn-primary mt-4 hover:no-underline"
+							href={localizeHref('/books')}
+							onclick={() => report('browse library')}
+						>
 							{t('home.browseLibrary')}
 						</a>
 					</div>
@@ -184,7 +202,7 @@
 									<span class="text-body">{t(copy.title)}</span>
 								</div>
 							{:else}
-								<a class="step" href={stepHref(step.key)}>
+								<a class="step" href={stepHref(step.key)} onclick={() => report(`step: ${step.key}`)}>
 									<span class="tick"></span>
 									<span class="min-w-0">
 										<span class="block text-body font-semibold text-text">{t(copy.title)}</span>
@@ -209,7 +227,10 @@
 						<button
 							class:active={readingGoal.perWeek === n}
 							aria-pressed={readingGoal.perWeek === n}
-							onclick={() => readingGoal.set(n)}>{n}</button
+							onclick={() => {
+								readingGoal.set(n);
+								report(`goal: ${n}`);
+							}}>{n}</button
 						>
 					{/each}
 				</div>
@@ -232,7 +253,9 @@
 	</section>
 
 	<div class="mt-10">
-		<a class="btn btn-ghost hover:no-underline" href={localizeHref('/')}>{t('welcomePage.goHome')}</a>
+		<a class="btn btn-ghost hover:no-underline" href={localizeHref('/')} onclick={() => report('go home')}
+			>{t('welcomePage.goHome')}</a
+		>
 	</div>
 </div>
 

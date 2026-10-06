@@ -13,6 +13,14 @@ export interface WelcomeStep {
 	done: boolean;
 }
 
+/** Each step's catalogue keys, shared by the page and the home progress card. */
+export const STEP_COPY: Record<WelcomeStepKey, { title: string; hint?: string }> = {
+	account: { title: 'welcomePage.stepAccount' },
+	read: { title: 'welcomePage.stepRead', hint: 'welcomePage.stepReadHint' },
+	save: { title: 'welcomePage.stepSave', hint: 'welcomePage.stepSaveHint' },
+	mark: { title: 'welcomePage.stepMark', hint: 'welcomePage.stepMarkHint' }
+};
+
 export interface WelcomeActivity extends ReaderActivity {
 	signedIn: boolean;
 }
@@ -25,4 +33,27 @@ export function welcomeSteps(a: WelcomeActivity): { steps: WelcomeStep[]; done: 
 		{ key: 'mark', done: a.marked }
 	];
 	return { steps, done: steps.filter((s) => s.done).length };
+}
+
+/**
+ * What the /welcome page reports to analytics: one Plausible event, "Welcome
+ * page", whose `action` says what the new reader did there — so the shape of a
+ * first visit (did they read? start the plan? leave?) can be read off one
+ * breakdown. Short labels only, plus the UI language; never an id or a URL.
+ */
+export type WelcomeAction =
+	| 'viewed'
+	| 'read first chapter'
+	| 'follow plan'
+	| 'browse library'
+	| `step: ${WelcomeStepKey}`
+	| `goal: ${number}`
+	| 'go home'
+	| 'resume from home'
+	| 'hide progress';
+
+export const WELCOME_EVENT = 'Welcome page';
+
+export function welcomeEventProps(action: WelcomeAction, lang: string): Record<string, string> {
+	return { action, lang };
 }
