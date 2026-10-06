@@ -76,6 +76,9 @@ export type CoverStyleId = (typeof COVER_STYLE_IDS)[number];
  */
 export const ERA_STYLE: Record<EraId, CoverStyleId> = {
 	early: 'inscriptional',
+	// Split from `early` in 2026-10-06 for the shelf only; the covers kept the
+	// face they already wore, so no medieval book was redrawn by the split.
+	medieval: 'inscriptional',
 	puritans: 'press',
 	awakenings: 'enlightenment',
 	missionary: 'revival',

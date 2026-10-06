@@ -11,7 +11,7 @@
 // hex-ok-file: illustration hues, one per era, used as `--row-hue` on the
 // sermon rails and biography rails. They are the palette OF a drawing — the
 // same kind of colour a book cover carries — not chrome that follows the theme.
-export type EraId = 'early' | 'puritans' | 'awakenings' | 'missionary' | 'modern';
+export type EraId = 'early' | 'medieval' | 'puritans' | 'awakenings' | 'missionary' | 'modern';
 
 export type Era = { id: EraId; k: string; until: number; range: string };
 
@@ -22,10 +22,17 @@ export type Era = { id: EraId; k: string; until: number; range: string };
 // The first cut is 1480, not 1500: the Reformers had to land under "Puritans &
 // Reformers", and Luther (b. 1483), Zwingli (1484), Cranmer (1489) and Tyndale
 // (1494) are all plausible additions here. A 1500 cut would have filed them
-// under "The Early Church & Middle Ages" — relocating the very mislabel this
-// bucket was added to fix (Augustine, b. 354, reading as a Puritan).
+// under "The Middle Ages" — relocating the very mislabel this bucket was added
+// to fix (Augustine, b. 354, reading as a Puritan).
+//
+// The Early Church and the Middle Ages were one bucket until 2026-10-06; split
+// at 600 so the Fathers (Ignatius to Gregory the Great, b. 540 — the
+// conventional last of the Western Fathers) stand apart from Anselm, Bernard,
+// Julian and à Kempis. `early` keeps its id, so /biographies/era/early/ still
+// resolves — it now lists only the Fathers.
 export const ERAS: Era[] = [
-	{ id: 'early', k: 'bios.eraEarly', until: 1480, range: '–1479' },
+	{ id: 'early', k: 'bios.eraEarly', until: 600, range: '–599' },
+	{ id: 'medieval', k: 'bios.eraMedieval', until: 1480, range: '600–1479' },
 	{ id: 'puritans', k: 'bios.eraPuritans', until: 1700, range: '1480–1699' },
 	{ id: 'awakenings', k: 'bios.eraAwakenings', until: 1800, range: '1700–1799' },
 	{ id: 'missionary', k: 'bios.eraMissionary', until: 1900, range: '1800–1899' },
@@ -51,6 +58,7 @@ export const ERAS: Era[] = [
  */
 export const ERA_HUE: Record<EraId, string> = {
 	early: '#8a6bbf', // ancient — deep violet
+	medieval: '#a8475a', // cathedral glass — deep crimson
 	puritans: '#3f6fb5', // sober blue
 	awakenings: '#d98324', // revival fire
 	missionary: '#149e93', // teal, for the voyages
