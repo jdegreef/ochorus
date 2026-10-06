@@ -18,7 +18,7 @@ export function dayPart(hour: number, lang = 'en'): DayPart {
 }
 
 /** A title or an initial, not a given name: "Rev.", "Dr", "J." */
-const NOT_A_NAME = /^(?:.|.\.|rev|revd|dr|mr|mrs|ms|miss|fr|sr|br|pastor|prof|sir)\.?$/i;
+const NOT_A_NAME = /^(?:.|rev|revd|dr|mr|mrs|ms|miss|fr|sr|br|pastor|prof|sir)\.?$/i;
 
 /**
  * The name a greeting uses: the reader's first name ("Good evening, James" —
@@ -29,7 +29,9 @@ const NOT_A_NAME = /^(?:.|.\.|rev|revd|dr|mr|mrs|ms|miss|fr|sr|br|pastor|prof|si
  */
 export function greetingName(displayName: string, email: string | undefined): string {
 	const full = displayName.trim().replace(/\s+/g, ' ');
-	const first = full.split(' ')[0];
-	if (first) return NOT_A_NAME.test(first) ? full : first;
+	if (full) {
+		const first = full.split(' ')[0];
+		return NOT_A_NAME.test(first) ? full : first;
+	}
 	return email?.split('@')[0] ?? '';
 }

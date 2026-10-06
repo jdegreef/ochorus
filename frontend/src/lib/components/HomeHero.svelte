@@ -86,19 +86,18 @@
 	// "Good evening, James" — for the time of the reader's day, on the same
 	// clock as the date, so the two never disagree. Parameterised so the name
 	// sits where each language wants it (Paraglide's message functions, not
-	// the param-free t() facade); a bare greeting when we have no name.
+	// the param-free t() facade). The dashboard is signed-in only, so there
+	// is always a name (at worst the email's local part).
 	const GREETING = {
-		morning: { named: m.home_good_morning_named, bare: m.home_good_morning },
-		afternoon: { named: m.home_good_afternoon_named, bare: m.home_good_afternoon },
-		evening: { named: m.home_good_evening_named, bare: m.home_good_evening }
+		morning: m.home_good_morning_named,
+		afternoon: m.home_good_afternoon_named,
+		evening: m.home_good_evening_named
 	};
-	const greeting = $derived.by(() => {
-		const g = GREETING[dayPart(now.getHours(), getLang())];
-		return name ? g.named({ name }) : g.bare();
-	});
+	const greeting = $derived(GREETING[dayPart(now.getHours(), getLang())]({ name }));
 
 	// The leaf draws itself on the first time the dashboard opens in a
-	// session — not on every return to it.
+	// session — not on every return to it. The flag is spent on mount, so a
+	// reader who loses it (reduced motion, hero offscreen) just sees it drawn.
 	const DRAWN_KEY = 'ochorus:hero-leaf-drawn';
 	const drawIn = (() => {
 		try {
@@ -114,13 +113,12 @@
 	let offscreen = $state(false);
 
 	onMount(() => {
+		// A new day, or a new part of it: the date, season and greeting follow.
+		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}`;
 		const onVisible = () => {
-			const d = new Date();
 			if (document.visibilityState !== 'visible') return;
-			// A new day, or a new part of it: the date, season and greeting follow.
-			const lang = getLang();
-			if (localDayNumber(d) !== localDayNumber(now) || dayPart(d.getHours(), lang) !== dayPart(now.getHours(), lang))
-				now = d;
+			const d = new Date();
+			if (turn(d) !== turn(now)) now = d;
 		};
 		document.addEventListener('visibilitychange', onVisible);
 		// The drift is paused while the hero is scrolled away: nobody sees it,

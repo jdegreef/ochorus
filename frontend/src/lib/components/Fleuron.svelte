@@ -66,13 +66,14 @@
 	}
 	/* The draw-in: the hairlines grow outward from the leaf, then the leaf's
 	   outline and vein are traced (pathLength="1" makes the dash one unit). */
+	.draw-in span {
+		animation: fleuron-rule 700ms ease-out both;
+	}
 	.draw-in span:first-child {
 		transform-origin: right;
-		animation: fleuron-rule 700ms ease-out both;
 	}
 	.draw-in span:last-child {
 		transform-origin: left;
-		animation: fleuron-rule 700ms ease-out both;
 	}
 	:global([dir='rtl']) .draw-in span:first-child {
 		transform-origin: left;
