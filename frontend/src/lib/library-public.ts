@@ -255,6 +255,12 @@ export interface BookDetail extends BookSummary {
 	 */
 	editions: BookSummary[];
 	/**
+	 * The reading age a young readers' or teens' book is written for — its
+	 * series' range, else its audience's (`max` null = "and up"). Null for
+	 * everything else; optional, as an API behind this build omits it.
+	 */
+	ages?: { min: number; max: number | null } | null;
+	/**
 	 * Where this edition sits in its series — the book page's series line and
 	 * the last chapter's "next in series". Null outside a series, and also when
 	 * the series has no name in this edition's language (no English fallback).
@@ -1431,6 +1437,9 @@ export interface AudienceShelf {
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
 	languages: string[];
+	/** The reading age the hub is for (`max` null = "and up") — its schema.org
+	 *  audience. Optional: an API behind this build omits it. */
+	ages?: { min: number; max: number | null };
 }
 
 export const getAudienceShelf = (audience: HubAudience, language = 'en', f?: Fetch) =>

@@ -1270,6 +1270,16 @@ export interface EngagementPlanFunnel {
 	by_plan: EngagementPlanRow[];
 }
 
+/** One young-reader hub's reading, all time (`_young_readers`): its books'
+ *  readers and finishers, its most-read books and its plans' funnel. */
+export interface EngagementYoungHub {
+	audience: 'young_readers' | 'teens';
+	readers: number;
+	finished: number;
+	books: { slug: string; title: string; readers: number; finished: number }[];
+	plans: EngagementPlanFunnel;
+}
+
 /** One chapter's highlight density — distinct readers who marked it up. */
 export interface EngagementHeatChapter {
 	chapter: number;
@@ -1307,6 +1317,8 @@ export interface AdminEngagement {
 	rising: EngagementRisingRow[];
 	highlight_heatmap: EngagementHeatmap | null;
 	plan_funnel: EngagementPlanFunnel;
+	/** The /young-readers/ and /teens/ hubs. Absent from an older API. */
+	young_readers?: EngagementYoungHub[];
 	most_loved: EngagementLoved[];
 	hearts_by_kind: EngagementHeartKind[];
 	by_language: EngagementLang[];

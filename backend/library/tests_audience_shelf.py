@@ -113,6 +113,10 @@ class AudienceShelfTests(TestCase):
         self._book("north-wind-children")  # not in it
         self.assertEqual(self._get()["printable"], ["brave-for-god"])
 
+    def test_ages_name_who_the_hub_is_for(self):
+        self.assertEqual(self._get()["ages"], {"min": 8, "max": 12})
+        self.assertEqual(self._get("teens")["ages"], {"min": 13, "max": None})
+
     def test_an_unknown_audience_is_not_found(self):
         self.assertEqual(self.client.get(self.URL.format("adults", "en")).status_code, 404)
 
@@ -165,3 +169,39 @@ class AudienceShelfTests(TestCase):
             if not (books / f"{slug}.en.json").exists()
         ]
         self.assertEqual(missing, [])
+
+
+class BookAgesTests(TestCase):
+    """The book page's "Ages 8–12" (`serializers.book_ages`)."""
+
+    def setUp(self):
+        self.author = Author.objects.create(slug="bunyan", name="John Bunyan")
+
+    def _ages(self, slug, *, series=None):
+        Book.objects.create(
+            author=self.author, slug=slug, language="en", title=slug, series=series,
+            is_published=True,
+        )
+        response = self.client.get(f"/api/library/books/{slug}/?language=en")
+        self.assertEqual(response.status_code, 200)
+        return response.json()["ages"]
+
+    def test_a_series_range_wins(self):
+        series = Series.objects.create(
+            slug="rooted", title="Rooted", audience="young_readers", min_age=9, max_age=12
+        )
+        self.assertEqual(self._ages("rooted-1", series=series), {"min": 9, "max": 12})
+
+    def test_a_series_without_a_range_reads_its_audiences(self):
+        series = Series.objects.create(slug="straight-talk", title="Straight Talk", audience="teens")
+        self.assertEqual(self._ages("straight-talk-1", series=series), {"min": 13, "max": None})
+
+    def test_a_retold_edition_reads_its_audiences(self):
+        Book.objects.create(author=self.author, slug="pilgrims-progress", title="PP", language="sw")
+        self.assertEqual(self._ages("pilgrims-progress-children"), {"min": 8, "max": 12})
+
+    def test_a_suffix_alone_and_everything_else_have_no_ages(self):
+        self.assertIsNone(self._ages("divine-songs-for-children"))
+        self.assertIsNone(self._ages("all-of-grace"))
+        adults = Series.objects.create(slug="key-teachings", title="KT", audience="adults")
+        self.assertIsNone(self._ages("kt-1", series=adults))

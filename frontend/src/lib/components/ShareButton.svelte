@@ -27,9 +27,15 @@
 		/** Human title for the share ("Title — Author"). */
 		title: string;
 		showLabel?: boolean;
+		/** The button's words, where a page asks for something warmer than
+		 *  "Share" ("Share with a family"). */
+		label?: string;
+		/** Called as the sheet or menu opens (not as the menu closes). */
+		onshare?: () => void;
 	}
-	let { url, title, showLabel = false }: Props = $props();
+	let { url, title, showLabel = false, label, onshare }: Props = $props();
 	const t = i18n.t;
+	const name = $derived(label ?? t('reader.share'));
 	const menuId = $props.id();
 
 	let open = $state(false);
@@ -49,6 +55,7 @@
 	const links = $derived(shareLinks(title, url, t('login.email')));
 
 	async function onClick() {
+		if (!open) onshare?.();
 		// Any failure other than a dismissed sheet falls through to the menu.
 		if ((await nativeShare(title, url)) === 'unavailable') toggle();
 	}
@@ -73,11 +80,11 @@
 		onclick={onClick}
 		aria-controls={open ? menuId : undefined}
 		aria-expanded={open}
-		aria-label={t('reader.share')}
-		title={t('reader.share')}
+		aria-label={name}
+		title={name}
 	>
 		<Icon name="share" size={18} strokeWidth={1.7} />
-		{#if showLabel}<span class="btn-label">{t('reader.share')}</span>{/if}
+		{#if showLabel}<span class="btn-label">{name}</span>{/if}
 	</button>
 
 	{#if open}
@@ -90,7 +97,7 @@
 			style:width="{width}px"
 			style:left="{shift}px"
 			role="group"
-			aria-label={t('reader.share')}
+			aria-label={name}
 		>
 			<button type="button" class="share-opt text-small" onclick={copyLink}>
 				{copied ? t('share.linkCopied') : t('share.copyLink')}

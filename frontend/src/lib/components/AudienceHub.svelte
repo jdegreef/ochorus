@@ -2,7 +2,7 @@
 	import { scrollEdges } from '$lib/actions/scrollEdges';
 	import type { AudienceShelf } from '$lib/library-public';
 	import { SITE_URL } from '$lib/config';
-	import { breadcrumbLd, hreflangExact, itemList } from '$lib/seo';
+	import { breadcrumbLd, hreflangExact, itemList, jsonLd } from '$lib/seo';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { contentLang } from '$lib/reading';
@@ -13,6 +13,7 @@
 		hubIsEmpty,
 		printableLinks,
 		startPick,
+		HUB_EVENT,
 		type AudienceHubConfig
 	} from '$lib/audienceHub';
 	import Seo from '$lib/components/Seo.svelte';
@@ -25,6 +26,8 @@
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
+	import ShareButton from '$lib/components/ShareButton.svelte';
+	import { track } from '$lib/analytics';
 
 	/**
 	 * A young-reader hub — /young-readers/ or /teens/ — on the /series index's
@@ -43,6 +46,7 @@
 
 	const title = $derived(t(hub.labelKey));
 	const tagline = $derived(t(hub.taglineKey));
+	const description = $derived(t(hub.seoDescriptionKey));
 	const path = $derived(`${hub.href}/`);
 
 	const empty = $derived(hubIsEmpty(shelf));
@@ -62,7 +66,8 @@
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
 
-	// schema.org: the hub's books as an ItemList, and its place under Home.
+	// schema.org: the hub's books as an ItemList — inside a CollectionPage that
+	// says who it is for (`ages`) and that it is free — and its place under Home.
 	const booksLd = $derived(
 		itemList(title, [
 			...shelf.series.map((s) => ({ name: s.title, url: localizeHref(`/series/${s.slug}/`) })),
@@ -88,15 +93,31 @@
 		}
 	);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
+	const pageLd = $derived(
+		jsonLd({
+			'@context': 'https://schema.org',
+			'@type': 'CollectionPage',
+			name: title,
+			description,
+			url: canonical,
+			isAccessibleForFree: true,
+			audience: shelf.ages && {
+				'@type': 'PeopleAudience',
+				suggestedMinAge: shelf.ages.min,
+				suggestedMaxAge: shelf.ages.max ?? undefined
+			}
+		})
+	);
 </script>
 
+<!-- The card is English, like every share card; one per hub (`npm run og:pages`). -->
 <Seo
-	title={`${title} — Ochorus`}
-	description={tagline}
+	title={`${t(hub.seoTitleKey)} — Ochorus`}
+	{description}
 	{canonical}
 	{hreflang}
-	ogImage={`${SITE_URL}/og/books.png`}
-	structuredData={empty ? [crumbsLd] : [booksLd, crumbsLd]}
+	ogImage={`${SITE_URL}/og${hub.href}.png`}
+	structuredData={empty ? [crumbsLd] : [pageLd, booksLd, crumbsLd]}
 />
 
 <svelte:head>
@@ -115,6 +136,19 @@
 				{counts.series === 1 ? t('common.seriesOne') : t('common.seriesMany')}</span
 			>{/if}
 	{/snippet}
+
+	{#if !empty && !loadError}
+		<!-- How a hub like this travels: one parent to another, one friend to the next. -->
+		<div class="-mt-4 mb-8">
+			<ShareButton
+				url={canonical}
+				{title}
+				label={t(hub.shareKey)}
+				showLabel
+				onshare={() => track(HUB_EVENT, { hub: hub.audience, action: 'share' })}
+			/>
+		</div>
+	{/if}
 
 	{#if loadError}
 		<EmptyState message={t('common.loadError')} onRetry />
@@ -145,7 +179,10 @@
 						<p class="mt-0.5 text-small text-muted">{start.author.name}</p>
 					</div>
 					<div class="read-card-cta">
-						<a href={localizeHref(`/books/${start.slug}`)} class="btn btn-primary"
+						<a
+							href={localizeHref(`/books/${start.slug}`)}
+							class="btn btn-primary"
+							onclick={() => track(HUB_EVENT, { hub: hub.audience, action: 'start' })}
 							>{t('book.beginReading')}</a
 						>
 					</div>

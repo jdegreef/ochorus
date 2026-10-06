@@ -1721,7 +1721,13 @@
 	});
 
 	// Before the DOM updates, so a children's chapter lays out once, in its own
-	// layout, rather than flashing the reader's and re-measuring.
+	// layout, rather than flashing the reader's and re-measuring. Set at init
+	// too: an effect never runs in the prerender, and the hydrating render must
+	// draw what the prerender drew — so both bake the young layout into the
+	// article's style, and the page paints in it. The server's `readerPrefs` is
+	// one object for every page it renders, so it is put back when this one is.
+	readerPrefs.youngEdition = untrack(() => childrens);
+	onDestroy(() => (readerPrefs.youngEdition = false));
 	$effect.pre(() => {
 		readerPrefs.youngEdition = childrens;
 		return () => (readerPrefs.youngEdition = false);
