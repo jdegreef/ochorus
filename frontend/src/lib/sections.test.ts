@@ -3,28 +3,47 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PRIMARY_NAV } from './contentNav';
 import { EMBLEM_ART } from './emblems';
+import { SECTION_EMBLEMS } from './sectionEmblems';
 import { SECTION_MARKS } from './sections';
 
 const FLEURON = readFileSync(join(process.cwd(), 'src/lib/components/Fleuron.svelte'), 'utf-8');
+const colours = (art: string) => new Set(art.match(/#[0-9a-f]{6}/gi)?.map((c) => c.toLowerCase()));
 
 describe('section marks', () => {
-	it('gives every primary section an ornament, an emblem and its nav icon', () => {
-		for (const { section, icon } of PRIMARY_NAV) {
-			const marks = SECTION_MARKS[section];
-			expect(marks, `${section} has no marks`).toBeTruthy();
-			expect(marks.icon).toBe(icon);
-			expect(EMBLEM_ART[marks.emblem], `${section}: no emblem art "${marks.emblem}"`).toBeTruthy();
+	it('wear the icon the top nav gives each section', () => {
+		for (const { section, icon } of PRIMARY_NAV) expect(SECTION_MARKS[section].icon, section).toBe(icon);
+	});
+
+	it('give each section its own ornament, and Fleuron draws every one', () => {
+		const ornaments = Object.values(SECTION_MARKS).map((m) => m.ornament);
+		expect(new Set(ornaments).size).toBe(ornaments.length);
+		// A misspelt ornament would fall through to the house leaf silently.
+		for (const o of ornaments) expect(FLEURON, `Fleuron draws no "${o}"`).toContain(`ornament === '${o}'`);
+	});
+});
+
+describe('section emblems', () => {
+	const palette = new Set(Object.values(EMBLEM_ART).flatMap((art) => [...colours(art)]));
+
+	it('draw one per primary section', () => {
+		expect(Object.keys(SECTION_EMBLEMS).sort()).toEqual(PRIMARY_NAV.map((d) => d.section).sort());
+	});
+
+	it('are their own art, never a catalogue emblem a topic or plan already wears', () => {
+		const catalogue = new Set(Object.values(EMBLEM_ART).map((a) => a.replace(/\s+/g, '')));
+		for (const [s, art] of Object.entries(SECTION_EMBLEMS)) expect(catalogue.has(art.replace(/\s+/g, '')), s).toBe(false);
+	});
+
+	it('are multicolour, in the emblems’ shared palette', () => {
+		for (const [s, art] of Object.entries(SECTION_EMBLEMS)) {
+			const used = colours(art);
+			expect(used.size, `${s} uses ${used.size} colours`).toBeGreaterThanOrEqual(3);
+			for (const c of used) expect(palette.has(c), `${s}: ${c} is not an emblem palette colour`).toBe(true);
 		}
 	});
 
-	it('gives each section its own ornament and emblem', () => {
-		const marks = Object.values(SECTION_MARKS);
-		expect(new Set(marks.map((m) => m.ornament)).size).toBe(marks.length);
-		expect(new Set(marks.map((m) => m.emblem)).size).toBe(marks.length);
-	});
-
-	it('draws every ornament a section names (a misspelt one would fall back to the leaf)', () => {
-		for (const { ornament } of Object.values(SECTION_MARKS))
-			expect(FLEURON, `Fleuron draws no "${ornament}"`).toContain(`ornament === '${ornament}'`);
+	it('contain only inert drawing markup (rendered via {@html})', () => {
+		for (const art of Object.values(SECTION_EMBLEMS))
+			expect(art).not.toMatch(/<(script|foreignObject|use|image|a)\b|href|javascript:|\son\w+=/i);
 	});
 });

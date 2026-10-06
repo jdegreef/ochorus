@@ -44,7 +44,7 @@
 
 {#snippet heading()}
 	{#if section}
-		<h2 class="text-h2 section-header-title" data-section={section}>
+		<h2 class="text-h2 section-header-title flex items-start gap-3" data-section={section}>
 			<Icon name={SECTION_MARKS[section].icon} size={22} />{title}
 		</h2>
 	{:else}
@@ -67,13 +67,11 @@
 </div>
 
 <style>
-	/* The icon sits on the title's first line and wraps with it. */
-	.section-header-title {
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-	}
+	/* The icon sits centred on the title's FIRST line, however many lines a
+	   long title (a Luganda shelf name, say) wraps to: one line-height (lh)
+	   less the icon's 22px, halved. */
 	.section-header-title :global(svg) {
 		flex-shrink: 0;
+		margin-top: calc((1lh - 22px) / 2);
 	}
 </style>

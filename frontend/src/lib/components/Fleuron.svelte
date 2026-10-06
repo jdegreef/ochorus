@@ -16,7 +16,17 @@
 
 <div class="fleuron" aria-hidden="true">
 	<span></span>
-	<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+	<!-- Round joins for the sections' devices; the house leaf keeps its sharp tips. -->
+	<svg
+		viewBox="0 0 24 24"
+		width="22"
+		height="22"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="1.4"
+		stroke-linecap="round"
+		stroke-linejoin={ornament === 'leaf' ? undefined : 'round'}
+	>
 		{#if ornament === 'lamp'}
 			<path d="M12 2.5c-1.6 2-2.2 3.6-2.2 5a2.2 2.2 0 0 0 4.4 0c0-1.4-.6-3-2.2-5z" />
 			<path d="M12 9.7v2.8" />

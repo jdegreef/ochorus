@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import Fleuron from '$lib/components/Fleuron.svelte';
-	import Emblem from '$lib/components/Emblem.svelte';
 	import type { NavSection } from '$lib/contentNav';
 	import { SECTION_MARKS } from '$lib/sections';
+	import { SECTION_EMBLEMS } from '$lib/sectionEmblems';
 
 	/**
 	 * The standard header for a top-level browse page (Books, Topics, Plans,
@@ -22,7 +22,8 @@
 	 *
 	 * A library section's own page passes `section`: its emblem then sits beside
 	 * the title in the section's hue, and the ornament under it is the
-	 * section's device rather than the house leaf ($lib/sections).
+	 * section's device rather than the house leaf ($lib/sections,
+	 * $lib/sectionEmblems).
 	 */
 	let {
 		eyebrow = '',
@@ -50,9 +51,14 @@
 	{#if eyebrow}
 		<p class="eyebrow mb-2 text-accent">{eyebrow}</p>
 	{/if}
-	{#if section && marks}
+	{#if section}
 		<div class="mb-3 flex items-center gap-3">
-			<span class="emblem-chip page-header-emblem" data-section={section}><Emblem name={marks.emblem} /></span>
+			<span class="emblem-chip page-header-emblem" data-section={section}>
+				<svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+					<!-- eslint-disable-next-line svelte/no-at-html-tags -- static author-controlled artwork strings from $lib/sectionEmblems, never user input -->
+					{@html SECTION_EMBLEMS[section]}
+				</svg>
+			</span>
 			<h1 class="text-h1">{title}</h1>
 		</div>
 	{:else}
