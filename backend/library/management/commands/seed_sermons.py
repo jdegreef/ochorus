@@ -19,10 +19,12 @@ import json
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
+from django.db.models.functions import MD5
 
 from library.author_sync import sync_all_authors
 from library.content_fixtures import AUTHORS_FILE, authors_by_slug, iter_work_files
 from library.corrections import settled_sermon_body
+from library.deploy_fingerprints import md5_hex
 from library.management.commands.seed_books import require_natural_format
 from library.models import Author, Sermon
 
@@ -148,9 +150,14 @@ class Command(BaseCommand):
                     },
                 )
 
-                sermon = Sermon.objects.filter(
-                    slug=f["slug"], language=f.get("language", "en")
-                ).first()
+                # The body's md5 instead of the body (and never the derived
+                # text or tsvector): a converged sermon costs one short row.
+                sermon = (
+                    Sermon.objects.filter(slug=f["slug"], language=f.get("language", "en"))
+                    .defer("body_html", "body_text", "search_vector")
+                    .annotate(body_md5=MD5("body_html"))
+                    .first()
+                )
                 preached_on = _date(f.get("preached_on"))
                 if sermon is None:
                     Sermon.objects.create(
@@ -166,7 +173,14 @@ class Command(BaseCommand):
                     continue
 
                 changed = [
-                    k for k in UPDATE_FIELDS if k in f and getattr(sermon, k) != f[k]
+                    k
+                    for k in UPDATE_FIELDS
+                    if k in f
+                    and (
+                        md5_hex(f[k]) != sermon.body_md5
+                        if k == "body_html"
+                        else getattr(sermon, k) != f[k]
+                    )
                 ]
                 if sermon.preached_on != preached_on:
                     sermon.preached_on = preached_on
