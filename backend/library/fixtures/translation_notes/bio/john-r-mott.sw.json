@@ -1,0 +1,30 @@
+{
+ "kind": "bio",
+ "slug": "john-r-mott",
+ "language": "sw",
+ "job_issue": 5093,
+ "note": [
+  "John 20:28 ('My Lord and my God') is verbatim from cheque-book.sw.json; Matthew 6:33 ('Seek ye first the kingdom of God') is verbatim from he-holds-my-tomorrows.sw.json (and many other sw works).",
+  "Jeremiah 45:5 ('Seekest thou great things for thyself? Seek them not.') is not in the shipped sw corpus, so it is self-rendered; a reviewer should check it against the Swahili Union Version.",
+  "The SVM watchword uses the wording of the shipped sw arthur-t-pierson bio: 'kuinjilishwa kwa ulimwengu katika kizazi hiki'."
+ ],
+ "references": [
+  {
+   "reference": "John 20:28",
+   "status": "mined",
+   "source_file": "cheque-book.sw.json",
+   "block_index": 8
+  },
+  {
+   "reference": "Jeremiah 45:5",
+   "status": "self_rendered",
+   "block_index": 6
+  },
+  {
+   "reference": "Matthew 6:33",
+   "status": "mined",
+   "source_file": "he-holds-my-tomorrows.sw.json",
+   "block_index": 6
+  }
+ ]
+}
