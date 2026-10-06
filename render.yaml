@@ -64,6 +64,13 @@ services:
       # that no deploy fired, rather than pretending it shipped.
       - key: RENDER_WEB_DEPLOY_HOOK
         sync: false
+      # Pins that rebuild to this API's own commit (library/golive.py). Only
+      # safe while the deploy train keeps every service on one commit, so it is
+      # set here, in the same Blueprint sync that turns auto-deploy off: under
+      # auto-deploy the reader can run a newer frontend-only commit than this
+      # API, and pinning would roll it back.
+      - key: DEPLOY_TRAIN
+        value: "true"
       # The reader's public origin (e.g. https://ochorus.com) — lets the admin
       # confirm after a deploy that a newly live locale is really in the built
       # sitemap. Optional: without it that check reports "unknown".

@@ -283,6 +283,11 @@ RENDER_WEB_DEPLOY_HOOK = os.getenv("RENDER_WEB_DEPLOY_HOOK", "").strip()
 # environments where the two aren't deploying together.
 RELEASE_COMMIT = os.getenv("RENDER_GIT_COMMIT", "").strip()
 
+# True once deploys go out through the deploy train (render.yaml), which keeps
+# every service on one commit. library/golive.py pins its web rebuild to
+# RELEASE_COMMIT only then.
+DEPLOY_TRAIN = os.getenv("DEPLOY_TRAIN", "").strip().lower() == "true"
+
 # Public origin of the READER (e.g. https://ochorus.com), used to confirm after a
 # deploy that a newly live locale actually appears in the built sitemap. Optional:
 # without it the post-deploy check reports "unknown" instead of guessing.

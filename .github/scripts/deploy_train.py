@@ -20,8 +20,9 @@ What it does, in order:
    the API's own commit (RENDER_GIT_COMMIT) is a safe `ref` for the rebuilds
    the admin fires between trains (library/golive.trigger_web_deploy).
 
-A missing hook secret skips that service with a warning, so the workflow is
-harmless before it is configured. DRY_RUN=1 prints the decision and fires
+Until both the API and web hook secrets are set the train deploys nothing
+(it reports what it would have done), so it is harmless before it is set up.
+A failed hook fails the run, so it shows red in Actions. DRY_RUN=1 prints the decision and fires
 nothing.
 """
 
@@ -47,6 +48,9 @@ HOOK_SECRETS = {
     "ochorus-web": "RENDER_DEPLOY_HOOK_WEB",
     "ochorus-lifecycle-email": "RENDER_DEPLOY_HOOK_CRON",
 }
+# The two the content gate couples: one without the other fails the web build.
+# The cron only shares the API's image, so a train can ship without it.
+REQUIRED = ("ochorus-api", "ochorus-web")
 LOOKBACK = 60  # commits to search for a green one
 
 
@@ -80,7 +84,7 @@ def last_deployed(service: str) -> str | None:
 
 
 def is_ancestor(a: str, b: str) -> bool:
-    return subprocess.run(["git", "merge-base", "--is-ancestor", a, b]).returncode == 0
+    return subprocess.run(["git", "merge-base", "--is-ancestor", a, b], check=False).returncode == 0
 
 
 def service_globs(render_yaml: str) -> dict[str, tuple[list[str], list[str]]]:
@@ -112,6 +116,10 @@ def why_deploy(target: str, last: str | None) -> tuple[str | None, str]:
     """(reason to deploy or None, a note for the summary)."""
     if last is None:
         return "no recorded deploy to compare against", ""
+    if subprocess.run(
+        ["git", "cat-file", "-e", f"{last}^{{commit}}"], check=False, capture_output=True
+    ).returncode:
+        return f"last deploy {last[:8]} is not on main any more", ""
     if is_ancestor(target, last):
         return None, "Production already holds the target."
     changed = sh("git", "diff", "--name-only", last, target).splitlines()
@@ -135,27 +143,42 @@ def main() -> int:
     summary = [f"target `{target[:8]}` · last {ANCHOR} deploy `{(last or 'unknown')[:8]}`"]
 
     reason, note = why_deploy(target, last)
-    if reason is None and os.environ.get("FORCE", "").lower() == "true":
+    # Force redeploys the target, but never moves production BACK: an older
+    # API would run old code against a schema its newer deploy migrated.
+    rollback = last is not None and target != last and is_ancestor(target, last)
+    if reason is None and os.environ.get("FORCE", "").lower() == "true" and not rollback:
         reason = "forced"
     if note:
         summary.append(note)
-    if reason:
+
+    hooks = {svc: os.environ.get(secret, "").strip() for svc, secret in HOOK_SECRETS.items()}
+    failed = False
+    if reason and not all(hooks[svc] for svc in REQUIRED):
+        # All or nothing: a web build without its API deploy waits on content
+        # the API never serves and fails 15 minutes later.
+        missing = ", ".join(HOOK_SECRETS[svc] for svc in REQUIRED if not hooks[svc])
+        summary.append(f"Would deploy ({reason}), but **not configured**: {missing}.")
+    elif reason:
         summary.append(f"Deploying all services to `{target[:8]}`: {reason}.")
-        for service, secret in HOOK_SECRETS.items():
-            hook = os.environ.get(secret, "").strip()
+        for service, hook in hooks.items():
             if not hook:
-                summary.append(f"- {service}: **skipped**, secret {secret} is not set")
+                summary.append(f"- {service}: skipped, secret {HOOK_SECRETS[service]} is not set")
             elif os.environ.get("DRY_RUN"):
                 summary.append(f"- {service}: would deploy (dry run)")
             else:
-                summary.append(f"- {service}: hook returned {fire(hook, target)}")
+                # Each hook on its own: one failing must not strand the others.
+                try:
+                    summary.append(f"- {service}: hook returned {fire(hook, target)}")
+                except OSError as e:  # URLError / HTTPError / timeout
+                    failed = True
+                    summary.append(f"- {service}: **hook failed** ({e})")
 
     text = "\n".join(summary)
     print(text)
     if path := os.environ.get("GITHUB_STEP_SUMMARY"):
         with open(path, "a") as f:
             f.write("## Deploy train\n\n" + text + "\n")
-    return 0
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

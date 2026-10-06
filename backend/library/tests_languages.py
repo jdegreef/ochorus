@@ -778,7 +778,9 @@ class GoLiveTests(TestCase):
 
     def test_the_deploy_hook_is_fired_when_configured(self):
         with self.settings(
-            RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy", RELEASE_COMMIT="abc123"
+            RENDER_WEB_DEPLOY_HOOK="https://hook.example/deploy",
+            RELEASE_COMMIT="abc123",
+            DEPLOY_TRAIN=True,
         ):
             with self._perm_and_ready(ready=True):
                 with mock.patch("library.golive.requests.post") as post:
