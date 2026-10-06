@@ -153,6 +153,56 @@
 		}
 	}
 
+	/* Taken off the shelf, a book shows its page block: on hover a gilt fore-
+	   edge (the ornament metal — silver in the cool palettes) peeks out past
+	   the cover's outer edge, behind it. It is wider than it shows so it fills
+	   the cover's rounded corners, and it sits on the inline end, so it moves
+	   to the left of the cover in a right-to-left locale. Decoration only. */
+	.book-card-cover {
+		isolation: isolate;
+	}
+	.book-card-cover::before {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		top: 5px;
+		bottom: 5px;
+		inset-inline-end: -4px;
+		width: 1.25rem;
+		border-start-end-radius: 6px;
+		border-end-end-radius: 6px;
+		background: linear-gradient(
+			to bottom,
+			color-mix(in srgb, var(--ornament) 70%, white),
+			var(--ornament) 30%,
+			color-mix(in srgb, var(--ornament) 72%, black)
+		);
+		opacity: 0;
+		pointer-events: none;
+	}
+	.book-card:hover .book-card-cover::before {
+		opacity: 1;
+	}
+	/* And a sweep of light crosses the cover once, like a lamp catching a
+	   glossy jacket as it turns (only with motion allowed — see below). */
+	.book-card-cover::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: var(--radius-card);
+		background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.22) 50%, transparent 62%) no-repeat;
+		background-size: 250% 100%;
+		background-position: 150% 0;
+		opacity: 0;
+		pointer-events: none;
+	}
+	@media print {
+		.book-card-cover::before,
+		.book-card-cover::after {
+			display: none;
+		}
+	}
+
 	/* Hovering tips the cover a little toward the reader, as if being taken off
 	   the shelf — on the card lift's own beat (.card-lift), only where there is
 	   a real hover (a tap would leave it stuck), mirrored right-to-left, and
@@ -167,6 +217,25 @@
 		}
 		:global([dir='rtl']) .book-card:hover .book-card-cover {
 			transform: perspective(700px) rotateY(9deg);
+		}
+		.book-card-cover::before {
+			transition: opacity var(--duration-fast);
+		}
+		.book-card:hover .book-card-cover::after {
+			animation: cover-sheen 800ms ease-out;
+		}
+		:global([dir='rtl']) .book-card:hover .book-card-cover::after {
+			animation-direction: reverse;
+		}
+	}
+	@keyframes cover-sheen {
+		from {
+			opacity: 1;
+			background-position: 150% 0;
+		}
+		to {
+			opacity: 1;
+			background-position: -50% 0;
 		}
 	}
 </style>
