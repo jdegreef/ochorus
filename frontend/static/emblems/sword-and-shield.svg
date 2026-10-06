@@ -1,0 +1,7 @@
+<!--GENERATED from frontend/src/lib/emblems.ts by npm run emblem:art; do not hand-edit.--><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+		<path d="M34 11L15 39" stroke="#6b7f8f" stroke-width="2.4" stroke-linecap="round"/>
+		<path d="M31.5 12.5l4 4" stroke="#a97a24" stroke-width="2.6" stroke-linecap="round"/>
+		<circle cx="36" cy="10" r="1.8" fill="#a97a24"/>
+		<path d="M22 9l11 3.6v9.4c0 7.4-4.6 12-11 15-6.4-3-11-7.6-11-15v-9.4z" fill="#4a6fb5"/>
+		<path d="M22 9l11 3.6v9.4c0 7.4-4.6 12-11 15z" fill="#2d4a80"/>
+		<path d="M22 15.5v13M16.5 21h11" stroke="#d9a441" stroke-width="2.1" stroke-linecap="round"/></svg>
