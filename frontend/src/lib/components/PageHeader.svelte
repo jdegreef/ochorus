@@ -2,6 +2,7 @@
 	import type { Snippet } from 'svelte';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 	import { sectionDest, type NavSection } from '$lib/contentNav';
+	import { hydrateSrc } from '$lib/hydrateSrc';
 
 	/**
 	 * The standard header for a top-level browse page (Books, Topics, Plans,
@@ -51,7 +52,13 @@
 	{#if section}
 		<div class="mb-3 flex items-center gap-3">
 			<span class="emblem-chip page-header-emblem" data-section={section}>
-				<img src="/marks/emblem-{section}.svg" alt="" width="29" height="29" />
+				<img
+					src="/marks/emblem-{section}.svg"
+					alt=""
+					width="29"
+					height="29"
+					use:hydrateSrc={{ src: `/marks/emblem-${section}.svg` }}
+				/>
 			</span>
 			<h1 class="text-h1">{title}</h1>
 		</div>
