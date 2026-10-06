@@ -32,7 +32,7 @@
   },
   "grace-for-every-sinner": {
     "title": "Ekkubo Erituusa eri Katonda: Ekisa eri Buli Mwonoonyi",
-    "description": "Omwezi ku mawulire amalungi agasinga obukadde okubaawo. Okukoowoola kwa Richard Baxter okuwoomerevu eri abo abatannakyuka, Moody ng'ayogera ku kkubo erituusa eri Katonda, ne «Byonna Bya Kisa» bya Charles Spurgeon — abalagirizi abasingayo obulambulukufu ku ngeri omwonoonyi gy'alokolebwamu, n'engeri gy'ayinza okukimanyiramu.",
+    "description": "Omwezi ku mawulire amalungi ag'edda okusinga gonna. Okukoowoola kwa Richard Baxter okuwoomerevu eri abo abatannakyuka, Moody ng'ayogera ku kkubo erituusa eri Katonda, ne «Byonna Bya Kisa» bya Charles Spurgeon — abalagirizi abasingayo obulambulukufu ku ngeri omwonoonyi gy'alokolebwamu, n'engeri gy'ayinza okukimanyiramu.",
     "note": [
       "Job #1509 (PR pending). Curated 3-book plan: a-call-to-the-unconverted, the-way-to-god, all-of-grace.",
       "Book titles quoted to match the shipped Luganda editions: «Byonna Bya Kisa» (all-of-grace.lg) for Spurgeon's 'All of Grace'; 'ekkubo erituusa eri Katonda' echoes the-way-to-god.lg title 'Ekkubo Erituusa eri Katonda'.",
@@ -41,7 +41,7 @@
   },
   "everything-for-christ": {
     "title": "Byonna ku lwa Kristo: Obulamu Obwayiibwa",
-    "description": "Okwewaayo n'omutima gwonna kuwera ki, era kuvaamu ki? Olujjukiro lwa David Brainerd olw'obumisioni olunoonya omutima, oluvannyuma n'ebyafaayo by'abasajja n'abakazi abaawaayo byonna ku lw'enjiri — okuyitibwa eri okwewaayo okwogerwa nga kuyita mu bulamu obwakwanukula.",
+    "description": "Okwewaayo n'omutima gwonna kuwera ki, era kuvaamu ki? Ebyawandiikibwa bya David Brainerd ebya buli lunaku mu buminsani, ebikebera omutima, oluvannyuma n'ebyafaayo by'abasajja n'abakazi abaawaayo byonna ku lw'enjiri — okuyitibwa eri okwewaayo okwogerwa nga kuyita mu bulamu obwakwanukula.",
     "note": [
       "Job #1510 (PR pending). Curated 2-book plan: life-and-diary-of-david-brainerd, men-and-women-who-gave-everything-2.",
       "Neither source book is in Luganda yet, so seed_plans will NOT create the (everything-for-christ, lg) row until both ship; the prose lands now, ready for then.",
@@ -50,13 +50,13 @@
   },
   "growing-in-wisdom-18-days": {
     "title": "Okukula mu Magezi mu Nnaku 18",
-    "description": "Obulagirizi bwa James DeGreef eri abayizi — okusoma okumu okutono buli lunaku okumala ennaku kkumi na munaana. Okuva ku kuzuula ekigendererwa kyo okutuuka ku kuzimba okulaba amaaso g'omu maaso, buli lunaku lugatta amagezi ag'omugaso n'Ekyawandiikibwa, okulowooza, n'okusaba."
+    "description": "Obulagirizi bwa James DeGreef eri abayizi — okusoma okumu okutono buli lunaku okumala ennaku kkumi na munaana. Okuva ku kuzuula ekigendererwa kyo okutuuka ku kwetegekera ebiseera byo eby'omu maaso, buli lunaku lugatta amagezi ag'omugaso n'Ekyawandiikibwa, okulowooza, n'okusaba."
   },
   "brave-for-god-24-true-stories": {
     "title": "Abavumu ku lwa Katonda: Emboozi 24 Ez'amazima",
-    "description": "Wiiki ssatu n'ekitundu ez'emboozi ez'amazima eri abasomi abato, emu buli lunaku: ebitabo byonna ebina ebya Abavumu ku lwa Katonda — abantu abaabulijjo amakumi abiri mu bana okuva mu buli nsonda y'ensi abeesiga Katonda ne bafuulibwa abavumu.",
+    "description": "Wiiki ssatu n'ekitundu ez'emboozi ez'amazima eri abasomi abato, emu buli lunaku: ebitabo byonna ebina eby'Abavumu ku lwa Katonda — abantu abaabulijjo amakumi abiri mu bana okuva mu buli nsonda y'ensi abeesiga Katonda ne bafuulibwa abavumu.",
     "note": [
-      "AI-drafted; awaiting native review. The shipped Luganda volumes spell the series three ways (Obuvumu / Abavumu / Omuzira ku lwa Katonda); this follows the series name in series.json (\"Abavumu ku lwa Katonda\") so the plan agrees with the book pages' series line. Change all three together once a native reviewer settles one."
+      "AI-drafted; awaiting native review. All four Luganda volumes now use the series name in series.json (\"Abavumu ku lwa Katonda\"), and this plan follows it so the plan agrees with the book pages' series line. If a native reviewer changes the series name, change the books, series.json and this plan together."
     ]
   }
 }
