@@ -10,7 +10,6 @@
 	import BrandMark from '$lib/components/BrandMark.svelte';
 	import GoogleButton from '$lib/components/GoogleButton.svelte';
 	import LoginPitch, { type PitchKind } from '$lib/components/LoginPitch.svelte';
-	import EmailCodeForm from '$lib/components/EmailCodeForm.svelte';
 	import { isSignupSource, noteSignupSource, promptSeen, signupStarted } from '$lib/signupSource';
 	import { readSavedSummary, type SavedSummary } from '$lib/savedSummary';
 	import { getLang } from '$lib/lang.svelte';
@@ -37,11 +36,7 @@
 	let error = $state<string | null>(null);
 	let busy = $state(false);
 	// Which confirmation card to show after an email is dispatched.
-	let sent = $state<null | 'signup' | 'reset'>(null);
-	// Creating an account defaults to the emailed code (EmailCodeForm), with the
-	// password form one tap away; signing in defaults to the password, with the
-	// code one tap away. `alt` is that tap, reset whenever the mode changes.
-	let alt = $state(false);
+	let sent = $state<null | 'magic' | 'signup' | 'reset'>(null);
 	let resentMsg = $state<string | null>(null);
 	let resentErr = $state<string | null>(null);
 	/** Seconds until Resend is allowed again — the button had no throttle at all. */
@@ -89,10 +84,7 @@
 	$effect(() => {
 		const raw = $page.url.searchParams.get('mode') ?? '';
 		const next = (MODES as string[]).includes(raw) ? (raw as Mode) : 'signin';
-		if (lastMode !== null && next !== lastMode) {
-			error = null;
-			alt = false;
-		}
+		if (lastMode !== null && next !== lastMode) error = null;
 		lastMode = next;
 		mode = next;
 
@@ -115,8 +107,6 @@
 	// the generic one.
 	const saved = $derived<SavedSummary | null>(pitch ? readSavedSummary(pitch) : null);
 	const savedTotal = $derived(saved?.total ?? 0);
-	/** Showing the emailed-code form (see `alt`). Never for a password reset. */
-	const codeFlow = $derived(mode === 'signup' ? !alt : mode === 'signin' && alt);
 	// Credit for a sign-up made from here: the prompt that linked here
 	// (`?src=`), else the Bookshelf / Notebook page the reader was headed for.
 	// The pitch page is itself the prompt for those two, so arriving on its
@@ -173,6 +163,20 @@
 		else password = '';
 	}
 
+	async function magicLink() {
+		if (!email) {
+			error = t('login.enterEmailFirst');
+			return;
+		}
+		busy = true;
+		error = null;
+		if (mode === 'signup') signupStarted();
+		const err = await auth.signInWithMagicLink(email);
+		busy = false;
+		if (err) error = t(authErrorKey(err));
+		else sent = 'magic';
+	}
+
 	async function google() {
 		busy = true;
 		error = null;
@@ -207,7 +211,12 @@
 	}
 
 	const sentBody = $derived(
-		(sent === 'signup' ? t('login.sentSignup') : t('login.sentReset')).replace('%email%', email)
+		(sent === 'signup'
+			? t('login.sentSignup')
+			: sent === 'reset'
+				? t('login.sentReset')
+				: t('login.sentMagic')
+		).replace('%email%', email)
 	);
 </script>
 
@@ -259,22 +268,6 @@
 				</div>
 			{/if}
 
-			{#if codeFlow}
-				<div class="rounded-card border border-border bg-surface p-6">
-					{#if pitch}
-						<h2 class="text-h2">{formTitle}</h2>
-						<p class="mt-1 mb-4 text-small text-muted">
-							{mode === 'signup' ? t('login.pitchFree') : t('login.syncNote')}
-						</p>
-					{/if}
-					<EmailCodeForm
-						bind:email
-						counts={mode === 'signup'}
-						cta={pitch && mode === 'signup' ? t(`${pitchKey}Cta`) : undefined}
-						onPassword={() => (alt = !alt)}
-					/>
-				</div>
-			{:else}
 			<form class="rounded-card border border-border bg-surface p-6" onsubmit={submit}>
 				{#if pitch}
 					<h2 class="text-h2">{formTitle}</h2>
@@ -361,10 +354,10 @@
 					<button
 						class="btn btn-ghost mt-2 w-full"
 						type="button"
-						onclick={() => (alt = !alt)}
+						onclick={magicLink}
 						disabled={busy || !auth.enabled}
 					>
-						{t(mode === 'signup' ? 'login.useCode' : 'login.emailCode')}
+						{t('login.magicLink')}
 					</button>
 
 					{#if !pitch}
@@ -381,7 +374,6 @@
 					</p>
 				{/if}
 			</form>
-			{/if}
 
 			<p class="mt-4 text-center text-small text-muted">
 				{#if mode === 'signin'}
