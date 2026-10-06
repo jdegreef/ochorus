@@ -60,7 +60,9 @@
 			return;
 		}
 		password = '';
-		sent = true;
+		// Signed in already (no email confirmation): the panel closes itself, and
+		// no link was sent to tell the reader about.
+		if (!auth.user) sent = true;
 	}
 
 	async function resend() {

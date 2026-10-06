@@ -153,7 +153,11 @@
 		} else if (mode === 'signup') {
 			signupStarted();
 			err = await auth.signUp(email, password, redirectTarget);
-			if (!err) sent = 'signup';
+			// Signed in already (the project doesn't ask for email confirmation):
+			// no link was sent, so no "check your email" card — the $effect above
+			// routes on. Supabase runs the auth listener before signUp resolves,
+			// so `auth.user` is set by now when a session came back.
+			if (!err && !auth.user) sent = 'signup';
 		} else {
 			err = await auth.signIn(email, password);
 			// success routes via the $effect above

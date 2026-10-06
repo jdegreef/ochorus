@@ -7,7 +7,7 @@ import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it, vi } 
 const auth = vi.hoisted(() => ({
 	enabled: true,
 	initialized: true,
-	user: null,
+	user: null as { email: string } | null,
 	signUp: vi.fn(),
 	resendSignup: vi.fn(),
 	signInWithGoogle: vi.fn()
@@ -52,6 +52,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+	auth.user = null;
 	auth.signUp.mockReset().mockResolvedValue(null);
 	auth.resendSignup.mockReset().mockResolvedValue(null);
 	signupStarted.mockReset();
@@ -82,6 +83,20 @@ describe('SignUpForm', () => {
 		// No session yet (email confirmation): say where the link went.
 		expect(target.querySelector('form')).toBeNull();
 		expect(target.querySelector('[role=status]')).not.toBeNull();
+	});
+
+	it('says nothing about an email when sign-up signs the reader straight in', async () => {
+		// No email confirmation: Supabase's listener has set the session by the
+		// time signUp resolves, and no link went out.
+		auth.signUp.mockImplementation(async (email: string) => {
+			auth.user = { email };
+			return null;
+		});
+		fillAndSubmit();
+		await tick();
+		flushSync();
+		expect(target.querySelector('form')).not.toBeNull();
+		expect(target.querySelector('[role=status]')).toBeNull();
 	});
 
 	it('keeps the form and shows the error when sign-up fails', async () => {
