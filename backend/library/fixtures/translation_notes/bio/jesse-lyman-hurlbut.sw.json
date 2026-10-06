@@ -1,0 +1,17 @@
+{
+ "kind": "bio",
+ "slug": "jesse-lyman-hurlbut",
+ "language": "sw",
+ "job_issue": 5091,
+ "note": [
+  "The only scripture is the opening of the Lord's Prayer (Matthew 6:9, 'Our Father who art in heaven'), in a prayer callout and FAQ 8, pasted verbatim from school-of-prayer.sw.json."
+ ],
+ "references": [
+  {
+   "reference": "Matthew 6:9",
+   "status": "mined",
+   "source_file": "school-of-prayer.sw.json",
+   "block_index": 27
+  }
+ ]
+}

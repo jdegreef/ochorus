@@ -563,8 +563,11 @@ class SeedFieldCoverageTests(SimpleTestCase):
 
     # Owned by refresh_translation_digests, never the fixture: a seed that wrote
     # them would reset every translation's baseline on each deploy and nothing
-    # would ever read as stale (library/translation_staleness).
-    DIGESTS = frozenset({"content_digest", "english_digest"})
+    # would ever read as stale (library/translation_staleness). The release's
+    # change detectors (library/deploy_fingerprints) are DB-only the same way.
+    DIGESTS = frozenset(
+        {"content_digest", "english_digest", "digest_source", "corrections_key"}
+    )
 
     def _content_fields(self, model, exclude):
         return {
@@ -3211,7 +3214,10 @@ class ContentSourceCoverageTests(SimpleTestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.repo_root = Path(__file__).resolve().parents[2]
-        cls.render_yaml = (cls.repo_root / "render.yaml").read_text()
+        # Only ochorus-web's block: the API and cron carry buildFilters of their
+        # own (backend/** minus tests), which say nothing about the reader.
+        render_yaml = (cls.repo_root / "render.yaml").read_text()
+        cls.render_yaml = render_yaml[render_yaml.index("  - name: ochorus-web\n") :]
         cls.roots = json.loads(
             (Path(__file__).resolve().parent / "content_sources.json").read_text()
         )["roots"]
