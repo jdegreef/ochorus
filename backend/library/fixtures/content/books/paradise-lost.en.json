@@ -19,7 +19,7 @@
   "source_url": "https://standardebooks.org/ebooks/john-milton/paradise-lost",
   "attribution": "Public domain — John Milton's Paradise Lost, the twelve-book second edition of 1674. Text from the Standard Ebooks edition (CC0), transcribed from page scans in the HathiTrust Digital Library, with its spelling largely modernised. Complete: all twelve Books, each with Milton's prose Argument; Standard Ebooks does not include his note on the verse.",
   "cover_url": "/covers/paradise-lost.svg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/paradise-lost.pdf?download=paradise-lost.pdf",
   "cover_color": "#2e3a55",
   "series": null,
   "series_position": null,

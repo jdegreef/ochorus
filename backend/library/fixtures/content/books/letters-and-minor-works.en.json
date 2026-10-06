@@ -18,7 +18,7 @@
   "source_url": "https://en.wikisource.org/wiki/Blaise_Pascal",
   "attribution": "Public domain — Blaise Pascal's letters, translated by Mary Louise Booth, and minor works, translated by Orlando Williams Wight (1859), as printed in the Harvard Classics, vol. 48 (1910); text from Wikisource. The scientific treatises, the doubtful Discourse on the Passion of Love and the editors' notes are not included.",
   "cover_url": "/covers/art/letters-and-minor-works.jpg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/letters-and-minor-works.pdf?download=letters-and-minor-works.pdf",
   "cover_color": "#3e4f46",
   "series": null,
   "series_position": null,

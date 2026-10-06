@@ -159,6 +159,17 @@ class EpubTests(TestCase):
         # "About Ochorus" sits between the title page and the contents.
         self.assertLess(html.index('class="ochorus"'), html.index('class="contents"'))
 
+    def test_an_unknown_death_year_is_not_printed_as_living(self):
+        author = self.book.author
+        author.birth_year, author.death_year = 1343, None
+        author.save()
+        bio = self._zip(self._get()).read("OEBPS/about-author.xhtml").decode()
+        self.assertNotIn("1343", bio)
+        author.birth_year = 1938  # a living author keeps the open range
+        author.save()
+        bio = self._zip(self._get()).read("OEBPS/about-author.xhtml").decode()
+        self.assertIn("1938–<", bio)
+
     def test_a_short_biography_follows_about_ochorus(self):
         z = self._zip(self._get())
         bio = z.read("OEBPS/about-author.xhtml").decode()

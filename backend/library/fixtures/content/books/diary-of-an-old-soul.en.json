@@ -19,7 +19,7 @@
   "source_url": "https://standardebooks.org/ebooks/george-macdonald/poetry",
   "attribution": "Public domain — George MacDonald's A Book of Strife, in the Form of the Diary of an Old Soul (1880). Text from the Standard Ebooks edition of MacDonald's Poetry (CC0), which follows the 1880 printing. All 366 daily stanzas and the dedication are complete; each month is one chapter.",
   "cover_url": "/covers/diary-of-an-old-soul.svg",
-  "pdf_url": "",
+  "pdf_url": "https://eywunobxqijvwymdzlwy.supabase.co/storage/v1/object/public/book-pdfs/diary-of-an-old-soul.pdf?download=diary-of-an-old-soul.pdf",
   "cover_color": "#5a4637",
   "series": null,
   "series_position": null,

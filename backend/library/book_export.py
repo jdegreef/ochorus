@@ -416,11 +416,17 @@ def _ochorus_page(ed: Edition) -> str:
     )
 
 
+#: An open range ("1938–") says the author is living. Someone born before this
+#: with no death year (Julian of Norwich) simply has no recorded one, so the
+#: page prints no dates and leaves them to the bio.
+OPEN_DATES_AFTER = 1900
+
+
 def _author_page(ed: Edition) -> str:
     """The one-page biography: name, life dates, the bio, and where to read more."""
     a = ed.book.author
     parts = [f'<h1>{_e(ed.strings["author_title"])}</h1>', f'<p class="name">{_e(ed.author)}</p>']
-    if a.birth_year:
+    if a.birth_year and (a.death_year or a.birth_year > OPEN_DATES_AFTER):
         parts.append(f'<p class="dates">{a.birth_year}–{a.death_year or ""}</p>')
     parts.append(ed.bio)
     link = author_url(ed.book)
