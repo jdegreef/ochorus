@@ -77,7 +77,7 @@ WORKS: dict[str, Work] = {
         author_slug="a-b-simpson",
         source="a-b-simpson.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus — not published by, affiliated with, or endorsed by The "
             "Christian and Missionary Alliance or any body descended from "
             "Simpson's ministry. A. B. Simpson's own writings are in the public "
@@ -94,7 +94,7 @@ WORKS: dict[str, Work] = {
         author_slug="jonathan-edwards",
         source="jonathan-edwards.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Jonathan Edwards's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version, "
@@ -109,7 +109,7 @@ WORKS: dict[str, Work] = {
         author_slug="richard-baxter",
         source="richard-baxter.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Richard Baxter's own writings are in the public domain; his "
             "seventeenth-century English has been rendered into modern prose "
             "rather than quoted, and readers are encouraged to go to the originals "
@@ -127,7 +127,7 @@ WORKS: dict[str, Work] = {
         # Nee's own works are NOT public domain — this companion quotes only the
         # KJV and paraphrases; the disavowal below is essential and must ship.
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by any "
             "organisation holding rights in the writings of Watchman Nee. All "
             "descriptions of his teaching are the present author's own summaries; "
@@ -145,7 +145,7 @@ WORKS: dict[str, Work] = {
         author_slug="charles-h-spurgeon",
         source="charles-h-spurgeon.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by the Metropolitan "
             "Tabernacle or Spurgeon's College. Charles H. Spurgeon's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
@@ -160,7 +160,7 @@ WORKS: dict[str, Work] = {
         author_slug="andrew-murray",
         source="andrew-murray.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Andrew Murray's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -174,7 +174,7 @@ WORKS: dict[str, Work] = {
         author_slug="hannah-whitall-smith",
         source="hannah-whitall-smith.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Hannah Whitall Smith's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -188,7 +188,7 @@ WORKS: dict[str, Work] = {
         author_slug="catherine-booth",
         source="catherine-booth.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by The Salvation "
             "Army. Catherine Booth's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
@@ -203,7 +203,7 @@ WORKS: dict[str, Work] = {
         author_slug="augustine-of-hippo",
         source="augustine-of-hippo.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Augustine wrote in Latin; where his words are quoted, it is in "
             "public-domain English translations. Augustine's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them directly. "
@@ -218,7 +218,7 @@ WORKS: dict[str, Work] = {
         author_slug="amanda-berry-smith",
         source="amanda-berry-smith.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Amanda Berry Smith's own writings are in the public "
             "domain and freely available; readers are encouraged to go to them "
             "directly. Scripture quotations are from the Authorised (King James) "
@@ -233,7 +233,7 @@ WORKS: dict[str, Work] = {
         author_slug="hudson-taylor",
         source="hudson-taylor.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. "
             "Not published by, affiliated with, or endorsed by OMF International. Hudson Taylor's own writings are in the public "
             "domain and freely available; readers are encouraged to go to them "
@@ -249,7 +249,7 @@ WORKS: dict[str, Work] = {
         author_slug="athanasius-of-alexandria",
         source="athanasius-of-alexandria.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. "
             "Athanasius wrote in Greek; where his words are quoted, it is in public-domain English translations. Athanasius's own writings are in the public "
             "domain and freely available; readers are encouraged to go to them "
@@ -265,7 +265,7 @@ WORKS: dict[str, Work] = {
         author_slug="julia-foote",
         source="julia-foote.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Julia A. J. Foote's own writings are in the public "
             "domain and freely available; readers are encouraged to go to them "
             "directly. Scripture quotations are from the Authorised (King James) "
@@ -280,7 +280,7 @@ WORKS: dict[str, Work] = {
         author_slug="jeanne-guyon",
         source="jeanne-guyon.md",
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. "
             "Madame Guyon wrote in French; where her words are quoted, it is in a public-domain English translation. Jeanne Guyon's own writings are in the public "
             "domain and freely available; readers are encouraged to go to them "
@@ -296,7 +296,7 @@ WORKS: dict[str, Work] = {
         author_slug="r-a-torrey",
         source="r-a-torrey.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. R. A. Torrey's own writings are in the public domain and "
             "freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -310,7 +310,7 @@ WORKS: dict[str, Work] = {
         author_slug="dwight-l-moody",
         source="dwight-l-moody.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by the "
             "Moody Bible Institute or Moody Church. Dwight L. Moody's own "
             "writings are in the public domain and freely available; readers "
@@ -326,7 +326,7 @@ WORKS: dict[str, Work] = {
         author_slug="john-bunyan",
         source="john-bunyan.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. John Bunyan's own writings are in the public domain and "
             "freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -340,7 +340,7 @@ WORKS: dict[str, Work] = {
         author_slug="john-wesley",
         source="john-wesley.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Not published by, affiliated with, or endorsed by any "
             "Methodist church or body. John Wesley's own writings are in the "
             "public domain and freely available; readers are encouraged to go "
@@ -356,7 +356,7 @@ WORKS: dict[str, Work] = {
         author_slug="charles-finney",
         source="charles-finney.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Charles G. Finney's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them "
             "directly. Scripture quotations are from the Authorised (King "
@@ -371,7 +371,7 @@ WORKS: dict[str, Work] = {
         author_slug="john-owen",
         source="john-owen.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. His seventeenth-century English has been rendered into "
             "modern prose except where briefly quoted. John Owen's own writings "
             "are in the public domain and freely available; readers are "
@@ -387,7 +387,7 @@ WORKS: dict[str, Work] = {
         author_slug="e-m-bounds",
         source="e-m-bounds.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. E. M. Bounds's own writings are in the public domain and "
             "freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -401,7 +401,7 @@ WORKS: dict[str, Work] = {
         author_slug="frederick-brotherton-meyer",
         source="frederick-brotherton-meyer.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. F. B. Meyer's own writings are in the public domain and "
             "freely available; readers are encouraged to go to them directly. "
             "Scripture quotations are from the Authorised (King James) Version."
@@ -415,7 +415,7 @@ WORKS: dict[str, Work] = {
         author_slug="george-whitefield",
         source="george-whitefield.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. George Whitefield's own writings are in the public domain "
             "and freely available; readers are encouraged to go to them "
             "directly. Scripture quotations are from the Authorised (King "
@@ -430,7 +430,7 @@ WORKS: dict[str, Work] = {
         author_slug="ignatius-of-antioch",
         source="ignatius-of-antioch.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Ignatius wrote in Greek; where his words are quoted, it "
             "is in a public-domain English translation. Ignatius's own writings "
             "are in the public domain and freely available; readers are "
@@ -446,7 +446,7 @@ WORKS: dict[str, Work] = {
         author_slug="john-calvin",
         source="john-calvin.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Calvin wrote in Latin and French; where his words are "
             "quoted, it is in public-domain English translations. John Calvin's "
             "own writings are in the public domain and freely available; "
@@ -462,7 +462,7 @@ WORKS: dict[str, Work] = {
         author_slug="martin-luther",
         source="martin-luther.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. Luther wrote in German and Latin; where his words are "
             "quoted, it is in public-domain English translations. Martin "
             "Luther's own writings are in the public domain and freely "
@@ -480,7 +480,7 @@ WORKS: dict[str, Work] = {
         author_slug="a-w-tozer",
         source="a-w-tozer.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of A. W. Tozer. "
             "All descriptions of his teaching are the present author's own "
@@ -500,7 +500,7 @@ WORKS: dict[str, Work] = {
         author_slug="martyn-lloyd-jones",
         source="martyn-lloyd-jones.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Martyn Lloyd- "
             "Jones. All descriptions of his teaching are the present author's "
@@ -520,7 +520,7 @@ WORKS: dict[str, Work] = {
         author_slug="corrie-ten-boom",
         source="corrie-ten-boom.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Corrie ten "
             "Boom. All descriptions of her teaching are the present author's "
@@ -540,7 +540,7 @@ WORKS: dict[str, Work] = {
         author_slug="derek-prince",
         source="derek-prince.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Derek Prince. "
             "All descriptions of his teaching are the present author's own "
@@ -560,7 +560,7 @@ WORKS: dict[str, Work] = {
         author_slug="dietrich-bonhoeffer",
         source="dietrich-bonhoeffer.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Dietrich "
             "Bonhoeffer. All descriptions of his teaching are the present "
@@ -580,7 +580,7 @@ WORKS: dict[str, Work] = {
         author_slug="gareth-evans",
         source="gareth-evans.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Gareth Evans. "
             "All descriptions of his teaching are the present author's own "
@@ -601,7 +601,7 @@ WORKS: dict[str, Work] = {
         author_slug="c-s-lewis",
         source="c-s-lewis.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "the C. S. Lewis estate or any organisation holding rights in the "
             "writings of C. S. Lewis. All descriptions of his teaching are the "
@@ -622,7 +622,7 @@ WORKS: dict[str, Work] = {
         author_slug="george-macdonald",
         source="george-macdonald.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. George MacDonald's own words are quoted only briefly, from "
             "the text of his Unspoken Sermons in the Ochorus library; elsewhere "
             "his teaching is set out in modern prose. His writings are in the "
@@ -644,7 +644,7 @@ WORKS: dict[str, Work] = {
         author_slug="g-k-chesterton",
         source="g-k-chesterton.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any society or body devoted to G. K. Chesterton's memory or "
             "cause. Short quotations from Orthodoxy (1908) and The Everlasting "
@@ -666,7 +666,7 @@ WORKS: dict[str, Work] = {
         author_slug="elisabeth-elliot",
         source="elisabeth-elliot.md",  # description + about in its front matter
         attribution=(
-            "An independent work of exposition, summary and appreciation by "
+            "© Ochorus. An independent work of exposition, summary and appreciation by "
             "Ochorus. It is not published by, affiliated with, or endorsed by "
             "any organisation holding rights in the writings of Elisabeth "
             "Elliot. All descriptions of her teaching are the present author's "
