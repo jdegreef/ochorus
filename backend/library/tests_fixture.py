@@ -563,8 +563,11 @@ class SeedFieldCoverageTests(SimpleTestCase):
 
     # Owned by refresh_translation_digests, never the fixture: a seed that wrote
     # them would reset every translation's baseline on each deploy and nothing
-    # would ever read as stale (library/translation_staleness).
-    DIGESTS = frozenset({"content_digest", "english_digest"})
+    # would ever read as stale (library/translation_staleness). The release's
+    # change detectors (library/deploy_fingerprints) are DB-only the same way.
+    DIGESTS = frozenset(
+        {"content_digest", "english_digest", "digest_source", "corrections_key"}
+    )
 
     def _content_fields(self, model, exclude):
         return {
