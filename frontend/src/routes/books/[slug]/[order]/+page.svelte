@@ -81,12 +81,19 @@
 	import NotesDrawer from '$lib/components/NotesDrawer.svelte';
 	import LanguageFallbackNotice from '$lib/components/LanguageFallbackNotice.svelte';
 	import ChapterEndAsk from '$lib/components/ChapterEndAsk.svelte';
+	import QandA from '$lib/components/QandA.svelte';
 	import { midBook } from '$lib/midBook.svelte';
 	import { editionSeo, languageFallback } from '$lib/languageFallback';
 
 	let { data } = $props();
 	const chapter = $derived(data.chapter as Chapter);
 	const slug = $derived(data.slug as string);
+	// The young-reader editions' "Talk about it" (`Chapter.study_questions`), in
+	// QandA's shape; a children's edition speaks to the grown-up reading aloud.
+	const chapterQuestions = $derived(
+		(chapter.study_questions ?? []).map((qa) => ({ q: qa.question, a: qa.answer }))
+	);
+	const childrens = $derived(slug.endsWith('-children'));
 	const language = $derived(data.language as string);
 	// 'modern' when reading the Modern English edition, else null. Carried in the
 	// URL and preserved across every in-reader chapter link.
@@ -2031,6 +2038,19 @@
 		<!-- The chapter's ending. In page mode it starts on a fresh column, so the
 		     last page of every chapter is where to go next (see .chapter-end). -->
 		<div class="chapter-end" bind:this={chapterEndEl}>
+			<!-- Talk about it: the young-reader editions' questions, first in the
+			     ending so a family reading aloud meets them before anything else.
+			     Answers stay folded — a child answers first, the grown-up taps for
+			     the note. Plain text, so no {@html}. -->
+			{#if chapterQuestions.length}
+				<QandA
+					items={chapterQuestions}
+					title={childrens ? t('reader.questionsYoung') : t('reader.questionsTeens')}
+					hint={childrens ? t('reader.questionsHintYoung') : t('reader.questionsHintTeens')}
+					headingClass="section-heading"
+					openFirst={false}
+				/>
+			{/if}
 			<!-- A plan day's reflection: what the reader takes from today's reading,
 			     written straight into their Notebook — filed in a collection named for
 			     the plan, so a whole plan's reflections gather in one place. Loaded on

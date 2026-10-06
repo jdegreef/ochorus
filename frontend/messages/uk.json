@@ -1444,5 +1444,9 @@
   "audience_parents_printable": "Ці книжки мають безкоштовні PDF і EPUB для друку — шукайте «Завантажити» на сторінці книжки:",
   "audience_home_heading": "Для юних читачів і підлітків",
   "audience_see_young": "Усе для юних читачів",
-  "audience_see_teens": "Усе для підлітків"
+  "audience_see_teens": "Усе для підлітків",
+  "reader_questions_young": "Поговоріть разом",
+  "reader_questions_teens": "Запитання для роздумів",
+  "reader_questions_hint_young": "Спершу поставте запитання, а потім торкніться одного, щоб побачити примітку для дорослих.",
+  "reader_questions_hint_teens": "Спершу подумай сам, а потім торкнися запитання, щоб побачити один із варіантів відповіді."
 }

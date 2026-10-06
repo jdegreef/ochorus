@@ -2081,6 +2081,8 @@ class ChapterDetailSerializer(serializers.ModelSerializer):
             "prev", "next",
             # The scripture index row at the foot of the chapter — see above.
             "scripture_refs",
+            # The young-reader editions' "Talk about it" (``Chapter``); [] elsewhere.
+            "study_questions",
         ]
 
     def _batch(self, obj):

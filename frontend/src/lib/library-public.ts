@@ -381,6 +381,12 @@ export interface Chapter {
 	 * build simply renders no row.
 	 */
 	scripture_refs?: { ref: string; page: ScripturePageRef | null }[];
+	/**
+	 * The young-reader editions' end-of-chapter questions — plain text, the
+	 * answers written for the adult reading along. Empty (or absent, from an
+	 * API behind this build) everywhere else.
+	 */
+	study_questions?: { question: string; answer: string }[];
 }
 
 /** Where a cited reference's scripture page lives, when one exists. */

@@ -91,6 +91,8 @@ DEFAULTED_OK = {
     ("library.book", "cover_title"),
     ("library.book", "cover_byline"),
     ("library.chapter", "body_text"),
+    # Empty on every chapter outside the young-reader editions.
+    ("library.chapter", "study_questions"),
     ("library.sermon", "source_type"),
     ("library.sermon", "body_text"),
     ("library.sermon", "summary"),  # "In brief" TL;DR — blank default, fixture-owned

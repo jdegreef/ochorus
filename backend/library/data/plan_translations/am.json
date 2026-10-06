@@ -135,5 +135,19 @@
   "note": [
    "AI-drafted; awaiting native review. No am plan job; the test demands it once a-call-to-the-unconverted.am (job #3731) ships beside the already-shipped the-way-to-god.am and all-of-grace.am, so seed_plans creates the am row. Book titles quoted verbatim from the am editions; names as on the am book pages (ሪቻርድ ባክስተር, ዲ. ኤል. ሙዲ, ቻርልስ ስፐርጀን)."
   ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "የቤተሰብ አምልኮ፦ የመንገደኛው ጉዞ",
+  "description": "ለልጆችና አብረዋቸው ለሚያነቡ ትልልቅ ሰዎች የአምስት ደቂቃ የቤተሰብ አምልኮ፣ ለሦስት ሳምንት ተኩል ያህል ምሽቶች። በየምሽቱ አንድ አጭር ምዕራፍ ጮክ ብላችሁ አንብቡ፦ መጀመሪያ «የመንገደኛው ጉዞ (ለልጆች)»፣ ወደ ሰማያዊቱ ከተማ የሚጓዘውን መንገደኛ፣ ከዚያም «ለገበሬው የተነገሩ ንግግሮች (ለልጆች)»፣ የስፐርጀንን የእርሻ ሥዕሎች።",
+  "note": [
+   "AI-drafted; awaiting native review. Both source books ship in am (pilgrims-progress-children, talks-to-the-farmer-children), so seed_plans creates the am row and PlanTranslationCoverageTests demands this prose. Book titles quoted verbatim from the am editions; «የሰማያዊቱ ከተማ» and «ስፐርጀን» as in their text. Addresses the family in the plural (አንብቡ), since the plan is read aloud together. Unlike the English card it promises no talk-about-it questions: those ship on the English chapters only."
+  ]
+ },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "የቤተሰብ አምልኮ፦ እግዚአብሔርን የታመኑ ጀግኖች",
+  "description": "የአምስት ሳምንት የአምስት ደቂቃ የቤተሰብ አምልኮ፦ እግዚአብሔርን በሁሉ ነገር የታመኑ የሦስት ሰዎች እውነተኛ ታሪኮች፣ በየምሽቱ አንድ አጭር ምዕራፍ ጮክ ተብሎ የሚነበብ — ጆርጅ ሙለርና ወላጅ አልባ ልጆቹ («የእምነት ሕይወት (ለልጆች)»)፣ ወደ ቻይና የሄደው ሃድሰን ቴይለር («ወደ ኋላ መለስ ብሎ ማየት (ለልጆች)»)፣ እንዲሁም በባርነት ተወልዳ ለአንድ ጥንድ ጫማ የጸለየችው አማንዳ ስሚዝ («የአማንዳ ስሚዝ የሕይወት ታሪክ (ለልጆች)»)።",
+  "note": [
+   "AI-drafted; awaiting native review. All three source books ship in am, so seed_plans creates the am row. Book titles quoted verbatim from the am editions; «ጆርጅ ሙለር» and «ቻይና» as in their text («ሃድሰን» is the am edition's own name for Taylor; the surname is transliterated here). Promises no talk-about-it questions: those ship on the English chapters only."
+  ]
  }
 }

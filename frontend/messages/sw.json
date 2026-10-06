@@ -1444,5 +1444,9 @@
   "audience_parents_printable": "Hivi vina PDF na EPUB za bure za kuchapisha — tafuta Pakua kwenye ukurasa wa kitabu:",
   "audience_home_heading": "Kwa wasomaji wachanga na vijana",
   "audience_see_young": "Kila kitu kwa wasomaji wachanga",
-  "audience_see_teens": "Kila kitu kwa vijana"
+  "audience_see_teens": "Kila kitu kwa vijana",
+  "reader_questions_young": "Zungumzeni pamoja",
+  "reader_questions_teens": "Maswali ya kufikiria",
+  "reader_questions_hint_young": "Ulizeni maswali kwanza — kisha gusa swali moja kuona maelezo kwa watu wazima.",
+  "reader_questions_hint_teens": "Fikiri kwanza — kisha gusa swali kuona njia moja ya kulijibu."
 }

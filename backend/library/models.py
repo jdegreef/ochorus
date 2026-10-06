@@ -754,6 +754,13 @@ class Chapter(models.Model):
     title = models.CharField(max_length=300, blank=True)
     # Cleaned, structured HTML (paragraphs, headings, blockquotes).
     body_html = models.TextField()
+    # Answered study questions for the end of the chapter — the young-reader
+    # editions' "Talk about it": a list of {"question", "answer"} objects, both
+    # PLAIN TEXT (rendered escaped, so no sanitize path), the answers written for
+    # the adult reading along. As `Sermon.study_questions`: agent-written,
+    # grounded strictly in this chapter, shipped in the book's fixture and
+    # upserted by seed_books; an empty list shows nothing.
+    study_questions = models.JSONField(default=list, blank=True)
     # Plain text derived from body_html — what full-text search matches and
     # snippets. Kept by save(); fixture loads bypass save(), so the
     # backfill_body_text command (run on every deploy) fills any gaps.
