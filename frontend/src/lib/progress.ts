@@ -158,6 +158,23 @@ export function isFinished(slug: string, kind: WorkKind = 'book'): boolean {
 }
 
 /**
+ * The work this TAB last finished, and when — in memory, never stored or
+ * synced. A finish that arrives from another device, a book stamped through
+ * "I've already read this", or one finished in an earlier visit never sets
+ * it; so it marks the reader's own moment of finishing, here, and nothing
+ * else. `takeJustFinished` reads it once (the finished-book celebration).
+ */
+let justFinished: { key: string; at: number } | null = null;
+
+/** True — once — if this tab finished the work within `withinMs`. */
+export function takeJustFinished(slug: string, kind: WorkKind = 'book', withinMs = 60_000): boolean {
+	const key = workSlugKey(kind, slug);
+	if (justFinished?.key !== key || Date.now() - justFinished.at > withinMs) return false;
+	justFinished = null;
+	return true;
+}
+
+/**
  * Mark a work finished — reaching the end of the last chapter / single document,
  * or an explicit tap. Idempotent: already-finished is a no-op, so the readers
  * can call it freely on every scroll-to-the-end without re-pushing. Requires an
@@ -173,6 +190,7 @@ export function markFinished(slug: string, kind: WorkKind = 'book'): boolean {
 	if (!rec || rec.finished_at != null) return false;
 	rec.finished_at = Date.now();
 	write(map);
+	justFinished = { key, at: Date.now() };
 	// Not debounced: a discrete action, and coalescing it with scroll saves is a
 	// hazard for the un-finish direction (see readingSync.setFinished).
 	readingSync.setFinished(kind, slug, rec, true);
@@ -294,6 +312,7 @@ export function unmarkFinished(slug: string, kind: WorkKind = 'book'): void {
 	if (!browser) return;
 	const map = read();
 	const key = workSlugKey(kind, slug);
+	if (justFinished?.key === key) justFinished = null;
 	const rec = map[key];
 	if (!rec || rec.finished_at == null) return;
 	rec.finished_at = null;

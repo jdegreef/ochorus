@@ -5,6 +5,7 @@ import {
 	saveScrollAnchor,
 	getProgressRecord,
 	markFinished,
+	takeJustFinished,
 	unmarkFinished,
 	isFinished,
 	offerFinishUnopened,
@@ -93,6 +94,25 @@ describe('finishing a work', () => {
 		expect(isFinished('humility')).toBe(true);
 		expect(getProgressRecord('humility')?.finished_at).toBeTypeOf('number');
 		expect(markFinished('humility')).toBe(false); // already finished — no-op
+	});
+
+	it('tells the finished-book celebration, once, that this tab just finished it', () => {
+		// Its own slug: the signal is module state, and earlier tests finish 'humility'.
+		saveProgress('abide-in-christ', 3, 'en');
+		expect(takeJustFinished('abide-in-christ')).toBe(false);
+		markFinished('abide-in-christ');
+		expect(takeJustFinished('other-book')).toBe(false);
+		expect(takeJustFinished('abide-in-christ')).toBe(true);
+		expect(takeJustFinished('abide-in-christ')).toBe(false); // taken
+	});
+
+	it('forgets the just-finished moment on Undo, and after its window', () => {
+		saveProgress('humility', 3, 'en');
+		markFinished('humility');
+		unmarkFinished('humility');
+		expect(takeJustFinished('humility')).toBe(false);
+		markFinished('humility');
+		expect(takeJustFinished('humility', 'book', -1)).toBe(false); // window already over
 	});
 
 	it('does nothing for a work with no progress record', () => {

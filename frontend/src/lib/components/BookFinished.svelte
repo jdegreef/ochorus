@@ -3,7 +3,7 @@
 	import type { BookDetail, BookSummary, PlanSummary } from '$lib/library-public';
 	import { listPlans } from '$lib/library-public';
 	import { libraryBooks } from '$lib/resumeBooks';
-	import { allProgress, bookProgressReader, getProgressRecord, isFinished } from '$lib/progress';
+	import { allProgress, bookProgressReader, isFinished, takeJustFinished } from '$lib/progress';
 	import { yearStats } from '$lib/yearInBooks';
 	import { marks } from '$lib/marks.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -70,16 +70,32 @@
 		void ticks;
 		return isFinished(book.slug);
 	});
-	// The moment of finishing, not the state of being finished: the leaves fall
-	// only when the book was stamped in the last few seconds — whether this
-	// block mounted before the stamp (it flips on the sync event) or just after
-	// (the chapter end mounts as the reader nears it). A finished book reopened
-	// later shows the same arrival, quietly.
-	const JUST_NOW_MS = 15_000;
-	const justFinished = $derived.by(() => {
-		void ticks;
-		const at = getProgressRecord(book.slug)?.finished_at;
-		return at != null && Date.now() - at < JUST_NOW_MS;
+	// The moment of finishing, not the state of being finished: gold leaves fall
+	// once, for a book THIS tab just finished (takeJustFinished — never a finish
+	// synced in from another device, nor one from an earlier visit), and only as
+	// the arrival comes into view: it sits below the chapter's nav, so a shower
+	// started at the stamp would be over before the reader got there. Removed
+	// again when it has fallen. A side effect (an observer, a timer), so $effect.
+	let hero = $state<HTMLElement>();
+	let leavesFalling = $state(false);
+	const SHOWER_MS = 4000;
+	$effect(() => {
+		if (!finished || !hero || !takeJustFinished(book.slug)) return;
+		let timer: ReturnType<typeof setTimeout> | undefined;
+		const io = new IntersectionObserver(
+			([e]) => {
+				if (!e.isIntersecting) return;
+				io.disconnect();
+				leavesFalling = true;
+				timer = setTimeout(() => (leavesFalling = false), SHOWER_MS);
+			},
+			{ threshold: 0.4 }
+		);
+		io.observe(hero);
+		return () => {
+			io.disconnect();
+			clearTimeout(timer);
+		};
 	});
 	// A dozen leaves, spread across the band and staggered, from fixed numbers
 	// rather than random ones so the shower is the same on every device.
@@ -111,8 +127,12 @@
 
 {#if finished}
 	<!-- 1. The arrival. -->
-	<section class="finished-hero mt-14 rounded-card border border-border bg-surface p-6 text-center sm:p-8" aria-labelledby="finished-heading">
-		{#if justFinished}
+	<section
+		bind:this={hero}
+		class="finished-hero mt-14 rounded-card border border-border bg-surface p-6 text-center sm:p-8"
+		aria-labelledby="finished-heading"
+	>
+		{#if leavesFalling}
 			<!-- Gold leaves falling once through the band: the arrival marked.
 			     Decoration only; still under prefers-reduced-motion. -->
 			<div class="leaf-shower" aria-hidden="true">
@@ -233,9 +253,10 @@
 {/if}
 
 <style>
+	/* Positioned for the shower; NOT clipped — the Download and Share menus
+	   open below the buttons and would be cut off. The shower clips itself. */
 	.finished-hero {
 		position: relative;
-		overflow: hidden;
 		background-image: radial-gradient(
 			ellipse at top,
 			color-mix(in srgb, var(--gold) 12%, transparent),
@@ -245,6 +266,8 @@
 	.leaf-shower {
 		position: absolute;
 		inset: 0;
+		overflow: hidden;
+		border-radius: inherit;
 		pointer-events: none;
 	}
 	.leaf-shower i {

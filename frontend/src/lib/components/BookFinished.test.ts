@@ -8,15 +8,28 @@ import type { BookDetail, BookSummary } from '$lib/library-public';
  * — the author's other books, a plan that reads this one.
  */
 vi.mock('$lib/lang.svelte', () => ({ getLang: () => 'en' }));
-const state = vi.hoisted(() => ({ finished: new Set<string>(), finishedAgoMs: 0 }));
+const state = vi.hoisted(() => ({ finished: new Set<string>(), justFinished: false }));
 vi.mock('$lib/progress', () => ({
 	isFinished: (slug: string) => state.finished.has(slug),
 	allProgress: () =>
 		[...state.finished].map((slug) => ({ slug, kind: 'book', finished_at: Date.now(), at: Date.now() })),
 	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) }),
-	getProgressRecord: (slug: string) =>
-		state.finished.has(slug) ? { finished_at: Date.now() - state.finishedAgoMs } : null
+	// The tab's own just-finished signal, taken once like the real one.
+	takeJustFinished: () => {
+		const was = state.justFinished;
+		state.justFinished = false;
+		return was;
+	}
 }));
+// jsdom has no IntersectionObserver: this one reports the arrival in view at once.
+class InViewObserver {
+	constructor(private cb: IntersectionObserverCallback) {}
+	observe() {
+		this.cb([{ isIntersecting: true } as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+	}
+	disconnect() {}
+}
+vi.stubGlobal('IntersectionObserver', InViewObserver);
 const resume = vi.hoisted(() => ({ libraryBooks: vi.fn() }));
 vi.mock('$lib/resumeBooks', () => resume);
 const listPlans = vi.hoisted(() => vi.fn());
@@ -77,7 +90,7 @@ describe('BookFinished', () => {
 	beforeEach(() => {
 		target = document.body.appendChild(document.createElement('div'));
 		state.finished = new Set();
-		state.finishedAgoMs = 0;
+		state.justFinished = false;
 		resume.libraryBooks.mockResolvedValue([summary('inner-chamber'), summary('abide'), summary('other', 'bounds')]);
 		listPlans.mockResolvedValue([
 			{ slug: 'school-of-prayer', title: '31 Days in the School of Prayer', day_count: 31, covers: [{ kind: 'book', slug: 'inner-chamber', title: '', cover_url: '', cover_color: '#123456' }] },
@@ -108,15 +121,20 @@ describe('BookFinished', () => {
 		expect(target.querySelector('#finished-heading')).toBeNull();
 	});
 
-	it('lets the leaves fall for a finish just made, never for an old one', async () => {
+	it('lets the leaves fall when this tab finishes the book, as the arrival comes into view', async () => {
+		await show();
 		state.finished.add('inner-chamber');
-		state.finishedAgoMs = 60_000;
-		await show();
-		expect(target.querySelector('.leaf-shower')).toBeNull();
-		unmount(component!);
-		state.finishedAgoMs = 1_000;
-		await show();
+		state.justFinished = true; // markFinished, in this tab
+		window.dispatchEvent(new CustomEvent('ochorus:sync'));
+		await settle();
 		expect(target.querySelectorAll('.leaf-shower i').length).toBeGreaterThan(0);
+	});
+
+	it('never for a book finished elsewhere or earlier', async () => {
+		state.finished.add('inner-chamber'); // stamped, but not just now in this tab
+		await show();
+		expect(target.querySelector('#finished-heading')).not.toBeNull();
+		expect(target.querySelector('.leaf-shower')).toBeNull();
 	});
 
 	it("counts the year's finished books and offers the ways on", async () => {
