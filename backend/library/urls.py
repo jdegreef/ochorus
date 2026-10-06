@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     ArticleDetailView,
     ArticleListView,
+    AudienceShelfView,
     AuthorDetailView,
     AuthorEraPresenceView,
     AuthorListView,
@@ -90,6 +91,7 @@ urlpatterns = [
     path("plans/", PlanListView.as_view(), name="plan-list"),
     path("plans/<slug:slug>/", PlanDetailView.as_view(), name="plan-detail"),
     path("series/", SeriesListView.as_view(), name="series-list"),
+    path("audiences/<str:audience>/", AudienceShelfView.as_view(), name="audience-shelf"),
     path("series/<slug:slug>/", SeriesDetailView.as_view(), name="series-detail"),
     path("hubs/", HubListView.as_view(), name="hub-list"),
     path("topics/", TopicListView.as_view(), name="topic-list"),

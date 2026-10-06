@@ -14,6 +14,8 @@
 	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { audienceBlurb, audienceName, groupByAudience, seriesCompanion } from '$lib/series';
+	import { TEENS_HUB, YOUNG_READERS_HUB } from '$lib/audienceHub';
+	import Arrow from '$lib/components/Arrow.svelte';
 	import { queryChip } from '$lib/filterChips';
 	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -169,6 +171,20 @@
 					<GroupHeading name={audienceName(g.audience)} count={g.series.length} />
 					{#if blurb}
 						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{blurb}</p>
+					{/if}
+					{#if g.audience === 'young_readers' || g.audience === 'teens'}
+						<!-- The hub gathers this group's series with the retold classics and
+						     plans for the same readers ($lib/audienceHub). -->
+						<p class="-mt-2 mb-5 text-small">
+							<a
+								href={localizeHref(
+									g.audience === 'teens' ? TEENS_HUB.path : YOUNG_READERS_HUB.path
+								)}
+								class="text-accent hover:underline"
+								>{g.audience === 'teens' ? t('audience.seeTeens') : t('audience.seeYoung')}
+								<Arrow /></a
+							>
+						</p>
 					{/if}
 					{#if g.audience === 'young_readers'}
 						<!-- The adult choosing for a child: free, no account, and how

@@ -36,6 +36,11 @@ vi.mock('$lib/library-public', () => {
 	const author = (slug: string) => ({ slug, name: slug, photo_url: '', birth_year: null });
 	return {
 		MODERN_EDITION: 'en-modern',
+		// The young readers' hub has something in English, Swahili and an
+		// unadvertised locale; the teens' hub has nothing anywhere.
+		getAudienceShelf: async (audience: string) => ({
+			languages: audience === 'young_readers' ? ['en', 'sw', 'xx'] : []
+		}),
 		// One article in English and Swahili, none in Spanish.
 		listArticles: async (l = 'en') =>
 			l === 'en'
@@ -432,6 +437,17 @@ describe('build() the library A–Z', () => {
 		const az = (await sitemapData()).pages.find((e) => e.byLocale.get('en') === '/authors/');
 		expect([...az!.byLocale.keys()]).toEqual(['en', 'es', 'sw']);
 		expect(az!.lastmods?.get('sw')).toBe('2026-09-02T10:00:00Z');
+	});
+});
+
+describe('build() the young-reader hubs', () => {
+	beforeEach(() => resetSitemapData());
+
+	it('lists a hub in each advertised locale it has something in, and an empty one nowhere', async () => {
+		const pages = (await sitemapData()).pages;
+		const young = pages.find((e) => e.byLocale.get('en') === '/young-readers/');
+		expect([...young!.byLocale.keys()]).toEqual(['en', 'sw']);
+		expect(pages.some((e) => [...e.byLocale.values()].includes('/teens/'))).toBe(false);
 	});
 });
 

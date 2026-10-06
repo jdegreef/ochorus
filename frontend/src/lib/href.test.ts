@@ -112,7 +112,7 @@ const LOCALE_PREFIX = locales.filter((l) => l !== 'en').join('|');
 const BARE_DETAIL = new RegExp(
 	`href="(?:/(?:${LOCALE_PREFIX}))?/(?:` +
 		`(?:books|authors|topics|sermons|plans|series|articles|quotes|scripture|biographies/era)/[^"/.?#]+(?:/[^"/.?#]+){0,2}` +
-		`|articles|authors|originals|quotes|scripture|series` +
+		`|articles|authors|originals|quotes|scripture|series|teens|young-readers` +
 		`)["?#]`,
 	'g'
 );

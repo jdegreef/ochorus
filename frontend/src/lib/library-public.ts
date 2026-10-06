@@ -1401,6 +1401,34 @@ export const listSeries = (language = 'en', f?: Fetch) =>
 export const getSeries = (slug: string, language = 'en') =>
 	apiFetch<SeriesDetail>(`/api/library/series/${slug}/?language=${language}`);
 
+/** The two audiences with a hub of their own — /young-readers/ and /teens/. */
+export type HubAudience = Exclude<SeriesAudience, 'adults'>;
+
+/**
+ * Everything written for one young audience in a language (`AudienceShelfView`).
+ * Each book appears once: in its series, else as a retold edition, else under
+ * `more` (the rest of the audience's curated topic). `plans` read nothing but
+ * those books. No English fallback — a language with none gets empty lists.
+ */
+export interface AudienceShelf {
+	audience: HubAudience;
+	series: SeriesSummary[];
+	/** The "(For Children)" / "(For Teens)" retellings no series above holds. */
+	editions: BookSummary[];
+	/** The rest of the audience's topic shelf, in its curator's order. */
+	more: BookSummary[];
+	plans: PlanSummary[];
+	/** That topic, when it has a title in this language — the "whole shelf" link. */
+	topic: { slug: string; title: string } | null;
+	/** Slugs among all the above with a free PDF / EPUB download. */
+	printable: string[];
+	/** Every language the hub has something in — its hreflang and sitemap. */
+	languages: string[];
+}
+
+export const getAudienceShelf = (audience: HubAudience, language = 'en', f?: Fetch) =>
+	apiFetch<AudienceShelf>(`/api/library/audiences/${audience}/?language=${language}`, {}, f);
+
 // --- The scripture graph ------------------------------------------------------
 // Which passages in the library treat a given verse — the reverse of the
 // reader's cross-reference popover, and the one thing here that has no locale

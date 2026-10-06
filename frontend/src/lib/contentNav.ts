@@ -1,5 +1,6 @@
 import type { IconName } from '$lib/components/Icon.svelte';
 import { ORIGINALS_PATH } from '$lib/originals';
+import { AUDIENCE_HUBS } from '$lib/audienceHub';
 
 /**
  * The one ordered source for the reader-facing content-type lists.
@@ -75,3 +76,13 @@ export const ORIGINALS_DEST: HubDest = { href: ORIGINALS_PATH, labelKey: 'nav.or
  *  page. Every locale's footer Explore group and the palette offer it after
  *  Book Series. The trailing slash comes from `localizeHref` (isSlashedPath). */
 export const AZ_INDEX_DEST: HubDest = { href: '/authors', labelKey: 'nav.azIndex' };
+
+/** The young-reader hubs — /young-readers/ and /teens/ ($lib/audienceHub).
+ *  Like Book Series, not a top-nav slot: every locale's footer Explore group,
+ *  the palette and the phone's More sheet offer them right after Book Series
+ *  (their books are translated, so each locale has its own copy). The trailing
+ *  slash comes from `localizeHref` (isSlashedPath). */
+export const AUDIENCE_DESTS: HubDest[] = AUDIENCE_HUBS.map((h) => ({
+	href: h.path,
+	labelKey: h.labelKey
+}));
