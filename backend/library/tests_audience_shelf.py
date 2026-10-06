@@ -109,8 +109,8 @@ class AudienceShelfTests(TestCase):
 
     def test_printable_names_the_export_editions_only(self):
         self._book("brave-for-god", series=self.series)  # in the export pilot
-        self._book("pilgrims-progress")
-        self._book("pilgrims-progress-children")  # not in it
+        self._book("north-wind")
+        self._book("north-wind-children")  # not in it
         self.assertEqual(self._get()["printable"], ["brave-for-god"])
 
     def test_an_unknown_audience_is_not_found(self):

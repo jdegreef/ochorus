@@ -80,6 +80,20 @@ EXPORT_PILOT = frozenset({
     ("sons-of-the-king-1", "en"),
     ("sons-of-the-king-2", "en"),
     ("sons-of-the-king-3", "en"),
+    # The young-reader retellings of public-domain classics, in English. The
+    # telling is Ochorus's, so each carries a "© Ochorus … retelling" attribution
+    # (and the Teens editions Crossway's ESV notice); the About the Author page
+    # is the original author's, as the edition keeps the parent author.
+    ("a-retrospect-children", "en"),
+    ("a-retrospect-teens", "en"),
+    ("amanda-smith-autobiography-children", "en"),
+    ("amanda-smith-autobiography-teens", "en"),
+    ("pilgrims-progress-children", "en"),
+    ("pilgrims-progress-teens", "en"),
+    ("talks-to-the-farmer-children", "en"),
+    ("talks-to-the-farmer-teens", "en"),
+    ("the-life-of-trust-children", "en"),
+    ("the-life-of-trust-teens", "en"),
 })
 
 
