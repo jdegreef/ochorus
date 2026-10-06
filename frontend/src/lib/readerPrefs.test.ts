@@ -226,4 +226,11 @@ describe('the young-reader layout', () => {
 		readerPrefs.applySyncedScale(1.5);
 		expect(readerPrefs.scale).toBe(1.5);
 	});
+
+	it('keeps a children’s 200% out of the reader’s own values everywhere else', () => {
+		readerPrefs.init();
+		readerPrefs.youngEdition = true;
+		readerPrefs.setScale(2);
+		expect(readerPrefs.own.scale).toBe(1.6);
+	});
 });

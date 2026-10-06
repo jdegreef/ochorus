@@ -150,4 +150,11 @@ describe('listen gentle speed (children’s editions)', () => {
 		listen.applySyncedRate(1.25);
 		expect(listen.ownRate).toBe(1.25);
 	});
+
+	it('does not count an old saved plain speed as chosen', async () => {
+		localStorage.setItem('ochorus:listen', JSON.stringify({ rate: 1, voiceURI: 'test-en' }));
+		const { listen } = await freshListen();
+		listen.start(['One.'], 0, { defaultRate: 0.9 });
+		expect(listen.rate).toBe(0.9);
+	});
 });

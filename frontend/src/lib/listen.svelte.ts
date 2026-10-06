@@ -67,8 +67,14 @@ function loadPrefs(): Stored {
 	return {
 		// Any speed inside the range — Settings is a continuous slider now, so a
 		// saved value need not be one of the RATES presets.
+		// A saved plain 1 is not a choice: before the default speed existed, every
+		// save wrote `rate` (a voice pick saved 1 too), so treating 1 as chosen
+		// would keep the gentle speed from every listener who ever touched Settings.
 		rate:
-			typeof raw.rate === 'number' && raw.rate >= RATE_MIN && raw.rate <= RATE_MAX
+			typeof raw.rate === 'number' &&
+			raw.rate >= RATE_MIN &&
+			raw.rate <= RATE_MAX &&
+			raw.rate !== 1
 				? raw.rate
 				: null,
 		voiceURI: typeof raw.voiceURI === 'string' ? raw.voiceURI : ''
@@ -112,7 +118,7 @@ class Listen {
 	#initialized = false;
 	// Whether `rate` is the listener's own (saved) speed. Until it is, each start
 	// picks the default for its text — GENTLE_RATE for a children's edition.
-	#rateChosen = false;
+	#rateChosen = $state(false);
 
 	init() {
 		if (!this.supported || this.#initialized) return;

@@ -226,10 +226,13 @@ const DEFAULTS: Stored = {
  * field (every save writes them all), so there a field counts as chosen only
  * when it differs from what a first run would have given this device.
  */
-function chosenFrom(raw: Record<string, unknown>, s: Omit<Stored, 'chosen'>): YoungField[] {
+function chosenFrom(
+	raw: Record<string, unknown>,
+	s: Omit<Stored, 'chosen'>,
+	firstRun: YoungValues
+): YoungField[] {
 	if (Array.isArray(raw.chosen))
 		return YOUNG_FIELDS.filter((f) => (raw.chosen as unknown[]).includes(f));
-	const firstRun = firstRunDefaults();
 	return YOUNG_FIELDS.filter((f) => f in raw && s[f] !== firstRun[f]);
 }
 
@@ -290,7 +293,7 @@ export function load(): Stored & { migrated: boolean } {
 		preferModern: typeof raw.preferModern === 'boolean' ? raw.preferModern : DEFAULTS.preferModern,
 		youngLayout: typeof raw.youngLayout === 'boolean' ? raw.youngLayout : DEFAULTS.youngLayout
 	};
-	return { ...s, chosen: chosenFrom(raw, s), migrated: !Array.isArray(raw.chosen) && Object.keys(raw).length > 0 };
+	return { ...s, chosen: chosenFrom(raw, s, firstRun), migrated: !Array.isArray(raw.chosen) && Object.keys(raw).length > 0 };
 }
 
 class ReaderPrefs {
@@ -332,11 +335,13 @@ class ReaderPrefs {
 	readonly font = $derived(this.#young('font', this.#own.font));
 	readonly paged = $derived(this.#young('paged', this.#own.paged));
 
-	/** The reader's own values — never the young-reader layout. For what is
-	 *  saved beyond this device (the account) and the app-wide defaults. */
-	get own(): Readonly<YoungValues> {
-		return this.#own;
-	}
+	/** The reader's own values — never the young-reader layout, and their size
+	 *  held to the everyday cap (a children's edition's 200% stays there). For
+	 *  what is saved beyond this device (the account) and the app-wide defaults. */
+	readonly own: Readonly<YoungValues> = $derived({
+		...this.#own,
+		scale: Math.min(SCALE_MAX, this.#own.scale)
+	});
 
 	/** Hydrate from localStorage. Safe to call repeatedly (runs once). */
 	init() {
@@ -391,8 +396,8 @@ class ReaderPrefs {
 		return this.scale < this.#scaleMax;
 	}
 
-	#clampScale(next: number): number {
-		return Math.min(this.#scaleMax, Math.max(SCALE_MIN, Math.round(next * 20) / 20));
+	#clampScale(next: number, max = this.#scaleMax): number {
+		return Math.min(max, Math.max(SCALE_MIN, Math.round(next * 20) / 20));
 	}
 	setScale(next: number) {
 		this.#setOwn('scale', this.#clampScale(next));
@@ -404,10 +409,8 @@ class ReaderPrefs {
 	 * never get its layout for a signed-in reader.
 	 */
 	applySyncedScale(next: number) {
-		this.#own.scale = Math.min(SCALE_MAX_YOUNG, Math.max(SCALE_MIN, next));
-		if (this.#own.scale !== DEFAULTS.scale && !this.#chosen.includes('scale'))
-			this.#chosen = [...this.#chosen, 'scale'];
-		this.#save();
+		const scale = this.#clampScale(next, SCALE_MAX_YOUNG);
+		if (scale !== DEFAULTS.scale || this.#chosen.includes('scale')) this.#setOwn('scale', scale);
 	}
 	bumpScale(delta: number) {
 		this.setScale(this.scale + delta);

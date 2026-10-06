@@ -45,7 +45,8 @@
 		bookTimeLeft,
 		minutesLeft as minutesLeftOf,
 		HEADER_OFFSET,
-		placeAfterLayout
+		placeAfterLayout,
+		prefersReducedMotion
 	} from '$lib/reading';
 	import { pageOfOffset, pagedFraction } from '$lib/pageMath';
 	import { EARLY_RESUME_TAG } from '$lib/earlyResume';
@@ -1676,23 +1677,44 @@
 		// Audiobook roll-over: when a chapter finishes reading itself, continue
 		// into the next one. Only when there is a next chapter — the last chapter
 		// simply stops. gotoChapter navigates; the per-chapter effect resumes.
-		// The questions spoken after a chapter (listenEpilogue) are where a family
-		// talks, not a bridge to the next chapter: with any, the reading stops.
+		// A children's chapter's questions, spoken after it (listenEpilogue), are
+		// where a family talks, not a bridge to the next chapter: there the
+		// reading stops. Everything else rolls on like an audiobook.
 		onListenFinish: () => {
-			if (chapter.next && !chapterQuestions.length) {
+			if (chapter.next && !spokenQuestions.length) {
 				autoContinueOrder = chapter.next.order;
 				gotoChapter(chapter.next);
 			}
 		},
-		// After the text, the questions — the heading, then each question (never
-		// the answers: those are for the grown-up to read when they want to).
-		listenEpilogue: () =>
-			chapterQuestions.length ? [questionsCopy.title, ...chapterQuestions.map((qa) => qa.q)] : [],
+		listenEpilogue: () => spokenQuestions,
 		listenDefaultRate: () => (childrens ? GENTLE_RATE : undefined)
 	});
 
 	// The young-reader layout follows the open edition, and goes when the reader
 	// leaves it (readerPrefs never stores it — see YOUNG_LAYOUT).
+	// What read-aloud says after a children's chapter: the heading, then each
+	// question — never the answers, which are for the grown-up to read when they
+	// want to. The heading is interface copy, so it is spoken only when the
+	// interface speaks the book's language (the voice is the book's).
+	const spokenQuestions = $derived(
+		childrens && chapterQuestions.length
+			? [
+					...(getLang() === contentLang(language) ? [questionsCopy.title] : []),
+					...chapterQuestions.map((qa) => qa.q)
+				]
+			: []
+	);
+	// While those are spoken there is no paragraph to highlight: bring the
+	// questions themselves into view instead, once, as the first one begins.
+	$effect(() => {
+		const bodyCount = body?.children.length ?? 0;
+		if (listen.status === 'idle' || !spokenQuestions.length || listen.current !== bodyCount) return;
+		document.getElementById('questions')?.scrollIntoView({
+			block: 'start',
+			behavior: prefersReducedMotion() ? 'auto' : 'smooth'
+		});
+	});
+
 	// Before the DOM updates, so a children's chapter lays out once, in its own
 	// layout, rather than flashing the reader's and re-measuring.
 	$effect.pre(() => {
