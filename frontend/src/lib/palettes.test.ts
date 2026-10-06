@@ -21,7 +21,7 @@ import {
 	PALETTE_COLORS,
 	PALETTE_KEY,
 	PALETTES,
-	seasonWheel,
+	SEASON_WHEEL,
 	swatchOf
 } from './palettes';
 import { palette } from './palette.svelte';
@@ -142,7 +142,7 @@ describe('library palettes', () => {
 	});
 
 	it("the boot script paints the Church year's cached season", () => {
-		expect(HTML).toContain(`if (pal === 'liturgical') pal = localStorage.getItem('${APPLIED_PALETTE_KEY}')`);
+		expect(HTML).toContain(`localStorage.getItem('${APPLIED_PALETTE_KEY}') || localStorage.getItem('${PALETTE_KEY}')`);
 	});
 });
 
@@ -166,15 +166,16 @@ describe('the Church year', () => {
 
 	it("draws today's season as its swatch", () => {
 		const advent = new Date(2026, 11, 6);
-		expect(swatchOf('liturgical', 'light', advent)).toEqual(PALETTE_COLORS.violet.swatch.light);
-		expect(swatchOf('liturgical', 'dark', advent)).toEqual(PALETTE_COLORS.violet.swatch.dark);
+		expect(swatchOf('liturgical', 'light', advent)).toEqual([...PALETTE_COLORS.violet.swatch.light, SEASON_WHEEL.light]);
+		expect(swatchOf('liturgical', 'dark', advent)).toEqual([...PALETTE_COLORS.violet.swatch.dark, SEASON_WHEEL.dark]);
+		expect(swatchOf('olive', 'light')).toHaveLength(3);
 	});
 
 	it('has a mark of its own: all four seasons, never one palette', () => {
 		// In Ordinary Time it wears Olive Grove exactly; the wheel is what tells
 		// the two apart in a picker.
 		for (const mode of ['light', 'dark'] as const) {
-			const wheel = seasonWheel(mode);
+			const wheel = SEASON_WHEEL[mode];
 			for (const p of ['violet', 'feast', 'flame', 'olive'] as const)
 				expect(wheel).toContain(PALETTE_COLORS[p].swatch[mode][1]);
 		}

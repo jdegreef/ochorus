@@ -1,6 +1,14 @@
 import { browser } from '$app/environment';
 import { storageHealth } from './storageHealth.svelte';
-import { APPLIED_PALETTE_KEY, appliedPalette, normalizePalette, PALETTE_KEY, type AppliedPalette, type Palette } from './palettes';
+import {
+	APPLIED_PALETTE_KEY,
+	appliedPalette,
+	normalizeApplied,
+	normalizePalette,
+	PALETTE_KEY,
+	type AppliedPalette,
+	type Palette
+} from './palettes';
 import { theme } from './theme.svelte';
 
 /**
@@ -28,13 +36,15 @@ class PalettePref {
 			/* storage blocked: stay on the house palette */
 		}
 		this.#apply();
-		// The Church year turns with the calendar: a tab left open across a
-		// season's first day takes the new colours when the reader comes back
-		// (as the home hero's date and season dot do). Once per page.
+		// A choice that follows the calendar (the Church year) takes a new
+		// season's colours when the reader comes back to a tab left open across
+		// its first day, as the home hero's date and season dot do. Repaints
+		// only when what should be applied has moved. Once per page.
 		if (this.#listening) return;
 		this.#listening = true;
 		document.addEventListener('visibilitychange', () => {
-			if (document.visibilityState === 'visible' && this.current === 'liturgical') this.#apply();
+			if (document.visibilityState !== 'visible') return;
+			if (this.applied !== normalizeApplied(document.documentElement.dataset.palette)) this.#apply();
 		});
 	}
 
@@ -57,10 +67,11 @@ class PalettePref {
 		const root = document.documentElement;
 		if (applied === 'parchment') delete root.dataset.palette;
 		else root.dataset.palette = applied;
-		// The boot script can't compute the season (it has no calendar), so it
-		// paints the one cached here; the app corrects it on load if it moved.
+		// The boot script can't resolve a choice (it has no calendar), so when
+		// what is painted differs from what was chosen it paints the palette
+		// cached here; the app corrects it on load if the season moved.
 		try {
-			if (this.current === 'liturgical') localStorage.setItem(APPLIED_PALETTE_KEY, applied);
+			if (applied !== this.current) localStorage.setItem(APPLIED_PALETTE_KEY, applied);
 			else localStorage.removeItem(APPLIED_PALETTE_KEY);
 		} catch {
 			/* the cache is a nicety: the app applies the right season anyway */

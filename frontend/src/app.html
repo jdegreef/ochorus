@@ -38,11 +38,11 @@
 							: 'light';
 				document.documentElement.setAttribute('data-theme', applied);
 				// The library palette (mirrors $lib/palette.svelte.ts + $lib/palettes).
-				// The Church year ('liturgical') paints the season the app last
-				// applied — this script has no calendar; the app corrects it on load.
-				// No cached season: the house palette, not a guess at one.
-				var pal = localStorage.getItem('ochorus:palette');
-				if (pal === 'liturgical') pal = localStorage.getItem('ochorus:palette-applied');
+				// A choice that resolves to another palette (the Church year's
+				// season) paints what the app last applied — this script has no
+				// calendar; the app corrects it on load. Unresolvable without that
+				// cache: no palette entry matches, so the house palette.
+				var pal = localStorage.getItem('ochorus:palette-applied') || localStorage.getItem('ochorus:palette');
 				var palColors = {
 					cathedral: { light: '#f5f6f8', dark: '#10141c' },
 					olive: { light: '#f6f5ee', dark: '#121510' },

@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, seasonWheel, swatchOf } from '$lib/palettes';
+	import { PALETTES, swatchOf } from '$lib/palettes';
 	import { siteFont, SITE_FONTS, SITE_FONT_LABEL_KEY, type SiteFont } from '$lib/siteFont.svelte';
 	import { FONT_STACK } from '$lib/readerPrefs.svelte';
 	import { radioKeys } from '$lib/radioKeys';
@@ -109,7 +109,7 @@
 					onkeydown={paletteKeys}
 				>
 					{#each PALETTES as p (p)}
-						{@const [ground, accent, second] = swatchOf(p, mode)}
+						{@const [ground, accent, second, mark] = swatchOf(p, mode)}
 						<button
 							type="button"
 							role="radio"
@@ -122,7 +122,7 @@
 							style:--sw-ground={ground}
 							style:--sw-accent={accent}
 							style:--sw-second={second}
-							style:background={p === 'liturgical' ? seasonWheel(mode) : undefined}
+							style:background={mark}
 							onclick={() => palette.set(p)}
 						></button>
 					{/each}

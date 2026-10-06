@@ -25,24 +25,11 @@ export type AppliedPalette = Exclude<Palette, 'liturgical'> | 'violet' | 'feast'
 /** What a reader can choose, in picker order. */
 export const PALETTES: readonly Palette[] = ['parchment', 'cathedral', 'olive', 'hearth', 'dawn', 'monastery', 'liturgical'];
 
-/** Every palette app.css styles — the choosable ones bar 'liturgical', and
- *  the seasonal ones it resolves to. */
-export const APPLIED_PALETTES: readonly AppliedPalette[] = [
-	'parchment',
-	'cathedral',
-	'olive',
-	'hearth',
-	'dawn',
-	'monastery',
-	'violet',
-	'feast',
-	'flame'
-];
-
 /** The localStorage key — a bare string, so the boot script can read it. */
 export const PALETTE_KEY = 'ochorus:palette';
-/** The palette last applied for the Church year, cached so the boot script
- *  can paint the season before the app (and its calendar) has loaded. */
+/** The palette a choice last applied, when that differs from the choice (the
+ *  Church year's season), cached so the boot script can paint it before the
+ *  app — and its calendar — has loaded. */
 export const APPLIED_PALETTE_KEY = 'ochorus:palette-applied';
 
 /** `v` if it is one of `list`, else the house palette. */
@@ -53,7 +40,7 @@ export const normalizePalette = (v: string | null | undefined): Palette => oneOf
 export const normalizeApplied = (v: string | null | undefined): AppliedPalette => oneOf(APPLIED_PALETTES, v);
 
 /** The palette each liturgical colour applies. */
-export const SEASON_PALETTE: Record<SeasonColour, AppliedPalette> = {
+const SEASON_PALETTE: Record<SeasonColour, AppliedPalette> = {
 	violet: 'violet',
 	white: 'feast',
 	red: 'flame',
@@ -70,6 +57,9 @@ export function appliedPalette(p: Palette, date: Date = new Date()): AppliedPale
  *  swatch the picker draws in each brightness — ground, accent, and a second
  *  colour. */
 type Swatch = [ground: string, accent: string, second: string];
+/** What a picker draws for a CHOICE: the swatch of the palette it applies
+ *  today, and — for a choice that is not one palette — a `mark` of its own. */
+type ChoiceSwatch = [ground: string, accent: string, second: string, mark?: string];
 export const PALETTE_COLORS: Record<AppliedPalette, { light: string; dark: string; swatch: { light: Swatch; dark: Swatch } }> = {
 	parchment: {
 		light: '#faf6ef',
@@ -118,16 +108,24 @@ export const PALETTE_COLORS: Record<AppliedPalette, { light: string; dark: strin
 	}
 };
 
-/** The swatch a picker draws for a choice: the Church year shows today's
- *  season, so the reader sees what they are about to get. */
-export function swatchOf(p: Palette, mode: 'light' | 'dark', date: Date = new Date()): Swatch {
-	return PALETTE_COLORS[appliedPalette(p, date)].swatch[mode];
-}
+/** Every palette app.css styles — the choosable ones bar 'liturgical', and
+ *  the seasonal ones it resolves to. PALETTE_COLORS' keys, so the two can't
+ *  drift. */
+export const APPLIED_PALETTES = Object.keys(PALETTE_COLORS) as AppliedPalette[];
 
-/** The Church year's own mark: its four seasons' accents as quarters of a
- *  disc — what tells it apart from the one palette it is wearing today (in
- *  Ordinary Time, Olive Grove's swatch exactly). */
-export function seasonWheel(mode: 'light' | 'dark'): string {
-	const [v, w, r, g] = (['violet', 'feast', 'flame', 'olive'] as const).map((p) => PALETTE_COLORS[p].swatch[mode][1]);
-	return `conic-gradient(${v} 0 25%, ${w} 0 50%, ${r} 0 75%, ${g} 0)`;
+/** The Church year's own mark: its seasons' accents as quarters of a disc —
+ *  what tells it apart from the one palette it wears today (in Ordinary Time,
+ *  Olive Grove's swatch exactly). */
+const wheel = (mode: 'light' | 'dark') => {
+	const [a, b, c, d] = Object.values(SEASON_PALETTE).map((p) => PALETTE_COLORS[p].swatch[mode][1]);
+	return `conic-gradient(${a} 0 25%, ${b} 0 50%, ${c} 0 75%, ${d} 0)`;
+};
+export const SEASON_WHEEL = { light: wheel('light'), dark: wheel('dark') };
+
+/** The swatch a picker draws for a choice: the palette it applies today (so
+ *  the Church year shows its season), plus the Church year's wheel as its
+ *  mark. Pickers draw what they get and never name a palette. */
+export function swatchOf(p: Palette, mode: 'light' | 'dark', date: Date = new Date()): ChoiceSwatch {
+	const swatch = PALETTE_COLORS[appliedPalette(p, date)].swatch[mode];
+	return p === 'liturgical' ? [...swatch, SEASON_WHEEL[mode]] : swatch;
 }
