@@ -560,6 +560,23 @@
    Every ink still clears 4.5:1 on every re-tinted ground — palettes.test.ts
    measures it rather than trusting this list. */
 @media screen {
+	/* Each palette's hero tint (see THE HOME HERO below): one per palette, not
+	   per theme — the hero is a painting at night in every theme. */
+	:root[data-palette='cathedral'] {
+		--hero-tint: #0f1a2e;
+	}
+	:root[data-palette='olive'] {
+		--hero-tint: #121c13;
+	}
+	:root[data-palette='hearth'] {
+		--hero-tint: #24130c;
+	}
+	:root[data-palette='dawn'] {
+		--hero-tint: #1f1226;
+	}
+	:root[data-palette='monastery'] {
+		--hero-tint: #15171a;
+	}
 	/* Cathedral — navy and gold over cool stone. */
 	:root[data-theme='light'][data-palette='cathedral'] {
 		--bg: #f5f6f8;
@@ -719,20 +736,43 @@
 
 /* THE HOME HERO (HomeHero.svelte): a greeting set over a painting, so its
    ink is theme-independent — light on a scrim that darkens from the foot,
-   where the text sits. --hero-ground shows only while the painting loads. */
+   where the text sits. --hero-ground shows only while the painting loads.
+
+   The scrim is not black: it is --hero-tint, a deep shade of the reader's
+   palette (indigo-umber for the house palette, navy for Cathedral, and so on,
+   set in the PALETTES block below), so the band carries the library's colour
+   instead of laying a brown fog over the painting. Every tint is dark enough
+   that --hero-ink still clears 4.5:1 at the date line's 75% even over a WHITE
+   painting — homeHero.test.ts composites it against white and measures. */
 :root {
 	--hero-ink: #f8f1e4;
 	--hero-ground: #1d2a1f;
+	--hero-tint: #1b1526;
 	/* Dense through the lower two-thirds, where the date and greeting sit: the
 	   wash is a blurred painting of any brightness, and a pale one under a
-	   lighter scrim left the small date line short of 4.5:1. */
-	--hero-scrim: linear-gradient(
-		to top,
-		rgb(14 12 9 / 0.9) 0%,
-		rgb(14 12 9 / 0.75) 60%,
-		rgb(14 12 9 / 0.3) 100%
-	);
+	   lighter scrim left the small date line short of 4.5:1. Lighter at the top
+	   than it was (0.3 → 0.2), so the painting's own colour shows above the
+	   words; the vignette darkens the corners back into a frame. */
+	--hero-scrim:
+		radial-gradient(ellipse 120% 90% at 50% 35%, transparent 55%, rgb(0 0 0 / 0.35) 100%),
+		linear-gradient(
+			to top,
+			color-mix(in srgb, var(--hero-tint) 90%, transparent) 0%,
+			color-mix(in srgb, var(--hero-tint) 75%, transparent) 60%,
+			color-mix(in srgb, var(--hero-tint) 20%, transparent) 100%
+		);
 	--hero-plate-shadow: 0 24px 40px -18px rgb(0 0 0 / 0.7);
+	/* The framed painting: a cream mat inside a gilt fillet, like a print hung
+	   in a gallery rather than a screenshot with a border. */
+	--hero-mat: #f3ead6;
+	--hero-gilt: #c9a24f;
+	--hero-gilt-deep: #7a5a22;
+	/* The liturgical colours the date line's season dot wears. Decorative (the
+	   season's NAME is the information), and always on the hero's dark scrim. */
+	--season-violet: #a98be0;
+	--season-white: #f6ecd2;
+	--season-red: #e0625a;
+	--season-green: #86c08f;
 	/* The quote card (HomeQuote): clear over its top 6rem, full strength from
 	   9rem — where the text begins (its pt-36) — however tall the quote grows. */
 	--quote-scrim: linear-gradient(
@@ -1873,6 +1913,7 @@ nav.appnav .navsearch:hover {
 	position: relative;
 }
 .prefs-btn {
+	position: relative;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -1890,7 +1931,7 @@ nav.appnav .navsearch:hover {
 	color: var(--gold);
 }
 .prefs-menu {
-	min-width: 14rem;
+	min-width: 16.5rem;
 	padding: 0.25rem;
 	/* The language picker opens its own dropdown inside this menu — don't clip it. */
 	overflow: visible;
@@ -1910,14 +1951,140 @@ nav.appnav .navsearch:hover {
 	font-size: var(--fs-small);
 	white-space: nowrap;
 }
-.prefs-toggle {
+/* The palette in use, as a dot on the gear's shoulder (ringed in the page
+   ground so it reads against the gold). */
+.prefs-badge {
+	position: absolute;
+	top: 0.2rem;
+	inset-inline-end: 0.15rem;
+	width: 0.5rem;
+	height: 0.5rem;
+	border-radius: 50%;
+	box-shadow: 0 0 0 2px var(--bg);
+}
+/* A row whose control needs the full width (the swatches, the faces) puts its
+   label above it rather than squeezing beside it — a long French label would
+   otherwise push the control off the popover. */
+.prefs-row--stack {
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.5rem;
+}
+/* Segmented radio groups — the width stepper's chrome, one control wide per
+   choice; the chosen one wears the accent like every selected control
+   (--selected-edge: never the soft fill alone). */
+.prefs-seg {
+	display: flex;
+	align-items: stretch;
+}
+.prefs-seg button {
 	display: inline-flex;
+	flex: 1;
 	align-items: center;
-	padding: 0.25rem 0.5rem;
-	background: none;
-	border: none;
-	color: var(--gold);
+	justify-content: center;
+	padding: 0.35rem 0.6rem;
+	background: transparent;
+	border: 1px solid var(--border-strong);
+	color: var(--muted);
 	cursor: pointer;
+	transition:
+		background-color var(--duration-fast),
+		color var(--duration-fast);
+}
+.prefs-seg button + button {
+	margin-inline-start: -1px;
+}
+.prefs-seg button:first-child {
+	border-start-start-radius: var(--radius-sm);
+	border-end-start-radius: var(--radius-sm);
+}
+.prefs-seg button:last-child {
+	border-start-end-radius: var(--radius-sm);
+	border-end-end-radius: var(--radius-sm);
+}
+.prefs-seg button:hover {
+	background: var(--surface-2);
+	color: var(--text);
+}
+.prefs-seg button[aria-checked='true'] {
+	position: relative;
+	background: var(--accent-soft);
+	border-color: var(--accent);
+	color: var(--accent);
+	box-shadow: inset 0 0 0 calc(var(--selected-edge) - 1px) var(--accent);
+}
+/* Each site style says "Aa" in its own face — the choice previews itself. The
+   faces are the ones site-fonts.css applies; a declared-but-unused face costs
+   nothing until this menu opens. */
+.prefs-font {
+	font-size: var(--fs-body);
+	line-height: 1.2;
+}
+.prefs-font--house {
+	font-family: var(--house-display);
+	font-weight: 600;
+}
+.prefs-font--classic {
+	font-family: 'EB Garamond Variable', var(--house-display);
+	font-weight: 600;
+}
+.prefs-font--hyperlegible {
+	font-family: 'Atkinson Hyperlegible Next Variable', var(--house-sans);
+	font-weight: 700;
+}
+/* Palette swatches: a disc split between the palette's ground and accent,
+   with its second colour as a bead at the centre — the same three colours
+   PalettePicker's cards draw, at a size that fits six in a row. */
+.prefs-swatches {
+	display: flex;
+	justify-content: space-between;
+	gap: 0.35rem;
+}
+.prefs-swatch {
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border: 1px solid var(--border-strong);
+	border-radius: 50%;
+	background:
+		radial-gradient(circle, var(--sw-second) 0 0.22rem, transparent 0.24rem),
+		linear-gradient(135deg, var(--sw-ground) 0 50%, var(--sw-accent) 50% 100%);
+	cursor: pointer;
+	transition: transform var(--duration-fast);
+}
+.prefs-swatch:hover {
+	transform: scale(1.08);
+}
+.prefs-swatch[aria-checked='true'] {
+	border-color: var(--accent);
+	box-shadow:
+		0 0 0 2px var(--surface),
+		0 0 0 calc(2px + var(--selected-edge)) var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+	.prefs-swatch,
+	.prefs-seg button {
+		transition: none;
+	}
+	.prefs-swatch:hover {
+		transform: none;
+	}
+}
+/* The way on to the full Settings page, at the foot of the menu. */
+.prefs-more {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 0.15rem;
+	padding: 0.55rem 0.55rem 0.45rem;
+	border-top: 1px solid var(--border);
+	color: var(--accent);
+	font-size: var(--fs-small);
+	font-weight: 600;
+	text-decoration: none;
+}
+.prefs-more:hover {
+	text-decoration: underline;
 }
 
 /* The label above a block of content within a page — "Continue reading",

@@ -21,8 +21,8 @@ export type ThemeApplied = 'light' | 'dark' | 'sepia';
 const PREFS: readonly ThemePref[] = ['system', 'light', 'dark', 'sepia'];
 
 /** Every theme choice with its label key, in display order (lightest to
- *  darkest after System) — Settings, the More sheet and the reader's Aa panel
- *  all list from this. */
+ *  darkest after System) — Settings, the header's quick settings, the More
+ *  sheet and the reader's Aa panel all list from this. */
 export const THEME_OPTIONS: readonly { v: ThemePref; k: string }[] = [
 	{ v: 'system', k: 'settings.themeSystem' },
 	{ v: 'light', k: 'settings.themeLight' },
@@ -61,12 +61,6 @@ class Theme {
 			if (this.preference === 'system') this.#resolveAndApply();
 		});
 		this.#resolveAndApply();
-	}
-
-	/** Quick light/dark flip (used by the header QuickSettings toggle). From any
-	 *  starting point, land on the opposite of what's showing. */
-	toggle() {
-		this.set(this.current === 'dark' ? 'light' : 'dark');
 	}
 
 	set(pref: ThemePref) {
