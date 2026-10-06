@@ -27,7 +27,8 @@ const SNAPSHOT: HomeShelves = {
 	featured: [],
 	authors: [{ slug: 'a', name: 'A', photo_url: '', book_count: 1 }],
 	topics: [],
-	counts: { books: 1, authors: 1, sermons: 0 }
+	counts: { books: 1, authors: 1, sermons: 0 },
+	audiences: ['young_readers']
 };
 
 // The load reads only `fetch`; the rest of the event is irrelevant to it.
@@ -46,7 +47,13 @@ describe('home load', () => {
 	});
 
 	it('degrades to empty shelves at runtime — a 404, or the SPA shell answering 200', async () => {
-		const empty = { featured: [], authors: [], topics: [], counts: { books: 0, authors: 0, sermons: 0 } };
+		const empty = {
+			featured: [],
+			authors: [],
+			topics: [],
+			counts: { books: 0, authors: 0, sermons: 0 },
+			audiences: []
+		};
 		expect(await run(async () => new Response('', { status: 404 }))).toEqual(empty);
 		expect(await run(async () => new Response('<!doctype html>', { status: 200 }))).toEqual(empty);
 	});

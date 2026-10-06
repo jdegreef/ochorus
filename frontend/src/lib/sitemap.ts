@@ -52,6 +52,8 @@ import { shareImage } from '$lib/coverArt';
 import { absUrl } from '$lib/seo';
 import { xmlEscape } from '$lib/xml';
 import { ORIGINALS_PATH, ORIGINALS_SLUG } from '$lib/originals';
+import { AUDIENCE_HUBS } from '$lib/audienceHub';
+import { hubLanguages } from '$lib/audienceHubData';
 import { APP_ONLY } from '$lib/robots';
 import { withTrailingSlash } from '$lib/href';
 import { modernChapterPath } from '$lib/reading-schema';
@@ -329,6 +331,9 @@ async function build(): Promise<SitemapData> {
 	// themes deep enough to earn a page, and the (author, theme) pairs likewise.
 	const quoteTopics = await listQuoteTopics().catch(() => []);
 	const quoteTopicPages = await listQuoteTopicPages().catch(() => []);
+	// The languages each young-reader hub has something in — the same list its
+	// page's hreflang reads.
+	const audienceLanguages = await hubLanguages();
 	// The Modern English edition's own rows — the list its route's entry
 	// generator builds from, so every advertised modern chapter is a built page.
 	// Only REVIEWED editions: a modern edition is AI-rewritten text, and an
@@ -503,6 +508,19 @@ async function build(): Promise<SitemapData> {
 			byLocale,
 			lastmods: dated([...byLocale.keys()], (l) => dates.get(l)?.seriesIndex)
 		});
+	}
+
+	// The young-reader hubs, in each advertised locale where the hub has
+	// something of its own (no English fallback, so an empty one is noindexed
+	// and unlisted). No <lastmod>: a hub gathers several kinds of row, and a
+	// date that understates a change is worse than none.
+	for (const h of AUDIENCE_HUBS) {
+		const byLocale = new Map(
+			advertisedSlices
+				.filter((x) => audienceLanguages[h.audience].includes(x.locale))
+				.map((x) => [x.locale, `${h.href}/`] as [string, string])
+		);
+		if (byLocale.size) pages.push({ byLocale });
 	}
 
 	// Articles — the hub, each article, and each topic-filtered shelf. Its OWN

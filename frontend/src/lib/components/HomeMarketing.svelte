@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { CoverBook, AuthorTileData, TopicCount } from '$lib/library-public';
+	import type { CoverBook, AuthorTileData, TopicCount, HubAudience } from '$lib/library-public';
 	import { goto } from '$app/navigation';
 	import { localizeHref } from '$lib/href';
 	import { i18n } from '$lib/i18n.svelte';
@@ -9,6 +9,7 @@
 	import HomeArticles from '$lib/components/HomeArticles.svelte';
 	import DiscoverStrip from '$lib/components/DiscoverStrip.svelte';
 	import TopicChips from '$lib/components/TopicChips.svelte';
+	import HomeAudienceHubs from '$lib/components/HomeAudienceHubs.svelte';
 	import AuthorTile from '$lib/components/AuthorTile.svelte';
 	import SectionHeader from '$lib/components/SectionHeader.svelte';
 	import SignupBand from '$lib/components/SignupBand.svelte';
@@ -31,6 +32,7 @@
 		authors: AuthorTileData[];
 		topics?: TopicCount[];
 		counts?: { books: number; authors: number; sermons: number };
+		audiences?: HubAudience[];
 	}
 	let { data }: { data: HomeData } = $props();
 
@@ -200,6 +202,9 @@
 
 <!-- Browse by topic -->
 <TopicChips {topics} />
+
+<!-- For young readers and teens — the hubs this language has. -->
+<HomeAudienceHubs audiences={data.audiences ?? []} />
 
 <!-- Mission teaser -->
 <section class="mt-14 border-y border-border bg-surface-2">

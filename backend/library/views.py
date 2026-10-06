@@ -23,7 +23,7 @@ from common.throttling import ScopedCacheThrottle
 from . import book_export
 from . import languages as languages_module
 from .contemporize import MODERN_LANGUAGE
-from .export_policy import is_exportable
+from .export_policy import EXPORT_EDITIONS, is_exportable
 from .http_cache import (
     CACHE_CONTROL,
     PublicContentCacheMixin,
@@ -41,6 +41,7 @@ from .models import (
     Chapter,
     ContentRevision,
     Plan,
+    PlanDay,
     SearchClickLog,
     SearchDecision,
     SearchQueryLog,
@@ -64,6 +65,7 @@ from .search import (
 )
 from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
+    AUDIENCE_EDITION_SUFFIX,
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
     ArticleListSerializer,
@@ -80,6 +82,7 @@ from .serializers import (
     TopicDetailSerializer,
     TopicListSerializer,
     _book_cover,
+    _edition_base_slug,
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
@@ -569,32 +572,42 @@ class LanguageListView(PublicContentCacheMixin, APIView):
         return Response([_language_entry(c) for c in live if c in with_books])
 
 
+def _plan_cards(language: str):
+    """Published plans in ``language``, shaped for ``PlanListSerializer`` cards
+    and in shelf order — shared by /plans and the young-reader hubs."""
+    return (
+        Plan.objects.filter(is_published=True, language=language)
+        .annotate(num_days=Count("days"))
+        .prefetch_related("days")
+        .order_by("sort_order", "title")
+    )
+
+
+def _plan_card_context(plans, language: str) -> dict:
+    """Resolve every plan's chapters and books ONCE for the page.
+
+    Each card shows total words, where the plan starts, and a cover strip,
+    and each of those used to fetch its own rows — three queries per plan.
+    The same pattern BookListView uses for topic chips.
+    """
+    return {
+        "plan_chapters": plan_chapter_index(plans, language),
+        "plan_books": plan_book_index(plans, language),
+        "plan_articles": plan_article_index(plans, language),
+    }
+
+
 class PlanListView(PublicContentCacheMixin, generics.ListAPIView):
     """Published reading plans for a language."""
 
     serializer_class = PlanListSerializer
 
     def get_queryset(self):
-        return (
-            Plan.objects.filter(is_published=True, language=_language(self.request))
-            .annotate(num_days=Count("days"))
-            .prefetch_related("days")
-            .order_by("sort_order", "title")
-        )
+        return _plan_cards(_language(self.request))
 
     def get_serializer_context(self):
-        """Resolve every plan's chapters and books ONCE for the page.
-
-        Each card shows total words, where the plan starts, and a cover strip,
-        and each of those used to fetch its own rows — three queries per plan.
-        The same pattern BookListView uses for topic chips.
-        """
         ctx = super().get_serializer_context()
-        plans = list(self.get_queryset())
-        language = _language(self.request)
-        ctx["plan_chapters"] = plan_chapter_index(plans, language)
-        ctx["plan_books"] = plan_book_index(plans, language)
-        ctx["plan_articles"] = plan_article_index(plans, language)
+        ctx.update(_plan_card_context(list(self.get_queryset()), _language(self.request)))
         return ctx
 
 
@@ -746,6 +759,65 @@ def _chapter_words(books) -> int | None:
     return round(sum(per_book) / len(per_book)) if per_book else None
 
 
+#: How many covers a series card fans out.
+SERIES_CARD_COVERS = 4
+
+
+def _series_rows(language: str, audience: str | None = None) -> list[dict]:
+    """The series index's rows for ``language`` (see ``SeriesListView``) —
+    every series, or only those written for ``audience``. Shared with the
+    young-reader hubs (``AudienceShelfView``) so a series card there carries
+    exactly what the /series index's does."""
+    members: dict[int, list] = {}
+    books = Book.objects.filter(language=language, is_published=True, series__isnull=False)
+    if audience is not None:
+        books = books.filter(series__audience=audience)
+    for book in (
+        books.select_related("author")
+        # The tile's cover_face fields (and the author it names), no more.
+        .only(
+            "slug", "language", "title", "subtitle", "cover_title", "cover_byline",
+            "cover_url",
+            "cover_color", "series", "series_position",
+            "author__slug", "author__name", "author__birth_year",
+        )
+        # Each book's chapter text, for the card's minutes (`_chapter_words`)
+        # — on this same query, not one more.
+        .annotate(
+            text_words=Sum("chapters__word_count"),
+            text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
+        )
+        .order_by(*SERIES_READING_ORDER)
+    ):
+        members.setdefault(book.series_id, []).append(book)
+    held = _held_languages(members)
+    rows = []
+    for series in Series.objects.filter(pk__in=members).prefetch_related("translations"):
+        title = series.title_for(language)
+        if title:
+            books = members[series.pk]
+            rows.append(
+                {
+                    "slug": series.slug,
+                    "title": title,
+                    "description": series.description_for(language),
+                    "book_count": len(books),
+                    **_series_for(series),
+                    "covers": [_book_cover(b) for b in books[:SERIES_CARD_COVERS]],
+                    # Every book, in reading order — the reader's progress
+                    # through the series is read against these on the card.
+                    "books": [b.slug for b in books],
+                    # Their titles, in the same order — the card's "Books in
+                    # this series" list names every volume, not just the fan's.
+                    "titles": [b.title for b in books],
+                    "languages": _series_languages(series, held.get(series.pk, set())),
+                    "ordered": _is_ordered(books),
+                    "chapter_words": _chapter_words(books),
+                }
+            )
+    return rows
+
+
 class SeriesListView(PublicContentCacheMixin, APIView):
     """Every series with a page in the requested language — the /series index,
     the Books page's Book Series shelf, the prerender's entries and the sitemap.
@@ -760,56 +832,186 @@ class SeriesListView(PublicContentCacheMixin, APIView):
     Both are read in bulk for the whole list rather than per series.
     """
 
-    COVERS = 4
+    def get(self, request):
+        return Response(_series_rows(_language(request)))
+
+
+#: The young-reader hubs (/young-readers/, /teens/): each audience's curated
+#: topic shelf, whose books the hub gathers too. Its retold editions are the
+#: slug convention's (``AUDIENCE_EDITION_SUFFIX``, beside ``EDITION_SUFFIXES``).
+AUDIENCE_TOPICS = {
+    Series.Audience.YOUNG_READERS: "for-young-readers",
+    Series.Audience.TEENS: "for-teens",
+}
+
+#: Each hub's "Start here" pick, in order of preference: the first one the
+#: language's hub holds, else its first book. An editor's call, so slugs here
+#: rather than a flag on the book; ``tests_audience_shelf`` holds each to a
+#: real book, so a rename can't silently fall through.
+AUDIENCE_STARTS = {
+    Series.Audience.YOUNG_READERS: (
+        "pilgrims-progress-children",
+        "pilgrims-progress-words-of-one-syllable",
+    ),
+    Series.Audience.TEENS: ("around-the-wicket-gate", "pilgrims-progress-teens", "all-of-grace"),
+}
+
+
+def _audience_topic(audience: str):
+    """The audience's curated topic, with its entries and translations — or None."""
+    return (
+        Topic.objects.filter(is_published=True, slug=AUDIENCE_TOPICS[audience])
+        .prefetch_related("translations", "entries")
+        .first()
+    )
+
+
+def _retold_bases(slugs, suffix: str) -> set[str]:
+    """The full texts that the ``suffix`` editions among ``slugs`` retell, where
+    that full text exists as a book (in any language) — one query. The suffix
+    alone would also catch an original whose title happens to end so (Watts's
+    *Divine Songs for Children*); see ``_is_retold``."""
+    bases = {_edition_base_slug(slug) for slug in slugs if slug.endswith(suffix)}
+    return set(Book.objects.filter(slug__in=bases).values_list("slug", flat=True).distinct())
+
+
+def _is_retold(slug: str, suffix: str, bases: set[str]) -> bool:
+    """A retelling retells something: the suffix AND the full text it names."""
+    return slug.endswith(suffix) and _edition_base_slug(slug) in bases
+
+
+def _audience_languages(audience: str, topic) -> list[str]:
+    """Every language where the audience's hub has something to show — a book in
+    a series of its that is named there, a retold edition, or a book of its
+    topic where the topic has a title — in one pass over the candidate rows,
+    with the same three tests ``AudienceShelfView`` sorts a language's books by.
+    For the page's hreflang and the sitemap, which must name exactly the locales
+    whose copy is not an empty page. Plans need no test of their own: a plan
+    lands on the hub only when every book it reads already does.
+
+    Keep the three tests in step with the view's (and ``_series_rows``'): a rule
+    added there and not here advertises a locale whose hub is empty."""
+    suffix = AUDIENCE_EDITION_SUFFIX[audience]
+    topic_slugs = {e.book_slug for e in topic.entries.all()} if topic else set()
+    rows = list(
+        Book.objects.filter(is_published=True)
+        .exclude(language=MODERN_LANGUAGE)
+        .filter(Q(series__audience=audience) | Q(slug__endswith=suffix) | Q(slug__in=topic_slugs))
+        .values_list("language", "slug", "series_id")
+        .distinct()
+    )
+    bases = _retold_bases({slug for _, slug, _ in rows}, suffix)
+    series = {
+        s.pk: s
+        for s in Series.objects.filter(audience=audience).prefetch_related("translations")
+    }
+    return sorted(
+        {
+            language
+            for language, slug, series_id in rows
+            if (series_id in series and series[series_id].title_for(language))
+            or _is_retold(slug, suffix, bases)
+            or (slug in topic_slugs and topic.is_translated_into(language))
+        }
+    )
+
+
+class AudienceLanguagesView(PublicContentCacheMixin, APIView):
+    """``{audience: [languages]}`` for both young-reader hubs — what the home
+    page's hub links and the sitemap need, without building either shelf."""
 
     def get(self, request):
+        return Response(
+            {audience: _audience_languages(audience, _audience_topic(audience)) for audience in AUDIENCE_TOPICS}
+        )
+
+
+class AudienceShelfView(PublicContentCacheMixin, APIView):
+    """Everything written for one young audience in the requested language —
+    the /young-readers/ and /teens/ hubs, which gather what /series, /originals,
+    /topics and /plans each hold a part of.
+
+    Four parts, each book appearing once, in this order of claim:
+
+    - ``series`` — the series whose ``audience`` is this one (the /series rows);
+    - ``editions`` — the retold editions (``-children`` / ``-teens``) that no
+      such series already holds;
+    - ``more`` — the rest of the audience's curated topic shelf, when that
+      topic exists in this language (``topic`` names it for the page's link);
+    - ``plans`` — published plans that read ONLY these books, so an adult plan
+      that happens to visit one of them never lands on a children's page.
+
+    ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
+    ``printable`` lists the slugs among them with a free PDF / EPUB
+    (``export_policy``), for the page's "print it" line; ``languages``, every
+    language the hub has something in (its hreflang). Nothing here falls back
+    to English: a language with no rows gets empty lists, and the page hides.
+    """
+
+    def get(self, request, audience):
+        if audience not in AUDIENCE_TOPICS:
+            raise Http404("No such audience")
         language = _language(request)
-        members: dict[int, list] = {}
-        for book in (
-            Book.objects.filter(language=language, is_published=True, series__isnull=False)
-            .select_related("author")
-            # The tile's cover_face fields (and the author it names), no more.
-            .only(
-                "slug", "language", "title", "subtitle", "cover_title", "cover_byline",
-                "cover_url",
-                "cover_color", "series", "series_position",
-                "author__slug", "author__name", "author__birth_year",
-            )
-            # Each book's chapter text, for the card's minutes (`_chapter_words`)
-            # — on this same query, not one more.
-            .annotate(
-                text_words=Sum("chapters__word_count"),
-                text_chapters=Count("chapters", filter=Q(chapters__word_count__gt=0)),
-            )
-            .order_by(*SERIES_READING_ORDER)
+        suffix = AUDIENCE_EDITION_SUFFIX[audience]
+        topic = _audience_topic(audience)
+        languages = _audience_languages(audience, topic)
+        if topic is not None and not topic.is_translated_into(language):
+            topic = None
+
+        series = _series_rows(language, audience)
+        claimed = {slug for row in series for slug in row["books"]}
+
+        topic_slugs = [e.book_slug for e in topic.entries.all()] if topic else []
+        books = list(
+            _book_shelf(language).filter(Q(slug__endswith=suffix) | Q(slug__in=topic_slugs))
+        )
+        bases = _retold_bases([b.slug for b in books], suffix)
+        editions = [
+            b for b in books if _is_retold(b.slug, suffix, bases) and b.slug not in claimed
+        ]
+        claimed |= {b.slug for b in editions}
+        # The topic's own order — its curator's — not the shelf's. An original
+        # whose slug merely ends in the suffix (Divine Songs) reaches the hub here.
+        by_slug = {b.slug: b for b in books}
+        more = [
+            by_slug[s] for s in dict.fromkeys(topic_slugs) if s in by_slug and s not in claimed
+        ]
+        claimed |= {b.slug for b in more}
+        hub_books = [b.slug for b in editions + more]
+        start = next(
+            (s for s in AUDIENCE_STARTS[audience] if s in hub_books),
+            hub_books[0] if hub_books else None,
+        )
+
+        # Which plans read nothing but the hub's books, from their day rows
+        # alone — before any plan card is built.
+        reads: dict[int, set[str]] = {}
+        for plan_id, slug in (
+            PlanDay.objects.filter(plan__language=language, plan__is_published=True)
+            .exclude(book_slug="")
+            .values_list("plan_id", "book_slug")
         ):
-            members.setdefault(book.series_id, []).append(book)
-        held = _held_languages(members)
-        rows = []
-        for series in Series.objects.filter(pk__in=members).prefetch_related("translations"):
-            title = series.title_for(language)
-            if title:
-                books = members[series.pk]
-                rows.append(
-                    {
-                        "slug": series.slug,
-                        "title": title,
-                        "description": series.description_for(language),
-                        "book_count": len(books),
-                        **_series_for(series),
-                        "covers": [_book_cover(b) for b in books[: self.COVERS]],
-                        # Every book, in reading order — the reader's progress
-                        # through the series is read against these on the card.
-                        "books": [b.slug for b in books],
-                        # Their titles, in the same order — the card's "Books in
-                        # this series" list names every volume, not just the fan's.
-                        "titles": [b.title for b in books],
-                        "languages": _series_languages(series, held.get(series.pk, set())),
-                        "ordered": _is_ordered(books),
-                        "chapter_words": _chapter_words(books),
-                    }
-                )
-        return Response(rows)
+            reads.setdefault(plan_id, set()).add(slug)
+        plans = list(
+            _plan_cards(language).filter(pk__in=[p for p, read in reads.items() if read <= claimed])
+        )
+
+        printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
+        # No topic chips: nothing on the hub filters or shows them.
+        ctx = {"request": request, "language": language, "book_topics": {}}
+        plan_ctx = {"request": request, **_plan_card_context(plans, language)}
+        return Response(
+            {
+                "series": series,
+                "editions": BookListSerializer(editions, many=True, context=ctx).data,
+                "more": BookListSerializer(more, many=True, context=ctx).data,
+                "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
+                "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
+                "start": start,
+                "printable": printable,
+                "languages": languages,
+            }
+        )
 
 
 class SeriesDetailView(PublicContentCacheMixin, APIView):

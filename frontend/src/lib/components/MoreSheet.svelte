@@ -10,6 +10,7 @@
 	import { seenOnView, withSource } from '$lib/signupSource';
 	import { openFrom } from '$lib/signInSheet.svelte';
 	import { PRIMARY_NAV, ENGLISH_HUBS, ORIGINALS_DEST } from '$lib/contentNav';
+	import { AUDIENCE_HUBS } from '$lib/audienceHub';
 	import { ACCOUNT_NAV } from '$lib/accountNav';
 	import { theme, THEME_OPTIONS } from '$lib/theme.svelte';
 
@@ -74,6 +75,11 @@
 			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile" data-section="originals"
 				><Icon name="sparkle" size={20} />{t(ORIGINALS_DEST.labelKey)}</a
 			>
+			{#each AUDIENCE_HUBS as h (h.href)}
+				<a href={localizeHref(h.href)} class="more-tile"
+					><Icon name={h.icon} size={20} />{t(h.labelKey)}</a
+				>
+			{/each}
 		</div>
 		<!-- English-only hubs, unlocalized — the footer's Discover rule. -->
 		{#if lang.current === 'en'}

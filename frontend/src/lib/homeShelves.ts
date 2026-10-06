@@ -12,11 +12,14 @@ import {
 	type AuthorTileData,
 	type BookSummary,
 	type CoverBook,
+	type HubAudience,
 	type TopicCount,
 	type TopicSummary
 } from '$lib/library-public';
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
+import { AUDIENCE_HUBS } from '$lib/audienceHub';
+import { hubLanguages } from '$lib/audienceHubData';
 
 /**
  * The home page's public shelves — Discover, the authors grid, the topic chips
@@ -50,6 +53,9 @@ export interface HomeShelves {
 	authors: AuthorTileData[];
 	topics: TopicCount[];
 	counts: { books: number; authors: number; sermons: number };
+	/** The young-reader hubs with something to show in this language — the
+	 *  home page links only those (`HomeAudienceHubs`). */
+	audiences: HubAudience[];
 }
 
 /**
@@ -99,10 +105,11 @@ export function deriveHomeShelves(
 		authors: AuthorBio[];
 		topics: TopicSummary[];
 		sermons: { length: number };
+		audiences?: HubAudience[];
 	},
 	day: number
 ): HomeShelves {
-	const { books, authors, topics, sermons } = lists;
+	const { books, authors, topics, sermons, audiences = [] } = lists;
 	return {
 		// Six books that favour six DIFFERENT authors. `books.slice(0, 6)` took
 		// the API's own order, which groups by writer — so the front of the
@@ -137,13 +144,14 @@ export function deriveHomeShelves(
 		// Library breadth for the hero's social-proof line. Counts of what this
 		// LANGUAGE actually has (the lists are already per-locale), so a locale
 		// with fewer works advertises its own honest numbers, not English's.
-		counts: { books: books.length, authors: authors.length, sermons: sermons.length }
+		counts: { books: books.length, authors: authors.length, sermons: sermons.length },
+		audiences
 	};
 }
 
 /** Fetch the four lists for `lang` and derive the snapshot, seeded with today. */
 export async function homeShelves(lang: string): Promise<HomeShelves> {
-	const [books, authors, topics, sermons] = await Promise.all([
+	const [books, authors, topics, sermons, audiences] = await Promise.all([
 		shelf(listBooks(lang)),
 		// The endpoint defaults to `en`, so calling it bare gave EVERY locale's
 		// home page the English roster — with English book counts, which the
@@ -157,7 +165,12 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		listTopics(lang).catch(() => []),
 		// Fetched only for the library-breadth count under the hero — tolerant at
 		// runtime, so a 0 just drops the sermon figure rather than breaking home.
-		shelf(listSermons(lang))
+		shelf(listSermons(lang)),
+		// The hubs this language has something in — tolerant even while
+		// building, like topics: a decorative link band that simply hides.
+		hubLanguages().then((has) =>
+			AUDIENCE_HUBS.filter((h) => has[h.audience].includes(lang)).map((h) => h.audience)
+		)
 	]);
-	return deriveHomeShelves({ books, authors, topics, sermons }, dayNumber());
+	return deriveHomeShelves({ books, authors, topics, sermons, audiences }, dayNumber());
 }

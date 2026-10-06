@@ -24,6 +24,8 @@ const BROWSE_PAGES: { label: string; file: string }[] = [
 	{ label: 'books', file: 'lib/components/BooksShelf.svelte' },
 	{ label: 'topics', file: 'routes/topics/+page.svelte' },
 	{ label: 'series', file: 'routes/series/+page.svelte' },
+	// /young-readers/ and /teens/ are one component, like BooksShelf above.
+	{ label: 'audience hubs', file: 'lib/components/AudienceHub.svelte' },
 	{ label: 'plans', file: 'routes/plans/+page.svelte' },
 	{ label: 'sermons', file: 'routes/sermons/+page.svelte' },
 	{ label: 'biographies', file: 'routes/biographies/+page.svelte' },
