@@ -15,17 +15,24 @@ const KEY = 'ochorus:welcome';
  * unanswered must not bounce the reader to /welcome on every visit home.
  */
 const PAGE_KEY = 'ochorus:welcome-page';
+// PAGE_KEY's states: 'pending' (owed: home sends the reader to /welcome),
+// 'done' (seen: home shows the "finish getting started" card until the
+// checklist is complete) and 'finished' (complete or hidden: nothing more).
 
 class Welcome {
 	pending = $state(false);
 	/** The /welcome page is owed to this device's new account. */
 	pagePending = $state(false);
+	/** The page has been seen and its checklist is still being worked through. */
+	inProgress = $state(false);
 
 	init() {
 		if (!browser) return;
 		try {
 			this.pending = localStorage.getItem(KEY) === 'pending';
-			this.pagePending = localStorage.getItem(PAGE_KEY) === 'pending';
+			const page = localStorage.getItem(PAGE_KEY);
+			this.pagePending = page === 'pending';
+			this.inProgress = page === 'done';
 		} catch {
 			/* storage blocked: no welcome is better than one that never leaves */
 		}
@@ -35,7 +42,8 @@ class Welcome {
 	offer() {
 		if (!browser) return;
 		try {
-			if (localStorage.getItem(PAGE_KEY) !== 'done') {
+			const page = localStorage.getItem(PAGE_KEY);
+			if (page !== 'done' && page !== 'finished') {
 				localStorage.setItem(PAGE_KEY, 'pending');
 				this.pagePending = true;
 			}
@@ -54,6 +62,7 @@ class Welcome {
 	 */
 	forgetPage() {
 		this.pagePending = false;
+		this.inProgress = false;
 		if (!browser) return;
 		try {
 			localStorage.removeItem(PAGE_KEY);
@@ -67,9 +76,22 @@ class Welcome {
 		this.pagePending = false;
 		if (!browser) return;
 		try {
+			if (localStorage.getItem(PAGE_KEY) === 'finished') return;
 			localStorage.setItem(PAGE_KEY, 'done');
+			this.inProgress = true;
 		} catch {
 			/* the redirect still stops for this visit */
+		}
+	}
+
+	/** The checklist is complete, or the reader hid the card: stop offering it. */
+	finishProgress() {
+		this.inProgress = false;
+		if (!browser) return;
+		try {
+			localStorage.setItem(PAGE_KEY, 'finished');
+		} catch {
+			/* the card still hides for this visit */
 		}
 	}
 

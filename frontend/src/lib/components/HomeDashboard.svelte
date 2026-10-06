@@ -10,6 +10,7 @@
 	import { welcome } from '$lib/welcome.svelte';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
+	import WelcomeProgress from '$lib/components/WelcomeProgress.svelte';
 	import WelcomePalette from '$lib/components/WelcomePalette.svelte';
 	import DashboardStats from '$lib/components/DashboardStats.svelte';
 	import TodaysReading from '$lib/components/TodaysReading.svelte';
@@ -83,6 +84,10 @@
 <!-- Brand-new signed-in reader with nothing yet: a warm start, not empty blocks.
      Self-hides the moment there's any reading, favourite or plan. -->
 <OnboardingCard />
+
+<!-- Seen /welcome but not finished its checklist: keep the next step one tap
+     away (self-hides when done, hidden, or while OnboardingCard is up). -->
+<WelcomeProgress />
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
      Promoted above every other block, full width, with deep-link resume. -->

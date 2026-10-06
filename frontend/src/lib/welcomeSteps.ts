@@ -13,6 +13,14 @@ export interface WelcomeStep {
 	done: boolean;
 }
 
+/** Each step's catalogue keys, shared by the page and the home progress card. */
+export const STEP_COPY: Record<WelcomeStepKey, { title: string; hint?: string }> = {
+	account: { title: 'welcomePage.stepAccount' },
+	read: { title: 'welcomePage.stepRead', hint: 'welcomePage.stepReadHint' },
+	save: { title: 'welcomePage.stepSave', hint: 'welcomePage.stepSaveHint' },
+	mark: { title: 'welcomePage.stepMark', hint: 'welcomePage.stepMarkHint' }
+};
+
 export interface WelcomeActivity extends ReaderActivity {
 	signedIn: boolean;
 }
@@ -40,7 +48,9 @@ export type WelcomeAction =
 	| 'browse library'
 	| `step: ${WelcomeStepKey}`
 	| `goal: ${number}`
-	| 'go home';
+	| 'go home'
+	| 'resume from home'
+	| 'hide progress';
 
 export const WELCOME_EVENT = 'Welcome page';
 
