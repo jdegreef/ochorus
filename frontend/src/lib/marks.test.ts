@@ -61,3 +61,21 @@ describe('section emblems', () => {
 		}
 	});
 });
+
+describe('finished-book marks', () => {
+	it('the wax seal is multicolour emblem-palette art, and inert', () => {
+		const svg = read('seal.svg');
+		const used = colours(svg);
+		expect(svg).not.toMatch(INERT);
+		expect(used.size).toBeGreaterThanOrEqual(3);
+		const palette = new Set(Object.values(EMBLEM_ART).flatMap((art) => [...colours(art)]));
+		for (const c of used) expect(palette.has(c), `seal: ${c}`).toBe(true);
+	});
+
+	it('the falling leaf is a single solid shape for a mask, and inert', () => {
+		const svg = read('leaf.svg');
+		expect(svg).not.toMatch(INERT);
+		expect(svg).toContain('fill="#000"');
+		expect(colours(svg).size).toBe(0);
+	});
+});

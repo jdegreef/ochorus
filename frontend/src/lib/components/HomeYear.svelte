@@ -79,7 +79,7 @@
 				<ul class="grid flex-1 grid-cols-4 gap-2.5 sm:grid-cols-6" aria-label={t('year.title')}>
 					{#each stats.books.slice(0, MAX_COVERS) as book (book.slug)}
 						<li>
-							<a href={localizeHref(`/books/${book.slug}`)} title={book.title} aria-label={book.title}>
+							<a class="sealed" href={localizeHref(`/books/${book.slug}`)} title={book.title} aria-label={book.title}>
 								<BookCover {book} rounded="rounded-sm" />
 							</a>
 						</li>

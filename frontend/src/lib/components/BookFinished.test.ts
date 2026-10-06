@@ -15,6 +15,15 @@ vi.mock('$lib/progress', () => ({
 		[...state.finished].map((slug) => ({ slug, kind: 'book', finished_at: Date.now(), at: Date.now() })),
 	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) })
 }));
+// jsdom has no IntersectionObserver: this one reports the arrival in view at once.
+class InViewObserver {
+	constructor(private cb: IntersectionObserverCallback) {}
+	observe() {
+		this.cb([{ isIntersecting: true } as IntersectionObserverEntry], this as unknown as IntersectionObserver);
+	}
+	disconnect() {}
+}
+vi.stubGlobal('IntersectionObserver', InViewObserver);
 const resume = vi.hoisted(() => ({ libraryBooks: vi.fn() }));
 vi.mock('$lib/resumeBooks', () => resume);
 const listPlans = vi.hoisted(() => vi.fn());
@@ -63,10 +72,10 @@ const settle = async () => {
 	await new Promise((r) => setTimeout(r, 0));
 	flushSync();
 };
-const show = async () => {
+const show = async (celebrate = false) => {
 	component = mount(BookFinished, {
 		target,
-		props: { book, language: 'en', shareUrl: 'https://example.org/books/inner-chamber/' }
+		props: { book, language: 'en', shareUrl: 'https://example.org/books/inner-chamber/', celebrate }
 	});
 	await settle();
 };
@@ -103,6 +112,21 @@ describe('BookFinished', () => {
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 		await settle();
 		expect(target.querySelector('#finished-heading')).toBeNull();
+	});
+
+	it('lets the leaves fall when the reader just finished, as the arrival comes into view', async () => {
+		await show(true); // the chapter route's offerFinish took, just now
+		state.finished.add('inner-chamber');
+		window.dispatchEvent(new CustomEvent('ochorus:sync'));
+		await settle();
+		expect(target.querySelectorAll('.leaf-shower i').length).toBeGreaterThan(0);
+	});
+
+	it('never for a book finished before', async () => {
+		state.finished.add('inner-chamber');
+		await show(false);
+		expect(target.querySelector('#finished-heading')).not.toBeNull();
+		expect(target.querySelector('.leaf-shower')).toBeNull();
 	});
 
 	it("counts the year's finished books and offers the ways on", async () => {

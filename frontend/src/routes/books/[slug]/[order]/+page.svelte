@@ -433,6 +433,7 @@
 	let chapterCelebrated = false;
 	let chapterOpenedAt = 0;
 	let celebrate = $state(false);
+	let bookJustFinished = $state(false);
 	const reduceMotion = browser ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
 
 	$effect(() => {
@@ -442,6 +443,7 @@
 		pagesMeasured = false;
 		chapterCelebrated = false;
 		celebrate = false;
+		bookJustFinished = false;
 		chapterOpenedAt = performance.now();
 	});
 
@@ -461,10 +463,13 @@
 		// "Continue reading" and onto the finished shelf, with a quiet Undo (auto-
 		// detection can misfire on a reader who skimmed to the end). `!chapter.next`
 		// is the last-chapter signal used throughout this route.
-		if (!chapter.next) offerFinish(slug, 'book');
+		const finishedNow = !chapter.next && offerFinish(slug, 'book');
 		if (reduceMotion?.matches) return;
 		navigator.vibrate?.(12);
 		celebrate = true;
+		// The book's arrival (BookFinished) lets gold leaves fall — for this
+		// reader's own finish, just now, and never for a book finished before.
+		bookJustFinished = finishedNow;
 	}
 
 	// Fetch the book once per (slug, language) for the book-level progress
@@ -2319,6 +2324,7 @@
 			{#if !chapter.next && endMounted && bookForProgress}
 				{#await import('$lib/components/BookFinished.svelte') then { default: BookFinished }}
 					<BookFinished
+						celebrate={bookJustFinished}
 						book={bookForProgress}
 						{language}
 						shareUrl={absUrl(localizeHref(`/books/${slug}`))}

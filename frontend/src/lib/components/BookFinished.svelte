@@ -4,6 +4,7 @@
 	import { listPlans } from '$lib/library-public';
 	import { libraryBooks } from '$lib/resumeBooks';
 	import { allProgress, bookProgressReader, isFinished } from '$lib/progress';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { yearStats } from '$lib/yearInBooks';
 	import { marks } from '$lib/marks.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -35,13 +36,17 @@
 	let {
 		book,
 		language,
-		shareUrl
+		shareUrl,
+		celebrate = false
 	}: {
 		book: BookDetail;
 		/** The chapter's content language: number formatting, the note's source. */
 		language: string;
 		/** The book's own page, absolute: what "tell a friend" passes on. */
 		shareUrl: string;
+		/** The reader finished the book just now, here (the chapter route knows:
+		 *  its offerFinish took, and they allow motion) — let the leaves fall. */
+		celebrate?: boolean;
 	} = $props();
 
 	const t = i18n.t;
@@ -70,6 +75,31 @@
 		void ticks;
 		return isFinished(book.slug);
 	});
+	// The moment of finishing, not the state of being finished: gold leaves fall
+	// once, when the parent says this reader just finished (`celebrate`), and
+	// only as the arrival comes into view — it sits below the chapter's nav, so
+	// a shower started at the stamp would be over before the reader got there.
+	// Removed when the last leaf has fallen.
+	let hero = $state<HTMLElement>();
+	const heroSeen = elementVisible(() => hero);
+	let leavesFalling = $state(false);
+	let fallen = false;
+	$effect(() => {
+		if (fallen || !celebrate || !finished || !heroSeen.visible) return;
+		fallen = true;
+		leavesFalling = true;
+	});
+	// A dozen leaves, spread across the band and staggered, from fixed numbers
+	// rather than random ones so the shower is the same on every device.
+	const LEAVES = Array.from({ length: 12 }, (_, i) => ({
+		x: (i * 37 + 7) % 96,
+		delay: ((i * 53) % 90) / 100,
+		turn: ((i * 71) % 160) - 80,
+		size: 12 + ((i * 29) % 9)
+	}));
+	// The leaf that starts last lands last: its animationend clears the shower.
+	const LAST = LEAVES.reduce((last, l, i) => (l.delay > LEAVES[last].delay ? i : last), 0);
+
 	const finishedThisYear = $derived.by(() => {
 		void ticks;
 		return yearStats({ progress: allProgress(), books: [], days: [], year, wpm: 0 }).finished;
@@ -91,7 +121,26 @@
 
 {#if finished}
 	<!-- 1. The arrival. -->
-	<section class="finished-hero mt-14 rounded-card border border-border bg-surface p-6 text-center sm:p-8" aria-labelledby="finished-heading">
+	<section
+		bind:this={hero}
+		class="finished-hero mt-14 rounded-card border border-border bg-surface p-6 text-center sm:p-8"
+		aria-labelledby="finished-heading"
+	>
+		{#if leavesFalling}
+			<!-- Gold leaves falling once through the band: the arrival marked.
+			     Decoration only; still under prefers-reduced-motion. -->
+			<div class="leaf-shower" aria-hidden="true">
+				{#each LEAVES as leaf, i (i)}
+					<i
+						onanimationend={i === LAST ? () => (leavesFalling = false) : undefined}
+						style:--x="{leaf.x}%"
+						style:--delay="{leaf.delay}s"
+						style:--turn="{leaf.turn}deg"
+						style:--size="{leaf.size}px"
+					></i>
+				{/each}
+			</div>
+		{/if}
 		<p class="eyebrow text-gold">{t('finished.eyebrow')}</p>
 		<h2 id="finished-heading" class="font-display mt-2 text-h2 text-balance" dir="auto">{book.title}</h2>
 		<p class="mt-1 text-small text-muted">
@@ -199,12 +248,51 @@
 {/if}
 
 <style>
+	/* Positioned for the shower; NOT clipped — the Download and Share menus
+	   open below the buttons and would be cut off. The shower clips itself. */
 	.finished-hero {
+		position: relative;
 		background-image: radial-gradient(
 			ellipse at top,
 			color-mix(in srgb, var(--gold) 12%, transparent),
 			transparent 70%
 		);
+	}
+	.leaf-shower {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		pointer-events: none;
+	}
+	.leaf-shower i {
+		position: absolute;
+		top: -2rem;
+		inset-inline-start: var(--x);
+		width: var(--size);
+		height: var(--size);
+		background: var(--gold);
+		-webkit-mask: url('/marks/leaf.svg') center / contain no-repeat;
+		mask: url('/marks/leaf.svg') center / contain no-repeat;
+		opacity: 0;
+		animation: leaf-fall 2.8s ease-in var(--delay) forwards;
+	}
+	@keyframes leaf-fall {
+		0% {
+			opacity: 0;
+			transform: translateY(0) rotate(0deg);
+		}
+		15% {
+			opacity: 0.9;
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(16rem) rotate(var(--turn));
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.leaf-shower {
+			display: none;
+		}
 	}
 	.year-tile {
 		border: 1px solid color-mix(in srgb, var(--gold) 40%, var(--border));
