@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { normalizePalette, PALETTE_COLORS } from './palettes';
+import { normalizeApplied, PALETTE_COLORS } from './palettes';
 import type { IconName } from './components/Icon.svelte';
 
 /**
@@ -95,7 +95,7 @@ class Theme {
 	 *  own ground under every palette (app.css), so its colour is the theme's. */
 	refreshChrome() {
 		if (!browser) return;
-		const pal = normalizePalette(document.documentElement.dataset.palette);
+		const pal = normalizeApplied(document.documentElement.dataset.palette);
 		const color = this.current === 'sepia' ? THEME_COLOR.sepia : PALETTE_COLORS[pal][this.current];
 		// All of them, media attribute removed: app.html ships a media-scoped
 		// pair for the pre-hydration paint, and an explicit choice has to win

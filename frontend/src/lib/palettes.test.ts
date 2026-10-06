@@ -13,7 +13,16 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { contrastRatio } from './coverArt';
-import { normalizePalette, PALETTE_COLORS, PALETTE_KEY, PALETTES } from './palettes';
+import {
+	APPLIED_PALETTE_KEY,
+	APPLIED_PALETTES,
+	appliedPalette,
+	normalizePalette,
+	PALETTE_COLORS,
+	PALETTE_KEY,
+	PALETTES,
+	swatchOf
+} from './palettes';
 import { palette } from './palette.svelte';
 
 const CSS = readFileSync(join(process.cwd(), 'src/app.css'), 'utf-8').replace(/\/\*[\s\S]*?\*\//g, '');
@@ -44,7 +53,9 @@ const paletteBlock = (mode: string, p: string) => block(`:root[data-theme='${mod
 const rgb = (hex: string) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
 const ratio = (a: string, b: string) => contrastRatio(rgb(a), rgb(b));
 
-const CUSTOM = PALETTES.filter((p) => p !== 'parchment');
+// Every palette app.css styles: the choosable ones and the Church year's
+// seasonal ones ('liturgical' itself is a choice with no CSS of its own).
+const CUSTOM = APPLIED_PALETTES.filter((p) => p !== 'parchment');
 
 describe('library palettes', () => {
 	for (const p of CUSTOM) {
@@ -101,7 +112,7 @@ describe('library palettes', () => {
 		// greeting lifts the date line into a thinner scrim.
 		expect(heroRoot['--hero-scrim']).toMatch(/var\(--hero-tint\) 75%, transparent\) 85%/);
 	});
-	for (const p of PALETTES) {
+	for (const p of APPLIED_PALETTES) {
 		it(`${p}: the home hero's date line clears 4.5:1 over a white painting`, () => {
 			const tint = p === 'parchment' ? heroRoot['--hero-tint'] : block(`:root[data-palette='${p}']`)['--hero-tint'];
 			expect(tint, `${p} has no --hero-tint`).toMatch(/^#[0-9a-f]{6}$/i);
@@ -127,6 +138,35 @@ describe('library palettes', () => {
 
 	it('the boot script reads the store key', () => {
 		expect(HTML).toContain(`getItem('${PALETTE_KEY}')`);
+	});
+
+	it("the boot script paints the Church year's cached season", () => {
+		expect(HTML).toContain(`if (pal === 'liturgical') pal = localStorage.getItem('${APPLIED_PALETTE_KEY}')`);
+	});
+});
+
+describe('the Church year', () => {
+	const on = (y: number, m: number, d: number) => appliedPalette('liturgical', new Date(y, m - 1, d));
+
+	it('applies the season\'s colour', () => {
+		expect(on(2026, 12, 6)).toBe('violet'); // Advent
+		expect(on(2026, 12, 25)).toBe('feast'); // Christmas
+		expect(on(2026, 1, 6)).toBe('feast'); // Epiphany
+		expect(on(2026, 3, 4)).toBe('violet'); // Lent
+		expect(on(2026, 3, 30)).toBe('flame'); // Holy Week
+		expect(on(2026, 4, 12)).toBe('feast'); // Easter
+		expect(on(2026, 5, 24)).toBe('flame'); // Pentecost
+		expect(on(2026, 10, 6)).toBe('olive'); // Ordinary Time
+	});
+
+	it('leaves every other choice as it is', () => {
+		for (const p of PALETTES.filter((p) => p !== 'liturgical')) expect(appliedPalette(p)).toBe(p);
+	});
+
+	it("draws today's season as its swatch", () => {
+		const advent = new Date(2026, 11, 6);
+		expect(swatchOf('liturgical', 'light', advent)).toEqual(PALETTE_COLORS.violet.swatch.light);
+		expect(swatchOf('liturgical', 'dark', advent)).toEqual(PALETTE_COLORS.violet.swatch.dark);
 	});
 });
 
@@ -158,6 +198,17 @@ describe('palette store', () => {
 		palette.set('olive');
 		expect(meta.getAttribute('content')).toBe(PALETTE_COLORS.olive.light);
 		meta.remove();
+	});
+
+	it('stores the Church year as the choice, paints the season, and caches it for boot', () => {
+		palette.set('liturgical');
+		const season = appliedPalette('liturgical');
+		expect(localStorage.getItem(PALETTE_KEY)).toBe('liturgical');
+		expect(palette.applied).toBe(season);
+		expect(document.documentElement.dataset.palette).toBe(season);
+		expect(localStorage.getItem(APPLIED_PALETTE_KEY)).toBe(season);
+		palette.set('hearth');
+		expect(localStorage.getItem(APPLIED_PALETTE_KEY)).toBeNull();
 	});
 
 	it('hydrates from storage', () => {

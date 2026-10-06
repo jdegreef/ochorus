@@ -577,6 +577,15 @@
 	:root[data-palette='monastery'] {
 		--hero-tint: #15171a;
 	}
+	:root[data-palette='violet'] {
+		--hero-tint: #1a1230;
+	}
+	:root[data-palette='feast'] {
+		--hero-tint: #1f1a0e;
+	}
+	:root[data-palette='flame'] {
+		--hero-tint: #2a0f12;
+	}
 	/* Cathedral — navy and gold over cool stone. */
 	:root[data-theme='light'][data-palette='cathedral'] {
 		--bg: #f5f6f8;
@@ -731,6 +740,102 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #e4e2dc;
 		--accent-soft-border: #cfd0cc;
+	}
+	/* THE CHURCH YEAR — never chosen directly: the 'liturgical' choice applies
+	   one of these by season (palettes.ts appliedPalette), and Olive Grove
+	   above is its green, for Ordinary Time. */
+	/* Violet — Advent and Lent: penitence, waiting. */
+	:root[data-theme='light'][data-palette='violet'] {
+		--bg: #f7f5fa;
+		--surface: #ffffff;
+		--surface-2: #ede9f3;
+		--band: #e9e4f1;
+		--border: #e0dae9;
+		--shelf-back: #e9e4f1;
+		--accent: #4f2d7f;
+		--accent-contrast: #ffffff;
+		--accent-soft: #eee8f6;
+		--accent-soft-border: #dcd1ec;
+	}
+	:root[data-theme='dark'][data-palette='violet'] {
+		--bg: #15121c;
+		--surface: #1d1926;
+		--surface-2: #262130;
+		--band: #19151f;
+		--border: #2c2638;
+		--shelf-back: #1f1a28;
+		--accent: #c3a8f0;
+		--accent-contrast: #15121c;
+		--accent-soft: #261f35;
+		--accent-soft-border: #3d3157;
+	}
+	:root[data-theme='sepia'][data-palette='violet'] {
+		--accent: #4f2d7f;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e6deea;
+		--accent-soft-border: #d3c6e0;
+	}
+	/* Feast — white and gold: Christmas, Epiphany, Easter. */
+	:root[data-theme='light'][data-palette='feast'] {
+		--bg: #fcfaf4;
+		--surface: #ffffff;
+		--surface-2: #f5f0e2;
+		--band: #f3ecda;
+		--border: #ebe3cf;
+		--shelf-back: #f3ecda;
+		--accent: #7a5a10;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f6eed8;
+		--accent-soft-border: #e8dab5;
+	}
+	:root[data-theme='dark'][data-palette='feast'] {
+		--bg: #17150f;
+		--surface: #1f1c15;
+		--surface-2: #29251c;
+		--band: #1b1812;
+		--border: #302b20;
+		--shelf-back: #221e16;
+		--accent: #e6c66e;
+		--accent-contrast: #17150f;
+		--accent-soft: #2c2615;
+		--accent-soft-border: #4a3f20;
+	}
+	:root[data-theme='sepia'][data-palette='feast'] {
+		--accent: #6e500c;
+		--accent-contrast: #ffffff;
+		--accent-soft: #efe2c0;
+		--accent-soft-border: #e0cc9c;
+	}
+	/* Flame — red: Holy Week and Pentecost, the Passion and the Spirit. */
+	:root[data-theme='light'][data-palette='flame'] {
+		--bg: #fbf6f5;
+		--surface: #ffffff;
+		--surface-2: #f4eae8;
+		--band: #f1e3e0;
+		--border: #ecdcd9;
+		--shelf-back: #f1e3e0;
+		--accent: #962a26;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f7e5e3;
+		--accent-soft-border: #ecc9c5;
+	}
+	:root[data-theme='dark'][data-palette='flame'] {
+		--bg: #1a1112;
+		--surface: #23181a;
+		--surface-2: #2d2023;
+		--band: #1e1415;
+		--border: #34252a;
+		--shelf-back: #261a1c;
+		--accent: #f09a8f;
+		--accent-contrast: #1a1112;
+		--accent-soft: #35201f;
+		--accent-soft-border: #52302d;
+	}
+	:root[data-theme='sepia'][data-palette='flame'] {
+		--accent: #8f2723;
+		--accent-contrast: #ffffff;
+		--accent-soft: #f0dcd4;
+		--accent-soft-border: #e1c3b9;
 	}
 }
 

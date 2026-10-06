@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { palette } from '$lib/palette.svelte';
-	import { PALETTES, PALETTE_COLORS } from '$lib/palettes';
+	import { PALETTES, swatchOf } from '$lib/palettes';
 	import { i18n } from '$lib/i18n.svelte';
 	import { theme } from '$lib/theme.svelte';
 	import { radioKeys } from '$lib/radioKeys';
@@ -22,7 +22,7 @@
 
 <div class="palettes" role="radiogroup" aria-label={label} tabindex="-1" {onkeydown}>
 	{#each PALETTES as p (p)}
-		{@const [ground, accent, second] = PALETTE_COLORS[p].swatch[mode]}
+		{@const [ground, accent, second] = swatchOf(p, mode)}
 		<button
 			type="button"
 			role="radio"
