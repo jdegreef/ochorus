@@ -170,6 +170,7 @@
 
 <div class="page-col px-5 py-10">
 	<PageHeader
+		section="plans"
 		title={t('plans.title')}
 		tagline={t('plans.tagline')}
 		meta={plans.length ? planCounts : undefined}

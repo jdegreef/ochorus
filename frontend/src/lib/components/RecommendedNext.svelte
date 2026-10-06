@@ -83,6 +83,7 @@
 {#if picks.length}
 	<section class="page-col px-5 pt-14">
 		<SectionHeader
+			section="books"
 			title={t('home.recommendedNext')}
 			href={localizeHref('/books')}
 			linkText={t('home.allBooks')}

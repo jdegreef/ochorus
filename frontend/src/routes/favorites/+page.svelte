@@ -472,7 +472,7 @@
 	<!-- Saved sermons -->
 	{#if sermonFavs.length}
 		<section id="sermons" class="scroll-mt-24 pt-10">
-			<SectionHeader title={t('fav.groupSermons')} />
+			<SectionHeader section="sermons" title={t('fav.groupSermons')} />
 			<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
 				{#each sermonFavs as e (e.slug)}
 					{#if sermons[e.slug]}
@@ -487,7 +487,7 @@
 	<!-- Following: hearted authors — the people first -->
 	{#if authorFavs.length}
 		<section id="authors" class="scroll-mt-24 pt-10">
-			<SectionHeader title={t('fav.groupAuthors')} />
+			<SectionHeader section="biographies" title={t('fav.groupAuthors')} />
 			<div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
 				{#each authorFavs as e (e.slug)}
 					{#if authors[e.slug]}
@@ -502,7 +502,7 @@
 	<!-- Followed topics: the shelves the reader wants to keep an eye on -->
 	{#if topicFavs.length}
 		<section id="topics" class="scroll-mt-24 pt-10">
-			<SectionHeader title={t('fav.groupTopics')} />
+			<SectionHeader section="topics" title={t('fav.groupTopics')} />
 			<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 				{#each topicFavs as e (e.slug)}
 					{#if topics[e.slug]}
@@ -538,7 +538,7 @@
 	<!-- Saved reading plans -->
 	{#if planFavs.length}
 		<section id="plans" class="scroll-mt-24 pt-10">
-			<SectionHeader title={t('fav.groupPlans')} />
+			<SectionHeader section="plans" title={t('fav.groupPlans')} />
 			<div class="grid gap-4 sm:grid-cols-2">
 				{#each planFavs as e (e.slug)}
 					{#if plans[e.slug]}

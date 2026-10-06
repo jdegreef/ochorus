@@ -115,7 +115,7 @@
 
 	{#if inProgress.length || plansInProgress.length}
 		<section class="pt-2">
-			<SectionHeader title={t('settings.statInProgress')} />
+			<SectionHeader section="books" title={t('settings.statInProgress')} />
 			{@render cards(inProgress, plansInProgress, false)}
 		</section>
 	{/if}
@@ -124,7 +124,7 @@
 		<!-- The Finished tile deep-links to #finished; the offset clears the sticky
 		     header so the heading isn't hidden under it on arrival. -->
 		<section id="finished" class="scroll-mt-24 pt-10">
-			<SectionHeader title={t('settings.statFinished')} />
+			<SectionHeader section="books" title={t('settings.statFinished')} />
 			{@render cards(finished, plansFinished, true)}
 		</section>
 	{/if}

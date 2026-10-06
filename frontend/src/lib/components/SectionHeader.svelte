@@ -1,5 +1,8 @@
 <script lang="ts">
 	import Arrow from '$lib/components/Arrow.svelte';
+	import Icon from '$lib/components/Icon.svelte';
+	import type { NavSection } from '$lib/contentNav';
+	import { SECTION_MARKS } from '$lib/sections';
 	/**
 	 * A section title with an optional "see all" link beside it.
 	 *
@@ -14,12 +17,18 @@
 	 * its own line when the title needs the width, and sits beside it when it
 	 * doesn't. The bottom margin is fixed rather than a prop — mb-4 on one of
 	 * the five was the drift, not a requirement.
+	 *
+	 * A shelf that belongs to a library section passes `section`, and its title
+	 * wears that section's nav icon in the section's hue — so "Continue
+	 * reading" reads as Books and "Your plans" as Plans at a glance, the way
+	 * the top nav already colours them.
 	 */
 	let {
 		title,
 		href = '',
 		linkText = '',
-		subtitle = ''
+		subtitle = '',
+		section
 	}: {
 		title: string;
 		/** Optional one-line standfirst under the title (kept with it when the link wraps). */
@@ -28,19 +37,43 @@
 		href?: string;
 		/** Link label; the arrow is added here so every one of them matches. */
 		linkText?: string;
+		/** The library section this shelf belongs to, if any. */
+		section?: NavSection;
 	} = $props();
 </script>
+
+{#snippet heading()}
+	{#if section}
+		<h2 class="text-h2 section-header-title" data-section={section}>
+			<Icon name={SECTION_MARKS[section].icon} size={22} />{title}
+		</h2>
+	{:else}
+		<h2 class="text-h2">{title}</h2>
+	{/if}
+{/snippet}
 
 <div class="mb-6 flex flex-wrap items-end justify-between gap-x-4 gap-y-1">
 	{#if subtitle}
 		<div>
-			<h2 class="text-h2">{title}</h2>
+			{@render heading()}
 			<p class="mt-1 text-small text-muted">{subtitle}</p>
 		</div>
 	{:else}
-		<h2 class="text-h2">{title}</h2>
+		{@render heading()}
 	{/if}
 	{#if href && linkText}
 		<a {href} class="whitespace-nowrap text-small font-semibold text-accent">{linkText} <Arrow /></a>
 	{/if}
 </div>
+
+<style>
+	/* The icon sits on the title's first line and wraps with it. */
+	.section-header-title {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+	}
+	.section-header-title :global(svg) {
+		flex-shrink: 0;
+	}
+</style>

@@ -301,6 +301,7 @@
 
 <div class="page-col px-5 py-10" style="--pinned-offset: calc(var(--appnav-h, 0px) + {pinnedH}px)">
 	<PageHeader
+		section="sermons"
 		title={t('nav.sermons')}
 		tagline={t('sermons.tagline')}
 		meta={sermons.length ? sermonCounts : undefined}

@@ -2460,6 +2460,12 @@ nav.appnav .navsearch:hover {
 	width: 66%;
 	height: 66%;
 }
+/* A section page's emblem, beside its <PageHeader> title, in the section's
+   hue (data-section puts it in scope as --section-hue). */
+.page-header-emblem {
+	--chip-size: 2.75rem;
+	--chip-hue: var(--section-hue);
+}
 /* The shelf card's badge: an emblem chip in the card's hue. */
 .shelf-card-badge {
 	--chip-size: 3.5rem;
