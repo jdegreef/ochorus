@@ -79,4 +79,3 @@ describe('finished-book marks', () => {
 		expect(colours(svg).size).toBe(0);
 	});
 });
-

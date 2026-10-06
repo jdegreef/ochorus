@@ -3,7 +3,8 @@
 	import type { BookDetail, BookSummary, PlanSummary } from '$lib/library-public';
 	import { listPlans } from '$lib/library-public';
 	import { libraryBooks } from '$lib/resumeBooks';
-	import { allProgress, bookProgressReader, isFinished, takeJustFinished } from '$lib/progress';
+	import { allProgress, bookProgressReader, isFinished } from '$lib/progress';
+	import { elementVisible } from '$lib/scrollSpy.svelte';
 	import { yearStats } from '$lib/yearInBooks';
 	import { marks } from '$lib/marks.svelte';
 	import { getLang } from '$lib/lang.svelte';
@@ -35,13 +36,17 @@
 	let {
 		book,
 		language,
-		shareUrl
+		shareUrl,
+		celebrate = false
 	}: {
 		book: BookDetail;
 		/** The chapter's content language: number formatting, the note's source. */
 		language: string;
 		/** The book's own page, absolute: what "tell a friend" passes on. */
 		shareUrl: string;
+		/** The reader finished the book just now, here (the chapter route knows:
+		 *  its offerFinish took, and they allow motion) — let the leaves fall. */
+		celebrate?: boolean;
 	} = $props();
 
 	const t = i18n.t;
@@ -71,31 +76,18 @@
 		return isFinished(book.slug);
 	});
 	// The moment of finishing, not the state of being finished: gold leaves fall
-	// once, for a book THIS tab just finished (takeJustFinished — never a finish
-	// synced in from another device, nor one from an earlier visit), and only as
-	// the arrival comes into view: it sits below the chapter's nav, so a shower
-	// started at the stamp would be over before the reader got there. Removed
-	// again when it has fallen. A side effect (an observer, a timer), so $effect.
+	// once, when the parent says this reader just finished (`celebrate`), and
+	// only as the arrival comes into view — it sits below the chapter's nav, so
+	// a shower started at the stamp would be over before the reader got there.
+	// Removed when the last leaf has fallen.
 	let hero = $state<HTMLElement>();
+	const heroSeen = elementVisible(() => hero);
 	let leavesFalling = $state(false);
-	const SHOWER_MS = 4000;
+	let fallen = false;
 	$effect(() => {
-		if (!finished || !hero || !takeJustFinished(book.slug)) return;
-		let timer: ReturnType<typeof setTimeout> | undefined;
-		const io = new IntersectionObserver(
-			([e]) => {
-				if (!e.isIntersecting) return;
-				io.disconnect();
-				leavesFalling = true;
-				timer = setTimeout(() => (leavesFalling = false), SHOWER_MS);
-			},
-			{ threshold: 0.4 }
-		);
-		io.observe(hero);
-		return () => {
-			io.disconnect();
-			clearTimeout(timer);
-		};
+		if (fallen || !celebrate || !finished || !heroSeen.visible) return;
+		fallen = true;
+		leavesFalling = true;
 	});
 	// A dozen leaves, spread across the band and staggered, from fixed numbers
 	// rather than random ones so the shower is the same on every device.
@@ -105,6 +97,8 @@
 		turn: ((i * 71) % 160) - 80,
 		size: 12 + ((i * 29) % 9)
 	}));
+	// The leaf that starts last lands last: its animationend clears the shower.
+	const LAST = LEAVES.reduce((last, l, i) => (l.delay > LEAVES[last].delay ? i : last), 0);
 
 	const finishedThisYear = $derived.by(() => {
 		void ticks;
@@ -138,6 +132,7 @@
 			<div class="leaf-shower" aria-hidden="true">
 				{#each LEAVES as leaf, i (i)}
 					<i
+						onanimationend={i === LAST ? () => (leavesFalling = false) : undefined}
 						style:--x="{leaf.x}%"
 						style:--delay="{leaf.delay}s"
 						style:--turn="{leaf.turn}deg"
@@ -267,7 +262,6 @@
 		position: absolute;
 		inset: 0;
 		overflow: hidden;
-		border-radius: inherit;
 		pointer-events: none;
 	}
 	.leaf-shower i {

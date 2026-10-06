@@ -8,18 +8,12 @@ import type { BookDetail, BookSummary } from '$lib/library-public';
  * — the author's other books, a plan that reads this one.
  */
 vi.mock('$lib/lang.svelte', () => ({ getLang: () => 'en' }));
-const state = vi.hoisted(() => ({ finished: new Set<string>(), justFinished: false }));
+const state = vi.hoisted(() => ({ finished: new Set<string>() }));
 vi.mock('$lib/progress', () => ({
 	isFinished: (slug: string) => state.finished.has(slug),
 	allProgress: () =>
 		[...state.finished].map((slug) => ({ slug, kind: 'book', finished_at: Date.now(), at: Date.now() })),
-	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) }),
-	// The tab's own just-finished signal, taken once like the real one.
-	takeJustFinished: () => {
-		const was = state.justFinished;
-		state.justFinished = false;
-		return was;
-	}
+	bookProgressReader: () => (slug: string) => ({ started: false, finished: state.finished.has(slug) })
 }));
 // jsdom has no IntersectionObserver: this one reports the arrival in view at once.
 class InViewObserver {
@@ -78,10 +72,10 @@ const settle = async () => {
 	await new Promise((r) => setTimeout(r, 0));
 	flushSync();
 };
-const show = async () => {
+const show = async (celebrate = false) => {
 	component = mount(BookFinished, {
 		target,
-		props: { book, language: 'en', shareUrl: 'https://example.org/books/inner-chamber/' }
+		props: { book, language: 'en', shareUrl: 'https://example.org/books/inner-chamber/', celebrate }
 	});
 	await settle();
 };
@@ -90,7 +84,6 @@ describe('BookFinished', () => {
 	beforeEach(() => {
 		target = document.body.appendChild(document.createElement('div'));
 		state.finished = new Set();
-		state.justFinished = false;
 		resume.libraryBooks.mockResolvedValue([summary('inner-chamber'), summary('abide'), summary('other', 'bounds')]);
 		listPlans.mockResolvedValue([
 			{ slug: 'school-of-prayer', title: '31 Days in the School of Prayer', day_count: 31, covers: [{ kind: 'book', slug: 'inner-chamber', title: '', cover_url: '', cover_color: '#123456' }] },
@@ -121,18 +114,17 @@ describe('BookFinished', () => {
 		expect(target.querySelector('#finished-heading')).toBeNull();
 	});
 
-	it('lets the leaves fall when this tab finishes the book, as the arrival comes into view', async () => {
-		await show();
+	it('lets the leaves fall when the reader just finished, as the arrival comes into view', async () => {
+		await show(true); // the chapter route's offerFinish took, just now
 		state.finished.add('inner-chamber');
-		state.justFinished = true; // markFinished, in this tab
 		window.dispatchEvent(new CustomEvent('ochorus:sync'));
 		await settle();
 		expect(target.querySelectorAll('.leaf-shower i').length).toBeGreaterThan(0);
 	});
 
-	it('never for a book finished elsewhere or earlier', async () => {
-		state.finished.add('inner-chamber'); // stamped, but not just now in this tab
-		await show();
+	it('never for a book finished before', async () => {
+		state.finished.add('inner-chamber');
+		await show(false);
 		expect(target.querySelector('#finished-heading')).not.toBeNull();
 		expect(target.querySelector('.leaf-shower')).toBeNull();
 	});
