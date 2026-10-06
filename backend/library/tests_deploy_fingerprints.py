@@ -8,6 +8,8 @@ change to the rules themselves brings it back.
 
 from __future__ import annotations
 
+import ast
+import inspect
 from io import StringIO
 from unittest import mock
 
@@ -114,3 +116,32 @@ class IncrementalDigestTests(TestCase):
         self.assertEqual(self._texts_read(), {self.en.pk})
         self.assertEqual(ts.stale_languages("book"), {})
         self.assertEqual(self._texts_read(), set())
+
+
+class CorrectionsVersionCoverageTests(TestCase):
+    """The rules version must hash every library module the settle path uses.
+
+    A module left out can change what a settled body is without changing the
+    version, and every body judged under the old rules is then skipped for
+    good: the full scan that used to catch it no longer runs."""
+
+    def test_every_library_module_the_settle_path_imports_is_hashed(self):
+        from library.management.commands.apply_body_corrections import (
+            CORRECTIONS_MODULES,
+        )
+
+        hashed = {m.__name__ for m in CORRECTIONS_MODULES}
+        reached = set()
+        for module in CORRECTIONS_MODULES:
+            if module.__name__ == "library.ingest":
+                # Hashed only for strip_trailing_pagenum; its other imports
+                # (catalog, models, sanitize) are not on the settle path.
+                continue
+            for node in ast.walk(ast.parse(inspect.getsource(module))):
+                if not isinstance(node, ast.ImportFrom):
+                    continue
+                if node.module == "library":  # from library import dashes
+                    reached.update(f"library.{a.name}" for a in node.names)
+                elif (node.module or "").startswith("library."):
+                    reached.add(node.module)
+        self.assertEqual(sorted(reached - hashed), [])

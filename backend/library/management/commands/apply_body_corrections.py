@@ -26,14 +26,17 @@ from __future__ import annotations
 from django.core.management.base import BaseCommand
 from django.db.models import F
 
-from library import corrections, dashes, text
+from library import corrections, dashes, ingest, text
 from library.corrections import settled_chapter_body, settled_sermon_body
 from library.deploy_fingerprints import keyed_md5, keyed_md5_hex, source_version
 from library.models import Chapter, Sermon
 
 #: The code that decides what a settled body is. Editing any of it changes the
-#: version, which re-checks every body on the next deploy.
-CORRECTIONS_MODULES = (corrections, dashes, text)
+#: version, which re-checks every body on the next deploy. ``ingest`` is here
+#: for strip_trailing_pagenum, which settled_*_body imports lazily;
+#: CorrectionsVersionCoverageTests fails if the settle path reaches a library
+#: module this tuple doesn't name.
+CORRECTIONS_MODULES = (corrections, dashes, ingest, text)
 
 
 def _store_keys(model, rows: list) -> None:
