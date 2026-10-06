@@ -359,6 +359,11 @@
 	--accent-soft: #221f33;
 	--accent-soft-border: #36324f;
 	--gold: #e0b45c;
+	/* The metal of the ornaments — fleurons, a drop cap's raised edge, the
+	   settings gear. Gold, but a palette may strike them in silver
+	   (Cathedral, Monastery). Not --gold's other jobs (highlights, the
+	   reading mark): those mean something, an ornament only adorns. */
+	--ornament: var(--gold);
 	--border: #2d261d;
 	/* A control's edge must clear 3:1 to be a visible boundary (WCAG 1.4.11);
 	   --border is a decorative hairline at ~1.2:1 and cannot carry that job.
@@ -556,13 +561,23 @@
    the app.html boot script; no attribute is the house palette (Parchment —
    everything above). Each palette re-tints the grounds and the accent in
    light and dark, and only the accent in sepia, whose parchment is the
-   point of choosing it. Screen only: print keeps its black-on-white.
+   point of choosing it. It also tunes the six section hues to its own
+   character in every theme — each leans a little toward the accent (never
+   across the wheel) and takes the palette's saturation, so Olive Grove's
+   Books are a greyed indigo rather than the house's bright one — and the
+   cool palettes strike their ornaments in silver. The hues were generated
+   from the house ones (a lean of ≤14° in OKLCH, a chroma factor, lightness
+   walked until every pair clears), then hand-kept here as plain hex.
+   Screen only: print keeps its black-on-white.
    Every ink still clears 4.5:1 on every re-tinted ground — palettes.test.ts
    measures it rather than trusting this list. */
 @media screen {
 	/* Each palette's hero tint (see THE HOME HERO below): one per palette, not
-	   per theme — the hero is a painting at night in every theme. */
+	   per theme — the hero is a painting at night in every theme. The silver
+	   palettes hang the painting in a silver frame to match. */
 	:root[data-palette='cathedral'] {
+		--hero-gilt: #bcc4cf;
+		--hero-gilt-deep: #5b6472;
 		--hero-tint: #0f1a2e;
 	}
 	:root[data-palette='olive'] {
@@ -575,6 +590,8 @@
 		--hero-tint: #1f1226;
 	}
 	:root[data-palette='monastery'] {
+		--hero-gilt: #bcc4cf;
+		--hero-gilt-deep: #5b6472;
 		--hero-tint: #15171a;
 	}
 	:root[data-palette='violet'] {
@@ -598,6 +615,19 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #e6ebf5;
 		--accent-soft-border: #cdd6e8;
+		--ornament: #727c8a;
+		--hue-indigo: #3b438f;
+		--hue-indigo-soft: #eaecf6;
+		--hue-oxblood: #833731;
+		--hue-oxblood-soft: #f5e7e5;
+		--hue-cypress: #2c594d;
+		--hue-cypress-soft: #e2efeb;
+		--hue-ochre: #795725;
+		--hue-ochre-soft: #f7ebdc;
+		--hue-slate: #3e5575;
+		--hue-slate-soft: #e7ebf2;
+		--hue-plum: #613f64;
+		--hue-plum-soft: #f0e8f1;
 	}
 	:root[data-theme='dark'][data-palette='cathedral'] {
 		--bg: #10141c;
@@ -610,12 +640,38 @@
 		--accent-contrast: #10141c;
 		--accent-soft: #1a2335;
 		--accent-soft-border: #2c3a55;
+		--ornament: #b4bcc8;
+		--hue-indigo: #979ee8;
+		--hue-indigo-soft: #1f2131;
+		--hue-oxblood: #e49a90;
+		--hue-oxblood-soft: #31211f;
+		--hue-cypress: #8dc9b6;
+		--hue-cypress-soft: #1a2a25;
+		--hue-ochre: #dbb56e;
+		--hue-ochre-soft: #2d2518;
+		--hue-slate: #a5bedb;
+		--hue-slate-soft: #1c252f;
+		--hue-plum: #ccaad0;
+		--hue-plum-soft: #2b202c;
 	}
 	:root[data-theme='sepia'][data-palette='cathedral'] {
 		--accent: #1f3a6e;
 		--accent-contrast: #ffffff;
 		--accent-soft: #e2e3ea;
 		--accent-soft-border: #cfd3e2;
+		--ornament: #6b727c;
+		--hue-indigo: #3b438f;
+		--hue-indigo-soft: #e4e7f3;
+		--hue-oxblood: #7d332e;
+		--hue-oxblood-soft: #f0dedb;
+		--hue-cypress: #2a5549;
+		--hue-cypress-soft: #d9e8e3;
+		--hue-ochre: #705221;
+		--hue-ochre-soft: #f0dfc7;
+		--hue-slate: #3a5174;
+		--hue-slate-soft: #e2e3e6;
+		--hue-plum: #5d3c5f;
+		--hue-plum-soft: #e7dee8;
 	}
 	/* Olive Grove — sage and olive over a field-cream ground. */
 	:root[data-theme='light'][data-palette='olive'] {
@@ -629,6 +685,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #e4efe5;
 		--accent-soft-border: #cfe0d2;
+		--hue-indigo: #40428b;
+		--hue-indigo-soft: #eaecf5;
+		--hue-oxblood: #803933;
+		--hue-oxblood-soft: #f5e8e6;
+		--hue-cypress: #365844;
+		--hue-cypress-soft: #e5eee8;
+		--hue-ochre: #6f5c27;
+		--hue-ochre-soft: #f3eddc;
+		--hue-slate: #365870;
+		--hue-slate-soft: #e6ecf1;
+		--hue-plum: #663f5b;
+		--hue-plum-soft: #f2e8ee;
 	}
 	:root[data-theme='dark'][data-palette='olive'] {
 		--bg: #121510;
@@ -641,12 +709,36 @@
 		--accent-contrast: #121510;
 		--accent-soft: #1c2a1f;
 		--accent-soft-border: #2f4533;
+		--hue-indigo: #9d9de3;
+		--hue-indigo-soft: #202030;
+		--hue-oxblood: #e19b92;
+		--hue-oxblood-soft: #31211f;
+		--hue-cypress: #99c7aa;
+		--hue-cypress-soft: #1d2922;
+		--hue-ochre: #ccbc74;
+		--hue-ochre-soft: #2a2719;
+		--hue-slate: #9fc1d6;
+		--hue-slate-soft: #1a262d;
+		--hue-plum: #d2a9c6;
+		--hue-plum-soft: #2c2029;
 	}
 	:root[data-theme='sepia'][data-palette='olive'] {
 		--accent: #2f5a3a;
 		--accent-contrast: #ffffff;
 		--accent-soft: #e2e6d3;
 		--accent-soft-border: #cdd7bf;
+		--hue-indigo: #40428b;
+		--hue-indigo-soft: #e5e7f2;
+		--hue-oxblood: #7b3630;
+		--hue-oxblood-soft: #efdedc;
+		--hue-cypress: #345441;
+		--hue-cypress-soft: #dce8e0;
+		--hue-ochre: #675624;
+		--hue-ochre-soft: #eae1c8;
+		--hue-slate: #315470;
+		--hue-slate-soft: #e1e4e6;
+		--hue-plum: #613b56;
+		--hue-plum-soft: #e9dee5;
 	}
 	/* Hearth — terracotta and amber over a warm, firelit ground. */
 	:root[data-theme='light'][data-palette='hearth'] {
@@ -660,6 +752,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #f6e6dd;
 		--accent-soft-border: #ebcfbf;
+		--hue-indigo: #3f3d9a;
+		--hue-indigo-soft: #eaecf8;
+		--hue-oxblood: #8a3025;
+		--hue-oxblood-soft: #f7e7e4;
+		--hue-cypress: #2c5a43;
+		--hue-cypress-soft: #e3efe8;
+		--hue-ochre: #82521a;
+		--hue-ochre-soft: #fbeada;
+		--hue-slate: #38557a;
+		--hue-slate-soft: #e6ecf3;
+		--hue-plum: #703853;
+		--hue-plum-soft: #f5e7ec;
 	}
 	:root[data-theme='dark'][data-palette='hearth'] {
 		--bg: #1a120e;
@@ -672,12 +776,36 @@
 		--accent-contrast: #1a120e;
 		--accent-soft: #33211a;
 		--accent-soft-border: #4d3226;
+		--hue-indigo: #9c9af2;
+		--hue-indigo-soft: #202034;
+		--hue-oxblood: #ec9684;
+		--hue-oxblood-soft: #33201c;
+		--hue-cypress: #9bc89b;
+		--hue-cypress-soft: #1d291e;
+		--hue-ochre: #e9af60;
+		--hue-ochre-soft: #2f2416;
+		--hue-slate: #9fbfe0;
+		--hue-slate-soft: #1a2531;
+		--hue-plum: #dea4be;
+		--hue-plum-soft: #301f26;
 	}
 	:root[data-theme='sepia'][data-palette='hearth'] {
 		--accent: #8c3b1e;
 		--accent-contrast: #ffffff;
 		--accent-soft: #f1dfcf;
 		--accent-soft-border: #e3c8b2;
+		--hue-indigo: #3f3d9a;
+		--hue-indigo-soft: #e4e7f5;
+		--hue-oxblood: #842d22;
+		--hue-oxblood-soft: #f2ddd9;
+		--hue-cypress: #2a5640;
+		--hue-cypress-soft: #d9e9e0;
+		--hue-ochre: #794d16;
+		--hue-ochre-soft: #f6ddc4;
+		--hue-slate: #35517a;
+		--hue-slate-soft: #e1e3e7;
+		--hue-plum: #6b364e;
+		--hue-plum-soft: #ecdde3;
 	}
 	/* Dawn — plum and rose over a blush ground. */
 	:root[data-theme='light'][data-palette='dawn'] {
@@ -691,6 +819,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #f1e8f4;
 		--accent-soft-border: #e2d2e8;
+		--hue-indigo: #4a3b94;
+		--hue-indigo-soft: #ebebf7;
+		--hue-oxblood: #87303f;
+		--hue-oxblood-soft: #f6e7e8;
+		--hue-cypress: #2e5a44;
+		--hue-cypress-soft: #e3efe8;
+		--hue-ochre: #825123;
+		--hue-ochre-soft: #fbe9db;
+		--hue-slate: #435279;
+		--hue-slate-soft: #e8ebf3;
+		--hue-plum: #683c60;
+		--hue-plum-soft: #f3e7f0;
 	}
 	:root[data-theme='dark'][data-palette='dawn'] {
 		--bg: #17121a;
@@ -703,12 +843,36 @@
 		--accent-contrast: #17121a;
 		--accent-soft: #2b1f33;
 		--accent-soft-border: #44314f;
+		--hue-indigo: #a598ec;
+		--hue-indigo-soft: #221f32;
+		--hue-oxblood: #e9959d;
+		--hue-oxblood-soft: #322021;
+		--hue-cypress: #91c9a9;
+		--hue-cypress-soft: #1b2a21;
+		--hue-ochre: #deb562;
+		--hue-ochre-soft: #2d2516;
+		--hue-slate: #a8bce0;
+		--hue-slate-soft: #1e2431;
+		--hue-plum: #d4a7cc;
+		--hue-plum-soft: #2d1f2b;
 	}
 	:root[data-theme='sepia'][data-palette='dawn'] {
 		--accent: #6b3a7a;
 		--accent-contrast: #ffffff;
 		--accent-soft: #ece0e2;
 		--accent-soft-border: #dbc9d6;
+		--hue-indigo: #4a3b94;
+		--hue-indigo-soft: #e6e6f4;
+		--hue-oxblood: #812d3c;
+		--hue-oxblood-soft: #f1ddde;
+		--hue-cypress: #2c5641;
+		--hue-cypress-soft: #dae9e0;
+		--hue-ochre: #794c1f;
+		--hue-ochre-soft: #f6dcc7;
+		--hue-slate: #414e78;
+		--hue-slate-soft: #e2e3e7;
+		--hue-plum: #63395b;
+		--hue-plum-soft: #e9dee6;
 	}
 	/* Monastery — slate over plain stone; quiet, almost colourless. */
 	:root[data-theme='light'][data-palette='monastery'] {
@@ -722,6 +886,19 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #e8ecf0;
 		--accent-soft-border: #d3dbe3;
+		--ornament: #727c8a;
+		--hue-indigo: #424975;
+		--hue-indigo-soft: #ebecf2;
+		--hue-oxblood: #71443f;
+		--hue-oxblood-soft: #f1e9e8;
+		--hue-cypress: #3e554c;
+		--hue-cypress-soft: #e6edea;
+		--hue-ochre: #6e5a40;
+		--hue-ochre-soft: #f3ece3;
+		--hue-slate: #465567;
+		--hue-slate-soft: #e8ebef;
+		--hue-plum: #5b4559;
+		--hue-plum-soft: #efe9ee;
 	}
 	:root[data-theme='dark'][data-palette='monastery'] {
 		--bg: #141414;
@@ -734,12 +911,38 @@
 		--accent-contrast: #141414;
 		--accent-soft: #1e252d;
 		--accent-soft-border: #33404d;
+		--ornament: #b4bcc8;
+		--hue-indigo: #9ea2cd;
+		--hue-indigo-soft: #20212b;
+		--hue-oxblood: #d0a39d;
+		--hue-oxblood-soft: #2d2322;
+		--hue-cypress: #a3c3b5;
+		--hue-cypress-soft: #202825;
+		--hue-ochre: #ceb890;
+		--hue-ochre-soft: #2a261e;
+		--hue-slate: #aebdce;
+		--hue-slate-soft: #1f252b;
+		--hue-plum: #c6afc4;
+		--hue-plum-soft: #292228;
 	}
 	:root[data-theme='sepia'][data-palette='monastery'] {
 		--accent: #3b4a5c;
 		--accent-contrast: #ffffff;
 		--accent-soft: #e4e2dc;
 		--accent-soft-border: #cfd0cc;
+		--ornament: #6b727c;
+		--hue-indigo: #424975;
+		--hue-indigo-soft: #e6e7ee;
+		--hue-oxblood: #6c413c;
+		--hue-oxblood-soft: #eae0de;
+		--hue-cypress: #3b5149;
+		--hue-cypress-soft: #dee7e3;
+		--hue-ochre: #66553b;
+		--hue-ochre-soft: #eae0d2;
+		--hue-slate: #435166;
+		--hue-slate-soft: #e2e3e5;
+		--hue-plum: #574255;
+		--hue-plum-soft: #e5e0e5;
 	}
 	/* THE CHURCH YEAR — never chosen directly: the 'liturgical' choice applies
 	   one of these by season (palettes.ts appliedPalette), and Olive Grove
@@ -756,6 +959,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #eee8f6;
 		--accent-soft-border: #dcd1ec;
+		--hue-indigo: #453e91;
+		--hue-indigo-soft: #ebecf6;
+		--hue-oxblood: #843340;
+		--hue-oxblood-soft: #f6e7e8;
+		--hue-cypress: #315944;
+		--hue-cypress-soft: #e3efe8;
+		--hue-ochre: #7a561f;
+		--hue-ochre-soft: #f8ebdb;
+		--hue-slate: #415377;
+		--hue-slate-soft: #e7ebf3;
+		--hue-plum: #653d62;
+		--hue-plum-soft: #f2e8f0;
 	}
 	:root[data-theme='dark'][data-palette='violet'] {
 		--bg: #15121c;
@@ -768,12 +983,36 @@
 		--accent-contrast: #15121c;
 		--accent-soft: #261f35;
 		--accent-soft-border: #3d3157;
+		--hue-indigo: #a19ae9;
+		--hue-indigo-soft: #212032;
+		--hue-oxblood: #e6969e;
+		--hue-oxblood-soft: #322022;
+		--hue-cypress: #93c8aa;
+		--hue-cypress-soft: #1b2a21;
+		--hue-ochre: #dcb568;
+		--hue-ochre-soft: #2d2517;
+		--hue-slate: #a8bdde;
+		--hue-slate-soft: #1d2430;
+		--hue-plum: #d1a8cd;
+		--hue-plum-soft: #2c202b;
 	}
 	:root[data-theme='sepia'][data-palette='violet'] {
 		--accent: #4f2d7f;
 		--accent-contrast: #ffffff;
 		--accent-soft: #e6deea;
 		--accent-soft-border: #d3c6e0;
+		--hue-indigo: #453e91;
+		--hue-indigo-soft: #e5e6f3;
+		--hue-oxblood: #7f2f3d;
+		--hue-oxblood-soft: #f0ddde;
+		--hue-cypress: #2e5541;
+		--hue-cypress-soft: #dae8e0;
+		--hue-ochre: #71511c;
+		--hue-ochre-soft: #f1dfc6;
+		--hue-slate: #3f4f76;
+		--hue-slate-soft: #e2e3e6;
+		--hue-plum: #603a5d;
+		--hue-plum-soft: #e8dee7;
 	}
 	/* Feast — white and gold: Christmas, Epiphany, Easter. */
 	:root[data-theme='light'][data-palette='feast'] {
@@ -787,6 +1026,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #f6eed8;
 		--accent-soft-border: #e8dab5;
+		--hue-indigo: #3f3d9a;
+		--hue-indigo-soft: #eaecf8;
+		--hue-oxblood: #893216;
+		--hue-oxblood-soft: #f7e7e2;
+		--hue-cypress: #37593a;
+		--hue-cypress-soft: #e5efe5;
+		--hue-ochre: #7c5611;
+		--hue-ochre-soft: #f8ebd8;
+		--hue-slate: #38557a;
+		--hue-slate-soft: #e6ecf3;
+		--hue-plum: #703853;
+		--hue-plum-soft: #f5e7ec;
 	}
 	:root[data-theme='dark'][data-palette='feast'] {
 		--bg: #17150f;
@@ -799,12 +1050,36 @@
 		--accent-contrast: #17150f;
 		--accent-soft: #2c2615;
 		--accent-soft-border: #4a3f20;
+		--hue-indigo: #9c9af2;
+		--hue-indigo-soft: #202034;
+		--hue-oxblood: #ea987b;
+		--hue-oxblood-soft: #33211a;
+		--hue-cypress: #9bc89b;
+		--hue-cypress-soft: #1d291e;
+		--hue-ochre: #dfb55c;
+		--hue-ochre-soft: #2d2515;
+		--hue-slate: #9fbfe0;
+		--hue-slate-soft: #1a2531;
+		--hue-plum: #dea4be;
+		--hue-plum-soft: #301f26;
 	}
 	:root[data-theme='sepia'][data-palette='feast'] {
 		--accent: #6e500c;
 		--accent-contrast: #ffffff;
 		--accent-soft: #efe2c0;
 		--accent-soft-border: #e0cc9c;
+		--hue-indigo: #3f3d9a;
+		--hue-indigo-soft: #e4e7f5;
+		--hue-oxblood: #832f13;
+		--hue-oxblood-soft: #f2ded7;
+		--hue-cypress: #345537;
+		--hue-cypress-soft: #dce8dc;
+		--hue-ochre: #73500e;
+		--hue-ochre-soft: #f2dfc3;
+		--hue-slate: #35517a;
+		--hue-slate-soft: #e1e3e7;
+		--hue-plum: #6b364e;
+		--hue-plum-soft: #ecdde3;
 	}
 	/* Flame — red: Holy Week and Pentecost, the Passion and the Spirit. */
 	:root[data-theme='light'][data-palette='flame'] {
@@ -818,6 +1093,18 @@
 		--accent-contrast: #ffffff;
 		--accent-soft: #f7e5e3;
 		--accent-soft-border: #ecc9c5;
+		--hue-indigo: #523694;
+		--hue-indigo-soft: #edebf7;
+		--hue-oxblood: #8a2f2a;
+		--hue-oxblood-soft: #f7e7e4;
+		--hue-cypress: #2c5a43;
+		--hue-cypress-soft: #e3efe8;
+		--hue-ochre: #82511a;
+		--hue-ochre-soft: #fbeada;
+		--hue-slate: #38557a;
+		--hue-slate-soft: #e6ecf3;
+		--hue-plum: #6f3956;
+		--hue-plum-soft: #f5e7ed;
 	}
 	:root[data-theme='dark'][data-palette='flame'] {
 		--bg: #1a1112;
@@ -830,12 +1117,36 @@
 		--accent-contrast: #1a1112;
 		--accent-soft: #35201f;
 		--accent-soft-border: #52302d;
+		--hue-indigo: #af93eb;
+		--hue-indigo-soft: #241e32;
+		--hue-oxblood: #ec958a;
+		--hue-oxblood-soft: #33201d;
+		--hue-cypress: #8ecaa8;
+		--hue-cypress-soft: #1a2a21;
+		--hue-ochre: #eaae61;
+		--hue-ochre-soft: #302416;
+		--hue-slate: #9fbfe0;
+		--hue-slate-soft: #1a2531;
+		--hue-plum: #dda4c1;
+		--hue-plum-soft: #2f1f27;
 	}
 	:root[data-theme='sepia'][data-palette='flame'] {
 		--accent: #8f2723;
 		--accent-contrast: #ffffff;
 		--accent-soft: #f0dcd4;
 		--accent-soft-border: #e1c3b9;
+		--hue-indigo: #523694;
+		--hue-indigo-soft: #e8e5f4;
+		--hue-oxblood: #842c27;
+		--hue-oxblood-soft: #f2ddda;
+		--hue-cypress: #2a5640;
+		--hue-cypress-soft: #d9e9e0;
+		--hue-ochre: #794d17;
+		--hue-ochre-soft: #f6ddc4;
+		--hue-slate: #35517a;
+		--hue-slate-soft: #e1e3e7;
+		--hue-plum: #6a3652;
+		--hue-plum-soft: #ecdde4;
 	}
 }
 
@@ -1467,7 +1778,7 @@
 	margin-inline-end: 0.08em;
 	padding-top: 0.06em;
 	color: var(--accent);
-	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--gold) 75%, transparent);
+	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--ornament) 75%, transparent);
 }
 
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
@@ -2051,12 +2362,12 @@ nav.appnav .navsearch:hover {
 	background: none;
 	border: 1px solid transparent;
 	border-radius: 50%;
-	color: var(--gold);
+	color: var(--ornament);
 	cursor: pointer;
 }
 .prefs-btn:hover {
 	background: var(--surface);
-	color: var(--gold);
+	color: var(--ornament);
 }
 .prefs-menu {
 	min-width: 16.5rem;

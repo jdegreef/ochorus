@@ -2,12 +2,13 @@
 	import type { Ornament } from '$lib/contentNav';
 
 	/**
-	 * A printer's ornament: a small device between two hairlines, in gold. Book
+	 * A printer's ornament: a small device between two hairlines, in the ornament
+	 * metal (gold; silver in the cool palettes — app.css --ornament). Book
 	 * pages mark a title or a break this way; the site used empty space for both.
 	 *
 	 * The house leaf is drawn inline. A library section's own device (its
 	 * `ornament` in PRIMARY_NAV) is a static file, `/marks/ornament-<name>.svg`,
-	 * painted in gold through a CSS mask — so only the five section pages that
+	 * painted in that metal through a CSS mask — so only the five section pages that
 	 * show one ever fetch it, and the home hero carries none of their paths.
 	 *
 	 * Gold here is what STYLE_GUIDE §1 says gold is for — ornament, never a
@@ -46,7 +47,7 @@
 		align-items: center;
 		gap: 0.5rem;
 		width: 10rem;
-		color: var(--gold);
+		color: var(--ornament);
 	}
 	/* The device file is black line art; the mask lets currentColor (gold,
 	   per theme) show through its strokes. */
