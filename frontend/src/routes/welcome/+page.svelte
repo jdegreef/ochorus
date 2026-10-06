@@ -12,6 +12,7 @@
 	import { bookChapterPath } from '$lib/reading-schema';
 	import { authorPath } from '$lib/originals';
 	import {
+		STEP_COPY,
 		WELCOME_EVENT,
 		welcomeEventProps,
 		welcomeSteps,
@@ -92,12 +93,6 @@
 	/** Murray's own line from chapter 1, minus the highlight markers the login pitch uses. */
 	const quote = $derived(t('login.pitchSampleQuote').replace(/\[\[|\]\]/g, ''));
 
-	const STEP_COPY: Record<WelcomeStepKey, { title: string; hint?: string }> = {
-		account: { title: 'welcomePage.stepAccount' },
-		read: { title: 'welcomePage.stepRead', hint: 'welcomePage.stepReadHint' },
-		save: { title: 'welcomePage.stepSave', hint: 'welcomePage.stepSaveHint' },
-		mark: { title: 'welcomePage.stepMark', hint: 'welcomePage.stepMarkHint' }
-	};
 	function stepHref(key: WelcomeStepKey): string {
 		if (key === 'account') return accountHref('/welcome', false, true);
 		if (key === 'save') return localizeHref('/books');

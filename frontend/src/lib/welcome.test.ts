@@ -5,6 +5,7 @@ beforeEach(() => {
 	localStorage.clear();
 	welcome.pending = false;
 	welcome.pagePending = false;
+	welcome.inProgress = false;
 });
 
 describe('sign-up welcome', () => {
@@ -58,5 +59,37 @@ describe('sign-up welcome', () => {
 		expect(welcome.pagePending).toBe(false);
 		// The palette card is a device preference and survives.
 		expect(welcome.pending).toBe(true);
+	});
+
+	it('tracks the checklist after the page is seen, until it is finished', () => {
+		welcome.offer();
+		expect(welcome.inProgress).toBe(false);
+		welcome.pageSeen();
+		expect(welcome.inProgress).toBe(true);
+		welcome.inProgress = false;
+		welcome.init();
+		expect(welcome.inProgress).toBe(true);
+
+		welcome.finishProgress();
+		welcome.init();
+		expect(welcome.inProgress).toBe(false);
+		// Finished stays finished: no new redirect, no card on a later visit.
+		welcome.offer();
+		welcome.pageSeen();
+		expect(welcome.pagePending).toBe(false);
+		expect(welcome.inProgress).toBe(false);
+	});
+
+	it('never shows the card to a reader who did not come through the welcome', () => {
+		welcome.init();
+		expect(welcome.inProgress).toBe(false);
+	});
+
+	it('drops the card with the rest of the welcome on sign-out', () => {
+		welcome.offer();
+		welcome.pageSeen();
+		welcome.forgetPage();
+		welcome.init();
+		expect(welcome.inProgress).toBe(false);
 	});
 });
