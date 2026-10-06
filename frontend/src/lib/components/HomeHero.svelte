@@ -9,6 +9,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
 	import { localDayNumber } from '$lib/dailyArticles';
+	import { dayPart } from '$lib/greeting';
+	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 
 	/**
@@ -37,7 +39,7 @@
 	 * line names the season of the Church year beside the civil date, with a
 	 * dot in its liturgical colour.
 	 */
-	let { greeting }: { greeting: string } = $props();
+	let { name }: { name: string } = $props();
 
 	// Van Gogh's cypresses (the Absolute Surrender ground): green, sky and a
 	// moon — legible under the scrim, and warm in every theme.
@@ -73,22 +75,50 @@
 
 	const fallBack = () => (art = DEFAULT_ART);
 
-	// The date and the season turn over with the calendar day, so a tab left
-	// open overnight is right when the reader comes back to it (as HomeArticles
-	// below re-picks its shelf).
+	// The date, season and greeting turn over with the reader's day, so a tab
+	// left open overnight is right when the reader comes back to it (as
+	// HomeArticles below re-picks its shelf).
 	let now = $state(new Date());
 	const today = $derived(
 		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
 	);
 	const season = $derived(liturgicalSeason(now));
+	// "Good evening, James" — for the time of the reader's day, on the same
+	// clock as the date, so the two never disagree. Parameterised so the name
+	// sits where each language wants it (Paraglide's message functions, not
+	// the param-free t() facade). The dashboard is signed-in only, so there
+	// is always a name (at worst the email's local part).
+	const GREETING = {
+		morning: m.home_good_morning_named,
+		afternoon: m.home_good_afternoon_named,
+		evening: m.home_good_evening_named
+	};
+	const greeting = $derived(GREETING[dayPart(now.getHours(), getLang())]({ name }));
+
+	// The leaf draws itself on the first time the dashboard opens in a
+	// session — not on every return to it. The flag is spent on mount, so a
+	// reader who loses it (reduced motion, hero offscreen) just sees it drawn.
+	const DRAWN_KEY = 'ochorus:hero-leaf-drawn';
+	const drawIn = (() => {
+		try {
+			if (sessionStorage.getItem(DRAWN_KEY)) return false;
+			sessionStorage.setItem(DRAWN_KEY, '1');
+			return true;
+		} catch {
+			return false;
+		}
+	})();
 
 	let hero: HTMLElement;
 	let offscreen = $state(false);
 
 	onMount(() => {
+		// A new day, or a new part of it: the date, season and greeting follow.
+		const turn = (x: Date) => `${localDayNumber(x)}:${dayPart(x.getHours(), getLang())}`;
 		const onVisible = () => {
+			if (document.visibilityState !== 'visible') return;
 			const d = new Date();
-			if (document.visibilityState === 'visible' && localDayNumber(d) !== localDayNumber(now)) now = d;
+			if (turn(d) !== turn(now)) now = d;
 		};
 		document.addEventListener('visibilitychange', onVisible);
 		// The drift is paused while the hero is scrolled away: nobody sees it,
@@ -127,7 +157,7 @@
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
-			<div class="mt-4"><Fleuron /></div>
+			<div class="mt-4"><Fleuron {drawIn} /></div>
 		</div>
 		<span class="home-hero-frame">
 			<img

@@ -12,17 +12,27 @@
 	 *
 	 * Gold here is what STYLE_GUIDE §1 says gold is for — ornament, never a
 	 * message — so it carries no meaning and is hidden from assistive tech.
-	 * Every device is symmetric, so none needs mirroring in a right-to-left locale.
+	 * Every device is symmetric, so none needs mirroring in a right-to-left
+	 * locale; only the draw-in's direction (hairlines growing outward) is.
 	 */
-	let { ornament = 'leaf' }: { ornament?: Ornament } = $props();
+	let {
+		ornament = 'leaf',
+		drawIn = false
+	}: {
+		ornament?: Ornament;
+		/** Draw the leaf on as it appears — its hairlines growing out from the
+		 *  centre, then the leaf traced. The caller decides when (the home hero:
+		 *  once a session). Still under prefers-reduced-motion. */
+		drawIn?: boolean;
+	} = $props();
 </script>
 
-<div class="fleuron" aria-hidden="true">
+<div class="fleuron" class:draw-in={drawIn} aria-hidden="true">
 	<span></span>
 	{#if ornament === 'leaf'}
 		<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-			<path d="M12 2.5c-4.5 4.5-4.5 14.5 0 19 4.5-4.5 4.5-14.5 0-19z" />
-			<path d="M12 6v12" />
+			<path pathLength="1" d="M12 2.5c-4.5 4.5-4.5 14.5 0 19 4.5-4.5 4.5-14.5 0-19z" />
+			<path pathLength="1" d="M12 6v12" />
 		</svg>
 	{:else}
 		<i class="fleuron-device" style:--device="url('/marks/ornament-{ornament}.svg')"></i>
@@ -53,5 +63,49 @@
 		height: 1px;
 		background: currentColor;
 		opacity: 0.45;
+	}
+	/* The draw-in: the hairlines grow outward from the leaf, then the leaf's
+	   outline and vein are traced (pathLength="1" makes the dash one unit). */
+	.draw-in span {
+		animation: fleuron-rule 700ms ease-out both;
+	}
+	.draw-in span:first-child {
+		transform-origin: right;
+	}
+	.draw-in span:last-child {
+		transform-origin: left;
+	}
+	:global([dir='rtl']) .draw-in span:first-child {
+		transform-origin: left;
+	}
+	:global([dir='rtl']) .draw-in span:last-child {
+		transform-origin: right;
+	}
+	/* The dash lives only in the keyframes, held through the delay by
+	   `backwards` and dropped when the trace ends: the finished leaf is a
+	   plain stroke, whatever an engine makes of pathLength. */
+	.draw-in path {
+		animation: fleuron-trace 900ms ease-in-out 300ms backwards;
+	}
+	@keyframes fleuron-rule {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	@keyframes fleuron-trace {
+		from {
+			stroke-dasharray: 1;
+			stroke-dashoffset: 1;
+		}
+		to {
+			stroke-dasharray: 1;
+			stroke-dashoffset: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.draw-in span,
+		.draw-in path {
+			animation: none;
+		}
 	}
 </style>
