@@ -1445,8 +1445,18 @@
    - `:first-of-type`, so a chapter opening with a heading still caps its first
      real paragraph, and no later paragraph gets one.
    - `.no-initial` opts a text out: an article opens on an answer to a
-     question, not a chapter, so it has no initial. */
-article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
+     question, not a chapter, so it has no initial.
+   - An author's biography (`.reading.bio`, never paged, no <article>) opens
+     with the same initial: one rule, one script gate, so a Hindi bio is
+     spared the split akshara exactly as a Hindi chapter is.
+
+   ILLUMINATED: the letter is set in the palette's accent (so it is indigo in
+   Parchment, navy in Cathedral, violet in Advent under the Church year) and
+   gilded — a hairline of gold offset down and away from the reading edge, like
+   a gilt initial's raised edge in a printed devotional. (No RTL variant: no
+   right-to-left text gets a floated initial — see above. Print drops the gilt
+   with the colour; see the print block.) */
+:is(article:not(.paged) .reading:not(.no-initial), .reading.bio) > p:first-of-type:not(:lang(ar)):not(:lang(hi))::first-letter {
 	float: inline-start;
 	/* The house serif, not --font-display: that follows the site style
 	   (site-fonts.css), and an initial is part of the page, not the chrome. */
@@ -1456,7 +1466,8 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 	font-weight: 600;
 	margin-inline-end: 0.08em;
 	padding-top: 0.06em;
-	color: var(--text);
+	color: var(--accent);
+	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--gold) 75%, transparent);
 }
 
 /* Server-wrapped Bible cross-references inside the reading text. Subtle by
@@ -1555,6 +1566,13 @@ article:not(.paged) .reading:not(.no-initial) > p:first-of-type:not(:lang(ar)):n
 	.scripture-pop,
 	.define-pop {
 		display: none !important;
+	}
+
+	/* The initial prints in the black accent; a gold gilt edge on black ink
+	   reads as a misregistration, not a flourish. */
+	.reading > p:first-of-type::first-letter {
+		/* !important: the screen rule's selector is far more specific. */
+		text-shadow: none !important;
 	}
 
 	/* The reader's own colours are for a lit screen; paper is white.
