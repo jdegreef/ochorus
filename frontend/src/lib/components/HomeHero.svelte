@@ -127,7 +127,7 @@
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
-			<div class="mt-4"><Fleuron /></div>
+			<div class="mt-4"><Fleuron drawIn /></div>
 		</div>
 		<span class="home-hero-frame">
 			<img

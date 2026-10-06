@@ -14,15 +14,24 @@
 	 * message — so it carries no meaning and is hidden from assistive tech.
 	 * Every device is symmetric, so none needs mirroring in a right-to-left locale.
 	 */
-	let { ornament = 'leaf' }: { ornament?: Ornament } = $props();
+	let {
+		ornament = 'leaf',
+		drawIn = false
+	}: {
+		ornament?: Ornament;
+		/** Draw the leaf on as the page opens — its hairlines growing out from
+		 *  the centre, then the leaf traced — once (the home hero). Still under
+		 *  prefers-reduced-motion. */
+		drawIn?: boolean;
+	} = $props();
 </script>
 
-<div class="fleuron" aria-hidden="true">
+<div class="fleuron" class:draw-in={drawIn} aria-hidden="true">
 	<span></span>
 	{#if ornament === 'leaf'}
 		<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-			<path d="M12 2.5c-4.5 4.5-4.5 14.5 0 19 4.5-4.5 4.5-14.5 0-19z" />
-			<path d="M12 6v12" />
+			<path pathLength="1" d="M12 2.5c-4.5 4.5-4.5 14.5 0 19 4.5-4.5 4.5-14.5 0-19z" />
+			<path pathLength="1" d="M12 6v12" />
 		</svg>
 	{:else}
 		<i class="fleuron-device" style:--device="url('/marks/ornament-{ornament}.svg')"></i>
@@ -53,5 +62,43 @@
 		height: 1px;
 		background: currentColor;
 		opacity: 0.45;
+	}
+	/* The draw-in: the hairlines grow outward from the leaf, then the leaf's
+	   outline and vein are traced (pathLength="1" makes the dash one unit). */
+	.draw-in span:first-child {
+		transform-origin: right;
+		animation: fleuron-rule 700ms ease-out both;
+	}
+	.draw-in span:last-child {
+		transform-origin: left;
+		animation: fleuron-rule 700ms ease-out both;
+	}
+	:global([dir='rtl']) .draw-in span:first-child {
+		transform-origin: left;
+	}
+	:global([dir='rtl']) .draw-in span:last-child {
+		transform-origin: right;
+	}
+	.draw-in path {
+		stroke-dasharray: 1;
+		stroke-dashoffset: 1;
+		animation: fleuron-trace 900ms ease-in-out 300ms forwards;
+	}
+	@keyframes fleuron-rule {
+		from {
+			transform: scaleX(0);
+		}
+	}
+	@keyframes fleuron-trace {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.draw-in span,
+		.draw-in path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
 	}
 </style>

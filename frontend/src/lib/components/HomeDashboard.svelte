@@ -8,6 +8,7 @@
 	import { getLang } from '$lib/lang.svelte';
 	import { hasStarted, readerActivity } from '$lib/readerActivity';
 	import { welcome } from '$lib/welcome.svelte';
+	import { dayPart, greetingName } from '$lib/greeting';
 	import ContinueReading from '$lib/components/ContinueReading.svelte';
 	import OnboardingCard from '$lib/components/OnboardingCard.svelte';
 	import WelcomeProgress from '$lib/components/WelcomeProgress.svelte';
@@ -47,10 +48,17 @@
 	const featured = $derived<CoverBook[]>(data.featured);
 	const topics = $derived<TopicCount[]>(data.topics ?? []);
 
-	// The display name if the reader set one, else the local part of their email
-	// (never the full address — a greeting is not the place to print it). The
-	// whole clause is dropped when we have neither, leaving a bare "Welcome back".
-	const greetingName = $derived(auth.displayName || (auth.user?.email?.split('@')[0] ?? ''));
+	// The reader's first name (or their email's local part — never the full
+	// address), greeted for the time of their day: "Good evening, James". The
+	// name is dropped when we have neither, leaving a bare "Good evening".
+	// The hour is read once, as the dashboard renders.
+	const name = $derived(greetingName(auth.displayName, auth.user?.email));
+	const GREETING = {
+		morning: { named: m.home_good_morning_named, bare: m.home_good_morning },
+		afternoon: { named: m.home_good_afternoon_named, bare: m.home_good_afternoon },
+		evening: { named: m.home_good_evening_named, bare: m.home_good_evening }
+	};
+	const greet = GREETING[dayPart(new Date().getHours())];
 
 	// Every sign-up path (password, emailed code, Google) ends on this page, so
 	// this is where a brand-new account is sent on to /welcome — once, and only
@@ -69,10 +77,8 @@
 <!-- The greeting over the painting of the book they're reading (HomeHero).
      Parameterised so the name sits where each language wants it, rather than a
      hardcoded ", {name}" — Paraglide's message function, not the param-free
-     t() facade. Falls back to a bare "Welcome back" when we have no name. -->
-<HomeHero
-	greeting={greetingName ? m.home_welcome_back_named({ name: greetingName }) : m.home_welcome_back()}
-/>
+     t() facade. Falls back to a bare greeting when we have no name. -->
+<HomeHero greeting={name ? greet.named({ name }) : greet.bare()} />
 
 <!-- Just signed up: choose the colours of your library (once; see WelcomePalette).
      Held back while the /welcome page is still owed, so the card doesn't flash
