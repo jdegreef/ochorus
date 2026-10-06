@@ -8,6 +8,7 @@
 	import { contentLang } from '$lib/reading';
 	import { seriesCompanion } from '$lib/series';
 	import {
+		hubBooks,
 		hubCounts,
 		hubIsEmpty,
 		printableLinks,
@@ -23,6 +24,7 @@
 	import BookCover from '$lib/components/BookCover.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ParentsNote from '$lib/components/ParentsNote.svelte';
 
 	/**
 	 * A young-reader hub — /young-readers/ or /teens/ — on the /series index's
@@ -39,14 +41,13 @@
 	}: { hub: AudienceHubConfig; shelf: AudienceShelf; loadError: boolean } = $props();
 	const t = i18n.t;
 
-	const young = $derived(hub.audience === 'young_readers');
 	const title = $derived(t(hub.labelKey));
-	const tagline = $derived(young ? t('audience.youngTagline') : t('audience.teensTagline'));
-	const path = $derived(`${hub.path}/`);
+	const tagline = $derived(t(hub.taglineKey));
+	const path = $derived(`${hub.href}/`);
 
 	const empty = $derived(hubIsEmpty(shelf));
 	const counts = $derived(hubCounts(shelf));
-	const start = $derived(startPick(shelf, hub.starts));
+	const start = $derived(startPick(shelf));
 	const printable = $derived(printableLinks(shelf));
 
 	// The page's groups, in order, each only when it has something — the jump
@@ -59,15 +60,13 @@
 			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length }
 		].filter((s) => s.count > 0)
 	);
-	const parentsHeading = $derived(
-		young ? t('series.parentsHeading') : t('audience.parentsTeensHeading')
-	);
+	const parentsHeading = $derived(t(hub.parentsHeadingKey));
 
 	// schema.org: the hub's books as an ItemList, and its place under Home.
 	const booksLd = $derived(
 		itemList(title, [
 			...shelf.series.map((s) => ({ name: s.title, url: localizeHref(`/series/${s.slug}/`) })),
-			...[...shelf.editions, ...shelf.more].map((b) => ({
+			...hubBooks(shelf).map((b) => ({
 				name: b.title,
 				url: localizeHref(`/books/${b.slug}`)
 			}))
@@ -138,7 +137,7 @@
 					</a>
 					<div class="read-card-body">
 						<p class="text-small text-muted">
-							{young ? t('audience.startYoung') : t('audience.startTeens')}
+							{t(hub.startKey)}
 						</p>
 						<p class="read-card-title" lang={contentLang(start.language)} dir="auto">
 							{start.title}
@@ -185,7 +184,7 @@
 				<!-- The way up the ladder: each retelling's book page cross-links its
 				     teens edition and the full original (`editions`). -->
 				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">
-					{young ? t('audience.retoldYoung') : t('audience.retoldTeens')}
+					{t(hub.retoldKey)}
 				</p>
 				<div class="book-grid">
 					{#each shelf.editions as book (book.slug)}
@@ -230,9 +229,9 @@
 		     how a family or a class might use these, and what prints. -->
 		<section id="parents" class="jump-anchor">
 			<GroupHeading name={parentsHeading} />
-			<div class="parents-note max-w-2xl space-y-2 text-small text-muted">
+			<ParentsNote class="max-w-2xl space-y-2 text-small text-muted">
 				<p>{t('audience.parentsFree')}</p>
-				<p>{young ? t('audience.parentsTogetherYoung') : t('audience.parentsTogetherTeens')}</p>
+				<p>{t(hub.parentsTogetherKey)}</p>
 				{#if printable.length}
 					<p>{t('audience.parentsPrintable')}</p>
 					<ul class="flex flex-wrap gap-2 pt-1">
@@ -241,7 +240,7 @@
 						{/each}
 					</ul>
 				{/if}
-			</div>
+			</ParentsNote>
 		</section>
 	{/if}
 </div>
@@ -253,12 +252,5 @@
 	}
 	.start-cover {
 		width: 4.5rem;
-	}
-	/* The /series index's note for parents and teachers, given a section here. */
-	.parents-note {
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		background: var(--surface);
-		padding: 0.85rem 1rem;
 	}
 </style>

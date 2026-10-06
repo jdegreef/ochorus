@@ -5,62 +5,76 @@ import type { AudienceShelf, BookSummary, HubAudience } from './library-public';
  * The young-reader hubs — /young-readers/ and /teens/ — one front door each to
  * what /series, /originals, /topics and /plans each hold a part of. The page is
  * one component (`AudienceHub.svelte`) driven by this table; the data is one
- * call (`getAudienceShelf`), so a new retelling, series or plan for either
- * audience lands on its hub with no edit here.
+ * call (`$lib/audienceHubData`), so a new retelling, series or plan for either
+ * audience lands on its hub with no edit here. Pure data and helpers — the nav
+ * lists import it — so the loaders live in that module, not this one.
  *
  * Two hubs, not one "Kids" page: the young-readers hub speaks to the adult who
- * chooses for a child, the teens hub to the teenager choosing for themselves.
+ * chooses for a child, the teens hub to the teenager choosing for themselves —
+ * which is why each carries its own copy keys rather than sharing one voice.
  */
 export interface AudienceHubConfig {
 	audience: HubAudience;
-	/** Unlocalized, unslashed — `localizeHref` adds the slash (isSlashedPath). */
-	path: string;
+	/** Unlocalized, unslashed — `localizeHref` adds the slash (isSlashedPath).
+	 *  With `labelKey`, the shape of a `HubDest`, so the nav lists take it as is. */
+	href: string;
 	/** The nav word: the `<h1>`, the `<title>`, and every link to the page. */
 	labelKey: string;
 	/** Its tile in the phone's More sheet. */
 	icon: IconName;
-	/**
-	 * "Start here", in order of preference — the first one this language has.
-	 * Slugs, not a flag on the book: which book a newcomer should meet first is
-	 * an editor's call, and a missing one falls through to the next, then to the
-	 * hub's first book, so a language without these still gets a pick.
-	 */
-	starts: string[];
+	/** The page's tagline and description; the home page's card line too. */
+	taglineKey: string;
+	/** The line over the "Start here" pick. */
+	startKey: string;
+	/** The note under "Classics, retold". */
+	retoldKey: string;
+	/** Who the closing note is for, and what it suggests they do. */
+	parentsHeadingKey: string;
+	parentsTogetherKey: string;
+	/** The /series audience group's link here. */
+	seeKey: string;
 }
 
 export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	audience: 'young_readers',
-	path: '/young-readers',
+	href: '/young-readers',
 	labelKey: 'nav.youngReaders',
 	icon: 'sun',
-	starts: ['pilgrims-progress-children', 'pilgrims-progress-words-of-one-syllable']
+	taglineKey: 'audience.youngTagline',
+	startKey: 'audience.startYoung',
+	retoldKey: 'audience.retoldYoung',
+	parentsHeadingKey: 'series.parentsHeading',
+	parentsTogetherKey: 'audience.parentsTogetherYoung',
+	seeKey: 'audience.seeYoung'
 };
 
 export const TEENS_HUB: AudienceHubConfig = {
 	audience: 'teens',
-	path: '/teens',
+	href: '/teens',
 	labelKey: 'nav.teens',
 	icon: 'compass',
-	starts: ['around-the-wicket-gate', 'pilgrims-progress-teens', 'all-of-grace']
+	taglineKey: 'audience.teensTagline',
+	startKey: 'audience.startTeens',
+	retoldKey: 'audience.retoldTeens',
+	parentsHeadingKey: 'audience.parentsTeensHeading',
+	parentsTogetherKey: 'audience.parentsTogetherTeens',
+	seeKey: 'audience.seeTeens'
 };
 
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];
 
-/** Every book card the hub can show (series volumes are tiles, not cards). */
-function hubBooks(shelf: AudienceShelf): BookSummary[] {
+/** The hub for a series audience, if it has one (adults don't). */
+export const hubFor = (audience: string | null | undefined): AudienceHubConfig | undefined =>
+	AUDIENCE_HUBS.find((h) => h.audience === audience);
+
+/** Every book card the hub shows (series volumes are tiles, not cards). */
+export function hubBooks(shelf: AudienceShelf): BookSummary[] {
 	return [...shelf.editions, ...shelf.more];
 }
 
-/** The one book to start with: the first preferred slug this language has,
- * else the hub's first book; null on an empty hub. */
-export function startPick(shelf: AudienceShelf, starts: string[]): BookSummary | null {
-	const books = hubBooks(shelf);
-	const bySlug = new Map(books.map((b) => [b.slug, b]));
-	for (const slug of starts) {
-		const hit = bySlug.get(slug);
-		if (hit) return hit;
-	}
-	return books[0] ?? null;
+/** The "Start here" book — the API's pick (`AUDIENCE_STARTS`), as a card. */
+export function startPick(shelf: AudienceShelf): BookSummary | null {
+	return hubBooks(shelf).find((b) => b.slug === shelf.start) ?? null;
 }
 
 /** Books and series on the hub, for the header's counts line. */

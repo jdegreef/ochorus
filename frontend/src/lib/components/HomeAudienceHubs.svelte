@@ -16,19 +16,15 @@
 	const t = i18n.t;
 
 	const hubs = $derived(AUDIENCE_HUBS.filter((h) => audiences.includes(h.audience)));
-	const TAGLINE: Record<HubAudience, string> = {
-		young_readers: 'audience.youngTagline',
-		teens: 'audience.teensTagline'
-	};
 </script>
 
 {#if hubs.length}
 	<section class="page-col px-5 pt-14">
 		<h2 class="text-h2 mb-6">{t('audience.homeHeading')}</h2>
 		<div class="grid gap-4 sm:grid-cols-2">
-			{#each hubs as h (h.path)}
+			{#each hubs as h (h.href)}
 				<a
-					href={localizeHref(h.path)}
+					href={localizeHref(h.href)}
 					class="card-tint flex gap-4 rounded-card border border-border bg-surface p-5"
 				>
 					<span
@@ -39,7 +35,7 @@
 					</span>
 					<span class="min-w-0">
 						<h3 class="text-h3 mb-1 text-text">{t(h.labelKey)} <Arrow /></h3>
-						<span class="block text-small text-muted">{t(TAGLINE[h.audience])}</span>
+						<span class="block text-small text-muted">{t(h.taglineKey)}</span>
 					</span>
 				</a>
 			{/each}

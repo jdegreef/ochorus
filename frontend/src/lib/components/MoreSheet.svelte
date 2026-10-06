@@ -75,8 +75,8 @@
 			<a href={localizeHref(ORIGINALS_DEST.href)} class="more-tile" data-section="originals"
 				><Icon name="sparkle" size={20} />{t(ORIGINALS_DEST.labelKey)}</a
 			>
-			{#each AUDIENCE_HUBS as h (h.path)}
-				<a href={localizeHref(h.path)} class="more-tile"
+			{#each AUDIENCE_HUBS as h (h.href)}
+				<a href={localizeHref(h.href)} class="more-tile"
 					><Icon name={h.icon} size={20} />{t(h.labelKey)}</a
 				>
 			{/each}

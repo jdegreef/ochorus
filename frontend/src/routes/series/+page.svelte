@@ -14,8 +14,9 @@
 	import LibraryTabs from '$lib/components/LibraryTabs.svelte';
 	import FilterSummary from '$lib/components/FilterSummary.svelte';
 	import { audienceBlurb, audienceName, groupByAudience, seriesCompanion } from '$lib/series';
-	import { TEENS_HUB, YOUNG_READERS_HUB } from '$lib/audienceHub';
+	import { hubFor } from '$lib/audienceHub';
 	import Arrow from '$lib/components/Arrow.svelte';
+	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import { queryChip } from '$lib/filterChips';
 	import { SHELF_SEARCH_MIN, matchesQuery } from '$lib/shelfSearch';
 	import { urlFilters } from '$lib/urlFilters.svelte';
@@ -166,23 +167,19 @@
 		{/if}
 		{#each groups as g (g.audience ?? 'more')}
 			{@const blurb = audienceBlurb(g.audience)}
+			{@const hub = hubFor(g.audience)}
 			<section id={groupId(g.audience)} class="jump-anchor mb-12">
 				{#if grouped}
 					<GroupHeading name={audienceName(g.audience)} count={g.series.length} />
 					{#if blurb}
 						<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{blurb}</p>
 					{/if}
-					{#if g.audience === 'young_readers' || g.audience === 'teens'}
+					{#if hub}
 						<!-- The hub gathers this group's series with the retold classics and
 						     plans for the same readers ($lib/audienceHub). -->
 						<p class="-mt-2 mb-5 text-small">
-							<a
-								href={localizeHref(
-									g.audience === 'teens' ? TEENS_HUB.path : YOUNG_READERS_HUB.path
-								)}
-								class="text-accent hover:underline"
-								>{g.audience === 'teens' ? t('audience.seeTeens') : t('audience.seeYoung')}
-								<Arrow /></a
+							<a href={localizeHref(hub.href)} class="text-accent hover:underline"
+								>{t(hub.seeKey)} <Arrow /></a
 							>
 						</p>
 					{/if}
@@ -191,12 +188,12 @@
 						     a family or a class might use these books. -->
 						<!-- A labelled aside, not an <h3>: the series cards beside it are
 						     the group's h3s, and this isn't one of them. -->
-						<aside class="parents-note mb-5 max-w-2xl" aria-labelledby="parents-note">
+						<ParentsNote labelledby="parents-note" class="mb-5 max-w-2xl">
 							<p id="parents-note" class="text-small font-semibold text-text">
 								{t('series.parentsHeading')}
 							</p>
 							<p class="mt-1 text-small text-muted">{t('series.parentsBody')}</p>
-						</aside>
+						</ParentsNote>
 					{/if}
 				{/if}
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -218,12 +215,5 @@
 	   indexes' group sections use the same recipe). */
 	.jump-anchor {
 		scroll-margin-top: calc(var(--pinned-offset) + 0.5rem);
-	}
-	/* The note for parents and teachers under "For young readers". */
-	.parents-note {
-		border: 1px solid var(--border);
-		border-radius: var(--radius-card);
-		background: var(--surface);
-		padding: 0.85rem 1rem;
 	}
 </style>

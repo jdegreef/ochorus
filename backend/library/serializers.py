@@ -77,7 +77,10 @@ def _modern_edition_available(slug: str) -> bool:
 #: the full text: the relationship is the slug convention alone, derived here.
 #: Ordered by descending reading age (teens before children) — this is what
 #: drives the full → teens → children order the cross-links are shown in.
-EDITION_SUFFIXES = ("-teens", "-children")
+#: Each young audience's edition suffix — the young-reader hubs gather an
+#: audience's retold editions by it. The one place the suffixes are spelled.
+AUDIENCE_EDITION_SUFFIX = {"teens": "-teens", "young_readers": "-children"}
+EDITION_SUFFIXES = tuple(AUDIENCE_EDITION_SUFFIX[a] for a in ("teens", "young_readers"))
 
 
 def _edition_base_slug(slug: str) -> str:

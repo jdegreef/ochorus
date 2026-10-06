@@ -82,7 +82,4 @@ export const AZ_INDEX_DEST: HubDest = { href: '/authors', labelKey: 'nav.azIndex
  *  the palette and the phone's More sheet offer them right after Book Series
  *  (their books are translated, so each locale has its own copy). The trailing
  *  slash comes from `localizeHref` (isSlashedPath). */
-export const AUDIENCE_DESTS: HubDest[] = AUDIENCE_HUBS.map((h) => ({
-	href: h.path,
-	labelKey: h.labelKey
-}));
+export const AUDIENCE_DESTS: HubDest[] = AUDIENCE_HUBS;

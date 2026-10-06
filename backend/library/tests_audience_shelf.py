@@ -8,6 +8,8 @@ nothing falls back to English; and an unknown audience is a 404.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from django.test import TestCase
 
 from .models import (
@@ -20,6 +22,8 @@ from .models import (
     TopicBook,
     TopicTranslation,
 )
+from .serializers import AUDIENCE_EDITION_SUFFIX, EDITION_SUFFIXES
+from .views import AUDIENCE_STARTS, AUDIENCE_TOPICS
 
 
 class AudienceShelfTests(TestCase):
@@ -122,3 +126,42 @@ class AudienceShelfTests(TestCase):
         TopicBook.objects.create(topic=self.topic, book_slug="north-wind")
         TopicTranslation.objects.create(topic=self.topic, language="lg", title="Abaana")
         self.assertEqual(self._get()["languages"], ["am", "en", "lg"])
+
+    def test_modern_english_is_never_a_language(self):
+        self._book("north-wind")
+        self._book("north-wind", language="en-modern")
+        TopicBook.objects.create(topic=self.topic, book_slug="north-wind")
+        self.assertEqual(self._get()["languages"], ["en"])
+
+    def test_the_languages_index_answers_for_both_hubs_at_once(self):
+        self._book("bfg-1", series=self.series)
+        self._book("pilgrims-progress")
+        self._book("pilgrims-progress-teens", language="am")
+        response = self.client.get("/api/library/audiences/")
+        self.assertEqual(response.json(), {"young_readers": ["en"], "teens": ["am"]})
+
+    def test_each_hub_audience_has_an_edition_suffix_of_the_convention(self):
+        self.assertEqual(set(AUDIENCE_EDITION_SUFFIX.values()), set(EDITION_SUFFIXES))
+        self.assertEqual(set(AUDIENCE_EDITION_SUFFIX), set(AUDIENCE_TOPICS))
+
+    def test_start_is_the_first_preferred_book_the_hub_holds_else_its_first(self):
+        self._book("pilgrims-progress")
+        self._book("pilgrims-progress-children")
+        self._book("north-wind")
+        TopicBook.objects.create(topic=self.topic, book_slug="north-wind")
+        self.assertEqual(self._get()["start"], "pilgrims-progress-children")
+        Book.objects.filter(slug="pilgrims-progress-children").update(is_published=False)
+        self.assertEqual(self._get()["start"], "north-wind")
+        self.assertIsNone(self._get("teens")["start"])
+
+    def test_every_start_pick_names_a_real_book(self):
+        # A renamed or retired slug would fall through to the hub's first book
+        # in silence. Checked against the fixture, so a content PR trips it.
+        books = Path(__file__).parent / "fixtures" / "content" / "books"
+        missing = [
+            slug
+            for picks in AUDIENCE_STARTS.values()
+            for slug in picks
+            if not (books / f"{slug}.en.json").exists()
+        ]
+        self.assertEqual(missing, [])

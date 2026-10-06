@@ -38,9 +38,7 @@ vi.mock('$lib/library-public', () => {
 		MODERN_EDITION: 'en-modern',
 		// The young readers' hub has something in English, Swahili and an
 		// unadvertised locale; the teens' hub has nothing anywhere.
-		getAudienceShelf: async (audience: string) => ({
-			languages: audience === 'young_readers' ? ['en', 'sw', 'xx'] : []
-		}),
+		listAudienceLanguages: async () => ({ young_readers: ['en', 'sw', 'xx'], teens: [] }),
 		// One article in English and Swahili, none in Spanish.
 		listArticles: async (l = 'en') =>
 			l === 'en'

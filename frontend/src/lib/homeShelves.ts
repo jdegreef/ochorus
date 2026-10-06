@@ -4,7 +4,6 @@ import {
 	listAuthors,
 	listTopics,
 	listSermons,
-	getAudienceShelf,
 	AUTHOR_TILE_KEYS,
 	pick,
 	toCoverBook,
@@ -20,6 +19,7 @@ import {
 import { pickByDay, dayNumber } from '$lib/dailyPicks';
 import { isPlateCover } from '$lib/coverArt';
 import { AUDIENCE_HUBS } from '$lib/audienceHub';
+import { hubLanguages } from '$lib/audienceHubData';
 
 /**
  * The home page's public shelves — Discover, the authors grid, the topic chips
@@ -168,13 +168,9 @@ export async function homeShelves(lang: string): Promise<HomeShelves> {
 		shelf(listSermons(lang)),
 		// The hubs this language has something in — tolerant even while
 		// building, like topics: a decorative link band that simply hides.
-		Promise.all(
-			AUDIENCE_HUBS.map((h) =>
-				getAudienceShelf(h.audience, lang)
-					.then((s) => (s.languages.includes(lang) ? [h.audience] : []))
-					.catch(() => [])
-			)
-		).then((found) => found.flat())
+		hubLanguages().then((has) =>
+			AUDIENCE_HUBS.filter((h) => has[h.audience].includes(lang)).map((h) => h.audience)
+		)
 	]);
 	return deriveHomeShelves({ books, authors, topics, sermons, audiences }, dayNumber());
 }

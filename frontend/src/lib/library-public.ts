@@ -1411,7 +1411,6 @@ export type HubAudience = Exclude<SeriesAudience, 'adults'>;
  * those books. No English fallback — a language with none gets empty lists.
  */
 export interface AudienceShelf {
-	audience: HubAudience;
 	series: SeriesSummary[];
 	/** The "(For Children)" / "(For Teens)" retellings no series above holds. */
 	editions: BookSummary[];
@@ -1420,6 +1419,8 @@ export interface AudienceShelf {
 	plans: PlanSummary[];
 	/** That topic, when it has a title in this language — the "whole shelf" link. */
 	topic: { slug: string; title: string } | null;
+	/** The "Start here" book's slug (one of `editions` / `more`), or null. */
+	start: string | null;
 	/** Slugs among all the above with a free PDF / EPUB download. */
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
@@ -1428,6 +1429,10 @@ export interface AudienceShelf {
 
 export const getAudienceShelf = (audience: HubAudience, language = 'en', f?: Fetch) =>
 	apiFetch<AudienceShelf>(`/api/library/audiences/${audience}/?language=${language}`, {}, f);
+
+/** Each hub's `languages` without building either shelf (`AudienceLanguagesView`). */
+export const listAudienceLanguages = (f?: Fetch) =>
+	apiFetch<Record<HubAudience, string[]>>('/api/library/audiences/', {}, f);
 
 // --- The scripture graph ------------------------------------------------------
 // Which passages in the library treat a given verse — the reverse of the
