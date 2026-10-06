@@ -40,7 +40,7 @@
 		"@resvg/resvg-js": "^2.6.2",
 		"@sentry/bundler-plugins": "^11.0.0",
 		"@sveltejs/adapter-static": "^3.0.10",
-		"@sveltejs/kit": "^2.70.3",
+		"@sveltejs/kit": "^3.0.0",
 		"@sveltejs/vite-plugin-svelte": "^7.3.1",
 		"@tailwindcss/vite": "^4.3.3",
 		"@types/node": "^26.6.4",
