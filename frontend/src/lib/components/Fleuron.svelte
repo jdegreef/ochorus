@@ -12,16 +12,17 @@
 	 *
 	 * Gold here is what STYLE_GUIDE §1 says gold is for — ornament, never a
 	 * message — so it carries no meaning and is hidden from assistive tech.
-	 * Every device is symmetric, so none needs mirroring in a right-to-left locale.
+	 * Every device is symmetric, so none needs mirroring in a right-to-left
+	 * locale; only the draw-in's direction (hairlines growing outward) is.
 	 */
 	let {
 		ornament = 'leaf',
 		drawIn = false
 	}: {
 		ornament?: Ornament;
-		/** Draw the leaf on as the page opens — its hairlines growing out from
-		 *  the centre, then the leaf traced — once (the home hero). Still under
-		 *  prefers-reduced-motion. */
+		/** Draw the leaf on as it appears — its hairlines growing out from the
+		 *  centre, then the leaf traced. The caller decides when (the home hero:
+		 *  once a session). Still under prefers-reduced-motion. */
 		drawIn?: boolean;
 	} = $props();
 </script>
@@ -79,10 +80,11 @@
 	:global([dir='rtl']) .draw-in span:last-child {
 		transform-origin: right;
 	}
+	/* The dash lives only in the keyframes, held through the delay by
+	   `backwards` and dropped when the trace ends: the finished leaf is a
+	   plain stroke, whatever an engine makes of pathLength. */
 	.draw-in path {
-		stroke-dasharray: 1;
-		stroke-dashoffset: 1;
-		animation: fleuron-trace 900ms ease-in-out 300ms forwards;
+		animation: fleuron-trace 900ms ease-in-out 300ms backwards;
 	}
 	@keyframes fleuron-rule {
 		from {
@@ -90,7 +92,12 @@
 		}
 	}
 	@keyframes fleuron-trace {
+		from {
+			stroke-dasharray: 1;
+			stroke-dashoffset: 1;
+		}
 		to {
+			stroke-dasharray: 1;
 			stroke-dashoffset: 0;
 		}
 	}
@@ -98,7 +105,6 @@
 		.draw-in span,
 		.draw-in path {
 			animation: none;
-			stroke-dashoffset: 0;
 		}
 	}
 </style>

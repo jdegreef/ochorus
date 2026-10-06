@@ -9,6 +9,8 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
 	import { localDayNumber } from '$lib/dailyArticles';
+	import { dayPart } from '$lib/greeting';
+	import * as m from '$lib/paraglide/messages.js';
 	import Fleuron from '$lib/components/Fleuron.svelte';
 
 	/**
@@ -37,7 +39,7 @@
 	 * line names the season of the Church year beside the civil date, with a
 	 * dot in its liturgical colour.
 	 */
-	let { greeting }: { greeting: string } = $props();
+	let { name }: { name: string } = $props();
 
 	// Van Gogh's cypresses (the Absolute Surrender ground): green, sky and a
 	// moon — legible under the scrim, and warm in every theme.
@@ -73,14 +75,40 @@
 
 	const fallBack = () => (art = DEFAULT_ART);
 
-	// The date and the season turn over with the calendar day, so a tab left
-	// open overnight is right when the reader comes back to it (as HomeArticles
-	// below re-picks its shelf).
+	// The date, season and greeting turn over with the reader's day, so a tab
+	// left open overnight is right when the reader comes back to it (as
+	// HomeArticles below re-picks its shelf).
 	let now = $state(new Date());
 	const today = $derived(
 		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
 	);
 	const season = $derived(liturgicalSeason(now));
+	// "Good evening, James" — for the time of the reader's day, on the same
+	// clock as the date, so the two never disagree. Parameterised so the name
+	// sits where each language wants it (Paraglide's message functions, not
+	// the param-free t() facade); a bare greeting when we have no name.
+	const GREETING = {
+		morning: { named: m.home_good_morning_named, bare: m.home_good_morning },
+		afternoon: { named: m.home_good_afternoon_named, bare: m.home_good_afternoon },
+		evening: { named: m.home_good_evening_named, bare: m.home_good_evening }
+	};
+	const greeting = $derived.by(() => {
+		const g = GREETING[dayPart(now.getHours(), getLang())];
+		return name ? g.named({ name }) : g.bare();
+	});
+
+	// The leaf draws itself on the first time the dashboard opens in a
+	// session — not on every return to it.
+	const DRAWN_KEY = 'ochorus:hero-leaf-drawn';
+	const drawIn = (() => {
+		try {
+			if (sessionStorage.getItem(DRAWN_KEY)) return false;
+			sessionStorage.setItem(DRAWN_KEY, '1');
+			return true;
+		} catch {
+			return false;
+		}
+	})();
 
 	let hero: HTMLElement;
 	let offscreen = $state(false);
@@ -88,7 +116,11 @@
 	onMount(() => {
 		const onVisible = () => {
 			const d = new Date();
-			if (document.visibilityState === 'visible' && localDayNumber(d) !== localDayNumber(now)) now = d;
+			if (document.visibilityState !== 'visible') return;
+			// A new day, or a new part of it: the date, season and greeting follow.
+			const lang = getLang();
+			if (localDayNumber(d) !== localDayNumber(now) || dayPart(d.getHours(), lang) !== dayPart(now.getHours(), lang))
+				now = d;
 		};
 		document.addEventListener('visibilitychange', onVisible);
 		// The drift is paused while the hero is scrolled away: nobody sees it,
@@ -127,7 +159,7 @@
 				>
 			</p>
 			<h1 class="text-display home-hero-ink">{greeting}</h1>
-			<div class="mt-4"><Fleuron drawIn /></div>
+			<div class="mt-4"><Fleuron {drawIn} /></div>
 		</div>
 		<span class="home-hero-frame">
 			<img
