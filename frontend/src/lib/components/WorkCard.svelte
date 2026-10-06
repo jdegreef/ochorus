@@ -64,13 +64,13 @@
 {#snippet placeholder(kind: 'book' | 'sermon')}
 	<div class="group relative" aria-hidden="true" data-testid="work-card-placeholder">
 		<div class="flex gap-4 rounded-card border border-border p-4">
-			<div class="aspect-[3/4] w-20 shrink-0 animate-pulse rounded-sm bg-surface-2"></div>
+			<div class="aspect-[3/4] w-20 shrink-0 skeleton rounded-sm"></div>
 			<div class="min-w-0 flex-1 self-center">
 				<div class="truncate font-display text-body font-semibold">
-					<span class="inline-block w-3/4 animate-pulse rounded bg-surface-2">&nbsp;</span>
+					<span class="inline-block w-3/4 skeleton rounded">&nbsp;</span>
 				</div>
 				<div class="mt-0.5 truncate text-small">
-					<span class="inline-block w-1/2 animate-pulse rounded bg-surface-2">&nbsp;</span>
+					<span class="inline-block w-1/2 skeleton rounded">&nbsp;</span>
 				</div>
 				{#if kind === 'book'}
 					<div class="mt-2"><ProgressBar percent={0} label="" /></div>

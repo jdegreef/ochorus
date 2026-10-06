@@ -256,10 +256,10 @@
 		     until an `onload` handler revealed it — which on a prerendered shelf
 		     meant a cover that had arrived at 1.0s stayed invisible until
 		     hydration re-rendered the grid at 2.3s, and the page's LCP waited
-		     with it. `loaded` now only retires the pulse, which would otherwise
+		     with it. `loaded` now only retires the shimmer, which would otherwise
 		     animate under every cover forever. -->
 		{#if !loaded && !priority}
-			<div class="absolute inset-0 animate-pulse bg-surface-2"></div>
+			<div class="skeleton absolute inset-0"></div>
 		{/if}
 		<img
 			src={source.src}
