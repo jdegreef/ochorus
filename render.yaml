@@ -31,6 +31,19 @@ services:
     # the next green commit carries the change. Replaces the deprecated
     # `autoDeploy: true`.
     autoDeployTrigger: checksPass
+    # Rebuild the API only for commits that change what the image runs. The
+    # rootDir already skips commits outside backend/; this also skips the ones
+    # that touch only tests or backend/CLAUDE.md, each of which would otherwise
+    # cost a Docker build plus a full `release` against Supabase. Paths are
+    # repo-root relative, and a buildFilter replaces the rootDir default, so
+    # `backend/**` has to be named.
+    buildFilter:
+      paths:
+        - backend/**
+      ignoredPaths:
+        - backend/**/tests*.py
+        - backend/**/tests/**
+        - backend/CLAUDE.md
     # Per deploy, before the new version goes live: apply migrations, then seed
     # the library from the committed fixture if (and only if) the DB is empty.
     # If this fails, Render keeps the current version up.
@@ -118,6 +131,15 @@ services:
     schedule: "*/15 * * * *"
     # Same trigger as ochorus-api, whose image this rebuilds.
     autoDeployTrigger: checksPass
+    # Same filter as ochorus-api: the cron builds its own copy of the image, so
+    # without this every test-only backend commit paid for a second Docker build.
+    buildFilter:
+      paths:
+        - backend/**
+      ignoredPaths:
+        - backend/**/tests*.py
+        - backend/**/tests/**
+        - backend/CLAUDE.md
     # A SINGLE management command that runs both steps in-process. Render runs a
     # cron dockerCommand argv-style (no shell) AND keeps literal quotes, so both a
     # bare `&&` ("unrecognized arguments: &&") and an `sh -c '…'` wrapper (status

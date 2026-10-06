@@ -546,6 +546,12 @@ advertised-but-unbuilt, so built-but-unadvertised is fine.
   ("in these pages", "the youngest … in this book", "most of the men in this
   book"). It reads wrongly on a standalone author page, and a request usually
   names only some of the sentences, so `grep` for book/pages in every edition.
+  The FAQ often repeats the line (Bright: English `faq` plus each
+  `<slug>.faq.json`), so the migration must swap FAQ answers too
+  (`0189_anthology_framing_bios_standalone` is the bio_html + faq version). A
+  2026-10-05 sweep cleared every English bio (Bonhoeffer, Tozer, Bright, Prince,
+  MacDonald). New bios written from an anthology chapter must drop the framing
+  before they ship.
   **If the English fix adds or removes ANY tag** (e.g. `<em>` round a newly
   cited title), (1) and (3) must ship in ONE PR: `tests_bio_markup` demands every
   translation carry the English tag sequence, so the English-only PR goes red
