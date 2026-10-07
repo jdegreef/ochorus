@@ -3,6 +3,7 @@
  "slug": "talks-to-the-farmer-children",
  "language": "es",
  "job_issue": 4811,
+ "pull_request": 5387,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Proverbs 24”), and the body echoes verses in the same retold register. The Spanish renders those paraphrases in the same simple, child-friendly wording rather than pasting the Reina-Valera text, which would break the edition's register; api.takeroot.bible was egress-blocked from this session in any case.",
   "References and block indices mirror the English structure exactly (tag sequence identical chapter by chapter), so they are the same rows as the pt and am editions' notes. AI-translated in-session; awaiting native review."
