@@ -592,6 +592,7 @@ TOPICS = [
             "anchored-1",
             "they-were-young-1",
             "anchored-2",
+            "they-were-young-2",
         ],
     ),
     (
