@@ -1,0 +1,107 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust-children",
+ "language": "fr",
+ "job_issue": 5368,
+ "pull_request": null,
+ "note": [
+  "Scripture register is Louis Segond (1910), the register the shipped French corpus uses. The English edition's epigraphs are loose children's paraphrases introduced with “— from <Book> <chapter>”, rendered here “— d’après <Livre> <chapitre>”; they carry no verse number, so the verse-consistency audit's (Book C:V) pairs never see them.",
+  "A `mined` row is an exact substring of the cited shipped French file (Segond wording). Every other row is self_rendered: either a simplified child-register paraphrase of Segond (e.g. Psalm 81:10 keeps the English's “toute grande”, Isaiah 65:24 uses “m’appellent” for Segond’s “m’invoquent”, Psalm 68:5 “un père pour les orphelins”), or Segond wording not found verbatim in the corpus. Egress to api.takeroot.bible was not used."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 53:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "talks-to-the-farmer.fr.json"
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "ministry-of-intercession.fr.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "thoughts-for-the-quiet-hour.fr.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "lord-teach-us-to-pray-2.fr.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "James 1:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

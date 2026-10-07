@@ -5587,6 +5587,16 @@
 				503
 			]
 		},
+		"fr/the-life-of-trust-children": {
+			"ground": "b271f1bcc66d05926eb513a26a6888568a11a7a81b5ff1dec6a8ebf672cca199",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"fr/the-masters-indwelling": {
 			"ground": "4ea35dbbe5b79b54f3020dfb4b150136119a2802c5753945488bee54a06be5b7",
 			"style": "devotional",
