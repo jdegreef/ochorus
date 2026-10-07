@@ -3,6 +3,7 @@
  "slug": "talks-to-the-farmer-teens",
  "language": "pt",
  "job_issue": 5228,
+ "pull_request": 5524,
  "note": [
   "Scripture source: the English teen retelling quotes the ESV; the Portuguese quotes the Bíblia Livre para o Mundo (porbrbsl, public domain), the library's pt Bible, taken from the ebible USFM mirror (por_bpm) and pasted verbatim — same span as the English, elisions kept, '(ESV)' tag dropped. Rows marked mined were re-verified by script as case-insensitive verbatim fragments of the cited verse text (or of the cited shipped file).",
   "Amos 2:13 is the exception: the English epigraph is the KJV reading ('I am pressed under you'), on which the chapter turns, and porbrbsl reads the verse the other way round, so it is taken verbatim from the full edition talks-to-the-farmer.pt.json, which quotes the same KJV-sense wording.",
