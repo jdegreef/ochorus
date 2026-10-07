@@ -3,6 +3,7 @@
  "slug": "the-life-of-trust-children",
  "language": "es",
  "job_issue": 4815,
+ "pull_request": 5392,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Isaiah 53”), and the body echoes verses in the same retold register. The Spanish renders those paraphrases in the same simple, child-friendly wording rather than pasting the Reina-Valera (rv1858) text, whose 19th-century register would break the edition's voice; api.takeroot.bible was egress-blocked from this session in any case.",
   "References and block indices mirror the English structure exactly (tag sequence identical chapter by chapter), so they are the same rows as the am edition's notes. AI-translated in-session; awaiting native review."
