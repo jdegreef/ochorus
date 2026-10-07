@@ -1437,6 +1437,9 @@ export interface AudienceShelf {
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
 	languages: string[];
+	/** The audience topic's articles here, in its curator's order — the teens'
+	 *  Big Questions. Optional: an API behind this build omits it. */
+	articles?: ArticleSummary[];
 }
 
 /** A reading age — a series' own fields, which a book's reuse, so
