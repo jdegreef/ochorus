@@ -5464,6 +5464,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"fr/pilgrims-progress-teens": {
+			"ground": "e5622af1408ce65fad675b35529b0b6d443d21ec4a4f4a3f33fd35e7f559a0da",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"fr/prayer-the-pulse-of-life": {
 			"ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
 			"style": "house",
