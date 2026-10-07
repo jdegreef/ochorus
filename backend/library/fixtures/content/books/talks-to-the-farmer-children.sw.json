@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "sw",
+  "title": "Mazungumzo na Mkulima (Kwa Watoto)",
+  "subtitle": "",
+  "description": "Charles Spurgeon aliona kweli ya Mungu ikiwa imejificha katika shamba la kawaida — shamba lililojaa magugu, mbegu za mpanzi, chipukizi la kwanza la kijani la majira ya machipuko, kondoo wakati wa kunyolewa manyoya, na ghala wakati wa mavuno. Toleo hili la watoto linasimulia upya picha zake za shambani katika sura fupi na rahisi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, hadithi fupi ya shambani, jambo moja linalomaanisha kwako, na sala fupi ya kumalizia.",
+  "qa": [
+   {
+    "question": "Kitabu Mazungumzo na Mkulima (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la kitabu cha Charles Spurgeon, Mazungumzo na Mkulima. Kila sura fupi inachukua picha moja ya maisha ya shambani — ukuta uliobomoka, mpanzi akipanda mbegu, chipukizi la kwanza la majira ya machipuko, kondoo wakinyolewa manyoya, mavuno — na kwa upole inaonyesha inachotufundisha kuhusu Mungu, kwa maneno rahisi kwa wasomaji wadogo."
+   },
+   {
+    "question": "Charles Spurgeon alikuwa nani?",
+    "answer": "Alikuwa mhubiri maarufu aliyeishi London zamani sana, naye alipenda kueleza kweli kubwa kuhusu Mungu kwa kutumia vitu vya kila siku kama mashamba, hali ya hewa na mavuno. Ndiyo sababu hadithi zake za shambani zinawafaa watoto sana."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia hadithi fupi ya shambani, inaonyesha jambo moja rahisi linalomaanisha kwako, na inamalizia kwa sala fupi."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kitabu kamili cha Spurgeon, Mazungumzo na Mkulima, kinapatikana pia kwa wasomaji wakubwa, pamoja na toleo lililoandaliwa kwa ajili ya vijana."
+   },
+   {
+    "question": "Kwa nini kinatumia hadithi za shambani kufundisha kuhusu Mungu?",
+    "answer": "Kwa sababu Yesu naye alifanya hivyo — hadithi yake ya mpanzi aliyetoka kwenda kupanda mbegu ni mojawapo ya hadithi zinazojulikana sana katika Biblia. Picha unayoweza kuiona, kama mbegu au kondoo au mavuno, humsaidia mtoto kukumbuka kweli vizuri zaidi kuliko maelezo marefu."
+   },
+   {
+    "question": "Baadhi ya hadithi zilizomo katika kitabu ni zipi?",
+    "answer": "Kitabu kinafuata mwaka wa shambani. Kuna shamba lililojaa magugu ambalo mtu mvivu aliliacha bila kulishughulikia, mkulima akipanda mbegu zake, barafu ikiyeyuka na majira ya machipuko yakifika, chipukizi la kwanza la kijani likitokea ardhini, kondoo wakati wa kunyolewa manyoya, Ruthu maskini akiokota nafaka, na mavuno yakihifadhiwa salama ghalani. Kila hadithi fupi inafundisha jambo moja rahisi kuhusu Mungu."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi mpya wa Ochorus, kwa ajili ya wasomaji wadogo, wa kitabu cha Charles H. Spurgeon, Mazungumzo na Mkulima, ambacho kiko katika uwanja wa umma. Usimulizi huu ni wetu, uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Shamba la Mvivu",
+  "body_html": "<blockquote>“Nilipita karibu na shamba la mtu mvivu, nalo lilikuwa limejaa magugu na miiba.” — kutoka Mithali 24</blockquote> <p>Siku moja, Mfalme Sulemani mwenye hekima alikwenda matembezi, akasimama kutazama shamba dogo. Lo! Lilikuwa limeharibika kweli! Magugu yenye miiba na michongoma yalimea kila mahali. Ulikuwa huwezi hata kuiona ardhi.</p> <p>Basi, mtu aliyekuwa na shamba lile hakuwa mtu mwovu. Hakuwahi kupanda hata gugu moja. Sasa, shamba lilijaaje magugu namna hiyo?</p> <p>Jibu ni hili, nalo linashangaza kidogo. Hakufanya chochote kabisa! Alikuwa mvivu. Hakuwahi kung'oa magugu, wala hakuwahi kupanda mbegu nzuri. Na unajua nini? Shamba halibaki tupu kamwe. Usipootesha mimea mizuri ndani yake, magugu huota yenyewe. Hakuna anayehitaji kupanda magugu — yanakuja tu.</p> <p>Moyo wako unafanana kidogo na shamba lile. Mambo mazuri unayoyafanya — kusali, kuwa mwema, kusema kweli, kutii — hayo ni kama mimea mizuri inayokua. Lakini ukiacha kufanya mambo mazuri na kukaa tu bila kufanya chochote, mambo mengine huota badala yake, yenyewe tu. Kununa. Maneno yasiyo ya upole. Kumsahau Mungu.</p> <p>Kwa hiyo usisubiri! Usiseme, “Nitakuwa mwema kesho.” Yule mtu mvivu kila mara alisema “kesho,” na shamba lake lote likajaa magugu. Panda mbegu nzuri leo — neno la upole, sala fupi — na uiache ikue.</p> <p><em>Mungu mpendwa, nisaidie nisiwe mvivu. Nisaidie kupanda mambo mazuri moyoni mwangu leo, nisisubiri mpaka kesho. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mfalme Sulemani aliona nini alipopita karibu na shamba la mtu mvivu?",
+    "answer": "Shamba lililoharibika, lililojaa magugu yenye miiba na michongoma, mengi kiasi kwamba ulikuwa huwezi hata kuiona ardhi."
+   },
+   {
+    "question": "Mtu mvivu hakuwahi kupanda magugu. Basi kwa nini shamba lake lilijaa magugu?",
+    "answer": "Kwa sababu hakufanya chochote kabisa. Hakuwahi kung'oa magugu wala kupanda mbegu nzuri, na shamba halibaki tupu kamwe — magugu huota yenyewe."
+   },
+   {
+    "question": "Ni mbegu gani nzuri moja ambayo ungeweza kuipanda moyoni mwako leo, badala ya kusubiri mpaka kesho?",
+    "answer": "Funzo la sura hii: usiseme “Nitakuwa mwema kesho.” Panda mbegu nzuri leo — neno la upole au sala fupi — na uiache ikue."
+   }
+  ],
+  "body_text": "“Nilipita karibu na shamba la mtu mvivu, nalo lilikuwa limejaa magugu na miiba.” — kutoka Mithali 24 Siku moja, Mfalme Sulemani mwenye hekima alikwenda matembezi, akasimama kutazama shamba dogo. Lo! Lilikuwa limeharibika kweli! Magugu yenye miiba na michongoma yalimea kila mahali. Ulikuwa huwezi hata kuiona ardhi. Basi, mtu aliyekuwa na shamba lile hakuwa mtu mwovu. Hakuwahi kupanda hata gugu moja. Sasa, shamba lilijaaje magugu namna hiyo? Jibu ni hili, nalo linashangaza kidogo. Hakufanya chochote kabisa! Alikuwa mvivu. Hakuwahi kung'oa magugu, wala hakuwahi kupanda mbegu nzuri. Na unajua nini? Shamba halibaki tupu kamwe. Usipootesha mimea mizuri ndani yake, magugu huota yenyewe. Hakuna anayehitaji kupanda magugu — yanakuja tu. Moyo wako unafanana kidogo na shamba lile. Mambo mazuri unayoyafanya — kusali, kuwa mwema, kusema kweli, kutii — hayo ni kama mimea mizuri inayokua. Lakini ukiacha kufanya mambo mazuri na kukaa tu bila kufanya chochote, mambo mengine huota badala yake, yenyewe tu. Kununa. Maneno yasiyo ya upole. Kumsahau Mungu. Kwa hiyo usisubiri! Usiseme, “Nitakuwa mwema kesho.” Yule mtu mvivu kila mara alisema “kesho,” na shamba lake lote likajaa magugu. Panda mbegu nzuri leo — neno la upole, sala fupi — na uiache ikue. Mungu mpendwa, nisaidie nisiwe mvivu. Nisaidie kupanda mambo mazuri moyoni mwangu leo, nisisubiri mpaka kesho. Amina.",
+  "word_count": 206
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Ukuta Uliobomoka",
+  "body_html": "<blockquote>“Nilipita karibu na shamba la mtu mvivu, nalo lilikuwa limejaa magugu, na ukuta wake wa mawe ulikuwa umebomoka.” — kutoka Mithali 24</blockquote> <p>Siku moja, Mfalme Sulemani mwenye hekima alikwenda matembezi. Akasimama kando ya shamba dogo, akalitazama kwa muda mrefu.</p> <p>Lilikuwa limeharibika kweli! Magugu na michongoma yenye miiba yalimea kila mahali. Na ukuta wa mawe uliozunguka shamba ulikuwa umeanguka, ukiwa na mapengo makubwa.</p> <p>Basi, mtu aliyekuwa na shamba lile hakuwa mtu mwovu. Hakuwahi <em>kuubomoa</em> ukuta. Hilo ndilo jambo la kushangaza. Alikuwa mvivu tu. Jiwe moja lilipoanguka, alisema, “Nitaurekebisha kesho.” Lakini kesho yake alisema tena, “Nitaurekebisha kesho.” Kwa hiyo ukuta ukabaki umebomoka.</p> <p>Na unajua kinachotokea shambani ukuta ukibomoka? Kila kitu kinaingia! Kondoo na mbuzi hupita katika mapengo na kula mimea yote mizuri. Magugu hupeperushwa ndani na kuenea kila mahali. Na mvua kubwa ikinyesha, hakuna ukuta wa kuzuia udongo mzuri, kwa hiyo unasombwa na maji.</p> <p>Yule mtu mvivu maskini alipoteza shamba lake lote — si kwa sababu alifanya jambo baya, bali kwa sababu <em>hakufanya chochote kabisa.</em></p> <p>Moyo wako pia una ukuta. Umejengwa kwa mambo mazuri yanayokulinda: kusali, kuwasikiliza watu wanaokufundisha kuhusu Mungu, na kuwa jasiri kusema “hapana” jambo likiwa baya.</p> <p>Tukiwa wavivu na kuyaacha mambo hayo mazuri, ukuta unapata mapengo. Na hapo mambo mabaya ya kila aina yanaweza kuingia.</p> <p>Kwa hiyo uweke ukuta wako imara! Na kama jiwe moja limeanguka, huhitaji kurekebisha kila kitu leo. Okota tu jiwe moja, ulirudishe mahali pake.</p> <p><em>Mungu mpendwa, nisaidie kuulinda ukuta mzuri unaozunguka moyo wangu. Jiwe likianguka, nisaidie kulirudisha mara moja. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ukuta uliozunguka shamba la mtu mvivu ulikuwa na tatizo gani?",
+    "answer": "Ulikuwa umeanguka na ulikuwa na mapengo makubwa, kwa sababu kila jiwe lilipoanguka alisema, “Nitaurekebisha kesho.”"
+   },
+   {
+    "question": "Nini kilitokea shambani baada ya ukuta kubomoka?",
+    "answer": "Kondoo na mbuzi waliingia wakala mimea mizuri, magugu yakapeperushwa ndani, na mvua kubwa ikasomba udongo mzuri."
+   },
+   {
+    "question": "Ni nini kinachosaidia kuuweka imara “ukuta” unaozunguka moyo wako?",
+    "answer": "Sura hii inataja kusali, kuwasikiliza watu wanaokufundisha kuhusu Mungu, na kuwa jasiri kusema “hapana” kwa mabaya. Jiwe likianguka, rudisha moja tu."
+   }
+  ],
+  "body_text": "“Nilipita karibu na shamba la mtu mvivu, nalo lilikuwa limejaa magugu, na ukuta wake wa mawe ulikuwa umebomoka.” — kutoka Mithali 24 Siku moja, Mfalme Sulemani mwenye hekima alikwenda matembezi. Akasimama kando ya shamba dogo, akalitazama kwa muda mrefu. Lilikuwa limeharibika kweli! Magugu na michongoma yenye miiba yalimea kila mahali. Na ukuta wa mawe uliozunguka shamba ulikuwa umeanguka, ukiwa na mapengo makubwa. Basi, mtu aliyekuwa na shamba lile hakuwa mtu mwovu. Hakuwahi kuubomoa ukuta. Hilo ndilo jambo la kushangaza. Alikuwa mvivu tu. Jiwe moja lilipoanguka, alisema, “Nitaurekebisha kesho.” Lakini kesho yake alisema tena, “Nitaurekebisha kesho.” Kwa hiyo ukuta ukabaki umebomoka. Na unajua kinachotokea shambani ukuta ukibomoka? Kila kitu kinaingia! Kondoo na mbuzi hupita katika mapengo na kula mimea yote mizuri. Magugu hupeperushwa ndani na kuenea kila mahali. Na mvua kubwa ikinyesha, hakuna ukuta wa kuzuia udongo mzuri, kwa hiyo unasombwa na maji. Yule mtu mvivu maskini alipoteza shamba lake lote — si kwa sababu alifanya jambo baya, bali kwa sababu hakufanya chochote kabisa. Moyo wako pia una ukuta. Umejengwa kwa mambo mazuri yanayokulinda: kusali, kuwasikiliza watu wanaokufundisha kuhusu Mungu, na kuwa jasiri kusema “hapana” jambo likiwa baya. Tukiwa wavivu na kuyaacha mambo hayo mazuri, ukuta unapata mapengo. Na hapo mambo mabaya ya kila aina yanaweza kuingia. Kwa hiyo uweke ukuta wako imara! Na kama jiwe moja limeanguka, huhitaji kurekebisha kila kitu leo. Okota tu jiwe moja, ulirudishe mahali pake. Mungu mpendwa, nisaidie kuulinda ukuta mzuri unaozunguka moyo wangu. Jiwe likianguka, nisaidie kulirudisha mara moja. Amina.",
+  "word_count": 245
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Barafu na Kuyeyuka",
+  "body_html": "<blockquote>“Yeye hutoa theluji. Hutuma neno lake, nayo huyeyuka.” — kutoka Zaburi 147</blockquote> <p>Je, umewahi kuiona dunia asubuhi ya baridi kali, wakati wa majira ya baridi? Kila kitu ni kigumu na cheupe, na kimeganda. Madimbwi ya maji yanageuka kuwa barafu. Ardhi ni ngumu kama jiwe.</p> <p>Kisha, baada ya muda, upepo wa joto unavuma. Jua linachomoza. Na katika saa chache tu, barafu yote inayeyuka na kuwa maji, kana kwamba haikuwahi kuwepo!</p> <p>Ni nani anayefanya hivyo? Biblia inasema ni Mungu. Yeye hutuma baridi kali, na hutuma upepo wa joto unaoiyeyusha. Vyote viwili vinatoka kwake.</p> <p>Jambo kama hilo linaweza kutokea ndani yetu pia. Wakati mwingine tunafanya kosa, kisha tunalihisi. Moyo wetu unakuwa baridi, wenye huzuni na majuto. Hisia hiyo ya huzuni na majuto ni kama barafu kidogo.</p> <p>Lakini huo si mwisho wa hadithi! Tunapomwambia Mungu kwamba tunajuta, yeye hutuma upendo wake kama upepo wa joto wa majira ya machipuko. Unayeyusha huzuni ile ya baridi, naye anatusamehe, na moyo wetu unajisikia furaha na joto tena.</p> <p>Ni Mungu peke yake anayeweza kuyeyusha moyo namna hiyo. Sisi wenyewe hatuwezi. Kwa hiyo kama utajisikia baridi na majuto ndani yako kwa sababu ya jambo ulilofanya, usibaki umeganda. Mwambie Mungu. Anapenda kutuma upepo wa joto.</p> <p><em>Mungu mpendwa, moyo wangu ukijisikia baridi na majuto, tafadhali tuma upendo wako wa joto uuyeyushe, unisamehe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kinaipata barafu upepo wa joto unapovuma na jua linapochomoza?",
+    "answer": "Katika saa chache tu barafu yote inayeyuka na kuwa maji, kana kwamba haikuwahi kuwepo."
+   },
+   {
+    "question": "Ni nani anayetuma baridi kali na upepo wa joto unaoiyeyusha?",
+    "answer": "Ni Mungu. Sura hii inasema vyote viwili vinatoka kwake."
+   },
+   {
+    "question": "Unapojisikia baridi na majuto ndani yako kwa sababu ya jambo ulilofanya, unaweza kufanya nini?",
+    "answer": "Funzo la sura hii: usibaki umeganda — mwambie Mungu kwamba unajuta. Anapenda kutuma upendo wake wa joto kuyeyusha huzuni na kukusamehe."
+   }
+  ],
+  "body_text": "“Yeye hutoa theluji. Hutuma neno lake, nayo huyeyuka.” — kutoka Zaburi 147 Je, umewahi kuiona dunia asubuhi ya baridi kali, wakati wa majira ya baridi? Kila kitu ni kigumu na cheupe, na kimeganda. Madimbwi ya maji yanageuka kuwa barafu. Ardhi ni ngumu kama jiwe. Kisha, baada ya muda, upepo wa joto unavuma. Jua linachomoza. Na katika saa chache tu, barafu yote inayeyuka na kuwa maji, kana kwamba haikuwahi kuwepo! Ni nani anayefanya hivyo? Biblia inasema ni Mungu. Yeye hutuma baridi kali, na hutuma upepo wa joto unaoiyeyusha. Vyote viwili vinatoka kwake. Jambo kama hilo linaweza kutokea ndani yetu pia. Wakati mwingine tunafanya kosa, kisha tunalihisi. Moyo wetu unakuwa baridi, wenye huzuni na majuto. Hisia hiyo ya huzuni na majuto ni kama barafu kidogo. Lakini huo si mwisho wa hadithi! Tunapomwambia Mungu kwamba tunajuta, yeye hutuma upendo wake kama upepo wa joto wa majira ya machipuko. Unayeyusha huzuni ile ya baridi, naye anatusamehe, na moyo wetu unajisikia furaha na joto tena. Ni Mungu peke yake anayeweza kuyeyusha moyo namna hiyo. Sisi wenyewe hatuwezi. Kwa hiyo kama utajisikia baridi na majuto ndani yako kwa sababu ya jambo ulilofanya, usibaki umeganda. Mwambie Mungu. Anapenda kutuma upepo wa joto. Mungu mpendwa, moyo wangu ukijisikia baridi na majuto, tafadhali tuma upendo wako wa joto uuyeyushe, unisamehe. Amina.",
+  "word_count": 212
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Mbegu Inayokua",
+  "body_html": "<blockquote>“Mbegu isipoanguka ardhini, hubaki mbegu moja tu. Lakini ikianguka, hukua na kuzaa nyingi zaidi.” — kutoka Yohana 12</blockquote> <p>Fikiria umeshika mbegu moja ndogo mkononi mwako. Moja tu.</p> <p>Sasa, je, kama ungeihifadhi salama ndani ya chupa juu ya rafu, ili isipatwe na chochote kamwe? Baada ya mwaka mmoja, ungekuwa na mbegu ngapi? Bado moja tu! Ingebaki mbegu moja ndogo, peke yake, milele.</p> <p>Lakini je, kama badala yake ungeipanda ardhini? Jambo la ajabu hutokea chini ya udongo. Mbegu ile ndogo inapasuka na kubadilika — na unamea mmea mrefu, wenye mbegu mpya nyingi sana! Mbegu moja ikawa nyingi, kwa sababu ilipandwa.</p> <p>Yesu alisema yeye ni kama mbegu ile. Alikuwa tayari kuutoa uhai wake mwenyewe, kama mbegu inavyoingia ardhini — na kwa sababu alifanya hivyo, watu wengi mno sasa wanaweza kupata uzima mpya pamoja na Mungu. Hakuuhifadhi uhai wake salama kwa ajili yake mwenyewe tu. Aliutoa, nao ukakua na kuwa mavuno makubwa ya watu wanaompenda.</p> <p>Na Yesu alisema nasi tunaweza kuwa hivyo pia. Ukishikilia kila kitu kwa ajili yako mwenyewe tu — kila mara ukitaka kuwa wa kwanza, bila kushiriki kamwe — unabaki mdogo, kama mbegu moja ndani ya chupa. Lakini ukitoa, ukashiriki na kuwafikiria wengine, maisha yako yanakua na kuwa kitu kikubwa na kizuri.</p> <p>Kutoa si kupoteza. Kutoa ndiyo njia ambayo mambo mazuri hukua.</p> <p><em>Mungu mpendwa, asante kwa ajili ya Yesu, aliyetoa uhai wake kwa ajili yangu. Nisaidie kutoa na kushiriki, ili mambo mazuri yakue. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kama ungehifadhi mbegu moja salama ndani ya chupa, ungekuwa na mbegu ngapi baada ya mwaka mmoja?",
+    "answer": "Bado moja tu. Ingebaki mbegu moja ndogo, peke yake, milele."
+   },
+   {
+    "question": "Kwa nini mbegu iliyopandwa ardhini ikawa mbegu nyingi?",
+    "answer": "Kwa sababu ilipandwa. Ilipasuka na kubadilika, na ukamea mmea mrefu wenye mbegu nyingi mpya."
+   },
+   {
+    "question": "Ni njia gani moja ambayo ungeweza kutoa au kushiriki wiki hii?",
+    "answer": "Funzo la sura hii: kushikilia kila kitu kwa ajili yako mwenyewe kunakufanya ubaki mdogo kama mbegu ndani ya chupa, lakini kutoa na kushiriki husaidia mambo mazuri kukua. “Kutoa si kupoteza.”"
+   }
+  ],
+  "body_text": "“Mbegu isipoanguka ardhini, hubaki mbegu moja tu. Lakini ikianguka, hukua na kuzaa nyingi zaidi.” — kutoka Yohana 12 Fikiria umeshika mbegu moja ndogo mkononi mwako. Moja tu. Sasa, je, kama ungeihifadhi salama ndani ya chupa juu ya rafu, ili isipatwe na chochote kamwe? Baada ya mwaka mmoja, ungekuwa na mbegu ngapi? Bado moja tu! Ingebaki mbegu moja ndogo, peke yake, milele. Lakini je, kama badala yake ungeipanda ardhini? Jambo la ajabu hutokea chini ya udongo. Mbegu ile ndogo inapasuka na kubadilika — na unamea mmea mrefu, wenye mbegu mpya nyingi sana! Mbegu moja ikawa nyingi, kwa sababu ilipandwa. Yesu alisema yeye ni kama mbegu ile. Alikuwa tayari kuutoa uhai wake mwenyewe, kama mbegu inavyoingia ardhini — na kwa sababu alifanya hivyo, watu wengi mno sasa wanaweza kupata uzima mpya pamoja na Mungu. Hakuuhifadhi uhai wake salama kwa ajili yake mwenyewe tu. Aliutoa, nao ukakua na kuwa mavuno makubwa ya watu wanaompenda. Na Yesu alisema nasi tunaweza kuwa hivyo pia. Ukishikilia kila kitu kwa ajili yako mwenyewe tu — kila mara ukitaka kuwa wa kwanza, bila kushiriki kamwe — unabaki mdogo, kama mbegu moja ndani ya chupa. Lakini ukitoa, ukashiriki na kuwafikiria wengine, maisha yako yanakua na kuwa kitu kikubwa na kizuri. Kutoa si kupoteza. Kutoa ndiyo njia ambayo mambo mazuri hukua. Mungu mpendwa, asante kwa ajili ya Yesu, aliyetoa uhai wake kwa ajili yangu. Nisaidie kutoa na kushiriki, ili mambo mazuri yakue. Amina.",
+  "word_count": 233
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Mpanzi",
+  "body_html": "<blockquote>“Mpanzi alitoka kwenda kupanda mbegu zake.” — kutoka Luka 8</blockquote> <p>Hapo zamani palikuwa na mkulima aliyetoka kwenda kupanda mbegu. Aliingiza mkono ndani ya mfuko wake, akachota konzi kubwa, akazitupa shambani mwake. Hebu tuzifuate mbegu zile tuone zilipoangukia!</p> <p>Mbegu nyingine zilianguka kwenye <strong>njia ngumu</strong>, mahali ambapo kila mtu alipita. Njia ilikuwa ngumu mno mbegu zisiweze kuingia. Kwa hiyo ndege walishuka kwa kasi na — donoa, donoa! — wakazila zote.</p> <p>Mbegu nyingine zilianguka kwenye <strong>ardhi yenye mawe</strong>, mahali ambapo udongo ulikuwa mwembamba. Mbegu hizi ziliota haraka! Lakini mizizi yake haikuweza kwenda chini sana. Kwa hiyo jua kali lilipowaka, mimea ile midogo ilikauka ikafa.</p> <p>Mbegu nyingine zilianguka mahali palipokuwa na <strong>miiba na magugu</strong>. Mbegu zilianza kuota — lakini magugu yalikua haraka zaidi na kurefuka zaidi, yakazisonga, hata mimea ile midogo ikakosa nafasi na mwanga wa jua.</p> <p>Lakini mbegu nyingine zilianguka kwenye <strong>udongo mzuri, laini.</strong> Mbegu hizi zilitia mizizi chini sana na kukua juu sana, zikazaa nafaka mpya nyingi mno. Mavuno makubwa kama nini!</p> <p>Yesu alisimulia hadithi hii, kisha akatuambia maana yake. Mbegu ni neno la Mungu. Na aina mbalimbali za ardhi ni kama aina mbalimbali za mioyo.</p> <p>Je, moyo wako ni kama njia ngumu, una shughuli nyingi mno kusikiliza? Kama ardhi yenye mawe, unafurahi kwa dakika moja kisha unasahau? Kama ardhi yenye magugu, umejaa mambo mengine mengi mno? Au ni kama udongo mzuri, uko tayari kusikiliza na kukua?</p> <p>Hii hapa siri ya furaha: hata ardhi ngumu inaweza kulimwa na kufanywa laini na nzuri. Ukimwomba, Mungu ataandaa moyo wako, ili neno lake likue kuwa kubwa na imara ndani yako.</p> <p><em>Mungu mpendwa, tafadhali fanya moyo wangu uwe kama udongo mzuri, ulio tayari kukusikiliza na kukua. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kilizipata mbegu zilizoanguka kwenye njia ngumu?",
+    "answer": "Njia ilikuwa ngumu mno zisiweze kuingia, kwa hiyo ndege walishuka kwa kasi wakazila zote."
+   },
+   {
+    "question": "Nini kilizipata mbegu zilizoanguka kwenye udongo mzuri, laini?",
+    "answer": "Zilitia mizizi chini sana na kukua juu sana, zikazaa nafaka mpya nyingi mno — mavuno makubwa."
+   },
+   {
+    "question": "Ungependa moyo wako uwe aina gani ya ardhi, na unawezaje kuandaliwa?",
+    "answer": "Funzo la sura hii: mbegu ni neno la Mungu, na hata ardhi ngumu inaweza kufanywa laini. Tukimwomba, Mungu ataiandaa mioyo yetu ili neno lake likue."
+   }
+  ],
+  "body_text": "“Mpanzi alitoka kwenda kupanda mbegu zake.” — kutoka Luka 8 Hapo zamani palikuwa na mkulima aliyetoka kwenda kupanda mbegu. Aliingiza mkono ndani ya mfuko wake, akachota konzi kubwa, akazitupa shambani mwake. Hebu tuzifuate mbegu zile tuone zilipoangukia! Mbegu nyingine zilianguka kwenye njia ngumu, mahali ambapo kila mtu alipita. Njia ilikuwa ngumu mno mbegu zisiweze kuingia. Kwa hiyo ndege walishuka kwa kasi na — donoa, donoa! — wakazila zote. Mbegu nyingine zilianguka kwenye ardhi yenye mawe, mahali ambapo udongo ulikuwa mwembamba. Mbegu hizi ziliota haraka! Lakini mizizi yake haikuweza kwenda chini sana. Kwa hiyo jua kali lilipowaka, mimea ile midogo ilikauka ikafa. Mbegu nyingine zilianguka mahali palipokuwa na miiba na magugu. Mbegu zilianza kuota — lakini magugu yalikua haraka zaidi na kurefuka zaidi, yakazisonga, hata mimea ile midogo ikakosa nafasi na mwanga wa jua. Lakini mbegu nyingine zilianguka kwenye udongo mzuri, laini. Mbegu hizi zilitia mizizi chini sana na kukua juu sana, zikazaa nafaka mpya nyingi mno. Mavuno makubwa kama nini! Yesu alisimulia hadithi hii, kisha akatuambia maana yake. Mbegu ni neno la Mungu. Na aina mbalimbali za ardhi ni kama aina mbalimbali za mioyo. Je, moyo wako ni kama njia ngumu, una shughuli nyingi mno kusikiliza? Kama ardhi yenye mawe, unafurahi kwa dakika moja kisha unasahau? Kama ardhi yenye magugu, umejaa mambo mengine mengi mno? Au ni kama udongo mzuri, uko tayari kusikiliza na kukua? Hii hapa siri ya furaha: hata ardhi ngumu inaweza kulimwa na kufanywa laini na nzuri. Ukimwomba, Mungu ataandaa moyo wako, ili neno lake likue kuwa kubwa na imara ndani yako. Mungu mpendwa, tafadhali fanya moyo wangu uwe kama udongo mzuri, ulio tayari kukusikiliza na kukua. Amina.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Majira ya Machipuko Moyoni",
+  "body_html": "<blockquote>“Unaitunza nchi na kuinywesha maji. Unaibariki mimea midogo inayoota.” — kutoka Zaburi 65</blockquote> <p>Majira ya baridi ni ya baridi, na ardhi inaonekana ya kahawia, tupu na wazi. Inaonekana kana kwamba hakuna kinachotokea kabisa.</p> <p>Lakini kisha majira ya machipuko yanakuja. Na siku moja, ukitazama kwa makini sana, utaliona — chipukizi dogo sana la kijani, likisukuma kupenya udongo mgumu wa baridi. Ni dogo mno. Ungeweza karibu kulikanyaga bila kuliona. Lakini liko hai! Na chipukizi hilo dogo la kijani ndilo mwanzo kabisa wa shamba zima la ngano.</p> <p>Unapoanza kumpenda Mungu, upendo huo unaweza kuwa mdogo namna hiyo. Labda unasali sala fupi. Labda unatamani kuwa mwema. Labda unamwamini Yesu kidogo tu. Huenda ukaona ni mdogo mno kuwa na maana.</p> <p>Lakini una maana kubwa sana! Mungu analiona chipukizi hilo dogo la kijani moyoni mwako, nalo linamfurahisha sana. Mkulima hakanyagi chipukizi dogo kwa sababu bado si mmea mkubwa — analitunza, analinywesha maji na kulisaidia kukua. Hivyo ndivyo hasa Mungu anavyokufanyia wewe.</p> <p>Kwa hiyo usifikiri kamwe kwamba upendo wako kwa Mungu ni mdogo mno usihesabiwe. Ngano kubwa na ndefu kuliko yote shambani ilianza kama chipukizi moja dogo la kijani. Endelea kumgeukia Mungu, kama mmea mdogo unavyoligeukia jua, naye atakusaidia kukua.</p> <p><em>Mungu mpendwa, asante kwamba hata upendo wangu mdogo kabisa kwako una maana. Tafadhali usaidie ukue zaidi na kuwa imara zaidi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni kitu gani kidogo unachoweza kukiona shambani majira ya machipuko yanapokuja?",
+    "answer": "Chipukizi dogo sana la kijani likisukuma kupenya udongo mgumu wa baridi — mwanzo kabisa wa shamba zima la ngano."
+   },
+   {
+    "question": "Mkulima mwema hufanya nini na chipukizi dogo ambalo bado si mmea mkubwa?",
+    "answer": "Hakanyagi. Analitunza, analinywesha maji na kulisaidia kukua."
+   },
+   {
+    "question": "Je, umewahi kuhisi kwamba upendo wako kwa Mungu ni mdogo mno usihesabiwe?",
+    "answer": "Funzo la sura hii: hata sala fupi au imani ndogo ina maana na inamfurahisha Mungu. Ngano ndefu kuliko yote ilianza kama chipukizi moja dogo, na Mungu huisaidia ikue."
+   }
+  ],
+  "body_text": "“Unaitunza nchi na kuinywesha maji. Unaibariki mimea midogo inayoota.” — kutoka Zaburi 65 Majira ya baridi ni ya baridi, na ardhi inaonekana ya kahawia, tupu na wazi. Inaonekana kana kwamba hakuna kinachotokea kabisa. Lakini kisha majira ya machipuko yanakuja. Na siku moja, ukitazama kwa makini sana, utaliona — chipukizi dogo sana la kijani, likisukuma kupenya udongo mgumu wa baridi. Ni dogo mno. Ungeweza karibu kulikanyaga bila kuliona. Lakini liko hai! Na chipukizi hilo dogo la kijani ndilo mwanzo kabisa wa shamba zima la ngano. Unapoanza kumpenda Mungu, upendo huo unaweza kuwa mdogo namna hiyo. Labda unasali sala fupi. Labda unatamani kuwa mwema. Labda unamwamini Yesu kidogo tu. Huenda ukaona ni mdogo mno kuwa na maana. Lakini una maana kubwa sana! Mungu analiona chipukizi hilo dogo la kijani moyoni mwako, nalo linamfurahisha sana. Mkulima hakanyagi chipukizi dogo kwa sababu bado si mmea mkubwa — analitunza, analinywesha maji na kulisaidia kukua. Hivyo ndivyo hasa Mungu anavyokufanyia wewe. Kwa hiyo usifikiri kamwe kwamba upendo wako kwa Mungu ni mdogo mno usihesabiwe. Ngano kubwa na ndefu kuliko yote shambani ilianza kama chipukizi moja dogo la kijani. Endelea kumgeukia Mungu, kama mmea mdogo unavyoligeukia jua, naye atakusaidia kukua. Mungu mpendwa, asante kwamba hata upendo wangu mdogo kabisa kwako una maana. Tafadhali usaidie ukue zaidi na kuwa imara zaidi. Amina.",
+  "word_count": 214
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Kondoo Mbele ya Wanyoaji",
+  "body_html": "<blockquote>“Alinyamaza kimya, kama kondoo mdogo.” — kutoka Isaya 53</blockquote> <p>Je, umewahi kumwona kondoo mwenye koti lake zito la manyoya? Mara moja kwa mwaka, mkulima humnyoa kila kondoo. Hilo huitwa kunyoa manyoya. Hukata manyoya yote mazito ili kondoo apate ubaridi na kustarehe wakati wa kiangazi chenye joto.</p> <p>Basi, kondoo mwenye busara hufanya jambo la akili anaponyolewa. Hulala <em>tuli</em> kabisa. Na kwa sababu anatulia, makasi makali hayamuumizi hata kidogo. Lakini kondoo akipiga mateke, akijitikisa na kupigana — ai! — hapo ndipo anaweza kukatwa kidogo. Kujitikisa ndiko kunakoumiza, si makasi.</p> <p>Biblia inasema wakati mwingine Mungu ni kama yule mkulima mpole, nasi ni kama kondoo. Wakati mwingine Mungu hutuondolea kitu tunachokipenda. Hilo linaweza kutuhuzunisha sana, kama kupoteza koti letu la manyoya lenye joto.</p> <p>Lakini sikiliza — haya hapa mambo matatu ya kukumbuka.</p> <p>Mungu hunyoa tu wakati wa <em>joto</em>, kamwe si wakati wa baridi kali. Maana yake ni kwamba Mungu anajua wakati unaofaa, naye hatakupa kamwe zaidi ya unavyoweza kustahimili.</p> <p>Manyoya kila mara <em>huota tena.</em> Mungu hachukui kitu kamwe bila kuwa na kitu kizuri cha kukupa.</p> <p>Na maumivu huwa machache kabisa unapotulia <em>tuli</em> na kumtumaini, badala ya kupiga mateke na kupigana.</p> <p>Na unajua ni nani aliyelala tuli kabisa, kama kondoo mdogo? Ni Yesu. Watu walipomtendea mabaya, alibaki kimya na mpole, yote kwa sababu alitupenda. Kwa hiyo jambo gumu linapokuja, unaweza kuwa jasiri na mtulivu, kama Yesu.</p> <p><em>Mungu mpendwa, jambo fulani likinihuzunisha, nisaidie kutulia na kukutumaini, kwa sababu najua unanipenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini mkulima humnyoa kondoo manyoya mara moja kwa mwaka?",
+    "answer": "Ili kondoo apate ubaridi na kustarehe wakati wa kiangazi chenye joto bila koti lake zito."
+   },
+   {
+    "question": "Kwa nini kondoo mwenye busara hulala tuli anaponyolewa?",
+    "answer": "Kwa sababu akitulia, makasi hayamuumizi kamwe. Kujitikisa na kupiga mateke ndiko kunakoumiza, si makasi."
+   },
+   {
+    "question": "Jambo la huzuni likitokea na ukapoteza kitu unachokipenda, unaweza kukumbuka nini?",
+    "answer": "Funzo la sura hii: Mungu anajua wakati unaofaa, manyoya kila mara huota tena, na maumivu huwa machache kabisa tunapotulia na kumtumaini — kama Yesu, aliyebaki kimya na mpole."
+   }
+  ],
+  "body_text": "“Alinyamaza kimya, kama kondoo mdogo.” — kutoka Isaya 53 Je, umewahi kumwona kondoo mwenye koti lake zito la manyoya? Mara moja kwa mwaka, mkulima humnyoa kila kondoo. Hilo huitwa kunyoa manyoya. Hukata manyoya yote mazito ili kondoo apate ubaridi na kustarehe wakati wa kiangazi chenye joto. Basi, kondoo mwenye busara hufanya jambo la akili anaponyolewa. Hulala tuli kabisa. Na kwa sababu anatulia, makasi makali hayamuumizi hata kidogo. Lakini kondoo akipiga mateke, akijitikisa na kupigana — ai! — hapo ndipo anaweza kukatwa kidogo. Kujitikisa ndiko kunakoumiza, si makasi. Biblia inasema wakati mwingine Mungu ni kama yule mkulima mpole, nasi ni kama kondoo. Wakati mwingine Mungu hutuondolea kitu tunachokipenda. Hilo linaweza kutuhuzunisha sana, kama kupoteza koti letu la manyoya lenye joto. Lakini sikiliza — haya hapa mambo matatu ya kukumbuka. Mungu hunyoa tu wakati wa joto, kamwe si wakati wa baridi kali. Maana yake ni kwamba Mungu anajua wakati unaofaa, naye hatakupa kamwe zaidi ya unavyoweza kustahimili. Manyoya kila mara huota tena. Mungu hachukui kitu kamwe bila kuwa na kitu kizuri cha kukupa. Na maumivu huwa machache kabisa unapotulia tuli na kumtumaini, badala ya kupiga mateke na kupigana. Na unajua ni nani aliyelala tuli kabisa, kama kondoo mdogo? Ni Yesu. Watu walipomtendea mabaya, alibaki kimya na mpole, yote kwa sababu alitupenda. Kwa hiyo jambo gumu linapokuja, unaweza kuwa jasiri na mtulivu, kama Yesu. Mungu mpendwa, jambo fulani likinihuzunisha, nisaidie kutulia na kukutumaini, kwa sababu najua unanipenda. Amina.",
+  "word_count": 236
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Katika Shamba la Majani",
+  "body_html": "<blockquote>“Huotesha majani kwa ajili ya wanyama.” — kutoka Zaburi 104</blockquote> <p>Fikiria kuhusu majani. Yanaota kila mahali — mashambani, bustanini, kando ya barabara. Unayakanyaga kila siku na huenda hujawahi kuyafikiria hata kidogo.</p> <p>Lakini hili hapa swali: ni nani anayeyaotesha majani? Tunaweza kusema, “Aa, yanaota yenyewe tu.” Lakini kwa kweli si hivyo. Mungu huotesha kila jani moja la majani. Yuko karibu na dunia kiasi hicho, na ana shughuli nyingi kiasi hicho akiitunza.</p> <p>Na kwa nini huotesha majani yote hayo? Biblia inasema huyaotesha “kwa ajili ya wanyama” — kwa ajili ya ng'ombe na kondoo, ili wapate chakula tele. Fikiria jambo hilo. Mungu huotesha chakula kwa ajili ya wanyama, ambao hawawezi hata kusema asante!</p> <p>Kwa hiyo hili hapa jambo la ajabu la kukumbuka: ikiwa Mungu hutunza vizuri hivyo majani na ng'ombe na kondoo, je, si zaidi sana atakutunza <em>wewe?</em></p> <p>Je, ulijua kwamba kila jani dogo la majani hupata tone lake la umande asubuhi? Si tone moja kubwa kwa shamba zima — tone dogo kwa kila jani. Hivyo ndivyo Mungu anavyovipa vitu mahitaji yake kwa uangalifu. Naye anajua hasa unachohitaji wewe pia.</p> <p>Hata unapojiona mdogo, au kufikiri kwamba hakuna anayekuona, Mungu anakuona. Hajawahi kukusahau hata mara moja.</p> <p><em>Mungu mpendwa, asante kwa kuyatunza hata majani. Asante kwa kunitunza mimi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nani anayeyaotesha majani?",
+    "answer": "Ni Mungu. Sura hii inasema kwa kweli hayaoti yenyewe — Mungu huotesha kila jani moja."
+   },
+   {
+    "question": "Mungu huotesha majani kwa ajili ya nani?",
+    "answer": "Kwa ajili ya wanyama — ng'ombe na kondoo — ili wapate chakula tele, ingawa hawawezi kusema asante."
+   },
+   {
+    "question": "Ikiwa Mungu hulipa kila jani la majani tone lake la umande, hilo linakuambia nini kuhusu jinsi anavyokujali?",
+    "answer": "Funzo la sura hii: ikiwa Mungu hutunza vizuri hivyo majani na wanyama, je, si zaidi sana anakujali wewe. Anakuona, na hajawahi kukusahau."
+   }
+  ],
+  "body_text": "“Huotesha majani kwa ajili ya wanyama.” — kutoka Zaburi 104 Fikiria kuhusu majani. Yanaota kila mahali — mashambani, bustanini, kando ya barabara. Unayakanyaga kila siku na huenda hujawahi kuyafikiria hata kidogo. Lakini hili hapa swali: ni nani anayeyaotesha majani? Tunaweza kusema, “Aa, yanaota yenyewe tu.” Lakini kwa kweli si hivyo. Mungu huotesha kila jani moja la majani. Yuko karibu na dunia kiasi hicho, na ana shughuli nyingi kiasi hicho akiitunza. Na kwa nini huotesha majani yote hayo? Biblia inasema huyaotesha “kwa ajili ya wanyama” — kwa ajili ya ng'ombe na kondoo, ili wapate chakula tele. Fikiria jambo hilo. Mungu huotesha chakula kwa ajili ya wanyama, ambao hawawezi hata kusema asante! Kwa hiyo hili hapa jambo la ajabu la kukumbuka: ikiwa Mungu hutunza vizuri hivyo majani na ng'ombe na kondoo, je, si zaidi sana atakutunza wewe? Je, ulijua kwamba kila jani dogo la majani hupata tone lake la umande asubuhi? Si tone moja kubwa kwa shamba zima — tone dogo kwa kila jani. Hivyo ndivyo Mungu anavyovipa vitu mahitaji yake kwa uangalifu. Naye anajua hasa unachohitaji wewe pia. Hata unapojiona mdogo, au kufikiri kwamba hakuna anayekuona, Mungu anakuona. Hajawahi kukusahau hata mara moja. Mungu mpendwa, asante kwa kuyatunza hata majani. Asante kwa kunitunza mimi. Amina.",
+  "word_count": 204
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Furaha ya Mavuno",
+  "body_html": "<blockquote>“Wanafurahi kama watu wanavyofurahi wakati wa mavuno.” — kutoka Isaya 9</blockquote> <p>Kiangazi chote, mkulima hufanya kazi kwa bidii. Hupanda mbegu. Hung'oa magugu. Husubiri na kusubiri nafaka ikue. Huchukua muda mrefu sana.</p> <p>Na kisha, mwishowe, inafika siku iliyo bora kuliko zote — mavuno! Nafaka imeiva, ina rangi ya dhahabu. Kila mtu husaidia kuivuna. Ghala hujaa kabisa. Na kazi ikimalizika, kuna karamu kubwa ya furaha ya mavuno, na kila mtu husherehekea pamoja.</p> <p>Biblia inasema watu wa Mungu wana nyakati za furaha kama wakati wa mavuno. Na unajua furaha iliyo kubwa kuliko zote ni ipi? Ni pale mtu anapoanza kumpenda Mungu.</p> <p>Mtu aliyesimulia kwanza hadithi hizi za shambani, Spurgeon, alisema siku ya furaha kubwa kuliko zote maishani mwake ilikuwa ile aliyomsaidia mtu mmoja tu kumjua Yesu. Alisema alifurahi kuliko kama mtu angempa hazina yote ya dunia!</p> <p>Na kuna kanuni ya mkulima inayofaa kujua: <strong>unavuna kile unachopanda.</strong> Mkulima akipanda mbegu nzuri za ngano, anapata ngano nzuri. Kwa hiyo ukipanda mambo mazuri maishani mwako sasa — wema, sala, upendo kwa Mungu — siku moja utapata mavuno ya ajabu yenye furaha.</p> <p>Utapanda nini leo?</p> <p><em>Mungu mpendwa, nisaidie kupanda mambo mazuri na ya upole kila siku, na asante kwa mavuno ya furaha unayoyaotesha ndani yangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini hutokea siku ya mavuno kazi ya mkulima inapomalizika?",
+    "answer": "Kila mtu husaidia kuvuna nafaka ya rangi ya dhahabu, ghala hujaa, na kuna karamu kubwa ya furaha ya mavuno."
+   },
+   {
+    "question": "Spurgeon alisema siku ya furaha kubwa kuliko zote maishani mwake ilikuwa ipi?",
+    "answer": "Siku aliyomsaidia mtu mmoja tu kumjua Yesu. Alifurahi kuliko kama angepewa hazina yote ya dunia."
+   },
+   {
+    "question": "Ni mambo gani mazuri ambayo ungeweza kupanda maishani mwako leo?",
+    "answer": "Funzo la sura hii: unavuna kile unachopanda. Kupanda wema, sala na upendo kwa Mungu sasa huleta mavuno ya ajabu yenye furaha."
+   }
+  ],
+  "body_text": "“Wanafurahi kama watu wanavyofurahi wakati wa mavuno.” — kutoka Isaya 9 Kiangazi chote, mkulima hufanya kazi kwa bidii. Hupanda mbegu. Hung'oa magugu. Husubiri na kusubiri nafaka ikue. Huchukua muda mrefu sana. Na kisha, mwishowe, inafika siku iliyo bora kuliko zote — mavuno! Nafaka imeiva, ina rangi ya dhahabu. Kila mtu husaidia kuivuna. Ghala hujaa kabisa. Na kazi ikimalizika, kuna karamu kubwa ya furaha ya mavuno, na kila mtu husherehekea pamoja. Biblia inasema watu wa Mungu wana nyakati za furaha kama wakati wa mavuno. Na unajua furaha iliyo kubwa kuliko zote ni ipi? Ni pale mtu anapoanza kumpenda Mungu. Mtu aliyesimulia kwanza hadithi hizi za shambani, Spurgeon, alisema siku ya furaha kubwa kuliko zote maishani mwake ilikuwa ile aliyomsaidia mtu mmoja tu kumjua Yesu. Alisema alifurahi kuliko kama mtu angempa hazina yote ya dunia! Na kuna kanuni ya mkulima inayofaa kujua: unavuna kile unachopanda. Mkulima akipanda mbegu nzuri za ngano, anapata ngano nzuri. Kwa hiyo ukipanda mambo mazuri maishani mwako sasa — wema, sala, upendo kwa Mungu — siku moja utapata mavuno ya ajabu yenye furaha. Utapanda nini leo? Mungu mpendwa, nisaidie kupanda mambo mazuri na ya upole kila siku, na asante kwa mavuno ya furaha unayoyaotesha ndani yangu. Amina.",
+  "word_count": 199
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Kuokota Masazo",
+  "body_html": "<blockquote>“Mwacheni aokote nafaka, na mumtendee wema.” — kutoka hadithi ya Ruthu</blockquote> <p>Zamani sana palikuwa na mwanamke kijana aitwaye Ruthu. Alikuwa maskini, na hakuwa na chakula. Kwa hiyo alifanya kile ambacho watu maskini walifanya zamani zile: alikwenda mashambani <em>kuokota masazo.</em></p> <p>Kuokota masazo kulimaanisha kutembea nyuma ya wafanyakazi wa shambani na kuokota vipande vidogo vya nafaka walivyoangusha walipokuwa wakifanya kazi. Mabaki. Ilikuwa kazi ngumu, kuinama tena na tena, ili kukusanya kidogo tu.</p> <p>Basi, shamba alilokwenda Ruthu lilikuwa la mtu mwema na mpole aitwaye Boazi. Na Boazi alipomwona Ruthu akifanya kazi kwa bidii hivyo, alifanya jambo zuri kupita kiasi. Aliwaambia wafanyakazi wake kimyakimya, “Angusheni nafaka zaidi makusudi, mahali atakapoziona. Na mumtendee wema.” Alihakikisha atapata nafaka tele — na hakuwahi hata kumwambia kwamba ndiye aliyefanya hivyo.</p> <p>Mungu ni kama Boazi mpole. Labda unajiona mdogo, au unafikiri huna vitu vingi. Lakini Mungu ana mambo mazuri mengi sana kwa ajili yako, naye anataka uje uyakusanye. Unachohitaji kufanya ni kuinama tu na kuyaokota — yaani, kuja kwake, kumsikiliza, na kusali.</p> <p>Na hili hapa jambo zuri: Ruthu alipokuwa amekusanya vya kutosha, alipeleka vingine nyumbani kushiriki na mtu aliyekuwa na njaa. Mungu akiujaza moyo wako mambo mazuri, nawe unaweza kuwashirikisha wengine.</p> <p><em>Mungu mpendwa, asante kwa kuwa mwema na mkarimu kwangu hivi. Nisaidie kuja kwako, na kuwashirikisha wengine zawadi zako nzuri. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ruthu alifanya nini mashambani ili apate chakula?",
+    "answer": "Aliokota masazo — alitembea nyuma ya wafanyakazi na kuokota vipande vidogo vya nafaka walivyoangusha."
+   },
+   {
+    "question": "Boazi alimfanyia Ruthu jambo gani la wema?",
+    "answer": "Aliwaambia wafanyakazi wake waangushe nafaka zaidi makusudi mahali atakapoziona, na wamtendee wema — na hakuwahi kumwambia kwamba ndiye aliyefanya hivyo."
+   },
+   {
+    "question": "Unawezaje “kukusanya” zawadi nzuri za Mungu, na ungeweza kuwashirikisha nani?",
+    "answer": "Funzo la sura hii: Mungu ni mpole kama Boazi. Tunakusanya kwa kuja kwake, kumsikiliza na kusali — na, kama Ruthu alivyopeleka chakula nyumbani, tunaweza kuwashirikisha wengine zawadi zake nzuri."
+   }
+  ],
+  "body_text": "“Mwacheni aokote nafaka, na mumtendee wema.” — kutoka hadithi ya Ruthu Zamani sana palikuwa na mwanamke kijana aitwaye Ruthu. Alikuwa maskini, na hakuwa na chakula. Kwa hiyo alifanya kile ambacho watu maskini walifanya zamani zile: alikwenda mashambani kuokota masazo. Kuokota masazo kulimaanisha kutembea nyuma ya wafanyakazi wa shambani na kuokota vipande vidogo vya nafaka walivyoangusha walipokuwa wakifanya kazi. Mabaki. Ilikuwa kazi ngumu, kuinama tena na tena, ili kukusanya kidogo tu. Basi, shamba alilokwenda Ruthu lilikuwa la mtu mwema na mpole aitwaye Boazi. Na Boazi alipomwona Ruthu akifanya kazi kwa bidii hivyo, alifanya jambo zuri kupita kiasi. Aliwaambia wafanyakazi wake kimyakimya, “Angusheni nafaka zaidi makusudi, mahali atakapoziona. Na mumtendee wema.” Alihakikisha atapata nafaka tele — na hakuwahi hata kumwambia kwamba ndiye aliyefanya hivyo. Mungu ni kama Boazi mpole. Labda unajiona mdogo, au unafikiri huna vitu vingi. Lakini Mungu ana mambo mazuri mengi sana kwa ajili yako, naye anataka uje uyakusanye. Unachohitaji kufanya ni kuinama tu na kuyaokota — yaani, kuja kwake, kumsikiliza, na kusali. Na hili hapa jambo zuri: Ruthu alipokuwa amekusanya vya kutosha, alipeleka vingine nyumbani kushiriki na mtu aliyekuwa na njaa. Mungu akiujaza moyo wako mambo mazuri, nawe unaweza kuwashirikisha wengine. Mungu mpendwa, asante kwa kuwa mwema na mkarimu kwangu hivi. Nisaidie kuja kwako, na kuwashirikisha wengine zawadi zako nzuri. Amina.",
+  "word_count": 212
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Kupura",
+  "body_html": "<blockquote>“Hapuri nafaka milele.” — kutoka Isaya 28</blockquote> <p>Ngano ikishavunwa, kuna kazi moja zaidi ya kufanya, nayo inaonekana kuwa ngumu kidogo. Unaona, kila punje ya ngano imekwama ndani ya ganda gumu lisilo na faida, liitwalo kapi. Ili kutoa nafaka nzuri, mkulima lazima aipige — pa, pa, pa! — kwa fimbo. Hilo huitwa kupura.</p> <p>Inaweza kuonekana kana kwamba mkulima anaitendea ngano vibaya. Lakini sivyo! Anaiweka huru nafaka nzuri kutoka kwenye ganda lililoizunguka. Lazima afanye hivyo, la sivyo nafaka nzuri ingebaki imefungwa ndani.</p> <p>Wakati mwingine mambo magumu au ya huzuni hutupata, na inaweza kuhisi kama kupurwa kidogo. Lakini haya hapa mambo mawili ya kukumbuka, nayo yote mawili yamejaa faraja.</p> <p>Kwanza: mkulima hujisumbua kupura nafaka <em>nzuri</em> tu. Huyaacha magugu. Kwa hiyo wakati mgumu unapokuja, haimaanishi kwamba Mungu amekusahau. Inamaanisha wewe ni wa thamani kwake, kama ngano nzuri.</p> <p>Pili: mkulima kamwe, kamwe haipigi nafaka milele. Kila mara anaacha! Nyakati ngumu nazo hazidumu milele. Mungu ni mpole na mwangalifu, naye hatakupa kamwe zaidi ya unavyoweza kustahimili. Punde si punde kupigwa kunakoma, na nafaka nzuri iko salama.</p> <p><em>Mungu mpendwa, mambo magumu yanapotokea, nisaidie kukumbuka kwamba hujanisahau, na kwamba hayatadumu milele. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini mkulima huipiga ngano kwa fimbo?",
+    "answer": "Ili kuiweka huru nafaka nzuri kutoka kwenye ganda gumu lisilo na faida (kapi) lililoizunguka. Hilo huitwa kupura."
+   },
+   {
+    "question": "Je, mkulima hupura magugu pia?",
+    "answer": "Hapana. Hujisumbua kupura nafaka nzuri tu, na huyaacha magugu."
+   },
+   {
+    "question": "Wakati mgumu au wa huzuni unapokuja, ni mambo gani mawili yanayoweza kukusaidia kujisikia vizuri?",
+    "answer": "Faraja mbili za sura hii: wakati mgumu haumaanishi kwamba Mungu amekusahau — wewe ni wa thamani, kama ngano nzuri — na hautadumu milele, kwa sababu mkulima kila mara anaacha."
+   }
+  ],
+  "body_text": "“Hapuri nafaka milele.” — kutoka Isaya 28 Ngano ikishavunwa, kuna kazi moja zaidi ya kufanya, nayo inaonekana kuwa ngumu kidogo. Unaona, kila punje ya ngano imekwama ndani ya ganda gumu lisilo na faida, liitwalo kapi. Ili kutoa nafaka nzuri, mkulima lazima aipige — pa, pa, pa! — kwa fimbo. Hilo huitwa kupura. Inaweza kuonekana kana kwamba mkulima anaitendea ngano vibaya. Lakini sivyo! Anaiweka huru nafaka nzuri kutoka kwenye ganda lililoizunguka. Lazima afanye hivyo, la sivyo nafaka nzuri ingebaki imefungwa ndani. Wakati mwingine mambo magumu au ya huzuni hutupata, na inaweza kuhisi kama kupurwa kidogo. Lakini haya hapa mambo mawili ya kukumbuka, nayo yote mawili yamejaa faraja. Kwanza: mkulima hujisumbua kupura nafaka nzuri tu. Huyaacha magugu. Kwa hiyo wakati mgumu unapokuja, haimaanishi kwamba Mungu amekusahau. Inamaanisha wewe ni wa thamani kwake, kama ngano nzuri. Pili: mkulima kamwe, kamwe haipigi nafaka milele. Kila mara anaacha! Nyakati ngumu nazo hazidumu milele. Mungu ni mpole na mwangalifu, naye hatakupa kamwe zaidi ya unavyoweza kustahimili. Punde si punde kupigwa kunakoma, na nafaka nzuri iko salama. Mungu mpendwa, mambo magumu yanapotokea, nisaidie kukumbuka kwamba hujanisahau, na kwamba hayatadumu milele. Amina.",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Ngano Ghalani",
+  "body_html": "<blockquote>“Ikusanyeni ngano ghalani mwangu.” — kutoka Mathayo 13</blockquote> <p>Hii hapa sehemu ya mwisho kabisa ya mavuno, nayo ndiyo sehemu yenye furaha kuliko zote.</p> <p>Ngano nzuri ikiwa tayari hatimaye, mkulima huikusanya yote na kuibeba salama hadi ndani ya ghala. Na ikishaingia ndani, hakuna kitu kinachoweza kuidhuru tena. Hakuna mvua. Hakuna barafu. Hakuna upepo wa baridi. Iko salama, kavu na yenye joto, mahali panapoifaa.</p> <p>Yesu alisimulia hadithi kama hii. Alisema kwamba siku moja Mungu atawakusanya watu wake wote pamoja — watu kutoka kila nchi duniani, wakubwa kwa wadogo, vijana kwa wazee — na kuwaleta salama nyumbani wakae pamoja naye. Kama ngano inavyokusanywa ghalani.</p> <p>Nyumba ile salama, yenye furaha, ya milele inaitwa mbinguni. Ni mahali pasipo na kilio tena wala huzuni tena — ni kuwa pamoja na Mungu tu, na kuwa salama, milele.</p> <p>Kwa hiyo hatuhitaji kuuogopa mwisho kamwe. Kwa kila mtu anayempenda Mungu, mwisho si jambo la huzuni hata kidogo. Ni kama ngano inayoingia ghalani hatimaye. Ni kurudi nyumbani.</p> <p>Je, utakuwa sehemu ya mavuno ya Mungu? Unaweza kuwa! Mwambie tu kwamba unataka kuwa wake. Na kisha, siku moja, utakusanywa salama nyumbani.</p> <p><em>Mungu mpendwa, asante kwa kuwakusanya watu wako salama nyumbani. Nataka kuwa wako. Tafadhali niweke karibu nawe, leo na milele. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mkulima huiweka wapi ngano nzuri ikiwa tayari?",
+    "answer": "Huibeba salama hadi ndani ya ghala, ambako hakuna mvua, barafu wala upepo wa baridi unaoweza kuidhuru."
+   },
+   {
+    "question": "Katika hadithi ya Yesu, Mungu atawakusanya akina nani pamoja kama ngano ghalani?",
+    "answer": "Watu wake wote, kutoka kila nchi — wakubwa kwa wadogo, vijana kwa wazee — wakiletwa salama nyumbani wakae pamoja naye."
+   },
+   {
+    "question": "Kwa nini watu wanaompenda Mungu hawahitaji kuuogopa mwisho?",
+    "answer": "Funzo la sura hii: kwa kila mtu anayempenda Mungu, mwisho ni kama ngano inayoingia ghalani — ni kurudi nyumbani mbinguni, salama milele. Mtu yeyote anaweza kumwambia Mungu kwamba anataka kuwa wake."
+   }
+  ],
+  "body_text": "“Ikusanyeni ngano ghalani mwangu.” — kutoka Mathayo 13 Hii hapa sehemu ya mwisho kabisa ya mavuno, nayo ndiyo sehemu yenye furaha kuliko zote. Ngano nzuri ikiwa tayari hatimaye, mkulima huikusanya yote na kuibeba salama hadi ndani ya ghala. Na ikishaingia ndani, hakuna kitu kinachoweza kuidhuru tena. Hakuna mvua. Hakuna barafu. Hakuna upepo wa baridi. Iko salama, kavu na yenye joto, mahali panapoifaa. Yesu alisimulia hadithi kama hii. Alisema kwamba siku moja Mungu atawakusanya watu wake wote pamoja — watu kutoka kila nchi duniani, wakubwa kwa wadogo, vijana kwa wazee — na kuwaleta salama nyumbani wakae pamoja naye. Kama ngano inavyokusanywa ghalani. Nyumba ile salama, yenye furaha, ya milele inaitwa mbinguni. Ni mahali pasipo na kilio tena wala huzuni tena — ni kuwa pamoja na Mungu tu, na kuwa salama, milele. Kwa hiyo hatuhitaji kuuogopa mwisho kamwe. Kwa kila mtu anayempenda Mungu, mwisho si jambo la huzuni hata kidogo. Ni kama ngano inayoingia ghalani hatimaye. Ni kurudi nyumbani. Je, utakuwa sehemu ya mavuno ya Mungu? Unaweza kuwa! Mwambie tu kwamba unataka kuwa wake. Na kisha, siku moja, utakusanywa salama nyumbani. Mungu mpendwa, asante kwa kuwakusanya watu wako salama nyumbani. Nataka kuwa wako. Tafadhali niweke karibu nawe, leo na milele. Amina.",
+  "word_count": 199
+ }
+}
+]

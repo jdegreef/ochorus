@@ -11322,6 +11322,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"sw/talks-to-the-farmer-children": {
+			"ground": "362dbe72d25bfdf8106ed35e571578f621d26e926d4a9b1b2ee014d6e4ef669a",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"sw/the-christians-secret-of-a-happy-life-4": {
 			"ground": "4b5368a915ec465da59513f5f23e67b0795107e81589ebcdd1d482f33c8b18b2",
 			"style": "devotional",
