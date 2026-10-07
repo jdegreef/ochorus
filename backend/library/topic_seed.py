@@ -588,6 +588,7 @@ TOPICS = [
             "men-who-moved-heaven",
             "women-who-moved-heaven-2",
             "all-of-grace-teens",
+            "samuel-ajayi-crowther-a-life-teens",
         ],
     ),
     (
@@ -636,6 +637,7 @@ TOPICS = [
             "the-princess-and-the-goblin",
             "at-the-back-of-the-north-wind",
             "the-practice-of-the-presence-of-god-children",
+            "samuel-ajayi-crowther-a-life-children",
         ],
     ),
 ]

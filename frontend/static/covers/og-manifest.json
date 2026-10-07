@@ -10383,6 +10383,26 @@
 				564
 			]
 		},
+		"samuel-ajayi-crowther-a-life-children": {
+			"ground": "e1c749a2b90c50a6581fd1dd7454d59e2b495a674bd287aa98fca819ce154b32",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"samuel-ajayi-crowther-a-life-teens": {
+			"ground": "21e4e19a6a4199d1ff52e80b125a578fdc1cb90545997d18f1c92deb6b4695d9",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"school-of-prayer": {
 			"ground": "e9955f64f362dc3296da1cb3b3229f6aeab7813174b351455a9d29a00f569eb2",
 			"style": "devotional",
