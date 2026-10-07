@@ -937,7 +937,7 @@ ANCHORED: dict[int, dict[str, object]] = {
             },
             {
                 "question": "What is the Go deeper section?",
-                "answer": "Each day ends by pointing to one chapter of a classic in the Ochorus library, such as Pascal’s Pensées, Chesterton’s Orthodoxy or Augustine’s Confessions, where believers who asked the same question long ago worked out an answer. All of them are free to read.",
+                "answer": "Each day ends by pointing to one chapter of a classic in the library, such as Pascal’s Pensées, Chesterton’s Orthodoxy or Augustine’s Confessions, where believers who asked the same question long ago worked out an answer. All of them are free to read.",
             },
             {
                 "question": "Who is it for?",
