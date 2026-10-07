@@ -2,7 +2,9 @@
 
 *Rooted – 30 Days with God for Youth* and its sister series for girls and
 boys, *Daughters of the King* and *Sons of the King*: devotionals for readers aged 9–12, every day a BSB
-Scripture, a short teaching, "Think about it" / "Try this", and a prayer. Each
+Scripture, a short teaching, "Think about it" / "Try this", and a prayer. *Anchored –
+30 Days with God for Teens* is the same shape for ages 13–17, with a "Go deeper" pointer
+to a library classic each day (a volume's own ``attribution`` overrides the default). Each
 book also has an Introduction and a Conclusion, so a volume is 32 chapters: the
 introduction, Day 1 … Day 30, the conclusion.
 
@@ -877,6 +879,78 @@ SONS_OF_THE_KING: dict[int, dict[str, object]] = {
     },
 }
 
+ANCHORED: dict[int, dict[str, object]] = {
+    1: {
+        "sort_order": 138,
+        "publication_year": 2026,
+        "title": "Anchored – 30 Days with God for Teens – Book 1",
+        "subtitle": "Is It True? Who Am I? Honest questions and the God who answers them",
+        "cover_url": "/covers/anchored-1.svg",
+        "cover_color": covers.ink_safe("#1d5c63"),  # a deep-sea teal
+        "attribution": (
+            "An Ochorus Original, written for teenage readers. Scripture quotations "
+            "are from the Berean Standard Bible (BSB), which is in the public domain."
+        ),
+        "description": (
+            "Thirty daily devotions for readers aged 13 to 17 that take the big "
+            "questions seriously: Is God real? Can I trust the Bible? Did Jesus "
+            "really rise? Who am I when my feed says otherwise? And what does it "
+            "cost to follow Him for real? Each day has a Bible passage, a short "
+            "honest teaching, a question, something to try, a prayer, and a "
+            "pointer to a classic in the library that goes deeper. The first book "
+            "of Anchored."
+        ),
+        "about_html": (
+            "<p>Anchored is an original Ochorus devotional series for readers aged "
+            "13 to 17, the next step for those who have grown out of Rooted. Its "
+            "picture comes from Hebrews 6:19: “We have this hope as an anchor for "
+            "the soul, firm and secure.” An anchor does not stop the storm. It "
+            "holds the boat while the storm passes, and the teenage years bring "
+            "plenty of weather.</p>"
+            "<p>Book 1 has three parts of ten days. <em>Is It True?</em> gives real "
+            "reasons for faith: doubt and Thomas, the case for God, the Bible, the "
+            "history of Jesus and His resurrection, suffering, science and the "
+            "claim that Jesus is the only way. <em>Who Am I?</em> turns to "
+            "identity: made in God’s image, known completely, the gap between "
+            "the real you and your feed, comparison, failure, anxiety, loneliness "
+            "and belonging. <em>Following for Real</em> counts the cost: standing "
+            "alone, temptation, purity, what you post, friends, parents, prayer "
+            "and hearing God.</p>"
+            "<p>Every day ends with <strong>Go deeper</strong>: one chapter from "
+            "a classic in the Ochorus library where Christians who asked the same "
+            "questions long ago found their answers, from Augustine and Pascal to "
+            "Chesterton and Lewis. Scripture is quoted from the Berean Standard "
+            "Bible.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Anchored – 30 Days with God for Teens?",
+                "answer": "A series of daily devotions for readers aged 13 to 17. Each day has a Bible passage, a short teaching that takes hard questions seriously, a question to think about, something to try, a prayer, and a pointer to one chapter of a Christian classic that goes deeper. This is Book 1.",
+            },
+            {
+                "question": "What does Book 1 cover?",
+                "answer": "Three parts of ten days. Is It True? looks at the reasons for faith, from the existence of God to the resurrection. Who Am I? is about identity, comparison, failure, anxiety and belonging. Following for Real is about the cost of following Jesus: standing alone, temptation, purity, friends, parents and prayer.",
+            },
+            {
+                "question": "Is it all right to have doubts?",
+                "answer": "Yes. Book 1 begins with Thomas, who doubted the resurrection until he saw Jesus, and Jesus met him with evidence rather than a rebuke. The book treats honest questions with respect and gives real reasons, not slogans.",
+            },
+            {
+                "question": "What is the Go deeper section?",
+                "answer": "Each day ends by pointing to one chapter of a classic in the Ochorus library, such as Pascal’s Pensées, Chesterton’s Orthodoxy or Augustine’s Confessions, where believers who asked the same question long ago worked out an answer. All of them are free to read.",
+            },
+            {
+                "question": "Who is it for?",
+                "answer": "Readers aged 13 to 17, to read on their own or with a youth group or parent. Younger readers can start with Rooted, the series for ages 9 to 12.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+        ],
+    },
+}
+
 # The title each series' covers set in place of the full one — the series
 # numeral and the subtitle already carry "Book N" and the volume's theme, so the
 # full "<Series> – 30 Days with God for … – Book N" only crowds the cover.
@@ -884,6 +958,7 @@ COVER_TITLE = {
     "rooted": "Rooted",
     "daughters-of-the-king": "Daughters of the King",
     "sons-of-the-king": "Sons of the King",
+    "anchored": "Anchored",
 }
 
 # The series a book can be built into, by `Series.slug`: each one's volumes are
@@ -892,6 +967,7 @@ SERIES: dict[str, dict[int, dict[str, object]]] = {
     "rooted": ROOTED,
     "daughters-of-the-king": DAUGHTERS_OF_THE_KING,
     "sons-of-the-king": SONS_OF_THE_KING,
+    "anchored": ANCHORED,
 }
 
 _INLINE = [

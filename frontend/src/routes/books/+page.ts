@@ -1,3 +1,8 @@
+// prerender refresh 2026-10-07: one NEW English book — anchored-1, "Anchored – 30 Days with God for
+// Teens – Book 1" (Is It True? Who Am I?), the first volume of a house-written devotional series for
+// ages 13–17 and a new Series row (Ochorus Originals; Introduction, Day 1–30, Conclusion = 32
+// chapters; BSB Scripture). Rebuilds /books and the For Teens shelf so the card and its plate cover
+// appear, and the reader pages bake the chapters.
 // prerender refresh 2026-10-05 (queue job #5123): Portuguese book — men-of-prayer-2 (Homens de Oração).
 // prerender refresh 2026-09-25: school-of-prayer (ar, #3538) and cheque-book (hi, #3541) — both web builds ran
 // before the API deploy, so their book pages shipped as empty shells. Re-crawl now the API has them.
