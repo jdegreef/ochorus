@@ -1,0 +1,189 @@
+{
+ "kind": "book",
+ "slug": "all-of-grace-teens",
+ "language": "es",
+ "job_issue": 5451,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into Spanish, so every epigraph is given in the modern Reina-Valera register the shipped es corpus quotes, and the “(ESV)” label was dropped (as the sw/am teen editions did). Where a shipped *.es.json carries the exact words, they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` and needs a native check. api.takeroot.bible was egress-blocked from this session, and the ebible `spa_rv` (archaic RV1909) was not used.",
+  "Isaiah 1:18, Romans 3:26 and 2 Corinthians 6:2 are self-rendered whole verses that contain the corpus's attested phrases (“fueren como la grana, como la nieve serán emblanquecidos”; “justo, y el que justifica al que es de la fe de Jesús”; “he aquí ahora el tiempo aceptable”), with the corpus's archaic “día de salud” modernised to “día de salvación” for a teen reader and “el Señor” for Jehová.",
+  "Spurgeon's own lines were pasted verbatim from the shipped full edition all-of-grace.es.json (block-aligned with the English full text), so scripture Spurgeon quotes inside them (Isaiah 45:22, Romans 8:33, Revelation 22:17, John 10:28, 1 Corinthians 1:8) carries that edition's wording. 1 Peter 2:24 is Spurgeon's first-person adaptation (“llevó mi pecado”), so it ships self_rendered; so does the teen text's own first-person Romans 5:6 in chapter 8's closing paragraph.",
+  "Romans 4:5, Ezekiel 36:26 and Romans 10:17 match shipped es ARTICLES word for word (what-is-justification-by-faith, how-to-be-born-again, what-is-faith), but articles are not a source the mined-verification audit can check, so they ship self_rendered rather than as unverifiable mined claims.",
+  "AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 2,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 2,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "Romans 3:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 3,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Ephesians 2:8a",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 5,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "Revelation 22:17b",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 6,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 6,
+   "source_file": "amanda-smith-autobiography-children.es.json"
+  },
+  {
+   "reference": "Ephesians 2:8–9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "the-way-to-god.es.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 9,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 9,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "Luke 22:61",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.es.json"
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}

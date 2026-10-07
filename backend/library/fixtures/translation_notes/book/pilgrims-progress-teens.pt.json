@@ -1,0 +1,207 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-teens",
+ "language": "pt",
+ "job_issue": 5455,
+ "pull_request": 5529,
+ "note": [
+  "Scripture follows the Almeida tradition the shipped pt corpus quotes (api.takeroot.bible, which serves porbrbsl, is egress-blocked here). Every `mined` row was re-measured against the finished text: the quoted wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped pt file. The English epigraphs are ESV (Psalm 42:5 is WEB) and carry a version tag; this edition drops the tag because the wording shown is Almeida, not ESV, and drops the ESV permission sentence from the attribution for the same reason (as the shipped sw teens edition does).",
+  "Self-rendered in Almeida register and unverified: Psalm 38:4, Psalm 40:2, the second half of 1 Peter 2:24, Mark 8:38, the first clause of Revelation 2:10, the first sentence of Matthew 6:24, and the second half of Psalm 42:5. Psalm 42:5a is the refrain the-god-of-all-comfort.pt cites as Psalm 42:11 (identical wording in both verses). John 6:37b (Goodwill's “cast out”), 1 John 2:16 (Adam the First's daughters) and Proverbs 23:23 (“We buy the truth”) are uncited allusions in the English rendered in the Almeida/full-edition wording.",
+  "Character and place names follow the shipped pt Pilgrim's Progress editions (Cristão, Evangelista, Obstinado, Flexível, Cidade da Destruição, Pântano do Desânimo, Sr. Sábio Mundano, Legalidade, Porta Estreita, Boa-Vontade, Intérprete, Paixão e Paciência, Seres Resplandecentes, Colina da Dificuldade, Tímido e Desconfiado, Casa Formosa, Discrição, Prudência, Piedade, Caridade, Apoliom, Vale da Humilhação, Vale da Sombra da Morte, Toda-Oração, Fiel, Adão o Primeiro, Vergonha, Loquaz, Feira da Vaidade, Esperançoso, Interesseiro, Bela-Fala, Sr. Agarra-o-Mundo, Sr. Ama-Dinheiro, Sr. Poupa-Tudo, Demas, colina Lucro, Gigante Desespero, Desconfiança, Castelo da Dúvida, Promessa, Montes Deleitosos, Terra Encantada, Ignorância, Pouca-Fé, Beulá, Vã-Esperança, Cidade Celestial). Title suffix “(Para Adolescentes)” follows the pt interface's “Para adolescentes” audience label beside the children's “(Para Crianças)”. The teen voice addresses the reader as você throughout; tu/vós survive only inside quoted scripture and one quoted Bunyan line. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 38:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "women-who-moved-heaven-2.pt.json"
+  },
+  {
+   "reference": "Matthew 7:7b",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "John 6:37b",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 3
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "1 Peter 2:24b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Peter 2:24a",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 4,
+   "source_file": "divine-healing.pt.json"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "women-who-moved-heaven-2.pt.json"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "Psalm 116:4",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 7,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "1 John 2:16",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "the-inner-chamber.pt.json"
+  },
+  {
+   "reference": "Revelation 2:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 2:10b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Proverbs 23:23",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 6:24a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 6:24b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "days-of-heaven-upon-earth.pt.json"
+  },
+  {
+   "reference": "Matthew 6:24b",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "days-of-heaven-upon-earth.pt.json"
+  },
+  {
+   "reference": "Psalm 42:5a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "the-god-of-all-comfort.pt.json"
+  },
+  {
+   "reference": "Psalm 42:5b",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Thessalonians 5:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "pilgrims-progress.pt.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "cheque-book.pt.json"
+  },
+  {
+   "reference": "Isaiah 43:2a",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 12,
+   "source_file": "pilgrims-progress.pt.json"
+  }
+ ]
+}

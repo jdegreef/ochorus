@@ -1,0 +1,133 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust-teens",
+ "language": "fr",
+ "job_issue": 5462,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV (WEB for Proverbs 13:15) in each chapter's epigraph. Every epigraph is instead the full verse from Louis Segond 1910 — the register the shipped French corpus uses — pasted verbatim from the fra_lsg USFM text, with the version label dropped. `mined` rows are exact substrings of the cited shipped *.fr.json; a `self_rendered` epigraph here is still verbatim Segond, just not yet attested in the corpus (Matthew 6:20 is in men-and-women-who-gave-everything-2.fr with a lower-case « mais »; the epigraph capitalises it). Matthew 10:37 is attested only in grace-for-grace-2.fr, a copyright-blocked edition, so it is not cited.",
+  "Psalm numbering: the epigraphs display Segond's verse numbers (« Psaume 81:11 », « Psaume 68:6 »), which are 81:10 and 68:5 in the English numbering used for the references here. Segond's Psalm 81 has no « toute grande » for “wide”; the quoted verse keeps Segond, and the chapter title / narration carry the idea (« Ouvre grand ta bouche »).",
+  "In-body allusions quoted as Segond fragments: 2 Corinthians 9:7b, 2 Chronicles 32:8a, Matthew 6:11, Psalm 81:10b, Zechariah 4:6b, Romans 13:8a. Müller's own words (from his Narrative, quoted in English in the source) are rendered fresh in French, not from a published French Narrative. Egress to api.takeroot.bible was not used."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 13:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "rooted-2.fr.json"
+  },
+  {
+   "reference": "Matthew 10:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "clothed-with-strength-and-dignity.fr.json"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Mark 12:43-44",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "the-inner-chamber.fr.json"
+  },
+  {
+   "reference": "2 Corinthians 9:7b",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 4,
+   "source_file": "the-life-of-trust-children.fr.json"
+  },
+  {
+   "reference": "2 Chronicles 32:8a",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 4,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 5,
+   "source_file": "clothed-with-strength-and-dignity.fr.json"
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 6,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Zechariah 4:6b",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 7,
+   "source_file": "cheque-book.fr.json"
+  },
+  {
+   "reference": "Romans 13:8a",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 9,
+   "source_file": "school-of-prayer.fr.json"
+  }
+ ]
+}
