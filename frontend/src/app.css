@@ -1733,6 +1733,15 @@
 	}
 }
 
+/* A theme or palette change crossfades (crossfade.ts — View Transitions,
+   skipped under reduced motion): the old look dissolves into the new over a
+   breath, like a lamp being turned up, rather than cutting. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 320ms;
+	animation-timing-function: ease-in-out;
+}
+
 /* A loading placeholder: a block of parchment (the band's ground, warmed
    with a breath of gold) that a slow band of light crosses, like a page
    turning under a lamp — not the grey pulse of a generic skeleton. Wear it on
