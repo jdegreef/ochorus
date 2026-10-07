@@ -3,6 +3,7 @@
  "slug": "the-practice-of-the-presence-of-god-children",
  "language": "pt",
  "job_issue": 5464,
+ "pull_request": 5500,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from 1 Samuel 16”). The Portuguese renders those paraphrases in the same simple, child-friendly wording (modelled on talks-to-the-farmer-children.pt) rather than pasting the Bíblia Livre (porbrbsl) text, which would break the edition's register; api.takeroot.bible was not consulted from this session.",
   "Brother Lawrence's own words (the kitchen saying, the short prayers, “Comecemos”) are rendered from the English retelling, not from a published Portuguese translation of the Practice. AI-translated in-session; awaiting native review."
