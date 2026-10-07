@@ -4312,6 +4312,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/talks-to-the-farmer-children": {
+			"ground": "508a85bc8b19c88b040015885be7a896fc803564551f7859909b5ce75930bd10",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/the-fourfold-gospel": {
 			"ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
 			"style": "revival",

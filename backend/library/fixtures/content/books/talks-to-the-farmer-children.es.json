@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "es",
+  "title": "Charlas al labrador (Para niños)",
+  "subtitle": "",
+  "description": "Charles Spurgeon veía la verdad de Dios escondida en una granja cualquiera: un campo lleno de malas hierbas, la semilla del sembrador, el primer brote verde de la primavera, las ovejas en el tiempo de la esquila y el granero en la cosecha. Esta edición para niños vuelve a contar sus imágenes del campo en capítulos cortos y sencillos, pensados para leerse en voz alta: un versículo, una pequeña historia de la granja, una cosa que significa para ti y una oración cortita para terminar.",
+  "qa": [
+   {
+    "question": "¿De qué trata Charlas al labrador (Para niños)?",
+    "answer": "Es una versión para niños de Charlas al labrador, de Charles Spurgeon. Cada capítulo corto toma una imagen de la vida en el campo —una cerca rota, un sembrador que siembra sus semillas, el primer brote de la primavera, las ovejas que esquilan, la cosecha— y muestra con cariño lo que nos enseña acerca de Dios, con palabras sencillas para lectores pequeños."
+   },
+   {
+    "question": "¿Quién era Charles Spurgeon?",
+    "answer": "Fue un predicador famoso que vivió en Londres hace mucho tiempo y al que le encantaba explicar grandes verdades acerca de Dios usando cosas de todos los días, como las granjas, el tiempo y la cosecha. Precisamente por eso sus historias del campo funcionan tan bien para los niños."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está pensado para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una pequeña historia de la granja, muestra una cosa sencilla que significa para ti y termina con una oración cortita."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños: para que un adulto se lo lea en voz alta, o para que un niño más grande lo lea solo. También está disponible Charlas al labrador de Spurgeon, más completo y sin abreviar, para lectores mayores, junto con una versión hecha para adolescentes."
+   },
+   {
+    "question": "¿Por qué usa historias del campo para enseñar acerca de Dios?",
+    "answer": "Porque Jesús también lo hacía: su historia del sembrador que siembra la semilla es una de las más conocidas de la Biblia. Una imagen que se puede ver, como una semilla, una oveja o una cosecha, ayuda a un niño a recordar una verdad mucho mejor que una explicación larga."
+   },
+   {
+    "question": "¿Cuáles son algunas de las historias del libro?",
+    "answer": "Sigue el año del agricultor. Hay un campo lleno de malas hierbas que un hombre perezoso dejó abandonado, un sembrador que siembra sus semillas, la escarcha que se derrite al llegar la primavera, el primer brote verde que sale de la tierra, las ovejas en el tiempo de la esquila, la pobre Rut recogiendo grano y la cosecha guardada a salvo en el granero. Cada historia enseña una cosa sencilla acerca de Dios."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una adaptación de Ochorus para lectores jóvenes de Charlas al labrador, de Charles H. Spurgeon, obra de dominio público. La forma de contarla es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "El campo del perezoso",
+  "body_html": "<blockquote>“Pasé junto al campo de un hombre perezoso, y estaba lleno de malas hierbas y de espinos.” — de Proverbios 24</blockquote> <p>Un día, el sabio rey Salomón salió a dar un paseo y se detuvo a mirar una pequeña granja. ¡Ay, qué desorden! Por todas partes crecían malas hierbas y cardos llenos de pinchos. Casi no se podía ver la tierra.</p> <p>Ahora bien, el hombre dueño de aquel campo no era un hombre malvado. Nunca plantó ni una sola mala hierba. Entonces, ¿cómo se llenó tanto de ellas?</p> <p>Aquí está la respuesta, y es un poco sorprendente. ¡No hizo absolutamente nada! Era perezoso. Nunca arrancó las malas hierbas y nunca plantó buenas semillas. ¿Y sabes qué? Un campo nunca se queda vacío. Si no haces crecer buenas plantas en él, las malas hierbas crecen solas. Nadie tiene que plantarlas: simplemente aparecen.</p> <p>Tu corazón se parece un poco a ese campo. Las cosas buenas que haces —orar, ser amable, decir la verdad, obedecer— son como buenas plantas que crecen. Pero si dejas de hacer las cosas buenas y no haces nada, otras cosas crecen en su lugar, solitas. El mal humor. Las palabras feas. Olvidarse de Dios.</p> <p>¡Así que no esperes! No digas: “Mañana me portaré bien”. El hombre perezoso siempre decía “mañana”, y todo su campo se llenó de malas hierbas. Planta hoy una buena semilla —una palabra amable, una pequeña oración— y déjala crecer.</p> <p><em>Querido Dios, ayúdame a no ser perezoso. Ayúdame a plantar cosas buenas en mi corazón hoy, y a no esperar hasta mañana. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué vio el rey Salomón cuando pasó junto al campo del hombre perezoso?",
+    "answer": "Un campo desordenado, lleno de malas hierbas y cardos con pinchos, tan espeso que casi no se podía ver la tierra."
+   },
+   {
+    "question": "El hombre perezoso nunca plantó malas hierbas. Entonces, ¿por qué estaba su campo lleno de ellas?",
+    "answer": "Porque no hizo absolutamente nada. Nunca arrancó las malas hierbas ni plantó buenas semillas, y un campo nunca se queda vacío: las malas hierbas crecen solas."
+   },
+   {
+    "question": "¿Qué buena semilla podrías plantar hoy en tu corazón, en vez de esperar hasta mañana?",
+    "answer": "La idea del capítulo: no digas “Mañana me portaré bien”. Planta hoy una buena semilla —una palabra amable o una pequeña oración— y déjala crecer."
+   }
+  ],
+  "body_text": "“Pasé junto al campo de un hombre perezoso, y estaba lleno de malas hierbas y de espinos.” — de Proverbios 24 Un día, el sabio rey Salomón salió a dar un paseo y se detuvo a mirar una pequeña granja. ¡Ay, qué desorden! Por todas partes crecían malas hierbas y cardos llenos de pinchos. Casi no se podía ver la tierra. Ahora bien, el hombre dueño de aquel campo no era un hombre malvado. Nunca plantó ni una sola mala hierba. Entonces, ¿cómo se llenó tanto de ellas? Aquí está la respuesta, y es un poco sorprendente. ¡No hizo absolutamente nada! Era perezoso. Nunca arrancó las malas hierbas y nunca plantó buenas semillas. ¿Y sabes qué? Un campo nunca se queda vacío. Si no haces crecer buenas plantas en él, las malas hierbas crecen solas. Nadie tiene que plantarlas: simplemente aparecen. Tu corazón se parece un poco a ese campo. Las cosas buenas que haces —orar, ser amable, decir la verdad, obedecer— son como buenas plantas que crecen. Pero si dejas de hacer las cosas buenas y no haces nada, otras cosas crecen en su lugar, solitas. El mal humor. Las palabras feas. Olvidarse de Dios. ¡Así que no esperes! No digas: “Mañana me portaré bien”. El hombre perezoso siempre decía “mañana”, y todo su campo se llenó de malas hierbas. Planta hoy una buena semilla —una palabra amable, una pequeña oración— y déjala crecer. Querido Dios, ayúdame a no ser perezoso. Ayúdame a plantar cosas buenas en mi corazón hoy, y a no esperar hasta mañana. Amén.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "La cerca rota",
+  "body_html": "<blockquote>“Pasé junto al campo de un hombre perezoso, y estaba lleno de malas hierbas, y su muro de piedra estaba derribado.” — de Proverbios 24</blockquote> <p>Un día, el sabio rey Salomón salió a dar un paseo. Se detuvo junto a una pequeña granja y la miró durante un buen rato.</p> <p>¡Qué desorden! Por todas partes crecían malas hierbas y cardos llenos de pinchos. Y el muro de piedra que rodeaba el campo se había caído y tenía grandes huecos.</p> <p>Ahora bien, el hombre dueño de aquella granja no era un hombre malvado. Él nunca <em>tumbó</em> el muro. Eso es lo curioso. Simplemente era perezoso. Cuando se caía una piedra, decía: “Mañana la arreglo”. Pero al día siguiente volvía a decir: “Mañana la arreglo”. Y así el muro siguió roto.</p> <p>¿Y sabes qué le pasa a un campo cuando el muro está roto? ¡Entra de todo! Las ovejas y las cabras pasan por los huecos y se comen todas las plantas buenas. Las malas hierbas llegan con el viento y lo invaden todo. Y cuando llueve fuerte, no hay muro que sujete la tierra buena, así que el agua se la lleva.</p> <p>Aquel pobre hombre perezoso perdió todo su campo, no por hacer algo malo, sino porque <em>no hizo absolutamente nada.</em></p> <p>Tu corazón también tiene un muro. Está hecho de cosas buenas que te protegen: orar, escuchar a las personas que te enseñan acerca de Dios, y ser lo bastante valiente para decir “no” cuando algo está mal.</p> <p>Si nos volvemos perezosos y dejamos de lado esas cosas buenas, el muro se llena de huecos. Y entonces toda clase de cosas malas pueden colarse.</p> <p>¡Así que mantén fuerte tu muro! Y si se ha caído una piedra, no tienes que arreglarlo todo hoy. Solo levanta una piedra y vuelve a ponerla en su sitio.</p> <p><em>Querido Dios, ayúdame a cuidar el buen muro que rodea mi corazón. Cuando se caiga una piedra, ayúdame a ponerla de nuevo en su sitio enseguida. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasaba al muro que rodeaba el campo del hombre perezoso?",
+    "answer": "Se había caído y tenía grandes huecos, porque cada vez que se caía una piedra él decía: “Mañana la arreglo”."
+   },
+   {
+    "question": "¿Qué le pasó al campo cuando el muro se rompió?",
+    "answer": "Las ovejas y las cabras entraron y se comieron las plantas buenas, las malas hierbas llegaron con el viento, y la lluvia fuerte se llevó la tierra buena."
+   },
+   {
+    "question": "¿Qué ayuda a mantener fuerte el “muro” que rodea tu corazón?",
+    "answer": "El capítulo nombra orar, escuchar a las personas que te enseñan acerca de Dios, y ser lo bastante valiente para decir “no” a lo malo. Si se cae una piedra, solo vuelve a ponerla."
+   }
+  ],
+  "body_text": "“Pasé junto al campo de un hombre perezoso, y estaba lleno de malas hierbas, y su muro de piedra estaba derribado.” — de Proverbios 24 Un día, el sabio rey Salomón salió a dar un paseo. Se detuvo junto a una pequeña granja y la miró durante un buen rato. ¡Qué desorden! Por todas partes crecían malas hierbas y cardos llenos de pinchos. Y el muro de piedra que rodeaba el campo se había caído y tenía grandes huecos. Ahora bien, el hombre dueño de aquella granja no era un hombre malvado. Él nunca tumbó el muro. Eso es lo curioso. Simplemente era perezoso. Cuando se caía una piedra, decía: “Mañana la arreglo”. Pero al día siguiente volvía a decir: “Mañana la arreglo”. Y así el muro siguió roto. ¿Y sabes qué le pasa a un campo cuando el muro está roto? ¡Entra de todo! Las ovejas y las cabras pasan por los huecos y se comen todas las plantas buenas. Las malas hierbas llegan con el viento y lo invaden todo. Y cuando llueve fuerte, no hay muro que sujete la tierra buena, así que el agua se la lleva. Aquel pobre hombre perezoso perdió todo su campo, no por hacer algo malo, sino porque no hizo absolutamente nada. Tu corazón también tiene un muro. Está hecho de cosas buenas que te protegen: orar, escuchar a las personas que te enseñan acerca de Dios, y ser lo bastante valiente para decir “no” cuando algo está mal. Si nos volvemos perezosos y dejamos de lado esas cosas buenas, el muro se llena de huecos. Y entonces toda clase de cosas malas pueden colarse. ¡Así que mantén fuerte tu muro! Y si se ha caído una piedra, no tienes que arreglarlo todo hoy. Solo levanta una piedra y vuelve a ponerla en su sitio. Querido Dios, ayúdame a cuidar el buen muro que rodea mi corazón. Cuando se caiga una piedra, ayúdame a ponerla de nuevo en su sitio enseguida. Amén.",
+  "word_count": 330
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "Escarcha y deshielo",
+  "body_html": "<blockquote>“Él da la nieve. Envía su palabra, y la derrite.” — del Salmo 147</blockquote> <p>¿Alguna vez has visto el mundo en una mañana de invierno con escarcha? Todo está duro, blanco y congelado. Los charcos se convierten en hielo. La tierra está dura como una piedra.</p> <p>Luego, al cabo de un rato, sopla un viento cálido. Sale el sol. ¡Y en solo unas horas, todo el hielo y la escarcha se derriten y se vuelven agua, como si nunca hubieran estado allí!</p> <p>¿Quién hace eso? La Biblia dice que lo hace Dios. Él envía la escarcha, y él envía el viento cálido que la derrite. Las dos cosas vienen de él.</p> <p>Algo parecido puede pasar también dentro de nosotros. A veces hacemos algo malo, y luego lo sentimos. Nuestro corazón se pone frío, triste y arrepentido. Ese sentimiento triste de arrepentimiento se parece un poco a la escarcha.</p> <p>¡Pero ese no es el final de la historia! Cuando le decimos a Dios que lo sentimos, él envía su amor como un viento cálido de primavera. Derrite la tristeza fría, nos perdona, y nuestro corazón vuelve a sentirse feliz y calentito.</p> <p>Solo Dios puede derretir así un corazón. Nosotros no podemos hacerlo solos. Así que, si alguna vez te sientes frío y arrepentido por dentro por algo que hiciste, no te quedes congelado. Díselo a Dios. A él le encanta enviar el viento cálido.</p> <p><em>Querido Dios, cuando mi corazón se sienta frío y arrepentido, por favor envía tu amor cálido para derretirlo, y perdóname. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasa a la escarcha cuando sopla el viento cálido y sale el sol?",
+    "answer": "En solo unas horas, todo el hielo y la escarcha se derriten y se vuelven agua, como si nunca hubieran estado allí."
+   },
+   {
+    "question": "¿Quién envía la escarcha y el viento cálido que la derrite?",
+    "answer": "Dios. El capítulo dice que las dos cosas vienen de él."
+   },
+   {
+    "question": "Cuando te sientes frío y arrepentido por dentro por algo que hiciste, ¿qué puedes hacer?",
+    "answer": "La idea del capítulo: no te quedes congelado; dile a Dios que lo sientes. A él le encanta enviar su amor cálido para derretir la tristeza y perdonarte."
+   }
+  ],
+  "body_text": "“Él da la nieve. Envía su palabra, y la derrite.” — del Salmo 147 ¿Alguna vez has visto el mundo en una mañana de invierno con escarcha? Todo está duro, blanco y congelado. Los charcos se convierten en hielo. La tierra está dura como una piedra. Luego, al cabo de un rato, sopla un viento cálido. Sale el sol. ¡Y en solo unas horas, todo el hielo y la escarcha se derriten y se vuelven agua, como si nunca hubieran estado allí! ¿Quién hace eso? La Biblia dice que lo hace Dios. Él envía la escarcha, y él envía el viento cálido que la derrite. Las dos cosas vienen de él. Algo parecido puede pasar también dentro de nosotros. A veces hacemos algo malo, y luego lo sentimos. Nuestro corazón se pone frío, triste y arrepentido. Ese sentimiento triste de arrepentimiento se parece un poco a la escarcha. ¡Pero ese no es el final de la historia! Cuando le decimos a Dios que lo sentimos, él envía su amor como un viento cálido de primavera. Derrite la tristeza fría, nos perdona, y nuestro corazón vuelve a sentirse feliz y calentito. Solo Dios puede derretir así un corazón. Nosotros no podemos hacerlo solos. Así que, si alguna vez te sientes frío y arrepentido por dentro por algo que hiciste, no te quedes congelado. Díselo a Dios. A él le encanta enviar el viento cálido. Querido Dios, cuando mi corazón se sienta frío y arrepentido, por favor envía tu amor cálido para derretirlo, y perdóname. Amén.",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "El grano que crece",
+  "body_html": "<blockquote>“Si una semilla no cae en la tierra, se queda sola. Pero si cae, crece y da mucho más.” — de Juan 12</blockquote> <p>Imagina que tienes una semillita en la mano. Solo una.</p> <p>Ahora bien, ¿y si la guardaras bien protegida en un frasco, en una repisa, para que nunca le pasara nada? Al cabo de un año, ¿cuántas semillas tendrías? ¡Todavía solo una! Se quedaría para siempre como una semillita solitaria.</p> <p>Pero ¿y si, en cambio, la plantaras en la tierra? Bajo el suelo pasa algo asombroso. La semillita se abre y cambia, ¡y de ella crece una planta alta, con muchísimas semillas nuevas! Una semilla se convirtió en muchas, porque fue plantada.</p> <p>Jesús dijo que él era como esa semilla. Estuvo dispuesto a dar su propia vida, como una semilla que entra en la tierra, y gracias a eso muchísimas personas pueden tener ahora una vida nueva con Dios. Él no guardó su vida solo para sí mismo. La dio, y creció hasta ser una enorme cosecha de personas que lo aman.</p> <p>Y Jesús dijo que nosotros también podemos ser así. Si te aferras a todo solo para ti —queriendo ser siempre el primero, sin compartir nunca—, te quedas pequeño, como una semilla en un frasco. Pero si das, compartes y piensas en los demás, tu vida crece hasta ser algo grande y hermoso.</p> <p>Dar no es perder. Dar es la manera en que crecen las cosas buenas.</p> <p><em>Querido Dios, gracias por Jesús, que dio su vida por mí. Ayúdame a dar y a compartir, para que crezcan cosas buenas. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "Si guardaras una semilla bien protegida en un frasco, ¿cuántas semillas tendrías al cabo de un año?",
+    "answer": "Todavía solo una. Se quedaría para siempre como una semillita solitaria."
+   },
+   {
+    "question": "¿Por qué la semilla plantada en la tierra se convirtió en muchas semillas?",
+    "answer": "Porque fue plantada. Se abrió y cambió, y de ella creció una planta alta con muchas semillas nuevas."
+   },
+   {
+    "question": "¿De qué manera podrías dar o compartir esta semana?",
+    "answer": "La idea del capítulo: guardarlo todo para ti te deja pequeño, como una semilla en un frasco, pero dar y compartir hace que crezcan cosas buenas. “Dar no es perder”."
+   }
+  ],
+  "body_text": "“Si una semilla no cae en la tierra, se queda sola. Pero si cae, crece y da mucho más.” — de Juan 12 Imagina que tienes una semillita en la mano. Solo una. Ahora bien, ¿y si la guardaras bien protegida en un frasco, en una repisa, para que nunca le pasara nada? Al cabo de un año, ¿cuántas semillas tendrías? ¡Todavía solo una! Se quedaría para siempre como una semillita solitaria. Pero ¿y si, en cambio, la plantaras en la tierra? Bajo el suelo pasa algo asombroso. La semillita se abre y cambia, ¡y de ella crece una planta alta, con muchísimas semillas nuevas! Una semilla se convirtió en muchas, porque fue plantada. Jesús dijo que él era como esa semilla. Estuvo dispuesto a dar su propia vida, como una semilla que entra en la tierra, y gracias a eso muchísimas personas pueden tener ahora una vida nueva con Dios. Él no guardó su vida solo para sí mismo. La dio, y creció hasta ser una enorme cosecha de personas que lo aman. Y Jesús dijo que nosotros también podemos ser así. Si te aferras a todo solo para ti —queriendo ser siempre el primero, sin compartir nunca—, te quedas pequeño, como una semilla en un frasco. Pero si das, compartes y piensas en los demás, tu vida crece hasta ser algo grande y hermoso. Dar no es perder. Dar es la manera en que crecen las cosas buenas. Querido Dios, gracias por Jesús, que dio su vida por mí. Ayúdame a dar y a compartir, para que crezcan cosas buenas. Amén.",
+  "word_count": 263
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "El sembrador",
+  "body_html": "<blockquote>“Un sembrador salió a sembrar sus semillas.” — de Lucas 8</blockquote> <p>Había una vez un sembrador que salió a sembrar semillas. Metió la mano en su bolsa, sacó un buen puñado y las lanzó por todo su campo. ¡Sigamos a las semillas para ver dónde cayeron!</p> <p>Algunas semillas cayeron en el <strong>camino duro</strong>, por donde todos pasaban. El camino era demasiado duro para que las semillas se hundieran. Así que los pájaros bajaron volando y —ñam, ñam— se las comieron todas.</p> <p>Algunas semillas cayeron en <strong>terreno pedregoso</strong>, donde había poca tierra. ¡Estas semillas crecieron rápido! Pero sus raíces no podían bajar hondo. Así que, cuando salió el sol caliente, las plantitas se secaron y murieron.</p> <p>Algunas semillas cayeron donde crecían <strong>espinos y malas hierbas</strong>. Las semillas empezaron a crecer, pero las malas hierbas crecieron más rápido y más altas, y las ahogaron, hasta que las plantitas se quedaron sin espacio y sin sol.</p> <p>Pero algunas semillas cayeron en <strong>tierra buena y blandita.</strong> Estas semillas crecieron hondo hacia abajo y alto hacia arriba, y dieron muchísimo grano nuevo. ¡Qué cosecha!</p> <p>Jesús contó esta historia, y luego nos explicó lo que significa. La semilla es la palabra de Dios. Y las distintas clases de terreno son como distintas clases de corazones.</p> <p>¿Es tu corazón como el camino duro, demasiado ocupado para escuchar? ¿Como el terreno pedregoso, que se entusiasma un minuto y luego se olvida? ¿Como el terreno lleno de malas hierbas, demasiado lleno de otras cosas? ¿O es como la tierra buena, lista para escuchar y crecer?</p> <p>Aquí está el secreto feliz: hasta la tierra dura se puede cavar y volver blanda y buena. Si se lo pides, Dios preparará tu corazón para que su palabra crezca grande y fuerte dentro de ti.</p> <p><em>Querido Dios, por favor haz que mi corazón sea como la tierra buena, listo para escucharte y crecer. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué les pasó a las semillas que cayeron en el camino duro?",
+    "answer": "El camino era demasiado duro para que se hundieran, así que los pájaros bajaron volando y se las comieron todas."
+   },
+   {
+    "question": "¿Qué les pasó a las semillas que cayeron en tierra buena y blandita?",
+    "answer": "Crecieron hondo hacia abajo y alto hacia arriba, y dieron muchísimo grano nuevo: una gran cosecha."
+   },
+   {
+    "question": "¿Qué clase de terreno te gustaría que fuera tu corazón, y cómo puede prepararse?",
+    "answer": "La idea del capítulo: la semilla es la palabra de Dios, y hasta la tierra dura se puede volver blanda. Si se lo pedimos, Dios preparará nuestro corazón para que su palabra crezca."
+   }
+  ],
+  "body_text": "“Un sembrador salió a sembrar sus semillas.” — de Lucas 8 Había una vez un sembrador que salió a sembrar semillas. Metió la mano en su bolsa, sacó un buen puñado y las lanzó por todo su campo. ¡Sigamos a las semillas para ver dónde cayeron! Algunas semillas cayeron en el camino duro, por donde todos pasaban. El camino era demasiado duro para que las semillas se hundieran. Así que los pájaros bajaron volando y —ñam, ñam— se las comieron todas. Algunas semillas cayeron en terreno pedregoso, donde había poca tierra. ¡Estas semillas crecieron rápido! Pero sus raíces no podían bajar hondo. Así que, cuando salió el sol caliente, las plantitas se secaron y murieron. Algunas semillas cayeron donde crecían espinos y malas hierbas. Las semillas empezaron a crecer, pero las malas hierbas crecieron más rápido y más altas, y las ahogaron, hasta que las plantitas se quedaron sin espacio y sin sol. Pero algunas semillas cayeron en tierra buena y blandita. Estas semillas crecieron hondo hacia abajo y alto hacia arriba, y dieron muchísimo grano nuevo. ¡Qué cosecha! Jesús contó esta historia, y luego nos explicó lo que significa. La semilla es la palabra de Dios. Y las distintas clases de terreno son como distintas clases de corazones. ¿Es tu corazón como el camino duro, demasiado ocupado para escuchar? ¿Como el terreno pedregoso, que se entusiasma un minuto y luego se olvida? ¿Como el terreno lleno de malas hierbas, demasiado lleno de otras cosas? ¿O es como la tierra buena, lista para escuchar y crecer? Aquí está el secreto feliz: hasta la tierra dura se puede cavar y volver blanda y buena. Si se lo pides, Dios preparará tu corazón para que su palabra crezca grande y fuerte dentro de ti. Querido Dios, por favor haz que mi corazón sea como la tierra buena, listo para escucharte y crecer. Amén.",
+  "word_count": 314
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "Primavera en el corazón",
+  "body_html": "<blockquote>“Tú cuidas la tierra y la riegas. Bendices las plantitas que crecen.” — del Salmo 65</blockquote> <p>El invierno es frío, y la tierra se ve marrón, pelada y vacía. Parece que no pasa nada de nada.</p> <p>Pero luego llega la primavera. Y un día, si miras con mucha atención, lo verás: un brotecito verde que se abre paso a través de la tierra fría y dura. Es pequeñísimo. Casi podrías pisarlo sin darte cuenta. ¡Pero está vivo! Y ese brotecito verde es el comienzo mismo de todo un campo de trigo.</p> <p>Cuando empiezas a amar a Dios, puede ser así de pequeño. Tal vez dices una oración cortita. Tal vez quieres portarte bien. Tal vez crees en Jesús solo un poquito. Puede parecer demasiado pequeño para que importe.</p> <p>¡Pero importa muchísimo! Dios ve ese brotecito verde en tu corazón, y eso lo pone muy feliz. Un agricultor no pisotea un brote pequeño porque todavía no es una planta grande: lo cuida, lo riega y lo ayuda a crecer. Eso es exactamente lo que Dios hace contigo.</p> <p>Así que nunca pienses que tu amor por Dios es demasiado pequeño para contar. El trigo más grande y más alto de todo el campo empezó siendo un brotecito verde. Sigue volviéndote hacia Dios, como una plantita que se vuelve hacia el sol, y él te ayudará a crecer.</p> <p><em>Querido Dios, gracias porque hasta mi amor más pequeño por ti importa. Por favor, ayúdalo a crecer más grande y más fuerte. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué cosa pequeñita puedes ver en el campo cuando llega la primavera?",
+    "answer": "Un brotecito verde que se abre paso a través de la tierra fría y dura: el comienzo mismo de todo un campo de trigo."
+   },
+   {
+    "question": "¿Qué hace un buen agricultor con un brote pequeño que todavía no es una planta grande?",
+    "answer": "No lo pisotea. Lo cuida, lo riega y lo ayuda a crecer."
+   },
+   {
+    "question": "¿Alguna vez sientes que tu amor por Dios es demasiado pequeño para contar?",
+    "answer": "La idea del capítulo: hasta una oración cortita o una fe pequeñita importan y ponen feliz a Dios. El trigo más alto empezó como un brotecito, y Dios lo ayuda a crecer."
+   }
+  ],
+  "body_text": "“Tú cuidas la tierra y la riegas. Bendices las plantitas que crecen.” — del Salmo 65 El invierno es frío, y la tierra se ve marrón, pelada y vacía. Parece que no pasa nada de nada. Pero luego llega la primavera. Y un día, si miras con mucha atención, lo verás: un brotecito verde que se abre paso a través de la tierra fría y dura. Es pequeñísimo. Casi podrías pisarlo sin darte cuenta. ¡Pero está vivo! Y ese brotecito verde es el comienzo mismo de todo un campo de trigo. Cuando empiezas a amar a Dios, puede ser así de pequeño. Tal vez dices una oración cortita. Tal vez quieres portarte bien. Tal vez crees en Jesús solo un poquito. Puede parecer demasiado pequeño para que importe. ¡Pero importa muchísimo! Dios ve ese brotecito verde en tu corazón, y eso lo pone muy feliz. Un agricultor no pisotea un brote pequeño porque todavía no es una planta grande: lo cuida, lo riega y lo ayuda a crecer. Eso es exactamente lo que Dios hace contigo. Así que nunca pienses que tu amor por Dios es demasiado pequeño para contar. El trigo más grande y más alto de todo el campo empezó siendo un brotecito verde. Sigue volviéndote hacia Dios, como una plantita que se vuelve hacia el sol, y él te ayudará a crecer. Querido Dios, gracias porque hasta mi amor más pequeño por ti importa. Por favor, ayúdalo a crecer más grande y más fuerte. Amén.",
+  "word_count": 248
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "Las ovejas y el esquilador",
+  "body_html": "<blockquote>“Estaba callado, como una ovejita.” — de Isaías 53</blockquote> <p>¿Alguna vez has visto una oveja con su abrigo de lana gruesa y esponjosa? Una vez al año, el granjero le corta el pelo a cada oveja. Eso se llama esquilar. Le corta toda la lana pesada para que la oveja esté fresca y cómoda en el verano caluroso.</p> <p>Ahora bien, una oveja sabia hace algo muy listo mientras la esquilan. Se queda muy, muy <em>quieta.</em> Y como se queda quieta, las tijeras afiladas nunca le hacen daño. Pero si una oveja patalea, se retuerce y forcejea, ¡ay!, ahí es cuando puede cortarse. Lo que duele es retorcerse, no las tijeras.</p> <p>La Biblia dice que a veces Dios es como ese granjero bondadoso, y nosotros somos como las ovejas. A veces Dios nos quita algo que amamos. Eso puede ponernos muy tristes, como perder nuestro abrigo de lana calentito.</p> <p>Pero escucha: aquí tienes tres cosas para recordar.</p> <p>Dios solo esquila cuando hace <em>calor,</em> nunca cuando hace un frío helado. Eso significa que Dios conoce el momento justo, y nunca te dará más de lo que puedas soportar.</p> <p>La lana siempre vuelve a <em>crecer.</em> Dios nunca quita algo sin tener algo bueno para dar.</p> <p>Y duele menos cuando te quedas <em>quieto</em> y confías en él, en vez de patalear y forcejear.</p> <p>¿Y sabes quién se quedó perfectamente quieto, como una ovejita? Jesús. Cuando la gente fue cruel con él, se quedó callado y manso, y todo porque nos amaba. Así que, cuando llegue algo difícil, tú puedes ser valiente y quedarte quieto, igual que Jesús.</p> <p><em>Querido Dios, cuando algo me ponga triste, ayúdame a quedarme quieto y a confiar en ti, porque sé que me amas. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué el granjero esquila la lana de las ovejas una vez al año?",
+    "answer": "Para que la oveja esté fresca y cómoda en el verano caluroso, sin su abrigo pesado."
+   },
+   {
+    "question": "¿Por qué la oveja sabia se queda quieta mientras la esquilan?",
+    "answer": "Porque, si se queda quieta, las tijeras nunca le hacen daño. Lo que duele es retorcerse y patalear, no las tijeras."
+   },
+   {
+    "question": "Cuando pasa algo triste y pierdes algo que amas, ¿qué puedes recordar?",
+    "answer": "La idea del capítulo: Dios conoce el momento justo, la lana siempre vuelve a crecer, y duele menos cuando nos quedamos quietos y confiamos en él, como Jesús, que se quedó callado y manso."
+   }
+  ],
+  "body_text": "“Estaba callado, como una ovejita.” — de Isaías 53 ¿Alguna vez has visto una oveja con su abrigo de lana gruesa y esponjosa? Una vez al año, el granjero le corta el pelo a cada oveja. Eso se llama esquilar. Le corta toda la lana pesada para que la oveja esté fresca y cómoda en el verano caluroso. Ahora bien, una oveja sabia hace algo muy listo mientras la esquilan. Se queda muy, muy quieta. Y como se queda quieta, las tijeras afiladas nunca le hacen daño. Pero si una oveja patalea, se retuerce y forcejea, ¡ay!, ahí es cuando puede cortarse. Lo que duele es retorcerse, no las tijeras. La Biblia dice que a veces Dios es como ese granjero bondadoso, y nosotros somos como las ovejas. A veces Dios nos quita algo que amamos. Eso puede ponernos muy tristes, como perder nuestro abrigo de lana calentito. Pero escucha: aquí tienes tres cosas para recordar. Dios solo esquila cuando hace calor, nunca cuando hace un frío helado. Eso significa que Dios conoce el momento justo, y nunca te dará más de lo que puedas soportar. La lana siempre vuelve a crecer. Dios nunca quita algo sin tener algo bueno para dar. Y duele menos cuando te quedas quieto y confías en él, en vez de patalear y forcejear. ¿Y sabes quién se quedó perfectamente quieto, como una ovejita? Jesús. Cuando la gente fue cruel con él, se quedó callado y manso, y todo porque nos amaba. Así que, cuando llegue algo difícil, tú puedes ser valiente y quedarte quieto, igual que Jesús. Querido Dios, cuando algo me ponga triste, ayúdame a quedarme quieto y a confiar en ti, porque sé que me amas. Amén.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "En el campo de heno",
+  "body_html": "<blockquote>“Él hace crecer la hierba para los animales.” — del Salmo 104</blockquote> <p>Piensa en la hierba. Crece por todas partes: en los campos, en los parques, junto al camino. La pisas todos los días y seguramente nunca piensas en ella.</p> <p>Pero aquí va una pregunta: ¿quién hace crecer la hierba? Podríamos decir: “Ah, crece sola”. Pero en realidad no es así. Dios hace crecer cada brizna de hierba. Así de cerca está del mundo, y así de ocupado está cuidándolo.</p> <p>¿Y para qué hace crecer toda esa hierba? La Biblia dice que la hace crecer “para los animales”: para las vacas y las ovejas, para que tengan comida de sobra. Piénsalo. ¡Dios hace crecer comida para los animales, que ni siquiera pueden darle las gracias!</p> <p>Así que aquí tienes algo maravilloso para recordar: si Dios cuida tan bien de la hierba, de las vacas y de las ovejas, ¿cuánto más cuidará de <em>ti?</em></p> <p>¿Sabías que cada brizna de hierba recibe por la mañana su propia gota de rocío? No una gota grande para todo el campo, sino una gotita para cada una. Así de cuidadosamente da Dios a cada cosa lo que necesita. Y él también sabe exactamente lo que tú necesitas.</p> <p>Aun cuando te sientes pequeño, o piensas que nadie se fija en ti, Dios te ve. Nunca, ni una sola vez, se ha olvidado de ti.</p> <p><em>Querido Dios, gracias por cuidar hasta de la hierba. Gracias por cuidarme a mí. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Quién hace crecer la hierba?",
+    "answer": "Dios. El capítulo dice que en realidad no crece sola: Dios hace crecer cada brizna."
+   },
+   {
+    "question": "¿Para quién hace crecer Dios la hierba?",
+    "answer": "Para los animales —las vacas y las ovejas—, para que tengan comida de sobra, aunque no puedan darle las gracias."
+   },
+   {
+    "question": "Si Dios le da a cada brizna de hierba su propia gota de rocío, ¿qué te dice eso de cómo te cuida a ti?",
+    "answer": "La idea del capítulo: si Dios cuida tan bien de la hierba y de los animales, cuánto más cuida de ti. Él te ve y nunca se ha olvidado de ti."
+   }
+  ],
+  "body_text": "“Él hace crecer la hierba para los animales.” — del Salmo 104 Piensa en la hierba. Crece por todas partes: en los campos, en los parques, junto al camino. La pisas todos los días y seguramente nunca piensas en ella. Pero aquí va una pregunta: ¿quién hace crecer la hierba? Podríamos decir: “Ah, crece sola”. Pero en realidad no es así. Dios hace crecer cada brizna de hierba. Así de cerca está del mundo, y así de ocupado está cuidándolo. ¿Y para qué hace crecer toda esa hierba? La Biblia dice que la hace crecer “para los animales”: para las vacas y las ovejas, para que tengan comida de sobra. Piénsalo. ¡Dios hace crecer comida para los animales, que ni siquiera pueden darle las gracias! Así que aquí tienes algo maravilloso para recordar: si Dios cuida tan bien de la hierba, de las vacas y de las ovejas, ¿cuánto más cuidará de ti? ¿Sabías que cada brizna de hierba recibe por la mañana su propia gota de rocío? No una gota grande para todo el campo, sino una gotita para cada una. Así de cuidadosamente da Dios a cada cosa lo que necesita. Y él también sabe exactamente lo que tú necesitas. Aun cuando te sientes pequeño, o piensas que nadie se fija en ti, Dios te ve. Nunca, ni una sola vez, se ha olvidado de ti. Querido Dios, gracias por cuidar hasta de la hierba. Gracias por cuidarme a mí. Amén.",
+  "word_count": 243
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "La alegría de la cosecha",
+  "body_html": "<blockquote>“Están tan alegres como la gente en tiempo de cosecha.” — de Isaías 9</blockquote> <p>Durante todo el verano, el agricultor trabaja duro. Siembra las semillas. Arranca las malas hierbas. Espera y espera a que crezca el grano. Lleva muchísimo tiempo.</p> <p>Y entonces, por fin, llega el mejor día de todos: ¡la cosecha! El grano está dorado y maduro. Todos ayudan a recogerlo. El granero se llena hasta arriba. Y cuando el trabajo termina, hay una gran fiesta de la cosecha, y todos celebran juntos.</p> <p>La Biblia dice que el pueblo de Dios tiene momentos felices como el tiempo de la cosecha. ¿Y sabes cuál es el más feliz de todos? Es cuando alguien llega a amar a Dios.</p> <p>El hombre que contó primero estas historias del campo, Spurgeon, dijo que el día más feliz de toda su vida fue cuando ayudó a una sola persona a conocer a Jesús. ¡Dijo que estaba más feliz que si alguien le hubiera dado todos los tesoros del mundo!</p> <p>Y hay una regla de los agricultores que vale la pena conocer: <strong>cosechas lo que siembras.</strong> Si un agricultor siembra buenas semillas de trigo, obtiene buen trigo. Así que, si siembras cosas buenas en tu vida ahora —amabilidad, oraciones, amor por Dios—, un día tendrás una cosecha maravillosa y feliz.</p> <p>¿Qué vas a sembrar hoy?</p> <p><em>Querido Dios, ayúdame a sembrar cosas buenas y amables cada día, y gracias por la cosecha feliz que estás haciendo crecer en mí. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué pasa el día de la cosecha, cuando termina el trabajo del agricultor?",
+    "answer": "Todos ayudan a recoger el grano dorado, el granero se llena, y hay una gran fiesta de la cosecha llena de alegría."
+   },
+   {
+    "question": "¿Qué dijo Spurgeon que fue el día más feliz de toda su vida?",
+    "answer": "El día en que ayudó a una sola persona a conocer a Jesús. Estaba más feliz que si le hubieran dado todos los tesoros del mundo."
+   },
+   {
+    "question": "¿Qué cosas buenas podrías sembrar hoy en tu vida?",
+    "answer": "La idea del capítulo: cosechas lo que siembras. Sembrar ahora amabilidad, oraciones y amor por Dios lleva a una cosecha maravillosa y feliz."
+   }
+  ],
+  "body_text": "“Están tan alegres como la gente en tiempo de cosecha.” — de Isaías 9 Durante todo el verano, el agricultor trabaja duro. Siembra las semillas. Arranca las malas hierbas. Espera y espera a que crezca el grano. Lleva muchísimo tiempo. Y entonces, por fin, llega el mejor día de todos: ¡la cosecha! El grano está dorado y maduro. Todos ayudan a recogerlo. El granero se llena hasta arriba. Y cuando el trabajo termina, hay una gran fiesta de la cosecha, y todos celebran juntos. La Biblia dice que el pueblo de Dios tiene momentos felices como el tiempo de la cosecha. ¿Y sabes cuál es el más feliz de todos? Es cuando alguien llega a amar a Dios. El hombre que contó primero estas historias del campo, Spurgeon, dijo que el día más feliz de toda su vida fue cuando ayudó a una sola persona a conocer a Jesús. ¡Dijo que estaba más feliz que si alguien le hubiera dado todos los tesoros del mundo! Y hay una regla de los agricultores que vale la pena conocer: cosechas lo que siembras. Si un agricultor siembra buenas semillas de trigo, obtiene buen trigo. Así que, si siembras cosas buenas en tu vida ahora —amabilidad, oraciones, amor por Dios—, un día tendrás una cosecha maravillosa y feliz. ¿Qué vas a sembrar hoy? Querido Dios, ayúdame a sembrar cosas buenas y amables cada día, y gracias por la cosecha feliz que estás haciendo crecer en mí. Amén.",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "Espigar",
+  "body_html": "<blockquote>“Déjenla recoger grano, y sean amables con ella.” — de la historia de Rut</blockquote> <p>Hace mucho tiempo vivía una joven llamada Rut. Era pobre y no tenía comida. Así que hizo lo que hacían los pobres en aquella época: salió a los campos a <em>espigar.</em></p> <p>Espigar era caminar detrás de los trabajadores del campo y recoger los granitos que se les caían mientras trabajaban. Las sobras. Era un trabajo duro, agacharse una y otra vez solo para juntar un poquito.</p> <p>Ahora bien, el campo al que fue Rut pertenecía a un hombre bueno y bondadoso llamado Booz. Y cuando Booz vio a Rut trabajando tan duro, hizo algo precioso. En voz baja les dijo a sus trabajadores: “Dejen caer a propósito un poco más de grano, justo donde ella pueda encontrarlo. Y sean amables con ella”. Se aseguró de que ella tuviera de sobra, y ni siquiera le contó que lo había hecho.</p> <p>Dios es como el bondadoso Booz. Tal vez te sientes pequeño, o piensas que no tienes mucho. Pero Dios tiene muchísimas cosas buenas para ti, y quiere que vengas a recogerlas. Lo único que tienes que hacer es agacharte y recogerlas, es decir, acercarte a él, escucharlo y orar.</p> <p>Y aquí hay una parte preciosa: cuando Rut había juntado suficiente, se llevó un poco a casa para compartirlo con alguien que tenía hambre. Cuando Dios llena tu corazón de cosas buenas, tú también puedes compartirlas con los demás.</p> <p><em>Querido Dios, gracias por ser tan bondadoso y generoso conmigo. Ayúdame a acercarme a ti y a compartir tus buenos regalos con los demás. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hacía Rut en los campos para conseguir comida?",
+    "answer": "Espigaba: caminaba detrás de los trabajadores y recogía los granitos que se les caían."
+   },
+   {
+    "question": "¿Qué cosa bondadosa hizo Booz por Rut?",
+    "answer": "Les dijo a sus trabajadores que dejaran caer a propósito más grano donde ella pudiera encontrarlo y que fueran amables con ella, y nunca le contó que lo había hecho."
+   },
+   {
+    "question": "¿Cómo puedes “recoger” los buenos regalos de Dios, y con quién podrías compartirlos?",
+    "answer": "La idea del capítulo: Dios es bondadoso como Booz. Recogemos acercándonos a él, escuchándolo y orando; y, como Rut llevando comida a casa, podemos compartir sus buenos regalos con los demás."
+   }
+  ],
+  "body_text": "“Déjenla recoger grano, y sean amables con ella.” — de la historia de Rut Hace mucho tiempo vivía una joven llamada Rut. Era pobre y no tenía comida. Así que hizo lo que hacían los pobres en aquella época: salió a los campos a espigar. Espigar era caminar detrás de los trabajadores del campo y recoger los granitos que se les caían mientras trabajaban. Las sobras. Era un trabajo duro, agacharse una y otra vez solo para juntar un poquito. Ahora bien, el campo al que fue Rut pertenecía a un hombre bueno y bondadoso llamado Booz. Y cuando Booz vio a Rut trabajando tan duro, hizo algo precioso. En voz baja les dijo a sus trabajadores: “Dejen caer a propósito un poco más de grano, justo donde ella pueda encontrarlo. Y sean amables con ella”. Se aseguró de que ella tuviera de sobra, y ni siquiera le contó que lo había hecho. Dios es como el bondadoso Booz. Tal vez te sientes pequeño, o piensas que no tienes mucho. Pero Dios tiene muchísimas cosas buenas para ti, y quiere que vengas a recogerlas. Lo único que tienes que hacer es agacharte y recogerlas, es decir, acercarte a él, escucharlo y orar. Y aquí hay una parte preciosa: cuando Rut había juntado suficiente, se llevó un poco a casa para compartirlo con alguien que tenía hambre. Cuando Dios llena tu corazón de cosas buenas, tú también puedes compartirlas con los demás. Querido Dios, gracias por ser tan bondadoso y generoso conmigo. Ayúdame a acercarme a ti y a compartir tus buenos regalos con los demás. Amén.",
+  "word_count": 266
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "La trilla",
+  "body_html": "<blockquote>“Él no golpea el grano para siempre.” — de Isaías 28</blockquote> <p>Cuando ya se ha recogido el trigo, queda un trabajo más, y parece un poco brusco. Verás, cada grano de trigo está metido dentro de una cáscara dura que no sirve para nada, llamada cascarilla. Para sacar el grano bueno, el agricultor tiene que golpearlo —¡pum, pum, pum!— con un palo. Esto se llama trillar.</p> <p>Podría parecer que el agricultor está siendo cruel con el trigo. ¡Pero no es así! Está liberando el grano bueno de la cáscara que lo tiene atrapado. Tiene que hacerlo, o el grano bueno se quedaría encerrado dentro.</p> <p>A veces nos pasan cosas difíciles o tristes, y puede sentirse un poco como si nos estuvieran trillando. Pero aquí tienes dos cosas para recordar, y las dos están llenas de consuelo.</p> <p>Primera: el agricultor solo se toma la molestia de trillar el grano <em>bueno.</em> A las malas hierbas las deja en paz. Así que, cuando llega un tiempo difícil, no significa que Dios se haya olvidado de ti. Significa que eres valioso para él, como el buen trigo.</p> <p>Segunda: el agricultor nunca, jamás, golpea el grano para siempre. ¡Siempre se detiene! Los tiempos difíciles tampoco duran para siempre. Dios es amable y cuidadoso, y nunca te dará más de lo que puedas soportar. Pronto los golpes se detienen, y el grano bueno queda a salvo.</p> <p><em>Querido Dios, cuando pasen cosas difíciles, ayúdame a recordar que no te has olvidado de mí, y que no durará para siempre. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué el agricultor golpea el trigo con un palo?",
+    "answer": "Para liberar el grano bueno de la cáscara dura que no sirve para nada (la cascarilla) que lo tiene atrapado. Esto se llama trillar."
+   },
+   {
+    "question": "¿El agricultor trilla también las malas hierbas?",
+    "answer": "No. Solo se toma la molestia de trillar el grano bueno, y a las malas hierbas las deja en paz."
+   },
+   {
+    "question": "Cuando llega un tiempo difícil o triste, ¿qué dos cosas pueden ayudarte a sentirte mejor?",
+    "answer": "Los dos consuelos del capítulo: un tiempo difícil no significa que Dios se haya olvidado de ti —eres valioso, como el buen trigo— y no durará para siempre, porque el agricultor siempre se detiene."
+   }
+  ],
+  "body_text": "“Él no golpea el grano para siempre.” — de Isaías 28 Cuando ya se ha recogido el trigo, queda un trabajo más, y parece un poco brusco. Verás, cada grano de trigo está metido dentro de una cáscara dura que no sirve para nada, llamada cascarilla. Para sacar el grano bueno, el agricultor tiene que golpearlo —¡pum, pum, pum!— con un palo. Esto se llama trillar. Podría parecer que el agricultor está siendo cruel con el trigo. ¡Pero no es así! Está liberando el grano bueno de la cáscara que lo tiene atrapado. Tiene que hacerlo, o el grano bueno se quedaría encerrado dentro. A veces nos pasan cosas difíciles o tristes, y puede sentirse un poco como si nos estuvieran trillando. Pero aquí tienes dos cosas para recordar, y las dos están llenas de consuelo. Primera: el agricultor solo se toma la molestia de trillar el grano bueno. A las malas hierbas las deja en paz. Así que, cuando llega un tiempo difícil, no significa que Dios se haya olvidado de ti. Significa que eres valioso para él, como el buen trigo. Segunda: el agricultor nunca, jamás, golpea el grano para siempre. ¡Siempre se detiene! Los tiempos difíciles tampoco duran para siempre. Dios es amable y cuidadoso, y nunca te dará más de lo que puedas soportar. Pronto los golpes se detienen, y el grano bueno queda a salvo. Querido Dios, cuando pasen cosas difíciles, ayúdame a recordar que no te has olvidado de mí, y que no durará para siempre. Amén.",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "El trigo en el granero",
+  "body_html": "<blockquote>“Recojan el trigo en mi granero.” — de Mateo 13</blockquote> <p>Esta es la última parte de la cosecha, y es la más feliz de todas.</p> <p>Cuando por fin el trigo bueno está listo, el agricultor lo recoge todo y lo lleva a salvo dentro del granero. Y una vez que está dentro, ya nada puede hacerle daño. Ni la lluvia. Ni la escarcha. Ni el viento frío. Está a salvo, seco y calentito, justo donde debe estar.</p> <p>Jesús contó una historia igual a esta. Dijo que un día Dios reunirá a todo su pueblo —personas de todos los países del mundo, grandes y pequeñas, jóvenes y ancianas— y las llevará a salvo a casa para estar con él. Como el trigo que se recoge en el granero.</p> <p>Ese hogar seguro, feliz y para siempre se llama cielo. Es un lugar donde ya no hay llanto ni tristeza: solo estar con Dios, y estar a salvo, para siempre.</p> <p>Así que nunca tenemos que tener miedo del final. Para todos los que aman a Dios, el final no es nada triste. Es como el trigo que por fin entra en el granero. Es volver a casa.</p> <p>¿Quieres ser parte de la cosecha de Dios? ¡Puedes serlo! Solo dile que quieres pertenecerle. Y entonces, un día, serás llevado a salvo a casa.</p> <p><em>Querido Dios, gracias porque llevas a tu pueblo a salvo a casa. Quiero pertenecerte. Por favor, mantenme cerca de ti, hoy y para siempre. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Dónde pone el agricultor el trigo bueno cuando está listo?",
+    "answer": "Lo lleva a salvo dentro del granero, donde ni la lluvia, ni la escarcha, ni el viento frío pueden hacerle daño."
+   },
+   {
+    "question": "En la historia de Jesús, ¿a quiénes reunirá Dios como el trigo en el granero?",
+    "answer": "A todo su pueblo, de todos los países —grandes y pequeños, jóvenes y ancianos—, llevado a salvo a casa para estar con él."
+   },
+   {
+    "question": "¿Por qué las personas que aman a Dios no tienen que tener miedo del final?",
+    "answer": "La idea del capítulo: para todos los que aman a Dios, el final es como el trigo que entra en el granero: es volver a casa, al cielo, a salvo para siempre. Cualquiera puede decirle a Dios que quiere pertenecerle."
+   }
+  ],
+  "body_text": "“Recojan el trigo en mi granero.” — de Mateo 13 Esta es la última parte de la cosecha, y es la más feliz de todas. Cuando por fin el trigo bueno está listo, el agricultor lo recoge todo y lo lleva a salvo dentro del granero. Y una vez que está dentro, ya nada puede hacerle daño. Ni la lluvia. Ni la escarcha. Ni el viento frío. Está a salvo, seco y calentito, justo donde debe estar. Jesús contó una historia igual a esta. Dijo que un día Dios reunirá a todo su pueblo —personas de todos los países del mundo, grandes y pequeñas, jóvenes y ancianas— y las llevará a salvo a casa para estar con él. Como el trigo que se recoge en el granero. Ese hogar seguro, feliz y para siempre se llama cielo. Es un lugar donde ya no hay llanto ni tristeza: solo estar con Dios, y estar a salvo, para siempre. Así que nunca tenemos que tener miedo del final. Para todos los que aman a Dios, el final no es nada triste. Es como el trigo que por fin entra en el granero. Es volver a casa. ¿Quieres ser parte de la cosecha de Dios? ¡Puedes serlo! Solo dile que quieres pertenecerle. Y entonces, un día, serás llevado a salvo a casa. Querido Dios, gracias porque llevas a tu pueblo a salvo a casa. Quiero pertenecerte. Por favor, mantenme cerca de ti, hoy y para siempre. Amén.",
+  "word_count": 244
+ }
+}
+]
