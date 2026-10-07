@@ -595,6 +595,8 @@ TOPICS = [
             "they-were-young-2",
             "corrie-ten-boom-a-life-teens",
             "elisabeth-elliot-a-life-teens",
+            "c-s-lewis-a-life-teens",
+            "john-hyde-a-life-teens",
         ],
     ),
     (
