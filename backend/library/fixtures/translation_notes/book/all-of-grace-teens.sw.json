@@ -1,0 +1,243 @@
+{
+ "kind": "book",
+ "slug": "all-of-grace-teens",
+ "language": "sw",
+ "job_issue": 5454,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible is egress-blocked here, and the mirrored Swahili Bibles are licensed or off-tradition — see the translation-worker skill). Every `mined` row was re-measured against the finished text: the quoted wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped sw file. Most come from the shipped full edition all-of-grace.sw.json, whose Spurgeon quotations (and the verses inside them) this retelling pastes verbatim rather than re-translating. The English epigraphs are ESV and carry a version tag; this edition drops the tag because the wording shown is Union, not ESV — as the shipped sw teens editions do.",
+  "Self-rendered in Union register and unverified: the epigraphs Isaiah 1:18 (only its middle clause is in the corpus, the-god-of-all-comfort.sw), Romans 3:26 (its closing clause matches what-is-the-gospel.sw; the opening is ours) and 2 Corinthians 6:2 (talks-to-the-farmer.sw carries it without the opening “Tazama”); John 6:37 and Luke 22:61 inline; and three first-person prayer/reader echoes (Romans 4:5 in ch2, Ezekiel 36:26 in ch4, Romans 5:6 in ch8). Ezekiel 36:26 in ch4's body is the all-of-grace.sw wording trimmed to its two verbs to fit the English's emphasis, so it is recorded self_rendered.",
+  "Title “Yote kwa Neema (Kwa Vijana)” = the shipped full edition's title plus the sw teens suffix. Spurgeon's own phrasings are pasted from all-of-grace.sw.json even where that edition's Swahili is a little old-fashioned (e.g. “Mimi sikuji kudai kodi”), so the retelling and the full text agree. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 1:18",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "he-holds-my-tomorrows.sw.json"
+  },
+  {
+   "reference": "Romans 3:26",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 5:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ephesians 2:8-9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 10:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "talks-to-the-farmer.sw.json"
+  },
+  {
+   "reference": "Acts 5:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 6:2",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 2,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 3:10",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 2,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 2,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 4:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Romans 8:33",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Isaiah 45:22",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 3,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 3,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Ezekiel 36:26",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Ephesians 2:8",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 5,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Revelation 22:17",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 6,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "John 6:37",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 8,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Timothy 1:15",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 8,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Romans 5:6",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 9,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "John 3:7",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 9,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Ezekiel 18:4",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 10,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "Luke 22:61",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Corinthians 1:8",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "John 10:28",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 1:9",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 11,
+   "source_file": "all-of-grace.sw.json"
+  }
+ ]
+}

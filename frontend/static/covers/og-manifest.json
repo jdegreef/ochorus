@@ -10647,6 +10647,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"sw/all-of-grace-teens": {
+			"ground": "e6c5d76ec85972d20d6d09f7f3468784fabc100b81f29dfdb96aa333468dbe3f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/amanda-smith-autobiography-children": {
 			"ground": "05d364b0f318f4bc3f0db811825f62d89ee34ab5e54312d415eafb61479c4716",
 			"style": "revival",
