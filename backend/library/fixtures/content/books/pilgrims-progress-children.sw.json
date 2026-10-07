@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-children",
+  "language": "sw",
+  "title": "Safari ya Msafiri (Kwa Watoto)",
+  "subtitle": "",
+  "description": "Hadithi maarufu ya John Bunyan kuhusu msafiri aitwaye Mkristo, anayeuacha mji wake akiwa na mzigo mzito mgongoni mwake na kusafiri njia yote hadi Mji wa Mbinguni. Toleo hili la watoto linasimulia upya safari yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari mmoja wa Biblia, tukio moja la safari, jambo moja linalomaanisha kwako, na sala fupi.",
+  "qa": [
+   {
+    "question": "Kitabu Safari ya Msafiri (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la hadithi maarufu ya John Bunyan. Mtu aitwaye Mkristo anaondoka nyumbani kwake akiwa na mzigo mzito mgongoni mwake, na anasafiri njia ndefu yenye matukio mengi hadi Mji wa Mbinguni. Njiani anakutana na majitu, wanyama wa kutisha, marafiki na hatari — na kila sehemu ya safari inaonyesha kwa utulivu jinsi ilivyo kumfuata Mungu."
+   },
+   {
+    "question": "John Bunyan alikuwa nani?",
+    "answer": "Alikuwa mhubiri Mwingereza aliyeishi zamani sana, na alikaa gerezani kwa miaka mingi kwa sababu ya imani yake. Akiwa huko aliandika Safari ya Msafiri, iliyokuja kuwa mojawapo ya hadithi zinazopendwa sana duniani — hadithi ya matukio inayofundisha kuhusu Mungu kupitia habari ya msafiri aitwaye Mkristo."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia tukio moja la safari ya Mkristo, inaonyesha jambo moja rahisi linalomaanisha kwako, na inamalizika kwa sala fupi."
+   },
+   {
+    "question": "Kitabu hiki ni kwa ajili ya nani?",
+    "answer": "Ni kwa ajili ya watoto — kusomewa kwa sauti na mtu mzima, au kusomwa na mtoto mkubwa peke yake. Safari ya Msafiri kamili ya Bunyan inapatikana pia kwa wasomaji wakubwa, pamoja na usimulizi wake kwa maneno rahisi."
+   },
+   {
+    "question": "Kwa nini hadithi hii imejaa wanyama wa kutisha na majitu?",
+    "answer": "Kwa sababu Bunyan aliifanya kuwa hadithi ya picha. Njia ya Mkristo inawakilisha maisha ya kumfuata Mungu, na hatari zake — bwawa, jitu, bonde la giza — zinawakilisha taabu na majaribu halisi tunayokutana nayo. Kuisimulia kama hadithi ya matukio kunamfanya mtoto ayakumbuke mafundisho hayo kwa urahisi."
+   },
+   {
+    "question": "Je, majina katika hadithi hii ni ya ajabu kwa makusudi?",
+    "answer": "Ndiyo. Bunyan aliwapa wahusika na mahali pake majina yanayowaeleza — Mkristo, Mwaminifu, Mwenye-Tumaini, Bwawa la Kukata-Tamaa, Kilima Kigumu, Jitu Kata-Tamaa. Jina linakuambia kila mmoja yukoje, na hilo linawasaidia wasomaji wachanga kufuata maana ya hadithi."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi wa Ochorus, kwa ajili ya wasomaji wachanga, wa Safari ya Msafiri ya John Bunyan, kazi iliyo mali ya umma. Namna ya kusimulia ni yetu, huru kusomwa na kushirikishwa.",
+  "cover_url": "/covers/art/pilgrims-progress-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 23,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Mtu Aliyelia, “Nifanye Nini?”",
+  "body_html": "<blockquote>“Yanipasa nifanye nini nipate kuokoka?” — kutoka Matendo 16</blockquote> <p>Mahali paitwapo Mji wa Uharibifu, aliishi mtu mmoja jina lake Mkristo. Siku moja alikuwa akisoma kitabu, na alichosoma kilimtisha sana. Alijifunza kwamba mji wake ungeangamizwa — na baya kuliko yote, aliweza kuhisi mzigo mkubwa, mzito mgongoni mwake, ambao hakuweza kuuondoa, hata alijaribu namna gani.</p> <p>Akaanza kulia kwa sauti, “Nifanye nini? Yanipasa nifanye nini nipate kuokoka?” Watu wa nyumbani mwake walidhani amerukwa na akili. Lakini Mkristo hakuweza kuacha kuuhangaikia mzigo ule mzito.</p> <p>Ndipo mtu mmoja aitwaye Mwinjilisti akamjia, akamwuliza kwa nini analia. Mkristo akamweleza habari ya mzigo wake na hofu yake. Mwinjilisti akanyosha kidole mbali, ng’ambo ya uwanja mpana, akauliza, “Je, unaliona lile lango dogo?” Mkristo hakuliona. “Je, unauona ule mwanga unaong’aa?” akasema Mwinjilisti. “Ndiyo, nadhani nauona,” akasema Mkristo. “Uweke mwanga ule machoni pako, uende moja kwa moja kuuelekea.”</p> <p>Basi Mkristo akaanza kukimbia — kukimbilia lile lango dogo na ule mwanga unaong’aa — akiwa ameziba masikio kwa vidole vyake ili kitu chochote kisimzuie, huku akipaza sauti, “Uzima! Uzima! Uzima wa milele!”</p> <p>Hapo ndipo kila safari kuu pamoja na Mungu inapoanzia: kuona kwamba kuna jambo baya, na kukimbilia nuru. Ukihisi uzito wa makosa uliyoyafanya, huhitaji kuubeba peke yako. Kuna nuru ya kukimbilia. Jina lake ni Yesu.</p> <p><em>Mungu mpendwa, ninapohisi uzito wa makosa niliyoyafanya, nisaidie nikukimbilie wewe, Nuru ya kweli. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Mkristo alilia kwa sauti, “Nifanye nini?”",
+    "answer": "Alisoma katika kitabu kwamba mji wake ungeangamizwa, na akahisi mzigo mkubwa, mzito mgongoni mwake ambao hakuweza kuuondoa."
+   },
+   {
+    "question": "Kwa nini Mkristo alikimbia akiwa ameziba masikio kwa vidole vyake?",
+    "answer": "Ili kitu chochote kisimzuie alipokuwa akikimbilia lile lango dogo na ule mwanga unaong’aa, huku akipaza sauti, “Uzima! Uzima! Uzima wa milele!”"
+   },
+   {
+    "question": "Je, umewahi kuhisi uzito moyoni kwa sababu ya jambo baya ulilofanya? Hadithi inasema ukimbilie wapi?",
+    "answer": "Somo la sura hii: huhitaji kubeba peke yako uzito wa makosa — kuna nuru ya kukimbilia, na jina lake ni Yesu."
+   }
+  ],
+  "body_text": "“Yanipasa nifanye nini nipate kuokoka?” — kutoka Matendo 16 Mahali paitwapo Mji wa Uharibifu, aliishi mtu mmoja jina lake Mkristo. Siku moja alikuwa akisoma kitabu, na alichosoma kilimtisha sana. Alijifunza kwamba mji wake ungeangamizwa — na baya kuliko yote, aliweza kuhisi mzigo mkubwa, mzito mgongoni mwake, ambao hakuweza kuuondoa, hata alijaribu namna gani. Akaanza kulia kwa sauti, “Nifanye nini? Yanipasa nifanye nini nipate kuokoka?” Watu wa nyumbani mwake walidhani amerukwa na akili. Lakini Mkristo hakuweza kuacha kuuhangaikia mzigo ule mzito. Ndipo mtu mmoja aitwaye Mwinjilisti akamjia, akamwuliza kwa nini analia. Mkristo akamweleza habari ya mzigo wake na hofu yake. Mwinjilisti akanyosha kidole mbali, ng’ambo ya uwanja mpana, akauliza, “Je, unaliona lile lango dogo?” Mkristo hakuliona. “Je, unauona ule mwanga unaong’aa?” akasema Mwinjilisti. “Ndiyo, nadhani nauona,” akasema Mkristo. “Uweke mwanga ule machoni pako, uende moja kwa moja kuuelekea.” Basi Mkristo akaanza kukimbia — kukimbilia lile lango dogo na ule mwanga unaong’aa — akiwa ameziba masikio kwa vidole vyake ili kitu chochote kisimzuie, huku akipaza sauti, “Uzima! Uzima! Uzima wa milele!” Hapo ndipo kila safari kuu pamoja na Mungu inapoanzia: kuona kwamba kuna jambo baya, na kukimbilia nuru. Ukihisi uzito wa makosa uliyoyafanya, huhitaji kuubeba peke yako. Kuna nuru ya kukimbilia. Jina lake ni Yesu. Mungu mpendwa, ninapohisi uzito wa makosa niliyoyafanya, nisaidie nikukimbilie wewe, Nuru ya kweli. Amina.",
+  "word_count": 217
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Kukwama Bwawani",
+  "body_html": "<blockquote>“Alinipandisha kutoka matope ya utelezi; akaisimamisha miguu yangu mwambani.” — kutoka Zaburi 40</blockquote> <p>Mkristo aliharakisha kuvuka uwanja kuuelekea ule mwanga unaong’aa. Lakini hakuwa akiangalia anapokanyaga — na ghafla, <em>chubwi!</em> — akatumbukia moja kwa moja katika bwawa refu lenye matope.</p> <p>Hili halikuwa dimbwi la kawaida. Lilikuwa na jina: Bwawa la Kukata-Tamaa, yaani Bwawa la Kujisikia Huna Tumaini. Kadiri Mkristo alivyojitahidi kutoka, ndivyo alivyozidi kuzama, kwa sababu ule mzigo mzito mgongoni mwake ulimvuta chini ndani ya matope.</p> <p>Jirani mmoja aitwaye Mgeugeu alikuwa akimfuata. Lakini Mgeugeu alipotapakaa matope, alinung’unika, akatambaa kutoka upande wa karibu, akarudi nyumbani kwa hasira. Maskini Mkristo akaachwa peke yake, akizama, akijaribu tena na tena kufikia upande wa pili.</p> <p>Ndipo mtu mmoja akaja. Jina lake lilikuwa Msaada. “Unafanya nini huko chini?” akauliza. Akanyosha mkono wake, akasema, “Nipe mkono wako.” Akamvuta Mkristo, akamtoa kabisa bwawani, akamsimamisha tena juu ya nchi nzuri, imara.</p> <p>Wakati mwingine, tunapoanza kumfuata Mungu, tunafika mahali ambapo kila kitu kinaonekana hakina tumaini na ni kizito, nasi tunaanza kuzama. Hilo ni jambo la kawaida. Lilimpata hata Mkristo. Lakini hatukusudiwi kujitoa wenyewe peke yetu.</p> <p>Unapohisi kana kwamba unazama, fanya kama Mkristo alivyofanya — ushike mkono unaonyooshwa kwako. Mungu hutuma msaada.</p> <p><em>Mungu mpendwa, ninapohisi nimekwama na sina tumaini, asante kwa kuwa unaninyooshea mkono wako. Nisaidie niushike. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nini kilichompata Mkristo katika Bwawa la Kukata-Tamaa?",
+    "answer": "Alitumbukia katika bwawa refu lenye matope, na ule mzigo mzito mgongoni mwake ulimfanya azidi kuzama kadiri alivyojitahidi."
+   },
+   {
+    "question": "Mgeugeu alifanya nini, na ni nani aliyekuja kumsaidia Mkristo?",
+    "answer": "Mgeugeu alinung’unika, akatambaa kutoka upande wa karibu, akarudi nyumbani. Kisha mtu aitwaye Msaada akanyosha mkono wake, akamvuta Mkristo hadi kwenye nchi imara."
+   },
+   {
+    "question": "Ni lini umewahi kujisikia umekwama au huna tumaini? Waweza kufanya nini jambo hilo linapotokea?",
+    "answer": "Somo la sura hii: kujisikia umekwama humpata hata Mkristo, na hatukusudiwi kujitoa peke yetu — ushike mkono unaonyooshwa kwako, kwa sababu Mungu hutuma msaada."
+   }
+  ],
+  "body_text": "“Alinipandisha kutoka matope ya utelezi; akaisimamisha miguu yangu mwambani.” — kutoka Zaburi 40 Mkristo aliharakisha kuvuka uwanja kuuelekea ule mwanga unaong’aa. Lakini hakuwa akiangalia anapokanyaga — na ghafla, chubwi! — akatumbukia moja kwa moja katika bwawa refu lenye matope. Hili halikuwa dimbwi la kawaida. Lilikuwa na jina: Bwawa la Kukata-Tamaa, yaani Bwawa la Kujisikia Huna Tumaini. Kadiri Mkristo alivyojitahidi kutoka, ndivyo alivyozidi kuzama, kwa sababu ule mzigo mzito mgongoni mwake ulimvuta chini ndani ya matope. Jirani mmoja aitwaye Mgeugeu alikuwa akimfuata. Lakini Mgeugeu alipotapakaa matope, alinung’unika, akatambaa kutoka upande wa karibu, akarudi nyumbani kwa hasira. Maskini Mkristo akaachwa peke yake, akizama, akijaribu tena na tena kufikia upande wa pili. Ndipo mtu mmoja akaja. Jina lake lilikuwa Msaada. “Unafanya nini huko chini?” akauliza. Akanyosha mkono wake, akasema, “Nipe mkono wako.” Akamvuta Mkristo, akamtoa kabisa bwawani, akamsimamisha tena juu ya nchi nzuri, imara. Wakati mwingine, tunapoanza kumfuata Mungu, tunafika mahali ambapo kila kitu kinaonekana hakina tumaini na ni kizito, nasi tunaanza kuzama. Hilo ni jambo la kawaida. Lilimpata hata Mkristo. Lakini hatukusudiwi kujitoa wenyewe peke yetu. Unapohisi kana kwamba unazama, fanya kama Mkristo alivyofanya — ushike mkono unaonyooshwa kwako. Mungu hutuma msaada. Mungu mpendwa, ninapohisi nimekwama na sina tumaini, asante kwa kuwa unaninyooshea mkono wako. Nisaidie niushike. Amina.",
+  "word_count": 206
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Lango Dogo Linalofunguka",
+  "body_html": "<blockquote>“Bisheni, nanyi mtafunguliwa.” — kutoka Mathayo 7</blockquote> <p>Mwishowe Mkristo akafika kwenye lile lango dogo — lile ambalo Mwinjilisti alikuwa amemwonyesha. Juu yake yalikuwa yameandikwa maneno haya: “Bisheni, nanyi mtafunguliwa.”</p> <p>Basi Mkristo akabisha. Akabisha tena. Hakuwa na hakika kama mtu yeyote angekuja. Itakuwaje lango likibaki limefungwa? Itakuwaje kama yeye si mwema vya kutosha kuruhusiwa kuingia?</p> <p>Lakini lango likafunguka! Mtu mmoja mwema aitwaye Nia-Njema alisimama pale. “Ni nani wewe? Umetoka wapi, nawe unataka nini?” akauliza.</p> <p>“Mimi ni mwenye dhambi maskini mwenye mzigo mzito,” akasema Mkristo. “Nimetoka mbali kabisa, katika Mji wa Uharibifu, nami nataka kwenda kwenye ule Mji wa ajabu ulio juu ya mlima.”</p> <p>“Niko radhi kwa moyo wangu wote!” akasema Nia-Njema — akalifungua lango wazi kabisa, akamvuta Mkristo ndani salama. Mkristo akauliza kama mzigo wake ungeweza kuondoka sasa. “Vumilia,” akasema Nia-Njema. “Endelea mbele, na ukifika mahali pake utaanguka wenyewe.”</p> <p>Kisha Nia-Njema akamwonyesha ile njia nyembamba, akamtuma aende zake.</p> <p>Hili ni jambo la ajabu kuhusu Mungu: hamkatai kamwe mtu yeyote anayemjia. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kubisha. Mjie Mungu, naye atakufungulia mlango na kukukaribisha ndani kwa moyo wake wote.</p> <p><em>Mungu mpendwa, asante kwa kuwa nikikujia, hunikatai kamwe. Ninabisha — tafadhali niruhusu niingie. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni maneno gani yaliyokuwa yameandikwa juu ya lile lango dogo?",
+    "answer": "“Bisheni, nanyi mtafunguliwa.”"
+   },
+   {
+    "question": "Nia-Njema alisema nini Mkristo alipouliza kama mzigo wake ungeweza kuondoka sasa?",
+    "answer": "“Vumilia” — endelea mbele, na ukifika mahali pake utaanguka wenyewe."
+   },
+   {
+    "question": "Je, unadhani lazima uwe mwema vya kutosha kwanza ndipo Mungu akuruhusu uingie?",
+    "answer": "Somo la sura hii: Mungu hamkatai kamwe mtu yeyote anayemjia. Huhitaji kwanza kuwa mwema vya kutosha — unabisha tu, naye anakukaribisha ndani kwa moyo wake wote."
+   }
+  ],
+  "body_text": "“Bisheni, nanyi mtafunguliwa.” — kutoka Mathayo 7 Mwishowe Mkristo akafika kwenye lile lango dogo — lile ambalo Mwinjilisti alikuwa amemwonyesha. Juu yake yalikuwa yameandikwa maneno haya: “Bisheni, nanyi mtafunguliwa.” Basi Mkristo akabisha. Akabisha tena. Hakuwa na hakika kama mtu yeyote angekuja. Itakuwaje lango likibaki limefungwa? Itakuwaje kama yeye si mwema vya kutosha kuruhusiwa kuingia? Lakini lango likafunguka! Mtu mmoja mwema aitwaye Nia-Njema alisimama pale. “Ni nani wewe? Umetoka wapi, nawe unataka nini?” akauliza. “Mimi ni mwenye dhambi maskini mwenye mzigo mzito,” akasema Mkristo. “Nimetoka mbali kabisa, katika Mji wa Uharibifu, nami nataka kwenda kwenye ule Mji wa ajabu ulio juu ya mlima.” “Niko radhi kwa moyo wangu wote!” akasema Nia-Njema — akalifungua lango wazi kabisa, akamvuta Mkristo ndani salama. Mkristo akauliza kama mzigo wake ungeweza kuondoka sasa. “Vumilia,” akasema Nia-Njema. “Endelea mbele, na ukifika mahali pake utaanguka wenyewe.” Kisha Nia-Njema akamwonyesha ile njia nyembamba, akamtuma aende zake. Hili ni jambo la ajabu kuhusu Mungu: hamkatai kamwe mtu yeyote anayemjia. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kubisha. Mjie Mungu, naye atakufungulia mlango na kukukaribisha ndani kwa moyo wake wote. Mungu mpendwa, asante kwa kuwa nikikujia, hunikatai kamwe. Ninabisha — tafadhali niruhusu niingie. Amina.",
+  "word_count": 194
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Nyumba Yenye Vyumba vya Ajabu",
+  "body_html": "<blockquote>“Unifumbue macho yangu nipate kuyaona maajabu.” — kutoka Zaburi 119</blockquote> <p>Njiani Mkristo akafika kwenye nyumba ya mtu aitwaye Mfasiri, ambaye kazi yake ilikuwa kuwasaidia watu kuyaelewa mambo muhimu. Mfasiri akawasha mshumaa, akasema, “Njoo, nikuonyeshe maajabu kadhaa.” Akampitisha Mkristo chumba kwa chumba.</p> <p>Katika chumba kimoja palikuwa na sebule kubwa iliyojaa vumbi kiasi kwamba hakuna mtu aliyeweza kupumua. Mtu mmoja akaanza kufagia — lakini vumbi likaruka juu kama mawingu mazito, likamfanya Mkristo akohoe na kusongwa! Kisha msichana mmoja akaja, akanyunyizia maji sakafu yote taratibu, na ghafla chumba kikaweza kufagiwa, kikawa safi na kizuri.</p> <p>“Vumbi ni dhambi,” Mfasiri akaeleza. “Kuwaambia watu sheria tu huitimua dhambi juu, kama kufagia vumbi kavu. Lakini habari njema ya Yesu ni kama yale maji — hutuliza vumbi na kuufanya moyo kuwa safi kweli kweli.”</p> <p>Katika chumba kingine moto uliwaka karibu na ukuta. Mtu mmoja aliendelea kuumwagia maji ili auzime — lakini moto ukazidi tu kuwaka juu zaidi na kwa nguvu zaidi! Mkristo alishangaa. Ndipo Mfasiri akampeleka nyuma ya ukuta, ambapo mtu mwingine alikuwa akimimina mafuta juu ya moto kwa siri ili uendelee kuwaka. “Huyo ni Yesu,” akasema, “anayeufanya moto wa imani uendelee kuwaka moyoni mwako, hata mambo yanapojaribu kuuzima.”</p> <p>Mungu hupenda kutufundisha jinsi mambo yanavyofanya kazi kwa kweli kwa ndani. Mwombe akufumbue macho yako, naye atakuonyesha mambo ya ajabu.</p> <p><em>Mungu mpendwa, tafadhali nifumbue macho yangu nikuelewe. Uufanye moto wa upendo wako uendelee kuwaka ndani yangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Nini kilitokea yule mtu alipofagia chumba chenye vumbi, na ni nini kilichokifanya kiwe safi?",
+    "answer": "Vumbi liliruka juu likamfanya Mkristo asongwe. Msichana mmoja alipoinyunyizia sakafu maji, chumba kikaweza kufagiwa kikawa safi na kizuri."
+   },
+   {
+    "question": "Kwa nini moto uliendelea kuwaka ingawa mtu aliumwagia maji?",
+    "answer": "Nyuma ya ukuta mtu mwingine alikuwa akiumiminia mafuta kwa siri. Mfasiri alisema huyo ni Yesu, anayeufanya moto wa imani uendelee kuwaka moyoni mwako."
+   },
+   {
+    "question": "Je, kuna jambo kuhusu Mungu ambalo ungependa kulielewa vizuri zaidi? Ungewezaje kumwomba?",
+    "answer": "Somo la sura hii: Mungu hupenda kutufundisha jinsi mambo yanavyofanya kazi kwa kweli kwa ndani — mwombe akufumbue macho, naye atakuonyesha mambo ya ajabu."
+   }
+  ],
+  "body_text": "“Unifumbue macho yangu nipate kuyaona maajabu.” — kutoka Zaburi 119 Njiani Mkristo akafika kwenye nyumba ya mtu aitwaye Mfasiri, ambaye kazi yake ilikuwa kuwasaidia watu kuyaelewa mambo muhimu. Mfasiri akawasha mshumaa, akasema, “Njoo, nikuonyeshe maajabu kadhaa.” Akampitisha Mkristo chumba kwa chumba. Katika chumba kimoja palikuwa na sebule kubwa iliyojaa vumbi kiasi kwamba hakuna mtu aliyeweza kupumua. Mtu mmoja akaanza kufagia — lakini vumbi likaruka juu kama mawingu mazito, likamfanya Mkristo akohoe na kusongwa! Kisha msichana mmoja akaja, akanyunyizia maji sakafu yote taratibu, na ghafla chumba kikaweza kufagiwa, kikawa safi na kizuri. “Vumbi ni dhambi,” Mfasiri akaeleza. “Kuwaambia watu sheria tu huitimua dhambi juu, kama kufagia vumbi kavu. Lakini habari njema ya Yesu ni kama yale maji — hutuliza vumbi na kuufanya moyo kuwa safi kweli kweli.” Katika chumba kingine moto uliwaka karibu na ukuta. Mtu mmoja aliendelea kuumwagia maji ili auzime — lakini moto ukazidi tu kuwaka juu zaidi na kwa nguvu zaidi! Mkristo alishangaa. Ndipo Mfasiri akampeleka nyuma ya ukuta, ambapo mtu mwingine alikuwa akimimina mafuta juu ya moto kwa siri ili uendelee kuwaka. “Huyo ni Yesu,” akasema, “anayeufanya moto wa imani uendelee kuwaka moyoni mwako, hata mambo yanapojaribu kuuzima.” Mungu hupenda kutufundisha jinsi mambo yanavyofanya kazi kwa kweli kwa ndani. Mwombe akufumbue macho yako, naye atakuonyesha mambo ya ajabu. Mungu mpendwa, tafadhali nifumbue macho yangu nikuelewe. Uufanye moto wa upendo wako uendelee kuwaka ndani yangu. Amina.",
+  "word_count": 228
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Mzigo Unabingirika Mbali",
+  "body_html": "<blockquote>“Njoni kwangu, ninyi nyote msumbukao na wenye kulemewa na mizigo, nami nitawapumzisha.” — kutoka Mathayo 11</blockquote> <p>Hii ndiyo sehemu bora kuliko zote katika hadithi nzima.</p> <p>Mkristo akafika mahali palipokuwa na Msalaba, na hatua chache chini yake, kaburi lililo wazi. Unaukumbuka ule mzigo mzito aliokuwa ameubeba njia yote hii — ule ambao hakuweza kamwe kuuondoa, hata alijitahidi namna gani?</p> <p>Saa ile ile Mkristo alipoufikia Msalaba, mzigo wake ukafunguka mabegani mwake. Ukabingirika kutoka mgongoni mwake, ukaporomoka chini, chini, chini ya kilima — moja kwa moja ndani ya lile kaburi lililo wazi — ukatoweka. Ukatoweka kabisa! Hakuuona tena kamwe.</p> <p>Mkristo alifurahi mno hata hakujua la kufanya. Machozi ya furaha yakatiririka usoni mwake, akasema, “Amenipa raha kwa huzuni yake, na uzima kwa kifo chake.” Kisha akaruka juu mara tatu kwa furaha kubwa!</p> <p>Na Wenye Kung’aa watatu wakamjia. Wa kwanza akasema, “Dhambi zako zimesamehewa.” Wa pili akamvua nguo zake kuukuu zilizochanika, akamvika nguo mpya nzuri. Na wa tatu akamtia alama kwenye paji la uso, akampa barua iliyokunjwa aisome njiani na kuikabidhi kwenye lango la ule Mji mkuu.</p> <p>Ule mzigo mzito ulikuwa dhambi, na ni Yesu peke yake, aliyekufa Msalabani, aliyeweza kuuondoa. Huwezi kujiondolea mgongoni mwako mzigo wako wa makosa — lakini Yesu anaweza, naye huuondoa. Hiyo ndiyo habari njema kuliko zote.</p> <p><em>Yesu mpendwa, asante kwa kuniondolea mzigo mzito wa dhambi yangu pale Msalabani. Asante kwa kunipa raha. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nini kilichoupata mzigo wa Mkristo alipoufikia Msalaba?",
+    "answer": "Ulifunguka, ukabingirika chini ya kilima ndani ya kaburi lililo wazi, ukatoweka — hakuuona tena kamwe."
+   },
+   {
+    "question": "Wale Wenye Kung’aa watatu walimpa Mkristo nini?",
+    "answer": "Mmoja alisema dhambi zake zimesamehewa, mmoja alimvika nguo mpya nzuri, na mmoja alimtia alama kwenye paji la uso, akampa barua iliyokunjwa."
+   },
+   {
+    "question": "Je, tunaweza kuyaondoa makosa yetu wenyewe kwa kujitahidi sana? Hadithi inasema ni nani anayeweza?",
+    "answer": "Somo la sura hii: mzigo ni dhambi, nasi hatuwezi kujiondolea wenyewe — lakini Yesu, aliyekufa Msalabani, anaweza, naye huuondoa. Hiyo ndiyo habari njema kuliko zote."
+   }
+  ],
+  "body_text": "“Njoni kwangu, ninyi nyote msumbukao na wenye kulemewa na mizigo, nami nitawapumzisha.” — kutoka Mathayo 11 Hii ndiyo sehemu bora kuliko zote katika hadithi nzima. Mkristo akafika mahali palipokuwa na Msalaba, na hatua chache chini yake, kaburi lililo wazi. Unaukumbuka ule mzigo mzito aliokuwa ameubeba njia yote hii — ule ambao hakuweza kamwe kuuondoa, hata alijitahidi namna gani? Saa ile ile Mkristo alipoufikia Msalaba, mzigo wake ukafunguka mabegani mwake. Ukabingirika kutoka mgongoni mwake, ukaporomoka chini, chini, chini ya kilima — moja kwa moja ndani ya lile kaburi lililo wazi — ukatoweka. Ukatoweka kabisa! Hakuuona tena kamwe. Mkristo alifurahi mno hata hakujua la kufanya. Machozi ya furaha yakatiririka usoni mwake, akasema, “Amenipa raha kwa huzuni yake, na uzima kwa kifo chake.” Kisha akaruka juu mara tatu kwa furaha kubwa! Na Wenye Kung’aa watatu wakamjia. Wa kwanza akasema, “Dhambi zako zimesamehewa.” Wa pili akamvua nguo zake kuukuu zilizochanika, akamvika nguo mpya nzuri. Na wa tatu akamtia alama kwenye paji la uso, akampa barua iliyokunjwa aisome njiani na kuikabidhi kwenye lango la ule Mji mkuu. Ule mzigo mzito ulikuwa dhambi, na ni Yesu peke yake, aliyekufa Msalabani, aliyeweza kuuondoa. Huwezi kujiondolea mgongoni mwako mzigo wako wa makosa — lakini Yesu anaweza, naye huuondoa. Hiyo ndiyo habari njema kuliko zote. Yesu mpendwa, asante kwa kuniondolea mzigo mzito wa dhambi yangu pale Msalabani. Asante kwa kunipa raha. Amina.",
+  "word_count": 223
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Kilima Kigumu na Nyumba Nzuri",
+  "body_html": "<blockquote>“Vaeni silaha zote za Mungu.” — kutoka Waefeso 6</blockquote> <p>Punde njia ikafika kwenye kilima chenye mwinuko mkali kiitwacho Kilima Kigumu. Kilikuwa na mwinuko mkali mno hata Mkristo ikambidi apande kwa mikono na magoti! Katikati ya kupanda palikuwa na kibanda kidogo cha kupumzikia, naye Mkristo akaketi — lakini alikuwa amechoka sana hata akapitiwa na usingizi mzito, na ile barua yake ya thamani ikamponyoka mkononi.</p> <p>Alipoamka na kuendelea kwa haraka, ghafla akagundua kwamba barua imepotea! Lo, alihuzunika kama nini! Ikambidi ashuke tena njia yote kwenda kuitafuta. Ilikuwa pale pale, mahali alipolala. Akaiokota, akamshukuru Mungu, akaendelea kupanda.</p> <p>Karibu na kilele cha kilima walisimama simba wawili, nao wakanguruma! Wasafiri wawili walikuwa wamekimbia sasa hivi kwa hofu. Lakini mlinzi mmoja akaita, “Usiwaogope simba — wamefungwa minyororo! Wewe shika tu katikati ya njia.” Basi Mkristo akapita katikati yao kwa ujasiri, nao hawakuweza kumgusa.</p> <p>Juu kileleni palikuwa na nyumba kubwa ya fahari iitwayo Nyumba Nzuri, iliyojengwa ili kuwasaidia wasafiri waliochoka. Wanawake wema walioitwa Uangalifu, Busara, Utauwa na Upendo wakamkaribisha, wakampa chakula, wakamruhusu apumzike. Na kabla hajaondoka, wakamvika silaha imara zinazong’aa kuanzia kichwani hadi miguuni — kwa ajili ya safari iliyo mbele.</p> <p>Kumfuata Mungu kunaweza kuwa kama kupanda mlima mkali unaochosha, na wakati mwingine yale yanayotutisha yamefungwa minyororo na hayawezi kutudhuru kweli. Mungu hutupa pumziko, marafiki wema, na silaha kwa ajili ya safari. Endelea kupanda — na ubaki njiani.</p> <p><em>Mungu mpendwa, njia inapokuwa ngumu na yenye mwinuko, nipe pumziko, univike silaha zako ili niendelee mbele. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Mkristo ilimbidi ashuke tena Kilima Kigumu?",
+    "answer": "Alipitiwa na usingizi katika kibanda cha kupumzikia, na barua yake ya thamani ikamponyoka mkononi, basi akarudi kwenda kuitafuta."
+   },
+   {
+    "question": "Kwa nini wale simba waliokuwa wakinguruma hawakuweza kumdhuru Mkristo?",
+    "answer": "Walikuwa wamefungwa minyororo. Mlinzi alimwambia ashike katikati ya njia, basi akapita katikati yao kwa ujasiri."
+   },
+   {
+    "question": "Ni nini kinachokutisha ambacho huenda ni “simba aliyefungwa minyororo”? Ni nani anayekusaidia mambo yanapokuwa magumu?",
+    "answer": "Somo la sura hii: kumfuata Mungu kunaweza kuwa kama kupanda mlima mkali, na baadhi ya mambo yanayotutisha hayawezi kutudhuru kweli. Mungu hutupa pumziko, marafiki wema na silaha — endelea kupanda na ubaki njiani."
+   }
+  ],
+  "body_text": "“Vaeni silaha zote za Mungu.” — kutoka Waefeso 6 Punde njia ikafika kwenye kilima chenye mwinuko mkali kiitwacho Kilima Kigumu. Kilikuwa na mwinuko mkali mno hata Mkristo ikambidi apande kwa mikono na magoti! Katikati ya kupanda palikuwa na kibanda kidogo cha kupumzikia, naye Mkristo akaketi — lakini alikuwa amechoka sana hata akapitiwa na usingizi mzito, na ile barua yake ya thamani ikamponyoka mkononi. Alipoamka na kuendelea kwa haraka, ghafla akagundua kwamba barua imepotea! Lo, alihuzunika kama nini! Ikambidi ashuke tena njia yote kwenda kuitafuta. Ilikuwa pale pale, mahali alipolala. Akaiokota, akamshukuru Mungu, akaendelea kupanda. Karibu na kilele cha kilima walisimama simba wawili, nao wakanguruma! Wasafiri wawili walikuwa wamekimbia sasa hivi kwa hofu. Lakini mlinzi mmoja akaita, “Usiwaogope simba — wamefungwa minyororo! Wewe shika tu katikati ya njia.” Basi Mkristo akapita katikati yao kwa ujasiri, nao hawakuweza kumgusa. Juu kileleni palikuwa na nyumba kubwa ya fahari iitwayo Nyumba Nzuri, iliyojengwa ili kuwasaidia wasafiri waliochoka. Wanawake wema walioitwa Uangalifu, Busara, Utauwa na Upendo wakamkaribisha, wakampa chakula, wakamruhusu apumzike. Na kabla hajaondoka, wakamvika silaha imara zinazong’aa kuanzia kichwani hadi miguuni — kwa ajili ya safari iliyo mbele. Kumfuata Mungu kunaweza kuwa kama kupanda mlima mkali unaochosha, na wakati mwingine yale yanayotutisha yamefungwa minyororo na hayawezi kutudhuru kweli. Mungu hutupa pumziko, marafiki wema, na silaha kwa ajili ya safari. Endelea kupanda — na ubaki njiani. Mungu mpendwa, njia inapokuwa ngumu na yenye mwinuko, nipe pumziko, univike silaha zako ili niendelee mbele. Amina.",
+  "word_count": 238
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Mkristo Apigana na Joka",
+  "body_html": "<blockquote>“Mpingeni Shetani, naye atawakimbia.” — kutoka Yakobo 4</blockquote> <p>Chini katika bonde la chini, mnyama mmoja wa kutisha akaja akikanyaga kwa kishindo kumlaki Mkristo. Jina lake lilikuwa Apolioni. Alikuwa amefunikwa na magamba kama samaki, alikuwa na mabawa kama joka na miguu kama ya dubu, na moto na moshi vilitoka ndani yake. Alitisha mno!</p> <p>“Wewe ni mali yangu,” Apolioni akanguruma, “nami sitakuacha uende kwenye Mji ule.” Mkristo akakataa — sasa alikuwa akimtumikia Mfalme. Basi yule mnyama akamrushia mshale wa moto, kisha mwingine, na mwingine, mingi kama mvua ya mawe. Mkristo akainua ngao yake kuizuia, lakini akajeruhiwa kichwani, mkononi, na mguuni.</p> <p>Vita viliendelea na kuendelea — kwa nusu siku nzima! Mwishowe Mkristo akadhoofika sana hata upanga wake ukamponyoka mkononi, naye Apolioni akamrukia ili ammalize. Ilionekana kama ndio mwisho.</p> <p>Lakini Mkristo akajinyoosha, akaushika tena upanga wake, akalia, “Usinifurahie bado, adui yangu — nikianguka, nitainuka tena!” Akamchoma kwa nguvu nyingi, akapaza sauti, “Katika mambo hayo yote tunashinda, na zaidi ya kushinda, kwa yeye aliyetupenda!” Naye Apolioni akakunjua mabawa yake ya joka, akaruka akaenda zake. Mkristo alikuwa ameshinda — na majani ya mti wa uzima yakaponya majeraha yake.</p> <p>Shetani yupo kweli, lakini huhitaji kumshinda kwa nguvu zako mwenyewe. Mkristo alishinda kwa Neno la Mungu na ushindi wa Yesu. Unapokataa lililo baya na kumshikilia Mungu, adui hukimbia.</p> <p><em>Mungu mpendwa, unifanye jasiri. Nisaidie nikatae lililo baya, na nishinde kwa kumtumaini Yesu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Apolioni alitaka nini, na Mkristo alimwambia nini?",
+    "answer": "Apolioni alisema Mkristo ni mali yake na kwamba hatamwacha aende kwenye Mji ule. Mkristo akakataa — sasa alikuwa akimtumikia Mfalme."
+   },
+   {
+    "question": "Mkristo alifanya nini upanga wake ulipomponyoka mkononi?",
+    "answer": "Aliushika tena, akasema, “Nikianguka, nitainuka tena!”, akamchoma kwa nguvu nyingi — naye Apolioni akaruka akaenda zake."
+   },
+   {
+    "question": "Ni nini kinachokusaidia kukataa jambo unalojua ni baya?",
+    "answer": "Somo la sura hii: hatumshindi adui kwa nguvu zetu wenyewe. Mkristo alishinda kwa Neno la Mungu na ushindi wa Yesu — kataa lililo baya, umshikilie Mungu, naye adui hukimbia."
+   }
+  ],
+  "body_text": "“Mpingeni Shetani, naye atawakimbia.” — kutoka Yakobo 4 Chini katika bonde la chini, mnyama mmoja wa kutisha akaja akikanyaga kwa kishindo kumlaki Mkristo. Jina lake lilikuwa Apolioni. Alikuwa amefunikwa na magamba kama samaki, alikuwa na mabawa kama joka na miguu kama ya dubu, na moto na moshi vilitoka ndani yake. Alitisha mno! “Wewe ni mali yangu,” Apolioni akanguruma, “nami sitakuacha uende kwenye Mji ule.” Mkristo akakataa — sasa alikuwa akimtumikia Mfalme. Basi yule mnyama akamrushia mshale wa moto, kisha mwingine, na mwingine, mingi kama mvua ya mawe. Mkristo akainua ngao yake kuizuia, lakini akajeruhiwa kichwani, mkononi, na mguuni. Vita viliendelea na kuendelea — kwa nusu siku nzima! Mwishowe Mkristo akadhoofika sana hata upanga wake ukamponyoka mkononi, naye Apolioni akamrukia ili ammalize. Ilionekana kama ndio mwisho. Lakini Mkristo akajinyoosha, akaushika tena upanga wake, akalia, “Usinifurahie bado, adui yangu — nikianguka, nitainuka tena!” Akamchoma kwa nguvu nyingi, akapaza sauti, “Katika mambo hayo yote tunashinda, na zaidi ya kushinda, kwa yeye aliyetupenda!” Naye Apolioni akakunjua mabawa yake ya joka, akaruka akaenda zake. Mkristo alikuwa ameshinda — na majani ya mti wa uzima yakaponya majeraha yake. Shetani yupo kweli, lakini huhitaji kumshinda kwa nguvu zako mwenyewe. Mkristo alishinda kwa Neno la Mungu na ushindi wa Yesu. Unapokataa lililo baya na kumshikilia Mungu, adui hukimbia. Mungu mpendwa, unifanye jasiri. Nisaidie nikatae lililo baya, na nishinde kwa kumtumaini Yesu. Amina.",
+  "word_count": 224
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Kupita Katika Bonde la Giza",
+  "body_html": "<blockquote>“Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” — kutoka Zaburi 23</blockquote> <p>Sehemu iliyofuata ya safari ndiyo iliyotisha kuliko zote: mahali paitwapo Bonde la Uvuli wa Mauti. Palikuwa na giza sana hata mara nyingi Mkristo hakujua aweke miguu yake wapi. Upande mmoja palikuwa na shimo refu, na upande mwingine bwawa la hatari, na sauti za kutisha zilitoka katika giza lile jeusi.</p> <p>Upanga wake haukufaa kitu dhidi ya giza hili. Basi Mkristo akachukua silaha nyingine — iliyo bora kuliko zote. Iliitwa Maombi-Yote. Akalia tu, “Ee Bwana, nakusihi, uniokoe!”</p> <p>Kiumbe kimoja kiovu kikanyemelea karibu nyuma yake, kikamnong’oneza sikioni mawazo mabaya, kwa sauti ya chini mno hata Mkristo akaogopa kwamba mawazo yale mabaya yalikuwa yakitoka katika akili yake mwenyewe. Jambo hilo likamtisha hata zaidi.</p> <p>Lakini kisha — kupitia giza — akasikia sauti mbele yake. Mtu mwingine pia alikuwa akipita katika bonde lile, akisema kwa sauti: “Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” Moyo wa Mkristo ukainuka. Kumbe hakuwa peke yake! Na asubuhi ilipofika, akatoka salama upande wa pili.</p> <p>Wakati mwingine maisha huonekana kuwa ya giza na ya kutisha, nasi hatuwezi kuiona njia. Hapo ndipo jambo bora la kufanya ni lile lililo rahisi kuliko yote: kuomba. Mungu yuko pamoja nawe gizani, hata usipomwona, na asubuhi huja daima.</p> <p><em>Mungu mpendwa, mambo yanapokuwa ya giza na ya kutisha, nisaidie niombe. Asante kwa kuwa uko pamoja nami, wala sihitaji kuogopa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mkristo alitumia silaha gani katika bonde la giza, kwa kuwa upanga wake haukufaa kitu?",
+    "answer": "Silaha iitwayo Maombi-Yote. Alilia tu, “Ee Bwana, nakusihi, uniokoe!”"
+   },
+   {
+    "question": "Kwa nini moyo wa Mkristo uliinuka gizani?",
+    "answer": "Alisikia mtu fulani mbele yake akisema, “Sitaogopa mabaya; kwa maana Wewe upo pamoja nami,” akajua kwamba hakuwa peke yake."
+   },
+   {
+    "question": "Ni nini kinachokuogopesha gizani au wakati wa magumu? Ungeweza kufanya nini wakati huo?",
+    "answer": "Somo la sura hii: mambo yanapoonekana ya giza nasi hatuioni njia, jambo bora ni lile lililo rahisi kuliko yote — kuomba. Mungu yuko pamoja nawe gizani, na asubuhi huja daima."
+   }
+  ],
+  "body_text": "“Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” — kutoka Zaburi 23 Sehemu iliyofuata ya safari ndiyo iliyotisha kuliko zote: mahali paitwapo Bonde la Uvuli wa Mauti. Palikuwa na giza sana hata mara nyingi Mkristo hakujua aweke miguu yake wapi. Upande mmoja palikuwa na shimo refu, na upande mwingine bwawa la hatari, na sauti za kutisha zilitoka katika giza lile jeusi. Upanga wake haukufaa kitu dhidi ya giza hili. Basi Mkristo akachukua silaha nyingine — iliyo bora kuliko zote. Iliitwa Maombi-Yote. Akalia tu, “Ee Bwana, nakusihi, uniokoe!” Kiumbe kimoja kiovu kikanyemelea karibu nyuma yake, kikamnong’oneza sikioni mawazo mabaya, kwa sauti ya chini mno hata Mkristo akaogopa kwamba mawazo yale mabaya yalikuwa yakitoka katika akili yake mwenyewe. Jambo hilo likamtisha hata zaidi. Lakini kisha — kupitia giza — akasikia sauti mbele yake. Mtu mwingine pia alikuwa akipita katika bonde lile, akisema kwa sauti: “Naam, nijapopita kati ya bonde la uvuli wa mauti, sitaogopa mabaya; kwa maana Wewe upo pamoja nami.” Moyo wa Mkristo ukainuka. Kumbe hakuwa peke yake! Na asubuhi ilipofika, akatoka salama upande wa pili. Wakati mwingine maisha huonekana kuwa ya giza na ya kutisha, nasi hatuwezi kuiona njia. Hapo ndipo jambo bora la kufanya ni lile lililo rahisi kuliko yote: kuomba. Mungu yuko pamoja nawe gizani, hata usipomwona, na asubuhi huja daima. Mungu mpendwa, mambo yanapokuwa ya giza na ya kutisha, nisaidie niombe. Asante kwa kuwa uko pamoja nami, wala sihitaji kuogopa. Amina.",
+  "word_count": 243
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Soko la Ubatili na Rafiki Mwaminifu",
+  "body_html": "<blockquote>“Uwe mwaminifu hata kufa, nami nitakupa taji ya uzima.” — kutoka Ufunuo 2</blockquote> <p>Kufikia sasa Mkristo alikuwa na mwenzake wa safari — rafiki mwema, jasiri, aitwaye Mwaminifu. Pamoja wakafika kwenye mji wenye shughuli nyingi uliokuwa na soko kubwa mno liitwalo Soko la Ubatili, ambapo watu waliuza kila kitu kinachong’aa unachoweza kuwaza, wala hawakujali kitu kingine chochote.</p> <p>Wale wasafiri wawili hawakutaka hata kuvitazama vitu vile vyote vinavyometameta. “Mtanunua nini?” wauzaji wakapiga kelele. “Sisi tunanunua kweli,” wakajibu. Hilo tu ndilo walilotaka.</p> <p>Jambo hili likauchukiza sana umati. Wakawadhihaki wale marafiki wawili, wakawapaka uchafu, wakawafungia ndani ya tundu. Kisha wakamshtaki Mwaminifu jasiri mbele ya hakimu mbaya na mashahidi waongo, wakamtendea vibaya mno — lakini Mwaminifu hakuacha kamwe kumtumaini Mungu.</p> <p>Na hii ndiyo siri ya ajabu ambayo Bunyan alitaka watoto waijue: saa ile ile maisha ya Mwaminifu duniani yalipokwisha, gari la farasi likashuka kwa kasi, likamchukua juu kupitia mawingu, moja kwa moja hadi kwenye malango ya ule Mji mkuu. Yeye ndiye aliyefika huko kwanza kuliko wote! Mkristo akatoroka kutoka mji ule — na punde rafiki mpya aitwaye Mwenye-Tumaini akajiunga naye, kwa sababu Mwenye-Tumaini alikuwa ameona jinsi Mkristo na Mwaminifu walivyompenda Mungu kwa ujasiri.</p> <p>Ulimwengu haupendi kila mara watu wanaompenda Mungu, na kuwa mwaminifu kunaweza kugharimu kitu. Lakini Mungu huona, Mungu hukumbuka, na thawabu yake ni kubwa kuliko kitu chochote ambacho soko lile lingeweza kuuza.</p> <p><em>Mungu mpendwa, nisaidie niipende kweli kuliko vitu vinavyong’aa, na nibaki mwaminifu kwako, liwe liwalo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mkristo na Mwaminifu walisema nini wauzaji walipopiga kelele, “Mtanunua nini?”",
+    "answer": "“Sisi tunanunua kweli.” Hawakutaka hata kuvitazama vitu vile vinavyometameta."
+   },
+   {
+    "question": "Ni nini kilichompata Mwaminifu maisha yake duniani yalipokwisha?",
+    "answer": "Gari la farasi lilishuka kwa kasi, likamchukua juu kupitia mawingu hadi kwenye malango ya ule Mji mkuu — yeye ndiye aliyefika huko kwanza."
+   },
+   {
+    "question": "Je, wakati mwingine ni vigumu kufanya lililo sawa wengine wanapocheka au wanapotaka vitu vinavyong’aa? Ni nini kinachosaidia?",
+    "answer": "Somo la sura hii: ulimwengu haupendi kila mara watu wanaompenda Mungu, na kuwa mwaminifu kunaweza kugharimu kitu — lakini Mungu huona na hukumbuka, na thawabu yake ni kubwa kuliko kitu chochote ambacho soko lile lingeweza kuuza."
+   }
+  ],
+  "body_text": "“Uwe mwaminifu hata kufa, nami nitakupa taji ya uzima.” — kutoka Ufunuo 2 Kufikia sasa Mkristo alikuwa na mwenzake wa safari — rafiki mwema, jasiri, aitwaye Mwaminifu. Pamoja wakafika kwenye mji wenye shughuli nyingi uliokuwa na soko kubwa mno liitwalo Soko la Ubatili, ambapo watu waliuza kila kitu kinachong’aa unachoweza kuwaza, wala hawakujali kitu kingine chochote. Wale wasafiri wawili hawakutaka hata kuvitazama vitu vile vyote vinavyometameta. “Mtanunua nini?” wauzaji wakapiga kelele. “Sisi tunanunua kweli,” wakajibu. Hilo tu ndilo walilotaka. Jambo hili likauchukiza sana umati. Wakawadhihaki wale marafiki wawili, wakawapaka uchafu, wakawafungia ndani ya tundu. Kisha wakamshtaki Mwaminifu jasiri mbele ya hakimu mbaya na mashahidi waongo, wakamtendea vibaya mno — lakini Mwaminifu hakuacha kamwe kumtumaini Mungu. Na hii ndiyo siri ya ajabu ambayo Bunyan alitaka watoto waijue: saa ile ile maisha ya Mwaminifu duniani yalipokwisha, gari la farasi likashuka kwa kasi, likamchukua juu kupitia mawingu, moja kwa moja hadi kwenye malango ya ule Mji mkuu. Yeye ndiye aliyefika huko kwanza kuliko wote! Mkristo akatoroka kutoka mji ule — na punde rafiki mpya aitwaye Mwenye-Tumaini akajiunga naye, kwa sababu Mwenye-Tumaini alikuwa ameona jinsi Mkristo na Mwaminifu walivyompenda Mungu kwa ujasiri. Ulimwengu haupendi kila mara watu wanaompenda Mungu, na kuwa mwaminifu kunaweza kugharimu kitu. Lakini Mungu huona, Mungu hukumbuka, na thawabu yake ni kubwa kuliko kitu chochote ambacho soko lile lingeweza kuuza. Mungu mpendwa, nisaidie niipende kweli kuliko vitu vinavyong’aa, na nibaki mwaminifu kwako, liwe liwalo. Amina.",
+  "word_count": 234
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Kutoroka Kutoka kwa Jitu Kata-Tamaa",
+  "body_html": "<blockquote>“Ametukirimia ahadi kubwa mno, za thamani.” — kutoka 2 Petro 1</blockquote> <p>Siku moja, ili kufanya mwendo uwe rahisi zaidi, Mkristo na Mwenye-Tumaini wakatoka katika ile njia nyembamba, wakaingia katika uwanda wa majani uliopendeza zaidi kwa macho. Kosa kubwa! Dhoruba ikaja, wakapotea, wakalala usingizi katika shamba lisilo lao.</p> <p>Alfajiri jitu kubwa, katili, likawakuta. Jina lake lilikuwa Jitu Kata-Tamaa, na shamba lile lilikuwa mali ya makao yake, Ngome ya Mashaka. Likawaburuta wale marafiki wawili, likawatupa ndani ya gereza la chini lenye giza na harufu mbaya, bila chakula wala mwanga, kwa siku nyingi sana. Jitu lile liliwatendea ukatili mkubwa, likawaambia wakate tamaa kabisa.</p> <p>Maskini Mkristo na Mwenye-Tumaini walihuzunika mno. Lakini Mwenye-Tumaini aliendelea kusema, “Jipe moyo — shikilia — Mungu atatusaidia.” Na Jumamosi usiku wa manane, wakaanza kuomba.</p> <p>Kisha, kabla kidogo ya asubuhi, Mkristo akapaza sauti ghafla: “Mimi ni mjinga kama nini! Nimekuwa nikilala katika gereza hili wakati ningeweza kutoka huru! Nina ufunguo mfukoni mwangu, uitwao Ahadi, utakaofungua kufuli lolote katika Ngome ya Mashaka!”</p> <p>Akautoa ule ufunguo. Ukafungua mlango wa gereza. Ukafungua mlango wa nje. Ukafungua hata lango zito la chuma. Na wale marafiki wawili wakatoka huru, wakarudi kwenye barabara ya Mfalme mwema.</p> <p>Unapojisikia umenaswa na huna tumaini, ukumbuke ufunguo wa Mkristo. Ahadi za Mungu — mambo ambayo ametuambia katika Biblia — zinaweza kufungua gereza lolote la kukata tamaa. Usisahau kwamba umeushika ufunguo.</p> <p><em>Mungu mpendwa, ninapojisikia nimenaswa na nina huzuni, nisaidie nizikumbuke ahadi zako. Asante kwa kuwa zinaniweka huru. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mkristo na Mwenye-Tumaini waliishiaje katika Ngome ya Mashaka?",
+    "answer": "Waliiacha ile njia nyembamba wakaingia katika uwanda uliopendeza zaidi kwa macho, wakapotea katika dhoruba, wakalala usingizi katika shamba la Jitu Kata-Tamaa."
+   },
+   {
+    "question": "Mwishowe walitokaje katika gereza lile la chini?",
+    "answer": "Baada ya kuomba, Mkristo alikumbuka ufunguo mfukoni mwake uitwao Ahadi. Ulifungua mlango wa gereza, mlango wa nje na lango la chuma."
+   },
+   {
+    "question": "Unapojisikia mwenye huzuni au umenaswa, ni “ufunguo” gani ungeweza kuukumbuka?",
+    "answer": "Somo la sura hii: ahadi za Mungu — mambo anayotuambia katika Biblia — zinaweza kufungua gereza lolote la kukata tamaa. Usisahau kwamba umeushika ufunguo."
+   }
+  ],
+  "body_text": "“Ametukirimia ahadi kubwa mno, za thamani.” — kutoka 2 Petro 1 Siku moja, ili kufanya mwendo uwe rahisi zaidi, Mkristo na Mwenye-Tumaini wakatoka katika ile njia nyembamba, wakaingia katika uwanda wa majani uliopendeza zaidi kwa macho. Kosa kubwa! Dhoruba ikaja, wakapotea, wakalala usingizi katika shamba lisilo lao. Alfajiri jitu kubwa, katili, likawakuta. Jina lake lilikuwa Jitu Kata-Tamaa, na shamba lile lilikuwa mali ya makao yake, Ngome ya Mashaka. Likawaburuta wale marafiki wawili, likawatupa ndani ya gereza la chini lenye giza na harufu mbaya, bila chakula wala mwanga, kwa siku nyingi sana. Jitu lile liliwatendea ukatili mkubwa, likawaambia wakate tamaa kabisa. Maskini Mkristo na Mwenye-Tumaini walihuzunika mno. Lakini Mwenye-Tumaini aliendelea kusema, “Jipe moyo — shikilia — Mungu atatusaidia.” Na Jumamosi usiku wa manane, wakaanza kuomba. Kisha, kabla kidogo ya asubuhi, Mkristo akapaza sauti ghafla: “Mimi ni mjinga kama nini! Nimekuwa nikilala katika gereza hili wakati ningeweza kutoka huru! Nina ufunguo mfukoni mwangu, uitwao Ahadi, utakaofungua kufuli lolote katika Ngome ya Mashaka!” Akautoa ule ufunguo. Ukafungua mlango wa gereza. Ukafungua mlango wa nje. Ukafungua hata lango zito la chuma. Na wale marafiki wawili wakatoka huru, wakarudi kwenye barabara ya Mfalme mwema. Unapojisikia umenaswa na huna tumaini, ukumbuke ufunguo wa Mkristo. Ahadi za Mungu — mambo ambayo ametuambia katika Biblia — zinaweza kufungua gereza lolote la kukata tamaa. Usisahau kwamba umeushika ufunguo. Mungu mpendwa, ninapojisikia nimenaswa na nina huzuni, nisaidie nizikumbuke ahadi zako. Asante kwa kuwa zinaniweka huru. Amina.",
+  "word_count": 236
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Wachungaji Wanaoonyesha Maajabu",
+  "body_html": "<blockquote>“Bwana ndiye mchungaji wangu, sitapungukiwa na kitu.” — kutoka Zaburi 23</blockquote> <p>Baada ya hayo yote, Mkristo na Mwenye-Tumaini wakafika mahali pazuri sana: Milima ya Kupendeza, iliyokuwa karibu mno na ule Mji mkuu hata ungeweza karibu kuuona. Vilima vya kijani, bustani, chemchemi — na wachungaji wanne wema waliokuwa wakiwatunza kondoo. Majina yao yalikuwa Maarifa, Uzoefu, Mwangalifu, na Mnyofu.</p> <p>Wachungaji wakawakaribisha wale wasafiri waliochoka, wakawapa chakula, wakawaruhusu wapumzike. Kisha wakasema, “Njooni, tuwaonyeshe mambo kadhaa.” Wakawapandisha vilimani, wakawaonyesha mandhari ambayo kwa sehemu yalikuwa ya ajabu na kwa sehemu yalikuwa onyo — mahali ambapo wasafiri walioiacha njia sahihi walikuwa wamepatwa na madhara. Jambo hilo likawafanya Mkristo na Mwenye-Tumaini wafurahi sana kwamba walikuwa wamebaki njiani.</p> <p>Bora kuliko yote, wachungaji wakawapeleka juu ya kilima kirefu kiitwacho Wazi, wakawapa darubini maalumu. Mikono ya wale marafiki wawili ilitetemeka kwa msisimko, lakini kupitia darubini ile wakaona kidogo — mbali, mbali sana mbele — lango la Mji wa Mbinguni lenyewe. Mwisho wa safari yao ulikuwa unaonekana!</p> <p>Wasafiri walipoanza safari tena, wachungaji wakawapa onyo la upole: endeleeni kukesha, wala msilale usingizi njiani.</p> <p>Mungu ni kama wale wachungaji wema. Hutulisha, hutupa pumziko, hutuonya juu ya hatari, na hutuwezesha kuona kidogo nyumbani kwa ajabu anakotupeleka. Bwana ndiye mchungaji wako — unaweza kumtumaini akuongoze njia yote.</p> <p><em>Mungu mpendwa, asante kwa kuwa mchungaji wangu, unayenilisha, unayeniongoza, na kunionyesha njia ya kurudi nyumbani. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Wachungaji walimfanyia nini Mkristo na Mwenye-Tumaini?",
+    "answer": "Waliwakaribisha, wakawapa chakula na pumziko, wakawaonyesha maonyo juu ya kuiacha njia, na wakawaruhusu watazame kupitia darubini."
+   },
+   {
+    "question": "Wasafiri waliona nini kupitia darubini juu ya kilima kiitwacho Wazi?",
+    "answer": "Waliona kidogo, mbali mbele, lango la Mji wa Mbinguni — mwisho wa safari yao ulikuwa unaonekana."
+   },
+   {
+    "question": "Mungu yukoje kama wale wachungaji wema katika hadithi hii?",
+    "answer": "Somo la sura hii: kama wale wachungaji, Mungu hutulisha, hutupa pumziko, hutuonya juu ya hatari, na hutuonyesha nyumbani anakotupeleka — unaweza kumtumaini akuongoze njia yote."
+   }
+  ],
+  "body_text": "“Bwana ndiye mchungaji wangu, sitapungukiwa na kitu.” — kutoka Zaburi 23 Baada ya hayo yote, Mkristo na Mwenye-Tumaini wakafika mahali pazuri sana: Milima ya Kupendeza, iliyokuwa karibu mno na ule Mji mkuu hata ungeweza karibu kuuona. Vilima vya kijani, bustani, chemchemi — na wachungaji wanne wema waliokuwa wakiwatunza kondoo. Majina yao yalikuwa Maarifa, Uzoefu, Mwangalifu, na Mnyofu. Wachungaji wakawakaribisha wale wasafiri waliochoka, wakawapa chakula, wakawaruhusu wapumzike. Kisha wakasema, “Njooni, tuwaonyeshe mambo kadhaa.” Wakawapandisha vilimani, wakawaonyesha mandhari ambayo kwa sehemu yalikuwa ya ajabu na kwa sehemu yalikuwa onyo — mahali ambapo wasafiri walioiacha njia sahihi walikuwa wamepatwa na madhara. Jambo hilo likawafanya Mkristo na Mwenye-Tumaini wafurahi sana kwamba walikuwa wamebaki njiani. Bora kuliko yote, wachungaji wakawapeleka juu ya kilima kirefu kiitwacho Wazi, wakawapa darubini maalumu. Mikono ya wale marafiki wawili ilitetemeka kwa msisimko, lakini kupitia darubini ile wakaona kidogo — mbali, mbali sana mbele — lango la Mji wa Mbinguni lenyewe. Mwisho wa safari yao ulikuwa unaonekana! Wasafiri walipoanza safari tena, wachungaji wakawapa onyo la upole: endeleeni kukesha, wala msilale usingizi njiani. Mungu ni kama wale wachungaji wema. Hutulisha, hutupa pumziko, hutuonya juu ya hatari, na hutuwezesha kuona kidogo nyumbani kwa ajabu anakotupeleka. Bwana ndiye mchungaji wako — unaweza kumtumaini akuongoze njia yote. Mungu mpendwa, asante kwa kuwa mchungaji wangu, unayenilisha, unayeniongoza, na kunionyesha njia ya kurudi nyumbani. Amina.",
+  "word_count": 218
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Kuvuka Mto Hadi Mji wa Dhahabu",
+  "body_html": "<blockquote>“Upitapo katika maji, nitakuwa pamoja nawe.” — kutoka Isaya 43</blockquote> <p>Hatimaye Mkristo na Mwenye-Tumaini wakakaribia mwisho wa safari yao ndefu. Waliweza kuuona Mji wa Mbinguni uking’aa juu ya kilima chake, kuta zake na lango lake vikimeremeta kama dhahabu. Lakini kati yao na lile lango palikuwa na kitu kimoja cha mwisho: mto mrefu, usio na daraja la kuuvuka.</p> <p>“Lazima mpite katika mto huu,” wakaambiwa, “la sivyo hamwezi kulifikia lango.” Basi wale marafiki wawili wakaingia — na maji yalikuwa marefu. Mkristo akaanza kuzama, na hofu ikamjaa. “Ninazama!” akalia. “Mawimbi yanapita juu ya kichwa changu!” Wasiwasi wake wote wa zamani ukamrudia kwa nguvu.</p> <p>Lakini Mwenye-Tumaini akakiinua juu kichwa cha Mkristo, akaita, “Jipe moyo, ndugu yangu — ninaweza kuhisi sakafu ya mto, nayo ni imara!” Naye Mkristo akaikumbuka ahadi ya Mungu: “Upitapo katika maji, nitakuwa pamoja nawe.” Mara miguu yake ikapata ardhi, na pamoja wakavuka salama hadi upande wa pili.</p> <p>Huko, wenye kung’aa wawili wakawalaki, wakawapandisha hadi kwenye lango la dhahabu. Wakakabidhi barua zao, na lango likafunguka. Wakapewa majoho yanayong’aa, na vinubi, na taji — na walipokuwa wakiingia, kila kengele katika Mji ule ililia kwa furaha, na sauti moja ikasema, “Ingieni katika furaha ya Bwana wenu!”</p> <p>Mkristo alikuwa amefika nyumbani hatimaye, salama na mwenye furaha tele milele. Na huko ndiko njia ya kumfuata Mungu inakompeleka kila msafiri anayeendelea kumtumaini — njia yote mpaka nyumbani.</p> <p><em>Mungu mpendwa, asante kwa kuwa uko pamoja nami njia yote, hata mpaka mwisho kabisa, na kwamba Mji wako ndio nyumbani. Nisaidie niendelee kutembea pamoja nawe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni kitu gani cha mwisho kilichokuwa kati ya Mkristo na Mji wa Dhahabu?",
+    "answer": "Mto mrefu usio na daraja. Ilibidi wapite ndani yake ili kulifikia lango."
+   },
+   {
+    "question": "Mwenye-Tumaini alimsaidiaje Mkristo mtoni?",
+    "answer": "Alikiinua juu kichwa cha Mkristo, akaita, “Jipe moyo, ndugu yangu — ninaweza kuhisi sakafu ya mto, nayo ni imara!”"
+   },
+   {
+    "question": "Unapoogopa, ni ahadi gani kutoka katika hadithi hii ungeweza kuikumbuka?",
+    "answer": "Somo la sura hii: Mungu anaahidi, “Upitapo katika maji, nitakuwa pamoja nawe.” Yuko pamoja nasi njia yote, na Mji wake ndio nyumbani kwa kila mtu anayeendelea kumtumaini."
+   }
+  ],
+  "body_text": "“Upitapo katika maji, nitakuwa pamoja nawe.” — kutoka Isaya 43 Hatimaye Mkristo na Mwenye-Tumaini wakakaribia mwisho wa safari yao ndefu. Waliweza kuuona Mji wa Mbinguni uking’aa juu ya kilima chake, kuta zake na lango lake vikimeremeta kama dhahabu. Lakini kati yao na lile lango palikuwa na kitu kimoja cha mwisho: mto mrefu, usio na daraja la kuuvuka. “Lazima mpite katika mto huu,” wakaambiwa, “la sivyo hamwezi kulifikia lango.” Basi wale marafiki wawili wakaingia — na maji yalikuwa marefu. Mkristo akaanza kuzama, na hofu ikamjaa. “Ninazama!” akalia. “Mawimbi yanapita juu ya kichwa changu!” Wasiwasi wake wote wa zamani ukamrudia kwa nguvu. Lakini Mwenye-Tumaini akakiinua juu kichwa cha Mkristo, akaita, “Jipe moyo, ndugu yangu — ninaweza kuhisi sakafu ya mto, nayo ni imara!” Naye Mkristo akaikumbuka ahadi ya Mungu: “Upitapo katika maji, nitakuwa pamoja nawe.” Mara miguu yake ikapata ardhi, na pamoja wakavuka salama hadi upande wa pili. Huko, wenye kung’aa wawili wakawalaki, wakawapandisha hadi kwenye lango la dhahabu. Wakakabidhi barua zao, na lango likafunguka. Wakapewa majoho yanayong’aa, na vinubi, na taji — na walipokuwa wakiingia, kila kengele katika Mji ule ililia kwa furaha, na sauti moja ikasema, “Ingieni katika furaha ya Bwana wenu!” Mkristo alikuwa amefika nyumbani hatimaye, salama na mwenye furaha tele milele. Na huko ndiko njia ya kumfuata Mungu inakompeleka kila msafiri anayeendelea kumtumaini — njia yote mpaka nyumbani. Mungu mpendwa, asante kwa kuwa uko pamoja nami njia yote, hata mpaka mwisho kabisa, na kwamba Mji wako ndio nyumbani. Nisaidie niendelee kutembea pamoja nawe. Amina.",
+  "word_count": 246
+ }
+}
+]
