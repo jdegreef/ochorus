@@ -3,6 +3,7 @@
  "slug": "amanda-smith-autobiography-children",
  "language": "pt",
  "job_issue": 5373,
+ "pull_request": 5395,
  "note": [
   "Each chapter opens with a KJV verse in the English, so the Portuguese epigraph quotes Scripture in the reverent biblical register rather than in the retelling's child voice. api.takeroot.bible (Bíblia Livre) was egress-blocked from this session, so eight epigraphs reuse, verbatim, the wording an already-shipped Portuguese work gives the same verse (source_file names it; checked as an exact substring of that file). The other four (Matthew 25:35, Proverbs 4:7, Psalm 56:3, Matthew 18:5) are self_rendered; Psalm 56:3 follows the wording two shipped pt articles use, which are not citable fixture sources.",
   "Body echoes (Colossians 3:15 in chapter 10's prayer, Psalm 91:11 and Matthew 18:5 in the closing paragraphs of chapters 11 and 12) are retold in the child register and are self_rendered. References and block indices mirror the am edition's notes. AI-translated in-session; awaiting native review."
