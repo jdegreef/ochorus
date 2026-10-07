@@ -102,5 +102,19 @@
     "note": [
       "Job #2788. Source books: around-the-wicket-gate (Swahili edition shipped, «Karibu na Lango Jembamba») and men-and-women-who-gave-everything-2 (Swahili edition shipped in THIS PR, «Wanaume na Wanawake Waliotoa Yote»). With men-and-women now in sw, both source books are published in Swahili, so seed_plans creates the (first-steps-for-teens, sw) row — hence the prose must ship in this same PR. Title/description echo the shipped Swahili book titles («langoni» for the wicket gate, «wanaume na wanawake waliomtolea Yeye yote» for the biographies)."
     ]
+  },
+  "family-devotions-pilgrims-journey": {
+    "title": "Ibada ya Familia: Safari ya Msafiri",
+    "description": "Ibada za familia za dakika tano kwa watoto na watu wazima wanaosoma pamoja nao, kwa takriban usiku wa wiki tatu na nusu. Someni kwa sauti sura moja fupi: kwanza msafiri wa Bunyan katika njia ya kwenda mji wa mbinguni, kisha picha za shambani za Spurgeon. Kila sura inamalizika kwa sala na maswali matatu ya kuzungumza pamoja.",
+    "note": [
+      "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+    ]
+  },
+  "family-devotions-heroes-who-trusted-god": {
+    "title": "Ibada ya Familia: Mashujaa Waliomtumaini Mungu",
+    "description": "Wiki tano za ibada za familia za dakika tano: hadithi za kweli za watu watatu waliomtumaini Mungu kwa kila kitu, zikisomwa kwa sauti sura moja fupi kila usiku — George Müller na yatima wake, Hudson Taylor akiwa njiani kwenda China, na Amanda Smith, aliyezaliwa utumwani, aliyeomba apate jozi ya viatu. Kila sura inamalizika kwa sala na maswali matatu ya kuzungumza pamoja.",
+    "note": [
+      "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+    ]
   }
 }

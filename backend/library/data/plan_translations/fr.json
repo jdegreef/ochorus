@@ -118,5 +118,19 @@
   "note": [
    "AI-drafted; awaiting native review. Three-book plan backed by the fr editions of rooted-1 … rooted-3 (rooted-3.fr shipped with this entry, so seed_plans now creates the fr row). Title follows the shipped book titles «Enracinés – 30 jours avec Dieu pour les jeunes – Livre N»; the three book names are the lead words of the fr subtitles («Planté» / «Suivre Jésus» / «Des fruits qui poussent»). Replaces the per-book rooted-book-1/2/3-30-days cards and the first half of rooted-six-months-with-god. «Une courte méditation par jour» mirrors the books' own «courtes méditations quotidiennes»."
   ]
+ },
+ "family-devotions-pilgrims-journey": {
+  "title": "Culte en famille : le voyage du pèlerin",
+  "description": "Des cultes de famille de cinq minutes pour les enfants et les adultes qui lisent avec eux, pendant environ trois semaines et demie de soirées. Lisez à voix haute un court chapitre : d’abord le pèlerin de Bunyan sur la route de la cité céleste, puis les images de la ferme de Spurgeon. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+  ]
+ },
+ "family-devotions-heroes-who-trusted-god": {
+  "title": "Culte en famille : des héros qui ont fait confiance à Dieu",
+  "description": "Cinq semaines de cultes de famille de cinq minutes : les histoires vraies de trois personnes qui ont fait confiance à Dieu pour tout, lues à voix haute un court chapitre chaque soir — George Müller et ses orphelins, Hudson Taylor en route pour la Chine, et Amanda Smith, née dans l’esclavage, qui a prié pour une paire de chaussures. Chacun se termine par une prière et trois questions à discuter ensemble.",
+  "note": [
+   "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+  ]
  }
 }
