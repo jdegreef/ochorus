@@ -9230,6 +9230,33 @@
 			"layout": "fade/oxblood",
 			"bar": 0
 		},
+		"pt/amanda-smith-autobiography-children": {
+			"ground": "9c01d0f1d31e0fa5c3615b0ddeeaaf50af586f3470af7a68351f3c2bd0d3ad67",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[130, 293, 470, 369],
+					[108, 359, 492, 435],
+					[101, 424, 499, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
 		"pt/around-the-wicket-gate": {
 			"ground": "4360b4473c07cd14c6ff580afe6e8666ad8f8f62111566eba61329083139e456",
 			"style": "revival",
