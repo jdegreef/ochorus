@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "es",
+  "title": "La práctica de la presencia de Dios (Para niños)",
+  "subtitle": "",
+  "description": "La historia real del Hermano Lorenzo, un joven criado muy torpe que llegó a ser cocinero en una cocina llena de trabajo y aprendió a hablar con Dios todo el día, incluso entre ollas y sartenes. Esta edición para niños vuelve a contar su vida y su sencilla enseñanza en capítulos cortos, pensados para leerse en voz alta: un versículo de la Biblia, una parte de su historia, una cosa que significa para ti y una oración cortita, con preguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "¿De qué trata La práctica de la presencia de Dios (Para niños)?",
+    "answer": "Es una versión para niños de un librito muy querido sobre el Hermano Lorenzo. Cuenta cómo un joven torpe llegó a amar a Dios, trabajó durante años en una cocina que no le gustaba y aprendió a hablar con Dios a lo largo de todo el día: mientras cocinaba, cuando viajaba, cuando estaba enfermo y cuando se hizo viejo."
+   },
+   {
+    "question": "¿Quién era el Hermano Lorenzo?",
+    "answer": "Un francés que vivió hace más de trescientos años. Había sido lacayo, es decir, un criado, y él mismo decía que era torpe. Después de que Dios cambiara su corazón a los dieciocho años, se unió a una comunidad de Hermanos y trabajó como su cocinero. La gente venía a verlo y le escribía para aprender cómo se mantenía tan cerca de Dios."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está pensado para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una parte de la historia o de la enseñanza del Hermano Lorenzo, muestra una cosa sencilla que significa para ti y termina con una oración cortita. Después vienen tres preguntas para conversar."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños de ocho a doce años, más o menos, para que un adulto se lo lea en voz alta o para que un niño más grande lo lea solo. Para lectores mayores también está disponible La práctica de la presencia de Dios completa, con las conversaciones y las cartas que se conservaron."
+   },
+   {
+    "question": "¿Qué significa “practicar la presencia de Dios”?",
+    "answer": "Significa recordar que Dios está siempre con nosotros y hablar con él a lo largo de todo el día, no solo en los momentos especiales de oración. El Hermano Lorenzo lo hacía con oraciones cortas y sencillas en su corazón mientras trabajaba."
+   },
+   {
+    "question": "¿Hace falta vivir en un monasterio para orar como el Hermano Lorenzo?",
+    "answer": "No. El mismo Hermano Lorenzo decía que no hace falta estar en la iglesia para estar con Dios, y que cualquiera puede hablar con él: en la escuela, en casa, a la hora de comer o en medio de un día lleno de cosas que hacer."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una adaptación de Ochorus para lectores jóvenes de La práctica de la presencia de Dios, del Hermano Lorenzo, obra de dominio público. La forma de contarla es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/es/the-practice-of-the-presence-of-god-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "El joven que lo rompía todo",
+  "body_html": "<blockquote>“La gente mira lo de afuera, pero el Señor mira el corazón.” — de 1 Samuel 16</blockquote> <p>Hace mucho tiempo, más de trescientos años antes de que tú nacieras, vivió un hombre al que hoy llamamos el Hermano Lorenzo. Antes de que nadie lo llamara “Hermano”, era un joven criado.</p> <p>Trabajaba como lacayo para un hombre importante, un tesorero llamado señor Fieubert. El trabajo de un lacayo era atender a su amo, llevar cosas, traer cosas y mantenerlo todo limpio y ordenado.</p> <p>Pero había un problema. Lorenzo era grandote, y era torpe. Él mismo lo decía. Se llamaba a sí mismo “un grandullón torpe que lo rompía todo”. Imagínatelo intentando llevar una bandeja de tazas finas y chocando contra una puerta. ¡Crac! Imagínatelo alargando la mano para tomar un plato y tirando una jarra. ¡Chof!</p> <p>Casi nadie habría adivinado que aquel joven torpe sería recordado un día en todo el mundo. No habrían adivinado que la gente seguiría leyendo sobre él cientos de años después. Pero Dios no estaba mirando sus manos torpes. Dios estaba mirando su corazón.</p> <p>Y a ese corazón estaba a punto de pasarle algo.</p> <p>¿Alguna vez te sientes torpe, o sientes que no se te dan bien las cosas? Tal vez derramas tu bebida, o se te cae la pelota, o te equivocas en la respuesta. Eso no impide que Dios te ame ni que te use. Él mira tu corazón.</p> <p><em>Querido Dios, gracias porque no me amas por ser listo o cuidadoso, sino porque soy tuyo. Por favor, cuida mi corazón. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué trabajo hacía Lorenzo cuando era joven?",
+    "answer": "Era lacayo, un criado, de un hombre importante llamado señor Fieubert, que era tesorero."
+   },
+   {
+    "question": "¿Qué decía Lorenzo de sí mismo?",
+    "answer": "Decía que era “un grandullón torpe que lo rompía todo”, es decir, muy torpe."
+   },
+   {
+    "question": "¿Alguna vez te has sentido torpe o que no eres lo bastante bueno? ¿Qué mira Dios?",
+    "answer": "La idea del capítulo: Dios no se fija en lo hábiles que somos por fuera. Él mira el corazón, y puede usar a cualquiera."
+   }
+  ],
+  "body_text": "“La gente mira lo de afuera, pero el Señor mira el corazón.” — de 1 Samuel 16 Hace mucho tiempo, más de trescientos años antes de que tú nacieras, vivió un hombre al que hoy llamamos el Hermano Lorenzo. Antes de que nadie lo llamara “Hermano”, era un joven criado. Trabajaba como lacayo para un hombre importante, un tesorero llamado señor Fieubert. El trabajo de un lacayo era atender a su amo, llevar cosas, traer cosas y mantenerlo todo limpio y ordenado. Pero había un problema. Lorenzo era grandote, y era torpe. Él mismo lo decía. Se llamaba a sí mismo “un grandullón torpe que lo rompía todo”. Imagínatelo intentando llevar una bandeja de tazas finas y chocando contra una puerta. ¡Crac! Imagínatelo alargando la mano para tomar un plato y tirando una jarra. ¡Chof! Casi nadie habría adivinado que aquel joven torpe sería recordado un día en todo el mundo. No habrían adivinado que la gente seguiría leyendo sobre él cientos de años después. Pero Dios no estaba mirando sus manos torpes. Dios estaba mirando su corazón. Y a ese corazón estaba a punto de pasarle algo. ¿Alguna vez te sientes torpe, o sientes que no se te dan bien las cosas? Tal vez derramas tu bebida, o se te cae la pelota, o te equivocas en la respuesta. Eso no impide que Dios te ame ni que te use. Él mira tu corazón. Querido Dios, gracias porque no me amas por ser listo o cuidadoso, sino porque soy tuyo. Por favor, cuida mi corazón. Amén.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "El árbol en invierno",
+  "body_html": "<blockquote>“Desde que Dios creó el mundo, su gran poder se ve claramente en las cosas que él ha hecho.” — de Romanos 1</blockquote> <p>Cuando Lorenzo tenía dieciocho años, era invierno. Todo estaba frío y gris.</p> <p>Un día se detuvo a mirar un árbol. Había perdido todas sus hojas. Sus ramas estaban peladas y marrones, como dedos huesudos contra el cielo. Parecía muerto.</p> <p>Pero Lorenzo sabía algo sobre los árboles. Sabía que dentro de poco, cuando llegara la primavera, volverían a salir hojas verdes y nuevas en esas ramas peladas. Después vendrían las flores. Y después de las flores, vendría la fruta.</p> <p>Mientras estaba allí pensando, una gran idea le llenó la mente. ¿Quién hace que vuelvan las hojas? ¿Quién trae las flores y la fruta, año tras año? ¡Dios! De pronto Lorenzo vio lo fuerte que es Dios y con cuánto cuidado cuida de todo lo que ha hecho.</p> <p>Aquel único árbol pelado cambió toda su vida. Él decía que esa idea nunca lo abandonó. Le hizo amar tanto a Dios que, más de cuarenta años después, todavía no sabía decir si su amor había crecido, porque había sido muy grande desde el principio.</p> <p>Dios hizo todo lo que te rodea: los árboles, los pájaros, la lluvia y las estrellas. La próxima vez que mires un árbol, acuérdate de Lorenzo. El mismo Dios que hace volver las hojas está cuidando de ti.</p> <p><em>Querido Dios, gracias por los árboles y por todas las cosas que has hecho. Ayúdame a ver lo grande y lo bueno que eres. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué vio Lorenzo cuando tenía dieciocho años?",
+    "answer": "En invierno vio un árbol sin hojas, y pensó en cómo volverían sus hojas, sus flores y su fruta."
+   },
+   {
+    "question": "¿Qué le enseñó sobre Dios el árbol pelado?",
+    "answer": "Le mostró el gran poder de Dios y con cuánta fidelidad cuida Dios de todo lo que ha hecho. Eso le hizo amar a Dios durante el resto de su vida."
+   },
+   {
+    "question": "¿Qué podrías mirar afuera esta semana que te recuerde a Dios?",
+    "answer": "La idea del capítulo: todo lo que Dios hizo puede recordarnos lo fuerte y cariñoso que es, igual que un árbol pelado se lo recordó a Lorenzo."
+   }
+  ],
+  "body_text": "“Desde que Dios creó el mundo, su gran poder se ve claramente en las cosas que él ha hecho.” — de Romanos 1 Cuando Lorenzo tenía dieciocho años, era invierno. Todo estaba frío y gris. Un día se detuvo a mirar un árbol. Había perdido todas sus hojas. Sus ramas estaban peladas y marrones, como dedos huesudos contra el cielo. Parecía muerto. Pero Lorenzo sabía algo sobre los árboles. Sabía que dentro de poco, cuando llegara la primavera, volverían a salir hojas verdes y nuevas en esas ramas peladas. Después vendrían las flores. Y después de las flores, vendría la fruta. Mientras estaba allí pensando, una gran idea le llenó la mente. ¿Quién hace que vuelvan las hojas? ¿Quién trae las flores y la fruta, año tras año? ¡Dios! De pronto Lorenzo vio lo fuerte que es Dios y con cuánto cuidado cuida de todo lo que ha hecho. Aquel único árbol pelado cambió toda su vida. Él decía que esa idea nunca lo abandonó. Le hizo amar tanto a Dios que, más de cuarenta años después, todavía no sabía decir si su amor había crecido, porque había sido muy grande desde el principio. Dios hizo todo lo que te rodea: los árboles, los pájaros, la lluvia y las estrellas. La próxima vez que mires un árbol, acuérdate de Lorenzo. El mismo Dios que hace volver las hojas está cuidando de ti. Querido Dios, gracias por los árboles y por todas las cosas que has hecho. Ayúdame a ver lo grande y lo bueno que eres. Amén.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "Una sorpresa feliz",
+  "body_html": "<blockquote>“Me llenas de alegría cuando estoy contigo.” — de Salmo 16</blockquote> <p>Después de ver el árbol, Lorenzo quiso darle toda su vida a Dios. Así que pidió entrar en un monasterio. Un monasterio era una casa grande donde vivían juntos varios hombres para orar y trabajar. A los hombres de allí los llamaban “Hermanos”, y así fue como él se convirtió en el Hermano Lorenzo.</p> <p>Pero Lorenzo tenía una razón curiosa para ir. Pensaba que en el monasterio lo iban a regañar por ser torpe. Esperaba que lo reprendieran por cada error que cometiera. Estaba dispuesto a dejar todas las cosas bonitas de la vida por Dios, aunque eso lo hiciera muy desdichado.</p> <p>Entonces Dios lo sorprendió.</p> <p>El Hermano Lorenzo decía que Dios lo había “decepcionado”, ¡pero de la mejor manera! En lugar de sentirse desdichado, allí no encontró más que felicidad. Se había preparado para una vida dura y triste. En cambio, Dios lo llenó de alegría.</p> <p>El Hermano Lorenzo aprendió que seguir a Dios no consiste en estar triste. Estar cerca de Dios es el lugar más feliz que existe.</p> <p>Algunas personas piensan que amar a Dios significa renunciar a toda la diversión. Pero Dios no es un rey gruñón. Es bueno, y cuanto más nos acercamos a él, más alegría nos da.</p> <p><em>Querido Dios, gracias porque estar cerca de ti es el mejor y más feliz lugar donde estar. Lléname de tu alegría. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué pensaba el Hermano Lorenzo que iba a ser infeliz en el monasterio?",
+    "answer": "Pensaba que lo castigarían por su torpeza y sus errores, y que tendría que renunciar a todos los gustos de la vida."
+   },
+   {
+    "question": "¿Cómo lo sorprendió Dios?",
+    "answer": "En lugar de sentirse desdichado, el Hermano Lorenzo no encontró allí más que felicidad. Decía en broma que Dios lo había “decepcionado”."
+   },
+   {
+    "question": "¿Crees que seguir a Dios hace que la gente esté feliz o triste? ¿Por qué?",
+    "answer": "La idea del capítulo: Dios es bueno, no gruñón. Acercarse a él trae verdadera alegría, como descubrió el Hermano Lorenzo."
+   }
+  ],
+  "body_text": "“Me llenas de alegría cuando estoy contigo.” — de Salmo 16 Después de ver el árbol, Lorenzo quiso darle toda su vida a Dios. Así que pidió entrar en un monasterio. Un monasterio era una casa grande donde vivían juntos varios hombres para orar y trabajar. A los hombres de allí los llamaban “Hermanos”, y así fue como él se convirtió en el Hermano Lorenzo. Pero Lorenzo tenía una razón curiosa para ir. Pensaba que en el monasterio lo iban a regañar por ser torpe. Esperaba que lo reprendieran por cada error que cometiera. Estaba dispuesto a dejar todas las cosas bonitas de la vida por Dios, aunque eso lo hiciera muy desdichado. Entonces Dios lo sorprendió. El Hermano Lorenzo decía que Dios lo había “decepcionado”, ¡pero de la mejor manera! En lugar de sentirse desdichado, allí no encontró más que felicidad. Se había preparado para una vida dura y triste. En cambio, Dios lo llenó de alegría. El Hermano Lorenzo aprendió que seguir a Dios no consiste en estar triste. Estar cerca de Dios es el lugar más feliz que existe. Algunas personas piensan que amar a Dios significa renunciar a toda la diversión. Pero Dios no es un rey gruñón. Es bueno, y cuanto más nos acercamos a él, más alegría nos da. Querido Dios, gracias porque estar cerca de ti es el mejor y más feliz lugar donde estar. Lléname de tu alegría. Amén.",
+  "word_count": 237
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "Demasiados libros",
+  "body_html": "<blockquote>“Ama al Señor tu Dios con todo tu corazón, con toda tu alma y con toda tu mente.” — de Mateo 22</blockquote> <p>El Hermano Lorenzo quería saber cómo estar cerca de Dios. Así que leyó muchísimos libros sobre eso. Pero cada libro decía una cosa distinta. ¡Haz esto! ¡No, haz aquello! ¡Ora así! ¡No, de esta otra manera! En lugar de ayudarlo, todas esas ideas diferentes solo lo hacían enredarse.</p> <p>Así que decidió hacerlo sencillo. Se entregó por completo a Dios y le pidió que le quitara su pecado. Luego empezó a vivir como si en todo el mundo solo hubiera dos personas: Dios y él.</p> <p>Intentaba pensar en Dios todo lo que podía, a lo largo del día. Algunos días pensaba en Dios como un juez, y se sentía arrepentido por las cosas malas que había hecho. Otros días pensaba en Dios como su Padre amoroso, que vivía justo dentro de su corazón.</p> <p>No era fácil. Su mente se le iba a otras cosas una y otra vez. Y durante años le preocupó no amar a Dios tanto como debía, y no dejaba de acordarse de las cosas malas que había hecho. A menudo se caía y se volvía a levantar. Pero siguió confiando en Dios.</p> <p>Entonces un día, de repente, una paz profunda y tranquila le llenó el corazón, y se quedó allí. Desde entonces caminó con Dios con sencillez, con confianza y con amor.</p> <p>Amar a Dios no tiene por qué ser complicado. No necesitas saber muchas reglas difíciles. Puedes empezar hoy, simplemente acordándote de que Dios está contigo y diciéndole que lo amas.</p> <p><em>Querido Dios, quiero amarte con todo mi corazón. Ayúdame a recordar que estás conmigo, hoy y todos los días. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué tantos libros enredaron al Hermano Lorenzo?",
+    "answer": "Cada libro daba un método distinto para acercarse a Dios, y todas esas ideas diferentes lo confundían en vez de ayudarlo."
+   },
+   {
+    "question": "¿Qué cosa sencilla decidió hacer en cambio?",
+    "answer": "Se entregó por completo a Dios y vivió como si en el mundo solo estuvieran Dios y él, pensando en Dios tan a menudo como podía."
+   },
+   {
+    "question": "¿En qué momento de hoy podrías acordarte de que Dios está contigo?",
+    "answer": "La idea del capítulo: amar a Dios no tiene por qué ser complicado. Podemos simplemente acordarnos de que él está con nosotros y decirle que lo amamos."
+   }
+  ],
+  "body_text": "“Ama al Señor tu Dios con todo tu corazón, con toda tu alma y con toda tu mente.” — de Mateo 22 El Hermano Lorenzo quería saber cómo estar cerca de Dios. Así que leyó muchísimos libros sobre eso. Pero cada libro decía una cosa distinta. ¡Haz esto! ¡No, haz aquello! ¡Ora así! ¡No, de esta otra manera! En lugar de ayudarlo, todas esas ideas diferentes solo lo hacían enredarse. Así que decidió hacerlo sencillo. Se entregó por completo a Dios y le pidió que le quitara su pecado. Luego empezó a vivir como si en todo el mundo solo hubiera dos personas: Dios y él. Intentaba pensar en Dios todo lo que podía, a lo largo del día. Algunos días pensaba en Dios como un juez, y se sentía arrepentido por las cosas malas que había hecho. Otros días pensaba en Dios como su Padre amoroso, que vivía justo dentro de su corazón. No era fácil. Su mente se le iba a otras cosas una y otra vez. Y durante años le preocupó no amar a Dios tanto como debía, y no dejaba de acordarse de las cosas malas que había hecho. A menudo se caía y se volvía a levantar. Pero siguió confiando en Dios. Entonces un día, de repente, una paz profunda y tranquila le llenó el corazón, y se quedó allí. Desde entonces caminó con Dios con sencillez, con confianza y con amor. Amar a Dios no tiene por qué ser complicado. No necesitas saber muchas reglas difíciles. Puedes empezar hoy, simplemente acordándote de que Dios está contigo y diciéndole que lo amas. Querido Dios, quiero amarte con todo mi corazón. Ayúdame a recordar que estás conmigo, hoy y todos los días. Amén.",
+  "word_count": 287
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "La cocina que no le gustaba",
+  "body_html": "<blockquote>“Todo lo que hagan, háganlo de todo corazón, como para el Señor.” — de Colosenses 3</blockquote> <p>En el monasterio, todos tenían un trabajo. ¿Y sabes qué trabajo le dieron al torpe Hermano Lorenzo? ¡Lo hicieron cocinero!</p> <p>Al Hermano Lorenzo no le gustaba el trabajo de la cocina. Decía que iba en contra de todo lo que a él le gustaba por naturaleza. Imagínate la gran cocina: fuegos calientes, ollas pesadas de hierro, vapor por todas partes y muchos Hermanos con hambre esperando su cena.</p> <p>Pero el Hermano Lorenzo encontró un secreto. Antes de empezar a trabajar, pensaba qué había que hacer, y cuándo, y cómo. Luego hablaba con Dios. Decía algo así: “Dios mío, tú estás aquí conmigo. Ahora tengo que pensar en todas estas tareas. Por favor, ayúdame a seguir cerca de ti mientras las hago. Ayúdame, y recibe todo mi trabajo como un regalo para ti.”</p> <p>Después, mientras cocinaba, seguía hablando con Dios en voz baja dentro de su corazón. Le pedía a Dios que lo ayudara a hacer bien su trabajo, y lo hacía todo por amor a Dios.</p> <p>Y aquí viene la sorpresa. ¡El trabajo de la cocina que tanto le disgustaba se volvió fácil! Trabajó allí quince años, y descubrió que hacerlo para Dios lo cambiaba todo.</p> <p>¿Hay alguna tarea que no te guste, como ordenar tu cuarto, hacer los deberes o lavar los platos? Intenta hacerla para Dios. Pídele que te ayude, y hazla como un regalo de amor para él.</p> <p><em>Querido Dios, cuando tenga una tarea que no me guste, ayúdame a hacerla para ti y a recordar que estás justo a mi lado. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué fue una sorpresa que el Hermano Lorenzo llegara a ser el cocinero?",
+    "answer": "No le gustaba nada el trabajo de la cocina. Iba en contra de lo que a él le gustaba por naturaleza."
+   },
+   {
+    "question": "¿Cuál era su secreto para hacer el trabajo?",
+    "answer": "Le pedía ayuda a Dios y lo hacía todo por amor a Dios, hablando con él mientras trabajaba. Entonces el trabajo se volvió fácil."
+   },
+   {
+    "question": "¿Qué tarea te cuesta hacer? ¿Cómo podrías hacerla para Dios?",
+    "answer": "La idea del capítulo: cualquier tarea, incluso una que no nos gusta, puede convertirse en un regalo de amor para Dios cuando le pedimos ayuda y la hacemos para él."
+   }
+  ],
+  "body_text": "“Todo lo que hagan, háganlo de todo corazón, como para el Señor.” — de Colosenses 3 En el monasterio, todos tenían un trabajo. ¿Y sabes qué trabajo le dieron al torpe Hermano Lorenzo? ¡Lo hicieron cocinero! Al Hermano Lorenzo no le gustaba el trabajo de la cocina. Decía que iba en contra de todo lo que a él le gustaba por naturaleza. Imagínate la gran cocina: fuegos calientes, ollas pesadas de hierro, vapor por todas partes y muchos Hermanos con hambre esperando su cena. Pero el Hermano Lorenzo encontró un secreto. Antes de empezar a trabajar, pensaba qué había que hacer, y cuándo, y cómo. Luego hablaba con Dios. Decía algo así: “Dios mío, tú estás aquí conmigo. Ahora tengo que pensar en todas estas tareas. Por favor, ayúdame a seguir cerca de ti mientras las hago. Ayúdame, y recibe todo mi trabajo como un regalo para ti.” Después, mientras cocinaba, seguía hablando con Dios en voz baja dentro de su corazón. Le pedía a Dios que lo ayudara a hacer bien su trabajo, y lo hacía todo por amor a Dios. Y aquí viene la sorpresa. ¡El trabajo de la cocina que tanto le disgustaba se volvió fácil! Trabajó allí quince años, y descubrió que hacerlo para Dios lo cambiaba todo. ¿Hay alguna tarea que no te guste, como ordenar tu cuarto, hacer los deberes o lavar los platos? Intenta hacerla para Dios. Pídele que te ayude, y hazla como un regalo de amor para él. Querido Dios, cuando tenga una tarea que no me guste, ayúdame a hacerla para ti y a recordar que estás justo a mi lado. Amén.",
+  "word_count": 272
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "Una pajita en el suelo",
+  "body_html": "<blockquote>“Ya sea que coman o beban o hagan cualquier otra cosa, háganlo todo para la gloria de Dios.” — de 1 Corintios 10</blockquote> <p>Algunas personas piensan que a Dios solo le importan las cosas grandes e importantes, como predicar a multitudes o construir iglesias enormes. El Hermano Lorenzo no lo creía así.</p> <p>Decía que se alegraba cuando podía recoger del suelo una sola pajita por amor a Dios. ¡Una sola pajita! Casi no es nada. Pero si lo hacía porque amaba a Dios, era un regalo para Dios.</p> <p>El Hermano Lorenzo decía que Dios no mira lo grande que es el trabajo. Mira con cuánto amor se hace. Un trabajo pequeñito hecho con amor es muy valioso para Dios.</p> <p>Por eso le decía a la gente que nunca se cansara de hacer cosas pequeñas por amor a Dios. Decía que parecerse más a Dios no significa hacer trabajos distintos. Significa hacer los mismos trabajos de todos los días que ya hacemos, pero hacerlos para Dios en lugar de hacerlos solo para nosotros mismos.</p> <p>Eso quería decir que remover una olla se podía hacer para Dios. Barrer el suelo se podía hacer para Dios. Hasta recoger una pajita se podía hacer para Dios.</p> <p>No tienes que esperar a ser grande para hacer algo para Dios. Puedes hacerlo hoy: cuando compartas un juguete, ayudes a poner la mesa o recojas algo que a alguien se le cayó, hazlo para él.</p> <p><em>Querido Dios, ayúdame a hacer cosas pequeñas hoy porque te amo. Gracias porque hasta las cosas pequeñas te importan. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué cosa pequeñita se alegraba de hacer el Hermano Lorenzo para Dios?",
+    "answer": "Se alegraba de recoger del suelo una sola pajita por amor a Dios."
+   },
+   {
+    "question": "Según el Hermano Lorenzo, ¿qué mira Dios?",
+    "answer": "No lo grande que es el trabajo, sino con cuánto amor se hace."
+   },
+   {
+    "question": "¿Qué cosa pequeña podrías hacer hoy para Dios?",
+    "answer": "La idea del capítulo: las cosas pequeñas de todos los días, hechas por amor a Dios, son muy valiosas para él. No tenemos que esperar para hacer algo grande."
+   }
+  ],
+  "body_text": "“Ya sea que coman o beban o hagan cualquier otra cosa, háganlo todo para la gloria de Dios.” — de 1 Corintios 10 Algunas personas piensan que a Dios solo le importan las cosas grandes e importantes, como predicar a multitudes o construir iglesias enormes. El Hermano Lorenzo no lo creía así. Decía que se alegraba cuando podía recoger del suelo una sola pajita por amor a Dios. ¡Una sola pajita! Casi no es nada. Pero si lo hacía porque amaba a Dios, era un regalo para Dios. El Hermano Lorenzo decía que Dios no mira lo grande que es el trabajo. Mira con cuánto amor se hace. Un trabajo pequeñito hecho con amor es muy valioso para Dios. Por eso le decía a la gente que nunca se cansara de hacer cosas pequeñas por amor a Dios. Decía que parecerse más a Dios no significa hacer trabajos distintos. Significa hacer los mismos trabajos de todos los días que ya hacemos, pero hacerlos para Dios en lugar de hacerlos solo para nosotros mismos. Eso quería decir que remover una olla se podía hacer para Dios. Barrer el suelo se podía hacer para Dios. Hasta recoger una pajita se podía hacer para Dios. No tienes que esperar a ser grande para hacer algo para Dios. Puedes hacerlo hoy: cuando compartas un juguete, ayudes a poner la mesa o recojas algo que a alguien se le cayó, hazlo para él. Querido Dios, ayúdame a hacer cosas pequeñas hoy porque te amo. Gracias porque hasta las cosas pequeñas te importan. Amén.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "Ollas, sartenes y oración",
+  "body_html": "<blockquote>“Estén siempre alegres, oren sin cesar, den gracias en toda situación.” — de 1 Tesalonicenses 5</blockquote> <p>¿Te imaginas la cocina del monasterio a la hora de la cena? Ollas burbujeando. Sartenes repiqueteando. Cucharas golpeando. Mucha gente corriendo de un lado a otro, y varios de ellos pidiendo cosas distintas al mismo tiempo.</p> <p>Casi todo el mundo se pondría nervioso en una cocina así. Pero la gente se daba cuenta de algo en el Hermano Lorenzo. Incluso en los momentos de más trabajo y más ruido, se mantenía tranquilo. Nunca iba con prisas, y nunca era perezoso. Hacía cada cosa a su tiempo, con paz y sin parar.</p> <p>¿Cómo lo hacía? Estaba orando todo el tiempo, no con palabras en voz alta, sino en su corazón. Decía que el tiempo en que trabajaba no era distinto del tiempo en que oraba.</p> <p>Con sus propias palabras, dichas de forma sencilla: “En medio del ruido y del alboroto de mi cocina, mientras varias personas me piden cosas distintas al mismo tiempo, tengo a Dios con tanta paz como si estuviera de rodillas en oración.”</p> <p>Para el Hermano Lorenzo, la oración no era solo para momentos especiales. Podía estar cerca de Dios en cualquier lugar, incluso con las manos metidas en el agua de fregar.</p> <p>Puedes hablar con Dios en la escuela, en el coche, en el patio o mientras te lavas los dientes. No tienes que esperar a estar en un lugar tranquilo. Él está contigo también en los momentos de mucho ruido y mucho trajín.</p> <p><em>Querido Dios, gracias porque puedo hablar contigo en cualquier lugar. Ayúdame a seguir cerca de ti cuando haya mucho que hacer y mucho ruido. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo era la cocina en los momentos de más trabajo?",
+    "answer": "Era ruidosa, con ollas y sartenes repiqueteando y varias personas pidiendo cosas distintas al mismo tiempo."
+   },
+   {
+    "question": "¿Cómo se mantenía tranquilo el Hermano Lorenzo?",
+    "answer": "Seguía orando en su corazón mientras trabajaba. Decía que su tiempo de trabajo no era distinto de su tiempo de oración."
+   },
+   {
+    "question": "¿Cuál es el momento de más trabajo y más ruido de tu día? ¿Podrías hablar con Dios entonces?",
+    "answer": "La idea del capítulo: la oración no es solo para momentos tranquilos y especiales. Podemos seguir cerca de Dios en medio de días llenos de trabajo y de ruido."
+   }
+  ],
+  "body_text": "“Estén siempre alegres, oren sin cesar, den gracias en toda situación.” — de 1 Tesalonicenses 5 ¿Te imaginas la cocina del monasterio a la hora de la cena? Ollas burbujeando. Sartenes repiqueteando. Cucharas golpeando. Mucha gente corriendo de un lado a otro, y varios de ellos pidiendo cosas distintas al mismo tiempo. Casi todo el mundo se pondría nervioso en una cocina así. Pero la gente se daba cuenta de algo en el Hermano Lorenzo. Incluso en los momentos de más trabajo y más ruido, se mantenía tranquilo. Nunca iba con prisas, y nunca era perezoso. Hacía cada cosa a su tiempo, con paz y sin parar. ¿Cómo lo hacía? Estaba orando todo el tiempo, no con palabras en voz alta, sino en su corazón. Decía que el tiempo en que trabajaba no era distinto del tiempo en que oraba. Con sus propias palabras, dichas de forma sencilla: “En medio del ruido y del alboroto de mi cocina, mientras varias personas me piden cosas distintas al mismo tiempo, tengo a Dios con tanta paz como si estuviera de rodillas en oración.” Para el Hermano Lorenzo, la oración no era solo para momentos especiales. Podía estar cerca de Dios en cualquier lugar, incluso con las manos metidas en el agua de fregar. Puedes hablar con Dios en la escuela, en el coche, en el patio o mientras te lavas los dientes. No tienes que esperar a estar en un lugar tranquilo. Él está contigo también en los momentos de mucho ruido y mucho trajín. Querido Dios, gracias porque puedo hablar contigo en cualquier lugar. Ayúdame a seguir cerca de ti cuando haya mucho que hacer y mucho ruido. Amén.",
+  "word_count": 278
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "Hablar con Dios como con un amigo",
+  "body_html": "<blockquote>“Acérquense a Dios, y él se acercará a ustedes.” — de Santiago 4</blockquote> <p>El Hermano Lorenzo escribía cartas a sus amigos, y en ellas les explicaba a menudo cómo hablar con Dios. Decía que era mucho más sencillo de lo que la gente piensa.</p> <p>“No hace falta gritar”, escribió. “Dios está más cerca de nosotros de lo que nos damos cuenta.” Tampoco hace falta estar en la iglesia para hablar con él. Decía que puedes convertir tu corazón en un pequeño cuarto de oración, y entrar allí a hablar con Dios en cualquier momento.</p> <p>Sus oraciones solían ser muy cortas. A veces decía simplemente: “Dios mío, aquí estoy, todo tuyo. Señor, haz mi corazón como el tuyo.” A veces solo pensaba en Dios con amor, sin ninguna palabra. A un amigo le dijo que elevara su corazón a Dios incluso a la hora de comer, o cuando estuviera con otras personas. Decía que hasta el pensamiento más pequeñito dirigido a Dios le agrada.</p> <p>También les dio a sus amigos una imagen para recordar. Si un amigo viniera a visitarte, no te irías dejándolo sentado solo. ¡Eso sería de mala educación! Pues bien, Dios está siempre con nosotros. Así que no lo dejes solo. Piensa en él a menudo.</p> <p>Eso es todo lo que significa practicar la presencia de Dios: acordarse de que él está aquí y hablar con él.</p> <p>Puedes hablar con Dios igual que hablas con un amigo. Dile gracias. Dile que estás preocupado. Pídele ayuda. Tu oración puede ser tan corta como una sola frase, y a él le encanta escucharla.</p> <p><em>Querido Dios, gracias porque siempre estás conmigo. Ayúdame a no dejarte solo, sino a hablar contigo a lo largo de todo el día. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Adónde decía el Hermano Lorenzo que podías ir para hablar con Dios?",
+    "answer": "A cualquier lugar. Decía que puedes convertir tu corazón en un pequeño cuarto de oración y hablar allí con Dios, y que no hace falta gritar, porque Dios está muy cerca."
+   },
+   {
+    "question": "¿Qué imagen usó sobre un amigo que viene de visita?",
+    "answer": "Sería de mala educación dejar solo a un amigo que viene a visitarte, así que tampoco debemos dejar solo a Dios. Debemos pensar en él a menudo."
+   },
+   {
+    "question": "¿Qué oración corta podrías decirle hoy a Dios?",
+    "answer": "La idea del capítulo: hablar con Dios puede ser algo sencillo y corto, como hablar con un amigo que está siempre con nosotros."
+   }
+  ],
+  "body_text": "“Acérquense a Dios, y él se acercará a ustedes.” — de Santiago 4 El Hermano Lorenzo escribía cartas a sus amigos, y en ellas les explicaba a menudo cómo hablar con Dios. Decía que era mucho más sencillo de lo que la gente piensa. “No hace falta gritar”, escribió. “Dios está más cerca de nosotros de lo que nos damos cuenta.” Tampoco hace falta estar en la iglesia para hablar con él. Decía que puedes convertir tu corazón en un pequeño cuarto de oración, y entrar allí a hablar con Dios en cualquier momento. Sus oraciones solían ser muy cortas. A veces decía simplemente: “Dios mío, aquí estoy, todo tuyo. Señor, haz mi corazón como el tuyo.” A veces solo pensaba en Dios con amor, sin ninguna palabra. A un amigo le dijo que elevara su corazón a Dios incluso a la hora de comer, o cuando estuviera con otras personas. Decía que hasta el pensamiento más pequeñito dirigido a Dios le agrada. También les dio a sus amigos una imagen para recordar. Si un amigo viniera a visitarte, no te irías dejándolo sentado solo. ¡Eso sería de mala educación! Pues bien, Dios está siempre con nosotros. Así que no lo dejes solo. Piensa en él a menudo. Eso es todo lo que significa practicar la presencia de Dios: acordarse de que él está aquí y hablar con él. Puedes hablar con Dios igual que hablas con un amigo. Dile gracias. Dile que estás preocupado. Pídele ayuda. Tu oración puede ser tan corta como una sola frase, y a él le encanta escucharla. Querido Dios, gracias porque siempre estás conmigo. Ayúdame a no dejarte solo, sino a hablar contigo a lo largo de todo el día. Amén.",
+  "word_count": 287
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "El barco lleno de barriles",
+  "body_html": "<blockquote>“Dejen todas sus preocupaciones en sus manos, porque él cuida de ustedes.” — de 1 Pedro 5</blockquote> <p>Un día, los encargados del monasterio le dieron al Hermano Lorenzo un trabajo que de verdad no quería hacer. Lo mandaron de viaje, muy lejos, a un lugar llamado Borgoña, para comprar el vino que iban a necesitar los Hermanos.</p> <p>El Hermano Lorenzo no se creía nada bueno para comprar y vender. Y había otro problema. Era cojo, así que le costaba caminar. En el barco casi no podía andar. ¡La única manera que tenía de moverse era rodar por encima de los barriles de vino!</p> <p>¿Te lo imaginas? Un hombre grandote con una pierna mala, dando tumbos de barril en barril: ¡pum, pum, pum!</p> <p>Pero el Hermano Lorenzo no se preocupó. Le dijo a Dios que lo que estaba haciendo era asunto de Dios. Confió en que Dios se encargaría de ello. Y después descubrió que todo el trabajo había salido muy bien.</p> <p>El año anterior lo habían mandado a otro viaje parecido, a un lugar llamado Auvernia. Ni siquiera sabía explicar cómo había salido bien, pero también aquella vez todo terminó bien.</p> <p>A veces tenemos que hacer cosas que parecen demasiado difíciles, como un examen, una escuela nueva o algo que nos da miedo. Puedes hacer lo que hizo el Hermano Lorenzo: cuéntaselo a Dios y confía en que él te ayudará.</p> <p><em>Querido Dios, cuando tenga que hacer algo difícil, ayúdame a darte mis preocupaciones y a confiar en que tú cuidarás de mí. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué fue difícil para el Hermano Lorenzo el viaje a Borgoña?",
+    "answer": "No se le daban bien los negocios, y era cojo, así que en el barco solo podía moverse rodando por encima de los barriles de vino."
+   },
+   {
+    "question": "¿Qué hizo en lugar de preocuparse?",
+    "answer": "Le dijo a Dios que lo que estaba haciendo era asunto de Dios y se lo confió, y el trabajo salió muy bien."
+   },
+   {
+    "question": "¿Qué cosa difícil tienes que hacer pronto? ¿Cómo podrías dársela a Dios?",
+    "answer": "La idea del capítulo: cuando una tarea nos parece demasiado difícil, podemos dejar nuestras preocupaciones en manos de Dios y confiar en que él nos ayudará."
+   }
+  ],
+  "body_text": "“Dejen todas sus preocupaciones en sus manos, porque él cuida de ustedes.” — de 1 Pedro 5 Un día, los encargados del monasterio le dieron al Hermano Lorenzo un trabajo que de verdad no quería hacer. Lo mandaron de viaje, muy lejos, a un lugar llamado Borgoña, para comprar el vino que iban a necesitar los Hermanos. El Hermano Lorenzo no se creía nada bueno para comprar y vender. Y había otro problema. Era cojo, así que le costaba caminar. En el barco casi no podía andar. ¡La única manera que tenía de moverse era rodar por encima de los barriles de vino! ¿Te lo imaginas? Un hombre grandote con una pierna mala, dando tumbos de barril en barril: ¡pum, pum, pum! Pero el Hermano Lorenzo no se preocupó. Le dijo a Dios que lo que estaba haciendo era asunto de Dios. Confió en que Dios se encargaría de ello. Y después descubrió que todo el trabajo había salido muy bien. El año anterior lo habían mandado a otro viaje parecido, a un lugar llamado Auvernia. Ni siquiera sabía explicar cómo había salido bien, pero también aquella vez todo terminó bien. A veces tenemos que hacer cosas que parecen demasiado difíciles, como un examen, una escuela nueva o algo que nos da miedo. Puedes hacer lo que hizo el Hermano Lorenzo: cuéntaselo a Dios y confía en que él te ayudará. Querido Dios, cuando tenga que hacer algo difícil, ayúdame a darte mis preocupaciones y a confiar en que tú cuidarás de mí. Amén.",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "Cuando se equivocaba",
+  "body_html": "<blockquote>“Si confesamos nuestros pecados, él es fiel y justo para perdonarnos.” — de 1 Juan 1</blockquote> <p>El Hermano Lorenzo amaba mucho a Dios. Pero no era perfecto. Seguía cometiendo errores. A veces se olvidaba de Dios durante bastante tiempo. A veces hacía cosas que sabía que estaban mal.</p> <p>Entonces, ¿qué hacía cuando se equivocaba? No se enfurruñaba. No se rendía. Y no ponía excusas.</p> <p>Simplemente se lo decía a Dios. Decía algo así: “Señor, así soy yo. Si me dejas solo, siempre haré esto. Tienes que impedir que me caiga y arreglar lo que he hecho mal.” Después dejaba de preocuparse por eso y volvía a amar a Dios, igual que antes.</p> <p>El Hermano Lorenzo sabía que nuestros pecados son perdonados gracias a Jesús, que murió por nosotros, y no porque nosotros seamos lo bastante buenos. Por eso confiaba en Jesús, y no cargaba con sus errores como si fueran una mochila pesada.</p> <p>Y cuando hacía algo bien, le daba gracias a Dios, porque sabía que la fuerza había venido de Dios. Decía que, levantándose otra vez después de cada caída, poco a poco aprendió a pensar en Dios todo el tiempo.</p> <p>Todo el mundo se equivoca, incluso los mayores e incluso las personas que aman mucho a Dios. Cuando te pase, no lo escondas ni te preocupes durante días. Dile a Dios que lo sientes, confía en que Jesús te perdona y vuelve a empezar.</p> <p><em>Querido Dios, perdóname por las cosas malas que he hecho. Gracias porque Jesús me perdona. Ayúdame a levantarme y a seguir adelante contigo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hacía el Hermano Lorenzo cuando cometía un error?",
+    "answer": "Se lo contaba a Dios con sinceridad, le pedía ayuda y luego dejaba de preocuparse y volvía a amar a Dios."
+   },
+   {
+    "question": "¿Por qué no necesitaba seguir preocupándose por sus pecados?",
+    "answer": "Porque confiaba en que sus pecados estaban perdonados gracias a Jesús, y no porque él fuera lo bastante bueno."
+   },
+   {
+    "question": "¿Qué puedes hacer la próxima vez que te equivoques?",
+    "answer": "La idea del capítulo: cuando metemos la pata, podemos decírselo a Dios, confiar en que Jesús nos perdona y volver a empezar sin cargar con nuestros errores."
+   }
+  ],
+  "body_text": "“Si confesamos nuestros pecados, él es fiel y justo para perdonarnos.” — de 1 Juan 1 El Hermano Lorenzo amaba mucho a Dios. Pero no era perfecto. Seguía cometiendo errores. A veces se olvidaba de Dios durante bastante tiempo. A veces hacía cosas que sabía que estaban mal. Entonces, ¿qué hacía cuando se equivocaba? No se enfurruñaba. No se rendía. Y no ponía excusas. Simplemente se lo decía a Dios. Decía algo así: “Señor, así soy yo. Si me dejas solo, siempre haré esto. Tienes que impedir que me caiga y arreglar lo que he hecho mal.” Después dejaba de preocuparse por eso y volvía a amar a Dios, igual que antes. El Hermano Lorenzo sabía que nuestros pecados son perdonados gracias a Jesús, que murió por nosotros, y no porque nosotros seamos lo bastante buenos. Por eso confiaba en Jesús, y no cargaba con sus errores como si fueran una mochila pesada. Y cuando hacía algo bien, le daba gracias a Dios, porque sabía que la fuerza había venido de Dios. Decía que, levantándose otra vez después de cada caída, poco a poco aprendió a pensar en Dios todo el tiempo. Todo el mundo se equivoca, incluso los mayores e incluso las personas que aman mucho a Dios. Cuando te pase, no lo escondas ni te preocupes durante días. Dile a Dios que lo sientes, confía en que Jesús te perdona y vuelve a empezar. Querido Dios, perdóname por las cosas malas que he hecho. Gracias porque Jesús me perdona. Ayúdame a levantarme y a seguir adelante contigo. Amén.",
+  "word_count": 260
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "Cartas a amigos en apuros",
+  "body_html": "<blockquote>“Aunque camine por el valle más oscuro, no tendré miedo, porque tú estás conmigo.” — de Salmo 23</blockquote> <p>A medida que el Hermano Lorenzo se hacía mayor, mucha gente le escribía, y él contestaba sus cartas. Algunos de sus amigos lo estaban pasando muy mal.</p> <p>Un amigo le habló de un joven soldado que estaba en peligro. El Hermano Lorenzo le contestó que el soldado no necesitaba oraciones largas. Incluso mientras marchaba, con la espada en la mano, podía elevar su corazón a Dios por un momento. Decía que basta con acordarse un poquito de Dios, y que esas oraciones cortas harían al soldado más valiente, no más débil.</p> <p>Otro amigo estaba muy enfermo desde hacía mucho tiempo, y las medicinas no le hacían efecto. El Hermano Lorenzo sentía mucha pena por este amigo. Le dijo que muchas veces Dios está todavía más cerca de nosotros cuando estamos enfermos que cuando estamos sanos. Le dijo que siguiera hablando con Dios, que confiara en él y que le ofreciera su dolor.</p> <p>El Hermano Lorenzo también escribió algo valiente. Dijo que no solo oraba para que se le quitara el dolor, sino para que Dios le diera a su amigo fuerza y paciencia para soportarlo. Sabía que Dios es nuestro Padre amoroso, y que podemos confiar en él incluso cuando las cosas duelen.</p> <p>Sus amigos estaban tristes y sufrían, pero sus cartas les mostraban al Dios que estaba allí mismo con ellos.</p> <p>Cuando estás enfermo, triste o asustado, Dios no se ha ido. Está cerca. Puedes decir una oración corta, aunque sea solo “Ayúdame, Dios”, y confiar en que él está contigo.</p> <p><em>Querido Dios, cuando esté enfermo o tenga miedo, gracias porque estás cerca de mí. Por favor, dame fuerzas y ayúdame a confiar en ti. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué decía el Hermano Lorenzo que podía hacer un soldado, incluso mientras marchaba con su espada?",
+    "answer": "Podía elevar su corazón a Dios por un momento. Las oraciones cortas como esas le agradan a Dios y hacen más valiente al soldado."
+   },
+   {
+    "question": "¿Qué le dijo a su amigo que estaba muy enfermo?",
+    "answer": "Que muchas veces Dios está más cerca de nosotros en la enfermedad que en la salud, y que siguiera hablando con Dios, confiara en él y le pidiera fuerzas para soportar el dolor."
+   },
+   {
+    "question": "¿Alguna vez has estado enfermo, triste o asustado? ¿Qué podrías decirle a Dios en esos momentos?",
+    "answer": "La idea del capítulo: Dios se queda cerca en los momentos difíciles. Él escucha incluso una oración muy corta, como “Ayúdame, Dios”."
+   }
+  ],
+  "body_text": "“Aunque camine por el valle más oscuro, no tendré miedo, porque tú estás conmigo.” — de Salmo 23 A medida que el Hermano Lorenzo se hacía mayor, mucha gente le escribía, y él contestaba sus cartas. Algunos de sus amigos lo estaban pasando muy mal. Un amigo le habló de un joven soldado que estaba en peligro. El Hermano Lorenzo le contestó que el soldado no necesitaba oraciones largas. Incluso mientras marchaba, con la espada en la mano, podía elevar su corazón a Dios por un momento. Decía que basta con acordarse un poquito de Dios, y que esas oraciones cortas harían al soldado más valiente, no más débil. Otro amigo estaba muy enfermo desde hacía mucho tiempo, y las medicinas no le hacían efecto. El Hermano Lorenzo sentía mucha pena por este amigo. Le dijo que muchas veces Dios está todavía más cerca de nosotros cuando estamos enfermos que cuando estamos sanos. Le dijo que siguiera hablando con Dios, que confiara en él y que le ofreciera su dolor. El Hermano Lorenzo también escribió algo valiente. Dijo que no solo oraba para que se le quitara el dolor, sino para que Dios le diera a su amigo fuerza y paciencia para soportarlo. Sabía que Dios es nuestro Padre amoroso, y que podemos confiar en él incluso cuando las cosas duelen. Sus amigos estaban tristes y sufrían, pero sus cartas les mostraban al Dios que estaba allí mismo con ellos. Cuando estás enfermo, triste o asustado, Dios no se ha ido. Está cerca. Puedes decir una oración corta, aunque sea solo “Ayúdame, Dios”, y confiar en que él está contigo. Querido Dios, cuando esté enfermo o tenga miedo, gracias porque estás cerca de mí. Por favor, dame fuerzas y ayúdame a confiar en ti. Amén.",
+  "word_count": 295
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "De vuelta a casa con Dios",
+  "body_html": "<blockquote>“Voy allá a prepararles un lugar.” — de Juan 14</blockquote> <p>El Hermano Lorenzo llegó a ser un anciano. En una de sus cartas escribió: “Tengo casi ochenta años.” Para entonces llevaba más de cuarenta años caminando con Dios, desde aquel día de invierno en que vio el árbol pelado.</p> <p>Ya de viejo, a menudo estaba muy enfermo. Pero no le pedía a Dios que le quitara el dolor. En cambio, le pedía fuerzas para soportarlo con valentía y con amor. Decía que siempre estaba contento, porque Dios estaba con él.</p> <p>En sus últimas cartas escribió que esperaba ver pronto a Dios. Solo dos días después de una de esas cartas, se acostó enfermo, y antes de que terminara la semana murió y se fue a casa, a estar con el Dios al que amaba.</p> <p>Pero sus cartas y sus palabras se guardaron, para que nosotros pudiéramos leerlas. Y en ellas seguía haciendo la misma invitación. Piensa a menudo en Dios. Habla con él. Confía en él. “Empecemos”, escribió. Cuando alguien le dijo que siempre decía lo mismo, ¡él estuvo de acuerdo! Era la mejor y más fácil manera que conocía, así que se la contaba a todo el mundo.</p> <p>El joven lacayo torpe había aprendido a vivir cada día con Dios, y quería que todos los demás supieran cómo hacerlo.</p> <p>La invitación del Hermano Lorenzo también es para ti. No tienes que ser mayor, ni listo, ni cuidadoso. Puedes empezar hoy: acuérdate de que Dios está contigo y habla con él a lo largo de todo el día.</p> <p><em>Querido Dios, gracias porque estás conmigo siempre. Ayúdame a empezar hoy a hablar contigo y a confiar en ti, toda mi vida. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cuántos años tenía el Hermano Lorenzo cerca del final de su vida, y qué esperaba?",
+    "answer": "Escribió que tenía casi ochenta años, y en sus últimas cartas dijo que esperaba ver pronto a Dios."
+   },
+   {
+    "question": "¿Qué invitación seguía haciendo el Hermano Lorenzo en sus cartas?",
+    "answer": "Que pensáramos a menudo en Dios, que habláramos con él y confiáramos en él. “Empecemos”, escribió, y decía que era la mejor y más fácil manera que conocía."
+   },
+   {
+    "question": "¿Cómo podrías empezar esta semana a practicar estar con Dios?",
+    "answer": "La idea del capítulo: la invitación del Hermano Lorenzo también es para los niños. Cualquiera puede empezar hoy, acordándose de que Dios está cerca y hablando con él."
+   }
+  ],
+  "body_text": "“Voy allá a prepararles un lugar.” — de Juan 14 El Hermano Lorenzo llegó a ser un anciano. En una de sus cartas escribió: “Tengo casi ochenta años.” Para entonces llevaba más de cuarenta años caminando con Dios, desde aquel día de invierno en que vio el árbol pelado. Ya de viejo, a menudo estaba muy enfermo. Pero no le pedía a Dios que le quitara el dolor. En cambio, le pedía fuerzas para soportarlo con valentía y con amor. Decía que siempre estaba contento, porque Dios estaba con él. En sus últimas cartas escribió que esperaba ver pronto a Dios. Solo dos días después de una de esas cartas, se acostó enfermo, y antes de que terminara la semana murió y se fue a casa, a estar con el Dios al que amaba. Pero sus cartas y sus palabras se guardaron, para que nosotros pudiéramos leerlas. Y en ellas seguía haciendo la misma invitación. Piensa a menudo en Dios. Habla con él. Confía en él. “Empecemos”, escribió. Cuando alguien le dijo que siempre decía lo mismo, ¡él estuvo de acuerdo! Era la mejor y más fácil manera que conocía, así que se la contaba a todo el mundo. El joven lacayo torpe había aprendido a vivir cada día con Dios, y quería que todos los demás supieran cómo hacerlo. La invitación del Hermano Lorenzo también es para ti. No tienes que ser mayor, ni listo, ni cuidadoso. Puedes empezar hoy: acuérdate de que Dios está contigo y habla con él a lo largo de todo el día. Querido Dios, gracias porque estás conmigo siempre. Ayúdame a empezar hoy a hablar contigo y a confiar en ti, toda mi vida. Amén.",
+  "word_count": 281
+ }
+}
+]

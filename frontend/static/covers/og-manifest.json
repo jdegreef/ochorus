@@ -3711,6 +3711,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/a-retrospect-teens": {
+			"ground": "05f0d986afcdf610a47d0628a206a242a351f36330d14840e64f802a7fc904f2",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",
@@ -3757,6 +3767,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/all-of-grace-teens": {
+			"ground": "1bcdf8646b55b8742754a2832e9b93867be4bfc872afbf0ce64a36c11c82f718",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/all-things-for-good": {
 			"ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
 			"style": "press",
@@ -3784,6 +3804,33 @@
 					[123, 293, 477, 369],
 					[108, 359, 492, 435],
 					[144, 424, 456, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
+			]
+		},
+		"es/amanda-smith-autobiography-teens": {
+			"ground": "8b9186bdfd745392c96f6968afddc24aa0cbb7036f8e4446fece3d3f093a18ec",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 293, 500, 369],
+					[69, 359, 531, 435],
+					[119, 424, 481, 500]
 				],
 				"mark": [
 					[232, 664, 368, 746]
@@ -4214,6 +4261,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"es/pilgrims-progress-teens": {
+			"ground": "c9b0cc8d21ed4228c16c9ffbce7ddaf840ee6140219375c38c485c36621ded46",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
 			"style": "devotional",
@@ -4429,6 +4486,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/talks-to-the-farmer-teens": {
+			"ground": "d9f7ddefb97d78288c4de96cb52734706cb26c7e336bb6b3a4d12e1389689f3b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"es/the-fourfold-gospel": {
 			"ground": "543d1ab7c043ae66c6374ec5cdf3ff6d0e88f653b180980aa101b9aaa2be35f7",
 			"style": "revival",
@@ -4524,6 +4591,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"es/the-life-of-trust-teens": {
+			"ground": "e4028550a1aaede3f58d952cbf978f9229d1dfca3df1c4fec6926ac1cfb13062",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"es/the-person-and-work-of-the-holy-spirit": {
 			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
 			"style": "revival",
@@ -4532,6 +4609,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "diagonal/ochre",
+			"bar": 0
+		},
+		"es/the-practice-of-the-presence-of-god-children": {
+			"ground": "e3dede1d3e7e935b326e71cfc1a8ef4eab9935e1bc9d843e18ac80165c6aaf42",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"es/the-secret-of-guidance": {
@@ -4856,6 +4943,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"fr/a-retrospect-teens": {
+			"ground": "c72cdc6831009def05961de9189c811a6d82a4feb706449578f2c45bddb4f448",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",
@@ -4874,6 +4971,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"fr/all-of-grace-teens": {
+			"ground": "c1cfdaa9c3f07405e29aa0c38c96a3bbb25588d22b52b4fd2480291a88ded850",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"fr/amanda-smith-autobiography-children": {
@@ -5367,6 +5474,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"fr/pilgrims-progress-teens": {
+			"ground": "e5622af1408ce65fad675b35529b0b6d443d21ec4a4f4a3f33fd35e7f559a0da",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"fr/prayer-the-pulse-of-life": {
 			"ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
 			"style": "house",
@@ -5660,6 +5777,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"fr/talks-to-the-farmer-teens": {
+			"ground": "dbc6ccc9cb9988856c2c5fe1824133136ca6d9d83d5d4e9c14c5b71672c6faa4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"fr/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78e2ee4d0a5719f9eb3f5106947b68924d5812a1fe276d93e84d084327d7766e",
 			"style": "devotional",
@@ -5773,6 +5900,16 @@
 		},
 		"fr/the-life-of-trust-children": {
 			"ground": "b271f1bcc66d05926eb513a26a6888568a11a7a81b5ff1dec6a8ebf672cca199",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
+		"fr/the-life-of-trust-teens": {
+			"ground": "5ffb4374d9be77d331fe9f96f0fe31406d80924cf8c9716afd6860b81f0e34a8",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",
@@ -9290,6 +9427,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"pt/a-retrospect-teens": {
+			"ground": "400c2cdf365c5cd5f61da3182b48f1cf631deeb503126eccad333c31477e52aa",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"pt/absolute-surrender": {
 			"ground": "53736338307423f5bf749f2a3ce62366c7f2f6909b42426959e319fcdc8aef66",
 			"style": "devotional",
@@ -9308,6 +9455,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "band/oxblood",
+			"bar": 0
+		},
+		"pt/all-of-grace-teens": {
+			"ground": "c3bbd44f7bfd068afc51d109d2c74e57d2ec8fd4d2e106d3fe04fc3c6e67f6f4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"pt/all-things-for-good": {
@@ -9345,6 +9502,33 @@
 			"middle": [
 				243,
 				552
+			]
+		},
+		"pt/amanda-smith-autobiography-teens": {
+			"ground": "aacc08c3c1b69148c36f53c7634c5f99913fc1e4f93dce5f70bd45f46aa116a0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[132, 310, 468, 374],
+					[95, 365, 505, 429],
+					[87, 420, 513, 484]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				258,
+				537
 			]
 		},
 		"pt/around-the-wicket-gate": {
@@ -9652,6 +9836,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"pt/pilgrims-progress-teens": {
+			"ground": "a01db1f11b76ce14e72633bb5acab05d142e404270b2c3af70ff5899a663d4eb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"pt/power-through-prayer": {
 			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
 			"style": "devotional",
@@ -9847,6 +10041,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"pt/talks-to-the-farmer-teens": {
+			"ground": "3a2b34b17f6710281b07da1748cafe1f08f4b33b8740c19eb0973f08343526f3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"pt/the-bruised-reed": {
 			"ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
 			"style": "press",
@@ -9988,6 +10192,16 @@
 			"art": true,
 			"scrim": 1,
 			"layout": "diagonal/ochre",
+			"bar": 0
+		},
+		"pt/the-practice-of-the-presence-of-god-children": {
+			"ground": "2c6bee7d03dd3111023d39e39e29c3496941b75a59d554a8f550e62626ab006f",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
 			"bar": 0
 		},
 		"pt/the-secret-of-guidance": {
@@ -10707,6 +10921,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"sw/all-of-grace-teens": {
+			"ground": "e6c5d76ec85972d20d6d09f7f3468784fabc100b81f29dfdb96aa333468dbe3f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/amanda-smith-autobiography-children": {
 			"ground": "05d364b0f318f4bc3f0db811825f62d89ee34ab5e54312d415eafb61479c4716",
 			"style": "revival",
@@ -10731,6 +10955,33 @@
 			"middle": [
 				275,
 				519
+			]
+		},
+		"sw/amanda-smith-autobiography-teens": {
+			"ground": "8f57ef516e23736131ea8d32f6a1d82d2643db63fd05633eb17470bac671b529",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[100, 293, 500, 369],
+					[183, 359, 417, 435],
+					[140, 424, 460, 500]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				243,
+				552
 			]
 		},
 		"sw/answers-to-prayer": {
@@ -11735,6 +11986,16 @@
 		},
 		"sw/the-life-of-trust-children": {
 			"ground": "717addad21eb6e9fe611715755509661f61fd75b3dd5f3e5af2238e9ded02935",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
+		"sw/the-life-of-trust-teens": {
+			"ground": "785f69ca219cbd26cf34e477f7a32f9c805054659d20ff85848fd5a9d817a3ca",
 			"style": "revival",
 			"volume": null,
 			"script": "latin",

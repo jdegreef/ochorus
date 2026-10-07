@@ -1,0 +1,204 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-teens",
+ "language": "es",
+ "job_issue": 4822,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into Spanish, so every epigraph is in the modern Reina-Valera (1960-register) wording the shipped es corpus quotes, with “el Señor” for LORD, and the “(ESV)” label is dropped (the attribution's ESV clause is dropped with it). Where a shipped *.es.json carries those exact words they were pasted verbatim and the row is `mined` with that file; John 19:30, Psalm 107:29, Matthew 8:20 and Romans 12:21 are not in the corpus and are self_rendered in RV1960 register — a native check against the RV1960 is needed.",
+  "Body echoes of the epigraph (fragments, sometimes re-tensed or re-personed for the reader — e.g. Philippians 4:19 “suplir todo lo que te falta”) are self_rendered. Short verbatim phrases the full es edition Una Retrospectiva and the children's edition already use («Al que te pida, dale», «No debáis a nadie nada», «Hasta aquí nos ayudó el Señor», «El Señor proveerá», «Consumado es») are mined from those files so the three Taylor editions agree.",
+  "Reader address is tú throughout (matching a-retrospect-children.es); characters in 1850s dialogue address each other as usted-forms where the English implies formality. Outer quotes « », nested “ ”, matching Taylor's es editions. Names and coin terms (media corona, sapeca, Misión al Interior de la China, el doctor Parker, el señor Jones) follow a-retrospect.es. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "a-retrospect-children.es.json"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 1,
+   "source_file": "a-retrospect-children.es.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "life-experience-gospel-labours.es.json"
+  },
+  {
+   "reference": "Matthew 5:42",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 3,
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "possibilities-of-prayer.es.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 6,
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "women-who-moved-heaven-2.es.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 8,
+   "source_file": "men-who-tended-the-flock-2.es.json"
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 5:39",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "Romans 13:8",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "a-retrospect.es.json"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "a-retrospect-children.es.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 8,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "school-of-prayer.es.json"
+  }
+ ]
+}
