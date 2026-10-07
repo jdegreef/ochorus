@@ -1,0 +1,76 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-children",
+ "language": "es",
+ "job_issue": 4816,
+ "references": [
+  {
+   "reference": "Acts 16:30",
+   "status": "mined",
+   "source_file": "godliness.es.json"
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "mined",
+   "source_file": "waiting-on-god.es.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Psalm 119:18",
+   "status": "mined",
+   "source_file": "necessity-of-prayer.es.json"
+  },
+  {
+   "reference": "Matthew 11:28",
+   "status": "mined",
+   "source_file": "cheque-book.es.json"
+  },
+  {
+   "reference": "Ephesians 6:11",
+   "status": "mined",
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Romans 8:37",
+   "status": "mined",
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Revelation 2:10",
+   "status": "mined",
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "2 Peter 1:4",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Psalm 23:1",
+   "status": "mined",
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "self_rendered"
+  },
+  {
+   "reference": "Matthew 25:21",
+   "status": "mined",
+   "source_file": "clothed-with-strength-and-dignity.es.json"
+  }
+ ]
+}
