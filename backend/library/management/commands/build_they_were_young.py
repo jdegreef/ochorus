@@ -76,7 +76,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "and went on to become a minister to his own people. Robert Murray "
             "M’Cheyne, a popular student in Edinburgh, turned after the death of "
             "his older brother. Billy Graham, a farm boy more interested in "
-            "baseball, went to a tent meeting at sixteen. Kanzo Uchimura was "
+            "baseball, went to a tent meeting in 1934. Kanzo Uchimura was "
             "pressured into signing a covenant of faith at a college in Sapporo "
             "and then found it was true. Richard Allen, enslaved in Delaware, met "
             "Christ at seventeen and went on to found the African Methodist "
