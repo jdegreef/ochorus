@@ -115,6 +115,69 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 141,
+        "publication_year": 2026,
+        "title": "They Were Young – Book 2: Tested",
+        "subtitle": "Six whose faith was tried before they were grown",
+        "cover_url": "/covers/they-were-young-2.svg",
+        "cover_color": covers.ink_safe("#7a3a2a"),  # an ember red
+        "description": (
+            "Six true stories for readers aged 13 to 17 of people whose faith was "
+            "tested while they were young: a British teenager kidnapped to Ireland; "
+            "a Sudanese girl enslaved as a child who chose freedom in an Italian "
+            "court; a young mother in Carthage who kept a prison diary; the pages "
+            "of a Ugandan king who would not deny Christ; a rebellious sailor saved "
+            "in a storm; and a Sikh boy who burned a Bible and then met Jesus. The "
+            "second book of They Were Young."
+        ),
+        "about_html": (
+            "<p>They Were Young is an original Ochorus series of true stories for "
+            "readers aged 13 to 17 about people whose faith began, or was tested, "
+            "while they were young. Book 2, “Tested”, gathers six whose faith was "
+            "tried by captivity, persecution, loss and their own rebellion.</p>"
+            "<p>Patrick was kidnapped from Britain at sixteen and learned to pray "
+            "as a slave in Ireland, then went back to the people who had enslaved "
+            "him. Josephine Bakhita was stolen from her home in Sudan as a child "
+            "and later, in an Italian court, chose to stay free. Perpetua, a young "
+            "mother in Carthage, kept a diary in prison before she was martyred in "
+            "203. The young pages of Kabaka Mwanga of Buganda refused to deny "
+            "Christ and died at Namugongo in 1886. John Newton was forced into the "
+            "navy at eighteen and cried out to God in a storm at twenty-two. Sundar "
+            "Singh burned a Bible at fifteen and, days later, met Jesus.</p>"
+            "<p>The stories are true and told without graphic detail. Where a "
+            "tradition is legend rather than history, they say so. Each ends with "
+            "the person’s own words where we have them, three questions to think "
+            "through, and a pointer to read on in the library. Book 1 is not "
+            "required.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 2 of They Were Young about?",
+                "answer": "Six true stories of people whose faith was tested while they were young: by kidnapping and slavery, by persecution and martyrdom, and by their own rebellion. Each chapter tells one life in full, lingering on the years when the test came.",
+            },
+            {
+                "question": "Who is in Book 2?",
+                "answer": "Patrick of Ireland, Josephine Bakhita, Perpetua of Carthage, the Uganda Martyrs, John Newton and Sadhu Sundar Singh: people from Britain, Sudan, North Africa, Uganda and India across sixteen centuries.",
+            },
+            {
+                "question": "Is it suitable for teenagers?",
+                "answer": "Yes. It is written for readers aged 13 to 17. It is honest about slavery, kidnapping and martyrdom but never graphic, and the hardest moments are told with care.",
+            },
+            {
+                "question": "Are the stories true?",
+                "answer": "Yes. They are drawn from the people’s own writings, such as Patrick’s Confession, Perpetua’s prison diary and Newton’s narrative, and from the earliest accounts. Later legends, such as Patrick and the snakes, are named as legends.",
+            },
+            {
+                "question": "Do I need to read Book 1 first?",
+                "answer": "No. Each book stands on its own. Book 1, Called, tells the stories of six people who came to faith as teenagers.",
+            },
+            {
+                "question": "Can it be used in a youth group?",
+                "answer": "Yes. Each chapter can be read in one sitting and ends with three questions written for discussion.",
+            },
+        ],
+    },
 }
 
 
