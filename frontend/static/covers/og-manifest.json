@@ -11743,6 +11743,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"sw/the-life-of-trust-teens": {
+			"ground": "785f69ca219cbd26cf34e477f7a32f9c805054659d20ff85848fd5a9d817a3ca",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"sw/the-masters-indwelling": {
 			"ground": "32d6dc5d1e047b10968d86db3355ba626d9408e91995d39c3bd34e14fa40bd1c",
 			"style": "devotional",

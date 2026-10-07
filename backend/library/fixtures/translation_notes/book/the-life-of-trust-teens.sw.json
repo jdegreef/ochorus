@@ -1,0 +1,112 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust-teens",
+ "language": "sw",
+ "job_issue": 5415,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV (the WEB in chapter 1) in each chapter's epigraph. That wording cannot be carried into Swahili, so every epigraph is in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes, and the version labels were dropped (as a-retrospect-teens.sw). Where a shipped *.sw.json carries the words verbatim the row is `mined` with that file; otherwise it is `self_rendered` in the SUV register and needs a native check.",
+  "Psalm 81:10: the second half (“fumbua kinywa chako sana, nami nitakijaza”) is verbatim the-life-of-trust.sw / spurgeon-on-prayer.sw, and chapter 6's title and body re-quote it; the first half is ours. Matthew 6:20 and Matthew 10:37 likewise open with corpus words (“bali jiwekeeni hazina mbinguni”, “Apendaye baba au mama kuliko mimi, hanistahili”) but continue in our own SUV-register rendering, so they ship self_rendered.",
+  "Mark 1:35 uses the modern wording already shipped in the article the-morning-watch.sw (not the SUV's “Na asubuhi sana, kabla ya mapambazuko…”), kept for consistency with that article; articles are not a citable notes source, so it ships self_rendered.",
+  "Clock times are CONVERTED to Swahili reckoning (two in the morning → saa nane usiku), matching the sw children's and teen editions."
+ ],
+ "references": [
+  {
+   "reference": "Proverbs 13:15",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Matthew 10:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "a-retrospect-teens.sw.json"
+  },
+  {
+   "reference": "2 Corinthians 9:7b",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 4,
+   "source_file": "the-life-of-trust-children.sw.json"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 81:10b",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 6,
+   "source_file": "the-life-of-trust.sw.json"
+  },
+  {
+   "reference": "Zechariah 4:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Mark 12:43–44",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "clothed-with-strength-and-dignity.sw.json"
+  },
+  {
+   "reference": "Romans 13:8a",
+   "status": "self_rendered",
+   "block_index": 3,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Mark 1:35",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
