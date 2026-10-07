@@ -3,7 +3,7 @@
  "slug": "talks-to-the-farmer-teens",
  "language": "sw",
  "job_issue": 5414,
- "pull_request": null,
+ "pull_request": 5441,
  "note": [
   "Scripture source: the English teen retelling quotes the ESV; the Swahili does not. Every quotation was taken, where it exists, verbatim from the Swahili Union-tradition wording already shipped in our own corpus (mostly the full edition talks-to-the-farmer.sw.json, whose chapters quote the same epigraphs) and the '(ESV)' tag was dropped. Rows marked mined were re-verified by script as a verbatim substring (>=12 characters) of the cited file. Anything the corpus does not carry, or that was re-personed/extended, is self_rendered in Union register and needs native review. api.takeroot.bible / swhonen was not used (off-tradition for the sw corpus).",
   "Rows without block_index sit in the chapter's study questions, not its body. AI-translated in-session (job #5414); awaiting native review."
