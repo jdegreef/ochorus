@@ -64,6 +64,29 @@ class EpubTests(TestCase):
             if name.endswith((".xhtml", ".opf", ".ncx", ".xml")):
                 etree.fromstring(z.read(name))  # raises if not well-formed
 
+    def test_a_chapter_ends_with_its_questions_then_their_answers(self):
+        Chapter.objects.filter(order=1).update(
+            study_questions=[{"question": "Why run?", "answer": "To reach the <light>."}]
+        )
+        ch1 = self._zip(self._get()).read("OEBPS/chapter-001.xhtml").decode()
+        etree.fromstring(ch1.encode())
+        talk = ch1[ch1.index('<div class="talk">'):]
+        self.assertLess(talk.index("Talk about it together"), talk.index("Why run?"))
+        self.assertLess(talk.index("Why run?"), talk.index("Notes for grown-ups"))
+        self.assertIn("To reach the &lt;light&gt;.", talk)
+        # Chapter 2 has none, so no heading; the print edition says the same.
+        self.assertNotIn("talk", self._zip(self._get()).read("OEBPS/chapter-002.xhtml").decode())
+        printed = book_export.render_print_html(book_export.build_edition(self.book))
+        self.assertEqual(printed.count('<div class="talk">'), 1)
+
+    def test_a_teens_edition_speaks_to_the_reader(self):
+        Chapter.objects.filter(order=1).update(study_questions=[{"question": "Q?", "answer": "A."}])
+        Book.objects.filter(pk=self.book.pk).update(slug="pilot-book-teens")
+        ed = book_export.build_edition(Book.objects.get(pk=self.book.pk))
+        printed = book_export.render_print_html(ed)
+        self.assertIn("Questions to think about", printed)
+        self.assertIn("One way to answer", printed)
+
     def test_chapters_contents_and_back_matter(self):
         z = self._zip(self._get())
         names = z.namelist()
