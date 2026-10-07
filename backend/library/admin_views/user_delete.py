@@ -10,6 +10,7 @@ copy of it.
 
 from __future__ import annotations
 
+from django.conf import settings
 from rest_framework import status as http_status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -44,6 +45,14 @@ class AdminUserDeleteView(AdminAudited, APIView):
         if profile.user_id == getattr(request.user, "pk", None):
             return Response(
                 {"detail": "You can't delete the account you're signed in with."},
+                status=http_status.HTTP_400_BAD_REQUEST,
+            )
+        if (profile.email or "").strip().lower() in settings.ADMIN_EMAILS:
+            # A super admin is an env-var decision; deleting one from a page
+            # would be a back door around it (and the DEBUG bypass has no user
+            # to compare against, so it's also the self-delete guard there).
+            return Response(
+                {"detail": "This is a super admin's account; it can't be deleted here."},
                 status=http_status.HTTP_400_BAD_REQUEST,
             )
 

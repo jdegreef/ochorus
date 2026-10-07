@@ -32,7 +32,7 @@ USER_TARGET = "user:"
 #: the chips filter here now, so the two must file an action the same way. A
 #: prefix not listed (audit, broadcast, feedback) lands in ``content`` there too.
 CATEGORIES = ("language", "content", "review", "translation", "author", "access")
-_PREFIX_CATEGORY = {c: c for c in CATEGORIES} | {"role": "access"}
+_PREFIX_CATEGORY = {c: c for c in CATEGORIES} | {"role": "access", "user": "access"}
 
 #: The actions that change what a reader sees — ``loud`` in ``actionMeta``.
 READER_FACING = frozenset(
@@ -42,6 +42,7 @@ READER_FACING = frozenset(
         AdminAction.Action.CONTENT_UNPUBLISH,
         AdminAction.Action.ROLE_GRANT,
         AdminAction.Action.ROLE_REVOKE,
+        AdminAction.Action.USER_DELETE,
     }
 )
 

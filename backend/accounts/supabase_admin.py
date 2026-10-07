@@ -71,11 +71,24 @@ class SupabaseDeleteError(Exception):
     """Supabase refused or failed to delete an auth user (not "already gone")."""
 
 
+def _is_user_not_found(resp: requests.Response) -> bool:
+    """GoTrue's own "no such user" — not any 404, which a wrong
+    ``SUPABASE_URL`` or a gateway would also answer, and which would then let
+    the local rows go while the real sign-in survives."""
+    if resp.status_code != 404:
+        return False
+    try:
+        return resp.json().get("error_code") == "user_not_found"
+    except (ValueError, AttributeError):
+        return False
+
+
 def delete_user(uid) -> bool:
     """Delete the Supabase auth user ``uid`` — the sign-in itself, which is what
     frees its email address for a fresh sign-up.
 
-    Returns ``True`` once the user is gone (a 404 counts: it already was), and
+    Returns ``True`` once the user is gone (GoTrue's ``user_not_found`` counts:
+    it already was), and
     ``False`` when Supabase isn't configured here (local, tests), so there was no
     auth user to remove. Raises :class:`SupabaseDeleteError` on any other
     failure, so a caller can stop before deleting its own rows and leave the
@@ -87,6 +100,6 @@ def delete_user(uid) -> bool:
         resp = _admin_user_request("delete", uid, timeout=_TIMEOUT * 2)
     except requests.RequestException as exc:
         raise SupabaseDeleteError(str(exc)) from exc
-    if resp.status_code == 404 or resp.ok:
+    if resp.ok or _is_user_not_found(resp):
         return True
     raise SupabaseDeleteError(f"Supabase answered {resp.status_code}")

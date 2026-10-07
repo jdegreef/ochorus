@@ -23,8 +23,10 @@ from .models import AdminAction
 SUPABASE = {"SUPABASE_URL": "https://example.supabase.co", "SUPABASE_SERVICE_ROLE_KEY": "srk"}
 
 
-def _resp(status):
-    return mock.Mock(status_code=status, ok=200 <= status < 300)
+def _resp(status, body=None):
+    return mock.Mock(
+        status_code=status, ok=200 <= status < 300, json=mock.Mock(return_value=body or {})
+    )
 
 
 @override_settings(DEBUG=True, **SUPABASE)
@@ -65,10 +67,19 @@ class AdminUserDeleteTests(TestCase):
         self.assertEqual(entry.target, f"user:{self.uid}")
         self.assertNotIn("test1@example.com", str(entry.detail))  # masked
 
-    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(404))
+    @mock.patch(
+        "accounts.supabase_admin.requests.request",
+        return_value=_resp(404, {"code": 404, "error_code": "user_not_found"}),
+    )
     def test_already_gone_in_supabase_still_deletes_locally(self, _):
         self.assertEqual(self.client.delete(self.url).status_code, 200)
         self.assertTrue(self._gone())
+
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(404))
+    def test_a_bare_404_is_not_taken_as_gone(self, _):
+        # A wrong SUPABASE_URL or a gateway 404s too; the sign-in may survive.
+        self.assertEqual(self.client.delete(self.url).status_code, 502)
+        self.assertTrue(self._intact())
 
     @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(500))
     def test_supabase_failure_deletes_nothing(self, _):
@@ -97,6 +108,13 @@ class AdminUserDeleteTests(TestCase):
     @mock.patch("accounts.supabase_admin.requests.request")
     def test_refuses_to_delete_own_account(self, delete):
         self.client.force_authenticate(self.user)
+        self.assertEqual(self.client.delete(self.url).status_code, 400)
+        delete.assert_not_called()
+        self.assertTrue(self._intact())
+
+    @override_settings(ADMIN_EMAILS={"test1@example.com"})
+    @mock.patch("accounts.supabase_admin.requests.request")
+    def test_refuses_to_delete_a_super_admin(self, delete):
         self.assertEqual(self.client.delete(self.url).status_code, 400)
         delete.assert_not_called()
         self.assertTrue(self._intact())

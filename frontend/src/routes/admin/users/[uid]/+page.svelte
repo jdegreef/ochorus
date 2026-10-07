@@ -39,9 +39,15 @@
 	// Email is PII: masked until revealed, like the recent-sign-ups list.
 	// maskEmail is shared so both admin user pages mask identically.
 	let showEmail = $state(false);
+	// The delete-account form (below); cleared with the mask for each reader.
+	let deleteConfirm = $state('');
+	let deleting = $state(false);
+	let deleteError = $state('');
 	$effect(() => {
-		void u; // re-mask on (re)load
+		void u; // re-mask on (re)load, and clear the delete form for the new reader
 		showEmail = false;
+		deleteConfirm = '';
+		deleteError = '';
 	});
 
 	// Deep-links into the reader. A work row carries a chapter; a favorite/plan/
@@ -101,9 +107,6 @@
 	// Deleting the account (super admins only) — for test sign-ups. The admin
 	// retypes the email (or "delete" when there is none) so a slip on a real
 	// reader's page can't do it.
-	let deleteConfirm = $state('');
-	let deleting = $state(false);
-	let deleteError = $state('');
 	const confirmWord = $derived(u?.profile.email || 'delete');
 	const deleteConfirmed = $derived(deleteConfirm.trim().toLowerCase() === confirmWord.toLowerCase());
 	async function deleteAccount(e: SubmitEvent) {
@@ -406,7 +409,8 @@
 					</p>
 					<form class="mt-4 flex flex-wrap items-end gap-3" onsubmit={deleteAccount}>
 						<label class="flex min-w-0 flex-1 flex-col gap-1 text-small text-muted">
-							Type “{confirmWord}” to confirm
+							<!-- Not the address itself: it is PII, masked until revealed above. -->
+							Type {d.profile.email ? "the reader's email" : '“delete”'} to confirm
 							<input type="text" autocomplete="off" class="field" bind:value={deleteConfirm} />
 						</label>
 						<button type="submit" class="btn btn-ghost text-danger" disabled={deleting || !deleteConfirmed}
