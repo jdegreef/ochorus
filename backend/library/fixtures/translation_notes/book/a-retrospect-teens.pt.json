@@ -1,0 +1,151 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-teens",
+ "language": "pt",
+ "job_issue": 5457,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into Portuguese, and the language's Bible (porbrbsl, Bíblia Livre — Almeida tradition) was unreachable from the worker session (api.takeroot.bible egress-blocked), so every epigraph was rendered in the Almeida register the shipped pt corpus quotes and the “(ESV)” label was dropped. Where a shipped *.pt.json carries the words verbatim they were pasted and the row is `mined` with that file; otherwise the row is `self_rendered` in the Almeida register and needs a check against porbrbsl.",
+  "Mined epigraphs: Luke 18:1, Philippians 4:19, Psalm 118:17 and Matthew 18:19 (whole verse). Mined fragments in the body: Matthew 5:42a, John 3:16a, Isaiah 53:3a, Matthew 5:39a, Romans 13:8a, Matthew 6:11. Matthew 9:37–38 keeps women-who-moved-heaven-2.pt's words of Jesus but adds the ESV's narrative frame (“Então disse aos seus discípulos”), so it ships `self_rendered`; John 19:30, Proverbs 19:17, Psalm 107:29, 1 Corinthians 9:22, Matthew 8:20, Romans 12:21 and Psalm 34:10 are self-rendered outright (the corpus has none of them whole).",
+  "Chapter 11's scroll mottos (“Até aqui o Senhor nos ajudou”, “O Senhor proverá”) match a-retrospect-children.pt, whose own notes record them as self_rendered — so they are self_rendered here too. Luke 18:1b (“e nunca desfaleçam”) is the body's second-person echo of the mined epigraph, so it is ours.",
+  "Title is “Retrospecto (Para Jovens)”, not “(Para Adolescentes)”: Hudson Taylor's covers use the rail layout, which caps a painted-cover title at 28 characters (coverLayouts.test.ts), and “Retrospecto (Para Adolescentes)” is 31. “Retrospecto” follows a-retrospect-children.pt (renamed for the same limit). Money is kept British (meia-coroa, xelins, pence, soberano, libras — the a-retrospect-guide.pt wording for “um xelim e seis pence”); the Chinese “cash” coin is “caixa”, its historical Portuguese name; miles are converted to km."
+ ],
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "school-of-prayer.pt.json"
+  },
+  {
+   "reference": "Luke 18:1b",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Matthew 5:42a",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 3,
+   "source_file": "school-of-prayer.pt.json"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "watchman-nee-a-life.pt.json"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "cheque-book.pt.json"
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "John 3:16a",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 6,
+   "source_file": "cheque-book.pt.json"
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "the-key-in-my-hand.pt.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Isaiah 53:3a",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "talks-to-the-farmer.pt.json"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 5:39a",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 10,
+   "source_file": "school-of-prayer.pt.json"
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Romans 13:8a",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "school-of-prayer.pt.json"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 11,
+   "source_file": "lord-teach-us-to-pray-2.pt.json"
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
