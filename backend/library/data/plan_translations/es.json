@@ -94,5 +94,19 @@
     "note": [
       "Written in the same PR as men-and-women-who-gave-everything-2.es (job #2783): that book completes this plan's book set in Spanish (around-the-wicket-gate.es already shipped), so seed_plans would otherwise create the es row with English prose. The two books are named by their shipped Spanish titles verbatim («Junto a la puerta estrecha», «Hombres y mujeres que lo dieron todo»). «Primeros pasos» renders the plan's 'Starting Out' / slug idea; uses «tú», as new-to-the-faith does. AI-drafted; awaiting native review."
     ]
+  },
+  "family-devotions-pilgrims-journey": {
+    "title": "Devocionales en familia: el viaje del peregrino",
+    "description": "Devocionales familiares de cinco minutos para niños y para los adultos que leen con ellos, durante unas tres semanas y media de noches. Lean en voz alta un capítulo corto: primero el peregrino de Bunyan en el camino a la ciudad celestial, luego las estampas del campo de Spurgeon. Cada uno termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+    ]
+  },
+  "family-devotions-heroes-who-trusted-god": {
+    "title": "Devocionales en familia: héroes que confiaron en Dios",
+    "description": "Cinco semanas de devocionales familiares de cinco minutos: historias verdaderas de tres personas que confiaron en Dios para todo, leídas en voz alta un capítulo corto cada noche — George Müller y sus huérfanos, Hudson Taylor rumbo a China y Amanda Smith, nacida en la esclavitud, que oró por un par de zapatos. Cada uno termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
+    ]
   }
 }
