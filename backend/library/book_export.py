@@ -76,6 +76,13 @@ STRINGS = {
             "speaker. It is not the author's original text."
         ),
         "read_online": "Read it online, free, at",
+        # A young-reader chapter's questions (``Chapter.study_questions``), under
+        # the reader's own headings (messages reader_questions_young/teens); the
+        # answers follow apart, so a child meets the questions first.
+        "questions_young": "Talk about it together",
+        "questions_teens": "Questions to think about",
+        "answers_young": "Notes for grown-ups",
+        "answers_teens": "One way to answer",
         # The one-page biography after "About Ochorus", before the contents.
         "author_title": "About the Author",
         "full_bio": "Read the full biography at",
@@ -133,6 +140,9 @@ class ExportChapter:
     order: int
     title: str
     body: str  # well-formed XHTML fragment
+    # ``(question, answer)`` pairs a young-reader edition ends the chapter
+    # with (``Chapter.study_questions``); empty everywhere else.
+    questions: tuple[tuple[str, str], ...] = ()
 
 
 @dataclass(frozen=True)
@@ -329,9 +339,12 @@ def build_edition(book: Book) -> Edition:
             order=order,
             title=title or strings["chapter"].format(n=order),
             body=to_xhtml(body),
+            questions=tuple(
+                (qa.get("question", ""), qa.get("answer", "")) for qa in questions or []
+            ),
         )
-        for order, title, body in book.chapters.order_by("order").values_list(
-            "order", "title", "body_html"
+        for order, title, body, questions in book.chapters.order_by("order").values_list(
+            "order", "title", "body_html", "study_questions"
         )
     ]
     # Only the written "About this work" — not ``description``, which is card
@@ -353,6 +366,23 @@ def build_edition(book: Book) -> Edition:
 
 def _e(text) -> str:
     return html.escape(str(text), quote=True)
+
+
+def _talk(ed: Edition, ch: ExportChapter) -> str:
+    """A young-reader chapter's questions and, apart, their answers — or "".
+    The teens editions' voice where the slug says teens, else the children's
+    (the reader picks the same way, ``splitEdition``)."""
+    if not ch.questions:
+        return ""
+    voice = "teens" if ed.book.slug.endswith("-teens") else "young"
+    s = ed.strings
+    return (
+        f'<div class="talk"><h2>{_e(s[f"questions_{voice}"])}</h2><ol>'
+        + "".join(f"<li>{_e(q)}</li>" for q, _ in ch.questions)
+        + f'</ol><h3>{_e(s[f"answers_{voice}"])}</h3><ol class="answers">'
+        + "".join(f"<li>{_e(a)}</li>" for _, a in ch.questions)
+        + "</ol></div>"
+    )
 
 
 def is_in_copyright(book: Book) -> bool:
@@ -479,6 +509,10 @@ blockquote p { text-indent: 0; }
 .cover img { max-width: 100%; max-height: 100%; }
 nav ol { list-style: none; padding: 0; }
 nav li { margin: 0.4em 0; }
+.talk { margin-top: 2em; padding-top: 0.5em; border-top: 1px solid #999; }
+.talk li { margin-bottom: 0.4em; }
+.talk h3 { font-size: 1em; margin: 1.2em 0 0.5em; }
+.talk .answers { font-size: 0.9em; }
 """.strip()
 
 
@@ -513,7 +547,7 @@ def render_epub(ed: Edition) -> bytes:
     for ch in ed.chapters:
         docs.append((
             f"ch{ch.order:03d}", f"chapter-{ch.order:03d}.xhtml", ch.title,
-            _xhtml(ed, ch.title, f"<h1>{_e(ch.title)}</h1>{ch.body}"),
+            _xhtml(ed, ch.title, f"<h1>{_e(ch.title)}</h1>{ch.body}{_talk(ed, ch)}"),
         ))
     docs.append(("colophon", "colophon.xhtml", None, _xhtml(ed, "Ochorus", _colophon(ed), body_class="back")))
 
@@ -652,6 +686,11 @@ blockquote p { text-indent: 0; }
 .back p { text-indent: 0; text-align: left; margin-bottom: 3mm; font-size: 10pt; }
 .back a { color: inherit; }
 .notice { font-weight: 600; }
+.talk { margin-top: 7mm; padding-top: 3mm; border-top: 0.5pt solid #999; break-inside: avoid-page; }
+.talk ol { margin: 0 0 3mm; padding-inline-start: 6mm; }
+.talk li { margin: 0 0 1.5mm; }
+.talk h3 { font-size: 10pt; margin: 4mm 0 2mm; break-after: avoid; }
+.talk .answers { font-size: 9.5pt; color: #333; }
 """.strip()
 
 #: EB Garamond as STATIC files (OFL; @fontsource/eb-garamond 5.3.0), one per
@@ -709,7 +748,10 @@ def render_print_html(
     if ed.about:
         parts.append(f'<section class="part" id="about"><h1 class="part-title">{_e(s["about"])}</h1>{ed.about}</section>')
     for c in ed.chapters:
-        parts.append(f'<section class="part" id="ch{c.order}"><h1 class="part-title">{_e(c.title)}</h1>{c.body}</section>')
+        parts.append(
+            f'<section class="part" id="ch{c.order}"><h1 class="part-title">{_e(c.title)}</h1>'
+            f"{c.body}{_talk(ed, c)}</section>"
+        )
     parts.append(f'<section class="part back">{_colophon(ed)}</section>')
     dir_attr = ' dir="rtl"' if ed.rtl else ""
     return (

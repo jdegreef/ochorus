@@ -14,7 +14,11 @@
   "published": "نُشر لأول مرة عام {year}.",
   "read_online": "اقرأه مجانًا على الإنترنت في",
   "translation_edition": "أعدّت هذه الترجمة Ochorus، وهي مكتبة مجانية لكلاسيكيات الكتب المسيحية.",
-  "translation_rights": "النص الأصلي لهذا الكتاب في الملك العام. أعدّت هذه الترجمة Ochorus، وهي مكتبة مجانية لكلاسيكيات الكتب المسيحية."
+  "translation_rights": "النص الأصلي لهذا الكتاب في الملك العام. أعدّت هذه الترجمة Ochorus، وهي مكتبة مجانية لكلاسيكيات الكتب المسيحية.",
+  "questions_young": "لنتحدّث عنها معًا",
+  "questions_teens": "أسئلة للتفكير",
+  "answers_young": "ملاحظات للكبار",
+  "answers_teens": "إجابة ممكنة"
  },
  "es": {
   "about": "Acerca de este libro",
@@ -31,7 +35,11 @@
   "published": "Publicado por primera vez en {year}.",
   "read_online": "Léalo en línea, gratis, en",
   "translation_edition": "Esta traducción fue preparada por Ochorus, una biblioteca gratuita de clásicos cristianos.",
-  "translation_rights": "El texto original de este libro es de dominio público. Esta traducción fue preparada por Ochorus, una biblioteca gratuita de clásicos cristianos."
+  "translation_rights": "El texto original de este libro es de dominio público. Esta traducción fue preparada por Ochorus, una biblioteca gratuita de clásicos cristianos.",
+  "questions_young": "Conversen juntos",
+  "questions_teens": "Preguntas para pensar",
+  "answers_young": "Notas para los adultos",
+  "answers_teens": "Una forma de responder"
  },
  "fr": {
   "about": "À propos de ce livre",
@@ -48,7 +56,11 @@
   "published": "Première publication : {year}.",
   "read_online": "Lisez-le en ligne, gratuitement, sur",
   "translation_edition": "Cette traduction a été préparée par Ochorus, une bibliothèque gratuite de classiques chrétiens.",
-  "translation_rights": "Le texte original de ce livre appartient au domaine public. Cette traduction a été préparée par Ochorus, une bibliothèque gratuite de classiques chrétiens."
+  "translation_rights": "Le texte original de ce livre appartient au domaine public. Cette traduction a été préparée par Ochorus, une bibliothèque gratuite de classiques chrétiens.",
+  "questions_young": "Parlons-en ensemble",
+  "questions_teens": "Questions pour réfléchir",
+  "answers_young": "Notes pour les adultes",
+  "answers_teens": "Une façon de répondre"
  },
  "hi": {
   "about": "इस पुस्तक के बारे में",
@@ -65,7 +77,11 @@
   "published": "पहली बार {year} में प्रकाशित।",
   "read_online": "इसे ऑनलाइन, निःशुल्क पढ़ें:",
   "translation_edition": "यह अनुवाद Ochorus ने तैयार किया है, जो मसीही क्लासिक पुस्तकों का एक निःशुल्क पुस्तकालय है।",
-  "translation_rights": "इस पुस्तक का मूल पाठ सार्वजनिक क्षेत्र (पब्लिक डोमेन) में है। यह अनुवाद Ochorus ने तैयार किया है, जो मसीही क्लासिक पुस्तकों का एक निःशुल्क पुस्तकालय है।"
+  "translation_rights": "इस पुस्तक का मूल पाठ सार्वजनिक क्षेत्र (पब्लिक डोमेन) में है। यह अनुवाद Ochorus ने तैयार किया है, जो मसीही क्लासिक पुस्तकों का एक निःशुल्क पुस्तकालय है।",
+  "questions_young": "आओ, साथ मिलकर बात करें",
+  "questions_teens": "सोचने के लिये प्रश्न",
+  "answers_young": "बड़ों के लिये टिप्पणियाँ",
+  "answers_teens": "उत्तर देने का एक तरीका"
  },
  "lg": {
   "about": "Ku kitabo kino",
@@ -82,7 +98,11 @@
   "published": "Kyasooka kufulumizibwa mu {year}.",
   "read_online": "Kisome ku mutimbagano, ku bwereere, ku",
   "translation_edition": "Okuvvuunula kuno kwategekebwa Ochorus, etterekero ly'ebitabo by'Ekikristaayo eby'edda eby'obwereere.",
-  "translation_rights": "Ebigambo ebyasooka eby'ekitabo kino tebirina nnannyini byo (bya lukale). Okuvvuunula kuno kwategekebwa Ochorus, etterekero ly'ebitabo by'Ekikristaayo eby'edda eby'obwereere."
+  "translation_rights": "Ebigambo ebyasooka eby'ekitabo kino tebirina nnannyini byo (bya lukale). Okuvvuunula kuno kwategekebwa Ochorus, etterekero ly'ebitabo by'Ekikristaayo eby'edda eby'obwereere.",
+  "questions_young": "Mwogere ku kino wamu",
+  "questions_teens": "Ebibuuzo eby’okulowoozaako",
+  "answers_young": "Ebiwandiiko eri abakulu",
+  "answers_teens": "Engeri emu ey’okuddamu"
  },
  "pt": {
   "about": "Sobre este livro",
@@ -99,7 +119,11 @@
   "published": "Publicado pela primeira vez em {year}.",
   "read_online": "Leia online, gratuitamente, em",
   "translation_edition": "Esta tradução foi preparada pelo Ochorus, uma biblioteca gratuita de clássicos cristãos.",
-  "translation_rights": "O texto original deste livro é de domínio público. Esta tradução foi preparada pelo Ochorus, uma biblioteca gratuita de clássicos cristãos."
+  "translation_rights": "O texto original deste livro é de domínio público. Esta tradução foi preparada pelo Ochorus, uma biblioteca gratuita de clássicos cristãos.",
+  "questions_young": "Conversem juntos",
+  "questions_teens": "Perguntas para pensar",
+  "answers_young": "Notas para os adultos",
+  "answers_teens": "Uma forma de responder"
  },
  "sw": {
   "about": "Kuhusu kitabu hiki",
@@ -116,7 +140,11 @@
   "published": "Kilichapishwa mara ya kwanza mwaka {year}.",
   "read_online": "Kisome mtandaoni, bila malipo, kwenye",
   "translation_edition": "Tafsiri hii iliandaliwa na Ochorus, maktaba ya bure ya vitabu vya Kikristo vya kale.",
-  "translation_rights": "Maandishi asilia ya kitabu hiki ni mali ya umma. Tafsiri hii iliandaliwa na Ochorus, maktaba ya bure ya vitabu vya Kikristo vya kale."
+  "translation_rights": "Maandishi asilia ya kitabu hiki ni mali ya umma. Tafsiri hii iliandaliwa na Ochorus, maktaba ya bure ya vitabu vya Kikristo vya kale.",
+  "questions_young": "Zungumzeni pamoja",
+  "questions_teens": "Maswali ya kufikiria",
+  "answers_young": "Maelezo kwa watu wazima",
+  "answers_teens": "Njia moja ya kujibu"
  },
  "uk": {
   "about": "Про цю книгу",
@@ -133,6 +161,10 @@
   "published": "Уперше опубліковано {year} року.",
   "read_online": "Читайте онлайн безкоштовно на",
   "translation_edition": "Цей переклад підготувало Ochorus — безкоштовна бібліотека християнської класики.",
-  "translation_rights": "Оригінальний текст цієї книги є суспільним надбанням. Цей переклад підготувало Ochorus — безкоштовна бібліотека християнської класики."
+  "translation_rights": "Оригінальний текст цієї книги є суспільним надбанням. Цей переклад підготувало Ochorus — безкоштовна бібліотека християнської класики.",
+  "questions_young": "Поговоріть разом",
+  "questions_teens": "Запитання для роздумів",
+  "answers_young": "Нотатки для дорослих",
+  "answers_teens": "Один зі способів відповісти"
  }
 }
