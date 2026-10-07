@@ -3,7 +3,7 @@
  "slug": "talks-to-the-farmer-teens",
  "language": "es",
  "job_issue": 4809,
- "pull_request": null,
+ "pull_request": 5527,
  "note": [
   "Scripture source: the English teen retelling quotes the ESV; the Spanish does not, and its '(ESV)' tags and the ESV permission line were dropped. Quotations were taken, where available, verbatim from the Reina-Valera wording already shipped in our own corpus — mostly the full edition talks-to-the-farmer.es.json, whose chapters quote the same epigraphs (one from watchman-nee-a-life.es.json). Rows marked mined were re-verified by script as verbatim (each ellipsis-separated fragment a substring of the cited file). Where the shipped wording is archaic RV1909 (e.g. Prov 24:32 'púselo… vilo', Luke 8 'á/fué'), or the English quotes a clause the corpus lacks, the verse was rendered in modern Reina-Valera (1960-style) register and marked self_rendered — those need native review. spa_rv (RV1909) was not used.",
   "Rows without block_index sit in the chapter's study questions, not its body. AI-translated in-session (job #4809); awaiting native review."
