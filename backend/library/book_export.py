@@ -426,7 +426,26 @@ def _rights(ed: Edition) -> str:
         parts.append(f"<p>{_e(s[_rights_key(ed.book)])}</p>")
         if ed.book.attribution:
             parts.append(f'<p dir="auto">{_e(ed.book.attribution)}</p>')
+    credit = bible_credit(ed.book.language)
+    if credit:
+        parts.append(f'<p dir="auto">{_e(credit)}</p>')
     return "".join(parts)
+
+
+def bible_credit(language: str) -> str:
+    """The credit line a licensed Bible asks for wherever its verses appear.
+
+    The reader prints it in its footer (``frontend/src/lib/bibleCredit.ts``); a
+    download leaves the site, so it carries the line on its rights page. The
+    ``Language`` row wins (Amharic's is set in the admin); hi/lg are owned by
+    ``language_seed``, which also covers a database the seed hasn't reached,
+    like the one ``book-pdfs.yml`` builds from the fixture.
+    """
+    from .language_seed import SEED_LANGUAGES
+    from .models import Language
+
+    row = Language.objects.filter(code=language).values_list("bible_attribution", flat=True).first()
+    return (row or "").strip() or SEED_LANGUAGES.get(language, {}).get("bible_attribution", "").strip()
 
 
 def _colophon(ed: Edition) -> str:
