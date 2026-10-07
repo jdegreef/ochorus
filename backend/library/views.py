@@ -65,7 +65,6 @@ from .search import (
 )
 from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
-    AUDIENCE_AGES,
     AUDIENCE_EDITION_SUFFIX,
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
@@ -875,8 +874,8 @@ def _audience_rows(audience: str, topic) -> set[tuple[str, str]]:
     or a book of its topic where the topic has a title — in one pass over the
     candidate rows, with the same three tests ``AudienceShelfView`` sorts a
     language's books by. Its languages are the page's hreflang and the
-    sitemap's (``_audience_languages``); its slugs, the admin's young-reader
-    engagement (``hub_book_slugs``). Plans need no test of their own: a plan
+    sitemap's (``_audience_languages``); without the topic, the admin's
+    young-reader engagement (``audience_book_slugs``). Plans need no test of their own: a plan
     lands on the hub only when every book it reads already does.
 
     Keep the three tests in step with the view's (and ``_series_rows``'): a rule
@@ -909,9 +908,13 @@ def _audience_languages(audience: str, topic) -> list[str]:
     return sorted({language for language, _ in _audience_rows(audience, topic)})
 
 
-def hub_book_slugs(audience: str) -> set[str]:
-    """Every book slug the audience's hub shows, in any language."""
-    return {slug for _, slug in _audience_rows(audience, _audience_topic(audience))}
+def audience_book_slugs(audience: str) -> set[str]:
+    """Every book written for the audience, in any language: its series' books
+    and its retold editions — the hub's rows without its topic shelf, which
+    also holds whole classics for every age (All of Grace on the teens'). For
+    counting who reads books FOR the audience, which that shelf would swell
+    with adults."""
+    return {slug for _, slug in _audience_rows(audience, None)}
 
 
 class AudienceLanguagesView(PublicContentCacheMixin, APIView):
@@ -942,8 +945,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``languages``, every
-    language the hub has something in (its hreflang); ``ages``, the reading age
-    it is for (``AUDIENCE_AGES``). Nothing here falls back
+    language the hub has something in (its hreflang). Nothing here falls back
     to English: a language with no rows gets empty lists, and the page hides.
     """
 
@@ -1009,9 +1011,6 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "start": start,
                 "printable": printable,
                 "languages": languages,
-                # Who the hub is for, as its books' default (`book_ages`) — the
-                # page's schema.org audience.
-                "ages": AUDIENCE_AGES[audience],
             }
         )
 

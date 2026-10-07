@@ -30,7 +30,8 @@
 		/** The button's words, where a page asks for something warmer than
 		 *  "Share" ("Share with a family"). */
 		label?: string;
-		/** Called as the sheet or menu opens (not as the menu closes). */
+		/** Called when the page is passed on: the OS sheet completes, the link
+		 *  is copied, or a share target is chosen — not on a dismissed sheet. */
 		onshare?: () => void;
 	}
 	let { url, title, showLabel = false, label, onshare }: Props = $props();
@@ -55,14 +56,16 @@
 	const links = $derived(shareLinks(title, url, t('login.email')));
 
 	async function onClick() {
-		if (!open) onshare?.();
 		// Any failure other than a dismissed sheet falls through to the menu.
-		if ((await nativeShare(title, url)) === 'unavailable') toggle();
+		const result = await nativeShare(title, url);
+		if (result === 'shared') onshare?.();
+		else if (result === 'unavailable') toggle();
 	}
 
 	async function copyLink() {
 		try {
 			await navigator.clipboard.writeText(url);
+			onshare?.();
 			copied = true;
 			clearTimeout(copyTimer);
 			copyTimer = setTimeout(() => (copied = false), 1500);
@@ -108,7 +111,10 @@
 					href={l.href}
 					target={l.newTab ? '_blank' : undefined}
 					rel={l.newTab ? 'noopener' : undefined}
-					onclick={() => (open = false)}>{l.name}</a
+					onclick={() => {
+						onshare?.();
+						open = false;
+					}}>{l.name}</a
 				>
 			{/each}
 		</div>
