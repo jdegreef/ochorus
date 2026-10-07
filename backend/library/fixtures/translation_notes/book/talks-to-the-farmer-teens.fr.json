@@ -3,7 +3,7 @@
  "slug": "talks-to-the-farmer-teens",
  "language": "fr",
  "job_issue": 5193,
- "pull_request": null,
+ "pull_request": 5512,
  "note": [
   "Scripture source: the English teen retelling quotes the ESV; the French quotes Louis Segond 1910 (fra_lsg, public domain, read from the gracious-tech/fetch_collection ebible mirror) and the '(ESV)' tag was dropped. Rows marked mined were re-verified by script as verbatim substrings of LSG (or, where noted, of the shipped full edition talks-to-the-farmer.fr.json). Citations keep the English verse numbers, as the full French edition does, except Isaiah 9:3, cited as « Ésaïe 9:2 » (LSG numbering); Psalm 65:9-10 and Psalm 30:5 quote LSG 65:10-11 and 30:6.",
   "Amos 2:13: LSG reads « je vous écraserai », the opposite sense to the one the chapter is built on (God pressed down like a loaded cart), so the epigraph uses the wording of the shipped full edition (talks-to-the-farmer.fr.json), not LSG.",
