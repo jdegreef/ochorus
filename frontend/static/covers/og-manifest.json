@@ -8889,6 +8889,16 @@
 				532
 			]
 		},
+		"mary-slessor-a-life-teens": {
+			"ground": "12b20bcfc9ea94b11700b2652d44ae89f186518f2553598bf66ac8386f5af017",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",
@@ -12965,6 +12975,16 @@
 				263,
 				532
 			]
+		},
+		"watchman-nee-a-life-teens": {
+			"ground": "9e45fec0289e28d91b682c69dd92b01ba616d1e14821862193e98dd71dbe28b7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"way-into-holiest": {
 			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",
