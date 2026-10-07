@@ -3,7 +3,7 @@
  "slug": "pilgrims-progress-children",
  "language": "fr",
  "job_issue": 5362,
- "pull_request": null,
+ "pull_request": 5399,
  "note": [
   "Scripture register is Louis Segond 1910, the tradition the shipped French corpus quotes. api.takeroot.bible was egress-blocked from this session, so each opening verse (and each verse the story speaks aloud) was pasted verbatim from an already-shipped French work quoting the same verse; source_file names it, and every mined fragment was re-checked as an exact substring of that file.",
   "The English retelling cites its verses loosely (“— from Acts 16”), in a simplified child register; the French keeps the citation shape (“— d’après Actes 16”) but carries the Segond wording, so where Segond is fuller than the English paraphrase (Psalm 40:2, Psalm 119:18) the French quotes the Segond clause. 2 Peter 1:4 and the Matthew 25:21 echo in chapter 12 had no verbatim corpus match in a child-usable form and are self_rendered.",
