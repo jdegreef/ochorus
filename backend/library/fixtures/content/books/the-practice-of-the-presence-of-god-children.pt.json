@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "pt",
+  "title": "A Prática da Presença de Deus (Para Crianças)",
+  "subtitle": "",
+  "description": "A história verdadeira do Irmão Lourenço, um jovem criado desajeitado que virou cozinheiro numa cozinha movimentada e aprendeu a conversar com Deus o dia inteiro, até no meio das panelas. Esta edição para crianças reconta a vida dele e o seu ensino simples em capítulos curtos, feitos para ler em voz alta: um versículo da Bíblia, uma parte da história dele, uma coisa que ela quer dizer para você e uma oração curtinha, com perguntas para conversar juntos.",
+  "qa": [
+   {
+    "question": "Sobre o que é A Prática da Presença de Deus (Para Crianças)?",
+    "answer": "É uma versão para crianças de um livrinho muito amado sobre o Irmão Lourenço. Conta como um rapaz desajeitado passou a amar a Deus, trabalhou durante anos numa cozinha de que não gostava e aprendeu a conversar com Deus o dia todo: cozinhando, viajando, ficando doente e envelhecendo."
+   },
+   {
+    "question": "Quem foi o Irmão Lourenço?",
+    "answer": "Um francês que viveu há mais de trezentos anos. Ele tinha sido lacaio, um criado, e dizia que era desajeitado. Depois que Deus mudou o coração dele, aos dezoito anos, ele entrou numa comunidade de Irmãos e trabalhou como cozinheiro deles. As pessoas iam falar com ele e escreviam para ele, para aprender como ele vivia tão perto de Deus."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Todo capítulo é curto e feito para ser lido em voz alta. Começa com um versículo da Bíblia, conta uma parte da história ou do ensino do Irmão Lourenço, mostra uma coisa simples que ela quer dizer para você e termina com uma oração curtinha. Depois vêm três perguntas para conversar sobre o capítulo."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças de mais ou menos oito a doze anos, para um adulto ler em voz alta ou para uma criança maior ler sozinha. O livro completo, A Prática da Presença de Deus, com as conversas e as cartas que foram registradas, também está disponível para leitores mais velhos."
+   },
+   {
+    "question": "O que quer dizer “praticar a presença de Deus”?",
+    "answer": "Quer dizer lembrar que Deus está sempre conosco e conversar com ele o dia inteiro, e não só nas horas especiais de oração. O Irmão Lourenço fazia isso com orações curtas e simples no coração enquanto trabalhava."
+   },
+   {
+    "question": "É preciso morar num mosteiro para orar como o Irmão Lourenço?",
+    "answer": "Não. O próprio Irmão Lourenço disse que não é preciso estar na igreja para estar com Deus, e que qualquer pessoa pode conversar com ele: na escola, em casa, na hora das refeições ou no meio de um dia corrido."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, de A Prática da Presença de Deus, do Irmão Lourenço, obra de domínio público. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/pt/the-practice-of-the-presence-of-god-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "O Rapaz Que Quebrava Tudo",
+  "body_html": "<blockquote>“O homem olha para a aparência, mas o Senhor olha para o coração.” — de 1 Samuel 16</blockquote> <p>Há muito tempo, mais de trezentos anos antes de você nascer, viveu um homem que hoje chamamos de Irmão Lourenço. Antes de alguém chamá-lo de “Irmão”, ele era um jovem criado.</p> <p>Ele trabalhava como lacaio para um homem importante, um tesoureiro chamado Monsieur Fieubert. O trabalho de um lacaio era servir o patrão, carregar coisas, buscar coisas e deixar tudo limpinho e arrumado.</p> <p>Mas havia um problema. Lourenço era grandalhão e desajeitado. Ele mesmo dizia isso. Chamava a si mesmo de “um grandalhão desajeitado que quebrava tudo”. Imagine-o tentando carregar uma bandeja de xícaras finas e batendo numa porta. Crash! Imagine-o esticando o braço para pegar um prato e derrubando uma jarra. Splash!</p> <p>Quase ninguém imaginaria que aquele rapaz desajeitado um dia seria lembrado no mundo inteiro. Ninguém imaginaria que as pessoas ainda leriam sobre ele centenas de anos depois. Mas Deus não estava olhando para as mãos desajeitadas dele. Deus estava olhando para o coração dele.</p> <p>E alguma coisa estava para acontecer naquele coração.</p> <p>Você às vezes se sente desajeitado, ou acha que não é muito bom nas coisas? Talvez você derrame o suco, deixe a bola cair ou erre a resposta. Isso não impede Deus de amar você nem de usar você. Ele olha para o seu coração.</p> <p><em>Querido Deus, obrigado porque tu não me amas por eu ser inteligente ou cuidadoso, mas porque eu sou teu. Por favor, cuida do meu coração. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que trabalho Lourenço fazia quando era jovem?",
+    "answer": "Ele era lacaio, um criado, de um homem importante chamado Monsieur Fieubert, o tesoureiro."
+   },
+   {
+    "question": "O que Lourenço dizia sobre si mesmo?",
+    "answer": "Ele dizia que era “um grandalhão desajeitado que quebrava tudo”, ou seja, muito atrapalhado."
+   },
+   {
+    "question": "Você já se sentiu desajeitado ou achou que não era bom o bastante? Para o que Deus olha?",
+    "answer": "A ideia do capítulo: Deus não olha para o quanto somos habilidosos por fora. Ele olha para o coração, e pode usar qualquer pessoa."
+   }
+  ],
+  "body_text": "“O homem olha para a aparência, mas o Senhor olha para o coração.” — de 1 Samuel 16 Há muito tempo, mais de trezentos anos antes de você nascer, viveu um homem que hoje chamamos de Irmão Lourenço. Antes de alguém chamá-lo de “Irmão”, ele era um jovem criado. Ele trabalhava como lacaio para um homem importante, um tesoureiro chamado Monsieur Fieubert. O trabalho de um lacaio era servir o patrão, carregar coisas, buscar coisas e deixar tudo limpinho e arrumado. Mas havia um problema. Lourenço era grandalhão e desajeitado. Ele mesmo dizia isso. Chamava a si mesmo de “um grandalhão desajeitado que quebrava tudo”. Imagine-o tentando carregar uma bandeja de xícaras finas e batendo numa porta. Crash! Imagine-o esticando o braço para pegar um prato e derrubando uma jarra. Splash! Quase ninguém imaginaria que aquele rapaz desajeitado um dia seria lembrado no mundo inteiro. Ninguém imaginaria que as pessoas ainda leriam sobre ele centenas de anos depois. Mas Deus não estava olhando para as mãos desajeitadas dele. Deus estava olhando para o coração dele. E alguma coisa estava para acontecer naquele coração. Você às vezes se sente desajeitado, ou acha que não é muito bom nas coisas? Talvez você derrame o suco, deixe a bola cair ou erre a resposta. Isso não impede Deus de amar você nem de usar você. Ele olha para o seu coração. Querido Deus, obrigado porque tu não me amas por eu ser inteligente ou cuidadoso, mas porque eu sou teu. Por favor, cuida do meu coração. Amém.",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "A Árvore no Inverno",
+  "body_html": "<blockquote>“Desde que Deus criou o mundo, o seu grande poder pode ser visto claramente nas coisas que ele fez.” — de Romanos 1</blockquote> <p>Quando Lourenço tinha dezoito anos, era inverno. Tudo estava frio e cinzento.</p> <p>Um dia ele parou e olhou para uma árvore. Ela tinha perdido todas as folhas. Os galhos estavam pelados e marrons, como dedos ossudos contra o céu. Ela parecia morta.</p> <p>Mas Lourenço sabia uma coisa sobre as árvores. Ele sabia que, daqui a pouco, quando chegasse a primavera, folhas novas e verdes voltariam a nascer naqueles galhos pelados. Depois viriam as flores. E depois das flores viriam os frutos.</p> <p>Enquanto estava ali pensando, um pensamento enorme encheu a cabeça dele. Quem faz as folhas voltarem? Quem traz as flores e os frutos, ano após ano? É Deus! De repente, Lourenço viu como Deus é forte, e com quanto cuidado ele toma conta de tudo o que fez.</p> <p>Aquela única árvore pelada mudou a vida inteira dele. Ele disse que aquele pensamento nunca mais saiu da cabeça dele. Fez com que ele amasse tanto a Deus que, mais de quarenta anos depois, ele ainda não sabia dizer se o seu amor tinha crescido, porque tinha sido enorme desde o começo.</p> <p>Deus fez tudo o que está ao seu redor: as árvores, os passarinhos, a chuva e as estrelas. Da próxima vez que você olhar para uma árvore, lembre-se de Lourenço. O mesmo Deus que traz as folhas de volta está cuidando de você.</p> <p><em>Querido Deus, obrigado pelas árvores e por todas as coisas que tu fizeste. Ajuda-me a ver como tu és grande e bondoso. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Lourenço viu quando tinha dezoito anos?",
+    "answer": "No inverno, ele viu uma árvore sem folhas e pensou em como as folhas, as flores e os frutos dela iam voltar."
+   },
+   {
+    "question": "O que a árvore pelada ensinou a ele sobre Deus?",
+    "answer": "Ela mostrou o grande poder de Deus e com quanta fidelidade Deus cuida de tudo o que fez. Isso fez Lourenço amar a Deus pelo resto da vida."
+   },
+   {
+    "question": "O que você poderia olhar lá fora esta semana que faça você lembrar de Deus?",
+    "answer": "A ideia do capítulo: tudo o que Deus fez pode nos lembrar como ele é forte e cuidadoso, assim como uma árvore pelada fez com Lourenço."
+   }
+  ],
+  "body_text": "“Desde que Deus criou o mundo, o seu grande poder pode ser visto claramente nas coisas que ele fez.” — de Romanos 1 Quando Lourenço tinha dezoito anos, era inverno. Tudo estava frio e cinzento. Um dia ele parou e olhou para uma árvore. Ela tinha perdido todas as folhas. Os galhos estavam pelados e marrons, como dedos ossudos contra o céu. Ela parecia morta. Mas Lourenço sabia uma coisa sobre as árvores. Ele sabia que, daqui a pouco, quando chegasse a primavera, folhas novas e verdes voltariam a nascer naqueles galhos pelados. Depois viriam as flores. E depois das flores viriam os frutos. Enquanto estava ali pensando, um pensamento enorme encheu a cabeça dele. Quem faz as folhas voltarem? Quem traz as flores e os frutos, ano após ano? É Deus! De repente, Lourenço viu como Deus é forte, e com quanto cuidado ele toma conta de tudo o que fez. Aquela única árvore pelada mudou a vida inteira dele. Ele disse que aquele pensamento nunca mais saiu da cabeça dele. Fez com que ele amasse tanto a Deus que, mais de quarenta anos depois, ele ainda não sabia dizer se o seu amor tinha crescido, porque tinha sido enorme desde o começo. Deus fez tudo o que está ao seu redor: as árvores, os passarinhos, a chuva e as estrelas. Da próxima vez que você olhar para uma árvore, lembre-se de Lourenço. O mesmo Deus que traz as folhas de volta está cuidando de você. Querido Deus, obrigado pelas árvores e por todas as coisas que tu fizeste. Ajuda-me a ver como tu és grande e bondoso. Amém.",
+  "word_count": 270
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Uma Surpresa Feliz",
+  "body_html": "<blockquote>“Tu me enches de alegria quando estou contigo.” — de Salmos 16</blockquote> <p>Depois de ver a árvore, Lourenço quis entregar a vida inteira a Deus. Então ele pediu para entrar num mosteiro. Um mosteiro era uma casa grande onde homens moravam juntos para orar e trabalhar. Os homens de lá eram chamados de “Irmãos”, e foi assim que ele se tornou o Irmão Lourenço.</p> <p>Mas Lourenço tinha um motivo engraçado para ir. Ele achava que no mosteiro ia levar bronca por ser desajeitado. Esperava ser repreendido por cada erro que cometesse. Estava pronto para deixar todas as coisas boas da vida por amor a Deus, mesmo que isso o deixasse infeliz.</p> <p>Então Deus fez uma surpresa para ele.</p> <p>O Irmão Lourenço disse que Deus o “decepcionou”, mas do jeito mais lindo que existe! Em vez de ficar infeliz, ele só encontrou felicidade ali. Ele estava preparado para uma vida dura e triste. Em vez disso, Deus o encheu de alegria.</p> <p>O Irmão Lourenço aprendeu que seguir a Deus não é ser infeliz. Estar perto de Deus é o lugar mais feliz que existe.</p> <p>Algumas pessoas acham que amar a Deus significa abrir mão de toda a diversão. Mas Deus não é um rei rabugento. Ele é bondoso, e quanto mais perto chegamos dele, mais alegria ele nos dá.</p> <p><em>Querido Deus, obrigado porque estar perto de ti é o lugar melhor e mais feliz de todos. Enche-me da tua alegria. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que o Irmão Lourenço achava que seria infeliz no mosteiro?",
+    "answer": "Ele achava que seria castigado por ser desajeitado e pelos seus erros, e que estaria abrindo mão de todas as alegrias da vida."
+   },
+   {
+    "question": "Como Deus fez uma surpresa para ele?",
+    "answer": "Em vez de ficar infeliz, o Irmão Lourenço só encontrou felicidade ali. Ele brincava dizendo que Deus o tinha “decepcionado”."
+   },
+   {
+    "question": "Você acha que seguir a Deus deixa as pessoas felizes ou tristes? Por quê?",
+    "answer": "A ideia do capítulo: Deus é bondoso, não rabugento. Chegar perto dele traz alegria de verdade, como o Irmão Lourenço descobriu."
+   }
+  ],
+  "body_text": "“Tu me enches de alegria quando estou contigo.” — de Salmos 16 Depois de ver a árvore, Lourenço quis entregar a vida inteira a Deus. Então ele pediu para entrar num mosteiro. Um mosteiro era uma casa grande onde homens moravam juntos para orar e trabalhar. Os homens de lá eram chamados de “Irmãos”, e foi assim que ele se tornou o Irmão Lourenço. Mas Lourenço tinha um motivo engraçado para ir. Ele achava que no mosteiro ia levar bronca por ser desajeitado. Esperava ser repreendido por cada erro que cometesse. Estava pronto para deixar todas as coisas boas da vida por amor a Deus, mesmo que isso o deixasse infeliz. Então Deus fez uma surpresa para ele. O Irmão Lourenço disse que Deus o “decepcionou”, mas do jeito mais lindo que existe! Em vez de ficar infeliz, ele só encontrou felicidade ali. Ele estava preparado para uma vida dura e triste. Em vez disso, Deus o encheu de alegria. O Irmão Lourenço aprendeu que seguir a Deus não é ser infeliz. Estar perto de Deus é o lugar mais feliz que existe. Algumas pessoas acham que amar a Deus significa abrir mão de toda a diversão. Mas Deus não é um rei rabugento. Ele é bondoso, e quanto mais perto chegamos dele, mais alegria ele nos dá. Querido Deus, obrigado porque estar perto de ti é o lugar melhor e mais feliz de todos. Enche-me da tua alegria. Amém.",
+  "word_count": 240
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "Livros Demais",
+  "body_html": "<blockquote>“Ame o Senhor, o seu Deus, de todo o seu coração, de toda a sua alma e de todo o seu entendimento.” — de Mateus 22</blockquote> <p>O Irmão Lourenço queria saber como ficar perto de Deus. Por isso, ele leu um monte de livros sobre o assunto. Mas cada livro dizia uma coisa diferente. Faça isto! Não, faça aquilo! Ore deste jeito! Não, daquele jeito! Em vez de ajudar, todas aquelas ideias diferentes só deixaram ele confuso.</p> <p>Então ele decidiu deixar tudo bem simples. Entregou-se inteirinho a Deus e pediu que Deus tirasse o seu pecado. Depois começou a viver como se só existissem duas pessoas no mundo inteiro: Deus e ele.</p> <p>Ele tentava pensar em Deus o máximo que podia, o dia todo. Em alguns dias, pensava em Deus como um juiz e ficava triste pelas coisas erradas que tinha feito. Em outros dias, pensava em Deus como o seu Pai amoroso, morando bem dentro do seu coração.</p> <p>Não era fácil. A cabeça dele vivia se distraindo. E, durante anos, ele se preocupou achando que não amava a Deus tanto quanto devia, e ficava lembrando das coisas erradas que tinha feito. Muitas vezes ele caía, e se levantava de novo. Mas continuou confiando em Deus.</p> <p>Então, um dia, de repente, uma paz profunda e tranquila encheu o coração dele, e ficou ali. Daí em diante, ele andou com Deus de um jeito simples, com confiança e com amor.</p> <p>Amar a Deus não precisa ser complicado. Você não precisa saber um monte de regras difíceis. Você pode começar hoje, simplesmente lembrando que Deus está com você e dizendo a ele que você o ama.</p> <p><em>Querido Deus, eu quero te amar de todo o meu coração. Ajuda-me a lembrar que tu estás comigo, hoje e todos os dias. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que todos aqueles livros deixaram o Irmão Lourenço confuso?",
+    "answer": "Cada livro ensinava um jeito diferente de chegar perto de Deus, e todas aquelas ideias diferentes o confundiram em vez de ajudar."
+   },
+   {
+    "question": "Que coisa simples ele decidiu fazer em vez disso?",
+    "answer": "Ele se entregou inteirinho a Deus e viveu como se só existissem Deus e ele no mundo, pensando em Deus sempre que podia."
+   },
+   {
+    "question": "Em que momento de hoje você poderia lembrar que Deus está com você?",
+    "answer": "A ideia do capítulo: amar a Deus não precisa ser complicado. Podemos simplesmente lembrar que ele está conosco e dizer a ele que o amamos."
+   }
+  ],
+  "body_text": "“Ame o Senhor, o seu Deus, de todo o seu coração, de toda a sua alma e de todo o seu entendimento.” — de Mateus 22 O Irmão Lourenço queria saber como ficar perto de Deus. Por isso, ele leu um monte de livros sobre o assunto. Mas cada livro dizia uma coisa diferente. Faça isto! Não, faça aquilo! Ore deste jeito! Não, daquele jeito! Em vez de ajudar, todas aquelas ideias diferentes só deixaram ele confuso. Então ele decidiu deixar tudo bem simples. Entregou-se inteirinho a Deus e pediu que Deus tirasse o seu pecado. Depois começou a viver como se só existissem duas pessoas no mundo inteiro: Deus e ele. Ele tentava pensar em Deus o máximo que podia, o dia todo. Em alguns dias, pensava em Deus como um juiz e ficava triste pelas coisas erradas que tinha feito. Em outros dias, pensava em Deus como o seu Pai amoroso, morando bem dentro do seu coração. Não era fácil. A cabeça dele vivia se distraindo. E, durante anos, ele se preocupou achando que não amava a Deus tanto quanto devia, e ficava lembrando das coisas erradas que tinha feito. Muitas vezes ele caía, e se levantava de novo. Mas continuou confiando em Deus. Então, um dia, de repente, uma paz profunda e tranquila encheu o coração dele, e ficou ali. Daí em diante, ele andou com Deus de um jeito simples, com confiança e com amor. Amar a Deus não precisa ser complicado. Você não precisa saber um monte de regras difíceis. Você pode começar hoje, simplesmente lembrando que Deus está com você e dizendo a ele que você o ama. Querido Deus, eu quero te amar de todo o meu coração. Ajuda-me a lembrar que tu estás comigo, hoje e todos os dias. Amém.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "A Cozinha de Que Ele Não Gostava",
+  "body_html": "<blockquote>“Tudo o que vocês fizerem, façam de todo o coração, como quem trabalha para o Senhor.” — de Colossenses 3</blockquote> <p>No mosteiro, todo mundo tinha um trabalho. E sabe qual trabalho deram para o desajeitado Irmão Lourenço? Fizeram dele o cozinheiro!</p> <p>O Irmão Lourenço não gostava do trabalho na cozinha. Ele dizia que aquilo ia contra tudo o que ele gostava de fazer. Imagine a cozinha enorme: fogo quente, panelas pesadas de ferro, vapor por todo lado e um monte de Irmãos com fome esperando o jantar.</p> <p>Mas o Irmão Lourenço descobriu um segredo. Antes de começar o trabalho, ele pensava no que precisava fazer, e quando, e como. Depois ele falava com Deus. Dizia mais ou menos assim: “Meu Deus, tu estás aqui comigo. Agora eu preciso pensar em todas estas tarefas. Por favor, ajuda-me a ficar perto de ti enquanto faço tudo isso. Ajuda-me, e recebe todo o meu trabalho como um presente para ti.”</p> <p>Depois, enquanto cozinhava, ele continuava falando com Deus baixinho, no coração. Pedia que Deus o ajudasse a fazer bem o seu trabalho, e fazia tudo por amor a Deus.</p> <p>E aqui vem a surpresa. O trabalho na cozinha, de que ele não gostava, ficou fácil! Ele trabalhou ali durante quinze anos e descobriu que fazer aquilo para Deus fazia toda a diferença.</p> <p>Tem alguma tarefa de que você não gosta, como arrumar o quarto, fazer a lição de casa ou lavar a louça? Experimente fazer isso para Deus. Peça a ajuda dele e faça como um presente de amor para ele.</p> <p><em>Querido Deus, quando eu tiver uma tarefa de que não gosto, ajuda-me a fazê-la para ti, e a lembrar que tu estás bem ao meu lado. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que foi uma surpresa o Irmão Lourenço virar o cozinheiro?",
+    "answer": "Ele não gostava nem um pouco do trabalho na cozinha. Aquilo ia contra o que ele gostava de fazer."
+   },
+   {
+    "question": "Qual era o segredo dele para fazer o trabalho?",
+    "answer": "Ele pedia a ajuda de Deus e fazia tudo por amor a Deus, falando com Deus enquanto trabalhava. Então o trabalho ficou fácil."
+   },
+   {
+    "question": "Que tarefa é difícil para você? Como você poderia fazê-la para Deus?",
+    "answer": "A ideia do capítulo: qualquer tarefa, até uma de que não gostamos, pode virar um presente de amor para Deus quando pedimos a ajuda dele e a fazemos para ele."
+   }
+  ],
+  "body_text": "“Tudo o que vocês fizerem, façam de todo o coração, como quem trabalha para o Senhor.” — de Colossenses 3 No mosteiro, todo mundo tinha um trabalho. E sabe qual trabalho deram para o desajeitado Irmão Lourenço? Fizeram dele o cozinheiro! O Irmão Lourenço não gostava do trabalho na cozinha. Ele dizia que aquilo ia contra tudo o que ele gostava de fazer. Imagine a cozinha enorme: fogo quente, panelas pesadas de ferro, vapor por todo lado e um monte de Irmãos com fome esperando o jantar. Mas o Irmão Lourenço descobriu um segredo. Antes de começar o trabalho, ele pensava no que precisava fazer, e quando, e como. Depois ele falava com Deus. Dizia mais ou menos assim: “Meu Deus, tu estás aqui comigo. Agora eu preciso pensar em todas estas tarefas. Por favor, ajuda-me a ficar perto de ti enquanto faço tudo isso. Ajuda-me, e recebe todo o meu trabalho como um presente para ti.” Depois, enquanto cozinhava, ele continuava falando com Deus baixinho, no coração. Pedia que Deus o ajudasse a fazer bem o seu trabalho, e fazia tudo por amor a Deus. E aqui vem a surpresa. O trabalho na cozinha, de que ele não gostava, ficou fácil! Ele trabalhou ali durante quinze anos e descobriu que fazer aquilo para Deus fazia toda a diferença. Tem alguma tarefa de que você não gosta, como arrumar o quarto, fazer a lição de casa ou lavar a louça? Experimente fazer isso para Deus. Peça a ajuda dele e faça como um presente de amor para ele. Querido Deus, quando eu tiver uma tarefa de que não gosto, ajuda-me a fazê-la para ti, e a lembrar que tu estás bem ao meu lado. Amém.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "Uma Palha no Chão",
+  "body_html": "<blockquote>“Quer vocês comam, quer bebam, quer façam qualquer outra coisa, façam tudo para a glória de Deus.” — de 1 Coríntios 10</blockquote> <p>Algumas pessoas acham que só as coisas grandes e importantes têm valor para Deus, como pregar para multidões ou construir igrejas enormes. O Irmão Lourenço não pensava assim.</p> <p>Ele dizia que ficava contente quando podia apanhar uma única palhinha do chão por amor a Deus. Uma palhinha só! Isso não é quase nada. Mas, se ele fazia aquilo porque amava a Deus, era um presente para Deus.</p> <p>O Irmão Lourenço dizia que Deus não olha para o tamanho do trabalho. Ele olha para quanto amor tem no que fazemos. Um trabalho pequenininho feito com amor é precioso para Deus.</p> <p>Por isso ele dizia às pessoas que nunca se cansassem de fazer coisas pequenas por amor a Deus. Ele dizia que ficar mais parecido com Deus não quer dizer fazer outros trabalhos. Quer dizer fazer os mesmos trabalhos de todo dia que já fazemos, mas fazê-los para Deus, e não só para nós mesmos.</p> <p>Isso queria dizer que mexer uma panela podia ser feito para Deus. Varrer o chão podia ser feito para Deus. Até apanhar uma palhinha podia ser feito para Deus.</p> <p>Você não precisa esperar crescer para fazer alguma coisa para Deus. Você pode fazer isso hoje: quando emprestar um brinquedo, ajudar a pôr a mesa ou pegar alguma coisa que alguém deixou cair, faça isso para ele.</p> <p><em>Querido Deus, ajuda-me a fazer coisas pequenas hoje porque eu te amo. Obrigado porque até as coisas pequenas são importantes para ti. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que coisa pequenininha o Irmão Lourenço ficava feliz em fazer para Deus?",
+    "answer": "Ele ficava contente em apanhar uma única palhinha do chão por amor a Deus."
+   },
+   {
+    "question": "Segundo o Irmão Lourenço, para o que Deus olha?",
+    "answer": "Não para o tamanho do trabalho, mas para quanto amor tem nele."
+   },
+   {
+    "question": "Qual é uma coisa pequena que você poderia fazer para Deus hoje?",
+    "answer": "A ideia do capítulo: as coisas pequenas de todo dia, feitas por amor a Deus, são preciosas para ele. Não precisamos esperar para fazer alguma coisa grande."
+   }
+  ],
+  "body_text": "“Quer vocês comam, quer bebam, quer façam qualquer outra coisa, façam tudo para a glória de Deus.” — de 1 Coríntios 10 Algumas pessoas acham que só as coisas grandes e importantes têm valor para Deus, como pregar para multidões ou construir igrejas enormes. O Irmão Lourenço não pensava assim. Ele dizia que ficava contente quando podia apanhar uma única palhinha do chão por amor a Deus. Uma palhinha só! Isso não é quase nada. Mas, se ele fazia aquilo porque amava a Deus, era um presente para Deus. O Irmão Lourenço dizia que Deus não olha para o tamanho do trabalho. Ele olha para quanto amor tem no que fazemos. Um trabalho pequenininho feito com amor é precioso para Deus. Por isso ele dizia às pessoas que nunca se cansassem de fazer coisas pequenas por amor a Deus. Ele dizia que ficar mais parecido com Deus não quer dizer fazer outros trabalhos. Quer dizer fazer os mesmos trabalhos de todo dia que já fazemos, mas fazê-los para Deus, e não só para nós mesmos. Isso queria dizer que mexer uma panela podia ser feito para Deus. Varrer o chão podia ser feito para Deus. Até apanhar uma palhinha podia ser feito para Deus. Você não precisa esperar crescer para fazer alguma coisa para Deus. Você pode fazer isso hoje: quando emprestar um brinquedo, ajudar a pôr a mesa ou pegar alguma coisa que alguém deixou cair, faça isso para ele. Querido Deus, ajuda-me a fazer coisas pequenas hoje porque eu te amo. Obrigado porque até as coisas pequenas são importantes para ti. Amém.",
+  "word_count": 264
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "Panelas, Frigideiras e Oração",
+  "body_html": "<blockquote>“Alegrem-se sempre, orem sem parar, deem graças em todas as situações.” — de 1 Tessalonicenses 5</blockquote> <p>Você consegue imaginar a cozinha do mosteiro na hora do jantar? Panelas borbulhando. Frigideiras batendo. Colheres fazendo barulho. Um monte de gente correndo de um lado para o outro, e várias pessoas pedindo coisas diferentes ao mesmo tempo.</p> <p>Quase todo mundo ficaria atrapalhado numa cozinha assim. Mas as pessoas perceberam uma coisa no Irmão Lourenço. Mesmo nos momentos mais corridos e barulhentos, ele continuava calmo. Nunca estava com pressa, e nunca ficava com preguiça. Fazia cada coisa na hora certa, com calma e sem parar.</p> <p>Como ele conseguia? Ele estava orando o tempo todo, não com palavras em voz alta, mas no coração. Ele dizia que a hora em que trabalhava não era diferente da hora em que orava.</p> <p>Nas palavras dele, de um jeito simples: “No barulho e na confusão da minha cozinha, enquanto várias pessoas me pedem coisas diferentes ao mesmo tempo, eu tenho Deus com tanta paz como se estivesse de joelhos, orando.”</p> <p>Para o Irmão Lourenço, a oração não era só para horas especiais. Ele podia ficar perto de Deus em qualquer lugar, até com as mãos na louça suja.</p> <p>Você pode falar com Deus na escola, no carro, no parquinho ou enquanto escova os dentes. Não precisa esperar um lugar silencioso. Ele está com você também nas horas corridas e barulhentas.</p> <p><em>Querido Deus, obrigado porque eu posso falar contigo em qualquer lugar. Ajuda-me a ficar perto de ti quando tudo estiver corrido e barulhento. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Como era a cozinha nas horas de mais movimento?",
+    "answer": "Era barulhenta, com panelas e frigideiras batendo e várias pessoas pedindo coisas diferentes ao mesmo tempo."
+   },
+   {
+    "question": "Como o Irmão Lourenço continuava calmo?",
+    "answer": "Ele continuava orando no coração enquanto trabalhava. Dizia que a hora do trabalho não era diferente da hora da oração."
+   },
+   {
+    "question": "Qual é a parte mais corrida e barulhenta do seu dia? Você poderia falar com Deus nessa hora?",
+    "answer": "A ideia do capítulo: a oração não é só para horas especiais e silenciosas. Podemos ficar perto de Deus no meio de dias corridos e barulhentos."
+   }
+  ],
+  "body_text": "“Alegrem-se sempre, orem sem parar, deem graças em todas as situações.” — de 1 Tessalonicenses 5 Você consegue imaginar a cozinha do mosteiro na hora do jantar? Panelas borbulhando. Frigideiras batendo. Colheres fazendo barulho. Um monte de gente correndo de um lado para o outro, e várias pessoas pedindo coisas diferentes ao mesmo tempo. Quase todo mundo ficaria atrapalhado numa cozinha assim. Mas as pessoas perceberam uma coisa no Irmão Lourenço. Mesmo nos momentos mais corridos e barulhentos, ele continuava calmo. Nunca estava com pressa, e nunca ficava com preguiça. Fazia cada coisa na hora certa, com calma e sem parar. Como ele conseguia? Ele estava orando o tempo todo, não com palavras em voz alta, mas no coração. Ele dizia que a hora em que trabalhava não era diferente da hora em que orava. Nas palavras dele, de um jeito simples: “No barulho e na confusão da minha cozinha, enquanto várias pessoas me pedem coisas diferentes ao mesmo tempo, eu tenho Deus com tanta paz como se estivesse de joelhos, orando.” Para o Irmão Lourenço, a oração não era só para horas especiais. Ele podia ficar perto de Deus em qualquer lugar, até com as mãos na louça suja. Você pode falar com Deus na escola, no carro, no parquinho ou enquanto escova os dentes. Não precisa esperar um lugar silencioso. Ele está com você também nas horas corridas e barulhentas. Querido Deus, obrigado porque eu posso falar contigo em qualquer lugar. Ajuda-me a ficar perto de ti quando tudo estiver corrido e barulhento. Amém.",
+  "word_count": 256
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "Falando com Deus Como um Amigo",
+  "body_html": "<blockquote>“Cheguem perto de Deus, e ele chegará perto de vocês.” — de Tiago 4</blockquote> <p>O Irmão Lourenço escrevia cartas para os amigos e, nelas, muitas vezes explicava como falar com Deus. Ele dizia que era muito mais simples do que as pessoas pensam.</p> <p>“Você não precisa gritar”, ele escreveu. “Deus está mais perto de nós do que imaginamos.” Você também não precisa estar na igreja para falar com ele. Ele dizia que você pode transformar o seu coração num pequeno quarto de oração e entrar ali para conversar com Deus a qualquer hora.</p> <p>As orações dele muitas vezes eram bem curtinhas. Às vezes ele simplesmente dizia: “Meu Deus, aqui estou, todo teu. Senhor, faze o meu coração parecido com o teu.” Às vezes ele só pensava em Deus com amor, sem nenhuma palavra. Ele disse a um amigo que elevasse o coração a Deus até na hora das refeições, ou quando estivesse com outras pessoas. Ele dizia que até o menor pensamentozinho em Deus agrada a ele.</p> <p>Ele também deu aos amigos uma imagem para lembrar. Se um amigo viesse visitar você, você não sairia andando e o deixaria sentado sozinho. Isso seria falta de educação! Pois bem, Deus está sempre conosco. Então não o deixe sozinho. Pense nele muitas vezes.</p> <p>É só isso que quer dizer praticar a presença de Deus: lembrar que ele está aqui e conversar com ele.</p> <p>Você pode falar com Deus do mesmo jeito que fala com um amigo. Diga obrigado a ele. Conte que você está preocupado. Peça ajuda. A sua oração pode ser curtinha, de uma frase só, e ele adora ouvi-la.</p> <p><em>Querido Deus, obrigado porque tu estás sempre comigo. Ajuda-me a não te deixar sozinho, mas a conversar contigo o dia inteiro. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Para onde o Irmão Lourenço dizia que podemos ir para conversar com Deus?",
+    "answer": "Para qualquer lugar. Ele dizia que podemos transformar o coração num pequeno quarto de oração e conversar com Deus ali, e que não precisamos gritar, porque Deus está muito perto."
+   },
+   {
+    "question": "Que imagem ele usou sobre um amigo que vem visitar?",
+    "answer": "Seria falta de educação deixar sozinho um amigo que veio visitar você; então também não devemos deixar Deus sozinho. Devemos pensar nele muitas vezes."
+   },
+   {
+    "question": "Qual é uma oração curtinha que você poderia fazer a Deus hoje?",
+    "answer": "A ideia do capítulo: conversar com Deus pode ser simples e curto, como falar com um amigo que está sempre conosco."
+   }
+  ],
+  "body_text": "“Cheguem perto de Deus, e ele chegará perto de vocês.” — de Tiago 4 O Irmão Lourenço escrevia cartas para os amigos e, nelas, muitas vezes explicava como falar com Deus. Ele dizia que era muito mais simples do que as pessoas pensam. “Você não precisa gritar”, ele escreveu. “Deus está mais perto de nós do que imaginamos.” Você também não precisa estar na igreja para falar com ele. Ele dizia que você pode transformar o seu coração num pequeno quarto de oração e entrar ali para conversar com Deus a qualquer hora. As orações dele muitas vezes eram bem curtinhas. Às vezes ele simplesmente dizia: “Meu Deus, aqui estou, todo teu. Senhor, faze o meu coração parecido com o teu.” Às vezes ele só pensava em Deus com amor, sem nenhuma palavra. Ele disse a um amigo que elevasse o coração a Deus até na hora das refeições, ou quando estivesse com outras pessoas. Ele dizia que até o menor pensamentozinho em Deus agrada a ele. Ele também deu aos amigos uma imagem para lembrar. Se um amigo viesse visitar você, você não sairia andando e o deixaria sentado sozinho. Isso seria falta de educação! Pois bem, Deus está sempre conosco. Então não o deixe sozinho. Pense nele muitas vezes. É só isso que quer dizer praticar a presença de Deus: lembrar que ele está aqui e conversar com ele. Você pode falar com Deus do mesmo jeito que fala com um amigo. Diga obrigado a ele. Conte que você está preocupado. Peça ajuda. A sua oração pode ser curtinha, de uma frase só, e ele adora ouvi-la. Querido Deus, obrigado porque tu estás sempre comigo. Ajuda-me a não te deixar sozinho, mas a conversar contigo o dia inteiro. Amém.",
+  "word_count": 291
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "O Barco Cheio de Barris",
+  "body_html": "<blockquote>“Entreguem a ele todas as suas preocupações, porque ele cuida de vocês.” — de 1 Pedro 5</blockquote> <p>Um dia, os líderes do mosteiro deram ao Irmão Lourenço uma tarefa que ele não queria nem um pouco. Mandaram-no numa viagem longa para um lugar chamado Borgonha, para comprar o vinho de que os Irmãos iam precisar.</p> <p>O Irmão Lourenço achava que não levava jeito nenhum para comprar e vender. E havia outro problema. Ele mancava de uma perna, então era difícil andar. No barco, ele quase não conseguia andar. O único jeito de se mexer era rolar por cima dos barris de vinho!</p> <p>Dá para imaginar? Um homem grandalhão com a perna machucada, rolando de barril em barril, tum, tum, tum.</p> <p>Mas o Irmão Lourenço não ficou preocupado. Ele disse a Deus que aquele negócio era de Deus. Confiou que Deus ia cuidar de tudo. E depois ele viu que o trabalho inteiro tinha dado muito certo.</p> <p>No ano anterior, ele tinha sido mandado numa viagem parecida para outro lugar, chamado Auvérnia. Ele nem sabia explicar como, mas daquela vez também tudo deu certo.</p> <p>Às vezes precisamos fazer coisas que parecem difíceis demais, como uma prova, uma escola nova ou alguma coisa que dá medo. Você pode fazer o que o Irmão Lourenço fez: contar tudo a Deus e confiar que ele vai ajudar.</p> <p><em>Querido Deus, quando eu tiver de fazer uma coisa difícil, ajuda-me a entregar a ti as minhas preocupações e a confiar que tu vais cuidar de mim. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que a viagem para a Borgonha foi difícil para o Irmão Lourenço?",
+    "answer": "Ele não levava jeito para negócios e mancava de uma perna; por isso, no barco, só conseguia se mexer rolando por cima dos barris de vinho."
+   },
+   {
+    "question": "O que ele fez em vez de ficar preocupado?",
+    "answer": "Ele disse a Deus que aquele negócio era de Deus e confiou nele, e o trabalho deu muito certo."
+   },
+   {
+    "question": "Que coisa difícil você vai ter de fazer logo? Como você poderia entregá-la a Deus?",
+    "answer": "A ideia do capítulo: quando uma tarefa parece difícil demais para nós, podemos entregar as nossas preocupações a Deus e confiar que ele vai ajudar."
+   }
+  ],
+  "body_text": "“Entreguem a ele todas as suas preocupações, porque ele cuida de vocês.” — de 1 Pedro 5 Um dia, os líderes do mosteiro deram ao Irmão Lourenço uma tarefa que ele não queria nem um pouco. Mandaram-no numa viagem longa para um lugar chamado Borgonha, para comprar o vinho de que os Irmãos iam precisar. O Irmão Lourenço achava que não levava jeito nenhum para comprar e vender. E havia outro problema. Ele mancava de uma perna, então era difícil andar. No barco, ele quase não conseguia andar. O único jeito de se mexer era rolar por cima dos barris de vinho! Dá para imaginar? Um homem grandalhão com a perna machucada, rolando de barril em barril, tum, tum, tum. Mas o Irmão Lourenço não ficou preocupado. Ele disse a Deus que aquele negócio era de Deus. Confiou que Deus ia cuidar de tudo. E depois ele viu que o trabalho inteiro tinha dado muito certo. No ano anterior, ele tinha sido mandado numa viagem parecida para outro lugar, chamado Auvérnia. Ele nem sabia explicar como, mas daquela vez também tudo deu certo. Às vezes precisamos fazer coisas que parecem difíceis demais, como uma prova, uma escola nova ou alguma coisa que dá medo. Você pode fazer o que o Irmão Lourenço fez: contar tudo a Deus e confiar que ele vai ajudar. Querido Deus, quando eu tiver de fazer uma coisa difícil, ajuda-me a entregar a ti as minhas preocupações e a confiar que tu vais cuidar de mim. Amém.",
+  "word_count": 251
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "Quando Ele Errava",
+  "body_html": "<blockquote>“Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar.” — de 1 João 1</blockquote> <p>O Irmão Lourenço amava muito a Deus. Mas ele não era perfeito. Ele ainda cometia erros. Às vezes ele se esquecia de Deus por um bom tempo. Às vezes fazia coisas que sabia que eram erradas.</p> <p>Então, o que ele fazia quando errava? Ele não ficava emburrado. Não desistia. E não inventava desculpas.</p> <p>Ele simplesmente contava a Deus. Dizia mais ou menos assim: “Senhor, eu sou assim. Se tu me deixares sozinho, vou sempre fazer isso. Tu precisas me segurar para eu não cair, e consertar o que eu fiz de errado.” Depois ele parava de se preocupar com aquilo e voltava a amar a Deus, como antes.</p> <p>O Irmão Lourenço sabia que os nossos pecados são perdoados por causa de Jesus, que morreu por nós, e não porque somos bons o bastante. Por isso ele confiava em Jesus, e não carregava os seus erros de um lado para o outro como uma mochila pesada.</p> <p>E, quando ele acertava alguma coisa, agradecia a Deus, porque sabia que a força tinha vindo de Deus. Ele dizia que, levantando-se de novo depois de cada queda, aos pouquinhos, ele aprendeu a pensar em Deus o tempo todo.</p> <p>Todo mundo erra, até os adultos e até as pessoas que amam muito a Deus. Quando você errar, não esconda nem fique preocupado durante dias. Diga a Deus que você está arrependido, confie que Jesus perdoa você, e comece de novo.</p> <p><em>Querido Deus, eu me arrependo das coisas erradas que fiz. Obrigado porque Jesus me perdoa. Ajuda-me a levantar e a continuar caminhando contigo. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o Irmão Lourenço fazia quando cometia um erro?",
+    "answer": "Ele contava tudo a Deus com sinceridade, pedia que Deus o ajudasse, e depois parava de se preocupar e voltava a amar a Deus."
+   },
+   {
+    "question": "Por que ele não precisava ficar se preocupando com os seus pecados?",
+    "answer": "Porque ele confiava que os seus pecados eram perdoados por meio de Jesus, e não porque ele fosse bom o bastante."
+   },
+   {
+    "question": "O que você pode fazer da próxima vez que errar alguma coisa?",
+    "answer": "A ideia do capítulo: quando fazemos besteira, podemos contar a Deus, confiar que Jesus nos perdoa e começar de novo, sem carregar os nossos erros para lá e para cá."
+   }
+  ],
+  "body_text": "“Se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar.” — de 1 João 1 O Irmão Lourenço amava muito a Deus. Mas ele não era perfeito. Ele ainda cometia erros. Às vezes ele se esquecia de Deus por um bom tempo. Às vezes fazia coisas que sabia que eram erradas. Então, o que ele fazia quando errava? Ele não ficava emburrado. Não desistia. E não inventava desculpas. Ele simplesmente contava a Deus. Dizia mais ou menos assim: “Senhor, eu sou assim. Se tu me deixares sozinho, vou sempre fazer isso. Tu precisas me segurar para eu não cair, e consertar o que eu fiz de errado.” Depois ele parava de se preocupar com aquilo e voltava a amar a Deus, como antes. O Irmão Lourenço sabia que os nossos pecados são perdoados por causa de Jesus, que morreu por nós, e não porque somos bons o bastante. Por isso ele confiava em Jesus, e não carregava os seus erros de um lado para o outro como uma mochila pesada. E, quando ele acertava alguma coisa, agradecia a Deus, porque sabia que a força tinha vindo de Deus. Ele dizia que, levantando-se de novo depois de cada queda, aos pouquinhos, ele aprendeu a pensar em Deus o tempo todo. Todo mundo erra, até os adultos e até as pessoas que amam muito a Deus. Quando você errar, não esconda nem fique preocupado durante dias. Diga a Deus que você está arrependido, confie que Jesus perdoa você, e comece de novo. Querido Deus, eu me arrependo das coisas erradas que fiz. Obrigado porque Jesus me perdoa. Ajuda-me a levantar e a continuar caminhando contigo. Amém.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "Cartas para Amigos em Apuros",
+  "body_html": "<blockquote>“Mesmo quando eu andar pelo vale mais escuro, não terei medo, porque tu estás comigo.” — de Salmos 23</blockquote> <p>Quando o Irmão Lourenço foi ficando mais velho, muita gente escrevia para ele, e ele respondia com cartas. Alguns dos amigos dele estavam passando por um momento muito difícil.</p> <p>Um amigo contou a ele sobre um jovem soldado que estava em perigo. O Irmão Lourenço respondeu que o soldado não precisava de orações compridas. Mesmo marchando, com a espada na mão, ele podia elevar o coração a Deus por um instante. Ele dizia que um pouquinho de lembrança de Deus basta, e que aquelas orações curtas deixariam o soldado mais corajoso, e não mais fraco.</p> <p>Outro amigo estava muito doente, fazia muito tempo, e o remédio não estava funcionando. O Irmão Lourenço ficou com pena dele. Ele disse a esse amigo que muitas vezes Deus está ainda mais perto de nós quando estamos doentes do que quando estamos bem. Disse que ele continuasse conversando com Deus, confiando nele e oferecendo a ele a sua dor.</p> <p>O Irmão Lourenço também escreveu uma coisa corajosa. Ele disse que não estava orando só para a dor passar, mas para Deus dar ao seu amigo força e paciência para aguentá-la. Ele sabia que Deus é o nosso Pai amoroso, e que podemos confiar nele mesmo quando as coisas doem.</p> <p>Os amigos dele estavam tristes e sofrendo, mas as cartas dele os levavam ao Deus que estava bem ali com eles.</p> <p>Quando você está doente, triste ou com medo, Deus não foi embora. Ele está perto. Você pode fazer uma oração curtinha, até só “Me ajuda, Deus”, e confiar que ele está com você.</p> <p><em>Querido Deus, quando eu estiver doente ou com medo, obrigado porque tu estás perto de mim. Por favor, dá-me força e ajuda-me a confiar em ti. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o Irmão Lourenço disse que um soldado podia fazer, mesmo marchando com a espada?",
+    "answer": "Ele podia elevar o coração a Deus por um instante. Orações curtas assim agradam a Deus e deixam o soldado mais corajoso."
+   },
+   {
+    "question": "O que ele disse ao amigo que estava muito doente?",
+    "answer": "Que muitas vezes Deus está mais perto de nós na doença do que na saúde, e que continuasse conversando com Deus, confiando nele e pedindo força para aguentar a dor."
+   },
+   {
+    "question": "Você já ficou doente, triste ou com medo? O que você poderia dizer a Deus nessa hora?",
+    "answer": "A ideia do capítulo: Deus fica perto nos momentos difíceis. Até uma oração bem curtinha, como “Me ajuda, Deus”, é ouvida por ele."
+   }
+  ],
+  "body_text": "“Mesmo quando eu andar pelo vale mais escuro, não terei medo, porque tu estás comigo.” — de Salmos 23 Quando o Irmão Lourenço foi ficando mais velho, muita gente escrevia para ele, e ele respondia com cartas. Alguns dos amigos dele estavam passando por um momento muito difícil. Um amigo contou a ele sobre um jovem soldado que estava em perigo. O Irmão Lourenço respondeu que o soldado não precisava de orações compridas. Mesmo marchando, com a espada na mão, ele podia elevar o coração a Deus por um instante. Ele dizia que um pouquinho de lembrança de Deus basta, e que aquelas orações curtas deixariam o soldado mais corajoso, e não mais fraco. Outro amigo estava muito doente, fazia muito tempo, e o remédio não estava funcionando. O Irmão Lourenço ficou com pena dele. Ele disse a esse amigo que muitas vezes Deus está ainda mais perto de nós quando estamos doentes do que quando estamos bem. Disse que ele continuasse conversando com Deus, confiando nele e oferecendo a ele a sua dor. O Irmão Lourenço também escreveu uma coisa corajosa. Ele disse que não estava orando só para a dor passar, mas para Deus dar ao seu amigo força e paciência para aguentá-la. Ele sabia que Deus é o nosso Pai amoroso, e que podemos confiar nele mesmo quando as coisas doem. Os amigos dele estavam tristes e sofrendo, mas as cartas dele os levavam ao Deus que estava bem ali com eles. Quando você está doente, triste ou com medo, Deus não foi embora. Ele está perto. Você pode fazer uma oração curtinha, até só “Me ajuda, Deus”, e confiar que ele está com você. Querido Deus, quando eu estiver doente ou com medo, obrigado porque tu estás perto de mim. Por favor, dá-me força e ajuda-me a confiar em ti. Amém.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "Indo para Casa, para Deus",
+  "body_html": "<blockquote>“Vou para lá preparar um lugar para vocês.” — de João 14</blockquote> <p>O Irmão Lourenço ficou velhinho. Numa das suas cartas, ele escreveu: “Estou com quase oitenta anos.” Naquela altura, ele já andava com Deus havia mais de quarenta anos, desde aquele dia de inverno em que viu a árvore pelada.</p> <p>Na velhice, ele ficava muitas vezes bem doente. Mas não pedia a Deus que tirasse a dor. Em vez disso, pedia força para aguentá-la com coragem e com amor. Ele dizia que estava sempre feliz, porque Deus estava com ele.</p> <p>Nas suas últimas cartas, ele escreveu que esperava ver Deus em breve. Só dois dias depois de uma dessas cartas, ele ficou de cama, doente, e antes de a semana acabar ele morreu e foi para casa, para ficar com o Deus que ele amava.</p> <p>Mas as cartas e as palavras dele foram guardadas, para que pudéssemos lê-las. E nelas ele repetia sempre o mesmo convite. Pense em Deus muitas vezes. Converse com ele. Confie nele. “Comecemos”, ele escreveu. Quando alguém disse a ele que ele sempre falava a mesma coisa, ele concordou! Era o melhor e mais fácil caminho que ele conhecia, por isso ele contava para todo mundo.</p> <p>O jovem lacaio desajeitado tinha aprendido a viver todos os dias com Deus, e queria que todo mundo soubesse como.</p> <p>O convite do Irmão Lourenço também é para você. Você não precisa ser adulto, nem inteligente, nem cuidadoso. Você pode começar hoje: lembre que Deus está com você e converse com ele o dia inteiro.</p> <p><em>Querido Deus, obrigado porque tu estás sempre comigo. Ajuda-me a começar hoje a conversar contigo e a confiar em ti, a vida inteira. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quantos anos o Irmão Lourenço tinha perto do fim da vida, e o que ele esperava?",
+    "answer": "Ele escreveu que estava com quase oitenta anos e, nas suas últimas cartas, disse que esperava ver Deus em breve."
+   },
+   {
+    "question": "Que convite o Irmão Lourenço repetia nas suas cartas?",
+    "answer": "Pensar em Deus muitas vezes, conversar com ele e confiar nele. “Comecemos”, ele escreveu, e dizia que esse era o melhor e mais fácil caminho que ele conhecia."
+   },
+   {
+    "question": "Como você poderia começar a praticar estar com Deus esta semana?",
+    "answer": "A ideia do capítulo: o convite do Irmão Lourenço também é para as crianças. Qualquer pessoa pode começar hoje, lembrando que Deus está perto e conversando com ele."
+   }
+  ],
+  "body_text": "“Vou para lá preparar um lugar para vocês.” — de João 14 O Irmão Lourenço ficou velhinho. Numa das suas cartas, ele escreveu: “Estou com quase oitenta anos.” Naquela altura, ele já andava com Deus havia mais de quarenta anos, desde aquele dia de inverno em que viu a árvore pelada. Na velhice, ele ficava muitas vezes bem doente. Mas não pedia a Deus que tirasse a dor. Em vez disso, pedia força para aguentá-la com coragem e com amor. Ele dizia que estava sempre feliz, porque Deus estava com ele. Nas suas últimas cartas, ele escreveu que esperava ver Deus em breve. Só dois dias depois de uma dessas cartas, ele ficou de cama, doente, e antes de a semana acabar ele morreu e foi para casa, para ficar com o Deus que ele amava. Mas as cartas e as palavras dele foram guardadas, para que pudéssemos lê-las. E nelas ele repetia sempre o mesmo convite. Pense em Deus muitas vezes. Converse com ele. Confie nele. “Comecemos”, ele escreveu. Quando alguém disse a ele que ele sempre falava a mesma coisa, ele concordou! Era o melhor e mais fácil caminho que ele conhecia, por isso ele contava para todo mundo. O jovem lacaio desajeitado tinha aprendido a viver todos os dias com Deus, e queria que todo mundo soubesse como. O convite do Irmão Lourenço também é para você. Você não precisa ser adulto, nem inteligente, nem cuidadoso. Você pode começar hoje: lembre que Deus está com você e converse com ele o dia inteiro. Querido Deus, obrigado porque tu estás sempre comigo. Ajuda-me a começar hoje a conversar contigo e a confiar em ti, a vida inteira. Amém.",
+  "word_count": 280
+ }
+}
+]
