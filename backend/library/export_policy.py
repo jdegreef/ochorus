@@ -285,8 +285,83 @@ HELD_ESV = frozenset({
     "the-person-and-work-of-the-holy-spirit",
 })
 
+#: Translated editions, by language, beyond the pilot. Each language needs its
+#: back matter in ``book_export.STRINGS`` and an export bio, in that language, for
+#: every author it carries (``PilotTests``). An Ochorus Original's attribution
+#: opens "©" in the edition's own language. A licensed Bible's credit is added
+#: by ``book_export.bible_credit``. Prayer: The Pulse of Life is held in every
+#: language until its author's rights are settled.
+TRANSLATIONS: dict[str, frozenset[str]] = {
+    "sw": frozenset({
+        "a-short-and-easy-method-of-prayer",
+        "absolute-surrender",
+        "all-of-grace",
+        "answers-to-prayer",
+        "around-the-wicket-gate",
+        "baptism-with-the-holy-spirit",
+        "brave-for-god",
+        "brave-for-god-2",
+        "brave-for-god-3",
+        "brave-for-god-4",
+        "cheque-book",
+        "clothed-with-strength-and-dignity",
+        "confessions",
+        "days-of-heaven-upon-earth",
+        "divine-healing",
+        "divine-songs-for-children",
+        "gleanings-among-the-sheaves",
+        "godliness",
+        "growing-in-wisdom",
+        "holy-in-christ",
+        "humility-2",
+        "jesus-himself-2",
+        "life-and-diary-of-david-brainerd",
+        "lord-teach-us-to-pray-2",
+        "men-and-women-who-gave-everything-2",
+        "men-who-tended-the-flock-2",
+        "ministry-of-intercession",
+        "on-loving-god",
+        "pilgrims-progress",
+        "pilgrims-progress-words-of-one-syllable",
+        "power-through-prayer",
+        "prevailing-prayer",
+        "purity-of-heart",
+        "revival-lectures",
+        "rise-up-men-of-god-2",
+        "rooted-1",
+        "school-of-prayer",
+        "spurgeon-on-prayer",
+        "susanna-wesley-clarke",
+        "talks-to-the-farmer",
+        "the-christians-secret-of-a-happy-life-4",
+        "the-fourfold-gospel",
+        "the-god-of-all-comfort",
+        "the-gospel-of-healing",
+        "the-inner-chamber",
+        "the-life-of-trust",
+        "the-masters-indwelling",
+        "the-person-and-work-of-the-holy-spirit",
+        "the-secret-of-guidance",
+        "the-unselfishness-of-god",
+        "the-way-to-god",
+        "things-as-they-are",
+        "thoughts-for-the-quiet-hour",
+        "till-he-come",
+        "true-vine",
+        "union-and-communion",
+        "waiting-on-god",
+        "watchman-nee-a-life",
+        "way-into-holiest",
+        "women-who-moved-heaven-2",
+    }),
+}
+
 #: Every exportable (slug, language) edition.
-EXPORT_EDITIONS = EXPORT_PILOT | {(slug, "en") for slug in ENGLISH_CLASSICS}
+EXPORT_EDITIONS = (
+    EXPORT_PILOT
+    | {(slug, "en") for slug in ENGLISH_CLASSICS}
+    | {(slug, lang) for lang, slugs in TRANSLATIONS.items() for slug in slugs}
+)
 
 #: Editions whose PDF lives in Supabase Storage (all of them) rather than frontend/static:
 #: a PDF is rebuilt whenever its text changes, and git would keep every old
