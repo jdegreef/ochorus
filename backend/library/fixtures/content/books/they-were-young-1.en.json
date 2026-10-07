@@ -15,7 +15,7 @@
   "qa": [
    {
     "question": "What is They Were Young?",
-    "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their writing in the Ochorus library."
+    "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their writing in the library."
    },
    {
     "question": "Who is in Book 1?",
@@ -48,7 +48,7 @@
   "sort_order": 139,
   "is_published": true,
   "created_at": "2026-10-07T15:39:04.779Z",
-  "updated_at": "2026-10-07T15:39:04.779Z"
+  "updated_at": "2026-10-07T15:46:10.950Z"
  }
 },
 {

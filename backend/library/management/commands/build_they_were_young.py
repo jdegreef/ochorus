@@ -90,7 +90,7 @@ VOLUMES: dict[int, dict[str, object]] = {
         "qa": [
             {
                 "question": "What is They Were Young?",
-                "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their writing in the Ochorus library.",
+                "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their writing in the library.",
             },
             {
                 "question": "Who is in Book 1?",
