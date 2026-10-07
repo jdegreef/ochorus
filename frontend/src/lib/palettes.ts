@@ -19,11 +19,28 @@ import { liturgicalSeason, SEASON_COLOUR, type SeasonColour } from './liturgical
  * Grove palette a reader can also pick outright). Only applied palettes have
  * CSS, chrome colours and swatches.
  */
-export type Palette = 'parchment' | 'cathedral' | 'olive' | 'hearth' | 'dawn' | 'monastery' | 'liturgical';
+export type Palette =
+	| 'parchment'
+	| 'cathedral'
+	| 'olive'
+	| 'hearth'
+	| 'dawn'
+	| 'monastery'
+	| 'illuminated'
+	| 'liturgical';
 export type AppliedPalette = Exclude<Palette, 'liturgical'> | 'violet' | 'feast' | 'flame';
 
 /** What a reader can choose, in picker order. */
-export const PALETTES: readonly Palette[] = ['parchment', 'cathedral', 'olive', 'hearth', 'dawn', 'monastery', 'liturgical'];
+export const PALETTES: readonly Palette[] = [
+	'parchment',
+	'cathedral',
+	'olive',
+	'hearth',
+	'dawn',
+	'monastery',
+	'illuminated',
+	'liturgical'
+];
 
 /** The localStorage key — a bare string, so the boot script can read it. */
 export const PALETTE_KEY = 'ochorus:palette';
@@ -90,6 +107,11 @@ export const PALETTE_COLORS: Record<AppliedPalette, { light: string; dark: strin
 		light: '#f6f6f4',
 		dark: '#141414',
 		swatch: { light: ['#f6f6f4', '#3b4a5c', '#a9bdd4'], dark: ['#141414', '#a9bdd4', '#3b4a5c'] }
+	},
+	illuminated: {
+		light: '#f7f1e3',
+		dark: '#13141f',
+		swatch: { light: ['#f7f1e3', '#1f3f8f', '#b3341f'], dark: ['#13141f', '#9fb4f5', '#f08a6e'] }
 	},
 	violet: {
 		light: '#f7f5fa',
