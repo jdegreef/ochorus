@@ -1,0 +1,249 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-teens",
+ "language": "fr",
+ "job_issue": 5458,
+ "pull_request": null,
+ "note": [
+  "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into French, so every epigraph is the whole verse verbatim from Louis Segond (1910) (fra_lsg, public domain; checked against the ebible USFM mirror), and the “(ESV)” label was dropped. The only change to Segond's text is French typographic spacing before : and ; (« dit : Tout est accompli »).",
+  "Psalm 34:10 (English numbering) is Psaume 34:11 in Segond; the epigraph cites « Psaume 34:11 » so a French reader finds it in their Bible, and the row keeps the English reference.",
+  "The Matthew 8:20 and Matthew 9:37–38 epigraphs carry Segond's own narrative frame (« Jésus lui répondit », « Alors il dit à ses disciples »), which matches the ESV's — whole verses, so `mined`.",
+  "In-body quotations marked `mined` are Segond word for word (partial verses where the English quotes partially); every adapted, re-personed or paraphrased echo is `self_rendered` and needs a native check. Genesis 22:14's « L’Éternel pourvoira » is the gloss of Jehova-Jiré, not Segond's wording of the verse (« il sera pourvu »), so `self_rendered`.",
+  "Distances are converted to kilometres (ch. 2, 5); the Chinese copper ‘cash’ is « sapèque » (ch. 11). Title « Rétrospective (Pour ados) » (25 chars) follows a-retrospect-children.fr's « Rétrospective (Pour enfants) » and fits the 28-char rail cover limit."
+ ],
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 1,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Luke 18:1",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Proverbs 19:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:42",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 3,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "John 3:16",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 6,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Psalm 107:29",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Matthew 18:19",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 7
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 8,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Corinthians 9:19-22",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Isaiah 53:3",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "John 4:6",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 8:20",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 5:39",
+   "status": "mined",
+   "block_index": 2,
+   "chapter_order": 10,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 12:21",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Romans 13:8",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "mined",
+   "block_index": 8,
+   "chapter_order": 11,
+   "source_file": "Louis Segond (1910)"
+  },
+  {
+   "reference": "Matthew 9:37-38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "Louis Segond (1910)"
+  }
+ ]
+}

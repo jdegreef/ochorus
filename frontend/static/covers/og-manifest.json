@@ -4856,6 +4856,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"fr/a-retrospect-teens": {
+			"ground": "c72cdc6831009def05961de9189c811a6d82a4feb706449578f2c45bddb4f448",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",
