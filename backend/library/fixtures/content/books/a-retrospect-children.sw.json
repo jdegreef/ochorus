@@ -1,0 +1,393 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-children",
+  "language": "sw",
+  "title": "Kutazama Nyuma (Kwa Watoto)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "Hudson Taylor aliondoka Uingereza kwenda kupeleka habari njema za Yesu katika bara la ndani la Uchina, akimtumaini Mungu kwa kila kitu alichohitaji. Toleo hili la watoto linasimulia upya hadithi ya kweli ya maisha yake katika sura fupi zilizoandaliwa kusomwa kwa sauti: mstari wa Biblia, tukio la kusisimua au jibu la maombi, jambo moja linalokuhusu wewe, na sala fupi.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "Kitabu Kutazama Nyuma (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la hadithi ya maisha ya Hudson Taylor kama alivyoisimulia mwenyewe. Taylor alisafiri kwa meli kutoka Uingereza hadi Uchina ili kuwaeleza watu habari za Yesu, naye alimtumaini Mungu kumpa kila kitu alichohitaji njiani. Kila sura fupi inasimulia tukio moja la kweli la kusisimua au jibu moja la maombi katika maisha yake."
+   },
+   {
+    "question": "Hudson Taylor alikuwa nani?",
+    "answer": "Alikuwa Mwingereza aliyekuwa mmisionari huko Uchina zamani sana, akaanzisha misheni iliyowatuma wafanyakazi wengi ndani kabisa ya nchi ile kuwaeleza watu habari za Yesu. Alijulikana sana kwa kumtumaini Mungu kwa chakula chake, fedha zake na usalama wake, na kwa kuvaa nguo za Kichina ili awafikie watu aliowapenda."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa kusomwa kwa sauti. Inaanza na mstari wa Biblia, inasimulia hadithi ya kweli kutoka maisha ya Hudson Taylor, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kitabu kamili cha Hudson Taylor kuhusu maisha yake, A Retrospect, kinapatikana pia kwa Kiingereza kwa ajili ya wasomaji wakubwa."
+   },
+   {
+    "question": "Funzo kuu la kitabu hiki ni lipi?",
+    "answer": "Kwamba Mungu anaweza kutumainiwa kabisa — kwa fedha, kwa usalama na kwa msaada — na mtu yeyote anayemfuata. Maisha ya Hudson Taylor ni tukio la kweli la kusisimua la kumwomba Mungu na kumwona akitoa mahitaji, ili watoto nao wajifunze kumtumaini."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zimesimuliwa upya kwa urahisi kwa ajili ya watoto, lakini zinatoka katika simulizi la Hudson Taylor mwenyewe kuhusu maisha yake — safari halisi ya baharini, majibu halisi ya maombi, na mwanzo halisi wa misheni yake huko Uchina."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimuliaji upya wa Ochorus kwa ajili ya wasomaji wachanga wa kitabu cha Hudson Taylor, A Retrospect, ambacho ni mali ya umma. Usimuliaji huu ni wetu wenyewe; uko huru kusomwa na kushirikiwa.",
+  "cover_url": "/covers/art/a-retrospect-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Kitabu Kidogo Kikapuni",
+  "body_html": "<blockquote>“Imekwisha.” — kutoka Yohana 19</blockquote> <p>Hudson Taylor alipokuwa na umri wa miaka kumi na mitano hivi, alikuwa na alasiri moja ndefu, tupu, bila kitu cha kufanya. Mama yake alikuwa mbali sana akiwatembelea rafiki zake. Hudson aliingia katika maktaba ya baba yake akitafuta kitu — chochote kile — cha kusoma, na kutoka katika kikapu kidogo cha vijitabu akatoa kijitabu kidogo cha Injili.</p> <p>“Nitasoma sehemu ya hadithi,” aliwaza, “na kuruka sehemu ya mahubiri iliyo mwishoni.”</p> <p>Lakini alipokuwa akisoma, maneno haya yalimrukia ghafla: “kazi iliyokamilika ya Kristo.” Na moyoni mwake yakaja maneno ya Yesu pale Msalabani: “Imekwisha.” Ghafla Hudson alielewa. Yesu alikuwa amekwisha kulipa gharama ya dhambi zake zote — kikamilifu, mara moja tu na kwa wakati wote. Hapakubaki kitu chochote ambacho Hudson alipaswa kukistahili au kukiongeza. Alichopaswa kufanya ni kusema asante tu na kukipokea.</p> <p>Basi papo hapo, akiwa peke yake katika ghala la zamani lenye utulivu alikokwenda kusoma, Hudson alipiga magoti akayatoa maisha yake kwa Yesu.</p> <p>Hii ndiyo habari njema aliyoigundua Hudson, nayo ni kwa ajili yako pia: Yesu aliposema “Imekwisha,” alimaanisha kweli. Huhitaji kuwa mwema vya kutosha ili ustahili upendo wa Mungu. Yesu amekwisha kufanya kila kitu. Unachohitaji ni kuupokea tu, kama zawadi.</p> <p><em>Yesu mpendwa, asante kwa kuwa ulimaliza kazi ya kuniokoa pale Msalabani. Naipokea zawadi yako kwa moyo wangu wote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson alipata nini katika kikapu kidogo kwenye maktaba ya baba yake?",
+    "answer": "Kijitabu kidogo cha Injili. Alikusudia kusoma sehemu ya hadithi na kuruka “sehemu ya mahubiri” iliyo mwishoni."
+   },
+   {
+    "question": "Ni maneno gani ya Msalabani yaliyomjia Hudson moyoni, naye alielewa nini?",
+    "answer": "“Imekwisha.” Alielewa kwamba Yesu alikuwa amekwisha kulipa gharama ya dhambi zake zote, kwa hiyo hapakubaki kitu chochote cha yeye kustahili au kuongeza."
+   },
+   {
+    "question": "Zungumzeni pamoja: Je, unafikiri ni lazima uwe mwema vya kutosha ili Mungu akupende?",
+    "answer": "Funzo la sura hii: huhitaji kustahili upendo wa Mungu. Yesu amekwisha kufanya kila kitu; sisi tunaupokea tu, kama zawadi."
+   }
+  ],
+  "body_text": "“Imekwisha.” — kutoka Yohana 19 Hudson Taylor alipokuwa na umri wa miaka kumi na mitano hivi, alikuwa na alasiri moja ndefu, tupu, bila kitu cha kufanya. Mama yake alikuwa mbali sana akiwatembelea rafiki zake. Hudson aliingia katika maktaba ya baba yake akitafuta kitu — chochote kile — cha kusoma, na kutoka katika kikapu kidogo cha vijitabu akatoa kijitabu kidogo cha Injili. “Nitasoma sehemu ya hadithi,” aliwaza, “na kuruka sehemu ya mahubiri iliyo mwishoni.” Lakini alipokuwa akisoma, maneno haya yalimrukia ghafla: “kazi iliyokamilika ya Kristo.” Na moyoni mwake yakaja maneno ya Yesu pale Msalabani: “Imekwisha.” Ghafla Hudson alielewa. Yesu alikuwa amekwisha kulipa gharama ya dhambi zake zote — kikamilifu, mara moja tu na kwa wakati wote. Hapakubaki kitu chochote ambacho Hudson alipaswa kukistahili au kukiongeza. Alichopaswa kufanya ni kusema asante tu na kukipokea. Basi papo hapo, akiwa peke yake katika ghala la zamani lenye utulivu alikokwenda kusoma, Hudson alipiga magoti akayatoa maisha yake kwa Yesu. Hii ndiyo habari njema aliyoigundua Hudson, nayo ni kwa ajili yako pia: Yesu aliposema “Imekwisha,” alimaanisha kweli. Huhitaji kuwa mwema vya kutosha ili ustahili upendo wa Mungu. Yesu amekwisha kufanya kila kitu. Unachohitaji ni kuupokea tu, kama zawadi. Yesu mpendwa, asante kwa kuwa ulimaliza kazi ya kuniokoa pale Msalabani. Naipokea zawadi yako kwa moyo wangu wote. Amina.",
+  "word_count": 211
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Mlango wa Mama Uliofungwa",
+  "body_html": "<blockquote>“Kuomba kwake mwenye haki kwafaa sana.” — kutoka Yakobo 5</blockquote> <p>Sasa sikiliza sehemu ya ajabu. Wakati ule ule Hudson alipokuwa akisoma kile kijitabu kidogo, jambo fulani lilikuwa likitokea mbali, mbali sana.</p> <p>Mama yake, aliyekuwa akiwatembelea rafiki zake maili nyingi kutoka nyumbani, ghafla alihisi kwamba ni lazima amwombee mwanawe. Alipanda juu chumbani mwake, akafunga mlango kwa ufunguo ili mtu yeyote asimsumbue, akaomba — akaomba tena na tena — kwa saa nyingi. Aliendelea kuomba mpaka ndani kabisa ya moyo wake akawa na hakika kwamba Mungu amesikia, na kwamba sasa Hudson yuko salama kwa Mungu. Kisha akaacha kuomba, akaanza kumshukuru.</p> <p>Wiki mbili baadaye alirudi nyumbani. Hudson alimkimbilia, akiwa na hamu kubwa ya kumweleza habari zake nzuri. Lakini kabla hajasema neno, mama yake alitabasamu akasema, “Najua, mwanangu. Nimekuwa nikifurahi kwa wiki mbili nzima!” Mungu mwenyewe alikuwa amemwambia, naye hakuwa amemwambia mtu yeyote.</p> <p>Baadaye Hudson aliona kitabu kidogo cha kumbukumbu cha dada yake Amelia. Ndani yake alikuwa ameandika kwamba angemwombea kaka yake kila siku mpaka atakapokuja kwa Mungu. Na ilikuwa mwezi mmoja kamili baadaye ndipo alipokuja kwa Mungu.</p> <p>Mtu fulani, mahali fulani, huenda anakuombea wewe sasa hivi — na Mungu husikia kila moja ya maombi hayo. Nawe pia unaweza kuwaombea hivyo watu unaowapenda. Mungu husikiliza kweli kweli.</p> <p><em>Mungu mpendwa, asante kwa ajili ya watu wanaoniombea. Unisaidie kuwaombea kwa uaminifu watu ninaowapenda. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Mama yake Hudson alifanya nini alipokuwa mbali akiwatembelea rafiki zake?",
+    "answer": "Alijifungia chumbani mwake akamwombea Hudson kwa saa nyingi, mpaka akawa na hakika kwamba Mungu amesikia. Kisha akaacha kuomba, akaanza kumshukuru."
+   },
+   {
+    "question": "Mama yake alisema nini Hudson alipomkimbilia kumweleza habari zake?",
+    "answer": "“Najua, mwanangu. Nimekuwa nikifurahi kwa wiki mbili nzima!” Mungu mwenyewe alikuwa amemwambia. (Dada yake Amelia naye alikuwa akimwombea kila siku.)"
+   },
+   {
+    "question": "Zungumzeni pamoja: Ni nani ungeweza kumwombea, kama mama na dada yake Hudson walivyomwombea?",
+    "answer": "Funzo la sura hii: huenda mtu fulani anakuombea sasa hivi, nawe pia unaweza kuwaombea kwa uaminifu watu unaowapenda, kwa sababu Mungu husikiliza kweli kweli."
+   }
+  ],
+  "body_text": "“Kuomba kwake mwenye haki kwafaa sana.” — kutoka Yakobo 5 Sasa sikiliza sehemu ya ajabu. Wakati ule ule Hudson alipokuwa akisoma kile kijitabu kidogo, jambo fulani lilikuwa likitokea mbali, mbali sana. Mama yake, aliyekuwa akiwatembelea rafiki zake maili nyingi kutoka nyumbani, ghafla alihisi kwamba ni lazima amwombee mwanawe. Alipanda juu chumbani mwake, akafunga mlango kwa ufunguo ili mtu yeyote asimsumbue, akaomba — akaomba tena na tena — kwa saa nyingi. Aliendelea kuomba mpaka ndani kabisa ya moyo wake akawa na hakika kwamba Mungu amesikia, na kwamba sasa Hudson yuko salama kwa Mungu. Kisha akaacha kuomba, akaanza kumshukuru. Wiki mbili baadaye alirudi nyumbani. Hudson alimkimbilia, akiwa na hamu kubwa ya kumweleza habari zake nzuri. Lakini kabla hajasema neno, mama yake alitabasamu akasema, “Najua, mwanangu. Nimekuwa nikifurahi kwa wiki mbili nzima!” Mungu mwenyewe alikuwa amemwambia, naye hakuwa amemwambia mtu yeyote. Baadaye Hudson aliona kitabu kidogo cha kumbukumbu cha dada yake Amelia. Ndani yake alikuwa ameandika kwamba angemwombea kaka yake kila siku mpaka atakapokuja kwa Mungu. Na ilikuwa mwezi mmoja kamili baadaye ndipo alipokuja kwa Mungu. Mtu fulani, mahali fulani, huenda anakuombea wewe sasa hivi — na Mungu husikia kila moja ya maombi hayo. Nawe pia unaweza kuwaombea hivyo watu unaowapenda. Mungu husikiliza kweli kweli. Mungu mpendwa, asante kwa ajili ya watu wanaoniombea. Unisaidie kuwaombea kwa uaminifu watu ninaowapenda. Amina.",
+  "word_count": 217
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Nusu-Krauni ya Mwisho",
+  "body_html": "<blockquote>“Akuombaye mpe.” — kutoka Mathayo 5</blockquote> <p>Hudson alitaka kuwa mmisionari katika nchi ya mbali ya Uchina, ambako angepaswa kumtumaini Mungu kwa kila kitu. Basi akaamua kuanza kujizoeza kumtumaini Mungu mara moja.</p> <p>Usiku mmoja alikuwa amebakiwa na sarafu moja tu katika dunia nzima — nusu-krauni moja peke yake. Jioni ile, usiku ukiwa umeingia, mtu mmoja maskini alimsihi aje amwombee mke wake, aliyekuwa mgonjwa sana. Katika chumba chao kitupu chenye baridi, Hudson aliwakuta watoto wenye njaa na mama mwenye mtoto mchanga sana, na hapakuwa na chakula hata kidogo.</p> <p>Hudson alitaka kuwasaidia — lakini kama angewapa sarafu yake moja, yeye mwenyewe asingebaki na kitu! Alijaribu kuwaeleza habari za Baba mwenye upendo aliye mbinguni, lakini maneno yalikwama. Angewezaje kuzungumza juu ya utunzaji wa Mungu huku ameishikilia sarafu yake ya mwisho? Basi alivuta pumzi ndefu, akaipa ile familia maskini nusu-krauni yake yote. Mara furaha yake ikamrudia kwa wingi, naye akarudi nyumbani akiimba.</p> <p>Kesho yake asubuhi, tarishi alileta barua. Ndani yake kulikuwa na jozi ya glavu — na kutoka ndani yake ikaanguka sarafu yenye thamani mara nne ya kile Hudson alichokuwa ametoa! “Ajabu!” Hudson alicheka. Mungu alikuwa amemrudishia zaidi sana kuliko kile alichokiachilia.</p> <p>Huwezi kamwe kumzidi Mungu kwa kutoa. Unapomgawia mtu anayehitaji kile ulicho nacho, unaweza kumtumaini Baba yako mwenye upendo kukutunza.</p> <p><em>Mungu mpendwa, unisaidie kutoa kwa moyo mkunjufu, hata inapokuwa vigumu, na kukutumaini wewe kunitunza. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Hudson aliitoa sarafu yake ya mwisho kabisa?",
+    "answer": "Familia moja maskini haikuwa na chakula hata kidogo. Hangeweza kuzungumza juu ya utunzaji wa Mungu huku ameishikilia sarafu yake ya mwisho, kwa hiyo akawapa nusu-krauni yake yote."
+   },
+   {
+    "question": "Ni nini kilichokuja kwa barua kesho yake asubuhi?",
+    "answer": "Barua yenye jozi ya glavu ndani yake, na kutoka ndani yake ikaanguka sarafu yenye thamani mara nne ya kile Hudson alichokuwa ametoa."
+   },
+   {
+    "question": "Zungumzeni pamoja: Je, wakati mwingine ni vigumu kwako kugawa kitu? Ni nini kingeweza kukusaidia?",
+    "answer": "Funzo la sura hii: huwezi kamwe kumzidi Mungu kwa kutoa. Unapomgawia mtu mwenye shida, unaweza kumtumaini Baba yako mwenye upendo kukutunza."
+   }
+  ],
+  "body_text": "“Akuombaye mpe.” — kutoka Mathayo 5 Hudson alitaka kuwa mmisionari katika nchi ya mbali ya Uchina, ambako angepaswa kumtumaini Mungu kwa kila kitu. Basi akaamua kuanza kujizoeza kumtumaini Mungu mara moja. Usiku mmoja alikuwa amebakiwa na sarafu moja tu katika dunia nzima — nusu-krauni moja peke yake. Jioni ile, usiku ukiwa umeingia, mtu mmoja maskini alimsihi aje amwombee mke wake, aliyekuwa mgonjwa sana. Katika chumba chao kitupu chenye baridi, Hudson aliwakuta watoto wenye njaa na mama mwenye mtoto mchanga sana, na hapakuwa na chakula hata kidogo. Hudson alitaka kuwasaidia — lakini kama angewapa sarafu yake moja, yeye mwenyewe asingebaki na kitu! Alijaribu kuwaeleza habari za Baba mwenye upendo aliye mbinguni, lakini maneno yalikwama. Angewezaje kuzungumza juu ya utunzaji wa Mungu huku ameishikilia sarafu yake ya mwisho? Basi alivuta pumzi ndefu, akaipa ile familia maskini nusu-krauni yake yote. Mara furaha yake ikamrudia kwa wingi, naye akarudi nyumbani akiimba. Kesho yake asubuhi, tarishi alileta barua. Ndani yake kulikuwa na jozi ya glavu — na kutoka ndani yake ikaanguka sarafu yenye thamani mara nne ya kile Hudson alichokuwa ametoa! “Ajabu!” Hudson alicheka. Mungu alikuwa amemrudishia zaidi sana kuliko kile alichokiachilia. Huwezi kamwe kumzidi Mungu kwa kutoa. Unapomgawia mtu anayehitaji kile ulicho nacho, unaweza kumtumaini Baba yako mwenye upendo kukutunza. Mungu mpendwa, unisaidie kutoa kwa moyo mkunjufu, hata inapokuwa vigumu, na kukutumaini wewe kunitunza. Amina.",
+  "word_count": 221
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Mshahara Uliosahauliwa",
+  "body_html": "<blockquote>“Baba yenu anajua mnayohitaji kabla ninyi hamjamwomba.” — kutoka Mathayo 6</blockquote> <p>Hudson alimfanyia kazi daktari mmoja mwenye shughuli nyingi, aliyemlipa mshahara. Lakini Hudson alitaka kulizoeza tumaini lake kwa Mungu hata zaidi. Basi akapanga mpango: mshahara wake utakapofika wakati wa kulipwa, <em>hangemkumbusha</em> daktari. Badala yake, angemwomba Mungu amkumbushe.</p> <p>Siku ya mshahara ikaja ikapita — na daktari, aliyekuwa msahaulifu sana, akasahau kabisa. Hudson hakumwambia neno, lakini alimweleza Mungu habari zote, na fedha zake zikazidi kupungua na kupungua.</p> <p>Kisha siku moja daktari alisema ghafla, “Ah, Taylor — kwani mshahara wako haujafika tena wakati wa kulipwa?” Moyo wa Hudson uliruka! Lakini kisha daktari akakumbuka kwamba alikuwa ametoka tu kupeleka benki fedha zake zote za ziada. Lo! Hudson akanyamaza na kuendelea kuomba.</p> <p>Usiku sana Jumamosi ile — yapata saa nne usiku — daktari alirudi chumbani akicheka kimoyomoyo. Mmoja wa wagonjwa wake tajiri kuliko wote alikuwa amefika saa ile isiyo ya kawaida ili kulipa deni lake! Daktari alimkabidhi Hudson fedha zile akasema, “Afadhali uzichukue hizi.”</p> <p>Mungu alikuwa amefanya hivyo — akiwasukuma watu wengine kimya kimya, kwa wakati unaofaa kabisa, bila Hudson kumwomba mtu yeyote isipokuwa Mungu.</p> <p>Si lazima kila mara ujitafutie njia ya kila jambo mwenyewe, au uwasumbue watu ili upate unachohitaji. Baba yako aliye mbinguni anajua tayari, naye anaweza kupanga mambo kwa njia ambazo hungetarajia kamwe. Mwombe yeye.</p> <p><em>Mungu mpendwa, asante kwa kuwa unajua tayari ninachohitaji. Unisaidie kukuletea wewe kwanza, na kuutumaini wakati wako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson alikuwa na mpango gani mshahara wake ulipofika wakati wa kulipwa?",
+    "answer": "Hangemkumbusha yule daktari msahaulifu. Badala yake angemwomba Mungu amkumbushe."
+   },
+   {
+    "question": "Mwishowe Hudson aliipataje fedha yake?",
+    "answer": "Usiku sana Jumamosi mgonjwa mmoja tajiri alikuja kulipa deni lake, na daktari akamkabidhi Hudson fedha zile, akisema, “Afadhali uzichukue hizi.”"
+   },
+   {
+    "question": "Zungumzeni pamoja: Unapohitaji kitu, unamwomba nani kwanza?",
+    "answer": "Funzo la sura hii: Baba yako aliye mbinguni anajua tayari unachohitaji, naye anaweza kupanga mambo kwa njia ambazo hungetarajia kamwe. Mletee yeye kwanza, na kuutumaini wakati wake."
+   }
+  ],
+  "body_text": "“Baba yenu anajua mnayohitaji kabla ninyi hamjamwomba.” — kutoka Mathayo 6 Hudson alimfanyia kazi daktari mmoja mwenye shughuli nyingi, aliyemlipa mshahara. Lakini Hudson alitaka kulizoeza tumaini lake kwa Mungu hata zaidi. Basi akapanga mpango: mshahara wake utakapofika wakati wa kulipwa, hangemkumbusha daktari. Badala yake, angemwomba Mungu amkumbushe. Siku ya mshahara ikaja ikapita — na daktari, aliyekuwa msahaulifu sana, akasahau kabisa. Hudson hakumwambia neno, lakini alimweleza Mungu habari zote, na fedha zake zikazidi kupungua na kupungua. Kisha siku moja daktari alisema ghafla, “Ah, Taylor — kwani mshahara wako haujafika tena wakati wa kulipwa?” Moyo wa Hudson uliruka! Lakini kisha daktari akakumbuka kwamba alikuwa ametoka tu kupeleka benki fedha zake zote za ziada. Lo! Hudson akanyamaza na kuendelea kuomba. Usiku sana Jumamosi ile — yapata saa nne usiku — daktari alirudi chumbani akicheka kimoyomoyo. Mmoja wa wagonjwa wake tajiri kuliko wote alikuwa amefika saa ile isiyo ya kawaida ili kulipa deni lake! Daktari alimkabidhi Hudson fedha zile akasema, “Afadhali uzichukue hizi.” Mungu alikuwa amefanya hivyo — akiwasukuma watu wengine kimya kimya, kwa wakati unaofaa kabisa, bila Hudson kumwomba mtu yeyote isipokuwa Mungu. Si lazima kila mara ujitafutie njia ya kila jambo mwenyewe, au uwasumbue watu ili upate unachohitaji. Baba yako aliye mbinguni anajua tayari, naye anaweza kupanga mambo kwa njia ambazo hungetarajia kamwe. Mwombe yeye. Mungu mpendwa, asante kwa kuwa unajua tayari ninachohitaji. Unisaidie kukuletea wewe kwanza, na kuutumaini wakati wako. Amina.",
+  "word_count": 230
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "\"Hutakufa\"",
+  "body_html": "<blockquote>“Sitakufa bali nitaishi, nami nitayasimulia matendo ya Bwana.” — kutoka Zaburi 118</blockquote> <p>Alipokuwa akisomea udaktari huko London, Hudson alikuwa maskini sana, na mara nyingi aliishi kwa mkate wa kahawia na maji tu. Jioni moja sindano ilimchoma kidoleni, naye hakulijali. Lakini kesho yake, alipokuwa akisaidia katika kazi ngumu na ya hatari ya kitabibu, kile kidonda kidogo kiliruhusu ugonjwa mbaya kuingia, na Hudson akaugua vibaya sana.</p> <p>Daktari mkuu alimtazama kwa uzito akasema, “Wewe ni mtu mfu.”</p> <p>Unafikiri wazo la kwanza la Hudson lilikuwa nini? Halikuwa hofu kwa ajili yake mwenyewe. Lilikuwa huzuni kwamba sasa huenda asifike Uchina kamwe! Lakini kisha uhakika mzito, wenye utulivu, ukatulia moyoni mwake: “Nina kazi ya kufanya Uchina, nami sitakufa.”</p> <p>Hakuwa na fedha za kukodi gari la farasi, kwa hiyo, ingawa alikuwa dhaifu, alirudi nyumbani polepole kwa basi na kwa miguu. Watu wengine wawili walioupata ugonjwa ule ule wakati ule ule wote wawili walikufa. Lakini Hudson aliishi. Mungu alikuwa amemlinda — kwa sababu Mungu bado alikuwa na kazi ya yeye kuifanya mbali huko Uchina.</p> <p>Mungu ana mpango kwa maisha yako, naye atakutunza mpaka mpango huo utimie. Uko salama mikononi mwake.</p> <p><em>Mungu mpendwa, asante kwa kuwa maisha yangu yamo mikononi mwako, nawe una mipango mizuri kwa ajili yangu. Unisaidie kukutumaini, liwalo na liwe. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Hudson aliugua vibaya hivyo jinsi gani?",
+    "answer": "Sindano ilimchoma kidoleni, na kesho yake, wakati wa kazi ya hatari ya kitabibu, kile kidonda kidogo kiliruhusu ugonjwa mbaya kuingia."
+   },
+   {
+    "question": "Wazo la kwanza la Hudson lilikuwa nini daktari aliposema, “Wewe ni mtu mfu”?",
+    "answer": "Si hofu kwa ajili yake mwenyewe, bali huzuni kwamba huenda asifike Uchina kamwe. Kisha alihisi utulivu na uhakika: “Nina kazi ya kufanya Uchina, nami sitakufa.”"
+   },
+   {
+    "question": "Zungumzeni pamoja: Unajisikiaje kujua kwamba maisha yako yamo mikononi mwa Mungu?",
+    "answer": "Funzo la sura hii: Mungu ana mpango kwa maisha yako, naye atakutunza mpaka mpango huo utimie. Uko salama mikononi mwake."
+   }
+  ],
+  "body_text": "“Sitakufa bali nitaishi, nami nitayasimulia matendo ya Bwana.” — kutoka Zaburi 118 Alipokuwa akisomea udaktari huko London, Hudson alikuwa maskini sana, na mara nyingi aliishi kwa mkate wa kahawia na maji tu. Jioni moja sindano ilimchoma kidoleni, naye hakulijali. Lakini kesho yake, alipokuwa akisaidia katika kazi ngumu na ya hatari ya kitabibu, kile kidonda kidogo kiliruhusu ugonjwa mbaya kuingia, na Hudson akaugua vibaya sana. Daktari mkuu alimtazama kwa uzito akasema, “Wewe ni mtu mfu.” Unafikiri wazo la kwanza la Hudson lilikuwa nini? Halikuwa hofu kwa ajili yake mwenyewe. Lilikuwa huzuni kwamba sasa huenda asifike Uchina kamwe! Lakini kisha uhakika mzito, wenye utulivu, ukatulia moyoni mwake: “Nina kazi ya kufanya Uchina, nami sitakufa.” Hakuwa na fedha za kukodi gari la farasi, kwa hiyo, ingawa alikuwa dhaifu, alirudi nyumbani polepole kwa basi na kwa miguu. Watu wengine wawili walioupata ugonjwa ule ule wakati ule ule wote wawili walikufa. Lakini Hudson aliishi. Mungu alikuwa amemlinda — kwa sababu Mungu bado alikuwa na kazi ya yeye kuifanya mbali huko Uchina. Mungu ana mpango kwa maisha yako, naye atakutunza mpaka mpango huo utimie. Uko salama mikononi mwake. Mungu mpendwa, asante kwa kuwa maisha yangu yamo mikononi mwako, nawe una mipango mizuri kwa ajili yangu. Unisaidie kukutumaini, liwalo na liwe. Amina.",
+  "word_count": 205
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Dhoruba Karibu na Miamba",
+  "body_html": "<blockquote>“Huituliza dhoruba, ikawa shwari; naye akawaleta mpaka bandari waliyoitamani.” — kutoka Zaburi 107</blockquote> <p>Mwishowe siku ile kuu ikafika. Hudson alipanda meli ya matanga iliyokuwa ikielekea Uchina. Mama yake alikuja kumuaga, akakitandika kitanda chake kidogo cha melini na kuomba pamoja naye mara ya mwisho. Meli ilipoanza kuondoka, kilio chake cha huzuni “kilinichoma kama kisu,” Hudson alisema. Lakini alikuwa akienda mahali Mungu alipomwita.</p> <p>Kisha taabu ikaja. Upepo mkali ukavuma ukaizuia meli kwa siku kumi na mbili za dhoruba. Usiku mmoja wa Jumapili upepo uliisukuma moja kwa moja kuelekea pwani yenye miamba — karibu zaidi na zaidi, mpaka meli ikawa karibu kiasi cha kuweza kuigusa miamba. Ilionekana kama ndio mwisho.</p> <p>Nahodha, ambaye naye alimpenda Mungu, alimgeukia Hudson akasema, “Hatuwezi kuishi hata nusu saa sasa. Je, wito wako wa kumtumikia Bwana huko Uchina utakuwaje?” Hudson alijibu kwamba afadhali awe hapa, akimtii Mungu, kuliko mahali pengine popote — na kwamba bado aliamini angefika Uchina.</p> <p>Dakika chache baadaye nahodha alirudi mbio akipiga kelele: “Upepo umebadilika! Tunaweza kusafiri kutoka ghuba hii!” Na ndivyo walivyofanya. Miamba ikabaki nyuma salama.</p> <p>Hata katikati ya dhoruba inayotisha, unaweza kuwa na amani unapojua kwamba uko mahali Mungu anapotaka uwe. Yeye ndiye Bwana wa upepo na mawimbi.</p> <p><em>Mungu mpendwa, maisha yanapoonekana kama dhoruba, unisaidie kubaki na amani, nikijua kwamba uko pamoja nami na unatawala yote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Meli ilikumbwa na hatari gani katika dhoruba?",
+    "answer": "Upepo mkali uliizuia kwa siku kumi na mbili, na usiku mmoja wa Jumapili upepo uliisukuma karibu kabisa na miamba."
+   },
+   {
+    "question": "Hudson alimwambia nahodha nini ilipoonekana kama ndio mwisho?",
+    "answer": "Kwamba afadhali awe pale, akimtii Mungu, kuliko mahali pengine popote, na kwamba bado aliamini angefika Uchina. Punde upepo ukabadilika, wakasafiri kutoka ghuba ile."
+   },
+   {
+    "question": "Zungumzeni pamoja: Unapoogopa, ni nini kinachokusaidia kuwa na amani?",
+    "answer": "Funzo la sura hii: hata katika dhoruba inayotisha, unaweza kuwa na amani unapojua kwamba uko mahali Mungu anapotaka uwe, kwa sababu yeye ndiye Bwana wa upepo na mawimbi."
+   }
+  ],
+  "body_text": "“Huituliza dhoruba, ikawa shwari; naye akawaleta mpaka bandari waliyoitamani.” — kutoka Zaburi 107 Mwishowe siku ile kuu ikafika. Hudson alipanda meli ya matanga iliyokuwa ikielekea Uchina. Mama yake alikuja kumuaga, akakitandika kitanda chake kidogo cha melini na kuomba pamoja naye mara ya mwisho. Meli ilipoanza kuondoka, kilio chake cha huzuni “kilinichoma kama kisu,” Hudson alisema. Lakini alikuwa akienda mahali Mungu alipomwita. Kisha taabu ikaja. Upepo mkali ukavuma ukaizuia meli kwa siku kumi na mbili za dhoruba. Usiku mmoja wa Jumapili upepo uliisukuma moja kwa moja kuelekea pwani yenye miamba — karibu zaidi na zaidi, mpaka meli ikawa karibu kiasi cha kuweza kuigusa miamba. Ilionekana kama ndio mwisho. Nahodha, ambaye naye alimpenda Mungu, alimgeukia Hudson akasema, “Hatuwezi kuishi hata nusu saa sasa. Je, wito wako wa kumtumikia Bwana huko Uchina utakuwaje?” Hudson alijibu kwamba afadhali awe hapa, akimtii Mungu, kuliko mahali pengine popote — na kwamba bado aliamini angefika Uchina. Dakika chache baadaye nahodha alirudi mbio akipiga kelele: “Upepo umebadilika! Tunaweza kusafiri kutoka ghuba hii!” Na ndivyo walivyofanya. Miamba ikabaki nyuma salama. Hata katikati ya dhoruba inayotisha, unaweza kuwa na amani unapojua kwamba uko mahali Mungu anapotaka uwe. Yeye ndiye Bwana wa upepo na mawimbi. Mungu mpendwa, maisha yanapoonekana kama dhoruba, unisaidie kubaki na amani, nikijua kwamba uko pamoja nami na unatawala yote. Amina.",
+  "word_count": 213
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Kuomba Upepo",
+  "body_html": "<blockquote>“Niite, nami nitakuitikia.” — kutoka Yeremia 33</blockquote> <p>Katika safari ile ile ndefu, hatari tofauti ikaja — kinyume kabisa cha dhoruba. Meli ilifika mahali ambapo <em>hapakuwa na upepo hata kidogo.</em> Matanga yalining'inia bila nguvu, na mkondo mkali wa maji ulikuwa ukiivuta meli polepole kuelekea miamba ya hatari iliyofichika, huku mioto ikiwaka katika pwani iliyokuwa karibu.</p> <p>Mabaharia walijaribu kila njia kuigeuza meli, lakini hakuna kilichofaulu. Mwishowe nahodha alisema kwa huzuni, “Tunaweza tu kungoja tuone kitakachotokea.”</p> <p>“Hapana,” Hudson alisema. “Kuna jambo moja ambalo bado hatujalifanya.” Aliwatafuta watu wengine melini waliompenda Mungu — wanne tu, yeye mwenyewe akiwemo — akamwomba kila mmoja aende akaombe upepo.</p> <p>Hudson aliomba sala fupi, akawa na hakika sana kwamba Mungu angejibu hata akapanda juu sitahani na kumwomba afisa mmoja mwenye kununa, tafadhali ayaandae matanga. Afisa yule alidharau akasema, “Afadhali <em>niuone</em> upepo kuliko kusikia habari zake!” Lakini hata alipokuwa akisema — tazama! — tanga la juu likaanza kupepea. Upepo mwanana ulikuwa ukija! Punde meli ikasafiri kwa kasi na salama, mbali na miamba.</p> <p>Wakati mwingine tunajaribu kila kitu isipokuwa jambo lililo muhimu kuliko yote. Usipojua la kufanya tena, kumbuka maneno ya Hudson: “Kuna jambo moja ambalo bado hatujalifanya.” Omba. Mungu hupenda kujibu.</p> <p><em>Mungu mpendwa, unisaidie kuomba kwanza, si mwisho. Asante kwa kuwa unanisikia na kunijibu kwa wakati unaofaa kabisa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Wakati huu kulikuwa na tatizo gani katika safari?",
+    "answer": "Hapakuwa na upepo hata kidogo, na mkondo mkali wa maji ulikuwa ukiivuta meli kuelekea miamba ya hatari iliyofichika."
+   },
+   {
+    "question": "Lile “jambo moja ambalo bado hatujalifanya” lilikuwa nini?",
+    "answer": "Kuomba. Hudson aliwaomba wale watu wanne melini waliompenda Mungu waombe upepo, na punde tanga la juu likaanza kupepea."
+   },
+   {
+    "question": "Zungumzeni pamoja: Kwa kawaida wewe huomba kwanza au mwisho kunapokuwa na tatizo?",
+    "answer": "Funzo la sura hii: wakati mwingine tunajaribu kila kitu isipokuwa jambo lililo muhimu kuliko yote. Usipojua la kufanya tena, omba. Mungu hupenda kujibu."
+   }
+  ],
+  "body_text": "“Niite, nami nitakuitikia.” — kutoka Yeremia 33 Katika safari ile ile ndefu, hatari tofauti ikaja — kinyume kabisa cha dhoruba. Meli ilifika mahali ambapo hapakuwa na upepo hata kidogo. Matanga yalining'inia bila nguvu, na mkondo mkali wa maji ulikuwa ukiivuta meli polepole kuelekea miamba ya hatari iliyofichika, huku mioto ikiwaka katika pwani iliyokuwa karibu. Mabaharia walijaribu kila njia kuigeuza meli, lakini hakuna kilichofaulu. Mwishowe nahodha alisema kwa huzuni, “Tunaweza tu kungoja tuone kitakachotokea.” “Hapana,” Hudson alisema. “Kuna jambo moja ambalo bado hatujalifanya.” Aliwatafuta watu wengine melini waliompenda Mungu — wanne tu, yeye mwenyewe akiwemo — akamwomba kila mmoja aende akaombe upepo. Hudson aliomba sala fupi, akawa na hakika sana kwamba Mungu angejibu hata akapanda juu sitahani na kumwomba afisa mmoja mwenye kununa, tafadhali ayaandae matanga. Afisa yule alidharau akasema, “Afadhali niuone upepo kuliko kusikia habari zake!” Lakini hata alipokuwa akisema — tazama! — tanga la juu likaanza kupepea. Upepo mwanana ulikuwa ukija! Punde meli ikasafiri kwa kasi na salama, mbali na miamba. Wakati mwingine tunajaribu kila kitu isipokuwa jambo lililo muhimu kuliko yote. Usipojua la kufanya tena, kumbuka maneno ya Hudson: “Kuna jambo moja ambalo bado hatujalifanya.” Omba. Mungu hupenda kujibu. Mungu mpendwa, unisaidie kuomba kwanza, si mwisho. Asante kwa kuwa unanisikia na kunijibu kwa wakati unaofaa kabisa. Amina.",
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Kuvaa Kama Watu Aliowapenda",
+  "body_html": "<blockquote>“Nimekuwa yote kwa watu wote, ili kwa njia zote niwaokoe watu kadha wa kadha.” — kutoka 1 Wakorintho 9</blockquote> <p>Hudson alipofika Uchina, alitaka watu wa huko wasikilize habari zake njema za Yesu. Lakini kulikuwa na tatizo: alionekana tofauti mno! Akiwa amevaa nguo zake za Kiingereza, makundi ya watu yangemfuata, wakimnyooshea vidole, wakicheka, na hata kumwita majina mabaya. Ilikuwa vigumu kusikika katikati ya dhihaka zile zote.</p> <p>Basi Hudson alifanya jambo la ujasiri. Aliamua kuvaa kama watu wa Kichina walivyovaa, na hata alinyoa nywele zake na kuzitengeneza kama zao. Sasa, alipotembea katika mji, watu hawakumkodolea macho wala kumzomea. Walisikiliza kwa utulivu, na hata wakamkaribisha nyumbani mwao.</p> <p>Hudson alikuwa na rafiki, Bwana Burns, ambaye bado alivaa nguo zake za Kiingereza. Bwana Burns aliona kwamba Hudson alipata makundi ya watu watulivu na wenye urafiki, wakati yeye mwenyewe alifuatwa na wavulana wakorofi wenye dhihaka. Baada ya kuona hivyo kwa wiki chache, Bwana Burns naye akavaa nguo za Kichina!</p> <p>Hudson hakubadilisha nguo zake kwa sababu alilazimishwa. Alifanya hivyo kwa upendo — alikuwa tayari kuacha starehe yake na kiburi chake ili watu wasikilize na kumjua Yesu.</p> <p>Upendo hufanya hivyo. Huwafikiria wengine kwanza. Je, kuna njia ambayo ungeweza kuacha kitu kidogo — kuwa sahihi, kuwa wa kwanza, kuwa na starehe — ili kumsaidia mtu mwingine ajisikie amekaribishwa?</p> <p><em>Mungu mpendwa, unifanye niwe tayari kuacha starehe yangu kwa upendo, ili wengine waone wema wako ndani yangu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini watu wa Uchina walimcheka Hudson mwanzoni?",
+    "answer": "Alionekana tofauti mno akiwa na nguo zake za Kiingereza, hata makundi ya watu yakamfuata, wakimnyooshea vidole, wakicheka na kumwita majina mabaya."
+   },
+   {
+    "question": "Nini kilibadilika Hudson alipovaa kama watu wa Kichina?",
+    "answer": "Watu waliacha kumkodolea macho na kumzomea. Walisikiliza kwa utulivu na kumkaribisha nyumbani mwao, na punde rafiki yake Bwana Burns naye akavaa nguo za Kichina."
+   },
+   {
+    "question": "Zungumzeni pamoja: Je, ungeweza kuacha kitu kidogo ili kumsaidia mtu ajisikie amekaribishwa?",
+    "answer": "Funzo la sura hii: Hudson alifanya hivyo kwa upendo. Upendo huwafikiria wengine kwanza na uko tayari kuacha starehe au kiburi, kama vile kuwa sahihi au kuwa wa kwanza."
+   }
+  ],
+  "body_text": "“Nimekuwa yote kwa watu wote, ili kwa njia zote niwaokoe watu kadha wa kadha.” — kutoka 1 Wakorintho 9 Hudson alipofika Uchina, alitaka watu wa huko wasikilize habari zake njema za Yesu. Lakini kulikuwa na tatizo: alionekana tofauti mno! Akiwa amevaa nguo zake za Kiingereza, makundi ya watu yangemfuata, wakimnyooshea vidole, wakicheka, na hata kumwita majina mabaya. Ilikuwa vigumu kusikika katikati ya dhihaka zile zote. Basi Hudson alifanya jambo la ujasiri. Aliamua kuvaa kama watu wa Kichina walivyovaa, na hata alinyoa nywele zake na kuzitengeneza kama zao. Sasa, alipotembea katika mji, watu hawakumkodolea macho wala kumzomea. Walisikiliza kwa utulivu, na hata wakamkaribisha nyumbani mwao. Hudson alikuwa na rafiki, Bwana Burns, ambaye bado alivaa nguo zake za Kiingereza. Bwana Burns aliona kwamba Hudson alipata makundi ya watu watulivu na wenye urafiki, wakati yeye mwenyewe alifuatwa na wavulana wakorofi wenye dhihaka. Baada ya kuona hivyo kwa wiki chache, Bwana Burns naye akavaa nguo za Kichina! Hudson hakubadilisha nguo zake kwa sababu alilazimishwa. Alifanya hivyo kwa upendo — alikuwa tayari kuacha starehe yake na kiburi chake ili watu wasikilize na kumjua Yesu. Upendo hufanya hivyo. Huwafikiria wengine kwanza. Je, kuna njia ambayo ungeweza kuacha kitu kidogo — kuwa sahihi, kuwa wa kwanza, kuwa na starehe — ili kumsaidia mtu mwingine ajisikie amekaribishwa? Mungu mpendwa, unifanye niwe tayari kuacha starehe yangu kwa upendo, ili wengine waone wema wako ndani yangu. Amina.",
+  "word_count": 227
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Usiku Kwenye Ngazi za Hekalu",
+  "body_html": "<blockquote>“Sitakupungukia kabisa, wala sitakuacha kabisa.” — kutoka Waebrania 13</blockquote> <p>Siku moja mtumishi wa Hudson mwenyewe alitoroka — na akachukua mizigo yote ya Hudson! Ghafla Hudson akawa hana karibu kitu chochote, mbali na nyumbani katika mahali pageni. Akiwa amechoka na miguu ikimwuma, alitafuta kila mahali pa kulala, lakini hakuna aliyekubali kumkaribisha.</p> <p>Mwishowe alilala juu ya ngazi za mawe zenye baridi mbele ya hekalu lililofungwa, akiweka fedha zake kidogo chini ya kichwa chake kama mto. Gizani, mwombaji mmoja alinyemelea karibu, akitumaini kumwibia. Hudson aliuliza kwa utulivu, “Unataka nini?” — na yule mtu akaondoka kimya kimya. Kisha watu wengine zaidi wakakusanyika miguuni pake, wakijifanya kwamba walitaka tu kukaa naye.</p> <p>Hudson hakudanganyika, wala hakuwa peke yake. “Mimi namwabudu Mungu,” aliwaambia. “Yeye ni Baba yangu, nami namtumaini.” Ili abaki macho na salama, aliimba nyimbo za kumsifu Mungu, akasema mistari ya Biblia kwa sauti, na kuomba — mpaka watu wale wakachoka nayo hata wakaondoka kabla ya asubuhi.</p> <p>Katika usiku ule wote wa giza na wa kutisha, Mungu alikuwa akimlinda Hudson, kama alivyoahidi: “Sitakupungukia kabisa, wala sitakuacha kabisa.”</p> <p>Unapojisikia uko peke yako, au mambo yanapoharibika nawe unaogopa, kumbuka: Mungu yuko pale pale pamoja nawe, hata gizani. Ameahidi kwamba hatakuacha kamwe.</p> <p><em>Mungu mpendwa, asante kwa kuwa huniachi kamwe, hata nyakati za giza na za kutisha. Unisaidie kuamini kwamba uko karibu nami siku zote. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Hudson alilazimika kulala kwenye ngazi za hekalu?",
+    "answer": "Mtumishi wake alitoroka na mizigo yake yote, na hakuna aliyekubali kumkaribisha usiku ule."
+   },
+   {
+    "question": "Hudson alijilindaje dhidi ya watu waliotaka kumwibia?",
+    "answer": "Alibaki macho akiimba nyimbo za kumsifu Mungu, akisema mistari ya Biblia kwa sauti na kuomba, mpaka watu wale wakachoka na kuondoka kabla ya asubuhi."
+   },
+   {
+    "question": "Zungumzeni pamoja: Unaweza kukumbuka nini unapojisikia uko peke yako au unaogopa gizani?",
+    "answer": "Funzo la sura hii: Mungu yuko pale pale pamoja nawe, hata gizani. Ameahidi, “Sitakupungukia kabisa, wala sitakuacha kabisa.”"
+   }
+  ],
+  "body_text": "“Sitakupungukia kabisa, wala sitakuacha kabisa.” — kutoka Waebrania 13 Siku moja mtumishi wa Hudson mwenyewe alitoroka — na akachukua mizigo yote ya Hudson! Ghafla Hudson akawa hana karibu kitu chochote, mbali na nyumbani katika mahali pageni. Akiwa amechoka na miguu ikimwuma, alitafuta kila mahali pa kulala, lakini hakuna aliyekubali kumkaribisha. Mwishowe alilala juu ya ngazi za mawe zenye baridi mbele ya hekalu lililofungwa, akiweka fedha zake kidogo chini ya kichwa chake kama mto. Gizani, mwombaji mmoja alinyemelea karibu, akitumaini kumwibia. Hudson aliuliza kwa utulivu, “Unataka nini?” — na yule mtu akaondoka kimya kimya. Kisha watu wengine zaidi wakakusanyika miguuni pake, wakijifanya kwamba walitaka tu kukaa naye. Hudson hakudanganyika, wala hakuwa peke yake. “Mimi namwabudu Mungu,” aliwaambia. “Yeye ni Baba yangu, nami namtumaini.” Ili abaki macho na salama, aliimba nyimbo za kumsifu Mungu, akasema mistari ya Biblia kwa sauti, na kuomba — mpaka watu wale wakachoka nayo hata wakaondoka kabla ya asubuhi. Katika usiku ule wote wa giza na wa kutisha, Mungu alikuwa akimlinda Hudson, kama alivyoahidi: “Sitakupungukia kabisa, wala sitakuacha kabisa.” Unapojisikia uko peke yako, au mambo yanapoharibika nawe unaogopa, kumbuka: Mungu yuko pale pale pamoja nawe, hata gizani. Ameahidi kwamba hatakuacha kamwe. Mungu mpendwa, asante kwa kuwa huniachi kamwe, hata nyakati za giza na za kutisha. Unisaidie kuamini kwamba uko karibu nami siku zote. Amina.",
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Kumsamehe Mwizi",
+  "body_html": "<blockquote>“Sameheni, nanyi mtasamehewa.” — kutoka Luka 6</blockquote> <p>Punde Hudson aligundua jambo lililomhuzunisha: ni mtumishi wake mwenyewe aliyepanga na kuiba kila kitu alichokuwa nacho huko Uchina — vitu vyenye thamani ya karibu pauni arobaini, kiasi kikubwa sana.</p> <p>Hudson angeweza kumfanya mwizi yule akamatwe na kuadhibiwa. Ingekuwa rahisi, wala hakuna mtu ambaye angemlaumu. Lakini mtumishi huyu alikuwa mtu ambaye Hudson alikuwa amemwombea. Naye Hudson alikumbuka mafundisho ya Yesu — maneno yale yale waliyowahi kusoma pamoja — kuhusu kutolipa ovu kwa ovu.</p> <p>Basi Hudson alifanya uamuzi wa kushangaza. Aliamua kwamba nafsi ya mtu yule ilikuwa ya thamani zaidi sana kuliko rundo la vitu vilivyoibwa. Badala ya kumwadhibu, Hudson alimwandikia mwizi yule barua ya upole, akimsihi atubu na kumtumaini Bwana Yesu.</p> <p>Na huu hapa mwisho mzuri: rafiki mmoja huko Uingereza, aliyefurahi kusikia jinsi Hudson alivyomsamehe mwizi, alimtumia zawadi — hundi ya pauni arobaini kamili, kiasi kile kile alichokuwa amepoteza. Hiyo ilikuwa ya kwanza kati ya zawadi nyingi kutoka kwa rafiki yule.</p> <p>Kumsamehe mtu aliyekuumiza ni moja ya mambo magumu kuliko yote, na ya ujasiri kuliko yote, unayoweza kufanya. Lakini ndivyo Yesu alivyotufanyia, na Mungu huwatunza wale wanaosamehe.</p> <p><em>Mungu mpendwa, mtu anaponiumiza, unisaidie kusamehe kama Yesu anavyonisamehe. Mengine nayaacha mikononi mwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nani aliyeiba kila kitu Hudson alichokuwa nacho huko Uchina?",
+    "answer": "Mtumishi wake mwenyewe, mtu ambaye Hudson alikuwa amemwombea. Vitu vile vilikuwa na thamani ya karibu pauni arobaini."
+   },
+   {
+    "question": "Hudson alifanya nini badala ya kumfanya mwizi aadhibiwe?",
+    "answer": "Alimwandikia mwizi barua ya upole, akimsihi atubu na kumtumaini Bwana Yesu. Baadaye rafiki mmoja alimtumia pauni arobaini kamili."
+   },
+   {
+    "question": "Zungumzeni pamoja: Kwa nini ni vigumu sana kumsamehe mtu aliyekuumiza?",
+    "answer": "Funzo la sura hii: kusamehe ni moja ya mambo magumu kuliko yote, na ya ujasiri kuliko yote, unayoweza kufanya, lakini ndivyo Yesu alivyotufanyia, na Mungu huwatunza wale wanaosamehe."
+   }
+  ],
+  "body_text": "“Sameheni, nanyi mtasamehewa.” — kutoka Luka 6 Punde Hudson aligundua jambo lililomhuzunisha: ni mtumishi wake mwenyewe aliyepanga na kuiba kila kitu alichokuwa nacho huko Uchina — vitu vyenye thamani ya karibu pauni arobaini, kiasi kikubwa sana. Hudson angeweza kumfanya mwizi yule akamatwe na kuadhibiwa. Ingekuwa rahisi, wala hakuna mtu ambaye angemlaumu. Lakini mtumishi huyu alikuwa mtu ambaye Hudson alikuwa amemwombea. Naye Hudson alikumbuka mafundisho ya Yesu — maneno yale yale waliyowahi kusoma pamoja — kuhusu kutolipa ovu kwa ovu. Basi Hudson alifanya uamuzi wa kushangaza. Aliamua kwamba nafsi ya mtu yule ilikuwa ya thamani zaidi sana kuliko rundo la vitu vilivyoibwa. Badala ya kumwadhibu, Hudson alimwandikia mwizi yule barua ya upole, akimsihi atubu na kumtumaini Bwana Yesu. Na huu hapa mwisho mzuri: rafiki mmoja huko Uingereza, aliyefurahi kusikia jinsi Hudson alivyomsamehe mwizi, alimtumia zawadi — hundi ya pauni arobaini kamili, kiasi kile kile alichokuwa amepoteza. Hiyo ilikuwa ya kwanza kati ya zawadi nyingi kutoka kwa rafiki yule. Kumsamehe mtu aliyekuumiza ni moja ya mambo magumu kuliko yote, na ya ujasiri kuliko yote, unayoweza kufanya. Lakini ndivyo Yesu alivyotufanyia, na Mungu huwatunza wale wanaosamehe. Mungu mpendwa, mtu anaponiumiza, unisaidie kusamehe kama Yesu anavyonisamehe. Mengine nayaacha mikononi mwako. Amina.",
+  "word_count": 197
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Sarafu Moja Iliyobaki, na Kikombe cha Kakao",
+  "body_html": "<blockquote>“Bwana atatoa riziki.” — kutoka Mwanzo 22</blockquote> <p>Katika mji wa Ningpo, Hudson na rafiki yake Bwana Jones waliwapa watu maskini wapatao sabini chakula cha asubuhi kila siku. Ukutani kwao kulining'inia vibao viwili vidogo vya kuwakumbusha ni nani aliyelipia yote hayo. Kimoja kilisema, “Bwana ametusaidia njia yote.” Kingine kilisema, “Bwana atatoa riziki.”</p> <p>Asubuhi moja walikuwa wamebakiwa na sarafu moja ndogo sana — yenye thamani ndogo kuliko peni moja. Waliamua kwenda kuuza jiko lao la chuma ili wanunue chakula. Lakini walipotoka, walikuta daraja la kuvuka mto limesombwa na maji usiku! Mashua ndogo ya kuvushia watu iligharimu sarafu mbili, nao walikuwa na moja tu. Basi wakarudi nyumbani mikono mitupu.</p> <p>Nyumbani waligundua kipakiti kidogo cha kakao. Walikichanganya na maji ya moto wakanywa, nacho kikawapa nguvu za kutosha tu kuendelea. Na kisha — walipokuwa bado wamepiga magoti wakiomba — barua ilifika kutoka Uingereza. Ndani yake kulikuwa na fedha, zilizotumwa na rafiki wa mbali ambaye hakujua kabisa jinsi zilivyohitajika sana asubuhi ile ile.</p> <p>Mungu hakuzituma siku moja mapema. Lakini pia hakuzituma dakika moja kwa kuchelewa. “Bwana atatoa riziki” ilithibitika kuwa kweli kabisa.</p> <p>Mungu hutupa tunachohitaji kwa leo, wakati ule ule tunapokihitaji. Wewe pia unaweza kumtumaini kwa ajili ya “riziki yako ya kila siku.”</p> <p><em>Mungu mpendwa, asante kwa kuwa unanipa hasa kile ninachohitaji, kwa wakati wake kamili. Unisaidie kukutumaini siku moja baada ya nyingine. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Hudson na Bwana Jones hawakuweza kuliuza jiko lao?",
+    "answer": "Daraja lilikuwa limesombwa na maji usiku, na mashua ya kuvushia iligharimu sarafu mbili. Walikuwa na moja tu, kwa hiyo wakarudi nyumbani."
+   },
+   {
+    "question": "Nini kilitokea walipokuwa bado wamepiga magoti wakiomba?",
+    "answer": "Barua ilifika kutoka Uingereza ikiwa na fedha, zilizotumwa na rafiki ambaye hakujua kabisa jinsi zilivyohitajika sana asubuhi ile ile."
+   },
+   {
+    "question": "Zungumzeni pamoja: “Bwana atatoa riziki” inamaanisha nini kwa familia yetu leo?",
+    "answer": "Funzo la sura hii: Mungu hutupa tunachohitaji kwa leo, wakati ule ule tunapokihitaji, si mapema mno wala si kwa kuchelewa. Tunaweza kumtumaini siku moja baada ya nyingine."
+   }
+  ],
+  "body_text": "“Bwana atatoa riziki.” — kutoka Mwanzo 22 Katika mji wa Ningpo, Hudson na rafiki yake Bwana Jones waliwapa watu maskini wapatao sabini chakula cha asubuhi kila siku. Ukutani kwao kulining'inia vibao viwili vidogo vya kuwakumbusha ni nani aliyelipia yote hayo. Kimoja kilisema, “Bwana ametusaidia njia yote.” Kingine kilisema, “Bwana atatoa riziki.” Asubuhi moja walikuwa wamebakiwa na sarafu moja ndogo sana — yenye thamani ndogo kuliko peni moja. Waliamua kwenda kuuza jiko lao la chuma ili wanunue chakula. Lakini walipotoka, walikuta daraja la kuvuka mto limesombwa na maji usiku! Mashua ndogo ya kuvushia watu iligharimu sarafu mbili, nao walikuwa na moja tu. Basi wakarudi nyumbani mikono mitupu. Nyumbani waligundua kipakiti kidogo cha kakao. Walikichanganya na maji ya moto wakanywa, nacho kikawapa nguvu za kutosha tu kuendelea. Na kisha — walipokuwa bado wamepiga magoti wakiomba — barua ilifika kutoka Uingereza. Ndani yake kulikuwa na fedha, zilizotumwa na rafiki wa mbali ambaye hakujua kabisa jinsi zilivyohitajika sana asubuhi ile ile. Mungu hakuzituma siku moja mapema. Lakini pia hakuzituma dakika moja kwa kuchelewa. “Bwana atatoa riziki” ilithibitika kuwa kweli kabisa. Mungu hutupa tunachohitaji kwa leo, wakati ule ule tunapokihitaji. Wewe pia unaweza kumtumaini kwa ajili ya “riziki yako ya kila siku.” Mungu mpendwa, asante kwa kuwa unanipa hasa kile ninachohitaji, kwa wakati wake kamili. Unisaidie kukutumaini siku moja baada ya nyingine. Amina.",
+  "word_count": 218
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Maneno Mawili Mchangani",
+  "body_html": "<blockquote>“Basi mwombeni Bwana wa mavuno apeleke watenda kazi katika mavuno yake.” — kutoka Mathayo 9</blockquote> <p>Miaka mingi baadaye, Hudson alikuwa amerudi Uingereza, akiwa amechoka kabisa na hajisikii vizuri. Siku moja alisimama akitazama ramani kubwa sana ya Uchina. Aliwafikiria mamilioni na mamilioni ya watu walioishi ndani kabisa ya nchi, mbali na pwani, ambao hawakuwa wamewahi kusikia habari za Yesu hata mara moja — na moyo wake karibu uvunjike.</p> <p>Hudson alijua kilichohitajika: wafanyakazi zaidi, wengi sana, waende kuwaeleza watu wale habari njema. Lakini aliogopa kumwomba Mungu awatume — kwa sababu kama Mungu angewatuma, Hudson angekuwa na jukumu la kuwatunza wote! Wasiwasi ule ulionekana mkubwa mno.</p> <p>Jumapili moja, katika mji uitwao Brighton, hakuweza tena kutulia kanisani katikati ya watu elfu moja waliostarehe. Basi akatoka peke yake akaenda ufuoni penye mchanga. Pale, mawimbi yakija na kurudi, mwishowe aliacha kuogopa, akamkabidhi Mungu kazi ile yote kubwa mno.</p> <p>Kisha akaomba ombi la ujasiri, lililo wazi kabisa: alimwomba Mungu <strong>wafanyakazi wenzake ishirini na wanne</strong> waende sehemu za Uchina ambazo hazikuwa na mmisionari hata mmoja. Hata aliliandika ombi lake pembeni mwa ukurasa wa Biblia aliyokuwa ameibeba. Kisha akarudi nyumbani, na kwa mara ya kwanza baada ya miezi mingi, moyo wake ulijaa amani.</p> <p>Ombi lile la ufuoni lilikuwa mwanzo wa misheni kubwa ambayo ingewatuma mamia ya wafanyakazi Uchina.</p> <p>Mwishowe unapoacha kuogopa na kumkabidhi Mungu wasiwasi wako mkubwa kuliko yote, yeye hukupa amani — naye anaweza kufanya zaidi ya vile ulivyowahi kuota. Basi usiogope kumwomba mambo makubwa.</p> <p><em>Mungu mpendwa, unisaidie kuacha kuogopa na kukukabidhi wasiwasi wangu mkubwa kuliko yote. Asante kwa kuwa unaweza kufanya mambo makubwa. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Hudson alihuzunika sana alipotazama ramani kubwa ya Uchina?",
+    "answer": "Aliwafikiria mamilioni ya watu walioishi ndani kabisa ya nchi ambao hawakuwa wamewahi kusikia habari za Yesu hata mara moja."
+   },
+   {
+    "question": "Hudson aliomba nini kule ufuoni huko Brighton?",
+    "answer": "Alimkabidhi Mungu kazi ile yote kubwa mno, akaomba wafanyakazi ishirini na wanne kwa ajili ya sehemu za Uchina zisizo na mmisionari. Aliliandika ombi lile pembeni mwa ukurasa wa Biblia yake."
+   },
+   {
+    "question": "Zungumzeni pamoja: Ni wasiwasi gani mkubwa ambao ungeweza kumkabidhi Mungu?",
+    "answer": "Funzo la sura hii: unapoacha kuogopa na kumkabidhi Mungu wasiwasi wako mkubwa kuliko yote, yeye hukupa amani na anaweza kufanya zaidi ya vile ulivyowahi kuota. Usiogope kumwomba mambo makubwa."
+   }
+  ],
+  "body_text": "“Basi mwombeni Bwana wa mavuno apeleke watenda kazi katika mavuno yake.” — kutoka Mathayo 9 Miaka mingi baadaye, Hudson alikuwa amerudi Uingereza, akiwa amechoka kabisa na hajisikii vizuri. Siku moja alisimama akitazama ramani kubwa sana ya Uchina. Aliwafikiria mamilioni na mamilioni ya watu walioishi ndani kabisa ya nchi, mbali na pwani, ambao hawakuwa wamewahi kusikia habari za Yesu hata mara moja — na moyo wake karibu uvunjike. Hudson alijua kilichohitajika: wafanyakazi zaidi, wengi sana, waende kuwaeleza watu wale habari njema. Lakini aliogopa kumwomba Mungu awatume — kwa sababu kama Mungu angewatuma, Hudson angekuwa na jukumu la kuwatunza wote! Wasiwasi ule ulionekana mkubwa mno. Jumapili moja, katika mji uitwao Brighton, hakuweza tena kutulia kanisani katikati ya watu elfu moja waliostarehe. Basi akatoka peke yake akaenda ufuoni penye mchanga. Pale, mawimbi yakija na kurudi, mwishowe aliacha kuogopa, akamkabidhi Mungu kazi ile yote kubwa mno. Kisha akaomba ombi la ujasiri, lililo wazi kabisa: alimwomba Mungu wafanyakazi wenzake ishirini na wanne waende sehemu za Uchina ambazo hazikuwa na mmisionari hata mmoja. Hata aliliandika ombi lake pembeni mwa ukurasa wa Biblia aliyokuwa ameibeba. Kisha akarudi nyumbani, na kwa mara ya kwanza baada ya miezi mingi, moyo wake ulijaa amani. Ombi lile la ufuoni lilikuwa mwanzo wa misheni kubwa ambayo ingewatuma mamia ya wafanyakazi Uchina. Mwishowe unapoacha kuogopa na kumkabidhi Mungu wasiwasi wako mkubwa kuliko yote, yeye hukupa amani — naye anaweza kufanya zaidi ya vile ulivyowahi kuota. Basi usiogope kumwomba mambo makubwa. Mungu mpendwa, unisaidie kuacha kuogopa na kukukabidhi wasiwasi wangu mkubwa kuliko yote. Asante kwa kuwa unaweza kufanya mambo makubwa. Amina.",
+  "word_count": 257
+ }
+}
+]

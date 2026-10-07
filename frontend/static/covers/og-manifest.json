@@ -10320,6 +10320,16 @@
 				484
 			]
 		},
+		"sw/a-retrospect-children": {
+			"ground": "ff7018b7f304e78db2b7be55a1a140d1007cb3e5d78c12cf963dedeee11770f0",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
 			"style": "devotional",
