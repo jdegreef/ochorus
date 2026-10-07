@@ -2128,6 +2128,16 @@
 				518
 			]
 		},
+		"anchored-1": {
+			"ground": "2ded8c5d05b8af6fc3895fc121e4f09f8fdec2d017d7e34028487c7766afc358",
+			"style": "originals",
+			"volume": "1",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"answers-to-prayer": {
 			"ground": "eea397da9a1340cccc9ed01bd4d174bcfa0db47a0da4fc6676220efe11d644ca",
 			"style": "revival",
