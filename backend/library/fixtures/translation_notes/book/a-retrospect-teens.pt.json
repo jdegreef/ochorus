@@ -3,7 +3,7 @@
  "slug": "a-retrospect-teens",
  "language": "pt",
  "job_issue": 5457,
- "pull_request": null,
+ "pull_request": 5525,
  "note": [
   "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into Portuguese, and the language's Bible (porbrbsl, Bíblia Livre — Almeida tradition) was unreachable from the worker session (api.takeroot.bible egress-blocked), so every epigraph was rendered in the Almeida register the shipped pt corpus quotes and the “(ESV)” label was dropped. Where a shipped *.pt.json carries the words verbatim they were pasted and the row is `mined` with that file; otherwise the row is `self_rendered` in the Almeida register and needs a check against porbrbsl.",
   "Mined epigraphs: Luke 18:1, Philippians 4:19, Psalm 118:17 and Matthew 18:19 (whole verse). Mined fragments in the body: Matthew 5:42a, John 3:16a, Isaiah 53:3a, Matthew 5:39a, Romans 13:8a, Matthew 6:11. Matthew 9:37–38 keeps women-who-moved-heaven-2.pt's words of Jesus but adds the ESV's narrative frame (“Então disse aos seus discípulos”), so it ships `self_rendered`; John 19:30, Proverbs 19:17, Psalm 107:29, 1 Corinthians 9:22, Matthew 8:20, Romans 12:21 and Psalm 34:10 are self-rendered outright (the corpus has none of them whole).",
