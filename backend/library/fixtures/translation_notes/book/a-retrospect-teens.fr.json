@@ -3,7 +3,7 @@
  "slug": "a-retrospect-teens",
  "language": "fr",
  "job_issue": 5458,
- "pull_request": null,
+ "pull_request": 5510,
  "note": [
   "The English teen edition quotes the ESV in each chapter's epigraph. ESV wording cannot be carried into French, so every epigraph is the whole verse verbatim from Louis Segond (1910) (fra_lsg, public domain; checked against the ebible USFM mirror), and the “(ESV)” label was dropped. The only change to Segond's text is French typographic spacing before : and ; (« dit : Tout est accompli »).",
   "Psalm 34:10 (English numbering) is Psaume 34:11 in Segond; the epigraph cites « Psaume 34:11 » so a French reader finds it in their Bible, and the row keeps the English reference.",
