@@ -2,8 +2,9 @@
 //
 // The flat dark bars along the edges of each painted ground, as the deepest
 // bar's fraction of its side. A laid-out cover crops just past them; the framed
-// composition's scrim already hides them. `groundBars.test.ts` fails when this
-// no longer matches the files: run `npm run covers:bars`.
+// composition's scrim already hides them. And the grounds too pale to wash the
+// home hero (PALE_GROUNDS). `groundBars.test.ts` fails when this no longer
+// matches the files: run `npm run covers:bars`.
 
 export const GROUND_BARS: Record<string, number> = {
 	'a-hidden-fire': 0.110,
@@ -38,4 +39,28 @@ export const GROUND_BARS: Record<string, number> = {
 export function groundBar(coverUrl: string | null | undefined): number {
 	const m = /^\/covers\/art\/([^/]+)\.jpg$/.exec(coverUrl ?? '');
 	return (m && GROUND_BARS[m[1]]) || 0;
+}
+
+// The grounds too pale to blur across the home hero's band (mean grey over
+// 0.78): blurred under its scrim they read as mud, so the hero paints the
+// reader's tint instead.
+export const PALE_GROUNDS: ReadonlySet<string> = new Set([
+	'daughters-of-the-king-1',
+	'daughters-of-the-king-2',
+	'daughters-of-the-king-3',
+	'soar-like-the-eagle-3',
+	'sons-of-the-king-1',
+	'sons-of-the-king-2',
+	'sons-of-the-king-3',
+	'the-god-of-all-comfort',
+	'the-key-in-my-hand',
+	'the-person-and-work-of-the-holy-spirit'
+]);
+
+/** Whether a painted ground's url (full or a -320/-640 variant) is pale. The
+ *  slug is read as `heroArt.artSlug` reads it — inlined, not imported: build
+ *  scripts load this file under bare Node (nodeLoadable.test.ts). */
+export function isPaleGround(url: string | null | undefined): boolean {
+	const slug = (url ?? '').match(/^\/covers\/art\/([a-z0-9-]+?)(?:-(?:320|640))?\.(?:webp|jpe?g|png)$/)?.[1];
+	return !!slug && PALE_GROUNDS.has(slug);
 }

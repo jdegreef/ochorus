@@ -19,7 +19,7 @@
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
 	import { offerFinish, unmarkFinished } from '$lib/progress';
-	import type { ResumeItem } from '$lib/resumeItems';
+	import { chapterMeter, type ResumeItem } from '$lib/resumeItems';
 	import { sermonCoverFace } from '$lib/sermonArt';
 
 	/**
@@ -57,7 +57,7 @@
 				: t('search.typeSermon');
 		}
 		if (complete) return `${t('settings.statFinished')} · ${item.order} / ${item.chapterCount}`;
-		return `${t('continue.chapter')} ${item.order} / ${item.chapterCount} · ${item.pct}%`;
+		return chapterMeter(item.order, item.chapterCount, item.pct);
 	});
 </script>
 

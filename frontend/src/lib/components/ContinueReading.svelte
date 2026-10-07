@@ -3,16 +3,14 @@
 	import { listSermons, type CoverBook, type SermonSummary } from '$lib/library-public';
 	import {
 		cachedResumeBooks,
-		currentBookSlug,
 		knownAbsent,
 		libraryBooks,
 		recordSermonList,
 		unfinishedBookSlugs
 	} from '$lib/resumeBooks';
 	import { workSlugKey } from '$lib/reading-schema';
-	import type { ResumeItem } from '$lib/resumeItems';
 	import { allProgress } from '$lib/progress';
-	import { buildResumeItems } from '$lib/resumeItems';
+	import { buildResumeItems, type ResumeItem } from '$lib/resumeItems';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import WorkCard, { placeholder } from '$lib/components/WorkCard.svelte';
@@ -40,12 +38,12 @@
 	 */
 	let {
 		limit = 4,
-		besideHero = false
+		exclude
 	}: {
 		limit?: number;
-		/** Under the signed-in HomeHero, which already offers the current book
-		 * (`currentBookSlug`): leave it out rather than show it twice. */
-		besideHero?: boolean;
+		/** A work key (`workSlugKey`) to leave out — the book the home hero
+		 * already offers, so it isn't shown twice. */
+		exclude?: string;
 	} = $props();
 
 	const t = i18n.t;
@@ -109,7 +107,7 @@
 	// shelf, so the strip drops it before taking its head.
 	const drawable = $derived.by(() => {
 		void ticks;
-		return buildResumeItems(bookList, sermonList ?? []).filter((i) => !i.finished);
+		return buildResumeItems(bookList, sermonList ?? []).filter((i) => !i.finished && i.key !== exclude);
 	});
 
 	type Slot = { key: string; item: ResumeItem } | { key: string; pending: 'book' | 'sermon' };
@@ -118,33 +116,20 @@
 	// works. While a list is still coming, they are the first `limit` unfinished
 	// works IN RECENCY ORDER, each either drawn or held by a placeholder in its
 	// own place — the strip is its final height, and its final order, from mount.
-	const skip = $derived.by(() => {
-		void ticks;
-		const slug = besideHero ? currentBookSlug(absent) : null;
-		return slug ? workSlugKey('book', slug) : null;
-	});
 	const slots = $derived.by<Slot[]>(() => {
 		void ticks;
 		if (!loadingBooks && !loadingSermons) {
-			return drawable
-				.filter((i) => i.key !== skip)
-				.slice(0, limit)
-				.map((item) => ({ key: item.key, item }));
+			return drawable.slice(0, limit).map((item) => ({ key: item.key, item }));
 		}
 		const byKey = new Map(drawable.map((i) => [i.key, i]));
 		return allProgress()
-			.filter(
-				(p) =>
-					p.finished_at == null &&
-					(p.kind === 'book' || p.kind === 'sermon') &&
-					!absent.has(workSlugKey(p.kind, p.slug)) &&
-					workSlugKey(p.kind, p.slug) !== skip
-			)
+			.filter((p) => p.finished_at == null && (p.kind === 'book' || p.kind === 'sermon'))
+			.map((p) => ({ kind: p.kind as 'book' | 'sermon', key: workSlugKey(p.kind, p.slug) }))
+			.filter(({ key }) => !absent.has(key) && key !== exclude)
 			.slice(0, limit)
-			.map((p) => {
-				const key = workSlugKey(p.kind, p.slug);
+			.map(({ kind, key }) => {
 				const item = byKey.get(key);
-				return item ? { key, item } : { key, pending: p.kind as 'book' | 'sermon' };
+				return item ? { key, item } : { key, pending: kind };
 			});
 	});
 	const busy = $derived(slots.some((s) => 'pending' in s));
