@@ -3,7 +3,7 @@
  "slug": "the-life-of-trust-teens",
  "language": "pt",
  "job_issue": 5461,
- "pull_request": null,
+ "pull_request": 5517,
  "note": [
   "api.takeroot.bible was egress-blocked from this session, so no Bíblia Livre text was fetched. Isaiah 65:24 is mined verbatim from cheque-book.pt.json. Three more epigraphs take their wording verbatim from shipped pt ARTICLES — Luke 15:20b (what-is-repentance), Zechariah 4:6 (what-was-the-great-awakening), Mark 1:35 (the-morning-watch) — but audit_mined_notes only checks books/sermons, so they are recorded as self_rendered for the reviewer to confirm. Every other quotation is self_rendered in the Almeida tradition with modern 'vocês', matching the edition's teen register and the shipped pt children's edition. The English's version labels ((WEB)/(ESV)) are dropped, as in the pt children's and am teens editions.",
   "Luke 15:20b: the English epigraph quotes the whole verse; the pt quotes only its second half (the father running to meet the son), rather than splice a self-rendered first clause onto borrowed wording.",
