@@ -11480,6 +11480,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"sw/the-life-of-trust-children": {
+			"ground": "717addad21eb6e9fe611715755509661f61fd75b3dd5f3e5af2238e9ded02935",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"sw/the-masters-indwelling": {
 			"ground": "32d6dc5d1e047b10968d86db3355ba626d9408e91995d39c3bd34e14fa40bd1c",
 			"style": "devotional",

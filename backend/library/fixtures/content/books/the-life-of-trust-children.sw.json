@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "sw",
+  "title": "Maisha ya Kumtumaini Mungu (Kwa Watoto)",
+  "subtitle": "",
+  "description": "George Müller aliwatunza maelfu ya yatima huko Uingereza, na alifanya hivyo bila kumwomba mtu yeyote isipokuwa Mungu pesa, chakula na msaada aliohitaji — na kwa kuomba. Toleo hili la watoto linasimulia upya hadithi ya kweli ya maisha yake katika sura fupi zilizoandaliwa ili zisomwe kwa sauti: mstari wa Biblia, hadithi ya ombi ambalo Mungu alilijibu, jambo moja linalokuhusu wewe, na sala fupi.",
+  "qa": [
+   {
+    "question": "Kitabu Maisha ya Kumtumaini Mungu (Kwa Watoto) kinahusu nini?",
+    "answer": "Ni toleo la watoto la hadithi ya maisha ya George Müller mwenyewe. Müller aliwatunza maelfu ya watoto yatima huko Uingereza, na badala ya kuwaomba watu pesa alimwomba Mungu — na Mungu akawapa mahitaji yao tena na tena. Kila sura fupi inasimulia hadithi moja ya kweli ya ombi ambalo Mungu alilijibu."
+   },
+   {
+    "question": "George Müller alikuwa nani?",
+    "answer": "Alikuwa mtu aliyeishi Uingereza zamani sana na kujenga nyumba zilizowatunza maelfu ya yatima — watoto wasio na mama wala baba. Aliamua kutomwomba mtu yeyote isipokuwa Mungu kile watoto walichohitaji, na aliandika jinsi Mungu alivyojibu maombi yake ili wengine nao wamtumaini Mungu."
+   },
+   {
+    "question": "Kila sura imepangwaje?",
+    "answer": "Kila sura ni fupi na imeandaliwa ili isomwe kwa sauti. Inaanza na mstari wa Biblia, inasimulia hadithi ya kweli kutoka katika maisha ya George Müller, inaonyesha jambo moja rahisi linalokuhusu wewe, na inamalizika kwa sala fupi."
+   },
+   {
+    "question": "Kitabu hiki ni cha nani?",
+    "answer": "Ni cha watoto — kisomwe kwa sauti na mtu mzima, au kisomwe na mtoto mkubwa peke yake. Kitabu kamili cha George Müller, Maisha ya Kumtumaini Mungu, kinapatikana pia kwa wasomaji wakubwa."
+   },
+   {
+    "question": "Kitabu kinafundisha jambo gani kuu?",
+    "answer": "Kwamba Mungu husikia na kujibu maombi, na kwamba tunaweza kumtumaini atupe kile tunachohitaji kweli. Maisha ya George Müller ni hadithi moja ndefu ya kweli ya kumwomba Mungu msaada na kumtazama Mungu akitoa, ili watoto nao wajifunze kumtumaini."
+   },
+   {
+    "question": "Je, hadithi hizi ni za kweli?",
+    "answer": "Ndiyo. Zimesimuliwa upya kwa urahisi kwa ajili ya watoto, lakini zinatoka katika maelezo ya George Müller mwenyewe kuhusu maisha yake — nyumba halisi za yatima alizojenga na maombi halisi ambayo Mungu alijibu, aliyoyaandika kadiri yalivyotokea."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi mpya wa Ochorus, kwa wasomaji wadogo, wa kitabu cha George Müller Maisha ya Kumtumaini Mungu, ambacho ni mali ya umma. Usimulizi huu ni wetu wenyewe, ni bure kusoma na kushiriki na wengine.",
+  "cover_url": "/covers/art/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Sarafu Ndani ya Kiatu",
+  "body_html": "<blockquote>“Sisi sote kama kondoo tumepotea.” — kutoka Isaya 53</blockquote> <p>Je, utaamini kwamba mtu aliyewatunza maelfu ya yatima alikuwa mwizi alipokuwa mvulana? Ni kweli. Jina lake lilikuwa George Müller, na alipokuwa mdogo hakuwa mwema hata kidogo.</p> <p>George alipenda kuchukua pesa ambazo hazikuwa zake. Siku moja baba yake alitaka kujua kama George amekuwa akiiba. Basi akahesabu pesa kiasi, akaziacha chumbani, akaondoka, ili aone kama zingine zingepotea.</p> <p>George aliachwa peke yake na zile pesa. Na alifanya nini? Alichukua kiasi — na akaficha sarafu moja chini ya mguu wake, ndani ya kiatu chake! Lakini baba yake aliporudi na kuhesabu, pesa zilikuwa zimepungua. Wakampekua George, na pale ndipo ilipokuwa ile sarafu, imejificha ndani ya kiatu chake.</p> <p>George hakuishia hapo. Alipokuwa akikua alisema uongo, na kutumia pesa ambazo hakuwa nazo, mpaka siku moja, alipokuwa na umri wa miaka kumi na sita, hata akatiwa gerezani kwa muda.</p> <p>Sasa, kwa nini hadithi yake ya kweli inaanza na mambo yote mabaya aliyoyafanya? Kwa sababu inafanya sehemu iliyobaki iwe ya ajabu sana. Mungu hakuwa amemaliza kazi yake kwa George. Mungu anaweza kumchukua mvulana anayesema uongo na kuiba na kumbadilisha kabisa — na siku moja kumtumia kuwasaidia watoto wengi kuliko George angeweza kuhesabu.</p> <p>Kwa hiyo kama umefanya mambo mabaya, usifikiri kamwe kwamba wewe ni mbaya mno kwa Mungu. Hakuna aliye hivyo. Mungu anapenda kubadilisha mioyo.</p> <p><em>Mungu mpendwa, asante kwa sababu unaweza kumbadilisha mtu yeyote, hata mimi. Tafadhali ufanye moyo wangu uwe mwema na safi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George mdogo aliificha wapi ile sarafu aliyomchukulia baba yake?",
+    "answer": "Aliificha chini ya mguu wake, ndani ya kiatu chake. Baba yake alipohesabu pesa na kumpekua, sarafu ilipatikana pale."
+   },
+   {
+    "question": "Kwa nini hadithi ya George inaanza na mambo yote mabaya aliyoyafanya?",
+    "answer": "Kwa sababu inafanya sehemu iliyobaki iwe ya ajabu sana: Mungu hakuwa amemaliza kazi yake kwa George, na Mungu anaweza kumbadilisha kabisa mvulana anayesema uongo na kuiba."
+   },
+   {
+    "question": "Je, umewahi kujiona mtukutu mno kiasi kwamba Mungu hawezi kukupenda? Hadithi ya George inasema nini kuhusu hilo?",
+    "answer": "Wazo la sura hii: hakuna aliye mbaya mno kwa Mungu. Mungu anapenda kubadilisha mioyo, na anaweza kuifanya mioyo yetu iwe myema na safi."
+   }
+  ],
+  "body_text": "“Sisi sote kama kondoo tumepotea.” — kutoka Isaya 53 Je, utaamini kwamba mtu aliyewatunza maelfu ya yatima alikuwa mwizi alipokuwa mvulana? Ni kweli. Jina lake lilikuwa George Müller, na alipokuwa mdogo hakuwa mwema hata kidogo. George alipenda kuchukua pesa ambazo hazikuwa zake. Siku moja baba yake alitaka kujua kama George amekuwa akiiba. Basi akahesabu pesa kiasi, akaziacha chumbani, akaondoka, ili aone kama zingine zingepotea. George aliachwa peke yake na zile pesa. Na alifanya nini? Alichukua kiasi — na akaficha sarafu moja chini ya mguu wake, ndani ya kiatu chake! Lakini baba yake aliporudi na kuhesabu, pesa zilikuwa zimepungua. Wakampekua George, na pale ndipo ilipokuwa ile sarafu, imejificha ndani ya kiatu chake. George hakuishia hapo. Alipokuwa akikua alisema uongo, na kutumia pesa ambazo hakuwa nazo, mpaka siku moja, alipokuwa na umri wa miaka kumi na sita, hata akatiwa gerezani kwa muda. Sasa, kwa nini hadithi yake ya kweli inaanza na mambo yote mabaya aliyoyafanya? Kwa sababu inafanya sehemu iliyobaki iwe ya ajabu sana. Mungu hakuwa amemaliza kazi yake kwa George. Mungu anaweza kumchukua mvulana anayesema uongo na kuiba na kumbadilisha kabisa — na siku moja kumtumia kuwasaidia watoto wengi kuliko George angeweza kuhesabu. Kwa hiyo kama umefanya mambo mabaya, usifikiri kamwe kwamba wewe ni mbaya mno kwa Mungu. Hakuna aliye hivyo. Mungu anapenda kubadilisha mioyo. Mungu mpendwa, asante kwa sababu unaweza kumbadilisha mtu yeyote, hata mimi. Tafadhali ufanye moyo wangu uwe mwema na safi. Amina.",
+  "word_count": 234
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Mlango Ulio Wazi",
+  "body_html": "<blockquote>“Alipokuwa bado yu mbali, baba yake alimwona, akakimbia kwake.” — kutoka Luka 15</blockquote> <p>Jumamosi moja jioni, George alipokuwa kijana, rafiki yake alimpeleka kwenye nyumba ambamo Wakristo kadhaa walikuwa wamekutana. George aliona haya. Hakuwahi kufika mahali kama pale.</p> <p>Ndani, watu walisoma Biblia pamoja, wakaimba, kisha jambo moja likatokea ambalo George hakulisahau kamwe. Mtu mmoja alipiga magoti ili kuomba. George hakuwahi kumwona mtu yeyote akipiga magoti kuomba — yeye mwenyewe hakuwahi hata kuomba akiwa amepiga magoti. Jambo hilo lilimgusa sana ndani ya moyo wake.</p> <p>Yule mtu mwema, mwenye nyumba ile, aliona kwamba George alijisikia mgeni. Basi akasema jambo zuri kuliko yote: “Njoo mara nyingi kadiri unavyopenda. Nyumba yangu na moyo wangu viko wazi kwako.”</p> <p>George alirudi nyumbani usiku ule — na badala ya kujisikia mtupu na bila raha kama kawaida yake, alilala kitandani mwake akiwa na amani na furaha. Jambo jipya kabisa lilikuwa limeanza ndani yake. Baadaye alisema huo ndio ulikuwa mwanzo wa badiliko kubwa la maisha yake yote. Huo ndio usiku George aliporudi nyumbani kwa Mungu.</p> <p>Mungu yuko kama yule mtu mwema mlangoni, ila ni mwema zaidi sana, sana. Hata kama umepotea mbali kiasi gani kutoka kwake, moyo wake uko wazi kwako. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kuja.</p> <p><em>Mungu mpendwa, asante kwa sababu moyo wako uko wazi kwangu siku zote. Nataka kuja kwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George aliona nini katika nyumba ya wale Wakristo ambacho hakuwahi kukiona hapo kabla?",
+    "answer": "Mtu mmoja alipiga magoti ili kuomba. George hakuwahi kumwona mtu yeyote akipiga magoti kuomba, na jambo hilo lilimgusa sana moyoni."
+   },
+   {
+    "question": "Mwenye nyumba alimwambia George maneno gani ya upendo?",
+    "answer": "Alisema, “Njoo mara nyingi kadiri unavyopenda. Nyumba yangu na moyo wangu viko wazi kwako.” George alirudi nyumbani akiwa na amani na furaha."
+   },
+   {
+    "question": "Je, ni lazima uwe mwema vya kutosha kwanza ndipo uweze kuja kwa Mungu?",
+    "answer": "Wazo la sura hii: Mungu yuko kama yule mtu mwema mlangoni, ila ni mwema zaidi sana. Moyo wake uko wazi kwako, na unahitaji tu kuja."
+   }
+  ],
+  "body_text": "“Alipokuwa bado yu mbali, baba yake alimwona, akakimbia kwake.” — kutoka Luka 15 Jumamosi moja jioni, George alipokuwa kijana, rafiki yake alimpeleka kwenye nyumba ambamo Wakristo kadhaa walikuwa wamekutana. George aliona haya. Hakuwahi kufika mahali kama pale. Ndani, watu walisoma Biblia pamoja, wakaimba, kisha jambo moja likatokea ambalo George hakulisahau kamwe. Mtu mmoja alipiga magoti ili kuomba. George hakuwahi kumwona mtu yeyote akipiga magoti kuomba — yeye mwenyewe hakuwahi hata kuomba akiwa amepiga magoti. Jambo hilo lilimgusa sana ndani ya moyo wake. Yule mtu mwema, mwenye nyumba ile, aliona kwamba George alijisikia mgeni. Basi akasema jambo zuri kuliko yote: “Njoo mara nyingi kadiri unavyopenda. Nyumba yangu na moyo wangu viko wazi kwako.” George alirudi nyumbani usiku ule — na badala ya kujisikia mtupu na bila raha kama kawaida yake, alilala kitandani mwake akiwa na amani na furaha. Jambo jipya kabisa lilikuwa limeanza ndani yake. Baadaye alisema huo ndio ulikuwa mwanzo wa badiliko kubwa la maisha yake yote. Huo ndio usiku George aliporudi nyumbani kwa Mungu. Mungu yuko kama yule mtu mwema mlangoni, ila ni mwema zaidi sana, sana. Hata kama umepotea mbali kiasi gani kutoka kwake, moyo wake uko wazi kwako. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kuja. Mungu mpendwa, asante kwa sababu moyo wako uko wazi kwangu siku zote. Nataka kuja kwako. Amina.",
+  "word_count": 216
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Maombi Yaliyowaliza Marafiki Zake",
+  "body_html": "<blockquote>“Ombeaneni.” — kutoka Yakobo 5</blockquote> <p>Sasa kwa kuwa George alikuwa na furaha kubwa kwa kumjua Mungu, alitaka marafiki zake nao wawe na furaha. Basi akawasimulia marafiki zake wawili wa zamani habari zote.</p> <p>Lakini wao waliinua mabega tu. “Hatujisikii kwamba sisi ni wenye dhambi,” walisema. “Hatujisikii kwamba tumefanya jambo lolote linalohitaji kusamehewa.”</p> <p>George angefanya nini? Hakuweza kuwafanya waone. Basi akafanya jambo pekee alilofikiria — aliomba. Papo hapo, alipiga magoti na kumwomba Mungu awaonyeshe marafiki zake wawili ukweli kuhusu mioyo yao wenyewe. Kisha akaenda chumbani mwake akaendelea kuwaombea.</p> <p>Na George aliporudi — marafiki zake wawili walikuwa wakilia. Wote wawili! Mungu alikuwa amefanya kile ambacho George hakuweza kufanya. Walimwambia kwamba sasa walijua kuwa wao ni wenye dhambi, na kwamba wao pia walimhitaji Mungu.</p> <p>George alikuwa akijifunza jambo ambalo angelitumia maisha yake yote: <strong>tusipoweza kubadilisha jambo sisi wenyewe, tunaweza kuomba, na Mungu anaweza.</strong></p> <p>Je, kuna mtu ambaye ungetamani amjue Mungu — rafiki, kaka au dada, mtu fulani katika familia yako? Huhitaji kumlazimisha aamini. Unaweza kufanya kama George alivyofanya. Unaweza kumwombea, na kumwachia Mungu mambo yaliyobaki.</p> <p><em>Mungu mpendwa, tafadhali wasaidie watu ninaowapenda wakujue. Mimi siwezi, lakini wewe unaweza. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Marafiki wawili wa George walisema nini alipowasimulia habari za Mungu?",
+    "answer": "Waliinua mabega na kusema kwamba hawajisikii kuwa wenye dhambi wala kwamba wamefanya jambo lolote linalohitaji kusamehewa."
+   },
+   {
+    "question": "George alifanya nini aliposhindwa kuwafanya marafiki zake waelewe?",
+    "answer": "Alipiga magoti akawaombea, kisha akaendelea kuomba chumbani mwake. Aliporudi, marafiki wote wawili walikuwa wakilia na kusema kwamba wao pia walimhitaji Mungu."
+   },
+   {
+    "question": "Je, kuna mtu ambaye ungetamani amjue Mungu? Tunaweza kumfanyia nini?",
+    "answer": "Wazo la sura hii: hatuhitaji kumlazimisha mtu yeyote aamini. Tusipoweza kubadilisha jambo sisi wenyewe, tunaweza kuomba, na Mungu anaweza."
+   }
+  ],
+  "body_text": "“Ombeaneni.” — kutoka Yakobo 5 Sasa kwa kuwa George alikuwa na furaha kubwa kwa kumjua Mungu, alitaka marafiki zake nao wawe na furaha. Basi akawasimulia marafiki zake wawili wa zamani habari zote. Lakini wao waliinua mabega tu. “Hatujisikii kwamba sisi ni wenye dhambi,” walisema. “Hatujisikii kwamba tumefanya jambo lolote linalohitaji kusamehewa.” George angefanya nini? Hakuweza kuwafanya waone. Basi akafanya jambo pekee alilofikiria — aliomba. Papo hapo, alipiga magoti na kumwomba Mungu awaonyeshe marafiki zake wawili ukweli kuhusu mioyo yao wenyewe. Kisha akaenda chumbani mwake akaendelea kuwaombea. Na George aliporudi — marafiki zake wawili walikuwa wakilia. Wote wawili! Mungu alikuwa amefanya kile ambacho George hakuweza kufanya. Walimwambia kwamba sasa walijua kuwa wao ni wenye dhambi, na kwamba wao pia walimhitaji Mungu. George alikuwa akijifunza jambo ambalo angelitumia maisha yake yote: tusipoweza kubadilisha jambo sisi wenyewe, tunaweza kuomba, na Mungu anaweza. Je, kuna mtu ambaye ungetamani amjue Mungu — rafiki, kaka au dada, mtu fulani katika familia yako? Huhitaji kumlazimisha aamini. Unaweza kufanya kama George alivyofanya. Unaweza kumwombea, na kumwachia Mungu mambo yaliyobaki. Mungu mpendwa, tafadhali wasaidie watu ninaowapenda wakujue. Mimi siwezi, lakini wewe unaweza. Amina.",
+  "word_count": 184
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Hakuna Mshahara Tena, Ni Mungu Tu",
+  "body_html": "<blockquote>“Mungu wangu atawajaza kila mnachohitaji.” — kutoka Wafilipi 4</blockquote> <p>George alipokuwa mtu mzima akawa mhubiri, na kanisa likamlipa mshahara, kama kazi nyingine. Lakini George alikuwa na wazo lisilo la kawaida. Aliamua kuacha kabisa kupokea mshahara!</p> <p>Badala yake, angemtumaini Mungu ampe mahitaji yake. Aliweka kisanduku kidogo ukutani mwa kanisa, ili yeyote anayetaka atoe — lakini aliweka sheria imara: hatamwomba mtu hata mmoja pesa kamwe. Angemwomba <em>Mungu</em> peke yake. Kama ana hitaji, angemwambia Mungu habari zake, na si mtu mwingine yeyote.</p> <p>Inaogopesha kidogo, sivyo? Na punde si punde siku moja jambo hilo lilijaribiwa. George na mke wake walikuwa karibu kuishiwa pesa kabisa — zilibaki sarafu chache tu. Basi wakafanya kile walichoahidi: walipiga magoti wakamwambia Mungu.</p> <p>Saa chache baadaye, mwanamke mmoja alifika mlangoni kwao akauliza, “Je, mnahitaji pesa?” Akawapa kiasi — na hii ndiyo sehemu ya ajabu. Alisema Mungu alikuwa ameweka moyoni mwake kuzitoa wiki mbili kabla! Mungu alikuwa ameanza kujibu kabla George hajaomba hata kidogo. Na George hakuwahi kumwambia kwamba walikuwa na shida. Mungu peke yake ndiye aliyejua.</p> <p>Mungu anajua hasa kile unachohitaji hata kabla hujamwomba. Unaweza kumwambia jambo lolote, na kumtumaini akutunze.</p> <p><em>Mungu mpendwa, asante kwa sababu tayari unajua ninachohitaji. Nisaidie nikutumaini na kukuambia kila kitu. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George alikuwa na sheria gani imara kuhusu pesa baada ya kuacha kupokea mshahara?",
+    "answer": "Hatamwomba mtu hata mmoja pesa kamwe. Angemwomba Mungu peke yake na kutomwambia mtu mwingine yeyote mahitaji yake."
+   },
+   {
+    "question": "Kwa nini ilikuwa ajabu sana yule mwanamke alipofika mlangoni na pesa?",
+    "answer": "Alisema Mungu alikuwa ameweka moyoni mwake kuzitoa wiki mbili kabla, kwa hiyo Mungu alianza kujibu kabla George hajaomba hata kidogo. George hakuwahi kumwambia kuhusu shida yao."
+   },
+   {
+    "question": "Ni mambo gani ungeweza kumwambia Mungu leo?",
+    "answer": "Wazo la sura hii: Mungu anajua hasa kile unachohitaji kabla hujaomba. Unaweza kumwambia jambo lolote na kumtumaini akutunze."
+   }
+  ],
+  "body_text": "“Mungu wangu atawajaza kila mnachohitaji.” — kutoka Wafilipi 4 George alipokuwa mtu mzima akawa mhubiri, na kanisa likamlipa mshahara, kama kazi nyingine. Lakini George alikuwa na wazo lisilo la kawaida. Aliamua kuacha kabisa kupokea mshahara! Badala yake, angemtumaini Mungu ampe mahitaji yake. Aliweka kisanduku kidogo ukutani mwa kanisa, ili yeyote anayetaka atoe — lakini aliweka sheria imara: hatamwomba mtu hata mmoja pesa kamwe. Angemwomba Mungu peke yake. Kama ana hitaji, angemwambia Mungu habari zake, na si mtu mwingine yeyote. Inaogopesha kidogo, sivyo? Na punde si punde siku moja jambo hilo lilijaribiwa. George na mke wake walikuwa karibu kuishiwa pesa kabisa — zilibaki sarafu chache tu. Basi wakafanya kile walichoahidi: walipiga magoti wakamwambia Mungu. Saa chache baadaye, mwanamke mmoja alifika mlangoni kwao akauliza, “Je, mnahitaji pesa?” Akawapa kiasi — na hii ndiyo sehemu ya ajabu. Alisema Mungu alikuwa ameweka moyoni mwake kuzitoa wiki mbili kabla! Mungu alikuwa ameanza kujibu kabla George hajaomba hata kidogo. Na George hakuwahi kumwambia kwamba walikuwa na shida. Mungu peke yake ndiye aliyejua. Mungu anajua hasa kile unachohitaji hata kabla hujamwomba. Unaweza kumwambia jambo lolote, na kumtumaini akutunze. Mungu mpendwa, asante kwa sababu tayari unajua ninachohitaji. Nisaidie nikutumaini na kukuambia kila kitu. Amina.",
+  "word_count": 196
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Mtu Agonga Mlango",
+  "body_html": "<blockquote>“Utupe leo riziki yetu.” — kutoka Mathayo 6</blockquote> <p>Jumapili moja, George na mke wake walikuwa wamebakiwa na senti chache za mwisho kabisa. Mkate uliokuwa nyumbani ulitosha kwa siku ile moja tu, na hapakuwa na pesa za kununua mwingine kwa ajili ya jioni.</p> <p>Basi George akaomba. Hakuomba sala ndefu ya maneno makubwa. Alimwomba Mungu, kwa urahisi kabisa, awaletee mkate kwa ajili ya jioni ile — mkate halisi, wa kuweka mezani, siku ile ile.</p> <p>Na sikiliza kilichotokea. <strong>George alipokuwa bado anaomba</strong> — kabla hajamaliza hata — mtu aligonga mlango!</p> <p>Mwanamke maskini alikuwa amesimama pale. Alikuwa ameleta sehemu ya chakula chake mwenyewe cha mchana ili wagawane, na pesa kidogo kutoka kwa rafiki mwingine maskini. Na baadaye mchana ule ule, alirudi tena, safari hii akiwa amebeba mkate mkubwa.</p> <p>Mungu alikuwa amesikia. Kwa kweli, Mungu alikuwa amemtuma yule mwanamke njiani na mkate kabla George hajamaliza kuomba. Jibu lilikuwa tayari linakuja alipokuwa bado amepiga magoti.</p> <p>Yesu alipotufundisha kuomba, alituambia tuombe “riziki yetu” — yaani vitu tunavyohitaji kila siku. George alilichukulia jambo hilo kwa uzito, na Mungu akamtunza. Wewe pia unaweza kumwomba Mungu vitu vya kawaida unavyohitaji. Anajali yote hayo, hata mkate wa chakula cha jioni.</p> <p><em>Mungu mpendwa, asante kwa sababu unajali hata mambo madogo ya kila siku. Tafadhali unipe ninachohitaji leo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George alimwomba Mungu kitu gani rahisi Jumapili ile?",
+    "answer": "Alimwomba Mungu awaletee mkate kwa ajili ya jioni ile, kwa sababu mkate uliokuwa nyumbani ulitosha kwa siku ile tu na hapakuwa na pesa za kununua mwingine."
+   },
+   {
+    "question": "Nini kilitokea George alipokuwa bado anaomba?",
+    "answer": "Mtu aligonga mlango. Mwanamke maskini alileta sehemu ya chakula chake na pesa kidogo, na baadaye akarudi na mkate mkubwa."
+   },
+   {
+    "question": "Je, Mungu anajali mambo ya kawaida kama chakula chetu cha jioni? Ungeweza kumwomba nini?",
+    "answer": "Wazo la sura hii: Yesu alitufundisha kuomba “riziki yetu.” Mungu anajali yote hayo, hata mkate wa chakula cha jioni, kwa hiyo tunaweza kumwomba mahitaji ya kila siku."
+   }
+  ],
+  "body_text": "“Utupe leo riziki yetu.” — kutoka Mathayo 6 Jumapili moja, George na mke wake walikuwa wamebakiwa na senti chache za mwisho kabisa. Mkate uliokuwa nyumbani ulitosha kwa siku ile moja tu, na hapakuwa na pesa za kununua mwingine kwa ajili ya jioni. Basi George akaomba. Hakuomba sala ndefu ya maneno makubwa. Alimwomba Mungu, kwa urahisi kabisa, awaletee mkate kwa ajili ya jioni ile — mkate halisi, wa kuweka mezani, siku ile ile. Na sikiliza kilichotokea. George alipokuwa bado anaomba — kabla hajamaliza hata — mtu aligonga mlango! Mwanamke maskini alikuwa amesimama pale. Alikuwa ameleta sehemu ya chakula chake mwenyewe cha mchana ili wagawane, na pesa kidogo kutoka kwa rafiki mwingine maskini. Na baadaye mchana ule ule, alirudi tena, safari hii akiwa amebeba mkate mkubwa. Mungu alikuwa amesikia. Kwa kweli, Mungu alikuwa amemtuma yule mwanamke njiani na mkate kabla George hajamaliza kuomba. Jibu lilikuwa tayari linakuja alipokuwa bado amepiga magoti. Yesu alipotufundisha kuomba, alituambia tuombe “riziki yetu” — yaani vitu tunavyohitaji kila siku. George alilichukulia jambo hilo kwa uzito, na Mungu akamtunza. Wewe pia unaweza kumwomba Mungu vitu vya kawaida unavyohitaji. Anajali yote hayo, hata mkate wa chakula cha jioni. Mungu mpendwa, asante kwa sababu unajali hata mambo madogo ya kila siku. Tafadhali unipe ninachohitaji leo. Amina.",
+  "word_count": 206
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Panua Kinywa Chako Sana",
+  "body_html": "<blockquote>“Panua kinywa chako, nami nitakijaza.” — kutoka Zaburi 81</blockquote> <p>Siku moja George alisoma habari za mtu mmoja wa zamani aliyejenga nyumba ya yatima — watoto wasio na mama wala baba — kwa kumtumaini Mungu tu. Na wazo kubwa likaanza kukua moyoni mwa George. Je, kama <em>yeye</em> naye angeanzisha nyumba ya yatima?</p> <p>George aliomba na kuomba kuhusu jambo hilo. Hata alimwomba Mungu aliondoe wazo hilo kama halikutoka kwake. Kisha, alipokuwa akisoma Biblia yake, aliyakuta maneno haya: “Panua kinywa chako, nami nitakijaza.” Ilikuwa kana kwamba Mungu anasema, “Niombe mambo makubwa, George. Ninaweza kuyafanya.”</p> <p>Basi George akamwomba Mungu mambo matatu makubwa: nyumba kwa ajili ya watoto, kiasi kikubwa cha pesa, na watu wema wa kuwatunza.</p> <p>Kisha akasubiri aone Mungu atafanya nini. Zawadi ya kwanza kabisa ilikuwa shilingi moja tu — sarafu moja ndogo. Siku iliyofuata, mtu fulani alituma kabati kubwa la nguo. Kisha mwanamke mmoja akajitolea kuja kusaidia. Kisha mume na mke wakajitolea kuwatunza watoto bila kulipwa chochote.</p> <p>Kidogo kidogo, Mungu alijaza kila hitaji. Na siku moja wakati wa majira ya kuchipua, nyumba ya yatima ilifungua milango yake — ikiwa na watoto kumi na saba wanaoishi ndani yake!</p> <p>George hakufanya haya yote ili aonekane mwerevu. Aliyafanya ili kila mtu aweze kuona, kwa macho yake mwenyewe, kwamba <strong>Mungu yupo kweli, na Mungu bado anasikia maombi.</strong></p> <p><em>Mungu mpendwa, wewe ni mkuu kiasi cha kuweza kila kitu. Nisaidie nikuletee matumaini yangu makubwa kuliko yote, na kukutumaini kwa hayo. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni wazo gani kubwa lililokua moyoni mwa George baada ya kusoma habari za mtu mmoja wa zamani?",
+    "answer": "Kuanzisha nyumba ya yatima, watoto wasio na mama wala baba, kwa kumtumaini Mungu tu kama yule mtu alivyofanya."
+   },
+   {
+    "question": "George alimwomba Mungu mambo gani matatu makubwa?",
+    "answer": "Nyumba kwa ajili ya watoto, kiasi kikubwa cha pesa, na watu wema wa kuwatunza. Kidogo kidogo Mungu alijaza kila hitaji, na watoto kumi na saba wakahamia."
+   },
+   {
+    "question": "Ni tumaini gani kubwa ambalo ungeweza kumletea Mungu?",
+    "answer": "Wazo la sura hii: “Panua kinywa chako, nami nitakijaza” maana yake Mungu ni mkuu kiasi cha kuweza kila kitu, kwa hiyo tunaweza kumletea matumaini yetu makubwa kuliko yote na kumtumaini."
+   }
+  ],
+  "body_text": "“Panua kinywa chako, nami nitakijaza.” — kutoka Zaburi 81 Siku moja George alisoma habari za mtu mmoja wa zamani aliyejenga nyumba ya yatima — watoto wasio na mama wala baba — kwa kumtumaini Mungu tu. Na wazo kubwa likaanza kukua moyoni mwa George. Je, kama yeye naye angeanzisha nyumba ya yatima? George aliomba na kuomba kuhusu jambo hilo. Hata alimwomba Mungu aliondoe wazo hilo kama halikutoka kwake. Kisha, alipokuwa akisoma Biblia yake, aliyakuta maneno haya: “Panua kinywa chako, nami nitakijaza.” Ilikuwa kana kwamba Mungu anasema, “Niombe mambo makubwa, George. Ninaweza kuyafanya.” Basi George akamwomba Mungu mambo matatu makubwa: nyumba kwa ajili ya watoto, kiasi kikubwa cha pesa, na watu wema wa kuwatunza. Kisha akasubiri aone Mungu atafanya nini. Zawadi ya kwanza kabisa ilikuwa shilingi moja tu — sarafu moja ndogo. Siku iliyofuata, mtu fulani alituma kabati kubwa la nguo. Kisha mwanamke mmoja akajitolea kuja kusaidia. Kisha mume na mke wakajitolea kuwatunza watoto bila kulipwa chochote. Kidogo kidogo, Mungu alijaza kila hitaji. Na siku moja wakati wa majira ya kuchipua, nyumba ya yatima ilifungua milango yake — ikiwa na watoto kumi na saba wanaoishi ndani yake! George hakufanya haya yote ili aonekane mwerevu. Aliyafanya ili kila mtu aweze kuona, kwa macho yake mwenyewe, kwamba Mungu yupo kweli, na Mungu bado anasikia maombi. Mungu mpendwa, wewe ni mkuu kiasi cha kuweza kila kitu. Nisaidie nikuletee matumaini yangu makubwa kuliko yote, na kukutumaini kwa hayo. Amina.",
+  "word_count": 233
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Msichana Aliyetoa Kila Kitu",
+  "body_html": "<blockquote>“Mungu humpenda yeye atoaye kwa moyo wa ukunjufu.” — kutoka 2 Wakorintho 9</blockquote> <p>Mojawapo ya zawadi nzuri kuliko zote ambazo yatima walipata ilitoka kwa mwanamke kijana maskini aliyeshona nguo ili apate riziki. Alipata senti chache tu kwa wiki, na hakuwahi kulalamika hata mara moja.</p> <p>Kisha siku moja alipewa pesa zake mwenyewe — pesa nyingi kabisa. Sasa, wewe ungefanya nini na mshangao kama huo? Ungenunua nguo mpya nzuri? Ungezitunza zote kwa ajili yako mwenyewe?</p> <p>Sikiliza alichofanya. Kwanza alilipa madeni yake ya zamani. Kisha akampa mama yake sehemu. Halafu akamletea George zawadi kubwa — pauni mia moja! — kwa ajili ya yatima.</p> <p>George alishangaa sana hata akamuuliza tena na tena, ili ahakikishe kwamba kweli alitaka kutoa kiasi kikubwa hivyo. Naye akajibu kwa maneno yanayofaa kukumbukwa: “Bwana Yesu alitoa tone lake la mwisho la damu kwa ajili yangu. Je, nisimpe hiki?”</p> <p>Na unajua nini — aliyaweka yote kuwa siri. Aliendelea kuvaa nguo zake zile zile za kawaida zilizochakaa, akarudi moja kwa moja kwenye kushona, akifanya kazi kwa bidii kama siku zote, hata alipokuwa akitoa kimya kimya kiasi kikubwa hivyo.</p> <p>Alimpenda Yesu, kwa hiyo kutoa kulimfurahisha, hakukumhuzunisha. Huhitaji kuwa tajiri ili uwe mtoaji. Unahitaji tu kuwa na moyo unaopenda. Wewe ungeweza kumpa nini — kimya kimya, kwa furaha — mtu anayehitaji?</p> <p><em>Mungu mpendwa, asante kwa kunipa Yesu. Unifanye niwe mtoaji mwenye furaha anayetoa kwa siri, kama yule mwanamke mwema. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Yule mwanamke kijana aliyeshona nguo alifanya nini na pesa alizopewa?",
+    "answer": "Alilipa madeni ya zamani, akampa mama yake sehemu, na akamletea George pauni mia moja kwa ajili ya yatima."
+   },
+   {
+    "question": "Kwa nini alisema alitaka kutoa kiasi kikubwa hivyo?",
+    "answer": "Alisema, “Bwana Yesu alitoa tone lake la mwisho la damu kwa ajili yangu. Je, nisimpe hiki?” Alimpenda Yesu, kwa hiyo kutoa kulimfurahisha."
+   },
+   {
+    "question": "Ungeweza kumpa nini, kimya kimya na kwa furaha, mtu anayehitaji?",
+    "answer": "Wazo la sura hii: huhitaji kuwa tajiri ili uwe mtoaji, unahitaji tu moyo unaopenda. Yeye aliweka utoaji wake kuwa siri na alitoa kwa furaha."
+   }
+  ],
+  "body_text": "“Mungu humpenda yeye atoaye kwa moyo wa ukunjufu.” — kutoka 2 Wakorintho 9 Mojawapo ya zawadi nzuri kuliko zote ambazo yatima walipata ilitoka kwa mwanamke kijana maskini aliyeshona nguo ili apate riziki. Alipata senti chache tu kwa wiki, na hakuwahi kulalamika hata mara moja. Kisha siku moja alipewa pesa zake mwenyewe — pesa nyingi kabisa. Sasa, wewe ungefanya nini na mshangao kama huo? Ungenunua nguo mpya nzuri? Ungezitunza zote kwa ajili yako mwenyewe? Sikiliza alichofanya. Kwanza alilipa madeni yake ya zamani. Kisha akampa mama yake sehemu. Halafu akamletea George zawadi kubwa — pauni mia moja! — kwa ajili ya yatima. George alishangaa sana hata akamuuliza tena na tena, ili ahakikishe kwamba kweli alitaka kutoa kiasi kikubwa hivyo. Naye akajibu kwa maneno yanayofaa kukumbukwa: “Bwana Yesu alitoa tone lake la mwisho la damu kwa ajili yangu. Je, nisimpe hiki?” Na unajua nini — aliyaweka yote kuwa siri. Aliendelea kuvaa nguo zake zile zile za kawaida zilizochakaa, akarudi moja kwa moja kwenye kushona, akifanya kazi kwa bidii kama siku zote, hata alipokuwa akitoa kimya kimya kiasi kikubwa hivyo. Alimpenda Yesu, kwa hiyo kutoa kulimfurahisha, hakukumhuzunisha. Huhitaji kuwa tajiri ili uwe mtoaji. Unahitaji tu kuwa na moyo unaopenda. Wewe ungeweza kumpa nini — kimya kimya, kwa furaha — mtu anayehitaji? Mungu mpendwa, asante kwa kunipa Yesu. Unifanye niwe mtoaji mwenye furaha anayetoa kwa siri, kama yule mwanamke mwema. Amina.",
+  "word_count": 226
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Zawadi ya Mwokaji Mikate",
+  "body_html": "<blockquote>“Yeye ni baba wa yatima.” — kutoka Zaburi 68</blockquote> <p>Kadiri yatima wengi zaidi na zaidi walivyokuja kuishi na George, ndivyo vinywa vingi zaidi na zaidi vilivyohitaji chakula. Na wakati mwingine chakula kilikaribia kwisha kabisa.</p> <p>Asubuhi moja ilikuwa ngumu kuliko nyingine zote. Kulikuwa na chakula cha kutosha kwa siku ile moja tu. Yule mwanamke mwema aliyewapikia wavulana alikuwa amebakiwa na sarafu mbili ndogo tu, naye akasimama pale akijiuliza: azitumie kununua mkate, au nyama? Hazikutosha kwa vyote viwili.</p> <p>Na papo hapo — ko, ko — mwokaji mikate akafika mlangoni. Lakini hakuwa amekuja kulipwa. Alikuwa amekuja <em>kutoa.</em> Aliacha mikate mitatu mikubwa, mibichi, kama zawadi, hivi hivi tu!</p> <p>George aliona jambo moja, alipotazama nyuma siku zile zote. Aliliandika ili asilisahau: <strong>msaada ulikuja kila mara kabla njaa halisi haijafika.</strong> Mungu hakuwahi hata mara moja kuwaacha watoto wakose chakula kweli. Hakuwahi kuchelewa.</p> <p>Biblia inamwita Mungu “baba wa yatima” — maana yake Mungu ni kama baba mwema, mwenye upendo, kwa watoto wasio na baba. Wale yatima hawakuwa na baba zao wenyewe. Lakini walikuwa na Baba aliye bora kuliko wote, akiangalia kila mlo mmoja mmoja.</p> <p>Mungu ni Baba mwema kwako pia. Anaona unachohitaji, na hachelewi kamwe.</p> <p><em>Mungu mpendwa, asante kwa kuwa Baba mwenye upendo ambaye hanisahau kamwe. Nisaidie nikutumaini kwamba siku zote unafika kwa wakati kamili. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini mpishi alikuwa na wasiwasi asubuhi ile?",
+    "answer": "Kulikuwa na chakula cha siku ile tu, naye alikuwa amebakiwa na sarafu mbili ndogo. Alijiuliza kama anunue mkate au nyama, kwa sababu hazikutosha kwa vyote viwili."
+   },
+   {
+    "question": "Mwokaji mikate alileta nini, na kwa nini ilikuwa mshangao?",
+    "answer": "Hakuwa amekuja kulipwa bali kutoa. Aliacha mikate mitatu mikubwa, mibichi, kama zawadi."
+   },
+   {
+    "question": "Inamaanisha nini kwamba Mungu ni “baba wa yatima”? Yeye ni Baba kwako kwa namna gani?",
+    "answer": "Wazo la sura hii: Mungu ni kama baba mwema, mwenye upendo. Anaona unachohitaji, hakusahau kamwe, na hachelewi kamwe."
+   }
+  ],
+  "body_text": "“Yeye ni baba wa yatima.” — kutoka Zaburi 68 Kadiri yatima wengi zaidi na zaidi walivyokuja kuishi na George, ndivyo vinywa vingi zaidi na zaidi vilivyohitaji chakula. Na wakati mwingine chakula kilikaribia kwisha kabisa. Asubuhi moja ilikuwa ngumu kuliko nyingine zote. Kulikuwa na chakula cha kutosha kwa siku ile moja tu. Yule mwanamke mwema aliyewapikia wavulana alikuwa amebakiwa na sarafu mbili ndogo tu, naye akasimama pale akijiuliza: azitumie kununua mkate, au nyama? Hazikutosha kwa vyote viwili. Na papo hapo — ko, ko — mwokaji mikate akafika mlangoni. Lakini hakuwa amekuja kulipwa. Alikuwa amekuja kutoa. Aliacha mikate mitatu mikubwa, mibichi, kama zawadi, hivi hivi tu! George aliona jambo moja, alipotazama nyuma siku zile zote. Aliliandika ili asilisahau: msaada ulikuja kila mara kabla njaa halisi haijafika. Mungu hakuwahi hata mara moja kuwaacha watoto wakose chakula kweli. Hakuwahi kuchelewa. Biblia inamwita Mungu “baba wa yatima” — maana yake Mungu ni kama baba mwema, mwenye upendo, kwa watoto wasio na baba. Wale yatima hawakuwa na baba zao wenyewe. Lakini walikuwa na Baba aliye bora kuliko wote, akiangalia kila mlo mmoja mmoja. Mungu ni Baba mwema kwako pia. Anaona unachohitaji, na hachelewi kamwe. Mungu mpendwa, asante kwa kuwa Baba mwenye upendo ambaye hanisahau kamwe. Nisaidie nikutumaini kwamba siku zote unafika kwa wakati kamili. Amina.",
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Magunia Matatu ya Viazi",
+  "body_html": "<blockquote>“Kabla hawajaita, nitajibu.” — kutoka Isaya 65</blockquote> <p>Asubuhi nyingine ilifika ambapo karibu hakukuwa na kitu nyumbani, na pesa nyingi kabisa zilihitajika ili kuwalisha watoto wote. Basi George akafanya kile alichofanya siku zote. Alienda kuomba.</p> <p>Na alipokuwa bado anaomba — ilikuwa yapata saa nne asubuhi — mtu mmoja alifika mlangoni na ujumbe. Bibi mmoja alikuwa ameagiza <strong>magunia matatu mazima ya viazi</strong> yapelekwe kwenye nyumba za yatima!</p> <p>Magunia matatu makubwa ya viazi, yakifika wakati ule ule uliofaa. George alisema hayangeweza kabisa kufika wakati bora kuliko huo.</p> <p>Jambo kama hilo lilitokea tena na tena. Wakati mmoja, George alikutana na mtu barabarani aliyempa pesa kwa ajili ya yatima — na George akatambua kwamba kama angepita pale hata nusu dakika baadaye, angemkosa kabisa! Lakini hakuchelewa nusu dakika. Mungu alikuwa amepanga wakati vizuri kabisa.</p> <p>Si ajabu hiyo? Mungu hatumi tu kile tunachohitaji. Anakituma katika dakika ile ile inayofaa — wakati mwingine tukiwa bado tunaomba, wakati mwingine kabla tu hatujapita. Yeye hana haraka kamwe, na hachelewi kamwe.</p> <p>Hakuna jambo dogo mno kwa Mungu kulipanga. Anajali mambo madogo madogo ya siku yako, mpaka kila dakika.</p> <p><em>Mungu mpendwa, asante kwa sababu unajua wakati kamili wa kila jambo. Nisaidie nikungojee na nisiwe na wasiwasi. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Ni nini kilifika mlangoni George alipokuwa akiomba yapata saa nne asubuhi?",
+    "answer": "Ujumbe kwamba bibi mmoja alikuwa ameagiza magunia matatu mazima ya viazi yapelekwe kwenye nyumba za yatima, wakati ule ule uliofaa."
+   },
+   {
+    "question": "Nini kilitokea George alipokutana na mtu barabarani?",
+    "answer": "Yule mtu alimpa pesa kwa ajili ya yatima. Kama George angepita pale hata nusu dakika baadaye, angemkosa."
+   },
+   {
+    "question": "Je, kuna jambo lolote dogo mno kwa Mungu kulishughulikia? Ni nini tunaweza kuacha kukihangaikia?",
+    "answer": "Wazo la sura hii: Mungu hutuma tunachohitaji katika dakika ile ile inayofaa. Hakuna jambo dogo mno kwake, kwa hiyo tunaweza kumngojea bila wasiwasi."
+   }
+  ],
+  "body_text": "“Kabla hawajaita, nitajibu.” — kutoka Isaya 65 Asubuhi nyingine ilifika ambapo karibu hakukuwa na kitu nyumbani, na pesa nyingi kabisa zilihitajika ili kuwalisha watoto wote. Basi George akafanya kile alichofanya siku zote. Alienda kuomba. Na alipokuwa bado anaomba — ilikuwa yapata saa nne asubuhi — mtu mmoja alifika mlangoni na ujumbe. Bibi mmoja alikuwa ameagiza magunia matatu mazima ya viazi yapelekwe kwenye nyumba za yatima! Magunia matatu makubwa ya viazi, yakifika wakati ule ule uliofaa. George alisema hayangeweza kabisa kufika wakati bora kuliko huo. Jambo kama hilo lilitokea tena na tena. Wakati mmoja, George alikutana na mtu barabarani aliyempa pesa kwa ajili ya yatima — na George akatambua kwamba kama angepita pale hata nusu dakika baadaye, angemkosa kabisa! Lakini hakuchelewa nusu dakika. Mungu alikuwa amepanga wakati vizuri kabisa. Si ajabu hiyo? Mungu hatumi tu kile tunachohitaji. Anakituma katika dakika ile ile inayofaa — wakati mwingine tukiwa bado tunaomba, wakati mwingine kabla tu hatujapita. Yeye hana haraka kamwe, na hachelewi kamwe. Hakuna jambo dogo mno kwa Mungu kulipanga. Anajali mambo madogo madogo ya siku yako, mpaka kila dakika. Mungu mpendwa, asante kwa sababu unajua wakati kamili wa kila jambo. Nisaidie nikungojee na nisiwe na wasiwasi. Amina.",
+  "word_count": 195
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Maziwa ya Kifungua Kinywa",
+  "body_html": "<blockquote>“Wamtafutao Bwana hawatahitaji kitu chochote kilicho chema.” — kutoka Zaburi 34</blockquote> <p>Kila asubuhi yatima walikuwa na kifungua kinywa kile kile cha furaha: uji wa shayiri wa moto pamoja na maziwa. Lakini maziwa yanagharimu pesa — na jioni moja karibu hapakuwa na pesa yoyote.</p> <p>Muuza maziwa angekuja mapema asubuhi iliyofuata, kabla ya saa mbili, na pasingekuwa na pesa za kumlipa wala maziwa kwa ajili ya uji wa watoto. Lingefanyika nini?</p> <p>Basi jioni ile, saa kumi na mbili, George na wasaidizi wawili walipiga magoti pamoja wakamwomba Mungu atume kinachohitajika kabla ya asubuhi.</p> <p>Walikuwa <strong>wameinuka tu kutoka magotini</strong> barua ilipofika. Ndani yake kulikuwa na zawadi kwa ajili ya yatima! Mtu mwema aliyeituma alikuwa ameandika jambo zuri sana pamoja nayo: “Napenda kutuma zawadi hizi ndogo. Mara nyingi sana zinafika wakati ule ule unaofaa.”</p> <p>Yeye hakujua lolote kuhusu maziwa, wala asubuhi, wala mfuko mtupu. Lakini Mungu alijua. Naye alikuwa tayari ameituma barua yake njiani, ili ifike jioni ile ile ilipohitajika — kwa wakati wa kupata maziwa asubuhi.</p> <p>Mungu anapenda kujibu maombi kama hayo: ombi la jioni, linalojibiwa kabla jua halijachomoza. Unapomtafuta Mungu na kumtumaini, hutakosa vitu vizuri unavyohitaji kweli.</p> <p><em>Mungu mpendwa, asante kwa sababu unajibu maombi, hata kabla asubuhi haijafika. Nitakutumaini kwa ajili ya kesho. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini George na wasaidizi wake walihitaji kuomba jioni ile?",
+    "answer": "Karibu hapakuwa na maziwa, na muuza maziwa angekuja mapema asubuhi iliyofuata bila pesa za kumlipa kwa ajili ya uji wa watoto."
+   },
+   {
+    "question": "Ni nini kilifika mara tu walipoinuka kutoka magotini?",
+    "answer": "Barua yenye zawadi kwa ajili ya yatima. Aliyeituma aliandika, “Napenda kutuma zawadi hizi ndogo. Mara nyingi sana zinafika wakati ule ule unaofaa.”"
+   },
+   {
+    "question": "Ungeweza kumtumaini Mungu kwa jambo gani usiku huu, kabla asubuhi haijafika?",
+    "answer": "Wazo la sura hii: Mungu anapenda kujibu maombi, hata kabla jua halijachomoza. Wamtafutao hawatakosa vitu vizuri wanavyohitaji kweli."
+   }
+  ],
+  "body_text": "“Wamtafutao Bwana hawatahitaji kitu chochote kilicho chema.” — kutoka Zaburi 34 Kila asubuhi yatima walikuwa na kifungua kinywa kile kile cha furaha: uji wa shayiri wa moto pamoja na maziwa. Lakini maziwa yanagharimu pesa — na jioni moja karibu hapakuwa na pesa yoyote. Muuza maziwa angekuja mapema asubuhi iliyofuata, kabla ya saa mbili, na pasingekuwa na pesa za kumlipa wala maziwa kwa ajili ya uji wa watoto. Lingefanyika nini? Basi jioni ile, saa kumi na mbili, George na wasaidizi wawili walipiga magoti pamoja wakamwomba Mungu atume kinachohitajika kabla ya asubuhi. Walikuwa wameinuka tu kutoka magotini barua ilipofika. Ndani yake kulikuwa na zawadi kwa ajili ya yatima! Mtu mwema aliyeituma alikuwa ameandika jambo zuri sana pamoja nayo: “Napenda kutuma zawadi hizi ndogo. Mara nyingi sana zinafika wakati ule ule unaofaa.” Yeye hakujua lolote kuhusu maziwa, wala asubuhi, wala mfuko mtupu. Lakini Mungu alijua. Naye alikuwa tayari ameituma barua yake njiani, ili ifike jioni ile ile ilipohitajika — kwa wakati wa kupata maziwa asubuhi. Mungu anapenda kujibu maombi kama hayo: ombi la jioni, linalojibiwa kabla jua halijachomoza. Unapomtafuta Mungu na kumtumaini, hutakosa vitu vizuri unavyohitaji kweli. Mungu mpendwa, asante kwa sababu unajibu maombi, hata kabla asubuhi haijafika. Nitakutumaini kwa ajili ya kesho. Amina.",
+  "word_count": 201
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Benki Isiyoweza Kufilisika",
+  "body_html": "<blockquote>“Jiwekeeni hazina mbinguni, ambako hakuna kitu kinachopotea kamwe.” — kutoka Mathayo 6</blockquote> <p>Siku moja wageni kadhaa walikuja kuitembelea nyumba ya yatima ya wavulana. Walishangaa jinsi watoto walivyotunzwa vizuri. Lakini pia walishangaa kidogo kwa namna nyingine.</p> <p>“Bila shaka,” bibi mmoja alisema, “msingeweza kuendesha haya yote bila rundo kubwa la pesa zilizowekwa benki. Lazima mna akiba nzuri ya fedha.”</p> <p>Na bwana mmoja akamuuliza yule mwanamke aliyeiendesha nyumba ile, “Je, mna akiba nzuri ya pesa iliyowekwa?”</p> <p>Sasa, ukweli ni kwamba wakati ule karibu hapakuwa na pesa hata kidogo. Lakini sikiliza jibu zuri alilotoa: “Pesa zetu zimewekwa katika benki isiyoweza kufilisika.”</p> <p>Alimaanisha nini? Alimaanisha <strong>Mungu mwenyewe.</strong> Benki za kawaida zinaweza kuishiwa. Lakini Mungu haishiwi kamwe, na Mungu hawaangushi watu wake kamwe. Yeye ndiye aliyekuwa benki yao — benki pekee katika ulimwengu wote isiyoweza kamwe, kamwe kufilisika.</p> <p>Yule bibi aliguswa sana hata machozi yakamlengalenga. Na wageni walipokuwa wakiondoka, yule bwana alitoa pauni tano — ambazo zilifika wakati ule ule George alipokuwa hana hata senti moja iliyobaki.</p> <p>Wewe pia unaweza kuweka hazina yako mahali pale pale salama. Pesa zinaweza kupotea au kutumika, lakini mambo mema unayomfanyia Mungu, na tumaini lako kwake, vimewekwa mahali ambapo hakuna kitu kinachoweza kuvunjika kamwe.</p> <p><em>Mungu mpendwa, wewe huishiwi kamwe na hushindwi kamwe. Nisaidie niweke hazina yangu salama kwako. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "Wageni walifikiri nyumba ya yatima lazima ina nini?",
+    "answer": "Walifikiri lazima ina rundo kubwa la pesa zilizowekwa benki, akiba nzuri ya fedha."
+   },
+   {
+    "question": "Yule mwanamke alimaanisha nini aliposema “benki isiyoweza kufilisika”?",
+    "answer": "Alimaanisha Mungu mwenyewe. Benki za kawaida zinaweza kuishiwa, lakini Mungu haishiwi kamwe na hawaangushi watu wake kamwe."
+   },
+   {
+    "question": "Ni hazina zipi ambazo haziwezi kupotea kamwe?",
+    "answer": "Wazo la sura hii: pesa zinaweza kupotea au kutumika, lakini mambo mema unayomfanyia Mungu na tumaini lako kwake vimewekwa mahali ambapo hakuna kitu kinachoweza kuvunjika."
+   }
+  ],
+  "body_text": "“Jiwekeeni hazina mbinguni, ambako hakuna kitu kinachopotea kamwe.” — kutoka Mathayo 6 Siku moja wageni kadhaa walikuja kuitembelea nyumba ya yatima ya wavulana. Walishangaa jinsi watoto walivyotunzwa vizuri. Lakini pia walishangaa kidogo kwa namna nyingine. “Bila shaka,” bibi mmoja alisema, “msingeweza kuendesha haya yote bila rundo kubwa la pesa zilizowekwa benki. Lazima mna akiba nzuri ya fedha.” Na bwana mmoja akamuuliza yule mwanamke aliyeiendesha nyumba ile, “Je, mna akiba nzuri ya pesa iliyowekwa?” Sasa, ukweli ni kwamba wakati ule karibu hapakuwa na pesa hata kidogo. Lakini sikiliza jibu zuri alilotoa: “Pesa zetu zimewekwa katika benki isiyoweza kufilisika.” Alimaanisha nini? Alimaanisha Mungu mwenyewe. Benki za kawaida zinaweza kuishiwa. Lakini Mungu haishiwi kamwe, na Mungu hawaangushi watu wake kamwe. Yeye ndiye aliyekuwa benki yao — benki pekee katika ulimwengu wote isiyoweza kamwe, kamwe kufilisika. Yule bibi aliguswa sana hata machozi yakamlengalenga. Na wageni walipokuwa wakiondoka, yule bwana alitoa pauni tano — ambazo zilifika wakati ule ule George alipokuwa hana hata senti moja iliyobaki. Wewe pia unaweza kuweka hazina yako mahali pale pale salama. Pesa zinaweza kupotea au kutumika, lakini mambo mema unayomfanyia Mungu, na tumaini lako kwake, vimewekwa mahali ambapo hakuna kitu kinachoweza kuvunjika kamwe. Mungu mpendwa, wewe huishiwi kamwe na hushindwi kamwe. Nisaidie niweke hazina yangu salama kwako. Amina.",
+  "word_count": 208
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Nyumba Juu ya Kilima, Iliyojengwa kwa Maombi",
+  "body_html": "<blockquote>“Saburi na iwe na kazi kamili.” — kutoka Yakobo 1</blockquote> <p>Nyumba za yatima zilijaa sana na kuwa na shughuli nyingi mno hata George akaamua kufanya jambo kubwa mno: kujenga nyumba moja kubwa sana huko mashambani, kubwa kiasi cha kuwatosha watoto <em>mia tatu</em>. Na angelipia yote kwa njia ile ile kama siku zote — kwa kuomba tu.</p> <p>Nyumba kubwa mno hugharimu pesa nyingi mno. Basi George akaanza kuiombea, siku baada ya siku. Na katika siku ya thelathini na sita ya kuomba, zawadi ya pauni elfu moja ilifika! Kilikuwa kiasi cha ajabu — lakini George alijisikia mtulivu kana kwamba mtu amempa sarafu moja ndogo tu, kwa sababu kufikia wakati huo alitarajia tu kwamba Mungu atajibu.</p> <p>Kisha mtu mmoja aliyechora ramani za majengo — mtu ambaye George hakuwahi hata kukutana naye — alijitolea kuchora ramani ya nyumba nzima na kusimamia ujenzi bure!</p> <p>Halafu George alihitaji ardhi. Alisikia habari za shamba zuri juu ya kilima kiitwacho Ashley Down. Lakini jioni ya kwanza, mwenye shamba hakupatikana popote. George hakukasirika; alihisi kwamba Mungu alikuwa na sababu. Na alikuwa sahihi. Usiku ule ule, mwenye shamba aliamka saa tisa usiku na hakuweza kupata usingizi tena — akili yake ilijaa mawazo ya lile shamba. Akaamua kwamba kama George analitaka, atamuuzia — na kwa bei ndogo sana kuliko aliyokuwa amepanga kutoza!</p> <p>Basi George akalinunua lile shamba kubwa, na baada ya muda nyumba kubwa zilisimama juu ya kilima kile, zikiwa zimejaa mamia na mamia ya yatima wenye furaha, waliolishwa vizuri — kila tofali lake likiwa limejengwa kwa maombi.</p> <p>Mungu anaweza kufanya zaidi ya tunavyowahi kuota. Endelea kuomba, endelea kusubiri, na utazame atakachoweza kujenga.</p> <p><em>Mungu mpendwa, wewe unaweza kufanya mambo makubwa sana. Nifundishe niendelee kuomba na kukungojea kwa subira. Amina.</em></p>",
+  "study_questions": [
+   {
+    "question": "George alipanga kulipiaje nyumba kubwa ya watoto mia tatu?",
+    "answer": "Kwa njia ile ile kama siku zote, kwa kuomba tu. Katika siku ya thelathini na sita ya kuomba, zawadi ya pauni elfu moja ilifika."
+   },
+   {
+    "question": "Kwa nini mwenye shamba la Ashley Down aliamua kuliuza?",
+    "answer": "Aliamka saa tisa usiku akili yake ikiwa imejaa mawazo ya lile shamba, akaamua kumuuzia George kwa bei ndogo sana kuliko aliyokuwa amepanga."
+   },
+   {
+    "question": "Ni jambo gani tunaweza kuendelea kuliombea, hata kama tutalazimika kusubiri?",
+    "answer": "Wazo la sura hii: Mungu anaweza kufanya zaidi ya tunavyowahi kuota. Endelea kuomba, subiri kwa saburi, na utazame atakachoweza kujenga."
+   }
+  ],
+  "body_text": "“Saburi na iwe na kazi kamili.” — kutoka Yakobo 1 Nyumba za yatima zilijaa sana na kuwa na shughuli nyingi mno hata George akaamua kufanya jambo kubwa mno: kujenga nyumba moja kubwa sana huko mashambani, kubwa kiasi cha kuwatosha watoto mia tatu. Na angelipia yote kwa njia ile ile kama siku zote — kwa kuomba tu. Nyumba kubwa mno hugharimu pesa nyingi mno. Basi George akaanza kuiombea, siku baada ya siku. Na katika siku ya thelathini na sita ya kuomba, zawadi ya pauni elfu moja ilifika! Kilikuwa kiasi cha ajabu — lakini George alijisikia mtulivu kana kwamba mtu amempa sarafu moja ndogo tu, kwa sababu kufikia wakati huo alitarajia tu kwamba Mungu atajibu. Kisha mtu mmoja aliyechora ramani za majengo — mtu ambaye George hakuwahi hata kukutana naye — alijitolea kuchora ramani ya nyumba nzima na kusimamia ujenzi bure! Halafu George alihitaji ardhi. Alisikia habari za shamba zuri juu ya kilima kiitwacho Ashley Down. Lakini jioni ya kwanza, mwenye shamba hakupatikana popote. George hakukasirika; alihisi kwamba Mungu alikuwa na sababu. Na alikuwa sahihi. Usiku ule ule, mwenye shamba aliamka saa tisa usiku na hakuweza kupata usingizi tena — akili yake ilijaa mawazo ya lile shamba. Akaamua kwamba kama George analitaka, atamuuzia — na kwa bei ndogo sana kuliko aliyokuwa amepanga kutoza! Basi George akalinunua lile shamba kubwa, na baada ya muda nyumba kubwa zilisimama juu ya kilima kile, zikiwa zimejaa mamia na mamia ya yatima wenye furaha, waliolishwa vizuri — kila tofali lake likiwa limejengwa kwa maombi. Mungu anaweza kufanya zaidi ya tunavyowahi kuota. Endelea kuomba, endelea kusubiri, na utazame atakachoweza kujenga. Mungu mpendwa, wewe unaweza kufanya mambo makubwa sana. Nifundishe niendelee kuomba na kukungojea kwa subira. Amina.",
+  "word_count": 279
+ }
+}
+]
