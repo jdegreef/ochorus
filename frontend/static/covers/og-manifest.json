@@ -9525,6 +9525,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"pt/pilgrims-progress-children": {
+			"ground": "f42affd199c694b60f23658a78513717e9a4f3c9ccd020ed1dd0aa4f4d6d2a88",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"pt/power-through-prayer": {
 			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
 			"style": "devotional",
