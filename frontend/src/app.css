@@ -364,6 +364,9 @@
 	   (Cathedral, Monastery). Not --gold's other jobs (highlights, the
 	   reading mark): those mean something, an ornament only adorns. */
 	--ornament: var(--gold);
+	/* The drop cap's ink: the accent, unless a palette letters its initials in
+	   a colour of their own (Illuminated's vermilion). */
+	--initial: var(--accent);
 	--border: #2d261d;
 	/* A control's edge must clear 3:1 to be a visible boundary (WCAG 1.4.11);
 	   --border is a decorative hairline at ~1.2:1 and cannot carry that job.
@@ -593,6 +596,9 @@
 		--hero-gilt: #bcc4cf;
 		--hero-gilt-deep: #5b6472;
 		--hero-tint: #15171a;
+	}
+	:root[data-palette='illuminated'] {
+		--hero-tint: #121a3a;
 	}
 	:root[data-palette='violet'] {
 		--hero-tint: #1a1230;
@@ -943,6 +949,77 @@
 		--hue-slate-soft: #e2e3e5;
 		--hue-plum: #574255;
 		--hue-plum-soft: #e5e0e5;
+	}
+	/* Illuminated — a manuscript page: vellum, lapis blue, gold leaf, and
+	   initials in the scribe's vermilion (--initial). */
+	:root[data-theme='light'][data-palette='illuminated'] {
+		--bg: #f7f1e3;
+		--surface: #fffaf0;
+		--surface-2: #efe6d2;
+		--band: #ece2cb;
+		--border: #e2d6bc;
+		--shelf-back: #ece2cb;
+		--accent: #1f3f8f;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e6ebf7;
+		--accent-soft-border: #c9d3ee;
+		--initial: #b3341f;
+		--hue-indigo: #3c4097;
+		--hue-indigo-soft: #eaecf7;
+		--hue-oxblood: #88322c;
+		--hue-oxblood-soft: #f7e7e5;
+		--hue-cypress: #255a4d;
+		--hue-cypress-soft: #e1efeb;
+		--hue-ochre: #7c5619;
+		--hue-ochre-soft: #f8ebda;
+		--hue-slate: #3b5578;
+		--hue-slate-soft: #e6ecf3;
+		--hue-plum: #653d65;
+		--hue-plum-soft: #f1e7f1;
+	}
+	:root[data-theme='dark'][data-palette='illuminated'] {
+		--bg: #13141f;
+		--surface: #1b1d2b;
+		--surface-2: #232638;
+		--band: #171926;
+		--border: #2a2d40;
+		--shelf-back: #1c1e2d;
+		--accent: #9fb4f5;
+		--accent-contrast: #13141f;
+		--accent-soft: #1d2440;
+		--accent-soft-border: #2f3a63;
+		--initial: #f08a6e;
+		--hue-indigo: #9a9cef;
+		--hue-indigo-soft: #1f2033;
+		--hue-oxblood: #e9959d;
+		--hue-oxblood-soft: #322021;
+		--hue-cypress: #87cab6;
+		--hue-cypress-soft: #182a25;
+		--hue-ochre: #deb562;
+		--hue-ochre-soft: #2d2516;
+		--hue-slate: #a2bedf;
+		--hue-slate-soft: #1b2530;
+		--hue-plum: #d1a8d1;
+		--hue-plum-soft: #2c202c;
+	}
+	:root[data-theme='sepia'][data-palette='illuminated'] {
+		--accent: #1f3f8f;
+		--accent-contrast: #ffffff;
+		--accent-soft: #e1e3ec;
+		--accent-soft-border: #ccd2e6;
+		--initial: #a8301c;
+		--hue-indigo: #3c4097;
+		--hue-indigo-soft: #e4e7f4;
+		--hue-oxblood: #822f29;
+		--hue-oxblood-soft: #f1dddb;
+		--hue-cypress: #245649;
+		--hue-cypress-soft: #d8e9e3;
+		--hue-ochre: #735116;
+		--hue-ochre-soft: #f2dfc4;
+		--hue-slate: #375178;
+		--hue-slate-soft: #e1e3e7;
+		--hue-plum: #603a60;
+		--hue-plum-soft: #e8dee8;
 	}
 	/* THE CHURCH YEAR — never chosen directly: the 'liturgical' choice applies
 	   one of these by season (palettes.ts appliedPalette), and Olive Grove
@@ -1831,7 +1908,7 @@
 	font-weight: 600;
 	margin-inline-end: 0.08em;
 	padding-top: 0.06em;
-	color: var(--accent);
+	color: var(--initial);
 	text-shadow: 0.035em 0.035em 0 color-mix(in srgb, var(--ornament) 75%, transparent);
 }
 

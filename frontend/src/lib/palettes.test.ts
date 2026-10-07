@@ -77,6 +77,13 @@ describe('library palettes', () => {
 					const r = ratio(vars[`--hue-${h}`], vars[`--hue-${h}-soft`]);
 					if (r < 4.5) failures.push(`--hue-${h} on its soft: ${r.toFixed(2)}`);
 				}
+				// A palette's own initial ink (Illuminated's vermilion) is display
+				// type at 3em: large text, so 3:1 on the reading grounds.
+				if (own['--initial'])
+					for (const ground of ['--bg', '--surface']) {
+						const r = ratio(own['--initial'], vars[ground]);
+						if (r < 3) failures.push(`--initial on ${ground}: ${r.toFixed(2)}`);
+					}
 				// The ornament metal paints the settings gear: a control, so 3:1.
 				const metal = vars['--ornament'] === 'var(--gold)' ? vars['--gold'] : vars['--ornament'];
 				for (const ground of ['--bg', '--surface']) {
