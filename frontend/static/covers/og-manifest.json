@@ -9093,6 +9093,16 @@
 				532
 			]
 		},
+		"pandita-ramabai-a-life-teens": {
+			"ground": "88dcd829b5339008360c166c7951540c2d83fe17990f73d75eb1efe9f42a3c7a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"paradise-lost": {
 			"ground": "1376e1ad2ef24885e058a912da76a841b3d991190a0454afdf01674c1f690416",
 			"style": "press",
