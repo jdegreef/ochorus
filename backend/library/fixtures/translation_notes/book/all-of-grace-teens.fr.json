@@ -3,7 +3,7 @@
  "slug": "all-of-grace-teens",
  "language": "fr",
  "job_issue": 5453,
- "pull_request": null,
+ "pull_request": 5523,
  "note": [
   "Each chapter opens with an ESV verse in the English retelling; the French replaces it with the Louis Segond (1910) wording, cited « (LSG) », mined verbatim from shipped French files (the cited source_file). Where Segond begins mid-sentence (Romains 4:5, 3:26, 2 Corinthiens 5:7) the quote opens with « … ». The Isaiah 1:18 row cites only the mined span; « Venez et plaidons! dit l’Éternel. » ahead of it is Segond as well but its only corpus copy capitalises « Dit ».",
   "Spurgeon's own lines quoted in the retelling (roughly 100 spans across 12 chapters) are pasted verbatim from the shipped all-of-grace.fr.json edition, not re-translated; quotations of him in the edition's « vous » keep it even though the teen prose says « tu ».",
