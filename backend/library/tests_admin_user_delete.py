@@ -39,42 +39,50 @@ class AdminUserDeleteTests(TestCase):
         Favorite.objects.create(profile=self.profile, kind="author", slug="andrew-murray")
         self.url = f"/api/admin/users/{self.uid}/account/"
 
-    def _gone(self):
-        return not (
-            UserProfile.objects.filter(supabase_uid=self.uid).exists()
-            or get_user_model().objects.filter(pk=self.user.pk).exists()
-            or Favorite.objects.filter(slug="andrew-murray").exists()
-        )
+    def _rows(self):
+        return [
+            UserProfile.objects.filter(supabase_uid=self.uid).exists(),
+            get_user_model().objects.filter(pk=self.user.pk).exists(),
+            Favorite.objects.filter(slug="andrew-murray").exists(),
+        ]
 
-    @mock.patch("accounts.supabase_admin.requests.delete", return_value=_resp(200))
+    def _gone(self):
+        return not any(self._rows())
+
+    def _intact(self):
+        return all(self._rows())
+
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(200))
     def test_deletes_supabase_user_then_local_rows(self, delete):
         res = self.client.delete(self.url)
         self.assertEqual(res.status_code, 200, res.content)
         self.assertTrue(res.json()["auth_deleted"])
-        self.assertTrue(delete.call_args.args[0].endswith(f"/auth/v1/admin/users/{self.uid}"))
+        method, url = delete.call_args.args
+        self.assertEqual(method, "delete")
+        self.assertTrue(url.endswith(f"/auth/v1/admin/users/{self.uid}"))
         self.assertTrue(self._gone())
         entry = AdminAction.objects.get(action=AdminAction.Action.USER_DELETE)
         self.assertEqual(entry.target, f"user:{self.uid}")
         self.assertNotIn("test1@example.com", str(entry.detail))  # masked
 
-    @mock.patch("accounts.supabase_admin.requests.delete", return_value=_resp(404))
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(404))
     def test_already_gone_in_supabase_still_deletes_locally(self, _):
         self.assertEqual(self.client.delete(self.url).status_code, 200)
         self.assertTrue(self._gone())
 
-    @mock.patch("accounts.supabase_admin.requests.delete", return_value=_resp(500))
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(500))
     def test_supabase_failure_deletes_nothing(self, _):
         self.assertEqual(self.client.delete(self.url).status_code, 502)
-        self.assertTrue(UserProfile.objects.filter(supabase_uid=self.uid).exists())
+        self.assertTrue(self._intact())
         self.assertFalse(AdminAction.objects.exists())
 
     @mock.patch(
-        "accounts.supabase_admin.requests.delete",
+        "accounts.supabase_admin.requests.request",
         side_effect=requests.ConnectionError("down"),
     )
     def test_supabase_unreachable_deletes_nothing(self, _):
         self.assertEqual(self.client.delete(self.url).status_code, 502)
-        self.assertTrue(UserProfile.objects.filter(supabase_uid=self.uid).exists())
+        self.assertTrue(self._intact())
 
     @override_settings(SUPABASE_URL="", SUPABASE_SERVICE_ROLE_KEY="")
     def test_without_supabase_deletes_local_rows_only(self):
@@ -86,15 +94,15 @@ class AdminUserDeleteTests(TestCase):
     def test_unknown_uid_is_404(self):
         self.assertEqual(self.client.delete(f"/api/admin/users/{uuid.uuid4()}/account/").status_code, 404)
 
-    @mock.patch("accounts.supabase_admin.requests.delete")
+    @mock.patch("accounts.supabase_admin.requests.request")
     def test_refuses_to_delete_own_account(self, delete):
         self.client.force_authenticate(self.user)
         self.assertEqual(self.client.delete(self.url).status_code, 400)
         delete.assert_not_called()
-        self.assertTrue(UserProfile.objects.filter(supabase_uid=self.uid).exists())
+        self.assertTrue(self._intact())
 
     @override_settings(DEBUG=False, ADMIN_EMAILS={"admin@example.com"})
-    @mock.patch("accounts.supabase_admin.requests.delete")
+    @mock.patch("accounts.supabase_admin.requests.request")
     def test_non_admin_is_refused(self, delete):
         other = get_user_model().objects.create(username="u2", email="someone@example.com")
         self.client.force_authenticate(other)

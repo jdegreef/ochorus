@@ -1,11 +1,6 @@
-"""Admin dashboard API — delete one reader's account outright.
-
-The reader's own ``DELETE /api/auth/me/`` clears their Ochorus data but leaves
-the Supabase sign-in in place, so the address stays taken. This is the admin's
-fuller version, built for test accounts: it deletes the Supabase auth user
-first (which is what frees the email for a fresh sign-up), then the Django
-``User`` — and with it, by CASCADE, the profile and every reading, email and
-feedback row hanging off it.
+"""Admin dashboard API — delete one reader's account outright, for test
+sign-ups: the Supabase sign-in (freeing the email) and every Ochorus row
+(:func:`accounts.deletion.delete_account`).
 
 Super-admin only (``IsAdminEmail``), like the reader's email panel: it is
 destructive and irreversible. Audited as ``user.delete``; the log keeps the
@@ -20,6 +15,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from accounts import supabase_admin
+from accounts.deletion import delete_account
 from accounts.models import UserProfile
 from accounts.permissions import IsAdminEmail
 
@@ -52,18 +48,14 @@ class AdminUserDeleteView(AdminAudited, APIView):
             )
 
         try:
-            auth_deleted = supabase_admin.delete_user(uid)
+            auth_deleted = delete_account(profile)
         except supabase_admin.SupabaseDeleteError as exc:
             return Response(
                 {"detail": f"Couldn't delete the Supabase sign-in ({exc}). Nothing was deleted."},
                 status=http_status.HTTP_502_BAD_GATEWAY,
             )
 
-        email = profile.email
-        # The User owns the profile (CASCADE), and the profile owns the rest.
-        profile.user.delete()
-
         return Response(
-            {"email": mask_email(email), "auth_deleted": auth_deleted},
+            {"email": mask_email(profile.email), "auth_deleted": auth_deleted},
             status=http_status.HTTP_200_OK,
         )

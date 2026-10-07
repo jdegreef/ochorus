@@ -99,19 +99,23 @@
 	};
 
 	// Deleting the account (super admins only) — for test sign-ups. The admin
-	// retypes the email (or "delete" when there is none) so a slip on a real reader's page can't do it.
+	// retypes the email (or "delete" when there is none) so a slip on a real
+	// reader's page can't do it.
 	let deleteConfirm = $state('');
 	let deleting = $state(false);
 	let deleteError = $state('');
-	async function deleteAccount(confirmWord: string) {
-		if (deleteConfirm.trim().toLowerCase() !== confirmWord.toLowerCase()) return;
+	const confirmWord = $derived(u?.profile.email || 'delete');
+	const deleteConfirmed = $derived(deleteConfirm.trim().toLowerCase() === confirmWord.toLowerCase());
+	async function deleteAccount(e: SubmitEvent) {
+		e.preventDefault();
+		if (!deleteConfirmed) return;
 		deleting = true;
 		deleteError = '';
 		try {
 			await deleteAdminUser(data.uid);
 			await goto('/admin/users');
-		} catch (e) {
-			deleteError = apiErrorDetail(e, "Couldn't delete this account.");
+		} catch (err) {
+			deleteError = apiErrorDetail(err, "Couldn't delete this account.");
 		} finally {
 			deleting = false;
 		}
@@ -389,41 +393,23 @@
 				{/if}
 			</section>
 
-			<!-- Email: history + write to them (super admins only, like the Emails section) -->
+			<!-- Super admins only: the reader's email (like the Emails section), and
+			     deleting the account — the Supabase sign-in and all Ochorus data. -->
 			{#if auth.isAdmin}
 				<ReaderEmailPanel uid={data.uid} name={d.profile.display_name || 'this reader'} />
-			{/if}
 
-			<!-- Delete the account (super admins only): the Supabase sign-in and all Ochorus data -->
-			{#if auth.isAdmin}
-				{@const confirmWord = d.profile.email || 'delete'}
-				<section class="mt-8 rounded-card border border-danger bg-surface p-5">
-					<h2 class="text-h3 text-danger">Delete account</h2>
-					<p class="mt-2 text-body text-muted">
+				<section class="mt-8 rounded-card border border-danger/40 p-5">
+					<div class="mb-2 text-small font-semibold text-danger">Delete account</div>
+					<p class="text-body text-muted">
 						Permanently deletes this reader's sign-in and everything Ochorus holds for them — reading, highlights,
 						favorites, plans, emails. The email address can then be used to sign up again. This can't be undone.
 					</p>
-					<form
-						class="mt-4 flex flex-wrap items-center gap-3"
-						onsubmit={(e) => {
-							e.preventDefault();
-							deleteAccount(confirmWord);
-						}}
-					>
+					<form class="mt-4 flex flex-wrap items-end gap-3" onsubmit={deleteAccount}>
 						<label class="flex min-w-0 flex-1 flex-col gap-1 text-small text-muted">
-							Type {d.profile.email ? "the reader's email" : '“delete”'} to confirm
-							<input
-								type="text"
-								autocomplete="off"
-								class="rounded-card border border-border bg-bg px-3 py-2 text-body text-text"
-								placeholder={confirmWord}
-								bind:value={deleteConfirm}
-							/>
+							Type “{confirmWord}” to confirm
+							<input type="text" autocomplete="off" class="field" bind:value={deleteConfirm} />
 						</label>
-						<button
-							type="submit"
-							class="self-end rounded-card border border-danger px-4 py-2 font-semibold text-danger hover:bg-danger hover:text-white disabled:opacity-50"
-							disabled={deleting || deleteConfirm.trim().toLowerCase() !== confirmWord.toLowerCase()}
+						<button type="submit" class="btn btn-ghost text-danger" disabled={deleting || !deleteConfirmed}
 							>{deleting ? 'Deleting…' : 'Delete account'}</button
 						>
 					</form>

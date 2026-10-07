@@ -32,6 +32,18 @@ def is_configured() -> bool:
     return bool((settings.SUPABASE_URL or "").strip() and settings.SUPABASE_SERVICE_ROLE_KEY)
 
 
+def _admin_user_request(method: str, uid, *, timeout: float) -> requests.Response:
+    """One service-role call on ``/auth/v1/admin/users/<uid>``. The caller
+    checks :func:`is_configured` first."""
+    key = settings.SUPABASE_SERVICE_ROLE_KEY
+    return requests.request(
+        method,
+        f"{settings.SUPABASE_URL.strip().rstrip('/')}/auth/v1/admin/users/{uid}",
+        headers={"apikey": key, "Authorization": f"Bearer {key}"},
+        timeout=timeout,
+    )
+
+
 def verified_email(profile) -> str | None:
     """The profile's confirmed email from Supabase, or ``None``.
 
@@ -40,17 +52,11 @@ def verified_email(profile) -> str | None:
     Supabase isn't configured (local, tests) or the lookup fails, so callers can
     fall back to whatever local address they hold.
     """
-    base = (settings.SUPABASE_URL or "").rstrip("/")
-    key = settings.SUPABASE_SERVICE_ROLE_KEY
     uid = getattr(profile, "supabase_uid", None)
-    if not (base and key and uid):
+    if not (is_configured() and uid):
         return None
     try:
-        resp = requests.get(
-            f"{base}/auth/v1/admin/users/{uid}",
-            headers={"apikey": key, "Authorization": f"Bearer {key}"},
-            timeout=_TIMEOUT,
-        )
+        resp = _admin_user_request("get", uid, timeout=_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
     except (requests.RequestException, ValueError):
@@ -77,14 +83,8 @@ def delete_user(uid) -> bool:
     """
     if not is_configured():
         return False
-    base = settings.SUPABASE_URL.rstrip("/")
-    key = settings.SUPABASE_SERVICE_ROLE_KEY
     try:
-        resp = requests.delete(
-            f"{base}/auth/v1/admin/users/{uid}",
-            headers={"apikey": key, "Authorization": f"Bearer {key}"},
-            timeout=_TIMEOUT * 2,
-        )
+        resp = _admin_user_request("delete", uid, timeout=_TIMEOUT * 2)
     except requests.RequestException as exc:
         raise SupabaseDeleteError(str(exc)) from exc
     if resp.status_code == 404 or resp.ok:
