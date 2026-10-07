@@ -9990,6 +9990,16 @@
 			"layout": "diagonal/ochre",
 			"bar": 0
 		},
+		"pt/the-practice-of-the-presence-of-god-children": {
+			"ground": "2c6bee7d03dd3111023d39e39e29c3496941b75a59d554a8f550e62626ab006f",
+			"style": "young",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"pt/the-secret-of-guidance": {
 			"ground": "f3af40eb8611ef08eb13f1698ec3e7523a33f6155067304e85ab824f10b935fa",
 			"style": "devotional",
