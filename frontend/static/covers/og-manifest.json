@@ -10386,6 +10386,32 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"sw/amanda-smith-autobiography-children": {
+			"ground": "05d364b0f318f4bc3f0db811825f62d89ee34ab5e54312d415eafb61479c4716",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 0.3,
+			"layout": "framed",
+			"bar": 0,
+			"rows": {
+				"byline": [
+					[103, 102, 497, 131]
+				],
+				"title": [
+					[53, 326, 547, 402],
+					[45, 391, 555, 467]
+				],
+				"mark": [
+					[232, 664, 368, 746]
+				]
+			},
+			"middle": [
+				275,
+				519
+			]
+		},
 		"sw/answers-to-prayer": {
 			"ground": "10a5609700bbccada20e96febebe3beae0da53ad2ac8b08f93626a687562db2a",
 			"style": "revival",

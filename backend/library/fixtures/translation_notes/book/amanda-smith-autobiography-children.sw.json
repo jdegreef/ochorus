@@ -1,0 +1,112 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography-children",
+ "language": "sw",
+ "job_issue": 5375,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the classic Swahili Union Version (SUV) register of the shipped sw corpus; the declared swhonen API text is a different edition and was not used. A `mined` row's wording is a verbatim substring of the cited shipped *.sw.json; the rest are self_rendered in SUV register (no reachable PD SUV text) and await native review.",
+  "Each chapter opens with a KJV epigraph (blockquote, block 0); the English quotes partial verses, so mined epigraphs carry only the matching clause of the corpus rendering. The body echoes (Col 3:15 in ch10's prayer, Ps 91:11 and Matt 18:5 in the closing paragraphs of ch11/ch12) are loose retellings, self_rendered.",
+  "Clock times: ch1 'until one or two in the morning' is rendered in Swahili reckoning (saa saba au saa nane usiku) so a child reads it as the middle of the night; flag for the native reviewer. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Galatians 5:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "holy-in-christ.sw.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Matthew 25:35",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbs 4:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "John 6:37",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Luke 16:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 56:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Mark 11:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "ministry-of-intercession.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Proverbs 16:32",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Colossians 3:15",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Psalm 91:11",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "thoughts-for-the-quiet-hour.sw.json"
+  },
+  {
+   "reference": "Psalm 91:11",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 18:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  },
+  {
+   "reference": "Matthew 18:5",
+   "status": "self_rendered",
+   "block_index": 7,
+   "chapter_order": 12
+  }
+ ]
+}

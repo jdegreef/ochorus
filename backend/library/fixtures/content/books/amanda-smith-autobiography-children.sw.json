@@ -1,0 +1,396 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-children",
+  "language": "sw",
+  "title": "Hadithi ya Amanda Smith (Kwa Watoto)",
+  "subtitle": "",
+  "description": "Mfahamu Amanda Berry Smith, aliyezaliwa utumwani huko Maryland zamani sana, aliyekua akamtumaini Mungu kwa kila kitu — hata jozi ya viatu. Katika hadithi zake mwenyewe za kweli, zilizosimuliwa upya kwa upole kwa ajili ya watoto, baba shujaa anainunua familia yake ikawa huru, mtu aliyefichwa analindwa salama, na mfuaji nguo mmoja anapeleka habari njema za Yesu hadi Uingereza, India na Afrika.",
+  "qa": [
+   {
+    "question": "Amanda Berry Smith alikuwa nani?",
+    "answer": "Alikuwa mwanamke mweusi, aliyezaliwa utumwani huko Maryland karibu mwaka 1837, aliyekua akawa mhubiri msafiri aliyejulikana sana. Alimtumaini Mungu kwa kila kitu na aliwaambia watu habari za Yesu huko Amerika, Uingereza, India na Afrika."
+   },
+   {
+    "question": "Je, kweli Amanda alizaliwa akiwa mtumwa?",
+    "answer": "Ndiyo, kweli. Lakini baba yake, Samuel Berry, alifanya kazi usiku baada ya usiku ili kupata pesa na kununua uhuru — kwanza uhuru wake mwenyewe, kisha wa mke wake na watoto wake. Amanda alikuwa bado mdogo sana alipomnunua akawa huru."
+   },
+   {
+    "question": "Amanda alifanya kazi gani kabla ya kuwa mhubiri?",
+    "answer": "Kwa miaka mingi alikuwa mfuaji nguo. Alisimama kwenye beseni lake akisugua nguo za watu wengine, wakati mwingine usiku kucha, ili apate pesa na kuitunza familia yake."
+   },
+   {
+    "question": "Je, miujiza katika hadithi hizi ni ya kubuni?",
+    "answer": "Hapana. Kila hadithi inatoka katika kitabu ambacho Amanda aliandika kuhusu maisha yake mwenyewe. Hatujaongeza miujiza yoyote ya kubuni — haya ndiyo mambo halisi aliyosema Mungu alimtendea."
+   },
+   {
+    "question": "Kwa nini Amanda anazungumza na Mungu kuhusu mambo madogo, kama viatu?",
+    "answer": "Amanda aliamini kwamba Mungu alijali kila sehemu ya maisha yake, kubwa au ndogo. Viatu vyake vilipochakaa, alimwomba Mungu tu, na punde rafiki mmoja akampa kiasi kamili cha pesa alichohitaji."
+   },
+   {
+    "question": "Je, Amanda alikuwa na maisha ya furaha?",
+    "answer": "Alijua furaha kuu ndani ya Mungu, lakini pia alijua huzuni nzito. Baadhi ya watoto wake wadogo walikufa wakiwa wachanga sana, na mara nyingi watu hawakumtendea wema. Hata hivyo sikuzote alisema kwamba Mungu alimfariji na hakumwacha peke yake kamwe."
+   },
+   {
+    "question": "Bob mdogo alikuwa nani?",
+    "answer": "Bob alikuwa mvulana mdogo huko Afrika ambaye baba yake alimwomba Amanda amlee na kumfundisha habari za Mungu. Amanda alikuwa dhaifu na alikuwa na pesa kidogo sana, lakini alimtumaini Mungu akamchukua Bob kuwa mtoto wake mwenyewe kabisa."
+   },
+   {
+    "question": "Watoto wanaweza kujifunza nini kutokana na maisha ya Amanda?",
+    "answer": "Kwamba Mungu anaweza kutumainiwa gizani kama vile nuruni, kwamba uaminifu na wema vina thamani kubwa kuliko pesa, na kwamba Mungu husikia hata ombi dogo kabisa."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Usimulizi mpya wa Ochorus kwa wasomaji wadogo wa tawasifu ya Amanda Berry Smith, ambayo ni mali ya umma. Usimulizi huu ni wetu, huru kusomwa na kushirikishwa.",
+  "cover_url": "/covers/art/amanda-smith-autobiography-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 25,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 1,
+  "title": "Siku Baba Alipotununua Tukawa Huru",
+  "body_html": "<blockquote><p><em>“Kristo alituweka huru kwa ajili ya uhuru: basi simameni imara.”</em> — Wagalatia 5:1</p></blockquote> <p>Zamani sana, mahali paitwapo Maryland, alizaliwa msichana mdogo aitwaye Amanda. Katika siku zile za huzuni, familia za watu weusi kama yake hazikuwa huru. Ziliweza kununuliwa na kuuzwa, kama farasi au gunia la nafaka, na zililazimishwa kufanya kazi bila malipo yoyote.</p> <p>Lakini Amanda alikuwa na baba mzuri ajabu aitwaye Samuel Berry. Alikuwa na nguvu, alikuwa mvumilivu, na alikuwa na ndoto moja kubwa — kuifanya familia yake yote iwe huru.</p> <p>Basi Samuel alifanya kazi. Mchana kutwa alimfanyia kazi mwanamke aliyekuwa akimmiliki. Kisha, jua lilipotua na watu wengine wakalala, aliendelea kufanya kazi zaidi. Alitengeneza mafagio. Alisuka mikeka kwa maganda ya mahindi. Alichoma chokaa. Wakati wa mavuno alitembea maili tatu au nne gizani ili kufanya kazi mashambani hadi saa saba au saa nane usiku, kisha akalala saa moja tu kabla ya kuanza tena upya.</p> <p>Senti kwa senti, mwaka baada ya mwaka, aliweka akiba. Kwanza alijinunua mwenyewe akawa huru. Kisha akamnunua mke wake. Kisha, mmoja baada ya mwingine, akawanunua watoto wake — hadi mwishowe Amanda mdogo naye akawa huru.</p> <p>Alikuwa mdogo mno hata hakuweza kukumbuka kuwa mtumwa. Lakini maisha yake yote alipenda kusema kwamba Mungu alikuwa amemweka huru.</p> <p>Je, unaona jinsi baba yake Amanda alivyofanya kazi kwa bidii kwa ajili ya watu aliowapenda? Baba yako wa mbinguni alifanya hata zaidi ili akuweke huru — alimtoa Mwana wake mwenyewe, Yesu. Hukulipata kwa kazi yako; ni zawadi yake kwako.</p> <p>Mungu mpendwa, asante kwa kunipenda sana hata ukafanya njia ya kuniweka huru. Nisaidie kuwapenda wengine kama baba yake Amanda alivyoipenda familia yake. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Baba yake Amanda, Samuel Berry, alifanya nini baada ya kumaliza kazi yake ndefu ya mchana?",
+    "answer": "Aliendelea kufanya kazi usiku — akitengeneza mafagio, akisuka mikeka ya maganda ya mahindi, akichoma chokaa, na kutembea maili nyingi kwenda kufanya kazi mashambani hadi saa saba au saa nane usiku."
+   },
+   {
+    "question": "Kwa nini Samuel aliweka akiba senti kwa senti kwa miaka mingi hivyo?",
+    "answer": "Alitaka familia yake yote iwe huru. Kwanza alijinunua mwenyewe, kisha mke wake, kisha watoto wake mmoja baada ya mwingine, hadi Amanda naye akawa huru."
+   },
+   {
+    "question": "Baba yake Amanda alifanya kazi kwa bidii sana ili kuiweka familia yake huru. Mungu amefanya nini ili akuweke wewe huru?",
+    "answer": "Funzo la sura hii: Baba yako wa mbinguni alimtoa Mwana wake mwenyewe, Yesu, ili akuweke huru. Hukulipata kwa kazi yako; ni zawadi yake kwako."
+   }
+  ],
+  "body_text": "“Kristo alituweka huru kwa ajili ya uhuru: basi simameni imara.” — Wagalatia 5:1 Zamani sana, mahali paitwapo Maryland, alizaliwa msichana mdogo aitwaye Amanda. Katika siku zile za huzuni, familia za watu weusi kama yake hazikuwa huru. Ziliweza kununuliwa na kuuzwa, kama farasi au gunia la nafaka, na zililazimishwa kufanya kazi bila malipo yoyote. Lakini Amanda alikuwa na baba mzuri ajabu aitwaye Samuel Berry. Alikuwa na nguvu, alikuwa mvumilivu, na alikuwa na ndoto moja kubwa — kuifanya familia yake yote iwe huru. Basi Samuel alifanya kazi. Mchana kutwa alimfanyia kazi mwanamke aliyekuwa akimmiliki. Kisha, jua lilipotua na watu wengine wakalala, aliendelea kufanya kazi zaidi. Alitengeneza mafagio. Alisuka mikeka kwa maganda ya mahindi. Alichoma chokaa. Wakati wa mavuno alitembea maili tatu au nne gizani ili kufanya kazi mashambani hadi saa saba au saa nane usiku, kisha akalala saa moja tu kabla ya kuanza tena upya. Senti kwa senti, mwaka baada ya mwaka, aliweka akiba. Kwanza alijinunua mwenyewe akawa huru. Kisha akamnunua mke wake. Kisha, mmoja baada ya mwingine, akawanunua watoto wake — hadi mwishowe Amanda mdogo naye akawa huru. Alikuwa mdogo mno hata hakuweza kukumbuka kuwa mtumwa. Lakini maisha yake yote alipenda kusema kwamba Mungu alikuwa amemweka huru. Je, unaona jinsi baba yake Amanda alivyofanya kazi kwa bidii kwa ajili ya watu aliowapenda? Baba yako wa mbinguni alifanya hata zaidi ili akuweke huru — alimtoa Mwana wake mwenyewe, Yesu. Hukulipata kwa kazi yako; ni zawadi yake kwako. Mungu mpendwa, asante kwa kunipenda sana hata ukafanya njia ya kuniweka huru. Nisaidie kuwapenda wengine kama baba yake Amanda alivyoipenda familia yake. Amina.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 2,
+  "title": "Maombi ya Bibi Karibu na Chumba cha Maziwa",
+  "body_html": "<blockquote><p><em>“Kuomba kwake mwenye haki kwafaa sana, kukiwa kwa bidii.”</em> — Yakobo 5:16</p></blockquote> <p>Kabla baba yake Amanda hajaweza kuinunua familia yake, kuna jambo lililopaswa kubadilika. Nalo lilibadilika kwa sababu ya mwanamke mzee aliyejua kuomba — bibi yake Amanda.</p> <p>Bibi alimpenda Mungu kwa moyo wake wote. Tena na tena alimwomba afungue njia ili wajukuu wake wawe huru. Alipokuwa na jambo zito mno kulibeba, alikuwa akijiondoa polepole kwenda vichakani na, kama Amanda alivyosema, “kumwambia Yesu” tu habari zake zote.</p> <p>Siku moja, msichana mmoja aitwaye Bi Celie alikwenda kwenye mkutano wa kambi ili kutazama tu. Lakini huko alisikia habari za Yesu, naye akampa moyo wake. Familia yake haikupendezwa hata kidogo. Walijaribu kila njia kumbadilisha nia.</p> <p>Kisha Bi Celie akaugua sana homa. Alipokuwa amelala karibu kufa, aliikusanya familia yake karibu naye na kuwaomba waahidi jambo moja: kwamba watamruhusu Samuel amnunue mke wake na watoto wake. Aliwaomba mara tatu, na mwishowe wakaahidi.</p> <p>Kila mara Bi Celie aliposema, mama yake Amanda alikimbia kumwambia Bibi, na kila mara Bibi aliharakisha kutoka nje kumshukuru Mungu. Miaka yake mingi ya kuomba ilikuwa ikijibiwa.</p> <p>Unapoomba kitu na jibu halikuji mara moja, usikate tamaa. Bibi yake Amanda aliomba kwa miaka mingi, na Mungu alisikia kila neno lake. Anakusikia wewe pia.</p> <p>Mungu mpendwa, asante kwa kuwa huchoki kamwe kunisikiliza. Nifundishe kuendelea kuomba, hata jibu linapochukua muda mrefu. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Bibi alipokuwa na jambo zito mno kulibeba, alifanya nini?",
+    "answer": "Alijiondoa polepole kwenda vichakani na, kama Amanda alivyosema, “kumwambia Yesu” tu habari zake zote. Aliomba tena na tena ili wajukuu wake wawe huru."
+   },
+   {
+    "question": "Bi Celie aliiomba familia yake iahidi nini kabla hajafa?",
+    "answer": "Aliwaomba wamruhusu Samuel amnunue mke wake na watoto wake. Aliwaomba mara tatu, na mwishowe wakaahidi."
+   },
+   {
+    "question": "Je, umewahi kuomba kitu ambacho hakikutokea mara moja? Ungeweza kufanya nini wakati unasubiri?",
+    "answer": "Funzo la sura hii: usikate tamaa kuomba. Bibi aliomba kwa miaka mingi, na Mungu alisikia kila neno lake — anamsikia mtoto wako pia."
+   }
+  ],
+  "body_text": "“Kuomba kwake mwenye haki kwafaa sana, kukiwa kwa bidii.” — Yakobo 5:16 Kabla baba yake Amanda hajaweza kuinunua familia yake, kuna jambo lililopaswa kubadilika. Nalo lilibadilika kwa sababu ya mwanamke mzee aliyejua kuomba — bibi yake Amanda. Bibi alimpenda Mungu kwa moyo wake wote. Tena na tena alimwomba afungue njia ili wajukuu wake wawe huru. Alipokuwa na jambo zito mno kulibeba, alikuwa akijiondoa polepole kwenda vichakani na, kama Amanda alivyosema, “kumwambia Yesu” tu habari zake zote. Siku moja, msichana mmoja aitwaye Bi Celie alikwenda kwenye mkutano wa kambi ili kutazama tu. Lakini huko alisikia habari za Yesu, naye akampa moyo wake. Familia yake haikupendezwa hata kidogo. Walijaribu kila njia kumbadilisha nia. Kisha Bi Celie akaugua sana homa. Alipokuwa amelala karibu kufa, aliikusanya familia yake karibu naye na kuwaomba waahidi jambo moja: kwamba watamruhusu Samuel amnunue mke wake na watoto wake. Aliwaomba mara tatu, na mwishowe wakaahidi. Kila mara Bi Celie aliposema, mama yake Amanda alikimbia kumwambia Bibi, na kila mara Bibi aliharakisha kutoka nje kumshukuru Mungu. Miaka yake mingi ya kuomba ilikuwa ikijibiwa. Unapoomba kitu na jibu halikuji mara moja, usikate tamaa. Bibi yake Amanda aliomba kwa miaka mingi, na Mungu alisikia kila neno lake. Anakusikia wewe pia. Mungu mpendwa, asante kwa kuwa huchoki kamwe kunisikiliza. Nifundishe kuendelea kuomba, hata jibu linapochukua muda mrefu. Amina.",
+  "word_count": 215
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 3,
+  "title": "Mtu Aliyefichwa Kitandani",
+  "body_html": "<blockquote><p><em>“Nalikuwa mgeni, mkanikaribisha.”</em> — Mathayo 25:35</p></blockquote> <p>Familia ya Amanda ilipokwisha kuwa huru, waliishi kwenye shamba huko Pennsylvania. Nyumba yao ndogo ikawa mahali pa siri pa usalama. Watu walipokimbia utumwa, wakiwa wamechoka na kuogopa, walimjia Samuel Berry, naye aliwasaidia kuendelea na safari kuelekea uhuru, mara nyingi katika giza la usiku.</p> <p>Hii ilikuwa kazi ya hatari, na watu wakatili waliichunguza nyumba hiyo kwa karibu, wakitumaini kumkamata mtu.</p> <p>Asubuhi moja, kungali mapema, baba yake Amanda alikuwa nje akiwalisha nguruwe. Alipotazama juu, aliona watu wanne wakiwa wamepanda farasi wakija kuelekea nyumbani. Hapakuwa na muda wa kukimbia ndani. Basi akamwita mke wake kwa sauti, “Mama, naona watu wanne wanakuja; fanya uwezavyo.”</p> <p>Mama yake Amanda alikuwa mwepesi na shujaa. Mtu mmoja aliyekuwa ametoroka alikuwa amejificha ghorofani. Mara moja alimshusha chini na kumficha ndani ya kitanda, chini ya godoro. Kisha akamlaza juu yake mwanawe mdogo wa miaka miwili, aliyekuwa amelala usingizi.</p> <p>Wale watu walitafuta kila mahali. Walitazama ghorofani na jikoni. Walimchungulia hata yule mtoto aliyelala kitandani — lakini hawakumwona yule mtu aliyefichwa chini yake. Wakaondoka kwa farasi zao, na punde yule mtu akaendelea salama na safari yake kuelekea kaskazini.</p> <p>Mama yake Amanda alitumia ujasiri wake na akili yake kumlinda mtu aliyehitaji msaada. Mungu anapokupa nafasi ya kumtendea wema mtu aliye katika taabu, wewe pia waweza kuwa shujaa na msaidizi.</p> <p>Mungu mpendwa, unifanye shujaa na mwenye wema kama mama yake Amanda. Nisaidie kumjali yeyote anayehitaji rafiki mpole wa kumlinda. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Familia ya Amanda ilifanya nini kuwasaidia watu waliokimbia utumwa?",
+    "answer": "Nyumba yao ilikuwa mahali pa siri pa usalama. Samuel Berry aliwasaidia watu waliochoka na kuogopa kuendelea na safari kuelekea uhuru, mara nyingi katika giza la usiku."
+   },
+   {
+    "question": "Watu wanne walipofika kwa farasi, mama yake Amanda alimlindaje yule mtu aliyefichwa?",
+    "answer": "Alimficha ndani ya kitanda chini ya godoro na kumlaza juu yake mwanawe wa miaka miwili aliyekuwa amelala. Wale watu walitafuta lakini hawakumwona kamwe."
+   },
+   {
+    "question": "Je, unamfikiria mtu ambaye huenda anahitaji rafiki mwema na shujaa? Ungeweza kumsaidiaje?",
+    "answer": "Funzo la sura hii: mama yake Amanda alitumia ujasiri na akili yake kumlinda mtu mwenye shida. Mungu anapotupa nafasi ya kumtendea wema mtu aliye katika taabu, sisi pia tunaweza kuwa mashujaa na wasaidizi."
+   }
+  ],
+  "body_text": "“Nalikuwa mgeni, mkanikaribisha.” — Mathayo 25:35 Familia ya Amanda ilipokwisha kuwa huru, waliishi kwenye shamba huko Pennsylvania. Nyumba yao ndogo ikawa mahali pa siri pa usalama. Watu walipokimbia utumwa, wakiwa wamechoka na kuogopa, walimjia Samuel Berry, naye aliwasaidia kuendelea na safari kuelekea uhuru, mara nyingi katika giza la usiku. Hii ilikuwa kazi ya hatari, na watu wakatili waliichunguza nyumba hiyo kwa karibu, wakitumaini kumkamata mtu. Asubuhi moja, kungali mapema, baba yake Amanda alikuwa nje akiwalisha nguruwe. Alipotazama juu, aliona watu wanne wakiwa wamepanda farasi wakija kuelekea nyumbani. Hapakuwa na muda wa kukimbia ndani. Basi akamwita mke wake kwa sauti, “Mama, naona watu wanne wanakuja; fanya uwezavyo.” Mama yake Amanda alikuwa mwepesi na shujaa. Mtu mmoja aliyekuwa ametoroka alikuwa amejificha ghorofani. Mara moja alimshusha chini na kumficha ndani ya kitanda, chini ya godoro. Kisha akamlaza juu yake mwanawe mdogo wa miaka miwili, aliyekuwa amelala usingizi. Wale watu walitafuta kila mahali. Walitazama ghorofani na jikoni. Walimchungulia hata yule mtoto aliyelala kitandani — lakini hawakumwona yule mtu aliyefichwa chini yake. Wakaondoka kwa farasi zao, na punde yule mtu akaendelea salama na safari yake kuelekea kaskazini. Mama yake Amanda alitumia ujasiri wake na akili yake kumlinda mtu aliyehitaji msaada. Mungu anapokupa nafasi ya kumtendea wema mtu aliye katika taabu, wewe pia waweza kuwa shujaa na msaidizi. Mungu mpendwa, unifanye shujaa na mwenye wema kama mama yake Amanda. Nisaidie kumjali yeyote anayehitaji rafiki mpole wa kumlinda. Amina.",
+  "word_count": 232
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 4,
+  "title": "Kujifunza Kusoma Dirishani",
+  "body_html": "<blockquote><p><em>“Bora hekima, basi jipatie hekima.”</em> — Mithali 4:7</p></blockquote> <p>Amanda alitamani sana kwenda shule. Lakini alipokuwa msichana, watoto weusi hawakuruhusiwa kujifunza ila kwa shida sana. Shule iliyokuwa karibu zaidi ilikuwa mbali, na hata huko alilazimishwa kusubiri nyuma hadi watoto wengine wote wafundishwe kwanza. Katika maisha yake yote, Amanda alikwenda shule kwa muda wa miezi mitatu hivi tu.</p> <p>Asubuhi moja ya baridi kali ya majira ya baridi, aliomba sana aruhusiwe kutembea maili mbili na nusu hadi shuleni hata hivyo. Theluji ilikuwa nyingi, naye akapata baridi kiasi kwamba hakuweza hata kusema alipofika mlangoni hatimaye. Mvulana mmoja ilimbidi amfungulie mlango, na mikono yenye upendo ikampasha moto ndani.</p> <p>Lakini Amanda hakukata tamaa kujifunza. Baba yake alileta magazeti nyumbani, naye akapata wazo la busara. Alikata herufi kubwa kwa mkasi. Kisha akazipanga kwenye kingo ya dirisha na kumwomba mama yake amsaidie kuziunganisha herufi hizo kuwa maneno.</p> <p>Moyo wake uliruka kwa furaha siku aliyosoma sentensi yake ya kwanza kabisa: “Nyumba, mti, mbwa, ng’ombe.” Alijivunia sana! Aliwakusanya watoto wengine kumzunguka ili awaonyeshe jinsi alivyoweza kusoma.</p> <p>Amanda alitaka kujifunza, naye alijitahidi sana, hata ilipokuwa vigumu. Kujifunza ni zawadi kutoka kwa Mungu. Jambo linapokuwa gumu kwako, endelea kujaribu — moyo wenye subira unaweza kufanya mambo ya ajabu.</p> <p>Mungu mpendwa, asante kwa akili yangu na kwa mambo mazuri ninayopata kujifunza. Nisaidie nisikate tamaa kujifunza kunapokuwa kugumu. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Nini kilimtokea Amanda alipotembea kwenda shule asubuhi ile ya baridi kali?",
+    "answer": "Alipata baridi sana katika theluji nyingi hata hakuweza kusema alipofika mlangoni. Mvulana mmoja alimfungulia mlango, na mikono yenye upendo ikampasha moto."
+   },
+   {
+    "question": "Amanda alitumiaje magazeti ya baba yake kujifunza kusoma?",
+    "answer": "Alikata herufi kubwa, akazipanga kwenye kingo ya dirisha, na kumwomba mama yake amsaidie kuziunganisha kuwa maneno."
+   },
+   {
+    "question": "Ni jambo gani ambalo ni gumu kwako kujifunza sasa hivi? Nini kingekusaidia kuendelea kujaribu?",
+    "answer": "Funzo la sura hii: kujifunza ni zawadi kutoka kwa Mungu, na jambo linapokuwa gumu, endelea kujaribu — moyo wenye subira unaweza kufanya mambo ya ajabu."
+   }
+  ],
+  "body_text": "“Bora hekima, basi jipatie hekima.” — Mithali 4:7 Amanda alitamani sana kwenda shule. Lakini alipokuwa msichana, watoto weusi hawakuruhusiwa kujifunza ila kwa shida sana. Shule iliyokuwa karibu zaidi ilikuwa mbali, na hata huko alilazimishwa kusubiri nyuma hadi watoto wengine wote wafundishwe kwanza. Katika maisha yake yote, Amanda alikwenda shule kwa muda wa miezi mitatu hivi tu. Asubuhi moja ya baridi kali ya majira ya baridi, aliomba sana aruhusiwe kutembea maili mbili na nusu hadi shuleni hata hivyo. Theluji ilikuwa nyingi, naye akapata baridi kiasi kwamba hakuweza hata kusema alipofika mlangoni hatimaye. Mvulana mmoja ilimbidi amfungulie mlango, na mikono yenye upendo ikampasha moto ndani. Lakini Amanda hakukata tamaa kujifunza. Baba yake alileta magazeti nyumbani, naye akapata wazo la busara. Alikata herufi kubwa kwa mkasi. Kisha akazipanga kwenye kingo ya dirisha na kumwomba mama yake amsaidie kuziunganisha herufi hizo kuwa maneno. Moyo wake uliruka kwa furaha siku aliyosoma sentensi yake ya kwanza kabisa: “Nyumba, mti, mbwa, ng’ombe.” Alijivunia sana! Aliwakusanya watoto wengine kumzunguka ili awaonyeshe jinsi alivyoweza kusoma. Amanda alitaka kujifunza, naye alijitahidi sana, hata ilipokuwa vigumu. Kujifunza ni zawadi kutoka kwa Mungu. Jambo linapokuwa gumu kwako, endelea kujaribu — moyo wenye subira unaweza kufanya mambo ya ajabu. Mungu mpendwa, asante kwa akili yangu na kwa mambo mazuri ninayopata kujifunza. Nisaidie nisikate tamaa kujifunza kunapokuwa kugumu. Amina.",
+  "word_count": 215
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 5,
+  "title": "Kuomba Katika Chumba cha Chini",
+  "body_html": "<blockquote><p><em>“Naye ajaye kwangu sitamtupa nje kamwe.”</em> — Yohana 6:37</p></blockquote> <p>Amanda alipokua mtu mzima, alitamani kuliko kitu kingine chochote kuwa mali ya Mungu. Lakini alikuwa na moyo wa kiburi na ukaidi, na kwa muda mrefu alitaka kuokolewa kwa njia yake mwenyewe, kimya kimya, bila makuu yoyote.</p> <p>Aliomba na kuomba. Moyoni mwake alijiona si mwema vya kutosha, na sauti ya kunong’ona iliendelea kumwambia, “Mungu hatakusikia.” Kadiri alivyojitahidi zaidi, ndivyo Mungu alivyoonekana kuwa mbali zaidi.</p> <p>Mwishowe, alasiri moja alipokuwa akifanya kazi katika nyumba ya familia moja ya Quaker yenye wema, Amanda aliamua kabisa. Aliandaa meza, akabandika birika la chai motoni, akashuka katika chumba cha chini ili kuomba. “Lazima nipate wokovu alasiri hii,” alisema, “la sivyo nitaomba mpaka niupate.”</p> <p>Alimimina moyo wake wote mbele za Mungu. Kisha akaomba maneno rahisi kuliko yote: “Ee Bwana, ukinisaidia, nitakuamini.” Na wakati uleule aliposema kwamba atamtumaini — alimtumaini kweli.</p> <p>Furaha ilifurika rohoni mwake kama mwanga wa jua. Ule mzigo mzito ukaondoka. Aliitazama mikono yake na kujisikia mpya kabisa mwili mzima. Alikimbia kupanda ngazi za chumba cha chini, na baadaye akajitazama katika kioo kikubwa, akiwa na hakika kwamba hata uso wake lazima ulionekana tofauti.</p> <p>Amanda alidhani kwamba ilimbidi ajifanye mwema vya kutosha kwa ajili ya Mungu. Lakini Yesu humkaribisha yeyote anayemjia tu na kumtumaini. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kuja.</p> <p>Yesu mpendwa, asante kwa kuwa wewe humfukuzi mtu yeyote kamwe. Mimi hapa — ninakuja kwako, na ninakutumaini. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda alikwenda wapi kuomba alasiri ile alipoamua kabisa?",
+    "answer": "Aliandaa meza, akabandika birika la chai motoni, akashuka katika chumba cha chini kuomba, akisema ataomba mpaka apate wokovu."
+   },
+   {
+    "question": "Amanda aliomba maneno gani rahisi, na nini kilitokea alipoomba hivyo?",
+    "answer": "Aliomba, “Ee Bwana, ukinisaidia, nitakuamini.” Wakati uleule alipomtumaini, furaha ilifurika rohoni mwake na mzigo wake ukaondoka."
+   },
+   {
+    "question": "Je, unadhani lazima kwanza uwe mwema vya kutosha kabla ya kumjia Yesu? Kwa nini ndiyo au kwa nini hapana?",
+    "answer": "Funzo la sura hii: Yesu humkaribisha yeyote anayemjia tu na kumtumaini. Huhitaji kwanza kuwa mwema vya kutosha — unahitaji tu kuja."
+   }
+  ],
+  "body_text": "“Naye ajaye kwangu sitamtupa nje kamwe.” — Yohana 6:37 Amanda alipokua mtu mzima, alitamani kuliko kitu kingine chochote kuwa mali ya Mungu. Lakini alikuwa na moyo wa kiburi na ukaidi, na kwa muda mrefu alitaka kuokolewa kwa njia yake mwenyewe, kimya kimya, bila makuu yoyote. Aliomba na kuomba. Moyoni mwake alijiona si mwema vya kutosha, na sauti ya kunong’ona iliendelea kumwambia, “Mungu hatakusikia.” Kadiri alivyojitahidi zaidi, ndivyo Mungu alivyoonekana kuwa mbali zaidi. Mwishowe, alasiri moja alipokuwa akifanya kazi katika nyumba ya familia moja ya Quaker yenye wema, Amanda aliamua kabisa. Aliandaa meza, akabandika birika la chai motoni, akashuka katika chumba cha chini ili kuomba. “Lazima nipate wokovu alasiri hii,” alisema, “la sivyo nitaomba mpaka niupate.” Alimimina moyo wake wote mbele za Mungu. Kisha akaomba maneno rahisi kuliko yote: “Ee Bwana, ukinisaidia, nitakuamini.” Na wakati uleule aliposema kwamba atamtumaini — alimtumaini kweli. Furaha ilifurika rohoni mwake kama mwanga wa jua. Ule mzigo mzito ukaondoka. Aliitazama mikono yake na kujisikia mpya kabisa mwili mzima. Alikimbia kupanda ngazi za chumba cha chini, na baadaye akajitazama katika kioo kikubwa, akiwa na hakika kwamba hata uso wake lazima ulionekana tofauti. Amanda alidhani kwamba ilimbidi ajifanye mwema vya kutosha kwa ajili ya Mungu. Lakini Yesu humkaribisha yeyote anayemjia tu na kumtumaini. Huhitaji kwanza kuwa mwema vya kutosha. Unahitaji tu kuja. Yesu mpendwa, asante kwa kuwa wewe humfukuzi mtu yeyote kamwe. Mimi hapa — ninakuja kwako, na ninakutumaini. Amina.",
+  "word_count": 232
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 6,
+  "title": "Pesa Sakafuni Jikoni",
+  "body_html": "<blockquote><p><em>“Aliye mwaminifu katika lililo dogo sana, huwa mwaminifu katika lililo kubwa pia.”</em> — Luka 16:10</p></blockquote> <p>Amanda alikuwa na dada mdogo aitwaye Frances, naye Amanda alimpenda sana. Ili kumweka huru, Amanda alipaswa kulipa pesa nyingi sana — zaidi ya alizokuwa nazo. Basi alikopa dola hamsini, na sasa alikuwa na deni hilo. Lilimhangaisha mchana na usiku.</p> <p>Alasiri moja mtu mmoja tajiri na mwema aitwaye Bw. Robert aliitembelea familia. Baada ya chakula cha jioni alicheza jikoni, na bila kujua, akadondosha sakafuni kifurushi kidogo cha karatasi kilichosokotwa. Kilionekana kama kitu kisicho na maana.</p> <p>Baadaye, Amanda alipoinama kukiokota, macho yake yalikodoka. Zilikuwa pesa — dola mia tatu! Na hapakuwa na mtu mwingine yeyote chumbani.</p> <p>Wazo la hila likaingia kimyakimya: “Zichukue. Sasa unaweza kulipa deni lako, na hakuna atakayejua kamwe.” Lakini Amanda alijibu papo hapo, “Hapana. Sitaki kuingia katika taabu yoyote kwa sababu ya pesa hizi hata kidogo.”</p> <p>Bw. Robert aliporudi nyumbani akitafuta kila mahali, Amanda aliingiza mkono mfukoni kimya kimya na kumpa kila dola. Alifurahi sana na kushukuru sana hata akampa dola hamsini kama zawadi ya shukrani — kiasi kamili alichohitaji kulipa deni lake!</p> <p>Amanda alitenda jambo la uaminifu, hata hakuna aliyekuwa akitazama na hata alipokuwa akizihitaji sana pesa hizo. Mungu aliona, naye Mungu akamtunza. Unapokuwa mwaminifu katika mambo madogo, unaweza kumtumaini akutunze wewe pia.</p> <p>Mungu mpendwa, nisaidie kuwa mwaminifu hata inapokuwa vigumu, na hata hakuna anayetazama. Asante kwa kuwa ninaweza kukutumaini sikuzote. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Amanda alikuwa na deni la dola hamsini?",
+    "answer": "Alizikopa ili kusaidia kulipa pesa zilizohitajika kumweka huru dada yake mdogo Frances, na deni hilo lilimhangaisha mchana na usiku."
+   },
+   {
+    "question": "Amanda alifanya nini na zile dola mia tatu alizozipata sakafuni jikoni?",
+    "answer": "Alikataa kuzichukua, akamrudishia Bw. Robert kila dola. Alishukuru sana hata akampa dola hamsini — kiasi kamili alichohitaji kwa deni lake."
+   },
+   {
+    "question": "Je, ni vigumu kuwa mwaminifu wakati hakuna anayetazama? Nini kingekusaidia kutenda lililo sawa?",
+    "answer": "Funzo la sura hii: Amanda alikuwa mwaminifu hata hakuna aliyetazama na alipokuwa akizihitaji sana pesa hizo. Mungu aliona, naye Mungu akamtunza — nasi tunaweza kumtumaini pia."
+   }
+  ],
+  "body_text": "“Aliye mwaminifu katika lililo dogo sana, huwa mwaminifu katika lililo kubwa pia.” — Luka 16:10 Amanda alikuwa na dada mdogo aitwaye Frances, naye Amanda alimpenda sana. Ili kumweka huru, Amanda alipaswa kulipa pesa nyingi sana — zaidi ya alizokuwa nazo. Basi alikopa dola hamsini, na sasa alikuwa na deni hilo. Lilimhangaisha mchana na usiku. Alasiri moja mtu mmoja tajiri na mwema aitwaye Bw. Robert aliitembelea familia. Baada ya chakula cha jioni alicheza jikoni, na bila kujua, akadondosha sakafuni kifurushi kidogo cha karatasi kilichosokotwa. Kilionekana kama kitu kisicho na maana. Baadaye, Amanda alipoinama kukiokota, macho yake yalikodoka. Zilikuwa pesa — dola mia tatu! Na hapakuwa na mtu mwingine yeyote chumbani. Wazo la hila likaingia kimyakimya: “Zichukue. Sasa unaweza kulipa deni lako, na hakuna atakayejua kamwe.” Lakini Amanda alijibu papo hapo, “Hapana. Sitaki kuingia katika taabu yoyote kwa sababu ya pesa hizi hata kidogo.” Bw. Robert aliporudi nyumbani akitafuta kila mahali, Amanda aliingiza mkono mfukoni kimya kimya na kumpa kila dola. Alifurahi sana na kushukuru sana hata akampa dola hamsini kama zawadi ya shukrani — kiasi kamili alichohitaji kulipa deni lake! Amanda alitenda jambo la uaminifu, hata hakuna aliyekuwa akitazama na hata alipokuwa akizihitaji sana pesa hizo. Mungu aliona, naye Mungu akamtunza. Unapokuwa mwaminifu katika mambo madogo, unaweza kumtumaini akutunze wewe pia. Mungu mpendwa, nisaidie kuwa mwaminifu hata inapokuwa vigumu, na hata hakuna anayetazama. Asante kwa kuwa ninaweza kukutumaini sikuzote. Amina.",
+  "word_count": 229
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 7,
+  "title": "Kumtumaini Mungu kwa Ajili ya Mtoto",
+  "body_html": "<blockquote><p><em>“Wakati niogopapo nitakutumaini wewe.”</em> — Zaburi 56:3</p></blockquote> <p>Jumapili moja asubuhi, Amanda alitamani sana kwenda kumsikiliza mhubiri fulani upande wa pili wa mji. Alimwogesha mtoto wake mchanga, Will, na kumlaza taratibu katika kitanda chake cha kubembea. Kisha akamwomba binti yake mkubwa, Mazie, amwangalie. “Akilia,” alisema, “usimbebe; mbembeleze tu.”</p> <p>Akaondoka kwenda kanisani. Lakini mhubiri alipokuwa akihubiri, hisia ya kutisha ilimjia ghafla. Alikuwa na hakika kwamba anaweza kumsikia mtoto wake akilia kwa nguvu kule mbali. Sauti ikanong’ona, “Mazie amemwangusha! Jambo baya sana limetokea! Kimbia nyumbani sasa hivi!”</p> <p>Moyo wa Amanda ulidunda kwa nguvu. Karibu aruke kutoka kitini akimbie nyumbani. Lakini kisha akakumbuka — alikuwa amewaambia watu wengine wamtumaini Mungu. Je, yeye mwenyewe hangeweza kumtumaini?</p> <p>“Nitamtumaini Bwana,” alisema kwa sauti ya chini, “hata kwa ajili ya mtoto wangu.” Tena yale mawazo ya kutisha yakaja, na tena akajibu, “Nimesema nitamtumaini Bwana, nami nitamtumaini.” Basi akabaki, akasikiliza, naye Mungu akaujaza moyo wake amani ya ajabu.</p> <p>Hatimaye Amanda aliporudi nyumbani kwa haraka na kufungua mlango, alimkuta Will mdogo amelala usingizi mtamu katika kitanda chake cha kubembea. Hakuwa hata ameamka. Alikuwa salama kabisa.</p> <p>Wakati mwingine akili zetu hujaa “itakuwaje kama” za kutisha. Unapoogopa, unaweza kufanya kama Amanda alivyofanya: mpe Mungu wasiwasi huo na umtumaini. Anakupenda, naye anakutunza sikuzote.</p> <p>Mungu mpendwa, ninapoogopa, nisaidie kukumbuka kwamba uko karibu. Ninakupa wasiwasi wangu, kwa sababu najua unanitunza vizuri. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Amanda alipokuwa kanisani, mawazo gani ya kutisha yaliingia akilini mwake?",
+    "answer": "Alikuwa na hakika kwamba anamsikia mtoto wake akilia kwa nguvu, na sauti ikanong’ona kwamba Mazie amemwangusha na kwamba akimbie nyumbani sasa hivi."
+   },
+   {
+    "question": "Amanda aliamua kufanya nini badala ya kukimbia nyumbani, na baadaye alikuta nini?",
+    "answer": "Alisema, “Nitamtumaini Bwana, hata kwa ajili ya mtoto wangu,” akabaki. Aliporudi nyumbani, Will mdogo alikuwa amelala usingizi mtamu, salama kabisa."
+   },
+   {
+    "question": "Ni “itakuwaje kama” zipi wakati mwingine hukufanya uogope? Unaweza kufanya nini na wasiwasi huo?",
+    "answer": "Funzo la sura hii: unapoogopa, mpe Mungu wasiwasi huo na umtumaini, kama Amanda alivyofanya. Anakupenda naye anakutunza sikuzote."
+   }
+  ],
+  "body_text": "“Wakati niogopapo nitakutumaini wewe.” — Zaburi 56:3 Jumapili moja asubuhi, Amanda alitamani sana kwenda kumsikiliza mhubiri fulani upande wa pili wa mji. Alimwogesha mtoto wake mchanga, Will, na kumlaza taratibu katika kitanda chake cha kubembea. Kisha akamwomba binti yake mkubwa, Mazie, amwangalie. “Akilia,” alisema, “usimbebe; mbembeleze tu.” Akaondoka kwenda kanisani. Lakini mhubiri alipokuwa akihubiri, hisia ya kutisha ilimjia ghafla. Alikuwa na hakika kwamba anaweza kumsikia mtoto wake akilia kwa nguvu kule mbali. Sauti ikanong’ona, “Mazie amemwangusha! Jambo baya sana limetokea! Kimbia nyumbani sasa hivi!” Moyo wa Amanda ulidunda kwa nguvu. Karibu aruke kutoka kitini akimbie nyumbani. Lakini kisha akakumbuka — alikuwa amewaambia watu wengine wamtumaini Mungu. Je, yeye mwenyewe hangeweza kumtumaini? “Nitamtumaini Bwana,” alisema kwa sauti ya chini, “hata kwa ajili ya mtoto wangu.” Tena yale mawazo ya kutisha yakaja, na tena akajibu, “Nimesema nitamtumaini Bwana, nami nitamtumaini.” Basi akabaki, akasikiliza, naye Mungu akaujaza moyo wake amani ya ajabu. Hatimaye Amanda aliporudi nyumbani kwa haraka na kufungua mlango, alimkuta Will mdogo amelala usingizi mtamu katika kitanda chake cha kubembea. Hakuwa hata ameamka. Alikuwa salama kabisa. Wakati mwingine akili zetu hujaa “itakuwaje kama” za kutisha. Unapoogopa, unaweza kufanya kama Amanda alivyofanya: mpe Mungu wasiwasi huo na umtumaini. Anakupenda, naye anakutunza sikuzote. Mungu mpendwa, ninapoogopa, nisaidie kukumbuka kwamba uko karibu. Ninakupa wasiwasi wangu, kwa sababu najua unanitunza vizuri. Amina.",
+  "word_count": 217
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 8,
+  "title": "Viatu Alivyoviombea",
+  "body_html": "<blockquote><p><em>“Yo yote myaombayo mkisali, aminini ya kwamba mnayapokea.”</em> — Marko 11:24</p></blockquote> <p>Siku moja Amanda alikuwa na hakika kwamba Mungu alitaka aende kuwaambia watu habari za Yesu katika mji mmoja uitwao Salem. Ulikuwa mbali, naye hakumjua hata mtu mmoja huko. Lakini alimtumaini Mungu, akaanza kujiandaa kwenda.</p> <p>Palikuwa na tatizo moja tu. Viatu vyake vilikuwa vimechakaa kabisa — vilikuwa na matundu chini. Kama miguu yake ingelowa safarini, alijua angeugua.</p> <p>Amanda hakuwa na pesa za kununua viatu vipya. Basi akafanya kama alivyofanya sikuzote: alimwambia Mungu habari zake. “Bwana,” aliomba, “kama ni mapenzi yako, tafadhali nipe pesa za viatu.” Naye aliamini kwamba atampa.</p> <p>Siku chache baadaye, kwenye mkutano, mzee mmoja mpendwa aitwaye Baba Brummell alimpa mkono alipokuwa akimuaga. Alipofanya hivyo, alimtia kitu kiganjani kimya kimya. Amanda akamshukuru na kukitia mfukoni bila kukitazama.</p> <p>Usiku ule, akiwa karibu na moto, alikikumbuka. Akakitoa na kuhesabu — moja, mbili, tatu, nne, dola tano! Zilitosha kabisa kununua jozi mpya ya viatu. Alifurahi sana hata hakuweza kulala vizuri. Mungu alikuwa amejibu maombi yake.</p> <p>Mungu hana shughuli nyingi kiasi cha kushindwa kujali mambo madogo katika maisha yako. Lolote unalohitaji kweli, unaweza kumwambia habari zake na kumtumaini akusaidie — hata kitu cha kawaida kama jozi ya viatu.</p> <p>Mungu mpendwa, asante kwa kuwa unajali mambo madogo ninayohitaji. Nisaidie kukuletea kila kitu na kukutumaini kwa ajili ya jibu. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Kwa nini Amanda alihitaji viatu vipya kabla ya kwenda Salem?",
+    "answer": "Viatu vyake vilikuwa na matundu chini, naye alijua kwamba miguu yake ikilowa safarini angeugua."
+   },
+   {
+    "question": "Mungu alijibuje maombi ya Amanda ya kupata viatu?",
+    "answer": "Kwenye mkutano, Baba Brummell alimtia kitu mkononi. Usiku ule alikihesabu: dola tano, kiasi kamili cha kununua jozi mpya ya viatu."
+   },
+   {
+    "question": "Je, kuna kitu kidogo unachohitaji? Unadhani Mungu anakijali?",
+    "answer": "Funzo la sura hii: Mungu hana shughuli nyingi kiasi cha kushindwa kujali mambo madogo. Lolote tunalohitaji kweli, tunaweza kumwambia habari zake na kumtumaini atusaidie — hata jozi ya viatu."
+   }
+  ],
+  "body_text": "“Yo yote myaombayo mkisali, aminini ya kwamba mnayapokea.” — Marko 11:24 Siku moja Amanda alikuwa na hakika kwamba Mungu alitaka aende kuwaambia watu habari za Yesu katika mji mmoja uitwao Salem. Ulikuwa mbali, naye hakumjua hata mtu mmoja huko. Lakini alimtumaini Mungu, akaanza kujiandaa kwenda. Palikuwa na tatizo moja tu. Viatu vyake vilikuwa vimechakaa kabisa — vilikuwa na matundu chini. Kama miguu yake ingelowa safarini, alijua angeugua. Amanda hakuwa na pesa za kununua viatu vipya. Basi akafanya kama alivyofanya sikuzote: alimwambia Mungu habari zake. “Bwana,” aliomba, “kama ni mapenzi yako, tafadhali nipe pesa za viatu.” Naye aliamini kwamba atampa. Siku chache baadaye, kwenye mkutano, mzee mmoja mpendwa aitwaye Baba Brummell alimpa mkono alipokuwa akimuaga. Alipofanya hivyo, alimtia kitu kiganjani kimya kimya. Amanda akamshukuru na kukitia mfukoni bila kukitazama. Usiku ule, akiwa karibu na moto, alikikumbuka. Akakitoa na kuhesabu — moja, mbili, tatu, nne, dola tano! Zilitosha kabisa kununua jozi mpya ya viatu. Alifurahi sana hata hakuweza kulala vizuri. Mungu alikuwa amejibu maombi yake. Mungu hana shughuli nyingi kiasi cha kushindwa kujali mambo madogo katika maisha yako. Lolote unalohitaji kweli, unaweza kumwambia habari zake na kumtumaini akusaidie — hata kitu cha kawaida kama jozi ya viatu. Mungu mpendwa, asante kwa kuwa unajali mambo madogo ninayohitaji. Nisaidie kukuletea kila kitu na kukutumaini kwa ajili ya jibu. Amina.",
+  "word_count": 215
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 9,
+  "title": "Kuyaogopa Maji Makuu",
+  "body_html": "<blockquote><p><em>“Upitapo katika maji, nitakuwa pamoja nawe.”</em> — Isaya 43:2</p></blockquote> <p>Kufikia sasa, kila mtu alimfahamu Amanda kama mwanamke aliyewaambia wengine wamtumaini Mungu, liwalo liwe. Kisha, siku moja, marafiki fulani walisema, “Amanda, tunaamini Mungu anataka uvuke bahari kuu kwa meli hadi Uingereza, ukawaambie watu habari za Yesu huko.”</p> <p>Lakini moyoni mwa Amanda palikuwa na siri. Aliiogopa bahari yenye kina kirefu na upana mkubwa. Aliendelea kutoa visingizio. Aliandika hata barua akisema hatakwenda.</p> <p>Jioni ile huzuni nzito ilimjia, naye hakuweza kuelewa kwa nini. Alipiga magoti na kusema, “Bwana, sitalala mpaka nijue ni nini kinachonisumbua.”</p> <p>Na kwa upole, Mungu alimwonyesha ukweli. Ilikuwa kana kwamba sauti ilisema, “Unazunguka ukiwaambia watu wengine wamtumaini Bwana gizani. Lakini unawaambia wafanye kile ambacho wewe mwenyewe hutaki kufanya. Unaogopa kunitumaini na kuvuka bahari.”</p> <p>Amanda aliona haya. “Bwana, huo ndio ukweli,” alisema. “Nisamehe, unipe nafasi nyingine, nami nitakwenda.” Naye akaenda — alisafiri kwa meli kuvuka bahari yote hadi Uingereza, na Mungu akaenda pamoja naye njia yote.</p> <p>Ni rahisi kuwaambia wengine wawe mashujaa. Ni vigumu zaidi kuwa shujaa wewe mwenyewe! Mungu anapokuomba umtumaini katika jambo la kutisha, kumbuka kwamba yeye hupita pamoja nawe katikati ya maji makuu.</p> <p>Mungu mpendwa, ninapoogopa jambo kubwa, nisaidie kukutumaini mimi mwenyewe. Asante kwa kuwa uko kando yangu sikuzote. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Marafiki wa Amanda waliposema Mungu anataka aende Uingereza, hofu yake ya siri ilikuwa nini?",
+    "answer": "Aliiogopa bahari yenye kina kirefu na upana mkubwa. Aliendelea kutoa visingizio na aliandika hata barua akisema hatakwenda."
+   },
+   {
+    "question": "Mungu alimwonyesha Amanda nini kwa upole alipopiga magoti kuomba usiku ule?",
+    "answer": "Kwamba aliwaambia watu wengine wamtumaini Bwana gizani lakini yeye mwenyewe hakutaka kufanya hivyo — aliogopa kumtumaini na kuvuka bahari."
+   },
+   {
+    "question": "Je, umewahi kumwambia mtu mwingine awe shujaa kuhusu jambo linalokuogopesha wewe pia? Nini kingekusaidia kuwa shujaa?",
+    "answer": "Funzo la sura hii: ni rahisi kuwaambia wengine wawe mashujaa kuliko kuwa shujaa wewe mwenyewe. Mungu anapokuomba umtumaini katika jambo la kutisha, yeye hupita pamoja nawe katikati ya maji makuu."
+   }
+  ],
+  "body_text": "“Upitapo katika maji, nitakuwa pamoja nawe.” — Isaya 43:2 Kufikia sasa, kila mtu alimfahamu Amanda kama mwanamke aliyewaambia wengine wamtumaini Mungu, liwalo liwe. Kisha, siku moja, marafiki fulani walisema, “Amanda, tunaamini Mungu anataka uvuke bahari kuu kwa meli hadi Uingereza, ukawaambie watu habari za Yesu huko.” Lakini moyoni mwa Amanda palikuwa na siri. Aliiogopa bahari yenye kina kirefu na upana mkubwa. Aliendelea kutoa visingizio. Aliandika hata barua akisema hatakwenda. Jioni ile huzuni nzito ilimjia, naye hakuweza kuelewa kwa nini. Alipiga magoti na kusema, “Bwana, sitalala mpaka nijue ni nini kinachonisumbua.” Na kwa upole, Mungu alimwonyesha ukweli. Ilikuwa kana kwamba sauti ilisema, “Unazunguka ukiwaambia watu wengine wamtumaini Bwana gizani. Lakini unawaambia wafanye kile ambacho wewe mwenyewe hutaki kufanya. Unaogopa kunitumaini na kuvuka bahari.” Amanda aliona haya. “Bwana, huo ndio ukweli,” alisema. “Nisamehe, unipe nafasi nyingine, nami nitakwenda.” Naye akaenda — alisafiri kwa meli kuvuka bahari yote hadi Uingereza, na Mungu akaenda pamoja naye njia yote. Ni rahisi kuwaambia wengine wawe mashujaa. Ni vigumu zaidi kuwa shujaa wewe mwenyewe! Mungu anapokuomba umtumaini katika jambo la kutisha, kumbuka kwamba yeye hupita pamoja nawe katikati ya maji makuu. Mungu mpendwa, ninapoogopa jambo kubwa, nisaidie kukutumaini mimi mwenyewe. Asante kwa kuwa uko kando yangu sikuzote. Amina.",
+  "word_count": 201
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 10,
+  "title": "Sanduku Lililoibiwa",
+  "body_html": "<blockquote><p><em>“Asiye mwepesi wa hasira ni bora kuliko shujaa, na yeye aitawalaye roho yake ni bora kuliko yeye autekaye mji.”</em> — Mithali 16:32</p></blockquote> <p>Mungu alimwongoza Amanda katika safari nyingine ndefu — wakati huu kwa meli hadi Afrika. Nguo zake na vitu vyake vilikuwa vimepakiwa kwa uangalifu ndani ya sanduku lake kule chini ndani ya meli.</p> <p>Lakini meli ilipokuwa ikipakiwa mizigo, watu fulani walivunja kufuli ya sanduku lake na kuiba vitu vyake vingi — hata viatu vyake. Amanda alipogundua, alisikitika sana kuvipoteza. Baadhi ya vitu hivyo hakuvipata tena kamwe.</p> <p>Basi, kila mtu alitazamia kwamba atapiga kelele, akanyage-kanyage miguu na kukasirika sana. Hata nahodha wa meli alitazama kwa mshangao, akasema, “Bi Smith, sielewi jinsi unavyoweza kuizuia hasira yako!”</p> <p>Amanda alitabasamu akajibu, “Nahodha, nasikitika kupoteza vitu vyangu. Lakini kama kukasirika na kupandwa na hasira kungevirudisha, hakika ungeniona nikifanya fujo! Kwa kuwa hakutavirudisha, kwa nini nifanye hivyo?” Naye Mungu akaulinda moyo wake ukawa kimya na shwari.</p> <p>Kitu kinapoibiwa au kuvunjika au jambo lisilo la haki linapotokea, ni rahisi kulipuka kwa hasira. Lakini kukasirika hakutengenezi mambo — hutufanya tujisikie vibaya zaidi tu. Mungu anaweza kukusaidia ubaki mtulivu na mpole, hata jambo linapoharibika. Hiyo ndiyo nguvu ya kweli.</p> <p>Mungu mpendwa, mambo yanapoharibika nami nikakasirika, nisaidie kubaki mtulivu kama Amanda. Utawale moyo wangu kwa amani yako. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Nini kililipata sanduku la Amanda katika meli iliyokwenda Afrika?",
+    "answer": "Watu fulani walivunja kufuli na kuiba vitu vyake vingi, hata viatu vyake. Baadhi ya vitu hivyo hakuvipata tena kamwe."
+   },
+   {
+    "question": "Kwa nini Amanda alimwambia nahodha kwamba hatakasirika?",
+    "answer": "Alisema kwamba kama kukasirika kungevirudisha vitu vyake, angemwona akifanya fujo — lakini kwa kuwa hakutavirudisha, kwa nini afanye hivyo?"
+   },
+   {
+    "question": "Unajisikia kufanya nini kitu chako kinapovunjwa au kuchukuliwa? Ungeweza kufanya nini badala yake?",
+    "answer": "Funzo la sura hii: kukasirika hakutengenezi mambo na hutufanya tujisikie vibaya zaidi tu. Mungu anaweza kutusaidia kubaki watulivu na wapole mambo yanapoharibika — hiyo ndiyo nguvu ya kweli."
+   }
+  ],
+  "body_text": "“Asiye mwepesi wa hasira ni bora kuliko shujaa, na yeye aitawalaye roho yake ni bora kuliko yeye autekaye mji.” — Mithali 16:32 Mungu alimwongoza Amanda katika safari nyingine ndefu — wakati huu kwa meli hadi Afrika. Nguo zake na vitu vyake vilikuwa vimepakiwa kwa uangalifu ndani ya sanduku lake kule chini ndani ya meli. Lakini meli ilipokuwa ikipakiwa mizigo, watu fulani walivunja kufuli ya sanduku lake na kuiba vitu vyake vingi — hata viatu vyake. Amanda alipogundua, alisikitika sana kuvipoteza. Baadhi ya vitu hivyo hakuvipata tena kamwe. Basi, kila mtu alitazamia kwamba atapiga kelele, akanyage-kanyage miguu na kukasirika sana. Hata nahodha wa meli alitazama kwa mshangao, akasema, “Bi Smith, sielewi jinsi unavyoweza kuizuia hasira yako!” Amanda alitabasamu akajibu, “Nahodha, nasikitika kupoteza vitu vyangu. Lakini kama kukasirika na kupandwa na hasira kungevirudisha, hakika ungeniona nikifanya fujo! Kwa kuwa hakutavirudisha, kwa nini nifanye hivyo?” Naye Mungu akaulinda moyo wake ukawa kimya na shwari. Kitu kinapoibiwa au kuvunjika au jambo lisilo la haki linapotokea, ni rahisi kulipuka kwa hasira. Lakini kukasirika hakutengenezi mambo — hutufanya tujisikie vibaya zaidi tu. Mungu anaweza kukusaidia ubaki mtulivu na mpole, hata jambo linapoharibika. Hiyo ndiyo nguvu ya kweli. Mungu mpendwa, mambo yanapoharibika nami nikakasirika, nisaidie kubaki mtulivu kama Amanda. Utawale moyo wangu kwa amani yako. Amina.",
+  "word_count": 209
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 11,
+  "title": "Gari Lililokataa Kwenda",
+  "body_html": "<blockquote><p><em>“Atawaagiza malaika zake kwa ajili yako, wakulinde katika njia zako zote.”</em> — Zaburi 91:11</p></blockquote> <p>Amanda alisafiri mbali zaidi, hadi nchi ya mbali ya India, ili kuwaambia watu habari za Yesu. Usiku mmoja yeye na rafiki yake Bi Frow walikuwa wakisafiri kwenye barabara mbovu ya mashambani ndani ya gari lililovutwa na ng’ombe-dume wakubwa wa kwenda polepole.</p> <p>Kulikuwa na giza nene sana. Hapakuwa na taa za barabarani wala mwezi wa kuwasaidia kuiona njia iliyokuwa mbele yao.</p> <p>Ghafla, wale ng’ombe-dume walisimama. Hawakutaka kabisa kupiga hatua nyingine. Dereva aliwaambia waendelee, lakini wanyama hao walikataa. Amanda na rafiki yake wakaanza kuudhika. “Kwa nini gari hili halitaki kwenda?” walijiuliza.</p> <p>Mwishowe walishuka ili wajionee wenyewe. Walitembea hatua chache tu mbele gizani — na mioyo yao karibu isimame. Mbele yao kabisa palikuwa na shimo refu la hatari lililokatiza barabara yote! Kama wale ng’ombe-dume wangeendelea kutembea, gari lingeanguka, na huenda kila mtu angeumia vibaya.</p> <p>Jinsi gani walivyomsifu Mungu wakati huo! Wale wanyama hawakuwa wakaidi hata kidogo. Mungu alikuwa amewatumia kulisimamisha gari na kuwalinda wasafiri wake salama dhidi ya hatari ambayo hata hawakuweza kuiona.</p> <p>Wakati mwingine Mungu hukulinda kwa njia usizozitambua, na wakati mwingine “hapana” au kuchelewa ni yeye kwa kweli akikulinda salama. Unaweza kutumaini kwamba anakulinda katika kila njia yako.</p> <p>Mungu mpendwa, asante kwa kunilinda, hata nisipoweza kuiona hatari. Nisaidie kutumaini kwamba unanilinda salama sikuzote. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Wale ng’ombe-dume walifanya nini kwenye barabara ile yenye giza huko India?",
+    "answer": "Walisimama ghafla na kukataa kupiga hatua nyingine, hata dereva alipowaambia waendelee."
+   },
+   {
+    "question": "Amanda na Bi Frow walikuta nini walipotembea mbele gizani?",
+    "answer": "Shimo refu la hatari lililokatiza barabara yote. Kama wale ng’ombe-dume wangeendelea kwenda, gari lingeanguka."
+   },
+   {
+    "question": "Unaweza kukumbuka wakati ambapo kusubiri au kuambiwa “hapana” kulikuwa jambo jema kwako?",
+    "answer": "Funzo la sura hii: wakati mwingine Mungu hutulinda kwa njia tusizozitambua, na “hapana” au kuchelewa kwaweza kuwa ni yeye kwa kweli akitulinda salama. Anatulinda katika njia zetu zote."
+   }
+  ],
+  "body_text": "“Atawaagiza malaika zake kwa ajili yako, wakulinde katika njia zako zote.” — Zaburi 91:11 Amanda alisafiri mbali zaidi, hadi nchi ya mbali ya India, ili kuwaambia watu habari za Yesu. Usiku mmoja yeye na rafiki yake Bi Frow walikuwa wakisafiri kwenye barabara mbovu ya mashambani ndani ya gari lililovutwa na ng’ombe-dume wakubwa wa kwenda polepole. Kulikuwa na giza nene sana. Hapakuwa na taa za barabarani wala mwezi wa kuwasaidia kuiona njia iliyokuwa mbele yao. Ghafla, wale ng’ombe-dume walisimama. Hawakutaka kabisa kupiga hatua nyingine. Dereva aliwaambia waendelee, lakini wanyama hao walikataa. Amanda na rafiki yake wakaanza kuudhika. “Kwa nini gari hili halitaki kwenda?” walijiuliza. Mwishowe walishuka ili wajionee wenyewe. Walitembea hatua chache tu mbele gizani — na mioyo yao karibu isimame. Mbele yao kabisa palikuwa na shimo refu la hatari lililokatiza barabara yote! Kama wale ng’ombe-dume wangeendelea kutembea, gari lingeanguka, na huenda kila mtu angeumia vibaya. Jinsi gani walivyomsifu Mungu wakati huo! Wale wanyama hawakuwa wakaidi hata kidogo. Mungu alikuwa amewatumia kulisimamisha gari na kuwalinda wasafiri wake salama dhidi ya hatari ambayo hata hawakuweza kuiona. Wakati mwingine Mungu hukulinda kwa njia usizozitambua, na wakati mwingine “hapana” au kuchelewa ni yeye kwa kweli akikulinda salama. Unaweza kutumaini kwamba anakulinda katika kila njia yako. Mungu mpendwa, asante kwa kunilinda, hata nisipoweza kuiona hatari. Nisaidie kutumaini kwamba unanilinda salama sikuzote. Amina.",
+  "word_count": 217
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "sw"
+  ],
+  "order": 12,
+  "title": "Mvulana Langoni",
+  "body_html": "<blockquote><p><em>“Na mtu ye yote atakayempokea mtoto mdogo mmoja kama huyu kwa jina langu, anipokea mimi.”</em> — Mathayo 18:5</p></blockquote> <p>Amanda alipokuwa akiishi Afrika, wavulana wawili wadogo walikuwa wakija kumtembelea. Mmoja wao aliitwa Bob. Ngozi yake ilikuwa laini na nyeusi, naye alikuwa na tabasamu angavu kuliko wote. Mara nyingi Amanda aliwawekea wavulana hao vipande vya chakula, nao walifurahi sana sikuzote. Akazidi kuwapenda sana.</p> <p>Siku moja baba yake Bob, Jack, alimjia Amanda. Alimwambia, kwa huzuni, kwamba yeye mwenyewe hakuwahi kufundishwa habari za Mungu. “Sitaki mwanangu mdogo akue bila kumjua Mungu, kama mimi nilivyokua,” alisema. “Tafadhali, je, utamchukua na kumfundisha?”</p> <p>Amanda alitaka kusaidia. Lakini mara nyingi alikuwa dhaifu na mgonjwa wa homa, naye alikuwa na pesa kidogo sana. “Ningewezaje kumtunza mtoto?” alijiuliza. Basi akalipeleka swali hilo kwa Mungu katika maombi.</p> <p>Naye Mungu akaujibu moyo wake kwa upole: “Wewe fanya unachoweza, na pale unapoishia, Mungu atamwinua mtu mwingine afanye yaliyobaki.”</p> <p>“Hilo ni sawa,” Amanda alisema. “Nitamtumaini Bwana na kumchukua mtoto, na kufanya bora niwezavyo.” Basi Bob mdogo akawa mvulana wake mwenyewe kabisa, wa kumlea na kumpenda.</p> <p>Mungu hakuombi ufanye kila kitu peke yako. Anakuomba tu ufanye unachoweza, kisha umtumaini kwa yaliyobaki. Unapomkaribisha na kumsaidia mtoto, Yesu anasema ni sawa kabisa na kumkaribisha yeye.</p> <p>Mungu mpendwa, nisaidie kufanya mema ninayoweza, na kukutumaini kwa yale nisiyoyaweza. Asante kwa kuwapenda watoto sana. Amina.</p>",
+  "study_questions": [
+   {
+    "question": "Baba yake Bob, Jack, alimwomba Amanda afanye nini?",
+    "answer": "Yeye hakuwahi kufundishwa habari za Mungu na hakutaka Bob akue vivyo hivyo, basi alimwomba Amanda amchukue mwanawe mdogo na kumfundisha."
+   },
+   {
+    "question": "Kwa nini mwanzoni Amanda hakuwa na uhakika, na Mungu alimwambia nini?",
+    "answer": "Mara nyingi alikuwa mgonjwa na alikuwa na pesa kidogo. Mungu alijibu, “Wewe fanya unachoweza, na pale unapoishia, Mungu atamwinua mtu mwingine afanye yaliyobaki.”"
+   },
+   {
+    "question": "Ni jambo gani moja jema unaloweza kufanya kumsaidia mtu wiki hii, hata kama ni dogo?",
+    "answer": "Funzo la sura hii: Mungu hatuombi tufanye kila kitu wenyewe — ila tu tunachoweza, tukimtumaini kwa yaliyobaki. Kumkaribisha mtoto ni kama kumkaribisha Yesu."
+   }
+  ],
+  "body_text": "“Na mtu ye yote atakayempokea mtoto mdogo mmoja kama huyu kwa jina langu, anipokea mimi.” — Mathayo 18:5 Amanda alipokuwa akiishi Afrika, wavulana wawili wadogo walikuwa wakija kumtembelea. Mmoja wao aliitwa Bob. Ngozi yake ilikuwa laini na nyeusi, naye alikuwa na tabasamu angavu kuliko wote. Mara nyingi Amanda aliwawekea wavulana hao vipande vya chakula, nao walifurahi sana sikuzote. Akazidi kuwapenda sana. Siku moja baba yake Bob, Jack, alimjia Amanda. Alimwambia, kwa huzuni, kwamba yeye mwenyewe hakuwahi kufundishwa habari za Mungu. “Sitaki mwanangu mdogo akue bila kumjua Mungu, kama mimi nilivyokua,” alisema. “Tafadhali, je, utamchukua na kumfundisha?” Amanda alitaka kusaidia. Lakini mara nyingi alikuwa dhaifu na mgonjwa wa homa, naye alikuwa na pesa kidogo sana. “Ningewezaje kumtunza mtoto?” alijiuliza. Basi akalipeleka swali hilo kwa Mungu katika maombi. Naye Mungu akaujibu moyo wake kwa upole: “Wewe fanya unachoweza, na pale unapoishia, Mungu atamwinua mtu mwingine afanye yaliyobaki.” “Hilo ni sawa,” Amanda alisema. “Nitamtumaini Bwana na kumchukua mtoto, na kufanya bora niwezavyo.” Basi Bob mdogo akawa mvulana wake mwenyewe kabisa, wa kumlea na kumpenda. Mungu hakuombi ufanye kila kitu peke yako. Anakuomba tu ufanye unachoweza, kisha umtumaini kwa yaliyobaki. Unapomkaribisha na kumsaidia mtoto, Yesu anasema ni sawa kabisa na kumkaribisha yeye. Mungu mpendwa, nisaidie kufanya mema ninayoweza, na kukutumaini kwa yale nisiyoyaweza. Asante kwa kuwapenda watoto sana. Amina.",
+  "word_count": 215
+ }
+}
+]
