@@ -4134,6 +4134,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"es/pilgrims-progress-children": {
+			"ground": "536d241b7ebf6ae82dc1f19370268fc6122136bfc015be26fab705551470d75d",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"es/possibilities-of-prayer": {
 			"ground": "8fe3b2647d6276f4fa3e94b217c2fc2f11df805a6a72b1510041949240019d9d",
 			"style": "devotional",

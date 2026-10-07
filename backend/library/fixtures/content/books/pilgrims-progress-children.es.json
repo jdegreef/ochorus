@@ -1,0 +1,395 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-children",
+  "language": "es",
+  "title": "El progreso del peregrino (para niños)",
+  "subtitle": "",
+  "cover_title": "",
+  "cover_byline": "",
+  "description": "La famosa historia de John Bunyan sobre un viajero llamado Cristiano, que sale de su ciudad con una pesada carga a la espalda y viaja hasta llegar a la Ciudad Celestial. Esta edición para niños vuelve a contar su aventura en capítulos cortos pensados para leerse en voz alta: un versículo de la Biblia, una escena del viaje, una cosa que significa para ti y una breve oración.",
+  "about_html": "",
+  "qa": [
+   {
+    "question": "¿De qué trata El progreso del peregrino (para niños)?",
+    "answer": "Es una versión para niños de la famosa historia de John Bunyan. Un hombre llamado Cristiano sale de su casa con una pesada carga a la espalda y recorre un camino largo y lleno de aventuras hasta la Ciudad Celestial. Por el camino se encuentra con gigantes, monstruos, amigos y peligros, y cada parte del viaje dibuja, sin decirlo en voz alta, cómo es seguir a Dios."
+   },
+   {
+    "question": "¿Quién fue John Bunyan?",
+    "answer": "Un predicador inglés que vivió hace mucho tiempo y pasó años en la cárcel por su fe. Allí escribió El progreso del peregrino, que llegó a ser una de las historias más queridas del mundo: una aventura que enseña acerca de Dios a través del relato de un viajero llamado Cristiano."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está pensado para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una escena del viaje de Cristiano, muestra una cosa sencilla que significa para ti y termina con una breve oración."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños: para que un adulto lo lea en voz alta, o para que un niño mayor lo lea solo. También está disponible para lectores mayores El progreso del peregrino completo de Bunyan."
+   },
+   {
+    "question": "¿Por qué la historia está llena de monstruos y gigantes?",
+    "answer": "Porque Bunyan la hizo una historia con dibujos de palabras. El camino de Cristiano representa la vida de quien sigue a Dios, y sus peligros —un pantano, un gigante, un valle oscuro— representan los problemas y las tentaciones de verdad que encontramos. Contarla como una aventura hace que esas lecciones sean fáciles de recordar para un niño."
+   },
+   {
+    "question": "¿Los nombres de la historia son raros a propósito?",
+    "answer": "Sí. Bunyan les puso a sus personajes y lugares nombres que los describen: Cristiano, Fiel, Esperanzado, el Pantano del Desaliento, la colina Dificultad, el Gigante Desesperación. El nombre te dice cómo es cada uno, y eso ayuda a los lectores jóvenes a seguir el sentido de la historia."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un relato de Ochorus para lectores jóvenes de El progreso del peregrino de John Bunyan, que es de dominio público. El relato es nuestro, libre para leer y compartir.",
+  "cover_url": "/covers/art/pilgrims-progress-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "series": null,
+  "series_position": null,
+  "sort_order": 23,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "content_digest": "",
+  "english_digest": "",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "El hombre que clamó: «¿Qué haré?»",
+  "body_html": "<blockquote>«¿Qué debo hacer para ser salvo?» — de Hechos 16</blockquote> <p>En un lugar llamado la Ciudad de Destrucción vivía un hombre llamado Cristiano. Un día estaba leyendo un libro, y lo que leyó lo asustó muchísimo. Supo que su ciudad iba a ser destruida y, lo peor de todo, sentía sobre la espalda una carga grande y pesada que no podía quitarse, por más que lo intentara.</p> <p>Comenzó a clamar: «¿Qué haré? ¿Qué debo hacer para ser salvo?». Su familia pensó que se había vuelto loco. Pero Cristiano no podía dejar de preocuparse por aquella carga tan pesada.</p> <p>Entonces un hombre llamado Evangelista se le acercó y le preguntó por qué lloraba. Cristiano le habló de la carga y de su miedo. Evangelista señaló muy lejos, al otro lado de un ancho campo, y le preguntó: «¿Ves aquella puertecita?». Cristiano no la veía. «¿Ves aquella luz que brilla?», dijo Evangelista. «Sí, creo que sí», dijo Cristiano. «No pierdas de vista esa luz y ve derecho hacia ella».</p> <p>Así que Cristiano echó a correr —a correr hacia la puertecita y la luz que brillaba—, con los dedos metidos en los oídos para que nada lo detuviera, gritando: «¡Vida! ¡Vida! ¡Vida eterna!».</p> <p>Ahí es donde empieza todo gran viaje con Dios: en darse cuenta de que algo anda mal y correr hacia la luz. Si sientes el peso de haber hecho algo malo, no tienes por qué cargarlo a solas. Hay una luz hacia la cual correr. Su nombre es Jesús.</p> <p><em>Querido Dios, cuando sienta el peso de lo malo que he hecho, ayúdame a correr hacia ti, la Luz verdadera. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué clamaba Cristiano: «¿Qué haré?»?",
+    "answer": "Leyó en un libro que su ciudad sería destruida, y sentía sobre la espalda una carga grande y pesada que no podía quitarse."
+   },
+   {
+    "question": "¿Por qué corría Cristiano con los dedos metidos en los oídos?",
+    "answer": "Para que nada lo detuviera mientras corría hacia la puertecita y la luz que brillaba, gritando: «¡Vida! ¡Vida! ¡Vida eterna!»."
+   },
+   {
+    "question": "¿Alguna vez te has sentido con un peso por dentro por algo malo que hiciste? ¿Hacia dónde dice la historia que hay que correr?",
+    "answer": "La enseñanza del capítulo: no tienes por qué cargar a solas con el peso de haber hecho algo malo; hay una luz hacia la cual correr, y su nombre es Jesús."
+   }
+  ],
+  "body_text": "«¿Qué debo hacer para ser salvo?» — de Hechos 16 En un lugar llamado la Ciudad de Destrucción vivía un hombre llamado Cristiano. Un día estaba leyendo un libro, y lo que leyó lo asustó muchísimo. Supo que su ciudad iba a ser destruida y, lo peor de todo, sentía sobre la espalda una carga grande y pesada que no podía quitarse, por más que lo intentara. Comenzó a clamar: «¿Qué haré? ¿Qué debo hacer para ser salvo?». Su familia pensó que se había vuelto loco. Pero Cristiano no podía dejar de preocuparse por aquella carga tan pesada. Entonces un hombre llamado Evangelista se le acercó y le preguntó por qué lloraba. Cristiano le habló de la carga y de su miedo. Evangelista señaló muy lejos, al otro lado de un ancho campo, y le preguntó: «¿Ves aquella puertecita?». Cristiano no la veía. «¿Ves aquella luz que brilla?», dijo Evangelista. «Sí, creo que sí», dijo Cristiano. «No pierdas de vista esa luz y ve derecho hacia ella». Así que Cristiano echó a correr —a correr hacia la puertecita y la luz que brillaba—, con los dedos metidos en los oídos para que nada lo detuviera, gritando: «¡Vida! ¡Vida! ¡Vida eterna!». Ahí es donde empieza todo gran viaje con Dios: en darse cuenta de que algo anda mal y correr hacia la luz. Si sientes el peso de haber hecho algo malo, no tienes por qué cargarlo a solas. Hay una luz hacia la cual correr. Su nombre es Jesús. Querido Dios, cuando sienta el peso de lo malo que he hecho, ayúdame a correr hacia ti, la Luz verdadera. Amén.",
+  "word_count": 270
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "Atascado en el pantano",
+  "body_html": "<blockquote>«Me hizo subir del pozo horrible, del lodo cenagoso; puso mis pies sobre peña» — del Salmo 40</blockquote> <p>Cristiano cruzó deprisa el campo hacia la luz que brillaba. Pero no miraba dónde pisaba y, de repente, <em>¡chof!</em>, cayó de cabeza en un pantano hondo y lleno de barro.</p> <p>No era un charco cualquiera. Tenía nombre: el Pantano del Desaliento, que quiere decir el Pantano de Sentirse sin Esperanza. Cuanto más luchaba Cristiano, más se hundía, porque la pesada carga que llevaba a la espalda lo arrastraba hacia el fondo del barro.</p> <p>Un vecino llamado Flexible lo había estado siguiendo. Pero cuando Flexible se llenó de barro, se quejó, salió a gatas por la orilla más cercana y se fue a su casa dando zapatazos. El pobre Cristiano se quedó solo, hundiéndose, intentando una y otra vez llegar a la otra orilla.</p> <p>Entonces apareció un hombre. Se llamaba Ayuda. «¿Qué haces ahí abajo?», le preguntó. Y extendió la mano y le dijo: «Dame la mano». Sacó a Cristiano del pantano y lo puso otra vez sobre tierra buena y firme.</p> <p>A veces, cuando empezamos a seguir a Dios, pasamos por un tramo en el que todo parece pesado y sin esperanza, y empezamos a hundirnos. Es normal. Hasta a Cristiano le pasó. Pero no estamos hechos para salir de ahí sin ayuda.</p> <p>Cuando sientas que te hundes, haz lo que hizo Cristiano: agárrate de la mano que se extiende hacia ti. Dios envía ayuda.</p> <p><em>Querido Dios, cuando sienta que no hay salida ni esperanza, gracias porque tú me tiendes la mano. Ayúdame a agarrarme de ella. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasó a Cristiano en el Pantano del Desaliento?",
+    "answer": "Cayó en un pantano hondo y lleno de barro, y la pesada carga de su espalda lo hacía hundirse más cuanto más luchaba."
+   },
+   {
+    "question": "¿Qué hizo Flexible, y quién vino a ayudar a Cristiano?",
+    "answer": "Flexible se quejó, salió a gatas por la orilla más cercana y se fue a casa. Luego un hombre llamado Ayuda le tendió la mano y sacó a Cristiano a tierra firme."
+   },
+   {
+    "question": "¿Cuándo has sentido que no había salida ni esperanza? ¿Qué puedes hacer cuando te pase?",
+    "answer": "La enseñanza del capítulo: sentirse así le pasó hasta a Cristiano, y no estamos hechos para salir sin ayuda; agárrate de la mano que se extiende hacia ti, porque Dios envía ayuda."
+   }
+  ],
+  "body_text": "«Me hizo subir del pozo horrible, del lodo cenagoso; puso mis pies sobre peña» — del Salmo 40 Cristiano cruzó deprisa el campo hacia la luz que brillaba. Pero no miraba dónde pisaba y, de repente, ¡chof!, cayó de cabeza en un pantano hondo y lleno de barro. No era un charco cualquiera. Tenía nombre: el Pantano del Desaliento, que quiere decir el Pantano de Sentirse sin Esperanza. Cuanto más luchaba Cristiano, más se hundía, porque la pesada carga que llevaba a la espalda lo arrastraba hacia el fondo del barro. Un vecino llamado Flexible lo había estado siguiendo. Pero cuando Flexible se llenó de barro, se quejó, salió a gatas por la orilla más cercana y se fue a su casa dando zapatazos. El pobre Cristiano se quedó solo, hundiéndose, intentando una y otra vez llegar a la otra orilla. Entonces apareció un hombre. Se llamaba Ayuda. «¿Qué haces ahí abajo?», le preguntó. Y extendió la mano y le dijo: «Dame la mano». Sacó a Cristiano del pantano y lo puso otra vez sobre tierra buena y firme. A veces, cuando empezamos a seguir a Dios, pasamos por un tramo en el que todo parece pesado y sin esperanza, y empezamos a hundirnos. Es normal. Hasta a Cristiano le pasó. Pero no estamos hechos para salir de ahí sin ayuda. Cuando sientas que te hundes, haz lo que hizo Cristiano: agárrate de la mano que se extiende hacia ti. Dios envía ayuda. Querido Dios, cuando sienta que no hay salida ni esperanza, gracias porque tú me tiendes la mano. Ayúdame a agarrarme de ella. Amén.",
+  "word_count": 267
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "La puertecita que se abre",
+  "body_html": "<blockquote>«Llamad, y se os abrirá» — de Mateo 7</blockquote> <p>Por fin Cristiano llegó a la puertecita, la misma que Evangelista le había señalado. Encima tenía escritas estas palabras: «Llamad, y se os abrirá».</p> <p>Así que Cristiano llamó. Y volvió a llamar. No estaba seguro de que alguien fuera a venir. ¿Y si la puerta seguía cerrada? ¿Y si él no era lo bastante bueno para que lo dejaran entrar?</p> <p>¡Pero la puerta se abrió! Allí estaba un hombre bondadoso llamado Buena Voluntad. «¿Quién es? ¿De dónde vienes y qué quieres?», le preguntó.</p> <p>«Soy un pobre pecador con una carga pesada», dijo Cristiano. «He venido desde la Ciudad de Destrucción y quiero ir a la maravillosa Ciudad que está en el monte».</p> <p>«¡Con todo mi corazón estoy dispuesto!», dijo Buena Voluntad, y abrió la puerta de par en par y metió a Cristiano dentro, a salvo. Cristiano le preguntó si ya podía quitarse la carga. «Ten paciencia», dijo Buena Voluntad. «Sigue adelante, y en el lugar adecuado se te caerá ella sola».</p> <p>Luego Buena Voluntad le mostró el camino angosto y lo despidió.</p> <p>Esto es algo maravilloso de Dios: nunca rechaza a nadie que viene a él. No tienes que portarte lo bastante bien primero. Solo tienes que llamar. Ven a Dios, y él te abrirá la puerta y te recibirá con todo su corazón.</p> <p><em>Querido Dios, gracias porque cuando vengo a ti nunca me rechazas. Estoy llamando: por favor, déjame entrar. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué palabras estaban escritas encima de la puertecita?",
+    "answer": "«Llamad, y se os abrirá»."
+   },
+   {
+    "question": "¿Qué le dijo Buena Voluntad cuando Cristiano le preguntó si ya podía quitarse la carga?",
+    "answer": "«Ten paciencia»: que siguiera adelante, y en el lugar adecuado se le caería ella sola."
+   },
+   {
+    "question": "¿Crees que tienes que portarte lo bastante bien antes de que Dios te deje entrar?",
+    "answer": "La enseñanza del capítulo: Dios nunca rechaza a nadie que viene a él. No tienes que portarte lo bastante bien primero; solo llamas, y él te recibe con todo su corazón."
+   }
+  ],
+  "body_text": "«Llamad, y se os abrirá» — de Mateo 7 Por fin Cristiano llegó a la puertecita, la misma que Evangelista le había señalado. Encima tenía escritas estas palabras: «Llamad, y se os abrirá». Así que Cristiano llamó. Y volvió a llamar. No estaba seguro de que alguien fuera a venir. ¿Y si la puerta seguía cerrada? ¿Y si él no era lo bastante bueno para que lo dejaran entrar? ¡Pero la puerta se abrió! Allí estaba un hombre bondadoso llamado Buena Voluntad. «¿Quién es? ¿De dónde vienes y qué quieres?», le preguntó. «Soy un pobre pecador con una carga pesada», dijo Cristiano. «He venido desde la Ciudad de Destrucción y quiero ir a la maravillosa Ciudad que está en el monte». «¡Con todo mi corazón estoy dispuesto!», dijo Buena Voluntad, y abrió la puerta de par en par y metió a Cristiano dentro, a salvo. Cristiano le preguntó si ya podía quitarse la carga. «Ten paciencia», dijo Buena Voluntad. «Sigue adelante, y en el lugar adecuado se te caerá ella sola». Luego Buena Voluntad le mostró el camino angosto y lo despidió. Esto es algo maravilloso de Dios: nunca rechaza a nadie que viene a él. No tienes que portarte lo bastante bien primero. Solo tienes que llamar. Ven a Dios, y él te abrirá la puerta y te recibirá con todo su corazón. Querido Dios, gracias porque cuando vengo a ti nunca me rechazas. Estoy llamando: por favor, déjame entrar. Amén.",
+  "word_count": 242
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "La casa de las habitaciones maravillosas",
+  "body_html": "<blockquote>«Abre mis ojos, y miraré las maravillas de tu ley» — del Salmo 119</blockquote> <p>Siguiendo el camino, Cristiano llegó a la casa de un hombre llamado el Intérprete, cuyo trabajo era ayudar a la gente a entender cosas importantes. El Intérprete encendió una vela y dijo: «Ven, te mostraré algunas maravillas». Y llevó a Cristiano de una habitación a otra.</p> <p>En una de ellas había una gran sala con tanto polvo que nadie podía respirar. Un hombre se puso a barrerla, ¡pero el polvo se levantó en nubes espesas y Cristiano empezó a toser y a ahogarse! Entonces llegó una muchacha y roció agua con cuidado por todo el suelo, y de pronto la sala se pudo barrer y quedó limpia y preciosa.</p> <p>«El polvo es el pecado», explicó el Intérprete. «Decirle a la gente las reglas, y nada más, solo revuelve el pecado, como cuando barres polvo seco. Pero la buena noticia de Jesús es como el agua: asienta el polvo y deja el corazón limpio de verdad».</p> <p>En otra habitación ardía un fuego junto a una pared. Un hombre le echaba agua sin parar para apagarlo, ¡y aun así el fuego ardía cada vez más alto y más caliente! Cristiano no entendía nada. Entonces el Intérprete lo llevó detrás de la pared, donde otro hombre echaba aceite al fuego a escondidas para mantenerlo vivo. «Ese es Jesús», le dijo, «que mantiene encendido el fuego de la fe en tu corazón, aun cuando las cosas intentan apagarlo».</p> <p>A Dios le encanta enseñarnos cómo funcionan de verdad las cosas por dentro. Pídele que te abra los ojos, y él te mostrará cosas maravillosas.</p> <p><em>Querido Dios, por favor, ábreme los ojos para entenderte. Mantén encendido en mí el fuego de tu amor. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué pasó cuando el hombre barrió la sala llena de polvo, y qué la dejó limpia?",
+    "answer": "El polvo se levantó e hizo que Cristiano se ahogara. Cuando una muchacha roció agua en el suelo, la sala se pudo barrer y quedó limpia y preciosa."
+   },
+   {
+    "question": "¿Por qué seguía ardiendo el fuego aunque un hombre le echaba agua?",
+    "answer": "Detrás de la pared, otro hombre le echaba aceite a escondidas. El Intérprete dijo que ese es Jesús, que mantiene encendido el fuego de la fe en tu corazón."
+   },
+   {
+    "question": "¿Hay algo de Dios que te gustaría entender mejor? ¿Cómo podrías pedírselo?",
+    "answer": "La enseñanza del capítulo: a Dios le encanta enseñarnos cómo funcionan de verdad las cosas por dentro; pídele que te abra los ojos, y él te mostrará cosas maravillosas."
+   }
+  ],
+  "body_text": "«Abre mis ojos, y miraré las maravillas de tu ley» — del Salmo 119 Siguiendo el camino, Cristiano llegó a la casa de un hombre llamado el Intérprete, cuyo trabajo era ayudar a la gente a entender cosas importantes. El Intérprete encendió una vela y dijo: «Ven, te mostraré algunas maravillas». Y llevó a Cristiano de una habitación a otra. En una de ellas había una gran sala con tanto polvo que nadie podía respirar. Un hombre se puso a barrerla, ¡pero el polvo se levantó en nubes espesas y Cristiano empezó a toser y a ahogarse! Entonces llegó una muchacha y roció agua con cuidado por todo el suelo, y de pronto la sala se pudo barrer y quedó limpia y preciosa. «El polvo es el pecado», explicó el Intérprete. «Decirle a la gente las reglas, y nada más, solo revuelve el pecado, como cuando barres polvo seco. Pero la buena noticia de Jesús es como el agua: asienta el polvo y deja el corazón limpio de verdad». En otra habitación ardía un fuego junto a una pared. Un hombre le echaba agua sin parar para apagarlo, ¡y aun así el fuego ardía cada vez más alto y más caliente! Cristiano no entendía nada. Entonces el Intérprete lo llevó detrás de la pared, donde otro hombre echaba aceite al fuego a escondidas para mantenerlo vivo. «Ese es Jesús», le dijo, «que mantiene encendido el fuego de la fe en tu corazón, aun cuando las cosas intentan apagarlo». A Dios le encanta enseñarnos cómo funcionan de verdad las cosas por dentro. Pídele que te abra los ojos, y él te mostrará cosas maravillosas. Querido Dios, por favor, ábreme los ojos para entenderte. Mantén encendido en mí el fuego de tu amor. Amén.",
+  "word_count": 292
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "La carga se va rodando",
+  "body_html": "<blockquote>«Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar» — de Mateo 11</blockquote> <p>Esta es la mejor parte de toda la historia.</p> <p>Cristiano llegó a un lugar donde había una Cruz y, un poco más abajo, un sepulcro abierto. ¿Te acuerdas de aquella carga pesada que había llevado todo el camino, la que nunca podía quitarse por más que lo intentara?</p> <p>En el mismo momento en que Cristiano llegó a la Cruz, la carga se le soltó de los hombros. Se le cayó de la espalda y fue rodando, rodando, rodando cuesta abajo, directo al sepulcro abierto, y desapareció. ¡Desapareció! Nunca más la volvió a ver.</p> <p>Cristiano estaba tan feliz que casi no sabía qué hacer. Le corrían lágrimas de alegría por la cara, y dijo: «Él me ha dado descanso con su tristeza, y vida con su muerte». ¡Y luego dio tres grandes saltos de alegría!</p> <p>Y tres Resplandecientes se le acercaron. El primero le dijo: «Tus pecados te son perdonados». El segundo le quitó la ropa vieja y andrajosa y lo vistió con ropa nueva y hermosa. Y el tercero le puso una señal en la frente y le dio un rollo de papel para que lo leyera por el camino y lo entregara en la puerta de la gran Ciudad.</p> <p>Aquella carga pesada era el pecado, y solo Jesús, que murió en la Cruz, podía quitarla. Tú no puedes quitarte de la espalda tu propia carga de cosas malas, pero Jesús sí puede, y lo hace. Esa es la mejor noticia que existe.</p> <p><em>Querido Jesús, gracias por quitarme en la Cruz la pesada carga de mi pecado. Gracias por darme descanso. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasó a la carga de Cristiano cuando llegó a la Cruz?",
+    "answer": "Se soltó, rodó cuesta abajo hasta el sepulcro abierto y desapareció; nunca más la volvió a ver."
+   },
+   {
+    "question": "¿Qué le dieron los tres Resplandecientes a Cristiano?",
+    "answer": "Uno le dijo que sus pecados estaban perdonados, otro lo vistió con ropa nueva y hermosa, y otro le puso una señal en la frente y le dio un rollo de papel."
+   },
+   {
+    "question": "¿Podemos quitar lo malo que hemos hecho esforzándonos mucho? ¿Quién dice la historia que puede hacerlo?",
+    "answer": "La enseñanza del capítulo: la carga es el pecado, y no podemos quitárnosla nosotros mismos, pero Jesús, que murió en la Cruz, sí puede, y lo hace. Esa es la mejor noticia que existe."
+   }
+  ],
+  "body_text": "«Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar» — de Mateo 11 Esta es la mejor parte de toda la historia. Cristiano llegó a un lugar donde había una Cruz y, un poco más abajo, un sepulcro abierto. ¿Te acuerdas de aquella carga pesada que había llevado todo el camino, la que nunca podía quitarse por más que lo intentara? En el mismo momento en que Cristiano llegó a la Cruz, la carga se le soltó de los hombros. Se le cayó de la espalda y fue rodando, rodando, rodando cuesta abajo, directo al sepulcro abierto, y desapareció. ¡Desapareció! Nunca más la volvió a ver. Cristiano estaba tan feliz que casi no sabía qué hacer. Le corrían lágrimas de alegría por la cara, y dijo: «Él me ha dado descanso con su tristeza, y vida con su muerte». ¡Y luego dio tres grandes saltos de alegría! Y tres Resplandecientes se le acercaron. El primero le dijo: «Tus pecados te son perdonados». El segundo le quitó la ropa vieja y andrajosa y lo vistió con ropa nueva y hermosa. Y el tercero le puso una señal en la frente y le dio un rollo de papel para que lo leyera por el camino y lo entregara en la puerta de la gran Ciudad. Aquella carga pesada era el pecado, y solo Jesús, que murió en la Cruz, podía quitarla. Tú no puedes quitarte de la espalda tu propia carga de cosas malas, pero Jesús sí puede, y lo hace. Esa es la mejor noticia que existe. Querido Jesús, gracias por quitarme en la Cruz la pesada carga de mi pecado. Gracias por darme descanso. Amén.",
+  "word_count": 281
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "La colina difícil y el Palacio Hermoso",
+  "body_html": "<blockquote>«Vestíos de toda la armadura de Dios» — de Efesios 6</blockquote> <p>Pronto el camino llegó a una colina empinada llamada Dificultad. ¡Era tan empinada que Cristiano tuvo que subir a gatas! A mitad de la subida había un pequeño refugio para descansar, y Cristiano se sentó; pero estaba tan cansado que se quedó profundamente dormido, y el precioso rollo se le resbaló de la mano.</p> <p>Cuando despertó y siguió deprisa, ¡de pronto se dio cuenta de que el rollo no estaba! Ay, qué triste se puso. Tuvo que bajar todo el camino de vuelta para buscarlo. Allí estaba, justo donde se había dormido. Lo recogió, le dio gracias a Dios y siguió subiendo.</p> <p>Cerca de la cima había dos leones, ¡y rugían! Dos viajeros acababan de salir huyendo de miedo. Pero un vigilante le gritó: «¡No tengas miedo de los leones: están encadenados! Tú sigue por el medio del camino». Así que Cristiano pasó valientemente entre ellos, y no pudieron tocarlo.</p> <p>En la cima había una gran casa llamada el Palacio Hermoso, construida para ayudar a los viajeros cansados. Unas mujeres bondadosas llamadas Discreción, Prudencia, Piedad y Caridad lo recibieron, le dieron de comer y lo dejaron descansar. Y antes de que se marchara, lo vistieron de pies a cabeza con una armadura fuerte y reluciente para el camino que tenía por delante.</p> <p>Seguir a Dios puede ser una subida empinada y cansada, y a veces las cosas que nos asustan están encadenadas y no pueden hacernos daño de verdad. Dios nos da descanso, buenos amigos y una armadura para el viaje. Sigue subiendo, y no te salgas del camino.</p> <p><em>Querido Dios, cuando el camino sea duro y empinado, dame descanso y vísteme con tu armadura para seguir adelante. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué tuvo Cristiano que volver a bajar por la colina Dificultad?",
+    "answer": "Se quedó dormido en el refugio y su precioso rollo se le resbaló de la mano, así que volvió a buscarlo."
+   },
+   {
+    "question": "¿Por qué los leones que rugían no podían hacerle daño a Cristiano?",
+    "answer": "Estaban encadenados. El vigilante le dijo que siguiera por el medio del camino, así que pasó valientemente entre ellos."
+   },
+   {
+    "question": "¿Qué te asusta que quizá sea un «león encadenado»? ¿Quién te ayuda cuando las cosas se ponen difíciles?",
+    "answer": "La enseñanza del capítulo: seguir a Dios puede ser una subida empinada, y algunas cosas que nos asustan no pueden hacernos daño de verdad. Dios nos da descanso, buenos amigos y una armadura: sigue subiendo y no te salgas del camino."
+   }
+  ],
+  "body_text": "«Vestíos de toda la armadura de Dios» — de Efesios 6 Pronto el camino llegó a una colina empinada llamada Dificultad. ¡Era tan empinada que Cristiano tuvo que subir a gatas! A mitad de la subida había un pequeño refugio para descansar, y Cristiano se sentó; pero estaba tan cansado que se quedó profundamente dormido, y el precioso rollo se le resbaló de la mano. Cuando despertó y siguió deprisa, ¡de pronto se dio cuenta de que el rollo no estaba! Ay, qué triste se puso. Tuvo que bajar todo el camino de vuelta para buscarlo. Allí estaba, justo donde se había dormido. Lo recogió, le dio gracias a Dios y siguió subiendo. Cerca de la cima había dos leones, ¡y rugían! Dos viajeros acababan de salir huyendo de miedo. Pero un vigilante le gritó: «¡No tengas miedo de los leones: están encadenados! Tú sigue por el medio del camino». Así que Cristiano pasó valientemente entre ellos, y no pudieron tocarlo. En la cima había una gran casa llamada el Palacio Hermoso, construida para ayudar a los viajeros cansados. Unas mujeres bondadosas llamadas Discreción, Prudencia, Piedad y Caridad lo recibieron, le dieron de comer y lo dejaron descansar. Y antes de que se marchara, lo vistieron de pies a cabeza con una armadura fuerte y reluciente para el camino que tenía por delante. Seguir a Dios puede ser una subida empinada y cansada, y a veces las cosas que nos asustan están encadenadas y no pueden hacernos daño de verdad. Dios nos da descanso, buenos amigos y una armadura para el viaje. Sigue subiendo, y no te salgas del camino. Querido Dios, cuando el camino sea duro y empinado, dame descanso y vísteme con tu armadura para seguir adelante. Amén.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "Cristiano lucha contra el dragón",
+  "body_html": "<blockquote>«Resistid al diablo, y huirá de vosotros» — de Santiago 4</blockquote> <p>Abajo, en un valle profundo, un monstruo horrible vino pisando fuerte al encuentro de Cristiano. Se llamaba Apolión. Estaba cubierto de escamas como un pez, tenía alas como de dragón y patas como de oso, y le salían fuego y humo. ¡Era espantoso!</p> <p>«Tú me perteneces», rugió Apolión, «y no te dejaré ir a esa Ciudad». Cristiano le dijo que no: ahora servía al Rey. Entonces el monstruo le lanzó un dardo de fuego, y otro, y otro, tan seguidos como el granizo. Cristiano levantó su escudo para pararlos, pero salió herido en la cabeza, en la mano y en el pie.</p> <p>La pelea siguió y siguió… ¡durante medio día! Al final Cristiano estaba tan débil que la espada se le escapó de la mano, y Apolión se lanzó sobre él para acabar con él. Parecía el final.</p> <p>Pero Cristiano estiró el brazo, agarró otra vez su espada y gritó: «¡No te alegres todavía, enemigo mío: cuando caiga, me volveré a levantar!». Dio una estocada poderosa y exclamó: «¡En todas estas cosas somos más que vencedores por medio de aquel que nos amó!». Y Apolión extendió sus alas de dragón y se fue volando. ¡Cristiano había ganado! Y unas hojas del árbol de la vida le sanaron las heridas.</p> <p>El diablo es real, pero no tienes que vencerlo con tus propias fuerzas. Cristiano ganó con la Palabra de Dios y la victoria de Jesús. Cuando dices que no a lo malo y te agarras de Dios, el enemigo huye.</p> <p><em>Querido Dios, dame valor. Ayúdame a decir que no a lo malo, y a vencer confiando en Jesús. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué quería Apolión, y qué le dijo Cristiano?",
+    "answer": "Apolión dijo que Cristiano le pertenecía y que no lo dejaría ir a la Ciudad. Cristiano le dijo que no: ahora servía al Rey."
+   },
+   {
+    "question": "¿Qué hizo Cristiano cuando la espada se le escapó de la mano?",
+    "answer": "La agarró otra vez, dijo: «¡Cuando caiga, me volveré a levantar!», y dio una estocada poderosa; y Apolión se fue volando."
+   },
+   {
+    "question": "¿Qué te ayuda a decir que no a algo que sabes que está mal?",
+    "answer": "La enseñanza del capítulo: no vencemos al enemigo con nuestras propias fuerzas. Cristiano ganó con la Palabra de Dios y la victoria de Jesús: di que no a lo malo, agárrate de Dios, y el enemigo huye."
+   }
+  ],
+  "body_text": "«Resistid al diablo, y huirá de vosotros» — de Santiago 4 Abajo, en un valle profundo, un monstruo horrible vino pisando fuerte al encuentro de Cristiano. Se llamaba Apolión. Estaba cubierto de escamas como un pez, tenía alas como de dragón y patas como de oso, y le salían fuego y humo. ¡Era espantoso! «Tú me perteneces», rugió Apolión, «y no te dejaré ir a esa Ciudad». Cristiano le dijo que no: ahora servía al Rey. Entonces el monstruo le lanzó un dardo de fuego, y otro, y otro, tan seguidos como el granizo. Cristiano levantó su escudo para pararlos, pero salió herido en la cabeza, en la mano y en el pie. La pelea siguió y siguió… ¡durante medio día! Al final Cristiano estaba tan débil que la espada se le escapó de la mano, y Apolión se lanzó sobre él para acabar con él. Parecía el final. Pero Cristiano estiró el brazo, agarró otra vez su espada y gritó: «¡No te alegres todavía, enemigo mío: cuando caiga, me volveré a levantar!». Dio una estocada poderosa y exclamó: «¡En todas estas cosas somos más que vencedores por medio de aquel que nos amó!». Y Apolión extendió sus alas de dragón y se fue volando. ¡Cristiano había ganado! Y unas hojas del árbol de la vida le sanaron las heridas. El diablo es real, pero no tienes que vencerlo con tus propias fuerzas. Cristiano ganó con la Palabra de Dios y la victoria de Jesús. Cuando dices que no a lo malo y te agarras de Dios, el enemigo huye. Querido Dios, dame valor. Ayúdame a decir que no a lo malo, y a vencer confiando en Jesús. Amén.",
+  "word_count": 279
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "A través del valle oscuro",
+  "body_html": "<blockquote>«Aunque ande en valle de sombra de muerte, no temeré mal alguno, porque tú estarás conmigo» — del Salmo 23</blockquote> <p>La siguiente parte del viaje fue la que más miedo daba de todas: un lugar llamado el Valle de Sombra de Muerte. Estaba tan oscuro que muchas veces Cristiano no sabía dónde poner los pies. A un lado había una zanja profunda, al otro un pantano peligroso, y de la negrura salían ruidos espantosos.</p> <p>Su espada no servía de nada contra aquella oscuridad. Así que Cristiano echó mano de otra arma, la mejor de todas. Se llamaba Toda-Oración. Simplemente clamó: «¡Oh Señor, te ruego que me salves!».</p> <p>Una de aquellas criaturas malvadas se le acercó por detrás sin hacer ruido y le susurró al oído pensamientos feos, tan bajito que Cristiano tuvo miedo de que esos malos pensamientos salieran de su propia mente. Eso lo asustó todavía más.</p> <p>Pero entonces, a través de la oscuridad, oyó una voz más adelante. Alguien más iba también por el valle, diciendo en voz alta: «Aunque ande en valle de sombra de muerte, no temeré mal alguno, porque tú estarás conmigo». A Cristiano se le alegró el corazón. ¡Después de todo, no estaba solo! Y cuando llegó la mañana, salió sano y salvo por el otro lado.</p> <p>A veces la vida parece oscura y da miedo, y no vemos el camino. Es entonces cuando lo mejor que podemos hacer es lo más sencillo: orar. Dios está contigo en la oscuridad, aunque no puedas verlo, y la mañana siempre llega.</p> <p><em>Querido Dios, cuando las cosas estén oscuras y den miedo, ayúdame a orar. Gracias porque estás conmigo y no tengo por qué tener miedo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué arma usó Cristiano en el valle oscuro, ya que su espada no servía?",
+    "answer": "Un arma llamada Toda-Oración. Simplemente clamó: «¡Oh Señor, te ruego que me salves!»."
+   },
+   {
+    "question": "¿Por qué se le alegró el corazón a Cristiano en la oscuridad?",
+    "answer": "Oyó a alguien más adelante que decía: «No temeré mal alguno, porque tú estarás conmigo», y supo que no estaba solo."
+   },
+   {
+    "question": "¿Qué te da miedo en la oscuridad o en los momentos difíciles? ¿Qué podrías hacer entonces?",
+    "answer": "La enseñanza del capítulo: cuando las cosas parecen oscuras y no vemos el camino, lo mejor es lo más sencillo: orar. Dios está contigo en la oscuridad, y la mañana siempre llega."
+   }
+  ],
+  "body_text": "«Aunque ande en valle de sombra de muerte, no temeré mal alguno, porque tú estarás conmigo» — del Salmo 23 La siguiente parte del viaje fue la que más miedo daba de todas: un lugar llamado el Valle de Sombra de Muerte. Estaba tan oscuro que muchas veces Cristiano no sabía dónde poner los pies. A un lado había una zanja profunda, al otro un pantano peligroso, y de la negrura salían ruidos espantosos. Su espada no servía de nada contra aquella oscuridad. Así que Cristiano echó mano de otra arma, la mejor de todas. Se llamaba Toda-Oración. Simplemente clamó: «¡Oh Señor, te ruego que me salves!». Una de aquellas criaturas malvadas se le acercó por detrás sin hacer ruido y le susurró al oído pensamientos feos, tan bajito que Cristiano tuvo miedo de que esos malos pensamientos salieran de su propia mente. Eso lo asustó todavía más. Pero entonces, a través de la oscuridad, oyó una voz más adelante. Alguien más iba también por el valle, diciendo en voz alta: «Aunque ande en valle de sombra de muerte, no temeré mal alguno, porque tú estarás conmigo». A Cristiano se le alegró el corazón. ¡Después de todo, no estaba solo! Y cuando llegó la mañana, salió sano y salvo por el otro lado. A veces la vida parece oscura y da miedo, y no vemos el camino. Es entonces cuando lo mejor que podemos hacer es lo más sencillo: orar. Dios está contigo en la oscuridad, aunque no puedas verlo, y la mañana siempre llega. Querido Dios, cuando las cosas estén oscuras y den miedo, ayúdame a orar. Gracias porque estás conmigo y no tengo por qué tener miedo. Amén.",
+  "word_count": 280
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "La Feria de la Vanidad y el amigo Fiel",
+  "body_html": "<blockquote>«Sé fiel hasta la muerte, y yo te daré la corona de la vida» — de Apocalipsis 2</blockquote> <p>Para entonces Cristiano tenía un compañero de viaje: un amigo bueno y valiente llamado Fiel. Juntos llegaron a una ciudad llena de gente donde había una feria enorme llamada la Feria de la Vanidad. Allí se vendía cualquier cosa brillante que te puedas imaginar, y a la gente no le importaba nada más.</p> <p>Los dos peregrinos ni siquiera miraban todas aquellas cosas relucientes. «¿Qué van a comprar?», gritaban los vendedores. «Compramos la verdad», respondían ellos. Eso era lo único que querían.</p> <p>Aquello enfureció a la multitud. Se burlaron de los dos amigos, los cubrieron de suciedad y los encerraron en una jaula. Luego llevaron a juicio al valiente Fiel, con un juez malvado y testigos mentirosos, y lo trataron terriblemente; pero Fiel nunca dejó de confiar en Dios.</p> <p>Y aquí está el secreto maravilloso que Bunyan quería que los niños supieran: en el momento en que terminó la vida de Fiel en la tierra, bajó un carro con caballos y se lo llevó hacia arriba, a través de las nubes, directo a las puertas de la gran Ciudad. ¡Llegó el primero de todos! Cristiano escapó de la ciudad, y pronto se le unió un nuevo amigo llamado Esperanzado, porque Esperanzado había visto con cuánta valentía Cristiano y Fiel amaban a Dios.</p> <p>Al mundo no siempre le caen bien las personas que aman a Dios, y ser fiel puede costar algo. Pero Dios lo ve, Dios lo recuerda, y la recompensa es mayor que cualquier cosa que la feria pudiera vender.</p> <p><em>Querido Dios, ayúdame a amar la verdad más que las cosas brillantes, y a serte fiel pase lo que pase. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué dijeron Cristiano y Fiel cuando los vendedores gritaban: «¿Qué van a comprar?»?",
+    "answer": "«Compramos la verdad». Ni siquiera miraban las cosas relucientes."
+   },
+   {
+    "question": "¿Qué le pasó a Fiel cuando terminó su vida en la tierra?",
+    "answer": "Bajó un carro con caballos y se lo llevó, a través de las nubes, hasta las puertas de la gran Ciudad: llegó el primero."
+   },
+   {
+    "question": "¿Alguna vez te cuesta hacer lo correcto cuando otros se ríen o solo quieren cosas brillantes? ¿Qué te ayuda?",
+    "answer": "La enseñanza del capítulo: al mundo no siempre le caen bien las personas que aman a Dios, y ser fiel puede costar algo; pero Dios lo ve y lo recuerda, y su recompensa es mayor que cualquier cosa que la feria pudiera vender."
+   }
+  ],
+  "body_text": "«Sé fiel hasta la muerte, y yo te daré la corona de la vida» — de Apocalipsis 2 Para entonces Cristiano tenía un compañero de viaje: un amigo bueno y valiente llamado Fiel. Juntos llegaron a una ciudad llena de gente donde había una feria enorme llamada la Feria de la Vanidad. Allí se vendía cualquier cosa brillante que te puedas imaginar, y a la gente no le importaba nada más. Los dos peregrinos ni siquiera miraban todas aquellas cosas relucientes. «¿Qué van a comprar?», gritaban los vendedores. «Compramos la verdad», respondían ellos. Eso era lo único que querían. Aquello enfureció a la multitud. Se burlaron de los dos amigos, los cubrieron de suciedad y los encerraron en una jaula. Luego llevaron a juicio al valiente Fiel, con un juez malvado y testigos mentirosos, y lo trataron terriblemente; pero Fiel nunca dejó de confiar en Dios. Y aquí está el secreto maravilloso que Bunyan quería que los niños supieran: en el momento en que terminó la vida de Fiel en la tierra, bajó un carro con caballos y se lo llevó hacia arriba, a través de las nubes, directo a las puertas de la gran Ciudad. ¡Llegó el primero de todos! Cristiano escapó de la ciudad, y pronto se le unió un nuevo amigo llamado Esperanzado, porque Esperanzado había visto con cuánta valentía Cristiano y Fiel amaban a Dios. Al mundo no siempre le caen bien las personas que aman a Dios, y ser fiel puede costar algo. Pero Dios lo ve, Dios lo recuerda, y la recompensa es mayor que cualquier cosa que la feria pudiera vender. Querido Dios, ayúdame a amar la verdad más que las cosas brillantes, y a serte fiel pase lo que pase. Amén.",
+  "word_count": 289
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "La huida del Gigante Desesperación",
+  "body_html": "<blockquote>«Nos ha dado preciosas y grandísimas promesas» — de 2 Pedro 1</blockquote> <p>Un día, para que fuera más fácil caminar, Cristiano y Esperanzado se salieron del camino angosto y entraron en un prado que parecía más agradable. ¡Gran error! Vino una tormenta, se perdieron y se quedaron dormidos en el campo equivocado.</p> <p>Al amanecer los encontró un gigante enorme y cruel. Se llamaba Gigante Desesperación, y el campo pertenecía a su casa, el Castillo de la Duda. Se llevó a rastras a los dos amigos y los echó en un calabozo oscuro y maloliente, sin comida y sin luz, durante días y días. El gigante los trataba de forma horrible y les decía que perdieran toda esperanza.</p> <p>Los pobres Cristiano y Esperanzado se sentían desdichados. Pero Esperanzado repetía: «Ánimo, aguanta, Dios nos ayudará». Y el sábado a medianoche comenzaron a orar.</p> <p>Entonces, poco antes del amanecer, Cristiano exclamó de repente: «¡Qué tonto soy! ¡He estado tirado en este calabozo cuando podía haber salido libre! ¡Tengo en el bolsillo una llave llamada Promesa que abre cualquier cerradura del Castillo de la Duda!».</p> <p>Sacó la llave. Abrió la puerta del calabozo. Abrió la puerta de fuera. Abrió incluso el pesado portón de hierro. Y los dos amigos salieron libres, de vuelta al camino del buen Rey.</p> <p>Cuando sientas que no hay salida ni esperanza, acuérdate de la llave de Cristiano. Las promesas de Dios —las cosas que nos ha dicho en la Biblia— pueden abrir cualquier calabozo de desesperación. No olvides que tienes la llave en la mano.</p> <p><em>Querido Dios, cuando sienta que no hay salida y esté triste, ayúdame a acordarme de tus promesas. Gracias porque me hacen libre. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo acabaron Cristiano y Esperanzado en el Castillo de la Duda?",
+    "answer": "Se salieron del camino angosto por un prado que parecía más fácil, se perdieron en una tormenta y se quedaron dormidos en el campo del Gigante Desesperación."
+   },
+   {
+    "question": "¿Cómo lograron por fin salir del calabozo?",
+    "answer": "Después de orar, Cristiano se acordó de una llave que tenía en el bolsillo llamada Promesa. Abrió la puerta del calabozo, la puerta de fuera y el portón de hierro."
+   },
+   {
+    "question": "Cuando estás triste o sientes que no hay salida, ¿qué «llave» podrías recordar?",
+    "answer": "La enseñanza del capítulo: las promesas de Dios —las cosas que nos dice en la Biblia— pueden abrir cualquier calabozo de desesperación. No olvides que tienes la llave en la mano."
+   }
+  ],
+  "body_text": "«Nos ha dado preciosas y grandísimas promesas» — de 2 Pedro 1 Un día, para que fuera más fácil caminar, Cristiano y Esperanzado se salieron del camino angosto y entraron en un prado que parecía más agradable. ¡Gran error! Vino una tormenta, se perdieron y se quedaron dormidos en el campo equivocado. Al amanecer los encontró un gigante enorme y cruel. Se llamaba Gigante Desesperación, y el campo pertenecía a su casa, el Castillo de la Duda. Se llevó a rastras a los dos amigos y los echó en un calabozo oscuro y maloliente, sin comida y sin luz, durante días y días. El gigante los trataba de forma horrible y les decía que perdieran toda esperanza. Los pobres Cristiano y Esperanzado se sentían desdichados. Pero Esperanzado repetía: «Ánimo, aguanta, Dios nos ayudará». Y el sábado a medianoche comenzaron a orar. Entonces, poco antes del amanecer, Cristiano exclamó de repente: «¡Qué tonto soy! ¡He estado tirado en este calabozo cuando podía haber salido libre! ¡Tengo en el bolsillo una llave llamada Promesa que abre cualquier cerradura del Castillo de la Duda!». Sacó la llave. Abrió la puerta del calabozo. Abrió la puerta de fuera. Abrió incluso el pesado portón de hierro. Y los dos amigos salieron libres, de vuelta al camino del buen Rey. Cuando sientas que no hay salida ni esperanza, acuérdate de la llave de Cristiano. Las promesas de Dios —las cosas que nos ha dicho en la Biblia— pueden abrir cualquier calabozo de desesperación. No olvides que tienes la llave en la mano. Querido Dios, cuando sienta que no hay salida y esté triste, ayúdame a acordarme de tus promesas. Gracias porque me hacen libre. Amén.",
+  "word_count": 279
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "Los pastores que muestran maravillas",
+  "body_html": "<blockquote>«Jehová es mi pastor; nada me faltará» — del Salmo 23</blockquote> <p>Después de todo aquello, Cristiano y Esperanzado llegaron a un lugar precioso: los Montes Deleitosos, que estaban tan cerca de la gran Ciudad que casi se la podía ver. Colinas verdes, jardines, fuentes… y cuatro pastores bondadosos que cuidaban las ovejas. Se llamaban Conocimiento, Experiencia, Vigilante y Sincero.</p> <p>Los pastores recibieron a los viajeros cansados, les dieron de comer y los dejaron descansar. Luego les dijeron: «Vengan, les mostraremos algunas cosas». Los llevaron por los montes y les mostraron cosas que en parte eran maravillosas y en parte eran una advertencia: lugares donde los viajeros que habían dejado el buen camino habían sufrido daño. Eso hizo que Cristiano y Esperanzado se alegraran mucho de no haberse apartado del camino.</p> <p>Lo mejor de todo fue que los pastores los subieron a un monte alto llamado Claro y les dieron un catalejo especial. A los dos amigos les temblaban las manos de emoción, pero a través de él alcanzaron a ver —muy, muy lejos— la puerta de la mismísima Ciudad Celestial. ¡Ya se veía el final de su viaje!</p> <p>Cuando los peregrinos se pusieron otra vez en marcha, los pastores les dieron un consejo cariñoso: que estuvieran atentos y no se quedaran dormidos por el camino.</p> <p>Dios es como esos buenos pastores. Nos da de comer, nos da descanso, nos advierte del peligro y nos deja ver el hogar maravilloso al que nos lleva. El Señor es tu pastor: puedes confiar en que te guiará hasta el final.</p> <p><em>Querido Dios, gracias por ser mi pastor, que me da de comer, me guía y me muestra el camino a casa. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hicieron los pastores por Cristiano y Esperanzado?",
+    "answer": "Los recibieron, les dieron comida y descanso, les mostraron advertencias sobre lo que pasa al dejar el camino y les dejaron mirar por un catalejo."
+   },
+   {
+    "question": "¿Qué vieron los peregrinos por el catalejo en el monte llamado Claro?",
+    "answer": "Alcanzaron a ver, muy lejos, la puerta de la Ciudad Celestial: ya se veía el final de su viaje."
+   },
+   {
+    "question": "¿En qué se parece Dios a los buenos pastores de esta historia?",
+    "answer": "La enseñanza del capítulo: como los pastores, Dios nos da de comer, nos da descanso, nos advierte del peligro y nos muestra el hogar al que nos lleva; puedes confiar en que te guiará hasta el final."
+   }
+  ],
+  "body_text": "«Jehová es mi pastor; nada me faltará» — del Salmo 23 Después de todo aquello, Cristiano y Esperanzado llegaron a un lugar precioso: los Montes Deleitosos, que estaban tan cerca de la gran Ciudad que casi se la podía ver. Colinas verdes, jardines, fuentes… y cuatro pastores bondadosos que cuidaban las ovejas. Se llamaban Conocimiento, Experiencia, Vigilante y Sincero. Los pastores recibieron a los viajeros cansados, les dieron de comer y los dejaron descansar. Luego les dijeron: «Vengan, les mostraremos algunas cosas». Los llevaron por los montes y les mostraron cosas que en parte eran maravillosas y en parte eran una advertencia: lugares donde los viajeros que habían dejado el buen camino habían sufrido daño. Eso hizo que Cristiano y Esperanzado se alegraran mucho de no haberse apartado del camino. Lo mejor de todo fue que los pastores los subieron a un monte alto llamado Claro y les dieron un catalejo especial. A los dos amigos les temblaban las manos de emoción, pero a través de él alcanzaron a ver —muy, muy lejos— la puerta de la mismísima Ciudad Celestial. ¡Ya se veía el final de su viaje! Cuando los peregrinos se pusieron otra vez en marcha, los pastores les dieron un consejo cariñoso: que estuvieran atentos y no se quedaran dormidos por el camino. Dios es como esos buenos pastores. Nos da de comer, nos da descanso, nos advierte del peligro y nos deja ver el hogar maravilloso al que nos lleva. El Señor es tu pastor: puedes confiar en que te guiará hasta el final. Querido Dios, gracias por ser mi pastor, que me da de comer, me guía y me muestra el camino a casa. Amén.",
+  "word_count": 279
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "Al otro lado del río, hasta la Ciudad de Oro",
+  "body_html": "<blockquote>«Cuando pases por las aguas, yo estaré contigo» — de Isaías 43</blockquote> <p>Por fin Cristiano y Esperanzado llegaron cerca del final de su largo viaje. Podían ver la Ciudad Celestial brillando sobre su monte, con sus murallas y su puerta resplandecientes como el oro. Pero entre ellos y la puerta quedaba una última cosa: un río profundo, sin ningún puente para cruzarlo.</p> <p>«Tienen que pasar por el río», les dijeron, «o no podrán llegar a la puerta». Así que los dos amigos se metieron en el agua, y era profunda. Cristiano empezó a hundirse, y el miedo lo llenó. «¡Me hundo!», gritó. «¡Las olas me pasan por encima de la cabeza!». Todas sus antiguas preocupaciones volvieron de golpe.</p> <p>Pero Esperanzado le sostuvo la cabeza a Cristiano y le gritó: «¡Ánimo, hermano mío! ¡Siento el fondo, y es firme!». Y Cristiano se acordó de la promesa de Dios: «Cuando pases por las aguas, yo estaré contigo». Al instante sus pies tocaron el fondo, y juntos cruzaron sanos y salvos a la otra orilla.</p> <p>Allí los recibieron dos Resplandecientes y los llevaron hasta la puerta de oro. Entregaron sus rollos, y la puerta se abrió de par en par. Les dieron vestiduras resplandecientes, arpas y coronas, y mientras entraban, todas las campanas de la Ciudad repicaron de alegría, y una voz dijo: «¡Entra en el gozo de tu Señor!».</p> <p>Cristiano por fin estaba en casa, a salvo y lleno de alegría para siempre. Y hasta allí lleva el camino de seguir a Dios a todo viajero que sigue confiando en él: hasta casa.</p> <p><em>Querido Dios, gracias porque estás conmigo todo el camino, hasta el final, y porque tu Ciudad es mi hogar. Ayúdame a seguir caminando contigo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué era lo último que había entre Cristiano y la Ciudad de Oro?",
+    "answer": "Un río profundo sin puente. Tenían que pasar por él para llegar a la puerta."
+   },
+   {
+    "question": "¿Cómo ayudó Esperanzado a Cristiano en el río?",
+    "answer": "Le sostuvo la cabeza y le gritó: «¡Ánimo, hermano mío! ¡Siento el fondo, y es firme!»."
+   },
+   {
+    "question": "Cuando tienes miedo, ¿qué promesa de esta historia podrías recordar?",
+    "answer": "La enseñanza del capítulo: Dios promete: «Cuando pases por las aguas, yo estaré contigo». Él está con nosotros todo el camino, y su Ciudad es el hogar de todos los que siguen confiando en él."
+   }
+  ],
+  "body_text": "«Cuando pases por las aguas, yo estaré contigo» — de Isaías 43 Por fin Cristiano y Esperanzado llegaron cerca del final de su largo viaje. Podían ver la Ciudad Celestial brillando sobre su monte, con sus murallas y su puerta resplandecientes como el oro. Pero entre ellos y la puerta quedaba una última cosa: un río profundo, sin ningún puente para cruzarlo. «Tienen que pasar por el río», les dijeron, «o no podrán llegar a la puerta». Así que los dos amigos se metieron en el agua, y era profunda. Cristiano empezó a hundirse, y el miedo lo llenó. «¡Me hundo!», gritó. «¡Las olas me pasan por encima de la cabeza!». Todas sus antiguas preocupaciones volvieron de golpe. Pero Esperanzado le sostuvo la cabeza a Cristiano y le gritó: «¡Ánimo, hermano mío! ¡Siento el fondo, y es firme!». Y Cristiano se acordó de la promesa de Dios: «Cuando pases por las aguas, yo estaré contigo». Al instante sus pies tocaron el fondo, y juntos cruzaron sanos y salvos a la otra orilla. Allí los recibieron dos Resplandecientes y los llevaron hasta la puerta de oro. Entregaron sus rollos, y la puerta se abrió de par en par. Les dieron vestiduras resplandecientes, arpas y coronas, y mientras entraban, todas las campanas de la Ciudad repicaron de alegría, y una voz dijo: «¡Entra en el gozo de tu Señor!». Cristiano por fin estaba en casa, a salvo y lleno de alegría para siempre. Y hasta allí lleva el camino de seguir a Dios a todo viajero que sigue confiando en él: hasta casa. Querido Dios, gracias porque estás conmigo todo el camino, hasta el final, y porque tu Ciudad es mi hogar. Ayúdame a seguir caminando contigo. Amén.",
+  "word_count": 286
+ }
+}
+]
