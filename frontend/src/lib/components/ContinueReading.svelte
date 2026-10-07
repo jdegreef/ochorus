@@ -9,9 +9,8 @@
 		unfinishedBookSlugs
 	} from '$lib/resumeBooks';
 	import { workSlugKey } from '$lib/reading-schema';
-	import type { ResumeItem } from '$lib/resumeItems';
 	import { allProgress } from '$lib/progress';
-	import { buildResumeItems } from '$lib/resumeItems';
+	import { buildResumeItems, type ResumeItem } from '$lib/resumeItems';
 	import { getLang } from '$lib/lang.svelte';
 	import { i18n } from '$lib/i18n.svelte';
 	import WorkCard, { placeholder } from '$lib/components/WorkCard.svelte';
@@ -37,7 +36,15 @@
 	 * reads push them past the limit. Renders nothing when there's nothing in
 	 * progress.
 	 */
-	let { limit = 4 }: { limit?: number } = $props();
+	let {
+		limit = 4,
+		exclude
+	}: {
+		limit?: number;
+		/** A work key (`workSlugKey`) to leave out — the book the home hero
+		 * already offers, so it isn't shown twice. */
+		exclude?: string;
+	} = $props();
 
 	const t = i18n.t;
 
@@ -100,7 +107,7 @@
 	// shelf, so the strip drops it before taking its head.
 	const drawable = $derived.by(() => {
 		void ticks;
-		return buildResumeItems(bookList, sermonList ?? []).filter((i) => !i.finished);
+		return buildResumeItems(bookList, sermonList ?? []).filter((i) => !i.finished && i.key !== exclude);
 	});
 
 	type Slot = { key: string; item: ResumeItem } | { key: string; pending: 'book' | 'sermon' };
@@ -116,17 +123,13 @@
 		}
 		const byKey = new Map(drawable.map((i) => [i.key, i]));
 		return allProgress()
-			.filter(
-				(p) =>
-					p.finished_at == null &&
-					(p.kind === 'book' || p.kind === 'sermon') &&
-					!absent.has(workSlugKey(p.kind, p.slug))
-			)
+			.filter((p) => p.finished_at == null && (p.kind === 'book' || p.kind === 'sermon'))
+			.map((p) => ({ kind: p.kind as 'book' | 'sermon', key: workSlugKey(p.kind, p.slug) }))
+			.filter(({ key }) => !absent.has(key) && key !== exclude)
 			.slice(0, limit)
-			.map((p) => {
-				const key = workSlugKey(p.kind, p.slug);
+			.map(({ kind, key }) => {
 				const item = byKey.get(key);
-				return item ? { key, item } : { key, pending: p.kind as 'book' | 'sermon' };
+				return item ? { key, item } : { key, pending: kind };
 			});
 	});
 	const busy = $derived(slots.some((s) => 'pending' in s));

@@ -31,7 +31,7 @@ const book = (slug: string, extra: Partial<BookSummary> = {}) =>
 		author: { slug: 'a', name: 'A', bio: 'long bio', photo_url: '', birth_year: 1800, death_year: 1900 },
 		...extra
 	}) as BookSummary;
-const progress = (records: Record<string, { finished_at?: number }>) =>
+const progress = (records: Record<string, { finished_at?: number; at?: number }>) =>
 	localStorage.setItem(
 		PROGRESS_KEY,
 		JSON.stringify(
@@ -55,6 +55,15 @@ describe('resumeBooks', () => {
 		const { unfinishedBookSlugs } = await fresh();
 		progress({ a: {}, b: { finished_at: 5 } });
 		expect(unfinishedBookSlugs()).toEqual(['a']);
+	});
+
+	it("names the newest unfinished book the language has as the reader's current one", async () => {
+		const { currentBookSlug } = await fresh();
+		progress({ old: { at: 1 }, done: { at: 3, finished_at: 3 }, newest: { at: 4 }, 'sermon:s': { at: 5 } });
+		expect(currentBookSlug(new Set())).toBe('newest');
+		// The language lacks it: the next one stands in, so hero and strip agree.
+		expect(currentBookSlug(new Set(['newest']))).toBe('old');
+		expect(currentBookSlug(new Set(['newest', 'old']))).toBeNull();
 	});
 
 	it('shares one request between blocks that ask minutes apart', async () => {
