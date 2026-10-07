@@ -133,6 +133,10 @@ describe('library palettes', () => {
 		});
 	}
 
+	it("the painting's label holds on the hero's mat", () => {
+		expect(ratio(heroRoot['--hero-mat-ink'], heroRoot['--hero-mat'])).toBeGreaterThanOrEqual(4.5);
+	});
+
 	it("the house palette's chrome colours are the themes' own", () => {
 		expect(PALETTE_COLORS.parchment.light).toBe(theme('light')['--bg']);
 		expect(PALETTE_COLORS.parchment.dark).toBe(lamplight['--bg']);

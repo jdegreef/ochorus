@@ -1186,6 +1186,9 @@
 	/* The framed painting: a cream mat inside a gilt fillet, like a print hung
 	   in a gallery rather than a screenshot with a border. */
 	--hero-mat: #f3ead6;
+	/* The painting's label is lettered on the mat: the mat is the same cream in
+	   every theme and palette, so one brown ink holds it (palettes.test.ts). */
+	--hero-mat-ink: #5a4630;
 	--hero-gilt: #c9a24f;
 	--hero-gilt-deep: #7a5a22;
 	/* The liturgical colours the date line's season dot wears. Decorative (the

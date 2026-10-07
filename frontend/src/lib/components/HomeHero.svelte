@@ -8,6 +8,7 @@
 	import { hydrateSrc } from '$lib/hydrateSrc';
 	import { i18n } from '$lib/i18n.svelte';
 	import { liturgicalSeason, SEASON_COLOUR } from '$lib/liturgical';
+	import { artCredit, SEASON_ART, type ArtCredit } from '$lib/heroArt';
 	import { localDayNumber } from '$lib/dailyArticles';
 	import { dayPart } from '$lib/greeting';
 	import * as m from '$lib/paraglide/messages.js';
@@ -21,7 +22,8 @@
 	 * the same shared lists that strip uses (`$lib/resumeBooks`), so the two
 	 * agree on which book is current, a book this language lacks is skipped,
 	 * and a plate-covered book asks for no painting that doesn't exist. Anything
-	 * without a painting — a plate, a sermon, no reading yet — gets DEFAULT_ART.
+	 * without a painting — a plate, a sermon, no reading yet — gets the season's
+	 * painting (SEASON_ART), labelled on the mat with the museum's own credit.
 	 *
 	 * Picked at creation from the cache (the dashboard renders client-side only),
 	 * so a returning reader's first paint is already theirs; corrected when the
@@ -41,9 +43,14 @@
 	 */
 	let { name }: { name: string } = $props();
 
-	// Van Gogh's cypresses (the Absolute Surrender ground): green, sky and a
-	// moon — legible under the scrim, and warm in every theme.
-	const DEFAULT_ART = '/covers/art/absolute-surrender-640.webp';
+	// The date, season and greeting turn over with the reader's day, so a tab
+	// left open overnight is right when the reader comes back to it (as
+	// HomeArticles below re-picks its shelf).
+	let now = $state(new Date());
+	const today = $derived(
+		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
+	);
+	const season = $derived(liturgicalSeason(now));
 
 	/** The current book's painting from `books`, null if it has none there. */
 	function paintingOf(books: { slug: string; cover_url: string | null }[]): string | null {
@@ -55,15 +62,17 @@
 		return url && isArtCover(url) ? url : null;
 	}
 
-	let art = $state(browser ? (paintingOf(cachedResumeBooks(getLang())) ?? DEFAULT_ART) : DEFAULT_ART);
+	// The reader's own painting wins; without one, the season's ($lib/heroArt).
+	let bookArt = $state<string | null>(browser ? paintingOf(cachedResumeBooks(getLang())) : null);
+	const art = $derived(bookArt ?? SEASON_ART[season]);
 
 	function repick() {
 		const lang = getLang();
 		const cached = paintingOf(cachedResumeBooks(lang));
-		if (cached) art = cached;
+		if (cached) bookArt = cached;
 		if (!unfinishedBookSlugs().length) return;
 		libraryBooks(lang)
-			.then((books) => (art = paintingOf(books) ?? DEFAULT_ART))
+			.then((books) => (bookArt = paintingOf(books)))
 			.catch(() => {});
 	}
 
@@ -73,16 +82,20 @@
 		return () => window.removeEventListener('ochorus:sync', repick);
 	});
 
-	const fallBack = () => (art = DEFAULT_ART);
+	const fallBack = () => (bookArt = null);
 
-	// The date, season and greeting turn over with the reader's day, so a tab
-	// left open overnight is right when the reader comes back to it (as
-	// HomeArticles below re-picks its shelf).
-	let now = $state(new Date());
-	const today = $derived(
-		new Intl.DateTimeFormat(getLang(), { weekday: 'long', day: 'numeric', month: 'long' }).format(now)
-	);
-	const season = $derived(liturgicalSeason(now));
+	// The museum's label for whatever hangs in the frame, lettered on the mat
+	// like a gallery print. The frame (and so the label) is hidden on a phone;
+	// a painting with no curated entry hangs unlabelled.
+	let label = $state<ArtCredit | null>(null);
+	$effect(() => {
+		const url = art;
+		label = null;
+		artCredit(url).then((c) => {
+			if (art === url) label = c;
+		});
+	});
+
 	// "Good evening, James" — for the time of the reader's day, on the same
 	// clock as the date, so the two never disagree. Parameterised so the name
 	// sits where each language wants it (Paraglide's message functions, not
@@ -167,6 +180,11 @@
 				use:hydrateSrc={{ src: art }}
 				onerror={fallBack}
 			/>
+			{#if label}
+				<span class="home-hero-label" title={label.credit}
+					>{label.artist}<br /><i>{label.title}</i>{label.year ? `, ${label.year}` : ''}</span
+				>
+			{/if}
 		</span>
 	</div>
 </section>
@@ -248,6 +266,17 @@
 		object-fit: cover;
 		border: 1px solid var(--hero-gilt);
 		box-shadow: 0 0 0 1px var(--hero-gilt-deep);
+	}
+	/* The museum's label, lettered on the mat under the picture, small, in
+	   the mat's own ink (app.css --hero-mat-ink). */
+	.home-hero-label {
+		display: block;
+		margin-top: 0.45rem;
+		font-size: var(--fs-micro);
+		line-height: 1.3;
+		color: var(--hero-mat-ink);
+		text-align: center;
+		overflow-wrap: anywhere;
 	}
 	@media (min-width: 640px) {
 		.home-hero-frame {
