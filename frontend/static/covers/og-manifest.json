@@ -5767,6 +5767,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"fr/talks-to-the-farmer-teens": {
+			"ground": "dbc6ccc9cb9988856c2c5fe1824133136ca6d9d83d5d4e9c14c5b71672c6faa4",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"fr/the-christians-secret-of-a-happy-life-4": {
 			"ground": "78e2ee4d0a5719f9eb3f5106947b68924d5812a1fe276d93e84d084327d7766e",
 			"style": "devotional",
