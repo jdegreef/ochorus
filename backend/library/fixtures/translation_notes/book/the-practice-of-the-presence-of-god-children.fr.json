@@ -3,7 +3,7 @@
  "slug": "the-practice-of-the-presence-of-god-children",
  "language": "fr",
  "job_issue": 5465,
- "pull_request": null,
+ "pull_request": 5520,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Psalm 23”). The French renders those paraphrases in the same simple, read-aloud wording (« — d’après Psaume 23 », as in the shipped fr children's editions) rather than pasting the Louis Segond 1910 text, whose archaic register would break the edition's voice; several lines nonetheless sit close to the familiar Segond wording (1 Samuel 16:7, 1 Corinthiens 10:31, 1 Jean 1:9, Jacques 4:8).",
   "Brother Lawrence's own words (ch. 3 « Dieu l’avait trompé », ch. 7 the kitchen saying) are rendered in simple modern French echoing the 17th-century French original, not quoted from it. Tag sequence is identical to the English chapter by chapter. AI-translated in-session; awaiting native review."
