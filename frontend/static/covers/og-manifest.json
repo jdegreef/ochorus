@@ -3461,6 +3461,16 @@
 				532
 			]
 		},
+		"corrie-ten-boom-a-life-teens": {
+			"ground": "1cd7e7ff6e1bd2e33dab4c5b99b45d1121c10418cd4f7f0e7746dc778e1966ae",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"daughters-of-the-king-1": {
 			"ground": "cdeca93949c57d78aa7f907c095b29da214f40735e73802ccb2ef4ac40acceed",
 			"style": "young",
@@ -3580,6 +3590,16 @@
 				263,
 				532
 			]
+		},
+		"elisabeth-elliot-a-life-teens": {
+			"ground": "6ac6c2e7eb76a59ab05f5a3c6c2e43e9fe7ac6bb4a7620dd5531ddf03e83decc",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"enchiridion": {
 			"ground": "e2019e027f55ad618f84ec4ad8e7ae060f22a347d03a6f7914243c5d2180c7c8",
