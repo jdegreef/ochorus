@@ -88,6 +88,7 @@ from .serializers import (
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
+    lead_book_cards,
     plan_article_index,
     plan_book_index,
     plan_chapter_index,
@@ -863,7 +864,7 @@ def _audience_topic(audience: str):
     """The audience's curated topic, with its entries and translations — or None."""
     return (
         Topic.objects.filter(is_published=True, slug=AUDIENCE_TOPICS[audience])
-        .prefetch_related("translations", "entries")
+        .prefetch_related("translations", "entries", "article_entries")
         .first()
     )
 
@@ -940,7 +941,9 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     - ``more`` — the rest of the audience's curated topic shelf, when that
       topic exists in this language (``topic`` names it for the page's link);
     - ``plans`` — published plans that read ONLY these books, so an adult plan
-      that happens to visit one of them never lands on a children's page.
+      that happens to visit one of them never lands on a children's page;
+    - ``articles`` — the topic's articles in this language (the teens' Big
+      Questions), in its curator's order; companions, so they claim no book.
 
     ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
@@ -998,6 +1001,23 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
         )
 
         printable = sorted(slug for slug in claimed if (slug, language) in EXPORT_EDITIONS)
+
+        # The topic's articles here, in its curator's order — the teens' Big
+        # Questions (doubt, suffering, the resurrection…) that meet a reader at
+        # the question and point on to the books. Same rows the topic page shows.
+        article_order = [e.article_slug for e in topic.article_entries.all()] if topic else []
+        by_article = {
+            a.slug: a
+            for a in Article.objects.filter(
+                slug__in=article_order, language=language, is_published=True
+            ).defer("body_html")
+        }
+        articles = [by_article[s] for s in article_order if s in by_article]
+        article_ctx = {
+            "request": request,
+            "language": language,
+            "article_lead_books": lead_book_cards({a.slug: a.related for a in articles}, language),
+        }
         # No topic chips: nothing on the hub filters or shows them.
         ctx = {"request": request, "language": language, "book_topics": {}}
         plan_ctx = {"request": request, **_plan_card_context(plans, language)}
@@ -1007,6 +1027,7 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "editions": BookListSerializer(editions, many=True, context=ctx).data,
                 "more": BookListSerializer(more, many=True, context=ctx).data,
                 "plans": PlanListSerializer(plans, many=True, context=plan_ctx).data,
+                "articles": ArticleListSerializer(articles, many=True, context=article_ctx).data,
                 "topic": {"slug": topic.slug, "title": topic.title_for(language)} if topic else None,
                 "start": start,
                 "printable": printable,

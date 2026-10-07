@@ -1,0 +1,158 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-teens",
+ "language": "es",
+ "job_issue": 4826,
+ "note": [
+  "Scripture follows the modern Reina-Valera register the shipped es corpus quotes (api.takeroot.bible is egress-blocked here, and the mirrored spa_rv is archaic RV1909 — see the translation-worker skill). Every `mined` row is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped es file. The English epigraphs are ESV (Psalm 42:5 is WEB) and carry a version tag; this edition drops the tag because the wording shown is Reina-Valera, not ESV, and drops the ESV permission sentence from the attribution for the same reason (as the sw teens edition and the es children's edition do).",
+  "Self-rendered in Reina-Valera register and unverified: Psalm 38:4, 1 Peter 2:24 (the full epigraph; its first clause matches the corpus), Mark 8:38, the first clause of Revelation 2:10, Matthew 6:24 (epigraph ends «a las riquezas» for the English's 'money'; the shipped days-of-heaven-upon-earth.es reads «a Mamón»), Psalm 42:5, and the allusions Micah 7:8 and Psalm 116:4. 1 Thessalonians 5:6 omits «Por tanto» to stay the shipped Pilgrim's Progress rendering.",
+  "Character and place names follow the shipped es Pilgrim's Progress (Cristiano, Evangelista, Obstinado, Flexible, Pantano del Desaliento, Sabio Mundano, Legalidad, Buena Voluntad, el Intérprete, Puerta Estrecha, colina Dificultad, Casa Hermosa, Apolión, Fiel, Vergüenza, Charlatán, Feria de la Vanidad, Esperanzado, Interesado, monte Lucro, Gigante Desesperación, señora Desconfianza, Castillo de la Duda, Promesa, Montes Deleitosos, el Adulador, Tierra Encantada, Ignorancia, Poca-Fe, Beulá, Vana-Esperanza, Ciudad Celestial). Title suffix «(para jóvenes)» sits beside the shipped children's «(para niños)». Reader address is tú. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 38:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "waiting-on-god.es.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 4,
+   "source_file": "divine-healing.es.json"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "the-key-in-my-hand.es.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 6
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Psalm 116:4",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 6,
+   "source_file": "the-god-of-all-comfort.es.json"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "the-inner-chamber.es.json"
+  },
+  {
+   "reference": "Revelation 2:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 2:10b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "watchman-nee-a-life.es.json"
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Matthew 6:24b",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Thessalonians 5:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "talks-to-the-farmer.es.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 12,
+   "source_file": "talks-to-the-farmer.es.json"
+  }
+ ]
+}

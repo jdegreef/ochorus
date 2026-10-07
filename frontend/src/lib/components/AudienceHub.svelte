@@ -24,6 +24,7 @@
 	import BookCard from '$lib/components/BookCard.svelte';
 	import BookCover from '$lib/components/BookCover.svelte';
 	import PlanShelfCard from '$lib/components/PlanShelfCard.svelte';
+	import ArticleCard from '$lib/components/ArticleCard.svelte';
 	import Arrow from '$lib/components/Arrow.svelte';
 	import ParentsNote from '$lib/components/ParentsNote.svelte';
 	import ShareButton from '$lib/components/ShareButton.svelte';
@@ -50,6 +51,7 @@
 	const path = $derived(`${hub.href}/`);
 
 	const empty = $derived(hubIsEmpty(shelf));
+	const articles = $derived(shelf.articles ?? []);
 	const counts = $derived(hubCounts(shelf));
 	const start = $derived(startPick(shelf));
 	const printable = $derived(printableLinks(shelf));
@@ -61,7 +63,8 @@
 			{ id: 'series', name: t('nav.series'), count: shelf.series.length },
 			{ id: 'retold', name: t('audience.retoldHeading'), count: shelf.editions.length },
 			{ id: 'more', name: t('audience.moreHeading'), count: shelf.more.length },
-			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length }
+			{ id: 'plans', name: t('nav.plans'), count: shelf.plans.length },
+			{ id: 'questions', name: t('audience.questionsHeading'), count: articles.length }
 		].filter((s) => s.count > 0)
 	);
 	const parentsHeading = $derived(t(hub.parentsHeadingKey));
@@ -245,6 +248,20 @@
 				<div class="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3">
 					{#each shelf.plans as plan (plan.slug)}
 						<PlanShelfCard {plan} headingLevel={3} />
+					{/each}
+				</div>
+			</section>
+		{/if}
+
+		{#if articles.length}
+			<!-- Companions to the books, not a shelf of their own: each answers a
+			     question a reader is actually asking, then points on to a book. -->
+			<section id="questions" class="jump-anchor mb-12">
+				<GroupHeading name={t('audience.questionsHeading')} count={articles.length} />
+				<p class="-mt-2 mb-5 max-w-2xl text-small text-muted">{t('audience.questionsNote')}</p>
+				<div class="grid gap-3 sm:grid-cols-2">
+					{#each articles as article (article.slug)}
+						<ArticleCard {article} heading="h3" />
 					{/each}
 				</div>
 			</section>
