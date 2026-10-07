@@ -155,7 +155,10 @@ def main() -> int:
     failed = False
     if reason and not all(hooks[svc] for svc in REQUIRED):
         # All or nothing: a web build without its API deploy waits on content
-        # the API never serves and fails 15 minutes later.
+        # the API never serves and fails 15 minutes later. And the run goes RED:
+        # a green run here hid two days of undeployed main (2026-10-05 → 07)
+        # while every web auto-deploy timed out waiting on a stale API.
+        failed = True
         missing = ", ".join(HOOK_SECRETS[svc] for svc in REQUIRED if not hooks[svc])
         summary.append(f"Would deploy ({reason}), but **not configured**: {missing}.")
     elif reason:
