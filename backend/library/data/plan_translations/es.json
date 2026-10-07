@@ -108,5 +108,12 @@
     "note": [
       "AI-drafted ahead of the books; awaiting native review. Shipped before the five children's editions are translated into this language so their translation jobs never write this shared file: seed_plans creates the row only once every source book is published here. Like the English, it describes the books rather than quoting their titles, so it cannot disagree with whatever title each edition ships under."
     ]
+  },
+  "family-devotions-talking-with-god": {
+    "title": "Devocionales en familia: hablar con Dios todo el día",
+    "description": "Doce noches de devocionales familiares de cinco minutos con el hermano Lorenzo, el torpe ayudante de cocina que aprendió a hablar con Dios entre ollas y sartenes. Lean en voz alta un capítulo corto: cómo un árbol desnudo en invierno lo volvió a Dios, cómo hacía cada tarea por amor a Dios y qué hacía cuando se equivocaba. Cada uno termina con una oración y tres preguntas para conversar juntos.",
+    "note": [
+      "AI-drafted ahead of the book; awaiting native review. Shipped before the children's Practice of the Presence of God is translated into this language, so that job never writes this shared file: seed_plans creates the row only once the book is published here. Like the English, it describes the book rather than quoting a title that does not exist yet."
+    ]
   }
 }
