@@ -3,6 +3,7 @@
  "slug": "a-retrospect-children",
  "language": "pt",
  "job_issue": 5370,
+ "pull_request": 5391,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from John 19”), and the body echoes verses in the same retold register. The Portuguese renders those paraphrases in the same simple, child-friendly wording rather than pasting the Bíblia Livre (porbrbsl) text, which would break the edition's register — the sibling talks-to-the-farmer-children.pt (#5380) does the same. Familiar fixed phrases keep their usual Portuguese form (“Está consumado”, “O Senhor proverá”, “Até aqui o Senhor nos ajudou”, “pão de cada dia”).",
   "References and block indices mirror the English structure exactly (tag sequence identical chapter by chapter), so they are the same rows as the am edition's notes. AI-translated in-session; awaiting native review."
