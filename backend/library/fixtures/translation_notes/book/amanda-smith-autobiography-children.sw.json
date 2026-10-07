@@ -3,7 +3,7 @@
  "slug": "amanda-smith-autobiography-children",
  "language": "sw",
  "job_issue": 5375,
- "pull_request": null,
+ "pull_request": 5400,
  "note": [
   "Scripture follows the classic Swahili Union Version (SUV) register of the shipped sw corpus; the declared swhonen API text is a different edition and was not used. A `mined` row's wording is a verbatim substring of the cited shipped *.sw.json; the rest are self_rendered in SUV register (no reachable PD SUV text) and await native review.",
   "Each chapter opens with a KJV epigraph (blockquote, block 0); the English quotes partial verses, so mined epigraphs carry only the matching clause of the corpus rendering. The body echoes (Col 3:15 in ch10's prayer, Ps 91:11 and Matt 18:5 in the closing paragraphs of ch11/ch12) are loose retellings, self_rendered.",
