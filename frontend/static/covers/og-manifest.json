@@ -9991,6 +9991,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"pt/talks-to-the-farmer-teens": {
+			"ground": "3a2b34b17f6710281b07da1748cafe1f08f4b33b8740c19eb0973f08343526f3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"pt/the-bruised-reed": {
 			"ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
 			"style": "press",
