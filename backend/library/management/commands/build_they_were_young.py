@@ -64,12 +64,12 @@ VOLUMES: dict[int, dict[str, object]] = {
         ),
         "about_html": (
             "<p>They Were Young is an original Ochorus series of true stories for "
-            "readers aged 13 to 17. Every person in it was once fifteen and "
-            "unsure. Its verse is 1 Timothy 4:12: “Let no one despise your "
+            "readers aged 13 to 17. Every person in it was once a teenager, "
+            "unsure of God. Its verse is 1 Timothy 4:12: “Let no one despise your "
             "youth.” Each chapter tells one life in full, lingering on the "
             "teenage years, when the story turned, and then follows it to the "
             "end.</p>"
-            "<p>Book 1, <em>Called</em>, gathers six people who came to faith as "
+            "<p>Book 1, “Called”, gathers six people who came to faith as "
             "teenagers. Charles Spurgeon, aged fifteen, heard a stand-in preacher "
             "in a snowbound chapel in Colchester. Samson Occom, a Mohegan "
             "teenager, heard the preachers of the Great Awakening in Connecticut "
@@ -83,14 +83,15 @@ VOLUMES: dict[int, dict[str, object]] = {
             "Episcopal Church.</p>"
             "<p>The stories are true, and we have tried not to add to them. Each "
             "ends with the person’s own words, three questions to think through, "
-            "and a pointer to their books and sermons in the Ochorus library. "
+            "and a pointer to read on: their own books and sermons where the "
+            "library has them, and their biography where it does not. "
             "They are honest about slavery, racism, grief and pressure, and they "
             "work well for a youth group to read and discuss together.</p>"
         ),
         "qa": [
             {
                 "question": "What is They Were Young?",
-                "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their writing in the library.",
+                "answer": "A series of true stories for readers aged 13 to 17 about people whose faith began, or was tested, while they were teenagers. Each chapter tells one life in full and ends with the person’s own words, questions to think through, and a pointer to their own books and sermons in the library, or to their biography where the library has none of their writing.",
             },
             {
                 "question": "Who is in Book 1?",
@@ -118,10 +119,14 @@ VOLUMES: dict[int, dict[str, object]] = {
 
 
 def check_shape(chapters: list[tuple[str, str]]) -> None:
-    """Introduction, then STORIES stories — the shape the series promises."""
+    """Introduction, then STORIES stories, each a full telling — checked before
+    anything is written, so a short story never half-rebuilds a volume."""
     titles = [title for title, _ in chapters]
     if len(titles) != STORIES + 1 or not titles[0].startswith("Introduction"):
         raise CommandError(f"manuscript is not Introduction + {STORIES} stories: {titles}")
+    for title, body in chapters[1:]:
+        if (wc := word_count(body)) < MIN_STORY_WORDS:
+            raise CommandError(f"{title!r}: only {wc} words — aborted.")
 
 
 class Command(BaseCommand):
@@ -175,8 +180,6 @@ class Command(BaseCommand):
             body = settled_chapter_body(slug, order, body)
             title, _ = convert(title, outer_guillemets=False)
             wc = word_count(body)
-            if order > 1 and wc < MIN_STORY_WORDS:
-                raise CommandError(f"ch {order} ({title!r}): only {wc} words — aborted.")
             total += wc
             Chapter.objects.create(book=book, order=order, title=title, body_html=body)
             self.stdout.write(f"  ch {order}: {title[:48]:48} {wc:>4} words")
