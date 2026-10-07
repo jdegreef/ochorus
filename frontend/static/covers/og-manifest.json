@@ -4786,6 +4786,16 @@
 				524
 			]
 		},
+		"fr/a-retrospect-children": {
+			"ground": "ef73899737cbfdce10221020943c9275d537bd1e2faaf494d5f611effaa02ac3",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"fr/absolute-surrender": {
 			"ground": "27a4490e3504475ccb2a4dd793a34abd482bed06f8c4a6cd605541518d1bb793",
 			"style": "devotional",

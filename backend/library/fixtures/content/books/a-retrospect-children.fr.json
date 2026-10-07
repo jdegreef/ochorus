@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "hudson-taylor"
+  ],
+  "slug": "a-retrospect-children",
+  "language": "fr",
+  "title": "Rétrospective (Pour enfants)",
+  "subtitle": "",
+  "description": "Hudson Taylor a quitté l’Angleterre pour apporter la bonne nouvelle de Jésus jusqu’au cœur de la Chine, en faisant confiance à Dieu pour tout ce dont il avait besoin. Cette édition pour enfants raconte la vraie histoire de sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, une aventure ou une prière exaucée, une chose que cela veut dire pour toi, et une courte prière.",
+  "qa": [
+   {
+    "question": "De quoi parle Rétrospective (Pour enfants) ?",
+    "answer": "C’est une version pour enfants de l’histoire de sa vie racontée par Hudson Taylor lui-même. Taylor a pris le bateau de l’Angleterre jusqu’en Chine pour parler de Jésus aux gens, et il a fait confiance à Dieu pour lui donner tout ce dont il avait besoin en chemin. Chaque court chapitre raconte une vraie aventure ou une prière exaucée de sa vie."
+   },
+   {
+    "question": "Qui était Hudson Taylor ?",
+    "answer": "Un Anglais qui est devenu missionnaire en Chine il y a longtemps et qui a fondé une mission qui a envoyé beaucoup d’ouvriers loin à l’intérieur du pays pour parler de Jésus. Il était connu pour faire confiance à Dieu pour sa nourriture, son argent et sa sécurité, et pour porter des vêtements chinois afin d’atteindre les gens qu’il aimait."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte une histoire vraie de la vie de Hudson Taylor, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière."
+   },
+   {
+    "question": "À qui ce livre s’adresse-t-il ?",
+    "answer": "Aux enfants — pour qu’un adulte le leur lise à voix haute, ou qu’un enfant plus grand le lise tout seul. L’autobiographie plus complète de Hudson Taylor, Rétrospective, existe aussi pour les lecteurs plus âgés."
+   },
+   {
+    "question": "Quelle est la grande leçon du livre ?",
+    "answer": "Que l’on peut faire entièrement confiance à Dieu — pour l’argent, pour la sécurité et pour l’aide — quand on le suit. La vie de Hudson Taylor est une vraie aventure : demander à Dieu, puis le voir pourvoir, pour que les enfants apprennent à lui faire confiance eux aussi."
+   },
+   {
+    "question": "Les histoires sont-elles vraies ?",
+    "answer": "Oui. Elles sont racontées simplement pour les enfants, mais elles viennent du récit que Hudson Taylor a fait de sa propre vie — le vrai voyage, les vraies prières exaucées et les vrais débuts de sa mission en Chine."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour jeunes lecteurs, d’après Rétrospective (A Retrospect) de Hudson Taylor, une œuvre du domaine public. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/a-retrospect-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 24,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Le petit livre dans le panier",
+  "body_html": "<blockquote>« Tout est accompli. » — d’après Jean 19</blockquote> <p>Quand Hudson Taylor avait environ quinze ans, il a eu un long après-midi vide, sans rien à faire. Sa mère était partie loin, chez des amis. Hudson est entré dans la bibliothèque de son père pour chercher quelque chose — n’importe quoi — à lire, et dans un petit panier de brochures il a pris un petit livret sur l’Évangile.</p> <p>« Je vais lire l’histoire, s’est-il dit, et sauter le sermon à la fin. »</p> <p>Mais pendant qu’il lisait, quelques mots lui ont sauté aux yeux : « l’œuvre accomplie du Christ ». Et les paroles de Jésus sur la croix lui sont revenues à l’esprit : « Tout est accompli. » Tout à coup, Hudson a compris. Jésus avait déjà payé pour tous ses péchés — complètement, une fois pour toutes. Il ne restait plus rien que Hudson doive gagner ou ajouter. Il lui suffisait de dire merci et d’accepter.</p> <p>Alors, là, tout seul dans le vieil entrepôt tranquille où il était allé lire, Hudson s’est mis à genoux et a donné sa vie à Jésus.</p> <p>Voici la bonne nouvelle que Hudson a découverte, et elle est pour toi aussi : quand Jésus a dit « Tout est accompli », il le pensait vraiment. Tu n’as pas besoin d’être assez sage pour gagner l’amour de Dieu. Jésus a déjà tout fait. Tu n’as qu’à le recevoir, comme un cadeau.</p> <p><em>Seigneur Jésus, merci d’avoir accompli sur la croix tout ce qu’il fallait pour me sauver. Je reçois ton cadeau de tout mon cœur. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que Hudson a trouvé dans le petit panier de la bibliothèque de son père ?",
+    "answer": "Un petit livret sur l’Évangile. Il voulait lire l’histoire et sauter le « sermon » à la fin."
+   },
+   {
+    "question": "Quelles paroles de la croix sont revenues à l’esprit de Hudson, et qu’a-t-il compris ?",
+    "answer": "« Tout est accompli. » Il a compris que Jésus avait déjà payé pour tous ses péchés, et qu’il ne lui restait donc rien à gagner ou à ajouter."
+   },
+   {
+    "question": "Parlons-en ensemble : penses-tu que tu dois être assez sage pour que Dieu t’aime ?",
+    "answer": "L’idée du chapitre : tu n’as pas besoin de gagner l’amour de Dieu. Jésus a déjà tout fait ; nous n’avons qu’à le recevoir, comme un cadeau."
+   }
+  ],
+  "body_text": "« Tout est accompli. » — d’après Jean 19 Quand Hudson Taylor avait environ quinze ans, il a eu un long après-midi vide, sans rien à faire. Sa mère était partie loin, chez des amis. Hudson est entré dans la bibliothèque de son père pour chercher quelque chose — n’importe quoi — à lire, et dans un petit panier de brochures il a pris un petit livret sur l’Évangile. « Je vais lire l’histoire, s’est-il dit, et sauter le sermon à la fin. » Mais pendant qu’il lisait, quelques mots lui ont sauté aux yeux : « l’œuvre accomplie du Christ ». Et les paroles de Jésus sur la croix lui sont revenues à l’esprit : « Tout est accompli. » Tout à coup, Hudson a compris. Jésus avait déjà payé pour tous ses péchés — complètement, une fois pour toutes. Il ne restait plus rien que Hudson doive gagner ou ajouter. Il lui suffisait de dire merci et d’accepter. Alors, là, tout seul dans le vieil entrepôt tranquille où il était allé lire, Hudson s’est mis à genoux et a donné sa vie à Jésus. Voici la bonne nouvelle que Hudson a découverte, et elle est pour toi aussi : quand Jésus a dit « Tout est accompli », il le pensait vraiment. Tu n’as pas besoin d’être assez sage pour gagner l’amour de Dieu. Jésus a déjà tout fait. Tu n’as qu’à le recevoir, comme un cadeau. Seigneur Jésus, merci d’avoir accompli sur la croix tout ce qu’il fallait pour me sauver. Je reçois ton cadeau de tout mon cœur. Amen.",
+  "word_count": 263
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "La porte fermée à clé de maman",
+  "body_html": "<blockquote>« La prière d’une personne juste est puissante et fait des merveilles. » — d’après Jacques 5</blockquote> <p>Et voici le plus étonnant. Au moment même où Hudson lisait ce petit livret, il se passait quelque chose très, très loin de là.</p> <p>Sa mère, qui était chez des amis à des kilomètres de la maison, a soudain senti qu’elle devait absolument prier pour son garçon. Elle est montée dans sa chambre, a tourné la clé dans la serrure pour que personne ne la dérange, et elle a prié — encore et encore — pendant des heures. Elle a continué à prier jusqu’à ce qu’au fond de son cœur elle soit sûre que Dieu l’avait entendue, et que Hudson était maintenant en sécurité avec Dieu. Alors elle a arrêté de demander et elle a commencé à le remercier.</p> <p>Deux semaines plus tard, elle est rentrée à la maison. Hudson a couru vers elle, impatient de lui annoncer sa merveilleuse nouvelle. Mais avant qu’il puisse parler, elle a souri et lui a dit : « Je sais, mon garçon. Cela fait quinze jours que je me réjouis ! » Dieu lui-même le lui avait dit, et elle ne l’avait raconté à personne.</p> <p>Plus tard, Hudson a trouvé le petit journal intime de sa sœur Amelia. Elle y avait écrit qu’elle prierait pour son frère chaque jour, jusqu’à ce qu’il vienne à Dieu. Et c’est exactement un mois plus tard que c’est arrivé.</p> <p>Quelqu’un, quelque part, est peut-être en train de prier pour toi en ce moment — et Dieu entend chacune de ces prières. Et toi aussi, tu peux prier comme ça pour les gens que tu aimes. Dieu écoute vraiment.</p> <p><em>Cher Dieu, merci pour les personnes qui prient pour moi. Aide-moi à prier fidèlement pour les gens que j’aime. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait la mère de Hudson pendant qu’elle était loin, chez des amis ?",
+    "answer": "Elle s’est enfermée à clé dans sa chambre et a prié pour Hudson pendant des heures, jusqu’à être sûre que Dieu l’avait entendue. Alors elle a arrêté de demander et elle a commencé à le remercier."
+   },
+   {
+    "question": "Qu’a dit sa mère quand Hudson a couru lui annoncer sa nouvelle ?",
+    "answer": "« Je sais, mon garçon. Cela fait quinze jours que je me réjouis ! » Dieu lui-même le lui avait dit. (Sa sœur Amelia priait aussi pour lui chaque jour.)"
+   },
+   {
+    "question": "Parlons-en ensemble : pour qui pourrais-tu prier, comme la mère et la sœur de Hudson ont prié pour lui ?",
+    "answer": "L’idée du chapitre : quelqu’un est peut-être en train de prier pour toi en ce moment, et toi aussi tu peux prier fidèlement pour les gens que tu aimes, parce que Dieu écoute vraiment."
+   }
+  ],
+  "body_text": "« La prière d’une personne juste est puissante et fait des merveilles. » — d’après Jacques 5 Et voici le plus étonnant. Au moment même où Hudson lisait ce petit livret, il se passait quelque chose très, très loin de là. Sa mère, qui était chez des amis à des kilomètres de la maison, a soudain senti qu’elle devait absolument prier pour son garçon. Elle est montée dans sa chambre, a tourné la clé dans la serrure pour que personne ne la dérange, et elle a prié — encore et encore — pendant des heures. Elle a continué à prier jusqu’à ce qu’au fond de son cœur elle soit sûre que Dieu l’avait entendue, et que Hudson était maintenant en sécurité avec Dieu. Alors elle a arrêté de demander et elle a commencé à le remercier. Deux semaines plus tard, elle est rentrée à la maison. Hudson a couru vers elle, impatient de lui annoncer sa merveilleuse nouvelle. Mais avant qu’il puisse parler, elle a souri et lui a dit : « Je sais, mon garçon. Cela fait quinze jours que je me réjouis ! » Dieu lui-même le lui avait dit, et elle ne l’avait raconté à personne. Plus tard, Hudson a trouvé le petit journal intime de sa sœur Amelia. Elle y avait écrit qu’elle prierait pour son frère chaque jour, jusqu’à ce qu’il vienne à Dieu. Et c’est exactement un mois plus tard que c’est arrivé. Quelqu’un, quelque part, est peut-être en train de prier pour toi en ce moment — et Dieu entend chacune de ces prières. Et toi aussi, tu peux prier comme ça pour les gens que tu aimes. Dieu écoute vraiment. Cher Dieu, merci pour les personnes qui prient pour moi. Aide-moi à prier fidèlement pour les gens que j’aime. Amen.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "La dernière demi-couronne",
+  "body_html": "<blockquote>« Donne à celui qui te demande. » — d’après Matthieu 5</blockquote> <p>Hudson voulait être missionnaire dans la lointaine Chine, où il devrait faire confiance à Dieu pour tout. Alors il a décidé de commencer à s’entraîner tout de suite à faire confiance à Dieu.</p> <p>Un soir, il ne lui restait plus qu’une seule pièce au monde — une seule demi-couronne. Tard ce soir-là, un homme pauvre l’a supplié de venir prier pour sa femme, qui était très malade. Dans leur pièce vide et froide, Hudson a trouvé des enfants affamés et une maman avec un tout petit bébé, et rien à manger du tout.</p> <p>Hudson voulait les aider — mais s’il leur donnait sa seule pièce, il n’aurait plus rien pour lui ! Il a essayé de leur parler d’un Père plein d’amour dans le ciel, mais les mots restaient coincés. Comment parler des soins de Dieu en serrant sa dernière pièce dans sa main ? Alors il a pris une grande inspiration et il a donné toute sa demi-couronne à la famille pauvre. Aussitôt, sa joie est revenue d’un coup, et il est rentré chez lui en chantant.</p> <p>Dès le lendemain matin, le facteur a apporté une lettre. Dedans, il y avait une paire de gants — et en est tombée une pièce qui valait quatre fois ce que Hudson avait donné ! « Merveilleux ! » a dit Hudson en riant. Dieu lui avait rendu bien plus que ce qu’il avait donné.</p> <p>On ne peut jamais donner plus que Dieu. Quand tu partages ce que tu as avec quelqu’un qui en a besoin, tu peux faire confiance à ton Père plein d’amour pour prendre soin de toi.</p> <p><em>Cher Dieu, aide-moi à donner avec joie, même quand c’est difficile, et à te faire confiance pour prendre soin de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Hudson a-t-il donné sa toute dernière pièce ?",
+    "answer": "Une famille pauvre n’avait rien à manger du tout. Il ne pouvait pas parler des soins de Dieu en serrant sa dernière pièce dans sa main, alors il leur a donné toute sa demi-couronne."
+   },
+   {
+    "question": "Qu’est-ce que le facteur a apporté le lendemain matin ?",
+    "answer": "Une lettre avec une paire de gants dedans, et une pièce en est tombée qui valait quatre fois ce que Hudson avait donné."
+   },
+   {
+    "question": "Parlons-en ensemble : est-ce que c’est parfois difficile pour toi de partager quelque chose ? Qu’est-ce qui pourrait t’aider ?",
+    "answer": "L’idée du chapitre : on ne peut jamais donner plus que Dieu. Quand tu partages avec quelqu’un qui est dans le besoin, tu peux faire confiance à ton Père plein d’amour pour prendre soin de toi."
+   }
+  ],
+  "body_text": "« Donne à celui qui te demande. » — d’après Matthieu 5 Hudson voulait être missionnaire dans la lointaine Chine, où il devrait faire confiance à Dieu pour tout. Alors il a décidé de commencer à s’entraîner tout de suite à faire confiance à Dieu. Un soir, il ne lui restait plus qu’une seule pièce au monde — une seule demi-couronne. Tard ce soir-là, un homme pauvre l’a supplié de venir prier pour sa femme, qui était très malade. Dans leur pièce vide et froide, Hudson a trouvé des enfants affamés et une maman avec un tout petit bébé, et rien à manger du tout. Hudson voulait les aider — mais s’il leur donnait sa seule pièce, il n’aurait plus rien pour lui ! Il a essayé de leur parler d’un Père plein d’amour dans le ciel, mais les mots restaient coincés. Comment parler des soins de Dieu en serrant sa dernière pièce dans sa main ? Alors il a pris une grande inspiration et il a donné toute sa demi-couronne à la famille pauvre. Aussitôt, sa joie est revenue d’un coup, et il est rentré chez lui en chantant. Dès le lendemain matin, le facteur a apporté une lettre. Dedans, il y avait une paire de gants — et en est tombée une pièce qui valait quatre fois ce que Hudson avait donné ! « Merveilleux ! » a dit Hudson en riant. Dieu lui avait rendu bien plus que ce qu’il avait donné. On ne peut jamais donner plus que Dieu. Quand tu partages ce que tu as avec quelqu’un qui en a besoin, tu peux faire confiance à ton Père plein d’amour pour prendre soin de toi. Cher Dieu, aide-moi à donner avec joie, même quand c’est difficile, et à te faire confiance pour prendre soin de moi. Amen.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Le salaire oublié",
+  "body_html": "<blockquote>« Votre Père sait de quoi vous avez besoin, avant que vous le lui demandiez. » — d’après Matthieu 6</blockquote> <p>Hudson travaillait pour un médecin très occupé, qui lui versait un salaire. Mais Hudson voulait entraîner encore plus sa confiance en Dieu. Alors il a fait un plan : quand ce serait le jour de sa paie, il ne le rappellerait <em>pas</em> au médecin. À la place, il demanderait à Dieu de le lui rappeler.</p> <p>Le jour de la paie est arrivé, puis il est passé — et le médecin, qui avait très mauvaise mémoire, a tout simplement oublié. Hudson ne lui a rien dit, mais il a tout raconté à Dieu, et son argent diminuait de plus en plus.</p> <p>Puis un jour, le médecin a dit tout à coup : « Au fait, Taylor, ce n’est pas bientôt l’heure de votre paie ? » Le cœur de Hudson a fait un bond ! Mais ensuite le médecin s’est souvenu qu’il venait d’envoyer à la banque tout l’argent qu’il avait en trop. Oh là là. Hudson n’a rien dit et a continué à prier.</p> <p>Tard ce samedi soir-là — vers dix heures — le médecin est revenu dans la pièce en riant tout bas. Un de ses patients les plus riches venait d’arriver, à cette heure bizarre, pour payer une facture ! Le médecin a tendu l’argent à Hudson en disant : « Autant que vous preniez ceci. »</p> <p>Dieu l’avait fait — en poussant doucement d’autres personnes à agir, juste au bon moment, sans que Hudson ait besoin de demander à qui que ce soit d’autre que Dieu.</p> <p>Tu n’as pas toujours besoin de tout arranger toi-même ou d’embêter les gens pour avoir ce dont tu as besoin. Ton Père dans le ciel le sait déjà, et il peut arranger les choses d’une façon à laquelle tu ne t’attendrais jamais. Demande-lui.</p> <p><em>Cher Dieu, merci de savoir déjà ce dont j’ai besoin. Aide-moi à te l’apporter d’abord, et à faire confiance à ton moment. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel était le plan de Hudson quand ce serait le jour de sa paie ?",
+    "answer": "Il ne le rappellerait pas au médecin qui avait mauvaise mémoire. À la place, il demanderait à Dieu de le lui rappeler."
+   },
+   {
+    "question": "Comment Hudson a-t-il finalement reçu son argent ?",
+    "answer": "Tard le samedi soir, un patient riche est venu payer une facture, et le médecin a tendu l’argent à Hudson en disant : « Autant que vous preniez ceci. »"
+   },
+   {
+    "question": "Parlons-en ensemble : quand tu as besoin de quelque chose, à qui le demandes-tu d’abord ?",
+    "answer": "L’idée du chapitre : ton Père dans le ciel sait déjà ce dont tu as besoin et peut arranger les choses d’une façon à laquelle tu ne t’attendrais jamais. Apporte-le-lui d’abord et fais confiance à son moment."
+   }
+  ],
+  "body_text": "« Votre Père sait de quoi vous avez besoin, avant que vous le lui demandiez. » — d’après Matthieu 6 Hudson travaillait pour un médecin très occupé, qui lui versait un salaire. Mais Hudson voulait entraîner encore plus sa confiance en Dieu. Alors il a fait un plan : quand ce serait le jour de sa paie, il ne le rappellerait pas au médecin. À la place, il demanderait à Dieu de le lui rappeler. Le jour de la paie est arrivé, puis il est passé — et le médecin, qui avait très mauvaise mémoire, a tout simplement oublié. Hudson ne lui a rien dit, mais il a tout raconté à Dieu, et son argent diminuait de plus en plus. Puis un jour, le médecin a dit tout à coup : « Au fait, Taylor, ce n’est pas bientôt l’heure de votre paie ? » Le cœur de Hudson a fait un bond ! Mais ensuite le médecin s’est souvenu qu’il venait d’envoyer à la banque tout l’argent qu’il avait en trop. Oh là là. Hudson n’a rien dit et a continué à prier. Tard ce samedi soir-là — vers dix heures — le médecin est revenu dans la pièce en riant tout bas. Un de ses patients les plus riches venait d’arriver, à cette heure bizarre, pour payer une facture ! Le médecin a tendu l’argent à Hudson en disant : « Autant que vous preniez ceci. » Dieu l’avait fait — en poussant doucement d’autres personnes à agir, juste au bon moment, sans que Hudson ait besoin de demander à qui que ce soit d’autre que Dieu. Tu n’as pas toujours besoin de tout arranger toi-même ou d’embêter les gens pour avoir ce dont tu as besoin. Ton Père dans le ciel le sait déjà, et il peut arranger les choses d’une façon à laquelle tu ne t’attendrais jamais. Demande-lui. Cher Dieu, merci de savoir déjà ce dont j’ai besoin. Aide-moi à te l’apporter d’abord, et à faire confiance à ton moment. Amen.",
+  "word_count": 335
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "« Tu ne mourras pas »",
+  "body_html": "<blockquote>« Je ne mourrai pas, je vivrai, et je raconterai ce que le Seigneur a fait. » — d’après Psaume 118</blockquote> <p>Pendant qu’il apprenait à être médecin à Londres, Hudson était très pauvre et ne mangeait souvent que du pain bis avec de l’eau. Un soir, il s’est piqué le doigt avec une aiguille, et il n’y a pas fait attention. Mais le lendemain, pendant qu’il aidait à un travail médical difficile et dangereux, cette petite coupure a laissé entrer une grave maladie, et Hudson est tombé terriblement malade.</p> <p>Le médecin le plus ancien l’a regardé d’un air sérieux et lui a dit : « Vous êtes un homme mort. »</p> <p>À ton avis, quelle a été la première pensée de Hudson ? Ce n’était pas la peur pour lui-même. C’était de la tristesse à l’idée de ne peut-être jamais aller en Chine ! Mais ensuite, une certitude profonde et calme s’est installée dans son cœur : « J’ai du travail à faire en Chine, et je ne mourrai pas. »</p> <p>Il n’avait pas d’argent pour une voiture à cheval, alors, tout faible qu’il était, il est rentré chez lui lentement, en omnibus et à pied. Deux autres hommes qui avaient attrapé la même maladie en même temps sont morts tous les deux. Mais Hudson a vécu. Dieu l’avait gardé — parce que Dieu avait encore du travail pour lui, très loin, en Chine.</p> <p>Dieu a un plan pour ta vie, et il prendra soin de toi jusqu’à ce que ce plan soit accompli. Tu es en sécurité dans ses mains.</p> <p><em>Cher Dieu, merci parce que ma vie est dans tes mains et que tu as de bons projets pour moi. Aide-moi à te faire confiance, quoi qu’il arrive. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Hudson est-il tombé si malade ?",
+    "answer": "Il s’est piqué le doigt avec une aiguille, et le lendemain, pendant un travail médical dangereux, cette petite coupure a laissé entrer une grave maladie."
+   },
+   {
+    "question": "Quelle a été la première pensée de Hudson quand le médecin lui a dit : « Vous êtes un homme mort » ?",
+    "answer": "Pas la peur pour lui-même, mais de la tristesse à l’idée de ne peut-être jamais aller en Chine. Ensuite, il s’est senti calme et sûr : « J’ai du travail à faire en Chine, et je ne mourrai pas. »"
+   },
+   {
+    "question": "Parlons-en ensemble : qu’est-ce que ça fait de savoir que ta vie est dans les mains de Dieu ?",
+    "answer": "L’idée du chapitre : Dieu a un plan pour ta vie et il prendra soin de toi jusqu’à ce qu’il soit accompli. Tu es en sécurité dans ses mains."
+   }
+  ],
+  "body_text": "« Je ne mourrai pas, je vivrai, et je raconterai ce que le Seigneur a fait. » — d’après Psaume 118 Pendant qu’il apprenait à être médecin à Londres, Hudson était très pauvre et ne mangeait souvent que du pain bis avec de l’eau. Un soir, il s’est piqué le doigt avec une aiguille, et il n’y a pas fait attention. Mais le lendemain, pendant qu’il aidait à un travail médical difficile et dangereux, cette petite coupure a laissé entrer une grave maladie, et Hudson est tombé terriblement malade. Le médecin le plus ancien l’a regardé d’un air sérieux et lui a dit : « Vous êtes un homme mort. » À ton avis, quelle a été la première pensée de Hudson ? Ce n’était pas la peur pour lui-même. C’était de la tristesse à l’idée de ne peut-être jamais aller en Chine ! Mais ensuite, une certitude profonde et calme s’est installée dans son cœur : « J’ai du travail à faire en Chine, et je ne mourrai pas. » Il n’avait pas d’argent pour une voiture à cheval, alors, tout faible qu’il était, il est rentré chez lui lentement, en omnibus et à pied. Deux autres hommes qui avaient attrapé la même maladie en même temps sont morts tous les deux. Mais Hudson a vécu. Dieu l’avait gardé — parce que Dieu avait encore du travail pour lui, très loin, en Chine. Dieu a un plan pour ta vie, et il prendra soin de toi jusqu’à ce que ce plan soit accompli. Tu es en sécurité dans ses mains. Cher Dieu, merci parce que ma vie est dans tes mains et que tu as de bons projets pour moi. Aide-moi à te faire confiance, quoi qu’il arrive. Amen.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "La tempête près des rochers",
+  "body_html": "<blockquote>« Il a calmé la tempête, et il les a conduits au port qu’ils désiraient. » — d’après Psaume 107</blockquote> <p>Enfin, le grand jour est arrivé. Hudson est monté à bord d’un voilier en route pour la Chine. Sa mère est venue lui dire au revoir ; elle a rangé sa petite couchette et a prié avec lui une dernière fois. Quand le bateau s’est éloigné, son cri de tristesse « m’a transpercé comme un couteau », a raconté Hudson. Mais il partait là où Dieu l’avait appelé.</p> <p>Puis les ennuis sont arrivés. Un violent coup de vent s’est levé et a retenu le bateau pendant douze jours de tempête. Un dimanche soir, le vent les a poussés tout droit vers une côte pleine de rochers — de plus en plus près, jusqu’à ce que le bateau soit presque assez près pour toucher les rochers. On aurait dit que c’était la fin.</p> <p>Le capitaine, qui aimait Dieu lui aussi, s’est tourné vers Hudson et lui a dit : « Nous n’avons plus une demi-heure à vivre. Et votre appel à servir le Seigneur en Chine ? » Hudson lui a répondu qu’il préférait être ici, en obéissant à Dieu, plutôt que n’importe où ailleurs — et qu’il croyait toujours qu’il arriverait en Chine.</p> <p>Quelques minutes plus tard, le capitaine est revenu en courant et en criant : « Le vent a tourné ! Nous pouvons sortir de la baie ! » Et c’est ce qu’ils ont fait. Les rochers sont restés derrière eux, et tout le monde était sain et sauf.</p> <p>Même au milieu d’une tempête qui fait peur, tu peux être en paix quand tu sais que tu es là où Dieu veut que tu sois. Il est le Seigneur du vent et des vagues.</p> <p><em>Cher Dieu, quand ma vie ressemble à une tempête, aide-moi à rester en paix, en sachant que tu es avec moi et que c’est toi qui commandes. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quel danger le bateau a-t-il connu pendant la tempête ?",
+    "answer": "Un violent coup de vent l’a retenu pendant douze jours, et un dimanche soir le vent l’a poussé presque sur les rochers."
+   },
+   {
+    "question": "Qu’a dit Hudson au capitaine quand on aurait dit que c’était la fin ?",
+    "answer": "Qu’il préférait être là, en obéissant à Dieu, plutôt que n’importe où ailleurs, et qu’il croyait toujours qu’il arriverait en Chine. Bientôt le vent a tourné et ils sont sortis de la baie."
+   },
+   {
+    "question": "Parlons-en ensemble : quand tu as peur, qu’est-ce qui t’aide à être en paix ?",
+    "answer": "L’idée du chapitre : même dans une tempête qui fait peur, tu peux être en paix quand tu sais que tu es là où Dieu veut que tu sois, parce qu’il est le Seigneur du vent et des vagues."
+   }
+  ],
+  "body_text": "« Il a calmé la tempête, et il les a conduits au port qu’ils désiraient. » — d’après Psaume 107 Enfin, le grand jour est arrivé. Hudson est monté à bord d’un voilier en route pour la Chine. Sa mère est venue lui dire au revoir ; elle a rangé sa petite couchette et a prié avec lui une dernière fois. Quand le bateau s’est éloigné, son cri de tristesse « m’a transpercé comme un couteau », a raconté Hudson. Mais il partait là où Dieu l’avait appelé. Puis les ennuis sont arrivés. Un violent coup de vent s’est levé et a retenu le bateau pendant douze jours de tempête. Un dimanche soir, le vent les a poussés tout droit vers une côte pleine de rochers — de plus en plus près, jusqu’à ce que le bateau soit presque assez près pour toucher les rochers. On aurait dit que c’était la fin. Le capitaine, qui aimait Dieu lui aussi, s’est tourné vers Hudson et lui a dit : « Nous n’avons plus une demi-heure à vivre. Et votre appel à servir le Seigneur en Chine ? » Hudson lui a répondu qu’il préférait être ici, en obéissant à Dieu, plutôt que n’importe où ailleurs — et qu’il croyait toujours qu’il arriverait en Chine. Quelques minutes plus tard, le capitaine est revenu en courant et en criant : « Le vent a tourné ! Nous pouvons sortir de la baie ! » Et c’est ce qu’ils ont fait. Les rochers sont restés derrière eux, et tout le monde était sain et sauf. Même au milieu d’une tempête qui fait peur, tu peux être en paix quand tu sais que tu es là où Dieu veut que tu sois. Il est le Seigneur du vent et des vagues. Cher Dieu, quand ma vie ressemble à une tempête, aide-moi à rester en paix, en sachant que tu es avec moi et que c’est toi qui commandes. Amen.",
+  "word_count": 324
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Prier pour avoir du vent",
+  "body_html": "<blockquote>« Appelle-moi, et je te répondrai. » — d’après Jérémie 33</blockquote> <p>Pendant ce même long voyage, un autre danger est arrivé — le contraire d’une tempête. Le bateau est arrivé à un endroit où il n’y avait <em>pas de vent du tout.</em> Les voiles pendaient, toutes molles, et un fort courant tirait lentement le bateau vers de dangereux rochers cachés, tandis que des feux brûlaient sur une côte toute proche.</p> <p>Les marins ont tout essayé pour faire tourner le bateau, mais rien n’a marché. Finalement, le capitaine a dit tristement : « Nous ne pouvons qu’attendre et voir ce qui va arriver. »</p> <p>« Non, a dit Hudson. Il y a encore une chose que nous n’avons pas faite. » Il a trouvé les autres personnes à bord qui aimaient Dieu — seulement quatre, en le comptant — et il a demandé à chacune d’aller prier pour qu’il y ait du vent.</p> <p>Hudson a fait une courte prière, et il était si sûr que Dieu répondrait qu’il est monté sur le pont et a demandé à un officier grincheux de bien vouloir préparer les voiles. L’officier a répondu en se moquant : « J’aimerais mieux <em>voir</em> du vent qu’en entendre parler ! » Mais pendant qu’il parlait encore — regarde ! — la voile du haut s’est mise à frémir. Une brise arrivait ! Bientôt le bateau s’éloignait des rochers, vite et en toute sécurité.</p> <p>Parfois, nous essayons tout, sauf la chose la plus importante. Quand tu ne sais plus quoi faire, souviens-toi des paroles de Hudson : « Il y a encore une chose que nous n’avons pas faite. » Prie. Dieu aime répondre.</p> <p><em>Cher Dieu, aide-moi à prier en premier, et pas en dernier. Merci de m’entendre et de me répondre juste au bon moment. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui n’allait pas, cette fois, pendant le voyage ?",
+    "answer": "Il n’y avait pas de vent du tout, et un fort courant tirait le bateau vers de dangereux rochers cachés."
+   },
+   {
+    "question": "Quelle était « la chose que nous n’avons pas faite » ?",
+    "answer": "Prier. Hudson a demandé aux quatre personnes à bord qui aimaient Dieu de prier pour qu’il y ait du vent, et bientôt la voile du haut s’est mise à frémir."
+   },
+   {
+    "question": "Parlons-en ensemble : quand il y a un problème, est-ce que tu pries d’habitude en premier ou en dernier ?",
+    "answer": "L’idée du chapitre : parfois nous essayons tout, sauf la chose la plus importante. Quand tu ne sais plus quoi faire, prie. Dieu aime répondre."
+   }
+  ],
+  "body_text": "« Appelle-moi, et je te répondrai. » — d’après Jérémie 33 Pendant ce même long voyage, un autre danger est arrivé — le contraire d’une tempête. Le bateau est arrivé à un endroit où il n’y avait pas de vent du tout. Les voiles pendaient, toutes molles, et un fort courant tirait lentement le bateau vers de dangereux rochers cachés, tandis que des feux brûlaient sur une côte toute proche. Les marins ont tout essayé pour faire tourner le bateau, mais rien n’a marché. Finalement, le capitaine a dit tristement : « Nous ne pouvons qu’attendre et voir ce qui va arriver. » « Non, a dit Hudson. Il y a encore une chose que nous n’avons pas faite. » Il a trouvé les autres personnes à bord qui aimaient Dieu — seulement quatre, en le comptant — et il a demandé à chacune d’aller prier pour qu’il y ait du vent. Hudson a fait une courte prière, et il était si sûr que Dieu répondrait qu’il est monté sur le pont et a demandé à un officier grincheux de bien vouloir préparer les voiles. L’officier a répondu en se moquant : « J’aimerais mieux voir du vent qu’en entendre parler ! » Mais pendant qu’il parlait encore — regarde ! — la voile du haut s’est mise à frémir. Une brise arrivait ! Bientôt le bateau s’éloignait des rochers, vite et en toute sécurité. Parfois, nous essayons tout, sauf la chose la plus importante. Quand tu ne sais plus quoi faire, souviens-toi des paroles de Hudson : « Il y a encore une chose que nous n’avons pas faite. » Prie. Dieu aime répondre. Cher Dieu, aide-moi à prier en premier, et pas en dernier. Merci de m’entendre et de me répondre juste au bon moment. Amen.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "S’habiller comme ceux qu’il aimait",
+  "body_html": "<blockquote>« Je me suis fait tout à tous, afin d’en aider quelques-uns à être sauvés. » — d’après 1 Corinthiens 9</blockquote> <p>Quand Hudson est arrivé en Chine, il voulait que les gens écoutent sa bonne nouvelle au sujet de Jésus. Mais il y avait un problème : il avait l’air si différent ! Avec ses vêtements anglais, des foules le suivaient, le montraient du doigt, riaient et lui criaient même des noms méchants. C’était difficile de se faire entendre au milieu de toutes ces moqueries.</p> <p>Alors Hudson a fait quelque chose de courageux. Il a décidé de s’habiller comme s’habillaient les Chinois, et il s’est même fait raser et coiffer les cheveux comme eux. Désormais, quand il traversait une ville, les gens ne le fixaient plus du regard et ne se moquaient plus de lui. Ils écoutaient tranquillement, et l’invitaient même chez eux.</p> <p>Hudson avait un ami, M. Burns, qui portait encore ses vêtements anglais. M. Burns a remarqué que Hudson avait des foules calmes et amicales, tandis que lui était suivi par des garçons impolis qui se moquaient de lui. Après avoir vu cela pendant quelques semaines, M. Burns s’est mis, lui aussi, à porter des vêtements chinois !</p> <p>Hudson n’a pas changé de vêtements parce qu’il y était obligé. Il l’a fait par amour — il était prêt à renoncer à son propre confort et à sa fierté pour que les gens l’écoutent et apprennent à connaître Jésus.</p> <p>L’amour fait ça. Il pense d’abord aux autres. Y a-t-il une petite chose à laquelle tu pourrais renoncer — avoir raison, être le premier, être à ton aise — pour aider quelqu’un d’autre à se sentir le bienvenu ?</p> <p><em>Cher Dieu, rends-moi prêt à renoncer à mon propre confort par amour, pour que les autres voient ta bonté en moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi les gens en Chine se moquaient-ils de Hudson au début ?",
+    "answer": "Il avait l’air si différent avec ses vêtements anglais que des foules le suivaient, le montraient du doigt, riaient et lui criaient des noms méchants."
+   },
+   {
+    "question": "Qu’est-ce qui a changé quand Hudson s’est habillé comme les Chinois ?",
+    "answer": "Les gens ont arrêté de le fixer du regard et de se moquer de lui. Ils écoutaient tranquillement et l’invitaient chez eux, et son ami M. Burns s’est bientôt mis, lui aussi, à porter des vêtements chinois."
+   },
+   {
+    "question": "Parlons-en ensemble : pourrais-tu renoncer à une petite chose pour aider quelqu’un à se sentir le bienvenu ?",
+    "answer": "L’idée du chapitre : Hudson l’a fait par amour. L’amour pense d’abord aux autres et il est prêt à renoncer à son confort ou à sa fierté, comme avoir raison ou être le premier."
+   }
+  ],
+  "body_text": "« Je me suis fait tout à tous, afin d’en aider quelques-uns à être sauvés. » — d’après 1 Corinthiens 9 Quand Hudson est arrivé en Chine, il voulait que les gens écoutent sa bonne nouvelle au sujet de Jésus. Mais il y avait un problème : il avait l’air si différent ! Avec ses vêtements anglais, des foules le suivaient, le montraient du doigt, riaient et lui criaient même des noms méchants. C’était difficile de se faire entendre au milieu de toutes ces moqueries. Alors Hudson a fait quelque chose de courageux. Il a décidé de s’habiller comme s’habillaient les Chinois, et il s’est même fait raser et coiffer les cheveux comme eux. Désormais, quand il traversait une ville, les gens ne le fixaient plus du regard et ne se moquaient plus de lui. Ils écoutaient tranquillement, et l’invitaient même chez eux. Hudson avait un ami, M. Burns, qui portait encore ses vêtements anglais. M. Burns a remarqué que Hudson avait des foules calmes et amicales, tandis que lui était suivi par des garçons impolis qui se moquaient de lui. Après avoir vu cela pendant quelques semaines, M. Burns s’est mis, lui aussi, à porter des vêtements chinois ! Hudson n’a pas changé de vêtements parce qu’il y était obligé. Il l’a fait par amour — il était prêt à renoncer à son propre confort et à sa fierté pour que les gens l’écoutent et apprennent à connaître Jésus. L’amour fait ça. Il pense d’abord aux autres. Y a-t-il une petite chose à laquelle tu pourrais renoncer — avoir raison, être le premier, être à ton aise — pour aider quelqu’un d’autre à se sentir le bienvenu ? Cher Dieu, rends-moi prêt à renoncer à mon propre confort par amour, pour que les autres voient ta bonté en moi. Amen.",
+  "word_count": 301
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "La nuit sur les marches du temple",
+  "body_html": "<blockquote>« Je ne te laisserai jamais, et je ne t’abandonnerai jamais. » — d’après Hébreux 13</blockquote> <p>Un jour, le propre serviteur de Hudson s’est enfui — en emportant tous les bagages de Hudson ! Tout à coup, Hudson n’avait presque plus rien, loin de chez lui, dans un endroit inconnu. Les pieds endoloris et très fatigué, il a cherché partout un endroit où dormir, mais personne ne voulait l’accueillir.</p> <p>Finalement, il s’est allongé sur les froides marches de pierre devant un temple fermé à clé, en glissant sous sa tête le peu d’argent qu’il avait, comme oreiller. Dans le noir, un mendiant s’est approché sans bruit, dans l’espoir de le voler. Hudson lui a demandé calmement : « Que voulez-vous ? » — et l’homme s’est éclipsé. Puis d’autres hommes se sont rassemblés à ses pieds, en faisant semblant de vouloir seulement lui tenir compagnie.</p> <p>Hudson n’était pas dupe, et il n’était pas seul non plus. « J’adore Dieu, leur a-t-il dit. Il est mon Père, et j’ai confiance en lui. » Pour rester éveillé et en sécurité, il a chanté des cantiques, récité des versets de la Bible à voix haute et prié — jusqu’à ce que les hommes en aient tellement assez qu’ils sont partis avant le matin.</p> <p>Pendant toute cette nuit sombre et effrayante, Dieu veillait sur Hudson, comme il l’avait promis : « Je ne te laisserai jamais, et je ne t’abandonnerai jamais. »</p> <p>Quand tu te sens seul, ou que les choses tournent mal et que tu as peur, souviens-toi : Dieu est juste là avec toi, même dans le noir. Il a promis de ne jamais te laisser.</p> <p><em>Cher Dieu, merci de ne jamais me laisser, même dans les moments sombres et effrayants. Aide-moi à croire que tu es toujours près de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Hudson a-t-il dû dormir sur les marches du temple ?",
+    "answer": "Son serviteur s’était enfui avec tous ses bagages, et personne ne voulait l’accueillir pour la nuit."
+   },
+   {
+    "question": "Comment Hudson est-il resté en sécurité face aux hommes qui voulaient le voler ?",
+    "answer": "Il est resté éveillé en chantant des cantiques, en récitant des versets de la Bible à voix haute et en priant, jusqu’à ce que les hommes se fatiguent et partent avant le matin."
+   },
+   {
+    "question": "Parlons-en ensemble : de quoi peux-tu te souvenir quand tu te sens seul ou que tu as peur dans le noir ?",
+    "answer": "L’idée du chapitre : Dieu est juste là avec toi, même dans le noir. Il a promis : « Je ne te laisserai jamais, et je ne t’abandonnerai jamais. »"
+   }
+  ],
+  "body_text": "« Je ne te laisserai jamais, et je ne t’abandonnerai jamais. » — d’après Hébreux 13 Un jour, le propre serviteur de Hudson s’est enfui — en emportant tous les bagages de Hudson ! Tout à coup, Hudson n’avait presque plus rien, loin de chez lui, dans un endroit inconnu. Les pieds endoloris et très fatigué, il a cherché partout un endroit où dormir, mais personne ne voulait l’accueillir. Finalement, il s’est allongé sur les froides marches de pierre devant un temple fermé à clé, en glissant sous sa tête le peu d’argent qu’il avait, comme oreiller. Dans le noir, un mendiant s’est approché sans bruit, dans l’espoir de le voler. Hudson lui a demandé calmement : « Que voulez-vous ? » — et l’homme s’est éclipsé. Puis d’autres hommes se sont rassemblés à ses pieds, en faisant semblant de vouloir seulement lui tenir compagnie. Hudson n’était pas dupe, et il n’était pas seul non plus. « J’adore Dieu, leur a-t-il dit. Il est mon Père, et j’ai confiance en lui. » Pour rester éveillé et en sécurité, il a chanté des cantiques, récité des versets de la Bible à voix haute et prié — jusqu’à ce que les hommes en aient tellement assez qu’ils sont partis avant le matin. Pendant toute cette nuit sombre et effrayante, Dieu veillait sur Hudson, comme il l’avait promis : « Je ne te laisserai jamais, et je ne t’abandonnerai jamais. » Quand tu te sens seul, ou que les choses tournent mal et que tu as peur, souviens-toi : Dieu est juste là avec toi, même dans le noir. Il a promis de ne jamais te laisser. Cher Dieu, merci de ne jamais me laisser, même dans les moments sombres et effrayants. Aide-moi à croire que tu es toujours près de moi. Amen.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Pardonner au voleur",
+  "body_html": "<blockquote>« Pardonnez, et vous serez pardonnés. » — d’après Luc 6</blockquote> <p>Bientôt, Hudson a découvert quelque chose de bouleversant : c’était son propre serviteur qui avait préparé le coup et volé tout ce qu’il possédait en Chine — des affaires qui valaient environ quarante livres, ce qui était une très grosse somme.</p> <p>Hudson aurait pu faire arrêter et punir le voleur. Cela aurait été facile, et personne ne lui en aurait voulu. Mais ce serviteur était quelqu’un pour qui Hudson avait prié. Et Hudson s’est souvenu de l’enseignement de Jésus — les mots mêmes qu’ils avaient lus ensemble un jour — qui dit de ne pas rendre le mal pour le mal.</p> <p>Alors Hudson a fait un choix surprenant. L’âme de cet homme, a-t-il décidé, comptait bien plus qu’un tas d’affaires volées. Au lieu de le punir, Hudson a écrit au voleur une lettre pleine de bonté, en le suppliant de regretter ce qu’il avait fait et de mettre sa confiance dans le Seigneur Jésus.</p> <p>Et voici une jolie fin : un ami resté en Angleterre, heureux d’apprendre que Hudson avait pardonné au voleur, lui a envoyé un cadeau — un chèque de quarante livres exactement, la même somme que celle qu’il avait perdue. C’était le premier de nombreux cadeaux de cet ami.</p> <p>Pardonner à quelqu’un qui t’a fait du mal est l’une des choses les plus difficiles et les plus courageuses que tu puisses faire. Mais c’est ce que Jésus a fait pour nous, et Dieu prend soin de ceux qui pardonnent.</p> <p><em>Cher Dieu, quand quelqu’un me fait du mal, aide-moi à pardonner comme Jésus me pardonne. Je te confie tout le reste. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui a volé tout ce que Hudson possédait en Chine ?",
+    "answer": "Son propre serviteur, un homme pour qui Hudson avait prié. Les affaires valaient environ quarante livres."
+   },
+   {
+    "question": "Qu’a fait Hudson au lieu de faire punir le voleur ?",
+    "answer": "Il a écrit au voleur une lettre pleine de bonté, en le suppliant de regretter ce qu’il avait fait et de mettre sa confiance dans le Seigneur Jésus. Plus tard, un ami lui a envoyé quarante livres exactement."
+   },
+   {
+    "question": "Parlons-en ensemble : pourquoi est-ce si difficile de pardonner à quelqu’un qui t’a fait du mal ?",
+    "answer": "L’idée du chapitre : pardonner est l’une des choses les plus difficiles et les plus courageuses que tu puisses faire, mais c’est ce que Jésus a fait pour nous, et Dieu prend soin de ceux qui pardonnent."
+   }
+  ],
+  "body_text": "« Pardonnez, et vous serez pardonnés. » — d’après Luc 6 Bientôt, Hudson a découvert quelque chose de bouleversant : c’était son propre serviteur qui avait préparé le coup et volé tout ce qu’il possédait en Chine — des affaires qui valaient environ quarante livres, ce qui était une très grosse somme. Hudson aurait pu faire arrêter et punir le voleur. Cela aurait été facile, et personne ne lui en aurait voulu. Mais ce serviteur était quelqu’un pour qui Hudson avait prié. Et Hudson s’est souvenu de l’enseignement de Jésus — les mots mêmes qu’ils avaient lus ensemble un jour — qui dit de ne pas rendre le mal pour le mal. Alors Hudson a fait un choix surprenant. L’âme de cet homme, a-t-il décidé, comptait bien plus qu’un tas d’affaires volées. Au lieu de le punir, Hudson a écrit au voleur une lettre pleine de bonté, en le suppliant de regretter ce qu’il avait fait et de mettre sa confiance dans le Seigneur Jésus. Et voici une jolie fin : un ami resté en Angleterre, heureux d’apprendre que Hudson avait pardonné au voleur, lui a envoyé un cadeau — un chèque de quarante livres exactement, la même somme que celle qu’il avait perdue. C’était le premier de nombreux cadeaux de cet ami. Pardonner à quelqu’un qui t’a fait du mal est l’une des choses les plus difficiles et les plus courageuses que tu puisses faire. Mais c’est ce que Jésus a fait pour nous, et Dieu prend soin de ceux qui pardonnent. Cher Dieu, quand quelqu’un me fait du mal, aide-moi à pardonner comme Jésus me pardonne. Je te confie tout le reste. Amen.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Une dernière pièce et une tasse de cacao",
+  "body_html": "<blockquote>« Le Seigneur pourvoira. » — d’après Genèse 22</blockquote> <p>Dans la ville de Ningpo, Hudson et son ami M. Jones donnaient un petit déjeuner à environ soixante-dix personnes pauvres, tous les jours. Sur leur mur étaient accrochées deux petites pancartes, pour leur rappeler qui payait tout cela. L’une disait : « Le Seigneur nous a aidés jusqu’ici. » L’autre disait : « Le Seigneur pourvoira. »</p> <p>Un matin, il ne leur restait plus qu’une toute petite pièce — qui valait moins d’un centime. Ils ont décidé d’aller vendre leur poêle en fer pour acheter à manger. Mais en partant, ils ont découvert que le pont sur la rivière avait été emporté pendant la nuit ! Le petit bac coûtait deux pièces, et ils n’en avaient qu’une. Alors ils sont rentrés chez eux, les mains vides.</p> <p>À la maison, ils ont trouvé un petit paquet de cacao. Ils l’ont mélangé à de l’eau chaude et l’ont bu, et cela leur a donné juste assez de force pour continuer. Et puis — alors qu’ils étaient encore à genoux en train de prier — une lettre est arrivée d’Angleterre. Dedans, il y avait de l’argent, envoyé par un ami lointain qui n’avait aucune idée à quel point on en avait besoin ce matin-là.</p> <p>Dieu ne l’avait pas envoyé un jour trop tôt. Mais il ne l’avait pas envoyé un instant trop tard non plus. « Le Seigneur pourvoira » s’était révélé parfaitement vrai.</p> <p>Dieu nous donne ce dont nous avons besoin pour aujourd’hui, juste au moment où nous en avons besoin. Toi aussi, tu peux lui faire confiance pour ton « pain de ce jour ».</p> <p><em>Cher Dieu, merci de me donner exactement ce dont j’ai besoin, juste à temps. Aide-moi à te faire confiance un jour à la fois. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Hudson et M. Jones n’ont-ils pas pu vendre leur poêle ?",
+    "answer": "Le pont avait été emporté pendant la nuit, et le bac coûtait deux pièces. Ils n’en avaient qu’une, alors ils sont rentrés chez eux."
+   },
+   {
+    "question": "Que s’est-il passé alors qu’ils étaient encore à genoux en train de prier ?",
+    "answer": "Une lettre est arrivée d’Angleterre avec de l’argent, envoyé par un ami qui n’avait aucune idée à quel point on en avait besoin ce matin-là."
+   },
+   {
+    "question": "Parlons-en ensemble : que veut dire « Le Seigneur pourvoira » pour notre famille aujourd’hui ?",
+    "answer": "L’idée du chapitre : Dieu nous donne ce dont nous avons besoin pour aujourd’hui, juste au moment où nous en avons besoin, ni trop tôt ni trop tard. Nous pouvons lui faire confiance un jour à la fois."
+   }
+  ],
+  "body_text": "« Le Seigneur pourvoira. » — d’après Genèse 22 Dans la ville de Ningpo, Hudson et son ami M. Jones donnaient un petit déjeuner à environ soixante-dix personnes pauvres, tous les jours. Sur leur mur étaient accrochées deux petites pancartes, pour leur rappeler qui payait tout cela. L’une disait : « Le Seigneur nous a aidés jusqu’ici. » L’autre disait : « Le Seigneur pourvoira. » Un matin, il ne leur restait plus qu’une toute petite pièce — qui valait moins d’un centime. Ils ont décidé d’aller vendre leur poêle en fer pour acheter à manger. Mais en partant, ils ont découvert que le pont sur la rivière avait été emporté pendant la nuit ! Le petit bac coûtait deux pièces, et ils n’en avaient qu’une. Alors ils sont rentrés chez eux, les mains vides. À la maison, ils ont trouvé un petit paquet de cacao. Ils l’ont mélangé à de l’eau chaude et l’ont bu, et cela leur a donné juste assez de force pour continuer. Et puis — alors qu’ils étaient encore à genoux en train de prier — une lettre est arrivée d’Angleterre. Dedans, il y avait de l’argent, envoyé par un ami lointain qui n’avait aucune idée à quel point on en avait besoin ce matin-là. Dieu ne l’avait pas envoyé un jour trop tôt. Mais il ne l’avait pas envoyé un instant trop tard non plus. « Le Seigneur pourvoira » s’était révélé parfaitement vrai. Dieu nous donne ce dont nous avons besoin pour aujourd’hui, juste au moment où nous en avons besoin. Toi aussi, tu peux lui faire confiance pour ton « pain de ce jour ». Cher Dieu, merci de me donner exactement ce dont j’ai besoin, juste à temps. Aide-moi à te faire confiance un jour à la fois. Amen.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "a-retrospect-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Deux mots sur la plage",
+  "body_html": "<blockquote>« Priez le Seigneur de la moisson d’envoyer des ouvriers dans sa moisson. » — d’après Matthieu 9</blockquote> <p>Des années plus tard, Hudson était de retour en Angleterre, épuisé et malade. Un jour, il regardait une très grande carte de la Chine. Il a pensé aux millions et aux millions de gens qui vivaient loin à l’intérieur du pays, loin de la côte, et qui n’avaient jamais entendu parler de Jésus, pas une seule fois — et son cœur s’est presque brisé.</p> <p>Hudson savait ce qu’il fallait : plus d’ouvriers, beaucoup plus, pour aller annoncer la bonne nouvelle à ces gens. Mais il avait peur de les demander à Dieu — parce que si Dieu les envoyait, c’est Hudson qui serait responsable de prendre soin d’eux tous ! Ce souci lui paraissait trop gros.</p> <p>Un dimanche, dans une ville appelée Brighton, il n’arrivait plus à rester assis à l’église au milieu d’un millier de gens bien installés. Alors il est sorti tout seul sur la plage de sable. Là, pendant que les vagues roulaient sur le rivage, il a enfin cessé d’avoir peur et il a confié tout cet énorme travail à Dieu.</p> <p>Et puis il a fait une prière audacieuse et précise : il a demandé à Dieu <strong>vingt-quatre compagnons de travail</strong> pour aller dans les régions de la Chine où il n’y avait encore aucun missionnaire. Il a même écrit sa prière dans la marge de la Bible qu’il avait avec lui. Puis il est rentré chez lui, et pour la première fois depuis des mois, son cœur était rempli de paix.</p> <p>Cette prière sur la plage a été le début d’une grande mission qui allait envoyer des centaines d’ouvriers en Chine.</p> <p>Quand tu cesses enfin d’avoir peur et que tu confies à Dieu ton plus gros souci, il te donne la paix — et il peut faire plus que tout ce que tu as jamais imaginé. Alors n’aie pas peur de lui demander de grandes choses.</p> <p><em>Cher Dieu, aide-moi à cesser d’avoir peur et à te confier mes plus gros soucis. Merci parce que tu peux faire de grandes choses. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Hudson était-il si triste en regardant la grande carte de la Chine ?",
+    "answer": "Il pensait aux millions de gens loin à l’intérieur du pays qui n’avaient jamais entendu parler de Jésus, pas une seule fois."
+   },
+   {
+    "question": "Pour quoi Hudson a-t-il prié sur la plage de Brighton ?",
+    "answer": "Il a confié tout cet énorme travail à Dieu et il a demandé vingt-quatre ouvriers pour les régions de la Chine sans missionnaire. Il a écrit sa prière dans la marge de sa Bible."
+   },
+   {
+    "question": "Parlons-en ensemble : quel gros souci pourrais-tu confier à Dieu ?",
+    "answer": "L’idée du chapitre : quand tu cesses d’avoir peur et que tu confies à Dieu ton plus gros souci, il te donne la paix et il peut faire plus que tout ce que tu as jamais imaginé. N’aie pas peur de lui demander de grandes choses."
+   }
+  ],
+  "body_text": "« Priez le Seigneur de la moisson d’envoyer des ouvriers dans sa moisson. » — d’après Matthieu 9 Des années plus tard, Hudson était de retour en Angleterre, épuisé et malade. Un jour, il regardait une très grande carte de la Chine. Il a pensé aux millions et aux millions de gens qui vivaient loin à l’intérieur du pays, loin de la côte, et qui n’avaient jamais entendu parler de Jésus, pas une seule fois — et son cœur s’est presque brisé. Hudson savait ce qu’il fallait : plus d’ouvriers, beaucoup plus, pour aller annoncer la bonne nouvelle à ces gens. Mais il avait peur de les demander à Dieu — parce que si Dieu les envoyait, c’est Hudson qui serait responsable de prendre soin d’eux tous ! Ce souci lui paraissait trop gros. Un dimanche, dans une ville appelée Brighton, il n’arrivait plus à rester assis à l’église au milieu d’un millier de gens bien installés. Alors il est sorti tout seul sur la plage de sable. Là, pendant que les vagues roulaient sur le rivage, il a enfin cessé d’avoir peur et il a confié tout cet énorme travail à Dieu. Et puis il a fait une prière audacieuse et précise : il a demandé à Dieu vingt-quatre compagnons de travail pour aller dans les régions de la Chine où il n’y avait encore aucun missionnaire. Il a même écrit sa prière dans la marge de la Bible qu’il avait avec lui. Puis il est rentré chez lui, et pour la première fois depuis des mois, son cœur était rempli de paix. Cette prière sur la plage a été le début d’une grande mission qui allait envoyer des centaines d’ouvriers en Chine. Quand tu cesses enfin d’avoir peur et que tu confies à Dieu ton plus gros souci, il te donne la paix — et il peut faire plus que tout ce que tu as jamais imaginé. Alors n’aie pas peur de lui demander de grandes choses. Cher Dieu, aide-moi à cesser d’avoir peur et à te confier mes plus gros soucis. Merci parce que tu peux faire de grandes choses. Amen.",
+  "word_count": 354
+ }
+}
+]
