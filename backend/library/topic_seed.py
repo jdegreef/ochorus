@@ -587,6 +587,7 @@ TOPICS = [
             "men-and-women-who-gave-everything-2",
             "men-who-moved-heaven",
             "women-who-moved-heaven-2",
+            "all-of-grace-teens",
         ],
     ),
     (
@@ -634,6 +635,7 @@ TOPICS = [
             "sons-of-the-king-3",
             "the-princess-and-the-goblin",
             "at-the-back-of-the-north-wind",
+            "the-practice-of-the-presence-of-god-children",
         ],
     ),
 ]

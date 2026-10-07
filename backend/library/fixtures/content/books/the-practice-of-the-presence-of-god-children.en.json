@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "brother-lawrence"
+  ],
+  "slug": "the-practice-of-the-presence-of-god-children",
+  "language": "en",
+  "title": "The Practice of the Presence of God (For Children)",
+  "subtitle": "",
+  "description": "The true story of Brother Lawrence, a clumsy young servant who became a cook in a busy kitchen and learned to talk with God all day long, even among the pots and pans. This children’s edition retells his life and his simple teaching in short chapters made to be read aloud: a Bible verse, one part of his story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is The Practice of the Presence of God (For Children) about?",
+    "answer": "It is a children’s version of a much-loved little book about Brother Lawrence. It tells how a clumsy young man came to love God, worked for years in a kitchen he didn’t like, and learned to talk with God all through the day: while cooking, travelling, being ill and growing old."
+   },
+   {
+    "question": "Who was Brother Lawrence?",
+    "answer": "A Frenchman who lived more than three hundred years ago. He had been a footman, a servant, and called himself clumsy. After God turned his heart at eighteen, he joined a community of Brothers and worked as their cook. People came to him and wrote to him to learn how he stayed so close to God."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Brother Lawrence’s story or teaching, shows one simple thing it means for you, and ends with a short prayer. Three questions follow for talking it over."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children aged about eight to twelve, to be read aloud by a grown-up or read by an older child alone. The full Practice of the Presence of God, with the recorded conversations and letters, is also available for older readers."
+   },
+   {
+    "question": "What does “practising the presence of God” mean?",
+    "answer": "It means remembering that God is always with us, and talking with him through the whole day, not only at special prayer times. Brother Lawrence did it with short, simple prayers in his heart while he worked."
+   },
+   {
+    "question": "Do you have to live in a monastery to pray like Brother Lawrence?",
+    "answer": "No. Brother Lawrence himself said you don’t need to be in church to be with God, and that anyone can talk with him: at school, at home, at mealtimes or in the middle of a busy day."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of Brother Lawrence’s The Practice of the Presence of God, which is in the public domain. The telling is our own, free to read and share.",
+  "cover_url": "/covers/the-practice-of-the-presence-of-god-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 136,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Young Man Who Broke Things",
+  "body_html": "<blockquote>“People look at the outside, but the Lord looks at the heart.” — from 1 Samuel 16</blockquote> <p>Long ago, more than three hundred years before you were born, there lived a man we now call Brother Lawrence. Before anyone called him “Brother,” he was a young servant.</p> <p>He worked as a footman for an important man, a treasurer named Monsieur Fieubert. A footman’s job was to wait on his master, carry things, fetch things and keep everything neat and tidy.</p> <p>But there was a problem. Lawrence was big, and he was clumsy. He said so himself. He called himself “a great awkward fellow who broke everything.” Picture him trying to carry a tray of fine cups and bumping into a door. Crash! Picture him reaching for a dish and knocking over a jug. Splash!</p> <p>Most people would not have guessed that this clumsy young man would one day be remembered all over the world. They would not have guessed that people would still be reading about him hundreds of years later. But God was not looking at his clumsy hands. God was looking at his heart.</p> <p>And something was about to happen to that heart.</p> <p>Do you ever feel clumsy, or not very good at things? Maybe you spill your drink, or drop the ball, or get the answer wrong. That doesn’t stop God from loving you or using you. He looks at your heart.</p> <p><em>Dear God, thank you that you don’t love me because I’m clever or careful, but because I’m yours. Please look after my heart. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What job did Lawrence do when he was young?",
+    "answer": "He was a footman, a servant, for an important man called Monsieur Fieubert, the treasurer."
+   },
+   {
+    "question": "What did Lawrence say about himself?",
+    "answer": "He said he was “a great awkward fellow who broke everything”, which means very clumsy."
+   },
+   {
+    "question": "Have you ever felt clumsy or not good enough? What does God look at?",
+    "answer": "The chapter’s point: God doesn’t look at how skilful we are on the outside. He looks at the heart, and he can use anyone."
+   }
+  ],
+  "body_text": "“People look at the outside, but the Lord looks at the heart.” — from 1 Samuel 16 Long ago, more than three hundred years before you were born, there lived a man we now call Brother Lawrence. Before anyone called him “Brother,” he was a young servant. He worked as a footman for an important man, a treasurer named Monsieur Fieubert. A footman’s job was to wait on his master, carry things, fetch things and keep everything neat and tidy. But there was a problem. Lawrence was big, and he was clumsy. He said so himself. He called himself “a great awkward fellow who broke everything.” Picture him trying to carry a tray of fine cups and bumping into a door. Crash! Picture him reaching for a dish and knocking over a jug. Splash! Most people would not have guessed that this clumsy young man would one day be remembered all over the world. They would not have guessed that people would still be reading about him hundreds of years later. But God was not looking at his clumsy hands. God was looking at his heart. And something was about to happen to that heart. Do you ever feel clumsy, or not very good at things? Maybe you spill your drink, or drop the ball, or get the answer wrong. That doesn’t stop God from loving you or using you. He looks at your heart. Dear God, thank you that you don’t love me because I’m clever or careful, but because I’m yours. Please look after my heart. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Tree in Winter",
+  "body_html": "<blockquote>“Ever since God made the world, his great power has been plain to see in the things he has made.” — from Romans 1</blockquote> <p>When Lawrence was eighteen years old, it was winter. Everything was cold and grey.</p> <p>One day he stopped and looked at a tree. It had lost every one of its leaves. Its branches were bare and brown, like bony fingers against the sky. It looked dead.</p> <p>But Lawrence knew something about trees. He knew that in a little while, when spring came, new green leaves would come back on those bare branches. After that there would be flowers. And after the flowers, there would be fruit.</p> <p>As he stood there thinking, a great thought filled his mind. Who makes the leaves come back? Who brings the flowers and the fruit, year after year? God does! Lawrence suddenly saw how strong God is, and how carefully he looks after everything he has made.</p> <p>That one bare tree changed his whole life. He said the thought never left him. It made him love God so much that, more than forty years later, he still couldn’t tell whether his love had grown, because it had been so big right from the start.</p> <p>God made everything around you: trees, birds, rain and stars. Next time you look at a tree, remember Lawrence. The same God who brings back the leaves is looking after you.</p> <p><em>Dear God, thank you for the trees and all the things you have made. Help me to see how great and kind you are. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Lawrence see when he was eighteen?",
+    "answer": "In winter he saw a tree with no leaves, and he thought about how its leaves, flowers and fruit would come back."
+   },
+   {
+    "question": "What did the bare tree teach him about God?",
+    "answer": "It showed him God’s great power and how faithfully God looks after everything he has made. It made him love God for the rest of his life."
+   },
+   {
+    "question": "What could you look at outside this week that reminds you of God?",
+    "answer": "The chapter’s point: everything God made can remind us how strong and caring he is, just as one bare tree did for Lawrence."
+   }
+  ],
+  "body_text": "“Ever since God made the world, his great power has been plain to see in the things he has made.” — from Romans 1 When Lawrence was eighteen years old, it was winter. Everything was cold and grey. One day he stopped and looked at a tree. It had lost every one of its leaves. Its branches were bare and brown, like bony fingers against the sky. It looked dead. But Lawrence knew something about trees. He knew that in a little while, when spring came, new green leaves would come back on those bare branches. After that there would be flowers. And after the flowers, there would be fruit. As he stood there thinking, a great thought filled his mind. Who makes the leaves come back? Who brings the flowers and the fruit, year after year? God does! Lawrence suddenly saw how strong God is, and how carefully he looks after everything he has made. That one bare tree changed his whole life. He said the thought never left him. It made him love God so much that, more than forty years later, he still couldn’t tell whether his love had grown, because it had been so big right from the start. God made everything around you: trees, birds, rain and stars. Next time you look at a tree, remember Lawrence. The same God who brings back the leaves is looking after you. Dear God, thank you for the trees and all the things you have made. Help me to see how great and kind you are. Amen.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "A Happy Surprise",
+  "body_html": "<blockquote>“You fill me with joy when I am with you.” — from Psalm 16</blockquote> <p>After he saw the tree, Lawrence wanted to give his whole life to God. So he asked to join a monastery. A monastery was a big house where men lived together to pray and work. The men there were called “Brothers,” and that is how he became Brother Lawrence.</p> <p>But Lawrence had a funny reason for going. He thought that in the monastery he would get into trouble for being clumsy. He expected to be told off for every mistake he made. He was ready to give up all the nice things in life for God, even if it made him miserable.</p> <p>Then God surprised him.</p> <p>Brother Lawrence said that God “disappointed” him, but in the very best way! Instead of being miserable, he found nothing but happiness there. He had been ready for a hard, sad life. Instead God filled him with joy.</p> <p>Brother Lawrence learned that following God is not about being unhappy. Being close to God is the happiest place there is.</p> <p>Some people think that loving God means giving up all the fun. But God is not a grumpy king. He is kind, and the closer we come to him, the more joy he gives us.</p> <p><em>Dear God, thank you that being close to you is the best and happiest place to be. Fill me with your joy. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Brother Lawrence think he would be unhappy in the monastery?",
+    "answer": "He thought he would be punished for his clumsiness and mistakes, and that he would be giving up all of life’s pleasures."
+   },
+   {
+    "question": "How did God surprise him?",
+    "answer": "Instead of being miserable, Brother Lawrence found nothing but happiness there. He joked that God had “disappointed” him."
+   },
+   {
+    "question": "Do you think following God makes people happy or sad? Why?",
+    "answer": "The chapter’s point: God is kind, not grumpy. Coming close to him brings real joy, just as Brother Lawrence found."
+   }
+  ],
+  "body_text": "“You fill me with joy when I am with you.” — from Psalm 16 After he saw the tree, Lawrence wanted to give his whole life to God. So he asked to join a monastery. A monastery was a big house where men lived together to pray and work. The men there were called “Brothers,” and that is how he became Brother Lawrence. But Lawrence had a funny reason for going. He thought that in the monastery he would get into trouble for being clumsy. He expected to be told off for every mistake he made. He was ready to give up all the nice things in life for God, even if it made him miserable. Then God surprised him. Brother Lawrence said that God “disappointed” him, but in the very best way! Instead of being miserable, he found nothing but happiness there. He had been ready for a hard, sad life. Instead God filled him with joy. Brother Lawrence learned that following God is not about being unhappy. Being close to God is the happiest place there is. Some people think that loving God means giving up all the fun. But God is not a grumpy king. He is kind, and the closer we come to him, the more joy he gives us. Dear God, thank you that being close to you is the best and happiest place to be. Fill me with your joy. Amen.",
+  "word_count": 237
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "Too Many Books",
+  "body_html": "<blockquote>“Love the Lord your God with all your heart and with all your soul and with all your mind.” — from Matthew 22</blockquote> <p>Brother Lawrence wanted to know how to be close to God. So he read lots of books about it. But every book said something different. Do this! No, do that! Pray this way! No, that way! Instead of helping him, all those different ideas just muddled him up.</p> <p>So he decided to keep it simple. He gave his whole self to God, and asked God to take away his sin. Then he began to live as if there were only two people in the whole world: God and him.</p> <p>He tried to think about God as much as he could, all day long. Some days he thought of God as a judge, and felt sorry for the wrong things he had done. Other days he thought of God as his loving Father, living right inside his heart.</p> <p>It wasn’t easy. His mind kept wandering off. And for years he worried that he didn’t love God as much as he should, and he kept remembering the wrong things he had done. He often fell, and got up again. But he kept on trusting God.</p> <p>Then one day, all at once, a deep, quiet peace filled his heart, and it stayed. From then on he walked with God simply, with trust and with love.</p> <p>Loving God doesn’t need to be complicated. You don’t need to know lots of clever rules. You can start today, just by remembering that God is with you and telling him you love him.</p> <p><em>Dear God, I want to love you with all my heart. Help me to remember you are with me, today and every day. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did all the books muddle Brother Lawrence up?",
+    "answer": "Each book gave a different method for coming close to God, and all the different ideas confused him instead of helping."
+   },
+   {
+    "question": "What simple thing did he decide to do instead?",
+    "answer": "He gave himself wholly to God and lived as if there were only God and him in the world, thinking of God as often as he could."
+   },
+   {
+    "question": "When could you remember today that God is with you?",
+    "answer": "The chapter’s point: loving God doesn’t have to be complicated. We can simply remember he is with us and tell him we love him."
+   }
+  ],
+  "body_text": "“Love the Lord your God with all your heart and with all your soul and with all your mind.” — from Matthew 22 Brother Lawrence wanted to know how to be close to God. So he read lots of books about it. But every book said something different. Do this! No, do that! Pray this way! No, that way! Instead of helping him, all those different ideas just muddled him up. So he decided to keep it simple. He gave his whole self to God, and asked God to take away his sin. Then he began to live as if there were only two people in the whole world: God and him. He tried to think about God as much as he could, all day long. Some days he thought of God as a judge, and felt sorry for the wrong things he had done. Other days he thought of God as his loving Father, living right inside his heart. It wasn’t easy. His mind kept wandering off. And for years he worried that he didn’t love God as much as he should, and he kept remembering the wrong things he had done. He often fell, and got up again. But he kept on trusting God. Then one day, all at once, a deep, quiet peace filled his heart, and it stayed. From then on he walked with God simply, with trust and with love. Loving God doesn’t need to be complicated. You don’t need to know lots of clever rules. You can start today, just by remembering that God is with you and telling him you love him. Dear God, I want to love you with all my heart. Help me to remember you are with me, today and every day. Amen.",
+  "word_count": 293
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "The Kitchen He Didn’t Like",
+  "body_html": "<blockquote>“Whatever you do, work at it with all your heart, as working for the Lord.” — from Colossians 3</blockquote> <p>In the monastery, everyone had a job. And do you know what job they gave clumsy Brother Lawrence? They made him the cook!</p> <p>Brother Lawrence did not like kitchen work. He said it went against everything he naturally liked. Imagine the big kitchen: hot fires, heavy iron pots, steam everywhere, and lots of hungry Brothers waiting for their dinner.</p> <p>But Brother Lawrence found a secret. Before he started work, he would think through what needed doing, and when, and how. Then he would talk to God. He said something like this: “My God, you are here with me. Now I have to think about all these jobs. Please help me to stay close to you while I do them. Help me, and take all my work as a gift for you.”</p> <p>Then, as he cooked, he kept talking to God quietly in his heart. He asked God to help him do his work well, and he did it all for God’s love.</p> <p>And here is the surprise. The kitchen job he had disliked became easy! He worked there for fifteen years, and he found that doing it for God made all the difference.</p> <p>Is there a job you don’t like, such as tidying your room, doing homework or washing up? Try doing it for God. Ask him to help you, and do it as a gift of love for him.</p> <p><em>Dear God, when I have a job I don’t like, help me to do it for you, and to remember that you are right beside me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why was it surprising that Brother Lawrence became the cook?",
+    "answer": "He didn’t like kitchen work at all. It went against what he naturally enjoyed."
+   },
+   {
+    "question": "What was his secret for doing the work?",
+    "answer": "He asked God to help him and did everything for the love of God, talking to God as he worked. Then the job became easy."
+   },
+   {
+    "question": "Which job do you find hard to do? How could you do it for God?",
+    "answer": "The chapter’s point: any job, even one we don’t like, can become a gift of love to God when we ask his help and do it for him."
+   }
+  ],
+  "body_text": "“Whatever you do, work at it with all your heart, as working for the Lord.” — from Colossians 3 In the monastery, everyone had a job. And do you know what job they gave clumsy Brother Lawrence? They made him the cook! Brother Lawrence did not like kitchen work. He said it went against everything he naturally liked. Imagine the big kitchen: hot fires, heavy iron pots, steam everywhere, and lots of hungry Brothers waiting for their dinner. But Brother Lawrence found a secret. Before he started work, he would think through what needed doing, and when, and how. Then he would talk to God. He said something like this: “My God, you are here with me. Now I have to think about all these jobs. Please help me to stay close to you while I do them. Help me, and take all my work as a gift for you.” Then, as he cooked, he kept talking to God quietly in his heart. He asked God to help him do his work well, and he did it all for God’s love. And here is the surprise. The kitchen job he had disliked became easy! He worked there for fifteen years, and he found that doing it for God made all the difference. Is there a job you don’t like, such as tidying your room, doing homework or washing up? Try doing it for God. Ask him to help you, and do it as a gift of love for him. Dear God, when I have a job I don’t like, help me to do it for you, and to remember that you are right beside me. Amen.",
+  "word_count": 276
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "A Straw on the Ground",
+  "body_html": "<blockquote>“Whether you eat or drink or whatever you do, do it all for the glory of God.” — from 1 Corinthians 10</blockquote> <p>Some people think that only big, important things matter to God, like preaching to crowds or building great churches. Brother Lawrence didn’t think so.</p> <p>He said that he was glad when he could pick up a single straw from the ground for the love of God. Just one little straw! It is hardly anything at all. But if he did it because he loved God, it was a gift for God.</p> <p>Brother Lawrence said that God doesn’t look at how big the job is. He looks at how much love it is done with. A tiny job done with love is precious to God.</p> <p>So he told people never to get tired of doing little things for the love of God. He said that becoming more like God doesn’t mean doing different jobs. It means doing the same everyday jobs we already do, but doing them for God instead of just for ourselves.</p> <p>That meant stirring a pot could be done for God. Sweeping a floor could be done for God. Even picking up a straw could be done for God.</p> <p>You don’t have to wait until you’re grown up to do something for God. You can do it today: when you share a toy, help set the table or pick up something someone dropped, do it for him.</p> <p><em>Dear God, help me to do little things today because I love you. Thank you that even small things matter to you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What tiny thing was Brother Lawrence happy to do for God?",
+    "answer": "He was glad to pick up a single straw from the ground for the love of God."
+   },
+   {
+    "question": "What does God look at, according to Brother Lawrence?",
+    "answer": "Not how big the job is, but how much love it is done with."
+   },
+   {
+    "question": "What is one little thing you could do for God today?",
+    "answer": "The chapter’s point: small, everyday things done out of love for God are precious to him. We don’t have to wait to do something big."
+   }
+  ],
+  "body_text": "“Whether you eat or drink or whatever you do, do it all for the glory of God.” — from 1 Corinthians 10 Some people think that only big, important things matter to God, like preaching to crowds or building great churches. Brother Lawrence didn’t think so. He said that he was glad when he could pick up a single straw from the ground for the love of God. Just one little straw! It is hardly anything at all. But if he did it because he loved God, it was a gift for God. Brother Lawrence said that God doesn’t look at how big the job is. He looks at how much love it is done with. A tiny job done with love is precious to God. So he told people never to get tired of doing little things for the love of God. He said that becoming more like God doesn’t mean doing different jobs. It means doing the same everyday jobs we already do, but doing them for God instead of just for ourselves. That meant stirring a pot could be done for God. Sweeping a floor could be done for God. Even picking up a straw could be done for God. You don’t have to wait until you’re grown up to do something for God. You can do it today: when you share a toy, help set the table or pick up something someone dropped, do it for him. Dear God, help me to do little things today because I love you. Thank you that even small things matter to you. Amen.",
+  "word_count": 264
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "Pots, Pans and Prayer",
+  "body_html": "<blockquote>“Rejoice always, pray continually, give thanks in all circumstances.” — from 1 Thessalonians 5</blockquote> <p>Can you imagine the monastery kitchen at dinner time? Pots bubbling. Pans clattering. Spoons banging. Lots of people rushing about, and several of them calling out for different things all at once.</p> <p>Most people would get flustered in a kitchen like that. But people noticed something about Brother Lawrence. Even in the busiest, noisiest moments, he stayed calm. He was never in a rush, and he was never lazy. He did each thing at the right time, peacefully and steadily.</p> <p>How did he do it? He was praying all the time, not with loud words, but in his heart. He said that the time when he was working was no different from the time when he was praying.</p> <p>In his own words, put simply: “In the noise and clatter of my kitchen, while several people are calling for different things at the same time, I have God as peacefully as if I were on my knees in prayer.”</p> <p>For Brother Lawrence, prayer wasn’t only for special times. He could be close to God anywhere, even with his hands in the washing-up.</p> <p>You can talk to God at school, in the car, on the playground or while you brush your teeth. You don’t have to wait for a quiet place. He is with you in the busy, noisy times too.</p> <p><em>Dear God, thank you that I can talk to you anywhere. Help me to stay close to you when things are busy and noisy. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was the kitchen like at busy times?",
+    "answer": "It was noisy, with pots and pans clattering and several people calling for different things all at once."
+   },
+   {
+    "question": "How did Brother Lawrence stay calm?",
+    "answer": "He kept praying in his heart while he worked. He said his working time was no different from his prayer time."
+   },
+   {
+    "question": "When is the busiest, noisiest part of your day? Could you talk to God then?",
+    "answer": "The chapter’s point: prayer isn’t only for quiet, special times. We can stay close to God in the middle of busy, noisy days."
+   }
+  ],
+  "body_text": "“Rejoice always, pray continually, give thanks in all circumstances.” — from 1 Thessalonians 5 Can you imagine the monastery kitchen at dinner time? Pots bubbling. Pans clattering. Spoons banging. Lots of people rushing about, and several of them calling out for different things all at once. Most people would get flustered in a kitchen like that. But people noticed something about Brother Lawrence. Even in the busiest, noisiest moments, he stayed calm. He was never in a rush, and he was never lazy. He did each thing at the right time, peacefully and steadily. How did he do it? He was praying all the time, not with loud words, but in his heart. He said that the time when he was working was no different from the time when he was praying. In his own words, put simply: “In the noise and clatter of my kitchen, while several people are calling for different things at the same time, I have God as peacefully as if I were on my knees in prayer.” For Brother Lawrence, prayer wasn’t only for special times. He could be close to God anywhere, even with his hands in the washing-up. You can talk to God at school, in the car, on the playground or while you brush your teeth. You don’t have to wait for a quiet place. He is with you in the busy, noisy times too. Dear God, thank you that I can talk to you anywhere. Help me to stay close to you when things are busy and noisy. Amen.",
+  "word_count": 258
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "Talking with God Like a Friend",
+  "body_html": "<blockquote>“Come near to God and he will come near to you.” — from James 4</blockquote> <p>Brother Lawrence wrote letters to his friends, and in them he often told them how to talk with God. He said it was much simpler than people think.</p> <p>“You don’t need to shout,” he wrote. “God is nearer to us than we realise.” You don’t have to be in church to talk to him, either. He said you can make your heart into a little prayer room, and slip in there to talk with God any time.</p> <p>His prayers were often very short. Sometimes he simply said, “My God, here I am, all yours. Lord, make my heart like yours.” Sometimes he just thought of God lovingly, without any words at all. He told one friend to lift up his heart to God even at mealtimes, or when he was with other people. He said even the smallest little thought of God pleases him.</p> <p>He also gave his friends a picture to remember. If a friend came to visit you, you wouldn’t walk away and leave them sitting alone. That would be rude! Well, God is always with us. So don’t leave him alone. Think of him often.</p> <p>That is all it means to practise the presence of God: remembering he is here, and talking with him.</p> <p>You can talk to God just like you talk to a friend. Tell him thank you. Tell him you’re worried. Ask for help. Your prayer can be as short as one sentence, and he loves to hear it.</p> <p><em>Dear God, thank you that you are always with me. Help me not to leave you alone, but to talk with you all through the day. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where did Brother Lawrence say you could go to talk with God?",
+    "answer": "Anywhere. He said you can make your heart into a little prayer room and talk with God there, and you don’t need to shout, because God is very near."
+   },
+   {
+    "question": "What picture did he use about a visiting friend?",
+    "answer": "It would be rude to leave a friend alone who came to visit you, so we shouldn’t leave God alone either. We should think of him often."
+   },
+   {
+    "question": "What is one short prayer you could say to God today?",
+    "answer": "The chapter’s point: talking with God can be simple and short, like talking to a friend who is always with us."
+   }
+  ],
+  "body_text": "“Come near to God and he will come near to you.” — from James 4 Brother Lawrence wrote letters to his friends, and in them he often told them how to talk with God. He said it was much simpler than people think. “You don’t need to shout,” he wrote. “God is nearer to us than we realise.” You don’t have to be in church to talk to him, either. He said you can make your heart into a little prayer room, and slip in there to talk with God any time. His prayers were often very short. Sometimes he simply said, “My God, here I am, all yours. Lord, make my heart like yours.” Sometimes he just thought of God lovingly, without any words at all. He told one friend to lift up his heart to God even at mealtimes, or when he was with other people. He said even the smallest little thought of God pleases him. He also gave his friends a picture to remember. If a friend came to visit you, you wouldn’t walk away and leave them sitting alone. That would be rude! Well, God is always with us. So don’t leave him alone. Think of him often. That is all it means to practise the presence of God: remembering he is here, and talking with him. You can talk to God just like you talk to a friend. Tell him thank you. Tell him you’re worried. Ask for help. Your prayer can be as short as one sentence, and he loves to hear it. Dear God, thank you that you are always with me. Help me not to leave you alone, but to talk with you all through the day. Amen.",
+  "word_count": 287
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "The Boat Full of Barrels",
+  "body_html": "<blockquote>“Give all your worries to him, because he cares for you.” — from 1 Peter 5</blockquote> <p>One day the leaders of the monastery gave Brother Lawrence a job he really didn’t want. They sent him on a long trip to a place called Burgundy, to buy the wine the Brothers would need.</p> <p>Brother Lawrence did not think he was any good at buying and selling. And there was another problem. His leg was lame, so it was hard for him to walk. On the boat he could hardly walk at all. The only way he could get about was to roll himself over the top of the wine barrels!</p> <p>Can you picture it? A big man with a bad leg, tumbling over barrel after barrel, bump, bump, bump.</p> <p>But Brother Lawrence didn’t worry. He told God that this was God’s business he was doing. He trusted God to look after it. And afterwards he found that the whole job had gone very well.</p> <p>The year before, he had been sent on the same kind of trip to another place, called Auvergne. He couldn’t even explain how it worked out, but it turned out well then too.</p> <p>Sometimes we have to do things that feel too hard, like a test, a new school or something scary. You can do what Brother Lawrence did: tell God about it, and trust him to help.</p> <p><em>Dear God, when I have to do something hard, help me to give my worries to you and trust you to take care of me. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why was the trip to Burgundy hard for Brother Lawrence?",
+    "answer": "He wasn’t good at business, and he was lame, so on the boat he could only get around by rolling himself over the wine barrels."
+   },
+   {
+    "question": "What did he do instead of worrying?",
+    "answer": "He told God it was God’s business he was doing and trusted him with it, and the job went very well."
+   },
+   {
+    "question": "What is something hard you have to do soon? How could you give it to God?",
+    "answer": "The chapter’s point: when a job feels too hard for us, we can hand our worries to God and trust him to help."
+   }
+  ],
+  "body_text": "“Give all your worries to him, because he cares for you.” — from 1 Peter 5 One day the leaders of the monastery gave Brother Lawrence a job he really didn’t want. They sent him on a long trip to a place called Burgundy, to buy the wine the Brothers would need. Brother Lawrence did not think he was any good at buying and selling. And there was another problem. His leg was lame, so it was hard for him to walk. On the boat he could hardly walk at all. The only way he could get about was to roll himself over the top of the wine barrels! Can you picture it? A big man with a bad leg, tumbling over barrel after barrel, bump, bump, bump. But Brother Lawrence didn’t worry. He told God that this was God’s business he was doing. He trusted God to look after it. And afterwards he found that the whole job had gone very well. The year before, he had been sent on the same kind of trip to another place, called Auvergne. He couldn’t even explain how it worked out, but it turned out well then too. Sometimes we have to do things that feel too hard, like a test, a new school or something scary. You can do what Brother Lawrence did: tell God about it, and trust him to help. Dear God, when I have to do something hard, help me to give my worries to you and trust you to take care of me. Amen.",
+  "word_count": 257
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "When He Got It Wrong",
+  "body_html": "<blockquote>“If we confess our sins, he is faithful and just and will forgive us.” — from 1 John 1</blockquote> <p>Brother Lawrence loved God very much. But he wasn’t perfect. He still made mistakes. Sometimes he forgot about God for quite a long time. Sometimes he did things he knew were wrong.</p> <p>So what did he do when he got it wrong? He didn’t sulk. He didn’t give up. And he didn’t make excuses.</p> <p>He simply told God. He said something like this: “Lord, this is what I’m like. If you leave me to myself, I’ll always do this. You have to stop me falling, and fix what I’ve got wrong.” Then he stopped worrying about it, and went back to loving God, just as before.</p> <p>Brother Lawrence knew that our sins are forgiven because of Jesus, who died for us, not because we are good enough. So he trusted Jesus, and he didn’t carry his mistakes around like a heavy bag.</p> <p>And when he got something right, he thanked God, because he knew the strength had come from God. He said that by getting up again after every fall, little by little, he learned to think about God all the time.</p> <p>Everybody gets things wrong, even grown-ups and even people who love God very much. When you do, don’t hide it or worry for days. Tell God you’re sorry, trust Jesus to forgive you, and start again.</p> <p><em>Dear God, I’m sorry for the wrong things I have done. Thank you that Jesus forgives me. Help me to get up and keep going with you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence do when he made a mistake?",
+    "answer": "He told God about it honestly, asked God to help him, and then stopped worrying and went back to loving God."
+   },
+   {
+    "question": "Why didn’t he need to keep worrying about his sins?",
+    "answer": "Because he trusted that his sins were forgiven through Jesus, not because he was good enough."
+   },
+   {
+    "question": "What can you do the next time you get something wrong?",
+    "answer": "The chapter’s point: when we mess up, we can tell God, trust Jesus to forgive us, and start again without carrying our mistakes around."
+   }
+  ],
+  "body_text": "“If we confess our sins, he is faithful and just and will forgive us.” — from 1 John 1 Brother Lawrence loved God very much. But he wasn’t perfect. He still made mistakes. Sometimes he forgot about God for quite a long time. Sometimes he did things he knew were wrong. So what did he do when he got it wrong? He didn’t sulk. He didn’t give up. And he didn’t make excuses. He simply told God. He said something like this: “Lord, this is what I’m like. If you leave me to myself, I’ll always do this. You have to stop me falling, and fix what I’ve got wrong.” Then he stopped worrying about it, and went back to loving God, just as before. Brother Lawrence knew that our sins are forgiven because of Jesus, who died for us, not because we are good enough. So he trusted Jesus, and he didn’t carry his mistakes around like a heavy bag. And when he got something right, he thanked God, because he knew the strength had come from God. He said that by getting up again after every fall, little by little, he learned to think about God all the time. Everybody gets things wrong, even grown-ups and even people who love God very much. When you do, don’t hide it or worry for days. Tell God you’re sorry, trust Jesus to forgive you, and start again. Dear God, I’m sorry for the wrong things I have done. Thank you that Jesus forgives me. Help me to get up and keep going with you. Amen.",
+  "word_count": 265
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "Letters to Friends in Trouble",
+  "body_html": "<blockquote>“Even when I walk through the darkest valley, I will not be afraid, for you are with me.” — from Psalm 23</blockquote> <p>As Brother Lawrence grew older, many people wrote to him, and he wrote letters back. Some of his friends were having a very hard time.</p> <p>One friend told him about a young soldier who was in danger. Brother Lawrence wrote back that the soldier didn’t need long prayers. Even while marching, with his sword in his hand, he could lift up his heart to God for a moment. He said a little remembering of God is enough, and those short prayers would make the soldier braver, not weaker.</p> <p>Another friend was very ill, for a long time, and the medicine wasn’t working. Brother Lawrence felt sorry for this friend. He told the friend that God is often even nearer to us when we are sick than when we are well. He told the friend to keep talking with God, to trust him, and to offer him the pain.</p> <p>Brother Lawrence also wrote something brave. He said he wasn’t only praying for the pain to stop, but for God to give his friend strength and patience to bear it. He knew God is our loving Father, and he can be trusted even when things hurt.</p> <p>His friends were sad and in pain, but his letters pointed them to the God who was right there with them.</p> <p>When you are sick, sad or scared, God hasn’t gone away. He is close. You can say a short prayer, even just “Help me, God,” and trust him to be with you.</p> <p><em>Dear God, when I am sick or scared, thank you that you are near me. Please give me strength and help me to trust you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Brother Lawrence say a soldier could do, even while marching with his sword?",
+    "answer": "He could lift up his heart to God for a moment. Short prayers like that are pleasing to God and make a soldier braver."
+   },
+   {
+    "question": "What did he tell his friend who was very ill?",
+    "answer": "That God is often nearer to us in sickness than in health, and to keep talking with God, trust him, and ask for strength to bear the pain."
+   },
+   {
+    "question": "Have you ever been sick, sad or scared? What could you say to God then?",
+    "answer": "The chapter’s point: God stays close in hard times. Even a very short prayer, like “Help me, God,” is heard by him."
+   }
+  ],
+  "body_text": "“Even when I walk through the darkest valley, I will not be afraid, for you are with me.” — from Psalm 23 As Brother Lawrence grew older, many people wrote to him, and he wrote letters back. Some of his friends were having a very hard time. One friend told him about a young soldier who was in danger. Brother Lawrence wrote back that the soldier didn’t need long prayers. Even while marching, with his sword in his hand, he could lift up his heart to God for a moment. He said a little remembering of God is enough, and those short prayers would make the soldier braver, not weaker. Another friend was very ill, for a long time, and the medicine wasn’t working. Brother Lawrence felt sorry for this friend. He told the friend that God is often even nearer to us when we are sick than when we are well. He told the friend to keep talking with God, to trust him, and to offer him the pain. Brother Lawrence also wrote something brave. He said he wasn’t only praying for the pain to stop, but for God to give his friend strength and patience to bear it. He knew God is our loving Father, and he can be trusted even when things hurt. His friends were sad and in pain, but his letters pointed them to the God who was right there with them. When you are sick, sad or scared, God hasn’t gone away. He is close. You can say a short prayer, even just “Help me, God,” and trust him to be with you. Dear God, when I am sick or scared, thank you that you are near me. Please give me strength and help me to trust you. Amen.",
+  "word_count": 295
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-practice-of-the-presence-of-god-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Going Home to God",
+  "body_html": "<blockquote>“I am going there to prepare a place for you.” — from John 14</blockquote> <p>Brother Lawrence grew to be an old man. In one of his letters he wrote, “I am almost eighty.” By then he had walked with God for more than forty years, ever since that winter day when he saw the bare tree.</p> <p>In his old age he was often very ill. But he didn’t ask God to take the pain away. Instead he asked for strength to bear it with courage and love. He said he was always happy, because God was with him.</p> <p>In his very last letters, he wrote that he hoped to see God soon. Just two days after one of those letters, he went to bed ill, and before the week was over, he died, and went home to be with the God he loved.</p> <p>But his letters and his words were kept, so that we could read them. And in them he kept giving the same invitation. Think of God often. Talk with him. Trust him. “Let us begin,” he wrote. When someone told him he always said the same thing, he agreed! It was the best and easiest way he knew, so he told everyone.</p> <p>The clumsy young footman had learned to live every day with God, and he wanted everyone else to know how.</p> <p>Brother Lawrence’s invitation is for you too. You don’t have to be grown up, or clever, or careful. You can begin today: remember that God is with you, and talk with him all through the day.</p> <p><em>Dear God, thank you that you are with me always. Help me to begin today to talk with you and trust you, all my life long. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How old was Brother Lawrence near the end of his life, and what did he hope for?",
+    "answer": "He wrote that he was almost eighty, and in his last letters he said he hoped to see God soon."
+   },
+   {
+    "question": "What invitation did Brother Lawrence keep giving in his letters?",
+    "answer": "To think of God often, talk with him and trust him. “Let us begin,” he wrote, and he said it was the best and easiest way he knew."
+   },
+   {
+    "question": "How could you begin to practise being with God this week?",
+    "answer": "The chapter’s point: Brother Lawrence’s invitation is for children too. Anyone can start today by remembering God is near and talking with him."
+   }
+  ],
+  "body_text": "“I am going there to prepare a place for you.” — from John 14 Brother Lawrence grew to be an old man. In one of his letters he wrote, “I am almost eighty.” By then he had walked with God for more than forty years, ever since that winter day when he saw the bare tree. In his old age he was often very ill. But he didn’t ask God to take the pain away. Instead he asked for strength to bear it with courage and love. He said he was always happy, because God was with him. In his very last letters, he wrote that he hoped to see God soon. Just two days after one of those letters, he went to bed ill, and before the week was over, he died, and went home to be with the God he loved. But his letters and his words were kept, so that we could read them. And in them he kept giving the same invitation. Think of God often. Talk with him. Trust him. “Let us begin,” he wrote. When someone told him he always said the same thing, he agreed! It was the best and easiest way he knew, so he told everyone. The clumsy young footman had learned to live every day with God, and he wanted everyone else to know how. Brother Lawrence’s invitation is for you too. You don’t have to be grown up, or clever, or careful. You can begin today: remember that God is with you, and talk with him all through the day. Dear God, thank you that you are with me always. Help me to begin today to talk with you and trust you, all my life long. Amen.",
+  "word_count": 288
+ }
+}
+]

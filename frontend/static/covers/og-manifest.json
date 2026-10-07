@@ -161,6 +161,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"all-of-grace-teens": {
+			"ground": "e8245d598ecd7ee69c0139babf6d0c2581f13e1ec37dcc06fb73ff420669cf19",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"all-things-for-good": {
 			"ground": "686001548fde792b7a761361e43c0d25758f067eb5db6964e7ceb742d7103e8f",
 			"style": "press",
@@ -11733,6 +11743,16 @@
 		"the-practice-of-the-presence-of-god": {
 			"ground": "fcb34844fd46e3ea87c80b2aff90f15f1c5b03cbb383b3cb40db8afbae9b11af",
 			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
+		"the-practice-of-the-presence-of-god-children": {
+			"ground": "50ee444ad36f03a1f553c281fda8be17ab2794a7de51677a57abc03b3c40d87a",
+			"style": "young",
 			"volume": null,
 			"script": "latin",
 			"art": false,
