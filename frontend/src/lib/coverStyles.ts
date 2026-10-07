@@ -303,6 +303,7 @@ export const BOOK_STYLE: Record<string, CoverStyleId> = {
 	'sons-of-the-king-3': 'young',
 	'the-princess-and-the-goblin': 'young',
 	'at-the-back-of-the-north-wind': 'young',
+	'the-practice-of-the-presence-of-god-children': 'young',
 	// A series, not an audience: the Key Teachings are Ochorus' own companions,
 	// so every volume wears the imprint's face rather than its writer's century
 	// (see coverLayouts.BOOK_LAYOUT for the other half of the series look).
