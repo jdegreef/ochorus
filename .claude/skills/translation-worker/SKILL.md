@@ -2621,3 +2621,21 @@ archaic spelling and period punctuation are the text, not defects in it.
   0 usted). Also: in a fresh worktree `system_prompt('es')` raises
   `no such table: library_language` until you run `manage.py migrate` — do it
   before prep, you need the DB for `seed_books` later anyway.
+- **A translated title on a RAIL-layout author's art cover must be ≤ 28 characters**
+  (job #5371, `a-retrospect-children.fr`, 2026-10-07). Authors in `AUTHOR_LAYOUT` with
+  `layout: 'rail'` (Hudson Taylor among them) set the title sideways in a two-line
+  column; `frontend/src/lib/coverLayouts.test.ts` ("the rail") fails any art-cover
+  edition whose title runs longer, and nothing on the backend catches it — every
+  `manage.py test` gate passed. « Regard en arrière (Pour enfants) » (32) went red in
+  CI; « Rétrospective (Pour enfants) » (28) shipped. Check the length while choosing
+  the title (`len(title) <= 28`), and run `npx vitest run src/lib/coverLayouts.test.ts`
+  next to `coverOgManifest.test.ts` before pushing. The es/pt/sw siblings landed at
+  26–27 by choosing the one-word "Retrospect" cognate.
+- **`npm run og:covers` can ask for a newer Playwright headless shell than
+  `/opt/pw-browsers` holds** (same job: wanted `chromium_headless_shell-1243`, the
+  container had `-1194`). Don't `playwright install`; point it at a scratch browsers
+  dir whose expected path links to the installed binary:
+  `mkdir -p $S/chromium_headless_shell-1243/chrome-headless-shell-linux64`, symlink
+  every file of `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/` into it
+  plus `chrome-headless-shell -> …/headless_shell`, then
+  `PLAYWRIGHT_BROWSERS_PATH=$S npm run og:covers`. It rendered the twin correctly.
