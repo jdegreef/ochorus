@@ -461,6 +461,19 @@ CURATED_PLANS = [
             "amanda-smith-autobiography-children",
         ],
     ),
+    (
+        "family-devotions-talking-with-god",
+        "Family Devotions: Talking with God All Day",
+        "Twelve nights of five-minute family devotions with Brother Lawrence, "
+        "the clumsy kitchen helper who learned to talk with God among the pots "
+        "and pans. Read one short chapter aloud: how a bare winter tree turned "
+        "him to God, how he did every job for God’s love, and what he did when "
+        "he got things wrong. Each ends with a prayer and three questions to "
+        "talk about together.",
+        [
+            "the-practice-of-the-presence-of-god-children",
+        ],
+    ),
 ]
 
 # Plans that have been withdrawn from the shelf, each with the plan(s) that
