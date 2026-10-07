@@ -4524,6 +4524,16 @@
 			"layout": "split/oxblood",
 			"bar": 0
 		},
+		"es/the-life-of-trust-teens": {
+			"ground": "e4028550a1aaede3f58d952cbf978f9229d1dfca3df1c4fec6926ac1cfb13062",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "split/oxblood",
+			"bar": 0
+		},
 		"es/the-person-and-work-of-the-holy-spirit": {
 			"ground": "e807a73d1ad911ae8ad70695feb2c9ffc7651d91dedd1c73a7d112425c4d4446",
 			"style": "revival",
