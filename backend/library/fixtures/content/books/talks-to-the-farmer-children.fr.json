@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "fr",
+  "title": "Entretiens avec le fermier (pour les enfants)",
+  "subtitle": "",
+  "description": "Charles Spurgeon voyait la vérité de Dieu cachée dans une ferme toute simple : un champ plein de mauvaises herbes, la semence du semeur, la première pousse verte du printemps, les brebis qu’on tond et la grange au temps de la moisson. Cette édition pour les enfants raconte à nouveau ses images de la ferme en petits chapitres simples, faits pour être lus à voix haute : un verset, une petite histoire de la ferme, une chose que cela veut dire pour toi, et une courte prière pour finir.",
+  "qa": [
+   {
+    "question": "De quoi parle Entretiens avec le fermier (pour les enfants) ?",
+    "answer": "C’est une version pour les enfants des Entretiens avec le fermier de Charles Spurgeon. Chaque petit chapitre prend une image de la vie à la ferme — une clôture écroulée, un semeur qui sème ses graines, la première pousse du printemps, des brebis qu’on tond, la moisson — et montre avec douceur ce qu’elle nous apprend sur Dieu, avec des mots simples pour les jeunes lecteurs."
+   },
+   {
+    "question": "Qui était Charles Spurgeon ?",
+    "answer": "C’était un prédicateur célèbre qui vivait à Londres il y a longtemps. Il aimait expliquer de grandes vérités sur Dieu avec des choses de tous les jours, comme les fermes, le temps qu’il fait et la moisson. C’est justement pour cela que ses histoires de la ferme plaisent tant aux enfants."
+   },
+   {
+    "question": "Comment chaque chapitre est-il organisé ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte une petite histoire de la ferme, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière."
+   },
+   {
+    "question": "À qui ce livre est-il destiné ?",
+    "answer": "Aux enfants — pour qu’un adulte le leur lise à voix haute, ou qu’un enfant plus grand le lise tout seul. Les Entretiens avec le fermier complets de Spurgeon existent aussi pour les lecteurs plus âgés, ainsi qu’une version faite pour les adolescents."
+   },
+   {
+    "question": "Pourquoi utiliser des histoires de la ferme pour parler de Dieu ?",
+    "answer": "Parce que Jésus l’a fait lui aussi : son histoire du semeur qui sème ses graines est l’une des plus connues de la Bible. Une image qu’on peut voir, comme une graine, une brebis ou une moisson, aide un enfant à se souvenir d’une vérité bien mieux qu’une longue explication."
+   },
+   {
+    "question": "Quelles histoires trouve-t-on dans ce livre ?",
+    "answer": "Le livre suit l’année du fermier. Il y a un champ plein de mauvaises herbes qu’un paresseux a laissé à l’abandon, un fermier qui sème ses graines, le gel qui fond quand arrive le printemps, la première pousse verte qui sort de terre, les brebis qu’on tond, la pauvre Ruth qui ramasse des épis, et la moisson rentrée bien à l’abri dans la grange. Chaque petite histoire apprend une chose simple sur Dieu."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Une adaptation Ochorus, pour les jeunes lecteurs, des Entretiens avec le fermier de Charles H. Spurgeon, œuvre du domaine public. La façon de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "Le Champ du paresseux",
+  "body_html": "<blockquote>« J’ai passé près du champ d’un paresseux, et il était plein de mauvaises herbes et d’épines. » — d’après Proverbes 24</blockquote> <p>Un jour, le sage roi Salomon est parti se promener, et il s’est arrêté pour regarder une petite ferme. Oh là là, quel désordre ! Des mauvaises herbes piquantes et des chardons poussaient partout. On voyait à peine la terre.</p> <p>Pourtant, l’homme à qui appartenait ce champ n’était pas un méchant homme. Il n’avait jamais planté une seule mauvaise herbe. Alors comment son champ en était-il devenu si plein ?</p> <p>Voici la réponse, et elle est un peu surprenante. Il n’avait rien fait du tout ! Il était paresseux. Il n’arrachait jamais les mauvaises herbes, et il ne semait jamais de bonnes graines. Et tu sais quoi ? Un champ ne reste jamais vide. Si tu n’y fais pas pousser de bonnes plantes, les mauvaises herbes poussent toutes seules. Personne n’a besoin de les planter : elles viennent toutes seules.</p> <p>Ton cœur ressemble un peu à ce champ. Les bonnes choses que tu fais — prier, être gentil, dire la vérité, obéir — sont comme de bonnes plantes qui poussent. Mais si tu arrêtes de faire ces bonnes choses et que tu ne fais plus rien, d’autres choses poussent à la place, toutes seules. La mauvaise humeur. Les paroles méchantes. Oublier Dieu.</p> <p>Alors n’attends pas ! Ne dis pas : « Je serai sage demain. » Le paresseux disait toujours « demain », et tout son champ s’est couvert de mauvaises herbes. Sème une bonne graine aujourd’hui — une parole gentille, une petite prière — et laisse-la pousser.</p> <p><em>Cher Dieu, aide-moi à ne pas être paresseux. Aide-moi à semer de bonnes choses dans mon cœur aujourd’hui, sans attendre demain. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que le roi Salomon a vu en passant près du champ du paresseux ?",
+    "answer": "Un champ en désordre, plein de mauvaises herbes piquantes et de chardons, si épais qu’on voyait à peine la terre."
+   },
+   {
+    "question": "Le paresseux n’avait jamais planté de mauvaises herbes. Alors pourquoi son champ en était-il plein ?",
+    "answer": "Parce qu’il ne faisait rien du tout. Il n’arrachait jamais les mauvaises herbes et ne semait jamais de bonnes graines, et un champ ne reste jamais vide : les mauvaises herbes poussent toutes seules."
+   },
+   {
+    "question": "Quelle bonne graine pourrais-tu semer dans ton cœur aujourd’hui, au lieu d’attendre demain ?",
+    "answer": "Ce que dit le chapitre : ne dis pas « Je serai sage demain ». Sème une bonne graine aujourd’hui — une parole gentille ou une petite prière — et laisse-la pousser."
+   }
+  ],
+  "body_text": "« J’ai passé près du champ d’un paresseux, et il était plein de mauvaises herbes et d’épines. » — d’après Proverbes 24 Un jour, le sage roi Salomon est parti se promener, et il s’est arrêté pour regarder une petite ferme. Oh là là, quel désordre ! Des mauvaises herbes piquantes et des chardons poussaient partout. On voyait à peine la terre. Pourtant, l’homme à qui appartenait ce champ n’était pas un méchant homme. Il n’avait jamais planté une seule mauvaise herbe. Alors comment son champ en était-il devenu si plein ? Voici la réponse, et elle est un peu surprenante. Il n’avait rien fait du tout ! Il était paresseux. Il n’arrachait jamais les mauvaises herbes, et il ne semait jamais de bonnes graines. Et tu sais quoi ? Un champ ne reste jamais vide. Si tu n’y fais pas pousser de bonnes plantes, les mauvaises herbes poussent toutes seules. Personne n’a besoin de les planter : elles viennent toutes seules. Ton cœur ressemble un peu à ce champ. Les bonnes choses que tu fais — prier, être gentil, dire la vérité, obéir — sont comme de bonnes plantes qui poussent. Mais si tu arrêtes de faire ces bonnes choses et que tu ne fais plus rien, d’autres choses poussent à la place, toutes seules. La mauvaise humeur. Les paroles méchantes. Oublier Dieu. Alors n’attends pas ! Ne dis pas : « Je serai sage demain. » Le paresseux disait toujours « demain », et tout son champ s’est couvert de mauvaises herbes. Sème une bonne graine aujourd’hui — une parole gentille, une petite prière — et laisse-la pousser. Cher Dieu, aide-moi à ne pas être paresseux. Aide-moi à semer de bonnes choses dans mon cœur aujourd’hui, sans attendre demain. Amen.",
+  "word_count": 292
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "La Clôture écroulée",
+  "body_html": "<blockquote>« J’ai passé près du champ d’un paresseux : il était plein de mauvaises herbes, et son mur de pierres était écroulé. » — d’après Proverbes 24</blockquote> <p>Un jour, le sage roi Salomon est parti se promener. Il s’est arrêté à côté d’une petite ferme, et il l’a regardée longtemps.</p> <p>Quel désordre ! Des mauvaises herbes et des chardons piquants poussaient partout. Et le mur de pierres autour du champ s’était écroulé : il y avait de grands trous dedans.</p> <p>Pourtant, l’homme à qui appartenait cette ferme n’était pas un méchant homme. Il n’avait jamais <em>démoli</em> le mur. C’est ça qui est curieux. Il était simplement paresseux. Quand une pierre tombait, il disait : « Je la remettrai demain. » Mais le lendemain, il disait encore : « Je la remettrai demain. » Alors le mur restait cassé.</p> <p>Et tu sais ce qui arrive à un champ quand son mur est cassé ? Tout entre ! Les moutons et les chèvres passent par les trous et mangent toutes les bonnes plantes. Les mauvaises herbes arrivent avec le vent et prennent toute la place. Et quand il pleut très fort, il n’y a plus de mur pour retenir la bonne terre, alors elle est emportée.</p> <p>Ce pauvre paresseux a perdu tout son champ — non pas parce qu’il avait fait quelque chose de mal, mais parce qu’il <em>n’avait rien fait du tout.</em></p> <p>Ton cœur a un mur, lui aussi. Il est fait de bonnes choses qui te protègent : prier, écouter les personnes qui t’apprennent à connaître Dieu, et avoir le courage de dire « non » quand quelque chose est mal.</p> <p>Si nous devenons paresseux et que nous laissons tomber ces bonnes choses, des trous se font dans le mur. Et alors, toutes sortes de mauvaises choses peuvent entrer.</p> <p>Alors garde ton mur solide ! Et si une pierre est tombée, tu n’as pas besoin de tout réparer aujourd’hui. Ramasse juste une pierre et remets-la à sa place.</p> <p><em>Cher Dieu, aide-moi à garder le bon mur autour de mon cœur. Quand une pierre tombe, aide-moi à la remettre tout de suite. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui n’allait pas avec le mur autour du champ du paresseux ?",
+    "answer": "Il s’était écroulé et avait de grands trous, parce que chaque fois qu’une pierre tombait, il disait : « Je la remettrai demain. »"
+   },
+   {
+    "question": "Qu’est-il arrivé au champ une fois le mur cassé ?",
+    "answer": "Les moutons et les chèvres sont entrés et ont mangé les bonnes plantes, les mauvaises herbes sont arrivées avec le vent, et la forte pluie a emporté la bonne terre."
+   },
+   {
+    "question": "Qu’est-ce qui aide à garder solide le « mur » autour de ton cœur ?",
+    "answer": "Le chapitre parle de prier, d’écouter les personnes qui t’apprennent à connaître Dieu, et d’avoir le courage de dire « non » à ce qui est mal. Si une pierre tombe, remets-en juste une à sa place."
+   }
+  ],
+  "body_text": "« J’ai passé près du champ d’un paresseux : il était plein de mauvaises herbes, et son mur de pierres était écroulé. » — d’après Proverbes 24 Un jour, le sage roi Salomon est parti se promener. Il s’est arrêté à côté d’une petite ferme, et il l’a regardée longtemps. Quel désordre ! Des mauvaises herbes et des chardons piquants poussaient partout. Et le mur de pierres autour du champ s’était écroulé : il y avait de grands trous dedans. Pourtant, l’homme à qui appartenait cette ferme n’était pas un méchant homme. Il n’avait jamais démoli le mur. C’est ça qui est curieux. Il était simplement paresseux. Quand une pierre tombait, il disait : « Je la remettrai demain. » Mais le lendemain, il disait encore : « Je la remettrai demain. » Alors le mur restait cassé. Et tu sais ce qui arrive à un champ quand son mur est cassé ? Tout entre ! Les moutons et les chèvres passent par les trous et mangent toutes les bonnes plantes. Les mauvaises herbes arrivent avec le vent et prennent toute la place. Et quand il pleut très fort, il n’y a plus de mur pour retenir la bonne terre, alors elle est emportée. Ce pauvre paresseux a perdu tout son champ — non pas parce qu’il avait fait quelque chose de mal, mais parce qu’il n’avait rien fait du tout. Ton cœur a un mur, lui aussi. Il est fait de bonnes choses qui te protègent : prier, écouter les personnes qui t’apprennent à connaître Dieu, et avoir le courage de dire « non » quand quelque chose est mal. Si nous devenons paresseux et que nous laissons tomber ces bonnes choses, des trous se font dans le mur. Et alors, toutes sortes de mauvaises choses peuvent entrer. Alors garde ton mur solide ! Et si une pierre est tombée, tu n’as pas besoin de tout réparer aujourd’hui. Ramasse juste une pierre et remets-la à sa place. Cher Dieu, aide-moi à garder le bon mur autour de mon cœur. Quand une pierre tombe, aide-moi à la remettre tout de suite. Amen.",
+  "word_count": 352
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Le Gel et le dégel",
+  "body_html": "<blockquote>« Il donne la neige. Il envoie sa parole, et la fait fondre. » — d’après Psaume 147</blockquote> <p>As-tu déjà vu le monde un matin d’hiver, quand il gèle ? Tout est dur, blanc et glacé. Les flaques deviennent de la glace. La terre est dure comme de la pierre.</p> <p>Puis, au bout d’un moment, un vent tiède se met à souffler. Le soleil sort. Et en quelques heures seulement, toute la glace et tout le givre fondent et deviennent de l’eau, comme s’ils n’avaient jamais été là !</p> <p>Qui fait cela ? La Bible dit que c’est Dieu. Il envoie le gel, et il envoie le vent tiède qui le fait fondre. Les deux viennent de lui.</p> <p>Quelque chose comme cela peut aussi se passer en nous. Parfois, nous faisons quelque chose de mal, et ensuite nous le sentons. Notre cœur devient froid, triste et désolé. Ce sentiment triste et désolé ressemble un peu au gel.</p> <p>Mais l’histoire ne s’arrête pas là ! Quand nous disons à Dieu que nous regrettons, il envoie son amour comme un vent tiède de printemps. Il fait fondre la tristesse froide, il nous pardonne, et notre cœur redevient joyeux et chaud.</p> <p>Seul Dieu peut faire fondre un cœur comme cela. Nous ne pouvons pas le faire nous-mêmes. Alors, si un jour tu te sens froid et désolé à l’intérieur à cause de quelque chose que tu as fait, ne reste pas gelé. Dis-le à Dieu. Il aime envoyer le vent tiède.</p> <p><em>Cher Dieu, quand mon cœur est froid et désolé, envoie, s’il te plaît, ton amour bien chaud pour le faire fondre, et pardonne-moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’arrive-t-il au gel quand le vent tiède souffle et que le soleil sort ?",
+    "answer": "En quelques heures seulement, toute la glace et tout le givre fondent et deviennent de l’eau, comme s’ils n’avaient jamais été là."
+   },
+   {
+    "question": "Qui envoie le gel et le vent tiède qui le fait fondre ?",
+    "answer": "C’est Dieu. Le chapitre dit que les deux viennent de lui."
+   },
+   {
+    "question": "Quand tu te sens froid et désolé à l’intérieur à cause de quelque chose que tu as fait, que peux-tu faire ?",
+    "answer": "Ce que dit le chapitre : ne reste pas gelé — dis à Dieu que tu regrettes. Il aime envoyer son amour bien chaud pour faire fondre la tristesse et te pardonner."
+   }
+  ],
+  "body_text": "« Il donne la neige. Il envoie sa parole, et la fait fondre. » — d’après Psaume 147 As-tu déjà vu le monde un matin d’hiver, quand il gèle ? Tout est dur, blanc et glacé. Les flaques deviennent de la glace. La terre est dure comme de la pierre. Puis, au bout d’un moment, un vent tiède se met à souffler. Le soleil sort. Et en quelques heures seulement, toute la glace et tout le givre fondent et deviennent de l’eau, comme s’ils n’avaient jamais été là ! Qui fait cela ? La Bible dit que c’est Dieu. Il envoie le gel, et il envoie le vent tiède qui le fait fondre. Les deux viennent de lui. Quelque chose comme cela peut aussi se passer en nous. Parfois, nous faisons quelque chose de mal, et ensuite nous le sentons. Notre cœur devient froid, triste et désolé. Ce sentiment triste et désolé ressemble un peu au gel. Mais l’histoire ne s’arrête pas là ! Quand nous disons à Dieu que nous regrettons, il envoie son amour comme un vent tiède de printemps. Il fait fondre la tristesse froide, il nous pardonne, et notre cœur redevient joyeux et chaud. Seul Dieu peut faire fondre un cœur comme cela. Nous ne pouvons pas le faire nous-mêmes. Alors, si un jour tu te sens froid et désolé à l’intérieur à cause de quelque chose que tu as fait, ne reste pas gelé. Dis-le à Dieu. Il aime envoyer le vent tiède. Cher Dieu, quand mon cœur est froid et désolé, envoie, s’il te plaît, ton amour bien chaud pour le faire fondre, et pardonne-moi. Amen.",
+  "word_count": 272
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Le Grain qui pousse",
+  "body_html": "<blockquote>« Si une graine ne tombe pas en terre, elle reste une seule graine. Mais si elle y tombe, elle devient beaucoup plus. » — d’après Jean 12</blockquote> <p>Imagine que tu tiens une petite graine dans ta main. Une seule.</p> <p>Et si tu la gardais bien à l’abri dans un bocal, sur une étagère, pour qu’il ne lui arrive jamais rien ? Au bout d’un an, combien de graines aurais-tu ? Toujours une seule ! Elle resterait pour toujours une petite graine toute seule.</p> <p>Mais si, au contraire, tu la plantais dans la terre ? Il se passe quelque chose d’extraordinaire sous la terre. La petite graine s’ouvre et se transforme — et une grande plante sort de terre, couverte de beaucoup, beaucoup de nouvelles graines ! Une seule graine en est devenue beaucoup, parce qu’elle a été plantée.</p> <p>Jésus a dit qu’il était comme cette graine. Il a bien voulu donner sa propre vie, comme une graine qui descend dans la terre — et parce qu’il l’a fait, tant et tant de gens peuvent maintenant avoir une vie nouvelle avec Dieu. Il n’a pas gardé sa vie à l’abri rien que pour lui. Il l’a donnée, et elle est devenue une immense moisson de gens qui l’aiment.</p> <p>Et Jésus a dit que nous pouvons être comme cela, nous aussi. Si tu gardes tout rien que pour toi — en voulant toujours être le premier, sans jamais partager — tu restes petit, comme une graine dans un bocal. Mais si tu donnes, si tu partages et si tu penses aux autres, ta vie devient quelque chose de grand et de beau.</p> <p>Donner, ce n’est pas perdre. C’est en donnant que les bonnes choses poussent.</p> <p><em>Cher Dieu, merci pour Jésus, qui a donné sa vie pour moi. Aide-moi à donner et à partager, pour que de bonnes choses puissent pousser. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Si tu gardais une graine à l’abri dans un bocal, combien de graines aurais-tu au bout d’un an ?",
+    "answer": "Toujours une seule. Elle resterait pour toujours une petite graine toute seule."
+   },
+   {
+    "question": "Pourquoi la graine plantée dans la terre est-elle devenue beaucoup de graines ?",
+    "answer": "Parce qu’elle a été plantée. Elle s’est ouverte et s’est transformée, et une grande plante a poussé, couverte de nouvelles graines."
+   },
+   {
+    "question": "De quelle façon pourrais-tu donner ou partager cette semaine ?",
+    "answer": "Ce que dit le chapitre : garder tout pour soi nous laisse petits, comme une graine dans un bocal, mais donner et partager aide les bonnes choses à pousser. « Donner, ce n’est pas perdre. »"
+   }
+  ],
+  "body_text": "« Si une graine ne tombe pas en terre, elle reste une seule graine. Mais si elle y tombe, elle devient beaucoup plus. » — d’après Jean 12 Imagine que tu tiens une petite graine dans ta main. Une seule. Et si tu la gardais bien à l’abri dans un bocal, sur une étagère, pour qu’il ne lui arrive jamais rien ? Au bout d’un an, combien de graines aurais-tu ? Toujours une seule ! Elle resterait pour toujours une petite graine toute seule. Mais si, au contraire, tu la plantais dans la terre ? Il se passe quelque chose d’extraordinaire sous la terre. La petite graine s’ouvre et se transforme — et une grande plante sort de terre, couverte de beaucoup, beaucoup de nouvelles graines ! Une seule graine en est devenue beaucoup, parce qu’elle a été plantée. Jésus a dit qu’il était comme cette graine. Il a bien voulu donner sa propre vie, comme une graine qui descend dans la terre — et parce qu’il l’a fait, tant et tant de gens peuvent maintenant avoir une vie nouvelle avec Dieu. Il n’a pas gardé sa vie à l’abri rien que pour lui. Il l’a donnée, et elle est devenue une immense moisson de gens qui l’aiment. Et Jésus a dit que nous pouvons être comme cela, nous aussi. Si tu gardes tout rien que pour toi — en voulant toujours être le premier, sans jamais partager — tu restes petit, comme une graine dans un bocal. Mais si tu donnes, si tu partages et si tu penses aux autres, ta vie devient quelque chose de grand et de beau. Donner, ce n’est pas perdre. C’est en donnant que les bonnes choses poussent. Cher Dieu, merci pour Jésus, qui a donné sa vie pour moi. Aide-moi à donner et à partager, pour que de bonnes choses puissent pousser. Amen.",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Le Semeur",
+  "body_html": "<blockquote>« Un semeur sortit pour semer ses graines. » — d’après Luc 8</blockquote> <p>Il était une fois un fermier qui sortit pour semer des graines. Il mit la main dans son sac, en prit une grosse poignée et les lança à travers son champ. Suivons les graines pour voir où elles sont tombées !</p> <p>Quelques graines sont tombées sur le <strong>chemin dur</strong>, là où tout le monde marchait. Le chemin était trop dur pour que les graines puissent s’y enfoncer. Alors les oiseaux ont plongé et — miam, miam — ils les ont toutes mangées.</p> <p>D’autres graines sont tombées sur un <strong>sol plein de pierres</strong>, où la terre était mince. Ces graines ont poussé très vite ! Mais leurs racines ne pouvaient pas descendre profond. Alors, quand le soleil brûlant est arrivé, les petites plantes ont séché et sont mortes.</p> <p>D’autres graines sont tombées là où poussaient des <strong>épines et des mauvaises herbes</strong>. Les graines ont commencé à pousser — mais les mauvaises herbes ont poussé plus vite et plus haut, et les ont étouffées, jusqu’à ce que les petites plantes n’aient plus de place ni de soleil.</p> <p>Mais quelques graines sont tombées dans une <strong>bonne terre bien douce.</strong> Ces graines ont poussé profond vers le bas et haut vers le ciel, et elles ont donné beaucoup, beaucoup de nouveau grain. Quelle moisson !</p> <p>Jésus a raconté cette histoire, puis il nous a expliqué ce qu’elle veut dire. La graine, c’est la parole de Dieu. Et les différentes sortes de terre sont comme différentes sortes de cœurs.</p> <p>Ton cœur ressemble-t-il au chemin dur, trop occupé pour écouter ? Au sol plein de pierres, tout content pendant une minute, puis qui oublie ? À la terre pleine de mauvaises herbes, trop remplie d’autres choses ? Ou bien ressemble-t-il à la bonne terre, prête à écouter et à grandir ?</p> <p>Voici le joyeux secret : même une terre dure peut être retournée et devenir douce et bonne. Si tu le lui demandes, Dieu préparera ton cœur, pour que sa parole puisse y grandir, grande et forte.</p> <p><em>Cher Dieu, s’il te plaît, rends mon cœur pareil à la bonne terre, prêt à t’écouter et à grandir. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-il arrivé aux graines tombées sur le chemin dur ?",
+    "answer": "Le chemin était trop dur pour qu’elles s’y enfoncent, alors les oiseaux ont plongé et les ont toutes mangées."
+   },
+   {
+    "question": "Qu’est-il arrivé aux graines tombées dans la bonne terre bien douce ?",
+    "answer": "Elles ont poussé profond vers le bas et haut vers le ciel, et elles ont donné beaucoup, beaucoup de nouveau grain — une grande moisson."
+   },
+   {
+    "question": "À quelle sorte de terre aimerais-tu que ton cœur ressemble, et comment peut-il se préparer ?",
+    "answer": "Ce que dit le chapitre : la graine, c’est la parole de Dieu, et même une terre dure peut devenir douce. Si nous le lui demandons, Dieu prépare notre cœur pour que sa parole puisse y grandir."
+   }
+  ],
+  "body_text": "« Un semeur sortit pour semer ses graines. » — d’après Luc 8 Il était une fois un fermier qui sortit pour semer des graines. Il mit la main dans son sac, en prit une grosse poignée et les lança à travers son champ. Suivons les graines pour voir où elles sont tombées ! Quelques graines sont tombées sur le chemin dur, là où tout le monde marchait. Le chemin était trop dur pour que les graines puissent s’y enfoncer. Alors les oiseaux ont plongé et — miam, miam — ils les ont toutes mangées. D’autres graines sont tombées sur un sol plein de pierres, où la terre était mince. Ces graines ont poussé très vite ! Mais leurs racines ne pouvaient pas descendre profond. Alors, quand le soleil brûlant est arrivé, les petites plantes ont séché et sont mortes. D’autres graines sont tombées là où poussaient des épines et des mauvaises herbes. Les graines ont commencé à pousser — mais les mauvaises herbes ont poussé plus vite et plus haut, et les ont étouffées, jusqu’à ce que les petites plantes n’aient plus de place ni de soleil. Mais quelques graines sont tombées dans une bonne terre bien douce. Ces graines ont poussé profond vers le bas et haut vers le ciel, et elles ont donné beaucoup, beaucoup de nouveau grain. Quelle moisson ! Jésus a raconté cette histoire, puis il nous a expliqué ce qu’elle veut dire. La graine, c’est la parole de Dieu. Et les différentes sortes de terre sont comme différentes sortes de cœurs. Ton cœur ressemble-t-il au chemin dur, trop occupé pour écouter ? Au sol plein de pierres, tout content pendant une minute, puis qui oublie ? À la terre pleine de mauvaises herbes, trop remplie d’autres choses ? Ou bien ressemble-t-il à la bonne terre, prête à écouter et à grandir ? Voici le joyeux secret : même une terre dure peut être retournée et devenir douce et bonne. Si tu le lui demandes, Dieu préparera ton cœur, pour que sa parole puisse y grandir, grande et forte. Cher Dieu, s’il te plaît, rends mon cœur pareil à la bonne terre, prêt à t’écouter et à grandir. Amen.",
+  "word_count": 367
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Le Printemps dans le cœur",
+  "body_html": "<blockquote>« Tu prends soin de la terre et tu l’arroses. Tu bénis les petites plantes qui poussent. » — d’après Psaume 65</blockquote> <p>L’hiver, il fait froid, et la terre a l’air marron, nue et vide. On dirait qu’il ne se passe rien du tout.</p> <p>Mais ensuite, le printemps arrive. Et un jour, si tu regardes de très près, tu la verras — une toute petite pousse verte, qui sort à travers la terre froide et dure. Elle est vraiment toute petite. Tu pourrais presque marcher dessus sans la voir. Mais elle est vivante ! Et cette toute petite pousse verte, c’est le tout début d’un champ de blé entier.</p> <p>Quand tu commences à aimer Dieu, cet amour peut être tout petit comme cela. Tu dis peut-être une petite prière. Tu as peut-être envie d’être sage. Tu crois peut-être en Jésus juste un tout petit peu. Tu as peut-être l’impression que c’est trop petit pour compter.</p> <p>Mais cela compte tellement ! Dieu voit cette toute petite pousse verte dans ton cœur, et cela le rend très heureux. Un fermier n’écrase pas une petite pousse parce qu’elle n’est pas encore une grande plante : il en prend soin, il l’arrose et il l’aide à grandir. C’est exactement ce que Dieu fait avec toi.</p> <p>Alors ne pense jamais que ton amour pour Dieu est trop petit pour compter. Le plus grand, le plus haut blé de tout le champ a commencé par une seule toute petite pousse verte. Continue à te tourner vers Dieu, comme une petite plante qui se tourne vers le soleil, et il t’aidera à grandir.</p> <p><em>Cher Dieu, merci parce que même mon plus petit amour pour toi compte. S’il te plaît, aide-le à devenir plus grand et plus fort. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle toute petite chose peux-tu voir dans le champ quand le printemps arrive ?",
+    "answer": "Une toute petite pousse verte qui sort à travers la terre froide et dure — le tout début d’un champ de blé entier."
+   },
+   {
+    "question": "Que fait un bon fermier avec une petite pousse qui n’est pas encore une grande plante ?",
+    "answer": "Il ne l’écrase pas. Il en prend soin, il l’arrose et il l’aide à grandir."
+   },
+   {
+    "question": "As-tu parfois l’impression que ton amour pour Dieu est trop petit pour compter ?",
+    "answer": "Ce que dit le chapitre : même une petite prière ou une petite foi compte et rend Dieu heureux. Le plus haut blé a commencé par une seule toute petite pousse, et Dieu l’aide à grandir."
+   }
+  ],
+  "body_text": "« Tu prends soin de la terre et tu l’arroses. Tu bénis les petites plantes qui poussent. » — d’après Psaume 65 L’hiver, il fait froid, et la terre a l’air marron, nue et vide. On dirait qu’il ne se passe rien du tout. Mais ensuite, le printemps arrive. Et un jour, si tu regardes de très près, tu la verras — une toute petite pousse verte, qui sort à travers la terre froide et dure. Elle est vraiment toute petite. Tu pourrais presque marcher dessus sans la voir. Mais elle est vivante ! Et cette toute petite pousse verte, c’est le tout début d’un champ de blé entier. Quand tu commences à aimer Dieu, cet amour peut être tout petit comme cela. Tu dis peut-être une petite prière. Tu as peut-être envie d’être sage. Tu crois peut-être en Jésus juste un tout petit peu. Tu as peut-être l’impression que c’est trop petit pour compter. Mais cela compte tellement ! Dieu voit cette toute petite pousse verte dans ton cœur, et cela le rend très heureux. Un fermier n’écrase pas une petite pousse parce qu’elle n’est pas encore une grande plante : il en prend soin, il l’arrose et il l’aide à grandir. C’est exactement ce que Dieu fait avec toi. Alors ne pense jamais que ton amour pour Dieu est trop petit pour compter. Le plus grand, le plus haut blé de tout le champ a commencé par une seule toute petite pousse verte. Continue à te tourner vers Dieu, comme une petite plante qui se tourne vers le soleil, et il t’aidera à grandir. Cher Dieu, merci parce que même mon plus petit amour pour toi compte. S’il te plaît, aide-le à devenir plus grand et plus fort. Amen.",
+  "word_count": 291
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "La Brebis devant ceux qui la tondent",
+  "body_html": "<blockquote>« Il était silencieux, comme une petite brebis. » — d’après Ésaïe 53</blockquote> <p>As-tu déjà vu une brebis avec son épais manteau de laine ? Une fois par an, le fermier coupe les cheveux de chaque brebis. Cela s’appelle la tonte. Il coupe toute la laine lourde pour que la brebis ait bien frais et soit bien à l’aise pendant l’été chaud.</p> <p>Or, une brebis sage fait une chose très maligne pendant qu’on la tond. Elle reste couchée, bien, bien <em>immobile.</em> Et comme elle ne bouge pas, les ciseaux pointus ne lui font jamais mal. Mais si une brebis donne des coups de patte, se tortille et se débat — aïe ! — c’est là qu’elle peut se faire couper. C’est de se tortiller qui fait mal, pas les ciseaux.</p> <p>La Bible dit que parfois Dieu est comme ce fermier plein de douceur, et que nous sommes comme les brebis. Parfois, Dieu nous enlève quelque chose que nous aimons. Cela peut nous rendre très tristes, comme perdre notre manteau de laine bien chaud.</p> <p>Mais écoute bien : voici trois choses dont il faut se souvenir.</p> <p>Dieu ne tond que quand il fait <em>chaud</em>, jamais quand il gèle. Cela veut dire que Dieu sait quel est le bon moment, et qu’il ne te donnera jamais plus que tu ne peux porter.</p> <p>La laine <em>repousse</em> toujours. Dieu n’enlève jamais rien sans avoir quelque chose de bon à donner.</p> <p>Et cela fait le moins mal quand tu restes <em>immobile</em> et que tu lui fais confiance, au lieu de donner des coups de patte et de te débattre.</p> <p>Et tu sais qui est resté parfaitement immobile, comme une petite brebis ? Jésus. Quand les gens ont été méchants avec lui, il est resté silencieux et doux, tout cela parce qu’il nous aimait. Alors, quand une chose difficile arrive, tu peux être courageux et calme, exactement comme Jésus.</p> <p><em>Cher Dieu, quand quelque chose me rend triste, aide-moi à rester calme et à te faire confiance, parce que je sais que tu m’aimes. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi le fermier tond-il la laine des brebis une fois par an ?",
+    "answer": "Pour que la brebis ait bien frais et soit bien à l’aise pendant l’été chaud, sans son manteau lourd."
+   },
+   {
+    "question": "Pourquoi la brebis sage reste-t-elle immobile pendant qu’on la tond ?",
+    "answer": "Parce que si elle ne bouge pas, les ciseaux ne lui font jamais mal. C’est de se tortiller et de donner des coups de patte qui fait mal, pas les ciseaux."
+   },
+   {
+    "question": "Quand il arrive quelque chose de triste et que tu perds quelque chose que tu aimes, de quoi peux-tu te souvenir ?",
+    "answer": "Ce que dit le chapitre : Dieu sait quel est le bon moment, la laine repousse toujours, et cela fait le moins mal quand nous restons calmes et que nous lui faisons confiance — comme Jésus, qui est resté silencieux et doux."
+   }
+  ],
+  "body_text": "« Il était silencieux, comme une petite brebis. » — d’après Ésaïe 53 As-tu déjà vu une brebis avec son épais manteau de laine ? Une fois par an, le fermier coupe les cheveux de chaque brebis. Cela s’appelle la tonte. Il coupe toute la laine lourde pour que la brebis ait bien frais et soit bien à l’aise pendant l’été chaud. Or, une brebis sage fait une chose très maligne pendant qu’on la tond. Elle reste couchée, bien, bien immobile. Et comme elle ne bouge pas, les ciseaux pointus ne lui font jamais mal. Mais si une brebis donne des coups de patte, se tortille et se débat — aïe ! — c’est là qu’elle peut se faire couper. C’est de se tortiller qui fait mal, pas les ciseaux. La Bible dit que parfois Dieu est comme ce fermier plein de douceur, et que nous sommes comme les brebis. Parfois, Dieu nous enlève quelque chose que nous aimons. Cela peut nous rendre très tristes, comme perdre notre manteau de laine bien chaud. Mais écoute bien : voici trois choses dont il faut se souvenir. Dieu ne tond que quand il fait chaud, jamais quand il gèle. Cela veut dire que Dieu sait quel est le bon moment, et qu’il ne te donnera jamais plus que tu ne peux porter. La laine repousse toujours. Dieu n’enlève jamais rien sans avoir quelque chose de bon à donner. Et cela fait le moins mal quand tu restes immobile et que tu lui fais confiance, au lieu de donner des coups de patte et de te débattre. Et tu sais qui est resté parfaitement immobile, comme une petite brebis ? Jésus. Quand les gens ont été méchants avec lui, il est resté silencieux et doux, tout cela parce qu’il nous aimait. Alors, quand une chose difficile arrive, tu peux être courageux et calme, exactement comme Jésus. Cher Dieu, quand quelque chose me rend triste, aide-moi à rester calme et à te faire confiance, parce que je sais que tu m’aimes. Amen.",
+  "word_count": 339
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Dans le champ de foin",
+  "body_html": "<blockquote>« Il fait pousser l’herbe pour les animaux. » — d’après Psaume 104</blockquote> <p>Pense à l’herbe. Elle pousse partout — dans les champs, dans les parcs, au bord de la route. Tu marches dessus tous les jours, et tu n’y penses sans doute jamais.</p> <p>Mais voici une question : qui fait pousser l’herbe ? On pourrait dire : « Oh, elle pousse toute seule. » Mais ce n’est pas vraiment vrai. C’est Dieu qui fait pousser chaque brin d’herbe. Il est tout près du monde, et il est très occupé à en prendre soin.</p> <p>Et pourquoi fait-il pousser toute cette herbe ? La Bible dit qu’il la fait pousser « pour les animaux » — pour les vaches et les moutons, afin qu’ils aient beaucoup à manger. Pense un peu à cela. Dieu fait pousser de la nourriture pour des animaux, qui ne savent même pas dire merci !</p> <p>Alors voici une chose merveilleuse à retenir : si Dieu prend si bien soin de l’herbe, des vaches et des moutons, combien plus prend-il soin de <em>toi ?</em></p> <p>Savais-tu que chaque petit brin d’herbe reçoit sa propre goutte de rosée le matin ? Pas une grosse goutte pour tout le champ — une petite goutte pour chacun. Voilà avec quel soin Dieu donne à chaque chose ce dont elle a besoin. Et il sait exactement ce dont tu as besoin, toi aussi.</p> <p>Même quand tu te sens petit, ou que tu penses que personne ne te remarque, Dieu te voit. Il ne t’a jamais oublié, pas une seule fois.</p> <p><em>Cher Dieu, merci de prendre soin même de l’herbe. Merci de prendre soin de moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qui fait pousser l’herbe ?",
+    "answer": "C’est Dieu. Le chapitre dit qu’elle ne pousse pas vraiment toute seule : c’est Dieu qui fait pousser chaque brin."
+   },
+   {
+    "question": "Pour qui Dieu fait-il pousser l’herbe ?",
+    "answer": "Pour les animaux — les vaches et les moutons — afin qu’ils aient beaucoup à manger, même s’ils ne savent pas dire merci."
+   },
+   {
+    "question": "Si Dieu donne à chaque brin d’herbe sa propre goutte de rosée, qu’est-ce que cela te dit sur la façon dont il prend soin de toi ?",
+    "answer": "Ce que dit le chapitre : si Dieu prend si bien soin de l’herbe et des animaux, combien plus prend-il soin de toi. Il te voit et ne t’a jamais oublié."
+   }
+  ],
+  "body_text": "« Il fait pousser l’herbe pour les animaux. » — d’après Psaume 104 Pense à l’herbe. Elle pousse partout — dans les champs, dans les parcs, au bord de la route. Tu marches dessus tous les jours, et tu n’y penses sans doute jamais. Mais voici une question : qui fait pousser l’herbe ? On pourrait dire : « Oh, elle pousse toute seule. » Mais ce n’est pas vraiment vrai. C’est Dieu qui fait pousser chaque brin d’herbe. Il est tout près du monde, et il est très occupé à en prendre soin. Et pourquoi fait-il pousser toute cette herbe ? La Bible dit qu’il la fait pousser « pour les animaux » — pour les vaches et les moutons, afin qu’ils aient beaucoup à manger. Pense un peu à cela. Dieu fait pousser de la nourriture pour des animaux, qui ne savent même pas dire merci ! Alors voici une chose merveilleuse à retenir : si Dieu prend si bien soin de l’herbe, des vaches et des moutons, combien plus prend-il soin de toi ? Savais-tu que chaque petit brin d’herbe reçoit sa propre goutte de rosée le matin ? Pas une grosse goutte pour tout le champ — une petite goutte pour chacun. Voilà avec quel soin Dieu donne à chaque chose ce dont elle a besoin. Et il sait exactement ce dont tu as besoin, toi aussi. Même quand tu te sens petit, ou que tu penses que personne ne te remarque, Dieu te voit. Il ne t’a jamais oublié, pas une seule fois. Cher Dieu, merci de prendre soin même de l’herbe. Merci de prendre soin de moi. Amen.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "La Joie de la moisson",
+  "body_html": "<blockquote>« Ils sont joyeux comme on l’est au temps de la moisson. » — d’après Ésaïe 9</blockquote> <p>Pendant tout l’été, le fermier travaille dur. Il sème les graines. Il arrache les mauvaises herbes. Il attend, il attend que le grain pousse. Cela prend très, très longtemps.</p> <p>Et puis, enfin, arrive le plus beau jour de tous : la moisson ! Le grain est doré et mûr. Tout le monde aide à le rentrer. La grange se remplit jusqu’en haut. Et quand le travail est fini, il y a un grand repas de fête pour la moisson, et tout le monde se réjouit ensemble.</p> <p>La Bible dit que le peuple de Dieu connaît des moments de joie comme au temps de la moisson. Et tu sais quel est le plus joyeux de tous ? C’est quand quelqu’un commence à aimer Dieu.</p> <p>L’homme qui a raconté le premier ces histoires de la ferme, Spurgeon, a dit que le plus beau jour de toute sa vie avait été celui où il avait aidé une seule personne à connaître Jésus. Il a dit qu’il était plus heureux que si on lui avait donné tous les trésors du monde !</p> <p>Et il y a une règle de fermier qu’il est bon de connaître : <strong>on récolte ce qu’on a semé.</strong> Si un fermier sème de bonnes graines de blé, il récolte du bon blé. Alors, si tu sèmes de bonnes choses dans ta vie maintenant — la gentillesse, des prières, de l’amour pour Dieu — un jour, tu auras une moisson merveilleuse et pleine de joie.</p> <p>Qu’est-ce que tu vas semer aujourd’hui ?</p> <p><em>Cher Dieu, aide-moi à semer chaque jour des choses bonnes et gentilles, et merci pour la joyeuse moisson que tu fais pousser en moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que se passe-t-il le jour de la moisson, quand le travail du fermier est fini ?",
+    "answer": "Tout le monde aide à rentrer le grain doré, la grange se remplit, et il y a un grand repas de fête plein de joie."
+   },
+   {
+    "question": "Quel a été, selon Spurgeon, le plus beau jour de toute sa vie ?",
+    "answer": "Le jour où il a aidé une seule personne à connaître Jésus. Il était plus heureux que si on lui avait donné tous les trésors du monde."
+   },
+   {
+    "question": "Quelles bonnes choses pourrais-tu semer dans ta vie aujourd’hui ?",
+    "answer": "Ce que dit le chapitre : on récolte ce qu’on a semé. Semer maintenant la gentillesse, des prières et de l’amour pour Dieu mène à une moisson merveilleuse et pleine de joie."
+   }
+  ],
+  "body_text": "« Ils sont joyeux comme on l’est au temps de la moisson. » — d’après Ésaïe 9 Pendant tout l’été, le fermier travaille dur. Il sème les graines. Il arrache les mauvaises herbes. Il attend, il attend que le grain pousse. Cela prend très, très longtemps. Et puis, enfin, arrive le plus beau jour de tous : la moisson ! Le grain est doré et mûr. Tout le monde aide à le rentrer. La grange se remplit jusqu’en haut. Et quand le travail est fini, il y a un grand repas de fête pour la moisson, et tout le monde se réjouit ensemble. La Bible dit que le peuple de Dieu connaît des moments de joie comme au temps de la moisson. Et tu sais quel est le plus joyeux de tous ? C’est quand quelqu’un commence à aimer Dieu. L’homme qui a raconté le premier ces histoires de la ferme, Spurgeon, a dit que le plus beau jour de toute sa vie avait été celui où il avait aidé une seule personne à connaître Jésus. Il a dit qu’il était plus heureux que si on lui avait donné tous les trésors du monde ! Et il y a une règle de fermier qu’il est bon de connaître : on récolte ce qu’on a semé. Si un fermier sème de bonnes graines de blé, il récolte du bon blé. Alors, si tu sèmes de bonnes choses dans ta vie maintenant — la gentillesse, des prières, de l’amour pour Dieu — un jour, tu auras une moisson merveilleuse et pleine de joie. Qu’est-ce que tu vas semer aujourd’hui ? Cher Dieu, aide-moi à semer chaque jour des choses bonnes et gentilles, et merci pour la joyeuse moisson que tu fais pousser en moi. Amen.",
+  "word_count": 293
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Le Glanage",
+  "body_html": "<blockquote>« Laissez-la ramasser des épis, et soyez gentils avec elle. » — d’après l’histoire de Ruth</blockquote> <p>Il y a très longtemps vivait une jeune femme qui s’appelait Ruth. Elle était pauvre, et elle n’avait rien à manger. Alors elle a fait ce que faisaient les pauvres à cette époque : elle est allée dans les champs pour <em>glaner.</em></p> <p>Glaner, cela voulait dire marcher derrière les ouvriers de la ferme et ramasser les petits morceaux de grain qu’ils laissaient tomber en travaillant. Les restes. C’était un travail dur : il fallait se baisser encore et encore, juste pour ramasser un peu.</p> <p>Or, le champ où Ruth était allée appartenait à un homme bon et gentil qui s’appelait Boaz. Et quand Boaz a vu Ruth travailler si dur, il a fait une chose magnifique. Il a dit tout bas à ses ouvriers : « Laissez tomber exprès des épis en plus, juste là où elle pourra les trouver. Et soyez gentils avec elle. » Il s’est assuré qu’elle en aurait beaucoup — et il ne lui a même jamais dit qu’il l’avait fait.</p> <p>Dieu est comme le gentil Boaz. Tu te sens peut-être petit, ou tu penses que tu n’as pas grand-chose. Mais Dieu a tant de bonnes choses pour toi, et il veut que tu viennes les ramasser. Tu n’as qu’à te baisser pour les prendre : cela veut dire venir à lui, l’écouter et prier.</p> <p>Et voici un joli détail : quand Ruth en avait ramassé assez, elle en rapportait à la maison pour les partager avec quelqu’un qui avait faim. Quand Dieu remplit ton cœur de bonnes choses, toi aussi tu peux les partager avec les autres.</p> <p><em>Cher Dieu, merci d’être si gentil et si généreux avec moi. Aide-moi à venir à toi, et à partager tes bons cadeaux avec les autres. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que faisait Ruth dans les champs pour avoir à manger ?",
+    "answer": "Elle glanait : elle marchait derrière les ouvriers et ramassait les petits morceaux de grain qu’ils laissaient tomber."
+   },
+   {
+    "question": "Quelle chose gentille Boaz a-t-il faite pour Ruth ?",
+    "answer": "Il a dit à ses ouvriers de laisser tomber exprès des épis en plus là où elle pourrait les trouver, et d’être gentils avec elle — et il ne lui a jamais dit qu’il l’avait fait."
+   },
+   {
+    "question": "Comment peux-tu « ramasser » les bons cadeaux de Dieu, et avec qui pourrais-tu les partager ?",
+    "answer": "Ce que dit le chapitre : Dieu est gentil comme Boaz. Nous ramassons en venant à lui, en l’écoutant et en priant — et, comme Ruth qui rapportait de la nourriture à la maison, nous pouvons partager ses bons cadeaux avec les autres."
+   }
+  ],
+  "body_text": "« Laissez-la ramasser des épis, et soyez gentils avec elle. » — d’après l’histoire de Ruth Il y a très longtemps vivait une jeune femme qui s’appelait Ruth. Elle était pauvre, et elle n’avait rien à manger. Alors elle a fait ce que faisaient les pauvres à cette époque : elle est allée dans les champs pour glaner. Glaner, cela voulait dire marcher derrière les ouvriers de la ferme et ramasser les petits morceaux de grain qu’ils laissaient tomber en travaillant. Les restes. C’était un travail dur : il fallait se baisser encore et encore, juste pour ramasser un peu. Or, le champ où Ruth était allée appartenait à un homme bon et gentil qui s’appelait Boaz. Et quand Boaz a vu Ruth travailler si dur, il a fait une chose magnifique. Il a dit tout bas à ses ouvriers : « Laissez tomber exprès des épis en plus, juste là où elle pourra les trouver. Et soyez gentils avec elle. » Il s’est assuré qu’elle en aurait beaucoup — et il ne lui a même jamais dit qu’il l’avait fait. Dieu est comme le gentil Boaz. Tu te sens peut-être petit, ou tu penses que tu n’as pas grand-chose. Mais Dieu a tant de bonnes choses pour toi, et il veut que tu viennes les ramasser. Tu n’as qu’à te baisser pour les prendre : cela veut dire venir à lui, l’écouter et prier. Et voici un joli détail : quand Ruth en avait ramassé assez, elle en rapportait à la maison pour les partager avec quelqu’un qui avait faim. Quand Dieu remplit ton cœur de bonnes choses, toi aussi tu peux les partager avec les autres. Cher Dieu, merci d’être si gentil et si généreux avec moi. Aide-moi à venir à toi, et à partager tes bons cadeaux avec les autres. Amen.",
+  "word_count": 304
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Le Battage",
+  "body_html": "<blockquote>« Il ne bat pas le grain pour toujours. » — d’après Ésaïe 28</blockquote> <p>Quand le blé est rentré, il reste encore un travail à faire, et il a l’air un peu brutal. Vois-tu, chaque grain de blé est coincé dans une enveloppe dure qui ne sert à rien, qu’on appelle la balle. Pour faire sortir le bon grain, le fermier doit le frapper — pan, pan, pan — avec un bâton. Cela s’appelle le battage.</p> <p>On pourrait croire que le fermier est méchant avec le blé. Mais pas du tout ! Il libère le bon grain de l’enveloppe qui est collée autour de lui. Il est obligé de le faire, sinon le bon grain resterait enfermé dedans.</p> <p>Parfois, des choses difficiles ou tristes nous arrivent, et on peut avoir un peu l’impression d’être battu comme le blé. Mais voici deux choses à retenir, et elles sont toutes les deux pleines de réconfort.</p> <p>D’abord : le fermier ne prend la peine de battre que le <em>bon</em> grain. Il laisse les mauvaises herbes tranquilles. Alors, quand un moment difficile arrive, cela ne veut pas dire que Dieu t’a oublié. Cela veut dire que tu es précieux pour lui, comme le bon blé.</p> <p>Ensuite : le fermier ne bat jamais, jamais le grain pour toujours. Il s’arrête toujours ! Les moments difficiles ne durent pas toujours non plus. Dieu est doux et attentif, et il ne te donnera jamais plus que tu ne peux porter. Bientôt les coups s’arrêtent, et le bon grain est à l’abri.</p> <p><em>Cher Dieu, quand des choses difficiles arrivent, aide-moi à me souvenir que tu ne m’as pas oublié, et que cela ne durera pas toujours. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi le fermier frappe-t-il le blé avec un bâton ?",
+    "answer": "Pour libérer le bon grain de l’enveloppe dure qui ne sert à rien (la balle) collée autour de lui. Cela s’appelle le battage."
+   },
+   {
+    "question": "Est-ce que le fermier bat aussi les mauvaises herbes ?",
+    "answer": "Non. Il ne prend la peine de battre que le bon grain, et il laisse les mauvaises herbes tranquilles."
+   },
+   {
+    "question": "Quand arrive un moment difficile ou triste, quelles sont les deux choses qui peuvent t’aider à aller mieux ?",
+    "answer": "Les deux réconforts du chapitre : un moment difficile ne veut pas dire que Dieu t’a oublié — tu es précieux, comme le bon blé — et cela ne durera pas toujours, car le fermier s’arrête toujours."
+   }
+  ],
+  "body_text": "« Il ne bat pas le grain pour toujours. » — d’après Ésaïe 28 Quand le blé est rentré, il reste encore un travail à faire, et il a l’air un peu brutal. Vois-tu, chaque grain de blé est coincé dans une enveloppe dure qui ne sert à rien, qu’on appelle la balle. Pour faire sortir le bon grain, le fermier doit le frapper — pan, pan, pan — avec un bâton. Cela s’appelle le battage. On pourrait croire que le fermier est méchant avec le blé. Mais pas du tout ! Il libère le bon grain de l’enveloppe qui est collée autour de lui. Il est obligé de le faire, sinon le bon grain resterait enfermé dedans. Parfois, des choses difficiles ou tristes nous arrivent, et on peut avoir un peu l’impression d’être battu comme le blé. Mais voici deux choses à retenir, et elles sont toutes les deux pleines de réconfort. D’abord : le fermier ne prend la peine de battre que le bon grain. Il laisse les mauvaises herbes tranquilles. Alors, quand un moment difficile arrive, cela ne veut pas dire que Dieu t’a oublié. Cela veut dire que tu es précieux pour lui, comme le bon blé. Ensuite : le fermier ne bat jamais, jamais le grain pour toujours. Il s’arrête toujours ! Les moments difficiles ne durent pas toujours non plus. Dieu est doux et attentif, et il ne te donnera jamais plus que tu ne peux porter. Bientôt les coups s’arrêtent, et le bon grain est à l’abri. Cher Dieu, quand des choses difficiles arrivent, aide-moi à me souvenir que tu ne m’as pas oublié, et que cela ne durera pas toujours. Amen.",
+  "word_count": 279
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Le Blé dans la grange",
+  "body_html": "<blockquote>« Rassemblez le blé dans ma grange. » — d’après Matthieu 13</blockquote> <p>Voici la toute dernière partie de la moisson, et c’est la plus joyeuse de toutes.</p> <p>Quand le bon blé est enfin prêt, le fermier le rassemble tout entier et le porte bien à l’abri dans la grange. Et une fois qu’il est à l’intérieur, plus rien ne peut lui faire de mal. Ni la pluie. Ni le gel. Ni le vent froid. Il est à l’abri, au sec et au chaud, juste là où il doit être.</p> <p>Jésus a raconté une histoire tout à fait comme celle-là. Il a dit qu’un jour, Dieu rassemblera tout son peuple — des gens de tous les pays du monde, les grands et les petits, les jeunes et les vieux — et les ramènera bien à l’abri à la maison, pour être avec lui. Comme le blé rassemblé dans la grange.</p> <p>Cette maison sûre et joyeuse, pour toujours, s’appelle le ciel. C’est un endroit où il n’y a plus de pleurs et plus de tristesse — seulement le bonheur d’être avec Dieu, et d’être à l’abri, pour toujours.</p> <p>Alors nous n’avons jamais besoin d’avoir peur de la fin. Pour tous ceux qui aiment Dieu, la fin n’est pas du tout une chose triste. C’est comme le blé qui entre enfin dans la grange. C’est rentrer à la maison.</p> <p>Veux-tu faire partie de la moisson de Dieu ? Tu le peux ! Dis-lui simplement que tu veux être à lui. Et alors, un jour, tu seras rassemblé bien à l’abri à la maison.</p> <p><em>Cher Dieu, merci de rassembler ton peuple bien à l’abri à la maison. Je veux être à toi. S’il te plaît, garde-moi tout près de toi, aujourd’hui et pour toujours. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où le fermier met-il le bon blé quand il est prêt ?",
+    "answer": "Il le porte bien à l’abri dans la grange, où ni la pluie, ni le gel, ni le vent froid ne peuvent lui faire de mal."
+   },
+   {
+    "question": "Dans l’histoire de Jésus, qui Dieu va-t-il rassembler comme le blé dans la grange ?",
+    "answer": "Tout son peuple, de tous les pays — les grands et les petits, les jeunes et les vieux — ramené bien à l’abri à la maison pour être avec lui."
+   },
+   {
+    "question": "Pourquoi ceux qui aiment Dieu n’ont-ils pas besoin d’avoir peur de la fin ?",
+    "answer": "Ce que dit le chapitre : pour tous ceux qui aiment Dieu, la fin est comme le blé qui entre dans la grange — c’est rentrer à la maison, au ciel, à l’abri pour toujours. Tout le monde peut dire à Dieu qu’il veut être à lui."
+   }
+  ],
+  "body_text": "« Rassemblez le blé dans ma grange. » — d’après Matthieu 13 Voici la toute dernière partie de la moisson, et c’est la plus joyeuse de toutes. Quand le bon blé est enfin prêt, le fermier le rassemble tout entier et le porte bien à l’abri dans la grange. Et une fois qu’il est à l’intérieur, plus rien ne peut lui faire de mal. Ni la pluie. Ni le gel. Ni le vent froid. Il est à l’abri, au sec et au chaud, juste là où il doit être. Jésus a raconté une histoire tout à fait comme celle-là. Il a dit qu’un jour, Dieu rassemblera tout son peuple — des gens de tous les pays du monde, les grands et les petits, les jeunes et les vieux — et les ramènera bien à l’abri à la maison, pour être avec lui. Comme le blé rassemblé dans la grange. Cette maison sûre et joyeuse, pour toujours, s’appelle le ciel. C’est un endroit où il n’y a plus de pleurs et plus de tristesse — seulement le bonheur d’être avec Dieu, et d’être à l’abri, pour toujours. Alors nous n’avons jamais besoin d’avoir peur de la fin. Pour tous ceux qui aiment Dieu, la fin n’est pas du tout une chose triste. C’est comme le blé qui entre enfin dans la grange. C’est rentrer à la maison. Veux-tu faire partie de la moisson de Dieu ? Tu le peux ! Dis-lui simplement que tu veux être à lui. Et alors, un jour, tu seras rassemblé bien à l’abri à la maison. Cher Dieu, merci de rassembler ton peuple bien à l’abri à la maison. Je veux être à toi. S’il te plaît, garde-moi tout près de toi, aujourd’hui et pour toujours. Amen.",
+  "word_count": 291
+ }
+}
+]
