@@ -11378,6 +11378,16 @@
 				534
 			]
 		},
+		"sw/samuel-ajayi-crowther-a-life-teens": {
+			"ground": "e64ff43f178f4d66c1f40dd509633c4bb5dae2c58fbb9ece463f178cf9ff1f87",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"sw/school-of-prayer": {
 			"ground": "ba1d7796dd35ae8f92d3e873d37ff74d0adde6857d725cb75a7261a02f665ac1",
 			"style": "devotional",
