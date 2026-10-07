@@ -39,7 +39,7 @@ from ..models import (
 from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
 from ..team_events import team_events
-from ..views import AUDIENCE_TOPICS, _language_entry, hub_book_slugs
+from ..views import AUDIENCE_TOPICS, _language_entry, audience_book_slugs
 from ..weeks import day_of, week_start, week_starts
 
 
@@ -138,7 +138,8 @@ class AdminEngagementView(APIView):
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
-                "young_readers": self._young_readers(),
+                # Nothing to count before anyone reads: skip the hubs' queries.
+                "young_readers": self._young_readers() if overview["readers"] else [],
                 "by_language": self._by_language(),
                 "weekly_active": weekly_active(now, self.WEEKS),
                 "events": self._events(now),
@@ -524,19 +525,21 @@ class AdminEngagementView(APIView):
         }
 
     @cached_property
-    def _plan_days(self) -> tuple[dict[str, int], dict[str, set[str]]]:
+    def _plan_days(self) -> tuple[dict[str, int], dict[tuple[str, str], set[str]]]:
         """Every plan's length (its distinct days — identical across the
-        per-language rows that share a slug) and the books it reads, from one
-        pass over the day rows: the funnel needs the first, the young-reader
-        hubs' plan rule the second."""
+        per-language rows that share a slug), and the books each published
+        language row reads, keyed ``(slug, language)`` as the hub page tests
+        them — from one pass over the day rows."""
         from ..models import PlanDay
 
         days: dict[str, set[int]] = {}
-        reads: dict[str, set[str]] = {}
-        for plan, book, day in PlanDay.objects.values_list("plan__slug", "book_slug", "day"):
+        reads: dict[tuple[str, str], set[str]] = {}
+        for plan, language, published, book, day in PlanDay.objects.values_list(
+            "plan__slug", "plan__language", "plan__is_published", "book_slug", "day"
+        ):
             days.setdefault(plan, set()).add(day)
-            if book:
-                reads.setdefault(plan, set()).add(book)
+            if book and published:
+                reads.setdefault((plan, language), set()).add(book)
         return {plan: len(d) for plan, d in days.items()}, reads
 
     @cached_property
@@ -588,10 +591,11 @@ class AdminEngagementView(APIView):
 
     def _young_readers(self, limit: int = 6) -> list[dict]:
         """The young-reader hubs (/young-readers/, /teens/), each as the books
-        it shows (``views.hub_book_slugs``, every language): how many readers
-        opened one and finished one, its most-read books, and the funnel of
-        its plans — those that read nothing but its books, the hub page's own
-        rule. All time, like the other work rollups (saved progress keeps only
+        written for its audience (``views.audience_book_slugs``, every
+        language — not its topic shelf's classics for every age): how many
+        readers opened one and finished one, its most-read books, and the
+        funnel of its plans — those with a published edition reading nothing
+        but those books. All time, like the other work rollups (saved progress keeps only
         each work's latest touch). A hub nobody has read yet still has its
         row, at zero: "no one yet" is the answer to the question asked."""
         from reading.models import ReadingProgress, WorkKind
@@ -605,10 +609,10 @@ class AdminEngagementView(APIView):
         meta = self._work_meta
         out = []
         for audience in AUDIENCE_TOPICS:
-            slugs = hub_book_slugs(audience)
+            slugs = audience_book_slugs(audience)
             progress = ReadingProgress.objects.filter(kind=WorkKind.BOOK, book_slug__in=slugs)
             books = progress.values("book_slug").annotate(**counts).order_by("-readers", "book_slug")
-            plans = {plan for plan, books_read in reads.items() if books_read <= slugs}
+            plans = {plan for (plan, _), books_read in reads.items() if books_read <= slugs}
             out.append(
                 {
                     "audience": audience,

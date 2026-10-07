@@ -113,10 +113,6 @@ class AudienceShelfTests(TestCase):
         self._book("north-wind-children")  # not in it
         self.assertEqual(self._get()["printable"], ["brave-for-god"])
 
-    def test_ages_name_who_the_hub_is_for(self):
-        self.assertEqual(self._get()["ages"], {"min_age": 8, "max_age": 12})
-        self.assertEqual(self._get("teens")["ages"], {"min_age": 13, "max_age": None})
-
     def test_an_unknown_audience_is_not_found(self):
         self.assertEqual(self.client.get(self.URL.format("adults", "en")).status_code, 404)
 
@@ -192,9 +188,9 @@ class BookAgesTests(TestCase):
         )
         self.assertEqual(self._ages("rooted-1", series=series), {"min_age": 9, "max_age": 12})
 
-    def test_a_series_without_a_range_reads_its_audiences(self):
+    def test_a_series_without_a_range_has_none_never_guessed(self):
         series = Series.objects.create(slug="straight-talk", title="Straight Talk", audience="teens")
-        self.assertEqual(self._ages("straight-talk-1", series=series), {"min_age": 13, "max_age": None})
+        self.assertIsNone(self._ages("straight-talk-teens", series=series))
 
     def test_a_retold_edition_reads_its_audiences(self):
         Book.objects.create(author=self.author, slug="pilgrims-progress", title="PP", language="sw")

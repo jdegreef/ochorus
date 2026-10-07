@@ -144,11 +144,10 @@ def _is_retold(slug: str, suffix: str, bases: set[str]) -> bool:
     return slug.endswith(suffix) and _edition_base_slug(slug) in bases
 
 
-#: The reading age a young audience's book is written for, where nothing more
-#: particular says (a series' own ``min_age``/``max_age`` does) — ``max_age``
-#: None for "and up". The book page's "Ages 8–12", its schema.org
-#: ``typicalAgeRange``, and the hub's audience. The series' own field names, so
-#: the frontend reads one shape (``seriesAges``).
+#: The reading age each audience's retold editions are written for —
+#: ``max_age`` None for "and up". The book page's "Ages 8–12" and its schema.org
+#: ``typicalAgeRange``. The series' own field names, so the frontend reads one
+#: shape (``seriesAges``).
 AUDIENCE_AGES = {
     "young_readers": {"min_age": 8, "max_age": 12},
     "teens": {"min_age": 13, "max_age": None},
@@ -157,14 +156,12 @@ AUDIENCE_AGES = {
 
 def book_ages(book) -> dict | None:
     """``{"min_age", "max_age"}`` for a book written for young readers or teens,
-    else None: its series' age range when the series names one, else its
-    audience's (``AUDIENCE_AGES``) — the series' audience, or the retold
-    edition's by the hubs' rule (``_is_retold``)."""
+    else None: its series' range when it is in a series (a series with no ages
+    names none — "never guessed", ``Series.min_age``), else its retold
+    edition's audience's, by the hubs' rule (``_is_retold``)."""
     series = book.series
-    if series is not None and series.min_age is not None:
-        return {"min_age": series.min_age, "max_age": series.max_age}
-    if series is not None and series.audience in AUDIENCE_AGES:
-        return AUDIENCE_AGES[series.audience]
+    if series is not None:
+        return {"min_age": series.min_age, "max_age": series.max_age} if series.min_age is not None else None
     for audience, suffix in AUDIENCE_EDITION_SUFFIX.items():
         if _is_retold(book.slug, suffix, _retold_bases([book.slug], suffix)):
             return AUDIENCE_AGES[audience]

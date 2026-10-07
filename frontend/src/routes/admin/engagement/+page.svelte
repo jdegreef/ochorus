@@ -863,7 +863,7 @@
 							<span class="text-small text-muted">Signed-in readers of the books each hub shows, all time.</span>
 						</div>
 						<div class="grid gap-6 sm:grid-cols-2">
-							{#each d.young_readers as hub (hub.audience)}
+							{#each d.young_readers.filter((h) => hubFor(h.audience)) as hub (hub.audience)}
 								<div>
 									<h3 class="text-body font-semibold text-text">
 										<a href="{hubFor(hub.audience)?.href}/" class="hover:text-accent">{audienceName(hub.audience)}</a>

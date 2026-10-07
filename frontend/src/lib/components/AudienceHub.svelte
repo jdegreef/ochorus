@@ -82,8 +82,9 @@
 		}
 	);
 	const canonical = $derived(`${SITE_URL}${localizeHref(path)}`);
-	// schema.org: a free CollectionPage of the hub's series and books, saying
-	// who it is for (`ages`); and, below, its place under Home.
+	// schema.org: a free CollectionPage of the hub's series and books — no
+	// audience age, as its topic shelf holds classics for every age — and,
+	// below, its place under Home.
 	const pageLd = $derived(
 		collectionPage({
 			name: title,
@@ -92,8 +93,7 @@
 			items: [
 				...shelf.series.map((s) => ({ name: s.title, url: localizeHref(`/series/${s.slug}/`) })),
 				...hubBooks(shelf).map((b) => ({ name: b.title, url: localizeHref(`/books/${b.slug}`) }))
-			],
-			ages: shelf.ages
+			]
 		})
 	);
 </script>
