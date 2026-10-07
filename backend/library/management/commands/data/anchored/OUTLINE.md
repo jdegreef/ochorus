@@ -11,7 +11,7 @@ The anchor is Hebrews 6:19: "We have this hope as an anchor for the soul, firm a
 | Book | Focus | Slug |
 |---|---|---|
 | 1 | Is It True? Who Am I? Honest questions and the God who answers them | `anchored-1` |
-| 2 | Real Life: anxiety, screens, dating, family conflict, grief, failure, anger (planned) | `anchored-2` |
+| 2 | Real Life: faith for the mind, the screen, the heart and the home | `anchored-2` |
 | 3 | What Am I For? Calling, study and work, money, justice, sharing faith, leading, the church (planned) | `anchored-3` |
 
 ## Approach
@@ -42,6 +42,20 @@ Content has no English fallback, so a Go-deeper book that does not exist in a tr
 | 1 · 19 | Adopted | For readers with hard fathers: if anyone at home makes you feel unsafe, tell a trusted adult. |
 | 1 · 24 | Purity | Pornography named once, plainly and without description; sex belongs within marriage; body-safety line bolded (pressure, requests for pictures, wrong touch: not your fault, tell a trusted adult). |
 | 1 · 27 | Parents | Every family looks different; honour never means keeping a secret about being hurt; what to do if a parent asks for something clearly wrong (Ephesians 6:4 quoted too). |
+
+Book 2's sensitive days:
+
+| Book · Day | Topic | Approach |
+|---|---|---|
+| 2 · 3–4 | Panic, intrusive thoughts | Normal and treatable; see a doctor; the bolded self-harm line. |
+| 2 · 9 | Body image | No numbers, weights or diet talk; if eating, food or exercise feels out of control, tell an adult and see a doctor; body-safety line. |
+| 2 · 13 | Games | A stranger in a game who asks for details or pictures, or offers gifts: tell an adult. |
+| 2 · 14 | Cyberbullying | Not your fault; don't retaliate; save evidence; block and report; tell a trusted adult; bolded line on threats or shared images; a word for bystanders. |
+| 2 · 16–18 | Crushes, dating, breakups | Families and cultures differ, so honour your parents' rules; no one may pressure you; never send pictures; an adult's romantic interest is not romance and must be reported; body-safety and self-harm lines. No second purity lesson (Book 1 Day 24 has it). |
+| 2 · 22 | Parents splitting up | Not your fault; you don't have to choose sides; safety in both homes; self-harm line. |
+| 2 · 24 | Forgiving | Forgiveness never means staying somewhere unsafe or keeping a harmful secret (bolded). |
+| 2 · 26 | Grief | No timetable; not your fault; self-harm line; on a loved one who may not have believed: "God knew them completely, and He is more just and more merciful than any of us." |
+| 2 · 28 | Shame | A secret about what someone did TO you is not your shame; tell a trusted adult. |
 
 ## Building a volume
 
@@ -105,3 +119,58 @@ Introduction: Welcome to Anchored
 | 30 | Anchored | Hebrews 10:23 | *Absolute Surrender*, ch. 8 |
 
 Conclusion: Holding Fast
+
+---
+
+## Book 2 — Real Life
+
+*Real Life: faith for the mind, the screen, the heart and the home*
+
+Introduction: Welcome Back
+
+**Part 1 · My Mind**
+
+| Day | Title | Scripture | Go deeper |
+|---|---|---|---|
+| 1 | Real Life | Romans 12:1 | *The Key Teachings of A. W. Tozer*, ch. 15 |
+| 2 | Worried About the Future | Psalm 31:14–15 | *The Key Teachings of Elisabeth Elliot*, ch. 4 |
+| 3 | When Fear Hits Hard | Isaiah 43:2–3 | *The Key Teachings of Corrie ten Boom*, ch. 7 |
+| 4 | Thoughts That Won't Leave | Psalm 139:23–24 | *The Key Teachings of Martyn Lloyd-Jones*, ch. 14 |
+| 5 | Never Good Enough | Hebrews 10:11–12 | *The Key Teachings of Martin Luther*, ch. 3 |
+| 6 | Anger | Jonah 4:1, 4 | *The Imitation of Christ*, ch. 17 |
+| 7 | Jealousy | 1 Samuel 18:7–9 | *The Key Teachings of C. S. Lewis*, ch. 7 |
+| 8 | Bored | Ecclesiastes 2:24–25 | *Orthodoxy*, ch. 5 |
+| 9 | My Body | Genesis 1:31 | *The Key Teachings of Augustine of Hippo*, ch. 21 |
+| 10 | Rest | Psalm 127:1–2 | *The Key Teachings of Dietrich Bonhoeffer*, ch. 11 |
+
+**Part 2 · My Screens and My Heart**
+
+| Day | Title | Scripture | Go deeper |
+|---|---|---|---|
+| 11 | Who's in Charge, Me or My Phone? | 2 Peter 2:19 | *Confessions*, ch. 8 |
+| 12 | What Fills My Mind | Matthew 6:22–23 | *Pensées*, ch. 2 |
+| 13 | Games | Ecclesiastes 11:9 | *Growing in Wisdom*, ch. 14 |
+| 14 | Cruelty Online | Psalm 55:12–14 | *The Key Teachings of Julia A. J. Foote*, ch. 10 |
+| 15 | Influencers and What's Real | Ephesians 4:14 | *Amanda Smith: An Autobiography (For Teens)*, ch. 4 |
+| 16 | Crushes | Proverbs 30:18–19 | *The Key Teachings of Elisabeth Elliot*, ch. 9 |
+| 17 | Dating God's Way | Romans 13:10 | *The Key Teachings of C. S. Lewis*, ch. 13 |
+| 18 | Breakups and Rejection | Isaiah 53:3 | *Portraits of Courage – Corrie ten Boom*, ch. 5 |
+| 19 | Friend Drama and Gossip | Proverbs 17:9 | *The Ten Commandments*, ch. 13 |
+| 20 | Seen, Liked, Still Lonely | 2 John 1:12 | *The Key Teachings of Dietrich Bonhoeffer*, ch. 9 |
+
+**Part 3 · My People and My Pain**
+
+| Day | Title | Scripture | Go deeper |
+|---|---|---|---|
+| 21 | Conflict at Home | James 4:1 | *The Key Teachings of Dietrich Bonhoeffer*, ch. 12 |
+| 22 | When Parents Split Up | Psalm 147:3 | *The God of All Comfort*, ch. 8 |
+| 23 | Brothers and Sisters | Genesis 33:3–4 | *They Were Young – Book 1: Called*, ch. 4 |
+| 24 | Forgiving Someone Who Hurt You | Matthew 18:32–33 | *Tukutendereza*, ch. 9 |
+| 25 | Saying Sorry | Luke 19:8 | *The Key Teachings of Charles G. Finney*, ch. 14 |
+| 26 | When Someone Dies | John 11:32–33 | *Portraits of Courage – C. S. Lewis*, ch. 23 |
+| 27 | I Failed | Micah 7:7–8 | *Samuel Ajayi Crowther (For Teens)*, ch. 9 |
+| 28 | The Secret I Carry | 1 John 1:8–9 | *The Normal Christian Life*, ch. 1 |
+| 29 | Wanting More Stuff | Luke 12:15 | *Sermons on Several Occasions*, ch. 51 |
+| 30 | Real Life with God | Romans 15:13 | *The Inner Chamber*, ch. 1 |
+
+Conclusion: Real Life, Real Hope
