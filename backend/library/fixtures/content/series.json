@@ -126,6 +126,20 @@
  }
 },
 {
+ "model": "library.series",
+ "fields": {
+  "slug": "they-were-young",
+  "title": "They Were Young",
+  "description": "True stories for readers aged 13 to 17 of people whose faith began, or was tested, before they were grown — told in full, in their own words where we have them, with questions to think through.",
+  "sort_order": 100,
+  "audience": "teens",
+  "min_age": 13,
+  "max_age": 17,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
  "model": "library.seriestranslation",
  "fields": {
   "series": [

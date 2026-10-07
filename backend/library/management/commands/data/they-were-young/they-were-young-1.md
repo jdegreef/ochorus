@@ -1,0 +1,677 @@
+# They Were Young – Book 1: Called
+
+*Six who met God as teenagers*
+
+---
+
+## Introduction: Before You Were Grown
+
+Nearly two thousand years ago, an old missionary named Paul wrote a letter to a young man named Timothy. Timothy had been given a hard job: to help lead a church in the city of Ephesus, full of people older, louder and more sure of themselves than he was. Paul knew what Timothy was afraid of, so he wrote: "Let no one despise your youth, but set an example for the believers in speech, in conduct, in love, in faith, in purity" (1 Timothy 4:12).
+
+Notice what Paul did not say. He did not say, "Wait until you are older." He said that a young person could already be the example. Not the student of the example. The example.
+
+This book is about people who took that seriously, often before they understood what it meant.
+
+It is easy to look at the great names of Christian history and imagine that they were born great: that they arrived in the world knowing what they believed, never confused, never bored in church, never wondering whether any of it was true. The truth is the opposite. Every person in these pages was once fifteen and unsure. Some of them had good reason to be angry at the world. Some were lonely. One of them was a slave. One grew up in a country where Christianity had been banned for more than two hundred years. They did not know how their stories would end. They only knew that something had happened to them, and that they could not go back.
+
+Here are the six people you will meet in *Called*, the first book of *They Were Young*:
+
+**Charles Spurgeon**, a miserable fifteen-year-old in England who walked into a tiny chapel to get out of a snowstorm, and heard a stranger tell him to look.
+
+**Samson Occom**, a Mohegan boy in Connecticut who heard the preachers of a great revival, taught himself to read from a children's primer, and spent his life serving his people even when the people he trusted let him down.
+
+**Robert Murray M'Cheyne**, a clever, popular Scottish student whose world was broken open at eighteen by the death of the older brother he loved.
+
+**Billy Graham**, a farm boy in North Carolina who went to a tent meeting at sixteen half-expecting to scoff, and kept going back.
+
+**Kanzo Uchimura**, a Japanese teenager at a new agricultural college who signed his name to a covenant to follow Jesus, at first under pressure from older students, and then had to decide what he really believed.
+
+**Richard Allen**, born into slavery in the American colonies, who came to faith at seventeen, later bought his own freedom, and founded a church where Black Christians could worship with dignity.
+
+### How each chapter works
+
+Each chapter begins with a moment, the decisive scene in that person's teenage years, and then pulls back to tell you how they got there and what happened next.
+
+After the story come three short sections. **In Their Own Words** gives you a few lines the person actually said or wrote, with the source, so you can hear their own voice. **Think It Through** offers some questions to sit with, on your own or with friends. They do not have right answers printed in the back. **Read More on Ochorus** points you to that person's own books, sermons or biography, if you want to go further.
+
+One promise about these stories: they are true, and we have tried not to add to them. We have not invented conversations or made up scenes. Where the old records are silent, or where historians disagree about a date or a name, we say so. When a person's words are quoted, they are words they really said or wrote, as far as the records let us know.
+
+### For parents, teachers and youth leaders
+
+These stories are written for readers aged about thirteen to seventeen, and they do not avoid hard things. Several of them touch on slavery, racism and injustice, including injustice done by people who called themselves Christians. Some deal with grief, depression and the death of people the characters loved. We have tried to handle all of this honestly and without sensationalism, as young readers deserve.
+
+The chapters work well for group discussion. The Think It Through questions are meant to open conversation rather than close it. You may find that the most useful question in a group is the simplest one: "What would you have done?"
+
+## Charles Spurgeon: The Boy Who Looked
+
+On a Sunday morning in January 1850, a fifteen-year-old boy set out through the streets of Colchester, an old market town in the east of England, to go to church. It was snowing. Not a gentle, pretty snowfall, but the kind of storm that stings the face and fills the road and makes a person put their head down and stop thinking about where they meant to go.
+
+The boy's name was Charles Haddon Spurgeon. He was home from school for the winter holidays, and he was, by his own account, one of the most miserable young people in England. Not because of his family, who loved him, or his schoolwork, which he was good at. He was miserable because he believed he was a sinner who deserved God's judgement, and he could not find any way to be at peace with God.
+
+He never reached the church he had been heading for. The snow was too thick. Years later he wrote, "I sometimes think I might have been in darkness and despair until now had it not been for the goodness of God in sending a snowstorm, one Sunday morning, while I was going to a certain place of worship." Instead, he turned down a side street and found a small chapel belonging to the Primitive Methodists.
+
+The Primitive Methodists were a branch of the Methodist movement, popular with farm labourers and working people, and famous for singing so loudly and enthusiastically that more respectable churchgoers looked down on them. Charles had heard about their noise. He did not much care. He went in.
+
+There were not many people inside. He remembered perhaps a dozen or fifteen. The minister who was supposed to preach that morning had not arrived; presumably the snow had stopped him too. So, after some time, one of the congregation went up into the pulpit to preach instead. Charles described him as "a very thin-looking man, a shoemaker, or tailor, or something of that sort." Nobody knows his name for certain. Over the years several men have been suggested, but none of the guesses has ever been proved.
+
+The man was not a trained speaker, and Charles thought he could hardly pronounce some of the words properly. He took as his text a single verse from the prophet Isaiah, in the old King James Version that everyone in England used then: "Look unto me, and be ye saved, all the ends of the earth: for I am God, and there is none else" (Isaiah 45:22). He did not have much to say about it. As Charles remembered it, he said that looking does not take any effort. You do not need to lift a foot or a finger to look. You do not need to be clever or educated. A child can look. The text, he said, was not "Look to yourself," but "Look unto me": look to Christ.
+
+After about ten minutes he had run out of things to say. And then he did something that Charles never forgot. He looked straight at the boy sitting under the gallery, a stranger in the little chapel, and spoke directly to him. "Young man, you look very miserable," he said. As Charles told the story, the preacher went on: he would always be miserable, in life and in death, if he did not obey the text; but if he obeyed it now, this moment, he would be saved. Then he lifted his voice and shouted, "Young man, look to Jesus Christ. Look! Look! Look! You have nothing to do but to look and live."
+
+And Charles looked.
+
+### Years in the Dark
+
+To understand why that moment mattered so much, you have to know how long Charles had been waiting for it.
+
+He was born on 19 June 1834 in Kelvedon, a village in Essex. His father, John Spurgeon, earned his living in business and preached on Sundays at a small Independent (Congregational) chapel. When Charles was little, he was sent to live for several years with his grandparents at Stambourne, where his grandfather, James Spurgeon, had been the minister for decades. The old manse had a room full of heavy Puritan books, written two hundred years earlier, and the boy pulled them down and read them long before he could understand them all. He loved John Bunyan's *The Pilgrim's Progress*, the story of a man named Christian who flees from the City of Destruction carrying a burden on his back, and who loses the burden only when he comes to the cross.
+
+So Charles grew up knowing a great deal about God. He could have told you what sin was, who Jesus was, and why Jesus died. He knew the words. What he did not have was the thing the words were about.
+
+At some point as he grew older, he began to feel the weight of his own sin, and the feeling would not leave. He did not think he had done anything especially dramatic. He was a well-behaved boy. But the more he read the Bible, the more he became convinced that God saw his heart, not just his behaviour, and that his heart was proud and cold and selfish. He felt like Christian in Bunyan's story, carrying a burden he could not put down.
+
+He tried to fix it. He prayed. He read serious books, including old Puritan works written to warn unconverted people. He resolved to do better and failed. He went from chapel to chapel in the towns where he lived, hoping someone would tell him what to do. He later said that the preachers he heard told him many true things, about God's law and about what Christians should be like, but that none of them told him plainly how a guilty person could be forgiven. He described this period as lasting years, and it was at its worst in the months before that snowy Sunday.
+
+It is worth stopping here, because this is something many young people in churches go through, and few talk about. Charles was not a rebel who needed to be scared into faith. He was a church boy who knew all the answers and still felt far from God. His problem was not that he didn't know the facts. His problem was that he was looking in the wrong place. He kept looking at himself: at his feelings, his efforts, his failures, his prayers. And every time he looked at himself, he found more reason to despair.
+
+### "Look Unto Me"
+
+That is why the thin preacher's text hit him so hard. The verse did not say, "Feel better and be saved," or "Try harder and be saved." It said, "Look unto me." The answer was not inside Charles at all. It was outside him, in Jesus Christ, who had died for sinners and who God had raised from the dead.
+
+When Charles told the story later, he said that he had been waiting to do fifty things, and the preacher had told him to do only one, and that one was simply to look. At that moment, he said, he saw it. "There and then the cloud was gone, the darkness had rolled away, and that moment I saw the sun." He said he could have risen up on the spot and sung with the most enthusiastic of the Methodists about the blood of Christ and the simple faith that looks to him alone.
+
+What exactly did he believe had happened? He believed that Jesus had taken the punishment his sins deserved, so that God could forgive him completely, not because Charles had earned it, but as a free gift. He believed that all he had to do was to trust Jesus to do what Jesus had promised: to save anyone who came to him. For the rest of his life he would preach exactly that message, again and again, in thousands of sermons. He often went back to Isaiah 45:22. A modern translation puts it, "Turn to Me and be saved, all the ends of the earth; for I am God, and there is no other." But he always remembered it in the words he heard that morning.
+
+One small note for honesty's sake. Spurgeon gave the date of that Sunday as 6 January 1850, and that is the date usually remembered. A few historians have pointed out small puzzles in the records, including which chapel it was and whether the date was exactly right. None of that changes the story he told, and told consistently, for forty years. But it is a good reminder that even famous memories are just that: memories.
+
+### Baptism in the River
+
+Charles went back to school in Newmarket, a horse-racing town about fourteen miles from Cambridge, where he was both a pupil and a junior teacher. One of the people he talked with most there was not one of the teachers but the school's cook, an older woman named Mary King. She loved to talk about the deep things of God, and the teenage Charles would sit with her and discuss theology. He later said that he learned more from her than from many learned ministers. It is a detail worth noticing: a future "Prince of Preachers" being taught in a kitchen by a woman whose name would otherwise have been forgotten.
+
+Reading his Bible, Charles became convinced that people who believed in Jesus should be baptized, as the first Christians had been, by being immersed in water as a sign of being united with Christ in his death and resurrection. His family's church did not practise baptism this way, and he talked it over with his parents. They let him decide for himself.
+
+On 3 May 1850, his mother's birthday, he walked about eight miles from Newmarket to Isleham, a village on the River Lark, and was baptized in the river by a Baptist minister named W. W. Cantlow. He was fifteen. He was naturally shy, and he later remembered that he had been nervous beforehand. But afterwards he found that his shyness about speaking of Christ had, as he put it, been washed away in the river.
+
+### A Sixteen-Year-Old in a Cottage
+
+That summer Charles moved to Cambridge to work as an assistant teacher at a school there, and joined the Baptist church on St Andrew's Street. It was a university city, full of students preparing to become clergymen. Charles was not one of them, and never would be.
+
+He began teaching a Sunday school class, and he found that the children listened to him. Before long he was asked to address the whole Sunday school, and then other people began to take notice. In Cambridge there was a group of lay preachers, ordinary church members who went out on Sundays to take services in the villages around the city, where there were small chapels and no money to pay a minister. The leader of the group, James Vinter, asked Charles to walk out one evening to the village of Teversham with a young man who was going to preach there, so that he would have company.
+
+As they walked, it slowly became clear that the other young man thought Charles was the preacher. When Charles protested, his companion said that he had never preached in his life and was not going to start that night. If Charles did not preach, nobody would.
+
+So, in a farm cottage in Teversham, in front of a small group of farm workers and their families, the sixteen-year-old Charles Spurgeon preached his first sermon. He took as his text, in the King James wording he knew, "Unto you therefore which believe he is precious" (1 Peter 2:7). We do not know exactly what he said. We do know that when he finished, an old woman called out to ask how old he was, and he told her (with some dignity, he remembered) that she should think about the sermon and not his age. The exact date is not recorded, but it was probably late in 1850 or early in 1851.
+
+After that he preached nearly every Sunday, and often on weekday evenings too, walking from village to village through the flat countryside around Cambridge after a full day of teaching.
+
+### Pastor at Seventeen
+
+In October 1851 Charles was asked to preach at Waterbeach, a village a few miles north of Cambridge with a small Baptist chapel. The congregation was tiny. The village had a reputation for poverty and drunkenness. The people asked him to come back, and then to stay. At seventeen, he became their pastor.
+
+He was still teaching in Cambridge during the week. On Sundays he walked or rode out to Waterbeach and preached, and visited people in their homes. The chapel began to fill. Within a couple of years it was packed, and Charles later wrote that the village itself had changed, with families that had been wrecked by drink becoming sober and homes becoming happier. He was a teenager, and he was being given responsibility most adults would hesitate to take.
+
+His father and others believed he should go to college to be trained properly. In 1852 an appointment was arranged for him to meet Dr Joseph Angus, the head of a Baptist college, at a house in Cambridge. Charles arrived and was shown into one room. Dr Angus was shown into another. They waited for each other for hours, and Dr Angus eventually left for his train without either of them knowing the other was in the building.
+
+Charles was disappointed. That afternoon, walking across an open field in Cambridge called Midsummer Common, he said that a verse came into his mind so strongly that it was almost as if he heard it spoken: "Seekest thou great things for thyself? seek them not" (Jeremiah 45:5). He took it as God's word to him, and he decided to stay with his village congregation and not to chase a college place. He never went to college at all. Everything he knew, he learned from books, from preaching, and from people like Mary King.
+
+### London at Nineteen
+
+In late 1853 a deacon from the New Park Street Chapel in London heard about the young preacher. New Park Street was a historic Baptist church that had once been great and was now half empty. They invited Charles to preach. He went, and was dismayed: he was a country boy in country clothes, and London felt enormous and cold. Only about eighty people came that first Sunday morning. But the evening congregation was larger, and the church asked him to come back. In 1854, at nineteen, he became their pastor.
+
+What happened next is hard to believe. Within months, the chapel could not hold the crowds. The church rented Exeter Hall, a large public hall, and then the Surrey Gardens Music Hall, which held thousands. People came from every class: servants and shopkeepers, lords and members of Parliament. Newspapers mocked his plain, lively style. He kept preaching the same thing he had heard in the snow: look to Christ and live.
+
+### What Came After
+
+The rest of his life was as full as any life could be. In January 1856 he married Susannah Thompson, and they had twin sons, Thomas and Charles. In October that year, while Spurgeon was preaching to a vast crowd in the Surrey Gardens Music Hall, someone shouted "Fire!" There was no fire, but in the panic seven people died. Spurgeon was crushed by grief, and for the rest of his life he struggled with times of deep depression, which he spoke about openly at a time when few preachers did.
+
+In 1861 his church moved into the Metropolitan Tabernacle, a huge new building in south London, where he preached to around five thousand people every Sunday for thirty years. His sermons were printed every week and sent around the world. He founded a college to train poor young men as ministers, because he remembered what it was like to have no college place. He opened an orphanage for boys, and later for girls. He spoke out against slavery in the United States, and as a result some of his sermons were burned in the American South. He suffered painful illnesses for many years, and he died in Menton, in the south of France, on 31 January 1892, aged fifty-seven.
+
+He preached thousands of sermons in his life. But if you had asked him what the most important thing that ever happened to him was, he would have told you about a snowstorm, a thin man in a pulpit, and the moment he stopped looking at himself.
+
+### In Their Own Words
+
+> "There and then the cloud was gone, the darkness had rolled away, and that moment I saw the sun."
+> — Charles Spurgeon, recalling his conversion, in his *Autobiography* (published 1897–1900)
+
+### Think It Through
+
+1. Charles grew up in a Christian home and knew a lot about God, but still felt far from him. Why do you think knowing the facts was not enough for him?
+2. The preacher's message was "look," not "try harder." Where do you tend to look when you feel you have failed: at yourself, at other people, or somewhere else?
+3. Charles was a pastor at seventeen. What would it take for adults to trust a teenager with that kind of responsibility, and what would it take for a teenager to accept it?
+4. A forgotten cook and an unknown lay preacher shaped one of the most famous preachers in history. Who are the "unknown" people who have shaped what you believe?
+
+### Read More on Ochorus
+
+Spurgeon wrote *All of Grace* for people exactly like his fifteen-year-old self, searching and unsure, and you can read it on Ochorus either in full or in *All of Grace (For Teens)*. *Around the Wicket Gate* is another short book written for seekers. His daily readings, *Morning by Morning* and *Evening by Evening*, are good companions for a year. Among his sermons in the library, try "Compel Them to Come In" and, if you ever find yourself in a dark place, "Comfort for the Desponding." His full biography is on his author page.
+
+## Samson Occom: The Boy Who Taught Himself to Read
+
+Around the year 1740, a strange rumour began to travel through the Mohegan villages of eastern Connecticut. Samson Occom, who was about sixteen, heard it along with everyone else. Years later he wrote it down: "we heard a Strange Rumor among the English, that there were Extraordinary Ministers Preaching from place to Place and a Strange Concern among the White People."
+
+The Mohegan people had lived alongside English colonists for about a century by then. They knew the English, traded with them, sometimes worked for them, and had steadily lost land to them. They knew the English had a religion and went to their meeting-houses on Sundays. But Samson had never seen the English like this. Something was happening to them. They were weeping in church. They were travelling miles to hear preachers. They were asking each other questions about their souls.
+
+What Samson was hearing about was the movement now called the Great Awakening, a wave of revival that swept through the British colonies of North America in the late 1730s and early 1740s. Preachers like George Whitefield, who had come over from England, drew crowds of thousands in the open air. Local ministers began to preach with new urgency. And some of these preachers came to Mohegan.
+
+Samson went to hear them. Then he went again, and again. He wrote that after he was "awakened," he went to every meeting he could get to. For about six months he was, in his own words, "under Trouble of Mind." He did not describe all of what he felt, and we should not pretend to know more than he told us. But he was clearly a teenager who had heard something he could not ignore, and who did not yet know what to do about it.
+
+### Born at Mohegan
+
+Samson Occom was born in 1723 at Mohegan, on the land of his people near New London, Connecticut. He did not know the exact day. His father, Joshua, was a hunter. His mother, Sarah, was a strong and devoted woman who, later in life, became a Christian.
+
+When Samson wrote about his childhood, he used the language of his time and his new faith. "I was Born a Heathen and Brought up In Heathenism," he said, meaning that he was raised in the traditional religion and ways of his people rather than as a Christian. He described his family as living "a wandering life," moving with the seasons to hunt, fish and gather. They did not farm the English way. They lived in wigwams.
+
+He also wrote that English ministers had tried, before the revival, to reach the Mohegans. A minister from New London sometimes came up in the summer to preach to them, and an English schoolmaster had at one point come to try to teach the children. But Samson said the Mohegans had little interest. They went, sometimes, but they did not care much for what they heard. There is nothing surprising about that. The English were the people taking their land. Why would they want the English religion?
+
+That is part of what makes his story remarkable. When the revival came, something about it reached him. Perhaps it was that the preachers were so obviously sincere. Perhaps it was that the message was not "become English" but "you are a sinner and Christ can save you," which applied to the English as much as anyone. Samson does not tell us everything that went on inside him. He simply tells us that he kept going.
+
+### A Discovery of the Way of Salvation
+
+At about seventeen, Samson's months of trouble came to an end. He wrote about it in one of the clearest sentences in his whole account: "I had, as I trust, a Discovery of the way of Salvation through Jesus Christ, and was enabled to put my trust in him alone for Life & Salvation."
+
+Look at that sentence closely. He did not say that he had become English, or that he had become respectable, or that he had been accepted by the colonists. He said that he had discovered a *way*: that salvation came through Jesus Christ. And he said that he put his trust "in him alone." Not in his own goodness, not in his people's traditions, not in the English and their churches. In Christ. He went on: "From this Time the Distress and Burden of my mind was removed, and I found Serenity and Pleasure of Soul, in Serving God."
+
+Notice too that small phrase, "as I trust." Samson was humble about his own experience. He did not boast that he had been dramatically transformed. He trusted that God had done something real in him, and he spent the rest of his life acting on that trust.
+
+Historians are not entirely sure who first preached to him. His teacher, Eleazar Wheelock, later said that Samson was converted under the preaching of James Davenport, a fiery and controversial revivalist. Samson himself does not name a single preacher; he simply says that ministers came and he went to hear them. It may have been several people over many months.
+
+What we do know is what happened inside him next. He wrote that he felt "an uncommon Pity and Compassion to my Poor Brethren According to the Flesh," meaning his own Mohegan people. He wished that he could teach them what he had learned. But there was a problem. He could not read.
+
+### A Primer and the Neighbours
+
+In the same months that he was going to the revival meetings, Samson had started to learn his letters. He bought himself a primer, a small, simple book used to teach children the alphabet and basic reading. He did not go to any school. Instead, he went to his English neighbours again and again and asked them to help him sound out the words.
+
+Think about what that took. He was not a little child; he was a teenager, nearly a young man, sitting with a book meant for small children and asking people from another nation, the nation that held power over his own, to help him. He was learning to read in English, a language that was not his first. And he did it, slowly, because he wanted to be able to read the Bible for himself and to teach it to others.
+
+This is perhaps the most important thing to understand about Samson Occom's teenage years. His faith did not make him passive. It made him hungry. Before he had any idea where his life would go, he set about getting the one tool he knew he needed.
+
+### Four Years with Wheelock
+
+Samson kept working at his reading for a few years. Then, when he was about nineteen or twenty, his mother went to the town of Lebanon, Connecticut, and Samson asked her to find out whether the minister there, the Reverend Eleazar Wheelock, would teach him for a week or two. Wheelock was a Congregational minister who had been one of the preachers of the revival, and he kept a small school in his house for English boys preparing for college.
+
+Wheelock said yes, and wanted to see Samson straight away. Samson went, thinking he would be back home within a few days. "Instead of Staying a Forthnight or 3 Weeks," he wrote, "I Spent 4 Years with him." He arrived in December 1743.
+
+Wheelock was a demanding teacher, and Samson was a determined student. He studied English, and then Latin and Greek, and later some Hebrew, the languages a minister in New England was expected to know. He was the first Native American student Wheelock ever taught, and his success gave Wheelock an idea: that Native young people could be trained as teachers and missionaries for their own nations. Years later, Wheelock would open a school for exactly that purpose. Without Samson, there would probably have been no such school. That fact will matter later in the story.
+
+But Samson worked his eyes too hard. Reading by poor light, hour after hour, his eyesight became so weak that he had to give up formal study by about 1748. He never finished the full college course that he had hoped for.
+
+### Schoolmaster at Montauk
+
+In 1749 Samson went with some Mohegans on a fishing trip to Montauk, at the far eastern tip of Long Island in what is now New York. The Montaukett people there had no teacher. Samson started holding meetings, and they asked him to stay and open a school. He stayed for about twelve years.
+
+He described his work there simply. He taught the children. He led religious meetings. He visited the sick and conducted funerals. He wrote letters and documents for people who could not write. He settled arguments. Every school day began with prayer. He invented his own methods for teaching small children to read, including, he said, writing the letters of the alphabet on small pieces of cedar wood so that the children could handle them and learn them like a game.
+
+He married a Montaukett woman, Mary Fowler, in about 1751, and together they had many children. They lived in a wigwam, and they were poor. The missionary society that sponsored Samson paid him very little, and sometimes not at all. To feed his family he hunted, fished, farmed, carved wooden spoons and ladles and gunstocks to sell, and bound books for English families, often working late into the night.
+
+In 1759, the Presbyterian ministers of Long Island examined him and ordained him as a minister. He was one of the very first Native Americans to be ordained in the English colonies. The boy who had learned his letters from a primer and his neighbours was now a fully recognized minister of the gospel.
+
+### The Tour of Britain
+
+By the 1760s, Wheelock's school for Native students, called Moor's Indian Charity School, needed money. Wheelock and his supporters, including the famous preacher George Whitefield, came up with a plan: send Samson Occom to Britain. A Native American minister, educated and eloquent, would show British Christians what their money could do.
+
+In December 1765 Samson said goodbye to Mary and their children and set out, with a minister named Nathaniel Whitaker. While waiting for the ship, he wrote that he did not know whether he was looking for the place where his bones would be buried, but that he believed he was "called of God by a strange Providence and that is enough."
+
+He arrived in England in February 1766, and preached his first sermon there in Whitefield's chapel in London. For more than two years he travelled across England and Scotland, preaching (by most estimates) between three and four hundred times. Crowds came, partly to hear him and partly, it must be said, to stare at him, because a Native American preacher was a novelty in Britain. He met powerful people, including the Earl of Dartmouth, and the hymn-writer John Newton. King George III gave £200. By the time Samson sailed home in 1768, the tour had raised more than £12,000, an enormous sum, given for the education of Native Americans.
+
+### Betrayed
+
+What happened next is painful, and it would be dishonest to soften it.
+
+When Samson got home, he found his family in difficulty. Wheelock had promised that they would be looked after while he was away, but help had come slowly, and Mary had written that she was out of corn and had no money to buy any.
+
+Then, in 1769, Wheelock moved his school from Connecticut to Hanover, New Hampshire, and founded a college there, named Dartmouth after the Earl of Dartmouth who had led the trustees of the British money. Much of the money Samson had raised went into the new college. And Dartmouth College, as it grew, educated mainly young white men from English colonial families, not Native students. Wheelock seems to have believed he was still serving the original purpose, by training white missionaries to go to Native nations. But to Samson, it looked like a betrayal of every promise he had made to the people who gave.
+
+He told Wheelock so. He made a sharp joke in Latin: the school that was supposed to be an *alma mater*, a "nourishing mother," for his people, would turn out to be an *alba mater*, a "white mother." The friendship between the two men, which had lasted for a quarter of a century, never fully recovered.
+
+There was also a deeper wound. In 1768, the same year he returned, Samson wrote a short account of his life, now known as *A Short Narrative of My Life*. It is one of the earliest autobiographies written in English by a Native American, and most of what we know about his teenage years comes from it. At the end, he complained, quietly but plainly, about how he had been treated. For twelve years at Montauk he had been schoolmaster, minister, interpreter, judge and scribe, and he had been paid far less than English missionaries received for doing less. He asked why. And he answered his own question: "I believe it is because I am a poor Indian." He added, "I Can't help that God has made me So; I did not make myself so."
+
+That is racism, and Samson knew it. He was not angry with God for making him Mohegan. He was saying that he was exactly who God had made him, and that the way Christians had treated him did not match what they claimed to believe.
+
+### What Came After
+
+Samson did not give up. He had low moments: in 1769, ill, out of work and discouraged, he got drunk on at least one occasion, and he confessed it openly to his fellow ministers, who examined the matter and cleared him. He got up again.
+
+In 1772 he preached a famous sermon at the execution of Moses Paul, a Native American man condemned for murder, who had asked for Samson to preach. He spoke to Moses Paul as a brother and urged him to come to Christ. The sermon was printed and went through many editions; it was one of the first works by a Native American author to be widely read. In 1774 he published a collection of hymns.
+
+His greatest work came later. He helped gather Christian Native people from several communities in southern New England, whose lands were being swallowed up, and lead them to a new settlement on land in New York given to them by the Oneida nation. In 1785 they named their town Brotherton, often called Brothertown. Samson became their minister. He wrote that their church was "the first Indian Presbyterian Church that ever was formed by Indians themselves." The Brothertown people later moved west to Wisconsin, where their descendants still live today.
+
+Samson Occom died in July 1792, at about sixty-nine, while walking out to look for timber. More than three hundred Native people came to his funeral. His grave was never marked. But he had spent his life doing what he decided to do at seventeen: putting his trust in Christ "alone," and telling his own people about him.
+
+### In Their Own Words
+
+> "I believe it is because I am a poor Indian. I Can't help that God has made me So; I did not make myself so."
+> — Samson Occom, *A Short Narrative of My Life* (1768)
+
+### Think It Through
+
+1. Samson heard about the revival among "the English," the very people who were taking his people's land. Why do you think the message still reached him? What does that say about the message itself?
+2. As a teenager, Samson taught himself to read using a children's primer and help from his neighbours. Is there something you need to learn for what you believe God wants you to do, even if it feels embarrassing to start?
+3. Wheelock helped Samson enormously, and also let him down badly. How do you think about someone who has done you both good and harm?
+4. Samson said, "I did not make myself so." What does it mean that God made you who you are, including the parts other people may look down on?
+
+### Read More on Ochorus
+
+Samson Occom's own writings are not yet in the Ochorus library, but his author page carries a full biography that tells the rest of his story in more detail, from his years at Montauk to his sermon at the execution of Moses Paul and the founding of Brothertown, with more of his own words along the way.
+
+
+---
+
+## Robert Murray M'Cheyne: A Brother Who Cannot Die
+
+In the summer of 1831, in a tall stone house in Edinburgh, a young man in his twenties lay dying of a fever. His name was David M'Cheyne. In the same house lived his youngest brother, Robert, who had turned eighteen that May.
+
+Robert was the kind of student other students noticed. He was quick with words and quick on his feet. He wrote poetry, sketched, sang, and was good at the gymnastic exercises that were fashionable among young men of his day. He went to parties and to dances. He was well liked, good-looking, and comfortable in Edinburgh society. Religion, for him, meant going to church on Sunday with his respectable family and thinking no more about it.
+
+David was different. He was the eldest, a lawyer like their father, and he was a serious Christian. For some time he had been praying for Robert and talking to him, gently and persistently, about his soul. Robert had listened the way younger brothers often listen to older ones: politely, and without much effect.
+
+Then, on 8 July 1831, David died.
+
+We do not have a record of what Robert said or did that day. We do not know whether he cried at the bedside or walked out into the streets. What we do know is what the death did to him over the following months and years, because he wrote about it himself, and because his closest friend, Andrew Bonar, later collected his diaries and letters and published them. Bonar, who knew the family, put it simply: the death of his brother was the event God used to wake Robert up.
+
+Eleven years later, on the anniversary of that day, Robert wrote a single line in his diary that tells the whole story in miniature. He wrote: "This day eleven years ago, I lost my loved and loving brother, and began to seek a Brother who cannot die."
+
+This is the story of how a clever, popular, careless teenager became that seeker, and what he found.
+
+### The Brightest Boy in Edinburgh
+
+Robert Murray M'Cheyne (the name is pronounced "mac-SHAY-nee") was born in Edinburgh, the capital of Scotland, on 21 May 1813. He was the youngest of five children. His father, Adam M'Cheyne, was a Writer to the Signet, a senior kind of Scottish lawyer, and the family lived in the elegant "New Town," the district of wide streets and grand terraces that had been built a generation before.
+
+Edinburgh in those days liked to call itself "the Athens of the North." It was a city of universities, publishers, poets and philosophers, and a clever boy could not have been born into a more stimulating place. Robert was a clever boy. Bonar records that when he was about four years old, recovering from an illness, he amused himself by learning the Greek alphabet. Whether or not every detail of that family story is exact, it fits everything else we know about him: he loved learning, and he loved it early.
+
+He went to the High School of Edinburgh, one of the oldest schools in Scotland, and in November 1827, at the age of fourteen, he entered the University of Edinburgh. That sounds startlingly young now, but in Scotland at the time it was normal for boys to begin university at fourteen or fifteen. He did well. He won prizes, and he was especially known for his poetry; Bonar mentions a prize poem he wrote on the Covenanters, the Scottish Christians of the 1600s who had suffered for their faith. There is something a little ironic in that. He could write movingly about people who had died for their beliefs while having no very strong beliefs of his own.
+
+He was not a bookworm who hid from people. He was athletic and threw himself into gymnastics. He drew well and was musical. He enjoyed company, and company enjoyed him. In a city full of evening parties, card games and dances, he was a natural guest.
+
+None of this was wicked in the way the word is usually meant. He did not run wild. He did not get into trouble with the police or bring disgrace on his parents. From the outside, he looked like a model young man: bright, cheerful, well-mannered, respectable, and in church on Sundays.
+
+But years later, when he looked back on these teenage years, he did not describe them as innocent. He described himself as having been careless about God, living for his own pleasure and for the good opinion of others. In a hymn he wrote when he was twenty-one, he put it this way:
+
+"I once was a stranger to grace and to God, / I knew not my danger, and felt not my load."
+
+That was the problem. Not that he was a notorious sinner, but that he did not think he needed anything. He was doing fine. The religion he had was a matter of habit and family custom, and it never reached the centre of his life, because he did not see that there was any gap at the centre to fill.
+
+### The Brother Who Prayed
+
+It is worth pausing on David, because without him there is no story.
+
+David M'Cheyne was several years older than Robert. He had followed their father into the law, and he was by all accounts a gentle, thoughtful, devout man. He took his faith seriously in a way the rest of the household, decent as they were, did not quite match. And he was worried about his youngest brother.
+
+We do not have David's words to Robert. Bonar tells us only that David had been anxious for his brother's soul and had spoken to him and prayed for him. It is easy to imagine how that might have felt to a brilliant eighteen-year-old: a bit embarrassing, perhaps, a bit much. Robert later admitted that he had not taken it to heart.
+
+In the last part of his life, David passed through a long, dark season of spiritual distress, anxious and low about his own standing before God. Then, according to Bonar, peace came back to him near the end. He fell ill with a fever in the summer of 1831 and died on 8 July, still a young man.
+
+Grief does strange things to people. Sometimes it closes a heart; sometimes it opens one. For Robert, the loss of his brother broke open something that all of David's arguments had not. Suddenly the questions David had kept asking were not abstract any more. Where was David now? What happens when a person dies? What would happen to Robert if he died? Was the faith David had held on to, through his own dark season, real?
+
+At eighteen, Robert found that his wit, his poems, his popularity and his prizes had nothing to say about any of that.
+
+### A Slow Dawn
+
+If you are expecting a dramatic conversion scene, with a single night when everything changed, Robert's story will disappoint you. He did not have one. Bonar, who knew him as well as anyone, described the change as a dawn rather than a lightning flash: light came slowly, and it is hard to say exactly when night ended and day began.
+
+What we can see, through the diary Robert started keeping in this period, is a young man struggling. He began to read the Bible seriously. He began to pray. He started to notice things in his own life that he had never noticed before, and he did not like them.
+
+Some of his early diary entries are about the very things that had made him popular. He wrote about stepping back from the card parties and the dancing that had filled his evenings. He was not saying that every game of cards was evil. He was saying that, for him, those evenings had become a way of not thinking about God, and he needed to stop running. It cost him. One entry records that his absence from a dance brought teasing and disapproval from people he knew, and he resolved that he must try to please God rather than people. If you have ever felt your friends' eyebrows go up because you said no to something, you know exactly how that felt.
+
+He also found out how hard it is to change yourself. His diaries in these years go up and down. He makes resolutions; he breaks them. He feels near to God one week and cold the next. He is honest about his vanity, his love of praise, and his tendency to think well of himself. Reading them now, you see a teenager discovering that trying harder does not fix a heart.
+
+That discovery turned out to be the key. Bonar says that one of the books that helped Robert most in this period was an old Scottish summary of the Christian faith called *The Sum of Saving Knowledge*, often bound in the back of the Westminster Confession. Through it, and through the Bible, Robert began to understand something he had heard all his life without grasping: that a person is not made right with God by being good, or by trying to be good, but by trusting in what Jesus Christ has done.
+
+He wrote about it in that hymn of 1834, which he titled "Jehovah Tsidkenu." That is the Hebrew name in Jeremiah 23:6 which means "The LORD Our Righteousness." In the prophecy, God promises a coming King from David's line and says:
+
+"And this is His name by which He will be called: The LORD Our Righteousness."
+
+For Robert, this was the whole gospel in a phrase. He had been trying to build up a righteousness of his own, whether through being respectable or, later, through being religious and strict with himself. Neither worked. What he needed was not his own goodness but Christ's: Jesus' perfect life and his death for sinners, counted to the one who trusts him. In the hymn he describes how he had once read about the cross unmoved, and how later, when he saw his own guilt, he fled to Christ, and found that this name, Jehovah Tsidkenu, was "all things to me."
+
+Notice what had happened. David had died, and Robert had lost the best brother he had. But in the grief, he had found Jesus, the elder Brother who had died and risen and could never die again, and who would never stop caring for him. That is why the anniversary of 8 July mattered so much to him for the rest of his life. It was both the worst day he had known and the day his real life began. Year after year, he marked it in his diary.
+
+### Under Chalmers
+
+In November 1831, a few months after David's death, Robert entered the Divinity Hall at the University of Edinburgh to train for the ministry of the Church of Scotland. He was eighteen.
+
+It is fair to wonder about his motives at that point. He was still young in faith, unsettled, finding his way. But the decision held, and in the next four years he grew enormously.
+
+He had an extraordinary teacher. The professor of divinity was Thomas Chalmers, the most famous preacher and churchman in Scotland. Chalmers was a large-hearted, energetic man who believed that Christians, and especially ministers, had to care for the whole of people's lives. He had seen the misery of the industrial slums in Glasgow and was convinced the church must go to the poor, not wait for the poor to come to it.
+
+Robert took this seriously. With other students he went into some of the poorest streets of Edinburgh's Old Town, the narrow, crowded, often filthy lanes behind the grand buildings, to visit families, read the Bible with them, and pray with the sick. For a boy from the polished New Town, it was an education of a different kind. He saw hunger, drink, disease and despair at close range, and he began learning to speak about Christ to people who had no patience for clever talk.
+
+He also found friends who shared his new direction. Among them were two brothers, Andrew and Horatius Bonar. Horatius would become a famous hymn-writer. Andrew would become Robert's closest friend and, eventually, his biographer. These friendships mattered. The teenager who had once moved in a crowd that did not care about God now had companions who would pray with him, argue theology with him, and hold him to account.
+
+He was licensed to preach on 1 July 1835, at the age of twenty-two. That autumn he became an assistant minister in the country parishes of Larbert and Dunipace, near Stirling, where there were many scattered families and growing industrial villages to visit. He threw himself into it, walking or riding miles to see people in their homes. It was hard work, and already his health, never strong, showed signs of strain.
+
+Then, in 1836, a congregation in Dundee called him to be its minister.
+
+### St Peter's, Dundee
+
+Dundee, on the east coast of Scotland, was a fast-growing mill town. Its factories spun flax and linen, and its streets were packed with workers, many of them poor, many of them children who worked long shifts. St Peter's was a new church, built for a new parish carved out of this crowded district. On 24 November 1836 Robert was ordained as its minister. He was twenty-three.
+
+It would be easy to tell the rest of his life as a list of achievements, but that would miss the thing people who knew him remembered most. They remembered his face and his manner. He seemed, they said, to have come from being with God. He preached plainly, without showing off. He visited constantly, especially the sick and the dying. He wrote letters to young people in his congregation, and to children, encouraging them to come to Christ. He was strict with himself and tender with others.
+
+He believed that the most important thing he could give his people was not his talent but his own closeness to Jesus. He once wrote that it is not great talents God blesses so much as great likeness to Jesus. He meant it as a warning to himself. The clever boy had learned that cleverness is not the point.
+
+### What Came After
+
+The years that followed were short and full.
+
+His health kept failing, and at the end of 1838 he was sent away from Dundee to rest. While he was recovering, the Church of Scotland asked him to join a small party travelling to Palestine and the eastern Mediterranean, on what was called a "mission of inquiry" into the condition of the Jewish people and how the church might share the gospel with them. In April 1839 he set off with Andrew Bonar and two older ministers, Alexander Black and Alexander Keith. The journey took them through Egypt, across the desert, into the Holy Land, and home through what is now Turkey and central Europe. At Smyrna, on the way back, Robert fell dangerously ill with fever and nearly died. The book he and Bonar later wrote about the journey helped launch the Scottish church's mission to Jewish communities in Europe.
+
+Meanwhile something remarkable happened at home. Robert had prayed for years that God would awaken his people in Dundee, and had seen little. While he was away, his pulpit was filled by a young preacher named William Chalmers Burns. In the summer of 1839, first in Burns's home town of Kilsyth and then, in August, at St Peter's in Dundee, a revival broke out. Crowds gathered night after night; many people, young and old, came to faith in Christ. When Robert returned in November, he found the parish he had prayed for transformed, and the harvest gathered under someone else's preaching. By every account, he was simply glad.
+
+In 1842 he drew up something for his congregation that has outlived almost everything else he did: a calendar for reading the whole Bible in a year. It set four short passages for each day, two for family reading and two for private reading, so that in a year a household would read the Old Testament once and the New Testament and Psalms twice. He wanted his people, as he put it in the preface, to be "feeding in the same portion of the green pasture at the same time." He had it printed, ready for the new year of 1843. Nearly two centuries later, people all over the world still read the Bible using M'Cheyne's plan. It is a strange thought that a teenager who once spent his evenings at card parties ended up shaping the daily Bible reading of millions.
+
+In early 1843 typhus, a fever spread in crowded, dirty housing, swept through Dundee. Robert would not keep away from the sick. In March he caught the disease himself, and on 25 March 1843 he died. He was twenty-nine. Thousands of people lined the streets for his funeral, and he was buried in the churchyard of St Peter's.
+
+The next year, Andrew Bonar published the *Memoir and Remains of the Rev. Robert Murray M'Cheyne*, made largely of Robert's own diaries, letters and sermons. It became one of the most widely read Christian books of the nineteenth century. Through it, a man whose ministry lasted barely seven years still speaks.
+
+And at the very beginning of that whole short, bright life stands a summer day in 1831, when a clever eighteen-year-old lost his brother and began, slowly and painfully, to seek a Brother who cannot die.
+
+### In Their Own Words
+
+> "For every look at self, take ten looks at Christ."
+> — Robert Murray M'Cheyne, in a letter (1840), from Andrew Bonar's *Memoir and Remains* (1844)
+
+### Think It Through
+
+1. Before David died, Robert's life looked fine from the outside. What do you think he meant when he later said he "felt not my load"? Can a person be respectable and still be a "stranger to grace"?
+2. Robert's turning to God took months and years, not one night. Does that encourage you or frustrate you? Why might God sometimes work slowly?
+3. Robert saw that he could not fix himself by trying harder, and found his hope in "The LORD Our Righteousness." What is the difference between trying to be good enough for God and trusting in Christ's goodness?
+4. M'Cheyne made a plan so that his whole church would read the same part of the Bible each day. What would change if you and your friends did something like that?
+
+### Read More on Ochorus
+
+You can read Robert Murray M'Cheyne's own sermons in the library: *A Castaway*, *Electing Love*, *Our Duty to Israel*, *The Good Way of Coming Before the Lord*, *The Impressions of Natural Men*, *What Have I to Do Any More with Idols?* and *Why Is God a Stranger in the Land?* His author page also carries a full biography of his life, from Edinburgh to Dundee.
+
+## Billy Graham: The Boy Who Hid in the Choir
+
+In the autumn of 1934, on the edge of Charlotte, North Carolina, large crowds sat on rough benches inside a huge temporary building made of raw timber. At the front, a preacher with a fierce voice was pointing his finger into the audience as he named sins.
+
+Somewhere among the benches sat a tall, skinny farm boy who did not want to be there, or at least did not want to be pointed at. He was fifteen, about to turn sixteen. His name was Billy Frank Graham.
+
+Billy later admitted that he had become convinced the preacher was talking about him. So he came up with a plan. He and a friend, Grady Wilson, volunteered to join the choir, which sat on the platform behind the preacher. Neither of them, Billy said, could sing much. But from behind the preacher's back, at least, the finger could not find him.
+
+The plan did not work. Within a few weeks, the boy hiding in the choir would walk down to the front of that building in front of everyone. It was the moment he always pointed back to as the start of his Christian life. Decades later, he would stand in stadiums on every inhabited continent and invite other people to walk forward just as he had.
+
+But first: the cows.
+
+### Milk Before Dawn
+
+William Franklin Graham Jr. was born on 7 November 1918, a few days before the end of the First World War, on his family's dairy farm just outside Charlotte, a growing city in the American South. He was the eldest of four children. His father, Frank, and his mother, Morrow, ran a dairy herd, and the work never stopped. Billy got up very early to help milk the cows before school, and again in the evening. He knew the smell of the barn, the weight of the milk cans, the cold of winter mornings in the dark.
+
+The Grahams were church people. They belonged to a small, strict denomination, the Associate Reformed Presbyterian Church, where the services were serious and the singing was mostly psalms. Billy's mother had him learn the Westminster Shorter Catechism, a long set of questions and answers about the Christian faith. He went to church every week. He knew the words. If you had asked him, he would have said he was a Christian.
+
+What he cared about, though, was baseball. He was tall and long-armed, and he dreamed of becoming a professional player. In his memoirs he recalled, as one of the great thrills of his boyhood, shaking the hand of Babe Ruth, the most famous baseball player in America, when Ruth came through Charlotte. He liked cars and girls and adventure stories. He was, by his own account, an ordinary, energetic, sometimes mischievous boy and a fairly average student.
+
+The world around the farm was going through hard times. In 1929, when Billy was ten, the American stock market crashed and the Great Depression began. Banks failed across the country, and Frank Graham lost savings he had put in the bank. The dairy kept going, but money was tight, and many families around Charlotte had it much worse. For a teenager in the early 1930s, life was not easy and the future was not obvious.
+
+None of this made Billy think much about God. Religion was the background of his life, like the farm and the family, not something he had ever had to choose for himself.
+
+### A Prayer in the Pasture
+
+In May 1934, a group of Christian businessmen from Charlotte asked Frank Graham if they could use a grove on his farm for a day of prayer. They were worried about their city. It seemed to them that the churches were half asleep and that many people had drifted away from God. So they spent a day in the Grahams' pasture, praying for Charlotte.
+
+According to the story Billy later told, one of those men prayed that God would raise up someone from Charlotte to preach the gospel to the ends of the earth. Billy, fifteen, was around the farm that day. He did not know about the prayer at the time. As he remembered it, he saw the men gathered there and wondered, without much interest, what they were doing.
+
+The same men invited a travelling evangelist to hold a series of meetings in Charlotte that autumn. His name was Mordecai Ham.
+
+### The Preacher Billy Did Not Want to Hear
+
+Mordecai Ham was a well-known revival preacher from Kentucky, then in his late fifties. He was blunt, dramatic and controversial. He preached hard against drinking, gambling, immorality and hypocrisy, and he did not soften anything. Some of the city's churches supported him; others did not want anything to do with him.
+
+It also needs saying, honestly, that Ham held and spread ugly prejudices, including conspiracy theories about Jewish people. He was a flawed messenger. Billy Graham's story is one of many in which God used someone whose faults were real.
+
+The meetings went on for weeks in a large temporary tabernacle. At first Billy refused to go. He had heard that Ham was a fanatic, and he was not interested. Then a man who worked on the Graham farm, Albert McMakin, offered to drive him and a truckload of other young people into town. Billy went.
+
+What he heard surprised him. He had thought of sin as something other people did: drinkers, criminals, people who did not go to church. Ham preached that every person was a sinner before a holy God, including good, church-going ones, and that sin was not mainly about outward behaviour but about a heart turned away from God. Being raised in a Christian home, Billy began to realise, did not make you a Christian.
+
+For the first time, Billy began to feel that the message was personal. That was when he joined the choir to stay out of the line of fire. But he kept going back.
+
+### Just As I Am
+
+One night, probably in early November 1934, at the end of Ham's sermon, the choir began to sing the invitation hymns. Among them were "Just As I Am" and "Almost Persuaded." People were invited to come to the front as a sign that they were turning to Christ.
+
+Billy went.
+
+He was sixteen, or within days of it; his birthday fell in the same weeks, and accounts do not settle the exact date. Grady Wilson, his choir-hiding friend, went forward the same night. At the front, an older Christian man who knew the family talked with Billy, read the Bible with him, and prayed with him.
+
+What did he actually believe that night? In his autobiography, *Just As I Am*, Graham described it carefully, and he did not exaggerate. He said he did not have any great emotional experience. There were no tears, no visions. What happened was a decision. He understood that he was a sinner, that Jesus Christ had died on the cross for his sins and risen again, and that he needed to receive Christ personally and commit his life to him, not just keep attending church. He recognised that everything he had been taught as a child was true, but that he had never made it his own. That night, he did.
+
+Years later, the words chosen for his gravestone would include a reference to the verse that sums up what he believed from that night on:
+
+"Jesus answered, 'I am the way and the truth and the life. No one comes to the Father except through Me.'" (John 14:6)
+
+That night, Billy said, was a beginning, not an ending. In many ways he was still the same boy: he still struggled, still got distracted, still did not know what to do with his life. But something real had happened. He began to read the Bible for himself and to pray. He started to care what God wanted, not only what he wanted.
+
+He had no plan to become a preacher. He thought he might still be a baseball player, or perhaps a farmer like his father.
+
+### The Long Road to the 18th Green
+
+The next few years were not a straight line.
+
+In the summer of 1936, after finishing high school, Billy and the Wilson brothers spent months travelling around the Carolinas selling Fuller brushes door to door. He turned out to be a very good salesman. He said later that he sold the brushes because he believed in them; it was a small lesson in the power of conviction.
+
+That autumn he enrolled at Bob Jones College, a very strict Christian college then in Tennessee. It did not suit him. The rules were rigid, he fell ill and felt miserable, and he left after about a semester. It felt like a failure.
+
+In early 1937 he moved to the Florida Bible Institute at Temple Terrace, near Tampa. The school occupied a former hotel and club beside a golf course, with palm trees and the Hillsborough River running nearby. For a farm boy from North Carolina, it was another world. The teachers were warm, and well-known preachers often came to speak. Billy waited tables, caddied on the golf course, and listened.
+
+He also began, nervously, to preach. His first real sermon was given at a small Baptist church in northern Florida around Easter 1937. He had prepared four sermons, and, by his own later account, he got through all four of them in about eight minutes. He practised in odd places: he later remembered preaching out loud to the birds, the alligators and the cypress stumps along the river, working on his delivery with no one to laugh at him.
+
+He also had his heart broken. A girl at the institute whom he hoped to marry ended their relationship and chose another student, one who seemed to have a clearer future. Billy was crushed. He felt he had nothing much to offer anyone.
+
+Through all this, a question kept pressing on him. Was God calling him to preach? He felt it, and he resisted it. He did not think he was clever enough or holy enough, and he was afraid of what it would cost.
+
+The question came to a head one night in 1938. He went walking alone, as he often did, around the golf course in the dark. At the edge of the 18th green, he knelt down, and, as he described it later, he told God that if He wanted him to preach, he would do it. There was no voice from heaven, no flash of light. It was, again, a decision: a young man of nineteen handing over his future, not knowing what it would hold.
+
+He had been a Christian for more than three years. But this was the night, he always said, when he surrendered his life to Christ's service. In 1939 he was ordained as a Southern Baptist minister.
+
+### What Came After
+
+From 1940 to 1943 he studied at Wheaton College, near Chicago, graduating with a degree in anthropology. There he met Ruth Bell, the daughter of American medical missionaries in China, who had grown up there and had once hoped to be a missionary herself in Tibet. Billy was smitten almost at once. Ruth took longer to decide. They married on 13 August 1943 in Montreat, North Carolina, and were married for sixty-three years, until her death in 2007. They had five children.
+
+After the war he worked with Youth for Christ, preaching to young people in North America and across Europe. Then, in 1949, a tent campaign in Los Angeles planned for three weeks stretched to eight, the newspapers took notice, and almost overnight he became famous across the United States.
+
+What followed is hard to take in. Over more than fifty years, Graham held around four hundred crusades, as his meetings were called, in more than 185 countries and territories. His organisation estimates that he preached in person to about 215 million people. He preached for twelve weeks in London in 1954 and for sixteen weeks in New York City in 1957, where Martin Luther King Jr. joined him on the platform to pray. He travelled across Africa in 1960, preaching in countries that were just gaining independence. In 1973 he refused to hold meetings in apartheid South Africa unless they were open to all races, and his meetings in Durban and Johannesburg were among the largest racially mixed public gatherings the country had seen. The same year, in Seoul, South Korea, more than a million people gathered on a single day to hear him. He preached in Japan, the Philippines, India, Hong Kong and across Asia; in Mexico, Brazil, Argentina and across Latin America; behind the Iron Curtain in Eastern Europe and the Soviet Union; and even in North Korea. In 1995, from Puerto Rico, his preaching was carried by satellite to audiences across the world.
+
+He was not a perfect man, and he would have been the first to say so. He became too close to American presidents, especially Richard Nixon, and later admitted that he had sometimes crossed the line into politics. Tapes released in 2002 revealed antisemitic remarks he had made in a private conversation with Nixon in 1972; he apologised publicly and without excuses. The gospel he preached was never that good people go to heaven. It was that sinners can be forgiven, and he turned out to need that forgiveness like everyone else.
+
+At the end of every crusade, the choir sang "Just As I Am," and he invited people to come forward, as he had in a timber tabernacle in Charlotte at sixteen. He died at home in Montreat on 21 February 2018, aged ninety-nine. He was buried in Charlotte, not far from the farm where he had milked the cows, beside Ruth. The words on his grave call him, simply, a "Preacher of the Gospel of the Lord Jesus Christ."
+
+### In Their Own Words
+
+> "I shall be more alive than I am now. I will just have changed my address."
+> — Billy Graham, on his own death, a saying he repeated in later life (quoted by the Billy Graham Evangelistic Association, 2018)
+
+### Think It Through
+
+1. Billy grew up in church and knew the catechism, yet he said he only became a Christian at sixteen. What is the difference between knowing about Jesus and trusting him for yourself?
+2. Billy's conversion and his call to preach were two separate decisions, more than three years apart. Why might it matter to see them as different things?
+3. Both nights, at the front of the tabernacle and on the 18th green, he said he felt no great emotion. How much should feelings matter when you make a decision about God?
+4. Mordecai Ham, the preacher God used to reach Billy, had serious faults, and so did Billy. What does that tell you about where the power of the gospel really comes from?
+
+### Read More on Ochorus
+
+Billy Graham's own books are too recent to be in the library, but his author page carries a full biography, from the dairy farm to the stadiums of the world. Graham often borrowed his "changed my address" line from an earlier evangelist, D. L. Moody, whose books *The Way to God*, *Prevailing Prayer* and *Thoughts for the Quiet Hour* you can read here.
+
+
+---
+
+## Kanzo Uchimura: The Boy Who Prayed Against God
+
+In the autumn of 1877, a sixteen-year-old student walked out of a new college in the frontier town of Sapporo and went to a shrine to pray. He was not praying for good marks or for a safe journey home. He was praying that a god would destroy something.
+
+The something was Christianity. In the few weeks since Kanzo Uchimura had arrived at the Sapporo Agricultural College, the older students had been pressing him and the other newcomers to put their names to a document written in English called the "Covenant of Believers in Jesus." Every member of the senior class had signed it. Now they wanted the freshmen. Uchimura did not want to sign. He was the son of a samurai family, raised to honour the gods of Japan and the lord his father had served, and as far as he could see this foreign religion was an invasion. So he went to the shrine, and with all the sincerity he had, he asked the god there to put out the new enthusiasm in the college and to punish the students who had gone over to it.
+
+We know about that afternoon because Uchimura told the story on himself, years later, in a book called *How I Became a Christian*. It is not the kind of story most people tell about their own conversion. He admits he fought. He admits he was pushed. And he admits that the pushing worked before the believing did. What makes his story worth reading is what happened next: how a signature he never wanted to give turned into a faith that cost him his job, his reputation, and very nearly everything else, and that he never once gave back.
+
+### A Fretful Boy and His Many Gods
+
+Kanzo Uchimura was born in March 1861 in Edo, the great city that within a few years would be renamed Tokyo. His family belonged to the samurai class, the hereditary warriors who had ruled Japan for centuries. His father was a scholar of Confucius, the ancient Chinese teacher whose sayings about duty, loyalty and respect for parents shaped the whole moral world of a Japanese gentleman. From his father the boy learned to be loyal to his lord, to honour his parents and teachers, and to care more about honour than comfort.
+
+He also learned to be afraid. Japan in the 1860s was full of gods. There were gods of places and gods of things, gods of the hearth and the well and the road, and each one had its shrine and its proper way to be treated. Young Kanzo took all of them seriously. Every morning he prayed to the gods of the four directions, east, west, north and south. When one god asked him to give up a certain food as an offering, he gave it up, and then another god asked for another, until there were things on his plate, eggs and beans among them, that he was no longer allowed to eat. Some gods seemed to want opposite things, and he worried constantly about which one he might be offending. On the way to school he would take a longer road just to pass fewer shrines, because at each one he felt he had to stop and bow and pray.
+
+Looking back as a grown man, he summed it up in one honest sentence: "With so many gods to satisfy and appease, I was naturally a fretful timid child."
+
+Meanwhile, the country around him was turning upside down. In 1868, when Kanzo was seven, a revolution restored the Emperor Meiji to the centre of Japanese government and swept away the old military rulers. The new government wanted Japan to become strong and modern, quickly, and it began sending for Western teachers, Western science and Western languages. The samurai class lost its old privileges. For centuries Christianity had been banned in Japan and its believers hunted down; the public notice boards announcing that ban were only taken down in 1873. Being a Christian was no longer a crime, but most Japanese people still saw it as foreign, suspicious, and disloyal.
+
+Kanzo was a bright student and learned English young. In 1877, at sixteen, he accepted a government scholarship to a brand-new college on Hokkaido, the wild northern island the government was trying to settle and farm.
+
+### A Covenant Left Behind
+
+The Sapporo Agricultural College had opened in 1876 to train young men to develop Hokkaido. To get it started, the government had hired an American, William S. Clark, the president of a farming college in Massachusetts. Clark was meant to teach science and agriculture. The Japanese officials who hired him did not want him teaching the Bible. He taught it anyway, as part of teaching the students how to live, and before his eight months in Sapporo were over, he had written out a short document in English and invited his students to sign it.
+
+That was the "Covenant of Believers in Jesus." In it the signers promised, in short, to follow Jesus Christ as their Lord, to take the Bible as their guide, to meet together for worship and prayer, and to live clean and honest lives. Every student in the first class signed it. Clark sailed home in the spring of 1877. The story told ever since in Japan is that his parting words to his students, called out from horseback, were "Boys, be ambitious!" Whatever exactly he said, he left behind him a group of young Christians who were very ambitious indeed for their friends.
+
+So when Uchimura and the second class arrived in the autumn of 1877, Clark was gone, but his covenant was not. The seniors had caught his enthusiasm and set about converting the freshmen. Imagine being sixteen, far from home, at a small boarding college on the edge of a frontier, where nearly every older student you looked up to was urging you to join them. That was Uchimura's situation. In a place like that, the opinion of the older boys is not just one voice among many. It is the weather you live in.
+
+Uchimura resisted. He saw himself as a patriot defending Japan against foreign gods. That is why he went to the shrine. But one boy cannot hold out forever against an entire college. Before the year was out, he signed. He was honest about why: he did it, he said, "against my will," because the pressure of the older students was too strong for him. Some of his classmates signed too, among them a quiet, clever boy named Inazo Nitobe, who would one day be one of the most famous Japanese people in the world.
+
+It is worth stopping here, because this is the uncomfortable part of the story. Uchimura himself, looking back, wondered whether it had been right to force a teenager into a promise like that. Faith that is signed for under pressure is not yet faith. A name on a paper is not a changed heart. If his story had stopped at the signature, it would be a story about peer pressure, nothing more.
+
+It did not stop there.
+
+### One God, and Not Many
+
+Here is the surprise. Once Uchimura had signed, he started to actually read and listen. And the first thing that struck him was not a doctrine about sin or salvation. It was much simpler than that. The covenant, and the Bible behind it, said that there is one God. Not eight million. One.
+
+For a boy who had spent his whole childhood trying to keep a crowd of anxious gods from being angry with him, this was like having a weight lifted off his back. If there is only one God, then there is no need to bow at every shrine, no need to worry that pleasing one god means offending another, no list of foods to avoid for a dozen different reasons. There is one Creator, the Lord of everything, and he can be known. The apostle Paul wrote to Christians living among the temples of ancient Corinth that "even if there are so-called gods, whether in heaven or on earth... yet for us there is but one God, the Father, from whom all things came and for whom we exist. And there is but one Lord, Jesus Christ." Uchimura was discovering the same thing, nearly two thousand years later and on the other side of the world.
+
+He described it in words that are among the most famous in his book: "One God, and not many, was indeed a glad tiding to my little soul."
+
+He remembered that he now walked past the shrines on his way without stopping, with his head up, not worried at all, talking and laughing with his friends. The fear was gone. The new faith did something for him, right away, that the old one never had. He was free.
+
+That freedom drew him further in. He began to study the Bible with the other Christian students. They met in their dormitory rooms to read Scripture, pray and sing, and they took turns leading. They gave each other Christian names. On 2 June 1878, at seventeen, Uchimura was baptised along with six of his classmates by a visiting Methodist missionary, Merriman C. Harris. When the moment came, he knelt and was asked whether he would take on himself "the name of Him who was crucified for our sins." He answered, "Amen." He chose the Christian name Jonathan, after the son of King Saul in the Old Testament, whose loyal love for his friend David was the kind of friendship he wanted to have.
+
+It is important to be honest about how far he had come. At seventeen, Uchimura had been set free from fear of the many gods, and he had begun to follow Jesus, but he would say later that he did not yet really understand the heart of the Christian message: what Jesus' death on the cross had to do with him. He had found the one God. He had not yet found peace with that God about his own failures. That would take years.
+
+### A Little Church in the North
+
+The Christian students at Sapporo were not content to stay a dormitory club. After graduating, Uchimura and his friends decided they wanted a church of their own, not one run from abroad or tied to any single foreign denomination, but simply a Japanese church of believers in Jesus. They were troubled that the divisions between Western churches were being carried over to Japan. They raised money, built a small church building in Sapporo, and when a mission had lent them money, they worked to pay it back so that they owed no one.
+
+That longing, for a faith that was fully Christian and fully at home in Japan, was already part of Uchimura at twenty. It would shape the rest of his life.
+
+Uchimura graduated in 1881 and went to work for the government on Japan's fisheries. Then came a crisis. In 1884 he married, and the marriage broke down within months. He never fully explained what went wrong, but he was left crushed by grief and guilt. The young man who had felt so free at Sapporo now found he could not make his own heart clean. Like many troubled young people before and since, he decided to go somewhere far away. In November 1884 he sailed for the United States. He had a romantic idea of America as a Christian land, and he hoped that the country that had sent him the gospel would give him the peace he could not find.
+
+### Looking Up
+
+America disappointed him. He found greed, racism and drunkenness in the land he had imagined as holy, and he wrote about it with sharp honesty. For about eight months he worked as an attendant at a school for children with intellectual disabilities in Elwyn, Pennsylvania. He had gone there, he later admitted, hoping that by doing hard and humble good works he could earn his way to peace. It did not work. No amount of goodness could fix what was wrong inside him.
+
+In 1885 he went to Amherst College in Massachusetts, the very college where William S. Clark had once studied. Its president, Julius Seelye, received the poor, worn-out young Japanese man with unexpected warmth and gave him a room. Uchimura remembered Seelye's advice in simple terms: stop looking inside yourself for something good enough to offer God. Look at Jesus, who paid for your sins on the cross.
+
+It took months for that to sink in. Then, in March 1886, he wrote in his diary: "Never was the atoning power of Christ more clearly revealed to me than it is to-day." The word "atoning" means making peace, making things right. What he finally saw was that Jesus, by dying in his place, had already done what Uchimura could never do for himself. He did not have to make himself clean before coming to God. He could come as he was, and be cleansed.
+
+Uchimura said that he was truly converted at Amherst, around ten years after the day he signed the covenant. That might sound as if the Sapporo years did not count. He did not see it that way. Sapporo was where God first found him, freed him from fear, and put him on the road. Amherst was where he finally understood the cross. Both were real. It was one journey.
+
+### What Came After
+
+He came home to Japan in 1888, and his faith was soon tested in public. In January 1891 he was teaching at the First Higher Middle School in Tokyo. The government had just issued the Imperial Rescript on Education, a document signed by the Emperor that set out the moral duties of every Japanese subject. At a school ceremony, teachers and students were expected to step forward one by one and bow deeply before the Emperor's signature, as before something sacred. When Uchimura's turn came, he hesitated. He respected the Emperor, but a bow of worship, he felt, belonged to God alone. He gave at most a slight bow.
+
+It became a national scandal, remembered as an act of *lese-majesty*, an insult to the ruler. Newspapers and students called him a traitor. He lost his job. He fell seriously ill, and his young wife Kazu, who nursed him through it, caught the illness and died that spring. Within a few months, he had lost his work, his good name, and his wife.
+
+In the poverty that followed, he wrote. In 1895 he published, in English, *How I Became a Christian: Out of My Diary*, the honest account from which most of this story comes. He became a journalist, attacking corruption, and in 1903 he opposed Japan's coming war with Russia as a Christian pacifist, almost alone, and lost his job once more.
+
+From 1900 he published a Bible magazine and gave Sunday Bible lectures in Tokyo, which many students came to hear. Out of these grew what was called *Mukyokai*, the "Non-Church" movement: groups of believers who met to study the Bible under lay teachers, without ordained ministers or a denomination. It was a real departure from how most churches work, including leaving out baptism and the Lord's Supper as church ceremonies, and many missionaries criticised him for it. But the faith he taught was the historic Christian faith: the Bible as the Word of God, salvation through Christ's death on the cross, his resurrection, and his return.
+
+He loved Japan fiercely all his life, even when Japan called him a traitor. He put his two loves this way: "I love two J's and no third; one is Jesus, and the other is Japan." But he knew which came first. In the front of his Bible he wrote the words he wanted on his grave: "I for Japan; Japan for the World; The World for Christ; And All for God." He died in Tokyo on 28 March 1930.
+
+The boy who prayed at a shrine against Christianity ended as one of the best-known Christian teachers his country ever produced. He was pushed through the door at sixteen. But nobody pushed him to stay. He stayed because, once inside, he had found the one God who did not need to be feared and appeased, and later the Saviour who had done for him what he could not do for himself.
+
+### In Their Own Words
+
+> "One God, and not many, was indeed a glad tiding to my little soul."
+> — Kanzo Uchimura, How I Became a Christian (1895)
+
+### Think It Through
+
+1. Uchimura signed the covenant under pressure from older students. Is a decision like that worth anything? What made his faith become real later, and who or what did that?
+2. Before he became a Christian, his religion made him "fretful" and "timid." What was it about the idea of one God that set him free? Are there things people today feel they have to keep "appeasing"?
+3. At sixteen he felt free, but at twenty-five he said he finally understood the cross. Can a person be truly following Jesus and still have a lot left to understand? What changed for him at Amherst?
+4. In 1891 Uchimura refused a bow he believed belonged only to God, and lost almost everything. How do you decide where respect ends and worship begins?
+
+### Read More on Ochorus
+
+There are not yet any of Kanzo Uchimura's own books in the library, but his full biography on his author page tells the rest of his story in more depth: his lonely years in America, the night he finally understood the cross at Amherst, the death of his daughter Ruth, and how an American friend's thirty years of daily prayer opened his eyes to the hope of Christ's return.
+
+## Richard Allen: The Night the Dungeon Shook
+
+Sometime around 1777, on a farm near Dover, Delaware, a seventeen-year-old slave named Richard could not sleep for fear.
+
+He had been working the fields by day and praying by night for a long time. He had heard Methodist preachers say that every person is a sinner who needs the mercy of God, and he believed it. He had even felt, for a few days, that he had found that mercy. Then the doubts came back. Perhaps he had fooled himself. Perhaps there was no mercy for someone like him. "My sins were a heavy burden," he wrote. "I was tempted to believe there was no mercy for me. I cried to the Lord both night and day. One night I thought hell would be my portion."
+
+We do not know where he was that night, in a slave cabin, in a field, or on the floor of the farmhouse kitchen. He did not say. What he did say, more than forty years later, is what happened when he cried out one more time to God: "all of a sudden my dungeon shook, my chains flew off, and glory to God, I cried. My soul was filled. I cried, enough for me—the Saviour died."
+
+Those words are strange and powerful when you remember who wrote them. Richard Allen was in real chains. He was owned by another man, and could be sold like a horse. And yet the chains he says flew off that night were not those. They were the chains of guilt and fear before God. The other chains, the ones made by human beings, he would have to work his way out of, coin by coin, over the next several years. But in his own mind, the first freedom came first, and it made the second one possible.
+
+### Born Owned
+
+Richard Allen was born on 14 February 1760, in Philadelphia, the largest city in Britain's American colonies. He was born a slave. His first owner was Benjamin Chew, a wealthy and powerful Philadelphia lawyer. In those years slavery was legal in every one of the thirteen colonies, north and south, and Black people were bought and sold in the markets of Philadelphia as they were in Virginia or Carolina.
+
+When Richard was still a small child, Chew sold the whole family, his mother, his father, and four children, to a farmer named Stokeley Sturgis, who lived near Dover in Delaware, about eighty miles south. Allen remembered Sturgis kindly. "He was more like a father to his slaves than any thing else," he wrote. "He was a very tender, humane man."
+
+But even a "kind" master is still a master, and kindness did not keep the family together. Sturgis got into debt and could not finish paying for the family he had bought. So he sold Richard's mother and three of the children away. Richard, an older brother and a sister stayed. Allen records the sale in a sentence or two, flatly, the way people sometimes write about the worst things that have happened to them. He tells us that his mother afterwards "sought the Lord" and became "a very pious woman," which means that somehow, at some point, he heard news of her. He does not tell us whether he ever saw her again.
+
+He also tells us the plain truth that hung over every enslaved person, even on the "best" farms: "slavery is a bitter pill, notwithstanding we had a good master." Sturgis was deep in debt. If he died, the slaves would be sold to pay what he owed, "to the highest bidder," to anyone at all. Allen remembered weeping over that thought. A teenager on the Sturgis farm could work hard, be honest, and be loved by his master, and still have no idea where he would be living next year, or with whom.
+
+### The Methodists Come to Delaware
+
+In the 1770s a new kind of preacher was riding the roads of Delaware and Maryland. They were called Methodists. The movement had begun in England with John Wesley and his brother Charles, who preached that anyone, rich or poor, educated or not, could know God's forgiveness personally through faith in Jesus Christ, and could be sure of it. Methodist preachers travelled on horseback from village to village and preached in barns, fields and private houses. They spoke plainly. And, unusually for that time, they preached to Black people as well as white, enslaved as well as free, and many early American Methodists spoke openly against slavery.
+
+Allen never forgot what that plain preaching meant to people like him. Other churches, he said, "preached so high-flown that we were not able to comprehend their doctrine." The Methodists spoke so that the unlearned could understand. "I feel thankful that ever I heard a Methodist preach," he wrote. "The Methodists were the first people that brought glad tidings to the coloured people."
+
+Allen does not give the year he first heard them or the name of the preacher. Historians usually place his conversion in 1777, when he was about seventeen. What he does tell us is the shape of what happened inside him. First he was "awakened," the Methodist word for waking up to the truth about yourself, "and brought to see myself poor, wretched and undone, and without the mercy of God must be lost." Then he "obtained mercy through the blood of Christ," and rejoiced. Then came the long, frightening season of doubt. And then came the night the dungeon shook.
+
+His picture of the dungeon is borrowed from the Bible and from Methodist hymns. In the book of Acts, Paul and Silas are locked in a prison at midnight, praying and singing, when "suddenly a strong earthquake shook the foundations of the prison. At once all the doors flew open and everyone's chains came loose." And Charles Wesley's hymn "And Can It Be," well known among early Methodists, describes a prisoner who wakes to find "the dungeon flamed with light; my chains fell off, my heart was free." Whether Allen was thinking of those words at the time or found them later to describe what he had felt, we cannot know. But it is easy to see why a young slave would reach for them.
+
+And notice what he cried out: "enough for me—the Saviour died." That is the centre of his faith, then and for the rest of his life. He did not find peace by becoming good enough. He found it by trusting that Jesus had died for him, and that this was enough.
+
+### Making Religion Respectable
+
+Allen's first instinct after his conversion was to tell people. "I was constrained to go from house to house," he wrote, "exhorting my old companions, and telling to all around what a dear Saviour I had found." He joined a Methodist "class," a small group that met weekly for prayer and to talk honestly about their spiritual lives. His met at the home of Benjamin Wells, out in the forest, led by a man named John Gray. He met in that class for several years.
+
+His older brother and his sister became Christians too. This made the neighbours nervous. They told Stokeley Sturgis that letting his slaves go to religious meetings would ruin him: they would get ideas, and stop working. So Richard and his brother had a talk together. They decided that nobody would be able to say religion had made them worse workers. They would work "night and day" to keep their crops ahead. When their work was behind, they skipped the meetings rather than give anyone an excuse.
+
+Allen remembered what happened next. Sturgis noticed that his young slaves were not going to their meetings and asked them why. They told him they would rather stay and get the work done. And their master, who was not a Christian himself, told them to go. Allen remembered his words: "Boys, I would rather you would go to your meeting: if I am not good myself, I like to see you striving yourselves to be good."
+
+Over time, Sturgis became convinced that, as Allen put it, "religion made slaves better and not worse." It is a painful sentence to read today. It shows how much Black Christians had to prove simply to be allowed to worship. But Allen was not trying to be a better slave. He was trying to be a faithful Christian, in a situation where faithfulness and survival were tangled together.
+
+### Weighed in the Balance
+
+Then Richard did something bold. He asked his master whether Methodist preachers could come and preach in the farmhouse itself. Sturgis, who was by now old and in poor health, agreed. Richard went to invite a preacher, who hesitated at first, because a slave had come with only his own word and no written note from the master. The class leader, John Gray, vouched for him. "My word was sufficient," Allen wrote with quiet satisfaction. Preaching at the Sturgis house began on a Wednesday and went on for months.
+
+One of the preachers who came was Freeborn Garrettson, a Methodist from Maryland who had freed his own slaves after his conversion. (Allen spells his name "Garrison.") Garrettson preached from a verse in the book of Daniel, in the words Allen remembered: "Thou art weighed in the balance, and art found wanting." In the Bible those words were written by a mysterious hand on a king's palace wall, a sign that God had judged him. Garrettson went through different kinds of people, one after another, and asked how they would look on God's scales. One of the kinds he named was slaveholders.
+
+Stokeley Sturgis was sitting in his own house, listening. "My master believed himself to be one of that number," Allen wrote, "and after that he could not be satisfied to hold slaves, believing it to be wrong."
+
+Sturgis did not simply set them free. He offered Richard and his brother the chance to buy their freedom, "to pay him sixty pounds gold and silver, or two thousand dollars continental money." That was a huge sum for a young man with nothing. The agreement was made around 1780, when Richard was about twenty. Allen leaves the year blank in his book, but other records show he finished paying by about 1783.
+
+He went out into the world with nothing but his hands. His first job was chopping firewood, and on the first day his hands blistered so badly he could barely open or close them. He knelt and prayed for God to make a way. He worked in a brickyard, did odd jobs, and during the American War of Independence drove a wagon hauling salt. Along his route he set up regular places to stop and preach. "While my hands were employed to earn my bread," he wrote, "my heart was devoted to my dear Redeemer." It was around this time that he took the surname Allen.
+
+When he left the Sturgis farm, he said it was "like leaving our father's house." That is a hard thing to hear from a man buying himself back from the person who owned him. But Allen was honest about both things at once: the man was kind, and slavery was a bitter pill. He did not pretend either one away.
+
+### What Came After
+
+After the war, Allen became a travelling preacher, walking and riding through Delaware, New Jersey, Pennsylvania and Maryland. He worked to support himself, so that, as he put it, "no man could say I was chargeable to the connexion." He preached to white congregations as well as Black. When the American Methodists formed their own church at Baltimore in 1784, he was there. Bishop Francis Asbury, the leader of American Methodism, invited him to travel with him through the South, but told him that there he must not mix with the slaves. Allen said no.
+
+In February 1786 he came to Philadelphia, the city of his birth, and was asked to preach at St. George's Methodist Church at five o'clock in the morning. He saw a huge need among the city's Black people, many of whom went to no church at all, and he preached sometimes four or five times a day. In 1787, with his friend Absalom Jones, another formerly enslaved man, he helped start the Free African Society, a group in which Black Philadelphians paid in small amounts to help one another in sickness, widowhood and death.
+
+Then came the moment that has made Allen famous. As more and more Black worshippers came to St. George's, the white leaders moved them from their usual seats to the walls, and then told them to go up to the gallery. One Sunday, Allen and his friends went up and knelt as the prayer began. Then he heard scuffling. He looked up and saw a church trustee pulling Absalom Jones up off his knees in the middle of the prayer, saying, "You must get up—you must not kneel here." Jones asked to be allowed to finish praying. The trustee refused and called for help. "By this time prayer was over," Allen wrote, "and we all went out of the church in a body, and they were no more plagued with us in the church." Allen gives no date for this. Historians have argued for 1787 and for around 1792, when the gallery was built; many now favour the later date, but it is still disputed.
+
+Allen and his friends set out to build a church of their own. Most of the group chose to join the Episcopal Church, and Absalom Jones became their minister. Allen would not leave the Methodists, who had brought him the gospel. In the deadly yellow fever epidemic of 1793, when thousands in Philadelphia died and anyone who could afford to fled, Allen and Jones organised Black volunteers to nurse the sick and bury the dead, in part because doctors wrongly believed Black people could not catch the disease. They were not immune, and many caught it. "We found a freedom to go forth," they wrote, "confiding in him who can preserve in the midst of a burning fiery furnace."
+
+In 1794, Allen bought an old blacksmith's shop, hauled it to a lot he owned on Sixth Street, and turned it into a church. Bishop Asbury preached at its opening, and it was named Bethel, "house of God," after the place where Jacob said, "This is none other than the house of God; this is the gate of heaven!" For years the white Methodist leaders tried to take control of the building. Bethel fought them, finally winning in Pennsylvania's Supreme Court. In April 1816, Black Methodist churches from Philadelphia, Baltimore and other places met and formed one body, the African Methodist Episcopal Church, the first fully independent Black denomination in the United States. Richard Allen was consecrated its first bishop. Today the AME Church has millions of members across the world.
+
+He spent the rest of his life serving his people and speaking against slavery. To slaveholders he wrote: "We wish you to consider, that God himself was the first pleader of the cause of slaves." He died in Philadelphia on 26 March 1831, at seventy-one, and was buried at Bethel. His own account of his life was published two years later.
+
+Bishop, builder, founder, campaigner: he became all of these. But it all grew out of one night on a Delaware farm, when a seventeen-year-old slave, who could have been sold the next day, cried out to God and found that "the Saviour died" was enough.
+
+### In Their Own Words
+
+> "All of a sudden my dungeon shook, my chains flew off, and glory to God, I cried. My soul was filled. I cried, enough for me—the Saviour died."
+> — Richard Allen, The Life, Experience, and Gospel Labours (1833)
+
+### Think It Through
+
+1. Allen says his chains "flew off" the night he was converted, while he was still legally a slave. What did he mean? Does that idea make slavery seem less wrong, or does his later life show it the other way round?
+2. Richard and his brother decided to work harder so that no one could say religion had made them worse. Was that wise, or unfair that they had to? When do Christians today feel they have to prove their faith by how they act?
+3. Freeborn Garrettson preached about being "weighed in the balance" in a slaveholder's own house. What would it take for a preacher to say that? What would it take for a listener to change?
+4. Allen stayed loyal to the Methodists even after they treated him badly, but he also refused to be pushed around. How did he hold those two things together?
+
+### Read More on Ochorus
+
+Richard Allen's own book, *The Life, Experience, and Gospel Labours*, is in the library, and it is short enough to read in an evening. It tells this story in his own words, from the farm in Delaware to the founding of the AME Church, and it also includes his and Absalom Jones's account of the yellow fever of 1793 and his addresses to slaveholders and to the free people of colour. His biography on his author page fills in the rest of his life.

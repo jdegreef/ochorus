@@ -120,7 +120,8 @@ export const SERIES_META: Record<string, { accent: string; emblem: EmblemName }>
 	'daughters-of-the-king': { accent: '#b0578a', emblem: 'alabaster-jar' }, // she hath done what she could
 	'sons-of-the-king': { accent: '#3f52a8', emblem: 'sword-and-shield' }, // strength under control
 	'straight-talk': { accent: '#c8702a', emblem: 'pilgrim-road' }, // the pilgrim's road, told plainly
-	anchored: { accent: '#1d7a83', emblem: 'rock-unmoved' } // an anchor for the soul, firm and secure
+	anchored: { accent: '#1d7a83', emblem: 'rock-unmoved' }, // an anchor for the soul, firm and secure
+	'they-were-young': { accent: '#b8862e', emblem: 'morning-star' } // let no one despise your youth
 };
 
 // ── Fallbacks ───────────────────────────────────────────────────────────────
