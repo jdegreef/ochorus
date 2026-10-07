@@ -94,6 +94,11 @@ EXPORT_PILOT = frozenset({
     ("talks-to-the-farmer-teens", "en"),
     ("the-life-of-trust-children", "en"),
     ("the-life-of-trust-teens", "en"),
+    # Retellings of an Ochorus Original (the Portraits of Courage life): the
+    # parent author is the imprint, so, like the Portraits themselves, these have
+    # no About the Author page. The Teens edition quotes only the public-domain ASV.
+    ("samuel-ajayi-crowther-a-life-children", "en"),
+    ("samuel-ajayi-crowther-a-life-teens", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices
@@ -381,6 +386,34 @@ TRANSLATIONS: dict[str, frozenset[str]] = {
         "waiting-on-god",
         "watchman-nee-a-life",
         "women-who-moved-heaven-2",
+    }),
+    "lg": frozenset({
+        "all-of-grace",
+        "baptism-with-the-holy-spirit",
+        "brave-for-god",
+        "brave-for-god-2",
+        "brave-for-god-3",
+        "brave-for-god-4",
+        "cheque-book",
+        "clothed-with-strength-and-dignity",
+        "days-of-heaven-upon-earth",
+        "divine-songs-for-children",
+        "godliness",
+        "growing-in-wisdom",
+        "humility-2",
+        "jesus-himself-2",
+        "lord-teach-us-to-pray-2",
+        "pilgrims-progress-words-of-one-syllable",
+        "prevailing-prayer",
+        "purity-of-heart",
+        "talks-to-the-farmer",
+        "the-fourfold-gospel",
+        "the-god-of-all-comfort",
+        "the-inner-chamber",
+        "the-person-and-work-of-the-holy-spirit",
+        "the-unselfishness-of-god",
+        "the-way-to-god",
+        "waiting-on-god",
     }),
 }
 
