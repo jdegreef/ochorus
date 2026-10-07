@@ -11231,6 +11231,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"sw/pilgrims-progress-teens": {
+			"ground": "e91cff80cfded2d38e2525decea9d258057295ab5422b8d2c4f81cd21fd653e1",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
 			"ground": "efd0c70864b88710b803baab12704e16b171fb6c215b6da7b938a025af3d8785",
 			"style": "young",

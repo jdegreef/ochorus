@@ -1,0 +1,172 @@
+{
+ "kind": "book",
+ "slug": "pilgrims-progress-teens",
+ "language": "sw",
+ "job_issue": 5416,
+ "pull_request": 5445,
+ "note": [
+  "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible is egress-blocked here, its swhonen text is a different edition from the corpus anyway, and the mirrored Swahili Bibles are licensed or off-tradition — see the translation-worker skill). Every `mined` row was re-measured against the finished text: the quoted Union wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped sw file. The English epigraphs are ESV (Psalm 42:5 is WEB) and carry a version tag; this edition drops the tag because the wording shown is Union, not ESV, and drops the ESV permission sentence from the attribution for the same reason.",
+  "Self-rendered in Union register and unverified: Psalm 38:4, Psalm 42:5 and the first clause of Revelation 2:10 (none is in the shipped sw corpus). Several mined rows are a contiguous PART of a longer Union verse or follow the Union where the ESV words differ (Mark 8:38 opens “Basi”; 1 Thessalonians 5:6 is the shipped Pilgrim's Progress rendering without “So then”); Psalm 116:4 keeps Bunyan's “nakusihi” (I beseech thee), which the teen retelling's English drops. Micah 7:8, James 4:7, James 1:22 and Ecclesiastes 4:9 are uncited allusions in the English rendered with the corpus's Union wording.",
+  "Character and place names follow the shipped sw Pilgrim's Progress editions (Mkristo, Mgeugeu, Mkaidi, Mwinjilisti, Bwana Mwenye-Hekima-ya-Dunia, Sheria, Nia-Njema, Mfasiri, Tamaa na Saburi, Mfuata-Desturi, Mnafiki, Mwoga, Kutoamini, Hadhari, Busara, Utauwa, Upendo, Apolioni, Bonde la Unyenyekevu, Bonde la Uvuli wa Mauti, Mwaminifu, Adamu wa Kwanza, Aibu, Mnenaji, Soko la Ubatili, Mwenye-Tumaini, Faida-Binafsi, Usemi-Mtamu, Dema, Kilima Faida, Uwanja wa Njia-ya-Kando, Jitu Kata-Tamaa, Kutojiamini, Ngome ya Mashaka, Ahadi, Milima ya Kupendeza, Makosa, Tahadhari, Mbembelezi, Nchi ya Kuloga, Ujinga, Imani-Ndogo, Beula, Tumaini-Bure, Wenye Kung’aa, Mji wa Mbinguni). Bunyan's own lines the retelling quotes reuse that edition's wording where it matches (the key Promise, “Twanunua kweli”, “naugusa udongo, nao ni mzuri”, “njia ya kwenda jehanamu, hata kutoka lango la mbinguni”). Title suffix “(Kwa Vijana)” matches the shipped sw teens editions (a-retrospect-teens, talks-to-the-farmer-teens) beside the children's “(Kwa Watoto)”; like them, epigraphs carry no version tag. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Psalm 38:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Psalm 40:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "waiting-on-god.sw.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "do-you-pray.sw.json"
+  },
+  {
+   "reference": "Matthew 7:7",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 3,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "1 Peter 2:24",
+   "status": "mined",
+   "block_index": 6,
+   "chapter_order": 4,
+   "source_file": "till-he-come.sw.json"
+  },
+  {
+   "reference": "Hebrews 12:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "way-into-holiest.sw.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Micah 7:8",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "James 4:7",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress-children.sw.json"
+  },
+  {
+   "reference": "Psalm 116:4",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 6,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Psalm 23:4",
+   "status": "mined",
+   "block_index": 7,
+   "chapter_order": 6,
+   "source_file": "women-who-moved-heaven-2.sw.json"
+  },
+  {
+   "reference": "Mark 8:38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "what-it-costs-not-to-be-a-christian.sw.json"
+  },
+  {
+   "reference": "Ecclesiastes 4:9",
+   "status": "mined",
+   "block_index": 1,
+   "chapter_order": 7,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "James 1:22",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 7,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "Revelation 2:10a",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Revelation 2:10b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "watchman-nee-a-life.sw.json"
+  },
+  {
+   "reference": "Matthew 6:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "god-or-mammon.sw.json"
+  },
+  {
+   "reference": "Matthew 6:24b",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "god-or-mammon.sw.json"
+  },
+  {
+   "reference": "Psalm 42:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "1 Thessalonians 5:6",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "pilgrims-progress.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  },
+  {
+   "reference": "Isaiah 43:2",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 12,
+   "source_file": "men-and-women-who-gave-everything-2.sw.json"
+  }
+ ]
+}
