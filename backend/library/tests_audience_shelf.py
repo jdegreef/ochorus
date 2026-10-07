@@ -13,12 +13,14 @@ from pathlib import Path
 from django.test import TestCase
 
 from .models import (
+    Article,
     Author,
     Book,
     Plan,
     PlanDay,
     Series,
     Topic,
+    TopicArticle,
     TopicBook,
     TopicTranslation,
 )
@@ -112,6 +114,20 @@ class AudienceShelfTests(TestCase):
         self._book("north-wind")
         self._book("north-wind-children")  # not in it
         self.assertEqual(self._get()["printable"], ["brave-for-god"])
+
+    def test_articles_are_the_topics_here_in_its_order(self):
+        teens = Topic.objects.create(slug="for-teens", title="For Teens", is_published=True)
+        for slug, order in (("is-the-bible-reliable", 2), ("can-i-have-doubts", 1)):
+            TopicArticle.objects.create(topic=teens, article_slug=slug, sort_order=order)
+            Article.objects.create(slug=slug, language="en", h1=slug, body_html="<p>x</p>", is_published=True)
+        Article.objects.create(slug="can-i-have-doubts", language="sw", h1="sw", body_html="<p>x</p>", is_published=True)
+        self.assertEqual(
+            self._slugs(self._get("teens")["articles"]), ["can-i-have-doubts", "is-the-bible-reliable"]
+        )
+        # Swahili has one article, but no Swahili topic title: no shelf, no articles.
+        self.assertEqual(self._get("teens", "sw")["articles"], [])
+        TopicTranslation.objects.create(topic=teens, language="sw", title="Kwa Vijana")
+        self.assertEqual(self._slugs(self._get("teens", "sw")["articles"]), ["can-i-have-doubts"])
 
     def test_an_unknown_audience_is_not_found(self):
         self.assertEqual(self.client.get(self.URL.format("adults", "en")).status_code, 404)
