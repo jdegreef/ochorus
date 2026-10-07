@@ -3,7 +3,7 @@
  "slug": "amanda-smith-autobiography-children",
  "language": "fr",
  "job_issue": 5374,
- "pull_request": null,
+ "pull_request": 5396,
  "note": [
   "The English retelling quotes the King James Version in each chapter's opening blockquote; the French quotes the Louis Segond (1910) wording, using its numbering (Psalm 56:3 KJV is Psaume 56:4 in Segond). Seven epigraphs are mined: the exact wording appears in the cited shipped French file. The other epigraphs (James 5:16, Matthew 25:35, Proverbs 4:7, Psalm 91:11, Matthew 18:5) are Segond wording from memory with no shipped French file carrying them, so they are self_rendered; api.takeroot.bible was egress-blocked from this session.",
   "Body echoes of a verse in the closing lesson/prayer paragraphs (Colossians 3:15, Psalm 91:11, Matthew 18:5 at block 6) are child-register paraphrases, self_rendered. Block indices mirror the English (tag sequence identical chapter by chapter). AI-translated in-session; awaiting native review."
