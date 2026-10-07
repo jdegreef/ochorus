@@ -1,0 +1,139 @@
+{
+ "kind": "book",
+ "slug": "a-retrospect-children",
+ "language": "sw",
+ "job_issue": 5372,
+ "pull_request": null,
+ "note": [
+  "The English epigraphs are loose modern paraphrases cited by chapter only (“from John 19”). Each was rendered in the Swahili Union Version (SUV) tradition the shipped sw corpus quotes, not in swhonen (a different, revised edition — see the translation-worker skill). Where a shipped *.sw.json already carries the SUV words, they were pasted verbatim and the row is `mined` with that file; otherwise the row is `self_rendered` in the SUV register and needs a native check.",
+  "Self-rendered choices worth a reviewer's eye: Psalm 107:29-30 is a two-verse conflation shortened as the English does; Luke 6:37 uses “Sameheni, nanyi mtasamehewa” (the forgive/samehe wording children will connect with the chapter) rather than SUV “achilieni, nanyi mtaachiliwa”; Genesis 22:14 “Bwana atatoa riziki” follows the corpus's gloss of Yehova-yire; the second wall sign in chapter 11 (“The Lord has helped us all the way”, an Ebenezer allusion, 1 Samuel 7:12) is rendered plainly, not quoted from SUV.",
+  "Clock time: chapter 4's “about ten o'clock” at night is CONVERTED to Swahili reckoning (“saa nne usiku”) so a Swahili-reading child hears the right hour; flag if the house convention should keep the printed number."
+ ],
+ "references": [
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 3,
+   "chapter_order": 1,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "John 19:30",
+   "status": "mined",
+   "block_index": 5,
+   "chapter_order": 1,
+   "source_file": "spurgeon-on-prayer.sw.json"
+  },
+  {
+   "reference": "James 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "divine-healing.sw.json"
+  },
+  {
+   "reference": "Matthew 5:42",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Matthew 6:8",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "school-of-prayer.sw.json"
+  },
+  {
+   "reference": "Psalm 118:17",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "Psalm 107:29-30",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Jeremiah 33:3",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 9:22",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Hebrews 13:5",
+   "status": "mined",
+   "block_index": 4,
+   "chapter_order": 9,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  },
+  {
+   "reference": "Luke 6:37",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "1 Samuel 7:12",
+   "status": "self_rendered",
+   "block_index": 1,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Genesis 22:14",
+   "status": "self_rendered",
+   "block_index": 4,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Matthew 9:38",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "days-of-heaven-upon-earth.sw.json"
+  }
+ ]
+}
