@@ -1,0 +1,102 @@
+{
+ "kind": "book",
+ "slug": "the-life-of-trust-children",
+ "language": "es",
+ "job_issue": 4815,
+ "note": [
+  "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from Isaiah 53”), and the body echoes verses in the same retold register. The Spanish renders those paraphrases in the same simple, child-friendly wording rather than pasting the Reina-Valera (rv1858) text, whose 19th-century register would break the edition's voice; api.takeroot.bible was egress-blocked from this session in any case.",
+  "References and block indices mirror the English structure exactly (tag sequence identical chapter by chapter), so they are the same rows as the am edition's notes. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "Isaiah 53:6",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 1
+  },
+  {
+   "reference": "Luke 15:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "James 5:16",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Philippians 4:19",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Matthew 6:11",
+   "status": "self_rendered",
+   "block_index": 6,
+   "chapter_order": 5
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Psalm 81:10",
+   "status": "self_rendered",
+   "block_index": 2,
+   "chapter_order": 6
+  },
+  {
+   "reference": "2 Corinthians 9:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Psalm 68:5",
+   "status": "self_rendered",
+   "block_index": 5,
+   "chapter_order": 8
+  },
+  {
+   "reference": "Isaiah 65:24",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 9
+  },
+  {
+   "reference": "Psalm 34:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Matthew 6:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "James 1:4",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
