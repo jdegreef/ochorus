@@ -86,7 +86,7 @@ describe('AUDIENCE_HUBS', () => {
 describe('each hub', () => {
 	it('has its share card, where AudienceHub points (`npm run og:pages`)', () => {
 		for (const h of AUDIENCE_HUBS) {
-			expect(existsSync(resolve(__dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
+			expect(existsSync(resolve(import.meta.dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
 		}
 	});
 });

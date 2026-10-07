@@ -1437,13 +1437,10 @@ export interface AudienceShelf {
 	printable: string[];
 	/** Every language the hub has something in — its hreflang and sitemap. */
 	languages: string[];
-	/** The reading age the hub is for — its schema.org
-	 *  audience. Optional: an API behind this build omits it. */
-	ages?: Ages;
 }
 
-/** A reading age — a series' own fields, which a book's and a hub's reuse, so
- *  `seriesAges` words all three. `max_age` null = "and up". */
+/** A reading age — a series' own fields, which a book's reuse, so
+ *  `seriesAges` words both. `max_age` null = "and up". */
 export interface Ages {
 	min_age: number;
 	max_age: number | null;

@@ -15,7 +15,7 @@ from rest_framework.test import APIClient
 from accounts.models import UserProfile
 from reading.models import PlanProgress, ReadingProgress, WorkKind
 
-from .models import Author, Book, Plan, PlanDay
+from .models import Author, Book, Plan, PlanDay, Topic, TopicBook
 
 User = get_user_model()
 
@@ -54,8 +54,17 @@ class YoungReadersEngagementTests(TestCase):
         ReadingProgress.objects.create(
             profile=two, kind=WorkKind.BOOK, book_slug="pilgrims-progress-children"
         )
-        # The full text is no hub's book.
+        # The full text is no hub's book — nor is a classic on the teens' topic
+        # shelf, which readers of every age open.
         ReadingProgress.objects.create(profile=three, kind=WorkKind.BOOK, book_slug="pilgrims-progress")
+        Book.objects.create(author=author, slug="all-of-grace", language="en", title="All of Grace", is_published=True)
+        topic = Topic.objects.create(slug="for-teens", title="For Teens", is_published=True)
+        TopicBook.objects.create(topic=topic, book_slug="all-of-grace")
+        ReadingProgress.objects.create(profile=three, kind=WorkKind.BOOK, book_slug="all-of-grace")
+        # A draft plan of nothing but the children's edition is no hub's plan.
+        draft = Plan.objects.create(slug="draft", language="en", title="Draft", is_published=False)
+        PlanDay.objects.create(plan=draft, day=1, book_slug="pilgrims-progress-children", chapter_order=1)
+        PlanProgress.objects.create(profile=three, plan_slug="draft", done=[1], started_at=timezone.now())
         PlanProgress.objects.create(profile=one, plan_slug="family", done=[1, 2], started_at=timezone.now())
         PlanProgress.objects.create(profile=two, plan_slug="mixed", done=[1], started_at=timezone.now())
 
