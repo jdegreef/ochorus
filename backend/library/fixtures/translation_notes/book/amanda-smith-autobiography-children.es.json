@@ -1,0 +1,90 @@
+{
+ "kind": "book",
+ "slug": "amanda-smith-autobiography-children",
+ "language": "es",
+ "job_issue": 4821,
+ "note": [
+  "Each chapter quotes exactly one verse, its opening epigraph (block 0); the English quotes no other scripture. Scripture authority is the shipped es corpus (modern Reina-Valera register), per the translation-worker skill — the ebible spa_rv is archaic RV1909 and was not used.",
+  "`mined` rows are a verbatim substring of the cited file's rendering of that verse. Where the English epigraph quotes only part of a verse, the Spanish quotes the same part of the corpus wording (Gálatas 5:1 follows the corpus's clause order, «Para libertad nos hizo libres Cristo; estad, pues, firmes»; Marcos 11:24 stops before «y os vendrá», as the English stops before 'and ye shall have them').",
+  "`self_rendered` rows are written in RVR1960 register from the translator's knowledge of that text, not pasted from a source: please check them. Lucas 16:10 matches the wording of the shipped article what-makes-a-godly-leader.es, but articles are not a checkable mined source, so it is recorded as self_rendered."
+ ],
+ "references": [
+  {
+   "reference": "Gálatas 5:1",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "holy-in-christ.es.json"
+  },
+  {
+   "reference": "Santiago 5:16",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 2,
+   "source_file": "school-of-prayer.es.json"
+  },
+  {
+   "reference": "Mateo 25:35",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 3
+  },
+  {
+   "reference": "Proverbios 4:7",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 4
+  },
+  {
+   "reference": "Juan 6:37",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Lucas 16:10",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 6
+  },
+  {
+   "reference": "Salmos 56:3",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 7
+  },
+  {
+   "reference": "Marcos 11:24",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "divine-healing.es.json"
+  },
+  {
+   "reference": "Isaías 43:2",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "pilgrims-progress.es.json"
+  },
+  {
+   "reference": "Proverbios 16:32",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 10
+  },
+  {
+   "reference": "Salmos 91:11",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 11
+  },
+  {
+   "reference": "Mateo 18:5",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 12
+  }
+ ]
+}
