@@ -3,7 +3,7 @@
  "slug": "all-of-grace-teens",
  "language": "pt",
  "job_issue": 5452,
- "pull_request": null,
+ "pull_request": 5528,
  "note": [
   "Scripture follows the Almeida-register Portuguese the shipped pt corpus quotes (api.takeroot.bible is egress-blocked from this session). Every `mined` row was re-measured against the finished text: the quoted wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped pt file. The English epigraphs are ESV and carry a version tag; this edition drops the tag because the wording shown is the pt corpus's, not the ESV.",
   "Spurgeon's own lines are pasted verbatim from the shipped full edition all-of-grace.pt.json rather than re-translated. 1 Peter 2:24 is self_rendered: the wording (“levou o meu pecado em Seu próprio corpo sobre o madeiro”) is verbatim from all-of-grace.pt.json, but Spurgeon re-personed the verse (“my sin”), so it is his adaptation, not a Bible rendering. Romans 10:17 follows the corpus's “palavra de Deus” where the ESV reads “word of Christ”. John 3:14–18 (ch5), Luke 23 (ch3) and Matthew 11:28 / Ezekiel 36:26 / Romans 5:6 in the closing exercises are cited by reference; where words are quoted they reuse the same mined wording.",
