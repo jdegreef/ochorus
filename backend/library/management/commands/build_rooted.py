@@ -949,6 +949,72 @@ ANCHORED: dict[int, dict[str, object]] = {
             },
         ],
     },
+    2: {
+        "sort_order": 140,
+        "publication_year": 2026,
+        "title": "Anchored – 30 Days with God for Teens – Book 2",
+        "subtitle": "Real Life: faith for the mind, the screen, the heart and the home",
+        "cover_url": "/covers/anchored-2.svg",
+        "cover_color": covers.ink_safe("#2a4f7a"),  # a storm-sea blue
+        "attribution": (
+            "An Ochorus Original, written for teenage readers. Scripture quotations "
+            "are from the Berean Standard Bible (BSB), which is in the public domain."
+        ),
+        "description": (
+            "Thirty daily devotions for readers aged 13 to 17 about real life: "
+            "worry, fear, anger and the pressure to be perfect; phones, games, "
+            "cruelty online, crushes and dating; and conflict at home, divorce, "
+            "grief, failure and the secrets we carry. Each day has a Bible passage, "
+            "an honest teaching, a question, something to try, a prayer, and a "
+            "pointer to a classic in the library that goes deeper. The second book "
+            "of Anchored."
+        ),
+        "about_html": (
+            "<p>Anchored is an original Ochorus devotional series for readers aged "
+            "13 to 17, and this is its second book. Book 1 asked whether the faith "
+            "is true and who we are in Christ. Book 2 takes that faith into the "
+            "places a teenager actually lives: their own head, their phone, their "
+            "friendships and their home.</p>"
+            "<p>It has three parts of ten days. “My Mind” is about worry, fear, "
+            "thoughts that won’t leave, perfectionism, anger, jealousy, boredom, "
+            "body image and rest. “My Screens and My Heart” is about who is in "
+            "charge of the phone, what fills the mind, games, cruelty online, "
+            "influencers, crushes, dating, breakups and friend drama. “My People "
+            "and My Pain” is about conflict at home, parents who split up, "
+            "brothers and sisters, forgiving and saying sorry, grief, failure, "
+            "the secrets we carry and wanting more.</p>"
+            "<p>The hard days speak plainly and point readers to a parent or "
+            "trusted adult. Every day ends with “Go deeper”: one chapter from a "
+            "classic in the Ochorus library. Scripture is quoted from the Berean "
+            "Standard Bible, and Book 2 can be read without Book 1.</p>"
+        ),
+        "qa": [
+            {
+                "question": "What is Book 2 of Anchored about?",
+                "answer": "Real life. Thirty daily devotions for readers aged 13 to 17 on what goes on in their minds (worry, fear, anger, perfectionism, body image), on their screens and in their hearts (phones, games, online cruelty, crushes, dating, breakups), and at home (conflict, divorce, grief, failure, shame).",
+            },
+            {
+                "question": "Do I need to read Book 1 first?",
+                "answer": "No. Book 2 stands on its own, and its introduction explains how each day works. Book 1 looks at whether the faith is true and who we are in Christ, so reading it first helps, but you can start here.",
+            },
+            {
+                "question": "How does it handle dating and relationships?",
+                "answer": "Honestly and at an age-appropriate level. It respects that families and cultures differ about dating, tells readers that no one has the right to pressure them, and points them to a parent or trusted adult for the questions that matter most.",
+            },
+            {
+                "question": "Does it help with grief or a family breaking up?",
+                "answer": "Yes. Part 3 has days on parents who split up and on the death of someone you love. They say plainly that it is not your fault, that grief has no timetable, and that a reader whose sadness will not lift should tell a parent or trusted adult.",
+            },
+            {
+                "question": "What is the Go deeper section?",
+                "answer": "Each day ends by pointing to one chapter of a classic in the library where believers long ago faced the same struggle and found God faithful. All of them are free to read.",
+            },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Every Scripture is quoted from the Berean Standard Bible (BSB), a modern and readable translation that is in the public domain.",
+            },
+        ],
+    },
 }
 
 # The title each series' covers set in place of the full one — the series
