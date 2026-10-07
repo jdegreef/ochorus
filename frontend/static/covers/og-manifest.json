@@ -9652,6 +9652,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"pt/pilgrims-progress-teens": {
+			"ground": "a01db1f11b76ce14e72633bb5acab05d142e404270b2c3af70ff5899a663d4eb",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"pt/power-through-prayer": {
 			"ground": "697f92b1607f5bc979926efdcb7fcdca8b5fd89e78bb08617f001043cedbe71a",
 			"style": "devotional",
