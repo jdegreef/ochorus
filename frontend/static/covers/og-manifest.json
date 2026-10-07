@@ -3641,6 +3641,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"es/a-retrospect-children": {
+			"ground": "2678dffbe7b0d8216c78319d04cfefa789573f0ce690fd4716d28a577088666f",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"es/a-short-and-easy-method-of-prayer": {
 			"ground": "c75f9e14f8a2a0e87fcbe1018606942b7134b37ce232ff3de18a78afd4693e99",
 			"style": "devotional",
