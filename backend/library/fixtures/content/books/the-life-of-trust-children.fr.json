@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "fr",
+  "title": "Une vie de confiance (pour les enfants)",
+  "subtitle": "",
+  "description": "George Müller a pris soin de milliers d’orphelins en Angleterre, et il l’a fait sans rien demander à personne d’autre que Dieu — ni l’argent, ni la nourriture, ni l’aide dont il avait besoin — en priant. Cette édition pour les enfants raconte la véritable histoire de sa vie en courts chapitres faits pour être lus à voix haute : un verset de la Bible, l’histoire d’une prière à laquelle Dieu a répondu, une chose que cela veut dire pour toi, et une courte prière.",
+  "qa": [
+   {
+    "question": "De quoi parle Une vie de confiance (pour les enfants) ?",
+    "answer": "C’est une version pour les enfants de l’histoire de sa vie racontée par George Müller lui-même. Müller s’est occupé de milliers d’orphelins en Angleterre, et au lieu de demander de l’argent aux gens, il le demandait à Dieu — et Dieu a pourvu, encore et encore. Chaque court chapitre raconte une histoire vraie d’une prière à laquelle Dieu a répondu."
+   },
+   {
+    "question": "Qui était George Müller ?",
+    "answer": "Un homme qui a vécu en Angleterre il y a longtemps et qui a construit des maisons où l’on prenait soin de milliers d’orphelins — des enfants qui n’avaient plus ni maman ni papa. Il avait décidé de ne jamais demander à personne d’autre que Dieu ce dont les enfants avaient besoin, et il notait comment Dieu répondait à ses prières, pour que d’autres fassent eux aussi confiance à Dieu."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte une histoire vraie de la vie de George Müller, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière."
+   },
+   {
+    "question": "À qui s’adresse ce livre ?",
+    "answer": "Aux enfants — pour être lu à voix haute par un adulte, ou lu seul par un enfant plus grand. L’autobiographie plus complète de George Müller, Une vie de confiance, existe aussi pour les lecteurs plus âgés."
+   },
+   {
+    "question": "Quelle est la chose principale que ce livre enseigne ?",
+    "answer": "Que Dieu entend la prière et qu’il y répond, et qu’on peut compter sur lui pour donner ce dont nous avons vraiment besoin. La vie de George Müller est une longue histoire vraie : il demandait de l’aide à Dieu et il voyait Dieu pourvoir. Ainsi, les enfants peuvent apprendre à lui faire confiance, eux aussi."
+   },
+   {
+    "question": "Les histoires sont-elles vraies ?",
+    "answer": "Oui. Elles sont racontées simplement pour les enfants, mais elles viennent du récit que George Müller a fait lui-même de sa vie — les vraies maisons d’orphelins qu’il a construites et les vraies prières auxquelles Dieu a répondu, qu’il notait au fur et à mesure."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Un récit d’Ochorus pour les jeunes lecteurs, d’après The Life of Trust de George Müller, qui appartient au domaine public. Ce récit est le nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "La pièce dans la chaussure",
+  "body_html": "<blockquote>« Nous étions tous errants comme des brebis. » — d’après Ésaïe 53</blockquote> <p>Croirais-tu que l’homme qui a pris soin de milliers d’orphelins était un voleur quand il était petit ? C’est vrai. Il s’appelait George Müller, et quand il était jeune, il n’était pas sage du tout.</p> <p>George aimait prendre de l’argent qui n’était pas à lui. Un jour, son père a voulu savoir si George volait. Alors il a compté de l’argent, l’a laissé dans la pièce et il est sorti, pour voir s’il en manquerait.</p> <p>George est resté seul avec l’argent. Et qu’a-t-il fait ? Il en a pris — et il a caché une pièce sous son pied, dans sa chaussure ! Mais quand son père est revenu et a compté, l’argent avait disparu. On a fouillé George, et voilà la pièce, cachée dans sa chaussure.</p> <p>George ne s’est pas arrêté là. En grandissant, il a dit des mensonges et dépensé de l’argent qu’il n’avait pas, jusqu’au jour où, à seize ans, il a même été mis en prison pendant quelque temps.</p> <p>Alors, pourquoi sa véritable histoire commence-t-elle par toutes les mauvaises choses qu’il a faites ? Parce que cela rend la suite tellement merveilleuse. Dieu n’en avait pas fini avec George. Dieu peut prendre un garçon qui ment et qui vole, le changer complètement — et un jour se servir de lui pour aider plus d’enfants que George ne pourrait en compter.</p> <p>Alors, si tu as fait de mauvaises choses, ne pense jamais que tu es trop méchant pour Dieu. Personne ne l’est. Dieu aime changer les cœurs.</p> <p><em>Seigneur, merci parce que tu peux changer n’importe qui, même moi. S’il te plaît, rends mon cœur bon et pur. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Où le jeune George a-t-il caché la pièce qu’il avait prise à son père ?",
+    "answer": "Il l’a cachée sous son pied, dans sa chaussure. Quand son père a compté l’argent et l’a fouillé, on a trouvé la pièce là."
+   },
+   {
+    "question": "Pourquoi l’histoire de George commence-t-elle par toutes les mauvaises choses qu’il a faites ?",
+    "answer": "Parce que cela rend la suite tellement merveilleuse : Dieu n’en avait pas fini avec George, et Dieu peut changer complètement un garçon qui ment et qui vole."
+   },
+   {
+    "question": "T’est-il déjà arrivé de penser que tu étais trop méchant pour que Dieu t’aime ? Que dit l’histoire de George à ce sujet ?",
+    "answer": "Ce que nous apprend ce chapitre : personne n’est trop méchant pour Dieu. Dieu aime changer les cœurs, et il peut rendre notre cœur bon et pur."
+   }
+  ],
+  "body_text": "« Nous étions tous errants comme des brebis. » — d’après Ésaïe 53 Croirais-tu que l’homme qui a pris soin de milliers d’orphelins était un voleur quand il était petit ? C’est vrai. Il s’appelait George Müller, et quand il était jeune, il n’était pas sage du tout. George aimait prendre de l’argent qui n’était pas à lui. Un jour, son père a voulu savoir si George volait. Alors il a compté de l’argent, l’a laissé dans la pièce et il est sorti, pour voir s’il en manquerait. George est resté seul avec l’argent. Et qu’a-t-il fait ? Il en a pris — et il a caché une pièce sous son pied, dans sa chaussure ! Mais quand son père est revenu et a compté, l’argent avait disparu. On a fouillé George, et voilà la pièce, cachée dans sa chaussure. George ne s’est pas arrêté là. En grandissant, il a dit des mensonges et dépensé de l’argent qu’il n’avait pas, jusqu’au jour où, à seize ans, il a même été mis en prison pendant quelque temps. Alors, pourquoi sa véritable histoire commence-t-elle par toutes les mauvaises choses qu’il a faites ? Parce que cela rend la suite tellement merveilleuse. Dieu n’en avait pas fini avec George. Dieu peut prendre un garçon qui ment et qui vole, le changer complètement — et un jour se servir de lui pour aider plus d’enfants que George ne pourrait en compter. Alors, si tu as fait de mauvaises choses, ne pense jamais que tu es trop méchant pour Dieu. Personne ne l’est. Dieu aime changer les cœurs. Seigneur, merci parce que tu peux changer n’importe qui, même moi. S’il te plaît, rends mon cœur bon et pur. Amen.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "La porte ouverte",
+  "body_html": "<blockquote>« Comme il était encore loin, son père le vit et courut vers lui. » — d’après Luc 15</blockquote> <p>Un samedi soir, quand George était un jeune homme, son ami l’a emmené dans une maison où des chrétiens se réunissaient. George se sentait timide. Il n’était jamais allé dans un endroit pareil.</p> <p>À l’intérieur, les gens lisaient la Bible ensemble, ils chantaient, et puis il s’est passé quelque chose que George n’a jamais oublié. Un homme s’est mis à genoux pour prier. George n’avait jamais vu personne prier à genoux — il n’avait même jamais prié à genoux lui-même. Cela l’a touché tout au fond de son cœur.</p> <p>Le gentil monsieur à qui appartenait la maison voyait bien que George ne se sentait pas à sa place. Alors il lui a dit la plus belle chose qui soit : « Viens aussi souvent que tu le voudras. Ma maison et mon cœur te sont ouverts. »</p> <p>Ce soir-là, George est rentré chez lui — et au lieu de se sentir vide et agité comme d’habitude, il s’est couché dans son lit, en paix et heureux. Quelque chose de tout nouveau avait commencé en lui. Plus tard, il a dit que c’était le grand tournant de toute sa vie. C’est cette nuit-là que George est revenu à Dieu.</p> <p>Dieu est comme ce gentil monsieur à la porte, mais il est bien, bien plus gentil encore. Même si tu t’es éloigné de lui très loin, son cœur t’est ouvert. Tu n’as jamais besoin d’être assez sage d’abord. Tu as juste besoin de venir.</p> <p><em>Seigneur, merci parce que ton cœur m’est toujours ouvert. Je veux venir à toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que George a vu chez les chrétiens qu’il n’avait jamais vu avant ?",
+    "answer": "Un homme s’est mis à genoux pour prier. George n’avait jamais vu personne prier à genoux, et cela l’a touché au fond de son cœur."
+   },
+   {
+    "question": "Quelles paroles gentilles le maître de la maison a-t-il dites à George ?",
+    "answer": "Il a dit : « Viens aussi souvent que tu le voudras. Ma maison et mon cœur te sont ouverts. » George est rentré chez lui en paix et heureux."
+   },
+   {
+    "question": "Faut-il être assez sage avant de pouvoir venir à Dieu ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu est comme ce gentil monsieur à la porte, mais bien plus gentil encore. Son cœur t’est ouvert, et tu as juste besoin de venir."
+   }
+  ],
+  "body_text": "« Comme il était encore loin, son père le vit et courut vers lui. » — d’après Luc 15 Un samedi soir, quand George était un jeune homme, son ami l’a emmené dans une maison où des chrétiens se réunissaient. George se sentait timide. Il n’était jamais allé dans un endroit pareil. À l’intérieur, les gens lisaient la Bible ensemble, ils chantaient, et puis il s’est passé quelque chose que George n’a jamais oublié. Un homme s’est mis à genoux pour prier. George n’avait jamais vu personne prier à genoux — il n’avait même jamais prié à genoux lui-même. Cela l’a touché tout au fond de son cœur. Le gentil monsieur à qui appartenait la maison voyait bien que George ne se sentait pas à sa place. Alors il lui a dit la plus belle chose qui soit : « Viens aussi souvent que tu le voudras. Ma maison et mon cœur te sont ouverts. » Ce soir-là, George est rentré chez lui — et au lieu de se sentir vide et agité comme d’habitude, il s’est couché dans son lit, en paix et heureux. Quelque chose de tout nouveau avait commencé en lui. Plus tard, il a dit que c’était le grand tournant de toute sa vie. C’est cette nuit-là que George est revenu à Dieu. Dieu est comme ce gentil monsieur à la porte, mais il est bien, bien plus gentil encore. Même si tu t’es éloigné de lui très loin, son cœur t’est ouvert. Tu n’as jamais besoin d’être assez sage d’abord. Tu as juste besoin de venir. Seigneur, merci parce que ton cœur m’est toujours ouvert. Je veux venir à toi. Amen.",
+  "word_count": 276
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "Des amis qui pleurent grâce à la prière",
+  "body_html": "<blockquote>« Priez les uns pour les autres. » — d’après Jacques 5</blockquote> <p>Maintenant que George était si heureux de connaître Dieu, il voulait que ses amis soient heureux eux aussi. Alors il a tout raconté à deux de ses anciens amis.</p> <p>Mais ils ont simplement haussé les épaules. « Nous ne nous sentons pas pécheurs, ont-ils dit. Nous n’avons pas l’impression d’avoir fait quoi que ce soit qui ait besoin d’être pardonné. »</p> <p>Que pouvait faire George ? Il ne pouvait pas les obliger à comprendre. Alors il a fait la seule chose à laquelle il pouvait penser — il a prié. Là, sur-le-champ, il s’est mis à genoux et il a demandé à Dieu de montrer à ses deux amis la vérité sur leur propre cœur. Puis il est allé dans sa chambre et il a continué à prier pour eux.</p> <p>Et quand George est revenu — ses deux amis pleuraient. Tous les deux ! Dieu avait fait ce que George ne pouvait pas faire. Ils lui ont dit que maintenant, ils savaient qu’ils étaient pécheurs et qu’ils avaient besoin de Dieu, eux aussi.</p> <p>George apprenait quelque chose qui allait lui servir toute sa vie : <strong>quand nous ne pouvons pas changer quelque chose nous-mêmes, nous pouvons prier, et Dieu, lui, le peut.</strong></p> <p>Y a-t-il quelqu’un dont tu voudrais qu’il connaisse Dieu — un ami, un frère ou une sœur, quelqu’un de ta famille ? Tu n’as pas besoin de le faire croire. Tu peux faire comme George. Tu peux prier pour lui, et laisser le reste à Dieu.</p> <p><em>Seigneur, s’il te plaît, aide les personnes que j’aime à te connaître. Moi, je ne peux pas le faire, mais toi, tu le peux. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’ont dit les deux amis de George quand il leur a parlé de Dieu ?",
+    "answer": "Ils ont haussé les épaules et ont dit qu’ils ne se sentaient pas pécheurs et qu’ils n’avaient rien fait qui ait besoin d’être pardonné."
+   },
+   {
+    "question": "Qu’a fait George quand il n’arrivait pas à faire comprendre ses amis ?",
+    "answer": "Il s’est mis à genoux et a prié pour eux, puis il a continué à prier dans sa chambre. Quand il est revenu, ses deux amis pleuraient et disaient qu’ils avaient besoin de Dieu, eux aussi."
+   },
+   {
+    "question": "Y a-t-il quelqu’un dont tu voudrais qu’il connaisse Dieu ? Que pourrions-nous faire pour lui ?",
+    "answer": "Ce que nous apprend ce chapitre : nous n’avons pas besoin d’obliger qui que ce soit à croire. Quand nous ne pouvons pas changer quelque chose nous-mêmes, nous pouvons prier, et Dieu, lui, le peut."
+   }
+  ],
+  "body_text": "« Priez les uns pour les autres. » — d’après Jacques 5 Maintenant que George était si heureux de connaître Dieu, il voulait que ses amis soient heureux eux aussi. Alors il a tout raconté à deux de ses anciens amis. Mais ils ont simplement haussé les épaules. « Nous ne nous sentons pas pécheurs, ont-ils dit. Nous n’avons pas l’impression d’avoir fait quoi que ce soit qui ait besoin d’être pardonné. » Que pouvait faire George ? Il ne pouvait pas les obliger à comprendre. Alors il a fait la seule chose à laquelle il pouvait penser — il a prié. Là, sur-le-champ, il s’est mis à genoux et il a demandé à Dieu de montrer à ses deux amis la vérité sur leur propre cœur. Puis il est allé dans sa chambre et il a continué à prier pour eux. Et quand George est revenu — ses deux amis pleuraient. Tous les deux ! Dieu avait fait ce que George ne pouvait pas faire. Ils lui ont dit que maintenant, ils savaient qu’ils étaient pécheurs et qu’ils avaient besoin de Dieu, eux aussi. George apprenait quelque chose qui allait lui servir toute sa vie : quand nous ne pouvons pas changer quelque chose nous-mêmes, nous pouvons prier, et Dieu, lui, le peut. Y a-t-il quelqu’un dont tu voudrais qu’il connaisse Dieu — un ami, un frère ou une sœur, quelqu’un de ta famille ? Tu n’as pas besoin de le faire croire. Tu peux faire comme George. Tu peux prier pour lui, et laisser le reste à Dieu. Seigneur, s’il te plaît, aide les personnes que j’aime à te connaître. Moi, je ne peux pas le faire, mais toi, tu le peux. Amen.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "Plus de salaire, seulement Dieu",
+  "body_html": "<blockquote>« Mon Dieu pourvoira à tous vos besoins. » — d’après Philippiens 4</blockquote> <p>Quand George est devenu grand, il est devenu prédicateur, et l’église lui payait un salaire, comme pour un travail. Mais George a eu une idée étonnante. Il a décidé de ne plus recevoir de salaire du tout !</p> <p>À la place, il ferait confiance à Dieu pour pourvoir à ses besoins. Il a mis une petite boîte au mur de l’église, pour que ceux qui le voulaient puissent donner — mais il s’est fixé une règle très ferme : il ne demanderait jamais d’argent à personne. Il ne le demanderait qu’à <em>Dieu.</em> S’il avait un besoin, il le dirait à Dieu, et à personne d’autre.</p> <p>Ça fait un peu peur, tu ne trouves pas ? Et bientôt, un jour, cette règle a été mise à l’épreuve. George et sa femme n’avaient presque plus d’argent — seulement quelques pièces. Alors ils ont fait ce qu’ils avaient promis : ils se sont mis à genoux et ils l’ont dit à Dieu.</p> <p>Quelques heures plus tard, une dame est venue à leur porte et leur a demandé : « Avez-vous besoin d’argent ? » Elle leur en a donné — et voici la partie merveilleuse. Elle a dit que Dieu lui avait mis à cœur de le donner deux semaines plus tôt ! Dieu avait commencé à répondre avant même que George ait prié. Et George ne lui avait jamais dit qu’ils étaient dans le besoin. Seul Dieu le savait.</p> <p>Dieu sait exactement ce dont tu as besoin avant même que tu le lui demandes. Tu peux lui parler de tout, et lui faire confiance pour prendre soin de toi.</p> <p><em>Seigneur, merci parce que tu sais déjà ce dont j’ai besoin. Aide-moi à te faire confiance et à tout te dire. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle était la règle très ferme de George au sujet de l’argent, après qu’il a arrêté de recevoir un salaire ?",
+    "answer": "Il ne demanderait jamais d’argent à personne. Il ne le demanderait qu’à Dieu et ne parlerait de ses besoins à personne d’autre."
+   },
+   {
+    "question": "Qu’y avait-il de si merveilleux avec la dame qui est venue à la porte avec de l’argent ?",
+    "answer": "Elle a dit que Dieu lui avait mis à cœur de donner deux semaines plus tôt : Dieu avait donc commencé à répondre avant même que George ait prié. George ne lui avait jamais parlé de leur besoin."
+   },
+   {
+    "question": "De quoi pourrais-tu parler à Dieu aujourd’hui ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu sait exactement ce dont tu as besoin avant que tu le lui demandes. Tu peux lui parler de tout et lui faire confiance pour prendre soin de toi."
+   }
+  ],
+  "body_text": "« Mon Dieu pourvoira à tous vos besoins. » — d’après Philippiens 4 Quand George est devenu grand, il est devenu prédicateur, et l’église lui payait un salaire, comme pour un travail. Mais George a eu une idée étonnante. Il a décidé de ne plus recevoir de salaire du tout ! À la place, il ferait confiance à Dieu pour pourvoir à ses besoins. Il a mis une petite boîte au mur de l’église, pour que ceux qui le voulaient puissent donner — mais il s’est fixé une règle très ferme : il ne demanderait jamais d’argent à personne. Il ne le demanderait qu’à Dieu. S’il avait un besoin, il le dirait à Dieu, et à personne d’autre. Ça fait un peu peur, tu ne trouves pas ? Et bientôt, un jour, cette règle a été mise à l’épreuve. George et sa femme n’avaient presque plus d’argent — seulement quelques pièces. Alors ils ont fait ce qu’ils avaient promis : ils se sont mis à genoux et ils l’ont dit à Dieu. Quelques heures plus tard, une dame est venue à leur porte et leur a demandé : « Avez-vous besoin d’argent ? » Elle leur en a donné — et voici la partie merveilleuse. Elle a dit que Dieu lui avait mis à cœur de le donner deux semaines plus tôt ! Dieu avait commencé à répondre avant même que George ait prié. Et George ne lui avait jamais dit qu’ils étaient dans le besoin. Seul Dieu le savait. Dieu sait exactement ce dont tu as besoin avant même que tu le lui demandes. Tu peux lui parler de tout, et lui faire confiance pour prendre soin de toi. Seigneur, merci parce que tu sais déjà ce dont j’ai besoin. Aide-moi à te faire confiance et à tout te dire. Amen.",
+  "word_count": 302
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "On frappe à la porte",
+  "body_html": "<blockquote>« Donne-nous aujourd’hui notre pain quotidien. » — d’après Matthieu 6</blockquote> <p>Un dimanche, George et sa femme n’avaient plus que leurs toutes dernières petites pièces. Il y avait à peine assez de pain à la maison pour cette journée-là, et pas d’argent pour en acheter pour le soir.</p> <p>Alors George a prié. Il n’a pas fait une prière compliquée. Il a demandé à Dieu, tout simplement, de leur envoyer du pain pour ce soir-là — du vrai pain, pour leur table, le jour même.</p> <p>Et voici ce qui s’est passé. <strong>Pendant que George priait encore</strong> — avant même qu’il ait fini — on a frappé à la porte !</p> <p>Une femme pauvre se tenait là. Elle avait apporté une partie de son propre repas pour le partager, et un peu d’argent d’une autre amie pauvre. Et plus tard, le même après-midi, elle est revenue, en portant cette fois une grosse miche de pain.</p> <p>Dieu avait entendu. En fait, Dieu avait envoyé cette femme en route avec le pain avant même que George ait fini de demander. La réponse était déjà en chemin pendant qu’il était encore à genoux.</p> <p>Quand Jésus nous a appris à prier, il nous a dit de demander notre « pain quotidien » — les choses dont nous avons besoin chaque jour. George a pris cela au sérieux, et Dieu a pris soin de lui. Toi aussi, tu peux demander à Dieu les choses ordinaires dont tu as besoin. Tout cela compte pour lui, même le pain du souper.</p> <p><em>Seigneur, merci parce que même les petites choses de tous les jours comptent pour toi. S’il te plaît, donne-moi ce dont j’ai besoin aujourd’hui. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle chose toute simple George a-t-il demandée à Dieu ce dimanche-là ?",
+    "answer": "Il a demandé à Dieu de leur envoyer du pain pour ce soir-là, parce qu’il y en avait à peine assez à la maison pour la journée et pas d’argent pour en acheter."
+   },
+   {
+    "question": "Que s’est-il passé pendant que George priait encore ?",
+    "answer": "On a frappé à la porte. Une femme pauvre a apporté une partie de son propre repas et un peu d’argent, et plus tard elle est revenue avec une grosse miche de pain."
+   },
+   {
+    "question": "Est-ce que les choses ordinaires, comme notre souper, comptent pour Dieu ? Que pourrais-tu lui demander ?",
+    "answer": "Ce que nous apprend ce chapitre : Jésus nous a appris à demander notre « pain quotidien ». Tout cela compte pour Dieu, même le pain du souper, alors nous pouvons lui demander ce dont nous avons besoin chaque jour."
+   }
+  ],
+  "body_text": "« Donne-nous aujourd’hui notre pain quotidien. » — d’après Matthieu 6 Un dimanche, George et sa femme n’avaient plus que leurs toutes dernières petites pièces. Il y avait à peine assez de pain à la maison pour cette journée-là, et pas d’argent pour en acheter pour le soir. Alors George a prié. Il n’a pas fait une prière compliquée. Il a demandé à Dieu, tout simplement, de leur envoyer du pain pour ce soir-là — du vrai pain, pour leur table, le jour même. Et voici ce qui s’est passé. Pendant que George priait encore — avant même qu’il ait fini — on a frappé à la porte ! Une femme pauvre se tenait là. Elle avait apporté une partie de son propre repas pour le partager, et un peu d’argent d’une autre amie pauvre. Et plus tard, le même après-midi, elle est revenue, en portant cette fois une grosse miche de pain. Dieu avait entendu. En fait, Dieu avait envoyé cette femme en route avec le pain avant même que George ait fini de demander. La réponse était déjà en chemin pendant qu’il était encore à genoux. Quand Jésus nous a appris à prier, il nous a dit de demander notre « pain quotidien » — les choses dont nous avons besoin chaque jour. George a pris cela au sérieux, et Dieu a pris soin de lui. Toi aussi, tu peux demander à Dieu les choses ordinaires dont tu as besoin. Tout cela compte pour lui, même le pain du souper. Seigneur, merci parce que même les petites choses de tous les jours comptent pour toi. S’il te plaît, donne-moi ce dont j’ai besoin aujourd’hui. Amen.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "Ouvre ta bouche toute grande",
+  "body_html": "<blockquote>« Ouvre ta bouche toute grande, et je la remplirai. » — d’après Psaume 81</blockquote> <p>Un jour, George a lu l’histoire d’un homme qui, il y a longtemps, avait construit une maison pour les orphelins — des enfants qui n’avaient plus ni maman ni papa — simplement en faisant confiance à Dieu. Et une grande idée a commencé à grandir dans le cœur de George. Et si <em>lui</em> aussi ouvrait une maison pour les orphelins ?</p> <p>George a prié et prié à ce sujet. Il a même demandé à Dieu de lui enlever cette idée si elle ne venait pas de lui. Puis, en lisant sa Bible, il a trouvé ces mots : « Ouvre ta bouche toute grande, et je la remplirai. » C’était comme si Dieu lui disait : « Demande-moi de grandes choses, George. Je peux les faire. »</p> <p>Alors George a demandé à Dieu trois grandes choses : une maison pour les enfants, une grosse somme d’argent, et des personnes gentilles pour s’occuper d’eux.</p> <p>Puis il a attendu de voir ce que Dieu allait faire. Le tout premier don a été un seul shilling — une seule petite pièce. Le lendemain, quelqu’un a envoyé une grande armoire. Puis une dame a proposé de venir aider. Puis un mari et sa femme ont proposé de s’occuper des enfants sans être payés du tout.</p> <p>Petit à petit, Dieu a comblé chaque besoin. Et un jour de printemps, la maison des orphelins a ouvert ses portes — avec dix-sept enfants qui y habitaient !</p> <p>George n’a pas fait tout cela pour avoir l’air malin. Il l’a fait pour que tout le monde puisse voir, de ses propres yeux, que <strong>Dieu est réel, et que Dieu entend encore la prière.</strong></p> <p><em>Seigneur, tu es assez grand pour tout. Aide-moi à t’apporter mes plus grands espoirs et à te les confier. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle grande idée a grandi dans le cœur de George après qu’il a lu l’histoire d’un homme d’autrefois ?",
+    "answer": "Ouvrir une maison pour les orphelins, des enfants qui n’avaient plus ni maman ni papa, simplement en faisant confiance à Dieu, comme cet homme l’avait fait."
+   },
+   {
+    "question": "Quelles trois grandes choses George a-t-il demandées à Dieu ?",
+    "answer": "Une maison pour les enfants, une grosse somme d’argent, et des personnes gentilles pour s’occuper d’eux. Petit à petit, Dieu a comblé chaque besoin, et dix-sept enfants sont venus y habiter."
+   },
+   {
+    "question": "Quel grand espoir pourrais-tu apporter à Dieu ?",
+    "answer": "Ce que nous apprend ce chapitre : « Ouvre ta bouche toute grande, et je la remplirai » veut dire que Dieu est assez grand pour tout. Nous pouvons donc lui apporter nos plus grands espoirs et lui faire confiance."
+   }
+  ],
+  "body_text": "« Ouvre ta bouche toute grande, et je la remplirai. » — d’après Psaume 81 Un jour, George a lu l’histoire d’un homme qui, il y a longtemps, avait construit une maison pour les orphelins — des enfants qui n’avaient plus ni maman ni papa — simplement en faisant confiance à Dieu. Et une grande idée a commencé à grandir dans le cœur de George. Et si lui aussi ouvrait une maison pour les orphelins ? George a prié et prié à ce sujet. Il a même demandé à Dieu de lui enlever cette idée si elle ne venait pas de lui. Puis, en lisant sa Bible, il a trouvé ces mots : « Ouvre ta bouche toute grande, et je la remplirai. » C’était comme si Dieu lui disait : « Demande-moi de grandes choses, George. Je peux les faire. » Alors George a demandé à Dieu trois grandes choses : une maison pour les enfants, une grosse somme d’argent, et des personnes gentilles pour s’occuper d’eux. Puis il a attendu de voir ce que Dieu allait faire. Le tout premier don a été un seul shilling — une seule petite pièce. Le lendemain, quelqu’un a envoyé une grande armoire. Puis une dame a proposé de venir aider. Puis un mari et sa femme ont proposé de s’occuper des enfants sans être payés du tout. Petit à petit, Dieu a comblé chaque besoin. Et un jour de printemps, la maison des orphelins a ouvert ses portes — avec dix-sept enfants qui y habitaient ! George n’a pas fait tout cela pour avoir l’air malin. Il l’a fait pour que tout le monde puisse voir, de ses propres yeux, que Dieu est réel, et que Dieu entend encore la prière. Seigneur, tu es assez grand pour tout. Aide-moi à t’apporter mes plus grands espoirs et à te les confier. Amen.",
+  "word_count": 310
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "La jeune femme qui a tout donné",
+  "body_html": "<blockquote>« Dieu aime celui qui donne avec joie. » — d’après 2 Corinthiens 9</blockquote> <p>L’un des plus beaux cadeaux que les orphelins aient jamais reçus est venu d’une jeune femme pauvre qui gagnait sa vie en cousant des vêtements. Elle ne gagnait que quelques sous par semaine, et elle ne s’en est jamais plainte une seule fois.</p> <p>Puis un jour, elle a reçu de l’argent à elle — beaucoup d’argent. Alors, qu’est-ce que tu ferais d’une surprise pareille ? Tu achèterais de jolis vêtements neufs ? Tu garderais tout bien à l’abri pour toi ?</p> <p>Voici ce qu’elle a fait. D’abord, elle a payé quelques vieilles dettes. Ensuite, elle en a donné une part à sa mère. Et puis elle a apporté un grand don — cent livres ! — à George, pour les orphelins.</p> <p>George était tellement surpris qu’il lui a demandé encore et encore, pour être sûr qu’elle voulait vraiment donner autant. Et elle a répondu par des paroles qui méritent qu’on s’en souvienne : « Le Seigneur Jésus a donné pour moi jusqu’à la dernière goutte de son sang. Ne devrais-je pas lui donner ceci ? »</p> <p>Et tu sais quoi ? Elle a tout gardé secret. Elle a continué à porter les mêmes vieux vêtements tout simples, et elle est retournée coudre, en travaillant dur comme toujours, alors même qu’elle donnait tant, sans bruit.</p> <p>Elle aimait Jésus, alors donner la rendait heureuse, pas triste. Tu n’as pas besoin d’être riche pour donner. Tu as juste besoin d’un cœur qui aime. Que pourrais-tu donner — discrètement, avec joie — à quelqu’un qui en a besoin ?</p> <p><em>Seigneur, merci de m’avoir donné Jésus. Fais de moi quelqu’un qui donne avec joie et en secret, comme cette gentille jeune femme. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’a fait la jeune femme qui cousait des vêtements avec l’argent qu’elle avait reçu ?",
+    "answer": "Elle a payé de vieilles dettes, en a donné une part à sa mère, et a apporté cent livres à George pour les orphelins."
+   },
+   {
+    "question": "Pourquoi a-t-elle dit qu’elle voulait donner autant ?",
+    "answer": "Elle a dit : « Le Seigneur Jésus a donné pour moi jusqu’à la dernière goutte de son sang. Ne devrais-je pas lui donner ceci ? » Elle aimait Jésus, alors donner la rendait heureuse."
+   },
+   {
+    "question": "Que pourrais-tu donner, discrètement et avec joie, à quelqu’un qui en a besoin ?",
+    "answer": "Ce que nous apprend ce chapitre : tu n’as pas besoin d’être riche pour donner, juste d’avoir un cœur qui aime. Elle a gardé son don secret et elle a donné avec joie."
+   }
+  ],
+  "body_text": "« Dieu aime celui qui donne avec joie. » — d’après 2 Corinthiens 9 L’un des plus beaux cadeaux que les orphelins aient jamais reçus est venu d’une jeune femme pauvre qui gagnait sa vie en cousant des vêtements. Elle ne gagnait que quelques sous par semaine, et elle ne s’en est jamais plainte une seule fois. Puis un jour, elle a reçu de l’argent à elle — beaucoup d’argent. Alors, qu’est-ce que tu ferais d’une surprise pareille ? Tu achèterais de jolis vêtements neufs ? Tu garderais tout bien à l’abri pour toi ? Voici ce qu’elle a fait. D’abord, elle a payé quelques vieilles dettes. Ensuite, elle en a donné une part à sa mère. Et puis elle a apporté un grand don — cent livres ! — à George, pour les orphelins. George était tellement surpris qu’il lui a demandé encore et encore, pour être sûr qu’elle voulait vraiment donner autant. Et elle a répondu par des paroles qui méritent qu’on s’en souvienne : « Le Seigneur Jésus a donné pour moi jusqu’à la dernière goutte de son sang. Ne devrais-je pas lui donner ceci ? » Et tu sais quoi ? Elle a tout gardé secret. Elle a continué à porter les mêmes vieux vêtements tout simples, et elle est retournée coudre, en travaillant dur comme toujours, alors même qu’elle donnait tant, sans bruit. Elle aimait Jésus, alors donner la rendait heureuse, pas triste. Tu n’as pas besoin d’être riche pour donner. Tu as juste besoin d’un cœur qui aime. Que pourrais-tu donner — discrètement, avec joie — à quelqu’un qui en a besoin ? Seigneur, merci de m’avoir donné Jésus. Fais de moi quelqu’un qui donne avec joie et en secret, comme cette gentille jeune femme. Amen.",
+  "word_count": 292
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "Le cadeau du boulanger",
+  "body_html": "<blockquote>« Il est un père pour les orphelins. » — d’après Psaume 68</blockquote> <p>Comme de plus en plus d’orphelins venaient vivre chez George, il y avait de plus en plus de bouches à nourrir. Et parfois, il ne restait presque plus rien à manger.</p> <p>Un matin, tout a été particulièrement difficile. Il n’y avait de quoi manger que pour cette seule journée. La gentille dame qui faisait la cuisine pour les garçons n’avait plus que deux petites pièces, et elle se demandait : fallait-il les dépenser pour du pain, ou pour de la viande ? Il n’y en avait pas assez pour les deux.</p> <p>Et juste à ce moment-là — toc, toc — le boulanger est venu à la porte. Mais il n’était pas venu pour se faire payer. Il était venu pour <em>donner.</em> Il a laissé trois grosses miches de pain frais en cadeau, comme ça !</p> <p>En repensant à tous ces jours, George a remarqué quelque chose. Il l’a écrit pour ne pas l’oublier : <strong>l’aide arrivait toujours avant que les enfants aient vraiment faim.</strong> Pas une seule fois Dieu n’a laissé les enfants manquer de quoi manger. Il n’était jamais en retard.</p> <p>La Bible dit que Dieu est « un père pour les orphelins » — cela veut dire que Dieu est comme un bon papa plein d’amour pour les enfants qui n’ont pas de papa. Ces orphelins n’avaient pas de père à eux. Mais ils avaient le meilleur de tous les Pères, qui veillait sur chacun de leurs repas.</p> <p>Dieu est un bon Père pour toi aussi. Il voit ce dont tu as besoin, et il n’est jamais en retard.</p> <p><em>Seigneur, merci d’être un Père plein d’amour qui ne m’oublie jamais. Aide-moi à croire que tu arrives toujours juste à temps. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi la cuisinière était-elle inquiète ce matin-là ?",
+    "answer": "Il n’y avait à manger que pour cette journée, et il ne lui restait que deux petites pièces. Elle se demandait s’il fallait acheter du pain ou de la viande, parce qu’il n’y en avait pas assez pour les deux."
+   },
+   {
+    "question": "Qu’a apporté le boulanger, et pourquoi était-ce une surprise ?",
+    "answer": "Il n’était pas venu pour se faire payer, mais pour donner. Il a laissé trois grosses miches de pain frais en cadeau."
+   },
+   {
+    "question": "Qu’est-ce que cela veut dire que Dieu est « un père pour les orphelins » ? Comment est-il un Père pour toi ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu est comme un bon papa plein d’amour. Il voit ce dont tu as besoin, il ne t’oublie jamais, et il n’est jamais en retard."
+   }
+  ],
+  "body_text": "« Il est un père pour les orphelins. » — d’après Psaume 68 Comme de plus en plus d’orphelins venaient vivre chez George, il y avait de plus en plus de bouches à nourrir. Et parfois, il ne restait presque plus rien à manger. Un matin, tout a été particulièrement difficile. Il n’y avait de quoi manger que pour cette seule journée. La gentille dame qui faisait la cuisine pour les garçons n’avait plus que deux petites pièces, et elle se demandait : fallait-il les dépenser pour du pain, ou pour de la viande ? Il n’y en avait pas assez pour les deux. Et juste à ce moment-là — toc, toc — le boulanger est venu à la porte. Mais il n’était pas venu pour se faire payer. Il était venu pour donner. Il a laissé trois grosses miches de pain frais en cadeau, comme ça ! En repensant à tous ces jours, George a remarqué quelque chose. Il l’a écrit pour ne pas l’oublier : l’aide arrivait toujours avant que les enfants aient vraiment faim. Pas une seule fois Dieu n’a laissé les enfants manquer de quoi manger. Il n’était jamais en retard. La Bible dit que Dieu est « un père pour les orphelins » — cela veut dire que Dieu est comme un bon papa plein d’amour pour les enfants qui n’ont pas de papa. Ces orphelins n’avaient pas de père à eux. Mais ils avaient le meilleur de tous les Pères, qui veillait sur chacun de leurs repas. Dieu est un bon Père pour toi aussi. Il voit ce dont tu as besoin, et il n’est jamais en retard. Seigneur, merci d’être un Père plein d’amour qui ne m’oublie jamais. Aide-moi à croire que tu arrives toujours juste à temps. Amen.",
+  "word_count": 296
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "Trois sacs de pommes de terre",
+  "body_html": "<blockquote>« Avant qu’ils m’appellent, je répondrai. » — d’après Ésaïe 65</blockquote> <p>Un autre matin, il n’y avait presque plus rien à la maison, et il fallait beaucoup d’argent pour nourrir tous les enfants. Alors George a fait ce qu’il faisait toujours. Il est allé prier.</p> <p>Et pendant qu’il priait encore — il était environ dix heures du matin — un homme est venu à la porte avec un message. Une dame avait commandé <strong>trois sacs entiers de pommes de terre</strong> pour les maisons des orphelins !</p> <p>Trois gros sacs de pommes de terre, qui arrivaient juste au bon moment. George a dit qu’ils n’auraient vraiment pas pu arriver à un meilleur moment.</p> <p>Des choses comme celle-là sont arrivées encore et encore. Une fois, George a rencontré dans la rue un homme qui lui a donné de l’argent pour les orphelins — et George s’est rendu compte que s’il était passé là ne serait-ce qu’une demi-minute plus tard, il l’aurait complètement manqué ! Mais il n’avait pas une demi-minute de retard. Dieu avait réglé le moment parfaitement.</p> <p>N’est-ce pas extraordinaire ? Dieu n’envoie pas seulement ce dont nous avons besoin. Il l’envoie exactement à la bonne minute — parfois pendant que nous prions encore, parfois juste avant que nous passions dans la rue. Il n’est jamais pressé, et il n’est jamais en retard.</p> <p>Rien n’est trop petit pour que Dieu s’en occupe. Les détails de ta journée comptent pour lui, jusqu’à la minute près.</p> <p><em>Seigneur, merci parce que tu connais le moment parfait pour chaque chose. Aide-moi à t’attendre sans m’inquiéter. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce qui est arrivé à la porte pendant que George priait, vers dix heures ?",
+    "answer": "Un message disant qu’une dame avait commandé trois sacs entiers de pommes de terre pour les maisons des orphelins, juste au bon moment."
+   },
+   {
+    "question": "Que s’est-il passé quand George a rencontré un homme dans la rue ?",
+    "answer": "L’homme lui a donné de l’argent pour les orphelins. Si George était passé là ne serait-ce qu’une demi-minute plus tard, il l’aurait manqué."
+   },
+   {
+    "question": "Y a-t-il quelque chose de trop petit pour que Dieu s’en occupe ? Pour quoi pourrions-nous arrêter de nous inquiéter ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu envoie ce dont nous avons besoin exactement à la bonne minute. Rien n’est trop petit pour lui, alors nous pouvons l’attendre sans nous inquiéter."
+   }
+  ],
+  "body_text": "« Avant qu’ils m’appellent, je répondrai. » — d’après Ésaïe 65 Un autre matin, il n’y avait presque plus rien à la maison, et il fallait beaucoup d’argent pour nourrir tous les enfants. Alors George a fait ce qu’il faisait toujours. Il est allé prier. Et pendant qu’il priait encore — il était environ dix heures du matin — un homme est venu à la porte avec un message. Une dame avait commandé trois sacs entiers de pommes de terre pour les maisons des orphelins ! Trois gros sacs de pommes de terre, qui arrivaient juste au bon moment. George a dit qu’ils n’auraient vraiment pas pu arriver à un meilleur moment. Des choses comme celle-là sont arrivées encore et encore. Une fois, George a rencontré dans la rue un homme qui lui a donné de l’argent pour les orphelins — et George s’est rendu compte que s’il était passé là ne serait-ce qu’une demi-minute plus tard, il l’aurait complètement manqué ! Mais il n’avait pas une demi-minute de retard. Dieu avait réglé le moment parfaitement. N’est-ce pas extraordinaire ? Dieu n’envoie pas seulement ce dont nous avons besoin. Il l’envoie exactement à la bonne minute — parfois pendant que nous prions encore, parfois juste avant que nous passions dans la rue. Il n’est jamais pressé, et il n’est jamais en retard. Rien n’est trop petit pour que Dieu s’en occupe. Les détails de ta journée comptent pour lui, jusqu’à la minute près. Seigneur, merci parce que tu connais le moment parfait pour chaque chose. Aide-moi à t’attendre sans m’inquiéter. Amen.",
+  "word_count": 261
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "Du lait pour le petit déjeuner",
+  "body_html": "<blockquote>« Ceux qui cherchent l’Éternel ne sont privés d’aucun bien. » — d’après Psaume 34</blockquote> <p>Chaque matin, les orphelins avaient le même petit déjeuner qu’ils aimaient tant : une bonne bouillie de flocons d’avoine chaude avec du lait. Mais le lait coûte de l’argent — et un soir, il n’y en avait presque plus.</p> <p>Le laitier viendrait tôt le lendemain matin, avant huit heures, et il n’y aurait pas d’argent pour le payer, ni de lait pour la bouillie des enfants. Que pouvait-on faire ?</p> <p>Alors ce soir-là, à six heures, George et deux de ses aides se sont mis à genoux ensemble et ont demandé à Dieu d’envoyer ce qu’il fallait avant le matin.</p> <p>Ils venaient <strong>tout juste de se relever</strong> quand une lettre est arrivée. Dedans, il y avait un don pour les orphelins ! La personne gentille qui l’avait envoyée avait écrit quelque chose de merveilleux avec : « J’aime envoyer ces petits dons. Ils arrivent si souvent juste au bon moment. »</p> <p>Elle ne savait rien du lait, ni du lendemain matin, ni du porte-monnaie vide. Mais Dieu, lui, le savait. Et il avait déjà mis sa lettre en route, pour qu’elle arrive le soir même où on en avait besoin — à temps pour le lait du matin.</p> <p>Dieu aime répondre à des prières comme celle-là : une prière du soir, exaucée avant le lever du soleil. Quand tu cherches Dieu et que tu lui fais confiance, tu ne manqueras pas des bonnes choses dont tu as vraiment besoin.</p> <p><em>Seigneur, merci parce que tu réponds aux prières, même avant que le matin arrive. Je te confie demain. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi George et ses aides avaient-ils besoin de prier ce soir-là ?",
+    "answer": "Il n’y avait presque plus de lait, et le laitier allait venir tôt le lendemain matin sans qu’il y ait d’argent pour le payer, pour la bouillie des enfants."
+   },
+   {
+    "question": "Qu’est-ce qui est arrivé juste après qu’ils se sont relevés ?",
+    "answer": "Une lettre avec un don pour les orphelins. La personne qui l’avait envoyée avait écrit : « J’aime envoyer ces petits dons. Ils arrivent si souvent juste au bon moment. »"
+   },
+   {
+    "question": "Que pourrais-tu confier à Dieu ce soir, avant que le matin arrive ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu aime répondre aux prières, même avant le lever du soleil. Ceux qui le cherchent ne manqueront pas des bonnes choses dont ils ont vraiment besoin."
+   }
+  ],
+  "body_text": "« Ceux qui cherchent l’Éternel ne sont privés d’aucun bien. » — d’après Psaume 34 Chaque matin, les orphelins avaient le même petit déjeuner qu’ils aimaient tant : une bonne bouillie de flocons d’avoine chaude avec du lait. Mais le lait coûte de l’argent — et un soir, il n’y en avait presque plus. Le laitier viendrait tôt le lendemain matin, avant huit heures, et il n’y aurait pas d’argent pour le payer, ni de lait pour la bouillie des enfants. Que pouvait-on faire ? Alors ce soir-là, à six heures, George et deux de ses aides se sont mis à genoux ensemble et ont demandé à Dieu d’envoyer ce qu’il fallait avant le matin. Ils venaient tout juste de se relever quand une lettre est arrivée. Dedans, il y avait un don pour les orphelins ! La personne gentille qui l’avait envoyée avait écrit quelque chose de merveilleux avec : « J’aime envoyer ces petits dons. Ils arrivent si souvent juste au bon moment. » Elle ne savait rien du lait, ni du lendemain matin, ni du porte-monnaie vide. Mais Dieu, lui, le savait. Et il avait déjà mis sa lettre en route, pour qu’elle arrive le soir même où on en avait besoin — à temps pour le lait du matin. Dieu aime répondre à des prières comme celle-là : une prière du soir, exaucée avant le lever du soleil. Quand tu cherches Dieu et que tu lui fais confiance, tu ne manqueras pas des bonnes choses dont tu as vraiment besoin. Seigneur, merci parce que tu réponds aux prières, même avant que le matin arrive. Je te confie demain. Amen.",
+  "word_count": 273
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "La banque qui ne peut pas faire faillite",
+  "body_html": "<blockquote>« Amassez des trésors dans le ciel, où rien ne se perd jamais. » — d’après Matthieu 6</blockquote> <p>Un jour, des visiteurs sont venus voir la maison des orphelins pour les garçons. Ils étaient émerveillés de voir comme on prenait bien soin des enfants. Mais ils étaient aussi un peu étonnés.</p> <p>« Bien sûr, a dit une dame, vous ne pourriez pas faire tourner tout cela sans un gros tas d’argent mis de côté à la banque. Vous devez avoir une bonne réserve d’argent. »</p> <p>Et un monsieur a demandé à la femme qui dirigeait la maison : « Avez-vous une bonne réserve d’argent de côté ? »</p> <p>Or, la vérité, c’est qu’à ce moment-là il n’y avait presque pas d’argent du tout. Mais écoute la belle réponse qu’elle a donnée : « Notre argent est gardé dans une banque qui ne peut pas faire faillite. »</p> <p>Que voulait-elle dire ? Elle voulait parler de <strong>Dieu lui-même.</strong> Les banques ordinaires peuvent manquer d’argent. Mais Dieu ne manque jamais de rien, et Dieu ne laisse jamais tomber les siens. Il était leur banque — la seule banque au monde qui ne peut jamais, jamais faire faillite.</p> <p>La dame a été si touchée que les larmes lui sont montées aux yeux. Et en partant, le monsieur a donné cinq livres — qui sont arrivées au moment exact où George n’avait plus un seul sou.</p> <p>Toi aussi, tu peux garder ton trésor dans ce même endroit sûr. L’argent peut se perdre ou se dépenser, mais les bonnes choses que tu fais pour Dieu, et ta confiance en lui, sont mises de côté dans un endroit où rien ne peut jamais faire faillite.</p> <p><em>Seigneur, tu ne manques jamais de rien et tu ne fais jamais défaut. Aide-moi à garder mon trésor en sécurité auprès de toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-ce que les visiteurs pensaient que la maison des orphelins devait avoir ?",
+    "answer": "Ils pensaient qu’elle devait avoir un gros tas d’argent mis de côté à la banque, une bonne réserve d’argent."
+   },
+   {
+    "question": "Que voulait dire la femme par « une banque qui ne peut pas faire faillite » ?",
+    "answer": "Elle voulait parler de Dieu lui-même. Les banques ordinaires peuvent manquer d’argent, mais Dieu ne manque jamais de rien et ne laisse jamais tomber les siens."
+   },
+   {
+    "question": "Quels sont des trésors qui ne peuvent jamais se perdre ?",
+    "answer": "Ce que nous apprend ce chapitre : l’argent peut se perdre ou se dépenser, mais les bonnes choses que tu fais pour Dieu et ta confiance en lui sont mises de côté là où rien ne peut faire faillite."
+   }
+  ],
+  "body_text": "« Amassez des trésors dans le ciel, où rien ne se perd jamais. » — d’après Matthieu 6 Un jour, des visiteurs sont venus voir la maison des orphelins pour les garçons. Ils étaient émerveillés de voir comme on prenait bien soin des enfants. Mais ils étaient aussi un peu étonnés. « Bien sûr, a dit une dame, vous ne pourriez pas faire tourner tout cela sans un gros tas d’argent mis de côté à la banque. Vous devez avoir une bonne réserve d’argent. » Et un monsieur a demandé à la femme qui dirigeait la maison : « Avez-vous une bonne réserve d’argent de côté ? » Or, la vérité, c’est qu’à ce moment-là il n’y avait presque pas d’argent du tout. Mais écoute la belle réponse qu’elle a donnée : « Notre argent est gardé dans une banque qui ne peut pas faire faillite. » Que voulait-elle dire ? Elle voulait parler de Dieu lui-même. Les banques ordinaires peuvent manquer d’argent. Mais Dieu ne manque jamais de rien, et Dieu ne laisse jamais tomber les siens. Il était leur banque — la seule banque au monde qui ne peut jamais, jamais faire faillite. La dame a été si touchée que les larmes lui sont montées aux yeux. Et en partant, le monsieur a donné cinq livres — qui sont arrivées au moment exact où George n’avait plus un seul sou. Toi aussi, tu peux garder ton trésor dans ce même endroit sûr. L’argent peut se perdre ou se dépenser, mais les bonnes choses que tu fais pour Dieu, et ta confiance en lui, sont mises de côté dans un endroit où rien ne peut jamais faire faillite. Seigneur, tu ne manques jamais de rien et tu ne fais jamais défaut. Aide-moi à garder mon trésor en sécurité auprès de toi. Amen.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "Une maison sur la colline, construite par la prière",
+  "body_html": "<blockquote>« Que la patience accomplisse son œuvre. » — d’après Jacques 1</blockquote> <p>Les maisons des orphelins sont devenues si pleines et si animées que George a décidé de faire quelque chose d’immense : construire une très grande maison à la campagne, assez grande pour <em>trois cents</em> enfants. Et il paierait tout de la même façon que d’habitude — seulement en priant.</p> <p>Une maison immense coûte une somme immense. Alors George s’est mis à prier pour elle, jour après jour. Et le trente-sixième jour de prière, un don de mille livres est arrivé ! C’était une somme merveilleuse — et pourtant George se sentait aussi calme que si quelqu’un lui avait donné une seule petite pièce, parce que maintenant il s’attendait tout simplement à ce que Dieu réponde.</p> <p>Ensuite, un homme qui dessinait des plans de maisons — quelqu’un que George n’avait même jamais rencontré — a proposé de dessiner toute la maison et de surveiller la construction gratuitement !</p> <p>Puis George a eu besoin d’un terrain. Il a entendu parler d’un beau champ sur une colline appelée Ashley Down. Mais le premier soir, on n’a trouvé le propriétaire nulle part. George ne s’est pas fâché ; il pensait que Dieu avait une raison. Et il avait raison. Cette nuit-là même, le propriétaire s’est réveillé à trois heures du matin et n’a pas pu se rendormir — il n’arrêtait pas de penser à ce champ. Il a décidé que si George le voulait, il le lui vendrait — et bien moins cher que le prix qu’il avait prévu !</p> <p>Alors George a acheté le grand champ, et avec le temps de grandes maisons se sont dressées sur cette colline, remplies de centaines et de centaines d’orphelins heureux et bien nourris — chaque brique construite par la prière.</p> <p>Dieu peut faire plus que tout ce que nous osons rêver. Continue de prier, continue d’attendre, et regarde ce qu’il peut construire.</p> <p><em>Seigneur, tu peux faire de très grandes choses. Apprends-moi à continuer de prier et à t’attendre avec patience. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment George pensait-il payer la grande maison pour trois cents enfants ?",
+    "answer": "De la même façon que d’habitude, seulement en priant. Le trente-sixième jour de prière, un don de mille livres est arrivé."
+   },
+   {
+    "question": "Pourquoi le propriétaire du champ d’Ashley Down a-t-il décidé de le vendre ?",
+    "answer": "Il s’est réveillé à trois heures du matin en ne pensant qu’à ce champ, et il a décidé de le vendre à George bien moins cher que ce qu’il avait prévu."
+   },
+   {
+    "question": "Pour quoi pourrions-nous continuer de prier, même s’il faut attendre ?",
+    "answer": "Ce que nous apprend ce chapitre : Dieu peut faire plus que tout ce que nous osons rêver. Continue de prier, attends avec patience, et regarde ce qu’il peut construire."
+   }
+  ],
+  "body_text": "« Que la patience accomplisse son œuvre. » — d’après Jacques 1 Les maisons des orphelins sont devenues si pleines et si animées que George a décidé de faire quelque chose d’immense : construire une très grande maison à la campagne, assez grande pour trois cents enfants. Et il paierait tout de la même façon que d’habitude — seulement en priant. Une maison immense coûte une somme immense. Alors George s’est mis à prier pour elle, jour après jour. Et le trente-sixième jour de prière, un don de mille livres est arrivé ! C’était une somme merveilleuse — et pourtant George se sentait aussi calme que si quelqu’un lui avait donné une seule petite pièce, parce que maintenant il s’attendait tout simplement à ce que Dieu réponde. Ensuite, un homme qui dessinait des plans de maisons — quelqu’un que George n’avait même jamais rencontré — a proposé de dessiner toute la maison et de surveiller la construction gratuitement ! Puis George a eu besoin d’un terrain. Il a entendu parler d’un beau champ sur une colline appelée Ashley Down. Mais le premier soir, on n’a trouvé le propriétaire nulle part. George ne s’est pas fâché ; il pensait que Dieu avait une raison. Et il avait raison. Cette nuit-là même, le propriétaire s’est réveillé à trois heures du matin et n’a pas pu se rendormir — il n’arrêtait pas de penser à ce champ. Il a décidé que si George le voulait, il le lui vendrait — et bien moins cher que le prix qu’il avait prévu ! Alors George a acheté le grand champ, et avec le temps de grandes maisons se sont dressées sur cette colline, remplies de centaines et de centaines d’orphelins heureux et bien nourris — chaque brique construite par la prière. Dieu peut faire plus que tout ce que nous osons rêver. Continue de prier, continue d’attendre, et regarde ce qu’il peut construire. Seigneur, tu peux faire de très grandes choses. Apprends-moi à continuer de prier et à t’attendre avec patience. Amen.",
+  "word_count": 337
+ }
+}
+]
