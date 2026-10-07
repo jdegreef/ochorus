@@ -2299,6 +2299,7 @@ class AdminAction(models.Model):
         FEEDBACK_TRIAGE = "feedback.triage", "Reader feedback triaged"
         SEARCH_DECIDE = "search.decide", "Unanswered search triaged"
         SEARCH_UNDO = "search.undo", "Search triage undone"
+        USER_DELETE = "user.delete", "Reader account deleted"
 
     action = models.CharField(max_length=32, choices=Action.choices)
     #: Who, by email — the identity `IsAdminEmail` gates on. Blank only when a

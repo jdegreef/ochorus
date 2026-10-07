@@ -1999,6 +1999,16 @@ export interface AdminUserDetail {
 export const getAdminUser = (uid: string) =>
 	apiFetch<AdminUserDetail>(`/api/admin/users/${encodeURIComponent(uid)}/`);
 
+/** Delete a reader outright: their Supabase sign-in (freeing the email for a
+ *  new sign-up), all their Ochorus data and any admin grants on the address.
+ *  Super-admin only; irreversible.
+ *  `auth_deleted` is false only where Supabase isn't configured (local dev). */
+export const deleteAdminUser = (uid: string) =>
+	apiFetch<{ email: string; auth_deleted: boolean; grants_revoked: number }>(
+		`/api/admin/users/${encodeURIComponent(uid)}/account/`,
+		{ method: 'DELETE' }
+	);
+
 // Per-book detail: a canonical work across all its languages.
 
 /** Readable names for the content checks' chapter flags (library/qa.py). */

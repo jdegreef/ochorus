@@ -53,7 +53,8 @@ const META: Record<string, ActionMeta> = {
 	'review.decide': { category: 'review', icon: 'approve', loud: false },
 	'review.undo': { category: 'review', icon: 'undo', loud: false },
 	'role.grant': { category: 'access', icon: 'sliders', loud: true },
-	'role.revoke': { category: 'access', icon: 'sliders', loud: true }
+	'role.revoke': { category: 'access', icon: 'sliders', loud: true },
+	'user.delete': { category: 'access', icon: 'sliders', loud: true }
 };
 
 /**
@@ -80,7 +81,7 @@ export function actionMeta(action: string): ActionMeta {
 	if (known) return known;
 	const head = action.split('.')[0];
 	// The same prefix rule as the server's `category_of`, which files the chips.
-	const prefix = (head === 'role' ? 'access' : head) as Category;
+	const prefix = (head === 'role' || head === 'user' ? 'access' : head) as Category;
 	const category = CATEGORIES.includes(prefix) ? prefix : 'content';
 	return { category, icon: 'document', loud: false };
 }

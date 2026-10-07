@@ -32,6 +32,18 @@ def is_configured() -> bool:
     return bool((settings.SUPABASE_URL or "").strip() and settings.SUPABASE_SERVICE_ROLE_KEY)
 
 
+def _admin_user_request(method: str, uid, *, timeout: float) -> requests.Response:
+    """One service-role call on ``/auth/v1/admin/users/<uid>``. The caller
+    checks :func:`is_configured` first."""
+    key = settings.SUPABASE_SERVICE_ROLE_KEY
+    return requests.request(
+        method,
+        f"{settings.SUPABASE_URL.strip().rstrip('/')}/auth/v1/admin/users/{uid}",
+        headers={"apikey": key, "Authorization": f"Bearer {key}"},
+        timeout=timeout,
+    )
+
+
 def verified_email(profile) -> str | None:
     """The profile's confirmed email from Supabase, or ``None``.
 
@@ -40,17 +52,11 @@ def verified_email(profile) -> str | None:
     Supabase isn't configured (local, tests) or the lookup fails, so callers can
     fall back to whatever local address they hold.
     """
-    base = (settings.SUPABASE_URL or "").rstrip("/")
-    key = settings.SUPABASE_SERVICE_ROLE_KEY
     uid = getattr(profile, "supabase_uid", None)
-    if not (base and key and uid):
+    if not (is_configured() and uid):
         return None
     try:
-        resp = requests.get(
-            f"{base}/auth/v1/admin/users/{uid}",
-            headers={"apikey": key, "Authorization": f"Bearer {key}"},
-            timeout=_TIMEOUT,
-        )
+        resp = _admin_user_request("get", uid, timeout=_TIMEOUT)
         resp.raise_for_status()
         data = resp.json()
     except (requests.RequestException, ValueError):
@@ -59,3 +65,41 @@ def verified_email(profile) -> str | None:
     email = (data.get("email") or "").strip()
     confirmed = data.get("email_confirmed_at") or data.get("confirmed_at")
     return email if (email and confirmed) else None
+
+
+class SupabaseDeleteError(Exception):
+    """Supabase refused or failed to delete an auth user (not "already gone")."""
+
+
+def _is_user_not_found(resp: requests.Response) -> bool:
+    """GoTrue's own "no such user" — not any 404, which a wrong
+    ``SUPABASE_URL`` or a gateway would also answer, and which would then let
+    the local rows go while the real sign-in survives."""
+    if resp.status_code != 404:
+        return False
+    try:
+        return resp.json().get("error_code") == "user_not_found"
+    except (ValueError, AttributeError):
+        return False
+
+
+def delete_user(uid) -> bool:
+    """Delete the Supabase auth user ``uid`` — the sign-in itself, which is what
+    frees its email address for a fresh sign-up.
+
+    Returns ``True`` once the user is gone (GoTrue's ``user_not_found`` counts:
+    it already was), and
+    ``False`` when Supabase isn't configured here (local, tests), so there was no
+    auth user to remove. Raises :class:`SupabaseDeleteError` on any other
+    failure, so a caller can stop before deleting its own rows and leave the
+    account whole rather than half-deleted.
+    """
+    if not is_configured():
+        return False
+    try:
+        resp = _admin_user_request("delete", uid, timeout=_TIMEOUT * 2)
+    except requests.RequestException as exc:
+        raise SupabaseDeleteError(str(exc)) from exc
+    if resp.ok or _is_user_not_found(resp):
+        return True
+    raise SupabaseDeleteError(f"Supabase answered {resp.status_code}")
