@@ -10571,6 +10571,16 @@
 			"layout": "rail/teal",
 			"bar": 0
 		},
+		"sw/a-retrospect-teens": {
+			"ground": "1c00335f795fb2f23a5e4b1dcb47b17da9b9d06cb3f142f4325f5d24865ff74b",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "rail/teal",
+			"bar": 0
+		},
 		"sw/a-short-and-easy-method-of-prayer": {
 			"ground": "5a6c63bcde424f32628412296d039b3dd5e383f4e162457c066fb1e2286a3a3b",
 			"style": "devotional",
