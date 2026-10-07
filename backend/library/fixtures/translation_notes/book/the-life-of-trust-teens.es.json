@@ -3,7 +3,7 @@
  "slug": "the-life-of-trust-teens",
  "language": "es",
  "job_issue": 4824,
- "pull_request": null,
+ "pull_request": 5518,
  "note": [
   "The English edition quotes the ESV/WEB; the Spanish uses Reina-Valera wording (the register of the shipped es corpus) and drops the English version tag. A `mined` row names the shipped es file the wording was taken from verbatim; everything else is self_rendered in Reina-Valera register and is the reviewer's to check.",
   "Luke 15:20 and Matthew 10:37 are the Reina-Valera wording, but the only shipped es file carrying the full verse is the copyright-blocked grace-for-grace-2.es (unpublished), so they are recorded self_rendered rather than citing it."
