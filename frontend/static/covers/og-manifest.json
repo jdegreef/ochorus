@@ -12122,6 +12122,16 @@
 			"layout": "framed",
 			"bar": 0
 		},
+		"they-were-young-2": {
+			"ground": "2e5f69fe3b65cbf6e4d983b022c6ba50e7d65c040df579b229f8a4405e5aee32",
+			"style": "originals",
+			"volume": "2",
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"things-as-they-are": {
 			"ground": "7090f06cc32398199d5011091deb2f02f2a7caa55e4d8a62a1e71beb562023d5",
 			"style": "devotional",

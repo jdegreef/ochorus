@@ -82,7 +82,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "Christ at seventeen and went on to found the African Methodist "
             "Episcopal Church.</p>"
             "<p>The stories are true, and we have tried not to add to them. Each "
-            "ends with the person’s own words, three questions to think through, "
+            "ends with the person’s own words, four questions to think through, "
             "and a pointer to read on: their own books and sermons where the "
             "library has them, and their biography where it does not. "
             "They are honest about slavery, racism, grief and pressure, and they "
@@ -107,7 +107,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
             {
                 "question": "Can it be used in a youth group?",
-                "answer": "Yes. Each chapter can be read in one sitting and ends with three questions written for discussion.",
+                "answer": "Yes. Each chapter can be read in one sitting and ends with four questions written for discussion.",
             },
             {
                 "question": "Which Bible translation does it use?",
@@ -125,8 +125,8 @@ VOLUMES: dict[int, dict[str, object]] = {
         "description": (
             "Six true stories for readers aged 13 to 17 of people whose faith was "
             "tested while they were young: a British teenager kidnapped to Ireland; "
-            "a Sudanese girl enslaved as a child who chose freedom in an Italian "
-            "court; a young mother in Carthage who kept a prison diary; the pages "
+            "a Sudanese girl enslaved as a child who chose freedom before the Italian "
+            "authorities; a young mother in Carthage who kept a prison diary; the pages "
             "of a Ugandan king who would not deny Christ; a rebellious sailor saved "
             "in a storm; and a Sikh boy who burned a Bible and then met Jesus. The "
             "second book of They Were Young."
@@ -139,7 +139,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "<p>Patrick was kidnapped from Britain at sixteen and learned to pray "
             "as a slave in Ireland, then went back to the people who had enslaved "
             "him. Josephine Bakhita was stolen from her home in Sudan as a child "
-            "and later, in an Italian court, chose to stay free. Perpetua, a young "
+            "and later, before the Italian authorities, chose to stay free. Perpetua, a young "
             "mother in Carthage, kept a diary in prison before she was martyred in "
             "203. The young pages of Kabaka Mwanga of Buganda refused to deny "
             "Christ and died at Namugongo in 1886. John Newton was forced into the "
@@ -147,7 +147,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             "Singh burned a Bible at fifteen and, days later, met Jesus.</p>"
             "<p>The stories are true and told without graphic detail. Where a "
             "tradition is legend rather than history, they say so. Each ends with "
-            "the person’s own words where we have them, three questions to think "
+            "the person’s own words where we have them, four questions to think "
             "through, and a pointer to read on in the library. Book 1 is not "
             "required.</p>"
         ),
@@ -174,7 +174,7 @@ VOLUMES: dict[int, dict[str, object]] = {
             },
             {
                 "question": "Can it be used in a youth group?",
-                "answer": "Yes. Each chapter can be read in one sitting and ends with three questions written for discussion.",
+                "answer": "Yes. Each chapter can be read in one sitting and ends with four questions written for discussion.",
             },
         ],
     },
