@@ -3,7 +3,7 @@
  "slug": "pilgrims-progress-teens",
  "language": "sw",
  "job_issue": 5416,
- "pull_request": null,
+ "pull_request": 5445,
  "note": [
   "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible is egress-blocked here, its swhonen text is a different edition from the corpus anyway, and the mirrored Swahili Bibles are licensed or off-tradition — see the translation-worker skill). Every `mined` row was re-measured against the finished text: the quoted Union wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped sw file. The English epigraphs are ESV (Psalm 42:5 is WEB) and carry a version tag; this edition drops the tag because the wording shown is Union, not ESV, and drops the ESV permission sentence from the attribution for the same reason.",
   "Self-rendered in Union register and unverified: Psalm 38:4, Psalm 42:5 and the first clause of Revelation 2:10 (none is in the shipped sw corpus). Several mined rows are a contiguous PART of a longer Union verse or follow the Union where the ESV words differ (Mark 8:38 opens “Basi”; 1 Thessalonians 5:6 is the shipped Pilgrim's Progress rendering without “So then”); Psalm 116:4 keeps Bunyan's “nakusihi” (I beseech thee), which the teen retelling's English drops. Micah 7:8, James 4:7, James 1:22 and Ecclesiastes 4:9 are uncited allusions in the English rendered with the corpus's Union wording.",
