@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "charles-h-spurgeon"
+  ],
+  "slug": "talks-to-the-farmer-children",
+  "language": "pt",
+  "title": "Conversas com o Lavrador (Para Crianças)",
+  "subtitle": "",
+  "description": "Charles Spurgeon via a verdade de Deus escondida numa fazenda comum — um campo cheio de mato, a semente do semeador, o primeiro brotinho verde da primavera, as ovelhas na hora da tosquia e o celeiro na colheita. Esta edição para crianças reconta as imagens do campo dele em capítulos curtos e simples, feitos para ler em voz alta: um versículo, uma pequena história da fazenda, uma coisa que ela quer dizer para você e uma oração curtinha para terminar.",
+  "qa": [
+   {
+    "question": "Sobre o que é Conversas com o Lavrador (Para Crianças)?",
+    "answer": "É uma versão para crianças de Conversas com o Lavrador, de Charles Spurgeon. Cada capítulo curto pega uma imagem da vida no campo — uma cerca quebrada, um semeador plantando sementes, o primeiro broto da primavera, ovelhas sendo tosquiadas, a colheita — e mostra com carinho o que ela nos ensina sobre Deus, com palavras simples para leitores pequenos."
+   },
+   {
+    "question": "Quem foi Charles Spurgeon?",
+    "answer": "Foi um pregador famoso que viveu em Londres há muito tempo e adorava explicar grandes verdades sobre Deus usando coisas do dia a dia, como fazendas, o tempo e a colheita. É exatamente por isso que as histórias do campo dele funcionam tão bem para as crianças."
+   },
+   {
+    "question": "Como cada capítulo é organizado?",
+    "answer": "Todo capítulo é curto e feito para ser lido em voz alta. Começa com um versículo da Bíblia, conta uma pequena história da fazenda, mostra uma coisa simples que ela quer dizer para você e termina com uma oração curtinha."
+   },
+   {
+    "question": "Para quem é este livro?",
+    "answer": "É para crianças — para um adulto ler em voz alta, ou para uma criança maior ler sozinha. O livro completo de Spurgeon, Conversas com o Lavrador, também está disponível para leitores mais velhos, junto com uma versão feita para adolescentes."
+   },
+   {
+    "question": "Por que ele usa histórias do campo para ensinar sobre Deus?",
+    "answer": "Porque Jesus também fazia isso — a história dele sobre o lavrador que sai para semear é uma das mais conhecidas da Bíblia. Uma imagem que dá para ver, como uma semente, uma ovelha ou uma colheita, ajuda a criança a lembrar uma verdade muito melhor do que uma explicação comprida."
+   },
+   {
+    "question": "Quais são algumas das histórias do livro?",
+    "answer": "O livro acompanha o ano na fazenda. Tem um campo cheio de mato que um homem preguiçoso deixou de lado, um lavrador semeando suas sementes, a geada derretendo e virando primavera, o primeiro broto verde saindo da terra, ovelhas na hora da tosquia, a pobre Rute recolhendo espigas e a colheita guardada em segurança no celeiro. Cada historinha ensina uma coisa simples sobre Deus."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Uma recontagem da Ochorus, para jovens leitores, de Conversas com o Lavrador, de Charles H. Spurgeon, obra de domínio público. A forma de contar é nossa, livre para ler e compartilhar.",
+  "cover_url": "/covers/art/talks-to-the-farmer-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 21,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 1,
+  "title": "O Campo do Preguiçoso",
+  "body_html": "<blockquote>“Passei pelo campo de um homem preguiçoso, e ele estava cheio de mato e de espinhos.” — de Provérbios 24</blockquote> <p>Um dia, o sábio rei Salomão saiu para dar uma volta e parou para olhar uma pequena fazenda. Ai, ai — que bagunça! Mato espinhento e cardos cresciam por toda parte. Mal dava para ver o chão.</p> <p>Pois bem, o homem que era dono daquele campo não era um homem mau. Ele nunca plantou nem um matinho. Então, como foi que o campo ficou tão cheio de mato?</p> <p>A resposta é esta, e ela é meio surpreendente. Ele não fez nada! Ele era preguiçoso. Nunca arrancou o mato e nunca plantou sementes boas. E sabe de uma coisa? Um campo nunca fica vazio. Se você não faz crescer plantas boas nele, o mato cresce sozinho. Ninguém precisa plantar mato — ele simplesmente aparece.</p> <p>O seu coração é um pouco parecido com aquele campo. As coisas boas que você faz — orar, ser bondoso, falar a verdade, obedecer — são como plantas boas crescendo. Mas, se você para de fazer as coisas boas e fica sem fazer nada, outras coisas crescem no lugar, sozinhas. Mau humor. Palavras feias. Esquecer de Deus.</p> <p>Então não espere! Não diga: “Amanhã eu vou ser bonzinho.” O homem preguiçoso sempre dizia “amanhã”, e o campo inteiro dele virou mato. Plante uma semente boa hoje — uma palavra bondosa, uma pequena oração — e deixe-a crescer.</p> <p><em>Querido Deus, ajuda-me a não ter preguiça. Ajuda-me a plantar coisas boas no meu coração hoje, e a não esperar até amanhã. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que o rei Salomão viu quando passou pelo campo do homem preguiçoso?",
+    "answer": "Um campo bagunçado, cheio de mato espinhento e cardos, tão fechado que mal dava para ver o chão."
+   },
+   {
+    "question": "O homem preguiçoso nunca plantou mato. Então por que o campo dele estava cheio de mato?",
+    "answer": "Porque ele não fez nada. Nunca arrancou o mato nem plantou sementes boas, e um campo nunca fica vazio — o mato cresce sozinho."
+   },
+   {
+    "question": "Que semente boa você poderia plantar no seu coração hoje, em vez de esperar até amanhã?",
+    "answer": "A ideia do capítulo: não diga “Amanhã eu vou ser bonzinho”. Plante uma semente boa hoje — uma palavra bondosa ou uma pequena oração — e deixe-a crescer."
+   }
+  ],
+  "body_text": "“Passei pelo campo de um homem preguiçoso, e ele estava cheio de mato e de espinhos.” — de Provérbios 24 Um dia, o sábio rei Salomão saiu para dar uma volta e parou para olhar uma pequena fazenda. Ai, ai — que bagunça! Mato espinhento e cardos cresciam por toda parte. Mal dava para ver o chão. Pois bem, o homem que era dono daquele campo não era um homem mau. Ele nunca plantou nem um matinho. Então, como foi que o campo ficou tão cheio de mato? A resposta é esta, e ela é meio surpreendente. Ele não fez nada! Ele era preguiçoso. Nunca arrancou o mato e nunca plantou sementes boas. E sabe de uma coisa? Um campo nunca fica vazio. Se você não faz crescer plantas boas nele, o mato cresce sozinho. Ninguém precisa plantar mato — ele simplesmente aparece. O seu coração é um pouco parecido com aquele campo. As coisas boas que você faz — orar, ser bondoso, falar a verdade, obedecer — são como plantas boas crescendo. Mas, se você para de fazer as coisas boas e fica sem fazer nada, outras coisas crescem no lugar, sozinhas. Mau humor. Palavras feias. Esquecer de Deus. Então não espere! Não diga: “Amanhã eu vou ser bonzinho.” O homem preguiçoso sempre dizia “amanhã”, e o campo inteiro dele virou mato. Plante uma semente boa hoje — uma palavra bondosa, uma pequena oração — e deixe-a crescer. Querido Deus, ajuda-me a não ter preguiça. Ajuda-me a plantar coisas boas no meu coração hoje, e a não esperar até amanhã. Amém.",
+  "word_count": 262
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 2,
+  "title": "A Cerca Derrubada",
+  "body_html": "<blockquote>“Passei pelo campo de um homem preguiçoso, e ele estava cheio de mato, e a sua cerca de pedras estava derrubada.” — de Provérbios 24</blockquote> <p>Um dia, o sábio rei Salomão saiu para dar uma volta. Ele parou ao lado de uma pequena fazenda e ficou olhando para ela por um bom tempo.</p> <p>Que bagunça! Mato e cardos espinhentos cresciam por toda parte. E a cerca de pedras em volta do campo tinha caído, cheia de buracos grandes.</p> <p>Pois bem, o homem que era dono daquela fazenda não era um homem mau. Ele nunca <em>derrubou</em> a cerca. Essa é a parte engraçada. Ele só era preguiçoso. Quando uma pedra caía, ele dizia: “Amanhã eu conserto.” Mas, no dia seguinte, ele dizia de novo: “Amanhã eu conserto.” E assim a cerca continuou quebrada.</p> <p>E sabe o que acontece com um campo quando a cerca está quebrada? Tudo entra! Ovelhas e cabras passam pelos buracos e comem todas as plantas boas. O vento traz sementes de mato, e o mato toma conta. E, quando vem uma chuva forte, não há cerca para segurar a terra boa, e ela é levada embora.</p> <p>Aquele pobre homem preguiçoso perdeu o campo inteiro — não porque fez alguma coisa ruim, mas porque <em>não fez nada.</em></p> <p>O seu coração também tem uma cerca. Ela é feita de coisas boas que protegem você: orar, ouvir as pessoas que ensinam você sobre Deus e ter coragem de dizer “não” quando alguma coisa está errada.</p> <p>Se ficarmos preguiçosos e deixarmos essas coisas boas de lado, a cerca fica cheia de buracos. E aí todo tipo de coisa ruim pode entrar.</p> <p>Então mantenha a sua cerca forte! E, se uma pedra caiu, você não precisa consertar tudo hoje. É só pegar uma pedra e colocá-la de volta no lugar.</p> <p><em>Querido Deus, ajuda-me a cuidar da cerca boa em volta do meu coração. Quando uma pedra cair, ajuda-me a colocá-la de volta na mesma hora. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que havia de errado com a cerca em volta do campo do homem preguiçoso?",
+    "answer": "Ela tinha caído e estava cheia de buracos grandes, porque toda vez que uma pedra caía ele dizia: “Amanhã eu conserto.”"
+   },
+   {
+    "question": "O que aconteceu com o campo depois que a cerca quebrou?",
+    "answer": "Ovelhas e cabras entraram e comeram as plantas boas, o vento trouxe mato, e a chuva forte levou embora a terra boa."
+   },
+   {
+    "question": "O que ajuda a manter forte a “cerca” em volta do seu coração?",
+    "answer": "O capítulo fala de orar, ouvir as pessoas que ensinam você sobre Deus e ter coragem de dizer “não” ao que é errado. Se uma pedra cair, é só colocar uma de volta."
+   }
+  ],
+  "body_text": "“Passei pelo campo de um homem preguiçoso, e ele estava cheio de mato, e a sua cerca de pedras estava derrubada.” — de Provérbios 24 Um dia, o sábio rei Salomão saiu para dar uma volta. Ele parou ao lado de uma pequena fazenda e ficou olhando para ela por um bom tempo. Que bagunça! Mato e cardos espinhentos cresciam por toda parte. E a cerca de pedras em volta do campo tinha caído, cheia de buracos grandes. Pois bem, o homem que era dono daquela fazenda não era um homem mau. Ele nunca derrubou a cerca. Essa é a parte engraçada. Ele só era preguiçoso. Quando uma pedra caía, ele dizia: “Amanhã eu conserto.” Mas, no dia seguinte, ele dizia de novo: “Amanhã eu conserto.” E assim a cerca continuou quebrada. E sabe o que acontece com um campo quando a cerca está quebrada? Tudo entra! Ovelhas e cabras passam pelos buracos e comem todas as plantas boas. O vento traz sementes de mato, e o mato toma conta. E, quando vem uma chuva forte, não há cerca para segurar a terra boa, e ela é levada embora. Aquele pobre homem preguiçoso perdeu o campo inteiro — não porque fez alguma coisa ruim, mas porque não fez nada. O seu coração também tem uma cerca. Ela é feita de coisas boas que protegem você: orar, ouvir as pessoas que ensinam você sobre Deus e ter coragem de dizer “não” quando alguma coisa está errada. Se ficarmos preguiçosos e deixarmos essas coisas boas de lado, a cerca fica cheia de buracos. E aí todo tipo de coisa ruim pode entrar. Então mantenha a sua cerca forte! E, se uma pedra caiu, você não precisa consertar tudo hoje. É só pegar uma pedra e colocá-la de volta no lugar. Querido Deus, ajuda-me a cuidar da cerca boa em volta do meu coração. Quando uma pedra cair, ajuda-me a colocá-la de volta na mesma hora. Amém.",
+  "word_count": 324
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 3,
+  "title": "Geada e Degelo",
+  "body_html": "<blockquote>“Ele manda a neve. Ele envia a sua palavra e a derrete.” — do Salmo 147</blockquote> <p>Você já viu o mundo numa manhã de inverno com geada? Tudo fica duro, branco e congelado. As poças viram gelo. O chão fica duro como pedra.</p> <p>Depois de um tempo, sopra um vento quentinho. O sol aparece. E, em poucas horas, todo o gelo e toda a geada derretem e viram água, como se nunca tivessem existido!</p> <p>Quem faz isso? A Bíblia diz que é Deus. Ele manda a geada, e ele manda o vento quente que a derrete. Os dois vêm dele.</p> <p>Uma coisa parecida pode acontecer dentro de nós também. Às vezes fazemos alguma coisa errada e depois sentimos isso. O nosso coração fica frio, triste e arrependido. Esse sentimento triste e arrependido é um pouco como a geada.</p> <p>Mas a história não termina aí! Quando dizemos a Deus que estamos arrependidos, ele manda o seu amor como um vento quente de primavera. O amor dele derrete a tristeza fria, ele nos perdoa, e o nosso coração fica feliz e quentinho de novo.</p> <p>Só Deus consegue derreter um coração assim. Nós não conseguimos fazer isso sozinhos. Então, se algum dia você se sentir frio e arrependido por dentro por causa de alguma coisa que fez, não fique congelado. Conte para Deus. Ele adora mandar o vento quente.</p> <p><em>Querido Deus, quando o meu coração estiver frio e arrependido, por favor, manda o teu amor quentinho para derretê-lo, e perdoa-me. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que acontece com a geada quando sopra o vento quente e o sol aparece?",
+    "answer": "Em poucas horas todo o gelo e toda a geada derretem e viram água, como se nunca tivessem existido."
+   },
+   {
+    "question": "Quem manda a geada e o vento quente que a derrete?",
+    "answer": "Deus. O capítulo diz que os dois vêm dele."
+   },
+   {
+    "question": "Quando você se sente frio e arrependido por dentro por causa de alguma coisa que fez, o que pode fazer?",
+    "answer": "A ideia do capítulo: não fique congelado — diga a Deus que você está arrependido. Ele adora mandar o seu amor quentinho para derreter a tristeza e perdoar você."
+   }
+  ],
+  "body_text": "“Ele manda a neve. Ele envia a sua palavra e a derrete.” — do Salmo 147 Você já viu o mundo numa manhã de inverno com geada? Tudo fica duro, branco e congelado. As poças viram gelo. O chão fica duro como pedra. Depois de um tempo, sopra um vento quentinho. O sol aparece. E, em poucas horas, todo o gelo e toda a geada derretem e viram água, como se nunca tivessem existido! Quem faz isso? A Bíblia diz que é Deus. Ele manda a geada, e ele manda o vento quente que a derrete. Os dois vêm dele. Uma coisa parecida pode acontecer dentro de nós também. Às vezes fazemos alguma coisa errada e depois sentimos isso. O nosso coração fica frio, triste e arrependido. Esse sentimento triste e arrependido é um pouco como a geada. Mas a história não termina aí! Quando dizemos a Deus que estamos arrependidos, ele manda o seu amor como um vento quente de primavera. O amor dele derrete a tristeza fria, ele nos perdoa, e o nosso coração fica feliz e quentinho de novo. Só Deus consegue derreter um coração assim. Nós não conseguimos fazer isso sozinhos. Então, se algum dia você se sentir frio e arrependido por dentro por causa de alguma coisa que fez, não fique congelado. Conte para Deus. Ele adora mandar o vento quente. Querido Deus, quando o meu coração estiver frio e arrependido, por favor, manda o teu amor quentinho para derretê-lo, e perdoa-me. Amém.",
+  "word_count": 248
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 4,
+  "title": "O Grão Que Cresce",
+  "body_html": "<blockquote>“Se a semente não cai na terra, ela continua sendo uma semente só. Mas, se cai, ela cresce e se torna muito mais.” — de João 12</blockquote> <p>Imagine que você está segurando uma sementinha na mão. Só uma.</p> <p>E se você a guardasse bem segura num pote, numa prateleira, para que nada pudesse acontecer com ela? Depois de um ano, quantas sementes você teria? Continuaria tendo uma só! Ela seria para sempre uma sementinha sozinha.</p> <p>Mas e se, em vez disso, você a plantasse na terra? Uma coisa incrível acontece debaixo do chão. A sementinha se abre e muda — e dela cresce uma planta alta, com muitas e muitas sementes novas! Uma semente virou muitas, porque foi plantada.</p> <p>Jesus disse que ele era como aquela semente. Ele estava disposto a entregar a própria vida, como uma semente que vai para dentro da terra — e, porque ele fez isso, muitas e muitas pessoas agora podem ter vida nova com Deus. Ele não guardou a vida dele só para si. Ele a deu, e ela cresceu e virou uma enorme colheita de pessoas que o amam.</p> <p>E Jesus disse que nós também podemos ser assim. Se você segura tudo só para você — sempre querendo ser o primeiro, nunca dividindo —, você continua pequeno, como uma semente num pote. Mas, se você dá, divide e pensa nos outros, a sua vida cresce e vira uma coisa grande e bonita.</p> <p>Dar não é perder. Dar é o jeito como as coisas boas crescem.</p> <p><em>Querido Deus, obrigado por Jesus, que deu a vida por mim. Ajuda-me a dar e a dividir, para que as coisas boas possam crescer. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Se você guardasse uma semente bem segura num pote, quantas sementes teria depois de um ano?",
+    "answer": "Continuaria tendo uma só. Ela seria para sempre uma sementinha sozinha."
+   },
+   {
+    "question": "Por que a semente plantada na terra virou muitas sementes?",
+    "answer": "Porque foi plantada. Ela se abriu e mudou, e dela cresceu uma planta alta com muitas sementes novas."
+   },
+   {
+    "question": "De que jeito você poderia dar ou dividir alguma coisa nesta semana?",
+    "answer": "A ideia do capítulo: segurar tudo só para você deixa você pequeno, como uma semente num pote, mas dar e dividir ajuda as coisas boas a crescerem. “Dar não é perder.”"
+   }
+  ],
+  "body_text": "“Se a semente não cai na terra, ela continua sendo uma semente só. Mas, se cai, ela cresce e se torna muito mais.” — de João 12 Imagine que você está segurando uma sementinha na mão. Só uma. E se você a guardasse bem segura num pote, numa prateleira, para que nada pudesse acontecer com ela? Depois de um ano, quantas sementes você teria? Continuaria tendo uma só! Ela seria para sempre uma sementinha sozinha. Mas e se, em vez disso, você a plantasse na terra? Uma coisa incrível acontece debaixo do chão. A sementinha se abre e muda — e dela cresce uma planta alta, com muitas e muitas sementes novas! Uma semente virou muitas, porque foi plantada. Jesus disse que ele era como aquela semente. Ele estava disposto a entregar a própria vida, como uma semente que vai para dentro da terra — e, porque ele fez isso, muitas e muitas pessoas agora podem ter vida nova com Deus. Ele não guardou a vida dele só para si. Ele a deu, e ela cresceu e virou uma enorme colheita de pessoas que o amam. E Jesus disse que nós também podemos ser assim. Se você segura tudo só para você — sempre querendo ser o primeiro, nunca dividindo —, você continua pequeno, como uma semente num pote. Mas, se você dá, divide e pensa nos outros, a sua vida cresce e vira uma coisa grande e bonita. Dar não é perder. Dar é o jeito como as coisas boas crescem. Querido Deus, obrigado por Jesus, que deu a vida por mim. Ajuda-me a dar e a dividir, para que as coisas boas possam crescer. Amém.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 5,
+  "title": "O Semeador",
+  "body_html": "<blockquote>“Um lavrador saiu para plantar as suas sementes.” — de Lucas 8</blockquote> <p>Era uma vez um lavrador que saiu para plantar sementes. Ele enfiou a mão no saco, pegou um punhado bem grande e jogou as sementes pelo campo. Vamos seguir as sementes e ver onde elas caíram!</p> <p>Algumas sementes caíram no <strong>caminho duro</strong>, onde todo mundo passava. O caminho era duro demais para as sementes entrarem na terra. Então os passarinhos desceram voando e — nhac, nhac — comeram todas elas.</p> <p>Algumas sementes caíram em <strong>terreno cheio de pedras</strong>, onde havia pouca terra. Essas sementes cresceram depressa! Mas as raízes não conseguiam descer fundo. Então, quando veio o sol quente, as plantinhas secaram e morreram.</p> <p>Algumas sementes caíram onde cresciam <strong>espinhos e mato</strong>. As sementes começaram a crescer — mas o mato cresceu mais depressa e mais alto, e foi apertando as plantinhas, até que elas ficaram sem espaço e sem sol.</p> <p>Mas algumas sementes caíram em <strong>terra boa e fofa.</strong> Essas sementes cresceram com raízes bem fundas e caules bem altos, e deram muitos e muitos grãos novos. Que colheita!</p> <p>Jesus contou essa história e depois explicou o que ela quer dizer. A semente é a palavra de Deus. E os diferentes tipos de terra são como diferentes tipos de coração.</p> <p>O seu coração é como o caminho duro, ocupado demais para ouvir? Como o terreno cheio de pedras, animado por um minuto e depois esquecido? Como o terreno cheio de mato, lotado de outras coisas? Ou é como a terra boa, pronta para ouvir e crescer?</p> <p>Aqui está o segredo feliz: até a terra dura pode ser cavada e ficar fofa e boa. Se você pedir, Deus vai preparar o seu coração, para que a palavra dele cresça grande e forte dentro de você.</p> <p><em>Querido Deus, por favor, transforma o meu coração em terra boa, pronto para te ouvir e crescer. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que aconteceu com as sementes que caíram no caminho duro?",
+    "answer": "O caminho era duro demais para elas entrarem na terra, então os passarinhos desceram voando e comeram todas."
+   },
+   {
+    "question": "O que aconteceu com as sementes que caíram em terra boa e fofa?",
+    "answer": "Cresceram com raízes fundas e caules altos e deram muitos e muitos grãos novos — uma grande colheita."
+   },
+   {
+    "question": "Que tipo de terra você gostaria que o seu coração fosse, e como ele pode ficar pronto?",
+    "answer": "A ideia do capítulo: a semente é a palavra de Deus, e até a terra dura pode ficar fofa. Se pedirmos, Deus prepara o nosso coração para que a palavra dele cresça."
+   }
+  ],
+  "body_text": "“Um lavrador saiu para plantar as suas sementes.” — de Lucas 8 Era uma vez um lavrador que saiu para plantar sementes. Ele enfiou a mão no saco, pegou um punhado bem grande e jogou as sementes pelo campo. Vamos seguir as sementes e ver onde elas caíram! Algumas sementes caíram no caminho duro, onde todo mundo passava. O caminho era duro demais para as sementes entrarem na terra. Então os passarinhos desceram voando e — nhac, nhac — comeram todas elas. Algumas sementes caíram em terreno cheio de pedras, onde havia pouca terra. Essas sementes cresceram depressa! Mas as raízes não conseguiam descer fundo. Então, quando veio o sol quente, as plantinhas secaram e morreram. Algumas sementes caíram onde cresciam espinhos e mato. As sementes começaram a crescer — mas o mato cresceu mais depressa e mais alto, e foi apertando as plantinhas, até que elas ficaram sem espaço e sem sol. Mas algumas sementes caíram em terra boa e fofa. Essas sementes cresceram com raízes bem fundas e caules bem altos, e deram muitos e muitos grãos novos. Que colheita! Jesus contou essa história e depois explicou o que ela quer dizer. A semente é a palavra de Deus. E os diferentes tipos de terra são como diferentes tipos de coração. O seu coração é como o caminho duro, ocupado demais para ouvir? Como o terreno cheio de pedras, animado por um minuto e depois esquecido? Como o terreno cheio de mato, lotado de outras coisas? Ou é como a terra boa, pronta para ouvir e crescer? Aqui está o segredo feliz: até a terra dura pode ser cavada e ficar fofa e boa. Se você pedir, Deus vai preparar o seu coração, para que a palavra dele cresça grande e forte dentro de você. Querido Deus, por favor, transforma o meu coração em terra boa, pronto para te ouvir e crescer. Amém.",
+  "word_count": 318
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 6,
+  "title": "A Primavera no Coração",
+  "body_html": "<blockquote>“Tu cuidas da terra e a regas. Tu abençoas as plantinhas que crescem.” — do Salmo 65</blockquote> <p>O inverno é frio, e a terra parece marrom, pelada e vazia. Parece que nada está acontecendo.</p> <p>Mas aí chega a primavera. E um dia, se você olhar bem de pertinho, vai ver — um brotinho verde, empurrando a terra fria e dura para sair. Ele é pequenininho. Você quase poderia pisar nele sem perceber. Mas ele está vivo! E esse brotinho verde é o comecinho de um campo inteiro de trigo.</p> <p>Quando você começa a amar a Deus, esse amor pode ser pequeno assim. Talvez você faça uma oraçãozinha. Talvez você queira ser bom. Talvez você creia em Jesus só um pouquinho. Pode parecer pequeno demais para valer alguma coisa.</p> <p>Mas vale muito! Deus vê esse brotinho verde no seu coração, e isso o deixa muito feliz. Um lavrador não pisa num brotinho só porque ele ainda não é uma planta grande — ele cuida dele, rega e ajuda a crescer. É exatamente isso que Deus faz com você.</p> <p>Então nunca pense que o seu amor por Deus é pequeno demais para contar. O trigo maior e mais alto do campo inteiro começou como um brotinho verde. Continue se virando para Deus, como uma plantinha que se vira para o sol, e ele vai ajudar você a crescer.</p> <p><em>Querido Deus, obrigado porque até o meu menor amor por ti tem valor. Por favor, ajuda-o a crescer, maior e mais forte. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que coisa pequenininha dá para ver no campo quando chega a primavera?",
+    "answer": "Um brotinho verde empurrando a terra fria e dura para sair — o comecinho de um campo inteiro de trigo."
+   },
+   {
+    "question": "O que um bom lavrador faz com um brotinho que ainda não é uma planta grande?",
+    "answer": "Ele não pisa nele. Ele cuida dele, rega e ajuda a crescer."
+   },
+   {
+    "question": "Você já sentiu que o seu amor por Deus é pequeno demais para contar?",
+    "answer": "A ideia do capítulo: até uma oraçãozinha ou um pouquinho de fé tem valor e deixa Deus feliz. O trigo mais alto começou como um brotinho, e Deus ajuda a crescer."
+   }
+  ],
+  "body_text": "“Tu cuidas da terra e a regas. Tu abençoas as plantinhas que crescem.” — do Salmo 65 O inverno é frio, e a terra parece marrom, pelada e vazia. Parece que nada está acontecendo. Mas aí chega a primavera. E um dia, se você olhar bem de pertinho, vai ver — um brotinho verde, empurrando a terra fria e dura para sair. Ele é pequenininho. Você quase poderia pisar nele sem perceber. Mas ele está vivo! E esse brotinho verde é o comecinho de um campo inteiro de trigo. Quando você começa a amar a Deus, esse amor pode ser pequeno assim. Talvez você faça uma oraçãozinha. Talvez você queira ser bom. Talvez você creia em Jesus só um pouquinho. Pode parecer pequeno demais para valer alguma coisa. Mas vale muito! Deus vê esse brotinho verde no seu coração, e isso o deixa muito feliz. Um lavrador não pisa num brotinho só porque ele ainda não é uma planta grande — ele cuida dele, rega e ajuda a crescer. É exatamente isso que Deus faz com você. Então nunca pense que o seu amor por Deus é pequeno demais para contar. O trigo maior e mais alto do campo inteiro começou como um brotinho verde. Continue se virando para Deus, como uma plantinha que se vira para o sol, e ele vai ajudar você a crescer. Querido Deus, obrigado porque até o meu menor amor por ti tem valor. Por favor, ajuda-o a crescer, maior e mais forte. Amém.",
+  "word_count": 249
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 7,
+  "title": "A Ovelha Diante dos Tosquiadores",
+  "body_html": "<blockquote>“Ele ficou quietinho, como uma ovelhinha.” — de Isaías 53</blockquote> <p>Você já viu uma ovelha com aquele casaco de lã grosso e fofo? Uma vez por ano, o lavrador corta o cabelo de cada ovelha. Isso se chama tosquia. Ele corta toda a lã pesada para que a ovelha fique fresquinha e confortável no verão quente.</p> <p>Pois bem, uma ovelha sábia faz uma coisa esperta enquanto está sendo tosquiada. Ela fica bem, bem <em>quietinha.</em> E, como ela fica parada, a tesoura afiada nunca a machuca. Mas, se a ovelha chuta, se remexe e briga — ai! —, é aí que ela pode levar um corte. O que machuca é ficar se remexendo, não a tesoura.</p> <p>A Bíblia diz que às vezes Deus é como esse lavrador bondoso, e nós somos como as ovelhas. Às vezes Deus tira de nós alguma coisa que amamos. Isso pode nos deixar muito tristes, como perder o nosso casaco de lã quentinho.</p> <p>Mas escute — aqui estão três coisas para lembrar.</p> <p>Deus só tosquia no tempo <em>quente,</em> nunca no frio congelante. Isso quer dizer que Deus sabe a hora certa, e ele nunca vai dar a você mais do que você consegue aguentar.</p> <p>A lã sempre cresce <em>de novo.</em> Deus nunca tira alguma coisa sem ter uma coisa boa para dar.</p> <p>E dói menos quando você fica <em>quietinho</em> e confia nele, em vez de chutar e brigar.</p> <p>E sabe quem ficou perfeitamente quieto, como uma ovelhinha? Jesus. Quando as pessoas foram más com ele, ele ficou calado e manso, tudo porque nos amava. Então, quando vier uma coisa difícil, você pode ser corajoso e ficar quietinho, igualzinho a Jesus.</p> <p><em>Querido Deus, quando alguma coisa me deixar triste, ajuda-me a ficar em paz, sem me debater, e a confiar em ti, porque eu sei que tu me amas. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que o lavrador tosquia a lã das ovelhas uma vez por ano?",
+    "answer": "Para que a ovelha fique fresquinha e confortável no verão quente, sem aquele casaco pesado."
+   },
+   {
+    "question": "Por que a ovelha sábia fica quietinha enquanto está sendo tosquiada?",
+    "answer": "Porque, se ela fica parada, a tesoura nunca a machuca. O que machuca é ficar se remexendo e chutando, não a tesoura."
+   },
+   {
+    "question": "Quando acontece uma coisa triste e você perde algo que ama, o que você pode lembrar?",
+    "answer": "A ideia do capítulo: Deus sabe a hora certa, a lã sempre cresce de novo, e dói menos quando ficamos quietinhos e confiamos nele — como Jesus, que ficou calado e manso."
+   }
+  ],
+  "body_text": "“Ele ficou quietinho, como uma ovelhinha.” — de Isaías 53 Você já viu uma ovelha com aquele casaco de lã grosso e fofo? Uma vez por ano, o lavrador corta o cabelo de cada ovelha. Isso se chama tosquia. Ele corta toda a lã pesada para que a ovelha fique fresquinha e confortável no verão quente. Pois bem, uma ovelha sábia faz uma coisa esperta enquanto está sendo tosquiada. Ela fica bem, bem quietinha. E, como ela fica parada, a tesoura afiada nunca a machuca. Mas, se a ovelha chuta, se remexe e briga — ai! —, é aí que ela pode levar um corte. O que machuca é ficar se remexendo, não a tesoura. A Bíblia diz que às vezes Deus é como esse lavrador bondoso, e nós somos como as ovelhas. Às vezes Deus tira de nós alguma coisa que amamos. Isso pode nos deixar muito tristes, como perder o nosso casaco de lã quentinho. Mas escute — aqui estão três coisas para lembrar. Deus só tosquia no tempo quente, nunca no frio congelante. Isso quer dizer que Deus sabe a hora certa, e ele nunca vai dar a você mais do que você consegue aguentar. A lã sempre cresce de novo. Deus nunca tira alguma coisa sem ter uma coisa boa para dar. E dói menos quando você fica quietinho e confia nele, em vez de chutar e brigar. E sabe quem ficou perfeitamente quieto, como uma ovelhinha? Jesus. Quando as pessoas foram más com ele, ele ficou calado e manso, tudo porque nos amava. Então, quando vier uma coisa difícil, você pode ser corajoso e ficar quietinho, igualzinho a Jesus. Querido Deus, quando alguma coisa me deixar triste, ajuda-me a ficar em paz, sem me debater, e a confiar em ti, porque eu sei que tu me amas. Amém.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 8,
+  "title": "No Campo de Feno",
+  "body_html": "<blockquote>“Ele faz crescer a grama para os animais.” — do Salmo 104</blockquote> <p>Pense na grama. Ela cresce em todo lugar — nos campos, nas praças, na beira da estrada. Você pisa nela todos os dias e provavelmente nunca pensa nela.</p> <p>Mas aqui vai uma pergunta: quem faz a grama crescer? Talvez a gente diga: “Ah, ela cresce sozinha.” Mas não é bem assim. Deus faz crescer cada folhinha de grama. Ele está bem pertinho do mundo, sempre ocupado cuidando dele.</p> <p>E por que ele faz crescer toda essa grama? A Bíblia diz que ele a faz crescer “para os animais” — para as vacas e as ovelhas, para que elas tenham bastante comida. Pense nisso. Deus faz crescer comida para animais, que nem conseguem dizer obrigado!</p> <p>Então aqui está uma coisa maravilhosa para lembrar: se Deus cuida tão bem da grama, das vacas e das ovelhas, quanto mais ele cuida de <em>você?</em></p> <p>Sabia que cada folhinha de grama ganha a sua própria gota de orvalho de manhã? Não uma gota grande para o campo inteiro — uma gotinha para cada uma. É com esse cuidado todo que Deus dá às coisas aquilo de que elas precisam. E ele sabe exatamente do que você precisa também.</p> <p>Mesmo quando você se sente pequeno, ou acha que ninguém repara em você, Deus vê você. Ele nunca, nem uma vez, se esqueceu de você.</p> <p><em>Querido Deus, obrigado por cuidar até da grama. Obrigado por cuidar de mim. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quem faz a grama crescer?",
+    "answer": "Deus. O capítulo diz que ela não cresce sozinha de verdade — Deus faz crescer cada folhinha."
+   },
+   {
+    "question": "Para quem Deus faz a grama crescer?",
+    "answer": "Para os animais — as vacas e as ovelhas —, para que tenham bastante comida, mesmo que não consigam dizer obrigado."
+   },
+   {
+    "question": "Se Deus dá a cada folhinha de grama a sua própria gota de orvalho, o que isso mostra sobre o cuidado dele com você?",
+    "answer": "A ideia do capítulo: se Deus cuida tão bem da grama e dos animais, quanto mais ele cuida de você. Ele vê você e nunca se esqueceu de você."
+   }
+  ],
+  "body_text": "“Ele faz crescer a grama para os animais.” — do Salmo 104 Pense na grama. Ela cresce em todo lugar — nos campos, nas praças, na beira da estrada. Você pisa nela todos os dias e provavelmente nunca pensa nela. Mas aqui vai uma pergunta: quem faz a grama crescer? Talvez a gente diga: “Ah, ela cresce sozinha.” Mas não é bem assim. Deus faz crescer cada folhinha de grama. Ele está bem pertinho do mundo, sempre ocupado cuidando dele. E por que ele faz crescer toda essa grama? A Bíblia diz que ele a faz crescer “para os animais” — para as vacas e as ovelhas, para que elas tenham bastante comida. Pense nisso. Deus faz crescer comida para animais, que nem conseguem dizer obrigado! Então aqui está uma coisa maravilhosa para lembrar: se Deus cuida tão bem da grama, das vacas e das ovelhas, quanto mais ele cuida de você? Sabia que cada folhinha de grama ganha a sua própria gota de orvalho de manhã? Não uma gota grande para o campo inteiro — uma gotinha para cada uma. É com esse cuidado todo que Deus dá às coisas aquilo de que elas precisam. E ele sabe exatamente do que você precisa também. Mesmo quando você se sente pequeno, ou acha que ninguém repara em você, Deus vê você. Ele nunca, nem uma vez, se esqueceu de você. Querido Deus, obrigado por cuidar até da grama. Obrigado por cuidar de mim. Amém.",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 9,
+  "title": "A Alegria da Colheita",
+  "body_html": "<blockquote>“Eles estão tão alegres como as pessoas ficam no tempo da colheita.” — de Isaías 9</blockquote> <p>O verão inteiro, o lavrador trabalha duro. Ele planta as sementes. Arranca o mato. Espera e espera o grão crescer. Demora muito, muito tempo.</p> <p>E então, finalmente, chega o melhor dia de todos — a colheita! O grão está dourado e maduro. Todo mundo ajuda a recolhê-lo. O celeiro fica cheinho. E, quando o trabalho termina, há uma grande festa da colheita, bem alegre, e todo mundo comemora junto.</p> <p>A Bíblia diz que o povo de Deus tem momentos alegres como o tempo da colheita. E sabe qual é o mais alegre de todos? É quando alguém passa a amar a Deus.</p> <p>O homem que contou essas histórias do campo pela primeira vez, Spurgeon, disse que o dia mais feliz da vida inteira dele foi quando ajudou uma única pessoa a conhecer Jesus. Ele disse que ficou mais feliz do que se alguém tivesse dado a ele todos os tesouros do mundo!</p> <p>E existe uma regra do lavrador que vale a pena conhecer: <strong>você colhe o que planta.</strong> Se um lavrador planta sementes boas de trigo, ele colhe trigo bom. Então, se você plantar coisas boas na sua vida agora — bondade, orações, amor por Deus —, um dia você vai ter uma colheita maravilhosa e feliz.</p> <p>O que você vai plantar hoje?</p> <p><em>Querido Deus, ajuda-me a plantar coisas boas e bondosas todos os dias, e obrigado pela colheita feliz que estás fazendo crescer em mim. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que acontece no dia da colheita, quando o trabalho do lavrador termina?",
+    "answer": "Todo mundo ajuda a recolher o grão dourado, o celeiro fica cheio, e há uma grande festa da colheita, bem alegre."
+   },
+   {
+    "question": "O que Spurgeon disse que foi o dia mais feliz da vida inteira dele?",
+    "answer": "O dia em que ajudou uma única pessoa a conhecer Jesus. Ele ficou mais feliz do que se tivesse ganhado todos os tesouros do mundo."
+   },
+   {
+    "question": "Que coisas boas você poderia plantar na sua vida hoje?",
+    "answer": "A ideia do capítulo: você colhe o que planta. Plantar bondade, orações e amor por Deus agora leva a uma colheita maravilhosa e feliz."
+   }
+  ],
+  "body_text": "“Eles estão tão alegres como as pessoas ficam no tempo da colheita.” — de Isaías 9 O verão inteiro, o lavrador trabalha duro. Ele planta as sementes. Arranca o mato. Espera e espera o grão crescer. Demora muito, muito tempo. E então, finalmente, chega o melhor dia de todos — a colheita! O grão está dourado e maduro. Todo mundo ajuda a recolhê-lo. O celeiro fica cheinho. E, quando o trabalho termina, há uma grande festa da colheita, bem alegre, e todo mundo comemora junto. A Bíblia diz que o povo de Deus tem momentos alegres como o tempo da colheita. E sabe qual é o mais alegre de todos? É quando alguém passa a amar a Deus. O homem que contou essas histórias do campo pela primeira vez, Spurgeon, disse que o dia mais feliz da vida inteira dele foi quando ajudou uma única pessoa a conhecer Jesus. Ele disse que ficou mais feliz do que se alguém tivesse dado a ele todos os tesouros do mundo! E existe uma regra do lavrador que vale a pena conhecer: você colhe o que planta. Se um lavrador planta sementes boas de trigo, ele colhe trigo bom. Então, se você plantar coisas boas na sua vida agora — bondade, orações, amor por Deus —, um dia você vai ter uma colheita maravilhosa e feliz. O que você vai plantar hoje? Querido Deus, ajuda-me a plantar coisas boas e bondosas todos os dias, e obrigado pela colheita feliz que estás fazendo crescer em mim. Amém.",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 10,
+  "title": "A Respiga",
+  "body_html": "<blockquote>“Deixem que ela recolha espigas, e sejam bondosos com ela.” — da história de Rute</blockquote> <p>Muito tempo atrás, havia uma moça chamada Rute. Ela era pobre e não tinha comida. Então ela fez o que os pobres faziam naquele tempo: foi aos campos <em>respigar.</em></p> <p>Respigar era andar atrás dos trabalhadores da fazenda e pegar as espiguinhas de grão que eles deixavam cair enquanto trabalhavam. As sobras. Era um trabalho difícil, abaixar de novo e de novo, só para juntar um pouquinho.</p> <p>Pois bem, o campo aonde Rute foi era de um homem bom e bondoso chamado Boaz. E, quando Boaz viu Rute trabalhando tanto, ele fez uma coisa lindíssima. Disse baixinho aos seus trabalhadores: “Deixem cair umas espigas a mais de propósito, bem onde ela possa encontrá-las. E sejam bondosos com ela.” Ele garantiu que ela tivesse bastante — e nunca nem contou a ela o que tinha feito.</p> <p>Deus é como o bondoso Boaz. Talvez você se sinta pequeno, ou ache que não tem muita coisa. Mas Deus tem tantas coisas boas para você, e ele quer que você venha recolhê-las. Você só precisa se abaixar e pegá-las — quer dizer, vir até ele, ouvi-lo e orar.</p> <p>E tem uma parte muito bonita: quando Rute juntou o bastante, ela levou um pouco para casa para dividir com alguém que estava com fome. Quando Deus enche o seu coração de coisas boas, você também pode dividi-las com os outros.</p> <p><em>Querido Deus, obrigado por seres tão bondoso e generoso comigo. Ajuda-me a vir até ti e a dividir os teus bons presentes com os outros. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "O que Rute fazia nos campos para conseguir comida?",
+    "answer": "Ela respigava — andava atrás dos trabalhadores e pegava as espiguinhas de grão que eles deixavam cair."
+   },
+   {
+    "question": "Que coisa bondosa Boaz fez por Rute?",
+    "answer": "Ele mandou os trabalhadores deixarem cair espigas a mais de propósito onde ela pudesse encontrá-las e serem bondosos com ela — e nunca contou a ela o que tinha feito."
+   },
+   {
+    "question": "Como você pode “recolher” os bons presentes de Deus, e com quem poderia dividi-los?",
+    "answer": "A ideia do capítulo: Deus é bondoso como Boaz. Recolhemos vindo até ele, ouvindo e orando — e, como Rute levando comida para casa, podemos dividir os bons presentes dele com os outros."
+   }
+  ],
+  "body_text": "“Deixem que ela recolha espigas, e sejam bondosos com ela.” — da história de Rute Muito tempo atrás, havia uma moça chamada Rute. Ela era pobre e não tinha comida. Então ela fez o que os pobres faziam naquele tempo: foi aos campos respigar. Respigar era andar atrás dos trabalhadores da fazenda e pegar as espiguinhas de grão que eles deixavam cair enquanto trabalhavam. As sobras. Era um trabalho difícil, abaixar de novo e de novo, só para juntar um pouquinho. Pois bem, o campo aonde Rute foi era de um homem bom e bondoso chamado Boaz. E, quando Boaz viu Rute trabalhando tanto, ele fez uma coisa lindíssima. Disse baixinho aos seus trabalhadores: “Deixem cair umas espigas a mais de propósito, bem onde ela possa encontrá-las. E sejam bondosos com ela.” Ele garantiu que ela tivesse bastante — e nunca nem contou a ela o que tinha feito. Deus é como o bondoso Boaz. Talvez você se sinta pequeno, ou ache que não tem muita coisa. Mas Deus tem tantas coisas boas para você, e ele quer que você venha recolhê-las. Você só precisa se abaixar e pegá-las — quer dizer, vir até ele, ouvi-lo e orar. E tem uma parte muito bonita: quando Rute juntou o bastante, ela levou um pouco para casa para dividir com alguém que estava com fome. Quando Deus enche o seu coração de coisas boas, você também pode dividi-las com os outros. Querido Deus, obrigado por seres tão bondoso e generoso comigo. Ajuda-me a vir até ti e a dividir os teus bons presentes com os outros. Amém.",
+  "word_count": 265
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 11,
+  "title": "A Debulha",
+  "body_html": "<blockquote>“Ele não fica batendo o grão para sempre.” — de Isaías 28</blockquote> <p>Depois que o trigo é recolhido, ainda falta um trabalho, e ele parece meio bruto. Sabe, cada grão de trigo fica preso dentro de uma casca dura que não serve para nada. Para tirar o grão bom, o lavrador tem que bater nele — pá, pá, pá — com uma vara. Isso se chama debulhar.</p> <p>Pode parecer que o lavrador está sendo mau com o trigo. Mas não está! Ele está soltando o grão bom da casca que está grudada em volta dele. Ele precisa fazer isso, senão o grão bom ficaria preso lá dentro.</p> <p>Às vezes acontecem coisas difíceis ou tristes com a gente, e pode parecer um pouco que estamos sendo debulhados. Mas aqui estão duas coisas para lembrar, e as duas são cheias de consolo.</p> <p>Primeira: o lavrador só se dá ao trabalho de debulhar o grão <em>bom</em>. Ele deixa o mato em paz. Então, quando vem um tempo difícil, isso não quer dizer que Deus se esqueceu de você. Quer dizer que você é precioso para ele, como o trigo bom.</p> <p>Segunda: o lavrador nunca, jamais, fica batendo o grão para sempre. Ele sempre para! Os tempos difíceis também não duram para sempre. Deus é manso e cuidadoso, e ele nunca vai dar a você mais do que você consegue aguentar. Logo as batidas param, e o grão bom fica seguro.</p> <p><em>Querido Deus, quando acontecerem coisas difíceis, ajuda-me a lembrar que tu não te esqueceste de mim e que isso não vai durar para sempre. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Por que o lavrador bate no trigo com uma vara?",
+    "answer": "Para soltar o grão bom da casca dura que não serve para nada e está grudada em volta dele. Isso se chama debulhar."
+   },
+   {
+    "question": "O lavrador debulha o mato também?",
+    "answer": "Não. Ele só se dá ao trabalho de debulhar o grão bom e deixa o mato em paz."
+   },
+   {
+    "question": "Quando vem um tempo difícil ou triste, que duas coisas podem ajudar você a se sentir melhor?",
+    "answer": "Os dois consolos do capítulo: um tempo difícil não quer dizer que Deus se esqueceu de você — você é precioso, como o trigo bom — e ele não vai durar para sempre, porque o lavrador sempre para."
+   }
+  ],
+  "body_text": "“Ele não fica batendo o grão para sempre.” — de Isaías 28 Depois que o trigo é recolhido, ainda falta um trabalho, e ele parece meio bruto. Sabe, cada grão de trigo fica preso dentro de uma casca dura que não serve para nada. Para tirar o grão bom, o lavrador tem que bater nele — pá, pá, pá — com uma vara. Isso se chama debulhar. Pode parecer que o lavrador está sendo mau com o trigo. Mas não está! Ele está soltando o grão bom da casca que está grudada em volta dele. Ele precisa fazer isso, senão o grão bom ficaria preso lá dentro. Às vezes acontecem coisas difíceis ou tristes com a gente, e pode parecer um pouco que estamos sendo debulhados. Mas aqui estão duas coisas para lembrar, e as duas são cheias de consolo. Primeira: o lavrador só se dá ao trabalho de debulhar o grão bom. Ele deixa o mato em paz. Então, quando vem um tempo difícil, isso não quer dizer que Deus se esqueceu de você. Quer dizer que você é precioso para ele, como o trigo bom. Segunda: o lavrador nunca, jamais, fica batendo o grão para sempre. Ele sempre para! Os tempos difíceis também não duram para sempre. Deus é manso e cuidadoso, e ele nunca vai dar a você mais do que você consegue aguentar. Logo as batidas param, e o grão bom fica seguro. Querido Deus, quando acontecerem coisas difíceis, ajuda-me a lembrar que tu não te esqueceste de mim e que isso não vai durar para sempre. Amém.",
+  "word_count": 263
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "talks-to-the-farmer-children",
+   "pt"
+  ],
+  "order": 12,
+  "title": "O Trigo no Celeiro",
+  "body_html": "<blockquote>“Recolham o trigo no meu celeiro.” — de Mateus 13</blockquote> <p>Aqui está a última parte da colheita, e é a parte mais feliz de todas.</p> <p>Quando o trigo bom finalmente fica pronto, o lavrador o recolhe todo e o leva em segurança para dentro do celeiro. E, depois que está lá dentro, nada mais pode fazer mal a ele. Nem chuva. Nem geada. Nem vento frio. Ele fica seguro, sequinho e quentinho, bem onde deve estar.</p> <p>Jesus contou uma história bem parecida com esta. Ele disse que um dia Deus vai reunir todo o seu povo — pessoas de todos os países do mundo, grandes e pequenas, jovens e velhas — e levá-las em segurança para casa, para estar com ele. Como o trigo recolhido no celeiro.</p> <p>Esse lar seguro, feliz e para sempre se chama céu. É um lugar onde não há mais choro nem tristeza — só estar com Deus, em segurança, para sempre.</p> <p>Então nunca precisamos ter medo do fim. Para todo mundo que ama a Deus, o fim não é nada triste. É como o trigo entrando no celeiro, finalmente. É voltar para casa.</p> <p>Você vai fazer parte da colheita de Deus? Você pode! É só dizer a ele que você quer pertencer a ele. E então, um dia, você vai ser recolhido em segurança para casa.</p> <p><em>Querido Deus, obrigado porque tu recolhes o teu povo em segurança para casa. Eu quero pertencer a ti. Por favor, guarda-me pertinho de ti, hoje e para sempre. Amém.</em></p>",
+  "study_questions": [
+   {
+    "question": "Onde o lavrador coloca o trigo bom quando ele fica pronto?",
+    "answer": "Ele o leva em segurança para dentro do celeiro, onde nem chuva, nem geada, nem vento frio podem fazer mal a ele."
+   },
+   {
+    "question": "Na história de Jesus, quem Deus vai reunir como o trigo no celeiro?",
+    "answer": "Todo o seu povo, de todos os países — grandes e pequenos, jovens e velhos —, levado em segurança para casa, para estar com ele."
+   },
+   {
+    "question": "Por que quem ama a Deus não precisa ter medo do fim?",
+    "answer": "A ideia do capítulo: para todo mundo que ama a Deus, o fim é como o trigo entrando no celeiro — é voltar para casa, para o céu, em segurança para sempre. Qualquer pessoa pode dizer a Deus que quer pertencer a ele."
+   }
+  ],
+  "body_text": "“Recolham o trigo no meu celeiro.” — de Mateus 13 Aqui está a última parte da colheita, e é a parte mais feliz de todas. Quando o trigo bom finalmente fica pronto, o lavrador o recolhe todo e o leva em segurança para dentro do celeiro. E, depois que está lá dentro, nada mais pode fazer mal a ele. Nem chuva. Nem geada. Nem vento frio. Ele fica seguro, sequinho e quentinho, bem onde deve estar. Jesus contou uma história bem parecida com esta. Ele disse que um dia Deus vai reunir todo o seu povo — pessoas de todos os países do mundo, grandes e pequenas, jovens e velhas — e levá-las em segurança para casa, para estar com ele. Como o trigo recolhido no celeiro. Esse lar seguro, feliz e para sempre se chama céu. É um lugar onde não há mais choro nem tristeza — só estar com Deus, em segurança, para sempre. Então nunca precisamos ter medo do fim. Para todo mundo que ama a Deus, o fim não é nada triste. É como o trigo entrando no celeiro, finalmente. É voltar para casa. Você vai fazer parte da colheita de Deus? Você pode! É só dizer a ele que você quer pertencer a ele. E então, um dia, você vai ser recolhido em segurança para casa. Querido Deus, obrigado porque tu recolhes o teu povo em segurança para casa. Eu quero pertencer a ti. Por favor, guarda-me pertinho de ti, hoje e para sempre. Amém.",
+  "word_count": 250
+ }
+}
+]

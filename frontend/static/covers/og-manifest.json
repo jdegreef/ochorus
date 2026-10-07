@@ -9566,6 +9566,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"pt/talks-to-the-farmer-children": {
+			"ground": "1109076400b25cdd9e68b17ef205055e02ea9fc9c63895a754cf63a698e14935",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/oxblood",
+			"bar": 0
+		},
 		"pt/the-bruised-reed": {
 			"ground": "10586d2aac80ebc4ffa8a6d42cc3f92381df370d688a17e482bdc91bce2f155e",
 			"style": "press",
