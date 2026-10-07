@@ -1422,8 +1422,27 @@ export type HubAudience = Exclude<SeriesAudience, 'adults'>;
  * `more` (the rest of the audience's curated topic). `plans` read nothing but
  * those books. No English fallback — a language with none gets empty lists.
  */
+/** One face in a hub's people strip: a life its series' anthologies tell in
+ *  one chapter (`_audience_people`). `name` and `hook` are that chapter's own
+ *  title in the page's language, split at its colon. */
+export interface HubPerson {
+	/** The person's bio — the portrait's crop. */
+	slug: string;
+	name: string;
+	hook: string;
+	photo_url: string;
+	/** Where the story is: `/books/<book>/<chapter>`. */
+	book: string;
+	chapter: number;
+	/** The chapter's words — its reading time; null with no text yet. */
+	words: number | null;
+}
+
 export interface AudienceShelf {
 	series: SeriesSummary[];
+	/** The series' anthologies as faces, each opening its chapter. Optional: an
+	 *  API behind this build omits it, and the page draws no strip. */
+	people?: HubPerson[];
 	/** The "(For Children)" / "(For Teens)" retellings no series above holds. */
 	editions: BookSummary[];
 	/** The rest of the audience's topic shelf, in its curator's order. */

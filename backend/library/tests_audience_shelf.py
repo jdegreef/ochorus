@@ -8,16 +8,23 @@ nothing falls back to English; and an unknown audience is a 404.
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 from django.test import TestCase
 
+from common.testing import body_of
+
+from .book_people_seed import BOOK_PEOPLE
 from .models import (
     Author,
     Book,
+    BookPerson,
+    Chapter,
     Plan,
     PlanDay,
     Series,
+    SeriesTranslation,
     Topic,
     TopicBook,
     TopicTranslation,
@@ -165,6 +172,96 @@ class AudienceShelfTests(TestCase):
             if not (books / f"{slug}.en.json").exists()
         ]
         self.assertEqual(missing, [])
+
+    def _story(self, book, order, title, person, *, words=90):
+        Chapter.objects.create(book=book, order=order, title=title, body_html=body_of(words))
+        if person is not None:
+            BookPerson.objects.get_or_create(
+                book_slug=book.slug, person=person,
+                defaults={"role": "subject", "chapter": order},
+            )
+
+    def test_people_are_the_series_stories_in_reading_order(self):
+        crowther = Author.objects.create(slug="samuel-ajayi-crowther", name="Samuel Ajayi Crowther")
+        carey = Author.objects.create(slug="william-carey", name="William Carey", photo_url="/c.jpg")
+        jim = Author.objects.create(slug="jim-elliot", name="Jim Elliot")
+        betty = Author.objects.create(slug="elisabeth-elliot", name="Elisabeth Elliot")
+        two = self._book("bfg-2", series=self.series)
+        Book.objects.filter(pk=two.pk).update(series_position=2)
+        one = self._book("bfg-1", series=self.series)
+        Book.objects.filter(pk=one.pk).update(series_position=1)
+        self._story(two, 1, "William Carey: The Cobbler Who Would Not Give Up", carey, words=120)
+        self._story(two, 2, "Jim and Elisabeth Elliot: The Ones Who Went Back", jim)
+        BookPerson.objects.create(
+            book_slug="bfg-2", person=betty, role="subject", chapter=2, sort_order=1
+        )
+        self._story(one, 1, "Samuel Crowther: The Boy from the Slave Ship", crowther)
+        people = self._get()["people"]
+        self.assertEqual(
+            [(p["book"], p["chapter"], p["name"], p["hook"]) for p in people],
+            [
+                ("bfg-1", 1, "Samuel Crowther", "The Boy from the Slave Ship"),
+                ("bfg-2", 1, "William Carey", "The Cobbler Who Would Not Give Up"),
+                # Two subjects, one chapter: one face, the first person's.
+                ("bfg-2", 2, "Jim and Elisabeth Elliot", "The Ones Who Went Back"),
+            ],
+        )
+        self.assertEqual(people[1]["slug"], "william-carey")
+        self.assertEqual(people[1]["photo_url"], "/c.jpg")
+        self.assertEqual(people[1]["words"], 120)
+        self.assertEqual(people[2]["slug"], "jim-elliot")
+
+    def test_people_follow_the_language_and_its_script(self):
+        crowther = Author.objects.create(slug="samuel-ajayi-crowther", name="Samuel Ajayi Crowther")
+        en = self._book("bfg-1", series=self.series)
+        am = self._book("bfg-1", language="am", series=self.series)
+        SeriesTranslation.objects.create(series=self.series, language="am", title="ለእግዚአብሔር ደፋር")
+        self._story(en, 1, "Samuel Crowther: The Boy from the Slave Ship", crowther)
+        Chapter.objects.create(book=am, order=1, title="ሳሙኤል ክራውዘር፦ ከባሪያ መርከብ የወጣው ልጅ",
+                               body_html="<p>x</p>")
+        [person] = self._get(language="am")["people"]
+        self.assertEqual((person["name"], person["hook"]), ("ሳሙኤል ክራውዘር", "ከባሪያ መርከብ የወጣው ልጅ"))
+        # No English fallback: a language without the book has no faces.
+        self.assertEqual(self._get(language="sw")["people"], [])
+
+    def test_a_title_without_a_name_falls_back_to_the_person(self):
+        crowther = Author.objects.create(slug="samuel-ajayi-crowther", name="Samuel Ajayi Crowther")
+        book = self._book("bfg-1", series=self.series)
+        self._story(book, 1, "The Boy from the Slave Ship", crowther)
+        [person] = self._get()["people"]
+        self.assertEqual((person["name"], person["hook"]),
+                         ("Samuel Ajayi Crowther", "The Boy from the Slave Ship"))
+
+    def test_only_chapter_stories_in_the_hubs_series_are_faces(self):
+        crowther = Author.objects.create(slug="samuel-ajayi-crowther", name="Samuel Ajayi Crowther")
+        book = self._book("bfg-1", series=self.series)
+        Chapter.objects.create(book=book, order=1, title="Samuel Crowther: A", body_html="<p>x</p>")
+        # Mentioned, with no chapter of their own: not a face.
+        BookPerson.objects.create(book_slug="bfg-1", person=crowther, role="mentioned")
+        # A story in a book outside every hub series: not a face either.
+        loose = self._book("men-who-moved-heaven")
+        self._story(loose, 1, "Samuel Crowther: B", Author.objects.create(slug="x", name="X"))
+        self.assertEqual(self._get()["people"], [])
+
+    def test_every_story_chapter_in_the_seed_is_a_real_chapter(self):
+        # The seed names chapters by number; a re-cut anthology would point a
+        # face at the wrong life. Checked against the English fixture.
+        books = Path(__file__).parent / "fixtures" / "content" / "books"
+        surname = {
+            a["fields"]["slug"]: a["fields"]["name"].split()[-1].replace("'", "’")
+            for a in json.loads((books.parent / "authors.json").read_text())
+        }
+        wrong = []
+        for slug, members in BOOK_PEOPLE:
+            stories = [m for m in members if len(m) == 3]
+            if not stories:
+                continue
+            rows = json.loads((books / f"{slug}.en.json").read_text())
+            titles = {r["fields"]["order"]: r["fields"]["title"] for r in rows[1:]}
+            for person, _role, chapter in stories:
+                if surname[person] not in titles.get(chapter, ""):
+                    wrong.append((slug, person, chapter))
+        self.assertEqual(wrong, [])
 
 
 class BookAgesTests(TestCase):

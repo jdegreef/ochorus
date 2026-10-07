@@ -1,5 +1,11 @@
 import type { IconName } from '$lib/components/Icon.svelte';
-import type { AudienceShelf, BookSummary, HubAudience } from './library-public';
+import {
+	toBookTile,
+	type AudienceShelf,
+	type BookSummary,
+	type BookTile,
+	type HubAudience
+} from './library-public';
 
 /**
  * The young-reader hubs — /young-readers/ and /teens/ — one front door each to
@@ -13,6 +19,20 @@ import type { AudienceShelf, BookSummary, HubAudience } from './library-public';
  * chooses for a child, the teens hub to the teenager choosing for themselves —
  * which is why each carries its own copy keys rather than sharing one voice.
  */
+/**
+ * One "where do you want to start?" card: a feeling or a need, pointing at one
+ * real place on the hub — a series page, a group further down, or the editor's
+ * start pick. A path whose place this language doesn't have is left out
+ * (`hubPaths`), so the cards never promise what the page can't open.
+ */
+export interface HubPathConfig {
+	/** The question or the name ("Got big questions?", "Brave heroes"). */
+	titleKey: string;
+	/** One line on what's behind it. */
+	lineKey: string;
+	to: { series: string } | { section: 'retold' } | 'start';
+}
+
 export interface AudienceHubConfig {
 	audience: HubAudience;
 	/** Unlocalized, unslashed — `localizeHref` adds the slash (isSlashedPath).
@@ -39,6 +59,15 @@ export interface AudienceHubConfig {
 	parentsTogetherKey: string;
 	/** The /series audience group's link here. */
 	seeKey: string;
+	/** The heading over the path cards, and the cards, in order. */
+	pathsHeadingKey: string;
+	paths: HubPathConfig[];
+	/** The people strip's heading and the line under it. */
+	peopleHeadingKey: string;
+	peopleNoteKey: string;
+	/** The note for the adults, folded shut: on a page the reader chose for
+	 *  themselves, a note about them shouldn't sit open at the end. */
+	foldParents: boolean;
 }
 
 export const YOUNG_READERS_HUB: AudienceHubConfig = {
@@ -54,7 +83,17 @@ export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	retoldKey: 'audience.retoldYoung',
 	parentsHeadingKey: 'series.parentsHeading',
 	parentsTogetherKey: 'audience.parentsTogetherYoung',
-	seeKey: 'audience.seeYoung'
+	seeKey: 'audience.seeYoung',
+	pathsHeadingKey: 'audience.pathsHeadingYoung',
+	paths: [
+		{ titleKey: 'audience.pathNew', lineKey: 'audience.startYoung', to: 'start' },
+		{ titleKey: 'audience.pathBrave', lineKey: 'audience.pathBraveLine', to: { series: 'brave-for-god' } },
+		{ titleKey: 'audience.pathBedtime', lineKey: 'audience.pathBedtimeLine', to: { section: 'retold' } },
+		{ titleKey: 'audience.pathDaily', lineKey: 'audience.pathDailyLine', to: { series: 'rooted' } }
+	],
+	peopleHeadingKey: 'audience.peopleHeadingYoung',
+	peopleNoteKey: 'audience.peopleNoteYoung',
+	foldParents: false
 };
 
 export const TEENS_HUB: AudienceHubConfig = {
@@ -70,13 +109,24 @@ export const TEENS_HUB: AudienceHubConfig = {
 	retoldKey: 'audience.retoldTeens',
 	parentsHeadingKey: 'audience.parentsTeensHeading',
 	parentsTogetherKey: 'audience.parentsTogetherTeens',
-	seeKey: 'audience.seeTeens'
+	seeKey: 'audience.seeTeens',
+	pathsHeadingKey: 'audience.pathsHeadingTeens',
+	paths: [
+		{ titleKey: 'audience.pathPick', lineKey: 'audience.pathPickLine', to: 'start' },
+		{ titleKey: 'audience.pathQuestions', lineKey: 'audience.pathQuestionsLine', to: { series: 'anchored' } },
+		{ titleKey: 'audience.pathTrue', lineKey: 'audience.pathTrueLine', to: { series: 'they-were-young' } },
+		{ titleKey: 'audience.pathAdventure', lineKey: 'audience.pathAdventureLine', to: { series: 'straight-talk' } }
+	],
+	peopleHeadingKey: 'audience.peopleHeadingTeens',
+	peopleNoteKey: 'audience.peopleNoteTeens',
+	foldParents: true
 };
 
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];
 
-/** The Plausible event a hub sends when its "Start here" is opened or it is
- *  shared — props `{ hub, action }`; its visits are the pageviews themselves. */
+/** The Plausible event a hub sends when its "Start here", a path card or a
+ *  face is opened, or it is shared — props `{ hub, action }` (`start`, `path`,
+ *  `person`, `share`); its visits are the pageviews themselves. */
 export const HUB_EVENT = 'Hub';
 
 /** The hub for a series audience, if it has one (adults don't). */
@@ -102,6 +152,47 @@ export function hubCounts(shelf: AudienceShelf): { books: number; series: number
 /** Whether the hub has anything to show in this language. */
 export function hubIsEmpty(shelf: AudienceShelf): boolean {
 	return !shelf.series.length && !hubBooks(shelf).length;
+}
+
+export interface HubPath {
+	titleKey: string;
+	lineKey: string;
+	/** Unlocalized. */
+	href: string;
+	/** The covers the card fans: what is behind it, at a glance. */
+	covers: BookTile[];
+}
+
+/** The hub's path cards whose place it has in this language, resolved to a
+ *  link and the covers behind it. */
+export function hubPaths(hub: AudienceHubConfig, shelf: AudienceShelf): HubPath[] {
+	const start = startPick(shelf);
+	return hub.paths.flatMap(({ titleKey, lineKey, to }): HubPath[] => {
+		if (to === 'start') {
+			return start
+				? [{ titleKey, lineKey, href: `/books/${start.slug}`, covers: [toBookTile(start)] }]
+				: [];
+		}
+		if ('section' in to) {
+			return shelf.editions.length
+				? [{ titleKey, lineKey, href: `#${to.section}`, covers: shelf.editions.map(toBookTile) }]
+				: [];
+		}
+		const series = shelf.series.find((s) => s.slug === to.series);
+		return series
+			? [{ titleKey, lineKey, href: `/series/${series.slug}/`, covers: series.covers }]
+			: [];
+	});
+}
+
+/** The hero's fan: the start pick in front, flanked by the first volume of
+ *  each series — what the hub is, in three covers. */
+export function heroCovers(shelf: AudienceShelf): BookTile[] {
+	const start = startPick(shelf);
+	const firsts = shelf.series.flatMap((s) => s.covers.slice(0, 1));
+	const [a, b] = firsts.filter((c) => c.slug !== start?.slug);
+	const tiles = start ? [a, toBookTile(start), b] : [a, b, firsts[2]];
+	return tiles.filter((t): t is BookTile => !!t);
 }
 
 export interface PrintableLink {

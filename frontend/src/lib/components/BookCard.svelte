@@ -3,7 +3,7 @@
 	import { type CoverBook } from '$lib/library-public';
 	import { i18n } from '$lib/i18n.svelte';
 	import { localizeHref } from '$lib/href';
-	import { readingTime } from '$lib/reading';
+	import { readingMinutes, readingTime } from '$lib/reading';
 	import { splitEdition } from '$lib/edition';
 	import { cardSeriesLine } from '$lib/series';
 	import BookCover from './BookCover.svelte';
@@ -28,13 +28,20 @@
 		 * The series line ("Book 2 of 6 in Rooted"). Off where the page already
 		 * says which series every card is in — the series page, a by-series group.
 		 */
-		showSeries = true
+		showSeries = true,
+		/**
+		 * The time as a sitting ("~12 min a chapter") rather than the whole
+		 * book's: on the young-reader hubs, where "3 hr read" is what puts a
+		 * reader off and one chapter is the real commitment.
+		 */
+		perChapter = false
 	}: {
 		book: CoverBook;
 		showAuthor?: boolean;
 		priority?: boolean;
 		anchor?: string;
 		showSeries?: boolean;
+		perChapter?: boolean;
 	} = $props();
 	const t = i18n.t;
 
@@ -47,6 +54,16 @@
 	const edition = $derived(splitEdition(book.slug, book.title));
 	const seriesLine = $derived(
 		showSeries ? cardSeriesLine(book) : ''
+	);
+	const time = $derived(
+		!book.word_count
+			? ''
+			: perChapter && book.chapter_count > 1
+				? t('audience.minPerChapter').replace(
+						'%n%',
+						String(readingMinutes(book.word_count / book.chapter_count))
+					)
+				: readingTime(book.word_count)
 	);
 	// The card's tint (app.css, .book-card), from the book's own cover colour.
 	const tint = $derived(cardTint(book.cover_color));
@@ -103,9 +120,9 @@
 		     spaces survive — as literal text they were collapsed, leaving no
 		     break opportunity after the dot at all. -->
 		<div class="mt-auto pt-0.5 text-eyebrow text-muted">
-			<span class="whitespace-nowrap">{chapters}</span>{#if book.word_count}<span
+			<span class="whitespace-nowrap">{chapters}</span>{#if time}<span
 					class="opacity-50">{' · '}</span
-				><span class="whitespace-nowrap">{readingTime(book.word_count)}</span>{/if}
+				><span class="whitespace-nowrap">{time}</span>{/if}
 		</div>
 	</div>
 </a>
