@@ -3,7 +3,7 @@
  "slug": "the-practice-of-the-presence-of-god-children",
  "language": "sw",
  "job_issue": 5466,
- "pull_request": null,
+ "pull_request": 5513,
  "note": [
   "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible egress-blocked; swhonen is off-tradition — see the translation-worker skill). Each chapter quotes one verse, in its opening blockquote (block 0). Every `mined` row is a verbatim (case-insensitive) substring both of this edition's blockquote and of the cited shipped sw file; as the English retelling quotes short, simplified verses, several are a contiguous PART of the Union verse (1 Sam 16:7 without its opening clause, Ps 16:11 middle clause only, Col 3:23 without “wala si kwa wanadamu”, 1 John 1:9 without its final clause, Ps 23:4 without “gongo lako na fimbo yako vyanifariji”, John 14:2 the one sentence).",
   "Romans 1:20 is not quoted anywhere in the shipped sw corpus, and the English is a simplified paraphrase, so it is self_rendered in plain words for children. “Brother Lawrence” is “Ndugu Lawrence”, as the sw corpus already names him; “practising the presence of God” follows the corpus phrase “kuzoea kuwapo kwa Mungu”. AI-translated in-session; awaiting native review."
