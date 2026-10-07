@@ -94,6 +94,11 @@ EXPORT_PILOT = frozenset({
     ("talks-to-the-farmer-teens", "en"),
     ("the-life-of-trust-children", "en"),
     ("the-life-of-trust-teens", "en"),
+    # Retellings of an Ochorus Original (the Portraits of Courage life): the
+    # parent author is the imprint, so, like the Portraits themselves, these have
+    # no About the Author page. The Teens edition quotes only the public-domain ASV.
+    ("samuel-ajayi-crowther-a-life-children", "en"),
+    ("samuel-ajayi-crowther-a-life-teens", "en"),
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices
