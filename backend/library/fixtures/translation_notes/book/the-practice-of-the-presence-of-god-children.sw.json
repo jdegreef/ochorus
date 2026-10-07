@@ -1,0 +1,96 @@
+{
+ "kind": "book",
+ "slug": "the-practice-of-the-presence-of-god-children",
+ "language": "sw",
+ "job_issue": 5466,
+ "pull_request": null,
+ "note": [
+  "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible egress-blocked; swhonen is off-tradition — see the translation-worker skill). Each chapter quotes one verse, in its opening blockquote (block 0). Every `mined` row is a verbatim (case-insensitive) substring both of this edition's blockquote and of the cited shipped sw file; as the English retelling quotes short, simplified verses, several are a contiguous PART of the Union verse (1 Sam 16:7 without its opening clause, Ps 16:11 middle clause only, Col 3:23 without “wala si kwa wanadamu”, 1 John 1:9 without its final clause, Ps 23:4 without “gongo lako na fimbo yako vyanifariji”, John 14:2 the one sentence).",
+  "Romans 1:20 is not quoted anywhere in the shipped sw corpus, and the English is a simplified paraphrase, so it is self_rendered in plain words for children. “Brother Lawrence” is “Ndugu Lawrence”, as the sw corpus already names him; “practising the presence of God” follows the corpus phrase “kuzoea kuwapo kwa Mungu”. AI-translated in-session; awaiting native review."
+ ],
+ "references": [
+  {
+   "reference": "1 Samuel 16:7b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 1,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "Romans 1:20",
+   "status": "self_rendered",
+   "block_index": 0,
+   "chapter_order": 2
+  },
+  {
+   "reference": "Psalm 16:11b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 3,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Matthew 22:37",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 4,
+   "source_file": "men-who-tended-the-flock-2.sw.json"
+  },
+  {
+   "reference": "Colossians 3:23a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 5,
+   "source_file": "rise-up-men-of-god-2.sw.json"
+  },
+  {
+   "reference": "1 Corinthians 10:31",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 6,
+   "source_file": "revival-lectures.sw.json"
+  },
+  {
+   "reference": "1 Thessalonians 5:16-18",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 7,
+   "source_file": "rooted-1.sw.json"
+  },
+  {
+   "reference": "James 4:8a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 8,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "1 Peter 5:7",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 9,
+   "source_file": "rest.sw.json"
+  },
+  {
+   "reference": "1 John 1:9a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 10,
+   "source_file": "the-christians-secret-of-a-happy-life-4.sw.json"
+  },
+  {
+   "reference": "Psalm 23:4a",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 11,
+   "source_file": "cheque-book.sw.json"
+  },
+  {
+   "reference": "John 14:2b",
+   "status": "mined",
+   "block_index": 0,
+   "chapter_order": 12,
+   "source_file": "talks-to-the-farmer.sw.json"
+  }
+ ]
+}
