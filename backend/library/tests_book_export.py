@@ -182,6 +182,24 @@ class EpubTests(TestCase):
         # "About Ochorus" sits between the title page and the contents.
         self.assertLess(html.index('class="ochorus"'), html.index('class="contents"'))
 
+    def test_a_licensed_bible_is_credited_on_the_rights_page(self):
+        # hi quotes the IRV (CC BY-SA 4.0): the credit has to travel with the
+        # download, as it does in the reader's footer.
+        from .language_seed import SEED_LANGUAGES
+
+        credit = SEED_LANGUAGES["hi"]["bible_attribution"]
+        self.assertIn(credit, book_export.bible_credit("hi"))
+        self.assertEqual(book_export.bible_credit("en"), "")
+        colophon = self._zip(self._get()).read("OEBPS/colophon.xhtml").decode()
+        self.assertNotIn("Scripture quotations are from", colophon)
+        self.book.language = "hi"
+        self.book.save()
+        with mock.patch.object(export_policy, "EXPORT_EDITIONS", {("pilot-book", "hi")}):
+            colophon = self._zip(self.client.get(
+                "/api/library/books/pilot-book/download.epub?language=hi"
+            )).read("OEBPS/colophon.xhtml").decode()
+        self.assertIn("Indian Revised Version", colophon)
+
     def test_an_unknown_death_year_is_not_printed_as_living(self):
         author = self.book.author
         author.birth_year, author.death_year = 1343, None
