@@ -108,6 +108,10 @@ VOLUMES: dict[int, dict[str, object]] = {
                 "question": "Can it be used in a youth group?",
                 "answer": "Yes. Each chapter can be read in one sitting and ends with three questions written for discussion.",
             },
+            {
+                "question": "Which Bible translation does it use?",
+                "answer": "Scripture is quoted from the Berean Standard Bible (BSB), which is in the public domain. Where a story gives the words a person actually heard or read in their own day, such as the verse preached to Spurgeon in 1850, it keeps the wording they heard.",
+            },
         ],
     },
 }
