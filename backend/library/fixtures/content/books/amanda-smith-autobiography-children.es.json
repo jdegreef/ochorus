@@ -1,0 +1,396 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "amanda-berry-smith"
+  ],
+  "slug": "amanda-smith-autobiography-children",
+  "language": "es",
+  "title": "La historia de Amanda Smith (Para niños)",
+  "subtitle": "",
+  "description": "Conoce a Amanda Berry Smith, que nació esclava en Maryland hace mucho, mucho tiempo, y que creció confiando en Dios para todo, incluso para un par de zapatos. En sus propias historias verdaderas, contadas con ternura para niños, un padre valiente compra la libertad de su familia, un hombre escondido queda a salvo y una lavandera lleva las buenas noticias de Jesús hasta Inglaterra, la India y África.",
+  "qa": [
+   {
+    "question": "¿Quién fue Amanda Berry Smith?",
+    "answer": "Fue una mujer negra, nacida esclava en Maryland hacia 1837, que llegó a ser una predicadora itinerante muy conocida. Confiaba en Dios para todo y habló de Jesús a la gente en los Estados Unidos, Inglaterra, la India y África."
+   },
+   {
+    "question": "¿De verdad Amanda nació esclava?",
+    "answer": "Sí, así fue. Pero su padre, Samuel Berry, trabajó noche tras noche para ganar dinero y comprar la libertad: primero la suya, y después la de su esposa y la de sus hijos. Amanda todavía era muy pequeña cuando él compró su libertad."
+   },
+   {
+    "question": "¿En qué trabajaba Amanda antes de ser predicadora?",
+    "answer": "Durante muchos años fue lavandera. Pasaba horas junto a su tina, restregando la ropa de otras personas, a veces toda la noche, para ganar dinero y cuidar de su familia."
+   },
+   {
+    "question": "¿Son inventados los milagros de estas historias?",
+    "answer": "No. Cada historia viene del libro que Amanda escribió sobre su propia vida. No hemos añadido ningún milagro imaginario: son las cosas reales que ella contó que Dios hizo por ella."
+   },
+   {
+    "question": "¿Por qué Amanda le habla a Dios de cosas pequeñas, como unos zapatos?",
+    "answer": "Amanda creía que a Dios le importaba cada parte de su vida, grande o pequeña. Cuando se le gastaron los zapatos, simplemente se lo pidió a Dios, y muy pronto un amigo le puso en la mano justo el dinero que necesitaba."
+   },
+   {
+    "question": "¿Tuvo Amanda una vida feliz?",
+    "answer": "Conoció una gran alegría en Dios, pero también una profunda tristeza. Algunos de sus hijitos murieron siendo muy pequeños, y muchas veces la gente fue cruel con ella. Aun así, siempre decía que Dios la consolaba y que nunca la dejaba sola."
+   },
+   {
+    "question": "¿Quién era el pequeño Bob?",
+    "answer": "Bob era un niño de África cuyo padre le pidió a Amanda que lo criara y le enseñara acerca de Dios. Amanda estaba débil y tenía muy poco dinero, pero confió en Dios y recibió a Bob como su propio hijo."
+   },
+   {
+    "question": "¿Qué pueden aprender los niños de la vida de Amanda?",
+    "answer": "Que se puede confiar en Dios tanto en la oscuridad como en la luz, que la honradez y la bondad valen mucho más que el dinero, y que Dios escucha hasta la oración más pequeña."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una adaptación de Ochorus para jóvenes lectores de la autobiografía de Amanda Berry Smith, que es de dominio público. Esta versión es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/art/amanda-smith-autobiography-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 25,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "El día en que papá nos compró la libertad",
+  "body_html": "<blockquote><p><em>«Para libertad nos hizo libres Cristo; estad, pues, firmes».</em> — Gálatas 5:1</p></blockquote> <p>Hace mucho tiempo, en un lugar llamado Maryland, nació una niña llamada Amanda. En aquellos tiempos tan tristes, las familias negras como la suya no eran libres. Podían ser compradas y vendidas, como un caballo o un saco de grano, y las obligaban a trabajar sin pagarles nada.</p> <p>Pero Amanda tenía un papá maravilloso llamado Samuel Berry. Era fuerte, era paciente y tenía un gran sueño: hacer libre a toda su familia.</p> <p>Así que Samuel trabajaba. Todo el día trabajaba para la mujer que era su dueña. Luego, cuando se ponía el sol y los demás dormían, trabajaba un poco más. Hacía escobas. Tejía esteras con hojas de maíz. Quemaba cal. En tiempo de cosecha caminaba tres o cuatro millas cuando ya estaba oscuro para trabajar en los campos hasta la una o las dos de la madrugada, y luego dormía solo una hora antes de volver a empezar.</p> <p>Moneda a moneda, año tras año, fue ahorrando. Primero compró su propia libertad. Después compró la de su esposa. Luego, uno por uno, compró la de sus hijos, hasta que por fin la pequeña Amanda también fue libre.</p> <p>Era tan pequeña que ni siquiera podía recordar haber sido esclava. Pero toda su vida le encantó decir que Dios la había hecho libre.</p> <p>¿Ves cuánto trabajó el papá de Amanda por las personas que amaba? Tu Padre celestial hizo todavía más para hacerte libre: dio a su propio Hijo, Jesús. Tú no te lo ganaste; es su regalo para ti.</p> <p>Querido Dios, gracias por amarme tanto que abriste un camino para hacerme libre. Ayúdame a amar a los demás como el papá de Amanda amaba a su familia. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hacía Samuel Berry, el papá de Amanda, cuando terminaba su largo día de trabajo?",
+    "answer": "Seguía trabajando de noche: hacía escobas, tejía esteras de hojas de maíz, quemaba cal y caminaba millas para trabajar en los campos hasta la una o las dos de la madrugada."
+   },
+   {
+    "question": "¿Por qué ahorró Samuel su dinero moneda a moneda durante tantos años?",
+    "answer": "Quería hacer libre a toda su familia. Primero compró su propia libertad, después la de su esposa y luego la de sus hijos, uno por uno, hasta que Amanda también fue libre."
+   },
+   {
+    "question": "El papá de Amanda trabajó muchísimo para hacer libre a su familia. ¿Qué ha hecho Dios para hacerte libre a ti?",
+    "answer": "La idea del capítulo: tu Padre celestial dio a su propio Hijo, Jesús, para hacerte libre. Tú no te lo ganaste; es su regalo para ti."
+   }
+  ],
+  "body_text": "«Para libertad nos hizo libres Cristo; estad, pues, firmes». — Gálatas 5:1 Hace mucho tiempo, en un lugar llamado Maryland, nació una niña llamada Amanda. En aquellos tiempos tan tristes, las familias negras como la suya no eran libres. Podían ser compradas y vendidas, como un caballo o un saco de grano, y las obligaban a trabajar sin pagarles nada. Pero Amanda tenía un papá maravilloso llamado Samuel Berry. Era fuerte, era paciente y tenía un gran sueño: hacer libre a toda su familia. Así que Samuel trabajaba. Todo el día trabajaba para la mujer que era su dueña. Luego, cuando se ponía el sol y los demás dormían, trabajaba un poco más. Hacía escobas. Tejía esteras con hojas de maíz. Quemaba cal. En tiempo de cosecha caminaba tres o cuatro millas cuando ya estaba oscuro para trabajar en los campos hasta la una o las dos de la madrugada, y luego dormía solo una hora antes de volver a empezar. Moneda a moneda, año tras año, fue ahorrando. Primero compró su propia libertad. Después compró la de su esposa. Luego, uno por uno, compró la de sus hijos, hasta que por fin la pequeña Amanda también fue libre. Era tan pequeña que ni siquiera podía recordar haber sido esclava. Pero toda su vida le encantó decir que Dios la había hecho libre. ¿Ves cuánto trabajó el papá de Amanda por las personas que amaba? Tu Padre celestial hizo todavía más para hacerte libre: dio a su propio Hijo, Jesús. Tú no te lo ganaste; es su regalo para ti. Querido Dios, gracias por amarme tanto que abriste un camino para hacerme libre. Ayúdame a amar a los demás como el papá de Amanda amaba a su familia. Amén.",
+  "word_count": 289
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "Las oraciones de la abuela junto a la lechería",
+  "body_html": "<blockquote><p><em>«La oración eficaz del justo puede mucho».</em> — Santiago 5:16</p></blockquote> <p>Antes de que el papá de Amanda pudiera comprar a su familia, algo tenía que cambiar. Y cambió gracias a una anciana que sabía orar: la abuela de Amanda.</p> <p>La abuela amaba a Dios con todo su corazón. Una y otra vez le pedía que abriera un camino para que sus nietos pudieran ser libres. Cuando tenía algo demasiado pesado para cargarlo sola, se escabullía entre los arbustos y, como decía Amanda, sencillamente iba a «contárselo a Jesús».</p> <p>Un día, una joven llamada la señorita Celie fue a una reunión de campamento solo para mirar. Pero allí oyó hablar de Jesús y le entregó su corazón. A su familia no le gustó nada. Intentaron de todo para hacerla cambiar de idea.</p> <p>Entonces la señorita Celie se enfermó gravemente de fiebre. Cuando estaba a punto de morir, reunió a su familia junto a ella y les pidió que le prometieran una cosa: que dejarían que Samuel comprara a su esposa y a sus hijos. Tres veces lo pidió, y por fin se lo prometieron.</p> <p>Cada vez que la señorita Celie hablaba, la mamá de Amanda corría a contárselo a la abuela, y cada vez la abuela salía deprisa a darle gracias a Dios. Sus largos años de oración estaban recibiendo respuesta.</p> <p>Cuando oras por algo y la respuesta no llega enseguida, no te rindas. La abuela de Amanda oró durante años, y Dios escuchó cada una de sus palabras. Él también te escucha a ti.</p> <p>Querido Dios, gracias porque nunca te cansas de escucharme. Enséñame a seguir orando, aunque la respuesta tarde mucho en llegar. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "Cuando la abuela tenía algo demasiado pesado para cargarlo sola, ¿qué hacía?",
+    "answer": "Se escabullía entre los arbustos y, como decía Amanda, sencillamente iba a «contárselo a Jesús». Oraba una y otra vez para que sus nietos fueran libres."
+   },
+   {
+    "question": "¿Qué le pidió la señorita Celie a su familia que le prometiera antes de morir?",
+    "answer": "Les pidió que dejaran que Samuel comprara a su esposa y a sus hijos. Lo pidió tres veces, y por fin se lo prometieron."
+   },
+   {
+    "question": "¿Alguna vez has orado por algo que no sucedió enseguida? ¿Qué podrías hacer mientras esperas?",
+    "answer": "La idea del capítulo: no dejes de orar. La abuela oró durante años, y Dios escuchó cada una de sus palabras; también escucha a tu hijo."
+   }
+  ],
+  "body_text": "«La oración eficaz del justo puede mucho». — Santiago 5:16 Antes de que el papá de Amanda pudiera comprar a su familia, algo tenía que cambiar. Y cambió gracias a una anciana que sabía orar: la abuela de Amanda. La abuela amaba a Dios con todo su corazón. Una y otra vez le pedía que abriera un camino para que sus nietos pudieran ser libres. Cuando tenía algo demasiado pesado para cargarlo sola, se escabullía entre los arbustos y, como decía Amanda, sencillamente iba a «contárselo a Jesús». Un día, una joven llamada la señorita Celie fue a una reunión de campamento solo para mirar. Pero allí oyó hablar de Jesús y le entregó su corazón. A su familia no le gustó nada. Intentaron de todo para hacerla cambiar de idea. Entonces la señorita Celie se enfermó gravemente de fiebre. Cuando estaba a punto de morir, reunió a su familia junto a ella y les pidió que le prometieran una cosa: que dejarían que Samuel comprara a su esposa y a sus hijos. Tres veces lo pidió, y por fin se lo prometieron. Cada vez que la señorita Celie hablaba, la mamá de Amanda corría a contárselo a la abuela, y cada vez la abuela salía deprisa a darle gracias a Dios. Sus largos años de oración estaban recibiendo respuesta. Cuando oras por algo y la respuesta no llega enseguida, no te rindas. La abuela de Amanda oró durante años, y Dios escuchó cada una de sus palabras. Él también te escucha a ti. Querido Dios, gracias porque nunca te cansas de escucharme. Enséñame a seguir orando, aunque la respuesta tarde mucho en llegar. Amén.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "El hombre escondido en la cama",
+  "body_html": "<blockquote><p><em>«Fui forastero, y me recogisteis».</em> — Mateo 25:35</p></blockquote> <p>Cuando la familia de Amanda ya era libre, vivía en una granja en Pensilvania. Su casita se convirtió en un refugio secreto. Cuando algunas personas huían de la esclavitud, cansadas y asustadas, acudían a Samuel Berry, y él las ayudaba a seguir su camino hacia la libertad, muchas veces en la oscuridad de la noche.</p> <p>Era un trabajo peligroso, y unos hombres crueles vigilaban la casa de cerca, con la esperanza de atrapar a alguien.</p> <p>Una mañana, muy temprano, el papá de Amanda estaba afuera dando de comer a los cerdos. Al levantar la vista, vio a cuatro hombres a caballo que venían hacia la casa. No había tiempo de correr adentro. Así que le gritó a su esposa: «Madre, veo venir a cuatro hombres; haz lo que puedas».</p> <p>La mamá de Amanda era rápida y valiente. Arriba estaba escondido un hombre que se había escapado. En un instante lo bajó y lo escondió dentro de la cama, bien metido debajo del colchón. Luego acostó encima a su propio hijito de dos años, que estaba dormido.</p> <p>Los hombres buscaron por todas partes. Miraron arriba y en la cocina. Hasta echaron un vistazo al niño que dormía en la cama, pero nunca encontraron al hombre escondido debajo. Se marcharon a caballo, y pronto el hombre siguió a salvo su camino hacia el norte.</p> <p>La mamá de Amanda usó su valentía y su astucia para proteger a alguien que necesitaba ayuda. Cuando Dios te dé la oportunidad de ser bondadoso con alguien que está en problemas, tú también puedes ser valiente y ayudar.</p> <p>Querido Dios, hazme valiente y bondadoso como la mamá de Amanda. Ayúdame a cuidar de cualquiera que necesite un amigo amable que le dé seguridad. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hacía la familia de Amanda para ayudar a las personas que huían de la esclavitud?",
+    "answer": "Su casa era un refugio secreto. Samuel Berry ayudaba a personas cansadas y asustadas a seguir su camino hacia la libertad, muchas veces en la oscuridad de la noche."
+   },
+   {
+    "question": "Cuando llegaron los cuatro hombres a caballo, ¿cómo protegió la mamá de Amanda al hombre escondido?",
+    "answer": "Lo escondió dentro de la cama, debajo del colchón, y acostó encima a su hijito de dos años, que estaba dormido. Los hombres buscaron, pero nunca lo encontraron."
+   },
+   {
+    "question": "¿Se te ocurre alguien que pueda necesitar un amigo amable y valiente? ¿Cómo podrías ayudarle?",
+    "answer": "La idea del capítulo: la mamá de Amanda usó su valentía y su astucia para proteger a alguien que lo necesitaba. Cuando Dios nos da la oportunidad de ser bondadosos con alguien en problemas, nosotros también podemos ser valientes y ayudar."
+   }
+  ],
+  "body_text": "«Fui forastero, y me recogisteis». — Mateo 25:35 Cuando la familia de Amanda ya era libre, vivía en una granja en Pensilvania. Su casita se convirtió en un refugio secreto. Cuando algunas personas huían de la esclavitud, cansadas y asustadas, acudían a Samuel Berry, y él las ayudaba a seguir su camino hacia la libertad, muchas veces en la oscuridad de la noche. Era un trabajo peligroso, y unos hombres crueles vigilaban la casa de cerca, con la esperanza de atrapar a alguien. Una mañana, muy temprano, el papá de Amanda estaba afuera dando de comer a los cerdos. Al levantar la vista, vio a cuatro hombres a caballo que venían hacia la casa. No había tiempo de correr adentro. Así que le gritó a su esposa: «Madre, veo venir a cuatro hombres; haz lo que puedas». La mamá de Amanda era rápida y valiente. Arriba estaba escondido un hombre que se había escapado. En un instante lo bajó y lo escondió dentro de la cama, bien metido debajo del colchón. Luego acostó encima a su propio hijito de dos años, que estaba dormido. Los hombres buscaron por todas partes. Miraron arriba y en la cocina. Hasta echaron un vistazo al niño que dormía en la cama, pero nunca encontraron al hombre escondido debajo. Se marcharon a caballo, y pronto el hombre siguió a salvo su camino hacia el norte. La mamá de Amanda usó su valentía y su astucia para proteger a alguien que necesitaba ayuda. Cuando Dios te dé la oportunidad de ser bondadoso con alguien que está en problemas, tú también puedes ser valiente y ayudar. Querido Dios, hazme valiente y bondadoso como la mamá de Amanda. Ayúdame a cuidar de cualquiera que necesite un amigo amable que le dé seguridad. Amén.",
+  "word_count": 295
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "Aprender a leer junto a la ventana",
+  "body_html": "<blockquote><p><em>«Sabiduría ante todo; adquiere sabiduría».</em> — Proverbios 4:7</p></blockquote> <p>Amanda tenía muchísimas ganas de ir a la escuela. Pero cuando era niña, casi no se les permitía aprender a los niños negros. La escuela más cercana quedaba lejos, y aun allí la hacían esperar al fondo mientras les enseñaban primero a todos los demás niños. En toda su vida, Amanda fue a la escuela solo unos tres meses.</p> <p>Una mañana de invierno helada, rogó que la dejaran caminar de todos modos las dos millas y media hasta la escuela. La nieve era profunda, y se le congeló tanto el cuerpo que, cuando por fin llegó a la puerta, ni siquiera podía hablar. Un niño tuvo que abrirle, y adentro unas manos bondadosas le dieron calor.</p> <p>Pero Amanda no iba a rendirse en eso de aprender. Su papá traía periódicos a casa, y a ella se le ocurrió una idea muy ingeniosa. Recortó las letras grandes con unas tijeras. Luego las colocó a lo largo del alféizar de la ventana y le pidió a su mamá que la ayudara a juntar las letras para formar palabras.</p> <p>¡Cómo le saltó el corazón el día en que leyó su primera oración: «La casa, el árbol, el perro, la vaca»! ¡Estaba tan orgullosa! Reunió a los otros niños a su alrededor para mostrarles que sabía leer.</p> <p>Amanda quería aprender, y se esforzó mucho, aun cuando era difícil. Aprender es un regalo de Dios. Cuando algo te cueste, sigue intentándolo: un corazón paciente puede hacer cosas maravillosas.</p> <p>Querido Dios, gracias por mi mente y por las cosas buenas que puedo aprender. Ayúdame a no rendirme cuando aprender me resulte difícil. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasó a Amanda cuando caminó a la escuela aquella mañana de invierno helada?",
+    "answer": "Se le congeló tanto el cuerpo en la nieve profunda que, cuando llegó a la puerta, no podía hablar. Un niño le abrió, y unas manos bondadosas le dieron calor."
+   },
+   {
+    "question": "¿Cómo usó Amanda los periódicos de su papá para aprender a leer?",
+    "answer": "Recortó las letras grandes, las colocó a lo largo del alféizar de la ventana y le pidió a su mamá que la ayudara a juntarlas para formar palabras."
+   },
+   {
+    "question": "¿Qué es algo que te cuesta aprender ahora mismo? ¿Qué te ayudaría a seguir intentándolo?",
+    "answer": "La idea del capítulo: aprender es un regalo de Dios, y cuando algo cuesta, hay que seguir intentándolo: un corazón paciente puede hacer cosas maravillosas."
+   }
+  ],
+  "body_text": "«Sabiduría ante todo; adquiere sabiduría». — Proverbios 4:7 Amanda tenía muchísimas ganas de ir a la escuela. Pero cuando era niña, casi no se les permitía aprender a los niños negros. La escuela más cercana quedaba lejos, y aun allí la hacían esperar al fondo mientras les enseñaban primero a todos los demás niños. En toda su vida, Amanda fue a la escuela solo unos tres meses. Una mañana de invierno helada, rogó que la dejaran caminar de todos modos las dos millas y media hasta la escuela. La nieve era profunda, y se le congeló tanto el cuerpo que, cuando por fin llegó a la puerta, ni siquiera podía hablar. Un niño tuvo que abrirle, y adentro unas manos bondadosas le dieron calor. Pero Amanda no iba a rendirse en eso de aprender. Su papá traía periódicos a casa, y a ella se le ocurrió una idea muy ingeniosa. Recortó las letras grandes con unas tijeras. Luego las colocó a lo largo del alféizar de la ventana y le pidió a su mamá que la ayudara a juntar las letras para formar palabras. ¡Cómo le saltó el corazón el día en que leyó su primera oración: «La casa, el árbol, el perro, la vaca»! ¡Estaba tan orgullosa! Reunió a los otros niños a su alrededor para mostrarles que sabía leer. Amanda quería aprender, y se esforzó mucho, aun cuando era difícil. Aprender es un regalo de Dios. Cuando algo te cueste, sigue intentándolo: un corazón paciente puede hacer cosas maravillosas. Querido Dios, gracias por mi mente y por las cosas buenas que puedo aprender. Ayúdame a no rendirme cuando aprender me resulte difícil. Amén.",
+  "word_count": 275
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "Orando en el sótano",
+  "body_html": "<blockquote><p><em>«Al que a mí viene, no le echo fuera».</em> — Juan 6:37</p></blockquote> <p>Cuando Amanda creció, lo que más deseaba en el mundo era pertenecer a Dios. Pero tenía una voluntad orgullosa y fuerte, y durante mucho tiempo quiso ser salva a su manera, en silencio, sin llamar la atención.</p> <p>Oraba y oraba. En su corazón sentía que no era lo bastante buena, y una voz susurrante le repetía: «Dios no te va a escuchar». Cuanto más se esforzaba, más lejos parecía estar Dios.</p> <p>Por fin, una tarde en que trabajaba en la casa de una amable familia cuáquera, Amanda tomó una decisión. Puso la mesa, puso la tetera al fuego y bajó al sótano a orar. «Tengo que recibir la salvación esta tarde», dijo, «o seguiré orando hasta recibirla».</p> <p>Le abrió a Dios todo su corazón. Y entonces hizo la oración más sencilla de todas: «Oh Señor, si tú me ayudas, yo te creeré». Y en el mismo momento en que dijo que confiaría en él, confió.</p> <p>La alegría inundó su alma como la luz del sol. La pesada carga se le quitó de encima. Se miró las manos y se sintió completamente nueva. Subió corriendo las escaleras del sótano, y más tarde se miró en el espejo grande, segura de que hasta su cara debía de verse distinta.</p> <p>Amanda pensaba que tenía que hacerse lo bastante buena para Dios. Pero Jesús recibe a cualquiera que sencillamente viene a él y confía en él. No tienes que ser lo bastante bueno primero. Solo tienes que venir.</p> <p>Querido Jesús, gracias porque nunca rechazas a nadie. Aquí estoy: vengo a ti y confío en ti. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Adónde fue Amanda a orar la tarde en que tomó su decisión?",
+    "answer": "Puso la mesa, puso la tetera al fuego y bajó al sótano a orar, diciendo que seguiría orando hasta recibir la salvación."
+   },
+   {
+    "question": "¿Qué palabras sencillas oró Amanda, y qué pasó cuando lo hizo?",
+    "answer": "Oró: «Oh Señor, si tú me ayudas, yo te creeré». En el momento en que confió en él, la alegría inundó su alma y la carga se le quitó de encima."
+   },
+   {
+    "question": "¿Crees que tienes que ser lo bastante bueno antes de poder venir a Jesús? ¿Por qué sí o por qué no?",
+    "answer": "La idea del capítulo: Jesús recibe a cualquiera que sencillamente viene a él y confía en él. No tienes que ser lo bastante bueno primero; solo tienes que venir."
+   }
+  ],
+  "body_text": "«Al que a mí viene, no le echo fuera». — Juan 6:37 Cuando Amanda creció, lo que más deseaba en el mundo era pertenecer a Dios. Pero tenía una voluntad orgullosa y fuerte, y durante mucho tiempo quiso ser salva a su manera, en silencio, sin llamar la atención. Oraba y oraba. En su corazón sentía que no era lo bastante buena, y una voz susurrante le repetía: «Dios no te va a escuchar». Cuanto más se esforzaba, más lejos parecía estar Dios. Por fin, una tarde en que trabajaba en la casa de una amable familia cuáquera, Amanda tomó una decisión. Puso la mesa, puso la tetera al fuego y bajó al sótano a orar. «Tengo que recibir la salvación esta tarde», dijo, «o seguiré orando hasta recibirla». Le abrió a Dios todo su corazón. Y entonces hizo la oración más sencilla de todas: «Oh Señor, si tú me ayudas, yo te creeré». Y en el mismo momento en que dijo que confiaría en él, confió. La alegría inundó su alma como la luz del sol. La pesada carga se le quitó de encima. Se miró las manos y se sintió completamente nueva. Subió corriendo las escaleras del sótano, y más tarde se miró en el espejo grande, segura de que hasta su cara debía de verse distinta. Amanda pensaba que tenía que hacerse lo bastante buena para Dios. Pero Jesús recibe a cualquiera que sencillamente viene a él y confía en él. No tienes que ser lo bastante bueno primero. Solo tienes que venir. Querido Jesús, gracias porque nunca rechazas a nadie. Aquí estoy: vengo a ti y confío en ti. Amén.",
+  "word_count": 274
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "El dinero en el suelo de la cocina",
+  "body_html": "<blockquote><p><em>«El que es fiel en lo muy poco, también en lo más es fiel».</em> — Lucas 16:10</p></blockquote> <p>Amanda tenía una hermana menor llamada Frances, y la quería muchísimo. Para hacerla libre, Amanda tenía que pagar mucho dinero, más del que tenía. Así que pidió prestados cincuenta dólares, y ahora tenía esa deuda. Le preocupaba de día y de noche.</p> <p>Una tarde, un hombre rico y bondadoso llamado el señor Robert visitó a la familia. Después de la cena se puso a jugar en la cocina y, sin darse cuenta, se le cayó al suelo un pequeño rollito de papel. No parecía nada especial.</p> <p>Más tarde, cuando Amanda se agachó a recogerlo, abrió los ojos de par en par. ¡Era dinero: trescientos dólares! Y no había nadie más en la habitación.</p> <p>Un pensamiento astuto se le coló en la mente: «Quédatelo. Ahora puedes pagar tu deuda, y nadie lo sabrá jamás». Pero Amanda le contestó enseguida: «No. No quiero meterme en ningún problema por este dinero».</p> <p>Cuando el señor Robert volvió a casa buscando por todas partes, Amanda metió la mano en el bolsillo sin decir nada y le devolvió hasta el último dólar. Él se puso tan contento y quedó tan agradecido que le regaló cincuenta dólares para darle las gracias: ¡justo la cantidad que necesitaba para pagar su deuda!</p> <p>Amanda hizo lo honrado, aunque nadie la estaba mirando y aunque de verdad necesitaba el dinero. Dios lo vio, y Dios cuidó de ella. Cuando eres fiel en las cosas pequeñas, tú también puedes confiar en que él cuidará de ti.</p> <p>Querido Dios, ayúdame a ser honrado aunque sea difícil, y aunque nadie me esté mirando. Gracias porque siempre puedo confiar en ti. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué debía Amanda cincuenta dólares?",
+    "answer": "Los pidió prestados para ayudar a pagar el dinero que hacía falta para que su hermana menor, Frances, fuera libre, y esa deuda le preocupaba de día y de noche."
+   },
+   {
+    "question": "¿Qué hizo Amanda con los trescientos dólares que encontró en el suelo de la cocina?",
+    "answer": "No quiso quedárselos y le devolvió hasta el último dólar al señor Robert. Él quedó tan agradecido que le regaló cincuenta dólares: justo lo que necesitaba para su deuda."
+   },
+   {
+    "question": "¿Es difícil ser honrado cuando nadie te está mirando? ¿Qué podría ayudarte a hacer lo correcto?",
+    "answer": "La idea del capítulo: Amanda fue honrada aunque nadie la estaba mirando y aunque de verdad necesitaba el dinero. Dios lo vio, y Dios cuidó de ella; nosotros también podemos confiar en él."
+   }
+  ],
+  "body_text": "«El que es fiel en lo muy poco, también en lo más es fiel». — Lucas 16:10 Amanda tenía una hermana menor llamada Frances, y la quería muchísimo. Para hacerla libre, Amanda tenía que pagar mucho dinero, más del que tenía. Así que pidió prestados cincuenta dólares, y ahora tenía esa deuda. Le preocupaba de día y de noche. Una tarde, un hombre rico y bondadoso llamado el señor Robert visitó a la familia. Después de la cena se puso a jugar en la cocina y, sin darse cuenta, se le cayó al suelo un pequeño rollito de papel. No parecía nada especial. Más tarde, cuando Amanda se agachó a recogerlo, abrió los ojos de par en par. ¡Era dinero: trescientos dólares! Y no había nadie más en la habitación. Un pensamiento astuto se le coló en la mente: «Quédatelo. Ahora puedes pagar tu deuda, y nadie lo sabrá jamás». Pero Amanda le contestó enseguida: «No. No quiero meterme en ningún problema por este dinero». Cuando el señor Robert volvió a casa buscando por todas partes, Amanda metió la mano en el bolsillo sin decir nada y le devolvió hasta el último dólar. Él se puso tan contento y quedó tan agradecido que le regaló cincuenta dólares para darle las gracias: ¡justo la cantidad que necesitaba para pagar su deuda! Amanda hizo lo honrado, aunque nadie la estaba mirando y aunque de verdad necesitaba el dinero. Dios lo vio, y Dios cuidó de ella. Cuando eres fiel en las cosas pequeñas, tú también puedes confiar en que él cuidará de ti. Querido Dios, ayúdame a ser honrado aunque sea difícil, y aunque nadie me esté mirando. Gracias porque siempre puedo confiar en ti. Amén.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "Confiar a Dios el bebé",
+  "body_html": "<blockquote><p><em>«En el día que temo, yo en ti confío».</em> — Salmos 56:3</p></blockquote> <p>Un domingo por la mañana, Amanda tenía muchas ganas de ir a escuchar a cierto predicador al otro lado de la ciudad. Bañó a su bebé, Will, y lo acostó con cuidado en su cuna. Luego le pidió a su hija mayor, Mazie, que lo cuidara. «Si llora», le dijo, «no lo saques de la cuna; solo mécelo».</p> <p>Y se fue a la iglesia. Pero mientras el predicador hablaba, la invadió una sensación de miedo. Estaba segura de que oía a su bebé llorando a gritos, muy lejos. Una voz le susurró: «¡A Mazie se le ha caído! ¡Ha pasado algo terrible! ¡Corre a casa ahora mismo!».</p> <p>A Amanda le latía con fuerza el corazón. Estuvo a punto de levantarse de un salto para volver corriendo a casa. Pero entonces recordó que ella había dicho a otras personas que confiaran en Dios. ¿Acaso no podía confiar en él ella misma?</p> <p>«Confiaré en el Señor», dijo en voz baja, «incluso con mi bebé». Otra vez volvieron los pensamientos que daban miedo, y otra vez ella respondió: «Dije que confiaría en el Señor, y lo haré». Así que se quedó, y escuchó, y Dios le llenó el corazón de una paz maravillosa.</p> <p>Cuando por fin Amanda volvió deprisa a casa y abrió la puerta, encontró al pequeño Will durmiendo plácidamente en su cuna. Ni siquiera se había despertado. Estaba perfectamente a salvo.</p> <p>A veces la mente se nos llena de «¿y si…?» que dan miedo. Cuando tengas miedo, puedes hacer lo que hizo Amanda: entregarle la preocupación a Dios y confiar en él. Él te ama, y siempre está cuidando de ti.</p> <p>Querido Dios, cuando tenga miedo, ayúdame a recordar que estás cerca. Te entrego mis preocupaciones, porque sé que cuidas bien de mí. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "Mientras Amanda estaba en la iglesia, ¿qué pensamientos que daban miedo le vinieron a la mente?",
+    "answer": "Se sintió segura de que oía a su bebé llorando a gritos, y una voz le susurró que a Mazie se le había caído y que debía correr a casa ahora mismo."
+   },
+   {
+    "question": "¿Qué decidió hacer Amanda en lugar de correr a casa, y qué encontró después?",
+    "answer": "Dijo: «Confiaré en el Señor, incluso con mi bebé», y se quedó. Cuando llegó a casa, el pequeño Will dormía plácidamente, perfectamente a salvo."
+   },
+   {
+    "question": "¿Qué «¿y si…?» te hacen sentir miedo a veces? ¿Qué puedes hacer con esas preocupaciones?",
+    "answer": "La idea del capítulo: cuando tengas miedo, entrégale la preocupación a Dios y confía en él, como hizo Amanda. Él te ama y siempre está cuidando de ti."
+   }
+  ],
+  "body_text": "«En el día que temo, yo en ti confío». — Salmos 56:3 Un domingo por la mañana, Amanda tenía muchas ganas de ir a escuchar a cierto predicador al otro lado de la ciudad. Bañó a su bebé, Will, y lo acostó con cuidado en su cuna. Luego le pidió a su hija mayor, Mazie, que lo cuidara. «Si llora», le dijo, «no lo saques de la cuna; solo mécelo». Y se fue a la iglesia. Pero mientras el predicador hablaba, la invadió una sensación de miedo. Estaba segura de que oía a su bebé llorando a gritos, muy lejos. Una voz le susurró: «¡A Mazie se le ha caído! ¡Ha pasado algo terrible! ¡Corre a casa ahora mismo!». A Amanda le latía con fuerza el corazón. Estuvo a punto de levantarse de un salto para volver corriendo a casa. Pero entonces recordó que ella había dicho a otras personas que confiaran en Dios. ¿Acaso no podía confiar en él ella misma? «Confiaré en el Señor», dijo en voz baja, «incluso con mi bebé». Otra vez volvieron los pensamientos que daban miedo, y otra vez ella respondió: «Dije que confiaría en el Señor, y lo haré». Así que se quedó, y escuchó, y Dios le llenó el corazón de una paz maravillosa. Cuando por fin Amanda volvió deprisa a casa y abrió la puerta, encontró al pequeño Will durmiendo plácidamente en su cuna. Ni siquiera se había despertado. Estaba perfectamente a salvo. A veces la mente se nos llena de «¿y si…?» que dan miedo. Cuando tengas miedo, puedes hacer lo que hizo Amanda: entregarle la preocupación a Dios y confiar en él. Él te ama, y siempre está cuidando de ti. Querido Dios, cuando tenga miedo, ayúdame a recordar que estás cerca. Te entrego mis preocupaciones, porque sé que cuidas bien de mí. Amén.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "Los zapatos por los que oró",
+  "body_html": "<blockquote><p><em>«Todo lo que pidiereis orando, creed que lo recibiréis».</em> — Marcos 11:24</p></blockquote> <p>Un día Amanda sintió con seguridad que Dios quería que fuera a hablarle de Jesús a la gente de un pueblo llamado Salem. Quedaba muy lejos, y no conocía allí a nadie. Pero confió en Dios y empezó a prepararse para el viaje.</p> <p>Solo había un problema. Sus zapatos estaban gastadísimos: tenían agujeros en las suelas. Si se le mojaban los pies durante el viaje, sabía que se enfermaría.</p> <p>Amanda no tenía dinero para zapatos nuevos. Así que hizo lo que siempre hacía: se lo contó a Dios. «Señor», oró, «si es tu voluntad, dame por favor el dinero para unos zapatos». Y creyó que él lo haría.</p> <p>Unos días después, en una reunión, un anciano muy querido llamado el padre Brummell le estrechó la mano al despedirse. Al hacerlo, le puso algo en la palma sin decir nada. Amanda le dio las gracias y lo guardó en el bolsillo sin mirarlo.</p> <p>Esa noche, junto al fuego, se acordó. Lo sacó y lo contó: ¡uno, dos, tres, cuatro, cinco dólares! Era justo lo que hacía falta para un par de zapatos nuevos. Estaba tan feliz que casi no pudo dormir. Dios había respondido a su oración.</p> <p>Dios nunca está demasiado ocupado para las cosas pequeñas de tu vida. Cualquier cosa que de verdad necesites, puedes contársela y confiar en que él te ayudará, aunque sea algo tan común como un par de zapatos.</p> <p>Querido Dios, gracias porque te importan las cosas pequeñas que necesito. Ayúdame a traerte todo a ti y a confiar en ti para la respuesta. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué necesitaba Amanda zapatos nuevos antes de ir a Salem?",
+    "answer": "Sus zapatos tenían agujeros gastados en las suelas, y sabía que si se le mojaban los pies durante el viaje, se enfermaría."
+   },
+   {
+    "question": "¿Cómo respondió Dios a la oración de Amanda por unos zapatos?",
+    "answer": "En una reunión, el padre Brummell le puso algo en la mano. Esa noche lo contó: cinco dólares, justo lo que hacía falta para un par de zapatos nuevos."
+   },
+   {
+    "question": "¿Hay algo pequeño que necesites? ¿Crees que a Dios le importa?",
+    "answer": "La idea del capítulo: Dios nunca está demasiado ocupado para las cosas pequeñas. Cualquier cosa que de verdad necesitemos, podemos contársela y confiar en que él nos ayudará, aunque sea un par de zapatos."
+   }
+  ],
+  "body_text": "«Todo lo que pidiereis orando, creed que lo recibiréis». — Marcos 11:24 Un día Amanda sintió con seguridad que Dios quería que fuera a hablarle de Jesús a la gente de un pueblo llamado Salem. Quedaba muy lejos, y no conocía allí a nadie. Pero confió en Dios y empezó a prepararse para el viaje. Solo había un problema. Sus zapatos estaban gastadísimos: tenían agujeros en las suelas. Si se le mojaban los pies durante el viaje, sabía que se enfermaría. Amanda no tenía dinero para zapatos nuevos. Así que hizo lo que siempre hacía: se lo contó a Dios. «Señor», oró, «si es tu voluntad, dame por favor el dinero para unos zapatos». Y creyó que él lo haría. Unos días después, en una reunión, un anciano muy querido llamado el padre Brummell le estrechó la mano al despedirse. Al hacerlo, le puso algo en la palma sin decir nada. Amanda le dio las gracias y lo guardó en el bolsillo sin mirarlo. Esa noche, junto al fuego, se acordó. Lo sacó y lo contó: ¡uno, dos, tres, cuatro, cinco dólares! Era justo lo que hacía falta para un par de zapatos nuevos. Estaba tan feliz que casi no pudo dormir. Dios había respondido a su oración. Dios nunca está demasiado ocupado para las cosas pequeñas de tu vida. Cualquier cosa que de verdad necesites, puedes contársela y confiar en que él te ayudará, aunque sea algo tan común como un par de zapatos. Querido Dios, gracias porque te importan las cosas pequeñas que necesito. Ayúdame a traerte todo a ti y a confiar en ti para la respuesta. Amén.",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "Miedo al agua profunda",
+  "body_html": "<blockquote><p><em>«Cuando pasares por las aguas, yo seré contigo».</em> — Isaías 43:2</p></blockquote> <p>Para entonces, todos conocían a Amanda como una mujer que decía a los demás que confiaran en Dios, pasara lo que pasara. Entonces, un día, unos amigos le dijeron: «Amanda, creemos que Dios quiere que cruces el gran océano en barco hasta Inglaterra, para hablarle de Jesús a la gente de allí».</p> <p>Pero Amanda guardaba un secreto en el corazón. Le daba miedo el mar, tan profundo y tan ancho. No dejaba de poner excusas. Hasta escribió una carta diciendo que no iría.</p> <p>Esa noche la invadió una tristeza muy grande, y no entendía por qué. Se arrodilló y dijo: «Señor, no dormiré hasta saber qué me pasa».</p> <p>Y con ternura, Dios le mostró la verdad. Fue como si una voz le dijera: «Vas por ahí diciendo a otras personas que confíen en el Señor en la oscuridad. Pero les estás pidiendo que hagan lo que tú misma no quieres hacer. Tienes miedo de confiar en mí y cruzar el océano».</p> <p>Amanda sintió vergüenza. «Señor, esa es la verdad», dijo. «Perdóname y dame otra oportunidad, y yo iré». Y fue: cruzó el mar en barco hasta Inglaterra, y Dios fue con ella todo el camino.</p> <p>Es fácil decirles a otros que sean valientes. ¡Es más difícil ser valiente uno mismo! Cuando Dios te pida que confíes en él con algo que te da miedo, recuerda que él atraviesa el agua profunda contigo.</p> <p>Querido Dios, cuando algo grande me dé miedo, ayúdame a confiar en ti yo mismo. Gracias porque siempre estás a mi lado. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "Cuando los amigos de Amanda le dijeron que Dios quería que fuera a Inglaterra, ¿cuál era su miedo secreto?",
+    "answer": "Le daba miedo el mar, tan profundo y tan ancho. No dejaba de poner excusas y hasta escribió una carta diciendo que no iría."
+   },
+   {
+    "question": "¿Qué le mostró Dios con ternura a Amanda cuando se arrodilló a orar esa noche?",
+    "answer": "Que ella decía a otras personas que confiaran en el Señor en la oscuridad, pero no quería hacerlo ella misma: tenía miedo de confiar en él y cruzar el océano."
+   },
+   {
+    "question": "¿Alguna vez le has dicho a alguien que sea valiente con algo que a ti también te da miedo? ¿Qué podría ayudarte a ser valiente?",
+    "answer": "La idea del capítulo: es más fácil decirles a otros que sean valientes que ser valiente uno mismo. Cuando Dios te pide que confíes en él con algo que te da miedo, él atraviesa el agua profunda contigo."
+   }
+  ],
+  "body_text": "«Cuando pasares por las aguas, yo seré contigo». — Isaías 43:2 Para entonces, todos conocían a Amanda como una mujer que decía a los demás que confiaran en Dios, pasara lo que pasara. Entonces, un día, unos amigos le dijeron: «Amanda, creemos que Dios quiere que cruces el gran océano en barco hasta Inglaterra, para hablarle de Jesús a la gente de allí». Pero Amanda guardaba un secreto en el corazón. Le daba miedo el mar, tan profundo y tan ancho. No dejaba de poner excusas. Hasta escribió una carta diciendo que no iría. Esa noche la invadió una tristeza muy grande, y no entendía por qué. Se arrodilló y dijo: «Señor, no dormiré hasta saber qué me pasa». Y con ternura, Dios le mostró la verdad. Fue como si una voz le dijera: «Vas por ahí diciendo a otras personas que confíen en el Señor en la oscuridad. Pero les estás pidiendo que hagan lo que tú misma no quieres hacer. Tienes miedo de confiar en mí y cruzar el océano». Amanda sintió vergüenza. «Señor, esa es la verdad», dijo. «Perdóname y dame otra oportunidad, y yo iré». Y fue: cruzó el mar en barco hasta Inglaterra, y Dios fue con ella todo el camino. Es fácil decirles a otros que sean valientes. ¡Es más difícil ser valiente uno mismo! Cuando Dios te pida que confíes en él con algo que te da miedo, recuerda que él atraviesa el agua profunda contigo. Querido Dios, cuando algo grande me dé miedo, ayúdame a confiar en ti yo mismo. Gracias porque siempre estás a mi lado. Amén.",
+  "word_count": 266
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "El baúl robado",
+  "body_html": "<blockquote><p><em>«Mejor es el que tarda en airarse que el fuerte; y el que se enseñorea de su espíritu, que el que toma una ciudad».</em> — Proverbios 16:32</p></blockquote> <p>Dios llevó a Amanda en otro largo viaje, esta vez en barco hasta África. Su ropa y sus cosas iban bien guardadas en su baúl, abajo, en el fondo del barco.</p> <p>Pero mientras cargaban el barco, unos hombres rompieron la cerradura de su baúl y le robaron muchas de sus cosas, hasta sus zapatos. Cuando Amanda se enteró, le dio mucha pena perderlas. Algunas de esas cosas nunca las recuperó.</p> <p>Todos esperaban que gritara, que diera pisotones y que perdiera los estribos. Hasta el capitán del barco la observaba asombrado, y le dijo: «Señora Smith, ¡no entiendo cómo puede mantener la calma!».</p> <p>Amanda sonrió y le respondió: «Capitán, siento perder mis cosas. Pero si perder los estribos y enojarme me las devolviera, ¡seguro que me vería armar un buen alboroto! Como no me las va a devolver, ¿para qué hacerlo?». Y Dios mantuvo su corazón tranquilo y en paz.</p> <p>Cuando algo te lo roban, se rompe o es injusto, es fácil explotar de enojo. Pero enojarse no arregla las cosas: solo nos hace sentir peor. Dios puede ayudarte a mantener la calma y la amabilidad, incluso cuando algo sale mal. Esa es la verdadera fuerza.</p> <p>Querido Dios, cuando las cosas salgan mal y me sienta enojado, ayúdame a mantener la calma como Amanda. Gobierna mi corazón con tu paz. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pasó al baúl de Amanda en el barco que iba a África?",
+    "answer": "Unos hombres rompieron la cerradura y le robaron muchas de sus cosas, hasta sus zapatos. Algunas nunca las recuperó."
+   },
+   {
+    "question": "¿Por qué le dijo Amanda al capitán que no iba a perder los estribos?",
+    "answer": "Le dijo que si enojarse le devolviera sus cosas, él la vería armar un buen alboroto; pero como no se las iba a devolver, ¿para qué hacerlo?"
+   },
+   {
+    "question": "¿Qué te dan ganas de hacer cuando alguien rompe o se lleva algo tuyo? ¿Qué podrías hacer en su lugar?",
+    "answer": "La idea del capítulo: enojarse no arregla las cosas y solo nos hace sentir peor. Dios puede ayudarnos a mantener la calma y la amabilidad cuando algo sale mal: esa es la verdadera fuerza."
+   }
+  ],
+  "body_text": "«Mejor es el que tarda en airarse que el fuerte; y el que se enseñorea de su espíritu, que el que toma una ciudad». — Proverbios 16:32 Dios llevó a Amanda en otro largo viaje, esta vez en barco hasta África. Su ropa y sus cosas iban bien guardadas en su baúl, abajo, en el fondo del barco. Pero mientras cargaban el barco, unos hombres rompieron la cerradura de su baúl y le robaron muchas de sus cosas, hasta sus zapatos. Cuando Amanda se enteró, le dio mucha pena perderlas. Algunas de esas cosas nunca las recuperó. Todos esperaban que gritara, que diera pisotones y que perdiera los estribos. Hasta el capitán del barco la observaba asombrado, y le dijo: «Señora Smith, ¡no entiendo cómo puede mantener la calma!». Amanda sonrió y le respondió: «Capitán, siento perder mis cosas. Pero si perder los estribos y enojarme me las devolviera, ¡seguro que me vería armar un buen alboroto! Como no me las va a devolver, ¿para qué hacerlo?». Y Dios mantuvo su corazón tranquilo y en paz. Cuando algo te lo roban, se rompe o es injusto, es fácil explotar de enojo. Pero enojarse no arregla las cosas: solo nos hace sentir peor. Dios puede ayudarte a mantener la calma y la amabilidad, incluso cuando algo sale mal. Esa es la verdadera fuerza. Querido Dios, cuando las cosas salgan mal y me sienta enojado, ayúdame a mantener la calma como Amanda. Gobierna mi corazón con tu paz. Amén.",
+  "word_count": 247
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "La carreta que no quería avanzar",
+  "body_html": "<blockquote><p><em>«Pues a sus ángeles mandará acerca de ti, que te guarden en todos tus caminos».</em> — Salmos 91:11</p></blockquote> <p>Amanda viajó todavía más lejos, hasta la lejana tierra de la India, para hablarle de Jesús a la gente. Una noche, ella y su amiga, la señorita Frow, iban por un camino de campo lleno de baches en una carreta tirada por unos bueyes grandes y lentos.</p> <p>Estaba muy, muy oscuro. No había farolas ni luna que les ayudara a ver el camino por delante.</p> <p>De repente, los bueyes se detuvieron. Simplemente no querían dar ni un paso más. El conductor les ordenó que siguieran, pero los animales se negaron. Amanda y su amiga empezaron a impacientarse. «¿Por qué no avanza esta carreta?», se preguntaban.</p> <p>Por fin bajaron para ver por sí mismas. Caminaron solo unos pasos hacia adelante en la oscuridad, y el corazón casi se les paró. ¡Justo delante de ellas había una zanja honda y peligrosa que atravesaba todo el camino! Si los bueyes hubieran seguido, la carreta se habría estrellado, y todos podrían haber salido muy heridos.</p> <p>¡Cómo alabaron a Dios entonces! Aquellos animales tercos no habían sido tercos en absoluto. Dios los había usado para detener la carreta y proteger a sus viajeras de un peligro que ni siquiera podían ver.</p> <p>A veces Dios te protege de maneras que no notas, y a veces un «no» o una espera es en realidad Dios cuidándote. Puedes confiar en que él vela por cada uno de tus caminos.</p> <p>Querido Dios, gracias por cuidarme, aun cuando no puedo ver el peligro. Ayúdame a confiar en que siempre me estás protegiendo. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hicieron los bueyes en el camino oscuro de la India?",
+    "answer": "De repente se detuvieron y no quisieron dar ni un paso más, aunque el conductor les ordenaba que siguieran."
+   },
+   {
+    "question": "¿Qué encontraron Amanda y la señorita Frow cuando caminaron hacia adelante en la oscuridad?",
+    "answer": "Una zanja honda y peligrosa que atravesaba todo el camino. Si los bueyes hubieran seguido, la carreta se habría estrellado."
+   },
+   {
+    "question": "¿Recuerdas alguna vez en que esperar o escuchar un «no» resultó ser bueno para ti?",
+    "answer": "La idea del capítulo: a veces Dios nos protege de maneras que no notamos, y un «no» o una espera puede ser en realidad Dios cuidándonos. Él vela por todos nuestros caminos."
+   }
+  ],
+  "body_text": "«Pues a sus ángeles mandará acerca de ti, que te guarden en todos tus caminos». — Salmos 91:11 Amanda viajó todavía más lejos, hasta la lejana tierra de la India, para hablarle de Jesús a la gente. Una noche, ella y su amiga, la señorita Frow, iban por un camino de campo lleno de baches en una carreta tirada por unos bueyes grandes y lentos. Estaba muy, muy oscuro. No había farolas ni luna que les ayudara a ver el camino por delante. De repente, los bueyes se detuvieron. Simplemente no querían dar ni un paso más. El conductor les ordenó que siguieran, pero los animales se negaron. Amanda y su amiga empezaron a impacientarse. «¿Por qué no avanza esta carreta?», se preguntaban. Por fin bajaron para ver por sí mismas. Caminaron solo unos pasos hacia adelante en la oscuridad, y el corazón casi se les paró. ¡Justo delante de ellas había una zanja honda y peligrosa que atravesaba todo el camino! Si los bueyes hubieran seguido, la carreta se habría estrellado, y todos podrían haber salido muy heridos. ¡Cómo alabaron a Dios entonces! Aquellos animales tercos no habían sido tercos en absoluto. Dios los había usado para detener la carreta y proteger a sus viajeras de un peligro que ni siquiera podían ver. A veces Dios te protege de maneras que no notas, y a veces un «no» o una espera es en realidad Dios cuidándote. Puedes confiar en que él vela por cada uno de tus caminos. Querido Dios, gracias por cuidarme, aun cuando no puedo ver el peligro. Ayúdame a confiar en que siempre me estás protegiendo. Amén.",
+  "word_count": 271
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "amanda-smith-autobiography-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "El niño de la puerta",
+  "body_html": "<blockquote><p><em>«Y cualquiera que reciba en mi nombre a un niño como este, a mí me recibe».</em> — Mateo 18:5</p></blockquote> <p>Mientras Amanda vivía en África, dos niños pequeños solían ir a visitarla. Uno de ellos se llamaba Bob. Tenía la piel suave y oscura, y la sonrisa más radiante. Amanda muchas veces les guardaba trocitos de comida a los niños, y ellos siempre se ponían muy contentos. Llegó a quererlos muchísimo.</p> <p>Un día, el papá de Bob, Jack, fue a ver a Amanda. Le contó con tristeza que él nunca había aprendido nada acerca de Dios. «No quiero que mi hijito crezca sin conocer a Dios, como me pasó a mí», le dijo. «Por favor, ¿quiere usted llevárselo y enseñarle?».</p> <p>Amanda quería ayudar. Pero muchas veces estaba débil y enferma de fiebre, y tenía muy poco dinero. «¿Cómo podría yo cuidar de un niño?», se preguntaba. Así que le llevó la pregunta a Dios en oración.</p> <p>Y Dios le respondió con ternura en el corazón: «Tú haz lo que puedas, y donde tú termines, Dios levantará a otra persona que haga el resto».</p> <p>«Eso es justo», dijo Amanda. «Confiaré en el Señor, me quedaré con el niño y haré lo mejor que pueda». Así que el pequeño Bob se convirtió en su propio hijo, para criarlo y amarlo.</p> <p>Dios no te pide que lo hagas todo tú solo. Solo te pide que hagas lo que puedas, y que confíes en él para el resto. Cuando recibes y ayudas a un niño, Jesús dice que es como si lo recibieras a él.</p> <p>Querido Dios, ayúdame a hacer el bien que pueda, y a confiarte lo que no puedo. Gracias por amar tanto a los niños. Amén.</p>",
+  "study_questions": [
+   {
+    "question": "¿Qué le pidió Jack, el papá de Bob, a Amanda?",
+    "answer": "Él nunca había aprendido nada acerca de Dios y no quería que Bob creciera igual, así que le pidió a Amanda que se llevara a su hijito y le enseñara."
+   },
+   {
+    "question": "¿Por qué Amanda no estaba segura al principio, y qué le dijo Dios?",
+    "answer": "Muchas veces estaba enferma y tenía poco dinero. Dios le respondió: «Tú haz lo que puedas, y donde tú termines, Dios levantará a otra persona que haga el resto»."
+   },
+   {
+    "question": "¿Qué cosa buena puedes hacer esta semana para ayudar a alguien, aunque sea pequeña?",
+    "answer": "La idea del capítulo: Dios no nos pide que lo hagamos todo nosotros solos, sino solo lo que podamos, confiando en él para el resto. Recibir a un niño es como recibir a Jesús."
+   }
+  ],
+  "body_text": "«Y cualquiera que reciba en mi nombre a un niño como este, a mí me recibe». — Mateo 18:5 Mientras Amanda vivía en África, dos niños pequeños solían ir a visitarla. Uno de ellos se llamaba Bob. Tenía la piel suave y oscura, y la sonrisa más radiante. Amanda muchas veces les guardaba trocitos de comida a los niños, y ellos siempre se ponían muy contentos. Llegó a quererlos muchísimo. Un día, el papá de Bob, Jack, fue a ver a Amanda. Le contó con tristeza que él nunca había aprendido nada acerca de Dios. «No quiero que mi hijito crezca sin conocer a Dios, como me pasó a mí», le dijo. «Por favor, ¿quiere usted llevárselo y enseñarle?». Amanda quería ayudar. Pero muchas veces estaba débil y enferma de fiebre, y tenía muy poco dinero. «¿Cómo podría yo cuidar de un niño?», se preguntaba. Así que le llevó la pregunta a Dios en oración. Y Dios le respondió con ternura en el corazón: «Tú haz lo que puedas, y donde tú termines, Dios levantará a otra persona que haga el resto». «Eso es justo», dijo Amanda. «Confiaré en el Señor, me quedaré con el niño y haré lo mejor que pueda». Así que el pequeño Bob se convirtió en su propio hijo, para criarlo y amarlo. Dios no te pide que lo hagas todo tú solo. Solo te pide que hagas lo que puedas, y que confíes en él para el resto. Cuando recibes y ayudas a un niño, Jesús dice que es como si lo recibieras a él. Querido Dios, ayúdame a hacer el bien que pueda, y a confiarte lo que no puedo. Gracias por amar tanto a los niños. Amén.",
+  "word_count": 284
+ }
+}
+]
