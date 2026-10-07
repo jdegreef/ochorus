@@ -3,6 +3,7 @@
  "slug": "the-practice-of-the-presence-of-god-children",
  "language": "es",
  "job_issue": 5463,
+ "pull_request": 5501,
  "note": [
   "Every scripture line in this edition is self_rendered. The English retelling does not quote a Bible: each chapter's opening blockquote is a simplified paraphrase for 8–12 year olds, cited loosely (“— from 1 Samuel 16”). The Spanish renders those paraphrases in the same simple, child-friendly wording (ustedes plural, tú reader address, as in the shipped es children's editions) rather than pasting the Reina-Valera text, which would break the edition's register; api.takeroot.bible was egress-blocked from this session in any case.",
   "Brother Lawrence is rendered “el Hermano Lorenzo”, the established Spanish name (already used in purpose-in-prayer.es). Translated in-session by the worker (not per-chapter subagents: 12 chapters of ~270 words); tag sequence identical to English chapter by chapter. AI-translated; awaiting native review."
