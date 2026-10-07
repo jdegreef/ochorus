@@ -84,8 +84,9 @@
 <WelcomeProgress />
 
 <!-- Resume first: the one thing a returning reader most likely came back to do.
-     Promoted above every other block, full width, with deep-link resume. -->
-<ContinueReading />
+     The current book is already the hero's resume point, so the strip carries
+     the rest of what's in progress (and hides when that is nothing). -->
+<ContinueReading besideHero />
 
 <!-- Streak, weekly goal, reading calendar and totals — self-hides until there's
      activity to show (replaces the compact ReadingNudge on the dashboard). On a

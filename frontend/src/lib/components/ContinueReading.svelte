@@ -3,6 +3,7 @@
 	import { listSermons, type CoverBook, type SermonSummary } from '$lib/library-public';
 	import {
 		cachedResumeBooks,
+		currentBookSlug,
 		knownAbsent,
 		libraryBooks,
 		recordSermonList,
@@ -37,7 +38,15 @@
 	 * reads push them past the limit. Renders nothing when there's nothing in
 	 * progress.
 	 */
-	let { limit = 4 }: { limit?: number } = $props();
+	let {
+		limit = 4,
+		besideHero = false
+	}: {
+		limit?: number;
+		/** Under the signed-in HomeHero, which already offers the current book
+		 * (`currentBookSlug`): leave it out rather than show it twice. */
+		besideHero?: boolean;
+	} = $props();
 
 	const t = i18n.t;
 
@@ -109,10 +118,18 @@
 	// works. While a list is still coming, they are the first `limit` unfinished
 	// works IN RECENCY ORDER, each either drawn or held by a placeholder in its
 	// own place — the strip is its final height, and its final order, from mount.
+	const skip = $derived.by(() => {
+		void ticks;
+		const slug = besideHero ? currentBookSlug(absent) : null;
+		return slug ? workSlugKey('book', slug) : null;
+	});
 	const slots = $derived.by<Slot[]>(() => {
 		void ticks;
 		if (!loadingBooks && !loadingSermons) {
-			return drawable.slice(0, limit).map((item) => ({ key: item.key, item }));
+			return drawable
+				.filter((i) => i.key !== skip)
+				.slice(0, limit)
+				.map((item) => ({ key: item.key, item }));
 		}
 		const byKey = new Map(drawable.map((i) => [i.key, i]));
 		return allProgress()
@@ -120,7 +137,8 @@
 				(p) =>
 					p.finished_at == null &&
 					(p.kind === 'book' || p.kind === 'sermon') &&
-					!absent.has(workSlugKey(p.kind, p.slug))
+					!absent.has(workSlugKey(p.kind, p.slug)) &&
+					workSlugKey(p.kind, p.slug) !== skip
 			)
 			.slice(0, limit)
 			.map((p) => {
