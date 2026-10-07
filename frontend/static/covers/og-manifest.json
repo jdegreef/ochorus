@@ -3383,6 +3383,16 @@
 				532
 			]
 		},
+		"c-s-lewis-a-life-teens": {
+			"ground": "b0ecfb1cad4393ca53925debb8c1eb02f483b6f81fa2e519f899bc882175165e",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"cheque-book": {
 			"ground": "01421c300d0debed099d1d2e3966137ece5b7487ed2361aca7828df570abf0bb",
 			"style": "revival",
@@ -3460,6 +3470,16 @@
 				263,
 				532
 			]
+		},
+		"corrie-ten-boom-a-life-teens": {
+			"ground": "1cd7e7ff6e1bd2e33dab4c5b99b45d1121c10418cd4f7f0e7746dc778e1966ae",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"daughters-of-the-king-1": {
 			"ground": "cdeca93949c57d78aa7f907c095b29da214f40735e73802ccb2ef4ac40acceed",
@@ -3580,6 +3600,16 @@
 				263,
 				532
 			]
+		},
+		"elisabeth-elliot-a-life-teens": {
+			"ground": "6ac6c2e7eb76a59ab05f5a3c6c2e43e9fe7ac6bb4a7620dd5531ddf03e83decc",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"enchiridion": {
 			"ground": "e2019e027f55ad618f84ec4ad8e7ae060f22a347d03a6f7914243c5d2180c7c8",
@@ -6958,6 +6988,16 @@
 				532
 			]
 		},
+		"john-hyde-a-life-teens": {
+			"ground": "ccf7e06a9c7916c467406f6364dfebe0bbe420799b5ce6ad3190a2b8ae5d024c",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"journal-of-an-expedition-up-the-niger": {
 			"ground": "37494b21a674597e513108409f2bfd2dfeca857a53d78b9bbb7e51ffe34492d3",
 			"style": "revival",
@@ -8849,6 +8889,16 @@
 				532
 			]
 		},
+		"mary-slessor-a-life-teens": {
+			"ground": "12b20bcfc9ea94b11700b2652d44ae89f186518f2553598bf66ac8386f5af017",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"ministry-of-intercession": {
 			"ground": "c29b4e95738f0b032d0f2181c4a32596814abd3bee59c86d7d3f189401531b4f",
 			"style": "devotional",
@@ -9042,6 +9092,16 @@
 				263,
 				532
 			]
+		},
+		"pandita-ramabai-a-life-teens": {
+			"ground": "88dcd829b5339008360c166c7951540c2d83fe17990f73d75eb1efe9f42a3c7a",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"paradise-lost": {
 			"ground": "1376e1ad2ef24885e058a912da76a841b3d991190a0454afdf01674c1f690416",
@@ -12925,6 +12985,16 @@
 				263,
 				532
 			]
+		},
+		"watchman-nee-a-life-teens": {
+			"ground": "9e45fec0289e28d91b682c69dd92b01ba616d1e14821862193e98dd71dbe28b7",
+			"style": "originals",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
 		},
 		"way-into-holiest": {
 			"ground": "4eb25026c8e1354506a7d9c7f63eb4d6eae92a26393667d351898928b3e38636",
