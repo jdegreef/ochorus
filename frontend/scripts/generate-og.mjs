@@ -89,7 +89,10 @@ const CARDS = [
 	['topics', 'Topics', 'Browse the library by theme'],
 	['biographies', 'Biographies', 'The lives behind the classics'],
 	['quotes', 'Quotes, with sources', 'Traced to the book, chapter and paragraph'],
-	['scripture', 'Scripture in the classics', 'Every Bible reference, and who preached it']
+	['scripture', 'Scripture in the classics', 'Every Bible reference, and who preached it'],
+	// The young-reader hubs (`AudienceHub` points at og/<hub path>.png).
+	['young-readers', 'For Young Readers', 'Free Christian classics retold for children'],
+	['teens', 'For Teens', 'Free Christian books for the teenage years']
 ];
 
 for (const [name, title, subtitle] of CARDS) {

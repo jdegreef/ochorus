@@ -127,6 +127,50 @@ def sibling_editions(book):
     return sorted(rows, key=lambda b: rank[b.slug])
 
 
+def _retold_bases(slugs, suffix: str) -> set[str]:
+    """The full texts that the ``suffix`` editions among ``slugs`` retell, where
+    that full text exists as a book (in any language) — one query, none when no
+    slug carries the suffix. The suffix alone would also catch an original
+    whose title happens to end so (Watts's *Divine Songs for Children*); see
+    ``_is_retold``."""
+    bases = {_edition_base_slug(slug) for slug in slugs if slug.endswith(suffix)}
+    if not bases:
+        return set()
+    return set(Book.objects.filter(slug__in=bases).values_list("slug", flat=True).distinct())
+
+
+def _is_retold(slug: str, suffix: str, bases: set[str]) -> bool:
+    """A retelling retells something: the suffix AND the full text it names."""
+    return slug.endswith(suffix) and _edition_base_slug(slug) in bases
+
+
+#: The reading age a young audience's book is written for, where nothing more
+#: particular says (a series' own ``min_age``/``max_age`` does) — ``max_age``
+#: None for "and up". The book page's "Ages 8–12", its schema.org
+#: ``typicalAgeRange``, and the hub's audience. The series' own field names, so
+#: the frontend reads one shape (``seriesAges``).
+AUDIENCE_AGES = {
+    "young_readers": {"min_age": 8, "max_age": 12},
+    "teens": {"min_age": 13, "max_age": None},
+}
+
+
+def book_ages(book) -> dict | None:
+    """``{"min_age", "max_age"}`` for a book written for young readers or teens,
+    else None: its series' age range when the series names one, else its
+    audience's (``AUDIENCE_AGES``) — the series' audience, or the retold
+    edition's by the hubs' rule (``_is_retold``)."""
+    series = book.series
+    if series is not None and series.min_age is not None:
+        return {"min_age": series.min_age, "max_age": series.max_age}
+    if series is not None and series.audience in AUDIENCE_AGES:
+        return AUDIENCE_AGES[series.audience]
+    for audience, suffix in AUDIENCE_EDITION_SUFFIX.items():
+        if _is_retold(book.slug, suffix, _retold_bases([book.slug], suffix)):
+            return AUDIENCE_AGES[audience]
+    return None
+
+
 def _series_total(numbers: set, position: int | None, here: int) -> int:
     """"Of N" for a series line — ONE rule for the book page and the cards.
 
@@ -1689,6 +1733,8 @@ class BookDetailSerializer(BookListSerializer):
     # ways. Detail only, like related: it is one extra query, nothing on a page
     # and 130× nothing a shelf shouldn't pay.
     editions = serializers.SerializerMethodField()
+    # "Ages 8–12" for a book written for young readers or teens (`book_ages`).
+    ages = serializers.SerializerMethodField()
     # Where this edition sits in its series (see `series_block`); null outside one.
     series = serializers.SerializerMethodField()
     available_languages = serializers.SerializerMethodField()
@@ -1826,7 +1872,7 @@ class BookDetailSerializer(BookListSerializer):
             "editions", "available_languages", "artwork_credit", "author_same_as",
             "alternate_titles", "about_html", "qa", "scripture", "opening",
             "featured_people", "author_quote_count", "guides", "series",
-            "epub_url", "meta_description", "public_domain",
+            "epub_url", "meta_description", "public_domain", "ages",
         ]
 
     def get_public_domain(self, obj) -> bool:
@@ -1857,6 +1903,9 @@ class BookDetailSerializer(BookListSerializer):
         rows = sibling_editions(obj)
         context = {**self.context, "book_topics": {}}
         return BookListSerializer(rows, many=True, context=context).data
+
+    def get_ages(self, obj):
+        return book_ages(obj)
 
     def get_available_languages(self, obj):
         return _available_languages(Book, obj.slug)

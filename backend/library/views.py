@@ -65,6 +65,7 @@ from .search import (
 )
 from .search_triage import hit_key, pinned_hit, rules
 from .serializers import (
+    AUDIENCE_AGES,
     AUDIENCE_EDITION_SUFFIX,
     BOOK_CARD_ANNOTATIONS,
     ArticleDetailSerializer,
@@ -83,6 +84,8 @@ from .serializers import (
     TopicListSerializer,
     _book_cover,
     _edition_base_slug,
+    _is_retold,
+    _retold_bases,
     article_lead_book_map,
     article_topic_map,
     book_topic_map,
@@ -866,27 +869,14 @@ def _audience_topic(audience: str):
     )
 
 
-def _retold_bases(slugs, suffix: str) -> set[str]:
-    """The full texts that the ``suffix`` editions among ``slugs`` retell, where
-    that full text exists as a book (in any language) — one query. The suffix
-    alone would also catch an original whose title happens to end so (Watts's
-    *Divine Songs for Children*); see ``_is_retold``."""
-    bases = {_edition_base_slug(slug) for slug in slugs if slug.endswith(suffix)}
-    return set(Book.objects.filter(slug__in=bases).values_list("slug", flat=True).distinct())
-
-
-def _is_retold(slug: str, suffix: str, bases: set[str]) -> bool:
-    """A retelling retells something: the suffix AND the full text it names."""
-    return slug.endswith(suffix) and _edition_base_slug(slug) in bases
-
-
-def _audience_languages(audience: str, topic) -> list[str]:
-    """Every language where the audience's hub has something to show — a book in
-    a series of its that is named there, a retold edition, or a book of its
-    topic where the topic has a title — in one pass over the candidate rows,
-    with the same three tests ``AudienceShelfView`` sorts a language's books by.
-    For the page's hreflang and the sitemap, which must name exactly the locales
-    whose copy is not an empty page. Plans need no test of their own: a plan
+def _audience_rows(audience: str, topic) -> set[tuple[str, str]]:
+    """``(language, slug)`` for every book the audience's hub shows in some
+    language — a book in a series of its that is named there, a retold edition,
+    or a book of its topic where the topic has a title — in one pass over the
+    candidate rows, with the same three tests ``AudienceShelfView`` sorts a
+    language's books by. Its languages are the page's hreflang and the
+    sitemap's (``_audience_languages``); its slugs, the admin's young-reader
+    engagement (``hub_book_slugs``). Plans need no test of their own: a plan
     lands on the hub only when every book it reads already does.
 
     Keep the three tests in step with the view's (and ``_series_rows``'): a rule
@@ -905,15 +895,23 @@ def _audience_languages(audience: str, topic) -> list[str]:
         s.pk: s
         for s in Series.objects.filter(audience=audience).prefetch_related("translations")
     }
-    return sorted(
-        {
-            language
-            for language, slug, series_id in rows
-            if (series_id in series and series[series_id].title_for(language))
-            or _is_retold(slug, suffix, bases)
-            or (slug in topic_slugs and topic.is_translated_into(language))
-        }
-    )
+    return {
+        (language, slug)
+        for language, slug, series_id in rows
+        if (series_id in series and series[series_id].title_for(language))
+        or _is_retold(slug, suffix, bases)
+        or (slug in topic_slugs and topic.is_translated_into(language))
+    }
+
+
+def _audience_languages(audience: str, topic) -> list[str]:
+    """Every language where the audience's hub has something to show."""
+    return sorted({language for language, _ in _audience_rows(audience, topic)})
+
+
+def hub_book_slugs(audience: str) -> set[str]:
+    """Every book slug the audience's hub shows, in any language."""
+    return {slug for _, slug in _audience_rows(audience, _audience_topic(audience))}
 
 
 class AudienceLanguagesView(PublicContentCacheMixin, APIView):
@@ -944,7 +942,8 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
     ``start`` is the one book a newcomer should open first (``AUDIENCE_STARTS``);
     ``printable`` lists the slugs among them with a free PDF / EPUB
     (``export_policy``), for the page's "print it" line; ``languages``, every
-    language the hub has something in (its hreflang). Nothing here falls back
+    language the hub has something in (its hreflang); ``ages``, the reading age
+    it is for (``AUDIENCE_AGES``). Nothing here falls back
     to English: a language with no rows gets empty lists, and the page hides.
     """
 
@@ -1010,6 +1009,9 @@ class AudienceShelfView(PublicContentCacheMixin, APIView):
                 "start": start,
                 "printable": printable,
                 "languages": languages,
+                # Who the hub is for, as its books' default (`book_ages`) — the
+                # page's schema.org audience.
+                "ages": AUDIENCE_AGES[audience],
             }
         )
 
@@ -2149,7 +2151,6 @@ class ScriptureBookView(APIView):
             verse_text,
         )
         from .search import fallback_snippet
-        from .serializers import _edition_base_slug
 
         target = book_from_slug(book)
         if target is None:

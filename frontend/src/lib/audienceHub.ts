@@ -22,8 +22,14 @@ export interface AudienceHubConfig {
 	labelKey: string;
 	/** Its tile in the phone's More sheet. */
 	icon: IconName;
-	/** The page's tagline and description; the home page's card line too. */
+	/** The page's tagline; the home page's card line too. */
 	taglineKey: string;
+	/** What a search result shows: the `<title>` and the meta description, in
+	 *  the words people search with ("free Christian books for children"). */
+	seoTitleKey: string;
+	seoDescriptionKey: string;
+	/** The share button's words — who the page is passed on to. */
+	shareKey: string;
 	/** The line over the "Start here" pick. */
 	startKey: string;
 	/** The note under "Classics, retold". */
@@ -41,6 +47,9 @@ export const YOUNG_READERS_HUB: AudienceHubConfig = {
 	labelKey: 'nav.youngReaders',
 	icon: 'sun',
 	taglineKey: 'audience.youngTagline',
+	seoTitleKey: 'audience.youngSeoTitle',
+	seoDescriptionKey: 'audience.youngSeoDescription',
+	shareKey: 'audience.shareYoung',
 	startKey: 'audience.startYoung',
 	retoldKey: 'audience.retoldYoung',
 	parentsHeadingKey: 'series.parentsHeading',
@@ -54,6 +63,9 @@ export const TEENS_HUB: AudienceHubConfig = {
 	labelKey: 'nav.teens',
 	icon: 'compass',
 	taglineKey: 'audience.teensTagline',
+	seoTitleKey: 'audience.teensSeoTitle',
+	seoDescriptionKey: 'audience.teensSeoDescription',
+	shareKey: 'audience.shareTeens',
 	startKey: 'audience.startTeens',
 	retoldKey: 'audience.retoldTeens',
 	parentsHeadingKey: 'audience.parentsTeensHeading',
@@ -62,6 +74,10 @@ export const TEENS_HUB: AudienceHubConfig = {
 };
 
 export const AUDIENCE_HUBS: AudienceHubConfig[] = [YOUNG_READERS_HUB, TEENS_HUB];
+
+/** The Plausible event a hub sends when its "Start here" is opened or it is
+ *  shared — props `{ hub, action }`; its visits are the pageviews themselves. */
+export const HUB_EVENT = 'Hub';
 
 /** The hub for a series audience, if it has one (adults don't). */
 export const hubFor = (audience: string | null | undefined): AudienceHubConfig | undefined =>

@@ -12,8 +12,10 @@
 	import Sparkline from '$lib/components/Sparkline.svelte';
 	import SectionBar from '$lib/components/SectionBar.svelte';
 	import EventMarker from '$lib/components/EventMarker.svelte';
-	import { adminEditionHref, DEEP_SITTING_SECONDS, DEFAULT_ENGAGEMENT_RANGE, ENGAGEMENT_RANGES, EVENT_KINDS, isEngagementRange, type EngagementRange, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type PeriodFigure, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
+	import { adminBookHref, adminEditionHref, DEEP_SITTING_SECONDS, DEFAULT_ENGAGEMENT_RANGE, ENGAGEMENT_RANGES, EVENT_KINDS, isEngagementRange, type EngagementRange, formatDuration, getAdminEngagement, periodTrend, sittingBucketLabel, type EngagementEvent, type PeriodFigure, type EngagementKind, type EngagementTopRow, type Trend } from '$lib/library-admin';
 	import { followingWeek, weeklySummary } from '$lib/engagementSummary';
+	import { hubFor } from '$lib/audienceHub';
+	import { audienceName } from '$lib/series';
 	import { columnShares, headline, HEADLINE_WEEK, share } from '$lib/engagementCohorts';
 	import { busiestCell, hourLabel, sendTime, WEEKDAYS } from '$lib/engagementHours';
 
@@ -274,10 +276,12 @@
 					data.highlight_heatmap?.chapters.length && { id: 'marks', label: 'Where readers mark' },
 					data.overview.hearts && { id: 'loved', label: 'Most loved' },
 					data.plan_funnel.started && { id: 'plans', label: 'Plans' },
+					data.young_readers?.length && { id: 'young', label: 'Young readers' },
 					{ id: 'languages', label: 'By language' }
 				].filter((s): s is { id: string; label: string } => !!s)
 			: []
 	);
+
 
 	const planSteps = $derived(
 		data
@@ -848,6 +852,41 @@
 								</table>
 							</div>
 						{/if}
+					</section>
+				{/if}
+
+				<!-- The young-reader hubs: who reads what they show -->
+				{#if d.young_readers?.length}
+					<section id="young" class="anchor mt-6 rounded-card border border-border bg-surface p-5">
+						<div class="mb-4 flex flex-wrap items-baseline justify-between gap-2">
+							<h2 class="text-h3">Young readers</h2>
+							<span class="text-small text-muted">Signed-in readers of the books each hub shows, all time.</span>
+						</div>
+						<div class="grid gap-6 sm:grid-cols-2">
+							{#each d.young_readers as hub (hub.audience)}
+								<div>
+									<h3 class="text-body font-semibold text-text">
+										<a href="{hubFor(hub.audience)?.href}/" class="hover:text-accent">{audienceName(hub.audience)}</a>
+									</h3>
+									<p class="mt-1 text-small text-muted">
+										{fmt(hub.readers)} {hub.readers === 1 ? 'reader' : 'readers'} · {fmt(hub.finishers)} finished a book{#if hub.plans.started}
+											· plans {fmt(hub.plans.started)} started, {fmt(hub.plans.completed)} completed{/if}
+									</p>
+									{#if hub.books.length}
+										<ul class="mt-3 space-y-1.5">
+											{#each hub.books as b (b.slug)}
+												<li class="flex items-baseline gap-3 text-small">
+													<a href={adminBookHref(b.slug)} class="min-w-0 flex-1 truncate text-text hover:text-accent">{b.title}</a>
+													<span class="shrink-0 tabular-nums text-muted">{fmt(b.readers)} · {fmt(b.finishers)} done</span>
+												</li>
+											{/each}
+										</ul>
+									{:else}
+										<p class="mt-3 text-small text-muted">No one has opened one of its books yet.</p>
+									{/if}
+								</div>
+							{/each}
+						</div>
 					</section>
 				{/if}
 

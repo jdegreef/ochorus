@@ -247,8 +247,10 @@ export function collectionPage(opts: {
 	description: string;
 	url: string;
 	items: { name: string; url: string }[];
+	/** Who the collection is written for, as a schema.org PeopleAudience. */
+	ages?: { min_age: number; max_age: number | null };
 }): string {
-	const { name, description, url, items } = opts;
+	const { name, description, url, items, ages } = opts;
 	return jsonLd({
 		'@context': 'https://schema.org',
 		'@type': 'CollectionPage',
@@ -256,6 +258,11 @@ export function collectionPage(opts: {
 		description,
 		url: absUrl(url),
 		isAccessibleForFree: true,
+		audience: ages && {
+			'@type': 'PeopleAudience',
+			suggestedMinAge: ages.min_age,
+			suggestedMaxAge: ages.max_age ?? undefined
+		},
 		mainEntity: itemListObject(items)
 	});
 }

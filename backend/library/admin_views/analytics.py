@@ -39,7 +39,7 @@ from ..models import (
 from ..search import MIN_QUERY_LEN
 from ..search_triage import GRACE, PIN_KINDS, clear_rules, pinned_hit, with_status
 from ..team_events import team_events
-from ..views import _language_entry
+from ..views import AUDIENCE_TOPICS, _language_entry, hub_book_slugs
 from ..weeks import day_of, week_start, week_starts
 
 
@@ -138,6 +138,7 @@ class AdminEngagementView(APIView):
                 "most_loved": self._most_loved(),
                 "hearts_by_kind": self._hearts_by_kind(),
                 "plan_funnel": self._plan_funnel(),
+                "young_readers": self._young_readers(),
                 "by_language": self._by_language(),
                 "weekly_active": weekly_active(now, self.WEEKS),
                 "events": self._events(now),
@@ -522,33 +523,39 @@ class AdminEngagementView(APIView):
             "peak_readers": peak["readers"] if peak else 0,
         }
 
-    def _plan_funnel(self) -> dict:
-        """Reading-plan engagement: the started → came-back → completed funnel,
-        overall and per plan.
+    @cached_property
+    def _plan_days(self) -> tuple[dict[str, int], dict[str, set[str]]]:
+        """Every plan's length (its distinct days — identical across the
+        per-language rows that share a slug) and the books it reads, from one
+        pass over the day rows: the funnel needs the first, the young-reader
+        hubs' plan rule the second."""
+        from ..models import PlanDay
 
-        A plan's length is its number of distinct days (identical across the
-        per-language rows that share a slug); ``PlanProgress.done`` is the list of
-        day-numbers a reader has ticked off, so *completed* is ``len(done) >=
-        length`` and *came back* (used the plan past its first day) is
-        ``len(done) >= 2``. The done lists are read once and bucketed in Python —
-        a JSON array's length isn't a filter the DB can push down, and the row
-        count here is readers×plans, not content-sized."""
+        days: dict[str, set[int]] = {}
+        reads: dict[str, set[str]] = {}
+        for plan, book, day in PlanDay.objects.values_list("plan__slug", "book_slug", "day"):
+            days.setdefault(plan, set()).add(day)
+            if book:
+                reads.setdefault(plan, set()).add(book)
+        return {plan: len(d) for plan, d in days.items()}, reads
+
+    @cached_property
+    def _plan_rows(self) -> list[dict]:
+        """Each started plan's funnel row, most started first — read once per
+        request and shared by the whole-library funnel and each hub's.
+
+        ``PlanProgress.done`` is the list of day-numbers a reader has ticked
+        off, so *completed* is ``len(done) >= length`` and *came back* (used
+        the plan past its first day) is ``len(done) >= 2``. The done lists are
+        read once and bucketed in Python — a JSON array's length isn't a filter
+        the DB can push down, and the row count here is readers×plans, not
+        content-sized."""
         from reading.models import PlanProgress
 
-        from ..models import Plan, PlanDay
+        from ..models import Plan
 
-        lengths = {
-            r["plan__slug"]: r["n"]
-            for r in PlanDay.objects.values("plan__slug").annotate(
-                n=Count("day", distinct=True)
-            )
-        }
-        # Prefer the English title; fall back to whatever language exists.
-        titles: dict[str, str] = {}
-        for p in Plan.objects.values("slug", "language", "title"):
-            if p["language"] == "en" or p["slug"] not in titles:
-                titles[p["slug"]] = p["title"]
-
+        lengths, _ = self._plan_days
+        titles = _prefer_en(Plan.objects.values("slug", "language", "title"), lambda r: r["title"])
         agg: dict[str, dict] = {}
         for slug, done in PlanProgress.objects.values_list("plan_slug", "done"):
             a = agg.setdefault(slug, {"started": 0, "returned": 0, "completed": 0})
@@ -559,20 +566,64 @@ class AdminEngagementView(APIView):
             length = lengths.get(slug)
             if length and n >= length:
                 a["completed"] += 1
-
-        by_plan = sorted(
+        return sorted(
             (
                 {"slug": slug, "title": titles.get(slug, slug), "length": lengths.get(slug), **a}
                 for slug, a in agg.items()
             ),
             key=lambda r: -r["started"],
         )
+
+    def _plan_funnel(self, plans: set[str] | None = None) -> dict:
+        """Reading-plan engagement: the started → came-back → completed funnel,
+        overall and per plan (``_plan_rows``) — or only for ``plans`` (a
+        young-reader hub's)."""
+        rows = [r for r in self._plan_rows if plans is None or r["slug"] in plans]
         return {
-            "started": sum(a["started"] for a in agg.values()),
-            "returned": sum(a["returned"] for a in agg.values()),
-            "completed": sum(a["completed"] for a in agg.values()),
-            "by_plan": by_plan[:12],
+            "started": sum(r["started"] for r in rows),
+            "returned": sum(r["returned"] for r in rows),
+            "completed": sum(r["completed"] for r in rows),
+            "by_plan": rows[:12],
         }
+
+    def _young_readers(self, limit: int = 6) -> list[dict]:
+        """The young-reader hubs (/young-readers/, /teens/), each as the books
+        it shows (``views.hub_book_slugs``, every language): how many readers
+        opened one and finished one, its most-read books, and the funnel of
+        its plans — those that read nothing but its books, the hub page's own
+        rule. All time, like the other work rollups (saved progress keeps only
+        each work's latest touch). A hub nobody has read yet still has its
+        row, at zero: "no one yet" is the answer to the question asked."""
+        from reading.models import ReadingProgress, WorkKind
+
+        _, reads = self._plan_days
+        # The leaderboard's figures, so a hub's books count as the top content's do.
+        counts = {
+            "readers": Count("profile", distinct=True),
+            "finishers": Count("profile", distinct=True, filter=Q(finished_at__isnull=False)),
+        }
+        meta = self._work_meta
+        out = []
+        for audience in AUDIENCE_TOPICS:
+            slugs = hub_book_slugs(audience)
+            progress = ReadingProgress.objects.filter(kind=WorkKind.BOOK, book_slug__in=slugs)
+            books = progress.values("book_slug").annotate(**counts).order_by("-readers", "book_slug")
+            plans = {plan for plan, books_read in reads.items() if books_read <= slugs}
+            out.append(
+                {
+                    "audience": audience,
+                    **progress.aggregate(**counts),
+                    "books": [
+                        self._row(
+                            meta, WorkKind.BOOK, b["book_slug"],
+                            readers=b["readers"], finishers=b["finishers"],
+                        )
+                        for b in books[:limit]
+                    ],
+                    "plans": self._plan_funnel(plans),
+                }
+            )
+        return out
 
     def _by_language(self) -> list[dict]:
         from reading.models import ReadingProgress

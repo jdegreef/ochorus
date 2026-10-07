@@ -1,4 +1,6 @@
 import { describe, expect, it } from 'vitest';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import {
 	AUDIENCE_HUBS,
 	TEENS_HUB,
@@ -78,5 +80,13 @@ describe('AUDIENCE_HUBS', () => {
 		expect(new Set(AUDIENCE_HUBS.map((h) => h.href)).size).toBe(2);
 		expect(hubFor('teens')).toBe(TEENS_HUB);
 		expect(hubFor('adults')).toBeUndefined();
+	});
+});
+
+describe('each hub', () => {
+	it('has its share card, where AudienceHub points (`npm run og:pages`)', () => {
+		for (const h of AUDIENCE_HUBS) {
+			expect(existsSync(resolve(__dirname, `../../static/og${h.href}.png`)), h.href).toBe(true);
+		}
 	});
 });

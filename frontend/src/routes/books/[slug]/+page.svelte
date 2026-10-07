@@ -38,7 +38,7 @@
 	import { localizeHref } from '$lib/href';
 	import { getLang, localeName } from '$lib/lang.svelte';
 	import { scopedSearchHref } from '$lib/searchState';
-	import { seriesLabel } from '$lib/series';
+	import { seriesAges, seriesLabel } from '$lib/series';
 	import { scrollSpy, elementVisible, realignHashOnMeasure, subnavOffset } from '$lib/scrollSpy.svelte';
 	import { tabStrip } from '$lib/actions/tabStrip';
 	import { CONTENTS_COLLAPSE_AT, contentsWindow } from '$lib/contentsWindow';
@@ -290,6 +290,9 @@
 				name: p.name
 			}))
 	]);
+	// "Ages 8–12" — the series index's wording, for a book written for young
+	// readers or teens.
+	const ages = $derived(book.ages ? seriesAges(book.ages) : '');
 	const bookLd = $derived(
 		jsonLd({
 			'@context': 'https://schema.org',
@@ -329,6 +332,11 @@
 			// `wordCount` is the true measure of the same thing, is defined on
 			// CreativeWork, and the page already computes it for the reading time.
 			wordCount: totalWords || undefined,
+			// Who it is written for: "8-12", or "13-" for "13 and up" (schema.org's
+			// open-ended form). Only on the young-reader books (`ages`).
+			typicalAgeRange: book.ages
+				? `${book.ages.min_age}-${book.ages.max_age ?? ''}`
+				: undefined,
 			// What the work is ABOUT, as opposed to what it is called — the topical
 			// shelves it belongs to, which the page has always rendered as chips
 			// and never told a machine. Shared topicThings shape, same as a Person's
@@ -551,8 +559,11 @@
 				</p>
 			{/if}
 
-			{#if book.difficulty || (siblingEditions.length && !fallback)}
+			{#if ages || book.difficulty || (siblingEditions.length && !fallback)}
 				<div class="mt-3 flex flex-wrap items-center gap-2">
+					{#if ages}
+						<span class="hero-chip"><span class="font-semibold text-text">{ages}</span></span>
+					{/if}
 					{#if book.difficulty}
 						<!-- One inner span: the chip is inline-flex, so label and value
 						     would otherwise wrap as two columns, not a sentence. -->
