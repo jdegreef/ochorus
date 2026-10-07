@@ -97,8 +97,8 @@ EXPORT_PILOT = frozenset({
     # The other Ochorus Originals in English: Key Teachings, Portraits of Courage
     # and the stand-alone books. Each attribution opens "© Ochorus" (Growing in
     # Wisdom, "© James DeGreef") and carries the NIV / NLT publishers' notices
-    # where it quotes them. Men of Prayer waits: it mixes unlabelled NKJV, ESV
-    # and NIV wording, so which notices it owes is not yet known.
+    # where it quotes them. Men of Prayer mixes four versions, so each of its
+    # quotations is labelled and its attribution carries all four notices.
     ("a-hidden-fire", "en"),
     ("c-s-lewis-a-life", "en"),
     ("clothed-with-strength-and-dignity", "en"),
@@ -144,6 +144,7 @@ EXPORT_PILOT = frozenset({
     ("key-teachings-of-watchman-nee", "en"),
     ("mary-slessor-a-life", "en"),
     ("men-and-women-who-gave-everything-2", "en"),
+    ("men-of-prayer-2", "en"),
     ("men-who-moved-heaven", "en"),
     ("men-who-tended-the-flock-2", "en"),
     ("pandita-ramabai-a-life", "en"),
