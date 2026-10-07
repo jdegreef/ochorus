@@ -59,3 +59,34 @@ def verified_email(profile) -> str | None:
     email = (data.get("email") or "").strip()
     confirmed = data.get("email_confirmed_at") or data.get("confirmed_at")
     return email if (email and confirmed) else None
+
+
+class SupabaseDeleteError(Exception):
+    """Supabase refused or failed to delete an auth user (not "already gone")."""
+
+
+def delete_user(uid) -> bool:
+    """Delete the Supabase auth user ``uid`` — the sign-in itself, which is what
+    frees its email address for a fresh sign-up.
+
+    Returns ``True`` once the user is gone (a 404 counts: it already was), and
+    ``False`` when Supabase isn't configured here (local, tests), so there was no
+    auth user to remove. Raises :class:`SupabaseDeleteError` on any other
+    failure, so a caller can stop before deleting its own rows and leave the
+    account whole rather than half-deleted.
+    """
+    if not is_configured():
+        return False
+    base = settings.SUPABASE_URL.rstrip("/")
+    key = settings.SUPABASE_SERVICE_ROLE_KEY
+    try:
+        resp = requests.delete(
+            f"{base}/auth/v1/admin/users/{uid}",
+            headers={"apikey": key, "Authorization": f"Bearer {key}"},
+            timeout=_TIMEOUT * 2,
+        )
+    except requests.RequestException as exc:
+        raise SupabaseDeleteError(str(exc)) from exc
+    if resp.status_code == 404 or resp.ok:
+        return True
+    raise SupabaseDeleteError(f"Supabase answered {resp.status_code}")

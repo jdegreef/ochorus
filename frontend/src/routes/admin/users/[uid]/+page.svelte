@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { ApiError } from '$lib/api';
+	import { goto } from '$app/navigation';
+	import { ApiError, apiErrorDetail } from '$lib/api';
 	import { auth } from '$lib/auth.svelte';
 	import ReaderEmailPanel from '$lib/components/ReaderEmailPanel.svelte';
 	import { adminResource } from '$lib/adminResource.svelte';
@@ -7,7 +8,7 @@
 	import { workPath } from '$lib/editionHref';
 	import ReadingHeatmap from '$lib/components/ReadingHeatmap.svelte';
 	import type { FavoriteKind } from '$lib/favorites.svelte';
-	import { formatDateTime, formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
+	import { deleteAdminUser, formatDateTime, formatDuration, getAdminUser, maskEmail, type UserTimelineEvent } from '$lib/library-admin';
 	import type { WorkKind } from '$lib/reading-schema';
 
 	let { data } = $props();
@@ -96,6 +97,25 @@
 		highlight: 'Highlighted in',
 		plan_started: 'Started plan'
 	};
+
+	// Deleting the account (super admins only) — for test sign-ups. The admin
+	// retypes the email (or "delete" when there is none) so a slip on a real reader's page can't do it.
+	let deleteConfirm = $state('');
+	let deleting = $state(false);
+	let deleteError = $state('');
+	async function deleteAccount(confirmWord: string) {
+		if (deleteConfirm.trim().toLowerCase() !== confirmWord.toLowerCase()) return;
+		deleting = true;
+		deleteError = '';
+		try {
+			await deleteAdminUser(data.uid);
+			await goto('/admin/users');
+		} catch (e) {
+			deleteError = apiErrorDetail(e, "Couldn't delete this account.");
+		} finally {
+			deleting = false;
+		}
+	}
 
 	// `text` overrides the numeric value for a card that shows a formatted string
 	// (the reading-time total).
@@ -372,6 +392,43 @@
 			<!-- Email: history + write to them (super admins only, like the Emails section) -->
 			{#if auth.isAdmin}
 				<ReaderEmailPanel uid={data.uid} name={d.profile.display_name || 'this reader'} />
+			{/if}
+
+			<!-- Delete the account (super admins only): the Supabase sign-in and all Ochorus data -->
+			{#if auth.isAdmin}
+				{@const confirmWord = d.profile.email || 'delete'}
+				<section class="mt-8 rounded-card border border-danger bg-surface p-5">
+					<h2 class="text-h3 text-danger">Delete account</h2>
+					<p class="mt-2 text-body text-muted">
+						Permanently deletes this reader's sign-in and everything Ochorus holds for them — reading, highlights,
+						favorites, plans, emails. The email address can then be used to sign up again. This can't be undone.
+					</p>
+					<form
+						class="mt-4 flex flex-wrap items-center gap-3"
+						onsubmit={(e) => {
+							e.preventDefault();
+							deleteAccount(confirmWord);
+						}}
+					>
+						<label class="flex min-w-0 flex-1 flex-col gap-1 text-small text-muted">
+							Type {d.profile.email ? "the reader's email" : '“delete”'} to confirm
+							<input
+								type="text"
+								autocomplete="off"
+								class="rounded-card border border-border bg-bg px-3 py-2 text-body text-text"
+								placeholder={confirmWord}
+								bind:value={deleteConfirm}
+							/>
+						</label>
+						<button
+							type="submit"
+							class="self-end rounded-card border border-danger px-4 py-2 font-semibold text-danger hover:bg-danger hover:text-white disabled:opacity-50"
+							disabled={deleting || deleteConfirm.trim().toLowerCase() !== confirmWord.toLowerCase()}
+							>{deleting ? 'Deleting…' : 'Delete account'}</button
+						>
+					</form>
+					{#if deleteError}<p class="mt-2 text-small text-danger">{deleteError}</p>{/if}
+				</section>
 			{/if}
 		{/snippet}
 	</AdminGate>
