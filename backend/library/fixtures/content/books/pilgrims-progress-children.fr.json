@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "john-bunyan"
+  ],
+  "slug": "pilgrims-progress-children",
+  "language": "fr",
+  "title": "Le Voyage du pèlerin (Pour les enfants)",
+  "subtitle": "",
+  "description": "La célèbre histoire de John Bunyan : un voyageur nommé Chrétien quitte sa ville avec un lourd fardeau sur le dos et marche jusqu’à la Cité céleste. Cette édition pour les enfants raconte son aventure en courts chapitres faits pour être lus à voix haute : un verset de la Bible, une scène du voyage, une chose que cela veut dire pour toi, et une courte prière.",
+  "qa": [
+   {
+    "question": "De quoi parle Le Voyage du pèlerin (Pour les enfants) ?",
+    "answer": "C’est une version pour les enfants de la célèbre histoire de John Bunyan. Un homme nommé Chrétien quitte sa maison avec un lourd fardeau sur le dos et fait un long voyage plein d’aventures jusqu’à la Cité céleste. En chemin, il rencontre des géants, des monstres, des amis et des dangers — et chaque partie du voyage montre, sans bruit, ce que c’est que de suivre Dieu."
+   },
+   {
+    "question": "Qui était John Bunyan ?",
+    "answer": "Un prédicateur anglais qui a vécu il y a très longtemps et qui a passé des années en prison à cause de sa foi. C’est là qu’il a écrit Le Voyage du pèlerin, devenu l’une des histoires les plus aimées au monde — une aventure qui parle de Dieu à travers le récit d’un voyageur appelé Chrétien."
+   },
+   {
+    "question": "Comment chaque chapitre est-il construit ?",
+    "answer": "Chaque chapitre est court et fait pour être lu à voix haute. Il commence par un verset de la Bible, raconte une scène du voyage de Chrétien, montre une chose simple que cela veut dire pour toi, et se termine par une courte prière."
+   },
+   {
+    "question": "À qui s’adresse ce livre ?",
+    "answer": "Il est pour les enfants — à lire à voix haute par un adulte, ou à lire seul par un enfant plus grand. Le Voyage du pèlerin complet de Bunyan existe aussi pour les lecteurs plus âgés."
+   },
+   {
+    "question": "Pourquoi l’histoire est-elle pleine de monstres et de géants ?",
+    "answer": "Parce que Bunyan en a fait une histoire en images. Le chemin de Chrétien représente la vie de celui qui suit Dieu, et ses dangers — un bourbier, un géant, une vallée obscure — représentent les vraies difficultés et les tentations que nous rencontrons. Raconter tout cela comme une aventure aide un enfant à s’en souvenir facilement."
+   },
+   {
+    "question": "Les noms de l’histoire sont-ils étranges exprès ?",
+    "answer": "Oui. Bunyan a donné à ses personnages et à ses lieux des noms qui les décrivent — Chrétien, Fidèle, Plein-d’Espoir, le bourbier du Découragement, la colline Difficulté, le géant Désespoir. Le nom dit comment est chacun, ce qui aide les jeunes lecteurs à suivre le sens de l’histoire."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Une adaptation d’Ochorus, pour les jeunes lecteurs, du Voyage du pèlerin de John Bunyan, œuvre du domaine public. La manière de raconter est la nôtre, libre à lire et à partager.",
+  "cover_url": "/covers/art/pilgrims-progress-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 23,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 1,
+  "title": "L’homme qui criait : « Que dois-je faire ? »",
+  "body_html": "<blockquote>« Que faut-il que je fasse pour être sauvé ? » — d’après Actes 16</blockquote> <p>Dans un endroit appelé la ville de Destruction vivait un homme nommé Chrétien. Un jour, il lisait un livre, et ce qu’il lut lui fit terriblement peur. Il apprit que sa ville allait être détruite — et, pire encore, il sentait sur son dos un grand et lourd fardeau qu’il ne pouvait pas enlever, malgré tous ses efforts.</p> <p>Il se mit à crier : « Que dois-je faire ? Que faut-il que je fasse pour être sauvé ? » Sa famille crut qu’il était devenu fou. Mais Chrétien ne pouvait pas s’empêcher de penser à ce lourd fardeau.</p> <p>Alors un homme nommé Évangéliste vint vers lui et lui demanda pourquoi il pleurait. Chrétien lui parla de son fardeau et de sa peur. Évangéliste montra du doigt, très loin, de l’autre côté d’une grande plaine, et demanda : « Vois-tu cette petite porte ? » Chrétien ne la voyait pas. « Vois-tu cette lumière qui brille ? » dit Évangéliste. « Oui, je crois que je la vois », dit Chrétien. « Garde les yeux sur cette lumière, et va tout droit vers elle. »</p> <p>Alors Chrétien se mit à courir — à courir vers la petite porte et la lumière qui brillait — les doigts dans les oreilles pour que rien ne puisse l’arrêter, en criant : « La vie ! La vie ! La vie éternelle ! »</p> <p>C’est ainsi que commence chaque grand voyage avec Dieu : on voit que quelque chose ne va pas, et on court vers la lumière. Si tu sens le poids du mal que tu as fait, tu n’as pas à le porter tout seul. Il y a une lumière vers laquelle courir. Son nom est Jésus.</p> <p><em>Cher Dieu, quand je sens le poids du mal que j’ai fait, aide-moi à courir vers toi, la vraie Lumière. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Chrétien criait-il : « Que dois-je faire ? »",
+    "answer": "Il avait lu dans un livre que sa ville serait détruite, et il sentait sur son dos un grand et lourd fardeau qu’il ne pouvait pas enlever."
+   },
+   {
+    "question": "Pourquoi Chrétien courait-il avec les doigts dans les oreilles ?",
+    "answer": "Pour que rien ne puisse l’arrêter pendant qu’il courait vers la petite porte et la lumière qui brillait, en criant : « La vie ! La vie ! La vie éternelle ! »"
+   },
+   {
+    "question": "T’es-tu déjà senti lourd à l’intérieur à cause de quelque chose de mal que tu avais fait ? Vers où l’histoire dit-elle de courir ?",
+    "answer": "L’idée du chapitre : tu n’as pas à porter tout seul le poids du mal que tu as fait — il y a une lumière vers laquelle courir, et son nom est Jésus."
+   }
+  ],
+  "body_text": "« Que faut-il que je fasse pour être sauvé ? » — d’après Actes 16 Dans un endroit appelé la ville de Destruction vivait un homme nommé Chrétien. Un jour, il lisait un livre, et ce qu’il lut lui fit terriblement peur. Il apprit que sa ville allait être détruite — et, pire encore, il sentait sur son dos un grand et lourd fardeau qu’il ne pouvait pas enlever, malgré tous ses efforts. Il se mit à crier : « Que dois-je faire ? Que faut-il que je fasse pour être sauvé ? » Sa famille crut qu’il était devenu fou. Mais Chrétien ne pouvait pas s’empêcher de penser à ce lourd fardeau. Alors un homme nommé Évangéliste vint vers lui et lui demanda pourquoi il pleurait. Chrétien lui parla de son fardeau et de sa peur. Évangéliste montra du doigt, très loin, de l’autre côté d’une grande plaine, et demanda : « Vois-tu cette petite porte ? » Chrétien ne la voyait pas. « Vois-tu cette lumière qui brille ? » dit Évangéliste. « Oui, je crois que je la vois », dit Chrétien. « Garde les yeux sur cette lumière, et va tout droit vers elle. » Alors Chrétien se mit à courir — à courir vers la petite porte et la lumière qui brillait — les doigts dans les oreilles pour que rien ne puisse l’arrêter, en criant : « La vie ! La vie ! La vie éternelle ! » C’est ainsi que commence chaque grand voyage avec Dieu : on voit que quelque chose ne va pas, et on court vers la lumière. Si tu sens le poids du mal que tu as fait, tu n’as pas à le porter tout seul. Il y a une lumière vers laquelle courir. Son nom est Jésus. Cher Dieu, quand je sens le poids du mal que j’ai fait, aide-moi à courir vers toi, la vraie Lumière. Amen.",
+  "word_count": 320
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 2,
+  "title": "Coincé dans le bourbier",
+  "body_html": "<blockquote>« Il m’a retiré de la fosse de destruction, du fond de la boue ; et il a dressé mes pieds sur le roc. » — d’après Psaume 40</blockquote> <p>Chrétien traversait la plaine en se dépêchant vers la lumière qui brillait. Mais il ne regardait pas où il mettait les pieds — et tout à coup, <em>plouf !</em> — il tomba tout droit dans un bourbier profond et boueux.</p> <p>Ce n’était pas une flaque ordinaire. Elle avait un nom : le bourbier du Découragement, c’est-à-dire le marais où l’on perd tout espoir. Plus Chrétien se débattait, plus il s’enfonçait, parce que le lourd fardeau sur son dos le tirait vers le fond de la boue.</p> <p>Un voisin nommé Flexible l’avait suivi. Mais quand Flexible se retrouva couvert de boue, il ronchonna, sortit du côté le plus proche et rentra chez lui en tapant des pieds. Le pauvre Chrétien resta seul, en train de s’enfoncer, essayant encore et encore d’atteindre l’autre bord.</p> <p>Alors un homme arriva. Il s’appelait Secours. « Que fais-tu là-dedans ? » demanda-t-il. Puis il tendit la main et dit : « Donne-moi ta main. » Il tira Chrétien hors du bourbier et le remit sur un sol bien solide.</p> <p>Parfois, quand nous commençons à suivre Dieu, nous passons par un moment où tout semble lourd et sans espoir, et nous commençons à nous enfoncer. C’est normal. C’est arrivé même à Chrétien. Mais nous ne sommes pas faits pour nous en sortir tout seuls.</p> <p>Quand tu as l’impression de t’enfoncer, fais comme Chrétien — attrape la main qui se tend vers toi. Dieu envoie du secours.</p> <p><em>Cher Dieu, quand je me sens coincé et sans espoir, merci de me tendre la main. Aide-moi à la saisir. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que s’est-il passé pour Chrétien dans le bourbier du Découragement ?",
+    "answer": "Il est tombé dans un bourbier profond et boueux, et plus il se débattait, plus le lourd fardeau sur son dos le faisait enfoncer."
+   },
+   {
+    "question": "Qu’a fait Flexible, et qui est venu aider Chrétien ?",
+    "answer": "Flexible a ronchonné, est sorti du côté le plus proche et est rentré chez lui. Puis un homme nommé Secours a tendu la main et a tiré Chrétien sur un sol solide."
+   },
+   {
+    "question": "Quand t’es-tu senti coincé ou sans espoir ? Que peux-tu faire quand cela arrive ?",
+    "answer": "L’idée du chapitre : se sentir coincé, cela arrive même à Chrétien, et nous ne sommes pas faits pour nous en sortir seuls — attrape la main qui se tend vers toi, car Dieu envoie du secours."
+   }
+  ],
+  "body_text": "« Il m’a retiré de la fosse de destruction, du fond de la boue ; et il a dressé mes pieds sur le roc. » — d’après Psaume 40 Chrétien traversait la plaine en se dépêchant vers la lumière qui brillait. Mais il ne regardait pas où il mettait les pieds — et tout à coup, plouf ! — il tomba tout droit dans un bourbier profond et boueux. Ce n’était pas une flaque ordinaire. Elle avait un nom : le bourbier du Découragement, c’est-à-dire le marais où l’on perd tout espoir. Plus Chrétien se débattait, plus il s’enfonçait, parce que le lourd fardeau sur son dos le tirait vers le fond de la boue. Un voisin nommé Flexible l’avait suivi. Mais quand Flexible se retrouva couvert de boue, il ronchonna, sortit du côté le plus proche et rentra chez lui en tapant des pieds. Le pauvre Chrétien resta seul, en train de s’enfoncer, essayant encore et encore d’atteindre l’autre bord. Alors un homme arriva. Il s’appelait Secours. « Que fais-tu là-dedans ? » demanda-t-il. Puis il tendit la main et dit : « Donne-moi ta main. » Il tira Chrétien hors du bourbier et le remit sur un sol bien solide. Parfois, quand nous commençons à suivre Dieu, nous passons par un moment où tout semble lourd et sans espoir, et nous commençons à nous enfoncer. C’est normal. C’est arrivé même à Chrétien. Mais nous ne sommes pas faits pour nous en sortir tout seuls. Quand tu as l’impression de t’enfoncer, fais comme Chrétien — attrape la main qui se tend vers toi. Dieu envoie du secours. Cher Dieu, quand je me sens coincé et sans espoir, merci de me tendre la main. Aide-moi à la saisir. Amen.",
+  "word_count": 289
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 3,
+  "title": "La petite porte qui s’ouvre",
+  "body_html": "<blockquote>« Frappez, et l’on vous ouvrira. » — d’après Matthieu 7</blockquote> <p>Enfin, Chrétien arriva à la petite porte — celle qu’Évangéliste lui avait montrée. Au-dessus étaient écrits ces mots : « Frappez, et l’on vous ouvrira. »</p> <p>Alors Chrétien frappa. Et frappa encore. Il n’était pas sûr que quelqu’un viendrait. Et si la porte restait fermée ? Et s’il n’était pas assez bien pour qu’on le laisse entrer ?</p> <p>Mais la porte s’ouvrit ! Un homme bon, nommé Bonne-Volonté, se tenait là. « Qui est là ? D’où viens-tu, et que veux-tu ? » demanda-t-il.</p> <p>« Je suis un pauvre pécheur avec un lourd fardeau, dit Chrétien. Je viens de très loin, de la ville de Destruction, et je veux aller dans la merveilleuse Cité sur la colline. »</p> <p>« Je le veux de tout mon cœur ! » dit Bonne-Volonté — et il ouvrit grand la porte et tira Chrétien à l’intérieur, en sécurité. Chrétien demanda si son fardeau pouvait tomber maintenant. « Sois patient, dit Bonne-Volonté. Continue ton chemin, et au bon endroit, il tombera tout seul. »</p> <p>Puis Bonne-Volonté lui montra le chemin étroit et le fit partir.</p> <p>Voici quelque chose de merveilleux au sujet de Dieu : il ne repousse jamais personne qui vient à lui. Tu n’as pas besoin d’être assez bien d’abord. Tu as seulement besoin de frapper. Viens à Dieu, et il t’ouvrira la porte et t’accueillira de tout son cœur.</p> <p><em>Cher Dieu, merci de ne jamais me repousser quand je viens à toi. Je frappe — s’il te plaît, laisse-moi entrer. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quels mots étaient écrits au-dessus de la petite porte ?",
+    "answer": "« Frappez, et l’on vous ouvrira. »"
+   },
+   {
+    "question": "Qu’a dit Bonne-Volonté quand Chrétien a demandé si son fardeau pouvait tomber maintenant ?",
+    "answer": "« Sois patient » — continue ton chemin, et au bon endroit, il tombera tout seul."
+   },
+   {
+    "question": "Penses-tu que tu dois être assez bien pour que Dieu te laisse entrer ?",
+    "answer": "L’idée du chapitre : Dieu ne repousse jamais personne qui vient à lui. Tu n’as pas besoin d’être assez bien d’abord — tu frappes simplement, et il t’accueille de tout son cœur."
+   }
+  ],
+  "body_text": "« Frappez, et l’on vous ouvrira. » — d’après Matthieu 7 Enfin, Chrétien arriva à la petite porte — celle qu’Évangéliste lui avait montrée. Au-dessus étaient écrits ces mots : « Frappez, et l’on vous ouvrira. » Alors Chrétien frappa. Et frappa encore. Il n’était pas sûr que quelqu’un viendrait. Et si la porte restait fermée ? Et s’il n’était pas assez bien pour qu’on le laisse entrer ? Mais la porte s’ouvrit ! Un homme bon, nommé Bonne-Volonté, se tenait là. « Qui est là ? D’où viens-tu, et que veux-tu ? » demanda-t-il. « Je suis un pauvre pécheur avec un lourd fardeau, dit Chrétien. Je viens de très loin, de la ville de Destruction, et je veux aller dans la merveilleuse Cité sur la colline. » « Je le veux de tout mon cœur ! » dit Bonne-Volonté — et il ouvrit grand la porte et tira Chrétien à l’intérieur, en sécurité. Chrétien demanda si son fardeau pouvait tomber maintenant. « Sois patient, dit Bonne-Volonté. Continue ton chemin, et au bon endroit, il tombera tout seul. » Puis Bonne-Volonté lui montra le chemin étroit et le fit partir. Voici quelque chose de merveilleux au sujet de Dieu : il ne repousse jamais personne qui vient à lui. Tu n’as pas besoin d’être assez bien d’abord. Tu as seulement besoin de frapper. Viens à Dieu, et il t’ouvrira la porte et t’accueillira de tout son cœur. Cher Dieu, merci de ne jamais me repousser quand je viens à toi. Je frappe — s’il te plaît, laisse-moi entrer. Amen.",
+  "word_count": 260
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 4,
+  "title": "La maison aux pièces merveilleuses",
+  "body_html": "<blockquote>« Ouvre mes yeux, pour que je contemple les merveilles de ta loi ! » — d’après Psaume 119</blockquote> <p>Le long du chemin, Chrétien arriva à la maison d’un homme appelé l’Interprète, dont le travail était d’aider les gens à comprendre des choses importantes. L’Interprète alluma une bougie et dit : « Viens, je vais te montrer des merveilles. » Et il emmena Chrétien de pièce en pièce.</p> <p>Dans une pièce, il y avait un grand salon si plein de poussière que personne ne pouvait respirer. Un homme se mit à le balayer — mais la poussière s’envola en nuages épais et fit tousser et étouffer Chrétien ! Puis une jeune fille vint et arrosa doucement tout le sol avec de l’eau, et tout à coup la pièce put être balayée, propre et jolie.</p> <p>« La poussière, c’est le péché, expliqua l’Interprète. Se contenter de dire aux gens les règles ne fait que soulever le péché, comme quand on balaie de la poussière sèche. Mais la bonne nouvelle de Jésus est comme l’eau — elle fait retomber la poussière et rend le cœur vraiment propre. »</p> <p>Dans une autre pièce, un feu brûlait contre un mur. Un homme n’arrêtait pas de jeter de l’eau dessus pour l’éteindre — et pourtant le feu brûlait toujours plus haut et plus fort ! Chrétien ne comprenait pas. Alors l’Interprète l’emmena derrière le mur, où un autre homme versait en secret de l’huile sur le feu pour le garder allumé. « C’est Jésus, dit-il, qui garde le feu de la foi allumé dans ton cœur, même quand des choses essaient de l’éteindre. »</p> <p>Dieu aime nous apprendre comment les choses fonctionnent vraiment à l’intérieur. Demande-lui d’ouvrir tes yeux, et il te montrera des choses merveilleuses.</p> <p><em>Cher Dieu, s’il te plaît, ouvre mes yeux pour que je te comprenne. Garde le feu de ton amour allumé en moi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que s’est-il passé quand l’homme a balayé la pièce poussiéreuse, et qu’est-ce qui l’a rendue propre ?",
+    "answer": "La poussière s’est envolée et a fait étouffer Chrétien. Quand une jeune fille a arrosé le sol avec de l’eau, la pièce a pu être balayée, propre et jolie."
+   },
+   {
+    "question": "Pourquoi le feu continuait-il de brûler alors qu’un homme jetait de l’eau dessus ?",
+    "answer": "Derrière le mur, un autre homme versait de l’huile dessus en secret. L’Interprète a dit que c’est Jésus, qui garde le feu de la foi allumé dans ton cœur."
+   },
+   {
+    "question": "Y a-t-il quelque chose au sujet de Dieu que tu aimerais mieux comprendre ? Comment pourrais-tu le lui demander ?",
+    "answer": "L’idée du chapitre : Dieu aime nous apprendre comment les choses fonctionnent vraiment à l’intérieur — demande-lui d’ouvrir tes yeux, et il te montrera des choses merveilleuses."
+   }
+  ],
+  "body_text": "« Ouvre mes yeux, pour que je contemple les merveilles de ta loi ! » — d’après Psaume 119 Le long du chemin, Chrétien arriva à la maison d’un homme appelé l’Interprète, dont le travail était d’aider les gens à comprendre des choses importantes. L’Interprète alluma une bougie et dit : « Viens, je vais te montrer des merveilles. » Et il emmena Chrétien de pièce en pièce. Dans une pièce, il y avait un grand salon si plein de poussière que personne ne pouvait respirer. Un homme se mit à le balayer — mais la poussière s’envola en nuages épais et fit tousser et étouffer Chrétien ! Puis une jeune fille vint et arrosa doucement tout le sol avec de l’eau, et tout à coup la pièce put être balayée, propre et jolie. « La poussière, c’est le péché, expliqua l’Interprète. Se contenter de dire aux gens les règles ne fait que soulever le péché, comme quand on balaie de la poussière sèche. Mais la bonne nouvelle de Jésus est comme l’eau — elle fait retomber la poussière et rend le cœur vraiment propre. » Dans une autre pièce, un feu brûlait contre un mur. Un homme n’arrêtait pas de jeter de l’eau dessus pour l’éteindre — et pourtant le feu brûlait toujours plus haut et plus fort ! Chrétien ne comprenait pas. Alors l’Interprète l’emmena derrière le mur, où un autre homme versait en secret de l’huile sur le feu pour le garder allumé. « C’est Jésus, dit-il, qui garde le feu de la foi allumé dans ton cœur, même quand des choses essaient de l’éteindre. » Dieu aime nous apprendre comment les choses fonctionnent vraiment à l’intérieur. Demande-lui d’ouvrir tes yeux, et il te montrera des choses merveilleuses. Cher Dieu, s’il te plaît, ouvre mes yeux pour que je te comprenne. Garde le feu de ton amour allumé en moi. Amen.",
+  "word_count": 314
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 5,
+  "title": "Le fardeau qui roule au loin",
+  "body_html": "<blockquote>« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. » — d’après Matthieu 11</blockquote> <p>C’est le plus beau moment de toute l’histoire.</p> <p>Chrétien arriva à un endroit où se dressait une Croix et, un peu plus bas, un tombeau ouvert. Tu te souviens du lourd fardeau qu’il avait porté tout ce chemin — celui qu’il n’arrivait jamais à enlever, malgré tous ses efforts ?</p> <p>Au moment même où Chrétien arriva devant la Croix, son fardeau se détacha de ses épaules. Il roula de son dos et dégringola, dégringola, dégringola le long de la colline — tout droit dans le tombeau ouvert — et il disparut. Disparu ! Chrétien ne le revit jamais.</p> <p>Chrétien était si heureux qu’il ne savait presque plus quoi faire. Des larmes de joie coulaient sur son visage, et il dit : « Il m’a donné le repos par sa souffrance, et la vie par sa mort. » Puis il fit trois grands bonds de joie !</p> <p>Et trois Resplendissants vinrent vers lui. Le premier dit : « Tes péchés sont pardonnés. » Le deuxième lui enleva ses vieux habits déchirés et l’habilla de beaux habits neufs. Et le troisième lui mit une marque sur le front et lui donna une lettre roulée, à lire en chemin et à remettre à la porte de la grande Cité.</p> <p>Ce lourd fardeau, c’était le péché, et seul Jésus, qui est mort sur la Croix, pouvait l’enlever. Tu ne peux pas enlever toi-même de ton dos le poids du mal que tu as fait — mais Jésus le peut, et il le fait. C’est la meilleure nouvelle qui soit.</p> <p><em>Cher Jésus, merci d’avoir enlevé à la Croix le lourd poids de mon péché. Merci de me donner le repos. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’est-il arrivé au fardeau de Chrétien quand il est arrivé à la Croix ?",
+    "answer": "Il s’est détaché, a roulé le long de la colline jusque dans le tombeau ouvert, et il a disparu — Chrétien ne l’a jamais revu."
+   },
+   {
+    "question": "Qu’ont donné les trois Resplendissants à Chrétien ?",
+    "answer": "L’un lui a dit que ses péchés étaient pardonnés, l’autre l’a habillé de beaux habits neufs, et le troisième lui a mis une marque sur le front et lui a donné une lettre roulée."
+   },
+   {
+    "question": "Pouvons-nous enlever nous-mêmes le mal que nous avons fait en faisant de gros efforts ? Qui, d’après l’histoire, peut le faire ?",
+    "answer": "L’idée du chapitre : le fardeau, c’est le péché, et nous ne pouvons pas l’enlever nous-mêmes — mais Jésus, qui est mort sur la Croix, le peut et le fait. C’est la meilleure nouvelle qui soit."
+   }
+  ],
+  "body_text": "« Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos. » — d’après Matthieu 11 C’est le plus beau moment de toute l’histoire. Chrétien arriva à un endroit où se dressait une Croix et, un peu plus bas, un tombeau ouvert. Tu te souviens du lourd fardeau qu’il avait porté tout ce chemin — celui qu’il n’arrivait jamais à enlever, malgré tous ses efforts ? Au moment même où Chrétien arriva devant la Croix, son fardeau se détacha de ses épaules. Il roula de son dos et dégringola, dégringola, dégringola le long de la colline — tout droit dans le tombeau ouvert — et il disparut. Disparu ! Chrétien ne le revit jamais. Chrétien était si heureux qu’il ne savait presque plus quoi faire. Des larmes de joie coulaient sur son visage, et il dit : « Il m’a donné le repos par sa souffrance, et la vie par sa mort. » Puis il fit trois grands bonds de joie ! Et trois Resplendissants vinrent vers lui. Le premier dit : « Tes péchés sont pardonnés. » Le deuxième lui enleva ses vieux habits déchirés et l’habilla de beaux habits neufs. Et le troisième lui mit une marque sur le front et lui donna une lettre roulée, à lire en chemin et à remettre à la porte de la grande Cité. Ce lourd fardeau, c’était le péché, et seul Jésus, qui est mort sur la Croix, pouvait l’enlever. Tu ne peux pas enlever toi-même de ton dos le poids du mal que tu as fait — mais Jésus le peut, et il le fait. C’est la meilleure nouvelle qui soit. Cher Jésus, merci d’avoir enlevé à la Croix le lourd poids de mon péché. Merci de me donner le repos. Amen.",
+  "word_count": 298
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 6,
+  "title": "La colline difficile et le Palais Beau",
+  "body_html": "<blockquote>« Revêtez-vous de toutes les armes de Dieu. » — d’après Éphésiens 6</blockquote> <p>Bientôt, le chemin arriva à une colline très raide appelée Difficulté. Elle était si raide que Chrétien dut grimper à quatre pattes ! À mi-hauteur, il y avait un petit abri pour se reposer, et Chrétien s’assit — mais il était si fatigué qu’il s’endormit profondément, et la précieuse lettre glissa de sa main.</p> <p>Quand il se réveilla et repartit en se dépêchant, il s’aperçut tout à coup que la lettre n’était plus là ! Oh, comme il était triste. Il dut redescendre jusqu’en bas pour la retrouver. Elle était là, juste à l’endroit où il avait dormi. Il la ramassa, remercia Dieu et reprit sa montée.</p> <p>Près du sommet de la colline se tenaient deux lions, et ils rugissaient ! Deux voyageurs venaient de s’enfuir, morts de peur. Mais un gardien cria : « N’aie pas peur des lions — ils sont enchaînés ! Reste simplement au milieu du chemin. » Alors Chrétien passa courageusement entre eux, et ils ne purent pas le toucher.</p> <p>Au sommet se trouvait une grande maison appelée le Palais Beau, construite pour aider les voyageurs fatigués. Des femmes pleines de bonté, nommées Discrétion, Prudence, Piété et Charité, l’accueillirent, lui donnèrent à manger et le laissèrent se reposer. Et avant son départ, elles l’habillèrent de la tête aux pieds d’une armure solide et brillante — pour la route qui l’attendait.</p> <p>Suivre Dieu peut être une montée raide et fatigante, et parfois les choses qui nous font peur sont enchaînées et ne peuvent pas vraiment nous faire de mal. Dieu nous donne du repos, de bons amis et une armure pour le voyage. Continue de grimper — et reste sur le chemin.</p> <p><em>Cher Dieu, quand le chemin est dur et raide, donne-moi du repos, et revêts-moi de ton armure pour que je continue. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Pourquoi Chrétien a-t-il dû redescendre la colline Difficulté ?",
+    "answer": "Il s’est endormi dans l’abri et sa précieuse lettre a glissé de sa main, alors il est retourné la chercher."
+   },
+   {
+    "question": "Pourquoi les lions qui rugissaient ne pouvaient-ils pas faire de mal à Chrétien ?",
+    "answer": "Ils étaient enchaînés. Le gardien lui a dit de rester au milieu du chemin, alors il est passé courageusement entre eux."
+   },
+   {
+    "question": "Qu’est-ce qui te fait peur et qui pourrait être en fait un « lion enchaîné » ? Qui t’aide quand les choses sont difficiles ?",
+    "answer": "L’idée du chapitre : suivre Dieu peut être une montée raide, et certaines choses qui nous font peur ne peuvent pas vraiment nous faire de mal. Dieu donne du repos, de bons amis et une armure — continue de grimper et reste sur le chemin."
+   }
+  ],
+  "body_text": "« Revêtez-vous de toutes les armes de Dieu. » — d’après Éphésiens 6 Bientôt, le chemin arriva à une colline très raide appelée Difficulté. Elle était si raide que Chrétien dut grimper à quatre pattes ! À mi-hauteur, il y avait un petit abri pour se reposer, et Chrétien s’assit — mais il était si fatigué qu’il s’endormit profondément, et la précieuse lettre glissa de sa main. Quand il se réveilla et repartit en se dépêchant, il s’aperçut tout à coup que la lettre n’était plus là ! Oh, comme il était triste. Il dut redescendre jusqu’en bas pour la retrouver. Elle était là, juste à l’endroit où il avait dormi. Il la ramassa, remercia Dieu et reprit sa montée. Près du sommet de la colline se tenaient deux lions, et ils rugissaient ! Deux voyageurs venaient de s’enfuir, morts de peur. Mais un gardien cria : « N’aie pas peur des lions — ils sont enchaînés ! Reste simplement au milieu du chemin. » Alors Chrétien passa courageusement entre eux, et ils ne purent pas le toucher. Au sommet se trouvait une grande maison appelée le Palais Beau, construite pour aider les voyageurs fatigués. Des femmes pleines de bonté, nommées Discrétion, Prudence, Piété et Charité, l’accueillirent, lui donnèrent à manger et le laissèrent se reposer. Et avant son départ, elles l’habillèrent de la tête aux pieds d’une armure solide et brillante — pour la route qui l’attendait. Suivre Dieu peut être une montée raide et fatigante, et parfois les choses qui nous font peur sont enchaînées et ne peuvent pas vraiment nous faire de mal. Dieu nous donne du repos, de bons amis et une armure pour le voyage. Continue de grimper — et reste sur le chemin. Cher Dieu, quand le chemin est dur et raide, donne-moi du repos, et revêts-moi de ton armure pour que je continue. Amen.",
+  "word_count": 311
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 7,
+  "title": "Chrétien combat le dragon",
+  "body_html": "<blockquote>« Résistez au diable, et il fuira loin de vous. » — d’après Jacques 4</blockquote> <p>En bas, dans une vallée profonde, un horrible monstre arriva à grands pas à la rencontre de Chrétien. Il s’appelait Apollyon. Il était couvert d’écailles comme un poisson, il avait des ailes comme un dragon et des pattes comme un ours, et du feu et de la fumée sortaient de lui. Il était effrayant !</p> <p>« Tu m’appartiens, rugit Apollyon, et je ne te laisserai pas aller dans cette Cité. » Chrétien dit non — maintenant, il servait le Roi. Alors le monstre lui lança une flèche enflammée, puis une autre, et encore une autre, aussi serrées que la grêle. Chrétien leva son bouclier pour les arrêter, mais il fut blessé à la tête, à la main et au pied.</p> <p>Le combat dura, dura — pendant une demi-journée ! À la fin, Chrétien devint si faible que son épée lui sauta des mains, et Apollyon se précipita pour l’achever. On aurait dit que c’était la fin.</p> <p>Mais Chrétien tendit le bras, reprit son épée et s’écria : « Ne te réjouis pas trop vite, mon ennemi — quand je tombe, je me relève ! » Il donna un grand coup d’épée et cria : « Dans toutes ces choses nous sommes plus que vainqueurs par celui qui nous a aimés ! » Et Apollyon déploya ses ailes de dragon et s’envola. Chrétien avait gagné — et des feuilles de l’arbre de vie guérirent ses blessures.</p> <p>Le diable existe vraiment, mais tu n’as pas à le vaincre avec tes propres forces. Chrétien a gagné grâce à la Parole de Dieu et à la victoire de Jésus. Quand tu dis non à ce qui est mal et que tu t’accroches à Dieu, l’ennemi s’enfuit.</p> <p><em>Cher Dieu, rends-moi courageux. Aide-moi à dire non à ce qui est mal, et à gagner en faisant confiance à Jésus. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Que voulait Apollyon, et que lui a répondu Chrétien ?",
+    "answer": "Apollyon disait que Chrétien lui appartenait et qu’il ne le laisserait pas aller dans la Cité. Chrétien a dit non — maintenant, il servait le Roi."
+   },
+   {
+    "question": "Qu’a fait Chrétien quand son épée lui a sauté des mains ?",
+    "answer": "Il l’a reprise, a dit : « Quand je tombe, je me relève ! », et a donné un grand coup d’épée — et Apollyon s’est envolé."
+   },
+   {
+    "question": "Qu’est-ce qui t’aide à dire non à quelque chose que tu sais être mal ?",
+    "answer": "L’idée du chapitre : nous ne battons pas l’ennemi avec nos propres forces. Chrétien a gagné grâce à la Parole de Dieu et à la victoire de Jésus — dis non au mal, accroche-toi à Dieu, et l’ennemi s’enfuit."
+   }
+  ],
+  "body_text": "« Résistez au diable, et il fuira loin de vous. » — d’après Jacques 4 En bas, dans une vallée profonde, un horrible monstre arriva à grands pas à la rencontre de Chrétien. Il s’appelait Apollyon. Il était couvert d’écailles comme un poisson, il avait des ailes comme un dragon et des pattes comme un ours, et du feu et de la fumée sortaient de lui. Il était effrayant ! « Tu m’appartiens, rugit Apollyon, et je ne te laisserai pas aller dans cette Cité. » Chrétien dit non — maintenant, il servait le Roi. Alors le monstre lui lança une flèche enflammée, puis une autre, et encore une autre, aussi serrées que la grêle. Chrétien leva son bouclier pour les arrêter, mais il fut blessé à la tête, à la main et au pied. Le combat dura, dura — pendant une demi-journée ! À la fin, Chrétien devint si faible que son épée lui sauta des mains, et Apollyon se précipita pour l’achever. On aurait dit que c’était la fin. Mais Chrétien tendit le bras, reprit son épée et s’écria : « Ne te réjouis pas trop vite, mon ennemi — quand je tombe, je me relève ! » Il donna un grand coup d’épée et cria : « Dans toutes ces choses nous sommes plus que vainqueurs par celui qui nous a aimés ! » Et Apollyon déploya ses ailes de dragon et s’envola. Chrétien avait gagné — et des feuilles de l’arbre de vie guérirent ses blessures. Le diable existe vraiment, mais tu n’as pas à le vaincre avec tes propres forces. Chrétien a gagné grâce à la Parole de Dieu et à la victoire de Jésus. Quand tu dis non à ce qui est mal et que tu t’accroches à Dieu, l’ennemi s’enfuit. Cher Dieu, rends-moi courageux. Aide-moi à dire non à ce qui est mal, et à gagner en faisant confiance à Jésus. Amen.",
+  "word_count": 319
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 8,
+  "title": "À travers la vallée obscure",
+  "body_html": "<blockquote>« Quand je marche dans la vallée de l’ombre de la mort, je ne crains aucun mal, car tu es avec moi. » — d’après Psaume 23</blockquote> <p>La partie suivante du voyage était la plus effrayante de toutes : un endroit appelé la vallée de l’Ombre de la mort. Il y faisait si noir que Chrétien ne savait souvent pas où poser les pieds. D’un côté, il y avait un fossé profond, et de l’autre un marais dangereux, et des bruits effrayants sortaient de l’obscurité.</p> <p>Son épée ne servait à rien contre cette obscurité. Alors Chrétien prit une autre arme — la meilleure de toutes. Elle s’appelait Toute-Prière. Il cria simplement : « Ô Seigneur, je t’en supplie, sauve-moi ! »</p> <p>Une des méchantes créatures s’approcha tout près derrière lui et lui murmura à l’oreille de vilaines pensées, si doucement que Chrétien eut peur que ces mauvaises pensées viennent de sa propre tête. Cela l’effraya encore plus.</p> <p>Mais alors — à travers l’obscurité — il entendit une voix devant lui. Quelqu’un d’autre traversait aussi la vallée, et disait à voix haute : « Quand je marche dans la vallée de l’ombre de la mort, je ne crains aucun mal, car tu es avec moi. » Le cœur de Chrétien reprit courage. Il n’était pas seul, après tout ! Et quand le matin arriva, il sortit sain et sauf de l’autre côté.</p> <p>Parfois, la vie semble sombre et effrayante, et nous ne voyons pas le chemin. C’est là que la meilleure chose à faire est la plus simple : prier. Dieu est avec toi dans le noir, même quand tu ne le vois pas, et le matin finit toujours par arriver.</p> <p><em>Cher Dieu, quand tout est sombre et effrayant, aide-moi à prier. Merci d’être avec moi : je n’ai pas besoin d’avoir peur. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle arme Chrétien a-t-il utilisée dans la vallée obscure, puisque son épée ne servait à rien ?",
+    "answer": "Une arme appelée Toute-Prière. Il a simplement crié : « Ô Seigneur, je t’en supplie, sauve-moi ! »"
+   },
+   {
+    "question": "Pourquoi le cœur de Chrétien a-t-il repris courage dans le noir ?",
+    "answer": "Il a entendu quelqu’un devant lui dire : « Je ne crains aucun mal, car tu es avec moi », et il a su qu’il n’était pas seul."
+   },
+   {
+    "question": "De quoi as-tu peur dans le noir ou dans les moments difficiles ? Que pourrais-tu faire alors ?",
+    "answer": "L’idée du chapitre : quand tout semble sombre et que nous ne voyons pas le chemin, la meilleure chose est la plus simple — prier. Dieu est avec toi dans le noir, et le matin finit toujours par arriver."
+   }
+  ],
+  "body_text": "« Quand je marche dans la vallée de l’ombre de la mort, je ne crains aucun mal, car tu es avec moi. » — d’après Psaume 23 La partie suivante du voyage était la plus effrayante de toutes : un endroit appelé la vallée de l’Ombre de la mort. Il y faisait si noir que Chrétien ne savait souvent pas où poser les pieds. D’un côté, il y avait un fossé profond, et de l’autre un marais dangereux, et des bruits effrayants sortaient de l’obscurité. Son épée ne servait à rien contre cette obscurité. Alors Chrétien prit une autre arme — la meilleure de toutes. Elle s’appelait Toute-Prière. Il cria simplement : « Ô Seigneur, je t’en supplie, sauve-moi ! » Une des méchantes créatures s’approcha tout près derrière lui et lui murmura à l’oreille de vilaines pensées, si doucement que Chrétien eut peur que ces mauvaises pensées viennent de sa propre tête. Cela l’effraya encore plus. Mais alors — à travers l’obscurité — il entendit une voix devant lui. Quelqu’un d’autre traversait aussi la vallée, et disait à voix haute : « Quand je marche dans la vallée de l’ombre de la mort, je ne crains aucun mal, car tu es avec moi. » Le cœur de Chrétien reprit courage. Il n’était pas seul, après tout ! Et quand le matin arriva, il sortit sain et sauf de l’autre côté. Parfois, la vie semble sombre et effrayante, et nous ne voyons pas le chemin. C’est là que la meilleure chose à faire est la plus simple : prier. Dieu est avec toi dans le noir, même quand tu ne le vois pas, et le matin finit toujours par arriver. Cher Dieu, quand tout est sombre et effrayant, aide-moi à prier. Merci d’être avec moi : je n’ai pas besoin d’avoir peur. Amen.",
+  "word_count": 303
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 9,
+  "title": "La foire de la Vanité et l’ami Fidèle",
+  "body_html": "<blockquote>« Sois fidèle jusqu’à la mort, et je te donnerai la couronne de vie. » — d’après Apocalypse 2</blockquote> <p>Maintenant, Chrétien avait un compagnon de voyage — un bon et courageux ami nommé Fidèle. Ensemble, ils arrivèrent dans une ville animée où se tenait une immense foire appelée la foire de la Vanité. On y vendait toutes les choses brillantes qu’on peut imaginer, et les gens ne s’intéressaient à rien d’autre.</p> <p>Les deux pèlerins ne voulaient même pas regarder toutes ces choses qui scintillaient. « Qu’est-ce que vous achetez ? » criaient les marchands. « Nous achetons la vérité », répondirent-ils. C’était tout ce qu’ils voulaient.</p> <p>Cela mit la foule en colère. Les gens se moquèrent des deux amis, les couvrirent de saleté et les enfermèrent dans une cage. Puis ils firent un procès au courageux Fidèle, avec un juge méchant et des témoins menteurs, et le traitèrent terriblement mal — mais Fidèle ne cessa jamais de faire confiance à Dieu.</p> <p>Et voici le merveilleux secret que Bunyan voulait que les enfants connaissent : au moment où la vie de Fidèle sur la terre prit fin, un char tiré par des chevaux descendit et l’emporta à travers les nuages, tout droit jusqu’aux portes de la grande Cité. Il y arriva le tout premier ! Chrétien s’échappa de la ville — et bientôt un nouvel ami nommé Plein-d’Espoir se joignit à lui, parce que Plein-d’Espoir avait vu avec quel courage Chrétien et Fidèle aimaient Dieu.</p> <p>Le monde n’aime pas toujours ceux qui aiment Dieu, et rester fidèle peut coûter quelque chose. Mais Dieu voit, Dieu se souvient, et la récompense est plus grande que tout ce que la foire pouvait vendre.</p> <p><em>Cher Dieu, aide-moi à aimer la vérité plus que les choses brillantes, et à te rester fidèle quoi qu’il arrive. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’ont dit Chrétien et Fidèle quand les marchands criaient : « Qu’est-ce que vous achetez ? »",
+    "answer": "« Nous achetons la vérité. » Ils ne voulaient même pas regarder les choses qui scintillaient."
+   },
+   {
+    "question": "Qu’est-il arrivé à Fidèle quand sa vie sur la terre a pris fin ?",
+    "answer": "Un char tiré par des chevaux est descendu et l’a emporté à travers les nuages jusqu’aux portes de la grande Cité — il y est arrivé le premier."
+   },
+   {
+    "question": "Est-ce parfois difficile de faire ce qui est bien quand les autres se moquent ou veulent des choses brillantes ? Qu’est-ce qui aide ?",
+    "answer": "L’idée du chapitre : le monde n’aime pas toujours ceux qui aiment Dieu, et rester fidèle peut coûter quelque chose — mais Dieu voit et se souvient, et sa récompense est plus grande que tout ce que la foire pouvait vendre."
+   }
+  ],
+  "body_text": "« Sois fidèle jusqu’à la mort, et je te donnerai la couronne de vie. » — d’après Apocalypse 2 Maintenant, Chrétien avait un compagnon de voyage — un bon et courageux ami nommé Fidèle. Ensemble, ils arrivèrent dans une ville animée où se tenait une immense foire appelée la foire de la Vanité. On y vendait toutes les choses brillantes qu’on peut imaginer, et les gens ne s’intéressaient à rien d’autre. Les deux pèlerins ne voulaient même pas regarder toutes ces choses qui scintillaient. « Qu’est-ce que vous achetez ? » criaient les marchands. « Nous achetons la vérité », répondirent-ils. C’était tout ce qu’ils voulaient. Cela mit la foule en colère. Les gens se moquèrent des deux amis, les couvrirent de saleté et les enfermèrent dans une cage. Puis ils firent un procès au courageux Fidèle, avec un juge méchant et des témoins menteurs, et le traitèrent terriblement mal — mais Fidèle ne cessa jamais de faire confiance à Dieu. Et voici le merveilleux secret que Bunyan voulait que les enfants connaissent : au moment où la vie de Fidèle sur la terre prit fin, un char tiré par des chevaux descendit et l’emporta à travers les nuages, tout droit jusqu’aux portes de la grande Cité. Il y arriva le tout premier ! Chrétien s’échappa de la ville — et bientôt un nouvel ami nommé Plein-d’Espoir se joignit à lui, parce que Plein-d’Espoir avait vu avec quel courage Chrétien et Fidèle aimaient Dieu. Le monde n’aime pas toujours ceux qui aiment Dieu, et rester fidèle peut coûter quelque chose. Mais Dieu voit, Dieu se souvient, et la récompense est plus grande que tout ce que la foire pouvait vendre. Cher Dieu, aide-moi à aimer la vérité plus que les choses brillantes, et à te rester fidèle quoi qu’il arrive. Amen.",
+  "word_count": 301
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 10,
+  "title": "L’évasion du château du géant Désespoir",
+  "body_html": "<blockquote>« Il nous a donné ses plus grandes et ses plus précieuses promesses. » — d’après 2 Pierre 1</blockquote> <p>Un jour, pour que la marche soit plus facile, Chrétien et Plein-d’Espoir quittèrent le chemin étroit pour une prairie qui avait l’air plus agréable. Grosse erreur ! Un orage éclata, ils se perdirent, et ils s’endormirent dans le mauvais champ.</p> <p>À l’aube, un géant énorme et cruel les trouva. Il s’appelait le géant Désespoir, et le champ appartenait à sa maison, le château du Doute. Il traîna les deux amis et les jeta dans un cachot sombre et puant, sans nourriture et sans lumière, pendant des jours et des jours. Le géant était horrible avec eux et leur disait d’abandonner tout espoir.</p> <p>Les pauvres Chrétien et Plein-d’Espoir étaient très malheureux. Mais Plein-d’Espoir répétait : « Courage — tiens bon — Dieu va nous aider. » Et le samedi, à minuit, ils se mirent à prier.</p> <p>Puis, juste avant le matin, Chrétien s’écria tout à coup : « Que je suis bête ! Je suis resté couché dans ce cachot alors que j’aurais pu sortir libre ! J’ai dans ma poche une clef appelée Promesse, qui peut ouvrir toutes les serrures du château du Doute ! »</p> <p>Il sortit la clef. Elle ouvrit la porte du cachot. Elle ouvrit la porte extérieure. Elle ouvrit même la lourde grille de fer. Et les deux amis sortirent libres et retournèrent sur la route du bon Roi.</p> <p>Quand tu te sens pris au piège et sans espoir, souviens-toi de la clef de Chrétien. Les promesses de Dieu — les choses qu’il nous a dites dans la Bible — peuvent ouvrir n’importe quel cachot du désespoir. N’oublie pas que tu as la clef dans la main.</p> <p><em>Cher Dieu, quand je me sens pris au piège et triste, aide-moi à me souvenir de tes promesses. Merci, car elles me rendent libre. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Comment Chrétien et Plein-d’Espoir se sont-ils retrouvés au château du Doute ?",
+    "answer": "Ils ont quitté le chemin étroit pour une prairie qui avait l’air plus facile, se sont perdus dans un orage, et se sont endormis dans le champ du géant Désespoir."
+   },
+   {
+    "question": "Comment ont-ils fini par sortir du cachot ?",
+    "answer": "Après avoir prié, Chrétien s’est souvenu d’une clef dans sa poche appelée Promesse. Elle a ouvert la porte du cachot, la porte extérieure et la grille de fer."
+   },
+   {
+    "question": "Quand tu te sens triste ou pris au piège, de quelle « clef » pourrais-tu te souvenir ?",
+    "answer": "L’idée du chapitre : les promesses de Dieu — les choses qu’il nous dit dans la Bible — peuvent ouvrir n’importe quel cachot du désespoir. N’oublie pas que tu as la clef dans la main."
+   }
+  ],
+  "body_text": "« Il nous a donné ses plus grandes et ses plus précieuses promesses. » — d’après 2 Pierre 1 Un jour, pour que la marche soit plus facile, Chrétien et Plein-d’Espoir quittèrent le chemin étroit pour une prairie qui avait l’air plus agréable. Grosse erreur ! Un orage éclata, ils se perdirent, et ils s’endormirent dans le mauvais champ. À l’aube, un géant énorme et cruel les trouva. Il s’appelait le géant Désespoir, et le champ appartenait à sa maison, le château du Doute. Il traîna les deux amis et les jeta dans un cachot sombre et puant, sans nourriture et sans lumière, pendant des jours et des jours. Le géant était horrible avec eux et leur disait d’abandonner tout espoir. Les pauvres Chrétien et Plein-d’Espoir étaient très malheureux. Mais Plein-d’Espoir répétait : « Courage — tiens bon — Dieu va nous aider. » Et le samedi, à minuit, ils se mirent à prier. Puis, juste avant le matin, Chrétien s’écria tout à coup : « Que je suis bête ! Je suis resté couché dans ce cachot alors que j’aurais pu sortir libre ! J’ai dans ma poche une clef appelée Promesse, qui peut ouvrir toutes les serrures du château du Doute ! » Il sortit la clef. Elle ouvrit la porte du cachot. Elle ouvrit la porte extérieure. Elle ouvrit même la lourde grille de fer. Et les deux amis sortirent libres et retournèrent sur la route du bon Roi. Quand tu te sens pris au piège et sans espoir, souviens-toi de la clef de Chrétien. Les promesses de Dieu — les choses qu’il nous a dites dans la Bible — peuvent ouvrir n’importe quel cachot du désespoir. N’oublie pas que tu as la clef dans la main. Cher Dieu, quand je me sens pris au piège et triste, aide-moi à me souvenir de tes promesses. Merci, car elles me rendent libre. Amen.",
+  "word_count": 315
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 11,
+  "title": "Les bergers qui montrent des merveilles",
+  "body_html": "<blockquote>« L’Éternel est mon berger: je ne manquerai de rien. » — d’après Psaume 23</blockquote> <p>Après tout cela, Chrétien et Plein-d’Espoir arrivèrent dans un endroit magnifique : les Montagnes délicieuses, si près de la grande Cité qu’on pouvait presque la voir. Des collines vertes, des jardins, des fontaines — et quatre bergers pleins de bonté qui gardaient les brebis. Ils s’appelaient Connaissance, Expérience, Vigilant et Sincère.</p> <p>Les bergers accueillirent les voyageurs fatigués, leur donnèrent à manger et les laissèrent se reposer. Puis ils dirent : « Venez, nous allons vous montrer certaines choses. » Ils les emmenèrent sur les collines et leur firent voir des choses en partie merveilleuses et en partie servant d’avertissement — des endroits où des voyageurs qui avaient quitté le bon chemin avaient eu des malheurs. Chrétien et Plein-d’Espoir furent très contents d’être restés sur le chemin.</p> <p>Le plus beau de tout, c’est que les bergers les conduisirent sur une haute colline appelée Clair et leur donnèrent une lunette spéciale. Les mains des deux amis tremblaient d’émotion, mais à travers elle ils aperçurent — très, très loin devant — la porte de la Cité céleste elle-même. La fin de leur voyage était en vue !</p> <p>Quand les pèlerins repartirent, les bergers leur donnèrent un conseil plein de bonté : restez attentifs, et ne vous endormez pas en chemin.</p> <p>Dieu est comme ces bons bergers. Il nous nourrit, nous donne du repos, nous avertit du danger et nous laisse apercevoir la merveilleuse maison vers laquelle il nous conduit. Le Seigneur est ton berger — tu peux lui faire confiance pour te guider tout le long du chemin.</p> <p><em>Cher Dieu, merci d’être mon berger, qui me nourrit, me guide et me montre le chemin de la maison. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Qu’ont fait les bergers pour Chrétien et Plein-d’Espoir ?",
+    "answer": "Ils les ont accueillis, leur ont donné à manger et du repos, leur ont montré des avertissements sur le danger de quitter le chemin, et les ont laissés regarder dans une lunette."
+   },
+   {
+    "question": "Qu’ont vu les pèlerins dans la lunette, sur la colline appelée Clair ?",
+    "answer": "Ils ont aperçu, très loin devant, la porte de la Cité céleste — la fin de leur voyage était en vue."
+   },
+   {
+    "question": "En quoi Dieu ressemble-t-il aux bons bergers de cette histoire ?",
+    "answer": "L’idée du chapitre : comme les bergers, Dieu nous nourrit, nous donne du repos, nous avertit du danger et nous montre la maison vers laquelle il nous conduit — tu peux lui faire confiance pour te guider tout le long du chemin."
+   }
+  ],
+  "body_text": "« L’Éternel est mon berger: je ne manquerai de rien. » — d’après Psaume 23 Après tout cela, Chrétien et Plein-d’Espoir arrivèrent dans un endroit magnifique : les Montagnes délicieuses, si près de la grande Cité qu’on pouvait presque la voir. Des collines vertes, des jardins, des fontaines — et quatre bergers pleins de bonté qui gardaient les brebis. Ils s’appelaient Connaissance, Expérience, Vigilant et Sincère. Les bergers accueillirent les voyageurs fatigués, leur donnèrent à manger et les laissèrent se reposer. Puis ils dirent : « Venez, nous allons vous montrer certaines choses. » Ils les emmenèrent sur les collines et leur firent voir des choses en partie merveilleuses et en partie servant d’avertissement — des endroits où des voyageurs qui avaient quitté le bon chemin avaient eu des malheurs. Chrétien et Plein-d’Espoir furent très contents d’être restés sur le chemin. Le plus beau de tout, c’est que les bergers les conduisirent sur une haute colline appelée Clair et leur donnèrent une lunette spéciale. Les mains des deux amis tremblaient d’émotion, mais à travers elle ils aperçurent — très, très loin devant — la porte de la Cité céleste elle-même. La fin de leur voyage était en vue ! Quand les pèlerins repartirent, les bergers leur donnèrent un conseil plein de bonté : restez attentifs, et ne vous endormez pas en chemin. Dieu est comme ces bons bergers. Il nous nourrit, nous donne du repos, nous avertit du danger et nous laisse apercevoir la merveilleuse maison vers laquelle il nous conduit. Le Seigneur est ton berger — tu peux lui faire confiance pour te guider tout le long du chemin. Cher Dieu, merci d’être mon berger, qui me nourrit, me guide et me montre le chemin de la maison. Amen.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "pilgrims-progress-children",
+   "fr"
+  ],
+  "order": 12,
+  "title": "De l’autre côté du fleuve, vers la Cité d’or",
+  "body_html": "<blockquote>« Si tu traverses les eaux, je serai avec toi. » — d’après Ésaïe 43</blockquote> <p>Enfin, Chrétien et Plein-d’Espoir arrivèrent près de la fin de leur long voyage. Ils voyaient la Cité céleste briller sur sa colline, avec ses murs et sa porte qui brillaient comme de l’or. Mais entre eux et la porte, il restait une dernière chose : un fleuve profond, sans aucun pont pour le traverser.</p> <p>« Vous devez traverser le fleuve, leur dit-on, sinon vous ne pourrez pas arriver à la porte. » Alors les deux amis entrèrent dans l’eau — et elle était profonde. Chrétien commença à s’enfoncer, et la peur le remplit. « Je coule ! cria-t-il. Les vagues passent par-dessus ma tête ! » Tous ses vieux soucis revinrent d’un seul coup.</p> <p>Mais Plein-d’Espoir soutint la tête de Chrétien et lui cria : « Courage, mon frère — je sens le fond, et il est solide ! » Et Chrétien se souvint de la promesse de Dieu : « Si tu traverses les eaux, je serai avec toi. » Aussitôt, ses pieds trouvèrent le sol, et ensemble ils arrivèrent sains et saufs de l’autre côté.</p> <p>Là, deux Resplendissants vinrent à leur rencontre et les conduisirent jusqu’à la porte d’or. Ils remirent leurs lettres, et la porte s’ouvrit grand. On leur donna des vêtements brillants, des harpes et des couronnes — et pendant qu’ils entraient, toutes les cloches de la Cité sonnèrent de joie, et une voix dit : « Entrez dans la joie de votre Maître ! »</p> <p>Chrétien était enfin à la maison, en sécurité et plein de joie pour toujours. Et c’est là que le chemin de ceux qui suivent Dieu conduit chaque voyageur qui continue de lui faire confiance — jusqu’à la maison.</p> <p><em>Cher Dieu, merci d’être avec moi tout le long du chemin, jusqu’à la toute fin, et merci, car ta Cité est ma maison. Aide-moi à continuer de marcher avec toi. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Quelle était la dernière chose entre Chrétien et la Cité d’or ?",
+    "answer": "Un fleuve profond, sans pont. Ils devaient le traverser pour arriver à la porte."
+   },
+   {
+    "question": "Comment Plein-d’Espoir a-t-il aidé Chrétien dans le fleuve ?",
+    "answer": "Il a soutenu la tête de Chrétien et lui a crié : « Courage, mon frère — je sens le fond, et il est solide ! »"
+   },
+   {
+    "question": "Quand tu as peur, de quelle promesse de cette histoire pourrais-tu te souvenir ?",
+    "answer": "L’idée du chapitre : Dieu promet : « Si tu traverses les eaux, je serai avec toi. » Il est avec nous tout le long du chemin, et sa Cité est la maison de tous ceux qui continuent de lui faire confiance."
+   }
+  ],
+  "body_text": "« Si tu traverses les eaux, je serai avec toi. » — d’après Ésaïe 43 Enfin, Chrétien et Plein-d’Espoir arrivèrent près de la fin de leur long voyage. Ils voyaient la Cité céleste briller sur sa colline, avec ses murs et sa porte qui brillaient comme de l’or. Mais entre eux et la porte, il restait une dernière chose : un fleuve profond, sans aucun pont pour le traverser. « Vous devez traverser le fleuve, leur dit-on, sinon vous ne pourrez pas arriver à la porte. » Alors les deux amis entrèrent dans l’eau — et elle était profonde. Chrétien commença à s’enfoncer, et la peur le remplit. « Je coule ! cria-t-il. Les vagues passent par-dessus ma tête ! » Tous ses vieux soucis revinrent d’un seul coup. Mais Plein-d’Espoir soutint la tête de Chrétien et lui cria : « Courage, mon frère — je sens le fond, et il est solide ! » Et Chrétien se souvint de la promesse de Dieu : « Si tu traverses les eaux, je serai avec toi. » Aussitôt, ses pieds trouvèrent le sol, et ensemble ils arrivèrent sains et saufs de l’autre côté. Là, deux Resplendissants vinrent à leur rencontre et les conduisirent jusqu’à la porte d’or. Ils remirent leurs lettres, et la porte s’ouvrit grand. On leur donna des vêtements brillants, des harpes et des couronnes — et pendant qu’ils entraient, toutes les cloches de la Cité sonnèrent de joie, et une voix dit : « Entrez dans la joie de votre Maître ! » Chrétien était enfin à la maison, en sécurité et plein de joie pour toujours. Et c’est là que le chemin de ceux qui suivent Dieu conduit chaque voyageur qui continue de lui faire confiance — jusqu’à la maison. Cher Dieu, merci d’être avec moi tout le long du chemin, jusqu’à la toute fin, et merci, car ta Cité est ma maison. Aide-moi à continuer de marcher avec toi. Amen.",
+  "word_count": 324
+ }
+}
+]
