@@ -1,0 +1,388 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "george-muller"
+  ],
+  "slug": "the-life-of-trust-children",
+  "language": "es",
+  "title": "La vida de confianza (Para niños)",
+  "subtitle": "",
+  "description": "George Müller cuidó de miles de huérfanos en Inglaterra, y lo hizo sin pedirle a nadie más que a Dios el dinero, la comida y la ayuda que necesitaba — y orando. Esta edición para niños vuelve a contar la historia verdadera de su vida en capítulos cortos, hechos para leer en voz alta: un versículo de la Biblia, la historia de una oración que Dios contestó, una cosa que eso significa para ti y una oración corta.",
+  "qa": [
+   {
+    "question": "¿De qué trata La vida de confianza (Para niños)?",
+    "answer": "Es una versión para niños de la historia de la vida de George Müller, contada por él mismo. Müller cuidó de miles de niños huérfanos en Inglaterra, y en lugar de pedirle dinero a la gente se lo pedía a Dios — y Dios proveyó una y otra vez. Cada capítulo corto cuenta una historia verdadera de una oración que Dios contestó."
+   },
+   {
+    "question": "¿Quién fue George Müller?",
+    "answer": "Un hombre que vivió en Inglaterra hace mucho tiempo y construyó hogares que cuidaron de miles de huérfanos — niños sin mamá ni papá. Decidió no pedirle nunca a nadie más que a Dios lo que los niños necesitaban, y escribió cómo Dios contestaba sus oraciones para que otros también confiaran en Dios."
+   },
+   {
+    "question": "¿Cómo está organizado cada capítulo?",
+    "answer": "Cada capítulo es corto y está hecho para leerse en voz alta. Empieza con un versículo de la Biblia, cuenta una historia verdadera de la vida de George Müller, muestra una cosa sencilla que eso significa para ti y termina con una oración corta."
+   },
+   {
+    "question": "¿Para quién es este libro?",
+    "answer": "Es para niños — para que un adulto lo lea en voz alta, o para que un niño más grande lo lea solo. La autobiografía más completa de George Müller, La vida de confianza, también está disponible para lectores mayores."
+   },
+   {
+    "question": "¿Qué es lo principal que enseña el libro?",
+    "answer": "Que Dios oye y contesta la oración, y que podemos confiar en que él nos dará lo que de verdad necesitamos. La vida de George Müller es una larga historia verdadera de pedirle ayuda a Dios y ver cómo Dios provee, para que los niños aprendan a confiar en él también."
+   },
+   {
+    "question": "¿Son verdaderas las historias?",
+    "answer": "Sí. Están contadas de forma sencilla para niños, pero vienen del propio relato de George Müller sobre su vida — los hogares de huérfanos de verdad que construyó y las oraciones de verdad que Dios contestó, que él fue escribiendo a medida que pasaban."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "ai_unreviewed",
+  "source_url": "",
+  "attribution": "© Ochorus. Una nueva narración de Ochorus, para lectores jóvenes, de La vida de confianza de George Müller, obra de dominio público. La forma de contarla es nuestra, libre para leer y compartir.",
+  "cover_url": "/covers/art/the-life-of-trust-children.jpg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 22,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 1,
+  "title": "La moneda en el zapato",
+  "body_html": "<blockquote>“Todos nosotros, como ovejas, nos hemos ido lejos.” — de Isaías 53</blockquote> <p>¿Creerías que el hombre que cuidó de miles de huérfanos era un ladrón cuando era niño? Es verdad. Se llamaba George Müller, y cuando era pequeño no era nada bueno.</p> <p>A George le gustaba tomar dinero que no era suyo. Un día su papá quiso averiguar si George había estado robando. Así que contó un poco de dinero, lo dejó en la habitación y se fue, para ver si faltaba algo.</p> <p>George se quedó solo con el dinero. ¿Y qué hizo? Tomó un poco — ¡y escondió una moneda debajo del pie, dentro del zapato! Pero cuando su papá volvió y contó, faltaba dinero. Revisaron a George, y allí estaba la moneda, escondida en su zapato.</p> <p>George no se detuvo allí. A medida que crecía decía mentiras y gastaba dinero que no tenía, hasta que un día, cuando tenía dieciséis años, hasta lo metieron en la cárcel por un tiempo.</p> <p>Ahora bien, ¿por qué su historia verdadera empieza con todas las cosas malas que hizo? Porque así lo que sigue es todavía más maravilloso. Dios no había terminado con George. Dios puede tomar a un niño que miente y roba y cambiarlo por completo — y un día usarlo para ayudar a más niños de los que George podía contar.</p> <p>Así que, si has hecho cosas malas, nunca pienses que eres demasiado malo para Dios. Nadie lo es. A Dios le encanta cambiar corazones.</p> <p><em>Querido Dios, gracias porque tú puedes cambiar a cualquiera, incluso a mí. Por favor, haz que mi corazón sea bueno y limpio. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Dónde escondió el pequeño George la moneda que le tomó a su papá?",
+    "answer": "La escondió debajo del pie, dentro del zapato. Cuando su papá contó el dinero y lo revisó, allí encontraron la moneda."
+   },
+   {
+    "question": "¿Por qué la historia de George empieza con todas las cosas malas que hizo?",
+    "answer": "Porque así lo que sigue es todavía más maravilloso: Dios no había terminado con George, y Dios puede cambiar por completo a un niño que miente y roba."
+   },
+   {
+    "question": "¿Alguna vez has sentido que eras demasiado travieso para que Dios te amara? ¿Qué dice la historia de George sobre eso?",
+    "answer": "La enseñanza del capítulo: nadie es demasiado malo para Dios. A Dios le encanta cambiar corazones, y él puede hacer que nuestro corazón sea bueno y limpio."
+   }
+  ],
+  "body_text": "“Todos nosotros, como ovejas, nos hemos ido lejos.” — de Isaías 53 ¿Creerías que el hombre que cuidó de miles de huérfanos era un ladrón cuando era niño? Es verdad. Se llamaba George Müller, y cuando era pequeño no era nada bueno. A George le gustaba tomar dinero que no era suyo. Un día su papá quiso averiguar si George había estado robando. Así que contó un poco de dinero, lo dejó en la habitación y se fue, para ver si faltaba algo. George se quedó solo con el dinero. ¿Y qué hizo? Tomó un poco — ¡y escondió una moneda debajo del pie, dentro del zapato! Pero cuando su papá volvió y contó, faltaba dinero. Revisaron a George, y allí estaba la moneda, escondida en su zapato. George no se detuvo allí. A medida que crecía decía mentiras y gastaba dinero que no tenía, hasta que un día, cuando tenía dieciséis años, hasta lo metieron en la cárcel por un tiempo. Ahora bien, ¿por qué su historia verdadera empieza con todas las cosas malas que hizo? Porque así lo que sigue es todavía más maravilloso. Dios no había terminado con George. Dios puede tomar a un niño que miente y roba y cambiarlo por completo — y un día usarlo para ayudar a más niños de los que George podía contar. Así que, si has hecho cosas malas, nunca pienses que eres demasiado malo para Dios. Nadie lo es. A Dios le encanta cambiar corazones. Querido Dios, gracias porque tú puedes cambiar a cualquiera, incluso a mí. Por favor, haz que mi corazón sea bueno y limpio. Amén.",
+  "word_count": 269
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 2,
+  "title": "La puerta abierta",
+  "body_html": "<blockquote>“Cuando todavía estaba lejos, su padre lo vio y corrió hacia él.” — de Lucas 15</blockquote> <p>Un sábado por la noche, cuando George era un joven, un amigo lo llevó a una casa donde se reunían unos cristianos. George se sentía tímido. Nunca había estado en un lugar así.</p> <p>Adentro, la gente leyó la Biblia junta, cantaron, y luego pasó algo que George nunca olvidó. Un hombre se arrodilló para orar. George nunca había visto a nadie arrodillarse para orar — ni siquiera él mismo había orado nunca de rodillas. Eso lo conmovió en lo más hondo del corazón.</p> <p>El hombre bondadoso, dueño de la casa, se dio cuenta de que George se sentía fuera de lugar. Así que le dijo algo precioso: “Ven todas las veces que quieras. Mi casa y mi corazón están abiertos para ti.”</p> <p>George volvió a casa esa noche — y en vez de sentirse vacío e inquieto como siempre, se acostó en su cama en paz y feliz. Algo completamente nuevo había empezado dentro de él. Más tarde dijo que esa fue la noche que cambió toda su vida. Esa fue la noche en que George volvió a casa, a Dios.</p> <p>Dios es como aquel hombre bondadoso en la puerta, pero muchísimo más bondadoso. No importa cuán lejos de él te hayas ido, su corazón está abierto para ti. Nunca tienes que ser lo bastante bueno primero. Solo tienes que venir.</p> <p><em>Querido Dios, gracias porque tu corazón siempre está abierto para mí. Quiero venir a ti. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué vio George en la casa de los cristianos que nunca había visto antes?",
+    "answer": "Un hombre se arrodilló para orar. George nunca había visto a nadie arrodillarse para orar, y eso lo conmovió en lo más hondo del corazón."
+   },
+   {
+    "question": "¿Qué palabras bondadosas le dijo a George el dueño de la casa?",
+    "answer": "Le dijo: “Ven todas las veces que quieras. Mi casa y mi corazón están abiertos para ti.” George volvió a casa en paz y feliz."
+   },
+   {
+    "question": "¿Tienes que ser lo bastante bueno antes de poder venir a Dios?",
+    "answer": "La enseñanza del capítulo: Dios es como aquel hombre bondadoso en la puerta, pero mucho más bondadoso. Su corazón está abierto para ti, y solo tienes que venir."
+   }
+  ],
+  "body_text": "“Cuando todavía estaba lejos, su padre lo vio y corrió hacia él.” — de Lucas 15 Un sábado por la noche, cuando George era un joven, un amigo lo llevó a una casa donde se reunían unos cristianos. George se sentía tímido. Nunca había estado en un lugar así. Adentro, la gente leyó la Biblia junta, cantaron, y luego pasó algo que George nunca olvidó. Un hombre se arrodilló para orar. George nunca había visto a nadie arrodillarse para orar — ni siquiera él mismo había orado nunca de rodillas. Eso lo conmovió en lo más hondo del corazón. El hombre bondadoso, dueño de la casa, se dio cuenta de que George se sentía fuera de lugar. Así que le dijo algo precioso: “Ven todas las veces que quieras. Mi casa y mi corazón están abiertos para ti.” George volvió a casa esa noche — y en vez de sentirse vacío e inquieto como siempre, se acostó en su cama en paz y feliz. Algo completamente nuevo había empezado dentro de él. Más tarde dijo que esa fue la noche que cambió toda su vida. Esa fue la noche en que George volvió a casa, a Dios. Dios es como aquel hombre bondadoso en la puerta, pero muchísimo más bondadoso. No importa cuán lejos de él te hayas ido, su corazón está abierto para ti. Nunca tienes que ser lo bastante bueno primero. Solo tienes que venir. Querido Dios, gracias porque tu corazón siempre está abierto para mí. Quiero venir a ti. Amén.",
+  "word_count": 253
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 3,
+  "title": "Oró hasta que sus amigos lloraron",
+  "body_html": "<blockquote>“Oren unos por otros.” — de Santiago 5</blockquote> <p>Ahora que George era tan feliz conociendo a Dios, quería que sus amigos también fueran felices. Así que les contó todo a dos de sus viejos amigos.</p> <p>Pero ellos solo se encogieron de hombros. “No sentimos que seamos pecadores”, dijeron. “No sentimos que hayamos hecho nada que necesite perdón.”</p> <p>¿Qué podía hacer George? No podía hacer que lo entendieran. Así que hizo lo único que se le ocurrió — oró. Allí mismo se arrodilló y le pidió a Dios que les mostrara a sus dos amigos la verdad sobre su propio corazón. Luego se fue a su cuarto y siguió orando por ellos.</p> <p>Y cuando George volvió — sus dos amigos estaban llorando. ¡Los dos! Dios había hecho lo que George no podía hacer. Le dijeron que ahora sabían que eran pecadores, y que ellos también necesitaban a Dios.</p> <p>George estaba aprendiendo algo que usaría durante el resto de su vida: <strong>cuando no podemos cambiar algo nosotros mismos, podemos orar, y Dios sí puede.</strong></p> <p>¿Hay alguien que quisieras que conociera a Dios — un amigo, un hermano o una hermana, alguien de tu familia? No tienes que hacer que crean. Puedes hacer lo que hizo George. Puedes orar por ellos y dejarle el resto a Dios.</p> <p><em>Querido Dios, por favor ayuda a las personas que amo a conocerte. Yo no puedo hacerlo, pero tú sí. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué dijeron los dos amigos de George cuando él les habló de Dios?",
+    "answer": "Se encogieron de hombros y dijeron que no sentían que fueran pecadores ni que hubieran hecho nada que necesitara perdón."
+   },
+   {
+    "question": "¿Qué hizo George cuando no pudo hacer que sus amigos entendieran?",
+    "answer": "Se arrodilló y oró por ellos, y después siguió orando en su cuarto. Cuando volvió, los dos amigos estaban llorando y dijeron que ellos también necesitaban a Dios."
+   },
+   {
+    "question": "¿Hay alguien que quisieras que conociera a Dios? ¿Qué podríamos hacer por esa persona?",
+    "answer": "La enseñanza del capítulo: no tenemos que hacer que nadie crea. Cuando no podemos cambiar algo nosotros mismos, podemos orar, y Dios sí puede."
+   }
+  ],
+  "body_text": "“Oren unos por otros.” — de Santiago 5 Ahora que George era tan feliz conociendo a Dios, quería que sus amigos también fueran felices. Así que les contó todo a dos de sus viejos amigos. Pero ellos solo se encogieron de hombros. “No sentimos que seamos pecadores”, dijeron. “No sentimos que hayamos hecho nada que necesite perdón.” ¿Qué podía hacer George? No podía hacer que lo entendieran. Así que hizo lo único que se le ocurrió — oró. Allí mismo se arrodilló y le pidió a Dios que les mostrara a sus dos amigos la verdad sobre su propio corazón. Luego se fue a su cuarto y siguió orando por ellos. Y cuando George volvió — sus dos amigos estaban llorando. ¡Los dos! Dios había hecho lo que George no podía hacer. Le dijeron que ahora sabían que eran pecadores, y que ellos también necesitaban a Dios. George estaba aprendiendo algo que usaría durante el resto de su vida: cuando no podemos cambiar algo nosotros mismos, podemos orar, y Dios sí puede. ¿Hay alguien que quisieras que conociera a Dios — un amigo, un hermano o una hermana, alguien de tu familia? No tienes que hacer que crean. Puedes hacer lo que hizo George. Puedes orar por ellos y dejarle el resto a Dios. Querido Dios, por favor ayuda a las personas que amo a conocerte. Yo no puedo hacerlo, pero tú sí. Amén.",
+  "word_count": 234
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 4,
+  "title": "Sin sueldo, solo Dios",
+  "body_html": "<blockquote>“Mi Dios les dará todo lo que necesitan.” — de Filipenses 4</blockquote> <p>Cuando George creció, se hizo predicador, y la iglesia le pagaba un sueldo, como en un trabajo. Pero George tuvo una idea poco común. ¡Decidió dejar de recibir sueldo por completo!</p> <p>En cambio, confiaría en que Dios le daría lo necesario. Puso una cajita en la pared de la iglesia, para que cualquiera que quisiera pudiera dar — pero se puso una regla firme: nunca le pediría dinero a ninguna persona. Solo se lo pediría a <em>Dios.</em> Si tenía una necesidad, se la contaría a Dios, y a nadie más.</p> <p>Suena un poco aterrador, ¿verdad? Y muy pronto llegó el día de ponerlo a prueba. A George y a su esposa casi no les quedaba dinero — solo unas pocas monedas. Así que hicieron lo que habían prometido: se arrodillaron y se lo contaron a Dios.</p> <p>Unas horas después, una mujer llegó a su puerta y preguntó: “¿Necesitan dinero?” Les dio un poco — y aquí viene lo maravilloso. ¡Ella dijo que Dios le había puesto en el corazón darlo dos semanas antes! Dios había empezado la respuesta antes de que George siquiera orara. Y George nunca le había dicho que tenían necesidad. Solo Dios lo sabía.</p> <p>Dios sabe exactamente lo que necesitas antes de que se lo pidas. Puedes contarle cualquier cosa y confiar en que él te cuidará.</p> <p><em>Querido Dios, gracias porque tú ya sabes lo que necesito. Ayúdame a confiar en ti y a contártelo todo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cuál era la regla firme de George sobre el dinero después de dejar de recibir sueldo?",
+    "answer": "Nunca le pediría dinero a ninguna persona. Solo se lo pediría a Dios y no le contaría sus necesidades a nadie más."
+   },
+   {
+    "question": "¿Qué fue tan maravilloso de la mujer que llegó a la puerta con dinero?",
+    "answer": "Dijo que Dios le había puesto en el corazón darlo dos semanas antes, así que Dios empezó la respuesta antes de que George siquiera orara. George nunca le había contado su necesidad."
+   },
+   {
+    "question": "¿Qué cosas podrías contarle a Dios hoy?",
+    "answer": "La enseñanza del capítulo: Dios sabe exactamente lo que necesitas antes de que se lo pidas. Puedes contarle cualquier cosa y confiar en que él te cuidará."
+   }
+  ],
+  "body_text": "“Mi Dios les dará todo lo que necesitan.” — de Filipenses 4 Cuando George creció, se hizo predicador, y la iglesia le pagaba un sueldo, como en un trabajo. Pero George tuvo una idea poco común. ¡Decidió dejar de recibir sueldo por completo! En cambio, confiaría en que Dios le daría lo necesario. Puso una cajita en la pared de la iglesia, para que cualquiera que quisiera pudiera dar — pero se puso una regla firme: nunca le pediría dinero a ninguna persona. Solo se lo pediría a Dios. Si tenía una necesidad, se la contaría a Dios, y a nadie más. Suena un poco aterrador, ¿verdad? Y muy pronto llegó el día de ponerlo a prueba. A George y a su esposa casi no les quedaba dinero — solo unas pocas monedas. Así que hicieron lo que habían prometido: se arrodillaron y se lo contaron a Dios. Unas horas después, una mujer llegó a su puerta y preguntó: “¿Necesitan dinero?” Les dio un poco — y aquí viene lo maravilloso. ¡Ella dijo que Dios le había puesto en el corazón darlo dos semanas antes! Dios había empezado la respuesta antes de que George siquiera orara. Y George nunca le había dicho que tenían necesidad. Solo Dios lo sabía. Dios sabe exactamente lo que necesitas antes de que se lo pidas. Puedes contarle cualquier cosa y confiar en que él te cuidará. Querido Dios, gracias porque tú ya sabes lo que necesito. Ayúdame a confiar en ti y a contártelo todo. Amén.",
+  "word_count": 252
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 5,
+  "title": "Alguien llama a la puerta",
+  "body_html": "<blockquote>“Danos hoy el pan de cada día.” — de Mateo 6</blockquote> <p>Un domingo, a George y a su esposa solo les quedaban unas poquitas monedas. Apenas había pan en la casa para ese día, y no había dinero para comprar más para la noche.</p> <p>Así que George oró. No hizo una oración complicada. Le pidió a Dios, de forma muy sencilla, que les mandara un poco de pan para esa noche — pan de verdad, para su mesa, ese mismo día.</p> <p>Y esto es lo que pasó. <strong>Mientras George todavía estaba orando</strong> — antes de que terminara — ¡alguien llamó a la puerta!</p> <p>Allí estaba una mujer pobre. Había traído parte de su propia comida para compartirla, y un poco de dinero de otra amiga pobre. Y más tarde, esa misma tarde, volvió otra vez, esta vez con un pan grande.</p> <p>Dios había oído. De hecho, Dios había puesto en camino a esa mujer con el pan antes de que George terminara de pedir. La respuesta ya venía mientras él todavía estaba de rodillas.</p> <p>Cuando Jesús nos enseñó a orar, nos dijo que pidiéramos el “pan de cada día” — las cosas que necesitamos cada día. George lo tomó en serio, y Dios lo cuidó. Tú también puedes pedirle a Dios las cosas comunes que necesitas. A él le importa todo, hasta el pan de la cena.</p> <p><em>Querido Dios, gracias porque te importan hasta las cosas pequeñas de cada día. Por favor, dame lo que necesito hoy. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué cosa sencilla le pidió George a Dios aquel domingo?",
+    "answer": "Le pidió que les mandara un poco de pan para esa noche, porque apenas había en la casa para el día y no había dinero para comprar más."
+   },
+   {
+    "question": "¿Qué pasó mientras George todavía estaba orando?",
+    "answer": "Alguien llamó a la puerta. Una mujer pobre trajo parte de su propia comida y un poco de dinero, y más tarde volvió con un pan grande."
+   },
+   {
+    "question": "¿A Dios le importan las cosas comunes, como nuestra cena? ¿Qué podrías pedirle?",
+    "answer": "La enseñanza del capítulo: Jesús nos enseñó a pedir el “pan de cada día”. A Dios le importa todo, hasta el pan de la cena, así que podemos pedirle lo que necesitamos cada día."
+   }
+  ],
+  "body_text": "“Danos hoy el pan de cada día.” — de Mateo 6 Un domingo, a George y a su esposa solo les quedaban unas poquitas monedas. Apenas había pan en la casa para ese día, y no había dinero para comprar más para la noche. Así que George oró. No hizo una oración complicada. Le pidió a Dios, de forma muy sencilla, que les mandara un poco de pan para esa noche — pan de verdad, para su mesa, ese mismo día. Y esto es lo que pasó. Mientras George todavía estaba orando — antes de que terminara — ¡alguien llamó a la puerta! Allí estaba una mujer pobre. Había traído parte de su propia comida para compartirla, y un poco de dinero de otra amiga pobre. Y más tarde, esa misma tarde, volvió otra vez, esta vez con un pan grande. Dios había oído. De hecho, Dios había puesto en camino a esa mujer con el pan antes de que George terminara de pedir. La respuesta ya venía mientras él todavía estaba de rodillas. Cuando Jesús nos enseñó a orar, nos dijo que pidiéramos el “pan de cada día” — las cosas que necesitamos cada día. George lo tomó en serio, y Dios lo cuidó. Tú también puedes pedirle a Dios las cosas comunes que necesitas. A él le importa todo, hasta el pan de la cena. Querido Dios, gracias porque te importan hasta las cosas pequeñas de cada día. Por favor, dame lo que necesito hoy. Amén.",
+  "word_count": 248
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 6,
+  "title": "Abre bien tu boca",
+  "body_html": "<blockquote>“Abre bien tu boca, y yo la llenaré.” — del Salmo 81</blockquote> <p>Un día George leyó sobre un hombre de hace mucho tiempo que había construido un hogar para huérfanos — niños sin mamá ni papá — solamente confiando en Dios. Y una gran idea empezó a crecer en el corazón de George. ¿Y si <em>él</em> también abría un hogar para huérfanos?</p> <p>George oró y oró por eso. Hasta le pidió a Dios que le quitara la idea si no venía de él. Luego, leyendo su Biblia, encontró estas palabras: “Abre bien tu boca, y yo la llenaré.” Era como si Dios le dijera: “Pídeme cosas grandes, George. Yo puedo hacerlas.”</p> <p>Así que George le pidió a Dios tres cosas grandes: una casa para los niños, una gran cantidad de dinero y personas bondadosas que los cuidaran.</p> <p>Luego esperó para ver qué haría Dios. El primer regalo fue un solo chelín — una sola moneda pequeña. Al día siguiente, alguien mandó un ropero grande. Después una mujer se ofreció a venir a ayudar. Después un esposo y una esposa se ofrecieron a cuidar a los niños sin que les pagaran nada.</p> <p>Poco a poco, Dios llenó cada necesidad. ¡Y un día de primavera el hogar de huérfanos abrió sus puertas — con diecisiete niños viviendo allí!</p> <p>George no hizo todo esto para parecer listo. Lo hizo para que todos pudieran ver, con sus propios ojos, que <strong>Dios es real, y Dios todavía oye la oración.</strong></p> <p><em>Querido Dios, tú eres tan grande que puedes con cualquier cosa. Ayúdame a traerte mis esperanzas más grandes y a confiártelas. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué gran idea creció en el corazón de George después de leer sobre un hombre de hace mucho tiempo?",
+    "answer": "Abrir un hogar para huérfanos, niños sin mamá ni papá, solamente confiando en Dios como aquel hombre."
+   },
+   {
+    "question": "¿Qué tres cosas grandes le pidió George a Dios?",
+    "answer": "Una casa para los niños, una gran cantidad de dinero y personas bondadosas que los cuidaran. Poco a poco Dios llenó cada necesidad, y diecisiete niños se mudaron allí."
+   },
+   {
+    "question": "¿Qué esperanza grande podrías traerle a Dios?",
+    "answer": "La enseñanza del capítulo: “Abre bien tu boca, y yo la llenaré” quiere decir que Dios es tan grande que puede con cualquier cosa, así que podemos traerle nuestras esperanzas más grandes y confiar en él."
+   }
+  ],
+  "body_text": "“Abre bien tu boca, y yo la llenaré.” — del Salmo 81 Un día George leyó sobre un hombre de hace mucho tiempo que había construido un hogar para huérfanos — niños sin mamá ni papá — solamente confiando en Dios. Y una gran idea empezó a crecer en el corazón de George. ¿Y si él también abría un hogar para huérfanos? George oró y oró por eso. Hasta le pidió a Dios que le quitara la idea si no venía de él. Luego, leyendo su Biblia, encontró estas palabras: “Abre bien tu boca, y yo la llenaré.” Era como si Dios le dijera: “Pídeme cosas grandes, George. Yo puedo hacerlas.” Así que George le pidió a Dios tres cosas grandes: una casa para los niños, una gran cantidad de dinero y personas bondadosas que los cuidaran. Luego esperó para ver qué haría Dios. El primer regalo fue un solo chelín — una sola moneda pequeña. Al día siguiente, alguien mandó un ropero grande. Después una mujer se ofreció a venir a ayudar. Después un esposo y una esposa se ofrecieron a cuidar a los niños sin que les pagaran nada. Poco a poco, Dios llenó cada necesidad. ¡Y un día de primavera el hogar de huérfanos abrió sus puertas — con diecisiete niños viviendo allí! George no hizo todo esto para parecer listo. Lo hizo para que todos pudieran ver, con sus propios ojos, que Dios es real, y Dios todavía oye la oración. Querido Dios, tú eres tan grande que puedes con cualquier cosa. Ayúdame a traerte mis esperanzas más grandes y a confiártelas. Amén.",
+  "word_count": 267
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 7,
+  "title": "La joven que lo dio todo",
+  "body_html": "<blockquote>“Dios ama al que da con alegría.” — de 2 Corintios 9</blockquote> <p>Uno de los regalos más hermosos que recibieron los huérfanos vino de una joven pobre que se ganaba la vida cosiendo ropa. Ganaba solo unas pocas monedas por semana, y nunca, ni una sola vez, se quejaba.</p> <p>Entonces un día le dieron un dinero que era suyo — bastante dinero. Ahora bien, ¿qué harías tú con una sorpresa así? ¿Comprarte ropa nueva y bonita? ¿Guardarlo todo para ti?</p> <p>Esto es lo que hizo ella. Primero pagó unas deudas viejas. Después le dio una parte a su mamá. Y luego le llevó a George un regalo grande — ¡cien libras! — para los huérfanos.</p> <p>George se sorprendió tanto que le preguntó una y otra vez, para estar seguro de que de verdad quería dar tanto. Y ella contestó con palabras que vale la pena recordar: “El Señor Jesús dio por mí hasta la última gota de su sangre. ¿No le voy a dar yo esto?”</p> <p>Y ¿sabes qué? — lo mantuvo todo en secreto. Siguió usando la misma ropa sencilla y vieja de siempre, y volvió a coser, trabajando tan duro como siempre, mientras en silencio regalaba tanto.</p> <p>Ella amaba a Jesús, así que dar la hacía feliz, no triste. No tienes que ser rico para dar. Solo necesitas un corazón que ama. ¿Qué podrías dar — en silencio, con alegría — a alguien que lo necesita?</p> <p><em>Querido Dios, gracias por darme a Jesús. Hazme alguien que da con alegría y en secreto, como aquella joven bondadosa. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué hizo la joven que cosía ropa con el dinero que le dieron?",
+    "answer": "Pagó unas deudas viejas, le dio una parte a su mamá y le llevó a George cien libras para los huérfanos."
+   },
+   {
+    "question": "¿Por qué dijo que quería dar tanto?",
+    "answer": "Dijo: “El Señor Jesús dio por mí hasta la última gota de su sangre. ¿No le voy a dar yo esto?” Ella amaba a Jesús, así que dar la hacía feliz."
+   },
+   {
+    "question": "¿Qué podrías dar, en silencio y con alegría, a alguien que lo necesita?",
+    "answer": "La enseñanza del capítulo: no tienes que ser rico para dar, solo tener un corazón que ama. Ella mantuvo su regalo en secreto y dio con alegría."
+   }
+  ],
+  "body_text": "“Dios ama al que da con alegría.” — de 2 Corintios 9 Uno de los regalos más hermosos que recibieron los huérfanos vino de una joven pobre que se ganaba la vida cosiendo ropa. Ganaba solo unas pocas monedas por semana, y nunca, ni una sola vez, se quejaba. Entonces un día le dieron un dinero que era suyo — bastante dinero. Ahora bien, ¿qué harías tú con una sorpresa así? ¿Comprarte ropa nueva y bonita? ¿Guardarlo todo para ti? Esto es lo que hizo ella. Primero pagó unas deudas viejas. Después le dio una parte a su mamá. Y luego le llevó a George un regalo grande — ¡cien libras! — para los huérfanos. George se sorprendió tanto que le preguntó una y otra vez, para estar seguro de que de verdad quería dar tanto. Y ella contestó con palabras que vale la pena recordar: “El Señor Jesús dio por mí hasta la última gota de su sangre. ¿No le voy a dar yo esto?” Y ¿sabes qué? — lo mantuvo todo en secreto. Siguió usando la misma ropa sencilla y vieja de siempre, y volvió a coser, trabajando tan duro como siempre, mientras en silencio regalaba tanto. Ella amaba a Jesús, así que dar la hacía feliz, no triste. No tienes que ser rico para dar. Solo necesitas un corazón que ama. ¿Qué podrías dar — en silencio, con alegría — a alguien que lo necesita? Querido Dios, gracias por darme a Jesús. Hazme alguien que da con alegría y en secreto, como aquella joven bondadosa. Amén.",
+  "word_count": 259
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 8,
+  "title": "El regalo del panadero",
+  "body_html": "<blockquote>“Él es padre de los huérfanos.” — del Salmo 68</blockquote> <p>A medida que más y más huérfanos venían a vivir con George, había más y más bocas que alimentar. Y a veces la comida casi se acababa.</p> <p>Una mañana fue de las más difíciles. Solo había comida para ese día. La mujer bondadosa que cocinaba para los niños tenía solo dos monedas pequeñas, y se quedó allí pensando: ¿debía gastarlas en pan o en carne? No alcanzaba para las dos cosas.</p> <p>Y justo entonces — toc, toc — el panadero llegó a la puerta. Pero no había venido a cobrar. Había venido a <em>dar.</em> ¡Dejó tres panes grandes y frescos de regalo, así nada más!</p> <p>George notó algo al mirar hacia atrás todos esos días. Lo escribió para no olvidarlo: <strong>la ayuda siempre llegaba antes de que hubiera hambre de verdad.</strong> Dios nunca, ni una sola vez, dejó que los niños se quedaran sin comer. Nunca llegó tarde.</p> <p>La Biblia llama a Dios “padre de los huérfanos” — eso quiere decir que Dios es como un papá bueno y cariñoso para los niños que no tienen papá. Esos huérfanos no tenían papá propio. Pero tenían al mejor Padre de todos, cuidando cada una de sus comidas.</p> <p>Dios es un buen Padre para ti también. Él ve lo que necesitas, y nunca llega tarde.</p> <p><em>Querido Dios, gracias por ser un Padre cariñoso que nunca se olvida de mí. Ayúdame a confiar en que tú siempre llegas justo a tiempo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué estaba preocupada la cocinera aquella mañana?",
+    "answer": "Solo había comida para ese día, y le quedaban dos monedas pequeñas. Pensaba si comprar pan o carne, porque no alcanzaba para las dos cosas."
+   },
+   {
+    "question": "¿Qué trajo el panadero, y por qué fue una sorpresa?",
+    "answer": "No había venido a cobrar, sino a dar. Dejó tres panes grandes y frescos de regalo."
+   },
+   {
+    "question": "¿Qué quiere decir que Dios es “padre de los huérfanos”? ¿Cómo es él un Padre para ti?",
+    "answer": "La enseñanza del capítulo: Dios es como un papá bueno y cariñoso. Él ve lo que necesitas, nunca se olvida de ti y nunca llega tarde."
+   }
+  ],
+  "body_text": "“Él es padre de los huérfanos.” — del Salmo 68 A medida que más y más huérfanos venían a vivir con George, había más y más bocas que alimentar. Y a veces la comida casi se acababa. Una mañana fue de las más difíciles. Solo había comida para ese día. La mujer bondadosa que cocinaba para los niños tenía solo dos monedas pequeñas, y se quedó allí pensando: ¿debía gastarlas en pan o en carne? No alcanzaba para las dos cosas. Y justo entonces — toc, toc — el panadero llegó a la puerta. Pero no había venido a cobrar. Había venido a dar. ¡Dejó tres panes grandes y frescos de regalo, así nada más! George notó algo al mirar hacia atrás todos esos días. Lo escribió para no olvidarlo: la ayuda siempre llegaba antes de que hubiera hambre de verdad. Dios nunca, ni una sola vez, dejó que los niños se quedaran sin comer. Nunca llegó tarde. La Biblia llama a Dios “padre de los huérfanos” — eso quiere decir que Dios es como un papá bueno y cariñoso para los niños que no tienen papá. Esos huérfanos no tenían papá propio. Pero tenían al mejor Padre de todos, cuidando cada una de sus comidas. Dios es un buen Padre para ti también. Él ve lo que necesitas, y nunca llega tarde. Querido Dios, gracias por ser un Padre cariñoso que nunca se olvida de mí. Ayúdame a confiar en que tú siempre llegas justo a tiempo. Amén.",
+  "word_count": 249
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 9,
+  "title": "Tres sacos de papas",
+  "body_html": "<blockquote>“Antes de que me llamen, yo les responderé.” — de Isaías 65</blockquote> <p>Llegó otra mañana en que casi no había nada en la casa, y se necesitaba bastante dinero para dar de comer a todos los niños. Así que George hizo lo que siempre hacía. Se fue a orar.</p> <p>Y mientras todavía estaba orando — eran como las diez de la mañana — un hombre llegó a la puerta con un mensaje. ¡Una señora había encargado que mandaran <strong>tres sacos enteros de papas</strong> a los hogares de huérfanos!</p> <p>Tres sacos grandes de papas, que llegaron justo en el momento preciso. George dijo que no podían haber llegado en mejor momento.</p> <p>Algo así pasó una y otra vez. Una vez, George se encontró en la calle con un hombre que le dio dinero para los huérfanos — ¡y George se dio cuenta de que, si hubiera pasado por allí aunque fuera medio minuto más tarde, no lo habría encontrado! Pero no llegó medio minuto tarde. Dios había arreglado el momento a la perfección.</p> <p>¿No es asombroso? Dios no solo manda lo que necesitamos. Lo manda en el minuto exacto — a veces mientras todavía estamos orando, a veces justo antes de que pasemos por allí. Él nunca tiene prisa, y nunca llega demasiado tarde.</p> <p>Nada es demasiado pequeño para que Dios lo arregle. A él le importan los detalles de tu día, hasta el último minuto.</p> <p><em>Querido Dios, gracias porque tú sabes el momento perfecto para todo. Ayúdame a esperarte y a no preocuparme. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué llegó a la puerta mientras George oraba, como a las diez de la mañana?",
+    "answer": "Un mensaje de que una señora había encargado que mandaran tres sacos enteros de papas a los hogares de huérfanos, justo en el momento preciso."
+   },
+   {
+    "question": "¿Qué pasó cuando George se encontró con un hombre en la calle?",
+    "answer": "El hombre le dio dinero para los huérfanos. Si George hubiera pasado aunque fuera medio minuto más tarde, no lo habría encontrado."
+   },
+   {
+    "question": "¿Hay algo demasiado pequeño para que Dios lo cuide? ¿Por qué cosas podríamos dejar de preocuparnos?",
+    "answer": "La enseñanza del capítulo: Dios manda lo que necesitamos en el minuto exacto. Nada es demasiado pequeño para él, así que podemos esperarlo y no preocuparnos."
+   }
+  ],
+  "body_text": "“Antes de que me llamen, yo les responderé.” — de Isaías 65 Llegó otra mañana en que casi no había nada en la casa, y se necesitaba bastante dinero para dar de comer a todos los niños. Así que George hizo lo que siempre hacía. Se fue a orar. Y mientras todavía estaba orando — eran como las diez de la mañana — un hombre llegó a la puerta con un mensaje. ¡Una señora había encargado que mandaran tres sacos enteros de papas a los hogares de huérfanos! Tres sacos grandes de papas, que llegaron justo en el momento preciso. George dijo que no podían haber llegado en mejor momento. Algo así pasó una y otra vez. Una vez, George se encontró en la calle con un hombre que le dio dinero para los huérfanos — ¡y George se dio cuenta de que, si hubiera pasado por allí aunque fuera medio minuto más tarde, no lo habría encontrado! Pero no llegó medio minuto tarde. Dios había arreglado el momento a la perfección. ¿No es asombroso? Dios no solo manda lo que necesitamos. Lo manda en el minuto exacto — a veces mientras todavía estamos orando, a veces justo antes de que pasemos por allí. Él nunca tiene prisa, y nunca llega demasiado tarde. Nada es demasiado pequeño para que Dios lo arregle. A él le importan los detalles de tu día, hasta el último minuto. Querido Dios, gracias porque tú sabes el momento perfecto para todo. Ayúdame a esperarte y a no preocuparme. Amén.",
+  "word_count": 254
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 10,
+  "title": "Leche para el desayuno",
+  "body_html": "<blockquote>“A los que buscan al Señor no les falta ningún bien.” — del Salmo 34</blockquote> <p>Cada mañana los huérfanos tenían el mismo desayuno feliz: avena calientita con leche. Pero la leche cuesta dinero — y una noche casi no había nada.</p> <p>El lechero vendría temprano a la mañana siguiente, antes de las ocho, y no habría dinero para pagarle ni leche para la avena de los niños. ¿Qué se podía hacer?</p> <p>Así que esa noche, a las seis, George y dos ayudantes se arrodillaron juntos y le pidieron a Dios que mandara lo necesario antes de la mañana.</p> <p><strong>Acababan de ponerse de pie</strong> cuando llegó una carta. ¡Adentro había un regalo para los huérfanos! La persona bondadosa que lo mandó había escrito algo maravilloso junto con él: “Me encanta mandar estos pequeños regalos. Muchas veces llegan justo en el momento preciso.”</p> <p>Ella no sabía nada de la leche, ni de la mañana, ni del monedero vacío. Pero Dios sí lo sabía. Y ya había puesto su carta en camino, para que llegara justo la noche en que hacía falta — a tiempo para la leche de la mañana.</p> <p>A Dios le encanta contestar oraciones así: una oración de la noche, contestada antes de que salga el sol. Cuando buscas a Dios y confías en él, no te faltarán las cosas buenas que de verdad necesitas.</p> <p><em>Querido Dios, gracias porque contestas oraciones, incluso antes de que llegue la mañana. Confiaré en ti para mañana. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Por qué George y sus ayudantes necesitaban orar aquella noche?",
+    "answer": "Casi no había leche, y el lechero vendría temprano a la mañana siguiente sin que hubiera dinero para pagarle la leche de la avena de los niños."
+   },
+   {
+    "question": "¿Qué llegó justo después de que se levantaron?",
+    "answer": "Una carta con un regalo para los huérfanos. La persona que lo mandó escribió: “Me encanta mandar estos pequeños regalos. Muchas veces llegan justo en el momento preciso.”"
+   },
+   {
+    "question": "¿Qué podrías confiarle a Dios esta noche, antes de que llegue la mañana?",
+    "answer": "La enseñanza del capítulo: a Dios le encanta contestar oraciones, incluso antes de que salga el sol. A los que lo buscan no les faltarán las cosas buenas que de verdad necesitan."
+   }
+  ],
+  "body_text": "“A los que buscan al Señor no les falta ningún bien.” — del Salmo 34 Cada mañana los huérfanos tenían el mismo desayuno feliz: avena calientita con leche. Pero la leche cuesta dinero — y una noche casi no había nada. El lechero vendría temprano a la mañana siguiente, antes de las ocho, y no habría dinero para pagarle ni leche para la avena de los niños. ¿Qué se podía hacer? Así que esa noche, a las seis, George y dos ayudantes se arrodillaron juntos y le pidieron a Dios que mandara lo necesario antes de la mañana. Acababan de ponerse de pie cuando llegó una carta. ¡Adentro había un regalo para los huérfanos! La persona bondadosa que lo mandó había escrito algo maravilloso junto con él: “Me encanta mandar estos pequeños regalos. Muchas veces llegan justo en el momento preciso.” Ella no sabía nada de la leche, ni de la mañana, ni del monedero vacío. Pero Dios sí lo sabía. Y ya había puesto su carta en camino, para que llegara justo la noche en que hacía falta — a tiempo para la leche de la mañana. A Dios le encanta contestar oraciones así: una oración de la noche, contestada antes de que salga el sol. Cuando buscas a Dios y confías en él, no te faltarán las cosas buenas que de verdad necesitas. Querido Dios, gracias porque contestas oraciones, incluso antes de que llegue la mañana. Confiaré en ti para mañana. Amén.",
+  "word_count": 244
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 11,
+  "title": "El banco que no puede quebrar",
+  "body_html": "<blockquote>“Guarden tesoros en el cielo, donde nada se pierde nunca.” — de Mateo 6</blockquote> <p>Un día unos visitantes vinieron a recorrer el hogar de huérfanos de los niños. Se asombraron de lo bien cuidados que estaban los niños. Pero también se quedaron un poco extrañados.</p> <p>“Claro”, dijo una señora, “no podrían mantener todo esto sin un buen montón de dinero ahorrado en el banco. Deben de tener buenos fondos guardados.”</p> <p>Y un caballero le preguntó a la mujer que dirigía el hogar: “¿Tienen buenos ahorros guardados?”</p> <p>Ahora bien, la verdad era que en ese momento casi no había dinero. Pero escucha la hermosa respuesta que ella dio: “Nuestro dinero está guardado en un banco que no puede quebrar.”</p> <p>¿Qué quería decir? Quería decir <strong>Dios mismo.</strong> Los bancos comunes pueden quedarse sin dinero. Pero Dios nunca se queda sin nada, y Dios nunca le falla a su pueblo. Él era su banco — el único banco en todo el mundo que nunca, jamás, puede quebrar.</p> <p>La señora se conmovió tanto que se le llenaron los ojos de lágrimas. Y cuando los visitantes se iban, el caballero dio cinco libras — que llegaron justo en el momento en que a George no le quedaba ni una sola moneda.</p> <p>Tú puedes guardar tu tesoro en ese mismo lugar seguro. El dinero se puede perder o gastar, pero las cosas buenas que haces para Dios, y tu confianza en él, quedan guardadas en un lugar donde nada se puede romper jamás.</p> <p><em>Querido Dios, tú nunca te quedas sin nada y nunca fallas. Ayúdame a guardar mi tesoro seguro contigo. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Qué pensaban los visitantes que debía de tener el hogar de huérfanos?",
+    "answer": "Pensaban que debía de tener un buen montón de dinero ahorrado en el banco, buenos fondos guardados."
+   },
+   {
+    "question": "¿Qué quería decir la mujer con “un banco que no puede quebrar”?",
+    "answer": "Quería decir Dios mismo. Los bancos comunes pueden quedarse sin dinero, pero Dios nunca se queda sin nada y nunca le falla a su pueblo."
+   },
+   {
+    "question": "¿Cuáles son algunos tesoros que nunca se pueden perder?",
+    "answer": "La enseñanza del capítulo: el dinero se puede perder o gastar, pero las cosas buenas que haces para Dios y tu confianza en él quedan guardadas donde nada se puede romper."
+   }
+  ],
+  "body_text": "“Guarden tesoros en el cielo, donde nada se pierde nunca.” — de Mateo 6 Un día unos visitantes vinieron a recorrer el hogar de huérfanos de los niños. Se asombraron de lo bien cuidados que estaban los niños. Pero también se quedaron un poco extrañados. “Claro”, dijo una señora, “no podrían mantener todo esto sin un buen montón de dinero ahorrado en el banco. Deben de tener buenos fondos guardados.” Y un caballero le preguntó a la mujer que dirigía el hogar: “¿Tienen buenos ahorros guardados?” Ahora bien, la verdad era que en ese momento casi no había dinero. Pero escucha la hermosa respuesta que ella dio: “Nuestro dinero está guardado en un banco que no puede quebrar.” ¿Qué quería decir? Quería decir Dios mismo. Los bancos comunes pueden quedarse sin dinero. Pero Dios nunca se queda sin nada, y Dios nunca le falla a su pueblo. Él era su banco — el único banco en todo el mundo que nunca, jamás, puede quebrar. La señora se conmovió tanto que se le llenaron los ojos de lágrimas. Y cuando los visitantes se iban, el caballero dio cinco libras — que llegaron justo en el momento en que a George no le quedaba ni una sola moneda. Tú puedes guardar tu tesoro en ese mismo lugar seguro. El dinero se puede perder o gastar, pero las cosas buenas que haces para Dios, y tu confianza en él, quedan guardadas en un lugar donde nada se puede romper jamás. Querido Dios, tú nunca te quedas sin nada y nunca fallas. Ayúdame a guardar mi tesoro seguro contigo. Amén.",
+  "word_count": 266
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "the-life-of-trust-children",
+   "es"
+  ],
+  "order": 12,
+  "title": "Una casa en la colina, construida con oración",
+  "body_html": "<blockquote>“Dejen que la paciencia termine su obra.” — de Santiago 1</blockquote> <p>Los hogares de huérfanos se llenaron tanto y tenían tanto movimiento que George decidió hacer algo enorme: construir una casa grandísima en el campo, lo bastante grande para <em>trescientos</em> niños. Y la pagaría toda de la misma manera de siempre — solamente orando.</p> <p>Una casa enorme cuesta una cantidad enorme de dinero. Así que George empezó a orar por ella, día tras día. ¡Y en el día treinta y seis de oración llegó un regalo de mil libras! Era una cantidad maravillosa — y sin embargo George se sintió tan tranquilo como si alguien le hubiera dado una sola moneda pequeña, porque a esas alturas simplemente esperaba que Dios contestara.</p> <p>Después, un hombre que dibujaba planos de edificios — alguien a quien George ni siquiera conocía — ¡se ofreció a diseñar toda la casa y a vigilar la construcción gratis!</p> <p>Luego George necesitaba un terreno. Oyó hablar de un buen campo en una colina llamada Ashley Down. Pero la primera noche no pudieron encontrar al dueño por ninguna parte. George no se enojó; sentía que Dios tenía una razón. Y tenía razón. Esa misma noche, el dueño se despertó a las tres de la mañana y no pudo volver a dormirse — no dejaba de pensar en aquel campo. Decidió que, si George lo quería, se lo vendería — ¡y por mucho menos de lo que había pensado cobrar!</p> <p>Así que George compró el gran campo, y con el tiempo se levantaron en aquella colina grandes casas, llenas de cientos y cientos de huérfanos felices y bien alimentados — cada ladrillo construido con oración.</p> <p>Dios puede hacer más de lo que jamás soñamos. Sigue orando, sigue esperando, y mira lo que él puede construir.</p> <p><em>Querido Dios, tú puedes hacer cosas grandísimas. Enséñame a seguir orando y a esperarte con paciencia. Amén.</em></p>",
+  "study_questions": [
+   {
+    "question": "¿Cómo pensaba pagar George la casa grande para trescientos niños?",
+    "answer": "De la misma manera de siempre, solamente orando. En el día treinta y seis de oración llegó un regalo de mil libras."
+   },
+   {
+    "question": "¿Por qué decidió el dueño del campo de Ashley Down venderlo?",
+    "answer": "Se despertó a las tres de la mañana sin dejar de pensar en aquel campo, y decidió vendérselo a George por mucho menos de lo que había pensado."
+   },
+   {
+    "question": "¿Por qué cosa podríamos seguir orando, aunque tengamos que esperar?",
+    "answer": "La enseñanza del capítulo: Dios puede hacer más de lo que jamás soñamos. Sigue orando, espera con paciencia y mira lo que él puede construir."
+   }
+  ],
+  "body_text": "“Dejen que la paciencia termine su obra.” — de Santiago 1 Los hogares de huérfanos se llenaron tanto y tenían tanto movimiento que George decidió hacer algo enorme: construir una casa grandísima en el campo, lo bastante grande para trescientos niños. Y la pagaría toda de la misma manera de siempre — solamente orando. Una casa enorme cuesta una cantidad enorme de dinero. Así que George empezó a orar por ella, día tras día. ¡Y en el día treinta y seis de oración llegó un regalo de mil libras! Era una cantidad maravillosa — y sin embargo George se sintió tan tranquilo como si alguien le hubiera dado una sola moneda pequeña, porque a esas alturas simplemente esperaba que Dios contestara. Después, un hombre que dibujaba planos de edificios — alguien a quien George ni siquiera conocía — ¡se ofreció a diseñar toda la casa y a vigilar la construcción gratis! Luego George necesitaba un terreno. Oyó hablar de un buen campo en una colina llamada Ashley Down. Pero la primera noche no pudieron encontrar al dueño por ninguna parte. George no se enojó; sentía que Dios tenía una razón. Y tenía razón. Esa misma noche, el dueño se despertó a las tres de la mañana y no pudo volver a dormirse — no dejaba de pensar en aquel campo. Decidió que, si George lo quería, se lo vendería — ¡y por mucho menos de lo que había pensado cobrar! Así que George compró el gran campo, y con el tiempo se levantaron en aquella colina grandes casas, llenas de cientos y cientos de huérfanos felices y bien alimentados — cada ladrillo construido con oración. Dios puede hacer más de lo que jamás soñamos. Sigue orando, sigue esperando, y mira lo que él puede construir. Querido Dios, tú puedes hacer cosas grandísimas. Enséñame a seguir orando y a esperarte con paciencia. Amén.",
+  "word_count": 312
+ }
+}
+]
