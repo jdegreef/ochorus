@@ -41,6 +41,7 @@
 	 * side, so it needs no mirroring in a right-to-left locale; the cover or
 	 * frame sits at the inline end, so it moves to the left there on its own.
 	 * The painting is decoration (alt=""); the greeting is the page's <h1>.
+	 * With nothing in progress, the resume block's place offers the library.
 	 *
 	 * The scrim is the reader's palette, deepened (--hero-tint), over a wash
 	 * that drifts very slowly — still under prefers-reduced-motion — with the
@@ -187,6 +188,13 @@
 							</div>
 						</div>
 					</div>
+				</div>
+			{:else}
+				<!-- Nothing open: a way on, so the band is never just a greeting
+				     over an empty middle (Continue reading below is empty too). -->
+				<div class="home-hero-resume mt-6">
+					<p class="home-hero-sub text-small">{t('home.discoverNext')}</p>
+					<a href={localizeHref('/books')} class="btn btn-sm home-hero-cta mt-3">{t('home.browseLibrary')}</a>
 				</div>
 			{/if}
 		</div>

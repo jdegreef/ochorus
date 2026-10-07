@@ -4120,6 +4120,11 @@ input[type='search'].filter-field::-webkit-search-cancel-button:hover {
 	margin-block-start: 3.5rem;
 	padding-block-end: 3.5rem;
 }
+/* Straight under the home hero there is no section to set the band apart
+   from: its margin only showed as a strip of bare page between the two. */
+.home-hero + .page-band {
+	margin-block-start: 0;
+}
 .page-band:not(:has(section)) {
 	display: none;
 }
