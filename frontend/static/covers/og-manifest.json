@@ -3757,6 +3757,16 @@
 			"layout": "band/oxblood",
 			"bar": 0
 		},
+		"es/all-of-grace-teens": {
+			"ground": "1bcdf8646b55b8742754a2832e9b93867be4bfc872afbf0ce64a36c11c82f718",
+			"style": "revival",
+			"volume": null,
+			"script": "latin",
+			"art": false,
+			"scrim": 1,
+			"layout": "framed",
+			"bar": 0
+		},
 		"es/all-things-for-good": {
 			"ground": "4266c4dd9d8a808664530a89a1d323400af3ae26e11380753c67b62a1aabd658",
 			"style": "press",
