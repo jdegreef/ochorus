@@ -57,7 +57,7 @@ class AdminUserDeleteView(AdminAudited, APIView):
             )
 
         try:
-            auth_deleted = delete_account(profile)
+            result = delete_account(profile)
         except supabase_admin.SupabaseDeleteError as exc:
             return Response(
                 {"detail": f"Couldn't delete the Supabase sign-in ({exc}). Nothing was deleted."},
@@ -65,6 +65,6 @@ class AdminUserDeleteView(AdminAudited, APIView):
             )
 
         return Response(
-            {"email": mask_email(profile.email), "auth_deleted": auth_deleted},
+            {"email": mask_email(profile.email), **result},
             status=http_status.HTTP_200_OK,
         )

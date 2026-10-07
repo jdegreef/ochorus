@@ -405,7 +405,7 @@
 					<div class="mb-2 text-small font-semibold text-danger">Delete account</div>
 					<p class="text-body text-muted">
 						Permanently deletes this reader's sign-in and everything Ochorus holds for them — reading, highlights,
-						favorites, plans, emails. The email address can then be used to sign up again. This can't be undone.
+						favorites, plans, emails, and any admin roles on the address. The email address can then be used to sign up again. This can't be undone.
 					</p>
 					<form class="mt-4 flex flex-wrap items-end gap-3" onsubmit={deleteAccount}>
 						<label class="flex min-w-0 flex-1 flex-col gap-1 text-small text-muted">

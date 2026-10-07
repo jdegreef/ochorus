@@ -2000,10 +2000,11 @@ export const getAdminUser = (uid: string) =>
 	apiFetch<AdminUserDetail>(`/api/admin/users/${encodeURIComponent(uid)}/`);
 
 /** Delete a reader outright: their Supabase sign-in (freeing the email for a
- *  new sign-up) and all their Ochorus data. Super-admin only; irreversible.
+ *  new sign-up), all their Ochorus data and any admin grants on the address.
+ *  Super-admin only; irreversible.
  *  `auth_deleted` is false only where Supabase isn't configured (local dev). */
 export const deleteAdminUser = (uid: string) =>
-	apiFetch<{ email: string; auth_deleted: boolean }>(
+	apiFetch<{ email: string; auth_deleted: boolean; grants_revoked: number }>(
 		`/api/admin/users/${encodeURIComponent(uid)}/account/`,
 		{ method: 'DELETE' }
 	);

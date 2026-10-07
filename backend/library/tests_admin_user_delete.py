@@ -15,7 +15,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 
-from accounts.models import UserProfile
+from accounts.models import AdminCapability, AdminGrant, AdminVerb, UserProfile
 from reading.models import Favorite
 
 from .models import AdminAction
@@ -66,6 +66,26 @@ class AdminUserDeleteTests(TestCase):
         entry = AdminAction.objects.get(action=AdminAction.Action.USER_DELETE)
         self.assertEqual(entry.target, f"user:{self.uid}")
         self.assertNotIn("test1@example.com", str(entry.detail))  # masked
+
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(200))
+    def test_revokes_admin_grants_on_the_email(self, _):
+        AdminGrant.objects.create(
+            email="Test1@example.com", capability=AdminCapability.REVIEW, verb=AdminVerb.ACT
+        )
+        AdminGrant.objects.create(
+            email="other@example.com", capability=AdminCapability.REVIEW, verb=AdminVerb.ACT
+        )
+        res = self.client.delete(self.url)
+        self.assertEqual(res.json()["grants_revoked"], 1)
+        self.assertEqual(list(AdminGrant.objects.values_list("email", flat=True)), ["other@example.com"])
+
+    @mock.patch("accounts.supabase_admin.requests.request", return_value=_resp(500))
+    def test_supabase_failure_keeps_admin_grants(self, _):
+        AdminGrant.objects.create(
+            email="test1@example.com", capability=AdminCapability.REVIEW, verb=AdminVerb.ACT
+        )
+        self.assertEqual(self.client.delete(self.url).status_code, 502)
+        self.assertTrue(AdminGrant.objects.exists())
 
     @mock.patch(
         "accounts.supabase_admin.requests.request",
