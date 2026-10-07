@@ -5193,6 +5193,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"fr/pilgrims-progress-children": {
+			"ground": "d589870c15483b2eaab233f17ec875d7c62d4c63a88810b9e07c90b72c44941e",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"fr/prayer-the-pulse-of-life": {
 			"ground": "6c5bc6830807a295441d54775ee22ec5cd828cfa5222bfb36243c44def42432c",
 			"style": "house",
