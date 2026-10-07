@@ -3,7 +3,7 @@
  "slug": "pilgrims-progress-children",
  "language": "sw",
  "job_issue": 5363,
- "pull_request": null,
+ "pull_request": 5402,
  "note": [
   "Scripture follows the Swahili Union tradition the shipped sw corpus quotes (api.takeroot.bible was egress-blocked, and the mirrored Swahili Bibles are licensed or off-tradition — see the translation-worker skill). Every `mined` row was re-measured against the finished text: the quoted Union wording is a verbatim (case-insensitive) substring both of this edition's block and of the cited shipped sw file. The English retelling quotes short, simplified verses, so several mined rows are a contiguous PART of the Union verse (e.g. Acts 16:30 without “Bwana zangu,”, Psalm 40:2 without its first clause, Psalm 119:18 without “yatokayo katika sheria yako”).",
   "Matthew 25:21 (“Ingieni katika furaha ya Bwana wenu!”) is uncited in the English and re-personed to the plural for the two pilgrims, so it is self_rendered. Character and place names follow the shipped sw Pilgrim's Progress editions (Mkristo, Mwinjilisti, Mgeugeu, Nia-Njema, Mfasiri, Kilima Kigumu, Nyumba Nzuri, Apolioni, Maombi-Yote, Mwaminifu, Soko la Ubatili, Mwenye-Tumaini, Jitu Kata-Tamaa, Ngome ya Mashaka, Milima ya Kupendeza, Mji wa Mbinguni). AI-translated in-session; awaiting native review."
