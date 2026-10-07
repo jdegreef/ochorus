@@ -1,0 +1,389 @@
+[
+{
+ "model": "library.book",
+ "fields": {
+  "author": [
+   "ochorus-originals"
+  ],
+  "slug": "samuel-ajayi-crowther-a-life-children",
+  "language": "en",
+  "title": "Samuel Ajayi Crowther (For Children)",
+  "subtitle": "",
+  "cover_byline": "Samuel Ajayi Crowther",
+  "description": "The true story of Ajayi, a Yoruba boy who was captured by raiders, sold again and again, and set free from a slave ship by British sailors, and who grew up to give his people the Bible in their own language and to become the first African bishop of the Anglican Church. This children’s edition retells his life in short chapters made to be read aloud: a Bible verse, one part of his story, one thing it means for you, and a short prayer, with questions to talk about together.",
+  "qa": [
+   {
+    "question": "What is Samuel Ajayi Crowther (For Children) about?",
+    "answer": "It is a children’s version of the full-length biography of Samuel Ajayi Crowther. It tells how a boy named Ajayi was taken from his home in what is now Nigeria and sold as a slave, how he was set free and came to know Jesus, and how he spent his life carrying the good news back to his own people in their own language."
+   },
+   {
+    "question": "Who was Samuel Ajayi Crowther?",
+    "answer": "A Yoruba man who lived about two hundred years ago. As a boy he was sold as a slave and then set free by the British navy. He became a teacher, an explorer of the great Niger River, the leader of the team that put the Bible into the Yoruba language, and in 1864 the first African bishop of the Anglican Church."
+   },
+   {
+    "question": "How is each chapter set out?",
+    "answer": "Every chapter is short and made to be read aloud. It begins with a Bible verse, tells one part of Ajayi’s story, shows one simple thing it means for you, and ends with a short prayer. Three questions follow, to talk about together."
+   },
+   {
+    "question": "Is this book too sad for children?",
+    "answer": "Some of it is sad, because being captured and sold was a terrible thing, and the book does not pretend otherwise. But it is told gently, for children, and it is above all a story of how God looked after Ajayi, gave him back his mother, and used his life for great good."
+   },
+   {
+    "question": "Are the stories true?",
+    "answer": "Yes. They come from Samuel Crowther’s own letters and journals and from the people who knew him. A few stories were remembered by his family long afterwards, and the book says so when it tells them."
+   },
+   {
+    "question": "Who is this book for?",
+    "answer": "It is for children, to be read aloud by a grown-up or read by an older child alone. There is also a teen edition, and the full-length biography for older readers."
+   }
+  ],
+  "publication_year": null,
+  "source_type": "public_domain",
+  "source_url": "",
+  "attribution": "© Ochorus. An Ochorus retelling for young readers of the Ochorus biography Samuel Ajayi Crowther, from the Portraits of Courage series. The telling is our own, free to read and share.",
+  "cover_url": "/covers/samuel-ajayi-crowther-a-life-children.svg",
+  "pdf_url": "",
+  "cover_color": "",
+  "sort_order": 138,
+  "is_published": true,
+  "created_at": "2026-10-07T00:00:00Z",
+  "updated_at": "2026-10-07T00:00:00Z"
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 1,
+  "title": "The Boy from Osogun",
+  "body_html": "<blockquote>“You saw me before I was born. Every day of my life was written in your book.” — from Psalm 139</blockquote> <p>A long time ago, about the year 1807, a baby boy was born in a town called Osogun. Osogun is in the Yoruba country, in the land we now call Nigeria. His family named him Ajayi.</p> <p>Osogun was a big, busy town. It had a tall wooden fence all around it, with six gates. The houses were made of mud, with tall roofs, and families lived close together around open courtyards. Ajayi’s father was a weaver and a farmer. Ajayi had a big brother and several sisters, and lots of aunts and cousins nearby.</p> <p>His family remembered that he was the leader of a club of about forty boys who worked on the farms together. Years later he loved to tell his own children about it: hoeing the heaps of earth for the yams, and then sitting in the shade laughing at the boys who were slower than he was!</p> <p>Ajayi had never seen the sea, or a great river, or a white man. He did not know about Jesus. His family prayed to the old Yoruba gods. He could never have guessed what his life would become.</p> <p>But God knew. The Bible says that God saw each one of us before we were born, and that every day of our lives was written in his book. God saw Ajayi playing in Osogun. And God sees you, too, wherever you are.</p> <p><em>Dear God, thank you that you knew me before I was born. Thank you that every day of my life is in your hands. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Where was Ajayi born?",
+    "answer": "In the town of Osogun, in the Yoruba country of what is now Nigeria, about the year 1807."
+   },
+   {
+    "question": "What did Ajayi like to do with the other boys?",
+    "answer": "His family remembered that he led a club of about forty boys who worked on the farms together, hoeing the heaps of earth for the yams."
+   },
+   {
+    "question": "What does the Bible verse say God knows about you?",
+    "answer": "That God saw you before you were born, and that every day of your life is written in his book. He knows you and looks after you."
+   }
+  ],
+  "body_text": "“You saw me before I was born. Every day of my life was written in your book.” — from Psalm 139 A long time ago, about the year 1807, a baby boy was born in a town called Osogun. Osogun is in the Yoruba country, in the land we now call Nigeria. His family named him Ajayi. Osogun was a big, busy town. It had a tall wooden fence all around it, with six gates. The houses were made of mud, with tall roofs, and families lived close together around open courtyards. Ajayi’s father was a weaver and a farmer. Ajayi had a big brother and several sisters, and lots of aunts and cousins nearby. His family remembered that he was the leader of a club of about forty boys who worked on the farms together. Years later he loved to tell his own children about it: hoeing the heaps of earth for the yams, and then sitting in the shade laughing at the boys who were slower than he was! Ajayi had never seen the sea, or a great river, or a white man. He did not know about Jesus. His family prayed to the old Yoruba gods. He could never have guessed what his life would become. But God knew. The Bible says that God saw each one of us before we were born, and that every day of our lives was written in his book. God saw Ajayi playing in Osogun. And God sees you, too, wherever you are. Dear God, thank you that you knew me before I was born. Thank you that every day of my life is in your hands. Amen.",
+  "word_count": 277
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 2,
+  "title": "The Day the Raiders Came",
+  "body_html": "<blockquote>“You meant to hurt me, but God turned it into something good.” — from Genesis 50</blockquote> <p>When Ajayi was about thirteen years old, there was war all over the Yoruba country. Gangs of raiders went from town to town, catching people to sell as slaves.</p> <p>One fine morning in 1821, Ajayi’s family was getting breakfast ready. Suddenly the news ran through Osogun: the enemy is coming! The raiders surrounded the town. After a few hours of fighting, they broke in.</p> <p>Everyone ran. Mothers carried their babies and pulled their children through the prickly bushes. Ajayi had a bow and five arrows, but he lost the bow in the thorns. His father came to tell them to run. That was the last time Ajayi ever saw his father.</p> <p>The raiders caught Ajayi, his mother, his two sisters and a cousin. They put a rope around each person’s neck and led them away, tied together. As they walked out of the burning town, Ajayi saw his grandmother in the crowd for just a few minutes. Then she was gone.</p> <p>Many years later, when Ajayi was grown up, he called this “the unhappy, but blessed day.” It was unhappy, because he lost his home and his family. But he also called it blessed, because it was the first step on a long road that would lead him to Jesus.</p> <p>Sometimes very sad things happen. God does not say that those things are good. But God can be at work even in the saddest day, bringing good out of it in ways we cannot see yet.</p> <p><em>Dear God, when sad things happen, help me to remember that you are still with me. Thank you that you can bring good out of hard days. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to Osogun when Ajayi was about thirteen?",
+    "answer": "Raiders surrounded the town, broke in, and caught many people, including Ajayi, his mother and his sisters, to sell as slaves."
+   },
+   {
+    "question": "Why did Ajayi call it “the unhappy, but blessed day”?",
+    "answer": "It was unhappy because he lost his home and family. It was blessed because it began the long road that led him to Jesus."
+   },
+   {
+    "question": "Can you think of a hard time when God was still with you?",
+    "answer": "Any honest answer is good here. The chapter’s point is that God does not call sad things good, but he stays with us and can bring good out of them."
+   }
+  ],
+  "body_text": "“You meant to hurt me, but God turned it into something good.” — from Genesis 50 When Ajayi was about thirteen years old, there was war all over the Yoruba country. Gangs of raiders went from town to town, catching people to sell as slaves. One fine morning in 1821, Ajayi’s family was getting breakfast ready. Suddenly the news ran through Osogun: the enemy is coming! The raiders surrounded the town. After a few hours of fighting, they broke in. Everyone ran. Mothers carried their babies and pulled their children through the prickly bushes. Ajayi had a bow and five arrows, but he lost the bow in the thorns. His father came to tell them to run. That was the last time Ajayi ever saw his father. The raiders caught Ajayi, his mother, his two sisters and a cousin. They put a rope around each person’s neck and led them away, tied together. As they walked out of the burning town, Ajayi saw his grandmother in the crowd for just a few minutes. Then she was gone. Many years later, when Ajayi was grown up, he called this “the unhappy, but blessed day.” It was unhappy, because he lost his home and his family. But he also called it blessed, because it was the first step on a long road that would lead him to Jesus. Sometimes very sad things happen. God does not say that those things are good. But God can be at work even in the saddest day, bringing good out of it in ways we cannot see yet. Dear God, when sad things happen, help me to remember that you are still with me. Thank you that you can bring good out of hard days. Amen.",
+  "word_count": 290
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 3,
+  "title": "Sold Again and Again",
+  "body_html": "<blockquote>“Lead us not into temptation, but deliver us from evil.” — from Matthew 6</blockquote> <p>The next morning, the raiders shared out their prisoners. Ajayi was given to the chief, and then traded for a horse! But the horse was no good, so he was sent back. For a while he was in the same town as his mother and his baby sister, and he could visit them.</p> <p>Then one evening Ajayi was chained up with other prisoners, to be taken to market in the morning. He lay awake all night. At dawn they set off, and he thought they walked right past the house where his mother was. He did not dare to call out. He thought he would never see her again.</p> <p>Ajayi was sold again, and again, and again. Altogether he was sold or traded about six times, for things like cloth, tobacco and rum. Each time he was taken further from home, among people who spoke differently from him.</p> <p>He was so unhappy that he stopped eating and became ill. At last he came to the shore of a great lagoon. He had never seen so much water! It terrified him. He was taken across it by canoe at night, to a town called Lagos, where the slave ships came.</p> <p>Years later, Ajayi looked back on those dark months. He saw that God had been watching over him the whole time, even before he knew God’s name. He said that God had “delivered me from evil,” just like the prayer Jesus taught us, long before he had ever prayed it.</p> <p>God watches over you too, even on days when you feel all alone.</p> <p><em>Dear God, thank you that you watch over me even when I feel alone. Please keep me safe and deliver me from evil. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How many times was Ajayi sold or traded?",
+    "answer": "About six times. Once he was even traded for a horse, which was sent back because it was no good."
+   },
+   {
+    "question": "Why was Ajayi afraid when he came to the lagoon?",
+    "answer": "He had never seen so much water before, and he knew he was being taken towards the place where slave ships came."
+   },
+   {
+    "question": "What did Ajayi see later about those dark months?",
+    "answer": "That God had been watching over him and delivering him from evil the whole time, even before he knew God."
+   }
+  ],
+  "body_text": "“Lead us not into temptation, but deliver us from evil.” — from Matthew 6 The next morning, the raiders shared out their prisoners. Ajayi was given to the chief, and then traded for a horse! But the horse was no good, so he was sent back. For a while he was in the same town as his mother and his baby sister, and he could visit them. Then one evening Ajayi was chained up with other prisoners, to be taken to market in the morning. He lay awake all night. At dawn they set off, and he thought they walked right past the house where his mother was. He did not dare to call out. He thought he would never see her again. Ajayi was sold again, and again, and again. Altogether he was sold or traded about six times, for things like cloth, tobacco and rum. Each time he was taken further from home, among people who spoke differently from him. He was so unhappy that he stopped eating and became ill. At last he came to the shore of a great lagoon. He had never seen so much water! It terrified him. He was taken across it by canoe at night, to a town called Lagos, where the slave ships came. Years later, Ajayi looked back on those dark months. He saw that God had been watching over him the whole time, even before he knew God’s name. He said that God had “delivered me from evil,” just like the prayer Jesus taught us, long before he had ever prayed it. God watches over you too, even on days when you feel all alone. Dear God, thank you that you watch over me even when I feel alone. Please keep me safe and deliver me from evil. Amen.",
+  "word_count": 300
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 4,
+  "title": "The Ship That Was Stopped",
+  "body_html": "<blockquote>“We escaped like a bird from a trap. The trap is broken, and we are free!” — from Psalm 124</blockquote> <p>In Lagos, Ajayi was bought by Portuguese slave traders. He was kept with other boys and men in a dark room with no windows, chained together by the neck. For nearly four months they waited there.</p> <p>At last, one night, they were taken out to a ship. There were 187 people packed inside it. The ship was going to sail across the ocean to the Americas, where slaves were made to work on big farms.</p> <p>But on that very same evening, two British warships came and stopped the slave ship! In those days the British navy sailed up and down the coast of Africa to stop slave ships and set the people free. Their ships were called the Myrmidon and the Iphigenia. It was 7 April 1822.</p> <p>Ajayi and five friends were taken onto the Myrmidon. There they saw something scary: meat with white skin hanging up, and rows of round iron balls on the deck. The boys thought the sailors had eaten the other prisoners, and that the balls were their heads! But when they looked closely, the meat was a pig, and the balls were only cannonballs. Ajayi laughed about this for the rest of his life.</p> <p>The sailors were kind. They gave the boys food and clothes. After about two and a half months at sea, the ship brought them to Sierra Leone, a place where rescued people could live in freedom. The people there told them, “You are free!” And very soon, they believed it.</p> <p>Jesus came to set people free, too. He said he came “to proclaim release to the captives.” Ajayi was set free from a slave ship. One day he would learn about an even greater freedom.</p> <p><em>Dear Jesus, thank you that you came to set people free. Thank you for people who help others who are in trouble. Help me to be one of them. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Who stopped the slave ship?",
+    "answer": "Two British warships, the Myrmidon and the Iphigenia, on 7 April 1822."
+   },
+   {
+    "question": "What did the boys think when they saw the pig and the cannonballs?",
+    "answer": "They were afraid the sailors had eaten the other prisoners and that the cannonballs were their heads. Then they found it was only a pig, and the balls were iron."
+   },
+   {
+    "question": "Who is someone you could help this week?",
+    "answer": "Any answer is good. The sailors helped people who could not help themselves, and Jesus came to set people free. We can help others too."
+   }
+  ],
+  "body_text": "“We escaped like a bird from a trap. The trap is broken, and we are free!” — from Psalm 124 In Lagos, Ajayi was bought by Portuguese slave traders. He was kept with other boys and men in a dark room with no windows, chained together by the neck. For nearly four months they waited there. At last, one night, they were taken out to a ship. There were 187 people packed inside it. The ship was going to sail across the ocean to the Americas, where slaves were made to work on big farms. But on that very same evening, two British warships came and stopped the slave ship! In those days the British navy sailed up and down the coast of Africa to stop slave ships and set the people free. Their ships were called the Myrmidon and the Iphigenia. It was 7 April 1822. Ajayi and five friends were taken onto the Myrmidon. There they saw something scary: meat with white skin hanging up, and rows of round iron balls on the deck. The boys thought the sailors had eaten the other prisoners, and that the balls were their heads! But when they looked closely, the meat was a pig, and the balls were only cannonballs. Ajayi laughed about this for the rest of his life. The sailors were kind. They gave the boys food and clothes. After about two and a half months at sea, the ship brought them to Sierra Leone, a place where rescued people could live in freedom. The people there told them, “You are free!” And very soon, they believed it. Jesus came to set people free, too. He said he came “to proclaim release to the captives.” Ajayi was set free from a slave ship. One day he would learn about an even greater freedom. Dear Jesus, thank you that you came to set people free. Thank you for people who help others who are in trouble. Help me to be one of them. Amen.",
+  "word_count": 334
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 5,
+  "title": "A New Name",
+  "body_html": "<blockquote>“Anyone who belongs to Christ is a new person. The old has gone, and the new has come!” — from 2 Corinthians 5</blockquote> <p>In Sierra Leone, Ajayi was sent to a village called Bathurst. He lived in the house of a missionary, Mr. Davey, and his wife. Every evening Mrs. Davey taught him for half an hour.</p> <p>Ajayi learned very fast. After only six months he could read the New Testament! Soon he was made a monitor, which meant he helped to teach the younger children. He was paid sevenpence-halfpenny a month. As soon as he learned something, he wanted to teach it to others.</p> <p>In the school and the church, Ajayi heard about Jesus. He said later that “the Lord was pleased to open my heart.” He understood that he had done wrong things and needed God’s forgiveness, and he wanted the forgiveness that Jesus gives. On 11 December 1825 he was baptised.</p> <p>At his baptism he took a new name: Samuel Crowther. It was the name of a minister in London. Mrs. Davey had been a Sunday school teacher in his church, and she chose his name for the boy. But Samuel never forgot his Yoruba name. All his life he signed himself Samuel Ajayi Crowther.</p> <p>At Bathurst there was also a girl named Asano. She had been rescued from a different slave ship, and she went to the same school. Years later, in 1829, Samuel and Asano were married. They were married for fifty-one years and had six children.</p> <p>When you belong to Jesus, you become new on the inside. But you are still you! God does not throw away the person he made. He makes you new.</p> <p><em>Dear Jesus, please open my heart to hear you, like you opened Samuel’s. Thank you that you forgive me and make me new. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How quickly did Ajayi learn to read?",
+    "answer": "After only six months in Sierra Leone he could read the New Testament, and he was soon helping to teach the younger children."
+   },
+   {
+    "question": "What new name did Ajayi take when he was baptised?",
+    "answer": "Samuel Crowther, the name of a minister in London. But he kept his Yoruba name too, and signed himself Samuel Ajayi Crowther."
+   },
+   {
+    "question": "What does it mean to become a “new person” in Jesus?",
+    "answer": "Jesus forgives us and changes us on the inside, but we are still the person God made. Samuel was made new, but he was still Ajayi."
+   }
+  ],
+  "body_text": "“Anyone who belongs to Christ is a new person. The old has gone, and the new has come!” — from 2 Corinthians 5 In Sierra Leone, Ajayi was sent to a village called Bathurst. He lived in the house of a missionary, Mr. Davey, and his wife. Every evening Mrs. Davey taught him for half an hour. Ajayi learned very fast. After only six months he could read the New Testament! Soon he was made a monitor, which meant he helped to teach the younger children. He was paid sevenpence-halfpenny a month. As soon as he learned something, he wanted to teach it to others. In the school and the church, Ajayi heard about Jesus. He said later that “the Lord was pleased to open my heart.” He understood that he had done wrong things and needed God’s forgiveness, and he wanted the forgiveness that Jesus gives. On 11 December 1825 he was baptised. At his baptism he took a new name: Samuel Crowther. It was the name of a minister in London. Mrs. Davey had been a Sunday school teacher in his church, and she chose his name for the boy. But Samuel never forgot his Yoruba name. All his life he signed himself Samuel Ajayi Crowther. At Bathurst there was also a girl named Asano. She had been rescued from a different slave ship, and she went to the same school. Years later, in 1829, Samuel and Asano were married. They were married for fifty-one years and had six children. When you belong to Jesus, you become new on the inside. But you are still you! God does not throw away the person he made. He makes you new. Dear Jesus, please open my heart to hear you, like you opened Samuel’s. Thank you that you forgive me and make me new. Amen.",
+  "word_count": 305
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 6,
+  "title": "Africa’s Own Children",
+  "body_html": "<blockquote>“You will be my witnesses, at home and to the ends of the earth.” — from Acts 1</blockquote> <p>Samuel grew up and became a teacher. He was the very first student at a new college in Sierra Leone called Fourah Bay. He started writing down words in Yoruba, the language of his childhood.</p> <p>In 1841, the British government sent three steamships up the great Niger River, deep into Africa. They wanted to stop the slave trade and to share the good news of Jesus. Samuel went with them as a missionary.</p> <p>On the river, a terrible fever broke out. Almost all the Europeans became ill, and many of them died. But most of the Africans on the ships stayed well.</p> <p>Samuel wrote a letter to the missionaries in London. He said that Africa would be helped most of all by “her own children.” He meant that Africans could live in places where Europeans got sick, and could speak the people’s languages. They should be trained and sent to tell their own people about Jesus.</p> <p>Two years later, in 1843, Samuel was made a minister of the Church of England in London. When he came home to Sierra Leone, he preached to a crowded church. Many people had never seen an African minister before! Then he did something new: he held a church service in Yoruba. He said that standing there, he felt like a baby learning to speak his own language.</p> <p>Jesus told his friends to tell people about him, starting at home. You do not have to travel far to do that. You can start with the people around you.</p> <p><em>Dear Jesus, help me to tell the people around me about you, starting right where I am. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened on the Niger River in 1841?",
+    "answer": "A terrible fever broke out and many of the Europeans died, but most of the Africans stayed well."
+   },
+   {
+    "question": "What did Samuel mean when he said Africa would be helped by “her own children”?",
+    "answer": "That Africans should be trained and sent to tell their own people about Jesus, in their own languages."
+   },
+   {
+    "question": "Who is someone near you that you could tell about Jesus?",
+    "answer": "Any answer is good. Jesus told his friends to start telling about him at home, and so can we."
+   }
+  ],
+  "body_text": "“You will be my witnesses, at home and to the ends of the earth.” — from Acts 1 Samuel grew up and became a teacher. He was the very first student at a new college in Sierra Leone called Fourah Bay. He started writing down words in Yoruba, the language of his childhood. In 1841, the British government sent three steamships up the great Niger River, deep into Africa. They wanted to stop the slave trade and to share the good news of Jesus. Samuel went with them as a missionary. On the river, a terrible fever broke out. Almost all the Europeans became ill, and many of them died. But most of the Africans on the ships stayed well. Samuel wrote a letter to the missionaries in London. He said that Africa would be helped most of all by “her own children.” He meant that Africans could live in places where Europeans got sick, and could speak the people’s languages. They should be trained and sent to tell their own people about Jesus. Two years later, in 1843, Samuel was made a minister of the Church of England in London. When he came home to Sierra Leone, he preached to a crowded church. Many people had never seen an African minister before! Then he did something new: he held a church service in Yoruba. He said that standing there, he felt like a baby learning to speak his own language. Jesus told his friends to tell people about him, starting at home. You do not have to travel far to do that. You can start with the people around you. Dear Jesus, help me to tell the people around me about you, starting right where I am. Amen.",
+  "word_count": 289
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 7,
+  "title": "“Mother!”",
+  "body_html": "<blockquote>“God, you help children who have no father.” — from Psalm 10</blockquote> <p>In 1846 Samuel went to live in Abeokuta, a new city in the Yoruba country. He was there to start a church and a school. It was the first time he had lived among his own people since he was a boy.</p> <p>He had been there less than three weeks when someone brought amazing news. His mother was alive! She was living with his sisters in a town nearby. Samuel sent for her straight away.</p> <p>On 21 August 1846, his mother came. That morning Samuel had read a Bible verse: “You are the helper of the fatherless.” He said he had never felt how true it was so much as on that day.</p> <p>When his mother saw him, she trembled. She could not believe her eyes. They held on to each other and looked at each other in silence, while big tears rolled down her thin cheeks. She called him by the pet names his grandmother used to call him when he was little. It had been twenty-five years since they were torn apart.</p> <p>Samuel’s mother had had a very hard life. She had been a slave for many of those years. Now she came to live with her son. She went to church, and she learned about Jesus. In 1848 she was baptised, and she took the name Hannah. When Samuel told her his work would often take him far away, she said, “You are no longer my son, but the servant of God.” She wanted him to go and serve God without worrying about her.</p> <p>God did not forget Samuel, and he did not forget Samuel’s mother. He does not forget you, either.</p> <p><em>Dear God, thank you for my family. Thank you that you never forget me, and that you help people who are lonely or have lost someone they love. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "How long had Samuel and his mother been apart?",
+    "answer": "About twenty-five years. They were separated when Samuel was sold away, and found each other again in 1846."
+   },
+   {
+    "question": "What Bible verse did Samuel read on the day his mother came?",
+    "answer": "“You are the helper of the fatherless,” from Psalm 10. He said he had never felt it was so true as on that day."
+   },
+   {
+    "question": "What did his mother say when he told her he would often be away?",
+    "answer": "“You are no longer my son, but the servant of God.” She wanted him to do God’s work without worrying about her."
+   }
+  ],
+  "body_text": "“God, you help children who have no father.” — from Psalm 10 In 1846 Samuel went to live in Abeokuta, a new city in the Yoruba country. He was there to start a church and a school. It was the first time he had lived among his own people since he was a boy. He had been there less than three weeks when someone brought amazing news. His mother was alive! She was living with his sisters in a town nearby. Samuel sent for her straight away. On 21 August 1846, his mother came. That morning Samuel had read a Bible verse: “You are the helper of the fatherless.” He said he had never felt how true it was so much as on that day. When his mother saw him, she trembled. She could not believe her eyes. They held on to each other and looked at each other in silence, while big tears rolled down her thin cheeks. She called him by the pet names his grandmother used to call him when he was little. It had been twenty-five years since they were torn apart. Samuel’s mother had had a very hard life. She had been a slave for many of those years. Now she came to live with her son. She went to church, and she learned about Jesus. In 1848 she was baptised, and she took the name Hannah. When Samuel told her his work would often take him far away, she said, “You are no longer my son, but the servant of God.” She wanted him to go and serve God without worrying about her. God did not forget Samuel, and he did not forget Samuel’s mother. He does not forget you, either. Dear God, thank you for my family. Thank you that you never forget me, and that you help people who are lonely or have lost someone they love. Amen.",
+  "word_count": 316
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 8,
+  "title": "The Lord’s Prayer by Candlelight",
+  "body_html": "<blockquote>“How is it that each of us hears them speaking in our own language?” — from Acts 2</blockquote> <p>When Samuel was born, almost nobody had ever written Yoruba down. People knew wonderful proverbs, stories and songs, but they kept them all in their memories.</p> <p>Samuel wanted his people to be able to read God’s word in their own language. So he wrote down Yoruba words and made a book to teach the language. He worked out how to spell it, together with other missionaries. And he began to translate the Bible into Yoruba.</p> <p>It took a whole team more than forty years. Samuel did the biggest part. In 1884 the whole Bible came out in Yoruba at last! People could read about Jesus in the language they spoke at home.</p> <p>In 1851 Samuel visited England. One evening he went to Windsor Castle to talk with Prince Albert about Africa. While they were looking at maps, a lady came quietly into the room, dressed very simply. At first Samuel did not know who she was. It was Queen Victoria!</p> <p>When the lamp went out, the Queen lit the candles herself. Then someone asked Samuel to say something in Yoruba. He said a Yoruba proverb, and then he prayed the Lord’s Prayer in Yoruba. The Queen said it sounded “soft and melodious.”</p> <p>On the day of Pentecost, people from many countries heard about God in their own languages. God loves every language. He wants every people to hear about Jesus in the words they understand best.</p> <p><em>Our Father in heaven, thank you that you understand every language in the world. Thank you for the people who help others read the Bible in their own words. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Samuel want to write Yoruba down?",
+    "answer": "So that his people could read God’s word in the language they spoke at home."
+   },
+   {
+    "question": "What did Samuel say to Queen Victoria in Yoruba?",
+    "answer": "A Yoruba proverb, and then the Lord’s Prayer. The Queen said it sounded “soft and melodious.”"
+   },
+   {
+    "question": "Why does God want people to hear about him in their own language?",
+    "answer": "Because God loves every language and every people, and we understand best in the words we grew up with."
+   }
+  ],
+  "body_text": "“How is it that each of us hears them speaking in our own language?” — from Acts 2 When Samuel was born, almost nobody had ever written Yoruba down. People knew wonderful proverbs, stories and songs, but they kept them all in their memories. Samuel wanted his people to be able to read God’s word in their own language. So he wrote down Yoruba words and made a book to teach the language. He worked out how to spell it, together with other missionaries. And he began to translate the Bible into Yoruba. It took a whole team more than forty years. Samuel did the biggest part. In 1884 the whole Bible came out in Yoruba at last! People could read about Jesus in the language they spoke at home. In 1851 Samuel visited England. One evening he went to Windsor Castle to talk with Prince Albert about Africa. While they were looking at maps, a lady came quietly into the room, dressed very simply. At first Samuel did not know who she was. It was Queen Victoria! When the lamp went out, the Queen lit the candles herself. Then someone asked Samuel to say something in Yoruba. He said a Yoruba proverb, and then he prayed the Lord’s Prayer in Yoruba. The Queen said it sounded “soft and melodious.” On the day of Pentecost, people from many countries heard about God in their own languages. God loves every language. He wants every people to hear about Jesus in the words they understand best. Our Father in heaven, thank you that you understand every language in the world. Thank you for the people who help others read the Bible in their own words. Amen.",
+  "word_count": 284
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 9,
+  "title": "A Year Beside the Wreck",
+  "body_html": "<blockquote>“We are pressed on every side, but not crushed. We are knocked down, but not destroyed.” — from 2 Corinthians 4</blockquote> <p>Samuel went up the Niger River again and again, to tell the people who lived along it about Jesus. In 1854 he went with a little steamship called the Pleiad. After more than a hundred days on the river, nobody had died! Samuel said, “Not unto us, but unto God, we give praise.”</p> <p>In 1857 he went up the river once more, on a ship called the Dayspring. On the way he left two African helpers in the town of Onitsha to start a church there. Then the Dayspring went far up the river.</p> <p>On 7 October 1857, near a town called Jebba, the ship hit some rocks and tipped over! People came in canoes to help, and everyone got safely to shore. Nobody was hurt. But the ship could not be saved.</p> <p>Fifty people had to camp beside the river for a whole year, waiting for another ship to come. Samuel held prayers every morning and every evening in his tent made of mats, and he let sick people rest there. One night a leopard came into the camp! Samuel laughed and admitted, “I am no gunner.”</p> <p>He did not waste the year. He made friends with the people nearby. He learned their language, called Nupe, and began to write it down. The people were amazed to see their own words written on paper.</p> <p>When things go wrong, it is easy to give up. But Samuel kept trusting God and kept working. God can use even our worst days.</p> <p><em>Dear God, when things go wrong, help me not to give up. Help me to trust you and to keep doing good. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What happened to the ship called the Dayspring?",
+    "answer": "It hit rocks near Jebba and tipped over. Everyone got safely to shore, but the ship could not be saved."
+   },
+   {
+    "question": "What did Samuel do during the year beside the river?",
+    "answer": "He held prayers, cared for the sick, made friends with the people nearby, and began to write down their language, Nupe."
+   },
+   {
+    "question": "What is something hard that you could keep going with, like Samuel did?",
+    "answer": "Any honest answer is good. Samuel kept trusting God and kept working even when everything went wrong."
+   }
+  ],
+  "body_text": "“We are pressed on every side, but not crushed. We are knocked down, but not destroyed.” — from 2 Corinthians 4 Samuel went up the Niger River again and again, to tell the people who lived along it about Jesus. In 1854 he went with a little steamship called the Pleiad. After more than a hundred days on the river, nobody had died! Samuel said, “Not unto us, but unto God, we give praise.” In 1857 he went up the river once more, on a ship called the Dayspring. On the way he left two African helpers in the town of Onitsha to start a church there. Then the Dayspring went far up the river. On 7 October 1857, near a town called Jebba, the ship hit some rocks and tipped over! People came in canoes to help, and everyone got safely to shore. Nobody was hurt. But the ship could not be saved. Fifty people had to camp beside the river for a whole year, waiting for another ship to come. Samuel held prayers every morning and every evening in his tent made of mats, and he let sick people rest there. One night a leopard came into the camp! Samuel laughed and admitted, “I am no gunner.” He did not waste the year. He made friends with the people nearby. He learned their language, called Nupe, and began to write it down. The people were amazed to see their own words written on paper. When things go wrong, it is easy to give up. But Samuel kept trusting God and kept working. God can use even our worst days. Dear God, when things go wrong, help me not to give up. Help me to trust you and to keep doing good. Amen.",
+  "word_count": 294
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 10,
+  "title": "“I Am Not Worthy”",
+  "body_html": "<blockquote>“God lifts up the poor from the dust and seats them with princes.” — from 1 Samuel 2</blockquote> <p>The missionaries in London decided that the churches along the Niger needed a bishop, a leader for all the churches and ministers. They decided that the bishop should be an African. And they chose Samuel.</p> <p>His family remembered that Samuel did not want to be a bishop at all. “I am not worthy,” he said. He wanted to stay a humble servant. But at last he agreed, saying, “It is the Lord; let Him do what seemeth Him good.”</p> <p>On 29 June 1864, in the great cathedral at Canterbury in England, Samuel Ajayi Crowther was made the first African bishop of the Anglican Church. The boy who had been sold as a slave was now a bishop!</p> <p>An old lady came to the service. The story goes that when she found someone else in her seat, she would not move. She said she had every right to that seat, because she had taught the new bishop his alphabet! It was Mrs. Davey, his teacher from Bathurst, now called Mrs. Weeks.</p> <p>Being a bishop did not make Samuel proud. He asked people not to call him “My Lord.” If there was only one chair in a room and a schoolteacher came in, the bishop would stand up and give the teacher his seat.</p> <p>God loves to lift up people who are humble. You do not need to be important to be used by God. You just need to say yes to him.</p> <p><em>Dear God, please make me humble like Samuel. Help me to put others first and to say yes to whatever you ask me to do. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What did Samuel say when he was asked to be a bishop?",
+    "answer": "“I am not worthy.” He wanted to stay a humble servant, but at last he agreed to do what God wanted."
+   },
+   {
+    "question": "Who was the old lady at the cathedral?",
+    "answer": "Mrs. Weeks, who had been Mrs. Davey, his teacher at Bathurst. She said she had a right to her seat because she had taught him the alphabet."
+   },
+   {
+    "question": "How did Samuel show that being a bishop did not make him proud?",
+    "answer": "He asked people not to call him “My Lord,” and he would give his own chair to a schoolteacher."
+   }
+  ],
+  "body_text": "“God lifts up the poor from the dust and seats them with princes.” — from 1 Samuel 2 The missionaries in London decided that the churches along the Niger needed a bishop, a leader for all the churches and ministers. They decided that the bishop should be an African. And they chose Samuel. His family remembered that Samuel did not want to be a bishop at all. “I am not worthy,” he said. He wanted to stay a humble servant. But at last he agreed, saying, “It is the Lord; let Him do what seemeth Him good.” On 29 June 1864, in the great cathedral at Canterbury in England, Samuel Ajayi Crowther was made the first African bishop of the Anglican Church. The boy who had been sold as a slave was now a bishop! An old lady came to the service. The story goes that when she found someone else in her seat, she would not move. She said she had every right to that seat, because she had taught the new bishop his alphabet! It was Mrs. Davey, his teacher from Bathurst, now called Mrs. Weeks. Being a bishop did not make Samuel proud. He asked people not to call him “My Lord.” If there was only one chair in a room and a schoolteacher came in, the bishop would stand up and give the teacher his seat. God loves to lift up people who are humble. You do not need to be important to be used by God. You just need to say yes to him. Dear God, please make me humble like Samuel. Help me to put others first and to say yes to whatever you ask me to do. Amen.",
+  "word_count": 285
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 11,
+  "title": "The Kindness of Slaves",
+  "body_html": "<blockquote>“The ravens brought him bread and meat in the morning and in the evening.” — from 1 Kings 17</blockquote> <p>In 1867 Bishop Crowther was travelling up the river in his own small boat with his son Dandeson. They stopped to visit a chief named Abokko, whom Samuel had known for years.</p> <p>But Abokko thought the bishop owned the big trading ships and was very rich. He took the boat, grabbed all their things, and kept them prisoner. He would not let them go unless a huge pile of goods was paid for them.</p> <p>The first night, they had to sleep on the damp ground with nothing to eat. One of the chief’s slaves felt sorry for them and gave Samuel his own cloth as a blanket. A boatman gave him his robe for a pillow, and Samuel gave it to Dandeson. For days the chief gave them almost no food. But the slaves of the house secretly shared their own food with them. Samuel told Dandeson that these kind slaves were like the ravens God sent to feed Elijah.</p> <p>On Sunday, Samuel had no Bible, because Abokko had taken all his things. So he and Dandeson said Bible verses together from memory. Then Samuel went bravely to the chief and asked for his Bible, because it was the day God’s people meet to pray. The chief gave it back!</p> <p>Dandeson was offered the chance to go free on his own, but he would not leave his father. After many days, a steamer came, and the prisoners escaped to it. But a brave man named Mr. Fell, who had come to help them, was hit by an arrow and died. Samuel was very sad. He said he would rather have died himself.</p> <p>God cared for Samuel through the kindness of poor slaves. Even a small kindness can be God’s answer to someone’s prayer.</p> <p><em>Dear God, thank you that you take care of your people, even in hard places. Help me to be kind to people who are in trouble, like the slaves who fed Samuel. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "Why did Chief Abokko keep the bishop prisoner?",
+    "answer": "He thought the bishop owned the trading ships and was rich, so he wanted a huge payment before he would let him go."
+   },
+   {
+    "question": "Who fed Samuel and Dandeson when they were prisoners?",
+    "answer": "The chief’s slaves shared their own food with them in secret. Samuel said they were like the ravens God sent to feed Elijah."
+   },
+   {
+    "question": "What small kindness could you show someone this week?",
+    "answer": "Any answer is good. A small kindness, like sharing food or a blanket, can be God’s answer to someone’s prayer."
+   }
+  ],
+  "body_text": "“The ravens brought him bread and meat in the morning and in the evening.” — from 1 Kings 17 In 1867 Bishop Crowther was travelling up the river in his own small boat with his son Dandeson. They stopped to visit a chief named Abokko, whom Samuel had known for years. But Abokko thought the bishop owned the big trading ships and was very rich. He took the boat, grabbed all their things, and kept them prisoner. He would not let them go unless a huge pile of goods was paid for them. The first night, they had to sleep on the damp ground with nothing to eat. One of the chief’s slaves felt sorry for them and gave Samuel his own cloth as a blanket. A boatman gave him his robe for a pillow, and Samuel gave it to Dandeson. For days the chief gave them almost no food. But the slaves of the house secretly shared their own food with them. Samuel told Dandeson that these kind slaves were like the ravens God sent to feed Elijah. On Sunday, Samuel had no Bible, because Abokko had taken all his things. So he and Dandeson said Bible verses together from memory. Then Samuel went bravely to the chief and asked for his Bible, because it was the day God’s people meet to pray. The chief gave it back! Dandeson was offered the chance to go free on his own, but he would not leave his father. After many days, a steamer came, and the prisoners escaped to it. But a brave man named Mr. Fell, who had come to help them, was hit by an arrow and died. Samuel was very sad. He said he would rather have died himself. God cared for Samuel through the kindness of poor slaves. Even a small kindness can be God’s answer to someone’s prayer. Dear God, thank you that you take care of your people, even in hard places. Help me to be kind to people who are in trouble, like the slaves who fed Samuel. Amen.",
+  "word_count": 345
+ }
+},
+{
+ "model": "library.chapter",
+ "fields": {
+  "book": [
+   "samuel-ajayi-crowther-a-life-children",
+   "en"
+  ],
+  "order": 12,
+  "title": "Good Night",
+  "body_html": "<blockquote>“I will lie down and sleep in peace, for you alone, Lord, keep me safe.” — from Psalm 4</blockquote> <p>In the evenings Samuel’s children loved to sit around him and hear his stories. Their favourite was about his first shoes. When he was a student he was given heavy army boots, but he had never worn shoes before! He could not take a step. So he held on to the wall and walked round and round the room until he could let go. For months he carried his shoes to church and only put them on at the door. When he told the story, he acted it out, and the children clapped and shouted.</p> <p>When Samuel was old, sad things happened. In 1880 his dear wife Asano died. Then some young missionaries from England came to the Niger. They did not trust the African ministers, and they took away the jobs of some of them, even Samuel’s own son, without listening to the old bishop. It was not fair, and it hurt Samuel very much. Many years later, the Church of England said, “It was wrong.” But Samuel did not shout or fight back. He went on loving and serving.</p> <p>In 1891 he became ill and went to stay with his daughter Abigail in Lagos. On the last night of the year, at midnight, Abigail tucked him in and said, “Good night, father.” He answered, “Good night.” A little while later, he went home to be with Jesus.</p> <p>The boy who had been sold as a slave helped to bring the good news of Jesus to his people. Today there are many millions of Christians in Nigeria, and they read the Bible in Yoruba, Igbo and many other languages.</p> <p>Samuel trusted God all his life, on happy days and sad ones. At the very end, he could say “Good night” in peace, because he knew he was safe with God.</p> <p><em>Dear God, thank you for Samuel Ajayi Crowther and all that you did through his life. Help me to trust you on happy days and sad days, and to know that I am always safe with you. Amen.</em></p>",
+  "study_questions": [
+   {
+    "question": "What was the funny story about Samuel’s first shoes?",
+    "answer": "He had never worn shoes, so when he was given heavy boots he could not walk. He held on to the wall and walked round the room until he could let go."
+   },
+   {
+    "question": "What did Samuel do when people treated him unfairly?",
+    "answer": "He did not shout or fight back. He went on loving and serving. Many years later, the Church of England said that what happened to him was wrong."
+   },
+   {
+    "question": "What were Samuel’s last words?",
+    "answer": "“Good night.” He said it to his daughter Abigail, in peace, because he knew he was safe with God."
+   }
+  ],
+  "body_text": "“I will lie down and sleep in peace, for you alone, Lord, keep me safe.” — from Psalm 4 In the evenings Samuel’s children loved to sit around him and hear his stories. Their favourite was about his first shoes. When he was a student he was given heavy army boots, but he had never worn shoes before! He could not take a step. So he held on to the wall and walked round and round the room until he could let go. For months he carried his shoes to church and only put them on at the door. When he told the story, he acted it out, and the children clapped and shouted. When Samuel was old, sad things happened. In 1880 his dear wife Asano died. Then some young missionaries from England came to the Niger. They did not trust the African ministers, and they took away the jobs of some of them, even Samuel’s own son, without listening to the old bishop. It was not fair, and it hurt Samuel very much. Many years later, the Church of England said, “It was wrong.” But Samuel did not shout or fight back. He went on loving and serving. In 1891 he became ill and went to stay with his daughter Abigail in Lagos. On the last night of the year, at midnight, Abigail tucked him in and said, “Good night, father.” He answered, “Good night.” A little while later, he went home to be with Jesus. The boy who had been sold as a slave helped to bring the good news of Jesus to his people. Today there are many millions of Christians in Nigeria, and they read the Bible in Yoruba, Igbo and many other languages. Samuel trusted God all his life, on happy days and sad ones. At the very end, he could say “Good night” in peace, because he knew he was safe with God. Dear God, thank you for Samuel Ajayi Crowther and all that you did through his life. Help me to trust you on happy days and sad days, and to know that I am always safe with you. Amen.",
+  "word_count": 358
+ }
+}
+]
