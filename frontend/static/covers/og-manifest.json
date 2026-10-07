@@ -11088,6 +11088,16 @@
 			"layout": "band/teal",
 			"bar": 0
 		},
+		"sw/pilgrims-progress-children": {
+			"ground": "7d96ad4fc02185b26d752a23c822cda1c16f23352e85628063e34f106ecae10c",
+			"style": "press",
+			"volume": null,
+			"script": "latin",
+			"art": true,
+			"scrim": 1,
+			"layout": "band/teal",
+			"bar": 0
+		},
 		"sw/pilgrims-progress-words-of-one-syllable": {
 			"ground": "efd0c70864b88710b803baab12704e16b171fb6c215b6da7b938a025af3d8785",
 			"style": "young",
